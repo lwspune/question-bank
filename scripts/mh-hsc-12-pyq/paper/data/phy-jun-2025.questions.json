@@ -1,0 +1,678 @@
+[
+  {
+    "ref": "Q. 1(i)",
+    "format": "mcq",
+    "chapter": "Rotational Dynamics",
+    "subtopic": "Theorems of Parallel and Perpendicular Axes",
+    "difficulty": "EASY",
+    "stem": "For which of the following bodies, the principle of perpendicular axes is applicable?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Spherical"
+      },
+      {
+        "label": "B",
+        "text": "Conical"
+      },
+      {
+        "label": "C",
+        "text": "Cylindrical"
+      },
+      {
+        "label": "D",
+        "text": "Laminar"
+      }
+    ],
+    "reviewFlag": true,
+    "answer": "D",
+    "solution": "**(D)** Laminar\n\nThe theorem of perpendicular axes states that \\(I_z = I_x + I_y\\), where \\(z\\) is perpendicular to the plane of the body and \\(x, y\\) lie in that plane.\n\nIts proof rests on writing \\(r^{2} = x^{2} + y^{2}\\) for every mass element, which is true only if every element has \\(z = 0\\), that is, only if the whole body lies in one plane.\n\n\\(\\therefore\\) the principle applies only to a laminar (plane) body. Spherical, conical and cylindrical bodies are three dimensional, so their elements have non-zero \\(z\\) and the theorem fails for them."
+  },
+  {
+    "ref": "Q. 1(ii)",
+    "format": "mcq",
+    "chapter": "Superposition of Waves",
+    "subtopic": "Progressive Waves",
+    "difficulty": "MODERATE",
+    "stem": "Which of the following equation represents a simple harmonic progressive wave travelling along the negative X-direction?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(Y = a\\sin(kx - \\omega t)\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(Y = a\\sin(kx + \\omega t)\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(Y = a\\sin(ky - \\omega t)\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(Y = a\\sin(ky + \\omega t)\\)"
+      }
+    ],
+    "reviewFlag": true,
+    "answer": "B",
+    "solution": "**(B)** \\(Y = a\\sin(kx + \\omega t)\\)\n\nFor a progressive wave the phase \\((kx \\mp \\omega t)\\) must stay constant as the wave moves.\n\nFor \\(\\sin(kx - \\omega t)\\), holding the phase fixed needs \\(x\\) to **increase** as \\(t\\) increases, so that wave travels along \\(+X\\).\n\nFor \\(\\sin(kx + \\omega t)\\), holding the phase fixed needs \\(x\\) to **decrease** as \\(t\\) increases, so this wave travels along \\(-X\\).\n\n\\(\\therefore\\) the required equation is \\(Y = a\\sin(kx + \\omega t)\\). Options (c) and (d) use \\(ky\\) and so describe motion along the Y axis, not along X at all."
+  },
+  {
+    "ref": "Q. 1(iii)",
+    "format": "mcq",
+    "chapter": "Magnetic Fields due to Electric Current",
+    "subtopic": "Cyclotron and Helical Motion",
+    "difficulty": "MODERATE",
+    "stem": "In a cyclotron final kinetic energy of a particle revolving in a circular path of radius \\(R_{\\text{exit}}\\) is :",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\text{K.E.} \\propto R_{\\text{exit}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\text{K.E.} \\propto R^{2}_{\\text{exit}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\text{K.E.} \\propto \\dfrac{1}{R_{\\text{exit}}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\text{K.E.} \\propto \\dfrac{1}{R^{2}_{\\text{exit}}}\\)"
+      }
+    ],
+    "reviewFlag": true,
+    "answer": "B",
+    "solution": "**(B)** \\(\\text{K.E.} \\propto R^{2}_{\\text{exit}}\\)\n\nIn a cyclotron the magnetic force provides the centripetal force at every radius:\n\n\\(qvB = \\dfrac{mv^{2}}{R}\\), so \\(v = \\dfrac{qBR}{m}\\)\n\nAt the exit radius the speed is therefore \\(v = \\dfrac{qBR_{\\text{exit}}}{m}\\), and the final kinetic energy is\n\n\\(\\text{K.E.} = \\dfrac{1}{2}mv^{2} = \\dfrac{1}{2}m\\left(\\dfrac{qBR_{\\text{exit}}}{m}\\right)^{2}\\)\n\n\\(\\text{K.E.} = \\dfrac{q^{2}B^{2}R_{\\text{exit}}^{2}}{2m}\\)\n\n\\(\\therefore \\text{K.E.} \\propto R_{\\text{exit}}^{2}\\)\n\nThis is why a cyclotron is built as large as possible: the energy grows as the square of the exit radius."
+  },
+  {
+    "ref": "Q. 1(iv)",
+    "format": "mcq",
+    "chapter": "Dual Nature of Radiation and Matter",
+    "subtopic": "Photoelectric Effect",
+    "difficulty": "MODERATE",
+    "stem": "For which of the following metals, photoelectric effect is possible for visible radiation?",
+    "options": [
+      {
+        "label": "A",
+        "text": "Zinc"
+      },
+      {
+        "label": "B",
+        "text": "Cadmium"
+      },
+      {
+        "label": "C",
+        "text": "Magnesium"
+      },
+      {
+        "label": "D",
+        "text": "Sodium"
+      }
+    ],
+    "reviewFlag": true,
+    "answer": "D",
+    "solution": "**(D)** Sodium\n\nPhotoemission occurs only when the photon energy exceeds the work function of the metal. Visible light spans roughly 1.8 eV (red) to 3.1 eV (violet).\n\nThe work functions are about 4.3 eV for zinc, 4.1 eV for cadmium and 3.7 eV for magnesium, all above the visible range, so visible light cannot eject electrons from them. Sodium has a work function of about 2.3 eV, which lies inside the visible range.\n\n\\(\\therefore\\) photoelectric effect with visible radiation is possible for sodium. Alkali metals generally have low work functions, which is why caesium and sodium are used in photocells."
+  },
+  {
+    "ref": "Q. 1(v)",
+    "format": "mcq",
+    "chapter": "Magnetic Materials",
+    "subtopic": "Origin of Magnetism in Materials",
+    "difficulty": "MODERATE",
+    "stem": "The gyromagnetic ratio of electron is _______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{2m_e}{e}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{2m_e}{e^{2}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{e}{2m_e}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{e^{2}}{2m_e}\\)"
+      }
+    ],
+    "reviewFlag": true,
+    "answer": "C",
+    "solution": "**(C)** \\(\\dfrac{e}{2m_e}\\)\n\nFor an electron of charge \\(e\\) and mass \\(m_e\\) revolving in an orbit of radius \\(r\\) with speed \\(v\\), the equivalent current is \\(I = \\dfrac{ev}{2\\pi r}\\) and the orbital magnetic moment is\n\n\\(M_{orb} = IA = \\dfrac{ev}{2\\pi r} \\times \\pi r^{2} = \\dfrac{evr}{2}\\)\n\nThe orbital angular momentum is \\(L = m_e v r\\). The gyromagnetic ratio is the ratio of the two:\n\n\\(\\dfrac{M_{orb}}{L} = \\dfrac{evr/2}{m_e v r}\\)\n\n\\(\\therefore \\dfrac{M_{orb}}{L} = \\dfrac{e}{2m_e}\\)\n\nIts value is about \\(8.8 \\times 10^{10}\\ \\text{C/kg}\\), and it is a constant of nature, independent of the orbit."
+  },
+  {
+    "ref": "Q. 1(vi)",
+    "format": "mcq",
+    "chapter": "Mechanical Properties of Fluids",
+    "subtopic": "Capillary Action",
+    "difficulty": "EASY",
+    "stem": "Two capillary tubes of radii 0.3 cm and 0.6 cm are dipped in the same liquid, the ratio of heights to which the liquid will rise in the tubes is _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "1 : 2"
+      },
+      {
+        "label": "B",
+        "text": "2 : 1"
+      },
+      {
+        "label": "C",
+        "text": "1 : 4"
+      },
+      {
+        "label": "D",
+        "text": "4 : 1"
+      }
+    ],
+    "reviewFlag": true,
+    "answer": "B",
+    "solution": "**(B)** 2 : 1\n\nThe rise of liquid in a capillary tube is\n\n\\(h = \\dfrac{2T\\cos\\theta}{r\\rho g}\\)\n\nThe same liquid is used in both tubes, so \\(T\\), \\(\\theta\\) and \\(\\rho\\) are the same and\n\n\\(h \\propto \\dfrac{1}{r}\\)\n\nTaking the ratio for the two tubes,\n\n\\(\\dfrac{h_1}{h_2} = \\dfrac{r_2}{r_1} = \\dfrac{0.6}{0.3}\\)\n\n\\(\\therefore \\dfrac{h_1}{h_2} = \\dfrac{2}{1}\\)\n\nThe liquid rises twice as high in the narrower tube, which is the whole point of capillarity: the narrower the bore, the greater the rise."
+  },
+  {
+    "ref": "Q. 1(vii)",
+    "format": "mcq",
+    "chapter": "Current Electricity",
+    "subtopic": "Kirchhoff's Laws of Electrical Networks",
+    "difficulty": "EASY",
+    "stem": "Kirchhoff's Voltage Law applied to a loop deals with the conservation of _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "momentum"
+      },
+      {
+        "label": "B",
+        "text": "mass"
+      },
+      {
+        "label": "C",
+        "text": "energy"
+      },
+      {
+        "label": "D",
+        "text": "charge"
+      }
+    ],
+    "reviewFlag": true,
+    "answer": "C",
+    "solution": "**(C)** energy\n\nKirchhoff's voltage law states that the algebraic sum of the potential differences around any closed loop of a network is zero:\n\n\\(\\sum V = 0\\)\n\nPotential difference is work done per unit charge, so carrying a unit charge once round a closed loop and returning it to its starting point involves zero net work. That is precisely a statement of the conservation of energy.\n\n\\(\\therefore\\) the voltage law expresses conservation of energy. It is the junction law, \\(\\sum I = 0\\), that expresses conservation of charge."
+  },
+  {
+    "ref": "Q. 1(viii)",
+    "format": "mcq",
+    "chapter": "Wave Optics",
+    "subtopic": "Polarization and Brewster's Law",
+    "difficulty": "EASY",
+    "stem": "How many times the intensity of an unpolarized light wave reduces after passing through a polarizer?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{1}{2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\dfrac{1}{4}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{1}{6}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{1}{8}\\)"
+      }
+    ],
+    "reviewFlag": true,
+    "answer": "A",
+    "solution": "**(A)** \\(\\dfrac{1}{2}\\)\n\nUnpolarised light is an equal mixture of all transverse vibration directions. A polariser transmits only the component of each vibration parallel to its axis, and by Malus's law that component carries intensity \\(I_0\\cos^{2}\\theta\\).\n\nAveraging over all orientations, which are equally likely,\n\n\\(\\overline{\\cos^{2}\\theta} = \\dfrac{1}{2}\\)\n\n\\(\\therefore I = \\dfrac{I_0}{2}\\); the intensity is reduced to one half. This halving happens at the first polariser only, since the light leaving it is already plane polarised."
+  },
+  {
+    "ref": "Q. 1(ix)",
+    "format": "mcq",
+    "chapter": "Kinetic Theory of Gases and Radiation",
+    "subtopic": "Behaviour of Gases, Ideal and Real Gas",
+    "difficulty": "MODERATE",
+    "stem": "If pressure of gas contained in a closed vessel is increased by 0.4% when heated by 1°C, its initial temperature must be _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "200°C"
+      },
+      {
+        "label": "B",
+        "text": "250°C"
+      },
+      {
+        "label": "C",
+        "text": "300°C"
+      },
+      {
+        "label": "D",
+        "text": "350°C"
+      }
+    ],
+    "reviewFlag": true,
+    "answer": "B",
+    "solution": "**(B)** 250°C\n\nThe gas is in a closed vessel, so the volume is constant and Gay-Lussac's law applies:\n\n\\(\\dfrac{P}{T} = \\text{constant}\\), hence \\(\\dfrac{\\Delta P}{P} = \\dfrac{\\Delta T}{T}\\)\n\nHere the pressure rises by 0.4 per cent for a rise of \\(1^{\\circ}\\text{C}\\), so \\(\\dfrac{\\Delta P}{P} = 0.004\\) and \\(\\Delta T = 1\\).\n\n\\(0.004 = \\dfrac{1}{T}\\)\n\n\\(T = \\dfrac{1}{0.004} = 250\\)\n\n\\(\\therefore\\) the initial temperature is \\(250\\), the numeral that option (b) carries.\n\nIt is worth being exact about what the working gives: since \\(P \\propto T\\) holds only for **absolute** temperature, the \\(250\\) here is in kelvin, that is \\(-23^{\\circ}\\text{C}\\). All four options are printed in degree Celsius, so the printed unit does not match the physics; the numeral, however, is uniquely determined and only option (b) carries it."
+  },
+  {
+    "ref": "Q. 1(x)",
+    "format": "mcq",
+    "chapter": "Dual Nature of Radiation and Matter",
+    "subtopic": "Wave-Particle Duality of Radiation",
+    "difficulty": "MODERATE",
+    "stem": "The wavelength and power of the incident light is 4000 Å and 0.1W respectively. The number of incident photons is _____.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(2.011 \\times 10^{17}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(3.011 \\times 10^{17}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(4.011 \\times 10^{17}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(5.011 \\times 10^{17}\\)"
+      }
+    ],
+    "reviewFlag": true,
+    "answer": "A",
+    "solution": "**(A)** \\(2.011 \\times 10^{17}\\)\n\nThe energy of one photon of wavelength \\(\\lambda\\) is\n\n\\(E = \\dfrac{hc}{\\lambda} = \\dfrac{6.63 \\times 10^{-34} \\times 3 \\times 10^{8}}{4 \\times 10^{-7}}\\)\n\n\\(E = 4.9725 \\times 10^{-19}\\ \\text{J}\\)\n\nThe source delivers 0.1 J of energy each second, so the number of photons is\n\n\\(n = \\dfrac{P}{E} = \\dfrac{0.1}{4.9725 \\times 10^{-19}}\\)\n\n\\(\\therefore n = 2.011 \\times 10^{17}\\)\n\nStrictly this is a number of photons **per second**, since it came from dividing a power by an energy; the options carry no unit, so the numerical value is what is wanted."
+  },
+  {
+    "ref": "Q. 2(i)",
+    "format": "subjective",
+    "chapter": "Oscillations",
+    "subtopic": "Acceleration, Velocity and Displacement in S.H.M.",
+    "difficulty": "EASY",
+    "context": "Answer the following questions :",
+    "setLabel": "Q. 2",
+    "stem": "What is the velocity of a particle performing linear SHM, at extreme position?",
+    "reviewFlag": true,
+    "solution": "At the extreme position the velocity of a particle performing linear S.H.M. is **zero**.\n\nFrom \\(v = \\omega\\sqrt{A^{2} - x^{2}}\\), putting \\(x = A\\) gives \\(v = 0\\). The particle is momentarily at rest there while it reverses direction, and its acceleration is greatest at that instant."
+  },
+  {
+    "ref": "Q. 2(ii)",
+    "format": "subjective",
+    "chapter": "Magnetic Materials",
+    "subtopic": "Diamagnetism, Paramagnetism and Ferromagnetism",
+    "difficulty": "EASY",
+    "context": "Answer the following questions :",
+    "setLabel": "Q. 2",
+    "stem": "What happens to the ferromagnetic substance when it is heated above Curie temperature?",
+    "reviewFlag": true,
+    "solution": "When a ferromagnetic substance is heated above its **Curie temperature** it becomes **paramagnetic**.\n\nThe thermal agitation becomes strong enough to destroy the alignment of the magnetic moments within its domains, so the domain structure breaks up. Above that temperature its susceptibility falls off with temperature according to the Curie-Weiss law."
+  },
+  {
+    "ref": "Q. 2(iii)",
+    "format": "subjective",
+    "chapter": "Kinetic Theory of Gases and Radiation",
+    "subtopic": "Absorption, Reflection and Transmission of Heat Radiation",
+    "difficulty": "EASY",
+    "context": "Answer the following questions :",
+    "setLabel": "Q. 2",
+    "stem": "What is the coefficient of transmission for athermanous materials?",
+    "reviewFlag": true,
+    "solution": "For an athermanous material the coefficient of transmission is **zero**, \\(t = 0\\).\n\nAn athermanous body is one which does not allow heat radiation to pass through it; all the radiation falling on it is either absorbed or reflected. With \\(t = 0\\) the relation \\(a + r + t = 1\\) reduces to \\(a + r = 1\\). Water, wood and glass at thermal-infrared wavelengths are athermanous."
+  },
+  {
+    "ref": "Q. 2(iv)",
+    "format": "subjective",
+    "chapter": "Semiconductor Devices",
+    "subtopic": "Photodiode, Solar Cell and LED",
+    "difficulty": "EASY",
+    "context": "Answer the following questions :",
+    "setLabel": "Q. 2",
+    "stem": "In a photodiode, on which property the dark current depends?",
+    "reviewFlag": true,
+    "solution": "In a photodiode the dark current depends on the **temperature** of the junction.\n\nThe dark current is the small reverse current that flows even when no light falls on the diode. It is a reverse saturation current carried by thermally generated minority carriers, so it rises rapidly as the temperature rises. It sets the lower limit on the light intensity a photodiode can detect."
+  },
+  {
+    "ref": "Q. 2(v)",
+    "format": "subjective",
+    "chapter": "Electromagnetic Induction",
+    "subtopic": "Mutual Inductance",
+    "difficulty": "EASY",
+    "context": "Answer the following questions :",
+    "setLabel": "Q. 2",
+    "stem": "Define mutual inductance.",
+    "reviewFlag": true,
+    "solution": "**Mutual inductance** of a pair of coils is the property by virtue of which a change of current in one coil induces an e.m.f. in the neighbouring coil.\n\nNumerically it is the magnetic flux linked with the secondary coil per unit current in the primary:\n\n\\(M = \\dfrac{N_s\\phi_s}{I_p}\\), equivalently \\(e_s = -M\\dfrac{dI_p}{dt}\\)\n\nIts S.I. unit is the henry."
+  },
+  {
+    "ref": "Q. 2(vi)",
+    "format": "subjective",
+    "chapter": "Magnetic Materials",
+    "subtopic": "Magnetization and Magnetic Intensity",
+    "difficulty": "EASY",
+    "context": "Answer the following questions :",
+    "setLabel": "Q. 2",
+    "stem": "What is magnetization?",
+    "reviewFlag": true,
+    "solution": "**Magnetization** is the net magnetic moment per unit volume of a material:\n\n\\(M_z = \\dfrac{M_{net}}{V}\\)\n\nIt measures how far the atomic magnetic moments in the material have been aligned by an applied field, and so how strongly the material has itself become a magnet. Its S.I. unit is ampere per metre."
+  },
+  {
+    "ref": "Q. 2(vii)",
+    "format": "subjective",
+    "chapter": "Rotational Dynamics",
+    "subtopic": "Moment of Inertia and Radius of Gyration",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions :",
+    "setLabel": "Q. 2",
+    "stem": "A metal ring of radius 20 cm is rotating about a transverse axis passing through its centre. What will be its radius of gyration about the same axis?",
+    "reviewFlag": true,
+    "solution": "The radius of gyration \\(K\\) is defined by \\(I = MK^{2}\\).\n\nFor a ring rotating about a transverse axis through its centre, that is the axis perpendicular to its plane, every element is at the same distance \\(R\\) from the axis, so\n\n\\(I = MR^{2}\\)\n\nComparing, \\(MK^{2} = MR^{2}\\), so \\(K = R\\).\n\n\\(\\therefore K = 20\\ \\text{cm}\\)\n\nThe radius of gyration equals the radius of the ring itself, which is the only shape for which this is true."
+  },
+  {
+    "ref": "Q. 2(viii)",
+    "format": "subjective",
+    "chapter": "Mechanical Properties of Fluids",
+    "subtopic": "Fluid Pressure and Pascal's Law",
+    "difficulty": "EASY",
+    "context": "Answer the following questions :",
+    "setLabel": "Q. 2",
+    "stem": "In a hydraulic lift, area of pistons are \\(A_1\\) and \\(A_2\\) respectively \\((A_2 \\gg A_1)\\). If force \\(F_1\\) is applied on piston 1, then what is the force exerted on piston 2?",
+    "reviewFlag": true,
+    "solution": "By Pascal's law the pressure applied to an enclosed liquid is transmitted undiminished to every part of it, so the pressure is the same at both pistons:\n\n\\(\\dfrac{F_1}{A_1} = \\dfrac{F_2}{A_2}\\)\n\n\\(\\therefore F_2 = F_1\\dfrac{A_2}{A_1}\\)\n\nSince \\(A_2 \\gg A_1\\), the force on piston 2 is much larger than \\(F_1\\). This multiplication of force is the principle of the hydraulic lift; the work done is not multiplied, because the large piston moves through a correspondingly smaller distance."
+  },
+  {
+    "ref": "Q. 3",
+    "format": "subjective",
+    "chapter": "Rotational Dynamics",
+    "subtopic": "Moment of Inertia and Radius of Gyration",
+    "difficulty": "MODERATE",
+    "stem": "Obtain an expression for moment of inertia of a uniform disc of mass 'M' and radius 'R' rotating about an axis passing through its centre and perpendicular to its plane.",
+    "reviewFlag": true,
+    "solution": "Consider a uniform disc of mass \\(M\\) and radius \\(R\\), rotating about the axis through its centre and perpendicular to its plane.\n\nThe mass per unit area is\n\n\\(\\sigma = \\dfrac{M}{\\pi R^{2}}\\)\n\nDivide the disc into thin concentric rings. Take the ring of radius \\(x\\) and width \\(dx\\). Its area is \\(2\\pi x\\,dx\\), so its mass is\n\n\\(dm = \\sigma \\times 2\\pi x\\,dx = \\dfrac{M}{\\pi R^{2}} \\times 2\\pi x\\,dx = \\dfrac{2M}{R^{2}}x\\,dx\\)\n\nEvery element of this ring lies at the same distance \\(x\\) from the axis, so its moment of inertia is\n\n\\(dI = x^{2}\\,dm = \\dfrac{2M}{R^{2}}x^{3}\\,dx\\)\n\nIntegrating over the whole disc, from \\(x = 0\\) to \\(x = R\\),\n\n\\(I = \\displaystyle\\int_{0}^{R}\\dfrac{2M}{R^{2}}x^{3}\\,dx = \\dfrac{2M}{R^{2}}\\left[\\dfrac{x^{4}}{4}\\right]_{0}^{R}\\)\n\n\\(I = \\dfrac{2M}{R^{2}} \\times \\dfrac{R^{4}}{4}\\)\n\n\\(\\therefore I = \\dfrac{1}{2}MR^{2}\\)\n\nThe result is half that of a ring of the same mass and radius, because the mass of a disc is distributed over all radii instead of sitting at the rim."
+  },
+  {
+    "ref": "Q. 4",
+    "format": "subjective",
+    "chapter": "Mechanical Properties of Fluids",
+    "subtopic": "Surface Tension and Surface Energy",
+    "difficulty": "EASY",
+    "stem": "What is the effect of impurities on surface tension of a liquid?",
+    "reviewFlag": true,
+    "solution": "Impurities change the surface tension of a liquid, and the direction of the change depends on the kind of impurity.\n\n**Soluble impurities that dissolve completely increase the surface tension.** Common salt dissolved in water raises its surface tension, because the dissolved ions attract the water molecules strongly and increase the cohesive force in the surface layer.\n\n**Sparingly soluble or surface-active impurities decrease it, often sharply.** Soap, detergent and phenol dissolved in water lower its surface tension a great deal. Such molecules collect in the surface layer itself and weaken the cohesive forces there, which is why soap solution wets and spreads far better than pure water, and why detergents work.\n\n**Insoluble impurities floating on the surface also decrease it.** A film of oil or grease on water reduces its surface tension.\n\nThis is also why surface tension measurements demand scrupulously clean apparatus: a trace of grease is enough to spoil the result."
+  },
+  {
+    "ref": "Q. 5",
+    "format": "subjective",
+    "chapter": "Thermodynamics",
+    "subtopic": "Thermodynamic Processes",
+    "difficulty": "MODERATE",
+    "stem": "Explain the thermodynamics of adiabatic process to obtain adiabatic constant for rigid diatomic molecule of a gas?",
+    "reviewFlag": true,
+    "solution": "**Adiabatic process.** In an adiabatic process no heat is exchanged with the surroundings, \\(Q = 0\\). From the first law,\n\n\\(0 = \\Delta U + W\\), so \\(W = -\\Delta U\\)\n\nAny work done by the gas is therefore done entirely at the cost of its internal energy, and an adiabatic expansion cools the gas while an adiabatic compression heats it.\n\nFor such a change the gas obeys\n\n\\(PV^{\\gamma} = \\text{constant}\\), where \\(\\gamma = \\dfrac{C_P}{C_V}\\)\n\n**Adiabatic constant for a rigid diatomic molecule.** A rigid diatomic molecule is a dumb-bell whose bond does not stretch, so it has no vibrational mode. It has\n\n3 translational degrees of freedom and 2 rotational degrees of freedom, giving \\(f = 5\\)\n\nBy the law of equipartition, each degree of freedom carries \\(\\dfrac{1}{2}k_BT\\) per molecule, so for one mole\n\n\\(U = \\dfrac{5}{2}RT\\)\n\n\\(C_V = \\dfrac{dU}{dT} = \\dfrac{5}{2}R\\)\n\nBy Mayer's relation \\(C_P = C_V + R\\),\n\n\\(C_P = \\dfrac{5}{2}R + R = \\dfrac{7}{2}R\\)\n\n\\(\\gamma = \\dfrac{C_P}{C_V} = \\dfrac{7R/2}{5R/2}\\)\n\n\\(\\therefore \\gamma = \\dfrac{7}{5} = 1.4\\)\n\nThis is why oxygen, nitrogen and hydrogen, and therefore air, all have \\(\\gamma\\) close to 1.4 at ordinary temperatures."
+  },
+  {
+    "ref": "Q. 6",
+    "format": "subjective",
+    "chapter": "Oscillations",
+    "subtopic": "Energy of a Particle Performing S.H.M.",
+    "difficulty": "EASY",
+    "stem": "Draw a neat labelled diagram of variation of kinetic energy and potential energy with displacement in S.H.M.",
+    "reviewFlag": true,
+    "solution": "**Diagram of energy against displacement in S.H.M.**\n\nTake the displacement \\(x\\) along the horizontal axis, running from \\(-A\\) through the mean position \\(O\\) at \\(x = 0\\) to \\(+A\\), and energy along the vertical axis.\n\nThree curves are drawn:\n\n**Potential energy,** \\(PE = \\dfrac{1}{2}kx^{2}\\). This is an upward parabola with its **minimum of zero at the mean position**, rising to its maximum \\(\\dfrac{1}{2}kA^{2}\\) at both extremes \\(x = \\pm A\\).\n\n**Kinetic energy,** \\(KE = \\dfrac{1}{2}k(A^{2} - x^{2})\\). This is an inverted parabola with its **maximum \\(\\dfrac{1}{2}kA^{2}\\) at the mean position**, falling to zero at both extremes.\n\n**Total energy,** \\(E = \\dfrac{1}{2}kA^{2}\\). This is a **horizontal straight line**, the same height everywhere, since the two parabolas always add to it.\n\nThe two parabolas are mirror images of each other in the horizontal line at half the total energy, and they cross at \\(x = \\pm\\dfrac{A}{\\sqrt{2}}\\), where the kinetic and potential energies are equal."
+  },
+  {
+    "ref": "Q. 7",
+    "format": "subjective",
+    "chapter": "Magnetic Fields due to Electric Current",
+    "subtopic": "Force on a Current-Carrying Wire",
+    "difficulty": "MODERATE",
+    "stem": "Assuming an equation of magnetic force due to arbitrarily shaped wire, obtain an expression for force on a closed circuit in a uniform magnetic field.",
+    "reviewFlag": true,
+    "solution": "The force on a current element \\(I\\,\\overrightarrow{dl}\\) placed in a magnetic field \\(\\vec{B}\\) is\n\n\\(\\overrightarrow{dF} = I\\,\\overrightarrow{dl} \\times \\vec{B}\\)\n\nFor a wire of arbitrary shape the total force is found by adding these contributions along the whole wire:\n\n\\(\\vec{F} = \\displaystyle\\int I\\,\\overrightarrow{dl} \\times \\vec{B}\\)\n\nNow let the wire form a **closed circuit** placed in a **uniform** field. Since \\(I\\) and \\(\\vec{B}\\) are the same everywhere, both can be taken outside the integral:\n\n\\(\\vec{F} = I\\left(\\displaystyle\\oint \\overrightarrow{dl}\\right) \\times \\vec{B}\\)\n\nThe integral \\(\\oint \\overrightarrow{dl}\\) is the vector sum of all the small displacement vectors taken right round a closed path. Going round a closed loop returns to the starting point, so that sum is the null vector:\n\n\\(\\oint \\overrightarrow{dl} = 0\\)\n\n\\(\\therefore \\vec{F} = I(0) \\times \\vec{B} = 0\\)\n\nThe net force on any closed current loop in a uniform magnetic field is zero, whatever the shape of the loop. Note that this says nothing about the torque: the forces on opposite sides of the loop are equal and opposite but act along different lines, so they form a couple, and it is that couple which turns a galvanometer coil and an electric motor."
+  },
+  {
+    "ref": "Q. 8",
+    "format": "subjective",
+    "chapter": "Magnetic Materials",
+    "subtopic": "Diamagnetism, Paramagnetism and Ferromagnetism",
+    "difficulty": "EASY",
+    "stem": "Distinguish between diamagnetic and paramagnetic substances.",
+    "reviewFlag": true,
+    "solution": "| Diamagnetic substances | Paramagnetic substances |\n|---|---|\n| They are feebly **repelled** by a magnet. | They are feebly **attracted** by a magnet. |\n| Their atoms have **no** net magnetic moment; the moment is induced only by the applied field. | Their atoms have a **permanent** magnetic moment, which the field partially aligns. |\n| Susceptibility \\(\\chi\\) is small and **negative**, of order \\(-10^{-5}\\). | Susceptibility \\(\\chi\\) is small and **positive**, of order \\(+10^{-5}\\). |\n| Relative permeability \\(\\mu_r\\) is slightly **less than 1**. | Relative permeability \\(\\mu_r\\) is slightly **greater than 1**. |\n| Placed in a non-uniform field they move from the stronger to the **weaker** part. | Placed in a non-uniform field they move from the weaker to the **stronger** part. |\n| Susceptibility is **independent of temperature**. | Susceptibility **falls as temperature rises**, obeying Curie's law \\(\\chi = C/T\\). |\n| Examples: bismuth, copper, water, gold. | Examples: aluminium, platinum, manganese, oxygen. |"
+  },
+  {
+    "ref": "Q. 9",
+    "format": "subjective",
+    "chapter": "Electromagnetic Induction",
+    "subtopic": "Faraday's Laws and Magnetic Flux",
+    "difficulty": "EASY",
+    "stem": "State Faraday's laws in electromagnetic induction.",
+    "reviewFlag": true,
+    "solution": "**Faraday's first law.** Whenever the magnetic flux linked with a circuit changes, an e.m.f. is induced in the circuit. The induced e.m.f. lasts only as long as the change of flux continues; it ceases the moment the flux becomes steady.\n\n**Faraday's second law.** The magnitude of the induced e.m.f. is directly proportional to the rate of change of magnetic flux linked with the circuit.\n\n\\(e \\propto \\dfrac{d\\phi}{dt}\\), and in S.I. units \\(e = -\\dfrac{d\\phi}{dt}\\)\n\nFor a coil of \\(N\\) turns the flux linkage is \\(N\\phi\\), so\n\n\\(e = -N\\dfrac{d\\phi}{dt}\\)\n\nThe negative sign is Lenz's law: the induced e.m.f. always acts so as to oppose the very change of flux that produced it, which is what makes the whole process consistent with conservation of energy."
+  },
+  {
+    "ref": "Q. 10",
+    "format": "subjective",
+    "chapter": "AC Circuits",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "MODERATE",
+    "stem": "In a purely resistive circuit a source of e.m.f. having \\(e = 140\\sin(3142t)\\) is connected across a pure resistor. If value of rms current is 1.98A, calculate the value of resistance.",
+    "reviewFlag": true,
+    "solution": "The source is \\(e = 140\\sin(3142t)\\), so the peak emf is\n\n\\(e_0 = 140\\ \\text{V}\\)\n\nThe rms emf is\n\n\\(e_{rms} = \\dfrac{e_0}{\\sqrt{2}} = \\dfrac{140}{1.414} = 99.0\\ \\text{V}\\)\n\nThe circuit is purely resistive, so the current and voltage are in phase and Ohm's law applies directly to the rms values:\n\n\\(R = \\dfrac{e_{rms}}{I_{rms}} = \\dfrac{99.0}{1.98}\\)\n\n\\(R = 50\\ \\Omega\\)\n\n\\(\\therefore\\) the value of the resistance is \\(50\\ \\Omega\\). The angular frequency 3142 rad/s is not needed, since a pure resistance offers the same opposition at every frequency."
+  },
+  {
+    "ref": "Q. 11",
+    "format": "subjective",
+    "chapter": "Oscillations",
+    "subtopic": "Periodic Motion and Linear S.H.M.",
+    "difficulty": "MODERATE",
+    "stem": "The differential equation of linear S.H.M. in SI units is \\(\\dfrac{d^{2}x}{dt^{2}} = -36x\\). Calculate its frequency and periodic time.",
+    "reviewFlag": true,
+    "solution": "The differential equation of linear S.H.M. is\n\n\\(\\dfrac{d^{2}x}{dt^{2}} = -\\omega^{2}x\\)\n\nComparing this with the given equation\n\n\\(\\dfrac{d^{2}x}{dt^{2}} = -36x\\)\n\ngives\n\n\\(\\omega^{2} = 36\\), so \\(\\omega = 6\\ \\text{rad/s}\\)\n\n**Frequency.**\n\n\\(n = \\dfrac{\\omega}{2\\pi} = \\dfrac{6}{2 \\times 3.142}\\)\n\n\\(n = 0.9548\\ \\text{Hz}\\)\n\n**Periodic time.**\n\n\\(T = \\dfrac{1}{n} = \\dfrac{2\\pi}{\\omega} = \\dfrac{2 \\times 3.142}{6}\\)\n\n\\(T = 1.047\\ \\text{s}\\)\n\n\\(\\therefore\\) the frequency is about \\(0.955\\ \\text{Hz}\\) and the periodic time about \\(1.047\\ \\text{s}\\)."
+  },
+  {
+    "ref": "Q. 12",
+    "format": "subjective",
+    "chapter": "Superposition of Waves",
+    "subtopic": "Beats",
+    "difficulty": "MODERATE",
+    "stem": "Two tuning forks having frequencies 160 Hz and 170 Hz are sounded together to produce sound waves. The velocity of sound in air is \\(326.4\\ \\text{ms}^{-1}\\). Calculate the difference between wavelengths of these waves.",
+    "reviewFlag": true,
+    "solution": "For each fork the wavelength follows from \\(v = n\\lambda\\), the velocity of sound being the same for both.\n\n\\(\\lambda_1 = \\dfrac{v}{n_1} = \\dfrac{326.4}{160} = 2.04\\ \\text{m}\\)\n\n\\(\\lambda_2 = \\dfrac{v}{n_2} = \\dfrac{326.4}{170} = 1.92\\ \\text{m}\\)\n\nThe difference is\n\n\\(\\lambda_1 - \\lambda_2 = 2.04 - 1.92\\)\n\n\\(\\therefore \\lambda_1 - \\lambda_2 = 0.12\\ \\text{m}\\)\n\nThe difference between the wavelengths is \\(0.12\\ \\text{m}\\), that is \\(12\\ \\text{cm}\\). The higher frequency has the shorter wavelength, as it must."
+  },
+  {
+    "ref": "Q. 13",
+    "format": "subjective",
+    "chapter": "Wave Optics",
+    "subtopic": "Diffraction at a Single Slit",
+    "difficulty": "MODERATE",
+    "stem": "What must be the ratio of the slit width to the wavelength for a single slit to have the first diffraction minimum at 45°?",
+    "reviewFlag": true,
+    "solution": "For diffraction at a single slit of width \\(a\\), the minima occur where\n\n\\(a\\sin\\theta = m\\lambda\\), with \\(m = 1, 2, 3, \\ldots\\)\n\nFor the **first** minimum, \\(m = 1\\):\n\n\\(a\\sin\\theta = \\lambda\\)\n\n\\(\\dfrac{a}{\\lambda} = \\dfrac{1}{\\sin\\theta}\\)\n\nHere \\(\\theta = 45^{\\circ}\\), so \\(\\sin 45^{\\circ} = \\dfrac{1}{\\sqrt{2}}\\).\n\n\\(\\dfrac{a}{\\lambda} = \\dfrac{1}{1/\\sqrt{2}} = \\sqrt{2}\\)\n\n\\(\\therefore \\dfrac{a}{\\lambda} = \\sqrt{2} = 1.414\\)\n\nThe slit must be about 1.414 times the wavelength. A slit narrower than a wavelength would give \\(\\sin\\theta > 1\\) and so no minimum at all, which is why very narrow slits spread the light right across the screen."
+  },
+  {
+    "ref": "Q. 14",
+    "format": "subjective",
+    "chapter": "Current Electricity",
+    "subtopic": "Potentiometer",
+    "difficulty": "EASY",
+    "stem": "A potential gradient of a wire is 0.5V/m. If the e.m.f. of a cell balances against 216 cm of this potentiometer wire, calculate e.m.f. of the cell.",
+    "reviewFlag": true,
+    "solution": "The potential gradient of a potentiometer wire is the fall of potential per unit length along it. At the balance point no current is drawn from the cell, so the e.m.f. of the cell equals the potential difference across the balancing length:\n\n\\(E = (\\text{potential gradient}) \\times (\\text{balancing length})\\)\n\nHere the gradient is \\(0.5\\ \\text{V/m}\\) and the balancing length is\n\n\\(l = 216\\ \\text{cm} = 2.16\\ \\text{m}\\)\n\n\\(E = 0.5 \\times 2.16\\)\n\n\\(E = 1.08\\ \\text{V}\\)\n\n\\(\\therefore\\) the e.m.f. of the cell is \\(1.08\\ \\text{V}\\)."
+  },
+  {
+    "ref": "Q. 15",
+    "format": "subjective",
+    "chapter": "Rotational Dynamics",
+    "subtopic": "Angular Momentum and Torque",
+    "difficulty": "MODERATE",
+    "stem": "Obtain an expression for torque acting on a rigid body rotating with constant angular acceleration.",
+    "reviewFlag": true,
+    "solution": "Consider a rigid body rotating about a fixed axis with constant angular acceleration \\(\\alpha\\). Divide it into particles of masses \\(m_1, m_2, \\ldots, m_n\\) at perpendicular distances \\(r_1, r_2, \\ldots, r_n\\) from the axis.\n\nBecause the body is rigid, every particle has the **same** angular acceleration \\(\\alpha\\), though their linear accelerations differ.\n\nThe linear acceleration of the \\(i\\)th particle is\n\n\\(a_i = r_i\\alpha\\)\n\nThe force needed to produce it is\n\n\\(f_i = m_i a_i = m_i r_i \\alpha\\)\n\nThis force acts tangentially at a perpendicular distance \\(r_i\\) from the axis, so the torque it exerts is\n\n\\(\\tau_i = f_i r_i = m_i r_i^{2}\\alpha\\)\n\nThe total torque on the body is the sum of these:\n\n\\(\\tau = \\displaystyle\\sum_{i=1}^{n} m_i r_i^{2}\\alpha = \\alpha\\sum_{i=1}^{n} m_i r_i^{2}\\)\n\nThe summation is by definition the moment of inertia \\(I\\) of the body about that axis.\n\n\\(\\therefore \\tau = I\\alpha\\)\n\nThis is the rotational analogue of \\(F = ma\\): torque plays the part of force, moment of inertia that of mass, and angular acceleration that of linear acceleration."
+  },
+  {
+    "ref": "Q. 16",
+    "format": "subjective",
+    "chapter": "Mechanical Properties of Fluids",
+    "subtopic": "Surface Tension and Surface Energy",
+    "difficulty": "EASY",
+    "stem": "Define the terms –\n(a) Cohesive force\n(b) Range of molecular force\n(c) Sphere of influence",
+    "reviewFlag": true,
+    "solution": "**(a) Cohesive force.** The force of attraction between two molecules of the **same** substance. It is what holds a liquid together and gives rise to surface tension. It is electromagnetic in origin and acts only over a very short range.\n\n**(b) Range of molecular force.** The maximum distance up to which one molecule can exert an appreciable force of attraction on another. Beyond this distance the force is negligible. For most liquids it is of the order of \\(10^{-9}\\ \\text{m}\\).\n\n**(c) Sphere of influence.** An imaginary sphere drawn with a given molecule as centre and the range of molecular force as radius. The molecule interacts only with the molecules lying inside this sphere; those outside it exert no appreciable force on it.\n\nThese three ideas together explain surface tension: a molecule deep inside the liquid has its sphere of influence completely filled with liquid and is pulled equally in all directions, whereas one at the surface has part of its sphere in the vapour and so feels a net inward pull."
+  },
+  {
+    "ref": "Q. 17",
+    "format": "subjective",
+    "chapter": "Superposition of Waves",
+    "subtopic": "Vibrations of Air Columns",
+    "difficulty": "MODERATE",
+    "stem": "Show that only odd harmonics are present in the vibrations of air column in a pipe closed at one end.",
+    "reviewFlag": true,
+    "solution": "Consider an air column of length \\(L\\) in a pipe closed at one end. The closed end cannot vibrate, so a **node** is formed there; the open end is free, so an **antinode** is formed there.\n\n**Fundamental mode.** The simplest arrangement is one node at the closed end and one antinode at the open end, which is a quarter of a wavelength:\n\n\\(L = \\dfrac{\\lambda_1}{4}\\), so \\(\\lambda_1 = 4L\\)\n\n\\(n_1 = \\dfrac{v}{4L}\\)\n\n**First overtone.** The next possible mode has one extra node and antinode, so the column holds three quarter-wavelengths:\n\n\\(L = \\dfrac{3\\lambda_2}{4}\\), so \\(\\lambda_2 = \\dfrac{4L}{3}\\)\n\n\\(n_2 = \\dfrac{3v}{4L} = 3n_1\\)\n\n**Second overtone.** Similarly \\(L = \\dfrac{5\\lambda_3}{4}\\), giving\n\n\\(n_3 = \\dfrac{5v}{4L} = 5n_1\\)\n\nIn general the column holds an **odd** number of quarter wavelengths, because it must have a node at one end and an antinode at the other:\n\n\\(L = \\dfrac{(2p - 1)\\lambda}{4}\\), so \\(n_p = \\dfrac{(2p-1)v}{4L} = (2p-1)n_1\\)\n\n\\(\\therefore n_1 : n_2 : n_3 : \\ldots = 1 : 3 : 5 : \\ldots\\)\n\nOnly the odd harmonics are present; the even harmonics would need a node and an antinode at the same end, which is impossible."
+  },
+  {
+    "ref": "Q. 18",
+    "format": "subjective",
+    "chapter": "Electrostatics",
+    "subtopic": "Applications of Gauss' Law",
+    "difficulty": "MODERATE",
+    "stem": "Obtain an expression for the electric intensity at a point outside a uniformly charged spherical shell.",
+    "reviewFlag": true,
+    "solution": "Consider a thin spherical shell of radius \\(R\\) carrying a total charge \\(q\\) distributed uniformly over its surface. Let P be a point outside it, at a distance \\(r\\) from the centre O, so that \\(r > R\\).\n\nBy symmetry the field at every point of a sphere of radius \\(r\\) drawn about O has the same magnitude and points radially outward. Take that sphere as the Gaussian surface.\n\nThe flux through it is\n\n\\(\\phi = \\displaystyle\\oint \\vec{E}\\cdot\\overrightarrow{dS}\\)\n\nSince \\(\\vec{E}\\) is parallel to \\(\\overrightarrow{dS}\\) everywhere and constant in magnitude,\n\n\\(\\phi = E\\displaystyle\\oint dS = E(4\\pi r^{2})\\)\n\nBy Gauss's theorem the flux equals the enclosed charge divided by \\(\\varepsilon_0\\). The Gaussian surface encloses the whole shell, so the enclosed charge is \\(q\\):\n\n\\(E(4\\pi r^{2}) = \\dfrac{q}{\\varepsilon_0}\\)\n\n\\(\\therefore E = \\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{q}{r^{2}}\\)\n\nThe field outside a uniformly charged spherical shell is exactly that of a point charge \\(q\\) placed at its centre. For a point **inside** the shell the Gaussian surface encloses no charge, and the same argument gives \\(E = 0\\) everywhere within."
+  },
+  {
+    "ref": "Q. 19",
+    "format": "subjective",
+    "chapter": "Current Electricity",
+    "subtopic": "Wheatstone Bridge and Metre Bridge",
+    "difficulty": "MODERATE",
+    "stem": "With the help of neat labelled circuit diagram explain the use of metre bridge to determine unknown resistance.",
+    "reviewFlag": true,
+    "solution": "**Circuit.** A metre bridge is a practical form of the Wheatstone network. A uniform wire AC exactly one metre long is stretched along a metre scale between two thick copper strips. The unknown resistance \\(X\\) is connected in the left gap and a known resistance box \\(R\\) in the right gap. A cell with a key is joined across the ends A and C, and a galvanometer is connected between the central strip B and a jockey which can slide along the wire.\n\n**Working.** The jockey is pressed at various points along the wire until the galvanometer shows **no deflection**. At that null point D the bridge is balanced, so no current flows through the galvanometer and the Wheatstone condition holds.\n\nLet the balancing length be \\(AD = l_1\\) cm, so that \\(DC = (100 - l_1)\\) cm. Since the wire is uniform, the resistance of any portion is proportional to its length, so the two lower arms are in the ratio \\(l_1 : (100 - l_1)\\).\n\nApplying the balance condition,\n\n\\(\\dfrac{X}{R} = \\dfrac{l_1}{100 - l_1}\\)\n\n\\(\\therefore X = R\\left(\\dfrac{l_1}{100 - l_1}\\right)\\)\n\n**Precautions.** The null point should be kept near the middle of the wire, where the fractional error is least, and the readings should be repeated with \\(X\\) and \\(R\\) interchanged so that the end errors cancel in the mean."
+  },
+  {
+    "ref": "Q. 20",
+    "format": "subjective",
+    "chapter": "Magnetic Fields due to Electric Current",
+    "subtopic": "Magnetic Field due to a Current",
+    "difficulty": "MODERATE",
+    "stem": "Derive an expression for the magnetic field produced at the centre of a circular arc of a wire carrying current I.",
+    "reviewFlag": true,
+    "solution": "By the Biot-Savart law a current element \\(I\\,\\overrightarrow{dl}\\) produces at a point distant \\(r\\) a magnetic induction\n\n\\(dB = \\dfrac{\\mu_0}{4\\pi}\\dfrac{I\\,dl\\sin\\theta}{r^{2}}\\)\n\nConsider a circular arc of radius \\(r\\) carrying current \\(I\\) and subtending an angle \\(\\phi\\) at its centre, and take the point to be the centre.\n\nFor every element of the arc the radius drawn to the centre is **perpendicular** to the element, so \\(\\theta = 90^{\\circ}\\) and \\(\\sin\\theta = 1\\). Also every element is at the same distance \\(r\\) from the centre. Hence\n\n\\(dB = \\dfrac{\\mu_0}{4\\pi}\\dfrac{I\\,dl}{r^{2}}\\)\n\nEvery element gives a field in the same direction, perpendicular to the plane of the arc, so their magnitudes simply add:\n\n\\(B = \\dfrac{\\mu_0 I}{4\\pi r^{2}}\\displaystyle\\int dl\\)\n\nThe length of the arc is \\(r\\phi\\), so\n\n\\(B = \\dfrac{\\mu_0 I}{4\\pi r^{2}} \\times r\\phi\\)\n\n\\(\\therefore B = \\dfrac{\\mu_0 I\\phi}{4\\pi r}\\)\n\nFor a **complete** circular loop, \\(\\phi = 2\\pi\\) and this becomes\n\n\\(B = \\dfrac{\\mu_0 I}{2r}\\)\n\nThe direction is given by the right hand rule: curl the fingers along the current and the thumb points along \\(\\vec{B}\\)."
+  },
+  {
+    "ref": "Q. 21",
+    "format": "subjective",
+    "chapter": "Structure of Atoms and Nuclei",
+    "subtopic": "Law of Radioactive Decay, Half-Life and Average Life",
+    "difficulty": "MODERATE",
+    "stem": "Derive the decay law of radioactivity and state SI unit of 'activity.'",
+    "reviewFlag": true,
+    "solution": "**Decay law of radioactivity.** Radioactive decay is a random process, and the number of nuclei disintegrating per unit time at any instant is proportional to the number of undecayed nuclei present at that instant.\n\nLet \\(N\\) be the number of undecayed nuclei at time \\(t\\). Then\n\n\\(-\\dfrac{dN}{dt} \\propto N\\), so \\(-\\dfrac{dN}{dt} = \\lambda N\\)\n\nwhere \\(\\lambda\\) is the decay constant and the minus sign shows that \\(N\\) decreases with time. Separating the variables,\n\n\\(\\dfrac{dN}{N} = -\\lambda\\,dt\\)\n\nIntegrating from \\(N_0\\) at \\(t = 0\\) to \\(N\\) at time \\(t\\),\n\n\\(\\displaystyle\\int_{N_0}^{N}\\dfrac{dN}{N} = -\\lambda\\int_{0}^{t}dt\\)\n\n\\(\\ln N - \\ln N_0 = -\\lambda t\\)\n\n\\(\\ln\\dfrac{N}{N_0} = -\\lambda t\\)\n\n\\(\\therefore N = N_0 e^{-\\lambda t}\\)\n\nThe number of undecayed nuclei falls off exponentially with time, and never reaches zero in a finite time.\n\n**S.I. unit of activity.** The activity of a sample is the number of disintegrations per second. Its S.I. unit is the **becquerel (Bq)**, one becquerel being one disintegration per second."
+  },
+  {
+    "ref": "Q. 22",
+    "format": "subjective",
+    "chapter": "Structure of Atoms and Nuclei",
+    "subtopic": "Atomic Spectra",
+    "difficulty": "MODERATE",
+    "stem": "Find the shortest and longest wavelengths in the Lyman series of hydrogen atom.",
+    "reviewFlag": true,
+    "solution": "For the Lyman series the electron falls to the ground state, \\(n = 1\\), and\n\n\\(\\dfrac{1}{\\lambda} = R\\left(\\dfrac{1}{1^{2}} - \\dfrac{1}{m^{2}}\\right)\\), with \\(m = 2, 3, 4, \\ldots\\)\n\ntaking \\(R = 1.097 \\times 10^{7}\\ \\text{m}^{-1}\\).\n\n**Longest wavelength.** This comes from the smallest energy jump, \\(m = 2\\):\n\n\\(\\dfrac{1}{\\lambda} = R\\left(1 - \\dfrac{1}{4}\\right) = \\dfrac{3R}{4}\\)\n\n\\(\\lambda = \\dfrac{4}{3R} = \\dfrac{4}{3 \\times 1.097 \\times 10^{7}}\\)\n\n\\(\\lambda = 1.215 \\times 10^{-7}\\ \\text{m} = 1215\\ \\text{Å}\\)\n\n**Shortest wavelength.** This is the series limit, \\(m = \\infty\\):\n\n\\(\\dfrac{1}{\\lambda} = R(1 - 0) = R\\)\n\n\\(\\lambda = \\dfrac{1}{R} = \\dfrac{1}{1.097 \\times 10^{7}}\\)\n\n\\(\\lambda = 9.116 \\times 10^{-8}\\ \\text{m} = 911.6\\ \\text{Å}\\)\n\n\\(\\therefore\\) the Lyman series runs from \\(1215\\ \\text{Å}\\) down to \\(911.6\\ \\text{Å}\\), entirely in the ultraviolet."
+  },
+  {
+    "ref": "Q. 23",
+    "format": "subjective",
+    "chapter": "Dual Nature of Radiation and Matter",
+    "subtopic": "De Broglie Hypothesis",
+    "difficulty": "MODERATE",
+    "stem": "The de-Broglie wavelengths associated with an electron and proton are same. Calculate the ratio of their momentum and kinetic energies.",
+    "reviewFlag": true,
+    "solution": "**Ratio of momenta.** By the de Broglie relation,\n\n\\(\\lambda = \\dfrac{h}{p}\\), so \\(p = \\dfrac{h}{\\lambda}\\)\n\nThe two wavelengths are given to be equal, so\n\n\\(\\dfrac{p_e}{p_p} = \\dfrac{h/\\lambda}{h/\\lambda} = 1\\)\n\n\\(\\therefore p_e : p_p = 1 : 1\\); equal wavelengths mean equal momenta, whatever the masses.\n\n**Ratio of kinetic energies.** For a non-relativistic particle,\n\n\\(K = \\dfrac{p^{2}}{2m}\\)\n\nSince the momenta are equal, \\(K \\propto \\dfrac{1}{m}\\):\n\n\\(\\dfrac{K_e}{K_p} = \\dfrac{m_p}{m_e}\\)\n\nTaking \\(m_p = 1.67 \\times 10^{-27}\\ \\text{kg}\\) and \\(m_e = 9.1 \\times 10^{-31}\\ \\text{kg}\\),\n\n\\(\\dfrac{K_e}{K_p} = \\dfrac{1.67 \\times 10^{-27}}{9.1 \\times 10^{-31}} = 1835\\)\n\n\\(\\therefore K_e : K_p \\approx 1835 : 1\\). The electron, being far lighter, must be given far more kinetic energy to carry the same momentum."
+  },
+  {
+    "ref": "Q. 24",
+    "format": "subjective",
+    "chapter": "Electrostatics",
+    "subtopic": "Parallel Plate Capacitor with a Dielectric",
+    "difficulty": "HARD",
+    "stem": "A parallel plate capacitor is maintained at potential of 400V. If area of plates is \\(40\\ \\text{cm}^{2}\\) and separation between plates is 40 mm, calculate displacement current in \\(1\\mu s\\).",
+    "reviewFlag": true,
+    "solution": "The displacement current is the current attributed to the changing electric field between the plates of a capacitor, and it is given by\n\n\\(I_d = \\varepsilon_0\\dfrac{d\\phi_E}{dt}\\)\n\nwhere \\(\\phi_E = EA\\) is the electric flux between the plates. With the area fixed,\n\n\\(I_d = \\varepsilon_0 A\\dfrac{dE}{dt}\\)\n\nThe field between the plates is \\(E = \\dfrac{V}{d}\\), so with \\(V = 400\\ \\text{V}\\) and \\(d = 40\\ \\text{mm} = 4 \\times 10^{-2}\\ \\text{m}\\),\n\n\\(E = \\dfrac{400}{4 \\times 10^{-2}} = 10^{4}\\ \\text{V/m}\\)\n\nThis field is established in a time \\(1\\mu s = 10^{-6}\\ \\text{s}\\), so\n\n\\(\\dfrac{dE}{dt} = \\dfrac{10^{4}}{10^{-6}} = 10^{10}\\ \\text{V/ms}\\)\n\nWith \\(A = 40\\ \\text{cm}^{2} = 40 \\times 10^{-4}\\ \\text{m}^{2}\\),\n\n\\(I_d = 8.85 \\times 10^{-12} \\times 40 \\times 10^{-4} \\times 10^{10}\\)\n\n\\(I_d = 3.54 \\times 10^{-4}\\ \\text{A}\\)\n\n\\(\\therefore\\) the displacement current is \\(3.54 \\times 10^{-4}\\ \\text{A}\\), that is about \\(0.354\\ \\text{mA}\\)."
+  },
+  {
+    "ref": "Q. 25",
+    "format": "subjective",
+    "chapter": "Kinetic Theory of Gases and Radiation",
+    "subtopic": "Perfect Blackbody and Emissivity",
+    "difficulty": "MODERATE",
+    "stem": "A 120 watt filament lamp loses all its energy by radiation from its surface. The emissivity of the surface is 0.6. The area of the surface is \\(3.53 \\times 10^{-3}\\text{m}^{2}\\). Calculate the temperature of the filament.",
+    "reviewFlag": true,
+    "solution": "The filament loses all its energy by radiation, so the power radiated equals the power consumed. By Stefan's law for a body of emissivity \\(e\\),\n\n\\(P = e\\sigma A T^{4}\\)\n\nRearranging for the temperature,\n\n\\(T^{4} = \\dfrac{P}{e\\sigma A}\\)\n\nHere \\(P = 120\\ \\text{W}\\), \\(e = 0.6\\), \\(A = 3.53 \\times 10^{-3}\\ \\text{m}^{2}\\) and \\(\\sigma = 5.67 \\times 10^{-8}\\ \\text{W/m}^{2}\\text{K}^{4}\\).\n\n\\(T^{4} = \\dfrac{120}{0.6 \\times 5.67 \\times 10^{-8} \\times 3.53 \\times 10^{-3}}\\)\n\n\\(T^{4} = \\dfrac{120}{1.2009 \\times 10^{-10}}\\)\n\n\\(T^{4} = 9.993 \\times 10^{11}\\)\n\n\\(T = (9.993 \\times 10^{11})^{1/4}\\)\n\n\\(T = 1000\\ \\text{K}\\)\n\n\\(\\therefore\\) the temperature of the filament is about \\(1000\\ \\text{K}\\)."
+  },
+  {
+    "ref": "Q. 26",
+    "format": "subjective",
+    "chapter": "Thermodynamics",
+    "subtopic": "Carnot Cycle and Carnot Engine",
+    "difficulty": "MODERATE",
+    "stem": "A Carnot engine receives 4000J of heat from a reservoir at 500K, does some work, rejects 2000J heat to reservoir at 200K.\n(a) How much work does it do?\n(b) What is its efficiency?",
+    "reviewFlag": true,
+    "solution": "**(a) Work done.** By the first law, over one complete cycle the engine returns to its initial state so \\(\\Delta U = 0\\), and the work done equals the net heat absorbed:\n\n\\(W = Q_H - Q_C\\)\n\nHere \\(Q_H = 4000\\ \\text{J}\\) is drawn from the hot reservoir and \\(Q_C = 2000\\ \\text{J}\\) is rejected to the cold one.\n\n\\(W = 4000 - 2000\\)\n\n\\(W = 2000\\ \\text{J}\\)\n\n**(b) Efficiency.** The efficiency is the fraction of the heat drawn that is converted into work:\n\n\\(\\eta = \\dfrac{W}{Q_H} = \\dfrac{2000}{4000}\\)\n\n\\(\\eta = 0.5\\)\n\n\\(\\therefore\\) the engine does \\(2000\\ \\text{J}\\) of work at an efficiency of \\(0.5\\), that is 50 per cent.\n\nIt is worth noticing that the stated temperatures are not consistent with these heats. A Carnot engine between 500 K and 200 K would have \\(\\eta = 1 - \\dfrac{200}{500} = 0.6\\), and would reject \\(1600\\ \\text{J}\\) rather than 2000 J. The heats given in the question have been used, since they are what the question supplies."
+  },
+  {
+    "ref": "Q. 27",
+    "format": "subjective",
+    "chapter": "Thermodynamics",
+    "subtopic": "Thermodynamic Processes",
+    "difficulty": "MODERATE",
+    "stem": "Define isothermal process. Obtain an expression for work done during isothermal process. Draw P–V diagram.",
+    "reviewFlag": true,
+    "solution": "**Isothermal process.** A process carried out at constant temperature is called an isothermal process. To keep the temperature constant the system must be in good thermal contact with a large reservoir and the change must be carried out very slowly, so that heat can flow in or out as fast as it is needed. For an ideal gas the internal energy depends only on temperature, so\n\n\\(\\Delta U = 0\\), and from the first law \\(Q = W\\)\n\nAll the heat absorbed appears as work done by the gas.\n\n**Work done.** For \\(n\\) moles expanding from \\(V_1\\) to \\(V_2\\) at temperature \\(T\\), the work done is\n\n\\(W = \\displaystyle\\int_{V_1}^{V_2} p\\,dV\\)\n\nFor an ideal gas \\(pV = nRT\\), so \\(p = \\dfrac{nRT}{V}\\) and, \\(T\\) being constant,\n\n\\(W = nRT\\displaystyle\\int_{V_1}^{V_2}\\dfrac{dV}{V} = nRT\\left[\\ln V\\right]_{V_1}^{V_2}\\)\n\n\\(\\therefore W = nRT\\ln\\left(\\dfrac{V_2}{V_1}\\right) = 2.303\\,nRT\\log_{10}\\left(\\dfrac{V_2}{V_1}\\right)\\)\n\nThe work is positive for an expansion and negative for a compression.\n\n**P-V diagram.** On a \\(p\\)-\\(V\\) diagram an isothermal change is a **rectangular hyperbola**, since \\(pV = \\text{constant}\\). Draw \\(p\\) on the vertical axis and \\(V\\) on the horizontal. The curve falls steeply at small \\(V\\) and flattens as \\(V\\) grows, never touching either axis. An expansion runs from \\((p_1, V_1)\\) at the upper left to \\((p_2, V_2)\\) at the lower right, and the work done is the shaded area under the curve between the two ordinates. Isotherms for higher temperatures lie farther from the origin."
+  },
+  {
+    "ref": "Q. 28",
+    "format": "subjective",
+    "chapter": "AC Circuits",
+    "subtopic": "Phasors and Types of AC Circuits",
+    "difficulty": "MODERATE",
+    "stem": "Using phasor diagram for a series LCR circuit, obtain an expression for impedance. Define admittance.",
+    "reviewFlag": true,
+    "solution": "**Phasor diagram for a series LCR circuit.** The same current \\(I\\) flows through \\(R\\), \\(L\\) and \\(C\\), so the current phasor is taken as the reference along the horizontal.\n\nAcross the resistance the voltage \\(V_R = IR\\) is **in phase** with the current, so it is drawn along the current phasor.\n\nAcross the inductance the voltage \\(V_L = IX_L\\) **leads** the current by \\(90^{\\circ}\\), so it is drawn vertically upward.\n\nAcross the capacitance the voltage \\(V_C = IX_C\\) **lags** the current by \\(90^{\\circ}\\), so it is drawn vertically downward.\n\nBeing opposite in direction, \\(V_L\\) and \\(V_C\\) partly cancel, leaving a net reactive voltage of magnitude \\(|V_L - V_C|\\) along the vertical.\n\n**Impedance.** The applied voltage is the resultant of \\(V_R\\) along the horizontal and \\((V_L - V_C)\\) along the vertical, and these are perpendicular, so\n\n\\(V^{2} = V_R^{2} + (V_L - V_C)^{2}\\)\n\n\\(V^{2} = (IR)^{2} + (IX_L - IX_C)^{2}\\)\n\n\\(V = I\\sqrt{R^{2} + (X_L - X_C)^{2}}\\)\n\nThe quantity \\(\\dfrac{V}{I}\\) is the impedance \\(Z\\), so\n\n\\(\\therefore Z = \\sqrt{R^{2} + (X_L - X_C)^{2}}\\)\n\nand the phase angle is given by \\(\\tan\\phi = \\dfrac{X_L - X_C}{R}\\).\n\n**Admittance.** The admittance of an a.c. circuit is the reciprocal of its impedance:\n\n\\(Y = \\dfrac{1}{Z}\\)\n\nIt measures the ease with which the circuit allows alternating current to flow, and its S.I. unit is the siemens, or \\(\\text{ohm}^{-1}\\)."
+  },
+  {
+    "ref": "Q. 29",
+    "format": "subjective",
+    "chapter": "Electromagnetic Induction",
+    "subtopic": "Motional Electromotive Force",
+    "difficulty": "MODERATE",
+    "stem": "Obtain an expression for motional e.m.f. in a rotating bar with constant angular velocity \\(\\omega\\) in uniform magnetic field perpendicular to plane of rotation.\nThe mutual inductance (M) of the two coils is 1.5H. The self inductances of the coils are 5H and 4H. Calculate the coefficient of coupling between the coils.",
+    "reviewFlag": true,
+    "solution": "**Motional e.m.f. in a rotating bar.**\n\nConsider a conducting bar of length \\(l\\) rotating with constant angular velocity \\(\\omega\\) about an axis through one end, in a uniform magnetic field \\(B\\) perpendicular to the plane of rotation.\n\nDifferent parts of the bar move with different speeds, so take an element of length \\(dx\\) at a distance \\(x\\) from the pivot. Its linear speed is\n\n\\(v = \\omega x\\)\n\nThe e.m.f. induced across this element is\n\n\\(de = Bv\\,dx = B\\omega x\\,dx\\)\n\nThe elements lie end to end along the bar, so their e.m.f.s add:\n\n\\(e = \\displaystyle\\int_{0}^{l}B\\omega x\\,dx = B\\omega\\left[\\dfrac{x^{2}}{2}\\right]_{0}^{l}\\)\n\n\\(\\therefore e = \\dfrac{1}{2}B\\omega l^{2}\\)\n\nWriting \\(\\omega = 2\\pi n\\), this is \\(e = B\\pi n l^{2}\\), which is also \\(B\\) times the area swept per second, as Faraday's law requires.\n\n**Coefficient of coupling.**\n\nThe coefficient of coupling of two coils is\n\n\\(K = \\dfrac{M}{\\sqrt{L_1 L_2}}\\)\n\nHere \\(M = 1.5\\ \\text{H}\\), \\(L_1 = 5\\ \\text{H}\\) and \\(L_2 = 4\\ \\text{H}\\).\n\n\\(K = \\dfrac{1.5}{\\sqrt{5 \\times 4}} = \\dfrac{1.5}{\\sqrt{20}}\\)\n\n\\(K = \\dfrac{1.5}{4.472}\\)\n\n\\(K = 0.335\\)\n\n\\(\\therefore\\) the coefficient of coupling is about \\(0.335\\). It is a pure number that cannot exceed 1, and a value this low means the coils are loosely coupled, with much of the flux of one missing the other."
+  },
+  {
+    "ref": "Q. 30",
+    "format": "subjective",
+    "chapter": "Semiconductor Devices",
+    "subtopic": "Logic Gates",
+    "difficulty": "MODERATE",
+    "stem": "Define logic gate and explain why NOT gate is called an inverter.\nThe transistor is in the common emitter configuration. Its DC current gain is 50. If collector current is 3mA, calculate the base current.",
+    "reviewFlag": true,
+    "solution": "**Logic gate.** A logic gate is a digital circuit with one or more inputs and a single output, whose output is high or low according to a definite logical rule applied to its inputs. It is the basic building block of all digital electronics, and its behaviour is completely described by its truth table.\n\n**Why a NOT gate is called an inverter.** The NOT gate has a single input and a single output, and its output is always the **complement** of its input:\n\n\\(Y = \\overline{A}\\)\n\nIts truth table has just two rows: an input of 0 gives an output of 1, and an input of 1 gives an output of 0. In every case the gate turns the logic level upside down, changing high into low and low into high. Because it inverts the input in this way it is called an inverter. It is the only gate that does so with a single input, and its circuit symbol is a triangle followed by a small circle, the circle itself standing for inversion.\n\n**Base current of the transistor.**\n\nFor a transistor in the common emitter configuration the d.c. current gain is\n\n\\(\\beta_{DC} = \\dfrac{I_C}{I_B}\\)\n\nRearranging,\n\n\\(I_B = \\dfrac{I_C}{\\beta_{DC}}\\)\n\nHere \\(I_C = 3\\ \\text{mA}\\) and \\(\\beta_{DC} = 50\\).\n\n\\(I_B = \\dfrac{3}{50} = 0.06\\ \\text{mA}\\)\n\n\\(\\therefore\\) the base current is \\(0.06\\ \\text{mA}\\), that is \\(60\\ \\mu\\text{A}\\). The very small base current controlling a much larger collector current is what makes the transistor an amplifier."
+  },
+  {
+    "ref": "Q. 31",
+    "format": "subjective",
+    "chapter": "Wave Optics",
+    "subtopic": "Interference and Young's Double Slit Experiment",
+    "difficulty": "MODERATE",
+    "stem": "State the four conditions for obtaining well defined and steady interference pattern.\nLight incident at angle 52.5° on a bucket filled with water be completely polarised after reflection. Calculate the refractive index of the water.",
+    "reviewFlag": true,
+    "solution": "**Four conditions for a well defined and steady interference pattern:**\n\n**1.** The two sources must be **coherent**, emitting waves of the same frequency with a constant phase difference between them. In practice both must be derived from a single source, as in the biprism or the double slit.\n\n**2.** The two sources must be **narrow** and placed **close together**, otherwise the fringes become too fine to resolve and overlap into uniform illumination.\n\n**3.** The amplitudes of the two interfering waves should be **equal or nearly equal**, so that the dark fringes are as nearly dark as possible and the pattern has good contrast.\n\n**4.** The light used should be **monochromatic**, otherwise each wavelength produces its own pattern of a different fringe width and these overlap into coloured bands.\n\n**Refractive index of water.**\n\nLight reflected from a surface is completely plane polarised when the angle of incidence equals the polarising angle, and by Brewster's law\n\n\\(\\mu = \\tan\\theta_p\\)\n\nHere \\(\\theta_p = 52.5^{\\circ}\\).\n\n\\(\\mu = \\tan 52.5^{\\circ}\\)\n\n\\(\\mu = 1.303\\)\n\n\\(\\therefore\\) the refractive index of the water is about \\(1.30\\), close to the accepted value of 1.33."
+  }
+]
