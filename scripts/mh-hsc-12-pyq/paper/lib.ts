@@ -65,8 +65,34 @@ export const HSC_PHYSICS_CHAPTERS = [
   "Wave Optics",
 ] as const;
 
+/** The 16 chapters the bank already carries for `mh-hsc-12` Chemistry — read
+ *  off the live taxonomy on 2026-09-24, not typed from the syllabus. Unlike
+ *  Physics, TWO of them hold textbook (`practice`) rows but no board (`pyq`)
+ *  row at all — "Green Chemistry and Nanochemistry" and "Transition and Inner
+ *  Transition Elements" — so a first PYQ landing in either is expected here,
+ *  not a filing mistake. */
+export const HSC_CHEMISTRY_CHAPTERS = [
+  "Alcohols, Phenols and Ethers",
+  "Aldehydes, Ketones and Carboxylic Acids",
+  "Amines",
+  "Biomolecules",
+  "Chemical Kinetics",
+  "Chemical Thermodynamics",
+  "Coordination Compounds",
+  "Electrochemistry",
+  "Elements of Groups 16, 17 and 18",
+  "Green Chemistry and Nanochemistry",
+  "Halogen Derivatives",
+  "Introduction to Polymer Chemistry",
+  "Ionic Equilibria",
+  "Solid State",
+  "Solutions",
+  "Transition and Inner Transition Elements",
+] as const;
+
 export type HscMathsChapter = (typeof HSC_MATHS_CHAPTERS)[number];
 export type HscPhysicsChapter = (typeof HSC_PHYSICS_CHAPTERS)[number];
+export type HscChemistryChapter = (typeof HSC_CHEMISTRY_CHAPTERS)[number];
 
 export type Section = "A" | "B" | "C" | "D";
 export type Placement = { section: Section; marks: number; format: "mcq" | "subjective" };
@@ -97,13 +123,29 @@ type GrammarSpec = {
   whole: { from: number; to: number };
   /** Section/marks bands over the whole-numbered range, in ascending order. */
   bands: Band[];
-  /** Render a block sub-item. The two subjects' shipped rows disagree here:
-   *  Maths carries `Q. 1. (i)`, Physics carries `Q. 1(i)`. */
+  /** Render a block sub-item. The three subjects' shipped rows all disagree:
+   *  Maths carries `Q. 1. (i)`, Physics `Q. 1(i)`, Chemistry `Q.1.i`. */
   renderSub: (parent: number, roman: string) => string;
+  /** Accept `Q.19.b` as split part 2 of Q.19, alongside the roman `Q.19.ii`.
+   *
+   *  OFF by default, and deliberately per-subject rather than global. Only the
+   *  Chemistry compilation splits a mixed-bag question with letters — 12 of the
+   *  2025 sitting's 52 rows are `Q.4.a` / `Q.21.b` / `Q.22.b.i` shapes — and
+   *  Maths and Physics have none anywhere. Turning it on globally would make
+   *  `Q. 21(a)` parse on a paper where it has never meant a split, which is the
+   *  kind of silent widening that stops a parser catching a real typo.
+   *
+   *  A letter and its roman twin denote the SAME part (`a` and `i` are both
+   *  part 1), so both fold onto one canonical ref. Romans are matched FIRST, so
+   *  `i`, `v` and `x` are always read as romans and never as the 9th, 22nd and
+   *  24th letters. */
+  letterParts?: boolean;
 };
 
 const SUB_RE = /^Q\.?\s*(\d{1,2})\.?\s*[([]?\s*([ivxIVX]+)\s*[)\]]?\.?$/;
 const WHOLE_RE = /^Q\.?\s*(\d{1,2})\.?$/;
+/** `Q.19.b`, `Q. 19(b)` — a LETTER split part. See GrammarSpec.letterParts. */
+const LETTER_PART_RE = /^Q\.?\s*(\d{1,2})\.?\s*[([]?\s*([a-hj-uwyzA-HJ-UWYZ])\s*[)\]]?\.?$/;
 
 function parseRef(spec: GrammarSpec, raw: string): Parsed | null {
   const s = String(raw ?? "").trim();
@@ -126,6 +168,22 @@ function parseRef(spec: GrammarSpec, raw: string): Parsed | null {
     // of it. The parent must still be a question that exists on this paper.
     if (n < spec.whole.from || n > spec.whole.to) return null;
     return { kind: "whole", n, part: idx };
+  }
+
+  // Letter split parts, e.g. `Q.19.b`. Tried only AFTER the roman branch above,
+  // so `i`/`v`/`x` are always romans; the letters that reach here cannot be.
+  if (spec.letterParts) {
+    const letter = s.match(LETTER_PART_RE);
+    if (letter) {
+      const n = Number(letter[1]);
+      // Q.1 and Q.2 are block headers whose sub-items are romans on every
+      // printed paper, so a letter there is a malformed ref, not a split.
+      if (n !== 1 && n !== 2 && n >= spec.whole.from && n <= spec.whole.to) {
+        const idx = letter[2].toLowerCase().charCodeAt(0) - 97;
+        if (idx >= 0 && idx < ROMAN.length) return { kind: "whole", n, part: idx };
+      }
+      return null;
+    }
   }
 
   const whole = s.match(WHOLE_RE);
@@ -343,9 +401,52 @@ export const PHYSICS_GRAMMAR = buildGrammar({
   renderSub: (parent, roman) => `Q. ${parent}(${roman})`,
 });
 
+/** Chemistry prints the SAME 47-item shape as Physics — measured off the June
+ *  2026 print (code J-261) and identical on all seven born-digital sittings:
+ *  Q.1 (i)-(x) MCQ 1m · Q.2 (i)-(viii) VSA 1m · Q.3-14 2m · Q.15-26 3m · Q.27-31 4m.
+ *  98 printed marks against a Max of 70; the gap IS the optionality
+ *  (any 8 of 12, any 8 of 12, any 3 of 5).
+ *
+ *  ONLY TWO THINGS DIFFER FROM PHYSICS, and both are why this is a third
+ *  grammar rather than a reuse:
+ *
+ *  1. THE REF SPELLING. Three subjects, three spellings, all already shipped:
+ *       Maths      `Q. 1. (v)`
+ *       Physics    `Q. 1(v)`
+ *       Chemistry  `Q.1.v`     — 128 of 131 distinct shipped refs, no brackets
+ *     Reconciliation compares against the shipped rows, so the wrong spelling
+ *     makes every ref look missing AND every shipped row look unexpected.
+ *
+ *  2. The chapter list.
+ *
+ *  Deliberately NOT modelled: the `OR` alternative refs the bank carries on
+ *  older sittings (`Q.12 OR`, `Q.8.iii(OR)`). All seven born-digital papers
+ *  print "Attempt any Eight / Eight / Three" and contain ZERO standalone OR
+ *  lines — the OR pattern belongs to the pre-2021 sittings, which are scans
+ *  and out of this lane's scope. */
+export const CHEMISTRY_GRAMMAR = buildGrammar({
+  subject: "Chemistry",
+  label: "Chemistry",
+  chapters: HSC_CHEMISTRY_CHAPTERS,
+  blocks: { 1: 10, 2: 8 },
+  blockPlacement: {
+    1: { section: "A", marks: 1, format: "mcq" },
+    2: { section: "A", marks: 1, format: "subjective" },
+  },
+  whole: { from: 3, to: 31 },
+  bands: [
+    { to: 14, section: "B", marks: 2 },
+    { to: 26, section: "C", marks: 3 },
+    { to: 31, section: "D", marks: 4 },
+  ],
+  renderSub: (parent, roman) => `Q.${parent}.${roman}`,
+  letterParts: true,
+});
+
 const GRAMMARS: Record<string, Grammar> = {
   Mathematics: MATHS_GRAMMAR,
   Physics: PHYSICS_GRAMMAR,
+  Chemistry: CHEMISTRY_GRAMMAR,
 };
 
 export function grammarFor(subject: string): Grammar {

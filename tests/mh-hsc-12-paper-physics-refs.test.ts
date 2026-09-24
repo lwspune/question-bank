@@ -210,7 +210,10 @@ describe("grammarFor", () => {
     expect(grammarFor("Mathematics")).toBe(MATHS_GRAMMAR);
   });
 
+  // Was `grammarFor("Chemistry")` until 2026-09-24, when Chemistry became the
+  // lane's third subject and this assertion started passing for the wrong
+  // reason. Pick a subject mh-hsc-12 genuinely does not carry.
   it("throws on a subject this lane does not carry", () => {
-    expect(() => grammarFor("Chemistry")).toThrow(/Chemistry/);
+    expect(() => grammarFor("Biology")).toThrow(/Biology/);
   });
 });

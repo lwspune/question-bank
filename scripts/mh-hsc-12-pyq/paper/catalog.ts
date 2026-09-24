@@ -278,10 +278,158 @@ export const HSC_PHYSICS_CATALOG: PaperCatalog = {
     },
 };
 
+export const HSC_CHEMISTRY_CATALOG: PaperCatalog = {
+    subjectName: "Chemistry",
+    chapters: {
+        "Alcohols, Phenols and Ethers": [
+            "Alcohols and Phenols",
+            "Ethers",
+            "Nomenclature"
+        ],
+        "Aldehydes, Ketones and Carboxylic Acids": [
+            "Chemical Properties of Aldehydes and Ketones",
+            "Chemical Properties of Carboxylic Acids",
+            "Classification of Aldehydes, Ketones and Carboxylic Acids",
+            "Nomenclature",
+            "Physical Properties",
+            "Polarity of the Carbonyl Group",
+            "Preparation of Aldehydes and Ketones",
+            "Preparation of Carboxylic Acids"
+        ],
+        "Amines": [
+            "Arene Diazonium Salts",
+            "Basicity of Amines",
+            "Chemical Properties of Amines",
+            "Classification and Nomenclature of Amines",
+            "Electrophilic Aromatic Substitution in Aromatic Amines",
+            "Physical Properties of Amines",
+            "Preparation of Amines"
+        ],
+        "Biomolecules": [
+            "Carbohydrates",
+            "Nucleic Acids",
+            "Proteins"
+        ],
+        "Chemical Kinetics": [
+            "Collision Theory of Bimolecular Reactions",
+            "Effect of a Catalyst on the Rate of Reaction",
+            "Integrated Rate Law",
+            "Molecularity of Elementary Reactions",
+            "Rate of Reaction",
+            "Rate of Reaction and Reactant Concentration",
+            "Temperature Dependence of Reaction Rates"
+        ],
+        "Chemical Thermodynamics": [
+            "Enthalpy and Enthalpies of Physical Transformations",
+            "First Law of Thermodynamics",
+            "Pressure-Volume Work and Maximum Work",
+            "Spontaneity and Entropy",
+            "Terms Used in Thermodynamics",
+            "Thermochemistry"
+        ],
+        "Coordination Compounds": [
+            "Applications of Coordination Compounds",
+            "Classification of Complexes",
+            "IUPAC Nomenclature of Coordination Compounds",
+            "Isomerism in Coordination Compounds",
+            "Stability of Coordination Compounds",
+            "Terms Used in Coordination Chemistry",
+            "Theories of Bonding in Complexes",
+            "Types of Ligands"
+        ],
+        "Electrochemistry": [
+            "Electric Conduction and Conductance of Solutions",
+            "Electrochemical Series",
+            "Electrode Potential and Cell Potential",
+            "Electrolytic Cell",
+            "Galvanic Cells in Day-to-Day Life and Fuel Cells",
+            "Galvanic or Voltaic Cell",
+            "Reference Electrodes",
+            "Thermodynamics of Galvanic Cells"
+        ],
+        "Elements of Groups 16, 17 and 18": [
+            "Allotropy",
+            "Anomalous Behaviour",
+            "Atomic and Physical Properties",
+            "Chemical Properties of the Elements",
+            "Chlorine and Compounds of Chlorine",
+            "Compounds of Sulfur",
+            "Compounds of Xenon",
+            "Interhalogen Compounds",
+            "Occurrence and Electronic Configuration",
+            "Oxoacids",
+            "Oxygen and Compounds of Oxygen"
+        ],
+        "Green Chemistry and Nanochemistry": [
+            "Applications of Nanomaterials",
+            "Introduction to Nanochemistry",
+            "Principles of Green Chemistry",
+            "Sustainable Development",
+            "Synthesis of Nanomaterials",
+            "The Role of Green Chemistry"
+        ],
+        "Halogen Derivatives": [
+            "Classification of Halogen Derivatives",
+            "Methods of Preparation of Alkyl Halides",
+            "Nomenclature of Halogen Derivatives",
+            "Nucleophilic Substitution Reactions of Alkyl Halides",
+            "Optical Isomerism in Halogen Derivatives",
+            "Physical Properties",
+            "Reaction with Active Metals",
+            "Uses and Environmental Effects of Polyhalogen Compounds"
+        ],
+        "Introduction to Polymer Chemistry": [
+            "Classification of Polymers",
+            "Molecular Mass and Degree of Polymerization",
+            "Some Important Polymers"
+        ],
+        "Ionic Equilibria": [
+            "Acids and Bases",
+            "Buffer Solutions",
+            "Common Ion Effect",
+            "Hydrolysis of Salts",
+            "Ionisation of Acids and Bases",
+            "Solubility Product",
+            "pH Scale"
+        ],
+        "Solid State": [
+            "Classification of Crystalline Solids",
+            "Crystal Defects and Imperfections",
+            "Crystal Structure and Unit Cells",
+            "Cubic System",
+            "Electrical Properties of Solids",
+            "Magnetic Properties of Solids",
+            "Packing Efficiency",
+            "Packing of Particles in Crystal Lattice"
+        ],
+        "Solutions": [
+            "Boiling Point Elevation",
+            "Colligative Properties of Electrolytes",
+            "Colligative Properties of Nonelectrolyte Solutions",
+            "Depression in Freezing Point",
+            "Osmotic Pressure",
+            "Solubility and Capacity to Dissolve Solute",
+            "Vapour Pressure Lowering",
+            "Vapour Pressure of Solutions of Liquids in Liquids"
+        ],
+        "Transition and Inner Transition Elements": [
+            "Actinoids",
+            "Common Properties of d-Block Elements",
+            "Compounds of Mn and Cr",
+            "Extraction of Metals",
+            "Lanthanoids",
+            "Oxidation States of the First Transition Series",
+            "Position in the Periodic Table and Electronic Configuration",
+            "Trends in Atomic Properties"
+        ]
+    },
+};
+
 /** Routed by subject, mirroring `grammarFor` in ./lib.ts. */
 export const CATALOGS: Record<string, PaperCatalog> = {
     "Mathematics": HSC_MATHS_CATALOG,
     "Physics": HSC_PHYSICS_CATALOG,
+    "Chemistry": HSC_CHEMISTRY_CATALOG,
 };
 
 export function catalogFor(subject: string): PaperCatalog {

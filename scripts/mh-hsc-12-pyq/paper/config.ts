@@ -39,7 +39,12 @@ export const PHYSICS_SOURCE_ROOT =
  *  2026-09-23. Kept so pre-Physics Maths scripts resolve unchanged. */
 export const SUBJECT_NAME = "Mathematics";
 
-export type PaperSubject = "Mathematics" | "Physics";
+/** Where the Chemistry prints live. A third tree again — each subject's papers
+ *  sit under its own folder, so none of the three can be derived from another. */
+export const CHEMISTRY_SOURCE_ROOT =
+  "C:\\Vilas\\LWS_Pune\\NDA_Subjects_Content\\Subjects\\Chem\\State_Board\\Question_Papers";
+
+export type PaperSubject = "Mathematics" | "Physics" | "Chemistry";
 
 export type BankStatus =
   /** No rows for this sitting exist. Straight ingest. */
@@ -117,6 +122,26 @@ export type Paper = {
    *  invariant sharp instead of widening it to "roughly equal", which would
    *  stop catching the miscount it exists for. */
   splitRows?: number;
+  /** The month the SHIPPED rows carry, when it disagrees with the printed cover.
+   *
+   *  `month` above is cover truth and is what NEW rows are stamped with. This
+   *  is the label reconciliation must SEARCH on, and the two are not always the
+   *  same: the Chemistry chapterwise compilation files its 2023, 2024 and 2025
+   *  sittings as "March" while the covers read `2024 II 29` and `2025 II 20` —
+   *  29 February and 20 February. The roman numeral on an MH cover IS the month
+   *  (`2024 VII 23` = 23 July 2024), so the compilation is simply wrong.
+   *
+   *  The Physics compilation has no such gap — it files the same years as
+   *  February, matching its covers — which is why this field arrives with
+   *  Chemistry rather than earlier.
+   *
+   *  Deliberately NOT a correction. Re-labelling 153 shipped rows is a change to
+   *  shipped work and belongs behind a 360, so it is logged as a backfill
+   *  candidate in ROADMAP.md. Recording the disagreement here lets
+   *  reconcile-diff find the rows without either lying about the sitting or
+   *  silently returning zero matches, which is what a bare month filter would
+   *  have done. */
+  bankMonth?: string;
 };
 
 const paper = (
@@ -172,6 +197,34 @@ const physicsPaper = (
   paperCode,
   sourceFile: `MH_HSC_12_Physics_PYQ__${year}_${month}.pdf`,
   note: `Maharashtra HSC Class 12 Board question paper — Physics (Subject code 54), ${month} ${year} sitting (paper code ${paperCode})`,
+  bankStatus,
+  figureRefs,
+  ...extra,
+});
+
+/** Chemistry is subject code 55 (Physics is 54, and the cover prints it as
+ *  `CHEMISTRY (55)`). Note length is load-bearing for the same reason as the
+ *  Physics template above — `publicPyqNote` publishes only under 48 chars post
+ *  bracket-strip, and real notes measure <=38 or >=93 with nothing between, so
+ *  this is deliberately long enough to clear 93 on the shortest month. */
+const chemistryPaper = (
+  id: string,
+  file: string,
+  year: number,
+  month: string,
+  paperCode: string,
+  bankStatus: BankStatus,
+  figureRefs: string[],
+  extra: Partial<Paper> = {},
+): Paper => ({
+  id,
+  subject: "Chemistry",
+  pdf: join(CHEMISTRY_SOURCE_ROOT, file),
+  year,
+  month,
+  paperCode,
+  sourceFile: `MH_HSC_12_Chemistry_PYQ__${year}_${month}.pdf`,
+  note: `Maharashtra HSC Class 12 Board question paper — Chemistry (Subject code 55), ${month} ${year} sitting (paper code ${paperCode})`,
   bankStatus,
   figureRefs,
   ...extra,
@@ -374,6 +427,113 @@ export const PAPERS: Record<string, Paper> = Object.fromEntries(
       thirdParty: {
         reason:
           "a collegedunia.com reproduction (its logo is footed on every page), not a board print — no seat number, subject code or cover date box, so render.ts has no printed cover to verify and a disagreement with the bank is a flag, never a verdict. It also re-typesets the paper: options are labelled (A)-(D) where every board print uses (a)-(d), and Section D's two-part items are numbered Q.29(i)/(ii) rather than repeating the bare number",
+      },
+    }),
+
+    // ── CHEMISTRY ───────────────────────────────────────────────────────────
+    // Every month below is read off the printed cover, and on an MH cover the
+    // ROMAN NUMERAL IS THE MONTH — `2024 VII 23` is 23 July 2024, `2024 II 29`
+    // is 29 February 2024. Six of the seven filenames disagree with their own
+    // cover, so the filename is never the source here.
+    //
+    // The four-digit box at the head of page 1 is the paper code without its
+    // `J-` prefix; `0161` on the July-2024 print matches both its cover `J-161`
+    // and the XPS path `J-161 Chem`, which is what validates the decode.
+    //
+    // ── New sittings ────────────────────────────────────────────────────────
+    // Cover prints `DATE : 22/06/2026` and the subject code J-261 in the text
+    // layer — the only one of the seven that states its date in words.
+    chemistryPaper("chem-jun-2026", "Chem June 2026.pdf", 2026, "June", "J-261", "new", [], {
+      // SEVEN split rows, far more than any Physics paper needed. Chemistry
+      // sets "mixed bag" questions whose parts are deliberately drawn from
+      // different chapters, and the rule is unchanged from Physics: split only
+      // where the parts fall in DIFFERENT chapters, never merely different
+      // subtopics. Q.12 (Electrochemistry + Coordination), Q.17 (Thermodynamics
+      // + Biomolecules + Amines — a three-way), Q.27, Q.28, Q.29 and Q.30 each
+      // straddle two chapters. This is also why the compilation carries 50-52
+      // rows for a 47-item sitting.
+      splitRows: 7,
+    }),
+    // Filename says "Mar 2026"; cover says `2026 II 18` = 18 February 2026, and
+    // the XPS path agrees ("MSB FEBRUARY 2026").
+    chemistryPaper("chem-feb-2026", "Chem Mar 2026.pdf", 2026, "February", "J-155", "new", ["Q.2.v"], {
+      // TWENTY split rows — the most mixed-bag paper of the seven. Nineteen of
+      // its 47 items pair two unrelated chapters (Q.27 pairs three), which is a
+      // property of this sitting rather than of the lane.
+      splitRows: 20,
+      absorbedRefs: [
+        {
+          ref: "Q. 27(iii)",
+          into: "Chemical Thermodynamics | pyq February 2020 Q.3 | MH_HSC_12_Chemistry_PYQ__Chemical_Thermodynamics.docx (verbatim board reuse: \"State and explain Hess’s law of constant heat summation\")",
+        },
+      ],
+      // Q.2.v prints ONLY a structure and asks for its IUPAC name, so the row is
+      // unanswerable without the image. Q.2.iv's reaction scheme is transcribed
+      // as text because its ring is named in words; the DRAW questions (Q.28.iii
+      // isoprene, Q.26.i the 2,4-DNP derivative) are NOT figure refs, because
+      // there the student is the one drawing.
+    }),
+    // Filename says "June 2025"; cover says `2025 VII 01` = 1 July 2025.
+    chemistryPaper("chem-jul-2025", "Chem June 2025.pdf", 2025, "July", "J-371", "new", ["Q.2.vi"], {
+      // Q.26, Q.27, Q.29, Q.30 and Q.31 each straddle two chapters.
+      splitRows: 5,
+      // Q.2.vi prints only a structure and asks for its IUPAC name.
+    }),
+    // Filename says "June 2024"; cover says `2024 VII 23` = 23 July 2024.
+    chemistryPaper("chem-jul-2024", "Chem June 2024.pdf", 2024, "July", "J-161", "new", ["Q.1.vii"], {
+      // Q.23, Q.27 and Q.31 split two ways; Q.28, Q.29 and Q.30 each span THREE
+      // chapters, which is the densest mixed-bag item shape in the corpus.
+      splitRows: 7,
+      absorbedRefs: [
+        {
+          ref: "Q. 29(i)",
+          into: "Chemical Kinetics | pyq July 2025 Q. 8 | MH_HSC_12_Chemistry_PYQ__2025_July.pdf (verbatim board reuse one year apart: \"Distinguish between order and molecularity of a reaction\"). Note the row is attributed to the LATER sitting, because jul-2025 was committed first and the exam-scoped content_hash folded this one into it.",
+        },
+        {
+          ref: "Q. 29(iii)",
+          into: "Elements of Groups 16, 17 and 18 | pyq March 2024 Q.27 | MH_HSC_12_Chemistry_PYQ__Elements_of_Groups_16_17_and_18.docx (verbatim board reuse: \"Write two uses of neon\")",
+        },
+      ],
+      // Q.1.vii is the OPTIONS-ARE-THE-FIGURE class: the stem asks which of four
+      // DRAWN structures is the benzylic halide, so the row is unanswerable
+      // without the image even though the stem itself reads complete.
+    }),
+
+    // ── Reconciliations ─────────────────────────────────────────────────────
+    // All three already hold MORE rows than the paper prints items (52, 50 and
+    // 51 against 47), which is the opposite of the Physics reconciliations and
+    // means the compilation splits multi-part items more finely than the print
+    // numbers them. So these are diff-and-review, not add-the-missing.
+    //
+    // `bankMonth` on the 2024 and 2025 entries is the compilation's own
+    // (incorrect) label — see the field docblock.
+    chemistryPaper("chem-feb-2025", "Chem Mar 2025.pdf", 2025, "February", "J-302", "reconcile", [], {
+      bankRows: 52,
+      bankMonth: "March",
+      splitRows: 7,
+      // Measured 2026-09-24 at the PRINTED-ITEM level, not the row level: the
+      // compilation covers 43 of the 47 printed items with its 52 rows, because
+      // it splits some items and omits others. These six it never captured.
+      knownMissingRefs: ["Q.2.iii", "Q.2.iv", "Q.2.viii", "Q. 13", "Q. 16", "Q. 20"],
+    }),
+    chemistryPaper("chem-feb-2024", "Chem Mar 2024.pdf", 2024, "February", "J-852", "reconcile", [], {
+      bankRows: 50,
+      bankMonth: "March",
+      splitRows: 9,
+      // 43 of 47 printed items covered by its 50 rows; these five are absent.
+      knownMissingRefs: ["Q.2.viii", "Q. 9", "Q. 14", "Q. 25", "Q. 26"],
+    }),
+    // The one file with no board cover at all. Its own header reads "Board
+    // Question Paper: March 2023", and the compilation also files 2023 as
+    // March, so the two agree here and no bankMonth override is needed.
+    chemistryPaper("chem-mar-2023", "Chem_2023.pdf", 2023, "March", "n/a", "reconcile", ["Q.1.vi"], {
+      bankRows: 51,
+      splitRows: 10,
+      // 41 of 47 printed items covered by its 51 rows; these six are absent.
+      knownMissingRefs: ["Q.1.vi", "Q.2.iv", "Q. 6", "Q. 8", "Q. 17", "Q. 20"],
+      thirdParty: {
+        reason:
+          "a collegedunia.com reproduction — its logo is footed on every page, the SAME publisher as the Physics 2023 file. 4 typeset pages against the board's 7-8, headed \"Maharashtra HSC BOARD QUESTION PAPER 2023\" with no seat-number box, no subject-code box and no cover date, so render.ts has no printed cover to verify. It also re-typesets the paper: options are labelled (A)-(D) where every board print uses (a)-(d). A disagreement with the bank is a flag for a human, never a verdict",
       },
     }),
   ].map((p) => [p.id, p]),

@@ -107,19 +107,56 @@ function check(id: string): number {
        * "2"), so if one ever shows up here it must be DECLARED rather than
        * silently allowed — the same rule that lane settled on.
        */
+      /**
+       * A question may DECLARE that the printed paper itself duplicates two
+       * options, by setting `sourceDuplicateOptions: true`. Two guards keep the
+       * declaration from becoming a way to wave the check through:
+       *
+       *  1. The declaration is REFUSED if there is no duplicate to explain, so
+       *     it cannot be pasted onto a question prophylactically and then rot
+       *     into a permanent exemption after the transcription is corrected.
+       *  2. The KEYED option may not be one of the duplicated pair. That is the
+       *     whole safety property: a duplicate among the distractors makes the
+       *     item easier than intended but still answerable, whereas a duplicate
+       *     that includes the key makes it unanswerable — two options are then
+       *     equally correct and no student can be marked fairly.
+       *
+       * First fired on `chem-feb-2024` Q.1.ii, where the board printed options
+       * (b) and (d) as the same "alpha-1,4-glycosidic linkage". The key there is
+       * (c), so the item is still answerable and ships with the duplication
+       * named in its solution.
+       */
+      const declared = (q as { sourceDuplicateOptions?: boolean }).sourceDuplicateOptions === true;
       const seen = new Map<string, string>();
+      const dupLabels = new Set<string>();
       for (const o of q.options ?? []) {
         const key = (o.text ?? "").replace(/\s+/g, " ").trim();
         if (!key) continue;
         const prior = seen.get(key);
         if (prior) {
-          problems.push(
-            `${ref}: options ${prior} and ${o.label} are IDENTICAL (${JSON.stringify(key)}) — ` +
-              `the text layer collapses rasterised operators, so read this question's options off the rendered page`,
-          );
+          dupLabels.add(prior).add(o.label);
+          if (!declared) {
+            problems.push(
+              `${ref}: options ${prior} and ${o.label} are IDENTICAL (${JSON.stringify(key)}) — ` +
+                `the text layer collapses rasterised operators, so read this question's options off the rendered page. ` +
+                `If the PRINTED paper really does duplicate them, set sourceDuplicateOptions on this question`,
+            );
+          }
         } else {
           seen.set(key, o.label);
         }
+      }
+      if (declared && dupLabels.size === 0) {
+        problems.push(
+          `${ref}: declares sourceDuplicateOptions but its four options are all distinct — ` +
+            `drop the declaration rather than leaving a standing exemption`,
+        );
+      }
+      if (declared && q.answer && dupLabels.has(String(q.answer))) {
+        problems.push(
+          `${ref}: the keyed option ${q.answer} is one of the DUPLICATED pair (${[...dupLabels].sort().join(", ")}) — ` +
+            `two options are then equally correct and the question is unanswerable, which no declaration can excuse`,
+        );
       }
     } else if (q.options?.length) {
       problems.push(`${ref}: free-response question carries ${q.options.length} options`);

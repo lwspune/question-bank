@@ -13,20 +13,20 @@ const ALL = Object.values(PAPERS);
 const MATHS = papersFor("Mathematics");
 const PHYSICS = papersFor("Physics");
 
-describe("the manifest, across both subjects", () => {
-  it("holds thirteen papers with unique ids, source files and (subject, code) pairs", () => {
-    expect(ALL).toHaveLength(13);
-    expect(new Set(ALL.map((p) => p.id)).size).toBe(13);
+describe("the manifest, across all three subjects", () => {
+  it("holds twenty papers with unique ids, source files and (subject, code) pairs", () => {
+    expect(ALL).toHaveLength(20);
+    expect(new Set(ALL.map((p) => p.id)).size).toBe(20);
     // sourceFile is the dedup + rollback key — a collision would make one
     // sitting un-rollbackable without taking the other with it.
-    expect(new Set(ALL.map((p) => p.sourceFile)).size).toBe(13);
+    expect(new Set(ALL.map((p) => p.sourceFile)).size).toBe(20);
   });
 
   it("names a (subject, year, month) sitting at most once", () => {
     // Scoped by SUBJECT: Maths and Physics both sat in June 2026, and those are
     // two different papers, not a duplicate.
     const sittings = ALL.map((p) => `${p.subject}-${p.year}-${p.month}`);
-    expect(new Set(sittings).size).toBe(13);
+    expect(new Set(sittings).size).toBe(20);
   });
 
   it("keeps the printed code unique within a subject", () => {
@@ -186,9 +186,39 @@ describe("reconciliation bookkeeping", () => {
     // rows each. Widening the assertion to "approximately" would have hidden
     // exactly the miscount this exists to catch, so the extra rows are DECLARED
     // and the equality stays exact.
-    for (const p of ALL.filter((x) => x.knownMissingRefs)) {
+    //
+    // CHEMISTRY IS EXCLUDED FROM THE EXACT FORM, and the reason is that the two
+    // terms are measured on DIFFERENT AXES there. For Maths and Physics the rows
+    // already in the bank came from a compilation that splits an item exactly
+    // where this lane does, so `bankRows` and `splitRows` count the same thing.
+    // The Chemistry compilation does not: it splits with letters (`Q.4.a`,
+    // `Q.21.b`) and splits items this lane keeps whole, and keeps whole items
+    // this lane splits. Its 52 rows for Feb-2025 cover 43 printed items, so
+    // adding MY `splitRows` to ITS row count compares nothing meaningful.
+    // Loosening the equality to "approximately" would destroy it for the two
+    // subjects where it does bite, so Chemistry gets the weaker check below
+    // rather than a weaker check for everyone.
+    for (const p of ALL.filter((x) => x.knownMissingRefs && x.subject !== "Chemistry")) {
       const printed = grammarFor(p.subject).expectedRefs.length;
       expect(p.bankRows! + p.knownMissingRefs!.length, p.id).toBe(printed + (p.splitRows ?? 0));
+    }
+  });
+
+  it("measures the Chemistry census at the PRINTED-ITEM level", () => {
+    // What still has to be true for Chemistry: every ref the census names is a
+    // real printed item of that paper, the census is not empty (a reconcile
+    // paper with nothing missing would not need one), and it cannot claim more
+    // missing items than the paper prints.
+    const chem = ALL.filter((p) => p.subject === "Chemistry" && p.knownMissingRefs);
+    expect(chem.length, "no Chemistry census found — has the lane changed?").toBe(3);
+    for (const p of chem) {
+      const g = grammarFor(p.subject);
+      const printedParents = new Set(g.expectedRefs.map((r) => r.replace(/\(.*$/, "")));
+      for (const ref of p.knownMissingRefs!) {
+        expect(printedParents.has(ref.replace(/\(.*$/, "")), `${p.id}: ${ref}`).toBe(true);
+      }
+      expect(p.knownMissingRefs!.length, p.id).toBeLessThan(g.expectedRefs.length);
+      expect(p.bankRows!, p.id).toBeGreaterThan(0);
     }
   });
 
@@ -199,7 +229,22 @@ describe("reconciliation bookkeeping", () => {
     const withSplits = ALL.filter((p) => p.splitRows)
       .map((p) => `${p.id}:${p.splitRows}`)
       .sort();
-    expect(withSplits).toEqual(["phy-feb-2023:3", "phy-feb-2024:1", "phy-jun-2026:1"]);
+    expect(withSplits).toEqual([
+      // Chemistry splits an order of magnitude more often than Physics: its
+      // papers set MIXED-BAG items whose parts are drawn from different
+      // chapters (Feb-2026 Q.27 is isotonic solutions + molecularity + Hess),
+      // and the rule -- split only across CHAPTERS -- fires on 19 of 47 items.
+      "chem-feb-2024:9",
+      "chem-feb-2025:7",
+      "chem-feb-2026:20",
+      "chem-jul-2024:7",
+      "chem-jul-2025:5",
+      "chem-jun-2026:7",
+      "chem-mar-2023:10",
+      "phy-feb-2023:3",
+      "phy-feb-2024:1",
+      "phy-jun-2026:1",
+    ]);
   });
 
   it("names what absorbed every declared absorbed ref", () => {
@@ -241,7 +286,7 @@ describe("figure manifest", () => {
     }
   });
 
-  it("claims a figure on exactly the four Maths sittings that print one", () => {
+  it("claims a figure on exactly the sittings that print one", () => {
     // Feb/Jun 2026 say "CONSTRUCT the switching circuit" — the student draws it,
     // so there is nothing to crop. Listing a ref here that has no printed figure
     // would send the crop pass hunting for one that isn't there.
@@ -253,7 +298,27 @@ describe("figure manifest", () => {
     const withFigures = ALL.filter((p) => p.figureRefs.length)
       .map((p) => p.id)
       .sort();
-    expect(withFigures).toEqual(["feb-2025", "jul-2024", "jul-2025", "mar-2024"]);
+    //
+    // CHEMISTRY brought a second figure genre. Physics has none at all, and the
+    // Maths ones are switching circuits; the Chemistry ones are ORGANIC
+    // STRUCTURES that cannot be written in LaTeX at all, because `\ce{}` and
+    // chemfig are not loaded in this stack. Two of them are the
+    // OPTIONS-ARE-THE-FIGURE shape, where the stem reads complete but the four
+    // choices are drawings.
+    //
+    // Deliberately NOT listed: chem-feb-2025 and chem-feb-2024, whose drawn
+    // items are already in the bank from the compilation WITH images attached.
+    // Claiming them here would send the attach pass at shipped rows.
+    expect(withFigures).toEqual([
+      "chem-feb-2026",
+      "chem-jul-2024",
+      "chem-jul-2025",
+      "chem-mar-2023",
+      "feb-2025",
+      "jul-2024",
+      "jul-2025",
+      "mar-2024",
+    ]);
   });
 
   it("puts every Maths figure on a Mathematical Logic question", () => {
