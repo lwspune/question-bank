@@ -86,7 +86,9 @@ describe("resolveExamDate — override wins, calendar fills", () => {
     const r = resolveExamDate({ targetExams: ["nda", "cds"], examDate: null }, NOW);
     expect(r?.source).toBe("calendar");
     expect(r?.exam).toBe("nda");
-    expect(r?.official).toBe(false);
+    // NDA 2027 (I) is the one announced date (11 April 2027, UPSC).
+    expect(r?.official).toBe(true);
+    expect(r?.date).toBe("2027-04-11");
     expect(r!.daysLeft).toBeGreaterThan(0);
   });
 
@@ -115,7 +117,9 @@ describe("resolveExamDate — override wins, calendar fills", () => {
 
 describe("examCountdownSentence", () => {
   it("says expected when the date is not official, and nothing extra when it is", () => {
-    const cal = resolveExamDate({ targetExams: ["nda"], examDate: null }, NOW)!;
+    // NEET 2027 is still the pattern, not an announcement.
+    const cal = resolveExamDate({ targetExams: ["neet"], examDate: null }, NOW)!;
+    expect(cal.official).toBe(false);
     expect(examCountdownSentence(cal)).toMatch(/expected/i);
     const own = resolveExamDate({ targetExams: ["nda"], examDate: "2027-03-01" }, NOW)!;
     expect(examCountdownSentence(own)).not.toMatch(/expected/i);
