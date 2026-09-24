@@ -60,7 +60,8 @@ export const TANGENTS_NOTE: SubtopicNote = {
         "A derivative is a rate: \\(\\dfrac{dy}{dt}\\) tells how fast \\(y\\) changes in time, and related quantities chain together via \\(\\dfrac{dy}{dt}=\\dfrac{dy}{dx}\\dfrac{dx}{dt}\\). For a small input change, the derivative gives a fast linear estimate of the output change: \\(\\Delta y\\approx f'(x)\\,\\Delta x\\).",
       definition:
         "- **Related rates:** differentiate the relation w.r.t. time and substitute known rates (e.g. radius growing → area's rate \\(\\dfrac{dA}{dt}=2\\pi r\\dfrac{dr}{dt}\\)).\n" +
-        "- **Approximation (differentials):** \\(\\Delta y\\approx \\dfrac{dy}{dx}\\,\\Delta x\\); use it to estimate \\(f(x+\\Delta x)\\approx f(x)+f'(x)\\Delta x\\).",
+        "- **Approximation (differentials):** \\(\\Delta y\\approx \\dfrac{dy}{dx}\\,\\Delta x\\); use it to estimate \\(f(x+\\Delta x)\\approx f(x)+f'(x)\\Delta x\\).\n" +
+        "- **Exact vs approximate change:** the **total** (exact) change is \\(\\Delta y = f(x+\\Delta x)-f(x)\\), computed directly; the derivative gives only the linear **approximation** \\(f'(x)\\,\\Delta x\\). A question that says \"total change\" or \"actual change\" wants the exact value — the two differ by the curvature term (for \\(y=3x^2+2\\), \\(x:10\\to10.1\\): exact \\(6.03\\), approximate \\(6\\)).",
       formula: {
         label: "Related rates & small-change approximation",
         latex:
@@ -75,12 +76,13 @@ export const TANGENTS_NOTE: SubtopicNote = {
         answer: "\\(30\\pi\\) cm²/s.",
       },
       selfCheckExample: {
-        prompt: "For \\(y=3x^2+2\\), estimate the change in \\(y\\) as \\(x\\) goes from \\(10\\) to \\(10.1\\).",
+        prompt: "For \\(y=3x^2+2\\), \\(x\\) goes from \\(10\\) to \\(10.1\\). Find the approximate change in \\(y\\) by differentials, and the total (exact) change.",
         steps: [
-          "\\(\\dfrac{dy}{dx}=6x\\), at \\(x=10\\) gives \\(60\\).",
-          "\\(\\Delta y\\approx 60\\times 0.1=6\\).",
+          "Approximate: \\(\\dfrac{dy}{dx}=6x\\), at \\(x=10\\) gives \\(60\\), so \\(\\Delta y\\approx 60\\times 0.1=6\\).",
+          "Exact: \\(\\Delta y = y(10.1)-y(10) = 3(10.1)^2+2-(300+2) = 306.03-300 = 6.03\\).",
+          "The gap \\(0.03 = 3(0.1)^2\\) is the curvature term the linear estimate drops.",
         ],
-        answer: "\\(\\Delta y\\approx 6\\).",
+        answer: "Approximate change \\(\\approx 6\\); total change \\(= 6.03\\).",
       },
       practiceSet: [
         { prompt: "Small-change formula?", answer: "\\(\\Delta y\\approx f'(x)\\,\\Delta x\\)" },
@@ -89,6 +91,10 @@ export const TANGENTS_NOTE: SubtopicNote = {
         { prompt: "A derivative w.r.t. time is a?", answer: "Rate of change" },
       ],
       traps: [
+        {
+          title: "\"Total change\" is NOT the differential estimate",
+          body: "\\(f'(x)\\,\\Delta x\\) is an approximation. When a question asks for the **total** or **actual** change, compute \\(f(x+\\Delta x)-f(x)\\) exactly — for \\(y=3x^2+2\\) from \\(x=10\\) to \\(10.1\\) that is \\(6.03\\), and the option \\(6\\) is the planted approximation. Use differentials only when the question says \"approximately\" or \"estimate\".",
+        },
         {
           title: "Related rates need the CHAIN RULE",
           body: "To get a time rate, differentiate the relation with respect to \\(t\\) and chain through the variable: \\(\\dfrac{dA}{dt}=\\dfrac{dA}{dr}\\dfrac{dr}{dt}\\). Differentiating \\(A=\\pi r^2\\) as if \\(r\\) were the variable gives \\(2\\pi r\\) — the rate is \\(2\\pi r\\,\\dfrac{dr}{dt}\\), not \\(2\\pi r\\).",

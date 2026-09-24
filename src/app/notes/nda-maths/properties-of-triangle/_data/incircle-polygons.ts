@@ -20,6 +20,7 @@ export const INCIRCLE_POLYGONS_NOTE: SubtopicNote = {
         "- **Inradius:** \\(r = \\dfrac{\\Delta}{s}\\) (area over semi-perimeter).\n" +
         "- **Circumradius:** \\(R = \\dfrac{abc}{4\\Delta} = \\dfrac{a}{2\\sin A}\\).\n" +
         "- **Central vs inscribed angle:** an arc subtends an angle at the centre that is **twice** the angle it subtends at any point on the circle: \\(\\angle BOC = 2\\angle BAC\\).\n" +
+        "- **Relating the two angles' ratios:** with \\(\\alpha = \\angle BAC\\) and \\(\\beta = \\angle BOC = 2\\alpha\\), the double-angle formulas convert one to the other: \\(\\cos\\beta = \\cos 2\\alpha = \\dfrac{1-\\tan^2\\alpha}{1+\\tan^2\\alpha} = 1 - 2\\sin^2\\alpha\\), and \\(\\sin\\beta = \\sin 2\\alpha = \\dfrac{2\\tan\\alpha}{1+\\tan^2\\alpha}\\). Option lists mix these up deliberately — \\(\\dfrac{2\\tan\\alpha}{1+\\tan^2\\alpha}\\) is a **sine**, not a cosine.\n" +
         "- **Chord length:** a chord subtending angle \\(\\theta\\) at the centre of a circle of radius \\(R\\) has length \\(2R\\sin\\dfrac{\\theta}{2}\\).",
       formula: {
         label: "Inradius, circumradius, central angle",
@@ -72,7 +73,8 @@ export const INCIRCLE_POLYGONS_NOTE: SubtopicNote = {
         "For a regular polygon of \\(n\\) sides, each of length \\(s\\):\n" +
         "- **Interior angle:** \\(\\dfrac{(n-2)\\,180^\\circ}{n}\\).\n" +
         "- **Inradius** (inscribed circle, touching each side): \\(r = \\dfrac{s}{2}\\cot\\dfrac{\\pi}{n}\\).\n" +
-        "- **Circumradius** (through the vertices): \\(R = \\dfrac{s}{2}\\csc\\dfrac{\\pi}{n}\\).",
+        "- **Circumradius** (through the vertices): \\(R = \\dfrac{s}{2}\\csc\\dfrac{\\pi}{n}\\).\n" +
+        "- **The cotangents you will need**, since \\(\\pi/n\\) is rarely a textbook angle: \\(\\cot 60^\\circ = \\tfrac{1}{\\sqrt3}\\) (\\(n=3\\)), \\(\\cot 45^\\circ = 1\\) (\\(n=4\\)), \\(\\cot 30^\\circ = \\sqrt3\\) (\\(n=6\\)), \\(\\cot 22.5^\\circ = 1+\\sqrt2\\) (\\(n=8\\)), \\(\\cot 15^\\circ = 2+\\sqrt3\\) (\\(n=12\\)). The last comes from \\(\\tan 15^\\circ = \\tan(45^\\circ-30^\\circ) = \\dfrac{1-\\tfrac{1}{\\sqrt3}}{1+\\tfrac{1}{\\sqrt3}} = 2-\\sqrt3\\), whose reciprocal is \\(2+\\sqrt3\\). So a regular 12-gon of side 1 has inradius \\(\\tfrac12(2+\\sqrt3)\\) and inscribed-circle diameter \\(2+\\sqrt3\\).",
       formula: {
         label: "Regular n-gon inradius",
         latex: "r = \\dfrac{s}{2}\\cot\\dfrac{\\pi}{n}, \\qquad \\text{interior angle} = \\dfrac{(n-2)180^\\circ}{n}",

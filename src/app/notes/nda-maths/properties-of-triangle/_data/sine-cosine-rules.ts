@@ -106,7 +106,12 @@ export const SINE_COSINE_RULES_NOTE: SubtopicNote = {
       definition:
         "For any triangle,\n" +
         "\\[c^2 = a^2 + b^2 - 2ab\\cos C, \\qquad \\cos C = \\dfrac{a^2 + b^2 - c^2}{2ab},\\]\n" +
-        "and cyclically for \\(A, B\\). The **sign of the cosine** reveals the angle: \\(\\cos C > 0\\) acute, \\(= 0\\) right (\\(c^2 = a^2 + b^2\\)), \\(< 0\\) obtuse. Once an angle's cosine is known, double/triple-angle formulas give \\(\\cos 2C\\), \\(\\cos 3C\\), etc.",
+        "and cyclically for \\(A, B\\). The **sign of the cosine** reveals the angle: \\(\\cos C > 0\\) acute, \\(= 0\\) right (\\(c^2 = a^2 + b^2\\)), \\(< 0\\) obtuse.\n" +
+        "Once an angle's cosine is known, the multiple-angle formulas finish the question without ever finding the angle itself:\n" +
+        "- \\(\\cos 2C = 2\\cos^2 C - 1\\)\n" +
+        "- \\(\\cos 3C = 4\\cos^3 C - 3\\cos C\\)\n" +
+        "- \\(\\sin C = \\sqrt{1-\\cos^2 C}\\) (positive, since \\(0 < C < \\pi\\)), and then \\(\\sin 2C = 2\\sin C\\cos C\\).\n" +
+        "For \\(a=4,\\ b=3,\\ c=2\\): \\(\\cos C = \\tfrac{16+9-4}{24} = \\tfrac{7}{8}\\), so \\(\\cos 3C = 4\\cdot\\tfrac{343}{512} - 3\\cdot\\tfrac{7}{8} = \\tfrac{1372-1344}{512} = \\tfrac{7}{128}\\).",
       formula: {
         label: "Cosine rule",
         latex: "\\cos C = \\dfrac{a^2 + b^2 - c^2}{2ab}",

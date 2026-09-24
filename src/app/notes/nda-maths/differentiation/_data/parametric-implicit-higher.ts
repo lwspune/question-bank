@@ -94,7 +94,8 @@ export const PARAMETRIC_IMPLICIT_HIGHER_NOTE: SubtopicNote = {
       intuition:
         "When \\(x\\) and \\(y\\) are both given in terms of a parameter \\(t\\), you don't eliminate \\(t\\). Differentiate each w.r.t. \\(t\\) and **divide**: \\(\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}\\). The parameter cancels out of the ratio.",
       definition:
-        "If \\(x=f(t)\\) and \\(y=g(t)\\), then \\(\\dfrac{dy}{dx} = \\dfrac{dy/dt}{dx/dt} = \\dfrac{g'(t)}{f'(t)}\\) (provided \\(f'(t)\\neq 0\\)). The result is usually left in terms of \\(t\\).",
+        "If \\(x=f(t)\\) and \\(y=g(t)\\), then \\(\\dfrac{dy}{dx} = \\dfrac{dy/dt}{dx/dt} = \\dfrac{g'(t)}{f'(t)}\\) (provided \\(f'(t)\\neq 0\\)). The result is usually left in terms of \\(t\\).\n" +
+        "**Second derivative:** differentiate \\(\\dfrac{dy}{dx}\\) (a function of \\(t\\)) w.r.t. \\(t\\) and divide by \\(\\dfrac{dx}{dt}\\) **again**: \\(\\dfrac{d^2y}{dx^2} = \\dfrac{\\frac{d}{dt}\\big(\\frac{dy}{dx}\\big)}{dx/dt}\\). It is NOT \\(\\dfrac{d^2y/dt^2}{d^2x/dt^2}\\). For \\(x=t^2,\\ y=t^3\\): \\(\\dfrac{dy}{dx}=\\tfrac{3t}{2}\\), so \\(\\dfrac{d^2y}{dx^2} = \\dfrac{3/2}{2t} = \\dfrac{3}{4t}\\).",
       formula: {
         label: "Parametric first derivative",
         latex: "\\frac{dy}{dx} = \\frac{dy/dt}{dx/dt}",
