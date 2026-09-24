@@ -1651,6 +1651,28 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  "tertiary-activities-12-geo": {
+    id: "tertiary-activities-12-geo",
+    chapterName: "Tertiary Economic Activities",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_12_Geography__Tertiary_Economic_Activities.pdf",
+    pdf: geo12("6. Tertiary Economic Activities.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Tertiary Economic Activities (Balbharati Geography textbook)",
+    // The chapter's own headings: what a tertiary activity is, then its three
+    // treated services (transport with communication, trade, tourism), then the
+    // "Always remember" box that adds the fourth and fifth sectors. Transport and
+    // communication are ONE subtopic because the chapter treats them together and
+    // the exercise mixes them within single questions.
+    subtopics: [
+      "Nature of Tertiary Economic Activities",
+      "Transportation and Communication",
+      "Trade and Its Geographical Factors",
+      "Tourism",
+      "Quaternary and Quinary Activities",
+    ],
+  },
+
   "secondary-activities-12-geo": {
     id: "secondary-activities-12-geo",
     chapterName: "Secondary Economic Activities",

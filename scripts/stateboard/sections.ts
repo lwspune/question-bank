@@ -44,6 +44,10 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
   ],
   // Every Geography chapter takes the same two-block shape; see the note on
   // region-12-geo above for why, and for why the activity block is `exercise`.
+  "tertiary-activities-12-geo": [
+    { group: "Chapter activities", label: "Try this / Can you tell? / Use your brain power!", kind: "exercise", refPrefixes: ["Act "] },
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
   "secondary-activities-12-geo": [
     { group: "Chapter activities", label: "Try this / Make friends with maps! / Use your brain power!", kind: "exercise", refPrefixes: ["Act "] },
     { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
