@@ -103,18 +103,28 @@ type SignInClient = {
   };
 };
 
+export type SignInWaitOptions = {
+  /** How long to sleep past a rate limit before trying again. */
+  waitMs?: number;
+  /** How many such waits before giving up and throwing. */
+  maxWaits?: number;
+};
+
 export async function mustSignIn(
   label: string,
   client: SignInClient,
   creds: SignInCreds,
+  opts: SignInWaitOptions = {},
 ): Promise<void> {
+  const waitMs = opts.waitMs ?? RATE_LIMIT_WAIT_MS;
+  const maxWaits = opts.maxWaits ?? RATE_LIMIT_MAX_WAITS;
   for (let waits = 0; ; waits++) {
     const { data, error } = await client.auth.signInWithPassword(creds);
-    if (error && /rate limit/i.test(error.message) && waits < RATE_LIMIT_MAX_WAITS) {
+    if (error && /rate limit/i.test(error.message) && waits < maxWaits) {
       console.warn(
-        `sign in "${label}": ${error.message} — waiting ${RATE_LIMIT_WAIT_MS / 1000}s for the window (${waits + 1}/${RATE_LIMIT_MAX_WAITS})`,
+        `sign in "${label}": ${error.message} — waiting ${waitMs / 1000}s for the window (${waits + 1}/${maxWaits})`,
       );
-      await sleepMs(RATE_LIMIT_WAIT_MS);
+      await sleepMs(waitMs);
       continue;
     }
     if (error) throw new Error(`sign in "${label}" failed: ${error.message}`);
