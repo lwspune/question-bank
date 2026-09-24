@@ -59,7 +59,7 @@ is why the share loop already keeps the score opt-in).
 | 6 | Weekly sittings goal, student-chosen, with a progress ring | **Tranche A — building** |
 | 5 | Mastery map: chapter tiles with subtopic dots from the existing weak/mastered bands | **SHIPPED 2026-09-24** at `/me/map` (no schema; `npm run map:smoke`) |
 | 4 | Daily set: five questions, due drill first then unseen from weak subtopics | **SHIPPED 2026-09-24** as a FILL of `/drill` (no new route): due first, then unseen PYQs from the two weakest subtopics, then the target exam |
-| 10 | Feed the drill from /browse, notes checkpoints and public quizzes | Tranche B — specified below; the last open item |
+| 10 | Feed the drill from /browse, notes checkpoints and public quizzes | **PARKED by the user, 2026-09-24** (too much hassle for the return). Not to be re-proposed unless the drill runs dry of mock misses. |
 | 7 | Teacher-assigned paper with a deadline for a batch | **SHIPPED 2026-09-24** — `mock_assignments` (migration 0115), teacher card on the batch roster, due list on `/me`, line on the mock page |
 | 8 | Content-led nudges at 12:30 IST | **SHIPPED 2026-09-24** — email only (`npm run email:due-nudge`, cron `.github/workflows/due-nudge.yml`, migration 0114) |
 | 9 | Exam date and days-to-exam | **SHIPPED 2026-09-24** — `src/lib/exam/calendar.ts` + `student_profiles.exam_date` (0116); every calendar date is EXPECTED, not official, and says so |
@@ -205,6 +205,8 @@ to their band. Ends in the drill's end screen. This is the deferred "3 more
 like it" transfer half; build it once Tranche A shows drills being finished.
 
 ### B3. Feed the drill from every surface (item 10)
+
+**PARKED 2026-09-24 (user).** Making /browse attempt-first touches the public reveal flow on the most visited pages for a second source of misses the drill does not yet need: the fill (B2) already serves unseen questions when the mock pool is short. Revisit only if the mock-miss pool proves too thin to sustain the drill. As specified:
 
 `answer_wrong` is mock-only. Make `/browse`'s reveal attempt-first (choose,
 then reveal, like `/board`) and record the verdict server-side; emit
