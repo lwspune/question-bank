@@ -67,9 +67,12 @@ export type Chapter = {
    *
    * It turns on two things, and OFF is the default precisely so the 15 shipped
    * Maths chapters keep their exact current behaviour:
-   *   - `stamp-provenance.ts` writes `derived_model`/`derived_at` and appends a
-   *     clause to `pyq_note` saying the answer is derived and the book publishes
-   *     no key.
+   *   - `stamp-provenance.ts` writes `derived_model`/`derived_at`. It does NOT
+   *     put the disclosure in `pyq_note` — it RESETS that column to the source
+   *     note. (This docstring said "appends a clause to `pyq_note`" until
+   *     2026-09-24; that was true before the 2026-09-02 reversal documented on
+   *     DERIVED_MODEL above, and the script has not done it since. Corrected
+   *     rather than re-implemented: `pyq_note` carries the SOURCE only.)
    *   - `flip-public.ts` REFUSES to publish an authored row that carries no such
    *     stamp.
    * A published derived answer that does not announce itself reads as an
@@ -166,6 +169,58 @@ const phy12 = (p: string) => join(PHYSICS_ROOT, "12th_Topics", p);
 const CHEMISTRY_ROOT =
   "C:\\Vilas\\LWS_Pune\\NDA_Subjects_Content\\Subjects\\Chem\\State_Board\\Book";
 const chem12 = (p: string) => join(CHEMISTRY_ROOT, "12th", p);
+
+// ── GEOGRAPHY (added 2026-09-24) ─────────────────────────────────────────────
+// A FOURTH subject on this exam, and the first HUMANITIES subject in this
+// pipeline. 8 pre-split per-chapter PDFs (whole book 124pp). The `Geography`
+// subject did not exist on this exam and was seeded for this ingest.
+//
+// ⚠ TRANSCRIBE TEXT-FIRST, WHICH IS THE OPPOSITE OF THE OTHER THREE SUBJECTS.
+// Physics and Chemistry are vision-only for measured reasons (Symbol-font Greek;
+// zero subscripts and zero charge signs across 648 pages). Geography has no
+// mathematical notation at all, and its text layer is clean running prose, so it
+// is trustworthy ground truth for stems, options and the chapter narrative. Use
+// `dump-text.ts` as the primary source and the rendered PNGs for LAYOUT only.
+//
+// ⚠ DO NOT "FIX" THE TYPOGRAPHIC PUNCTUATION — IT IS ALREADY CORRECT, and the
+// evidence that it is broken is an artifact of the TERMINAL, not the book.
+// Reading this text layer through a Windows cp1252 console prints a replacement
+// character for every curly quote, which looks exactly like mojibake and was
+// briefly recorded here as a source defect. Measured on Ch.7: U+FFFD occurs ZERO
+// times, and the characters actually present are the right ones — U+2019 (x4),
+// U+2018 (x2), U+2013 (x1). The replacement characters exist only in the
+// console’s rendering. Read the dump with an explicit utf-8 reader
+// (PYTHONIOENCODING=utf-8) before concluding anything about a character, here
+// or in any other book in this pipeline.
+//
+// ⚠ THERE IS NO ANSWER KEY ANYWHERE IN THIS BOOK. Measured across all 124 pages
+// of SB_12th_Geography.pdf: no ANSWERS section, no inline `(Ans. …)` key, and —
+// unlike every other subject here — NOT ONE SOLVED EXAMPLE in any chapter. So:
+//   - the README's step-6 answer-key cross-check CANNOT run. Do not go looking
+//     for a missing `answersPdf`, and do not treat its absence as an oversight.
+//   - there is no `solved` bucket at all. Every row is an exercise row, every
+//     MCQ key is DERIVED and every subjective answer AUTHORED, so
+//     `derivedAnswers: true` on all eight chapters and `stamp-provenance.ts` is
+//     a precondition of publishing rather than a formality.
+//   - the gate that replaces step 6 is `audit-grounding.ts`. It is the only
+//     mechanical check standing behind these answers.
+//
+// ⚠ THE EXERCISE PAGES ARE TWO-COLUMN AND THE TEXT LAYER INTERLEAVES THEM.
+// Measured on Ch.7: `Q.1)` and `Q.3)` both sit at y=183.8 — left and right column
+// of the same page. So whole questions arrive out of printed order. Rebuild the
+// order from the page images; never from the dump's line order.
+//
+// ⚠ FOUR QUESTION SHAPES THAT DO NOT OCCUR IN THE MATHS/SCIENCE LANES. The
+// GEOGRAPHY_BRIEF.md spells each one out; in summary: Assertion-Reasoning MCQs
+// whose four options are identical boilerplate across sub-items; "Complete the
+// chain" three-column matching (ONE row, GFM pipe-table); map-work and
+// "draw a labelled diagram" tasks (student DRAWING tasks — transcribe the stem,
+// and they are NOT figure-dependent, there is nothing in the book to crop); and
+// questions whose data table sits in the CHAPTER BODY rather than the exercise
+// (Ch.7 Q.6 needs Table 7.5 from page 6, or it is unanswerable).
+const GEOGRAPHY_ROOT =
+  "C:\\Vilas\\LWS_Pune\\NDA_Subjects_Content\\Subjects\\Geography\\12th\\Chapters";
+const geo12 = (p: string) => join(GEOGRAPHY_ROOT, p);
 
 export const CHAPTERS: Record<string, Chapter> = {
   // ── Validation chapter — Ch.1 Mathematical Logic (12th, Part 1). The hardest
@@ -1521,6 +1576,44 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Chemical Properties of Amines",
       "Arene Diazonium Salts",
       "Electrophilic Aromatic Substitution in Aromatic Amines",
+    ],
+  },
+
+  // ── GEOGRAPHY ───────────────────────────────────────────────────────────────
+  // PILOT chapter, ingested first so the Geography question shapes could be
+  // judged before the other seven. Chosen because it is the SHORTEST (9 pages)
+  // and still carries one of every awkward shape in the book: an
+  // Assertion-Reasoning-style "identify the correct group" MCQ block, a
+  // differentiate set, two data-table activities, and the one question in the
+  // book whose data lives on a DIFFERENT PAGE from the question (Q.6 needs
+  // Table 7.5 off p.6). It is also the only chapter with no map-work question,
+  // which keeps the pilot's figure story simple.
+  "region-12-geo": {
+    id: "region-12-geo",
+    chapterName: "Region and Regional Development",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_12_Geography__Region_and_Regional_Development.pdf",
+    pdf: geo12("7. Region and Regional Development.pdf"),
+    derivedAnswers: true, // no answer key ANYWHERE in this book — see the subject comment
+    note: "Maharashtra State Board (Class 12) — Region and Regional Development (Balbharati Geography textbook)",
+    // The chapter's own teaching arc, in reading order. Deliberately SIX and not
+    // more: the book's bold prose headings under-generate (a ':'-terminated scan
+    // finds only four), so these were read off the narrative rather than scraped.
+    //
+    // Every one of the six is reachable from the exercise, which is the test that
+    // matters — a subtopic with no questions ships a /browse filter that returns
+    // nothing (the Class-12 Linear Programming precedent). Mapping: Q.1 + Q.2 →
+    // Types of Regions; Q.3(1) + Q.4(1,2) + Q.6 → Factors; Q.3(2) →
+    // Strategies; Q.4(3) → Regional Imbalance; Q.5(1,2) → Concept / Types;
+    // Q.5(3) → Indicators. Verify the committed `by subtopic` tally against this
+    // list BEFORE --apply and drop anything that got nothing.
+    subtopics: [
+      "Concept of a Region",
+      "Types of Regions",
+      "Indicators of Regional Development",
+      "Factors Affecting Regional Development",
+      "Regional Imbalance and Its Causes",
+      "Strategies to Reduce Regional Imbalance",
     ],
   },
 };

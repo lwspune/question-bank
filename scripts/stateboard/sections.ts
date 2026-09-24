@@ -17,6 +17,32 @@ import { join } from "node:path";
 import type { SectionSpec } from "./lib";
 
 export const SECTIONS: Record<string, SectionSpec[]> = {
+  // ── GEOGRAPHY, Ch.7 Region and Regional Development ────────────────────────
+  // The simplest outline in this file, because the book itself is simple: a
+  // Geography chapter has NO numbered sections, NO solved examples and exactly
+  // ONE terminal `Exercise` block. Everything else that carries a question is an
+  // activity box (Try this · Give it a try · Use your brain power! · Can you
+  // tell?) printed inline in the body prose.
+  //
+  // So the book axis here is two blocks, and their ORDER is the whole point: the
+  // activity boxes are physically scattered through pages 0-7 and the Exercise
+  // sits at the end, which is exactly how /board will render them. Within the
+  // activity block, order falls back to source_row, and the transcription is
+  // written in page order (p00 → p07), so book order survives without needing a
+  // block per page.
+  //
+  // ⚠ `kind: "exercise"` on the activity block is the least-wrong member of an
+  // enum that has no right one. The 0043 enum offers solved_example | exercise |
+  // miscellaneous. An activity box is NOT a solved example — this book prints no
+  // worked solutions anywhere — and it is not the Miscellaneous exercise either,
+  // a thing Geography chapters do not have. It is graded-style practice printed
+  // mid-chapter, so `exercise` is the closest fit. Do not "fix" this to
+  // miscellaneous: that member means the book's own Miscellaneous Exercise.
+  "region-12-geo": [
+    { group: "Chapter activities", label: "Try this / Give it a try / Can you tell?", kind: "exercise", refPrefixes: ["Act "] },
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
+
   // ── Ch.3 Indefinite Integration (Part 2) — verified against
   //    Ch_03_Indefinite_Integration.pdf via a get_text('blocks') (page, y) scan
   //    (2026-07-16). The 3-technique spine: each numbered section is Solved
