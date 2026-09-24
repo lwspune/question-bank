@@ -201,6 +201,32 @@ const cls10Maths = (p: string) => join(SOURCE_ROOT, "10th", "Maths", p);
 // transcription.
 const cls10Sci = (p: string) => join(SOURCE_ROOT, "10th", "Science", p);
 
+// ── SOCIAL SCIENCE path helpers (2026-09-24) ───────────────────────────────────
+// FOUR BOOKS, FOUR SUBJECTS. CBSE Class 10 Social Science is one board paper but
+// four separate books, which is the inverse of Science — where the one-paper,
+// ONE-BOOK argument is what made Science a single subject. Here the books decide
+// it: `/board` renders per book in book order, and mh-ssc-10 and mh-sb-9 already
+// model Geography, History and Political Science as separate subjects on one
+// exam. Chapter numbers therefore restart per subject, as they do in each book.
+//
+// **THERE IS NO ANSWER KEY. FOR ANY OF THE FOUR.** Science had jesc1an.pdf; these
+// folders hold only chapter PDFs, prelims (jess*ps.pdf) and one Geography
+// appendix. So these chapters carry no `answersPdf`, and that absence is the
+// record: the end-of-book cross-check that gates every other NCERT lane here
+// cannot be run at all, and `social-grounding.ts` carries the entire weight.
+//
+// Three more departures, all measured rather than assumed:
+//  1. FOUR QUESTION-BLOCK CONVENTIONS — History opens with "Write in brief" and
+//     "Discuss" and never prints Exercises; Geography prints EXERCISES five
+//     times on one line; Polity prints "Exercises"; Economics prints EXERCISES
+//     and also runs an in-text "LET'S WORK THESE OUT" lane.
+//  2. THREE OF FOUR NUMBER NO SECTIONS. Only History does. Anchors are heading
+//     TEXT here, read off font weight and size — see socialLib.ts.
+//  3. Geography's MCQs print options in TWO COLUMNS, (a)/(c) then (b)/(d), so
+//     reading-order slotting mis-assigns every one of them; Economics' MCQs
+//     carry THREE options, which `commitStaged` cannot represent.
+const cls10SS = (subject: string, p: string) => join(SOURCE_ROOT, "10th", subject, p);
+
 // ── PHYSICS path helpers (2026-09-07) ───────────────────────────────────────────
 // Physics ships as pre-split per-chapter PDFs under Part_1/Part_2, PLUS the
 // whole-book PDF and NCERT's own answer files.
@@ -3515,6 +3541,152 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Food Chains and Webs",
       "Ozone Layer Depletion",
       "Waste Management",
+    ],
+  },
+
+  // ── CBSE Class 10 GEOGRAPHY, "Contemporary India II" (7 chapters, 2026-09-24).
+  //    The first of the four SOCIAL SCIENCE books and the pilot for the lane,
+  //    because its question block is the most uniform of the four: one EXERCISES
+  //    heading per chapter, then MCQs, a match-the-following, and short- and
+  //    long-answer items with printed word limits.
+  //
+  //    NO `answersPdf` — see the cls10SS header. There is no key for this book
+  //    or any of the other three, so every answer is grounded and none is
+  //    cross-checked.
+  //
+  //    TWO HAZARDS SPECIFIC TO THIS BOOK. Its MCQ options print in TWO COLUMNS,
+  //    so the text layer emits (a), (c), (b), (d) and reading-order slotting
+  //    mis-assigns every one — the defect a blind derivation provably cannot
+  //    catch, since the reasoning confirms the right TEXT under the wrong
+  //    LETTER. And its map-marking items ("on an outline map of India, mark and
+  //    label...") are deliberately NOT ingested: a text answer can only list the
+  //    places, which is not what the question asks for.
+
+  c10GeoResources: {
+    id: "c10GeoResources",
+    chapterName: "Resources and Development",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Geography",
+    sourceFile: "NCERT_10_Geography__Resources.pdf",
+    pdf: cls10SS("Geography", "01. Resources and Development.pdf"),
+    chapterNo: 1,
+    note: "NCERT (CBSE Class 10) \u2014 Resources and Development (Chapter 1, Contemporary India II)",
+    subtopics: [
+      "Types of Resources",
+      "Development of Resources",
+      "Resource Planning",
+      "Land Resources and Land Use",
+      "Land Degradation and Conservation",
+      "Soil as a Resource",
+    ],
+  },
+
+  c10GeoForestWildlife: {
+    id: "c10GeoForestWildlife",
+    chapterName: "Forest and Wildlife Resources",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Geography",
+    sourceFile: "NCERT_10_Geography__ForestWildlife.pdf",
+    pdf: cls10SS("Geography", "02. Forest and Wildlife Resources.pdf"),
+    chapterNo: 2,
+    note: "NCERT (CBSE Class 10) \u2014 Forest and Wildlife Resources (Chapter 2, Contemporary India II)",
+    subtopics: [
+      "Biodiversity and its Depletion",
+      "Causes of Depletion of Flora and Fauna",
+      "Conservation of Forest and Wildlife",
+      "Types and Distribution of Forests",
+      "Communities and Conservation",
+    ],
+  },
+
+  c10GeoWater: {
+    id: "c10GeoWater",
+    chapterName: "Water Resources",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Geography",
+    sourceFile: "NCERT_10_Geography__Water.pdf",
+    pdf: cls10SS("Geography", "03. Water Resources.pdf"),
+    chapterNo: 3,
+    note: "NCERT (CBSE Class 10) \u2014 Water Resources (Chapter 3, Contemporary India II)",
+    subtopics: [
+      "Water Scarcity and its Causes",
+      "Multi-purpose River Projects",
+      "Opposition to Multi-purpose Projects",
+      "Rainwater Harvesting",
+    ],
+  },
+
+  c10GeoAgriculture: {
+    id: "c10GeoAgriculture",
+    chapterName: "Agriculture",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Geography",
+    sourceFile: "NCERT_10_Geography__Agriculture.pdf",
+    pdf: cls10SS("Geography", "04. Agriculture.pdf"),
+    chapterNo: 4,
+    note: "NCERT (CBSE Class 10) \u2014 Agriculture (Chapter 4, Contemporary India II)",
+    subtopics: [
+      "Types of Farming",
+      "Cropping Pattern and Seasons",
+      "Major Crops",
+      "Technological and Institutional Reforms",
+      "Agriculture and the National Economy",
+    ],
+  },
+
+  c10GeoMinerals: {
+    id: "c10GeoMinerals",
+    chapterName: "Minerals and Energy Resources",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Geography",
+    sourceFile: "NCERT_10_Geography__Minerals.pdf",
+    pdf: cls10SS("Geography", "05. Minerals and Energy Resources.pdf"),
+    chapterNo: 5,
+    note: "NCERT (CBSE Class 10) \u2014 Minerals and Energy Resources (Chapter 5, Contemporary India II)",
+    subtopics: [
+      "What is a Mineral",
+      "Mode of Occurrence and Distribution",
+      "Ferrous and Non-ferrous Minerals",
+      "Non-metallic Minerals and Rocks",
+      "Conservation of Minerals",
+      "Conventional Sources of Energy",
+      "Non-conventional Sources of Energy",
+    ],
+  },
+
+  c10GeoManufacturing: {
+    id: "c10GeoManufacturing",
+    chapterName: "Manufacturing Industries",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Geography",
+    sourceFile: "NCERT_10_Geography__Manufacturing.pdf",
+    pdf: cls10SS("Geography", "06. Manufacturing Industries.pdf"),
+    chapterNo: 6,
+    note: "NCERT (CBSE Class 10) \u2014 Manufacturing Industries (Chapter 6, Contemporary India II)",
+    subtopics: [
+      "Importance of Manufacturing",
+      "Classification of Industries",
+      "Agro-based Industries",
+      "Mineral-based Industries",
+      "Industrial Pollution and its Control",
+    ],
+  },
+
+  c10GeoLifelines: {
+    id: "c10GeoLifelines",
+    chapterName: "Lifelines of National Economy",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Geography",
+    sourceFile: "NCERT_10_Geography__Lifelines.pdf",
+    pdf: cls10SS("Geography", "07. Lifelines of National Economy.pdf"),
+    chapterNo: 7,
+    note: "NCERT (CBSE Class 10) \u2014 Lifelines of National Economy (Chapter 7, Contemporary India II)",
+    subtopics: [
+      "Roadways",
+      "Railways and Pipelines",
+      "Waterways and Airways",
+      "Communication",
+      "International Trade and Tourism",
     ],
   },
 };
