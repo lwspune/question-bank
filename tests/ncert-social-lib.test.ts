@@ -30,6 +30,7 @@ import {
   normaliseHeading,
   headingAnchors,
   parseSocialCitations,
+  figureTableAnchors,
   type HeadingLine,
 } from "../scripts/ncert/socialLib";
 import { groundingViolations, parseCitations } from "../scripts/ncert/scienceLib";
@@ -189,6 +190,29 @@ describe("headingAnchors", () => {
     // groundingViolations treats an empty anchor list as a violation for every
     // row. A chapter whose headings could not be read must not pass silently.
     expect(headingAnchors([L("body text", 10, 1)], body)).toEqual([]);
+  });
+});
+
+describe("figureTableAnchors", () => {
+  // Caught by the pilot chapter, not by design: parseSocialCitations ACCEPTS
+  // "Fig. 1.4" but headingAnchors only ever emits headings, so every figure
+  // citation was guaranteed to fail the gate. Figures and tables are real
+  // citable content — Geography Ch.1 has 11 figure references and Economics
+  // Ch.1 has seven tables — so the anchor set has to carry them too.
+  it("collects figure and table references, normalised", () => {
+    const t = "as shown in Fig. 1.4 and Figure 1.9, and Table 1.2 gives";
+    expect(figureTableAnchors(t, 1)).toEqual(["fig. 1.4", "fig. 1.9", "table 1.2"]);
+  });
+
+  it("filters to THIS chapter, so a cross-reference cannot ground an answer", () => {
+    // The books cross-reference each other's chapters freely. An anchor list
+    // admitting "Fig. 3.2" would let a Chapter 1 answer ground itself in
+    // Chapter 3 — the same failure the Science lane's chapter filter prevents.
+    expect(figureTableAnchors("see Fig. 1.4 and also Fig. 3.2", 1)).toEqual(["fig. 1.4"]);
+  });
+
+  it("returns [] when the chapter references no figures", () => {
+    expect(figureTableAnchors("plain prose with no references", 1)).toEqual([]);
   });
 });
 

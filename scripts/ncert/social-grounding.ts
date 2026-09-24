@@ -36,7 +36,12 @@ import { readFileSync, existsSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { requireChapter, questionsJsonPath } from "./config";
 import { groundingViolations, type GroundedRow } from "./scienceLib";
-import { headingAnchors, parseSocialCitations, type HeadingLine } from "./socialLib";
+import {
+  headingAnchors,
+  figureTableAnchors,
+  parseSocialCitations,
+  type HeadingLine,
+} from "./socialLib";
 
 /**
  * Every line of the chapter with its size, page and whether it is WHOLLY bold.
@@ -87,8 +92,16 @@ function main() {
   }
   const rows: GroundedRow[] = JSON.parse(readFileSync(path, "utf8"));
 
+  if (ch.chapterNo == null) throw new Error(`chapter "${id}" has no chapterNo in config.ts`);
   const { body, lines } = chapterLines(ch.pdf);
-  const anchors = headingAnchors(lines, body);
+  // Headings AND the chapter's own figure/table references. The pilot chapter
+  // is why the second half is here: the citation parser accepts "Fig. 1.4" but
+  // headingAnchors never emits one, so every figure citation failed the gate
+  // however correct it was.
+  const anchors = [
+    ...headingAnchors(lines, body),
+    ...figureTableAnchors(lines.map((l) => l.text).join("\n"), ch.chapterNo),
+  ];
 
   console.log(
     `\n${id}: ${rows.length} rows, ${anchors.length} heading anchors ` +

@@ -125,9 +125,7 @@ const MAX_LEN = 70;
  * sends the author back to re-ground a row that was already right. So a line
  * also counts when it is wholly bold and no smaller than the body.
  *
- * RUNNING HEADS ARE THE OTHER HALF. Every one of
-
- * these books sets a running head in a display face on every page —
+ * RUNNING HEADS ARE THE OTHER HALF. Every one of these books sets a running head in a display face on every page —
  * "CONTEMPORARY INDIA – II", "De moc ra tic Polit ics", "<page> Nationalism in
  * India" — and by size it is indistinguishable from a real section heading.
  * REPETITION distinguishes them: a section heading appears once, a running head
@@ -184,6 +182,38 @@ export function parseSocialCitations(s: string): string[] {
         ? `table ${m[3]}`
         : `fig. ${m[4]}`;
     if (token && !seen.has(token)) {
+      seen.add(token);
+      out.push(token);
+    }
+  }
+  return out;
+}
+
+const FIGTAB_RE = /\b(Table)\s+(\d+\.\d+)|\bFig(?:ure|\.)?\s*(\d+\.\d+)/g;
+
+/**
+ * Figure and table references the chapter's own text declares, chapter-filtered.
+ *
+ * The pilot chapter is why this exists: `parseSocialCitations` accepts
+ * "Fig. 1.4" but `headingAnchors` only ever emits headings, so every figure
+ * citation failed the gate no matter how correct it was. Geography Ch.1 carries
+ * 11 figure references and Economics Ch.1 seven tables; they are citable
+ * content and the anchor set has to hold them.
+ *
+ * Filtered to `chapterNo` for the reason the Science lane filters: these books
+ * cross-reference each other's chapters, and an anchor list admitting "Fig. 3.2"
+ * would let a Chapter 1 answer ground itself in Chapter 3.
+ */
+export function figureTableAnchors(text: string, chapterNo: number): string[] {
+  const out: string[] = [];
+  const seen = new Set<string>();
+  const re = new RegExp(FIGTAB_RE.source, "g");
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text)) !== null) {
+    const num = m[2] ?? m[3];
+    if (Number(num.split(".")[0]) !== chapterNo) continue;
+    const token = m[1] ? `table ${num}` : `fig. ${num}`;
+    if (!seen.has(token)) {
       seen.add(token);
       out.push(token);
     }
