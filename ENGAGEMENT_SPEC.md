@@ -63,7 +63,7 @@ is why the share loop already keeps the score opt-in).
 | 7 | Teacher-assigned paper with a deadline for a batch | **SHIPPED 2026-09-24** — `mock_assignments` (migration 0115), teacher card on the batch roster, due list on `/me`, line on the mock page |
 | 8 | Content-led nudges at 12:30 IST | **SHIPPED 2026-09-24** — email only (`npm run email:due-nudge`, cron `.github/workflows/due-nudge.yml`, migration 0114) |
 | 9 | Exam date and days-to-exam | **SHIPPED 2026-09-24** — `src/lib/exam/calendar.ts` + `student_profiles.exam_date` (0116); every calendar date is EXPECTED, not official, and says so |
-| — | Per-question peer rates on the findings card | Tranche C — DECIDED 2026-09-24: yes, question level only (§5) |
+| — | Per-question peer rates on the findings card | **SHIPPED 2026-09-24** — the result page passes a real peer map for that attempt's questions; question level only |
 | 3 | Short sittings as the default first unit | **Declined by the user, 2026-09-24.** Not built. |
 
 ## 4. Tranche A — the build
@@ -235,7 +235,7 @@ NDA first. Then `/me` and the header can say "NDA 2027-I in 112 days".
 
 ### C4. Per-question peer rates
 
-**Decided 2026-09-24: yes, question level only, never person level.** The findings card deliberately showed no "62% of students got this right".
+**SHIPPED 2026-09-24.** The result page's findings loader now reads `question_item_stats` through the service-role client for the ids of THIS attempt's questions (`readPeerAccuracy`, pooled at read time, the same read the report email makes) and the card prints "62% of students got this right" beside an easy miss. A fact about a question, never about a person. **Decided:** The findings card deliberately showed no "62% of students got this right".
 Recommendation: allow it at question level only, never person level. It is
 metacognitive and it is not a ranking. Needs a service-role read on a student
 page, which is why it is a decision and not a default.

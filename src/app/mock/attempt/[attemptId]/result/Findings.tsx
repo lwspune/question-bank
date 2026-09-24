@@ -26,12 +26,12 @@ import { goPracticeHref } from "@/lib/performance/links";
  * the review list below, and each subtopic opens practice on that topic — the
  * email can only name them.
  *
- * NO PEER PERCENTAGES. question_item_stats is staff-read by RLS, so the page
- * passes an empty PeerMap and this shows no "x% of students got this right".
- * That is a deliberate stop, not an oversight: surfacing it would need a
- * service-role read on a student page plus a decision about showing one student
- * how the cohort did, which is the kind of peer comparison the engagement gate
- * is careful about. The cost is that ranking falls back to dwell-then-position.
+ * PEER PERCENTAGES, QUESTION LEVEL ONLY (C4, decided 2026-09-24). The page
+ * now passes a real PeerMap for this attempt's questions, so an easy miss can
+ * say "62% of students got this right" — the same line the email prints, and
+ * the reason the wrong list can rank by how recoverable a mark is. It is a
+ * fact about a QUESTION. Nothing here compares this student to another one;
+ * that is the line the engagement gate draws, and it holds.
  */
 export default function Findings({ report, attemptId }: { report: MockReport; attemptId: string }) {
   if (!report.hasFindings) return null;
@@ -51,7 +51,11 @@ export default function Findings({ report, attemptId }: { report: MockReport; at
           <ul className="space-y-1.5">
             {report.easyWrong.map((q) => (
               <li key={q.questionId}>
-                <QuestionLink position={q.position} where={formatWhere(q)} />
+                <QuestionLink
+                  position={q.position}
+                  where={formatWhere(q)}
+                  note={q.peerPct === null ? undefined : `${q.peerPct}% of students got this right`}
+                />
               </li>
             ))}
           </ul>

@@ -31,6 +31,10 @@ Within-month convention: newest entries closest to top (matches CLAUDE.md orderi
 ### 2026-09-01 to 2026-09-24 — full narratives (digested 2026-09-14; rolling since). Header corrected 2026-09-18: it read "to 2026-09-16" while the batch already held entries through 2026-09-18, so it is now DERIVED from the batch's own span rather than hand-maintained — re-check it with the reconciliation in `npm run docs:budget`.
 
 
+**2026-09-24 (tenth) — question-level peer rates on the result card (ENGAGEMENT_SPEC.md C4).**
+
+The findings card had shipped (2026-09-18) with an empty `PeerMap` and a comment that stopped deliberately: showing "x% of students got this right" needed a service-role read on a student page and a decision about showing one student how the cohort did. The user made that decision on 2026-09-24: yes, at question level only, never at person level. The change is two hunks: `loadFindings` on the result page reads `question_item_stats` through `readPeerAccuracy` on the service-role client, scoped to the ids of this attempt's questions (the same pooled-at-read-time function the report email calls, so the two surfaces print the same number), and the card passes `peerPct` into the easy-miss row's note. A missing row stays absent — never a 0% — and the read is best-effort like the rest of the loader. Question level only: nothing on the page compares this student to another, which is the line the engagement gate draws.
+
 **2026-09-24 (ninth) — days-to-exam (ENGAGEMENT_SPEC.md C3): derive-with-override, migration 0116.**
 
 The roadmap had held this behind two decisions — where the date comes from, and who maintains the calendar. The user chose derive-with-override: a committed TS calendar beside `EXAM_REGISTRY` supplies a countdown to every student with a target exam (280 of 342 profiles), and a nullable `student_profiles.exam_date` wins when set and in the future. The alternative, a student-entered date only, was rejected on the evidence of the optional `goal` field: 1% filled.

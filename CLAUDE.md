@@ -322,6 +322,9 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 > exactly which entries are in that state; write the long form into the archive before evicting any
 > it lists.
 
+- **2026-09-24 (tenth) — question-level peer rates on the result card (C4): the last of the four Tranche C decisions, and the smallest change of the day.**
+  - **One service-role read on a student page, scoped to that attempt's question ids** — the same pooled `readPeerAccuracy` the report email uses, so the screen and the mail print the same percentage. It says "62% of students got this right" about a QUESTION; nothing compares one student to another, which is the line the gate draws.
+  - **Why it was refused before and allowed now:** the card's author stopped at "needs a service-role read plus a decision about showing the cohort"; the user made that decision (2026-09-24) for question level only. `rankWrong` now ranks easy misses by recoverability instead of falling back to dwell.
 - **2026-09-24 (ninth) — days-to-exam ships (C3): derive-with-override, and every derived date is labelled EXPECTED because none is announced.**
   - **The calendar is data in TS, not a table** (0116 adds only the student's override), because the roadmap's fear was an empty or stale calendar that looks like a working one: `tests/exam-calendar.test.ts` fails the gate once a sitting is 14 days past, so rot cannot ship.
   - **`official: false` on all 15 entries as written.** UPSC publishes around November, NTA and the boards later; a guess labelled as one ("NDA 2027 (I) in 206 days (expected)", with a "set your date" link) is honest, a guess stored as a fact is not. Flip the flag by hand when announced.
