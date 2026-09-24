@@ -236,7 +236,8 @@ export const ARITHMETIC_PROGRESSIONS_NOTE: SubtopicNote = {
         "(they map a constant difference to a constant difference):\n" +
         "- adding/subtracting a constant \\(k\\): \\(a+k,\\ b+k,\\ c+k\\) (or \\(k-a,\\ k-b,\\ k-c\\));\n" +
         "- multiplying/dividing by a non-zero constant \\(k\\): \\(ka,\\ kb,\\ kc\\) and \\(\\tfrac{a}{k},\\ \\tfrac{b}{k},\\ \\tfrac{c}{k}\\).\n" +
-        "Squaring the terms or taking reciprocals generally breaks the AP.",
+        "Squaring the terms or taking reciprocals generally breaks the AP.\n" +
+        "**Extremising a product of AP terms:** the product of two terms \\((a + pd)(a + qd)\\), or of a term and its \"partner\" summing to a constant, is a quadratic in the unknown — its minimum or maximum is at the vertex \\(x = -\\tfrac{B}{2A}\\), value \\(-\\tfrac{D}{4A}\\), with no calculus needed. Two numbers with a FIXED SUM have the largest product when equal; with a FIXED PRODUCT, the smallest sum when equal (AM–GM).",
       formula: {
         label: "Three terms in AP",
         latex: "a,\\ b,\\ c \\text{ in AP} \\iff 2b = a + c",

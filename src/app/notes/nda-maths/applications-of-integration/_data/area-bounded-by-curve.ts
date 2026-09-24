@@ -21,7 +21,9 @@ export const AREA_BOUNDED_BY_CURVE_NOTE: SubtopicNote = {
         "\\[\\int_a^b y\\,dx = \\int_a^b f(x)\\,dx.\\]\n" +
         "- If \\(f(x) \\ge 0\\) on \\([a, b]\\) (curve **above** the axis), the integral equals the geometric area, which is always positive.\n" +
         "- If \\(f(x) \\le 0\\) (curve **below** the axis), the integral is **negative**; the geometric area is its absolute value.\n" +
-        "- The two vertical lines \\(x = a\\) and \\(x = b\\) are the **limits** — read them off as where the region starts and ends. The x-axis itself is \\(y = 0\\).",
+        "- The two vertical lines \\(x = a\\) and \\(x = b\\) are the **limits** — read them off as where the region starts and ends. The x-axis itself is \\(y = 0\\).\n" +
+        "**The antiderivatives this chapter uses and assumes** — eleven of its 27 PYQs need the first row: \\(\\int x^n\\,dx=\\dfrac{x^{n+1}}{n+1}\\) (\\(n\\ne-1\\)), so \\(\\int\\sqrt x\\,dx=\\tfrac23x^{3/2}\\) and \\(\\int\\sqrt{4ax}\\,dx=2\\sqrt a\\cdot\\tfrac23x^{3/2}\\); \\(\\int\\dfrac{dx}{x}=\\ln|x|\\); \\(\\int e^{x}\\,dx=e^{x}\\) and \\(\\int e^{-x}\\,dx=-e^{-x}\\); \\(\\int\\sin x\\,dx=-\\cos x\\), \\(\\int\\cos x\\,dx=\\sin x\\); \\(\\int(ax+b)^n\\,dx=\\dfrac{(ax+b)^{n+1}}{a(n+1)}\\). Full table in the Indefinite Integration notes (linked below).\n" +
+        "**Recovering a curve from its slope, then finding an area:** \"the slope of the tangent at \\((x,y)\\) is \\(2x\\), and the curve passes through \\((1,2)\\)\" means \\(\\dfrac{dy}{dx}=2x\\Rightarrow y=x^2+C\\Rightarrow C=1\\), so \\(y=x^2+1\\); only THEN set up the integral. Half the question is integration-as-inverse-of-differentiation.",
       formula: {
         label: "Area under a curve above the axis",
         latex: "A = \\int_a^b f(x)\\,dx \\quad (f \\ge 0)",
@@ -146,7 +148,8 @@ export const AREA_BOUNDED_BY_CURVE_NOTE: SubtopicNote = {
         "- **Split at every crossing.** If \\(f\\) changes sign at \\(x = c\\) inside \\([a, b]\\), then\n" +
         "\\[A = \\left|\\int_a^c f\\,dx\\right| + \\left|\\int_c^b f\\,dx\\right|.\\]\n" +
         "- **Use symmetry as a shortcut.** For a region symmetric about the y-axis (or about a point), area on one side equals the other: \\(A = 2 \\times (\\text{area of one half})\\). A **loop** of \\(y = c\\sin x\\) runs over one half-period.\n" +
-        "- A function like \\(f(x) = x|x|\\) equals \\(x^2\\) for \\(x > 0\\) and \\(-x^2\\) for \\(x < 0\\) — equal areas on each side, so total area \\(= 2\\int_0^{\\,k} x^2\\,dx\\).",
+        "- A function like \\(f(x) = x|x|\\) equals \\(x^2\\) for \\(x > 0\\) and \\(-x^2\\) for \\(x < 0\\) — equal areas on each side, so total area \\(= 2\\int_0^{\\,k} x^2\\,dx\\).\n" +
+        "- **The same symmetry as an integral property:** for an EVEN function (\\(f(-x)=f(x)\\)), \\(\\displaystyle\\int_{-a}^{a}f\\,dx=2\\int_0^{a}f\\,dx\\); for an ODD one the signed integral is 0 but the AREA is \\(2\\int_0^a|f|\\,dx\\). This is what handles \\(y=e^{|x|}\\) between \\(x=-1\\) and \\(1\\): \\(e^{|x|}\\) is even, so the area is \\(2\\int_0^1e^x\\,dx=2(e-1)\\) — no case split on the modulus is needed once you see the symmetry.",
       formula: {
         label: "Area with a sign change at c",
         latex:
@@ -340,7 +343,8 @@ export const AREA_BOUNDED_BY_CURVE_NOTE: SubtopicNote = {
         "When a chord (here a line such as \\(y = x\\)) cuts a circle into two regions \\(A_1\\) (major) and \\(A_2\\) (minor):\n" +
         "- The **minor segment** \\(A_2 = (\\text{sector area}) - (\\text{triangle area})\\); set it up as a definite integral between the chord and the arc.\n" +
         "- The **major segment** \\(A_1 = (\\text{full circle area}) - A_2 = \\pi r^2 - A_2\\).\n" +
-        "- For the unit-radius circle \\((x-1)^2 + y^2 = 1\\) cut by \\(y = x\\) (chord from \\((0,0)\\) to \\((1,1)\\)): \\(A_2 = \\tfrac{\\pi - 2}{4}\\) and \\(A_1 = \\pi - A_2 = \\tfrac{3\\pi + 2}{4}.\\)",
+        "- For the unit-radius circle \\((x-1)^2 + y^2 = 1\\) cut by \\(y = x\\) (chord from \\((0,0)\\) to \\((1,1)\\)): \\(A_2 = \\tfrac{\\pi - 2}{4}\\) and \\(A_1 = \\pi - A_2 = \\tfrac{3\\pi + 2}{4}.\\)\n" +
+        "- **For any other chord and circle, the formula route:** the distance from the centre \\((h,k)\\) to the chord \\(ax+by+c=0\\) is \\(d=\\dfrac{|ah+bk+c|}{\\sqrt{a^2+b^2}}\\) (here \\(\\tfrac{|1-0|}{\\sqrt2}=\\tfrac1{\\sqrt2}\\)); the half-angle at the centre is \\(\\cos\\tfrac\\theta2=\\tfrac dr\\); then \\(A_{\\text{minor}}=\\tfrac{r^2}{2}(\\theta-\\sin\\theta)\\), with \\(\\theta\\) in radians. The worked number above is this formula at \\(d=\\tfrac1{\\sqrt2}\\), \\(r=1\\), \\(\\theta=\\tfrac\\pi2\\).",
       formula: {
         label: "Segments of a circle",
         latex: "A_2 = \\text{sector} - \\text{triangle}, \\qquad A_1 = \\pi r^2 - A_2",
@@ -362,5 +366,10 @@ export const AREA_BOUNDED_BY_CURVE_NOTE: SubtopicNote = {
         },
       ],
     },
+  ],
+  related: [
+    { label: "Standard integrals — the power rule and the table (Indefinite Integration)", href: "/notes/nda-maths/indefinite-integration/ii-standard-forms" },
+    { label: "Distance from a point to a line (Lines)", href: "/notes/nda-maths/lines/lines-distance-section-locus" },
+    { label: "Odd/even symmetry of definite integrals (Definite Integration)", href: "/notes/nda-maths/definite-integration/defint-properties" },
   ],
 };

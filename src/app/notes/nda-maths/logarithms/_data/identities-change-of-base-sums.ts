@@ -68,7 +68,7 @@ export const IDENTITIES_CHANGE_OF_BASE_SUMS_NOTE: SubtopicNote = {
         "Strategy for an evaluate-and-combine problem:\n" +
         "- **Rewrite arguments as powers** of the smallest convenient base: \\(27=3^3,\\ 1024=2^{10},\\ 3125=5^5\\), and a nested radical like \\(\\sqrt{7\\sqrt{7\\sqrt{7}}}\\) as \\(7^{1/2+1/4+1/8}=7^{7/8}\\).\n" +
         "- **Pull exponents out front** with the power law, then combine with product/quotient.\n" +
-        "- **Sum of logs across a list** — e.g. \\(\\sum_j \\log_{10}(2^j5^j)=\\sum_j j\\,\\log_{10}10=\\sum_j j\\) — telescopes once you notice \\(2\\cdot 5 = 10\\).",
+        "- **Sum of logs across a list** — e.g. \\(\\sum_j \\log_{10}(2^j5^j)=\\sum_j j\\,\\log_{10}10=\\sum_j j\\) — telescopes once you notice \\(2\\cdot 5 = 10\\). **Then finish the series:** \\(\\sum_{j=1}^{n}j=\\dfrac{n(n+1)}{2}\\), so \"the sum equals 66\" means \\(n(n+1)=132\\Rightarrow n=11\\), and \"equals 15\" means \\(n=5\\). Also \\(\\sum j^2=\\dfrac{n(n+1)(2n+1)}{6}\\) if the exponents are squares.",
       formula: {
         label: "Rewrite as powers, then pull the exponent out",
         latex: "\\log_a(b^m \\cdot c^n) = m\\log_a b + n\\log_a c",
@@ -167,6 +167,7 @@ export const IDENTITIES_CHANGE_OF_BASE_SUMS_NOTE: SubtopicNote = {
         "For base \\(a>1\\):\n" +
         "- \\(\\log_a N > 0 \\iff N > 1\\); \\(\\quad\\log_a N = 0 \\iff N = 1\\); \\(\\quad\\log_a N < 0 \\iff 0 < N < 1\\).\n" +
         "- The function \\(\\log_a\\) is **strictly increasing**, so \\(\\log_a f(x)\\) attains its **minimum** exactly where \\(f(x)\\) is minimised (provided \\(f>0\\) there).\n" +
+        "- **Strict monotonicity also proves UNIQUENESS:** a strictly increasing left-hand side meets a constant at most once, so a root found by inspection is THE root. \\(5^x+4^x+3^x+2^x+1=5\\) has \\(x=0\\) by inspection, and because every term \\(a^x\\) (\\(a>1\\)) is strictly increasing, the sum is too — there is exactly one solution. Without this line \"\\(x=0\\)\" is a guess; with it, it is a proof.\n" +
         "**Minimising \\(\\log_{10}(\\text{quadratic}):\\)** complete the square — \\(x^2+bx+c = (x+\\tfrac{b}{2})^2 + (c-\\tfrac{b^2}{4})\\) — the minimum argument is \\(c-\\tfrac{b^2}{4}\\), and the minimum of the log is \\(\\log_{10}\\) of that.",
       formula: {
         label: "Sign of a log (base > 1)",
@@ -205,7 +206,8 @@ export const IDENTITIES_CHANGE_OF_BASE_SUMS_NOTE: SubtopicNote = {
       definition:
         "Two recurring shapes:\n" +
         "- **AP / GP test on logs:** \\(\\ln x, \\ln x^3, \\ln x^5 = \\ln x,\\,3\\ln x,\\,5\\ln x\\). They are in **AP** (common difference \\(2\\ln x\\)); for **GP** you must separately check \\(q^2 = pr\\), i.e. \\((3\\ln x)^2 = (\\ln x)(5\\ln x)\\) — here \\(9 \\neq 5\\), so never GP.\n" +
-        "- **Geometric mean of a list of powers:** the GM of \\(1,2,2^2,\\dots,2^{n-1}\\) is \\(\\big(2^{0+1+\\cdots+(n-1)}\\big)^{1/n} = 2^{(n-1)/2}\\); taking \\(\\log_2\\) gives \\(\\dfrac{n-1}{2}\\), so expressions like \\(1+2\\log_2 G\\) simplify to \\(n\\).",
+        "- **Geometric mean of a list of powers:** the GM of \\(1,2,2^2,\\dots,2^{n-1}\\) is \\(\\big(2^{0+1+\\cdots+(n-1)}\\big)^{1/n} = 2^{(n-1)/2}\\); taking \\(\\log_2\\) gives \\(\\dfrac{n-1}{2}\\), so expressions like \\(1+2\\log_2 G\\) simplify to \\(n\\).\n" +
+        "- **An infinite GP hiding in the logs:** \\(\\log_e3+\\log_{e^2}3+\\log_{e^4}3+\\dots=\\ln3\\,(1+\\tfrac12+\\tfrac14+\\dots)\\) by \\(\\log_{a^k}N=\\tfrac1k\\log_aN\\), and the bracket is \\(\\dfrac{a}{1-r}=\\dfrac{1}{1-\\frac12}=2\\) — the infinite-GP sum \\(S_\\infty=\\dfrac{a}{1-r}\\) for \\(|r|<1\\) (Sequence & Series). So the total is \\(2\\ln3=\\ln9\\).",
       formula: {
         label: "AP and GP conditions for three terms",
         latex: "\\text{AP}: 2q = p+r, \\qquad \\text{GP}: q^2 = pr",
@@ -234,5 +236,10 @@ export const IDENTITIES_CHANGE_OF_BASE_SUMS_NOTE: SubtopicNote = {
         },
       ],
     },
+  ],
+  related: [
+    { label: "Power sums Σk and Σk² (Sequence & Series)", href: "/notes/nda-maths/sequence-series/seq-special-series" },
+    { label: "Infinite GP sum a/(1−r) (Sequence & Series)", href: "/notes/nda-maths/sequence-series/seq-geometric-progressions" },
+    { label: "Solving a quadratic (Quadratic Equations)", href: "/notes/nda-maths/quadratic-equations/qe-nature-of-roots" },
   ],
 };

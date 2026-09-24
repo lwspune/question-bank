@@ -151,7 +151,8 @@ export const VECTOR_GEOMETRY_NOTE: SubtopicNote = {
         "If \\(A, B, C\\) have position vectors \\(\\vec{a}, \\vec{b}, \\vec{c}\\), the side vectors at \\(C\\) are " +
         "\\(\\vec{CA} = \\vec{a} - \\vec{c}\\) and \\(\\vec{CB} = \\vec{b} - \\vec{c}\\). " +
         "Then \\(\\cos C = \\dfrac{\\vec{CA}\\cdot\\vec{CB}}{|\\vec{CA}|\\,|\\vec{CB}|}\\). " +
-        "For a quadrilateral with diagonals \\(AC\\) and \\(BD\\), the same formula applies with the two diagonal vectors.",
+        "For a quadrilateral with diagonals \\(AC\\) and \\(BD\\), the same formula applies with the two diagonal vectors. " +
+        "A right-angle identity worth quoting: in a triangle right-angled at \\(A\\), \\(\\vec{AB}\\cdot\\vec{AC} + \\vec{BC}\\cdot\\vec{BA} + \\vec{CA}\\cdot\\vec{CB} = 0 + BC\\cdot BA\\cos B + CA\\cdot CB\\cos C = BA^2 + CA^2 = BC^2\\), the square of the hypotenuse. In ANY triangle the same sum is \\(\\tfrac12(a^2+b^2+c^2)\\).",
       formula: {
         label: "Angle at vertex from position vectors",
         latex:

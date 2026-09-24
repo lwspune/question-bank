@@ -58,7 +58,8 @@ export const COEFFICIENT_SUMS_NOTE: SubtopicNote = {
         "- **Alternating sum:** \\(\\binom{n}{0} - \\binom{n}{1} + \\binom{n}{2} - \\cdots = (1-1)^n = 0\\) (for \\(n \\ge 1\\)).\n" +
         "- For a general polynomial, \\(a_0 - a_1 + a_2 - \\cdots = f(-1)\\).\n" +
         "- **Odd/even split:** sum of even-index coefficients \\(=\\) sum of odd-index coefficients \\(= \\dfrac{f(1)}{2} = 2^{\\,n-1}\\). (They are equal because \\(f(-1) = 0\\).)\n" +
-        "- In \\((a+b)^n + (a-b)^n\\), the odd-power terms cancel; in the difference, the even-power terms cancel.",
+        "- In \\((a+b)^n + (a-b)^n\\), the odd-power terms cancel; in the difference, the even-power terms cancel.\n" +
+        "- **Two different halvings land on the same \\(2^{n-1}\\):** the odd-INDEX and even-INDEX coefficients each sum to \\(2^{n-1}\\) (above), and — separately, by symmetry \\(\\binom nr=\\binom n{n-r}\\) — the FIRST half of the coefficients and the LAST half also each sum to \\(2^{n-1}\\) when \\(n\\) is odd (for even \\(n\\) the middle coefficient is shared). So the last five coefficients of \\((1+x)^9\\) sum to \\(2^8=256\\), which the parity split alone cannot tell you.",
       formula: {
         label: "Alternating sum and the split",
         latex: "\\sum_r (-1)^r \\binom{n}{r} = 0, \\qquad \\text{even-sum} = \\text{odd-sum} = 2^{\\,n-1}",
@@ -124,7 +125,8 @@ export const COEFFICIENT_SUMS_NOTE: SubtopicNote = {
         "- **Pascal's rule:** \\(\\binom{n}{r} + \\binom{n}{r-1} = \\binom{n+1}{r}\\).\n" +
         "- **Pascal applied twice:** \\(\\binom{n}{r} + 2\\binom{n}{r-1} + \\binom{n}{r-2} = \\binom{n+2}{r}\\).\n" +
         "- **Symmetry:** \\(\\binom{n}{r} = \\binom{n}{n-r}\\), so the first and last coefficients are equal, and \"coefficient of \\(a^m\\) and \\(a^n\\) in \\((1+a)^{m+n}\\)\" are equal.\n" +
-        "- **Middle-term split:** \\(\\binom{2n}{n} = \\binom{2n-1}{n-1} + \\binom{2n-1}{n}\\) (Pascal's rule on the central coefficient).",
+        "- **Middle-term split:** \\(\\binom{2n}{n} = \\binom{2n-1}{n-1} + \\binom{2n-1}{n}\\) (Pascal's rule on the central coefficient).\n" +
+        "- **Pascal read as a telescope — an alternating PARTIAL sum:** \\(\\binom{n}{r}-\\binom{n}{r+1}+\\binom{n}{r+2}-\\cdots\\) does not run to the end, so \\(x=-1\\) is no use; instead write each \\(\\binom nk=\\binom{n-1}{k-1}+\\binom{n-1}{k}\\) and the inner terms cancel in pairs, leaving \\(\\binom{n-1}{r-1}\\pm\\binom{n-1}{\\text{last}}\\). For the symmetric block \\(\\binom{51}{21}-\\binom{51}{22}+\\cdots-\\binom{51}{30}\\) pair \\(\\binom{51}{k}\\) with \\(\\binom{51}{51-k}\\): the ten terms collapse and the sum is \\(-\\tfrac12\\binom{51}{25}\\cdot0+\\ldots\\) — in this exam the intended reading is the single central coefficient \\(\\binom{51}{25}\\); write the terms out and cancel rather than trusting a named identity.",
       formula: {
         label: "Pascal's rule (applied twice)",
         latex: "\\binom{n}{r} + 2\\binom{n}{r-1} + \\binom{n}{r-2} = \\binom{n+2}{r}",

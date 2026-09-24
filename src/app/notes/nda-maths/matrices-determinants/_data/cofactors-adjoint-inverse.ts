@@ -114,7 +114,9 @@ export const COFACTORS_ADJOINT_INVERSE_NOTE: SubtopicNote = {
         "- **Double adjoint:** \\(\\operatorname{adj}(\\operatorname{adj}A) = |A|^{n-2}A\\)\n" +
         "- **Scalar:** \\(\\operatorname{adj}(kA) = k^{n-1}\\operatorname{adj}A\\)\n" +
         "- **Reversal:** \\(\\operatorname{adj}(AB) = \\operatorname{adj}B\\,\\operatorname{adj}A\\)\n" +
-        "- **Transpose:** \\(\\operatorname{adj}(A^T) = (\\operatorname{adj}A)^T\\) (adjoint commutes with transpose, so \\(\\operatorname{adj}A^T - (\\operatorname{adj}A)^T = O\\))",
+        "- **Transpose:** \\(\\operatorname{adj}(A^T) = (\\operatorname{adj}A)^T\\) (adjoint commutes with transpose, so \\(\\operatorname{adj}A^T - (\\operatorname{adj}A)^T = O\\))\n" +
+        "- **Determinant of the double adjoint:** \\(|\\operatorname{adj}(\\operatorname{adj}A)| = |A|^{(n-1)^2}\\) — apply the determinant rule twice (for \\(3\\times3\\): \\(|A|^4\\)).\n" +
+        "- **Cofactor matrix:** \\(C\\) (the matrix of cofactors) satisfies \\(\\operatorname{adj}A = C^T\\), so \\(|C| = |\\operatorname{adj}A| = |A|^{n-1}\\) — transposing does not change a determinant.",
       formula: {
         label: "Adjoint of an n×n matrix",
         latex: "|\\operatorname{adj}A| = |A|^{\\,n-1}, \\qquad \\operatorname{adj}(\\operatorname{adj}A) = |A|^{\\,n-2}A",

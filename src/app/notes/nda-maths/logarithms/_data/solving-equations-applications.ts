@@ -62,7 +62,7 @@ export const SOLVING_EQUATIONS_APPLICATIONS_NOTE: SubtopicNote = {
         "Recipe:\n" +
         "- **Collapse to one log on each side** using the laws, then equate arguments (since \\(\\log_a M = \\log_a N \\Rightarrow M = N\\)).\n" +
         "- **Substitute** \\(t = a^x\\) (so \\(a^{2x} = t^2\\)). The equation becomes a quadratic \\(t^2 + bt + c = 0\\).\n" +
-        "- **Solve and screen:** reject any root \\(t \\le 0\\) — an exponential \\(a^x\\) can never be \\(0\\) or negative. From the surviving \\(t\\), recover \\(x = \\log_a t\\).\n" +
+        "- **Solve and screen:** factorise (\\(t^2-5t+4=(t-1)(t-4)\\)) or use \\(t=\\dfrac{-b\\pm\\sqrt{b^2-4c}}{2}\\), then reject any root \\(t \\le 0\\) — an exponential \\(a^x\\) can never be \\(0\\) or negative. From the surviving \\(t\\), recover \\(x = \\log_a t\\).\n" +
         "An **AP condition** on three logs, \\(2\\log(2^x-1) = \\log 2 + \\log(2^x+3)\\), feeds straight into this: square out to \\((2^x-1)^2 = 2(2^x+3)\\), a quadratic in \\(t = 2^x\\).",
       formula: {
         label: "Let t = aˣ and solve the quadratic (keep t > 0)",

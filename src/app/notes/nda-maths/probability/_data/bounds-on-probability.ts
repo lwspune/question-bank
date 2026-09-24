@@ -23,7 +23,8 @@ export const BOUNDS_ON_PROBABILITY_NOTE: SubtopicNote = {
         "For any two events (all from \\(0 \\le P \\le 1\\) and the addition rule):\n" +
         "- **Intersection (Fréchet):** \\(\\max(0,\\ P(A) + P(B) - 1) \\le P(A \\cap B) \\le \\min(P(A), P(B))\\).\n" +
         "- **Union:** \\(\\max(P(A), P(B)) \\le P(A \\cup B) \\le \\min(1,\\ P(A) + P(B))\\).\n" +
-        "- **Boole's inequality:** the upper union bound \\(P(A \\cup B) \\le P(A) + P(B)\\).",
+        "- **Boole's inequality:** the upper union bound \\(P(A \\cup B) \\le P(A) + P(B)\\).\n" +
+        "- **Three events (Bonferroni):** \\(P(A \\cap B \\cap C) \\ge P(A) + P(B) + P(C) - 2\\), and in general \\(P(A_1\\cap\\dots\\cap A_n) \\ge \\sum P(A_i) - (n-1)\\) — apply the two-event lower bound twice. Boole extends the same way: \\(P(A\\cup B\\cup C) \\le P(A)+P(B)+P(C)\\).",
       formula: {
         label: "Bounds on intersection and union",
         latex:

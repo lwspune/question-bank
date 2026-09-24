@@ -152,7 +152,8 @@ export const MAGNITUDE_COMPONENTS_PROJECTION_NOTE: SubtopicNote = {
         "The scalar projection of \\(\\vec{a}\\) on \\(\\vec{b}\\) is \\(\\text{proj}_{\\vec{b}}\\vec{a} = \\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|}\\), with \\(\\vec{a}\\cdot\\vec{b} = a_1b_1 + a_2b_2 + a_3b_3\\). " +
         "It is a signed scalar (positive when the projection lands in the direction of \\(\\vec{b}\\), negative when opposite). " +
         "The corresponding vector projection — projecting and keeping a vector — is " +
-        "\\(\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|^2}\\vec{b}\\).",
+        "\\(\\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{b}|^2}\\vec{b}\\). " +
+        "When an unknown component is fixed by a stated projection, the SIGN is data: \"the projection of \\(\\vec{a}\\) on \\(\\vec{b}\\) is \\(2\\)\" rejects any root of the resulting equation that makes \\(\\vec{a}\\cdot\\vec{b}\\) negative — squaring to solve introduces that spurious root, so substitute back before choosing.",
       formula: {
         label: "Scalar and vector projection",
         latex:

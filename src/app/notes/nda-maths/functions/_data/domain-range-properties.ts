@@ -98,7 +98,10 @@ export const FUNCTIONS_DOMAIN_RANGE_NOTE: SubtopicNote = {
         "Common techniques:\n" +
         "- **Solve for \\(x\\)**: rearrange \\(y=f(x)\\) to \\(x=\\dots\\); the range is the \\(y\\) for which \\(x\\) is real/in-domain.\n" +
         "- **Quadratic on an interval**: check the vertex and the endpoints; mind whether endpoints are included.\n" +
-        "- **\\(a\\sin x+b\\cos x+c\\)** lies in \\([c-\\sqrt{a^2+b^2},\\,c+\\sqrt{a^2+b^2}]\\).",
+        "- **\\(a\\sin x+b\\cos x+c\\)** lies in \\([c-\\sqrt{a^2+b^2},\\,c+\\sqrt{a^2+b^2}]\\).\n" +
+        "- **AM–GM for a reciprocal pair:** \\(t+\\dfrac1t\\ge2\\) for \\(t>0\\) (and \\(\\le-2\\) for \\(t<0\\)), so e.g. \\(\\dfrac{x^2+1}{x}\\) never lands in \\((-2,2)\\), and \\(\\dfrac{x}{x^2+1}\\in\\left[-\\tfrac12,\\tfrac12\\right]\\).\n" +
+        "- **Linear-fractional \\(\\dfrac{ax+b}{cx+d}\\)** takes every real value EXCEPT \\(\\dfrac ac\\) (the horizontal asymptote) — the one value a \"which is not in the range?\" option list is fishing for.\n" +
+        "- **A trig substitution for a cubic pattern:** on \\([-1,1]\\), \\(x=\\sin\\theta\\) turns \\(x(4x^2-3)=4\\sin^3\\theta-3\\sin\\theta=-\\sin3\\theta\\), and \\(x=\\cos\\theta\\) turns \\(4x^3-3x\\) into \\(\\cos3\\theta\\) — so the range is \\([-1,1]\\) immediately.",
       authoredExample: {
         prompt: "Find the range of \\(f(x)=\\dfrac{1}{1+x^2}\\), \\(x\\in\\mathbb{R}\\).",
         steps: [
@@ -139,7 +142,8 @@ export const FUNCTIONS_DOMAIN_RANGE_NOTE: SubtopicNote = {
       definition:
         "- **Even:** \\(f(-x)=f(x)\\) for all \\(x\\) (e.g. \\(x^2,\\ \\cos x,\\ |x|\\)).\n" +
         "- **Odd:** \\(f(-x)=-f(x)\\) for all \\(x\\) (e.g. \\(x^3,\\ \\sin x,\\ x\\)). An odd function defined at 0 has \\(f(0)=0\\).\n" +
-        "- Test by computing \\(f(-x)\\) and comparing. If it matches neither, the function is **neither**.",
+        "- Test by computing \\(f(-x)\\) and comparing. If it matches neither, the function is **neither**.\n" +
+        "- **The rationalisation that recurs:** \\(\\big(x+\\sqrt{1+x^2}\\big)\\big(-x+\\sqrt{1+x^2}\\big)=1\\), so \\(\\ln\\!\\big(-x+\\sqrt{1+x^2}\\big)=-\\ln\\!\\big(x+\\sqrt{1+x^2}\\big)\\): the function \\(\\ln\\!\\big(x+\\sqrt{1+x^2}\\big)\\) (which is \\(\\sinh^{-1}x\\)) is **odd**. The same trick shows \\(\\log\\dfrac{1-x}{1+x}\\) is odd and \\(\\dfrac{a^x-1}{a^x+1}\\) is odd, while \\(x\\cdot\\dfrac{a^x-1}{a^x+1}\\) is even.",
       visualizationSlug: "even-odd-symmetry",
       formula: {
         label: "Even and odd tests",

@@ -202,7 +202,8 @@ export const COORDINATES_DISTANCE_SECTION_NOTE: SubtopicNote = {
       definition:
         "The **midpoint** of \\(A\\) and \\(B\\) averages the two coordinate triples. The " +
         "**centroid** \\(G\\) of triangle \\(ABC\\) averages all three vertices: each coordinate " +
-        "of \\(G\\) is the mean of that coordinate over \\(A, B, C\\).",
+        "of \\(G\\) is the mean of that coordinate over \\(A, B, C\\). " +
+        "Two median facts that come with the midpoints: the centroid divides each median \\(2:1\\) from the vertex, and the **sum of squares of the medians is three-quarters of the sum of squares of the sides**, \\(AD^2 + BE^2 + CF^2 = \\tfrac34(AB^2 + BC^2 + CA^2)\\) (Apollonius: \\(AB^2 + AC^2 = 2AD^2 + 2BD^2\\) for the median \\(AD\\), summed over the three medians).",
       formula: {
         label: "Centroid of triangle ABC",
         latex:
@@ -252,7 +253,8 @@ export const COORDINATES_DISTANCE_SECTION_NOTE: SubtopicNote = {
         "Distance check: collinear iff \\(AB + BC = AC\\) (for \\(B\\) between).\n" +
         "**Shapes:** a triangle is right-angled where two sides satisfy Pythagoras; a parallelogram " +
         "has equal, bisecting diagonals (midpoint of one diagonal = midpoint of the other); a " +
-        "rectangle additionally has equal diagonals.",
+        "rectangle additionally has equal diagonals.\n" +
+        "**Area of a triangle in 3D:** there is no \\(\\tfrac12|x_1(y_2-y_3)+\\dots|\\) shortcut — use the cross product, \\(\\text{Area} = \\tfrac12\\,|\\overrightarrow{AB}\\times\\overrightarrow{AC}|\\) (or Heron's formula from the three distances). For \\(A(1,0,0), B(0,1,0), C(0,0,1)\\): \\(\\overrightarrow{AB}\\times\\overrightarrow{AC} = (1,1,1)\\), area \\(\\tfrac{\\sqrt3}{2}\\).",
       authoredExample: {
         prompt:
           "If the points \\(A(1, -1, 2)\\), \\(B(3, k, 4)\\) and \\(C(5, 3, 6)\\) are collinear, find \\(k\\).",

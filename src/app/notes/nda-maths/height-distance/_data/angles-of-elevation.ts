@@ -22,7 +22,8 @@ export const ANGLES_OF_ELEVATION_NOTE: SubtopicNote = {
         "- **Angle of depression:** the angle, measured **downward from the horizontal**, when you look at an object **below** you (e.g. a boat seen from a lighthouse top).\n" +
         "- In the right triangle with vertical height \\(h\\), horizontal base \\(d\\), and angle of elevation \\(\\theta\\) at the observer:\n" +
         "\\[\\tan\\theta = \\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{h}{d}, \\qquad \\sin\\theta = \\frac{h}{\\text{line of sight}}, \\qquad \\cos\\theta = \\frac{d}{\\text{line of sight}}.\\]\n" +
-        "Always **draw the right triangle and label the horizontal base and the vertical height** before writing anything.",
+        "Always **draw the right triangle and label the horizontal base and the vertical height** before writing anything.\n" +
+        "**Three identities that finish the arithmetic:** \\(\\cot\\theta=\\tan(90°-\\theta)\\) — so \\(122\\cot48°\\) and \\(122\\tan42°\\) are the SAME answer written two ways, and option lists switch between them; \\(\\sin^2\\theta+\\cos^2\\theta=1\\) and \\(1+\\cot^2\\theta=\\csc^2\\theta\\) — so a slant length \\(\\sqrt{d^2+h^2}\\) with \\(d=h\\cot\\theta\\) is \\(h\\sqrt{1+\\cot^2\\theta}=h\\csc\\theta=\\dfrac{h}{\\sin\\theta}\\). When the set-up lands on a quadratic (\\(x^2-40x+300=0\\)), factorise (\\((x-10)(x-30)\\)) and keep the root the geometry allows.",
       formula: {
         label: "Tangent of the angle of elevation",
         latex: "\\tan\\theta = \\frac{h}{d} = \\frac{\\text{height}}{\\text{horizontal distance}}",
@@ -179,6 +180,7 @@ export const ANGLES_OF_ELEVATION_NOTE: SubtopicNote = {
         "- From the **bottom** (elevation \\(\\beta\\)): \\(\\tan\\beta = \\dfrac{H}{d}\\).\n" +
         "- From the **top** of the lower object (elevation \\(\\alpha\\), at height \\(p\\)): \\(\\tan\\alpha = \\dfrac{H-p}{d}\\).\n" +
         "- **Eliminate \\(d\\)** by dividing or substituting; the target height drops out in terms of \\(p\\) and the two angles.\n" +
+        "- **How the difference of tangents simplifies** — the identity that turns the eliminated equation into the option's closed form: \\(\\tan\\beta-\\tan\\alpha=\\dfrac{\\sin(\\beta-\\alpha)}{\\cos\\alpha\\cos\\beta}\\). Subtracting the two equations gives \\(p=d(\\tan\\beta-\\tan\\alpha)\\), so \\(d=\\dfrac{p\\cos\\alpha\\cos\\beta}{\\sin(\\beta-\\alpha)}\\) and \\(H=d\\tan\\beta=\\dfrac{p\\cos\\alpha\\sin\\beta}{\\sin(\\beta-\\alpha)}\\). The distance from the upper observer to the top is then \\(\\sqrt{d^2+(H-p)^2}=\\dfrac{d}{\\cos\\alpha}\\), because \\(d^2(1+\\tan^2\\alpha)=d^2\\sec^2\\alpha\\) — \\(\\sin^2+\\cos^2=1\\) collapsing a sum of squares to a single slant length.\n" +
         "A clean special case: if the lower object's height \\(p\\) is itself asked, the same two equations relate \\(H\\), \\(p\\), and the angles.",
       formula: {
         label: "Same base, two heights",
@@ -507,5 +509,9 @@ export const ANGLES_OF_ELEVATION_NOTE: SubtopicNote = {
         },
       ],
     },
+  ],
+  related: [
+    { label: "Compound-angle formulas — tan β − tan α (Trigonometric Identities)", href: "/notes/nda-maths/trigonometric-identities/trig-compound-angle" },
+    { label: "Pythagorean identities & co-functions (Trigonometric Identities)", href: "/notes/nda-maths/trigonometric-identities/trig-values-quadrants" },
   ],
 };

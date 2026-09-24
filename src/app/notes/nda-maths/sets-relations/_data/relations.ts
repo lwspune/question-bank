@@ -20,6 +20,7 @@ export const RELATIONS_NOTE: SubtopicNote = {
         "The product and the counts:\n" +
         "- \\(A\\times B = \\{(a,b): a\\in A, b\\in B\\}\\); \\(|A\\times B| = |A|\\cdot|B|\\). So \\(|A\\times A| = 16 \\Rightarrow |A| = 4\\).\n" +
         "- A **relation** from A to B is any subset of \\(A\\times B\\); the number of relations is \\(2^{|A||B|}\\).\n" +
+        "- The number of **functions** (mappings) from A to B is \\(|B|^{|A|}\\) — each of the \\(|A|\\) inputs picks one of \\(|B|\\) outputs. The base is the CODOMAIN size and the exponent the DOMAIN size: from a 3-set to a 4-set there are \\(4^3=64\\) functions, not \\(3^4=81\\); and \\(2^{12}=4096\\) relations, of which only 64 are functions.\n" +
         "- **Domain** = set of first coordinates that occur; **range** = set of second coordinates; **codomain** = B (range may be smaller).\n" +
         "- Useful identity: \\((A\\times B)\\cap(B\\times A) = (A\\cap B)\\times(A\\cap B)\\).",
       formula: {

@@ -97,7 +97,8 @@ export const COEFFICIENTS_TERMS_NOTE: SubtopicNote = {
         "For an expansion in \\(x\\), write \\(T_{r+1}\\), simplify the exponent of \\(x\\) to a single linear expression in \\(r\\), set it equal to the target power, and solve:\n" +
         "- **Coefficient of \\(x^k\\):** solve (exponent of \\(x\\)) \\(= k\\) for \\(r\\), then evaluate \\(T_{r+1}\\).\n" +
         "- A **term from the end:** the \\(m\\)-th term from the end of an \\((n+1)\\)-term expansion is the \\((n+2-m)\\)-th from the start.\n" +
-        "- If solving gives a non-integer \\(r\\), that power simply does not appear (its coefficient is 0).",
+        "- If solving gives a non-integer \\(r\\), that power simply does not appear (its coefficient is 0).\n" +
+        "- **Ratio of consecutive terms:** \\(\\dfrac{T_{r+2}}{T_{r+1}}=\\dfrac{n-r}{r+1}\\cdot\\dfrac{b}{a}\\) for \\((a+b)^n\\). \"The sum of two consecutive terms is zero\" means this ratio is \\(-1\\); \"the \\(r\\)-th and \\((r+1)\\)-th coefficients are equal\" means \\(\\dfrac{n-r+1}{r}=1\\); and the numerically greatest term is where the ratio crosses 1.",
       formula: {
         label: "Set the exponent, solve for r",
         latex: "\\text{exponent of } x \\text{ in } T_{r+1} = k \\ \\Rightarrow\\ r \\ \\Rightarrow\\ \\text{coefficient}",
@@ -232,7 +233,8 @@ export const COEFFICIENTS_TERMS_NOTE: SubtopicNote = {
         "- **Conjugate product:** \\((a+b)(a-b) = a^2 - b^2\\), so \\((a+b)^k(a-b)^k = (a^2-b^2)^k\\) has \\(k+1\\) terms.\n" +
         "- **Perfect-square trinomial:** \\(1 + 2x + x^2 = (1+x)^2\\); collapse, then count.\n" +
         "- **Genuine trinomial** \\((a+b+c)^n\\): the number of distinct terms is \\(\\binom{n+2}{2}\\).\n" +
-        "- **Sum/difference of two expansions** \\((a+b)^n \\pm (a-b)^n\\): like powers either add or cancel — count only the survivors.",
+        "- **Sum/difference of two expansions** \\((a+b)^n \\pm (a-b)^n\\): like powers either add or cancel — count only the survivors.\n" +
+        "- **Expansions in DIFFERENT variables:** \\((1+x)^{10}+(1+y)^{10}\\) has \\(11+11-1=21\\) distinct terms, not 22 — the two constant terms are like terms and merge. Look for the shared \\(x^0\\) (and any other coincidence) before adding the counts.",
       formula: {
         label: "Distinct terms of a trinomial power",
         latex: "(a+b+c)^n \\ \\longrightarrow\\ \\binom{n+2}{2}\\ \\text{distinct terms}",

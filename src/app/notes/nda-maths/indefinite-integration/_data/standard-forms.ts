@@ -65,7 +65,13 @@ export const STANDARD_FORMS_NOTE: SubtopicNote = {
         "- \\(\\int \\sin x\\,dx = -\\cos x + C\\), \\(\\int \\cos x\\,dx = \\sin x + C\\)\n" +
         "- \\(\\int \\sec^2 x\\,dx = \\tan x + C\\), \\(\\int \\csc^2 x\\,dx = -\\cot x + C\\)\n" +
         "- \\(\\int \\sec x\\tan x\\,dx = \\sec x + C\\), \\(\\int \\tan x\\,dx = \\ln|\\sec x| + C\\)\n" +
-        "- \\(\\int \\dfrac{dx}{1+x^2} = \\tan^{-1}x + C\\), \\(\\int \\dfrac{dx}{\\sqrt{1-x^2}} = \\sin^{-1}x + C\\)",
+        "- \\(\\int \\dfrac{dx}{1+x^2} = \\tan^{-1}x + C\\), \\(\\int \\dfrac{dx}{\\sqrt{1-x^2}} = \\sin^{-1}x + C\\)\n" +
+        "**The second dozen — the rows the PYQs quote as \"standard form\" without proof:**\n" +
+        "- \\(\\int \\sec x\\,dx = \\ln|\\sec x + \\tan x| + C\\), \\(\\int \\csc x\\,dx = \\ln|\\csc x - \\cot x| + C\\), \\(\\int \\cot x\\,dx = \\ln|\\sin x| + C\\)\n" +
+        "- \\(\\int \\dfrac{dx}{x^2+a^2} = \\dfrac1a\\tan^{-1}\\dfrac xa + C\\), \\(\\int \\dfrac{dx}{\\sqrt{a^2-x^2}} = \\sin^{-1}\\dfrac xa + C\\), \\(\\int \\dfrac{dx}{x^2-a^2} = \\dfrac{1}{2a}\\ln\\left|\\dfrac{x-a}{x+a}\\right| + C\\)\n" +
+        "- \\(\\int \\dfrac{dx}{\\sqrt{x^2+a^2}} = \\ln\\big|x+\\sqrt{x^2+a^2}\\big| + C\\), \\(\\int \\dfrac{dx}{\\sqrt{x^2-a^2}} = \\ln\\big|x+\\sqrt{x^2-a^2}\\big| + C\\)\n" +
+        "- \\(\\int \\sqrt{x^2+a^2}\\,dx = \\dfrac x2\\sqrt{x^2+a^2} + \\dfrac{a^2}{2}\\ln\\big|x+\\sqrt{x^2+a^2}\\big| + C\\); \\(\\int \\sqrt{x^2-a^2}\\,dx = \\dfrac x2\\sqrt{x^2-a^2} - \\dfrac{a^2}{2}\\ln\\big|x+\\sqrt{x^2-a^2}\\big| + C\\); \\(\\int \\sqrt{a^2-x^2}\\,dx = \\dfrac x2\\sqrt{a^2-x^2} + \\dfrac{a^2}{2}\\sin^{-1}\\dfrac xa + C\\)\n" +
+        "- And for every row, \\(\\int f(ax+b)\\,dx = \\dfrac1a F(ax+b) + C\\) — the \\(\\tfrac1a\\) is the most-forgotten factor in the chapter.",
       formula: {
         label: "Power rule (the most-used row)",
         latex: "\\int x^n\\,dx = \\dfrac{x^{n+1}}{n+1} + C \\quad (n \\neq -1)",
@@ -158,6 +164,7 @@ export const STANDARD_FORMS_NOTE: SubtopicNote = {
         "The collapsing identities the NDA tests most:\n" +
         "- \\(e^{\\ln u} = u\\) — the exponential and natural log undo each other, so \\(\\int e^{\\ln(\\tan x)}\\,dx = \\int \\tan x\\,dx\\).\n" +
         "- \\(\\ln(u^k) = k\\ln u\\), so \\(e^{k\\ln x} = x^k\\) — a stacked log/exponent becomes a power.\n" +
+        "- \\(\\ln(ab)=\\ln a+\\ln b\\) and \\(\\ln\\tfrac ab=\\ln a-\\ln b\\) — so \\(\\ln(10e)=1+\\ln10\\), and \\(\\int\\dfrac{dx}{x\\ln(10e)}\\) is \\(\\dfrac{\\ln|x|}{1+\\ln10}\\), a constant divisor, not a new function.\n" +
         "- A quotient like \\(\\dfrac{P(x)}{x}\\) splits into powers (linearity), and the \\(\\dfrac{1}{x}\\) term is exactly what forces a \\(\\ln\\) (or must vanish for a rational answer).",
       formula: {
         label: "The collapse identity",
@@ -391,7 +398,9 @@ export const STANDARD_FORMS_NOTE: SubtopicNote = {
         "- **Perfect square under a root:** \\(1\\pm\\sin 2x=(\\sin x\\pm\\cos x)^2\\) and \\(1\\pm\\sin\\theta=\\left(\\cos\\tfrac\\theta2\\pm\\sin\\tfrac\\theta2\\right)^2\\), so \\(\\sqrt{1\\pm\\sin 2x}=|\\sin x\\pm\\cos x|\\) — **keep the modulus; its sign depends on the interval.**\n" +
         "- **\\(\\sec\\pm\\tan\\):** \\(\\sec x+\\tan x=\\dfrac{1+\\sin x}{\\cos x}=\\tan\\!\\left(\\tfrac\\pi4+\\tfrac x2\\right)\\), \\(\\sec x-\\tan x=\\tan\\!\\left(\\tfrac\\pi4-\\tfrac x2\\right)\\).\n" +
         "- **Harmonic form:** \\(a\\sin x+b\\cos x=\\sqrt{a^2+b^2}\\,\\sin(x+\\alpha)\\), so its extreme values are \\(\\pm\\sqrt{a^2+b^2}\\).\n" +
-        "- **Weierstrass \\(t=\\tan\\tfrac{x}{2}\\):** \\(\\sin x=\\dfrac{2t}{1+t^2}\\), \\(\\cos x=\\dfrac{1-t^2}{1+t^2}\\), \\(dx=\\dfrac{2\\,dt}{1+t^2}\\) — turns any rational function of \\(\\sin x,\\cos x\\) into a rational function of \\(t\\).",
+        "- **Weierstrass \\(t=\\tan\\tfrac{x}{2}\\):** \\(\\sin x=\\dfrac{2t}{1+t^2}\\), \\(\\cos x=\\dfrac{1-t^2}{1+t^2}\\), \\(dx=\\dfrac{2\\,dt}{1+t^2}\\) — turns any rational function of \\(\\sin x,\\cos x\\) into a rational function of \\(t\\).\n" +
+        "- **The Pythagorean pair as named identities:** \\(\\sec^2x=1+\\tan^2x\\) and \\(\\csc^2x=1+\\cot^2x\\) — they are what make \\(\\int\\sec^2x\\,dx=\\tan x\\) and the divide-by-\\(\\cos^2x\\) move work, and \\(\\int\\tan^2x\\,dx=\\tan x-x\\), \\(\\int\\cot^2x\\,dx=-\\cot x-x\\) follow from them.\n" +
+        "- **Stripping an inverse:** \\(\\tan^{-1}(\\tan\\theta)=\\theta\\) only for \\(\\theta\\in(-\\tfrac\\pi2,\\tfrac\\pi2)\\), so \\(\\tan^{-1}(\\sec x+\\tan x)=\\tan^{-1}\\tan(\\tfrac\\pi4+\\tfrac x2)=\\tfrac\\pi4+\\tfrac x2\\) on \\(-\\tfrac{3\\pi}{2}<x<\\tfrac\\pi2\\), and its integral is \\(\\tfrac{\\pi x}{4}+\\tfrac{x^2}{4}+C\\).",
       formula: {
         label: "The collapses you reach for most",
         latex:
@@ -442,5 +451,9 @@ export const STANDARD_FORMS_NOTE: SubtopicNote = {
         },
       ],
     },
+  ],
+  related: [
+    { label: "Logarithm laws — ln(ab), ln(a/b), ln aᵏ (Logarithms)", href: "/notes/nda-maths/logarithms/log-identities-change-of-base-sums" },
+    { label: "Principal values of inverse trig functions (Inverse Trigonometry)", href: "/notes/nda-maths/inverse-trigonometry/it-identities-properties" },
   ],
 };

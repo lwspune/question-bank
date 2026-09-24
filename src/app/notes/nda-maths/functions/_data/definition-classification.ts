@@ -153,7 +153,7 @@ export const FUNCTIONS_DEFINITION_CLASSIFICATION_NOTE: SubtopicNote = {
         "Let \\(|A|=m\\), \\(|B|=n\\).\n" +
         "- **All functions** \\(A\\to B\\): \\(n^m\\) (each of \\(m\\) inputs has \\(n\\) choices).\n" +
         "- **One-one** (needs \\(n\\ge m\\)): \\(n(n-1)\\cdots(n-m+1)={}^{n}P_{m}\\).\n" +
-        "- **Onto** (general): inclusion–exclusion; for \\(n=2\\) it is \\(2^m-2\\).",
+        "- **Onto** (general): inclusion–exclusion, \\(\\displaystyle\\sum_{k=0}^{n}(-1)^k\\binom nk (n-k)^m = n^m-\\binom n1(n-1)^m+\\binom n2(n-2)^m-\\dots\\); for \\(n=2\\) it is \\(2^m-2\\), for \\(n=3\\) it is \\(3^m-3\\cdot2^m+3\\) (so \\(36\\) onto maps from a 4-set to a 3-set). Needs \\(m\\ge n\\); when \\(m=n\\) onto = one-one = \\(n!\\).",
       formula: {
         label: "Number of functions A → B",
         latex:

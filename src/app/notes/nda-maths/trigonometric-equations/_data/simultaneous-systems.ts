@@ -19,7 +19,8 @@ export const SIMULTANEOUS_SYSTEMS_NOTE: SubtopicNote = {
       definition:
         "- **Intersect the solution sets:** for \\(\\cot\\theta = -\\sqrt3\\) AND \\(\\csc\\theta = -2\\), list each in the interval and keep the common angle (the two conditions fix both the reference angle and the quadrant).\n" +
         "- **Two-angle systems:** \\(\\sin(A+B) = 1\\) and \\(2\\sin(A-B) = 1\\) give \\(A+B = \\tfrac{\\pi}{2}\\), \\(A-B = \\tfrac{\\pi}{6}\\); solve the linear pair for \\(A, B\\), then any required ratio.\n" +
-        "- **\\(\\sin\\alpha + \\sin\\beta = 0 = \\cos\\alpha + \\cos\\beta\\):** both are negated, forcing \\(\\alpha = \\pi + \\beta\\).",
+        "- **\\(\\sin\\alpha + \\sin\\beta = 0 = \\cos\\alpha + \\cos\\beta\\):** both are negated, forcing \\(\\alpha = \\pi + \\beta\\).\n" +
+        "- **The quadrant rule that does the pinning (ASTC):** in quadrant I All ratios are positive; in II only Sine (and cosec); in III only Tangent (and cot); in IV only Cosine (and sec). So \\(\\cot\\theta=-\\sqrt3\\) puts \\(\\theta\\) in II or IV, \\(\\csc\\theta=-2\\) puts it in III or IV — together, quadrant IV, and with reference angle \\(\\tfrac\\pi6\\) the answer on \\([0,2\\pi)\\) is \\(\\tfrac{11\\pi}{6}\\). Place the reference angle as \\(\\pi-\\alpha\\), \\(\\pi+\\alpha\\), \\(2\\pi-\\alpha\\) for quadrants II, III, IV.",
       formula: {
         label: "Common solution = intersection",
         latex: "\\{\\theta : \\text{eqn 1}\\} \\cap \\{\\theta : \\text{eqn 2}\\}",

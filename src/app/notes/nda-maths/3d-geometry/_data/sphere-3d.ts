@@ -87,7 +87,8 @@ export const SPHERE_3D_NOTE: SubtopicNote = {
       definition:
         "With diameter endpoints \\(A(x_1,y_1,z_1)\\) and \\(B(x_2,y_2,z_2)\\), the sphere is " +
         "\\((x-x_1)(x-x_2) + (y-y_1)(y-y_2) + (z-z_1)(z-z_2) = 0\\). The centre is the midpoint of \\(AB\\) " +
-        "and the radius is half of \\(AB\\).",
+        "and the radius is half of \\(AB\\). " +
+        "The form says \\(\\vec{PA}\\cdot\\vec{PB} = 0\\) for every point \\(P\\) of the sphere — the angle in a semicircle is a right angle — so by Pythagoras **\\(PA^2 + PB^2 = AB^2\\) for every \\(P\\) on the sphere**; a locus question \"\\(PA^2+PB^2 = k\\)\" with \\(k = AB^2\\) IS this sphere, and with other \\(k\\) it is a concentric one.",
       formula: {
         label: "Diameter form",
         latex:
@@ -134,7 +135,8 @@ export const SPHERE_3D_NOTE: SubtopicNote = {
         "**Centre \\((a,b,c)\\), radius \\(r\\):** \\((x-a)^2 + (y-b)^2 + (z-c)^2 = r^2\\).\n" +
         "**Concentric** spheres share a centre, so they share \\(u, v, w\\); only \\(d\\) differs. To make " +
         "it pass through a given point, substitute that point to solve for \\(d\\) (passing through the " +
-        "origin forces \\(d = 0\\)).",
+        "origin forces \\(d = 0\\)).\n" +
+        "**The smallest sphere through three given points** has those points on a GREAT circle: its centre is the circumcentre of the triangle they form and its radius the circumradius \\(R = \\dfrac{abc}{4\\Delta}\\). For an equilateral triangle of side \\(a\\), \\(R = \\dfrac{a}{\\sqrt3}\\) and the centre is the centroid — so for \\((1,0,0),(0,1,0),(0,0,1)\\) (side \\(\\sqrt2\\)) the smallest sphere has centre \\((\\tfrac13,\\tfrac13,\\tfrac13)\\) and radius \\(\\sqrt{2/3}\\). Every other sphere through the three points is larger, with its centre on the line through the circumcentre perpendicular to the plane.",
       authoredExample: {
         prompt: "Find the equation of the sphere with centre \\((2, -1, 3)\\) and radius 5.",
         steps: [
@@ -234,7 +236,8 @@ export const SPHERE_3D_NOTE: SubtopicNote = {
         "with each distance equal to \\(r\\). Writing the centre as \\((\\pm a, \\pm a, \\pm a)\\), the " +
         "distance from the centre to (say) the \\(z\\)-axis is \\(\\sqrt{a^2 + a^2} = a\\sqrt2\\); setting " +
         "\\(a\\sqrt2 = r\\) gives \\(a = \\tfrac{r}{\\sqrt2}\\). Each independent sign choice gives a " +
-        "distinct sphere, so there are several such spheres (one per octant configuration).",
+        "distinct sphere, so there are several such spheres (one per octant configuration).\n" +
+        "**A different configuration — the sphere THROUGH the origin and the three axis intercepts** \\(A(\\alpha,0,0)\\), \\(B(0,\\beta,0)\\), \\(C(0,0,\\gamma)\\): substituting the four points into \\(x^2+y^2+z^2+2ux+2vy+2wz+d=0\\) gives \\(d=0\\), \\(u=-\\alpha/2\\), \\(v=-\\beta/2\\), \\(w=-\\gamma/2\\), so the equation is \\(x^2+y^2+z^2-\\alpha x-\\beta y-\\gamma z=0\\) and the **centre is \\((\\alpha/2,\\ \\beta/2,\\ \\gamma/2)\\)** — the midpoint of the box diagonal \\(O\\) to \\((\\alpha,\\beta,\\gamma)\\), radius \\(\\tfrac12\\sqrt{\\alpha^2+\\beta^2+\\gamma^2}\\). Locus questions follow: if the plane \\(\\tfrac x\\alpha+\\tfrac y\\beta+\\tfrac z\\gamma=1\\) is constrained (e.g. passes through a fixed point \\((a,b,c)\\), or the intercepts satisfy \\(\\tfrac1{\\alpha^2}+\\tfrac1{\\beta^2}+\\tfrac1{\\gamma^2}=\\tfrac1{p^2}\\) for a fixed distance \\(p\\) from \\(O\\)), write the centre as \\((x,y,z)=(\\alpha/2,\\beta/2,\\gamma/2)\\) and substitute \\(\\alpha=2x\\) etc.: the locus is \\(\\tfrac a x+\\tfrac b y+\\tfrac c z=2\\), respectively \\(\\tfrac1{x^2}+\\tfrac1{y^2}+\\tfrac1{z^2}=\\tfrac4{p^2}\\).",
       formula: {
         label: "Distance from a point to the z-axis",
         latex: "\\text{dist to } z\\text{-axis} = \\sqrt{x_c^2 + y_c^2}",

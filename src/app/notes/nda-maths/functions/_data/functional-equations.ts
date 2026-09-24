@@ -67,7 +67,10 @@ export const FUNCTIONS_FUNCTIONAL_EQUATIONS_NOTE: SubtopicNote = {
       definition:
         "- \\(f(xy)=f(x)f(y)\\): power-type, \\(f(x)=x^k\\); useful values come from \\(f(1)=1\\) and \\(f(1/a)=1/f(a)\\).\n" +
         "- \\(f(x+y)=f(x)f(y)\\): exponential, \\(f(x)=a^x\\); so \\(f(x)f(y)f(z)=f(x+y+z)\\).\n" +
-        "- \\(f(x+y)=f(x)+f(y)\\): additive (Cauchy), \\(f(x)=cx\\).",
+        "- \\(f(x+y)=f(x)+f(y)\\): additive (Cauchy), \\(f(x)=cx\\).\n" +
+        "- \\(f(x-y)=f(x)f(y)\\): put \\(x=y\\) to get \\(f(0)=f(x)^2\\), so \\(f\\) is constant \\(0\\) or \\(1\\) on the values it takes; with \\(f(0)=1\\) and \\(f(1)=a\\) the useful line is \\(f(n)=a^n\\) — treat it like the exponential form after fixing \\(f(0)\\).\n" +
+        "- \\(f(xy)=f(x+y)\\) for all \\(x,y\\): a **fourth signature the three above actively mislead on** — put \\(y=0\\): \\(f(0)=f(x)\\) for every \\(x\\), so \\(f\\) is **constant**. Then \\(f(2020)=f(0)=f(1)=\\dots\\), and any sum \\(\\sum f(k)\\) is just \\(n\\) times that constant.\n" +
+        "- **Finishing an exponential-type equation usually needs a GP sum:** if \\(f(x)=2^x\\) then \\(\\sum_{x=1}^{n}f(x)=2+4+\\dots+2^n=2^{n+1}-2\\), and \\(\\sum_{x=1}^{n}4^x=\\dfrac{4(4^n-1)}{3}\\) — the formula is \\(a\\dfrac{r^n-1}{r-1}\\) (Sequence & Series). If a stem says \\(f(a),f(b),f(c)\\) are in GP with \\(f(x)=k^x\\), that is \\(b^2=ac\\) on the exponents' images, i.e. \\(f(b)^2=f(a)f(c)\\Rightarrow 2b=a+c\\).",
       formula: {
         label: "Signature functional-equation solutions",
         latex:
@@ -123,5 +126,9 @@ export const FUNCTIONS_FUNCTIONAL_EQUATIONS_NOTE: SubtopicNote = {
       ],
       pyqExampleId: "7176d419-e3fc-4752-90df-e84ca0e16ac7", // 2021 — f(x+1)=x²−3x+2 → f(x)=x²−5x+6
     },
+  ],
+  related: [
+    { label: "GP sums — finite and infinite (Sequence & Series)", href: "/notes/nda-maths/sequence-series/seq-geometric-progressions" },
+    { label: "Triple-angle formulas (Trigonometric Identities)", href: "/notes/nda-maths/trigonometric-identities/trig-multiple-half-angle" },
   ],
 };

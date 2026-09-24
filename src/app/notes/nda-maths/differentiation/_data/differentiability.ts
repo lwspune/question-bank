@@ -64,7 +64,8 @@ export const DIFFERENTIABILITY_NOTE: SubtopicNote = {
         "\\(f\\) is differentiable at \\(x=c\\) iff the one-sided derivatives match:\n" +
         "- **LHD** \\(= \\lim_{h\\to 0^-}\\dfrac{f(c+h)-f(c)}{h}\\)\n" +
         "- **RHD** \\(= \\lim_{h\\to 0^+}\\dfrac{f(c+h)-f(c)}{h}\\)\n" +
-        "Differentiable at \\(c\\) \\(\\iff\\) LHD \\(=\\) RHD (and both finite). In practice: differentiate each piece, then equate the two pieces' derivatives **at the join** (after first checking continuity there).",
+        "Differentiable at \\(c\\) \\(\\iff\\) LHD \\(=\\) RHD (and both finite). In practice: differentiate each piece, then equate the two pieces' derivatives **at the join** (after first checking continuity there).\n" +
+        "**When the one-sided derivatives are INFINITE** the function is still not differentiable there, but the graph has a **vertical tangent** rather than a corner: \\(y=x^{1/3}\\) at \\(x=0\\) has \\(\\dfrac{f(h)-f(0)}{h}=h^{-2/3}\\to+\\infty\\) from both sides — continuous, vertical tangent \\(x=0\\), no derivative. \\(y=x^{2/3}\\) (a cusp: \\(-\\infty\\) from the left, \\(+\\infty\\) from the right) is the same verdict. \"Infinite derivative\" in an option list means exactly this case and is a legitimate description, not an error.",
       formula: {
         label: "One-sided derivative test",
         latex:
@@ -236,7 +237,8 @@ export const DIFFERENTIABILITY_NOTE: SubtopicNote = {
       intuition:
         "When a point is special — a modulus, a \\(\\ln|x|\\), or a value patched in by hand (\\(f(0)=0\\)) — the rule-based derivative may not apply directly. Fall back to the **definition**: \\(f'(c)=\\lim_{h\\to 0}\\frac{f(c+h)-f(c)}{h}\\) and evaluate the limit.",
       definition:
-        "At a point where the usual rules are unsafe, compute \\(f'(c)=\\lim_{h\\to 0}\\dfrac{f(c+h)-f(c)}{h}\\) directly. If the limit exists (and is the same from both sides), that value is the derivative; if it doesn't, \\(f\\) is not differentiable at \\(c\\).",
+        "At a point where the usual rules are unsafe, compute \\(f'(c)=\\lim_{h\\to 0}\\dfrac{f(c+h)-f(c)}{h}\\) directly. If the limit exists (and is the same from both sides), that value is the derivative; if it doesn't, \\(f\\) is not differentiable at \\(c\\).\n" +
+        "The two standard limits these computations need: \\(\\lim_{h\\to0}\\dfrac{e^h-1}{h}=1\\) (so for \\(f(x)=e^{|x|}\\) the RHD at 0 is \\(+1\\) and the LHD is \\(-1\\) — not differentiable), and the small-\\(u\\) approximation \\(e^u\\approx1+u\\), which gives \\(1-e^{-x^2}\\approx x^2\\) and hence \\(\\sqrt{1-e^{-x^2}}\\approx|x|\\) — a corner at 0 disguised as a smooth expression. Sibling facts: \\(\\lim_{h\\to0}h\\ln|h|=0\\), \\(\\lim_{h\\to0}\\dfrac{\\sin h}{h}=1\\).",
       formula: {
         label: "Derivative from first principles",
         latex: "f'(c) = \\lim_{h \\to 0} \\dfrac{f(c+h) - f(c)}{h}",

@@ -22,7 +22,9 @@ export const OPERATIONS_NOTE: SubtopicNote = {
         "- **Set** — a well-defined collection of distinct objects; \\(x \\in A\\) means x belongs to A.\n" +
         "- **Empty (null) set** \\(\\emptyset\\) — has no elements; it is a **subset of every set**. A condition with no solutions defines \\(\\emptyset\\) (e.g. \\(\\{x \\in \\mathbb{R} : x^2 + 1 = 0\\} = \\emptyset\\)).\n" +
         "- **Subset** \\(A \\subseteq B\\) — every element of A is in B. **Proper subset** \\(A \\subset B\\) excludes \\(A = B\\).\n" +
-        "- **Equal** sets have exactly the same elements; **equivalent** sets only have the same number of elements (same cardinality). Equal \\(\\Rightarrow\\) equivalent, not the reverse.",
+        "- **Equal** sets have exactly the same elements; **equivalent** sets only have the same number of elements (same cardinality). Equal \\(\\Rightarrow\\) equivalent, not the reverse.\n" +
+        "- **Finite vs infinite** — read the condition, not the number in it: \\(\\{x\\in\\mathbb Z: x \\text{ odd}, x<1000\\}\\) is **infinite** (unbounded below: \\(-1,-3,\\dots\\)); any real interval, however short, contains infinitely many rationals AND infinitely many irrationals; \\(\\{x\\in\\mathbb N: x<1000\\}\\) is finite. 'Less than \\(N\\)' bounds a set from above only.\n" +
+        "- **Membership is not transitive, and \\(\\in\\) is not \\(\\subseteq\\):** \\(1\\in\\{1\\}\\) and \\(\\{1\\}\\in\\{\\{1\\},2\\}\\) do NOT give \\(1\\in\\{\\{1\\},2\\}\\). For \\(A=\\{\\{1\\},2\\}\\): \\(\\{1\\}\\in A\\) is true, \\(\\{1\\}\\subseteq A\\) is false, \\(\\{\\{1\\}\\}\\subseteq A\\) is true. Subset-of is transitive; element-of is not.",
       authoredExample: {
         prompt:
           "Are the sets \\(A = \\{1, 2, 3\\}\\) and \\(B = \\{a, e, i\\}\\) equal, equivalent, or neither?",
@@ -70,7 +72,9 @@ export const OPERATIONS_NOTE: SubtopicNote = {
         "The operations and the identities the bank leans on:\n" +
         "- \\(A \\cup B\\) (union), \\(A \\cap B\\) (intersection), \\(A'\\) (complement, relative to the universal set), \\(A - B = A \\cap B'\\) (difference).\n" +
         "- **Complement is an involution**: \\((A')' = A\\). A long nested complement like \\(E-(E-(E-A))\\) collapses by cancelling in pairs.\n" +
-        "- A set can be defined by a condition — solving it gives the set: \\((x-a)(x-b) > 0\\) (with \\(a<b\\)) gives \\(x < a\\) or \\(x > b\\); multiples of 2 AND 3 are the multiples of 6.",
+        "- A set can be defined by a condition — solving it gives the set: \\((x-a)(x-b) > 0\\) (with \\(a<b\\)) gives \\(x < a\\) or \\(x > b\\); multiples of 2 AND 3 are the multiples of 6.\n" +
+        "- **Counting the difference:** \\(|A-B|=|A|-|A\\cap B|\\) (the cardinality version of \\(A-B=A\\cap B'\\)), so \\(|A-B|+|B-A|=|A|+|B|-2|A\\cap B|=|A\\triangle B|\\). And \\(A-B=\\emptyset\\iff A\\subseteq B\\) — NOT \\(A=B\\); equality needs \\(B-A=\\emptyset\\) as well.\n" +
+        "- **Absolute-value facts a set condition may hide:** \\(|ab|=|a||b|\\), \\(|a+b|\\le|a|+|b|\\), \\(|a-b|\\ge\\big||a|-|b|\\big|\\), and \\(|x|<k\\iff-k<x<k\\), \\(|x|>k\\iff x<-k\\) or \\(x>k\\); a quadratic condition has real solutions only when its discriminant is \\(\\ge0\\), so \\(\\{x\\in\\mathbb R: x^2+x+1=0\\}=\\emptyset\\).",
       formula: {
         label: "Difference and complement identities",
         latex: "A - B = A \\cap B' \\qquad (A')' = A",
@@ -225,5 +229,9 @@ export const OPERATIONS_NOTE: SubtopicNote = {
         },
       ],
     },
+  ],
+  related: [
+    { label: "Discriminant and real roots (Quadratic Equations)", href: "/notes/nda-maths/quadratic-equations/qe-nature-of-roots" },
+    { label: "Modulus function and |x| inequalities (Functions)", href: "/notes/nda-maths/functions/funcs-domain-range-properties" },
   ],
 };

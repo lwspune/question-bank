@@ -16,7 +16,9 @@ export const CORE_TECHNIQUES_NOTE: SubtopicNote = {
       intuition:
         "The derivative is the **limit of the slope** of a chord as its two points slide together — the instantaneous rate of change. Every rule below is a shortcut for this one limit, so a question that writes the limit out is really just asking for the derivative.",
       definition:
-        "\\(f'(x) = \\lim_{h\\to 0}\\dfrac{f(x+h)-f(x)}{h}\\) — the slope of the tangent at \\(x\\). Equivalently \\(f'(a)=\\lim_{x\\to a}\\dfrac{f(x)-f(a)}{x-a}\\). Geometrically it is the slope of the tangent line; physically, a rate of change.",
+        "\\(f'(x) = \\lim_{h\\to 0}\\dfrac{f(x+h)-f(x)}{h}\\) — the slope of the tangent at \\(x\\). Equivalently \\(f'(a)=\\lim_{x\\to a}\\dfrac{f(x)-f(a)}{x-a}\\). Geometrically it is the slope of the tangent line; physically, a rate of change.\n" +
+        "- **Read the definition backwards too:** a limit of the shape \\(\\lim_{h\\to0}\\dfrac{f(a+h)-f(a)}{h}\\) or \\(\\lim_{x\\to a}\\dfrac{f(x)-f(a)}{x-a}\\) IS \\(f'(a)\\) — e.g. \\(\\lim_{x\\to\\pi/2}\\dfrac{\\sin x-1}{x-\\pi/2}=\\cos\\tfrac\\pi2=0\\), and \\(\\lim_{h\\to0}\\dfrac{f(a+2h)-f(a)}{h}=2f'(a)\\).\n" +
+        "- **From slope to line and angle:** the tangent at \\((x_1,y_1)\\) is \\(y-y_1=f'(x_1)(x-x_1)\\), the normal has slope \\(-1/f'(x_1)\\). The tangent's **angle of inclination** \\(\\theta\\in[0,\\pi)\\) with the positive x-axis satisfies \\(\\tan\\theta=f'(x_1)\\) — so a negative slope means an OBTUSE angle, \\(\\theta=\\pi-\\tan^{-1}|f'|\\), and the angle with the y-axis is \\(\\tfrac\\pi2-\\theta\\) (or \\(\\theta-\\tfrac\\pi2\\)).",
       formula: {
         label: "First-principles definition",
         latex: "f'(x) = \\lim_{h\\to 0}\\frac{f(x+h)-f(x)}{h}",
@@ -70,6 +72,13 @@ export const CORE_TECHNIQUES_NOTE: SubtopicNote = {
           { cells: ["\\(\\log_a x\\)", "\\(\\dfrac{1}{x\\ln a}\\)"] },
           { cells: ["\\(\\sin^{-1} x\\)", "\\(\\dfrac{1}{\\sqrt{1-x^2}}\\)"] },
           { cells: ["\\(\\tan^{-1} x\\)", "\\(\\dfrac{1}{1+x^2}\\)"] },
+          { cells: ["\\(\\cot x\\)", "\\(-\\csc^2 x\\)"] },
+          { cells: ["\\(\\csc x\\)", "\\(-\\csc x\\cot x\\)"], noteAmber: "The co-functions (cos, cot, cosec) all carry a MINUS sign." },
+          { cells: ["\\(\\cos^{-1} x\\)", "\\(-\\dfrac{1}{\\sqrt{1-x^2}}\\)"] },
+          { cells: ["\\(\\cot^{-1} x\\)", "\\(-\\dfrac{1}{1+x^2}\\)"] },
+          { cells: ["\\(\\sec^{-1} x\\)", "\\(\\dfrac{1}{|x|\\sqrt{x^2-1}}\\)"] },
+          { cells: ["\\(\\ln|x|\\)", "\\(\\dfrac{1}{x}\\) for all \\(x\\neq0\\)"] },
+          { cells: ["\\(\\tfrac{x}{2}\\sqrt{x^2-a^2}-\\tfrac{a^2}{2}\\ln\\big|x+\\sqrt{x^2-a^2}\\big|\\)", "\\(\\sqrt{x^2-a^2}\\)"], noteAmber: "The antiderivative of √(x²−a²), read backwards — a 'standard form' the PYQs quote without proof; the +a² sibling differentiates to √(x²+a²)." },
         ],
         caption: "Radians only. The chain rule extends each of these to a composite argument.",
       },
@@ -116,7 +125,8 @@ export const CORE_TECHNIQUES_NOTE: SubtopicNote = {
       definition:
         "- **Product:** \\((uv)' = u'v + uv'\\).\n" +
         "- **Quotient:** \\(\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}\\).\n" +
-        "- **Linearity:** \\((au \\pm bv)' = au' \\pm bv'\\).",
+        "- **Linearity:** \\((au \\pm bv)' = au' \\pm bv'\\).\n" +
+        "- **A determinant whose entries are functions of \\(x\\)** is a sum of products, so the product rule applies row by row: \\(\\dfrac{d}{dx}|R_1;R_2;R_3| = |R_1';R_2;R_3| + |R_1;R_2';R_3| + |R_1;R_2;R_3'|\\) (differentiate ONE row at a time, keep the others). For a \\(2\\times2\\) or \\(3\\times3\\) with simple entries it is usually faster to expand first and then differentiate — full treatment in the Matrices & Determinants notes (linked below).",
       formula: {
         label: "Product and quotient rules",
         latex: "(uv)' = u'v + uv', \\qquad \\left(\\frac{u}{v}\\right)' = \\frac{u'v - uv'}{v^2}",
@@ -165,7 +175,9 @@ export const CORE_TECHNIQUES_NOTE: SubtopicNote = {
       intuition:
         "To differentiate a function of a function, differentiate the **outer** function (leaving the inner alone) and **multiply** by the derivative of the inner. Peel the layers from outside in — this single rule is the most-used tool in the chapter.",
       definition:
-        "\\(\\dfrac{d}{dx}f(g(x)) = f'(g(x))\\cdot g'(x)\\). For nested layers, multiply each layer's derivative: \\(\\dfrac{d}{dx}f(g(h(x))) = f'(g(h(x)))\\,g'(h(x))\\,h'(x)\\).",
+        "\\(\\dfrac{d}{dx}f(g(x)) = f'(g(x))\\cdot g'(x)\\). For nested layers, multiply each layer's derivative: \\(\\dfrac{d}{dx}f(g(h(x))) = f'(g(h(x)))\\,g'(h(x))\\,h'(x)\\).\n" +
+        "- **Recognisable chain-rule patterns:** \\(u\\,u'+v\\,v'=\\tfrac12\\dfrac{d}{dx}(u^2+v^2)\\) (so \\(\\sin x\\cos x+\\dots\\) sums often collapse); \\(\\dfrac{d}{dx}\\ln|x|=\\dfrac1x\\) for EVERY \\(x\\ne0\\) — for \\(x<0\\), \\(\\ln|x|=\\ln(-x)\\) and the chain rule gives \\(\\dfrac{-1}{-x}=\\dfrac1x\\), so the sign does NOT flip; \\(\\dfrac{d}{dx}|x|=\\dfrac{x}{|x|}=\\operatorname{sgn}x\\).\n" +
+        "- **Parity passes to the derivative, flipped:** if \\(f\\) is even then \\(f'\\) is odd, and if \\(f\\) is odd then \\(f'\\) is even (differentiate \\(f(-x)=\\pm f(x)\\) by the chain rule: \\(-f'(-x)=\\pm f'(x)\\)). An odd \\(f'\\) has \\(f'(0)=0\\).",
       formula: {
         label: "Chain rule",
         latex: "\\frac{d}{dx}\\,f(g(x)) = f'(g(x))\\cdot g'(x)",
@@ -291,6 +303,9 @@ export const CORE_TECHNIQUES_NOTE: SubtopicNote = {
         "Common collapses (memorise the substitutions):\n" +
         "- \\(\\tan^{-1}\\!\\dfrac{2x}{1-x^2},\\ \\sin^{-1}\\!\\dfrac{2x}{1+x^2},\\ \\cos^{-1}\\!\\dfrac{1-x^2}{1+x^2}\\): put \\(x=\\tan\\theta\\Rightarrow 2\\theta = 2\\tan^{-1}x\\).\n" +
         "- \\(\\cos^{-1}(\\sin x) = \\tfrac{\\pi}{2}-x\\); \\(\\tan^{-1}\\!\\dfrac{a-b}{1+ab}=\\tan^{-1}a-\\tan^{-1}b\\).\n" +
+        "- **Complementary pairs are constants, so their derivative is 0:** \\(\\sin^{-1}x+\\cos^{-1}x=\\tan^{-1}x+\\cot^{-1}x=\\sec^{-1}x+\\csc^{-1}x=\\tfrac\\pi2\\). Hence \\(\\dfrac{d}{dx}\\cos^{-1}x=-\\dfrac{1}{\\sqrt{1-x^2}}\\) and \\(\\dfrac{d}{dx}\\cot^{-1}x=-\\dfrac{1}{1+x^2}\\) — the co-function's derivative is the negative of its partner's.\n" +
+        "- **Reciprocal arguments:** \\(\\sec^{-1}z=\\cos^{-1}\\tfrac1z\\), \\(\\csc^{-1}z=\\sin^{-1}\\tfrac1z\\), \\(\\cot^{-1}z=\\tan^{-1}\\tfrac1z\\) (for \\(z>0\\)); so \\(y=\\sec^{-1}\\!\\big(\\tfrac{1}{2x^2-1}\\big)=\\cos^{-1}(2x^2-1)=2\\cos^{-1}x\\) on \\([0,1]\\).\n" +
+        "- **Un-collapsing on the wrong branch:** \\(\\cos^{-1}(\\cos x)=x\\) only on \\([0,\\pi]\\); on \\([-\\pi,0]\\) it is \\(-x\\), so \\(\\cos^{-1}(\\cos x)=|x|\\) on \\([-\\pi,\\pi]\\) and its derivative is \\(-1\\) for \\(x<0\\). Likewise \\(\\sin^{-1}(\\sin x)=\\pi-x\\) on \\([\\tfrac\\pi2,\\tfrac{3\\pi}2]\\), derivative \\(-1\\).\n" +
         "Differentiate the collapsed form (often \\(\\pm 1\\), \\(\\pm 2/(1+x^2)\\), etc.).",
       formula: {
         label: "Standard inverse-trig collapses",
@@ -379,7 +394,9 @@ export const CORE_TECHNIQUES_NOTE: SubtopicNote = {
         "- **Perfect square under a root:** \\(1\\pm\\sin 2x=(\\sin x\\pm\\cos x)^2\\) and \\(1\\pm\\sin\\theta=\\left(\\cos\\tfrac\\theta2\\pm\\sin\\tfrac\\theta2\\right)^2\\), so \\(\\sqrt{1\\pm\\sin 2x}=|\\sin x\\pm\\cos x|\\) — **keep the modulus; its sign depends on the interval.**\n" +
         "- **\\(\\sec\\pm\\tan\\):** \\(\\sec x+\\tan x=\\dfrac{1+\\sin x}{\\cos x}=\\tan\\!\\left(\\tfrac\\pi4+\\tfrac x2\\right)\\), \\(\\sec x-\\tan x=\\tan\\!\\left(\\tfrac\\pi4-\\tfrac x2\\right)\\).\n" +
         "- **Harmonic form:** \\(a\\sin x+b\\cos x=\\sqrt{a^2+b^2}\\,\\sin(x+\\alpha)\\), so its extreme values are \\(\\pm\\sqrt{a^2+b^2}\\).\n" +
-        "- **Weierstrass \\(t=\\tan\\tfrac{x}{2}\\):** \\(\\sin x=\\dfrac{2t}{1+t^2}\\), \\(\\cos x=\\dfrac{1-t^2}{1+t^2}\\) — useful whenever a rational function of \\(\\sin x,\\cos x\\) must be handled in one variable.",
+        "- **Weierstrass \\(t=\\tan\\tfrac{x}{2}\\):** \\(\\sin x=\\dfrac{2t}{1+t^2}\\), \\(\\cos x=\\dfrac{1-t^2}{1+t^2}\\) — useful whenever a rational function of \\(\\sin x,\\cos x\\) must be handled in one variable.\n" +
+        "- **The elementary ones, which the exotic collapses assume:** \\(\\sin^2x+\\cos^2x=1\\), \\(1+\\tan^2x=\\sec^2x\\), \\(1+\\cot^2x=\\csc^2x\\). They are how \\(\\sec^2(\\tan^{-1}x)=1+x^2\\) and \\(\\cos(\\tan^{-1}x)=\\dfrac{1}{\\sqrt{1+x^2}}\\) are read off.\n" +
+        "- **Algebraic collapses before differentiating** (take logs of a product only AFTER simplifying it): \\((1-x)(1+x)(1+x^2)(1+x^4)\\cdots(1+x^{2^{k-1}})=1-x^{2^k}\\) (telescoping difference of squares); \\(1+x^4+x^8=(1+x^2+x^4)(1-x^2+x^4)\\), from \\(a^4+a^2b^2+b^4=(a^2+ab+b^2)(a^2-ab+b^2)\\); \\(x^4+1=(x^2+\\sqrt2x+1)(x^2-\\sqrt2x+1)\\).",
       formula: {
         label: "The collapses you reach for most",
         latex:
@@ -432,6 +449,8 @@ export const CORE_TECHNIQUES_NOTE: SubtopicNote = {
     },
   ],
   related: [
+    { label: "Differentiating a determinant (Matrices & Determinants)", href: "/notes/nda-maths/matrices-determinants/determinants-evaluation-properties" },
+    { label: "Tangents, normals & rates (Application of Derivatives)", href: "/notes/nda-maths/application-of-derivatives/aod-tangents" },
     { label: "Parametric, Implicit & Higher-Order", href: "/notes/nda-maths/differentiation/diff-parametric-implicit-higher" },
     { label: "Differentiability", href: "/notes/nda-maths/differentiation/diff-differentiability" },
   ],

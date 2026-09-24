@@ -20,7 +20,14 @@ export const FORMATION_NOTE: SubtopicNote = {
         "- Count the arbitrary constants — that is the order of the ODE you will get.\n" +
         "- **Differentiate** the family that many times.\n" +
         "- **Eliminate** the constants between the original equation and its derivatives; the constant-free relation is the ODE.\n" +
-        "- Examples: parabolas \\(x^2=4ay\\) (one constant) → \\(x\\,\\dfrac{dy}{dx}=2y\\); \\(y=e^x(a\\cos x+b\\sin x)\\) (two constants) → \\(y''-2y'+2y=0\\).",
+        "- Examples: parabolas \\(x^2=4ay\\) (one constant) → \\(x\\,\\dfrac{dy}{dx}=2y\\); \\(y=e^x(a\\cos x+b\\sin x)\\) (two constants) → \\(y''-2y'+2y=0\\).\n" +
+        "**The step BEFORE the recipe — writing a geometrically described family, with its parameter count** (five PYQs turn on this line, not on the differentiation):\n" +
+        "- Lines through the origin: \\(y=mx\\) (1) → \\(y=x\\,y'\\). All lines: \\(y=mx+c\\) (2) → \\(y''=0\\).\n" +
+        "- Circles touching the y-axis at the origin: centre \\((a,0)\\), radius \\(a\\): \\(x^2+y^2=2ax\\) (1) → \\(2xy\\,y'=y^2-x^2\\). Touching the x-axis at the origin: \\(x^2+y^2=2by\\) (1).\n" +
+        "- Circles touching both axes in the first quadrant: \\((x-r)^2+(y-r)^2=r^2\\) (1). Circles with centre on the x-axis: \\((x-a)^2+y^2=r^2\\) (2) → \\(1+y'^2+y\\,y''=0\\). All circles: \\(x^2+y^2+2gx+2fy+c=0\\) (3, so order 3).\n" +
+        "- Parabolas with vertex at the origin and axis along \\(y\\): \\(x^2=4ay\\) (1); axis along \\(x\\): \\(y^2=4ax\\) (1) → \\(y=2x\\,y'\\).\n" +
+        "- Ellipses with axes along the coordinate axes: \\(\\dfrac{x^2}{a^2}+\\dfrac{y^2}{b^2}=1\\) (2) → \\(x\\,y\\,y''+x\\,y'^2-y\\,y'=0\\). Concentric circles \\(x^2+y^2=r^2\\) (1) → \\(x+y\\,y'=0\\).\n" +
+        "**When a constant enters with a fractional power** (e.g. \\(y=\\sqrt{c}\\,x+\\ldots\\), or \\(y^2=4a(x+a)\\)): eliminate it as usual, then clear the radical ONLY if the eliminated relation still carries one — squaring raises the degree (\\((y^2-2xy\\,y')^2=4(y\\,y')^3\\) has degree 3). Squaring when the relation was already polynomial produces a non-minimal ODE and the wrong degree.",
       visualizationSlug: "defeq-family-of-curves",
       authoredExample: {
         prompt: "Form the differential equation of the family \\(y = cx^2\\) (c arbitrary).",
@@ -104,5 +111,9 @@ export const FORMATION_NOTE: SubtopicNote = {
         },
       ],
     },
+  ],
+  related: [
+    { label: "Circle equations — centre, radius, touching the axes (Circles)", href: "/notes/nda-maths/circles/circ-equation-centre-radius" },
+    { label: "Ellipse and parabola standard forms (Conics)", href: "/notes/nda-maths/conics/conics-identification" },
   ],
 };

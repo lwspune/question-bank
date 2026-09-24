@@ -24,7 +24,8 @@ export const LINEAR_SYSTEMS_NOTE: SubtopicNote = {
         "For \\(AX = B\\) (square): if \\(|A| \\neq 0\\) → **unique** solution. If \\(|A| = 0\\): the " +
         "system is **inconsistent** (no solution) or has **infinitely many** solutions, decided by " +
         "whether the equations are genuinely contradictory or just dependent (e.g. two equations the " +
-        "same scaling but different constants → no solution).",
+        "same scaling but different constants → no solution).\n" +
+        "**Three equations in TWO unknowns** (\\(a_ix + b_iy + c_i = 0\\), \\(i=1,2,3\\)) is a different shape: the system is consistent (all three lines pass through one point) iff \\(\\begin{vmatrix}a_1&b_1&c_1\\\\a_2&b_2&c_2\\\\a_3&b_3&c_3\\end{vmatrix} = 0\\) — the same determinant that tests three lines for concurrency. Here a ZERO determinant is the consistent case, the opposite reading from the square system.",
       authoredExample: {
         prompt: "Classify the system \\(x+y+z=6,\\ x-y+z=2,\\ 2x+y-z=1\\).",
         steps: [

@@ -72,7 +72,8 @@ export const REPRESENTATION_NUMBER_THEORY_NOTE: SubtopicNote = {
         "**Remainder by cycling:** the remainders of \\(a^1, a^2, a^3, \\ldots\\) modulo a fixed number repeat with some period \\(L\\). Find the cycle by computing remainders until they repeat, then reduce the exponent modulo \\(L\\): if the exponent leaves remainder \\(t\\) on division by \\(L\\), then \\(a^{\\text{exp}}\\) has the same remainder as \\(a^t\\).\n" +
         "**Sum of the first n odd numbers:**\n" +
         "\\[1 + 3 + 5 + \\cdots + (2n - 1) = n^2.\\]\n" +
-        "So if a sum of consecutive odd numbers from 1 equals some value \\(S\\), the number of terms is \\(n = \\sqrt{S}\\) — and \\(S\\) must be a perfect square. (A neat NDA case: \\(\\sqrt{12345678987654321} = 111111111\\).)",
+        "So if a sum of consecutive odd numbers from 1 equals some value \\(S\\), the number of terms is \\(n = \\sqrt{S}\\) — and \\(S\\) must be a perfect square. (A neat NDA case: \\(\\sqrt{12345678987654321} = 111111111\\).)\n" +
+        "**LCM and HCF by prime factorisation:** write each number as a product of prime powers; the **HCF** takes the LOWEST power of each common prime, the **LCM** takes the HIGHEST power of every prime that appears; and \\(\\text{HCF}\\times\\text{LCM}=\\) product of the two numbers. A binary question is often this in disguise — convert \\((1100)_2=12\\) and \\((10010)_2=18\\), then \\(12=2^2\\cdot3\\), \\(18=2\\cdot3^2\\), LCM \\(=2^2\\cdot3^2=36=(100100)_2\\), HCF \\(=6=(110)_2\\), and convert back.",
       formula: {
         label: "Sum of first n odd numbers",
         latex: "1 + 3 + 5 + \\cdots + (2n - 1) = n^2",

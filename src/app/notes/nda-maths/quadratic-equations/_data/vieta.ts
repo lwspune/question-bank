@@ -23,7 +23,8 @@ export const VIETA_NOTE: SubtopicNote = {
         "- **Reciprocal roots** (one root \\(= 1/\\)other) \\(\\iff \\alpha\\beta = 1 \\iff c = a\\).\n" +
         "- **Roots equal in magnitude, opposite sign** \\(\\iff \\alpha+\\beta = 0 \\iff b = 0\\).\n" +
         "- **Sum of roots \\(=\\) product of roots** \\(\\iff -b = c\\).\n" +
-        "- Sign reading: if \\(a,b,c\\) are all positive then \\(\\alpha+\\beta<0\\) and \\(\\alpha\\beta>0\\), so both roots are negative.",
+        "- Sign reading: if \\(a,b,c\\) are all positive then \\(\\alpha+\\beta<0\\) and \\(\\alpha\\beta>0\\), so both roots are negative.\n" +
+        "- **The full sign table for REAL roots** (\\(D\\ge0\\)): product \\(>0\\) means same sign, and then the SUM decides — sum \\(>0\\) both positive, sum \\(<0\\) both negative; product \\(<0\\) means opposite signs, and the sign of the sum tells which root is larger in magnitude; product \\(=0\\) means one root is 0. Read \\(c/a\\) first, then \\(-b/a\\).",
       formula: {
         label: "Vieta's relations",
         latex: "\\alpha + \\beta = -\\dfrac{b}{a}, \\qquad \\alpha\\beta = \\dfrac{c}{a}",
@@ -56,7 +57,9 @@ export const VIETA_NOTE: SubtopicNote = {
         "- \\((\\alpha-\\beta)^2 = s^2 - 4p\\)\n" +
         "- \\(\\alpha^3 + \\beta^3 = s^3 - 3ps = s(s^2 - 3p)\\)\n" +
         "- \\(\\dfrac{1}{\\alpha} + \\dfrac{1}{\\beta} = \\dfrac{s}{p}\\)\n" +
-        "**Forming a new equation:** if the new roots have sum \\(S\\) and product \\(P\\), the quadratic is \\(x^2 - Sx + P = 0\\). Compute \\(S\\) and \\(P\\) as symmetric functions of \\(\\alpha,\\beta\\).",
+        "**Forming a new equation:** if the new roots have sum \\(S\\) and product \\(P\\), the quadratic is \\(x^2 - Sx + P = 0\\). Compute \\(S\\) and \\(P\\) as symmetric functions of \\(\\alpha,\\beta\\).\n" +
+        "**Beyond \\(\\alpha^3+\\beta^3\\) — a root satisfies its own equation.** Since \\(a\\alpha^2+b\\alpha+c=0\\), any power of \\(\\alpha\\) reduces: \\(\\alpha^2=-\\tfrac{b\\alpha+c}{a}\\), so e.g. \\(4\\alpha^2=1-2\\alpha\\) when \\(4x^2+2x-1=0\\). Multiplying by \\(\\alpha^{n-1}\\) and adding the \\(\\beta\\) copy gives **Newton's recurrence** for \\(p_n=\\alpha^n+\\beta^n\\): \\(a\\,p_{n+1}+b\\,p_n+c\\,p_{n-1}=0\\), i.e. \\(p_{n+1}=s\\,p_n-p\\,p_{n-1}\\) with \\(p_0=2\\), \\(p_1=s\\). So \\(\\alpha^4+\\beta^4=s\\,p_3-p\\,p_2\\) and \\(\\alpha^5+\\beta^5=s\\,p_4-p\\,p_3\\) follow in two lines each.\n" +
+        "**The other use of a shift:** to find an equation whose roots are \\(\\alpha+1,\\beta+1\\) (or \\(2\\alpha,2\\beta\\), or \\(1/\\alpha,1/\\beta\\)) substitute \\(x\\to x-1\\) (or \\(x/2\\), or \\(1/x\\)) into the ORIGINAL equation — the quantity you are asked about becomes a root of the transformed quadratic, and Vieta on it answers the question directly.",
       formula: {
         label: "Build the equation from new sum & product",
         latex: "x^2 - S x + P = 0, \\quad S = \\text{(new sum)},\\ P = \\text{(new product)}",
@@ -100,7 +103,9 @@ export const VIETA_NOTE: SubtopicNote = {
         "- **AM** \\(= \\dfrac{\\alpha+\\beta}{2} = -\\dfrac{b}{2a}\\)\n" +
         "- **GM** \\(= \\sqrt{\\alpha\\beta} = \\sqrt{\\dfrac{c}{a}}\\)\n" +
         "- **HM** \\(= \\dfrac{2\\alpha\\beta}{\\alpha+\\beta} = \\dfrac{2c}{-b} = -\\dfrac{2c}{b}\\)\n" +
-        "- **Roots of equal magnitude, opposite sign:** \\(\\alpha+\\beta = 0\\) (so \\(b = 0\\)) **and** \\(\\alpha\\beta < 0\\) (so \\(\\frac{c}{a} < 0\\)). Both conditions are required.",
+        "- **Roots of equal magnitude, opposite sign:** \\(\\alpha+\\beta = 0\\) (so \\(b = 0\\)) **and** \\(\\alpha\\beta < 0\\) (so \\(\\frac{c}{a} < 0\\)). Both conditions are required.\n" +
+        "- **Denesting the GM's surd:** \\(\\sqrt{c/a}\\) often comes out as \\(\\sqrt{p+q\\sqrt r}\\); match it to \\((\\sqrt m+\\sqrt n)^2=m+n+2\\sqrt{mn}\\) — \\(3+2\\sqrt2=(\\sqrt2+1)^2\\), \\(8+4\\sqrt3=2(\\sqrt3+1)^2\\), \\(7-4\\sqrt3=(2-\\sqrt3)^2\\), \\(5+2\\sqrt6=(\\sqrt2+\\sqrt3)^2\\). The options are written in the denested form.\n" +
+        "- **Conjugate pair with product 1 lies on the unit circle:** if the roots are non-real (so \\(\\beta=\\bar\\alpha\\)) and \\(\\alpha\\beta=1\\), then \\(|\\alpha|^2=\\alpha\\bar\\alpha=1\\), i.e. \\(|\\alpha|=|\\beta|=1\\) — e.g. the roots of \\(x^2-x+1=0\\) or of any \\(x^2+bx+1=0\\) with \\(|b|<2\\).",
       formula: {
         label: "Means of the roots",
         latex: "\\text{AM} = -\\tfrac{b}{2a},\\quad \\text{GM} = \\sqrt{\\tfrac{c}{a}},\\quad \\text{HM} = -\\tfrac{2c}{b}",

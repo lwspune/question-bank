@@ -21,7 +21,8 @@ export const SUBSTITUTION_NOTE: SubtopicNote = {
       definition:
         "If you set \\(u = g(x)\\), then \\(du = g'(x)\\,dx\\). The method:\n" +
         "\\[\\int f\\big(g(x)\\big)\\,g'(x)\\,dx = \\int f(u)\\,du.\\]\n" +
-        "**Procedure:** (1) choose \\(u\\) = the inner function; (2) compute \\(du = g'(x)\\,dx\\); (3) replace every \\(x\\)-piece so ONLY \\(u\\) remains; (4) integrate in \\(u\\); (5) substitute \\(x\\) back. If a stray \\(x\\) survives step 3, the choice of \\(u\\) was wrong.",
+        "**Procedure:** (1) choose \\(u\\) = the inner function; (2) compute \\(du = g'(x)\\,dx\\); (3) replace every \\(x\\)-piece so ONLY \\(u\\) remains; (4) integrate in \\(u\\); (5) substitute \\(x\\) back. If a stray \\(x\\) survives step 3, the choice of \\(u\\) was wrong.\n" +
+        "**The linear-inner-function shortcut — the \\(\\tfrac1a\\) factor three PYQs turn on:** if \\(\\int f(x)\\,dx=F(x)+C\\) then \\(\\int f(ax+b)\\,dx=\\dfrac{1}{a}F(ax+b)+C\\), because \\(u=ax+b\\) gives \\(du=a\\,dx\\). So \\(\\int e^{kx}\\,dx=\\dfrac{e^{kx}}{k}\\), \\(\\int\\cos2x\\,dx=\\dfrac{\\sin2x}{2}\\), \\(\\int\\sec^2\\tfrac x2\\,dx=2\\tan\\tfrac x2\\), \\(\\int(3x+1)^4\\,dx=\\dfrac{(3x+1)^5}{15}\\), \\(\\int 5^{2x}\\,dx=\\dfrac{5^{2x}}{2\\ln5}\\). Dropping the \\(\\tfrac1a\\) is the recorded common mistake on one PYQ, and on another the PUBLISHED key is off by exactly this factor of 2 — trust the rule, not the key.",
       formula: {
         label: "Substitution rule",
         latex: "\\int f\\big(g(x)\\big)\\,g'(x)\\,dx = \\int f(u)\\,du,\\quad u=g(x)",

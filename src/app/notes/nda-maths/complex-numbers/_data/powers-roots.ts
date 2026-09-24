@@ -15,7 +15,8 @@ export const POWERS_ROOTS_NOTE: SubtopicNote = {
       intuition:
         "Powers of \\(i\\) repeat every four: \\(i,-1,-i,1,\\) then back to \\(i\\). So any \\(i^n\\) is decided by \\(n \\bmod 4\\), and any block of four consecutive powers sums to zero — which collapses long sums instantly.",
       definition:
-        "\\(i^1=i,\\;i^2=-1,\\;i^3=-i,\\;i^4=1\\); thereafter \\(i^n=i^{\\,n\\bmod 4}\\). **Block sum:** \\(i^k+i^{k+1}+i^{k+2}+i^{k+3}=0\\) for any \\(k\\). So \\(\\sum\\) of \\(i^n\\) over a full set of consecutive 4 is 0 — only the leftover terms survive.",
+        "\\(i^1=i,\\;i^2=-1,\\;i^3=-i,\\;i^4=1\\); thereafter \\(i^n=i^{\\,n\\bmod 4}\\). **Block sum:** \\(i^k+i^{k+1}+i^{k+2}+i^{k+3}=0\\) for any \\(k\\). So \\(\\sum\\) of \\(i^n\\) over a full set of consecutive 4 is 0 — only the leftover terms survive.\n" +
+        "**Powers of \\(1\\pm i\\) reduce to powers of \\(i\\):** \\((1+i)^2=2i\\), \\((1-i)^2=-2i\\), \\(\\dfrac{1+i}{1-i}=i\\), \\(\\dfrac{1-i}{1+i}=-i\\). So \\(\\Big(\\dfrac{1+i}{1-i}\\Big)^n=i^n\\) equals 1 first at \\(n=4\\) and \\(-1\\) first at \\(n=2\\); \\(\\Big(\\dfrac{1-i}{1+i}\\Big)^{n^2}=(-i)^{n^2}=1\\) needs \\(4\\mid n^2\\), i.e. \\(n\\) even — smallest \\(n=2\\); \\((1+i)^{2n}=(2i)^n=2^n i^n\\), real iff \\(n\\) is even.",
       formula: {
         label: "Powers of i",
         latex:
@@ -59,7 +60,9 @@ export const POWERS_ROOTS_NOTE: SubtopicNote = {
       intuition:
         "To raise a complex number to a power, put it in polar form and multiply the angle: \\((\\cos\\theta+i\\sin\\theta)^n=\\cos n\\theta+i\\sin n\\theta\\). Running it backwards gives the \\(n\\) nth-roots, equally spaced around a circle. Square roots of \\(a+ib\\) can also be found by solving \\((x+iy)^2=a+ib\\).",
       definition:
-        "**De Moivre:** \\((\\cos\\theta+i\\sin\\theta)^n=\\cos n\\theta+i\\sin n\\theta\\) (also for the modulus: \\(z^n=r^n e^{in\\theta}\\)). **nth roots** of \\(re^{i\\theta}\\): \\(r^{1/n}e^{i(\\theta+2k\\pi)/n}\\), \\(k=0,\\ldots,n-1\\) — \\(n\\) points on a circle of radius \\(r^{1/n}\\). **Square root** of \\(a+ib\\): set \\((x+iy)^2=a+ib\\), match parts (\\(x^2-y^2=a\\), \\(2xy=b\\)).",
+        "**De Moivre:** \\((\\cos\\theta+i\\sin\\theta)^n=\\cos n\\theta+i\\sin n\\theta\\) (also for the modulus: \\(z^n=r^n e^{in\\theta}\\)). **nth roots** of \\(re^{i\\theta}\\): \\(r^{1/n}e^{i(\\theta+2k\\pi)/n}\\), \\(k=0,\\ldots,n-1\\) — \\(n\\) points on a circle of radius \\(r^{1/n}\\). **Square root** of \\(a+ib\\): set \\((x+iy)^2=a+ib\\), match parts (\\(x^2-y^2=a\\), \\(2xy=b\\)).\n" +
+        "- **Closed form of the square root:** \\(\\sqrt{a+ib}=\\pm\\Big(\\sqrt{\\tfrac{|z|+a}{2}}+i\\,\\operatorname{sgn}(b)\\sqrt{\\tfrac{|z|-a}{2}}\\Big)\\) with \\(|z|=\\sqrt{a^2+b^2}\\). Hence \\(\\big(\\sqrt{a+ib}+\\sqrt{a-ib}\\big)^2=2a+2\\sqrt{a^2+b^2}\\) (the cross term is \\(2|z|\\)) — e.g. \\(\\sqrt{3+4i}+\\sqrt{3-4i}=\\pm\\sqrt{16}=\\pm4\\).\n" +
+        "- **Evaluating a polynomial at a complex number — the minimal-polynomial trick:** from \\(x=4+i\\) form \\((x-4)^2=-1\\), i.e. \\(x^2-8x+17=0\\); divide the given polynomial by \\(x^2-8x+17\\) and evaluate only the REMAINDER at \\(x=4+i\\). Any polynomial with real coefficients that vanishes at \\(a+ib\\) is divisible by \\(x^2-2ax+(a^2+b^2)\\).",
       formula: {
         label: "De Moivre's theorem and nth roots",
         latex:

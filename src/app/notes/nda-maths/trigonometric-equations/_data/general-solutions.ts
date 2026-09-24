@@ -21,7 +21,13 @@ export const GENERAL_SOLUTIONS_NOTE: SubtopicNote = {
         "- \\(\\sin\\theta = \\sin\\alpha \\Rightarrow \\theta = n\\pi + (-1)^n \\alpha\\)\n" +
         "- \\(\\cos\\theta = \\cos\\alpha \\Rightarrow \\theta = 2n\\pi \\pm \\alpha\\)\n" +
         "- \\(\\tan\\theta = \\tan\\alpha \\Rightarrow \\theta = n\\pi + \\alpha\\)\n" +
-        "for \\(n \\in \\mathbb{Z}\\). The **principal solution** is the one in the first cycle; the **general solution** adds the periodic family. (Special: \\(\\sin\\theta=0 \\Rightarrow \\theta=n\\pi\\); \\(\\cos\\theta=0 \\Rightarrow \\theta=(2n+1)\\tfrac{\\pi}{2}\\).)",
+        "for \\(n \\in \\mathbb{Z}\\). The **principal solution** is the one in the first cycle; the **general solution** adds the periodic family. (Special: \\(\\sin\\theta=0 \\Rightarrow \\theta=n\\pi\\); \\(\\cos\\theta=0 \\Rightarrow \\theta=(2n+1)\\tfrac{\\pi}{2}\\).)\n" +
+        "**The identity layer underneath — how an equation gets INTO a solvable shape.** Most PYQs here open with one of these before any general solution is written (full treatment in the Trigonometric Identities notes, linked below):\n" +
+        "- Reciprocals: \\(\\sec\\theta=\\tfrac1{\\cos\\theta}\\), \\(\\csc\\theta=\\tfrac1{\\sin\\theta}\\), \\(\\cot\\theta=\\tfrac1{\\tan\\theta}=\\tfrac{\\cos\\theta}{\\sin\\theta}\\). Pythagorean: \\(\\sin^2\\theta+\\cos^2\\theta=1\\), \\(1+\\tan^2\\theta=\\sec^2\\theta\\), \\(1+\\cot^2\\theta=\\csc^2\\theta\\) — the tool for turning a mixed \\(\\sin^2,\\cos\\) equation into a quadratic in ONE ratio.\n" +
+        "- Double angle: \\(\\sin2\\theta=2\\sin\\theta\\cos\\theta\\), \\(\\cos2\\theta=\\cos^2\\theta-\\sin^2\\theta=1-2\\sin^2\\theta=2\\cos^2\\theta-1\\); power reduction \\(\\sin^2\\theta=\\tfrac{1-\\cos2\\theta}{2}\\), \\(\\cos^2\\theta=\\tfrac{1+\\cos2\\theta}{2}\\) (so \\(8\\sin^2(\\theta+\\tfrac\\pi4)=4(1+\\sin2\\theta)\\)).\n" +
+        "- Compound angle: \\(\\sin(A\\pm B)=\\sin A\\cos B\\pm\\cos A\\sin B\\), \\(\\cos(A\\pm B)=\\cos A\\cos B\\mp\\sin A\\sin B\\), \\(\\tan(A\\pm B)=\\dfrac{\\tan A\\pm\\tan B}{1\\mp\\tan A\\tan B}\\) — the DIFFERENCE forms included. \\(\\cos A\\cos B-\\sin A\\sin B=\\cos(A+B)\\) is what collapses \\(\\cot2x\\cot3x=1\\) to \\(\\cos5x=0\\).\n" +
+        "- Co-functions: \\(\\cos\\theta=\\sin(\\tfrac\\pi2-\\theta)\\) AND \\(\\tan A=\\cot B\\Rightarrow A+B=\\tfrac\\pi2\\) (mod \\(\\pi\\)). Angle sum of a triangle \\(=\\pi\\), so \"angles \\(x,x,x\\)\" means \\(3x=\\pi\\).\n" +
+        "- Half angle: \\(1+\\cos x=2\\cos^2\\tfrac x2\\), \\(1-\\cos x=2\\sin^2\\tfrac x2\\), \\(\\sin x=2\\sin\\tfrac x2\\cos\\tfrac x2\\); Weierstrass with \\(t=\\tan\\tfrac\\theta2\\): \\(\\sin\\theta=\\dfrac{2t}{1+t^2}\\), \\(\\cos\\theta=\\dfrac{1-t^2}{1+t^2}\\), \\(\\tan\\theta=\\dfrac{2t}{1-t^2}\\) — note the HALF angle; \\(t=\\tan\\theta\\) is the recorded wrong substitution.",
       formula: {
         label: "General solutions",
         latex: "\\sin\\theta=\\sin\\alpha:\\ \\theta=n\\pi+(-1)^n\\alpha; \\quad \\cos\\theta=\\cos\\alpha:\\ \\theta=2n\\pi\\pm\\alpha; \\quad \\tan\\theta=\\tan\\alpha:\\ \\theta=n\\pi+\\alpha; \\quad \\sin\\theta=0:\\ \\theta=n\\pi; \\quad \\cos\\theta=0:\\ \\theta=(2n+1)\\tfrac{\\pi}{2}; \\quad \\sin^2\\theta=\\sin^2\\alpha:\\ \\theta=n\\pi\\pm\\alpha",
@@ -78,6 +84,7 @@ export const GENERAL_SOLUTIONS_NOTE: SubtopicNote = {
         "- **Co-function:** \\(\\sin 2\\theta = \\cos 3\\theta = \\sin(\\tfrac{\\pi}{2} - 3\\theta)\\), then equate angles.\n" +
         "- **Quadratic in one ratio:** equations like \\(2\\cos^2 x + \\cos x - 1 = 0\\) factor; solve each linear factor.\n" +
         "- **Half-angle collapse:** \\(\\csc x + \\cot x = \\dfrac{1+\\cos x}{\\sin x}\\), and with \\(1+\\cos x = 2\\cos^2\\tfrac{x}{2}\\), \\(\\sin x = 2\\sin\\tfrac{x}{2}\\cos\\tfrac{x}{2}\\) this is \\(\\cot\\tfrac{x}{2}\\). So \\(\\csc x + \\cot x = \\sqrt3\\) is just \\(\\cot\\tfrac{x}{2} = \\sqrt3\\Rightarrow \\tfrac{x}{2} = \\tfrac{\\pi}{6}\\Rightarrow x = \\tfrac{\\pi}{3}\\) on \\((0,2\\pi)\\) — no squaring, no false roots. Its sibling: \\(\\csc x - \\cot x = \\tan\\tfrac{x}{2}\\). (Cross-multiplying to \\(1+\\cos x = \\sqrt3\\sin x\\) and squaring also works, but manufactures \\(\\cos x = -1\\), which must then be discarded.)\n" +
+        "- **Weierstrass \\(t=\\tan\\tfrac x2\\)** when an equation mixes \\(\\sin x\\) and \\(\\cos x\\) linearly, e.g. \\(a\\sin x+b\\cos x=c\\): \\(\\sin x=\\dfrac{2t}{1+t^2}\\), \\(\\cos x=\\dfrac{1-t^2}{1+t^2}\\) turn it into the quadratic \\((b+c)t^2-2at+(c-b)=0\\); each real \\(t\\) gives \\(x=2\\tan^{-1}t\\) (and check \\(x=\\pi\\), where \\(t\\) is undefined, separately).\n" +
         "- **Always verify** roots in the ORIGINAL equation — squaring or dividing can introduce or drop solutions (e.g. where a denominator vanishes).",
       formula: {
         label: "Co-function reduction",
@@ -193,5 +200,10 @@ export const GENERAL_SOLUTIONS_NOTE: SubtopicNote = {
         },
       ],
     },
+  ],
+  related: [
+    { label: "Pythagorean identities, quadrants & exact values (Trigonometric Identities)", href: "/notes/nda-maths/trigonometric-identities/trig-values-quadrants" },
+    { label: "Compound-angle formulas (Trigonometric Identities)", href: "/notes/nda-maths/trigonometric-identities/trig-compound-angle" },
+    { label: "Double, triple & half-angle formulas (Trigonometric Identities)", href: "/notes/nda-maths/trigonometric-identities/trig-multiple-half-angle" },
   ],
 };

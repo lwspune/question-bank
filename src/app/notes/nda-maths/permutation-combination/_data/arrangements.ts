@@ -56,7 +56,8 @@ export const ARRANGEMENTS_NOTE: SubtopicNote = {
       definition:
         "- **Together (block):** treat the \\(k\\) items as one unit ⇒ \\((n-k+1)!\\) for the units \\(\\times\\,k!\\) inside.\n" +
         "- **Apart / alternating:** arrange the unrestricted items, then choose gaps for the rest.\n" +
-        "- **Fixed positions:** fill the restricted positions first (e.g. vowels into the even slots), then fill the remaining positions.",
+        "- **Fixed positions:** fill the restricted positions first (e.g. vowels into the even slots), then fill the remaining positions.\n" +
+        "- **Dictionary (lexicographic) rank of a word:** sort the letters; for each position in turn, count the letters still unused that are alphabetically EARLIER than the letter actually there, and multiply by the factorial of the remaining positions; add these up and add 1 for the word itself. Rank of RANK: letters A,K,N,R — before R come A,K,N (\\(3\\cdot3!=18\\)); at A none; at N comes K (\\(1\\cdot1!=1\\)); at K none; rank \\(=18+0+1+0+1=20\\). With repeated letters divide each block count by the repeat factorials.",
       authoredExample: {
         prompt: "In how many ways can 4 boys and 3 girls sit in a row with all girls together?",
         steps: [

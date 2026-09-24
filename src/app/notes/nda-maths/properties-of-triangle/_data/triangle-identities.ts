@@ -89,7 +89,8 @@ export const TRIANGLE_IDENTITIES_NOTE: SubtopicNote = {
         "Standard triangle identities:\n" +
         "- \\(\\cos 2A + \\cos 2B + \\cos 2C = -1 - 4\\cos A\\cos B\\cos C\\).\n" +
         "- \\(\\sin^2 A + \\sin^2 B + \\sin^2 C = 2 + 2\\cos A\\cos B\\cos C\\); it **equals 2 iff the triangle is right-angled** (one cosine is 0).\n" +
-        "- Equivalently \\(\\cos^2 A + \\cos^2 B + \\cos^2 C = 1\\) iff right-angled. A value of \\(\\cos 2A + \\cos 2B + \\cos 2C = -1\\) forces \\(\\cos A\\cos B\\cos C = 0\\).",
+        "- Equivalently \\(\\cos^2 A + \\cos^2 B + \\cos^2 C = 1\\) iff right-angled. A value of \\(\\cos 2A + \\cos 2B + \\cos 2C = -1\\) forces \\(\\cos A\\cos B\\cos C = 0\\).\n" +
+        "- **The plain double-angle forms these are built from** — the ones the PYQ solutions actually use one angle at a time: \\(\\cos2A=1-2\\sin^2A=2\\cos^2A-1=\\cos^2A-\\sin^2A\\), \\(\\sin2A=2\\sin A\\cos A\\), \\(\\sin^2A=\\tfrac{1-\\cos2A}{2}\\). \"If \\(\\cos A=\\tfrac35\\), find \\(\\cos2A\\)\" is \\(2\\cdot\\tfrac9{25}-1=-\\tfrac7{25}\\), no triangle identity needed.",
       formula: {
         label: "Right-angle signature",
         latex: "\\sin^2 A + \\sin^2 B + \\sin^2 C = 2 \\iff \\text{right-angled}",
@@ -116,7 +117,8 @@ export const TRIANGLE_IDENTITIES_NOTE: SubtopicNote = {
         "- **Half-angle (sides):** \\(\\tan\\dfrac{A}{2} = \\dfrac{r}{s-a} = \\sqrt{\\dfrac{(s-b)(s-c)}{s(s-a)}}\\), and \\(\\sin\\dfrac{A}{2} = \\sqrt{\\dfrac{(s-b)(s-c)}{bc}}\\).\n" +
         "- **Sum-to-product:** \\(\\cos A + \\cos B = 2\\cos\\dfrac{A+B}{2}\\cos\\dfrac{A-B}{2}\\); in a triangle \\(\\cos\\dfrac{A+B}{2} = \\sin\\dfrac{C}{2}\\).\n" +
         "- **Product-to-sum:** \\(\\sin X\\sin Y = \\tfrac12[\\cos(X-Y) - \\cos(X+Y)]\\), useful for \\(\\sin\\tfrac{A}{2}\\sin\\tfrac{3A}{2}\\)-type expressions.\n" +
-        "- Note \\(\\tan\\dfrac{B}{2} + \\cot\\dfrac{B}{2} = \\dfrac{2}{\\sin B}\\).",
+        "- Note \\(\\tan\\dfrac{B}{2} + \\cot\\dfrac{B}{2} = \\dfrac{2}{\\sin B}\\).\n" +
+        "- **Difference of squares of sines:** \\(\\sin(A+B)\\sin(A-B)=\\sin^2A-\\sin^2B\\); in a triangle \\(\\sin(A+B)=\\sin C\\), so \\(\\sin^2A-\\sin^2B=\\sin C\\sin(A-B)\\), and by the sine rule \\(a^2-b^2=c\\,(a\\cos B-b\\cos A)\\). The cosine sibling: \\(\\cos(A+B)\\cos(A-B)=\\cos^2A-\\sin^2B\\).",
       formula: {
         label: "Half-angle tangent",
         latex: "\\tan\\dfrac{A}{2} = \\dfrac{r}{s-a} = \\sqrt{\\dfrac{(s-b)(s-c)}{s(s-a)}}",

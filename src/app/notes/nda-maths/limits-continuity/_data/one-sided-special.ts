@@ -16,7 +16,8 @@ export const ONE_SIDED_SPECIAL_NOTE: SubtopicNote = {
       intuition:
         "Approach the point from below (\\(x\\to a^-\\)) and from above (\\(x\\to a^+\\)) separately. If the two agree, the limit is that common value; if they differ, the two-sided limit does not exist. Essential whenever the rule changes at the point.",
       definition:
-        "**LHL** \\(=\\lim_{x\\to a^-}f(x)\\), **RHL** \\(=\\lim_{x\\to a^+}f(x)\\). The limit exists iff LHL \\(=\\) RHL. For a piecewise \\(f\\), use the piece valid on each side; for a product/quotient of one-sided-sensitive parts, evaluate each side end-to-end.",
+        "**LHL** \\(=\\lim_{x\\to a^-}f(x)\\), **RHL** \\(=\\lim_{x\\to a^+}f(x)\\). The limit exists iff LHL \\(=\\) RHL. For a piecewise \\(f\\), use the piece valid on each side; for a product/quotient of one-sided-sensitive parts, evaluate each side end-to-end.\n" +
+        "**The squeeze (sandwich) theorem** is the tool for a bounded factor times something that dies: if \\(g\\le f\\le h\\) near the point and \\(g,h\\to L\\), then \\(f\\to L\\). Standard uses: \\(|\\cos x|\\le1\\) gives \\(\\dfrac{\\cos x}{x}\\to0\\) as \\(x\\to\\infty\\) and \\(x\\sin\\tfrac1x\\to0\\) as \\(x\\to0\\); \\(x-1<\\lfloor x\\rfloor\\le x\\) gives \\(\\dfrac{\\lfloor x\\rfloor}{x}\\to1\\) as \\(x\\to\\infty\\). Note \\(\\sin\\tfrac1x\\) alone has NO limit at 0 — the bounded factor must be multiplied by something tending to 0.",
       visualizationSlug: "lim-one-sided-approach",
       authoredExample: {
         prompt: "For \\(f(x)=\\begin{cases}x+1,&x<0\\\\ x^2,&x\\ge 0\\end{cases}\\), find \\(\\lim_{x\\to 0}f(x)\\).",
@@ -56,7 +57,8 @@ export const ONE_SIDED_SPECIAL_NOTE: SubtopicNote = {
       intuition:
         "The greatest-integer function \\(\\lfloor x\\rfloor\\) jumps at every integer: just below \\(n\\) it equals \\(n-1\\), at and just above \\(n\\) it equals \\(n\\). So at an integer the one-sided limits differ by 1 — almost every \\(\\lfloor x\\rfloor\\) limit is a one-sided question in disguise.",
       definition:
-        "At an integer \\(n\\): \\(\\lim_{x\\to n^-}\\lfloor x\\rfloor=n-1\\), \\(\\lim_{x\\to n^+}\\lfloor x\\rfloor=n\\) — so \\(\\lim_{x\\to n}\\lfloor x\\rfloor\\) does not exist. Between integers \\(\\lfloor x\\rfloor\\) is constant. For \\(\\lfloor g(x)\\rfloor\\), track which integers \\(g\\) crosses near the point (e.g. \\(\\lfloor x^2\\rfloor\\) near \\(x=0\\)).",
+        "At an integer \\(n\\): \\(\\lim_{x\\to n^-}\\lfloor x\\rfloor=n-1\\), \\(\\lim_{x\\to n^+}\\lfloor x\\rfloor=n\\) — so \\(\\lim_{x\\to n}\\lfloor x\\rfloor\\) does not exist. Between integers \\(\\lfloor x\\rfloor\\) is constant. For \\(\\lfloor g(x)\\rfloor\\), track which integers \\(g\\) crosses near the point (e.g. \\(\\lfloor x^2\\rfloor\\) near \\(x=0\\)).\n" +
+        "**Negatives round the other way:** \\(\\lfloor -y\\rfloor=-\\lfloor y\\rfloor-1\\) for non-integer \\(y\\) (and \\(=-\\lfloor y\\rfloor\\) when \\(y\\) is an integer). So \\(\\lfloor\\pi^2\\rfloor=9\\) but \\(\\lfloor-\\pi^2\\rfloor=-10\\), and \\(\\lfloor x\\rfloor+\\lfloor-x\\rfloor=-1\\) for every non-integer \\(x\\). A limit like \\(\\lim_{x\\to\\pi}\\lfloor -x^2\\rfloor\\) (constant \\(-10\\) near \\(\\pi\\), since \\(\\pi^2\\approx9.87\\) is not an integer) is decided entirely by this rule; trig values at \\(\\tfrac{9\\pi}{2}\\), \\(5\\pi\\) etc. reduce by period first.",
       authoredExample: {
         prompt: "Find \\(\\lim_{x\\to 2}\\lfloor x\\rfloor\\) (if it exists).",
         steps: [

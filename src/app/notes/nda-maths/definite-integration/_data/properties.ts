@@ -84,7 +84,9 @@ export const PROPERTIES_NOTE: SubtopicNote = {
         "- **Odd** \\(f(-x)=-f(x)\\): \\(\\displaystyle\\int_{-a}^{a} f(x)\\,dx = 0\\).\n" +
         "- **Even** \\(f(-x)=f(x)\\): \\(\\displaystyle\\int_{-a}^{a} f(x)\\,dx = 2\\int_0^{a} f(x)\\,dx\\).\n" +
         "- **The \\(1+c^x\\) property**: for even \\(f\\), \\(\\displaystyle\\int_{-a}^{a}\\frac{f(x)}{1+c^{x}}\\,dx = \\frac12\\int_{-a}^{a} f(x)\\,dx = \\int_0^a f(x)\\,dx\\).\n" +
-        "- Also \\(\\displaystyle\\int_{-a}^{a} h(x)\\,dx = \\int_0^a [h(x)+h(-x)]\\,dx\\).",
+        "- Also \\(\\displaystyle\\int_{-a}^{a} h(x)\\,dx = \\int_0^a [h(x)+h(-x)]\\,dx\\).\n" +
+        "- **Establishing oddness from a functional equation:** if \\(f(x+y)=f(x)+f(y)\\) for all \\(x,y\\), put \\(x=y=0\\) to get \\(f(0)=0\\), then \\(y=-x\\) to get \\(f(-x)=-f(x)\\) — so \\(f\\) is odd and \\(\\int_{-a}^{a}f=0\\) without knowing \\(f\\). Likewise \\(f(x)f(-x)=1\\)-type conditions feed the \\(1+c^x\\) property.\n" +
+        "- **Parity of the usual suspects:** \\(x^{2k+1}\\), \\(\\sin x\\), \\(\\tan x\\), \\(x\\cos x\\), \\(\\ln\\dfrac{1-x}{1+x}\\), \\(\\sin^3x=\\tfrac{3\\sin x-\\sin3x}{4}\\) are odd; \\(x^{2k}\\), \\(\\cos x\\), \\(|x|\\), \\(x\\sin x\\), \\(\\cos^2x\\) are even. A product is odd iff an odd number of its factors are odd.",
       visualizationSlug: "defint-area-region",
       formula: {
         label: "Odd/even symmetry over a symmetric interval",
@@ -138,7 +140,11 @@ export const PROPERTIES_NOTE: SubtopicNote = {
         "- \\(\\displaystyle\\int_0^{\\pi}\\frac{dx}{1+\\sin^2x} = \\int_0^{\\pi}\\frac{dx}{1+\\cos^2x} = \\frac{\\pi}{\\sqrt2}\\).\n" +
         "- \\(\\sin^4x+\\cos^4x = \\dfrac{3+\\cos 4x}{4}\\), so \\(\\int_0^{\\pi}(\\sin^4x+\\cos^4x)\\,dx=\\tfrac{3\\pi}{4}\\).\n" +
         "- \\(1+\\cos\\theta = 2\\cos^2\\tfrac{\\theta}{2}\\), \\(1-\\cos\\theta=2\\sin^2\\tfrac{\\theta}{2}\\) (half-angle).\n" +
-        "- **Beta function**: \\(\\displaystyle\\int_0^1 x^{m}(1-x)^{n}\\,dx = \\frac{m!\\,n!}{(m+n+1)!}\\).",
+        "- **Beta function**: \\(\\displaystyle\\int_0^1 x^{m}(1-x)^{n}\\,dx = \\frac{m!\\,n!}{(m+n+1)!}\\).\n" +
+        "- **The METHOD behind \\(\\pi/\\sqrt2\\), for the variants the memorised value does not cover** (\\(1+2\\tan^2x\\), \\(a^2\\sin^2x+b^2\\cos^2x\\), …): divide top and bottom by \\(\\cos^2x\\), use \\(\\sec^2x=1+\\tan^2x\\), put \\(t=\\tan x\\) (so \\(\\int_0^{\\pi/2}\\to\\int_0^{\\infty}\\)), and finish with \\(\\int_0^\\infty\\dfrac{dt}{t^2+k^2}=\\dfrac{\\pi}{2k}\\). Over \\([0,\\pi]\\) split at \\(\\tfrac\\pi2\\) (or use King's) and double.\n" +
+        "- \\(\\displaystyle\\int_0^{\\pi}\\frac{dx}{1+\\sin x}=2\\) and \\(\\displaystyle\\int_0^{\\pi/2}\\frac{dx}{1+\\sin x}=1\\): multiply by \\(\\dfrac{1-\\sin x}{1-\\sin x}\\) to get \\(\\sec^2x-\\sec x\\tan x\\), or shift the half-angle \\(1+\\sin x=\\big(\\sin\\tfrac x2+\\cos\\tfrac x2\\big)^2\\). The \\(1+\\cos\\) sibling uses \\(2\\cos^2\\tfrac x2\\) directly; \\(1+\\sin\\) needs one of these two moves.\n" +
+        "- **Trig preparation this chapter keeps assuming (full detail in the Differentiation toolkit, linked below):** Weierstrass \\(t=\\tan\\tfrac x2\\), \\(\\sin x=\\dfrac{2t}{1+t^2}\\), \\(\\cos x=\\dfrac{1-t^2}{1+t^2}\\), \\(dx=\\dfrac{2\\,dt}{1+t^2}\\) for any rational function of \\(\\sin x,\\cos x\\); the harmonic form \\(\\sin x+\\cos x=\\sqrt2\\sin(x+\\tfrac\\pi4)\\), so \\(\\dfrac{1}{(\\sin x+\\cos x)^2}=\\tfrac12\\csc^2(x+\\tfrac\\pi4)\\); and \\(\\sqrt{1+\\sin\\theta}=\\big|\\sin\\tfrac\\theta2+\\cos\\tfrac\\theta2\\big|\\) (keep the modulus, resolve it on the interval).\n" +
+        "- **The \\(\\sqrt{\\tan x}+\\sqrt{\\cot x}\\) finisher:** after King's property gives \\(\\int_0^{\\pi/2}\\dfrac{\\sin x+\\cos x}{\\sqrt{\\sin x\\cos x}}\\,dx\\), put \\(u=\\sin x-\\cos x\\): \\(du=(\\cos x+\\sin x)\\,dx\\) and \\(\\sin x\\cos x=\\dfrac{1-u^2}{2}\\), so the integral is \\(\\sqrt2\\int_{-1}^{1}\\dfrac{du}{\\sqrt{1-u^2}}=\\sqrt2\\,\\pi\\).",
       formula: {
         label: "Standard definite-integral results",
         latex:
@@ -189,6 +195,7 @@ export const PROPERTIES_NOTE: SubtopicNote = {
         "- **Trig factoring**: \\(\\tan^3x+\\tan x = \\tan x\\,\\sec^2x\\), which integrates to \\(\\tfrac{\\tan^2x}{2}\\).\n" +
         "- **By-parts** for products: \\(\\int x\\ln x\\,dx\\), \\(\\int e^x\\sin x\\,dx = \\tfrac{e^x(\\sin x-\\cos x)}{2}\\).\n" +
         "- **Substitution**: \\(\\int_0^{\\pi/2}e^{\\sin x}\\cos x\\,dx\\) via \\(u=\\sin x\\).\n" +
+        "- **Is the whole integrand somebody's derivative?** Ask before any technique: \\(x^x(1+\\ln x)=\\dfrac{d}{dx}x^x\\), so \\(\\int_1^2x^x(1+\\ln x)\\,dx=2^2-1^1=3\\); \\(e^x(f+f')=\\dfrac{d}{dx}(e^xf)\\); \\(\\dfrac{x\\cos x-\\sin x}{x^2}=\\dfrac{d}{dx}\\dfrac{\\sin x}{x}\\). The \\(f'/f\\to\\ln|f|\\) case in the FTC block is the special case of this habit.\n" +
         "(For the full substitution / by-parts technique, see the Indefinite Integration notes — here just carry the limits through.)",
       authoredExample: {
         prompt: "Evaluate \\(\\displaystyle\\int_0^{\\pi/2} e^{\\sin x}\\cos x\\,dx\\).",
@@ -221,5 +228,10 @@ export const PROPERTIES_NOTE: SubtopicNote = {
         },
       ],
     },
+  ],
+  related: [
+    { label: "Trig simplification toolkit — Weierstrass, harmonic form, perfect squares (Differentiation)", href: "/notes/nda-maths/differentiation/diff-core-techniques" },
+    { label: "Substitution and standard forms (Indefinite Integration)", href: "/notes/nda-maths/indefinite-integration/ii-substitution" },
+    { label: "Triple-angle formulas (Trigonometric Identities)", href: "/notes/nda-maths/trigonometric-identities/trig-multiple-half-angle" },
   ],
 };

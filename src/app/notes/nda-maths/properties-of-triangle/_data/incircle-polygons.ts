@@ -21,7 +21,8 @@ export const INCIRCLE_POLYGONS_NOTE: SubtopicNote = {
         "- **Circumradius:** \\(R = \\dfrac{abc}{4\\Delta} = \\dfrac{a}{2\\sin A}\\).\n" +
         "- **Central vs inscribed angle:** an arc subtends an angle at the centre that is **twice** the angle it subtends at any point on the circle: \\(\\angle BOC = 2\\angle BAC\\).\n" +
         "- **Relating the two angles' ratios:** with \\(\\alpha = \\angle BAC\\) and \\(\\beta = \\angle BOC = 2\\alpha\\), the double-angle formulas convert one to the other: \\(\\cos\\beta = \\cos 2\\alpha = \\dfrac{1-\\tan^2\\alpha}{1+\\tan^2\\alpha} = 1 - 2\\sin^2\\alpha\\), and \\(\\sin\\beta = \\sin 2\\alpha = \\dfrac{2\\tan\\alpha}{1+\\tan^2\\alpha}\\). Option lists mix these up deliberately — \\(\\dfrac{2\\tan\\alpha}{1+\\tan^2\\alpha}\\) is a **sine**, not a cosine.\n" +
-        "- **Chord length:** a chord subtending angle \\(\\theta\\) at the centre of a circle of radius \\(R\\) has length \\(2R\\sin\\dfrac{\\theta}{2}\\).",
+        "- **Chord length:** a chord subtending angle \\(\\theta\\) at the centre of a circle of radius \\(R\\) has length \\(2R\\sin\\dfrac{\\theta}{2}\\).\n" +
+        "- **Equal tangents from an external point:** the two tangent segments from a point to a circle are equal. For the incircle this means the sides split as \\(s-a\\), \\(s-b\\), \\(s-c\\) at the points of contact — from vertex \\(A\\) the two tangent lengths are both \\(s-a\\) (so \\(\\tan\\tfrac A2=\\dfrac{r}{s-a}\\)). A triangle with sides \\(a,b,c\\) whose incircle touches \\(BC\\) at \\(D\\) has \\(BD=s-b\\) and \\(DC=s-c\\); the whole \"in-circle\" question pair is this fact plus arithmetic.",
       formula: {
         label: "Inradius, circumradius, central angle",
         latex: "r = \\dfrac{\\Delta}{s}, \\quad R = \\dfrac{abc}{4\\Delta}, \\quad \\angle BOC = 2\\,\\angle BAC",

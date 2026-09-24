@@ -24,7 +24,11 @@ export const CONDITIONAL_PROBABILITY_BAYES_NOTE: SubtopicNote = {
         "The **conditional probability** of \\(A\\) given \\(B\\) (with \\(P(B) > 0\\)) is " +
         "\\(P(A \\mid B) = \\dfrac{P(A \\cap B)}{P(B)}\\). " +
         "It re-normalises the joint probability \\(P(A \\cap B)\\) by the probability of the condition \\(B\\). " +
-        "If \\(A\\) and \\(B\\) are independent, conditioning changes nothing: \\(P(A \\mid B) = P(A)\\).",
+        "If \\(A\\) and \\(B\\) are independent, conditioning changes nothing: \\(P(A \\mid B) = P(A)\\).\n" +
+        "**Reading a conditional statement** (the statement-check shapes):\n" +
+        "- \\(A \\subseteq B\\) gives \\(P(A\\cap B) = P(A)\\), hence \\(P(B \\mid A) = 1\\) and \\(P(A \\mid B) = P(A)/P(B)\\).\n" +
+        "- \\(P(A \\mid B) = 1\\) means \\(B \\subseteq A\\) (up to probability 0), so \\(\\bar A \\subseteq \\bar B\\) and \\(P(\\bar B \\mid \\bar A) = 1\\).\n" +
+        "- \\(P(A \\mid B) < P(A)\\) is the same statement as \\(P(A\\cap B) < P(A)P(B)\\), hence the same as \\(P(B \\mid A) < P(B)\\) — the inequality is symmetric in \\(A\\) and \\(B\\). Likewise \\(P(A\\mid B) > P(A) \\iff P(B\\mid A) > P(B)\\).",
       formula: {
         label: "Conditional probability",
         latex:

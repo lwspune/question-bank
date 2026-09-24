@@ -16,7 +16,11 @@ export const EVALUATION_NOTE: SubtopicNote = {
       intuition:
         "A limit describes the value a function **approaches**, not necessarily its value at the point. It exists only when both sides agree — the left-hand limit equals the right-hand limit. Always try **direct substitution** first; only if that gives an indeterminate form (0/0, ∞/∞, 1^∞, …) do you need a technique.",
       definition:
-        "\\(\\lim_{x\\to a}f(x)=L\\) means \\(f(x)\\) gets arbitrarily close to \\(L\\) as \\(x\\to a\\). It **exists iff** LHL \\(=\\) RHL. Algebra of limits: limits distribute over sums, products, and quotients (when denominators are non-zero). For \\(n\\to\\infty\\) ratios, the dominant term decides (e.g. \\(\\dfrac{a^n+b^n}{a^{n}}\\to\\) the larger base's contribution).",
+        "\\(\\lim_{x\\to a}f(x)=L\\) means \\(f(x)\\) gets arbitrarily close to \\(L\\) as \\(x\\to a\\). It **exists iff** LHL \\(=\\) RHL. Algebra of limits: limits distribute over sums, products, and quotients (when denominators are non-zero). For \\(n\\to\\infty\\) ratios, the dominant term decides (e.g. \\(\\dfrac{a^n+b^n}{a^{n}}\\to\\) the larger base's contribution).\n" +
+        "- **The dominant-term rule, written out:** \\(r^n\\to0\\) for \\(|r|<1\\). So for \\(a>b>0\\), divide by \\(a^n\\): \\(\\dfrac{a^n+b^n}{a^n-b^n}=\\dfrac{1+(b/a)^n}{1-(b/a)^n}\\to\\dfrac{1+0}{1-0}=1\\); and \\(\\dfrac{2^n+3^n}{3^n}\\to1\\), \\(\\dfrac{2^n}{3^n}\\to0\\).\n" +
+        "- **The algebra of limits does NOT run backwards:** \\(\\lim(fg)\\) can exist while neither \\(\\lim f\\) nor \\(\\lim g\\) does (\\(f=\\tfrac1x\\), \\(g=x\\) at 0), and \\(\\lim(f+g)\\) can exist with both summands divergent (\\(f=\\tfrac1x\\), \\(g=-\\tfrac1x\\)). \"If \\(\\lim fg\\) exists then \\(\\lim f\\) exists\" is the planted false statement.\n" +
+        "- **A limit that IS a derivative:** \\(\\lim_{h\\to0}\\dfrac{f(a+h)-f(a)}{h}=f'(a)\\) and \\(\\lim_{x\\to a}\\dfrac{f(x)-f(a)}{x-a}=f'(a)\\). Recognise the shape and differentiate instead of manipulating: \\(\\lim_{x\\to a}\\dfrac{x^n-a^n}{x-a}=na^{n-1}\\), \\(\\lim_{x\\to0}\\dfrac{\\cos x-1}{x}=(\\cos)'(0)=0\\), \\(\\lim_{x\\to 2}\\dfrac{e^{x}-e^{2}}{x-2}=e^{2}\\).\n" +
+        "- **The vanishing-numerator rule:** if \\(\\lim\\dfrac{f}{g}\\) is FINITE and \\(g\\to0\\), then \\(f\\to0\\) too — so \"\\(\\lim_{x\\to1}\\dfrac{x^2+ax+b}{x-1}=5\\)\" forces \\(1+a+b=0\\) first, and then the value pins the second unknown (\\(2+a=5\\)).",
       authoredExample: {
         prompt: "Evaluate \\(\\lim_{x\\to 2}(x^2+3x-1)\\).",
         steps: [
@@ -49,7 +53,10 @@ export const EVALUATION_NOTE: SubtopicNote = {
         "When substitution gives 0/0, the zero factor is shared by numerator and denominator. **Factor and cancel** it (often via \\(x^n-a^n\\)), or — when surds are involved — **rationalise** by multiplying by the conjugate to expose the cancelling factor.",
       definition:
         "- **Factor/cancel:** use \\(x^n-a^n=(x-a)(x^{n-1}+\\cdots+a^{n-1})\\); the standard result \\(\\lim_{x\\to a}\\dfrac{x^n-a^n}{x-a}=n\\,a^{n-1}\\).\n" +
-        "- **Rationalise:** multiply numerator and denominator by the conjugate of the surd to turn \\(\\sqrt{A}-\\sqrt{B}\\) into \\(A-B\\), then cancel.",
+        "- **Rationalise:** multiply numerator and denominator by the conjugate of the surd to turn \\(\\sqrt{A}-\\sqrt{B}\\) into \\(A-B\\), then cancel.\n" +
+        "- **A quadratic from its roots:** if the roots are \\(m,n\\) then \\(x^2-(m+n)x+mn=(x-m)(x-n)\\) — the factorisation a 0/0 limit at \\(x=m\\) needs, without solving anything.\n" +
+        "- **A hidden perfect square:** \\(a^x+a^{-x}-2=\\big(a^{x/2}-a^{-x/2}\\big)^2\\ge0\\), so the numerator tends to 0 **from above** on both sides — which is what separates the two one-sided limits of \\(\\dfrac{\\sqrt{a^x+a^{-x}-2}}{x}\\) (\\(\\pm\\ln a\\)). Likewise \\(1-\\cos x=2\\sin^2\\tfrac x2\\ge0\\).\n" +
+        "- **The \\(\\infty-\\infty\\) form** (\\(x\\to\\infty\\)): combine into ONE fraction, or rationalise at infinity — \\(\\sqrt{x^2+x}-x=\\dfrac{x}{\\sqrt{x^2+x}+x}=\\dfrac{1}{\\sqrt{1+1/x}+1}\\to\\tfrac12\\). Never subtract the two infinities term by term; the answer depends on how fast each grows.",
       formula: {
         label: "The x^n − a^n standard limit",
         latex: "\\lim_{x\\to a}\\dfrac{x^n-a^n}{x-a}=n\\,a^{n-1}",
@@ -97,6 +104,9 @@ export const EVALUATION_NOTE: SubtopicNote = {
           { cells: ["(eˣ − 1) / x", "1"] },
           { cells: ["(aˣ − 1) / x", "ln a"] },
           { cells: ["(1 + x)^(1/x)", "e"] },
+          { cells: ["(1 − cos ax) / x²", "a²/2"], noteAmber: "The scale factor SQUARES here — (1 − cos 4x)/x² → 8, not 2. It is the one row where 'sin(ax)/x → a' scaling changes shape." },
+          { cells: ["sin ax / sin bx, tan ax / x, (eᵃˣ − 1)/x", "a/b, a, a"] },
+          { cells: ["sin x° / x  (x in DEGREES)", "π/180"], noteAmber: "Convert first: x° = πx/180 radians. sin x° / tan 3x° → 1/3 after the conversion cancels." },
         ],
         caption: "Radians only. Scale the argument and the value scales: sin(ax)/x → a.",
       },
@@ -134,7 +144,8 @@ export const EVALUATION_NOTE: SubtopicNote = {
       intuition:
         "When a limit is genuinely 0/0 or ∞/∞ and factoring is awkward, differentiate the top and bottom **separately** and try the limit again. Repeat if it's still indeterminate.",
       definition:
-        "If \\(\\lim\\dfrac{f}{g}\\) is \\(\\tfrac00\\) or \\(\\tfrac{\\infty}{\\infty}\\) and \\(f,g\\) are differentiable, then \\(\\lim\\dfrac{f}{g}=\\lim\\dfrac{f'}{g'}\\) (provided the latter exists). Only apply it to a true indeterminate form — never to a determinate one. Series expansion (\\(e^x=1+x+\\tfrac{x^2}{2}+\\cdots\\), \\(\\sin x=x-\\tfrac{x^3}{6}+\\cdots\\)) often does the same job faster.",
+        "If \\(\\lim\\dfrac{f}{g}\\) is \\(\\tfrac00\\) or \\(\\tfrac{\\infty}{\\infty}\\) and \\(f,g\\) are differentiable, then \\(\\lim\\dfrac{f}{g}=\\lim\\dfrac{f'}{g'}\\) (provided the latter exists). Only apply it to a true indeterminate form — never to a determinate one. Series expansion (\\(e^x=1+x+\\tfrac{x^2}{2}+\\cdots\\), \\(\\sin x=x-\\tfrac{x^3}{6}+\\cdots\\)) often does the same job faster.\n" +
+        "**Faster still — the asymptotic reading of the standard limits:** as \\(x\\to0\\), \\(\\sin x\\sim x\\), \\(\\tan x\\sim x\\), \\(1-\\cos x\\sim\\tfrac{x^2}{2}\\), \\(e^x-1\\sim x\\), \\(\\ln(1+x)\\sim x\\). Replace each factor by its leading power and compare orders: \\(\\dfrac{(1-\\cos x)^2}{x^3\\sin x}\\sim\\dfrac{x^4/4}{x^4}=\\tfrac14\\); \\(\\dfrac{\\sin 3x\\,\\tan 2x}{x^2}\\to 6\\); a numerator of higher order than the denominator gives 0, lower gives \\(\\pm\\infty\\).",
       authoredExample: {
         prompt: "Evaluate \\(\\lim_{x\\to 0}\\dfrac{\\sin x - x}{x^3}\\).",
         steps: [
@@ -208,6 +219,8 @@ export const EVALUATION_NOTE: SubtopicNote = {
     },
   ],
   related: [
+    { label: "Compound-angle formulas & values at multiples of π/2 (Trigonometric Identities)", href: "/notes/nda-maths/trigonometric-identities/trig-compound-angle" },
+    { label: "Fundamental theorem of calculus (Definite Integration)", href: "/notes/nda-maths/definite-integration/defint-ftc" },
     { label: "One-Sided, Greatest-Integer & Modulus Limits", href: "/notes/nda-maths/limits-continuity/lim-one-sided-special" },
     { label: "NDA Maths strategy guide", href: "/guide/nda-maths" },
   ],

@@ -21,7 +21,8 @@ export const COUNTING_NOTE: SubtopicNote = {
         "- A set with \\(n\\) elements has \\(2^n\\) **subsets** (the power set \\(P(A)\\)), of which \\(2^n - 1\\) are **proper subsets** (all except the set itself).\n" +
         "- **Supersets of a fixed set** \\(\\{x\\}\\): fix x as 'in', let the other \\(n-1\\) elements vary \\(\\Rightarrow 2^{n-1}\\) subsets contain x.\n" +
         "- **Count carefully when elements are themselves sets**: \\(A=\\{\\{1,2,3\\}\\}\\) has ONE element, so \\(|P(A)|=2\\).\n" +
-        "- **Symmetry trick**: in a \\((2n+1)\\)-element set, the subsets of size \\(\\le n\\) are exactly half of all subsets \\(= \\tfrac{1}{2}\\cdot 2^{2n+1} = 2^{2n}\\).",
+        "- **Symmetry trick**: in a \\((2n+1)\\)-element set, the subsets of size \\(\\le n\\) are exactly half of all subsets \\(= \\tfrac{1}{2}\\cdot 2^{2n+1} = 2^{2n}\\).\n" +
+        "- **Subsets of a given SIZE**: an \\(n\\)-set has \\(\\binom nr\\) subsets with exactly \\(r\\) elements (they sum to \\(2^n\\) over \\(r\\)); e.g. a 6-set has \\(\\binom62=15\\) two-element subsets and \\(\\binom63=20\\) three-element ones. Subsets with at least \\(r\\) elements: \\(\\sum_{k\\ge r}\\binom nk\\).",
       formula: {
         label: "Counting subsets",
         latex: "|P(A)| = 2^n \\qquad \\text{proper subsets} = 2^n - 1 \\qquad \\text{subsets containing a fixed element} = 2^{n-1}",
@@ -73,7 +74,9 @@ export const COUNTING_NOTE: SubtopicNote = {
         "The two-set rule and its uses:\n" +
         "- \\(|A\\cup B| = |A| + |B| - |A\\cap B|\\).\n" +
         "- For sets of multiples, \\(A\\cap B\\) uses the **LCM**: multiples of 3 \\(\\cap\\) multiples of 2 are multiples of 6.\n" +
-        "- **Least overlap**: \\(|A\\cap B| \\ge |A|+|B|-|U|\\) (when the union can't exceed the universe). **Most overlap**: \\(|A\\cap B| \\le \\min(|A|,|B|)\\).",
+        "- **Least overlap**: \\(|A\\cap B| \\ge |A|+|B|-|U|\\) (when the union can't exceed the universe). **Most overlap**: \\(|A\\cap B| \\le \\min(|A|,|B|)\\).\n" +
+        "- The mirror bounds on the **union**: \\(\\max(|A|,|B|)\\le|A\\cup B|\\le\\min(|A|+|B|,\\,|U|)\\) — the minimum is attained when one set contains the other, the maximum when they are disjoint.\n" +
+        "- **Counting multiples**: the number of multiples of \\(d\\) in \\(\\{1,\\dots,N\\}\\) is \\(\\lfloor N/d\\rfloor\\); so among \\(1..100\\) there are 50 multiples of 2, 20 of 5, 10 of 10 (the LCM), and \\(50+20-10=60\\) of 2 or 5.",
       formula: {
         label: "Inclusion–exclusion (two sets)",
         latex: "|A \\cup B| = |A| + |B| - |A \\cap B| \\qquad |A \\cap B| \\ge |A| + |B| - |U|",
