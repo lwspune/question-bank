@@ -494,6 +494,11 @@ import {
   MHTCET_SOLUTIONS_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/solutions/_data";
 import {
+  MHTCET_KINETICS_CHAPTER,
+  MHTCET_KINETICS_NOTES,
+  MHTCET_KINETICS_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/chemical-kinetics/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1203,6 +1208,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_SOLUTIONS_CHAPTER,
     notes: MHTCET_SOLUTIONS_NOTES,
     slugs: MHTCET_SOLUTIONS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "chemical-kinetics",
+    chipLabel: "Chemical Kinetics notes",
+    chapter: MHTCET_KINETICS_CHAPTER,
+    notes: MHTCET_KINETICS_NOTES,
+    slugs: MHTCET_KINETICS_SLUGS,
   },
   {
     examName: "NDA",
