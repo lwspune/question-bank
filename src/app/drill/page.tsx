@@ -61,7 +61,7 @@ export default async function DrillPage({
             <h1 className="text-xl font-semibold tracking-tight sm:text-2xl">
               {drill.scope ? "Fix these mistakes" : "Fix your mistakes"}
             </h1>
-            <p className="truncate text-sm text-muted-foreground">
+            <p className="line-clamp-2 text-sm text-muted-foreground">
               {drill.scope
                 ? `From ${drill.scope.mockTitle}`
                 : drill.fresh > 0 && drill.fresh === drill.questions.length
