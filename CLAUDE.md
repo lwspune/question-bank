@@ -322,6 +322,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 > exactly which entries are in that state; write the long form into the archive before evicting any
 > it lists.
 
+- **2026-09-24 (eleventh) — the daily set ships (B2) as a FILL of `/drill`, not a new surface: a student with nothing due still gets five.**
+  - **Why a fill:** the brief is no clutter, phone first, and `/drill` was already the one place to practise five. Short of five due, the rest are UNSEEN PYQs from the two subtopics with the most recorded misses, then the target exam — the transfer half the drill launched without.
+  - **"Seen" is what moves the pool** (attempt_answers + activity refs): a question served as new is met and never returns as new. A correct answer to a new question is `question_practiced`, not `answer_correct` — a recovery needs a prior miss, and the ladder retires on two of them.
+  - **Deterministic, no difficulty matching in v1** — fixed size and order is retrieval practice, not a variable reward; a band needs three judged answers per subtopic and the students this exists for have the least evidence. A scoped drill is never filled.
+  - **The heaviest students cannot exercise it** (all have ≥5 due), so `drill:smoke` now walks down to one short-pool student and asserts a filled id was never met.
 - **2026-09-24 (tenth) — question-level peer rates on the result card (C4): the last of the four Tranche C decisions, and the smallest change of the day.**
   - **One service-role read on a student page, scoped to that attempt's question ids** — the same pooled `readPeerAccuracy` the report email uses, so the screen and the mail print the same percentage. It says "62% of students got this right" about a QUESTION; nothing compares one student to another, which is the line the gate draws.
   - **Why it was refused before and allowed now:** the card's author stopped at "needs a service-role read plus a decision about showing the cohort"; the user made that decision (2026-09-24) for question level only. `rankWrong` now ranks easy misses by recoverability instead of falling back to dwell.

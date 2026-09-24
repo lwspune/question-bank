@@ -86,7 +86,7 @@ export async function loadQuestionRefs(
     for (let from = 0; ; from += PAGE) {
       const { data, error } = await db
         .from("questions")
-        .select("id, question_format, chapter:chapters!chapter_id(name), subtopic:subtopics!subtopic_id(name)")
+        .select("id, question_format, subtopic_id, chapter:chapters!chapter_id(name), subtopic:subtopics!subtopic_id(name)")
         .in("id", slice)
         .eq("visibility", "PUBLIC")
         .range(from, from + PAGE - 1);
@@ -94,6 +94,7 @@ export async function loadQuestionRefs(
       const rows = (data ?? []) as unknown as {
         id: string;
         question_format: string | null;
+        subtopic_id: string | null;
         chapter: { name: string } | null;
         subtopic: { name: string } | null;
       }[];
@@ -103,6 +104,7 @@ export async function loadQuestionRefs(
         out.set(r.id, {
           chapter: r.chapter?.name ?? "",
           subtopic: r.subtopic?.name ?? "",
+          subtopicId: r.subtopic_id,
         });
       }
       if (rows.length < PAGE) break;
@@ -228,4 +230,89 @@ export async function gradeDrillAnswer(
     solution: row.solution,
     solutionImageUrl: row.solution_image_url,
   };
+}
+
+// ── the daily-set fill (ENGAGEMENT_SPEC.md B2) ──────────────────────────────
+
+/**
+ * Every question this student has already MET: reached in a timed paper (an
+ * attempt_answers row exists — never-reached questions are genuinely unseen)
+ * or recorded against in the activity log (answered, practised, bookmarked).
+ * Both reads are own-row by RLS. Paged, because a heavy student has ~1,600
+ * reached questions and the cap is silent.
+ */
+export async function loadSeenQuestionIds(db: SupabaseClient, userId: string): Promise<Set<string>> {
+  const seen = new Set<string>();
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await db
+      .from("attempt_answers")
+      .select("question_id")
+      .order("question_id")
+      .range(from, from + PAGE - 1);
+    if (error) throw new Error(`loadSeenQuestionIds answers: ${error.message}`);
+    const rows = (data ?? []) as { question_id: string }[];
+    for (const r of rows) seen.add(r.question_id);
+    if (rows.length < PAGE) break;
+  }
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await db
+      .from("user_activity")
+      .select("ref_id")
+      .eq("user_id", userId)
+      .eq("ref_kind", "question")
+      .not("ref_id", "is", null)
+      .order("id")
+      .range(from, from + PAGE - 1);
+    if (error) throw new Error(`loadSeenQuestionIds activity: ${error.message}`);
+    const rows = (data ?? []) as { ref_id: string }[];
+    for (const r of rows) seen.add(r.ref_id);
+    if (rows.length < PAGE) break;
+  }
+  return seen;
+}
+
+/** How many candidate ids one fill read fetches before the seen filter. Wide
+ *  enough that a student who has met most of a subtopic still finds new ones. */
+export const FILL_CANDIDATES = 120;
+
+/**
+ * PUBLIC past-year MCQ ids to draw new questions from — by subtopic (the weak
+ * ones) or by exam (the fallback). Ids only, ordered by id so the same pool
+ * yields the same list; the seen filter is what moves it forward.
+ */
+export async function loadUnseenCandidates(
+  db: SupabaseClient,
+  scope: { subtopicIds: readonly string[] } | { examId: string },
+  limit = FILL_CANDIDATES
+): Promise<string[]> {
+  let q = db
+    .from("questions")
+    .select("id")
+    .eq("visibility", "PUBLIC")
+    .eq("question_kind", "pyq")
+    .or("question_format.is.null,question_format.eq.mcq")
+    .order("id")
+    .range(0, limit - 1);
+  if ("subtopicIds" in scope) {
+    if (scope.subtopicIds.length === 0) return [];
+    q = q.in("subtopic_id", scope.subtopicIds.slice(0, IN_CHUNK));
+  } else {
+    q = q.eq("exam_id", scope.examId);
+  }
+  const { data, error } = await q;
+  if (error) throw new Error(`loadUnseenCandidates: ${error.message}`);
+  return ((data ?? []) as { id: string }[]).map((r) => r.id);
+}
+
+/** Has this student EVER got this question wrong? Decides whether a correct
+ *  drill answer is a recovery (`answer_correct`) or plain practice. */
+export async function hasPriorWrong(db: SupabaseClient, userId: string, questionId: string): Promise<boolean> {
+  const { count, error } = await db
+    .from("user_activity")
+    .select("id", { count: "exact", head: true })
+    .eq("user_id", userId)
+    .eq("kind", "answer_wrong")
+    .eq("ref_id", questionId);
+  if (error) throw new Error(`hasPriorWrong: ${error.message}`);
+  return (count ?? 0) > 0;
 }
