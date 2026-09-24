@@ -33,54 +33,14 @@
  * "verified".
  */
 import { readFileSync, existsSync } from "node:fs";
-import { spawnSync } from "node:child_process";
 import { requireChapter, questionsJsonPath } from "./config";
+import { chapterLines } from "./socialPdf";
 import { groundingViolations, type GroundedRow } from "./scienceLib";
 import {
   headingAnchors,
   figureTableAnchors,
   parseSocialCitations,
-  type HeadingLine,
 } from "./socialLib";
-
-/**
- * Every line of the chapter with its size, page and whether it is WHOLLY bold.
- *
- * Wholly, not partly: body prose bolds a term inline constantly, and a line
- * carrying one bold word is not a heading. The body size is the modal size
- * weighted by character count, so a chapter of mostly-display pages cannot drag
- * the baseline up and hide its own headings.
- */
-function chapterLines(pdf: string): { body: number; lines: HeadingLine[] } {
-  const py = [
-    "import fitz, sys, json, collections",
-    "doc = fitz.open(sys.argv[1])",
-    "lines=[]; sizes=collections.Counter()",
-    "def heavy(f):",
-    "    f=f.lower()",
-    "    return ('bold' in f) or ('demi' in f) or ('black' in f) or ('heavy' in f)",
-    "for pi,p in enumerate(doc):",
-    "    for b in p.get_text('dict')['blocks']:",
-    "        for l in b.get('lines', []):",
-    "            sp=l['spans']",
-    "            txt=''.join(s['text'] for s in sp).strip()",
-    "            if not txt: continue",
-    "            mx=max(s['size'] for s in sp)",
-    "            sizes[round(mx,1)] += len(txt)",
-    "            lines.append({'text':txt,'size':round(mx,1),'page':pi,",
-    "                          'bold': all(heavy(s['font']) or (s['flags'] & 16) for s in sp)})",
-    "doc.close()",
-    "body = sizes.most_common(1)[0][0] if sizes else 0",
-    "sys.stdout.buffer.write(json.dumps({'body':body,'lines':lines}).encode('utf-8'))",
-  ].join("\n");
-
-  const r = spawnSync("python", ["-c", py, pdf], {
-    encoding: "utf8",
-    maxBuffer: 256 * 1024 * 1024,
-  });
-  if (r.status !== 0) throw new Error(`pdf line extraction failed: ${r.stderr}`);
-  return JSON.parse(r.stdout);
-}
 
 function main() {
   const id = process.argv[2];

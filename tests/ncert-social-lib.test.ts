@@ -30,6 +30,7 @@ import {
   normaliseHeading,
   headingAnchors,
   parseSocialCitations,
+  stitchSmallCaps,
   figureTableAnchors,
   type HeadingLine,
 } from "../scripts/ncert/socialLib";
@@ -296,5 +297,147 @@ describe("groundingViolations with the social citation parser", () => {
     const rows = [{ ref: "IT 2.1 Q1", groundedIn: "§2.1.1 Acids and Bases in the Laboratory" }];
     expect(groundingViolations(rows, ["2.1.1"])).toEqual([]);
     expect(parseCitations("§2.1.1 Acids")).toEqual(["2.1.1"]);
+  });
+});
+
+describe("stitchSmallCaps — the small-caps heading defect", () => {
+  // MEASURED, not hypothetical. Geography sets its section heads in SMALL CAPS:
+  // 12pt capitals, 8.4pt letters, against a 10.5pt body. PyMuPDF decomposes one
+  // such visual line into a dozen OVERLAPPING two-span windows, all at the same
+  // y. `headingAnchors` then saw "WATER", "ATER S", "S", "SCARCITY" as four
+  // separate headings, and the single common words among them ("water",
+  // "river", "multi") are near-free to match. That turned the gate almost
+  // vacuous on two of the seven Geography chapters: 10 of 61 authored rows
+  // resolved ONLY onto such a fragment.
+  const frag = (text: string, x0: number, x1: number, size = 12, bold = true) => ({
+    text, x0, x1, size, bold,
+  });
+
+  it("rebuilds one heading from PyMuPDF's overlapping small-caps windows", () => {
+    // The real p.0 y=485 band of "03. Water Resources.pdf", abridged.
+    const raw = [
+      { page: 0, y: 485.4, frags: [frag("W", 306.2, 313.9), frag("ATER", 313.9, 337.5, 8.4)] },
+      { page: 0, y: 485.4, frags: [frag("ATER", 313.9, 337.5, 8.4), frag(" S", 337.5, 348.3)] },
+      { page: 0, y: 485.1, frags: [frag(" S", 337.5, 348.3)] },
+      { page: 0, y: 485.3, frags: [frag(" S", 337.5, 348.3), frag("CARCITY", 348.3, 393.0, 8.4)] },
+      // The word space between CARCITY and AND is its own 12pt span on the page.
+      { page: 0, y: 485.4, frags: [
+        frag("CARCITY", 348.3, 393.0, 8.4), frag(" ", 393.0, 396.5), frag("AND", 396.5, 420.2, 8.4),
+      ] },
+    ];
+    expect(stitchSmallCaps(raw).map((l) => l.text)).toEqual(["WATER SCARCITY AND"]);
+  });
+
+  // The three facts below are measured off "03. Water Resources.pdf" p.2, the
+  // MULTI-PURPOSE RIVER PROJECTS heading. They are the reason the first version
+  // of this stitcher emitted "m ultiulti purposepurpose r r r iveriver".
+  it("dedupes a repeated span despite sub-point x jitter", () => {
+    // PyMuPDF reports the SAME span as x0 318.126 / 317.874 / 318.000 across
+    // the windows it appears in. Keyed at one decimal that is three keys, so
+    // the letters were concatenated once per window.
+    const raw = [
+      { page: 2, y: 503.204, frags: [frag("M", 306.18, 317.208), frag("ULTI", 318.126, 340.928, 8.4)] },
+      { page: 2, y: 505.875, frags: [frag("ULTI", 317.874, 340.675, 8.4)] },
+      { page: 2, y: 505.624, frags: [frag("ULTI", 318.126, 340.928, 8.4)] },
+      { page: 2, y: 503.206, frags: [frag("ULTI", 318.0, 340.802, 8.4), frag("-", 341.94, 346.728)] },
+    ];
+    expect(stitchSmallCaps(raw).map((l) => l.text)).toEqual(["MULTI-"]);
+  });
+
+  it("treats a 2.7pt y spread as ONE visual line", () => {
+    // Those same windows range y 503.204 to 505.875. A 1pt tolerance split them
+    // into two bands and emitted the heading twice.
+    const raw = [
+      { page: 2, y: 503.204, frags: [frag("M", 306.18, 317.208)] },
+      { page: 2, y: 505.875, frags: [frag("ULTI", 317.874, 340.675, 8.4)] },
+    ];
+    expect(stitchSmallCaps(raw)).toHaveLength(1);
+  });
+
+  it("does not mistake the small-caps letter gap for a word space", () => {
+    // 'M' ends at 317.208 and 'ULTI' starts at 318.126 — a 0.92pt gap inside
+    // one word. A real word space at 12pt is about 3pt.
+    const raw = [
+      { page: 2, y: 503.2, frags: [frag("M", 306.18, 317.208), frag("ULTI", 318.126, 340.928, 8.4)] },
+    ];
+    expect(stitchSmallCaps(raw)[0].text).toBe("MULTI");
+  });
+
+  it("still inserts a space at a real word gap", () => {
+    const raw = [
+      { page: 0, y: 10, frags: [frag("Soil", 100, 130), frag("Erosion", 137, 190)] },
+    ];
+    expect(stitchSmallCaps(raw)[0].text).toBe("Soil Erosion");
+  });
+
+  it("dedupes spans that STRADDLE a rounding boundary", () => {
+    // Real numbers from the WATER SCARCITY heading: 'AND' is reported at x0
+    // 396.4803 and 396.6063. Rounded to the nearest point those are 396 and
+    // 397 — two keys, so the word was emitted twice ("andand"). Any rounding
+    // rule has a boundary that some span will straddle; OVERLAP has none.
+    const raw = [
+      { page: 0, y: 485.4, frags: [frag("AND", 396.4803, 415.2015, 8.4)] },
+      { page: 0, y: 485.4, frags: [frag("AND", 396.6063, 415.3275, 8.4)] },
+    ];
+    expect(stitchSmallCaps(raw).map((l) => l.text)).toEqual(["AND"]);
+  });
+
+  it("keeps a word that genuinely repeats later on the same line", () => {
+    // The dedupe must not collapse a real repetition. These two do not overlap.
+    const raw = [
+      { page: 0, y: 20, frags: [frag("Water", 100, 140), frag("and", 143, 160), frag("Water", 163, 203)] },
+    ];
+    expect(stitchSmallCaps(raw)[0].text).toBe("Water and Water");
+  });
+
+  it("dedupes two readings of one span that differ only by a leading space", () => {
+    // Real: the MULTI-PURPOSE RIVER PROJECTS heading yields both " ROJECTS"
+    // (455.52-503.89) and "ROJECTS" (456.72-503.76). They overlap by 99%, but
+    // an exact text comparison called them different spans and emitted
+    // "p rojectsrojects".
+    const raw = [
+      { page: 2, y: 504, frags: [frag(" P", 439.26, 455.34), frag(" ROJECTS", 455.52, 503.89, 8.4)] },
+      { page: 2, y: 504, frags: [frag("ROJECTS", 456.72, 503.76, 8.4)] },
+    ];
+    expect(stitchSmallCaps(raw).map((l) => l.text)).toEqual(["PROJECTS"]);
+  });
+
+  it("keeps the largest span size, so the heading still clears the body", () => {
+    const raw = [{ page: 0, y: 485.4, frags: [frag("W", 306, 314), frag("ATER", 314, 337, 8.4)] }];
+    expect(stitchSmallCaps(raw)[0].size).toBe(12);
+  });
+
+  it("does NOT merge two columns that happen to share a y", () => {
+    // The whole hazard of stitching by y. A left-column heading and a
+    // right-column heading on the same line must stay two anchors, or the gate
+    // grows a compound heading that exists nowhere on the page.
+    const raw = [
+      { page: 3, y: 120.0, frags: [frag("Roadways", 100, 160)] },
+      { page: 3, y: 120.0, frags: [frag("Railways", 320, 380)] },
+    ];
+    expect(stitchSmallCaps(raw).map((l) => l.text)).toEqual(["Roadways", "Railways"]);
+  });
+
+  it("does not merge across pages, nor across different lines of one page", () => {
+    const raw = [
+      { page: 0, y: 100.0, frags: [frag("Water", 100, 140)] },
+      { page: 1, y: 100.0, frags: [frag("Scarcity", 100, 140)] },
+      { page: 0, y: 300.0, frags: [frag("Causes", 100, 140)] },
+    ];
+    expect(stitchSmallCaps(raw).map((l) => l.text).sort()).toEqual(["Causes", "Scarcity", "Water"]);
+  });
+
+  it("is bold only when every fragment of the stitched line is bold", () => {
+    const raw = [
+      { page: 0, y: 10, frags: [frag("Soil", 100, 130, 12, true), frag(" as", 130, 150, 12, false)] },
+    ];
+    expect(stitchSmallCaps(raw)[0].bold).toBe(false);
+  });
+
+  it("leaves an ordinary single-span line exactly as it was", () => {
+    const raw = [{ page: 2, y: 55.5, frags: [frag("Multi-purpose River Projects", 90, 300)] }];
+    expect(stitchSmallCaps(raw)).toEqual([
+      { text: "Multi-purpose River Projects", size: 12, page: 2, bold: true },
+    ]);
   });
 });

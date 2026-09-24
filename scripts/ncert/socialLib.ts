@@ -107,6 +107,155 @@ export function normaliseHeading(s: string): string {
  */
 export type HeadingLine = { text: string; size: number; page: number; bold?: boolean };
 
+/** One span of a PDF line: its text and where it starts and ends, in points. */
+export type HeadingFrag = {
+  text: string;
+  x0: number;
+  x1: number;
+  size: number;
+  bold: boolean;
+};
+/** A raw PDF line, before overlapping small-caps windows are stitched back up. */
+export type RawHeadingLine = { page: number; y: number; frags: HeadingFrag[] };
+
+/**
+ * Lines within this many points of each other are the same visual line.
+ *
+ * MEASURED, and larger than it looks like it should be: the windows PyMuPDF
+ * emits for ONE small-caps heading report y from 503.204 to 505.875 — a 2.7pt
+ * spread for a single printed line. A 1pt tolerance split that heading in two
+ * and emitted it twice. Heading leading in these books is 14pt and up, so 5pt
+ * separates the two cases with room on both sides.
+ */
+const Y_TOL = 5.0;
+/**
+ * A horizontal gap wider than the font size means a different heading — the
+ * next column — rather than a word space. A word space at 12pt is 3–4pt, and a
+ * two-column gutter in these books is 20pt and up, so the two never overlap.
+ */
+const GAP_FACTOR = 1.0;
+/**
+ * A gap this fraction of the font size or wider is a word space.
+ *
+ * Small caps put a sub-point gap INSIDE a word — 'M' ends at 317.208 and its
+ * own 'ULTI' starts at 318.126 — while a real word space at 12pt is about 3pt.
+ * An absolute threshold cannot separate those two at every size; a relative one
+ * can. Too low and every heading reads "m ulti purpose"; too high and two words
+ * fuse.
+ */
+const SPACE_FACTOR = 0.2;
+
+/**
+ * Rebuild one visual heading from the overlapping windows PyMuPDF emits for it.
+ *
+ * WHY THIS IS NEEDED, measured rather than supposed. Geography sets its section
+ * heads in SMALL CAPS — 12pt capitals, 8.4pt letters, against a 10.5pt body.
+ * PyMuPDF decomposes such a line into a dozen two-span sliding windows, all at
+ * the same y: for "WATER SCARCITY AND THE NEED FOR…" it emits `WATER`,
+ * `ATER S`, `S`, `SCARCITY`, `CARCITY AND`, `AND THE`, … as separate lines.
+ *
+ * `headingAnchors` then registers each fragment as its own heading, and the
+ * single common words among them — `water`, `river`, `multi`, `need` — are
+ * nearly free for any citation to match. That is the SAME fail-open hole that
+ * got `deriveAnchors` rejected for this lane: a phantom anchor lets an invented
+ * citation resolve. It was not theoretical — 10 of the first 61 authored rows
+ * resolved ONLY onto such a fragment, five of them in one chapter.
+ *
+ * THE HAZARD OF THE FIX is merging two columns that share a y, which would mint
+ * a compound heading printed nowhere on the page. Hence GAP_FACTOR: fragments
+ * join only while they are touching, and a gutter-sized gap starts a new line.
+ */
+export function stitchSmallCaps(raw: RawHeadingLine[]): HeadingLine[] {
+  const out: HeadingLine[] = [];
+  const byPage = new Map<number, RawHeadingLine[]>();
+  for (const l of raw) {
+    const g = byPage.get(l.page);
+    if (g) g.push(l);
+    else byPage.set(l.page, [l]);
+  }
+
+  for (const [page, pageLines] of byPage) {
+    // Cluster into visual lines by y, tolerantly: the windows of one heading
+    // differ by a few tenths of a point, not by zero.
+    const bands: RawHeadingLine[][] = [];
+    for (const l of [...pageLines].sort((a, b) => a.y - b.y)) {
+      const last = bands[bands.length - 1];
+      if (last && Math.abs(l.y - last[0].y) <= Y_TOL) last.push(l);
+      else bands.push([l]);
+    }
+
+    for (const band of bands) {
+      // The windows overlap, so the same span arrives several times. Identity
+      // is (where it starts, what it says) — not object identity.
+      // DEDUPE BY OVERLAP, not by a rounded coordinate.
+      //
+      // PyMuPDF reports the same span at slightly different x across the
+      // windows it appears in — 'ATER' at 317.5202 and 317.6460, 'AND' at
+      // 396.4803 and 396.6063. Keying on x0 rounded to a tenth made three keys
+      // for one span; rounding to a point fixed that one and left 'AND', whose
+      // two readings straddle the .5 boundary, so the heading still came out as
+      // "andand". Every rounding rule has a boundary and some span will land on
+      // it. Two readings of the SAME span always overlap; two genuine
+      // occurrences of a word on one line never do.
+      const kept: HeadingFrag[] = [];
+      for (const f of band.flatMap((l) => l.frags).sort((a, b) => a.x0 - b.x0)) {
+        // TRIMMED text: the same span is read both as " ROJECTS" and
+        // "ROJECTS" (455.52-503.89 against 456.72-503.76 — a 99% overlap), and
+        // an exact comparison let both through as "p rojectsrojects".
+        const dup = kept.some(
+          (k) => k.text.trim() === f.text.trim() && f.x0 < k.x1 && f.x1 > k.x0
+        );
+        if (!dup) kept.push(f);
+      }
+      const frags = kept;
+
+      let run: HeadingFrag[] = [];
+      const flush = () => {
+        if (!run.length) return;
+        let text = "";
+        let end = run[0].x0;
+        let prevSize = 0;
+        for (const f of run) {
+          // SMALL CAPS: a word is a 12pt capital followed by 8.4pt letters, and
+          // PyMuPDF sometimes gives that tail a leading space of its own — the
+          // heading came out as "P ROJECTS". A fragment SMALLER than the one
+          // before it continues that word, so its leading space is an artifact;
+          // a fragment the same size or larger begins a new word, so its space
+          // is real (that is what separates WATER from SCARCITY, where the two
+          // spans actually overlap and geometry alone says nothing).
+          const tail = prevSize > 0 && f.size < prevSize;
+          const t = tail ? f.text.replace(/^\s+/, "") : f.text;
+          if (!tail && f.x0 - end > f.size * SPACE_FACTOR) text += " ";
+          text += t;
+          end = f.x1;
+          prevSize = f.size;
+        }
+        text = text.replace(/\s+/g, " ").trim();
+        if (text) {
+          out.push({
+            text,
+            size: Math.max(...run.map((f) => f.size)),
+            page,
+            bold: run.every((f) => f.bold),
+          });
+        }
+        run = [];
+      };
+
+      for (const f of frags) {
+        if (run.length) {
+          const prevEnd = run[run.length - 1].x1;
+          const limit = Math.max(...run.map((r) => r.size)) * GAP_FACTOR;
+          if (f.x0 - prevEnd > limit) flush();
+        }
+        run.push(f);
+      }
+      flush();
+    }
+  }
+  return out;
+}
+
 /** A heading is bigger than the body by at least this much, in points. */
 const SIZE_MARGIN = 0.5;
 /** Seen on this many distinct pages, it is a running head, not a heading. */
