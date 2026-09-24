@@ -27,6 +27,7 @@ import {
   loadQuestionRefs,
 } from "@/lib/drill/query";
 import { attachRefs, dueQuestions, selectDrill, DRILL_SIZE } from "@/lib/drill/select";
+import { fillUnseen } from "@/lib/drill/compose";
 
 const LIMIT = Number(process.argv[2] ?? 8);
 
@@ -58,7 +59,11 @@ async function main() {
     const refs = await loadQuestionRefs(db, due.map((d) => d.questionId));
     const drillable = attachRefs(due, refs);
     const picked = selectDrill(drillable, DRILL_SIZE);
-    const questions = await loadDrillQuestions(db, picked.map((p) => p.questionId));
+    // The B2 fill, driven the way the page drives it (no target exam here, so
+    // only the weak-subtopic half is exercised; the exam fallback needs a
+    // profile). Asserted below: a filled id is never one they have met.
+    const fresh = picked.length < DRILL_SIZE ? await fillUnseen(db, userId, events, DRILL_SIZE - picked.length, null) : [];
+    const questions = await loadDrillQuestions(db, [...picked.map((p) => p.questionId), ...fresh]);
 
     const subtopics = new Set(picked.map((p) => p.subtopic));
     const optionCounts = new Set(questions.map((q) => q.options.length));
@@ -67,8 +72,13 @@ async function main() {
 
     console.log(
       `- ${userId.slice(0, 8)}  misses=${misses} due=${due.length} drillable=${drillable.length} ` +
-        `served=${questions.length} subtopics=${subtopics.size} options=${[...optionCounts].join("/")}`
+        `served=${questions.length} (new=${fresh.length}) subtopics=${subtopics.size} options=${[...optionCounts].join("/")}`
     );
+    const met = new Set(events.map((e) => e.questionId));
+    if (fresh.some((id) => met.has(id))) {
+      console.error("  !! the fill served a question this student has already answered");
+      process.exitCode = 1;
+    }
     for (const q of questions) {
       console.log(`     ${q.chapter} · ${q.subtopic}  (${q.options.length} options)`);
     }
@@ -92,6 +102,41 @@ async function main() {
       process.exitCode = 1;
     }
   }
+
+  // The fill is only reachable on a SHORT pool, which the heaviest students
+  // never have. Walk down the list until one has fewer than five due, and
+  // drive the fill with the NDA exam as the fallback scope — the case a new
+  // student with one sitting behind them lands in.
+  const { data: nda } = await db.from("exams").select("id").eq("name", "NDA").maybeSingle();
+  const all = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+  let probed = false;
+  for (const [userId] of all.slice(LIMIT, LIMIT + 60)) {
+    const events = await loadDrillEvents(db, userId);
+    const due = dueQuestions(events, now);
+    const refs = await loadQuestionRefs(db, due.map((d) => d.questionId));
+    const drillable = attachRefs(due, refs);
+    if (drillable.length >= DRILL_SIZE) continue;
+    const picked = selectDrill(drillable, DRILL_SIZE);
+    const fresh = await fillUnseen(db, userId, events, DRILL_SIZE - picked.length, (nda?.id as string) ?? null);
+    const met = new Set(events.map((e) => e.questionId));
+    const questions = await loadDrillQuestions(db, fresh);
+    console.log(
+      `- ${userId.slice(0, 8)}  SHORT POOL due=${drillable.length} filled=${fresh.length} loaded=${questions.length}` +
+        (fresh.length + picked.length === DRILL_SIZE ? " -> full set" : " -> STILL SHORT")
+    );
+    for (const q of questions) console.log(`     new: ${q.chapter} \u00b7 ${q.subtopic}`);
+    if (fresh.some((id) => met.has(id))) {
+      console.error("  !! the fill served a question this student has already answered");
+      process.exitCode = 1;
+    }
+    if (questions.length !== fresh.length) {
+      console.error("  !! a filled id did not load as a PUBLIC MCQ");
+      process.exitCode = 1;
+    }
+    probed = true;
+    break;
+  }
+  if (!probed) console.log("(no short-pool student found in the next 60 — the fill was not exercised)");
 
   console.log(`\n${served}/${users.length} students get a full ${DRILL_SIZE}-question drill; ${thin} come up short.`);
   console.log("Not proven here: RLS (this reads service-role), layout, and the write loop.");

@@ -7,7 +7,8 @@ import { ArrowRight, Check, Loader2, RotateCcw, X } from "lucide-react";
 import BlockText from "@/components/math/BlockText";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { cn } from "@/lib/utils";
-import type { DrillQuestion, DrillVerdict } from "@/lib/drill/query";
+import type { DrillVerdict } from "@/lib/drill/query";
+import type { ServedQuestion } from "@/lib/drill/service";
 import { invalidatePulse } from "@/lib/viewer/usePulse";
 
 export type DrillScope = { attemptId: string; mockTitle: string; mockSlug: string } | null;
@@ -34,11 +35,14 @@ export type DrillScope = { attemptId: string; mockTitle: string; mockSlug: strin
 export default function DrillRunner({
   questions,
   dueTotal,
+  fresh = 0,
   supabaseUrl,
   scope = null,
 }: {
-  questions: DrillQuestion[];
+  questions: ServedQuestion[];
   dueTotal: number;
+  /** How many of the served questions are NEW (the B2 fill), not due. */
+  fresh?: number;
   supabaseUrl: string;
   /** Set when this drill is one attempt's mistakes ("Fix these" from a result
    *  page). Changes only the end screen's next step and the pool label. */
@@ -121,7 +125,9 @@ export default function DrillRunner({
           {index + 1} <span className="text-muted-foreground">of {questions.length}</span>
         </span>
         <span className="text-xs text-muted-foreground">
-          {dueTotal} to fix {scope ? "from this paper" : "in all"}
+          {dueTotal > 0 ? `${dueTotal} to fix ${scope ? "from this paper" : "in all"}` : ""}
+          {dueTotal > 0 && fresh > 0 ? " \u00b7 " : ""}
+          {fresh > 0 ? `${fresh} new` : ""}
         </span>
       </div>
       <div
@@ -139,8 +145,13 @@ export default function DrillRunner({
       </div>
 
       <article className="mt-5 rounded-2xl border bg-card p-4 sm:p-6">
-        <p className="text-xs font-medium uppercase tracking-wide text-brand-accent">
-          {[question.chapter, question.subtopic].filter(Boolean).join(" · ")}
+        <p className="flex flex-wrap items-center gap-2 text-xs font-medium uppercase tracking-wide text-brand-accent">
+          <span>{[question.chapter, question.subtopic].filter(Boolean).join(" · ")}</span>
+          {question.isNew && (
+            <span className="rounded-full bg-brand/10 px-2 py-0.5 text-[10px] font-semibold tracking-wide text-brand-accent">
+              New
+            </span>
+          )}
         </p>
 
         {question.context && (

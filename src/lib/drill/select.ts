@@ -112,8 +112,9 @@ export function questionState(events: readonly DrillEvent[], now: Date): Questio
   return now.getTime() >= wakesAt ? "due" : "cooling";
 }
 
-/** Taxonomy for a question, supplied by the read layer. */
-export type QuestionRef = { chapter: string; subtopic: string };
+/** Taxonomy for a question, supplied by the read layer. `subtopicId` feeds
+ *  the daily-set fill (fill.ts); optional so the pure spec fixtures stay small. */
+export type QuestionRef = { chapter: string; subtopic: string; subtopicId?: string | null };
 
 /**
  * Every question currently due, oldest miss first.

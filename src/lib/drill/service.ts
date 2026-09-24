@@ -10,19 +10,15 @@ import "server-only";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { logActivity } from "@/lib/activity/service";
 import { regradeAttempt, MockError } from "@/lib/mocks/service";
-import {
-  attachRefs,
-  dueQuestions,
-  scopeToAttempt,
-  selectDrill,
-  DRILL_SIZE,
-  type DueQuestion,
-} from "./select";
+import { getOnboardingState } from "@/lib/profile/service";
+import { primaryExam, sanitizeTargetExams } from "@/lib/profile/onboarding";
+import { getExamIdMap } from "@/lib/exam/examIdMap";
+import { composeDailySet, fillUnseen, loadOwnPool } from "./compose";
+import { scopeToAttempt, selectDrill, DRILL_SIZE, type DueQuestion } from "./select";
 import {
   gradeDrillAnswer,
-  loadDrillEvents,
+  hasPriorWrong,
   loadDrillQuestions,
-  loadQuestionRefs,
   type DrillQuestion,
   type DrillVerdict,
 } from "./query";
@@ -36,8 +32,14 @@ import {
  *  paper, and those two facts do not mean the same thing. */
 export const DRILL_SURFACE = "drill";
 
+/** A served question, flagged when it is NEW to this student (the daily-set
+ *  fill, ENGAGEMENT_SPEC.md B2) rather than one they got wrong before. */
+export type ServedQuestion = DrillQuestion & { isNew: boolean };
+
 export type OwnDrill = {
-  questions: DrillQuestion[];
+  questions: ServedQuestion[];
+  /** How many of the served questions are new, not due. */
+  fresh: number;
   /** Everything currently due, not just the five served — what the entry
    *  screen counts so the student can see the pool shrink. */
   dueTotal: number;
@@ -46,37 +48,15 @@ export type OwnDrill = {
   scope: { attemptId: string; mockTitle: string; mockSlug: string } | null;
 };
 
-/**
- * This student's whole drillable pool — every due question that still resolves
- * to a PUBLIC MCQ — in the pool's own order.
- *
- * Shared by the drill itself and by `/api/me/pulse`, which is what the header
- * badge reads. That sharing is the point: the count a student sees is the
- * count the drill will serve from, because it is the same read, not a cheaper
- * approximation of it.
- */
+/** The drillable pool alone — what `/api/me/pulse` counts. See compose.ts. */
 export async function getOwnDuePool(
   db: ReturnType<typeof createSupabaseServerClient>,
   userId: string,
   now: Date = new Date()
 ): Promise<DueQuestion[]> {
-  const events = await loadDrillEvents(db, userId);
-  const due = dueQuestions(events, now);
-  if (due.length === 0) return [];
-  // Taxonomy for the whole pool: it is what the interleaver groups on, AND the
-  // eligibility filter (a question that no longer resolves is dropped).
-  const refs = await loadQuestionRefs(db, due.map((d) => d.questionId));
-  return attachRefs(due, refs);
+  return (await loadOwnPool(db, userId, now)).drillable;
 }
 
-/**
- * Build this student's next drill, or an empty one when nothing is due.
- *
- * The two-phase shape is deliberate and mirrors `queryQuestions`: resolve the
- * ORDER over a narrow payload first (ids + taxonomy for the whole due pool),
- * then fetch the wide rows for the five that survive. The pool runs to several
- * hundred questions for an active student and only five are ever rendered.
- */
 export async function getOwnDrill(
   opts: { attemptId?: string | null; now?: Date } = {}
 ): Promise<OwnDrill | null> {
@@ -87,7 +67,8 @@ export async function getOwnDrill(
   } = await db.auth.getUser();
   if (!user) return null;
 
-  let drillable = await getOwnDuePool(db, user.id, now);
+  const pool = await loadOwnPool(db, user.id, now);
+  let drillable = pool.drillable;
   let scope: OwnDrill["scope"] = null;
 
   // "Fix these mistakes" from a result page: NARROW the pool to that attempt's
@@ -110,12 +91,28 @@ export async function getOwnDrill(
     }
   }
 
-  if (drillable.length === 0) return { questions: [], dueTotal: 0, scope };
-
   const picked = selectDrill(drillable, DRILL_SIZE);
-  const questions = await loadDrillQuestions(db, picked.map((p) => p.questionId));
 
-  return { questions, dueTotal: drillable.length, scope };
+  // THE FILL (B2). An unscoped drill short of five is topped up with unseen
+  // PYQs: from the subtopics this student has got wrong most often, then from
+  // their target exam. A scoped drill ("fix these from this paper") is not
+  // filled — it promised that paper's mistakes and nothing else.
+  let fresh: string[] = [];
+  if (!scope && picked.length < DRILL_SIZE) {
+    const { targetExams } = await getOnboardingState(db, user.id);
+    const slug = primaryExam(sanitizeTargetExams(targetExams));
+    const examId = slug ? ((await getExamIdMap())[slug] ?? null) : null;
+    fresh = await fillUnseen(db, user.id, pool.events, DRILL_SIZE - picked.length, examId);
+  }
+
+  const set = composeDailySet(picked, fresh, DRILL_SIZE);
+  if (set.length === 0) return { questions: [], fresh: 0, dueTotal: drillable.length, scope };
+
+  const loaded = await loadDrillQuestions(db, set.map((s) => s.questionId));
+  const origin = new Map(set.map((s) => [s.questionId, s.origin]));
+  const questions: ServedQuestion[] = loaded.map((q) => ({ ...q, isNew: origin.get(q.id) === "new" }));
+
+  return { questions, fresh: questions.filter((q) => q.isNew).length, dueTotal: drillable.length, scope };
 }
 
 export type AnswerOutcome = DrillVerdict & { recorded: boolean };
@@ -145,11 +142,22 @@ export async function recordDrillAnswer(
   const verdict = await gradeDrillAnswer(db, questionId, chosenLabel);
   if (!verdict) return null;
 
+  // A correct answer is a RECOVERY only if they had got it wrong before — that
+  // is what `answer_correct` means (lib/mocks/correctEvents.ts), and the
+  // ladder retires on two of them. A NEW question (the B2 fill) answered
+  // right is plain practice: recorded as `question_practiced` so it joins the
+  // seen set and never returns as new, without pretending to be a recovery.
+  // A wrong answer enters the ladder either way.
+  const kind = !verdict.correct
+    ? "answer_wrong"
+    : (await hasPriorWrong(db, user.id, questionId))
+      ? "answer_correct"
+      : "question_practiced";
   await logActivity(db, user.id, {
-    kind: verdict.correct ? "answer_correct" : "answer_wrong",
+    kind,
     refId: questionId,
     refKind: "question",
-    metadata: { surface: DRILL_SURFACE, chose: chosenLabel.toUpperCase() },
+    metadata: { surface: DRILL_SURFACE, chose: chosenLabel.toUpperCase(), ...(kind === "question_practiced" ? { correct: true } : {}) },
   });
 
   return { ...verdict, recorded: true };

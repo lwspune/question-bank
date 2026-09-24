@@ -64,7 +64,11 @@ export default async function DrillPage({
             <p className="truncate text-sm text-muted-foreground">
               {drill.scope
                 ? `From ${drill.scope.mockTitle}`
-                : "Questions you\u2019ve got wrong before, one at a time."}
+                : drill.fresh > 0 && drill.fresh === drill.questions.length
+                  ? "Five new questions from where you are weakest."
+                  : drill.fresh > 0
+                    ? "Your mistakes first, then new ones from the same topics."
+                    : "Questions you\u2019ve got wrong before, one at a time."}
             </p>
           </div>
         </header>
@@ -74,6 +78,7 @@ export default async function DrillPage({
             <DrillRunner
               questions={drill.questions}
               dueTotal={drill.dueTotal}
+              fresh={drill.fresh}
               supabaseUrl={supabaseUrl}
               scope={drill.scope}
             />
@@ -133,11 +138,11 @@ function EmptyState() {
       <span className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand-accent">
         <Sparkles className="h-6 w-6" aria-hidden />
       </span>
-      <p className="mt-3 font-semibold">Nothing due right now</p>
+      <p className="mt-3 font-semibold">Nothing to practise right now</p>
       <p className="mx-auto mt-2 max-w-sm text-sm text-muted-foreground">
-        Either you haven&apos;t sat a timed test yet, or you&apos;ve already fixed everything
-        waiting. A question you get right comes back around {COOL_DOWN_DAYS} days later, once,
-        to check it stuck.
+        Nothing is due, and there are no new questions to draw from until you pick a target
+        exam on your account page. A question you get right comes back around {COOL_DOWN_DAYS}{" "}
+        days later, once, to check it stuck.
       </p>
       <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:justify-center">
         <Link

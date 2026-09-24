@@ -58,8 +58,8 @@ is why the share loop already keeps the score opt-in).
 | 2 | Due queue visible: a Fix tab with a count, a badge on the avatar, the count on /me | **Tranche A — building** |
 | 6 | Weekly sittings goal, student-chosen, with a progress ring | **Tranche A — building** |
 | 5 | Mastery map: chapter tiles with subtopic dots from the existing weak/mastered bands | **SHIPPED 2026-09-24** at `/me/map` (no schema; `npm run map:smoke`) |
-| 4 | Daily set: five questions, due drill first then unseen from weak subtopics | Tranche B — specified below, depends on the unseen picker |
-| 10 | Feed the drill from /browse, notes checkpoints and public quizzes | Tranche B — specified below |
+| 4 | Daily set: five questions, due drill first then unseen from weak subtopics | **SHIPPED 2026-09-24** as a FILL of `/drill` (no new route): due first, then unseen PYQs from the two weakest subtopics, then the target exam |
+| 10 | Feed the drill from /browse, notes checkpoints and public quizzes | Tranche B — specified below; the last open item |
 | 7 | Teacher-assigned paper with a deadline for a batch | **SHIPPED 2026-09-24** — `mock_assignments` (migration 0115), teacher card on the batch roster, due list on `/me`, line on the mock page |
 | 8 | Content-led nudges at 12:30 IST | **SHIPPED 2026-09-24** — email only (`npm run email:due-nudge`, cron `.github/workflows/due-nudge.yml`, migration 0114) |
 | 9 | Exam date and days-to-exam | **SHIPPED 2026-09-24** — `src/lib/exam/calendar.ts` + `student_profiles.exam_date` (0116); every calendar date is EXPECTED, not official, and says so |
@@ -197,7 +197,7 @@ visible from the drill's end screen ("Trigonometry moved from weak to mid").
 
 ### B2. Daily set (item 4)
 
-Five questions per target exam, fixed size, drawn in order: due drill questions,
+**SHIPPED 2026-09-24, as a fill of the drill rather than a new surface** (no clutter, phone first: `/drill` was already the place). When fewer than five are due, the rest are UNSEEN past-year MCQs — from the two subtopics with the most recorded misses, then from the primary target exam. "Seen" = reached in a timed paper or recorded in the activity log, so a question served as new never returns as new. A correct answer to a NEW question is recorded as `question_practiced` (surface `drill`, `correct: true`), not `answer_correct`, because a recovery needs a prior miss; a wrong answer enters the ladder either way. A scoped drill ("fix these from this paper") is never filled. Difficulty matching is deliberately absent in v1 (the students this fill exists for have the least evidence to band). Pure core `src/lib/drill/fill.ts` (TDD), orchestration `compose.ts` (shared with `npm run drill:smoke`, which now also probes one short-pool student). As specified: five questions per target exam, fixed size, drawn in order: due drill questions,
 then unseen PYQs from the student's two weakest subtopics, then unseen PYQs from
 the exam at large. Needs an "unseen for this student" picker (exclude every
 question id in their `attempt_answers` and `user_activity`), difficulty-matched

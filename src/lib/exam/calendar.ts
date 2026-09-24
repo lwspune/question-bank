@@ -8,7 +8,8 @@
  * — a student-entered date only — was rejected on the evidence of the optional
  * `goal` field, filled by 1%.
  *
- * `official` IS FALSE ON EVERY ENTRY AS WRITTEN. On 2026-09-24 no upcoming
+ * `official` WAS FALSE ON EVERY ENTRY AS FIRST WRITTEN (NDA 2027-I flipped
+ * the same day: 11 April 2027, UPSC). On 2026-09-24 no other upcoming
  * sitting had an announced date (UPSC publishes its calendar around November,
  * NTA and the boards later still), so each row is the usual pattern — NDA-I on
  * the third Sunday of April, boards from mid-February — and the UI says
@@ -50,8 +51,8 @@ export const EXAM_CALENDAR: readonly SittingEntry[] = [
   { exam: "cbse-12", sitting: "2027", label: "CBSE Class 12 boards 2027", date: "2027-02-15", official: false, source: PATTERN },
   { exam: "mh-ssc-10", sitting: "2027", label: "SSC boards 2027", date: "2027-03-01", official: false, source: PATTERN },
   { exam: "jee-mains", sitting: "2027-Apr", label: "JEE Main 2027 (April)", date: "2027-04-04", official: false, source: PATTERN },
-  { exam: "nda", sitting: "2027-I", label: "NDA 2027 (I)", date: "2027-04-18", official: false, source: PATTERN },
-  { exam: "cds", sitting: "2027-I", label: "CDS 2027 (I)", date: "2027-04-18", official: false, source: PATTERN },
+  { exam: "nda", sitting: "2027-I", label: "NDA 2027 (I)", date: "2027-04-11", official: true, source: "UPSC, confirmed by the user 2026-09-24" },
+  { exam: "cds", sitting: "2027-I", label: "CDS 2027 (I)", date: "2027-04-11", official: false, source: "expected alongside NDA 2027 (I), which UPSC set for 11 April 2027; CDS itself not confirmed" },
   { exam: "mht-cet", sitting: "2027", label: "MHT-CET 2027", date: "2027-04-20", official: false, source: PATTERN },
   { exam: "neet", sitting: "2027", label: "NEET 2027", date: "2027-05-02", official: false, source: PATTERN },
   { exam: "ipmat-indore", sitting: "2027", label: "IPMAT Indore 2027", date: "2027-05-09", official: false, source: PATTERN },
