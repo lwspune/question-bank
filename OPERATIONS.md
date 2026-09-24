@@ -122,6 +122,23 @@ SELECT status, count(*), max(created_at) FROM public.email_sends GROUP BY status
 
 **NOT the same thing as Supabase Auth SMTP** — see the next section. This is our app calling the Resend **API**; auth mail is sent by Supabase itself.
 
+### Outbound email — the welcome (DAILY CRON, 2026-09-24)
+
+**What it is:** "How PYQ Vault works" — the three-step loop for the student's exam — once per account EVER (`STUDENT_EDUCATION_SPEC.md`, migration 0117). `.github/workflows/welcome.yml` runs at **03:30 UTC (09:00 IST)**, the morning after a signup and clear of the 21:00 IST report and the 12:30 IST nudge. Same two extra repo secrets as the report (`RESEND_API_KEY`, `EMAIL_FROM`).
+
+```sh
+npm run email:welcome                              # DRY RUN — who would get it, and the skip histogram
+npm run email:welcome -- --limit=3 --text          # print three rendered plain-text bodies
+npm run email:welcome -- --sample-to=you@x.com     # one rendered sample to a reviewer, writes NO row
+npm run email:welcome -- --report                  # recipients with any activity within 48 h of the send
+```
+
+**The first runs are a campaign, and that is deliberate.** Every account that has never been welcomed is a candidate — the first dry run picked **373 of 379** (6 opted out) — because the students who did not know the features existed are EXISTING accounts. Newest first, `--limit=100` per morning, so the backlog drains in about four days and today's signup is never behind July's. **Dry-run and read a few bodies before the schedule fires**; `--apply` lives only in the workflow file.
+
+**One ever is a property of the table:** the dedupe key is `welcome:<userId>` with NO day, and `email_sends.dedupe_key` is UNIQUE, so a re-run can never mail anyone twice. The 24-hour quiet window after any other send is policy in `src/lib/email/welcome.ts`. A `--sample-to` writes no row precisely so it cannot burn the account's single key.
+
+**Do not add "you haven't tried X" copy.** The template is content-led by rule; most recipients are the backlog and absence-led copy is the guilt trip the sibling app measured.
+
 ### Outbound email — the per-attempt mock report (DAILY CRON, 2026-09-20)
 
 **This one is scheduled; the campaign above is not.** `.github/workflows/mock-report.yml` runs at **15:30 UTC (21:00 IST)** daily — after a full study day, batching a student's whole day into one evening email rather than interrupting them three times. GitHub queues schedules under load, so treat it as "around 21:00", not on the minute.

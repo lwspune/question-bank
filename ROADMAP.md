@@ -1070,6 +1070,31 @@ writing anything.
 
 ---
 
+## Student education — what remains (2026-09-24)
+
+Slice 1 of [STUDENT_EDUCATION_SPEC.md](STUDENT_EDUCATION_SPEC.md) shipped
+2026-09-24: `/start`, the welcome screen's second step, the result-page
+caption, the welcome email (migration 0117, cron `welcome.yml`), and the
+classroom script (appendix A of the spec). Left, in the order the spec ranks
+them:
+
+- **Teacher card + invite email (slice 2).** Put appendix A's five-minute
+  script on the batch roster next to the assignment control, and a three-line
+  version in the batch invite email. No new data; one card and one template
+  change.
+- **Blog post — how to prepare for NDA with PYQ Vault (slice 3).** Prose, not
+  code; indexable; answers the query a new student actually searches. Link it
+  from `/start`.
+- **One-shot in-app callouts, stored server-side.** A first-visit hint per
+  surface (result page, drill end, map) with a `seen` column and a client
+  island each. Deferred because the permanent result caption and `/start`
+  cover the two highest-value moments; build it only if the measured breadth
+  (spec §6) does not move.
+- **Measure before adding more.** Re-run the spec's §1 SQL two weeks after the
+  cron first fires. `npm run email:welcome -- --report` is the delivery-side
+  readout. If second-feature use within 7 days is still under 20%, the
+  problem is not awareness and this section should not grow.
+
 ## Engagement engine — what remains
 
 **The plan, the status of every item and the PMF targets now live in
