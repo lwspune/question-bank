@@ -141,7 +141,7 @@ export default async function MockResultPage({ params }: { params: Params }) {
               nothing attempted, so try again. Retake is never the lead when
               there is something to fix: 45% of students who sat one mock never
               sat a second, and the old lead was the same 150 minutes again. */}
-          <div className="mt-5 flex flex-col gap-2 sm:flex-row">
+          <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
             {headline.primaryAction === "fix" && (
               <Button asChild variant="brand" size="lg" className="h-12 rounded-xl text-base">
                 <Link href={fixHref} prefetch={false}>
@@ -149,6 +149,16 @@ export default async function MockResultPage({ params }: { params: Params }) {
                   Fix these mistakes
                 </Link>
               </Button>
+            )}
+            {headline.primaryAction === "fix" && (
+              // What the button DOES, in one line, because a student who has
+              // never seen a drill reads "Fix these mistakes" as "retake".
+              // Two students had ever finished a drill when this was added
+              // (2026-09-24); the same words are step 2 of /start.
+              <p className="order-last basis-full text-xs text-muted-foreground sm:mt-1">
+                Five of the questions you missed, with solutions, about five minutes. One you
+                get right goes quiet; one you miss comes back round.
+              </p>
             )}
             {headline.primaryAction === "another" && (
               <Button asChild variant="brand" size="lg" className="h-12 rounded-xl text-base">

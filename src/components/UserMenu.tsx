@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import * as Popover from "@radix-ui/react-popover";
-import { BookMarked, Bookmark, CreditCard, FileText, LayoutDashboard, LogOut, PenLine, ShieldCheck, TrendingUp, User, Target } from "lucide-react";
+import { BookMarked, Bookmark, CreditCard, FileText, LayoutDashboard, Lightbulb, LogOut, PenLine, ShieldCheck, TrendingUp, User, Target } from "lucide-react";
 import { toast } from "sonner";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import type { Pulse } from "@/lib/pulse/cache";
@@ -208,6 +208,16 @@ export default function UserMenu({
           >
             <CreditCard className="h-4 w-4" aria-hidden />
             Account &amp; access
+          </Link>
+          {/* Not role-gated and at every width: the features above this line
+              are the ones 149 of 193 mock-takers never found. /start is the
+              page that says what they are for. */}
+          <Link
+            href="/start"
+            className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
+          >
+            <Lightbulb className="h-4 w-4" aria-hidden />
+            How it works
           </Link>
           <button
             type="button"
