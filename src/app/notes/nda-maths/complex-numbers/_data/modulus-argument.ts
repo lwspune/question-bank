@@ -148,7 +148,8 @@ export const MODULUS_ARGUMENT_NOTE: SubtopicNote = {
       intuition:
         "Plot \\(z\\) on the Argand plane: its modulus is the distance from the origin, its argument the angle from the positive real axis. The catch is the **principal argument** — you must use the quadrant of \\((a,b)\\), not just \\(\\tan^{-1}(b/a)\\), to land it in \\((-\\pi,\\pi]\\).",
       definition:
-        "**Polar form:** \\(z=r(\\cos\\theta+i\\sin\\theta)=re^{i\\theta}\\), \\(r=|z|\\), \\(\\theta=\\arg z\\). The **principal argument** lies in \\((-\\pi,\\pi]\\); compute \\(\\tan^{-1}\\big|\\tfrac{b}{a}\\big|\\) then adjust for the quadrant of \\((a,b)\\). Arguments add under multiplication: \\(\\arg(z_1z_2)=\\arg z_1+\\arg z_2\\), \\(\\arg(z_1/z_2)=\\arg z_1-\\arg z_2\\).",
+        "**Polar form:** \\(z=r(\\cos\\theta+i\\sin\\theta)=re^{i\\theta}\\), \\(r=|z|\\), \\(\\theta=\\arg z\\). The **principal argument** lies in \\((-\\pi,\\pi]\\); compute \\(\\tan^{-1}\\big|\\tfrac{b}{a}\\big|\\) then adjust for the quadrant of \\((a,b)\\). Arguments add under multiplication: \\(\\arg(z_1z_2)=\\arg z_1+\\arg z_2\\), \\(\\arg(z_1/z_2)=\\arg z_1-\\arg z_2\\).\n" +
+        "**Two conventions are in use.** Textbooks fix the principal value in \\((-\\pi,\\pi]\\), but some NDA papers write it in \\([0,2\\pi)\\) — the same angle read as \\(-\\tfrac{2\\pi}{3}\\) or as \\(240^\\circ\\). The two differ by exactly \\(2\\pi\\) (\\(360^\\circ\\)), so if your answer is missing from the options, add \\(2\\pi\\) before deciding you are wrong. The option list tells you which convention the setter used.",
       formula: {
         label: "Polar form and argument",
         latex:
@@ -183,6 +184,11 @@ export const MODULUS_ARGUMENT_NOTE: SubtopicNote = {
           title: "The principal argument depends on the **quadrant**, not just \\(\\tan^{-1}(b/a)\\)",
           body:
             "\\(\\tan^{-1}(b/a)\\) alone can't tell apart \\(a+ib\\) from \\(-a-ib\\) (same ratio, opposite quadrants). Find the reference angle \\(\\tan^{-1}\\big|\\tfrac{b}{a}\\big|\\), then place it by the signs of \\((a,b)\\) so the result lands in \\((-\\pi,\\pi]\\). For \\(-1+i\\) (2nd quadrant) the argument is \\(\\tfrac{3\\pi}4\\), **not** \\(\\tan^{-1}(-1)=-\\tfrac\\pi4\\).",
+        },
+        {
+          title: "A third-quadrant answer may be keyed in \\([0,2\\pi)\\)",
+          body:
+            "\\(\\dfrac{1-i\\sqrt3}{1+i\\sqrt3} = e^{-2\\pi i/3}\\) has principal argument \\(-\\tfrac{2\\pi}{3}\\) in \\((-\\pi,\\pi]\\) — but the paper keyed it \\(240^\\circ\\), the \\([0,2\\pi)\\) reading. Neither is a mistake; they differ by \\(2\\pi\\). Compute in your convention, then match the option list — do not reject a correct angle because it is written on the other branch.",
         },
       ],
     },

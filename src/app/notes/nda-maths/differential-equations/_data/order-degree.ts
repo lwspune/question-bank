@@ -20,7 +20,8 @@ export const ORDER_DEGREE_NOTE: SubtopicNote = {
         "- **Order** = the order of the **highest derivative** present (e.g. \\(d^2y/dx^2\\) gives order 2).\n" +
         "- **Degree** = the **power of the highest-order derivative** AFTER the equation is made free of radicals and fractional powers (made polynomial in the derivatives).\n" +
         "- **Degree is undefined** when a derivative appears inside a transcendental function, e.g. \\(\\cos\\!\\big(\\tfrac{dy}{dx}\\big)\\) or \\(\\ln\\!\\big(\\tfrac{dy}{dx}\\big)\\).\n" +
-        "- Tip: \\(\\dfrac{dx}{dy} = \\Big(\\dfrac{dy}{dx}\\Big)^{-1}\\) — rewrite mixed derivatives in one form before reading the degree.",
+        "- Tip: \\(\\dfrac{dx}{dy} = \\Big(\\dfrac{dy}{dx}\\Big)^{-1}\\) — rewrite mixed derivatives in one form before reading the degree.\n" +
+        "- **An integral sign in the equation: differentiate both sides first.** \\(k\\dfrac{dy}{dx} = \\displaystyle\\int\\Big[1+\\Big(\\dfrac{dy}{dx}\\Big)^2\\Big]^{2/3}dx\\) is not yet a differential equation you can classify. Differentiating removes the integral and raises the order by one: \\(k\\dfrac{d^2y}{dx^2} = \\Big[1+\\Big(\\dfrac{dy}{dx}\\Big)^2\\Big]^{2/3}\\). Only now clear the fractional power and read order and degree.",
       formula: {
         label: "Order and degree",
         latex:
@@ -39,9 +40,10 @@ export const ORDER_DEGREE_NOTE: SubtopicNote = {
       },
       selfCheckExample: {
         prompt:
-          "Find the order and degree of \\(k\\dfrac{d^2y}{dx^2} = \\Big[1 + \\Big(\\dfrac{dy}{dx}\\Big)^{2}\\Big]^{2/3}\\).",
+          "Find the order and degree of \\(k\\dfrac{dy}{dx} = \\displaystyle\\int\\Big[1 + \\Big(\\dfrac{dy}{dx}\\Big)^{2}\\Big]^{2/3}dx\\).",
         steps: [
-          "Highest derivative is \\(\\dfrac{d^2y}{dx^2}\\) → order 2.",
+          "The right side is an integral — differentiate both sides w.r.t. \\(x\\) to remove it: \\(k\\dfrac{d^2y}{dx^2} = \\Big[1 + \\Big(\\dfrac{dy}{dx}\\Big)^{2}\\Big]^{2/3}\\).",
+          "Highest derivative is now \\(\\dfrac{d^2y}{dx^2}\\) → order 2 (the integral hid one order).",
           "Clear the fractional power: cube both sides → \\(k^3\\Big(\\dfrac{d^2y}{dx^2}\\Big)^{3} = \\big[1+(y')^2\\big]^{2}\\).",
           "Now the power of \\(\\dfrac{d^2y}{dx^2}\\) is 3 → degree 3.",
         ],

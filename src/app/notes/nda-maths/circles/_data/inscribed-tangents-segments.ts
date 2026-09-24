@@ -21,7 +21,8 @@ export const INSCRIBED_TANGENTS_SEGMENTS_NOTE: SubtopicNote = {
         "Two linked facts about angles a chord subtends:\n" +
         "- **Inscribed-angle theorem:** the angle a chord \\(BC\\) subtends at a point \\(A\\) on the circle is **half** the angle it subtends at the centre: \\(\\angle BAC = \\tfrac12\\angle BOC\\).\n" +
         "- **Angle in a semicircle:** if \\(BC\\) is a **diameter**, \\(\\angle BAC = 90^\\circ\\) for every \\(A\\) on the circle.\n" +
-        "- The inscribed point \\(A\\) can sit on **either arc**: on the major arc the angle is \\(\\tfrac12\\angle BOC\\); on the minor arc it is the **supplement**, \\(180^\\circ-\\tfrac12\\angle BOC\\). So a single chord can give an angle AND its supplement — both are valid.",
+        "- The inscribed point \\(A\\) can sit on **either arc**: on the major arc the angle is \\(\\tfrac12\\angle BOC\\); on the minor arc it is the **supplement**, \\(180^\\circ-\\tfrac12\\angle BOC\\). So a single chord can give an angle AND its supplement — both are valid.\n" +
+        "- **Finding \\(\\angle BOC\\) from coordinates first.** The theorem only pays off once the central angle is known, and NDA gives \\(B\\), \\(C\\), \\(O\\) as points. Two tests for a right angle at \\(O\\): the **dot product** \\(\\vec{OB}\\cdot\\vec{OC} = 0\\), or the **converse of Pythagoras** \\(OB^2 + OC^2 = BC^2\\). For \\(O=(0,0)\\), \\(B=(6,8)\\), \\(C=(-8,6)\\): \\(6(-8)+8(6)=0\\), and \\(100+100 = (6+8)^2+(8-6)^2 = 200\\), so \\(\\angle BOC = 90^\\circ\\) and \\(\\angle BAC = 45^\\circ\\) or \\(135^\\circ\\). For a non-right central angle use \\(\\cos\\angle BOC = \\dfrac{\\vec{OB}\\cdot\\vec{OC}}{|OB|\\,|OC|}\\).",
       formula: {
         label: "Inscribed angle",
         latex: "\\angle BAC = \\tfrac12\\,\\angle BOC",
@@ -35,7 +36,7 @@ export const INSCRIBED_TANGENTS_SEGMENTS_NOTE: SubtopicNote = {
         prompt:
           "\\(B=(3,0)\\) and \\(C=(0,3)\\) lie on a circle centred at the origin \\(O\\). If \\(A\\) is another point on the circle, what is \\(\\angle BAC\\)?",
         steps: [
-          "At the centre: \\(\\vec{OB}=(3,0)\\), \\(\\vec{OC}=(0,3)\\) are perpendicular, so \\(\\angle BOC=90^\\circ\\).",
+          "At the centre: \\(\\vec{OB}=(3,0)\\), \\(\\vec{OC}=(0,3)\\), and \\(\\vec{OB}\\cdot\\vec{OC} = 3\\cdot0 + 0\\cdot3 = 0\\), so they are perpendicular and \\(\\angle BOC=90^\\circ\\).",
           "Inscribed angle is half the central angle: \\(\\angle BAC=\\tfrac12(90^\\circ)=45^\\circ\\) when \\(A\\) is on the major arc.",
           "If \\(A\\) is on the minor arc, \\(\\angle BAC=180^\\circ-45^\\circ=135^\\circ\\).",
         ],

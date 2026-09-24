@@ -77,7 +77,7 @@ export const GENERAL_SOLUTIONS_NOTE: SubtopicNote = {
         "Common reductions:\n" +
         "- **Co-function:** \\(\\sin 2\\theta = \\cos 3\\theta = \\sin(\\tfrac{\\pi}{2} - 3\\theta)\\), then equate angles.\n" +
         "- **Quadratic in one ratio:** equations like \\(2\\cos^2 x + \\cos x - 1 = 0\\) factor; solve each linear factor.\n" +
-        "- **Half-angle / Weierstrass:** \\(\\csc x + \\cot x = \\sqrt3\\) becomes \\(1 + \\cos x = \\sqrt3\\sin x\\); square carefully.\n" +
+        "- **Half-angle collapse:** \\(\\csc x + \\cot x = \\dfrac{1+\\cos x}{\\sin x}\\), and with \\(1+\\cos x = 2\\cos^2\\tfrac{x}{2}\\), \\(\\sin x = 2\\sin\\tfrac{x}{2}\\cos\\tfrac{x}{2}\\) this is \\(\\cot\\tfrac{x}{2}\\). So \\(\\csc x + \\cot x = \\sqrt3\\) is just \\(\\cot\\tfrac{x}{2} = \\sqrt3\\Rightarrow \\tfrac{x}{2} = \\tfrac{\\pi}{6}\\Rightarrow x = \\tfrac{\\pi}{3}\\) on \\((0,2\\pi)\\) — no squaring, no false roots. Its sibling: \\(\\csc x - \\cot x = \\tan\\tfrac{x}{2}\\). (Cross-multiplying to \\(1+\\cos x = \\sqrt3\\sin x\\) and squaring also works, but manufactures \\(\\cos x = -1\\), which must then be discarded.)\n" +
         "- **Always verify** roots in the ORIGINAL equation — squaring or dividing can introduce or drop solutions (e.g. where a denominator vanishes).",
       formula: {
         label: "Co-function reduction",
@@ -93,9 +93,9 @@ export const GENERAL_SOLUTIONS_NOTE: SubtopicNote = {
       },
       traps: [
         {
-          title: "Squaring can add false roots",
+          title: "Squaring can add false roots — collapse to a half-angle instead when you can",
           body:
-            "\\(1 + \\cos x = \\sqrt3\\sin x\\) squared gives a quadratic whose roots include \\(\\cos x = -1\\) — which makes the original \\(\\csc x + \\cot x\\) undefined. Substitute every root back before counting.",
+            "\\(1 + \\cos x = \\sqrt3\\sin x\\) squared gives a quadratic whose roots include \\(\\cos x = -1\\) — which makes the original \\(\\csc x + \\cot x\\) undefined. Substitute every root back before counting. Better: recognise \\(\\dfrac{1+\\cos x}{\\sin x} = \\cot\\tfrac{x}{2}\\) and never square at all.",
         },
         {
           title: "Dividing by \\(\\cos x\\) (or \\(\\sin x\\)) can LOSE roots",

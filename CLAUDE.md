@@ -323,6 +323,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 > exactly which entries are in that state; write the long form into the archive before evicting any
 > it lists.
 
+- **2026-09-24 (thirteenth) — NDA Maths `/notes` formula gaps: three reports read all 2,274 PYQ solutions against all 30 chapters (~270 findings); Tier 0 ships — ten cards whose own featured PYQ needed a result the card never stated.**
+  - **Verify each finding in the FILE before editing: 12 claimed, 10 real.** One "never written" identity was in the definition since June; two "blockers" were PYQs no card features. The reports are gitignored, so the substance is in the ROADMAP ledger.
+  - **One finding cost a mark, not time:** the AoD self-check reuses PYQ `…fcf4a3`'s stem and answers 6; the paper asks TOTAL change and keys 6.03. Complex `…9e3474` is keyed on `[0°,360°)` while the notes assert `(−π,π]` — both conventions now named.
+  - **One-line facts go in `definition`/`trap`, never `formula.latex`** — the harvester reads only the box, so one edited box costs 2 verified quiz atoms; nine edits cost none.
+  - **The gate wrapper prints `GATE_RESULT: FAIL` and exits 0** when disk is under 2 GB; the chain never ran.
 - **2026-09-24 (twelfth) — student education ships ([STUDENT_EDUCATION_SPEC.md](STUDENT_EDUCATION_SPEC.md)): the owner spoke to students who did not know the features existed, and the log agreed — 149 of 193 mock-takers had used a mock and NOTHING else, 2 had ever finished a drill.**
   - **Not unwanted, unreachable.** Every action feature sat behind the avatar letter; `/welcome`, the one screen all 359 onboarded students pass, was spent on a form; the result page's "Fix these mistakes" read as "retake"; 38 emails ever, none describing a feature. **No tour**: phone-first, stressed cohort, and a tour sells a feature before there is a reason to want it.
   - **One text, three surfaces.** The loop is a pure helper picked from REGISTRY flags (mocks → sit/fix/map; a board or practice exam → reader/attempt-first/save, because "sit a mock" sends a Class 12 student to an empty catalogue) and rendered by static `/start`, the welcome screen's new second step, and the welcome email — so they cannot disagree.

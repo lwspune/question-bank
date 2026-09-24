@@ -146,13 +146,13 @@ export const SUBSTITUTION_NOTE: SubtopicNote = {
         "A trig integrand that is not a standard form usually yields to one move: divide through by cos-squared to manufacture sec-squared (the derivative of tan), use a half-angle identity, or simplify a surd of a trig expression into a difference of sine and cosine.",
       definition:
         "Three recurring reductions:\n" +
-        "- **Divide by \\(\\cos^2 x\\):** for \\(\\int \\dfrac{dx}{a^2\\sin^2 x + b^2\\cos^2 x}\\), divide top and bottom by \\(\\cos^2 x\\) to get \\(\\int \\dfrac{\\sec^2 x\\,dx}{a^2\\tan^2 x + b^2}\\), then substitute \\(t=\\tan x\\) (\\(dt=\\sec^2x\\,dx\\)) → an arctan form.\n" +
+        "- **Divide by \\(\\cos^2 x\\):** for \\(\\int \\dfrac{dx}{a^2\\sin^2 x + b^2\\cos^2 x}\\), divide top and bottom by \\(\\cos^2 x\\) to get \\(\\int \\dfrac{\\sec^2 x\\,dx}{a^2\\tan^2 x + b^2}\\), then substitute \\(t=\\tan x\\) (\\(dt=\\sec^2x\\,dx\\)). The arctan form with a leading coefficient is \\(\\displaystyle\\int \\dfrac{dt}{a^2t^2+b^2} = \\dfrac{1}{ab}\\tan^{-1}\\!\\Big(\\dfrac{at}{b}\\Big) + C\\) — factor \\(a^2\\) out first: \\(\\dfrac{1}{a^2}\\int\\dfrac{dt}{t^2+(b/a)^2} = \\dfrac{1}{a^2}\\cdot\\dfrac{a}{b}\\tan^{-1}\\dfrac{at}{b}\\). So the whole integral is \\(\\dfrac{1}{ab}\\tan^{-1}\\!\\Big(\\dfrac{a\\tan x}{b}\\Big) + C\\).\n" +
         "- **Half-angle:** \\(1-\\cos x = 2\\sin^2\\tfrac{x}{2}\\) and \\(1+\\cos x = 2\\cos^2\\tfrac{x}{2}\\) turn a fraction into a \\(\\csc^2\\) or \\(\\sec^2\\) you can integrate.\n" +
         "- **Surd identities:** \\(1 \\pm \\sin 2x = (\\sin x \\pm \\cos x)^2\\), so \\(\\sqrt{1-\\sin 2x} = |\\sin x - \\cos x|\\) becomes integrable. The simplification \\(\\sec x + \\tan x\\) inside an inverse-tan also collapses to \\(\\tan(\\tfrac{\\pi}{4}+\\tfrac{x}{2})\\).",
       formula: {
         label: "The divide-by-cos-squared move",
         latex:
-          "\\int \\dfrac{dx}{a^2\\sin^2 x + b^2\\cos^2 x} = \\int \\dfrac{\\sec^2 x\\,dx}{a^2\\tan^2 x + b^2},\\ \\ t=\\tan x",
+          "\\int \\dfrac{dx}{a^2\\sin^2 x + b^2\\cos^2 x} = \\int \\dfrac{\\sec^2 x\\,dx}{a^2\\tan^2 x + b^2} = \\dfrac{1}{ab}\\tan^{-1}\\!\\Big(\\dfrac{a\\tan x}{b}\\Big) + C",
       },
       authoredExample: {
         prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{dx}{1+3\\cos^2 x}\\).",
@@ -164,6 +164,11 @@ export const SUBSTITUTION_NOTE: SubtopicNote = {
         answer: "\\(\\dfrac{1}{2}\\tan^{-1}\\!\\Big(\\dfrac{\\tan x}{2}\\Big) + C\\)",
       },
       traps: [
+        {
+          title: "Which of \\(a\\), \\(b\\) goes inside the arctan?",
+          body:
+            "In \\(\\int \\dfrac{dt}{a^2t^2+b^2}\\) the coefficient of \\(t^2\\) ends up **multiplying** \\(t\\) inside: \\(\\tan^{-1}\\big(\\tfrac{at}{b}\\big)\\), not \\(\\tan^{-1}\\big(\\tfrac{bt}{a}\\big)\\). Check with \\(a=1\\): \\(\\int\\frac{dt}{t^2+b^2} = \\frac1b\\tan^{-1}\\frac{t}{b}\\) — \\(t\\) is divided by the constant term's root. A published key for this exact PYQ had \\(a\\) and \\(b\\) swapped; the \\(\\tfrac{1}{ab}\\) outside is the same either way, so only the inside tells the options apart.",
+        },
         {
           title: "A square root forces an absolute value",
           body:
