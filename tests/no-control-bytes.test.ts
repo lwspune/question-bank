@@ -55,7 +55,21 @@ import { join, relative } from "node:path";
 
 const ROOTS = ["src", "tests", "scripts"];
 const EXTS = [".ts", ".tsx", ".js", ".mjs", ".cjs", ".json", ".sql", ".md", ".css"];
-const SKIP_DIRS = new Set(["node_modules", ".next", "dist", "build", "__snapshots__"]);
+// `out` is the ingestion pipelines' render/dump directory (.gitignore:3). It is
+// GITIGNORED and machine-local: `git ls-files` finds zero tracked files under any
+// out/ anywhere in the repo. Excluding it is not a weakening of this rule, it is
+// the rule's own scope — the assertion is about SOURCE files, and a PDF text-layer
+// dump is a derived artifact whose control bytes come from the source PDF.
+//
+// It was added 2026-09-24, when `dump-text.ts` on the Class 12 Geography chapters
+// wrote five .text.md dumps carrying form feeds out of the PDFs and turned this
+// suite red. THE FAILURE WAS LOCAL-ONLY: on CI, or on any clean checkout, those
+// files do not exist, so the test passed there and failed here. That is exactly
+// the prepush-equals-CI mirror break this file's own header records from the
+// other direction ("16 of its 28 paths were gitignored scratch files that exist
+// only on the machine that wrote them"). A scan that walks into a gitignored
+// directory is making a claim about a working tree, not about the repository.
+const SKIP_DIRS = new Set(["node_modules", ".next", "dist", "build", "__snapshots__", "out"]);
 
 /** Tab (0x09), LF (0x0A) and CR (0x0D) are the only control bytes text needs. */
 const ALLOWED = new Set([0x09, 0x0a, 0x0d]);
