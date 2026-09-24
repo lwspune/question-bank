@@ -22,21 +22,29 @@ Pending features, data-model changes, and content work for Question Bank. Mirror
 **Every item below must hold before the first PUBLIC flip.** They are listed here rather than
 left to memory because the load is finished and the next session will not re-derive them.
 
-### 1. Derive the keys — the blocking item
+### 1. ~~Derive the keys~~ — CLOSED 2026-09-22, no full re-derivation
 
-IIM Indore publishes no answer key and afterboards claims none, so **all 1,418 keys are the
-source's own derivation** (BLIND lane). Measured so far:
+IIM Indore publishes no answer key and afterboards claims none, so all keys are the source's
+own derivation (BLIND lane). **All three subjects are now blind-measured — 124 rows, 0 wrong
+keys.**
 
-| Section | Rows | Measurement |
+| Subject | Rows | Measurement |
 |---|---|---|
-| Indore SA quant | — | **15/15** independently verified (brute-forced where possible) |
-| Verbal Ability | 582 | **92.5% agreement** on a stratified 40-row blind pass; all 3 disagreements went the source's way or were ambiguous, **zero wrong keys found** |
-| **Logical Reasoning + Critical Reasoning** | **247** | **NONE. Entirely unmeasured.** |
+| English | 582 | **37/40 (92.5%)** |
+| Logical Reasoning | 310 | **32/34 (94.1%)** |
+| Mathematics | 549 | **50/50 (100%)** — 16 of them numeric free-response |
 
-Next: `npx tsx scripts/ipmat/dump-derive.ts -- --name=lr-calibration --section=LR --size=40`,
-then derive from the packet alone and score with `score-derive.ts --pin`. Record a confidence
-flag per row — on the VA pass all three leads were rows flagged uncertain, so the flag is the
-usable product. **Agreement is not accuracy**; it cannot see an error both passes share.
+All five disagreements adjudicated to the SOURCE (four were our errors, one an ambiguous
+odd-one-out). **Verdict + the bound it does NOT beat: `scripts/ipmat/data/derive/KEY_TRUST.md`**
+— 0 in 124 puts the wrong-key rate under **~2.4%** at 95%, not under 1%. The Worksheets
+precedent (~5% wrong AI keys → re-derive everything) does not transfer to a human-edited
+source measured at 0.
+
+Two method findings worth carrying: sample by **subject**, not by the source's section
+(reasoning questions sit inside Indore's quant sections, so `--section=LR` would have measured
+only two of three exams — hence `--subject` on `dump-derive.ts`); and the **per-row confidence
+flag** has now predicted 5 of 5 disagreements, though it cannot see a confident error. The 65
+figure-bearing rows are outside every number above — the packets are text-only.
 
 ### 1b. ~~Adopt the NDA/CDS subject convention~~ — DONE 2026-09-22
 
@@ -223,10 +231,27 @@ presentational.
   is three delivery shapes for one exam, the same situation as NEET's 180/200 layouts, which is
   exactly why `count` is optional on a section. Expect three blueprints or a soft count.
 
-### 2. Finish the CBSE-style grouping — deliberately deferred to here (do AFTER 1b)
+### 2. ~~Finish the CBSE-style grouping~~ — SHIPPED 2026-09-24
 
-The database half is **already done**: three separate exam rows, exactly as CBSE is
-`cbse-10`/`11`/`12`. The picker half is not. Three things, in order:
+All three items below are done; kept for the reasoning, which the commits cite. See the
+2026-09-24 (third) Decisions entry. **What actually happened differs from the plan in two
+ways worth reading before the next registry change:**
+
+- **Item 3's guard caught a defect that was already SHIPPED, not a prospective one.** `isc-12`
+  was rendering as a target-exam chip pointing at an exam with **no `exams` row at all**. It
+  is now flagged `noPublicContent`, and `tests/exam-registry-content` (prod-contract)
+  re-measures every registry entry against the live bank in both directions.
+- **Item 1 needed one thing the plan missed: the member-axis LABEL.** FilterBar builds from the
+  DB exam list, not the registry, so the three grouped in `/browse` the instant the registry
+  resolved their names — under a control hardcoded `"Class"`. Families now declare
+  `familyAxis` ("Institute"); `ExamFamilyNode.board`→`key`, `classes`→`members`.
+- **`mixedFormats` was deliberately NOT set** (the plan said to set it). The flag describes the
+  PUBLIC corpus and that corpus is empty, which is what `tests/format-mix-registry` requires —
+  setting it from the papers is the mistake the `isc-12` entry already records. Set it at the
+  flip, from a live count.
+
+The database half was **already done**: three separate exam rows, exactly as CBSE is
+`cbse-10`/`11`/`12`. The picker half was these three, in order:
 
 1. **Generalise the family axis.** `groupExamFamilies` groups on `board` + `std`, and IPMAT is
    neither a board nor a class, so it needs a second generic grouping key. `BOARDS`,
@@ -245,19 +270,32 @@ The database half is **already done**: three separate exam rows, exactly as CBSE
 `/browse`'s landing tiles need no guard — `buildExamStarters` already drops an exam with
 nothing in the default view.
 
-### Interim state, accepted on purpose
+### Interim state — RESOLVED for IPMAT 2026-09-24, still true for UPSC CSE
 
-Until step 2 lands, `/browse`'s exam **dropdown** lists the three exams as separate flat
-entries (it is built from an unfiltered `listExams()`), and selecting one shows
+Since step 2, `/browse`'s dropdown shows ONE grouped "IPMAT" entry (Indore / Rohtak / Jammu)
+instead of three flat dead ones; selecting it still shows "0 questions match" until the flip,
+but it no longer reads as three unrelated broken exams. `UPSC CSE (Prelims)` remains a flat
+dead entry, deliberately — it is absent from the registry, and `groupExamFamilies` rule 1
+fails OPEN so a newly-ingested exam cannot vanish from every picker.
+
+The original note, still the reason `listExams()` is not filtered: `/browse`'s exam **dropdown**
+listed the three exams as separate flat entries (built from an unfiltered `listExams()`), and
+selecting one showed
 "0 questions match" with advice to clear filters that cannot help. **This is pre-existing in
 kind** — `UPSC CSE (Prelims)` has 1,789 rows, 0 PUBLIC, and has been in that dropdown all
 along. Filtering `listExams()` would fix all four at once but removes the deliberate
 fail-open behaviour that stops a newly-ingested exam vanishing from every picker, so it was
 left alone.
 
-### 3. Then, and only then
+### 3. Then, and only then — THE ONLY REMAINING WORK (all outward-facing)
 
-- Flip PUBLIC **per chapter** as each clears derivation, not in one sweep.
+Steps 1, 1b, 1c and 2 are done. Everything below puts content in front of students, so it is
+**deliberately left for a human to trigger.**
+
+- Flip PUBLIC **per chapter**, not in one sweep. This is also the step that removes
+  `noPublicContent` from the three registry entries and sets `mixedFormats: true` on
+  `ipmat-indore` from a live count — `tests/exam-registry-content` fails until the flag and
+  the bank agree, in either direction.
 - `/mock`: see step 1c — real sittings served whole, 14 of 16 servable, three blockers.
 - Update the `/browse` Hero "Coming soon" copy — IPMAT is no longer coming.
 - `npm run stats` and `npm run seo:dates`, and commit the generated file.

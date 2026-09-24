@@ -19,6 +19,8 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 13. **The 2026-09-18 (ninth) digest EVICTED from CLAUDE.md on 2026-09-21** under the CEILING rule — the DAU/MAU stickiness entry took the active Decisions log to 36,149 bytes against its 36,000 ceiling, 149 over. **Oldest-first was not available:** the four entries older than it (2026-09-18 plain, second, seventh, eighth) still have no long form here, so evicting any of them would have DELETED it rather than moved it. The one taken was **verified present in the `### 2026-09-01 to 2026-09-21` section immediately before removal**, freeing 1.5 KB (100% → 96%). **Those four, plus 2026-09-20 fifth/sixth/seventh, remain un-evictable until someone writes their long form** — `npm run docs:budget` names them.
 
+14. **The two 2026-09-19 digests EVICTED from CLAUDE.md on 2026-09-24** (second — the stranded-mock sweep; third — `answer_correct` as a recovery) under the CEILING rule: the IPMAT-registry entry took the active Decisions log to 96% of its 35.2 KB limit before the new digest was even added. **Oldest-first WAS available this time** — both were verified present in the `### 2026-09-01 to 2026-09-24` section immediately before removal (`grep -c` on each tag), freeing 2.1 KB (96% → 90%). **The 2026-09-20 fifth/sixth/seventh digests still have no long form here and remain un-evictable until someone writes one** — `npm run docs:budget` names them on every run.
+
 For all other entries (the consolidated 2026-05-27 milestone, 2026-05-26 infrastructure entries, anything **2026-09-15 onwards**), see `CLAUDE.md` "Decisions log" section. For **2026-09-01 to 2026-09-14** both exist: the DIGEST in `CLAUDE.md`, the full narrative here. The Foundations (M1-M3, 2026-05-08) sub-section also stays in CLAUDE.md.
 
 Within-month convention: newest entries closest to top (matches CLAUDE.md ordering).
@@ -26,8 +28,35 @@ Within-month convention: newest entries closest to top (matches CLAUDE.md orderi
 ---
 
 
-### 2026-09-01 to 2026-09-21 — full narratives (digested 2026-09-14; rolling since). Header corrected 2026-09-18: it read "to 2026-09-16" while the batch already held entries through 2026-09-18, so it is now DERIVED from the batch's own span rather than hand-maintained — re-check it with the reconciliation in `npm run docs:budget`.
+### 2026-09-01 to 2026-09-24 — full narratives (digested 2026-09-14; rolling since). Header corrected 2026-09-18: it read "to 2026-09-16" while the batch already held entries through 2026-09-18, so it is now DERIVED from the batch's own span rather than hand-maintained — re-check it with the reconciliation in `npm run docs:budget`.
 
+
+**2026-09-24 (third) — IPMAT joins EXAM_REGISTRY behind a content guard, and the guard's first catch was a live defect that had nothing to do with IPMAT.**
+
+Phase 5 steps 2 and 3 of `scripts/ipmat/README.md`. Three exams — IPMAT Indore, IPMAT Rohtak and JIPMAT — enter the registry grouped as one picker family, all flagged `noPublicContent` until their rows go PUBLIC.
+
+**The checklist ordered the guard first, and that ordering paid for itself immediately.** `src/lib/profile/examChoices.ts` mapped `EXAM_REGISTRY` straight to the target-exam chips on /welcome and /account with no content check, and the roadmap's stated reason was prospective: registering IPMAT would let a student pick an exam and find nothing. Measuring the live bank before writing any code showed the defect was already SHIPPED. `isc-12` was in the registry, rendering as a chip, and its `examName` resolved to **no `exams` row at all** — the ISC corpus is paused and nothing was ever ingested. A student picking it sets `student_profiles.target_exams` to a slug that steers /drill, the mock recommendations and the report email, all of which then resolve to nothing, with no error anywhere to explain it.
+
+**Checked before changing it, not after:** of 379 profiles, 307 have a target set, and **zero** have `isc-12`. So removing the chip strands nobody and needs no migration or fallback. Had even one profile carried it, the right move would have been different.
+
+**The flag is hand-declared, and that is the same bargain `mixedFormats` makes.** The chip list is a module-level const built from static TypeScript; there is no request in which to count rows. A declared fact rots, so the obligation that comes with it is a standing probe: `tests/exam-registry-content.test.ts` (prod-contract) re-measures the flag against the live bank and fails in BOTH directions — an empty exam left unflagged, and a flag left behind after a PUBLIC flip. It also asserts that every unflagged `examName` resolves to an `exams` row, which is precisely the isc-12 failure and is invisible to typecheck because the name is just a string.
+
+**Filtering runs BEFORE grouping, which is load-bearing rather than tidiness.** Drop a member after `groupExamFamilies` has run and its rule 2 — a family of one degrades to a flat chip — has already been decided on the unfiltered list, so a board left with a single live class would render as a one-option group. Spec'd in both directions.
+
+**`buildExamChips` was extracted and takes the registry as an argument** so the guard can be tested against a synthetic list. Asserting only against the real registry passes vacuously whenever nothing happens to be flagged, which is the state the codebase shipped in that morning — the two real-registry assertions were green before the feature existed.
+
+**Both directions were fault-injected, and the first injection silently did nothing.** A `perl` pattern using bare `
+` against this uniformly-CRLF working tree matched no multi-line text, and the suite reported a pass I would have believed. Redone with a real edit: un-flagging isc-12 fails 2 tests, flagging NDA fails 1, and the push-gate test correctly stays green on the latter because it cannot know what the bank holds. That split is the design — the fast test proves the wiring, the prod-contract test proves the fact.
+
+**Step 2, the family axis.** `ExamFamilyNode`'s family variant was `{ board: Board; classes }`. IPMAT's three members are neither a board nor a class, and overloading `board` to carry the string "IPMAT" would make that field lie for every non-board family that follows. So the discriminating field became a generic `key: string` and `classes` became `members`. Members of a non-board family order by their position in `EXAM_REGISTRY`, because the registry is the one place that declares a deliberate sibling order — taking it from the caller's array would let two surfaces passing the same exams in different orders disagree about the family's internal order. The generic path is spec'd against the same three rules as the board path, since a second grouping mechanism that silently ordered or degraded differently would be worse than no generalisation at all.
+
+**The member-axis label was the sleeper, and I first wrote it off as cosmetic and post-launch.** That was wrong, and the reason is worth keeping: `FilterBar` builds its exam list from the DB (`listExams()`), not from the registry. So the moment the registry resolved those three names, they GROUPED in the /browse dropdown — under a control whose label was hardcoded `"Class"`, reading "Class → Indore". Three dead flat entries was the accepted pre-existing state for a PRIVATE corpus; a grouped family with a lying control is worse than what it replaced. The noun is a property of the family rather than the member, so it rides on the node as `memberAxis`, defaults to `"Class"` for board families, and is declared `familyAxis: "Institute"` on the three IPMAT entries. Verified against the live exam list: `[IPMAT] axis="Institute" -> Indore / Rohtak / Jammu`, with `UPSC CSE (Prelims)` still failing open as a flat entry because it is deliberately absent from the registry.
+
+**The `<Select>` value prefix moved from `board:` to `family:`.** Safe, and checked rather than assumed: that value is never persisted and never enters a URL — FilterBar computes it at render and maps it straight to an `examId` on change.
+
+**Verification.** Full gate green including `next build`. 1,489 prerendered `.html` files on disk, so the shared-shell caching invariant holds; `/board`, one of the four pages edited, prerenders. The homepage does not, and that is pre-existing and deliberate — `src/app/page.tsx` reads the session to redirect members to /dashboard, and its own comment at line 188 says the `revalidate = 86400` exists to cache the 12 head-counts on a route the session reads have already made dynamic.
+
+**What this does NOT do.** Nothing is student-visible. All three exams stay `noPublicContent`, the student chips are unchanged at 14, and 1,419 rows remain PRIVATE. Removing the flag IS the launch step, and the prod-contract test fails the moment the flag and the bank disagree.
 
 **2026-09-24 — MH HSC Class 12 GEOGRAPHY ships: all 8 chapters, 356 questions, the exam's fourth subject and this pipeline's first humanities one. The book prints NO answer key at all, so the README's step-6 gate cannot run and a new grounding probe carries the whole weight.**
 
