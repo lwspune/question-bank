@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { parseKeyLines, reconcileKeys } from "../scripts/mh-hsc-12-pyq/paper/keys";
+import { MATHS_GRAMMAR } from "../scripts/mh-hsc-12-pyq/paper/lib";
 
 const PASS_A = `
 Some prose the pass wrote before its table.
@@ -11,7 +12,7 @@ Some prose the pass wrote before its table.
 
 describe("parseKeyLines", () => {
   it("pulls the pipe rows out of surrounding prose", () => {
-    expect(parseKeyLines(PASS_A)).toEqual([
+    expect(parseKeyLines(PASS_A, MATHS_GRAMMAR)).toEqual([
       { ref: "Q. 1. (i)", answer: "C", confidence: "high", note: "contrapositive then converse" },
       { ref: "Q. 1. (ii)", answer: "D", confidence: "high", note: "adj swaps the diagonal" },
       { ref: "Q. 1. (iii)", answer: "B", confidence: "medium", note: "6x^2+5x-1=0" },
@@ -19,28 +20,28 @@ describe("parseKeyLines", () => {
   });
 
   it("canonicalises the ref spelling, so two passes can differ in formatting", () => {
-    const rows = parseKeyLines("Q.1.iii | B | high | x");
+    const rows = parseKeyLines("Q.1.iii | B | high | x", MATHS_GRAMMAR);
     expect(rows[0].ref).toBe("Q. 1. (iii)");
   });
 
   it("accepts NONE as an answer — a no-correct-option MCQ is an expected outcome", () => {
-    expect(parseKeyLines("Q. 1. (i) | NONE | high | derived 5/7, no option matches")[0].answer).toBe("NONE");
+    expect(parseKeyLines("Q. 1. (i) | NONE | high | derived 5/7, no option matches", MATHS_GRAMMAR)[0].answer).toBe("NONE");
   });
 
   it("uppercases a lowercase answer letter but does not invent one", () => {
-    expect(parseKeyLines("Q. 1. (i) | c | high | x")[0].answer).toBe("C");
+    expect(parseKeyLines("Q. 1. (i) | c | high | x", MATHS_GRAMMAR)[0].answer).toBe("C");
   });
 
   it("ignores a row whose ref is not on this paper rather than guessing", () => {
-    expect(parseKeyLines("Q. 99 | A | high | x")).toEqual([]);
+    expect(parseKeyLines("Q. 99 | A | high | x", MATHS_GRAMMAR)).toEqual([]);
   });
 
   it("ignores a markdown table separator and a fenced-code fence", () => {
-    expect(parseKeyLines("|---|---|\n```\nQ. 1. (i) | A | high | x\n```")).toHaveLength(1);
+    expect(parseKeyLines("|---|---|\n```\nQ. 1. (i) | A | high | x\n```", MATHS_GRAMMAR)).toHaveLength(1);
   });
 
   it("rejects an answer that is not A-D or NONE", () => {
-    expect(() => parseKeyLines("Q. 1. (i) | E | high | x")).toThrow(/E/);
+    expect(() => parseKeyLines("Q. 1. (i) | E | high | x", MATHS_GRAMMAR)).toThrow(/E/);
   });
 });
 
@@ -49,7 +50,7 @@ describe("reconcileKeys — two independent derivations", () => {
     Q. 1. (i) | C | high | x
     Q. 1. (ii) | D | high | x
     Q. 1. (iii) | B | high | x
-  `);
+  `, MATHS_GRAMMAR);
 
   it("reports full agreement", () => {
     const out = reconcileKeys(a, a);
@@ -64,7 +65,7 @@ describe("reconcileKeys — two independent derivations", () => {
       Q. 1. (i) | C | high | x
       Q. 1. (ii) | A | low | x
       Q. 1. (iii) | B | high | x
-    `);
+    `, MATHS_GRAMMAR);
     const out = reconcileKeys(a, b);
     expect(out.disagree).toEqual([{ ref: "Q. 1. (ii)", a: "D", b: "A", aNote: "x", bNote: "x" }]);
     expect(out.agree).toHaveLength(2);
@@ -75,7 +76,7 @@ describe("reconcileKeys — two independent derivations", () => {
       Q. 1. (i) | NONE | high | no option matches
       Q. 1. (ii) | D | high | x
       Q. 1. (iii) | B | high | x
-    `);
+    `, MATHS_GRAMMAR);
     expect(reconcileKeys(a, b).disagree.map((d) => [d.a, d.b])).toEqual([["C", "NONE"]]);
   });
 
@@ -83,14 +84,14 @@ describe("reconcileKeys — two independent derivations", () => {
     const b = parseKeyLines(`
       Q. 1. (i) | C | high | x
       Q. 1. (iv) | A | high | x
-    `);
+    `, MATHS_GRAMMAR);
     const out = reconcileKeys(a, b);
     expect(out.onlyA).toEqual(["Q. 1. (ii)", "Q. 1. (iii)"]);
     expect(out.onlyB).toEqual(["Q. 1. (iv)"]);
   });
 
   it("surfaces a LOW-confidence agreement — two passes agreeing while unsure is not evidence", () => {
-    const shaky = parseKeyLines("Q. 1. (i) | C | low | guessed");
+    const shaky = parseKeyLines("Q. 1. (i) | C | low | guessed", MATHS_GRAMMAR);
     const out = reconcileKeys(shaky, shaky);
     expect(out.agree).toHaveLength(1);
     expect(out.lowConfidenceAgreements).toEqual(["Q. 1. (i)"]);

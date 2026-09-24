@@ -44,8 +44,8 @@ import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { ORG_ID, CREATED_BY, EXAM_ID, PAPERS, requirePaper, questionsJsonPath } from "./config";
-import { HSC_MATHS_CATALOG } from "./catalog";
-import { reconcileRefs } from "./lib";
+import { catalogFor } from "./catalog";
+import { grammarFor } from "./lib";
 import { buildPaperRecords, type PaperQuestion } from "../../mh-ssc-10/lib";
 import { commitStaged } from "../../../src/lib/upload/commit";
 import { contentHash, subjectiveContentHash } from "../../../src/lib/upload/hash";
@@ -67,7 +67,13 @@ async function main() {
 
   if (paper.bankStatus === "reconcile" && !allowReconcile) {
     throw new Error(
-      `${id} is a RECONCILE paper: ${paper.bankRows} of its 44 questions are already PUBLIC in the bank,\n` +
+      // The printed count comes from the paper's own grammar. It was hardcoded
+      // to the Maths 44 until 2026-09-24, which meant this refusal told a human
+      // deciding whether to proceed that a 47-item Physics paper had 44
+      // questions. A gate that states a wrong number is worse than one that
+      // states none, because the number is the thing being weighed.
+      `${id} is a RECONCILE paper: ${paper.bankRows} rows are already PUBLIC in the bank against its printed ` +
+        `${grammarFor(paper.subject).expectedRefs.length} questions,\n` +
         `  committed from the LWS compilation. Committing it is a merge into shipped content, not an\n` +
         `  ingest, and content_hash covers the stem so corrections are delete + re-commit.\n` +
         `  That needs a 360 analysis and sign-off first — see scripts/mh-hsc-12-pyq/paper/README.md.\n` +
@@ -77,10 +83,54 @@ async function main() {
 
   const path = questionsJsonPath(id);
   if (!existsSync(path)) throw new Error(`${id}: no transcription at ${path}`);
-  const questions = JSON.parse(readFileSync(path, "utf8")) as PaperQuestion[];
+  const all = JSON.parse(readFileSync(path, "utf8")) as PaperQuestion[];
 
-  // Completeness, both ways, before anything is written.
-  const rec = reconcileRefs(questions.map((q) => q.ref));
+  /**
+   * PARTIAL RECONCILIATION (`--only-missing`), signed off 2026-09-24.
+   *
+   * Commit only the refs a census recorded in `knownMissingRefs`, and leave
+   * every shipped row alone. This is the outcome of the 360 on the three
+   * Physics reconcile papers: of 137 already-PUBLIC rows, 8 questions were
+   * never captured and 38 differ from this transcription in LaTeX markup only
+   * (`2\mu C` against `2\mu\text{C}`, `227ºC` against `\(227^{\circ}\text{C}\)`).
+   * Rewriting those 38 means delete + re-commit, because `content_hash` covers
+   * the stem, which orphans reviews, tags, bookmarks and teachers'
+   * `paper_questions` rows to change nothing a student sees.
+   *
+   * The mode is driven by `knownMissingRefs` rather than by an argument, so it
+   * can only ever write refs a census already named. Passing a list on the
+   * command line would let a typo insert a duplicate of a shipped question,
+   * which is the one failure this whole gate exists to prevent.
+   */
+  const onlyMissing = process.argv.includes("--only-missing");
+  let questions = all;
+  if (onlyMissing) {
+    if (!allowReconcile) throw new Error(`--only-missing is a reconciliation; pass --allow-reconcile too.`);
+    const want = paper.knownMissingRefs ?? [];
+    if (!want.length) {
+      throw new Error(
+        `${id}: --only-missing needs a knownMissingRefs census in config.ts, and this paper declares none.`,
+      );
+    }
+    const g = grammarFor(paper.subject);
+    const wanted = new Set(want.map((r) => g.normaliseRef(r)));
+    questions = all.filter((q) => wanted.has(g.normaliseRef(q.ref)));
+    if (questions.length !== want.length) {
+      throw new Error(
+        `${id}: census names ${want.length} missing ref(s) but the transcription supplies ${questions.length}. ` +
+          `Missing from the transcription: ${want.filter((r) => !questions.some((q) => g.normaliseRef(q.ref) === g.normaliseRef(r))).join(", ")}`,
+      );
+    }
+    console.log(`  --only-missing: committing ${questions.length} of ${all.length} row(s) — ${want.join(", ")}`);
+    console.log(`  the other ${all.length - questions.length} are already in the bank and are NOT touched.`);
+  }
+
+  // Completeness, both ways, before anything is written. Skipped under
+  // --only-missing, where an incomplete ref set is the whole point; the census
+  // check above is what guards that path instead.
+  const rec = onlyMissing
+    ? { missing: [], unexpected: [], duplicates: [] }
+    : grammarFor(paper.subject).reconcileRefs(questions.map((q) => q.ref));
   const blockers: string[] = [
     ...rec.missing.map((r) => `${r}: missing from the transcription`),
     ...rec.unexpected.map((r) => `${r}: not a ref on this paper`),
@@ -93,7 +143,7 @@ async function main() {
     throw new Error(`${blockers.length} blocker(s) — refusing to commit.`);
   }
 
-  const { rows, flags } = buildPaperRecords(HSC_MATHS_CATALOG, questions);
+  const { rows, flags } = buildPaperRecords(catalogFor(paper.subject), questions);
   console.log(`${paper.id}  ${paper.month} ${paper.year}  ${paper.paperCode}`);
   console.log(`  ${rows.length} rows (${rows.filter((r) => r.questionFormat === "mcq").length} mcq)`);
   console.log(`  source_file: ${paper.sourceFile}`);

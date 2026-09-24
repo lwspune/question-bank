@@ -18,7 +18,7 @@
  *
  * TDD'd in tests/mh-hsc-12-paper-keys.test.ts.
  */
-import { normaliseRef } from "./lib";
+import { type Grammar } from "./lib";
 
 export type Confidence = "high" | "medium" | "low";
 /** "NONE" = derived a value that matches no printed option. An expected outcome
@@ -39,7 +39,19 @@ const CONFIDENCES: Confidence[] = ["high", "medium", "low"];
  * since a silently-skipped row reads downstream as "that question was never
  * derived" — which is a different and much quieter problem.
  */
-export function parseKeyLines(text: string): KeyRow[] {
+/**
+ * The grammar is REQUIRED, not defaulted, and that is the whole point.
+ *
+ * It was briefly optional with a Mathematics default when the Physics lane
+ * landed on 2026-09-23, and `reconcile-keys.ts` did not pass one. The Maths
+ * grammar happily normalised the Physics refs `Q. 1(i)`..`Q. 1(viii)` into its
+ * own `Q. 1. (i)` spelling and simply DROPPED `Q. 1(ix)` and `Q. 1(x)`, which do
+ * not exist on a Maths paper. The run then reported "8 agreed keys" and exited
+ * 0 — a plausible number, silently wrong, on the one artifact whose entire job
+ * is to be trustworthy. A default here does not save a caller a keystroke; it
+ * converts a missing argument into a wrong answer.
+ */
+export function parseKeyLines(text: string, grammar: Grammar): KeyRow[] {
   const rows: KeyRow[] = [];
   for (const raw of String(text ?? "").split(/\r?\n/)) {
     const line = raw.trim().replace(/^[`|]+|[`|]+$/g, "").trim();
@@ -48,7 +60,7 @@ export function parseKeyLines(text: string): KeyRow[] {
     const parts = line.split("|").map((p) => p.trim());
     if (parts.length < 3) continue;
 
-    const ref = normaliseRef(parts[0]);
+    const ref = grammar.normaliseRef(parts[0]);
     if (!ref) continue; // not a ref on this paper — not our row
 
     const answer = parts[1].toUpperCase() as KeyAnswer;

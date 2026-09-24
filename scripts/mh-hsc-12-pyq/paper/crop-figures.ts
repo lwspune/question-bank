@@ -26,7 +26,7 @@ import { mkdirSync, writeFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 import { DATA, OUT, PAPERS, requirePaper, type Paper } from "./config";
-import { normaliseRef } from "./lib";
+import { grammarFor } from "./lib";
 
 /** Padding around a detected bbox, in points. The raster's own bounds sit hard
  *  against the outermost wire, so an unpadded crop prints a circuit whose
@@ -97,16 +97,16 @@ function detect(paper: Paper): Detected[] {
 }
 
 /** Attribute a detected figure to the question printed above it. */
-function refFor(d: Detected): string | null {
+function refFor(d: Detected, paper: Paper): string | null {
   const m = (d.under ?? "").match(/^Q\.\s*\d+\.?/);
-  return m ? normaliseRef(m[0].replace(/\.$/, "")) : null;
+  return m ? grammarFor(paper.subject).normaliseRef(m[0].replace(/\.$/, "")) : null;
 }
 
 function cropPaper(id: string): boolean {
   const paper = requirePaper(id);
   const found = detect(paper);
 
-  const attributed = found.map((d) => ({ d, ref: refFor(d) }));
+  const attributed = found.map((d) => ({ d, ref: refFor(d, paper) }));
   const foundRefs = attributed.map((a) => a.ref).filter(Boolean) as string[];
   const expected = paper.figureRefs;
 

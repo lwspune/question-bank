@@ -34,7 +34,7 @@ import { probeBoardAnswer, isNumericalStem } from "../../lib/boardAnswerStyle";
 // zones, so it does not make that mistake; the project's convention is
 // "detection is normalizeNewlines(v) !== v" for exactly this reason.
 import { normalizeNewlines } from "../../../src/lib/text/normalizeNewlines";
-import { normaliseRef } from "./lib";
+import { grammarFor } from "./lib";
 import type { PaperQuestion } from "../../mh-ssc-10/lib";
 
 /** Unicode maths the brief forbids — the same list verify.ts enforces on stems. */
@@ -79,7 +79,7 @@ function main() {
       continue;
     }
     for (const [rawRef, text] of Object.entries(parsed)) {
-      const ref = normaliseRef(rawRef);
+      const ref = grammarFor(paper.subject).normaliseRef(rawRef);
       if (!ref) {
         problems.push(`${lane}: ${JSON.stringify(rawRef)} is not a ref on this paper`);
         continue;
@@ -128,15 +128,47 @@ function main() {
     }
   }
 
-  // Coverage, both directions, against the paper's own list.
-  for (const q of qs) {
+  /**
+   * Coverage, both directions, against the paper's own list.
+   *
+   * `--only-missing` narrows that list to the refs a `knownMissingRefs` census
+   * named, for the PARTIAL reconciliation signed off on 2026-09-24: on the three
+   * Physics reconcile papers only 8 questions were never captured, and the rest
+   * are shipped rows this run must not touch. Without the narrowing, writing 8
+   * solutions looks like 137 missing ones.
+   *
+   * It is driven by the manifest census rather than a command-line list, for the
+   * same reason as in commit.ts: a mode that can only name refs someone already
+   * measured cannot be pointed at the wrong row by a typo.
+   */
+  const onlyMissing = process.argv.includes("--only-missing");
+  const census = paper.knownMissingRefs ?? [];
+  if (onlyMissing && !census.length) {
+    throw new Error(`${id}: --only-missing needs a knownMissingRefs census in config.ts, and this paper declares none.`);
+  }
+  const g = grammarFor(paper.subject);
+  const wanted = new Set(census.map((r) => g.normaliseRef(r)));
+  const inScope = onlyMissing ? qs.filter((q) => wanted.has(g.normaliseRef(q.ref))) : qs;
+
+  for (const q of inScope) {
     if (!solutions.has(q.ref) && !problems.some((p) => p.startsWith(q.ref))) {
       problems.push(`${q.ref}: no lane supplied a solution`);
     }
   }
+  // The mirror direction: under --only-missing a lane must not quietly supply a
+  // solution for a shipped row, because that row is not being re-committed and
+  // the solution would silently go nowhere.
+  if (onlyMissing) {
+    for (const ref of solutions.keys()) {
+      if (!wanted.has(g.normaliseRef(ref))) {
+        problems.push(`${ref}: solution supplied, but this ref is NOT in the missing-ref census and will not be committed`);
+      }
+    }
+    console.log(`   --only-missing: ${inScope.length} ref(s) in scope — ${census.join(", ")}`);
+  }
 
   const perLane = [...claimedBy.values()].reduce<Record<string, number>>((a, l) => ({ ...a, [l]: (a[l] ?? 0) + 1 }), {});
-  console.log(`${paper.id}: ${laneFiles.length} lane file(s) -> ${solutions.size}/${qs.length} solutions`);
+  console.log(`${paper.id}: ${laneFiles.length} lane file(s) -> ${solutions.size}/${inScope.length} solutions`);
   for (const [lane, n] of Object.entries(perLane)) console.log(`   ${lane}: ${n}`);
   for (const w of warnings) console.log(`   warn  ${w}`);
   for (const p of problems) console.log(`   ✗ ${p}`);

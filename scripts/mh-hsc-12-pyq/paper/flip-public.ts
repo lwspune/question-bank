@@ -25,7 +25,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { EXAM_ID, PAPERS, requirePaper, questionsJsonPath } from "./config";
-import { EXPECTED_REFS } from "./lib";
+import { grammarFor } from "./lib";
 import type { PaperQuestion } from "../../mh-ssc-10/lib";
 
 function loadEnv() {
@@ -63,11 +63,34 @@ async function main() {
   // the expected count adjusts by exactly them and the check still bites on
   // every other cause of a shortfall.
   const absorbed = paper.absorbedRefs ?? [];
-  const expected = EXPECTED_REFS.length - absorbed.length;
+  // printed ITEMS is not the row count. A paper that carries a two-part item as
+  // two rows has more rows than items, and one whose question the board reused
+  // verbatim has fewer: the exam-scoped content_hash folds the repeat into the
+  // row that already existed. Both terms are DECLARED in the manifest rather
+  // than inferred, so a shortfall from any other cause still fails this check.
+  /**
+   * `--only-missing` matches the partial reconciliation in commit.ts: only the
+   * refs a census named were committed under this `source_file`, and the rest
+   * of the sitting lives under the compilation's own source file and is not
+   * being touched. Expecting the whole paper here would refuse a run that did
+   * exactly what it was asked to.
+   *
+   * The expected count still comes from declared numbers, not from whatever
+   * happens to be in the bank, so it fails on any shortfall it was not told
+   * about.
+   */
+  const onlyMissing = process.argv.includes("--only-missing");
+  const printed = grammarFor(paper.subject).expectedRefs.length;
+  const expected = onlyMissing
+    ? (paper.knownMissingRefs ?? []).length - absorbed.length
+    : printed + (paper.splitRows ?? 0) - absorbed.length;
+  if (onlyMissing && !(paper.knownMissingRefs ?? []).length) {
+    throw new Error(`${paper.id}: --only-missing needs a knownMissingRefs census in config.ts.`);
+  }
   if ((rows ?? []).length !== expected) {
     problems.push(
       `${(rows ?? []).length} rows in the bank, expected ${expected}` +
-        (absorbed.length ? ` (the printed ${EXPECTED_REFS.length} less ${absorbed.length} absorbed)` : ``),
+        (absorbed.length ? ` (the printed ${printed} less ${absorbed.length} absorbed)` : ``),
     );
   }
   for (const a of absorbed) {
