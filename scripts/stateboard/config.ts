@@ -1651,6 +1651,32 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  "primary-activities-12-geo": {
+    id: "primary-activities-12-geo",
+    chapterName: "Primary Economic Activities",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_12_Geography__Primary_Economic_Activities.pdf",
+    pdf: geo12("4. Primary Economic Activities.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Primary Economic Activities (Balbharati Geography textbook)",
+    // The book's own numbered occupation list, with agriculture split because it
+    // runs to several pages and its own typology, and a leading subtopic for the
+    // chapter's framing of what a primary activity is.
+    //
+    // NOTE this is the chapter whose p.2 carries 2 of the 9 measured +29 cmap
+    // occurrences in the book (Table 4.2's bullet text). Read that table off the
+    // rendered page.
+    subtopics: [
+      "Nature of Primary Economic Activities",
+      "Hunting and Gathering",
+      "Lumbering",
+      "Fishing",
+      "Mining",
+      "Animal Husbandry",
+      "Agriculture and Its Types",
+    ],
+  },
+
   "settlements-12-geo": {
     id: "settlements-12-geo",
     chapterName: "Human Settlements and Land Use",
