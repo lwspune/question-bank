@@ -11,9 +11,16 @@ describe("EXAM_CHIP_OPTIONS", () => {
   // The load-bearing assertion. This is a multi-select whose values are
   // persisted; if grouping ever dropped or rewrote one, a student's saved
   // target exam would silently stop matching.
-  it("carries every registry slug exactly once, unchanged", () => {
+  //
+  // Scoped to exams that HAVE content since 2026-09-24: an exam flagged
+  // `noPublicContent` is withheld on purpose, because picking it would set a
+  // target that resolves to nothing. The invariant that matters is unchanged —
+  // grouping still never drops or rewrites a slug it was given. The guard's own
+  // spec, including that it is the filter and not grouping doing the dropping,
+  // is tests/exam-chips-guard.test.ts.
+  it("carries every registry slug with content exactly once, unchanged", () => {
     expect(EXAM_CHIP_OPTIONS.map((o) => o.value).sort()).toEqual(
-      EXAM_REGISTRY.map((e) => e.slug).sort()
+      EXAM_REGISTRY.filter((e) => !e.noPublicContent).map((e) => e.slug).sort()
     );
   });
 

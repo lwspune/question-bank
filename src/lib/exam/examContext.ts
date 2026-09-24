@@ -88,6 +88,31 @@ export type ExamEntry = {
    */
   mixedFormats?: boolean;
   /**
+   * This exam has NO PUBLIC questions — it is ingested-but-private, or not yet
+   * ingested at all. It is kept in the registry (so its routes, flags and
+   * grouping are declared in one place and the launch is a one-line edit), but
+   * it must NOT be offered to a student as a target exam: that choice is
+   * persisted to `student_profiles.target_exams` and then steers `/drill`, the
+   * mock recommendations and the report email, so picking an empty exam sets a
+   * target that resolves to nothing everywhere, with no error to explain it.
+   *
+   * A LIVE DEFECT, NOT A PRECAUTION: `isc-12` shipped here and rendered as a
+   * chip on /welcome + /account while its `examName` resolved to no `exams` row
+   * at all. The flag is what removes that chip.
+   *
+   * HAND-DECLARED, like `mixedFormats` above and for the same reason — the chip
+   * list is a module-level const built from static TS, with no request in which
+   * to count rows. A declared fact rots, so `tests/exam-registry-content` is
+   * the standing probe: it re-measures this against the live bank on every
+   * prod-contract run and fails in BOTH directions (flag stale after a PUBLIC
+   * flip; flag missing on an exam that has quietly emptied).
+   *
+   * NOT the same thing as being absent from the registry. `UPSC CSE (Prelims)`
+   * is deliberately not here at all, because none of it will ever be
+   * student-visible; this flag is for an exam that is on its way in.
+   */
+  noPublicContent?: boolean;
+  /**
    * The board+class this exam IS. The `exams` table conflates the two into one
    * row ("Maharashtra State Board Class 10"), so this registry is the ONLY place
    * they can be separated — which is what lets the written-paper builder offer
@@ -317,6 +342,13 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // SET IT AT THE FIRST INGEST, from a live count, not from the papers — the
     // cbse-11 entry records what happens when it is set from one subject and
     // then treated as a permanent property of the exam.
+    //
+    // ⚠ NOTHING IS INGESTED — not one row, and `examName` resolves to NO `exams`
+    // row at all (the corpus is PAUSED; see the ISC ingestion notes). Until that
+    // changes this exam must not be offered as a student target: it shipped as a
+    // live chip on /welcome + /account pointing at an exam that exists nowhere.
+    // Remove the flag at the first PUBLIC row, not at the first ingest.
+    noPublicContent: true,
     board: "CISCE",
     std: 12,
     // A CISCE family of one degrades to a flat picker entry (groupExamFamilies

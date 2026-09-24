@@ -24,9 +24,28 @@ import type { ChipOption } from "@/components/ProfileChips";
  * The ungrouped-first ordering matters: the chips render as one unlabelled row
  * followed by a labelled row per board, so interleaving would split the
  * entrance exams across two separate blocks.
+ *
+ * AN EXAM WITH NO PUBLIC CONTENT IS DROPPED FIRST, before grouping. What a
+ * student picks here is persisted to `student_profiles.target_exams` and then
+ * steers `/drill`, the mock recommendations and the report email, so offering
+ * an empty exam sets a target that resolves to nothing everywhere — which is
+ * exactly what `isc-12` did until it was flagged. See `noPublicContent` in the
+ * registry for why the fact is declared rather than counted.
+ *
+ * FILTERING BEFORE GROUPING IS LOAD-BEARING, not tidiness. Drop a member after
+ * `groupExamFamilies` has run and its rule 2 — a family of one degrades to a
+ * flat chip — has already been decided on the unfiltered list, so a board left
+ * with one live class would render as a one-option group.
+ *
+ * Takes the registry as an argument so the guard is testable against a
+ * synthetic list: asserting only against the real registry would pass
+ * vacuously whenever nothing happens to be flagged.
  */
-export const EXAM_CHIP_OPTIONS: readonly ChipOption[] = (() => {
-  const nodes = groupExamFamilies<ExamEntry>(EXAM_REGISTRY, (e) => e);
+export function buildExamChips(entries: readonly ExamEntry[]): ChipOption[] {
+  const nodes = groupExamFamilies<ExamEntry>(
+    entries.filter((e) => !e.noPublicContent),
+    (e) => e
+  );
   const flat: ChipOption[] = [];
   const grouped: ChipOption[] = [];
 
@@ -45,4 +64,6 @@ export const EXAM_CHIP_OPTIONS: readonly ChipOption[] = (() => {
   }
 
   return [...flat, ...grouped];
-})();
+}
+
+export const EXAM_CHIP_OPTIONS: readonly ChipOption[] = buildExamChips(EXAM_REGISTRY);
