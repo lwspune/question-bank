@@ -1041,3 +1041,38 @@ A manifest (tasks T1–T4 + splits + contamination policy) + a held-out test spl
 ---
 
 **Decisions-log style note**: when an item ships, move its entry from this file into the `CLAUDE.md` Decisions log (with a `2026-MM-DD —` prefix and a "Why" sentence). Don't let ROADMAP.md and the decisions log diverge.
+
+---
+
+### BACKFILL LEDGER — Class 10 Social Science: answerable questions that belong to NEITHER lane (logged 2026-09-24)
+
+**Three chapter agents raised this independently**, which is why it is logged rather than decided
+on one chapter's judgement. The Economics lane definition is two blocks — the end-of-chapter
+`EXERCISES` and the in-text `LET'S WORK TH{IS,ESE} OUT` boxes — and both were chosen with the
+user. But these books also print **numbered, answerable, groundable questions inside titled
+case-study boxes that are neither**, and the only thing stopping them is that the brief's ref
+scheme has no prefix for them. They were skipped for consistency; none was dropped for being
+unanswerable.
+
+Enumerated, so a later pass does not have to re-find them:
+
+| Chapter | Item | Answerable from the chapter? |
+|---|---|---|
+| Eco Ch.1 | p8 `Average Income` box — "calculate the average income for both countries" from Table 1.2 | yes |
+| Eco Ch.1 | p13 `Example 1: Groundwater in India` — (a) why overused (b) development without overuse | yes |
+| Eco Ch.1 | p14 `Example 2: Exhaustion of Natural Resources` — (a) is crude oil essential (b) import problems | yes |
+| Eco Ch.1 | p13 prose — "other aspects that should be considered in measuring human development?" | yes |
+| Eco Ch.1 | p6/p11 `ACTIVITY 2` — fill-in from Table 1.5, 3 items. NOT open-ended, unlike ACTIVITY 1 and 3 | yes |
+| Eco Ch.2 | p16 `LET'S RECALL` — Table 2.4 classifying economic activities | yes |
+| Eco Ch.3 | p8 `A House Loan` box — "fill the following details of Megha's housing loan", 6 rows | yes |
+
+**Why it was NOT done inline:** widening the lane mid-book would have left Geography (already
+committed) and the chapters transcribed under the narrower rule inconsistent with the later ones,
+and the decision belongs to the user, not to whichever chapter happened to surface it. Roughly
+10–15 rows across Economics.
+
+**If taken up:** it needs one new ref prefix (`CS <ch>.<n> Q<m>` for a case-study box), a brief
+amendment, and a re-read of the 5 Economics chapters for boxes of the same shape. Polity and
+History should be surveyed for the class before the rule is written — Polity has titled boxes
+(`Reigning the Reins`, `The States Plead for More Powers`) and History has `Source` boxes, and
+neither has been checked for question content.

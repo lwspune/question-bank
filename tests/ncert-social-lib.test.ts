@@ -300,6 +300,21 @@ describe("groundingViolations with the social citation parser", () => {
   });
 });
 
+  it("mints an anchor for an ALL-CAPS table, as Economics prints them", () => {
+    // Economics prints "TABLE 2.3 WORKERS IN DIFFERENT SECTORS"; Geography
+    // prints "Table 1.2". A case-sensitive rule gave Economics ZERO table
+    // anchors, and the chapter agent worked around it by citing a middle dot
+    // ("Table 2·3") so the period would not truncate the run. That
+    // workaround resolves today and rots the moment anyone writes it normally.
+    expect(figureTableAnchors("TABLE 2.3 WORKERS IN DIFFERENT SECTORS", 2))
+      .toContain("table 2.3");
+    expect(figureTableAnchors("FIG. 2.1 SECTORS", 2)).toContain("fig. 2.1");
+  });
+
+  it("still chapter-filters an ALL-CAPS table", () => {
+    expect(figureTableAnchors("TABLE 7.1 SOMETHING", 2)).toEqual([]);
+  });
+
 describe("stitchSmallCaps — the small-caps heading defect", () => {
   // MEASURED, not hypothetical. Geography sets its section heads in SMALL CAPS:
   // 12pt capitals, 8.4pt letters, against a 10.5pt body. PyMuPDF decomposes one

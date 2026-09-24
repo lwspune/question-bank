@@ -338,7 +338,13 @@ export function parseSocialCitations(s: string): string[] {
   return out;
 }
 
-const FIGTAB_RE = /\b(Table)\s+(\d+\.\d+)|\bFig(?:ure|\.)?\s*(\d+\.\d+)/g;
+// CASE-INSENSITIVE, because the four books do not agree on case: Geography
+// prints "Table 1.2", Economics prints "TABLE 2.3". A case-sensitive rule gave
+// Economics ZERO table anchors for its whole book, and the chapter author
+// worked around it by citing a middle dot ("Table 2·3") so the ASCII period
+// would not truncate the citation run — a workaround that resolves today and
+// rots the moment anyone writes the table the normal way.
+const FIGTAB_RE = /\b(Table)\s+(\d+\.\d+)|\bFig(?:ure|\.)?\s*(\d+\.\d+)/gi;
 
 /**
  * Figure and table references the chapter's own text declares, chapter-filtered.
@@ -356,7 +362,7 @@ const FIGTAB_RE = /\b(Table)\s+(\d+\.\d+)|\bFig(?:ure|\.)?\s*(\d+\.\d+)/g;
 export function figureTableAnchors(text: string, chapterNo: number): string[] {
   const out: string[] = [];
   const seen = new Set<string>();
-  const re = new RegExp(FIGTAB_RE.source, "g");
+  const re = new RegExp(FIGTAB_RE.source, "gi");
   let m: RegExpExecArray | null;
   while ((m = re.exec(text)) !== null) {
     const num = m[2] ?? m[3];

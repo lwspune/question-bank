@@ -98,11 +98,20 @@ guessed:**
   a printable map; a text answer can only list the places, which is not what the
   question asks.
 - **Numbered things that are not questions.** Economics Ch.5 pp.8–9 runs a
-  `LET'S WORK THIS OUT` comic strip whose panels are numbered 1–9
-  ("PRAKASH GOES TO THE POST OFFICE TO…"). It is a narrative sequence, not a
-  question block. Puzzle grids are the same — Geography Ch.4's p.41 ACTIVITY is
-  a 13×13 word-search that cannot survive as a text stem. **A number at the start
-  of a line is not evidence of a question.**
+  comic strip whose panels are numbered 1–9 ("PRAKASH GOES TO THE POST OFFICE
+  TO…"). It is a narrative sequence, not a question block. Puzzle grids are the
+  same — Geography Ch.4's p.41 ACTIVITY is a 13×13 word-search that cannot
+  survive as a text stem. **A number at the start of a line is not evidence of a
+  question.**
+
+  **And "on the same page as" is not evidence of belonging.** An earlier draft
+  of this brief said that strip *was* the content of the `LET'S WORK THIS OUT`
+  box on p.82, because both are on that page. Geometry says otherwise: the box
+  heading is at y=60, a section head ("Where should consumers go to get
+  justice?") at y=202, and panel 1 only at y=502. The box is a real one-item
+  question and belongs in the intext lane; the strip is free-standing
+  illustration. **Settle containment by coordinates, not by page number** — the
+  same rule as §4, and the same mistake in a different costume.
 
 **Do ingest, even though it feels odd:**
 
