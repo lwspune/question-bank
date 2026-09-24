@@ -181,6 +181,19 @@ Rules, each of which has already caught a real mistake:
    soil types ("Black Soil", "Alluvial Soils") are set smaller than body, so they
    are not citable — cite the parent, `§ Classification of Soils`.
 
+7. **Never cite a bare common word, even when the anchor list offers one.** The
+   list is generous: Economics Ch.3 declares 115 anchors, among them `and`,
+   `money`, `credit` and `will rise` — display type and option text that
+   happened to be set at heading size. Citing `§ Money` resolves and proves
+   nothing, because an answer that never opened the chapter could match it too.
+   **Pick the longest heading that genuinely covers your passage.**
+
+   `npx tsx scripts/ncert/social-anchor-strength.ts <chapterId>` names the rows
+   whose citations resolve ONLY onto such words. Run it after the gate is green;
+   a green gate is what it is designed to look past. It is triage, not a gate —
+   a flagged row is unmeasured, not wrong — but `roadways` being a real heading
+   of Geography Ch.7 is the only kind of hit you should be leaving in place.
+
 `groundedIn` never reaches the bank. `buildRecords` assembles from named fields,
 so it is an authoring artifact, checked and then inert.
 

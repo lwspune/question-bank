@@ -3689,6 +3689,113 @@ export const CHAPTERS: Record<string, Chapter> = {
       "International Trade and Tourism",
     ],
   },
+
+  // ── Economics — "Understanding Economic Development" ──────────────────────
+  // Two question lanes, unlike Geography's one: the end-of-chapter EXERCISES
+  // *and* the in-text boxes, which is why these chapters get both an
+  // `.exercise.json` and an `.intext.json` fragment. The box heading is TWO
+  // strings, not one — 29 read "LET'S WORK THESE OUT" and 3 read "LET'S WORK
+  // THIS OUT" (Ch.4 once, Ch.5 twice). Matching only the plural finds 29 and
+  // reports nothing missing.
+  //
+  // No `answersPdf`, as with Geography. There is no key for this book.
+
+  c10EcoDevelopment: {
+    id: "c10EcoDevelopment",
+    chapterName: "Development",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Economics",
+    sourceFile: "NCERT_10_Economics__Development.pdf",
+    pdf: cls10SS("Economics", "01. DEVELOPMENT.pdf"),
+    chapterNo: 1,
+    note: "NCERT (CBSE Class 10) \u2014 Development (Chapter 1, Understanding Economic Development)",
+    subtopics: [
+      "What Development Promises",
+      "Income and Other Goals",
+      "National Development",
+      "How to Compare Different Countries or States",
+      "Income and Other Criteria",
+      "Public Facilities",
+      "Sustainability of Development",
+    ],
+  },
+
+  c10EcoSectors: {
+    id: "c10EcoSectors",
+    chapterName: "Sectors of the Indian Economy",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Economics",
+    sourceFile: "NCERT_10_Economics__Sectors.pdf",
+    pdf: cls10SS("Economics", "02. SECTORS OF THE INDIAN ECONOMY.pdf"),
+    chapterNo: 2,
+    note: "NCERT (CBSE Class 10) \u2014 Sectors of the Indian Economy (Chapter 2, Understanding Economic Development)",
+    subtopics: [
+      "Sectors of Economic Activities",
+      "Comparing the Three Sectors",
+      "Primary, Secondary and Tertiary Sectors in India",
+      "Division of Sectors as Organised and Unorganised",
+      "Sectors in Terms of Ownership",
+    ],
+  },
+
+  c10EcoMoneyCredit: {
+    id: "c10EcoMoneyCredit",
+    chapterName: "Money and Credit",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Economics",
+    sourceFile: "NCERT_10_Economics__MoneyCredit.pdf",
+    pdf: cls10SS("Economics", "03. MONEY AND CREDIT.pdf"),
+    chapterNo: 3,
+    note: "NCERT (CBSE Class 10) \u2014 Money and Credit (Chapter 3, Understanding Economic Development)",
+    subtopics: [
+      "Money as a Medium of Exchange",
+      "Modern Forms of Money",
+      "Loan Activities of Banks",
+      "Two Different Credit Situations",
+      "Terms of Credit",
+      "Formal Sector Credit in India",
+      "Self-Help Groups for the Poor",
+    ],
+  },
+
+  c10EcoGlobalisation: {
+    id: "c10EcoGlobalisation",
+    chapterName: "Globalisation and the Indian Economy",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Economics",
+    sourceFile: "NCERT_10_Economics__Globalisation.pdf",
+    pdf: cls10SS("Economics", "04. GLOBALISATION AND THE INDIAN ECONOMY.pdf"),
+    chapterNo: 4,
+    note: "NCERT (CBSE Class 10) \u2014 Globalisation and the Indian Economy (Chapter 4, Understanding Economic Development)",
+    subtopics: [
+      "Production Across Countries",
+      "Interlinking Production Across Countries",
+      "Foreign Trade and Integration of Markets",
+      "What is Globalisation",
+      "Factors that Have Enabled Globalisation",
+      "World Trade Organisation",
+      "Impact of Globalisation in India",
+      "The Struggle for a Fair Globalisation",
+    ],
+  },
+
+  c10EcoConsumerRights: {
+    id: "c10EcoConsumerRights",
+    chapterName: "Consumer Rights",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Economics",
+    sourceFile: "NCERT_10_Economics__ConsumerRights.pdf",
+    pdf: cls10SS("Economics", "05. CONSUMER RIGHTS.pdf"),
+    chapterNo: 5,
+    note: "NCERT (CBSE Class 10) \u2014 Consumer Rights (Chapter 5, Understanding Economic Development)",
+    subtopics: [
+      "The Consumer in the Marketplace",
+      "Consumer Movement",
+      "Consumer Rights",
+      "Taking the Consumer Movement Forward",
+    ],
+  },
+
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
