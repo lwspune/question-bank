@@ -1,0 +1,51 @@
+name: Send due-queue nudges
+
+# Mail students whose mock mistakes are waiting in /drill. ENGAGEMENT_SPEC.md C2.
+#
+# CONTENT-LED, BY RULE. The email names the chapters and the count ("3
+# Trigonometry questions are waiting"), never the absence. The sibling English
+# AI Tutor measured "your practice is waiting" as reading like a guilt trip
+# after a productive day; a nudge with nothing due is exactly that, so the
+# selector refuses to send one.
+#
+# 07:00 UTC IS 12:30 IST. Peak recorded student activity is the 13:00 IST
+# hour, so the message lands just before the time they already study, rather
+# than at night when the mock report goes out. GitHub's scheduler queues under
+# load, so treat it as "around 12:30".
+#
+# ONE A DAY AT MOST is a property of the TABLE: the dedupe key carries the IST
+# calendar day and email_sends.dedupe_key is UNIQUE, so a re-run cannot mail
+# anyone twice. The three-day gap between nudges and the 24-hour quiet window
+# after a drill are policy in src/lib/email/dueNudge.ts.
+#
+# --apply lives HERE and nowhere else, so `npm run email:due-nudge` by hand
+# stays a dry run. --limit caps the blast radius: the first run has every
+# eligible student in the pool at once.
+
+on:
+  schedule:
+    - cron: "0 7 * * *"
+  workflow_dispatch: # run on demand from the Actions tab
+
+jobs:
+  nudge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # MUST match ci.yml and package.json engines (">=22").
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Mail due-queue nudges
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+        run: npm run email:due-nudge -- --apply --limit=200
