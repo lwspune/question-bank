@@ -294,15 +294,15 @@ export const CORNERSTONE_STRAND: StrategyStrand = {
 export const QUICKWIN_STRAND: StrategyStrand = {
   id: "quickwin",
   label:
-    "Quick-Win — Probability Distribution · Mathematical Logic · Binomial Distribution · Linear Programming · Straight Line (355 q · 16% of bank)",
-  qCount: 355,
+    "Quick-Win — Probability Distribution · Mathematical Logic · Binomial Distribution · Linear Programming · Straight Line (354 q · 16% of bank)",
+  qCount: 354,
   pctOfBank: 16,
   pitch:
-    "Bank these first. Five chapters worth 7.8 questions a paper at an average well below the bank's 38.4% HARD, and the point of doing them first is not that they are worth more — every question on this paper is worth exactly 2 marks — but that they are worth the same for a third of the time. Linear Programming is the cleanest example on the whole exam: 46 questions at 4% HARD, and its Objective Function — Maximisation and Minimisation subtopic has produced 23 questions and NEVER a single HARD one. Marks secured in the first twenty minutes are marks the clock cannot take back later.",
+    "Bank these first. Five chapters worth 7.8 questions a paper at an average well below the bank's 38.4% HARD, and the point of doing them first is not that they are worth more — every question on this paper is worth exactly 2 marks — but that they are worth the same for a third of the time. Linear Programming is the cleanest example on the whole exam: 45 questions at 4% HARD, and its corner-point page has produced 16 questions and NEVER a single HARD one. Marks secured in the first twenty minutes are marks the clock cannot take back later.",
   approach: [
     "Attempt every question from these five chapters on the opening sweep, before you look at a triple product or an integrating factor. Roughly 8 questions, roughly 16 marks, and most of them inside the 1.8-minute budget rather than over it.",
     "Probability Distribution and Binomial Distribution both have shipped teaching notes at /notes/mht-cet-maths (probability-distribution, binomial-distribution). Together they are 175 questions at 20% and 22% HARD — the largest block of cheap marks in the bank.",
-    "Linear Programming is 46 q at 4% HARD across just two subtopics, and one of them has never produced a HARD question. If you are short on time before the exam, this is the highest-certainty chapter you can add.",
+    "Linear Programming is 45 q at 4% HARD across four notes pages (/notes/mht-cet-maths/linear-programming), and three of them have never produced a HARD question. If you are short on time before the exam, this is the highest-certainty chapter you can add.",
     "Mathematical Logic is 88 q at 31% HARD, and the HARD is concentrated in one small subtopic: Switching Circuits, 12 q at 67%. Everything else is well below the chapter average — Negation of Statements and Quantifiers (14 q, 14%), Finding Truth Values of Component Statements (16 q, 19%), Converse, Inverse, and Contrapositive (17 q, 24%) — and all of it is mechanical once you have drilled the forms.",
     "One chapter outside this strand belongs in the same habit: Sets, Relations and Functions is 40 q at 13% HARD — genuinely cheap marks — but only 0.71 q/paper on recent shifts, which is why it has no playbook. Its four notes pages are at /notes/mht-cet-maths/sets-relations-and-functions; drill it with the tail chapters below, and answer it on the opening sweep when it appears.",
   ],
@@ -359,17 +359,17 @@ export const QUICKWIN_STRAND: StrategyStrand = {
     },
     {
       chapter: "Linear Programming",
-      qCount: 46,
+      qCount: 45,
       pctHard: 4,
       posture: "bank-first",
       mustDrill: [
-        "Objective Function — Maximisation and Minimisation",
-        "Feasible Region — Identification, Constraints, Classification",
+        "Corner-Point Method — Maximum and Minimum of the Objective Function",
+        "Feasible Region — Half-Plane Tests, Bounded, Unbounded and Empty",
       ],
-      expectedYieldPerPaper: "1.00 q/paper · 2 marks",
+      expectedYieldPerPaper: "0.98 q/paper · 2 marks",
       studyHours: 3,
       summary:
-        "46 q · 4% HARD · the cheapest chapter in the bank by some margin. Objective Function — Maximisation and Minimisation is 23 questions and has never produced a HARD one; Feasible Region is 23 questions at 9%. Three hours of drilling buys a question a paper at near-certainty.",
+        "45 q · 4% HARD · the cheapest chapter in the bank by some margin. The corner-point page is 16 questions and has never produced a HARD one; the feasible-region page is 13 at 0%; both HARD questions sit on the 9-question reading-constraints-off-a-figure page. Three hours of drilling buys a question a paper at near-certainty.",
     },
     {
       chapter: "Straight Line",
@@ -605,7 +605,7 @@ export const TAIL_CHAPTERS: TailChapter[] = [
     qPerPaper: 0.46,
     pctHard: 9,
     status: "dropped",
-    note: "DROPPED after 2024. It ran 1.0 question per paper across 29 shifts in 2023-24 and then scored ZERO across all 14 papers of 2025. At 9% HARD it used to be one of the cheapest chapters on the exam, which is exactly why it is a trap now: it is pleasant to revise and worth nothing. Do not spend hours here.",
+    note: "DROPPED after 2024. It ran 1.0 question per paper across 29 shifts in 2023-24 and then scored ZERO across all 14 papers of 2025. At 9% HARD it used to be one of the cheapest chapters on the exam, which is exactly why it is a trap now: it is pleasant to revise and worth nothing. Its notes (/notes/mht-cet-maths/measures-of-dispersion) exist as a formula rehearsal for Probability Distribution, not as a paper topic. Do not spend hours here.",
   },
   {
     chapter: "Trigonometry - II",

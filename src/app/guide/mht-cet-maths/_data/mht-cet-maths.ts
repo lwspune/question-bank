@@ -300,12 +300,12 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Linear Programming",
-    qCount: 46,
-    pctTotal: 2.1,
-    qPerPaper: 1.0,
+    qCount: 45,
+    pctTotal: 2.0,
+    qPerPaper: 0.98,
     pctHard: 4,
     focus:
-      "Feasible Region — Identification, Constraints, Classification (23 · 9% HARD), Objective Function — Maximisation and Minimisation (23 · 0%). The lowest %HARD in the bank at 4%, split evenly across two subtopics. One free mark a paper if the method is drilled.",
+      "Corner-Point Method (16 · 0% HARD), Feasible Region (13 · 0%), Reading Constraints Off a Shaded Region (9 · 22%), Formulation and Special Cases (7 · 0%). The lowest %HARD in the bank at 4%, and all of it on the figure page. One free mark a paper if the method is drilled.",
   },
   {
     chapter: "Complex Numbers",
@@ -380,7 +380,7 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     qPerPaper: 0.46,
     pctHard: 9,
     focus:
-      "32 questions lifetime at 9% HARD — the second-lowest %HARD in the bank, and irrelevant, because the chapter is no longer set. See the note.",
+      "32 questions lifetime at 9% HARD — the second-lowest %HARD in the bank, and irrelevant, because the chapter is no longer set. Its three notes pages are a formula rehearsal for Probability Distribution. See the note.",
     status: "dropped",
     note:
       "DROPPED for 2025. Ran 1.0 question per paper across the 29 shifts of 2023-24, then ZERO across all 14 papers of 2025. Its 9% HARD makes it look like a cheap chapter in a lifetime table, which is exactly the trap — do not spend time here.",

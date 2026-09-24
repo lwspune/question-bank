@@ -428,10 +428,12 @@ export const MHT_CET_MATHS: BookDefinition = {
     {
       slug: "linear-programming",
       name: "Linear Programming",
-      // 46 q across 2 subtopics, in descending question count.
+      // 45 q across 4 subtopics, in descending question count (2026-09-25 reshape).
       groupSubtopics: [
-        { name: "Feasible Region — Identification, Constraints, Classification" }, // 23
-        { name: "Objective Function — Maximisation and Minimisation" }, // 23
+        { name: "Corner-Point Method — Maximum and Minimum of the Objective Function" }, // 16
+        { name: "Feasible Region — Half-Plane Tests, Bounded, Unbounded and Empty" }, // 13
+        { name: "Reading Constraints Off a Shaded Region" }, // 9
+        { name: "Formulation and Special Cases — Word Problems and Infinitely Many Optima" }, // 7
       ],
     },
     {
@@ -478,9 +480,11 @@ export const MHT_CET_MATHS: BookDefinition = {
     {
       slug: "measures-of-dispersion",
       name: "Measures of Dispersion",
-      // 32 q across 1 subtopic, in descending question count.
+      // 32 q across 3 subtopics, in descending question count (2026-09-25 reshape).
       groupSubtopics: [
-        { name: "Mean, Variance, Standard Deviation, and Transformations" }, // 32
+        { name: "Standard Series and Missing Observations — First n Naturals, Evens, Primes and Two Unknowns" }, // 13
+        { name: "Shift and Scale — How Adding and Multiplying Change Mean, Variance and SD" }, // 10
+        { name: "Mean and Variance From Sums — Σx, Σx² and Deviations From an Assumed Mean" }, // 9
       ],
     },
     {
