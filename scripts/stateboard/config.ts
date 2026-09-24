@@ -1651,6 +1651,28 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  "secondary-activities-12-geo": {
+    id: "secondary-activities-12-geo",
+    chapterName: "Secondary Economic Activities",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_12_Geography__Secondary_Economic_Activities.pdf",
+    pdf: geo12("5. Secondary Economic Activities.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Secondary Economic Activities (Balbharati Geography textbook)",
+    // The chapter's own order: what a secondary activity is, then the two
+    // families of location factors it separates under the headings "Physical
+    // Factors" and "Economic Factors" (with political and other factors folded
+    // into the latter), then where the industrial regions are, then the several
+    // classifications it gives of industry itself.
+    subtopics: [
+      "Nature of Secondary Economic Activities",
+      "Physical Factors Affecting Location of Industries",
+      "Economic and Other Factors Affecting Location of Industries",
+      "Major Industrial Regions of the World",
+      "Classification of Industries",
+    ],
+  },
+
   "primary-activities-12-geo": {
     id: "primary-activities-12-geo",
     chapterName: "Primary Economic Activities",
