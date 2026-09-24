@@ -3808,7 +3808,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10PolPowerSharing",
     chapterName: "Power-sharing",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Polity",
+    subjectName: "Political Science",
     sourceFile: "NCERT_10_Polity__PowerSharing.pdf",
     pdf: cls10SS("Polity", "01. Power-sharing.pdf"),
     chapterNo: 1,
@@ -3826,7 +3826,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10PolFederalism",
     chapterName: "Federalism",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Polity",
+    subjectName: "Political Science",
     sourceFile: "NCERT_10_Polity__Federalism.pdf",
     pdf: cls10SS("Polity", "02. Federalism.pdf"),
     chapterNo: 2,
@@ -3843,7 +3843,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10PolGenderReligionCaste",
     chapterName: "Gender, Religion and Caste",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Polity",
+    subjectName: "Political Science",
     sourceFile: "NCERT_10_Polity__GenderReligionCaste.pdf",
     pdf: cls10SS("Polity", "03. Gender, Religion, and Caste.pdf"),
     chapterNo: 3,
@@ -3859,7 +3859,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10PolPoliticalParties",
     chapterName: "Political Parties",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Polity",
+    subjectName: "Political Science",
     sourceFile: "NCERT_10_Polity__PoliticalParties.pdf",
     pdf: cls10SS("Polity", "04. Political Parties.pdf"),
     chapterNo: 4,
@@ -3878,7 +3878,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10PolOutcomesDemocracy",
     chapterName: "Outcomes of Democracy",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Polity",
+    subjectName: "Political Science",
     sourceFile: "NCERT_10_Polity__OutcomesDemocracy.pdf",
     pdf: cls10SS("Polity", "05. Outcomes of Democracy.pdf"),
     chapterNo: 5,
@@ -3896,9 +3896,13 @@ export const CHAPTERS: Record<string, Chapter> = {
 
   // ── History — "India and the Contemporary World II" ────────────────────────
   // THE ODD ONE. It never prints the word "Exercises": its questions arrive as
-  // TWO separately numbered blocks, `Write in brief` and `Discuss`, on the
-  // closing page — hence the distinct `WB`/`DS` ref prefixes, since a single
-  // `Ex` prefix would collide and lose a question at merge.
+  // TWO numbered blocks, `Write in brief` and `Discuss`, on the closing page —
+  // hence the distinct `WB`/`DS` ref prefixes.
+  //
+  // MEASURED, and NOT uniform: Ch.1, 2, 4 and 5 number each block from 1, so a
+  // single `Ex` prefix there would collide and lose a question at merge. Ch.3
+  // numbers them CONTINUOUSLY — Write in brief 1-5, Discuss 6-9. Use the
+  // printed numbers; the prefixes carry block identity either way.
   //
   // It also prints `Discuss` as a marginal activity prompt throughout the
   // chapter — Ch.1 has six before the end, and Ch.4's sits at heading size on

@@ -77,7 +77,23 @@ guessed:**
    numbers come through, sub-sections included: `§ 1.1 The Idea of Satyagraha`,
    `§ 3.2 How Participants Saw the Movement`. **Keep the number in the
    citation** — it is part of the anchor, and it makes these the most precise
-   citations available anywhere here.
+   citations available anywhere here. Either spelling resolves: `§ 1.1 …` as you
+   would write it, or `§ 1 1 …` as `--anchors` prints it. (They used not to.
+   Three chapters burned a gate cycle on the dotted form before the parser was
+   fixed to keep a period that sits between digits.)
+
+   **The two blocks do NOT always restart at 1.** Ch.1, 2, 4 and 5 number each
+   block from 1 — which is why they need distinct `WB`/`DS` prefixes — but
+   **Ch.3 numbers them continuously**: `Write in brief` 1–5, `Discuss` 6–9.
+   Use the numbers the book prints; an author who "restarts" Discuss at 1 puts
+   ref numbers in the bank that disagree with the student's copy.
+
+   **History's figures are NOT citable, by design.** It numbers them book-wide
+   (`Fig. 12`), not per chapter (`Fig. 3.2`), so a figure reference here carries
+   no chapter component and `figureTableAnchors` cannot chapter-filter it.
+   Admitting it would be the fail-open the filter exists to prevent. Cite the
+   section that encloses the figure instead — Ch.2's Chauri Chaura fact lives
+   only in a caption and grounds on `§ 2 Differing Strands within the Movement`.
 
 3. **`EXERCISES` is not near the end.** Economics Ch.5 puts it on p13 of 19,
    Ch.1 on p14 of 16 — `ADDITIONAL PROJECT / ACTIVITY` and `APPENDIX` come after
@@ -203,6 +219,20 @@ Rules, each of which has already caught a real mistake:
 1. **`§` then the heading, exactly as the `--anchors` list prints it** (case and
    punctuation are normalised for you, so `Why Non-cooperation?` matches
    `why non cooperation`).
+1a. **A dotted section number is safe.** `§ 2.4 Rinderpest` keeps its period,
+   because a period between digits is part of a number; a period followed by a
+   space still ends the citation, so an explanation is never swallowed. An **en
+   dash inside a heading is also safe** (`§ 4.1 Germany – Can the Army be the
+   Architect of a Nation?`) — only an EM dash terminates.
+
+1b. **The separator is an EM DASH (—) or a semicolon. An ASCII hyphen does not
+   work, and that is deliberate.** A hyphen is a legitimate character *inside*
+   these headings — `Power-sharing`, `Multi-purpose River Projects`,
+   `Non-cooperation`, `Agro-based Industries` — so treating one as a terminator
+   would truncate the very headings it is meant to separate. Using `-` fails
+   every row in the chapter at once (it happened, 12/12), which at least fails
+   loudly rather than silently matching something shorter.
+
 2. **Separate multiple citations with a semicolon — never the word "and".** A
    heading citation runs until an em dash or a semicolon, so
    `§ Land Utilisation and § Land Use Pattern in India` is read as ONE run-on

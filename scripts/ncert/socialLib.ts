@@ -311,7 +311,19 @@ export function headingAnchors(lines: HeadingLine[], bodySize: number): string[]
 // A heading citation runs to an em dash, a semicolon or the end — NOT to the
 // end of the sentence. Authors write "§ Heading — what it says", and swallowing
 // the explanation would make a correct citation unresolvable.
-const SOCIAL_CITE_RE = /§\s*([^—;.\n]+)|\b(Table)\s+(\d+\.\d+)|\bFig(?:ure|\.)?\s*(\d+\.\d+)/g;
+// The heading run is "anything that is not an em dash, semicolon, newline, or a
+// TERMINATING period". A period BETWEEN DIGITS is part of a section number and
+// keeps the run going; a period followed by a space or ending the string still
+// ends it, so a citation cannot swallow the sentence that explains it.
+//
+// This cost a round of debugging on three chapters at once. History is the only
+// book here that numbers its sections, the brief told its authors to keep the
+// number, and the natural spelling — `§ 1.1 The Idea of Satyagraha` — truncated
+// at the first period to the token `1` and dangled. Both forms now resolve: the
+// dotted one a human would write, and the space-separated one `--anchors`
+// prints (headings are normalised, so `1.1` and `1 1` reach the same anchor).
+const SOCIAL_CITE_RE =
+  /§\s*((?:[^—;.\n]|\.(?=\d))+)|\b(Table)\s+(\d+\.\d+)|\bFig(?:ure|\.)?\s*(\d+\.\d+)/g;
 
 /**
  * Anchors cited by a piece of prose, normalised, in order, de-duplicated.

@@ -315,6 +315,43 @@ describe("groundingViolations with the social citation parser", () => {
     expect(figureTableAnchors("TABLE 7.1 SOMETHING", 2)).toEqual([]);
   });
 
+describe("parseSocialCitations — dotted section numbers", () => {
+  // History is the only book in this lane that NUMBERS its sections, and the
+  // brief told its authors to keep the number: "§ 1.1 The Idea of Satyagraha".
+  // That form could not resolve. The heading run excluded ".", so it truncated
+  // to "1" and dangled — and THREE chapter agents independently hit it on their
+  // first sub-section citation before anyone noticed the brief was wrong.
+  //
+  // A period BETWEEN DIGITS is part of a section number. A period followed by a
+  // space, or ending the run, still terminates it — otherwise a citation would
+  // swallow the sentence explaining it, which is what an ASCII hyphen does.
+  // The expectation is the SPACE form because `normaliseHeading` maps every
+  // non-alphanumeric run to a space. That is the point: the dotted spelling a
+  // human writes and the spaced one `--anchors` prints now converge on the
+  // SAME anchor key, so either resolves.
+  it("keeps a dotted section number inside the heading", () => {
+    expect(parseSocialCitations("§ 1.1 The Idea of Satyagraha — why"))
+      .toEqual(["1 1 the idea of satyagraha"]);
+    expect(parseSocialCitations("§ 2.4 Rinderpest, or the Cattle Plague — why"))
+      .toEqual(["2 4 rinderpest or the cattle plague"]);
+  });
+
+  it("accepts the space-separated form too, which is how --anchors prints it", () => {
+    expect(parseSocialCitations("§ 1 1 The Idea of Satyagraha — why"))
+      .toEqual(["1 1 the idea of satyagraha"]);
+  });
+
+  it("STILL stops at a sentence period, so an explanation is not swallowed", () => {
+    expect(parseSocialCitations("§ Major Crops. The chapter lists them."))
+      .toEqual(["major crops"]);
+  });
+
+  it("still stops at an em dash and a semicolon", () => {
+    expect(parseSocialCitations("§ 3.2 How Participants Saw It; § 4.1 Bretton Woods — why"))
+      .toEqual(["3 2 how participants saw it", "4 1 bretton woods"]);
+  });
+});
+
 describe("stitchSmallCaps — the small-caps heading defect", () => {
   // MEASURED, not hypothetical. Geography sets its section heads in SMALL CAPS:
   // 12pt capitals, 8.4pt letters, against a 10.5pt body. PyMuPDF decomposes one
