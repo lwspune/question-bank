@@ -1045,7 +1045,7 @@ function PreviewPane({
           <p className="mb-1 font-sans text-xs font-medium text-muted-foreground">
             Solution
           </p>
-          <KatexRenderer text={solution} />
+          <BlockText text={solution} />
         </div>
       )}
     </div>
