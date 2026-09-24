@@ -499,6 +499,11 @@ import {
   MHTCET_KINETICS_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/chemical-kinetics/_data";
 import {
+  MHTCET_SOLID_STATE_CHAPTER,
+  MHTCET_SOLID_STATE_NOTES,
+  MHTCET_SOLID_STATE_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/solid-state/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1219,6 +1224,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_KINETICS_CHAPTER,
     notes: MHTCET_KINETICS_NOTES,
     slugs: MHTCET_KINETICS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "solid-state",
+    chipLabel: "Solid State notes",
+    chapter: MHTCET_SOLID_STATE_CHAPTER,
+    notes: MHTCET_SOLID_STATE_NOTES,
+    slugs: MHTCET_SOLID_STATE_SLUGS,
   },
   {
     examName: "NDA",
