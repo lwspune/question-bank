@@ -27,11 +27,24 @@ export const metadata: Metadata = {
   robots: { index: false },
 };
 
-export default async function DrillPage() {
+/** A uuid, loosely: enough to keep junk out of a query without a 400 page. */
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+export default async function DrillPage({
+  searchParams,
+}: {
+  searchParams?: { attempt?: string };
+}) {
   const user = await getSessionUser();
   if (!user) redirect("/login?next=/drill");
 
-  const drill = await getOwnDrill();
+  // `?attempt=<id>`: "Fix these mistakes" from a result page narrows the pool
+  // to that sitting's wrong answers (ENGAGEMENT_SPEC.md A1). Anything that is
+  // not a uuid is ignored, not rejected: the page's job is to serve practice.
+  const attemptId =
+    searchParams?.attempt && UUID_RE.test(searchParams.attempt) ? searchParams.attempt : null;
+
+  const drill = await getOwnDrill({ attemptId });
   if (!drill) redirect("/login?next=/drill");
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -45,9 +58,13 @@ export default async function DrillPage() {
             <Target className="h-5 w-5" aria-hidden />
           </span>
           <div className="min-w-0">
-            <h1 className="text-xl font-semibold tracking-tight sm:text-2xl">Fix your mistakes</h1>
-            <p className="text-sm text-muted-foreground">
-              Questions you&apos;ve got wrong before, one at a time.
+            <h1 className="text-xl font-semibold tracking-tight sm:text-2xl">
+              {drill.scope ? "Fix these mistakes" : "Fix your mistakes"}
+            </h1>
+            <p className="truncate text-sm text-muted-foreground">
+              {drill.scope
+                ? `From ${drill.scope.mockTitle}`
+                : "Questions you\u2019ve got wrong before, one at a time."}
             </p>
           </div>
         </header>
@@ -58,13 +75,48 @@ export default async function DrillPage() {
               questions={drill.questions}
               dueTotal={drill.dueTotal}
               supabaseUrl={supabaseUrl}
+              scope={drill.scope}
             />
+          ) : drill.scope ? (
+            <ScopedEmptyState />
           ) : (
             <EmptyState />
           )}
         </div>
       </main>
     </>
+  );
+}
+
+/** The scoped drill has nothing left: every mistake from that paper is fixed
+ *  or resting. The general pool may still have work, so that is the offer. */
+function ScopedEmptyState() {
+  return (
+    <div className="rounded-2xl border bg-card p-6 text-center">
+      <span className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand-accent">
+        <Sparkles className="h-6 w-6" aria-hidden />
+      </span>
+      <p className="mt-3 font-semibold">Nothing left to fix from this paper</p>
+      <p className="mx-auto mt-2 max-w-sm text-sm text-muted-foreground">
+        Every mistake from it is either fixed or resting until its check comes round.
+      </p>
+      <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:justify-center">
+        <Link
+          href="/drill"
+          prefetch={false}
+          className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-brand px-6 text-base font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          <Target className="h-5 w-5" aria-hidden />
+          Fix mistakes from other papers
+        </Link>
+        <Link
+          href="/mock"
+          className="inline-flex h-12 items-center justify-center rounded-xl border px-6 text-base font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          Take a mock test
+        </Link>
+      </div>
+    </div>
   );
 }
 

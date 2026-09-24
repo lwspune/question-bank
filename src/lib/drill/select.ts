@@ -257,3 +257,20 @@ export function attachRefs(
   }
   return out;
 }
+
+/**
+ * Narrow the due pool to the questions the student got wrong in ONE attempt —
+ * the "Fix these mistakes" button on a mock result page.
+ *
+ * NARROWS, NEVER WIDENS. The result page knows which questions were wrong in
+ * this sitting, but whether one is still worth serving is the ladder's call:
+ * a question fixed since (cooling or retired) stays out even though the
+ * attempt lists it. So this is an intersection with the due pool, in the
+ * pool's own order, and nothing outside the pool can enter through it.
+ */
+export function scopeToAttempt(
+  due: readonly DueQuestion[],
+  wrongInAttempt: ReadonlySet<string>
+): DueQuestion[] {
+  return due.filter((q) => wrongInAttempt.has(q.questionId));
+}

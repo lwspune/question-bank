@@ -8,6 +8,9 @@ import BlockText from "@/components/math/BlockText";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { cn } from "@/lib/utils";
 import type { DrillQuestion, DrillVerdict } from "@/lib/drill/query";
+import { invalidatePulse } from "@/lib/viewer/usePulse";
+
+export type DrillScope = { attemptId: string; mockTitle: string; mockSlug: string } | null;
 
 /**
  * The drill runner — ONE QUESTION PER SCREEN, built for a phone first.
@@ -32,10 +35,14 @@ export default function DrillRunner({
   questions,
   dueTotal,
   supabaseUrl,
+  scope = null,
 }: {
   questions: DrillQuestion[];
   dueTotal: number;
   supabaseUrl: string;
+  /** Set when this drill is one attempt's mistakes ("Fix these" from a result
+   *  page). Changes only the end screen's next step and the pool label. */
+  scope?: DrillScope;
 }) {
   const [index, setIndex] = useState(0);
   const [verdicts, setVerdicts] = useState<Record<string, DrillVerdict & { chose: string }>>({});
@@ -63,6 +70,9 @@ export default function DrillRunner({
       }
       const verdict = (await res.json()) as DrillVerdict;
       setVerdicts((prev) => ({ ...prev, [question.id]: { ...verdict, chose: label } }));
+      // The header badge counts this pool; a recorded answer is one of the two
+      // moments it changes, so refresh it now rather than at the next page.
+      invalidatePulse();
     } catch {
       toast.error("Couldn't reach the server. Check your connection.");
     } finally {
@@ -95,6 +105,7 @@ export default function DrillRunner({
         total={questions.length}
         correct={correctCount}
         remaining={Math.max(0, dueTotal - correctCount)}
+        scope={scope}
       />
     );
   }
@@ -109,7 +120,9 @@ export default function DrillRunner({
         <span className="font-medium tabular-nums">
           {index + 1} <span className="text-muted-foreground">of {questions.length}</span>
         </span>
-        <span className="text-xs text-muted-foreground">{dueTotal} to fix in all</span>
+        <span className="text-xs text-muted-foreground">
+          {dueTotal} to fix {scope ? "from this paper" : "in all"}
+        </span>
       </div>
       <div
         className="mt-2 h-1.5 overflow-hidden rounded-full bg-muted"
@@ -273,11 +286,22 @@ function Summary({
   total,
   correct,
   remaining,
+  scope,
 }: {
   total: number;
   correct: number;
   remaining: number;
+  scope: DrillScope;
 }) {
+  // A scoped drill keeps offering this paper's mistakes while any remain, then
+  // hands over to the general pool, which may hold more from other papers.
+  const anotherHref = scope && remaining > 0 ? `/drill?attempt=${scope.attemptId}` : "/drill";
+  const anotherLabel =
+    scope && remaining > 0
+      ? "Another five from this paper"
+      : scope
+        ? "Fix mistakes from other papers"
+        : "Another five";
   return (
     <div className="rounded-2xl border bg-card p-6 text-center">
       <p className="text-sm text-muted-foreground">Drill complete</p>
@@ -293,13 +317,14 @@ function Summary({
       </p>
 
       <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:justify-center">
-        {remaining > 0 && (
+        {(remaining > 0 || scope) && (
           <Link
-            href="/drill"
+            href={anotherHref}
+            prefetch={false}
             className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-brand px-6 text-base font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             <RotateCcw className="h-5 w-5" aria-hidden />
-            Another five
+            {anotherLabel}
           </Link>
         )}
         <Link
@@ -312,7 +337,7 @@ function Summary({
 
       {remaining > 0 && (
         <p className="mt-4 text-xs text-muted-foreground">
-          {remaining} still to fix
+          {remaining} still to fix{scope ? " from this paper" : ""}
         </p>
       )}
     </div>

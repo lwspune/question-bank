@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Check, X, Minus, RotateCcw, Gift } from "lucide-react";
+import { RotateCcw, Target, Timer } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { Button } from "@/components/ui/button";
 import KatexRenderer from "@/components/math/KatexRenderer";
@@ -21,6 +21,8 @@ import MockFeedback from "./MockFeedback";
 import ShareResult from "./ShareResult";
 import WhatsappOptIn from "./WhatsappOptIn";
 import Findings from "./Findings";
+import PulseRefresh from "./PulseRefresh";
+import { buildResultHeadline } from "@/lib/mocks/resultHeadline";
 import { getOwnPerformance } from "@/lib/performance/service";
 import { buildMockReport, type MockReport } from "@/lib/email/mockReport";
 
@@ -69,8 +71,12 @@ export default async function MockResultPage({ params }: { params: Params }) {
   const feedback = await getMockFeedback(db, params.attemptId);
   const report = await loadFindings(params.attemptId);
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-  const pct = summary.maxScore > 0 ? Math.round((summary.score / summary.maxScore) * 100) : 0;
   const multiSection = mock.sections.length > 1;
+  // The headline is about what they ATTEMPTED (lib/mocks/resultHeadline.ts).
+  // It used to print score/max and a percentage of max marks: median 11% on a
+  // paper 27% answered, read as a verdict on the student. See ENGAGEMENT_SPEC.md.
+  const headline = buildResultHeadline(summary);
+  const fixHref = `/drill?attempt=${params.attemptId}`;
 
   return (
     <>
@@ -82,47 +88,90 @@ export default async function MockResultPage({ params }: { params: Params }) {
           <p className="mt-1 text-sm text-amber-600">Time ran out — the test was auto-submitted.</p>
         )}
 
-        {/* Score headline */}
-        <div className="mt-5 rounded-xl border bg-card p-6 text-center">
-          <div className="text-4xl font-bold tabular-nums">
-            {summary.score}
-            <span className="text-xl font-normal text-muted-foreground"> / {summary.maxScore}</span>
-          </div>
-          <div className="mt-1 text-sm text-muted-foreground">{pct}%</div>
-          <div className="mx-auto mt-4 grid max-w-md grid-cols-3 gap-3">
-            <Tally icon={Check} value={summary.correct} label="Correct" tone="text-emerald-600" />
-            <Tally icon={X} value={summary.wrong} label="Wrong" tone="text-red-600" />
-            <Tally icon={Minus} value={summary.skipped} label="Skipped" tone="text-muted-foreground" />
-          </div>
-        </div>
+        <PulseRefresh />
 
-        {multiSection && (
-          <div className="mt-4 grid gap-2 sm:grid-cols-2">
-            {mock.sections.map((s) => {
-              const ss = summary.sectionScores[s.key];
-              if (!ss) return null;
-              return (
-                <div key={s.key} className="flex items-center justify-between rounded-lg border bg-card px-4 py-3 text-sm">
-                  <span className="font-medium">{s.label}</span>
-                  <span className="font-mono tabular-nums text-muted-foreground">
-                    {ss.score} / {ss.maxScore}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-        )}
+        {/* Headline: accuracy on attempted, the unanswered count as its own
+            fact, marks as a secondary line. One card, one primary action. */}
+        <div className="mt-5 rounded-xl border bg-card p-6">
+          {headline.accuracyPct !== null ? (
+            <div className="text-4xl font-bold tabular-nums">
+              {headline.accuracyPct}%
+              <span className="ml-2 text-base font-normal text-muted-foreground">
+                right on what you attempted
+              </span>
+            </div>
+          ) : null}
+          <p className={headline.accuracyPct !== null ? "mt-2 text-sm" : "text-base font-medium"}>
+            {headline.lead}
+          </p>
+          {headline.detail && (
+            <p className="mt-1 text-sm text-muted-foreground">{headline.detail}</p>
+          )}
+          <p className="mt-3 text-sm tabular-nums text-muted-foreground">
+            {summary.score} / {summary.maxScore} marks
+            {headline.attempted > 0 && (
+              <>
+                {" \u00b7 "}
+                {summary.correct} right, {summary.wrong} wrong
+              </>
+            )}
+          </p>
 
-        <div className="mt-5 flex flex-wrap gap-2">
-          <Button asChild variant="brand">
-            <Link href={`/mock/${mock.slug}`}>
-              <RotateCcw className="h-4 w-4" aria-hidden />
-              Retake
-            </Link>
-          </Button>
-          <Button asChild variant="outline">
-            <Link href="/mock">All mock tests</Link>
-          </Button>
+          {multiSection && (
+            <div className="mt-4 grid gap-2 sm:grid-cols-2">
+              {mock.sections.map((s) => {
+                const ss = summary.sectionScores[s.key];
+                if (!ss) return null;
+                return (
+                  <div key={s.key} className="flex items-center justify-between rounded-lg border px-4 py-3 text-sm">
+                    <span className="font-medium">{s.label}</span>
+                    <span className="font-mono tabular-nums text-muted-foreground">
+                      {ss.score} / {ss.maxScore}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {/* The primary action follows the data: something to fix, so the
+              drill on THIS paper's mistakes; nothing wrong, so another mock;
+              nothing attempted, so try again. Retake is never the lead when
+              there is something to fix: 45% of students who sat one mock never
+              sat a second, and the old lead was the same 150 minutes again. */}
+          <div className="mt-5 flex flex-col gap-2 sm:flex-row">
+            {headline.primaryAction === "fix" && (
+              <Button asChild variant="brand" size="lg" className="h-12 rounded-xl text-base">
+                <Link href={fixHref} prefetch={false}>
+                  <Target className="h-5 w-5" aria-hidden />
+                  Fix these mistakes
+                </Link>
+              </Button>
+            )}
+            {headline.primaryAction === "another" && (
+              <Button asChild variant="brand" size="lg" className="h-12 rounded-xl text-base">
+                <Link href="/mock">
+                  <Timer className="h-5 w-5" aria-hidden />
+                  Take another mock
+                </Link>
+              </Button>
+            )}
+            {headline.primaryAction === "retake" ? (
+              <Button asChild variant="brand" size="lg" className="h-12 rounded-xl text-base">
+                <Link href={`/mock/${mock.slug}`}>
+                  <RotateCcw className="h-5 w-5" aria-hidden />
+                  Try again
+                </Link>
+              </Button>
+            ) : (
+              <Button asChild variant="outline" size="lg" className="h-12 rounded-xl text-base">
+                <Link href={`/mock/${mock.slug}`}>
+                  <RotateCcw className="h-4 w-4" aria-hidden />
+                  Retake
+                </Link>
+              </Button>
+            )}
+          </div>
         </div>
 
         {/* The distribution loop: a finished mock is the moment a student has
@@ -136,7 +185,7 @@ export default async function MockResultPage({ params }: { params: Params }) {
           maxScore={summary.maxScore}
         />
 
-        {report && <Findings report={report} />}
+        {report && <Findings report={report} attemptId={params.attemptId} />}
 
         {/* Phase 3 — capture at the high-intent moment */}
         <MockFeedback
@@ -176,14 +225,4 @@ async function loadFindings(attemptId: string): Promise<MockReport | null> {
     console.error("mock result findings failed", e);
     return null;
   }
-}
-
-function Tally({ icon: Icon, value, label, tone }: { icon: typeof Check; value: number; label: string; tone: string }) {
-  return (
-    <div className="rounded-lg border p-2">
-      <Icon className={cn("mx-auto h-4 w-4", tone)} aria-hidden />
-      <div className="mt-1 text-lg font-bold tabular-nums">{value}</div>
-      <div className="text-xs text-muted-foreground">{label}</div>
-    </div>
-  );
 }

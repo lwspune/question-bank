@@ -33,7 +33,7 @@ import { goPracticeHref } from "@/lib/performance/links";
  * how the cohort did, which is the kind of peer comparison the engagement gate
  * is careful about. The cost is that ranking falls back to dwell-then-position.
  */
-export default function Findings({ report }: { report: MockReport }) {
+export default function Findings({ report, attemptId }: { report: MockReport; attemptId: string }) {
   if (!report.hasFindings) return null;
 
   return (
@@ -136,7 +136,10 @@ export default function Findings({ report }: { report: MockReport }) {
           sitting too. */}
       <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center">
         <Link
-          href="/drill"
+          // Scoped to THIS attempt, the same target as the headline button
+          // above, so the two CTAs on the page agree about where "fix" goes.
+          href={`/drill?attempt=${attemptId}`}
+          prefetch={false}
           className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-brand px-5 text-base font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           <Target className="h-5 w-5" aria-hidden />

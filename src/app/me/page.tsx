@@ -25,6 +25,8 @@ import { getLastNpsAt } from "@/lib/feedback/service";
 import { needsNps } from "@/lib/feedback/nps";
 import AttemptsList from "../mock/_components/AttemptsList";
 import FeedbackCards from "./FeedbackCards";
+import WeekStrip from "./WeekStrip";
+import { getOwnWeekly } from "@/lib/goals/service";
 
 export const dynamic = "force-dynamic";
 
@@ -38,11 +40,12 @@ export default async function MePage() {
   if (!user) redirect("/login?next=/me");
 
   const db = createSupabaseServerClient();
-  const [attempts, notesRows, bookmarkIds, lastNpsAt] = await Promise.all([
+  const [attempts, notesRows, bookmarkIds, lastNpsAt, weekly] = await Promise.all([
     getUserAttempts(db, user.id),
     listOwnNotesProgress(db, user.id),
     listBookmarkIds(db, user.id),
     getLastNpsAt(db, user.id),
+    getOwnWeekly(db, user.id),
   ]);
 
   const mocks = summarizeUserMocks(attempts);
@@ -89,6 +92,12 @@ export default async function MePage() {
           <WelcomeHero />
         )}
 
+        {/* This week's sittings against the goal + the due-drill count, as one
+            strip (ENGAGEMENT_SPEC.md §A2–A3). It replaced the count-less
+            DrillCard: the honest due count was too expensive to compute on
+            this page, and now arrives from the shared pulse instead. */}
+        <WeekStrip initialDone={weekly.done} initialGoal={weekly.goal} />
+
         <div className="grid gap-6 lg:grid-cols-3">
           <section className="space-y-4 lg:col-span-2">
             <MockCard mocks={mocks} attempts={attempts} />
@@ -99,7 +108,6 @@ export default async function MePage() {
               bookmarkedCount={notes.bookmarkedCount}
               masteredCount={notes.masteredCount}
             />
-            <DrillCard />
             <SavedCard count={savedCount} />
           </div>
         </div>
@@ -280,32 +288,6 @@ function MockCard({
           </div>
         </div>
       )}
-    </CardShell>
-  );
-}
-
-/**
- * Deliberately carries NO COUNT.
- *
- * "41 to fix" would be the motivating version, and computing it honestly costs
- * this page the drill's whole read — every answer event plus a taxonomy lookup
- * over several hundred ids, to filter out questions that are no longer
- * servable. The cheap version (count the events, skip the filter) can only ever
- * OVERSTATE, and a number a student is shown should not be one we know is
- * approximate. The true count is on /drill itself, one tap away, where it is
- * already being computed.
- */
-function DrillCard() {
-  return (
-    <CardShell
-      icon={<Target className="h-4 w-4" aria-hidden />}
-      title="Fix your mistakes"
-      action={<CardLink href="/drill">Start</CardLink>}
-    >
-      <p className="text-sm text-muted-foreground">
-        Five questions you&apos;ve got wrong before, one at a time. Get one right and it rests
-        before coming back once to check it stuck.
-      </p>
     </CardShell>
   );
 }

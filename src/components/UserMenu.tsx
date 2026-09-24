@@ -7,12 +7,15 @@ import * as Popover from "@radix-ui/react-popover";
 import { BookMarked, Bookmark, CreditCard, FileText, LayoutDashboard, LogOut, PenLine, ShieldCheck, TrendingUp, User, Target } from "lucide-react";
 import { toast } from "sonner";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import type { Pulse } from "@/lib/pulse/cache";
+import { weeklyProgress } from "@/lib/goals/weekly";
 
 export default function UserMenu({
   email,
   role,
   isStaff = false,
   isSuperadmin = false,
+  pulse = null,
 }: {
   email: string;
   // null = signed-in student (no org membership).
@@ -20,8 +23,14 @@ export default function UserMenu({
   /** Holds an org_members row — same source PrimaryNav uses for the Papers tab. */
   isStaff?: boolean;
   isSuperadmin?: boolean;
+  /** Due drill count + this week's sittings (usePulse). Null until resolved,
+   *  and then the badge and the two lines below render; nothing is shown for
+   *  a zero due count, because an empty badge is noise. */
+  pulse?: Pulse | null;
 }) {
   const router = useRouter();
+  const due = pulse?.due ?? 0;
+  const week = pulse ? weeklyProgress(pulse.week.done, pulse.week.goal) : null;
   const [signingOut, setSigningOut] = useState(false);
 
   async function onSignOut() {
@@ -45,10 +54,20 @@ export default function UserMenu({
       <Popover.Trigger asChild>
         <button
           type="button"
-          aria-label="Open user menu"
-          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-input bg-background text-sm font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          aria-label={due > 0 ? `Open user menu — ${due} questions to fix` : "Open user menu"}
+          className="relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-input bg-background text-sm font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           <span aria-hidden>{initial}</span>
+          {due > 0 && (
+            // The due queue, made visible. Capped at 99 so a heavy pool cannot
+            // widen the badge past the avatar.
+            <span
+              aria-hidden
+              className="absolute -right-1 -top-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-brand px-1 text-[10px] font-semibold leading-none text-brand-foreground"
+            >
+              {due > 99 ? "99+" : due}
+            </span>
+          )}
         </button>
       </Popover.Trigger>
       <Popover.Portal>
@@ -64,6 +83,14 @@ export default function UserMenu({
             </p>
             <p className="mt-0.5 text-xs text-muted-foreground">
               {role ?? "Student"}
+              {week && (
+                <>
+                  {" · "}
+                  <span className={week.met ? "text-brand-accent" : undefined}>
+                    This week {week.done} of {week.goal}
+                  </span>
+                </>
+              )}
             </p>
           </div>
           {isSuperadmin && (
@@ -144,6 +171,11 @@ export default function UserMenu({
           >
             <Target className="h-4 w-4" aria-hidden />
             Fix your mistakes
+            {due > 0 && (
+              <span className="ml-auto rounded-full bg-brand/10 px-2 py-0.5 text-xs font-semibold tabular-nums text-brand-accent">
+                {due} due
+              </span>
+            )}
           </Link>
           <Link
             // prefetch off: /performance is a per-user server render behind a

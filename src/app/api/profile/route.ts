@@ -14,6 +14,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { sanitizeProfileDetails } from "@/lib/profile/fields";
 import { validateMobileSubmission } from "@/lib/profile/mobile";
 import { updateOwnProfile, type ProfileUpdate } from "@/lib/profile/service";
+import { sanitizeWeeklyGoal } from "@/lib/goals/weekly";
 
 const BodySchema = z.object({
   targetExams: z.array(z.string()).max(20).optional(),
@@ -25,6 +26,8 @@ const BodySchema = z.object({
   mobile: z.string().max(20).optional(),
   consent: z.boolean().optional(),
   whatsappOptIn: z.boolean().optional(),
+  /** Weekly sittings goal (ENGAGEMENT_SPEC.md §A3): 1..14, or null to clear. */
+  weeklyGoal: z.union([z.number(), z.string(), z.null()]).optional(),
 });
 
 const DETAIL_KEYS = ["targetExams", "stage", "medium", "stream", "city", "goal"] as const;
@@ -66,6 +69,18 @@ export async function PATCH(request: NextRequest) {
   // WhatsApp opt-in (capture-only): true = opt in, false = decline — both stamp
   // the ask-once gate in updateOwnProfile.
   if (body.whatsappOptIn !== undefined) patch.whatsappOptIn = body.whatsappOptIn;
+
+  // Weekly goal: an explicit null clears it; anything that does not sanitize
+  // is rejected rather than silently nulled, because "clear my goal" and "I
+  // typed junk" are different requests.
+  if (body.weeklyGoal !== undefined) {
+    if (body.weeklyGoal === null) patch.weeklyGoal = null;
+    else {
+      const g = sanitizeWeeklyGoal(body.weeklyGoal);
+      if (g === null) return NextResponse.json({ error: "Pick a goal between 1 and 14." }, { status: 400 });
+      patch.weeklyGoal = g;
+    }
+  }
 
   try {
     const db = createSupabaseServerClient();

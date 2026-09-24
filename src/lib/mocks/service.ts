@@ -195,6 +195,8 @@ export async function regradeAttempt(
 ): Promise<{
   questions: { questionId: string; sectionKey: string; grace?: boolean }[];
   verdicts: Record<string, 1 | -1 | 0>;
+  /** Which paper this was — the attempt-scoped drill names it in its header. */
+  mock: { slug: string; title: string };
 }> {
   const attempt = await loadAttemptRow(db, userId, attemptId);
   const mock = await getMockById(db, attempt.mock_id);
@@ -223,6 +225,7 @@ export async function regradeAttempt(
       ...(q.grace ? { grace: true } : {}),
     })),
     verdicts: result.verdicts,
+    mock: { slug: mock.slug, title: mock.title },
   };
 }
 
