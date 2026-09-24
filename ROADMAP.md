@@ -1078,8 +1078,11 @@ day (result headline reframed + attempt-scoped drill · due count on the avatar
 badge and /me · weekly sittings goal, migration 0113). Tranches B and C are
 specified there; the C items each need a decision named in its §5. **Short
 sittings as the default first unit was DECLINED by the user (2026-09-24)** and
-is not to be built. The goal-progress decision below is unchanged and is what
-the spec's C3 points at. Every item must still clear the **principles gate** in
+is not to be built. **B3 (feed the drill from /browse, notes checkpoints and public
+quizzes) was PARKED by the user on 2026-09-24**: too much change to the public reveal
+flow for a second miss source the drill does not yet need. Every other item in the spec
+shipped 2026-09-24. The goal-progress decision below is now RESOLVED (C3 shipped: a
+committed calendar with a per-student override). Every item must still clear the **principles gate** in
 `CLAUDE.md`: no leaderboards, hearts, variable rewards, streak freezes or vanity
 milestones.
 
