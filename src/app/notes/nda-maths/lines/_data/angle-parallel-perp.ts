@@ -15,7 +15,9 @@ export const ANGLE_PARALLEL_PERP_NOTE: SubtopicNote = {
       intuition:
         "The angle between two lines depends only on their slopes. The tangent formula gives the acute angle when you take the absolute value; drop the bars (or take the supplement) for the obtuse one.",
       definition:
-        "For slopes \\(m_1,m_2\\): \\(\\tan\\theta=\\left|\\dfrac{m_1-m_2}{1+m_1 m_2}\\right|\\) gives the **acute** angle; the obtuse angle is its supplement. If \\(1+m_1m_2=0\\) the lines are perpendicular (\\(\\theta=90°\\)). For lines given as \\(a_1x+b_1y+c_1=0\\), use slopes \\(-a_i/b_i\\).",
+        "For slopes \\(m_1,m_2\\): \\(\\tan\\theta=\\left|\\dfrac{m_1-m_2}{1+m_1 m_2}\\right|\\) gives the **acute** angle; the obtuse angle is its supplement. If \\(1+m_1m_2=0\\) the lines are perpendicular (\\(\\theta=90°\\)). For lines given as \\(a_1x+b_1y+c_1=0\\), use slopes \\(-a_i/b_i\\).\n" +
+        "- **Same formula, other forms.** General form \\(lx+my+n=0\\), \\(l'x+m'y+n'=0\\): \\(\\tan\\theta=\\left|\\dfrac{lm'-l'm}{ll'+mm'}\\right|\\) — the option lists print it this way. Normal form \\(x\\cos\\alpha+y\\sin\\alpha=p\\), \\(x\\cos\\beta+y\\sin\\beta=q\\): the angle between the lines is simply \\(|\\alpha-\\beta|\\) (the angle between their normals).\n" +
+        "- **Angle subtended at the origin by two POINTS** \\((m,n)\\) and \\((r,s)\\) — a dot-product question, not a slope one: \\(\\cos\\alpha=\\dfrac{mr+ns}{\\sqrt{(m^2+n^2)(r^2+s^2)}}\\), and \\(\\sin\\alpha=\\dfrac{|ms-nr|}{\\sqrt{(m^2+n^2)(r^2+s^2)}}\\). The planted wrong option swaps the two numerators — \\(mr+ns\\) belongs to the cosine, \\(ms-nr\\) to the sine.",
       formula: {
         label: "Angle between two lines",
         latex: "\\tan\\theta=\\left|\\dfrac{m_1-m_2}{1+m_1 m_2}\\right|",

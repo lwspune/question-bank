@@ -21,7 +21,8 @@ export const ELLIPSE_NOTE: SubtopicNote = {
         "- **Foci:** \\((\\pm c, 0)\\) with \\(c^2 = a^2 - b^2\\); distance between foci \\(= 2c\\).\n" +
         "- **Eccentricity:** \\(e = \\dfrac{c}{a} = \\sqrt{1 - \\dfrac{b^2}{a^2}}\\) (\\(0 < e < 1\\)).\n" +
         "- **Major axis is along the variable with the LARGER denominator.** If \\(b > a\\), swap roles: the major axis is along \\(y\\), foci at \\((0, \\pm c)\\).\n" +
-        "- **Parametric point:** \\((a\\cos\\theta,\\ b\\sin\\theta)\\).",
+        "- **Parametric point:** \\((a\\cos\\theta,\\ b\\sin\\theta)\\) — eliminate \\(\\theta\\) with \\(\\cos^2\\theta+\\sin^2\\theta=1\\) to recover the Cartesian equation, e.g. \\((3\\cos\\theta,\\,5\\sin\\theta)\\) lies on \\(\\tfrac{x^2}{9}+\\tfrac{y^2}{25}=1\\), major axis along \\(y\\).\n" +
+        "- **A right angle at a focus — the perpendicularity test:** two segments from a focus \\(S\\) to points \\(P,Q\\) are perpendicular iff \\(\\vec{SP}\\cdot\\vec{SQ}=0\\) (equivalently the slopes multiply to \\(-1\\)). **Standard result:** if the ends of the minor axis \\((0,\\pm b)\\) subtend \\(90°\\) at a focus \\((ae,0)\\), then \\(a^2e^2-b^2=0\\Rightarrow b=c\\Rightarrow a^2=2b^2\\), so **\\(e=\\tfrac{1}{\\sqrt2}\\)** — two separate PYQs ask for exactly this number. If the ends of the LATUS RECTUM subtend \\(90°\\) at the centre, then \\(\\tfrac{b^2}{a}=c\\), giving \\(e^2+e-1=0\\), \\(e=\\tfrac{\\sqrt5-1}{2}\\).",
       formula: {
         label: "Foci & eccentricity",
         latex: "c^2 = a^2 - b^2, \\qquad e = \\dfrac{c}{a}",
@@ -56,7 +57,8 @@ export const ELLIPSE_NOTE: SubtopicNote = {
         "For any point \\(P\\) on the ellipse with foci \\(F_1, F_2\\):\n" +
         "\\[PF_1 + PF_2 = 2a \\quad (\\text{the major-axis length}).\\]\n" +
         "- This is the locus definition: 'sum of distances from two fixed points is constant'.\n" +
-        "- The **latus rectum** has length \\(\\dfrac{2b^2}{a}\\), with endpoints at \\(\\left(\\pm c, \\pm \\tfrac{b^2}{a}\\right)\\).",
+        "- The **latus rectum** has length \\(\\dfrac{2b^2}{a}\\), with endpoints at \\(\\left(\\pm c, \\pm \\tfrac{b^2}{a}\\right)\\).\n" +
+        "- **Each focal distance on its own:** for \\(P(x_1,y_1)\\) on the ellipse, \\(PF_1=a+ex_1\\) and \\(PF_2=a-ex_1\\) (focus \\(F_1\\) at \\((-c,0)\\), \\(F_2\\) at \\((c,0)\\)) — from the focus–directrix definition, \\(PF=e\\times\\)(distance to the directrix \\(x=\\pm a/e\\)). They sum to \\(2a\\) as they must, and a question that names ONE focus wants this, not the sum: on \\(\\tfrac{x^2}{25}+\\tfrac{y^2}{9}=1\\) (\\(e=\\tfrac45\\)) the point \\((3,\\tfrac{12}5)\\) is \\(5+\\tfrac{12}5=7.4\\) from one focus and \\(2.6\\) from the other.",
       formula: {
         label: "Constant focal sum",
         latex: "PF_1 + PF_2 = 2a, \\qquad \\text{latus rectum} = \\dfrac{2b^2}{a}",

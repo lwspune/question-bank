@@ -313,7 +313,9 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
         "- **One die:** \\(S=\\{1,\\dots,6\\}\\), \\(n(S)=6\\).\n" +
         "- **Two dice:** \\(n(S)=6^2=36\\) ordered pairs; the sum ranges \\(2\\) to \\(12\\) with \\(7\\) the most likely (6 ways).\n" +
         "- **\\(k\\) dice:** \\(n(S)=6^k\\).\n" +
-        "- **Non-standard or loaded die** (faces repeated, or weighted) no longer has equally likely faces — weight each face by its own probability rather than using \\(n(E)/6\\).",
+        "- **Non-standard or loaded die** (faces repeated, or weighted) no longer has equally likely faces — weight each face by its own probability rather than using \\(n(E)/6\\).\n" +
+        "- **Sum of \\(k\\) dice equals \\(n\\) (stars and bars):** the number of ordered \\(k\\)-tuples of POSITIVE integers with \\(a_1+\\dots+a_k = n\\) is \\(\\binom{n-1}{k-1}\\). It counts dice sums directly as long as no die would need to exceed 6 — e.g. three dice summing to 10: \\(\\binom{9}{2} = 36\\) tuples before removing the ones with a face \\(> 6\\) (there are 9: a 7 or 8 paired with two smaller faces), giving \\(27/216 = 1/8\\). For small totals (sum \\(\\le 8\\) on three dice) no removal is needed.\n" +
+        "- **All different / all the same:** \\(k\\) dice show all different faces in \\(6\\cdot5\\cdots(6-k+1)\\) ways, so \\(P(\\text{all different}) = \\dfrac{6\\cdot5\\cdots(6-k+1)}{6^k}\\) (two dice: \\(\\tfrac{30}{36}\\); three: \\(\\tfrac{120}{216}\\)); \\(P(\\text{at least two alike}) = 1 - \\) that. The same product shape counts birthdays, coins and any \"no repeat\" event.",
       formula: {
         label: "Two-dice sample space",
         latex:
@@ -438,7 +440,8 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
       definition:
         "Total arrangements of \\(n\\) distinct objects: \\(n!\\). For two specified objects to be **together**, treat them as one block: that block plus the other \\(n-2\\) objects is \\((n-1)!\\) arrangements, times \\(2!\\) for the block's internal order. " +
         "So \\(P(\\text{two specified together}) = \\dfrac{2\\,(n-1)!}{n!} = \\dfrac{2}{n}\\). " +
-        "With repeated letters, divide \\(n!\\) by the factorial of each repeat count.",
+        "With repeated letters, divide \\(n!\\) by the factorial of each repeat count.\n" +
+        "**The complement — \"no two of them together\" — is the GAP method, not \\(1 - \\tfrac{2}{n}\\) once more than two objects are involved.** Arrange the \\(n\\) unrestricted objects first (\\(n!\\) ways); they create \\(n+1\\) gaps (including both ends); place the \\(r\\) restricted objects in \\(r\\) DIFFERENT gaps: \\(\\binom{n+1}{r}\\,r!\\) ways. So \\(P(\\text{no two of the } r \\text{ adjacent}) = \\dfrac{n!\\,\\binom{n+1}{r}\\,r!}{(n+r)!}\\). For 3 boys and 3 girls with no two girls adjacent: \\(\\dfrac{3!\\,\\binom{4}{3}\\,3!}{6!} = \\dfrac{144}{720} = \\dfrac{1}{5}\\). For exactly two objects, \"not together\" IS \\(1 - \\tfrac{2}{n}\\).",
       formula: {
         label: "Arrangement probability (two together)",
         latex:
@@ -500,7 +503,11 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
       definition:
         "A number chosen at random from \\(\\{1,\\dots,n\\}\\): \\(P = \\dfrac{\\#\\{x \\text{ with the property}\\}}{n}\\). " +
         "When several numbers are chosen together, the denominator becomes \\(\\binom{n}{r}\\). " +
-        "Useful counts: multiples of \\(d\\) in \\(\\{1,\\dots,n\\}\\) number \\(\\lfloor n/d\\rfloor\\); consecutive triples among \\(1,\\dots,N\\) number \\(N-2\\).",
+        "Useful counts: multiples of \\(d\\) in \\(\\{1,\\dots,n\\}\\) number \\(\\lfloor n/d\\rfloor\\); consecutive triples among \\(1,\\dots,N\\) number \\(N-2\\).\n" +
+        "**Divisibility tests** — needed when the numbers are BUILT from digits rather than listed: by 2 (last digit even), by 3 (digit sum divisible by 3), by 4 (last two digits divisible by 4), by 5 (last digit 0 or 5), by 6 (both 2 and 3), by 8 (last three digits), by 9 (digit sum), by 11 (alternating digit sum). A fixed digit set has a fixed digit sum, so \"divisible by 3\" is then all-or-nothing for every arrangement.\n" +
+        "**Calendar counts:** a 31-day month is 4 weeks + 3 days, so it has five of exactly 3 weekdays: \\(P(5 \\text{ Sundays}) = \\tfrac{3}{7}\\); a 30-day month gives \\(\\tfrac{2}{7}\\); a leap-year February (29 days) gives \\(\\tfrac{1}{7}\\); a 28-day February gives 0. A leap year has 52 weeks + 2 days, so \\(P(53 \\text{ Sundays}) = \\tfrac{2}{7}\\); an ordinary year, \\(\\tfrac{1}{7}\\).\n" +
+        "**Units digit of a power** cycles with period 4: \\(7^n\\) ends in \\(7, 9, 3, 1\\) for \\(n \\equiv 1,2,3,0 \\pmod 4\\) (likewise \\(2, 3, 8\\); while \\(4\\) and \\(9\\) have period 2 and \\(0,1,5,6\\) are fixed). \"\\(7^n\\) ends in 1\" has probability \\(\\tfrac14\\) over a full cycle.\n" +
+        "**Geometric and algebraic properties of chosen numbers:** three chosen lengths form a triangle iff the two shorter ones sum to MORE than the longest; \\(x^2 + bx + c = 0\\) has real roots iff \\(b^2 - 4c \\ge 0\\) — enumerate the pairs \\((b,c)\\) that pass.",
       formula: {
         label: "Counting favourable numbers",
         latex:
@@ -557,6 +564,14 @@ export const CLASSICAL_PROBABILITY_COUNTING_NOTE: SubtopicNote = {
     {
       label: "Conditional Probability, Total Probability & Bayes'",
       href: "/notes/nda-maths/probability/conditional-probability-bayes",
+    },
+    {
+      label: "AM, GM & HM of several numbers (Sequence & Series)",
+      href: "/notes/nda-maths/sequence-series/seq-harmonic-means",
+    },
+    {
+      label: "Divisibility tests & arrangements (Permutation & Combination)",
+      href: "/notes/nda-maths/permutation-combination/pc-forming-numbers",
     },
   ],
 };

@@ -28,7 +28,9 @@ export const CROSS_PRODUCT_TRIPLE_PRODUCT_NOTE: SubtopicNote = {
         "- **Scalar:** \\((k\\vec{a})\\times\\vec{b} = k(\\vec{a}\\times\\vec{b})\\)\n" +
         "- **Self:** \\(\\vec{a}\\times\\vec{a} = \\vec{0}\\)\n" +
         "- **Parallel test:** \\(\\vec{a}\\times\\vec{b} = \\vec{0} \\iff \\vec{a}\\,\\|\\,\\vec{b}\\) (or one is zero)\n" +
-        "- **Not associative:** \\((\\vec{a}\\times\\vec{b})\\times\\vec{c} \\neq \\vec{a}\\times(\\vec{b}\\times\\vec{c})\\) in general",
+        "- **Not associative:** \\((\\vec{a}\\times\\vec{b})\\times\\vec{c} \\neq \\vec{a}\\times(\\vec{b}\\times\\vec{c})\\) in general\n" +
+        "- **Basis sums** (compute in components once, then quote): \\(|\\vec{a}\\times\\hat{i}|^2 + |\\vec{a}\\times\\hat{j}|^2 + |\\vec{a}\\times\\hat{k}|^2 = 2|\\vec{a}|^2\\) — each cross product drops one component, so every \\(a_i^2\\) is counted twice; and \\((\\vec{r}\\cdot\\hat{i})(\\vec{r}\\times\\hat{i}) + (\\vec{r}\\cdot\\hat{j})(\\vec{r}\\times\\hat{j}) + (\\vec{r}\\cdot\\hat{k})(\\vec{r}\\times\\hat{k}) = \\vec{0}\\), since it equals \\(\\vec{r}\\times\\vec{r}\\) by distributivity. Their dot-product cousin is \\((\\vec{a}\\cdot\\hat{i})^2+(\\vec{a}\\cdot\\hat{j})^2+(\\vec{a}\\cdot\\hat{k})^2 = |\\vec{a}|^2\\).\n" +
+        "- **Type rules — which expressions even make sense:** a dot product needs two VECTORS and returns a scalar; a cross product needs two vectors and returns a vector. So \\((\\vec{a}\\cdot\\vec{b})\\cdot\\vec{c}\\), \\((\\vec{a}\\cdot\\vec{b})\\times\\vec{c}\\), \\(\\vec{a}\\times(\\vec{b}\\cdot\\vec{c})\\) and \\((\\vec{a}\\cdot\\vec{b})\\cdot(\\vec{c}\\cdot\\vec{d})\\) as a dot are all **meaningless** (a scalar is being dotted or crossed); \\((\\vec{a}\\cdot\\vec{b})\\,\\vec{c}\\) (scalar times vector), \\((\\vec{a}\\times\\vec{b})\\cdot\\vec{c}\\) and \\((\\vec{a}\\times\\vec{b})\\times\\vec{c}\\) are fine. \"How many of these are not defined?\" is answered by counting the scalars fed into a \\(\\cdot\\) or \\(\\times\\).",
       formula: {
         label: "Difference-of-squares-style identity",
         latex:

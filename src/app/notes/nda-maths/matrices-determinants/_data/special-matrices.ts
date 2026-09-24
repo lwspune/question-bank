@@ -116,6 +116,11 @@ export const SPECIAL_MATRICES_NOTE: SubtopicNote = {
             "And for ODD order, \\(\\det A = (-1)^n\\det A = -\\det A\\), forcing \\(\\det A = 0\\). " +
             "Don't assume the determinant is unknown — for odd order it is always 0. (Even order need not be.)",
         },
+        {
+          title: "The cross-product matrix of \\(v\\) kills the outer product \\(vv^T\\)",
+          body:
+            "The \\(3\\times3\\) skew-symmetric matrix \\(P\\) with \\(Px = v\\times x\\) (entries \\(0, -c, b;\\ c, 0, -a;\\ -b, a, 0\\) for \\(v=(a,b,c)\\)) and the symmetric matrix \\(Q = vv^T\\) satisfy \\(PQ = QP = O\\): each column of \\(Q\\) is a multiple of \\(v\\), and \\(v\\times v = 0\\). A statement-check asking whether \\(PQ\\) is zero, symmetric, or equal to \\(QP\\) has all three true.",
+        },
       ],
     },
 

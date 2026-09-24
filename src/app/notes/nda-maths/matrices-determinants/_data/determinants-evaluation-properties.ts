@@ -235,7 +235,8 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
         "If substituting \\(x = c\\) makes two rows/columns identical, \\((x - c)\\) divides the " +
         "determinant (factor theorem). The **Vandermonde** determinant " +
         "\\(\\begin{vmatrix}1&1&1\\\\a&b&c\\\\a^2&b^2&c^2\\end{vmatrix} = (a-b)(b-c)(c-a)\\). Use known " +
-        "factors plus a degree/leading-coefficient check to pin the constant.",
+        "factors plus a degree/leading-coefficient check to pin the constant.\n" +
+        "**Shifted Vandermonde:** if the rows are \\(a,b,c\\) / \\(a^2,b^2,c^2\\) / \\(a^3,b^3,c^3\\), factor \\(a\\), \\(b\\), \\(c\\) out of the three columns first: \\(\\begin{vmatrix}a&b&c\\\\a^2&b^2&c^2\\\\a^3&b^3&c^3\\end{vmatrix} = abc\\,(a-b)(b-c)(c-a)\\). The same trick handles any power shift.",
       formula: {
         label: "Vandermonde (3×3)",
         latex: "\\begin{vmatrix}1&1&1\\\\a&b&c\\\\a^2&b^2&c^2\\end{vmatrix} = (a-b)(b-c)(c-a)",
@@ -279,7 +280,8 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
       definition:
         "\\(\\begin{vmatrix}a&b&c\\\\b&c&a\\\\c&a&b\\end{vmatrix} = -(a^3+b^3+c^3-3abc) = -(a+b+c)(a^2+b^2+c^2-ab-bc-ca)\\). " +
         "It equals 0 iff \\(a+b+c = 0\\) (real case) or \\(a=b=c\\). Recognising the cyclic pattern " +
-        "saves a full expansion.",
+        "saves a full expansion.\n" +
+        "**A related one-off identity** that a determinant question can hide: with \\(x = \\dfrac{a}{b-c}\\), \\(y = \\dfrac{b}{c-a}\\), \\(z = \\dfrac{c}{a-b}\\), one has \\(x + y + z = xyz\\) (equivalently \\(xy + yz + zx = -1\\)). If a determinant in \\(x,y,z\\) expands to \\(xyz - x - y - z\\), it is identically 0.",
       formula: {
         label: "Cyclic determinant",
         latex: "\\begin{vmatrix}a&b&c\\\\b&c&a\\\\c&a&b\\end{vmatrix} = -(a^3+b^3+c^3-3abc)",
@@ -370,6 +372,7 @@ export const DETERMINANTS_EVALUATION_PROPERTIES_NOTE: SubtopicNote = {
         "collapses to 0 — rank \\(< 3\\) forces the rows dependent.\n" +
         "- **Bounded entries:** a third-order determinant with entries all \\(\\pm1\\) lies in a small " +
         "range; the maximum magnitude is 4.\n" +
+        "- **Parity of a \\(\\pm1\\) determinant:** the expansion is a sum of six signed products, each \\(\\pm1\\), so the value is a sum of six odd numbers — always **even** (\\(0, \\pm2, \\pm4\\)). \"Can be odd\" is the planted false statement.\n" +
         "- **Counting determinants** from a fixed set of numbers uses permutations of the placements.",
       authoredExample: {
         prompt: "The element in row \\(i\\), column \\(j\\) of a 3rd-order determinant is \\(2(i+j)\\). Find its value.",

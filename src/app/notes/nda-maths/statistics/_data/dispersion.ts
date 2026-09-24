@@ -187,7 +187,8 @@ export const DISPERSION_NOTE: SubtopicNote = {
         "Multiplying by \\(a\\) stretches all distances by \\(|a|\\), so SD scales by \\(|a|\\) and variance by \\(a^2\\).",
       definition:
         "If \\(Y = aX + b\\) is a linear transformation of \\(X\\), then the variance of \\(Y\\) is \\(a^2\\) times the variance of \\(X\\), " +
-        "and the standard deviation of \\(Y\\) is \\(|a|\\) times the SD of \\(X\\). The shift \\(b\\) has no effect on either.",
+        "and the standard deviation of \\(Y\\) is \\(|a|\\) times the SD of \\(X\\). The shift \\(b\\) has no effect on either.\n" +
+        "The same rule covers every other measure of spread: \\(\\text{Range}(aX+b) = |a|\\,\\text{Range}(X)\\), \\(\\text{MD}(aX+b) = |a|\\,\\text{MD}(X)\\), quartile deviation likewise — shift-invariant, scaled by \\(|a|\\). Only the coefficient of variation behaves differently, because its denominator (the mean) shifts with \\(b\\).",
       formula: {
         label: "Variance and SD under Y = aX + b",
         latex:
@@ -360,7 +361,8 @@ export const DISPERSION_NOTE: SubtopicNote = {
         "Second: among all reference points, the sum of squared deviations is minimised when the reference is the mean (the median minimises absolute deviations; the mean minimises squared deviations).",
       definition:
         "From \\(\\sigma^2 = \\overline{x^2} - \\bar{x}^2\\) follows the identity \\(\\sum x_i^2 = n(\\sigma^2 + \\bar{x}^2)\\). " +
-        "Also, the function \\(f(a) = \\sum (x_i - a)^2\\) is minimised when \\(a = \\bar{x}\\).",
+        "Also, the function \\(f(a) = \\sum (x_i - a)^2\\) is minimised when \\(a = \\bar{x}\\).\n" +
+        "The reason, and a formula in its own right: \\(\\sum (x_i - A)^2 = \\sum (x_i - \\bar x)^2 + n(\\bar x - A)^2\\) for ANY reference \\(A\\) (the cross term vanishes because \\(\\sum(x_i - \\bar x) = 0\\)). So a sum of squared deviations about a wrong centre exceeds the one about the mean by exactly \\(n(\\bar x - A)^2\\) — use it to convert \"\\(\\sum(x_i - 50)^2 = 5000\\)\" into a variance without recomputing.",
       formula: {
         label: "Two load-bearing identities",
         latex:

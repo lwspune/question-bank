@@ -15,7 +15,10 @@ export const COMBINATIONS_NOTE: SubtopicNote = {
       intuition:
         "A combination counts groups, not orders. Choosing \\(r\\) from \\(n\\) is \\(^nC_r\\); the number of subsets of an \\(n\\)-set is \\(2^n\\). Fixing compulsory members just reduces the pool and the number to choose.",
       definition:
-        "Choose \\(r\\) of \\(n\\) (order irrelevant): \\(^nC_r\\). **Subsets** of an \\(n\\)-element set: \\(2^n\\). **Compulsory members:** if \\(k\\) must be included, choose the rest: \\(^{n-k}C_{r-k}\\). Probabilities use \\(\\dfrac{\\text{favourable }C}{\\text{total }C}\\).",
+        "Choose \\(r\\) of \\(n\\) (order irrelevant): \\(^nC_r\\). **Subsets** of an \\(n\\)-element set: \\(2^n\\). **Compulsory members:** if \\(k\\) must be included, choose the rest: \\(^{n-k}C_{r-k}\\). Probabilities use \\(\\dfrac{\\text{favourable }C}{\\text{total }C}\\).\n" +
+        "- **Stars and bars (integer solutions):** \\(x_1+\\dots+x_r=n\\) has \\(^{n-1}C_{r-1}\\) solutions in POSITIVE integers and \\(^{n+r-1}C_{r-1}\\) in NON-NEGATIVE integers — \\(x+y+z=5\\) has \\(^4C_2=6\\) positive solutions and \\(^7C_2=21\\) non-negative ones. Confusing the two forms is the recorded common mistake; \"positive\" means the bars sit in the \\(n-1\\) gaps between stars.\n" +
+        "- **Strictly monotone sequences are combinations:** the number of triples \\(x>y>z\\) drawn from a set of 6 values is simply \\(^6C_3=20\\) — pick the set, the order is forced. Likewise \\(x\\ge y\\ge z\\) with repeats allowed is stars-and-bars.\n" +
+        "- **Halving by symmetry:** for a set of \\(2n+1\\) elements, subsets of size \\(\\le n\\) pair off with their complements of size \\(\\ge n+1\\), so exactly HALF the \\(2^{2n+1}\\) subsets, i.e. \\(2^{2n}\\), have at most \\(n\\) elements — no sum of binomial coefficients needed.",
       authoredExample: {
         prompt: "In how many ways can a committee of 3 be chosen from 8 people?",
         steps: [
@@ -53,7 +56,8 @@ export const COMBINATIONS_NOTE: SubtopicNote = {
       intuition:
         "When a selection must satisfy 'at least one of X', it's almost always faster to count the complement (total minus the forbidden 'none') than to sum cases. Genuinely multi-part constraints split into disjoint cases that add.",
       definition:
-        "**At-least-one:** \\(\\text{total}-\\text{none}\\). **At-most \\(k\\):** sum \\(^nC_0+\\cdots+^nC_k\\). **Cases:** when the constraint forces distinct sub-situations (e.g. 'choose 3 from 4 women + 3 men with a balance rule'), count each disjoint case and add. Watch for over-/under-counting at the boundaries.",
+        "**At-least-one:** \\(\\text{total}-\\text{none}\\). **At-most \\(k\\):** sum \\(^nC_0+\\cdots+^nC_k\\). **Cases:** when the constraint forces distinct sub-situations (e.g. 'choose 3 from 4 women + 3 men with a balance rule'), count each disjoint case and add. Watch for over-/under-counting at the boundaries.\n" +
+        "**Factorising a number into \\(k\\) factors:** if \\(N=p_1p_2\\cdots p_m\\) is a product of \\(m\\) DISTINCT primes, each prime goes to one of \\(k\\) factors — \\(k^m\\) ORDERED factorisations (factors may be 1); divide by \\(k!\\) for unordered ones once ties (repeated factors) are removed. E.g. \\(30=2\\cdot3\\cdot5\\) as an unordered product of two factors \\(>1\\): \\(\\tfrac{2^3-2}{2}=3\\) ways (\\(2\\cdot15\\), \\(3\\cdot10\\), \\(5\\cdot6\\)).",
       authoredExample: {
         prompt: "From 6 programmers and 4 typists, choose 5 with at least one typist. How many ways?",
         steps: [

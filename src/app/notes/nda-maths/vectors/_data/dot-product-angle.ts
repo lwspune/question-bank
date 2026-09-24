@@ -155,7 +155,8 @@ export const DOT_PRODUCT_ANGLE_NOTE: SubtopicNote = {
         "For non-zero \\(\\vec{a}, \\vec{b}\\) at angle \\(\\theta\\) (\\(0 \\leq \\theta \\leq \\pi\\)): " +
         "\\(\\vec{a}\\cdot\\vec{b} = |\\vec{a}|\\,|\\vec{b}|\\cos\\theta\\), hence " +
         "\\(\\cos\\theta = \\dfrac{\\vec{a}\\cdot\\vec{b}}{|\\vec{a}|\\,|\\vec{b}|}\\). " +
-        "Useful corollary: \\(\\sin^2(\\theta/2) = \\dfrac{1-\\cos\\theta}{2} = \\dfrac{|\\vec{a}-\\vec{b}|^2}{4|\\vec{a}||\\vec{b}|}\\) when \\(\\vec{a}, \\vec{b}\\) are unit vectors.",
+        "Useful corollary: \\(\\sin^2(\\theta/2) = \\dfrac{1-\\cos\\theta}{2} = \\dfrac{|\\vec{a}-\\vec{b}|^2}{4|\\vec{a}||\\vec{b}|}\\) when \\(\\vec{a}, \\vec{b}\\) are unit vectors. " +
+        "The angle with an AXIS does not care about the axis vector's length: the angle between \\(\\vec{a}\\) and \\(2\\hat{i}\\) (or \\(-5\\hat{i}\\), up to supplement) is the same as with \\(\\hat{i}\\), \\(\\cos\\alpha = a_1/|\\vec{a}|\\) — the direction cosine. Scale factors cancel in the ratio, so never carry the 2 into the arithmetic.",
       formula: {
         label: "Angle from dot product",
         latex:

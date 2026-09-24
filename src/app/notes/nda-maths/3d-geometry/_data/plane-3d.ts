@@ -167,7 +167,8 @@ export const PLANE_3D_NOTE: SubtopicNote = {
       definition:
         "Distance from \\((x_1,y_1,z_1)\\) to \\(ax+by+cz+d=0\\) is the formula below. For parallel planes " +
         "\\(ax+by+cz+d_1 = 0\\) and \\(ax+by+cz+d_2 = 0\\) (SAME coefficients), the distance is " +
-        "\\(\\frac{|d_1-d_2|}{\\sqrt{a^2+b^2+c^2}}\\) — scale one plane first so the normals match.",
+        "\\(\\frac{|d_1-d_2|}{\\sqrt{a^2+b^2+c^2}}\\) — scale one plane first so the normals match.\n" +
+        "**Image (reflection) of a point in a plane:** find the foot \\(F\\) of the perpendicular, then the image is \\(P' = 2F - P\\) — the foot is the MIDPOINT of \\(P\\) and \\(P'\\). In one step: \\(P' = P - 2\\,\\dfrac{ax_1+by_1+cz_1+d}{a^2+b^2+c^2}\\,(a,b,c)\\); the foot is the same expression with the factor \\(1\\) instead of \\(2\\). Reporting \\(F\\) when the question asks for the image is the standard slip — the same doubling the 2D Lines chapter uses.",
       formula: {
         label: "Distance from a point to a plane",
         latex: "\\text{distance} = \\frac{|a x_1 + b y_1 + c z_1 + d|}{\\sqrt{a^2 + b^2 + c^2}}",

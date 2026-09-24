@@ -96,6 +96,7 @@ export const COMPUTING_PROBABILITIES_NOTE: SubtopicNote = {
         "- **Odds phrasing** ('heads is thrice as likely as tails'): the parts are \\(3 : 1\\), so \\(p = \\tfrac{3}{4}\\), \\(q = \\tfrac{1}{4}\\).\n" +
         "- **Rate phrasing** ('one in five ships is sunk on average'): \\(p(\\text{sunk}) = \\tfrac{1}{5}\\), so \\(p(\\text{safe}) = \\tfrac{4}{5}\\).\n" +
         "- **'k% chance'**: convert straight to a fraction, e.g. \\(20\\% \\to \\tfrac{1}{5}\\).\n" +
+        "- **Equally-likely count** ('a 5 or a 6 on a die', 'a head on a fair coin', 'a red card'): \\(p=\\dfrac{\\text{favourable outcomes}}{\\text{total outcomes}}\\) — \\(\\tfrac26=\\tfrac13\\), \\(\\tfrac12\\), \\(\\tfrac{26}{52}\\). The single trial's probability is classical; the binomial only counts how many of the \\(n\\) trials land there.\n" +
         "Decide which event the question counts (hits? safe arrivals? defectives?) and make THAT the success, then read \\(p\\) off the story.",
       formula: {
         label: "Odds to probability",
@@ -131,7 +132,8 @@ export const COMPUTING_PROBABILITIES_NOTE: SubtopicNote = {
       definition:
         "For \\(X \\sim B(n, p)\\), the probability of exactly \\(k\\) successes is\n" +
         "\\[P(X = k) = \\binom{n}{k} p^{k} q^{\\,n-k}, \\qquad q = 1 - p.\\]\n" +
-        "The three pieces: \\(\\binom{n}{k}\\) counts the orderings, \\(p^k\\) is the \\(k\\) successes, \\(q^{\\,n-k}\\) is the \\(n-k\\) failures. Special cases drop straight out: **all failures** \\(P(X=0) = q^{n}\\) and **all successes** \\(P(X=n) = p^{n}\\).",
+        "The three pieces: \\(\\binom{n}{k}\\) counts the orderings, \\(p^k\\) is the \\(k\\) successes, \\(q^{\\,n-k}\\) is the \\(n-k\\) failures. Special cases drop straight out: **all failures** \\(P(X=0) = q^{n}\\) and **all successes** \\(P(X=n) = p^{n}\\).\n" +
+        "**Evaluating the binomial coefficient** (the chapter's every formula rests on it): \\(\\binom nk=\\dfrac{n!}{k!\\,(n-k)!}=\\dfrac{n(n-1)\\cdots(n-k+1)}{k!}\\), with \\(\\binom nk=\\binom n{n-k}\\), \\(\\binom n0=\\binom nn=1\\), \\(\\binom n1=n\\), \\(\\binom n2=\\tfrac{n(n-1)}{2}\\). Values the PYQs actually use: \\(\\binom42=6\\), \\(\\binom52=\\binom53=10\\), \\(\\binom63=20\\), \\(\\binom62=15\\), \\(\\binom84=70\\), \\(\\binom86=28\\), \\(\\binom{10}{3}=120\\), \\(\\binom{25}{3}=\\tfrac{25\\cdot24\\cdot23}{6}=2300\\).",
       formula: {
         label: "Probability of exactly k successes",
         latex: "P(X = k) = \\binom{n}{k} p^{k} q^{\\,n-k}",
@@ -311,5 +313,9 @@ export const COMPUTING_PROBABILITIES_NOTE: SubtopicNote = {
         },
       ],
     },
+  ],
+  related: [
+    { label: "Factorials and binomial coefficients — computing nCk (Permutation & Combination)", href: "/notes/nda-maths/permutation-combination/pc-factorials-coefficients" },
+    { label: "Classical probability — favourable over total (Probability)", href: "/notes/nda-maths/probability/classical-probability-counting" },
   ],
 };

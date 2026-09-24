@@ -18,7 +18,9 @@ export const CUBE_ROOTS_UNITY_NOTE: SubtopicNote = {
         "\\(\\omega=\\dfrac{-1+i\\sqrt3}{2},\\;\\omega^2=\\dfrac{-1-i\\sqrt3}{2}=\\bar\\omega\\). The two identities:\n" +
         "- **\\(\\omega^3=1\\)** — so \\(\\omega^n=\\omega^{\\,n\\bmod 3}\\) (powers cycle every 3).\n" +
         "- **\\(1+\\omega+\\omega^2=0\\)** — so \\(\\omega+\\omega^2=-1\\) and \\(\\omega^2=-1-\\omega\\).\n" +
-        "Also \\(\\omega\\cdot\\omega^2=1\\) (they are reciprocals/conjugates), and \\(|\\omega|=1\\).",
+        "Also \\(\\omega\\cdot\\omega^2=1\\) (they are reciprocals/conjugates), and \\(|\\omega|=1\\).\n" +
+        "**The \\(-2\\omega\\) collapses** (one step from \\(1+\\omega+\\omega^2=0\\), and the shape of every 'raise to the 100th power' question): \\(1+\\omega-\\omega^2=-2\\omega^2\\), \\(1-\\omega+\\omega^2=-2\\omega\\), \\(-1+\\omega+\\omega^2=-2\\), \\(1+\\omega=-\\omega^2\\), \\(1+\\omega^2=-\\omega\\). So \\((1+\\omega-\\omega^2)^{3n}=(-2\\omega^2)^{3n}=(-2)^{3n}\\), and \\((1-\\omega+\\omega^2)^5+(1+\\omega-\\omega^2)^5=-32(\\omega^5+\\omega^{10})=-32(\\omega^2+\\omega)=32\\).\n" +
+        "**A symmetric-function identity:** with \\(x=a+b\\), \\(y=a\\omega+b\\omega^2\\), \\(z=a\\omega^2+b\\omega\\): \\(x+y+z=0\\), \\(xyz=a^3+b^3\\), \\(xy+yz+zx=-3ab\\), and hence \\(x^2+y^2+z^2=(x+y+z)^2-2(xy+yz+zx)=6ab\\).",
       formula: {
         label: "Cube roots of unity identities",
         latex:
@@ -67,7 +69,9 @@ export const CUBE_ROOTS_UNITY_NOTE: SubtopicNote = {
         "- **Reduce then collapse:** \\(\\omega^n=\\omega^{\\,n\\bmod3}\\), then apply \\(1+\\omega+\\omega^2=0\\).\n" +
         "- **Quadratic roots:** \\(x^2+x+1=0\\Rightarrow x=\\omega,\\omega^2\\); \\(x^2-x+1=0\\Rightarrow x=-\\omega,-\\omega^2\\) (primitive 6th roots).\n" +
         "- **Cube roots of \\(k\\):** the roots of \\(z^3=k\\) are \\(k^{1/3},\\,k^{1/3}\\omega,\\,k^{1/3}\\omega^2\\) — they sum to 0 and form an equilateral triangle.\n" +
-        "- Sums like \\(\\alpha^n+\\beta^n\\) for \\(\\alpha,\\beta\\) cube/6th-roots are a small-case match on \\(n\\bmod 3\\) (or 6).",
+        "- Sums like \\(\\alpha^n+\\beta^n\\) for \\(\\alpha,\\beta\\) cube/6th-roots are a small-case match on \\(n\\bmod 3\\) (or 6).\n" +
+        "- **The homogeneous form:** \\(z_1^2+z_1z_2+z_2^2=0\\) — divide by \\(z_2^2\\) to get \\(t^2+t+1=0\\) with \\(t=z_1/z_2\\), so \\(z_1=\\omega z_2\\) or \\(\\omega^2z_2\\): the two numbers have equal modulus and arguments differing by \\(\\tfrac{2\\pi}3\\) (with 0 they form an equilateral triangle). Likewise \\(z_1^2-z_1z_2+z_2^2=0\\) gives \\(z_1=-\\omega z_2\\) or \\(-\\omega^2 z_2\\), i.e. \\(z_1/z_2=e^{\\pm i\\pi/3}\\).\n" +
+        "- **Coefficients in GP:** if \\(a,b,c\\) are in GP (\\(b^2=ac\\)) the roots of \\(ax^2+bx+c=0\\) satisfy \\(\\dfrac{\\alpha}{\\beta}=\\omega\\) or \\(\\omega^2\\) — the discriminant is \\(b^2-4ac=-3ac\\), and dividing through by \\(c\\) with \\(x=\\sqrt{c/a}\\,t\\) gives \\(t^2+t+1=0\\).",
       authoredExample: {
         prompt: "If \\(x^2+x+1=0\\), find \\(x^{2026}+x^{2027}\\).",
         steps: [

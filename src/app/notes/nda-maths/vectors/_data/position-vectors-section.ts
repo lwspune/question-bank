@@ -361,7 +361,8 @@ export const POSITION_VECTORS_SECTION_NOTE: SubtopicNote = {
         "Points \\(A, B, C\\) with position vectors \\(\\vec{a}, \\vec{b}, \\vec{c}\\) are collinear " +
         "if and only if there exist scalars \\(\\alpha, \\beta, \\gamma\\) (not all zero) with " +
         "\\(\\alpha + \\beta + \\gamma = 0\\) and \\(\\alpha\\vec{a} + \\beta\\vec{b} + \\gamma\\vec{c} = \\vec{0}\\). " +
-        "Equivalently \\(\\vec{c} = \\lambda\\vec{a} + \\mu\\vec{b}\\) with \\(\\lambda + \\mu = 1\\).",
+        "Equivalently \\(\\vec{c} = \\lambda\\vec{a} + \\mu\\vec{b}\\) with \\(\\lambda + \\mu = 1\\).\n" +
+        "**Regular hexagon \\(ABCDEF\\)** (centre \\(O\\), the shape NDA actually asks about): the long diagonals are twice the parallel sides — \\(\\vec{AD} = 2\\,\\vec{BC}\\), \\(\\vec{BE} = 2\\,\\vec{CD}\\), \\(\\vec{CF} = 2\\,\\vec{DE} = -2\\,\\vec{AB}\\); opposite sides are anti-parallel and equal, \\(\\vec{DE} = -\\vec{AB}\\); and \\(\\vec{AO} = \\vec{BC}\\), \\(\\vec{AD} + \\vec{BE} + \\vec{CF} = 4\\,\\vec{AB} + \\dots\\) style sums reduce by writing every vector in terms of \\(\\vec{AB}\\) and \\(\\vec{BC}\\): \\(\\vec{AC} = \\vec{AB}+\\vec{BC}\\), \\(\\vec{AD} = 2\\vec{BC}\\), \\(\\vec{AE} = 2\\vec{BC} - \\vec{AB}\\), \\(\\vec{AF} = \\vec{BC} - \\vec{AB}\\). A regular polygon's vectors from one vertex to all the others sum to \\(n\\,\\vec{AO}\\).",
       formula: {
         label: "Collinearity test",
         latex:

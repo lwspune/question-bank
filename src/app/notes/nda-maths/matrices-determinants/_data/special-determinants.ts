@@ -23,7 +23,8 @@ export const SPECIAL_DETERMINANTS_NOTE: SubtopicNote = {
       definition:
         "Use \\(\\sin^2\\theta + \\cos^2\\theta = 1\\), double-angle, and (for triangle problems) " +
         "\\(A + B + C = \\pi\\). Many such determinants are identically 0 because a trig identity makes " +
-        "rows dependent. Expand only after simplifying with the identity.",
+        "rows dependent. Expand only after simplifying with the identity.\n" +
+        "**Triangle reductions you will need:** from \\(A+B+C=\\pi\\), \\(\\sin(B+C) = \\sin(\\pi - A) = \\sin A\\), \\(\\cos(B+C) = -\\cos A\\), \\(\\tan(B+C) = -\\tan A\\) — the sine keeps its sign, cosine and tangent flip. And the **cosine rule** \\(a^2 = b^2 + c^2 - 2bc\\cos A\\) collapses a determinant whose rows mix sides and cosines (see the Properties of Triangle notes for the rule itself).",
       authoredExample: {
         prompt: "Evaluate \\(\\begin{vmatrix}\\sin\\theta & \\cos\\theta\\\\ -\\cos\\theta & \\sin\\theta\\end{vmatrix}\\).",
         steps: [
@@ -143,7 +144,8 @@ export const SPECIAL_DETERMINANTS_NOTE: SubtopicNote = {
         "**AP/GP rows:** three rows in arithmetic progression satisfy \\(R_1 + R_3 = 2R_2\\) " +
         "(dependent) → determinant 0; GP rows are proportional after a log/ratio step → 0. " +
         "**Determinant as polynomial:** expand to a polynomial in \\(x\\) and equate coefficients, " +
-        "or argue the degree to find a specific coefficient.",
+        "or argue the degree to find a specific coefficient.\n" +
+        "**The zero-polynomial argument:** a polynomial of degree at most 2 that vanishes at THREE distinct values of \\(x\\) is identically zero — every coefficient is 0. So if a determinant that is quadratic in \\(x\\) is zero at three given points, it is zero for ALL \\(x\\), and any \"find the coefficient\" question about it answers 0.",
       authoredExample: {
         prompt: "Evaluate \\(\\begin{vmatrix}1 & 1 & 1\\\\1 & 2 & 3\\\\1 & 4 & 9\\end{vmatrix}\\).",
         steps: [
@@ -170,5 +172,9 @@ export const SPECIAL_DETERMINANTS_NOTE: SubtopicNote = {
       ],
       pyqExampleId: "9fe11390-d5a8-4b07-9e78-f088497a3fff", // 2019 — factorial determinant
     },
+  ],
+  related: [
+    { label: "Sine & cosine rules (Properties of Triangle)", href: "/notes/nda-maths/properties-of-triangle/pt-sine-cosine-rules" },
+    { label: "Compound-angle identities (Trigonometric Identities)", href: "/notes/nda-maths/trigonometric-identities/trig-compound-angle" },
   ],
 };

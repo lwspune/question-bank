@@ -50,7 +50,8 @@ export const FORMING_NUMBERS_NOTE: SubtopicNote = {
         "- **÷2:** units even. **÷5:** units 0 or 5. **÷10:** units 0.\n" +
         "- **÷4:** last two digits form a multiple of 4. **÷8:** last three.\n" +
         "- **÷3 / ÷9:** digit sum divisible by 3 / 9 (independent of order — so a fixed digit set is all-or-nothing).\n" +
-        "- **÷6:** divisible by 2 and 3 together.",
+        "- **÷6:** divisible by 2 and 3 together.\n" +
+        "- **Counting the multiples of \\(d\\) in a RANGE** \\([a,b]\\): \\(\\left\\lfloor\\tfrac bd\\right\\rfloor-\\left\\lfloor\\tfrac{a-1}{d}\\right\\rfloor\\), or \\(\\dfrac{\\text{last}-\\text{first}}{d}+1\\) once the first and last multiples are found — 3-digit multiples of 7 run from 105 to 994: \\(\\tfrac{994-105}{7}+1=128\\).",
       authoredExample: {
         prompt: "How many 3-digit numbers from \\(1,2,3,4,5\\) (no repeat) are divisible by 5?",
         steps: [
@@ -83,7 +84,8 @@ export const FORMING_NUMBERS_NOTE: SubtopicNote = {
       intuition:
         "By symmetry, each digit lands in each position the same number of times. So the sum of all numbers formed is (sum of digits) × (times each appears per place) × (place-value repunit).",
       definition:
-        "Using \\(n\\) distinct digits to form all \\(n\\)-digit numbers: each digit appears in each place \\((n-1)!\\) times. Sum \\(=(n-1)!\\times(\\text{sum of digits})\\times\\underbrace{111\\ldots1}_{n}\\). Adjust the repeat count and place-value string for \\(r\\)-digit selections.",
+        "Using \\(n\\) distinct digits to form all \\(n\\)-digit numbers: each digit appears in each place \\((n-1)!\\) times. Sum \\(=(n-1)!\\times(\\text{sum of digits})\\times\\underbrace{111\\ldots1}_{n}\\). Adjust the repeat count and place-value string for \\(r\\)-digit selections.\n" +
+        "**When 0 is one of the digits** the symmetry breaks in the LEADING place: 0 cannot lead, so each non-zero digit appears in the leading place \\((n-1)!\\) times but in every other place only \\((n-1)!-(n-2)!\\) times (the arrangements with 0 leading are removed). Compute the leading-place total and the other places separately, or take the all-digits sum above and subtract the sum of the \\((n-1)\\)-digit numbers formed when 0 leads.",
       formula: {
         label: "Sum of all numbers formed from n distinct digits",
         latex: "\\text{Sum}=(n-1)!\\times(\\text{sum of digits})\\times\\underbrace{111\\ldots1}_{n\\text{ ones}}",

@@ -129,7 +129,8 @@ export const PARTIAL_FRACTIONS_NOTE: SubtopicNote = {
         "\\[p\\cos x + q\\sin x = A\\,(a\\cos x + b\\sin x) + B\\,\\dfrac{d}{dx}(a\\cos x + b\\sin x).\\]\n" +
         "Match the \\(\\cos x\\) and \\(\\sin x\\) coefficients to solve the \\(2\\times 2\\) system for \\(A, B\\). Then\n" +
         "\\[\\int = A\\!\\int 1\\,dx + B\\!\\int \\dfrac{(\\text{denominator})'}{\\text{denominator}}\\,dx = A\\,x + B\\ln|a\\cos x + b\\sin x| + C,\\]\n" +
-        "the second piece being the \\(f'/f\\) log pattern.",
+        "the second piece being the \\(f'/f\\) log pattern.\n" +
+        "**The same \"numerator = combination of the denominator\" move works on SURD denominators:** for \\(\\int\\dfrac{x^2-1}{\\sqrt{x^2+1}}\\,dx\\), write \\(x^2-1=(x^2+1)-2\\), so the integrand is \\(\\sqrt{x^2+1}-\\dfrac{2}{\\sqrt{x^2+1}}\\) — two standard forms, \\(\\int\\sqrt{x^2+a^2}\\,dx=\\tfrac x2\\sqrt{x^2+a^2}+\\tfrac{a^2}{2}\\ln\\big|x+\\sqrt{x^2+a^2}\\big|\\) and \\(\\int\\dfrac{dx}{\\sqrt{x^2+a^2}}=\\ln\\big|x+\\sqrt{x^2+a^2}\\big|\\). In general \\(N(x)=A\\cdot D(x)+(\\text{remainder})\\) with \\(D\\) the expression under the root.",
       formula: {
         label: "Numerator as denom + derivative",
         latex:

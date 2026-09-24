@@ -17,7 +17,8 @@ export const DISTANCE_SECTION_LOCUS_NOTE: SubtopicNote = {
       definition:
         "- **Two points:** \\(\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}\\).\n" +
         "- **Point to line:** distance from \\((x_0,y_0)\\) to \\(ax+by+c=0\\) is \\(\\dfrac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}\\).\n" +
-        "- **Parallel lines** \\(ax+by+c_1=0\\), \\(ax+by+c_2=0\\): \\(\\dfrac{|c_1-c_2|}{\\sqrt{a^2+b^2}}\\) (make the \\(a,b\\) match first).",
+        "- **Parallel lines** \\(ax+by+c_1=0\\), \\(ax+by+c_2=0\\): \\(\\dfrac{|c_1-c_2|}{\\sqrt{a^2+b^2}}\\) (make the \\(a,b\\) match first).\n" +
+        "- **Distance measured PARALLEL to a given direction** (\"the distance from \\(P\\) to the line \\(L\\), measured along a line making angle \\(\\theta\\) with the x-axis\") is NOT the perpendicular distance: it is the length of the segment from \\(P\\) to \\(L\\) along that direction. Parametrise \\(P+t(\\cos\\theta,\\sin\\theta)\\), substitute into \\(L\\), solve for \\(t\\); \\(|t|\\) is the answer, and it equals \\(\\dfrac{|ax_0+by_0+c|}{|a\\cos\\theta+b\\sin\\theta|}\\). The perpendicular distance is its minimum over \\(\\theta\\).",
       formula: {
         label: "Distance formulas",
         latex:

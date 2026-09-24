@@ -56,7 +56,9 @@ export const FACTORIALS_COEFFICIENTS_NOTE: SubtopicNote = {
       intuition:
         "Factorials grow by absorbing every integer up to \\(n\\), so questions exploit their divisibility: \\(n!\\) is divisible by everything \\(\\le n\\), and its trailing zeros count the factors of 5. For a sum of factorials mod \\(k\\), only the small terms survive.",
       definition:
-        "\\(n!=1\\cdot2\\cdots n\\). **Trailing zeros** of \\(n!\\) \\(=\\lfloor n/5\\rfloor+\\lfloor n/25\\rfloor+\\cdots\\) (count factors of 5). **Sum mod \\(k\\):** for \\(n!\\) with \\(n\\) large enough, \\(n!\\equiv 0\\), so \\(\\sum n!\\bmod k\\) depends only on the first few terms (e.g. mod 8, only \\(0!..3!\\) matter).",
+        "\\(n!=1\\cdot2\\cdots n\\). **Trailing zeros** of \\(n!\\) \\(=\\lfloor n/5\\rfloor+\\lfloor n/25\\rfloor+\\cdots\\) (count factors of 5). **Sum mod \\(k\\):** for \\(n!\\) with \\(n\\) large enough, \\(n!\\equiv 0\\), so \\(\\sum n!\\bmod k\\) depends only on the first few terms (e.g. mod 8, only \\(0!..3!\\) matter).\n" +
+        "- **Legendre's formula** is the trailing-zeros sum for ANY prime: the exponent of \\(p\\) in \\(n!\\) is \\(\\sum_{k\\ge1}\\lfloor n/p^k\\rfloor\\). \"The highest power of 5 dividing \\(30!+35!\\)\" is \\(30!(1+31\\cdot32\\cdot33\\cdot34\\cdot35)\\); the bracket is \\(\\equiv1\\pmod5\\), so the answer is the exponent in \\(30!\\): \\(6+1=7\\). For a composite like \\(8=2^3\\), divide the exponent of 2 by 3 and round down.\n" +
+        "- **Wilson's theorem:** for a PRIME \\(p\\), \\((p-1)!\\equiv-1\\pmod p\\), i.e. \\((p-1)!+1\\) is divisible by \\(p\\) (\\(4!+1=25\\) by 5, \\(6!+1=721\\) by 7). It FAILS for composite modulus (\\(5!+1=121\\) is not divisible by 6) — a statement-check built on the composite case.",
       formula: {
         label: "Trailing zeros of n!",
         latex: "Z(n!)=\\left\\lfloor\\dfrac{n}{5}\\right\\rfloor+\\left\\lfloor\\dfrac{n}{25}\\right\\rfloor+\\left\\lfloor\\dfrac{n}{125}\\right\\rfloor+\\cdots",
@@ -101,7 +103,10 @@ export const FACTORIALS_COEFFICIENTS_NOTE: SubtopicNote = {
         "- **Symmetry:** \\(^nC_r=\\,^nC_{n-r}\\); so \\(^nC_x=\\,^nC_y\\Rightarrow x=y\\) or \\(x+y=n\\).\n" +
         "- **Pascal's rule:** \\(^nC_r+\\,^nC_{r-1}=\\,^{n+1}C_r\\) (telescopes sums of consecutive coefficients).\n" +
         "- **P–C link:** \\(^nP_r=\\,^nC_r\\cdot r!\\) (recover \\(r\\) from \\(P/C=r!\\)).\n" +
-        "- **AP of coefficients:** \\(^nC_4,\\,^nC_5,\\,^nC_6\\) in AP gives a quadratic in \\(n\\).",
+        "- **AP of coefficients:** \\(^nC_4,\\,^nC_5,\\,^nC_6\\) in AP gives a quadratic in \\(n\\).\n" +
+        "- **Ratio of consecutive coefficients:** \\(\\dfrac{^nC_{r+1}}{^nC_r}=\\dfrac{n-r}{r+1}\\) — the tool for any inequality in \\(r\\): \\(^{15}C_{r+1}>2\\cdot{}^{15}C_r\\iff\\dfrac{15-r}{r+1}>2\\iff r<\\tfrac{13}{3}\\), so the greatest such \\(r\\) is 4.\n" +
+        "- **Where \\(^nC_r\\) is greatest:** the coefficients rise then fall; the maximum is at \\(r=\\tfrac n2\\) for even \\(n\\), and at BOTH \\(r=\\tfrac{n-1}{2}\\) and \\(r=\\tfrac{n+1}{2}\\) (equal values) for odd \\(n\\). \"Greatest iff \\(n=2r\\)\" is therefore true only for even \\(n\\).\n" +
+        "- **Sum and weighted sum:** \\(\\sum_r{}^nC_r=2^n\\), \\(\\sum_r r\\cdot{}^nC_r=n\\,2^{n-1}\\) (from \\(r\\,^nC_r=n\\,^{n-1}C_{r-1}\\)).",
       formula: {
         label: "Binomial coefficient identities",
         latex: "^nC_r=\\,^nC_{n-r} \\qquad ^nC_r+\\,^nC_{r-1}=\\,^{n+1}C_r \\qquad \\sum_{r=0}^{n}{}^nC_r=2^n \\qquad r\\cdot{}^nC_r=n\\cdot{}^{n-1}C_{r-1}",

@@ -81,7 +81,8 @@ export const HARMONIC_MEANS_NOTE: SubtopicNote = {
         "For positive \\(a, b\\):\n" +
         "- **AM** \\(= \\dfrac{a+b}{2}\\), **GM** \\(= \\sqrt{ab}\\), **HM** \\(= \\dfrac{2ab}{a+b}\\).\n" +
         "- **Ordering:** \\(\\text{AM} \\ge \\text{GM} \\ge \\text{HM}\\), with equality only when \\(a = b\\).\n" +
-        "- **Key identity:** \\(\\text{GM}^2 = \\text{AM} \\times \\text{HM}\\) — so the GM is the geometric mean of the AM and HM.",
+        "- **Key identity:** \\(\\text{GM}^2 = \\text{AM} \\times \\text{HM}\\) — so the GM is the geometric mean of the AM and HM.\n" +
+        "- **From a ratio of means back to the numbers:** if \\(\\text{AM} : \\text{GM} = p : q\\), put \\(t = \\sqrt{a/b}\\) so that \\(\\dfrac{a+b}{2\\sqrt{ab}} = \\dfrac{t^2 + 1}{2t} = \\dfrac pq\\); solve the quadratic \\(q\\,t^2 - 2p\\,t + q = 0\\) for \\(t\\), and \\(a : b = t^2 : 1\\). E.g. \\(\\text{AM}:\\text{GM} = 5:4\\) gives \\(4t^2 - 10t + 4 = 0\\), \\(t = 2\\) (or \\(\\tfrac12\\)), so \\(a : b = 4 : 1\\). The two roots are reciprocals, i.e. the same pair the other way round.",
       formula: {
         label: "The three means and their relation",
         latex: "\\text{AM} = \\frac{a+b}{2},\\quad \\text{GM} = \\sqrt{ab},\\quad \\text{HM} = \\frac{2ab}{a+b}, \\qquad \\text{GM}^2 = \\text{AM}\\cdot\\text{HM}",

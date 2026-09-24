@@ -159,7 +159,9 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
       definition:
         "\\(b_{yx} \\cdot b_{xy} = r^2\\), with \\(0 \\leq r^2 \\leq 1\\). " +
         "Therefore \\(b_{yx} \\cdot b_{xy} \\leq 1\\) always. " +
-        "Also \\(\\text{sign}(b_{yx}) = \\text{sign}(b_{xy}) = \\text{sign}(r)\\) — the two slopes can never have opposite signs.",
+        "Also \\(\\text{sign}(b_{yx}) = \\text{sign}(b_{xy}) = \\text{sign}(r)\\) — the two slopes can never have opposite signs.\n" +
+        "**The coefficients themselves:** \\(b_{yx} = r\\,\\dfrac{\\sigma_y}{\\sigma_x}\\) and \\(b_{xy} = r\\,\\dfrac{\\sigma_x}{\\sigma_y}\\) (multiply them and the SDs cancel to \\(r^2\\)). This is what a \"given \\(\\bar x, \\bar y, \\sigma_x, \\sigma_y, r\\), write the regression equation\" question wants: the line of \\(y\\) on \\(x\\) is \\(y - \\bar y = b_{yx}(x - \\bar x)\\), the line of \\(x\\) on \\(y\\) is \\(x - \\bar x = b_{xy}(y - \\bar y)\\), both through \\((\\bar x, \\bar y)\\).\n" +
+        "**Coefficient of determination:** \\(r^2\\) is the fraction of the variation in \\(y\\) explained by the regression on \\(x\\); \\(1 - r^2\\) is the unexplained fraction. With \\(r = 0.8\\), 64% is explained, 36% is not.",
       formula: {
         label: "Product Identity",
         latex:
@@ -283,7 +285,8 @@ export const REGRESSION_CORRELATION_NOTE: SubtopicNote = {
         "plane with slopes \\(m_1\\) and \\(m_2\\) (read directly from each equation " +
         "after solving for \\(y\\)). The acute angle \\(\\theta\\) between them satisfies " +
         "the standard formula below. When \\(r = \\pm 1\\) the slopes coincide and " +
-        "\\(\\tan\\theta = 0\\); when \\(r = 0\\), \\(1 + m_1 m_2 = 0\\) and the lines are perpendicular.",
+        "\\(\\tan\\theta = 0\\); when \\(r = 0\\), \\(1 + m_1 m_2 = 0\\) and the lines are perpendicular.\n" +
+        "In terms of the statistics, \\(m_1 = b_{yx} = r\\sigma_y/\\sigma_x\\) and \\(m_2 = 1/b_{xy} = \\sigma_y/(r\\sigma_x)\\), which gives the textbook form \\(\\tan\\theta = \\dfrac{1-r^2}{|r|}\\cdot\\dfrac{\\sigma_x\\sigma_y}{\\sigma_x^2+\\sigma_y^2}\\). If a question hands you the angle as a multiple (\"the lines make an angle \\(3\\theta\\)\"), the triple-angle formula \\(\\tan 3\\theta = \\dfrac{3t - t^3}{1 - 3t^2}\\) with \\(t = \\tan\\theta\\) converts it.",
       formula: {
         label: "Angle between two lines (applied to regression)",
         latex: "\\tan\\theta = \\left|\\dfrac{m_1 - m_2}{1 + m_1\\,m_2}\\right|",

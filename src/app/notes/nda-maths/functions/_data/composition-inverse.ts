@@ -131,7 +131,9 @@ export const FUNCTIONS_COMPOSITION_INVERSE_NOTE: SubtopicNote = {
       definition:
         "To find \\(f^{-1}\\): write \\(y=f(x)\\), **solve for \\(x\\)** in terms of \\(y\\), then swap names. " +
         "Domain and range swap: \\(\\text{dom}(f^{-1})=\\text{range}(f)\\). Properties: \\(f^{-1}\\circ f=\\text{id}\\), " +
-        "and the graph of \\(f^{-1}\\) is the reflection of \\(f\\) in \\(y=x\\). Note \\(f^{-1}(x)\\neq\\dfrac{1}{f(x)}\\).",
+        "and the graph of \\(f^{-1}\\) is the reflection of \\(f\\) in \\(y=x\\). Note \\(f^{-1}(x)\\neq\\dfrac{1}{f(x)}\\).\n" +
+        "- **Self-inverse (involution):** if \\(f(f(x))=x\\) for all \\(x\\) then \\(f^{-1}=f\\), and such an \\(f\\) is automatically one-one AND onto (it has an inverse, namely itself). Examples: \\(f(x)=1-x\\), \\(f(x)=\\tfrac1x\\), \\(f(x)=\\tfrac{x+1}{x-1}\\), \\(f(x)=-x\\).\n" +
+        "- **Möbius (linear-fractional) inverse:** \\(y=\\dfrac{ax+b}{cx+d}\\Rightarrow x=\\dfrac{dy-b}{a-cy}\\), so \\(f^{-1}(x)=\\dfrac{dx-b}{-cx+a}\\) — swap \\(a\\leftrightarrow d\\) and negate \\(b,c\\). Its domain excludes \\(x=\\tfrac ac\\), which is exactly the value the original \\(f\\) never reaches (its range excludes \\(\\tfrac ac\\)); \\(f\\) is self-inverse iff \\(a+d=0\\).",
       visualizationSlug: "inverse-reflection-line",
       formula: {
         label: "Inverse of a linear function",

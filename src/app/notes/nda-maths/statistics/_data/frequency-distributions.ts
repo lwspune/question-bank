@@ -78,7 +78,8 @@ export const FREQUENCY_DISTRIBUTIONS_NOTE: SubtopicNote = {
         "A pie chart shows how a whole is split into parts. Each part's sector angle is proportional to its share of the total — and all the sector angles together must add to \\(360^\\circ\\).",
       definition:
         "For a category with frequency \\(f_i\\) and total frequency \\(\\sum f_i = N\\), the sector angle is \\(\\theta_i = \\dfrac{f_i}{N} \\times 360^\\circ\\). " +
-        "Equivalently, the angle is proportional to the frequency, with proportionality constant \\(360/N\\).",
+        "Equivalently, the angle is proportional to the frequency, with proportionality constant \\(360/N\\).\n" +
+        "**Two pie charts for two totals:** to compare them fairly, the AREAS are drawn proportional to the totals, so the RADII are proportional to \\(\\sqrt{\\text{total}}\\): \\(r_1 : r_2 = \\sqrt{N_1} : \\sqrt{N_2}\\). Totals in the ratio \\(4:9\\) need radii \\(2:3\\), not \\(4:9\\).",
       formula: {
         label: "Sector Angle in a Pie Chart",
         latex: "\\theta_i = \\dfrac{f_i}{N} \\times 360^\\circ \\qquad \\sum_i \\theta_i = 360^\\circ",

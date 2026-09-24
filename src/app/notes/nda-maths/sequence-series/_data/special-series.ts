@@ -168,7 +168,8 @@ export const SPECIAL_SERIES_NOTE: SubtopicNote = {
         "A standard case: \\(\\dfrac{1}{k(k+1)} = \\dfrac{1}{k} - \\dfrac{1}{k+1}\\), so the sum is " +
         "\\(1 - \\dfrac{1}{n+1} = \\dfrac{n}{n+1}\\). **Repunit:** \\(\\underbrace{11\\ldots1}_{n} = " +
         "\\dfrac{10^n - 1}{9}\\). **Factor identities:** \\(a^n - b^n\\) is divisible by \\(a - b\\) " +
-        "(all \\(n\\)); \\(a^n + b^n\\) is divisible by \\(a + b\\) for odd \\(n\\).",
+        "(all \\(n\\)); \\(a^n + b^n\\) is divisible by \\(a + b\\) for odd \\(n\\).\n" +
+        "**Two number-pattern cautions the statement-checks are built on:** (1) a formula that is prime for many consecutive \\(n\\) need not be prime for all — Euler's \\(n^2 + n + 41\\) is prime for \\(n = 0, 1, \\dots, 39\\) and composite at \\(n = 40\\) (\\(= 41^2\\)) and \\(n = 41\\); \"\\(n^2+n+41\\) is always prime\" is FALSE. (2) \"Is \\(2m(m+2)\\) ever a perfect square?\" — for a bounded search, note \\(2m(m+2) = 2(m+1)^2 - 2\\) sits strictly between \\((m+1)^2\\) and \\((m+2)^2\\) for \\(m \\ge 2\\) (check \\(m=1\\): 6; \\(m=2\\): 16 \\(=4^2\\) — so exactly one \\(m\\) works). Test small cases before trusting a pattern, and bracket the expression between consecutive squares to stop the search.",
       formula: {
         label: "Telescoping standard sum",
         latex: "\\sum_{k=1}^{n} \\frac{1}{k(k+1)} = 1 - \\frac{1}{n+1} = \\frac{n}{n+1}",

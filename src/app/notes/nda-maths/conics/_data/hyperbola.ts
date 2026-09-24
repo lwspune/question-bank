@@ -58,7 +58,8 @@ export const HYPERBOLA_NOTE: SubtopicNote = {
         "A point given as (a sec θ, b tan θ) is on a hyperbola — recover the standard form using sec²θ − tan²θ = 1. Some hyperbola families have foci that don't move as a parameter changes, because c² stays constant.",
       definition:
         "- **Parametric point:** \\((a\\sec\\theta,\\ b\\tan\\theta)\\) lies on \\(\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} = 1\\) (use \\(\\sec^2\\theta - \\tan^2\\theta = 1\\)). A point like \\((3\\tan\\theta, 2\\sec\\theta)\\) gives a hyperbola opening along \\(y\\).\n" +
-        "- **\\(\\theta\\)-independent foci:** for \\(\\dfrac{x^2}{\\cos^2\\theta} - \\dfrac{y^2}{\\sin^2\\theta} = 1\\), \\(c^2 = \\cos^2\\theta + \\sin^2\\theta = 1\\), so the foci are \\((\\pm 1, 0)\\) regardless of \\(\\theta\\), while \\(e = \\sec\\theta\\).",
+        "- **\\(\\theta\\)-independent foci:** for \\(\\dfrac{x^2}{\\cos^2\\theta} - \\dfrac{y^2}{\\sin^2\\theta} = 1\\), \\(c^2 = \\cos^2\\theta + \\sin^2\\theta = 1\\), so the foci are \\((\\pm 1, 0)\\) regardless of \\(\\theta\\), while \\(e = \\sec\\theta\\).\n" +
+        "- **All three Pythagorean identities are in play here, not just one:** \\(\\sec^2\\theta-\\tan^2\\theta=1\\) (the parametric point), \\(\\csc^2\\theta-\\cot^2\\theta=1\\) (a point \\((a\\csc\\theta,\\,b\\cot\\theta)\\) is on the same hyperbola), and \\(\\sin^2\\theta+\\cos^2\\theta=1\\) (an ellipse). Products like \\(\\cot\\theta\\csc\\theta\\) collapse via \\(\\csc^2-\\cot^2=1\\) when a chord length is asked.",
       formula: {
         label: "Parametric identity",
         latex: "\\sec^2\\theta - \\tan^2\\theta = 1",

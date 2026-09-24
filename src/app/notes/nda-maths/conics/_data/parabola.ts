@@ -22,7 +22,8 @@ export const PARABOLA_NOTE: SubtopicNote = {
         "- \\(y^2 = -4ax\\): opens **left**, focus \\((-a,0)\\), directrix \\(x=a\\).\n" +
         "- \\(x^2 = 4ay\\): opens **up**, focus \\((0,a)\\), directrix \\(y=-a\\).\n" +
         "- \\(x^2 = -4ay\\): opens **down**, focus \\((0,-a)\\), directrix \\(y=a\\).\n" +
-        "The squared variable names the axis; the sign of the linear term gives the direction. From a focus and directrix, the vertex is their midpoint.",
+        "The squared variable names the axis; the sign of the linear term gives the direction. From a focus and directrix, the vertex is their midpoint.\n" +
+        "**A parabola described by its slope:** \"the tangent at every point has slope \\(\\dfrac{2y}{x}\\)\" is the separable differential equation \\(\\dfrac{dy}{dx}=\\dfrac{2y}{x}\\Rightarrow\\dfrac{dy}{y}=\\dfrac{2\\,dx}{x}\\Rightarrow\\ln y=2\\ln x+\\ln c\\Rightarrow y=cx^2\\) — the family of parabolas \\(x^2=4ay\\) with vertex at the origin. Likewise \\(\\dfrac{dy}{dx}=\\dfrac{y}{2x}\\) gives \\(y^2=cx\\). (Separation of variables is in the Differential Equations notes.)",
       formula: {
         label: "Standard parabola",
         latex: "y^2 = 4ax: \\ \\text{focus } (a,0), \\ \\text{directrix } x = -a",
@@ -126,7 +127,9 @@ export const PARABOLA_NOTE: SubtopicNote = {
       definition:
         "- **Tangent of slope \\(m\\)** to \\(y^2 = 4ax\\): \\(y = mx + \\dfrac{a}{m}\\) (touch point \\(\\left(\\tfrac{a}{m^2}, \\tfrac{2a}{m}\\right)\\)). A tangent inclined at angle \\(\\theta\\) has \\(m=\\tan\\theta\\).\n" +
         "- **Chord through the vertex** at angle \\(\\theta\\): substitute \\(y = x\\tan\\theta\\) to find where it meets the curve.\n" +
-        "- **Two parabolas** \\(y^2=4ax\\) and \\(x^2=4ay\\) meet at \\((0,0)\\) and \\((4a,4a)\\), both on the line \\(y=x\\).",
+        "- **Two parabolas** \\(y^2=4ax\\) and \\(x^2=4ay\\) meet at \\((0,0)\\) and \\((4a,4a)\\), both on the line \\(y=x\\).\n" +
+        "- **Length of a chord through the vertex:** the chord at angle \\(\\theta\\) meets \\(y^2=4ax\\) again at \\((4a\\cot^2\\theta,\\,4a\\cot\\theta)\\), so its length is \\(4a\\cot\\theta\\csc\\theta\\) (distance formula plus \\(1+\\cot^2\\theta=\\csc^2\\theta\\)); the focal chord at angle \\(\\theta\\) has length \\(4a\\csc^2\\theta\\).\n" +
+        "- **Equilateral triangle inscribed with one vertex at the vertex of \\(y^2=4ax\\):** by symmetry the other two vertices are mirror images across the axis, so the sides through the vertex make \\(30°\\) with the axis: \\(y=\\pm x\\tan30°=\\pm\\tfrac{x}{\\sqrt3}\\). Substituting, \\(x=12a\\), \\(y=\\pm4\\sqrt3a\\), so the side is \\(8\\sqrt3\\,a\\).",
       formula: {
         label: "Tangent of slope m",
         latex: "y = mx + \\dfrac{a}{m} \\quad (\\text{to } y^2 = 4ax)",

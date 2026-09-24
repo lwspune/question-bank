@@ -18,7 +18,8 @@ export const PRODUCT_SUM_NOTE: SubtopicNote = {
         "- \\(2\\sin A\\cos B=\\sin(A+B)+\\sin(A-B)\\).\n" +
         "- \\(2\\cos A\\sin B=\\sin(A+B)-\\sin(A-B)\\).\n" +
         "- \\(2\\cos A\\cos B=\\cos(A+B)+\\cos(A-B)\\).\n" +
-        "- \\(2\\sin A\\sin B=\\cos(A-B)-\\cos(A+B)\\).",
+        "- \\(2\\sin A\\sin B=\\cos(A-B)-\\cos(A+B)\\).\n" +
+        "- **The difference-of-squares pair** (compound formulas multiplied, not added): \\(\\sin(A+B)\\sin(A-B)=\\sin^2A-\\sin^2B=\\cos^2B-\\cos^2A\\) and \\(\\cos(A+B)\\cos(A-B)=\\cos^2A-\\sin^2B\\). So \\(\\sin^2 75°-\\sin^2 15°=\\sin 90°\\sin 60°=\\tfrac{\\sqrt3}{2}\\) in one step.",
       formula: {
         label: "The four product-to-sum identities",
         latex: "2\\sin A\\cos B=\\sin(A+B)+\\sin(A-B),\\qquad 2\\cos A\\cos B=\\cos(A+B)+\\cos(A-B),\\qquad 2\\cos A\\sin B=\\sin(A+B)-\\sin(A-B),\\qquad 2\\sin A\\sin B=\\cos(A-B)-\\cos(A+B)",
@@ -108,7 +109,8 @@ export const PRODUCT_SUM_NOTE: SubtopicNote = {
       intuition:
         "A chain like cos 10° cos 20° cos 40° collapses by repeatedly using \\(2\\sin\\theta\\cos\\theta=\\sin 2\\theta\\): introduce a sine, and each cosine doubles the angle until the product telescopes.",
       definition:
-        "Multiply and divide by \\(2\\sin(\\text{smallest angle})\\), then apply \\(2\\sin\\theta\\cos\\theta=\\sin 2\\theta\\) repeatedly. General result: \\(\\cos\\theta\\cos 2\\theta\\cos 4\\theta\\cdots\\cos 2^{n-1}\\theta=\\dfrac{\\sin 2^n\\theta}{2^n\\sin\\theta}\\). Triple products like \\(\\sin\\theta\\sin(60°-\\theta)\\sin(60°+\\theta)=\\tfrac14\\sin 3\\theta\\) also appear.",
+        "Multiply and divide by \\(2\\sin(\\text{smallest angle})\\), then apply \\(2\\sin\\theta\\cos\\theta=\\sin 2\\theta\\) repeatedly. General result: \\(\\cos\\theta\\cos 2\\theta\\cos 4\\theta\\cdots\\cos 2^{n-1}\\theta=\\dfrac{\\sin 2^n\\theta}{2^n\\sin\\theta}\\). Triple products like \\(\\sin\\theta\\sin(60°-\\theta)\\sin(60°+\\theta)=\\tfrac14\\sin 3\\theta\\) also appear.\n" +
+        "**Sums in arithmetic angles telescope too**, by product-to-sum with the common difference: \\(\\sum_{k=0}^{n-1}\\sin(a+kd)=\\dfrac{\\sin\\frac{nd}{2}}{\\sin\\frac d2}\\,\\sin\\!\\Big(a+\\frac{(n-1)d}{2}\\Big)\\), and the same prefactor with \\(\\cos\\) for a cosine series. For a symmetric run like \\(\\sin 10°+\\sin 20°+\\dots+\\sin 170°\\) pairing \\(\\sin\\theta=\\sin(180°-\\theta)\\) is faster.",
       authoredExample: {
         prompt: "Evaluate \\(\\cos 20°\\cos 40°\\cos 80°\\).",
         steps: [

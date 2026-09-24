@@ -21,7 +21,8 @@ export const NATURE_OF_ROOTS_NOTE: SubtopicNote = {
         "\\[ax^2 + bx + c = 0, \\quad a \\neq 0.\\]\n" +
         "- \\(a, b, c\\) are the **coefficients** (\\(a\\) the leading coefficient, \\(c\\) the constant term); the condition \\(a \\neq 0\\) is what makes it quadratic rather than linear.\n" +
         "- A **root** (or solution) is a value of \\(x\\) that makes the equation true. Graphically, the real roots are exactly the **x-intercepts** of the parabola \\(y = ax^2 + bx + c\\).\n" +
-        "- A quadratic has **at most two** roots. If \\(\\alpha\\) and \\(\\beta\\) are the roots, the equation factors as \\(a(x-\\alpha)(x-\\beta) = 0\\).",
+        "- A quadratic has **at most two** roots. If \\(\\alpha\\) and \\(\\beta\\) are the roots, the equation factors as \\(a(x-\\alpha)(x-\\beta) = 0\\).\n" +
+        "- **Integer-valued at every integer forces integer coefficients:** if \\(f(x)=x^2+mx+n\\) is an integer for every integer \\(x\\), then \\(f(0)=n\\) is an integer and \\(f(1)-f(0)-1=m\\) is an integer. Test \\(x=0\\), then \\(x=1\\) — two evaluations settle both statements.",
       formula: {
         label: "Standard form",
         latex: "ax^2 + bx + c = 0, \\quad a \\neq 0",
@@ -135,7 +136,7 @@ export const NATURE_OF_ROOTS_NOTE: SubtopicNote = {
         "A recurring NDA trick: set the discriminant to zero and the resulting relation between the coefficients is exactly the condition for them to be in AP, GP, or HP. Recognising the target relation lets you skip pages of algebra.",
       definition:
         "When a question says \"the roots are equal,\" write \\(D = 0\\) and simplify — the answer is usually a progression among the coefficients:\n" +
-        "- **GP test:** \\(a, b, c\\) in GP \\(\\iff b^2 = ac\\). (So \\(ax^2+bx+c=0\\) with \\(a,b,c\\) in GP has \\(D = ac - 4ac = -3ac\\).)\n" +
+        "- **GP test:** \\(a, b, c\\) in GP \\(\\iff b^2 = ac\\). (So \\(ax^2+bx+c=0\\) with \\(a,b,c\\) in GP has \\(D = ac - 4ac = -3ac\\) — non-real roots whenever \\(a,c\\) have the same sign, and then the roots are in the ratio \\(1:\\omega\\), i.e. \\(\\alpha/\\beta=\\omega\\) or \\(\\omega^2\\), because dividing through by \\(c\\) with \\(x=\\sqrt{c/a}\\,t\\) gives \\(t^2+t+1=0\\).)\n" +
         "- **HP test:** \\(a, b, c\\) in HP \\(\\iff \\dfrac{2}{b} = \\dfrac{1}{a} + \\dfrac{1}{c}\\). This is the most-tested outcome — many \"equal roots\" problems collapse to \\(\\frac{1}{a}+\\frac{1}{c}=\\frac{2}{b}\\).\n" +
         "- **AP test:** \\(a, b, c\\) in AP \\(\\iff 2b = a + c\\).",
       formula: {

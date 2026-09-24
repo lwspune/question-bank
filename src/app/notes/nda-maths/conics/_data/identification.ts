@@ -21,7 +21,8 @@ export const IDENTIFICATION_NOTE: SubtopicNote = {
         "- \\(0 < e < 1\\): **ellipse**\n" +
         "- \\(e = 1\\): **parabola**\n" +
         "- \\(e > 1\\): **hyperbola**\n" +
-        "The **latus rectum** is the focal chord perpendicular to the axis; it recurs in every conic's formulas.",
+        "The **latus rectum** is the focal chord perpendicular to the axis; it recurs in every conic's formulas.\n" +
+        "**Coordinate-geometry tools every conic question borrows** (they are not conic facts, but nothing here works without them): the distance formula \\(\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}\\) for a chord or focal length; the **perpendicularity test** — two directions are perpendicular iff their dot product is 0, i.e. slopes multiply to \\(-1\\); the section and midpoint formulas; and solving a quadratic (a parameter like \\(b\\) in \\(b^2+b-2=0\\) is fixed by factorising, with the negative root rejected when it is a length).",
       formula: {
         label: "Focus–directrix definition",
         latex: "\\dfrac{PF}{PM} = e",
@@ -110,5 +111,10 @@ export const IDENTIFICATION_NOTE: SubtopicNote = {
         },
       ],
     },
+  ],
+  related: [
+    { label: "Distance, section & locus (Lines)", href: "/notes/nda-maths/lines/lines-distance-section-locus" },
+    { label: "Perpendicular lines and the angle between lines (Lines)", href: "/notes/nda-maths/lines/lines-angle-parallel-perp" },
+    { label: "Separable differential equations (Differential Equations)", href: "/notes/nda-maths/differential-equations/defeq-solving" },
   ],
 };

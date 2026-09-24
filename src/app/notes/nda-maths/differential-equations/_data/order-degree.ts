@@ -81,7 +81,8 @@ export const ORDER_DEGREE_NOTE: SubtopicNote = {
         "Solutions and what they tell you:\n" +
         "- A **general solution** of an order-\\(n\\) ODE contains exactly \\(n\\) **arbitrary constants**; a **particular solution** fixes them via conditions.\n" +
         "- So the **order = number of independent arbitrary constants** in the family. \\(y=a\\cos x+b\\sin x\\) (two constants) → order 2.\n" +
-        "- An ODE like \\(\\dfrac{d^2y}{dx^2}+k^2y=0\\) has **periodic (SHM)** solutions; \\(\\dfrac{d^2y}{dx^2}-k^2y=0\\) gives exponential growth.",
+        "- An ODE like \\(\\dfrac{d^2y}{dx^2}+k^2y=0\\) has **periodic (SHM)** solutions; \\(\\dfrac{d^2y}{dx^2}-k^2y=0\\) gives exponential growth.\n" +
+        "- **Two members of one solution family never meet** when they differ by an additive constant: \\(y=x^2+c_1\\) and \\(y=x^2+c_2\\) are vertical translates of the same curve, so setting them equal gives \\(c_1=c_2\\), a contradiction — \"how many points of intersection?\" is **none**. (Families where the constant multiplies, like \\(y=cx^2\\), DO share the origin.)",
       authoredExample: {
         prompt: "What is the order of the differential equation whose general solution is \\(y = c_1 e^{2x} + c_2 e^{-3x}\\)?",
         steps: [

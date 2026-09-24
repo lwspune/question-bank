@@ -19,7 +19,8 @@ export const COMPOSITE_EVALUATION_NOTE: SubtopicNote = {
       definition:
         "- **Nested evaluation:** name the inner inverse \\(\\theta = \\csc^{-1}2\\) (so \\(\\theta = \\tfrac{\\pi}{6}\\)), then work outward: \\(\\cot\\theta\\), then \\(\\tan^{-1}(\\cot\\theta)\\).\n" +
         "- **\\(\\sin^{-1}(\\sin x)\\):** equals \\(x\\) only for \\(x \\in [-\\tfrac{\\pi}{2}, \\tfrac{\\pi}{2}]\\). Otherwise use \\(\\sin x = \\sin(\\pi - x)\\) to bring the angle into range (e.g. \\(\\sin^{-1}(\\sin\\tfrac{2\\pi}{3}) = \\tfrac{\\pi}{3}\\)).\n" +
-        "- For \\(\\cot^2(\\sec^{-1}2) + \\tan^2(\\csc^{-1}\\sqrt3)\\)-type sums, evaluate each inverse to a standard angle first.",
+        "- For \\(\\cot^2(\\sec^{-1}2) + \\tan^2(\\csc^{-1}\\sqrt3)\\)-type sums, evaluate each inverse to a standard angle first.\n" +
+        "**The ordinary trigonometry that fires the moment \\(\\theta\\) is named** (the step after \"name the inner angle\" in three PYQs out of every ten here): \\(\\sin^2\\theta+\\cos^2\\theta=1\\) to get the OTHER ratio from the one the inverse hands you (\\(\\theta=\\sin^{-1}\\tfrac35\\Rightarrow\\cos\\theta=\\tfrac45\\), positive because \\(\\theta\\in[-\\tfrac\\pi2,\\tfrac\\pi2]\\)); \\(\\sin(\\alpha+\\beta)=\\sin\\alpha\\cos\\beta+\\cos\\alpha\\sin\\beta\\) and \\(\\cos(\\alpha+\\beta)=\\cos\\alpha\\cos\\beta-\\sin\\alpha\\sin\\beta\\) for \\(\\sin(\\sin^{-1}\\tfrac35+\\cos^{-1}\\tfrac{12}{13})\\)-type sums; \\(\\sin3\\theta=3\\sin\\theta-4\\sin^3\\theta\\) and \\(\\cos3\\theta=4\\cos^3\\theta-3\\cos\\theta\\) for \\(\\sin(3\\sin^{-1}x)\\); and the cotangent forms \\(\\cot2\\theta=\\dfrac{\\cot^2\\theta-1}{2\\cot\\theta}\\), \\(\\cot(A-B)=\\dfrac{\\cot A\\cot B+1}{\\cot B-\\cot A}\\) when a question is posed entirely in \\(\\cot^{-1}\\).",
       formula: {
         label: "Principal-range reduction",
         latex: "\\sin^{-1}(\\sin x) = x \\ \\text{ only if } x \\in \\left[-\\tfrac{\\pi}{2}, \\tfrac{\\pi}{2}\\right]",
@@ -62,7 +63,7 @@ export const COMPOSITE_EVALUATION_NOTE: SubtopicNote = {
       definition:
         "Set \\(\\theta = (\\text{the inner inverse})\\), so its argument gives \\(\\tan\\theta\\) (or \\(\\sin\\theta, \\cos\\theta\\) via a triangle), then apply:\n" +
         "- **Double angle:** \\(\\tan 2\\theta = \\dfrac{2\\tan\\theta}{1 - \\tan^2\\theta}\\), \\(\\sin 2\\theta = 2\\sin\\theta\\cos\\theta\\).\n" +
-        "- **Half angle:** \\(\\tan\\tfrac{\\theta}{2} = \\dfrac{1 - \\cos\\theta}{\\sin\\theta} = \\dfrac{\\sin\\theta}{1+\\cos\\theta}\\).\n" +
+        "- **Half angle:** \\(\\tan\\tfrac{\\theta}{2} = \\dfrac{1 - \\cos\\theta}{\\sin\\theta} = \\dfrac{\\sin\\theta}{1+\\cos\\theta}\\), and squared, \\(\\tan^2\\tfrac\\theta2=\\dfrac{1-\\cos\\theta}{1+\\cos\\theta}\\) — the form to use when the inner inverse gives \\(\\cos\\theta\\) directly (\\(\\theta=\\cos^{-1}x\\Rightarrow\\tan^2\\tfrac\\theta2=\\dfrac{1-x}{1+x}\\)). Also \\(\\cos^2\\tfrac\\theta2=\\dfrac{1+\\cos\\theta}{2}\\), \\(\\sin^2\\tfrac\\theta2=\\dfrac{1-\\cos\\theta}{2}\\).\n" +
         "Useful for \\(\\tan(2\\tan^{-1}x)\\), \\(\\tan\\!\\left(\\tfrac12 \\sec^{-1}t\\right)\\), and \\(\\sqrt{1 + \\sin(2\\cos^{-1}t)}\\).",
       formula: {
         label: "Double-angle tangent",
@@ -98,7 +99,8 @@ export const COMPOSITE_EVALUATION_NOTE: SubtopicNote = {
       intuition:
         "A sum of different inverse functions (sin⁻¹ here, cot⁻¹ there) is messy until you rewrite each as a tan⁻¹ using a right triangle. Once every term is a tan⁻¹, the sum/difference formula combines them in one step.",
       definition:
-        "For each inverse, build the right triangle to read its tangent: e.g. \\(\\sin^{-1}\\tfrac35 \\Rightarrow \\tan = \\tfrac34\\); \\(\\cot^{-1}\\tfrac32 \\Rightarrow \\tan = \\tfrac23\\); \\(\\csc^{-1}\\tfrac{\\sqrt{41}}{4} \\Rightarrow \\tan = \\tfrac45\\). Then combine the resulting \\(\\tan^{-1}\\) terms with the sum/difference formula, and apply the outer function (\\(\\cot\\), \\(\\tan\\), etc.).",
+        "For each inverse, build the right triangle to read its tangent: e.g. \\(\\sin^{-1}\\tfrac35 \\Rightarrow \\tan = \\tfrac34\\); \\(\\cot^{-1}\\tfrac32 \\Rightarrow \\tan = \\tfrac23\\); \\(\\csc^{-1}\\tfrac{\\sqrt{41}}{4} \\Rightarrow \\tan = \\tfrac45\\). Then combine the resulting \\(\\tan^{-1}\\) terms with the sum/difference formula, and apply the outer function (\\(\\cot\\), \\(\\tan\\), etc.).\n" +
+        "**Or convert directly by reciprocals — often shorter than the triangle:** \\(\\sec^{-1}x=\\cos^{-1}\\tfrac1x\\), \\(\\csc^{-1}x=\\sin^{-1}\\tfrac1x\\) (all \\(|x|\\ge1\\)), \\(\\cot^{-1}x=\\tan^{-1}\\tfrac1x\\) (for \\(x>0\\)). So \\(\\sec^{-1}\\tfrac54=\\cos^{-1}\\tfrac45\\), and \\(\\sec^{-1}\\tfrac54+\\sin^{-1}\\tfrac45\\) is a complementary pair \\(=\\tfrac\\pi2\\) at sight; \\(\\csc^{-1}2=\\sin^{-1}\\tfrac12=\\tfrac\\pi6\\).",
       formula: {
         label: "Triangle → tangent",
         latex: "\\sin^{-1}\\tfrac{3}{5} = \\tan^{-1}\\tfrac{3}{4}, \\quad \\cot^{-1}\\tfrac{3}{2} = \\tan^{-1}\\tfrac{2}{3}",
@@ -123,5 +125,10 @@ export const COMPOSITE_EVALUATION_NOTE: SubtopicNote = {
         },
       ],
     },
+  ],
+  related: [
+    { label: "Compound-angle formulas (Trigonometric Identities)", href: "/notes/nda-maths/trigonometric-identities/trig-compound-angle" },
+    { label: "Double, triple & half-angle formulas (Trigonometric Identities)", href: "/notes/nda-maths/trigonometric-identities/trig-multiple-half-angle" },
+    { label: "Vieta's relations — sign of the roots (Quadratic Equations)", href: "/notes/nda-maths/quadratic-equations/qe-vieta-relations" },
   ],
 };

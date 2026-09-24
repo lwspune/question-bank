@@ -187,7 +187,8 @@ export const EQUATION_CENTRE_RADIUS_NOTE: SubtopicNote = {
       definition:
         "A fundamental circle property: **the perpendicular from the centre to a chord bisects the chord** (and, conversely, the line from the centre to a chord's midpoint is perpendicular to the chord).\n" +
         "- **Midpoint of a chord on a line \\(L\\):** drop a perpendicular from the centre \\(C\\) to \\(L\\); the foot of that perpendicular is the midpoint. Build the line through \\(C\\) with slope \\(=-1/(\\text{slope of }L)\\) and intersect it with \\(L\\).\n" +
-        "- **Length of a chord** at perpendicular distance \\(d\\) from the centre: \\(2\\sqrt{r^2 - d^2}\\).",
+        "- **Length of a chord** at perpendicular distance \\(d\\) from the centre: \\(2\\sqrt{r^2 - d^2}\\).\n" +
+        "- **The same construction locates a point of TANGENCY:** the foot of the perpendicular from the centre to a tangent line IS the contact point (distance from the centre \\(=r\\)). General recipe for the foot of the perpendicular from \\((h,k)\\) to \\(ax+by+c=0\\): \\(\\big(h-a\\,t,\\ k-b\\,t\\big)\\) with \\(t=\\dfrac{ah+bk+c}{a^2+b^2}\\).",
       formula: {
         label: "Chord length from centre distance",
         latex: "\\text{chord} = 2\\sqrt{r^2 - d^2}\\quad(d=\\text{distance from centre to the chord})",
@@ -227,7 +228,8 @@ export const EQUATION_CENTRE_RADIUS_NOTE: SubtopicNote = {
         "**Tangency to a line = distance from centre equals radius.**\n" +
         "- **Touches the x-axis** \\(\\iff\\) \\(|k| = r\\) (the centre's height equals the radius). Touches the **y-axis** \\(\\iff |h| = r\\).\n" +
         "- **Touches BOTH axes in the first quadrant** \\(\\iff\\) centre \\(=(r,r)\\), so the equation is \\((x-r)^2+(y-r)^2=r^2\\).\n" +
-        "- **Touches a general line \\(ax+by+c=0\\)** \\(\\iff\\) \\(\\dfrac{|ah+bk+c|}{\\sqrt{a^2+b^2}} = r\\).",
+        "- **Touches a general line \\(ax+by+c=0\\)** \\(\\iff\\) \\(\\dfrac{|ah+bk+c|}{\\sqrt{a^2+b^2}} = r\\).\n" +
+        "- **Touches TWO intersecting lines** \\(\\iff\\) the centre is equidistant from both, i.e. it lies on one of their **angle bisectors** \\(\\dfrac{a_1x+b_1y+c_1}{\\sqrt{a_1^2+b_1^2}}=\\pm\\dfrac{a_2x+b_2y+c_2}{\\sqrt{a_2^2+b_2^2}}\\); the coordinate axes are the case where the bisectors are \\(y=\\pm x\\), which is why the centre is \\((r,\\pm r)\\). The bisector pins the centre to a one-parameter family; one more condition (a point on the circle, a stated distance of the contact point from the origin) fixes it. The **contact point** is the foot of the perpendicular from the centre to the line.",
       formula: {
         label: "Tangency condition",
         latex: "\\frac{|ah+bk+c|}{\\sqrt{a^2+b^2}} = r",

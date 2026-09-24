@@ -18,7 +18,8 @@ export const FUNCTION_CONDITIONS_NOTE: SubtopicNote = {
         "The procedure:\n" +
         "- Write the unknown function with its parameters, e.g. \\(f(x)=Pe^x+Qe^{2x}+Re^{3x}\\).\n" +
         "- Convert each condition into an equation: a value \\(f(0)\\), an integral \\(\\int_0^c f\\), or a derivative \\(f'(0)=P+2Q+3R\\).\n" +
-        "- Solve the resulting linear system for the parameters, then answer the specific question asked.",
+        "- Solve the resulting linear system for the parameters, then answer the specific question asked.\n" +
+        "**When the unknown is the FUNCTION, not its coefficients — the reciprocal-argument trick:** a relation such as \\(3f(x)+f\\!\\big(\\tfrac1x\\big)=g(x)\\) holds for every \\(x\\), so replace \\(x\\) by \\(\\tfrac1x\\) to get a second relation \\(3f\\!\\big(\\tfrac1x\\big)+f(x)=g\\!\\big(\\tfrac1x\\big)\\); solve the pair as simultaneous equations in the two unknowns \\(f(x)\\) and \\(f(1/x)\\) (here \\(8f(x)=3g(x)-g(1/x)\\)). The same pairing works for \\(x\\to1-x\\), \\(x\\to-x\\) and \\(x\\to a-x\\) — whichever substitution maps the given arguments onto each other. Then integrate the recovered \\(f\\).",
       authoredExample: {
         prompt:
           "Let \\(f(x)=Ae^x+Be^{2x}\\) with \\(f(0)=3\\) and \\(\\int_0^{\\ln 2} f(x)\\,dx = \\tfrac72\\). Find A and B.",

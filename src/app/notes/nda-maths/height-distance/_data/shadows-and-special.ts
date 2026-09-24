@@ -112,7 +112,7 @@ export const SHADOWS_AND_SPECIAL_NOTE: SubtopicNote = {
         "A leaning tower has vertical height \\(h\\) and its top is shifted a horizontal distance \\(\\delta\\) from the foot. Reading the top's elevation from two ground points \\(P\\) (distance \\(p\\)) and \\(Q\\) (distance \\(q\\)) on the same line:\n" +
         "- \\(\\tan(\\text{angle at }P) = \\dfrac{h}{p - \\delta}\\), \\(\\quad\\tan(\\text{angle at }Q) = \\dfrac{h}{q - \\delta}\\).\n" +
         "- Two equations, two unknowns \\((h, \\delta)\\) — solve them together. With the classic \\(15^\\circ\\) and \\(75^\\circ\\) pair, \\(\\tan 15^\\circ = 2-\\sqrt{3}\\) and \\(\\tan 75^\\circ = 2+\\sqrt{3}\\) give a clean answer like \\(h = \\dfrac{x-y}{2\\sqrt{3}}\\).\n" +
-        "- The tower's **inclination** \\(\\theta\\) to the horizontal satisfies \\(\\cot\\theta = \\dfrac{\\delta}{h}\\), and its actual **length** along the slant is \\(\\dfrac{h}{\\sin\\theta}\\).",
+        "- The tower's **inclination** \\(\\theta\\) to the horizontal satisfies \\(\\cot\\theta = \\dfrac{\\delta}{h}\\), and its actual **length** along the slant is \\(\\dfrac{h}{\\sin\\theta}\\) — equivalently \\(\\sqrt{h^2+\\delta^2}=h\\sqrt{1+\\cot^2\\theta}=h\\csc\\theta\\), the same number via \\(1+\\cot^2\\theta=\\csc^2\\theta\\). If you are holding \\(\\cot\\theta\\) from the previous part, the \\(\\sqrt{1+\\cot^2\\theta}\\) form is the one to write.",
       formula: {
         label: "Two readings on a leaning tower",
         latex: "\\tan\\alpha = \\frac{h}{p-\\delta}, \\qquad \\tan\\beta = \\frac{h}{q-\\delta}",

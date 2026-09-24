@@ -139,7 +139,9 @@ export const PARAMETRIC_IMPLICIT_HIGHER_NOTE: SubtopicNote = {
       intuition:
         "The second derivative is just the derivative of the first; the \\(n\\)-th is the derivative applied \\(n\\) times. For named functions there are clean patterns; for a specific point, differentiate the required number of times and substitute last.",
       definition:
-        "\\(\\dfrac{d^2y}{dx^2} = \\dfrac{d}{dx}\\!\\left(\\dfrac{dy}{dx}\\right)\\), and so on. Useful standard results: \\((e^{ax})^{(n)} = a^n e^{ax}\\); \\((\\sin x)^{(n)} = \\sin\\!\\left(x + \\tfrac{n\\pi}{2}\\right)\\). To evaluate at a point, differentiate first and substitute the value at the end.",
+        "\\(\\dfrac{d^2y}{dx^2} = \\dfrac{d}{dx}\\!\\left(\\dfrac{dy}{dx}\\right)\\), and so on. Useful standard results: \\((e^{ax})^{(n)} = a^n e^{ax}\\); \\((\\sin x)^{(n)} = \\sin\\!\\left(x + \\tfrac{n\\pi}{2}\\right)\\). To evaluate at a point, differentiate first and substitute the value at the end.\n" +
+        "- **Kinematics reading:** for position \\(s(t)\\), velocity \\(v=\\dfrac{ds}{dt}\\) and acceleration \\(a=\\dfrac{d^2s}{dt^2}=\\dfrac{dv}{dt}\\); going back, \\(v=\\int a\\,dt\\) and \\(s=\\int v\\,dt\\) with the constants fixed by initial values.\n" +
+        "- **Sign of a combination like \\(f+f'+f''\\):** for a quadratic \\(f\\), \\(g=f+f'+f''\\) is again a quadratic; it is positive for ALL real \\(x\\) iff its leading coefficient is positive AND its discriminant is negative (\\(b^2-4ac<0\\)) — both conditions, not one.",
       formula: {
         label: "Second derivative",
         latex: "\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\!\\left(\\frac{dy}{dx}\\right)",

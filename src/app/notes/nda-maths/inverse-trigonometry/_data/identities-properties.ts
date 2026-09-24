@@ -71,7 +71,7 @@ export const IDENTITIES_PROPERTIES_NOTE: SubtopicNote = {
       definition:
         "For all valid \\(x\\):\n" +
         "\\[\\sin^{-1}x + \\cos^{-1}x = \\tfrac{\\pi}{2}, \\quad \\tan^{-1}x + \\cot^{-1}x = \\tfrac{\\pi}{2}, \\quad \\sec^{-1}x + \\csc^{-1}x = \\tfrac{\\pi}{2}.\\]\n" +
-        "Also \\(\\tan^{-1}x + \\tan^{-1}\\tfrac{1}{x} = \\tfrac{\\pi}{2}\\) for \\(x > 0\\). Use these to replace one inverse function by \\(\\tfrac{\\pi}{2}\\) minus the other, collapsing an equation to a single unknown.",
+        "Also \\(\\tan^{-1}x + \\tan^{-1}\\tfrac{1}{x} = \\tfrac{\\pi}{2}\\) for \\(x > 0\\) **but \\(= -\\tfrac{\\pi}{2}\\) for \\(x < 0\\)** — because \\(\\cot^{-1}x=\\tan^{-1}\\tfrac1x\\) holds only for \\(x>0\\); for \\(x<0\\), \\(\\cot^{-1}x=\\pi+\\tan^{-1}\\tfrac1x\\). So when the two arguments are the roots of a quadratic, Vieta decides the branch: roots with product 1 and NEGATIVE sum (e.g. of \\(x^2+5x+1=0\\)) are both negative, and \\(\\tan^{-1}\\alpha+\\tan^{-1}\\beta=-\\tfrac\\pi2\\), not \\(+\\tfrac\\pi2\\). Use these to replace one inverse function by \\(\\tfrac{\\pi}{2}\\) minus the other, collapsing an equation to a single unknown.",
       formula: {
         label: "Complementary pairs",
         latex: "\\sin^{-1}x + \\cos^{-1}x = \\tfrac{\\pi}{2}, \\quad \\tan^{-1}x + \\cot^{-1}x = \\tfrac{\\pi}{2}",

@@ -15,7 +15,9 @@ export const TRIANGLES_POLYGONS_NOTE: SubtopicNote = {
       intuition:
         "The area of a triangle from its three vertices is half the absolute value of a determinant. When that determinant is zero the 'triangle' has collapsed — the points are collinear.",
       definition:
-        "Area \\(=\\dfrac12\\left|x_1(y_2-y_3)+x_2(y_3-y_1)+x_3(y_1-y_2)\\right|\\) \\(=\\dfrac12\\left|\\begin{smallmatrix}x_1&y_1&1\\\\x_2&y_2&1\\\\x_3&y_3&1\\end{smallmatrix}\\right|\\). **Collinear** iff this is \\(0\\). The same determinant gives the condition three points lie on a line.",
+        "Area \\(=\\dfrac12\\left|x_1(y_2-y_3)+x_2(y_3-y_1)+x_3(y_1-y_2)\\right|\\) \\(=\\dfrac12\\left|\\begin{smallmatrix}x_1&y_1&1\\\\x_2&y_2&1\\\\x_3&y_3&1\\end{smallmatrix}\\right|\\). **Collinear** iff this is \\(0\\). The same determinant gives the condition three points lie on a line.\n" +
+        "- **Vertices on a curve:** for points \\(\\big(x_i,\\tfrac1{x_i}\\big)\\) on \\(xy=1\\) the determinant factorises to \\(\\dfrac{|(x_1-x_2)(x_2-x_3)(x_3-x_1)|}{2\\,x_1x_2x_3}\\); for \\((x_i,x_i^2)\\) on a parabola it is \\(\\tfrac12|(x_1-x_2)(x_2-x_3)(x_3-x_1)|\\) — Vandermonde shapes.\n" +
+        "- **Mensuration the coordinate questions borrow:** an equilateral triangle of side \\(a\\) has area \\(\\tfrac{\\sqrt3}{4}a^2\\) and altitude \\(\\tfrac{\\sqrt3}{2}a\\); the segment joining the midpoints of two sides is **parallel to the third side and half its length** (midpoint theorem), so the midpoint triangle has a quarter of the area.",
       formula: {
         label: "Area of a triangle from vertices",
         latex:
@@ -119,7 +121,8 @@ export const TRIANGLES_POLYGONS_NOTE: SubtopicNote = {
         "- **Recover a vertex from a midpoint:** if \\(M\\) is the midpoint of \\(BC\\), then \\(B+C=2M\\), so \\(C=2M-B\\). The factor of \\(2\\) is the whole point — \\(M\\) is the *average* of \\(B\\) and \\(C\\).\n" +
         "- **A median** joins a vertex to the **midpoint of the opposite side**. So being given a median is being given a midpoint, and a midpoint hands you the missing vertex by the line above.\n" +
         "- **An altitude** from a vertex is **perpendicular** to the opposite side: its slope is the negative reciprocal of that side's slope, and it passes through the vertex.\n" +
-        "- **Special triangles:** an equilateral or isosceles condition fixes the third vertex, usually through equal distances. The third vertex of an equilateral triangle on a given base generally has irrational coordinates.",
+        "- **Special triangles:** an equilateral or isosceles condition fixes the third vertex, usually through equal distances. The third vertex of an equilateral triangle on a given base generally has irrational coordinates.\n" +
+        "- **Isosceles triangle from its apex angle:** if the apex angle is \\(A\\), each base angle is \\(90°-\\tfrac A2\\), so \\(\\tan(\\text{base angle})=\\cot\\tfrac A2\\); conversely with \\(t=\\tan(\\text{base angle})\\), \\(\\tan A=\\tan(180°-2\\cdot\\text{base})=-\\dfrac{2t}{1-t^2}\\). When the sides through the apex are given as lines, their slopes give \\(\\tan A\\) and this recovers the base direction.",
       formula: {
         label: "Vertex from a midpoint",
         latex: "B+C=2M\\qquad C=2M-B",
@@ -171,7 +174,8 @@ export const TRIANGLES_POLYGONS_NOTE: SubtopicNote = {
         "- **Parallelogram \\(ABCD\\):** the diagonals join **opposite** vertices, \\(AC\\) and \\(BD\\), and they bisect each other. So \\(A+C=B+D\\), giving \\(D=A+C-B\\), and they meet at the midpoint of either.\n" +
         "- **Side vector:** the vector from \\(A\\) to \\(B\\) is just \\(B-A\\), computed coordinate by coordinate. Write \\(\\vec{AB}=(u_1,v_1)\\) and \\(\\vec{AD}=(u_2,v_2)\\) for the two sides meeting at \\(A\\).\n" +
         "- **Area** \\(=|u_1v_2-u_2v_1|\\). These are components of the two **side vectors** — note that everywhere else in this chapter \\((x_1,y_1)\\) means a **vertex**, so do not feed vertices into this formula.\n" +
-        "- A **square or rectangle** built on two given parallel sides uses the perpendicular distance between them as the other side length.",
+        "- A **square or rectangle** built on two given parallel sides uses the perpendicular distance between them as the other side length. A square with diagonal \\(d\\) has area \\(\\tfrac{d^2}{2}\\) and side \\(\\tfrac{d}{\\sqrt2}\\).\n" +
+        "- **Telling the quadrilaterals apart by their diagonals** (compute both diagonal vectors first): a parallelogram whose diagonals are **perpendicular** (\\(\\vec{AC}\\cdot\\vec{BD}=0\\)) is a **rhombus**; one whose diagonals are **equal in length** is a **rectangle**; both together make a square. A non-parallelogram with equal diagonals and one pair of parallel sides is an **isosceles trapezium**. \"Rhombus, not rectangle\" is the key when the diagonals are perpendicular but unequal.",
       formula: {
         label: "Parallelogram: fourth vertex and area",
         latex:
@@ -219,6 +223,8 @@ export const TRIANGLES_POLYGONS_NOTE: SubtopicNote = {
     },
   ],
   related: [
+    { label: "Cosine rule & triangle mensuration (Properties of Triangle)", href: "/notes/nda-maths/properties-of-triangle/pt-sine-cosine-rules" },
+    { label: "Half-angle formulas (Trigonometric Identities)", href: "/notes/nda-maths/trigonometric-identities/trig-multiple-half-angle" },
     { label: "Back: Distance, Section & Locus", href: "/notes/nda-maths/lines/lines-distance-section-locus" },
     { label: "Start again: Equations & Slope", href: "/notes/nda-maths/lines/lines-equation-slope" },
   ],

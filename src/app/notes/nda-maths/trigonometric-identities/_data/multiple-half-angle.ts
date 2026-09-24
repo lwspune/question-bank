@@ -17,7 +17,8 @@ export const MULTIPLE_HALF_ANGLE_NOTE: SubtopicNote = {
       definition:
         "- \\(\\sin 2A=2\\sin A\\cos A=\\dfrac{2\\tan A}{1+\\tan^2 A}\\).\n" +
         "- \\(\\cos 2A=\\cos^2 A-\\sin^2 A=1-2\\sin^2 A=2\\cos^2 A-1=\\dfrac{1-\\tan^2 A}{1+\\tan^2 A}\\).\n" +
-        "- \\(\\tan 2A=\\dfrac{2\\tan A}{1-\\tan^2 A}\\). Also \\(\\tan A+\\cot A=\\dfrac{2}{\\sin 2A}\\).",
+        "- \\(\\tan 2A=\\dfrac{2\\tan A}{1-\\tan^2 A}\\). Also \\(\\tan A+\\cot A=\\dfrac{2}{\\sin 2A}=2\\csc 2A\\).\n" +
+        "- **The sibling, the most-used untaught line in the PYQ bank:** \\(\\cot A-\\tan A=\\dfrac{\\cos^2A-\\sin^2A}{\\sin A\\cos A}=2\\cot 2A\\). So \\(\\tan A+2\\tan 2A+4\\tan 4A+8\\cot 8A\\) telescopes to \\(\\cot A\\) (each \\(2^k\\cot 2^kA-2^k\\tan 2^kA=2^{k+1}\\cot 2^{k+1}A\\)), and \\(\\tan 65°-\\tan 25°=2\\cot 50°=2\\tan 40°\\) settles \\(\\tan 65°+2\\tan 45°-2\\tan 40°-\\tan 25°=2\\).",
       formula: {
         label: "Double-angle formulas",
         latex: "\\sin 2A=2\\sin A\\cos A,\\qquad \\cos 2A=\\cos^2 A-\\sin^2 A=1-2\\sin^2 A=2\\cos^2 A-1,\\qquad \\tan 2A=\\dfrac{2\\tan A}{1-\\tan^2 A}",
@@ -110,7 +111,8 @@ export const MULTIPLE_HALF_ANGLE_NOTE: SubtopicNote = {
         "- \\(1-\\cos A=2\\sin^2\\tfrac A2\\), \\(\\;1+\\cos A=2\\cos^2\\tfrac A2\\).\n" +
         "- \\(\\tan\\tfrac A2=\\dfrac{\\sin A}{1+\\cos A}=\\dfrac{1-\\cos A}{\\sin A}\\).\n" +
         "- \\(\\csc A+\\cot A=\\cot\\tfrac A2\\), \\(\\;\\csc A-\\cot A=\\tan\\tfrac A2\\).\n" +
-        "- \\(1\\pm\\sin A=\\left(\\sin\\tfrac A2\\pm\\cos\\tfrac A2\\right)^2\\) (mind the sign when taking the root).",
+        "- \\(1\\pm\\sin A=\\left(\\sin\\tfrac A2\\pm\\cos\\tfrac A2\\right)^2\\) (mind the sign when taking the root).\n" +
+        "- **Geometry that hides a half-angle:** a chord subtending angle \\(\\theta\\) at the centre of a circle of radius \\(r\\) has length \\(2r\\sin\\tfrac\\theta2\\); the base of an isosceles triangle with legs \\(a\\) and apex angle \\(\\theta\\) is likewise \\(2a\\sin\\tfrac\\theta2\\), and its base angles are \\(90°-\\tfrac\\theta2\\).",
       formula: {
         label: "Half-angle formulas",
         latex: "\\sin\\tfrac A2=\\pm\\sqrt{\\tfrac{1-\\cos A}{2}},\\qquad \\cos\\tfrac A2=\\pm\\sqrt{\\tfrac{1+\\cos A}{2}},\\qquad \\tan\\tfrac A2=\\dfrac{1-\\cos A}{\\sin A}=\\dfrac{\\sin A}{1+\\cos A}",

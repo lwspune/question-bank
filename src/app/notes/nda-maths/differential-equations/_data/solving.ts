@@ -72,7 +72,8 @@ export const SOLVING_NOTE: SubtopicNote = {
       definition:
         "Two reduction tricks:\n" +
         "- **Substitute the combination**: if the equation depends on \\(x+y\\) (or \\(y-x\\)), set \\(v=x+y\\), so \\(\\tfrac{dv}{dx}=1+\\tfrac{dy}{dx}\\), and the equation becomes separable in \\(v\\).\n" +
-        "- **Recognise exact differentials**: \\(x\\,dy+y\\,dx=d(xy)\\); \\(\\dfrac{x\\,dy-y\\,dx}{y^2}=d\\!\\big(\\tfrac{x}{y}\\big)\\); \\(x\\,dx+y\\,dy=\\tfrac12 d(x^2+y^2)\\).",
+        "- **Recognise exact differentials**: \\(x\\,dy+y\\,dx=d(xy)\\); \\(\\dfrac{x\\,dy-y\\,dx}{y^2}=d\\!\\big(\\tfrac{x}{y}\\big)\\); \\(x\\,dx+y\\,dy=\\tfrac12 d(x^2+y^2)\\).\n" +
+        "**Antiderivatives the substitution step lands on** (stated here so the last line is not a guess): \\(\\int\\sec v\\,dv=\\ln|\\sec v+\\tan v|+C\\), \\(\\int\\tan v\\,dv=\\ln|\\sec v|+C=-\\ln|\\cos v|+C\\), \\(\\int\\cot v\\,dv=\\ln|\\sin v|+C\\), \\(\\int\\csc v\\,dv=\\ln|\\csc v-\\cot v|+C\\). And the half-angle route for a cosine ratio: \\(\\dfrac{1-\\cos x}{1+\\cos x}=\\tan^2\\tfrac x2=\\sec^2\\tfrac x2-1\\), so \\(\\int\\dfrac{1-\\cos x}{1+\\cos x}\\,dx=2\\tan\\tfrac x2-x+C\\) — the equation \\(\\dfrac{dy}{dx}=\\dfrac{1-\\cos x}{1+\\cos x}\\) is solved in one line.",
       formula: {
         label: "Exact differentials to recognise",
         latex:

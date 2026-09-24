@@ -83,7 +83,8 @@ export const EQUATION_SLOPE_NOTE: SubtopicNote = {
         "line crosses the x-axis. That is why a question can ask for their **sum**.\n" +
         "- **Intercept form:** \\(\\dfrac{x}{a}+\\dfrac{y}{b}=1\\), where \\(a\\) is the x-intercept and \\(b\\) the y-intercept — readable off the equation **only when the right-hand side is exactly \\(1\\)**.\n" +
         "- **From a general line** \\(px+qy+r=0\\): x-intercept \\(=-r/p\\), y-intercept \\(=-r/q\\). The letters are \\(p,q,r\\) here on purpose — in the line above, \\(a\\) and \\(b\\) are **intercepts**, while in a general equation \\(a\\) and \\(b\\) are **coefficients**. They are not the same thing, and confusing them is this concept's classic error.\n" +
-        "- **From a midpoint:** if \\((h,k)\\) is the midpoint of the segment the line cuts between the axes, then \\(a=2h\\) and \\(b=2k\\).",
+        "- **From a midpoint:** if \\((h,k)\\) is the midpoint of the segment the line cuts between the axes, then \\(a=2h\\) and \\(b=2k\\).\n" +
+        "- **Distance from the origin to \\(\\tfrac xa+\\tfrac yb=1\\):** \\(p=\\dfrac{|ab|}{\\sqrt{a^2+b^2}}\\), i.e. \\(\\dfrac1{p^2}=\\dfrac1{a^2}+\\dfrac1{b^2}\\) — the altitude-to-the-hypotenuse relation of the right triangle the line cuts off. A stem that gives the intercepts and asks for \\(p\\) (or gives \\(p\\) and one intercept) is this line.",
       formula: {
         label: "Intercept form and intercepts",
         latex:
@@ -136,7 +137,8 @@ export const EQUATION_SLOPE_NOTE: SubtopicNote = {
         "- **Family (pencil):** every line through the intersection of \\(L_1=0\\) and \\(L_2=0\\) can be written \\(L_1+\\lambda L_2=0\\), so you never have to find the intersection point. Fix \\(\\lambda\\) from one extra condition. (The single line it misses is \\(L_2=0\\) itself.)\n" +
         "- **Through a point, parallel or perpendicular to a given line:** keep the same slope, or the negative-reciprocal one. Both tests are proved in the next block, Angle Between Lines — for now, **parallel means equal slopes** and **perpendicular means the slopes multiply to \\(-1\\)**.\n" +
         "- **Concurrent** means all three lines pass through **one common point**. If three lines are concurrent, then \\(\\begin{vmatrix}a_1&b_1&c_1\\\\a_2&b_2&c_2\\\\a_3&b_3&c_3\\end{vmatrix}=0\\). The converse is **not** automatic: the determinant also vanishes when two of the lines are parallel, so a zero determinant is evidence, not proof. Expanding a \\(3\\times3\\) determinant is in the Matrices & Determinants notes, linked below.\n" +
-        "- **A fixed point forced by a coefficient condition:** if \\(A,B,C\\) are in AP then \\(C-B=B-A\\), so \\(C=2B-A\\). Put that into \\(Ax+2By+C=0\\): \\(Ax+2By+2B-A=0\\), which regroups as \\(A(x-1)+2B(y+1)=0\\). That holds for **every** \\(A\\) and \\(B\\) only when \\(x-1=0\\) and \\(y+1=0\\) — so every such line passes through \\((1,-1)\\).",
+        "- **A fixed point forced by a coefficient condition:** if \\(A,B,C\\) are in AP then \\(C-B=B-A\\), so \\(C=2B-A\\). Put that into \\(Ax+2By+C=0\\): \\(Ax+2By+2B-A=0\\), which regroups as \\(A(x-1)+2B(y+1)=0\\). That holds for **every** \\(A\\) and \\(B\\) only when \\(x-1=0\\) and \\(y+1=0\\) — so every such line passes through \\((1,-1)\\).\n" +
+        "- **How many intersection points can \\(n\\) lines make?** At most \\(\\binom n2\\) (every pair meets once, no two parallel, no three concurrent); \\(n\\) lines and a circle add at most \\(2n\\) more (each line cuts the circle twice); \\(n\\) circles meet in at most \\(2\\binom n2=n(n-1)\\) points.",
       formula: {
         label: "Family of lines and concurrency",
         latex:

@@ -580,7 +580,8 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         "For group 1 of size \\(n_1\\) with mean \\(M_1\\) and group 2 of size \\(n_2\\) " +
         "with mean \\(M_2\\), the combined mean of the pooled dataset is the " +
         "frequency-weighted average. Generalises to \\(k\\) groups as a weighted average " +
-        "of the group means, with each weight equal to the group's size.",
+        "of the group means, with each weight equal to the group's size.\n" +
+        "**Variance does NOT pool the same way.** The combined variance carries a between-group term: \\(\\sigma^2_{12} = \\dfrac{n_1(\\sigma_1^2 + d_1^2) + n_2(\\sigma_2^2 + d_2^2)}{n_1 + n_2}\\) with \\(d_i = M_i - M_{12}\\). Only when both group means are equal does it reduce to the weighted average of the variances — so \"the combined variance is the mean of the two variances\" is false in general, and an option list built on that assumption has \"none of the above\" as its key.",
       formula: {
         label: "Combined mean of two groups",
         latex: "M_{12} = \\dfrac{n_1 M_1 + n_2 M_2}{n_1 + n_2}",
@@ -653,7 +654,8 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
       definition:
         "For raw data with \\(n\\) sorted observations, the median is the middle " +
         "value if \\(n\\) is odd, and the average of the two middle values if " +
-        "\\(n\\) is even. For grouped data, use the class-interval formula below.",
+        "\\(n\\) is even. For grouped data, use the class-interval formula below.\n" +
+        "**Discrete series (values with frequencies, no class intervals):** build the cumulative frequency and take the value of the \\(\\tfrac{N+1}{2}\\)-th item — the first value whose cumulative frequency reaches \\(\\tfrac{N+1}{2}\\). This is the raw-data rule applied to the expanded list, NOT the grouped \\(\\tfrac{N}{2}\\) formula; using \\(N/2\\) here is the planted error.",
       formula: {
         label: "Median (raw and grouped)",
         latex:
@@ -770,7 +772,9 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         "\\(n\\)-th root. Equivalent to the average on a log scale.",
       definition:
         "For \\(n\\) positive observations \\(x_1, x_2, \\ldots, x_n\\), the geometric " +
-        "mean is the \\(n\\)-th root of their product.",
+        "mean is the \\(n\\)-th root of their product.\n" +
+        "- **Two numbers:** \\(\\text{GM} = \\sqrt{mn}\\), and \\(\\text{AM} - \\text{GM} = \\dfrac{m+n}{2} - \\sqrt{mn} = \\dfrac{(\\sqrt m - \\sqrt n)^2}{2} \\ge 0\\) — the one-line proof of \\(\\text{AM} \\ge \\text{GM}\\), with equality iff \\(m = n\\).\n" +
+        "- **Multiplicative rules:** \\(\\text{GM}(cx_i) = c\\,\\text{GM}(x_i)\\); \\(\\text{GM}(x_i^k) = \\text{GM}(x_i)^k\\); \\(\\text{GM}(x_i/y_i) = \\text{GM}(x_i)/\\text{GM}(y_i)\\); and the GM of the combined list of two groups of sizes \\(n_1, n_2\\) is \\((G_1^{n_1} G_2^{n_2})^{1/(n_1+n_2)}\\). Logs turn every one of these into the corresponding rule for the arithmetic mean.",
       formula: {
         label: "Geometric Mean",
         latex: "\\text{GM} = \\sqrt[n]{x_1 \\, x_2 \\, \\cdots \\, x_n} = \\left(\\prod_{i=1}^{n} x_i\\right)^{1/n}",
@@ -824,7 +828,8 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         "money spent each year is the same. It's the reciprocal of the average reciprocal.",
       definition:
         "For \\(n\\) positive observations \\(x_1, x_2, \\ldots, x_n\\), the harmonic " +
-        "mean is \\(n\\) divided by the sum of the reciprocals.",
+        "mean is \\(n\\) divided by the sum of the reciprocals.\n" +
+        "**Two numbers:** \\(\\text{HM} = \\dfrac{2mn}{m+n}\\) — the closed form to reach for under time pressure (\"HM of 60 and \\(x\\) is 48\" is \\(\\tfrac{120x}{60+x} = 48 \\Rightarrow x = 40\\)). With \\(\\text{GM} = \\sqrt{mn}\\) this gives \\(\\text{GM}^2 = \\text{AM}\\cdot\\text{HM}\\) for two numbers, and \\(\\text{AM} \\ge \\text{GM} \\ge \\text{HM}\\) always.",
       formula: {
         label: "Harmonic Mean",
         latex: "\\text{HM} = \\dfrac{n}{\\displaystyle\\sum_{i=1}^{n} \\dfrac{1}{x_i}} = \\dfrac{n}{\\dfrac{1}{x_1} + \\dfrac{1}{x_2} + \\cdots + \\dfrac{1}{x_n}}",
@@ -896,7 +901,9 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
         "moderately skewed unimodal distributions and is used to recover the " +
         "third measure when two are known. For the same moderately-skewed regime, " +
         "**Mean Deviation \\(\\approx \\tfrac{4}{5}\\,\\text{Standard Deviation}\\)** — " +
-        "equivalently \\(4\\,\\text{SD} = 5\\,\\text{MD}\\) (MD measured about the mean).",
+        "equivalently \\(4\\,\\text{SD} = 5\\,\\text{MD}\\) (MD measured about the mean).\n" +
+        "**Direction of skew fixes the ORDER:** positive (right) skew pulls the mean toward the long right tail, so \\(\\text{Mode} < \\text{Median} < \\text{Mean}\\); negative (left) skew is the mirror, \\(\\text{Mean} < \\text{Median} < \\text{Mode}\\); a symmetric distribution has all three equal. The median always sits between the other two.\n" +
+        "**And an exact inequality, not empirical:** \\(\\text{SD} \\ge \\text{MD}\\) about the mean, for every dataset (the root-mean-square of the deviations is at least their mean absolute value).",
       formula: {
         label: "Identities to memorise",
         latex:
@@ -950,6 +957,18 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
     },
   ],
   related: [
+    {
+      label: "GP and arithmetico-geometric sums, used as frequencies (Sequence & Series)",
+      href: "/notes/nda-maths/sequence-series/seq-special-series",
+    },
+    {
+      label: "Binomial coefficient sums Σ C(n,r), Σ r·C(n,r) (Binomial Theorem)",
+      href: "/notes/nda-maths/binomial-theorem/bt-coefficient-sums",
+    },
+    {
+      label: "Mean np and variance npq of a binomial variable (Binomial Distribution)",
+      href: "/notes/nda-maths/binomial-distribution/bd-mean-variance",
+    },
     {
       label: "Dispersion — Standard Deviation, Variance, Mean Deviation",
       href: "/notes/nda-maths/statistics/dispersion",

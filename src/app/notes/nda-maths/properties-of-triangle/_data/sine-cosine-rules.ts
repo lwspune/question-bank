@@ -20,7 +20,11 @@ export const SINE_COSINE_RULES_NOTE: SubtopicNote = {
         "- **Angle sum:** \\(A + B + C = \\pi\\) (so any one angle is determined by the other two).\n" +
         "- **Semi-perimeter:** \\(s = \\dfrac{a+b+c}{2}\\).\n" +
         "- **Circumradius \\(R\\)** (radius of the circle through all three vertices) and **inradius \\(r\\)** (radius of the circle touching all three sides).\n" +
-        "- **Largest side faces the largest angle**, and the longest side is opposite the obtuse angle if there is one — a quick orientation check.",
+        "- **Largest side faces the largest angle**, and the longest side is opposite the obtuse angle if there is one — a quick orientation check.\n" +
+        "**Trigonometry this chapter assumes** (full treatment in the Trigonometric Identities notes, linked below) — every PYQ that stalls stalls on one of these, not on a triangle rule:\n" +
+        "- Right-triangle ratios \\(\\sin=\\tfrac{\\text{opp}}{\\text{hyp}}\\), \\(\\cos=\\tfrac{\\text{adj}}{\\text{hyp}}\\), \\(\\tan=\\tfrac{\\text{opp}}{\\text{adj}}\\), and \\(\\sin^2\\theta+\\cos^2\\theta=1\\) to recover \\(\\sin C\\) from a cosine-rule \\(\\cos C\\) (positive, since \\(0<C<\\pi\\)).\n" +
+        "- Compound angles: \\(\\sin(X\\pm Y)=\\sin X\\cos Y\\pm\\cos X\\sin Y\\), \\(\\cos(X\\pm Y)=\\cos X\\cos Y\\mp\\sin X\\sin Y\\), \\(\\tan(X+Y)=\\dfrac{\\tan X+\\tan Y}{1-\\tan X\\tan Y}\\). Double angle: \\(\\cos2A=1-2\\sin^2A=2\\cos^2A-1=\\dfrac{1-\\tan^2A}{1+\\tan^2A}\\), \\(\\sin2A=2\\sin A\\cos A\\). Triple angle: \\(\\sin3\\theta=3\\sin\\theta-4\\sin^3\\theta\\), \\(\\cos3\\theta=4\\cos^3\\theta-3\\cos\\theta\\).\n" +
+        "- Exact values beyond \\(30°/45°/60°\\): \\(\\sin15°=\\tfrac{\\sqrt6-\\sqrt2}{4}\\), \\(\\cos15°=\\sin75°=\\tfrac{\\sqrt6+\\sqrt2}{4}\\), \\(\\tan15°=\\cot75°=2-\\sqrt3\\), \\(\\cot15°=\\tan75°=2+\\sqrt3\\), \\(\\sin18°=\\cos72°=\\tfrac{\\sqrt5-1}{4}\\), \\(\\cos36°=\\sin54°=\\tfrac{\\sqrt5+1}{4}\\), \\(\\tan22.5°=\\sqrt2-1\\).",
       formula: {
         label: "Angle sum & semi-perimeter",
         latex: "A + B + C = \\pi, \\qquad s = \\dfrac{a+b+c}{2}",
@@ -51,7 +55,8 @@ export const SINE_COSINE_RULES_NOTE: SubtopicNote = {
       definition:
         "For any triangle,\n" +
         "\\[\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R.\\]\n" +
-        "Consequences: \\(a = 2R\\sin A\\), so the sides are proportional to the sines of the opposite angles; the perimeter is \\(2R(\\sin A + \\sin B + \\sin C)\\). Use the sine rule when you have an **angle and its opposite side** (plus one more angle or side). Beware the **ambiguous case**: knowing two sides and a non-included angle can give two valid triangles.",
+        "Consequences: \\(a = 2R\\sin A\\), so the sides are proportional to the sines of the opposite angles; the perimeter is \\(2R(\\sin A + \\sin B + \\sin C)\\). Use the sine rule when you have an **angle and its opposite side** (plus one more angle or side). Beware the **ambiguous case**: knowing two sides and a non-included angle can give two valid triangles.\n" +
+        "**The two-branch rule behind the ambiguous case, as a usable step:** \\(\\sin X=\\sin Y\\) with \\(X,Y\\in(0,\\pi)\\) means \\(X=Y\\) **or** \\(X+Y=\\pi\\). So \\(\\sin2B=\\sin2C\\) gives \\(B=C\\) (isosceles) or \\(B+C=\\tfrac\\pi2\\) (right-angled at \\(A\\)) — BOTH must be reported; and \\(\\sin B=\\sin(\\pi-3B)\\) gives \\(B=\\tfrac\\pi4\\) (from \\(B=\\pi-3B\\)) or \\(B+\\pi-3B=\\pi\\Rightarrow B=0\\) (rejected). Always test the second branch against \\(A+B+C=\\pi\\).",
       formula: {
         label: "Sine rule",
         latex: "\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R",
@@ -198,7 +203,8 @@ export const SINE_COSINE_RULES_NOTE: SubtopicNote = {
         "- **Two sides + included angle:** \\(\\Delta = \\tfrac12 ab\\sin C\\).\n" +
         "- **Three sides (Heron):** \\(\\Delta = \\sqrt{s(s-a)(s-b)(s-c)}\\).\n" +
         "- **Circumradius:** \\(\\Delta = \\dfrac{abc}{4R}\\).\n" +
-        "- **Inradius:** \\(\\Delta = r s\\).",
+        "- **Inradius:** \\(\\Delta = r s\\).\n" +
+        "- **Equilateral, side \\(a\\):** \\(\\Delta=\\tfrac{\\sqrt3}{4}a^2\\), altitude \\(\\tfrac{\\sqrt3}{2}a\\), \\(R=\\tfrac{a}{\\sqrt3}\\), \\(r=\\tfrac{a}{2\\sqrt3}\\) (so \\(R=2r\\)). Once a condition like \\(a\\cos A=b\\cos B=c\\cos C\\) forces equilateral, the area is this — not a fresh Heron computation.",
       formula: {
         label: "Area formulas",
         latex: "\\Delta = \\tfrac12 ab\\sin C = \\sqrt{s(s-a)(s-b)(s-c)} = \\dfrac{abc}{4R} = rs",
@@ -248,7 +254,9 @@ export const SINE_COSINE_RULES_NOTE: SubtopicNote = {
       definition:
         "- **Angles in AP:** \\(2B = A + C\\) together with \\(A+B+C = \\pi\\) forces the middle angle \\(B = 60^\\circ\\).\n" +
         "- **Angles in a given ratio** (e.g. \\(1:2:3\\)): split \\(180^\\circ\\) accordingly, then sides \\(\\propto \\sin A : \\sin B : \\sin C\\).\n" +
-        "- **Given a side ratio**, the sine rule recovers the angles: \\(\\dfrac{b}{c} = \\dfrac{\\sin B}{\\sin C}\\).",
+        "- **Given a side ratio**, the sine rule recovers the angles: \\(\\dfrac{b}{c} = \\dfrac{\\sin B}{\\sin C}\\).\n" +
+        "- **A symmetric relation among the sides, e.g. \\(a^2+b^2+c^2=ac+\\sqrt3\\,bc\\):** treat it as a quadratic in one side and use **discriminant \\(=0\\)** (or complete the squares: \\((a-\\tfrac c2)^2+(b-\\tfrac{\\sqrt3}{2}c)^2=0\\)) — each square must vanish, giving \\(a:b:c=1:\\sqrt3:2\\), the \\(30°\\)–\\(60°\\)–\\(90°\\) triangle. Two squares summing to zero is the whole technique.\n" +
+        "- **When two angles' tangents (or half-angle tangents) are the ROOTS of a given quadratic**, Vieta supplies \\(\\tan X+\\tan Y=-\\tfrac ba\\) and \\(\\tan X\\tan Y=\\tfrac ca\\) directly, and \\(\\tan(X+Y)=\\dfrac{\\text{sum}}{1-\\text{product}}\\) then fixes the third angle: if \\(\\tan\\tfrac A2,\\tan\\tfrac B2\\) are the roots of \\(px^2+qx+r=0\\), then \\(\\tan\\tfrac{A+B}{2}=\\dfrac{-q/p}{1-r/p}=\\dfrac{-q}{p-r}\\), and \\(C=\\pi-(A+B)\\).",
       formula: {
         label: "Sides proportional to sines",
         latex: "a : b : c = \\sin A : \\sin B : \\sin C",
@@ -300,5 +308,11 @@ export const SINE_COSINE_RULES_NOTE: SubtopicNote = {
         answer: "\\(AD\\sin\\theta = AB\\sin\\alpha\\).",
       },
     },
+  ],
+  related: [
+    { label: "Exact values, quadrants & Pythagorean identities (Trigonometric Identities)", href: "/notes/nda-maths/trigonometric-identities/trig-values-quadrants" },
+    { label: "Compound-angle formulas (Trigonometric Identities)", href: "/notes/nda-maths/trigonometric-identities/trig-compound-angle" },
+    { label: "Double, triple & half-angle formulas (Trigonometric Identities)", href: "/notes/nda-maths/trigonometric-identities/trig-multiple-half-angle" },
+    { label: "Vieta's relations (Quadratic Equations)", href: "/notes/nda-maths/quadratic-equations/qe-vieta-relations" },
   ],
 };
