@@ -509,6 +509,11 @@ import {
   MHTCET_ELECTROCHEMISTRY_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/electrochemistry/_data";
 import {
+  MHTCET_THERMODYNAMICS_CHAPTER,
+  MHTCET_THERMODYNAMICS_NOTES,
+  MHTCET_THERMODYNAMICS_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/chemical-thermodynamics/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1251,6 +1256,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_ELECTROCHEMISTRY_CHAPTER,
     notes: MHTCET_ELECTROCHEMISTRY_NOTES,
     slugs: MHTCET_ELECTROCHEMISTRY_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "chemical-thermodynamics",
+    chipLabel: "Chemical Thermodynamics notes",
+    chapter: MHTCET_THERMODYNAMICS_CHAPTER,
+    notes: MHTCET_THERMODYNAMICS_NOTES,
+    slugs: MHTCET_THERMODYNAMICS_SLUGS,
   },
   {
     examName: "NDA",
