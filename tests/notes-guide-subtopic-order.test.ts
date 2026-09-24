@@ -34,6 +34,8 @@ const ARC_VERIFIED = new Set<string>([
   "determinants-and-matrices",
   "complex-numbers",
   "permutations-and-combinations",
+  "linear-programming",
+  // measures-of-dispersion has notes but no playbook (dropped chapter), so nothing to pin
   // sets-relations-and-functions has notes but no playbook (below the q/paper line), so nothing to pin here
 ]);
 

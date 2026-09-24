@@ -134,6 +134,16 @@ import {
   MHTCET_SRF_SLUGS,
 } from "@/app/notes/mht-cet-maths/sets-relations-and-functions/_data";
 import {
+  MHTCET_LPP_CHAPTER,
+  MHTCET_LPP_NOTES,
+  MHTCET_LPP_SLUGS,
+} from "@/app/notes/mht-cet-maths/linear-programming/_data";
+import {
+  MHTCET_DISPERSION_CHAPTER,
+  MHTCET_DISPERSION_NOTES,
+  MHTCET_DISPERSION_SLUGS,
+} from "@/app/notes/mht-cet-maths/measures-of-dispersion/_data";
+import {
   JEE_MATRICES_CHAPTER,
   JEE_MATRICES_NOTES,
   JEE_MATRICES_SLUGS,
@@ -1041,6 +1051,28 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_SRF_CHAPTER,
     notes: MHTCET_SRF_NOTES,
     slugs: MHTCET_SRF_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "linear-programming",
+    chipLabel: "Linear Programming notes",
+    chapter: MHTCET_LPP_CHAPTER,
+    notes: MHTCET_LPP_NOTES,
+    slugs: MHTCET_LPP_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "measures-of-dispersion",
+    chipLabel: "Measures of Dispersion notes",
+    chapter: MHTCET_DISPERSION_CHAPTER,
+    notes: MHTCET_DISPERSION_NOTES,
+    slugs: MHTCET_DISPERSION_SLUGS,
   },
   {
     examName: "JEE Mains",

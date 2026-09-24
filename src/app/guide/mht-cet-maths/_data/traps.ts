@@ -138,7 +138,7 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "quickwin",
     affects: ["linear-programming"],
     mechanic:
-      "Linear Programming is the cheapest chapter that ships as a playbook: 46 q, 1.00 a paper, 4% HARD, and its Objective Function — Maximisation and Minimisation subtopic is 23 q at 0% HARD. There is essentially no mathematics available to get wrong, which is exactly why the losses here are procedural — reading an inequality on the wrong side of its line, forgetting the non-negativity constraints so the region is too big, or evaluating the objective at two corner points, seeing an improvement, and stopping there.",
+      "Linear Programming is the cheapest chapter that ships as a playbook: 45 q, 0.98 a paper, 4% HARD, and its corner-point page is 16 q at 0% HARD. There is essentially no mathematics available to get wrong, which is exactly why the losses here are procedural — reading an inequality on the wrong side of its line, forgetting the non-negativity constraints so the region is too big, or evaluating the objective at two corner points, seeing an improvement, and stopping there.",
     fix:
       "Draw the region, list EVERY corner point including the axis intercepts, evaluate the objective at all of them, and only then choose. There is no shortcut and none is needed: this chapter should close in well under 1.8 minutes a question, and the time it gives back is what pays for Vectors later in the paper.",
   },

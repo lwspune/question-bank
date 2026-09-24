@@ -707,31 +707,31 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A set of linear inequalities plus something to maximise or minimise — or a feasible region to identify, classify, or read corners from.",
     story: [
-      "46 q at 1.00 per paper and 4% HARD. This is the lowest-HARD chapter in the subject by a wide margin, and one of its two subtopics — Objective Function, Maximisation and Minimisation, 23 q — has NEVER produced a HARD question across the whole 45-shift bank. Two marks that should take under a minute. Do this one first, every time you sit a paper.",
+      "45 q at 0.98 per paper and 4% HARD. This is the lowest-HARD chapter in the subject by a wide margin: three of its four notes pages (/notes/mht-cet-maths/linear-programming) have NEVER produced a HARD question across the whole 45-shift bank, and the corner-point page alone is 16 q at 0%. Two marks that should take under a minute. Do this one first, every time you sit a paper.",
       "The method does not vary. Translate the sentence into inequalities, plot the constraints, identify the feasible region, list its corner points, and evaluate the objective at each corner. The optimum of a linear objective over a convex polygon always sits at a corner, so there is nothing to search — you are comparing at most four or five numbers.",
-      "Feasible Region — Identification, Constraints, Classification is 23 q at 9% HARD and carries whatever difficulty the chapter has. The questions that misbehave are the ones about the region itself: whether it is bounded, whether it is empty, which half-plane a given inequality selects. Those are worth five minutes of deliberate practice, and then the chapter is finished.",
-      "Because the answers are numbers produced by arithmetic at corner points, this is a chapter where checking beats guessing even under time pressure — and with no negative marking there is never a reason to leave one of these blank.",
+      "Reading constraints off a shaded region is 9 q at 22% HARD and carries the whole difficulty of the chapter — both HARD questions are figure stems with four or five boundary lines. They are answered by testing one point inside the shading against one line at a time, and by computing the sign at that point rather than trusting above/below when a coefficient is negative. Five minutes of deliberate practice, and the chapter is finished.",
+      "Because the answers are numbers produced by arithmetic at corner points, this is a chapter where checking beats guessing even under time pressure — and with no negative marking there is never a reason to leave one of these blank. One 2024 figure stem carries an official key its own working contradicts (19.8 marked where the corner gives 19.5); the bank keeps the official letter with a note.",
     ],
     subSkills: [
       {
-        name: "Translating constraints into inequalities",
+        name: "Feasible Region — Half-Plane Tests, Bounded, Unbounded and Empty",
         description:
-          "Turn at most, at least, and not more than into the correct inequality direction, and never forget the non-negativity constraints that the wording leaves implicit.",
+          "Draw each boundary from its intercepts, choose the side with a test point (never the origin on a line through it), intersect, and classify: bounded, unbounded, or empty — the empty case is proved by adding inequalities. 13 q at 0% HARD.",
       },
       {
-        name: "Plotting and identifying the feasible region",
+        name: "Reading Constraints Off a Shaded Region",
         description:
-          "Draw each boundary line, choose the correct half-plane with a test point, and take the intersection. 23 q at 9% HARD across this subtopic — the only place difficulty appears in this chapter.",
+          "Write each boundary as x/a + y/b = 1 from its intercepts, then fix >= or <= with one interior point per line; eliminate options a line at a time. 9 q at 22% HARD — the only difficulty in the chapter.",
       },
       {
-        name: "Classifying the region — bounded, unbounded, empty",
+        name: "Corner-Point Method — Maximum and Minimum of the Objective Function",
         description:
-          "An unbounded region may have a minimum and no maximum, or the reverse; an empty region has no solution at all. Recognising which case you are in is what separates the 9% HARD questions from the rest.",
+          "Find the corners as intersections of constraint boundaries (solve the pair when neither is on an axis), evaluate the objective at each, and take the best. 16 q at 0% HARD — no question on this page has ever been rated HARD.",
       },
       {
-        name: "Evaluating the objective at corner points",
+        name: "Formulation and Special Cases — Word Problems and Infinitely Many Optima",
         description:
-          "Find the corners as intersections of constraint boundaries, evaluate the objective at each, and take the best. 23 q at 0% HARD — no question in this subtopic has ever been rated HARD.",
+          "Turn at most, at least, and not more than into the correct inequality direction in one unit, keep x, y >= 0, and recognise the tie: an objective parallel to an edge gives infinitely many optimal points. 7 q at 0% HARD.",
       },
     ],
     traps: [
