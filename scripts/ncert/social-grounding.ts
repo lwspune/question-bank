@@ -86,11 +86,18 @@ function main() {
   const id = process.argv[2];
   const ch = requireChapter(id);
 
+  // `--anchors` prints the citable list and exits, with no transcription needed.
+  // An author cannot cite a heading they cannot see, and making them merge a
+  // file first just to find out what is citable is how citations get guessed.
+  const anchorsOnly = process.argv.includes("--anchors");
+
   const path = questionsJsonPath(id);
-  if (!existsSync(path)) {
+  if (!anchorsOnly && !existsSync(path)) {
     throw new Error(`no merged transcription at ${path} — run merge.ts first`);
   }
-  const rows: GroundedRow[] = JSON.parse(readFileSync(path, "utf8"));
+  const rows: GroundedRow[] = anchorsOnly || !existsSync(path)
+    ? []
+    : JSON.parse(readFileSync(path, "utf8"));
 
   if (ch.chapterNo == null) throw new Error(`chapter "${id}" has no chapterNo in config.ts`);
   const { body, lines } = chapterLines(ch.pdf);
@@ -107,6 +114,15 @@ function main() {
     `\n${id}: ${rows.length} rows, ${anchors.length} heading anchors ` +
       `(body ${body}pt, ${lines.length} lines)`
   );
+
+  if (anchorsOnly) {
+    console.log(`
+  Citable anchors (${anchors.length}) — cite as: § <heading> — why
+`);
+    for (const a of anchors) console.log(`    § ${a}`);
+    console.log("");
+    return;
+  }
 
   const violations = groundingViolations(rows, anchors, parseSocialCitations);
   if (violations.length === 0) {
