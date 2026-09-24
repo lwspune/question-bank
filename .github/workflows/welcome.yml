@@ -1,0 +1,52 @@
+name: Send welcome emails
+
+# Mail every student who has never been told how PYQ Vault works.
+# STUDENT_EDUCATION_SPEC.md §4 item 6.
+#
+# ONE EVER PER ACCOUNT is a property of the TABLE: the dedupe key is
+# `welcome:<userId>` with no day, and email_sends.dedupe_key is UNIQUE, so a
+# re-run cannot mail anyone twice. The 24-hour quiet window after any other
+# send is policy in src/lib/email/welcome.ts.
+#
+# 03:30 UTC IS 09:00 IST — the morning after a signup, and well clear of the
+# 21:00 IST mock report and the 12:30 IST due nudge, so a student never gets
+# two mails in one sitting.
+#
+# THE BACKLOG DRAINS THROUGH THIS CAP. Newest accounts are picked first, so a
+# new signup is never behind July's; with --limit=100 the ~370 existing
+# accounts take four mornings. The first run is therefore a campaign to the
+# existing cohort — the students who did not know the features existed — and
+# the owner runs `npm run email:welcome` (a dry run) before enabling it.
+#
+# --apply lives HERE and nowhere else, so `npm run email:welcome` by hand
+# stays a dry run.
+
+on:
+  schedule:
+    - cron: "30 3 * * *"
+  workflow_dispatch: # run on demand from the Actions tab
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # MUST match ci.yml and package.json engines (">=22").
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Mail welcomes
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          # Both REQUIRED and neither is part of the six CI secrets — the job
+          # fails loudly without them rather than silently mailing nobody.
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+        run: npm run email:welcome -- --apply --limit=100
