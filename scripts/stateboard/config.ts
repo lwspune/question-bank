@@ -193,6 +193,20 @@ const chem12 = (p: string) => join(CHEMISTRY_ROOT, "12th", p);
 // (PYTHONIOENCODING=utf-8) before concluding anything about a character, here
 // or in any other book in this pipeline.
 //
+// ⚠ ONE REAL TEXT-LAYER DEFECT DOES EXIST, AND IT IS DECODABLE RATHER THAN LOSSY.
+// Text set INSIDE A GRAPHIC can come through with a +29 ASCII cmap offset, so
+// Ch.8's newspaper-clipping figure extracts as `8QLRQ3XEOLF6HUYLFH`, which is
+// `UnionPublicService` shifted (8->U, Q->n, L->i, R->o; every printable char is
+// +29). It is dangerous precisely because it does not look like text at all, so
+// it is easy to paste verbatim into a stem.
+//
+// MEASURED across all eight chapters, so the scope is known rather than feared:
+// Ch.8 has 7 occurrences (all inside the Fig 8.5 clipping), Ch.4 has 2 (p.2,
+// figure labels `Traditional` and `Presence`), and the other six chapters have
+// ZERO. It never touches body prose, only text that is part of a graphic.
+// Treat it as a signal that you are reading a FIGURE, and transcribe that text
+// off the rendered page rather than decoding it by hand.
+//
 // ⚠ THERE IS NO ANSWER KEY ANYWHERE IN THIS BOOK. Measured across all 124 pages
 // of SB_12th_Geography.pdf: no ANSWERS section, no inline `(Ans. …)` key, and —
 // unlike every other subject here — NOT ONE SOLVED EXAMPLE in any chapter. So:
@@ -1614,6 +1628,26 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Factors Affecting Regional Development",
       "Regional Imbalance and Its Causes",
       "Strategies to Reduce Regional Imbalance",
+    ],
+  },
+
+  "nature-scope-12-geo": {
+    id: "nature-scope-12-geo",
+    chapterName: "Geography: Nature and Scope",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_12_Geography__Nature_and_Scope.pdf",
+    pdf: geo12("8. Geography  Nature and Scope.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Geography: Nature and Scope (Balbharati Geography textbook)",
+    // This chapter is ABOUT the discipline rather than about a part of the world,
+    // so its subtopics follow the four claims the chapter makes in order: what
+    // the subject covers, what kind of discipline it is, how far it reaches, and
+    // where it is going.
+    subtopics: [
+      "Branches of Geography",
+      "Nature of Geography as a Discipline",
+      "Scope of Geography and Its Links with Other Subjects",
+      "Latest Trends and Careers in Geography",
     ],
   },
 };

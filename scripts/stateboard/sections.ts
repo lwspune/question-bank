@@ -42,6 +42,12 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Chapter activities", label: "Try this / Give it a try / Can you tell?", kind: "exercise", refPrefixes: ["Act "] },
     { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
   ],
+  // Every Geography chapter takes the same two-block shape; see the note on
+  // region-12-geo above for why, and for why the activity block is `exercise`.
+  "nature-scope-12-geo": [
+    { group: "Chapter activities", label: "Let's recall / Try this / Can you tell?", kind: "exercise", refPrefixes: ["Act "] },
+    { group: "Exercise", label: "Exercise", kind: "exercise", refPrefixes: ["Ex "] },
+  ],
 
   // ── Ch.3 Indefinite Integration (Part 2) — verified against
   //    Ch_03_Indefinite_Integration.pdf via a get_text('blocks') (page, y) scan
