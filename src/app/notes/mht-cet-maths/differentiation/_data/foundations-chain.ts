@@ -6,7 +6,7 @@ export const FOUNDATIONS_CHAIN_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Differentiation measures instantaneous rate of change. Master the standard-derivative table, the sum/product/quotient rules, and the chain rule for composite functions — then know exactly where a derivative can fail to exist.",
   whyItMatters:
-    "This subtopic is the on-ramp to the whole chapter: 21 PYQs sit directly here (6 HARD, 14 MODERATE, 1 EASY). Every harder differentiation question — implicit, logarithmic, parametric, applications — reduces to applying the chain rule cleanly and recalling the table cold. " +
+    "This subtopic is the on-ramp to the whole chapter: 22 PYQs sit directly here (7 HARD, 14 MODERATE, 1 EASY). Every harder differentiation question — implicit, logarithmic, parametric, applications — reduces to applying the chain rule cleanly and recalling the table cold. " +
     "The recurring MHT-CET traps live here too: forgetting the inner factor of a composite, treating any modulus as a corner, and slipping on the exponential derivative aˣ log a.",
   concepts: [
     // 1 — standard derivatives + rules (foundation)

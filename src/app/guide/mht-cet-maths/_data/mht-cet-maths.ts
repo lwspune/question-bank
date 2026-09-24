@@ -237,12 +237,12 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Limits",
-    qCount: 93,
-    pctTotal: 4.2,
-    qPerPaper: 2.08,
-    pctHard: 56,
+    qCount: 89,
+    pctTotal: 4.0,
+    qPerPaper: 1.99,
+    pctHard: 55,
     focus:
-      "Continuity at a Point — Finding Parameters (47 · 57% HARD), Limit Evaluation Techniques (46 · 54%). The highest %HARD of any chapter in the bank, and it splits almost evenly, so it does not cherry-pick.",
+      "Continuity at a Point (19 · 58% HARD), Piecewise Continuity (19 · 53%), Algebraic (13 · 46%), Trigonometric (12 · 67%), Exponential-Logarithmic (11 · 64%), Existence and Infinity (9 · 44%), [x] and |x| Discontinuities (6 · 50%). The highest %HARD of any chapter in the bank, and the difficulty sits in every page, so it does not cherry-pick.",
   },
   {
     chapter: "Trigonometry - I",

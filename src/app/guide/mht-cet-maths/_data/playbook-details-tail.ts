@@ -24,36 +24,46 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A limit that comes out 0/0 or infinity/infinity, or a piecewise function carrying an unknown constant that is asked to be continuous.",
     story: [
-      "93 q, 2.08/paper, 56% HARD — the hardest chapter in the subject by rate. It is also the one chapter in the tail with nowhere to hide: Continuity at a Point runs 57% HARD across 47 q and Limit Evaluation Techniques runs 54% across 46 q, so both halves are above the paper's overall 38.4% HARD line. There is no cheap corner to cherry-pick.",
-      "The two halves ask for different work. Continuity at a Point is really equation-solving wearing a calculus costume: write the left-hand limit, the right-hand limit and the value at the point, set all three equal, and solve for the one or two unknowns. It is the more mechanical of the two despite carrying the higher HARD rate, and it is where a student with a reliable method banks the chapter's marks.",
+      "89 q, 1.99/paper, 55% HARD — the hardest chapter in the subject by rate. It is also the one chapter in the tail with nowhere to hide: the four limit pages run 44-67% HARD and the three continuity pages 50-58%, so every page is above the paper's overall 38.4% HARD line. There is no cheap corner to cherry-pick.",
+      "The two halves ask for different work. Continuity is really equation-solving wearing a calculus costume: write the left-hand limit, the right-hand limit and the value at the point, set all three equal, and solve for the one or two unknowns. It is the more mechanical of the two despite carrying a comparable HARD rate, and it is where a student with a reliable method banks the chapter's marks — 44 of the 89 questions are continuity problems.",
       "Limit Evaluation is recognition, not computation. Almost every question is one of a short list of standard forms in disguise, and the win is deciding within about fifteen seconds which tool applies — factorise, rationalise, divide by the highest power, or quote a standard limit. At 1.8 minutes a question, a limit you have to experiment on has already cost you a question elsewhere.",
       "Practical consequence: give this chapter a hard time cap. Two questions a paper at 56% HARD is four marks that will not come cheaply, and with no negative marking an unresolved limit is still worth a marked option rather than a blank.",
     ],
     subSkills: [
       {
-        name: "The standard limits, cold",
+        name: "Limits — Existence, One-Sided Limits and Limits at Infinity",
         description:
-          "sin x / x and tan x / x tending to 1, (a^x - 1)/x tending to ln a, (1 + x)^(1/x) tending to e, and (x^n - a^n)/(x - a) tending to n a^(n-1). Most Limit Evaluation questions are one of these after one algebraic step.",
+          "Compute the two sides separately whenever |x| or [x] is in play — x/(|x| + x^2) has no limit at 0 while |x|/(|x| + x^2) tends to 1 — and settle a ratio at infinity by its leading powers, replacing any finite sum by its closed form first.",
       },
       {
-        name: "Indeterminate-form triage",
+        name: "Algebraic Limits — Factorisation, Rationalisation and the xⁿ − aⁿ Form",
         description:
-          "Name the form first: 0/0, infinity/infinity, infinity minus infinity, 0 times infinity, or 1 raised to infinity. The form dictates the method, and misnaming it is what turns a 40-second question into a four-minute one.",
+          "Substitute first; on 0/0 factor and cancel, rationalise (both floors if both carry surds, twice for a nested root), or quote (x^n - a^n)/(x - a) = n a^(n-1). Read [f(x) - f(a)]/(x - a) as f'(a), and remember a finite limit forces the numerator to vanish.",
       },
       {
-        name: "Algebraic reduction",
+        name: "Trigonometric Limits — sin x/x and the 1 − cos x Family",
         description:
-          "Factorise and cancel for 0/0 in polynomials; rationalise when a surd sits in numerator or denominator; divide numerator and denominator by the highest power of x for limits at infinity.",
+          "sin x / x and tan x / x tending to 1, (1 - cos kx)/x^2 tending to k^2/2, an identity applied before the limit, the shift x = pi/2 - h, degrees converted by pi/180, and one more term of the series when the first order cancels.",
       },
       {
-        name: "One-sided limits and the continuity test",
+        name: "Exponential, Logarithmic and 1^∞ Limits",
         description:
-          "Continuity at x = a needs three things to agree: the left-hand limit, the right-hand limit and f(a). Test all three separately — a function can have a limit at a point and still be discontinuous there.",
+          "(a^x - 1)/x tending to log a and log(1 + x)/x tending to 1; (bc)^x - b^x - c^x + 1 factors as (b^x - 1)(c^x - 1); t = a^x turns mixed exponents into algebra; and any 1^infinity form is e to the limit of (f - 1)g.",
       },
       {
-        name: "Parameter hunting",
+        name: "Continuity at a Point — Finding f(c) and the Parameter",
         description:
-          "Given a piecewise f with unknowns a and b, continuity gives one equation per junction point. Two unknowns need two junctions, or one junction plus a differentiability condition. Set up the equations before touching algebra.",
+          "Every 'find k' or 'find f(0)' stem is a limit from the pages above set equal to a value. Carry a parameter inside the formula through the standard limits as a symbol, and differentiate an integral with a variable upper limit by the chain rule.",
+      },
+      {
+        name: "Continuity of Piecewise Functions — Junction Conditions and Parameter Systems",
+        description:
+          "Count the junctions first — two unknowns need two junctions — then write left = right = value at each, using the piece whose inequality owns the point for the value. Solve the inequality that defines the pieces before writing any equation.",
+      },
+      {
+        name: "Discontinuities of [x], |x| and sgn x — Counting the Points",
+        description:
+          "[x] jumps at every integer and [g(x)] wherever g crosses one; (x - a)/|x - a| is a jump of size 2 that no f(a) can bridge; and a factor that vanishes at the jump swallows it, so [x] sin(pi x) is continuous everywhere.",
       },
     ],
     traps: [
