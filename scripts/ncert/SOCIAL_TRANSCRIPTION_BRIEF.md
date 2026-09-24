@@ -150,6 +150,29 @@ the options written into the stem and the correct one named in the solution.
 
 ---
 
+## 4b. Transcribe the stem AS PRINTED, defects included
+
+These books carry real printed defects — a misspelling ("disscusion", "jewellry",
+"Jawar" for Jowar), a stem ending in a question mark that is an imperative, and
+in Polity Ch.2 Q12 a stem reading **"Consider the following two statements"**
+above a list of **four**. Reproduce all of it. Put the correction in the
+`solution`, never in the `stem`.
+
+Two reasons, and the second is the one that actually forces it:
+
+1. A student reading `/board` has the book open. A stem that disagrees with
+   their copy reads as *our* error, and they cannot tell which of us is wrong.
+2. **`content_hash` is computed from the stem.** A silently corrected stem
+   hashes differently from the same question re-ingested later out of the same
+   source, so the row **duplicates** instead of deduping. This is the same
+   reasoning as `commitStaged` refusing to repair a literal `\n` rather than
+   normalising it — fix the source, or annotate; never quietly rewrite text that
+   an id is derived from.
+
+Layout artifacts are NOT defects and should be cleaned: justification tab runs
+mid-sentence, a hyphen inserted by line-breaking, a heading split across two
+lines. Those are the PDF's rendering, not the book's text.
+
 ## 5. Answer style — BOARD EXAM, not textbook
 
 Write what a candidate should write in the CBSE Class 10 board exam.
