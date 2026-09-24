@@ -1651,6 +1651,30 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  "settlements-12-geo": {
+    id: "settlements-12-geo",
+    chapterName: "Human Settlements and Land Use",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_12_Geography__Human_Settlements_and_Land_Use.pdf",
+    pdf: geo12("3. Human Settlements and Land Use.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Human Settlements and Land Use (Balbharati Geography textbook)",
+    // The chapter runs settlement -> its types -> its patterns -> urban
+    // classification -> land use (rural then urban) -> the fringe between them.
+    // Types and patterns are kept APART deliberately: the book prints an
+    // "Always remember" box whose whole point is that they are different axes
+    // (compact is a TYPE, linear is a PATTERN), and the exercise tests both.
+    subtopics: [
+      "Factors Affecting Human Settlements",
+      "Types of Settlements",
+      "Patterns of Settlements",
+      "Types of Urban Settlements and Their Functions",
+      "Rural Land Use",
+      "Urban Land Use",
+      "Rural-Urban Fringe and Suburbs",
+    ],
+  },
+
   "population-1-12-geo": {
     id: "population-1-12-geo",
     chapterName: "Population: Part 1",
