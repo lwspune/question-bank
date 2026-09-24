@@ -285,41 +285,36 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A second-degree equation with equal coefficients on x squared and y squared, a tangency condition, or a distance measured from a point to a circle.",
     story: [
-      "47 q, 1.04/paper, 38% HARD. Two-thirds of it is ordinary coordinate geometry at ordinary cost: Tangent, Locus, and Equation Construction is 27 q at 37%, and Equation of Circle from Diameter, Centre, and Concentric Conditions is 11 q at 27% — the second-softest subtopic in the whole long tail. The expensive corner is Two Circles — Tangency, Common Tangents, and Relative Position, only 9 q but 56% HARD.",
-      "The chapter's most reusable move is not calculus. The greatest and least distance from an external point to a circle is the distance to the centre plus or minus the radius, full stop. The identical move answers 'greatest and least modulus of z on a disc' in Complex Numbers and 'maximum perpendicular distance from a point on a circle' here. At 1.8 minutes a question, replacing a calculus optimisation with one distance computation is a time lever, not merely an elegance.",
-      "Everything else is centre-and-radius bookkeeping. Read the centre as (-g, -f) and the radius as the square root of g squared plus f squared minus c, then compare a distance against that radius: less than means inside, equal means tangent, greater means outside. That one comparison drives point position, line position and the two-circle classification alike.",
+      "46 q, 1.02/paper, 37% HARD, across five notes pages (/notes/mht-cet-maths/circle). Half of it is ordinary coordinate geometry at ordinary cost: the equation page is 12 q at 33% and concentric-and-touching 6 q at 17%. Tangents (14 q, 50% HARD) and Two Circles (8 q, 50%) are the expensive corners.",
+      "The chapter's most reusable move is not calculus. The greatest and least distance from an external point to a circle is the distance to the centre plus or minus the radius, full stop. The identical move answers 'greatest and least modulus of z on a disc' in Complex Numbers and the maximum distance of a point of the circle from a line.",
+      "Everything else is centre-and-radius bookkeeping. Read the centre as (-g, -f) and the radius as the square root of g squared plus f squared minus c, then compare a distance against that radius: less than means the line cuts, equal means tangent, greater means it misses. The tangent length from an external point is the square root of the circle's expression at that point, and the kite it makes with the two radii has area r times that length.",
       "The two-circle corner is worth learning as a table rather than as a derivation: compare the distance between the centres against the sum and the absolute difference of the radii, and the number of common tangents (0, 1, 2, 3 or 4) follows from which case you are in.",
     ],
     subSkills: [
       {
-        name: "Centre and radius from the general equation",
+        name: "Equation of a Circle — Centre-Radius, General, Diameter and Parametric Forms",
         description:
-          "For x^2 + y^2 + 2gx + 2fy + c = 0 the centre is (-g, -f) and the radius is the square root of (g^2 + f^2 - c). If that quantity is negative there is no real circle — a question that engineers this is testing whether you checked.",
+          "For x^2 + y^2 + 2gx + 2fy + c = 0 the centre is (-g, -f) and the radius is the square root of (g^2 + f^2 - c); the diameter form from two endpoints; the parametric form; and points of a family on a circle via Vieta. 12 q at 33% HARD.",
       },
       {
-        name: "Constructing the equation",
+        name: "Concentric Circles and Circles Touching a Line or an Axis",
         description:
-          "From centre and radius; from the two endpoints of a diameter using the diameter form; and from a concentric condition, where only the constant term changes.",
+          "Same centre, new radius from an area or a point; radius equals the distance from the centre to the tangent line; the contact point is the foot of the perpendicular. 6 q at 17% HARD.",
       },
       {
-        name: "Position of a point and of a line",
+        name: "Tangents — At a Point, With a Given Slope, From an External Point and Their Loci",
         description:
-          "Substitute the point into the left-hand side and read the sign; for a line, compare the perpendicular distance from the centre against the radius.",
+          "T = 0 at a point, y = mx ± a√(1 + m²) for a slope, the tangent length √S1 and the kite area, the angle between the tangents, and loci from tangent lengths. 14 q at 50% HARD — the chapter's expensive corner.",
       },
       {
-        name: "Tangent, normal and length of tangent",
+        name: "Distance From a Point to a Circle — Greatest, Least, a Line Cutting the Circle and the Segment Area",
         description:
-          "Condition of tangency is distance-from-centre equals radius. The length of the tangent from an external point is the square root of the left-hand side evaluated at that point. The normal always passes through the centre.",
+          "d ± r for the extreme distances, distance from the centre against r for a line, and the segment as a sector minus a triangle. 6 q at 17% HARD; the same move as the Complex Numbers modulus-on-a-disc family.",
       },
       {
-        name: "Two circles",
+        name: "Two Circles — Touching, Common Tangents and Relative Position",
         description:
-          "Compare the distance between centres d against r1 + r2 and |r1 - r2|. Externally tangent when d = r1 + r2, internally tangent when d = |r1 - r2|, and the common-tangent count follows.",
-      },
-      {
-        name: "Geometric extremum without calculus",
-        description:
-          "Greatest distance from an external point equals distance to centre plus radius; least equals distance to centre minus radius. Same move as the Complex Numbers modulus-on-a-disc family.",
+          "Compare the distance between centres d against r1 + r2 and |r1 - r2|. Externally tangent when d = r1 + r2, internally tangent when d = |r1 - r2|, and the common-tangent count follows. 8 q at 50% HARD.",
       },
     ],
     traps: [
@@ -459,41 +454,31 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A homogeneous second-degree expression in x and y, or a general second-degree equation asked whether it represents two straight lines.",
     story: [
-      "45 q, 1.00/paper, 40% HARD — and the 40% overstates how hard it is to PREPARE. This is the most closed chapter on the paper: essentially every question reduces to reading a, h and b out of a combined equation and applying one item from a short list of conditions. The two subtopics behave alike (Combined Equation and Condition, 28 q at 39%; Angle, Distance, and Geometry of Pair, 17 q at 41%), so there is no cherry-picking, but equally no surprise.",
-      "The conditions are the cross-chapter angle family speaking this chapter's dialect. Perpendicularity is a + b = 0 here, where straight lines say m1 times m2 equals -1, vectors say the dot product is zero, and Line and Plane says it through the direction vectors and the plane normal. A survey of the bank puts perpendicularity at 83 q across 7 chapters and the parent idea, angle between two objects, at 87 q across 7 — so the formula learned here is being tested four more times under other names.",
-      "The other reusable piece is the degeneracy test. A general second-degree equation represents a pair of lines exactly when a particular 3x3 determinant vanishes — the same universal condition that shows up as concurrency of three lines, collinearity of three points, coplanarity, and a zero scalar triple product, measured across five to six chapters and roughly 19 to 30 questions.",
-      "Practical upshot: this is the tail chapter with the best ratio of preparation time to reliability. A checklist of six conditions, drilled once, holds up across all 45 questions.",
+      "44 q, 0.98/paper, 41% HARD — and the 41% overstates how hard it is to PREPARE. This is the most closed chapter on the paper: essentially every question reduces to reading a, h and b out of a combined equation and applying one item from a short list of conditions. Four notes pages (/notes/mht-cet-maths/pair-of-straight-lines): the joint-equation page is 12 q at 17%, the slopes page 10 q at 50%, the angle page 12 q at 58%, the general-equation page 10 q at 40%.",
+      "The conditions are the cross-chapter angle family speaking this chapter's dialect. Perpendicularity is a + b = 0 here, where straight lines say m1 times m2 equals -1, vectors say the dot product is zero, and Line and Plane says it through the direction ratios. The angle itself is tan θ = 2√(h² − ab)/|a + b|, and the pair through a point at a given angle is the Straight Line two-root problem multiplied out.",
+      "The other reusable piece is the degeneracy test. A general second-degree equation represents a pair of lines exactly when a particular 3x3 determinant vanishes — the same universal condition that shows up as concurrency of three lines, collinearity of three points and coplanarity in three dimensions.",
+      "Practical upshot: this is the tail chapter with the best ratio of preparation time to reliability. A checklist of six conditions, drilled once, holds up across all 44 questions.",
     ],
     subSkills: [
       {
-        name: "Reading a, h and b",
+        name: "Joint Equation of Two Lines — Product of Linear Factors and the Triangle They Form",
         description:
-          "For ax^2 + 2hxy + by^2 the coefficient of xy is 2h, so h is HALF of what is printed. Every other formula in the chapter depends on getting this right.",
+          "Multiply two lines to get the pair; factorise a pair to get the lines; with a third line, the triangle's vertices, centroid, median and circumcentre. 12 q at 17% HARD — the cheap page.",
       },
       {
-        name: "Condition for real, distinct lines",
+        name: "Slopes of a Homogeneous Pair — Sum, Product and Ratio Conditions",
         description:
-          "h^2 greater than ab gives two distinct real lines, h^2 equal to ab gives coincident lines, and h^2 less than ab gives no real lines (only the origin).",
+          "For ax^2 + 2hxy + by^2 the coefficient of xy is 2h, so h is HALF of what is printed; the slopes satisfy sum = -2h/b and product = a/b, and a ratio m : n gives (m + n)² ab = 4mn h². 10 q at 50% HARD.",
       },
       {
-        name: "Separating the pair",
+        name: "Angle Between the Pair — Perpendicular Pairs, Lines at a Given Angle and the Bisectors",
         description:
-          "Factorise the homogeneous expression into two linear factors, or solve it as a quadratic in y/x to get the two slopes. The slopes satisfy sum = -2h/b and product = a/b.",
+          "tan θ = 2√(h² − ab)/|a + b|; perpendicular exactly when a + b = 0, coincident when h² = ab; the pair at a given angle to a line by squaring the angle condition; the bisector pair (x² − y²)/(a − b) = xy/h. 12 q at 58% HARD.",
       },
       {
-        name: "Angle between the pair",
+        name: "General Second-Degree Equation — Condition for a Pair, Parallel Lines and Distances",
         description:
-          "tan theta is the modulus of 2 times the square root of (h^2 - ab), all over (a + b). Perpendicular exactly when a + b = 0; coincident exactly when h^2 = ab.",
-      },
-      {
-        name: "The general second-degree case",
-        description:
-          "Before applying any homogeneous result to an equation carrying x, y or constant terms, check the 3x3 determinant condition. If it does not vanish, the equation is a conic, not a pair.",
-      },
-      {
-        name: "Distances and bisectors",
-        description:
-          "Distance between the two lines of a parallel pair, and the combined equation of the angle bisectors of the pair. Short, formula-driven, and the whole of the smaller subtopic.",
+          "Before applying any homogeneous result to an equation carrying x, y or constant terms, check the 3x3 determinant condition; a parallel pair (h² = ab) factors as a perfect square and its gap is 2√((g² − ac)/(a(a + b))); the product of distances from a point. 10 q at 40% HARD.",
       },
     ],
     traps: [

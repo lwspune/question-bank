@@ -760,31 +760,31 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A line in the plane: a point dividing a segment, a distance from a point, three lines tested for concurrency, an angle between two lines, or a bisector.",
     story: [
-      "46 q at 0.96 per paper and 22% HARD. Two broad subtopics, both routine coordinate geometry, and the reason this sits in the Quick-Win strand rather than the long tail is not its size — it is that it shares its whole toolkit with Line and Plane, a cornerstone worth 4.96 questions a paper. Section formula, foot of perpendicular, distance from a point, angle between two objects: every one of these is the 2-D version of a move you already have to own. Once the cornerstone is yours, this chapter costs almost nothing on top.",
-      "Section Formula, Concurrency, Foot of Perpendicular, and Distance is 27 q at 19% HARD, the cheaper of the two blocks. Equation of Line — Rotation, Angle, and Bisector is 19 q at 26%. Neither is expensive, and there is no HARD concentration to route around.",
+      "44 q at 0.92 per paper and 20% HARD. Four notes pages (/notes/mht-cet-maths/straight-line), all routine coordinate geometry, and the reason this sits in the Quick-Win strand rather than the long tail is not its size — it is that it shares its whole toolkit with Line and Plane, a cornerstone worth 4.96 questions a paper. Section formula, foot of perpendicular, distance from a point, angle between two objects: every one of these is the 2-D version of a move you already have to own.",
+      "Slope, Angle Between Lines and Rotation is 15 q at 33% HARD and holds every HARD question in the chapter: lines through a point at a given angle, a rotation about a point, the bisector at a vertex, a reflected slope — all the angle formula solved for the unknown slope. Forms, Intersections and Concurrency (14 q, 21%), Distance (9 q, 11%) and the Section Formula page (6 q, 0%) are cheap.",
       "One idea in here pays well beyond this chapter. Concurrency of three lines is a vanishing 3x3 determinant, and the survey found that same determinant working as a universal degeneracy test across five or six chapters — as collinearity of three points, as coplanarity of lines in three dimensions, and as scalar triple product zero in Vectors. Learn the test once and recognise its four costumes.",
       "The same is true of the angle condition. The survey counted the angle-between-two-objects idea across 87 q in 7 chapters and perpendicularity across 83 q in 7. Here it is the slope-product condition; in Vectors it is a dot product; in Pair of Straight Lines it is a coefficient sum. One idea, four dialects.",
     ],
     subSkills: [
       {
-        name: "Section formula, distance, and the foot of perpendicular",
+        name: "Slope, Angle Between Lines and Rotation",
         description:
-          "Internal and external division, the distance from a point to a line, and dropping a perpendicular onto a line. 27 q at 19% HARD — the cheapest block, and directly transferable to Line and Plane.",
+          "Slope from two points or from ax + by + c = 0, parallel and perpendicular conditions, tan θ = |(m1 − m2)/(1 + m1m2)|, the two lines through a point at a given angle, rotation about a point, and the bisector at a vertex. 15 q at 33% HARD — the whole difficulty of the chapter.",
       },
       {
-        name: "Concurrency of three lines",
+        name: "Forms of a Line, Intersections and Concurrency",
         description:
-          "Three lines are concurrent when the determinant of their coefficients vanishes. The same test reads as collinearity of points and coplanarity in three dimensions. Part of the 27 q block.",
+          "Intercept form with the triangle-area and 1/a² + 1/b² = 1/p² stems, normal form, point-slope for medians and parallels, the intersection point and a line through it, and the concurrency determinant. 14 q at 21% HARD.",
       },
       {
-        name: "Equation of a line in its standard forms",
+        name: "Section Formula, Midpoints and Rectangles",
         description:
-          "Slope-intercept, point-slope, two-point, intercept and normal forms, and moving between them to match whichever form the options use. Part of the 19 q, 26% HARD subtopic.",
+          "Internal and external division, the ratio in which the origin divides a segment between parallel lines, rectangle centres and missing vertices, and the circumcentre. 6 q at 0% HARD.",
       },
       {
-        name: "Angle between lines, bisectors, and rotation",
+        name: "Distance — From a Point, Between Parallels, Along a Direction and the Foot of the Perpendicular",
         description:
-          "The slope-product condition for perpendicularity, the tangent formula for a general angle, both angle bisectors, and the effect of rotating a line about a point. 19 q at 26% HARD.",
+          "|ax0 + by0 + c|/√(a² + b²), the gap between parallels and the square it bounds, the foot of the perpendicular, and distance measured along a direction. 9 q at 11% HARD — directly transferable to Line and Plane.",
       },
     ],
     traps: [

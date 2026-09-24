@@ -291,12 +291,12 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Circle",
-    qCount: 47,
-    pctTotal: 2.1,
-    qPerPaper: 1.04,
-    pctHard: 38,
+    qCount: 46,
+    pctTotal: 2.0,
+    qPerPaper: 1.02,
+    pctHard: 37,
     focus:
-      "Tangent, Locus, and Equation Construction (27 · 37% HARD), Equation of Circle from Diameter, Centre, and Concentric Conditions (11 · 27%), Two Circles — Tangency, Common Tangents, and Relative Position (9 · 56%). Its extremum questions — greatest or least distance from a point to the circle — are answered by centre-distance plus or minus radius, with no calculus.",
+      "Tangents (14 · 50% HARD), Equation of a Circle (12 · 33%), Two Circles (8 · 50%), Concentric and Touching (6 · 17%), Distance to a Circle (6 · 17%). Its extremum questions — greatest or least distance from a point to the circle — are answered by centre-distance plus or minus radius, with no calculus.",
   },
   {
     chapter: "Linear Programming",
@@ -327,12 +327,12 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Pair of Straight Lines",
-    qCount: 45,
-    pctTotal: 2.0,
-    qPerPaper: 1.0,
-    pctHard: 40,
+    qCount: 44,
+    pctTotal: 1.9,
+    qPerPaper: 0.98,
+    pctHard: 41,
     focus:
-      "Combined Equation and Condition for Pair of Lines (28 · 39% HARD), Angle, Distance, and Geometry of Pair (17 · 41%). Its perpendicularity test reads a + b = 0 rather than the slope product used elsewhere — the same condition in a different dialect.",
+      "Joint Equation (12 · 17% HARD), Slopes of a Pair (10 · 50%), Angle Between the Pair (12 · 58%), General Second-Degree Equation (10 · 40%). Its perpendicularity test reads a + b = 0 rather than the slope product used elsewhere — the same condition in a different dialect.",
   },
   {
     chapter: "Permutations and Combinations",
@@ -345,12 +345,12 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Straight Line",
-    qCount: 46,
-    pctTotal: 2.1,
-    qPerPaper: 0.96,
-    pctHard: 22,
+    qCount: 44,
+    pctTotal: 2.0,
+    qPerPaper: 0.92,
+    pctHard: 20,
     focus:
-      "Section Formula, Concurrency, Foot of Perpendicular, and Distance (27 · 19% HARD), Equation of Line — Rotation, Angle, and Bisector (19 · 26%). Cheap, and it underwrites Pair of Straight Lines and Circle — the return is larger than its own 0.96 per paper.",
+      "Slope, Angle and Rotation (15 · 33% HARD), Forms, Intersections and Concurrency (14 · 21%), Distance and the Foot of the Perpendicular (9 · 11%), Section Formula and Rectangles (6 · 0%). Cheap, and it underwrites Pair of Straight Lines and Circle — the return is larger than its own 0.92 per paper.",
   },
   {
     chapter: "Sets, Relations and Functions",
