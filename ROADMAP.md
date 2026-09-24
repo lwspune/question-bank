@@ -1072,10 +1072,16 @@ writing anything.
 
 ## Engagement engine — what remains
 
-Three mechanics shipped 2026-09-18/19 (result-screen findings card, `/drill`, the
-expiry sweep + recovery emitter). These are the open ones. Every item here must
-still clear the **principles gate** in `CLAUDE.md` — no leaderboards, hearts,
-variable rewards, streak freezes or vanity milestones.
+**The plan, the status of every item and the PMF targets now live in
+[ENGAGEMENT_SPEC.md](ENGAGEMENT_SPEC.md) (2026-09-24).** Tranche A shipped that
+day (result headline reframed + attempt-scoped drill · due count on the avatar
+badge and /me · weekly sittings goal, migration 0113). Tranches B and C are
+specified there; the C items each need a decision named in its §5. **Short
+sittings as the default first unit was DECLINED by the user (2026-09-24)** and
+is not to be built. The goal-progress decision below is unchanged and is what
+the spec's C3 points at. Every item must still clear the **principles gate** in
+`CLAUDE.md`: no leaderboards, hearts, variable rewards, streak freezes or vanity
+milestones.
 
 ### Goal progress — BLOCKED on a schema + capture decision
 
@@ -1121,13 +1127,10 @@ derive-with-override shape is the only one that shows anything to most students.
 
 ### `/drill` transfer half — "3 more like it"
 
-Deferred at `/drill`'s launch, deliberately. Today the drill serves back the
-EXACT questions a student missed; the transfer half would serve *unseen* questions
-from the same weak subtopic, which is what actually demonstrates transfer. Needs
-an unseen + difficulty-matched picker, which is real work. **Worth seeing whether
-students finish the drills they already get before building it** — there is no
-completion data yet, because `/drill` shipped 2026-09-19 and has had no browser
-pass.
+Now **B2 (daily set)** in ENGAGEMENT_SPEC.md: due drill questions first, then
+unseen PYQs from the two weakest subtopics. Needs the unseen + difficulty-matched
+picker. Build once Tranche A shows drills being finished (8 completions by 2
+students at the time of writing).
 
 ### Decisions-log archive gap (docs debt, not a feature)
 
