@@ -53,9 +53,28 @@ guessed:**
 | Book | Question block opens with |
 |---|---|
 | Geography | `EXERCISES` (printed five times on one line) |
-| Economics | `EXERCISES`, **plus** in-text `LET'S WORK THESE OUT` boxes |
+| Economics | `EXERCISES`, **plus** in-text `LET'S WORK THESE OUT` **and `LET'S WORK THIS OUT`** boxes |
 | Polity | `Exercises` |
 | History | **`Write in brief` and `Discuss`** — two separately numbered blocks, and this book never prints the word Exercises |
+
+**Three traps in that table, each measured on the actual files:**
+
+1. **Economics' box heading is not one string. It is two.** 29 boxes say
+   `LET'S WORK THESE OUT`; **3 say `LET'S WORK THIS OUT`** (singular) — one in
+   Ch.4, two in Ch.5. Match both. A search for only the plural finds 29 boxes,
+   reports nothing missing, and silently drops 3 — this is the same defect that
+   shipped a short chapter on the Class 10 Science lane, where a probe looking
+   for `QUESTIONS` could not see a box headed `QUESTION`. **A heading regex that
+   under-matches does not fail; it agrees with you.**
+
+2. **History prints `Discuss` all through the chapter as a marginal activity
+   prompt** — Ch.1 has six before the end. The `Discuss` you want is the numbered
+   block on the closing page, beside `Write in brief`. Find the two block
+   headings on the *same* page and work from there; do not grep the word.
+
+3. **`EXERCISES` is not near the end.** Economics Ch.5 puts it on p13 of 19,
+   Ch.1 on p14 of 16 — `ADDITIONAL PROJECT / ACTIVITY` and `APPENDIX` come after
+   it. Scan the whole chapter, not the last few pages.
 
 ---
 
@@ -71,6 +90,12 @@ guessed:**
 - **Map-marking questions.** "On an outline map of India, mark and label…" needs
   a printable map; a text answer can only list the places, which is not what the
   question asks.
+- **Numbered things that are not questions.** Economics Ch.5 pp.8–9 runs a
+  `LET'S WORK THIS OUT` comic strip whose panels are numbered 1–9
+  ("PRAKASH GOES TO THE POST OFFICE TO…"). It is a narrative sequence, not a
+  question block. Puzzle grids are the same — Geography Ch.4's p.41 ACTIVITY is
+  a 13×13 word-search that cannot survive as a text stem. **A number at the start
+  of a line is not evidence of a question.**
 
 **Do ingest, even though it feels odd:**
 
@@ -96,6 +121,12 @@ page and read the printed labels.
 This is the defect a blind derivation provably cannot catch: your reasoning will
 confirm the right *text* sitting under the wrong *letter*, and the check reads as
 agreement.
+
+**Settle the layout by geometry, not by eye.** Read the option lines' x/y
+coordinates: one column means a single x with strictly increasing y, and then the
+text-layer order already IS the printed order. Geography Ch.4 is single-column
+and needed no re-slotting; Ch.1 is two-column and needed it for every question.
+**The layout varies by chapter, so neither answer may be assumed.**
 
 **Economics MCQs often carry THREE options.** The bank requires exactly four with
 exactly one correct, so a three-option MCQ ships as `format: "subjective"` with
