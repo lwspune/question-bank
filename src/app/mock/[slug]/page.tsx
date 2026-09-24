@@ -12,6 +12,7 @@ import { mockKindNote } from "@/lib/mocks/catalogue";
 import StartMock from "./StartMock";
 import ShareMock from "./ShareMock";
 import AttemptsList from "../_components/AttemptsList";
+import { listMyAssignments } from "@/lib/assignments/service";
 
 type Params = { slug: string };
 
@@ -32,6 +33,13 @@ export default async function MockInstructions({ params }: { params: Params }) {
   const myAttempts = user
     ? await getUserAttempts(createSupabaseServerClient(), user.id, mock.id)
     : [];
+  // Set by a teacher? One line under the title, only for a student in a batch
+  // this paper was assigned to (ENGAGEMENT_SPEC.md C1). Best-effort.
+  const assigned = user
+    ? await listMyAssignments(user.id)
+        .then((rows) => rows.find((a) => a.mockId === mock.id) ?? null)
+        .catch(() => null)
+    : null;
 
   const mins = Math.round(mock.durationSecs / 60);
   // Copy is derived, not hard-coded: MHT-CET has NO negative marking, and the
@@ -57,6 +65,21 @@ export default async function MockInstructions({ params }: { params: Params }) {
         </Link>
 
         <h1 className="mt-4 text-2xl font-bold tracking-tight">{mock.title}</h1>
+        {assigned && (
+          <p
+            className={
+              "mt-2 text-sm font-medium " +
+              (assigned.done
+                ? "text-emerald-600 dark:text-emerald-400"
+                : assigned.state === "overdue"
+                  ? "text-red-600 dark:text-red-400"
+                  : "text-brand-accent")
+            }
+          >
+            {assigned.done ? "Done" : assigned.label} {"\u00b7"} set by your teacher for {assigned.batchName}
+            {assigned.note ? ` ${"\u00b7"} ${assigned.note}` : ""}
+          </p>
+        )}
 
         {/* Org staff (admins/teachers) get a copy-able share link for students. */}
         {member && <ShareMock slug={mock.slug} />}
