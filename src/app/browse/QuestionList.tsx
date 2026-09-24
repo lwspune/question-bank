@@ -1,5 +1,5 @@
 import { Layers } from "lucide-react";
-import KatexRenderer from "@/components/math/KatexRenderer";
+import BlockText from "@/components/math/BlockText";
 import { groupBySet } from "@/lib/export/groupBySet";
 import type { QuestionRow } from "@/lib/questions/query";
 import { getQuestionResources } from "@/lib/links/questionResources";
@@ -140,7 +140,11 @@ function SetBanner({
       </div>
       {passage && (
         <div className="mb-3 font-serif text-sm italic leading-relaxed text-foreground/85">
-          <KatexRenderer text={passage} />
+          {/* BlockText, not KatexRenderer: a set's shared context is where
+              "match the columns" tables live (61 sets bank-wide), and
+              KatexRenderer prints a pipe-table as raw pipes. Contract pinned
+              by tests/long-form-field-renderer-contract.test.ts. */}
+          <BlockText text={passage} />
         </div>
       )}
       {children}
