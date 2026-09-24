@@ -290,6 +290,114 @@ marking scheme, on papers already shipped — so it is a backfill candidate, not
 
 ---
 
+## Backfill ledger — the Chemistry compilation mislabels three of its own sittings (2026-09-24)
+
+**Found during the MH HSC 12 Chemistry board-paper ingest.** Logged, NOT swept — it
+re-labels 153 shipped PUBLIC rows, so it is a decision rather than a tidy-up.
+
+The chapterwise compilation files its 2023, 2024 and 2025 Chemistry sittings as **March**.
+Two of those covers read otherwise:
+
+| Sitting | Compilation says | Printed cover | Rows |
+|---|---|---|---|
+| 2024 | March | `2024 II 29` = **29 February** | 50 |
+| 2025 | March | `2025 II 20` = **20 February** | 52 |
+| 2023 | March | (no board cover; the reproduction's own heading says March) | 51 |
+
+On an MH cover the **roman numeral IS the month** — the July-2024 paper prints `2024 VII 23`
+for 23 July, which is what validates the reading. So the compilation is simply wrong about
+February 2024 and February 2025.
+
+**The Physics compilation has no such gap**, filing the same years as February and matching
+its covers. This is a Chemistry-only defect, which is why two subjects shipped without it
+surfacing.
+
+**Worked around, not fixed.** `Paper.bankMonth` in `scripts/mh-hsc-12-pyq/paper/config.ts`
+records the label reconciliation must SEARCH on, while `month` stays cover truth and is what
+new rows are stamped with. Without it `reconcile-diff` returned **zero** bank rows and would
+have reported a fully-covered sitting as entirely missing.
+
+**360 before touching anything:**
+
+- **Scope** — 102 rows across the 2024 and 2025 sittings carry `pyq_month = 'March'` where the
+  cover says February. The 2023 sitting is NOT in scope: no board copy exists to check against.
+- **Blast radius** — `pyq_month` feeds the `/browse` PYQ-year filter, mock sitting-discovery and
+  the public provenance bracket. Re-labelling splits what students currently see as one March
+  sitting into February, and any mock built from "March 2024" would need rebuilding.
+- **Does it really apply** — yes for 2024 and 2025, on cover evidence. NOT established for 2023.
+- **Risk + reversibility** — a single `UPDATE ... SET pyq_month`, fully reversible, no hash change
+  (`content_hash` does not cover `pyq_month`).
+- **Cost** — minutes for the update; the unknown is whether any shipped mock references the old label.
+- **Recommendation** — **DEFER.** The new rows are correct; the old ones are wrong but consistent.
+  Fix when someone can check no mock or saved paper depends on the March label.
+
+---
+
+## Backfill ledger — RESOLVED 2026-09-24: attach-figures hung a Chemistry structure on a MATHS question
+
+**Found and repaired the same day**, during the Chemistry ingest. Recorded because the row was
+PUBLIC and because the mechanism is the classic two-id-spaces collision.
+
+`attach-figures.ts` chose which rows a reconcile paper's questions live on with a **hardcoded**
+source-file prefix:
+
+```ts
+q = paper.bankStatus === "reconcile" ? q.like("source_file", "MH_HSC_12_Maths_PYQ__%") : ...
+```
+
+For `chem-mar-2023` it therefore searched the **Maths** compilation, matched `Q. 1. vi.` of the
+same March-2023 sitting — `\int\cos^{3}x\,dx`, Indefinite Integration — and attached a benzene
+ring to it. The row went PUBLIC carrying a Chemistry structure it never referenced.
+
+**Why it survived two subjects.** `question_number` is unique only WITHIN a subject, and
+`pyq_year` + `pyq_month` do not separate three subjects' sittings. Physics never tripped it
+because **none of its reconcile papers carries a figureRef**, so this branch had only ever run
+for Maths, where the hardcoded prefix happened to be right.
+
+**Repair.** The spurious `image_url` was cleared (the Maths row had none before — its stem
+references no figure, so nothing was destroyed), the prefix is now derived per subject via a
+`COMPILATION_TOKEN` map, and the re-run landed the crop on the correct Chemistry row. Verified
+after: 4 Chemistry crops, all on Chemistry rows, **0 on any other subject**, and
+`audit:figures` reports 0 references-without-image across the 241 new rows.
+
+Note the token is NOT the subject name — the Maths files say `Maths` where the bank's subject
+is `Mathematics`.
+
+---
+
+## Backfill ledger — a shipped Chemistry row leaks a pandoc image artifact into its stem (2026-09-24)
+
+**Noticed while checking whether two figure crops were needed.** One row, PUBLIC.
+
+`MH_HSC_12_Chemistry_PYQ__Aldehydes_Ketones_and_Carboxylic_Acids.docx`, March 2025 `Q.1.viii`,
+carries raw markdown in its question text:
+
+```
+The highest acidic compound among the following is _____. ![](media/image8.png){width="0.8...
+```
+
+The row DOES have an `image_url`, so the figure itself is attached and the question is
+answerable — but the student also sees the literal `![](media/image8.png){width=...}` markup.
+
+`npm run audit:text`'s PANDOC_ARTIFACT class did not report it, which is the more interesting
+half: the probe is scoped by `source_file` substring and this row sits under the compilation's
+`.docx` name, outside the `MH_HSC_12_Chemistry_PYQ__20` filter used after the ingest.
+
+**360 before touching anything:**
+
+- **Scope** — UNMEASURED. One row found incidentally; the compilation is ~378 rows and the same
+  pandoc path produced all of them. Run `audit:text -- MH_HSC_12_Chemistry_PYQ__` (no year) first.
+- **Blast radius** — a text-only edit. `content_hash` covers the stem, so a correction is
+  delete + re-commit unless done in place with the hash recomputed (see the overline entry above
+  for that technique).
+- **Does it really apply** — yes, it is visible markup in a PUBLIC stem.
+- **Risk + reversibility** — low, reversible.
+- **Cost** — minutes once the true count is known.
+- **Recommendation** — **MEASURE FIRST.** Do not repair one row until the unfiltered probe has
+  said whether it is one or a hundred.
+
+---
+
 ## Backfill ledger — RESOLVED 2026-09-24: a Boolean overline was dropped at ingestion, and the shipped PUBLIC row asked the wrong question
 
 **Found during the MH HSC 12 Physics printed-paper ingest. Investigated, resolved and repaired

@@ -22,7 +22,7 @@ if (existsSync(envLocal)) require("dotenv").config({ path: envLocal, override: t
 import { createSupabaseAdminClient } from "../../../src/lib/supabase/admin";
 import { EXAM_ID } from "../config";
 
-const SUBJECTS = ["Mathematics", "Physics"] as const;
+const SUBJECTS = ["Mathematics", "Physics", "Chemistry"] as const;
 
 /** `PaperCatalog` keys on the chapter name, so the query returns names only —
  *  ids would add a second thing to keep in sync for no reader. */

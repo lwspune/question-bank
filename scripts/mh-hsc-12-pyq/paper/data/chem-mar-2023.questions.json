@@ -1,0 +1,799 @@
+[
+  {
+    "ref": "Q.1.i",
+    "format": "mcq",
+    "chapter": "Solid State",
+    "subtopic": "Cubic System",
+    "difficulty": "EASY",
+    "context": "Select and write the correct answer for the following multiple choice type of questions:",
+    "setLabel": "Q. 1",
+    "stem": "The relation between radius of sphere and edge length in body centered cubic lattice is given by formula:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\sqrt{3}\\,r = 4a\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(r = \\dfrac{\\sqrt{3}}{a} \\times 4\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(r = \\dfrac{\\sqrt{3}}{4}\\,a\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(r = \\dfrac{\\sqrt{2}}{4} \\times a\\)"
+      }
+    ],
+    "answer": "C",
+    "reviewFlag": true,
+    "solution": "**(C)** \\(r = \\dfrac{\\sqrt{3}}{4}\\,a\\)\n\nIn a body centred cubic cell the particles touch along the **body diagonal**, which runs from one corner, through the central particle, to the opposite corner.\n\nFor a cube of edge \\(a\\), the face diagonal is \\(\\sqrt{2}\\,a\\) and the body diagonal is\n\n\\(\\sqrt{a^{2} + (\\sqrt{2}a)^{2}} = \\sqrt{3}\\,a\\)\n\nAlong that diagonal lie one radius of the first corner particle, the full diameter of the central particle and one radius of the far corner particle:\n\n\\(r + 2r + r = 4r = \\sqrt{3}\\,a\\)\n\n\\(\\therefore r = \\dfrac{\\sqrt{3}}{4}\\,a\\)\n\nOption (A) has the \\(r\\) and \\(a\\) interchanged; option (D) is the face centred cubic relation, where contact is along the face diagonal."
+  },
+  {
+    "ref": "Q.1.ii",
+    "format": "mcq",
+    "chapter": "Ionic Equilibria",
+    "subtopic": "pH Scale",
+    "difficulty": "MODERATE",
+    "context": "Select and write the correct answer for the following multiple choice type of questions:",
+    "setLabel": "Q. 1",
+    "stem": "The pH of weak monoacidic base is 11.2, its \\(\\mathrm{OH^{-}}\\) ion concentration is:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(1.585 \\times 10^{-3}\\ \\mathrm{mol\\ dm^{-3}}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(3.010 \\times 10^{-11}\\ \\mathrm{mol\\ dm^{-3}}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(3.010 \\times 10^{-3}\\ \\mathrm{mol\\ dm^{-3}}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(1.585 \\times 10^{-11}\\ \\mathrm{mol\\ dm^{-3}}\\)"
+      }
+    ],
+    "answer": "A",
+    "reviewFlag": true,
+    "solution": "**(A)** \\(1.585 \\times 10^{-3}\\ \\mathrm{mol\\ dm^{-3}}\\)\n\n**Step 1 — convert pH to pOH.**\n\n\\(\\mathrm{pOH} = 14 - \\mathrm{pH} = 14 - 11.2 = 2.8\\)\n\n**Step 2 — convert pOH to concentration.**\n\n\\([\\mathrm{OH^{-}}] = 10^{-\\mathrm{pOH}} = 10^{-2.8}\\)\n\nWrite the index as a whole number plus a fraction:\n\n\\(10^{-2.8} = 10^{0.2} \\times 10^{-3} = 1.585 \\times 10^{-3}\\)\n\n\\(\\therefore [\\mathrm{OH^{-}}] = 1.585 \\times 10^{-3}\\ \\mathrm{mol\\ dm^{-3}}\\)\n\n**Sanity check.** A pH of 11.2 is basic, so the hydroxide concentration must be comparatively **large**. Options (B) and (D), at \\(10^{-11}\\), are the \\([\\mathrm{H^{+}}]\\) values — the trap for anyone who forgets to convert pH to pOH first."
+  },
+  {
+    "ref": "Q.1.iii",
+    "format": "mcq",
+    "chapter": "Chemical Kinetics",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "HARD",
+    "context": "Select and write the correct answer for the following multiple choice type of questions:",
+    "setLabel": "Q. 1",
+    "stem": "Which of the following correctly represents integrated rate law equation for a first order reaction in gas phase:",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{P_i}{P_i - P}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{P_i}{2P_i - P}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{2P_i}{P_i - P}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{P_i - P}{2P_i}\\)"
+      }
+    ],
+    "answer": "B",
+    "reviewFlag": true,
+    "solution": "**(B)** \\(k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{P_i}{2P_i - P}\\)\n\nFor a gas phase reaction the concentrations in the first order rate law are replaced by partial pressures. The difficulty is that what is **measured** is the TOTAL pressure \\(P\\), not the pressure of the reactant alone.\n\nConsider a decomposition \\(\\mathrm{A_{(g)} \\longrightarrow B_{(g)} + C_{(g)}}\\), in which one molecule gives two.\n\nLet the initial pressure of A be \\(P_i\\), and let \\(x\\) be the pressure of A that has decomposed at time \\(t\\):\n\n| | A | B | C |\n|---|---|---|---|\n| initial | \\(P_i\\) | 0 | 0 |\n| at time \\(t\\) | \\(P_i - x\\) | \\(x\\) | \\(x\\) |\n\nThe total pressure is\n\n\\(P = (P_i - x) + x + x = P_i + x\\)\n\nso\n\n\\(x = P - P_i\\)\n\nThe pressure of A remaining is therefore\n\n\\(P_A = P_i - x = P_i - (P - P_i) = 2P_i - P\\)\n\nSubstituting into the first order equation \\(k = \\dfrac{2.303}{t}\\log\\dfrac{[A]_0}{[A]_t}\\):\n\n\\(\\therefore k = \\dfrac{2.303}{t}\\log\\dfrac{P_i}{2P_i - P}\\)\n\nOption (A) is the error of assuming the remaining reactant pressure is \\(P_i - P\\), which treats the measured total pressure as though it were the amount decomposed."
+  },
+  {
+    "ref": "Q.1.iv",
+    "format": "mcq",
+    "chapter": "Transition and Inner Transition Elements",
+    "subtopic": "Common Properties of d-Block Elements",
+    "difficulty": "MODERATE",
+    "context": "Select and write the correct answer for the following multiple choice type of questions:",
+    "setLabel": "Q. 1",
+    "stem": "The spin only magnetic moment of \\(\\mathrm{Mn^{2+}}\\) ion is ______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "4.901 BM"
+      },
+      {
+        "label": "B",
+        "text": "5.916 BM"
+      },
+      {
+        "label": "C",
+        "text": "3.873 BM"
+      },
+      {
+        "label": "D",
+        "text": "2.846 BM"
+      }
+    ],
+    "answer": "B",
+    "reviewFlag": true,
+    "solution": "**(B)** 5.916 BM\n\n**Step 1 — the configuration.** Manganese has \\(Z = 25\\), so \\(\\mathrm{Mn: [Ar]\\,3d^{5}4s^{2}}\\). Removing the two \\(4s\\) electrons gives\n\n\\(\\mathrm{Mn^{2+}: [Ar]\\ 3d^{5}}\\)\n\n**Step 2 — unpaired electrons.** Five electrons in five \\(d\\) orbitals occupy one orbital each with parallel spins, by Hund's rule:\n\n\\(n = 5\\)\n\nThis is a **half filled** subshell, the maximum possible number of unpaired \\(d\\) electrons.\n\n**Step 3 — the spin-only formula.**\n\n\\(\\mu = \\sqrt{n(n+2)} = \\sqrt{5 \\times 7} = \\sqrt{35}\\)\n\n\\(\\therefore \\mu = 5.916\\ \\mathrm{BM}\\)\n\nSince \\(\\mathrm{Mn^{2+}}\\) has the largest possible number of unpaired \\(d\\) electrons, its magnetic moment is the **highest** in the 3d series — which alone identifies the largest option as the answer."
+  },
+  {
+    "ref": "Q.1.v",
+    "format": "mcq",
+    "chapter": "Coordination Compounds",
+    "subtopic": "IUPAC Nomenclature of Coordination Compounds",
+    "difficulty": "MODERATE",
+    "context": "Select and write the correct answer for the following multiple choice type of questions:",
+    "setLabel": "Q. 1",
+    "stem": "The correct formula of a complex having IUPAC name Tetraamminedibromoplatinum (IV) bromide is ______.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\mathrm{[PtBr(NH_3)_4]Br_2}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\mathrm{[PtBr_2(NH_3)_4]Br}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\mathrm{[PtBr_2(NH_3)_4]Br_2}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\mathrm{[PtBr(NH_3)_4]Br}\\)"
+      }
+    ],
+    "answer": "C",
+    "reviewFlag": true,
+    "solution": "**(C)** \\(\\mathrm{[PtBr_2(NH_3)_4]Br_2}\\)\n\nBuild the formula from the name.\n\n**Inside the coordination sphere.** *Tetraammine* means four \\(\\mathrm{NH_3}\\); *dibromo* means two \\(\\mathrm{Br^{-}}\\). Platinum is in the \\(+4\\) state.\n\n**Charge on the complex ion.** Ammonia is neutral and each bromide is \\(-1\\):\n\n\\((+4) + 4(0) + 2(-1) = +2\\)\n\nSo the complex ion is \\(\\mathrm{[PtBr_2(NH_3)_4]^{2+}}\\).\n\n**Outside.** The name ends in *bromide*, so the counter ion is bromide, and **two** are needed to balance the \\(2+\\) charge.\n\n\\(\\therefore \\mathrm{[PtBr_2(NH_3)_4]Br_2}\\)\n\nThe item is testing whether the **same ligand can appear both inside and outside** the sphere with different roles. The two bromides inside are coordinated to platinum and will not precipitate with silver nitrate; the two outside are free ions and will. Options (A) and (D) mis-split them."
+  },
+  {
+    "ref": "Q.1.vi",
+    "format": "mcq",
+    "chapter": "Halogen Derivatives",
+    "subtopic": "Classification of Halogen Derivatives",
+    "difficulty": "MODERATE",
+    "context": "Select and write the correct answer for the following multiple choice type of questions:",
+    "setLabel": "Q. 1",
+    "stem": "The allylic halide, among the following is _______. (Option (C) is printed as a drawn structure — see the figure.)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\mathrm{R{-}CHX{-}R}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\mathrm{CH_2{=}CH{-}X}\\)"
+      },
+      {
+        "label": "C",
+        "text": "a benzene ring with X bonded directly to a ring carbon"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\mathrm{CH_2{=}CH{-}CH_2{-}X}\\)"
+      }
+    ],
+    "answer": "D",
+    "reviewFlag": true,
+    "solution": "**(D)** \\(\\mathrm{CH_2{=}CH{-}CH_2{-}X}\\)\n\nAn **allylic halide** is one in which the halogen is attached to an \\(sp^{3}\\) carbon that is **adjacent to** a carbon-carbon double bond — not on the double bond itself.\n\nOption (D) is exactly that: the halogen sits on the \\(\\mathrm{{-}CH_2{-}}\\) group next to the \\(\\mathrm{C{=}C}\\).\n\nThe others are different classes:\n\n- **(A)** halogen on an \\(sp^{3}\\) carbon bearing two alkyl groups — a **secondary alkyl** halide.\n- **(B)** halogen **on** the doubly bonded carbon — a **vinylic** halide.\n- **(C)** halogen directly on the benzene ring — an **aryl** halide.\n\nThe distinction has real consequences. An allylic halide is highly reactive towards \\(S_N1\\) substitution, because the carbocation formed on losing the halide is **resonance stabilised** across the allyl system. Vinylic and aryl halides are the opposite: their \\(\\mathrm{C{-}X}\\) bond has partial double bond character and is very hard to break.",
+    "hasFigure": true
+  },
+  {
+    "ref": "Q.1.vii",
+    "format": "mcq",
+    "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+    "subtopic": "Chemical Properties of Aldehydes and Ketones",
+    "difficulty": "MODERATE",
+    "context": "Select and write the correct answer for the following multiple choice type of questions:",
+    "setLabel": "Q. 1",
+    "stem": "The product of following reaction is\n\n\\(\\mathrm{CH_3{-}CH{=}CH{-}CH_2{-}CHO \\xrightarrow[(ii)\\ H_3O^{+}]{(i)\\ LiAlH_4}\\ ?}\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\mathrm{CH_3{-}CH_2{-}CH_2{-}CH_2{-}CH_2{-}OH}\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\mathrm{CH_3{-}CH{=}CH{-}CH_2{-}CH_2{-}OH}\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\mathrm{CH_3{-}CH_2{-}CH_2{-}CH_2{-}COOH}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\mathrm{CH_3{-}CH{=}CH{-}CH_2{-}COOH}\\)"
+      }
+    ],
+    "answer": "B",
+    "reviewFlag": true,
+    "solution": "**(B)** \\(\\mathrm{CH_3{-}CH{=}CH{-}CH_2{-}CH_2{-}OH}\\)\n\nThe whole question is the **selectivity** of lithium aluminium hydride.\n\n\\(\\mathrm{LiAlH_4}\\) delivers a hydride ion, so it attacks **polar** multiple bonds — the \\(\\mathrm{C{=}O}\\) of an aldehyde, ketone, ester or acid. It does **not** touch a non-polar, isolated \\(\\mathrm{C{=}C}\\), which has no electrophilic carbon for a hydride to add to.\n\nSo the aldehyde group is reduced to a primary alcohol and the alkene survives untouched:\n\n\\(\\mathrm{CH_3{-}CH{=}CH{-}CH_2{-}CHO \\xrightarrow{LiAlH_4} CH_3{-}CH{=}CH{-}CH_2{-}CH_2OH}\\)\n\nThe product is pent-3-en-1-ol.\n\nEach wrong option misses a different point. **(A)** reduces the double bond as well, which would need catalytic hydrogenation over a metal. **(C)** and **(D)** are oxidation products, and \\(\\mathrm{LiAlH_4}\\) is a reducing agent."
+  },
+  {
+    "ref": "Q.1.viii",
+    "format": "mcq",
+    "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+    "subtopic": "Preparation of Aldehydes and Ketones",
+    "difficulty": "MODERATE",
+    "context": "Select and write the correct answer for the following multiple choice type of questions:",
+    "setLabel": "Q. 1",
+    "stem": "Ozonolysis of 2, 3 dimethyl but-2-ene, followed by decomposition by Zn dust and water gives ________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "acetaldehyde"
+      },
+      {
+        "label": "B",
+        "text": "propionaldehyde and acetone"
+      },
+      {
+        "label": "C",
+        "text": "acetone"
+      },
+      {
+        "label": "D",
+        "text": "acetaldehyde and butyraldehyde"
+      }
+    ],
+    "answer": "C",
+    "reviewFlag": true,
+    "solution": "**(C)** acetone\n\n**Step 1 — draw the alkene.** 2,3-dimethylbut-2-ene has a four-carbon chain with the double bond between \\(\\mathrm{C_2}\\) and \\(\\mathrm{C_3}\\), and a methyl group on each of those carbons:\n\n\\(\\mathrm{(CH_3)_2C{=}C(CH_3)_2}\\)\n\nThe molecule is **symmetrical**, and each doubly bonded carbon carries **two methyl groups and no hydrogen**.\n\n**Step 2 — apply ozonolysis.** Ozone cleaves the double bond, and reductive work-up with zinc dust and water gives two carbonyl compounds, one from each half:\n\n\\(\\mathrm{(CH_3)_2C{=}C(CH_3)_2 \\xrightarrow[(ii)\\ Zn/H_2O]{(i)\\ O_3} 2\\,(CH_3)_2C{=}O}\\)\n\nBecause each carbon of the double bond carried two alkyl groups and no hydrogen, each fragment is a **ketone**, not an aldehyde. And because the alkene is symmetrical, both fragments are the **same**.\n\n\\(\\therefore\\) the only product is **acetone** (propanone), two molecules of it.\n\nThe rule to carry away: after cleavage, a doubly bonded carbon that bore a **hydrogen** gives an aldehyde, and one that bore **two alkyl groups** gives a ketone. Here there are no hydrogens on either, so no aldehyde can form — which rules out every other option at once.\n\nThe zinc dust matters too: without it the ozonide work-up is oxidative and would give carboxylic acids instead."
+  },
+  {
+    "ref": "Q.1.ix",
+    "format": "mcq",
+    "chapter": "Biomolecules",
+    "subtopic": "Carbohydrates",
+    "difficulty": "EASY",
+    "context": "Select and write the correct answer for the following multiple choice type of questions:",
+    "setLabel": "Q. 1",
+    "stem": "The glycosidic linkage present in maltose is ________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\alpha, \\beta\\)-1, 2-glycosidic linkage"
+      },
+      {
+        "label": "B",
+        "text": "\\(\\alpha\\)-1, 4-glycosidic linkage"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\beta\\)-1, 4-glycosidic linkage"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\alpha\\)-1, 6-glycosidic linkage"
+      }
+    ],
+    "answer": "B",
+    "reviewFlag": true,
+    "solution": "**(B)** \\(\\alpha\\)-1,4-glycosidic linkage\n\nMaltose is a disaccharide of **two glucose units**. The anomeric carbon \\(\\mathrm{C_1}\\) of the first glucose is joined to the \\(\\mathrm{C_4}\\) hydroxyl of the second, and the configuration at that anomeric carbon is **alpha**.\n\nThe three common disaccharides are distinguished exactly here:\n\n| Disaccharide | Units | Linkage |\n|---|---|---|\n| **Maltose** | glucose + glucose | **\\(\\alpha\\)-1,4** |\n| Lactose | galactose + glucose | \\(\\beta\\)-1,4 |\n| Sucrose | glucose + fructose | \\(\\alpha,\\beta\\)-1,2 |\n\nBecause only one of the two anomeric carbons is tied up in the linkage, maltose has a free anomeric carbon and is a **reducing sugar**. Sucrose, whose \\(\\alpha,\\beta\\)-1,2 linkage uses **both** anomeric carbons, is non-reducing — which is the point the option (A) distractor is testing."
+  },
+  {
+    "ref": "Q.1.x",
+    "format": "mcq",
+    "chapter": "Introduction to Polymer Chemistry",
+    "subtopic": "Some Important Polymers",
+    "difficulty": "EASY",
+    "context": "Select and write the correct answer for the following multiple choice type of questions:",
+    "setLabel": "Q. 1",
+    "stem": "The monomer of natural rubber is ________.",
+    "options": [
+      {
+        "label": "A",
+        "text": "Isoprene"
+      },
+      {
+        "label": "B",
+        "text": "Acrylonitrile"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\varepsilon\\)-Caprolactam"
+      },
+      {
+        "label": "D",
+        "text": "Tetrafluoroethylene"
+      }
+    ],
+    "answer": "A",
+    "reviewFlag": true,
+    "solution": "**(A)** Isoprene\n\nNatural rubber is **cis-1,4-polyisoprene**, formed by the 1,4-addition polymerisation of isoprene, that is 2-methylbuta-1,3-diene:\n\n\\(\\mathrm{CH_2{=}C(CH_3){-}CH{=}CH_2}\\)\n\nWithin the chain the repeating unit appears as \\(\\mathrm{{-}CH_2{-}C(CH_3){=}CH{-}CH_2{-}}\\), with the **cis** configuration at every double bond. That cis geometry prevents the chains packing regularly, so they stay coiled — which is what gives rubber its elasticity. The trans isomer, gutta percha, is hard and inelastic.\n\nThe other monomers give different polymers: acrylonitrile gives Orlon, caprolactam gives Nylon-6, and tetrafluoroethylene gives Teflon."
+  },
+  {
+    "ref": "Q.2.i",
+    "format": "subjective",
+    "chapter": "Green Chemistry and Nanochemistry",
+    "subtopic": "Introduction to Nanochemistry",
+    "difficulty": "EASY",
+    "context": "Answer the following questions:",
+    "setLabel": "Q. 2",
+    "stem": "Write the name of the technique used to know geometry of nanoparticles.",
+    "reviewFlag": true,
+    "solution": "**X-ray diffraction (XRD).**\n\nWhen a beam of X-rays falls on a crystalline nanomaterial it is diffracted by the regular planes of atoms, and the positions and intensities of the diffracted beams reveal the arrangement of atoms — that is, the geometry and crystal structure of the particle. The width of the diffraction peaks also gives the particle size, through the Scherrer equation.\n\n(Electron microscopy is the complementary technique: **transmission and scanning electron microscopy**, TEM and SEM, image the size, shape and surface morphology of the particles directly.)"
+  },
+  {
+    "ref": "Q.2.ii",
+    "format": "subjective",
+    "chapter": "Amines",
+    "subtopic": "Preparation of Amines",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions:",
+    "setLabel": "Q. 2",
+    "stem": "Write the name of the product formed by the action of \\(\\mathrm{LiAlH_4}\\)/ether on acetamide.",
+    "reviewFlag": true,
+    "solution": "Lithium aluminium hydride reduces the amide group, removing the carbonyl oxygen and converting \\(\\mathrm{{-}CONH_2}\\) to \\(\\mathrm{{-}CH_2NH_2}\\):\n\n\\(\\mathrm{CH_3CONH_2 \\xrightarrow[(ii)\\ H_2O]{(i)\\ LiAlH_4/ether} CH_3CH_2NH_2}\\)\n\nThe product is **ethylamine** (ethanamine).\n\nThe carbon count is **unchanged** at two, and that is the point to check. The other common reaction of acetamide, Hofmann bromamide degradation with bromine and alkali, gives **methylamine** with one carbon fewer. Which reagent is named decides which answer is right."
+  },
+  {
+    "ref": "Q.2.iii",
+    "format": "subjective",
+    "chapter": "Halogen Derivatives",
+    "subtopic": "Reaction with Active Metals",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions:",
+    "setLabel": "Q. 2",
+    "stem": "Write the structure of the product formed when chlorobenzene is treated with sodium metal in the presence of dry ether.",
+    "reviewFlag": true,
+    "solution": "This is the **Fittig reaction** — two aryl halide molecules coupled by sodium in dry ether:\n\n\\(\\mathrm{2C_6H_5Cl + 2Na \\xrightarrow{dry\\ ether} C_6H_5{-}C_6H_5 + 2NaCl}\\)\n\n**Structure of the product:** two benzene rings joined directly by a single carbon-carbon bond,\n\n\\(\\mathrm{C_6H_5{-}C_6H_5}\\)\n\nThe product is **biphenyl** (diphenyl).\n\nThe ether must be **dry**, since the organosodium intermediate is destroyed instantly by water.\n\nNote the related names: the same reaction between two **alkyl** halides is the **Wurtz** reaction, and between an aryl and an alkyl halide together it is the **Wurtz-Fittig** reaction, which gives an alkylbenzene."
+  },
+  {
+    "ref": "Q.2.iv",
+    "format": "subjective",
+    "chapter": "Coordination Compounds",
+    "subtopic": "Applications of Coordination Compounds",
+    "difficulty": "EASY",
+    "context": "Answer the following questions:",
+    "setLabel": "Q. 2",
+    "stem": "Write the chemical composition of cryolite.",
+    "reviewFlag": true,
+    "solution": "Cryolite is **sodium hexafluoridoaluminate(III)**:\n\n\\(\\mathrm{Na_3[AlF_6]}\\)\n\nIt is a coordination compound in which aluminium is in the \\(+3\\) state, surrounded octahedrally by six fluoride ligands, with three sodium ions balancing the \\(3-\\) charge on the complex anion.\n\nIts industrial importance is in the **Hall-Heroult process** for extracting aluminium. Pure alumina melts at about 2320 K, far too high to electrolyse economically; dissolved in molten cryolite it can be electrolysed at around 1200 K, so the cryolite acts as the solvent and lowers the operating temperature dramatically."
+  },
+  {
+    "ref": "Q.2.v",
+    "format": "subjective",
+    "chapter": "Coordination Compounds",
+    "subtopic": "Applications of Coordination Compounds",
+    "difficulty": "EASY",
+    "context": "Answer the following questions:",
+    "setLabel": "Q. 2",
+    "stem": "Write the name of platinum complex used in the treatment of cancer.",
+    "reviewFlag": true,
+    "solution": "**Cisplatin**, whose formula is\n\n\\(\\mathrm{cis{-}[Pt(NH_3)_2Cl_2]}\\)\n\nIt is a neutral square planar complex of platinum(II) with two ammonia and two chloride ligands.\n\n**The geometry is essential.** Only the **cis** isomer is active; the trans isomer is therapeutically useless. In the cis form the two chlorides are adjacent, so once they are displaced by water inside the cell the platinum can bind to **two neighbouring guanine bases** on the same strand of DNA. That cross link distorts the double helix, blocks replication and triggers cell death. In the trans isomer the two leaving groups are on opposite sides and cannot reach two adjacent bases.\n\nIt is used chiefly against testicular, ovarian, bladder and lung cancers."
+  },
+  {
+    "ref": "Q.2.vi",
+    "format": "subjective",
+    "chapter": "Solutions",
+    "subtopic": "Depression in Freezing Point",
+    "difficulty": "EASY",
+    "context": "Answer the following questions:",
+    "setLabel": "Q. 2",
+    "stem": "Write the SI unit of cryoscopic constant.",
+    "reviewFlag": true,
+    "solution": "The cryoscopic constant \\(K_f\\) is defined by\n\n\\(\\Delta T_f = K_f \\times m\\)\n\nso\n\n\\(K_f = \\dfrac{\\Delta T_f}{m}\\)\n\nThe depression \\(\\Delta T_f\\) is a temperature difference, in **kelvin**, and molality \\(m\\) is in \\(\\mathrm{mol\\ kg^{-1}}\\):\n\n\\(K_f : \\dfrac{\\mathrm{K}}{\\mathrm{mol\\ kg^{-1}}} = \\mathrm{K\\ kg\\ mol^{-1}}\\)\n\n\\(\\therefore\\) the SI unit is \\(\\mathrm{K\\ kg\\ mol^{-1}}\\).\n\nFor water \\(K_f = 1.86\\ \\mathrm{K\\ kg\\ mol^{-1}}\\), meaning a 1 molal solution of a non-electrolyte freezes 1.86 K below 273 K."
+  },
+  {
+    "ref": "Q.2.vii",
+    "format": "subjective",
+    "chapter": "Chemical Thermodynamics",
+    "subtopic": "Spontaneity and Entropy",
+    "difficulty": "EASY",
+    "context": "Answer the following questions:",
+    "setLabel": "Q. 2",
+    "stem": "Write the correct condition for spontaneity in terms of Gibbs energy.",
+    "reviewFlag": true,
+    "solution": "A process is spontaneous at constant temperature and pressure when the Gibbs energy change is **negative**:\n\n\\(\\Delta G < 0\\)\n\nThe three cases are:\n\n- \\(\\Delta G < 0\\) — the process is **spontaneous**\n- \\(\\Delta G = 0\\) — the system is at **equilibrium**\n- \\(\\Delta G > 0\\) — the process is **non-spontaneous**, and the reverse process is spontaneous\n\nSince \\(\\Delta G = \\Delta H - T\\Delta S\\), the sign is decided by a competition between the two terms. A reaction that is exothermic \\((\\Delta H < 0)\\) and increases disorder \\((\\Delta S > 0)\\) is spontaneous at **every** temperature; one that is endothermic and decreases disorder is spontaneous at none. In the two mixed cases the temperature decides."
+  },
+  {
+    "ref": "Q.2.viii",
+    "format": "subjective",
+    "chapter": "Electrochemistry",
+    "subtopic": "Electric Conduction and Conductance of Solutions",
+    "difficulty": "MODERATE",
+    "context": "Answer the following questions:",
+    "setLabel": "Q. 2",
+    "stem": "Calculate molar conductivity for 0.5 M \\(\\mathrm{BaCl_2}\\) if its conductivity at 298 K is \\(0.01\\ \\Omega^{-1}\\ \\mathrm{cm^{-1}}\\).",
+    "reviewFlag": true,
+    "solution": "Molar conductivity is given by\n\n\\(\\Lambda_m = \\dfrac{1000\\,\\kappa}{c}\\)\n\nwhere \\(\\kappa\\) is in \\(\\Omega^{-1}\\mathrm{cm^{-1}}\\) and \\(c\\) in \\(\\mathrm{mol\\ L^{-1}}\\). The factor 1000 converts litres to cubic centimetres.\n\nSubstituting \\(\\kappa = 0.01\\) and \\(c = 0.5\\),\n\n\\(\\Lambda_m = \\dfrac{1000 \\times 0.01}{0.5}\\)\n\n\\(\\Lambda_m = \\dfrac{10}{0.5}\\)\n\n\\(\\therefore \\Lambda_m = 20\\ \\Omega^{-1}\\ \\mathrm{cm^{2}\\ mol^{-1}}\\)\n\nThe unit works out as \\(\\dfrac{\\Omega^{-1}\\mathrm{cm^{-1}} \\times \\mathrm{cm^{3}}}{\\mathrm{mol}} = \\Omega^{-1}\\mathrm{cm^{2}mol^{-1}}\\), which is the standard unit of molar conductivity."
+  },
+  {
+    "ref": "Q. 3",
+    "format": "subjective",
+    "chapter": "Transition and Inner Transition Elements",
+    "subtopic": "Actinoids",
+    "difficulty": "MODERATE",
+    "stem": "Distinguish between lanthanides and actinides.",
+    "reviewFlag": true,
+    "solution": "| Lanthanides | Actinides |\n|---|---|\n| The **\\(4f\\)** orbitals are progressively filled. | The **\\(5f\\)** orbitals are progressively filled. |\n| Show mainly the **\\(+3\\)** oxidation state; \\(+2\\) and \\(+4\\) occur only occasionally. | Show a **wide range**, from \\(+3\\) up to \\(+7\\). |\n| Only **promethium** is radioactive. | **All** of them are radioactive. |\n| Do not form complexes readily — the \\(4f\\) orbitals are buried deep inside. | Form complexes **readily**, the \\(5f\\) orbitals extending further out. |\n| All except promethium occur in nature. | Those beyond uranium are **synthetic**. |\n| Their ions are mostly colourless or lightly coloured. | Their ions are strongly coloured. |\n| The lanthanide contraction is smaller. | The actinide contraction is greater, \\(5f\\) shielding being even poorer. |\n\n**The root of the difference in oxidation states**, which is the most important entry: in the actinides the \\(5f\\), \\(6d\\) and \\(7s\\) orbitals lie very close in energy, so electrons from all three can take part in bonding. In the lanthanides the \\(4f\\) orbitals lie well below the valence level and behave almost as core orbitals, leaving only the outer three electrons available."
+  },
+  {
+    "ref": "Q. 4",
+    "format": "subjective",
+    "chapter": "Solutions",
+    "subtopic": "Vapour Pressure Lowering",
+    "difficulty": "MODERATE",
+    "stem": "Calculate the mole fraction of solute, if the vapour pressure of pure benzene at certain temperature is 640 mmHg and vapour pressure of solution of a solute in benzene is 600 mmHg.",
+    "reviewFlag": true,
+    "solution": "By Raoult's law, for a non-volatile solute the **relative lowering of vapour pressure equals the mole fraction of the solute**:\n\n\\(\\dfrac{p^{\\circ} - p}{p^{\\circ}} = x_2\\)\n\n**Substitute.** \\(p^{\\circ} = 640\\ \\mathrm{mmHg}\\) and \\(p = 600\\ \\mathrm{mmHg}\\):\n\n\\(x_2 = \\dfrac{640 - 600}{640}\\)\n\n\\(x_2 = \\dfrac{40}{640}\\)\n\n\\(\\therefore x_2 = 0.0625\\)\n\nThe mole fraction of solute is **0.0625**, and of solvent \\(1 - 0.0625 = 0.9375\\).\n\nNo molar masses are needed, and that is the point of the relation: the relative lowering depends only on the **number** of solute particles, not on what they are. Note too that the answer is dimensionless — the units of pressure cancel — as any mole fraction must be."
+  },
+  {
+    "ref": "Q. 5",
+    "format": "subjective",
+    "chapter": "Green Chemistry and Nanochemistry",
+    "subtopic": "The Role of Green Chemistry",
+    "difficulty": "EASY",
+    "stem": "Define: Green chemistry. Write two advantages of nanoparticle and nanotechnology.",
+    "reviewFlag": true,
+    "solution": "**Green chemistry.** The design of chemical products and processes that **reduce or eliminate the use and generation of hazardous substances**.\n\nThe emphasis is on **prevention at the design stage** rather than on cleaning up pollution after it has been made. A green process uses renewable feedstocks, maximises atom economy, avoids toxic solvents and reagents, runs at ambient temperature and pressure where it can, and yields products that break down harmlessly.\n\n**Two advantages of nanoparticles and nanotechnology.**\n\n**1. In medicine — targeted drug delivery.** Nanoparticles are small enough to pass through capillary walls and be taken up by cells. Coating them so they bind selectively to diseased tissue delivers the drug exactly where it is needed and spares healthy tissue, which greatly reduces side effects and the dose required.\n\n**2. In catalysis and energy.** A nanoparticle has an enormous surface area for its mass, so far less material provides the same active surface. Platinum nanoparticles in fuel cells and catalytic converters cut the quantity of an expensive metal needed, and nanostructured battery electrodes shorten the ion diffusion path so cells charge faster and store more energy per unit mass.\n\n(Also accepted: silver nanoparticles as antibacterial agents in water purifiers and wound dressings; carbon nanotubes for strong, light composites; and nano titanium dioxide in sunscreens and self-cleaning surfaces.)"
+  },
+  {
+    "ref": "Q. 6",
+    "format": "subjective",
+    "chapter": "Solid State",
+    "subtopic": "Crystal Defects and Imperfections",
+    "difficulty": "MODERATE",
+    "stem": "Explain the following terms:\n\n(i) Substitutional impurity defect\n\n(ii) Interstitial impurity defect",
+    "reviewFlag": true,
+    "solution": "Both are **impurity defects**, in which foreign particles are present in the crystal. They differ in **where** the foreign particle sits.\n\n**(i) Substitutional impurity defect.** A foreign atom or ion **takes the place of** a host particle at its regular lattice site.\n\nFor this to happen the foreign particle must be of roughly the **same size** as the one it replaces.\n\n*Example:* solid solutions of two metals. In brass, zinc atoms occupy some of the sites of the copper lattice. Another is \\(\\mathrm{Sr^{2+}}\\) replacing \\(\\mathrm{Na^{+}}\\) in NaCl — here one \\(\\mathrm{Sr^{2+}}\\) replaces **two** \\(\\mathrm{Na^{+}}\\), occupying one site and leaving the other **vacant**, so that the crystal stays electrically neutral.\n\n**(ii) Interstitial impurity defect.** A foreign particle occupies an **interstitial space**, one of the vacant gaps between the host particles, without displacing any of them.\n\nFor this the foreign particle must be **much smaller** than the host particles, so that it fits in the hole.\n\n*Example:* steel, in which small carbon atoms occupy the interstices of the iron lattice. The trapped atoms lock the lattice and stop the iron atoms sliding past one another, which is precisely why steel is so much harder than pure iron.\n\n**The distinction in one line:** a substitutional impurity **replaces** a host particle at its site; an interstitial impurity **squeezes between** them and leaves every host particle where it was."
+  },
+  {
+    "ref": "Q. 7",
+    "format": "subjective",
+    "chapter": "Halogen Derivatives",
+    "subtopic": "Nucleophilic Substitution Reactions of Alkyl Halides",
+    "difficulty": "MODERATE",
+    "stem": "Write the chemical reactions for the following:\n\n(i) Chlorobenzene is heated with fuming \\(\\mathrm{H_2SO_4}\\)\n\n(ii) Ethyl bromide is heated with silver acetate",
+    "reviewFlag": true,
+    "solution": "**(i) Chlorobenzene with fuming sulfuric acid — sulfonation.**\n\n\\(\\mathrm{C_6H_5Cl + H_2SO_4 \\xrightarrow{\\Delta} o{-}HO_3S{-}C_6H_4{-}Cl + p{-}HO_3S{-}C_6H_4{-}Cl + H_2O}\\)\n\nThe products are 2-chlorobenzenesulfonic acid and 4-chlorobenzenesulfonic acid, with the **para** isomer predominating.\n\nChlorine is **ortho, para directing** because its lone pair is donated into the ring by resonance, raising the electron density at those positions. It is at the same time **deactivating**, being strongly electronegative, which is why the harsh fuming acid and heat are needed. The para product dominates because the ortho positions are sterically blocked by the chlorine itself.\n\n**(ii) Ethyl bromide with silver acetate.**\n\n\\(\\mathrm{C_2H_5Br + CH_3COOAg \\longrightarrow CH_3COOC_2H_5 + AgBr\\downarrow}\\)\n\nThe product is **ethyl acetate**.\n\nThe acetate ion acts as the nucleophile and displaces bromide in an \\(S_N2\\) substitution. The insoluble silver bromide precipitates out, and removing a product from the mixture drives the reaction to completion — which is why the silver salt is used rather than sodium acetate."
+  },
+  {
+    "ref": "Q. 8",
+    "format": "subjective",
+    "chapter": "Ionic Equilibria",
+    "subtopic": "Solubility Product",
+    "difficulty": "MODERATE",
+    "stem": "Define : Acidic buffer solution. Write the relationship between solubility and solubility product for \\(\\mathrm{PbI_2}\\).",
+    "reviewFlag": true,
+    "solution": "**Acidic buffer solution.** A solution of a **weak acid together with its salt with a strong base**, which resists a change in pH when a small amount of strong acid or strong base is added to it, or when it is diluted.\n\nA mixture of acetic acid and sodium acetate is the standard example. Its pH is below 7 and is given by\n\n\\(\\mathrm{pH} = \\mathrm{p}K_a + \\log\\dfrac{[\\text{salt}]}{[\\text{acid}]}\\)\n\n**Solubility and solubility product for \\(\\mathrm{PbI_2}\\).**\n\nLet the solubility be \\(s\\ \\mathrm{mol\\ dm^{-3}}\\). One formula unit gives one lead ion and **two** iodide ions:\n\n\\(\\mathrm{PbI_{2(s)} \\rightleftharpoons Pb^{2+}_{(aq)} + 2I^{-}_{(aq)}}\\)\n\nSo at saturation \\([\\mathrm{Pb^{2+}}] = s\\) and \\([\\mathrm{I^{-}}] = 2s\\).\n\n\\(K_{sp} = [\\mathrm{Pb^{2+}}][\\mathrm{I^{-}}]^{2}\\)\n\n\\(K_{sp} = (s)(2s)^{2}\\)\n\n\\(K_{sp} = s \\times 4s^{2}\\)\n\n\\(\\therefore K_{sp} = 4s^{3}\\)\n\nor, solved for the solubility,\n\n\\(s = \\sqrt[3]{\\dfrac{K_{sp}}{4}}\\)\n\nThe coefficient 2 must be used **twice** — once as a multiplier of \\(s\\) and once as a power — and dropping either is the usual error."
+  },
+  {
+    "ref": "Q. 9",
+    "format": "subjective",
+    "chapter": "Amines",
+    "subtopic": "Chemical Properties of Amines",
+    "difficulty": "MODERATE",
+    "stem": "What is the action of the following reagents on ethyl amine\n\n(i) Chloroform and caustic potash\n\n(ii) Nitrous acid",
+    "reviewFlag": true,
+    "solution": "**(i) Chloroform and caustic potash — the carbylamine reaction.**\n\nOn warming ethylamine with chloroform and alcoholic potassium hydroxide, an isocyanide with an extremely offensive smell is formed:\n\n\\(\\mathrm{C_2H_5NH_2 + CHCl_3 + 3KOH \\longrightarrow C_2H_5NC + 3KCl + 3H_2O}\\)\n\nThe product is **ethyl isocyanide** (ethyl carbylamine).\n\nThe reactive species is **dichlorocarbene**, \\(\\mathrm{:CCl_2}\\), generated when the base removes the acidic hydrogen of chloroform and the resulting \\(\\mathrm{CCl_3^{-}}\\) loses a chloride.\n\nThe reaction is given only by **primary** amines, so it serves as a test to distinguish them from secondary and tertiary ones — and the smell alone is diagnostic.\n\n**(ii) Nitrous acid.**\n\nNitrous acid, generated in situ from sodium nitrite and dilute hydrochloric acid at low temperature, converts the primary aliphatic amine to a diazonium salt which is unstable and decomposes at once:\n\n\\(\\mathrm{C_2H_5NH_2 + HNO_2 \\longrightarrow C_2H_5OH + N_2\\uparrow + H_2O}\\)\n\nEthanol is formed and **nitrogen gas is evolved with brisk effervescence**.\n\nThe effervescence is itself the test for a primary aliphatic amine. Note the contrast with an **aromatic** primary amine, whose diazonium salt is stable at 273 to 278 K and can be isolated and used in further reactions — which is the whole basis of diazonium chemistry."
+  },
+  {
+    "ref": "Q. 10",
+    "format": "subjective",
+    "chapter": "Electrochemistry",
+    "subtopic": "Thermodynamics of Galvanic Cells",
+    "difficulty": "MODERATE",
+    "stem": "Calculate standard Gibbs energy change at 25 °C for the cell reaction\n\n\\(\\mathrm{Cd_{(s)} + Sn^{2+}_{(aq)} \\longrightarrow Cd^{2+}_{(aq)} + Sn_{(s)}}\\)\n\n\\(E^{\\circ}_{\\mathrm{Cd}} = -0.403\\ \\mathrm{V}\\), \\(E^{\\circ}_{\\mathrm{Sn}} = -0.136\\ \\mathrm{V}\\)",
+    "reviewFlag": true,
+    "solution": "**Step 1 — identify the electrodes.** In the given reaction cadmium is **oxidised** to \\(\\mathrm{Cd^{2+}}\\), so it is the **anode**; tin is **reduced** from \\(\\mathrm{Sn^{2+}}\\), so it is the **cathode**.\n\n**Step 2 — the standard cell potential.**\n\n\\(E^{\\circ}_{\\text{cell}} = E^{\\circ}_{\\text{cathode}} - E^{\\circ}_{\\text{anode}}\\)\n\n\\(E^{\\circ}_{\\text{cell}} = (-0.136) - (-0.403)\\)\n\n\\(E^{\\circ}_{\\text{cell}} = -0.136 + 0.403 = +0.267\\ \\mathrm{V}\\)\n\n**Step 3 — the number of electrons.** Both cadmium and tin change by two units of charge, so\n\n\\(n = 2\\)\n\n**Step 4 — the Gibbs energy change.**\n\n\\(\\Delta G^{\\circ} = -nFE^{\\circ}_{\\text{cell}}\\)\n\n\\(\\Delta G^{\\circ} = -2 \\times 96500 \\times 0.267\\)\n\n\\(\\Delta G^{\\circ} = -51531\\ \\mathrm{J}\\)\n\n\\(\\therefore \\Delta G^{\\circ} = -51.53\\ \\mathrm{kJ}\\)\n\nThe value is **negative**, which is consistent with the positive \\(E^{\\circ}_{\\text{cell}}\\): the reaction as written is spontaneous. The double negative in step 2 is where this calculation usually goes wrong."
+  },
+  {
+    "ref": "Q. 11",
+    "format": "subjective",
+    "chapter": "Biomolecules",
+    "subtopic": "Carbohydrates",
+    "difficulty": "MODERATE",
+    "stem": "Write chemical reaction for the preparation of glucose from sucrose. Write structure of D-ribose.",
+    "reviewFlag": true,
+    "solution": "**Glucose from sucrose — acid hydrolysis.**\n\nSucrose is boiled with dilute hydrochloric or sulfuric acid, which breaks the glycosidic linkage joining its glucose and fructose units:\n\n\\(\\mathrm{C_{12}H_{22}O_{11} + H_2O \\xrightarrow{dil.\\ HCl} C_6H_{12}O_6 + C_6H_{12}O_6}\\)\n\n(sucrose) \\(\\longrightarrow\\) (glucose) + (fructose)\n\nThe acid is then neutralised and the solution concentrated and cooled. Glucose is the less soluble of the two and crystallises out, leaving fructose in the mother liquor.\n\nThe product mixture is called **invert sugar**, because the hydrolysis reverses the sign of the optical rotation: sucrose is dextrorotatory, but the strongly laevorotatory fructose outweighs the dextrorotatory glucose.\n\n**Structure of D-ribose.**\n\nD-ribose is an **aldopentose** — five carbons with an aldehyde group at \\(\\mathrm{C_1}\\).\n\nOpen chain (Fischer) form:\n\n\\(\\mathrm{CHO{-}CHOH{-}CHOH{-}CHOH{-}CH_2OH}\\)\n\nIn the Fischer projection all three hydroxyl groups, on \\(\\mathrm{C_2}\\), \\(\\mathrm{C_3}\\) and \\(\\mathrm{C_4}\\), point to the **right**. It is designated **D** because the hydroxyl on \\(\\mathrm{C_4}\\), the chiral carbon furthest from the carbonyl, is on the right.\n\nIn solution it exists mainly as the five-membered **furanose** ring, formed when the \\(\\mathrm{C_4}\\) hydroxyl closes onto the \\(\\mathrm{C_1}\\) aldehyde. That is the form present in RNA; in DNA the \\(\\mathrm{C_2}\\) hydroxyl is absent, giving 2-deoxy-D-ribose."
+  },
+  {
+    "ref": "Q. 12",
+    "format": "subjective",
+    "chapter": "Chemical Thermodynamics",
+    "subtopic": "Pressure-Volume Work and Maximum Work",
+    "difficulty": "MODERATE",
+    "stem": "Define Extensive property. Calculate the work done during the expansion of 2 moles of an ideal gas from \\(10\\ \\mathrm{dm^{3}}\\) to \\(20\\ \\mathrm{dm^{3}}\\) at 298 K in vacuum.",
+    "reviewFlag": true,
+    "solution": "**Extensive property.** A property of a system whose value **depends on the amount of matter** present in the system. Divide the system in half and the value halves.\n\n*Examples:* mass, volume, internal energy, enthalpy, entropy, heat capacity, number of moles.\n\n**Work done during expansion in vacuum.**\n\n\\(W = -P_{\\text{ext}}\\,\\Delta V\\)\n\nExpansion **into a vacuum** means there is nothing outside pushing back, so\n\n\\(P_{\\text{ext}} = 0\\)\n\nTherefore\n\n\\(W = -0 \\times (20 - 10)\\)\n\n\\(\\therefore W = 0\\)\n\n**No work is done.** Work requires a force to be opposed; a gas expanding into a vacuum meets no opposing pressure, so however much its volume increases, it accomplishes nothing against its surroundings.\n\nThis is called **free expansion**, and it is the reason none of the given data is needed. The 2 moles, the 298 K and both volumes are all irrelevant — the single word *vacuum* determines the answer, and a student who reaches for \\(W = -2.303nRT\\log(V_2/V_1)\\) here has missed it."
+  },
+  {
+    "ref": "Q. 13",
+    "format": "subjective",
+    "chapter": "Introduction to Polymer Chemistry",
+    "subtopic": "Some Important Polymers",
+    "difficulty": "MODERATE",
+    "stem": "Write the reactions for the formation of nylon 6,6 polymer.",
+    "reviewFlag": true,
+    "solution": "Nylon 6,6 is a **polyamide** made by the condensation polymerisation of two monomers, each carrying six carbon atoms — which is where the name comes from:\n\n\\(\\mathrm{H_2N{-}(CH_2)_6{-}NH_2}\\)  hexamethylenediamine\n\n\\(\\mathrm{HOOC{-}(CH_2)_4{-}COOH}\\)  adipic acid\n\n(Adipic acid has six carbons in all — four in the chain and one in each carboxyl group.)\n\n**Step 1 — salt formation.** Mixing equimolar amounts gives nylon salt, which fixes the exact 1 : 1 ratio the polymer requires:\n\n\\(\\mathrm{H_2N{-}(CH_2)_6{-}NH_2 + HOOC{-}(CH_2)_4{-}COOH \\longrightarrow {}^{-}OOC{-}(CH_2)_4{-}COO^{-}\\ {}^{+}H_3N{-}(CH_2)_6{-}NH_3^{+}}\\)\n\n**Step 2 — polymerisation.** Heating the salt to about 550 K under pressure drives off water and builds the amide linkages:\n\n\\(n\\,\\mathrm{H_2N(CH_2)_6NH_2} + n\\,\\mathrm{HOOC(CH_2)_4COOH} \\longrightarrow \\mathrm{[{-}NH(CH_2)_6NH{-}CO(CH_2)_4CO{-}]}_n + 2n\\,\\mathrm{H_2O}\\)\n\nThe molten polymer is extruded through a spinneret and **cold drawn** to align the chains, which sets up hydrogen bonds between neighbouring amide groups. That hydrogen bonding is what gives the fibre its great tensile strength."
+  },
+  {
+    "ref": "Q. 14",
+    "format": "subjective",
+    "chapter": "Elements of Groups 16, 17 and 18",
+    "subtopic": "Oxoacids",
+    "difficulty": "MODERATE",
+    "stem": "Draw structures of the following compounds:\n\n(i) chloric acid\n\n(ii) peroxy disulphuric acid",
+    "reviewFlag": true,
+    "solution": "**(i) Chloric acid, \\(\\mathrm{HClO_3}\\).**\n\nChlorine is in the \\(+5\\) oxidation state. It is bonded to two oxygens by double bonds and to a hydroxyl oxygen by a single bond, and retains one lone pair:\n\n\\(\\mathrm{O{=}Cl(=O){-}O{-}H}\\)\n\nWith three bond pairs and one lone pair around chlorine, the electron arrangement is tetrahedral and the shape is **pyramidal**. Being monobasic, it has just one acidic hydrogen.\n\n**(ii) Peroxydisulphuric acid, \\(\\mathrm{H_2S_2O_8}\\).**\n\nAlso called **Marshall's acid**. It contains **two** sulfur atoms, each tetrahedrally surrounded by oxygens, joined to each other through a **peroxide bridge**:\n\n\\(\\mathrm{(HO){-}S(=O)(=O){-}O{-}O{-}S(=O)(=O){-}(OH)}\\)\n\nSo each sulfur carries two doubly bonded oxygens and one hydroxyl group, and the \\(\\mathrm{{-}O{-}O{-}}\\) linkage joins the two halves. Sulfur is in the \\(+6\\) state in both.\n\nThat peroxide linkage is what the prefix **peroxy** signals and what gives the acid its strong oxidising power. Compare **peroxymonosulphuric acid**, \\(\\mathrm{H_2SO_5}\\) or Caro's acid, which has only one sulfur and a terminal \\(\\mathrm{{-}O{-}O{-}H}\\) group."
+  },
+  {
+    "ref": "Q. 15",
+    "format": "subjective",
+    "chapter": "Solutions",
+    "subtopic": "Boiling Point Elevation",
+    "difficulty": "MODERATE",
+    "stem": "Define Osmosis.\n\nHow will you determine molar mass of non volatile solute by elevation of boiling point?",
+    "reviewFlag": true,
+    "solution": "**Osmosis.** The spontaneous flow of **solvent** molecules from a region of lower solute concentration to one of higher solute concentration through a **semipermeable membrane**, which allows solvent molecules through but not solute particles.\n\nThe flow is driven by the difference in the chemical potential of the solvent on the two sides, and continues until that difference is balanced by the hydrostatic pressure built up, or until an equal external pressure is applied.\n\n**Determining the molar mass from boiling point elevation.**\n\nThe elevation in boiling point is a colligative property, proportional to the molality:\n\n\\(\\Delta T_b = K_b \\, m\\)  ... (1)\n\nwhere \\(K_b\\) is the ebullioscopic constant of the solvent.\n\nLet \\(w_2\\) grams of solute of molar mass \\(M_2\\) be dissolved in \\(w_1\\) grams of solvent. Molality is moles of solute per kilogram of solvent:\n\n\\(m = \\dfrac{w_2 / M_2}{w_1 / 1000} = \\dfrac{1000\\,w_2}{M_2\\,w_1}\\)  ... (2)\n\nSubstituting (2) into (1),\n\n\\(\\Delta T_b = \\dfrac{1000\\,K_b\\,w_2}{M_2\\,w_1}\\)\n\nRearranging for the molar mass,\n\n\\(\\therefore M_2 = \\dfrac{1000\\,K_b\\,w_2}{\\Delta T_b \\, w_1}\\)\n\n**In practice.** A known mass of the solute is dissolved in a known mass of solvent, and the boiling points of the pure solvent and of the solution are measured with a sensitive thermometer. Their difference gives \\(\\Delta T_b\\), and everything else in the formula is known."
+  },
+  {
+    "ref": "Q. 16(i)",
+    "format": "subjective",
+    "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+    "subtopic": "Chemical Properties of Carboxylic Acids",
+    "difficulty": "EASY",
+    "stem": "Convert : Ethyl alcohol into ethyl acetate",
+    "reviewFlag": true,
+    "solution": "Ethanol is esterified by heating with acetic acid in the presence of a little concentrated sulfuric acid — **Fischer esterification**:\n\n\\(\\mathrm{C_2H_5OH + CH_3COOH \\xrightleftharpoons[\\Delta]{conc.\\ H_2SO_4} CH_3COOC_2H_5 + H_2O}\\)\n\nThe product is **ethyl acetate** (ethyl ethanoate).\n\nThe reaction is **reversible**, so the sulfuric acid serves two purposes: it catalyses the reaction by protonating the carbonyl, and it absorbs the water formed, driving the equilibrium towards the ester.\n\nAn alternative route, useful when the equilibrium is troublesome, is to treat the alcohol with **acetyl chloride** or **acetic anhydride** instead. Both are far more reactive than the acid and the reaction is irreversible."
+  },
+  {
+    "ref": "Q. 16(ii)",
+    "format": "subjective",
+    "chapter": "Alcohols, Phenols and Ethers",
+    "subtopic": "Ethers",
+    "difficulty": "MODERATE",
+    "stem": "Convert :\n\n(ii) Phenol into benzene\n\n(iii) Diethyl ether into ethyl chloride",
+    "reviewFlag": true,
+    "solution": "**(ii) Phenol into benzene.** Phenol vapour is passed over heated **zinc dust**, which removes the hydroxyl group as zinc oxide:\n\n\\(\\mathrm{C_6H_5OH + Zn \\xrightarrow{\\Delta} C_6H_6 + ZnO}\\)\n\nThe zinc is oxidised in preference to the ring, and this is the standard method for taking a phenol back to the parent arene.\n\n**(iii) Diethyl ether into ethyl chloride.** Phosphorus pentachloride cleaves the ether linkage, replacing the oxygen and giving **two** molecules of the alkyl chloride:\n\n\\(\\mathrm{C_2H_5{-}O{-}C_2H_5 + PCl_5 \\longrightarrow 2\\,C_2H_5Cl + POCl_3}\\)\n\nThe product is **chloroethane**.\n\nNote that \\(\\mathrm{PCl_5}\\) breaks **both** \\(\\mathrm{C{-}O}\\) bonds, which is why a symmetrical ether gives two molecules of the same halide. Cleavage by HI, by contrast, breaks only one bond and gives one alcohol and one alkyl iodide."
+  },
+  {
+    "ref": "Q. 17",
+    "format": "subjective",
+    "chapter": "Ionic Equilibria",
+    "subtopic": "Ionisation of Acids and Bases",
+    "difficulty": "HARD",
+    "stem": "A weak monobasic acid is 10% dissociated in 0.05 M solution.\n\nWhat is percent dissociation in 0.15 M solution?",
+    "reviewFlag": true,
+    "solution": "The link between the two solutions is that \\(K_a\\) is a **constant** — it does not change with dilution, whereas \\(\\alpha\\) does.\n\n**Step 1 — find \\(K_a\\) from the first solution.** By Ostwald's dilution law, with \\(\\alpha\\) small enough that \\(1 - \\alpha \\approx 1\\):\n\n\\(K_a = c\\alpha^{2}\\)\n\n\\(K_a = 0.05 \\times (0.10)^{2} = 0.05 \\times 0.01\\)\n\n\\(K_a = 5 \\times 10^{-4}\\)\n\n**Step 2 — use that \\(K_a\\) for the second solution.**\n\n\\(\\alpha_2 = \\sqrt{\\dfrac{K_a}{c_2}} = \\sqrt{\\dfrac{5 \\times 10^{-4}}{0.15}}\\)\n\n\\(\\alpha_2 = \\sqrt{3.333 \\times 10^{-3}}\\)\n\n\\(\\alpha_2 = 0.0577\\)\n\n\\(\\therefore\\) the percent dissociation is **5.77%**.\n\n**A check without arithmetic.** Ostwald's law says \\(\\alpha \\propto \\dfrac{1}{\\sqrt{c}}\\). The concentration has been tripled, so \\(\\alpha\\) should fall by a factor of \\(\\sqrt{3} = 1.732\\):\n\n\\(\\dfrac{10\\%}{1.732} = 5.77\\%\\)\n\nwhich agrees. The more concentrated solution is the **less** dissociated, which is the qualitative content of the dilution law."
+  },
+  {
+    "ref": "Q. 18",
+    "format": "subjective",
+    "chapter": "Halogen Derivatives",
+    "subtopic": "Uses and Environmental Effects of Polyhalogen Compounds",
+    "difficulty": "MODERATE",
+    "stem": "Explain dehydrohalogenation reaction of 2-chlorobutane. Write use and environmental effect of CFC.",
+    "reviewFlag": true,
+    "solution": "**Dehydrohalogenation of 2-chlorobutane.**\n\nHeating 2-chlorobutane with **alcoholic potassium hydroxide** eliminates HCl across adjacent carbons, giving an alkene:\n\n\\(\\mathrm{CH_3{-}CHCl{-}CH_2{-}CH_3 \\xrightarrow{alc.\\ KOH} CH_3{-}CH{=}CH{-}CH_3 + KCl + H_2O}\\)\n\n**Which alkene?** The chlorine is on \\(\\mathrm{C_2}\\), which has \\(\\beta\\)-hydrogens on **both** \\(\\mathrm{C_1}\\) and \\(\\mathrm{C_3}\\), so two products are possible:\n\n- removing a hydrogen from \\(\\mathrm{C_1}\\) gives but-1-ene, a **mono**substituted alkene\n- removing a hydrogen from \\(\\mathrm{C_3}\\) gives but-2-ene, a **di**substituted alkene\n\nBy **Saytzeff's rule**, the more substituted alkene predominates, because it is the more stable. So the major product is **but-2-ene**.\n\nThe solvent is essential: **alcoholic** KOH gives elimination, whereas **aqueous** KOH would give substitution and yield butan-2-ol instead.\n\n**Use of CFCs.** Chlorofluorocarbons such as Freon-12, \\(\\mathrm{CCl_2F_2}\\), were used as **refrigerants** in refrigerators and air conditioners, as **aerosol propellants** and as blowing agents for foams. They were chosen because they are non-toxic, non-flammable, unreactive and easily liquefied.\n\n**Environmental effect — ozone depletion.** Their very unreactivity is the problem: nothing destroys them in the lower atmosphere, so they drift up into the stratosphere. There ultraviolet light breaks the \\(\\mathrm{C{-}Cl}\\) bond and releases **chlorine free radicals**:\n\n\\(\\mathrm{CCl_2F_2 \\xrightarrow{UV} \\dot{C}ClF_2 + \\dot{C}l}\\)\n\n\\(\\mathrm{\\dot{C}l + O_3 \\longrightarrow ClO\\cdot + O_2}\\)\n\n\\(\\mathrm{ClO\\cdot + O \\longrightarrow \\dot{C}l + O_2}\\)\n\nThe chlorine atom is **regenerated** in the second step, so one atom can destroy many thousands of ozone molecules before it is finally removed. The resulting thinning of the ozone layer lets more ultraviolet radiation reach the surface, increasing skin cancer and cataracts and damaging crops. CFCs are now banned under the Montreal Protocol."
+  },
+  {
+    "ref": "Q. 19",
+    "format": "subjective",
+    "chapter": "Chemical Thermodynamics",
+    "subtopic": "Pressure-Volume Work and Maximum Work",
+    "difficulty": "MODERATE",
+    "stem": "2000 mmol of an ideal gas expanded isothermally and reversibly from 20 L to 30 L at 300 K, calculate the work done in the process \\((R = 8.314\\ \\mathrm{JK^{-1}\\ mol^{-1}})\\).",
+    "reviewFlag": true,
+    "solution": "For an isothermal reversible expansion,\n\n\\(W = -2.303\\,nRT\\log\\dfrac{V_2}{V_1}\\)\n\n**Step 1 — convert the amount to moles.** The quantity is given in **millimoles**:\n\n\\(n = 2000\\ \\mathrm{mmol} = 2\\ \\mathrm{mol}\\)\n\n**Step 2 — substitute.**\n\n\\(W = -2.303 \\times 2 \\times 8.314 \\times 300 \\times \\log\\dfrac{30}{20}\\)\n\n\\(2.303 \\times 2 = 4.606\\)\n\n\\(4.606 \\times 8.314 = 38.29\\)\n\n\\(38.29 \\times 300 = 11487\\)\n\n\\(\\log 1.5 = 0.1761\\)\n\n\\(W = -11487 \\times 0.1761\\)\n\n\\(W = -2023\\ \\mathrm{J}\\)\n\n\\(\\therefore W = -2.02\\ \\mathrm{kJ}\\)\n\nThe sign is negative because the gas **expands** and so does work on the surroundings, losing that much energy. The unit conversion in step 1 is the trap: using 2000 rather than 2 would overstate the answer a thousandfold."
+  },
+  {
+    "ref": "Q. 20",
+    "format": "subjective",
+    "chapter": "Transition and Inner Transition Elements",
+    "subtopic": "Common Properties of d-Block Elements",
+    "difficulty": "MODERATE",
+    "stem": "What are interstitial compounds? Give the classification of alloys with examples.",
+    "reviewFlag": true,
+    "solution": "**Interstitial compounds.** Compounds formed when **small atoms** such as hydrogen, carbon, nitrogen or boron are trapped in the **interstices** — the vacant spaces between the metal atoms in the crystal lattice of a transition metal.\n\nTheir characteristic properties are:\n\n1. **High melting points**, usually higher than the parent metal, since the trapped atoms lock the lattice.\n2. **Very hard**, some approaching diamond. Steel and cast iron are interstitial compounds of iron with carbon.\n3. **Non-stoichiometric**, with formulae like \\(\\mathrm{TiH_{1.7}}\\) and \\(\\mathrm{VH_{0.56}}\\), because the small atoms simply fill whatever fraction of the holes they can.\n4. **They retain metallic conductivity and lustre**, yet are **chemically inert** compared with the parent metal.\n\n**Classification of alloys.**\n\nAn alloy is a homogeneous mixture of two or more metals, or of a metal with a non-metal. There are two kinds.\n\n**1. Substitutional alloys.** The atoms of the added element **replace** atoms of the host metal at their lattice sites. This requires the two kinds of atom to be of **similar size**.\n\n*Examples:* brass (copper and zinc), bronze (copper and tin), and German silver (copper, zinc and nickel).\n\n**2. Interstitial alloys.** The atoms of the added element are **much smaller** and occupy the interstitial holes between the host atoms, without displacing any of them.\n\n*Examples:* steel (iron with carbon), and tungsten carbide.\n\nThe distinction is the same one that separates substitutional from interstitial impurity defects: whether the foreign atom **takes a site** or **fills a gap**."
+  },
+  {
+    "ref": "Q. 21",
+    "format": "subjective",
+    "chapter": "Electrochemistry",
+    "subtopic": "Galvanic Cells in Day-to-Day Life and Fuel Cells",
+    "difficulty": "MODERATE",
+    "stem": "Draw labelled diagram of \\(\\mathrm{H_2 - O_2}\\) fuel cell. Write two applications of fuel cell.",
+    "reviewFlag": true,
+    "solution": "**The hydrogen-oxygen fuel cell.**\n\nThe cell consists of:\n\n- **Anode:** a **porous carbon** electrode containing a finely divided catalyst, usually platinum or palladium, with **hydrogen gas** fed to it continuously\n- **Cathode:** an identical porous carbon electrode with a catalyst, fed with **oxygen gas**\n- **Electrolyte:** aqueous **potassium hydroxide**, between the two electrodes\n- An external circuit connecting the electrodes, through which the current flows\n- An outlet through which the product water is removed\n\nThe electrodes are **porous** so that gas, liquid electrolyte and solid catalyst meet over the largest possible area.\n\n**The reactions.**\n\nAnode: \\(\\mathrm{2H_{2(g)} + 4OH^{-}_{(aq)} \\longrightarrow 4H_2O_{(l)} + 4e^{-}}\\)\n\nCathode: \\(\\mathrm{O_{2(g)} + 2H_2O_{(l)} + 4e^{-} \\longrightarrow 4OH^{-}_{(aq)}}\\)\n\nOverall: \\(\\mathrm{2H_{2(g)} + O_{2(g)} \\longrightarrow 2H_2O_{(l)}}\\)\n\nThe hydroxide ions are consumed at the anode and regenerated at the cathode in equal numbers, so the electrolyte is not used up.\n\n**Two applications.**\n\n1. **Spacecraft and submarines.** Fuel cells supply electrical power on the Apollo missions and in modern spacecraft, and the water they produce is pure enough for the crew to drink — two needs met by one device.\n2. **Electric vehicles and stationary power.** Hydrogen fuel cells power buses and cars without emitting carbon dioxide or particulates, and are used as backup generators where quiet, clean operation matters.\n\nTheir great advantage is **efficiency**: converting chemical energy directly into electrical energy avoids the heat-engine stage, so they are not limited by the Carnot efficiency and reach 70 to 75%."
+  },
+  {
+    "ref": "Q. 22",
+    "format": "subjective",
+    "chapter": "Coordination Compounds",
+    "subtopic": "Theories of Bonding in Complexes",
+    "difficulty": "HARD",
+    "stem": "Explain formation of \\(\\mathrm{[CoF_6]^{3-}}\\) complex with respect to\n\n(i) Hybridisation\n\n(ii) Magnetic properties\n\n(iii) Inner / outer complex\n\n(iv) Geometry",
+    "reviewFlag": true,
+    "solution": "**The metal ion.** Each fluoride carries \\(-1\\) and the complex ion carries \\(-3\\):\n\n\\(x + 6(-1) = -3\\), so \\(x = +3\\)\n\nCobalt is \\(\\mathrm{[Ar]\\,3d^{7}4s^{2}}\\), so\n\n\\(\\mathrm{Co^{3+}: [Ar]\\ 3d^{6}}\\)\n\n**(i) Hybridisation.** Fluoride is a **weak field** ligand, low in the spectrochemical series. It cannot force the \\(3d\\) electrons to pair, so the six electrons remain spread over all five \\(3d\\) orbitals as \\(t_{2g}^{4}e_g^{2}\\), and **no inner \\(3d\\) orbital is left empty**.\n\nThe six ligand lone pairs must therefore be accepted into the **outer** orbitals — \\(4s\\), three \\(4p\\) and two \\(4d\\).\n\n\\(\\therefore\\) the hybridisation is \\(sp^{3}d^{2}\\).\n\n**(ii) Magnetic properties.** With \\(t_{2g}^{4}e_g^{2}\\) there are **four unpaired electrons**, so the ion is **paramagnetic**:\n\n\\(\\mu = \\sqrt{n(n+2)} = \\sqrt{4 \\times 6} = \\sqrt{24} = 4.90\\ \\mathrm{BM}\\)\n\n**(iii) Inner or outer complex.** Because **outer** \\(4d\\) orbitals are used rather than inner \\(3d\\) ones, this is an **outer orbital complex**. It is equivalently called a **high spin** complex, since the electrons stay unpaired.\n\n**(iv) Geometry.** Six \\(sp^{3}d^{2}\\) hybrid orbitals point to the corners of a regular octahedron.\n\n\\(\\therefore\\) the ion is **octahedral**.\n\n**The contrast that makes the point.** \\(\\mathrm{[Co(NH_3)_6]^{3+}}\\) has the same metal in the same oxidation state, but ammonia is a **strong field** ligand. It forces the six electrons to pair into \\(t_{2g}^{6}\\), freeing two inner \\(3d\\) orbitals, so the hybridisation is \\(d^{2}sp^{3}\\), the complex is inner orbital and low spin, and it is **diamagnetic**. Everything that differs between the two is caused by the ligand alone."
+  },
+  {
+    "ref": "Q. 23",
+    "format": "subjective",
+    "chapter": "Chemical Kinetics",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "MODERATE",
+    "stem": "What is Pseudo first order reaction? Derive integrated rate law equation for zero order reaction.",
+    "reviewFlag": true,
+    "solution": "**Pseudo first order reaction.** A reaction that is genuinely of **higher order** but **appears** to be first order, because one of the reactants is present in such large excess that its concentration does not change appreciably during the reaction.\n\nThe standard example is the acid catalysed hydrolysis of an ester:\n\n\\(\\mathrm{CH_3COOC_2H_5 + H_2O \\xrightarrow{H^{+}} CH_3COOH + C_2H_5OH}\\)\n\nThe true rate law is \\(\\text{rate} = k[\\text{ester}][\\mathrm{H_2O}]\\), which is second order. But water is also the **solvent** and is present in vast excess, so \\([\\mathrm{H_2O}]\\) is effectively constant and can be absorbed into the rate constant:\n\n\\(\\text{rate} = k'[\\text{ester}]\\), where \\(k' = k[\\mathrm{H_2O}]\\)\n\nThe reaction therefore behaves as first order in practice.\n\n**Integrated rate law for a zero order reaction.**\n\nFor \\(\\mathrm{A \\longrightarrow P}\\), the rate is independent of concentration:\n\n\\(-\\dfrac{d[A]}{dt} = k[A]^{0} = k\\)\n\nSeparating the variables,\n\n\\(-d[A] = k\\,dt\\)\n\nIntegrate between the limits — at \\(t = 0\\) the concentration is \\([A]_0\\), at time \\(t\\) it is \\([A]_t\\):\n\n\\(-\\displaystyle\\int_{[A]_0}^{[A]_t} d[A] = k\\int_{0}^{t} dt\\)\n\n\\(-\\left([A]_t - [A]_0\\right) = kt\\)\n\n\\(\\therefore [A]_0 - [A]_t = kt\\)\n\nor\n\n\\(k = \\dfrac{[A]_0 - [A]_t}{t}\\)\n\n**Two consequences.** A plot of \\([A]_t\\) against \\(t\\) is a **straight line** of slope \\(-k\\), which is the graphical test for zero order. And the half life is \\(t_{1/2} = \\dfrac{[A]_0}{2k}\\), which — unlike a first order reaction — **does** depend on the starting concentration."
+  },
+  {
+    "ref": "Q. 24",
+    "format": "subjective",
+    "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+    "subtopic": "Chemical Properties of Aldehydes and Ketones",
+    "difficulty": "MODERATE",
+    "stem": "Explain Aldol condensation of ethanal.",
+    "reviewFlag": true,
+    "solution": "**Aldol condensation** is the reaction of two molecules of an aldehyde or ketone bearing at least one \\(\\alpha\\)-hydrogen, in the presence of dilute alkali, to give a \\(\\beta\\)-hydroxy carbonyl compound. Ethanal has three \\(\\alpha\\)-hydrogens and undergoes it readily.\n\n**Step 1 — formation of the aldol.** Dilute sodium hydroxide removes an \\(\\alpha\\)-hydrogen from one molecule of ethanal, giving a carbanion that is stabilised by resonance with the carbonyl group. That carbanion then attacks the carbonyl carbon of a second molecule:\n\n\\(\\mathrm{CH_3CHO + CH_3CHO \\xrightarrow{dil.\\ NaOH} CH_3{-}CH(OH){-}CH_2{-}CHO}\\)\n\nThe product is 3-hydroxybutanal, called **aldol** because it contains both an *ald*ehyde and an alcoh*ol* group.\n\n**Step 2 — dehydration.** On warming, water is eliminated across the \\(\\alpha,\\beta\\) positions:\n\n\\(\\mathrm{CH_3{-}CH(OH){-}CH_2{-}CHO \\xrightarrow{\\Delta} CH_3{-}CH{=}CH{-}CHO + H_2O}\\)\n\nThe product is but-2-enal, crotonaldehyde. The elimination is favoured because the new double bond ends up **conjugated** with the carbonyl group, which stabilises it.\n\n**The requirement.** At least one \\(\\alpha\\)-hydrogen is essential, since without it no carbanion can form. Benzaldehyde and methanal have none, and they undergo the **Cannizzaro** reaction instead. The two reactions are mutually exclusive, and which one an aldehyde gives is decided entirely by whether it has an \\(\\alpha\\)-hydrogen."
+  },
+  {
+    "ref": "Q. 25",
+    "format": "subjective",
+    "chapter": "Elements of Groups 16, 17 and 18",
+    "subtopic": "Anomalous Behaviour",
+    "difficulty": "MODERATE",
+    "stem": "Explain anomalous behaviour of oxygen in group 16 with respect to:\n\n(i) Atomicity\n\n(ii) Magnetic property\n\n(iii) Oxidation state",
+    "reviewFlag": true,
+    "solution": "Oxygen is the first member of group 16 and differs from sulfur, selenium and tellurium because it is **small**, **highly electronegative** and has **no vacant \\(d\\) orbitals**.\n\n**(i) Atomicity.** Oxygen is **diatomic**, existing as discrete \\(\\mathrm{O_2}\\) molecules held by a double bond. The others are **polyatomic**: sulfur forms \\(\\mathrm{S_8}\\) puckered rings, and selenium and tellurium form long chains.\n\nThe cause is size. Oxygen is small enough to form strong \\(p\\pi{-}p\\pi\\) multiple bonds with itself, so two atoms satisfy each other completely. The larger atoms cannot overlap their \\(p\\) orbitals sideways well enough for a \\(\\pi\\) bond, so they form single bonds to several neighbours instead.\n\n**(ii) Magnetic property.** \\(\\mathrm{O_2}\\) is **paramagnetic**, while the other elements in their normal forms are diamagnetic.\n\nMolecular orbital theory explains it: the last two electrons of \\(\\mathrm{O_2}\\) occupy two degenerate antibonding \\(\\pi^{*}\\) orbitals **singly, with parallel spins**, leaving two unpaired electrons. This is the classic case that valence bond theory, which pairs them into a neat double bond, cannot account for.\n\n**(iii) Oxidation state.** Oxygen shows a maximum of \\(-2\\) and does not exhibit the \\(+4\\) and \\(+6\\) states common for the heavier members.\n\nTwo reasons combine. It has **no vacant \\(d\\) orbitals**, so its paired electrons cannot be unpaired and promoted to expand the octet. And it is second only to fluorine in electronegativity, so positive oxidation states are strongly unfavourable. Its only positive state is \\(+2\\), in \\(\\mathrm{OF_2}\\), and only because fluorine is more electronegative still."
+  },
+  {
+    "ref": "Q. 26(i)",
+    "format": "subjective",
+    "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+    "subtopic": "Chemical Properties of Carboxylic Acids",
+    "difficulty": "MODERATE",
+    "stem": "Write chemical reactions for the following conversions:\n\n(i) Acetic acid into acetic anhydride\n\n(ii) Acetic acid into ethyl alcohol",
+    "reviewFlag": true,
+    "solution": "**(i) Acetic acid into acetic anhydride — dehydration.** Two molecules of the acid lose one molecule of water between them, on heating with phosphorus pentoxide:\n\n\\(\\mathrm{2\\,CH_3COOH \\xrightarrow[\\Delta]{P_2O_5} (CH_3CO)_2O + H_2O}\\)\n\nThe \\(\\mathrm{P_2O_5}\\) is a powerful dehydrating agent and simply removes the water as it forms.\n\n**(ii) Acetic acid into ethyl alcohol — reduction.**\n\n\\(\\mathrm{CH_3COOH \\xrightarrow[(ii)\\ H_3O^{+}]{(i)\\ LiAlH_4} CH_3CH_2OH}\\)\n\nThe carboxyl group \\(\\mathrm{{-}COOH}\\) is reduced to a primary alcohol group \\(\\mathrm{{-}CH_2OH}\\), the carbon count unchanged at two.\n\nLithium aluminium hydride is required because the carboxyl group is the **hardest** carbonyl derivative to reduce: its carbonyl carbon is already stabilised by the adjacent hydroxyl oxygen, so a milder reducing agent such as \\(\\mathrm{NaBH_4}\\) leaves it entirely untouched."
+  },
+  {
+    "ref": "Q. 26(ii)",
+    "format": "subjective",
+    "chapter": "Amines",
+    "subtopic": "Classification and Nomenclature of Amines",
+    "difficulty": "EASY",
+    "stem": "Write IUPAC name and structure of methylphenylamine.",
+    "reviewFlag": true,
+    "solution": "**Structure.** Methylphenylamine has a nitrogen carrying one methyl group, one phenyl group and one hydrogen:\n\n\\(\\mathrm{C_6H_5{-}NH{-}CH_3}\\)\n\nSince two carbon groups are attached to the nitrogen, it is a **secondary** amine.\n\n**IUPAC name.** The parent is chosen as **aniline**, the aromatic amine, and the methyl group on the nitrogen is shown by the locant **N**:\n\n\\(\\therefore\\) **N-methylaniline**\n\n(Also written N-methylbenzenamine.)\n\nThe **N-** prefix is essential. It says the methyl group is attached to the **nitrogen**, not to the ring. Writing simply \"methylaniline\" would suggest a ring substituent and mean an entirely different compound — 2-, 3- or 4-methylaniline, the toluidines, which are primary amines."
+  },
+  {
+    "ref": "Q. 27(i)",
+    "format": "subjective",
+    "chapter": "Chemical Kinetics",
+    "subtopic": "Integrated Rate Law",
+    "difficulty": "HARD",
+    "stem": "Show that, time required for 99.9% completion of a first order reaction is three times the time required for 90% completion.",
+    "reviewFlag": true,
+    "solution": "For a first order reaction,\n\n\\(t = \\dfrac{2.303}{k}\\log\\dfrac{[A]_0}{[A]_t}\\)\n\nTake the initial amount as 100 in both cases.\n\n**Time for 90% completion.** If 90% has reacted, **10** remains:\n\n\\(t_{90} = \\dfrac{2.303}{k}\\log\\dfrac{100}{10}\\)\n\n\\(t_{90} = \\dfrac{2.303}{k}\\log 10 = \\dfrac{2.303}{k} \\times 1\\)\n\n\\(t_{90} = \\dfrac{2.303}{k}\\)  ... (1)\n\n**Time for 99.9% completion.** If 99.9% has reacted, **0.1** remains:\n\n\\(t_{99.9} = \\dfrac{2.303}{k}\\log\\dfrac{100}{0.1}\\)\n\n\\(t_{99.9} = \\dfrac{2.303}{k}\\log 1000 = \\dfrac{2.303}{k} \\times 3\\)\n\n\\(t_{99.9} = \\dfrac{3 \\times 2.303}{k}\\)  ... (2)\n\n**Take the ratio.** Dividing (2) by (1), the \\(\\dfrac{2.303}{k}\\) cancels:\n\n\\(\\dfrac{t_{99.9}}{t_{90}} = 3\\)\n\n\\(\\therefore t_{99.9} = 3 \\times t_{90}\\)\n\nwhich is what was to be shown.\n\n**Why it works out so cleanly.** The rate constant cancels, so the result holds for **every** first order reaction whatever its speed. The factor of 3 is simply \\(\\log 1000 \\div \\log 10\\), and the underlying reason is that the amount remaining falls by a factor of ten each time — from 10 to 1 to 0.1 — and each tenfold fall takes the same time."
+  },
+  {
+    "ref": "Q. 27(ii)",
+    "format": "subjective",
+    "chapter": "Transition and Inner Transition Elements",
+    "subtopic": "Lanthanoids",
+    "difficulty": "MODERATE",
+    "stem": "Give electronic configuration of Gd (Z = 64).",
+    "reviewFlag": true,
+    "solution": "\\(\\mathrm{Gd:\\ [Xe]\\ 4f^{7}\\ 5d^{1}\\ 6s^{2}}\\)\n\nGadolinium is the eighth lanthanoid, so the **expected** configuration would be \\(\\mathrm{[Xe]\\,4f^{8}6s^{2}}\\). Instead one electron occupies the \\(5d\\) orbital, leaving the \\(4f\\) subshell **exactly half filled**.\n\nThe reason is the extra stability of a half filled subshell. With seven electrons the seven \\(4f\\) orbitals are each singly occupied with parallel spins, which maximises the **exchange energy** and gives a symmetrical distribution of charge. That stabilisation outweighs the cost of promoting one electron to \\(5d\\).\n\nThis is the same effect that makes chromium \\(3d^{5}4s^{1}\\) rather than \\(3d^{4}4s^{2}\\), and copper \\(3d^{10}4s^{1}\\)."
+  },
+  {
+    "ref": "Q. 27(iii)",
+    "format": "subjective",
+    "chapter": "Green Chemistry and Nanochemistry",
+    "subtopic": "Applications of Nanomaterials",
+    "difficulty": "EASY",
+    "stem": "Write the name of nano structured material used in car tyres to increase the life of tyres.",
+    "reviewFlag": true,
+    "solution": "**Carbon black.**\n\nIt consists of nanoparticles of nearly pure elemental carbon, blended into the rubber during manufacture. The particles reinforce the rubber matrix, greatly increasing its tensile strength and its resistance to abrasion and tearing.\n\nThe result is that the tread wears down far more slowly, so the life of the tyre is increased — and the carbon black is also what makes tyres black."
+  },
+  {
+    "ref": "Q. 28(i)",
+    "format": "subjective",
+    "chapter": "Chemical Thermodynamics",
+    "subtopic": "First Law of Thermodynamics",
+    "difficulty": "MODERATE",
+    "stem": "Derive relationship between \\(\\Delta H\\) and \\(\\Delta U\\) for gaseous reaction.",
+    "reviewFlag": true,
+    "solution": "Enthalpy is defined as\n\n\\(H = U + PV\\)\n\nFor a change carried out at constant pressure,\n\n\\(\\Delta H = \\Delta U + P\\Delta V\\)  ... (1)\n\nNow express the volume change through the ideal gas equation. Let \\(n_1\\) be the total moles of gaseous **reactants** occupying \\(V_1\\), and \\(n_2\\) the total moles of gaseous **products** occupying \\(V_2\\), at the same temperature and pressure:\n\n\\(PV_1 = n_1RT\\) and \\(PV_2 = n_2RT\\)\n\nSubtracting,\n\n\\(P(V_2 - V_1) = (n_2 - n_1)RT\\)\n\n\\(P\\Delta V = \\Delta n_g RT\\)  ... (2)\n\nwhere \\(\\Delta n_g = n_2 - n_1\\) is the change in the number of moles of **gas**.\n\nSubstituting (2) into (1),\n\n\\(\\therefore \\Delta H = \\Delta U + \\Delta n_g RT\\)\n\n**Three cases follow.**\n\n- \\(\\Delta n_g = 0\\), as in \\(\\mathrm{H_2 + Cl_2 \\longrightarrow 2HCl}\\): then \\(\\Delta H = \\Delta U\\).\n- \\(\\Delta n_g > 0\\): the system expands, does work on the surroundings, and \\(\\Delta H > \\Delta U\\).\n- \\(\\Delta n_g < 0\\): the system contracts and \\(\\Delta H < \\Delta U\\).\n\nOnly **gaseous** species are counted in \\(\\Delta n_g\\), since the volume change of solids and liquids is negligible by comparison."
+  },
+  {
+    "ref": "Q. 28(ii)",
+    "format": "subjective",
+    "chapter": "Introduction to Polymer Chemistry",
+    "subtopic": "Some Important Polymers",
+    "difficulty": "EASY",
+    "stem": "Define: Vulcanization",
+    "reviewFlag": true,
+    "solution": "**Vulcanization** is the process of heating natural rubber with **sulfur**, at about 373 to 415 K, so that **cross links** form between the polymer chains.\n\nThe sulfur atoms form short bridges between the chains at the sites of their residual double bonds, tying the separate chains into a loose three-dimensional network.\n\n**Why it is done.** Raw natural rubber is soft and sticky, becomes tacky in hot weather and brittle in cold, has low tensile strength and is attacked by organic solvents. Vulcanisation corrects all of these: the cross linked rubber is harder, stronger, more elastic over a much wider temperature range, and resistant to abrasion and to solvents.\n\n**The amount of sulfur controls the result.** About 5% gives the flexible rubber used for tyres; around 30% gives the hard, rigid material called ebonite."
+  },
+  {
+    "ref": "Q. 28(iii)",
+    "format": "subjective",
+    "chapter": "Biomolecules",
+    "subtopic": "Proteins",
+    "difficulty": "EASY",
+    "stem": "What is peptide bond?",
+    "reviewFlag": true,
+    "solution": "A **peptide bond** is the amide linkage \\(\\mathrm{{-}CO{-}NH{-}}\\) that joins two amino acid units in a peptide or protein.\n\nIt is formed by a **condensation** reaction between the carboxyl group of one amino acid and the amino group of the next, with the elimination of a molecule of water:\n\n\\(\\mathrm{H_2N{-}CHR{-}COOH + H_2N{-}CHR'{-}COOH \\longrightarrow H_2N{-}CHR{-}CO{-}NH{-}CHR'{-}COOH + H_2O}\\)\n\nThe \\(\\mathrm{{-}OH}\\) of the carboxyl group and one \\(\\mathrm{{-}H}\\) of the amino group leave together as water, and the nitrogen bonds directly to the carbonyl carbon.\n\n**A property worth knowing.** The peptide bond is **planar and rigid**, because the nitrogen lone pair is delocalised into the carbonyl group, giving the \\(\\mathrm{C{-}N}\\) bond partial double bond character. There is no free rotation about it, and that rigidity is what makes the regular secondary structures of proteins — the \\(\\alpha\\)-helix and the \\(\\beta\\)-pleated sheet — possible."
+  },
+  {
+    "ref": "Q. 29(i)",
+    "format": "subjective",
+    "chapter": "Solid State",
+    "subtopic": "Cubic System",
+    "difficulty": "MODERATE",
+    "stem": "Silver crystallizes in fcc structure. If edge length of unit cell is 400 pm, calculate density of silver (Atomic mass of Ag = 108).",
+    "reviewFlag": true,
+    "solution": "\\(\\rho = \\dfrac{nM}{a^{3}N_A}\\)\n\n**Step 1 — atoms per unit cell.** For face centred cubic, \\(n = 4\\).\n\n**Step 2 — convert the edge length to centimetres.**\n\n\\(a = 400\\ \\mathrm{pm} = 4 \\times 10^{-8}\\ \\mathrm{cm}\\)\n\n\\(a^{3} = (4 \\times 10^{-8})^{3} = 64 \\times 10^{-24} = 6.4 \\times 10^{-23}\\ \\mathrm{cm^{3}}\\)\n\n**Step 3 — substitute.**\n\n\\(\\rho = \\dfrac{4 \\times 108}{6.4 \\times 10^{-23} \\times 6.022 \\times 10^{23}}\\)\n\n\\(\\rho = \\dfrac{432}{6.4 \\times 6.022}\\)\n\n\\(\\rho = \\dfrac{432}{38.54}\\)\n\n\\(\\therefore \\rho = 11.21\\ \\mathrm{g\\ cm^{-3}}\\)\n\nThe measured density of silver is \\(10.5\\ \\mathrm{g\\ cm^{-3}}\\), so the calculated value is of the right order — the small excess comes from the rounded edge length.\n\nThe step most often missed is the conversion in step 2: leaving the edge in picometres would give an answer wrong by a factor of \\(10^{30}\\)."
+  },
+  {
+    "ref": "Q. 29(ii)",
+    "format": "subjective",
+    "chapter": "Aldehydes, Ketones and Carboxylic Acids",
+    "subtopic": "Chemical Properties of Aldehydes and Ketones",
+    "difficulty": "MODERATE",
+    "stem": "Write a note on Haloform reaction.",
+    "reviewFlag": true,
+    "solution": "**The reaction.** A methyl ketone, or a compound that the halogen first oxidises to one, reacts with a halogen in the presence of alkali to give a **haloform** \\(\\mathrm{CHX_3}\\) together with the salt of a carboxylic acid having one carbon fewer.\n\nWith acetone and iodine in sodium hydroxide:\n\n\\(\\mathrm{CH_3COCH_3 + 3I_2 + 4NaOH \\longrightarrow CHI_3\\downarrow + CH_3COONa + 3NaI + 3H_2O}\\)\n\n**Mechanism in outline.** The base removes the acidic \\(\\alpha\\)-hydrogens one at a time, and each carbanion so formed is halogenated. Once all three hydrogens of the methyl group have been replaced, the \\(\\mathrm{{-}CX_3}\\) group is strongly electron withdrawing and becomes a good leaving group. Hydroxide then attacks the carbonyl carbon and expels \\(\\mathrm{CX_3^{-}}\\), which takes a proton to give \\(\\mathrm{CHX_3}\\).\n\n**Which compounds give it.** The reaction requires either a \\(\\mathrm{CH_3CO{-}}\\) group, or a \\(\\mathrm{CH_3CH(OH){-}}\\) group which the halogen oxidises to one first. So ethanal, all methyl ketones, ethanol and propan-2-ol give it. Propanone does; pentan-3-one, having no methyl attached to the carbonyl, does not.\n\n**Use as a test.** With iodine and alkali the product is **iodoform**, \\(\\mathrm{CHI_3}\\), a yellow crystalline solid with a characteristic antiseptic smell. Its appearance is the classic **iodoform test**, used to detect a methyl ketone or ethanol."
+  },
+  {
+    "ref": "Q. 30(i)",
+    "format": "subjective",
+    "chapter": "Coordination Compounds",
+    "subtopic": "Isomerism in Coordination Compounds",
+    "difficulty": "MODERATE",
+    "stem": "Define: Distereoisomers.\n\nGive cis and trans isomers of \\(\\mathrm{[Co(NH_3)_4Cl_2]^{+}}\\).",
+    "reviewFlag": true,
+    "solution": "**Diastereoisomers.** Stereoisomers that are **not mirror images** of one another.\n\nThey have the same molecular formula and the same connectivity, but differ in the arrangement of their groups in space — and unlike enantiomers, they differ in their ordinary physical properties too: melting point, solubility, colour and dipole moment are all different, so they can be separated by ordinary means.\n\nGeometrical isomers, the cis and trans forms, are the commonest kind of diastereoisomer.\n\n**Cis and trans isomers of \\(\\mathrm{[Co(NH_3)_4Cl_2]^{+}}\\).**\n\nThe complex is **octahedral**, with cobalt at the centre surrounded by four ammonia and two chloride ligands. The two chlorides can be arranged in two distinct ways.\n\n**Cis isomer.** The two chloride ligands occupy **adjacent** positions, at \\(90^{\\circ}\\) to one another. The four ammonia ligands fill the remaining four positions. This isomer is **violet**.\n\n**Trans isomer.** The two chloride ligands occupy **opposite** positions, at \\(180^{\\circ}\\) to one another, and the four ammonia ligands lie in the plane between them. This isomer is **green**.\n\nThe two are diastereoisomers: they are not mirror images, and their different colours are the plainest sign that they are genuinely different compounds.\n\nGeometrical isomerism of this kind needs a **heteroleptic** complex — with all six ligands the same there would be nothing to arrange."
+  },
+  {
+    "ref": "Q. 30(ii)",
+    "format": "subjective",
+    "chapter": "Electrochemistry",
+    "subtopic": "Reference Electrodes",
+    "difficulty": "EASY",
+    "stem": "What is reference electrode?",
+    "reviewFlag": true,
+    "solution": "A **reference electrode** is an electrode whose **potential is accurately known and remains constant**, against which the potential of any other electrode can be measured.\n\nA single electrode potential cannot be measured on its own — only the difference between two electrodes can be. So one electrode must be adopted as a fixed standard, and every other potential quoted relative to it.\n\n**The primary reference electrode** is the **standard hydrogen electrode (SHE)**: platinum foil coated with platinum black, dipping in 1 M \\(\\mathrm{H^{+}}\\), with hydrogen gas at 1 bar bubbled over it at 298 K. Its potential is **defined as exactly zero volts** at all temperatures.\n\n**Secondary reference electrodes** are used in practice, because the SHE is awkward to set up and maintain. The **calomel electrode**, \\(\\mathrm{Hg \\mid Hg_2Cl_2 \\mid KCl}\\), and the **silver-silver chloride electrode** are both compact, stable and easy to use, and their potentials have been measured accurately against the SHE once and for all."
+  },
+  {
+    "ref": "Q. 30(iii)",
+    "format": "subjective",
+    "chapter": "Elements of Groups 16, 17 and 18",
+    "subtopic": "Oxygen and Compounds of Oxygen",
+    "difficulty": "MODERATE",
+    "stem": "Give reason: Bleaching action of ozone is also called dry bleach.",
+    "reviewFlag": true,
+    "solution": "Ozone is called a **dry bleach** because its bleaching action requires **no water**.\n\nOzone is thermodynamically unstable and decomposes on its own, releasing **nascent oxygen** directly:\n\n\\(\\mathrm{O_3 \\longrightarrow O_2 + [O]}\\)\n\nThat atomic oxygen is a powerful oxidising agent and attacks the coloured organic matter at once, breaking up the conjugated systems of double bonds that absorb visible light, so the material loses its colour.\n\n**The contrast that gives it the name.** Chlorine, the other common oxidative bleach, cannot act when dry. It must first react with **moisture** to give hypochlorous acid, which then decomposes to supply the nascent oxygen:\n\n\\(\\mathrm{Cl_2 + H_2O \\longrightarrow HCl + HOCl}\\)\n\n\\(\\mathrm{HOCl \\longrightarrow HCl + [O]}\\)\n\nSo chlorine is a wet bleach and ozone a dry one.\n\nBecause it needs no water and leaves no residue, ozone is used to bleach delicate materials that moisture or chlorine would damage — ivory, oils, starch, wax, silk and delicate fabrics."
+  },
+  {
+    "ref": "Q. 31(i)",
+    "format": "subjective",
+    "chapter": "Alcohols, Phenols and Ethers",
+    "subtopic": "Alcohols and Phenols",
+    "difficulty": "MODERATE",
+    "stem": "Write Dow process for preparation of Phenol. What is the action of bromine water on phenol?",
+    "reviewFlag": true,
+    "solution": "**Dow process.** Phenol is prepared industrially from chlorobenzene by hydrolysis under forcing conditions.\n\n**Step 1 — hydrolysis.** Chlorobenzene is heated with aqueous sodium hydroxide at about 623 K under a pressure of some 300 atmospheres, giving sodium phenoxide:\n\n\\(\\mathrm{C_6H_5Cl + 2NaOH \\xrightarrow[300\\ atm]{623\\ K} C_6H_5O^{-}Na^{+} + NaCl + H_2O}\\)\n\n**Step 2 — acidification.** The phenoxide is then acidified to liberate phenol:\n\n\\(\\mathrm{C_6H_5O^{-}Na^{+} + HCl \\longrightarrow C_6H_5OH + NaCl}\\)\n\n**Why the conditions are so severe.** The \\(\\mathrm{C{-}Cl}\\) bond in chlorobenzene has **partial double bond character**, the chlorine lone pair being delocalised into the ring. It is therefore short, strong and extremely resistant to nucleophilic substitution — hence the high temperature and pressure.\n\n**Action of bromine water on phenol.**\n\n\\(\\mathrm{C_6H_5OH + 3Br_2 \\xrightarrow{H_2O} 2,4,6{-}Br_3{-}C_6H_2OH\\downarrow + 3HBr}\\)\n\nThe product is **2,4,6-tribromophenol**, which separates as a **white precipitate**.\n\nThe striking feature is that **three** bromines enter at once, with no catalyst and at room temperature, whereas bromination of benzene needs a Lewis acid catalyst. The hydroxyl group activates the ring so powerfully, by donating its lone pair into it, that substitution occurs at every available ortho and para position immediately.\n\nIn a non-polar solvent such as \\(\\mathrm{CS_2}\\) at low temperature the reaction can be held at the mono-substituted stage, giving mainly 4-bromophenol."
+  },
+  {
+    "ref": "Q. 31(ii)",
+    "format": "subjective",
+    "chapter": "Elements of Groups 16, 17 and 18",
+    "subtopic": "Atomic and Physical Properties",
+    "difficulty": "MODERATE",
+    "stem": "Give reason: Group \\(16^{\\text{th}}\\) elements have lower ionisation enthalpy compared to group \\(15^{\\text{th}}\\) elements.\n\nWrite two uses of dioxygen.",
+    "reviewFlag": true,
+    "solution": "**Why group 16 has the lower ionisation enthalpy.**\n\nAcross a period the ionisation enthalpy generally **rises** with nuclear charge, so group 16 should exceed group 15. It does not, and the reason is the **electronic configuration**.\n\nA group 15 element has the valence configuration \\(ns^{2}np^{3}\\). The three \\(p\\) electrons occupy the three \\(p\\) orbitals **singly, with parallel spins** — an **exactly half filled** subshell, which is symmetrical and unusually stable. Removing an electron from it destroys that stability and costs a great deal of energy.\n\nA group 16 element has \\(ns^{2}np^{4}\\). The fourth \\(p\\) electron must **pair up** in an orbital that already holds one, so it suffers **inter-electronic repulsion** from its partner. That repulsion makes it easier to remove, and removing it also leaves behind the stable half filled \\(np^{3}\\) arrangement.\n\n\\(\\therefore\\) both effects work the same way, and group 16 has the lower ionisation enthalpy despite its greater nuclear charge.\n\n**Two uses of dioxygen.**\n\n1. **In medicine and life support.** Oxygen is given to patients with breathing difficulty, and is carried by mountaineers, divers and aircraft at altitude. Mixed with helium it forms the breathing gas for deep sea diving.\n2. **In metallurgy and welding.** Oxygen is blown through molten iron in the basic oxygen process for making steel, burning off carbon and other impurities. The oxy-acetylene flame, reaching about 3200 K, is used for welding and cutting metals.\n\n(Also accepted: as an oxidiser in rocket propellants; in the manufacture of sulfuric and nitric acid; and in sewage treatment.)"
+  }
+]
