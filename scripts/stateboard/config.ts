@@ -1651,6 +1651,29 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  "population-1-12-geo": {
+    id: "population-1-12-geo",
+    chapterName: "Population: Part 1",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_12_Geography__Population_Part_1.pdf",
+    pdf: geo12("1. Population  Part1.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Population: Part 1 (Balbharati Geography textbook)",
+    // Distribution and density first, then the pattern it makes, then the two
+    // families of factors the chapter itself separates under the headings
+    // "Physical Factors" and "Human Factors", then population change and the
+    // rates that measure it, and finally the five-stage transition theory.
+    subtopics: [
+      "Distribution and Density of Population",
+      "Patterns of Population Distribution",
+      "Physical Factors Affecting Population Distribution",
+      "Human Factors Affecting Population Distribution",
+      "Components of Population Change",
+      "Birth Rate, Death Rate and Growth Rate",
+      "Demographic Transition Theory",
+    ],
+  },
+
   "population-2-12-geo": {
     id: "population-2-12-geo",
     chapterName: "Population: Part 2",
