@@ -223,7 +223,21 @@ export type GroundingViolation = { ref: string; reason: string };
  * whose outline has not been derived yet cannot be said to have grounded answers,
  * and failing closed is the whole reason this gate exists.
  */
-export function groundingViolations(rows: GroundedRow[], anchors: string[]): GroundingViolation[] {
+export function groundingViolations(
+  rows: GroundedRow[],
+  anchors: string[],
+  /**
+   * How to read citations out of a `groundedIn` string. Defaults to the Science
+   * lane's dotted-number parser, so every existing caller is byte-identical.
+   *
+   * It is a parameter because the SOCIAL SCIENCE lane cites HEADING TEXT rather
+   * than section numbers — three of its four books number no sections at all —
+   * and the alternative was a second copy of this function. The last time a
+   * grounding helper was copied in this repo the copies drifted apart and one
+   * carried five noise fixes the other lacked.
+   */
+  parse: (s: string) => string[] = parseCitations
+): GroundingViolation[] {
   if (anchors.length === 0) {
     return rows.map((r) => ({
       ref: r.ref,
@@ -238,7 +252,7 @@ export function groundingViolations(rows: GroundedRow[], anchors: string[]): Gro
       out.push({ ref: r.ref, reason: "missing groundedIn" });
       continue;
     }
-    const cites = parseCitations(g);
+    const cites = parse(g);
     if (cites.length === 0) {
       out.push({ ref: r.ref, reason: `no citation found in groundedIn: "${g}"` });
       continue;
