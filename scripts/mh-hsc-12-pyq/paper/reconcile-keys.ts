@@ -22,6 +22,7 @@
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { PAPERS, requirePaper, questionsJsonPath, pagesDir } from "./config";
+import { grammarFor } from "./lib";
 import { parseKeyLines, reconcileKeys } from "./keys";
 import type { PaperQuestion } from "../../mh-ssc-10/lib";
 
@@ -41,8 +42,9 @@ function main() {
     if (!existsSync(f)) throw new Error(`${id}: missing pass ${name} at ${f}`);
   }
 
-  const a = parseKeyLines(readFileSync(files.a, "utf8"));
-  const b = parseKeyLines(readFileSync(files.b, "utf8"));
+  const grammar = grammarFor(paper.subject);
+  const a = parseKeyLines(readFileSync(files.a, "utf8"), grammar);
+  const b = parseKeyLines(readFileSync(files.b, "utf8"), grammar);
   const rec = reconcileKeys(a, b);
 
   const qs = JSON.parse(readFileSync(questionsJsonPath(id), "utf8")) as PaperQuestion[];

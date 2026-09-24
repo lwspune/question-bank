@@ -1,12 +1,24 @@
 /**
- * Pure core for the MH HSC Class-12 Maths BOARD-PAPER lane.
+ * Pure core for the MH HSC Class-12 BOARD-PAPER lane.
  *
  * The sibling `scripts/mh-hsc-12-pyq/extract.ts` reads an LWS chapterwise
  * COMPILATION (.docx, via pandoc). This lane reads the actual printed board
  * question papers (PDF), which is a different source with different failure
  * modes — see ./README.md.
  *
- * Everything here is pure and TDD'd in tests/mh-hsc-12-paper-refs.test.ts.
+ * TWO SUBJECTS, ONE LANE (Physics added 2026-09-23). Maths and Physics print
+ * genuinely different papers — 44 items vs 47, 2-mark MCQs vs 1-mark, Q.2
+ * running to (iv) vs (viii), and a different canonical ref spelling on the rows
+ * already in the bank. So the paper GRAMMAR is data (`GrammarSpec`) and the
+ * parser is shared, rather than one lane forking into two. This follows the
+ * NCERT Class-11 decision: parameterise, don't fork.
+ *
+ * The bare `EXPECTED_REFS` / `normaliseRef` / `sectionOf` / `reconcileRefs` /
+ * `validateChapter` exports stay bound to MATHS, so every Maths script that
+ * imported them before this change behaves identically.
+ *
+ * Everything here is pure and TDD'd in tests/mh-hsc-12-paper-refs.test.ts
+ * (Maths) and tests/mh-hsc-12-paper-physics-refs.test.ts (Physics).
  */
 
 /** The 15 chapters the bank already carries for `mh-hsc-12` Mathematics.
@@ -30,113 +42,108 @@ export const HSC_MATHS_CHAPTERS = [
   "Vectors",
 ] as const;
 
+/** The 16 chapters the bank already carries for `mh-hsc-12` Physics — read off
+ *  the live taxonomy on 2026-09-23, not typed from the syllabus. Every one of
+ *  them already holds both textbook (`practice`) and board (`pyq`) rows, so an
+ *  unknown name here is a transcription slip, never a gap. */
+export const HSC_PHYSICS_CHAPTERS = [
+  "AC Circuits",
+  "Current Electricity",
+  "Dual Nature of Radiation and Matter",
+  "Electromagnetic Induction",
+  "Electrostatics",
+  "Kinetic Theory of Gases and Radiation",
+  "Magnetic Fields due to Electric Current",
+  "Magnetic Materials",
+  "Mechanical Properties of Fluids",
+  "Oscillations",
+  "Rotational Dynamics",
+  "Semiconductor Devices",
+  "Structure of Atoms and Nuclei",
+  "Superposition of Waves",
+  "Thermodynamics",
+  "Wave Optics",
+] as const;
+
 export type HscMathsChapter = (typeof HSC_MATHS_CHAPTERS)[number];
+export type HscPhysicsChapter = (typeof HSC_PHYSICS_CHAPTERS)[number];
 
 export type Section = "A" | "B" | "C" | "D";
 export type Placement = { section: Section; marks: number; format: "mcq" | "subjective" };
+export type Reconciliation = { missing: string[]; unexpected: string[]; duplicates: string[] };
 
-const ROMAN = ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii"];
+const ROMAN = ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x"];
 
-/** Every sitting 2024-2026 prints the identical structure:
- *  Q.1 (i)-(viii) MCQ 2m · Q.2 (i)-(iv) VSA 1m · Q.3-14 2m · Q.15-26 3m · Q.27-34 4m.
- *  44 items, 112 printed marks against a Max of 80 — the gap IS the optionality
- *  (any 8 of 12, any 8 of 12, any 5 of 8). */
-export const EXPECTED_REFS: string[] = [
-  ...ROMAN.map((r) => `Q. 1. (${r})`),
-  ...ROMAN.slice(0, 4).map((r) => `Q. 2. (${r})`),
-  ...Array.from({ length: 32 }, (_, i) => `Q. ${i + 3}`),
-];
+/** A ref is one of three shapes: a sub-item of the Q.1/Q.2 blocks, a whole
+ *  numbered question, or ONE PART of a whole numbered question that we split
+ *  because its two halves belong to different chapters (see `parentRef`). */
+type Parsed =
+  | { kind: "sub"; parent: 1 | 2; idx: number }
+  | { kind: "whole"; n: number; part?: number };
 
-const EXPECTED_SET = new Set(EXPECTED_REFS);
+type Band = { to: number; section: Section; marks: number };
 
-/**
- * Fold any observed spelling of a question ref onto the canonical one.
- *
- * The shipped 2024/2025 rows carry FIVE spellings of the same kind of sub-item
- * (`Q. 1. (i)`, `Q. 1. iii.`, `Q. 1. v.`, `Q. 2. (ii)`, `Q. 2. iv.`), because the
- * compilation was hand-typed. Comparing a new transcription against those rows —
- * which is the whole of the reconciliation phase — needs one canonical form.
- *
- * Returns `null` rather than a guess for anything that is not a ref ON THIS
- * PAPER: `Q. 35` and `Q. 1. (ix)` both look like refs and are both wrong, and a
- * lenient parser would file a transcription slip as a real question.
- */
-export function normaliseRef(raw: string): string | null {
+type GrammarSpec = {
+  /** Subject name as the bank spells it — this is the routing key. */
+  subject: string;
+  /** Short name used in error text, matching what the lane said before. */
+  label: string;
+  chapters: readonly string[];
+  /** How many roman sub-items each block header carries. */
+  blocks: { 1: number; 2: number };
+  /** Placement of a sub-item under each block header. */
+  blockPlacement: { 1: Placement; 2: Placement };
+  /** Inclusive range of whole-numbered questions. */
+  whole: { from: number; to: number };
+  /** Section/marks bands over the whole-numbered range, in ascending order. */
+  bands: Band[];
+  /** Render a block sub-item. The two subjects' shipped rows disagree here:
+   *  Maths carries `Q. 1. (i)`, Physics carries `Q. 1(i)`. */
+  renderSub: (parent: number, roman: string) => string;
+};
+
+const SUB_RE = /^Q\.?\s*(\d{1,2})\.?\s*[([]?\s*([ivxIVX]+)\s*[)\]]?\.?$/;
+const WHOLE_RE = /^Q\.?\s*(\d{1,2})\.?$/;
+
+function parseRef(spec: GrammarSpec, raw: string): Parsed | null {
   const s = String(raw ?? "").trim();
   if (!s) return null;
 
-  const sub = s.match(/^Q\.?\s*([12])\.?\s*[(\[]?\s*([ivxIVX]+)\s*[)\]]?\.?$/);
+  const sub = s.match(SUB_RE);
   if (sub) {
-    const parent = sub[1];
+    const n = Number(sub[1]);
     const idx = ROMAN.indexOf(sub[2].toLowerCase());
     if (idx < 0) return null;
-    // Q.1 runs to (viii); Q.2 stops at (iv).
-    const limit = parent === "1" ? 8 : 4;
-    if (idx + 1 > limit) return null;
-    return `Q. ${parent}. (${ROMAN[idx]})`;
+
+    // Q.1 and Q.2 are BLOCK headers, so `Q. 1(iii)` is a sub-item of the block.
+    if (n === 1 || n === 2) {
+      const parent = n as 1 | 2;
+      if (idx + 1 > spec.blocks[parent]) return null;
+      return { kind: "sub", parent, idx };
+    }
+
+    // Anything else numbered is a real question, so `Q. 31(i)` is a split PART
+    // of it. The parent must still be a question that exists on this paper.
+    if (n < spec.whole.from || n > spec.whole.to) return null;
+    return { kind: "whole", n, part: idx };
   }
 
-  const whole = s.match(/^Q\.?\s*(\d{1,2})\.?$/);
+  const whole = s.match(WHOLE_RE);
   if (whole) {
     const n = Number(whole[1]);
-    // Q.1 and Q.2 are BLOCK headers, not items — their items carry a sub-ref.
-    if (n < 3 || n > 34) return null;
-    return `Q. ${n}`;
+    if (n < spec.whole.from || n > spec.whole.to) return null;
+    return { kind: "whole", n };
   }
 
   return null;
 }
 
-/** Section, marks and format follow from the ref alone — they are printed
- *  structure, not a per-question judgement, so nothing downstream should be
- *  asked to supply them. */
-export function sectionOf(raw: string): Placement {
-  const ref = normaliseRef(raw);
-  if (!ref) throw new Error(`not a question ref on this paper: ${JSON.stringify(raw)}`);
-
-  if (ref.startsWith("Q. 1. (")) return { section: "A", marks: 2, format: "mcq" };
-  if (ref.startsWith("Q. 2. (")) return { section: "A", marks: 1, format: "subjective" };
-
-  const n = Number(ref.slice(3));
-  if (n <= 14) return { section: "B", marks: 2, format: "subjective" };
-  if (n <= 26) return { section: "C", marks: 3, format: "subjective" };
-  return { section: "D", marks: 4, format: "subjective" };
-}
-
-export type Reconciliation = { missing: string[]; unexpected: string[]; duplicates: string[] };
-
-/**
- * Reconcile a transcription's refs against the printed paper BOTH ways.
- *
- * A count is not enough and never was: 44 refs with one question transcribed
- * twice under two spellings and another dropped passes any length check, and
- * that is exactly the shape a hand-typed source produces. So this reports what
- * is missing, what is not on the paper, and what arrived twice — independently.
- */
-export function reconcileRefs(seen: readonly string[]): Reconciliation {
-  const counts = new Map<string, number>();
-  const unexpected: string[] = [];
-
-  for (const raw of seen) {
-    const ref = normaliseRef(raw);
-    if (!ref) {
-      unexpected.push(String(raw).trim());
-      continue;
-    }
-    counts.set(ref, (counts.get(ref) ?? 0) + 1);
-  }
-
-  const order = (a: string, b: string) => EXPECTED_REFS.indexOf(a) - EXPECTED_REFS.indexOf(b);
-
-  return {
-    missing: EXPECTED_REFS.filter((r) => !counts.has(r)),
-    unexpected,
-    duplicates: [...counts.entries()]
-      .filter(([, n]) => n > 1)
-      .map(([r]) => r)
-      .sort(order),
-  };
-}
+const renderRef = (spec: GrammarSpec, p: Parsed): string =>
+  p.kind === "sub"
+    ? spec.renderSub(p.parent, ROMAN[p.idx])
+    : p.part === undefined
+      ? `Q. ${p.n}`
+      : `Q. ${p.n}(${ROMAN[p.part]})`;
 
 /** Token-stem a chapter name so a plural/singular slip is recognisable as one. */
 const stem = (name: string) =>
@@ -154,23 +161,207 @@ function similarity(a: string, b: string): number {
   return shared / new Set([...A, ...B]).size;
 }
 
-/**
- * HARD-validate a chapter against the 15 the bank already carries.
- *
- * The upload path auto-creates an unknown chapter, which is right for a fresh
- * corpus and wrong here: `"Lines and Planes"` is the natural spelling and the
- * bank's is `"Line and Planes"`, so auto-creation would silently FORK a shipped
- * chapter in two — the questions would land somewhere real-looking and nothing
- * downstream would report it. The error names the near-match rather than just
- * refusing, because the near-match is the answer ~every time it fires.
- */
-export function validateChapter(name: string): HscMathsChapter {
-  const s = String(name ?? "").trim();
-  const exact = HSC_MATHS_CHAPTERS.find((c) => c === s);
-  if (exact) return exact;
+export type Grammar = {
+  subject: string;
+  chapters: readonly string[];
+  expectedRefs: string[];
+  /**
+   * Fold any observed spelling of a question ref onto the canonical one.
+   *
+   * The shipped rows carry several spellings of the same sub-item, because the
+   * compilation was hand-typed. Comparing a new transcription against those
+   * rows — which is the whole of the reconciliation phase — needs one canonical
+   * form.
+   *
+   * Returns `null` rather than a guess for anything that is not a ref ON THIS
+   * PAPER. A lenient parser would file a transcription slip as a real question.
+   */
+  normaliseRef: (raw: string) => string | null;
+  /** The printed item a ref belongs to: a split part maps to its parent,
+   *  everything else maps to itself. Coverage is counted on parents, because
+   *  `Q. 31(i)` + `Q. 31(ii)` IS the paper's Q.31 — not two strays plus a hole. */
+  parentRef: (ref: string) => string;
+  /** Section, marks and format follow from the ref alone — they are printed
+   *  structure, not a per-question judgement, so nothing downstream should be
+   *  asked to supply them. */
+  sectionOf: (raw: string) => Placement;
+  /**
+   * Reconcile a transcription's refs against the printed paper BOTH ways.
+   *
+   * A count is not enough and never was: a full-length transcription with one
+   * question entered twice under two spellings and another dropped passes any
+   * length check, and that is exactly the shape a hand-typed source produces.
+   * So this reports what is missing, what is not on the paper, and what arrived
+   * twice — independently.
+   */
+  reconcileRefs: (seen: readonly string[]) => Reconciliation;
+  /**
+   * HARD-validate a chapter against the ones the bank already carries.
+   *
+   * The upload path auto-creates an unknown chapter, which is right for a fresh
+   * corpus and wrong here: `"Lines and Planes"` is the natural spelling and the
+   * bank's is `"Line and Planes"`, so auto-creation would silently FORK a
+   * shipped chapter in two — the questions would land somewhere real-looking
+   * and nothing downstream would report it. The error names the near-match
+   * rather than just refusing, because the near-match is the answer ~every time
+   * it fires.
+   */
+  validateChapter: (name: string) => string;
+};
 
-  const ranked = HSC_MATHS_CHAPTERS.map((c) => ({ c, score: similarity(s, c) })).sort((x, y) => y.score - x.score);
-  const best = ranked[0];
-  const hint = best && best.score >= 0.6 ? ` Did you mean "${best.c}"?` : "";
-  throw new Error(`unknown mh-hsc-12 Maths chapter: ${JSON.stringify(s)}.${hint}`);
+function buildGrammar(spec: GrammarSpec): Grammar {
+  const expectedRefs: string[] = [
+    ...Array.from({ length: spec.blocks[1] }, (_, i) => spec.renderSub(1, ROMAN[i])),
+    ...Array.from({ length: spec.blocks[2] }, (_, i) => spec.renderSub(2, ROMAN[i])),
+    ...Array.from({ length: spec.whole.to - spec.whole.from + 1 }, (_, i) => `Q. ${spec.whole.from + i}`),
+  ];
+  const order = new Map(expectedRefs.map((r, i) => [r, i]));
+
+  const normaliseRef = (raw: string): string | null => {
+    const p = parseRef(spec, raw);
+    return p ? renderRef(spec, p) : null;
+  };
+
+  const parentRef = (ref: string): string => {
+    const p = parseRef(spec, ref);
+    if (!p || p.kind !== "whole" || p.part === undefined) return ref;
+    return `Q. ${p.n}`;
+  };
+
+  const sectionOf = (raw: string): Placement => {
+    const p = parseRef(spec, raw);
+    if (!p) throw new Error(`not a question ref on this paper: ${JSON.stringify(raw)}`);
+    if (p.kind === "sub") return spec.blockPlacement[p.parent];
+    const band = spec.bands.find((b) => p.n <= b.to);
+    if (!band) throw new Error(`no marks band covers ${JSON.stringify(raw)}`);
+    return { section: band.section, marks: band.marks, format: "subjective" };
+  };
+
+  const reconcileRefs = (seen: readonly string[]): Reconciliation => {
+    const exact = new Map<string, number>();
+    const bare = new Set<string>(); // parents seen as a whole, unsplit item
+    const split = new Set<string>(); // parents seen via at least one split part
+    const unexpected: string[] = [];
+
+    for (const raw of seen) {
+      const ref = normaliseRef(raw);
+      if (!ref) {
+        unexpected.push(String(raw).trim());
+        continue;
+      }
+      exact.set(ref, (exact.get(ref) ?? 0) + 1);
+      const parent = parentRef(ref);
+      (parent === ref ? bare : split).add(parent);
+    }
+
+    const duplicates = [
+      ...[...exact.entries()].filter(([, n]) => n > 1).map(([r]) => r),
+      // A printed item cannot be both whole and split. Seeing it as each means
+      // the same question is in the transcription twice, and neither exact ref
+      // repeats — so the count-based check above is blind to it.
+      ...[...split].filter((p) => bare.has(p)),
+    ].sort((a, b) => (order.get(parentRef(a)) ?? 0) - (order.get(parentRef(b)) ?? 0));
+
+    return {
+      missing: expectedRefs.filter((r) => !bare.has(r) && !split.has(r)),
+      unexpected,
+      duplicates,
+    };
+  };
+
+  const validateChapter = (name: string): string => {
+    const s = String(name ?? "").trim();
+    const exact = spec.chapters.find((c) => c === s);
+    if (exact) return exact;
+
+    const ranked = spec.chapters
+      .map((c) => ({ c, score: similarity(s, c) }))
+      .sort((x, y) => y.score - x.score);
+    const best = ranked[0];
+    const hint = best && best.score >= 0.6 ? ` Did you mean "${best.c}"?` : "";
+    throw new Error(`unknown mh-hsc-12 ${spec.label} chapter: ${JSON.stringify(s)}.${hint}`);
+  };
+
+  return {
+    subject: spec.subject,
+    chapters: spec.chapters,
+    expectedRefs,
+    normaliseRef,
+    parentRef,
+    sectionOf,
+    reconcileRefs,
+    validateChapter,
+  };
 }
+
+/** Every Maths sitting 2024-2026 prints the identical structure:
+ *  Q.1 (i)-(viii) MCQ 2m · Q.2 (i)-(iv) VSA 1m · Q.3-14 2m · Q.15-26 3m · Q.27-34 4m.
+ *  44 items, 112 printed marks against a Max of 80 — the gap IS the optionality
+ *  (any 8 of 12, any 8 of 12, any 5 of 8). */
+export const MATHS_GRAMMAR = buildGrammar({
+  subject: "Mathematics",
+  label: "Maths",
+  chapters: HSC_MATHS_CHAPTERS,
+  blocks: { 1: 8, 2: 4 },
+  blockPlacement: {
+    1: { section: "A", marks: 2, format: "mcq" },
+    2: { section: "A", marks: 1, format: "subjective" },
+  },
+  whole: { from: 3, to: 34 },
+  bands: [
+    { to: 14, section: "B", marks: 2 },
+    { to: 26, section: "C", marks: 3 },
+    { to: 34, section: "D", marks: 4 },
+  ],
+  renderSub: (parent, roman) => `Q. ${parent}. (${roman})`,
+});
+
+/** Every born-digital Physics sitting in the folder prints the identical
+ *  structure, measured off the June-2026 print (code J-229):
+ *  Q.1 (i)-(x) MCQ 1m · Q.2 (i)-(viii) VSA 1m · Q.3-14 2m · Q.15-26 3m · Q.27-31 4m.
+ *  47 items, 98 printed marks against a Max of 70 — the gap IS the optionality
+ *  (any 8 of 12, any 8 of 12, any 3 of 5).
+ *
+ *  Note the ref spelling is `Q. 1(i)`, NOT the Maths lane's `Q. 1. (i)`. That is
+ *  how the 364 Physics rows already in the bank are written, and reconciliation
+ *  compares against them. */
+export const PHYSICS_GRAMMAR = buildGrammar({
+  subject: "Physics",
+  label: "Physics",
+  chapters: HSC_PHYSICS_CHAPTERS,
+  blocks: { 1: 10, 2: 8 },
+  blockPlacement: {
+    1: { section: "A", marks: 1, format: "mcq" },
+    2: { section: "A", marks: 1, format: "subjective" },
+  },
+  whole: { from: 3, to: 31 },
+  bands: [
+    { to: 14, section: "B", marks: 2 },
+    { to: 26, section: "C", marks: 3 },
+    { to: 31, section: "D", marks: 4 },
+  ],
+  renderSub: (parent, roman) => `Q. ${parent}(${roman})`,
+});
+
+const GRAMMARS: Record<string, Grammar> = {
+  Mathematics: MATHS_GRAMMAR,
+  Physics: PHYSICS_GRAMMAR,
+};
+
+export function grammarFor(subject: string): Grammar {
+  const g = GRAMMARS[String(subject ?? "").trim()];
+  if (!g) {
+    throw new Error(
+      `no board-paper grammar for subject ${JSON.stringify(subject)}. Known: ${Object.keys(GRAMMARS).join(", ")}`,
+    );
+  }
+  return g;
+}
+
+// ── Maths-bound aliases ────────────────────────────────────────────────────
+// Pre-dating the Physics lane. Kept so every Maths script behaves identically.
+export const EXPECTED_REFS = MATHS_GRAMMAR.expectedRefs;
+export const normaliseRef = MATHS_GRAMMAR.normaliseRef;
+export const sectionOf = MATHS_GRAMMAR.sectionOf;
+export const reconcileRefs = MATHS_GRAMMAR.reconcileRefs;
+export const validateChapter = MATHS_GRAMMAR.validateChapter as (name: string) => HscMathsChapter;

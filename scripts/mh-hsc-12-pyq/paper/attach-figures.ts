@@ -34,7 +34,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { DATA, EXAM_ID, PAPERS, requirePaper, type Paper } from "./config";
-import { normaliseRef } from "./lib";
+import { grammarFor } from "./lib";
 
 const BUCKET = "question-images";
 const PREFIX = "logic-12-pyq"; // every figure in this corpus is a Mathematical Logic circuit
@@ -120,7 +120,9 @@ async function planFor(
 
     // question_number spellings are inconsistent in the shipped rows
     // ("Q. 15", "Q. 1. iii.", "Q. 1. (iv)"), so match on the canonical form.
-    const hits = (data ?? []).filter((r) => normaliseRef(String(r.question_number ?? "")) === ref);
+    const hits = (data ?? []).filter(
+      (r) => grammarFor(paper.subject).normaliseRef(String(r.question_number ?? "")) === ref,
+    );
 
     if (!hits.length) {
       skipped.push(

@@ -290,6 +290,105 @@ marking scheme, on papers already shipped — so it is a backfill candidate, not
 
 ---
 
+## Backfill ledger — RESOLVED 2026-09-24: a Boolean overline was dropped at ingestion, and the shipped PUBLIC row asked the wrong question
+
+**Found during the MH HSC 12 Physics printed-paper ingest. Investigated, resolved and repaired
+the same day** — logged here because it was a silent corruption of a PUBLIC row, and because the
+mechanism will recur on any future `.docx` ingest.
+
+`reconcile-diff` compared the three reconciled printed papers against the compilation rows
+already shipped for those sittings and flagged 38 differences. Thirty-six are LaTeX spacing
+(`200\ \text{cm}^{2}` vs `200\text{ cm}^{2}`, `10^{-8}` vs `10^{- 8}`, `(i)` vs `i.`). One was a
+different question:
+
+| | stem | key |
+|---|---|---|
+| Shipped bank row | `\(Y = A + B\)` | (A) OR gate |
+| Feb-2023 PDF (third-party) | `\(Y = \overline{A + B}\)` | (C) NOR gate |
+
+The bank row was internally consistent — stem, key and solution all said OR — so no probe could
+see it. But its four options were OR / AND / **NOR** / NAND, and a bare `A + B` makes that a
+giveaway: the overline is what the NOR and NAND distractors exist for.
+
+### Why the first 360 said DEFER, and why that was wrong
+
+The initial recommendation was to defer, on the grounds that the Feb-2023 source is third-party
+and cannot outrank a shipped row. **That reasoning treated the bank row as an independent
+reading. It is not.** The chapterwise compilations are themselves DERIVED work — a publisher's
+transcription of the board paper — and our row is our pandoc pass over that, with a known lossy
+step. It is third-hand. Once the bar is shown to have been present upstream, the row has no
+evidential standing at all.
+
+### What settled it — the compilation's own `.docx`
+
+The source is `16. Semiconductor Devices.docx`. Its OMML for this item is
+`<m:oMath>15. Y = A + B</m:oMath>` and **`<m:bar>` appears zero times in the whole document** —
+so at first reading the publisher also said OR. It does not. The bar is there, drawn as a
+**floating VML shape** anchored in the *previous* paragraph:
+
+```
+<v:shape type="#_x0000_t32"
+         style="position:absolute;margin-left:44.5pt;margin-top:14.75pt;width:25.5pt;height:0"/>
+```
+
+Rendered, that line lands in the gap between the two lines, so it reads equally as an underline
+on item 14 or an overline on item 15. **The glyph coordinates decide it.** In the PDF the drawn
+line runs `x 80.50 -> 106.00`; on item 15, `A` begins at `x 80.30` — a 0.2pt match. On item 14 it
+would begin and end *mid-glyph* at both ends (inside `t`, inside `e`), which no real underline
+does. It is an overline over `A + B`.
+
+So two independent derived transcriptions agree on NOR — the publisher by drawing the bar, the
+third-party PDF by writing `\overline` — and **nothing anywhere asserts OR**. That reading existed
+only as an artifact this pipeline manufactured.
+
+### The repair — in place, NOT delete-and-re-commit
+
+The first 360 assumed a stem change forces delete + re-commit (because `content_hash` covers the
+stem), orphaning reviews, tags, bookmarks and `paper_questions`. **It does not have to.**
+`contentHash(stem, options, answer)` is a pure function of three fields, so the row can be
+UPDATEd in place and the `content_hash` column recomputed in the same write — the row id survives
+and nothing is orphaned. Re-ingest dedup stays correct because the stored hash still matches its
+own preimage.
+
+Applied to row `6c7a0016-8427-4a41-8339-9452963e8c77` (`Q. 1(iii)`, 2023, PUBLIC): stem gained the
+overline, key moved A to C, solution rewritten with a truth table, `content_hash`
+`dde7dc11…` to `4127fc27…`, options untouched. Verified after: exactly one correct option.
+The row had 0 reviews, 0 tags, 0 bookmarks, 0 paper links, so the in-place route was belt-and-braces
+here — it is recorded because the NEXT such repair may not be so lucky.
+
+### Scope — measured, and it is one row
+
+**Pandoc drops `<w:pict>` entirely**, so every hand-drawn bar in a source `.docx` is lost in
+silence. **All 1,751 `.docx` files under the whole source tree** were scanned for zero-height
+`v:shape` lines — 81 hits, classified by width:
+
+| width | count | what it is |
+|---|---|---|
+| >400pt (all 535.5pt) | 62 | template page-header rules; carry no meaning |
+| 61.5-69.7pt | 18 | long-division brackets + subtraction rules, in 2 worksheet files (each counted twice: `Quizzes/` and `Tests/` hold duplicate copies) |
+| 25.5pt | **1** | **this defect** |
+
+Neither worksheet reached the bank (`source_file ILIKE '%APP TEST%'` and `'%3-D TEST%'` both
+return 0), so the 18 arithmetic rules are moot. **Exactly one narrow math overline exists in the
+entire source tree, and it is this one. No further backfill.** Width is the discriminator: a page
+rule spans the text column, a math bar spans a few characters.
+
+**Durable check for any future `.docx` ingest** — a drawn bar leaves no trace in the extracted
+text, so grep the source before trusting it:
+
+```
+python -c "import zipfile,re,sys; x=zipfile.ZipFile(sys.argv[1]).read('word/document.xml').decode('utf-8','replace'); print([s for s in re.findall(r'<v:shape [^>]*style=\"([^\"]*)\"', x) if 'height:0' in s])" FILE.docx
+```
+
+### Still open from the same sweep
+
+Feb-2023 `Q. 20` differs in SCOPE — the bank row carries extra parts ("Define the current gain
+\(\alpha_{DC}\) and \(\beta_{DC}\)...") the third-party PDF does not print. No forensic tiebreak
+exists for a scope difference the way it did for a drawn glyph, so this one genuinely waits for a
+board paper. **Reproduce:** `npx tsx scripts/mh-hsc-12-pyq/paper/reconcile-diff.ts phy-feb-2023`
+
+---
+
 ## Backfill ledger — the escaped space `\ ` is DROPPED by the Word export (2026-09-22)
 
 **Measured, not fixed.** The fix is one mapping in the exporter, but it changes every

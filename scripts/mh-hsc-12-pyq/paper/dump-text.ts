@@ -21,6 +21,20 @@
  * The per-line `[math]` markers below are the point: they mark where the layer
  * KNOWS it dropped something, so a transcription pass can see its own blind
  * spots instead of reading a truncated stem as complete.
+ *
+ * ⚠ AND ONE LOSS IS WORSE THAN A HOLE — IT IS A COLLISION. On the Physics prints
+ * the operators themselves are rasterised, so Q.1(iii) of jun-2026
+ *
+ *     (a) Q = ΔU     (b) Q = 0     (c) Q = ΔU + W     (d) Q = ΔU − W
+ *
+ * extracts as `Q U`, `0 Q`, `Q U W`, `Q U W`. Options (c) and (d) are IDENTICAL
+ * in the text layer, because the `+` and the `−` are the only things that
+ * distinguish them and both are PNGs. A `[math]` marker does not help here: the
+ * line looks complete and merely differs from a sibling it should differ from.
+ * So the option grid is reconstructed and collisions are reported BY REF, and
+ * `verify.ts` refuses a transcription whose four option texts are not pairwise
+ * distinct. That second gate is the one that matters, because it fires whatever
+ * the cause.
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -28,7 +42,7 @@ import { spawnSync } from "node:child_process";
 import { OUT, PAPERS, requirePaper } from "./config";
 
 const PY = String.raw`
-import fitz, sys, json
+import fitz, sys, json, re
 d = fitz.open(sys.argv[1])
 pages = []
 for pno, page in enumerate(d):
@@ -49,7 +63,34 @@ for pno, page in enumerate(d):
             lost = sum(1 for (a, b) in img_rows if b > y0 - 2 and a < y1 + 2)
             lines.append({"y": round(y0, 1), "text": text, "lost": lost})
     lines.sort(key=lambda l: l["y"])
-    pages.append(lines)
+
+    # Reconstruct the MCQ option grid. Labels "(a)".."(d)" sit in two columns;
+    # an option's content is whatever shares its row and lies to its right, up
+    # to the next label across. Read in (row, column) order the labels come out
+    # a,b,c,d — which is how the paper prints them.
+    raw = []
+    for block in page.get_text("dict")["blocks"]:
+        if block.get("type") != 0:
+            continue
+        for line in block["lines"]:
+            t = "".join(s["text"] for s in line["spans"]).strip()
+            if t:
+                raw.append({"t": t, "x0": line["bbox"][0], "x1": line["bbox"][2],
+                            "yc": (line["bbox"][1] + line["bbox"][3]) / 2})
+    labels = sorted([r for r in raw if re.fullmatch(r"\(([a-d])\)", r["t"])],
+                    key=lambda r: (round(r["yc"] / 6), r["x0"]))
+    opts = []
+    for i, lab in enumerate(labels):
+        right = [o["x0"] for o in labels
+                 if abs(o["yc"] - lab["yc"]) < 6 and o["x0"] > lab["x0"] + 1]
+        limit = min(right) if right else 1e9
+        # A tall band: a fraction's numerator and denominator are separate
+        # lines several points above and below the label's own centre.
+        body = [r["t"] for r in raw
+                if r is not lab and abs(r["yc"] - lab["yc"]) < 14
+                and r["x0"] > lab["x0"] and r["x0"] < limit]
+        opts.append({"label": lab["t"][1], "text": " ".join(body).strip(), "yc": round(lab["yc"], 1)})
+    pages.append({"lines": lines, "options": opts})
 print(json.dumps(pages))
 `;
 
@@ -94,23 +135,58 @@ function dump(id: string) {
   writeFileSync(tmp, PY);
   const res = spawnSync("python", [tmp, paper.pdf], { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
   if (res.status !== 0) throw new Error(`dump failed: ${res.stderr}`);
-  const pages = JSON.parse(res.stdout) as { y: number; text: string; lost: number }[][];
+  type Line = { y: number; text: string; lost: number };
+  type Opt = { label: string; text: string; yc: number };
+  const pages = JSON.parse(res.stdout) as { lines: Line[]; options: Opt[] }[];
+
+  // Group the page's option labels into questions of four and report any whose
+  // extracted texts are not pairwise distinct. A collision is not a warning
+  // about THIS file — it is proof that a text-layer transcription of that
+  // question would be wrong, silently, with a well-formed-looking result.
+  const collisions: { page: number; labels: string; text: string }[] = [];
+  let optionGroups = 0;
+  for (const [i, pg] of pages.entries()) {
+    for (let k = 0; k < pg.options.length; k += 4) {
+      const group = pg.options.slice(k, k + 4);
+      if (group.length < 2) continue;
+      optionGroups++;
+      const byText = new Map<string, string[]>();
+      for (const o of group) {
+        const key = o.text.replace(/\s+/g, " ").trim();
+        if (!key) continue;
+        byText.set(key, [...(byText.get(key) ?? []), o.label]);
+      }
+      for (const [text, labels] of byText) {
+        if (labels.length > 1) collisions.push({ page: i + 1, labels: labels.join("/"), text });
+      }
+    }
+  }
 
   const out: string[] = [
-    `# ${paper.month} ${paper.year} — Mathematics & Statistics (${paper.paperCode})`,
+    `# ${paper.month} ${paper.year} — ${paper.subject} (${paper.paperCode})`,
     ``,
     `> Source: ${paper.pdf}`,
     `> **LOSSY.** \`[math]\` marks a line where the text layer dropped glyph-image`,
     `> content. Read the rendered PNG (out/${id}/p-NN.png) for anything marked,`,
     `> and for every option list. Never transcribe math from this file.`,
+    ...(collisions.length
+      ? [
+          `>`,
+          `> ⚠ **${collisions.length} OPTION COLLISION${collisions.length > 1 ? "S" : ""}.** The text layer gives two`,
+          `> options of the same question IDENTICAL text, because what separates them`,
+          `> is rasterised. Transcribing any option from this file is unsafe on this`,
+          `> paper — read the image. Collisions found:`,
+          ...collisions.map((c) => `> - p${c.page} options (${c.labels}) both read \`${escapeControlChars(c.text)}\``),
+        ]
+      : []),
     ``,
   ];
 
   let markedLines = 0;
   let totalLines = 0;
-  for (const [i, lines] of pages.entries()) {
+  for (const [i, pg] of pages.entries()) {
     out.push(`## page ${i + 1}  (out/${id}/p-${String(i + 1).padStart(2, "0")}.png)`, ``);
-    for (const l of lines) {
+    for (const l of pg.lines) {
       const text = escapeControlChars(l.text.trim());
       if (!text) continue;
       totalLines++;
@@ -122,13 +198,23 @@ function dump(id: string) {
 
   const pct = totalLines ? Math.round((markedLines / totalLines) * 100) : 0;
   writeFileSync(join(dir, "text.md"), out.join("\n"), "utf8");
-  console.log(`${paper.id}: ${totalLines} lines, ${markedLines} carry lost math (${pct}%) -> ${join(dir, "text.md")}`);
+  console.log(
+    `${paper.id.padEnd(14)} ${totalLines} lines, ${markedLines} carry lost math (${pct}%)` +
+      `, ${collisions.length} option collision(s) over ${optionGroups} group(s) -> ${join(dir, "text.md")}`,
+  );
 }
 
 const arg = process.argv[2];
 if (!arg) {
-  console.error(`usage: tsx scripts/mh-hsc-12-pyq/paper/dump-text.ts <paperId|--all>`);
+  console.error(`usage: tsx scripts/mh-hsc-12-pyq/paper/dump-text.ts <paperId|--all|--subject=<name>>`);
   console.error(`known: ${Object.keys(PAPERS).join(", ")}`);
   process.exit(1);
 }
-for (const id of arg === "--all" ? Object.keys(PAPERS) : [arg]) dump(id);
+const subject = arg.startsWith("--subject=") ? arg.slice("--subject=".length) : null;
+const ids = subject
+  ? Object.values(PAPERS).filter((p) => p.subject === subject).map((p) => p.id)
+  : arg === "--all"
+    ? Object.keys(PAPERS)
+    : [arg];
+if (!ids.length) throw new Error(`no papers for ${JSON.stringify(arg)}`);
+for (const id of ids) dump(id);

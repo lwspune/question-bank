@@ -23,7 +23,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { PAPERS, requirePaper, questionsJsonPath, pagesDir } from "./config";
-import { sectionOf } from "./lib";
+import { grammarFor } from "./lib";
 import type { PaperQuestion } from "../../mh-ssc-10/lib";
 
 function dump(id: string) {
@@ -47,8 +47,12 @@ function dump(id: string) {
   const out: string[] = [
     `# Blind MCQ key derivation — ${paper.month} ${paper.year} (${paper.paperCode})`,
     ``,
+    // The subject was hardcoded to Mathematics until 2026-09-23, when the blind
+    // pass on a PHYSICS paper opened with "Mathematics & Statistics" and said so.
+    // It is the first line a deriver reads, and it was wrong about what they were
+    // being asked to solve.
     `${mcqs.length} multiple-choice questions from a Maharashtra HSC Class-12`,
-    `Mathematics & Statistics board paper. **No official answer key exists for this`,
+    `${paper.subject === "Mathematics" ? "Mathematics & Statistics" : paper.subject} board paper. **No official answer key exists for this`,
     `paper, and none exists anywhere** — the board does not publish one. Derive each`,
     `answer from first principles.`,
     ``,
@@ -74,7 +78,7 @@ function dump(id: string) {
   ];
 
   for (const q of mcqs) {
-    out.push(`## ${q.ref}  (${sectionOf(q.ref).marks} marks)`, ``, q.stem, ``);
+    out.push(`## ${q.ref}  (${grammarFor(paper.subject).sectionOf(q.ref).marks} marks)`, ``, q.stem, ``);
     for (const o of q.options ?? []) out.push(`- **(${o.label})** ${o.text}`);
     out.push(``);
   }
