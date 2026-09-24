@@ -62,7 +62,7 @@ is why the share loop already keeps the score opt-in).
 | 10 | Feed the drill from /browse, notes checkpoints and public quizzes | Tranche B — specified below |
 | 7 | Teacher-assigned paper with a deadline for a batch | **SHIPPED 2026-09-24** — `mock_assignments` (migration 0115), teacher card on the batch roster, due list on `/me`, line on the mock page |
 | 8 | Content-led nudges at 12:30 IST | **SHIPPED 2026-09-24** — email only (`npm run email:due-nudge`, cron `.github/workflows/due-nudge.yml`, migration 0114) |
-| 9 | Exam date and days-to-exam | Tranche C — DECIDED 2026-09-24: derive from a calendar, student override (§5) |
+| 9 | Exam date and days-to-exam | **SHIPPED 2026-09-24** — `src/lib/exam/calendar.ts` + `student_profiles.exam_date` (0116); every calendar date is EXPECTED, not official, and says so |
 | — | Per-question peer rates on the findings card | Tranche C — DECIDED 2026-09-24: yes, question level only (§5) |
 | 3 | Short sittings as the default first unit | **Declined by the user, 2026-09-24.** Not built. |
 
@@ -229,7 +229,7 @@ content, one per day at most, 12:30 IST, and never "we miss you".
 
 ### C3. Exam date (item 9)
 
-**Decided 2026-09-24: derive-with-override, as recommended.** The roadmap's two questions are answered by it: derive-with-override, a TS
+**SHIPPED 2026-09-24.** `EXAM_CALENDAR` in `src/lib/exam/calendar.ts` (15 sittings across 12 exams, keyed by registry slug) + `resolveExamDate` (a future `exam_date` on the profile wins and is official by definition; else the first target exam with a calendar entry) + `examCountdownSentence`. **Every entry is `official: false` as written** — on 2026-09-24 no conducting body had announced a 2027 date — so the countdown reads "NDA 2027 (I) in 206 days (expected)" and links to `/account`, where a date input stores the override (migration 0116). Flip `official` by hand when a date is announced; the ROT PROBE in `tests/exam-calendar.test.ts` fails the gate once a sitting is more than 14 days past. Shown in the header menu and the `/me` week strip via the pulse. **Decided:** derive-with-override, a TS
 calendar beside `EXAM_REGISTRY` with a probe that fails once a sitting is past,
 NDA first. Then `/me` and the header can say "NDA 2027-I in 112 days".
 

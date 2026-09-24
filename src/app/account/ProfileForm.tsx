@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import ProfileChips from "@/components/ProfileChips";
+import { resolveExamDate } from "@/lib/exam/calendar";
 import { isExamSlug, type ExamSlug } from "@/lib/exam/examContext";
 import { EXAM_CHIP_OPTIONS } from "@/lib/profile/examChoices";
 import { setExamCookie } from "@/lib/exam/examCookie";
@@ -34,6 +35,15 @@ const STREAM_OPTIONS = STREAMS.map((s) => ({ value: s, label: STREAM_LABELS[s] }
  * nudges without demanding. Mobile is the one field that needs consent when
  * set/changed (DPDP) — its checkbox appears only then.
  */
+/** "Leave blank to use the expected date: NDA 2027 (I), 18 Apr 2027." */
+function expectedHint(exams: ExamSlug[]): string {
+  const c = resolveExamDate({ targetExams: exams, examDate: null }, new Date());
+  if (!c) return "Leave blank if you are not sure yet.";
+  const d = new Date(`${c.date}T00:00:00Z`);
+  const pretty = `${d.getUTCDate()} ${["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+  return `Leave blank to use the ${c.official ? "" : "expected "}date: ${c.label}, ${pretty}.`;
+}
+
 export default function ProfileForm({ profile }: { profile: ProfileRow }) {
   const router = useRouter();
   const initialMobile = profile.mobile ?? "";
@@ -46,6 +56,7 @@ export default function ProfileForm({ profile }: { profile: ProfileRow }) {
   const [stream, setStream] = useState<Stream | null>((profile.stream as Stream | null) ?? null);
   const [city, setCity] = useState(profile.city ?? "");
   const [goal, setGoal] = useState(profile.goal ?? "");
+  const [examDate, setExamDate] = useState(profile.examDate ?? "");
   const [mobile, setMobile] = useState(initialMobile);
   const [consent, setConsent] = useState(false);
   const [whatsappOptIn, setWhatsappOptIn] = useState(profile.whatsappOptIn);
@@ -82,6 +93,7 @@ export default function ProfileForm({ profile }: { profile: ProfileRow }) {
       stream,
       city: city.trim() || null,
       goal: goal.trim() || null,
+      examDate: examDate.trim() || null,
     };
     // Only write mobile when it actually changed to a non-empty value (avoids
     // forcing re-consent for an untouched number; a blank can't unset it).
@@ -176,6 +188,19 @@ export default function ProfileForm({ profile }: { profile: ProfileRow }) {
               onChange={(e) => setCity(e.target.value)}
               disabled={saving}
             />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="profile-exam-date">Your exam date</Label>
+            <Input
+              id="profile-exam-date"
+              type="date"
+              value={examDate}
+              onChange={(e) => setExamDate(e.target.value)}
+              disabled={saving}
+            />
+            <p className="text-xs text-muted-foreground">
+              {expectedHint(exams)}
+            </p>
           </div>
           <div className="space-y-2">
             <Label htmlFor="profile-goal">Your goal</Label>

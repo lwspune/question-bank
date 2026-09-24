@@ -27,7 +27,9 @@ describe("isPulseFresh", () => {
 describe("parsePulseEntry", () => {
   it("accepts a well-formed entry", () => {
     const e = parsePulseEntry(JSON.stringify(entry(0)));
-    expect(e).toEqual(entry(0));
+    // `exam` is always present on the parsed shape (null when absent) so a
+    // consumer never has to distinguish undefined from null.
+    expect(e).toEqual({ ...entry(0), exam: null });
   });
 
   it("rejects junk, partial shapes and negative counts", () => {
@@ -36,6 +38,16 @@ describe("parsePulseEntry", () => {
     expect(parsePulseEntry(JSON.stringify({ at: NOW, due: -1, week: { done: 0, goal: 3 } }))).toBeNull();
     expect(parsePulseEntry(JSON.stringify({ at: NOW, due: 1, week: { done: 0 } }))).toBeNull();
     expect(parsePulseEntry(null)).toBeNull();
+  });
+
+  it("accepts an entry with no exam field (cached before C3) and one with a countdown", () => {
+    const old = parsePulseEntry(JSON.stringify(entry(0)));
+    expect(old?.exam ?? null).toBeNull();
+    const withExam = parsePulseEntry(
+      JSON.stringify({ ...entry(0), exam: { label: "NDA 2027 (I)", daysLeft: 206, official: false } })
+    );
+    expect(withExam?.exam).toEqual({ label: "NDA 2027 (I)", daysLeft: 206, official: false });
+    expect(parsePulseEntry(JSON.stringify({ ...entry(0), exam: { label: "x" } }))).toBeNull();
   });
 
   it("allows a null goal (not chosen yet)", () => {

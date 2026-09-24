@@ -15,6 +15,7 @@ import { sanitizeProfileDetails } from "@/lib/profile/fields";
 import { validateMobileSubmission } from "@/lib/profile/mobile";
 import { updateOwnProfile, type ProfileUpdate } from "@/lib/profile/service";
 import { sanitizeWeeklyGoal } from "@/lib/goals/weekly";
+import { sanitizeExamDate } from "@/lib/exam/calendar";
 
 const BodySchema = z.object({
   targetExams: z.array(z.string()).max(20).optional(),
@@ -28,6 +29,8 @@ const BodySchema = z.object({
   whatsappOptIn: z.boolean().optional(),
   /** Weekly sittings goal (ENGAGEMENT_SPEC.md §A3): 1..14, or null to clear. */
   weeklyGoal: z.union([z.number(), z.string(), z.null()]).optional(),
+  /** Own exam date (ENGAGEMENT_SPEC.md C3): YYYY-MM-DD, or null to clear. */
+  examDate: z.string().max(10).nullable().optional(),
 });
 
 const DETAIL_KEYS = ["targetExams", "stage", "medium", "stream", "city", "goal"] as const;
@@ -79,6 +82,15 @@ export async function PATCH(request: NextRequest) {
       const g = sanitizeWeeklyGoal(body.weeklyGoal);
       if (g === null) return NextResponse.json({ error: "Pick a goal between 1 and 14." }, { status: 400 });
       patch.weeklyGoal = g;
+    }
+  }
+
+  if (body.examDate !== undefined) {
+    if (body.examDate === null || body.examDate.trim() === "") patch.examDate = null;
+    else {
+      const d = sanitizeExamDate(body.examDate);
+      if (d === null) return NextResponse.json({ error: "Enter the exam date as a calendar date." }, { status: 400 });
+      patch.examDate = d;
     }
   }
 

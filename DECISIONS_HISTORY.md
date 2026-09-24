@@ -31,6 +31,20 @@ Within-month convention: newest entries closest to top (matches CLAUDE.md orderi
 ### 2026-09-01 to 2026-09-24 — full narratives (digested 2026-09-14; rolling since). Header corrected 2026-09-18: it read "to 2026-09-16" while the batch already held entries through 2026-09-18, so it is now DERIVED from the batch's own span rather than hand-maintained — re-check it with the reconciliation in `npm run docs:budget`.
 
 
+**2026-09-24 (ninth) — days-to-exam (ENGAGEMENT_SPEC.md C3): derive-with-override, migration 0116.**
+
+The roadmap had held this behind two decisions — where the date comes from, and who maintains the calendar. The user chose derive-with-override: a committed TS calendar beside `EXAM_REGISTRY` supplies a countdown to every student with a target exam (280 of 342 profiles), and a nullable `student_profiles.exam_date` wins when set and in the future. The alternative, a student-entered date only, was rejected on the evidence of the optional `goal` field: 1% filled.
+
+**The honesty problem, and how it is carried.** On 2026-09-24 no conducting body had announced a 2027 date — UPSC publishes its calendar around November, NTA and the boards later — so every one of the 15 entries is the usual pattern (NDA-I on the third Sunday of April, boards from mid-February) with `official: false` and a `source` that says so. The UI renders that as "NDA 2027 (I) in 206 days (expected)" with a "set your date" link to `/account`; the account form's hint names the expected date. Flipping `official` is a one-line edit when a date is announced. A guess labelled as one is honest; a guess stored as a fact is what the roadmap warned against.
+
+**The rot probe is the test.** `tests/exam-calendar.test.ts` fails the gate once any sitting is more than `CALENDAR_GRACE_DAYS` (14) in the past — the roadmap's stated preference over a DB table that nothing checks, where an empty calendar looks identical to a working one. It also pins the shape (registry slugs only, real dates, unique (exam, sitting)) and that no COURSE has an entry — first written as "no practice-only exam", which was wrong: CBSE Class 10 is practice-only in the bank and still a board with a sitting.
+
+**Resolution rules** (`resolveExamDate`): a future override wins and is `official` by definition; a past override is ignored, never counted up; otherwise the first target exam with a calendar entry; null when neither. `daysUntilIst` counts IST calendar days so a date is "today" until IST midnight. The countdown rides `/api/me/pulse` as an optional `exam` field, so a sessionStorage entry cached before this shipped still parses (asserted), and renders as one line in the header menu and the `/me` week strip.
+
+**Also banked today:** the test suite reached the Supabase sign-in rate limit on its own — adding the five-sign-in C1 RLS file made the same four tail suites fail on two consecutive gate runs with "Request rate limit reached". `mustSignIn` now waits out the window (65 s, up to five times) instead of failing or retrying into it (the 2026-09-21 finding), and `hookTimeout` rose from 90 s to 6 min to hold the worst case.
+
+**Verified:** 20 calendar + pulse tests, typecheck, lint; anon curls compile `/account`, `/me` and the pulse route. **Not verified:** the render of the date input, the menu line and the strip line.
+
 **2026-09-24 (eighth) — teacher-assigned mocks with a deadline (ENGAGEMENT_SPEC.md C1), migration 0115.**
 
 The third build of the day and the one with the largest expected lift for LWS's own batches: a cohort with a date pulls harder than any nudge, and it does so without the peer ranking the engagement gate forbids. The user chose the shape (a new `mock_assignments` table) over two cheaper ones — a due date on `papers` (a paper is a Word download, so "who has done it" is unmeasurable) and a column on `mock_tests` (a mock is global; the assignment is per cohort).

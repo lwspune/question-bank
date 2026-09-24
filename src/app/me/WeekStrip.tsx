@@ -10,6 +10,7 @@ import {
   weeklyProgress,
 } from "@/lib/goals/weekly";
 import { invalidatePulse, usePulse } from "@/lib/viewer/usePulse";
+import { examCountdownSentence } from "@/lib/exam/calendar";
 
 /**
  * ONE strip for the two engagement numbers on /me: this week's sittings
@@ -72,6 +73,19 @@ export default function WeekStrip({
           This week
         </h2>
         <p className="mt-0.5 text-sm">{weeklyGoalSentence(p)}</p>
+        {pulse?.exam && (
+          <p className="mt-0.5 text-xs text-muted-foreground">
+            {examCountdownSentence({ ...pulse.exam, source: "calendar", exam: null, date: "" })}
+            {!pulse.exam.official && (
+              <>
+                {" \u00b7 "}
+                <Link href="/account" className="text-brand-accent underline-offset-4 hover:underline">
+                  set your date
+                </Link>
+              </>
+            )}
+          </p>
+        )}
         <label className="mt-2 flex items-center gap-2 text-xs text-muted-foreground">
           <span>{p.chosen ? "Your goal" : "Suggested goal"}</span>
           <select
