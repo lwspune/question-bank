@@ -160,36 +160,36 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "An integral carrying numeric limits — especially symmetric limits, limits running 0 to a, or an absolute value or piecewise expression inside.",
     story: [
-      "73 q, 1.85/paper, 45% HARD, and the chapter splits into a recognition half and a grind half. Symmetry, King's Property and Absolute Value is 42 q at 38% HARD; Substitution and Standard Form is 31 q at 55%.",
-      "The 42-q half is the highest-leverage recognition anywhere in the calculus block. Once the property is spotted the question collapses in a single line — an odd integrand over symmetric limits is zero with no antiderivative computed at all, and King's property turns an unintegrable-looking expression into twice something trivial or into a constant. At 1.8 minutes a question, that is worth more than the two marks it scores.",
-      "The other half is ordinary integration with limits attached, which makes it Indefinite Integration (159 q, 3.35/paper, 51% HARD) plus one extra step. Its 55% HARD rate is real, but so is the transfer: everything invested in the cornerstone integration chapter is paid back here, so this half needs almost no separate preparation.",
+      "68 q, 1.72/paper, 47% HARD, and the chapter splits into a recognition half and a grind half. The three property pages — odd and even symmetry, King's property, modulus and greatest-integer splitting — are 43 q at 42% HARD; the two evaluation pages are 25 q at 56%.",
+      "The 43-q property block is the highest-leverage recognition anywhere in the calculus block. Once the property is spotted the question collapses in a single line — an odd integrand over symmetric limits is zero with no antiderivative computed at all, and King's property turns an unintegrable-looking expression into twice something trivial or into a constant. At 1.8 minutes a question, that is worth more than the two marks it scores.",
+      "The other half is ordinary integration with limits attached, which makes it Indefinite Integration (162 q, 3.41/paper, 52% HARD) plus one extra step. Its 56% HARD rate is real, but so is the transfer: everything invested in the cornerstone integration chapter is paid back here, so this half needs almost no separate preparation.",
       "Order of attack follows directly: scan every definite integral for a property BEFORE reaching for a technique. Ten seconds of looking saves a minute of integrating on roughly three of every five questions in this chapter.",
     ],
     subSkills: [
       {
-        name: "Standard-form evaluation with limits",
+        name: "Evaluating Definite Integrals — Standard Forms, Algebraic Substitution and By Parts",
         description:
-          "Integrate, then evaluate at the upper limit minus the lower. When you substitute, change the limits to the new variable rather than back-substituting at the end — it is faster and removes a whole class of error.",
+          "Integrate, then evaluate at the upper limit minus the lower. When you substitute, change the limits to the new variable rather than back-substituting at the end; split a numerator against a quadratic; use by parts for inverse trig and e^x (f + f'), and the reduction I_n + I_(n-2) = 1/(n-1) for powers of tan.",
       },
       {
-        name: "Even and odd over symmetric limits",
+        name: "Trigonometric Definite Integrals — tan x = t, Half-Angle Forms and Powers",
         description:
-          "Over -a to a, an odd integrand gives zero and an even integrand gives twice the integral from 0 to a. Test the parity of the integrand first, before anything else.",
+          "Divide by a power of cos x and put tan x = t (limits 0 to 1 at pi/4, 1/sqrt3 at pi/6); 1 + cos x = 2 cos^2(x/2); the Weierstrass result for 1/(a + b cos x) over 0 to pi is pi/sqrt(a^2 - b^2). The 73% HARD corner of the chapter.",
       },
       {
-        name: "King's property",
+        name: "Odd and Even Integrands — Symmetric Limits",
         description:
-          "The integral from a to b of f(x) equals the integral of f(a + b - x). Adding the two forms usually cancels the awkward part and leaves a constant times the length of the interval.",
+          "Over -a to a, an odd integrand gives zero and an even integrand gives twice the integral from 0 to a. Test the parity first, split a mixed integrand into its odd and even parts, and shift the variable when the interval is symmetric about a point other than 0.",
       },
       {
-        name: "Absolute value and piecewise integrands",
+        name: "King's Property — f(a + b − x) and the f/(f + g) Family",
         description:
-          "Find where the expression inside changes sign, split the interval there, and integrate each piece with the correct sign. A modulus integrated as if it were the bare expression is the commonest wrong answer.",
+          "The integral from a to b of f(x) equals the integral of f(a + b - x). Adding the two forms cancels the awkward part: f/(f + g) over a to b is (b - a)/2, x f(sin x) over 0 to pi is (pi/2) times the integral of f(sin x), and f(x)/(1 + e^x) over -a to a is the integral of f over 0 to a.",
       },
       {
-        name: "Periodicity and interval-shifting properties",
+        name: "Modulus and Greatest-Integer Integrands — Split the Interval",
         description:
-          "For a periodic integrand, the integral over a whole number of periods reduces to a multiple of the integral over one period, and the starting point of the interval does not matter.",
+          "Find where the expression inside changes sign or where [x] steps, split the interval there, and integrate each piece with its own sign or constant. A modulus integrated as if it were the bare expression is the commonest wrong answer.",
       },
     ],
     traps: [
@@ -431,36 +431,26 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "The word area, together with two curves — or a curve, an axis and a pair of bounding lines.",
     story: [
-      "47 q, 1.00/paper, 36% HARD — but effectively a one-skill chapter. Area Bounded by Curves, Axes, and Lines is 43 of the 47 questions, at 33% HARD. The remaining subtopic is 4 questions at 75% HARD and does not justify a place in a study plan.",
-      "That concentration makes it a cheaper page than its headline suggests. One skill, learned once, answers 43 of 47 — which is the opposite shape from Limits, where 93 questions are split across two equally hard halves with no cheap entry point.",
+      "44 q, 0.94/paper, 32% HARD — but effectively a one-skill chapter. The two area pages — under one curve and between two curves — are 35 of the 44 questions, at 29% HARD. The circle, ellipse and hyperbola page is 9 questions at 44% HARD and needs exactly one standard result learnt cold.",
+      "That concentration makes it a cheaper page than its headline suggests. One skill, learned once, answers 35 of 44 — which is the opposite shape from Limits, where 89 questions are spread across seven pages with no cheap one among them.",
       "The skill is not the integration; it is the setup. Find where the curves meet, decide which one is on top over each stretch, decide whether the region is simpler in x or in y, and split the interval wherever the top curve changes. Get that right and what remains is an integral you already know how to do.",
-      "It sits directly downstream of Definite Integration (73 q, 1.85/paper) and Indefinite Integration (159 q, 3.35/paper, 51% HARD). If antiderivatives are not fluent this chapter is unreachable; if they are, it is close to free — which is why it belongs late in a plan rather than early.",
+      "It sits directly downstream of Definite Integration (68 q, 1.72/paper) and Indefinite Integration (162 q, 3.41/paper, 52% HARD). If antiderivatives are not fluent this chapter is unreachable; if they are, it is close to free — which is why it belongs late in a plan rather than early.",
     ],
     subSkills: [
       {
-        name: "Sketch and intersections",
+        name: "Area Under a Curve — Between a Curve and an Axis",
         description:
-          "Draw the region, however roughly, and solve the curves simultaneously for the limits. A question is almost never wrong at the integration step and almost always wrong at this one.",
+          "Sketch, find where the curve meets the axis, and integrate y dx (or x dy for a horizontal strip); where the curve crosses the axis, integrate the modulus piece by piece. Includes the curve-with-unknown-coefficients and the divide-the-area-in-half stems.",
       },
       {
-        name: "Choosing the strip",
+        name: "Area Between Two Curves — Intersections First",
         description:
-          "A vertical strip integrates in x and needs the curves as y in terms of x; a horizontal strip integrates in y. Pick the one that avoids splitting the region.",
+          "Solve the curves simultaneously for the limits, then integrate upper minus lower (or right minus left for a horizontal strip), splitting wherever the curves swap places. A question is almost never wrong at the integration step and almost always wrong at the intersections.",
       },
       {
-        name: "Top minus bottom",
+        name: "Areas of Circles, Ellipses and Hyperbolas — Sectors, Segments and Standard Integrals",
         description:
-          "The integrand is upper curve minus lower curve over the interval, or right curve minus left for a horizontal strip. Order matters: reversing it gives the negative of the area.",
-      },
-      {
-        name: "Splitting at a crossover",
-        description:
-          "Where the curves swap places inside the interval, break the integral at the crossing point and take each piece with its own top curve.",
-      },
-      {
-        name: "Standard regions and symmetry",
-        description:
-          "Circle, parabola, ellipse and line combinations recur. Exploiting symmetry — computing a quarter or half and multiplying — is usually faster than integrating the whole region.",
+          "The integral of sqrt(a^2 - x^2) and sqrt(x^2 - a^2) learnt cold, the sector formula (1/2) r^2 theta, the quarter-ellipse pi ab/4, and symmetry — computing a quarter or half and multiplying — instead of integrating the whole region.",
       },
     ],
     traps: [

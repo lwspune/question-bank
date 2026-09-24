@@ -974,6 +974,18 @@ The gate flip is the real prize — until then this class can re-stale silently 
 
 ---
 
+## Backfill ledger — 16 test suites still sign in RAW instead of through `mustSignIn` (logged 2026-09-25)
+
+Three consecutive `npm run gate prepush` runs on 2026-09-25 failed on ONE suite, `tests/dashboard-stats-authz.test.ts`, with
+`AuthApiError: Request rate limit reached` — 409 of 410 files green each time and the build never reached. The cause was
+the auth window, not the code: each run began inside the previous run's five-minute window (the gate's own ~150 sign-ins
+plus the targeted vitest runs between them), and that suite called `signInWithPassword` directly, so the first
+rate-limited sign-in threw instead of waiting. It now goes through `mustSignIn` (which waits 65 s × up to 5) with its
+`beforeAll` timeout raised to fit. **`grep -ln "signInWithPassword" tests/*.test.ts` still lists 16 files** doing the same
+thing; each is a latent identical failure on a busy afternoon. Migrating them is mechanical (import the helper, replace
+the call, raise the hook timeout) but touches 16 shipped suites, so it is logged here rather than swept. Until then:
+leave ≥6 minutes between any two test runs that sign in, and never run a targeted DB suite while a gate is in flight.
+
 ## Backfill ledger — subtopic ORDER drift between /guide and /notes (8 MHT-CET Maths chapters)
 
 **Found 2026-09-20** while fixing the Mathematical Logic teaching arc. Logged, NOT fixed —
@@ -993,7 +1005,7 @@ differs from the card at equal length — a content disagreement, not just order
 
 **Guarded meanwhile:** `tests/notes-guide-subtopic-order.test.ts` hard-asserts SET equality for
 every chapter (so a subtopic can no longer go missing from one surface) and asserts ORDER only for
-slugs on its `ARC_VERIFIED` allowlist. Today that list holds `mathematical-logic` and `limits` (the latter arc-verified at birth on 2026-09-25 — notes order, guide card and `subSkills` were written together). The eight
+slugs on its `ARC_VERIFIED` allowlist. Today that list holds `mathematical-logic`, `limits`, `definite-integration` and `applications-of-definite-integral` (the last three arc-verified at birth on 2026-09-25 — notes order, guide card and `subSkills` were written together). The eight
 above render as skipped tests naming this ledger.
 
 **To clear one:** decide which order is pedagogically right (the `/notes` arc is usually the

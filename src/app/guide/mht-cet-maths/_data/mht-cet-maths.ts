@@ -210,12 +210,12 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Indefinite Integration",
-    qCount: 159,
-    pctTotal: 7.1,
-    qPerPaper: 3.35,
-    pctHard: 51,
+    qCount: 162,
+    pctTotal: 7.3,
+    qPerPaper: 3.41,
+    pctHard: 52,
     focus:
-      "Integration by Substitution (51 · 51% HARD), Trigonometric Integrals - Rational and Substitution Forms (35 · 74%), Rational Functions and Partial Fractions (27 · 48%), Integration by Parts (26 · 54%), Trigonometric Integrals - Powers and Identities (12 · 8%), Foundations and Standard Formulae (8 · 13%). Half the chapter is HARD and the trigonometric-rational forms are the most expensive block on the paper at 74%.",
+      "Integration by Substitution (52 · 52% HARD), Trigonometric Integrals - Rational and Substitution Forms (36 · 75%), Rational Functions and Partial Fractions (27 · 48%), Integration by Parts (26 · 54%), Trigonometric Integrals - Powers and Identities (13 · 15%), Foundations and Standard Formulae (8 · 13%). Half the chapter is HARD and the trigonometric-rational forms are the most expensive block on the paper at 74%.",
   },
   {
     chapter: "Differentiation",
@@ -255,12 +255,12 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Definite Integration",
-    qCount: 73,
-    pctTotal: 3.3,
-    qPerPaper: 1.85,
-    pctHard: 45,
+    qCount: 68,
+    pctTotal: 3.1,
+    qPerPaper: 1.72,
+    pctHard: 47,
     focus:
-      "Symmetry, King's Property, and Absolute Value (42 · 38% HARD), Substitution and Standard Form (31 · 55%). The symmetry properties are the time lever: they turn an expensive integral into a two-line answer.",
+      "King's Property (17 · 47% HARD), Modulus and Greatest-Integer (15 · 27%), Evaluation and Substitution (14 · 43%), Odd and Even Symmetry (11 · 55%), Trigonometric Integrals (11 · 73%). The symmetry properties are the time lever: they turn an expensive integral into a two-line answer.",
   },
   {
     chapter: "Mathematical Logic",
@@ -318,12 +318,12 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Applications of Definite Integral",
-    qCount: 47,
-    pctTotal: 2.1,
-    qPerPaper: 1.0,
-    pctHard: 36,
+    qCount: 44,
+    pctTotal: 2.0,
+    qPerPaper: 0.94,
+    pctHard: 32,
     focus:
-      "Area Bounded by Curves, Axes, and Lines (43 · 33% HARD), Definite Integral as Application (4 · 75%). Effectively one subtopic — 91% of the chapter is area between curves.",
+      "Area Between Two Curves (21 · 38% HARD), Area Under a Curve (14 · 14%), Circle, Ellipse and Hyperbola Regions (9 · 44%). Effectively one skill — 80% of the chapter is an area between a curve and a line or a second curve.",
   },
   {
     chapter: "Pair of Straight Lines",

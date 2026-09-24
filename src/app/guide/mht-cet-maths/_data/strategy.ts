@@ -131,10 +131,10 @@ export const CORNERSTONE_STRAND: StrategyStrand = {
   id: "cornerstone",
   label:
     "Cornerstone — Vectors · Line and Plane · Applications of Derivative · Trigonometric Functions · Indefinite Integration · Differential Equations · Differentiation (1,236 q · 55% of bank)",
-  qCount: 1236,
-  pctOfBank: 55,
+  qCount: 1239,
+  pctOfBank: 56,
   pitch:
-    "Seven chapters carry 27.74 questions per paper — 55% of a 50-question paper, or 55 of the 100 marks. Nothing else on this exam concentrates like that, and it is why prep here is not a question of coverage: you cannot reach a good score without these seven, and you cannot reach one on these seven alone either. Because there is no negative marking, the cost of a weak cornerstone is never a wrong answer you should have skipped — it is minutes. A Vectors triple-product question you half-remember eats four minutes of a 90-minute paper and takes two long-tail questions down with it. Order and time discipline decide this paper; selection does not.",
+    "Seven chapters carry 27.80 questions per paper — 56% of a 50-question paper, or 56 of the 100 marks. Nothing else on this exam concentrates like that, and it is why prep here is not a question of coverage: you cannot reach a good score without these seven, and you cannot reach one on these seven alone either. Because there is no negative marking, the cost of a weak cornerstone is never a wrong answer you should have skipped — it is minutes. A Vectors triple-product question you half-remember eats four minutes of a 90-minute paper and takes two long-tail questions down with it. Order and time discipline decide this paper; selection does not.",
   approach: [
     "Do these seven in prep before anything else, and do them properly — 1.8 minutes per question means a technique you can only half-execute is worth less than one you have never seen, because the half-remembered one is the one you will spend five minutes on.",
     "Six of the seven have shipped teaching notes at /notes/mht-cet-maths — line-and-plane, vectors, applications-of-derivative, differential-equations, indefinite-integration, differentiation. Trigonometric Functions does NOT, so work that one from its playbook and timed /browse drills. Read a chapter's notes once, then drill subtopic by subtopic; do not read all six end-to-end first.",
@@ -239,15 +239,15 @@ export const CORNERSTONE_STRAND: StrategyStrand = {
       ],
       skipSubtopics: ["Newton's Law of Cooling"],
       targetHard: ["Linear Differential Equations (Integrating Factor)"],
-      expectedYieldPerPaper: "3.35 q/paper · about 7 marks",
+      expectedYieldPerPaper: "3.41 q/paper · about 7 marks",
       studyHours: 12,
       summary:
         "144 q · 38% HARD · six subtopics that split by SOLUTION METHOD, which is exactly how the questions are set. Order/Degree/Formation (33 q, 24% HARD) is recognition work and near-free; Linear (Integrating Factor) at 63% is where it gets expensive. Newton's Law of Cooling is 5 q lifetime at 60% HARD — last in the prep queue, and still answered on the paper.",
     },
     {
       chapter: "Indefinite Integration",
-      qCount: 159,
-      pctHard: 51,
+      qCount: 162,
+      pctHard: 52,
       posture: "split-pass",
       mustDrill: [
         "Foundations and Standard Formulae",
@@ -264,7 +264,7 @@ export const CORNERSTONE_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "3.35 q/paper · about 7 marks",
       studyHours: 14,
       summary:
-        "159 q · 51% HARD · the most expensive cornerstone per question. Its cheap corner is real but small: Foundations (8 q, 13%) and Trigonometric Integrals - Powers and Identities (12 q, 8%) are 20 questions of near-free marks. Everything else sits at 48% or worse, and Trigonometric Integrals - Rational and Substitution Forms is 35 q at 74% HARD.",
+        "162 q · 52% HARD · the most expensive cornerstone per question. Its cheap corner is real but small: Foundations (8 q, 13%) and Trigonometric Integrals - Powers and Identities (13 q, 15%) are 21 questions of near-free marks. Everything else sits at 48% or worse, and Trigonometric Integrals - Rational and Substitution Forms is 35 q at 74% HARD.",
     },
     {
       chapter: "Differentiation",
@@ -392,7 +392,7 @@ export const LONGTAIL_STRAND: StrategyStrand = {
   id: "longtail",
   label:
     "Long Tail — Limits · Trigonometry - I · Definite Integration · Determinants and Matrices · Circle · Applications of Definite Integral · Complex Numbers · Pair of Straight Lines · Permutations and Combinations (521 q · 23% of bank)",
-  qCount: 521,
+  qCount: 509,
   pctOfBank: 23,
   pitch:
     "Nine chapters at roughly one to two questions a paper each, and mostly 33-56% HARD — expensive per mark, and collectively too big to ignore at about 12 questions a paper. These come last, on the time remaining after the cornerstones and quick-wins are banked. And you still answer every single one of them, including the ones you have not prepared: there is no negative marking, so an unread Pair of Straight Lines question costs nothing to guess and a blank is strictly worse than a guess. Prep them in weightage order and stop where your hours stop; the paper will not punish the gap the way an NDA paper would.",
@@ -438,18 +438,19 @@ export const LONGTAIL_STRAND: StrategyStrand = {
     },
     {
       chapter: "Definite Integration",
-      qCount: 73,
-      pctHard: 45,
+      qCount: 68,
+      pctHard: 47,
       posture: "last-pass-guess",
       mustDrill: [
-        "Symmetry, King's Property, and Absolute Value",
-        "Substitution and Standard Form",
+        "Odd and Even Integrands — Symmetric Limits",
+        "King's Property — f(a + b − x) and the f/(f + g) Family",
+        "Modulus and Greatest-Integer Integrands — Split the Interval",
       ],
-      targetHard: ["Substitution and Standard Form"],
-      expectedYieldPerPaper: "1.85 q/paper · about 4 marks",
+      targetHard: ["Trigonometric Definite Integrals — tan x = t, Half-Angle Forms and Powers"],
+      expectedYieldPerPaper: "1.72 q/paper · about 3 marks",
       studyHours: 5,
       summary:
-        "73 q · 45% HARD. Symmetry, King's Property, and Absolute Value (42 q, 38%) is the cheaper and larger half, and King's property is exactly the kind of one-line trick that turns a four-minute integral into a thirty-second one. Substitution and Standard Form is 31 q at 55%.",
+        "68 q · 47% HARD. The three property pages — odd/even symmetry (11 q, 55%), King's property (17 q, 47%) and modulus/greatest-integer splitting (15 q, 27%) — are 43 of the 68, and each is exactly the kind of one-line trick that turns a four-minute integral into a thirty-second one. The trigonometric block (11 q) is the expensive corner at 73% HARD.",
     },
     {
       chapter: "Determinants and Matrices",
@@ -502,15 +503,17 @@ export const LONGTAIL_STRAND: StrategyStrand = {
     },
     {
       chapter: "Applications of Definite Integral",
-      qCount: 47,
-      pctHard: 36,
+      qCount: 44,
+      pctHard: 32,
       posture: "last-pass-guess",
-      mustDrill: ["Area Bounded by Curves, Axes, and Lines"],
-      skipSubtopics: ["Definite Integral as Application"],
-      expectedYieldPerPaper: "1.00 q/paper · 2 marks",
+      mustDrill: [
+        "Area Under a Curve — Between a Curve and an Axis",
+        "Area Between Two Curves — Intersections First",
+      ],
+      expectedYieldPerPaper: "0.94 q/paper · 2 marks",
       studyHours: 3,
       summary:
-        "47 q · 36% HARD, and 43 of those 47 are one subtopic — Area Bounded by Curves, Axes, and Lines at 33% HARD. That makes it the most concentrated chapter in this strand and a cheap three hours. Definite Integral as Application is 4 questions in five years at 75% HARD; it is not worth planning around.",
+        "44 q · 32% HARD, and 35 of those 44 are the two area pages — under one curve (14 q, 14% HARD) and between two curves (21 q, 38%). That makes it the most concentrated chapter in this strand and a cheap three hours; the circle, ellipse and hyperbola page (9 q, 44%) is the only corner that needs a standard result learnt cold.",
     },
     {
       chapter: "Pair of Straight Lines",

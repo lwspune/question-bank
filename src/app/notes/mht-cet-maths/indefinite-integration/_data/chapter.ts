@@ -11,7 +11,7 @@ export const INDEFINITE_INTEGRATION_CHAPTER: ChapterNote = {
   // only what the cards cannot say: how dense the chapter is, what kind of work
   // it demands, and that the order matters. See NOTES_WORKFLOW.md step 1.
   intro:
-    "Indefinite Integration is one of the densest MHT-CET Maths chapters — 159 PYQs across 2021–2025, " +
+    "Indefinite Integration is one of the densest MHT-CET Maths chapters — 162 PYQs across 2021–2025, " +
     "and among its hardest, with about half of them rated HARD. It is pure technique: there is no theory " +
     "to memorise, only a toolbox of methods and the judgement to pick the right one. " +
     "Work the six subtopics below in order — each one rests on the tools laid down before it, and the two " +
