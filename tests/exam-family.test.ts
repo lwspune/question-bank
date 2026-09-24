@@ -26,7 +26,7 @@ function describeNodes(nodes: ExamFamilyNode<Item>[]): string[] {
   return nodes.map((n) =>
     n.kind === "flat"
       ? `flat:${n.item.slug}`
-      : `family:${n.board}[${n.classes.map((c) => c.std).join(",")}]`
+      : `family:${n.key}[${n.members.map((c) => c.order).join(",")}]`
   );
 }
 
@@ -94,7 +94,7 @@ describe("groupExamFamilies", () => {
     const [node] = groupExamFamilies(items("cbse-11", "cbse-12"), bySlug);
     if (node.kind !== "family") throw new Error("expected a family");
     expect(node.label).toBe("CBSE");
-    expect(node.classes.map((c) => c.label)).toEqual(["Class 11", "Class 12"]);
+    expect(node.members.map((c) => c.label)).toEqual(["Class 11", "Class 12"]);
   });
 
   it("uses the registry's classLabel override where a board names its years", () => {
@@ -105,7 +105,7 @@ describe("groupExamFamilies", () => {
       bySlug
     );
     if (node.kind !== "family") throw new Error("expected a family");
-    expect(node.classes.map((c) => c.label)).toEqual([
+    expect(node.members.map((c) => c.label)).toEqual([
       "Class 9",
       "Class 10 (SSC)",
       "Class 11",
@@ -125,7 +125,7 @@ describe("groupExamFamilies", () => {
       nodes.map((n) =>
         n.kind === "flat"
           ? n.item.name
-          : `${n.board}:${n.classes.map((c) => c.item.id).join(",")}`
+          : `${n.key}:${n.members.map((c) => c.item.id).join(",")}`
       )
     ).toEqual(["NDA", "CBSE:u3,u2"]);
   });
@@ -133,8 +133,8 @@ describe("groupExamFamilies", () => {
 
 describe("familyKey / isFamilyKey", () => {
   it("namespaces a family so it can never collide with an exam UUID", () => {
-    expect(familyKey("CBSE")).toBe("board:CBSE");
-    expect(isFamilyKey("board:CBSE")).toBe(true);
+    expect(familyKey("CBSE")).toBe("family:CBSE");
+    expect(isFamilyKey("family:CBSE")).toBe(true);
     expect(isFamilyKey("9b11f033-14c3-4312-8f03-eca3c3d2c87c")).toBe(false);
     expect(isFamilyKey("__ALL__")).toBe(false);
   });
@@ -152,12 +152,13 @@ describe("resolveFamilySelection", () => {
     // No new URL param and no client state: the family is a function of the
     // examId already in the URL.
     expect(selected("cbse-12")).toEqual({
-      topValue: "board:CBSE",
+      topValue: "family:CBSE",
       classValue: "cbse-12",
-      classes: [
-        { std: 11, label: "Class 11", value: "cbse-11" },
-        { std: 12, label: "Class 12", value: "cbse-12" },
+      members: [
+        { order: 11, label: "Class 11", value: "cbse-11" },
+        { order: 12, label: "Class 12", value: "cbse-12" },
       ],
+      memberAxis: "Class",
     });
   });
 
@@ -165,7 +166,8 @@ describe("resolveFamilySelection", () => {
     expect(selected("nda")).toEqual({
       topValue: "nda",
       classValue: null,
-      classes: [],
+      members: [],
+      memberAxis: null,
     });
   });
 
@@ -173,7 +175,8 @@ describe("resolveFamilySelection", () => {
     expect(selected(null)).toEqual({
       topValue: null,
       classValue: null,
-      classes: [],
+      members: [],
+      memberAxis: null,
     });
   });
 
@@ -182,7 +185,8 @@ describe("resolveFamilySelection", () => {
     expect(selected("neet")).toEqual({
       topValue: null,
       classValue: null,
-      classes: [],
+      members: [],
+      memberAxis: null,
     });
   });
 });
@@ -217,5 +221,139 @@ describe("familyDefaultValue", () => {
     // across these 4 exams). A null examId here would show the whole bank under
     // a trigger reading "Maharashtra State Board".
     expect(familyDefaultValue(family, (i) => i.slug)).toBe("mh-sb-9");
+  });
+});
+
+/**
+ * NON-BOARD FAMILIES (2026-09-24). The grouping axis was `board` + `std`, which
+ * cannot express IPMAT: three sibling exams (Indore, Rohtak, Jammu) that are
+ * neither a board nor a class. The node's discriminating field is now a generic
+ * `key`, and an entry opts in with `family` + `familyLabel` instead of
+ * `board` + `std`.
+ *
+ * The board path is unchanged and is asserted above — these cases exist to pin
+ * that the generic path obeys the SAME three rules, because a second grouping
+ * mechanism that silently ordered or degraded differently would be worse than
+ * no generalisation at all.
+ */
+describe("groupExamFamilies — non-board families", () => {
+  const ipmat = (): Item[] => items("ipmat-indore", "ipmat-rohtak", "jipmat");
+
+  it("groups exams sharing a `family` key, labelled by familyLabel", () => {
+    const nodes = groupExamFamilies(ipmat(), bySlug);
+    expect(nodes).toHaveLength(1);
+    const node = nodes[0];
+    if (node.kind !== "family") throw new Error("expected a family");
+    expect(node.key).toBe("IPMAT");
+    expect(node.label).toBe("IPMAT");
+    expect(node.members.map((m) => m.label)).toEqual(["Indore", "Rohtak", "Jammu"]);
+  });
+
+  it("orders members by REGISTRY position, since there is no std to sort on", () => {
+    // Reversing the input must not reorder the family: a board family sorts
+    // numerically by class, and the non-board equivalent of "numeric class
+    // order" is the order the registry declares, not the caller's array order.
+    const nodes = groupExamFamilies([...ipmat()].reverse(), bySlug);
+    const node = nodes[0];
+    if (node.kind !== "family") throw new Error("expected a family");
+    expect(node.members.map((m) => m.item.slug)).toEqual([
+      "ipmat-indore",
+      "ipmat-rohtak",
+      "jipmat",
+    ]);
+  });
+
+  it("degrades a one-member non-board family to a flat chip (rule 2)", () => {
+    const nodes = groupExamFamilies(items("ipmat-indore"), bySlug);
+    expect(nodes.map((n) => n.kind)).toEqual(["flat"]);
+  });
+
+  it("keeps a non-board family at its first member's position (rule 3)", () => {
+    const nodes = groupExamFamilies(
+      items("nda", "ipmat-indore", "cbse-11", "ipmat-rohtak", "jipmat", "cbse-12"),
+      bySlug
+    );
+    expect(nodes.map((n) => (n.kind === "flat" ? `flat:${n.item.slug}` : `family:${n.key}`)))
+      .toEqual(["flat:nda", "family:IPMAT", "family:CBSE"]);
+  });
+
+  it("round-trips a non-board family through the selection helpers", () => {
+    const nodes = groupExamFamilies(ipmat(), bySlug);
+    const sel = resolveFamilySelection(nodes, "jipmat", (i) => i.slug);
+    expect(sel.topValue).toBe(familyKey("IPMAT"));
+    expect(sel.classValue).toBe("jipmat");
+    expect(sel.members.map((c) => c.value)).toEqual([
+      "ipmat-indore",
+      "ipmat-rohtak",
+      "jipmat",
+    ]);
+    expect(isFamilyKey(sel.topValue!)).toBe(true);
+  });
+
+  it("commits its FIRST member when the family itself is picked", () => {
+    const nodes = groupExamFamilies(ipmat(), bySlug);
+    const node = nodes[0];
+    if (node.kind !== "family") throw new Error("expected a family");
+    expect(familyDefaultValue(node, (i) => i.slug)).toBe("ipmat-indore");
+  });
+
+  it("sums a non-board family like any other", () => {
+    const nodes = groupExamFamilies(ipmat(), bySlug);
+    const node = nodes[0];
+    if (node.kind !== "family") throw new Error("expected a family");
+    expect(familyTotal(node, () => 10)).toBe(30);
+  });
+
+  it("never mixes a board family with a non-board one under the same key", () => {
+    const nodes = groupExamFamilies(
+      items("cbse-11", "cbse-12", "ipmat-indore", "ipmat-rohtak"),
+      bySlug
+    );
+    const keys = nodes.flatMap((n) => (n.kind === "family" ? [n.key] : []));
+    expect(new Set(keys).size).toBe(keys.length);
+    expect(keys.sort()).toEqual(["CBSE", "IPMAT"]);
+  });
+});
+
+/**
+ * THE MEMBER-AXIS NOUN. The second picker control is the one that chooses
+ * between a family's members, and its label was hardcoded to "Class" — true of
+ * every family that existed while the axis was `board`+`std`, and false the
+ * moment a non-board family arrived. IPMAT's members are institutes, not
+ * classes, and a control reading "Class → Indore" is a lying label.
+ *
+ * The noun belongs to the FAMILY, not the member, so it rides on the node.
+ * Board families default to "Class", which is why no board entry declares it.
+ */
+describe("member-axis label", () => {
+  it("defaults a board family's axis to Class", () => {
+    const nodes = groupExamFamilies(items("cbse-11", "cbse-12"), bySlug);
+    const node = nodes[0];
+    if (node.kind !== "family") throw new Error("expected a family");
+    expect(node.memberAxis).toBe("Class");
+  });
+
+  it("uses the registry's familyAxis for a non-board family", () => {
+    const nodes = groupExamFamilies(items("ipmat-indore", "ipmat-rohtak"), bySlug);
+    const node = nodes[0];
+    if (node.kind !== "family") throw new Error("expected a family");
+    expect(node.memberAxis).toBe("Institute");
+  });
+
+  it("carries the axis through resolveFamilySelection, which is what renders it", () => {
+    const nodes = groupExamFamilies(items("ipmat-indore", "ipmat-rohtak", "jipmat"), bySlug);
+    expect(resolveFamilySelection(nodes, "jipmat", (i) => i.slug).memberAxis).toBe(
+      "Institute"
+    );
+    const boards = groupExamFamilies(items("cbse-11", "cbse-12"), bySlug);
+    expect(resolveFamilySelection(boards, "cbse-12", (i) => i.slug).memberAxis).toBe(
+      "Class"
+    );
+  });
+
+  it("reports no axis when nothing in a family is selected", () => {
+    const nodes = groupExamFamilies(items("nda", "cbse-11", "cbse-12"), bySlug);
+    expect(resolveFamilySelection(nodes, "nda", (i) => i.slug).memberAxis).toBeNull();
+    expect(resolveFamilySelection(nodes, null, (i) => i.slug).memberAxis).toBeNull();
   });
 });

@@ -54,7 +54,7 @@ export default function BrowseLanding({
               // never the homepage's total-PUBLIC figure.
               const total = familyTotal(node, (e) => e.questionCount);
               return (
-                <li key={node.board}>
+                <li key={node.key}>
                   <div className="flex h-full flex-col rounded-lg border bg-card p-4 shadow-sm">
                     <span className="block truncate text-sm font-medium">
                       {node.label}
@@ -63,7 +63,7 @@ export default function BrowseLanding({
                       {total.toLocaleString("en-IN")} questions
                     </span>
                     <ul className="mt-2.5 flex flex-wrap gap-1.5">
-                      {node.classes.map((cls) => (
+                      {node.members.map((cls) => (
                         <li key={cls.item.slug}>
                           <Link
                             href={cls.item.href}

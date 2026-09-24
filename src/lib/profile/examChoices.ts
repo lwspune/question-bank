@@ -54,7 +54,7 @@ export function buildExamChips(entries: readonly ExamEntry[]): ChipOption[] {
       flat.push({ value: node.item.slug, label: node.item.displayName });
       continue;
     }
-    for (const cls of node.classes) {
+    for (const cls of node.members) {
       grouped.push({
         value: cls.item.slug,
         label: cls.label,
