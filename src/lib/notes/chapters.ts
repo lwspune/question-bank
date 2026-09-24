@@ -99,6 +99,11 @@ import {
   BINOMIAL_DISTRIBUTION_SLUGS as MHTCET_BINOMIAL_DISTRIBUTION_SLUGS,
 } from "@/app/notes/mht-cet-maths/binomial-distribution/_data";
 import {
+  MHTCET_LIMITS_CHAPTER,
+  MHTCET_LIMITS_NOTES,
+  MHTCET_LIMITS_SLUGS,
+} from "@/app/notes/mht-cet-maths/limits/_data";
+import {
   JEE_MATRICES_CHAPTER,
   JEE_MATRICES_NOTES,
   JEE_MATRICES_SLUGS,
@@ -929,6 +934,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_BINOMIAL_DISTRIBUTION_CHAPTER,
     notes: MHTCET_BINOMIAL_DISTRIBUTION_NOTES,
     slugs: MHTCET_BINOMIAL_DISTRIBUTION_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "limits",
+    chipLabel: "Limits notes",
+    chapter: MHTCET_LIMITS_CHAPTER,
+    notes: MHTCET_LIMITS_NOTES,
+    slugs: MHTCET_LIMITS_SLUGS,
   },
   {
     examName: "JEE Mains",

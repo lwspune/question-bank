@@ -993,7 +993,7 @@ differs from the card at equal length — a content disagreement, not just order
 
 **Guarded meanwhile:** `tests/notes-guide-subtopic-order.test.ts` hard-asserts SET equality for
 every chapter (so a subtopic can no longer go missing from one surface) and asserts ORDER only for
-slugs on its `ARC_VERIFIED` allowlist. Today that list holds `mathematical-logic` alone. The eight
+slugs on its `ARC_VERIFIED` allowlist. Today that list holds `mathematical-logic` and `limits` (the latter arc-verified at birth on 2026-09-25 — notes order, guide card and `subSkills` were written together). The eight
 above render as skipped tests naming this ledger.
 
 **To clear one:** decide which order is pedagogically right (the `/notes` arc is usually the

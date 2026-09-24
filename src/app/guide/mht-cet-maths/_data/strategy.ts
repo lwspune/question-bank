@@ -397,29 +397,31 @@ export const LONGTAIL_STRAND: StrategyStrand = {
   pitch:
     "Nine chapters at roughly one to two questions a paper each, and mostly 33-56% HARD — expensive per mark, and collectively too big to ignore at about 12 questions a paper. These come last, on the time remaining after the cornerstones and quick-wins are banked. And you still answer every single one of them, including the ones you have not prepared: there is no negative marking, so an unread Pair of Straight Lines question costs nothing to guess and a blank is strictly worse than a guess. Prep them in weightage order and stop where your hours stop; the paper will not punish the gap the way an NDA paper would.",
   approach: [
-    "None of these has shipped teaching notes — the eight /notes/mht-cet-maths chapters are six of the seven cornerstones plus Probability Distribution and Binomial Distribution. Work these from the playbooks and timed /browse drills instead.",
-    "Limits is the sharpest example of a chapter that does not cherry-pick: 93 q at 56% HARD across exactly two subtopics, Continuity at a Point — Finding Parameters (47 q, 57%) and Limit Evaluation Techniques (46 q, 54%). There is no cheap half to take. Prepare both or neither, and on the paper give them the second pass, not the first.",
+    "Limits is the one chapter here with shipped teaching notes (/notes/mht-cet-maths/limits — seven pages, every PYQ tagged); the rest of the strand is worked from the playbooks and timed /browse drills.",
+    "Limits is the sharpest example of a chapter that does not cherry-pick: 89 q at 55% HARD, and the four limit pages and the three continuity pages sit at the same difficulty — Trigonometric Limits is 67% HARD, Continuity at a Point 58%, Piecewise Continuity 53%. There is no cheap half to take. Prepare the whole toolkit or none of it, and on the paper give these questions the second pass, not the first.",
     "Two chapters here reward a technique that skips calculus entirely, and at 1.8 minutes a question that is a time lever rather than an elegance: the greatest and least modulus of a complex number on a disc, and the maximum perpendicular distance from a point on a circle, are the same move — distance to the centre plus or minus the radius.",
     "A vanishing 3x3 determinant is the universal degeneracy test across this strand and the cornerstones both — concurrency of lines, collinearity of points, coplanarity of lines, scalar triple product equal to zero. Learning it once in Determinants and Matrices pays in four other chapters.",
   ],
   chapters: [
     {
       chapter: "Limits",
-      qCount: 93,
-      pctHard: 56,
+      qCount: 89,
+      pctHard: 55,
       posture: "last-pass-guess",
       mustDrill: [
-        "Limit Evaluation Techniques",
-        "Continuity at a Point — Finding Parameters",
+        "Continuity at a Point — Finding f(c) and the Parameter",
+        "Continuity of Piecewise Functions — Junction Conditions and Parameter Systems",
+        "Algebraic Limits — Factorisation, Rationalisation and the xⁿ − aⁿ Form",
       ],
       targetHard: [
-        "Continuity at a Point — Finding Parameters",
-        "Limit Evaluation Techniques",
+        "Trigonometric Limits — sin x/x and the 1 − cos x Family",
+        "Exponential, Logarithmic and 1^∞ Limits",
+        "Continuity at a Point — Finding f(c) and the Parameter",
       ],
-      expectedYieldPerPaper: "2.08 q/paper · about 4 marks",
+      expectedYieldPerPaper: "1.99 q/paper · about 4 marks",
       studyHours: 6,
       summary:
-        "93 q · 56% HARD · the highest %HARD of any chapter in this strand, and it does not cherry-pick: both subtopics are above 54%. Two questions a paper at full price. Prepare both halves or accept that you are guessing them — which, on this exam, is a legitimate choice.",
+        "89 q · 55% HARD · the highest %HARD of any chapter in this strand, and it does not cherry-pick: every one of its seven pages is between 44% and 67% HARD. Two questions a paper at full price. Prepare the whole toolkit or accept that you are guessing them — which, on this exam, is a legitimate choice.",
     },
     {
       chapter: "Trigonometry - I",

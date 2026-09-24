@@ -329,10 +329,15 @@ export const MHT_CET_MATHS: BookDefinition = {
     {
       slug: "limits",
       name: "Limits",
-      // 93 q across 2 subtopics, in descending question count.
+      // 89 q across 7 subtopics, in teaching order (order_index 1..7, 2026-09-25 reshape).
       groupSubtopics: [
-        { name: "Continuity at a Point — Finding Parameters" }, // 47
-        { name: "Limit Evaluation Techniques" }, // 46
+        { name: "Limits — Existence, One-Sided Limits and Limits at Infinity" }, // 9
+        { name: "Algebraic Limits — Factorisation, Rationalisation and the xⁿ − aⁿ Form" }, // 13
+        { name: "Trigonometric Limits — sin x/x and the 1 − cos x Family" }, // 12
+        { name: "Exponential, Logarithmic and 1^∞ Limits" }, // 11
+        { name: "Continuity at a Point — Finding f(c) and the Parameter" }, // 19
+        { name: "Continuity of Piecewise Functions — Junction Conditions and Parameter Systems" }, // 19
+        { name: "Discontinuities of [x], |x| and sgn x — Counting the Points" }, // 6
       ],
     },
     {
