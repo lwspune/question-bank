@@ -31,6 +31,7 @@ const ARC_VERIFIED = new Set<string>([
   "limits",
   "definite-integration",
   "applications-of-definite-integral",
+  "determinants-and-matrices",
 ]);
 
 /** Compare on a normalised key — the surfaces differ on case and the Oxford comma. */

@@ -227,41 +227,31 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A matrix raised to a power, an adjoint or an inverse asked for, or a 3x3 determinant set equal to zero.",
     story: [
-      "50 q, 1.12/paper, 48% HARD. Small and expensive — but it carries a compensation the rest of the tail does not: its content is a short list of identities that are memorisable and, unlike most tail material, reusable elsewhere on the paper.",
-      "Adjoint, Determinant, and A·adj(A) Identity is the chapter's hardest corner at 64% HARD across 14 q, and simultaneously its most learnable. Three lines answer most of it directly: A times adj(A) equals |A| times the identity, the determinant of adj(A) is |A| raised to (n - 1), and |kA| is k^n times |A| for an n by n matrix. Those are recall, not derivation.",
+      "49 q, 1.10/paper, 49% HARD. Small and expensive — but it carries a compensation the rest of the tail does not: its content is a short list of identities that are memorisable and, unlike most tail material, reusable elsewhere on the paper.",
+      "Determinants, Cofactors and the Adjoint Identities is the chapter's hardest corner at 69% HARD across 16 q, and simultaneously its most learnable. Three lines answer most of it directly: A times adj(A) equals |A| times the identity, the determinant of adj(A) is |A| raised to (n - 1), and |kA| is k^n times |A| for an n by n matrix. Those are recall, not derivation.",
       "The transferable idea is the vanishing determinant as a universal degeneracy test. A survey of the bank found it across five to six chapters and roughly 19 to 30 questions, surfacing as concurrency of three lines, collinearity of three points, coplanarity of two lines, the condition for a general second-degree equation to be a pair of lines, and the scalar triple product being zero. Learning to read 'determinant equals zero' as 'these objects are degenerate' pays well outside this chapter.",
-      "System of Linear Equations and Symmetric Matrices (9 q, 44% HARD) is classification, not solving: a non-zero determinant means a unique solution, a zero determinant means either no solution or infinitely many, and telling those two apart is the whole question.",
+      "Systems of Linear Equations and Symmetric, Skew-Symmetric Matrices (8 q, 38% HARD) is half solving and half classification: a non-zero determinant means a unique solution, a zero determinant means either no solution or infinitely many, and telling those two apart is the whole question.",
     ],
     subSkills: [
       {
-        name: "Determinant evaluation and properties",
+        name: "Determinants, Cofactors and the Adjoint Identities",
         description:
-          "Expansion along the sparsest row or column, plus the row and column operations that create zeros. Extracting a common factor from a row multiplies the determinant by that factor once, not n times.",
+          "Expansion along a row with cofactors (an alien expansion gives zero), the adjoint as the transposed cofactor matrix, and three recalled identities — A adj(A) = |A| I, |adj A| = |A|^(n-1), |kA| = k^n |A| — that convert the chapter's 69%-HARD corner into one-liners. The A adj(A) = A A^T stem is two equations, one from the off-diagonal and one from the diagonal.",
       },
       {
-        name: "The adjoint identities",
+        name: "Inverse of a Matrix — Adjoint Formula, Products and Verification",
         description:
-          "A adj(A) = adj(A) A = |A| I; |adj A| = |A|^(n-1); adj(adj A) = |A|^(n-2) A for an invertible n by n matrix. Pure recall, and it converts several 64%-HARD questions into one-liners.",
+          "A inverse equals adj(A) divided by |A|, defined only when |A| is non-zero; for an expression like A^2 - 5A or A + B, form the matrix first, then invert. Note the order reversal: (AB) inverse equals B inverse times A inverse, so B inverse = (AB) inverse times A. Unknown entries come from A A inverse = I.",
       },
       {
-        name: "Inverse and its algebra",
+        name: "Cayley–Hamilton, Matrix Polynomials and Powers",
         description:
-          "A inverse equals adj(A) divided by |A|, defined only when |A| is non-zero. Note the order reversal: (AB) inverse equals B inverse times A inverse.",
+          "A 2x2 matrix satisfies A^2 - (trace) A + |A| I = 0, so A inverse = (trace I - A)/|A| gives alpha and beta on sight, a factored polynomial in A gives A inverse in one line, and a high power of A reduces through the cycle at which A^m returns to a scalar times I.",
       },
       {
-        name: "Cayley-Hamilton and matrix polynomials",
+        name: "Systems of Linear Equations and Symmetric, Skew-Symmetric Matrices",
         description:
-          "A matrix satisfies its own characteristic equation, which lets a high power of A be reduced to a linear combination of A and I. This is the standard route for A^n questions.",
-      },
-      {
-        name: "Consistency of a linear system",
-        description:
-          "Compute the determinant of the coefficient matrix first. Non-zero means a unique solution; zero sends you to the numerator determinants to decide between inconsistent and infinitely many.",
-      },
-      {
-        name: "Determinant as a degeneracy test",
-        description:
-          "Recognise the same 3x3-equals-zero condition when it appears as concurrency, collinearity, coplanarity or a scalar triple product. One computation, four chapter dialects.",
+          "Solve AX = B by elimination when the coefficients are small integers; a homogeneous system has non-trivial solutions exactly when the determinant vanishes; any square matrix splits into (M + M^T)/2 plus (M - M^T)/2, and an odd-order skew-symmetric matrix is singular.",
       },
     ],
     traps: [

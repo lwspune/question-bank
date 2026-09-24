@@ -282,12 +282,12 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Determinants and Matrices",
-    qCount: 50,
+    qCount: 49,
     pctTotal: 2.2,
-    qPerPaper: 1.12,
-    pctHard: 48,
+    qPerPaper: 1.1,
+    pctHard: 49,
     focus:
-      "Inverse, Cayley-Hamilton, and Matrix Polynomial (27 · 41% HARD), Adjoint, Determinant, and A·adj(A) Identity (14 · 64%), System of Linear Equations and Symmetric Matrices (9 · 44%). One question a paper at 48% HARD — expensive for what it returns.",
+      "Determinants and Adjoint Identities (16 · 69% HARD), Inverse of a Matrix (15 · 33%), Cayley–Hamilton and Matrix Polynomials (10 · 50%), Linear Systems and Symmetric Matrices (8 · 38%). One question a paper at 49% HARD — expensive for what it returns.",
   },
   {
     chapter: "Circle",

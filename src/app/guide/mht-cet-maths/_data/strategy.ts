@@ -392,7 +392,7 @@ export const LONGTAIL_STRAND: StrategyStrand = {
   id: "longtail",
   label:
     "Long Tail — Limits · Trigonometry - I · Definite Integration · Determinants and Matrices · Circle · Applications of Definite Integral · Complex Numbers · Pair of Straight Lines · Permutations and Combinations (521 q · 23% of bank)",
-  qCount: 509,
+  qCount: 508,
   pctOfBank: 23,
   pitch:
     "Nine chapters at roughly one to two questions a paper each, and mostly 33-56% HARD — expensive per mark, and collectively too big to ignore at about 12 questions a paper. These come last, on the time remaining after the cornerstones and quick-wins are banked. And you still answer every single one of them, including the ones you have not prepared: there is no negative marking, so an unread Pair of Straight Lines question costs nothing to guess and a blank is strictly worse than a guess. Prep them in weightage order and stop where your hours stop; the paper will not punish the gap the way an NDA paper would.",
@@ -454,19 +454,20 @@ export const LONGTAIL_STRAND: StrategyStrand = {
     },
     {
       chapter: "Determinants and Matrices",
-      qCount: 50,
-      pctHard: 48,
+      qCount: 49,
+      pctHard: 49,
       posture: "last-pass-guess",
       mustDrill: [
-        "Inverse, Cayley-Hamilton, and Matrix Polynomial",
-        "System of Linear Equations and Symmetric Matrices",
-        "Adjoint, Determinant, and A·adj(A) Identity",
+        "Inverse of a Matrix — Adjoint Formula, Products and Verification",
+        "Cayley–Hamilton, Matrix Polynomials and Powers",
+        "Systems of Linear Equations and Symmetric, Skew-Symmetric Matrices",
+        "Determinants, Cofactors and the Adjoint Identities",
       ],
-      targetHard: ["Adjoint, Determinant, and A·adj(A) Identity"],
-      expectedYieldPerPaper: "1.12 q/paper · about 2 marks",
+      targetHard: ["Determinants, Cofactors and the Adjoint Identities"],
+      expectedYieldPerPaper: "1.10 q/paper · about 2 marks",
       studyHours: 4,
       summary:
-        "50 q · 48% HARD, and the Adjoint and A·adj(A) subtopic is 64%. Worth more than one question a paper suggests, because the vanishing-determinant degeneracy test learned here reappears as concurrency, collinearity, coplanarity and the scalar triple product across four other chapters.",
+        "49 q · 49% HARD, and the determinant and adjoint identities page is 69%. Worth more than one question a paper suggests, because the vanishing-determinant degeneracy test learned here reappears as concurrency, collinearity, coplanarity and the scalar triple product across four other chapters.",
     },
     {
       chapter: "Circle",

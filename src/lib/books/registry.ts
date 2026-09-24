@@ -387,11 +387,12 @@ export const MHT_CET_MATHS: BookDefinition = {
     {
       slug: "determinants-and-matrices",
       name: "Determinants and Matrices",
-      // 50 q across 3 subtopics, in descending question count.
+      // 49 q across 4 subtopics, in teaching order (order_index 1..4, 2026-09-25 reshape).
       groupSubtopics: [
-        { name: "Inverse, Cayley-Hamilton, and Matrix Polynomial" }, // 27
-        { name: "Adjoint, Determinant, and A·adj(A) Identity" }, // 14
-        { name: "System of Linear Equations and Symmetric Matrices" }, // 9
+        { name: "Determinants, Cofactors and the Adjoint Identities" }, // 16
+        { name: "Inverse of a Matrix — Adjoint Formula, Products and Verification" }, // 15
+        { name: "Cayley–Hamilton, Matrix Polynomials and Powers" }, // 10
+        { name: "Systems of Linear Equations and Symmetric, Skew-Symmetric Matrices" }, // 8
       ],
     },
     {
