@@ -276,7 +276,10 @@ function MockCard({
               sitting to say anything, so it appears with the first one. */}
           <div className="flex flex-wrap items-center justify-between gap-2">
             {mocks.completed > 0 ? (
-              <CardLink href="/performance">See what to work on</CardLink>
+              <span className="flex flex-wrap gap-x-4 gap-y-1">
+                <CardLink href="/me/map">Your map</CardLink>
+                <CardLink href="/performance">See what to work on</CardLink>
+              </span>
             ) : (
               <span />
             )}

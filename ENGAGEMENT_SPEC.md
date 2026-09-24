@@ -57,7 +57,7 @@ is why the share loop already keeps the score opt-in).
 | 1 | Result screen reframed around what they attempted, with "Fix these" as the primary action | **Tranche A — building** |
 | 2 | Due queue visible: a Fix tab with a count, a badge on the avatar, the count on /me | **Tranche A — building** |
 | 6 | Weekly sittings goal, student-chosen, with a progress ring | **Tranche A — building** |
-| 5 | Mastery map: chapter tiles with subtopic dots from the existing weak/mastered bands | Tranche B — specified below, no decision needed |
+| 5 | Mastery map: chapter tiles with subtopic dots from the existing weak/mastered bands | **SHIPPED 2026-09-24** at `/me/map` (no schema; `npm run map:smoke`) |
 | 4 | Daily set: five questions, due drill first then unseen from weak subtopics | Tranche B — specified below, depends on the unseen picker |
 | 10 | Feed the drill from /browse, notes checkpoints and public quizzes | Tranche B — specified below |
 | 7 | Teacher-assigned paper with a deadline for a batch | Tranche C — DECIDED 2026-09-24: new `mock_assignments` table (§5) |
@@ -186,7 +186,7 @@ withhold the rate; read the 4-week cohort rather than the weekly one.
 
 ### B1. Mastery map (item 5)
 
-Per target exam and subject, a grid of chapter tiles. Each tile carries one
+**SHIPPED 2026-09-24 at `/me/map`.** Pure core `src/lib/performance/masteryMap.ts` (`bandOf` reads the accordion's own thresholds, `buildMasteryMap` sorts tiles worst-first; TDD). Native `<details>` tiles, two columns on a phone, exam/subject pills reuse `buildLaneNav` so `/performance` and the map agree on the selection, every pill `prefetch={false}`. Linked from `/me` (beside "See what to work on") and the drill's end screen. Not verified: the render (auth-gated); `npm run map:smoke` drives the data chain. As specified: per target exam and subject, a grid of chapter tiles. Each tile carries one
 dot per subtopic coloured by the band the performance code already computes
 (`WEAK_BELOW` 0.5, `MASTERED_AT` 0.7, else mid, grey when fewer than
 `MIN_JUDGED_FOR_CLAIM` judged). Tapping a tile opens its subtopics with a
