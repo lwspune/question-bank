@@ -20,6 +20,7 @@ import { CONTACT_EMAIL } from "@/lib/brand";
 import { formatMarks, formatWhere, type MockReport } from "./mockReport";
 import type { Recipient } from "./recommend";
 import type { DueSummary } from "./dueNudge";
+import type { Loop } from "@/lib/education/howItWorks";
 
 export const SITE_URL = "https://www.pyqvault.com";
 
@@ -498,6 +499,94 @@ export function buildDueNudgeEmail(input: DueNudgeEmailInput): BuiltEmail {
   <p style="margin:0 0 24px">
     <a href="${drillUrl}" style="background:${ACCENT};color:#fff;text-decoration:none;padding:11px 20px;border-radius:6px;display:inline-block;font-weight:600">Fix them</a>
   </p>
+  <p style="margin:0 0 24px;color:${MUTED};font-size:14px">Reply to this email if something looks wrong — it reaches a person.</p>
+  <p style="margin:0 0 24px">— ${BRAND}</p>
+  <hr style="border:none;border-top:1px solid #e2e8f0;margin:0 0 12px">
+  <p style="margin:0;color:#94a3b8;font-size:12px">
+    Don&#39;t want these? <a href="${unsubUrl}" style="color:#94a3b8">Unsubscribe</a>.
+  </p>
+</div>`;
+
+  return {
+    subject,
+    text,
+    html,
+    replyTo: REPLY_TO,
+    headers: {
+      "List-Unsubscribe": `<${oneClickUrl}>`,
+      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+    },
+  };
+}
+
+export type WelcomeEmailInput = {
+  name: string;
+  /** The loop for the student's primary exam (lib/education/howItWorks.ts). */
+  loop: Loop;
+  unsubscribeToken: string;
+};
+
+/**
+ * The welcome — how PYQ Vault works, once per account ever.
+ * STUDENT_EDUCATION_SPEC.md §4 item 6.
+ *
+ * The three steps are the SAME objects /start and the welcome screen render,
+ * so this mail cannot describe a loop the site does not show. CONTENT-LED,
+ * NEVER ABSENCE-LED: it says what exists and where to tap. It never says what
+ * the student has not done, because most recipients are the existing backlog
+ * and "you haven't tried the drill" is the guilt trip the sibling app
+ * measured. The subject names the product, not a feature, because the point
+ * is the loop and not any one step of it.
+ */
+export function buildWelcomeEmail(input: WelcomeEmailInput): BuiltEmail {
+  const { name, loop, unsubscribeToken } = input;
+  const who = greetingName(name);
+  const unsubUrl = `${SITE_URL}/unsubscribe/${unsubscribeToken}`;
+  const oneClickUrl = `${SITE_URL}/api/unsubscribe/${unsubscribeToken}`;
+  const startUrl = `${SITE_URL}/start`;
+
+  const subject = who ? `How ${BRAND} works, ${who}` : `How ${BRAND} works`;
+  const lead =
+    loop.kind === "mock"
+      ? `Most students sit one paper and stop there. The score is the least useful thing on that page. Here is the loop that moves it${loop.examLabel ? ` for ${loop.examLabel}` : ""}:`
+      : `Here is the way to work the ${loop.examLabel ?? "textbook"} bank so that it sticks:`;
+
+  const text = [
+    who ? `Hi ${who},` : "Hi,",
+    "",
+    lead,
+    "",
+    ...loop.steps.flatMap((s, i) => [
+      `${i + 1}. ${s.title}`,
+      `   ${s.body}`,
+      `   ${s.cta}: ${SITE_URL}${s.href}`,
+      "",
+    ]),
+    `Everything on the site, one line each: ${startUrl}`,
+    "",
+    "Reply to this email if something looks wrong — it reaches a person.",
+    "",
+    `— ${BRAND}`,
+    "",
+    "---",
+    `Don't want these? Unsubscribe: ${unsubUrl}`,
+  ].join("\n");
+
+  const stepsHtml = loop.steps
+    .map(
+      (s, i) => `  <div style="border:1px solid #e2e8f0;border-radius:8px;padding:14px 16px;margin:0 0 12px">
+    <p style="margin:0 0 4px;font-weight:600;color:#0f172a">${i + 1}. ${escapeHtml(s.title)}</p>
+    <p style="margin:0 0 10px;color:${MUTED};font-size:14px">${escapeHtml(s.body)}</p>
+    <a href="${SITE_URL}${s.href}" style="background:${ACCENT};color:#fff;text-decoration:none;padding:9px 16px;border-radius:6px;display:inline-block;font-weight:600;font-size:14px">${escapeHtml(s.cta)}</a>
+  </div>`
+    )
+    .join("\n");
+
+  const html = `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:520px;margin:0 auto;color:${INK};line-height:1.55">
+  <p style="margin:0 0 16px">${who ? `Hi ${escapeHtml(who)},` : "Hi,"}</p>
+  <p style="margin:0 0 16px">${escapeHtml(lead)}</p>
+${stepsHtml}
+  <p style="margin:12px 0 24px;color:${MUTED};font-size:14px">Everything on the site, one line each: <a href="${startUrl}" style="color:${ACCENT}">${startUrl}</a></p>
   <p style="margin:0 0 24px;color:${MUTED};font-size:14px">Reply to this email if something looks wrong — it reaches a person.</p>
   <p style="margin:0 0 24px">— ${BRAND}</p>
   <hr style="border:none;border-top:1px solid #e2e8f0;margin:0 0 12px">

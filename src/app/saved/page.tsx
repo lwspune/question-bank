@@ -63,7 +63,7 @@ export default async function SavedPage() {
             <Link href="/browse" className="text-brand-accent underline">
               Browse
             </Link>{" "}
-            to save it here.
+            or in a mock review to keep it here for revision week.
           </p>
         ) : (
           <ol className="mt-6 space-y-3">

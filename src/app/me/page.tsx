@@ -241,8 +241,11 @@ function WelcomeHero() {
         <div>
           <p className="font-semibold">Start learning</p>
           <p className="mt-0.5 text-sm text-muted-foreground">
-            Take a timed mock test, read a chapter of notes, or save questions to
-            revisit. Everything you do shows up here.
+            Sit a timed paper, fix what you missed five at a time, and watch your
+            chapter map fill. Everything you do shows up here.{" "}
+            <Link href="/start" className="text-brand-accent underline underline-offset-2">
+              How it works
+            </Link>
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             <Link

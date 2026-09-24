@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Atom, BookOpen, Compass, FlaskConical, Globe, Landmark, Languages, Leaf, Library, ListTree, Mail, Newspaper, NotebookPen, PenLine, Scale, Sigma, Timer, TrendingUp } from "lucide-react";
+import { Atom, BookOpen, Compass, FlaskConical, Globe, Landmark, Languages, Leaf, Library, Lightbulb, ListTree, Mail, Newspaper, NotebookPen, PenLine, Scale, Sigma, Timer, TrendingUp } from "lucide-react";
 import { CONTACT_EMAIL } from "@/lib/brand";
 
 const REPORT_EMAIL = CONTACT_EMAIL;
@@ -179,6 +179,15 @@ export default function Footer() {
           >
             <PenLine className="h-3 w-3" aria-hidden />
             Blog
+          </Link>
+          {/* The one page that says what the product is for. On every page so
+              an anon phone reader (no account menu) can find it too. */}
+          <Link
+            href="/start"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
+          >
+            <Lightbulb className="h-3 w-3" aria-hidden />
+            How it works
           </Link>
           <a
             href={`mailto:${REPORT_EMAIL}?subject=Question%20Bank%20feedback`}

@@ -100,8 +100,13 @@ export default function AboutPage() {
         </P>
         <P>
           A free account exists for the things that have to remember you, which
-          is sitting a timed mock and having the score kept, saving questions,
-          and tracking which notes you have worked through. The one genuinely
+          is sitting a timed mock and having the score kept, fixing the questions
+          you missed, saving questions, and tracking which notes you have worked
+          through (
+          <Link href="/start" className="text-brand-accent underline">
+            how it all fits together
+          </Link>
+          ). The one genuinely
           restricted thing is downloading a question paper and answer key as
           Word files. That is a teacher&rsquo;s tool rather than a
           student&rsquo;s, so it needs a teacher account. If you teach and want

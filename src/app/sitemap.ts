@@ -584,6 +584,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     },
     {
+      // How the product works — the page the welcome email, footer and account
+      // menu point at (STUDENT_EDUCATION_SPEC.md). Static and indexable.
+      url: `${SITE_URL}/start`,
+      lastModified: buildDate,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
       // Named-author / provenance page. Indexed deliberately: it is the page
       // that answers "who is behind this", for readers and for E-E-A-T alike.
       url: `${SITE_URL}/about`,
