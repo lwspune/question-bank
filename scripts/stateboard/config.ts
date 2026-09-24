@@ -1650,6 +1650,31 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Latest Trends and Careers in Geography",
     ],
   },
+
+  "population-2-12-geo": {
+    id: "population-2-12-geo",
+    chapterName: "Population: Part 2",
+    subjectName: "Geography",
+    sourceFile: "StateBoard_12_Geography__Population_Part_2.pdf",
+    pdf: geo12("2. Population  Part 2.pdf"),
+    derivedAnswers: true,
+    note: "Maharashtra State Board (Class 12) — Population: Part 2 (Balbharati Geography textbook)",
+    // The chapter's own numbered composition heads (age, sex, literacy,
+    // occupation, rural-urban), then migration, which it splits into a
+    // types/causes half and a donor-versus-recipient impact half. Demographic
+    // dividend is pulled out of the age-structure section because it carries its
+    // own extended treatment, its own data table and its own exercise question.
+    subtopics: [
+      "Age Structure and Population Pyramids",
+      "Demographic Dividend",
+      "Sex Composition",
+      "Literacy and Education",
+      "Occupational Structure",
+      "Rural-Urban Composition",
+      "Migration: Types and Causes",
+      "Impact of Migration on Population Structure",
+    ],
+  },
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
