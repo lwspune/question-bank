@@ -99,7 +99,8 @@ The words above are the words in the code. Change them there.
 | 4 | Result-page caption under "Fix these mistakes" | `/mock/attempt/[id]/result` | building |
 | 5 | Empty-state copy on Saved points at the bookmark on mock review as well as Browse | `/saved` | building |
 | 6 | Welcome email — the loop by email, once per account ever, includes the existing backlog | `npm run email:welcome`, cron `.github/workflows/welcome.yml`, migration 0117 | building |
-| 7 | Classroom script for teachers | appendix A of this file | written |
+| 7 | Classroom script for teachers | appendix A of this file (mirror of `src/lib/education/classroomScript.ts`, pinned by `tests/classroom-script.test.ts`) | written |
+| 8 | Slice 2 — "Five minutes in class" card on the batch roster with a Copy-for-WhatsApp button; three loop lines in the batch invite email | `/dashboard/batches/[id]/roster`, `buildBatchInviteEmail` | **shipped 2026-09-24** |
 
 Item 2 detail. After Continue or Skip on the exam screen the page does not
 navigate. It shows the loop for the primary exam (Skip = general mock loop).
@@ -129,8 +130,8 @@ mornings. The first run is the owner's call: dry-run first.
   a surface). Deferred: needs a `seen` column and a client island per
   surface; the permanent caption on the result page and the start page cover
   the two highest-value moments without either.
-- **A "How it works" card on the batch roster for teachers, and the script in
-  the batch invite email.** Slice 2. The script itself is appendix A now.
+- ~~A "How it works" card on the batch roster for teachers, and the script in
+  the batch invite email.~~ Shipped as slice 2 the same day (item 8 above).
 - **A blog post on how to prepare with PYQ Vault.** Slice 3. Cheap and
   indexable; written prose, not code.
 - **Anything that changes the nav.** The five-tab bar is a measured
