@@ -40,7 +40,10 @@ export default defineConfig({
     // and no inefficient hook to fix. It is headroom for a DB whose latency we
     // do not control. Kept finite (not disabled) so a genuinely hung hook still
     // fails rather than running out the job's wall clock.
-    hookTimeout: 90000,
+    // 6 minutes, not 90 s: mustSignIn (tests/helpers/fixture.ts) now WAITS OUT
+    // an auth rate limit — up to five 65-second sleeps inside a beforeAll — so
+    // the hook ceiling has to hold the worst case. A ceiling, not a duration.
+    hookTimeout: 360000,
     // ~76 of the test files write fixtures into the DEDICATED test project
     // (tests/helpers/testdb.ts) and sign in as those fixtures. The cap keeps
     // that traffic under TWO walls, both measured 2026-09-21 on a 12-core

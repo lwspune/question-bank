@@ -80,10 +80,20 @@ export async function mustDo(
  * the client stays ANONYMOUS, and the test fails later as a 42501 RLS
  * violation on a write — a fake regression pointing nowhere near the cause.
  *
- * Not retried on purpose: a rate limit is not a blip, and retrying only
- * spends more of the same window. The reason is printed so the next person
- * sees "Request rate limit reached", not "row-level security policy".
+ * A rate limit is WAITED OUT, never retried into. Retrying at once only
+ * spends more of the same window (the 2026-09-21 finding), so on
+ * "Request rate limit reached" this sleeps past the window and tries again,
+ * a bounded number of times. Added 2026-09-24 when the suite reached the
+ * wall on its own: adding one five-sign-in RLS file made the same four tail
+ * suites fail on two consecutive runs, and the only alternative was to stop
+ * writing RLS tests. Every other failure is thrown with its reason, so the
+ * next person sees "Request rate limit reached", not "row-level security
+ * policy".
  */
+const RATE_LIMIT_WAIT_MS = 65_000;
+const RATE_LIMIT_MAX_WAITS = 5;
+const sleepMs = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
+
 type SignInCreds = { email: string; password: string };
 type SignInClient = {
   auth: {
@@ -98,7 +108,17 @@ export async function mustSignIn(
   client: SignInClient,
   creds: SignInCreds,
 ): Promise<void> {
-  const { data, error } = await client.auth.signInWithPassword(creds);
-  if (error) throw new Error(`sign in "${label}" failed: ${error.message}`);
-  if (!data?.session) throw new Error(`sign in "${label}" failed: no session returned`);
+  for (let waits = 0; ; waits++) {
+    const { data, error } = await client.auth.signInWithPassword(creds);
+    if (error && /rate limit/i.test(error.message) && waits < RATE_LIMIT_MAX_WAITS) {
+      console.warn(
+        `sign in "${label}": ${error.message} — waiting ${RATE_LIMIT_WAIT_MS / 1000}s for the window (${waits + 1}/${RATE_LIMIT_MAX_WAITS})`,
+      );
+      await sleepMs(RATE_LIMIT_WAIT_MS);
+      continue;
+    }
+    if (error) throw new Error(`sign in "${label}" failed: ${error.message}`);
+    if (!data?.session) throw new Error(`sign in "${label}" failed: no session returned`);
+    return;
+  }
 }
