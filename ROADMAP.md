@@ -1078,10 +1078,11 @@ caption, the welcome email (migration 0117, cron `welcome.yml`), and the
 classroom script (appendix A of the spec). Left, in the order the spec ranks
 them:
 
-- **Teacher card + invite email (slice 2).** Put appendix A's five-minute
-  script on the batch roster next to the assignment control, and a three-line
-  version in the batch invite email. No new data; one card and one template
-  change.
+- ~~**Teacher card + invite email (slice 2).**~~ SHIPPED 2026-09-24: a collapsed
+  "Five minutes in class" card on the batch roster (`ClassroomScriptCard` +
+  `CopyScriptButton`, one source `lib/education/classroomScript.ts`) and three
+  loop lines in `buildBatchInviteEmail`. Render of the card is unverified
+  (middleware-gated `f`, button behind a click).
 - **Blog post — how to prepare for NDA with PYQ Vault (slice 3).** Prose, not
   code; indexable; answers the query a new student actually searches. Link it
   from `/start`.
