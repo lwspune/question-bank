@@ -113,7 +113,36 @@ async function planFor(
       .eq("pyq_year", paper.year)
       .eq("question_kind", "pyq");
 
-    q = paper.bankStatus === "reconcile" ? q.like("source_file", "MH_HSC_12_Maths_PYQ__%") : q.eq("source_file", paper.sourceFile);
+    /**
+     * THE COMPILATION PREFIX IS PER SUBJECT, and used to be hardcoded to Maths.
+     *
+     * That hardcoding shipped a real defect on 2026-09-24: attaching the
+     * Chemistry March-2023 figure searched `MH_HSC_12_Maths_PYQ__%`, found the
+     * MATHS Q. 1. vi. of the same March-2023 sitting — `\int\cos^{3}x\,dx` in
+     * Indefinite Integration — and hung a benzene ring on it, PUBLIC. The refs
+     * collide because `question_number` is unique only WITHIN a subject, and
+     * `pyq_year` + `pyq_month` do not separate the three subjects' sittings.
+     *
+     * Physics never tripped it: none of its reconcile papers carries a
+     * figureRef, so this branch had only ever run for Maths. Chemistry is the
+     * first subject to reach it, which is why a two-subject lane looked correct
+     * for a year.
+     *
+     * Note the token is NOT the subject name — the Maths files say "Maths"
+     * where the bank's subject is "Mathematics".
+     */
+    const COMPILATION_TOKEN: Record<string, string> = {
+      Mathematics: "Maths",
+      Physics: "Physics",
+      Chemistry: "Chemistry",
+    };
+    const token = COMPILATION_TOKEN[paper.subject];
+    if (!token) throw new Error(`no compilation source_file token for subject ${JSON.stringify(paper.subject)}`);
+
+    q =
+      paper.bankStatus === "reconcile"
+        ? q.like("source_file", `MH_HSC_12_${token}_PYQ__%`)
+        : q.eq("source_file", paper.sourceFile);
 
     const { data, error } = await q;
     if (error) throw new Error(error.message);

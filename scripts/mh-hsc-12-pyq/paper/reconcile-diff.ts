@@ -113,7 +113,13 @@ async function main() {
     // because both sittings share pyq_year 2025. The comparison would then have
     // matched a February ref against a June question of the same number, which
     // is exactly the kind of wrong answer that looks plausible.
-    .eq("pyq_month", paper.month)
+    // ...and when the SHIPPED rows carry a different month from the printed
+    // cover, search on theirs. The Chemistry compilation files its 2024 and
+    // 2025 sittings as "March" while both covers read February; using the cover
+    // month there would return ZERO rows and report a fully-covered sitting as
+    // entirely missing. `bankMonth` is declared per paper in config.ts and is
+    // deliberately NOT a correction to the shipped data — see its docblock.
+    .eq("pyq_month", paper.bankMonth ?? paper.month)
     .order("question_number");
   if (error) throw new Error(error.message);
 
