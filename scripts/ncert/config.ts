@@ -3796,6 +3796,215 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
+  // ── Political Science — "Democratic Politics II" ──────────────────────────
+  // One lane: the end-of-chapter `Exercises`. Sections run at 20pt against an
+  // 11.5pt body, so the spine reads cleanly — but the same size band also
+  // catches the Overview paragraph and the marginal cartoon captions, so this
+  // book's anchor list is generous. Brief rule 7 applies.
+  //
+  // No `answersPdf`. There is no key for this book.
+
+  c10PolPowerSharing: {
+    id: "c10PolPowerSharing",
+    chapterName: "Power-sharing",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Polity",
+    sourceFile: "NCERT_10_Polity__PowerSharing.pdf",
+    pdf: cls10SS("Polity", "01. Power-sharing.pdf"),
+    chapterNo: 1,
+    note: "NCERT (CBSE Class 10) \u2014 Power-sharing (Chapter 1, Democratic Politics II)",
+    subtopics: [
+      "Belgium and Sri Lanka",
+      "Majoritarianism in Sri Lanka",
+      "Accommodation in Belgium",
+      "Why Power Sharing is Desirable",
+      "Forms of Power-sharing",
+    ],
+  },
+
+  c10PolFederalism: {
+    id: "c10PolFederalism",
+    chapterName: "Federalism",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Polity",
+    sourceFile: "NCERT_10_Polity__Federalism.pdf",
+    pdf: cls10SS("Polity", "02. Federalism.pdf"),
+    chapterNo: 2,
+    note: "NCERT (CBSE Class 10) \u2014 Federalism (Chapter 2, Democratic Politics II)",
+    subtopics: [
+      "What is Federalism",
+      "What Makes India a Federal Country",
+      "How is Federalism Practised",
+      "Decentralisation in India",
+    ],
+  },
+
+  c10PolGenderReligionCaste: {
+    id: "c10PolGenderReligionCaste",
+    chapterName: "Gender, Religion and Caste",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Polity",
+    sourceFile: "NCERT_10_Polity__GenderReligionCaste.pdf",
+    pdf: cls10SS("Polity", "03. Gender, Religion, and Caste.pdf"),
+    chapterNo: 3,
+    note: "NCERT (CBSE Class 10) \u2014 Gender, Religion and Caste (Chapter 3, Democratic Politics II)",
+    subtopics: [
+      "Gender and Politics",
+      "Religion, Communalism and Politics",
+      "Caste and Politics",
+    ],
+  },
+
+  c10PolPoliticalParties: {
+    id: "c10PolPoliticalParties",
+    chapterName: "Political Parties",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Polity",
+    sourceFile: "NCERT_10_Polity__PoliticalParties.pdf",
+    pdf: cls10SS("Polity", "04. Political Parties.pdf"),
+    chapterNo: 4,
+    note: "NCERT (CBSE Class 10) \u2014 Political Parties (Chapter 4, Democratic Politics II)",
+    subtopics: [
+      "Why Do We Need Political Parties",
+      "How Many Parties Should We Have",
+      "National Parties",
+      "State Parties",
+      "Challenges to Political Parties",
+      "How Can Parties be Reformed",
+    ],
+  },
+
+  c10PolOutcomesDemocracy: {
+    id: "c10PolOutcomesDemocracy",
+    chapterName: "Outcomes of Democracy",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Polity",
+    sourceFile: "NCERT_10_Polity__OutcomesDemocracy.pdf",
+    pdf: cls10SS("Polity", "05. Outcomes of Democracy.pdf"),
+    chapterNo: 5,
+    note: "NCERT (CBSE Class 10) \u2014 Outcomes of Democracy (Chapter 5, Democratic Politics II)",
+    subtopics: [
+      "How Do We Assess Democracy's Outcomes",
+      "Accountable, Responsive and Legitimate Government",
+      "Economic Growth and Development",
+      "Reduction of Inequality and Poverty",
+      "Accommodation of Social Diversity",
+      "Dignity and Freedom of the Citizens",
+    ],
+  },
+
+
+  // ── History — "India and the Contemporary World II" ────────────────────────
+  // THE ODD ONE. It never prints the word "Exercises": its questions arrive as
+  // TWO separately numbered blocks, `Write in brief` and `Discuss`, on the
+  // closing page — hence the distinct `WB`/`DS` ref prefixes, since a single
+  // `Ex` prefix would collide and lose a question at merge.
+  //
+  // It also prints `Discuss` as a marginal activity prompt throughout the
+  // chapter — Ch.1 has six before the end, and Ch.4's sits at heading size on
+  // p8. Find the two block headings on the SAME closing page; do not grep the
+  // word.
+  //
+  // The only book in this lane that NUMBERS its sections, so its subtopics are
+  // the numbered spine with the numeral dropped.
+  //
+  // No `answersPdf`. There is no key for this book.
+
+  c10HistNationalismEurope: {
+    id: "c10HistNationalismEurope",
+    chapterName: "The Rise of Nationalism in Europe",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "History",
+    sourceFile: "NCERT_10_History__NationalismEurope.pdf",
+    pdf: cls10SS("History", "01. The Rise of Nationalism in Europe.pdf"),
+    chapterNo: 1,
+    note: "NCERT (CBSE Class 10) \u2014 The Rise of Nationalism in Europe (Chapter 1, India and the Contemporary World II)",
+    subtopics: [
+      "The French Revolution and the Idea of the Nation",
+      "The Making of Nationalism in Europe",
+      "The Age of Revolutions: 1830-1848",
+      "The Making of Germany and Italy",
+      "Visualising the Nation",
+      "Nationalism and Imperialism",
+    ],
+  },
+
+  c10HistNationalismIndia: {
+    id: "c10HistNationalismIndia",
+    chapterName: "Nationalism in India",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "History",
+    sourceFile: "NCERT_10_History__NationalismIndia.pdf",
+    pdf: cls10SS("History", "02. Nationalism in India.pdf"),
+    chapterNo: 2,
+    note: "NCERT (CBSE Class 10) \u2014 Nationalism in India (Chapter 2, India and the Contemporary World II)",
+    subtopics: [
+      "The First World War, Khilafat and Non-Cooperation",
+      "Differing Strands within the Movement",
+      "Towards Civil Disobedience",
+      "The Sense of Collective Belonging",
+    ],
+  },
+
+  c10HistGlobalWorld: {
+    id: "c10HistGlobalWorld",
+    chapterName: "The Making of a Global World",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "History",
+    sourceFile: "NCERT_10_History__GlobalWorld.pdf",
+    pdf: cls10SS("History", "03. The Making of a Global World.pdf"),
+    chapterNo: 3,
+    note: "NCERT (CBSE Class 10) \u2014 The Making of a Global World (Chapter 3, India and the Contemporary World II)",
+    subtopics: [
+      "The Pre-modern World",
+      "The Nineteenth Century (1815-1914)",
+      "The Inter-war Economy",
+      "Rebuilding a World Economy: The Post-war Era",
+    ],
+  },
+
+  c10HistIndustrialisation: {
+    id: "c10HistIndustrialisation",
+    chapterName: "The Age of Industrialisation",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "History",
+    sourceFile: "NCERT_10_History__Industrialisation.pdf",
+    pdf: cls10SS("History", "04. The Age of Industrialisation.pdf"),
+    chapterNo: 4,
+    note: "NCERT (CBSE Class 10) \u2014 The Age of Industrialisation (Chapter 4, India and the Contemporary World II)",
+    subtopics: [
+      "Before the Industrial Revolution",
+      "Hand Labour and Steam Power",
+      "Industrialisation in the Colonies",
+      "Factories Come Up",
+      "The Peculiarities of Industrial Growth",
+      "Market for Goods",
+    ],
+  },
+
+  c10HistPrintCulture: {
+    id: "c10HistPrintCulture",
+    chapterName: "Print Culture and the Modern World",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "History",
+    sourceFile: "NCERT_10_History__PrintCulture.pdf",
+    pdf: cls10SS("History", "05. Print Culture and the Modern World.pdf"),
+    chapterNo: 5,
+    note: "NCERT (CBSE Class 10) \u2014 Print Culture and the Modern World (Chapter 5, India and the Contemporary World II)",
+    subtopics: [
+      "The First Printed Books",
+      "Print Comes to Europe",
+      "The Print Revolution and Its Impact",
+      "The Reading Mania",
+      "The Nineteenth Century",
+      "India and the World of Print",
+      "Religious Reform and Public Debates",
+      "New Forms of Publication",
+      "Print and Censorship",
+    ],
+  },
+
+
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

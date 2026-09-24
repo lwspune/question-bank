@@ -72,6 +72,13 @@ guessed:**
    block on the closing page, beside `Write in brief`. Find the two block
    headings on the *same* page and work from there; do not grep the word.
 
+   The compensation is that History has the **cleanest anchors in this lane**.
+   It is the only one of the four books that numbers its sections, and the
+   numbers come through, sub-sections included: `§ 1.1 The Idea of Satyagraha`,
+   `§ 3.2 How Participants Saw the Movement`. **Keep the number in the
+   citation** — it is part of the anchor, and it makes these the most precise
+   citations available anywhere here.
+
 3. **`EXERCISES` is not near the end.** Economics Ch.5 puts it on p13 of 19,
    Ch.1 on p14 of 16 — `ADDITIONAL PROJECT / ACTIVITY` and `APPENDIX` come after
    it. Scan the whole chapter, not the last few pages.
