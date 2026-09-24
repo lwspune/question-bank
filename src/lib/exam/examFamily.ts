@@ -3,7 +3,7 @@
  * surfaces that list exams (the /browse filter, the profile chips on
  * /welcome + /account, the homepage cards, the /browse landing pills).
  *
- * WHY: the bank carries 13 exams and 6 of them are (board, class) pairs — CBSE
+ * WHY: the bank carries 17 registry exams and 6 of them are (board, class) pairs — CBSE
  * 11/12 and Maharashtra 9/10/11/12. Listed flat they are two-thirds of the
  * picker, and they do not even sort together: the /browse list is
  * DB-alphabetical on exam NAME, which reads

@@ -82,7 +82,7 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/nda-maths/indefinite-integration": "2026-09-14T16:31:56+05:30",
   "/notes/nda-maths/inverse-trigonometry": "2026-09-14T16:31:56+05:30",
   "/notes/nda-maths/limits-continuity": "2026-06-12T08:59:25+05:30",
-  "/notes/nda-maths/lines": "2026-06-10T08:18:02+05:30",
+  "/notes/nda-maths/lines": "2026-09-23T17:12:11+05:30",
   "/notes/nda-maths/logarithms": "2026-06-12T15:27:39+05:30",
   "/notes/nda-maths/matrices-determinants": "2026-09-14T16:31:56+05:30",
   "/notes/nda-maths/permutation-combination": "2026-06-12T08:59:25+05:30",

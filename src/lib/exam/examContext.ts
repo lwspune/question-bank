@@ -446,12 +446,12 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   // but they are neither a board nor a class, which is why they group on
   // `family` rather than `board`+`std`.
   //
-  // ALL THREE ARE `noPublicContent` UNTIL THE PUBLIC FLIP. 1,419 questions are
-  // loaded and PRIVATE; the keys are measured (124 rows blind-scored, 0 wrong
-  // keys — scripts/ipmat/data/derive/KEY_TRUST.md) but nothing is student-
-  // visible yet. Removing the flag IS the launch step, and
-  // tests/exam-registry-content fails the moment the flag and the bank
-  // disagree in either direction.
+  // LIVE since 2026-09-24 — all 1,419 rows are PUBLIC. The keys are afterboards'
+  // third-party derivation (IIM publishes none), measured at 124 rows blind-scored
+  // across all three subjects with 0 wrong keys, rate bounded under ~2.4% at 95%:
+  // scripts/ipmat/data/derive/KEY_TRUST.md. Every row carries a `derived_model`
+  // stamp recording that provenance, which scripts/ipmat/flip-public.ts refuses to
+  // publish without.
   //
   // Order here is the order students see: Indore is the flagship.
   {
@@ -461,16 +461,15 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     family: "IPMAT",
     familyLabel: "Indore",
     familyAxis: "Institute", // the picker chooses between IIMs, not classes
-    noPublicContent: true, // 670 loaded, 0 PUBLIC — remove at the flip
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: null, // no notes yet — falls back to the /notes index
     // NOT practiceOnly: this is a real past-year corpus (question_kind='pyq').
     // NOT boardExam: an entrance exam with no textbook layer.
-    // NO mixedFormats YET — the flag describes the PUBLIC corpus and the PUBLIC
-    // corpus is empty, which is what tests/format-mix-registry requires (see the
-    // isc-12 entry, where setting it from the papers failed that suite). Indore
-    // WILL earn it: 148 of its rows are `numeric` short-answer. Set it at the
-    // flip, from a live count.
+    mixedFormats: true, // SET AT THE FLIP FROM A LIVE COUNT (2026-09-24): 522 mcq
+    // + 148 numeric (the Short Answer section), all now PUBLIC. Deliberately not
+    // set earlier from the PAPERS — the flag describes the PUBLIC corpus, and
+    // setting it while that corpus was empty is what failed the contract suite on
+    // the isc-12 entry.
   },
   {
     slug: "ipmat-rohtak",
@@ -479,7 +478,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     family: "IPMAT",
     familyLabel: "Rohtak",
     familyAxis: "Institute", // the picker chooses between IIMs, not classes
-    noPublicContent: true, // 172 loaded, 0 PUBLIC — remove at the flip
+    // NO mixedFormats: measured at the flip — all 172 PUBLIC rows are mcq.
     guidesPath: null,
     notesPath: null,
   },
@@ -493,7 +492,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     family: "IPMAT",
     familyLabel: "Jammu",
     familyAxis: "Institute", // the picker chooses between IIMs, not classes
-    noPublicContent: true, // 577 loaded, 0 PUBLIC — remove at the flip
+    // NO mixedFormats: measured at the flip — all 577 PUBLIC rows are mcq.
     guidesPath: null,
     notesPath: null,
   },

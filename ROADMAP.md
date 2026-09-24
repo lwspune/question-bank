@@ -287,20 +287,35 @@ along. Filtering `listExams()` would fix all four at once but removes the delibe
 fail-open behaviour that stops a newly-ingested exam vanishing from every picker, so it was
 left alone.
 
-### 3. Then, and only then — THE ONLY REMAINING WORK (all outward-facing)
+### 3. ~~Then, and only then~~ — SHIPPED 2026-09-24. IPMAT IS LIVE.
 
-Steps 1, 1b, 1c and 2 are done. Everything below puts content in front of students, so it is
-**deliberately left for a human to trigger.**
+**1,419 questions PUBLIC across three exams; five timed Indore mocks published.** Bank
+72,426 → 78,774 across 16 live exams. See the 2026-09-24 (fourth) Decisions entry.
 
-- Flip PUBLIC **per chapter**, not in one sweep. This is also the step that removes
-  `noPublicContent` from the three registry entries and sets `mixedFormats: true` on
-  `ipmat-indore` from a live count — `tests/exam-registry-content` fails until the flag and
-  the bank agree, in either direction.
-- `/mock`: see step 1c — real sittings served whole, 14 of 16 servable, three blockers.
-- Update the `/browse` Hero "Coming soon" copy — IPMAT is no longer coming.
-- `npm run stats` and `npm run seo:dates`, and commit the generated file.
+Two things the plan did not list, both now permanent parts of this lane:
+
+- **`stamp-provenance.ts` is a PREREQUISITE of the flip, not an afterthought.** Every key is
+  afterboards' third-party derivation, and `flip-public.ts` REFUSES an unstamped row.
+- **`publish.ts` + `tests/ipmat-publish`** hold the ship rule, because the cancelled 2024
+  MCQ Q7 forced it past "has an answer": the mock needs that row PUBLIC to reconstruct at 90,
+  but "unkeyed ⇒ publish" cannot tell a cancelled question from a missing key, so the
+  allowance keys on the sitting registry's DECLARED grace list.
+
+~~Flip PUBLIC per chapter~~ — done, 114 chapters. `noPublicContent` removed from all three;
+`mixedFormats: true` on `ipmat-indore` only, set from a live count (522 mcq + 148 numeric).
+- ~~`/mock`~~ — the five Indore 2022-26 sittings are published (90q / 360m / 120min, 2024
+  carrying its grace question, Short Answer correctly carrying no negative marking).
+- ~~Update the `/browse` Hero "Coming soon" copy~~ — **NO-OP: no such copy exists.** Grep found
+  no IPMAT or CUET mention in any user-facing string; the only "Coming soon" strings are the
+  homepage's per-exam guide/notes placeholders. Recorded rather than invented into a change.
+- ~~`npm run stats` and `npm run seo:dates`~~ — done and committed.
 - 4 declared exclusions and 15 reconstructed rows stay held back; re-read
   `scripts/ipmat/README.md` before assuming any of them became shippable.
+
+**What is still NOT built** (unchanged by the launch): JIPMAT mocks (its own blueprint — 150
+min, no sectional limit, 4 of 6 sittings servable), Rohtak mocks (its two loaded sittings
+predate the current 120-question pattern), and the per-section timer, so Indore ships on one
+120-minute clock — scores are exact, only time management is easier than the real exam.
 
 ---
 

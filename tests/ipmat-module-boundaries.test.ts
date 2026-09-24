@@ -40,10 +40,16 @@ const CLI_MODULES = [
   "verify-load.ts",
   "remap-taxonomy.ts",
   "mock-smoke.ts",
+  "stamp-provenance.ts",
+  "flip-public.ts",
 ];
 
 /** Modules that are pure: importable, no top-level effect. */
-const PURE_MODULES = ["config.ts", "flight.ts", "normalise.ts", "taxonomy.ts", "derive.ts", "hash.ts"];
+const PURE_MODULES = ["config.ts", "flight.ts", "normalise.ts", "taxonomy.ts", "derive.ts", "hash.ts",
+  // The PUBLISH decision. Pure on purpose: it gates what students can see, so
+  // it is spec'd in tests/ipmat-publish rather than living inside flip-public.ts,
+  // which runs once and cannot be asserted against.
+  "publish.ts"];
 
 function tsFiles(): string[] {
   return readdirSync(DIR).filter((f) => f.endsWith(".ts"));
