@@ -26,7 +26,10 @@ export type ExamSlug =
   | "mh-sb-9"
   | "mh-sb-11"
   | "mh-ssc-10"
-  | "worksheets-11-12";
+  | "worksheets-11-12"
+  | "ipmat-indore"
+  | "ipmat-rohtak"
+  | "jipmat";
 
 /**
  * School boards the bank carries content for. NOT every exam has one — a
@@ -87,6 +90,57 @@ export type ExamEntry = {
    * active and so can never strand a viewer with an invisible narrowing.
    */
   mixedFormats?: boolean;
+  /**
+   * This exam has NO PUBLIC questions — it is ingested-but-private, or not yet
+   * ingested at all. It is kept in the registry (so its routes, flags and
+   * grouping are declared in one place and the launch is a one-line edit), but
+   * it must NOT be offered to a student as a target exam: that choice is
+   * persisted to `student_profiles.target_exams` and then steers `/drill`, the
+   * mock recommendations and the report email, so picking an empty exam sets a
+   * target that resolves to nothing everywhere, with no error to explain it.
+   *
+   * A LIVE DEFECT, NOT A PRECAUTION: `isc-12` shipped here and rendered as a
+   * chip on /welcome + /account while its `examName` resolved to no `exams` row
+   * at all. The flag is what removes that chip.
+   *
+   * HAND-DECLARED, like `mixedFormats` above and for the same reason — the chip
+   * list is a module-level const built from static TS, with no request in which
+   * to count rows. A declared fact rots, so `tests/exam-registry-content` is
+   * the standing probe: it re-measures this against the live bank on every
+   * prod-contract run and fails in BOTH directions (flag stale after a PUBLIC
+   * flip; flag missing on an exam that has quietly emptied).
+   *
+   * NOT the same thing as being absent from the registry. `UPSC CSE (Prelims)`
+   * is deliberately not here at all, because none of it will ever be
+   * student-visible; this flag is for an exam that is on its way in.
+   */
+  noPublicContent?: boolean;
+  /**
+   * A NON-BOARD presentation family — the generic sibling of `board`+`std`.
+   *
+   * IPMAT is three separate exams (Indore, Rohtak, Jammu) that a student thinks
+   * of as one thing, exactly as CBSE 11/12 are. But they are neither a board
+   * nor a class, so they cannot use `board`+`std`, and overloading `board` to
+   * carry "IPMAT" would make that field lie for every non-board family after.
+   *
+   * Declare `family`+`familyLabel` together; an entry that declares only one
+   * falls through to a flat picker entry rather than forming a broken family.
+   * Members order by their position in this registry, since there is no class
+   * number to sort on — so the order below IS the order students see.
+   */
+  family?: string;
+  /** This exam's label inside its `family` ("Indore"). See `family`. */
+  familyLabel?: string;
+  /**
+   * The NOUN for the control that picks between this family's members
+   * ("Institute"). It describes the family, so every member declares the same
+   * value. Board families omit it and default to "Class".
+   *
+   * It exists because that control's label was hardcoded "Class" — true while
+   * every family was a school ladder, and a lying label the moment one wasn't:
+   * IPMAT's members are institutes, so "Class → Indore" would be wrong.
+   */
+  familyAxis?: string;
   /**
    * The board+class this exam IS. The `exams` table conflates the two into one
    * row ("Maharashtra State Board Class 10"), so this registry is the ONLY place
@@ -317,6 +371,13 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // SET IT AT THE FIRST INGEST, from a live count, not from the papers — the
     // cbse-11 entry records what happens when it is set from one subject and
     // then treated as a permanent property of the exam.
+    //
+    // ⚠ NOTHING IS INGESTED — not one row, and `examName` resolves to NO `exams`
+    // row at all (the corpus is PAUSED; see the ISC ingestion notes). Until that
+    // changes this exam must not be offered as a student target: it shipped as a
+    // live chip on /welcome + /account pointing at an exam that exists nowhere.
+    // Remove the flag at the first PUBLIC row, not at the first ingest.
+    noPublicContent: true,
     board: "CISCE",
     std: 12,
     // A CISCE family of one degrades to a flat picker entry (groupExamFamilies
@@ -377,6 +438,64 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     notesPath: "/notes/worksheets-11-12", // exam hub: "coming soon" until notes ship
     practiceOnly: true, // Cadetprep concept-practice worksheets → /browse defaults to Practice
     // NOT boardExam: worksheet content isn't textbook-sectioned, so no /board reader.
+  },
+  // ── IPMAT ─────────────────────────────────────────────────────────────────
+  // Three separate `exams` rows grouped into ONE picker entry, exactly as CBSE
+  // is cbse-10/11/12 — the DB half of that pattern shipped with the ingest, and
+  // this is the picker half. They are siblings a student thinks of as one exam
+  // but they are neither a board nor a class, which is why they group on
+  // `family` rather than `board`+`std`.
+  //
+  // ALL THREE ARE `noPublicContent` UNTIL THE PUBLIC FLIP. 1,419 questions are
+  // loaded and PRIVATE; the keys are measured (124 rows blind-scored, 0 wrong
+  // keys — scripts/ipmat/data/derive/KEY_TRUST.md) but nothing is student-
+  // visible yet. Removing the flag IS the launch step, and
+  // tests/exam-registry-content fails the moment the flag and the bank
+  // disagree in either direction.
+  //
+  // Order here is the order students see: Indore is the flagship.
+  {
+    slug: "ipmat-indore",
+    displayName: "IPMAT Indore",
+    examName: "IPMAT Indore", // must match the `exams` DB row exactly
+    family: "IPMAT",
+    familyLabel: "Indore",
+    familyAxis: "Institute", // the picker chooses between IIMs, not classes
+    noPublicContent: true, // 670 loaded, 0 PUBLIC — remove at the flip
+    guidesPath: null, // no /guide subtree yet — falls back to the index
+    notesPath: null, // no notes yet — falls back to the /notes index
+    // NOT practiceOnly: this is a real past-year corpus (question_kind='pyq').
+    // NOT boardExam: an entrance exam with no textbook layer.
+    // NO mixedFormats YET — the flag describes the PUBLIC corpus and the PUBLIC
+    // corpus is empty, which is what tests/format-mix-registry requires (see the
+    // isc-12 entry, where setting it from the papers failed that suite). Indore
+    // WILL earn it: 148 of its rows are `numeric` short-answer. Set it at the
+    // flip, from a live count.
+  },
+  {
+    slug: "ipmat-rohtak",
+    displayName: "IPMAT Rohtak",
+    examName: "IPMAT Rohtak", // must match the `exams` DB row exactly
+    family: "IPMAT",
+    familyLabel: "Rohtak",
+    familyAxis: "Institute", // the picker chooses between IIMs, not classes
+    noPublicContent: true, // 172 loaded, 0 PUBLIC — remove at the flip
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "jipmat",
+    displayName: "JIPMAT",
+    // The exam is "JIPMAT", not "IPMAT Jammu" — the joint Bodh Gaya/Jammu paper
+    // has its own name, and the `exams` row uses it. Only its label INSIDE the
+    // family is "Jammu", so the picker reads Indore / Rohtak / Jammu.
+    examName: "JIPMAT", // must match the `exams` DB row exactly
+    family: "IPMAT",
+    familyLabel: "Jammu",
+    familyAxis: "Institute", // the picker chooses between IIMs, not classes
+    noPublicContent: true, // 577 loaded, 0 PUBLIC — remove at the flip
+    guidesPath: null,
+    notesPath: null,
   },
 ] as const;
 

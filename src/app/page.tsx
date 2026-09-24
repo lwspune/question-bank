@@ -255,14 +255,14 @@ export default async function Home() {
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {examNodes.map((node) => {
               if (node.kind === "family") {
-                const meta = FAMILY_META[node.board] ?? DEFAULT_EXAM_META;
+                const meta = FAMILY_META[node.key] ?? DEFAULT_EXAM_META;
                 const Icon = meta.Icon;
                 // Summed from THIS surface's own numbers (total PUBLIC). The
                 // /browse pills sum a different count for the same families —
                 // see familyTotal.
                 const total = familyTotal(node, (e) => e.totalPublicQuestions);
                 return (
-                  <li key={node.board}>
+                  <li key={node.key}>
                     <div className="flex h-full flex-col rounded-lg border bg-card p-4">
                       <div className="mb-2 flex items-center gap-3">
                         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
@@ -283,7 +283,7 @@ export default async function Home() {
                         {meta.blurb}
                       </p>
                       <ul className="mt-3 flex flex-wrap gap-1.5">
-                        {node.classes.map((cls) => (
+                        {node.members.map((cls) => (
                           <li key={cls.item.slug}>
                             <Link
                               href={cls.item.href}

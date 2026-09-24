@@ -57,9 +57,9 @@ export default function BoardIndex() {
         <div className="space-y-8">
           {nodes.map((node) => {
             if (node.kind === "family") {
-              const headingId = `board-${node.board.toLowerCase().replace(/\s+/g, "-")}`;
+              const headingId = `board-${node.key.toLowerCase().replace(/\s+/g, "-")}`;
               return (
-                <section key={node.board} aria-labelledby={headingId}>
+                <section key={node.key} aria-labelledby={headingId}>
                   <h2
                     id={headingId}
                     className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground"
@@ -67,7 +67,7 @@ export default function BoardIndex() {
                     {node.label}
                   </h2>
                   <ul className="grid gap-3">
-                    {node.classes.map((cls) => (
+                    {node.members.map((cls) => (
                       <li key={cls.item.slug}>
                         <BoardLink
                           href={`/board/${cls.item.slug}`}

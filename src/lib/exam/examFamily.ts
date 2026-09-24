@@ -25,42 +25,96 @@
  * so the ordering and degeneracy rules are tested once (tests/exam-family)
  * instead of being re-implemented per surface.
  */
-import type { Board, ExamEntry, Std } from "@/lib/exam/examContext";
+import { EXAM_REGISTRY, type Board, type ExamEntry } from "@/lib/exam/examContext";
 
-export type ExamFamilyClass<T> = {
-  std: Std;
-  /** `classLabel` from the registry, else the derived `Class <std>`. */
+export type ExamFamilyMember<T> = {
+  /**
+   * Sort position WITHIN the family. A board family uses the class number, so
+   * the order is the one a student reads off a school ladder. A non-board
+   * family has no such number, so it uses the member's position in the
+   * registry — see rule 3 in `groupExamFamilies`.
+   */
+  order: number;
+  /** `familyLabel`/`classLabel` from the registry, else the derived `Class <std>`. */
   label: string;
   item: T;
 };
 
 export type ExamFamilyNode<T> =
   | { kind: "flat"; item: T; entry: ExamEntry | null }
-  | { kind: "family"; board: Board; label: string; classes: ExamFamilyClass<T>[] };
+  | {
+      kind: "family";
+      /**
+       * The grouping key: a `Board` name for a board family, or the registry's
+       * `family` string ("IPMAT") for a non-board one. Deliberately `string`
+       * and NOT `Board` — IPMAT Indore / Rohtak / Jammu are siblings that are
+       * neither a board nor a class, and overloading `board` to carry them
+       * would make the type lie about every non-board family that follows.
+       */
+      key: string;
+      label: string;
+      /**
+       * The noun for the control that chooses between `members` — "Class" for a
+       * board family, the registry's `familyAxis` otherwise. Rendered as that
+       * control's label, so a wrong value here is a lying control.
+       */
+      memberAxis: string;
+      members: ExamFamilyMember<T>[];
+    };
 
 /** Resolves one of a caller's rows to its registry entry, or null if unknown. */
 export type ExamResolver<T> = (item: T) => ExamEntry | null;
 
-/** The label a class carries inside its family. Derived unless overridden. */
+/**
+ * The family an entry belongs to, or null when it is not in one.
+ *
+ * Reads BOTH declarations rather than trusting one: `board`+`std` (a school
+ * ladder) and `family`+`familyLabel` (anything else). An entry declaring
+ * neither, or a half-declared one, falls through to a flat node — it must not
+ * crash or produce a family keyed on undefined.
+ */
+function familyOf(
+  entry: ExamEntry | null
+): { key: string; label: string; memberAxis: string } | null {
+  if (!entry) return null;
+  if (entry.family)
+    return {
+      key: entry.family,
+      label: entry.family,
+      // "Exam" rather than throwing: a family that forgot to declare its axis
+      // should render a generic-but-true label, not break the picker.
+      memberAxis: entry.familyAxis ?? "Exam",
+    };
+  if (entry.board && entry.std)
+    return { key: entry.board, label: entry.board, memberAxis: "Class" };
+  return null;
+}
+
+/** The label a member carries inside its family. Derived unless overridden. */
 export function classLabelFor(entry: ExamEntry): string {
-  return entry.classLabel ?? `Class ${entry.std}`;
+  return entry.familyLabel ?? entry.classLabel ?? `Class ${entry.std}`;
 }
 
 /**
  * A family's value in a <Select>, namespaced so it can never be mistaken for an
  * exam UUID (which is what the same control's other options carry) nor for the
  * "__ALL__" sentinel.
+ *
+ * The prefix is `family:` rather than the original `board:` now that a family
+ * need not be a board. Safe to rename because this value is never persisted
+ * and never enters a URL: FilterBar computes it at render and maps it straight
+ * to an `examId` on change.
  */
-export function familyKey(board: Board | string): string {
-  return `board:${board}`;
+export function familyKey(key: Board | string): string {
+  return `family:${key}`;
 }
 
 export function isFamilyKey(value: string | null | undefined): boolean {
-  return typeof value === "string" && value.startsWith("board:");
+  return typeof value === "string" && value.startsWith("family:");
 }
 
 export function boardFromFamilyKey(value: string): string {
-  return value.slice("board:".length);
+  return value.slice("family:".length);
 }
 
 /**
@@ -80,50 +134,71 @@ export function boardFromFamilyKey(value: string): string {
  *    drop any exam with zero questions in the default view, so a family can
  *    arrive here having lost every sibling but one.
  *
- * 3. POSITION IS THE FIRST MEMBER'S; CLASSES SORT NUMERICALLY. Each surface
+ * 3. POSITION IS THE FIRST MEMBER'S; MEMBERS SORT BY `order`. Each surface
  *    keeps whatever top-level order it has today (the dropdown DB-alphabetical,
  *    cards and pills in registry order) with the family sitting where its first
  *    member sat — so the only ordering that actually changes is within a
  *    family, which is the defect being fixed.
+ *
+ *    `order` is the CLASS NUMBER for a board family. A non-board family has no
+ *    class number, so it uses the member's index in EXAM_REGISTRY: the registry
+ *    is the one place that declares a deliberate sibling order, and taking it
+ *    from the caller's array instead would let two surfaces that pass the same
+ *    exams in different orders disagree about the family's internal order.
  */
 export function groupExamFamilies<T>(
   items: readonly T[],
   resolve: ExamResolver<T>
 ): ExamFamilyNode<T>[] {
-  const membersByBoard = new Map<Board, ExamFamilyClass<T>[]>();
+  const membersByKey = new Map<string, ExamFamilyMember<T>[]>();
   const entryOf = new Map<T, ExamEntry | null>();
+  const familyByItem = new Map<
+    T,
+    { key: string; label: string; memberAxis: string } | null
+  >();
+  const registryIndex = new Map<string, number>(
+    EXAM_REGISTRY.map((e, i) => [e.slug, i])
+  );
 
   for (const item of items) {
     const entry = resolve(item);
     entryOf.set(item, entry);
-    // `board` and `std` are declared together or not at all (asserted in
-    // tests/exam-context), but this reads both rather than trusting one: a
-    // half-declared entry must fall through to flat, not crash or produce a
-    // family keyed on undefined.
-    if (!entry?.board || !entry.std) continue;
-    const bucket = membersByBoard.get(entry.board) ?? [];
-    bucket.push({ std: entry.std, label: classLabelFor(entry), item });
-    membersByBoard.set(entry.board, bucket);
+    const family = familyOf(entry);
+    familyByItem.set(item, family);
+    if (!family || !entry) continue;
+    const bucket = membersByKey.get(family.key) ?? [];
+    bucket.push({
+      order: entry.std ?? registryIndex.get(entry.slug) ?? Number.MAX_SAFE_INTEGER,
+      label: classLabelFor(entry),
+      item,
+    });
+    membersByKey.set(family.key, bucket);
   }
 
-  // Rule 2 — a board that ended up with one member is not a family.
-  for (const [board, members] of membersByBoard) {
-    if (members.length < 2) membersByBoard.delete(board);
+  // Rule 2 — a key that ended up with one member is not a family.
+  for (const [key, members] of membersByKey) {
+    if (members.length < 2) membersByKey.delete(key);
   }
 
   const nodes: ExamFamilyNode<T>[] = [];
-  const emitted = new Set<Board>();
+  const emitted = new Set<string>();
 
   for (const item of items) {
     const entry = entryOf.get(item) ?? null;
-    const board = entry?.board;
-    if (board && membersByBoard.has(board)) {
+    const family = familyByItem.get(item) ?? null;
+    if (family && membersByKey.has(family.key)) {
       // Rule 3 — the family takes the position of its first member; later
       // members are absorbed rather than emitted again.
-      if (emitted.has(board)) continue;
-      emitted.add(board);
-      const classes = [...membersByBoard.get(board)!].sort((a, b) => a.std - b.std);
-      nodes.push({ kind: "family", board, label: board, classes });
+      if (emitted.has(family.key)) continue;
+      emitted.add(family.key);
+      const members = [...membersByKey.get(family.key)!].sort((a, b) => a.order - b.order);
+      nodes.push({
+        kind: "family",
+        key: family.key,
+        label: family.label,
+        memberAxis: family.memberAxis,
+        members,
+      });
       continue;
     }
     nodes.push({ kind: "flat", item, entry });
@@ -146,11 +221,11 @@ export function familyDefaultValue<T>(
   node: Extract<ExamFamilyNode<T>, { kind: "family" }>,
   valueOf: (item: T) => string
 ): string {
-  return valueOf(node.classes[0].item);
+  return valueOf(node.members[0].item);
 }
 
 /**
- * Sum a family's classes for a card or pill headline.
+ * Sum a family's members for a card or pill headline.
  *
  * `countOf` is a parameter rather than a fixed field ON PURPOSE — the two
  * surfaces that show a count do NOT count the same thing, and conflating them
@@ -164,16 +239,18 @@ export function familyTotal<T>(
   node: Extract<ExamFamilyNode<T>, { kind: "family" }>,
   countOf: (item: T) => number
 ): number {
-  return node.classes.reduce((sum, c) => sum + countOf(c.item), 0);
+  return node.members.reduce((sum, c) => sum + countOf(c.item), 0);
 }
 
 export type FamilySelection = {
   /** Value for the top-level control: a family key, an exam value, or null. */
   topValue: string | null;
-  /** Value for the Class control; null when the selection is not in a family. */
+  /** Value for the member control; null when the selection is not in a family. */
   classValue: string | null;
-  /** Options for the Class control; empty when there is no family selected. */
-  classes: { std: Std; label: string; value: string }[];
+  /** Options for the member control; empty when there is no family selected. */
+  members: { order: number; label: string; value: string }[];
+  /** Noun for the member control ("Class"); null when no family is selected. */
+  memberAxis: string | null;
 };
 
 /**
@@ -192,26 +269,37 @@ export function resolveFamilySelection<T>(
   selectedValue: string | null,
   valueOf: (item: T) => string
 ): FamilySelection {
-  const none: FamilySelection = { topValue: null, classValue: null, classes: [] };
+  const none: FamilySelection = {
+    topValue: null,
+    classValue: null,
+    members: [],
+    memberAxis: null,
+  };
   if (!selectedValue) return none;
 
   for (const node of nodes) {
     if (node.kind === "flat") {
       if (valueOf(node.item) === selectedValue) {
-        return { topValue: selectedValue, classValue: null, classes: [] };
+        return {
+          topValue: selectedValue,
+          classValue: null,
+          members: [],
+          memberAxis: null,
+        };
       }
       continue;
     }
-    const classes = node.classes.map((c) => ({
-      std: c.std,
+    const members = node.members.map((c) => ({
+      order: c.order,
       label: c.label,
       value: valueOf(c.item),
     }));
-    if (classes.some((c) => c.value === selectedValue)) {
+    if (members.some((c) => c.value === selectedValue)) {
       return {
-        topValue: familyKey(node.board),
+        topValue: familyKey(node.key),
         classValue: selectedValue,
-        classes,
+        members,
+        memberAxis: node.memberAxis,
       };
     }
   }
@@ -219,18 +307,18 @@ export function resolveFamilySelection<T>(
   return none;
 }
 
-/** The class options for a family key, for rendering the Class control. */
+/** The member options for a family key, for rendering the second control. */
 export function classesForFamilyKey<T>(
   nodes: readonly ExamFamilyNode<T>[],
   key: string | null,
   valueOf: (item: T) => string
-): { std: Std; label: string; value: string }[] {
+): { order: number; label: string; value: string }[] {
   if (!key || !isFamilyKey(key)) return [];
-  const board = boardFromFamilyKey(key);
-  const node = nodes.find((n) => n.kind === "family" && n.board === board);
+  const wanted = boardFromFamilyKey(key);
+  const node = nodes.find((n) => n.kind === "family" && n.key === wanted);
   if (!node || node.kind !== "family") return [];
-  return node.classes.map((c) => ({
-    std: c.std,
+  return node.members.map((c) => ({
+    order: c.order,
     label: c.label,
     value: valueOf(c.item),
   }));

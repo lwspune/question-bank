@@ -169,7 +169,7 @@ export default function FilterBar({
     // is per-exam, so "Mathematics" is four distinct subject rows across the
     // Maharashtra exams — and leaving examId null here would show the whole
     // bank under a trigger reading "Maharashtra State Board".
-    const node = examNodes.find((n) => n.kind === "family" && familyKey(n.board) === value);
+    const node = examNodes.find((n) => n.kind === "family" && familyKey(n.key) === value);
     if (node?.kind === "family") update({ examId: familyDefaultValue(node, (e) => e.id) });
   }
 
@@ -288,7 +288,7 @@ export default function FilterBar({
                   {node.item.name}
                 </SelectItem>
               ) : (
-                <SelectItem key={node.board} value={familyKey(node.board)}>
+                <SelectItem key={node.key} value={familyKey(node.key)}>
                   {node.label}
                 </SelectItem>
               )
@@ -297,23 +297,31 @@ export default function FilterBar({
         </Select>
       </div>
     ),
-    // Rendered ONLY while a board family is selected — see the `order` filter
-    // below. Deliberately not a permanently-disabled control like Subject:
-    // Subject applies to every exam, whereas a class applies to two of the nine
-    // top-level entries, so a dead "Class" row on NDA would re-add exactly the
-    // clutter this grouping removes.
+    // Rendered ONLY while a family is selected — see the `order` filter below.
+    // Deliberately not a permanently-disabled control like Subject: Subject
+    // applies to every exam, whereas this axis applies to a few of the
+    // top-level entries, so a dead row on NDA would re-add exactly the clutter
+    // this grouping removes.
+    //
+    // The LABEL comes from the family, not from here. It was hardcoded "Class",
+    // which was true while every family was a school ladder and became a lying
+    // control the moment IPMAT arrived — its members are institutes.
     examClass: (
       <div className="space-y-1.5">
-        <Label htmlFor="exam-class">Class</Label>
+        <Label htmlFor="exam-class">{examSelection.memberAxis ?? "Class"}</Label>
         <Select
           value={examSelection.classValue ?? undefined}
           onValueChange={(v) => update({ examId: v })}
         >
           <SelectTrigger id="exam-class">
-            <SelectValue placeholder="Pick a class" />
+            <SelectValue
+              placeholder={`Pick a${
+                /^[AEIOU]/.test(examSelection.memberAxis ?? "Class") ? "n" : ""
+              } ${(examSelection.memberAxis ?? "Class").toLowerCase()}`}
+            />
           </SelectTrigger>
           <SelectContent>
-            {examSelection.classes.map((c) => (
+            {examSelection.members.map((c) => (
               <SelectItem key={c.value} value={c.value}>
                 {c.label}
               </SelectItem>
@@ -525,7 +533,7 @@ export default function FilterBar({
     (k) =>
       (k !== "fit" || isFitExam(filters.examId)) &&
       (k !== "format" || showFormat) &&
-      (k !== "examClass" || examSelection.classes.length > 0)
+      (k !== "examClass" || examSelection.members.length > 0)
   );
 
   return (

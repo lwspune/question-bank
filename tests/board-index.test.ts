@@ -5,7 +5,7 @@ import { boardIndexNodes } from "@/lib/board/examIndex";
 /** Every slug the /board index would link to, families flattened. */
 function listedSlugs() {
   return boardIndexNodes().flatMap((n) =>
-    n.kind === "family" ? n.classes.map((c) => c.item.slug) : [n.item.slug]
+    n.kind === "family" ? n.members.map((c) => c.item.slug) : [n.item.slug]
   );
 }
 
@@ -30,7 +30,7 @@ describe("the /board index", () => {
   it("orders each board's classes by ascending std", () => {
     for (const node of boardIndexNodes()) {
       if (node.kind !== "family") continue;
-      const stds = node.classes.map((c) => c.std);
+      const stds = node.members.map((c) => c.order);
       expect(stds).toEqual([...stds].sort((a, b) => a - b));
     }
   });
@@ -41,7 +41,7 @@ describe("the /board index", () => {
     const mh = boardIndexNodes().find((n) => n.kind === "family" && n.label === "Maharashtra State Board");
     expect(mh?.kind).toBe("family");
     if (mh?.kind !== "family") return;
-    expect(mh.classes.map((c) => c.label)).toEqual([
+    expect(mh.members.map((c) => c.label)).toEqual([
       "Class 9",
       "Class 10 (SSC)",
       "Class 11",
@@ -64,9 +64,12 @@ describe("the /board index", () => {
   it("keeps every class pointing at its own exam", () => {
     for (const node of boardIndexNodes()) {
       if (node.kind !== "family") continue;
-      for (const cls of node.classes) {
+      for (const cls of node.members) {
         expect(cls.item.boardExam).toBe(true);
-        expect(cls.item.std).toBe(cls.std);
+        // For a BOARD family the member's sort `order` is its class number.
+        // (A non-board family orders by registry position instead — /board only
+        // ever groups board exams, so that case cannot arise here.)
+        expect(cls.item.std).toBe(cls.order);
       }
     }
   });

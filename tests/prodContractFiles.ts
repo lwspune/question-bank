@@ -21,6 +21,7 @@ export const PROD_CONTRACT_FILES: string[] = [
   "tests/all-exam-stats.test.ts",
   "tests/go-routes.test.ts", // /go/* name-mode redirects resolve live NDA taxonomy
   "tests/format-mix-registry.test.ts", // EXAM_REGISTRY.mixedFormats vs the live corpus
+  "tests/exam-registry-content.test.ts", // EXAM_REGISTRY.noPublicContent vs live PUBLIC counts
   "tests/mocks-registry.test.ts", // EXAM_REGISTRY.hasMocks vs live mock_tests
   "tests/books-registry.test.ts", // book registry chapter/subject names vs live taxonomy
   "tests/planner-data.test.ts", // session-plan section refs vs the live syllabus spine
