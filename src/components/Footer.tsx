@@ -1,22 +1,29 @@
 import Link from "next/link";
-import { Atom, BookOpen, Compass, FlaskConical, Globe, Landmark, Languages, Leaf, Library, Lightbulb, ListTree, Mail, Newspaper, NotebookPen, PenLine, Scale, Sigma, Timer, TrendingUp } from "lucide-react";
-import { CONTACT_EMAIL } from "@/lib/brand";
+import { footerLinks } from "@/lib/nav/footerLinks";
 
-const REPORT_EMAIL = CONTACT_EMAIL;
-
+/**
+ * Site-wide footer: a tagline, then four short link columns.
+ *
+ * Rendered from `footerLinks()` (pure) rather than hand-typed JSX — the
+ * previous version was 23 links in one flat wrap and had fallen two /notes
+ * hubs behind the registry. The Guides and Notes columns derive from the
+ * registries, so a new exam's hub appears here without a footer edit.
+ *
+ * Sits in the cached shell: no cookies, no session — one `cookies()` read
+ * here would de-cache every page on the site (see CLAUDE.md).
+ */
 export default function Footer() {
+  const groups = footerLinks();
   return (
     <footer className="mt-16 border-t bg-background">
-      <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto max-w-7xl px-6 py-8 text-xs text-muted-foreground">
         {/*
           "free for teachers" until 2026-08-22 — and this renders on EVERY page,
           including the anon browse and landing surfaces that are the whole SEO
           funnel. It excluded the 95% of accounts that are students, and it was
           backwards on its own terms: browsing is what is free to everyone,
-          while the Word download is the TEACHER-gated capability. Phrasing
-          matches the /browse hero's stat band rather than coining a new one.
-        */}
-        {/*
+          while the Word download is the TEACHER-gated capability.
+
           Names a person on every page. This line read "From the team at PYQ
           Vault" until 2026-09-16, which is what a site with no team says — and
           nothing else on the public site named a human at all. See /about.
@@ -28,183 +35,42 @@ export default function Footer() {
           </Link>
           . Free to browse, forever.
         </p>
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-          {/*
-            CONTENT SURFACES FIRST, and they are here for CRAWLING as much as for
-            readers. The footer renders on every page, so a link here is seen on
-            every HTML fetch Google makes — which mattered because on 2026-09-17
-            Search Console reported 12 of 1,474 pages indexed, 1,424 of them
-            "Discovered - currently not indexed", against a crawl budget of ~4
-            HTML pages and ~0.41 discovery requests per day.
 
-            /questions leads deliberately: its index links all ~631 chapter
-            landings, so this one line moves every one of them from three clicks
-            deep (reachable only via BrowseLanding.tsx, behind a dynamic
-            uncacheable /browse) to two. Those pages exist for discovery and
-            drew 41 impressions in seven weeks; /mock and /board drew one each.
-
-            Guarded by tests/crawl-entry-points.test.ts — re-orphaning a surface
-            fails nothing else in the gate and shows up months later as an
-            absence in a report nobody diffs.
-          */}
-          <Link
-            href="/browse"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <Compass className="h-3 w-3" aria-hidden />
-            Question bank
-          </Link>
-          <Link
-            href="/questions"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <ListTree className="h-3 w-3" aria-hidden />
-            Questions by chapter
-          </Link>
-          <Link
-            href="/mock"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <Timer className="h-3 w-3" aria-hidden />
-            Mock tests
-          </Link>
-          <Link
-            href="/board"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <Library className="h-3 w-3" aria-hidden />
-            Board textbook reader
-          </Link>
-          <Link
-            href="/guide/nda-maths"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <BookOpen className="h-3 w-3" aria-hidden />
-            NDA Maths Guide
-          </Link>
-          <Link
-            href="/guide/nda-english"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <Languages className="h-3 w-3" aria-hidden />
-            NDA English Guide
-          </Link>
-          <Link
-            href="/guide/nda-physics"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <Atom className="h-3 w-3" aria-hidden />
-            NDA Physics Guide
-          </Link>
-          <Link
-            href="/guide/nda-chemistry"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <FlaskConical className="h-3 w-3" aria-hidden />
-            NDA Chemistry Guide
-          </Link>
-          <Link
-            href="/guide/nda-biology"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <Leaf className="h-3 w-3" aria-hidden />
-            NDA Biology Guide
-          </Link>
-          <Link
-            href="/guide/nda-geography"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <Globe className="h-3 w-3" aria-hidden />
-            NDA Geography Guide
-          </Link>
-          <Link
-            href="/guide/nda-history"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <Landmark className="h-3 w-3" aria-hidden />
-            NDA History Guide
-          </Link>
-          <Link
-            href="/guide/nda-polity"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <Scale className="h-3 w-3" aria-hidden />
-            NDA Polity Guide
-          </Link>
-          <Link
-            href="/guide/nda-economics"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <TrendingUp className="h-3 w-3" aria-hidden />
-            NDA Economics Guide
-          </Link>
-          <Link
-            href="/guide/nda-current-affairs"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <Newspaper className="h-3 w-3" aria-hidden />
-            NDA Current Affairs Guide
-          </Link>
-          <Link
-            href="/guide/mht-cet-maths"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <Sigma className="h-3 w-3" aria-hidden />
-            MHT-CET Maths Guide
-          </Link>
-          <Link
-            href="/notes/nda"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <NotebookPen className="h-3 w-3" aria-hidden />
-            NDA Notes
-          </Link>
-          <Link
-            href="/notes/mht-cet"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <NotebookPen className="h-3 w-3" aria-hidden />
-            MHT-CET Notes
-          </Link>
-          <Link
-            href="/formula"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <Sigma className="h-3 w-3" aria-hidden />
-            Questions by formula
-          </Link>
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <PenLine className="h-3 w-3" aria-hidden />
-            Blog
-          </Link>
-          {/* The one page that says what the product is for. On every page so
-              an anon phone reader (no account menu) can find it too. */}
-          <Link
-            href="/start"
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <Lightbulb className="h-3 w-3" aria-hidden />
-            How it works
-          </Link>
-          <a
-            href={`mailto:${REPORT_EMAIL}?subject=Question%20Bank%20feedback`}
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-          >
-            <Mail className="h-3 w-3" aria-hidden />
-            Report a question
-          </a>
-          <a
-            href="https://github.com/lwspune/question-bank"
-            target="_blank"
-            rel="noreferrer"
-            className="transition-colors hover:text-foreground"
-          >
-            GitHub
-          </a>
-        </div>
+        <nav
+          aria-label="Site links"
+          className="mt-6 grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4"
+        >
+          {groups.map((group) => (
+            <div key={group.title}>
+              <h2 className="mb-2 text-[11px] font-medium uppercase tracking-wide text-foreground/70">
+                {group.title}
+              </h2>
+              <ul className="space-y-1.5">
+                {group.links.map((link) =>
+                  link.external ? (
+                    <li key={link.href}>
+                      <a
+                        href={link.href}
+                        className="transition-colors hover:text-foreground"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ) : (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="transition-colors hover:text-foreground"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  )
+                )}
+              </ul>
+            </div>
+          ))}
+        </nav>
       </div>
     </footer>
   );
