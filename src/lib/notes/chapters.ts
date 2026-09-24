@@ -104,6 +104,21 @@ import {
   MHTCET_LIMITS_SLUGS,
 } from "@/app/notes/mht-cet-maths/limits/_data";
 import {
+  MHTCET_DEFINITE_INTEGRATION_CHAPTER,
+  MHTCET_DEFINITE_INTEGRATION_NOTES,
+  MHTCET_DEFINITE_INTEGRATION_SLUGS,
+} from "@/app/notes/mht-cet-maths/definite-integration/_data";
+import {
+  MHTCET_APPLICATIONS_OF_DEFINITE_INTEGRAL_CHAPTER,
+  MHTCET_APPLICATIONS_OF_DEFINITE_INTEGRAL_NOTES,
+  MHTCET_APPLICATIONS_OF_DEFINITE_INTEGRAL_SLUGS,
+} from "@/app/notes/mht-cet-maths/applications-of-definite-integral/_data";
+import {
+  MHTCET_DETERMINANTS_MATRICES_CHAPTER,
+  MHTCET_DETERMINANTS_MATRICES_NOTES,
+  MHTCET_DETERMINANTS_MATRICES_SLUGS,
+} from "@/app/notes/mht-cet-maths/determinants-and-matrices/_data";
+import {
   JEE_MATRICES_CHAPTER,
   JEE_MATRICES_NOTES,
   JEE_MATRICES_SLUGS,
@@ -945,6 +960,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_LIMITS_CHAPTER,
     notes: MHTCET_LIMITS_NOTES,
     slugs: MHTCET_LIMITS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "definite-integration",
+    chipLabel: "Definite Integration notes",
+    chapter: MHTCET_DEFINITE_INTEGRATION_CHAPTER,
+    notes: MHTCET_DEFINITE_INTEGRATION_NOTES,
+    slugs: MHTCET_DEFINITE_INTEGRATION_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "applications-of-definite-integral",
+    chipLabel: "Applications of Definite Integral notes",
+    chapter: MHTCET_APPLICATIONS_OF_DEFINITE_INTEGRAL_CHAPTER,
+    notes: MHTCET_APPLICATIONS_OF_DEFINITE_INTEGRAL_NOTES,
+    slugs: MHTCET_APPLICATIONS_OF_DEFINITE_INTEGRAL_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "determinants-and-matrices",
+    chipLabel: "Determinants and Matrices notes",
+    chapter: MHTCET_DETERMINANTS_MATRICES_CHAPTER,
+    notes: MHTCET_DETERMINANTS_MATRICES_NOTES,
+    slugs: MHTCET_DETERMINANTS_MATRICES_SLUGS,
   },
   {
     examName: "JEE Mains",

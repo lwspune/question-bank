@@ -26,7 +26,13 @@ import { PLAYBOOK_DETAILS } from "@/app/guide/mht-cet-maths/_data/playbook-detai
 // surface happened to be edited last. Logged in ROADMAP.md; add a slug here as
 // its arc is reviewed. See [[notes-teaching-arc-forward-reference]].
 
-const ARC_VERIFIED = new Set<string>(["mathematical-logic", "limits"]);
+const ARC_VERIFIED = new Set<string>([
+  "mathematical-logic",
+  "limits",
+  "definite-integration",
+  "applications-of-definite-integral",
+  "determinants-and-matrices",
+]);
 
 /** Compare on a normalised key — the surfaces differ on case and the Oxford comma. */
 const key = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "");

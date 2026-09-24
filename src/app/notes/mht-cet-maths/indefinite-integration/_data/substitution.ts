@@ -6,9 +6,9 @@ export const SUBSTITUTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Spot an inner function whose derivative also appears in the integrand, substitute to rename it, and the integral collapses to a standard form.",
   whyItMatters:
-    "51 PYQs — by far the largest bucket in the chapter, and the method every other technique falls back on. " +
+    "52 PYQs — by far the largest bucket in the chapter, and the method every other technique falls back on. " +
     "The single most-tested pattern is f'(x)/f(x) → log|f(x)|. Beyond that: powers of a function times its derivative, root substitutions, and exponential substitutions. " +
-    "Difficulty is steep here (26 of the 51 are HARD), but every one of them reduces to 'find u, find du, rewrite, integrate'.",
+    "Difficulty is steep here (27 of the 52 are HARD), but every one of them reduces to 'find u, find du, rewrite, integrate'.",
   concepts: [
     // 1 — u-sub basics
     {

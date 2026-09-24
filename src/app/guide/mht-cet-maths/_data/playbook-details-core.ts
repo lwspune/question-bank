@@ -385,7 +385,7 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "An antiderivative with no limits — and the immediate question of which of the four techniques (substitution, parts, partial fractions, trigonometric identity) the integrand is asking for.",
     story: [
-      "159 q at 3.35 per paper and 51% HARD. This is a cornerstone you can neither skip nor rush. It also contains the single hardest subtopic in the whole subject: Trigonometric Integrals - Rational and Substitution Forms, 35 q at 74% HARD. Nothing else in MHT-CET Maths runs that high.",
+      "162 q at 3.41 per paper and 52% HARD. This is a cornerstone you can neither skip nor rush. It also contains the single hardest subtopic in the whole subject: Trigonometric Integrals - Rational and Substitution Forms, 36 q at 75% HARD. Nothing else in MHT-CET Maths runs that high.",
       "There is a cheap corner, and it is small but real. Foundations and Standard Formulae (8 q, 13% HARD) plus Trigonometric Integrals - Powers and Identities (12 q, 8% HARD) come to 20 q at roughly a tenth the difficulty rate of the chapter as a whole. Take those two first: they are a fifth of a paper's integration marks for a fraction of the effort, and the standard-formula list is a prerequisite for everything else anyway.",
       "The bulk is Integration by Substitution (51 q, 51% HARD), Rational Functions and Partial Fractions (27 q, 48%) and Integration by Parts (26 q, 54%). These are all recognition problems dressed as computation problems: the skill being tested is choosing the technique in the first fifteen seconds. A student who can classify an integrand quickly finishes this chapter comfortably; a student who tries substitution on everything runs out of clock.",
       "This chapter is the clearest example of the no-negative-marking lever in the subject. The answer is a closed-form expression, so differentiating a candidate option is a legitimate and often much faster route than integrating the stem. When two techniques both look plausible and the clock is tight, differentiate rather than integrate.",
@@ -419,7 +419,7 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
       {
         name: "Trigonometric integrals — rational and substitution forms",
         description:
-          "Integrands that are rational in sine and cosine, handled by the half-angle substitution or by splitting the numerator to match the denominator's derivative. 35 q at 74% HARD, the highest of any subtopic in the subject. Learn it last and expect it to cost real time.",
+          "Integrands that are rational in sine and cosine, handled by the half-angle substitution or by splitting the numerator to match the denominator's derivative. 36 q at 75% HARD, the highest of any subtopic in the subject. Learn it last and expect it to cost real time.",
       },
     ],
     traps: [

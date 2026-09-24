@@ -106,7 +106,7 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "cornerstone",
     affects: ["indefinite-integration", "definite-integration"],
     mechanic:
-      "Indefinite Integration is 159 q at 51% HARD and almost all of that difficulty is form recognition rather than algebra — Trigonometric Integrals - Rational and Substitution Forms alone runs 35 q at 74% HARD, the highest of any cornerstone subtopic. The trap is starting to integrate before deciding whether the integrand is asking for substitution, by parts, or partial fractions. Two minutes into the wrong method there is no cheap way back, and at 1.8 minutes a question you are already over budget.",
+      "Indefinite Integration is 162 q at 52% HARD and almost all of that difficulty is form recognition rather than algebra — Trigonometric Integrals - Rational and Substitution Forms alone runs 36 q at 75% HARD, the highest of any cornerstone subtopic. The trap is starting to integrate before deciding whether the integrand is asking for substitution, by parts, or partial fractions. Two minutes into the wrong method there is no cheap way back, and at 1.8 minutes a question you are already over budget.",
     fix:
       "Spend the first fifteen seconds classifying, not integrating: is there an inner function whose derivative is sitting outside (substitution), a product of two unlike species (by parts), or a rational function with a factorable denominator (partial fractions)? The easy end of this chapter is pure recognition too — Foundations and Standard Formulae is 8 q at 13% HARD and Trigonometric Integrals - Powers and Identities is 12 q at 8% — so the recognition drill and the cheap marks are the same drill.",
   },
@@ -191,7 +191,7 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "longtail",
     affects: ["definite-integration"],
     mechanic:
-      "The largest subtopic in Definite Integration is Symmetry, King's Property, and Absolute Value at 42 q and 38% HARD, and those questions are constructed so that the direct antiderivative is long, ugly, or not available at all. The intended route collapses the integral in one line. A student who starts integrating either runs out of time or, worse, produces a confident answer having integrated straight across a point where a modulus changes sign — which is wrong rather than merely slow.",
+      "The property pages of Definite Integration — odd and even symmetry, King's property, modulus and greatest-integer splitting — are 43 of its 68 q at 42% HARD, and those questions are constructed so that the direct antiderivative is long, ugly, or not available at all. The intended route collapses the integral in one line. A student who starts integrating either runs out of time or, worse, produces a confident answer having integrated straight across a point where a modulus changes sign — which is wrong rather than merely slow.",
     fix:
       "Run three checks before writing an antiderivative. Are the limits symmetric about zero, so an odd part vanishes and an even part doubles? Does replacing x by a+b-x reproduce the integrand, so King's property applies? Does the integrand contain a modulus or a floor that changes sign inside the limits, so the interval must be split at that point? One of the three usually turns the question into a single line.",
   },

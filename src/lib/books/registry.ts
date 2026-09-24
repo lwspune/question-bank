@@ -279,13 +279,13 @@ export const MHT_CET_MATHS: BookDefinition = {
     {
       slug: "indefinite-integration",
       name: "Indefinite Integration",
-      // 159 q across 6 subtopics, in the /notes teaching order (subtopics.order_index).
+      // 162 q across 6 subtopics, in the /notes teaching order (subtopics.order_index).
       groupSubtopics: [
         { name: "Foundations and Standard Formulae" }, // 8
-        { name: "Integration by Substitution" }, // 51
-        { name: "Trigonometric Integrals - Powers and Identities" }, // 12
+        { name: "Integration by Substitution" }, // 52
+        { name: "Trigonometric Integrals - Powers and Identities" }, // 13
         { name: "Rational Functions and Partial Fractions" }, // 27
-        { name: "Trigonometric Integrals - Rational and Substitution Forms" }, // 35
+        { name: "Trigonometric Integrals - Rational and Substitution Forms" }, // 36
         { name: "Integration by Parts" }, // 26
       ],
     },
@@ -364,10 +364,13 @@ export const MHT_CET_MATHS: BookDefinition = {
     {
       slug: "definite-integration",
       name: "Definite Integration",
-      // 73 q across 2 subtopics, in descending question count.
+      // 68 q across 5 subtopics, in teaching order (order_index 1..5, 2026-09-25 reshape).
       groupSubtopics: [
-        { name: "Symmetry, King's Property, and Absolute Value" }, // 42
-        { name: "Substitution and Standard Form" }, // 31
+        { name: "Evaluating Definite Integrals — Standard Forms, Algebraic Substitution and By Parts" }, // 14
+        { name: "Trigonometric Definite Integrals — tan x = t, Half-Angle Forms and Powers" }, // 11
+        { name: "Odd and Even Integrands — Symmetric Limits" }, // 11
+        { name: "King's Property — f(a + b − x) and the f/(f + g) Family" }, // 17
+        { name: "Modulus and Greatest-Integer Integrands — Split the Interval" }, // 15
       ],
     },
     {
@@ -384,20 +387,22 @@ export const MHT_CET_MATHS: BookDefinition = {
     {
       slug: "determinants-and-matrices",
       name: "Determinants and Matrices",
-      // 50 q across 3 subtopics, in descending question count.
+      // 49 q across 4 subtopics, in teaching order (order_index 1..4, 2026-09-25 reshape).
       groupSubtopics: [
-        { name: "Inverse, Cayley-Hamilton, and Matrix Polynomial" }, // 27
-        { name: "Adjoint, Determinant, and A·adj(A) Identity" }, // 14
-        { name: "System of Linear Equations and Symmetric Matrices" }, // 9
+        { name: "Determinants, Cofactors and the Adjoint Identities" }, // 16
+        { name: "Inverse of a Matrix — Adjoint Formula, Products and Verification" }, // 15
+        { name: "Cayley–Hamilton, Matrix Polynomials and Powers" }, // 10
+        { name: "Systems of Linear Equations and Symmetric, Skew-Symmetric Matrices" }, // 8
       ],
     },
     {
       slug: "applications-of-definite-integral",
       name: "Applications of Definite Integral",
-      // 47 q across 2 subtopics, in descending question count.
+      // 44 q across 3 subtopics, in teaching order (order_index 1..3, 2026-09-25 reshape).
       groupSubtopics: [
-        { name: "Area Bounded by Curves, Axes, and Lines" }, // 43
-        { name: "Definite Integral as Application" }, // 4
+        { name: "Area Under a Curve — Between a Curve and an Axis" }, // 14
+        { name: "Area Between Two Curves — Intersections First" }, // 21
+        { name: "Areas of Circles, Ellipses and Hyperbolas — Sectors, Segments and Standard Integrals" }, // 9
       ],
     },
     {

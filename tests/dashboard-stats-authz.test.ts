@@ -21,6 +21,7 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -76,17 +77,16 @@ describe.skipIf(!HAS_ENV)("get_dashboard_stats authorization", () => {
           .insert({ user_id: created.user!.id, org_id: org, role: "ADMIN" });
       }
       const c = createClient(url, anonKey, { auth: { persistSession: false } });
-      const { error: sErr } = await c.auth.signInWithPassword({
-        email,
-        password: PASSWORD,
-      });
-      if (sErr) throw sErr;
+      // mustSignIn WAITS OUT the auth rate-limit window instead of throwing
+      // into it — this suite was the one that failed three gate runs in a row
+      // on 2026-09-25 with a bare "Request rate limit reached".
+      await mustSignIn(email, c, { email, password: PASSWORD });
       return c;
     }
 
     memberClient = await signedInUser(MEMBER_EMAIL, orgId);
     outsiderClient = await signedInUser(OUTSIDER_EMAIL, otherOrgId);
-  }, 60_000);
+  }, 400_000); // mustSignIn may wait out the auth window (65 s × up to 5)
 
   afterAll(async () => {
     for (const id of userIds) {
