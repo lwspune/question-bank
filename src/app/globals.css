@@ -85,12 +85,21 @@
   @media print { body { padding-bottom: 0; } }
 
   /*
-    The /browse cart pill is the only fixed element that collides with the bar.
-    Same two-value shape as the body clearance above: lifted clear below sm,
-    unchanged from sm up, where no bar renders.
+    Two fixed elements collide with the bar: the /browse cart pill and the
+    /drill "Next question" bar. Same two-value shape as the body clearance
+    above: lifted clear below sm, unchanged from sm up, where no bar renders.
+
+    The drill bar shipped (2026-09-19) after the pill was declared "the only"
+    collider, and sat under the tab bar on phones for five days — a fixed
+    element that appears only after a click is invisible to every gate. Any
+    NEW `fixed bottom-0` element needs one of these classes.
   */
   .cart-pill-offset { bottom: calc(3.5rem + max(1rem, env(safe-area-inset-bottom))); }
   @media (min-width: 640px) {
     .cart-pill-offset { bottom: max(1rem, env(safe-area-inset-bottom)); }
+  }
+  .drill-bar-offset { bottom: calc(3.5rem + env(safe-area-inset-bottom)); }
+  @media (min-width: 640px) {
+    .drill-bar-offset { bottom: 0; }
   }
 }

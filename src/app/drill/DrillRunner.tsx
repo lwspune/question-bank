@@ -261,9 +261,12 @@ export default function DrillRunner({
       </article>
 
       {/* The one forward control, pinned where a thumb rests. It appears only
-          once an answer is committed, so there is nothing to skip past. */}
+          once an answer is committed, so there is nothing to skip past.
+          `drill-bar-offset` (globals.css) lifts it above MobileTabBar below
+          sm; without it the bar sat UNDER the tabs on phones. z-30 keeps it
+          beneath the tab bar (z-40) so the two never trade places. */}
       {answered && (
-        <div className="fixed inset-x-0 bottom-0 border-t bg-background/95 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+        <div className="drill-bar-offset fixed inset-x-0 z-30 border-t bg-background/95 p-4 backdrop-blur supports-[backdrop-filter]:bg-background/80">
           <div className="mx-auto flex max-w-2xl justify-end">
             <button
               type="button"
