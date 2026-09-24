@@ -25,6 +25,8 @@ import PulseRefresh from "./PulseRefresh";
 import { buildResultHeadline } from "@/lib/mocks/resultHeadline";
 import { getOwnPerformance } from "@/lib/performance/service";
 import { buildMockReport, type MockReport } from "@/lib/email/mockReport";
+import { readPeerAccuracy } from "@/lib/email/mockReportService";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
 export const metadata: Metadata = { robots: { index: false } };
 
@@ -214,13 +216,21 @@ export default async function MockResultPage({ params }: { params: Params }) {
  * nothing. Same discipline as the activity writer, which never blocks the
  * action it is recording.
  *
- * An empty PeerMap: question_item_stats is staff-read by RLS. See Findings.tsx.
+ * PEER RATES, QUESTION LEVEL ONLY (ENGAGEMENT_SPEC.md C4, the user's decision
+ * 2026-09-24). question_item_stats is staff-read by RLS, so this is the one
+ * SERVICE-ROLE read on a student page — scoped to the ids of THIS attempt's
+ * questions and pooled at read time by readPeerAccuracy, the same read the
+ * report email makes. It says "62% of students got this right" about a
+ * QUESTION; it never says anything about a person, which is the line the
+ * engagement gate draws. Best-effort like the rest of this loader.
  */
 async function loadFindings(attemptId: string): Promise<MockReport | null> {
   try {
     const payload = await getOwnPerformance();
     if (!payload) return null;
-    return buildMockReport(payload, attemptId, new Map(), new Date());
+    const mine = payload.facts.filter((f) => f.a === attemptId).map((f) => f.q);
+    const peer = await readPeerAccuracy(createSupabaseAdminClient(), mine).catch(() => new Map());
+    return buildMockReport(payload, attemptId, peer, new Date());
   } catch (e) {
     console.error("mock result findings failed", e);
     return null;

@@ -21,6 +21,8 @@ import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getOwnDuePool } from "@/lib/drill/service";
 import { getOwnWeekly } from "@/lib/goals/service";
+import { getOwnProfile } from "@/lib/profile/service";
+import { resolveExamDate } from "@/lib/exam/calendar";
 
 export const dynamic = "force-dynamic";
 
@@ -38,11 +40,16 @@ export async function GET() {
   try {
     const db = createSupabaseServerClient();
     const now = new Date();
-    const [pool, week] = await Promise.all([
+    const [pool, week, profile] = await Promise.all([
       getOwnDuePool(db, user.id, now),
       getOwnWeekly(db, user.id, now),
+      getOwnProfile(db, user.id),
     ]);
-    return NextResponse.json({ due: pool.length, week }, { headers: NO_STORE });
+    const countdown = resolveExamDate(profile, now);
+    const exam = countdown
+      ? { label: countdown.label, daysLeft: countdown.daysLeft, official: countdown.official }
+      : null;
+    return NextResponse.json({ due: pool.length, week, exam }, { headers: NO_STORE });
   } catch (e) {
     // A wrong number is worse than no badge: fail and let the client render
     // nothing rather than a zero that reads as "nothing to fix".

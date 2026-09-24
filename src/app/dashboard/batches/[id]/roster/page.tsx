@@ -6,7 +6,11 @@ import StatCard from "@/app/dashboard/StatCard";
 import { getSessionMember } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { loadRoster } from "@/lib/batches/invitesAdmin";
+import { listBatchAssignments, readCompletionAttempts } from "@/lib/assignments/service";
+import { assignmentState, completionFor, dueLabel } from "@/lib/assignments/core";
+import { getPublishedMocks } from "@/lib/mocks/query";
 import RosterClient from "./RosterClient";
+import AssignmentsCard, { type AssignmentRow, type MockChoice } from "./AssignmentsCard";
 
 export const dynamic = "force-dynamic";
 
@@ -26,13 +30,53 @@ export default async function RosterPage({ params }: { params: { id: string } })
   const client = createSupabaseServerClient();
   const { data: batch } = await client
     .from("batches")
-    .select("id, name, join_code, join_open")
+    .select("id, name, join_code, join_open, exam_id")
     .eq("id", params.id)
-    .maybeSingle<{ id: string; name: string; join_code: string | null; join_open: boolean }>();
+    .maybeSingle<{ id: string; name: string; join_code: string | null; join_open: boolean; exam_id: string | null }>();
   if (!batch) notFound();
 
   const { students, pendingInvites } = await loadRoster(client, batch.id);
   const active = students.filter((s) => s.attempts > 0).length;
+
+  // Assigned papers (ENGAGEMENT_SPEC.md C1): the batch's assignments through
+  // RLS, who has sat each (the 0083 attempts policy), and the picker of
+  // published mocks with the batch's own exam first.
+  const [assignments, published, examRow] = await Promise.all([
+    listBatchAssignments(client, batch.id),
+    getPublishedMocks(client),
+    batch.exam_id
+      ? client.from("exams").select("name").eq("id", batch.exam_id).maybeSingle<{ name: string }>()
+      : Promise.resolve({ data: null }),
+  ]);
+  const examName = examRow.data?.name ?? null;
+  const mocks: MockChoice[] = [...published]
+    .sort((a, b) => Number(b.examName === examName) - Number(a.examName === examName))
+    .map((m) => ({ id: m.id, title: m.title }));
+  const completionAttempts = await readCompletionAttempts(
+    client,
+    students.map((st) => st.userId),
+    assignments.map((a) => a.mockId)
+  );
+  const now = new Date();
+  const byId = new Map(students.map((st) => [st.userId, st]));
+  const assignmentRows: AssignmentRow[] = assignments.map((a) => {
+    const c = completionFor(a.mockId, students, completionAttempts);
+    return {
+      id: a.id,
+      mockTitle: a.mockTitle,
+      mockSlug: a.mockSlug,
+      dueAt: a.dueAt,
+      note: a.note,
+      label: dueLabel(a.dueAt, now),
+      state: assignmentState(a.dueAt, now),
+      done: c.done.length,
+      total: students.length,
+      pending: c.pending.map((id) => {
+        const st = byId.get(id)!;
+        return { userId: id, name: st.name, email: st.email };
+      }),
+    };
+  });
 
   return (
     <>
@@ -58,6 +102,8 @@ export default async function RosterPage({ params }: { params: { id: string } })
           <StatCard kind="numeric" value={pendingInvites.length} label="Invited, no reply" />
           <StatCard kind="numeric" value={active} label="Have sat a mock" />
         </div>
+
+        <AssignmentsCard batchId={batch.id} assignments={assignmentRows} mocks={mocks} />
 
         <RosterClient
           batchId={batch.id}

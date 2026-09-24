@@ -27,6 +27,10 @@ import AttemptsList from "../mock/_components/AttemptsList";
 import FeedbackCards from "./FeedbackCards";
 import WeekStrip from "./WeekStrip";
 import { getOwnWeekly } from "@/lib/goals/service";
+import { listMyAssignments } from "@/lib/assignments/service";
+import type { StudentAssignmentView } from "@/lib/assignments/core";
+import { CalendarClock, Check } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -40,12 +44,17 @@ export default async function MePage() {
   if (!user) redirect("/login?next=/me");
 
   const db = createSupabaseServerClient();
-  const [attempts, notesRows, bookmarkIds, lastNpsAt, weekly] = await Promise.all([
+  const [attempts, notesRows, bookmarkIds, lastNpsAt, weekly, assigned] = await Promise.all([
     getUserAttempts(db, user.id),
     listOwnNotesProgress(db, user.id),
     listBookmarkIds(db, user.id),
     getLastNpsAt(db, user.id),
     getOwnWeekly(db, user.id),
+    // Best-effort: a failed read costs the due list, never the dashboard.
+    listMyAssignments(user.id).catch((e) => {
+      console.error("assignments read failed", e);
+      return [] as StudentAssignmentView[];
+    }),
   ]);
 
   const mocks = summarizeUserMocks(attempts);
@@ -98,6 +107,11 @@ export default async function MePage() {
             this page, and now arrives from the shared pulse instead. */}
         <WeekStrip initialDone={weekly.done} initialGoal={weekly.goal} />
 
+        {/* Papers a teacher has assigned to this student's batch, with the
+            deadline (ENGAGEMENT_SPEC.md C1). Rendered only when there is one,
+            so the page gains nothing for the 90% of students with no batch. */}
+        {assigned.length > 0 && <DueList items={assigned} />}
+
         <div className="grid gap-6 lg:grid-cols-3">
           <section className="space-y-4 lg:col-span-2">
             <MockCard mocks={mocks} attempts={attempts} />
@@ -115,6 +129,65 @@ export default async function MePage() {
         <FeedbackCards showNps={showNps} />
       </main>
     </>
+  );
+}
+
+/* ------------------------------------------------------------ due list */
+
+/** Deadline pull: paper, batch, due label, one Start button. Sat papers show a
+ *  tick and no button. At most three rows; the rest are on the mock pages. */
+function DueList({ items }: { items: StudentAssignmentView[] }) {
+  const shown = items.slice(0, 3);
+  return (
+    <section aria-labelledby="due-heading" className="rounded-xl border bg-card p-6">
+      <h2 id="due-heading" className="flex items-center gap-2 text-sm font-semibold tracking-tight">
+        <CalendarClock className="h-4 w-4 text-brand-accent" aria-hidden />
+        Set by your teacher
+      </h2>
+      <ul className="mt-3 divide-y">
+        {shown.map((a) => (
+          <li key={a.id} className="flex items-center gap-3 py-2.5">
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-sm font-medium">{a.mockTitle}</p>
+              <p className="mt-0.5 truncate text-xs text-muted-foreground">
+                <span
+                  className={cn(
+                    "font-medium",
+                    a.done
+                      ? "text-emerald-600 dark:text-emerald-400"
+                      : a.state === "overdue"
+                        ? "text-red-600 dark:text-red-400"
+                        : a.state === "due-soon"
+                          ? "text-amber-600 dark:text-amber-400"
+                          : "text-foreground"
+                  )}
+                >
+                  {a.done ? "Done" : a.label}
+                </span>
+                {" \u00b7 "}
+                {a.batchName}
+                {a.note && <> {" \u00b7 "} {a.note}</>}
+              </p>
+            </div>
+            {a.done ? (
+              <Check className="h-4 w-4 shrink-0 text-emerald-600" aria-label="Sat" />
+            ) : (
+              <Link
+                href={`/mock/${a.mockSlug}`}
+                className="inline-flex h-9 shrink-0 items-center justify-center rounded-md bg-brand px-4 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                Start
+              </Link>
+            )}
+          </li>
+        ))}
+      </ul>
+      {items.length > shown.length && (
+        <p className="mt-2 text-xs text-muted-foreground">
+          {items.length - shown.length} more on your mock pages.
+        </p>
+      )}
+    </section>
   );
 }
 

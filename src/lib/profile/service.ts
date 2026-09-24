@@ -60,6 +60,8 @@ export type ProfileRow = {
   whatsappPromptedAt: string | null;
   /** Weekly sittings goal (migration 0113); null = not chosen. */
   weeklyGoal: number | null;
+  /** The student's own exam date, YYYY-MM-DD (migration 0116); null = derive. */
+  examDate: string | null;
 };
 
 export async function getOwnProfile(
@@ -69,7 +71,7 @@ export async function getOwnProfile(
   const { data } = await db
     .from("student_profiles")
     .select(
-      "mobile, consent, target_exams, stage, medium, academic_stream, city, goal, onboarded_at, whatsapp_opt_in, whatsapp_prompted_at, weekly_goal"
+      "mobile, consent, target_exams, stage, medium, academic_stream, city, goal, onboarded_at, whatsapp_opt_in, whatsapp_prompted_at, weekly_goal, exam_date"
     )
     .eq("user_id", userId)
     .maybeSingle();
@@ -86,6 +88,7 @@ export async function getOwnProfile(
     whatsappOptIn: (data?.whatsapp_opt_in as boolean | undefined) ?? false,
     whatsappPromptedAt: (data?.whatsapp_prompted_at as string | undefined) ?? null,
     weeklyGoal: (data?.weekly_goal as number | null | undefined) ?? null,
+    examDate: (data?.exam_date as string | null | undefined) ?? null,
   };
 }
 
@@ -99,6 +102,8 @@ export type ProfileUpdate = ProfileDetails & {
   whatsappOptIn?: boolean;
   /** Weekly sittings goal; null clears it. */
   weeklyGoal?: number | null;
+  /** Own exam date (YYYY-MM-DD); null clears it so the calendar applies. */
+  examDate?: string | null;
 };
 
 /**
@@ -123,6 +128,7 @@ export async function updateOwnProfile(
   if (patch.mobile !== undefined) row.mobile = patch.mobile;
   if (patch.consent !== undefined) row.consent = patch.consent;
   if (patch.weeklyGoal !== undefined) row.weekly_goal = patch.weeklyGoal;
+  if (patch.examDate !== undefined) row.exam_date = patch.examDate;
   if (patch.whatsappOptIn !== undefined) {
     row.whatsapp_opt_in = patch.whatsappOptIn;
     row.whatsapp_prompted_at = new Date().toISOString(); // decided → ask once

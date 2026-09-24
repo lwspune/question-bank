@@ -60,10 +60,10 @@ is why the share loop already keeps the score opt-in).
 | 5 | Mastery map: chapter tiles with subtopic dots from the existing weak/mastered bands | **SHIPPED 2026-09-24** at `/me/map` (no schema; `npm run map:smoke`) |
 | 4 | Daily set: five questions, due drill first then unseen from weak subtopics | Tranche B — specified below, depends on the unseen picker |
 | 10 | Feed the drill from /browse, notes checkpoints and public quizzes | Tranche B — specified below |
-| 7 | Teacher-assigned paper with a deadline for a batch | Tranche C — DECIDED 2026-09-24: new `mock_assignments` table (§5) |
+| 7 | Teacher-assigned paper with a deadline for a batch | **SHIPPED 2026-09-24** — `mock_assignments` (migration 0115), teacher card on the batch roster, due list on `/me`, line on the mock page |
 | 8 | Content-led nudges at 12:30 IST | **SHIPPED 2026-09-24** — email only (`npm run email:due-nudge`, cron `.github/workflows/due-nudge.yml`, migration 0114) |
-| 9 | Exam date and days-to-exam | Tranche C — DECIDED 2026-09-24: derive from a calendar, student override (§5) |
-| — | Per-question peer rates on the findings card | Tranche C — DECIDED 2026-09-24: yes, question level only (§5) |
+| 9 | Exam date and days-to-exam | **SHIPPED 2026-09-24** — `src/lib/exam/calendar.ts` + `student_profiles.exam_date` (0116); every calendar date is EXPECTED, not official, and says so |
+| — | Per-question peer rates on the findings card | **SHIPPED 2026-09-24** — the result page passes a real peer map for that attempt's questions; question level only |
 | 3 | Short sittings as the default first unit | **Declined by the user, 2026-09-24.** Not built. |
 
 ## 4. Tranche A — the build
@@ -214,7 +214,7 @@ emitter carries `metadata.surface` so PMF can tell them apart.
 
 ### C1. Teacher-assigned paper with a deadline (item 7)
 
-**Decided 2026-09-24: the new `mock_assignments` table, as recommended.** The question was: does an assignment live on `papers` (a paper targets a batch
+**SHIPPED 2026-09-24.** `mock_assignments` (0115): one row per (batch, mock), a due date, an optional 200-char note; RLS mirrors 0083 (enrolled students read their batches' rows; staff read and write within `batches_select_scoped`), pinned by `tests/mock-assignments-rls.test.ts`. Teacher: an "Assigned papers" card on `/dashboard/batches/[id]/roster` — pick a published mock (the batch's exam first), a due date, a note; each row shows "12 of 30 sat" and, behind a disclosure, who has not. **No score column and no ordering of students, by rule.** Student: a "Set by your teacher" list on `/me` (unsat first, soonest due first, one Start button; rendered only when there is one) and a line under the title on `/mock/[slug]`. Pure core `src/lib/assignments/core.ts` (`validateAssignmentInput` · `assignmentState` open / due-soon (48h) / overdue · `dueLabel` in IST · `completionFor` = any GRADED attempt of that mock by a roster student · `studentAssignmentViews`; TDD). Writes via `POST /api/batches/assign` through the caller's RLS client. The decision was: does an assignment live on `papers` (a paper targets a batch
 already) or on `mock_tests` (a timed sitting)? Recommended: a new
 `mock_assignments` table (batch_id, mock_id, due_at, assigned_by) so a teacher
 picks a published mock for a batch with a date; students in that batch see
@@ -229,13 +229,13 @@ content, one per day at most, 12:30 IST, and never "we miss you".
 
 ### C3. Exam date (item 9)
 
-**Decided 2026-09-24: derive-with-override, as recommended.** The roadmap's two questions are answered by it: derive-with-override, a TS
+**SHIPPED 2026-09-24.** `EXAM_CALENDAR` in `src/lib/exam/calendar.ts` (15 sittings across 12 exams, keyed by registry slug) + `resolveExamDate` (a future `exam_date` on the profile wins and is official by definition; else the first target exam with a calendar entry) + `examCountdownSentence`. **Every entry is `official: false` as written** — on 2026-09-24 no conducting body had announced a 2027 date — so the countdown reads "NDA 2027 (I) in 206 days (expected)" and links to `/account`, where a date input stores the override (migration 0116). Flip `official` by hand when a date is announced; the ROT PROBE in `tests/exam-calendar.test.ts` fails the gate once a sitting is more than 14 days past. Shown in the header menu and the `/me` week strip via the pulse. **Decided:** derive-with-override, a TS
 calendar beside `EXAM_REGISTRY` with a probe that fails once a sitting is past,
 NDA first. Then `/me` and the header can say "NDA 2027-I in 112 days".
 
 ### C4. Per-question peer rates
 
-**Decided 2026-09-24: yes, question level only, never person level.** The findings card deliberately showed no "62% of students got this right".
+**SHIPPED 2026-09-24.** The result page's findings loader now reads `question_item_stats` through the service-role client for the ids of THIS attempt's questions (`readPeerAccuracy`, pooled at read time, the same read the report email makes) and the card prints "62% of students got this right" beside an easy miss. A fact about a question, never about a person. **Decided:** The findings card deliberately showed no "62% of students got this right".
 Recommendation: allow it at question level only, never person level. It is
 metacognitive and it is not a ranking. Needs a service-role read on a student
 page, which is why it is a decision and not a default.

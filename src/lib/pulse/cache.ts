@@ -10,10 +10,19 @@
  * No I/O. Spec: tests/pulse-cache.test.ts.
  */
 
+export type PulseExam = {
+  label: string;
+  daysLeft: number;
+  official: boolean;
+};
+
 export type Pulse = {
   /** Drillable questions due right now — the number /drill will serve from. */
   due: number;
   week: { done: number; goal: number | null };
+  /** Days to the primary exam (ENGAGEMENT_SPEC.md C3), or null when unknown.
+   *  Optional so an entry cached before this field existed still parses. */
+  exam?: PulseExam | null;
 };
 
 export type PulseEntry = Pulse & {
@@ -54,5 +63,12 @@ export function parsePulseEntry(raw: string | null): PulseEntry | null {
   const week = w as Record<string, unknown>;
   if (!isCount(week.done)) return null;
   if (week.goal !== null && !isCount(week.goal)) return null;
-  return { at: o.at, due: o.due, week: { done: week.done, goal: week.goal as number | null } };
+  let exam: PulseExam | null = null;
+  if (o.exam !== undefined && o.exam !== null) {
+    if (typeof o.exam !== "object") return null;
+    const x = o.exam as Record<string, unknown>;
+    if (typeof x.label !== "string" || typeof x.daysLeft !== "number" || typeof x.official !== "boolean") return null;
+    exam = { label: x.label, daysLeft: x.daysLeft, official: x.official };
+  }
+  return { at: o.at, due: o.due, week: { done: week.done, goal: week.goal as number | null }, exam };
 }

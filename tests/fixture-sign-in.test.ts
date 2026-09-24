@@ -8,8 +8,11 @@
  * `42501 new row violates row-level security policy` — a fake RLS regression
  * that points nowhere near the cause. At 8 forks an entire run read that way.
  *
- * The helper is deliberately NOT retried: a rate limit is not a blip, and
- * retrying it only burns more of the same window.
+ * A rate limit is WAITED OUT, never retried into (2026-09-24): the suite
+ * reached the window on its own once one more RLS file landed, and the same
+ * four tail suites failed on two consecutive runs. Retrying at once burns the
+ * window; sleeping past it and trying again, a bounded number of times, does
+ * not. Any other error still throws at once.
  */
 import { describe, it, expect } from "vitest";
 import { mustSignIn } from "./helpers/fixture";
@@ -45,19 +48,31 @@ describe("mustSignIn", () => {
   it("THROWS on an auth error, naming the label and the reason", async () => {
     const client = fakeClient({
       data: { session: null },
-      error: { message: "Request rate limit reached" },
+      error: { message: "Invalid login credentials" },
     });
     await expect(mustSignIn("alice", client, CREDS)).rejects.toThrow(
-      /sign in "alice".*Request rate limit reached/
+      /sign in "alice".*Invalid login credentials/
     );
   });
 
-  it("does not retry — a rate limit is not a transient blip", async () => {
+  it("WAITS OUT a rate limit a bounded number of times, then throws with the reason", async () => {
     const client = fakeClient({
       data: { session: null },
       error: { message: "Request rate limit reached" },
     });
-    await mustSignIn("alice", client, CREDS).catch(() => undefined);
+    await expect(mustSignIn("alice", client, CREDS, { waitMs: 0, maxWaits: 2 })).rejects.toThrow(
+      /Request rate limit reached/
+    );
+    // One try, two waits, one final try each: three calls, never more.
+    expect(client.calls).toHaveLength(3);
+  });
+
+  it("does not retry any OTHER error — only a rate limit is a window to wait for", async () => {
+    const client = fakeClient({
+      data: { session: null },
+      error: { message: "Invalid login credentials" },
+    });
+    await mustSignIn("alice", client, CREDS, { waitMs: 0, maxWaits: 5 }).catch(() => undefined);
     expect(client.calls).toHaveLength(1);
   });
 
