@@ -304,7 +304,7 @@ export const QUICKWIN_STRAND: StrategyStrand = {
     "Probability Distribution and Binomial Distribution both have shipped teaching notes at /notes/mht-cet-maths (probability-distribution, binomial-distribution). Together they are 175 questions at 20% and 22% HARD — the largest block of cheap marks in the bank.",
     "Linear Programming is 46 q at 4% HARD across just two subtopics, and one of them has never produced a HARD question. If you are short on time before the exam, this is the highest-certainty chapter you can add.",
     "Mathematical Logic is 88 q at 31% HARD, and the HARD is concentrated in one small subtopic: Switching Circuits, 12 q at 67%. Everything else is well below the chapter average — Negation of Statements and Quantifiers (14 q, 14%), Finding Truth Values of Component Statements (16 q, 19%), Converse, Inverse, and Contrapositive (17 q, 24%) — and all of it is mechanical once you have drilled the forms.",
-    "One chapter outside this strand belongs in the same habit: Sets, Relations and Functions is 41 q at 12% HARD — genuinely cheap marks — but only 0.73 q/paper on recent shifts, which is why it has no playbook. Drill it with the tail chapters below, and answer it on the opening sweep when it appears.",
+    "One chapter outside this strand belongs in the same habit: Sets, Relations and Functions is 40 q at 13% HARD — genuinely cheap marks — but only 0.71 q/paper on recent shifts, which is why it has no playbook. Its four notes pages are at /notes/mht-cet-maths/sets-relations-and-functions; drill it with the tail chapters below, and answer it on the opening sweep when it appears.",
   ],
   chapters: [
     {
@@ -392,7 +392,7 @@ export const LONGTAIL_STRAND: StrategyStrand = {
   id: "longtail",
   label:
     "Long Tail — Limits · Trigonometry - I · Definite Integration · Determinants and Matrices · Circle · Applications of Definite Integral · Complex Numbers · Pair of Straight Lines · Permutations and Combinations (521 q · 23% of bank)",
-  qCount: 508,
+  qCount: 506,
   pctOfBank: 23,
   pitch:
     "Nine chapters at roughly one to two questions a paper each, and mostly 33-56% HARD — expensive per mark, and collectively too big to ignore at about 12 questions a paper. These come last, on the time remaining after the cornerstones and quick-wins are banked. And you still answer every single one of them, including the ones you have not prepared: there is no negative marking, so an unread Pair of Straight Lines question costs nothing to guess and a blank is strictly worse than a guess. Prep them in weightage order and stop where your hours stop; the paper will not punish the gap the way an NDA paper would.",
@@ -489,18 +489,18 @@ export const LONGTAIL_STRAND: StrategyStrand = {
     },
     {
       chapter: "Complex Numbers",
-      qCount: 46,
-      pctHard: 33,
+      qCount: 45,
+      pctHard: 31,
       posture: "split-pass",
       mustDrill: [
-        "Modulus, Argument, and Polar Form",
-        "Algebraic Equations, Locus, and Cube Roots",
+        "Modulus and Argument — Polar Form, De Moivre and Square Roots",
+        "Locus in the Argand Plane — Circles, Lines and Greatest/Least Modulus",
       ],
-      targetHard: ["Algebraic Equations, Locus, and Cube Roots"],
-      expectedYieldPerPaper: "1.00 q/paper · 2 marks",
+      targetHard: ["Algebra of Complex Numbers — Conjugates, Powers of i and Cube Roots of Unity"],
+      expectedYieldPerPaper: "0.98 q/paper · 2 marks",
       studyHours: 4,
       summary:
-        "46 q · 33% HARD, and it splits cleanly: Modulus, Argument, and Polar Form is 22 q at 18% HARD, while Algebraic Equations, Locus, and Cube Roots is 24 q at 46%. Take the modulus half on the first sweep — the greatest-and-least-modulus shape is answered by distance to the centre plus or minus the radius, with no calculus at all.",
+        "45 q · 31% HARD, and it splits cleanly: Modulus and Argument is 18 q at 28% HARD and Locus 12 q at 17%, while Algebra with the cube roots of unity is 15 q at 47%. Take the modulus and locus pages on the first sweep — the greatest-and-least-modulus shape is answered by distance to the centre plus or minus the radius, with no calculus at all.",
     },
     {
       chapter: "Applications of Definite Integral",
@@ -532,17 +532,17 @@ export const LONGTAIL_STRAND: StrategyStrand = {
     },
     {
       chapter: "Permutations and Combinations",
-      qCount: 43,
-      pctHard: 42,
+      qCount: 42,
+      pctHard: 40,
       posture: "last-pass-guess",
       mustDrill: [
-        "Selection and Arrangement with Constraints",
-        "Counting and Geometric Applications",
+        "Arrangements with Constraints — Together, Never Together, Fixed Positions and Repeated Letters",
+        "Counting Numbers and Geometric Figures — Digits, Divisibility, Points and Polygons",
       ],
-      expectedYieldPerPaper: "1.00 q/paper · 2 marks",
+      expectedYieldPerPaper: "0.98 q/paper · 2 marks",
       studyHours: 4,
       summary:
-        "43 q · 42% HARD. The smallest chapter with a playbook and one of the most error-prone: both subtopics sit near 40%, and the failure mode is a mis-set-up count rather than a mis-executed formula. Drill the constraint shapes — at least one of, none of, all together, never together — rather than the formulas.",
+        "42 q · 40% HARD. The smallest chapter with a playbook and one of the most error-prone: the failure mode is a mis-set-up count rather than a mis-executed formula, and Circular Arrangements (6 q) runs 83% HARD. Drill the constraint shapes — together, never together, at least, at most — rather than the formulas; the digit and polygon counts are the cheapest marks here.",
     },
   ],
 };
@@ -585,11 +585,11 @@ export type TailChapter = {
 export const TAIL_CHAPTERS: TailChapter[] = [
   {
     chapter: "Sets, Relations and Functions",
-    qCount: 41,
-    qPerPaper: 0.73,
-    pctHard: 12,
+    qCount: 40,
+    qPerPaper: 0.71,
+    pctHard: 13,
     status: "live",
-    note: "The one genuine cheap-marks chapter below the line — 12% HARD, the second-lowest in the bank after Linear Programming. Below the playbook line on volume alone; drill it with the quick-wins.",
+    note: "The one genuine cheap-marks chapter below the line — 13% HARD, the second-lowest in the bank after Linear Programming. Below the playbook line on volume alone; drill it with the quick-wins.",
   },
   {
     chapter: "Conic Sections",

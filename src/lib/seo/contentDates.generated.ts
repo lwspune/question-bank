@@ -6,12 +6,12 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 99
+ * Entries: 100
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
 export const CONTENT_DATES: ContentDateMap = {
-  "/guide/mht-cet-maths": "2026-09-25T01:35:58+05:30",
+  "/guide/mht-cet-maths": "2026-09-25T01:53:13+05:30",
   "/guide/nda-biology": "2026-09-14T14:45:43+05:30",
   "/guide/nda-chemistry": "2026-09-14T14:45:43+05:30",
   "/guide/nda-current-affairs": "2026-09-14T14:45:43+05:30",
@@ -33,6 +33,7 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/mht-cet-maths/applications-of-derivative": "2026-09-21T16:28:13+05:30",
   "/notes/mht-cet-maths/binomial-distribution": "2026-09-21T16:28:13+05:30",
   "/notes/mht-cet-maths/definite-integration": "2026-09-25T01:35:58+05:30",
+  "/notes/mht-cet-maths/determinants-and-matrices": "2026-09-25T01:53:13+05:30",
   "/notes/mht-cet-maths/differential-equations": "2026-09-21T16:28:26+05:30",
   "/notes/mht-cet-maths/differentiation": "2026-09-25T00:52:38+05:30",
   "/notes/mht-cet-maths/indefinite-integration": "2026-09-25T01:35:58+05:30",

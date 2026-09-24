@@ -309,12 +309,12 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Complex Numbers",
-    qCount: 46,
-    pctTotal: 2.1,
-    qPerPaper: 1.0,
-    pctHard: 33,
+    qCount: 45,
+    pctTotal: 2.0,
+    qPerPaper: 0.98,
+    pctHard: 31,
     focus:
-      "Algebraic Equations, Locus, and Cube Roots (24 · 46% HARD), Modulus, Argument, and Polar Form (22 · 18%). The two halves differ by 28 points of HARD — secure modulus and argument first. Greatest and least modulus on a disc is the same geometric move as the Circle chapter's extremum question.",
+      "Algebra of Complex Numbers (15 · 47% HARD), Modulus and Argument (18 · 28%), Locus in the Argand Plane (12 · 17%). The algebra page is 30 points of HARD above the other two — secure modulus, argument and locus first. Greatest and least modulus on a disc is the same geometric move as the Circle chapter's extremum question.",
   },
   {
     chapter: "Applications of Definite Integral",
@@ -336,12 +336,12 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Permutations and Combinations",
-    qCount: 43,
+    qCount: 42,
     pctTotal: 1.9,
-    qPerPaper: 1.0,
-    pctHard: 42,
+    qPerPaper: 0.98,
+    pctHard: 40,
     focus:
-      "Selection and Arrangement with Constraints (33 · 42% HARD), Counting and Geometric Applications (10 · 40%). One question a paper at 42% HARD, and the constraint questions do not reduce to a formula — cost this chapter honestly before investing in it.",
+      "Counting Numbers and Geometric Figures (11 · 36% HARD), Arrangements with Constraints (10 · 50%), Fundamental Principle and Identities (8 · 0%), Selections with Conditions (7 · 43%), Circular Arrangements (6 · 83%). One question a paper at 40% HARD, and the constraint questions do not reduce to a formula — cost this chapter honestly before investing in it.",
   },
   {
     chapter: "Straight Line",
@@ -354,12 +354,12 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Sets, Relations and Functions",
-    qCount: 41,
+    qCount: 40,
     pctTotal: 1.8,
-    qPerPaper: 0.73,
-    pctHard: 12,
+    qPerPaper: 0.71,
+    pctHard: 13,
     focus:
-      "12% HARD — the second-cheapest chapter in the bank after Linear Programming. Below the 0.9 q/paper line so it ships no playbook, but a genuine cheap-marks chapter and worth a short drill rather than a skip.",
+      "Domain and Range (12 · 25% HARD), Composite Functions (11 · 9%), Sets and Types of Functions (10 · 0%), Inverse Functions (7 · 14%). 13% HARD — the second-cheapest chapter in the bank after Linear Programming. Below the 0.9 q/paper line so it ships no playbook, but its four notes pages are live and it is worth a short drill rather than a skip.",
   },
   {
     chapter: "Conic Sections",
