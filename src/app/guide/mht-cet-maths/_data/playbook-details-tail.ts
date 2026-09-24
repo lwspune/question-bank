@@ -353,41 +353,26 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "An i in the expression — a modulus or argument asked for, a cube root of unity, or a locus described by a modulus condition.",
     story: [
-      "46 q, 1.00/paper, 33% HARD, and it splits about as cleanly as any chapter in the bank. Modulus, Argument, and Polar Form is 22 q at 18% HARD — the softest subtopic anywhere in the long tail. Algebraic Equations, Locus, and Cube Roots is 24 q at 46%.",
-      "That asymmetry IS the strategy. Own the polar half and treat the other as opportunistic: 18% HARD at one question a paper is about as close to free marks as the tail offers, and it is reachable with the identities of Trigonometry - I plus De Moivre's theorem.",
-      "The harder half runs largely on omega. Three facts about the cube roots of unity answer most of it: omega cubed is 1, 1 + omega + omega squared is 0, and powers of omega cycle with period 3 so any exponent can be reduced modulo 3. That is recall, not technique, which makes even the 46% corner tractable.",
+      "45 q, 0.98/paper, 31% HARD, and it splits about as cleanly as any chapter in the bank. Modulus and Argument is 18 q at 28% HARD and Locus 12 q at 17% — the softest pages anywhere in the long tail. Algebra with the cube roots of unity is 15 q at 47%. Every PYQ is tagged to one of the three notes pages at /notes/mht-cet-maths/complex-numbers.",
+      "That asymmetry IS the strategy. Own the modulus and locus pages and treat the algebra page as opportunistic: under 30% HARD at one question a paper is about as close to free marks as the tail offers, and it is reachable with the identities of Trigonometry - I plus De Moivre's theorem.",
+      "The harder page runs largely on omega and on a polynomial evaluated at a complex x. Three facts about the cube roots of unity answer the omega stems: omega cubed is 1, 1 + omega + omega squared is 0, and powers of omega cycle with period 3. The polynomial stems are answered by the minimal quadratic of the given root, never by direct substitution.",
       "Locus questions are circles and lines in disguise — a condition of the form |z - a| = r is a circle of radius r centred at a. That is also where the cross-chapter extremum lives: the greatest and least modulus of z on such a disc is |a| plus or minus r, exactly the Circle chapter's distance-to-centre move, with no calculus and no differentiation of a modulus.",
     ],
     subSkills: [
       {
-        name: "Algebra and the conjugate",
+        name: "Algebra of Complex Numbers — Conjugates, Powers of i and Cube Roots of Unity",
         description:
-          "Add, multiply, and rationalise a denominator by multiplying by the conjugate. z times its conjugate equals |z| squared — the identity that removes almost every fraction in the chapter.",
+          "Reduce powers of i modulo 4, rationalise by the conjugate, equate real and imaginary parts, evaluate a polynomial at a complex root via its minimal quadratic, and reduce powers of omega modulo 3.",
       },
       {
-        name: "Modulus and argument",
+        name: "Modulus and Argument — Polar Form, De Moivre and Square Roots",
         description:
-          "|z| is the square root of (real part squared plus imaginary part squared). The argument comes from the ratio of the parts AND the quadrant of the point, never from the ratio alone.",
+          "Moduli multiply and divide, so never expand for a modulus. The argument comes from the ratio of the parts AND the quadrant, never the ratio alone. z = r(cos theta + i sin theta) makes powers routine; |z| + z = a + ib has a closed form.",
       },
       {
-        name: "Polar form and De Moivre",
+        name: "Locus in the Argand Plane — Circles, Lines and Greatest/Least Modulus",
         description:
-          "Write z as r(cos theta + i sin theta), then z^n is r^n (cos n theta + i sin n theta). This is what makes high powers and nth roots routine instead of expansive.",
-      },
-      {
-        name: "Cube roots of unity",
-        description:
-          "omega^3 = 1 and 1 + omega + omega^2 = 0. Reduce every exponent modulo 3 first, then use the sum identity to collapse what remains.",
-      },
-      {
-        name: "Locus from a modulus or argument condition",
-        description:
-          "|z - a| = r is a circle; |z - a| = |z - b| is the perpendicular bisector of the segment joining a and b; a fixed argument is a ray. Translate the condition into geometry before doing any algebra.",
-      },
-      {
-        name: "Extremum on a disc",
-        description:
-          "Greatest and least |z| subject to |z - a| = r are |a| + r and |a| - r. Recognise it and the question is one subtraction, not an optimisation.",
+          "|z - a| = r is a circle; |z - a| = |z - b| is the perpendicular bisector; a purely-imaginary quotient is a circle after rationalising; greatest and least |z| on a disc are |a| + r and |a| - r.",
       },
     ],
     traps: [
@@ -542,41 +527,36 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A count of ways — arrangements, selections, seatings, handshakes, or the lines and triangles determined by a set of points.",
     story: [
-      "43 q, 1.00/paper, 42% HARD, and it is the least mechanical chapter on the paper. No formula rescues a misread constraint: once the model is right the arithmetic is trivial, and when the model is wrong the arithmetic is worthless. That is why it is the single question most likely to eat five minutes of a 90-minute paper.",
-      "Selection and Arrangement with Constraints carries 33 of the 43 questions at 42% HARD. The constraints themselves are a short recurring list — certain objects must stay together, certain objects must never be together, some positions are fixed, repetition is or is not allowed — and each has one standard handling. Learning the four handlings is far more productive than grinding assorted problems.",
+      "42 q, 0.98/paper, 40% HARD, and it is the least mechanical chapter on the paper. No formula rescues a misread constraint: once the model is right the arithmetic is trivial, and when the model is wrong the arithmetic is worthless. That is why it is the single question most likely to eat five minutes of a 90-minute paper. Every PYQ is tagged to one of the five notes pages at /notes/mht-cet-maths/permutations-and-combinations.",
+      "The constraint questions — arrangements (10 q, 50% HARD), selections (7 q, 43%) and circular seatings (6 q, 83%) — run on a short recurring list: objects that stay together, objects never together, fixed positions, repeated letters, at least and at most. Each has one standard handling. Learning the handlings is far more productive than grinding assorted problems.",
       "Because there is NO NEGATIVE MARKING, the discipline here is a time cap rather than a skip decision. Give the question ninety seconds; if the model has not resolved by then, mark the option whose order of magnitude matches your partial reasoning and move on. This is the chapter where that rule earns the most, because the downside of persisting is two or three other questions.",
-      "Counting and Geometric Applications (10 q, 40% HARD) is the narrower and more mechanical corner: lines and triangles from n points with collinear subsets subtracted, diagonals of a polygon, and similar. Three or four closed results cover it, so it is worth banking even though the subtopic is small.",
+      "The cheaper corners are the identities page (8 q, none HARD) and the numbers-and-figures page (11 q, 36%): digit counts with a leading-zero exclusion, divisibility by the last digits or the digit sum, handshakes and diagonals as an nC2 equation, and triangles from points with the collinear picks subtracted. Three or four closed results cover them, so they are worth banking even though each is small.",
     ],
     subSkills: [
       {
-        name: "Fundamental counting principle",
+        name: "Fundamental Principle, nPr and nCr — Definitions and Identities",
         description:
-          "Multiply when choices happen in sequence and every stage is required; add when the cases are alternatives that cannot both happen. Deciding add-versus-multiply is the first and most consequential step.",
+          "Multiply stages, add alternatives; nPr is nCr times r factorial; symmetry, Pascal's rule and the ratio of consecutive coefficients settle every equation-style stem; nPr and nCr are defined only for whole numbers n >= r >= 0.",
       },
       {
-        name: "Permutation versus combination",
+        name: "Arrangements with Constraints — Together, Never Together, Fixed Positions and Repeated Letters",
         description:
-          "Order matters means nPr; order does not means nCr; and nPr is nCr times r factorial. Almost every over-count in this chapter is a permutation used where a combination belonged.",
+          "Divide by k! per repeated letter; glue a together-group into a block and permute inside it; keep items apart by complement or by the gaps; fill a fixed position first and LIST the adjacent pairs that remain.",
       },
       {
-        name: "Repetition and identical objects",
+        name: "Selections with Conditions — At Least, At Most, Included and Excluded",
         description:
-          "Arrangements of n objects of which some are identical divide n factorial by the factorials of the repeat counts. Arrangements with unlimited repetition over r places from n symbols are n^r.",
+          "List the cases for at least and at most and add the products of nCr terms; subtract the forbidden selection when it is one simple case; multiply by the team size when a captain is chosen after the team.",
       },
       {
-        name: "Constraint handling",
+        name: "Circular Arrangements",
         description:
-          "Objects that must stay together: glue them into one block, arrange the blocks, then permute inside the block. Objects that must never be together: arrange the rest first, then place them in the gaps. Fixed positions: fill those first and count what is left.",
+          "n distinct people around a table give (n - 1)!; girls apart go into the b gaps between b boys (not b + 1); a glued block of k among n leaves (n - k)! times k!; alternating seats fix the frame.",
       },
       {
-        name: "Circular arrangements",
+        name: "Counting Numbers and Geometric Figures — Digits, Divisibility, Points and Polygons",
         description:
-          "n distinct objects around a circle give (n - 1) factorial, because rotations are the same arrangement. Halve it again when reflections also count as the same, such as an unmarked necklace.",
-      },
-      {
-        name: "Geometric counting",
-        description:
-          "From n points with no three collinear: nC2 lines and nC3 triangles. When m of them ARE collinear, subtract mC2 lines and mC3 triangles and add one line back.",
+          "No leading zero; divisibility by 3 through the digit sum and by 25 through the last two digits; gcd conditions via inclusion-exclusion; nC2 handshakes and diagonals; nC3 triangles minus the collinear picks.",
       },
     ],
     traps: [

@@ -119,6 +119,21 @@ import {
   MHTCET_DETERMINANTS_MATRICES_SLUGS,
 } from "@/app/notes/mht-cet-maths/determinants-and-matrices/_data";
 import {
+  MHTCET_COMPLEX_NUMBERS_CHAPTER,
+  MHTCET_COMPLEX_NUMBERS_NOTES,
+  MHTCET_COMPLEX_NUMBERS_SLUGS,
+} from "@/app/notes/mht-cet-maths/complex-numbers/_data";
+import {
+  MHTCET_PNC_CHAPTER,
+  MHTCET_PNC_NOTES,
+  MHTCET_PNC_SLUGS,
+} from "@/app/notes/mht-cet-maths/permutations-and-combinations/_data";
+import {
+  MHTCET_SRF_CHAPTER,
+  MHTCET_SRF_NOTES,
+  MHTCET_SRF_SLUGS,
+} from "@/app/notes/mht-cet-maths/sets-relations-and-functions/_data";
+import {
   JEE_MATRICES_CHAPTER,
   JEE_MATRICES_NOTES,
   JEE_MATRICES_SLUGS,
@@ -993,6 +1008,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_DETERMINANTS_MATRICES_CHAPTER,
     notes: MHTCET_DETERMINANTS_MATRICES_NOTES,
     slugs: MHTCET_DETERMINANTS_MATRICES_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "complex-numbers",
+    chipLabel: "Complex Numbers notes",
+    chapter: MHTCET_COMPLEX_NUMBERS_CHAPTER,
+    notes: MHTCET_COMPLEX_NUMBERS_NOTES,
+    slugs: MHTCET_COMPLEX_NUMBERS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "permutations-and-combinations",
+    chipLabel: "Permutations and Combinations notes",
+    chapter: MHTCET_PNC_CHAPTER,
+    notes: MHTCET_PNC_NOTES,
+    slugs: MHTCET_PNC_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "sets-relations-and-functions",
+    chipLabel: "Sets, Relations and Functions notes",
+    chapter: MHTCET_SRF_CHAPTER,
+    notes: MHTCET_SRF_NOTES,
+    slugs: MHTCET_SRF_SLUGS,
   },
   {
     examName: "JEE Mains",

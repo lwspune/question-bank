@@ -32,6 +32,9 @@ const ARC_VERIFIED = new Set<string>([
   "definite-integration",
   "applications-of-definite-integral",
   "determinants-and-matrices",
+  "complex-numbers",
+  "permutations-and-combinations",
+  // sets-relations-and-functions has notes but no playbook (below the q/paper line), so nothing to pin here
 ]);
 
 /** Compare on a normalised key — the surfaces differ on case and the Oxford comma. */

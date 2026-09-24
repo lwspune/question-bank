@@ -418,10 +418,11 @@ export const MHT_CET_MATHS: BookDefinition = {
     {
       slug: "complex-numbers",
       name: "Complex Numbers",
-      // 46 q across 2 subtopics, in descending question count.
+      // 45 q across 3 subtopics, in descending question count (2026-09-25 reshape).
       groupSubtopics: [
-        { name: "Algebraic Equations, Locus, and Cube Roots" }, // 24
-        { name: "Modulus, Argument, and Polar Form" }, // 22
+        { name: "Modulus and Argument — Polar Form, De Moivre and Square Roots" }, // 18
+        { name: "Algebra of Complex Numbers — Conjugates, Powers of i and Cube Roots of Unity" }, // 15
+        { name: "Locus in the Argand Plane — Circles, Lines and Greatest/Least Modulus" }, // 12
       ],
     },
     {
@@ -454,21 +455,24 @@ export const MHT_CET_MATHS: BookDefinition = {
     {
       slug: "permutations-and-combinations",
       name: "Permutations and Combinations",
-      // 43 q across 2 subtopics, in descending question count.
+      // 42 q across 5 subtopics, in descending question count (2026-09-25 reshape).
       groupSubtopics: [
-        { name: "Selection and Arrangement with Constraints" }, // 33
-        { name: "Counting and Geometric Applications" }, // 10
+        { name: "Counting Numbers and Geometric Figures — Digits, Divisibility, Points and Polygons" }, // 11
+        { name: "Arrangements with Constraints — Together, Never Together, Fixed Positions and Repeated Letters" }, // 10
+        { name: "Fundamental Principle, nPr and nCr — Definitions and Identities" }, // 8
+        { name: "Selections with Conditions — At Least, At Most, Included and Excluded" }, // 7
+        { name: "Circular Arrangements" }, // 6
       ],
     },
     {
       slug: "sets-relations-and-functions",
       name: "Sets, Relations and Functions",
-      // 41 q across 4 subtopics, in descending question count.
+      // 40 q across 4 subtopics, in descending question count (2026-09-25 reshape).
       groupSubtopics: [
-        { name: "Domain and Range of Functions" }, // 17
-        { name: "Composition of Functions" }, // 12
-        { name: "Inverse, Composite, and Special Function Equations" }, // 9
-        { name: "Sets, Inclusion-Exclusion, and Cartesian Products" }, // 3
+        { name: "Domain and Range — Where a Formula Is Defined and What It Produces" }, // 12
+        { name: "Composite Functions — f∘g, Iteration and Functional Identities" }, // 11
+        { name: "Sets, Relations and Types of Functions — One-One, Onto and the Greatest-Integer Equation" }, // 10
+        { name: "Inverse Functions — Finding f⁻¹ and Solving f(x) = f⁻¹(x)" }, // 7
       ],
     },
     {
