@@ -489,6 +489,11 @@ import {
   IONIC_EQUILIBRIA_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/ionic-equilibria/_data";
 import {
+  MHTCET_SOLUTIONS_CHAPTER,
+  MHTCET_SOLUTIONS_NOTES,
+  MHTCET_SOLUTIONS_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/solutions/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1187,6 +1192,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: IONIC_EQUILIBRIA_CHAPTER,
     notes: IONIC_EQUILIBRIA_NOTES,
     slugs: IONIC_EQUILIBRIA_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "solutions",
+    chipLabel: "Solutions notes",
+    chapter: MHTCET_SOLUTIONS_CHAPTER,
+    notes: MHTCET_SOLUTIONS_NOTES,
+    slugs: MHTCET_SOLUTIONS_SLUGS,
   },
   {
     examName: "NDA",
