@@ -994,6 +994,253 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "14.1 Probability — A Theoretical Approach", label: "Solved Examples", kind: "solved_example", refPrefixes: ["14.1 Eg"] },
     { group: "14.1 Probability — A Theoretical Approach", label: "Exercise 14.1", kind: "exercise", refPrefixes: ["Ex 14.1 Q"] },
   ],
+
+  // ══ CLASS 10 SCIENCE ═══════════════════════════════════════════════════════
+  // Science outlines look different from every Maths one above, because the book
+  // is built differently:
+  //
+  //  - **The mid-chapter QUESTIONS boxes are blocks in their own right.** They
+  //    are numbered question sets printed between the taught sections, so in
+  //    physical reading order they come BEFORE the end-of-chapter exercise. Their
+  //    kind is `exercise` — `section_kind` has no in-text member and does not
+  //    need one, since what the reader groups by is `section_group`.
+  //  - **There is exactly ONE exercise per chapter**, headed a bare EXERCISES, so
+  //    its block is labelled "Exercises" and its group is not a § number.
+  //  - **No `solved_example` blocks outside Ch.9, 11 and 12** — Chemistry,
+  //    Biology and Environment chapters carry no worked examples at all.
+  //
+  // Prefix safety is the same argument as the Maths lane: "IT 1.1 Q" is not a
+  // prefix of "IT 1.10 Q" (space vs "0"), and the two lanes cannot collide
+  // because one starts "IT " and the other "Ex ". Asserted in
+  // tests/ncert-science-lib.test.ts rather than left to inspection.
+
+  // ── Ch.1 Chemical Reactions and Equations (10th Science).
+  //    THREE in-text boxes then the exercise. Box 3's PLACEMENT IS THE ODD ONE
+  //    and it is not an error: it asks about §1.2.3-1.2.5 (displacement, double
+  //    displacement, redox) but the book PRINTS it at the foot of page 13, after
+  //    §1.3.1 Corrosion and §1.3.2 Rancidity. Verified on the render. The /board
+  //    reader is book-faithful, so it is grouped where it is printed, not where
+  //    its content belongs — the conceptual axis is `subtopic`, and those rows
+  //    carry the displacement/redox subtopics exactly as they should. This is the
+  //    two-orthogonal-axes rule in CLAUDE.md doing its job; do not "fix" it.
+  c10SciChemReactions: [
+    { group: "1.1 Chemical Equations", label: "Questions", kind: "exercise", refPrefixes: ["IT 1.1 Q"] },
+    { group: "1.2 Types of Chemical Reactions", label: "Questions", kind: "exercise", refPrefixes: ["IT 1.2 Q"] },
+    { group: "1.3 Have You Observed the Effects of Oxidation Reactions in Everyday Life?", label: "Questions", kind: "exercise", refPrefixes: ["IT 1.3 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 1 Q"] },
+  ],
+
+  // ── Ch.11 Electricity (10th Science). The first Science chapter with worked
+  //    examples — THIRTEEN of them, the most in the book, and the only shape on
+  //    this lane where a `solved_example` block appears at all.
+  //
+  //    Examples band to the in-text box they PRECEDE, so each taught section
+  //    contributes a Solved-Examples block and then its Questions box, in that
+  //    reading order. The mapping was read off the rendered pages, not inferred:
+  //    Eg 11.1 → box 1 · 11.2 → box 2 · 11.3-11.6 → box 3 · 11.7 → box 4 ·
+  //    11.8-11.9 → box 5 · 11.10-11.11 → box 6 · 11.12-11.13 → box 7.
+  //
+  //    §11.3 Circuit Diagram carries no questions of its own — box 2 closes
+  //    §11.2 and sits on the page where §11.3 opens — so it contributes no
+  //    block, and the outline is 13 blocks rather than 16.
+  c10SciElectricity: [
+    { group: "11.1 Electric Current and Circuit", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.1 Eg."] },
+    { group: "11.1 Electric Current and Circuit", label: "Questions", kind: "exercise", refPrefixes: ["IT 11.1 Q"] },
+    { group: "11.2 Electric Potential and Potential Difference", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.2 Eg."] },
+    { group: "11.2 Electric Potential and Potential Difference", label: "Questions", kind: "exercise", refPrefixes: ["IT 11.2 Q"] },
+    { group: "11.4-11.5 Ohm's Law and the Factors on which Resistance Depends", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.3 Eg."] },
+    { group: "11.4-11.5 Ohm's Law and the Factors on which Resistance Depends", label: "Questions", kind: "exercise", refPrefixes: ["IT 11.3 Q"] },
+    { group: "11.6.1 Resistors in Series", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.4 Eg."] },
+    { group: "11.6.1 Resistors in Series", label: "Questions", kind: "exercise", refPrefixes: ["IT 11.4 Q"] },
+    { group: "11.6.2 Resistors in Parallel", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.5 Eg."] },
+    { group: "11.6.2 Resistors in Parallel", label: "Questions", kind: "exercise", refPrefixes: ["IT 11.5 Q"] },
+    { group: "11.7 Heating Effect of Electric Current", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.6 Eg."] },
+    { group: "11.7 Heating Effect of Electric Current", label: "Questions", kind: "exercise", refPrefixes: ["IT 11.6 Q"] },
+    { group: "11.8 Electric Power", label: "Solved Examples", kind: "solved_example", refPrefixes: ["11.7 Eg."] },
+    { group: "11.8 Electric Power", label: "Questions", kind: "exercise", refPrefixes: ["IT 11.7 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 11 Q"] },
+  ],
+
+  // ── Ch.8 Heredity (10th Science). The shortest chapter in the book: two taught
+  //    sections, one in-text box each, then a four-item exercise. No worked
+  //    examples (none outside Ch.9, 11, 12).
+  c10SciHeredity: [
+    { group: "8.1 Accumulation of Variation During Reproduction", label: "Questions", kind: "exercise", refPrefixes: ["IT 8.1 Q"] },
+    { group: "8.2 Heredity", label: "Questions", kind: "exercise", refPrefixes: ["IT 8.2 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 8 Q"] },
+  ],
+
+  // ── Ch.13 Our Environment (10th Science). Three in-text boxes: one closing
+  //    §13.1, then one each after §13.2.2's two halves (biodegradability, then
+  //    garbage management). §13.2 IS printed — a single-line heading scan misses
+  //    it because the title wraps; see the config header.
+  // ── Ch.2 Acids, Bases and Salts (10th Science). FIVE in-text boxes, and the
+  //    first one is the reason questionBoxRe exists: it holds a single item and
+  //    is therefore headed QUESTION, singular, which the old plural-only probe
+  //    could not see (Ch.12 p1 is the only other such box in the book).
+  //
+  //    Box 1 is printed at the TOP of book page 18, BEFORE the §2.1 heading, so
+  //    it belongs to the untitled chapter opening rather than to §2.1 — the same
+  //    print-position rule Ch.1's box 3 follows.
+  //
+  //    THE BLOCK-SORTED TEXT DUMP PUTS TWO OF THESE BOXES IN THE WRONG SECTION,
+  //    and only the render says so. Boxes 3 and 4 each sit at the top of a page
+  //    whose next heading is the FOLLOWING section, so a text read files them
+  //    under §2.3 and §2.4; the rendered pages show both closing the section
+  //    before. §2.4.2 pH of Salts is a real section that never appears in the
+  //    derived anchor list, because its title opens with a lowercase "pH" —
+  //    rows about salt pH cite §2.4 instead. Loosening the heading regex to
+  //    admit it was measured and rejected: across all 13 chapters it buys that
+  //    one heading and admits three phantoms, two of them in-chapter.
+  c10SciAcidsBases: [
+    { group: "Introduction", label: "Question", kind: "exercise", refPrefixes: ["IT 2.1 Q"] },
+    { group: "2.1 Understanding the Chemical Properties of Acids and Bases", label: "Questions", kind: "exercise", refPrefixes: ["IT 2.2 Q"] },
+    { group: "2.2 What do all Acids and all Bases have in Common?", label: "Questions", kind: "exercise", refPrefixes: ["IT 2.3 Q"] },
+    { group: "2.3 How Strong are Acid or Base Solutions?", label: "Questions", kind: "exercise", refPrefixes: ["IT 2.4 Q"] },
+    { group: "2.4 More about Salts", label: "Questions", kind: "exercise", refPrefixes: ["IT 2.5 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 2 Q"] },
+  ],
+
+  // ── Ch.3 Metals and Non-metals (10th Science). The cleanest shape on this
+  //    lane: exactly one in-text box per top-level section, then the exercise.
+  //
+  //    Box placement was settled by BLOCK GEOMETRY rather than by reading the
+  //    text stream or squinting at a render. On every page carrying both, the
+  //    box's y sits ABOVE the next section heading's y — p3 489 vs §3.2 at 630,
+  //    p12 363 vs §3.4 at 487, p16 126 vs §3.5 at 249 — so each box CLOSES the
+  //    section before it. That now holds for all eight boxes checked across
+  //    Ch.2 and Ch.3, and it is the reliable way to answer the question: the
+  //    block-sorted dump files two of Ch.2's boxes under the FOLLOWING section
+  //    and would have done the same here.
+  c10SciMetalsNonmetals: [
+    { group: "3.1 Physical Properties", label: "Questions", kind: "exercise", refPrefixes: ["IT 3.1 Q"] },
+    { group: "3.2 Chemical Properties of Metals", label: "Questions", kind: "exercise", refPrefixes: ["IT 3.2 Q"] },
+    { group: "3.3 How do Metals and Non-metals React?", label: "Questions", kind: "exercise", refPrefixes: ["IT 3.3 Q"] },
+    { group: "3.4 Occurrence of Metals", label: "Questions", kind: "exercise", refPrefixes: ["IT 3.4 Q"] },
+    { group: "3.5 Corrosion", label: "Questions", kind: "exercise", refPrefixes: ["IT 3.5 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 3 Q"] },
+  ],
+
+  // ── Ch.4 Carbon and its Compounds (10th Science). One in-text box per
+  //    top-level section, same clean shape as Ch.3, placement settled by block
+  //    geometry (box y above the next heading's y on every page carrying both).
+  //
+  //    **BOX 2 STRADDLES A PAGE BREAK** — items 1-3 close page 68, items 4-5 open
+  //    page 69, and Q5's three compounds are printed as STRUCTURES that the text
+  //    layer drops entirely (it emits "(ii)" and "(iii)" followed by nothing).
+  //    Both the overflow and the three structures were read off the render; the
+  //    text stream alone would have shipped a three-item box.
+  c10SciCarbon: [
+    { group: "4.1 Bonding in Carbon — The Covalent Bond", label: "Questions", kind: "exercise", refPrefixes: ["IT 4.1 Q"] },
+    { group: "4.2 Versatile Nature of Carbon", label: "Questions", kind: "exercise", refPrefixes: ["IT 4.2 Q"] },
+    { group: "4.3 Chemical Properties of Carbon Compounds", label: "Questions", kind: "exercise", refPrefixes: ["IT 4.3 Q"] },
+    { group: "4.4 Some Important Carbon Compounds — Ethanol and Ethanoic Acid", label: "Questions", kind: "exercise", refPrefixes: ["IT 4.4 Q"] },
+    { group: "4.5 Soaps and Detergents", label: "Questions", kind: "exercise", refPrefixes: ["IT 4.5 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 4 Q"] },
+  ],
+
+  // ── Ch.5 Life Processes (10th Science). One in-text box per top-level
+  //    section, placement settled by block geometry; box 5 is the one that sits
+  //    BELOW its section heading (§5.5.2 at y=68, box at y=388) rather than
+  //    above the next one, because §5.5 is the last section in the chapter.
+  //
+  //    All four exercise MCQs print their options in TWO COLUMNS, so the text
+  //    layer emits them (a), (c), (b), (d). Every option was slotted from the
+  //    render's printed label — a mis-slotted option is the one defect a blind
+  //    derivation provably cannot catch, since the reasoning would confirm the
+  //    right TEXT under the wrong LETTER.
+  c10SciLifeProcesses: [
+    { group: "5.1 What are Life Processes?", label: "Questions", kind: "exercise", refPrefixes: ["IT 5.1 Q"] },
+    { group: "5.2 Nutrition", label: "Questions", kind: "exercise", refPrefixes: ["IT 5.2 Q"] },
+    { group: "5.3 Respiration", label: "Questions", kind: "exercise", refPrefixes: ["IT 5.3 Q"] },
+    { group: "5.4 Transportation", label: "Questions", kind: "exercise", refPrefixes: ["IT 5.4 Q"] },
+    { group: "5.5 Excretion", label: "Questions", kind: "exercise", refPrefixes: ["IT 5.5 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 5 Q"] },
+  ],
+
+  // ── Ch.6 Control and Coordination (10th Science). The shortest chapter on
+  //    this lane at 13 pages, with three in-text boxes — one per top-level
+  //    section, placement confirmed by block geometry as usual.
+  c10SciControlCoordination: [
+    { group: "6.1 Animals — Nervous System", label: "Questions", kind: "exercise", refPrefixes: ["IT 6.1 Q"] },
+    { group: "6.2 Coordination in Plants", label: "Questions", kind: "exercise", refPrefixes: ["IT 6.2 Q"] },
+    { group: "6.3 Hormones in Animals", label: "Questions", kind: "exercise", refPrefixes: ["IT 6.3 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 6 Q"] },
+  ],
+
+  // ── Ch.7 How do Organisms Reproduce? (10th Science). Three in-text boxes,
+  //    one per top-level section, placement confirmed by block geometry.
+  c10SciReproduction: [
+    { group: "7.1 Do Organisms Create Exact Copies of Themselves?", label: "Questions", kind: "exercise", refPrefixes: ["IT 7.1 Q"] },
+    { group: "7.2 Modes of Reproduction Used by Single Organisms", label: "Questions", kind: "exercise", refPrefixes: ["IT 7.2 Q"] },
+    { group: "7.3 Sexual Reproduction", label: "Questions", kind: "exercise", refPrefixes: ["IT 7.3 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 7 Q"] },
+  ],
+
+  // ── Ch.9 Light — Reflection and Refraction (10th Science). FOUR worked
+  //    examples, the second-richest example set on this lane after Ch.11, and
+  //    the chapter whose KEY reaches furthest: 16 of 17 exercise items (94%),
+  //    tied with Ch.11. Every numerical was derived independently in sympy
+  //    before the key was consulted — data/c10SciLight.derivation.json.
+  //
+  //    Examples band to the box they PRECEDE, so Eg 9.1-9.2 (p144) carry the
+  //    "9.2 Eg." prefix for box 2 and Eg 9.3-9.4 (p156) carry "9.4 Eg." for
+  //    box 4 — the boxes they respectively lead into, not the sections they
+  //    are printed in.
+  c10SciLight: [
+    { group: "9.2 Spherical Mirrors", label: "Questions", kind: "exercise", refPrefixes: ["IT 9.1 Q"] },
+    { group: "9.2.4 Mirror Formula and Magnification", label: "Solved Examples", kind: "solved_example", refPrefixes: ["9.2 Eg."] },
+    { group: "9.2.4 Mirror Formula and Magnification", label: "Questions", kind: "exercise", refPrefixes: ["IT 9.2 Q"] },
+    { group: "9.3 Refraction of Light", label: "Questions", kind: "exercise", refPrefixes: ["IT 9.3 Q"] },
+    { group: "9.3.7-9.3.8 Lens Formula, Magnification and Power of a Lens", label: "Solved Examples", kind: "solved_example", refPrefixes: ["9.4 Eg."] },
+    { group: "9.3.7-9.3.8 Lens Formula, Magnification and Power of a Lens", label: "Questions", kind: "exercise", refPrefixes: ["IT 9.4 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 9 Q"] },
+  ],
+
+  c10SciOurEnvironment: [
+    { group: "13.1 Eco-system — What are its Components?", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.1 Q"] },
+    { group: "13.2 How do our Activities Affect the Environment?", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.2 Q"] },
+    { group: "13.2.2 Managing the Garbage we Produce", label: "Questions", kind: "exercise", refPrefixes: ["IT 13.3 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 13 Q"] },
+  ],
+
+  // ── Ch.10 The Human Eye and the Colourful World (10th Science). ONE in-text
+  //    box in the whole chapter — the fewest of any — sitting after §10.2, and
+  //    then the exercise. §10.3 to §10.6 carry no questions of their own.
+  c10SciHumanEye: [
+    { group: "10.2 Defects of Vision and their Correction", label: "Questions", kind: "exercise", refPrefixes: ["IT 10.1 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 10 Q"] },
+  ],
+
+  // ── Ch.12 Magnetic Effects of Electric Current (10th Science). FIVE in-text
+  //    boxes and two worked examples, banded to boxes 2 and 4.
+  //
+  //    **THIS CHAPTER SHIPPED WRONG AND WAS REPAIRED 2026-09-21.** Its box 1 —
+  //    one item, "Why does a compass needle get deflected when brought near a bar
+  //    magnet?", closing the §12.1 opening prose — is headed QUESTION, singular,
+  //    which `spacedHeadingRe("QUESTIONS")` cannot match. That regex fed BOTH
+  //    science-items.ts and my own page survey, so the chapter reconciled "in-text
+  //    boxes: book 4, transcribed 4" with its first box invisible to both sides of
+  //    the check, and every in-text row was banded one box too low. A shared blind
+  //    spot reads exactly like agreement. See questionBoxRe() in scienceLib.ts.
+  //
+  //    **BOX 3 STRADDLES A PAGE BREAK** (box 2 under the old numbering) — its Q3,
+  //    an MCQ on the field inside a solenoid, sits alone at the top of page 202
+  //    with the box border carried over. The first read of the render stopped at
+  //    the apparent box edge on the previous page and transcribed two items;
+  //    science-items.ts reported the third as missing and was right. Same
+  //    page-overflow class that cost the Maths lane Ch.3 Ex 3.2 Q3(vi) and
+  //    Ch.7 Ex 7.1 Q9-Q10. Two findings on one chapter, both dismissed once.
+  c10SciMagneticEffects: [
+    { group: "12.1 Magnetic Field and Field Lines", label: "Question", kind: "exercise", refPrefixes: ["IT 12.1 Q"] },
+    { group: "12.2.2 Right-Hand Thumb Rule", label: "Solved Examples", kind: "solved_example", refPrefixes: ["12.2 Eg."] },
+    { group: "12.2.2 Right-Hand Thumb Rule", label: "Questions", kind: "exercise", refPrefixes: ["IT 12.2 Q"] },
+    { group: "12.2.4 Magnetic Field due to a Current in a Solenoid", label: "Questions", kind: "exercise", refPrefixes: ["IT 12.3 Q"] },
+    { group: "12.3 Force on a Current-Carrying Conductor in a Magnetic Field", label: "Solved Examples", kind: "solved_example", refPrefixes: ["12.4 Eg."] },
+    { group: "12.3 Force on a Current-Carrying Conductor in a Magnetic Field", label: "Questions", kind: "exercise", refPrefixes: ["IT 12.4 Q"] },
+    { group: "12.4 Domestic Electric Circuits", label: "Questions", kind: "exercise", refPrefixes: ["IT 12.5 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 12 Q"] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

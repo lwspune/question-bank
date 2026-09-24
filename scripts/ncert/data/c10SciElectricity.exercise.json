@@ -1,0 +1,262 @@
+[
+  {
+    "ref": "Ex 11 Q1",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Resistors in Series and Parallel",
+    "difficulty": "MODERATE",
+    "stem": "A piece of wire of resistance \\(R\\) is cut into five equal parts. These parts are then connected in parallel. If the equivalent resistance of this combination is \\(R'\\), then the ratio \\(R/R'\\) is –",
+    "options": [
+      { "label": "A", "text": "\\(1/25\\)" },
+      { "label": "B", "text": "\\(1/5\\)" },
+      { "label": "C", "text": "\\(5\\)" },
+      { "label": "D", "text": "\\(25\\)" }
+    ],
+    "answer": "D",
+    "solution": "Resistance is proportional to length, so cutting the wire into five equal parts gives five resistors of \\(R/5\\) each.\n\nFive equal resistors in parallel give one fifth of the individual value:\n\n\\(R' = \\dfrac{R/5}{5} = \\dfrac{R}{25}\\)\n\nTherefore\n\n\\(\\dfrac{R}{R'} = 25\\)",
+    "groundedIn": "§11.5, Eq. (11.10) for length-proportionality, and §11.6.2, Eq. (11.18) for the parallel combination."
+  },
+  {
+    "ref": "Ex 11 Q2",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Electric Power and Energy",
+    "difficulty": "EASY",
+    "stem": "Which of the following terms does not represent electrical power in a circuit?",
+    "options": [
+      { "label": "A", "text": "\\(I^2R\\)" },
+      { "label": "B", "text": "\\(IR^2\\)" },
+      { "label": "C", "text": "\\(VI\\)" },
+      { "label": "D", "text": "\\(V^2/R\\)" }
+    ],
+    "answer": "B",
+    "solution": "The three standard expressions for electric power are\n\n\\(P = VI = I^2R = \\dfrac{V^2}{R}\\)\n\nSo \\(I^2R\\), \\(VI\\) and \\(V^2/R\\) all represent power.\n\n\\(IR^2\\) does not. Substituting \\(V = IR\\) into none of the forms produces it, and a units check settles it: \\(IR^2\\) has units \\(\\text{A}\\,\\Omega^2\\), not watts.",
+    "groundedIn": "§11.8, Eq. (11.22) \\(P = VI = I^2R = V^2/R\\)."
+  },
+  {
+    "ref": "Ex 11 Q3",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Electric Power and Energy",
+    "difficulty": "MODERATE",
+    "stem": "An electric bulb is rated 220 V and 100 W. When it is operated on 110 V, the power consumed will be –",
+    "options": [
+      { "label": "A", "text": "100 W" },
+      { "label": "B", "text": "75 W" },
+      { "label": "C", "text": "50 W" },
+      { "label": "D", "text": "25 W" }
+    ],
+    "answer": "D",
+    "solution": "The resistance of the bulb is fixed by its rating:\n\n\\(R = \\dfrac{V^2}{P} = \\dfrac{(220\\,\\text{V})^2}{100\\,\\text{W}} = 484\\,\\Omega\\)\n\nAt 110 V the same resistance gives\n\n\\(P' = \\dfrac{V'^2}{R} = \\dfrac{(110\\,\\text{V})^2}{484\\,\\Omega} = \\dfrac{12100}{484} = 25\\,\\text{W}\\)\n\nHalving the voltage quarters the power, because \\(P \\propto V^2\\) at constant resistance. The common mistake is to halve the power to 50 W.",
+    "groundedIn": "§11.8, Eq. (11.22) \\(P = V^2/R\\)."
+  },
+  {
+    "ref": "Ex 11 Q4",
+    "bucket": "exercise-mcq",
+    "format": "mcq",
+    "subtopic": "Heating Effect of Electric Current",
+    "difficulty": "HARD",
+    "stem": "Two conducting wires of the same material and of equal lengths and equal diameters are first connected in series and then parallel in a circuit across the same potential difference. The ratio of heat produced in series and parallel combinations would be –",
+    "options": [
+      { "label": "A", "text": "1:2" },
+      { "label": "B", "text": "2:1" },
+      { "label": "C", "text": "1:4" },
+      { "label": "D", "text": "4:1" }
+    ],
+    "answer": "C",
+    "solution": "The two wires are identical; let each have resistance \\(R\\).\n\nIn series: \\(R_s = 2R\\). In parallel: \\(R_p = R/2\\).\n\nThe potential difference \\(V\\) and the time \\(t\\) are the same in both cases, so use the form of Joule's law that holds \\(V\\) fixed:\n\n\\(H = \\dfrac{V^2 t}{R}\\)\n\n\\(\\dfrac{H_s}{H_p} = \\dfrac{V^2 t / R_s}{V^2 t / R_p} = \\dfrac{R_p}{R_s} = \\dfrac{R/2}{2R} = \\dfrac{1}{4}\\)\n\nSo the ratio is **1 : 4**. Note that \\(H = I^2Rt\\) would mislead here, because the current is *not* the same in the two arrangements — the potential difference is.",
+    "groundedIn": "§11.7, Eq. (11.20)-(11.21), combined with the series and parallel rules of §11.6.1 and §11.6.2."
+  },
+
+  {
+    "ref": "Ex 11 Q5",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Potential Difference",
+    "difficulty": "EASY",
+    "stem": "How is a voltmeter connected in the circuit to measure the potential difference between two points?",
+    "solution": "A voltmeter is always connected **in parallel**, across the two points between which the potential difference is to be measured.\n\nIts positive terminal goes to the point at higher potential. A voltmeter is built with a very high resistance so that it draws almost no current itself and therefore does not disturb the circuit it is measuring.",
+    "groundedIn": "§11.2 — 'The voltmeter is always connected in parallel across the points between which the potential difference is to be measured.'"
+  },
+  {
+    "ref": "Ex 11 Q6",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Resistance and Resistivity",
+    "difficulty": "HARD",
+    "stem": "A copper wire has diameter 0.5 mm and resistivity of \\(1.6 \\times 10^{-8}\\,\\Omega\\,\\text{m}\\). What will be the length of this wire to make its resistance 10 \\(\\Omega\\)? How much does the resistance change if the diameter is doubled?",
+    "solution": "Radius \\(r = \\dfrac{0.5\\,\\text{mm}}{2} = 0.25\\,\\text{mm} = 2.5 \\times 10^{-4}\\,\\text{m}\\).\n\nArea of cross-section:\n\n\\(A = \\pi r^2 = \\pi (2.5 \\times 10^{-4})^2 = 1.96 \\times 10^{-7}\\,\\text{m}^2\\)\n\nFrom \\(R = \\rho l / A\\),\n\n\\(l = \\dfrac{RA}{\\rho} = \\dfrac{10\\,\\Omega \\times 1.96 \\times 10^{-7}\\,\\text{m}^2}{1.6 \\times 10^{-8}\\,\\Omega\\,\\text{m}} = 122.7\\,\\text{m}\\)\n\n**If the diameter is doubled**, the area of cross-section becomes four times as large. Since \\(R \\propto 1/A\\) for the same length and material, the resistance becomes **one quarter** of its former value, that is \\(2.5\\,\\Omega\\).",
+    "groundedIn": "§11.5, Eq. (11.10) \\(R = \\rho l / A\\)."
+  },
+  {
+    "ref": "Ex 11 Q7",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Ohm's Law",
+    "difficulty": "MODERATE",
+    "stem": "The values of current \\(I\\) flowing in a given resistor for the corresponding values of potential difference \\(V\\) across the resistor are given below –\n\n| \\(I\\) (amperes) | 0.5 | 1.0 | 2.0 | 3.0 | 4.0 |\n|---|---|---|---|---|---|\n| \\(V\\) (volts) | 1.6 | 3.4 | 6.7 | 10.2 | 13.2 |\n\nPlot a graph between \\(V\\) and \\(I\\) and calculate the resistance of that resistor.",
+    "solution": "Plot \\(V\\) on the vertical axis against \\(I\\) on the horizontal axis. The points lie very nearly on a straight line through the origin, which is what Ohm's law predicts: \\(V \\propto I\\).\n\nThe resistance is the slope of that line, \\(R = V/I\\). Taking each pair in turn:\n\n| \\(I\\) (A) | 0.5 | 1.0 | 2.0 | 3.0 | 4.0 |\n|---|---|---|---|---|---|\n| \\(V/I\\) (\\(\\Omega\\)) | 3.2 | 3.4 | 3.35 | 3.4 | 3.3 |\n\nThe mean value is\n\n\\(R = \\dfrac{3.2 + 3.4 + 3.35 + 3.4 + 3.3}{5} = \\dfrac{16.65}{5} = 3.33\\,\\Omega\\)\n\nSo the resistance of the resistor is about \\(3.3\\,\\Omega\\). The small scatter is experimental error, not a failure of Ohm's law.",
+    "groundedIn": "§11.4 Ohm's law — the \\(V\\)-\\(I\\) graph of a metallic conductor is a straight line whose slope is the resistance."
+  },
+  {
+    "ref": "Ex 11 Q8",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Ohm's Law",
+    "difficulty": "EASY",
+    "stem": "When a 12 V battery is connected across an unknown resistor, there is a current of 2.5 mA in the circuit. Find the value of the resistance of the resistor.",
+    "solution": "\\(V = 12\\,\\text{V}\\), \\(I = 2.5\\,\\text{mA} = 2.5 \\times 10^{-3}\\,\\text{A}\\).\n\nFrom Ohm's law,\n\n\\(R = \\dfrac{V}{I} = \\dfrac{12\\,\\text{V}}{2.5 \\times 10^{-3}\\,\\text{A}} = 4800\\,\\Omega = 4.8\\,\\text{k}\\Omega\\)",
+    "groundedIn": "§11.4 Ohm's law, Eq. (11.5)."
+  },
+  {
+    "ref": "Ex 11 Q9",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Resistors in Series and Parallel",
+    "difficulty": "MODERATE",
+    "stem": "A battery of 9 V is connected in series with resistors of 0.2 \\(\\Omega\\), 0.3 \\(\\Omega\\), 0.4 \\(\\Omega\\), 0.5 \\(\\Omega\\) and 12 \\(\\Omega\\), respectively. How much current would flow through the 12 \\(\\Omega\\) resistor?",
+    "solution": "In a series circuit the same current flows through every resistor, so the current through the 12 \\(\\Omega\\) resistor is just the circuit current.\n\nTotal resistance:\n\n\\(R_s = 0.2 + 0.3 + 0.4 + 0.5 + 12 = 13.4\\,\\Omega\\)\n\nCurrent:\n\n\\(I = \\dfrac{V}{R_s} = \\dfrac{9\\,\\text{V}}{13.4\\,\\Omega} = 0.67\\,\\text{A}\\)\n\nSo about \\(0.67\\,\\text{A}\\) flows through the 12 \\(\\Omega\\) resistor — and through every other resistor too.",
+    "groundedIn": "§11.6.1, Eq. (11.14), and the statement there that the current is the same through each resistor in series."
+  },
+  {
+    "ref": "Ex 11 Q10",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Resistors in Series and Parallel",
+    "difficulty": "MODERATE",
+    "stem": "How many 176 \\(\\Omega\\) resistors (in parallel) are required to carry 5 A on a 220 V line?",
+    "solution": "The combination must have a total resistance of\n\n\\(R = \\dfrac{V}{I} = \\dfrac{220\\,\\text{V}}{5\\,\\text{A}} = 44\\,\\Omega\\)\n\nFor \\(n\\) equal resistors of \\(176\\,\\Omega\\) in parallel,\n\n\\(R_p = \\dfrac{176}{n}\\)\n\nSetting \\(\\dfrac{176}{n} = 44\\) gives\n\n\\(n = \\dfrac{176}{44} = 4\\)\n\nSo **four** 176 \\(\\Omega\\) resistors are required.",
+    "groundedIn": "§11.6.2, Eq. (11.18), with Ohm's law from §11.4."
+  },
+  {
+    "ref": "Ex 11 Q11",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Resistors in Series and Parallel",
+    "difficulty": "HARD",
+    "stem": "Show how you would connect three resistors, each of resistance 6 \\(\\Omega\\), so that the combination has a resistance of (i) 9 \\(\\Omega\\), (ii) 4 \\(\\Omega\\).",
+    "solution": "**(i) 9 \\(\\Omega\\)** — connect two of the resistors in parallel, and the third in series with that pair.\n\nThe parallel pair:\n\n\\(\\dfrac{1}{R_p} = \\dfrac{1}{6} + \\dfrac{1}{6} = \\dfrac{2}{6}\\), so \\(R_p = 3\\,\\Omega\\)\n\nIn series with the third:\n\n\\(R = 3\\,\\Omega + 6\\,\\Omega = 9\\,\\Omega\\)\n\n**(ii) 4 \\(\\Omega\\)** — connect two of the resistors in series, and the third in parallel across that pair.\n\nThe series pair:\n\n\\(R_s = 6\\,\\Omega + 6\\,\\Omega = 12\\,\\Omega\\)\n\nIn parallel with the third:\n\n\\(\\dfrac{1}{R} = \\dfrac{1}{12} + \\dfrac{1}{6} = \\dfrac{1 + 2}{12} = \\dfrac{3}{12}\\), so \\(R = 4\\,\\Omega\\)",
+    "groundedIn": "§11.6.1, Eq. (11.14) and §11.6.2, Eq. (11.18); Example 11.9 is the model for mixing the two rules."
+  },
+  {
+    "ref": "Ex 11 Q12",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Electric Power and Energy",
+    "difficulty": "MODERATE",
+    "stem": "Several electric bulbs designed to be used on a 220 V electric supply line, are rated 10 W. How many lamps can be connected in parallel with each other across the two wires of 220 V line if the maximum allowable current is 5 A?",
+    "solution": "Current drawn by one lamp:\n\n\\(I_1 = \\dfrac{P}{V} = \\dfrac{10\\,\\text{W}}{220\\,\\text{V}} = \\dfrac{1}{22}\\,\\text{A}\\)\n\nThe lamps are in parallel, so the total current is the sum of the individual currents. If \\(n\\) lamps draw the maximum allowable 5 A,\n\n\\(n = \\dfrac{5\\,\\text{A}}{1/22\\,\\text{A}} = 5 \\times 22 = 110\\)\n\nSo **110 lamps** can be connected.",
+    "groundedIn": "§11.8, Eq. (11.22) \\(P = VI\\), and §11.6.2, Eq. (11.15) — the total current is the sum of the branch currents."
+  },
+  {
+    "ref": "Ex 11 Q13",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Resistors in Series and Parallel",
+    "difficulty": "MODERATE",
+    "stem": "A hot plate of an electric oven connected to a 220 V line has two resistance coils A and B, each of 24 \\(\\Omega\\) resistance, which may be used separately, in series, or in parallel. What are the currents in the three cases?",
+    "solution": "**Separately** — one coil of 24 \\(\\Omega\\) across 220 V:\n\n\\(I = \\dfrac{220}{24} = 9.2\\,\\text{A}\\)\n\n**In series** — \\(R_s = 24 + 24 = 48\\,\\Omega\\):\n\n\\(I = \\dfrac{220}{48} = 4.6\\,\\text{A}\\)\n\n**In parallel** — \\(\\dfrac{1}{R_p} = \\dfrac{1}{24} + \\dfrac{1}{24} = \\dfrac{2}{24}\\), so \\(R_p = 12\\,\\Omega\\):\n\n\\(I = \\dfrac{220}{12} = 18.3\\,\\text{A}\\)\n\nThe parallel arrangement draws the largest current and so gives the hottest setting.",
+    "groundedIn": "§11.6.1, Eq. (11.14) and §11.6.2, Eq. (11.18), with Ohm's law from §11.4."
+  },
+  {
+    "ref": "Ex 11 Q14",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Electric Power and Energy",
+    "difficulty": "HARD",
+    "stem": "Compare the power used in the 2 \\(\\Omega\\) resistor in each of the following circuits: (i) a 6 V battery in series with 1 \\(\\Omega\\) and 2 \\(\\Omega\\) resistors, and (ii) a 4 V battery in parallel with 12 \\(\\Omega\\) and 2 \\(\\Omega\\) resistors.",
+    "solution": "**(i) Series, 6 V with 1 \\(\\Omega\\) and 2 \\(\\Omega\\).**\n\nTotal resistance \\(= 1 + 2 = 3\\,\\Omega\\), so the current is\n\n\\(I = \\dfrac{6\\,\\text{V}}{3\\,\\Omega} = 2\\,\\text{A}\\)\n\nThe same current passes through the 2 \\(\\Omega\\) resistor, so\n\n\\(P = I^2 R = (2)^2 \\times 2 = 8\\,\\text{W}\\)\n\n**(ii) Parallel, 4 V across 12 \\(\\Omega\\) and 2 \\(\\Omega\\).**\n\nIn a parallel combination each branch has the full supply voltage across it, so the 2 \\(\\Omega\\) resistor has 4 V across it:\n\n\\(P = \\dfrac{V^2}{R} = \\dfrac{(4)^2}{2} = 8\\,\\text{W}\\)\n\n**The power used in the 2 \\(\\Omega\\) resistor is 8 W in both circuits** — they are equal. Note that the 12 \\(\\Omega\\) resistor in (ii) makes no difference to the 2 \\(\\Omega\\) branch at all.",
+    "groundedIn": "§11.8, Eq. (11.22), with the series and parallel current/voltage rules of §11.6.1 and §11.6.2."
+  },
+  {
+    "ref": "Ex 11 Q15",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Electric Power and Energy",
+    "difficulty": "MODERATE",
+    "stem": "Two lamps, one rated 100 W at 220 V, and the other 60 W at 220 V, are connected in parallel to electric mains supply. What current is drawn from the line if the supply voltage is 220 V?",
+    "solution": "Both lamps are operated at their rated voltage, so each consumes its rated power. In parallel the powers add:\n\n\\(P = 100\\,\\text{W} + 60\\,\\text{W} = 160\\,\\text{W}\\)\n\nCurrent drawn from the line:\n\n\\(I = \\dfrac{P}{V} = \\dfrac{160\\,\\text{W}}{220\\,\\text{V}} = 0.73\\,\\text{A}\\)",
+    "groundedIn": "§11.8, Eq. (11.22) \\(P = VI\\), and §11.6.2 — each parallel branch has the full supply voltage across it."
+  },
+  {
+    "ref": "Ex 11 Q16",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Electric Power and Energy",
+    "difficulty": "EASY",
+    "stem": "Which uses more energy, a 250 W TV set in 1 hr, or a 1200 W toaster in 10 minutes?",
+    "solution": "Energy is power multiplied by time.\n\nTV set:\n\n\\(E = 250\\,\\text{W} \\times 1\\,\\text{h} = 250\\,\\text{W h}\\)\n\nToaster:\n\n\\(E = 1200\\,\\text{W} \\times \\dfrac{10}{60}\\,\\text{h} = 200\\,\\text{W h}\\)\n\nSo the **250 W TV set in 1 hour** uses more energy — 250 W h against 200 W h. The toaster draws far more power, but for only a sixth of the time.",
+    "groundedIn": "§11.8 — energy is the product of power and time, measured in watt hours."
+  },
+  {
+    "ref": "Ex 11 Q17",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Heating Effect of Electric Current",
+    "difficulty": "EASY",
+    "stem": "An electric heater of resistance 44 \\(\\Omega\\) draws 5 A from the service mains for 2 hours. Calculate the rate at which heat is developed in the heater.",
+    "solution": "The *rate* at which heat is developed is the power:\n\n\\(P = I^2 R = (5\\,\\text{A})^2 \\times 44\\,\\Omega = 25 \\times 44 = 1100\\,\\text{W}\\)\n\nSo heat is developed at \\(1100\\,\\text{J}\\) per second.\n\nThe 2 hours in the question is not needed for the *rate* — it would only be needed to find the total heat, which would be \\(1100\\,\\text{W} \\times 7200\\,\\text{s} = 7.92 \\times 10^{6}\\,\\text{J}\\).",
+    "groundedIn": "§11.7, Eq. (11.21) \\(H = I^2Rt\\), so the rate of heating is \\(I^2R\\)."
+  },
+
+  {
+    "ref": "Ex 11 Q18 (a)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Heating Effect of Electric Current",
+    "difficulty": "EASY",
+    "context": "Explain the following.",
+    "setLabel": "Ex 11 Q18",
+    "stem": "Why is the tungsten used almost exclusively for filament of electric lamps?",
+    "solution": "A lamp filament has to be made white-hot without melting, so it needs a metal with a **very high melting point** — tungsten melts at 3380°C.\n\nTungsten also has a **high resistivity** \\(\\left(5.20 \\times 10^{-8}\\,\\Omega\\,\\text{m}\\right)\\) so that a great deal of heat is produced in it, and it **retains that heat** rather than losing it, so it gets hot enough to emit light.",
+    "groundedIn": "§11.7.1 — 'A strong metal with high melting point such as tungsten (melting point 3380°C) is used for making bulb filaments'; the resistivity figure is from Table 11.2."
+  },
+  {
+    "ref": "Ex 11 Q18 (b)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Heating Effect of Electric Current",
+    "difficulty": "EASY",
+    "context": "Explain the following.",
+    "setLabel": "Ex 11 Q18",
+    "stem": "Why are the conductors of electric heating devices, such as bread-toasters and electric irons, made of an alloy rather than a pure metal?",
+    "solution": "Because an alloy has a **higher resistivity** than its constituent pure metals, so for the same current it produces much more heat \\(\\left(H = I^2Rt\\right)\\).\n\nAlso, **alloys do not oxidise or burn readily at high temperatures**, so the heating element lasts instead of corroding away each time it is run red-hot.",
+    "groundedIn": "§11.5 — 'the resistivity of an alloy is generally higher than that of its constituent metals. Alloys do not oxidise (burn) readily at high temperatures.'"
+  },
+  {
+    "ref": "Ex 11 Q18 (c)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Resistors in Series and Parallel",
+    "difficulty": "EASY",
+    "context": "Explain the following.",
+    "setLabel": "Ex 11 Q18",
+    "stem": "Why is the series arrangement not used for domestic circuits?",
+    "solution": "Several reasons, all of which follow from how a series circuit behaves:\n\n- **One failure stops everything.** If any one appliance fails the circuit is broken and none of the others works.\n- **Every appliance is forced to carry the same current.** Domestic appliances need very different currents — a bulb and a heater cannot sensibly share one.\n- **The supply voltage is divided** among the appliances, so none of them receives the full 220 V it is rated for.\n- Appliances **cannot be switched on and off independently**.",
+    "groundedIn": "§11.6.2 — the discussion after Example 11.9 on why series circuits are impracticable, including the fairy-lights example."
+  },
+  {
+    "ref": "Ex 11 Q18 (d)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Resistance and Resistivity",
+    "difficulty": "EASY",
+    "context": "Explain the following.",
+    "setLabel": "Ex 11 Q18",
+    "stem": "How does the resistance of a wire vary with its area of cross-section?",
+    "solution": "The resistance of a wire is **inversely proportional** to its area of cross-section:\n\n\\(R = \\rho \\dfrac{l}{A}\\)\n\nSo for a given material and length, doubling the area halves the resistance. A thick wire therefore offers less resistance than a thin one.",
+    "groundedIn": "§11.5, Eq. (11.10) \\(R = \\rho l / A\\)."
+  },
+  {
+    "ref": "Ex 11 Q18 (e)",
+    "bucket": "exercise-subjective",
+    "format": "subjective",
+    "subtopic": "Resistance and Resistivity",
+    "difficulty": "EASY",
+    "context": "Explain the following.",
+    "setLabel": "Ex 11 Q18",
+    "stem": "Why are copper and aluminium wires usually employed for electricity transmission?",
+    "solution": "Because copper and aluminium have **very low resistivity** — \\(1.62 \\times 10^{-8}\\,\\Omega\\,\\text{m}\\) and \\(2.63 \\times 10^{-8}\\,\\Omega\\,\\text{m}\\) respectively, among the lowest of any material in Table 11.2.\n\nLow resistivity means low resistance in a long transmission line, so very little of the transmitted energy is wasted as heat \\(\\left(H = I^2Rt\\right)\\) on the way. They are also ductile enough to be drawn into long wires and cheap enough to use in quantity.",
+    "groundedIn": "§11.5 — 'copper and aluminium are generally used for electrical transmission lines'; the resistivity figures are from Table 11.2."
+  }
+]

@@ -1,0 +1,125 @@
+{
+  "what": "Independent sympy derivation of every Ch.9 numerical, exact rationals, computed from the printed stem before the key was consulted for agreement.",
+  "conventions": "mirror 1/v+1/u=1/f, m=-v/u; lens 1/v-1/u=1/f, m=v/u; New Cartesian sign convention.",
+  "verdict": "All 19 derivations agree with the key and with the book's own worked examples, with ONE rounding difference recorded below. This is a CROSS-CHECK, not a blind score: the key for this whole book was read in full during the initial analysis, so no blind measurement is available for any chapter. See the project memory.",
+  "rounding_note": {
+    "ref": "Ex 9 Q15 / Ex 9 Q14",
+    "detail": "Ex 9 Q14's image height is EXACTLY 15/7 = 2.1428... cm, which rounds to 2.1 cm. The key prints 2.2 cm. The difference is intermediate rounding, not physics: rounding v to 8.6 cm first gives m = 0.43 and h' = 0.43 x 5.0 = 2.15 -> 2.2. Both describe the same image (virtual, erect, diminished, behind the mirror). The authored answer gives the exact value and says where the key's figure comes from."
+  },
+  "results": [
+    {
+      "ref": "IT 9.1 Q2",
+      "given": "spherical mirror R = 20 cm",
+      "derived": "f = R/2 = 10 cm",
+      "key": "unkeyed"
+    },
+    {
+      "ref": "IT 9.2 Q1",
+      "given": "convex mirror R = +32 cm",
+      "derived": "f = R/2 = +16 cm",
+      "key": "unkeyed"
+    },
+    {
+      "ref": "IT 9.2 Q2",
+      "given": "concave mirror, real image 3x, u = -10 cm",
+      "derived": "m = -3 so v = -m*u = -30 cm (30 cm in FRONT of the mirror, same side as object)",
+      "key": "unkeyed"
+    },
+    {
+      "ref": "IT 9.3 Q2",
+      "given": "glass n = 1.50, c = 3e8 m/s",
+      "derived": "v = c/n = 200000000 = 2e+08 m/s",
+      "key": "unkeyed"
+    },
+    {
+      "ref": "IT 9.3 Q3",
+      "given": "Table 9.3",
+      "derived": "highest optical density = Diamond (n = 2.42); lowest = Air (n = 1.0003)",
+      "key": "unkeyed"
+    },
+    {
+      "ref": "IT 9.3 Q4",
+      "given": "kerosene / turpentine / water",
+      "derived": "v = c/n, so lowest n is fastest: Water (n = 1.33); order {'Kerosene': 1.44, 'Turpentine oil': 1.47, 'Water': 1.33}",
+      "key": "unkeyed"
+    },
+    {
+      "ref": "IT 9.4 Q2",
+      "given": "convex lens, real inverted image v = +50 cm, |m| = 1",
+      "derived": "u = v/m = -50 cm; f = 25 cm = 1/4 m; P = 1/f = +4 D",
+      "key": "unkeyed"
+    },
+    {
+      "ref": "IT 9.4 Q3",
+      "given": "concave lens of focal length 2 m",
+      "derived": "f = -2 m (concave => negative); P = 1/f = -1/2 D",
+      "key": "unkeyed"
+    },
+    {
+      "ref": "9.2 Eg.1",
+      "given": "convex mirror R = +3.00 m, u = -5.00 m",
+      "derived": "f = +3/2 m; v = 15/13 = 1.15 m; m = 3/13 = 0.231",
+      "key": "book: v = +1.15 m, m = +0.23"
+    },
+    {
+      "ref": "9.2 Eg.2",
+      "given": "concave mirror f = -15.0 cm, u = -25.0 cm, h = +4.0 cm",
+      "derived": "v = -75/2 cm; h' = -6 cm",
+      "key": "book: v = -37.5 cm, h' = -6.0 cm"
+    },
+    {
+      "ref": "9.4 Eg.3",
+      "given": "concave lens f = -15 cm, v = -10 cm",
+      "derived": "u = -30 cm; m = v/u = 1/3 = 0.333",
+      "key": "book: u = -30 cm, m = +0.33"
+    },
+    {
+      "ref": "9.4 Eg.4",
+      "given": "convex lens f = +10 cm, u = -15 cm, h = +2.0 cm",
+      "derived": "v = 30 cm; m = -2; h' = -4 cm",
+      "key": "book: v = +30 cm, m = -2, h' = -4.0 cm"
+    },
+    {
+      "ref": "Ex 9 Q10",
+      "given": "converging lens f = +10 cm, u = -25 cm, h = 5 cm",
+      "derived": "v = 50/3 cm = 16.67 cm; m = -2/3; h' = -10/3 cm = -3.33 cm",
+      "key": "KEY: 16.7 cm other side; 3.3 cm, reduced; real, inverted"
+    },
+    {
+      "ref": "Ex 9 Q11",
+      "given": "concave lens f = -15 cm, image 10 cm from lens (v = -10 cm)",
+      "derived": "u = -30 cm",
+      "key": "KEY: 30 cm"
+    },
+    {
+      "ref": "Ex 9 Q12",
+      "given": "convex mirror f = +15 cm, u = -10 cm",
+      "derived": "v = 6 cm (behind the mirror); m = 3/5 (virtual, erect, diminished)",
+      "key": "KEY: 6.0 cm behind the mirror; virtual, erect"
+    },
+    {
+      "ref": "Ex 9 Q14",
+      "given": "convex mirror R = +30 cm, u = -20 cm, h = 5.0 cm",
+      "derived": "f = +15 cm; v = 60/7 = 8.57 cm; m = 3/7 = 0.4286; h' = 15/7 = 2.14 cm",
+      "key": "KEY: 8.6 cm behind the mirror; virtual, erect; 2.2 cm, reduced"
+    },
+    {
+      "ref": "Ex 9 Q15",
+      "given": "concave mirror f = -18 cm, u = -27 cm, h = 7.0 cm",
+      "derived": "v = -54 cm; m = -2; h' = -14 cm",
+      "key": "KEY: 54 cm on the object side; 14 cm, magnified; real, inverted"
+    },
+    {
+      "ref": "Ex 9 Q16",
+      "given": "lens of power P = -2.0 D",
+      "derived": "f = 1/P = -1/2 m = -50 cm (negative => concave/diverging)",
+      "key": "KEY: -0.50 m; concave lens"
+    },
+    {
+      "ref": "Ex 9 Q17",
+      "given": "corrective lens P = +1.5 D",
+      "derived": "f = 1/P = 2/3 m = 0.6667 m = 66.67 cm (positive => convex/converging)",
+      "key": "KEY: +0.67 m; converging lens"
+    }
+  ]
+}
