@@ -56,14 +56,26 @@ describe("resolveExamNav", () => {
     expect(resolveExamNav("nda", IDS).boardHref).toBe("/board");
   });
 
-  // Notes is the one tab that is NEVER personalised, and that is deliberate:
-  // /notes/<slug> renders "teaching notes are coming soon" for the 10 of 13
-  // exams that have none, so pointing the tab there sends most visitors to a
-  // dead end. The /notes index lists the exams that actually have notes.
-  it("always sends Notes to the cross-exam index, even for an exam WITH notes", () => {
+  // Notes personalises ONLY for an exam that has shipped notes (EXAM_TIER_SPEC
+  // §4.5). /notes/<slug> renders "teaching notes are coming soon" for an exam
+  // with none, and that dead end is why this tab used to never personalise.
+  // The notes-bearing set is passed in, so HeaderBar never bundles the notes
+  // registry.
+  it("sends Notes to the exam's hub only when that exam has notes", () => {
+    const NOTES = ["nda", "mht-cet"] as const;
+    expect(resolveExamNav("nda", IDS, NOTES).notesHref).toBe("/notes/nda");
+    expect(resolveExamNav("cbse-12", IDS, NOTES).notesHref).toBe("/notes");
+    expect(resolveExamNav(null, IDS, NOTES).notesHref).toBe("/notes");
+  });
+
+  it("keeps Notes on the index when no notes set is passed", () => {
     expect(resolveExamNav("nda", IDS).notesHref).toBe("/notes");
-    expect(resolveExamNav("cbse-12", IDS).notesHref).toBe("/notes");
-    expect(resolveExamNav(null, IDS).notesHref).toBe("/notes");
+  });
+
+  it("sends Mocks to the exam's catalogue only when it has mocks", () => {
+    expect(resolveExamNav("nda", IDS).mockHref).toBe("/mock/exam/nda");
+    expect(resolveExamNav("cbse-11", IDS).mockHref).toBe("/mock");
+    expect(resolveExamNav(null, IDS).mockHref).toBe("/mock");
   });
 
   describe("when no exam has been chosen (null)", () => {
@@ -74,6 +86,7 @@ describe("resolveExamNav", () => {
       expect(nav.bankHref).toBe("/browse");
       expect(nav.guidesHref).toBe("/guide");
       expect(nav.notesHref).toBe("/notes");
+      expect(nav.mockHref).toBe("/mock");
       expect(nav.boardHref).toBe("/board");
     });
   });

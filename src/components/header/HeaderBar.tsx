@@ -35,7 +35,14 @@ import { usePulse } from "@/lib/viewer/usePulse";
  * The only thing still resolved on the server is `examIds`, which is public
  * taxonomy identical for every visitor — see examIdMap.ts.
  */
-export default function HeaderBar({ examIds }: { examIds: ExamIdMap }) {
+export default function HeaderBar({
+  examIds,
+  notesExamSlugs,
+}: {
+  examIds: ExamIdMap;
+  /** Exams with shipped notes — public, identical for everyone, from AppHeader. */
+  notesExamSlugs: ExamSlug[];
+}) {
   // Start at null (= no exam chosen) so the server HTML and the first client
   // render agree (no hydration mismatch); the cookie is applied immediately
   // after. Null is also the resting state for every anonymous visitor, since
@@ -61,7 +68,7 @@ export default function HeaderBar({ examIds }: { examIds: ExamIdMap }) {
   // every width without adding chrome.
   const pulse = usePulse(!!session);
 
-  const nav = resolveExamNav(examSlug, examIds);
+  const nav = resolveExamNav(examSlug, examIds, notesExamSlugs);
 
   return (
     <>
@@ -81,6 +88,7 @@ export default function HeaderBar({ examIds }: { examIds: ExamIdMap }) {
             bankHref={nav.bankHref}
             guidesHref={nav.guidesHref}
             notesHref={nav.notesHref}
+            mockHref={nav.mockHref}
             boardHref={nav.boardHref}
             showPapers={!!session?.isStaff}
             showBooks={!!session?.isSuperadmin}

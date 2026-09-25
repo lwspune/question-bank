@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import {
   MAX_MOBILE_TABS,
   MOBILE_TAB_IDS,
-  MOCK_TAB_HREF,
   isMobileTabActive,
   resolveMobileTabs,
 } from "@/lib/nav/mobileTabs";
@@ -81,21 +80,26 @@ describe("mobile tab bar — hrefs mirror the desktop nav", () => {
       expect(byId.guides).toBe(nav.guidesHref);
       expect(byId.notes).toBe(nav.notesHref);
       expect(byId.board).toBe(nav.boardHref);
-      expect(byId.mock).toBe(MOCK_TAB_HREF);
+      expect(byId.mock).toBe(nav.mockHref);
     }
   });
 
-  it("routes Mocks to the cross-exam catalogue", () => {
-    expect(MOCK_TAB_HREF).toBe("/mock");
+  it("routes Mocks to the exam's catalogue, or the index without mocks", () => {
+    const tabFor = (slug: string | null) =>
+      resolveMobileTabs(resolveExamNav(slug, EXAM_IDS)).find((t) => t.id === "mock")!.href;
+    expect(tabFor("nda")).toBe("/mock/exam/nda");
+    expect(tabFor("cbse-11")).toBe("/mock");
+    expect(tabFor(null)).toBe("/mock");
   });
 
-  it("personalises Bank for a chosen exam but never Notes", () => {
-    const nav = resolveExamNav("nda", EXAM_IDS);
-    const byId = Object.fromEntries(
-      resolveMobileTabs(nav).map((t) => [t.id, t.href])
-    );
-    expect(byId.bank).toContain("examId=");
-    expect(byId.notes).toBe("/notes");
+  it("personalises Notes only for an exam with notes", () => {
+    const byId = (slug: string) =>
+      Object.fromEntries(
+        resolveMobileTabs(resolveExamNav(slug, EXAM_IDS, ["nda"])).map((t) => [t.id, t.href])
+      );
+    expect(byId("nda").bank).toContain("examId=");
+    expect(byId("nda").notes).toBe("/notes/nda");
+    expect(byId("neet").notes).toBe("/notes");
   });
 });
 

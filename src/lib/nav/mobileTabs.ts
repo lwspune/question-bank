@@ -53,13 +53,6 @@ export const MOBILE_TAB_IDS: readonly MobileTabId[] = [
 export const MAX_MOBILE_TABS = 5;
 
 /**
- * Mocks is the one tab that never personalises: `/mock` lists every published
- * mock across exams and does its own per-exam scoping. Exported so PrimaryNav
- * and this bar cannot drift on it — everything else already shares `ExamNav`.
- */
-export const MOCK_TAB_HREF = "/mock";
-
-/**
  * The five tabs for a visitor's chosen exam (or for no choice at all).
  *
  * One parameter, on purpose — see the role note above.
@@ -69,7 +62,7 @@ export function resolveMobileTabs(nav: ExamNav): MobileTab[] {
     { id: "bank", label: "Bank", href: nav.bankHref },
     { id: "guides", label: "Guides", href: nav.guidesHref },
     { id: "notes", label: "Notes", href: nav.notesHref },
-    { id: "mock", label: "Mocks", href: MOCK_TAB_HREF },
+    { id: "mock", label: "Mocks", href: nav.mockHref },
     { id: "board", label: "Board", href: nav.boardHref },
   ];
 }
