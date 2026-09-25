@@ -544,6 +544,11 @@ import {
   MHTCET_BIOMOLECULES_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/biomolecules/_data";
 import {
+  MHTCET_POLYMERS_CHAPTER,
+  MHTCET_POLYMERS_NOTES,
+  MHTCET_POLYMERS_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/introduction-to-polymer-chemistry/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1363,6 +1368,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_BIOMOLECULES_CHAPTER,
     notes: MHTCET_BIOMOLECULES_NOTES,
     slugs: MHTCET_BIOMOLECULES_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "introduction-to-polymer-chemistry",
+    chipLabel: "Polymer Chemistry notes",
+    chapter: MHTCET_POLYMERS_CHAPTER,
+    notes: MHTCET_POLYMERS_NOTES,
+    slugs: MHTCET_POLYMERS_SLUGS,
   },
   {
     examName: "NDA",
