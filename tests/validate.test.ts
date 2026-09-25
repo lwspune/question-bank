@@ -72,3 +72,33 @@ describe("validateRow", () => {
     expect(result.errors.some((e) => /chapter/i.test(e))).toBe(true);
   });
 });
+
+describe("validateRow — officially cancelled questions (migration 0119)", () => {
+  const note = "Cancelled by MPSC in the final answer key. No option is correct.";
+
+  it("accepts CANCELLED with a notice: no option is correct, and the notice is carried", () => {
+    const r = validateRow({ ...baseRow, answer: "CANCELLED", cancelledNote: note });
+    expect(r.errors).toEqual([]);
+    expect(r.parsed!.options.some((o) => o.isCorrect)).toBe(false);
+    expect(r.parsed!.cancelledNote).toBe(note);
+  });
+
+  it("hashes a cancelled question apart from every keyed version of it", () => {
+    const cancelled = validateRow({ ...baseRow, answer: "CANCELLED", cancelledNote: note }).parsed!.contentHash;
+    for (const answer of ["A", "B", "C", "D"]) {
+      expect(validateRow({ ...baseRow, answer }).parsed!.contentHash).not.toBe(cancelled);
+    }
+  });
+
+  it("refuses CANCELLED without a notice — a question with no key must say why", () => {
+    expect(validateRow({ ...baseRow, answer: "CANCELLED" }).errors).toEqual([
+      "A CANCELLED question needs a cancelledNote explaining it",
+    ]);
+  });
+
+  it("refuses a notice on a question that still has a key", () => {
+    expect(validateRow({ ...baseRow, answer: "B", cancelledNote: note }).errors).toEqual([
+      "cancelledNote is only allowed with Answer = CANCELLED",
+    ]);
+  });
+});

@@ -16,6 +16,12 @@ export type RawRow = {
   answer: string;
   difficulty: string;
   solution?: string;
+  /**
+   * The question was officially CANCELLED (the exam body's final key awards no
+   * option). Required with Answer = "CANCELLED", refused otherwise — a question
+   * without a key must carry the reason it has none (migration 0119).
+   */
+  cancelledNote?: string;
 };
 
 export type Difficulty = "EASY" | "MODERATE" | "HARD";
@@ -41,6 +47,8 @@ export type ParsedRowPayload = {
   numericAnswer?: number;
   options: { label: OptionLabel; text: string; isCorrect: boolean }[];
   contentHash: string;
+  /** Set only for an officially cancelled question — every option is then incorrect. */
+  cancelledNote?: string;
 };
 
 export type ValidatedRow = {
@@ -67,12 +75,18 @@ export function validateRow(row: RawRow): ValidatedRow {
   if (!row.optionC) errors.push("OptionC is required");
   if (!row.optionD) errors.push("OptionD is required");
 
-  let answer: OptionLabel | undefined;
+  let answer: OptionLabel | "CANCELLED" | undefined;
+  const note = row.cancelledNote?.trim() || undefined;
   if (!row.answer) {
     errors.push("Answer is required");
+  } else if (row.answer.trim().toUpperCase() === "CANCELLED") {
+    if (note) answer = "CANCELLED";
+    else errors.push("A CANCELLED question needs a cancelledNote explaining it");
   } else {
     const ans = row.answer.trim().toUpperCase();
-    if (!["A", "B", "C", "D"].includes(ans)) {
+    if (note) {
+      errors.push("cancelledNote is only allowed with Answer = CANCELLED");
+    } else if (!["A", "B", "C", "D"].includes(ans)) {
       errors.push(`Answer must be A/B/C/D (got "${row.answer}")`);
     } else {
       answer = ans as OptionLabel;
@@ -127,6 +141,7 @@ export function validateRow(row: RawRow): ValidatedRow {
       solution: row.solution,
       options,
       contentHash: hash,
+      ...(answer === "CANCELLED" ? { cancelledNote: note } : {}),
     },
   };
 }
