@@ -524,6 +524,11 @@ import {
   MHTCET_HALOGEN_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/halogen-derivatives/_data";
 import {
+  MHTCET_ALCOHOLS_CHAPTER,
+  MHTCET_ALCOHOLS_NOTES,
+  MHTCET_ALCOHOLS_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/alcohols-phenols-and-ethers/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1299,6 +1304,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_HALOGEN_CHAPTER,
     notes: MHTCET_HALOGEN_NOTES,
     slugs: MHTCET_HALOGEN_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "alcohols-phenols-and-ethers",
+    chipLabel: "Alcohols, Phenols and Ethers notes",
+    chapter: MHTCET_ALCOHOLS_CHAPTER,
+    notes: MHTCET_ALCOHOLS_NOTES,
+    slugs: MHTCET_ALCOHOLS_SLUGS,
   },
   {
     examName: "NDA",
