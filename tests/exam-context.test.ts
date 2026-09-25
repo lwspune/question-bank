@@ -358,3 +358,48 @@ describe("board/std registry invariants", () => {
     expect(getExamBySlug("neet")?.board).toBeUndefined();
   });
 });
+
+// Exam tiers (EXAM_TIER_SPEC.md §3.1). The table is asserted slug by slug so a
+// later edit is a deliberate change, not drift.
+import { EXAM_TIERS, TIER_LABELS, type ExamTier } from "@/lib/exam/examContext";
+
+describe("exam tiers", () => {
+  const EXPECTED: Record<ExamTier, string[]> = {
+    school: ["foundation-course", "mh-sb-9", "mh-ssc-10", "cbse-10"],
+    senior: [
+      "nda",
+      "mht-cet",
+      "jee-mains",
+      "neet",
+      "worksheets-11-12",
+      "cbse-11",
+      "cbse-12",
+      "isc-12",
+      "mh-sb-11",
+      "mh-hsc-12",
+      "ipmat-indore",
+      "ipmat-rohtak",
+      "jipmat",
+    ],
+    graduate: ["cds"],
+  };
+
+  it("gives every registry entry a tier from EXAM_TIERS", () => {
+    for (const e of EXAM_REGISTRY) expect(EXAM_TIERS).toContain(e.tier);
+  });
+
+  it("gives every tier a label and at least one exam with public content", () => {
+    for (const t of EXAM_TIERS) {
+      expect(TIER_LABELS[t]).toBeTruthy();
+      expect(EXAM_REGISTRY.some((e) => e.tier === t && !e.noPublicContent)).toBe(true);
+    }
+  });
+
+  it("matches the spec's tier table slug by slug", () => {
+    for (const t of EXAM_TIERS) {
+      expect(
+        EXAM_REGISTRY.filter((e) => e.tier === t).map((e) => e.slug).sort()
+      ).toEqual([...EXPECTED[t]].sort());
+    }
+  });
+});

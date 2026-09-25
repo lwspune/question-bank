@@ -40,6 +40,21 @@ export type Board = "Maharashtra State Board" | "CBSE" | "CISCE";
 /** School class. */
 export type Std = 9 | 10 | 11 | 12;
 
+/**
+ * The three stages a signed-in student's exam feed is built around
+ * (EXAM_TIER_SPEC.md). A signed-in student sees their tier's exams first; the
+ * rest collapse under "Other exams". Anonymous visitors see everything.
+ */
+export type ExamTier = "school" | "senior" | "graduate";
+
+export const EXAM_TIERS: readonly ExamTier[] = ["school", "senior", "graduate"];
+
+export const TIER_LABELS: Record<ExamTier, string> = {
+  school: "Class 9–10",
+  senior: "Class 11–12 & droppers",
+  graduate: "Graduation & after",
+};
+
 export type ExamEntry = {
   /** URL-safe slug; the value stored in the `qb:exam` cookie. */
   slug: ExamSlug;
@@ -47,6 +62,14 @@ export type ExamEntry = {
   displayName: string;
   /** Canonical name in the `exams` DB table — used to resolve the UUID. */
   examName: string;
+  /**
+   * The exam's TYPICAL eligibility stage — one value. A student who targets
+   * exams in two tiers (CDS + NDA is the common case) is handled by the union
+   * rule in `resolveExamFeed`, which always shows a chosen target, NOT by
+   * giving an exam a second tier here. Required, so a new exam cannot land
+   * without one.
+   */
+  tier: ExamTier;
   /** `/guide/<slug>` subtree if shipped; null falls back to `/guide`. */
   guidesPath: string | null;
   /** Per-exam notes hub `/notes/<slug>`; null falls back to the `/notes` index. */
@@ -169,6 +192,7 @@ export type ExamEntry = {
 export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "nda",
+    tier: "senior",
     displayName: "NDA",
     examName: "NDA",
     guidesPath: "/guide/nda",
@@ -177,6 +201,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "mht-cet",
+    tier: "senior",
     displayName: "MHT-CET",
     examName: "MHT-CET",
     guidesPath: "/guide/mht-cet", // hub: MHT-CET Mathematics (Template C)
@@ -185,6 +210,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "jee-mains",
+    tier: "senior",
     displayName: "JEE Mains",
     examName: "JEE Mains", // must match the `exams` DB row exactly
     mixedFormats: true, // Section-B NAT: 2,900 numeric alongside 7,593 MCQ
@@ -194,6 +220,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "cds",
+    tier: "graduate",
     displayName: "CDS",
     examName: "CDS", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
@@ -202,6 +229,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "foundation-course",
+    tier: "school",
     displayName: "Foundation",
     examName: "Foundation Course", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree — falls back to the index
@@ -210,6 +238,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "neet",
+    tier: "senior",
     displayName: "NEET",
     examName: "NEET", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
@@ -218,6 +247,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "mh-hsc-12",
+    tier: "senior",
     displayName: "MH HSC 12",
     examName: "Maharashtra HSC Class 12", // must match the `exams` DB row exactly
     classLabel: "Class 12 (HSC)", // grouped pickers: HSC is what Maharashtra students say
@@ -239,6 +269,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "cbse-10",
+    tier: "school",
     displayName: "CBSE Class 10",
     examName: "CBSE Class 10", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
@@ -278,6 +309,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "cbse-11",
+    tier: "senior",
     displayName: "CBSE Class 11",
     examName: "CBSE Class 11", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
@@ -316,6 +348,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "cbse-12",
+    tier: "senior",
     displayName: "CBSE Class 12",
     examName: "CBSE Class 12", // must match the `exams` DB row exactly
     mixedFormats: true, // 760 MCQ vs 2,696 subjective (re-measured 2026-09-08, Physics complete)
@@ -339,6 +372,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "isc-12",
+    tier: "senior",
     displayName: "ISC Class 12",
     examName: "ISC Class 12", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree yet — falls back to the index
@@ -385,6 +419,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "mh-sb-9",
+    tier: "school",
     displayName: "MH State Board 9",
     examName: "Maharashtra State Board Class 9", // must match the `exams` DB row exactly
     mixedFormats: true, // 1,176 subjective vs 111 MCQ
@@ -397,6 +432,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "mh-sb-11",
+    tier: "senior",
     displayName: "MH State Board 11",
     examName: "Maharashtra State Board Class 11", // must match the `exams` DB row exactly
     mixedFormats: true, // 2,738 subjective vs 203 MCQ
@@ -409,6 +445,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "mh-ssc-10",
+    tier: "school",
     displayName: "MH SSC 10",
     examName: "Maharashtra State Board Class 10", // must match the `exams` DB row exactly
     classLabel: "Class 10 (SSC)", // grouped pickers: SSC is what Maharashtra students say
@@ -432,6 +469,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "worksheets-11-12",
+    tier: "senior",
     displayName: "Worksheets 11+12",
     examName: "Worksheets - 11th+12th", // must match the `exams` DB row exactly
     guidesPath: null, // no /guide subtree — falls back to the index
@@ -456,6 +494,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   // Order here is the order students see: Indore is the flagship.
   {
     slug: "ipmat-indore",
+    tier: "senior",
     displayName: "IPMAT Indore",
     examName: "IPMAT Indore", // must match the `exams` DB row exactly
     family: "IPMAT",
@@ -473,6 +512,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "ipmat-rohtak",
+    tier: "senior",
     displayName: "IPMAT Rohtak",
     examName: "IPMAT Rohtak", // must match the `exams` DB row exactly
     family: "IPMAT",
@@ -484,6 +524,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "jipmat",
+    tier: "senior",
     displayName: "JIPMAT",
     // The exam is "JIPMAT", not "IPMAT Jammu" — the joint Bodh Gaya/Jammu paper
     // has its own name, and the `exams` row uses it. Only its label INSIDE the

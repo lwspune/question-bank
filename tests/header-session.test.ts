@@ -21,6 +21,8 @@ const admin: HeaderSession = {
   orgName: "LWS Pune",
   isStaff: true,
   isSuperadmin: false,
+  stage: null,
+  targetExams: [],
 };
 const teacher: HeaderSession = {
   email: "teacher@example.com",
@@ -28,6 +30,8 @@ const teacher: HeaderSession = {
   orgName: "LWS Pune",
   isStaff: true,
   isSuperadmin: false,
+  stage: null,
+  targetExams: [],
 };
 const student: HeaderSession = {
   email: "student@example.com",
@@ -35,6 +39,8 @@ const student: HeaderSession = {
   orgName: null,
   isStaff: false,
   isSuperadmin: false,
+  stage: null,
+  targetExams: [],
 };
 
 describe("resolveHomeHref", () => {
@@ -62,5 +68,35 @@ describe("resolveHomeHref", () => {
 
   it("sends a superadmin with NO org row to /me, like any org-less account", () => {
     expect(resolveHomeHref({ ...student, isSuperadmin: true })).toBe("/me");
+  });
+});
+
+import { profileFieldsFromRow } from "@/lib/header-session";
+
+// EXAM_TIER_SPEC.md §3.5 — stage + target exams ride on the header payload.
+// A missing or malformed profile row must yield the empty defaults, never throw:
+// the header renders on every page.
+describe("profileFieldsFromRow", () => {
+  it("defaults to null / [] with no row", () => {
+    expect(profileFieldsFromRow(null)).toEqual({ stage: null, targetExams: [] });
+    expect(profileFieldsFromRow(undefined)).toEqual({ stage: null, targetExams: [] });
+  });
+
+  it("sanitises an unknown stage and unknown exam slugs away", () => {
+    expect(
+      profileFieldsFromRow({ stage: "phd", target_exams: ["nda", "bogus", "nda", 3] })
+    ).toEqual({ stage: null, targetExams: ["nda"] });
+  });
+
+  it("carries a valid row through in stored order", () => {
+    expect(
+      profileFieldsFromRow({ stage: "class-12", target_exams: ["cds", "nda"] })
+    ).toEqual({ stage: "class-12", targetExams: ["cds", "nda"] });
+  });
+
+  it("leaves resolveHomeHref unchanged for a student carrying profile fields", () => {
+    expect(resolveHomeHref({ ...student, stage: "class-11", targetExams: ["nda"] })).toBe(
+      "/me"
+    );
   });
 });
