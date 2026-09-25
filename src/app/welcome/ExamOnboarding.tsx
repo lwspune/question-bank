@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import ProfileChips from "@/components/ProfileChips";
 import HowItWorks from "@/components/HowItWorks";
 import { getExamBySlug, isExamSlug, type ExamSlug } from "@/lib/exam/examContext";
-import { EXAM_CHIP_OPTIONS } from "@/lib/profile/examChoices";
+import TierExamChips from "@/components/TierExamChips";
 import { setExamCookie } from "@/lib/exam/examCookie";
 import { STAGES, STAGE_LABELS, type Stage } from "@/lib/profile/onboarding";
 import { loopFor, welcomeDestination } from "@/lib/education/howItWorks";
@@ -17,7 +17,8 @@ import { loopFor, welcomeDestination } from "@/lib/education/howItWorks";
 /**
  * Post-signup intent capture — the first "staggered" ask, now TWO screens.
  *
- * Screen 1 (unchanged): exam(s) + stage, chips not dropdowns, pre-filled from
+ * Screen 1: stage, then exam(s) — the exam chips narrow to the stage's tier
+ * (EXAM_TIER_SPEC.md §4.1) — chips not dropdowns, pre-filled from
  * the exam the student was already browsing, SKIPPABLE. On Continue we persist
  * + set the qb_exam cookie so /browse, notes and mocks personalise the same
  * second. Asked once — onboarded_at is stamped on both Continue and Skip.
@@ -33,7 +34,6 @@ import { loopFor, welcomeDestination } from "@/lib/education/howItWorks";
  * stays the primary button; redirecting a specific intent is what the
  * engagement gate forbids. See welcomeDestination().
  */
-const EXAM_OPTIONS = EXAM_CHIP_OPTIONS;
 const STAGE_OPTIONS = STAGES.map((s) => ({ value: s, label: STAGE_LABELS[s] }));
 
 export default function ExamOnboarding({
@@ -166,26 +166,25 @@ export default function ExamOnboarding({
 
         <h1 className="text-2xl font-semibold tracking-tight">What are you preparing for?</h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Pick your exam(s) and stage — we&apos;ll put your bank, notes and mocks
-          front and centre. You can change this anytime.
+          Pick your stage, then your exam(s). We&apos;ll put your bank, notes and
+          mocks front and centre. You can change this anytime.
         </p>
 
         <div className="mt-7">
-          <ProfileChips
-            legend="Target exam"
-            options={EXAM_OPTIONS}
-            selected={exams}
-            onToggle={(v) => toggleExam(v as ExamSlug)}
-            disabled={busy}
-          />
-        </div>
-
-        <div className="mt-6">
           <ProfileChips
             legend="Your stage"
             options={STAGE_OPTIONS}
             selected={stage ? [stage] : []}
             onToggle={(v) => setStage(stage === v ? null : (v as Stage))}
+            disabled={busy}
+          />
+        </div>
+
+        <div className="mt-6">
+          <TierExamChips
+            stage={stage}
+            selected={exams}
+            onToggle={(v) => toggleExam(v as ExamSlug)}
             disabled={busy}
           />
         </div>

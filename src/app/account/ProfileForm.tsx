@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 import ProfileChips from "@/components/ProfileChips";
 import { resolveExamDate } from "@/lib/exam/calendar";
 import { isExamSlug, type ExamSlug } from "@/lib/exam/examContext";
-import { EXAM_CHIP_OPTIONS } from "@/lib/profile/examChoices";
+import TierExamChips from "@/components/TierExamChips";
 import { setExamCookie } from "@/lib/exam/examCookie";
 import { STAGES, STAGE_LABELS, type Stage } from "@/lib/profile/onboarding";
 import {
@@ -24,7 +24,6 @@ import {
 } from "@/lib/profile/fields";
 import type { ProfileRow } from "@/lib/profile/service";
 
-const EXAM_OPTIONS = EXAM_CHIP_OPTIONS;
 const STAGE_OPTIONS = STAGES.map((s) => ({ value: s, label: STAGE_LABELS[s] }));
 const MEDIUM_OPTIONS = MEDIUMS.map((m) => ({ value: m, label: MEDIUM_LABELS[m] }));
 const STREAM_OPTIONS = STREAMS.map((s) => ({ value: s, label: STREAM_LABELS[s] }));
@@ -149,17 +148,16 @@ export default function ProfileForm({ profile }: { profile: ProfileRow }) {
 
       <div className="mt-6 space-y-6">
         <ProfileChips
-          legend="Target exam"
-          options={EXAM_OPTIONS}
-          selected={exams}
-          onToggle={toggleExam}
-          disabled={saving}
-        />
-        <ProfileChips
           legend="Your stage"
           options={STAGE_OPTIONS}
           selected={stage ? [stage] : []}
           onToggle={(v) => setStage(stage === v ? null : (v as Stage))}
+          disabled={saving}
+        />
+        <TierExamChips
+          stage={stage}
+          selected={exams}
+          onToggle={toggleExam}
           disabled={saving}
         />
         <ProfileChips
