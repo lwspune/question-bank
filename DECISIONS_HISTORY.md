@@ -51,6 +51,20 @@ Within-month convention: newest entries closest to top (matches CLAUDE.md orderi
 
 **Not proven here:** any render behind sign-in, and anything behind a click (the disclosures, the grouped /browse select). There is no headless browser in this repo; the owner checklist is in EXAM_TIER_SPEC.md §6.
 
+**2026-09-25 (twenty-second) — MHT-CET Chemistry "Elements of Group 16, 17 and 18" ships (3 pages · 49 PYQ · 8 concepts · 8 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-group-16-18` — the Chemistry programme's fifteenth chapter.**
+
+**Reshape.** 51 rows over three DB subtopics, one of them a 9-row catch-all ("General Trends and p-Block Properties") mixing three noble-gas rows with six group-16 trend rows (ozone depletion, hydride acidity, sulphur allotropes, oxygen's hydride, atomic size, Po's ionisation enthalpy). The six moved to Group 16 and the subtopic was renamed "Group 18 Noble Gases and Xenon Compounds", giving one page per group: 25 · 21 · 3 PUBLIC. `grep` of `src` for the old subtopic and chapter names found nothing, so the rename touched no editorial code. 1 HARD: `c7562ded`, the interhalogen thermal-stability order.
+
+**Source pass.** `67ffeb84` (oleum) and `d9d9f4ba` (O₂/O₃) are "2025 Shift ||" twins of 19 April 2025 Shift II rows `bfcaeeb5` and `c6ed5580` — PRIVATE. `d1bd448d` (10 May 2023 S2, item 66): the bank stem "Which of the following is NOT a property/fact about Group 17 elements? [Context: Astatine is radioactive]" with four invented astatine statements; the paper asks "Which from following elements is NOT a member of group 16 from periodic table?" against Tellurium, Polonium, Selenium, Astatine, and the answer key gives (d). Stem, options and solution restored; moved to Group 16. `8b040fca` (22 April 2025 Shift I, item 65): the answer key gives (a) "one double bond and two single bond" for the S–O bonds in disulphuric acid; the usual structure has two S=O and two single S–O per sulphur, option (d). Official letter kept, solution states both. `c7562ded`'s option (d) lists ClF twice — the paper prints it so; left as printed.
+
+**Design.** Group 16: chalcogen trends; hydrides (stability and acidity run opposite) with oxygen against sulphur; O₂ and O₃; sulphur allotropes, SO₂, oleum and ores as a reference table. Group 17: halogen properties and hydrogen halides; the chlorine oxoacids as a reference table; interhalogens (n odd, shapes, stability order, physical states). Group 18: lone pairs on xenon by formula, the ClF₅-shaped XeOF₄, noble-gas uses.
+
+**In-flight lessons.** `quiz:coverage` flagged the sulphur reference card for LaTeX equations in its prose (a reference card has no formula box to harvest into); the two equations were rewritten as Unicode text. A Python edit through a bash heredoc could not match the TS source's doubled backslashes; the edit ran from a script file instead.
+
+**Probes.** typecheck · lint · notes:latex OK · notes:lint 0 errors · notes:arc 0 · notes:intro clean · quiz:coverage 0 strong gaps · quiz:lint clean · card-blurb + intro-count tests PASS · notes:order wrote 3 · seo:dates · stats: 112 /notes chapters (mht-cet-chemistry 20). Tag script asserts each row's DB subtopic; 49/49.
+
+**Not proven.** Render beyond the build.
+
 **2026-09-25 (twenty-first) — MHT-CET Chemistry "Transition and Inner Transition Elements" ships (5 pages · 75 PYQ · 11 concepts · 12 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-transition` — the Chemistry programme's fourteenth chapter.**
 
 **Bank read.** 77 rows over five DB subtopics that are the book's units; `subtopicOrder` position and configuration → oxidation states → colour and magnetism → alloys, ores and catalysts → lanthanoids and actinoids; `notes:order` wrote five values. One move: `38df9961` (Stock notation of MnO₂) Position → Oxidation States. Final PUBLIC counts 18 · 6 · 18 · 7 · 26; 3 HARD (the 3d ionisation order `19eb92a8`; Yb's first ionisation enthalpy twice, `513ece8a` and `d64f9b27`).
