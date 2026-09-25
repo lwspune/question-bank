@@ -554,6 +554,11 @@ import {
   MHTCET_COORDINATION_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/coordination-compounds/_data";
 import {
+  MHTCET_TRANSITION_CHAPTER,
+  MHTCET_TRANSITION_NOTES,
+  MHTCET_TRANSITION_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/transition-and-inner-transition-elements/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1395,6 +1400,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_COORDINATION_CHAPTER,
     notes: MHTCET_COORDINATION_NOTES,
     slugs: MHTCET_COORDINATION_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "transition-and-inner-transition-elements",
+    chipLabel: "Transition Elements notes",
+    chapter: MHTCET_TRANSITION_CHAPTER,
+    notes: MHTCET_TRANSITION_NOTES,
+    slugs: MHTCET_TRANSITION_SLUGS,
   },
   {
     examName: "NDA",
