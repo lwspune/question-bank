@@ -6,7 +6,7 @@ export const PHYSICAL_PROPERTIES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Hydrogen bonding sets the pattern: alcohols and phenols boil high and dissolve in water, ethers and alkanes do neither; within the alcohols boiling point rises with chain length and falls with branching, and among the nitrophenols the para isomer, with intermolecular H-bonds, melts highest.",
   whyItMatters:
-    "18 PYQs, none HARD. Eight rank boiling points — the four butanols by branching, methanol as the lowest alcohol, an alkane below an ether below an alcohol, methoxyethane as the only gaseous ether; six rank solubility (phenol most, alkane least, alcohol > amine > alkane) or name the force in ethylene glycol; four are the nitrophenol melting-point order and which drawn compound is not a phenol. " +
+    "17 PYQs, none HARD. Eight rank boiling points — the four butanols by branching, methanol as the lowest alcohol, an alkane below an ether below an alcohol, methoxyethane as the only gaseous ether; five rank solubility (phenol most, alcohol > amine > alkane) or name the force in ethylene glycol; four are the nitrophenol melting-point order and which drawn compound is not a phenol. " +
     "Three cards.",
   concepts: [
     // 1 — boiling points
