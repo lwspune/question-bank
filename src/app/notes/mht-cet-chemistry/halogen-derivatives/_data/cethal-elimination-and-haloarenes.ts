@@ -6,7 +6,7 @@ export const ELIMINATION_AND_HALOARENES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A strong base in alcohol pulls HX off an alkyl halide to give the more substituted alkene (Saytzeff), fastest for tertiary halides; on a haloarene the C–X bond breaks only when nitro groups ortho or para to it stabilise the intermediate, while electrophiles still substitute the ring at ortho and para.",
   whyItMatters:
-    "13 PYQs, 1 HARD. Six are nitro-activated substitution on chloroarenes — which has the greatest difficulty breaking C–Cl (the meta-nitro isomer), which is most reactive (2,4,6-trinitro), what substrate gives picric acid. Four are elimination — the 3° > 2° > 1° order, the Saytzeff alkene, which reagent or base eliminates. Three are haloarene reactions: Fittig and the o/p nitration of chlorobenzene.",
+    "14 PYQs, 1 HARD. Seven are nitro-activated substitution on chloroarenes — which has the greatest difficulty breaking C–Cl (the meta-nitro isomer), which is most reactive (2,4,6-trinitro), what substrate gives picric acid. Four are elimination — the 3° > 2° > 1° order, the Saytzeff alkene, which reagent or base eliminates. Three are haloarene reactions: Fittig and the o/p nitration of chlorobenzene.",
   concepts: [
     // 1 — dehydrohalogenation
     {
