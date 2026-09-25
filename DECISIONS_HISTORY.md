@@ -35,6 +35,22 @@ Within-month convention: newest entries closest to top (matches CLAUDE.md orderi
 ### 2026-09-01 to 2026-09-25 — full narratives (digested 2026-09-14; rolling since). Header corrected 2026-09-18: it read "to 2026-09-16" while the batch already held entries through 2026-09-18, so it is now DERIVED from the batch's own span rather than hand-maintained — re-check it with the reconciliation in `npm run docs:budget`.
 
 
+**2026-09-25 (eighteenth) — exam tiers: a signed-in student's exam feed (EXAM_TIER_SPEC.md), five branches `feat/exam-tier-{core,welcome,me,indexes,nav}`.**
+
+**The decision (owner, 2026-09-25).** Three tiers — Class 9–10, Class 11–12 + droppers, Graduation. Signed-in students see their tier first; anonymous visitors see every exam, so SEO is untouched; the tier can be changed any time. SSC, MPSC, CAPF and UPSC will land in Graduation, which is why `tier` is a REQUIRED registry field: TypeScript refuses a new exam without one.
+
+**Why the tier collapses rather than filters.** Measured 2026-09-25: 34 of 318 students with targets span two tiers, 25 of them CDS plus a Class 11–12 exam (almost always NDA — GAT English is shared and CDS is the NDA aspirant's plan B). A filter would have hidden half of those students' plans. So a chosen target always shows, even outside the tier, and everything else is one tap away under "Other exams".
+
+**Why derived at read time, no migration.** 255 of 394 profiles have no stage, but 318 have targets. A stage-only rule leaves two thirds of students with no feed. `resolveStudentTier`: a stated stage wins; else the tier held by most targets; tie → the first target's tier (the existing "first is primary" rule). Backfilling a stage from the targets was declined: a derived value stored as a stated one is the declared-fact-rots pattern.
+
+**Why the index pages stay cached.** `/mock`, `/notes`, `/guide`, `/board` are ISR and read no identity on the server (reading it once de-cached the whole site). The server keeps rendering every card and hands them to a client island (`ExamFeedList`) ALREADY RENDERED — elements cross the server→client boundary safely, functions do not. `useExamFeed` returns `ANON_FEED` until identity arrives, so the first client render is today's list and hydration matches. Stage and targets ride the existing `/api/me/header` payload (one extra own-row read for signed-in users; anon still issues no request).
+
+**Two spec corrections found while building.** (1) The spec said Maharashtra 9–10 degrades to flat chips in the school tier; it does not — it keeps two classes and stays a group. The case that degrades is CBSE, which has only Class 10 in that tier; the test asserts the real behaviour. (2) The spec named `notesExamSlugs()` for the nav's notes set and `getNotesExamGroup(slug) != null` for /me; both return every exam, including the "coming soon" ones, so they would have reintroduced the dead end. Both now use exams with at least one notes subject (`getNotesExamGroups()`).
+
+**Nav.** Mocks → `/mock/exam/<slug>` when the active exam has mocks; Notes → `/notes/<slug>` only when it has shipped notes. The notes set is computed once in AppHeader (server) and passed down, so HeaderBar — in every page's client bundle — never imports `NOTES_CHAPTERS`. `MOCK_TAB_HREF` was deleted.
+
+**Not proven here:** any render behind sign-in, and anything behind a click (the disclosures, the grouped /browse select). There is no headless browser in this repo; the owner checklist is in EXAM_TIER_SPEC.md §6.
+
 **2026-09-25 (seventeenth) — MHT-CET Chemistry "Biomolecules" ships (5 pages · 88 PYQ · 9 concepts · 9 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-biomolecules` — the Chemistry programme's eleventh chapter.**
 
 **Bank read.** 91 rows across five DB subtopics that are the book's sections; `subtopicOrder` set carbohydrates → glycosidic linkages → amino acids and proteins → nucleic acids → lipids and enzymes, and `notes:order` wrote the five values. No row moved. Final PUBLIC counts 21 · 19 · 27 · 16 · 5 (2 HARD: `0a863299` acetylation mass gain, `1c860f7e` stachyose composition).
