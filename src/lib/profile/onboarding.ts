@@ -5,7 +5,7 @@
  * never again" shape, but the gate signal here is `onboarded_at` (set on BOTH
  * Continue and Skip) rather than a stored value.
  */
-import { isExamSlug, type ExamSlug } from "@/lib/exam/examContext";
+import { isExamSlug, type ExamSlug, type ExamTier } from "@/lib/exam/examContext";
 
 /** The self-reported stage of preparation. Closed set — mirrored by the DB
  *  CHECK on student_profiles.stage (migration 0048). */
@@ -22,6 +22,42 @@ export const STAGE_LABELS: Record<Stage, string> = {
 };
 
 const STAGE_SET = new Set<string>(STAGES);
+
+/**
+ * The exam tier a stated stage belongs to (EXAM_TIER_SPEC.md §3.2). The five
+ * stages collapse onto three tiers; a dropper is re-sitting a Class 11–12 exam.
+ */
+export function tierOfStage(stage: Stage | null | undefined): ExamTier | null {
+  switch (stage) {
+    case "class-9-10":
+      return "school";
+    case "class-11":
+    case "class-12":
+    case "dropper":
+      return "senior";
+    case "college":
+      return "graduate";
+    default:
+      return null;
+  }
+}
+
+/** Stages that move up a class each academic year, and so go stale. */
+const STAGES_THAT_DRIFT = new Set<Stage>(["class-9-10", "class-11", "class-12"]);
+
+/** IST is a fixed UTC+5:30 — India has no daylight saving. */
+const IST_OFFSET_MS = 330 * 60 * 1000;
+
+/**
+ * Should /me ask "Still in Class 11?" (EXAM_TIER_SPEC.md §4.2)? True from
+ * 1 April to 30 June — when the school year turns over — for a stage that
+ * moves up a class each year. Read in IST, the cohort's calendar.
+ */
+export function needsStageNudge(input: { stage: Stage | null; now: Date }): boolean {
+  if (!input.stage || !STAGES_THAT_DRIFT.has(input.stage)) return false;
+  const month = new Date(input.now.getTime() + IST_OFFSET_MS).getUTCMonth(); // 0 = Jan
+  return month >= 3 && month <= 5; // April, May, June
+}
 
 export function isStage(value: unknown): value is Stage {
   return typeof value === "string" && STAGE_SET.has(value);

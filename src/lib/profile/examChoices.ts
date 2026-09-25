@@ -14,7 +14,7 @@
  * a student may legitimately target CBSE Class 11 AND Class 12, so there is
  * nothing to nest and no single selection to resolve.
  */
-import { EXAM_REGISTRY, type ExamEntry } from "@/lib/exam/examContext";
+import { EXAM_REGISTRY, type ExamEntry, type ExamTier } from "@/lib/exam/examContext";
 import { groupExamFamilies } from "@/lib/exam/examFamily";
 import type { ChipOption } from "@/components/ProfileChips";
 
@@ -67,3 +67,27 @@ export function buildExamChips(entries: readonly ExamEntry[]): ChipOption[] {
 }
 
 export const EXAM_CHIP_OPTIONS: readonly ChipOption[] = buildExamChips(EXAM_REGISTRY);
+
+/**
+ * The chips for a student's tier (EXAM_TIER_SPEC.md §3.4): `shown` renders as
+ * today, `hidden` sits behind "Show all exams". An exam already selected is
+ * always shown, even outside the tier, so changing the stage never makes a pick
+ * vanish. Tier null shows everything.
+ *
+ * Each half goes through buildExamChips separately, i.e. it is filtered BEFORE
+ * grouping: CBSE keeps only Class 10 in the school tier and must render as one
+ * flat chip, not a one-option group (groupExamFamilies rule 2).
+ */
+export function examChipsForTier(
+  tier: ExamTier | null,
+  selected: readonly string[],
+  entries: readonly ExamEntry[]
+): { shown: ChipOption[]; hidden: ChipOption[] } {
+  if (tier === null) return { shown: buildExamChips(entries), hidden: [] };
+  const picked = new Set(selected);
+  const inView = (e: ExamEntry) => e.tier === tier || picked.has(e.slug);
+  return {
+    shown: buildExamChips(entries.filter(inView)),
+    hidden: buildExamChips(entries.filter((e) => !inView(e))),
+  };
+}

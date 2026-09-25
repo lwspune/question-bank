@@ -8,7 +8,7 @@ import {
   type PageIdentity,
 } from "@/lib/auth-identity";
 
-import type { HeaderSession } from "@/lib/header-session";
+import { profileFieldsFromRow, type HeaderSession } from "@/lib/header-session";
 
 export type { PageIdentity, HeaderSession };
 
@@ -125,13 +125,20 @@ export async function getHeaderSession(): Promise<HeaderSession | null> {
   } = await supabase.auth.getUser();
   if (!user || !user.email) return null;
 
-  const [{ data: membership }, superadmin] = await Promise.all([
+  const [{ data: membership }, superadmin, { data: profile }] = await Promise.all([
     supabase
       .from("org_members")
       .select("role, org:organizations(id, name)")
       .eq("user_id", user.id)
       .maybeSingle(),
     isSuperadmin(user.id),
+    // Own-row read through the user's JWT (RLS, migration 0045). Feeds the exam
+    // feed on the cached index pages; a failed read yields empty defaults.
+    supabase
+      .from("student_profiles")
+      .select("stage, target_exams")
+      .eq("user_id", user.id)
+      .maybeSingle(),
   ]);
 
   const rawOrg = membership?.org;
@@ -146,6 +153,7 @@ export async function getHeaderSession(): Promise<HeaderSession | null> {
     orgName: org?.name ?? null,
     isStaff,
     isSuperadmin: superadmin,
+    ...profileFieldsFromRow(profile),
   };
 }
 

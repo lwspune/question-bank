@@ -95,3 +95,51 @@ describe("validateOnboardingSubmission", () => {
     });
   });
 });
+
+import { tierOfStage, needsStageNudge } from "@/lib/profile/onboarding";
+
+describe("tierOfStage", () => {
+  it("maps the five stages onto the three tiers", () => {
+    expect(tierOfStage("class-9-10")).toBe("school");
+    expect(tierOfStage("class-11")).toBe("senior");
+    expect(tierOfStage("class-12")).toBe("senior");
+    expect(tierOfStage("dropper")).toBe("senior");
+    expect(tierOfStage("college")).toBe("graduate");
+  });
+
+  it("is null when no stage is known", () => {
+    expect(tierOfStage(null)).toBeNull();
+    expect(tierOfStage(undefined)).toBeNull();
+  });
+});
+
+describe("needsStageNudge", () => {
+  // Noon IST, so the date is unambiguous in both UTC and IST.
+  const at = (ymd: string) => new Date(`${ymd}T12:00:00+05:30`);
+
+  it("nudges a school stage from 1 April to 30 June inclusive", () => {
+    expect(needsStageNudge({ stage: "class-11", now: at("2027-03-31") })).toBe(false);
+    expect(needsStageNudge({ stage: "class-11", now: at("2027-04-01") })).toBe(true);
+    expect(needsStageNudge({ stage: "class-9-10", now: at("2027-05-15") })).toBe(true);
+    expect(needsStageNudge({ stage: "class-12", now: at("2027-06-30") })).toBe(true);
+    expect(needsStageNudge({ stage: "class-12", now: at("2027-07-01") })).toBe(false);
+  });
+
+  it("reads the date in IST, not UTC", () => {
+    // 1 April 00:30 IST is still 31 March in UTC.
+    expect(
+      needsStageNudge({ stage: "class-11", now: new Date("2027-04-01T00:30:00+05:30") })
+    ).toBe(true);
+    // 1 July 00:30 IST is still 30 June in UTC.
+    expect(
+      needsStageNudge({ stage: "class-11", now: new Date("2027-07-01T00:30:00+05:30") })
+    ).toBe(false);
+  });
+
+  it("never nudges a dropper, a college student or an unknown stage", () => {
+    const now = at("2027-05-15");
+    expect(needsStageNudge({ stage: "dropper", now })).toBe(false);
+    expect(needsStageNudge({ stage: "college", now })).toBe(false);
+    expect(needsStageNudge({ stage: null, now })).toBe(false);
+  });
+});

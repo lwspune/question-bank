@@ -62,3 +62,50 @@ describe("EXAM_CHIP_OPTIONS", () => {
     expect(lastUngrouped).toBeLessThan(firstGrouped);
   });
 });
+
+import { examChipsForTier } from "@/lib/profile/examChoices";
+
+// EXAM_TIER_SPEC.md §3.4 — the chips narrow to the student's tier, the rest sit
+// behind "Show all exams". Run on the REAL registry: the family-degradation
+// rule is about the real boards.
+describe("examChipsForTier", () => {
+  it("puts everything in shown when the tier is unknown", () => {
+    const { shown, hidden } = examChipsForTier(null, [], EXAM_REGISTRY);
+    expect(hidden).toEqual([]);
+    expect(shown).toEqual(EXAM_CHIP_OPTIONS);
+  });
+
+  it("keeps a selected out-of-tier exam visible", () => {
+    const { shown, hidden } = examChipsForTier("school", ["nda"], EXAM_REGISTRY);
+    expect(shown.map((o) => o.value)).toContain("nda");
+    expect(hidden.map((o) => o.value)).not.toContain("nda");
+  });
+
+  it("splits every public exam across shown and hidden exactly once", () => {
+    const { shown, hidden } = examChipsForTier("senior", ["cds"], EXAM_REGISTRY);
+    const all = [...shown, ...hidden].map((o) => o.value);
+    expect(new Set(all).size).toBe(all.length);
+    expect(all.sort()).toEqual(EXAM_CHIP_OPTIONS.map((o) => o.value).sort());
+  });
+
+  it("degrades a board left with one class in the tier to a flat chip", () => {
+    // Filter BEFORE grouping: CBSE has only Class 10 in the school tier.
+    const { shown } = examChipsForTier("school", [], EXAM_REGISTRY);
+    expect(shown.find((o) => o.value === "cbse-10")).toEqual({
+      value: "cbse-10",
+      label: "CBSE Class 10",
+    });
+    // Maharashtra keeps two classes (9 and 10) in school, so it stays a group.
+    expect(shown.find((o) => o.value === "mh-sb-9")?.group).toBe(
+      "Maharashtra State Board"
+    );
+  });
+
+  it("groups CBSE 11 + 12 in the senior tier", () => {
+    const { shown } = examChipsForTier("senior", [], EXAM_REGISTRY);
+    expect(shown.filter((o) => o.group === "CBSE").map((o) => o.value)).toEqual([
+      "cbse-11",
+      "cbse-12",
+    ]);
+  });
+});
