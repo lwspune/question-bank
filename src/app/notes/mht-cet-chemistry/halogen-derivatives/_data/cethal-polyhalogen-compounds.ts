@@ -6,7 +6,7 @@ export const POLYHALOGEN_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A handful of named polyhalogen compounds recur: Freon-12 (CCl₂F₂) the refrigerant, DDT and BHC the insecticides, and the war gases — phosgene COCl₂, mustard gas (ClCH₂CH₂)₂S, tear gas CCl₃NO₂ — each asked by name, formula or atom count.",
   whyItMatters:
-    "10 PYQs, none HARD — pure recall. Two ask Freon-12 by name, two ask DDT's structure from four drawings, one asks its replacement (BHC), and five are the war gases — which is tear gas, the formula of mustard gas, how many Cl or N or S atoms in n moles, which has the most chlorines. " +
+    "12 PYQs, none HARD — pure recall. Two ask Freon-12 by name, two ask DDT's structure from four drawings, one asks its replacement (BHC), one asks the gas chloroform gives on oxidation (phosgene), and six are the war gases — which is tear gas (twice), the formula of mustard gas, how many Cl or N or S atoms in n moles, which has the most chlorines. " +
     "Two tables.",
   concepts: [
     // 1 — freons and insecticides

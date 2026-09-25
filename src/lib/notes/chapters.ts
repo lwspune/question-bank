@@ -529,6 +529,11 @@ import {
   MHTCET_ALCOHOLS_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/alcohols-phenols-and-ethers/_data";
 import {
+  MHTCET_CARBONYL_CHAPTER,
+  MHTCET_CARBONYL_NOTES,
+  MHTCET_CARBONYL_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/aldehydes-ketones-and-carboxylic-acids/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1315,6 +1320,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_ALCOHOLS_CHAPTER,
     notes: MHTCET_ALCOHOLS_NOTES,
     slugs: MHTCET_ALCOHOLS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "aldehydes-ketones-and-carboxylic-acids",
+    chipLabel: "Aldehydes, Ketones and Carboxylic Acids notes",
+    chapter: MHTCET_CARBONYL_CHAPTER,
+    notes: MHTCET_CARBONYL_NOTES,
+    slugs: MHTCET_CARBONYL_SLUGS,
   },
   {
     examName: "NDA",
