@@ -534,6 +534,11 @@ import {
   MHTCET_CARBONYL_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/aldehydes-ketones-and-carboxylic-acids/_data";
 import {
+  MHTCET_AMINES_CHAPTER,
+  MHTCET_AMINES_NOTES,
+  MHTCET_AMINES_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/amines/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1331,6 +1336,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_CARBONYL_CHAPTER,
     notes: MHTCET_CARBONYL_NOTES,
     slugs: MHTCET_CARBONYL_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "amines",
+    chipLabel: "Amines notes",
+    chapter: MHTCET_AMINES_CHAPTER,
+    notes: MHTCET_AMINES_NOTES,
+    slugs: MHTCET_AMINES_SLUGS,
   },
   {
     examName: "NDA",
