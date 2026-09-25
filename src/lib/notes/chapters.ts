@@ -519,6 +519,11 @@ import {
   MHTCET_BASIC_ORGANIC_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/basic-principles-of-organic-chemistry/_data";
 import {
+  MHTCET_HALOGEN_CHAPTER,
+  MHTCET_HALOGEN_NOTES,
+  MHTCET_HALOGEN_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/halogen-derivatives/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1283,6 +1288,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_BASIC_ORGANIC_CHAPTER,
     notes: MHTCET_BASIC_ORGANIC_NOTES,
     slugs: MHTCET_BASIC_ORGANIC_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "halogen-derivatives",
+    chipLabel: "Halogen Derivatives notes",
+    chapter: MHTCET_HALOGEN_CHAPTER,
+    notes: MHTCET_HALOGEN_NOTES,
+    slugs: MHTCET_HALOGEN_SLUGS,
   },
   {
     examName: "NDA",
