@@ -51,6 +51,18 @@ Within-month convention: newest entries closest to top (matches CLAUDE.md orderi
 
 **Not proven here:** any render behind sign-in, and anything behind a click (the disclosures, the grouped /browse select). There is no headless browser in this repo; the owner checklist is in EXAM_TIER_SPEC.md §6.
 
+**2026-09-25 (twentieth) — MHT-CET Chemistry "Coordination Compounds" ships (5 pages · 88 PYQ · 13 concepts · 15 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-coordination` — the Chemistry programme's thirteenth chapter, authored across two sessions.**
+
+**Bank read.** Five DB subtopics that are the book's units; `subtopicOrder` ligands → complex types → nomenclature → isomerism → bonding and stability; `notes:order` wrote five values. Previous session's source pass: three same-sitting twins PRIVATE, three rows re-dated, `72c58da8` repaired and moved to Basic Principles of Organic Chemistry, `26a6a4cb` moved to Solid State. This session: `e101a75b` (increasing field-strength order) and `0f0b19db` (EDTA strongest) moved Bonding → Ligands, where the spectrochemical card teaches them and where the draft already featured `e101a75b`; `ed0293a7` (which entity is square planar) moved Nomenclature → Bonding, the hybridisation card. Final PUBLIC counts 33 · 13 · 15 · 6 · 21; 2 HARD (both Ligands: SCN⁻ donor count, free NO₂).
+
+**Source repair.** `4c32e9f2` (11 May 2024 Shift 2, item 60): the bank stem read "Identify the coordination compound with formula K₃[Al(C₂O₄)₃]" with options formula / name / "aluminium potassium oxalate" / KAl(C₂O₄)₂ — keyed to the formula it had just printed. The paper asks "Identify the formula of potassium trioxalatoaluminate(III)" against K₃[Al(C₂O₄)₃], Al[K₃(C₂O₄)₃], K₃[Al(C₂O₄)₃]²⁻ and K₃[Al₃(C₂O₄)₃]²⁺; the answer key gives (a). Stem, options B–D and solution rewritten; key unchanged.
+
+**Design.** Ligands: denticity/donor count, a reference table of names and charges, the spectrochemical series (with the paper's EDTA-above-en key named as such). Complex types: one card on homo/heteroleptic and sphere charge. Nomenclature: oxidation state and coordination number (with Stock notation and -ous/-ic), Werner's precipitating chloride count, name ↔ formula. Isomerism: a reference table of the four structural isomerisms, and geometric isomerism with the MA₂BC count. Bonding: hybridisation and geometry, unpaired electrons and μ = √(n(n+2)), EAN, and the Irving–Williams order with the textbook's Cd²⁺ at the bottom plus the paper's metal-charge order.
+
+**Probes.** typecheck · lint · notes:latex OK · notes:lint 0 errors · notes:arc 0 · notes:intro clean after splitting a 61-word sentence · quiz:coverage 0 strong gaps · quiz:lint clean · card-blurb + intro-count tests PASS · notes:order wrote 5 · seo:dates · stats: 110 /notes chapters (mht-cet-chemistry 18). The tag script (`generated-papers/_tag-chcc.ts`) asserts each row's DB subtopic before writing; dry run and write both 88/88.
+
+**Not proven.** Render beyond the build.
+
 **2026-09-25 (nineteenth) — MHT-CET Chemistry "Introduction to Polymer Chemistry" ships (4 pages · 86 PYQ · 7 concepts · 7 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-polymers` — the Chemistry programme's twelfth chapter.**
 
 **Bank read.** 88 rows across four DB subtopics that are the book's sections; `subtopicOrder` set classification → polymerisation methods → polymers and monomers → properties and uses, and `notes:order` wrote the four values. One move: `baad984f` (which monomer pair does NOT give a polyamide) from Classification to Polymers and Their Monomers, whose linkage card teaches it. Final PUBLIC counts 22 · 9 · 29 · 26 (1 HARD: `df3b1783`, cellulose xanthate).

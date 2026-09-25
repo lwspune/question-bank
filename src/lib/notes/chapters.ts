@@ -549,6 +549,11 @@ import {
   MHTCET_POLYMERS_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/introduction-to-polymer-chemistry/_data";
 import {
+  MHTCET_COORDINATION_CHAPTER,
+  MHTCET_COORDINATION_NOTES,
+  MHTCET_COORDINATION_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/coordination-compounds/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1379,6 +1384,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_POLYMERS_CHAPTER,
     notes: MHTCET_POLYMERS_NOTES,
     slugs: MHTCET_POLYMERS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "coordination-compounds",
+    chipLabel: "Coordination Compounds notes",
+    chapter: MHTCET_COORDINATION_CHAPTER,
+    notes: MHTCET_COORDINATION_NOTES,
+    slugs: MHTCET_COORDINATION_SLUGS,
   },
   {
     examName: "NDA",
