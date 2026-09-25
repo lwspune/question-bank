@@ -4,6 +4,7 @@ import { GraduationCap } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { boardIndexNodes } from "@/lib/board/examIndex";
+import ExamFeedList from "@/components/exam/ExamFeedList";
 
 export const metadata: Metadata = {
   title: "Board textbook solutions",
@@ -54,44 +55,55 @@ export default function BoardIndex() {
           </p>
         </header>
 
-        <div className="space-y-8">
-          {nodes.map((node) => {
+        <ExamFeedList
+          as="div"
+          className="space-y-8"
+          items={nodes.map((node) => {
             if (node.kind === "family") {
               const headingId = `board-${node.key.toLowerCase().replace(/\s+/g, "-")}`;
-              return (
-                <section key={node.key} aria-labelledby={headingId}>
-                  <h2
-                    id={headingId}
-                    className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground"
-                  >
-                    {node.label}
-                  </h2>
-                  <ul className="grid gap-3">
-                    {node.members.map((cls) => (
-                      <li key={cls.item.slug}>
-                        <BoardLink
-                          href={`/board/${cls.item.slug}`}
-                          label={cls.label}
-                          ariaLabel={`${node.label} ${cls.label}`}
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              );
+              return {
+                key: node.key,
+                // A family is never split: it is "yours" when any class is.
+                slugs: node.members.map((cls) => cls.item.slug),
+                node: (
+                  <section aria-labelledby={headingId}>
+                    <h2
+                      id={headingId}
+                      className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground"
+                    >
+                      {node.label}
+                    </h2>
+                    <ul className="grid gap-3">
+                      {node.members.map((cls) => (
+                        <li key={cls.item.slug}>
+                          <BoardLink
+                            href={`/board/${cls.item.slug}`}
+                            label={cls.label}
+                            ariaLabel={`${node.label} ${cls.label}`}
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                ),
+              };
             }
             // A board exam that could not be grouped — registered without a
             // board/class, or the last of its family. Listed standalone rather
             // than dropped; see boardIndexNodes.
-            return (
-              <ul key={node.item.slug} className="grid gap-3">
-                <li>
-                  <BoardLink href={`/board/${node.item.slug}`} label={node.item.displayName} />
-                </li>
-              </ul>
-            );
+            return {
+              key: node.item.slug,
+              slugs: [node.item.slug],
+              node: (
+                <ul className="grid gap-3">
+                  <li>
+                    <BoardLink href={`/board/${node.item.slug}`} label={node.item.displayName} />
+                  </li>
+                </ul>
+              ),
+            };
           })}
-        </div>
+        />
       </main>
       <Footer />
     </>

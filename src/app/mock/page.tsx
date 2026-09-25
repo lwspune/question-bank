@@ -4,6 +4,7 @@ import { ArrowRight, Compass, History, Shield, Stethoscope, Timer } from "lucide
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
+import ExamFeedList from "@/components/exam/ExamFeedList";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPublishedMocks } from "@/lib/mocks/query";
 import { mockSideNav, mockExamNames, buildMockExamCards, type MockExamCard } from "@/lib/mocks/mocksNav";
@@ -132,12 +133,15 @@ export default async function MockCatalogue() {
         </Link>
       </GuideHero>
 
-      <ul className="mt-8 grid gap-5 sm:grid-cols-2">
-        {cards.map((card) => {
+      <ExamFeedList
+        className="mt-8 grid gap-5 sm:grid-cols-2"
+        items={cards.map((card) => {
           const copy = COPY[card.slug];
           const Icon = copy?.icon ?? Timer;
-          return (
-            <li key={card.slug}>
+          return {
+            key: card.slug,
+            slugs: [card.slug],
+            node: (
               <Link
                 href={`/mock/exam/${card.slug}`}
                 className="group flex h-full flex-col rounded-lg border bg-card p-6 transition-colors hover:border-primary/40 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -173,10 +177,10 @@ export default async function MockCatalogue() {
                   />
                 </span>
               </Link>
-            </li>
-          );
+            ),
+          };
         })}
-      </ul>
+      />
     </GuideShell>
   );
 }
