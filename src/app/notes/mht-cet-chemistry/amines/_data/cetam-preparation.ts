@@ -6,7 +6,7 @@ export const PREPARATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Amines are made by reducing nitriles (Mendius, Na/ethanol, one carbon MORE than the halide), amides (LiAlH₄, same carbons) and nitro compounds (Sn/HCl), by the Hofmann bromamide degradation of an amide (one carbon FEWER) and by Gabriel phthalimide synthesis (primary only), or by ammonolysis and alkylation of halides.",
   whyItMatters:
-    "14 PYQs, none HARD. Nine are reductions — CH₃Br → KCN → Na/EtOH → ethylamine (the chapter's most repeated sequence), which amide LiAlH₄ turns into ethanamine, how many H atoms reduce a nitrile (4) or a nitro compound (6), acetic acid → SOCl₂ → NH₃ → acetamide; five are Hofmann degradation (loss of CO, 28 g mol⁻¹; acetamide → methylamine), Gabriel (what is never formed), and ammonolysis followed by methylation. " +
+    "15 PYQs, none HARD. Ten are reductions — CH₃Br → KCN → Na/EtOH → ethylamine (the chapter's most repeated sequence), which amide LiAlH₄ turns into ethanamine, how many H atoms reduce a nitrile (4) or a nitro compound (6), acetic acid → SOCl₂ → NH₃ → acetamide; five are Hofmann degradation (loss of CO, 28 g mol⁻¹; acetamide → methylamine), Gabriel (what is never formed), and ammonolysis followed by methylation. " +
     "Two cards.",
   concepts: [
     // 1 — reductions

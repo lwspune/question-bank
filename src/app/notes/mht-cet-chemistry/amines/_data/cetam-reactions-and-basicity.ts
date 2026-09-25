@@ -6,7 +6,7 @@ export const REACTIONS_AND_BASICITY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Amines are bases — in water the secondary alkylamine is strongest and aniline weakest, so pKb runs the other way — and their reactions sort them by degree: acylation and the Hinsberg test need an N–H, the carbylamine test needs NH₂, exhaustive methylation and Hofmann elimination take any amine to an alkene.",
   whyItMatters:
-    "29 PYQs, 3 HARD — the largest page in the chapter. Fourteen are basicity in one wording or another (highest or lowest pKb, the aqueous methylamine order, the stability of R₃NH⁺); six are the tests (Hinsberg's reagent by name and formula, carbylamine's product and which amine gives it, which amine cannot be acylated); nine are exhaustive methylation and Hofmann elimination, including the two HARD rows on which alkene leaves a triethylpropylammonium salt. " +
+    "28 PYQs, 3 HARD — the largest page in the chapter. Fourteen are basicity in one wording or another (highest or lowest pKb, the aqueous methylamine order, the stability of R₃NH⁺); six are the tests (Hinsberg's reagent by name and formula, carbylamine's product and which amine gives it, which amine cannot be acylated); eight are exhaustive methylation and Hofmann elimination, including the two HARD rows on which alkene leaves a triethylpropylammonium salt. " +
     "Three cards.",
   concepts: [
     // 1 — basicity
