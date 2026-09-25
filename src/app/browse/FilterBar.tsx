@@ -7,7 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { isFitExam } from "@/lib/relevance/fit";
-import { getExamByName } from "@/lib/exam/examContext";
+import { getExamByName, type ExamSlug } from "@/lib/exam/examContext";
+import { splitByFeed } from "@/lib/exam/examFeed";
+import { useExamFeed } from "@/lib/viewer/useExamFeed";
 import {
   groupExamFamilies,
   resolveFamilySelection,
@@ -18,7 +20,10 @@ import {
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -155,11 +160,41 @@ export default function FilterBar({
     () => groupExamFamilies(exams, (e) => getExamByName(e.name)),
     [exams]
   );
+  // A signed-in student's own exams lead the list (EXAM_TIER_SPEC.md §4.4).
+  // Only the ORDER changes: the values, and so every selection and URL, are
+  // untouched. A family is "yours" when any of its classes is.
+  const { feed } = useExamFeed();
+  const examGroups = useMemo(() => {
+    if (feed.tier === null) return null;
+    const split = splitByFeed(
+      examNodes,
+      (node) =>
+        node.kind === "flat"
+          ? node.entry?.slug ?? null
+          : node.members
+              .map((m) => getExamByName(m.item.name)?.slug)
+              .filter((s): s is ExamSlug => Boolean(s)),
+      feed
+    );
+    return split.primary.length > 0 && split.other.length > 0 ? split : null;
+  }, [examNodes, feed]);
   const examSelection = resolveFamilySelection(
     examNodes,
     filters.examId,
     (e) => e.id
   );
+
+  function renderExamOption(node: (typeof examNodes)[number]) {
+    return node.kind === "flat" ? (
+      <SelectItem key={node.item.id} value={node.item.id}>
+        {node.item.name}
+      </SelectItem>
+    ) : (
+      <SelectItem key={node.key} value={familyKey(node.key)}>
+        {node.label}
+      </SelectItem>
+    );
+  }
 
   function onExamTopChange(value: string) {
     if (value === ALL) return update({ examId: null });
@@ -282,16 +317,20 @@ export default function FilterBar({
           </SelectTrigger>
           <SelectContent>
             <SelectItem value={ALL}>All exams</SelectItem>
-            {examNodes.map((node) =>
-              node.kind === "flat" ? (
-                <SelectItem key={node.item.id} value={node.item.id}>
-                  {node.item.name}
-                </SelectItem>
-              ) : (
-                <SelectItem key={node.key} value={familyKey(node.key)}>
-                  {node.label}
-                </SelectItem>
-              )
+            {examGroups ? (
+              <>
+                <SelectGroup>
+                  <SelectLabel>Your exams</SelectLabel>
+                  {examGroups.primary.map(renderExamOption)}
+                </SelectGroup>
+                <SelectSeparator />
+                <SelectGroup>
+                  <SelectLabel>Other exams</SelectLabel>
+                  {examGroups.other.map(renderExamOption)}
+                </SelectGroup>
+              </>
+            ) : (
+              examNodes.map(renderExamOption)
             )}
           </SelectContent>
         </Select>

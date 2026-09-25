@@ -4,6 +4,7 @@ import { ArrowRight, BookOpen, Shield, Sigma } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
+import ExamFeedList from "@/components/exam/ExamFeedList";
 import { getGuideExamGroups, buildGuideSideNav } from "@/lib/guide/guidesNav";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getExamHomeStats } from "@/lib/exam/examHomeStats";
@@ -98,12 +99,15 @@ export default async function GuideIndex() {
         subtitle={PAGE_INTRO}
       />
 
-      <ul className="mt-8 grid gap-5 sm:grid-cols-2">
-        {exams.map((exam) => {
+      <ExamFeedList
+        className="mt-8 grid gap-5 sm:grid-cols-2"
+        items={exams.map((exam) => {
           const copy = COPY[exam.slug];
           const Icon = copy?.icon ?? BookOpen;
-          return (
-            <li key={exam.slug}>
+          return {
+            key: exam.slug,
+            slugs: [exam.slug],
+            node: (
               <Link
                 href={exam.guidesPath}
                 className="group flex h-full flex-col rounded-lg border bg-card p-6 transition-colors hover:border-primary/40 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -143,10 +147,10 @@ export default async function GuideIndex() {
                   />
                 </span>
               </Link>
-            </li>
-          );
+            ),
+          };
         })}
-      </ul>
+      />
     </GuideShell>
   );
 }
