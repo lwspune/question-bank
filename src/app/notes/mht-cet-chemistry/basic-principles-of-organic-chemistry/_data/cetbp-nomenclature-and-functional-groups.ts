@@ -6,7 +6,7 @@ export const NOMENCLATURE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An IUPAC name is built from the longest chain containing the principal functional group, numbered to give that group the lowest locant; which group is principal follows a fixed priority order, and a homologous series steps by one CH₂ (14 g mol⁻¹) at a time.",
   whyItMatters:
-    "17 PYQs, 2 HARD — the biggest of the three pages. Five ask the priority order of functional groups (which is principal, which is lowest), five ask which heterocycle carries N, O or S, two ask the 14 g mol⁻¹ step of a homologous series, and four are a name or a bond-line formula from a drawn structure. " +
+    "18 PYQs, 2 HARD — the biggest of the three pages. Five ask the priority order of functional groups (which is principal, which is lowest), five ask which heterocycle carries N, O or S, two ask the 14 g mol⁻¹ step of a homologous series, and four are a name or a bond-line formula from a drawn structure. " +
     "Two tables and one naming routine.",
   concepts: [
     // 1 — homologous series and named compounds

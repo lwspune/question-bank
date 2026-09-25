@@ -35,6 +35,18 @@ Within-month convention: newest entries closest to top (matches CLAUDE.md orderi
 ### 2026-09-01 to 2026-09-25 — full narratives (digested 2026-09-14; rolling since). Header corrected 2026-09-18: it read "to 2026-09-16" while the batch already held entries through 2026-09-18, so it is now DERIVED from the batch's own span rather than hand-maintained — re-check it with the reconciliation in `npm run docs:budget`.
 
 
+**2026-09-25 (seventeenth) — MHT-CET Chemistry "Biomolecules" ships (5 pages · 88 PYQ · 9 concepts · 9 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-biomolecules` — the Chemistry programme's eleventh chapter.**
+
+**Bank read.** 91 rows across five DB subtopics that are the book's sections; `subtopicOrder` set carbohydrates → glycosidic linkages → amino acids and proteins → nucleic acids → lipids and enzymes, and `notes:order` wrote the five values. No row moved. Final PUBLIC counts 21 · 19 · 27 · 16 · 5 (2 HARD: `0a863299` acetylation mass gain, `1c860f7e` stachyose composition).
+
+**Source pass.** No figure rows beyond `2aea88e9`, which already carried its image; no key changed. The remaining 2023, 2024 and 2025 papers were extracted so a stem could be searched across the WHOLE corpus (`findstem.py`, whitespace-normalised regex, prints paper + item number). Results: `a8fb6bd6` ("2023 Shift 1", undated) is the 16 May 2023 Shift 2 item 70 already held as `b56c1611` — PRIVATE; `8c95515f` ("2025 May Shift ||") is 19 April 2025 Shift II item 72, held as `c5095896` — PRIVATE; `fe6ccb16` is a same-sitting double ingest of `e70ca38c` (11 May 2024 Shift 2 item 96) — PRIVATE. Re-dated: `146e2053` → 16th May Shift 2 (item 99); `a9408a13`, `dc9abd35` → 19 April Shift II (items 81, 76); `ede34160`, `ec8d82c0` ("3rd May 2nd Shift") → 3rd May Shift 1 (items 88, 60; the 3 May Shift 2 paper is extracted and lacks them). Every other 2022–2023 stem probed was found in the paper the row names.
+
+**Design.** Carbohydrates: classification + glucose/fructose structure (formula card) and the structure-proving reactions with the +42 u per OH count. Glycosidic linkages: a REFERENCE table of sucrose/maltose/lactose/raffinose/stachyose (units, linkage, reducing, glucose per mole) and a polysaccharide card. Amino acids: a REFERENCE table of the amino acids the paper actually names (class, codes, side chain, essential) and a peptides/protein-structure card (n − 1 bonds, 3.6 per turn, fibrous vs globular). Nucleic acids: nucleotide anatomy by position (N-9 / N-1, C-1′, C-5′, C-2′ deoxy, atom counts per base) and the phosphodiester backbone + Watson–Crick card. Lipids: one card (3n water, soap, fatty-acid C=C counts, salivary enzymes, haemoglobin).
+
+**Probes.** typecheck · lint · notes:latex OK · notes:lint 0 errors · notes:arc 0 · notes:intro clean · quiz:coverage 0 · card-blurb/registry tests PASS · notes-intro-counts PASS · notes:order wrote 5 · seo:dates · stats: 108 /notes chapters (mht-cet-chemistry 16).
+
+**Not proven.** Render beyond the build.
+
 **2026-09-25 (sixteenth) — MHT-CET Chemistry "Amines" ships (5 pages · 83 PYQ · 10 concepts · 10 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-amines` — the Chemistry programme's tenth chapter.**
 
 **Bank read.** 86 rows across five DB subtopics that are the book's sections; `subtopicOrder` set nomenclature → physical properties → preparation → reactions and basicity → diazonium salts and `notes:order` wrote the five values. One row left the chapter entirely (below), and `5e5358ca` (the CH₃Br → KCN → Na/EtOH sequence, filed under reactions by the ingest) moved to Preparation because the reductions card features it — notes:lint refuses a featured PYQ from another subtopic, and the first gate run caught exactly that. Final PUBLIC counts 19 · 8 · 15 · 28 · 13.
@@ -305,6 +317,14 @@ The roadmap had held this behind two decisions — where the date comes from, an
 
 **Verified:** 20 calendar + pulse tests, typecheck, lint; anon curls compile `/account`, `/me` and the pulse route. **Not verified:** the render of the date input, the menu line and the strip line.
 
+_Digest evicted verbatim from CLAUDE.md on 2026-09-25 under the CEILING rule; the long form follows it._
+
+- **2026-09-24 (eighth) — teacher-assigned papers with a deadline ship (C1, migration 0115 `mock_assignments`): the deadline pull without the ranking.**
+  - **A new table, not a due date on `papers` or a column on `mock_tests`** (user's call): a paper is a Word download so completion cannot be measured, and a mock is global while the assignment is per cohort. One row per (batch, mock); editing the date is an UPDATE.
+  - **RLS mirrors 0083 line for line** — enrolled students read their batches' rows, staff read and write inside `batches_select_scoped` — and the integration test proves the other branch's teacher is refused by the DATABASE, not the route. The first run of that test failed on `+00:00` vs `Z`: compare instants, never timestamp strings.
+  - **"Sat" = any graded attempt of that mock, not only after assignment** — a teacher asking who has done the paper wants the true answer. The card shows "12 of 30 sat" and who has not; **no score column, no order of students**, which is the whole difference between this and the leaderboard the gate forbids.
+  - **Not verified:** the render — the roster card is behind the middleware and the student list is auth-gated; anon curls compile the routes and the API answers 401.
+
 **2026-09-24 (eighth) — teacher-assigned mocks with a deadline (ENGAGEMENT_SPEC.md C1), migration 0115.**
 
 The third build of the day and the one with the largest expected lift for LWS's own batches: a cohort with a date pulls harder than any nudge, and it does so without the peer ranking the engagement gate forbids. The user chose the shape (a new `mock_assignments` table) over two cheaper ones — a due date on `papers` (a paper is a Word download, so "who has done it" is unmeasurable) and a column on `mock_tests` (a mock is global; the assignment is per cohort).
@@ -316,6 +336,13 @@ The third build of the day and the one with the largest expected lift for LWS's 
 **Surfaces.** Teacher: `AssignmentsCard` on the batch roster — a mock picker with the batch's exam first, a `datetime-local`, a note; each row "N of M sat" with a `<details>` naming who has not, and a remove button. Deliberately no score and no ordering of students. Student: a "Set by your teacher" list on `/me` (max three rows, one Start button, rendered only when there is one, so the 90% with no batch see nothing new) and one line under the title on `/mock/[slug]`. Writes go through `POST /api/batches/assign`: `requireEditor` proves org staff, RLS proves the batch is theirs; the service maps 23505 to "already assigned" and 42501 to "cannot assign here".
 
 **Verified:** 13 core tests + 5 RLS tests + typecheck + lint; anon curls compile the routes (roster → middleware redirect, API → 401). **Not verified:** the render of the card, the list and the line — auth-gated, and the card is a client island.
+
+_Digest evicted verbatim from CLAUDE.md on 2026-09-25 under the CEILING rule; the long form follows it._
+
+- **2026-09-24 (seventh) — the mastery map ships at `/me/map` (B1): the same numbers as the chapter accordion, shaped to be SEEN.**
+  - **No new band definition.** `bandOf` imports `WEAK_BELOW` / `MASTERED_AT` / `MIN_JUDGED_FOR_CLAIM` from compute.ts, so the map, the accordion bar colour and the concept graph's root cause can never disagree; "unknown" is a band that renders and counts, not an absence.
+  - **Phone first, no client JS for a tap** — native `<details>` tiles in a two-column grid; exam/subject pills reuse `buildLaneNav` so `/performance` and the map select the same lane; every pill is `prefetch={false}`, the 2026-09-15 outage shape.
+  - **Why it exists:** the drill retiring a question is what moves a dot, so the drill's end screen now lands here. Not verified: the render (auth-gated `ƒ`); `npm run map:smoke` proves the data chain.
 
 **2026-09-24 (seventh) — the mastery map (ENGAGEMENT_SPEC.md B1) at `/me/map`.**
 
