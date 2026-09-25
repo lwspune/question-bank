@@ -29,7 +29,23 @@ import WeekStrip from "./WeekStrip";
 import { getOwnWeekly } from "@/lib/goals/service";
 import { listMyAssignments } from "@/lib/assignments/service";
 import type { StudentAssignmentView } from "@/lib/assignments/core";
-import { CalendarClock, Check } from "lucide-react";
+import { CalendarClock, Check, GraduationCap } from "lucide-react";
+import StageNudge from "./StageNudge";
+import { getOnboardingState } from "@/lib/profile/service";
+import {
+  STAGE_LABELS,
+  isStage,
+  needsStageNudge,
+  sanitizeTargetExams,
+} from "@/lib/profile/onboarding";
+import { getExamIdMap } from "@/lib/exam/examIdMap";
+import { getNotesExamGroups } from "@/lib/notes/notesNav";
+import {
+  firstMockHref,
+  firstNotesHref,
+  yourExamLinks,
+  type ExamLink,
+} from "@/lib/exam/examLinks";
 import { cn } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -44,7 +60,8 @@ export default async function MePage() {
   if (!user) redirect("/login?next=/me");
 
   const db = createSupabaseServerClient();
-  const [attempts, notesRows, bookmarkIds, lastNpsAt, weekly, assigned] = await Promise.all([
+  const [attempts, notesRows, bookmarkIds, lastNpsAt, weekly, assigned, profile, examIds] =
+    await Promise.all([
     getUserAttempts(db, user.id),
     listOwnNotesProgress(db, user.id),
     listBookmarkIds(db, user.id),
@@ -55,6 +72,8 @@ export default async function MePage() {
       console.error("assignments read failed", e);
       return [] as StudentAssignmentView[];
     }),
+    getOnboardingState(db, user.id),
+    getExamIdMap(),
   ]);
 
   const mocks = summarizeUserMocks(attempts);
@@ -65,6 +84,17 @@ export default async function MePage() {
   // Continue-where-you-left-off: an open mock beats a recently-read chapter.
   const resume = mocks.resumeAttempt;
   const cont = notes.recent[0];
+
+  // The exam-scoped home (EXAM_TIER_SPEC.md §4.2): the student's target exams
+  // and the per-exam destinations they unlock.
+  const targets = sanitizeTargetExams(profile.targetExams);
+  const stage = isStage(profile.stage) ? profile.stage : null;
+  const notesSlugs = new Set(getNotesExamGroups().map((g) => g.slug));
+  const examLinks = yourExamLinks(targets, examIds);
+  const mockHref = firstMockHref(targets);
+  const notesHref = firstNotesHref(targets, notesSlugs);
+  const now = new Date();
+  const showStageNudge = needsStageNudge({ stage, now });
 
   return (
     <>
@@ -79,6 +109,12 @@ export default async function MePage() {
             <p className="text-sm text-muted-foreground">{user.email}</p>
           </div>
         </header>
+
+        {examLinks.length > 0 ? <YourExams links={examLinks} /> : <NoTargetCard />}
+
+        {showStageNudge && stage && (
+          <StageNudge stageLabel={STAGE_LABELS[stage]} year={now.getFullYear()} />
+        )}
 
         {/* Continue hero */}
         {resume ? (
@@ -98,7 +134,7 @@ export default async function MePage() {
             cta="Continue"
           />
         ) : (
-          <WelcomeHero />
+          <WelcomeHero mockHref={mockHref} notesHref={notesHref} />
         )}
 
         {/* This week's sittings against the goal + the due-drill count, as one
@@ -114,10 +150,11 @@ export default async function MePage() {
 
         <div className="grid gap-6 lg:grid-cols-3">
           <section className="space-y-4 lg:col-span-2">
-            <MockCard mocks={mocks} attempts={attempts} />
+            <MockCard mocks={mocks} attempts={attempts} browseHref={mockHref} />
           </section>
           <div className="space-y-6">
             <NotesCard
+              notesHref={notesHref}
               recent={notes.recent}
               bookmarkedCount={notes.bookmarkedCount}
               masteredCount={notes.masteredCount}
@@ -191,6 +228,55 @@ function DueList({ items }: { items: StudentAssignmentView[] }) {
   );
 }
 
+/* ------------------------------------------------------------ your exams */
+
+/** The student's target exams, in order, each to its best destination. */
+function YourExams({ links }: { links: ExamLink[] }) {
+  return (
+    <section aria-label="Your exams" className="flex flex-wrap items-center gap-2">
+      <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+        Your exams
+      </span>
+      {links.map((l) => (
+        <Link
+          key={l.slug}
+          href={l.href}
+          prefetch={false}
+          className="inline-flex h-8 items-center rounded-full border px-3 text-sm font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          {l.label}
+        </Link>
+      ))}
+      <Link
+        href="/account"
+        prefetch={false}
+        className="text-xs font-medium text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      >
+        Change
+      </Link>
+    </section>
+  );
+}
+
+/** Shown instead of the exam row when the student has no target exam. */
+function NoTargetCard() {
+  return (
+    <section className="flex flex-col gap-3 rounded-xl border bg-card p-4 sm:flex-row sm:items-center sm:justify-between">
+      <p className="flex items-center gap-2 text-sm">
+        <GraduationCap className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+        Tell us your exam and this page will show only what you need.
+      </p>
+      <Link
+        href="/account"
+        prefetch={false}
+        className="inline-flex h-9 shrink-0 items-center justify-center rounded-md bg-brand px-4 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      >
+        Choose your exam
+      </Link>
+    </section>
+  );
+}
+
 /* ---------------------------------------------------------------- heroes */
 
 function ContinueHero({
@@ -231,7 +317,7 @@ function ContinueHero({
   );
 }
 
-function WelcomeHero() {
+function WelcomeHero({ mockHref, notesHref }: { mockHref: string; notesHref: string }) {
   return (
     <section className="rounded-xl border bg-card p-6">
       <div className="flex items-start gap-3">
@@ -249,14 +335,14 @@ function WelcomeHero() {
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             <Link
-              href="/mock"
+              href={mockHref}
               className="inline-flex h-9 items-center justify-center gap-1.5 rounded-md bg-brand px-4 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand/90"
             >
               <Timer className="h-4 w-4" aria-hidden />
               Take a mock
             </Link>
             <Link
-              href="/notes"
+              href={notesHref}
               className="inline-flex h-9 items-center justify-center gap-1.5 rounded-md border px-4 text-sm font-medium transition-colors hover:bg-accent"
             >
               <BookOpen className="h-4 w-4" aria-hidden />
@@ -322,21 +408,24 @@ function Stat({ value, label }: { value: string; label: string }) {
 function MockCard({
   mocks,
   attempts,
+  browseHref,
 }: {
   mocks: ReturnType<typeof summarizeUserMocks>;
   attempts: Awaited<ReturnType<typeof getUserAttempts>>;
+  /** The first target exam's catalogue, else /mock. */
+  browseHref: string;
 }) {
   const recent = attempts.slice(0, 4);
   return (
     <CardShell
       icon={<Timer className="h-4 w-4" aria-hidden />}
       title="Mock tests"
-      action={<CardLink href="/mock">Browse mocks</CardLink>}
+      action={<CardLink href={browseHref}>Browse mocks</CardLink>}
     >
       {attempts.length === 0 ? (
         <EmptyState
           text="You haven't taken a mock test yet."
-          href="/mock"
+          href={browseHref}
           cta="Take your first mock"
         />
       ) : (
@@ -372,10 +461,13 @@ function MockCard({
 }
 
 function NotesCard({
+  notesHref,
   recent,
   bookmarkedCount,
   masteredCount,
 }: {
+  /** The first target exam's notes hub, else /notes. */
+  notesHref: string;
   recent: ReturnType<typeof summarizeNotesProgress>["recent"];
   bookmarkedCount: number;
   masteredCount: number;
@@ -385,12 +477,12 @@ function NotesCard({
     <CardShell
       icon={<BookOpen className="h-4 w-4" aria-hidden />}
       title="Notes progress"
-      action={<CardLink href="/notes">Go to notes</CardLink>}
+      action={<CardLink href={notesHref}>Go to notes</CardLink>}
     >
       {!hasActivity ? (
         <EmptyState
           text="No notes activity yet."
-          href="/notes"
+          href={notesHref}
           cta="Explore notes"
         />
       ) : (
