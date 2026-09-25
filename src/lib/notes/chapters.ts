@@ -559,6 +559,11 @@ import {
   MHTCET_TRANSITION_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/transition-and-inner-transition-elements/_data";
 import {
+  MHTCET_GROUP16_CHAPTER,
+  MHTCET_GROUP16_NOTES,
+  MHTCET_GROUP16_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/elements-of-group-16-17-and-18/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1411,6 +1416,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_TRANSITION_CHAPTER,
     notes: MHTCET_TRANSITION_NOTES,
     slugs: MHTCET_TRANSITION_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "elements-of-group-16-17-and-18",
+    chipLabel: "Group 16, 17 and 18 notes",
+    chapter: MHTCET_GROUP16_CHAPTER,
+    notes: MHTCET_GROUP16_NOTES,
+    slugs: MHTCET_GROUP16_SLUGS,
   },
   {
     examName: "NDA",
