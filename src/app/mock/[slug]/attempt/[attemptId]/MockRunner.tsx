@@ -19,6 +19,9 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { remainingSecs, paletteState, type PaletteState } from "@/lib/mocks/attempt";
+import LanguageSwitch from "@/components/i18n/LanguageSwitch";
+import { hasMarathi, optionVersions, stemVersions } from "@/lib/i18n/bilingual";
+import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import type { RunnerState, SavedAnswer } from "@/lib/mocks/service";
 
 type Answers = Record<string, SavedAnswer>;
@@ -66,6 +69,11 @@ export default function MockRunner({
   const { attempt, mock, questions } = state;
 
   const [answers, setAnswers] = useState<Answers>(() => ({ ...state.answers }));
+  // A bilingual paper (MPSC prints Marathi + English) offers the same language
+  // choice the student made on the instructions screen, switchable any time —
+  // the printed booklet lets them read either version whenever they like.
+  const [langPref, setLangPref] = useQuestionLang();
+  const paperBilingual = useMemo(() => questions.some((x) => hasMarathi(x)), [questions]);
   const [current, setCurrent] = useState(0);
   const [remaining, setRemaining] = useState(() => remainingSecs(attempt.expiresAt, Date.now()));
   const [paletteOpen, setPaletteOpen] = useState(false);
@@ -289,15 +297,30 @@ export default function MockRunner({
               +{q.marks} / {q.negMarks}
             </span>
           </div>
+          {paperBilingual && (
+            <div className="mt-2 flex justify-end">
+              <LanguageSwitch value={langPref} onChange={setLangPref} />
+            </div>
+          )}
 
           <div className="mt-3 rounded-lg border bg-card p-4 sm:p-5">
-            {q.context && (
-              <div className="mb-3 border-l-2 border-muted pl-3 font-serif text-sm italic text-muted-foreground">
-                <BlockText text={q.context} />
-              </div>
-            )}
-            <div className="font-serif text-[15px] leading-relaxed [&_.katex]:max-w-full">
-              <BlockText text={q.text} />
+            {stemVersions(q, langPref)
+              .filter((v) => v.context)
+              .map((v) => (
+                <div
+                  key={`ctx-${v.lang}`}
+                  lang={v.lang}
+                  className="mb-3 border-l-2 border-muted pl-3 font-serif text-sm italic text-muted-foreground"
+                >
+                  <BlockText text={v.context!} />
+                </div>
+              ))}
+            <div className="space-y-3 font-serif text-[15px] leading-relaxed [&_.katex]:max-w-full">
+              {stemVersions(q, langPref).map((v, i) => (
+                <div key={v.lang} lang={v.lang} className={cn(i > 0 && "border-t border-dashed pt-3")}>
+                  <BlockText text={v.text} />
+                </div>
+              ))}
             </div>
             {q.imageUrl && (
               // eslint-disable-next-line @next/next/no-img-element
@@ -362,7 +385,11 @@ export default function MockRunner({
                         {opt.label}
                       </span>
                       <div className="min-w-0 flex-1 overflow-x-auto font-serif [&_.katex]:max-w-full">
-                        <KatexRenderer text={opt.text} />
+                        {optionVersions(q, opt, langPref).map((v, i) => (
+                          <div key={v.lang} lang={v.lang} className={cn(i > 0 && "text-xs text-muted-foreground")}>
+                            <KatexRenderer text={v.text} />
+                          </div>
+                        ))}
                         {opt.imageUrl && (
                           // eslint-disable-next-line @next/next/no-img-element
                           <img

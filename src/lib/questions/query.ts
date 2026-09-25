@@ -2,6 +2,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { AUDIENCE } from "@/lib/relevance/config";
 import type { Filters, Difficulty, QuestionFormat } from "./filters";
 import { publicPyqNote, type PublicQuestionKind } from "./publicPyqNote";
+import { translationsFromRows, type Translation } from "@/lib/i18n/bilingual";
 
 export type OptionRow = {
   label: "A" | "B" | "C" | "D";
@@ -48,6 +49,18 @@ export type QuestionRow = {
   chapter: { id: string; name: string };
   subtopic: { id: string; name: string } | null;
   options: OptionRow[];
+  /**
+   * The question as printed in another language (migration 0118) — today only
+   * Marathi, on MPSC papers. Absent for an English-only question. Same key and
+   * id as the English row: this is a presentation, never a second question.
+   */
+  translations?: { mr?: Translation };
+  /**
+   * Officially CANCELLED by the exam body (migration 0119): the notice to show.
+   * Such a question has NO correct option — surfaces must say so rather than
+   * mark any pick right or wrong. Absent/null for every normal question.
+   */
+  cancelledNote?: string | null;
 };
 
 /**
@@ -311,12 +324,13 @@ export async function queryQuestionsByIds(
     .select(
       `
       id, text, context, difficulty, solution, image_url, solution_image_url, set_id, question_format, numeric_answer,
-      question_number, pyq_year, pyq_month, pyq_note, question_kind,
+      question_number, pyq_year, pyq_month, pyq_note, question_kind, cancelled_note,
       exam:exams!exam_id(id, name),
       subject:subjects!subject_id(id, name),
       chapter:chapters!chapter_id(id, name),
       subtopic:subtopics!subtopic_id(id, name),
-      options(label, text, is_correct, image_url)
+      options(label, text, is_correct, image_url, option_translations(lang, text)),
+      question_translations(lang, text, context)
     `
     )
     .in("id", ids);
@@ -328,6 +342,7 @@ export async function queryQuestionsByIds(
     text: string;
     is_correct: boolean;
     image_url: string | null;
+    option_translations: { lang: string; text: string }[] | null;
   };
   type RawTaxonomy = { id: string; name: string };
   type Raw = {
@@ -346,11 +361,13 @@ export async function queryQuestionsByIds(
     pyq_month: string | null;
     pyq_note: string | null;
     question_kind: PublicQuestionKind | null;
+    cancelled_note: string | null;
     exam: RawTaxonomy | RawTaxonomy[] | null;
     subject: RawTaxonomy | RawTaxonomy[] | null;
     chapter: RawTaxonomy | RawTaxonomy[] | null;
     subtopic: RawTaxonomy | RawTaxonomy[] | null;
     options: RawOption[] | null;
+    question_translations: { lang: string; text: string; context: string | null }[] | null;
   };
 
   const flatten = (v: RawTaxonomy | RawTaxonomy[] | null): RawTaxonomy | null =>
@@ -388,6 +405,8 @@ export async function queryQuestionsByIds(
           imageUrl: o.image_url,
         }))
         .sort((a, b) => a.label.localeCompare(b.label)),
+      translations: translationsFromRows(r.question_translations, r.options),
+      cancelledNote: r.cancelled_note,
     });
   }
 

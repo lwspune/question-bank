@@ -6,6 +6,7 @@
  * server-only helper and never folded into the client-facing question view.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { translationsFromRows, type Translation } from "@/lib/i18n/bilingual";
 import type { MockAnswerKey, OptionLabel } from "./answers";
 
 export type MockSnapshotQuestion = {
@@ -179,6 +180,8 @@ export type MockQuestionView = {
   context: string | null;
   imageUrl: string | null;
   options: MockOptionView[];
+  /** The question as printed in Marathi (MPSC papers, migration 0118); absent otherwise. */
+  translations?: { mr?: Translation };
   /**
    * How the student answers this one. "numeric" is JEE Section-B (NAT): the
    * question carries ZERO option rows and the answer is a typed value.
@@ -201,13 +204,23 @@ export async function loadMockQuestionViews(
   snapshot: MockSnapshotQuestion[]
 ): Promise<MockQuestionView[]> {
   const ids = snapshot.map((s) => s.questionId);
-  const byId = new Map<string, { text: string; context: string | null; imageUrl: string | null; options: MockOptionView[]; format: "mcq" | "numeric" }>();
+  const byId = new Map<
+    string,
+    {
+      text: string;
+      context: string | null;
+      imageUrl: string | null;
+      options: MockOptionView[];
+      format: "mcq" | "numeric";
+      translations?: { mr?: Translation };
+    }
+  >();
   const PAGE = 300;
   for (let i = 0; i < ids.length; i += PAGE) {
     const chunk = ids.slice(i, i + PAGE);
     const { data, error } = await db
       .from("questions")
-      .select("id, text, context, image_url, question_format, options(label, text, image_url)")
+      .select("id, text, context, image_url, question_format, options(label, text, image_url, option_translations(lang, text)), question_translations(lang, text, context)")
       .in("id", chunk);
     if (error) throw new Error(`loadMockQuestionViews: ${error.message}`);
     for (const row of (data ?? []) as Record<string, unknown>[]) {
@@ -224,6 +237,10 @@ export async function loadMockQuestionViews(
         imageUrl: (row.image_url as string | null) ?? null,
         options: opts,
         format: row.question_format === "numeric" ? "numeric" : "mcq",
+        translations: translationsFromRows(
+          row.question_translations as Parameters<typeof translationsFromRows>[0],
+          row.options as Parameters<typeof translationsFromRows>[1]
+        ),
       });
     }
   }
@@ -243,6 +260,7 @@ export async function loadMockQuestionViews(
         imageUrl: content?.imageUrl ?? null,
         options: content?.options ?? [],
         format: content?.format ?? "mcq",
+        ...(content?.translations ? { translations: content.translations } : {}),
       };
     });
 }
@@ -325,6 +343,10 @@ export type ReviewQuestionContent = {
   format: "mcq" | "numeric";
   /** The correct value for a numeric (JEE Section-B) question; null otherwise. */
   numericAnswer: number | null;
+  /** Marathi presentation, when the paper printed one (migration 0118). */
+  translations?: { mr?: Translation };
+  /** Officially cancelled by the exam body — the notice (migration 0119). */
+  cancelledNote?: string | null;
 };
 
 /** Post-submit review content: full question + the CORRECT option + solution.
@@ -340,7 +362,7 @@ export async function loadReviewQuestions(
     const chunk = ids.slice(i, i + PAGE);
     const { data, error } = await db
       .from("questions")
-      .select("id, text, context, image_url, solution, solution_image_url, question_format, numeric_answer, options(label, text, image_url, is_correct)")
+      .select("id, text, context, image_url, solution, solution_image_url, question_format, numeric_answer, cancelled_note, options(label, text, image_url, is_correct, option_translations(lang, text)), question_translations(lang, text, context)")
       .in("id", chunk);
     if (error) throw new Error(`loadReviewQuestions: ${error.message}`);
     for (const row of (data ?? []) as Record<string, unknown>[]) {
@@ -364,6 +386,11 @@ export async function loadReviewQuestions(
           row.numeric_answer === null || row.numeric_answer === undefined
             ? null
             : Number(row.numeric_answer),
+        cancelledNote: (row.cancelled_note as string | null) ?? null,
+        translations: translationsFromRows(
+          row.question_translations as Parameters<typeof translationsFromRows>[0],
+          row.options as Parameters<typeof translationsFromRows>[1]
+        ),
       });
     }
   }

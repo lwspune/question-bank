@@ -37,6 +37,10 @@ import BookmarkButton from "./BookmarkButton";
 import { buildBreadcrumb } from "./breadcrumb";
 import ReportQuestionDialog from "./ReportQuestionDialog";
 import { ItemStatChip, ItemStatDetail } from "./ItemStats";
+import LanguageSwitch from "@/components/i18n/LanguageSwitch";
+import CancelledNotice from "@/components/question/CancelledNotice";
+import { hasMarathi, optionVersions, stemVersions } from "@/lib/i18n/bilingual";
+import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import type { ItemStatAggregate } from "@/lib/itemStats/types";
 
 type OptionLabel = OptionRow["label"];
@@ -131,6 +135,15 @@ export default function QuestionCard({
   }
 
   const breadcrumb = buildBreadcrumb(question, { includeExam });
+
+  // Printed-language choice (MPSC papers carry Marathi). Shared page-wide; an
+  // English-only question ignores it and renders exactly as before.
+  const [langPref, setLangPref] = useQuestionLang();
+  const bilingual = hasMarathi(question);
+  const stems = stemVersions(question, langPref);
+  // Officially cancelled (migration 0119): no option is correct, so a pick is
+  // never painted right or wrong — the notice says why instead.
+  const cancelled = Boolean(question.cancelledNote);
 
   function toggleExpanded() {
     setExpanded((v) => {
@@ -238,9 +251,21 @@ export default function QuestionCard({
             )}
           >
             {expanded ? (
-              <BlockText text={question.text} />
+              <div className="space-y-2">
+                {stems.map((v, i) => (
+                  <div
+                    key={v.lang}
+                    lang={v.lang}
+                    className={cn(i > 0 && "border-t border-dashed pt-2 text-muted-foreground")}
+                  >
+                    <BlockText text={v.text} />
+                  </div>
+                ))}
+              </div>
             ) : (
-              <KatexRenderer text={question.text} />
+              <span lang={stems[0].lang}>
+                <KatexRenderer text={stems[0].text} />
+              </span>
             )}
           </div>
         </button>
@@ -291,11 +316,20 @@ export default function QuestionCard({
               </div>
             )}
 
-            {question.context && !hideContext && (
-              <div className="pt-3 text-sm italic text-muted-foreground">
-                <BlockText text={question.context} />
+            {bilingual && (
+              <div className="flex justify-end pt-3">
+                <LanguageSwitch value={langPref} onChange={setLangPref} />
               </div>
             )}
+
+            {!hideContext &&
+              stems
+                .filter((v) => v.context)
+                .map((v) => (
+                  <div key={v.lang} lang={v.lang} className="pt-3 text-sm italic text-muted-foreground">
+                    <BlockText text={v.context!} />
+                  </div>
+                ))}
 
             {question.imageUrl && (
               <div className="pt-3">
@@ -307,13 +341,15 @@ export default function QuestionCard({
               </div>
             )}
 
+            {cancelled && <CancelledNotice note={question.cancelledNote!} />}
+
             {!isOpenFormat && (
             <ol className="space-y-2 pt-2">
               {question.options.map((opt) => {
                 const isPickedByUser = picked === opt.label;
                 const showCorrect = revealed && opt.isCorrect;
                 const showWrong =
-                  revealed && isPickedByUser && !opt.isCorrect;
+                  revealed && isPickedByUser && !opt.isCorrect && !cancelled;
 
                 const optionContent = (
                   <>
@@ -321,7 +357,11 @@ export default function QuestionCard({
                       {opt.label}
                     </span>
                     <div className="min-w-0 flex-1 overflow-x-auto [&_.katex]:max-w-full">
-                      <KatexRenderer text={opt.text} />
+                      {optionVersions(question, opt, langPref).map((v, i) => (
+                        <div key={v.lang} lang={v.lang} className={cn(i > 0 && "text-xs text-muted-foreground")}>
+                          <KatexRenderer text={v.text} />
+                        </div>
+                      ))}
                     </div>
                     {showCorrect && (
                       <span className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">
@@ -371,7 +411,7 @@ export default function QuestionCard({
               })}
             </ol>
             )}
-            {!isOpenFormat && !revealed && (
+            {!isOpenFormat && !revealed && !cancelled && (
               <p className="pt-1 text-center text-xs text-muted-foreground">
                 Tap an option to check your answer.
               </p>

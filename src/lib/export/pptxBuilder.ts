@@ -659,8 +659,11 @@ function answerBlocks(spec: Extract<SlideSpec, { kind: "answer" }>): Block[] {
   }
 
   const correct = question.options.find((o) => o.isCorrect);
-  const key =
-    correct != null
+  // An officially cancelled question (migration 0119) has no key — say so
+  // rather than printing nothing, which reads as a missing answer.
+  const key = question.cancelledNote
+    ? `Cancelled — no option is correct. ${question.cancelledNote}`
+    : correct != null
       ? `Answer: (${correct.label})`
       : question.numericAnswer != null
         ? `Answer: ${question.numericAnswer}`
