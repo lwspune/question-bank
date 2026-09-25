@@ -13,6 +13,7 @@ import {
   getExamIdByName,
 } from "@/lib/questions/taxonomy";
 import {
+  getExamByName,
   isPracticeOnlyExam,
   getExamBySlug,
   isExamSlug,
@@ -244,6 +245,10 @@ export default async function BrowsePage({ searchParams }: PageProps) {
         ).catch(() => undefined);
 
   const examOpts = (exams ?? []).map((e) => ({ id: e.id, name: e.name }));
+  // A bilingual exam (MPSC prints Marathi + English) offers a print-language
+  // choice in the download dialog. Registry flag, not a count — see ExamEntry.
+  const bilingualExam =
+    getExamByName(examOpts.find((e) => e.id === filters.examId)?.name)?.bilingual === true;
   const subjectOpts = (subjects ?? []).map((s) => ({ id: s.id, name: s.name }));
 
   // Merge facet counts onto chapter and subtopic options. Both are sorted by
@@ -318,6 +323,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
               totalCount={totalCount}
               isSignedIn={isSignedIn}
               isStaff={isStaff}
+              bilingual={bilingualExam}
             />
           </div>
         </header>

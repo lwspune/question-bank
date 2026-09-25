@@ -381,7 +381,7 @@ describe("exam tiers", () => {
       "ipmat-rohtak",
       "jipmat",
     ],
-    graduate: ["cds"],
+    graduate: ["cds", "mpsc-group-b-c"],
   };
 
   it("gives every registry entry a tier from EXAM_TIERS", () => {

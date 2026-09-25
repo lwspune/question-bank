@@ -29,7 +29,8 @@ export type ExamSlug =
   | "worksheets-11-12"
   | "ipmat-indore"
   | "ipmat-rohtak"
-  | "jipmat";
+  | "jipmat"
+  | "mpsc-group-b-c";
 
 /**
  * School boards the bank carries content for. NOT every exam has one — a
@@ -113,6 +114,15 @@ export type ExamEntry = {
    * active and so can never strand a viewer with an invisible narrowing.
    */
   mixedFormats?: boolean;
+  /**
+   * The exam's papers print every question in Marathi AND English, and the bank
+   * keeps both (migration 0118). Drives the language choice on the mock
+   * instructions screen, which renders before any question is loaded — so it is
+   * declared here, like `mixedFormats`, rather than counted per request.
+   * Question-level surfaces (/browse, the runner, the review) do not read it:
+   * they show the switch wherever a question actually carries a translation.
+   */
+  bilingual?: boolean;
   /**
    * This exam has NO PUBLIC questions — it is ingested-but-private, or not yet
    * ingested at all. It is kept in the registry (so its routes, flags and
@@ -534,6 +544,21 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyLabel: "Jammu",
     familyAxis: "Institute", // the picker chooses between IIMs, not classes
     // NO mixedFormats: measured at the flip — all 577 PUBLIC rows are mcq.
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "mpsc-group-b-c",
+    // Group B/C are graduate-entry state services (ASO, PSI, STI, clerk-typist…).
+    tier: "graduate",
+    displayName: "MPSC Group B & C",
+    examName: "MPSC Group B & C Prelims", // must match the `exams` DB row exactly
+    // One exam, not two: both groups sit the same General Ability Test, and the
+    // 2023 sitting was a single joint paper. The group is in each row's pyq_note.
+    bilingual: true,
+    // Ingested PRIVATE (scripts/mpsc/). Remove at the PUBLIC flip, together with
+    // adding `hasMocks` once its mocks are built.
+    noPublicContent: true,
     guidesPath: null,
     notesPath: null,
   },
