@@ -51,6 +51,18 @@ Within-month convention: newest entries closest to top (matches CLAUDE.md orderi
 
 **Not proven here:** any render behind sign-in, and anything behind a click (the disclosures, the grouped /browse select). There is no headless browser in this repo; the owner checklist is in EXAM_TIER_SPEC.md §6.
 
+**2026-09-25 (nineteenth) — MHT-CET Chemistry "Introduction to Polymer Chemistry" ships (4 pages · 86 PYQ · 7 concepts · 7 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-polymers` — the Chemistry programme's twelfth chapter.**
+
+**Bank read.** 88 rows across four DB subtopics that are the book's sections; `subtopicOrder` set classification → polymerisation methods → polymers and monomers → properties and uses, and `notes:order` wrote the four values. One move: `baad984f` (which monomer pair does NOT give a polyamide) from Classification to Polymers and Their Monomers, whose linkage card teaches it. Final PUBLIC counts 22 · 9 · 29 · 26 (1 HARD: `df3b1783`, cellulose xanthate).
+
+**Source pass.** Four 2023 rows referred to drawings they did not carry. `020cd13d` (10 May Shift 1, item 98): stem "polymer represented as" with no image, keyed D methyl methacrylate; the paper draws –[CH₂–CH(CONH₂)]– and the AK keys (a) acrylamide — key flipped D→A, solution rewritten, stem figure attached. `1cb38dd3` (4 May Shift 1, item 84): the four options are drawings — (a) polythene, (b) PAN, (c) nylon 6, (d) PVC — but the bank named them "Polyethylene | Teflon | Nylon-6 | PVC"; options renamed Structure (a)–(d), grid attached, key C held (AK: nylon 6 "by condensation"). `0ffb33b7` ("2023 Shift 1", undated): urea-formaldehyde among four drawn repeat units — found as 16 May Shift 2 item 74, re-dated, grid attached, key A held, the "structural diagrams" context dropped. `6457762b` ("3rd May 2nd Shift"): ring-opening among four drawn units — 3 May Shift 1 item 91, re-dated, grid attached, key B (nylon 6) held. Re-dated without figures: `7c0503b1` → 16th May Shift 2, `96a7542f` → 3rd May Shift 1. PRIVATE: `093a864e` and `93fc910c`, "2025 May Shift ||" twins of the 19 April Shift II rows `0f30eb0d` and `45d43fc9` (items 57 and 55).
+
+**Design.** Classification: source/structure/monomer-count card plus a reference table of the four force-based classes. Methods: one card (addition with peroxide, condensation pairs, ring-opening nylon 6 — with the paper's "NOT addition" convention). Monomers: a reference table (14 polymers) and a linkage card (amide / ester / none, cellulose xanthate, natural rubber facts). Properties: LDPE vs HDPE + vulcanisation, and an article → polymer reference table (nylon 6 tyre cords vs nylon 6,6 bristles/sutures as the trap).
+
+**Probes.** typecheck · lint · notes:latex OK · notes:lint 0 errors · notes:arc 0 · notes:intro clean · quiz:coverage 0 · card-blurb test PASS only after the blurb was cut 44 → 36 words (the first prepush caught it; the prepared notes had recorded it as passing) · notes-intro-counts PASS · notes:order wrote 4 · seo:dates · stats: 109 /notes chapters (mht-cet-chemistry 17).
+
+**Not proven.** Render beyond the build; the composed grids were viewed locally.
+
 **2026-09-25 (seventeenth) — MHT-CET Chemistry "Biomolecules" ships (5 pages · 88 PYQ · 9 concepts · 9 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-biomolecules` — the Chemistry programme's eleventh chapter.**
 
 **Bank read.** 91 rows across five DB subtopics that are the book's sections; `subtopicOrder` set carbohydrates → glycosidic linkages → amino acids and proteins → nucleic acids → lipids and enzymes, and `notes:order` wrote the five values. No row moved. Final PUBLIC counts 21 · 19 · 27 · 16 · 5 (2 HARD: `0a863299` acetylation mass gain, `1c860f7e` stachyose composition).
