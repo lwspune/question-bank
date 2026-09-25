@@ -6,7 +6,7 @@ export const DENSITY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "One relation, ρ = nM/(a³N_A), links density, molar mass, particles per cell and the cell volume; MHT-CET hands you a lumped product such as a³N_A or ρ·a³ so that the answer is one multiplication or division.",
   whyItMatters:
-    "42 PYQs, 2 HARD — the largest subtopic in the chapter. Every row is the same formula solved for a different unknown: density, molar mass, cell volume, the number of particles per cell (which then names the structure), or the number of cells or atoms in a given mass or volume. " +
+    "43 PYQs, 2 HARD — the largest subtopic in the chapter. Every row is the same formula solved for a different unknown: density, molar mass, cell volume, the number of particles per cell (which then names the structure), or the number of cells or atoms in a given mass or volume. " +
     "Read what is given as a LUMP (a³N_A, ρN_A, ρa³) and the question collapses to arithmetic on two numbers.",
   concepts: [
     // 1 — the density formula

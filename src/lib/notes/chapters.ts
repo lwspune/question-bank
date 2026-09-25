@@ -539,6 +539,11 @@ import {
   MHTCET_AMINES_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/amines/_data";
 import {
+  MHTCET_BIOMOLECULES_CHAPTER,
+  MHTCET_BIOMOLECULES_NOTES,
+  MHTCET_BIOMOLECULES_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/biomolecules/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1347,6 +1352,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_AMINES_CHAPTER,
     notes: MHTCET_AMINES_NOTES,
     slugs: MHTCET_AMINES_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "biomolecules",
+    chipLabel: "Biomolecules notes",
+    chapter: MHTCET_BIOMOLECULES_CHAPTER,
+    notes: MHTCET_BIOMOLECULES_NOTES,
+    slugs: MHTCET_BIOMOLECULES_SLUGS,
   },
   {
     examName: "NDA",
