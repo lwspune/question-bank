@@ -23,6 +23,7 @@ import {
   resolveBoardHref,
   type ExamSlug,
 } from "@/lib/exam/examContext";
+import { mockCatalogueHref, notesHubHref } from "@/lib/exam/examLinks";
 
 export const EXAM_COOKIE_NAME = "qb_exam";
 
@@ -33,28 +34,34 @@ export type ExamNav = {
   bankHref: string;
   guidesHref: string;
   notesHref: string;
+  mockHref: string;
   boardHref: string;
 };
 
 /**
  * The primary-nav hrefs for a visitor's chosen exam (or null for no choice).
  *
- * Bank, Guides and Board personalise; **Notes deliberately never does**.
- * `/notes/<slug>` renders "teaching notes are coming soon" for the 10 of 13
- * exams that have none, so personalising that tab sends most visitors to a dead
- * end — while `/notes` is a real cross-exam index listing the exams that do
- * have notes. Guides has no such dead end (`resolveGuidesHref` already returns
- * the index for an exam with no subtree), so it keeps its shortcut.
+ * Every tab personalises, but only to a page with something on it
+ * (EXAM_TIER_SPEC.md §4.5). Notes goes to `/notes/<slug>` ONLY when the exam is
+ * in `notesSlugs` — the hub renders "coming soon" for an exam without notes,
+ * and that dead end is why this tab used to never personalise. Mocks goes to
+ * `/mock/exam/<slug>` only when the exam has mocks.
+ *
+ * `notesSlugs` is passed in (computed once on the server by AppHeader) so this
+ * module, and HeaderBar with it, never bundles the NOTES_CHAPTERS registry.
+ * Omitted, Notes stays on the index.
  */
 export function resolveExamNav(
   rawSlug: string | null | undefined,
-  examIds: ExamIdMap
+  examIds: ExamIdMap,
+  notesSlugs: readonly ExamSlug[] = []
 ): ExamNav {
   const slug: ExamSlug | null = isExamSlug(rawSlug) ? rawSlug : null;
   return {
     bankHref: resolveBankHref(slug ? examIds[slug] ?? null : null),
     guidesHref: resolveGuidesHref(slug),
-    notesHref: "/notes",
+    notesHref: notesHubHref(slug, new Set(notesSlugs)),
+    mockHref: mockCatalogueHref(slug),
     boardHref: resolveBoardHref(slug),
   };
 }

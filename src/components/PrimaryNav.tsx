@@ -9,6 +9,7 @@ type Props = {
   bankHref: string;
   guidesHref: string;
   notesHref: string;
+  mockHref: string;
   boardHref: string;
   /** Org members (ADMIN/TEACHER) get the Papers tab; everyone else doesn't —
    *  /dashboard/papers redirects non-members to /login, so showing it to anon
@@ -31,6 +32,7 @@ export default function PrimaryNav({
   bankHref,
   guidesHref,
   notesHref,
+  mockHref,
   boardHref,
   showPapers = false,
   showBooks = false,
@@ -43,11 +45,10 @@ export default function PrimaryNav({
     { id: "guides", label: "Guides", href: guidesHref, Icon: BookOpen },
     { id: "notes", label: "Notes", href: notesHref, Icon: NotebookPen },
     // Mocks — always visible, like Board. It used to be gated on the active
-    // exam's `hasMocks`, which hid a working page for 11 of 13 exam states:
-    // /mock lists EVERY published mock (its own breadcrumb reads "All exams")
-    // and its left rail does the per-exam scoping, so an unscoped tab can't
-    // dead-end anyone. `hasMocks` still drives that rail — see mocksNav.ts.
-    { id: "mock", label: "Mocks", href: "/mock", Icon: Timer },
+    // exam's `hasMocks`, which hid a working page for 11 of 13 exam states.
+    // mockHref is the exam's own catalogue when it has mocks, else /mock, which
+    // lists every published mock — so the tab can't dead-end anyone.
+    { id: "mock", label: "Mocks", href: mockHref, Icon: Timer },
     // Board reader — always visible (like Notes); boardHref resolves per-exam:
     // /board (index) normally, /board/<slug> when a board exam is active.
     { id: "board", label: "Board", href: boardHref, Icon: Library },
