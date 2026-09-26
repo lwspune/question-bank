@@ -59,6 +59,7 @@ import {
   MHT_CET_PHY_CHEM_PAPER,
   JEE_MAINS_PAPER,
   IPMAT_INDORE_PAPER,
+  JIPMAT_PAPER,
   MPSC_GBC_PAPER,
   type MockPaperBlueprint,
 } from "../../src/lib/mocks/blueprints";
@@ -83,7 +84,7 @@ import {
 } from "./cdsSittings";
 import { deriveMhtCetSittings } from "./mhtcetSittings";
 import { deriveJeeSittings, JEE_SHIFT_SIZE } from "./jeeSittings";
-import { ipmatIndoreSittings, isGrace } from "./ipmatSittings";
+import { ipmatIndoreSittings, isGrace, jipmatSittings as deriveJipmatSittings } from "./ipmatSittings";
 import { deriveMpscSittings } from "./mpscSittings";
 import { PAPERS as MPSC_PAPERS } from "../mpsc/config";
 
@@ -612,6 +613,21 @@ function ipmatSittings(): SourceFileSitting[] {
   }));
 }
 
+/** JIPMAT sittings as the shared shape — Indore's plus the two holds. */
+function jipmatSittings(): SourceFileSitting[] {
+  return deriveJipmatSittings().map((s) => ({
+    key: s.key,
+    sourceFile: s.sourceFile,
+    extraFiles: s.extraFiles,
+    year: s.year,
+    slug: s.slug,
+    title: s.title,
+    prepare: (rows) =>
+      rows.map((r) => (isGrace(s.grace, r.sourceFile, r.questionNumber) ? { ...r, grace: true } : r)),
+    ...(s.hold ? { hold: s.hold } : {}),
+  }));
+}
+
 function jeeSittings(bp: MockPaperBlueprint): SourceFileSitting[] {
   const sittings = deriveJeeSittings();
   const inferred = sittings.filter((s) => s.shiftInferred && !s.hold).length;
@@ -672,9 +688,10 @@ async function main() {
   const runJee = !paperFilter || paperFilter === "jee";
   const runIpmat = !paperFilter || paperFilter === "ipmat-indore";
   const runMpsc = !paperFilter || paperFilter === "mpsc";
-  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc) {
+  const runJipmat = !paperFilter || paperFilter === "jipmat";
+  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, mpsc)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc)`
     );
   }
 
@@ -720,6 +737,9 @@ async function main() {
   }
   if (runIpmat) {
     await buildFromSourceFiles(db, IPMAT_INDORE_PAPER, ipmatSittings(), run, "ipmatSittings.ts");
+  }
+  if (runJipmat) {
+    await buildFromSourceFiles(db, JIPMAT_PAPER, jipmatSittings(), run, "ipmatSittings.ts");
   }
   if (runMpsc) {
     await buildFromSourceFiles(db, MPSC_GBC_PAPER, mpscSittings(), run, "mpscSittings.ts");

@@ -200,6 +200,51 @@ export const IPMAT_INDORE_PAPER: MockPaperBlueprint = {
 };
 
 /**
+ * JIPMAT (IIM Jammu + IIM Bodh Gaya) — one paper per year: 100 questions,
+ * 400 marks, 150 minutes on ONE clock (no sectional limit), +4 / -1 throughout
+ * (researched 2026-09-22, ROADMAP step 1c; the same afterboards corpus as
+ * IPMAT Indore).
+ *
+ * Sections by `source_file` suffix, the Indore rule: the academic subject axis
+ * files two QA rows under Logical Reasoning, so subject cannot place them.
+ * Both quant-leaning sections therefore list both subjects.
+ *
+ * ORDER is QA -> DILR -> VARC, how the pattern is listed in our research. It is
+ * presentational: one timer, and the source numbers each section from 1.
+ */
+export const JIPMAT_PAPER: MockPaperBlueprint = {
+  code: "paper",
+  examName: "JIPMAT",
+  examSlug: "jipmat",
+  paperLabel: "JIPMAT",
+  durationSecs: 150 * 60,
+  marking: { correct: 4, wrong: -1 },
+  sections: [
+    {
+      key: "qa",
+      label: "Quantitative Aptitude",
+      subjects: ["Mathematics", "Logical Reasoning"],
+      sourceFileSuffix: "QA",
+      count: 33,
+    },
+    {
+      key: "dilr",
+      label: "Data Interpretation & Logical Reasoning",
+      subjects: ["Logical Reasoning", "Mathematics"],
+      sourceFileSuffix: "LR",
+      count: 33,
+    },
+    {
+      key: "varc",
+      label: "Verbal Ability & Reading Comprehension",
+      subjects: ["English"],
+      sourceFileSuffix: "VA",
+      count: 34,
+    },
+  ],
+};
+
+/**
  * NEET (UG) — one combined paper: Physics · Chemistry · Biology, +4 / −1.
  *
  * Unlike NDA, NEET has TWO layouts (2025+ = 180 q, pre-2025 = 200 q) AND a
@@ -529,6 +574,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   MHT_CET_PHY_CHEM_PAPER,
   JEE_MAINS_PAPER,
   IPMAT_INDORE_PAPER,
+  JIPMAT_PAPER,
   MPSC_GBC_PAPER,
 ];
 
