@@ -15,6 +15,14 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-26 (ninth) — MHT-CET Chemistry "Modern Periodic Table" ships (2 pages · 18 PYQ · 4 concepts · 3 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-final-wave` — the Chemistry programme's twenty-third chapter.**
+
+**Shape.** 18 PUBLIC PYQ and 20 practice rows; none HARD. Pages: position (8: group and period lookup 4, configuration to block 4) and trends (10: radius and diagonal pairs 4, ionisation / electron gain / electronegativity 6). All four concepts are reference cards. It had been deferred as thin; shipped because the other block chapters link back to it.
+
+**Source pass (generated-papers/_repair-chmpt.ts).** Every PYQ was read; one change — 011bd4c1 '3rd May 2nd Shift' → '3rd May Shift 1' (the stem is in the 3 May 2023 S1 paper, #85, and no other bank row holds it). d58c15bd (Ag, last electron in (n−1)d) is the correctly dated copy whose twin was hidden in Transition Elements on 2026-09-25.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:coverage none · quiz:coverage 0 STRONG gaps · notes:intro clean · stats 120 · seo:dates.
+
 **2026-09-26 (eighth) — MHT-CET Chemistry "Green Chemistry and Nanochemistry" ships (2 pages · 33 PYQ · 5 concepts · 4 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-final-wave` — the Chemistry programme's twenty-second chapter.**
 
 **Shape.** 34 PUBLIC PYQ before the source pass, 33 after; none HARD. Pages: green chemistry (19: principles 8, atom economy 6, solvents and plant sources 5) and nanochemistry (14: dimensions, size and uses 8, sol–gel and characterisation 6).
