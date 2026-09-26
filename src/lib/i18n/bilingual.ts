@@ -9,6 +9,12 @@
  * carried across a mixed page without blanking anything.
  *
  * "both" puts Marathi FIRST because that is the order the MPSC booklet prints.
+ *
+ * A canonical row is not always English: the MPSC Mains language papers print
+ * their Marathi section in Marathi only, so those rows store Marathi as the
+ * canonical text with no translation. `scriptLang` reads the canonical text's
+ * script, so such a row is tagged `mr` rather than `en` — the tag becomes the
+ * HTML `lang` attribute, which decides the voice a screen reader uses.
  */
 
 export type QuestionLang = "en" | "mr" | "both";
@@ -44,6 +50,20 @@ export function parseLangPref(raw: string | null | undefined): QuestionLang | nu
   return raw === "en" || raw === "mr" || raw === "both" ? raw : null;
 }
 
+const DEVANAGARI = /[ऀ-ॿ]/g;
+const LATIN = /[A-Za-z]/g;
+
+/**
+ * The printed language of a canonical text, by script: Marathi when Devanagari
+ * letters outnumber Latin ones. LaTeX commands count as Latin, which is right —
+ * a math-heavy stem is an English-section row.
+ */
+export function scriptLang(text: string): PrintedLang {
+  const dev = text.match(DEVANAGARI)?.length ?? 0;
+  const lat = text.match(LATIN)?.length ?? 0;
+  return dev > lat ? "mr" : "en";
+}
+
 export function hasMarathi(q: Pick<Bilingual, "translations">): boolean {
   return Boolean(q.translations?.mr?.text);
 }
@@ -62,7 +82,7 @@ export function stemVersions(
   return order(effectiveLang(pref, q)).map((lang) =>
     lang === "mr" && mr
       ? { lang, text: mr.text, context: mr.context }
-      : { lang: "en" as const, text: q.text, context: q.context }
+      : { lang: scriptLang(q.text), text: q.text, context: q.context }
   );
 }
 
@@ -74,9 +94,11 @@ export function optionVersions(
   const mrText = q.translations?.mr?.options[opt.label];
   const langs = order(effectiveLang(pref, q));
   const out = langs
-    .map((lang) => (lang === "mr" ? (mrText ? { lang, text: mrText } : null) : { lang, text: opt.text }))
+    .map((lang) =>
+      lang === "mr" ? (mrText ? { lang, text: mrText } : null) : { lang: scriptLang(opt.text), text: opt.text }
+    )
     .filter((v): v is { lang: PrintedLang; text: string } => v !== null);
-  return out.length ? out : [{ lang: "en", text: opt.text }];
+  return out.length ? out : [{ lang: scriptLang(opt.text), text: opt.text }];
 }
 
 /**
@@ -93,12 +115,15 @@ export function solutionVersions(
     en: q.solution?.trim() ? q.solution : null,
     mr: q.translations?.mr?.solution?.trim() ? q.translations.mr.solution : null,
   };
+  // The canonical solution is tagged by its script: a Marathi-only row's
+  // solution is Marathi even though it sits in the "en" slot.
+  const tag = (lang: PrintedLang): PrintedLang => (lang === "en" ? scriptLang(text.en as string) : lang);
   const wanted = order(effectiveLang(pref, q))
     .filter((lang) => text[lang])
-    .map((lang) => ({ lang, text: text[lang] as string }));
+    .map((lang) => ({ lang: tag(lang), text: text[lang] as string }));
   if (wanted.length) return wanted;
   const any = (["mr", "en"] as const).find((lang) => text[lang]);
-  return any ? [{ lang: any, text: text[any] as string }] : [];
+  return any ? [{ lang: tag(any), text: text[any] as string }] : [];
 }
 
 type RawQuestionTranslation = { lang: string; text: string; context: string | null; solution?: string | null };

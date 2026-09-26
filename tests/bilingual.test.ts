@@ -3,6 +3,7 @@ import {
   effectiveLang,
   optionVersions,
   parseLangPref,
+  scriptLang,
   solutionVersions,
   stemVersions,
   translationsFromRows,
@@ -133,5 +134,50 @@ describe("solutionVersions", () => {
   it("shows a Marathi-only solution even when English has none", () => {
     const mrOnly = { ...withMr, solution: null, translations: { mr: { ...withMr.translations!.mr!, solution: "कारण." } } };
     expect(solutionVersions(mrOnly, "en")).toEqual([{ lang: "mr", text: "कारण." }]);
+  });
+});
+
+/**
+ * MONOLINGUAL MARATHI. The MPSC Mains language papers print their Marathi
+ * section in Marathi ONLY — there is no English to be canonical. Such a row
+ * stores the Marathi as its canonical text with no translation, and every
+ * language choice shows it. What must not happen is tagging it lang="en",
+ * which makes a screen reader read Devanagari with an English voice.
+ */
+describe("monolingual Marathi rows", () => {
+  const q = {
+    text: "'सर्वांना समज दिली जाईल' या वाक्याचा प्रयोग ओळखा.",
+    context: null,
+    solution: null,
+    options: [
+      { label: "A" as const, text: "शक्यकर्मणी" },
+      { label: "B" as const, text: "कर्मकर्तरी" },
+      { label: "C" as const, text: "पुरुषकर्मणी" },
+      { label: "D" as const, text: "भावकर्तरी" },
+    ],
+  };
+
+  it("detects the script of a canonical text", () => {
+    expect(scriptLang(q.text)).toBe("mr");
+    expect(scriptLang("Choose the correct expression out of the alternatives :")).toBe("en");
+    expect(scriptLang("\(x^2\) = 4")).toBe("en");
+  });
+
+  it("shows the Marathi text once, tagged mr, whatever was chosen", () => {
+    for (const pref of ["en", "mr", "both"] as const) {
+      expect(stemVersions(q, pref)).toEqual([{ lang: "mr", text: q.text, context: null }]);
+      expect(optionVersions(q, q.options[1], pref)).toEqual([{ lang: "mr", text: "कर्मकर्तरी" }]);
+    }
+  });
+
+  it("tags a Marathi-only solution mr", () => {
+    expect(solutionVersions({ ...q, solution: "कर्मकर्तरी प्रयोग." }, "en")).toEqual([
+      { lang: "mr", text: "कर्मकर्तरी प्रयोग." },
+    ]);
+  });
+
+  it("leaves an English canonical row tagged en", () => {
+    const en = { ...q, text: "Pick the synonym.", options: [{ label: "A" as const, text: "big" }] };
+    expect(stemVersions(en, "mr")[0].lang).toBe("en");
   });
 });
