@@ -201,8 +201,9 @@ presentational.
   runner, the attempt service, the palette and `mock:sweep` — a live surface. Decided
   2026-09-22 to ship on one 120-minute timer and defer this; scores are exact, only time
   management is easier than the real exam.
-- Rohtak and JIPMAT mocks. JIPMAT needs its own blueprint (no sectional limit, 150 min) and can
-  serve 4 of 6 sittings; Rohtak's loaded sittings predate its current pattern.
+- ~~JIPMAT mocks~~ — BUILT 2026-09-26 (`JIPMAT_PAPER`; 2021-2024 ship, 2025 + 2026 held; the 4
+  dropped rows loaded as grace). Awaiting `--apply --publish` + `hasMocks`. See MOCKS.md.
+- Rohtak mocks. Its loaded sittings predate its current pattern.
 
 #### Three blockers as first identified — all now resolved or recorded
 

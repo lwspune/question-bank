@@ -209,6 +209,10 @@ async function ensureTaxonomy(
 
 async function main() {
   const apply = process.argv.includes("--apply");
+  // Rows this run creates are the only ones it may flip. A re-run skips every
+  // existing row (dedup on content_hash), so those keep their created_at — and
+  // an unscoped flip would take an already-PUBLIC paper back to PRIVATE.
+  const runStartedAt = new Date().toISOString();
   const only = arg("exam") as IpmatExamSlug | undefined;
   const onlyPaper = arg("paper");
   // Dropped (exam-cancelled) rows are held back by default: they have no valid
@@ -300,13 +304,16 @@ async function main() {
     skipped += result.skipped;
     failed += result.failed;
 
-    // Flip to PRIVATE straight away — rows default to PUBLIC since 0022.
+    // Flip THIS RUN'S rows to PRIVATE straight away — rows default to PUBLIC
+    // since 0022. Scoped by created_at: the corpus went PUBLIC on 2026-09-24,
+    // and an unscoped flip on a re-run (e.g. --include-dropped) would hide it.
     const { count, error: vErr } = await client
       .from("questions")
       .update({ visibility: "PRIVATE" }, { count: "exact" })
       .eq("exam_id", examId)
       .eq("source_file", sourceFile)
-      .eq("visibility", "PUBLIC");
+      .eq("visibility", "PUBLIC")
+      .gte("created_at", runStartedAt);
     if (vErr) throw new Error(`visibility flip failed for ${sourceFile}: ${vErr.message}`);
     madePrivate += count ?? 0;
 

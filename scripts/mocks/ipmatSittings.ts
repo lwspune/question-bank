@@ -21,7 +21,7 @@
 import { sourceFileFor } from "../ipmat/config";
 
 /** A section suffix mapped to the question numbers the exam CANCELLED. */
-type GraceBySection = Partial<Record<"MCQ" | "SA" | "VA", number[]>>;
+type GraceBySection = Partial<Record<"MCQ" | "SA" | "VA" | "QA" | "LR", number[]>>;
 
 type IndoreSitting = {
   year: number;
@@ -53,6 +53,8 @@ export type IpmatSittingSpec = {
   title: string;
   questionCount: number;
   grace: GraceBySection;
+  /** Set when the sitting cannot reconstruct whole — the reason. */
+  hold?: string;
 };
 
 /**
@@ -84,7 +86,7 @@ export function ipmatIndoreSittings(): IpmatSittingSpec[] {
 /** The section suffix a `source_file` ends with, or null. */
 export function sectionSuffixOf(sourceFile: string | undefined): string | null {
   if (!sourceFile) return null;
-  const m = /-(MCQ|SA|VA)$/.exec(sourceFile);
+  const m = /-(MCQ|SA|VA|QA|LR)$/.exec(sourceFile);
   return m ? m[1] : null;
 }
 
@@ -100,4 +102,38 @@ export function isGrace(
   if (!nums || nums.length === 0) return false;
   const n = Number(questionNumber);
   return Number.isFinite(n) && nums.includes(n);
+}
+
+/**
+ * JIPMAT sittings, 2021-2026 — three files each (QA, LR, VA), unioned like
+ * Indore's.
+ *
+ * Grace: the questions JIPMAT dropped (`correctAnswer: "Drop"` in the source),
+ * loaded keyless with a cancelled note on 2026-09-26 so the two papers
+ * reconstruct whole. Holds: 2025 and 2026 are short because rows are EXCLUDED
+ * (a two-answer key; Venn diagrams living in table cells) or REBUILT from
+ * student recall, which is not the printed paper — see scripts/ipmat/README.md.
+ * A hold is an assertion: a held paper that starts reconstructing fails the build.
+ */
+const JIPMAT_SITTINGS: readonly { year: number; grace?: GraceBySection; hold?: string }[] = [
+  { year: 2021, grace: { QA: [24] } },
+  { year: 2022 },
+  { year: 2023, grace: { LR: [2, 3, 4] } },
+  { year: 2024 },
+  { year: 2025, hold: "JIPMAT 2025: 97 of 100 — LR Q6, Q13 and VA Q1 excluded (Venn diagrams in table cells; a two-answer key)" },
+  { year: 2026, hold: "JIPMAT 2026: 84 of 100 — 15 rows rebuilt from student recall and LR Q22 excluded" },
+];
+
+export function jipmatSittings(): IpmatSittingSpec[] {
+  return JIPMAT_SITTINGS.map((s) => ({
+    key: `jipmat-${s.year}`,
+    sourceFile: sourceFileFor("jipmat", s.year, "QA"),
+    extraFiles: [sourceFileFor("jipmat", s.year, "LR"), sourceFileFor("jipmat", s.year, "VA")],
+    year: s.year,
+    slug: `jipmat-${s.year}`,
+    title: `JIPMAT ${s.year}`,
+    questionCount: 100,
+    grace: s.grace ?? {},
+    ...(s.hold ? { hold: s.hold } : {}),
+  }));
 }
