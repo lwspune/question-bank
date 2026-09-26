@@ -579,6 +579,11 @@ import {
   MHTCET_ALKENES_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/alkenes/_data";
 import {
+  MHTCET_GROUP12_CHAPTER,
+  MHTCET_GROUP12_NOTES,
+  MHTCET_GROUP12_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/elements-of-group-1-and-2/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1475,6 +1480,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_ALKENES_CHAPTER,
     notes: MHTCET_ALKENES_NOTES,
     slugs: MHTCET_ALKENES_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "elements-of-group-1-and-2",
+    chipLabel: "Groups 1 and 2 notes",
+    chapter: MHTCET_GROUP12_CHAPTER,
+    notes: MHTCET_GROUP12_NOTES,
+    slugs: MHTCET_GROUP12_SLUGS,
   },
   {
     examName: "NDA",
