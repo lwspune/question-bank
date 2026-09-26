@@ -13,6 +13,30 @@ export type EntitlementStatus = "active" | "expired" | "revoked" | "cancelled";
 /** The full-premium scope. A grant with this scope unlocks everything. */
 export const SCOPE_ALL = "all";
 
+/** Student Mock Pass: unlimited mock tests past the free limit. */
+export const SCOPE_MOCKS = "mocks";
+
+/** Teacher Pass: Word paper + answer-key downloads, and everything SCOPE_MOCKS gives. */
+export const SCOPE_TEACHER = "teacher";
+
+/**
+ * Scopes a grant carries beyond its own name. The teacher pass includes mocks;
+ * the mock pass includes nothing else. Mirrored in SQL by
+ * private.user_has_mock_access (migration 0120) — change both together.
+ */
+const SCOPE_IMPLIES: Record<string, readonly string[]> = {
+  [SCOPE_TEACHER]: [SCOPE_MOCKS],
+};
+
+/** True if a grant of `granted` satisfies a request for `requested`. */
+export function scopeCovers(granted: string, requested: string): boolean {
+  return (
+    granted === SCOPE_ALL ||
+    granted === requested ||
+    (SCOPE_IMPLIES[granted] ?? []).includes(requested)
+  );
+}
+
 export type Entitlement = {
   id: string;
   userId: string;
@@ -39,7 +63,7 @@ export function isEntitlementActive(
 /**
  * True if any row grants active access to `requestedScope` at `nowMs`.
  * An active `"all"` grant satisfies every scope; otherwise the row's scope
- * must equal the requested one.
+ * must equal the requested one or imply it (see SCOPE_IMPLIES).
  */
 export function hasActiveScope(
   rows: Entitlement[],
@@ -47,8 +71,6 @@ export function hasActiveScope(
   nowMs: number
 ): boolean {
   return rows.some(
-    (r) =>
-      isEntitlementActive(r, nowMs) &&
-      (r.scope === SCOPE_ALL || r.scope === requestedScope)
+    (r) => isEntitlementActive(r, nowMs) && scopeCovers(r.scope, requestedScope)
   );
 }

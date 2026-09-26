@@ -21,12 +21,14 @@ import { NextRequest } from "next/server";
 // Mock the grant so the route never touches the DB.
 vi.mock("@/lib/billing/grant", () => ({
   grantRazorpayEntitlement: vi.fn(async () => ({ kind: "ok" })),
+  revokeRazorpayEntitlement: vi.fn(async () => ({ kind: "ok", revoked: 1 })),
 }));
 
-import { grantRazorpayEntitlement } from "@/lib/billing/grant";
+import { grantRazorpayEntitlement, revokeRazorpayEntitlement } from "@/lib/billing/grant";
 import { POST } from "@/app/api/billing/webhook/route";
 
 const grantMock = vi.mocked(grantRazorpayEntitlement);
+const revokeMock = vi.mocked(revokeRazorpayEntitlement);
 const SECRET = "test_webhook_secret";
 
 function makeRequest(
@@ -50,7 +52,7 @@ function makeRequest(
 const orderPaid = (notes: Record<string, string>, paymentId?: string) => ({
   event: "order.paid",
   payload: {
-    order: { entity: { notes } },
+    order: { entity: { status: "paid", amount_paid: 49900, currency: "INR", notes } },
     ...(paymentId ? { payment: { entity: { id: paymentId } } } : {}),
   },
 });
@@ -59,6 +61,8 @@ describe("billing webhook routing", () => {
   beforeEach(() => {
     grantMock.mockClear();
     grantMock.mockResolvedValue({ kind: "ok" });
+    revokeMock.mockClear();
+    revokeMock.mockResolvedValue({ kind: "ok", revoked: 1 });
     process.env.RAZORPAY_WEBHOOK_SECRET = SECRET;
   });
 
@@ -68,7 +72,7 @@ describe("billing webhook routing", () => {
 
   it("grants on a complete order.paid event", async () => {
     const req = makeRequest(
-      orderPaid({ userId: "user-1", planId: "premium-365" }, "pay_abc")
+      orderPaid({ userId: "user-1", planId: "teacher-pass-1y" }, "pay_abc")
     );
     const res = await POST(req);
     expect(res.status).toBe(200);
@@ -79,11 +83,49 @@ describe("billing webhook routing", () => {
       expect.objectContaining({
         userId: "user-1",
         paymentId: "pay_abc",
-        scope: "all",
+        scope: "teacher",
       })
     );
     // 365-day plan → a non-null ISO expiry.
     expect(grantMock.mock.calls[0][0].expiresAt).toMatch(/^\d{4}-\d{2}-\d{2}T/);
+  });
+
+  it("skips a paid amount that does not match the plan in the notes", async () => {
+    const body = orderPaid({ userId: "user-1", planId: "mock-pass-6m" }, "pay_abc");
+    const res = await POST(makeRequest(body)); // 49900 paid, mock pass costs 9900
+    expect(res.status).toBe(200);
+    await expect(res.json()).resolves.toHaveProperty("skipped");
+    expect(grantMock).not.toHaveBeenCalled();
+  });
+
+  it("revokes the pass on a full refund", async () => {
+    const res = await POST(
+      makeRequest({
+        event: "refund.processed",
+        payload: {
+          refund: { entity: { payment_id: "pay_abc", amount: 49900 } },
+          payment: { entity: { id: "pay_abc", amount: 49900, amount_refunded: 49900 } },
+        },
+      })
+    );
+    expect(res.status).toBe(200);
+    await expect(res.json()).resolves.toMatchObject({ revoked: 1 });
+    expect(revokeMock).toHaveBeenCalledWith("pay_abc");
+    expect(grantMock).not.toHaveBeenCalled();
+  });
+
+  it("surfaces a transient revoke error as 500 (Razorpay retries)", async () => {
+    revokeMock.mockResolvedValueOnce({ kind: "error", message: "db down" });
+    const res = await POST(
+      makeRequest({
+        event: "refund.processed",
+        payload: {
+          refund: { entity: { payment_id: "pay_abc", amount: 49900 } },
+          payment: { entity: { id: "pay_abc", amount: 49900, amount_refunded: 49900 } },
+        },
+      })
+    );
+    expect(res.status).toBe(500);
   });
 
   it("ignores a non-order.paid event without granting", async () => {
@@ -95,7 +137,7 @@ describe("billing webhook routing", () => {
   });
 
   it("skips when userId is missing", async () => {
-    const req = makeRequest(orderPaid({ planId: "premium-365" }, "pay_abc"));
+    const req = makeRequest(orderPaid({ planId: "teacher-pass-1y" }, "pay_abc"));
     const res = await POST(req);
     expect(res.status).toBe(200);
     await expect(res.json()).resolves.toHaveProperty("skipped");
@@ -103,7 +145,7 @@ describe("billing webhook routing", () => {
   });
 
   it("skips when paymentId is missing", async () => {
-    const req = makeRequest(orderPaid({ userId: "user-1", planId: "premium-365" }));
+    const req = makeRequest(orderPaid({ userId: "user-1", planId: "teacher-pass-1y" }));
     const res = await POST(req);
     expect(res.status).toBe(200);
     await expect(res.json()).resolves.toHaveProperty("skipped");
@@ -122,7 +164,7 @@ describe("billing webhook routing", () => {
 
   it("rejects a bad signature with 400 and does not grant", async () => {
     const req = makeRequest(
-      orderPaid({ userId: "user-1", planId: "premium-365" }, "pay_abc"),
+      orderPaid({ userId: "user-1", planId: "teacher-pass-1y" }, "pay_abc"),
       { badSig: true }
     );
     const res = await POST(req);
@@ -133,7 +175,7 @@ describe("billing webhook routing", () => {
   it("returns 503 when the webhook secret is not configured", async () => {
     delete process.env.RAZORPAY_WEBHOOK_SECRET;
     const req = makeRequest(
-      orderPaid({ userId: "user-1", planId: "premium-365" }, "pay_abc")
+      orderPaid({ userId: "user-1", planId: "teacher-pass-1y" }, "pay_abc")
     );
     const res = await POST(req);
     expect(res.status).toBe(503);
@@ -143,7 +185,7 @@ describe("billing webhook routing", () => {
   it("surfaces a transient grant error as 500 (Razorpay retries)", async () => {
     grantMock.mockResolvedValueOnce({ kind: "error", message: "db down" });
     const req = makeRequest(
-      orderPaid({ userId: "user-1", planId: "premium-365" }, "pay_abc")
+      orderPaid({ userId: "user-1", planId: "teacher-pass-1y" }, "pay_abc")
     );
     const res = await POST(req);
     expect(res.status).toBe(500);
@@ -153,7 +195,7 @@ describe("billing webhook routing", () => {
   it("reports already_granted idempotently with 200", async () => {
     grantMock.mockResolvedValueOnce({ kind: "already_granted" });
     const req = makeRequest(
-      orderPaid({ userId: "user-1", planId: "premium-365" }, "pay_abc")
+      orderPaid({ userId: "user-1", planId: "teacher-pass-1y" }, "pay_abc")
     );
     const res = await POST(req);
     expect(res.status).toBe(200);

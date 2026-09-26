@@ -7,6 +7,8 @@ import { describe, it, expect } from "vitest";
 import {
   isEntitlementActive,
   hasActiveScope,
+  SCOPE_MOCKS,
+  SCOPE_TEACHER,
   type Entitlement,
 } from "@/lib/entitlements/access";
 
@@ -87,6 +89,22 @@ describe("entitlements/access", () => {
         row({ scope: "all", expiresAt: FUTURE }),
       ];
       expect(hasActiveScope(rows, "all", NOW)).toBe(true);
+    });
+  });
+
+  // The teacher pass includes unlimited mocks (owner's call, 2026-09-26): the
+  // bigger pass covers the smaller one, never the other way round.
+  describe("pass scopes", () => {
+    it("a teacher pass unlocks mocks", () => {
+      expect(hasActiveScope([row({ scope: SCOPE_TEACHER })], SCOPE_MOCKS, NOW)).toBe(true);
+    });
+    it("a mock pass does NOT unlock teacher downloads", () => {
+      expect(hasActiveScope([row({ scope: SCOPE_MOCKS })], SCOPE_TEACHER, NOW)).toBe(false);
+    });
+    it("an expired teacher pass unlocks nothing", () => {
+      const r = row({ scope: SCOPE_TEACHER, expiresAt: PAST });
+      expect(hasActiveScope([r], SCOPE_MOCKS, NOW)).toBe(false);
+      expect(hasActiveScope([r], SCOPE_TEACHER, NOW)).toBe(false);
     });
   });
 });
