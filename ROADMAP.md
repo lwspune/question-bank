@@ -14,7 +14,10 @@ Pending features, data-model changes, and content work for Question Bank. Mirror
 
 Three agent reports in `generated-papers/nda-maths-pyq-formula-gaps-{A,B,C}.md` (**gitignored** — regenerate from the brief if lost) read ALL 2,274 PUBLIC `question_kind='pyq'` NDA Maths solutions with a non-null solution across ALL 30 registered `nda-maths` notes chapters (A: 9 ch/1,175 q · B: 10/742 · C: 11/357; report C's "31 chapters / other 20" is an arithmetic slip — the registry has 30) and diffed each solution's load-bearing result against that chapter's `_data`. **~270 findings, ~150 single-occurrence** (no minimum frequency was applied on purpose). Verified this session: the AoD `aod-rate-approximation` self-check uses PYQ `…fcf4a3`'s exact stem and answers 6 where the paper asks for the TOTAL change and keys 6.03 (the one finding that costs a mark, not time); Complex `…9e3474` is keyed 240° on the `[0°,360°)` convention while the notes assert `(-π,π]`; the Statistics skew-ordering UNSURE is TAUGHT by the `SkewMeanMedianMode` visualization (diagram only — no prose, so quiz-harvest and the revision sheet cannot see it); all six "see note" ids in report A resolve. Tiers, in order: **(0)** 2 wrong-way cards + 10 featured-PYQ blockers (a card's `pyqExampleId` needs a result the card never states — 8 listed in report C's table, plus DE `order-and-degree`/`…318cab` and the AoD card); **(1)** ~20 gaps used by ≥3 PYQs (largest: AoI power rule 11/27, BD `nCk` 10, AoD trig-max block 9, CN `(1±i)` block 8, Trig `cot−tan=2cot2θ` 7, CN loci 6, TE prerequisite identities ~11 PYQs, DE geometric families 5, Prob divisibility 5, PoT special angles 5); **(2)** the shared prerequisite layer (`sin²+cos²=1`, double/compound angle, Vieta, `Σk`, `∫xⁿ`, the perpendicularity test) — each TAUGHT in its home chapter, missing where borrowed; policy decision pending: one-line restatement in a `definition` body + `related` link vs link only; **(3)** the single-occurrence tail — trap lines for one-off tricks, explicit declines for out-of-NDA-scope results (Lucas, `∏sin(kπ/n)`, Blaschke). Mechanics that bound the cost: `formula.latex` edits re-flag verified quiz atoms (`quiz:sync` staleness), `definition`/`trap` edits do not; new ConceptUnits need a globally unique slug, a `pyqExampleId`, concept tags for the cited PYQs, and `notes:arc` placement; re-run `notes:coverage` per chapter as the check. Not covered by the reports: practice rows, the other exams' same-named chapters, tag coverage, teaching order.
 
-## Backfill ledger — 14 MHT-CET 2021 rows disagree with the 2021 answer key (2026-09-26)
+### ~~Backfill ledger — 14 MHT-CET 2021 rows disagree with the 2021 answer key~~ — DONE 2026-09-26
+
+Executed on the user's "Complete not done". Every paper item was read (`generated-papers/_ak_check.py`, `_show2021.py`); the matched share rose from 91 to **131 of 150** once the all-subjects locator ran. **20 rows handled:** 17 flipped to the key (one stem restored, two option sets restored, one figure attached), 3 kept on the bank key with a note because the 2021 key itself is wrong (`ae538665`, `0da4ffa2`, `097ed633`), and `f1744b84` is ill-posed and keeps the official letter. Script: `generated-papers/_repair-2021-ak.ts` (idempotent). The original ledger follows.
+
 
 **Found** in the CET notes source pass. Two 2021 Chemistry rows in chapters not yet shipped were keyed against the extracted 2021 answer key (`m2021_a.tex`) and both were wrong: `6f1e632a` (item 92, the figure's sequence ends in ethyne, and the row was keyed ethanal) and `5dc43001` (item 95, keyed 'both CO₂ and SO₂', while the key says SO₂). Both were flipped before their chapters shipped. A read-only comparison of ALL 150 MHT-CET 2021 rows (`generated-papers/_rows2021.ts` + `_ak2021.py`) matched 91 of them to a paper item: **77 agree, 14 disagree**, and 58 did not match (their stems start with math or a figure).
 - **The 14:** Chemistry 4 — `12bef5c4` (Basic Principles), `e8533030` (Solutions), `0da4ffa2` (Ionic Equilibria), `c3dd7611` (Alcohols), all in SHIPPED notes chapters. Physics 9 (`4a991454`, `1737f321`, `ae538665`, `56345c57`, `505e5b83`, `60333c19`, `f89cb0c5`, `07ff670e`, `e20e8b54`). Maths 1 (`79683298`).
@@ -1806,17 +1809,39 @@ starting point.
 
 Executed on the user's approval ("Both yes" — delete Trigonometry - I and go with the Balbharati carve if the syllabus document does not settle it; the only document on disk, `MHT_CET_%tage_weightage`, lists chapters, not their contents). Every one of the 94 rows was located in its paper (`generated-papers/_locate_fuzzy.py`) and read: 47 equation rows → a new `Trigonometric Equations and General Solutions` subtopic under `Trigonometric Functions`, 7 inverse-trig rows → its inverse subtopic, 40 identity rows → `Trigonometry - II`. `Trigonometry - I` was then empty and was DELETED (`generated-papers/_carve-trig.ts`, local backup taken first). Trigonometric Functions was then re-carved into six notes pages and shipped as notes the same day; the guide, books registry and trends matrix were re-synced. Long form in DECISIONS_HISTORY.md.
 
-## Backfill ledger — MHT_CET_2025_PCM.xlsx is a compilation whose rows keep turning out to be twins (2026-09-26)
+### ~~Backfill ledger — MHT_CET_2025_PCM.xlsx is a compilation whose rows keep turning out to be twins~~ — DONE 2026-09-26
+
+Executed on the user's "Complete not done". Every row of the file was paired against the bank by its paper item (`_pcm_twins.py` → `_bank_pairs.py` → `_twin_keys.py`): **83 twins went PRIVATE**, 3 unique rows were re-dated to 19 April Shift II, 7 concept tags were copied onto the dated twin, and 16 featured `pyqExampleId`s in shipped notes were swapped to the twin. 23 notes files had their counts restated (`_fix_counts.py`). The swap exposed one wrong teaching card — Vectors taught max Σ|a−b|² = 2Σ|a|²; it is 3Σ|a|² — corrected. The original ledger follows.
+
 
 The undated "2025 · Shift ||" source file is not a sitting. Across the CET notes programme its rows have repeatedly been found to be copies of 19 April 2025 Shift II rows (six more in Trigonometric Functions alone on 2026-09-26), and each one goes PRIVATE. Its PUBLIC Maths column is down to **29** questions, which is why `tests/mhtcet-trends-reconcile.test.ts` now exempts undated columns from its "more than 40 questions" check.
 - **Scope:** every remaining PUBLIC row with `source_file = 'MHT_CET_2025_PCM.xlsx'`, all three subjects.
 - **Method:** the fuzzy locator already built for trig (`_locate_fuzzy.py` + `_ak_check.py`); a row whose paper item is already held by a dated row is a twin.
 - **Recommendation:** do, chapter by chapter as each is noted (the programme is already doing this), then one sweep for the rest. Shipped chapters need the usual confirmation.
 
-## Backfill ledger — "3rd May 2nd Shift" 2023 rows are the 3 May SHIFT 1 paper (2026-09-26)
+### ~~Backfill ledger — "3rd May 2nd Shift" 2023 rows are the 3 May SHIFT 1 paper~~ — DONE 2026-09-26
+
+132 rows of `MHT_CET_3rdMay2023_S1_QB.xlsx` re-labelled "3rd May Shift 1" (`generated-papers/_redate_may3.ts`); the file now carries 150 rows under that label and the S2 file keeps its 149. The original ledger follows.
+
 
 The trends matrix header reports it as a dispute it will not resolve: `MHT_CET_3rdMay2023_S1_QB.xlsx` — filename shift 1, `pyq_note` "3rd May 2nd Shift". Every row checked so far (six in Trigonometric Functions, more in Chemistry) is in the 3 May SHIFT 1 paper. Re-dated where a chapter was noted; the rest of the file still carries the wrong label.
 - **Recommendation:** do, as one scripted re-date of every row from that file, after a spot check of ten rows against the paper. Reversible; the label is display-only.
+
+## Backfill ledger — four PUBLISHED mocks contain PRIVATE questions (2026-09-26)
+
+The mock runner reads questions with the student's JWT, so a question made PRIVATE after its mock was built renders as a BLANK item. Found while hiding the 2025_PCM twins (none of today's rows are in a mock; these came from earlier source passes):
+- `mht-cet-2023-may-03-s1-maths` — `fbb92884`, `8c65343b`
+- `mht-cet-2023-may-04-s1-maths` — `45bcc3da`
+- `mht-cet-2024-may-12-s1-phy-chem` — `6d3d45a5`
+- `mht-cet-2025-apr-21-s2-phy-chem` — `30bf4c16`
+- **Fix:** swap each hidden twin for its dated PUBLIC copy in the mock's question list, or rebuild the mock (`scripts/mocks/build.ts`). **Both change a published mock — the user's call** ([[mock-publish-is-users]]).
+- **Standing check wanted:** a probe that lists PRIVATE questions inside PUBLIC mocks, run after any bulk PRIVATE flip.
+
+## Backfill ledger — the MHT-CET Maths guide must be re-measured without the 2025_PCM column (2026-09-26)
+
+`matrix.generated.ts` was restored to its committed copy on purpose. Regenerating it now drops the 2025_PCM column: 44 papers, 2025 = 13 shifts, the recent window becomes 25, and every per-shift rate moves. **Trigonometry - II rises to 0.92, crossing the 0.9 playbook line.** Guide prose also carries counts that moved today (Indefinite 162 → 159, AoD 183 → 182, Trig Functions 212 → 211, Conic 20).
+- **Scope:** `npm run mhtcet:matrix`, the tier tables in strategy/playbooks, `tests/guide-mht-cet-maths-playbooks.test.ts`, and any playbook a crossing adds.
+- **Recommendation:** do, as one guide re-measure — but it re-tiers a shipped guide, so it waits for confirmation.
 
 ### BACKFILL LEDGER — 176 questions draw matrices in ROUND brackets (logged 2026-09-17)
 
