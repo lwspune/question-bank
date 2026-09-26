@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { footerLinks } from "@/lib/nav/footerLinks";
+import { footerLinks, legalLinks } from "@/lib/nav/footerLinks";
 
 /**
  * Site-wide footer: a tagline, then four short link columns.
@@ -69,6 +69,21 @@ export default function Footer() {
                 )}
               </ul>
             </div>
+          ))}
+        </nav>
+
+        <nav
+          aria-label="Legal"
+          className="mt-8 flex flex-wrap gap-x-4 gap-y-2 border-t pt-4"
+        >
+          {legalLinks().map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="transition-colors hover:text-foreground"
+            >
+              {link.label}
+            </Link>
           ))}
         </nav>
       </div>

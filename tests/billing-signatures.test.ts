@@ -62,11 +62,13 @@ describe("billing/razorpay verifyWebhookSignature", () => {
 describe("billing/plans", () => {
   const NOW = Date.UTC(2026, 4, 31);
 
-  it("has at least the premium plan, priced in paise", () => {
+  // Which plans exist and which scope each sells: tests/billing-plans.test.ts.
+  it("prices every plan in whole paise", () => {
     expect(PLANS.length).toBeGreaterThan(0);
-    const p = PLANS[0];
-    expect(p.amountPaise).toBeGreaterThan(0);
-    expect(p.scope).toBe("all");
+    for (const p of PLANS) {
+      expect(Number.isInteger(p.amountPaise)).toBe(true);
+      expect(p.amountPaise).toBeGreaterThan(0);
+    }
   });
 
   it("getPlan returns the plan by id, null otherwise", () => {

@@ -1,12 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Play, Loader2 } from "lucide-react";
+import { Play, Loader2, Lock } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import LanguageSwitch from "@/components/i18n/LanguageSwitch";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
+import { FREE_MOCK_LIMIT, type MockStartState } from "@/lib/mocks/quota";
+import { formatRupees, getPlan } from "@/lib/billing/plans";
+
+const MOCK_PASS_PRICE = formatRupees(getPlan("mock-pass-6m")?.amountPaise ?? 9900);
 
 /**
  * Starts (or resumes) an attempt, then routes into the runner.
@@ -15,17 +20,35 @@ import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
  * language to sit it in first. The choice is the shared page-wide preference,
  * so the runner opens in it — and can still switch mid-test, as the printed
  * booklet lets a candidate read either version at any time.
+ *
+ * Free-mock limit (migration 0120): past the free mocks, the Start button
+ * becomes a Mock Pass card. The page decides from my_mock_quota(); a 402 from
+ * the start route (a stale page, a second tab) flips it here too.
  */
-export default function StartMock({ slug, bilingual = false }: { slug: string; bilingual?: boolean }) {
+export default function StartMock({
+  slug,
+  bilingual = false,
+  startState = { kind: "open" },
+}: {
+  slug: string;
+  bilingual?: boolean;
+  startState?: MockStartState;
+}) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [lang, setLang] = useQuestionLang();
+  const [state, setState] = useState<MockStartState>(startState);
 
   async function start() {
     setLoading(true);
     try {
       const res = await fetch(`/api/mock/${slug}/start`, { method: "POST" });
       const data = await res.json();
+      if (res.status === 402) {
+        setState({ kind: "locked", limit: state.kind === "free" ? state.limit : FREE_MOCK_LIMIT });
+        setLoading(false);
+        return;
+      }
       if (!res.ok) throw new Error(data.error ?? "Could not start the test.");
       if (data.resumed) toast.info("Resuming your in-progress attempt.");
       router.push(`/mock/${slug}/attempt/${data.attemptId}`);
@@ -45,7 +68,23 @@ export default function StartMock({ slug, bilingual = false }: { slug: string; b
       {loading ? "Starting…" : "Start test"}
     </Button>
   );
-  if (!bilingual) return button;
+  if (state.kind === "locked") return <MockPassCard limit={state.limit} />;
+  const freeNote =
+    state.kind === "free" ? (
+      <p className="mt-2 text-center text-xs text-muted-foreground">
+        {state.left === 1
+          ? "This is your last free mock test."
+          : `You have ${state.left} of ${state.limit} free mock tests left.`}
+      </p>
+    ) : null;
+  if (!bilingual) {
+    return (
+      <div>
+        {button}
+        {freeNote}
+      </div>
+    );
+  }
   return (
     <div className="space-y-4">
       <div className="rounded-lg border bg-card p-4">
@@ -58,6 +97,23 @@ export default function StartMock({ slug, bilingual = false }: { slug: string; b
         <LanguageSwitch value={lang} onChange={setLang} size="md" className="mt-3" />
       </div>
       {button}
+      {freeNote}
+    </div>
+  );
+}
+
+function MockPassCard({ limit }: { limit: number }) {
+  return (
+    <div className="rounded-lg border-2 border-brand-accent/40 bg-card p-5 text-center">
+      <Lock className="mx-auto h-5 w-5 text-brand-accent" aria-hidden />
+      <p className="mt-2 font-semibold">You&apos;ve used your {limit} free mock tests</p>
+      <p className="mt-1 text-sm text-muted-foreground">
+        Get the Mock Pass for unlimited mock tests for 6 months, for {MOCK_PASS_PRICE}. Retaking a mock
+        you&apos;ve already started stays free.
+      </p>
+      <Button asChild variant="brand" size="lg" className="mt-4 w-full">
+        <Link href="/pricing?plan=mocks">Get the Mock Pass: {MOCK_PASS_PRICE}</Link>
+      </Button>
     </div>
   );
 }

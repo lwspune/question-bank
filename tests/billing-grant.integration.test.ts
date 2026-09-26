@@ -7,17 +7,19 @@
  *   1. Grant once → row inserted; the user's own client sees active access.
  *   2. Grant the SAME paymentId again → 23505 → {kind:"already_granted"},
  *      still exactly one row (webhook + client-verify can't double-grant).
- *   3. A grant with an expiry in the past → userHasAccess is false.
+ *   3. A full refund revokes the grant; replaying the paid event afterwards
+ *      does NOT re-activate it (the unique index answers "already_granted").
+ *   4. A grant with an expiry in the past → userHasAccess is false.
  *
  * Skips entirely if Supabase env vars aren't loaded. Creates + tears down its
  * own auth users and clearly-prefixed provider_refs.
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { grantRazorpayEntitlement } from "@/lib/billing/grant";
+import { grantRazorpayEntitlement, revokeRazorpayEntitlement } from "@/lib/billing/grant";
 import { userHasAccess } from "@/lib/entitlements/query";
 import { computeExpiry, getPlan } from "@/lib/billing/plans";
-import { SCOPE_ALL } from "@/lib/entitlements/access";
+import { SCOPE_ALL, SCOPE_MOCKS } from "@/lib/entitlements/access";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -83,8 +85,8 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
     if (expiredUserId) await admin.auth.admin.deleteUser(expiredUserId);
   });
 
-  it("grants a 365-day pass and the user's own client sees active access", async () => {
-    const plan = getPlan("premium-365")!;
+  it("grants a 6-month Mock Pass and the user's own client sees active access", async () => {
+    const plan = getPlan("mock-pass-6m")!;
     const result = await grantRazorpayEntitlement({
       userId: paidUserId,
       paymentId: PAY_PAID,
@@ -94,9 +96,7 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
     expect(result.kind).toBe("ok");
 
     // RLS-scoped read via the user's own client.
-    await expect(userHasAccess(paidClient, paidUserId, SCOPE_ALL)).resolves.toBe(
-      true
-    );
+    await expect(userHasAccess(paidClient, paidUserId, SCOPE_MOCKS)).resolves.toBe(true);
 
     const { count } = await admin
       .from("entitlements")
@@ -106,7 +106,7 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
   });
 
   it("re-granting the same paymentId is idempotent (no double-grant)", async () => {
-    const plan = getPlan("premium-365")!;
+    const plan = getPlan("mock-pass-6m")!;
     const result = await grantRazorpayEntitlement({
       userId: paidUserId,
       paymentId: PAY_PAID,
@@ -120,6 +120,28 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
       .select("id", { count: "exact", head: true })
       .eq("provider_ref", PAY_PAID);
     expect(count).toBe(1);
+  });
+
+  it("a full refund revokes the pass, and a replayed payment does not bring it back", async () => {
+    await expect(revokeRazorpayEntitlement(PAY_PAID)).resolves.toEqual({ kind: "ok", revoked: 1 });
+    await expect(userHasAccess(paidClient, paidUserId, SCOPE_MOCKS)).resolves.toBe(false);
+
+    const plan = getPlan("mock-pass-6m")!;
+    const replay = await grantRazorpayEntitlement({
+      userId: paidUserId,
+      paymentId: PAY_PAID,
+      scope: plan.scope,
+      expiresAt: computeExpiry(Date.now(), plan.durationDays),
+    });
+    expect(replay.kind).toBe("already_granted");
+    await expect(userHasAccess(paidClient, paidUserId, SCOPE_MOCKS)).resolves.toBe(false);
+  });
+
+  it("revoking a payment with no grant touches nothing", async () => {
+    await expect(revokeRazorpayEntitlement(`pay_test_${STAMP}_none`)).resolves.toEqual({
+      kind: "ok",
+      revoked: 0,
+    });
   });
 
   it("a grant whose expiry has passed does not confer access", async () => {

@@ -54,4 +54,26 @@ describe("resolveExportAccess", () => {
       if (!d.allowed) expect(d.message.length).toBeGreaterThan(0);
     }
   });
+
+  // Teacher Pass (2026-09-26): a paid pass unlocks the Word paper + answer key
+  // for an account with no org. Slides and the tag sheet stay org-staff only.
+  describe("teacher pass", () => {
+    const passHolder = { isSignedIn: true, isStaff: false, hasTeacherPass: true };
+    it.each(["paper", "key"] as ExportKind[])("allows %s", (kind) => {
+      expect(resolveExportAccess({ kind, ...passHolder }).allowed).toBe(true);
+    });
+    it.each(["tags", "ppt"] as ExportKind[])("still denies %s with 403", (kind) => {
+      const r = resolveExportAccess({ kind, ...passHolder });
+      expect(r.allowed).toBe(false);
+      if (!r.allowed) expect(r.status).toBe(403);
+    });
+    it("means nothing to an anon caller", () => {
+      const r = resolveExportAccess({ kind: "paper", isSignedIn: false, isStaff: false, hasTeacherPass: true });
+      expect(r.allowed).toBe(false);
+    });
+    it("a student denied the paper is told the pass exists", () => {
+      const r = resolveExportAccess({ kind: "paper", ...student });
+      if (!r.allowed) expect(r.message).toMatch(/Teacher Pass/);
+    });
+  });
 });

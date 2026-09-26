@@ -25,6 +25,7 @@ import {
   answerCorrectDedupeKey,
 } from "./correctEvents";
 import type { ActivityEvent } from "@/lib/activity/events";
+import { FREE_MOCK_LIMIT_CODE, type MockQuota } from "./quota";
 
 export class MockError extends Error {
   constructor(public status: number, message: string) {
@@ -75,6 +76,11 @@ export async function startOrResumeAttempt(
     .select("id, expires_at")
     .single();
 
+  // The free-mock limit (migration 0120's trigger) refused a NEW mock.
+  if (error?.code === FREE_MOCK_LIMIT_CODE) {
+    throw new MockError(402, "You've used your free mock tests. Get the Mock Pass to keep going.");
+  }
+
   // Lost a race with a concurrent start (partial unique index) → resume theirs.
   if (error) {
     const { data: existing } = await db
@@ -105,6 +111,17 @@ export async function startOrResumeAttempt(
   });
 
   return { attemptId: created.id as string, expiresAt: created.expires_at as string, resumed: false };
+}
+
+/**
+ * The caller's free-mock quota (my_mock_quota, migration 0120). Null when it
+ * cannot be read — the page then shows the plain Start button and the trigger
+ * still guards the insert.
+ */
+export async function getMockQuota(db: SupabaseClient): Promise<MockQuota | null> {
+  const { data, error } = await db.rpc("my_mock_quota");
+  if (error || !data) return null;
+  return data as MockQuota;
 }
 
 type AttemptRow = {

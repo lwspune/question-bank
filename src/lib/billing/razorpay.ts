@@ -8,6 +8,7 @@
  * — only NEXT_PUBLIC_RAZORPAY_KEY_ID is publishable.
  */
 import { createHmac, timingSafeEqual } from "node:crypto";
+import type { PaidOrder } from "./plans";
 
 /** True when the server has the keys to take a payment (checkout won't 503).
  *  Drives the public-quiz results screen's premium-CTA gate — the CTA appears
@@ -98,6 +99,36 @@ export async function createOrder(input: {
       amount: data.amount ?? input.amountPaise,
       currency: data.currency ?? input.currency,
     };
+  } catch (err) {
+    return { ok: false, error: err instanceof Error ? err.message : String(err) };
+  }
+}
+
+/**
+ * Reads an order back from Razorpay: what it cost, whether it is paid, and the
+ * notes we stamped on it (userId + planId). The verify route decides the plan
+ * from this, never from the request body.
+ */
+export async function fetchOrder(
+  orderId: string
+): Promise<{ ok: true; order: PaidOrder } | { ok: false; error: string }> {
+  const keyId = process.env.RAZORPAY_KEY_ID;
+  const keySecret = process.env.RAZORPAY_KEY_SECRET;
+  if (!keyId || !keySecret) return { ok: false, error: "Razorpay keys not configured" };
+  if (!/^order_[A-Za-z0-9]+$/.test(orderId)) return { ok: false, error: "bad order id" };
+  const auth = Buffer.from(`${keyId}:${keySecret}`).toString("base64");
+  try {
+    const res = await fetch(`https://api.razorpay.com/v1/orders/${orderId}`, {
+      headers: { Authorization: `Basic ${auth}` },
+      cache: "no-store",
+    });
+    const data = (await res.json().catch(() => null)) as
+      | (PaidOrder & { error?: { description?: string } })
+      | null;
+    if (!res.ok || !data) {
+      return { ok: false, error: data?.error?.description ?? `Razorpay error ${res.status}` };
+    }
+    return { ok: true, order: data };
   } catch (err) {
     return { ok: false, error: err instanceof Error ? err.message : String(err) };
   }

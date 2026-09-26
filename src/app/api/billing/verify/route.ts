@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getSessionUser } from "@/lib/auth";
-import { verifyPaymentSignature } from "@/lib/billing/razorpay";
-import { computeExpiry, getPlan } from "@/lib/billing/plans";
+import { fetchOrder, verifyPaymentSignature } from "@/lib/billing/razorpay";
+import { computeExpiry, planForPaidOrder } from "@/lib/billing/plans";
 import { grantRazorpayEntitlement } from "@/lib/billing/grant";
 
 export const maxDuration = 30;
@@ -10,6 +10,10 @@ export const maxDuration = 30;
  * Client success-callback verification (instant-access path). Verifies the
  * Razorpay Checkout signature, then grants the entitlement. Idempotent with the
  * webhook (same payment id → unique-index conflict → "already_granted").
+ *
+ * The plan is read from the ORDER Razorpay holds, not the request body: the
+ * signature proves an order was paid, not which plan. With two prices, trusting
+ * the body let a ₹99 payment claim the ₹499 pass (fixed 2026-09-26).
  */
 export async function POST(request: NextRequest) {
   const user = await getSessionUser();
@@ -25,19 +29,10 @@ export async function POST(request: NextRequest) {
     razorpay_order_id?: string;
     razorpay_payment_id?: string;
     razorpay_signature?: string;
-    planId?: string;
   } | null;
-  if (
-    !body?.razorpay_order_id ||
-    !body.razorpay_payment_id ||
-    !body.razorpay_signature ||
-    !body.planId
-  ) {
+  if (!body?.razorpay_order_id || !body.razorpay_payment_id || !body.razorpay_signature) {
     return NextResponse.json({ error: "Missing payment fields" }, { status: 400 });
   }
-
-  const plan = getPlan(body.planId);
-  if (!plan) return NextResponse.json({ error: "Unknown plan" }, { status: 400 });
 
   const valid = verifyPaymentSignature(
     body.razorpay_order_id,
@@ -48,6 +43,29 @@ export async function POST(request: NextRequest) {
   if (!valid) {
     return NextResponse.json({ error: "Payment verification failed" }, { status: 400 });
   }
+
+  const fetched = await fetchOrder(body.razorpay_order_id);
+  if (!fetched.ok) {
+    // The webhook still grants from the order's own notes, so the buyer is not stranded.
+    console.error("verify: could not read order", fetched.error);
+    return NextResponse.json(
+      { error: "Payment received — access will activate shortly." },
+      { status: 502 }
+    );
+  }
+  const decided = planForPaidOrder(fetched.order, user.id);
+  if (!decided.ok && decided.reason === "order not paid") {
+    // Captured a moment later; the order.paid webhook grants it then.
+    return NextResponse.json(
+      { error: "Payment received — access will activate shortly." },
+      { status: 202 }
+    );
+  }
+  if (!decided.ok) {
+    console.error("verify: order refused", decided.reason);
+    return NextResponse.json({ error: "Payment verification failed" }, { status: 400 });
+  }
+  const plan = decided.plan;
 
   const result = await grantRazorpayEntitlement({
     userId: user.id,

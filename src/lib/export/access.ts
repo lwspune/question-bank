@@ -16,6 +16,10 @@
  * the UI turns that into a "request teacher access" prompt rather than a sign-in
  * one, since signing in as a student wouldn't unlock the download.
  *
+ * TEACHER PASS (2026-09-26): a paid pass (entitlement scope "teacher") lets an
+ * account with no org download the Word paper + answer key. Slides and the tag
+ * sheet stay org-staff only — they belong to the provisioned-institute tier.
+ *
  * Denials carry the HTTP status the route should return (401 = not signed in,
  * 403 = signed in but not staff) plus a user-facing message.
  */
@@ -29,8 +33,10 @@ export function resolveExportAccess(input: {
   kind: ExportKind;
   isSignedIn: boolean;
   isStaff: boolean;
+  /** Active Teacher Pass (entitlement scope "teacher"). */
+  hasTeacherPass?: boolean;
 }): ExportAccess {
-  const { kind, isSignedIn, isStaff } = input;
+  const { kind, isSignedIn, isStaff, hasTeacherPass = false } = input;
 
   // Every downloadable artifact is staff-only. Distinguish anon (401) from a
   // signed-in-but-not-staff student (403) so the route + UI can respond in kind.
@@ -42,11 +48,14 @@ export function resolveExportAccess(input: {
     };
   }
   if (!isStaff) {
+    if (hasTeacherPass && (kind === "paper" || kind === "key")) return { allowed: true };
     return {
       allowed: false,
       status: 403,
       message:
-        "Downloads are for teacher accounts. Request teacher access and we'll set you up.",
+        kind === "paper" || kind === "key"
+          ? "Downloads are for teachers. Get a Teacher Pass for instant access, or request teacher access."
+          : "This download is for institute staff accounts.",
     };
   }
   return { allowed: true };

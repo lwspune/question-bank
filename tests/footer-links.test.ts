@@ -20,7 +20,7 @@
  *    footer still links from every page.
  */
 import { describe, it, expect } from "vitest";
-import { footerLinks, type FooterGroup } from "@/lib/nav/footerLinks";
+import { footerLinks, legalLinks, type FooterGroup } from "@/lib/nav/footerLinks";
 import { getGuideExamGroups } from "@/lib/guide/guidesNav";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { CONTACT_EMAIL } from "@/lib/brand";
@@ -90,5 +90,25 @@ describe("footerLinks", () => {
       if (l.href.startsWith("mailto:")) expect(l.external).toBe(true);
       else expect(l.href.startsWith("/")).toBe(true);
     }
+  });
+});
+
+/**
+ * The legal row under the footer grid. A payment gateway's site review
+ * (Razorpay) looks for these four pages linked from every page; /privacy
+ * existed for months with no link to it from anywhere.
+ */
+describe("legalLinks", () => {
+  it("links terms, refunds, privacy and contact, in that order", () => {
+    expect(legalLinks().map((l) => l.href)).toEqual([
+      "/terms",
+      "/refunds",
+      "/privacy",
+      "/contact",
+    ]);
+  });
+
+  it("does not repeat a link the four groups already carry", () => {
+    for (const l of legalLinks()) expect(hrefs).not.toContain(l.href);
   });
 });

@@ -3,6 +3,8 @@ import { cookies } from "next/headers";
 import { Inbox } from "lucide-react";
 import type { Metadata } from "next";
 import { getPageIdentity } from "@/lib/auth";
+import { sessionHasScope } from "@/lib/entitlements/session";
+import { SCOPE_TEACHER } from "@/lib/entitlements/access";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import {
   listExams,
@@ -94,6 +96,10 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   // canEditContent is superadmin-only (migration 0056) — the per-question
   // "Edit" affordance shows only for the platform admin.
   const { isStaff, isSignedIn, canEditContent } = await getPageIdentity();
+  // Teacher Pass: a paid grant that unlocks the paper + key for an account with
+  // no org. Only a signed-in non-staff viewer needs the lookup.
+  const hasTeacherPass =
+    isSignedIn && !isStaff ? await sessionHasScope(SCOPE_TEACHER) : false;
 
   const rawParams = paramsFromSearch(searchParams);
   let filters = parseFilters(rawParams);
@@ -332,6 +338,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
               totalCount={totalCount}
               isSignedIn={isSignedIn}
               isStaff={isStaff}
+              hasTeacherPass={hasTeacherPass}
               bilingual={bilingualExam}
             />
           </div>
