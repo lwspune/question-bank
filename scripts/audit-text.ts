@@ -40,6 +40,14 @@
  *    question that is uniformly round: see the probe's own note on why
  *    normalising those would cost more than it buys.
  *
+ * 8. PHANTOM_ARROW — a reagent or condition over a reaction arrow wrapped in
+ *    `\phantom{...}`, so the stem draws a bare arrow and asks for the product of
+ *    a reaction whose reagent is invisible. Pandoc's reading of a Word text box;
+ *    40 rows across MHT-CET 2025, JEE 2021-2023 and one NDA row on 2026-09-26.
+ *    Every field AND every option, since reaction options carry arrows too.
+ *    Repairable in place — scripts/reviews/reveal-phantom-arrows.ts; the probe
+ *    and the repair share one helper (scripts/lib/phantomArrows.ts).
+ *
  * Every detector reuses production helpers, so a false positive here is a real
  * disagreement worth investigating, not a probe artefact. Math zones are masked
  * by `normalizeNewlines` / `maskMathZones`, so `\neq` / `\nabla` / `\nu` and
@@ -56,6 +64,7 @@ import {
   mixedMatrixDelimiters,
 } from "./lib/textProbes";
 import { pandocArtifactCount, stripPandocArtifacts } from "./lib/pandocArtifacts";
+import { hasHiddenArrowLabel } from "./lib/phantomArrows";
 
 const FIELDS = ["text", "context", "solution"] as const;
 type Field = (typeof FIELDS)[number];
@@ -84,7 +93,8 @@ type Finding = {
     | "OPTION_LEAK"
     | "PANDOC_ARTIFACT"
     | "FLATTENED_TABLE"
-    | "MIXED_MATRIX_DELIM";
+    | "MIXED_MATRIX_DELIM"
+    | "PHANTOM_ARROW";
   sample: string;
 };
 
@@ -167,6 +177,23 @@ function inspect(r: Row): Finding[] {
     }
   }
 
+  // A hidden arrow label can sit in any field or option; one finding per question.
+  const arrowField = FIELDS.find((f) => typeof r[f] === "string" && hasHiddenArrowLabel(r[f] as string));
+  const arrowOpt = (r.options ?? []).find((o) => typeof o.text === "string" && hasHiddenArrowLabel(o.text));
+  if (arrowField || arrowOpt) {
+    const src = arrowField ? (r[arrowField] as string) : (arrowOpt!.text as string);
+    const at = src.indexOf("\\phantom");
+    out.push({
+      id: r.id,
+      source: r.source_file ?? "(none)",
+      qnum: r.question_number ?? "(none)",
+      visibility: r.visibility,
+      field: arrowField ?? "text",
+      kind: "PHANTOM_ARROW",
+      sample: (arrowField ? "" : "[option] ") + src.slice(Math.max(0, at - 40), at + 80).replace(/\n/g, "⏎"),
+    });
+  }
+
   // Whole-question probe — the mismatch is usually BETWEEN fields (a round stem
   // against a square solution), so no single field can be inspected alone.
   const allFields = [
@@ -243,6 +270,7 @@ async function main() {
     "PANDOC_ARTIFACT",
     "FLATTENED_TABLE",
     "MIXED_MATRIX_DELIM",
+    "PHANTOM_ARROW",
   ] as const) {
     const hits = byKind(kind);
     console.log(`${kind}: ${hits.length}`);
