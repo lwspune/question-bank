@@ -105,6 +105,17 @@ export default async function PricingPage() {
           <p className="mt-4 text-center text-[11px] text-muted-foreground">
             Secure payment via Razorpay · UPI, cards, netbanking
           </p>
+          <p className="mt-2 text-center text-[11px] text-muted-foreground">
+            One-time payment, no auto-renewal. By paying you agree to the{" "}
+            <Link href="/terms" className="underline hover:text-foreground">
+              Terms
+            </Link>{" "}
+            and{" "}
+            <Link href="/refunds" className="underline hover:text-foreground">
+              {"7-day refund policy"}
+            </Link>
+            .
+          </p>
         </div>
       </main>
     </>

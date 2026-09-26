@@ -90,3 +90,17 @@ export function footerLinks(): FooterGroup[] {
     },
   ];
 }
+
+/**
+ * The legal row under the footer grid. A payment gateway's site review
+ * (Razorpay) checks that these four pages are reachable from every page; a
+ * row of its own keeps them out of the four content columns.
+ */
+export function legalLinks(): FooterLink[] {
+  return [
+    { href: "/terms", label: "Terms" },
+    { href: "/refunds", label: "Refunds" },
+    { href: "/privacy", label: "Privacy" },
+    { href: "/contact", label: "Contact" },
+  ];
+}
