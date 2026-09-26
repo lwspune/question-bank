@@ -61,6 +61,8 @@ import {
   IPMAT_INDORE_PAPER,
   JIPMAT_PAPER,
   MPSC_GBC_PAPER,
+  UPSC_GS1_PAPER,
+  UPSC_CSAT_PAPER,
   type MockPaperBlueprint,
 } from "../../src/lib/mocks/blueprints";
 import type { MockAnswerKey, OptionLabel } from "../../src/lib/mocks/answers";
@@ -87,6 +89,8 @@ import { deriveJeeSittings, JEE_SHIFT_SIZE } from "./jeeSittings";
 import { ipmatIndoreSittings, isGrace, jipmatSittings as deriveJipmatSittings } from "./ipmatSittings";
 import { deriveMpscSittings } from "./mpscSittings";
 import { PAPERS as MPSC_PAPERS } from "../mpsc/config";
+import { deriveUpscSittings } from "./upscSittings";
+import { PAPERS as UPSC_PAPERS } from "../upsc/config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -668,6 +672,24 @@ function mpscSittings(): SourceFileSitting[] {
   }));
 }
 
+/** UPSC sittings for ONE of its two papers, withdrawn items as grace. */
+function upscSittings(paper: 1 | 2): SourceFileSitting[] {
+  return deriveUpscSittings(Object.values(UPSC_PAPERS))
+    .filter((s) => s.paper === paper)
+    .map((s) => ({
+      key: s.key,
+      sourceFile: s.sourceFile,
+      year: s.year,
+      slug: s.slug,
+      title: s.title,
+      prepare: (rows) => {
+        const grace = new Set(s.graceNumbers);
+        return rows.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r));
+      },
+      ...(s.hold ? { hold: s.hold } : {}),
+    }));
+}
+
 async function main() {
   const apply = process.argv.includes("--apply");
   const publish = process.argv.includes("--publish");
@@ -689,9 +711,10 @@ async function main() {
   const runIpmat = !paperFilter || paperFilter === "ipmat-indore";
   const runMpsc = !paperFilter || paperFilter === "mpsc";
   const runJipmat = !paperFilter || paperFilter === "jipmat";
-  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat) {
+  const runUpsc = !paperFilter || paperFilter === "upsc";
+  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc)`
     );
   }
 
@@ -740,6 +763,10 @@ async function main() {
   }
   if (runJipmat) {
     await buildFromSourceFiles(db, JIPMAT_PAPER, jipmatSittings(), run, "ipmatSittings.ts");
+  }
+  if (runUpsc) {
+    await buildFromSourceFiles(db, UPSC_GS1_PAPER, upscSittings(1), run, "upscSittings.ts");
+    await buildFromSourceFiles(db, UPSC_CSAT_PAPER, upscSittings(2), run, "upscSittings.ts");
   }
   if (runMpsc) {
     await buildFromSourceFiles(db, MPSC_GBC_PAPER, mpscSittings(), run, "mpscSittings.ts");
