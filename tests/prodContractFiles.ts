@@ -23,6 +23,7 @@ export const PROD_CONTRACT_FILES: string[] = [
   "tests/format-mix-registry.test.ts", // EXAM_REGISTRY.mixedFormats vs the live corpus
   "tests/exam-registry-content.test.ts", // EXAM_REGISTRY.noPublicContent vs live PUBLIC counts
   "tests/mocks-registry.test.ts", // EXAM_REGISTRY.hasMocks vs live mock_tests
+  "tests/mock-questions-visible.test.ts", // published mocks reference only live PUBLIC questions
   "tests/books-registry.test.ts", // book registry chapter/subject names vs live taxonomy
   "tests/planner-data.test.ts", // session-plan section refs vs the live syllabus spine
   "tests/blog-nda2-2026-stats.test.ts", // blog post figures vs the live NDA Maths corpus
