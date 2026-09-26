@@ -1852,7 +1852,10 @@ Matrix regenerated (44 shifts, 2,175 q). Chapter figures were rewritten by block
 - **Scope:** `npm run mhtcet:matrix`, the tier tables in strategy/playbooks, `tests/guide-mht-cet-maths-playbooks.test.ts`, and any playbook a crossing adds.
 - **Recommendation:** do, as one guide re-measure — but it re-tiers a shipped guide, so it waits for confirmation.
 
-## Backfill ledger — CET repair scripts left `content_hash` stale on edited rows (2026-09-26)
+### ~~Backfill ledger — CET repair scripts left `content_hash` stale on edited rows~~ — RESOLVED 2026-09-26: DECLINED, and the reasoning below was backwards
+
+Measured (`generated-papers/_hash_audit.ts`, read-only): **187 of 6,728 MHT-CET rows** carry a hash that is not the hash of their current text; rehashing would collide 3 with an existing row and 2 with each other. **The ledger's premise was wrong in one direction.** A stale hash is the hash of the ORIGINAL source text, so a re-ingest of the original `.xlsx` would MATCH it and merge — it is the rehash that would make that re-ingest duplicate. And MHT-CET has a live reader that does exactly this: `/api/sync/mock` (fed by MHT_CET_AI from the original transcriptions) inserts a new PUBLIC question on a hash miss. So for MHT-CET the source-text hash is the correct state: **the 187 are kept**, and the **28 MHT-CET hashes the phantom-arrow repair had moved were put back** from its revert snapshot (`generated-papers/_restore_cet_hashes.ts`; text fixes kept). The rule is now in the committed repair script as `KEEP_SOURCE_HASH`. Other exams keep the `normalise-matrix-delimiters.ts` convention (hash follows the text). The original ledger follows.
+
 
 Found while writing `scripts/reviews/reveal-phantom-arrows.ts`, which follows the committed rule that a stem or option edit moves the row's `content_hash` with it (`normalise-matrix-delimiters.ts`). **None of the 14 `generated-papers/_repair-*.ts` scripts from the CET notes programme do that**, and neither did today's `_repair-mock-gaps.ts`. Every stem, option or key they corrected left a hash that describes the text as it was.
 - **Blast radius:** dedup only. A re-ingest of the original `.xlsx` would hash the old text, miss the repaired row and insert a duplicate — but the CET xlsx files are never re-ingested (the `.docx` papers are the source of truth), so no current path reads these hashes.
