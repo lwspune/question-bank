@@ -75,7 +75,7 @@
 // commit path; only context handling differs, and that is a per-question field.
 // Forking would mean applying every future fix twice — this repo already has a
 // live instance of that drift (see CLAUDE.md, the NCERT Class-11 entry).
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 // LWS Pune org + admin (same as the sibling CDS / JEE / practice pipelines).
@@ -401,3 +401,45 @@ export const keyPath = (id: string) => {
   if (!p) throw new Error(`unknown paper "${id}"`);
   return join(KEY_ROOT, `AnsKey-CSP-${p.pyqYear}-Paper-${p.paper}.pdf`);
 };
+
+/**
+ * The `pyq_note` stamped on every row of a paper.
+ *
+ * For a paper whose key is PROVISIONAL, the note SAYS SO. Every other answer in
+ * this corpus is verified against a final, post-cycle UPSC key; 2026's rests on
+ * a key published three days after the exam, before its objection window had
+ * even closed. That is weaker evidence, and a row that does not announce it
+ * reads exactly like one that does not need to — the same failure the CDS-GK
+ * corpus has to guard against with its derived-answer clause.
+ *
+ * Deliberately part of the ROW, not just a comment in config: `fetch-keys.ts`
+ * and this file can both be read by a maintainer, but neither travels with a
+ * question into a paper, an export, or a later audit.
+ */
+export function pyqNoteFor(paper: Paper): string {
+  if (!PROVISIONAL_KEYS.has(paper.id)) return paper.pyqNote;
+  return (
+    `${paper.pyqNote}. Answer verified against UPSC's PROVISIONAL answer key ` +
+    `(released 2026-05-27, objection window closed 2026-05-31), NOT the final ` +
+    `post-cycle key used for every other year in this corpus. Supersede when ` +
+    `the final key is published.`
+  );
+}
+
+/**
+ * A key `X` that is NOT a withdrawal: 2021-p2 Q39's dual key ("C or D", see its
+ * PAPERS entry). UPSC scored it, so it is neither loaded nor graced.
+ */
+export const NOT_WITHDRAWN: Record<string, number[]> = { "2021-p2": [39] };
+
+/** Items UPSC WITHDREW from a paper — its key's `X` entries, minus NOT_WITHDRAWN. */
+export function withdrawnFor(id: string): number[] {
+  // 2016 is in PAPERS but out of scope: it has no key (README), so nothing to read.
+  if (!existsSync(dataPath(id, "key"))) return [];
+  const key = JSON.parse(readFileSync(dataPath(id, "key"), "utf8")) as Record<string, string>;
+  const skip = new Set(NOT_WITHDRAWN[id] ?? []);
+  return Object.entries(key)
+    .filter(([n, v]) => /^\d+$/.test(n) && String(v).toUpperCase() === "X" && !skip.has(Number(n)))
+    .map(([n]) => Number(n))
+    .sort((a, b) => a - b);
+}

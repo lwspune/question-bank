@@ -549,6 +549,69 @@ export const MPSC_GBC_PAPER: MockPaperBlueprint = {
   ],
 };
 
+/**
+ * UPSC Civil Services (Prelims) — TWO papers per sitting, both 2 hours, both
+ * 200 marks (scripts/upsc/README.md, read off the booklets):
+ *
+ *   GS Paper I   100 items  +2    / -0.6667  (one-third of 2)   counts to merit
+ *   CSAT II       80 items  +2.5  / -0.8333  (one-third of 2.5) qualifying, 33%
+ *
+ * ONE section each, spanning every bank subject its paper is filed under: the
+ * booklet prints no subject headings, so subject blocks would reorder a paper
+ * no candidate sat (the CDS GK rule). Hard counts — a withdrawn item is still
+ * printed, and ships as grace; 2021 CSAT, whose Q39 accepted two answers, is
+ * held (scripts/mocks/upscSittings.ts).
+ */
+export const UPSC_GS1_PAPER: MockPaperBlueprint = {
+  code: "gs1",
+  examName: "UPSC CSE (Prelims)",
+  examSlug: "upsc-cse",
+  paperLabel: "GS Paper I",
+  durationSecs: 120 * 60,
+  marking: { correct: 2, wrong: -0.6667 },
+  sections: [
+    {
+      key: "general-studies",
+      label: "General Studies",
+      subjects: [
+        "History",
+        "Geography",
+        "Polity and Governance",
+        "Economy",
+        "Environment and Ecology",
+        "Physics",
+        "Chemistry",
+        "Biology",
+        "Current Affairs and IR",
+      ],
+      count: 100,
+    },
+  ],
+};
+
+export const UPSC_CSAT_PAPER: MockPaperBlueprint = {
+  code: "csat",
+  examName: "UPSC CSE (Prelims)",
+  examSlug: "upsc-cse",
+  paperLabel: "CSAT (Paper II)",
+  durationSecs: 120 * 60,
+  marking: { correct: 2.5, wrong: -0.8333 },
+  sections: [
+    {
+      key: "csat",
+      label: "CSAT",
+      subjects: [
+        "Comprehension",
+        "Basic Numeracy",
+        "Logical Reasoning and Analytical Ability",
+        "General Mental Ability",
+        "Data Interpretation and Data Sufficiency",
+      ],
+      count: 80,
+    },
+  ],
+};
+
 /** The NDA blueprints the build script's year+month discovery loop iterates. */
 export const MOCK_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   NDA_MATHS_PAPER,
@@ -576,6 +639,8 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   IPMAT_INDORE_PAPER,
   JIPMAT_PAPER,
   MPSC_GBC_PAPER,
+  UPSC_GS1_PAPER,
+  UPSC_CSAT_PAPER,
 ];
 
 /** Sum of the DECLARED section counts (0 when a blueprint declares none). */

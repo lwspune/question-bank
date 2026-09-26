@@ -622,6 +622,40 @@ export function buildRecords(
 }
 
 /**
+ * Rows for the items UPSC WITHDREW — keyless, answer `CANCELLED`, with a note.
+ *
+ * `buildRecords` skips them (no derivation, key `X`), which was right while the
+ * corpus was PRIVATE. A mock is the printed paper, so a withdrawn item belongs
+ * in it as grace; and a reader should see why it has no answer. No solution:
+ * there is no right answer to explain. Throws on a number the transcription
+ * does not hold, so a typo cannot load nothing silently.
+ */
+export function buildWithdrawnRecords(questions: TQ[], withdrawn: number[], note: string): RawRow[] {
+  return withdrawn.map((n) => {
+    const q = questions.find((x) => x.number === n);
+    if (!q) throw new Error(`withdrawn item ${n} is not in the transcription`);
+    const opt = (l: string) => q.options.find((o) => o.label === l)?.text ?? "";
+    return {
+      sourceRow: q.number,
+      questionNumber: String(q.number),
+      subject: q.subject,
+      chapter: q.chapter,
+      subtopic: q.subtopic,
+      ...(q.setLabel ? { setLabel: q.setLabel } : {}),
+      ...(q.context ? { context: q.context } : {}),
+      question: q.stem,
+      optionA: opt("A"),
+      optionB: opt("B"),
+      optionC: opt("C"),
+      optionD: opt("D"),
+      answer: "CANCELLED",
+      cancelledNote: note,
+      difficulty: q.difficulty,
+    };
+  });
+}
+
+/**
  * A `Directions for the following N (n) items :` preamble sitting inside a
  * `context`.
  *

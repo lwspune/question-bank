@@ -5,6 +5,10 @@ Scanned UPSC Civil Services (Preliminary) booklets (image PDFs, **no text layer*
 (Prelims)** exam across **14 subjects** — nine for Paper I, five for Paper II.
 
 **Status: COMPLETE at 20 papers / 1,789 questions, all PRIVATE. Nothing is PUBLIC.**
+
+**2026-09-26:** the 10 items UPSC WITHDREW are now loaded too (keyless, cancelled note —
+`load-withdrawn.ts`), so the corpus is 1,799 rows, still PRIVATE. Mock code is ready; the
+remaining steps to publish are listed in [MOCKS.md](../../MOCKS.md).
 Every sitting **2017-2026**, both papers. **2016 is deliberately OUT OF SCOPE**
 (decision 2026-08-29) - see below. This corpus is closed unless that changes.
 

@@ -24,32 +24,8 @@ import { join } from "node:path";
 import { commitStaged } from "../../src/lib/upload/commit";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { validateRow } from "../../src/lib/upload/validate";
-import { CREATED_BY, EXAM_ID, ORG_ID, PROVISIONAL_KEYS, dataPath, pattern, requirePaper, type Paper } from "./config";
+import { CREATED_BY, EXAM_ID, ORG_ID, PROVISIONAL_KEYS, dataPath, pattern, pyqNoteFor, requirePaper } from "./config";
 import { buildRecords, validateRows, type Derivation, type TQ } from "./lib";
-
-/**
- * The `pyq_note` stamped on every row of a paper.
- *
- * For a paper whose key is PROVISIONAL, the note SAYS SO. Every other answer in
- * this corpus is verified against a final, post-cycle UPSC key; 2026's rests on
- * a key published three days after the exam, before its objection window had
- * even closed. That is weaker evidence, and a row that does not announce it
- * reads exactly like one that does not need to — the same failure the CDS-GK
- * corpus has to guard against with its derived-answer clause.
- *
- * Deliberately part of the ROW, not just a comment in config: `fetch-keys.ts`
- * and this file can both be read by a maintainer, but neither travels with a
- * question into a paper, an export, or a later audit.
- */
-export function pyqNoteFor(paper: Paper): string {
-  if (!PROVISIONAL_KEYS.has(paper.id)) return paper.pyqNote;
-  return (
-    `${paper.pyqNote}. Answer verified against UPSC's PROVISIONAL answer key ` +
-    `(released 2026-05-27, objection window closed 2026-05-31), NOT the final ` +
-    `post-cycle key used for every other year in this corpus. Supersede when ` +
-    `the final key is published.`
-  );
-}
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
