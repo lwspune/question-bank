@@ -5,6 +5,7 @@ import {
   validateCatalog,
   crosstab,
   buildRecords,
+  buildWithdrawnRecords,
   validateRows,
   findLonelyContexts,
   assignSetLabels,
@@ -397,5 +398,37 @@ describe("validateRows — Directions preamble in context", () => {
   it("does not fire on prose that merely mentions directions", () => {
     const ok = q({ context: "The court issued directions for the following year's budget." });
     expect(validateRows(rows([ok], [d()]), 1, 1)).toEqual([]);
+  });
+});
+
+describe("buildWithdrawnRecords", () => {
+  const q = (number: number): TQ => ({
+    number,
+    stem: `Stem ${number}`,
+    options: ["A", "B", "C", "D"].map((label) => ({ label, text: `${label}${number}` })) as TQ["options"],
+    subject: "History",
+    chapter: "Modern India",
+    subtopic: "Revolt",
+    difficulty: "MODERATE",
+  });
+
+  it("builds a CANCELLED row, with its note, for each withdrawn item only", () => {
+    const rows = buildWithdrawnRecords([q(1), q(2), q(3)], [2], "Withdrawn by UPSC.");
+    expect(rows).toHaveLength(1);
+    expect(rows[0]).toMatchObject({
+      sourceRow: 2,
+      questionNumber: "2",
+      question: "Stem 2",
+      optionA: "A2",
+      optionD: "D2",
+      answer: "CANCELLED",
+      cancelledNote: "Withdrawn by UPSC.",
+      subject: "History",
+    });
+    expect(rows[0].solution).toBeUndefined();
+  });
+
+  it("refuses a withdrawn number the transcription does not hold", () => {
+    expect(() => buildWithdrawnRecords([q(1)], [9], "x")).toThrow(/9/);
   });
 });
