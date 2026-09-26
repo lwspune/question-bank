@@ -624,6 +624,11 @@ import {
   MHTCET_ROTATIONAL_SLUGS,
 } from "@/app/notes/mht-cet-physics/rotational-dynamics/_data";
 import {
+  MHTCET_AC_CHAPTER,
+  MHTCET_AC_NOTES,
+  MHTCET_AC_SLUGS,
+} from "@/app/notes/mht-cet-physics/ac-circuits/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1619,6 +1624,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_ROTATIONAL_CHAPTER,
     notes: MHTCET_ROTATIONAL_NOTES,
     slugs: MHTCET_ROTATIONAL_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "ac-circuits",
+    chipLabel: "AC Circuits notes",
+    chapter: MHTCET_AC_CHAPTER,
+    notes: MHTCET_AC_NOTES,
+    slugs: MHTCET_AC_SLUGS,
   },
   {
     examName: "NDA",
