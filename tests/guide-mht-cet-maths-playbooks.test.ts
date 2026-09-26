@@ -76,12 +76,13 @@ describe("mht-cet-maths playbooks — static structure", () => {
   it("strand sizes match what the strategy page claims", () => {
     expect(playbooksInBucket("cornerstone")).toHaveLength(7);
     expect(playbooksInBucket("quickwin")).toHaveLength(5);
-    expect(playbooksInBucket("longtail")).toHaveLength(9);
-    expect(PLAYBOOKS).toHaveLength(21);
+    expect(playbooksInBucket("longtail")).toHaveLength(8);
+    expect(PLAYBOOKS).toHaveLength(20);
   });
 
   it("the cornerstone claim is arithmetic on the data, not prose", () => {
-    // "7 chapters carry ~56% of a 50-question paper" is the guide's headline
+    // "7 chapters carry ~57% of a 50-question paper" is the guide's headline (56% until the
+    // 2026-09-26 trigonometry carve moved 47 equation rows into Trigonometric Functions)
     // (55% until 2026-09-25, when three misfiled rows moved into Indefinite
     // Integration and its q/paper rose 3.35 -> 3.41). Derive it here so an
     // edited qPerPaper cannot leave the copy stranded.
@@ -89,9 +90,9 @@ describe("mht-cet-maths playbooks — static structure", () => {
       (sum, p) => sum + p.qPerPaper,
       0
     );
-    expect(cornerstoneQ).toBeGreaterThan(27);
-    expect(cornerstoneQ).toBeLessThan(28);
-    expect(Math.round((cornerstoneQ / 50) * 100)).toBe(56);
+    expect(cornerstoneQ).toBeGreaterThan(28);
+    expect(cornerstoneQ).toBeLessThan(29);
+    expect(Math.round((cornerstoneQ / 50) * 100)).toBe(57);
   });
 
   it("quick-win chapters really are the low-difficulty ones", () => {
@@ -255,12 +256,12 @@ describe.skipIf(!HAS_ENV)(
       ).toEqual([]);
     });
 
-    it("accounts for all 27 live chapters across playbooks + tail", () => {
+    it("accounts for all 26 live chapters across playbooks + tail", () => {
       const covered = new Set([
         ...PLAYBOOKS.map((p) => p.chapter),
         ...TAIL_CHAPTERS.map((t) => t.chapter),
       ]);
-      expect(covered.size).toBe(27);
+      expect(covered.size).toBe(26);
     });
   }
 );

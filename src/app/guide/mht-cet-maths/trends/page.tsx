@@ -51,7 +51,7 @@ const ENTERED = DRIFT_ROWS.find((r) => r.direction === "entered");
 
 export const metadata: Metadata = {
   title: `MHT-CET Maths Trends — the 2025 syllabus moved (${YEARS[0]}–${YEARS[YEARS.length - 1]})`,
-  description: `What changed across ${TOTAL_PAPERS} MHT-CET shifts and ${TOTAL_Q} past-year Maths questions. Measures of Dispersion ran 1.0 question a paper for two years and then scored zero across all 14 papers of 2025; Conic Sections went from 3 questions in the whole bank to 16 in 2025 alone. Shift counts differ wildly by year, so every comparison here is a per-paper rate, not a raw count.`,
+  description: `What changed across ${TOTAL_PAPERS} MHT-CET shifts and ${TOTAL_Q} past-year Maths questions. Measures of Dispersion ran 1.0 question a paper for two years and then scored zero across all 14 papers of 2025; Conic Sections went from 3 questions in the whole bank to 17 in 2025 alone. Shift counts differ wildly by year, so every comparison here is a per-paper rate, not a raw count.`,
   alternates: { canonical: "/guide/mht-cet-maths/trends" },
 };
 

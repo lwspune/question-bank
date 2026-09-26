@@ -21,7 +21,7 @@
  *   - Weightage is RECENT (2024-2025, 26 shifts), not lifetime. MHT-CET moved
  *     its syllabus for 2025: Measures of Dispersion ran 1.0 q/paper across the
  *     29 shifts of 2023-24 and then scored ZERO across all 14 papers of 2025,
- *     while Conic Sections went 3 questions lifetime-before-2025 to 16 in 2025
+ *     while Conic Sections went 3 questions lifetime-before-2025 to 17 in 2025
  *     alone. A lifetime average hides both, which is why CHAPTER_TABLE carries
  *     `qPerPaper` alongside `qCount` and is sorted on the former.
  *
@@ -66,7 +66,7 @@ export const ROUTES: GuideRoute[] = [
     slug: "trends",
     label: "Trends",
     blurb:
-      "The 2025 syllabus shift, in numbers — Measures of Dispersion dropped to zero across all 14 papers, Conic Sections went 3 to 16. Prep from 2023-24 alone and you drill a dead chapter.",
+      "The 2025 syllabus shift, in numbers — Measures of Dispersion dropped to zero across all 14 papers, Conic Sections went 3 to 17. Prep from 2023-24 alone and you drill a dead chapter.",
   },
   {
     slug: "traps",
@@ -83,7 +83,7 @@ export type Overview = {
   papers: number;
   yearsCovered: number;
   chapters: number;
-  /** Playbook count. 22 of the 27 chapters clear the 0.9 q/paper line. */
+  /** Playbook count. 20 of the 26 chapters clear the 0.9 q/paper line. */
   playbooks: number;
   /** Paper I is Mathematics ONLY. Physics and Chemistry are Paper II at
    *  1 mark each; these fields describe the Maths paper alone. */
@@ -111,8 +111,8 @@ export const OVERVIEW: Overview = {
   totalQ: 2228,
   papers: 45,
   yearsCovered: 5, // 2021-2025 inclusive
-  chapters: 27,
-  playbooks: 22,
+  chapters: 26,
+  playbooks: 20,
   paper: {
     questions: 50,
     marksPerQuestion: 2,
@@ -151,7 +151,7 @@ export type ChapterRow = {
   note?: string;
 };
 
-/** All 27 MHT-CET Maths chapters, sorted by RECENT weightage (qPerPaper)
+/** All 26 MHT-CET Maths chapters, sorted by RECENT weightage (qPerPaper)
  *  descending — not by lifetime qCount, because that is what the guide tiers
  *  on and the two disagree (Vectors leads on lifetime count, Line and Plane
  *  leads on recent rate).
@@ -160,8 +160,13 @@ export type ChapterRow = {
  *  by summation, not asserted. If a future edit breaks that identity, one of
  *  the two numbers is wrong — do not adjust a chapter to make it balance.
  *
- *  22 of these 27 ship a playbook (see playbooks.ts); the 5 below the
- *  0.9 q/paper line do not and are covered in a tail block on /strategy. */
+ *  20 of these 26 ship a playbook (see playbooks.ts); the 6 below the
+ *  0.9 q/paper line do not and are covered in a tail block on /strategy.
+ *
+ *  2026-09-26: Trigonometry - I was split by stem into Trigonometric Functions
+ *  (equations + inverse) and Trigonometry - II (identities) and deleted, and 11
+ *  duplicate rows went PRIVATE. Only the three trigonometry rows were re-measured;
+ *  the other rows and OVERVIEW's totals are the earlier snapshot. */
 export const CHAPTER_TABLE: ChapterRow[] = [
   {
     chapter: "Line and Plane",
@@ -171,6 +176,15 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     pctHard: 42,
     focus:
       "Plane — Equation, Normal, and Construction (47 · 38% HARD), Intersection, Coplanarity, and Skew Lines (37 · 62%), Distances in 3-D (33 · 42%), Angles — Line, Plane, and Direction Conditions (29 · 45%), Line — Equation, Direction Cosines, and Vector Form (29 · 21%), Foot of Perpendicular, Image, and Projection (19 · 53%), Tetrahedron Geometry — Centroid, Volume, and Vertices (11 · 27%). The HARD is spread across seven subtopics rather than concentrated, so there is no cherry-pick here.",
+  },
+  {
+    chapter: "Trigonometric Functions",
+    qCount: 212,
+    pctTotal: 9.6,
+    qPerPaper: 4.85,
+    pctHard: 38,
+    focus:
+      "Trigonometric Equations and General Solutions (47 · 36% HARD), Sine, Cosine and Projection Rules (47 · 43%), Half-Angle Formulas, Napier's Analogy and Area (24 · 38%), Inverse Trigonometric Functions — Principal Values and Evaluation (33 · 24%), Inverse Trigonometric Identities (30 · 63%), Inverse Trigonometric Equations (31 · 23%). The Std XII trigonometry chapter and the second-largest in the bank. Solution of triangle is rising (1.58 to 2.04 a paper); equations are falling (1.04 to 0.77).",
   },
   {
     chapter: "Vectors",
@@ -198,15 +212,6 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     pctHard: 38,
     focus:
       "Growth, Decay, and Continuous Models (33 · 27% HARD), Order, Degree, Formation of ODE, and Verification of Solutions (33 · 24%), Variable-Separable Equations (33 · 39%), Linear Differential Equations (Integrating Factor) (24 · 63%), Homogeneous and Reducible Equations (16 · 38%), Newton's Law of Cooling (5 · 60%). The subtopics split by SOLUTION METHOD, which is exactly how the questions are set.",
-  },
-  {
-    chapter: "Trigonometric Functions",
-    qCount: 168,
-    pctTotal: 7.5,
-    qPerPaper: 4.31,
-    pctHard: 41,
-    focus:
-      "Inverse Trigonometric Functions (94 · 40% HARD), Solution of Triangle — Sine, Cosine and Projection Rules (74 · 42%). The Std XII trigonometry chapter and the fourth-largest in the bank; two halves of near-equal cost, so it is drilled whole. The fastest-rising cornerstone: 3.73 q/paper lifetime against 4.31 recent.",
   },
   {
     chapter: "Indefinite Integration",
@@ -243,15 +248,6 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     pctHard: 55,
     focus:
       "Continuity at a Point (19 · 58% HARD), Piecewise Continuity (19 · 53%), Algebraic (13 · 46%), Trigonometric (12 · 67%), Exponential-Logarithmic (11 · 64%), Existence and Infinity (9 · 44%), [x] and |x| Discontinuities (6 · 50%). The highest %HARD of any chapter in the bank, and the difficulty sits in every page, so it does not cherry-pick.",
-  },
-  {
-    chapter: "Trigonometry - I",
-    qCount: 77,
-    pctTotal: 3.4,
-    qPerPaper: 1.31,
-    pctHard: 36,
-    focus:
-      "Trig Identities, Compound Angle, and Equations (77 · 36% HARD) — one undivided subtopic that MIXES Std XI compound and multiple angles with Std XII trigonometric equations and general solutions. Softening: 1.71 q/paper lifetime against 1.31 recent.",
   },
   {
     chapter: "Definite Integration",
@@ -353,6 +349,15 @@ export const CHAPTER_TABLE: ChapterRow[] = [
       "Slope, Angle and Rotation (15 · 33% HARD), Forms, Intersections and Concurrency (14 · 21%), Distance and the Foot of the Perpendicular (9 · 11%), Section Formula and Rectangles (6 · 0%). Cheap, and it underwrites Pair of Straight Lines and Circle — the return is larger than its own 0.92 per paper.",
   },
   {
+    chapter: "Trigonometry - II",
+    qCount: 39,
+    pctTotal: 1.8,
+    qPerPaper: 0.88,
+    pctHard: 49,
+    focus:
+      "Trigonometric Identities and Compound/Half-Angle Formulas (39 · 49% HARD) — the Std XI identity chapter: compound, multiple and half angles, factorisation, and conditional identities in a triangle. Just under the 0.9 line, so it has no playbook; the equations and inverse-trig pages of Trigonometric Functions lean on these identities.",
+  },
+  {
     chapter: "Sets, Relations and Functions",
     qCount: 40,
     pctTotal: 1.8,
@@ -363,15 +368,15 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   },
   {
     chapter: "Conic Sections",
-    qCount: 19,
+    qCount: 20,
     pctTotal: 0.9,
-    qPerPaper: 0.69,
-    pctHard: 42,
+    qPerPaper: 0.73,
+    pctHard: 40,
     focus:
-      "19 questions lifetime at 42% HARD, but the lifetime figure is the wrong lens — see the note. Below the playbook line on the 2021-2025 average and above it on 2025 alone.",
+      "20 questions lifetime at 40% HARD, but the lifetime figure is the wrong lens — see the note. Below the playbook line on the 2021-2025 average and above it on 2025 alone.",
     status: "entered",
     note:
-      "Entered with the 2025 syllabus shift: 3 questions in the whole bank before 2025, then 16 in 2025 alone. The lifetime rate of 0.69 understates it — anyone prepping from 2023-24 papers has never seen this chapter set.",
+      "Entered with the 2025 syllabus shift: 3 questions in the whole bank before 2025, then 17 in 2025 alone. The lifetime rate of 0.69 understates it — anyone prepping from 2023-24 papers has never seen this chapter set.",
   },
   {
     chapter: "Measures of Dispersion",

@@ -104,6 +104,11 @@ import {
   MHTCET_LIMITS_SLUGS,
 } from "@/app/notes/mht-cet-maths/limits/_data";
 import {
+  MHTCET_TRIG_FUNCTIONS_CHAPTER,
+  MHTCET_TRIG_FUNCTIONS_NOTES,
+  MHTCET_TRIG_FUNCTIONS_SLUGS,
+} from "@/app/notes/mht-cet-maths/trigonometric-functions/_data";
+import {
   MHTCET_DEFINITE_INTEGRATION_CHAPTER,
   MHTCET_DEFINITE_INTEGRATION_NOTES,
   MHTCET_DEFINITE_INTEGRATION_SLUGS,
@@ -1120,6 +1125,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_LIMITS_CHAPTER,
     notes: MHTCET_LIMITS_NOTES,
     slugs: MHTCET_LIMITS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "trigonometric-functions",
+    chipLabel: "Trigonometric Functions notes",
+    chapter: MHTCET_TRIG_FUNCTIONS_CHAPTER,
+    notes: MHTCET_TRIG_FUNCTIONS_NOTES,
+    slugs: MHTCET_TRIG_FUNCTIONS_SLUGS,
   },
   {
     examName: "MHT-CET",

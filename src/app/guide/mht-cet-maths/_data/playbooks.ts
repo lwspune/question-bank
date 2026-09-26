@@ -2,14 +2,17 @@
  * Playbook catalog for /guide/mht-cet-maths/playbooks.
  *
  * A "playbook" here = one chapter, treated end-to-end (the NDA Physics
- * Template C shape). MHT-CET Maths has 27 chapters and 83 subtopics; several
+ * Template C shape). MHT-CET Maths has 26 chapters (27 until 2026-09-26, when
+ * Trigonometry - I was emptied into Trigonometric Functions and Trigonometry - II
+ * and deleted); several
  * chapters are 1-3 subtopics, so the chapter is the right unit.
  *
- * WHY 22 AND NOT 27. Playbooks ship for every chapter at >= 0.9 q/paper on
- * RECENT weightage (2024-2025, 26 shifts). The four below the line are
+ * WHY 20 AND NOT 26. Playbooks ship for every chapter at >= 0.9 q/paper on
+ * RECENT weightage (2024-2025, 26 shifts). The chapters below the line are
  * deliberately excluded and covered in a short tail block on /strategy:
- *   Conic Sections 0.69 - Measures of Dispersion 0.46 - Sequences 0.31 -
- *   Quadratic Equations 0.15 (5 questions in 45 shifts).
+ *   Conic Sections 0.73 - Measures of Dispersion 0.46 - Sequences 0.31 -
+ *   Quadratic Equations 0.15 (5 questions in 45 shifts) - Trigonometry - II 0.88
+ *   (the Std XI identity chapter; 39 q after the 2026-09-26 carve, 49% HARD).
  * Sets, Relations and Functions (0.73) also sits below the line but is named
  * in the Quick-Win strand with a direct /browse drill, because it is a
  * genuine cheap-marks chapter (12% HARD).
@@ -28,7 +31,7 @@
  * Strand sizes are deliberately uneven - they reflect the bank's shape:
  *   - cornerstone (6):  23.4 q/paper = 47% of a 50-question paper
  *   - quickwin    (5):  low %HARD, banked early
- *   - longtail   (11):  ~1 q/paper each, mostly 33-56% HARD
+ *   - longtail    (8):  ~1 q/paper each, mostly 33-56% HARD
  */
 
 export type PlaybookBucket = "cornerstone" | "quickwin" | "longtail";
@@ -94,15 +97,19 @@ export const PLAYBOOKS: Playbook[] = [
     slug: "trigonometric-functions",
     name: "Trigonometric Functions",
     summary:
-      "168 q - 4.31/paper - 41% HARD. The Std XII trigonometry chapter and the fourth-largest in the bank, holding solution of triangle and inverse trigonometry under one heading. Two subtopics of near-equal cost, so it is drilled whole. RISING (3.73 lifetime to 4.31 recent), the steepest climb of any cornerstone.",
+      "212 q - 4.85/paper - 38% HARD. The Std XII trigonometry chapter and the second-largest in the bank, in three parts over six notes pages: equations (47 q), solution of triangle (71 q: the rules, then half-angle and area) and inverse trigonometry (94 q: values, identities, equations). The parts cost about the same; the one expensive page is inverse-trig identities at 63% HARD. Solution of triangle is rising (1.58 to 2.04 a paper) while equations are falling (1.04 to 0.77).",
     chapter: "Trigonometric Functions",
     subtopics: [
-      "Inverse Trigonometric Functions",
+      "Trigonometric Equations and General Solutions",
       "Solution of Triangle — Sine, Cosine and Projection Rules",
+      "Solution of Triangle — Half-Angle Formulas, Napier's Analogy and Area",
+      "Inverse Trigonometric Functions — Principal Values and Evaluation",
+      "Inverse Trigonometric Identities — Sums, Substitution and Telescoping",
+      "Inverse Trigonometric Equations",
     ],
-    qCount: 168,
-    qPerPaper: 4.31,
-    pctHard: 41,
+    qCount: 212,
+    qPerPaper: 4.85,
+    pctHard: 38,
     bucket: "cornerstone",
   },
   {
@@ -272,7 +279,7 @@ export const PLAYBOOKS: Playbook[] = [
     bucket: "quickwin",
   },
 
-  // Long tail (11 playbooks - ~1 q/paper each, mostly expensive)
+  // Long tail (8 playbooks - ~1 q/paper each, mostly expensive)
   {
     slug: "limits",
     name: "Limits",
@@ -291,20 +298,6 @@ export const PLAYBOOKS: Playbook[] = [
     qCount: 89,
     qPerPaper: 1.99,
     pctHard: 55,
-    bucket: "longtail",
-  },
-  {
-    slug: "trigonometry-i",
-    name: "Trigonometry - I",
-    summary:
-      "77 q - 1.31/paper - 36% HARD. One undivided subtopic that MIXES Std XI compound and multiple angles with Std XII trigonometric equations and general solutions. Weightage has FALLEN (1.71 lifetime to 1.31 recent) while its Std XII neighbour Trigonometric Functions climbs - if trigonometry hours are limited, they belong there first.",
-    chapter: "Trigonometry - I",
-    subtopics: [
-      "Trig Identities, Compound Angle, and Equations",
-    ],
-    qCount: 77,
-    qPerPaper: 1.31,
-    pctHard: 36,
     bucket: "longtail",
   },
   {

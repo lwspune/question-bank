@@ -78,7 +78,10 @@ describe("the generated grid agrees with itself", () => {
       const summed = CHAPTER_MATRIX.reduce((a, r) => a + r.counts[i], 0);
       expect(summed, p.id).toBe(PAPER_TOTALS[i]);
       expect(PAPER_TOTALS[i], p.id).toBeLessThanOrEqual(50);
-      expect(PAPER_TOTALS[i], p.id).toBeGreaterThan(40);
+      // A DATED column is one real sitting, so it must hold most of a paper. The undated
+      // compilation (MHT_CET_2025_PCM.xlsx, the "Shift ||" file) is not: its rows keep turning out
+      // to be twins of dated papers and go PRIVATE (29 left on 2026-09-26), so its total only shrinks.
+      if (p.dated) expect(PAPER_TOTALS[i], p.id).toBeGreaterThan(40);
     });
   });
 
@@ -178,8 +181,9 @@ describe("the hand-authored narrative reconciles against the grid", () => {
         checked += 1;
       }
     }
-    // Guard against the suite passing because it checked nothing.
-    expect(checked).toBeGreaterThanOrEqual(6);
+    // Guard against the suite passing because it checked nothing. 4 since 2026-09-26, when the
+    // Trigonometry - I row (two rates) went with its deleted chapter.
+    expect(checked).toBeGreaterThanOrEqual(4);
   });
 
   it("agrees on every raw window count the narrative claims", () => {

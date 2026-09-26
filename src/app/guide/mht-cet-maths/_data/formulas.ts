@@ -824,27 +824,9 @@ export const FORMULA_GROUPS: FormulaGroup[] = [
     ],
   },
   {
-    chapter: "Trigonometry - I",
-    playbookSlug: "trigonometry-i",
+    chapter: "Trigonometric Functions",
+    playbookSlug: "trigonometric-functions",
     formulas: [
-      {
-        id: "compound-angles",
-        name: "Compound angle formulas",
-        formula:
-          "sin(A ± B) = sin A·cos B ± cos A·sin B\ncos(A ± B) = cos A·cos B ∓ sin A·sin B\ntan(A ± B) = (tan A ± tan B)/(1 ∓ tan A·tan B)",
-        legend: ["A, B = any two angles"],
-        notes:
-          "The cosine and tangent formulas carry the OPPOSITE sign in the second half — cos(A+B) has a minus. That flip is where most sign errors in the chapter start.",
-      },
-      {
-        id: "multiple-angles",
-        name: "Multiple and half angle formulas",
-        formula:
-          "sin 2A = 2 sin A·cos A = 2t/(1 + t²)\ncos 2A = cos²A − sin²A = 1 − 2sin²A = 2cos²A − 1 = (1 − t²)/(1 + t²)\ntan 2A = 2 tan A/(1 − tan²A) = 2t/(1 − t²)\nsin 3A = 3 sin A − 4 sin³A     cos 3A = 4 cos³A − 3 cos A",
-        legend: ["t = tan A (or tan(A/2) for the half-angle reading)"],
-        notes:
-          "The three cos 2A forms exist so you can choose the one that cancels what is already in the question. The t-forms are the same substitution used for rational trigonometric integrals in Indefinite Integration.",
-      },
       {
         id: "general-solutions",
         name: "General solutions of trigonometric equations",
@@ -854,12 +836,24 @@ export const FORMULA_GROUPS: FormulaGroup[] = [
         notes:
           "Three different patterns — the sine one alternates sign with n, the cosine one takes plus-or-minus, the tangent one neither. Squaring during the solve introduces extraneous roots; substitute back and discard.",
       },
-    ],
-  },
-  {
-    chapter: "Trigonometric Functions",
-    playbookSlug: "trigonometric-functions",
-    formulas: [
+      {
+        id: "compound-angles",
+        name: "Compound angle formulas",
+        formula:
+          "sin(A ± B) = sin A·cos B ± cos A·sin B\ncos(A ± B) = cos A·cos B ∓ sin A·sin B\ntan(A ± B) = (tan A ± tan B)/(1 ∓ tan A·tan B)",
+        legend: ["A, B = any two angles"],
+        notes:
+          "Std XI identity, kept here because the equations and inverse-trigonometry pages of this chapter cannot be done without it (the identity drills themselves live in Trigonometry - II). The cosine and tangent formulas carry the OPPOSITE sign in the second half — cos(A+B) has a minus. That flip is where most sign errors in the chapter start.",
+      },
+      {
+        id: "multiple-angles",
+        name: "Multiple and half angle formulas",
+        formula:
+          "sin 2A = 2 sin A·cos A = 2t/(1 + t²)\ncos 2A = cos²A − sin²A = 1 − 2sin²A = 2cos²A − 1 = (1 − t²)/(1 + t²)\ntan 2A = 2 tan A/(1 − tan²A) = 2t/(1 − t²)\nsin 3A = 3 sin A − 4 sin³A     cos 3A = 4 cos³A − 3 cos A",
+        legend: ["t = tan A (or tan(A/2) for the half-angle reading)"],
+        notes:
+          "Std XI identity, kept here because the equations and inverse-trigonometry pages of this chapter cannot be done without it (the identity drills themselves live in Trigonometry - II). The three cos 2A forms exist so you can choose the one that cancels what is already in the question. The t-forms are the same substitution used for rational trigonometric integrals in Indefinite Integration.",
+      },
       {
         id: "sine-rule",
         name: "Sine rule",

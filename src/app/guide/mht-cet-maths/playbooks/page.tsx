@@ -221,7 +221,7 @@ export default function PlaybooksIndex() {
         );
       })}
 
-      {/* Why the catalog stops at 22 — the bank has 27 chapters. */}
+      {/* Why the catalog stops short of every chapter — the counts come from PLAYBOOKS and OVERVIEW. */}
       <section className="mt-16">
         <h2 className="flex items-center gap-2 text-xl font-semibold tracking-tight sm:text-2xl">
           <Info className="h-5 w-5 text-primary" aria-hidden />
