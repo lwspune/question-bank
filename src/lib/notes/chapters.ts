@@ -639,6 +639,11 @@ import {
   MHTCET_WAVE_OPTICS_SLUGS,
 } from "@/app/notes/mht-cet-physics/wave-optics/_data";
 import {
+  MHTCET_SUPERPOSITION_CHAPTER,
+  MHTCET_SUPERPOSITION_NOTES,
+  MHTCET_SUPERPOSITION_SLUGS,
+} from "@/app/notes/mht-cet-physics/superposition-of-waves/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1667,6 +1672,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_WAVE_OPTICS_CHAPTER,
     notes: MHTCET_WAVE_OPTICS_NOTES,
     slugs: MHTCET_WAVE_OPTICS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "superposition-of-waves",
+    chipLabel: "Superposition of Waves notes",
+    chapter: MHTCET_SUPERPOSITION_CHAPTER,
+    notes: MHTCET_SUPERPOSITION_NOTES,
+    slugs: MHTCET_SUPERPOSITION_SLUGS,
   },
   {
     examName: "NDA",

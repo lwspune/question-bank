@@ -15,6 +15,16 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-26 (twentieth) — MHT-CET Physics "Superposition of Waves" (5 pages · 123 PYQ · 11 concepts · 12 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-notes-2`.**
+
+**Reshape.** The seven 'distance between points so many degrees apart' rows moved from the superposition subtopic onto the progressive-wave page (34), leaving superposition proper with eight; strings (36) gained the two harmonic-of-a-fork rows and three string rows filed under Pipes or Beats; a pipe-in-water row moved to Pipes (23). The two-row 'Resonance and Tuning Forks' subtopic was then empty and was deleted by `generated-papers/_drop_empty_subtopic.ts`, which refuses unless no question of ANY visibility or kind points at it ([[fk-set-null-on-subtopic-drop]]).
+
+**Keys.** `c6bc36fb` (12 May 2024 S2): the second overtone of an open pipe is its third harmonic, so l + 2e = 3λ/2 and λ = 2(l + 2e)/3, option (b); the bank followed the answer key's (d), 4(l + 2e)/5, the closed-pipe expression — flipped, noted in the solution. `311b5e36` (11 May 2024 S2): A sin²(ωt − kx) = (A/2)(1 − cos 2(ωt − kx)) has amplitude A/2 at 2ω and 2k, so the particles peak at Aω, the wave moves at ω/k and its wavelength is π/k; equal speeds give A = λ/π, option (b) — the bank's λ/4π came from a doubled particle speed.
+
+**From the docx.** Options restored on `87801e5d` (and its stem: 1/√a and 1/√b), `8323be98`, `754a3b09`, `c6bc36fb`; stems on `48f3d633` (sin(2πx/3) had lost its x) and `f202324a` ('kg-wt' garbled to 'kg·ωt'); a triple-backslash garble in `f60b0780`. Named in solutions: `f60b0780` prints k = 0.02 but keys the speed for 0.02π; `295ff470` never names the mode, and its key is for the fundamentals.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · quiz:coverage 12 traps (a twelfth added so the chapter gets a standalone traps quiz) · notes:intro clean.
+
 **2026-09-26 (nineteenth) — MHT-CET Physics "Wave Optics" (5 pages · 117 PYQ · 12 concepts · 12 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-notes-2`.**
 
 **Reshape.** Young's double slit (68) split into fringe width, positions and sheet shifts (39) and interference intensity with unequal sources (29); the resolving-power rows stay with single-slit diffraction (34); wavefronts/coherence keeps five rows once six misfiled rows moved out — Snell's law, the critical angle by colour, TIR by colour and the secondary rainbow to Optics (Ray), a mechanical wave's phase difference to Superposition of Waves, and the displacement-current row to Magnetic Fields Due to Electric Current (its options, printed '1/2' and '1/4', given their I). `_phy_repair.ts` now applies text/option/key fixes to a row it moves to another chapter.
