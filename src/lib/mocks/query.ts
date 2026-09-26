@@ -362,7 +362,7 @@ export async function loadReviewQuestions(
     const chunk = ids.slice(i, i + PAGE);
     const { data, error } = await db
       .from("questions")
-      .select("id, text, context, image_url, solution, solution_image_url, question_format, numeric_answer, cancelled_note, options(label, text, image_url, is_correct, option_translations(lang, text)), question_translations(lang, text, context)")
+      .select("id, text, context, image_url, solution, solution_image_url, question_format, numeric_answer, cancelled_note, options(label, text, image_url, is_correct, option_translations(lang, text)), question_translations(lang, text, context, solution)")
       .in("id", chunk);
     if (error) throw new Error(`loadReviewQuestions: ${error.message}`);
     for (const row of (data ?? []) as Record<string, unknown>[]) {

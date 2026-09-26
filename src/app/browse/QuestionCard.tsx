@@ -38,7 +38,7 @@ import { buildBreadcrumb } from "./breadcrumb";
 import ReportQuestionDialog from "./ReportQuestionDialog";
 import { ItemStatChip, ItemStatDetail } from "./ItemStats";
 import CancelledNotice from "@/components/question/CancelledNotice";
-import { optionVersions, stemVersions } from "@/lib/i18n/bilingual";
+import { optionVersions, solutionVersions, stemVersions } from "@/lib/i18n/bilingual";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import type { ItemStatAggregate } from "@/lib/itemStats/types";
 
@@ -140,6 +140,7 @@ export default function QuestionCard({
   // The switch itself lives once in the /browse header (QuestionLangSwitch).
   const [langPref] = useQuestionLang();
   const stems = stemVersions(question, langPref);
+  const solutions = solutionVersions(question, langPref);
   // Officially cancelled (migration 0119): no option is correct, so a pick is
   // never painted right or wrong — the notice says why instead.
   const cancelled = Boolean(question.cancelledNote);
@@ -465,7 +466,13 @@ export default function QuestionCard({
                     {/* BlockText (not KatexRenderer) so a GFM pipe-table in a
                         solution — e.g. a truth table — renders as a real <table>.
                         Fast-paths to KatexRenderer when there's no table. */}
-                    <BlockText text={question.solution} />
+                    <div className="space-y-2">
+                      {solutions.map((v, i) => (
+                        <div key={v.lang} lang={v.lang} className={i > 0 ? "border-t border-dashed pt-2" : undefined}>
+                          <BlockText text={v.text} />
+                        </div>
+                      ))}
+                    </div>
                     {question.solutionImageUrl && (
                       <div className="pt-3">
                         <ZoomableImage

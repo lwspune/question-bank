@@ -9,8 +9,9 @@
  *
  * "both" stacks Marathi above English in the stem (the booklet's order) and
  * joins options with " / " so each option stays one line in a two-column page.
+ * The answer key's solution follows the same language choice.
  */
-import { optionVersions, parseLangPref, stemVersions, type QuestionLang } from "@/lib/i18n/bilingual";
+import { optionVersions, parseLangPref, solutionVersions, stemVersions, type QuestionLang } from "@/lib/i18n/bilingual";
 import type { QuestionRow } from "@/lib/questions/query";
 
 export function parseExportLang(raw: unknown): QuestionLang {
@@ -26,6 +27,7 @@ export function applyExportLanguage(rows: QuestionRow[], lang: QuestionLang): Qu
       ...q,
       text: stems.map((v) => v.text).join("\n\n"),
       context: contexts.length ? contexts.join("\n\n") : null,
+      solution: solutionVersions(q, lang).map((v) => v.text).join("\n\n") || null,
       options: q.options.map((o) => ({
         ...o,
         text: optionVersions(q, o, lang)

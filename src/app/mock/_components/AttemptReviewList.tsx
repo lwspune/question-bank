@@ -1,13 +1,12 @@
 import { Check, X, Minus, Gift } from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
-import BlockText from "@/components/math/BlockText";
 import { cn } from "@/lib/utils";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import PresentButton from "@/components/present/PresentButton";
 import { PresentRegistry } from "@/components/present/PresentRegistry";
 import { fromReviewItem } from "@/lib/present/viewModel";
 import type { ReviewItem } from "@/lib/mocks/service";
-import { BilingualOption, BilingualStem, QuestionLangSwitch } from "@/components/i18n/BilingualText";
+import { BilingualOption, BilingualSolution, BilingualStem, QuestionLangSwitch } from "@/components/i18n/BilingualText";
 import { hasMarathi } from "@/lib/i18n/bilingual";
 import CancelledNotice from "@/components/question/CancelledNotice";
 
@@ -175,7 +174,7 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
         <details className="mt-3 rounded-md border border-dashed bg-muted/20 p-3 text-sm">
           <summary className="cursor-pointer select-none font-sans text-xs font-medium text-brand-accent">Show solution</summary>
           <div className="mt-2 font-serif">
-            <BlockText text={item.solution} />
+            <BilingualSolution q={item} />
             {item.solutionImageUrl && (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={publicImageUrl(supabaseUrl, item.solutionImageUrl)} alt="Solution diagram" className="mt-3 max-h-60 w-auto rounded border" />

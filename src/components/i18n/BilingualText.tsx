@@ -3,7 +3,7 @@
 import KatexRenderer from "@/components/math/KatexRenderer";
 import BlockText from "@/components/math/BlockText";
 import { cn } from "@/lib/utils";
-import { optionVersions, stemVersions, type Bilingual } from "@/lib/i18n/bilingual";
+import { optionVersions, solutionVersions, stemVersions, type Bilingual } from "@/lib/i18n/bilingual";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import LanguageSwitch from "./LanguageSwitch";
 
@@ -29,6 +29,22 @@ export function BilingualStem({
       {versions.map((v, i) => (
         <div key={v.lang} lang={v.lang} className={cn(i > 0 && "border-t border-dashed pt-2")}>
           <BlockText text={field === "text" ? v.text : v.context!} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/** The solution in the viewer's language(s); English-only renders as a bare BlockText. */
+export function BilingualSolution({ q }: { q: Pick<Bilingual, "translations"> & { solution: string | null } }) {
+  const [lang] = useQuestionLang();
+  const versions = solutionVersions(q, lang);
+  if (!versions.length) return null;
+  return (
+    <div className="space-y-2">
+      {versions.map((v, i) => (
+        <div key={v.lang} lang={v.lang} className={cn(i > 0 && "border-t border-dashed pt-2")}>
+          <BlockText text={v.text} />
         </div>
       ))}
     </div>

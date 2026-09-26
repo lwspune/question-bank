@@ -3,6 +3,7 @@ import {
   effectiveLang,
   optionVersions,
   parseLangPref,
+  solutionVersions,
   stemVersions,
   translationsFromRows,
   type Bilingual,
@@ -91,5 +92,46 @@ describe("translationsFromRows", () => {
   it("is undefined for a question with no translation, so English rows carry nothing", () => {
     expect(translationsFromRows([], [{ label: "A", option_translations: [] }])).toBeUndefined();
     expect(translationsFromRows(null, null)).toBeUndefined();
+  });
+});
+
+describe("translationsFromRows — solution", () => {
+  it("carries the Marathi solution when the row has one", () => {
+    expect(translationsFromRows([{ lang: "mr", text: "प्रश्न", context: null, solution: "टीप" }], [])).toEqual({
+      mr: { text: "प्रश्न", context: null, solution: "टीप", options: {} },
+    });
+  });
+});
+
+describe("solutionVersions", () => {
+  const q = { ...withMr, solution: "Because.", translations: { mr: { ...withMr.translations!.mr!, solution: "कारण." } } };
+
+  it("English only", () => {
+    expect(solutionVersions(q, "en")).toEqual([{ lang: "en", text: "Because." }]);
+  });
+
+  it("Marathi only", () => {
+    expect(solutionVersions(q, "mr")).toEqual([{ lang: "mr", text: "कारण." }]);
+  });
+
+  it("both, Marathi first", () => {
+    expect(solutionVersions(q, "both")).toEqual([
+      { lang: "mr", text: "कारण." },
+      { lang: "en", text: "Because." },
+    ]);
+  });
+
+  it("falls back to the English solution when the Marathi one is missing", () => {
+    expect(solutionVersions({ ...withMr, solution: "Because." }, "mr")).toEqual([{ lang: "en", text: "Because." }]);
+    expect(solutionVersions({ ...withMr, solution: "Because." }, "both")).toEqual([{ lang: "en", text: "Because." }]);
+  });
+
+  it("is empty when there is no solution in any language", () => {
+    expect(solutionVersions({ ...withMr, solution: null }, "both")).toEqual([]);
+  });
+
+  it("shows a Marathi-only solution even when English has none", () => {
+    const mrOnly = { ...withMr, solution: null, translations: { mr: { ...withMr.translations!.mr!, solution: "कारण." } } };
+    expect(solutionVersions(mrOnly, "en")).toEqual([{ lang: "mr", text: "कारण." }]);
   });
 });

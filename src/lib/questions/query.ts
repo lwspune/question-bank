@@ -330,7 +330,7 @@ export async function queryQuestionsByIds(
       chapter:chapters!chapter_id(id, name),
       subtopic:subtopics!subtopic_id(id, name),
       options(label, text, is_correct, image_url, option_translations(lang, text)),
-      question_translations(lang, text, context)
+      question_translations(lang, text, context, solution)
     `
     )
     .in("id", ids);
@@ -367,7 +367,7 @@ export async function queryQuestionsByIds(
     chapter: RawTaxonomy | RawTaxonomy[] | null;
     subtopic: RawTaxonomy | RawTaxonomy[] | null;
     options: RawOption[] | null;
-    question_translations: { lang: string; text: string; context: string | null }[] | null;
+    question_translations: { lang: string; text: string; context: string | null; solution: string | null }[] | null;
   };
 
   const flatten = (v: RawTaxonomy | RawTaxonomy[] | null): RawTaxonomy | null =>

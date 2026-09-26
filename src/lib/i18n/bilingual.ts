@@ -18,6 +18,8 @@ type Label = "A" | "B" | "C" | "D";
 export type Translation = {
   text: string;
   context: string | null;
+  /** Absent on rows whose translation carries no solution. */
+  solution?: string | null;
   options: Partial<Record<Label, string>>;
 };
 
@@ -77,7 +79,29 @@ export function optionVersions(
   return out.length ? out : [{ lang: "en", text: opt.text }];
 }
 
-type RawQuestionTranslation = { lang: string; text: string; context: string | null };
+/**
+ * The solution in each chosen language, Marathi first for "both". A missing
+ * Marathi solution falls back to English; a solution that exists only in
+ * Marathi is shown whatever was chosen, since hiding it would hide the only
+ * explanation there is. Empty when neither language has one.
+ */
+export function solutionVersions(
+  q: Pick<Bilingual, "translations"> & { solution: string | null },
+  pref: QuestionLang
+): { lang: PrintedLang; text: string }[] {
+  const text: Record<PrintedLang, string | null> = {
+    en: q.solution?.trim() ? q.solution : null,
+    mr: q.translations?.mr?.solution?.trim() ? q.translations.mr.solution : null,
+  };
+  const wanted = order(effectiveLang(pref, q))
+    .filter((lang) => text[lang])
+    .map((lang) => ({ lang, text: text[lang] as string }));
+  if (wanted.length) return wanted;
+  const any = (["mr", "en"] as const).find((lang) => text[lang]);
+  return any ? [{ lang: any, text: text[any] as string }] : [];
+}
+
+type RawQuestionTranslation = { lang: string; text: string; context: string | null; solution?: string | null };
 type RawOptionWithTranslations = { label: string; option_translations?: { lang: string; text: string }[] | null };
 
 /**
@@ -97,5 +121,5 @@ export function translationsFromRows(
     const t = (o.option_translations ?? []).find((x) => x.lang === "mr");
     if (t) options[o.label as Label] = t.text;
   }
-  return { mr: { text: mr.text, context: mr.context, options } };
+  return { mr: { text: mr.text, context: mr.context, ...(mr.solution ? { solution: mr.solution } : {}), options } };
 }

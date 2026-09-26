@@ -68,4 +68,14 @@ describe("applyExportLanguage", () => {
     const en = base({ translations: undefined });
     expect(applyExportLanguage([en], "mr")[0].text).toBe("Who wrote it ?");
   });
+
+  it("the answer key's solution follows the chosen language", () => {
+    const q = base({
+      solution: "Because.",
+      translations: { mr: { text: "प्रश्न", context: null, solution: "कारण.", options: {} } },
+    });
+    expect(applyExportLanguage([q], "mr")[0].solution).toBe("कारण.");
+    expect(applyExportLanguage([q], "both")[0].solution).toBe("कारण.\n\nBecause.");
+    expect(applyExportLanguage([q], "en")[0].solution).toBe("Because.");
+  });
 });
