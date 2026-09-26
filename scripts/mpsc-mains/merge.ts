@@ -20,7 +20,7 @@
  */
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { DATA_DIR, dataPath, requirePaper } from "./config";
+import { DATA_DIR, dataPath, expectedNumbers, requirePaper } from "./config";
 import { derivedKey, keyFit, questionIssues, resolveContextRefs, type KeyLetter, type MainsQuestion } from "./lib";
 
 /**
@@ -47,10 +47,15 @@ function main() {
   const seen = new Map<number, number>();
   for (const q of qs) seen.set(q.n, (seen.get(q.n) ?? 0) + 1);
   const dupes = [...seen].filter(([, c]) => c > 1).map(([n]) => n);
-  const missing: number[] = [];
-  for (let n = 1; n <= paper.questions; n++) if (!seen.has(n)) missing.push(n);
+  const expected = expectedNumbers(paper);
+  const missing = expected.filter((n) => !seen.has(n));
+  const unexpected = qs.map((q) => q.n).filter((n) => !expected.includes(n));
 
-  const issues = [...resolved.errors, ...qs.flatMap(questionIssues)];
+  const issues = [
+    ...resolved.errors,
+    ...qs.flatMap(questionIssues),
+    ...unexpected.map((n) => `Q${n}: not expected (missing from the scan, or out of range)`),
+  ];
   for (const i of issues) console.log(`  ${i}`);
   let literal = 0;
   for (const q of qs) {
@@ -84,7 +89,7 @@ function main() {
   const unanswered = qs.filter((q) => !q.mine).map((q) => q.n);
 
   console.log(
-    `\n${paper.id}: ${qs.length}/${paper.questions} transcribed · missing ${missing.length ? `[${missing.join(",")}]` : "none"}` +
+    `\n${paper.id}: ${qs.length}/${expected.length} transcribed${paper.missingQuestions ? ` (scan lacks ${paper.missingQuestions.length})` : ""} · missing ${missing.length ? `[${missing.join(",")}]` : "none"}` +
       ` · dupes ${dupes.length ? `[${dupes.join(",")}]` : "none"} · issues ${issues.length} · literal \\n ${literal}` +
       ` · ${[...bySubject].map(([s, c]) => `${s} ${c}`).join(", ")}` +
       ` · figures ${qs.filter((q) => q.figure).length} · unanswered ${unanswered.length}\n  ${fitLine}`

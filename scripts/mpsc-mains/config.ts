@@ -60,7 +60,21 @@ export type Paper = {
   derived?: boolean;
   /** Key has no text layer — tokens are hand-transcribed. */
   keyImageOnly?: boolean;
+  /**
+   * Questions absent from the SCAN (a booklet page the merge dropped). They are
+   * not transcribed; merge.ts and commit.ts expect exactly the rest. A paper with
+   * a gap can never be a whole-paper mock.
+   */
+  missingQuestions?: number[];
 };
+
+/** The question numbers a paper's transcription must cover. */
+export function expectedNumbers(paper: Paper): number[] {
+  const skip = new Set(paper.missingQuestions ?? []);
+  const out: number[] = [];
+  for (let n = 1; n <= paper.questions; n++) if (!skip.has(n)) out.push(n);
+  return out;
+}
 
 const p = (
   id: string,
@@ -101,6 +115,7 @@ export const PAPERS: Paper[] = [
   p("psi-2012", ["psi"], 2012, "2012-07-22", "COO", [575, 606], null, 200, { derived: true }),
   p("psi-2013", ["psi"], 2013, "2013-12-08", "Y02", [611, 630], [631, 632], 100),
   p("psi-2014", ["psi"], 2014, "2014-09-21", "EO5", [633, 656], [657, 658], 100),
+  // Booklet pages are bound out of order: p.663 is booklet page 6 (Q18-23), p.664 page 5 (Q12-17).
   p("psi-2016", ["psi"], 2016, "2017-06-25", "KO9", [659, 682], [683, 684], 100),
   p("psi-2017", ["psi"], 2017, "2017-11-05", "L10", [685, 708], [709, 710], 100),
 ];
