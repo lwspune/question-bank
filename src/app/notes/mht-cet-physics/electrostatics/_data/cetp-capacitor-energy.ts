@@ -6,7 +6,7 @@ export const CAPACITOR_ENERGY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A charged capacitor stores U = ½CV² = Q²/2C in the field between its plates; joining capacitors, re-arranging them or pulling their plates apart moves that energy around, and each change is found by comparing U before and after.",
   whyItMatters:
-    "20 PYQs, six HARD — three of them two charged capacitors joined together, and the energy lost as their charge redistributes." +
+    "20 PYQs, six HARD — three of them two charged capacitors joined together, and the energy lost as their charge redistributes. " +
     "The rest ask for U in one of its three forms, compare the energy of series and parallel groups, or ask for the work to pull isolated plates apart.",
   concepts: [
     // 1 — the energy formulas

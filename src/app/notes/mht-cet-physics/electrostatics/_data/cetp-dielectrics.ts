@@ -6,7 +6,7 @@ export const DIELECTRICS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A dielectric between the plates weakens the field inside it K times, so the capacitance rises; what else changes depends on whether the battery stays connected (V fixed) or is removed (Q fixed).",
   whyItMatters:
-    "23 PYQs, nine HARD, five of them two dielectrics sharing the gap, where the figure decides series or parallel." +
+    "23 PYQs, nine HARD, five of them two dielectrics sharing the gap, where the figure decides series or parallel. " +
     "The rest: a slab that fills only part of the gap, and which quantities change when a dielectric goes in with the battery on or off.",
   concepts: [
     // 1 — what a dielectric does
