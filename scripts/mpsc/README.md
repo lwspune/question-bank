@@ -76,4 +76,5 @@ candidate (`grace`). 35 across the 14 papers.
 | 2021-b (U14) | 100/100 | PRIVATE, 2026-09-26 (8 cancelled; Q40 + Q72 print differences noted) |
 | 2020-b (A14) | 100/100 | PRIVATE, 2026-09-26 (5 cancelled) |
 | 2019-c (Y12) | 100/100 | PRIVATE, 2026-09-26 (Q39, Q58 cancelled; Q57 print note) |
-| the other 5 | — | — |
+| 2019-b (V12) | 100/100 | PRIVATE, 2026-09-26 (Q28, Q48, Q53 cancelled; Q20 + Q88 print notes) |
+| the other 4 | — | — |
