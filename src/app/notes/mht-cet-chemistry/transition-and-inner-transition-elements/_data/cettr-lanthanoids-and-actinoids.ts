@@ -8,7 +8,7 @@ export const LANTHANOIDS_AND_ACTINOIDS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The inner transition elements fill the 4f subshell (lanthanoids, La to Lu) or the 5f subshell (actinoids, Ac to Lr); their stable state is +3, the empty, half-filled and filled 4f subshells explain the extra +2 and +4 states, and the steady shrinking of the Ln³⁺ ion from La to Lu — the lanthanoid contraction — makes the hydroxides less basic along the series.",
   whyItMatters:
-    "26 PYQs, 2 HARD. Seven ask which element is a lanthanoid, an actinoid or a rare earth, the last lanthanoid, or the one used in fibre amplifiers; seven are 4f configurations — Ce⁴⁺ f⁰, Tb⁴⁺ f⁷, Lu³⁺ with no unpaired electrons, the filled 4f of Yb and Lu, the half-filled 4f of Gd, and La³⁺ with no moment; seven are the lanthanoid contraction — the largest and smallest Ln³⁺, the weakest base, and the two HARD ionisation enthalpies (Yb); five are compounds and properties — Ln(OH)₃ twice, LnC₂, and two 'NOT true' statements. " +
+    "27 PYQs, 2 HARD. Eight ask which element is or is NOT a lanthanoid, an actinoid or a rare earth, the last lanthanoid, or the one used in fibre amplifiers; seven are 4f configurations — Ce⁴⁺ f⁰, Tb⁴⁺ f⁷, Lu³⁺ with no unpaired electrons, the filled 4f of Yb and Lu, the half-filled 4f of Gd, and La³⁺ with no moment; seven are the lanthanoid contraction — the largest and smallest Ln³⁺, the weakest base, and the two HARD ionisation enthalpies (Yb); five are compounds and properties — Ln(OH)₃ twice, LnC₂, and two 'NOT true' statements. " +
     "Four cards.",
   concepts: [
     // 1 — which element belongs where
