@@ -6,7 +6,7 @@ export const TRIG_POWERS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Rewrite powers and sums of trig functions using identities until what remains is a standard integral.",
   whyItMatters:
-    "13 PYQs of the chapter's 49 trig integrals live here — the ones solved by a standard result or one identity, before any heavy substitution. " +
+    "11 PYQs of the chapter's 47 trig integrals live here — the ones solved by a standard result or one identity, before any heavy substitution. " +
     "Four reflexes: the standard tan/cot/sec/cosec integrals (recall, not re-derive), power-reduction (turning tan⁴x or sin²x into integrable pieces), identity-simplification (collapsing tan x + cot x, or sin(5x/2)/sin(x/2)), and reducing an inverse-trig argument to a linear function of x. " +
     "Master these and the harder rational-in-sin/cos integrals in Trigonometric Integrals II become approachable.",
   concepts: [
@@ -91,7 +91,7 @@ export const TRIG_POWERS_NOTE: SubtopicNote = {
         { prompt: "\\(\\int \\tan^2 x\\sec^2 x\\,dx\\)", answer: "\\(\\dfrac{\\tan^3 x}{3} + C\\)", method: "\\(u = \\tan x\\)" },
         { prompt: "\\(\\int \\cot^2 x\\,dx\\)", answer: "\\(-\\cot x - x + C\\)", method: "\\(\\cot^2 = \\csc^2 - 1\\)" },
       ],
-      pyqExampleId: "c1a74516-2164-4a60-8700-aab99862fbd5",
+      pyqExampleId: "c136246d-66f1-4bc2-86d2-47081eb211f7",
       traps: [
         {
           title: "Keep one sec²x to pair with the tan-power",

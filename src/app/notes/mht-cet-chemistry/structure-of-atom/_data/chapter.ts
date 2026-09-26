@@ -4,7 +4,7 @@ export const STRUCTURE_OF_ATOM_CHAPTER: ChapterNote = {
   chapterName: "Structure of Atom",
   title: "Structure of Atom — MHT-CET Chemistry",
   intro:
-    "The chapter that builds the atom from the inside out — and one of the most reliably tested in MHT-CET Chemistry (71 PYQs). It mixes quick recall (subatomic particles, isotopes, quantum numbers) with a solid core of computation (Bohr radii and energies, de Broglie wavelengths, Rydberg lines). " +
+    "The chapter that builds the atom from the inside out — and one of the most reliably tested in MHT-CET Chemistry (70 PYQs). It mixes quick recall (subatomic particles, isotopes, quantum numbers) with a solid core of computation (Bohr radii and energies, de Broglie wavelengths, Rydberg lines). " +
     "It teaches in six movements, foundations first: " +
     "(1) subatomic particles, isotopes, isobars and isoelectronic species; " +
     "(2) electromagnetic radiation and Planck's quantum — c = νλ and E = hν; " +

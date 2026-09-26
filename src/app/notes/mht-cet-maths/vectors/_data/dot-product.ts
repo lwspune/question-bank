@@ -7,7 +7,7 @@ export const DOT_PRODUCT_NOTE: SubtopicNote = {
     "The scalar a·b = |a||b|cosθ that measures alignment — the engine behind angle, perpendicularity, projection, and direction-cosine questions.",
   whyItMatters:
     "The dot product collapses two vectors into one number that encodes their angle, so almost every Vectors question in MHT-CET routes through it: find the angle, test perpendicularity, solve for a parameter that makes two vectors perpendicular, or project one vector onto another. " +
-    "This is the third-biggest Vectors subtopic — 50 PYQs across 2021–2025, and the most approachable of the big three at 28% HARD — and the staples are the perpendicular-parameter setup (find λ so a+λb ⊥ c), the unit-vector constraint angle, and projection of a segment onto a line. " +
+    "This is the third-biggest Vectors subtopic — 48 PYQs across 2021–2025, and the most approachable of the big three at 25% HARD — and the staples are the perpendicular-parameter setup (find λ so a+λb ⊥ c), the unit-vector constraint angle, and projection of a segment onto a line. " +
     "Master the perpendicularity test (a·b = 0), the angle formula, and the expand-the-constraint workflow and you have most of the chapter's marks.",
   concepts: [
     // ── FOUNDATION 1: dot product two forms (no PYQ) ──────────────────────────
@@ -634,16 +634,16 @@ export const DOT_PRODUCT_NOTE: SubtopicNote = {
       slug: "cetvec-dot-identities-and-bounds",
       name: "Identities and bounds — sum of squared differences",
       intuition:
-        "Some HARD questions ask for the maximum of \\(|\\vec a - \\vec b|^2 + |\\vec b - \\vec c|^2 + |\\vec c - \\vec a|^2\\). Expanding each square turns the whole thing into self-dots plus dot products, and a neat identity lets you bound it: the sum equals \\(3(|\\vec a|^2 + |\\vec b|^2 + |\\vec c|^2) - |\\vec a + \\vec b + \\vec c|^2\\). Since the subtracted term is \\(\\ge 0\\), the maximum is \\(2(|\\vec a|^2 + |\\vec b|^2 + |\\vec c|^2)\\), attained when \\(\\vec a + \\vec b + \\vec c = \\vec 0\\).",
+        "Some HARD questions ask for the maximum of \\(|\\vec a - \\vec b|^2 + |\\vec b - \\vec c|^2 + |\\vec c - \\vec a|^2\\). Expanding each square turns the whole thing into self-dots plus dot products, and a neat identity lets you bound it: the sum equals \\(3(|\\vec a|^2 + |\\vec b|^2 + |\\vec c|^2) - |\\vec a + \\vec b + \\vec c|^2\\). Since the subtracted term is \\(\\ge 0\\), the maximum is \\(3(|\\vec a|^2 + |\\vec b|^2 + |\\vec c|^2)\\), attained when \\(\\vec a + \\vec b + \\vec c = \\vec 0\\) (possible whenever the three magnitudes can form a triangle).",
       definition:
         "Expanding each squared difference: " +
         "\\(|\\vec a - \\vec b|^2 + |\\vec b - \\vec c|^2 + |\\vec c - \\vec a|^2 = 2(|\\vec a|^2 + |\\vec b|^2 + |\\vec c|^2) - 2(\\vec a\\cdot\\vec b + \\vec b\\cdot\\vec c + \\vec c\\cdot\\vec a)\\). " +
         "Equivalently \\(= 3(|\\vec a|^2 + |\\vec b|^2 + |\\vec c|^2) - |\\vec a + \\vec b + \\vec c|^2\\). " +
-        "Since \\(|\\vec a + \\vec b + \\vec c|^2 \\ge 0\\), the expression **does not exceed** \\(2(|\\vec a|^2 + |\\vec b|^2 + |\\vec c|^2)\\).",
+        "Since \\(|\\vec a + \\vec b + \\vec c|^2 \\ge 0\\), the expression **does not exceed** \\(3(|\\vec a|^2 + |\\vec b|^2 + |\\vec c|^2)\\).",
       formula: {
         label: "Sum-of-squared-differences identity and bound",
         latex:
-          "\\sum |\\vec a - \\vec b|^2 = 3\\!\\left(|\\vec a|^2 + |\\vec b|^2 + |\\vec c|^2\\right) - |\\vec a + \\vec b + \\vec c|^2 \\;\\le\\; 2\\!\\left(|\\vec a|^2 + |\\vec b|^2 + |\\vec c|^2\\right)",
+          "\\sum |\\vec a - \\vec b|^2 = 3\\!\\left(|\\vec a|^2 + |\\vec b|^2 + |\\vec c|^2\\right) - |\\vec a + \\vec b + \\vec c|^2 \\;\\le\\; 3\\!\\left(|\\vec a|^2 + |\\vec b|^2 + |\\vec c|^2\\right)",
         symbols: [
           { symbol: "\\(|\\vec a + \\vec b + \\vec c|^2\\)", meaning: "the non-negative term that is subtracted; zero at the maximum" },
         ],
@@ -654,9 +654,9 @@ export const DOT_PRODUCT_NOTE: SubtopicNote = {
         steps: [
           "Use the identity: the sum \\(= 3(|\\vec a|^2 + |\\vec b|^2 + |\\vec c|^2) - |\\vec a + \\vec b + \\vec c|^2\\).",
           "Compute \\(|\\vec a|^2 + |\\vec b|^2 + |\\vec c|^2 = 1 + 4 + 4 = 9\\).",
-          "Maximum occurs when \\(|\\vec a + \\vec b + \\vec c|^2 = 0\\), giving \\(2 \\times 9 = 18\\).",
+          "Maximum occurs when \\(|\\vec a + \\vec b + \\vec c|^2 = 0\\) (1, 2, 2 can close into a triangle), giving \\(3 \\times 9 = 27\\).",
         ],
-        answer: "Maximum \\(= 18\\)",
+        answer: "Maximum \\(= 27\\)",
       },
       selfCheckExample: {
         prompt:
@@ -670,16 +670,16 @@ export const DOT_PRODUCT_NOTE: SubtopicNote = {
       },
       practiceSet: [
         { prompt: "When is \\(\\sum|\\vec a - \\vec b|^2\\) maximised?", answer: "when \\(\\vec a + \\vec b + \\vec c = \\vec 0\\)" },
-        { prompt: "Max of \\(\\sum|\\vec a - \\vec b|^2\\) in terms of magnitudes?", answer: "\\(2(|\\vec a|^2 + |\\vec b|^2 + |\\vec c|^2)\\)" },
+        { prompt: "Max of \\(\\sum|\\vec a - \\vec b|^2\\) in terms of magnitudes?", answer: "\\(3(|\\vec a|^2 + |\\vec b|^2 + |\\vec c|^2)\\)" },
         { prompt: "\\(|\\vec a|=3, |\\vec b|=5, |\\vec c|=7\\): \\(|\\vec a|^2+|\\vec b|^2+|\\vec c|^2 = ?\\)", answer: "\\(83\\)" },
-        { prompt: "Max of \\(\\sum|\\vec a - \\vec b|^2\\) for those magnitudes?", answer: "\\(166\\)", method: "\\(2 \\times 83\\)" },
+        { prompt: "Max of \\(\\sum|\\vec a - \\vec b|^2\\) for those magnitudes?", answer: "\\(249\\)", method: "\\(3 \\times 83\\); 3, 5, 7 can close into a triangle, so the bound is reached" },
       ],
-      pyqExampleId: "eeefa95d-1596-4761-9c2a-99132519881f",
+      pyqExampleId: "9b3e126f-daac-4dbb-8e40-cf4dd807b5bc",
       traps: [
         {
           title: "'Does not exceed' = maximum, not the typical value",
           body:
-            "The phrase 'does not exceed' asks for the UPPER BOUND. Expand the identity, then set the subtracted \\(|\\vec a + \\vec b + \\vec c|^2 = 0\\) to reach the maximum \\(2(|\\vec a|^2 + |\\vec b|^2 + |\\vec c|^2)\\) — a popular distractor is \\(83\\) (the magnitude sum) or \\(249\\) (\\(3\\times\\)).",
+            "The phrase 'does not exceed' asks for the UPPER BOUND. Expand the identity, then set the subtracted \\(|\\vec a + \\vec b + \\vec c|^2 = 0\\) to reach the maximum \\(3(|\\vec a|^2 + |\\vec b|^2 + |\\vec c|^2)\\). The distractors are \\(83\\) (the magnitude sum) and \\(166\\) (\\(2\\times\\), what you get by dropping the dot products instead of bounding them).",
         },
         {
           title: "Each magnitude-squared appears TWICE in the expanded sum",

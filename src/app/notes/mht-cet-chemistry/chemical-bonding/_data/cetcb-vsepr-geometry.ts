@@ -6,7 +6,7 @@ export const VSEPR_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Count the electron pairs around the central atom — bond pairs plus lone pairs — and they spread out to keep as far apart as possible; the arrangement of the bond pairs is the molecule's shape, and lone pairs push the bonds closer to distort the ideal angles.",
   whyItMatters:
-    "The single biggest subtopic of this chapter — 21 PYQs, and the most reliable shape-questions in MHT-CET Chemistry. " +
+    "The single biggest subtopic of this chapter — 20 PYQs, and the most reliable shape-questions in MHT-CET Chemistry. " +
     "They cluster four ways: count the lone pairs on the central atom (most, fewest, equal pair, or zero), name the shape of a given molecule or AXnEm type, recall a specific bond angle, and spot which molecule keeps its regular (undistorted) geometry. " +
     "Every one of them reduces to the same two-step drill: count bond pairs and lone pairs, then read the shape off the master table — so with one table memorised a student should never drop a mark here.",
   concepts: [
@@ -23,7 +23,7 @@ export const VSEPR_NOTE: SubtopicNote = {
         "- The **repulsion order** is \\(\\text{lp-lp} > \\text{lp-bp} > \\text{bp-bp}\\) (lone-pair–lone-pair is strongest, bond-pair–bond-pair weakest).\n" +
         "- A molecule has its **regular (expected) geometry** only when the central atom has **no lone pairs** — then the electron-pair geometry and the molecular shape coincide (e.g. \\(\\text{CH}_4\\), \\(\\text{SiCl}_4\\), \\(\\text{PCl}_5\\), \\(\\text{SF}_6\\)).\n" +
         "- Any **lone pair distorts** the shape, so a molecule with lone pairs does **not** show the regular parent geometry (e.g. \\(\\text{SF}_4\\) see-saw, \\(\\text{XeF}_4\\) square planar).",
-      pyqExampleId: "96938ec3-844a-4ff7-a620-b2d75f75baa5", // which has regular geometry as expected -> SiCl4
+      pyqExampleId: "2c92ca96-9ace-4778-8819-e2a6c0d4de00", // which has regular geometry as expected -> SiCl4
       authoredExample: {
         prompt:
           "Of \\(\\text{CH}_4\\) and \\(\\text{SiCl}_4\\), do they have the same geometry, and how many lone pairs sit on the central atom of each?",

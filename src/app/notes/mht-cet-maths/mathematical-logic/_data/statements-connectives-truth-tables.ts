@@ -6,7 +6,7 @@ export const STATEMENTS_CONNECTIVES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A statement is a sentence that is definitely true or definitely false; connectives join statements, and a truth table lists the result for every combination of inputs.",
   whyItMatters:
-    "This is the machinery every other subtopic in the chapter runs on — build the table, read the last column. 13 PYQs sit here and 38% of them are HARD, " +
+    "This is the machinery every other subtopic in the chapter runs on — build the table, read the last column. 12 PYQs sit here and 33% of them are HARD, " +
     "which is higher than the chapter average and surprises students who expect the opening subtopic to be the easiest. " +
     "The difficulty is almost never the logic. It is that a MHT-CET stem will hand you statements like 'the sum of the cube roots of unity is 1' or " +
     "'A squared minus B squared equals (A−B)(A+B) for matrices' and expect you to settle their truth from the rest of the syllabus before any connective is touched.",
@@ -400,7 +400,7 @@ export const STATEMENTS_CONNECTIVES_NOTE: SubtopicNote = {
           method: "One of the two must hold in every row.",
         },
       ],
-      pyqExampleId: "f30d6805-2256-478b-af91-6391ff446379",
+      pyqExampleId: "91209afb-2f56-4b40-9d80-d4da753d2fef",
       traps: [
         {
           title: "Counting connectives instead of letters",

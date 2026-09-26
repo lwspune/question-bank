@@ -37,7 +37,7 @@ export const HYDROGEN_SPECTRUM_NOTE: SubtopicNote = {
           { symbol: "n_2", meaning: "upper orbit (fallen FROM)" },
         ],
       },
-      pyqExampleId: "33376d8e-519b-4c96-8863-a4435337f1a3", // wavenumber n=5 -> n=2, 23032 cm^-1
+      pyqExampleId: "6745260b-b9db-4d73-83d0-4b84ab296644", // wavenumber n=5 -> n=2, 23032 cm^-1
       authoredExample: {
         prompt:
           "Find the wavenumber of the line emitted when an electron in a hydrogen atom falls from n = 4 to n = 2. (RH = 109677 cm^-1)",

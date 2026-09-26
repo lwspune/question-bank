@@ -33,7 +33,7 @@ export const IMPLICIT_SPECIAL_NOTE: SubtopicNote = {
           { symbol: "g(y)", meaning: "any function of \\(y\\); its \\(x\\)-derivative carries \\(\\frac{dy}{dx}\\)" },
         ],
       },
-      pyqExampleId: "df7d0af3-a3bf-4c5b-b172-fb4cb6d81047",
+      pyqExampleId: "d51815df-63ef-4177-97d1-a4dfb915fad9",
       authoredExample: {
         prompt: "Find \\(\\dfrac{dy}{dx}\\) for \\(x^3 + y^3 = 3axy\\) (the folium of Descartes).",
         steps: [

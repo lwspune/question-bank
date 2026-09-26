@@ -6,7 +6,7 @@ export const DISTANCES_3D_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Every length in 3-D space — a point from the origin or axes, a point from a plane, the gap between two parallel planes, a point from a line, the gap between parallel lines, and the shortest distance between skew lines — comes from the SAME shape: an absolute value on top divided by a square-root magnitude on the bottom.",
   whyItMatters:
-    "Distances is one of the most-tested slices of the Line-and-Plane chapter: across the 33 PYQs here, MHT-CET asks for a length almost every year, and HARD and MODERATE items split it evenly. " +
+    "Distances is one of the most-tested slices of the Line-and-Plane chapter: across the 32 PYQs here, MHT-CET asks for a length almost every year, and HARD and MODERATE items split it evenly. " +
     "One mental model unifies the whole subtopic — a distance is |numerator| / √(denominator). The numerator is a signed plug-in (for planes) or a cross-product magnitude (for lines); the denominator is the magnitude of a normal or a direction vector. " +
     "The HARD twist is rarely the formula — it is BUILDING the plane first (perpendicular to two planes, or containing two lines, via a cross product of normals/directions) or running the formula BACKWARDS to solve for an unknown parameter from a GIVEN distance. Lock the |…|/√… template and every question is the same machine.",
   concepts: [
@@ -369,7 +369,7 @@ export const DISTANCES_3D_NOTE: SubtopicNote = {
         { prompt: "Shortest distance \\(= 0\\) means the lines…?", answer: "intersect (are coplanar)" },
         { prompt: "The numerator of the skew formula is which kind of product?", answer: "scalar triple product (a number)" },
       ],
-      pyqExampleId: "0ac78317-5649-4ae5-93da-af20f1eb586b",
+      pyqExampleId: "e079863a-c616-45be-8833-136d8dc55efd",
       traps: [
         {
           title: "Numerator is a scalar (dot of difference with the cross), denominator is the cross's MAGNITUDE",
