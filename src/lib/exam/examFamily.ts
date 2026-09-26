@@ -37,6 +37,11 @@ export type ExamFamilyMember<T> = {
   order: number;
   /** `familyLabel`/`classLabel` from the registry, else the derived `Class <std>`. */
   label: string;
+  /**
+   * The registry's `familyStage` ("Prelims" / "Mains"), or null when the
+   * family has no stage level. See `ExamFamilyNode.stages`.
+   */
+  stage: string | null;
   item: T;
 };
 
@@ -60,6 +65,13 @@ export type ExamFamilyNode<T> =
        */
       memberAxis: string;
       members: ExamFamilyMember<T>[];
+      /**
+       * The family's MIDDLE level, in order (MPSC: Prelims, Mains) — rendered
+       * as a Stage control between the family and its members. Empty when the
+       * members declare no stage OR only one distinct stage survives: a Stage
+       * control offering one choice is noise, rule 2 one level down.
+       */
+      stages: string[];
     };
 
 /** Resolves one of a caller's rows to its registry entry, or null if unknown. */
@@ -170,6 +182,7 @@ export function groupExamFamilies<T>(
     bucket.push({
       order: entry.std ?? registryIndex.get(entry.slug) ?? Number.MAX_SAFE_INTEGER,
       label: classLabelFor(entry),
+      stage: entry.familyStage ?? null,
       item,
     });
     membersByKey.set(family.key, bucket);
@@ -198,6 +211,7 @@ export function groupExamFamilies<T>(
         label: family.label,
         memberAxis: family.memberAxis,
         members,
+        stages: stagesOf(members),
       });
       continue;
     }
@@ -205,6 +219,48 @@ export function groupExamFamilies<T>(
   }
 
   return nodes;
+}
+
+/**
+ * Distinct stages in member order, or [] when fewer than two exist. Members are
+ * already sorted by registry position, so the first member of each stage fixes
+ * that stage's place — the registry declares Prelims before Mains.
+ */
+function stagesOf<T>(members: readonly ExamFamilyMember<T>[]): string[] {
+  const out: string[] = [];
+  for (const m of members) if (m.stage && !out.includes(m.stage)) out.push(m.stage);
+  return out.length >= 2 ? out : [];
+}
+
+/**
+ * The value committed when a STAGE is picked: that stage's first exam, for the
+ * same reason `familyDefaultValue` commits a family's first member — there is
+ * no stage-level filter, so a stage with no exam chosen has nothing to show.
+ * Null for a stage the family does not have.
+ */
+export function stageDefaultValue<T>(
+  node: Extract<ExamFamilyNode<T>, { kind: "family" }>,
+  stage: string,
+  valueOf: (item: T) => string
+): string | null {
+  const first = node.members.find((m) => m.stage === stage);
+  return first ? valueOf(first.item) : null;
+}
+
+/**
+ * A family's members split by stage, for the surfaces that list every member
+ * at once (homepage card, /browse landing pill). A family without a stage level
+ * comes back as ONE group with `stage: null`, so a caller renders both shapes
+ * with the same loop and draws a sub-heading only when `stage` is set.
+ */
+export function membersByStage<T>(
+  node: Extract<ExamFamilyNode<T>, { kind: "family" }>
+): { stage: string | null; members: ExamFamilyMember<T>[] }[] {
+  if (node.stages.length === 0) return [{ stage: null, members: node.members }];
+  return node.stages.map((stage) => ({
+    stage,
+    members: node.members.filter((m) => m.stage === stage),
+  }));
 }
 
 /**
@@ -251,6 +307,10 @@ export type FamilySelection = {
   members: { order: number; label: string; value: string }[];
   /** Noun for the member control ("Class"); null when no family is selected. */
   memberAxis: string | null;
+  /** The selected exam's stage; null when its family has no stage level. */
+  stageValue: string | null;
+  /** Options for the Stage control; empty when there is no stage level. */
+  stages: string[];
 };
 
 /**
@@ -274,6 +334,8 @@ export function resolveFamilySelection<T>(
     classValue: null,
     members: [],
     memberAxis: null,
+    stageValue: null,
+    stages: [],
   };
   if (!selectedValue) return none;
 
@@ -285,21 +347,27 @@ export function resolveFamilySelection<T>(
           classValue: null,
           members: [],
           memberAxis: null,
+          stageValue: null,
+          stages: [],
         };
       }
       continue;
     }
-    const members = node.members.map((c) => ({
-      order: c.order,
-      label: c.label,
-      value: valueOf(c.item),
-    }));
-    if (members.some((c) => c.value === selectedValue)) {
+    const hit = node.members.find((c) => valueOf(c.item) === selectedValue);
+    if (hit) {
+      // With a stage level, the member control lists only the selected
+      // exam's stage — "Mains" offers the Mains exams, never Prelims ones.
+      const stageValue = node.stages.length ? hit.stage : null;
+      const members = node.members
+        .filter((c) => stageValue === null || c.stage === stageValue)
+        .map((c) => ({ order: c.order, label: c.label, value: valueOf(c.item) }));
       return {
         topValue: familyKey(node.key),
         classValue: selectedValue,
         members,
         memberAxis: node.memberAxis,
+        stageValue,
+        stages: node.stages,
       };
     }
   }

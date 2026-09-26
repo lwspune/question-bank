@@ -31,6 +31,11 @@ export type ExamSlug =
   | "ipmat-rohtak"
   | "jipmat"
   | "mpsc-group-b-c"
+  | "mpsc-state-services-mains"
+  | "mpsc-group-b-combined-mains"
+  | "mpsc-sti-mains"
+  | "mpsc-aso-mains"
+  | "mpsc-psi-mains"
   | "upsc-cse";
 
 /**
@@ -175,6 +180,16 @@ export type ExamEntry = {
    * IPMAT's members are institutes, so "Class → Indore" would be wrong.
    */
   familyAxis?: string;
+  /**
+   * An optional MIDDLE level inside a `family`: the stage this exam belongs to
+   * ("Prelims" / "Mains"). MPSC is one family a student reads as
+   * MPSC -> Prelims/Mains -> exam, so its members declare a stage and the picker
+   * renders a Stage control between the family and the exam. Stages order by
+   * their first member's registry position, so the order below is the order
+   * students see. A family whose members declare no stage (IPMAT, the boards)
+   * is unchanged. See lib/exam/examFamily.
+   */
+  familyStage?: string;
   /**
    * The board+class this exam IS. The `exams` table conflates the two into one
    * row ("Maharashtra State Board Class 10"), so this registry is the ONLY place
@@ -550,12 +565,22 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     notesPath: null,
     hasMocks: true, // 4 JIPMAT mocks (2021-2024) published 2026-09-26; 2025 + 2026 held
   },
+  // ── MPSC ──────────────────────────────────────────────────────────────────
+  // One family with a stage level: MPSC -> Prelims / Mains -> exam. Prelims
+  // first, so the Stage control reads Prelims, Mains. The Mains exams are the
+  // Marathi & English language papers from `All PYQ mar eng.pdf`
+  // (scripts/mpsc-mains/): most questions are printed in ONE language only, so
+  // those exams are not `bilingual`.
   {
     slug: "mpsc-group-b-c",
     // Group B/C are graduate-entry state services (ASO, PSI, STI, clerk-typist…).
     tier: "graduate",
     displayName: "MPSC Group B & C",
     examName: "MPSC Group B & C Prelims", // must match the `exams` DB row exactly
+    family: "MPSC",
+    familyStage: "Prelims",
+    familyLabel: "Group B & C",
+    familyAxis: "Exam",
     // One exam, not two: both groups sit the same General Ability Test, and the
     // 2023 sitting was a single joint paper. The group is in each row's pyq_note.
     bilingual: true,
@@ -563,6 +588,76 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     guidesPath: null,
     notesPath: null,
     hasMocks: true, // 14 MPSC mocks published 2026-09-26 — the first bilingual mocks
+  },
+  {
+    slug: "mpsc-state-services-mains",
+    tier: "graduate",
+    displayName: "MPSC State Services Mains",
+    examName: "MPSC State Services Mains", // must match the `exams` DB row exactly
+    family: "MPSC",
+    familyStage: "Mains",
+    familyLabel: "State Services",
+    familyAxis: "Exam",
+    // Rajyaseva Mains Paper 2 (Marathi & English), 2016-2018.
+    noPublicContent: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "mpsc-group-b-combined-mains",
+    tier: "graduate",
+    displayName: "MPSC Group B Combined Mains",
+    examName: "MPSC Group B Combined Mains", // must match the `exams` DB row exactly
+    family: "MPSC",
+    familyStage: "Mains",
+    familyLabel: "Group B Combined",
+    familyAxis: "Exam",
+    // the joint Paper 1 (Marathi, English & GK) since 2018.
+    noPublicContent: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "mpsc-sti-mains",
+    tier: "graduate",
+    displayName: "MPSC STI Mains",
+    examName: "MPSC STI Mains", // must match the `exams` DB row exactly
+    family: "MPSC",
+    familyStage: "Mains",
+    familyLabel: "STI",
+    familyAxis: "Exam",
+    // Sales Tax Inspector Mains Paper 1 (Marathi & English), 2009-2017.
+    noPublicContent: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "mpsc-aso-mains",
+    tier: "graduate",
+    displayName: "MPSC ASO Mains",
+    examName: "MPSC ASO Mains", // must match the `exams` DB row exactly
+    family: "MPSC",
+    familyStage: "Mains",
+    familyLabel: "ASO",
+    familyAxis: "Exam",
+    // Assistant Section Officer Mains Paper 1 (Marathi & English), 2009-2017.
+    noPublicContent: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "mpsc-psi-mains",
+    tier: "graduate",
+    displayName: "MPSC PSI Mains",
+    examName: "MPSC PSI Mains", // must match the `exams` DB row exactly
+    family: "MPSC",
+    familyStage: "Mains",
+    familyLabel: "PSI",
+    familyAxis: "Exam",
+    // Police Sub-Inspector Mains Paper 1 (Marathi & English), 2011-2017.
+    noPublicContent: true,
+    guidesPath: null,
+    notesPath: null,
   },
   {
     slug: "upsc-cse",

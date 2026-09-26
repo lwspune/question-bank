@@ -4,6 +4,8 @@ import {
   resolveFamilySelection,
   familyDefaultValue,
   familyTotal,
+  stageDefaultValue,
+  membersByStage,
   familyKey,
   isFamilyKey,
   type ExamFamilyNode,
@@ -159,6 +161,8 @@ describe("resolveFamilySelection", () => {
         { order: 12, label: "Class 12", value: "cbse-12" },
       ],
       memberAxis: "Class",
+      stageValue: null,
+      stages: [],
     });
   });
 
@@ -168,6 +172,8 @@ describe("resolveFamilySelection", () => {
       classValue: null,
       members: [],
       memberAxis: null,
+      stageValue: null,
+      stages: [],
     });
   });
 
@@ -177,6 +183,8 @@ describe("resolveFamilySelection", () => {
       classValue: null,
       members: [],
       memberAxis: null,
+      stageValue: null,
+      stages: [],
     });
   });
 
@@ -187,6 +195,8 @@ describe("resolveFamilySelection", () => {
       classValue: null,
       members: [],
       memberAxis: null,
+      stageValue: null,
+      stages: [],
     });
   });
 });
@@ -355,5 +365,102 @@ describe("member-axis label", () => {
     const nodes = groupExamFamilies(items("nda", "cbse-11", "cbse-12"), bySlug);
     expect(resolveFamilySelection(nodes, "nda", (i) => i.slug).memberAxis).toBeNull();
     expect(resolveFamilySelection(nodes, null, (i) => i.slug).memberAxis).toBeNull();
+  });
+});
+
+/**
+ * THE STAGE LEVEL (MPSC). MPSC is one family whose exams split by stage:
+ * Prelims (Group B & C) and Mains (State Services, STI, ASO, PSI, Group B
+ * Combined). The picker reads MPSC -> Prelims/Mains -> exam, so a family can
+ * carry a middle axis. It is optional: IPMAT and the boards declare no stage
+ * and must behave exactly as before.
+ */
+describe("family stages", () => {
+  const mpsc = (): Item[] =>
+    items(
+      "mpsc-sti-mains",
+      "mpsc-group-b-c",
+      "mpsc-aso-mains",
+      "mpsc-state-services-mains",
+      "mpsc-psi-mains",
+      "mpsc-group-b-combined-mains"
+    );
+  const family = (nodes: ExamFamilyNode<Item>[]) => {
+    const node = nodes.find((n) => n.kind === "family");
+    if (!node || node.kind !== "family") throw new Error("expected a family");
+    return node;
+  };
+
+  it("groups every MPSC exam into ONE family, stages in registry order", () => {
+    const node = family(groupExamFamilies(mpsc(), bySlug));
+    expect(node.key).toBe("MPSC");
+    expect(node.stages).toEqual(["Prelims", "Mains"]);
+    expect(node.members.map((m) => `${m.stage}:${m.item.slug}`)).toEqual([
+      "Prelims:mpsc-group-b-c",
+      "Mains:mpsc-state-services-mains",
+      "Mains:mpsc-group-b-combined-mains",
+      "Mains:mpsc-sti-mains",
+      "Mains:mpsc-aso-mains",
+      "Mains:mpsc-psi-mains",
+    ]);
+  });
+
+  it("declares no stages for a family without them", () => {
+    expect(family(groupExamFamilies(items("ipmat-indore", "ipmat-rohtak"), bySlug)).stages).toEqual([]);
+    expect(family(groupExamFamilies(items("cbse-11", "cbse-12"), bySlug)).stages).toEqual([]);
+  });
+
+  it("drops the stage level when only one stage survives", () => {
+    // A picker offering "Stage: Mains" and nothing else is noise, the same
+    // reasoning as rule 2 one level down.
+    const node = family(groupExamFamilies(items("mpsc-sti-mains", "mpsc-aso-mains"), bySlug));
+    expect(node.stages).toEqual([]);
+  });
+
+  it("still degrades a one-member MPSC family to flat (rule 2)", () => {
+    const nodes = groupExamFamilies(items("nda", "mpsc-group-b-c"), bySlug);
+    expect(nodes.map((n) => n.kind)).toEqual(["flat", "flat"]);
+  });
+
+  it("resolves the stage from the selected exam and lists only that stage's exams", () => {
+    const nodes = groupExamFamilies(mpsc(), bySlug);
+    const sel = resolveFamilySelection(nodes, "mpsc-aso-mains", (i) => i.slug);
+    expect(sel.topValue).toBe(familyKey("MPSC"));
+    expect(sel.stageValue).toBe("Mains");
+    expect(sel.stages).toEqual(["Prelims", "Mains"]);
+    expect(sel.classValue).toBe("mpsc-aso-mains");
+    expect(sel.members.map((m) => m.value)).toEqual([
+      "mpsc-state-services-mains",
+      "mpsc-group-b-combined-mains",
+      "mpsc-sti-mains",
+      "mpsc-aso-mains",
+      "mpsc-psi-mains",
+    ]);
+    expect(sel.memberAxis).toBe("Exam");
+  });
+
+  it("reports no stage for a family without one", () => {
+    const nodes = groupExamFamilies(items("cbse-11", "cbse-12"), bySlug);
+    const sel = resolveFamilySelection(nodes, "cbse-12", (i) => i.slug);
+    expect(sel.stageValue).toBeNull();
+    expect(sel.stages).toEqual([]);
+    expect(sel.members.map((m) => m.value)).toEqual(["cbse-11", "cbse-12"]);
+  });
+
+  it("commits a stage's FIRST exam when the stage is picked", () => {
+    const node = family(groupExamFamilies(mpsc(), bySlug));
+    expect(stageDefaultValue(node, "Mains", (i) => i.slug)).toBe("mpsc-state-services-mains");
+    expect(stageDefaultValue(node, "Prelims", (i) => i.slug)).toBe("mpsc-group-b-c");
+    expect(stageDefaultValue(node, "Nope", (i) => i.slug)).toBeNull();
+  });
+
+  it("groups members by stage for the card surfaces", () => {
+    const node = family(groupExamFamilies(mpsc(), bySlug));
+    expect(membersByStage(node).map((g) => `${g.stage}:${g.members.length}`)).toEqual([
+      "Prelims:1",
+      "Mains:5",
+    ]);
+    const ipmat = family(groupExamFamilies(items("ipmat-indore", "ipmat-rohtak"), bySlug));
+    expect(membersByStage(ipmat).map((g) => `${g.stage}:${g.members.length}`)).toEqual(["null:2"]);
   });
 });

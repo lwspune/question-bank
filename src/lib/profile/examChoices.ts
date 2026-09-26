@@ -58,7 +58,9 @@ export function buildExamChips(entries: readonly ExamEntry[]): ChipOption[] {
       grouped.push({
         value: cls.item.slug,
         label: cls.label,
-        group: node.label,
+        // A family with a stage level (MPSC) groups per stage, so the chips
+        // read "MPSC · Prelims" and "MPSC · Mains" rather than one mixed row.
+        group: node.stages.length && cls.stage ? `${node.label} · ${cls.stage}` : node.label,
       });
     }
   }
