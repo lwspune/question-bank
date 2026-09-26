@@ -6,7 +6,7 @@ export const PARTIAL_FRACTIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Break a rational integrand into simple standard pieces — arctan/log quadratic forms, completed squares, and partial fractions.",
   whyItMatters:
-    "27 PYQs. Four recognitions cover them: the standard quadratic forms (arctan, log, arcsin); completing the square to reach an arctan/arcsin/log; the numerator-split (px+q over a quadratic or its root); and partial-fraction decomposition for products of linear/quadratic factors. " +
+    "26 PYQs. Four recognitions cover them: the standard quadratic forms (arctan, log, arcsin); completing the square to reach an arctan/arcsin/log; the numerator-split (px+q over a quadratic or its root); and partial-fraction decomposition for products of linear/quadratic factors. " +
     "MHT-CET also hides quadratic-in-x² shapes (like 1/(x⁴+9x²+16)) that reduce to an arctan after a clever x + k/x substitution.",
   concepts: [
     // 1 — standard quadratic forms
@@ -212,7 +212,7 @@ export const PARTIAL_FRACTIONS_NOTE: SubtopicNote = {
         { prompt: "Improper \\(\\dfrac{x^2}{x^2-1}\\): first step?", answer: "divide → \\(1 + \\dfrac{1}{x^2-1}\\)" },
         { prompt: "Form for \\(\\dfrac{1}{(x-1)^2}\\) — already simple. \\(\\int\\)?", answer: "\\(-\\dfrac{1}{x-1} + C\\)" },
       ],
-      pyqExampleId: "6fcccd15-3c56-4684-b760-0e726de789d3",
+      pyqExampleId: "45987d4c-2bf6-43b7-80a5-201886a0cc34",
       traps: [
         {
           title: "Improper fraction? Divide before decomposing",

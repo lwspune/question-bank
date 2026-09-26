@@ -6,7 +6,7 @@ export const HOMOGENEOUS_REDUCIBLE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "When an equation's right side depends only on the ratio y over x, the substitution y = vx turns it into a separable one. A second family of equations — where x and y appear together as x plus y (or a x plus b y) — separates after the substitution v = x plus y.",
   whyItMatters:
-    "This is the HARD engine of MHT-CET Differential Equations: 16 PYQs sit here (6 HARD, 9 MODERATE, 1 EASY) and almost every difficult DE question in recent papers is one of these two shapes. The whole skill is reading the equation's form to pick the right substitution — y = vx when you see the ratio y over x, and v = x plus y when the pair travels together — then integrating the resulting separable equation and, crucially, substituting the variable back at the end.",
+    "This is the HARD engine of MHT-CET Differential Equations: 15 PYQs sit here (6 HARD, 8 MODERATE, 1 EASY) and almost every difficult DE question in recent papers is one of these two shapes. The whole skill is reading the equation's form to pick the right substitution — y = vx when you see the ratio y over x, and v = x plus y when the pair travels together — then integrating the resulting separable equation and, crucially, substituting the variable back at the end.",
   concepts: [
     // 1 — recognizing a homogeneous DE (foundation, no PYQ, lint-exempt)
     {
@@ -362,7 +362,7 @@ export const HOMOGENEOUS_REDUCIBLE_NOTE: SubtopicNote = {
         { prompt: "For \\(\\dfrac{dy}{dx} = (x+9y)^2\\), what substitution and \\(\\frac{du}{dx}\\)?", answer: "\\(u = x+9y,\\; \\dfrac{du}{dx} = 1 + 9\\dfrac{dy}{dx}\\)" },
         { prompt: "Integrate \\(\\dfrac{du}{1 + 9u^2} = dx\\).", answer: "\\(\\tfrac13\\tan^{-1}(3u) = x + c\\)" },
       ],
-      pyqExampleId: "2449b82c-132d-49cc-ae51-dcdfad45b39b", // dy/dx=(x+y)² → tan⁻¹(x+y)=x+c
+      pyqExampleId: "98b07cb6-d9cc-4c3f-8e5c-6a035f6041fe", // dy/dx=(x+y)² → tan⁻¹(x+y)=x+c
       traps: [
         {
           title: "v = x + y gives dv/dx = 1 + dy/dx — keep the +1",

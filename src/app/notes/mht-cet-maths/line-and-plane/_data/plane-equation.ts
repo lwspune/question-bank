@@ -6,7 +6,7 @@ export const PLANE_EQUATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "How to write the equation of a plane from whatever the question hands you — a point and a normal, three points, two lines or two planes it must respect — by always first nailing the normal vector, plus the family-of-planes lambda trick for planes through an intersection line.",
   whyItMatters:
-    "This is the densest scoring subtopic in Line and Plane: roughly 47 PYQs, MODERATE-to-HARD, and the templates repeat hard — the 'plane through a point parallel to two lines' and the 'plane through an intersection line with a side condition' shapes each recur three or four times across 2023-2025. " +
+    "This is the densest scoring subtopic in Line and Plane: roughly 45 PYQs, MODERATE-to-HARD, and the templates repeat hard — the 'plane through a point parallel to two lines' and the 'plane through an intersection line with a side condition' shapes each recur three or four times across 2023-2025. " +
     "Almost every question reduces to ONE move: find the normal vector, then write n-dot-(r minus a) = 0. The normal comes either from a cross product (two directions the plane must contain) or from a family-of-planes lambda solved against a perpendicularity or parallelism condition. " +
     "Learn those two engines — the cross-product normal and the lambda family — and the rest (intercepts, foot of perpendicular, mirror image) is bookkeeping.",
   concepts: [
@@ -582,7 +582,7 @@ export const PLANE_EQUATION_NOTE: SubtopicNote = {
         ],
         answer: "\\(3x + z = 4\\)",
       },
-      pyqExampleId: "8c9a7b7d-98f3-46e1-981e-e5b4bb34b809",
+      pyqExampleId: "2f73ec7a-f98b-48b6-9fc4-13ea1140bd78",
       selfCheckExample: {
         prompt:
           "Find the plane through the intersection of \\(x + 2y + 3z = 4\\) and \\(2x + y + z = 5\\) that is perpendicular to the YZ-plane.",

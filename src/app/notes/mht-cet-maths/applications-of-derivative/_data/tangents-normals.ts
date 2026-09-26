@@ -6,7 +6,7 @@ export const TANGENTS_NORMALS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The derivative read geometrically: the slope of the tangent at a point, the perpendicular normal, the special cases where a tangent is horizontal or vertical, and the recurring MHT-CET puzzles that solve for a point or for a curve's constants from tangency conditions.",
   whyItMatters:
-    "This subtopic is the whole chapter's workhorse: 35 PYQs sit here, and it is HARD-heavy — roughly a third are HARD, the rest MODERATE, with only a few EASY. The paper reuses a small set of shapes relentlessly: 'normal parallel to a line ⇒ find the point' (the y = x log x family recurs almost every year), parametric tangent/normal, curve-fitting from touch/gradient conditions, and one-line length/intercept/fixed-point facts. " +
+    "This subtopic is the whole chapter's workhorse: 33 PYQs sit here, and it is HARD-heavy — about a quarter are HARD, the rest MODERATE, with only a few EASY. The paper reuses a small set of shapes relentlessly: 'normal parallel to a line ⇒ find the point' (the y = x log x family recurs almost every year), parametric tangent/normal, curve-fitting from touch/gradient conditions, and one-line length/intercept/fixed-point facts. " +
     "Master the negative-reciprocal normal slope, the dx/dy = 0 test for a vertical tangent, and the parametric dy/dx = (dy/dθ)/(dx/dθ), and most of these become reliable marks.",
   concepts: [
     // 1 — FOUNDATION: slope of a curve, tangent & normal slope

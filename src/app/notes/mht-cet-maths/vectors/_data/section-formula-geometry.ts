@@ -186,7 +186,7 @@ export const SECTION_FORMULA_GEOMETRY_NOTE: SubtopicNote = {
         { prompt: "External division of \\(AB\\) in ratio \\(m:n\\)?", answer: "\\(\\dfrac{m\\vec{b} - n\\vec{a}}{m - n}\\)" },
         { prompt: "Midpoint divides a segment in ratio?", answer: "\\(1:1\\)" },
       ],
-      pyqExampleId: "2d2004b5-ee16-4c36-bbd4-b13bd4efb4a5",
+      pyqExampleId: "7a4250d6-c51e-4989-a0f3-aa13029619df",
       traps: [
         {
           title: "Internal and external points use the SAME magnitude of ratio",

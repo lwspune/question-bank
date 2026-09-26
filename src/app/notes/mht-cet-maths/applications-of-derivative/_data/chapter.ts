@@ -4,7 +4,7 @@ export const APPLICATIONS_OF_DERIVATIVE_CHAPTER: ChapterNote = {
   chapterName: "Applications of Derivative",
   title: "Applications of Derivative — MHT-CET Maths",
   intro:
-    "Applications of Derivative is the largest single chapter in MHT-CET Maths — 183 PYQs across 2021–2025 — and it is where " +
+    "Applications of Derivative is the largest single chapter in MHT-CET Maths — 182 PYQs across 2021–2025 — and it is where " +
     "the derivative stops being an abstract limit and starts doing work: finding slopes, estimating values, tracking rates, and " +
     "locating the best-possible answer. Everything rests on one idea — dy/dx is the slope of the curve at a point — read seven " +
     "ways. Work the seven subtopics below in order — each builds on the tools before it. " +

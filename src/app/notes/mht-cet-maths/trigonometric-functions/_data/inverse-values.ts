@@ -6,7 +6,7 @@ export const INVERSE_VALUES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Each inverse trigonometric function returns one angle from a fixed principal range, so evaluating an expression means placing every inverse value in its own range and then converting between ratios with a right triangle.",
   whyItMatters:
-    "33 PYQs, and the page where inverse trigonometry is won or lost: 16 test the principal ranges directly (a value, a sum of values, a domain, an inequality), and 17 ask for a trigonometric ratio of an inverse value or of a sum of two. " +
+    "32 PYQs, and the page where inverse trigonometry is won or lost: 15 test the principal ranges directly (a value, a sum of values, a domain, an inequality), and 17 ask for a trigonometric ratio of an inverse value or of a sum of two. " +
     "Nothing here is long; the marks go to the student who knows that sin⁻¹(sin 2π/3) is not 2π/3.",
   concepts: [
     // 1 — principal ranges
@@ -21,7 +21,7 @@ export const INVERSE_VALUES_NOTE: SubtopicNote = {
         "- **\\(f^{-1}(f(\\theta))\\)**: find the angle IN the range with the same ratio. \\(\\sin^{-1}(\\sin\\frac{2\\pi}{3}) = \\frac{\\pi}{3}\\); \\(\\tan^{-1}(\\tan\\frac{7\\pi}{6}) = \\frac{\\pi}{6}\\); \\(\\cos^{-1}(\\cos\\frac{23\\pi}{20}) = \\frac{17\\pi}{20}\\).\n" +
         "- **Extremes**: \\(\\cos^{-1}x \\le \\pi\\), so \\(\\cos^{-1}x + \\cos^{-1}y + \\cos^{-1}z = 3\\pi\\) forces each to be \\(\\pi\\), i.e. \\(x = y = z = -1\\).\n" +
         "- **Domains**: \\(\\sin^{-1}u\\), \\(\\cos^{-1}u\\) need \\(-1 \\le u \\le 1\\). For \\(\\sqrt{\\sin^{-1}(2x) + \\frac{\\pi}{6}}\\) also need \\(\\sin^{-1}(2x) \\ge -\\frac{\\pi}{6}\\), so \\(-\\frac14 \\le x \\le \\frac12\\).\n" +
-        "- **Near a standard value**: \\(\\tan^{-1}(1 + h) \\approx \\frac{\\pi}{4} + \\frac{h}{2}\\), since the derivative of \\(\\tan^{-1}x\\) at 1 is \\(\\frac12\\).",
+        "- **Approximating an inverse value** (\\(\\tan^{-1}0.999\\)) is a differentials question, taught in Applications of Derivative: \\(\\tan^{-1}(1 + h) \\approx \\frac{\\pi}{4} + \\frac{h}{2}\\).",
       table: {
         columns: ["Function", "Domain", "Principal range"],
         rows: [

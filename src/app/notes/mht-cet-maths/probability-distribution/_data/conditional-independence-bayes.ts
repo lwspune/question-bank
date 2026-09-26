@@ -6,7 +6,7 @@ export const CONDITIONAL_BAYES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Restrict the sample space to compute P(A|B), chain events with the multiplication rule, exploit independence for 'at least one / exactly one' shortcuts, and reverse the conditioning with total probability and Bayes' theorem.",
   whyItMatters:
-    "26 PYQs sit here (8 HARD, 14 MODERATE, 4 EASY), and at 31% HARD it is the chapter's toughest block. MHT-CET tests the whole conditional-probability chain — the definition P(A|B) = P(A∩B)/P(B), sequential draws without replacement, the independence identity P(A∩B) = P(A)P(B), the 1 − P(none) shortcut for 'the target is hit / the problem is solved', and Bayes' theorem for bag/box/disease posteriors. " +
+    "25 PYQs sit here (8 HARD, 13 MODERATE, 4 EASY), and at 32% HARD it is the chapter's toughest block. MHT-CET tests the whole conditional-probability chain — the definition P(A|B) = P(A∩B)/P(B), sequential draws without replacement, the independence identity P(A∩B) = P(A)P(B), the 1 − P(none) shortcut for 'the target is hit / the problem is solved', and Bayes' theorem for bag/box/disease posteriors. " +
     "The recurring traps are all here too: confusing 'exactly one' with 'at least one', forgetting P(A'|B) = P(A') only when A and B are independent, and swapping priors with likelihoods in the Bayes ratio.",
   concepts: [
     // 0 — foundation: conditional probability P(A|B) (no PYQ, lint-exempt)
@@ -238,7 +238,7 @@ export const CONDITIONAL_BAYES_NOTE: SubtopicNote = {
         { prompt: "If P(A∪B)=1/3, find P(A'∩B').", answer: "\\(1 - \\tfrac13 = \\tfrac23\\)", method: "De Morgan: A'∩B' = (A∪B)'" },
         { prompt: "P(A')=0.75, so P(A)=?", answer: "0.25", method: "complement" },
       ],
-      pyqExampleId: "a83603f5-4683-4198-b6b4-2d65558d3f5c", // independent, P(B)=2/5, P(A∪B)=11/20 → P(A'|B)=3/4 is a root of 4x²−7x+3=0
+      pyqExampleId: "4b5b0356-4ccd-4b7a-84bc-69212b10c44a", // independent, P(B)=2/5, P(A∪B)=11/20 → P(A'|B)=3/4 is a root of 4x²−7x+3=0
       traps: [
         {
           title: "P(A'|B) = P(A') needs INDEPENDENCE",

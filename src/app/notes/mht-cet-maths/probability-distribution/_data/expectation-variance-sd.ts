@@ -6,7 +6,7 @@ export const EXPECTATION_VARIANCE_SD_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Once you can read a probability distribution, three number-summaries follow: the mean E(X) = Σx·P(x) (the long-run average), the variance Var(X) = E(X²) − [E(X)]² (the spread), and the standard deviation SD = √Var — the single most-tested cluster of formulas in this chapter.",
   whyItMatters:
-    "This subtopic carries 37 PYQs (7 HARD, 24 MODERATE, 6 EASY) and every year returns three near-identical shapes: compute mean/variance/SD from a pmf, find the expected winnings of a coin or die game, and use the uniform-distribution shortcuts E(X) = (n+1)/2 and Var(X) = (n²−1)/12. " +
+    "This subtopic carries 35 PYQs (7 HARD, 22 MODERATE, 6 EASY) and every year returns three near-identical shapes: compute mean/variance/SD from a pmf, find the expected winnings of a coin or die game, and use the uniform-distribution shortcuts E(X) = (n+1)/2 and Var(X) = (n²−1)/12. " +
     "The traps are mechanical and repeat: squaring the mean instead of averaging the squares, forgetting to convert a CDF to a pmf first, taking SD as the variance (or vice versa), and mishandling the sign of a loss in a game. Nail the four core formulas and this section is free marks.",
   concepts: [
     // 0 — foundation: expectation as the long-run average (no PYQ, lint-exempt)

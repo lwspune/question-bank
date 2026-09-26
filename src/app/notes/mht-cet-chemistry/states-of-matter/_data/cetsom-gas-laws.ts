@@ -153,7 +153,7 @@ export const GAS_LAWS_NOTE: SubtopicNote = {
           { symbol: "T_1, T_2", meaning: "initial and final absolute temperature (K)" },
         ],
       },
-      pyqExampleId: "d21a5fa1-25b0-457f-8a19-8c293735af9c", // Gay-Lussac's law statement (P/T = const)
+      pyqExampleId: "892c1ea1-94cd-4ccc-b0a7-d597215fff94", // Gay-Lussac's law statement (P/T = const)
       authoredExample: {
         prompt:
           "A rigid gas cylinder reads 2 atm at 300 K. What is the pressure when it is heated to 450 K (volume unchanged)?",

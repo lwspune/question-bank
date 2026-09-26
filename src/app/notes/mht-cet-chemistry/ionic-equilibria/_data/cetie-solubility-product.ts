@@ -310,7 +310,7 @@ export const KSP_NOTE: SubtopicNote = {
           { symbol: "\\([\\text{OH}^-]\\)", meaning: "hydroxide-ion concentration from the pH" },
         ],
       },
-      pyqExampleId: "327a0991-a47d-4b78-b413-afb58242f2e7", // Ba(OH)2 pH 12 -> Ksp = 5e-7
+      pyqExampleId: "d21e1f84-faa5-4210-a5fc-0256486e1924", // Ba(OH)2 pH 12 -> Ksp = 5e-7
       authoredExample: {
         prompt:
           "A saturated solution of \\(\\text{Ba(OH)}_2\\) has pH 12. Calculate its \\(K_{sp}\\).",

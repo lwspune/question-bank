@@ -7,7 +7,7 @@ export const FOOT_IMAGE_PROJECTION_NOTE: SubtopicNote = {
     "One engine drives this whole subtopic: drop a perpendicular from a point to a line or a plane, locate its FOOT, and then either report the foot, double it across to get the mirror image (2F − P), or use a dot product to read off a projection length.",
   whyItMatters:
     "Every MHT-CET PYQ here reduces to the same first move — find the foot of the perpendicular by writing a parametric point and forcing perpendicularity. Once you have the foot, the question is just choosing what to do with it: report it (foot questions), reflect through it as 2F − P (mirror-image questions), or skip it entirely and dot-product (projection questions). " +
-    "Across the 19 PYQs the mix runs MODERATE-to-HARD, and several appear two or three times across different papers (the (5,−1,4)/(4,−1,3)-on-x+y+z=7 projection alone shows up three times) — so the patterns are stable and high-yield. " +
+    "Across the 17 PYQs the mix runs MODERATE-to-HARD, and several appear two or three times across different papers (the (5,−1,4)/(4,−1,3)-on-x+y+z=7 projection alone shows up three times) — so the patterns are stable and high-yield. " +
     "Master the foot-finding routine first; image and projection are one extra line each on top of it.",
   concepts: [
     // ── CONCEPT 1 — FOUNDATION ENGINE: foot on a line ────────────────────────
@@ -393,7 +393,7 @@ export const FOOT_IMAGE_PROJECTION_NOTE: SubtopicNote = {
         { prompt: "Why take absolute value?", answer: "a projection length cannot be negative" },
         { prompt: "Divide the dot product by \\(|\\vec{d}|\\) or \\(|\\vec{d}|^2\\)?", answer: "\\(|\\vec{d}|\\)" },
       ],
-      pyqExampleId: "306c439b-6f2e-48c8-a214-a50c865a089c",
+      pyqExampleId: "142aba2e-c888-480d-a285-0546093f7b28",
       traps: [
         {
           title: "Divide by \\(|\\vec{d}|\\), not \\(|\\vec{d}|^2\\)",

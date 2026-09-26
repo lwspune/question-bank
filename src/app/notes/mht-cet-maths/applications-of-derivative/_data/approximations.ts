@@ -6,7 +6,7 @@ export const APPROXIMATIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Near an easy point, a smooth curve is almost its tangent line — so f(a + h) is roughly f(a) plus the tangent's rise h·f'(a). This one formula estimates roots, powers, trig values, logs, exponentials, and polynomial values.",
   whyItMatters:
-    "This subtopic is a reliable easy-to-moderate scorer on MHT-CET: 11 PYQs sit here (10 MODERATE, 1 EASY), and every one is the SAME single-line move — pick a nearby exact point, add the tangent correction. " +
+    "This subtopic is a reliable easy-to-moderate scorer on MHT-CET: 12 PYQs sit here (11 MODERATE, 1 EASY), and every one is the SAME single-line move — pick a nearby exact point, add the tangent correction. " +
     "The recurring traps are all mechanical: choosing an anchor whose value you cannot compute exactly, getting the sign of h wrong, and — the biggest one — using degrees instead of radians for a trig derivative. Master the formula once and the whole subtopic collapses into arithmetic.",
   concepts: [
     // 1 — dy = f'(x) dx and the linear-approximation formula (foundation, no PYQ, lint-exempt)
@@ -141,7 +141,8 @@ export const APPROXIMATIONS_NOTE: SubtopicNote = {
         "Use \\(f(a+h) \\approx f(a) + h\\,f'(a)\\) with \\(f = \\sin\\) or \\(\\cos\\):\n" +
         "- \\(\\dfrac{d}{dx}\\sin x = \\cos x\\), \\(\\dfrac{d}{dx}\\cos x = -\\sin x\\) (note the sign for cosine).\n" +
         "- **\\(h\\) must be in radians:** \\(1^\\circ = 0.0175\\) rad, \\(1' = \\tfrac{1}{60}^\\circ\\), \\(1'' = \\tfrac{1}{3600}^\\circ\\). So \\(30' = 0.5^\\circ = 0.00875\\) rad, \\(10'' \\approx 0.0000485\\) rad.\n" +
-        "- Anchor \\(a\\) at the standard angle so \\(\\sin a,\\cos a\\) are exact; if the target is below the anchor, \\(h < 0\\).",
+        "- Anchor \\(a\\) at the standard angle so \\(\\sin a,\\cos a\\) are exact; if the target is below the anchor, \\(h < 0\\).\n" +
+        "- **Inverse-trig values** work the same way with \\(\\dfrac{d}{dx}\\tan^{-1}x = \\dfrac{1}{1 + x^2}\\): \\(\\tan^{-1}(0.999) \\approx \\tan^{-1}1 + (-0.001)\\cdot\\frac12 = \\frac{\\pi}{4} - 0.0005 \\approx 0.7849\\). Here \\(h\\) is a change in \\(x\\), not an angle, so no radian conversion.",
       formula: {
         label: "Trig approximation (h in radians)",
         latex: "\\sin(a + h) \\approx \\sin a + h\\cos a, \\qquad \\cos(a + h) \\approx \\cos a - h\\sin a",

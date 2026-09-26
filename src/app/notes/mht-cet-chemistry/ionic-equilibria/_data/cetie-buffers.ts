@@ -131,7 +131,7 @@ export const BUFFERS_NOTE: SubtopicNote = {
           { symbol: "\\([\\text{acid}]\\)", meaning: "concentration of the weak acid" },
         ],
       },
-      pyqExampleId: "6b04dd58-547b-48c2-8d9f-58f39f4eb58c", // 0.01 M acid, 0.02 M salt, pKa 4.680 -> 4.981
+      pyqExampleId: "43ab791e-5008-49a4-80a0-193c3bccf278", // 0.01 M acid, 0.02 M salt, pKa 4.680 -> 4.981
       authoredExample: {
         prompt:
           "A buffer is made from 0.05 M weak acid and 0.5 M of its salt with a strong base. The pKa of the acid is 4.60. Find the pH.",
