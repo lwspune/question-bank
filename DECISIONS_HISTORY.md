@@ -15,6 +15,16 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-26 (tenth) — MHT-CET Chemistry "Alkynes" ships (2 pages · 11 PYQ · 4 concepts · 3 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-final-wave` — the Chemistry programme's twenty-fourth and last planned chapter.**
+
+**Shape.** 11 PUBLIC PYQ, nine MODERATE. Pages: structure (4: haloalkynes and hybridisation) and reactions (7: double dehydrohalogenation and acetylides 3, Lindlar 2, cyanide step-up 2).
+
+**Source pass (generated-papers/_repair-chalkyne.ts and _repair-2021keys.ts).** (1) 6f1e632a (2021 #92): the attached figure is HC≡CH →HBr→ A →HBr→ B →alc. KOH→ C →NaNH₂→ D; the row was keyed (d) Ethanal with a hydration solution. The 2021 answer key reads (c) Ethyne, which the figure supports. Flipped, solution rewritten. (2) PHANTOM: 484d2880 (25 Apr 2025 S2 #71) and f2bd9498 (23 Apr 2025 S1 #52) rewritten with `\xrightarrow`; f2bd9498's options (a) and (b) are both 'Bromoethane' IN THE PAPER, kept. (3) 59e1c049 '3rd May 2nd Shift' → '3rd May Shift 1' (#94, only copy). (4) 75a7b927: the solution drew hexa-1,4-diyne with five carbons; rewritten (the first write lost its backslashes in a Python-edited TS string and was re-applied from a corrected script).
+
+**Groups 13–15 declined.** The last un-noted Chemistry chapter has 4 PYQs: apatite's elements, carbon's oxidation state in CaC₂ and K₂C₂O₄, phosphorus in phosphate, and 'which element is a transition element' (Hf), which belongs in Transition Elements. There is no teaching arc to build, so the notes programme ends here for Chemistry. Moving c92f44bf is a change to a shipped chapter and waits for confirmation.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:coverage `\equiv`(3) only (the notes write ≡ as Unicode) · quiz:coverage 0 STRONG gaps · notes:intro clean · stats 121 · seo:dates.
+
 **2026-09-26 (ninth) — MHT-CET Chemistry "Modern Periodic Table" ships (2 pages · 18 PYQ · 4 concepts · 3 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-final-wave` — the Chemistry programme's twenty-third chapter.**
 
 **Shape.** 18 PUBLIC PYQ and 20 practice rows; none HARD. Pages: position (8: group and period lookup 4, configuration to block 4) and trends (10: radius and diagonal pairs 4, ionisation / electron gain / electronegativity 6). All four concepts are reference cards. It had been deferred as thin; shipped because the other block chapters link back to it.

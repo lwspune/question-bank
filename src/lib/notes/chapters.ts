@@ -604,6 +604,11 @@ import {
   MHTCET_MPT_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/modern-periodic-table/_data";
 import {
+  MHTCET_ALKYNES_CHAPTER,
+  MHTCET_ALKYNES_NOTES,
+  MHTCET_ALKYNES_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/alkynes/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1555,6 +1560,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_MPT_CHAPTER,
     notes: MHTCET_MPT_NOTES,
     slugs: MHTCET_MPT_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "alkynes",
+    chipLabel: "Alkynes notes",
+    chapter: MHTCET_ALKYNES_CHAPTER,
+    notes: MHTCET_ALKYNES_NOTES,
+    slugs: MHTCET_ALKYNES_SLUGS,
   },
   {
     examName: "NDA",
