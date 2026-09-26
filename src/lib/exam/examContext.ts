@@ -556,9 +556,9 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // One exam, not two: both groups sit the same General Ability Test, and the
     // 2023 sitting was a single joint paper. The group is in each row's pyq_note.
     bilingual: true,
-    // Ingested PRIVATE (scripts/mpsc/). Remove at the PUBLIC flip, together with
-    // adding `hasMocks` once its mocks are built.
-    noPublicContent: true,
+    // 14 papers (2017-2024) PUBLIC since 2026-09-26. Add `hasMocks: true` in the
+    // same change that publishes its mocks (scripts/mocks/build.ts --paper=mpsc)
+    // — tests/mocks-registry.test.ts fails on either one without the other.
     guidesPath: null,
     notesPath: null,
   },
