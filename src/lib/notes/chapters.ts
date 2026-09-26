@@ -629,6 +629,11 @@ import {
   MHTCET_AC_SLUGS,
 } from "@/app/notes/mht-cet-physics/ac-circuits/_data";
 import {
+  MHTCET_SEMI_CHAPTER,
+  MHTCET_SEMI_NOTES,
+  MHTCET_SEMI_SLUGS,
+} from "@/app/notes/mht-cet-physics/semiconductor-devices/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1635,6 +1640,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_AC_CHAPTER,
     notes: MHTCET_AC_NOTES,
     slugs: MHTCET_AC_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "semiconductor-devices",
+    chipLabel: "Semiconductor Devices notes",
+    chapter: MHTCET_SEMI_CHAPTER,
+    notes: MHTCET_SEMI_NOTES,
+    slugs: MHTCET_SEMI_SLUGS,
   },
   {
     examName: "NDA",
