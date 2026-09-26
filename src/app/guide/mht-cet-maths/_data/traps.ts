@@ -157,11 +157,11 @@ export const TRAP_SHAPES: TrapShape[] = [
     id: "trig-xi-xii-misweighting",
     title: "Prepping trigonometry from the Std XI chapter names and under-preparing the Std XII one",
     bucket: "cornerstone",
-    affects: ["trigonometric-functions", "trigonometry-i"],
+    affects: ["trigonometric-functions"],
     mechanic:
-      "Trigonometry on this paper is 262 questions across three chapters, and they are not weighted the way their names suggest. Trigonometric Functions — the Std XII chapter — is 168 of them. The two chapters a student recognises from Std XI, Trigonometry - I and Trigonometry - II, are 77 and 17. So the familiar names carry 36% of the trigonometry and the unfamiliar one carries 64%, and the gap is widening: Trigonometric Functions is rising from 3.73 to 4.31 q/paper while Trigonometry - I falls from 1.71 to 1.31.",
+      "Trigonometry on this paper is 251 questions across two chapters, and they are not weighted the way their names suggest. Trigonometric Functions — the Std XII chapter, holding trigonometric equations, inverse trigonometry and solution of triangle — is 212 of them. The chapter a student recognises from Std XI, Trigonometry - II, is 39. So the familiar name carries 16% of the trigonometry and the unfamiliar one carries 84%, at 4.85 questions a paper against 0.88.",
     fix:
-      "Plan trigonometry as one Std XII cornerstone first, then one Std XI identity chapter. Trigonometric Functions is drilled whole — its two halves cost almost the same, 40% and 42% HARD — and it outranks every long-tail chapter on the paper. Trigonometry - I is a single 77-question subtopic and takes an afternoon. Trigonometry - II, at 17 questions and 65% HARD, is the most expensive chapter in the bank per question: read its identity list and move on.",
+      "Plan trigonometry as one Std XII cornerstone first, then the Std XI identities it depends on. Trigonometric Functions is drilled whole — its three pages cost about the same, 36%, 36% and 41% HARD — and it outranks every long-tail chapter on the paper. Learn the compound, multiple-angle and factorisation identities well enough to use them inside equations and inverse-trig questions; Trigonometry - II's own 39 questions, at 49% HARD and under one a paper, come after the cornerstones.",
   },
 
   // -------- Long tail — scope and technique traps --------
@@ -171,9 +171,9 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "longtail",
     affects: [],
     mechanic:
-      "Measures of Dispersion is the most attractive-looking dead chapter in the bank: 32 questions lifetime at only 9% HARD, so it reads as guaranteed cheap marks, and it appears in essentially every 2023 and 2024 paper a student practises — 1.0 question per paper across those 29 shifts. It then scored ZERO across all 14 shifts of 2025. The mirror image is Conic Sections, which carried 3 questions in the whole bank before 2025 and then 16 in 2025 alone, at 42% HARD.",
+      "Measures of Dispersion is the most attractive-looking dead chapter in the bank: 32 questions lifetime at only 9% HARD, so it reads as guaranteed cheap marks, and it appears in essentially every 2023 and 2024 paper a student practises — 1.0 question per paper across those 29 shifts. It then scored ZERO across all 14 shifts of 2025. The mirror image is Conic Sections, which carried 3 questions in the whole bank before 2025 and then 17 in 2025 alone, at 40% HARD.",
     fix:
-      "Date every practice paper you sit and weight what you learn from it accordingly. Anything drilled from 2023-24 trains you on a chapter that no longer appears and never shows you one that now does. Give Measures of Dispersion no revision time, and put Conic Sections on the list — at 42% HARD it is not a chapter that can be picked up in the hall.",
+      "Date every practice paper you sit and weight what you learn from it accordingly. Anything drilled from 2023-24 trains you on a chapter that no longer appears and never shows you one that now does. Give Measures of Dispersion no revision time, and put Conic Sections on the list — at 40% HARD it is not a chapter that can be picked up in the hall.",
   },
   {
     id: "calculus-where-geometry-answers",

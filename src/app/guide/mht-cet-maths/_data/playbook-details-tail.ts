@@ -89,70 +89,7 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
       },
     ],
     exampleQuestionIds: [],
-    relatedSlugs: ["differentiation", "indefinite-integration", "trigonometry-i"],
-  },
-
-  "trigonometry-i": {
-    slug: "trigonometry-i",
-    trigger:
-      "A compound, allied or multiple-angle identity to simplify, or a trigonometric equation to be solved for a general solution.",
-    story: [
-      "77 q in a single subtopic, 1.31/paper, 36% HARD. One undivided block means there is nothing to cherry-pick and nothing to skip: you prepare the chapter or you do not.",
-      "It is one of the few live chapters moving DOWN — 1.71 q/paper across the lifetime window against 1.31 across the 26 shifts of 2024-2025 — while its Std XII neighbour Trigonometric Functions moves the other way, 3.73 to 4.31. A student prioritising from lifetime frequency alone over-invests here and under-invests there. Prepare Trigonometric Functions first.",
-      "The subtopic is genuinely MIXED, and knowing that changes how you drill it: Std XI compound, allied and multiple-angle identity work sits alongside Std XII trigonometric equations and general solutions. The two demand different closing moves — an identity question ends in a simplification, an equation question ends in a general-solution form with an integer parameter — so read the ask before choosing a method.",
-      "At 36% HARD it is one of the softer chapters outside the quick-wins, and the identities it drills are reused inside Indefinite Integration and Definite Integration, which is most of the argument for giving it an afternoon.",
-    ],
-    subSkills: [
-      {
-        name: "Allied and compound angles",
-        description:
-          "sin(A plus or minus B), cos(A plus or minus B), tan(A plus or minus B), and the allied-angle reductions for pi/2 plus or minus x and pi plus or minus x. Everything else in the chapter is built on these.",
-      },
-      {
-        name: "Multiple and half angles",
-        description:
-          "Double and triple-angle forms, and the half-angle substitutions. The three expressions for cos 2A are the ones to hold — which you pick decides whether the question is one line or five.",
-      },
-      {
-        name: "Factorisation and defactorisation",
-        description:
-          "Sum-to-product and product-to-sum. A sum of sines or cosines that refuses to simplify is almost always asking for this.",
-      },
-      {
-        name: "General solutions",
-        description:
-          "sin x = sin y gives x = n pi + (-1)^n y; cos x = cos y gives x = 2 n pi plus or minus y; tan x = tan y gives x = n pi + y. Std XII material that lives in this chapter, and the most commonly mis-stated trio on the paper.",
-      },
-      {
-        name: "Principal versus general solution",
-        description:
-          "A question asking for the principal solution wants the values in a stated interval, not the parameterised family. Reading which was asked is worth more marks here than any identity.",
-      },
-    ],
-    traps: [
-      {
-        name: "The wrong general-solution form",
-        description:
-          "The sine form carries (-1)^n and the cosine form carries plus-or-minus. Option sets routinely offer the cosine form for a sine equation; they differ only in that one symbol.",
-      },
-      {
-        name: "Principal solution returned as general",
-        description:
-          "Both appear in the option set. The parameterised answer to a principal-solution question is the planted one, and it looks more complete.",
-      },
-      {
-        name: "Roots lost to squaring",
-        description:
-          "Squaring to clear a radical introduces extraneous roots and silently drops sign information. The distractor is the count of solutions BEFORE checking each one back in the original equation.",
-      },
-      {
-        name: "Interval endpoints",
-        description:
-          "Counting solutions in [0, 2 pi] versus (0, 2 pi) differs by the endpoints, and the two counts are both offered.",
-      },
-    ],
-    exampleQuestionIds: [],
-    relatedSlugs: ["trigonometric-functions", "indefinite-integration", "definite-integration"],
+    relatedSlugs: ["differentiation", "indefinite-integration", "trigonometric-functions"],
   },
 
   "definite-integration": {
@@ -393,7 +330,7 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
       },
     ],
     exampleQuestionIds: [],
-    relatedSlugs: ["circle", "trigonometry-i", "straight-line"],
+    relatedSlugs: ["circle", "trigonometric-functions", "straight-line"],
   },
 
   "applications-of-definite-integral": {

@@ -5,7 +5,7 @@
  * derived from the live bank by scripts/mhtcet/trends-matrix.ts. Re-run it
  * after any MHT-CET Maths ingest; `-- --check` fails if this file is stale.
  *
- * 45 papers · 27 chapters · 2228 PUBLIC PYQ questions.
+ * 45 papers · 26 chapters · 2201 PUBLIC PYQ questions.
  *
  * WHY THE COLUMNS ARE SHIFTS, NOT YEARS. MHT-CET runs wildly uneven shift
  * counts per year (2021=1 · 2022=1 · 2023=17 · 2024=12 · 2025=14), so a
@@ -126,30 +126,29 @@ export const YEAR_COLUMNS: YearColumn[] = [
 /** Heaviest chapter first. Column i is SHIFT_PAPERS[i]. */
 export const CHAPTER_MATRIX: ChapterMatrixRow[] = [
   { chapter: "Vectors",                           total:  228, counts: [ 2,  4,  7,  6,  6,  5,  6,  4,  6,  6,  6,  7,  5,  6,  6,  4,  6,  5,  6,  5,  6,  6,  6,  6,  6,  4,  5,  5,  6,  5,  6,  3,  4,  5,  5,  4,  2,  4,  5,  5,  4,  5,  4,  5,  4] },
+  { chapter: "Trigonometric Functions",           total:  212, counts: [ 2,  3,  6,  4,  5,  4,  5,  6,  6,  5,  5,  4,  5,  6,  5,  6,  4,  4,  1,  5,  3,  5,  4,  5,  5,  5,  5,  4,  5,  5,  6,  5,  5,  5,  6,  5,  5,  5,  5,  5,  5,  5,  6,  7,  0] },
   { chapter: "Line and Plane",                    total:  205, counts: [ 1,  5,  4,  4,  4,  5,  4,  5,  4,  3,  4,  4,  4,  4,  4,  5,  4,  4,  4,  5,  4,  4,  3,  5,  4,  6,  5,  5,  4,  5,  4,  6,  6,  5,  4,  5,  8,  6,  5,  5,  5,  5,  5,  5,  5] },
   { chapter: "Applications of Derivative",        total:  183, counts: [ 2,  4,  4,  5,  6,  5,  5,  3,  5,  5,  5,  3,  5,  5,  4,  5,  4,  4,  5,  3,  5,  5,  5,  3,  5,  5,  4,  4,  3,  4,  4,  4,  2,  3,  4,  5,  4,  3,  4,  4,  3,  4,  3,  4,  2] },
-  { chapter: "Trigonometric Functions",           total:  168, counts: [ 2,  3,  4,  2,  1,  1,  5,  1,  4,  1,  3,  4,  4,  4,  1,  5,  2,  4,  5,  4,  3,  3,  4,  5,  4,  3,  5,  4,  4,  4,  5,  5,  5,  4,  4,  5,  4,  4,  4,  5,  3,  4,  5,  6,  6] },
-  { chapter: "Indefinite Integration",            total:  159, counts: [ 2,  3,  3,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  3,  4,  4,  4,  4,  3,  4,  4,  4,  4,  4,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3] },
+  { chapter: "Indefinite Integration",            total:  162, counts: [ 2,  3,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  3,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3] },
   { chapter: "Differential Equations",            total:  144, counts: [ 3,  2,  3,  3,  3,  3,  3,  4,  3,  3,  3,  3,  3,  3,  3,  2,  3,  4,  3,  3,  2,  3,  3,  2,  2,  3,  3,  3,  3,  3,  3,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  3,  4,  3] },
-  { chapter: "Differentiation",                   total:  141, counts: [ 2,  4,  4,  5,  2,  3,  3,  3,  3,  3,  3,  4,  3,  3,  3,  4,  4,  1,  2,  5,  3,  3,  4,  3,  3,  3,  3,  3,  5,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  2,  3] },
+  { chapter: "Differentiation",                   total:  142, counts: [ 2,  4,  4,  5,  2,  3,  3,  3,  3,  3,  3,  4,  3,  3,  3,  4,  4,  1,  2,  5,  3,  3,  4,  4,  3,  3,  3,  3,  5,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  2,  3] },
   { chapter: "Probability Distribution",          total:  115, counts: [ 3,  1,  2,  3,  2,  1,  3,  3,  3,  2,  3,  2,  1,  3,  3,  2,  3,  3,  3,  1,  2,  3,  2,  2,  1,  3,  3,  2,  3,  3,  3,  3,  3,  3,  3,  3,  2,  3,  3,  3,  3,  3,  3,  3,  3] },
-  { chapter: "Limits",                            total:   93, counts: [ 4,  2,  2,  2,  2,  2,  2,  2,  2,  2,  1,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  3,  2,  2,  2,  2,  2,  2,  3,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2] },
+  { chapter: "Limits",                            total:   89, counts: [ 4,  2,  2,  2,  2,  2,  1,  2,  2,  2,  1,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  3,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  0] },
   { chapter: "Mathematical Logic",                total:   88, counts: [ 2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  3,  2,  2,  2,  2,  2,  1,  2,  2,  2,  2,  2,  1,  2,  2,  2,  1,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2] },
-  { chapter: "Trigonometry - I",                  total:   77, counts: [ 3,  1,  2,  2,  4,  3,  1,  5,  1,  4,  2,  0,  1,  2,  5,  2,  3,  1,  1,  2,  1,  2,  0,  1,  1,  2,  0,  1,  2,  1,  1,  1,  0,  3,  2,  1,  2,  2,  2,  1,  3,  1,  1,  1,  0] },
-  { chapter: "Definite Integration",              total:   73, counts: [ 1,  2,  2,  1,  1,  2,  1,  1,  1,  1,  1,  3,  1,  1,  1,  3,  1,  1,  0,  1,  1,  2,  3,  3,  2,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  2,  2,  3,  2,  2,  2,  2,  2,  2,  2] },
+  { chapter: "Definite Integration",              total:   68, counts: [ 2,  3,  1,  1,  0,  1,  1,  1,  1,  1,  1,  3,  1,  1,  1,  3,  1,  1,  1,  1,  1,  1,  3,  3,  1,  1,  1,  1,  1,  1,  1,  2,  2,  2,  2,  2,  2,  3,  2,  2,  2,  2,  2,  2,  0] },
   { chapter: "Binomial Distribution",             total:   60, counts: [ 2,  2,  1,  1,  2,  3,  1,  1,  1,  2,  1,  1,  3,  1,  1,  1,  1,  1,  1,  3,  2,  1,  2,  1,  3,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  1,  1,  1,  1,  1,  1,  1] },
-  { chapter: "Determinants and Matrices",         total:   50, counts: [ 2,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  1,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  1] },
-  { chapter: "Applications of Definite Integral", total:   47, counts: [ 3,  2,  1,  1,  1,  0,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  0,  2,  1,  1,  0,  1,  1,  2,  1,  1,  0,  1,  1,  1,  1,  1,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1] },
-  { chapter: "Circle",                            total:   47, counts: [ 2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1] },
-  { chapter: "Complex Numbers",                   total:   46, counts: [ 2,  2,  1,  1,  1,  1,  1,  1,  1,  0,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1] },
-  { chapter: "Linear Programming",                total:   46, counts: [ 2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1] },
-  { chapter: "Straight Line",                     total:   46, counts: [ 3,  1,  1,  0,  2,  1,  1,  1,  1,  1,  1,  2,  1,  1,  1,  0,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  0,  1,  1,  1,  1,  1,  1] },
-  { chapter: "Pair of Straight Lines",            total:   45, counts: [ 0,  1,  1,  2,  0,  1,  1,  2,  1,  1,  1,  0,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1] },
-  { chapter: "Permutations and Combinations",     total:   43, counts: [ 2,  1,  1,  1,  1,  1,  1,  1,  0,  1,  1,  0,  1,  1,  0,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  1,  1,  1,  1,  1,  1,  0,  1,  1,  1,  1] },
-  { chapter: "Sets, Relations and Functions",     total:   41, counts: [ 3,  1,  1,  0,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  0,  0,  1,  0,  0,  0,  0,  1,  1,  1,  1,  1,  0,  1] },
+  { chapter: "Determinants and Matrices",         total:   49, counts: [ 2,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  1,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  0] },
+  { chapter: "Circle",                            total:   46, counts: [ 2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  0] },
+  { chapter: "Complex Numbers",                   total:   45, counts: [ 2,  2,  1,  1,  1,  1,  1,  1,  1,  0,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  0] },
+  { chapter: "Linear Programming",                total:   45, counts: [ 2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  0] },
+  { chapter: "Applications of Definite Integral", total:   44, counts: [ 2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  0,  1,  1,  1,  1,  1,  1,  2,  1,  1,  0,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  0] },
+  { chapter: "Pair of Straight Lines",            total:   44, counts: [ 0,  1,  1,  2,  0,  1,  1,  2,  1,  1,  1,  0,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  0] },
+  { chapter: "Straight Line",                     total:   44, counts: [ 3,  1,  1,  0,  1,  1,  1,  1,  1,  1,  1,  2,  1,  1,  1,  0,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  0,  1,  1,  1,  1,  1,  0] },
+  { chapter: "Permutations and Combinations",     total:   42, counts: [ 2,  1,  1,  1,  1,  1,  1,  1,  0,  1,  1,  0,  1,  1,  0,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  1,  1,  1,  1,  1,  1,  0,  1,  1,  1,  0] },
+  { chapter: "Sets, Relations and Functions",     total:   40, counts: [ 3,  1,  1,  0,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  2,  1,  2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  0,  0,  1,  0,  0,  0,  0,  1,  1,  1,  1,  1,  0,  0] },
+  { chapter: "Trigonometry - II",                 total:   39, counts: [ 3,  1,  0,  1,  1,  0,  1,  1,  1,  1,  1,  0,  1,  0,  1,  1,  1,  1,  0,  1,  1,  1,  0,  1,  1,  1,  1,  1,  1,  1,  0,  1,  1,  2,  0,  2,  1,  1,  1,  1,  2,  1,  0,  0,  0] },
   { chapter: "Measures of Dispersion",            total:   32, counts: [ 2,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0] },
-  { chapter: "Conic Sections",                    total:   19, counts: [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  0,  0,  0,  1,  2,  0,  0,  1,  1,  2,  1,  1,  1,  1,  2,  1,  2] },
-  { chapter: "Trigonometry - II",                 total:   17, counts: [ 0,  0,  0,  1,  1,  0,  0,  1,  2,  1,  1,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  1,  1,  1,  0,  0,  1,  0,  0,  1,  0,  0,  1,  0,  0,  0,  0,  1,  1,  0,  0,  0] },
+  { chapter: "Conic Sections",                    total:   20, counts: [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  1,  0,  0,  0,  1,  2,  1,  0,  1,  1,  2,  1,  1,  1,  1,  2,  1,  2] },
   { chapter: "Sequences and Series",              total:   10, counts: [ 0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  1,  0,  1,  0,  1,  0,  1,  1,  0] },
   { chapter: "Quadratic Equations",               total:    5, counts: [ 0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  1,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1] },
 ];
@@ -157,41 +156,40 @@ export const CHAPTER_MATRIX: ChapterMatrixRow[] = [
 /** The same questions as questions-per-paper. Column i is YEAR_COLUMNS[i]. */
 export const YEAR_RATES: YearRateRow[] = [
   { chapter: "Vectors",                           total:  228, rates: [ 2.00,  4.00,  5.71,  5.50,  4.21] },
+  { chapter: "Trigonometric Functions",           total:  212, rates: [ 2.00,  3.00,  4.76,  4.75,  4.93] },
   { chapter: "Line and Plane",                    total:  205, rates: [ 1.00,  5.00,  4.12,  4.50,  5.36] },
   { chapter: "Applications of Derivative",        total:  183, rates: [ 2.00,  4.00,  4.59,  4.17,  3.50] },
-  { chapter: "Trigonometric Functions",           total:  168, rates: [ 2.00,  3.00,  3.00,  4.00,  4.57] },
-  { chapter: "Indefinite Integration",            total:  159, rates: [ 2.00,  3.00,  3.94,  3.75,  3.00] },
+  { chapter: "Indefinite Integration",            total:  162, rates: [ 2.00,  3.00,  4.00,  3.92,  3.00] },
   { chapter: "Differential Equations",            total:  144, rates: [ 3.00,  2.00,  3.06,  2.75,  3.86] },
-  { chapter: "Differentiation",                   total:  141, rates: [ 2.00,  4.00,  3.12,  3.42,  2.93] },
+  { chapter: "Differentiation",                   total:  142, rates: [ 2.00,  4.00,  3.12,  3.50,  2.93] },
   { chapter: "Probability Distribution",          total:  115, rates: [ 3.00,  1.00,  2.47,  2.33,  2.93] },
-  { chapter: "Limits",                            total:   93, rates: [ 4.00,  2.00,  1.94,  2.17,  2.00] },
+  { chapter: "Limits",                            total:   89, rates: [ 4.00,  2.00,  1.88,  2.08,  1.86] },
   { chapter: "Mathematical Logic",                total:   88, rates: [ 2.00,  2.00,  2.00,  1.83,  2.00] },
-  { chapter: "Trigonometry - I",                  total:   77, rates: [ 3.00,  1.00,  2.29,  1.17,  1.43] },
-  { chapter: "Definite Integration",              total:   73, rates: [ 1.00,  2.00,  1.29,  1.58,  2.07] },
+  { chapter: "Definite Integration",              total:   68, rates: [ 2.00,  3.00,  1.18,  1.33,  1.93] },
   { chapter: "Binomial Distribution",             total:   60, rates: [ 2.00,  2.00,  1.35,  1.50,  1.07] },
-  { chapter: "Determinants and Matrices",         total:   50, rates: [ 2.00,  2.00,  1.00,  1.17,  1.07] },
-  { chapter: "Applications of Definite Integral", total:   47, rates: [ 3.00,  2.00,  0.94,  0.92,  1.07] },
-  { chapter: "Circle",                            total:   47, rates: [ 2.00,  1.00,  1.00,  1.08,  1.00] },
-  { chapter: "Complex Numbers",                   total:   46, rates: [ 2.00,  2.00,  0.94,  1.00,  1.00] },
-  { chapter: "Linear Programming",                total:   46, rates: [ 2.00,  1.00,  1.00,  1.00,  1.00] },
-  { chapter: "Straight Line",                     total:   46, rates: [ 3.00,  1.00,  1.00,  1.00,  0.93] },
-  { chapter: "Pair of Straight Lines",            total:   45, rates: [ 0.00,  1.00,  1.06,  1.00,  1.00] },
-  { chapter: "Permutations and Combinations",     total:   43, rates: [ 2.00,  1.00,  0.82,  1.00,  1.00] },
-  { chapter: "Sets, Relations and Functions",     total:   41, rates: [ 3.00,  1.00,  1.06,  1.00,  0.50] },
+  { chapter: "Determinants and Matrices",         total:   49, rates: [ 2.00,  2.00,  1.00,  1.17,  1.00] },
+  { chapter: "Circle",                            total:   46, rates: [ 2.00,  1.00,  1.00,  1.08,  0.93] },
+  { chapter: "Complex Numbers",                   total:   45, rates: [ 2.00,  2.00,  0.94,  1.00,  0.93] },
+  { chapter: "Linear Programming",                total:   45, rates: [ 2.00,  1.00,  1.00,  1.00,  0.93] },
+  { chapter: "Applications of Definite Integral", total:   44, rates: [ 2.00,  1.00,  0.94,  1.00,  0.93] },
+  { chapter: "Pair of Straight Lines",            total:   44, rates: [ 0.00,  1.00,  1.06,  1.00,  0.93] },
+  { chapter: "Straight Line",                     total:   44, rates: [ 3.00,  1.00,  0.94,  1.00,  0.86] },
+  { chapter: "Permutations and Combinations",     total:   42, rates: [ 2.00,  1.00,  0.82,  1.00,  0.93] },
+  { chapter: "Sets, Relations and Functions",     total:   40, rates: [ 3.00,  1.00,  1.06,  1.00,  0.43] },
+  { chapter: "Trigonometry - II",                 total:   39, rates: [ 3.00,  1.00,  0.71,  0.83,  0.93] },
   { chapter: "Measures of Dispersion",            total:   32, rates: [ 2.00,  1.00,  1.00,  1.00,  0.00] },
-  { chapter: "Conic Sections",                    total:   19, rates: [ 0.00,  0.00,  0.06,  0.17,  1.14] },
-  { chapter: "Trigonometry - II",                 total:   17, rates: [ 0.00,  0.00,  0.47,  0.42,  0.29] },
+  { chapter: "Conic Sections",                    total:   20, rates: [ 0.00,  0.00,  0.06,  0.17,  1.21] },
   { chapter: "Sequences and Series",              total:   10, rates: [ 0.00,  0.00,  0.12,  0.17,  0.43] },
   { chapter: "Quadratic Equations",               total:    5, rates: [ 0.00,  0.00,  0.06,  0.08,  0.21] },
 ];
 
 /** Per-paper question totals — the matrix footer, and its completeness proof. */
-export const PAPER_TOTALS: number[] = [50, 48, 50, 50, 50, 49, 50, 50, 50, 49, 50, 49, 50, 50, 50, 50, 50, 44, 49, 49, 50, 50, 50, 50, 50, 50, 50, 47, 50, 50, 50, 49, 50, 50, 48, 50, 50, 50, 50, 50, 49, 50, 50, 50, 48];
+export const PAPER_TOTALS: number[] = [50, 48, 50, 50, 48, 49, 49, 50, 50, 49, 50, 49, 50, 50, 50, 50, 50, 44, 44, 49, 50, 50, 50, 50, 50, 50, 50, 47, 50, 50, 50, 49, 50, 50, 48, 50, 50, 50, 50, 50, 49, 50, 50, 50, 29];
 
 export const MATRIX_META = {
   papers: 45,
-  chapters: 27,
-  questions: 2228,
+  chapters: 26,
+  questions: 2201,
   undatedPapers: 4,
   labelConflicts: 1,
 } as const;

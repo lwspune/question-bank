@@ -196,7 +196,7 @@ export const NDA_CDS_ENGLISH: BookDefinition = {
  * The gate for layout A is "no set spans a subtopic", and `set_id` is NULL on
  * all 2,228 rows — a maths question is standalone, where 3,175 of the English
  * book's 3,180 sit in a shared-passage set. So the gate is satisfied VACUOUSLY
- * in all 27 chapters, and the three English chapters that can never group have
+ * in all 26 chapters, and the three English chapters that can never group have
  * no counterpart here.
  *
  * NO AUTHORED `directions`. An English block can carry one because 65 sets say
@@ -240,6 +240,20 @@ export const MHT_CET_MATHS: BookDefinition = {
       ],
     },
     {
+      slug: "trigonometric-functions",
+      name: "Trigonometric Functions",
+      // 212 q across 6 subtopics, in the /notes teaching order (subtopics.order_index).
+      // 2026-09-26: Trigonometry - I's equations moved in and the chapter was re-carved to six pages.
+      groupSubtopics: [
+        { name: "Trigonometric Equations and General Solutions" }, // 47
+        { name: "Solution of Triangle — Sine, Cosine and Projection Rules" }, // 47
+        { name: "Solution of Triangle — Half-Angle Formulas, Napier's Analogy and Area" }, // 24
+        { name: "Inverse Trigonometric Functions — Principal Values and Evaluation" }, // 33
+        { name: "Inverse Trigonometric Identities — Sums, Substitution and Telescoping" }, // 30
+        { name: "Inverse Trigonometric Equations" }, // 31
+      ],
+    },
+    {
       slug: "line-and-plane",
       name: "Line and Plane",
       // 205 q across 7 subtopics, in the /notes teaching order (subtopics.order_index).
@@ -265,15 +279,6 @@ export const MHT_CET_MATHS: BookDefinition = {
         { name: "Increasing and Decreasing Functions" }, // 29
         { name: "Maxima, Minima, and Optimisation" }, // 42
         { name: "Rolle's Theorem and Mean Value Theorem" }, // 18
-      ],
-    },
-    {
-      slug: "trigonometric-functions",
-      name: "Trigonometric Functions",
-      // 168 q across 2 subtopics, in descending question count.
-      groupSubtopics: [
-        { name: "Inverse Trigonometric Functions" }, // 94
-        { name: "Solution of Triangle — Sine, Cosine and Projection Rules" }, // 74
       ],
     },
     {
@@ -351,14 +356,6 @@ export const MHT_CET_MATHS: BookDefinition = {
         { name: "Converse, Inverse, and Contrapositive" }, // 17
         { name: "Logical Equivalence and Algebra of Statements" }, // 16
         { name: "Switching Circuits" }, // 12
-      ],
-    },
-    {
-      slug: "trigonometry-i",
-      name: "Trigonometry - I",
-      // 77 q in a single subtopic.
-      groupSubtopics: [
-        { name: "Trig Identities, Compound Angle, and Equations" }, // 77
       ],
     },
     {
@@ -484,6 +481,14 @@ export const MHT_CET_MATHS: BookDefinition = {
       ],
     },
     {
+      slug: "trigonometry-ii",
+      name: "Trigonometry - II",
+      // 39 q in a single subtopic (17 until the 2026-09-26 carve moved Trigonometry - I's identity rows here).
+      groupSubtopics: [
+        { name: "Trigonometric Identities and Compound/Half-Angle Formulas" }, // 39
+      ],
+    },
+    {
       slug: "measures-of-dispersion",
       name: "Measures of Dispersion",
       // 32 q across 3 subtopics, in descending question count (2026-09-25 reshape).
@@ -499,14 +504,6 @@ export const MHT_CET_MATHS: BookDefinition = {
       // 19 q across 1 subtopic, in descending question count.
       groupSubtopics: [
         { name: "Conic Properties — Eccentricity, Orthogonality, and Intersection" }, // 19
-      ],
-    },
-    {
-      slug: "trigonometry-ii",
-      name: "Trigonometry - II",
-      // 17 q in a single subtopic.
-      groupSubtopics: [
-        { name: "Trigonometric Identities and Compound/Half-Angle Formulas" }, // 17
       ],
     },
     {

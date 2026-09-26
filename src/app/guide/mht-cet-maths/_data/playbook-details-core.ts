@@ -239,46 +239,41 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A triangle labelled with sides a, b, c and angles A, B, C — or an expression built from arcsin, arccos or arctan.",
     story: [
-      "168 q, 4.31/paper, 41% HARD — the fourth-largest chapter in the bank, behind only Vectors, Line and Plane and Applications of Derivative. It is the Std XII trigonometry chapter, and the reason students under-prepare it is that the name is unfamiliar: the chapters they recognise from Std XI, Trigonometry - I and Trigonometry - II, are 77 and 17 questions between them.",
-      "It is the fastest-rising cornerstone, 3.73 q/paper across the lifetime window against 4.31 across the 26 shifts of 2024-2025, and BOTH halves are rising — Solution of Triangle from 1.64 to 2.12, Inverse Trigonometric Functions from 2.09 to 2.19. A student prioritising from lifetime frequency alone under-invests here.",
-      "The two halves cost almost the same: Inverse Trigonometric Functions is 94 q at 40% HARD, Solution of Triangle — Sine, Cosine and Projection Rules is 74 q at 42%. There is no cheap half to bank first, which is why this chapter is drilled whole rather than split-passed by subtopic. Drill inverse first only because it is the larger of the two.",
-      "Both halves are closed lists. The triangle work is four rules and their area forms, and recognition is most of the skill — what you are given (three sides, two sides and the included angle, two angles and a side) decides which rule opens the question. The inverse work is almost entirely about staying inside the principal branch: the algebra is short, and the marks are lost by producing a technically valid value that lies outside the allowed range.",
+      "212 q, 4.85/paper, 38% HARD — the second-largest chapter in the bank, behind only Vectors. It is the Std XII trigonometry chapter, and the reason students under-prepare it is that the name is unfamiliar: the chapter they recognise from Std XI, Trigonometry - II, is 39 questions of identities, a fifth of this one.",
+      "The chapter edged up from 4.71 q/paper across the lifetime window to 4.85 across the 26 shifts of 2024-2025, and its three pages are moving differently. Solution of Triangle climbed from 1.58 to 2.04, inverse trigonometry held (2.09 to 2.04), and trigonometric equations fell from 1.04 to 0.77. The equations sat in a separate Std XI chapter until 2026-09-26, when the bank was re-carved to the Balbharati Std XII syllabus, which puts them here.",
+      "The three parts cost almost the same — equations 47 q at 36% HARD, solution of triangle 71 q at 41%, inverse trigonometry 94 q at 36% — so the chapter is drilled whole. The notes split it into six pages, and the difficulty is not even across them: inverse-trig identities (sums, substitution, telescoping) is 63% HARD, while inverse-trig values and inverse-trig equations are both under 25%. Bank those two before the identities.",
+      "Every part is a closed list. The triangle work is four rules and their area forms, and recognition is most of the skill — what you are given (three sides, two sides and the included angle, two angles and a side) decides which rule opens the question. The inverse work is almost entirely about staying inside the principal branch: the algebra is short, and the marks are lost by producing a technically valid value that lies outside the allowed range.",
     ],
     subSkills: [
       {
-        name: "Sine rule and circumradius",
+        name: "Trigonometric Equations and General Solutions",
         description:
-          "a / sin A = b / sin B = c / sin C = 2R. The 2R is the half most often dropped, and it is what turns a triangle question into a circumradius question.",
+          "The three general-solution patterns (sine takes (-1)^n, cosine takes plus-or-minus, tangent neither), quadratics in one ratio with the impossible or undefined root rejected, a cos x + b sin x = c through its range, factorising sums of sines, and range arguments that show there is no solution.",
       },
       {
-        name: "Cosine rule, both directions",
+        name: "Solution of Triangle — Sine, Cosine and Projection Rules",
         description:
-          "Use it forwards to find a side from two sides and the included angle, and backwards, as cos A = (b^2 + c^2 - a^2) / 2bc, to find an angle from three sides.",
+          "a / sin A = 2R, so angles in a ratio give sides in the ratio of their SINES; the cosine rule forwards and backwards, and every 'find the angle' relation among the sides read as a^2 + b^2 - c^2 = k ab; the projection rule for sums of sides times cosines.",
       },
       {
-        name: "Projection formula",
+        name: "Solution of Triangle — Half-Angle Formulas, Napier's Analogy and Area",
         description:
-          "a = b cos C + c cos B and its two cousins. Cheap to memorise and it collapses a family of simplify-this questions in one line.",
+          "tan(A/2) tan(C/2) = (s - b)/s and cot(B/2) cot(C/2) = s/(s - a); sides in A.P. make the first product 1/3. Napier's analogy for the difference of two angles, the right-triangle quadratic relation p + q = r, and Heron's formula.",
       },
       {
-        name: "Area and half-angle forms",
+        name: "Inverse Trigonometric Functions — Principal Values and Evaluation",
         description:
-          "Area = (1/2) ab sin C, Heron's form with the semi-perimeter s, and the relations linking area to the inradius r and circumradius R. These are the bridge between a triangle question and a circle question.",
+          "The six principal ranges, cold: arcsin in [-pi/2, pi/2], arccos in [0, pi], arctan in (-pi/2, pi/2). cos^-1(-x) = pi - cos^-1 x, not a negative angle. A ratio of an inverse value is read off a right triangle.",
       },
       {
-        name: "Principal-value ranges, cold",
+        name: "Inverse Trigonometric Identities — Sums, Substitution and Telescoping",
         description:
-          "arcsin lands in [-pi/2, pi/2], arccos in [0, pi], arctan in (-pi/2, pi/2). Nothing in the inverse half is safe until these three are automatic.",
+          "arcsin x + arccos x = pi/2 and its cousins; arctan x + arctan y = arctan((x + y)/(1 - xy)) while xy < 1; the substitutions x = tan t and x = cos 2t; and the split arctan((A - B)/(1 + AB)) = arctan A - arctan B that makes long sums telescope. The hardest page of the chapter.",
       },
       {
-        name: "Complementary identities and arctan sums",
+        name: "Inverse Trigonometric Equations",
         description:
-          "arcsin x + arccos x = pi/2 and its two cousins collapse a whole family of sum questions to a constant. arctan x + arctan y = arctan((x + y)/(1 - xy)) holds only while xy is less than 1 — the side condition is the point of the formula, not a footnote.",
-      },
-      {
-        name: "Solving inverse-trig equations",
-        description:
-          "Take the appropriate trig function of both sides, solve the resulting algebraic equation, then discard every root whose value falls outside the principal range. The discard step is the marked one.",
+          "Combine with a complementary pair or the addition formula, take a trig function of both sides, solve — then substitute every root back. The questions that ask how many elements a solution set has are testing that last check.",
       },
     ],
     traps: [
@@ -309,7 +304,7 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
       },
     ],
     exampleQuestionIds: [],
-    relatedSlugs: ["trigonometry-i", "vectors", "differentiation"],
+    relatedSlugs: ["differentiation", "indefinite-integration", "limits"],
   },
 
   "differential-equations": {
@@ -456,7 +451,7 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
       "141 q at 3.15 per paper and 47% HARD. The subtopics here are method-pure: each one drills exactly one technique, and the exam sets them the same way. That is good news, because it means the chapter is learnable in six discrete pieces rather than as one undifferentiated mass — but it also means the exam expects you to identify the method from the shape of the function within a few seconds.",
       "Start with Foundations, Chain Rule and Differentiability (21 q, 29% HARD), which is the cheapest block and underlies all five others. Then Logarithmic Differentiation (25 q, 44%), which is a single trick applied consistently. Implicit Differentiation and Special Forms (31 q, 52%) and Parametric, Higher-Order Derivatives and Relations (18 q, 50%) come next. Inverse Functions and Inverse Trigonometric Differentiation is the biggest single block at 39 q and 49% HARD, and it deserves the most drilling time.",
       "Derivative of One Function with Respect to Another deserves an explicit warning: 7 q at 71% HARD, the worst marks-per-minute cell in the chapter. That is fewer than one appearance in six papers, at the highest difficulty rate here. Learn it last, and if it turns up when the clock is short, mark an option and move on — MHT-CET has no negative marking, so an unanswered question and a wrong one cost exactly the same.",
-      "One measured overlap to plan around: inverse trigonometry appears BOTH as its own chapter (73 q) and as a subtopic inside Trigonometry - II (21 q), and its differentiation lives here. The pre-simplification step — recognising a standard substitution that collapses a monstrous inverse-trig expression into something linear — is usually the entire question, and it is a trigonometry skill, not a calculus one.",
+      "One overlap to plan around: inverse trigonometry is a whole page of Trigonometric Functions (94 q), and its differentiation lives here. The pre-simplification step — recognising a standard substitution that collapses a monstrous inverse-trig expression into something linear — is usually the entire question, and it is a trigonometry skill, not a calculus one.",
     ],
     subSkills: [
       {

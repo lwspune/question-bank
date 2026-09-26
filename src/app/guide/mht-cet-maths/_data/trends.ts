@@ -51,7 +51,7 @@
  *   - Measures of Dispersion ran 1.0 q/paper across the 29 shifts of 2023-24,
  *     then scored ZERO across all 14 papers of 2025.
  *   - Conic Sections carried 3 questions in the whole bank before 2025, then
- *     16 in 2025 alone.
+ *     17 in 2025 alone.
  * A student prepping off 2023-24 papers therefore spends revision time on a
  * chapter that no longer appears, and walks into a chapter they have never
  * seen. That is the practical content of this page.
@@ -112,33 +112,23 @@ export const DRIFT_ROWS: DriftRow[] = [
   },
   {
     chapter: "Conic Sections",
-    lifetimeQCount: 19,
-    pctHard: 42,
+    lifetimeQCount: 20,
+    pctHard: 40,
     from: { label: "before 2025", shifts: 31, qInWindow: 3, qPerPaper: null },
-    to: { label: "2025", shifts: 14, qInWindow: 16, qPerPaper: null },
+    to: { label: "2025", shifts: 14, qInWindow: 17, qPerPaper: null },
     direction: "entered",
     note:
-      "Onto the paper. Three questions in the first 31 shifts of the bank, then 16 in the 14 shifts of 2025. 42% HARD, so it is not a free chapter either.",
+      "Onto the paper. Three questions in the first 31 shifts of the bank, then 17 in the 14 shifts of 2025. 40% HARD, so it is not a free chapter either.",
   },
   {
     chapter: "Trigonometric Functions",
-    lifetimeQCount: 168,
-    pctHard: 41,
-    from: { label: "lifetime (2021-2025)", shifts: 45, qInWindow: null, qPerPaper: 3.73 },
-    to: { label: "recent (2024-2025)", shifts: 26, qInWindow: null, qPerPaper: 4.31 },
+    lifetimeQCount: 212,
+    pctHard: 38,
+    from: { label: "lifetime (2021-2025)", shifts: 45, qInWindow: null, qPerPaper: 4.71 },
+    to: { label: "recent (2024-2025)", shifts: 26, qInWindow: null, qPerPaper: 4.85 },
     direction: "up",
     note:
-      "The steepest rise among the cornerstones, and the widest gap between lifetime and recent weightage anywhere above the tail. See the callout below.",
-  },
-  {
-    chapter: "Trigonometry - I",
-    lifetimeQCount: 77,
-    pctHard: 36,
-    from: { label: "lifetime (2021-2025)", shifts: 45, qInWindow: null, qPerPaper: 1.71 },
-    to: { label: "recent (2024-2025)", shifts: 26, qInWindow: null, qPerPaper: 1.31 },
-    direction: "down",
-    note:
-      "Softening, and it moves opposite to Trigonometric Functions. Its one subtopic still mixes Std XI compound-angle identities with Std XII trigonometric equations.",
+      "A modest rise overall that hides two opposite moves inside the chapter: solution of triangle climbing, trigonometric equations falling. See the callout below.",
   },
 ];
 
@@ -164,9 +154,9 @@ export type HardByYear = {
 export const HARD_BY_YEAR: HardByYear[] = [
   { year: 2021, papers: 1, totalQ: 50, hardQ: 10, pctHard: 20 },
   { year: 2022, papers: 1, totalQ: 48, hardQ: 15, pctHard: 31 },
-  { year: 2023, papers: 17, totalQ: 840, hardQ: 339, pctHard: 40 },
+  { year: 2023, papers: 17, totalQ: 832, hardQ: 332, pctHard: 40 },
   { year: 2024, papers: 12, totalQ: 596, hardQ: 283, pctHard: 47 },
-  { year: 2025, papers: 14, totalQ: 694, hardQ: 209, pctHard: 30 },
+  { year: 2025, papers: 14, totalQ: 675, hardQ: 200, pctHard: 30 },
 ];
 
 export type DriftCallout = {
@@ -192,14 +182,14 @@ export const DRIFT_CALLOUTS: DriftCallout[] = [
   },
   {
     icon: "up",
-    title: "Conic Sections entered — 3 questions before 2025, 16 in 2025 alone",
+    title: "Conic Sections entered — 3 questions before 2025, 17 in 2025 alone",
     description:
-      "The other half of the same 2025 syllabus move. Conic Sections carried 3 questions across the first 31 shifts of the bank, which is why it does not ship as a playbook on lifetime weight. In the 14 shifts of 2025 it carried 16. A student prepping from 2023-24 papers has, in practical terms, never seen this chapter, and it is 42% HARD — this is not a chapter you can pick up in the hall. Drill it from 2025 papers specifically.",
+      "The other half of the same 2025 syllabus move. Conic Sections carried 3 questions across the first 31 shifts of the bank, which is why it does not ship as a playbook on lifetime weight. In the 14 shifts of 2025 it carried 17. A student prepping from 2023-24 papers has, in practical terms, never seen this chapter, and it is 40% HARD — this is not a chapter you can pick up in the hall. Drill it from 2025 papers specifically.",
     drill: {
       chapter: "Conic Sections",
       pyqYears: [2025],
-      qCount: 16,
-      label: "Drill the 16 Conic Sections questions from 2025",
+      qCount: 17,
+      label: "Drill the 17 Conic Sections questions from 2025",
     },
   },
   {
@@ -215,24 +205,14 @@ export const DRIFT_CALLOUTS: DriftCallout[] = [
   },
   {
     icon: "up",
-    title: "Trigonometric Functions is the fastest-rising cornerstone — 3.73 q/paper lifetime, 4.31 on recent papers",
+    title: "Inside Trigonometric Functions, solution of triangle is rising and equations are falling",
     description:
-      "Std XII trigonometry moved from 3.73 questions per paper across the lifetime window to 4.31 across the 26 shifts of 2024-2025 — and because the lifetime window contains the recent one, that understates the rise. At 168 questions it is the fourth-largest chapter in the bank, behind only Vectors, Line and Plane and Applications of Derivative. Both halves are rising: Solution of Triangle moved 1.64 to 2.12 and Inverse Trigonometric Functions 2.09 to 2.19.",
+      "Std XII trigonometry is the second-largest chapter in the bank at 212 questions, and its weightage edged up from 4.71 questions per paper across the lifetime window to 4.85 across the 26 shifts of 2024-2025. The chapter total hides the real story. Solution of Triangle moved from 1.58 to 2.04 a paper, inverse trigonometry held (2.09 to 2.04), and trigonometric equations and general solutions fell from 1.04 to 0.77. Until 2026-09-26 the equations sat in a separate Std XI chapter, Trigonometry - I, which is why that chapter looked like it was softening. If your trigonometry hours are limited, solution of triangle is where they go first.",
     drill: {
       chapter: "Trigonometric Functions",
-      qCount: 168,
-      label: "Drill Trigonometric Functions (168 q, 41% HARD)",
-    },
-  },
-  {
-    icon: "down",
-    title: "Trigonometry - I is softening — 1.71 q/paper lifetime, 1.31 on recent papers",
-    description:
-      "The Std XI identity chapter is drifting down while its Std XII neighbour climbs, which is the single most useful thing to know about trigonometry on this paper: if your hours are limited, they belong in Trigonometric Functions. Trigonometry - I is still worth owning at 36% HARD — it is one undivided 77-question subtopic that mixes compound and multiple angles with trigonometric equations and general solutions, so there is nothing to cherry-pick and nothing to skip.",
-    drill: {
-      chapter: "Trigonometry - I",
-      qCount: 77,
-      label: "Drill Trigonometry - I (77 q, 36% HARD)",
+      subtopic: "Solution of Triangle — Sine, Cosine and Projection Rules",
+      qCount: 47,
+      label: "Drill the sine, cosine and projection rules (47 q, 43% HARD)",
     },
   },
 ];

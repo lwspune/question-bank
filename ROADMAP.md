@@ -1802,43 +1802,21 @@ the only place it runs.
 starting point.
 
 
-### BACKFILL LEDGER — MHT-CET Maths trigonometry, PHASE 2: split the 94 mixed identity/equation questions (logged 2026-09-17)
+### ~~BACKFILL LEDGER — MHT-CET Maths trigonometry, PHASE 2~~ — DONE 2026-09-26
 
-Phase 1 shipped 2026-09-17: the Std XII chapter was renamed `Inverse Trigonometric Functions` →
-**`Trigonometric Functions`**, and the two triangle subtopics (22 in Trigonometry - I + 52 in
-Trigonometry - II) plus Trigonometry - II's 21 inverse questions were merged into it. That chapter
-is now **168 q** — the 4th-largest in CET Maths — and the guide was re-tiered from Long Tail to
-Cornerstone to match. Two of the three overlaps are gone.
+Executed on the user's approval ("Both yes" — delete Trigonometry - I and go with the Balbharati carve if the syllabus document does not settle it; the only document on disk, `MHT_CET_%tage_weightage`, lists chapters, not their contents). Every one of the 94 rows was located in its paper (`generated-papers/_locate_fuzzy.py`) and read: 47 equation rows → a new `Trigonometric Equations and General Solutions` subtopic under `Trigonometric Functions`, 7 inverse-trig rows → its inverse subtopic, 40 identity rows → `Trigonometry - II`. `Trigonometry - I` was then empty and was DELETED (`generated-papers/_carve-trig.ts`, local backup taken first). Trigonometric Functions was then re-carved into six notes pages and shipped as notes the same day; the guide, books registry and trends matrix were re-synced. Long form in DECISIONS_HISTORY.md.
 
-**What is left: 94 questions in two subtopics that each MIX Std XI and Std XII material.**
+## Backfill ledger — MHT_CET_2025_PCM.xlsx is a compilation whose rows keep turning out to be twins (2026-09-26)
 
-| Subtopic | Chapter | q |
-|---|---|---|
-| `Trig Identities, Compound Angle, and Equations` | Trigonometry - I | 77 |
-| `Trigonometric Identities and Compound/Half-Angle Formulas` | Trigonometry - II | 17 |
+The undated "2025 · Shift ||" source file is not a sitting. Across the CET notes programme its rows have repeatedly been found to be copies of 19 April 2025 Shift II rows (six more in Trigonometric Functions alone on 2026-09-26), and each one goes PRIVATE. Its PUBLIC Maths column is down to **29** questions, which is why `tests/mhtcet-trends-reconcile.test.ts` now exempts undated columns from its "more than 40 questions" check.
+- **Scope:** every remaining PUBLIC row with `source_file = 'MHT_CET_2025_PCM.xlsx'`, all three subjects.
+- **Method:** the fuzzy locator already built for trig (`_locate_fuzzy.py` + `_ak_check.py`); a row whose paper item is already held by a dated row is a twin.
+- **Recommendation:** do, chapter by chapter as each is noted (the programme is already doing this), then one sweep for the rest. Shipped chapters need the usual confirmation.
 
-Both bundle Std XI identity work (allied / compound / multiple / half-angle, factorisation) with
-Std XII **trigonometric equations and general solutions**, which are section 1 of Balbharati XII
-Ch.3 and belong in `Trigonometric Functions`. Unlike Phase 1 this is **NOT a bulk UPDATE** — it
-needs a per-question read of all 94 stems, because the split is within a subtopic, not between
-subtopics.
+## Backfill ledger — "3rd May 2nd Shift" 2023 rows are the 3 May SHIFT 1 paper (2026-09-26)
 
-**Target shape:** a new `Trigonometric Equations and General Solutions` subtopic under
-`Trigonometric Functions` (matching the board's own section name); the residual identity rows
-consolidate into `Trigonometry - II`, which is the Std XI identity chapter; `Trigonometry - I`
-holds none of its own namesake material (unit circle, quadrant signs, domain/range, polar) — the
-CET bank has **zero** questions on any of it — so once emptied that chapter should be DELETED.
-
-**Downstream, all of it name-keyed and already proven to break loudly:** `src/lib/books/registry.ts`
-(`tests/books-registry.test.ts`), the `/guide/mht-cet-maths` editorial across strategy / trends /
-traps / playbooks / playbook-details-core+tail / formulas / mht-cet-maths.ts
-(`tests/guide-mht-cet-maths-playbooks.test.ts`), and the `/questions/mht-cet/maths/<chapter>`
-landing-page URLs. No chapter UUID is pinned anywhere in the repo — checked all three in Phase 1 —
-and there are no CET trig `/notes` chapters, so the rot surface is those two files plus the guide.
-
-**Before starting, confirm the carve against the official MHT-CET syllabus PDF.** Phase 1 inferred
-it from the Balbharati spine in our own DB (`syllabus_concepts`, source `MH State Board`), which is
-strong evidence but is not the syllabus document.
+The trends matrix header reports it as a dispute it will not resolve: `MHT_CET_3rdMay2023_S1_QB.xlsx` — filename shift 1, `pyq_note` "3rd May 2nd Shift". Every row checked so far (six in Trigonometric Functions, more in Chemistry) is in the 3 May SHIFT 1 paper. Re-dated where a chapter was noted; the rest of the file still carries the wrong label.
+- **Recommendation:** do, as one scripted re-date of every row from that file, after a spot check of ten rows against the paper. Reversible; the label is display-only.
 
 ### BACKFILL LEDGER — 176 questions draw matrices in ROUND brackets (logged 2026-09-17)
 
