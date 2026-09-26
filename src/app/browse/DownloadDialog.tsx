@@ -28,11 +28,14 @@ import type { Filters } from "@/lib/questions/filters";
 import LanguageSwitch from "@/components/i18n/LanguageSwitch";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import { useCart } from "@/lib/cart/CartProvider";
+import { formatRupees, getPlan } from "@/lib/billing/plans";
 import { resolveExportAccess } from "@/lib/export/access";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 
 type Mode = "filters" | "cart";
+const TEACHER_PASS_PRICE = formatRupees(getPlan("teacher-pass-1y")?.amountPaise ?? 49900);
+
 type Kind = "paper" | "key" | "tags" | "ppt";
 
 // Per-kind download metadata: filename prefix, extension, success-toast label.
@@ -56,6 +59,8 @@ export default function DownloadDialog({
   isSignedIn = false,
   /** Org staff (ADMIN/TEACHER) — additionally unlocks the tagged sheet. */
   isStaff = false,
+  /** Active Teacher Pass — unlocks the paper + key (not slides or the sheet). */
+  hasTeacherPass = false,
   /** The filtered exam prints Marathi + English (MPSC) — offer a print language. */
   bilingual = false,
 }: {
@@ -67,13 +72,16 @@ export default function DownloadDialog({
   hideTrigger?: boolean;
   isSignedIn?: boolean;
   isStaff?: boolean;
+  hasTeacherPass?: boolean;
   bilingual?: boolean;
 }) {
   // Downloads are staff-only (paper/key/tags all require an org account). A
   // non-staff visitor (anon OR signed-in student) sees a "request teacher access"
   // prompt instead — derived from the same gate the API enforces.
-  const canDownload = resolveExportAccess({ kind: "paper", isSignedIn, isStaff }).allowed;
-  const canTags = resolveExportAccess({ kind: "tags", isSignedIn, isStaff }).allowed;
+  const who = { isSignedIn, isStaff, hasTeacherPass };
+  const canDownload = resolveExportAccess({ kind: "paper", ...who }).allowed;
+  const canTags = resolveExportAccess({ kind: "tags", ...who }).allowed;
+  const canSlides = resolveExportAccess({ kind: "ppt", ...who }).allowed;
   const [internalOpen, setInternalOpen] = useState(false);
   const open = externalOpen ?? internalOpen;
   const setOpen = (v: boolean) => {
@@ -196,8 +204,10 @@ export default function DownloadDialog({
             {canDownload ? (
               <>
                 Word files — Question Paper and Answer Key (0.5″ margins, 2
-                columns, Cambria 10pt) — plus a PowerPoint deck (.pptx), one
-                question per slide for projecting in class
+                columns, Cambria 10pt)
+                {canSlides
+                  ? " — plus a PowerPoint deck (.pptx), one question per slide for projecting in class"
+                  : ""}
                 {canTags
                   ? ", and a tagged sheet (.xlsx) for nda-tracker, numbered to match the paper."
                   : "."}
@@ -212,7 +222,9 @@ export default function DownloadDialog({
           <div className="flex-1 space-y-3 overflow-y-auto px-6 py-4 text-sm text-muted-foreground">
             <p>
               Building and downloading question papers as Word files is a teacher
-              feature. Request a teacher account and we&apos;ll set you up.
+              feature. Get a <strong className="text-foreground">Teacher Pass</strong>{" "}
+              ({TEACHER_PASS_PRICE} for a year) for instant access, or request a teacher account
+              and we&apos;ll set you up.
             </p>
             <p>
               You&apos;ll be able to filter the bank, assemble papers, and export
@@ -333,7 +345,8 @@ export default function DownloadDialog({
             {busy ? "Working…" : canDownload ? "Done" : "Cancel"}
           </Button>
           {!canDownload ? (
-            <Button asChild variant="brand" className="w-full sm:w-auto">
+            <>
+            <Button asChild variant="outline" className="w-full sm:w-auto">
               <Link
                 href="/request-access"
                 onClick={() =>
@@ -344,6 +357,10 @@ export default function DownloadDialog({
                 Request teacher access
               </Link>
             </Button>
+            <Button asChild variant="brand" className="w-full sm:w-auto">
+              <Link href="/pricing?plan=teacher">Get Teacher Pass</Link>
+            </Button>
+            </>
           ) : (
             <>
               {canTags && (
@@ -357,15 +374,17 @@ export default function DownloadDialog({
                   {busyKind === "tags" ? "Generating…" : "Tagged sheet"}
                 </Button>
               )}
-              <Button
-                variant="outline"
-                onClick={() => onDownload("ppt")}
-                disabled={busy || overCap || activeCount === 0}
-                className="w-full sm:w-auto"
-              >
-                <Presentation className="h-4 w-4" aria-hidden />
-                {busyKind === "ppt" ? "Generating…" : "Slides"}
-              </Button>
+              {canSlides && (
+                <Button
+                  variant="outline"
+                  onClick={() => onDownload("ppt")}
+                  disabled={busy || overCap || activeCount === 0}
+                  className="w-full sm:w-auto"
+                >
+                  <Presentation className="h-4 w-4" aria-hidden />
+                  {busyKind === "ppt" ? "Generating…" : "Slides"}
+                </Button>
+              )}
               <Button
                 variant="outline"
                 onClick={() => onDownload("key")}

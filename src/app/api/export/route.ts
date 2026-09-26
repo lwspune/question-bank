@@ -3,6 +3,8 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { resolveExportAccess, type ExportKind } from "@/lib/export/access";
+import { userHasAccess } from "@/lib/entitlements/query";
+import { SCOPE_TEACHER } from "@/lib/entitlements/access";
 import { recordExportEvent } from "@/lib/export/log";
 import { applyExportLanguage, parseExportLang } from "@/lib/export/exportLanguage";
 import {
@@ -91,10 +93,16 @@ export async function POST(request: NextRequest) {
     }
     const isStaff = !!member;
     const isSignedIn = !!user;
+    // Teacher Pass: a paid grant that unlocks paper + key without an org.
+    const hasTeacherPass =
+      user && !isStaff
+        ? await userHasAccess(createSupabaseServerClient(), user.id, SCOPE_TEACHER)
+        : false;
     const bucket = user
       ? `export:user:${user.id}`
       : `export:anon:${getClientIp(request)}`;
-    const limit = isStaff ? AUTHED_LIMIT : isSignedIn ? STUDENT_LIMIT : ANON_LIMIT;
+    const limit =
+      isStaff || hasTeacherPass ? AUTHED_LIMIT : isSignedIn ? STUDENT_LIMIT : ANON_LIMIT;
 
     const admin = createSupabaseAdminClient();
     const rl = await checkAndIncrement(admin, bucket, {
@@ -152,10 +160,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Download gate: paper/key need any signed-in account; the tagged sheet is
-    // staff-only. Enforced server-side (never trust the hidden UI buttons),
-    // after the cheap payload validation and before the expensive query.
-    const access = resolveExportAccess({ kind, isSignedIn, isStaff });
+    // Download gate: staff, or a Teacher Pass for paper/key. Enforced
+    // server-side (never trust the hidden UI buttons), after the cheap payload
+    // validation and before the expensive query.
+    const access = resolveExportAccess({ kind, isSignedIn, isStaff, hasTeacherPass });
     if (!access.allowed) {
       return NextResponse.json({ error: access.message }, { status: access.status });
     }

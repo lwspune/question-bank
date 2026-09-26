@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { CheckCircle2 } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import RequestAccessForm from "./RequestAccessForm";
+import Link from "next/link";
+import { formatRupees, getPlan } from "@/lib/billing/plans";
+
+const TEACHER_PASS_PRICE = formatRupees(getPlan("teacher-pass-1y")?.amountPaise ?? 49900);
 
 export const metadata: Metadata = {
   title: "Request teacher access",
@@ -26,12 +30,26 @@ export default function RequestAccessPage() {
             Request teacher access
           </h1>
           <p className="text-sm text-muted-foreground">
-            Browsing, previewing, timed mock tests and notes are free for everyone.
-            Building and downloading question papers as Word files is for teacher
-            accounts, which our team sets up. Tell us a bit about yourself and
-            we&apos;ll be in touch.
+            Browsing, previewing and notes are free for everyone. Building and
+            downloading question papers as Word files is for teacher accounts,
+            which our team sets up. Tell us a bit about yourself and we&apos;ll be
+            in touch.
           </p>
         </header>
+
+        <div className="rounded-lg border-2 border-brand-accent/40 p-4 text-sm">
+          <p className="font-medium">Need papers today?</p>
+          <p className="mt-1 text-muted-foreground">
+            The Teacher Pass gives you Word paper and answer-key downloads straight
+            away: {TEACHER_PASS_PRICE} for a year, one-time payment.
+          </p>
+          <Link
+            href="/pricing?plan=teacher"
+            className="mt-2 inline-block font-medium text-brand-accent underline"
+          >
+            Get the Teacher Pass
+          </Link>
+        </div>
 
         <ul className="space-y-2 rounded-lg border bg-muted/30 p-4">
           {PERKS.map((p) => (
