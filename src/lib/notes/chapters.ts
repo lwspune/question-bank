@@ -584,6 +584,11 @@ import {
   MHTCET_GROUP12_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/elements-of-group-1-and-2/_data";
 import {
+  MHTCET_AROMATIC_CHAPTER,
+  MHTCET_AROMATIC_NOTES,
+  MHTCET_AROMATIC_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/aromatic-compounds/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1491,6 +1496,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_GROUP12_CHAPTER,
     notes: MHTCET_GROUP12_NOTES,
     slugs: MHTCET_GROUP12_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "aromatic-compounds",
+    chipLabel: "Aromatic Compounds notes",
+    chapter: MHTCET_AROMATIC_CHAPTER,
+    notes: MHTCET_AROMATIC_NOTES,
+    slugs: MHTCET_AROMATIC_SLUGS,
   },
   {
     examName: "NDA",
