@@ -10,6 +10,8 @@ import { getMockBySlug, getUserAttempts } from "@/lib/mocks/query";
 import { markingCopy } from "@/lib/mocks/marking";
 import { mockKindNote } from "@/lib/mocks/catalogue";
 import StartMock from "./StartMock";
+import { getMockQuota } from "@/lib/mocks/service";
+import { mockStartState } from "@/lib/mocks/quota";
 import { getExamByName } from "@/lib/exam/examContext";
 import ShareMock from "./ShareMock";
 import AttemptsList from "../_components/AttemptsList";
@@ -31,9 +33,15 @@ export default async function MockInstructions({ params }: { params: Params }) {
   const mock = await getMockBySlug(createSupabaseAnonClient(), params.slug);
   if (!mock) notFound();
   const [user, member] = await Promise.all([getSessionUser(), getSessionMember()]);
-  const myAttempts = user
-    ? await getUserAttempts(createSupabaseServerClient(), user.id, mock.id)
-    : [];
+  const [myAttempts, quota] = user
+    ? await Promise.all([
+        getUserAttempts(createSupabaseServerClient(), user.id, mock.id),
+        getMockQuota(createSupabaseServerClient()),
+      ])
+    : [[], null];
+  // Free-mock limit (migration 0120): open, "N free left", or locked. A retake
+  // of this paper is always open.
+  const startState = mockStartState(quota, myAttempts.length > 0);
   // Set by a teacher? One line under the title, only for a student in a batch
   // this paper was assigned to (ENGAGEMENT_SPEC.md C1). Best-effort.
   const assigned = user
@@ -123,7 +131,11 @@ export default async function MockInstructions({ params }: { params: Params }) {
 
         <div className="mt-6">
           {user ? (
-            <StartMock slug={mock.slug} bilingual={getExamByName(mock.examName)?.bilingual === true} />
+            <StartMock
+              slug={mock.slug}
+              bilingual={getExamByName(mock.examName)?.bilingual === true}
+              startState={startState}
+            />
           ) : (
             <div className="rounded-lg border border-dashed p-5 text-center">
               <p className="text-sm text-muted-foreground">Sign in to take this timed mock and save your score.</p>
