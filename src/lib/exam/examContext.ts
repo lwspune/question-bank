@@ -519,6 +519,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // set earlier from the PAPERS — the flag describes the PUBLIC corpus, and
     // setting it while that corpus was empty is what failed the contract suite on
     // the isc-12 entry.
+    hasMocks: true, // 5 published IPMAT Indore mocks; unflagged they were reachable only by URL
   },
   {
     slug: "ipmat-rohtak",
