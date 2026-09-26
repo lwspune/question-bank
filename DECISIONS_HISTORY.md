@@ -15,6 +15,14 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-26 (fifth) — MHT-CET Chemistry "Elements of Group 1 and 2" ships (3 pages · 37 PYQ · 7 concepts · 5 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-group-1-2` — the Chemistry programme's nineteenth chapter.**
+
+**Shape.** 38 PUBLIC PYQ before the source pass, 37 after; none HARD. The three DB subtopics are the pages: Group 1 (11), Group 2 (11), hydrogen, industrial processes, minerals and alloys (15). All seven concepts are reference variants: alkali-metal properties (6), oxides/carbonates/ammonia/uses (5), beryllium's anomalies (7), Mg/Ca reactions (4), hydrogen and H₂O₂ (6), Solvay and lime (3), minerals/alloys/uses (6). `quiz:coverage` reports 0 formula gaps because there are no formula cards to harvest from.
+
+**Source pass (generated-papers/_repair-chg12.ts, guarded and idempotent).** (1) `16c952a1` → PRIVATE: the >99.5%-purity hydrogen question is in ONE paper (19 Apr 2025 S2 #59), keyed to electrolysis of warm Ba(OH)₂; this 'Shift ||' copy had replaced option (a) with 'Electrolysis of pure water' and keyed that. `4aaa8efd` is the faithful copy. (2) `a6d30155` water gas → '3rd May Shift 1' (the stem is in the 3 May 2023 SHIFT 1 paper, #83). (3) `8aa87205` amphoteric BeO → '16th May Shift 2' (#79).
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:coverage none · quiz:coverage 0 STRONG gaps (5 traps) · notes:intro clean · stats 116 · seo:dates.
+
 **2026-09-26 (fourth) — MHT-CET Chemistry "Alkenes" ships (3 pages · 36 PYQ · 7 concepts · 5 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-alkenes` — the Chemistry programme's eighteenth chapter.**
 
 **Shape.** 38 PUBLIC PYQ before the source pass, 36 after; none HARD. The three DB subtopics are the pages, ordered structure (14) → preparation (3) → reactions (19). Concepts: IUPAC naming (6), isomers/hybridisation/alkadiene (4), stability (4); dehydrohalogenation and Saytzeff (3); addition incl. Markovnikov, peroxide effect, Br₂, allylic bromination and hydroboration (7), KMnO₄ oxidation incl. Wacker (9), ozonolysis (3).
