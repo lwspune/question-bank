@@ -38,6 +38,7 @@ const ARC_VERIFIED = new Set<string>([
   "straight-line",
   "pair-of-straight-lines",
   "circle",
+  "trigonometric-functions",
   // measures-of-dispersion has notes but no playbook (dropped chapter), so nothing to pin
   // sets-relations-and-functions has notes but no playbook (below the q/paper line), so nothing to pin here
 ]);
