@@ -569,6 +569,11 @@ import {
   MHTCET_REDOX_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/redox-reactions/_data";
 import {
+  MHTCET_SURFACE_CHAPTER,
+  MHTCET_SURFACE_NOTES,
+  MHTCET_SURFACE_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/surface-chemistry/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1443,6 +1448,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_REDOX_CHAPTER,
     notes: MHTCET_REDOX_NOTES,
     slugs: MHTCET_REDOX_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "surface-chemistry",
+    chipLabel: "Surface Chemistry notes",
+    chapter: MHTCET_SURFACE_CHAPTER,
+    notes: MHTCET_SURFACE_NOTES,
+    slugs: MHTCET_SURFACE_SLUGS,
   },
   {
     examName: "NDA",
