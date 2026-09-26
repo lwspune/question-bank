@@ -32,6 +32,7 @@ import {
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { STRATEGY_STRANDS, TAIL_CHAPTERS } from "@/app/guide/mht-cet-maths/_data/strategy";
 import { DRIFT_ROWS, DRIFT_CALLOUTS } from "@/app/guide/mht-cet-maths/_data/trends";
+import { CHAPTER_MATRIX, SHIFT_PAPERS } from "@/app/guide/mht-cet-maths/_data/matrix.generated";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -76,8 +77,8 @@ describe("mht-cet-maths playbooks — static structure", () => {
   it("strand sizes match what the strategy page claims", () => {
     expect(playbooksInBucket("cornerstone")).toHaveLength(7);
     expect(playbooksInBucket("quickwin")).toHaveLength(5);
-    expect(playbooksInBucket("longtail")).toHaveLength(8);
-    expect(PLAYBOOKS).toHaveLength(20);
+    expect(playbooksInBucket("longtail")).toHaveLength(9);
+    expect(PLAYBOOKS).toHaveLength(21);
   });
 
   it("the cornerstone claim is arithmetic on the data, not prose", () => {
@@ -102,6 +103,22 @@ describe("mht-cet-maths playbooks — static structure", () => {
       ...playbooksInBucket("quickwin").map((p) => p.pctHard)
     );
     expect(maxQuickWin).toBeLessThanOrEqual(31); // Mathematical Logic, see its summary
+  });
+
+  it("every chapter at or above the 0.9 q/paper line HAS a playbook, and states the grid's rate", () => {
+    // The other direction of the rule below. Until 2026-09-26 only "no playbook below the line"
+    // was asserted, so Trigonometry - II crossed the line (0.88 -> 0.92) with nothing to notice.
+    // The rate is recomputed from the generated matrix over 2024-2025, not read from prose.
+    const recent = SHIFT_PAPERS.flatMap((p, i) => (p.year >= 2024 ? [i] : []));
+    for (const row of CHAPTER_MATRIX) {
+      const rate = recent.reduce((a, c) => a + row.counts[c], 0) / recent.length;
+      const pb = PLAYBOOKS.find((p) => p.chapter === row.chapter);
+      if (rate >= 0.9) expect(pb, `${row.chapter} runs ${rate.toFixed(2)} q/paper but has no playbook`).toBeDefined();
+      if (pb) {
+        expect(pb.qPerPaper, `${row.chapter} qPerPaper vs the grid`).toBeCloseTo(rate, 2);
+        expect(pb.qCount, `${row.chapter} qCount vs the grid`).toBe(row.total);
+      }
+    }
   });
 
   it("no playbook ships below the 0.9 q/paper inclusion line", () => {

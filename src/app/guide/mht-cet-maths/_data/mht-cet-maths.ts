@@ -18,14 +18,14 @@
  *     answer all 50 — so the strategy page is about ORDER and TIME instead.
  *     50 questions in 90 minutes is 1.8 minutes per question.
  *
- *   - Weightage is RECENT (2024-2025, 26 shifts), not lifetime. MHT-CET moved
+ *   - Weightage is RECENT (2024-2025, 25 shifts), not lifetime. MHT-CET moved
  *     its syllabus for 2025: Measures of Dispersion ran 1.0 q/paper across the
- *     29 shifts of 2023-24 and then scored ZERO across all 14 papers of 2025,
- *     while Conic Sections went 3 questions lifetime-before-2025 to 17 in 2025
+ *     29 shifts of 2023-24 and then scored ZERO across all 13 papers of 2025,
+ *     while Conic Sections went 3 questions lifetime-before-2025 to 15 in 2025
  *     alone. A lifetime average hides both, which is why CHAPTER_TABLE carries
  *     `qPerPaper` alongside `qCount` and is sorted on the former.
  *
- * The paper is hard and it is dense: 38.4% of the bank is HARD, against 10.2%
+ * The paper is hard and it is dense: 38.2% of the bank is HARD, against 10.0%
  * EASY. Say so plainly rather than selling the subject.
  */
 
@@ -42,19 +42,19 @@ export const ROUTES: GuideRoute[] = [
     slug: "",
     label: "Overview",
     blurb:
-      "How MHT-CET Maths actually works — 50 questions, 90 minutes, no negative marking, and what 2,228 past-year questions across 45 shifts reveal.",
+      "How MHT-CET Maths actually works — 50 questions, 90 minutes, no negative marking, and what 2,175 past-year questions across 44 shifts reveal.",
   },
   {
     slug: "strategy",
     label: "Strategy",
     blurb:
-      "Cornerstone, Quick-Win, Long Tail — 6 chapters carry 23.4 of the 50 questions. With no negative marking the decision is order and time, never whether to attempt.",
+      "Cornerstone, Quick-Win, Long Tail — 7 chapters carry 28.7 of the 50 questions. With no negative marking the decision is order and time, never whether to attempt.",
   },
   {
     slug: "playbooks",
     label: "Playbooks",
     blurb:
-      "22 playbooks — one per chapter above 0.9 questions per paper. The subtopic split, where the HARD sits, and whether the chapter cherry-picks.",
+      "21 playbooks — one per chapter above 0.9 questions per paper. The subtopic split, where the HARD sits, and whether the chapter cherry-picks.",
   },
   {
     slug: "formulas",
@@ -66,24 +66,24 @@ export const ROUTES: GuideRoute[] = [
     slug: "trends",
     label: "Trends",
     blurb:
-      "The 2025 syllabus shift, in numbers — Measures of Dispersion dropped to zero across all 14 papers, Conic Sections went 3 to 17. Prep from 2023-24 alone and you drill a dead chapter.",
+      "The 2025 syllabus shift, in numbers — Measures of Dispersion dropped to zero across all 13 papers, Conic Sections went 3 to 15. Prep from 2023-24 alone and you drill a dead chapter.",
   },
   {
     slug: "traps",
     label: "Traps",
     blurb:
-      "The same idea in four chapter dialects — perpendicularity appears in 83 questions across 7 chapters, and inverse trigonometry is filed under two different chapters at once.",
+      "The same idea in four chapter dialects — perpendicularity appears in 83 questions across 7 chapters, and 84% of the trigonometry sits in the chapter whose name students do not recognise.",
   },
 ];
 
 export type Overview = {
   totalQ: number;
   /** Distinct MHT-CET shifts covered: 2021 = 1, 2022 = 1, 2023 = 17,
-   *  2024 = 12, 2025 = 14. */
+   *  2024 = 12, 2025 = 13. */
   papers: number;
   yearsCovered: number;
   chapters: number;
-  /** Playbook count. 20 of the 26 chapters clear the 0.9 q/paper line. */
+  /** Playbook count. 21 of the 26 chapters clear the 0.9 q/paper line. */
   playbooks: number;
   /** Paper I is Mathematics ONLY. Physics and Chemistry are Paper II at
    *  1 mark each; these fields describe the Maths paper alone. */
@@ -108,11 +108,11 @@ export type Overview = {
  *  would ship a wrong number as fact. Add `formulas: number` to `Overview`
  *  and set it once formulas.ts exists and can be counted. */
 export const OVERVIEW: Overview = {
-  totalQ: 2228,
-  papers: 45,
+  totalQ: 2175,
+  papers: 44,
   yearsCovered: 5, // 2021-2025 inclusive
   chapters: 26,
-  playbooks: 20,
+  playbooks: 21,
   paper: {
     questions: 50,
     marksPerQuestion: 2,
@@ -121,22 +121,22 @@ export const OVERVIEW: Overview = {
     negativeMarking: false,
     minutesPerQuestion: 1.8,
   },
-  // EASY 10.2% - MODERATE 51.4% - HARD 38.4%. Sums to totalQ.
-  difficulty: { easy: 227, moderate: 1145, hard: 856 },
-  asOf: "2026-08-22",
+  // EASY 10.0% - MODERATE 51.8% - HARD 38.2%. Sums to totalQ.
+  difficulty: { easy: 218, moderate: 1127, hard: 830 },
+  asOf: "2026-09-26",
 };
 
 /** Whether the chapter is still being set on current papers.
- *  Derived from the 2025 shifts (14 papers), not from a lifetime average. */
+ *  Derived from the 2025 shifts (13 papers), not from a lifetime average. */
 export type ChapterStatus = "live" | "dropped" | "entered";
 
 export type ChapterRow = {
   chapter: string; // canonical DB chapter name
-  /** Lifetime PUBLIC PYQ count across all 45 shifts. */
+  /** Lifetime PUBLIC PYQ count across all 44 shifts. */
   qCount: number;
-  /** % of the 2,228-question bank (1 decimal). */
+  /** % of the 2,175-question bank (1 decimal). */
   pctTotal: number;
-  /** Questions per paper on RECENT shifts (2024-2025, 26 shifts). This is the
+  /** Questions per paper on RECENT shifts (2024-2025, 25 shifts). This is the
    *  number the guide tiers on, and the number to quote to a student. */
   qPerPaper: number;
   /** % HARD within the chapter (rounded integer). */
@@ -153,134 +153,135 @@ export type ChapterRow = {
 
 /** All 26 MHT-CET Maths chapters, sorted by RECENT weightage (qPerPaper)
  *  descending — not by lifetime qCount, because that is what the guide tiers
- *  on and the two disagree (Vectors leads on lifetime count, Line and Plane
- *  leads on recent rate).
+ *  on and the two disagree (Vectors leads on lifetime count, Trigonometric
+ *  Functions leads on recent rate).
  *
- *  The 27 qCounts sum to EXACTLY 2228, which is `OVERVIEW.totalQ`. Verified
+ *  The 26 qCounts sum to EXACTLY 2175, which is `OVERVIEW.totalQ`. Verified
  *  by summation, not asserted. If a future edit breaks that identity, one of
  *  the two numbers is wrong — do not adjust a chapter to make it balance.
  *
- *  20 of these 26 ship a playbook (see playbooks.ts); the 6 below the
+ *  21 of these 26 ship a playbook (see playbooks.ts); the 5 below the
  *  0.9 q/paper line do not and are covered in a tail block on /strategy.
  *
  *  2026-09-26: Trigonometry - I was split by stem into Trigonometric Functions
  *  (equations + inverse) and Trigonometry - II (identities) and deleted, and 11
- *  duplicate rows went PRIVATE. Only the three trigonometry rows were re-measured;
- *  the other rows and OVERVIEW's totals are the earlier snapshot. */
+ *  duplicate rows went PRIVATE. The same day every row and OVERVIEW were re-measured
+ *  from the regenerated matrix, after 83 undated "2025 Shift ||" compilation rows went
+ *  PRIVATE as twins of dated papers; 2025 is now its 13 real shifts. */
 export const CHAPTER_TABLE: ChapterRow[] = [
   {
-    chapter: "Line and Plane",
-    qCount: 205,
-    pctTotal: 9.2,
-    qPerPaper: 4.96,
-    pctHard: 42,
-    focus:
-      "Plane — Equation, Normal, and Construction (47 · 38% HARD), Intersection, Coplanarity, and Skew Lines (37 · 62%), Distances in 3-D (33 · 42%), Angles — Line, Plane, and Direction Conditions (29 · 45%), Line — Equation, Direction Cosines, and Vector Form (29 · 21%), Foot of Perpendicular, Image, and Projection (19 · 53%), Tetrahedron Geometry — Centroid, Volume, and Vertices (11 · 27%). The HARD is spread across seven subtopics rather than concentrated, so there is no cherry-pick here.",
-  },
-  {
     chapter: "Trigonometric Functions",
-    qCount: 212,
-    pctTotal: 9.6,
-    qPerPaper: 4.85,
+    qCount: 211,
+    pctTotal: 9.7,
+    qPerPaper: 5.04,
     pctHard: 38,
     focus:
-      "Trigonometric Equations and General Solutions (47 · 36% HARD), Sine, Cosine and Projection Rules (47 · 43%), Half-Angle Formulas, Napier's Analogy and Area (24 · 38%), Inverse Trigonometric Functions — Principal Values and Evaluation (33 · 24%), Inverse Trigonometric Identities (30 · 63%), Inverse Trigonometric Equations (31 · 23%). The Std XII trigonometry chapter and the second-largest in the bank. Solution of triangle is rising (1.58 to 2.04 a paper); equations are falling (1.04 to 0.77).",
+      "Trigonometric Equations and General Solutions (47 · 36% HARD), Sine, Cosine and Projection Rules (47 · 43%), Half-Angle Formulas, Napier's Analogy and Area (24 · 38%), Inverse Trigonometric Functions — Principal Values and Evaluation (32 · 25%), Inverse Trigonometric Identities (30 · 63%), Inverse Trigonometric Equations (31 · 23%). The Std XII trigonometry chapter and the second-largest in the bank. Solution of triangle is rising (1.61 to 2.12 a paper); equations are falling (1.07 to 0.80).",
+  },
+  {
+    chapter: "Line and Plane",
+    qCount: 200,
+    pctTotal: 9.2,
+    qPerPaper: 4.96,
+    pctHard: 43,
+    focus:
+      "Plane — Equation, Normal, and Construction (45 · 38% HARD), Intersection, Coplanarity, and Skew Lines (37 · 62%), Distances in 3-D (32 · 41%), Angles — Line, Plane, and Direction Conditions (29 · 45%), Line — Equation, Direction Cosines, and Vector Form (29 · 21%), Foot of Perpendicular, Image, and Projection (17 · 59%), Tetrahedron Geometry — Centroid, Volume, and Vertices (11 · 27%). The HARD is spread across seven subtopics rather than concentrated, so there is no cherry-pick here.",
   },
   {
     chapter: "Vectors",
-    qCount: 228,
-    pctTotal: 10.2,
-    qPerPaper: 4.81,
+    qCount: 224,
+    pctTotal: 10.3,
+    qPerPaper: 4.84,
     pctHard: 55,
     focus:
-      "Scalar Triple Product, Coplanarity, and Volume (71 · 72% HARD), Cross Product, Angle, and Area (66 · 64%), Dot Product, Angle, and Perpendicularity (50 · 28%), Vector Geometry — Section Formula, Triangle, and Parallelogram (16 · 50%), Linear Combinations, Collinearity, and Coplanarity (15 · 53%), Magnitude, Components, and Unit Vectors (10 · 30%). Largest chapter in the bank and the hardest cornerstone — but it DOES cherry-pick: Dot Product is 50 questions at 28% HARD.",
+      "Scalar Triple Product, Coplanarity, and Volume (71 · 72% HARD), Cross Product, Angle, and Area (66 · 64%), Dot Product, Angle, and Perpendicularity (48 · 25%), Vector Geometry — Section Formula, Triangle, and Parallelogram (14 · 50%), Linear Combinations, Collinearity, and Coplanarity (15 · 53%), Magnitude, Components, and Unit Vectors (10 · 30%). Largest chapter in the bank and the hardest cornerstone — but it DOES cherry-pick: Dot Product is 48 questions at 25% HARD.",
   },
   {
     chapter: "Applications of Derivative",
-    qCount: 183,
-    pctTotal: 8.2,
-    qPerPaper: 3.81,
+    qCount: 182,
+    pctTotal: 8.4,
+    qPerPaper: 3.88,
     pctHard: 23,
     focus:
-      "Maxima, Minima, and Optimisation (42 · 29% HARD), Rate of Change and Related Rates (40 · 20%), Tangents, Normals, and the Slope of a Curve (35 · 29%), Increasing and Decreasing Functions (29 · 31%), Rolle's Theorem and Mean Value Theorem (18 · 17%), Approximations using Differentials (11 · 0%), Angle Between Curves and Orthogonality (8 · 13%). The cheapest cornerstone by some distance — no subtopic above 31% HARD.",
-  },
-  {
-    chapter: "Differential Equations",
-    qCount: 144,
-    pctTotal: 6.5,
-    qPerPaper: 3.35,
-    pctHard: 38,
-    focus:
-      "Growth, Decay, and Continuous Models (33 · 27% HARD), Order, Degree, Formation of ODE, and Verification of Solutions (33 · 24%), Variable-Separable Equations (33 · 39%), Linear Differential Equations (Integrating Factor) (24 · 63%), Homogeneous and Reducible Equations (16 · 38%), Newton's Law of Cooling (5 · 60%). The subtopics split by SOLUTION METHOD, which is exactly how the questions are set.",
+      "Maxima, Minima, and Optimisation (42 · 29% HARD), Rate of Change and Related Rates (40 · 20%), Tangents, Normals, and the Slope of a Curve (33 · 24%), Increasing and Decreasing Functions (29 · 31%), Rolle's Theorem and Mean Value Theorem (18 · 17%), Approximations using Differentials (12 · 0%), Angle Between Curves and Orthogonality (8 · 13%). The cheapest cornerstone by some distance — no subtopic above 31% HARD.",
   },
   {
     chapter: "Indefinite Integration",
-    qCount: 162,
+    qCount: 159,
     pctTotal: 7.3,
-    qPerPaper: 3.41,
-    pctHard: 52,
+    qPerPaper: 3.44,
+    pctHard: 53,
     focus:
-      "Integration by Substitution (52 · 52% HARD), Trigonometric Integrals - Rational and Substitution Forms (36 · 75%), Rational Functions and Partial Fractions (27 · 48%), Integration by Parts (26 · 54%), Trigonometric Integrals - Powers and Identities (13 · 15%), Foundations and Standard Formulae (8 · 13%). Half the chapter is HARD and the trigonometric-rational forms are the most expensive block on the paper at 74%.",
+      "Integration by Substitution (52 · 52% HARD), Trigonometric Integrals - Rational and Substitution Forms (36 · 75%), Rational Functions and Partial Fractions (26 · 50%), Integration by Parts (26 · 54%), Trigonometric Integrals - Powers and Identities (11 · 18%), Foundations and Standard Formulae (8 · 13%). Half the chapter is HARD and the trigonometric-rational forms are the most expensive block on the paper at 74%.",
+  },
+  {
+    chapter: "Differential Equations",
+    qCount: 141,
+    pctTotal: 6.5,
+    qPerPaper: 3.36,
+    pctHard: 38,
+    focus:
+      "Growth, Decay, and Continuous Models (32 · 28% HARD), Order, Degree, Formation of ODE, and Verification of Solutions (32 · 25%), Variable-Separable Equations (33 · 39%), Linear Differential Equations (Integrating Factor) (24 · 63%), Homogeneous and Reducible Equations (15 · 40%), Newton's Law of Cooling (5 · 60%). The subtopics split by SOLUTION METHOD, which is exactly how the questions are set.",
   },
   {
     chapter: "Differentiation",
-    qCount: 141,
-    pctTotal: 6.3,
-    qPerPaper: 3.15,
+    qCount: 139,
+    pctTotal: 6.4,
+    qPerPaper: 3.2,
     pctHard: 47,
     focus:
-      "Inverse Functions & Inverse Trigonometric Differentiation (39 · 49% HARD), Implicit Differentiation & Special Forms (31 · 52%), Logarithmic Differentiation (25 · 44%), Foundations, Chain Rule & Differentiability (21 · 29%), Parametric, Higher-Order Derivatives & Relations (18 · 50%), Derivative of One Function with Respect to Another (7 · 71%). Feeds Applications of Derivative directly — the two run to 8.0 questions per paper together.",
+      "Inverse Functions & Inverse Trigonometric Differentiation (39 · 49% HARD), Implicit Differentiation & Special Forms (30 · 53%), Logarithmic Differentiation (23 · 39%), Foundations, Chain Rule & Differentiability (22 · 32%), Parametric, Higher-Order Derivatives & Relations (18 · 50%), Derivative of One Function with Respect to Another (7 · 71%). Feeds Applications of Derivative directly — the two run to 8.0 questions per paper together.",
   },
   {
     chapter: "Probability Distribution",
-    qCount: 115,
-    pctTotal: 5.2,
-    qPerPaper: 2.65,
-    pctHard: 20,
+    qCount: 112,
+    pctTotal: 5.1,
+    qPerPaper: 2.64,
+    pctHard: 21,
     focus:
-      "Expectation, Variance and Standard Deviation (37 · 19% HARD), Discrete Random Variables, PMF and CDF (31 · 19%), Conditional Probability, Independence and Bayes' Theorem (26 · 31%), Classical Probability, Addition Theorem and Odds (21 · 10%). The heaviest quick-win: 2.65 questions a paper at only 20% HARD.",
+      "Expectation, Variance and Standard Deviation (35 · 20% HARD), Discrete Random Variables, PMF and CDF (31 · 19%), Conditional Probability, Independence and Bayes' Theorem (25 · 32%), Classical Probability, Addition Theorem and Odds (21 · 10%). The heaviest quick-win: 2.64 questions a paper at only 21% HARD.",
   },
   {
     chapter: "Limits",
-    qCount: 89,
-    pctTotal: 4.0,
-    qPerPaper: 1.99,
-    pctHard: 55,
+    qCount: 90,
+    pctTotal: 4.1,
+    qPerPaper: 2.04,
+    pctHard: 56,
     focus:
       "Continuity at a Point (19 · 58% HARD), Piecewise Continuity (19 · 53%), Algebraic (13 · 46%), Trigonometric (12 · 67%), Exponential-Logarithmic (11 · 64%), Existence and Infinity (9 · 44%), [x] and |x| Discontinuities (6 · 50%). The highest %HARD of any chapter in the bank, and the difficulty sits in every page, so it does not cherry-pick.",
   },
   {
+    chapter: "Mathematical Logic",
+    qCount: 86,
+    pctTotal: 4.0,
+    qPerPaper: 1.92,
+    pctHard: 29,
+    focus:
+      "Converse, Inverse, and Contrapositive (17 · 24% HARD), Finding Truth Values of Component Statements (16 · 19%), Logical Equivalence and Algebra of Statements (16 · 31%), Negation of Statements and Quantifiers (14 · 14%), Statements, Connectives and Truth Tables (12 · 33%), Switching Circuits (11 · 64%). Self-contained — it borrows nothing from the rest of the syllabus, which makes it the fastest chapter to bank from a cold start.",
+  },
+  {
     chapter: "Definite Integration",
-    qCount: 68,
-    pctTotal: 3.1,
+    qCount: 69,
+    pctTotal: 3.2,
     qPerPaper: 1.72,
-    pctHard: 47,
+    pctHard: 48,
     focus:
       "King's Property (17 · 47% HARD), Modulus and Greatest-Integer (15 · 27%), Evaluation and Substitution (14 · 43%), Odd and Even Symmetry (11 · 55%), Trigonometric Integrals (11 · 73%). The symmetry properties are the time lever: they turn an expensive integral into a two-line answer.",
   },
   {
-    chapter: "Mathematical Logic",
-    qCount: 88,
-    pctTotal: 3.9,
-    qPerPaper: 1.92,
-    pctHard: 31,
-    focus:
-      "Converse, Inverse, and Contrapositive (17 · 24% HARD), Finding Truth Values of Component Statements (16 · 19%), Logical Equivalence and Algebra of Statements (16 · 31%), Negation of Statements and Quantifiers (14 · 14%), Statements, Connectives and Truth Tables (13 · 38%), Switching Circuits (12 · 67%). Self-contained — it borrows nothing from the rest of the syllabus, which makes it the fastest chapter to bank from a cold start.",
-  },
-  {
     chapter: "Binomial Distribution",
-    qCount: 60,
+    qCount: 59,
     pctTotal: 2.7,
-    qPerPaper: 1.27,
+    qPerPaper: 1.28,
     pctHard: 22,
     focus:
-      "Computing Binomial Probabilities (20 · 30% HARD), Parameter Estimation and the Probability Ratio (15 · 27%), Mean, Variance and Standard Deviation of a Binomial Variable (15 · 13%), The Binomial Setting and Probability Mass Function (10 · 10%). Four subtopics off one formula.",
+      "Computing Binomial Probabilities (20 · 30% HARD), Parameter Estimation and the Probability Ratio (14 · 29%), Mean, Variance and Standard Deviation of a Binomial Variable (15 · 13%), The Binomial Setting and Probability Mass Function (10 · 10%). Four subtopics off one formula.",
   },
   {
     chapter: "Determinants and Matrices",
     qCount: 49,
-    pctTotal: 2.2,
-    qPerPaper: 1.1,
+    pctTotal: 2.3,
+    qPerPaper: 1.12,
     pctHard: 49,
     focus:
       "Determinants and Adjoint Identities (16 · 69% HARD), Inverse of a Matrix (15 · 33%), Cayley–Hamilton and Matrix Polynomials (10 · 50%), Linear Systems and Symmetric Matrices (8 · 38%). One question a paper at 49% HARD — expensive for what it returns.",
@@ -288,8 +289,8 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   {
     chapter: "Circle",
     qCount: 46,
-    pctTotal: 2.0,
-    qPerPaper: 1.02,
+    pctTotal: 2.1,
+    qPerPaper: 1.04,
     pctHard: 37,
     focus:
       "Tangents (14 · 50% HARD), Equation of a Circle (12 · 33%), Two Circles (8 · 50%), Concentric and Touching (6 · 17%), Distance to a Circle (6 · 17%). Its extremum questions — greatest or least distance from a point to the circle — are answered by centre-distance plus or minus radius, with no calculus.",
@@ -297,8 +298,8 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   {
     chapter: "Linear Programming",
     qCount: 45,
-    pctTotal: 2.0,
-    qPerPaper: 0.98,
+    pctTotal: 2.1,
+    qPerPaper: 1,
     pctHard: 4,
     focus:
       "Corner-Point Method (16 · 0% HARD), Feasible Region (13 · 0%), Reading Constraints Off a Shaded Region (9 · 22%), Formulation and Special Cases (7 · 0%). The lowest %HARD in the bank at 4%, and all of it on the figure page. One free mark a paper if the method is drilled.",
@@ -306,8 +307,8 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   {
     chapter: "Complex Numbers",
     qCount: 45,
-    pctTotal: 2.0,
-    qPerPaper: 0.98,
+    pctTotal: 2.1,
+    qPerPaper: 1,
     pctHard: 31,
     focus:
       "Algebra of Complex Numbers (15 · 47% HARD), Modulus and Argument (18 · 28%), Locus in the Argand Plane (12 · 17%). The algebra page is 30 points of HARD above the other two — secure modulus, argument and locus first. Greatest and least modulus on a disc is the same geometric move as the Circle chapter's extremum question.",
@@ -316,7 +317,7 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     chapter: "Applications of Definite Integral",
     qCount: 44,
     pctTotal: 2.0,
-    qPerPaper: 0.94,
+    qPerPaper: 1,
     pctHard: 32,
     focus:
       "Area Between Two Curves (21 · 38% HARD), Area Under a Curve (14 · 14%), Circle, Ellipse and Hyperbola Regions (9 · 44%). Effectively one skill — 80% of the chapter is an area between a curve and a line or a second curve.",
@@ -324,8 +325,8 @@ export const CHAPTER_TABLE: ChapterRow[] = [
   {
     chapter: "Pair of Straight Lines",
     qCount: 44,
-    pctTotal: 1.9,
-    qPerPaper: 0.98,
+    pctTotal: 2.0,
+    qPerPaper: 1,
     pctHard: 41,
     focus:
       "Joint Equation (12 · 17% HARD), Slopes of a Pair (10 · 50%), Angle Between the Pair (12 · 58%), General Second-Degree Equation (10 · 40%). Its perpendicularity test reads a + b = 0 rather than the slope product used elsewhere — the same condition in a different dialect.",
@@ -334,78 +335,78 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     chapter: "Permutations and Combinations",
     qCount: 42,
     pctTotal: 1.9,
-    qPerPaper: 0.98,
+    qPerPaper: 1,
     pctHard: 40,
     focus:
       "Counting Numbers and Geometric Figures (11 · 36% HARD), Arrangements with Constraints (10 · 50%), Fundamental Principle and Identities (8 · 0%), Selections with Conditions (7 · 43%), Circular Arrangements (6 · 83%). One question a paper at 40% HARD, and the constraint questions do not reduce to a formula — cost this chapter honestly before investing in it.",
   },
   {
     chapter: "Straight Line",
-    qCount: 44,
-    pctTotal: 2.0,
-    qPerPaper: 0.92,
+    qCount: 45,
+    pctTotal: 2.1,
+    qPerPaper: 0.96,
     pctHard: 20,
     focus:
-      "Slope, Angle and Rotation (15 · 33% HARD), Forms, Intersections and Concurrency (14 · 21%), Distance and the Foot of the Perpendicular (9 · 11%), Section Formula and Rectangles (6 · 0%). Cheap, and it underwrites Pair of Straight Lines and Circle — the return is larger than its own 0.92 per paper.",
+      "Slope, Angle and Rotation (15 · 33% HARD), Forms, Intersections and Concurrency (14 · 21%), Distance and the Foot of the Perpendicular (10 · 10%), Section Formula and Rectangles (6 · 0%). Cheap, and it underwrites Pair of Straight Lines and Circle — the return is larger than its own 0.96 per paper.",
   },
   {
     chapter: "Trigonometry - II",
     qCount: 39,
     pctTotal: 1.8,
-    qPerPaper: 0.88,
+    qPerPaper: 0.92,
     pctHard: 49,
     focus:
-      "Trigonometric Identities and Compound/Half-Angle Formulas (39 · 49% HARD) — the Std XI identity chapter: compound, multiple and half angles, factorisation, and conditional identities in a triangle. Just under the 0.9 line, so it has no playbook; the equations and inverse-trig pages of Trigonometric Functions lean on these identities.",
+      "Trigonometric Identities and Compound/Half-Angle Formulas (39 · 49% HARD) — the Std XI identity chapter: compound, multiple and half angles, factorisation, and conditional identities in a triangle. Crossed the 0.9 line on the 2026-09-26 re-measure (0.88 to 0.92) and now ships a long-tail playbook; eight of its 19 HARD questions are standard-angle evaluations, and the equations and inverse-trig pages of Trigonometric Functions lean on these identities.",
   },
   {
     chapter: "Sets, Relations and Functions",
     qCount: 40,
     pctTotal: 1.8,
-    qPerPaper: 0.71,
+    qPerPaper: 0.72,
     pctHard: 13,
     focus:
-      "Domain and Range (12 · 25% HARD), Composite Functions (11 · 9%), Sets and Types of Functions (10 · 0%), Inverse Functions (7 · 14%). 13% HARD — the second-cheapest chapter in the bank after Linear Programming. Below the 0.9 q/paper line so it ships no playbook, but its four notes pages are live and it is worth a short drill rather than a skip.",
+      "Domain and Range (12 · 25% HARD), Composite Functions (11 · 9%), Sets and Types of Functions (10 · 0%), Inverse Functions (7 · 14%). 13% HARD — the third-cheapest chapter in the bank, after Linear Programming and the dropped Measures of Dispersion. Below the 0.9 q/paper line so it ships no playbook, but its four notes pages are live and it is worth a short drill rather than a skip.",
   },
   {
     chapter: "Conic Sections",
-    qCount: 20,
-    pctTotal: 0.9,
-    qPerPaper: 0.73,
-    pctHard: 40,
+    qCount: 18,
+    pctTotal: 0.8,
+    qPerPaper: 0.68,
+    pctHard: 39,
     focus:
-      "20 questions lifetime at 40% HARD, but the lifetime figure is the wrong lens — see the note. Below the playbook line on the 2021-2025 average and above it on 2025 alone.",
+      "18 questions lifetime at 39% HARD, but the lifetime figure is the wrong lens — see the note. Below the playbook line on the 2021-2025 average and above it on 2025 alone.",
     status: "entered",
     note:
-      "Entered with the 2025 syllabus shift: 3 questions in the whole bank before 2025, then 17 in 2025 alone. The lifetime rate of 0.69 understates it — anyone prepping from 2023-24 papers has never seen this chapter set.",
+      "Entered with the 2025 syllabus shift: 3 questions in the whole bank before 2025, then 15 in 2025 alone. The lifetime rate of 0.41 understates it — anyone prepping from 2023-24 papers has never seen this chapter set.",
   },
   {
     chapter: "Measures of Dispersion",
     qCount: 32,
-    pctTotal: 1.4,
-    qPerPaper: 0.46,
+    pctTotal: 1.5,
+    qPerPaper: 0.48,
     pctHard: 9,
     focus:
       "32 questions lifetime at 9% HARD — the second-lowest %HARD in the bank, and irrelevant, because the chapter is no longer set. Its three notes pages are a formula rehearsal for Probability Distribution. See the note.",
     status: "dropped",
     note:
-      "DROPPED for 2025. Ran 1.0 question per paper across the 29 shifts of 2023-24, then ZERO across all 14 papers of 2025. Its 9% HARD makes it look like a cheap chapter in a lifetime table, which is exactly the trap — do not spend time here.",
+      "DROPPED for 2025. Ran 1.0 question per paper across the 29 shifts of 2023-24, then ZERO across all 13 papers of 2025. Its 9% HARD makes it look like a cheap chapter in a lifetime table, which is exactly the trap — do not spend time here.",
   },
   {
     chapter: "Sequences and Series",
     qCount: 10,
-    pctTotal: 0.4,
-    qPerPaper: 0.31,
+    pctTotal: 0.5,
+    qPerPaper: 0.32,
     pctHard: 40,
     focus:
-      "10 questions in 45 shifts at 40% HARD. Below the playbook line; revise it, do not drill it.",
+      "10 questions in 44 shifts at 40% HARD. Below the playbook line; revise it, do not drill it.",
   },
   {
     chapter: "Quadratic Equations",
-    qCount: 5,
+    qCount: 4,
     pctTotal: 0.2,
-    qPerPaper: 0.15,
-    pctHard: 20,
+    qPerPaper: 0.12,
+    pctHard: 25,
     focus:
-      "5 questions in 45 shifts — the thinnest chapter in the bank. Assumed knowledge from earlier chapters rather than a topic the paper sets in its own right.",
+      "4 questions in 44 shifts — the thinnest chapter in the bank. Assumed knowledge from earlier chapters rather than a topic the paper sets in its own right.",
   },
 ];

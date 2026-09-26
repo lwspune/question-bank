@@ -47,7 +47,7 @@ type GuideCopy = {
    * corpus these guides are actually measured against.
    *
    * MHT-CET's count stays hand-written because it is SUBJECT-scoped (this card
-   * is the Maths guide alone, 2,228 of the exam's 7,000-odd PYQs) and there is
+   * is the Maths guide alone, 2,175 of the exam's 7,000-odd PYQs) and there is
    * no subject-aware helper yet. Verified against the bank 2026-09-16.
    */
   meta: string;
@@ -65,8 +65,8 @@ const COPY: Record<string, GuideCopy> = {
   "mht-cet": {
     title: "MHT-CET — Mathematics",
     blurb:
-      "Six chapters carry 47% of the Maths paper. There is no negative marking and you get 1.8 minutes per question, so this guide is built around order and time rather than what to skip.",
-    meta: "2,228 questions · 45 shifts · 2021-2025",
+      "Seven chapters carry 57% of the Maths paper. There is no negative marking and you get 1.8 minutes per question, so this guide is built around order and time rather than what to skip.",
+    meta: "2,175 questions · 44 shifts · 2021-2025",
     icon: Sigma,
   },
 };

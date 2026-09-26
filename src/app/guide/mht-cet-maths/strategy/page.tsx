@@ -32,7 +32,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "MHT-CET Maths Strategy — Order and Time, Never Attempt-vs-Skip",
   description:
-    "MHT-CET Paper I is 50 Maths questions in 90 minutes with NO negative marking, so the strategic axis is order and time budget, never whether to attempt. Three strands — Cornerstone, Quick-Win, Long Tail — with a drill posture, must-drill subtopics and study hours per chapter, plus the five tail chapters and the 2025 syllabus move. Backed by 2,228 past-year questions across 45 shifts.",
+    "MHT-CET Paper I is 50 Maths questions in 90 minutes with NO negative marking, so the strategic axis is order and time budget, never whether to attempt. Three strands — Cornerstone, Quick-Win, Long Tail — with a drill posture, must-drill subtopics and study hours per chapter, plus the five tail chapters and the 2025 syllabus move. Backed by 2,175 past-year questions across 44 shifts.",
   alternates: { canonical: "/guide/mht-cet-maths/strategy" },
 };
 
