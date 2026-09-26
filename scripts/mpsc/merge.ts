@@ -68,7 +68,7 @@ function main() {
   console.log(
     `\n${paper.id}: ${qs.length} transcribed · missing ${missing.length ? `[${missing.join(",")}]` : "none"}` +
       ` · dupes ${dupes.length ? `[${dupes.join(",")}]` : "none"} · parity flags ${parity} (waived ${waived}) · literal \\n ${literal}` +
-      ` · figures ${qs.filter((q) => q.figure).length}`
+      ` · figures ${qs.filter((q) => q.figure).length} · print notes ${qs.filter((q) => q.printNote).length}`
   );
   if (args.includes("--write")) {
     if (missing.length || dupes.length) throw new Error("refusing to write an incomplete or duplicated paper");
@@ -77,4 +77,4 @@ function main() {
   }
 }
 
-main();
+if (/merge\.ts$/.test(process.argv[1] ?? "")) main();

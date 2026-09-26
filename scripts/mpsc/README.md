@@ -45,6 +45,11 @@ Exam row + subjects: `npx tsx scripts/mpsc/seed.ts --apply` (done 2026-09-25).
   count, stem line count and every number (script-neutral). A genuine print
   difference is waived in `data/<id>.waivers.json` **with a reason read against
   the page**; `commit.ts` refuses an unwaived flag.
+- **Print differences (meaning, not numbers).** Where the booklet's Marathi and
+  English say different things (a direction, a term), transcribe BOTH as printed
+  and record it in the question's `printNote` field — never only in a waiver,
+  which is for number/notation differences. The parity probe cannot see these;
+  they are found by reading. `npx tsx scripts/mpsc/print-notes.ts` lists them all.
 - **Key fit** (`merge.ts --show`): solve the aptitude block independently; a
   shifted key shows up there first. 2024-B: 20/20.
 

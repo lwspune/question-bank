@@ -39,6 +39,14 @@ export type BilingualQuestion = {
    * and readable in either.
    */
   figure?: { page: number; box: [number, number, number, number] };
+  /**
+   * A MEANING difference between the printed Marathi and English (the booklet's
+   * own translation error — e.g. "south-west" vs "North-Western"). Both versions
+   * are still transcribed exactly as printed; this records what differs. The
+   * parity probe cannot see these (same numbers, same structure), so they are
+   * caught by reading and MUST be written here, never only in a waiver.
+   */
+  printNote?: string;
 };
 
 const DEVANAGARI_ZERO = 0x0966;
