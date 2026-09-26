@@ -17,6 +17,14 @@
  * its text fixed and its hash left alone, reported as TEXT-ONLY: the reader sees
  * the reagent either way, and recomputing a hash we can't reproduce would only
  * move the problem. A solution-only change never touches the hash.
+ *
+ * EXCEPT FOR AN EXAM WITH A LIVE HASH READER (`KEEP_SOURCE_HASH`). MHT-CET's hashes
+ * are read by /api/sync/mock, which the sibling app MHT_CET_AI feeds from the
+ * ORIGINAL transcriptions — and which INSERTS a new PUBLIC question on a miss. There
+ * a hash must keep describing the source text, not our repaired text, or every sync
+ * of a repaired question would duplicate it. Measured 2026-09-26: 187 MHT-CET rows
+ * already carry their source hash after earlier repairs, and 28 this script had
+ * moved were put back.
  */
 import { writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
@@ -28,6 +36,9 @@ require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: tr
 
 const APPLY = process.argv.includes("--apply");
 
+/** Exams whose content_hash must stay the hash of the SOURCE text (see header). */
+const KEEP_SOURCE_HASH = new Set(["MHT-CET"]);
+
 type Opt = { id: string; label: string; text: string; is_correct: boolean };
 type Row = {
   id: string;
@@ -36,6 +47,7 @@ type Row = {
   visibility: string;
   question_format: string | null;
   content_hash: string | null;
+  exam: { name: string } | null;
   text: string;
   context: string | null;
   solution: string | null;
@@ -63,11 +75,11 @@ const fix = (v: string | null) => (v === null ? null : revealArrowLabels(v));
   for (let from = 0; ; from += PAGE) {
     const { data, error } = await db
       .from("questions")
-      .select("id, source_file, question_number, visibility, question_format, content_hash, text, context, solution, options(id, label, text, is_correct)")
+      .select("id, source_file, question_number, visibility, question_format, content_hash, exam:exams(name), text, context, solution, options(id, label, text, is_correct)")
       .order("id", { ascending: true })
       .range(from, from + PAGE - 1);
     if (error) throw new Error(`read failed: ${error.message}`);
-    const rows = (data ?? []) as Row[];
+    const rows = (data ?? []) as unknown as Row[];
     if (rows.length === 0) break;
     scanned += rows.length;
     for (const r of rows) {
@@ -99,7 +111,8 @@ const fix = (v: string | null) => (v === null ? null : revealArrowLabels(v));
     const hashInputsChanged = next.text !== r.text || next.context !== r.context || changedOpts.length > 0;
 
     const reproducible = r.content_hash === hashOf(r.question_format, r.text, r.context, opts);
-    const moveHash = hashInputsChanged && reproducible;
+    const keepSource = KEEP_SOURCE_HASH.has(r.exam?.name ?? "");
+    const moveHash = hashInputsChanged && reproducible && !keepSource;
     const patch: Record<string, unknown> = { ...next };
     if (moveHash) patch.content_hash = hashOf(r.question_format, next.text, next.context, nextOpts);
 
@@ -109,7 +122,13 @@ const fix = (v: string | null) => (v === null ? null : revealArrowLabels(v));
       next.solution !== r.solution ? "solution" : null,
       changedOpts.length ? `${changedOpts.length} option(s)` : null,
     ].filter(Boolean).join(" + ");
-    const mode = !hashInputsChanged ? "no hash input" : moveHash ? "hash moves" : "TEXT-ONLY (stored hash already stale)";
+    const mode = !hashInputsChanged
+      ? "no hash input"
+      : moveHash
+        ? "hash moves"
+        : keepSource
+          ? "TEXT-ONLY (source hash kept: live hash reader)"
+          : "TEXT-ONLY (stored hash already stale)";
     console.log(`  FIX   ${label}\n        ${what} · ${mode}`);
     if (hashInputsChanged && !moveHash) textOnly++;
     if (!APPLY) continue;
