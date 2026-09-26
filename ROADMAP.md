@@ -26,7 +26,10 @@ Executed on the user's "Complete not done". Every paper item was read (`generate
 - **Cost:** about 14 derivations plus a guarded repair script. Reversible (the old key is in the script).
 - **Recommendation:** do. It is small, and 14 of 91 (15%) is the highest wrong-key rate seen on any MHT-CET sitting. **Needs confirmation before touching the shipped Chemistry rows.**
 
-## Backfill ledger — a `\phantom` over a reaction arrow HIDES the reagent (2026-09-26)
+### ~~Backfill ledger — a `\phantom` over a reaction arrow HIDES the reagent~~ — DONE 2026-09-26
+
+Executed on the user's "Resolve all three". The probe was built first: `PHANTOM_ARROW` in `audit:text`, sharing one pure helper (`scripts/lib/phantomArrows.ts`, 13 tests) with the repair `scripts/reviews/reveal-phantom-arrows.ts`, so the two cannot disagree. Every occurrence was read: **40 rows** (26 stems, 7 solutions, 7 option sets; MHT-CET 2025, JEE 2021-2023) were hidden arrow labels and are now `\xrightarrow[below]{above}`, content hashes moved with the text. Six are legitimate and untouched (four JEE `\underline{\phantom{000}}` answer blanks, one cancellation mark). Four one-off artifacts found beside them were fixed by hand: a lost ₹ (NDA), "stycerol", `C_{0}` for Co, and a stray `d`. `audit:text` now reports PHANTOM_ARROW: 0 and `audit:omml` converts every 2025 CET zone. The original ledger follows.
+
 
 **Found** during the MHT-CET Aromatic Compounds source pass. The 2025 MHT-CET papers write a reagent above or below a reaction arrow in a Word text box. Pandoc renders it as `\overset{\phantom{...}}{\rightarrow}`, so KaTeX draws a BARE arrow and the stem loses its catalyst or reagent. The text is still in the stored row, just invisible, and every text gate passes it.
 - **Scope:** 35 PUBLIC stems contain `phantom` (count taken 2026-09-26). Three were fixed in Aromatic Compounds (`56f1f5be`, `be4d0231`, `9a16dd3e`) by writing the reagent out with `\xrightarrow[below]{above}`.
@@ -1827,7 +1830,10 @@ The undated "2025 · Shift ||" source file is not a sitting. Across the CET note
 The trends matrix header reports it as a dispute it will not resolve: `MHT_CET_3rdMay2023_S1_QB.xlsx` — filename shift 1, `pyq_note` "3rd May 2nd Shift". Every row checked so far (six in Trigonometric Functions, more in Chemistry) is in the 3 May SHIFT 1 paper. Re-dated where a chapter was noted; the rest of the file still carries the wrong label.
 - **Recommendation:** do, as one scripted re-date of every row from that file, after a spot check of ten rows against the paper. Reversible; the label is display-only.
 
-## Backfill ledger — four PUBLISHED mocks contain PRIVATE questions (2026-09-26)
+### ~~Backfill ledger — four PUBLISHED mocks contain PRIVATE questions~~ — DONE 2026-09-26
+
+Resolved by REPAIR, not by swapping or unpublishing. Swapping was wrong for all five — each was hidden because it was not in its stated paper or could not be reconstructed — but reading each mock position against its paper (`generated-papers/_mock_bijection.py`: position n is paper item n) showed every one IS recoverable: `fbb92884` (3 May S1 #108, garbled integrand; k = 2 = AK), `8c65343b` (#113, genuinely in this paper as well as 4 May S1), `45bcc3da` (4 May S1 #148, a paper misprint: official key kept with a note), `6d3d45a5` (12 May S1 #62, the bank held a different question; the paper asks for the chiral iodide) and `30bf4c16` (21 Apr S2 #82, the drawings match the stored text; no option is an aryl ester, official key kept with a note). All four mocks now rebuild whole, no attempt was affected, and the snapshots needed no rebuild. **Standing check built:** `tests/mock-questions-visible.test.ts` in the daily prod-contract run fails if any published mock references a hidden or deleted question. The original ledger follows.
+
 
 The mock runner reads questions with the student's JWT, so a question made PRIVATE after its mock was built renders as a BLANK item. Found while hiding the 2025_PCM twins (none of today's rows are in a mock; these came from earlier source passes):
 - `mht-cet-2023-may-03-s1-maths` — `fbb92884`, `8c65343b`
@@ -1837,11 +1843,21 @@ The mock runner reads questions with the student's JWT, so a question made PRIVA
 - **Fix:** swap each hidden twin for its dated PUBLIC copy in the mock's question list, or rebuild the mock (`scripts/mocks/build.ts`). **Both change a published mock — the user's call** ([[mock-publish-is-users]]).
 - **Standing check wanted:** a probe that lists PRIVATE questions inside PUBLIC mocks, run after any bulk PRIVATE flip.
 
-## Backfill ledger — the MHT-CET Maths guide must be re-measured without the 2025_PCM column (2026-09-26)
+### ~~Backfill ledger — the MHT-CET Maths guide must be re-measured without the 2025_PCM column~~ — DONE 2026-09-26
+
+Matrix regenerated (44 shifts, 2,175 q). Chapter figures were rewritten by block-scoped scripts and read back against the grid; subtopic claims by a checker that only matches a canonical subtopic name or an unambiguous short form (43 corrected); the rest by hand from a residual scan. **Trigonometry - II ships a long-tail playbook** (21 playbooks). The playbooks test now asserts the rule in both directions and checks every playbook's rate and count against the grid, so the next ingest fails a test instead of drifting. Also fixed, already wrong before today: Line and Plane called the heaviest recent chapter, Probability called sixth-heaviest (eighth), Sets called second-cheapest (third), "Limits is the one long-tail chapter with notes" (all eight have them), and a P&C trap naming a subtopic that no longer exists. **Not re-measured:** traps.ts "Perpendicularity is 83 questions across 7 chapters" is a text survey, not a column. The original ledger follows.
+
 
 `matrix.generated.ts` was restored to its committed copy on purpose. Regenerating it now drops the 2025_PCM column: 44 papers, 2025 = 13 shifts, the recent window becomes 25, and every per-shift rate moves. **Trigonometry - II rises to 0.92, crossing the 0.9 playbook line.** Guide prose also carries counts that moved today (Indefinite 162 → 159, AoD 183 → 182, Trig Functions 212 → 211, Conic 20).
 - **Scope:** `npm run mhtcet:matrix`, the tier tables in strategy/playbooks, `tests/guide-mht-cet-maths-playbooks.test.ts`, and any playbook a crossing adds.
 - **Recommendation:** do, as one guide re-measure — but it re-tiers a shipped guide, so it waits for confirmation.
+
+## Backfill ledger — CET repair scripts left `content_hash` stale on edited rows (2026-09-26)
+
+Found while writing `scripts/reviews/reveal-phantom-arrows.ts`, which follows the committed rule that a stem or option edit moves the row's `content_hash` with it (`normalise-matrix-delimiters.ts`). **None of the 14 `generated-papers/_repair-*.ts` scripts from the CET notes programme do that**, and neither did today's `_repair-mock-gaps.ts`. Every stem, option or key they corrected left a hash that describes the text as it was.
+- **Blast radius:** dedup only. A re-ingest of the original `.xlsx` would hash the old text, miss the repaired row and insert a duplicate — but the CET xlsx files are never re-ingested (the `.docx` papers are the source of truth), so no current path reads these hashes.
+- **Does it really apply?** Partly. Rehashing is NOT always safe: `8c65343b` is now word-for-word identical to its 4 May twin `1d341663`, so its true hash would hit the `(org_id, exam_id, content_hash)` unique index. A backfill must skip such rows and report them.
+- **Recommendation:** defer. Build it only if a CET re-ingest is ever planned; then run a hash-reconcile pass (recompute, update where no collision, report collisions) before the ingest, not after.
 
 ### BACKFILL LEDGER — 176 questions draw matrices in ROUND brackets (logged 2026-09-17)
 
