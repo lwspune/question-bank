@@ -564,6 +564,11 @@ import {
   MHTCET_GROUP16_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/elements-of-group-16-17-and-18/_data";
 import {
+  MHTCET_REDOX_CHAPTER,
+  MHTCET_REDOX_NOTES,
+  MHTCET_REDOX_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/redox-reactions/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1427,6 +1432,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_GROUP16_CHAPTER,
     notes: MHTCET_GROUP16_NOTES,
     slugs: MHTCET_GROUP16_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "redox-reactions",
+    chipLabel: "Redox notes",
+    chapter: MHTCET_REDOX_CHAPTER,
+    notes: MHTCET_REDOX_NOTES,
+    slugs: MHTCET_REDOX_SLUGS,
   },
   {
     examName: "NDA",
