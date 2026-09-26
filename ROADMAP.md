@@ -2009,9 +2009,9 @@ The 4-phase paywall shipped 2026-06-01 (signup → entitlements → comp-access 
 
 Checkout returns 503 until 4 env vars are set in Vercel + `.env.local`: `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `NEXT_PUBLIC_RAZORPAY_KEY_ID` (= key id), `RAZORPAY_WEBHOOK_SECRET`. Steps: create a Razorpay account (test mode needs **no KYC**) → generate test keys → create an `order.paid` webhook → `https://question-bank-sage.vercel.app/api/billing/webhook` → run a test-card payment → confirm an `entitlements` row + a paid chapter unlocks. **Open question (2026-06-01):** the user's existing Razorpay login looked like a partner-linked/Route account ("Registered By: CREATOR ECONOMY TECH", limited nav, no API-keys page) — may not expose standalone keys; a fresh direct razorpay.com merchant account may be required. Going live later = KYC + swap the 4 vars to `rzp_live_…` + repoint the webhook (no code change).
 
-### Designate the first paid notes chapter
+### Notes stay free (decided 2026-09-27)
 
-All 5 current `/notes` chapters are `free` — the preview-gate machinery is dormant. Making a future chapter premium = set `tier:"paid"` (+ optional `paidScope`/`previewConceptCount`) in the `NOTES_CHAPTERS` registry AND make its `[subtopicSlug]/page.tsx` wrapper `export const dynamic = "force-dynamic"` + drop `revalidate`/`generateStaticParams` (notes-lint enforces the contract). Product decision: which chapter, and confirm the 2-concept preview line reads well for it.
+The paid passes (2026-09-26) sell **mocks** (Student Mock Pass) and **Word paper downloads** (Teacher Pass) — neither unlocks a `tier:"paid"` notes chapter, and **the owner decided notes stay free**. So the `/notes` preview-gate stays dormant and `NotesPaywall`'s "Upgrade to unlock → /pricing" link is unreachable by construction. **Do not mark a chapter `tier:"paid"`** without first deciding which pass scope unlocks it — today nothing sold would, so a paid chapter would be locked for every buyer. (Mechanics, if ever reopened: `tier:"paid"` + `paidScope` in `NOTES_CHAPTERS`, and the chapter's `[subtopicSlug]/page.tsx` goes `force-dynamic`; notes-lint enforces it.)
 
 ### Pro-plan hardening (when on Supabase Pro)
 
