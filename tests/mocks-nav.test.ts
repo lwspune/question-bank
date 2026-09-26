@@ -79,18 +79,20 @@ describe("mocksNav — cross-exam mock grouping", () => {
       const expected = getMockExams().map((e) => e.displayName);
       // Split back apart rather than substring-matching, so an exam gaining
       // mocks later can never make this a false alarm — it just joins the list.
-      const got = prose.split(/,\s*|\s+&\s+/).filter(Boolean);
+      const got = prose.split(/,\s*|\s+and\s+/).filter(Boolean);
       expect(got).toEqual(expected);
     });
 
-    it("reads as a list, with the last item joined by an ampersand", () => {
+    // "and", not "&": an exam's own name can hold an ampersand ("MPSC Group B & C"),
+    // and "…, MPSC Group B & C & UPSC CSE" reads as five exams, not two.
+    it("reads as a list, with the last item joined by 'and'", () => {
       const prose = mockExamNames();
       const n = getMockExams().length;
       expect(n).toBeGreaterThan(1); // otherwise the assertion below is vacuous
-      expect(prose).toMatch(/ & /);
+      expect(prose).toMatch(/ and /);
       // n exams → n-2 commas (none for two exams), so no trailing/doubled comma.
       expect((prose.match(/,/g) ?? []).length).toBe(n - 2);
-      expect(prose).not.toMatch(/,\s*&/); // no Oxford comma before the ampersand
+      expect(prose).not.toMatch(/,\s*and /); // no Oxford comma before "and"
     });
   });
 });

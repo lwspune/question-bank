@@ -53,7 +53,8 @@ export function mockExamSlugs(): ExamSlug[] {
 
 /**
  * The mock exams as prose, for /mock's indexed <title> + description:
- * "NDA", "NDA & NEET", "NDA, CDS & NEET". Derived rather than hand-written
+ * "NDA", "NDA and NEET", "NDA, CDS and NEET". "and", not "&": an exam's own
+ * name can hold an ampersand ("MPSC Group B & C"). Derived rather than hand-written
  * because the hardcoded "NDA & NEET" copy went stale the moment a third exam
  * shipped — an indexed page naming two exams while serving three. Registry
  * order, so the output is deterministic.
@@ -62,7 +63,7 @@ export function mockExamNames(): string {
   const names = getMockExams().map((e) => e.displayName);
   if (names.length === 0) return "";
   if (names.length === 1) return names[0];
-  return `${names.slice(0, -1).join(", ")} & ${names[names.length - 1]}`;
+  return `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
 }
 
 /** One exam's card on the /mock picker. Every number is DERIVED from the rows
