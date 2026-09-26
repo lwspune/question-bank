@@ -11,7 +11,7 @@
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
 export const CONTENT_DATES: ContentDateMap = {
-  "/guide/mht-cet-maths": "2026-09-26T19:12:10+05:30",
+  "/guide/mht-cet-maths": "2026-09-26T20:05:06+05:30",
   "/guide/nda-biology": "2026-09-14T14:45:43+05:30",
   "/guide/nda-chemistry": "2026-09-14T14:45:43+05:30",
   "/guide/nda-current-affairs": "2026-09-26T12:34:16+05:30",
