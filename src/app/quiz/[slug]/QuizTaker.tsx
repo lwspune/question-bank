@@ -14,6 +14,7 @@ import { buildQuizShareUrl } from "@/lib/quiz/share";
 import { scoreVerdict, type VerdictTone } from "@/lib/quiz/verdict";
 import type { PublicQuiz } from "@/lib/quiz/publicQuiz";
 import type { SubmitResult } from "@/lib/quiz/submit";
+import { FREE_MOCK_LIMIT } from "@/lib/mocks/quota";
 
 const LETTERS = ["A", "B", "C", "D"] as const;
 type Letter = (typeof LETTERS)[number];
@@ -838,13 +839,16 @@ function ConversionCta({ billingLive }: { billingLive: boolean }) {
       </span>
       {billingLive ? (
         <>
-          <p className="mt-3 font-semibold">Want the full NDA prep?</p>
-          <p className="mt-1 text-sm text-muted-foreground">Notes, PYQ banks and daily quizzes for every chapter.</p>
+          <p className="mt-3 font-semibold">Ready for the real paper?</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Sit full timed NDA past papers, graded instantly. Your first {FREE_MOCK_LIMIT} are free;
+            the Mock Pass unlocks the rest.
+          </p>
           <Link
-            href="/signup?next=/pricing&utm_source=quiz"
+            href={`/signup?next=${encodeURIComponent("/pricing?plan=mocks")}&utm_source=quiz`}
             className="mt-4 inline-flex items-center gap-1.5 rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-brand-foreground transition-all hover:brightness-110"
           >
-            Go premium <ArrowRight className="h-4 w-4" />
+            See the Mock Pass <ArrowRight className="h-4 w-4" />
           </Link>
         </>
       ) : (

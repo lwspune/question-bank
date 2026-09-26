@@ -2,27 +2,26 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalH2, LegalList, LegalP, LegalPage } from "@/components/legal/LegalPage";
 import { CONTACT_EMAIL } from "@/lib/brand";
-import { PLANS, formatRupees } from "@/lib/billing/plans";
+import { PLANS, formatRupees, planLengthLabel } from "@/lib/billing/plans";
+import { FREE_MOCK_LIMIT } from "@/lib/mocks/quota";
 
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "Terms of Service",
   description:
-    "The terms for using PYQ Vault: what is free, what premium includes, payments, and your responsibilities.",
+    "The terms for using PYQ Vault: what is free, what the paid passes include, payments, and your responsibilities.",
   alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {
-  // Price and length come from the plan catalogue, so this page cannot quote
+  // Prices and lengths come from the plan catalogue, so this page cannot quote
   // a price the checkout does not charge.
-  const plan = PLANS[0];
-  const length = plan.durationDays ? `${plan.durationDays} days` : "life";
 
   return (
     <LegalPage
       title="Terms of Service"
-      updated="26 September 2026"
+      updated="27 September 2026"
       intro={
         <>
           PYQ Vault (pyqvault.com) is run by Vilas Shinde in Pune, Maharashtra, India. By using
@@ -33,7 +32,9 @@ export default function TermsPage() {
       <LegalH2>The service</LegalH2>
       <LegalP>
         PYQ Vault is a past-year question bank and study site for Indian entrance and board
-        exams. Browsing questions, guides and free notes needs no account and is free.
+        exams. Browsing questions, guides and notes needs no account and is free. With a free
+        account you can take {FREE_MOCK_LIMIT} timed mock tests; more mock tests and Word paper downloads need
+        a paid pass.
       </LegalP>
 
       <LegalH2>Accounts</LegalH2>
@@ -46,14 +47,23 @@ export default function TermsPage() {
         ]}
       />
 
-      <LegalH2>Premium and payment</LegalH2>
+      <LegalH2>Passes and payment</LegalH2>
+      <LegalP>We sell these passes, priced in Indian rupees:</LegalP>
+      <LegalList
+        items={PLANS.map((p) => (
+          <>
+            <strong>{p.label}</strong>: {formatRupees(p.amountPaise)} for{" "}
+            {planLengthLabel(p)}. {p.blurb}
+          </>
+        ))}
+      />
       <LegalList
         items={[
           <>
-            Premium costs <strong>{formatRupees(plan.amountPaise)}</strong> (Indian rupees) as a{" "}
-            <strong>one-time payment</strong> for {length} of access, starting when the payment
-            succeeds.
+            Each pass is a <strong>one-time payment</strong>. Access starts when the payment
+            succeeds and lasts for the period shown.
           </>,
+          "A Teacher Pass is for one teacher's own use. Papers you download may be printed and handed out to your own students; they may not be resold or republished.",
           <>
             It does <strong>not renew automatically</strong>. We never charge you again unless you
             choose to buy again.

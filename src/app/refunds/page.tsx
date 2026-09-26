@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalH2, LegalList, LegalP, LegalPage } from "@/components/legal/LegalPage";
 import { CONTACT_EMAIL } from "@/lib/brand";
-import { PLANS, formatRupees } from "@/lib/billing/plans";
+import { PLANS, formatRupees, planLengthLabel } from "@/lib/billing/plans";
 
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "Refund & Cancellation Policy",
   description:
-    "PYQ Vault premium refunds: a full refund within 7 days of payment, how to ask, and how access is delivered.",
+    "PYQ Vault pass refunds: a full refund within 7 days of payment, how to ask, and how access is delivered.",
   alternates: { canonical: "/refunds" },
 };
 
@@ -17,25 +17,25 @@ export const metadata: Metadata = {
 const REFUND_DAYS = 7;
 
 export default function RefundsPage() {
-  const plan = PLANS[0];
-  const length = plan.durationDays ? `${plan.durationDays} days` : "life";
+  const passes = PLANS.map(
+    (p) => `the ${p.label} (${formatRupees(p.amountPaise)} for ${planLengthLabel(p)})`
+  ).join(" and ");
 
   return (
     <LegalPage
       title="Refund & Cancellation Policy"
-      updated="26 September 2026"
+      updated="27 September 2026"
       intro={
         <>
-          Premium is a one-time payment of {formatRupees(plan.amountPaise)} for {length} of
-          access. If it is not right for you, you can get your money back within {REFUND_DAYS}{" "}
-          days.
+          This policy covers {passes}. Each is a one-time payment. If a pass is not right for
+          you, you can get your money back within {REFUND_DAYS} days.
         </>
       }
     >
       <LegalH2>{REFUND_DAYS}-day refund</LegalH2>
       <LegalP>
         Ask within <strong>{REFUND_DAYS} days</strong> of your payment and we refund the full
-        amount. You do not need to give a reason. Premium access ends when the refund is made.
+        amount. You do not need to give a reason. The pass ends when the refund is made.
       </LegalP>
 
       <LegalH2>Always refunded</LegalH2>
@@ -43,14 +43,14 @@ export default function RefundsPage() {
       <LegalList
         items={[
           "a duplicate payment for the same purchase;",
-          "a payment that succeeded but did not unlock premium, if we cannot fix it.",
+          "a payment that succeeded but did not unlock your pass, if we cannot fix it.",
         ]}
       />
 
       <LegalH2>After {REFUND_DAYS} days</LegalH2>
       <LegalP>
         After {REFUND_DAYS} days, a payment is not refundable, except in the cases above. Access
-        continues until the end of your {length}.
+        continues until your pass ends.
       </LegalP>
 
       <LegalH2>How to ask</LegalH2>
@@ -78,13 +78,13 @@ export default function RefundsPage() {
 
       <LegalH2>Cancellation</LegalH2>
       <LegalP>
-        There is nothing to cancel. Premium does not renew automatically, so you are never
+        There is nothing to cancel. A pass does not renew automatically, so you are never
         charged again unless you buy again.
       </LegalP>
 
       <LegalH2>Delivery</LegalH2>
       <LegalP>
-        Premium is a digital service. Nothing is shipped. Access is added to your PYQ Vault
+        A pass is a digital service. Nothing is shipped. Access is added to your PYQ Vault
         account as soon as the payment succeeds, usually within a minute. If it has not appeared
         after 30 minutes, email us and we will fix it.
       </LegalP>

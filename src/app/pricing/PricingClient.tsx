@@ -32,13 +32,21 @@ declare global {
   }
 }
 
-export default function PricingClient({ planId }: { planId: string }) {
+export default function PricingClient({
+  planId,
+  buttonLabel,
+}: {
+  planId: string;
+  buttonLabel: string;
+}) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
-  const [scriptReady, setScriptReady] = useState(false);
 
   async function onBuy() {
-    if (!window.Razorpay || !scriptReady) {
+    // Gate on the global, not on a load callback: next/script does not fire
+    // onLoad again for a script it has already loaded, so after a client-side
+    // return to /pricing a callback-set flag would stay false forever.
+    if (!window.Razorpay) {
       toast.error("Payment library still loading — try again in a moment.");
       return;
     }
@@ -77,13 +85,17 @@ export default function PricingClient({ planId }: { planId: string }) {
           const verifyRes = await fetch("/api/billing/verify", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ ...resp, planId }),
+            body: JSON.stringify(resp),
           });
           const verify = (await verifyRes.json()) as { ok?: boolean; error?: string };
           if (verifyRes.ok && verify.ok) {
             toast.success("Payment successful — access unlocked!");
             router.push("/account");
             router.refresh();
+          } else if (verifyRes.status === 202) {
+            // Paid, not yet captured: the order.paid webhook grants it shortly.
+            toast.info(verify.error || "Payment received — access will activate shortly.");
+            router.push("/account");
           } else {
             toast.error(
               verify.error ||
@@ -105,12 +117,11 @@ export default function PricingClient({ planId }: { planId: string }) {
     <>
       <Script
         src="https://checkout.razorpay.com/v1/checkout.js"
-        onLoad={() => setScriptReady(true)}
         strategy="afterInteractive"
       />
       <Button variant="brand" className="w-full" onClick={onBuy} disabled={busy}>
         {busy && <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden />}
-        {busy ? "Opening checkout…" : "Buy premium"}
+        {busy ? "Opening checkout…" : buttonLabel}
       </Button>
     </>
   );

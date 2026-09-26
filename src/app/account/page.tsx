@@ -13,6 +13,7 @@ import {
   listMyBatches,
 } from "@/lib/batches/invitesAdmin";
 import { getOwnProfile } from "@/lib/profile/service";
+import { FREE_MOCK_LIMIT } from "@/lib/mocks/quota";
 import ProfileForm from "./ProfileForm";
 
 export const dynamic = "force-dynamic";
@@ -21,6 +22,13 @@ export const metadata: Metadata = {
   title: "Your account",
   robots: { index: false },
 };
+
+/** What an active grant is called on this page, and where it leads. */
+const PASS_VIEW: Record<string, { title: string; href: string; cta: string }> = {
+  mocks: { title: "Mock Pass active", href: "/mock", cta: "Go to mock tests →" },
+  teacher: { title: "Teacher Pass active", href: "/browse", cta: "Build a paper →" },
+};
+const DEFAULT_VIEW = { title: "Premium active", href: "/mock", cta: "Go to mock tests →" };
 
 function formatDate(iso: string | null): string {
   if (!iso) return "no expiry";
@@ -54,6 +62,7 @@ export default async function AccountPage() {
     })[0];
 
   const hasAccess = Boolean(member) || Boolean(active);
+  const view = (active && PASS_VIEW[active.scope]) || DEFAULT_VIEW;
 
   return (
     <>
@@ -90,7 +99,7 @@ export default async function AccountPage() {
                 <ShieldCheck className="h-5 w-5" aria-hidden />
               </span>
               <div>
-                <p className="font-semibold">Premium active</p>
+                <p className="font-semibold">{member ? "Premium active" : view.title}</p>
                 {member ? (
                   <p className="mt-1 text-sm text-muted-foreground">
                     Included with your {member.orgName} staff account.
@@ -105,10 +114,10 @@ export default async function AccountPage() {
                   </p>
                 ) : null}
                 <Link
-                  href="/notes"
+                  href={view.href}
                   className="mt-3 inline-block text-sm font-medium text-primary hover:underline"
                 >
-                  Go to notes →
+                  {view.cta}
                 </Link>
               </div>
             </div>
@@ -118,16 +127,17 @@ export default async function AccountPage() {
                 <Sparkles className="h-5 w-5" aria-hidden />
               </span>
               <div>
-                <p className="font-semibold">No premium access</p>
+                <p className="font-semibold">No pass yet</p>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  The public bank, guides, and free notes are always open. Unlock
-                  the premium chapters with a one-time pass.
+                  The question bank, guides and notes are always free, and so are
+                  your first {FREE_MOCK_LIMIT} mock tests. A one-time pass unlocks unlimited mocks,
+                  or Word paper downloads for teachers.
                 </p>
                 <Link
                   href="/pricing"
                   className="mt-3 inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                 >
-                  See premium
+                  See passes
                 </Link>
               </div>
             </div>
