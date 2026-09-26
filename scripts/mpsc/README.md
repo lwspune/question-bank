@@ -79,4 +79,5 @@ candidate (`grace`). 35 across the 14 papers.
 | 2019-b (V12) | 100/100 | PRIVATE, 2026-09-26 (Q28, Q48, Q53 cancelled; Q20 + Q88 print notes) |
 | 2018-b (H11) | 100/100 | PRIVATE, 2026-09-26 (Q83 cancelled; Q3, Q38, Q59, Q84 print notes) |
 | 2018-c (J11) | 100/100 | PRIVATE, 2026-09-26 (Q12, Q15, Q39, Q63, Q81 cancelled; Q75 print note) |
-| the other 2 | — | — |
+| 2017-b (NO9) | 100/100 | PRIVATE, 2026-09-26 (Q28, Q64 cancelled; Q64, Q84 print notes) |
+| the other 1 | — | — |
