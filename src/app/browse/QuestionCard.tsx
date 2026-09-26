@@ -37,9 +37,8 @@ import BookmarkButton from "./BookmarkButton";
 import { buildBreadcrumb } from "./breadcrumb";
 import ReportQuestionDialog from "./ReportQuestionDialog";
 import { ItemStatChip, ItemStatDetail } from "./ItemStats";
-import LanguageSwitch from "@/components/i18n/LanguageSwitch";
 import CancelledNotice from "@/components/question/CancelledNotice";
-import { hasMarathi, optionVersions, stemVersions } from "@/lib/i18n/bilingual";
+import { optionVersions, stemVersions } from "@/lib/i18n/bilingual";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import type { ItemStatAggregate } from "@/lib/itemStats/types";
 
@@ -138,8 +137,8 @@ export default function QuestionCard({
 
   // Printed-language choice (MPSC papers carry Marathi). Shared page-wide; an
   // English-only question ignores it and renders exactly as before.
-  const [langPref, setLangPref] = useQuestionLang();
-  const bilingual = hasMarathi(question);
+  // The switch itself lives once in the /browse header (QuestionLangSwitch).
+  const [langPref] = useQuestionLang();
   const stems = stemVersions(question, langPref);
   // Officially cancelled (migration 0119): no option is correct, so a pick is
   // never painted right or wrong — the notice says why instead.
@@ -313,12 +312,6 @@ export default function QuestionCard({
                       : null
                   }
                 />
-              </div>
-            )}
-
-            {bilingual && (
-              <div className="flex justify-end pt-3">
-                <LanguageSwitch value={langPref} onChange={setLangPref} />
               </div>
             )}
 

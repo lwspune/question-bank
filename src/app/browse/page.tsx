@@ -40,6 +40,8 @@ import {
 } from "@/lib/questions/formatMix";
 import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
+import { QuestionLangSwitch } from "@/components/i18n/BilingualText";
+import { hasMarathi } from "@/lib/i18n/bilingual";
 import { listChapterLandings } from "@/lib/questions/landing";
 import BrowseLanding from "./BrowseLanding";
 import { mergeAndSortFacets, type FacetedOption } from "@/lib/questions/facets";
@@ -249,6 +251,12 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   // choice in the download dialog. Registry flag, not a count — see ExamEntry.
   const bilingualExam =
     getExamByName(examOpts.find((e) => e.id === filters.examId)?.name)?.bilingual === true;
+  // One page-level language switch, shown only where it can change something:
+  // a bilingual exam is filtered, or some row on this page carries Marathi
+  // (an unfiltered page can mix exams). Every other page renders unchanged.
+  const showLangSwitch =
+    questionsResult.rows.length > 0 &&
+    (bilingualExam || questionsResult.rows.some((r) => hasMarathi(r)));
   const subjectOpts = (subjects ?? []).map((s) => ({ id: s.id, name: s.name }));
 
   // Merge facet counts onto chapter and subtopic options. Both are sorted by
@@ -305,7 +313,8 @@ export default async function BrowsePage({ searchParams }: PageProps) {
               {filtered ? " match" : " available"}
             </p>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            {showLangSwitch && <QuestionLangSwitch />}
             <div className="lg:hidden">
               <MobileFilters
                 filters={filters}
