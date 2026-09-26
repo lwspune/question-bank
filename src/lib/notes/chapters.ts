@@ -589,6 +589,11 @@ import {
   MHTCET_AROMATIC_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/aromatic-compounds/_data";
 import {
+  MHTCET_ALKANES_CHAPTER,
+  MHTCET_ALKANES_NOTES,
+  MHTCET_ALKANES_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/alkanes/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1507,6 +1512,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_AROMATIC_CHAPTER,
     notes: MHTCET_AROMATIC_NOTES,
     slugs: MHTCET_AROMATIC_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "alkanes",
+    chipLabel: "Alkanes notes",
+    chapter: MHTCET_ALKANES_CHAPTER,
+    notes: MHTCET_ALKANES_NOTES,
+    slugs: MHTCET_ALKANES_SLUGS,
   },
   {
     examName: "NDA",
