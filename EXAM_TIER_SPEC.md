@@ -76,7 +76,7 @@ Assignments for the 18 entries:
 |---|---|
 | school | `foundation-course`, `mh-sb-9`, `mh-ssc-10`, `cbse-10` |
 | senior | `nda`, `mht-cet`, `jee-mains`, `neet`, `worksheets-11-12`, `cbse-11`, `cbse-12`, `isc-12`, `mh-sb-11`, `mh-hsc-12`, `ipmat-indore`, `ipmat-rohtak`, `jipmat` |
-| graduate | `cds`, `mpsc-group-b-c` |
+| graduate | `cds`, `mpsc-group-b-c`, `upsc-cse` |
 
 Future SSC, MPSC, CAPF, UPSC entries declare `tier: "graduate"` on the same
 line as their other flags. Because the field is required, TypeScript refuses
