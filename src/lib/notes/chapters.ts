@@ -614,6 +614,21 @@ import {
   MHTCET_ALKYNES_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/alkynes/_data";
 import {
+  MHTCET_ELECTROSTATICS_CHAPTER,
+  MHTCET_ELECTROSTATICS_NOTES,
+  MHTCET_ELECTROSTATICS_SLUGS,
+} from "@/app/notes/mht-cet-physics/electrostatics/_data";
+import {
+  MHTCET_ROTATIONAL_CHAPTER,
+  MHTCET_ROTATIONAL_NOTES,
+  MHTCET_ROTATIONAL_SLUGS,
+} from "@/app/notes/mht-cet-physics/rotational-dynamics/_data";
+import {
+  MHTCET_AC_CHAPTER,
+  MHTCET_AC_NOTES,
+  MHTCET_AC_SLUGS,
+} from "@/app/notes/mht-cet-physics/ac-circuits/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1587,6 +1602,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_ALKYNES_CHAPTER,
     notes: MHTCET_ALKYNES_NOTES,
     slugs: MHTCET_ALKYNES_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "electrostatics",
+    chipLabel: "Electrostatics notes",
+    chapter: MHTCET_ELECTROSTATICS_CHAPTER,
+    notes: MHTCET_ELECTROSTATICS_NOTES,
+    slugs: MHTCET_ELECTROSTATICS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "rotational-dynamics",
+    chipLabel: "Rotational Dynamics notes",
+    chapter: MHTCET_ROTATIONAL_CHAPTER,
+    notes: MHTCET_ROTATIONAL_NOTES,
+    slugs: MHTCET_ROTATIONAL_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "ac-circuits",
+    chipLabel: "AC Circuits notes",
+    chapter: MHTCET_AC_CHAPTER,
+    notes: MHTCET_AC_NOTES,
+    slugs: MHTCET_AC_SLUGS,
   },
   {
     examName: "NDA",

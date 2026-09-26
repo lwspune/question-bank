@@ -6,6 +6,15 @@ Pending features, data-model changes, and content work for Question Bank. Mirror
 
 ---
 
+## Backfill ledger — two MHT-CET source files are copies of other sittings; Chemistry + Maths still carry the copies (2026-09-26)
+
+Found while starting Physics notes (`generated-papers/_paper_overlap.py`, item-for-item across the extracted docx papers):
+
+- **`13 May 2024 shift 1 (ques).docx` IS the 12 May 2024 Shift 2 paper** — all 150 items identical at the same numbers. The real 13 May S1 paper is not on disk. The bank held 109 '13th May Shift 1' rows: 41 Physics (hidden 2026-09-26), **21 Chemistry and 47 Maths still PUBLIC** — each a copy of a 12 May S2 row that escaped content_hash dedup because its transcription differed. No 13 May S1 mock exists.
+- **'2023 Shift 1' is the 16 May 2023 Shift 2 paper under a wrong label** (the rows the ingest called `MHT_CET_2023_Analysis`). Physics was resolved (35 copies hidden, 14 sole copies re-dated — all 14 used by the published 16 May S2 mock). Chemistry still has ~28 PUBLIC and Maths ~43 PUBLIC rows labelled '2023 Shift 1' (the Trigonometric Functions ship handled five).
+
+**Why it matters for shipped work:** each copy double-counts a question in `/notes` counts, the MHT-CET Maths guide (13 May S1 is counted as a 2024 shift, and '2023 Shift 1' may be counted as a 2023 one — the matrix's 44 papers and 17/12 shifts per year need re-checking), and the trends matrix. **Method (must be docx-based):** select rows by `pyq_year` + `pyq_note`, locate each in the docx papers by text, pair it with the correctly-labelled row on the same paper item; hide the copy, or re-date it when it is the only copy; never hide a row a published mock uses. The Physics scripts generalise: `_phy_label_dump.ts` → `_phy_locate.py` → `_phy_label_plan.py` → `_phy_label_apply.ts` (Physics items 1-50; Chemistry 51-100, Maths 101-150). **Needs a 360 + permission** (shipped chapters, the guide and pinned tests move).
+
 ## ~~Backfill ledger — NDA Maths `/notes` formula gaps vs the PYQ corpus~~ — ALL TIERS DONE 2026-09-24
 
 **Closed 2026-09-24 (same day, second branch).** Tiers 1–3 shipped across all 30 chapters (84 files; two new ConceptUnits `aod-trig-max-without-calculus` + `cn-loci-in-argand-plane`, both tagged; 19 chapters gained their first `related` block). **Four further findings were already in the files** and needed nothing: `(kA)⁻¹ = (1/k)A⁻¹` (Matrices), `tan A + cot A = 2/sin 2A` and `csc A + cot A = cot(A/2)` (Trig Identities), `cos(α+β)cos(α−β)` (3D direction angles). **Declined:** Lucas' theorem, `∏sin(kπ/n)` (outside NDA scope). **Open follow-ups:** (1) run `npm run quiz:sync` — expect the 2 verified atoms of `sub-trig-identity` to go stale and new `needs_review` atoms for the two new concepts; re-verify. (2) `notes:coverage` per chapter was not re-run as a closing check. (3) The two new cards are proven only by the build's prerender, not by a browser read. Everything else in the entry below is history.
