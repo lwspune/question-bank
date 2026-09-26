@@ -64,8 +64,8 @@ export const OVERVIEW: Overview = {
   targetMarks: 24, // ~6 correct at ~80% on 7 attempts = 24 marks net of negative
   chapters: 8,
   subtopics: 31,
-  difficulty: { easy: 76, moderate: 82, hard: 22 },
-  pctHard: 12.2,
+  difficulty: { easy: 76, moderate: 89, hard: 26 },
+  pctHard: 13.6,
   asOf: "2026-09-14",
 };
 
@@ -102,7 +102,7 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     pctTotal: 17.3,
     pctHard: 9.1,
     focus:
-      "Bilateral and multilateral exercises (2.6 q per paper when present), Indian Navy ship inductions and naval policy, defence procurement deals, gallantry awards and service appointments.",
+      "Bilateral and multilateral exercises (2.5 q per paper when present), Indian Navy ship inductions and naval policy, defence procurement deals, gallantry awards and service appointments.",
   },
   {
     chapter: "Sports",
@@ -191,16 +191,16 @@ export type OccasionalTheme = {
   drillSubtopics: string[];
 };
 
-// ─── ANCHOR THEMES (5+ year recurrence · 86 q · ~5 q/paper) ─────────────
+// ─── ANCHOR THEMES (5+ year recurrence · 100 q · ~5 q/paper) ────────────
 
 export const ANCHOR_THEMES: AnchorTheme[] = [
   {
     slug: "india-bilateral-relations",
     name: "India ↔ partner-country agreements",
     chapter: "International Affairs and Relations",
-    qCount: 15,
-    yearsAppearing: 5,
-    qPerYearWhenPresent: 3.0,
+    qCount: 17,
+    yearsAppearing: 6,
+    qPerYearWhenPresent: 2.8,
     drillSubtopics: ["India's Foreign Policy and Bilateral Relations"],
     shape:
       'Variants of "In [month/year] India entered an agreement / scrapped a regime / hosted a visit with [country] to..." plus "[place in the news] is located in / borders [country]". The lever is always a specific recent India-↔-partner event — the question rotates with the news cycle.',
@@ -245,9 +245,9 @@ export const ANCHOR_THEMES: AnchorTheme[] = [
     slug: "military-exercises",
     name: "Military exercises ↔ partner country",
     chapter: "Defence and Military Exercises",
-    qCount: 13,
-    yearsAppearing: 5,
-    qPerYearWhenPresent: 2.6,
+    qCount: 15,
+    yearsAppearing: 6,
+    qPerYearWhenPresent: 2.5,
     drillSubtopics: ["Military Exercises — Bilateral and Multilateral"],
     shape:
       'Variants of "Exercise [name] is a joint exercise between India and..." / "[Edition] of [exercise] was held in [city / country]" / list-matching 4 exercise names to 4 countries. Specific exercises rotate every year — almost zero name-level repetition across papers — but the SHAPE recurs.',
@@ -267,9 +267,9 @@ export const ANCHOR_THEMES: AnchorTheme[] = [
     slug: "governance-policy-uts",
     name: "Governance, policy and UT reform",
     chapter: "Government Schemes, Policy and Governance",
-    qCount: 12,
+    qCount: 13,
     yearsAppearing: 7,
-    qPerYearWhenPresent: 1.7,
+    qPerYearWhenPresent: 1.9,
     drillSubtopics: ["Governance, Policy and Union Territory Reform"],
     shape:
       'Variants of "[Policy / Act / Bill / Amendment] is associated with..." / "Recently the Government of India announced..." / multi-statement T/F about a policy. Appears in 7 of 10 years — the most stable Govt-Schemes theme.',
@@ -358,9 +358,9 @@ export const ANCHOR_THEMES: AnchorTheme[] = [
     slug: "other-sports-personalities",
     name: "Other sports — medallists and personalities",
     chapter: "Sports",
-    qCount: 8,
-    yearsAppearing: 5,
-    qPerYearWhenPresent: 1.6,
+    qCount: 9,
+    yearsAppearing: 6,
+    qPerYearWhenPresent: 1.5,
     drillSubtopics: ["Other Sports and Personalities"],
     shape:
       'Variants of "Who won the [non-cricket sport event]?" / "[Person] is associated with which sport?" / identification of medallists at recent Olympic / Asian / Commonwealth Games.',
@@ -377,21 +377,33 @@ export const ANCHOR_THEMES: AnchorTheme[] = [
       "Abhinav Bindra (2008): India's first individual Olympic gold (10m air rifle)",
     ],
   },
-];
-
-// ─── RECURRING THEMES (3–4 year recurrence · 74 q · ~3 q/paper) ──────────
-
-export const RECURRING_THEMES: RecurringTheme[] = [
   {
     slug: "civilian-awards-institutions",
-    name: "Civilian awards, honours and educational institutions",
+    name: "Civilian awards, honours and institutions",
     chapter: "Awards, Honours, Books and Culture",
-    qCount: 7,
-    yearsAppearing: 4,
+    qCount: 8,
+    yearsAppearing: 5,
+    qPerYearWhenPresent: 1.6,
     drillSubtopics: ["Civilian Awards, Honours and Educational Institutions"],
-    oneLineShape:
-      "Recent Padma / Bharat Ratna / gallantry-award recipients · new IIT / IIIT / AIIMS / Central University announcements",
+    shape:
+      'Variants of "Who among the following was conferred [award] in [year]?" / "How many persons received [award] in [year]?" / multi-statement T/F about a national or international award ("It is given every alternate year...") / "Where is [national institute] situated?". The award or institution rotates with the news; the recipient-or-rule question shape does not.',
+    checklist: [
+      "Bharat Ratna and Padma awardees announced this year — names and counts",
+      "Gallantry awards this year — Ashoka Chakra, Kirti Chakra, Param Vishisht Seva Medal recipients",
+      "International awards won by Indians or Indian organisations (Nikkei Asia, Ramon Magsaysay, Goldman 'Green Nobel', foreign military honours)",
+      "National Film Awards — best feature film; Republic Day parade — best tableau",
+      "New or renamed national institutes (IITs, AIIMS, central universities, cultural institutes) and their locations",
+    ],
+    durableAnchors: [
+      "Bharat Ratna: at most 3 a year (a convention, exceeded in 2024 with 5)",
+      "Ashoka Chakra is the highest PEACETIME gallantry award; Param Vir Chakra the highest wartime one",
+    ],
   },
+];
+
+// ─── RECURRING THEMES (3–4 year recurrence · 77 q · ~3 q/paper) ──────────
+
+export const RECURRING_THEMES: RecurringTheme[] = [
   {
     slug: "books-literature-authors",
     name: "Books, literature and authors",
@@ -446,7 +458,7 @@ export const RECURRING_THEMES: RecurringTheme[] = [
     slug: "defence-procurement",
     name: "Defence procurement and cooperation",
     chapter: "Defence and Military Exercises",
-    qCount: 4,
+    qCount: 6,
     yearsAppearing: 3,
     drillSubtopics: ["Defence Procurement and Cooperation"],
     oneLineShape:
@@ -542,9 +554,29 @@ export const RECURRING_THEMES: RecurringTheme[] = [
     oneLineShape:
       "Recently-added UNESCO World Heritage Site / Creative City / Intangible Cultural Heritage element",
   },
+  {
+    slug: "health-tech-anniversaries",
+    name: "Health technology, science awards and anniversaries",
+    chapter: "Science and Technology",
+    qCount: 5,
+    yearsAppearing: 3,
+    drillSubtopics: ["Health Technology, Science Awards and Anniversaries"],
+    oneLineShape:
+      "Institutional anniversaries (150 years of a service body) · National Technology Day · Nobel science laureates · national science fellowships and the schemes behind them",
+  },
+  {
+    slug: "wildlife-conservation",
+    name: "Wildlife conservation and species",
+    chapter: "Environment, Ecology and Energy",
+    qCount: 3,
+    yearsAppearing: 3,
+    drillSubtopics: ["Wildlife Conservation and Species"],
+    oneLineShape:
+      "Named conservation operations (Operation Olivia) · IUCN Red List category changes · membership of alliances such as the International Big Cat Alliance",
+  },
 ];
 
-// ─── OCCASIONAL THEMES (1–2 year recurrence · 20 q · drill if time permits) ─
+// ─── OCCASIONAL THEMES (1–2 year recurrence · 14 q · drill if time permits) ─
 
 export const OCCASIONAL_THEMES: OccasionalTheme[] = [
   {
@@ -554,14 +586,6 @@ export const OCCASIONAL_THEMES: OccasionalTheme[] = [
     qCount: 2,
     yearsAppearing: 2,
     drillSubtopics: ["Tennis"],
-  },
-  {
-    slug: "health-tech-anniversaries",
-    name: "Health technology, science awards and anniversaries",
-    chapter: "Science and Technology",
-    qCount: 4,
-    yearsAppearing: 2,
-    drillSubtopics: ["Health Technology, Science Awards and Anniversaries"],
   },
   {
     slug: "drdo-marine-tech",
@@ -586,14 +610,6 @@ export const OCCASIONAL_THEMES: OccasionalTheme[] = [
     qCount: 3,
     yearsAppearing: 2,
     drillSubtopics: ["Environmental Campaigns, Disasters and Energy"],
-  },
-  {
-    slug: "wildlife-conservation",
-    name: "Wildlife conservation and species",
-    chapter: "Environment, Ecology and Energy",
-    qCount: 2,
-    yearsAppearing: 2,
-    drillSubtopics: ["Wildlife Conservation and Species"],
   },
   {
     slug: "government-events-reports",

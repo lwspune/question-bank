@@ -33,7 +33,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "NDA Current Affairs — Strategy Guide",
   description:
-    "How NDA Current Affairs actually works. A 191-question shape analysis of every paper from 2017 to 2026 — 90% of CA questions reference events within 12 months of the paper, so this guide teaches the recurring question SHAPES, not the historical facts. Eight anchor themes, a half-life directive, and a single drill link into the full bank.",
+    "How NDA Current Affairs actually works. A 191-question shape analysis of every paper from 2017 to 2026 — 90% of CA questions reference events within 12 months of the paper, so this guide teaches the recurring question SHAPES, not the historical facts. Nine anchor themes, a half-life directive, and a single drill link into the full bank.",
   alternates: { canonical: "/guide/nda-current-affairs" },
 };
 
@@ -68,7 +68,7 @@ export default async function NdaCurrentAffairsLanding() {
           type="CollectionPage"
           path="/guide/nda-current-affairs"
           headline="NDA Current Affairs — Strategy Guide"
-          description="A 191-question shape analysis of NDA Current Affairs across every paper 2017–2026. 90% of CA questions reference events within 12 months of their paper, so this guide is built around stable question shapes — eight anchor themes with prep checklists, sixteen recurring themes, and seven occasional themes. Drill the bank for shape, harvest the facts externally."
+          description="A 191-question shape analysis of NDA Current Affairs across every paper 2017–2026. 90% of CA questions reference events within 12 months of their paper, so this guide is built around stable question shapes — nine anchor themes with prep checklists, seventeen recurring themes, and five occasional themes. Drill the bank for shape, harvest the facts externally."
         />
 
         <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground">
@@ -223,8 +223,8 @@ export default async function NdaCurrentAffairsLanding() {
             </span>
           </div>
           <p className="mt-2 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground sm:text-base">
-            These eight themes have appeared on at least 5 of the last 10
-            papers. Each card names the recurring question SHAPE, then lists
+            These nine themes have appeared in at least 5 of the last 10
+            years. Each card names the recurring question SHAPE, then lists
             the categories of facts you should harvest from this year&rsquo;s
             news — these are durable prep directives, not specific answers.
             The drill link practises the shape against the bank&rsquo;s
@@ -253,7 +253,7 @@ export default async function NdaCurrentAffairsLanding() {
             </span>
           </div>
           <p className="mt-2 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Sixteen themes that appear regularly but not every year. Light
+            Seventeen themes that appear regularly but not every year. Light
             prep — track recent additions / appointments / award rounds in
             each, then drill the bank for shape.
           </p>
@@ -294,9 +294,9 @@ export default async function NdaCurrentAffairsLanding() {
             </span>
           </div>
           <p className="mt-2 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Seven themes with thin bank coverage and inconsistent appearance.
+            Five themes with thin bank coverage and inconsistent appearance.
             Drill once for awareness; don&rsquo;t deep-prep — these are the
-            ~20 q of year-specific noise that age out fastest.
+            ~14 q of year-specific noise that age out fastest.
           </p>
           <ul className="mt-4 grid gap-2 sm:grid-cols-2">
             {OCCASIONAL_THEMES.map((t) => (
@@ -390,7 +390,7 @@ export default async function NdaCurrentAffairsLanding() {
               Building a 5-section guide here would teach you 2019 facts and
               call it strategy. The honest stance is to name the half-life
               (90% of questions reference events within 12 months of paper),
-              name the recurring shapes (the eight anchor themes), and point
+              name the recurring shapes (the nine anchor themes), and point
               you at this year&rsquo;s news — not at the bank&rsquo;s
               historical answers.
             </p>
