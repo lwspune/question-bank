@@ -6,7 +6,7 @@ export const CLASSIFICATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Halides are classed by the carbon that carries the halogen — sp³ (alkyl, allylic, benzylic), sp² (vinylic, aryl) or sp (alkynyl); boiling point rises with the mass of the halogen and the number of halogens, bond strength falls from C–F to C–I, and a carbon with four different groups makes the molecule chiral.",
   whyItMatters:
-    "26 PYQs, 1 HARD — the largest page and the most predictable. Eleven ask which formula or name is vinylic, allylic or benzylic (or is NOT); eight ask the highest or lowest boiling point among the halomethanes or the strongest C–X bond; seven ask which halide is chiral or how many chiral carbons it has. " +
+    "27 PYQs, 1 HARD — the largest page and the most predictable. Eleven ask which formula or name is vinylic, allylic or benzylic (or is NOT); eight ask the highest or lowest boiling point among the halomethanes or the strongest C–X bond; eight ask which halide is chiral or how many chiral carbons it has. " +
     "Three cards, no calculation.",
   concepts: [
     // 1 — classes

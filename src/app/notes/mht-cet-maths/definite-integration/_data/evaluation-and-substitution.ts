@@ -6,7 +6,7 @@ export const EVALUATION_AND_SUBSTITUTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A definite integral is an antiderivative evaluated between two limits — every Indefinite Integration technique carries over, with one new discipline: when you substitute, move the limits with you.",
   whyItMatters:
-    "14 PYQs at 43% HARD, and every one of them is a technique from the Indefinite Integration chapter with limits attached: splitting a numerator against a quadratic, completing a square, partial fractions, a root substitution, by parts on an inverse trig function. " +
+    "15 PYQs at 47% HARD, and every one of them is a technique from the Indefinite Integration chapter with limits attached: splitting a numerator against a quadratic, completing a square, partial fractions, a root substitution, by parts on an inverse trig function. " +
     "What is new is bookkeeping — changing the limits with the substitution and evaluating cleanly — and the reduction formula for powers of tan, which appears here and nowhere else. " +
     "The page is worth working slowly once, because the three property pages that follow assume you can finish an integral once the property has reduced it.",
   concepts: [
