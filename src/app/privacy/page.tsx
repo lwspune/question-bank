@@ -1,89 +1,119 @@
 import type { Metadata } from "next";
-import AppHeader from "@/components/AppHeader";
+import Link from "next/link";
+import { LegalH2, LegalList, LegalP, LegalPage } from "@/components/legal/LegalPage";
 import { CONTACT_EMAIL } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How PYQ Vault collects, uses, and protects your information — including details you share when taking a public quiz.",
+    "How PYQ Vault collects, uses, and protects your information — for accounts, payments, emails, and public quizzes.",
   alternates: { canonical: "/privacy" },
 };
 
 const CONTACT = CONTACT_EMAIL;
 
+function Mail() {
+  return (
+    <a href={`mailto:${CONTACT}`} className="text-brand-accent underline">
+      {CONTACT}
+    </a>
+  );
+}
+
 export default function PrivacyPage() {
   return (
-    <>
-      <AppHeader />
-      <main className="mx-auto max-w-2xl space-y-6 px-6 py-10">
-        <header>
-          <h1 className="text-2xl font-semibold tracking-tight">Privacy Policy</h1>
-          <p className="mt-1 text-sm text-muted-foreground">
-            PYQ Vault is run by Vilas Shinde, in Pune. This policy explains what we collect
-            and why.
-          </p>
-        </header>
+    <LegalPage
+      title="Privacy Policy"
+      updated="26 September 2026"
+      intro={
+        <>
+          PYQ Vault is run by Vilas Shinde, in Pune. This policy explains what we collect and
+          why. Browsing the question bank, guides and notes needs no account.
+        </>
+      }
+    >
+      <LegalH2>What we collect</LegalH2>
+      <LegalList
+        items={[
+          <>
+            <strong>Your account.</strong> When you sign up: your name and email (from Google,
+            if you sign in with Google). If you choose to add them: your mobile number, target
+            exam and exam date, class or stage, and study medium.
+          </>,
+          <>
+            <strong>Your practice.</strong> Your mock-test answers and scores, questions you
+            save, and what you practise, so we can show your progress and weak areas.
+          </>,
+          <>
+            <strong>Payments.</strong> If you buy premium, we keep a record of the purchase:
+            amount, date, plan, and the Razorpay order and payment IDs.
+          </>,
+          <>
+            <strong>Public quizzes.</strong> When you take a public quiz and ask to see your
+            score, we collect the <strong>name and mobile number</strong> you enter, your answers
+            and your score. We also note which link brought you to the quiz.
+          </>,
+          <>
+            <strong>Messages.</strong> What you send us through the contact form, a question
+            report or a request for teacher access.
+          </>,
+        ]}
+      />
 
-        <section className="space-y-2">
-          <h2 className="text-lg font-medium">What we collect</h2>
-          <p className="text-sm text-muted-foreground">
-            When you take a <strong>public quiz</strong> and ask to see your score, we collect the
-            <strong> name and mobile number</strong> you enter, your quiz answers, and your score. We
-            also note which link brought you to the quiz (e.g. a forum or campaign source). Browsing the
-            question bank, guides, or notes does not require an account.
-          </p>
-        </section>
+      <LegalH2>Payments</LegalH2>
+      <LegalP>
+        Payments are processed by <strong>Razorpay</strong>. Your card, UPI or bank details go
+        straight to Razorpay; we never see or store them. Razorpay handles them under its own
+        privacy policy.
+      </LegalP>
 
-        <section className="space-y-2">
-          <h2 className="text-lg font-medium">Why we collect it</h2>
-          <p className="text-sm text-muted-foreground">
-            We use your name and mobile number to share your result and to contact you about NDA exam
-            preparation, courses, and offers from PYQ Vault. We rely on your <strong>consent</strong> —
-            given by ticking the box at the quiz — as the basis for this contact. Your quiz answers and
-            score help us improve our practice material.
-          </p>
-        </section>
+      <LegalH2>Why we collect it</LegalH2>
+      <LegalList
+        items={[
+          "To run your account, grade your mocks and show your progress.",
+          "To give you premium access after you pay, and to handle refunds.",
+          "To email you about your account: mock reports, practice reminders and how-to guides. Every such email has an unsubscribe link.",
+          <>
+            To contact you about exam preparation, courses and offers, only if you agreed to it
+            by ticking a consent box (at a quiz, or when adding your mobile number).
+          </>,
+          "To send a weekly WhatsApp report, only if you turned it on. You can turn it off on your account page.",
+          "To improve our questions and practice material.",
+        ]}
+      />
 
-        <section className="space-y-2">
-          <h2 className="text-lg font-medium">How it is stored and shared</h2>
-          <p className="text-sm text-muted-foreground">
-            Your information is stored securely and is accessible only to authorised PYQ Vault staff. We
-            do <strong>not</strong> sell your data or share it with unrelated third parties. We retain it
-            only as long as needed for the purposes above.
-          </p>
-        </section>
+      <LegalH2>Who can see it</LegalH2>
+      <LegalP>
+        Your information is stored securely and is accessible only to authorised PYQ Vault
+        staff. We do <strong>not</strong> sell your data. We use a
+        few trusted providers to run the site — hosting and database (Vercel, Supabase), email
+        delivery (Resend) and payments (Razorpay) — and they process data only to provide that
+        service. We keep your information only as long as it is needed for the purposes above.
+      </LegalP>
 
-        <section className="space-y-2">
-          <h2 className="text-lg font-medium">Your choices</h2>
-          <p className="text-sm text-muted-foreground">
-            You can ask us to stop contacting you, or to delete your information, at any time. Email{" "}
-            <a href={`mailto:${CONTACT}`} className="text-brand-accent underline">
-              {CONTACT}
-            </a>{" "}
-            and we will act on your request.
-          </p>
-        </section>
+      <LegalH2>Your choices</LegalH2>
+      <LegalP>
+        You can ask us to stop contacting you, to correct your information, or to delete your
+        account and data, at any time. Email <Mail /> or use the{" "}
+        <Link href="/contact" className="text-brand-accent underline">
+          contact page
+        </Link>{" "}
+        and we will act on your request. We may keep payment records where the law requires it.
+      </LegalP>
 
-        <section className="space-y-2">
-          <h2 className="text-lg font-medium">Cookies &amp; local storage</h2>
-          <p className="text-sm text-muted-foreground">
-            We store your name and mobile in your browser&rsquo;s local storage so you don&rsquo;t have
-            to retype them on a return visit. Signed-in accounts use a session cookie. You can clear these
-            from your browser at any time.
-          </p>
-        </section>
+      <LegalH2>Cookies, local storage and analytics</LegalH2>
+      <LegalP>
+        Signed-in accounts use a session cookie. We remember your chosen exam in a cookie, and
+        your quiz name and mobile in your browser&rsquo;s local storage so you don&rsquo;t have
+        to retype them. We use Vercel Analytics to count page visits; it does not use
+        advertising cookies. You can clear cookies and local storage from your browser at any
+        time.
+      </LegalP>
 
-        <section className="space-y-2">
-          <h2 className="text-lg font-medium">Contact</h2>
-          <p className="text-sm text-muted-foreground">
-            Questions about this policy? Email{" "}
-            <a href={`mailto:${CONTACT}`} className="text-brand-accent underline">
-              {CONTACT}
-            </a>
-            .
-          </p>
-        </section>
-      </main>
-    </>
+      <LegalH2>Contact</LegalH2>
+      <LegalP>
+        Questions about this policy? Email <Mail />.
+      </LegalP>
+    </LegalPage>
   );
 }
