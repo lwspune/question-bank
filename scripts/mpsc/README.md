@@ -81,3 +81,5 @@ candidate (`grace`). 35 across the 14 papers.
 | 2018-c (J11) | 100/100 | PRIVATE, 2026-09-26 (Q12, Q15, Q39, Q63, Q81 cancelled; Q75 print note) |
 | 2017-b (NO9) | 100/100 | PRIVATE, 2026-09-26 (Q28, Q64 cancelled; Q64, Q84 print notes) |
 | 2017-c (B09) | 100/100 | PRIVATE, 2026-09-26 (Q6, Q39, Q71 cancelled; Q26, Q75, Q90 print notes) |
+
+**All 14 flipped PUBLIC 2026-09-26** (the "committed" column records how each was first written). Mocks: `npx tsx scripts/mocks/build.ts --paper=mpsc` — 14 build whole with 35 grace; publishing (`--apply --publish`) and `hasMocks: true` in `src/lib/exam/examContext.ts` go together.
