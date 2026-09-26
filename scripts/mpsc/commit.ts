@@ -30,7 +30,7 @@ import { commitStaged } from "../../src/lib/upload/commit";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { validateRow } from "../../src/lib/upload/validate";
 import { CREATED_BY, DATA_DIR, EXAM_ID, ORG_ID, QUESTIONS_PER_PAPER, dataPath, requirePaper } from "./config";
-import { buildRecords, parityIssues, type BilingualQuestion, type KeyLetter } from "./lib";
+import { buildRecords, parityIssues, printNoteSolution, type BilingualQuestion, type KeyLetter } from "./lib";
 
 const BUCKET = "question-images";
 
@@ -167,11 +167,19 @@ async function main() {
       p_lang: "mr",
       p_text: nl(q.mr.stem),
       p_context: q.mr.context ? nl(q.mr.context) : null,
-      p_solution: null,
+      p_solution: printNoteSolution(q.printNote)?.mr ?? null,
       p_options: opts.map((o, i) => ({ option_id: o.id, text: nl(q.mr.options[i]) })),
     });
     if (error) problems.push(`Q${q.n}: ${error.message}`);
     else translated++;
+    // The print-difference remark on the English row. commitStaged never
+    // rewrites an existing row, so a re-run sets it here (solution is outside
+    // content_hash, so this cannot change the question's identity).
+    const remark = printNoteSolution(q.printNote);
+    if (remark) {
+      const { error: sErr } = await client.from("questions").update({ solution: nl(remark.en) }).eq("id", row.id);
+      if (sErr) problems.push(`Q${q.n}: solution update failed — ${sErr.message}`);
+    }
   }
   console.log(`marathi: ${translated} question(s) translated`);
 

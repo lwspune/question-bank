@@ -50,6 +50,8 @@ Exam row + subjects: `npx tsx scripts/mpsc/seed.ts --apply` (done 2026-09-25).
   and record it in the question's `printNote` field — never only in a waiver,
   which is for number/notation differences. The parity probe cannot see these;
   they are found by reading. `npx tsx scripts/mpsc/print-notes.ts` lists them all.
+  Students see each as a remark in the question's solution (both languages),
+  written by `commit.ts` via `printNoteSolution`.
 - **Key fit** (`merge.ts --show`): solve the aptitude block independently; a
   shifted key shows up there first. 2024-B: 20/20.
 
@@ -73,4 +75,5 @@ candidate (`grace`). 35 across the 14 papers.
 | 2021-c (Y14) | 100/100 | PRIVATE, 2026-09-26 (Q20, Q22, Q94 cancelled) |
 | 2021-b (U14) | 100/100 | PRIVATE, 2026-09-26 (8 cancelled; Q40 + Q72 print differences noted) |
 | 2020-b (A14) | 100/100 | PRIVATE, 2026-09-26 (5 cancelled) |
-| the other 6 | — | — |
+| 2019-c (Y12) | 100/100 | PRIVATE, 2026-09-26 (Q39, Q58 cancelled; Q57 print note) |
+| the other 5 | — | — |

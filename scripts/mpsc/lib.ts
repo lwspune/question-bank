@@ -193,6 +193,7 @@ export type MpscRow = {
   answer: "A" | "B" | "C" | "D" | "CANCELLED";
   difficulty: string;
   cancelledNote?: string;
+  solution?: string;
 };
 
 /**
@@ -237,7 +238,22 @@ export function buildRecords(
       answer: k === "#" ? "CANCELLED" : k,
       difficulty: q.difficulty,
       ...(k === "#" ? { cancelledNote } : {}),
+      ...(q.printNote ? { solution: printNoteSolution(q.printNote)!.en } : {}),
     });
   }
   return { rows, cancelled, errors };
+}
+
+/**
+ * The remark a student sees for a question whose printed Marathi and English
+ * differ in meaning (`printNote`). Stored as the question's solution — English
+ * on the row, Marathi on its translation — so it appears with the answer, not
+ * before the attempt. Null when there is no note.
+ */
+export function printNoteSolution(note: string | undefined): { en: string; mr: string } | null {
+  if (!note) return null;
+  return {
+    en: `**Note on the printed paper:** the Marathi and English versions of this question differ. ${note}`,
+    mr: `**मुद्रित प्रश्नपत्रिकेबाबत टीप:** या प्रश्नाच्या मराठी व इंग्रजी आवृत्तीत फरक आहे. ${note}`,
+  };
 }

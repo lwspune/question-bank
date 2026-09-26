@@ -6,6 +6,7 @@ import {
   parseKeyLines,
   parseKeyTokens,
   parityIssues,
+  printNoteSolution,
   type BilingualQuestion,
 } from "../scripts/mpsc/lib";
 
@@ -191,5 +192,21 @@ describe("buildRecords", () => {
   it("carries a context through when the paper prints one", () => {
     const withCtx = { ...q(4), en: { ...q(4).en, context: "Passage" } };
     expect(buildRecords([withCtx], { 4: "B" }).rows[0].context).toBe("Passage");
+  });
+});
+
+describe("printNoteSolution", () => {
+  it("turns a print note into a labelled remark in both languages", () => {
+    const s = printNoteSolution("Marathi says south-west; English says North-Western.")!;
+    expect(s.en).toBe(
+      "**Note on the printed paper:** the Marathi and English versions of this question differ. Marathi says south-west; English says North-Western."
+    );
+    expect(s.mr).toBe(
+      "**मुद्रित प्रश्नपत्रिकेबाबत टीप:** या प्रश्नाच्या मराठी व इंग्रजी आवृत्तीत फरक आहे. Marathi says south-west; English says North-Western."
+    );
+  });
+
+  it("gives nothing for a question without a note", () => {
+    expect(printNoteSolution(undefined)).toBeNull();
   });
 });
