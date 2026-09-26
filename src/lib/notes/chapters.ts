@@ -589,6 +589,26 @@ import {
   MHTCET_AROMATIC_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/aromatic-compounds/_data";
 import {
+  MHTCET_ALKANES_CHAPTER,
+  MHTCET_ALKANES_NOTES,
+  MHTCET_ALKANES_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/alkanes/_data";
+import {
+  MHTCET_GREEN_CHAPTER,
+  MHTCET_GREEN_NOTES,
+  MHTCET_GREEN_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/green-chemistry-and-nanochemistry/_data";
+import {
+  MHTCET_MPT_CHAPTER,
+  MHTCET_MPT_NOTES,
+  MHTCET_MPT_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/modern-periodic-table/_data";
+import {
+  MHTCET_ALKYNES_CHAPTER,
+  MHTCET_ALKYNES_NOTES,
+  MHTCET_ALKYNES_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/alkynes/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1507,6 +1527,50 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_AROMATIC_CHAPTER,
     notes: MHTCET_AROMATIC_NOTES,
     slugs: MHTCET_AROMATIC_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "alkanes",
+    chipLabel: "Alkanes notes",
+    chapter: MHTCET_ALKANES_CHAPTER,
+    notes: MHTCET_ALKANES_NOTES,
+    slugs: MHTCET_ALKANES_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "green-chemistry-and-nanochemistry",
+    chipLabel: "Green Chemistry notes",
+    chapter: MHTCET_GREEN_CHAPTER,
+    notes: MHTCET_GREEN_NOTES,
+    slugs: MHTCET_GREEN_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "modern-periodic-table",
+    chipLabel: "Modern Periodic Table notes",
+    chapter: MHTCET_MPT_CHAPTER,
+    notes: MHTCET_MPT_NOTES,
+    slugs: MHTCET_MPT_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "alkynes",
+    chipLabel: "Alkynes notes",
+    chapter: MHTCET_ALKYNES_CHAPTER,
+    notes: MHTCET_ALKYNES_NOTES,
+    slugs: MHTCET_ALKYNES_SLUGS,
   },
   {
     examName: "NDA",

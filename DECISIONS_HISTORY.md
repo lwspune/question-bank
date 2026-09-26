@@ -15,6 +15,42 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-26 (tenth) — MHT-CET Chemistry "Alkynes" ships (2 pages · 11 PYQ · 4 concepts · 3 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-final-wave` — the Chemistry programme's twenty-fourth and last planned chapter.**
+
+**Shape.** 11 PUBLIC PYQ, nine MODERATE. Pages: structure (4: haloalkynes and hybridisation) and reactions (7: double dehydrohalogenation and acetylides 3, Lindlar 2, cyanide step-up 2).
+
+**Source pass (generated-papers/_repair-chalkyne.ts and _repair-2021keys.ts).** (1) 6f1e632a (2021 #92): the attached figure is HC≡CH →HBr→ A →HBr→ B →alc. KOH→ C →NaNH₂→ D; the row was keyed (d) Ethanal with a hydration solution. The 2021 answer key reads (c) Ethyne, which the figure supports. Flipped, solution rewritten. (2) PHANTOM: 484d2880 (25 Apr 2025 S2 #71) and f2bd9498 (23 Apr 2025 S1 #52) rewritten with `\xrightarrow`; f2bd9498's options (a) and (b) are both 'Bromoethane' IN THE PAPER, kept. (3) 59e1c049 '3rd May 2nd Shift' → '3rd May Shift 1' (#94, only copy). (4) 75a7b927: the solution drew hexa-1,4-diyne with five carbons; rewritten (the first write lost its backslashes in a Python-edited TS string and was re-applied from a corrected script).
+
+**Groups 13–15 declined.** The last un-noted Chemistry chapter has 4 PYQs: apatite's elements, carbon's oxidation state in CaC₂ and K₂C₂O₄, phosphorus in phosphate, and 'which element is a transition element' (Hf), which belongs in Transition Elements. There is no teaching arc to build, so the notes programme ends here for Chemistry. Moving c92f44bf is a change to a shipped chapter and waits for confirmation.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:coverage `\equiv`(3) only (the notes write ≡ as Unicode) · quiz:coverage 0 STRONG gaps · notes:intro clean · stats 121 · seo:dates.
+
+**2026-09-26 (ninth) — MHT-CET Chemistry "Modern Periodic Table" ships (2 pages · 18 PYQ · 4 concepts · 3 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-final-wave` — the Chemistry programme's twenty-third chapter.**
+
+**Shape.** 18 PUBLIC PYQ and 20 practice rows; none HARD. Pages: position (8: group and period lookup 4, configuration to block 4) and trends (10: radius and diagonal pairs 4, ionisation / electron gain / electronegativity 6). All four concepts are reference cards. It had been deferred as thin; shipped because the other block chapters link back to it.
+
+**Source pass (generated-papers/_repair-chmpt.ts).** Every PYQ was read; one change — 011bd4c1 '3rd May 2nd Shift' → '3rd May Shift 1' (the stem is in the 3 May 2023 S1 paper, #85, and no other bank row holds it). d58c15bd (Ag, last electron in (n−1)d) is the correctly dated copy whose twin was hidden in Transition Elements on 2026-09-25.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:coverage none · quiz:coverage 0 STRONG gaps · notes:intro clean · stats 120 · seo:dates.
+
+**2026-09-26 (eighth) — MHT-CET Chemistry "Green Chemistry and Nanochemistry" ships (2 pages · 33 PYQ · 5 concepts · 4 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-final-wave` — the Chemistry programme's twenty-second chapter.**
+
+**Shape.** 34 PUBLIC PYQ before the source pass, 33 after; none HARD. Pages: green chemistry (19: principles 8, atom economy 6, solvents and plant sources 5) and nanochemistry (14: dimensions, size and uses 8, sol–gel and characterisation 6).
+
+**Source pass (generated-papers/_repair-chgreen.ts and _repair-2021keys.ts, guarded and idempotent).** (1) 5dc43001 (2021 #95): keyed (c) 'Both CO₂ and SO₂'; the 2021 answer key (`m2021_a.tex`) reads (b) SO₂. Flipped, solution rewritten. (2) b2b3ecf5 → PRIVATE: 'Shift ||' copy of ca60ef84 (19 Apr 2025 S2). (3) Re-dated — 14e9387a '3rd May 2nd Shift' → '3rd May Shift 1' (the stem is in the 3 May 2023 S1 paper, #57, only), f5602b3e '2023 Shift 1' → '16th May Shift 2' (#98). (4) f6e081d6 (25 Apr 2025 S1 #66): the paper prints '6 g KOH' and keys 38.17%, which needs 56 g; kept, and the solution now names the misprint. (5) Worked example: the first draft reused the aspirin PYQ's numbers and notes:lint flagged it; replaced with the ethyl ethanoate calculation.
+
+**The 2021 sweep.** Because two 2021 keys in this wave were wrong (this row and Alkynes' 6f1e632a), all 150 MHT-CET 2021 rows were compared with the 2021 answer key (read-only, `generated-papers/_ak2021.py`): 91 matched an item, 77 agree, 14 disagree — 4 Chemistry rows in SHIPPED chapters, 9 Physics, 1 Maths. Logged as a ROADMAP backfill candidate with a 360; not reworked, because the shipped rows need confirmation first.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:coverage none · quiz:coverage 0 STRONG gaps · notes:intro clean · stats 119 · seo:dates.
+
+**2026-09-26 (seventh) — MHT-CET Chemistry "Alkanes" ships (3 pages · 35 PYQ · 7 concepts · 5 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-final-wave` — the Chemistry programme's twenty-first chapter.**
+
+**Shape.** 36 PUBLIC PYQ before the source pass, 35 after; none HARD. Pages: structure (14: homologous series 4, isomers and carbon types 7, boiling points and uses 3), preparation (17: Wurtz 8, Grignard 7, decarboxylation and CO + H₂ 2), halogenation (4). Three formula cards.
+
+**Source pass (generated-papers/_repair-chalkane.ts, guarded and idempotent).** (1) 0cde00f9 → PRIVATE: 'Shift ||' copy of e5370585 (19 Apr 2025 S2 #66, in Basic Principles), whose options are the drawings; this copy's options were text placeholders. (2) 2b1da072 '2023 Shift 1' → '16th May Shift 2' (the stem is in that paper only, #76, and no other row holds it). (3) PHANTOM: 20878929 (20 Apr 2025 S1 #67) and ed9952ed (19 Apr 2025 S1 #87) rendered bare arrows; rewritten with `\xrightarrow`, plus the paper's 'Deyether' and 'magne1sium' typos. (4) 9683b470 (23 Apr 2025 S1 #72): the figure's last step is NH₃, the solution said water — rewritten. (5) 7e46ce2d (11 May 2023 S1 #51): option (c) read '(structure image)'; the paper draws 2-bromopropane, now written as text. (6) 9070014e (2 May 2023 S2 #71): the stem had grown an explanatory sentence and options (c)/(d) were invented; restored to '138 g' and '80 g', key (b) 74 g held. (7) Kept as printed: 7692fb49, whose options omit ethane — the key is propane and the solution already said so.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:coverage none · quiz:coverage 0 STRONG gaps · notes:intro clean · stats 118 · seo:dates.
+
 **2026-09-26 (sixth) — MHT-CET Chemistry "Aromatic Compounds" ships (3 pages · 35 PYQ · 7 concepts · 8 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-aromatic` — the Chemistry programme's twentieth chapter.**
 
 **Shape.** 37 PUBLIC PYQ before the source pass, 35 after; one HARD (benzonitrile + PhMgBr → benzophenone). Pages: structure and aromaticity (8: Hückel classes 5, natural sources 3), electrophilic substitution (12: reactions and reagents 5, directing effects 7), transformations (15: side-chain oxidation 8, ozonolysis and BHC 3, diazonium / Wurtz–Fittig / Grignard 4). Five rows MOVED subtopic before tagging — 33c4aa7a (Wurtz–Fittig), a356e8c4 (diazotisation), e8e20455 (diazonium → benzene) and 9a8c86b2 (gammexane, an addition product) from EAS/Structure to Transformations; d2f85109 (reversible iodination) from Structure to EAS.
