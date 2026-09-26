@@ -9,13 +9,13 @@ import { buildGuideSideNav } from "@/lib/guide/guidesNav";
 export const revalidate = 86400;
 
 const PAGE_INTRO =
-  "Built from the live past-year question bank — 45 shifts of real papers, not a syllabus " +
+  "Built from the live past-year question bank — 44 shifts of real papers, not a syllabus " +
   "summary. Pick the subject you're preparing.";
 
 export const metadata: Metadata = {
   title: "MHT-CET Guides — Strategy for MHT-CET Mathematics",
   description:
-    "Evidence-led strategy guides for MHT-CET, built from 2,228 past-year Mathematics questions across 45 shifts (2021-2025). Every claim is measured against the live past-year question bank.",
+    "Evidence-led strategy guides for MHT-CET, built from 2,175 past-year Mathematics questions across 44 shifts (2021-2025). Every claim is measured against the live past-year question bank.",
   alternates: { canonical: "/guide/mht-cet" },
 };
 
@@ -48,12 +48,12 @@ const GUIDES: ExamGuide[] = [
       // Deliberately NOT phrased like the /guide picker's MHT-CET card: a
       // reader arrives here straight from that card, and two near-identical
       // sentences one click apart is exactly what reads as machine-written.
-      "Every Mathematics shift from 2021 to 2025, all 2,228 questions. The short version: nothing is deducted for a wrong answer and you have 1.8 minutes a question, so the order you attempt in matters more than what you leave out.",
+      "Every Mathematics shift from 2021 to 2025, all 2,175 questions. The short version: nothing is deducted for a wrong answer and you have 1.8 minutes a question, so the order you attempt in matters more than what you leave out.",
     qCount: 2228,
-    yearWindow: "2021-2025 · 45 shifts",
+    yearWindow: "2021-2025 · 44 shifts",
     highlights: [
       "Cornerstone / Quick-Win / Long-tail tiers built on recent weightage, not lifetime averages",
-      "22 chapter playbooks with per-subtopic %HARD and drill links",
+      "21 chapter playbooks with per-subtopic %HARD and drill links",
       "The 2025 syllabus shift: Measures of Dispersion out, Conic Sections in",
       "Formula sheet and the distractor traps MHT-CET reuses",
     ],
@@ -71,7 +71,7 @@ export default function MhtCetGuideIndex() {
         type="CollectionPage"
         path="/guide/mht-cet"
         headline="MHT-CET Guides — Strategy for MHT-CET Mathematics"
-        description="Evidence-led strategy guides for MHT-CET, built from 2,228 past-year Mathematics questions across 45 shifts (2021-2025)."
+        description="Evidence-led strategy guides for MHT-CET, built from 2,175 past-year Mathematics questions across 44 shifts (2021-2025)."
       />
 
       <GuideHero

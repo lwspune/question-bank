@@ -19,7 +19,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "MHT-CET Mathematics — Strategy Guide",
   description:
-    "How MHT-CET Maths actually works. A 2,228-question analysis of every shift from 2021 to 2025 — 50 questions in 90 minutes with no negative marking, six chapters carrying 47% of the paper, 22 chapter playbooks, formulas, trends and traps.",
+    "How MHT-CET Maths actually works. A 2,175-question analysis of every shift from 2021 to 2025 — 50 questions in 90 minutes with no negative marking, seven chapters carrying 57% of the paper, 21 chapter playbooks, formulas, trends and traps.",
   alternates: { canonical: "/guide/mht-cet-maths" },
 };
 
@@ -92,7 +92,7 @@ export default async function MhtCetMathsLanding() {
         type="CollectionPage"
         path="/guide/mht-cet-maths"
         headline="MHT-CET Mathematics — Strategy Guide"
-        description="A 2,228-question analysis of every MHT-CET Mathematics shift from 2021 to 2025. No negative marking, 1.8 minutes a question, 22 chapter playbooks, formulas, trends and traps."
+        description="A 2,175-question analysis of every MHT-CET Mathematics shift from 2021 to 2025. No negative marking, 1.8 minutes a question, 21 chapter playbooks, formulas, trends and traps."
       />
       <GuideHero
         eyebrow="MHT-CET Mathematics Guide"

@@ -21,7 +21,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "MHT-CET Maths Traps — Where the marks and the minutes go",
   description:
-    "The habits that cost marks on MHT-CET Paper I: leaving a bubble blank on an exam with no negative marking, the five-minute counting question inside a 1.8-minute budget, one perpendicularity condition written four different ways, concurrency and coplanarity as a single determinant test, inverse trigonometry filed under two chapters at once, and a dead chapter every practice paper still contains.",
+    "The habits that cost marks on MHT-CET Paper I: leaving a bubble blank on an exam with no negative marking, the five-minute counting question inside a 1.8-minute budget, one perpendicularity condition written four different ways, concurrency and coplanarity as a single determinant test, 84% of trigonometry filed under the chapter name nobody recognises, and a dead chapter every practice paper still contains.",
   alternates: { canonical: "/guide/mht-cet-maths/traps" },
 };
 
