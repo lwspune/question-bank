@@ -30,7 +30,8 @@ export type ExamSlug =
   | "ipmat-indore"
   | "ipmat-rohtak"
   | "jipmat"
-  | "mpsc-group-b-c";
+  | "mpsc-group-b-c"
+  | "upsc-cse";
 
 /**
  * School boards the bank carries content for. NOT every exam has one — a
@@ -547,6 +548,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // NO mixedFormats: measured at the flip — all 577 PUBLIC rows are mcq.
     guidesPath: null,
     notesPath: null,
+    hasMocks: true, // 4 JIPMAT mocks (2021-2024) published 2026-09-26; 2025 + 2026 held
   },
   {
     slug: "mpsc-group-b-c",
@@ -557,11 +559,22 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // One exam, not two: both groups sit the same General Ability Test, and the
     // 2023 sitting was a single joint paper. The group is in each row's pyq_note.
     bilingual: true,
-    // 14 papers (2017-2024) PUBLIC since 2026-09-26. Add `hasMocks: true` in the
-    // same change that publishes its mocks (scripts/mocks/build.ts --paper=mpsc)
-    // — tests/mocks-registry.test.ts fails on either one without the other.
+    // 14 papers (2017-2024) PUBLIC since 2026-09-26.
     guidesPath: null,
     notesPath: null,
+    hasMocks: true, // 14 MPSC mocks published 2026-09-26 — the first bilingual mocks
+  },
+  {
+    slug: "upsc-cse",
+    // UPSC Civil Services — a graduation-level exam.
+    tier: "graduate",
+    displayName: "UPSC CSE",
+    examName: "UPSC CSE (Prelims)", // must match the `exams` DB row exactly
+    // PUBLIC 2026-09-26: both papers of every sitting 2017-2026, answers verified
+    // against UPSC's official keys (2026: provisional). scripts/upsc/.
+    guidesPath: null,
+    notesPath: null,
+    hasMocks: true, // 19 mocks (GS I + CSAT) published 2026-09-26; 2021 CSAT held (dual key)
   },
 ] as const;
 
