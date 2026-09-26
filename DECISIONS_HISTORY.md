@@ -15,6 +15,16 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-26 (eighth) — MHT-CET Chemistry "Green Chemistry and Nanochemistry" ships (2 pages · 33 PYQ · 5 concepts · 4 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-final-wave` — the Chemistry programme's twenty-second chapter.**
+
+**Shape.** 34 PUBLIC PYQ before the source pass, 33 after; none HARD. Pages: green chemistry (19: principles 8, atom economy 6, solvents and plant sources 5) and nanochemistry (14: dimensions, size and uses 8, sol–gel and characterisation 6).
+
+**Source pass (generated-papers/_repair-chgreen.ts and _repair-2021keys.ts, guarded and idempotent).** (1) 5dc43001 (2021 #95): keyed (c) 'Both CO₂ and SO₂'; the 2021 answer key (`m2021_a.tex`) reads (b) SO₂. Flipped, solution rewritten. (2) b2b3ecf5 → PRIVATE: 'Shift ||' copy of ca60ef84 (19 Apr 2025 S2). (3) Re-dated — 14e9387a '3rd May 2nd Shift' → '3rd May Shift 1' (the stem is in the 3 May 2023 S1 paper, #57, only), f5602b3e '2023 Shift 1' → '16th May Shift 2' (#98). (4) f6e081d6 (25 Apr 2025 S1 #66): the paper prints '6 g KOH' and keys 38.17%, which needs 56 g; kept, and the solution now names the misprint. (5) Worked example: the first draft reused the aspirin PYQ's numbers and notes:lint flagged it; replaced with the ethyl ethanoate calculation.
+
+**The 2021 sweep.** Because two 2021 keys in this wave were wrong (this row and Alkynes' 6f1e632a), all 150 MHT-CET 2021 rows were compared with the 2021 answer key (read-only, `generated-papers/_ak2021.py`): 91 matched an item, 77 agree, 14 disagree — 4 Chemistry rows in SHIPPED chapters, 9 Physics, 1 Maths. Logged as a ROADMAP backfill candidate with a 360; not reworked, because the shipped rows need confirmation first.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:coverage none · quiz:coverage 0 STRONG gaps · notes:intro clean · stats 119 · seo:dates.
+
 **2026-09-26 (seventh) — MHT-CET Chemistry "Alkanes" ships (3 pages · 35 PYQ · 7 concepts · 5 traps · 100% concept-tag coverage) on `feat/notes-mht-cet-chem-final-wave` — the Chemistry programme's twenty-first chapter.**
 
 **Shape.** 36 PUBLIC PYQ before the source pass, 35 after; none HARD. Pages: structure (14: homologous series 4, isomers and carbon types 7, boiling points and uses 3), preparation (17: Wurtz 8, Grignard 7, decarboxylation and CO + H₂ 2), halogenation (4). Three formula cards.

@@ -594,6 +594,11 @@ import {
   MHTCET_ALKANES_SLUGS,
 } from "@/app/notes/mht-cet-chemistry/alkanes/_data";
 import {
+  MHTCET_GREEN_CHAPTER,
+  MHTCET_GREEN_NOTES,
+  MHTCET_GREEN_SLUGS,
+} from "@/app/notes/mht-cet-chemistry/green-chemistry-and-nanochemistry/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1523,6 +1528,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_ALKANES_CHAPTER,
     notes: MHTCET_ALKANES_NOTES,
     slugs: MHTCET_ALKANES_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Chemistry",
+    subjectRoute: "mht-cet-chemistry",
+    subjectDisplay: "MHT-CET Chemistry",
+    chapterSlug: "green-chemistry-and-nanochemistry",
+    chipLabel: "Green Chemistry notes",
+    chapter: MHTCET_GREEN_CHAPTER,
+    notes: MHTCET_GREEN_NOTES,
+    slugs: MHTCET_GREEN_SLUGS,
   },
   {
     examName: "NDA",
