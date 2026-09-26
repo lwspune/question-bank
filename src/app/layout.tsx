@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Source_Serif_4 } from "next/font/google";
+import { Inter, Noto_Serif_Devanagari, Source_Serif_4 } from "next/font/google";
 import { Toaster } from "sonner";
 import OfflineBanner from "@/components/OfflineBanner";
 import { Analytics } from "@vercel/analytics/next";
@@ -19,6 +19,17 @@ const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-serif",
+});
+
+// Marathi question text (migration 0118). Sits AFTER the Latin faces in both
+// Tailwind stacks, so it only ever renders Devanagari glyphs. `preload: false`:
+// the @font-face is declared site-wide but a browser only downloads a face for
+// characters it actually has to draw — pages with no Marathi pay nothing.
+const devanagari = Noto_Serif_Devanagari({
+  subsets: ["devanagari"],
+  display: "swap",
+  preload: false,
+  variable: "--font-devanagari",
 });
 
 const SITE_URL = "https://www.pyqvault.com";
@@ -80,7 +91,7 @@ const themeBootstrap = `
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${sourceSerif.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${sourceSerif.variable} ${devanagari.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
       </head>

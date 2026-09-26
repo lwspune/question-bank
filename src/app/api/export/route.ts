@@ -4,6 +4,7 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { resolveExportAccess, type ExportKind } from "@/lib/export/access";
 import { recordExportEvent } from "@/lib/export/log";
+import { applyExportLanguage, parseExportLang } from "@/lib/export/exportLanguage";
 import {
   queryQuestions,
   queryQuestionsByIds,
@@ -48,6 +49,12 @@ type ExportOptions = {
   groupBySubtopic?: boolean;
   /** Print `[JEE Mains 2016]` after each PYQ's stem. Question paper only. */
   includeSourceTag?: boolean;
+  /**
+   * Printed language for questions that carry a translation (MPSC Marathi,
+   * migration 0118): "en" | "mr" | "both". Anything else is English, so an
+   * older client exports exactly as before.
+   */
+  lang?: string;
 };
 
 // Either filter-mode or cart-mode; never both. Front-end picks one.
@@ -218,6 +225,12 @@ export async function POST(request: NextRequest) {
     const includeSolutions = !!options.includeSolutions;
     const groupBySubtopic = !!options.groupBySubtopic;
     const includeSourceTag = !!options.includeSourceTag;
+    // Word outputs only: the tags sheet is structured data for nda-tracker and
+    // stays English. Applied here, after the load, so every downstream builder
+    // sees ordinary rows and the key never moves.
+    if (kind === "paper" || kind === "key") {
+      questions = applyExportLanguage(questions, parseExportLang(options.lang));
+    }
     const safeName = sanitizeFilename(title);
 
     // Tagged sheet for nda-tracker: an .xlsx, not a .docx. No images to fetch —

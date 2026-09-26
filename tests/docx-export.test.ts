@@ -345,3 +345,21 @@ describe("groupBySubtopic — section headings", () => {
     expect(xml).toContain("Other");
   });
 });
+
+describe("buildAnswerKey — officially cancelled question (0119)", () => {
+  const cancelled: QuestionRow = {
+    ...Q2,
+    id: "qc",
+    cancelledNote: "Cancelled by MPSC in the final answer key for this paper.",
+    options: Q2.options.map((o) => ({ ...o, isCorrect: false })),
+  };
+
+  it("prints 'Cancelled' and the notice instead of an answer letter", async () => {
+    const xml = await readDocXml(
+      await buildAnswerKey({ title: "Key", questions: [cancelled], includeSolutions: false })
+    );
+    expect(xml).toContain("Cancelled");
+    expect(xml).toContain("Cancelled by MPSC in the final answer key for this paper.");
+    expect(xml).not.toContain("(?)");
+  });
+});

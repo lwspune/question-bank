@@ -1,12 +1,14 @@
 import { Check, X, Minus, Gift } from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
-import BlockText from "@/components/math/BlockText";
 import { cn } from "@/lib/utils";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import PresentButton from "@/components/present/PresentButton";
 import { PresentRegistry } from "@/components/present/PresentRegistry";
 import { fromReviewItem } from "@/lib/present/viewModel";
 import type { ReviewItem } from "@/lib/mocks/service";
+import { BilingualOption, BilingualSolution, BilingualStem, QuestionLangSwitch } from "@/components/i18n/BilingualText";
+import { hasMarathi } from "@/lib/i18n/bilingual";
+import CancelledNotice from "@/components/question/CancelledNotice";
 
 /**
  * The per-question review list for one attempt.
@@ -38,6 +40,11 @@ export default function AttemptReviewList({
     // Registry so a teacher walking the class through a paper can step from one
     // question to the next inside the projection overlay.
     <PresentRegistry>
+      {items.some((i) => hasMarathi(i)) && (
+        <div className="mt-4 flex justify-end">
+          <QuestionLangSwitch />
+        </div>
+      )}
       <ol className="mt-4 space-y-4">
         {items.map((item) => (
           <ReviewCard key={item.position} item={item} supabaseUrl={supabaseUrl} />
@@ -77,7 +84,8 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
           <VerdictBadge verdict={item.verdict} />
         )}
       </div>
-      {item.grace && (
+      {item.cancelledNote && <CancelledNotice note={item.cancelledNote} className="mt-2" />}
+      {item.grace && !item.cancelledNote && (
         <p className="mt-2 rounded-md border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-800 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-300">
           This question was officially dropped (or marked bonus) by NTA — every candidate was
           awarded full marks regardless of their answer, so there is no correct option. See the
@@ -85,13 +93,13 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
         </p>
       )}
       {item.context && (
-        <div className="mt-2 border-l-2 border-muted pl-3 font-serif text-sm italic text-muted-foreground">
-          <BlockText text={item.context} />
-        </div>
+        <BilingualStem
+          q={item}
+          field="context"
+          className="mt-2 border-l-2 border-muted pl-3 font-serif text-sm italic text-muted-foreground"
+        />
       )}
-      <div className="mt-2 font-serif text-[15px] leading-relaxed [&_.katex]:max-w-full">
-        <BlockText text={item.text} />
-      </div>
+      <BilingualStem q={item} field="text" className="mt-2 font-serif text-[15px] leading-relaxed [&_.katex]:max-w-full" />
       {item.imageUrl && (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={publicImageUrl(supabaseUrl, item.imageUrl)} alt="Question diagram" className="mt-3 max-h-60 w-auto rounded border" />
@@ -150,7 +158,7 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
                 {opt.label}
               </span>
               <div className="min-w-0 flex-1 overflow-x-auto font-serif [&_.katex]:max-w-full">
-                <KatexRenderer text={opt.text} />
+                <BilingualOption q={item} opt={opt} />
               </div>
               {isCorrect && <span className="shrink-0 text-xs font-medium text-emerald-700 dark:text-emerald-400">Correct</span>}
               {isPicked && !isCorrect && (
@@ -166,7 +174,7 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
         <details className="mt-3 rounded-md border border-dashed bg-muted/20 p-3 text-sm">
           <summary className="cursor-pointer select-none font-sans text-xs font-medium text-brand-accent">Show solution</summary>
           <div className="mt-2 font-serif">
-            <BlockText text={item.solution} />
+            <BilingualSolution q={item} />
             {item.solutionImageUrl && (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={publicImageUrl(supabaseUrl, item.solutionImageUrl)} alt="Solution diagram" className="mt-3 max-h-60 w-auto rounded border" />

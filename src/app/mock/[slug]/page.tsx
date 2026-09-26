@@ -10,6 +10,7 @@ import { getMockBySlug, getUserAttempts } from "@/lib/mocks/query";
 import { markingCopy } from "@/lib/mocks/marking";
 import { mockKindNote } from "@/lib/mocks/catalogue";
 import StartMock from "./StartMock";
+import { getExamByName } from "@/lib/exam/examContext";
 import ShareMock from "./ShareMock";
 import AttemptsList from "../_components/AttemptsList";
 import { listMyAssignments } from "@/lib/assignments/service";
@@ -122,7 +123,7 @@ export default async function MockInstructions({ params }: { params: Params }) {
 
         <div className="mt-6">
           {user ? (
-            <StartMock slug={mock.slug} />
+            <StartMock slug={mock.slug} bilingual={getExamByName(mock.examName)?.bilingual === true} />
           ) : (
             <div className="rounded-lg border border-dashed p-5 text-center">
               <p className="text-sm text-muted-foreground">Sign in to take this timed mock and save your score.</p>

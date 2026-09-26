@@ -32,8 +32,24 @@ Within-month convention: newest entries closest to top (matches CLAUDE.md orderi
 ---
 
 
-### 2026-09-01 to 2026-09-25 — full narratives (digested 2026-09-14; rolling since). Header corrected 2026-09-18: it read "to 2026-09-16" while the batch already held entries through 2026-09-18, so it is now DERIVED from the batch's own span rather than hand-maintained — re-check it with the reconciliation in `npm run docs:budget`.
+### 2026-09-01 to 2026-09-26 — full narratives (digested 2026-09-14; rolling since). Header corrected 2026-09-18: it read "to 2026-09-16" while the batch already held entries through 2026-09-18, so it is now DERIVED from the batch's own span rather than hand-maintained — re-check it with the reconciliation in `npm run docs:budget`.
 
+
+**2026-09-26 — MPSC Group B & C Prelims: 14 bilingual papers ingested, 1,400 questions PUBLIC, 14 mocks built (branch `feat/mpsc-group-b-c`).**
+
+**Source.** One scanned PDF, "Group B & C Pre Papers 2017 to 2024" — 14 General Ability Test booklets (Set A), each followed by MPSC's FINAL answer key. 100 questions, 100 marks, 1 hour, −¼ per wrong. Group B and Group C sit the same test (2023 was one joint paper), so it is ONE exam row (`MPSC Group B & C Prelims`), with the group in each row's `pyq_note`. Every page is printed in Marathi then English.
+
+**Marathi as a translation, not a second question (migration 0118).** `question_translations` + `option_translations`, keyed to the canonical English row, written atomically by the `put_question_translation` RPC (which refuses option ids that belong to another question). Rejected: a Marathi row per question (two keys to keep in sync, a dedup hash per language, and a mock that would have to choose). `content_hash` stays English-only. The reader's choice (English · मराठी · Both, default Both, Marathi first because the booklet prints it first) is client-only — localStorage plus an in-memory fallback, NOT a cookie — so no cached page is de-cached (see the shell-component trap in Recurring pitfalls). It applies only where Marathi exists, so an English-only question renders unchanged on a mixed page. The switch sits once in the /browse header, not on each card, and the mock instructions screen asks before the timer starts. Word export has a print-language choice and a complex-script font slot (Nirmala UI).
+
+**Cancelled questions (migration 0119).** `questions.cancelled_note` plus two triggers: a cancelled question may not carry a correct option, and a keyed question may not be cancelled. The validator accepts answer `CANCELLED` only with a note. 35 of the 1,400 are cancelled (0-8 per paper). They are KEPT: the booklet printed them, so the mock prints them in place as grace (full marks to everyone, the Commission's own treatment). Dropping them would relabel a 99-question fragment as the real paper — the MHT-CET hold rule.
+
+**Parity probe and print notes.** `parityIssues` compares the numbers and structure of the two languages per question. A difference that is only a number written in words is WAIVED, with the page it was read against. A difference in MEANING (a reversed direction of trade, a missing "only", a changed clue in a reasoning puzzle, "chronic" printed as "acute") is recorded as `printNote` and shown to students as a remark in the solution, in both languages. The first papers recorded these inconsistently — the owner caught it — and the rule was written into the runbook before the rest were transcribed.
+
+**Keys.** All 14 keys come from the key pages; 2019-C's was an image and was transcribed by hand. Every aptitude question was solved independently against the key: 0 disagreements. A key line is parsed by y-position, since the token stream interleaves the columns.
+
+**The Marathi solution was stored but never read.** The print-note remark was written in both languages, but /browse, the mock review and the Word answer key all rendered `questions.solution` (English). `solutionVersions` now follows the same Marathi-first rule as stems and options, falls back to English, and never hides a solution that exists in only one language.
+
+**Mocks.** `MPSC_GBC_PAPER` (one section across seven subjects, hard count 100, 60 min, +1/−0.25) and `scripts/mocks/mpscSittings.ts`, derived from `scripts/mpsc/config.ts`, with grace read from each key file's `cancelled` list. All 14 reconstruct whole (35 grace). The builder reads PUBLIC rows only, so the PUBLIC flip came first. Publishing the mocks (`--apply --publish`) and `hasMocks: true` ship together, since tests/mocks-registry.test.ts fails on either one without the other.
 
 **2026-09-25 (eighteenth) — exam tiers: a signed-in student's exam feed (EXAM_TIER_SPEC.md), five branches `feat/exam-tier-{core,welcome,me,indexes,nav}`.**
 

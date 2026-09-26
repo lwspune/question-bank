@@ -126,6 +126,8 @@ export async function commitStaged(
     pyq_year: number | null;
     pyq_month: string | null;
     pyq_note: string | null;
+    /** Officially cancelled: the notice shown; the row then has no correct option (0119). */
+    cancelled_note: string | null;
     created_by: string;
   };
 
@@ -195,6 +197,7 @@ export async function commitStaged(
           pyq_year: pyqYear ?? null,
           pyq_month: pyqMonth ?? null,
           pyq_note: pyqNote ?? null,
+          cancelled_note: row.cancelledNote ?? null,
           created_by: createdBy,
         },
       });

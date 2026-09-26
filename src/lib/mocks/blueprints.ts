@@ -464,6 +464,46 @@ export const JEE_MAINS_PAPER: MockPaperBlueprint = {
   ],
 };
 
+/**
+ * MPSC Group B & C Prelims — the General Ability Test, one paper per sitting:
+ * 100 questions, 100 marks, 1 hour, -1/4 per wrong answer (scripts/mpsc/README.md,
+ * read off each booklet's cover). Group B and Group C sit the same test, and
+ * 2023 was one joint paper, so one blueprint serves every sitting.
+ *
+ * ONE section spanning all seven bank subjects, the CDS GK shape: the booklet
+ * prints no subject headings, so subject blocks would reorder a paper no
+ * candidate ever sat. `count: 100` is hard — a cancelled question is still
+ * printed, and ships as grace rather than being dropped.
+ *
+ * Bilingual (Marathi + English); the runner offers the language choice from
+ * EXAM_REGISTRY.bilingual, not from here. Sittings are source_file-keyed via
+ * scripts/mocks/mpscSittings.ts, so this is absent from MOCK_BLUEPRINTS.
+ */
+export const MPSC_GBC_PAPER: MockPaperBlueprint = {
+  code: "gat",
+  examName: "MPSC Group B & C Prelims",
+  examSlug: "mpsc-group-b-c",
+  paperLabel: "General Ability Test",
+  durationSecs: 60 * 60,
+  marking: { correct: 1, wrong: -0.25 },
+  sections: [
+    {
+      key: "general-ability",
+      label: "General Ability Test",
+      subjects: [
+        "History",
+        "Geography",
+        "Polity",
+        "Economics",
+        "General Science",
+        "Current Affairs",
+        "Reasoning and Aptitude",
+      ],
+      count: 100,
+    },
+  ],
+};
+
 /** The NDA blueprints the build script's year+month discovery loop iterates. */
 export const MOCK_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   NDA_MATHS_PAPER,
@@ -489,6 +529,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   MHT_CET_PHY_CHEM_PAPER,
   JEE_MAINS_PAPER,
   IPMAT_INDORE_PAPER,
+  MPSC_GBC_PAPER,
 ];
 
 /** Sum of the DECLARED section counts (0 when a blueprint declares none). */

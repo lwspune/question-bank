@@ -25,6 +25,8 @@ import {
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import type { Filters } from "@/lib/questions/filters";
+import LanguageSwitch from "@/components/i18n/LanguageSwitch";
+import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import { useCart } from "@/lib/cart/CartProvider";
 import { resolveExportAccess } from "@/lib/export/access";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
@@ -54,6 +56,8 @@ export default function DownloadDialog({
   isSignedIn = false,
   /** Org staff (ADMIN/TEACHER) — additionally unlocks the tagged sheet. */
   isStaff = false,
+  /** The filtered exam prints Marathi + English (MPSC) — offer a print language. */
+  bilingual = false,
 }: {
   filters: Filters;
   totalCount: number;
@@ -63,6 +67,7 @@ export default function DownloadDialog({
   hideTrigger?: boolean;
   isSignedIn?: boolean;
   isStaff?: boolean;
+  bilingual?: boolean;
 }) {
   // Downloads are staff-only (paper/key/tags all require an org account). A
   // non-staff visitor (anon OR signed-in student) sees a "request teacher access"
@@ -93,6 +98,8 @@ export default function DownloadDialog({
   const [includeSolutions, setIncludeSolutions] = useState(true);
   const [groupBySubtopic, setGroupBySubtopic] = useState(false);
   const [includeSourceTag, setIncludeSourceTag] = useState(false);
+  // Shared with the cards: a teacher reading in Marathi prints in Marathi.
+  const [lang, setLang] = useQuestionLang();
   const [busyKind, setBusyKind] = useState<Kind | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -111,6 +118,7 @@ export default function DownloadDialog({
         includeSolutions,
         groupBySubtopic,
         includeSourceTag,
+        ...(bilingual ? { lang } : {}),
       };
       const body =
         mode === "cart"
@@ -259,6 +267,15 @@ export default function DownloadDialog({
               disabled={busy}
             />
           </div>
+          {bilingual && (
+            <div className="space-y-1.5">
+              <p className="text-sm font-medium">Print language</p>
+              <LanguageSwitch value={lang} onChange={setLang} />
+              <p className="text-xs text-muted-foreground">
+                Question Paper and Answer Key. &ldquo;Both&rdquo; prints Marathi above English, as the booklet does.
+              </p>
+            </div>
+          )}
           <label className="flex cursor-pointer items-center gap-2 text-sm">
             <input
               type="checkbox"

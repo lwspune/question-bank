@@ -7,6 +7,7 @@
  */
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Translation } from "@/lib/i18n/bilingual";
 import {
   getMockBySlug,
   getMockById,
@@ -499,6 +500,10 @@ export type ReviewItem = {
   /** Officially dropped/bonus: awarded to all. The correct-answer highlight is
    *  suppressed and a disclosure badge shown (see the result review UI). */
   grace: boolean;
+  /** Marathi presentation, when the paper printed one (migration 0118). */
+  translations?: { mr?: Translation };
+  /** Officially cancelled by the exam body (0119) — shown in place of the NTA grace note. */
+  cancelledNote?: string | null;
 };
 
 export type AttemptReview = {
@@ -568,6 +573,8 @@ export async function getAttemptReview(
         solution: c?.solution ?? null,
         solutionImageUrl: c?.solutionImageUrl ?? null,
         grace,
+        cancelledNote: c?.cancelledNote ?? null,
+        ...(c?.translations ? { translations: c.translations } : {}),
       };
     });
 

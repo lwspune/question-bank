@@ -61,7 +61,15 @@ const documentDefaults = {
   styles: {
     default: {
       document: {
-        run: { font: FONT, size: SIZE_HALF_POINTS },
+        // Word draws Devanagari (MPSC Marathi, migration 0118) from the
+        // COMPLEX-SCRIPT font slot, and Cambria has no Devanagari glyphs.
+        // Nirmala UI ships with Windows 8+; Latin text is unaffected because
+        // it never uses the `cs` slot.
+        run: {
+          font: { ascii: FONT, hAnsi: FONT, eastAsia: FONT, cs: "Nirmala UI" },
+          size: SIZE_HALF_POINTS,
+          sizeComplexScript: SIZE_HALF_POINTS,
+        },
       },
     },
   },
@@ -270,6 +278,22 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
         if (solImg) children.push(solImg);
         children.push(blank());
       }
+      continue;
+    }
+
+    if (q.cancelledNote) {
+      // Officially cancelled (migration 0119): there is no correct letter to
+      // print, and `(?)` would read as our omission. Say what happened.
+      children.push(
+        new Paragraph({
+          numbering: { reference: NUM_REF, level: 0 },
+          children: [
+            new TextRun({ text: "Cancelled. ", italics: true, bold: true }),
+            new TextRun({ text: q.cancelledNote, italics: true }),
+          ],
+        })
+      );
+      if (input.includeSolutions) children.push(blank());
       continue;
     }
 
