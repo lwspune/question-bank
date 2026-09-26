@@ -72,7 +72,7 @@ export const ROUTES: GuideRoute[] = [
     slug: "traps",
     label: "Traps",
     blurb:
-      "The same idea in four chapter dialects — perpendicularity appears in 83 questions across 7 chapters, and 84% of the trigonometry sits in the chapter whose name students do not recognise.",
+      "The same idea in four chapter dialects — perpendicularity is named in 99 questions across 7 chapters, and 84% of the trigonometry sits in the chapter whose name students do not recognise.",
   },
 ];
 

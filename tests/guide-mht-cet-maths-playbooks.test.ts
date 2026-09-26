@@ -33,6 +33,8 @@ import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { STRATEGY_STRANDS, TAIL_CHAPTERS } from "@/app/guide/mht-cet-maths/_data/strategy";
 import { DRIFT_ROWS, DRIFT_CALLOUTS } from "@/app/guide/mht-cet-maths/_data/trends";
 import { CHAPTER_MATRIX, SHIFT_PAPERS } from "@/app/guide/mht-cet-maths/_data/matrix.generated";
+import { TRAP_SHAPES } from "@/app/guide/mht-cet-maths/_data/traps";
+import { ROUTES } from "@/app/guide/mht-cet-maths/_data/mht-cet-maths";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -271,6 +273,31 @@ describe.skipIf(!HAS_ENV)(
           " | "
         )}`
       ).toEqual([]);
+    });
+
+    it("the perpendicularity trap's question count matches the live bank", async () => {
+      // The traps page and its route blurb quote how many PUBLIC past-year stems NAME
+      // perpendicularity. It was hand-counted once (83) and never re-measured, and the bank
+      // moved to 99 without anything noticing. Read the number out of the prose and count
+      // it live, so the next ingest fails here instead of drifting.
+      const trap = TRAP_SHAPES.find((t) => /Perpendicularity is \d+ question stems/.test(t.mechanic));
+      expect(trap, "perpendicularity trap not found").toBeDefined();
+      const stated = Number(/Perpendicularity is (\d+) question stems/.exec(trap!.mechanic)![1]);
+      const blurb = ROUTES.find((r) => r.slug === "traps")!.blurb;
+      expect(blurb).toContain(`perpendicularity is named in ${stated} questions`);
+
+      const { data: exam } = await client.from("exams").select("id").eq("name", "MHT-CET").single();
+      const { data: subject } = await client.from("subjects").select("id").eq("exam_id", exam!.id).eq("name", "Maths").single();
+      const { count, error } = await client
+        .from("questions")
+        .select("id, chapter:chapters!inner(subject_id)", { count: "exact", head: true })
+        .eq("exam_id", exam!.id)
+        .eq("chapter.subject_id", subject!.id)
+        .eq("visibility", "PUBLIC")
+        .eq("question_kind", "pyq")
+        .ilike("text", "%perpendicular%");
+      expect(error).toBeNull();
+      expect(count, "PUBLIC MHT-CET Maths pyq stems naming perpendicular").toBe(stated);
     });
 
     it("accounts for all 26 live chapters across playbooks + tail", () => {
