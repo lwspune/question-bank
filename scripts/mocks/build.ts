@@ -11,7 +11,7 @@
  *   • YEAR × MONTH (NDA) — `pyq_month` distinguishes the two sittings of a year,
  *     so the sittings can be discovered from the bank itself. Driven by
  *     MOCK_BLUEPRINTS.
- *   • SOURCE_FILE (NEET, CDS, MHT-CET) — the bank cannot tell two sittings of a
+ *   • SOURCE_FILE (NEET, CDS, MHT-CET, MPSC) — the bank cannot tell two sittings of a
  *     year apart, so the sittings come from a registry. NEET's is hand-written
  *     (each sitting carries bespoke grace/override/length facts); CDS's is
  *     DERIVED from scripts/cds/config.ts (see cdsSittings.ts); MHT-CET's is BOTH
@@ -59,6 +59,7 @@ import {
   MHT_CET_PHY_CHEM_PAPER,
   JEE_MAINS_PAPER,
   IPMAT_INDORE_PAPER,
+  MPSC_GBC_PAPER,
   type MockPaperBlueprint,
 } from "../../src/lib/mocks/blueprints";
 import type { MockAnswerKey, OptionLabel } from "../../src/lib/mocks/answers";
@@ -83,6 +84,8 @@ import {
 import { deriveMhtCetSittings } from "./mhtcetSittings";
 import { deriveJeeSittings, JEE_SHIFT_SIZE } from "./jeeSittings";
 import { ipmatIndoreSittings, isGrace } from "./ipmatSittings";
+import { deriveMpscSittings } from "./mpscSittings";
+import { PAPERS as MPSC_PAPERS } from "../mpsc/config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -631,6 +634,24 @@ function jeeSittings(bp: MockPaperBlueprint): SourceFileSitting[] {
   }));
 }
 
+/**
+ * MPSC Group B & C sittings as the shared shape. The official key's cancelled
+ * questions ride as grace through `prepare`, as CDS's withdrawn items do.
+ */
+function mpscSittings(): SourceFileSitting[] {
+  return deriveMpscSittings(MPSC_PAPERS).map((s) => ({
+    key: s.key,
+    sourceFile: s.sourceFile,
+    year: s.year,
+    slug: s.slug,
+    title: s.title,
+    prepare: (rows) => {
+      const grace = new Set(s.graceNumbers);
+      return rows.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r));
+    },
+  }));
+}
+
 async function main() {
   const apply = process.argv.includes("--apply");
   const publish = process.argv.includes("--publish");
@@ -650,9 +671,10 @@ async function main() {
   const runMhtCet = !paperFilter || paperFilter === "mht-cet";
   const runJee = !paperFilter || paperFilter === "jee";
   const runIpmat = !paperFilter || paperFilter === "ipmat-indore";
-  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat) {
+  const runMpsc = !paperFilter || paperFilter === "mpsc";
+  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, mpsc)`
     );
   }
 
@@ -698,6 +720,9 @@ async function main() {
   }
   if (runIpmat) {
     await buildFromSourceFiles(db, IPMAT_INDORE_PAPER, ipmatSittings(), run, "ipmatSittings.ts");
+  }
+  if (runMpsc) {
+    await buildFromSourceFiles(db, MPSC_GBC_PAPER, mpscSittings(), run, "mpscSittings.ts");
   }
 
   console.log(`\n${apply ? "Upserted" : "Would build"} ${run.built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);
