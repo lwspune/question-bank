@@ -80,7 +80,12 @@ export const PAPERS: Paper[] = [
   p("ssm-2018", ["ssm"], 2018, "2018-08-18", "R11", [57, 80], [81, 82], 100),
   p("sti-2011", ["sti"], 2011, "2011-12-11", "RRM", [83, 114], [115, 118], 200),
   p("sti-2012", ["sti"], 2012, "2012-11-25", "OOI", [119, 158], [159, 162], 200),
-  p("sti-2014", ["sti"], 2014, "2014-06-05", "L04", [163, 186], [187, 188], 100),
+  // The key printed after this booklet (pp.187-188, "STI Mains 2014 · 18 Aug 2015") is for
+  // ANOTHER sitting: it agreed with 20 of 93 blind answers (21.5%, chance). Kept aside as
+  // data/orphan-p187.keytokens.json; this all-grammar paper's answers are derived.
+  p("sti-2014", ["sti"], 2014, "2014-06-05", "L04", [163, 186], null, 100, { derived: true }),
+  // Printed twice (pp.189 and 215, text-identical). Of the keys after the two copies, pp.213-214
+  // fits (86/93 blind answers) and pp.239-240 does not (26/95) — nor does the p.187 orphan (25/95).
   p("sti-2015", ["sti"], 2015, "2016-11-26", "M08", [189, 212], [213, 214], 100),
   p("sti-2017", ["sti"], 2017, "2018-01-07", "Y10", [241, 264], [265, 266], 100),
   p("asosti-2009", ["aso", "sti"], 2009, "2010-08-14", "TNS", [267, 298], [299, 302], 200),
