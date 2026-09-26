@@ -15,6 +15,16 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-26 (nineteenth) — MHT-CET Physics "Wave Optics" (5 pages · 117 PYQ · 12 concepts · 12 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-notes-2`.**
+
+**Reshape.** Young's double slit (68) split into fringe width, positions and sheet shifts (39) and interference intensity with unequal sources (29); the resolving-power rows stay with single-slit diffraction (34); wavefronts/coherence keeps five rows once six misfiled rows moved out — Snell's law, the critical angle by colour, TIR by colour and the secondary rainbow to Optics (Ray), a mechanical wave's phase difference to Superposition of Waves, and the displacement-current row to Magnetic Fields Due to Electric Current (its options, printed '1/2' and '1/4', given their I). `_phy_repair.ts` now applies text/option/key fixes to a row it moves to another chapter.
+
+**One key flipped.** `a74534ae` (14 May 2024 S1): 'if the slit width is doubled, the intensity of the principal maximum' was keyed I₀, while `83ea9d39` (9 May 2024 S1) keys 'intensity ×4, angular width ×½'. The central amplitude grows with the width, so 4I₀; flipped to (c).
+
+**Restored from the docx.** `9eb34472`'s options (the bank's (a) had become '√I₂'; the paper's (a) is the right ratio and the key); `2ed4a593` and `c9ebc4f0` (10 May 2024 S1 stems condensed to notes; one also had a repeated option); triple-backslash garbles in `064d3c24` and `b75e70d1`; the Malus chain `180bf7d8`'s solution, which had used 56 W/m² for the stem's 256. Two paper misprints kept honest: `45a7993b` prints the sheet as '2.9 × 10³ cm' (the answer needs 10⁻³ cm) and `37042ade` prints the path difference as 'μ m' with no number (its key, the 6th bright band, needs 3 μm) — each stem now carries the needed value in a bracket naming its source.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · quiz:coverage 0 · notes:intro clean.
+
 **2026-09-26 (eighteenth) — MHT-CET Physics "Semiconductor Devices" (6 pages · 127 PYQ · 14 concepts · 14 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-notes-2`.**
 
 **Reshape 5 → 6.** The p-n junction subtopic (33) split into depletion layer/biasing (14) and diode circuits/rectifiers (16); three device-identification rows (photodiode/LED circuits, the device mismatch, 'a diode cannot amplify') to Special Diodes.

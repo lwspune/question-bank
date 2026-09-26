@@ -634,6 +634,11 @@ import {
   MHTCET_SEMI_SLUGS,
 } from "@/app/notes/mht-cet-physics/semiconductor-devices/_data";
 import {
+  MHTCET_WAVE_OPTICS_CHAPTER,
+  MHTCET_WAVE_OPTICS_NOTES,
+  MHTCET_WAVE_OPTICS_SLUGS,
+} from "@/app/notes/mht-cet-physics/wave-optics/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1651,6 +1656,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_SEMI_CHAPTER,
     notes: MHTCET_SEMI_NOTES,
     slugs: MHTCET_SEMI_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "wave-optics",
+    chipLabel: "Wave Optics notes",
+    chapter: MHTCET_WAVE_OPTICS_CHAPTER,
+    notes: MHTCET_WAVE_OPTICS_NOTES,
+    slugs: MHTCET_WAVE_OPTICS_SLUGS,
   },
   {
     examName: "NDA",
