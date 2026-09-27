@@ -18,7 +18,7 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { grantRazorpayEntitlement, revokeRazorpayEntitlement } from "@/lib/billing/grant";
 import { userHasAccess } from "@/lib/entitlements/query";
-import { computeExpiry, getPlan } from "@/lib/billing/plans";
+import { computeExpiry } from "@/lib/billing/plans";
 import { SCOPE_ALL, SCOPE_MOCKS } from "@/lib/entitlements/access";
 
 const HAS_ENV =
@@ -86,12 +86,11 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
   });
 
   it("grants a 6-month Mock Pass and the user's own client sees active access", async () => {
-    const plan = getPlan("mock-pass-6m")!;
     const result = await grantRazorpayEntitlement({
       userId: paidUserId,
       paymentId: PAY_PAID,
-      scope: plan.scope,
-      expiresAt: computeExpiry(Date.now(), plan.durationDays),
+      scope: SCOPE_MOCKS,
+      expiresAt: computeExpiry(Date.now(), 182),
     });
     expect(result.kind).toBe("ok");
 
@@ -106,12 +105,11 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
   });
 
   it("re-granting the same paymentId is idempotent (no double-grant)", async () => {
-    const plan = getPlan("mock-pass-6m")!;
     const result = await grantRazorpayEntitlement({
       userId: paidUserId,
       paymentId: PAY_PAID,
-      scope: plan.scope,
-      expiresAt: computeExpiry(Date.now(), plan.durationDays),
+      scope: SCOPE_MOCKS,
+      expiresAt: computeExpiry(Date.now(), 182),
     });
     expect(result.kind).toBe("already_granted");
 
@@ -126,12 +124,11 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
     await expect(revokeRazorpayEntitlement(PAY_PAID)).resolves.toEqual({ kind: "ok", revoked: 1 });
     await expect(userHasAccess(paidClient, paidUserId, SCOPE_MOCKS)).resolves.toBe(false);
 
-    const plan = getPlan("mock-pass-6m")!;
     const replay = await grantRazorpayEntitlement({
       userId: paidUserId,
       paymentId: PAY_PAID,
-      scope: plan.scope,
-      expiresAt: computeExpiry(Date.now(), plan.durationDays),
+      scope: SCOPE_MOCKS,
+      expiresAt: computeExpiry(Date.now(), 182),
     });
     expect(replay.kind).toBe("already_granted");
     await expect(userHasAccess(paidClient, paidUserId, SCOPE_MOCKS)).resolves.toBe(false);

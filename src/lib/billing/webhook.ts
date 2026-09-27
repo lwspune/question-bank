@@ -2,15 +2,16 @@
  * What the Razorpay webhook does with an event, decided from the payload alone.
  * Pure — the route verifies the signature, then dispatches on this.
  *
- * order.paid runs the same rule as /api/billing/verify (planForPaidOrder), so
- * the two grant paths cannot disagree about what a payment bought.
- * refund.processed revokes on a FULL refund only: the refund policy says the
- * pass ends when the refund is made, and a partial refund is a discount.
+ * order.paid runs the same rule as /api/billing/verify (planForPaidOrder): the
+ * grant comes from the notes our server stamped on the order, so the two grant
+ * paths cannot disagree, and a plan edited after the order was created cannot
+ * reject it. refund.processed revokes on a FULL refund only: the refund policy
+ * says the pass ends when the refund is made, and a partial refund is a discount.
  */
-import { planForPaidOrder, type PaidOrder, type Plan } from "./plans";
+import { planForPaidOrder, type OrderGrant, type PaidOrder } from "./plans";
 
 export type WebhookDecision =
-  | { action: "grant"; userId: string; paymentId: string; plan: Plan }
+  | { action: "grant"; userId: string; paymentId: string; grant: OrderGrant }
   | { action: "revoke"; paymentId: string }
   | { action: "skip"; reason: string }
   | { action: "ignore"; event: string | undefined };
@@ -42,7 +43,7 @@ export function decideWebhook(body: WebhookBody): WebhookDecision {
     if (!paymentId) return { action: "skip", reason: "no payment id" };
     const decided = planForPaidOrder(order, userId);
     if (!decided.ok) return { action: "skip", reason: decided.reason };
-    return { action: "grant", userId, paymentId, plan: decided.plan };
+    return { action: "grant", userId, paymentId, grant: decided.grant };
   }
 
   if (body.event === "refund.processed") {
