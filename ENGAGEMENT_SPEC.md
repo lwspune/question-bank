@@ -180,6 +180,24 @@ after A ships rather than left open. The sample floors on `/dashboard/pmf`
 (10 per cell) mean a weekly cohort of fewer than ten will show a count and
 withhold the rate; read the 4-week cohort rather than the weekly one.
 
+### First read — 2026-09-27, three days after Tranche A (NOT the 4-week read)
+
+Too early by the rule above; recorded so the 4-week read has a baseline for what the mechanics looked like at launch.
+
+| Signal | Value | Note |
+|---|---|---|
+| Mock attempts / week | 110 → 284 → 66 → 9 (weeks from 1 Sep) | The NDA cohort (117 of 393 targets) crammed NDA papers before its September sitting and left. Read the 4-week result PER EXAM SEGMENT; JEE/MHT-CET/HSC (Jan–Feb exams) are the fair test. |
+| 7-day return, self-serve signups by week | 36% → 27% → 28% → 22% → 13% (17 Aug – 14 Sep) | Fell BEFORE the ship. All 247 signups are self-serve (0 batch enrolments), so C1 had nobody to reach. |
+| Drill since ship | 2 completions, 1 student; 0 `question_practiced` from the drill | The B2 fill never served. Result screens shown since ship: ~8. |
+| Due nudge | 153 delivered 25 Sep, 0 drilled within 24 h | Link lands on `/drill` → `/login` for a signed-out phone. Clicks were not recorded until 2026-09-27. |
+| Welcome | 100 sent 26 Sep, 3 active within 48 h | Backlog campaign to dormant accounts. |
+| Weekly goal / exam-date override / teacher assignments | 0 / 0 / 0 | |
+| WAU/MAU | 23–26% (baseline 19%) | Instrumentation grew on 09-17 (bank reveals); not evidence. |
+
+**Instrumentation added the same day (migration 0123; the `surface_viewed` heartbeat steps DAU/MAU up from 2026-09-27 as measurement, not behaviour):** page views for /drill, /me, /me/map, /start, the result screen, the mock start page and /pricing; `drill_started`; `goal_set`; `paywall_event` (shown / checkout opened / dismissed / verify failed); `email_clicked` through `/api/e/<token>` (migration 0122). What is still unrecorded: email opens (by choice), anon paywall impressions (Vercel Analytics), and reading notes or guides.
+
+**Do next, in order:** (1) read the nudge's `clicked` after its next run — clicks without a drill is the login wall, and a signed link is then a decision to make; (2) enrol LWS's own batches so C1 has students; (3) judge the 4-week read per exam segment.
+
 ## 5. Tranches B and C — specified, not built
 
 **Build order agreed 2026-09-24:** push Tranche A first (the PMF read is on post-ship cohorts) → C2 nudge + B1 mastery map → C1 teacher deadline → C3 exam date → C4 peer rates → B2 daily set → B3 wider fuel.

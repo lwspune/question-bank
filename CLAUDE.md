@@ -328,6 +328,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 > exactly which entries are in that state; write the long form into the archive before evicting any
 > it lists.
 
+- **2026-09-27 (second) — the engagement read gets eyes: five instrumentation kinds (migration 0123), server-side page views with a daily heartbeat, a client beacon, and email clicks through our own redirect (0122). The read that prompted it: 3 days after Tranche A, the drill had 1 user, the nudge 0 of 153, and 51 of 265 signed-in students counted as absent.**
+  - **A DB CHECK silently drops a kind the code allows.** The first integration test of the click redirect wrote nothing: `user_activity_kind_ck` did not list `email_clicked`, and the best-effort writer swallows the error by design. Every new kind needs a migration, and the test is what catches it.
+  - **The token is minted before the send**, because the `email_sends` row is written after Resend accepts the message, so the row id cannot be in the link. Chosen over Resend link rewriting so a click lands beside the student's other acts.
+  - **Views dedupe per surface per IST day** and the header's pulse writes `surface='site'`: one row a day is the heartbeat DAU/MAU lacked. The PMF readout lists the five as TELEMETRY, so a page view can never read as adoption.
+  - **The verdict itself:** too early by the spec's 4-week rule; the NDA cohort's September sitting explains the pre-ship fall in 7-day return. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-09-27 — the pass catalogue moves from code to data: `public.plans` (migration 0121) edited at `/dashboard/pricing`, with the free-mock switch on the same page; a price change is a save, not a deploy.**
   - **The order is the contract.** Verify and the webhook used to compare the paid amount with the plan's CURRENT price, so an edit while a checkout was open would have rejected a real payment. `/api/billing/order` now stamps price, scope and duration into the Razorpay notes and both grant paths read only those.
   - **Scopes stay in code** (`SELLABLE_SCOPES`, mirrored by a DB CHECK that also refuses `all`): a scope sells nothing unless the export route or the mock trigger enforces it, so a UI cannot invent one.
