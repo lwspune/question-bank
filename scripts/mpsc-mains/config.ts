@@ -102,6 +102,8 @@ export const PAPERS: Paper[] = [
   // fits (86/93 blind answers) and pp.239-240 does not (26/95) — nor does the p.187 orphan (25/95).
   p("sti-2015", ["sti"], 2015, "2016-11-26", "M08", [189, 212], [213, 214], 100),
   p("sti-2017", ["sti"], 2017, "2018-01-07", "Y10", [241, 264], [265, 266], 100),
+  // Key fit 189/193 (97.9%). NOT fully blind for Q1-43: those key entries were printed to the
+  // terminal before transcription began. Q44-200 were answered without sight of the key.
   p("asosti-2009", ["aso", "sti"], 2009, "2010-08-14", "TNS", [267, 298], [299, 302], 200),
   p("aso-2011", ["aso"], 2011, "2011-11-20", "RGM", [307, 338], [339, 342], 200),
   p("aso-2012", ["aso"], 2012, "2012-09-09", "D01", [343, 374], [375, 378], 200),
