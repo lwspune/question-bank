@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalH2, LegalList, LegalP, LegalPage } from "@/components/legal/LegalPage";
 import { CONTACT_EMAIL } from "@/lib/brand";
-import { PLANS, formatRupees, planLengthLabel } from "@/lib/billing/plans";
-import { FREE_MOCK_LIMIT } from "@/lib/mocks/quota";
+import { formatRupees, planLengthLabel } from "@/lib/billing/plans";
+import { listActivePlans, readFreeMockLimit } from "@/lib/billing/plansQuery";
+import { createSupabaseAnonClient } from "@/lib/supabase/server";
 
 export const revalidate = 86400;
 
@@ -14,9 +15,12 @@ export const metadata: Metadata = {
   alternates: { canonical: "/terms" },
 };
 
-export default function TermsPage() {
-  // Prices and lengths come from the plan catalogue, so this page cannot quote
-  // a price the checkout does not charge.
+export default async function TermsPage() {
+  // Prices and lengths come from public.plans, so this page cannot quote a
+  // price the checkout does not charge. Cached a day; the admin save
+  // revalidates it.
+  const anon = createSupabaseAnonClient();
+  const [plans, freeMocks] = await Promise.all([listActivePlans(anon), readFreeMockLimit(anon)]);
 
   return (
     <LegalPage
@@ -32,9 +36,10 @@ export default function TermsPage() {
       <LegalH2>The service</LegalH2>
       <LegalP>
         PYQ Vault is a past-year question bank and study site for Indian entrance and board
-        exams. Browsing questions, guides and notes needs no account and is free. With a free
-        account you can take {FREE_MOCK_LIMIT} timed mock tests; more mock tests and Word paper downloads need
-        a paid pass.
+        exams. Browsing questions, guides and notes needs no account and is free.{" "}
+        {freeMocks === null
+          ? "With a free account you can take timed mock tests; Word paper downloads need a paid pass."
+          : `With a free account you can take ${freeMocks} timed mock tests; more mock tests and Word paper downloads need a paid pass.`}
       </LegalP>
 
       <LegalH2>Accounts</LegalH2>
@@ -48,9 +53,13 @@ export default function TermsPage() {
       />
 
       <LegalH2>Passes and payment</LegalH2>
-      <LegalP>We sell these passes, priced in Indian rupees:</LegalP>
+      <LegalP>
+        {plans.length === 0
+          ? "No passes are on sale at the moment. When they are, they are priced in Indian rupees:"
+          : "We sell these passes, priced in Indian rupees:"}
+      </LegalP>
       <LegalList
-        items={PLANS.map((p) => (
+        items={plans.map((p) => (
           <>
             <strong>{p.label}</strong>: {formatRupees(p.amountPaise)} for{" "}
             {planLengthLabel(p)}. {p.blurb}

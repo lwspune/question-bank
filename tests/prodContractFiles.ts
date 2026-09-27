@@ -30,5 +30,4 @@ export const PROD_CONTRACT_FILES: string[] = [
   "tests/blog-nda2-2026-gat-stats.test.ts", // GAT post figures vs the live NDA GAT corpus
   "tests/performance-concept-graph-taxonomy.test.ts", // prereq-graph nodes vs live NDA Maths chapters
   "tests/mh-hsc-12-paper-catalog-prod.test.ts", // board-paper lane's generated catalog vs live HSC Maths taxonomy
-  "tests/free-mock-limit-prod.test.ts", // FREE_MOCK_LIMIT in the copy vs paywall_settings.free_mock_limit
 ];

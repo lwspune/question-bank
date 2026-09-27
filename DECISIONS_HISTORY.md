@@ -212,8 +212,30 @@ Within-month convention: newest entries closest to top (matches CLAUDE.md orderi
 ---
 
 
-### 2026-09-01 to 2026-09-26 — full narratives (digested 2026-09-14; rolling since). Header corrected 2026-09-18: it read "to 2026-09-16" while the batch already held entries through 2026-09-18, so it is now DERIVED from the batch's own span rather than hand-maintained — re-check it with the reconciliation in `npm run docs:budget`.
+### 2026-09-01 to 2026-09-27 — full narratives (digested 2026-09-14; rolling since). Header corrected 2026-09-18: it read "to 2026-09-16" while the batch already held entries through 2026-09-18, so it is now DERIVED from the batch's own span rather than hand-maintained — re-check it with the reconciliation in `npm run docs:budget`.
 
+
+**2026-09-27 — the pass catalogue moves from code to data (branch `feat/plans-in-db`, migration 0121).**
+
+**Why.** With Razorpay in review, every price, length or perk change to the two passes shipped on 2026-09-26 was a code deploy (`PLANS` in `src/lib/billing/plans.ts`), and switching the free-mock limit on was a SQL statement in a runbook. The owner asked whether this could be handled from the UI. The analysis split the question three ways: prices/copy (change often, safe as data), feature gates (rarely change, each needs code to enforce, deferred to ROADMAP as "Tier 2"), and scopes (must stay in code). Tier 1 shipped.
+
+**Schema.** `public.plans`: `id` text slug (the two seeded ids are the ones the code constant used, so Razorpay order history keeps resolving), label, blurb, `perks text[]` (≤ 6), `url_key` unique slug, `amount_paise` (CHECK > 0), currency (INR only), `duration_days` (null = lifetime), `scope` CHECK IN ('mocks','teacher') — `all` is refused by the database, not just by a test — `active`, `sort_order`. RLS: anon + authenticated read ACTIVE rows (prices are public; `/terms` and `/refunds` are cached pages that read through the anon client); no write policy, so writes are service-role behind `requireSuperadmin`. A `SECURITY DEFINER` `free_mock_limit()` exposes the one number public copy needs from the otherwise service-role-only `paywall_settings`. Rows are deactivated, never deleted.
+
+**The order is the contract.** The verify route (since 2026-09-26) read the plan by id from the order notes and compared `amount_paid` with the plan's CURRENT price. With prices in data, an edit while a checkout was open would have rejected a legitimate payment with "amount does not match plan". `/api/billing/order` now stamps `userId, planId, amountPaise, currency, scope, durationDays` into the Razorpay order notes (`stampOrderNotes`) — our server writes them, Razorpay stores them, and the checkout signature covers the order — and `planForPaidOrder` grants from those notes alone: paid, buyer matches, `amount_paid` equals the stamped amount, scope in the sellable list, duration a positive integer or empty for lifetime. The plan is not consulted, so deactivating it mid-checkout cannot strand a buyer either. The webhook (`decideWebhook`) applies the identical function.
+
+**Public copy reads the live limit.** The previous day's fix had introduced `FREE_MOCK_LIMIT = 3` in code plus a daily prod-contract test that the DB value matched it, and a go-live rule "switch the limit on the same day the passes deploy, because the Terms already promise it". That rule was the smell: the copy was promising a number the database might not enforce. Now `/pricing`, `/terms` and `/account` call `free_mock_limit()`; when it returns null they say mock tests are free and quote no number. The quiz upsell (a cached client page) dropped the number entirely. Constant and test deleted.
+
+**`counts_from` moves only on switch-on.** `nextPaywallSettings(current, input, now)` is pure and tested: off → both null; on from off → `countsFrom = now`; number edited while on → `countsFrom` kept; off then on → a new date. The alternative (stamp on every save) would have handed every student a fresh set of free mocks each time the number was edited.
+
+**Fixed after creation: `id` and `url_key`.** Four CTAs (`DownloadDialog`, `StartMock`, `/request-access`, the quiz upsell) link to `/pricing?plan=<url_key>`. The admin form disables both fields on edit and `upsertPlan` ignores an incoming `url_key` for an existing row (tested). CTAs look their pass up **by scope** (`passForScope`: active, exact scope — not "covers", so a student at the limit is offered the ₹99 pass and not the ₹499 one that also includes mocks — lowest sort order first) and receive a serialisable `PassCta`; when nothing sells that scope the CTA falls back to plain `/pricing` or is hidden.
+
+**Cache.** `/terms`, `/refunds` and `/request-access` are `revalidate = 86400`; every admin write calls `revalidatePath` on the four quoting pages, so a saved price shows on the next request.
+
+**Tests.** Pure: `validatePlan` (7), `planForPaidOrder` + `stampOrderNotes` (10), `passForScope` (4), `nextPaywallSettings` (5). Integration on the test project: seed shape, DB CHECK refuses `all` and a zero price, anon and a student cannot write, upsert/deactivate/fixed-url_key, `free_mock_limit()` follows `paywall_settings`. Source scan: the admin route calls `requireSuperadmin` before dispatch and the page redirects non-superadmins. Existing webhook/verify tests rewritten around the stamp. Deleted: `billing-plans.test.ts` (asserted the constant), `free-mock-limit-prod.test.ts` (the constant is gone).
+
+**Not proven here.** `/dashboard/pricing` is auth-gated `ƒ` and its edit form is a Radix portal, so the build proves compile only; the owner clicks through. Prod migration 0121 applied 2026-09-27 (test project first).
+
+**Deferred (ROADMAP).** Tier 2 — per-feature gate switches (downloads, unlimited mocks) — because the only gate anyone plausibly flips already is one, the mock trigger is SQL and would have to read a feature table, and every gate has copy in the Terms that a switch would silently contradict.
 
 **2026-09-26 — MPSC Group B & C Prelims: 14 bilingual papers ingested, 1,400 questions PUBLIC, 14 mocks built (branch `feat/mpsc-group-b-c`).**
 

@@ -14,6 +14,7 @@ import {
   Flag,
   Gem,
   GraduationCap,
+  IndianRupee,
   ListChecks,
   MessageSquareHeart,
   Search,
@@ -294,6 +295,14 @@ function QuickActions({
           icon={<Gem className="h-5 w-5" aria-hidden />}
           title="Access"
           description="Grant or revoke free premium access for students by email."
+        />
+      )}
+      {isSuperadmin && (
+        <ActionCard
+          href="/dashboard/pricing"
+          icon={<IndianRupee className="h-5 w-5" aria-hidden />}
+          title="Pricing"
+          description="The passes on sale (price, length, copy) and the free-mock limit. No deploy needed."
         />
       )}
       {isSuperadmin && (

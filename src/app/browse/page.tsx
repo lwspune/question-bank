@@ -5,6 +5,8 @@ import type { Metadata } from "next";
 import { getPageIdentity } from "@/lib/auth";
 import { sessionHasScope } from "@/lib/entitlements/session";
 import { SCOPE_TEACHER } from "@/lib/entitlements/access";
+import { passCta, passForScope } from "@/lib/billing/plans";
+import { listActivePlans } from "@/lib/billing/plansQuery";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import {
   listExams,
@@ -104,6 +106,10 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   const rawParams = paramsFromSearch(searchParams);
   let filters = parseFilters(rawParams);
   const supabase = createSupabaseServerClient();
+  // The pass the download dialog offers a non-staff viewer (null = none on sale).
+  const teacherPass = isStaff || hasTeacherPass
+    ? null
+    : passCta(passForScope(await listActivePlans(supabase), SCOPE_TEACHER));
 
   // Practice-only exams (e.g. Foundation Course — no PYQ corpus) default the
   // kind filter to "practice" so the default view isn't an empty PYQ list.
@@ -339,6 +345,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
               isSignedIn={isSignedIn}
               isStaff={isStaff}
               hasTeacherPass={hasTeacherPass}
+              teacherPass={teacherPass}
               bilingual={bilingualExam}
             />
           </div>

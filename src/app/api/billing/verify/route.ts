@@ -11,9 +11,11 @@ export const maxDuration = 30;
  * Razorpay Checkout signature, then grants the entitlement. Idempotent with the
  * webhook (same payment id → unique-index conflict → "already_granted").
  *
- * The plan is read from the ORDER Razorpay holds, not the request body: the
+ * The grant is read from the ORDER Razorpay holds, not the request body: the
  * signature proves an order was paid, not which plan. With two prices, trusting
- * the body let a ₹99 payment claim the ₹499 pass (fixed 2026-09-26).
+ * the body let a ₹99 payment claim the ₹499 pass (fixed 2026-09-26). The notes
+ * our server stamped at order time ARE the contract, so the plan is not
+ * re-read — a price edited after checkout opened cannot reject the payment.
  */
 export async function POST(request: NextRequest) {
   const user = await getSessionUser();
@@ -65,13 +67,11 @@ export async function POST(request: NextRequest) {
     console.error("verify: order refused", decided.reason);
     return NextResponse.json({ error: "Payment verification failed" }, { status: 400 });
   }
-  const plan = decided.plan;
-
   const result = await grantRazorpayEntitlement({
     userId: user.id,
     paymentId: body.razorpay_payment_id,
-    scope: plan.scope,
-    expiresAt: computeExpiry(Date.now(), plan.durationDays),
+    scope: decided.grant.scope,
+    expiresAt: computeExpiry(Date.now(), decided.grant.durationDays),
   });
   if (result.kind === "error") {
     console.error("grant after verify failed:", result.message);

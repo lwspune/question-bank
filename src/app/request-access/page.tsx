@@ -3,9 +3,14 @@ import { CheckCircle2 } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import RequestAccessForm from "./RequestAccessForm";
 import Link from "next/link";
-import { formatRupees, getPlan } from "@/lib/billing/plans";
+import { passCta, passForScope } from "@/lib/billing/plans";
+import { listActivePlans } from "@/lib/billing/plansQuery";
+import { SCOPE_TEACHER } from "@/lib/entitlements/access";
+import { createSupabaseAnonClient } from "@/lib/supabase/server";
 
-const TEACHER_PASS_PRICE = formatRupees(getPlan("teacher-pass-1y")?.amountPaise ?? 49900);
+// Reads the Teacher Pass price from public.plans; cached a day, revalidated
+// by the admin save.
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title: "Request teacher access",
@@ -20,7 +25,8 @@ const PERKS = [
   "Organise by branch and batch, with per-batch no-repeat warnings",
 ];
 
-export default function RequestAccessPage() {
+export default async function RequestAccessPage() {
+  const teacherPass = passCta(passForScope(await listActivePlans(createSupabaseAnonClient()), SCOPE_TEACHER));
   return (
     <>
       <AppHeader />
@@ -37,19 +43,21 @@ export default function RequestAccessPage() {
           </p>
         </header>
 
-        <div className="rounded-lg border-2 border-brand-accent/40 p-4 text-sm">
-          <p className="font-medium">Need papers today?</p>
-          <p className="mt-1 text-muted-foreground">
-            The Teacher Pass gives you Word paper and answer-key downloads straight
-            away: {TEACHER_PASS_PRICE} for a year, one-time payment.
-          </p>
-          <Link
-            href="/pricing?plan=teacher"
-            className="mt-2 inline-block font-medium text-brand-accent underline"
-          >
-            Get the Teacher Pass
-          </Link>
-        </div>
+        {teacherPass && (
+          <div className="rounded-lg border-2 border-brand-accent/40 p-4 text-sm">
+            <p className="font-medium">Need papers today?</p>
+            <p className="mt-1 text-muted-foreground">
+              The {teacherPass.label} gives you Word paper and answer-key downloads straight
+              away: {teacherPass.price} for {teacherPass.length}, one-time payment.
+            </p>
+            <Link
+              href={`/pricing?plan=${teacherPass.urlKey}`}
+              className="mt-2 inline-block font-medium text-brand-accent underline"
+            >
+              Get the {teacherPass.label}
+            </Link>
+          </div>
+        )}
 
         <ul className="space-y-2 rounded-lg border bg-muted/30 p-4">
           {PERKS.map((p) => (

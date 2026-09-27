@@ -8,10 +8,8 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import LanguageSwitch from "@/components/i18n/LanguageSwitch";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
-import { FREE_MOCK_LIMIT, type MockStartState } from "@/lib/mocks/quota";
-import { formatRupees, getPlan } from "@/lib/billing/plans";
-
-const MOCK_PASS_PRICE = formatRupees(getPlan("mock-pass-6m")?.amountPaise ?? 9900);
+import type { MockStartState } from "@/lib/mocks/quota";
+import type { PassCta } from "@/lib/billing/plans";
 
 /**
  * Starts (or resumes) an attempt, then routes into the runner.
@@ -29,10 +27,13 @@ export default function StartMock({
   slug,
   bilingual = false,
   startState = { kind: "open" },
+  mockPass = null,
 }: {
   slug: string;
   bilingual?: boolean;
   startState?: MockStartState;
+  /** The pass on sale for unlimited mocks; null = none (the card links to /pricing). */
+  mockPass?: PassCta | null;
 }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -45,7 +46,7 @@ export default function StartMock({
       const res = await fetch(`/api/mock/${slug}/start`, { method: "POST" });
       const data = await res.json();
       if (res.status === 402) {
-        setState({ kind: "locked", limit: state.kind === "free" ? state.limit : FREE_MOCK_LIMIT });
+        setState({ kind: "locked", limit: state.kind === "free" ? state.limit : 0 });
         setLoading(false);
         return;
       }
@@ -68,7 +69,7 @@ export default function StartMock({
       {loading ? "Starting…" : "Start test"}
     </Button>
   );
-  if (state.kind === "locked") return <MockPassCard limit={state.limit} />;
+  if (state.kind === "locked") return <MockPassCard limit={state.limit} pass={mockPass} />;
   const freeNote =
     state.kind === "free" ? (
       <p className="mt-2 text-center text-xs text-muted-foreground">
@@ -102,17 +103,23 @@ export default function StartMock({
   );
 }
 
-function MockPassCard({ limit }: { limit: number }) {
+function MockPassCard({ limit, pass }: { limit: number; pass: PassCta | null }) {
   return (
     <div className="rounded-lg border-2 border-brand-accent/40 bg-card p-5 text-center">
       <Lock className="mx-auto h-5 w-5 text-brand-accent" aria-hidden />
-      <p className="mt-2 font-semibold">You&apos;ve used your {limit} free mock tests</p>
+      <p className="mt-2 font-semibold">
+        {limit > 0 ? `You've used your ${limit} free mock tests` : "You've used your free mock tests"}
+      </p>
       <p className="mt-1 text-sm text-muted-foreground">
-        Get the Mock Pass for unlimited mock tests for 6 months, for {MOCK_PASS_PRICE}. Retaking a mock
-        you&apos;ve already started stays free.
+        {pass
+          ? `Get the ${pass.label} for unlimited mock tests for ${pass.length}, for ${pass.price}. `
+          : "A pass unlocks unlimited mock tests. "}
+        Retaking a mock you&apos;ve already started stays free.
       </p>
       <Button asChild variant="brand" size="lg" className="mt-4 w-full">
-        <Link href="/pricing?plan=mocks">Get the Mock Pass: {MOCK_PASS_PRICE}</Link>
+        <Link href={pass ? `/pricing?plan=${pass.urlKey}` : "/pricing"}>
+          {pass ? `Get the ${pass.label}: ${pass.price}` : "See passes"}
+        </Link>
       </Button>
     </div>
   );

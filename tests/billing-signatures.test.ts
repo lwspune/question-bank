@@ -9,7 +9,7 @@ import {
   verifyPaymentSignature,
   verifyWebhookSignature,
 } from "@/lib/billing/razorpay";
-import { computeExpiry, getPlan, PLANS } from "@/lib/billing/plans";
+import { computeExpiry } from "@/lib/billing/plans";
 
 const SECRET = "test_secret_key";
 
@@ -63,19 +63,7 @@ describe("billing/plans", () => {
   const NOW = Date.UTC(2026, 4, 31);
 
   // Which plans exist and which scope each sells: tests/billing-plans.test.ts.
-  it("prices every plan in whole paise", () => {
-    expect(PLANS.length).toBeGreaterThan(0);
-    for (const p of PLANS) {
-      expect(Number.isInteger(p.amountPaise)).toBe(true);
-      expect(p.amountPaise).toBeGreaterThan(0);
-    }
-  });
 
-  it("getPlan returns the plan by id, null otherwise", () => {
-    const p = PLANS[0];
-    expect(getPlan(p.id)).toEqual(p);
-    expect(getPlan("nope")).toBeNull();
-  });
 
   it("computeExpiry adds durationDays as an ISO timestamp", () => {
     const iso = computeExpiry(NOW, 365);
