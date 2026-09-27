@@ -26,9 +26,32 @@
 import { join } from "node:path";
 
 export const SOURCE_PDF = "C:/Users/vilas/Downloads/Group B & C Pre Papers 2017 to 2024.pdf";
-export const EXAM_NAME = "MPSC Group B & C Prelims";
-/** Printed by seed.ts --apply (2026-09-25). */
-export const EXAM_ID = "583f914f-f323-42ed-ae7c-5e445ed796c3";
+/**
+ * The State Services (Rajyaseva) Prelims scan: 10 GS Paper I booklets, Set A,
+ * 2013-2022, compiled by a coaching institute (THE ACHIEVERS MENTORSHIP header on
+ * every page — never crop it into a figure). Its hand-drawn answer boxes are NOT
+ * the key: each paper's key is the Commission's own FINAL key, a separate PDF
+ * (mpscmaterial.com mirrors of the mpsc.gov.in files) in SSP_KEY_DIR.
+ */
+export const SSP_SOURCE_PDF = "C:/Users/vilas/Downloads/MPSC Rajyaseva PYQ by ACHIEVERS MENTORSHIP.pdf";
+export const SSP_KEY_DIR = "C:/Users/vilas/Downloads/mpsc-ssp-final-keys";
+
+/** The exams this pipeline writes to. Ids are printed by seed.ts --apply. */
+export type ExamKey = "gbc" | "ssp";
+export const EXAMS: Record<ExamKey, { name: string; id: string | null }> = {
+  gbc: { name: "MPSC Group B & C Prelims", id: "583f914f-f323-42ed-ae7c-5e445ed796c3" },
+  ssp: { name: "MPSC State Services Prelims", id: "a61ef55d-baf5-4e15-a4c2-2ac599519229" }, // seed.ts ssp --apply, 2026-09-27
+};
+/** Kept for the Group B & C callers that predate EXAMS. */
+export const EXAM_NAME = EXAMS.gbc.name;
+export const EXAM_ID = EXAMS.gbc.id!;
+
+/** A paper's exam row id — refuses an exam seed.ts has not created yet. */
+export function examIdFor(paper: Paper): string {
+  const id = EXAMS[paper.exam].id;
+  if (!id) throw new Error(`exam "${EXAMS[paper.exam].name}" has no id yet — run seed.ts --apply and paste it into EXAMS`);
+  return id;
+}
 /** Founding tenant org + the superadmin who owns ingested content (same as every pipeline). */
 export const ORG_ID = "5d528776-1263-4d77-bc12-f2836fd6073f";
 export const CREATED_BY = "28528215-c968-40bf-abac-acdc19cc306f";
@@ -37,7 +60,13 @@ export type Group = "B" | "C" | "B+C";
 
 export type Paper = {
   id: string;
-  group: Group;
+  exam: ExamKey;
+  /** Group B & C only. */
+  group?: Group;
+  /** The scan holding the booklet. */
+  sourcePdf: string;
+  /** The key's own PDF, when it is not inside `sourcePdf` (then `keyPages` are its pages). */
+  keyPdf?: string;
   pyqYear: number;
   /** Sitting date, ISO. */
   date: string;
@@ -64,7 +93,9 @@ const paper = (
   extra: Partial<Paper> = {}
 ): Paper => ({
   id,
+  exam: "gbc",
   group,
+  sourcePdf: SOURCE_PDF,
   pyqYear,
   date,
   code,
@@ -94,13 +125,78 @@ export const PAPERS: Paper[] = [
   paper("2024-c", "C", 2024, "2025-06-01", "R19", [516, 555], [556, 557], "Group C · 1 Jun 2025"),
 ];
 
+/**
+ * State Services Prelims, GS Paper I — 100 questions, 200 marks, 2 hours, -1/4 of
+ * a question's marks per wrong answer (booklet instruction 7). Page ranges are
+ * 1-based pages of SSP_SOURCE_PDF, read from each booklet's cover; the scan is NOT
+ * in year order (2017 precedes 2018, 2013 precedes 2014). `pyqYear` is the
+ * exam-year label: the "2020" paper sat on 21 Mar 2021 and "2021" on 23 Jan 2022.
+ * Dates are the final key's "परीक्षेचा दिनांक".
+ */
+const ssp = (pyqYear: number, date: string, code: string, pages: [number, number], label: string): Paper => ({
+  id: `ssp-${pyqYear}`,
+  exam: "ssp",
+  pyqYear,
+  date,
+  code,
+  pages,
+  sourcePdf: SSP_SOURCE_PDF,
+  keyPdf: `${SSP_KEY_DIR}/${pyqYear}.pdf`,
+  keyPages: [1, 2],
+  pyqNote: `GS Paper I · ${label}`,
+  sourceFile: `MPSC-ssp-${pyqYear}-${code}`,
+});
+
+export const SSP_PAPERS: Paper[] = [
+  ssp(2022, "2022-08-21", "H15", [1, 40], "21 Aug 2022"),
+  ssp(2021, "2022-01-23", "O14", [41, 88], "23 Jan 2022"),
+  ssp(2020, "2021-03-21", "Y13", [89, 136], "21 Mar 2021"),
+  ssp(2019, "2019-02-17", "T12", [137, 184], "17 Feb 2019"),
+  ssp(2017, "2017-04-02", "W08", [185, 232], "2 Apr 2017"),
+  ssp(2018, "2018-04-08", "F11", [233, 276], "8 Apr 2018"),
+  ssp(2016, "2016-04-10", "N07", [277, 316], "10 Apr 2016"),
+  ssp(2015, "2015-04-05", "V05", [317, 364], "5 Apr 2015"),
+  ssp(2013, "2013-05-18", "X01", [365, 412], "18 May 2013"),
+  ssp(2014, "2014-02-02", "G03", [413, 460], "2 Feb 2014"),
+];
+
+/**
+ * The ONLY subject/chapter pairs a State Services Prelims transcription may use
+ * (merge.ts refuses anything else). Fixed up front so ten papers transcribed
+ * over many sessions land on one taxonomy. Subjects mirror seed.ts SUBJECTS.ssp.
+ */
+export const SSP_CHAPTERS: Record<string, readonly string[]> = {
+  History: [
+    "Ancient India", "Medieval India", "Modern India: British Rule", "Socio-Religious Reform Movements",
+    "Indian National Movement", "History of Maharashtra", "Post-Independence India", "Art and Culture", "World History",
+  ],
+  Geography: ["Physical Geography", "Geography of India", "Geography of Maharashtra", "World Geography", "Human and Economic Geography"],
+  Polity: [
+    "Indian Constitution", "Union and State Government", "Judiciary", "Local Self-Government",
+    "Constitutional and Statutory Bodies", "Rights, Laws and Policy",
+  ],
+  Economics: [
+    "Indian Economy", "Economy of Maharashtra", "Planning and Development", "Money, Banking and Finance",
+    "Agriculture and Rural Development", "Government Schemes and Programmes", "International Economy",
+  ],
+  "General Science": ["Physics", "Chemistry", "Biology", "Health and Diseases", "Science and Technology"],
+  Environment: ["Ecology and Ecosystems", "Biodiversity and Conservation", "Climate Change and Pollution", "Environmental Laws and Institutions"],
+  "Current Affairs": [
+    "National Affairs", "International Affairs", "Maharashtra Affairs", "Awards and Honours", "Sports",
+    "Science, Technology and Space", "Defence and Security", "Economy in News", "Books and Persons",
+  ],
+};
+
+/** Every paper this pipeline can load. `PAPERS` stays Group B & C only — the mock builder derives its sittings from it. */
+export const ALL_PAPERS: Paper[] = [...PAPERS, ...SSP_PAPERS];
+
 /** The booklets on file are all Set A, so the key's first column applies. */
 export const BOOKLET_SET_INDEX = 0;
 export const QUESTIONS_PER_PAPER = 100;
 
 export function requirePaper(id: string | undefined): Paper {
-  const p = PAPERS.find((x) => x.id === id);
-  if (!p) throw new Error(`unknown paper "${id}" — one of: ${PAPERS.map((x) => x.id).join(", ")}`);
+  const p = ALL_PAPERS.find((x) => x.id === id);
+  if (!p) throw new Error(`unknown paper "${id}" — one of: ${ALL_PAPERS.map((x) => x.id).join(", ")}`);
   return p;
 }
 

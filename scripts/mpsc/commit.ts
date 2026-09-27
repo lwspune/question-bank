@@ -29,7 +29,7 @@ import { join } from "node:path";
 import { commitStaged } from "../../src/lib/upload/commit";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { validateRow } from "../../src/lib/upload/validate";
-import { CREATED_BY, DATA_DIR, EXAM_ID, ORG_ID, QUESTIONS_PER_PAPER, dataPath, requirePaper } from "./config";
+import { CREATED_BY, DATA_DIR, ORG_ID, QUESTIONS_PER_PAPER, dataPath, examIdFor, requirePaper } from "./config";
 import { buildRecords, parityIssues, printNoteSolution, type BilingualQuestion, type KeyLetter } from "./lib";
 
 const BUCKET = "question-images";
@@ -39,6 +39,7 @@ async function main() {
   const args = process.argv.slice(2);
   const paper = requirePaper(args.find((a) => !a.startsWith("--")));
   const apply = args.includes("--apply");
+  const EXAM_ID = examIdFor(paper);
 
   for (const kind of ["merged", "key"]) {
     if (!existsSync(dataPath(paper.id, kind))) throw new Error(`${dataPath(paper.id, kind)} missing`);
@@ -186,7 +187,7 @@ async function main() {
   for (const n of figures) {
     const row = byNumber.get(n);
     if (!row) continue;
-    const path = `mpsc/${paper.id}/q${n}.png`;
+    const path = `mpsc/${paper.id}/q${n}.png`; // ssp-* ids keep the two exams apart
     const bytes = readFileSync(join(DATA_DIR, "figures", paper.id, `q${n}.png`));
     const { error: upErr } = await client.storage.from(BUCKET).upload(path, bytes, { contentType: "image/png", upsert: true });
     if (upErr) {

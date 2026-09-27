@@ -1,7 +1,7 @@
 """
 Extract what the merged MPSC scan gives for free, per paper:
 
-  python scripts/mpsc/extract.py keys            # data/<id>.keytokens.json from each key's text layer
+  python scripts/mpsc/extract.py keys [prefix]   # data/<id>.keytokens.json from each key's text layer ("ssp" = State Services only)
   python scripts/mpsc/extract.py render <id>     # data/pages/<id>/p<NNN>.png for transcription
   python scripts/mpsc/extract.py figures <id>    # data/figures/<id>/q<N>.png from each merged question's figure box
 
@@ -38,12 +38,50 @@ PAPERS = {
     "2024-b": ((474, 513), (514, 515)),
     "2024-c": ((516, 555), (556, 557)),
 }
-IMAGE_ONLY_KEYS = {"2019-c"}
+# State Services Prelims GS Paper I: booklets in their own scan, each final key
+# in its own 2-page PDF (config.ts SSP_PAPERS). 2019's key is a "Print to PDF"
+# image with no text layer, so it is transcribed by hand.
+SSP_SRC = r"C:/Users/vilas/Downloads/MPSC Rajyaseva PYQ by ACHIEVERS MENTORSHIP.pdf"
+SSP_KEY_DIR = r"C:/Users/vilas/Downloads/mpsc-ssp-final-keys"
+SSP_PAPERS = {
+    "ssp-2022": (1, 40),
+    "ssp-2021": (41, 88),
+    "ssp-2020": (89, 136),
+    "ssp-2019": (137, 184),
+    "ssp-2017": (185, 232),
+    "ssp-2018": (233, 276),
+    "ssp-2016": (277, 316),
+    "ssp-2015": (317, 364),
+    "ssp-2013": (365, 412),
+    "ssp-2014": (413, 460),
+}
+IMAGE_ONLY_KEYS = {"2019-c", "ssp-2019"}
 
 
-def keys(doc):
+def source(pid):
+    """(booklet doc path, booklet pages, key doc path, key pages) for a paper."""
+    if pid in SSP_PAPERS:
+        return SSP_SRC, SSP_PAPERS[pid], os.path.join(SSP_KEY_DIR, pid[4:] + ".pdf"), (1, 2)
+    pages, keypages = PAPERS[pid]
+    return SRC, pages, SRC, keypages
+
+
+_docs = {}
+
+
+def doc_for(path):
+    if path not in _docs:
+        _docs[path] = fitz.open(path)
+    return _docs[path]
+
+
+def keys(only=None):
     os.makedirs(DATA, exist_ok=True)
-    for pid, (_, (k1, k2)) in PAPERS.items():
+    for pid in [*PAPERS, *SSP_PAPERS]:
+        if only and not pid.startswith(only):
+            continue
+        _, _, keypath, (k1, k2) = source(pid)
+        doc = doc_for(keypath)
         if pid in IMAGE_ONLY_KEYS:
             print(f"{pid}: image-only key, skipped")
             continue
@@ -89,8 +127,9 @@ def keys(doc):
         print(f"{pid}: {len(lines)} lines")
 
 
-def render(doc, pid, dpi=130):
-    (a, b), _ = PAPERS[pid]
+def render(pid, dpi=130):
+    path, (a, b), _, _ = source(pid)
+    doc = doc_for(path)
     out = os.path.join(DATA, "pages", pid)
     os.makedirs(out, exist_ok=True)
     for n in range(a, b + 1):
@@ -98,7 +137,7 @@ def render(doc, pid, dpi=130):
     print(f"{pid}: rendered pages {a}-{b} -> {out}")
 
 
-def figures(doc, pid, dpi=220):
+def figures(pid, dpi=220):
     """Crop each figure at a higher dpi than the 130-dpi render its box was read on."""
     merged = json.load(open(os.path.join(DATA, f"{pid}.merged.json"), encoding="utf-8"))
     out = os.path.join(DATA, "figures", pid)
@@ -111,19 +150,18 @@ def figures(doc, pid, dpi=220):
             continue
         x0, y0, x1, y1 = fig["box"]
         clip = fitz.Rect(x0 * k, y0 * k, x1 * k, y1 * k)
-        doc[fig["page"] - 1].get_pixmap(dpi=dpi, clip=clip).save(os.path.join(out, f"q{q['n']}.png"))
+        doc_for(source(pid)[0])[fig["page"] - 1].get_pixmap(dpi=dpi, clip=clip).save(os.path.join(out, f"q{q['n']}.png"))
         n += 1
     print(f"{pid}: {n} figure(s) -> {out}")
 
 
 if __name__ == "__main__":
-    doc = fitz.open(SRC)
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
     if cmd == "keys":
-        keys(doc)
+        keys(sys.argv[2] if len(sys.argv) > 2 else None)
     elif cmd == "figures":
-        figures(doc, sys.argv[2])
+        figures(sys.argv[2])
     elif cmd == "render":
-        render(doc, sys.argv[2])
+        render(sys.argv[2])
     else:
         sys.exit(__doc__)
