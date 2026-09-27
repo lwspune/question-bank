@@ -6,6 +6,7 @@ import StatCard from "@/app/dashboard/StatCard";
 import { cn } from "@/lib/utils";
 import { getSessionSuperadmin } from "@/lib/auth";
 import { getMockAttemptsDetail, getMockFeedbackSummary, type MockAttemptDetail } from "@/lib/mocks/adminStats";
+import { RATING_LABELS, type Rating } from "@/lib/mocks/feedback";
 
 export const dynamic = "force-dynamic";
 
@@ -40,12 +41,6 @@ export default async function MockAttemptsPage({ params }: { params: Params }) {
   if (!detail) notFound();
   const { mock, attempts, summary } = detail;
 
-  const RATING_LABEL: Record<string, string> = {
-    too_easy: "Too easy",
-    just_right: "Just right",
-    too_hard: "Too hard",
-  };
-
   return (
     <>
       <AppHeader />
@@ -79,7 +74,7 @@ export default async function MockAttemptsPage({ params }: { params: Params }) {
               {(["too_easy", "just_right", "too_hard"] as const).map((r) => (
                 <div key={r} className="rounded-md border bg-card p-3 text-center">
                   <div className="text-lg font-bold tabular-nums">{feedback.distribution[r]}</div>
-                  <div className="text-xs text-muted-foreground">{RATING_LABEL[r]}</div>
+                  <div className="text-xs text-muted-foreground">{RATING_LABELS[r]}</div>
                 </div>
               ))}
             </div>
@@ -87,7 +82,7 @@ export default async function MockAttemptsPage({ params }: { params: Params }) {
               <ul className="mt-4 space-y-2">
                 {feedback.comments.map((c, i) => (
                   <li key={i} className="rounded-md bg-muted/40 px-3 py-2 text-sm">
-                    <span className="mr-2 text-xs font-medium text-brand-accent">{RATING_LABEL[c.rating]}</span>
+                    <span className="mr-2 text-xs font-medium text-brand-accent">{RATING_LABELS[c.rating as Rating]}</span>
                     <span className="text-foreground">{c.comment}</span>
                   </li>
                 ))}

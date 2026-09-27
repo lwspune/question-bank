@@ -207,6 +207,71 @@ describe.skipIf(!HAS_ENV)("Mock attempt RLS", () => {
     expect(error).not.toBeNull();
   });
 
+  it("a student can correct their own rating (the re-tap upsert)", async () => {
+    const { error } = await aliceClient
+      .from("mock_feedback")
+      .upsert(
+        { attempt_id: aliceAttemptId, user_id: aliceId, rating: "too_hard", comment: "long" },
+        { onConflict: "attempt_id" }
+      );
+    expect(error).toBeNull();
+    const { data } = await aliceClient
+      .from("mock_feedback")
+      .select("rating")
+      .eq("attempt_id", aliceAttemptId)
+      .single();
+    expect(data?.rating).toBe("too_hard");
+  });
+
+  it("a student CANNOT move their own rating onto another student's attempt (0124)", async () => {
+    // A second, feedback-free attempt for Alice: without it the move would be
+    // refused by the attempt_id UNIQUE, and this test would pass for the
+    // wrong reason.
+    const { data: alice2, error: a2Err } = await admin
+      .from("mock_attempts")
+      .insert({
+        mock_id: publishedMockId,
+        user_id: aliceId,
+        expires_at: FUTURE,
+        status: "submitted",
+        submitted_at: new Date().toISOString(),
+      })
+      .select("id")
+      .single();
+    expect(a2Err).toBeNull();
+
+    // Submitted, not in_progress: an open attempt is capped at one per user
+    // per mock, so a retry of this test would collide with its own fixture.
+    const { data: bobAttempt, error: bErr } = await admin
+      .from("mock_attempts")
+      .insert({
+        mock_id: publishedMockId,
+        user_id: bobId,
+        expires_at: FUTURE,
+        status: "submitted",
+        submitted_at: new Date().toISOString(),
+      })
+      .select("id")
+      .single();
+    expect(bErr).toBeNull();
+    const { error: fbErr } = await bobClient
+      .from("mock_feedback")
+      .insert({ attempt_id: bobAttempt!.id, user_id: bobId, rating: "too_easy" });
+    expect(fbErr).toBeNull();
+
+    const { error } = await bobClient
+      .from("mock_feedback")
+      .update({ attempt_id: alice2!.id })
+      .eq("attempt_id", bobAttempt!.id);
+    expect(error).not.toBeNull(); // UPDATE WITH CHECK: the attempt must be bob's
+
+    const { data: stolen } = await admin
+      .from("mock_feedback")
+      .select("id")
+      .eq("attempt_id", alice2!.id);
+    expect(stolen ?? []).toHaveLength(0);
+  });
+
   it("a user JWT cannot publish a mock (writes are service-role only)", async () => {
     const { error } = await aliceClient.from("mock_tests").insert({
       id: randomUUID(),

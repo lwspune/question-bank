@@ -13,6 +13,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { displayName } from "@/lib/students/derive";
 import { summarizeAttempts, type MockSummary } from "./perf";
+import { ratingDistribution } from "./feedback";
 
 const PAGE = 1000;
 
@@ -193,10 +194,9 @@ export async function getMockFeedbackSummary(slug: string): Promise<MockFeedback
     if (!data || data.length < PAGE) break;
   }
 
-  const distribution = { too_easy: 0, just_right: 0, too_hard: 0 };
+  const distribution = ratingDistribution(rows.map((r) => r.rating));
   const comments: MockFeedbackSummary["comments"] = [];
   for (const r of rows) {
-    if (r.rating in distribution) distribution[r.rating as keyof typeof distribution] += 1;
     if (r.comment) comments.push({ comment: r.comment, rating: r.rating, createdAt: r.created_at });
   }
   return { count: rows.length, distribution, comments: comments.slice(0, 20) };

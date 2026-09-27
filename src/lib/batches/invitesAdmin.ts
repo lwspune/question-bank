@@ -23,44 +23,10 @@ import { sendEmail } from "@/lib/email/resend";
 import { buildBatchInviteEmail, SITE_URL } from "@/lib/email/templates";
 import { parseInviteEmails, inviteState, type InviteState } from "./invites";
 import { generateJoinCode, normalizeJoinCode } from "./joinCode";
+import { listAllAuthUsers } from "@/lib/supabase/authUsers";
 
 /** Where an invited student lands to accept or decline. */
 const INVITE_ACTION_URL = `${SITE_URL}/account`;
-
-type AuthUserLite = {
-  id: string;
-  email: string | null;
-  user_metadata: { name?: string; full_name?: string } | null;
-};
-
-/**
- * Every auth user, PAGED.
- *
- * listUsers({ perPage: 1000 }) silently returns only the first page — the same
- * shape as the PostgREST 1000-row cap this project has been bitten by five
- * times, and it fails the same way: no error, just a short list. members/admin
- * gets away with one page because it hydrates STAFF (7 rows). Both callers here
- * hydrate across ALL accounts — 156 today and growing with every signup — so a
- * single page would eventually render enrolled students as "(unknown)" and let
- * an already-enrolled student be re-invited. Paged, like the other auth-user reads.
- */
-async function listAllAuthUsers(admin: SupabaseClient): Promise<AuthUserLite[]> {
-  const out: AuthUserLite[] = [];
-  for (let page = 1; ; page++) {
-    const { data, error } = await admin.auth.admin.listUsers({ page, perPage: 1000 });
-    if (error) throw new Error(`listAllAuthUsers: ${error.message}`);
-    const batch = data?.users ?? [];
-    for (const u of batch) {
-      out.push({
-        id: u.id,
-        email: u.email ?? null,
-        user_metadata: (u.user_metadata as AuthUserLite["user_metadata"]) ?? null,
-      });
-    }
-    if (batch.length < 1000) break;
-  }
-  return out;
-}
 
 // ────────────────────────────────────────────────────────────────────
 // inviting
