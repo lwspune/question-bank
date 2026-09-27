@@ -7,6 +7,9 @@ import {
   parseKeyTokens,
   parityIssues,
   printNoteSolution,
+  setBalanceIssues,
+  markDisagreements,
+  offListChapters,
   type BilingualQuestion,
 } from "../scripts/mpsc/lib";
 
@@ -93,6 +96,58 @@ describe("parseKeyLines", () => {
     const r = parseKeyLines([["1", "4", "3", "3", "26", "2", "3", "2", "1"]]);
     expect(r.errors).toEqual(["line 1 has 9 tokens (not a multiple of 5): 1 4 3 3 26 2 3 2 1"]);
     expect(r.rows.size).toBe(0);
+  });
+});
+
+describe("setBalanceIssues", () => {
+  // The four booklet sets are the SAME 100 questions reordered, so each set's
+  // answer column must hold the same count of every letter — a free checksum on
+  // a key transcribed or extracted from a scan.
+  const rows = (cols: string[][]) =>
+    new Map(cols.map((sets, i) => [i + 1, sets as ("A" | "B" | "C" | "D" | "#")[]]));
+
+  it("passes a key whose four sets are permutations of one another", () => {
+    expect(setBalanceIssues(rows([["A", "B", "C", "#"], ["B", "A", "#", "C"], ["C", "#", "A", "B"], ["#", "C", "B", "A"]]))).toEqual([]);
+  });
+
+  it("names the letter whose count differs between sets — a misread cell", () => {
+    expect(setBalanceIssues(rows([["A", "B"], ["B", "B"]]))).toEqual([
+      "set letter counts differ: A {A:1 B:1} B {B:2}",
+    ]);
+  });
+
+  it("counts a cancelled question as a letter, so a missing # is caught too", () => {
+    expect(setBalanceIssues(rows([["#", "A"], ["A", "A"]]))).toHaveLength(1);
+  });
+});
+
+describe("markDisagreements", () => {
+  // A second, independent record of the answers — a coaching institute's boxes
+  // drawn on the booklet — compared with the Commission's final key.
+  it("lists every question where the mark and the key differ, cancellations included", () => {
+    expect(markDisagreements({ 1: "A", 2: "#", 3: "C" }, { 1: "A", 2: "B", 3: "C" })).toEqual([
+      { n: 2, mark: "#", key: "B" },
+    ]);
+  });
+
+  it("ignores a question with no mark, and reports a mark the key does not cover", () => {
+    expect(markDisagreements({ 1: null, 4: "D" }, { 1: "A" })).toEqual([{ n: 4, mark: "D", key: undefined }]);
+  });
+});
+
+describe("offListChapters", () => {
+  const allowed = { History: ["Ancient India"], Polity: ["Judiciary"] };
+  const q = (n: number, subject: string, chapter: string) => ({ n, subject, chapter });
+
+  it("passes chapters on the exam's fixed list", () => {
+    expect(offListChapters([q(1, "History", "Ancient India"), q(2, "Polity", "Judiciary")], allowed)).toEqual([]);
+  });
+
+  it("names a question whose chapter or subject is off the list — the taxonomy must not drift", () => {
+    expect(offListChapters([q(1, "History", "Ancient india"), q(2, "Economics", "Indian Economy")], allowed)).toEqual([
+      "Q1: History / Ancient india",
+      "Q2: Economics / Indian Economy",
+    ]);
   });
 });
 

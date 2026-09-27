@@ -61,6 +61,7 @@ import {
   IPMAT_INDORE_PAPER,
   JIPMAT_PAPER,
   MPSC_GBC_PAPER,
+  MPSC_SSP_GS1_PAPER,
   UPSC_GS1_PAPER,
   UPSC_CSAT_PAPER,
   type MockPaperBlueprint,
@@ -87,8 +88,10 @@ import {
 import { deriveMhtCetSittings } from "./mhtcetSittings";
 import { deriveJeeSittings, JEE_SHIFT_SIZE } from "./jeeSittings";
 import { ipmatIndoreSittings, isGrace, jipmatSittings as deriveJipmatSittings } from "./ipmatSittings";
-import { deriveMpscSittings } from "./mpscSittings";
-import { PAPERS as MPSC_PAPERS } from "../mpsc/config";
+import { deriveMpscSittings, sspMockTitle } from "./mpscSittings";
+import { PAPERS as MPSC_PAPERS, SSP_PAPERS as MPSC_SSP_PAPERS } from "../mpsc/config";
+import { deriveMainsSittings, mainsBlueprint } from "./mpscMainsSittings";
+import { PAPERS as MPSC_MAINS_PAPERS } from "../mpsc-mains/config";
 import { deriveUpscSittings } from "./upscSittings";
 import { PAPERS as UPSC_PAPERS } from "../upsc/config";
 
@@ -658,8 +661,8 @@ function jeeSittings(bp: MockPaperBlueprint): SourceFileSitting[] {
  * MPSC Group B & C sittings as the shared shape. The official key's cancelled
  * questions ride as grace through `prepare`, as CDS's withdrawn items do.
  */
-function mpscSittings(): SourceFileSitting[] {
-  return deriveMpscSittings(MPSC_PAPERS).map((s) => ({
+function mpscSittings(papers = MPSC_PAPERS, titleFor?: (y: number, note: string) => string): SourceFileSitting[] {
+  return deriveMpscSittings(papers, undefined, titleFor).map((s) => ({
     key: s.key,
     sourceFile: s.sourceFile,
     year: s.year,
@@ -670,6 +673,31 @@ function mpscSittings(): SourceFileSitting[] {
       return rows.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r));
     },
   }));
+}
+
+/**
+ * MPSC Mains, one blueprint PER sitting (each exam row has its own slug, and the
+ * scheme differs by era — scripts/mocks/mpscMainsSittings.ts). The final key's
+ * cancelled (`#`) questions ride as grace.
+ */
+async function buildMpscMains(db: SupabaseClient, run: RunState) {
+  for (const s of deriveMainsSittings(MPSC_MAINS_PAPERS)) {
+    const grace = new Set(s.graceNumbers);
+    await buildFromSourceFiles(
+      db,
+      mainsBlueprint(s.paper, s.exam),
+      [{
+        key: s.key,
+        sourceFile: s.sourceFile,
+        year: s.year,
+        slug: s.slug,
+        title: s.title,
+        prepare: (rows) => rows.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r)),
+      }],
+      run,
+      "mpscMainsSittings.ts"
+    );
+  }
 }
 
 /** UPSC sittings for ONE of its two papers, withdrawn items as grace. */
@@ -712,9 +740,12 @@ async function main() {
   const runMpsc = !paperFilter || paperFilter === "mpsc";
   const runJipmat = !paperFilter || paperFilter === "jipmat";
   const runUpsc = !paperFilter || paperFilter === "upsc";
-  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc) {
+  // Opt-in ONLY: the Mains rows are PRIVATE until those exams go public, and the
+  // builder reads PUBLIC rows, so a default run would report every one as a failure.
+  const runMpscMains = paperFilter === "mpsc-mains";
+  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runMpscMains) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, mpsc-mains)`
     );
   }
 
@@ -770,7 +801,9 @@ async function main() {
   }
   if (runMpsc) {
     await buildFromSourceFiles(db, MPSC_GBC_PAPER, mpscSittings(), run, "mpscSittings.ts");
+    await buildFromSourceFiles(db, MPSC_SSP_GS1_PAPER, mpscSittings(MPSC_SSP_PAPERS, sspMockTitle), run, "mpscSittings.ts");
   }
+  if (runMpscMains) await buildMpscMains(db, run);
 
   console.log(`\n${apply ? "Upserted" : "Would build"} ${run.built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);
   if (run.held.n) console.log(`${run.held.n} paper(s) held — cannot reconstruct whole (see ⊘ lines above).`);

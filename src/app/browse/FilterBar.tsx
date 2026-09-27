@@ -14,6 +14,7 @@ import {
   groupExamFamilies,
   resolveFamilySelection,
   familyDefaultValue,
+  stageDefaultValue,
   familyKey,
   isFamilyKey,
 } from "@/lib/exam/examFamily";
@@ -208,6 +209,17 @@ export default function FilterBar({
     if (node?.kind === "family") update({ examId: familyDefaultValue(node, (e) => e.id) });
   }
 
+  // Picking a stage (MPSC: Prelims / Mains) commits that stage's first exam,
+  // for the same reason picking a family does: there is no stage-level filter.
+  function onExamStageChange(stage: string) {
+    const node = examNodes.find(
+      (n) => n.kind === "family" && familyKey(n.key) === examSelection.topValue
+    );
+    if (node?.kind !== "family") return;
+    const examId = stageDefaultValue(node, stage, (e) => e.id);
+    if (examId) update({ examId });
+  }
+
   // Sections keyed for ordered rendering. Both orders lead with the taxonomy
   // cascade (exam -> class -> subject -> chapters -> subtopics) and put the
   // global refinements below it; the mobile sheet differs only in ordering
@@ -345,6 +357,29 @@ export default function FilterBar({
     // The LABEL comes from the family, not from here. It was hardcoded "Class",
     // which was true while every family was a school ladder and became a lying
     // control the moment IPMAT arrived — its members are institutes.
+    // Rendered ONLY while a family WITH a stage level is selected (MPSC reads
+    // MPSC -> Prelims/Mains -> exam). Hidden, not disabled, for the same reason
+    // as examClass below.
+    examStage: (
+      <div className="space-y-1.5">
+        <Label htmlFor="exam-stage">Stage</Label>
+        <Select
+          value={examSelection.stageValue ?? undefined}
+          onValueChange={onExamStageChange}
+        >
+          <SelectTrigger id="exam-stage">
+            <SelectValue placeholder="Pick a stage" />
+          </SelectTrigger>
+          <SelectContent>
+            {examSelection.stages.map((stage) => (
+              <SelectItem key={stage} value={stage}>
+                {stage}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+    ),
     examClass: (
       <div className="space-y-1.5">
         <Label htmlFor="exam-class">{examSelection.memberAxis ?? "Class"}</Label>
@@ -568,11 +603,13 @@ export default function FilterBar({
   //   examClass — only while a board FAMILY is selected (CBSE, Maharashtra
   //            State Board). Seven of the nine top-level entries are single
   //            exams with no class to pick.
+  //   examStage — only while a family with a stage level is selected (MPSC).
   const order: SectionKey[] = (mode === "staged" ? STAGED_ORDER : LIVE_ORDER).filter(
     (k) =>
       (k !== "fit" || isFitExam(filters.examId)) &&
       (k !== "format" || showFormat) &&
-      (k !== "examClass" || examSelection.members.length > 0)
+      (k !== "examClass" || examSelection.members.length > 0) &&
+      (k !== "examStage" || examSelection.stages.length > 0)
   );
 
   return (
@@ -607,6 +644,7 @@ type SectionKey =
   | "format"
   | "fit"
   | "exam"
+  | "examStage"
   | "examClass"
   | "subject"
   | "chapters"
@@ -666,6 +704,7 @@ const FITS: { value: Filters["fit"]; label: string; title: string }[] = [
 
 const LIVE_ORDER: SectionKey[] = [
   "exam",
+  "examStage",
   "examClass",
   "subject",
   "chapters",
@@ -680,6 +719,7 @@ const LIVE_ORDER: SectionKey[] = [
 
 const STAGED_ORDER: SectionKey[] = [
   "exam",
+  "examStage",
   "examClass",
   "subject",
   "chapters",

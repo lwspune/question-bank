@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Compass, History, Shield, Stethoscope, Timer } from "lucide-react";
+import { ArrowRight, Compass, History, Landmark, Shield, Stethoscope, Timer } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import ExamFeedList from "@/components/exam/ExamFeedList";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPublishedMocks } from "@/lib/mocks/query";
-import { mockSideNav, mockExamNames, buildMockExamCards, type MockExamCard } from "@/lib/mocks/mocksNav";
+import { mockSideNav, mockExamNames, buildMockCatalogueEntries, type MockExamCard } from "@/lib/mocks/mocksNav";
 
 // Public catalogue — anon + stable, cacheable. New mocks appear on revalidation.
 export const revalidate = 3600;
@@ -73,6 +73,13 @@ const COPY: Record<string, ExamCopy> = {
       "Complete NEET (UG) papers — Physics, Chemistry, Botany and Zoology — including the Re-NEET sittings, with officially dropped questions awarded to everyone exactly as the NTA did.",
     icon: Stethoscope,
   },
+  // Collapsed families (one card opens the family page) — keyed by family slug.
+  mpsc: {
+    tagline: "Prelims & Mains",
+    blurb:
+      "Maharashtra Public Service Commission papers — the Group B & C Prelims General Ability Test and the Mains language papers — on each paper's own printed marking scheme.",
+    icon: Landmark,
+  },
 };
 
 /**
@@ -104,7 +111,7 @@ function metaLine(card: MockExamCard) {
 
 export default async function MockCatalogue() {
   const mocks = await getPublishedMocks(createSupabaseAnonClient());
-  const cards = buildMockExamCards(mocks);
+  const entries = buildMockCatalogueEntries(mocks);
 
   return (
     <GuideShell
@@ -135,15 +142,19 @@ export default async function MockCatalogue() {
 
       <ExamFeedList
         className="mt-8 grid gap-5 sm:grid-cols-2"
-        items={cards.map((card) => {
-          const copy = COPY[card.slug];
+        items={entries.map((entry) => {
+          const card = entry.card;
+          const slug = entry.kind === "family" ? entry.family.slug : card.slug;
+          const copy = COPY[slug];
           const Icon = copy?.icon ?? Timer;
           return {
-            key: card.slug,
-            slugs: [card.slug],
+            key: slug,
+            // A family card orders by ANY of its members, so a student whose
+            // target is one MPSC exam still sees MPSC in their tier.
+            slugs: entry.kind === "family" ? entry.memberSlugs : [card.slug],
             node: (
               <Link
-                href={`/mock/exam/${card.slug}`}
+                href={`/mock/exam/${slug}`}
                 className="group flex h-full flex-col rounded-lg border bg-card p-6 transition-colors hover:border-primary/40 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 <div className="flex items-center gap-3">

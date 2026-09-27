@@ -3,19 +3,22 @@
  *
  *   npx tsx scripts/mpsc/keys.ts            # report every paper
  *   npx tsx scripts/mpsc/keys.ts --write    # also write data/<id>.key.json
+ *   npx tsx scripts/mpsc/keys.ts ssp --write   # only papers whose id starts "ssp"
  *
  * Reads data/<id>.keytokens.json (printed lines) (extract.py keys, or hand-transcribed for the
  * image-only 2019-c key). Refuses to write a key that does not cover exactly
- * 1..100 — a shifted or partial key is worse than none.
+ * 1..100, or whose four sets do not hold the same letter counts (setBalanceIssues)
+ * — a shifted, partial or misread key is worse than none.
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
-import { BOOKLET_SET_INDEX, PAPERS, QUESTIONS_PER_PAPER, dataPath } from "./config";
-import { parseKeyLines, type KeyLetter } from "./lib";
+import { ALL_PAPERS, BOOKLET_SET_INDEX, QUESTIONS_PER_PAPER, dataPath } from "./config";
+import { parseKeyLines, setBalanceIssues, type KeyLetter } from "./lib";
 
 function main() {
   const write = process.argv.includes("--write");
+  const only = process.argv.slice(2).find((a) => !a.startsWith("--"));
   let bad = 0;
-  for (const p of PAPERS) {
+  for (const p of ALL_PAPERS.filter((x) => !only || x.id.startsWith(only))) {
     const f = dataPath(p.id, "keytokens");
     if (!existsSync(f)) {
       console.log(`${p.id}: no keytokens file`);
@@ -24,6 +27,8 @@ function main() {
     }
     const { lines } = JSON.parse(readFileSync(f, "utf8")) as { lines: string[][] };
     const { rows, errors, ignored } = parseKeyLines(lines);
+    // The sets are one paper reordered: an unbalanced key has a misread cell.
+    errors.push(...setBalanceIssues(rows));
     const missing: number[] = [];
     for (let q = 1; q <= QUESTIONS_PER_PAPER; q++) if (!rows.has(q)) missing.push(q);
     const extra = [...rows.keys()].filter((q) => q > QUESTIONS_PER_PAPER);

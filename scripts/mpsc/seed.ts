@@ -1,10 +1,10 @@
 /**
- * Create the `MPSC Group B & C Prelims` exam row and its seven subjects.
+ * Create an MPSC Prelims exam row and its subjects.
  *
- *   npx tsx scripts/mpsc/seed.ts          # dry-run: report only
- *   npx tsx scripts/mpsc/seed.ts --apply  # create whatever is missing
+ *   npx tsx scripts/mpsc/seed.ts [gbc|ssp]          # dry-run: report only (default gbc)
+ *   npx tsx scripts/mpsc/seed.ts ssp --apply        # create whatever is missing
  *
- * Idempotent. Prints the exam id to paste into config.ts as EXAM_ID — every row
+ * Idempotent. Prints the exam id to paste into config.ts EXAMS — every row
  * this pipeline writes hangs off it, so it is created by a script with a record,
  * not by ad-hoc SQL.
  *
@@ -19,21 +19,21 @@
  */
 import { createClient } from "@supabase/supabase-js";
 import { join } from "node:path";
-import { EXAM_NAME } from "./config";
+import { EXAMS, type ExamKey } from "./config";
 
-export const SUBJECTS = [
-  "History",
-  "Geography",
-  "Polity",
-  "Economics",
-  "General Science",
-  "Current Affairs",
-  "Reasoning and Aptitude",
-] as const;
+export const SUBJECTS: Record<ExamKey, readonly string[]> = {
+  gbc: ["History", "Geography", "Polity", "Economics", "General Science", "Current Affairs", "Reasoning and Aptitude"],
+  // GS Paper I: no aptitude (that is CSAT, Paper II); its syllabus names
+  // "Environmental Ecology, Bio-diversity and Climate Change" as its own head.
+  ssp: ["History", "Geography", "Polity", "Economics", "General Science", "Environment", "Current Affairs"],
+};
 
 async function main() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
   const apply = process.argv.includes("--apply");
+  const key = (process.argv.slice(2).find((a) => !a.startsWith("--")) ?? "gbc") as ExamKey;
+  if (!EXAMS[key]) throw new Error(`unknown exam "${key}" — one of: ${Object.keys(EXAMS).join(", ")}`);
+  const EXAM_NAME = EXAMS[key].name;
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
     auth: { persistSession: false },
   });
@@ -51,7 +51,7 @@ async function main() {
 
   const { data: have, error: sErr } = await client.from("subjects").select("name").eq("exam_id", exam.id);
   if (sErr) throw new Error(`subject read failed: ${sErr.message}`);
-  const missing = SUBJECTS.filter((s) => !(have ?? []).some((h) => h.name === s));
+  const missing = SUBJECTS[key].filter((s) => !(have ?? []).some((h) => h.name === s));
   console.log(`subjects present ${(have ?? []).length}, missing ${missing.length ? missing.join(", ") : "none"}`);
   if (missing.length && apply) {
     const { error: iErr } = await client.from("subjects").insert(missing.map((name) => ({ exam_id: exam!.id, name })));
@@ -60,7 +60,7 @@ async function main() {
   } else if (missing.length) {
     console.log("[dry-run] pass --apply to create them.");
   }
-  console.log(`\nEXAM_ID = "${exam.id}"`);
+  console.log(`\nEXAMS.${key}.id = "${exam.id}"`);
 }
 
 main().catch((e) => {

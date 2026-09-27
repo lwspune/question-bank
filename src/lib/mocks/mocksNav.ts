@@ -38,17 +38,80 @@ export function getMockExam(slug: string): MockExamNav | null {
   return e ? { slug: e.slug, displayName: e.displayName, examName: e.examName } : null;
 }
 
-/** Left-rail items for every /mock surface: "All exams" + one per mock-exam. */
-export function mockSideNav(): { href: string; label: string }[] {
-  return [
-    { href: "/mock", label: "All exams" },
-    ...getMockExams().map((e) => ({ href: `/mock/exam/${e.slug}`, label: e.displayName })),
-  ];
+/**
+ * A registry FAMILY with two or more mock exams, shown as ONE rail link and ONE
+ * /mock card that opens a family page (/mock/exam/<slug>). MPSC has six mock
+ * exams (Prelims + five Mains); listed flat they buried the rest of the rail.
+ * A family with a single mock exam stays that exam — a page holding one card
+ * would be a detour.
+ */
+export type MockFamilyNav = {
+  /** "mpsc" — the family name lowercased; tested never to collide with an exam slug. */
+  slug: string;
+  /** "MPSC" — the registry `family`. */
+  name: string;
+  /** Members by `familyStage` in first-seen registry order; `stage: null` when the family has none. */
+  stages: { stage: string | null; members: MockExamNav[] }[];
+};
+
+export function getMockFamilies(): MockFamilyNav[] {
+  const byFamily = new Map<string, MockFamilyNav>();
+  for (const e of EXAM_REGISTRY) {
+    if (e.hasMocks !== true || !e.family) continue;
+    let fam = byFamily.get(e.family);
+    if (!fam) {
+      fam = { slug: e.family.toLowerCase(), name: e.family, stages: [] };
+      byFamily.set(e.family, fam);
+    }
+    const stage = e.familyStage ?? null;
+    let group = fam.stages.find((s) => s.stage === stage);
+    if (!group) {
+      group = { stage, members: [] };
+      fam.stages.push(group);
+    }
+    group.members.push({ slug: e.slug, displayName: e.displayName, examName: e.examName });
+  }
+  return [...byFamily.values()].filter((f) => f.stages.reduce((n, s) => n + s.members.length, 0) >= 2);
 }
 
-/** Slugs to statically pre-render for /mock/exam/[examSlug]. */
-export function mockExamSlugs(): ExamSlug[] {
-  return getMockExams().map((e) => e.slug);
+export function getMockFamily(slug: string): MockFamilyNav | null {
+  return getMockFamilies().find((f) => f.slug === slug) ?? null;
+}
+
+/** The collapsed family a mock exam belongs to; null for a lone exam. */
+export function mockFamilyOf(examSlug: string): MockFamilyNav | null {
+  return getMockFamilies().find((f) => f.stages.some((s) => s.members.some((m) => m.slug === examSlug))) ?? null;
+}
+
+const familyMembers = (f: MockFamilyNav) => f.stages.flatMap((s) => s.members);
+
+/**
+ * Left-rail items for every /mock surface: "All exams", then registry order —
+ * a lone exam as itself, a collapsed family as ONE link that stays active on
+ * each member's own page (`alsoActive`).
+ */
+export function mockSideNav(): { href: string; label: string; alsoActive?: string[] }[] {
+  const out: { href: string; label: string; alsoActive?: string[] }[] = [{ href: "/mock", label: "All exams" }];
+  const seen = new Set<string>();
+  for (const e of getMockExams()) {
+    const fam = mockFamilyOf(e.slug);
+    if (!fam) {
+      out.push({ href: `/mock/exam/${e.slug}`, label: e.displayName });
+    } else if (!seen.has(fam.slug)) {
+      seen.add(fam.slug);
+      out.push({
+        href: `/mock/exam/${fam.slug}`,
+        label: fam.name,
+        alsoActive: familyMembers(fam).map((m) => `/mock/exam/${m.slug}`),
+      });
+    }
+  }
+  return out;
+}
+
+/** Slugs to statically pre-render for /mock/exam/[examSlug] — exams and family pages. */
+export function mockExamSlugs(): string[] {
+  return [...getMockExams().map((e) => e.slug as string), ...getMockFamilies().map((f) => f.slug)];
 }
 
 /**
@@ -60,7 +123,8 @@ export function mockExamSlugs(): ExamSlug[] {
  * order, so the output is deterministic.
  */
 export function mockExamNames(): string {
-  const names = getMockExams().map((e) => e.displayName);
+  // The rail's entries, so a collapsed family is named once ("MPSC").
+  const names = mockSideNav().slice(1).map((n) => n.label);
   if (names.length === 0) return "";
   if (names.length === 1) return names[0];
   return `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
@@ -128,4 +192,52 @@ export function buildMockExamCards(mocks: MockListItem[]): MockExamCard[] {
       paperCount: new Set(mine.map((m) => m.paperCode)).size,
     };
   });
+}
+
+/** One /mock picker entry: a lone exam, or a collapsed family summing its members. */
+export type MockCatalogueEntry =
+  | { kind: "exam"; card: MockExamCard }
+  | { kind: "family"; family: MockFamilyNav; card: MockExamCard; memberSlugs: ExamSlug[] };
+
+/**
+ * The /mock picker in registry order, each collapsed family folded into ONE
+ * entry at its first member's position. The family card's numbers are summed /
+ * spanned over its members' cards, so they stay derived like every other card.
+ */
+export function buildMockCatalogueEntries(mocks: MockListItem[]): MockCatalogueEntry[] {
+  const cards = buildMockExamCards(mocks);
+  const out: MockCatalogueEntry[] = [];
+  const seen = new Set<string>();
+  for (const card of cards) {
+    const fam = mockFamilyOf(card.slug);
+    if (!fam) {
+      out.push({ kind: "exam", card });
+      continue;
+    }
+    if (seen.has(fam.slug)) continue;
+    seen.add(fam.slug);
+    const memberSlugs = familyMembers(fam).map((m) => m.slug);
+    const mine = cards.filter((c) => memberSlugs.includes(c.slug));
+    const firsts = mine.map((c) => c.firstYear).filter((y) => y > 0);
+    const lasts = mine.map((c) => c.lastYear).filter((y) => y > 0);
+    const byType = Object.fromEntries(
+      MOCK_TYPES.map((t) => [t.slug, mine.reduce((n, c) => n + c.byType[t.slug], 0)])
+    ) as Record<MockTypeSlug, number>;
+    out.push({
+      kind: "family",
+      family: fam,
+      memberSlugs,
+      card: {
+        slug: card.slug,
+        displayName: fam.name,
+        examName: fam.name,
+        count: mine.reduce((n, c) => n + c.count, 0),
+        byType,
+        firstYear: firsts.length ? Math.min(...firsts) : 0,
+        lastYear: lasts.length ? Math.max(...lasts) : 0,
+        paperCount: mine.length,
+      },
+    });
+  }
+  return out;
 }

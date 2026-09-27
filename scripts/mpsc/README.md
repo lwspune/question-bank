@@ -83,3 +83,53 @@ candidate (`grace`). 35 across the 14 papers.
 | 2017-c (B09) | 100/100 | PRIVATE, 2026-09-26 (Q6, Q39, Q71 cancelled; Q26, Q75, Q90 print notes) |
 
 **All 14 flipped PUBLIC 2026-09-26** (the "committed" column records how each was first written). Mocks: `npx tsx scripts/mocks/build.ts --paper=mpsc` — 14 build whole with 35 grace; publishing (`--apply --publish`) and `hasMocks: true` in `src/lib/exam/examContext.ts` go together.
+
+# MPSC State Services (Rajyaseva) Prelims — GS Paper I
+
+The same pipeline, a second exam (`EXAMS.ssp`, `MPSC State Services Prelims`).
+Papers are `ssp-<year>` in `config.ts` `SSP_PAPERS` — kept OUT of `PAPERS`,
+because the mock builder derives Group B & C sittings from that list.
+
+**Source:** `MPSC Rajyaseva PYQ by ACHIEVERS MENTORSHIP.pdf` (460 pages, image
+only): 10 Set-A booklets, 2013-2022, NOT in year order (2017 precedes 2018,
+2013 precedes 2014). Each is 100 questions, 200 marks, 2 hours, −¼ of a
+question's marks per wrong answer. CSAT (Paper II) and 2023+ are not in it.
+Every page carries the coaching header — never crop it into a figure.
+
+**Keys:** the scan has NO key pages — only a coaching institute's answer boxes
+and "CANCEL #" stamps. The key is the Commission's own FINAL key, one 2-page PDF
+per year in `C:/Users/vilas/Downloads/mpsc-ssp-final-keys/<year>.pdf`
+(mpscmaterial.com mirrors of the mpsc.gov.in files; mpsc.gov.in itself is an
+SPA with signed API requests). 2019 is an image, and 2015/2016 lost question
+numbers from their text layer, so those three are hand-transcribed into
+`data/<id>.keytokens.json`. `python scripts/mpsc/extract.py keys ssp` →
+`npx tsx scripts/mpsc/keys.ts ssp --write`.
+
+**Three checks, run by `keys.ts` and `merge.ts`:**
+- **Set balance** (`keys.ts`, every exam): the four sets are one paper
+  reordered, so each set's column must hold the same count of every letter,
+  `#` included. A misread cell breaks it. All 24 keys pass.
+- **Coaching marks vs key**: `batch.py` records each box as it is transcribed
+  (`data/<id>.boxes.json`); `merge.ts` reports every disagreement. It is a
+  second, independent reading of the final key.
+- **Fixed chapter list** (`config.ts` `SSP_CHAPTERS`): merge refuses an
+  off-list subject/chapter, so ten papers cannot drift the way Group B & C did.
+
+**Transcribing:** write a batch as Python with `scripts/mpsc/batch.py` (lines as
+lists, so Devanagari and newlines need no escaping). At 130 dpi, ध and घ can be
+misread (one slip in the 2022 pilot, caught at 180 dpi): zoom any doubtful word.
+
+| paper | transcribed | marks vs key | committed |
+|---|---|---|---|
+| ssp-2022 (H15) | 100/100 | 100/100 | PRIVATE, 2026-09-27 (Q42, Q95, Q96 cancelled; Q2 print note) |
+| ssp-2021 (O14) | 100/100 | 100/100 | PRIVATE, 2026-09-27 (Q2, Q3, Q9, Q37, Q44, Q54, Q61 cancelled; Q45 print note) |
+| ssp-2020 (Y13) | 100/100 | 100/100 | PRIVATE, 2026-09-27 (Q21, Q33, Q36 cancelled; Q22, Q40 print notes) |
+| ssp-2019 (T12) | 100/100 | 100/100 | PRIVATE, 2026-09-27 (Q76, Q87, Q93 cancelled; Q6, Q76 print notes; Q71, Q80 figures) |
+| ssp-2018 (F11) | 100/100 | 100/100 | PRIVATE, 2026-09-27 (Q26 cancelled; Q10, Q71 print notes; Q4 figure) |
+| ssp-2017 (W08) | 100/100 | 100/100 | PRIVATE, 2026-09-27 (none cancelled; Q26, Q41, Q72 print notes; Q20, Q30 figures) |
+| ssp-2016 (N07) | 100/100 | 99/100 (Q22: coaching mark wrong, key right) | PRIVATE, 2026-09-27 (Q28, Q31, Q75 cancelled; Q17, Q31 print notes) |
+| ssp-2015 (V05) | 100/100 | 100/100 | PRIVATE, 2026-09-27 (Q16, Q39 cancelled; Q12, Q36, Q98 print notes) |
+| ssp-2014 (G03) | 100/100 | 100/100 | PRIVATE, 2026-09-27 (Q93 cancelled; Q99 print note) |
+| ssp-2013 (X01) | 100/100 | 99/99 (Q74 unmarked) | PRIVATE, 2026-09-27 (Q74 cancelled; Q24, Q29 figures) |
+
+**All 10 papers committed PRIVATE (1,000 q, 24 cancelled, 7 figures).** Coaching marks agree with the official final key on 998 of 999 marked questions; the one disagreement (2016 Q22) is the coaching error. **PUBLIC since 2026-09-27** (`npx tsx scripts/mpsc/flip-public.ts ssp --apply`), registry slug `mpsc-state-services-prelims` (MPSC → Prelims → State Services), and 10 GS Paper I mocks published (`scripts/mocks/build.ts --paper=mpsc --only=ssp-<year>`; 100 q, 200 marks, 2 h, −0.5 per wrong, cancelled questions as grace).

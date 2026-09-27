@@ -15,11 +15,15 @@
  * against the page and found to be a genuine print difference (e.g. Marathi
  * "८ व्या" where English prints "Eighth"). A waiver needs a reason, and a waived
  * flag is still counted in the summary so it never disappears.
+ *
+ * State Services papers (ssp-*) are also held to the fixed chapter list
+ * (config.ts SSP_CHAPTERS), and when data/<id>.boxes.json exists (the coaching
+ * marks drawn on the scan) every mark is compared with the official key.
  */
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { DATA_DIR, QUESTIONS_PER_PAPER, dataPath, requirePaper } from "./config";
-import { parityIssues, type BilingualQuestion, type KeyLetter } from "./lib";
+import { DATA_DIR, QUESTIONS_PER_PAPER, SSP_CHAPTERS, dataPath, requirePaper } from "./config";
+import { markDisagreements, offListChapters, parityIssues, type BilingualQuestion, type KeyLetter } from "./lib";
 
 export function loadBatches(id: string): BilingualQuestion[] {
   const files = readdirSync(DATA_DIR).filter((f) => f.startsWith(`${id}.t`) && f.endsWith(".json")).sort();
@@ -65,13 +69,28 @@ function main() {
     }
   }
 
+  // State Services: a fixed chapter list, and the coaching marks read against the key.
+  const offList = paper.exam === "ssp" ? offListChapters(qs, SSP_CHAPTERS) : [];
+  for (const o of offList) console.log(`off-list chapter — ${o}`);
+  const marksFile = dataPath(paper.id, "boxes");
+  let marksNote = "";
+  if (existsSync(marksFile)) {
+    const marks: Record<string, KeyLetter | null> = JSON.parse(readFileSync(marksFile, "utf8"));
+    const dis = markDisagreements(marks, key);
+    for (const d of dis) console.log(`Q${d.n}: coaching mark ${d.mark}, key ${d.key ?? "(none)"}`);
+    const marked = Object.values(marks).filter((v) => v !== null).length; // a question with no mark is not an agreement
+    marksNote = ` · marks vs key ${marked - dis.length}/${marked} agree`;
+  }
+
   console.log(
     `\n${paper.id}: ${qs.length} transcribed · missing ${missing.length ? `[${missing.join(",")}]` : "none"}` +
       ` · dupes ${dupes.length ? `[${dupes.join(",")}]` : "none"} · parity flags ${parity} (waived ${waived}) · literal \\n ${literal}` +
-      ` · figures ${qs.filter((q) => q.figure).length} · print notes ${qs.filter((q) => q.printNote).length}`
+      ` · figures ${qs.filter((q) => q.figure).length} · print notes ${qs.filter((q) => q.printNote).length}` +
+      ` · off-list ${offList.length}${marksNote}`
   );
   if (args.includes("--write")) {
     if (missing.length || dupes.length) throw new Error("refusing to write an incomplete or duplicated paper");
+    if (offList.length) throw new Error("refusing to write a paper with off-list chapters");
     writeFileSync(dataPath(paper.id, "merged"), JSON.stringify({ paper: paper.id, questions: qs }, null, 1));
     console.log(`wrote ${dataPath(paper.id, "merged")}`);
   }

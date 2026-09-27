@@ -6,7 +6,7 @@ import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPublishedMocks } from "@/lib/mocks/query";
-import { getMockExam, mockSideNav, mockExamSlugs } from "@/lib/mocks/mocksNav";
+import { getMockExam, getMockExams, mockFamilyOf, mockSideNav } from "@/lib/mocks/mocksNav";
 import {
   MOCK_TYPES,
   parseMockType,
@@ -27,7 +27,8 @@ type Params = { examSlug: string; type: string };
  * honest empty state rather than 404 on the day before a build lands.
  */
 export function generateStaticParams(): Params[] {
-  return mockExamSlugs().flatMap((examSlug) =>
+  // Exams only: a family page (/mock/exam/mpsc) is a picker with no type lists.
+  return getMockExams().map((e) => e.slug as string).flatMap((examSlug) =>
     MOCK_TYPES.map((t) => ({ examSlug, type: t.slug }))
   );
 }
@@ -69,6 +70,7 @@ export default async function MockTypeList({ params }: { params: Params }) {
     type.slug
   );
   const groups = groupMocksForType(type.slug, mine);
+  const parent = mockFamilyOf(exam.slug);
 
   return (
     <GuideShell
@@ -76,6 +78,7 @@ export default async function MockTypeList({ params }: { params: Params }) {
       sideNav={mockSideNav()}
       breadcrumbs={[
         { href: "/mock", label: "Mocks" },
+        ...(parent ? [{ href: `/mock/exam/${parent.slug}`, label: parent.name }] : []),
         { href: `/mock/exam/${exam.slug}`, label: exam.displayName },
         { label: type.label },
       ]}

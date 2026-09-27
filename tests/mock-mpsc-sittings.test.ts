@@ -1,7 +1,8 @@
 import { describe, it, expect } from "vitest";
-import { PAPERS } from "../scripts/mpsc/config";
-import { deriveMpscSittings, mpscMockSlug, mpscMockTitle } from "../scripts/mocks/mpscSittings";
-import { MPSC_GBC_PAPER, sectionMarking } from "../src/lib/mocks/blueprints";
+import { PAPERS, SSP_CHAPTERS, SSP_PAPERS } from "../scripts/mpsc/config";
+import { deriveMpscSittings, mpscMockSlug, mpscMockTitle, sspMockTitle } from "../scripts/mocks/mpscSittings";
+import { MPSC_GBC_PAPER, MPSC_SSP_GS1_PAPER, sectionMarking } from "../src/lib/mocks/blueprints";
+import { getExamBySlug } from "../src/lib/exam/examContext";
 
 /** Only the fields the derivation reads. */
 function paper(id: string, pyqYear: number, pyqNote: string) {
@@ -21,6 +22,26 @@ describe("MPSC_GBC_PAPER", () => {
     expect([...MPSC_GBC_PAPER.sections[0].subjects].sort()).toEqual(
       ["Current Affairs", "Economics", "General Science", "Geography", "History", "Polity", "Reasoning and Aptitude"].sort()
     );
+  });
+});
+
+describe("MPSC_SSP_GS1_PAPER", () => {
+  it("is the printed pattern: 100 questions, 2 hours, 200 marks, -1/4 of a question's marks", () => {
+    expect(MPSC_SSP_GS1_PAPER.durationSecs).toBe(120 * 60);
+    expect(MPSC_SSP_GS1_PAPER.marking).toEqual({ correct: 2, wrong: -0.5 });
+    expect(MPSC_SSP_GS1_PAPER.sections).toHaveLength(1);
+    expect(MPSC_SSP_GS1_PAPER.sections[0].count).toBe(100);
+  });
+
+  it("spans exactly the subjects the fixed chapter list allows", () => {
+    expect([...MPSC_SSP_GS1_PAPER.sections[0].subjects].sort()).toEqual(Object.keys(SSP_CHAPTERS).sort());
+  });
+
+  it("points at a registered, bilingual exam with mocks", () => {
+    const exam = getExamBySlug(MPSC_SSP_GS1_PAPER.examSlug);
+    expect(exam?.examName).toBe(MPSC_SSP_GS1_PAPER.examName);
+    expect(exam?.bilingual).toBe(true);
+    expect(exam?.hasMocks).toBe(true);
   });
 });
 
@@ -65,6 +86,18 @@ describe("deriveMpscSittings", () => {
 
   it("refuses a cancelled number outside 1-100 rather than gracing nothing", () => {
     expect(() => deriveMpscSittings([papers[0]], () => [101])).toThrow(/2019-b.*101/);
+  });
+
+  it("titles a State Services paper by exam, year, paper and date", () => {
+    expect(sspMockTitle(2020, "GS Paper I · 21 Mar 2021")).toBe("MPSC State Services Prelims 2020 — GS Paper I — 21 Mar 2021");
+  });
+
+  it("derives the ten State Services sittings, graced from their official keys", () => {
+    const got = deriveMpscSittings(SSP_PAPERS, undefined, sspMockTitle);
+    expect(got.map((s) => s.slug).sort()).toEqual(SSP_PAPERS.map((p) => `mpsc-ssp-${p.pyqYear}`).sort());
+    expect(got.find((s) => s.key === "ssp-2022")?.graceNumbers).toEqual([42, 95, 96]);
+    // Measured: 24 cancelled questions across the ten final keys.
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(24);
   });
 
   it("covers every configured paper with a distinct slug", () => {

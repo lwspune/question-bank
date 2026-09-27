@@ -6,6 +6,19 @@ Pending features, data-model changes, and content work for Question Bank. Mirror
 
 ---
 
+## MPSC Mains — four papers dropped, not ingested (2026-09-27)
+
+Set aside at the user's call; each carries a `dropped` reason in `scripts/mpsc-mains/config.ts`, and `requirePaper` refuses them, so `merge`/`commit` cannot load one by accident. Nothing from any of them reached the database.
+
+| Paper | Code | State when dropped |
+|---|---|---|
+| PSI Mains 2014 | EO5 | Q1-60 transcribed (`data/psi-2014.t01-t02.json`, uncommitted) |
+| ASO Mains 2011 | RGM | Q1-195 transcribed in scratch, not merged |
+| STI Mains 2012 | OOI | Q1-173 transcribed in scratch, not merged |
+| PSI Mains 2012 | COO | all 200 transcribed in scratch (no key; answers would be derived), not merged |
+
+To revive one: delete its `dropped` field, transcribe into `data/<id>.t0N.json`, then `merge` → `commit`.
+
 ## Backfill ledger — two MHT-CET source files are copies of other sittings; Chemistry + Maths still carry the copies (2026-09-26)
 
 Found while starting Physics notes (`generated-papers/_paper_overlap.py`, item-for-item across the extracted docx papers):

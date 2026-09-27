@@ -139,6 +139,55 @@ export function parseKeyLines(lines: string[][]): {
   return { rows: parsed.rows, errors: [...errors, ...parsed.errors], ignored };
 }
 
+/**
+ * The four booklet sets (A-D) are the same questions in a different order, so
+ * every set's answer column must hold the same count of each letter, `#`
+ * included. A single misread or mis-extracted cell breaks that balance — a free
+ * checksum on a key read off a scan. Empty when balanced.
+ */
+export function setBalanceIssues(rows: Map<number, KeyLetter[]>): string[] {
+  const width = Math.max(0, ...[...rows.values()].map((r) => r.length));
+  const counts = Array.from({ length: width }, () => new Map<string, number>());
+  for (const sets of rows.values()) sets.forEach((l, i) => counts[i].set(l, (counts[i].get(l) ?? 0) + 1));
+  const render = (c: Map<string, number>) =>
+    `{${[...c].sort(([a], [b]) => a.localeCompare(b)).map(([l, n]) => `${l}:${n}`).join(" ")}}`;
+  const shapes = counts.map(render);
+  if (shapes.every((x) => x === shapes[0])) return [];
+  return [`set letter counts differ: ${shapes.map((x, i) => `${"ABCD"[i] ?? i} ${x}`).join(" ")}`];
+}
+
+/**
+ * Where an independent record of the answers disagrees with the official key.
+ * The State Services scan carries a coaching institute's boxes drawn on each
+ * booklet (data/<id>.boxes.json) — not a key we use, but a second reading of
+ * one, so any disagreement is either their error or a misread of the key.
+ * A question with no mark is skipped; a mark the key does not cover is reported.
+ */
+export function markDisagreements(
+  marks: Record<string | number, KeyLetter | null>,
+  key: Record<string | number, KeyLetter>
+): { n: number; mark: KeyLetter; key: KeyLetter | undefined }[] {
+  return Object.entries(marks)
+    .filter((e): e is [string, KeyLetter] => e[1] !== null && e[1] !== key[e[0]])
+    .map(([n, mark]) => ({ n: Number(n), mark, key: key[n] }))
+    .sort((a, b) => a.n - b.n);
+}
+
+/**
+ * Questions whose subject/chapter is not on the exam's fixed list. Chapters
+ * auto-create at commit, so a typo or a near-synonym ("Local Self Government"
+ * vs "Local Self-Government") would otherwise fork the taxonomy silently —
+ * which is exactly what happened to Group B & C.
+ */
+export function offListChapters(
+  questions: { n: number; subject: string; chapter: string }[],
+  allowed: Record<string, readonly string[]>
+): string[] {
+  return questions
+    .filter((q) => !(allowed[q.subject] ?? []).includes(q.chapter))
+    .map((q) => `Q${q.n}: ${q.subject} / ${q.chapter}`);
+}
+
 const fmt = (bag: string[]) => `[${bag.join(",")}]`;
 const sameBag = (a: string[], b: string[]) => a.length === b.length && a.every((v, k) => v === b[k]);
 const lineCount = (s: string) => s.split("\n").filter((l) => l.trim() !== "").length;

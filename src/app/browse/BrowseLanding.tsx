@@ -5,7 +5,7 @@ import type {
   StarterChapter,
 } from "@/lib/questions/browseLanding";
 import { getExamBySlug } from "@/lib/exam/examContext";
-import { groupExamFamilies, familyTotal } from "@/lib/exam/examFamily";
+import { groupExamFamilies, familyTotal, membersByStage } from "@/lib/exam/examFamily";
 
 /**
  * What bare `/browse` shows instead of 25 arbitrary questions.
@@ -62,20 +62,29 @@ export default function BrowseLanding({
                     <span className="mt-0.5 block text-xs tabular-nums text-brand-accent">
                       {total.toLocaleString("en-IN")} questions
                     </span>
-                    <ul className="mt-2.5 flex flex-wrap gap-1.5">
-                      {node.members.map((cls) => (
-                        <li key={cls.item.slug}>
-                          <Link
-                            href={cls.item.href}
-                            aria-label={`${node.label} ${cls.label}`}
-                            className="inline-flex items-center gap-1 rounded-full border bg-background px-2.5 py-1 text-xs font-medium transition-colors hover:border-brand-accent/60 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                          >
-                            {cls.label}
-                            <ArrowRight className="h-3 w-3 text-muted-foreground" aria-hidden />
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
+                    {membersByStage(node).map((group) => (
+                      <div key={group.stage ?? "all"}>
+                        {group.stage && (
+                          <p className="mt-2.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                            {group.stage}
+                          </p>
+                        )}
+                        <ul className={`${group.stage ? "mt-1.5" : "mt-2.5"} flex flex-wrap gap-1.5`}>
+                          {group.members.map((cls) => (
+                            <li key={cls.item.slug}>
+                              <Link
+                                href={cls.item.href}
+                                aria-label={[node.label, group.stage, cls.label].filter(Boolean).join(" ")}
+                                className="inline-flex items-center gap-1 rounded-full border bg-background px-2.5 py-1 text-xs font-medium transition-colors hover:border-brand-accent/60 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                              >
+                                {cls.label}
+                                <ArrowRight className="h-3 w-3 text-muted-foreground" aria-hidden />
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
                   </div>
                 </li>
               );
