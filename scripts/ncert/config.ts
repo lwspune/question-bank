@@ -201,6 +201,32 @@ const cls10Maths = (p: string) => join(SOURCE_ROOT, "10th", "Maths", p);
 // transcription.
 const cls10Sci = (p: string) => join(SOURCE_ROOT, "10th", "Science", p);
 
+// ── SOCIAL SCIENCE path helpers (2026-09-24) ───────────────────────────────────
+// FOUR BOOKS, FOUR SUBJECTS. CBSE Class 10 Social Science is one board paper but
+// four separate books, which is the inverse of Science — where the one-paper,
+// ONE-BOOK argument is what made Science a single subject. Here the books decide
+// it: `/board` renders per book in book order, and mh-ssc-10 and mh-sb-9 already
+// model Geography, History and Political Science as separate subjects on one
+// exam. Chapter numbers therefore restart per subject, as they do in each book.
+//
+// **THERE IS NO ANSWER KEY. FOR ANY OF THE FOUR.** Science had jesc1an.pdf; these
+// folders hold only chapter PDFs, prelims (jess*ps.pdf) and one Geography
+// appendix. So these chapters carry no `answersPdf`, and that absence is the
+// record: the end-of-book cross-check that gates every other NCERT lane here
+// cannot be run at all, and `social-grounding.ts` carries the entire weight.
+//
+// Three more departures, all measured rather than assumed:
+//  1. FOUR QUESTION-BLOCK CONVENTIONS — History opens with "Write in brief" and
+//     "Discuss" and never prints Exercises; Geography prints EXERCISES five
+//     times on one line; Polity prints "Exercises"; Economics prints EXERCISES
+//     and also runs an in-text "LET'S WORK THESE OUT" lane.
+//  2. THREE OF FOUR NUMBER NO SECTIONS. Only History does. Anchors are heading
+//     TEXT here, read off font weight and size — see socialLib.ts.
+//  3. Geography's MCQs print options in TWO COLUMNS, (a)/(c) then (b)/(d), so
+//     reading-order slotting mis-assigns every one of them; Economics' MCQs
+//     carry THREE options, which `commitStaged` cannot represent.
+const cls10SS = (subject: string, p: string) => join(SOURCE_ROOT, "10th", subject, p);
+
 // ── PHYSICS path helpers (2026-09-07) ───────────────────────────────────────────
 // Physics ships as pre-split per-chapter PDFs under Part_1/Part_2, PLUS the
 // whole-book PDF and NCERT's own answer files.
@@ -3517,6 +3543,472 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Waste Management",
     ],
   },
+
+  // ── CBSE Class 10 GEOGRAPHY, "Contemporary India II" (7 chapters, 2026-09-24).
+  //    The first of the four SOCIAL SCIENCE books and the pilot for the lane,
+  //    because its question block is the most uniform of the four: one EXERCISES
+  //    heading per chapter, then MCQs, a match-the-following, and short- and
+  //    long-answer items with printed word limits.
+  //
+  //    NO `answersPdf` — see the cls10SS header. There is no key for this book
+  //    or any of the other three, so every answer is grounded and none is
+  //    cross-checked.
+  //
+  //    TWO HAZARDS SPECIFIC TO THIS BOOK. Its MCQ options print in TWO COLUMNS,
+  //    so the text layer emits (a), (c), (b), (d) and reading-order slotting
+  //    mis-assigns every one — the defect a blind derivation provably cannot
+  //    catch, since the reasoning confirms the right TEXT under the wrong
+  //    LETTER. And its map-marking items ("on an outline map of India, mark and
+  //    label...") are deliberately NOT ingested: a text answer can only list the
+  //    places, which is not what the question asks for.
+
+  c10GeoResources: {
+    id: "c10GeoResources",
+    chapterName: "Resources and Development",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Geography",
+    sourceFile: "NCERT_10_Geography__Resources.pdf",
+    pdf: cls10SS("Geography", "01. Resources and Development.pdf"),
+    chapterNo: 1,
+    note: "NCERT (CBSE Class 10) \u2014 Resources and Development (Chapter 1, Contemporary India II)",
+    subtopics: [
+      "Types of Resources",
+      "Development of Resources",
+      "Resource Planning",
+      "Land Resources and Land Use",
+      "Land Degradation and Conservation",
+      "Soil as a Resource",
+    ],
+  },
+
+  c10GeoForestWildlife: {
+    id: "c10GeoForestWildlife",
+    chapterName: "Forest and Wildlife Resources",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Geography",
+    sourceFile: "NCERT_10_Geography__ForestWildlife.pdf",
+    pdf: cls10SS("Geography", "02. Forest and Wildlife Resources.pdf"),
+    chapterNo: 2,
+    note: "NCERT (CBSE Class 10) \u2014 Forest and Wildlife Resources (Chapter 2, Contemporary India II)",
+    subtopics: [
+      "Biodiversity and its Depletion",
+      "Causes of Depletion of Flora and Fauna",
+      "Conservation of Forest and Wildlife",
+      "Types and Distribution of Forests",
+      "Communities and Conservation",
+    ],
+  },
+
+  c10GeoWater: {
+    id: "c10GeoWater",
+    chapterName: "Water Resources",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Geography",
+    sourceFile: "NCERT_10_Geography__Water.pdf",
+    pdf: cls10SS("Geography", "03. Water Resources.pdf"),
+    chapterNo: 3,
+    note: "NCERT (CBSE Class 10) \u2014 Water Resources (Chapter 3, Contemporary India II)",
+    subtopics: [
+      "Water Scarcity and its Causes",
+      "Multi-purpose River Projects",
+      "Opposition to Multi-purpose Projects",
+      "Rainwater Harvesting",
+    ],
+  },
+
+  c10GeoAgriculture: {
+    id: "c10GeoAgriculture",
+    chapterName: "Agriculture",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Geography",
+    sourceFile: "NCERT_10_Geography__Agriculture.pdf",
+    pdf: cls10SS("Geography", "04. Agriculture.pdf"),
+    chapterNo: 4,
+    note: "NCERT (CBSE Class 10) \u2014 Agriculture (Chapter 4, Contemporary India II)",
+    subtopics: [
+      "Types of Farming",
+      "Cropping Pattern and Seasons",
+      "Major Crops",
+      "Technological and Institutional Reforms",
+      "Agriculture and the National Economy",
+    ],
+  },
+
+  c10GeoMinerals: {
+    id: "c10GeoMinerals",
+    chapterName: "Minerals and Energy Resources",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Geography",
+    sourceFile: "NCERT_10_Geography__Minerals.pdf",
+    pdf: cls10SS("Geography", "05. Minerals and Energy Resources.pdf"),
+    chapterNo: 5,
+    note: "NCERT (CBSE Class 10) \u2014 Minerals and Energy Resources (Chapter 5, Contemporary India II)",
+    subtopics: [
+      "What is a Mineral",
+      "Mode of Occurrence and Distribution",
+      "Ferrous and Non-ferrous Minerals",
+      "Non-metallic Minerals and Rocks",
+      "Conservation of Minerals",
+      "Conventional Sources of Energy",
+      "Non-conventional Sources of Energy",
+    ],
+  },
+
+  c10GeoManufacturing: {
+    id: "c10GeoManufacturing",
+    chapterName: "Manufacturing Industries",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Geography",
+    sourceFile: "NCERT_10_Geography__Manufacturing.pdf",
+    pdf: cls10SS("Geography", "06. Manufacturing Industries.pdf"),
+    chapterNo: 6,
+    note: "NCERT (CBSE Class 10) \u2014 Manufacturing Industries (Chapter 6, Contemporary India II)",
+    subtopics: [
+      "Importance of Manufacturing",
+      "Classification of Industries",
+      "Agro-based Industries",
+      "Mineral-based Industries",
+      "Industrial Pollution and its Control",
+    ],
+  },
+
+  c10GeoLifelines: {
+    id: "c10GeoLifelines",
+    chapterName: "Lifelines of National Economy",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Geography",
+    sourceFile: "NCERT_10_Geography__Lifelines.pdf",
+    pdf: cls10SS("Geography", "07. Lifelines of National Economy.pdf"),
+    chapterNo: 7,
+    note: "NCERT (CBSE Class 10) \u2014 Lifelines of National Economy (Chapter 7, Contemporary India II)",
+    subtopics: [
+      "Roadways",
+      "Railways and Pipelines",
+      "Waterways and Airways",
+      "Communication",
+      "International Trade and Tourism",
+    ],
+  },
+
+  // ── Economics — "Understanding Economic Development" ──────────────────────
+  // Two question lanes, unlike Geography's one: the end-of-chapter EXERCISES
+  // *and* the in-text boxes, which is why these chapters get both an
+  // `.exercise.json` and an `.intext.json` fragment. The box heading is TWO
+  // strings, not one — 29 read "LET'S WORK THESE OUT" and 3 read "LET'S WORK
+  // THIS OUT" (Ch.4 once, Ch.5 twice). Matching only the plural finds 29 and
+  // reports nothing missing.
+  //
+  // No `answersPdf`, as with Geography. There is no key for this book.
+
+  c10EcoDevelopment: {
+    id: "c10EcoDevelopment",
+    chapterName: "Development",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Economics",
+    sourceFile: "NCERT_10_Economics__Development.pdf",
+    pdf: cls10SS("Economics", "01. DEVELOPMENT.pdf"),
+    chapterNo: 1,
+    note: "NCERT (CBSE Class 10) \u2014 Development (Chapter 1, Understanding Economic Development)",
+    subtopics: [
+      "What Development Promises",
+      "Income and Other Goals",
+      "National Development",
+      "How to Compare Different Countries or States",
+      "Income and Other Criteria",
+      "Public Facilities",
+      "Sustainability of Development",
+    ],
+  },
+
+  c10EcoSectors: {
+    id: "c10EcoSectors",
+    chapterName: "Sectors of the Indian Economy",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Economics",
+    sourceFile: "NCERT_10_Economics__Sectors.pdf",
+    pdf: cls10SS("Economics", "02. SECTORS OF THE INDIAN ECONOMY.pdf"),
+    chapterNo: 2,
+    note: "NCERT (CBSE Class 10) \u2014 Sectors of the Indian Economy (Chapter 2, Understanding Economic Development)",
+    subtopics: [
+      "Sectors of Economic Activities",
+      "Comparing the Three Sectors",
+      "Primary, Secondary and Tertiary Sectors in India",
+      "Division of Sectors as Organised and Unorganised",
+      "Sectors in Terms of Ownership",
+    ],
+  },
+
+  c10EcoMoneyCredit: {
+    id: "c10EcoMoneyCredit",
+    chapterName: "Money and Credit",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Economics",
+    sourceFile: "NCERT_10_Economics__MoneyCredit.pdf",
+    pdf: cls10SS("Economics", "03. MONEY AND CREDIT.pdf"),
+    chapterNo: 3,
+    note: "NCERT (CBSE Class 10) \u2014 Money and Credit (Chapter 3, Understanding Economic Development)",
+    subtopics: [
+      "Money as a Medium of Exchange",
+      "Modern Forms of Money",
+      "Loan Activities of Banks",
+      "Two Different Credit Situations",
+      "Terms of Credit",
+      "Formal Sector Credit in India",
+      "Self-Help Groups for the Poor",
+    ],
+  },
+
+  c10EcoGlobalisation: {
+    id: "c10EcoGlobalisation",
+    chapterName: "Globalisation and the Indian Economy",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Economics",
+    sourceFile: "NCERT_10_Economics__Globalisation.pdf",
+    pdf: cls10SS("Economics", "04. GLOBALISATION AND THE INDIAN ECONOMY.pdf"),
+    chapterNo: 4,
+    note: "NCERT (CBSE Class 10) \u2014 Globalisation and the Indian Economy (Chapter 4, Understanding Economic Development)",
+    subtopics: [
+      "Production Across Countries",
+      "Interlinking Production Across Countries",
+      "Foreign Trade and Integration of Markets",
+      "What is Globalisation",
+      "Factors that Have Enabled Globalisation",
+      "World Trade Organisation",
+      "Impact of Globalisation in India",
+      "The Struggle for a Fair Globalisation",
+    ],
+  },
+
+  c10EcoConsumerRights: {
+    id: "c10EcoConsumerRights",
+    chapterName: "Consumer Rights",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Economics",
+    sourceFile: "NCERT_10_Economics__ConsumerRights.pdf",
+    pdf: cls10SS("Economics", "05. CONSUMER RIGHTS.pdf"),
+    chapterNo: 5,
+    note: "NCERT (CBSE Class 10) \u2014 Consumer Rights (Chapter 5, Understanding Economic Development)",
+    subtopics: [
+      "The Consumer in the Marketplace",
+      "Consumer Movement",
+      "Consumer Rights",
+      "Taking the Consumer Movement Forward",
+    ],
+  },
+
+  // ── Political Science — "Democratic Politics II" ──────────────────────────
+  // One lane: the end-of-chapter `Exercises`. Sections run at 20pt against an
+  // 11.5pt body, so the spine reads cleanly — but the same size band also
+  // catches the Overview paragraph and the marginal cartoon captions, so this
+  // book's anchor list is generous. Brief rule 7 applies.
+  //
+  // No `answersPdf`. There is no key for this book.
+
+  c10PolPowerSharing: {
+    id: "c10PolPowerSharing",
+    chapterName: "Power-sharing",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Political Science",
+    sourceFile: "NCERT_10_Polity__PowerSharing.pdf",
+    pdf: cls10SS("Polity", "01. Power-sharing.pdf"),
+    chapterNo: 1,
+    note: "NCERT (CBSE Class 10) \u2014 Power-sharing (Chapter 1, Democratic Politics II)",
+    subtopics: [
+      "Belgium and Sri Lanka",
+      "Majoritarianism in Sri Lanka",
+      "Accommodation in Belgium",
+      "Why Power Sharing is Desirable",
+      "Forms of Power-sharing",
+    ],
+  },
+
+  c10PolFederalism: {
+    id: "c10PolFederalism",
+    chapterName: "Federalism",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Political Science",
+    sourceFile: "NCERT_10_Polity__Federalism.pdf",
+    pdf: cls10SS("Polity", "02. Federalism.pdf"),
+    chapterNo: 2,
+    note: "NCERT (CBSE Class 10) \u2014 Federalism (Chapter 2, Democratic Politics II)",
+    subtopics: [
+      "What is Federalism",
+      "What Makes India a Federal Country",
+      "How is Federalism Practised",
+      "Decentralisation in India",
+    ],
+  },
+
+  c10PolGenderReligionCaste: {
+    id: "c10PolGenderReligionCaste",
+    chapterName: "Gender, Religion and Caste",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Political Science",
+    sourceFile: "NCERT_10_Polity__GenderReligionCaste.pdf",
+    pdf: cls10SS("Polity", "03. Gender, Religion, and Caste.pdf"),
+    chapterNo: 3,
+    note: "NCERT (CBSE Class 10) \u2014 Gender, Religion and Caste (Chapter 3, Democratic Politics II)",
+    subtopics: [
+      "Gender and Politics",
+      "Religion, Communalism and Politics",
+      "Caste and Politics",
+    ],
+  },
+
+  c10PolPoliticalParties: {
+    id: "c10PolPoliticalParties",
+    chapterName: "Political Parties",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Political Science",
+    sourceFile: "NCERT_10_Polity__PoliticalParties.pdf",
+    pdf: cls10SS("Polity", "04. Political Parties.pdf"),
+    chapterNo: 4,
+    note: "NCERT (CBSE Class 10) \u2014 Political Parties (Chapter 4, Democratic Politics II)",
+    subtopics: [
+      "Why Do We Need Political Parties",
+      "How Many Parties Should We Have",
+      "National Parties",
+      "State Parties",
+      "Challenges to Political Parties",
+      "How Can Parties be Reformed",
+    ],
+  },
+
+  c10PolOutcomesDemocracy: {
+    id: "c10PolOutcomesDemocracy",
+    chapterName: "Outcomes of Democracy",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "Political Science",
+    sourceFile: "NCERT_10_Polity__OutcomesDemocracy.pdf",
+    pdf: cls10SS("Polity", "05. Outcomes of Democracy.pdf"),
+    chapterNo: 5,
+    note: "NCERT (CBSE Class 10) \u2014 Outcomes of Democracy (Chapter 5, Democratic Politics II)",
+    subtopics: [
+      "How Do We Assess Democracy's Outcomes",
+      "Accountable, Responsive and Legitimate Government",
+      "Economic Growth and Development",
+      "Reduction of Inequality and Poverty",
+      "Accommodation of Social Diversity",
+      "Dignity and Freedom of the Citizens",
+    ],
+  },
+
+
+  // ── History — "India and the Contemporary World II" ────────────────────────
+  // THE ODD ONE. It never prints the word "Exercises": its questions arrive as
+  // TWO numbered blocks, `Write in brief` and `Discuss`, on the closing page —
+  // hence the distinct `WB`/`DS` ref prefixes.
+  //
+  // MEASURED, and NOT uniform: Ch.1, 2, 4 and 5 number each block from 1, so a
+  // single `Ex` prefix there would collide and lose a question at merge. Ch.3
+  // numbers them CONTINUOUSLY — Write in brief 1-5, Discuss 6-9. Use the
+  // printed numbers; the prefixes carry block identity either way.
+  //
+  // It also prints `Discuss` as a marginal activity prompt throughout the
+  // chapter — Ch.1 has six before the end, and Ch.4's sits at heading size on
+  // p8. Find the two block headings on the SAME closing page; do not grep the
+  // word.
+  //
+  // The only book in this lane that NUMBERS its sections, so its subtopics are
+  // the numbered spine with the numeral dropped.
+  //
+  // No `answersPdf`. There is no key for this book.
+
+  c10HistNationalismEurope: {
+    id: "c10HistNationalismEurope",
+    chapterName: "The Rise of Nationalism in Europe",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "History",
+    sourceFile: "NCERT_10_History__NationalismEurope.pdf",
+    pdf: cls10SS("History", "01. The Rise of Nationalism in Europe.pdf"),
+    chapterNo: 1,
+    note: "NCERT (CBSE Class 10) \u2014 The Rise of Nationalism in Europe (Chapter 1, India and the Contemporary World II)",
+    subtopics: [
+      "The French Revolution and the Idea of the Nation",
+      "The Making of Nationalism in Europe",
+      "The Age of Revolutions: 1830-1848",
+      "The Making of Germany and Italy",
+      "Visualising the Nation",
+      "Nationalism and Imperialism",
+    ],
+  },
+
+  c10HistNationalismIndia: {
+    id: "c10HistNationalismIndia",
+    chapterName: "Nationalism in India",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "History",
+    sourceFile: "NCERT_10_History__NationalismIndia.pdf",
+    pdf: cls10SS("History", "02. Nationalism in India.pdf"),
+    chapterNo: 2,
+    note: "NCERT (CBSE Class 10) \u2014 Nationalism in India (Chapter 2, India and the Contemporary World II)",
+    subtopics: [
+      "The First World War, Khilafat and Non-Cooperation",
+      "Differing Strands within the Movement",
+      "Towards Civil Disobedience",
+      "The Sense of Collective Belonging",
+    ],
+  },
+
+  c10HistGlobalWorld: {
+    id: "c10HistGlobalWorld",
+    chapterName: "The Making of a Global World",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "History",
+    sourceFile: "NCERT_10_History__GlobalWorld.pdf",
+    pdf: cls10SS("History", "03. The Making of a Global World.pdf"),
+    chapterNo: 3,
+    note: "NCERT (CBSE Class 10) \u2014 The Making of a Global World (Chapter 3, India and the Contemporary World II)",
+    subtopics: [
+      "The Pre-modern World",
+      "The Nineteenth Century (1815-1914)",
+      "The Inter-war Economy",
+      "Rebuilding a World Economy: The Post-war Era",
+    ],
+  },
+
+  c10HistIndustrialisation: {
+    id: "c10HistIndustrialisation",
+    chapterName: "The Age of Industrialisation",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "History",
+    sourceFile: "NCERT_10_History__Industrialisation.pdf",
+    pdf: cls10SS("History", "04. The Age of Industrialisation.pdf"),
+    chapterNo: 4,
+    note: "NCERT (CBSE Class 10) \u2014 The Age of Industrialisation (Chapter 4, India and the Contemporary World II)",
+    subtopics: [
+      "Before the Industrial Revolution",
+      "Hand Labour and Steam Power",
+      "Industrialisation in the Colonies",
+      "Factories Come Up",
+      "The Peculiarities of Industrial Growth",
+      "Market for Goods",
+    ],
+  },
+
+  c10HistPrintCulture: {
+    id: "c10HistPrintCulture",
+    chapterName: "Print Culture and the Modern World",
+    examId: EXAM_ID_CBSE_10,
+    subjectName: "History",
+    sourceFile: "NCERT_10_History__PrintCulture.pdf",
+    pdf: cls10SS("History", "05. Print Culture and the Modern World.pdf"),
+    chapterNo: 5,
+    note: "NCERT (CBSE Class 10) \u2014 Print Culture and the Modern World (Chapter 5, India and the Contemporary World II)",
+    subtopics: [
+      "The First Printed Books",
+      "Print Comes to Europe",
+      "The Print Revolution and Its Impact",
+      "The Reading Mania",
+      "The Nineteenth Century",
+      "India and the World of Print",
+      "Religious Reform and Public Debates",
+      "New Forms of Publication",
+      "Print and Censorship",
+    ],
+  },
+
+
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
