@@ -334,7 +334,7 @@ function QuickActions({
           href="/dashboard/feedback"
           icon={<MessageSquareHeart className="h-5 w-5" aria-hidden />}
           title="Feedback"
-          description="NPS score and student suggestions — what to build next."
+          description="Mock ratings, NPS and student suggestions — what to build next."
         />
       )}
       {isSuperadmin && (
