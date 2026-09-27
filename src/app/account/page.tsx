@@ -13,7 +13,7 @@ import {
   listMyBatches,
 } from "@/lib/batches/invitesAdmin";
 import { getOwnProfile } from "@/lib/profile/service";
-import { FREE_MOCK_LIMIT } from "@/lib/mocks/quota";
+import { readFreeMockLimit } from "@/lib/billing/plansQuery";
 import ProfileForm from "./ProfileForm";
 
 export const dynamic = "force-dynamic";
@@ -43,6 +43,7 @@ export default async function AccountPage() {
   if (!user) redirect("/login?next=/account");
 
   const db = createSupabaseServerClient();
+  const freeMocks = await readFreeMockLimit(db);
   const [rows, profile, invites, myBatches] = await Promise.all([
     loadEntitlements(db, user.id),
     getOwnProfile(db, user.id),
@@ -129,9 +130,9 @@ export default async function AccountPage() {
               <div>
                 <p className="font-semibold">No pass yet</p>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  The question bank, guides and notes are always free, and so are
-                  your first {FREE_MOCK_LIMIT} mock tests. A one-time pass unlocks unlimited mocks,
-                  or Word paper downloads for teachers.
+                  The question bank, guides and notes are always free
+                  {freeMocks === null ? ", and so are mock tests" : `, and so are your first ${freeMocks} mock tests`}.
+                  A one-time pass unlocks unlimited mocks, or Word paper downloads for teachers.
                 </p>
                 <Link
                   href="/pricing"

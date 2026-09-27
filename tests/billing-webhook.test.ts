@@ -25,6 +25,7 @@ vi.mock("@/lib/billing/grant", () => ({
 }));
 
 import { grantRazorpayEntitlement, revokeRazorpayEntitlement } from "@/lib/billing/grant";
+import { stampOrderNotes, type Plan } from "@/lib/billing/plans";
 import { POST } from "@/app/api/billing/webhook/route";
 
 const grantMock = vi.mocked(grantRazorpayEntitlement);
@@ -49,10 +50,20 @@ function makeRequest(
   });
 }
 
+const TEACHER: Plan = {
+  id: "teacher-pass-1y", label: "Teacher Pass", blurb: "", perks: [], urlKey: "teacher",
+  amountPaise: 49900, currency: "INR", durationDays: 365, scope: "teacher", active: true, sortOrder: 2,
+};
+/** notes: a full server stamp for TEACHER, with overrides. */
 const orderPaid = (notes: Record<string, string>, paymentId?: string) => ({
   event: "order.paid",
   payload: {
-    order: { entity: { status: "paid", amount_paid: 49900, currency: "INR", notes } },
+    order: {
+      entity: {
+        status: "paid", amount_paid: 49900, currency: "INR",
+        notes: notes.userId ? { ...stampOrderNotes(TEACHER, notes.userId), ...notes } : notes,
+      },
+    },
     ...(paymentId ? { payment: { entity: { id: paymentId } } } : {}),
   },
 });
@@ -90,9 +101,9 @@ describe("billing webhook routing", () => {
     expect(grantMock.mock.calls[0][0].expiresAt).toMatch(/^\d{4}-\d{2}-\d{2}T/);
   });
 
-  it("skips a paid amount that does not match the plan in the notes", async () => {
-    const body = orderPaid({ userId: "user-1", planId: "mock-pass-6m" }, "pay_abc");
-    const res = await POST(makeRequest(body)); // 49900 paid, mock pass costs 9900
+  it("skips a paid amount that does not match the stamped price", async () => {
+    const body = orderPaid({ userId: "user-1", amountPaise: "9900" }, "pay_abc");
+    const res = await POST(makeRequest(body)); // 49900 paid, order was for 9900
     expect(res.status).toBe(200);
     await expect(res.json()).resolves.toHaveProperty("skipped");
     expect(grantMock).not.toHaveBeenCalled();
@@ -152,9 +163,9 @@ describe("billing webhook routing", () => {
     expect(grantMock).not.toHaveBeenCalled();
   });
 
-  it("skips on an unknown planId", async () => {
+  it("skips a stamp that sells an unsellable scope", async () => {
     const req = makeRequest(
-      orderPaid({ userId: "user-1", planId: "no-such-plan" }, "pay_abc")
+      orderPaid({ userId: "user-1", scope: "all" }, "pay_abc")
     );
     const res = await POST(req);
     expect(res.status).toBe(200);

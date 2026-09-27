@@ -28,14 +28,12 @@ import type { Filters } from "@/lib/questions/filters";
 import LanguageSwitch from "@/components/i18n/LanguageSwitch";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import { useCart } from "@/lib/cart/CartProvider";
-import { formatRupees, getPlan } from "@/lib/billing/plans";
+import type { PassCta } from "@/lib/billing/plans";
 import { resolveExportAccess } from "@/lib/export/access";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 
 type Mode = "filters" | "cart";
-const TEACHER_PASS_PRICE = formatRupees(getPlan("teacher-pass-1y")?.amountPaise ?? 49900);
-
 type Kind = "paper" | "key" | "tags" | "ppt";
 
 // Per-kind download metadata: filename prefix, extension, success-toast label.
@@ -61,6 +59,8 @@ export default function DownloadDialog({
   isStaff = false,
   /** Active Teacher Pass — unlocks the paper + key (not slides or the sheet). */
   hasTeacherPass = false,
+  /** The pass on sale that unlocks downloads; null = none, so only request-access is offered. */
+  teacherPass = null,
   /** The filtered exam prints Marathi + English (MPSC) — offer a print language. */
   bilingual = false,
 }: {
@@ -73,6 +73,7 @@ export default function DownloadDialog({
   isSignedIn?: boolean;
   isStaff?: boolean;
   hasTeacherPass?: boolean;
+  teacherPass?: PassCta | null;
   bilingual?: boolean;
 }) {
   // Downloads are staff-only (paper/key/tags all require an org account). A
@@ -222,9 +223,15 @@ export default function DownloadDialog({
           <div className="flex-1 space-y-3 overflow-y-auto px-6 py-4 text-sm text-muted-foreground">
             <p>
               Building and downloading question papers as Word files is a teacher
-              feature. Get a <strong className="text-foreground">Teacher Pass</strong>{" "}
-              ({TEACHER_PASS_PRICE} for a year) for instant access, or request a teacher account
-              and we&apos;ll set you up.
+              feature.{" "}
+              {teacherPass ? (
+                <>
+                  Get a <strong className="text-foreground">{teacherPass.label}</strong> ({teacherPass.price} for{" "}
+                  {teacherPass.length}) for instant access, or request a teacher account and we&apos;ll set you up.
+                </>
+              ) : (
+                <>Request a teacher account and we&apos;ll set you up.</>
+              )}
             </p>
             <p>
               You&apos;ll be able to filter the bank, assemble papers, and export
@@ -357,9 +364,11 @@ export default function DownloadDialog({
                 Request teacher access
               </Link>
             </Button>
-            <Button asChild variant="brand" className="w-full sm:w-auto">
-              <Link href="/pricing?plan=teacher">Get Teacher Pass</Link>
-            </Button>
+            {teacherPass && (
+              <Button asChild variant="brand" className="w-full sm:w-auto">
+                <Link href={`/pricing?plan=${teacherPass.urlKey}`}>Get {teacherPass.label}</Link>
+              </Button>
+            )}
             </>
           ) : (
             <>

@@ -14,7 +14,6 @@ import { buildQuizShareUrl } from "@/lib/quiz/share";
 import { scoreVerdict, type VerdictTone } from "@/lib/quiz/verdict";
 import type { PublicQuiz } from "@/lib/quiz/publicQuiz";
 import type { SubmitResult } from "@/lib/quiz/submit";
-import { FREE_MOCK_LIMIT } from "@/lib/mocks/quota";
 
 const LETTERS = ["A", "B", "C", "D"] as const;
 type Letter = (typeof LETTERS)[number];
@@ -841,8 +840,8 @@ function ConversionCta({ billingLive }: { billingLive: boolean }) {
         <>
           <p className="mt-3 font-semibold">Ready for the real paper?</p>
           <p className="mt-1 text-sm text-muted-foreground">
-            Sit full timed NDA past papers, graded instantly. Your first {FREE_MOCK_LIMIT} are free;
-            the Mock Pass unlocks the rest.
+            Sit full timed NDA past papers, graded instantly. Start free; the Mock Pass
+            unlocks unlimited.
           </p>
           <Link
             href={`/signup?next=${encodeURIComponent("/pricing?plan=mocks")}&utm_source=quiz`}

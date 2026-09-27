@@ -58,8 +58,8 @@ export async function POST(request: NextRequest) {
   const result = await grantRazorpayEntitlement({
     userId: decision.userId,
     paymentId: decision.paymentId,
-    scope: decision.plan.scope,
-    expiresAt: computeExpiry(Date.now(), decision.plan.durationDays),
+    scope: decision.grant.scope,
+    expiresAt: computeExpiry(Date.now(), decision.grant.durationDays),
   });
   if (result.kind === "error") {
     console.error("billing webhook: grant failed", result.message);

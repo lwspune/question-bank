@@ -12,6 +12,9 @@ import { mockKindNote } from "@/lib/mocks/catalogue";
 import StartMock from "./StartMock";
 import { getMockQuota } from "@/lib/mocks/service";
 import { mockStartState } from "@/lib/mocks/quota";
+import { passCta, passForScope } from "@/lib/billing/plans";
+import { listActivePlans } from "@/lib/billing/plansQuery";
+import { SCOPE_MOCKS } from "@/lib/entitlements/access";
 import { getExamByName } from "@/lib/exam/examContext";
 import ShareMock from "./ShareMock";
 import AttemptsList from "../_components/AttemptsList";
@@ -42,6 +45,11 @@ export default async function MockInstructions({ params }: { params: Params }) {
   // Free-mock limit (migration 0120): open, "N free left", or locked. A retake
   // of this paper is always open.
   const startState = mockStartState(quota, myAttempts.length > 0);
+  // The pass offered at the limit (null = none on sale; the card then links to /pricing).
+  const mockPass =
+    startState.kind === "open"
+      ? null
+      : passCta(passForScope(await listActivePlans(createSupabaseAnonClient()), SCOPE_MOCKS));
   // Set by a teacher? One line under the title, only for a student in a batch
   // this paper was assigned to (ENGAGEMENT_SPEC.md C1). Best-effort.
   const assigned = user
@@ -135,6 +143,7 @@ export default async function MockInstructions({ params }: { params: Params }) {
               slug={mock.slug}
               bilingual={getExamByName(mock.examName)?.bilingual === true}
               startState={startState}
+              mockPass={mockPass}
             />
           ) : (
             <div className="rounded-lg border border-dashed p-5 text-center">

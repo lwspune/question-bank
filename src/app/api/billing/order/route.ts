@@ -1,13 +1,17 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getSessionUser } from "@/lib/auth";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createOrder } from "@/lib/billing/razorpay";
-import { getPlan } from "@/lib/billing/plans";
+import { stampOrderNotes } from "@/lib/billing/plans";
+import { getActivePlan } from "@/lib/billing/plansQuery";
 
 export const maxDuration = 30;
 
 /**
  * Creates a Razorpay order for the signed-in user. The order's `notes` carry
- * userId + planId so the webhook can grant the right pass to the right account.
+ * the buyer, the plan id, and the price/scope/duration as sold — the ORDER is
+ * the contract. verify and the webhook grant from these notes and never
+ * re-read the plan, so a later price edit cannot reject this checkout.
  */
 export async function POST(request: NextRequest) {
   const user = await getSessionUser();
@@ -20,7 +24,7 @@ export async function POST(request: NextRequest) {
   }
 
   const body = (await request.json().catch(() => null)) as { planId?: string } | null;
-  const plan = getPlan(body?.planId ?? "");
+  const plan = body?.planId ? await getActivePlan(createSupabaseServerClient(), body.planId) : null;
   if (!plan) {
     return NextResponse.json({ error: "Unknown plan" }, { status: 400 });
   }
@@ -29,7 +33,7 @@ export async function POST(request: NextRequest) {
     amountPaise: plan.amountPaise,
     currency: plan.currency,
     receipt: `qb_${plan.id}_${user.id.slice(0, 8)}`,
-    notes: { userId: user.id, planId: plan.id },
+    notes: stampOrderNotes(plan, user.id),
   });
   if (!result.ok) {
     console.error("razorpay createOrder failed:", result.error);

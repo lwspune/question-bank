@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalH2, LegalList, LegalP, LegalPage } from "@/components/legal/LegalPage";
 import { CONTACT_EMAIL } from "@/lib/brand";
-import { PLANS, formatRupees, planLengthLabel } from "@/lib/billing/plans";
+import { formatRupees, planLengthLabel } from "@/lib/billing/plans";
+import { listActivePlans } from "@/lib/billing/plansQuery";
+import { createSupabaseAnonClient } from "@/lib/supabase/server";
 
 export const revalidate = 86400;
 
@@ -16,10 +18,12 @@ export const metadata: Metadata = {
 /** The refund window. Chosen by the owner, 2026-09-26. */
 const REFUND_DAYS = 7;
 
-export default function RefundsPage() {
-  const passes = PLANS.map(
-    (p) => `the ${p.label} (${formatRupees(p.amountPaise)} for ${planLengthLabel(p)})`
-  ).join(" and ");
+export default async function RefundsPage() {
+  const plans = await listActivePlans(createSupabaseAnonClient());
+  const passes =
+    plans.length === 0
+      ? "every pass sold on the pricing page"
+      : plans.map((p) => `the ${p.label} (${formatRupees(p.amountPaise)} for ${planLengthLabel(p)})`).join(" and ");
 
   return (
     <LegalPage
