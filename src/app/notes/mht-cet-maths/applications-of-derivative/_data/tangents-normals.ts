@@ -532,6 +532,6 @@ export const TANGENTS_NORMALS_NOTE: SubtopicNote = {
   ],
   related: [
     { label: "Differentiation notes", href: "/notes/mht-cet-maths/differentiation/foundations-chain" },
-    { label: "NDA Tangents & Slopes", href: "/notes/nda-maths/application-of-derivatives/aod-tangents-normals" },
+    { label: "NDA Tangents & Slopes", href: "/notes/nda-maths/application-of-derivatives/aod-tangents" },
   ],
 };

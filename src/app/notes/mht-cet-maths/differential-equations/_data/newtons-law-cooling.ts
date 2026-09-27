@@ -270,7 +270,7 @@ export const NEWTONS_COOLING_NOTE: SubtopicNote = {
   related: [
     {
       label: "Solving ODEs — separable, IVP, and applications (NDA)",
-      href: "/notes/nda-maths/differential-equations/solving",
+      href: "/notes/nda-maths/differential-equations/defeq-solving",
     },
   ],
 };

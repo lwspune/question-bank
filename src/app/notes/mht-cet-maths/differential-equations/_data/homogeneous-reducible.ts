@@ -385,7 +385,7 @@ export const HOMOGENEOUS_REDUCIBLE_NOTE: SubtopicNote = {
   related: [
     {
       label: "Same topic on NDA: Solving and Verifying ODEs",
-      href: "/notes/nda-maths/differential-equations/solving",
+      href: "/notes/nda-maths/differential-equations/defeq-solving",
     },
   ],
 };

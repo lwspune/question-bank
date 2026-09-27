@@ -278,7 +278,7 @@ export const POLARITY_IMF_NOTE: SubtopicNote = {
   related: [
     {
       label: "Ionic and Covalent Bonding (NDA)",
-      href: "/notes/nda-chemistry/chemical-bonding/ionic-covalent",
+      href: "/notes/nda-chemistry/chemical-bonding/bond-ionic-covalent",
     },
   ],
 };
