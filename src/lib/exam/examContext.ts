@@ -599,7 +599,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyLabel: "State Services",
     familyAxis: "Exam",
     // Rajyaseva Mains Paper 2 (Marathi & English), 2016-2018.
-    noPublicContent: true,
+    hasMocks: true, // PUBLIC + mocks published 2026-09-27 (one per sitting, scripts/mocks/mpscMainsSittings.ts)
     guidesPath: null,
     notesPath: null,
   },
@@ -613,7 +613,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyLabel: "Group B Combined",
     familyAxis: "Exam",
     // the joint Paper 1 (Marathi, English & GK) since 2018.
-    noPublicContent: true,
+    hasMocks: true, // PUBLIC + mocks published 2026-09-27 (one per sitting, scripts/mocks/mpscMainsSittings.ts)
     guidesPath: null,
     notesPath: null,
   },
@@ -627,7 +627,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyLabel: "STI",
     familyAxis: "Exam",
     // Sales Tax Inspector Mains Paper 1 (Marathi & English), 2009-2017.
-    noPublicContent: true,
+    hasMocks: true, // PUBLIC + mocks published 2026-09-27 (one per sitting, scripts/mocks/mpscMainsSittings.ts)
     guidesPath: null,
     notesPath: null,
   },
@@ -641,7 +641,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyLabel: "ASO",
     familyAxis: "Exam",
     // Assistant Section Officer Mains Paper 1 (Marathi & English), 2009-2017.
-    noPublicContent: true,
+    hasMocks: true, // PUBLIC + mocks published 2026-09-27 (one per sitting, scripts/mocks/mpscMainsSittings.ts)
     guidesPath: null,
     notesPath: null,
   },
@@ -655,7 +655,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     familyLabel: "PSI",
     familyAxis: "Exam",
     // Police Sub-Inspector Mains Paper 1 (Marathi & English), 2011-2017.
-    noPublicContent: true,
+    hasMocks: true, // PUBLIC + mocks published 2026-09-27 (one per sitting, scripts/mocks/mpscMainsSittings.ts)
     guidesPath: null,
     notesPath: null,
   },
