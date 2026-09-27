@@ -19,6 +19,10 @@ Set aside at the user's call; each carries a `dropped` reason in `scripts/mpsc-m
 
 To revive one: delete its `dropped` field, transcribe into `data/<id>.t0N.json`, then `merge` → `commit`.
 
+## Backfill ledger — three admin reads still resolve names from the FIRST 1,000 accounts only (2026-09-27)
+
+`auth.admin.listUsers({ perPage: 1000 })` returns one page and no error, so past 1,000 accounts (412 today) names silently turn into "(unknown)". The feedback-review fix moved the paged reader into `src/lib/supabase/authUsers.ts` (`listAllAuthUsers`) and switched `/dashboard/feedback` to it. **Still on one page:** `src/lib/mocks/adminStats.ts` (per-mock attempt names), `src/lib/entitlements/admin.ts` (two reads). `src/lib/members/admin.ts` is STAFF-only and does not need it. Not reworked: 360 = low risk, trivial swap, nothing wrong until 1,000 accounts; do it before then.
+
 ## Backfill ledger — two MHT-CET source files are copies of other sittings; Chemistry + Maths still carry the copies (2026-09-26)
 
 Found while starting Physics notes (`generated-papers/_paper_overlap.py`, item-for-item across the extracted docx papers):
