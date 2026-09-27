@@ -22,6 +22,11 @@ export const KIND_LABELS: Record<ActivityKind, string> = {
   question_practiced: "Bank answer revealed",
   quiz_taken: "Quiz taken",
   drill_completed: "Drill completed",
+  surface_viewed: "Page viewed",
+  drill_started: "Drill opened",
+  goal_set: "Weekly goal set",
+  paywall_event: "Paywall step",
+  email_clicked: "Email link clicked",
 };
 
 export type KindStat = { kind: string; events: number; users: number };

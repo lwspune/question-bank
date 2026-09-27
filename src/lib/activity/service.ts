@@ -47,3 +47,30 @@ export async function logActivityBatch(
     console.error("logActivity threw", e);
   }
 }
+
+/**
+ * Log an event that must exist AT MOST ONCE for its dedupeKey (a surface view
+ * per day, a paywall impression per day). ON CONFLICT DO NOTHING on the
+ * UNIQUE dedupe_key, so a repeat is silent rather than a logged insert error
+ * on every page load. Best-effort — never throws.
+ */
+export async function logActivityOnce(
+  db: SupabaseClient,
+  userId: string,
+  event: ActivityEvent,
+  nowMs: number = Date.now()
+): Promise<void> {
+  if (!event.dedupeKey) {
+    console.error("logActivityOnce: event has no dedupeKey", event.kind);
+    return;
+  }
+  try {
+    const row = buildActivityRow(userId, event, new Date(nowMs).toISOString());
+    const { error } = await db
+      .from("user_activity")
+      .upsert(row, { onConflict: "dedupe_key", ignoreDuplicates: true });
+    if (error) console.error("logActivityOnce upsert failed", error.message);
+  } catch (e) {
+    console.error("logActivityOnce threw", e);
+  }
+}
