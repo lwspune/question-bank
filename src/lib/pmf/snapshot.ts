@@ -163,6 +163,14 @@ export const TELEMETRY_KINDS: readonly string[] = [
   // mocks look twice as adopted; where it earns its keep is the abandonment
   // figure, which is computed from attempt statuses.
   "mock_started",
+  // Reach + funnel instrumentation (2026-09-27, migration 0123): views,
+  // impressions, clicks. Counting a page view as "adoption" would outnumber
+  // every real signal; they belong in the coverage map, not the feature table.
+  "surface_viewed",
+  "drill_started",
+  "goal_set",
+  "paywall_event",
+  "email_clicked",
 ];
 
 export const FEATURE_LABELS: Partial<Record<ActivityKind, string>> = {
@@ -700,10 +708,45 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
   },
   {
     surface: "Weak-area drills (/drill)",
-    via: "user_activity — server-graded, one row per answer plus one per drill",
-    kinds: ["drill_completed", "answer_correct", "answer_wrong"],
+    via: "user_activity — a view per day + drill_started on open, then server-graded: one row per answer plus one per drill",
+    kinds: ["surface_viewed", "drill_started", "drill_completed", "answer_correct", "answer_wrong"],
     tracked: "full",
     lost: "",
+  },
+  {
+    surface: "Result screen (/mock/attempt/[id]/result)",
+    via: "user_activity surface_viewed (surface='result', one per day, refId = attempt) — from 2026-09-27",
+    kinds: ["surface_viewed"],
+    tracked: "full",
+    lost: "",
+  },
+  {
+    surface: "Progress pages (/me, /me/map, /start)",
+    via: "user_activity surface_viewed (surface='me' | 'map' | 'start', one per day) + goal_set — from 2026-09-27",
+    kinds: ["surface_viewed", "goal_set"],
+    tracked: "full",
+    lost: "",
+  },
+  {
+    surface: "Site heartbeat (any signed-in page)",
+    via: "user_activity surface_viewed (surface='site') written by the header's /api/me/pulse fetch, one per IST day — from 2026-09-27",
+    kinds: ["surface_viewed"],
+    tracked: "partial",
+    lost: "Signed-in only, and only pages that render the header. Before 2026-09-27 a signed-in visit with no recorded act left nothing — 51 of the 265 students who signed in during the prior month — so DAU/MAU steps up on that date as instrumentation, not behaviour.",
+  },
+  {
+    surface: "Pricing + paywall (/pricing, the mock-limit card, the teacher gate)",
+    via: "user_activity surface_viewed (surface='pricing') + paywall_event (shown / checkout_opened / checkout_dismissed / verify_failed) — from 2026-09-27; a completed purchase is the entitlements row",
+    kinds: ["surface_viewed", "paywall_event"],
+    tracked: "partial",
+    lost: "An ANONYMOUS visitor's teacher gate and reveal wall go to Vercel Analytics (the funnel events), not here — they have no user to attach to. Razorpay holds its own order log; what is missing between checkout_opened and the entitlements row is Razorpay-side (a failed UPI, an abandoned page) unless the client reports the dismissal.",
+  },
+  {
+    surface: "Email (mock report, due nudge, welcome, next-mock)",
+    via: "email_sends (the send) + user_activity email_clicked via the /api/e/<token> redirect, one per send — from 2026-09-27 (migration 0122)",
+    kinds: ["email_clicked"],
+    tracked: "partial",
+    lost: "Opens are not recorded (no tracking pixel, by choice), and a click before 2026-09-27 left nothing — the links were bare URLs. A click that then meets the login wall is visible only as email_clicked with no view row after it.",
   },
   {
     surface: "Saved questions (/saved)",

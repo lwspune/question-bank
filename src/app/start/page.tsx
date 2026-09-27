@@ -19,6 +19,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BookOpen, Compass, Library, NotebookPen, Timer } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
+import ViewBeacon from "@/components/ViewBeacon";
 import Footer from "@/components/Footer";
 import HowItWorks from "@/components/HowItWorks";
 import { loopFor } from "@/lib/education/howItWorks";
@@ -81,6 +82,7 @@ export default function StartPage() {
   return (
     <>
       <AppHeader />
+      <ViewBeacon surface="start" />
       <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
         <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">{PAGE_TITLE}</h1>
         <p className="mt-3 max-w-2xl font-serif text-base leading-relaxed text-muted-foreground">

@@ -10,6 +10,8 @@ import { cn } from "@/lib/utils";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { logActivityOnce } from "@/lib/activity/service";
+import { surfaceViewedEvent } from "@/lib/activity/views";
 import { getAttemptReview, MockError, type ReviewItem } from "@/lib/mocks/service";
 import { getOwnProfile } from "@/lib/profile/service";
 import { getMockFeedback } from "@/lib/mocks/feedbackService";
@@ -45,6 +47,8 @@ export default async function MockResultPage({ params }: { params: Params }) {
     throw e;
   }
   if (res.status === "in_progress") redirect(`/mock/${res.slug}/attempt/${params.attemptId}`);
+  // The A1 reframe's audience: who actually SAW a result screen.
+  await logActivityOnce(db, user.id, surfaceViewedEvent(user.id, "result", new Date(), params.attemptId));
 
   const { summary, mock } = res.review!;
 

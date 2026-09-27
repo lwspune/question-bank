@@ -4,6 +4,8 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createOrder } from "@/lib/billing/razorpay";
 import { stampOrderNotes } from "@/lib/billing/plans";
 import { getActivePlan } from "@/lib/billing/plansQuery";
+import { logActivity } from "@/lib/activity/service";
+import { paywallEvent } from "@/lib/activity/clientEvents";
 
 export const maxDuration = 30;
 
@@ -24,7 +26,8 @@ export async function POST(request: NextRequest) {
   }
 
   const body = (await request.json().catch(() => null)) as { planId?: string } | null;
-  const plan = body?.planId ? await getActivePlan(createSupabaseServerClient(), body.planId) : null;
+  const db = createSupabaseServerClient();
+  const plan = body?.planId ? await getActivePlan(db, body.planId) : null;
   if (!plan) {
     return NextResponse.json({ error: "Unknown plan" }, { status: 400 });
   }
@@ -39,6 +42,7 @@ export async function POST(request: NextRequest) {
     console.error("razorpay createOrder failed:", result.error);
     return NextResponse.json({ error: "Could not start checkout" }, { status: 502 });
   }
+  await logActivity(db, user.id, paywallEvent("checkout_opened", "pricing", plan.id));
 
   return NextResponse.json({
     orderId: result.orderId,

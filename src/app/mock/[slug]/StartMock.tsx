@@ -10,6 +10,7 @@ import LanguageSwitch from "@/components/i18n/LanguageSwitch";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import type { MockStartState } from "@/lib/mocks/quota";
 import type { PassCta } from "@/lib/billing/plans";
+import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 
 /**
  * Starts (or resumes) an attempt, then routes into the runner.
@@ -47,6 +48,7 @@ export default function StartMock({
       const data = await res.json();
       if (res.status === 402) {
         setState({ kind: "locked", limit: state.kind === "free" ? state.limit : 0 });
+        sendActivityOnce(`mock_limit:${slug}`, { kind: "paywall_event", step: "shown", gate: "mock_limit" });
         setLoading(false);
         return;
       }

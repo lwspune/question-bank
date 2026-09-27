@@ -3,6 +3,9 @@ import { getSessionUser } from "@/lib/auth";
 import { fetchOrder, verifyPaymentSignature } from "@/lib/billing/razorpay";
 import { computeExpiry, planForPaidOrder } from "@/lib/billing/plans";
 import { grantRazorpayEntitlement } from "@/lib/billing/grant";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { logActivity } from "@/lib/activity/service";
+import { paywallEvent } from "@/lib/activity/clientEvents";
 
 export const maxDuration = 30;
 
@@ -43,6 +46,7 @@ export async function POST(request: NextRequest) {
     secret
   );
   if (!valid) {
+    await logActivity(createSupabaseServerClient(), user.id, paywallEvent("verify_failed", "pricing"));
     return NextResponse.json({ error: "Payment verification failed" }, { status: 400 });
   }
 
@@ -65,6 +69,7 @@ export async function POST(request: NextRequest) {
   }
   if (!decided.ok) {
     console.error("verify: order refused", decided.reason);
+    await logActivity(createSupabaseServerClient(), user.id, paywallEvent("verify_failed", "pricing"));
     return NextResponse.json({ error: "Payment verification failed" }, { status: 400 });
   }
   const result = await grantRazorpayEntitlement({

@@ -9,6 +9,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import type { ExamSlug } from "@/lib/exam/examContext";
 import type { Stage } from "@/lib/profile/onboarding";
 import type { ProfileDetails } from "@/lib/profile/fields";
+import { logActivity } from "@/lib/activity/service";
 
 /** The student's stored contact mobile (canonical 91XXXXXXXXXX), or null if not
  *  yet captured. Used by the mock-result gate to decide whether to ask. */
@@ -136,6 +137,11 @@ export async function updateOwnProfile(
 
   const { error } = await db.from("student_profiles").upsert(row, { onConflict: "user_id" });
   if (error) throw new Error(error.message);
+  // The goal is state; choosing or changing it is the act worth a row (0 of
+  // 400 profiles had one on 2026-09-27 and nothing said whether anyone tried).
+  if (patch.weeklyGoal !== undefined) {
+    await logActivity(db, userId, { kind: "goal_set", metadata: { goal: patch.weeklyGoal } });
+  }
 }
 
 /** Just the fields the post-signup onboarding gate reads. `onboardedAt` null
