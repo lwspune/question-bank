@@ -106,3 +106,13 @@ export function summarizeMockRatings<R extends MockRatingRow>(
     comments,
   };
 }
+
+/**
+ * Does the comment box hold something the server does not have yet? Compared
+ * trimmed, blank as null, the same way validateFeedback stores it — so a
+ * trailing space never costs a request, and clearing a saved comment does.
+ */
+export function commentNeedsSave(lastSaved: string | null, current: string): boolean {
+  const next = current.trim() || null;
+  return next !== (lastSaved?.trim() || null);
+}

@@ -5,6 +5,7 @@ import {
   validateFeedback,
   ratingDistribution,
   summarizeMockRatings,
+  commentNeedsSave,
 } from "@/lib/mocks/feedback";
 
 describe("isRating / RATINGS", () => {
@@ -116,5 +117,19 @@ describe("summarizeMockRatings", () => {
       byMock: [],
       comments: [],
     });
+  });
+});
+
+describe("commentNeedsSave", () => {
+  it("is false when the trimmed text matches what was saved", () => {
+    expect(commentNeedsSave("too long", "  too long ")).toBe(false);
+    expect(commentNeedsSave(null, "   ")).toBe(false);
+  });
+  it("is true for new or changed text", () => {
+    expect(commentNeedsSave(null, "hard maths")).toBe(true);
+    expect(commentNeedsSave("hard", "hard maths")).toBe(true);
+  });
+  it("is true when a saved comment is cleared", () => {
+    expect(commentNeedsSave("hard", "")).toBe(true);
   });
 });

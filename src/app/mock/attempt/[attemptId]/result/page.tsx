@@ -190,6 +190,15 @@ export default async function MockResultPage({ params }: { params: Params }) {
           </div>
         </div>
 
+        {/* Phase 3 — capture at the high-intent moment. Directly under the
+            score, not below Share + Findings: on a phone those push it a
+            screen or more down, and a rating asked for there is rarely given. */}
+        <MockFeedback
+          attemptId={params.attemptId}
+          initialRating={feedback?.rating ?? null}
+          initialComment={feedback?.comment ?? null}
+        />
+
         {/* The distribution loop: a finished mock is the moment a student has
             something worth passing on, and the paper they just sat is a thing
             their study group can open. Offer only — never a gate, never
@@ -203,12 +212,6 @@ export default async function MockResultPage({ params }: { params: Params }) {
 
         {report && <Findings report={report} attemptId={params.attemptId} />}
 
-        {/* Phase 3 — capture at the high-intent moment */}
-        <MockFeedback
-          attemptId={params.attemptId}
-          initialRating={feedback?.rating ?? null}
-          initialComment={feedback?.comment ?? null}
-        />
         {needsWhatsappPrompt(profile) && <WhatsappOptIn />}
 
         {/* Review */}
