@@ -152,13 +152,6 @@ export default async function PricingPage({
             </Link>
             .
           </p>
-          <p>
-            An institute with several teachers?{" "}
-            <Link href="/request-access" className="underline hover:text-foreground">
-              Talk to us
-            </Link>
-            .
-          </p>
         </div>
       </main>
     </>

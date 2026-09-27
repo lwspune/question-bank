@@ -109,10 +109,10 @@ export default function AboutPage() {
           ). The one genuinely
           restricted thing is downloading a question paper and answer key as
           Word files. That is a teacher&rsquo;s tool rather than a
-          student&rsquo;s, so it needs a teacher account. If you teach and want
-          one,{" "}
-          <Link href="/request-access" className="text-brand-accent underline">
-            request access here
+          student&rsquo;s, so it needs the Teacher Pass. If you teach and want
+          it,{" "}
+          <Link href="/pricing?plan=teacher" className="text-brand-accent underline">
+            get the Teacher Pass here
           </Link>
           .
         </P>

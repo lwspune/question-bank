@@ -38,6 +38,14 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        // 2026-09-27: teacher access is bought, not requested. The lead form is
+        // gone; the old URL (linked from emails, the sitemap and past gates)
+        // lands on the Teacher Pass card, which handles sign-in → payment.
+        source: "/request-access",
+        destination: "/pricing?plan=teacher",
+        permanent: true,
+      },
+      {
         // The admin question editor moved to /dashboard/questions/[id]/edit so the
         // public per-chapter landing pages could take /questions/<exam>/<subject>/<chapter>.
         // Next.js forbids two differently-named dynamic segments at the same

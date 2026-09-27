@@ -71,7 +71,7 @@ export default function TeacherRequests({
           )}
         </h2>
         <p className="mt-1 text-sm text-muted-foreground">
-          Leads from <code>/request-access</code>. Onboard the org + provision the
+          Leads from the retired <code>/request-access</code> form (now the Teacher Pass). Onboard the org + provision the
           teacher above, then mark the request <em>provisioned</em>.
         </p>
       </header>

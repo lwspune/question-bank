@@ -22,8 +22,8 @@ import { createPaperWithQuestions } from "./createPaperWithQuestions";
  * paper editor with the questions already filed by subject.
  *
  * Distinct from AddToPaperDialog, which picks an EXISTING draft and keeps you on
- * /browse afterwards. Org-member only — the cart footer routes everyone else to
- * /request-access instead of opening this, because `papers.org_id` is NOT NULL
+ * /browse afterwards. Org-member only — the cart footer points everyone else at
+ * the page's Download button instead of opening this, because `papers.org_id` is NOT NULL
  * and every RLS policy on papers scopes to the caller's org (migration 0039), so
  * a student cannot own or even read a paper row.
  */
