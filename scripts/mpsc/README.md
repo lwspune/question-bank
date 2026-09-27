@@ -129,3 +129,4 @@ misread (one slip in the 2022 pilot, caught at 180 dpi): zoom any doubtful word.
 | ssp-2017 (W08) | 100/100 | 100/100 | PRIVATE, 2026-09-27 (none cancelled; Q26, Q41, Q72 print notes; Q20, Q30 figures) |
 | ssp-2016 (N07) | 100/100 | 99/100 (Q22: coaching mark wrong, key right) | PRIVATE, 2026-09-27 (Q28, Q31, Q75 cancelled; Q17, Q31 print notes) |
 | ssp-2015 (V05) | 100/100 | 100/100 | PRIVATE, 2026-09-27 (Q16, Q39 cancelled; Q12, Q36, Q98 print notes) |
+| ssp-2014 (G03) | 100/100 | 100/100 | PRIVATE, 2026-09-27 (Q93 cancelled; Q99 print note) |
