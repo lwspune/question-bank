@@ -15,6 +15,9 @@ import { mockStartState } from "@/lib/mocks/quota";
 import { passCta, passForScope } from "@/lib/billing/plans";
 import { listActivePlans } from "@/lib/billing/plansQuery";
 import { SCOPE_MOCKS } from "@/lib/entitlements/access";
+import { logActivityOnce } from "@/lib/activity/service";
+import { surfaceViewedEvent } from "@/lib/activity/views";
+import { paywallEvent } from "@/lib/activity/clientEvents";
 import { getExamByName } from "@/lib/exam/examContext";
 import ShareMock from "./ShareMock";
 import AttemptsList from "../_components/AttemptsList";
@@ -50,6 +53,14 @@ export default async function MockInstructions({ params }: { params: Params }) {
     startState.kind === "open"
       ? null
       : passCta(passForScope(await listActivePlans(createSupabaseAnonClient()), SCOPE_MOCKS));
+  if (user) {
+    const db = createSupabaseServerClient();
+    const now = new Date();
+    await logActivityOnce(db, user.id, surfaceViewedEvent(user.id, "mock_start", now, mock.id));
+    if (startState.kind === "locked") {
+      await logActivityOnce(db, user.id, paywallEvent("shown", "mock_limit", mockPass?.urlKey, { userId: user.id, now }));
+    }
+  }
   // Set by a teacher? One line under the title, only for a student in a batch
   // this paper was assigned to (ENGAGEMENT_SPEC.md C1). Best-effort.
   const assigned = user

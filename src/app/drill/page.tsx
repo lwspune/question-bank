@@ -4,6 +4,9 @@ import { redirect } from "next/navigation";
 import { Sparkles, Target, Timer } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { getSessionUser } from "@/lib/auth";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { logActivity, logActivityOnce } from "@/lib/activity/service";
+import { surfaceViewedEvent } from "@/lib/activity/views";
 import { getOwnDrill } from "@/lib/drill/service";
 import { COOL_DOWN_DAYS } from "@/lib/drill/select";
 import DrillRunner from "./DrillRunner";
@@ -46,6 +49,22 @@ export default async function DrillPage({
 
   const drill = await getOwnDrill({ attemptId });
   if (!drill) redirect("/login?next=/drill");
+
+  // Reach: the view (once a day) and, when there is something to do, the
+  // start — so "opened the drill and left" is no longer invisible.
+  {
+    const db = createSupabaseServerClient();
+    const now = new Date();
+    await logActivityOnce(db, user.id, surfaceViewedEvent(user.id, "drill", now, attemptId ?? undefined));
+    if (drill.questions.length > 0) {
+      await logActivity(db, user.id, {
+        kind: "drill_started",
+        refId: attemptId ?? undefined,
+        refKind: attemptId ? "mock_attempt" : undefined,
+        metadata: { count: drill.questions.length, scoped: Boolean(drill.scope) },
+      });
+    }
+  }
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 

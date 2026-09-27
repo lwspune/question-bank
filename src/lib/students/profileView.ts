@@ -61,6 +61,11 @@ const ACTIVITY_LABELS: Record<ActivityKind, string> = {
   question_practiced: "Revealed a bank answer",
   quiz_taken: "Took a quiz",
   drill_completed: "Completed a drill",
+  surface_viewed: "Viewed a page",
+  drill_started: "Opened a drill",
+  goal_set: "Set a weekly goal",
+  paywall_event: "Reached a paywall step",
+  email_clicked: "Clicked an email link",
 };
 
 const ACTIVITY_KIND_SET: ReadonlySet<string> = new Set(ACTIVITY_KINDS);

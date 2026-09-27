@@ -25,6 +25,11 @@ import { INVITE_LINES } from "@/lib/education/classroomScript";
 
 export const SITE_URL = "https://www.pyqvault.com";
 
+/** A CTA href: through /api/e/<token> when the send has a click token, else direct. */
+function ctaHref(path: string, clickToken: string | undefined): string {
+  return clickToken ? `${SITE_URL}/api/e/${clickToken}?to=${encodeURIComponent(path)}` : `${SITE_URL}${path}`;
+}
+
 /** Replies go to a real, monitored mailbox. `EMAIL_FROM` is a send-only address
  *  on the verified domain and has no inbox — without this, a student hitting
  *  Reply just bounces. The sibling English AI Tutor invites replies for exactly
@@ -78,8 +83,8 @@ function greetingName(name: string): string {
   return first;
 }
 
-export function buildEmail(r: Recipient, unsubscribeToken: string): BuiltEmail {
-  const mockUrl = `${SITE_URL}/mock/${r.mock.slug}`;
+export function buildEmail(r: Recipient, unsubscribeToken: string, clickToken?: string): BuiltEmail {
+  const mockUrl = ctaHref(`/mock/${r.mock.slug}`, clickToken);
   const unsubUrl = `${SITE_URL}/unsubscribe/${unsubscribeToken}`;
   const oneClickUrl = `${SITE_URL}/api/unsubscribe/${unsubscribeToken}`;
   const who = greetingName(r.name);
@@ -247,6 +252,8 @@ export type MockReportEmailInput = {
   /** OAuth display name, or "" — greetingName handles both. */
   name: string;
   unsubscribeToken: string;
+  /** email_sends.click_token (migration 0122); absent on a sample. */
+  clickToken?: string;
 };
 
 /** "1 min 20s" — a dwell reading, where the seconds matter. */
@@ -288,10 +295,10 @@ const marks = formatMarks;
  * content is a section with no business being in the email.
  */
 export function buildMockReportEmail(input: MockReportEmailInput): BuiltEmail {
-  const { report: r, name, unsubscribeToken } = input;
+  const { report: r, name, unsubscribeToken, clickToken } = input;
   const who = greetingName(name);
-  const resultUrl = `${SITE_URL}/mock/attempt/${r.attemptId}/result`;
-  const perfUrl = `${SITE_URL}/performance`;
+  const resultUrl = ctaHref(`/mock/attempt/${r.attemptId}/result`, clickToken);
+  const perfUrl = ctaHref("/performance", clickToken);
   const unsubUrl = `${SITE_URL}/unsubscribe/${unsubscribeToken}`;
   const oneClickUrl = `${SITE_URL}/api/unsubscribe/${unsubscribeToken}`;
 
@@ -447,6 +454,8 @@ export type DueNudgeEmailInput = {
   name: string;
   summary: DueSummary;
   unsubscribeToken: string;
+  /** email_sends.click_token (migration 0122); absent on a sample. */
+  clickToken?: string;
 };
 
 /** "Trigonometry (2), Vectors (1)" — at most three named, the rest counted. */
@@ -467,10 +476,10 @@ function chapterList(summary: DueSummary): string {
  * wrong. The selector guarantees there is always something to name.
  */
 export function buildDueNudgeEmail(input: DueNudgeEmailInput): BuiltEmail {
-  const { name, summary, unsubscribeToken } = input;
+  const { name, summary, unsubscribeToken, clickToken } = input;
   const who = greetingName(name);
   const top = summary.chapters[0] ?? { chapter: "your mock", count: summary.total };
-  const drillUrl = `${SITE_URL}/drill`;
+  const drillUrl = ctaHref("/drill", clickToken);
   const unsubUrl = `${SITE_URL}/unsubscribe/${unsubscribeToken}`;
   const oneClickUrl = `${SITE_URL}/api/unsubscribe/${unsubscribeToken}`;
 
@@ -534,6 +543,8 @@ export type WelcomeEmailInput = {
   /** The loop for the student's primary exam (lib/education/howItWorks.ts). */
   loop: Loop;
   unsubscribeToken: string;
+  /** email_sends.click_token (migration 0122); absent on a sample. */
+  clickToken?: string;
 };
 
 /**
@@ -549,11 +560,11 @@ export type WelcomeEmailInput = {
  * is the loop and not any one step of it.
  */
 export function buildWelcomeEmail(input: WelcomeEmailInput): BuiltEmail {
-  const { name, loop, unsubscribeToken } = input;
+  const { name, loop, unsubscribeToken, clickToken } = input;
   const who = greetingName(name);
   const unsubUrl = `${SITE_URL}/unsubscribe/${unsubscribeToken}`;
   const oneClickUrl = `${SITE_URL}/api/unsubscribe/${unsubscribeToken}`;
-  const startUrl = `${SITE_URL}/start`;
+  const startUrl = ctaHref("/start", clickToken);
 
   const subject = who ? `How ${BRAND} works, ${who}` : `How ${BRAND} works`;
   const lead =

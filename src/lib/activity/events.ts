@@ -34,6 +34,15 @@ export const ACTIVITY_KINDS = [
   "question_practiced", // revealed a bank answer on /browse or /board (refId = questionId)
   "quiz_taken", // completed a public/daily quiz
   "drill_completed", // finished a personalised weak-area drill (future phase)
+  // ── Reach + funnel instrumentation (2026-09-27). Not learning acts, and never
+  // rewarded: they exist because the engagement read could not tell "never saw
+  // it" from "saw it and left". Each is bounded by a dedupe_key where a repeat
+  // would only inflate (a view per surface per IST day; an impression per day).
+  "surface_viewed", // opened a surface (metadata.surface — see lib/activity/views.ts); also the day's heartbeat
+  "drill_started", // /drill served at least one question (metadata: count, scoped)
+  "goal_set", // chose or changed the weekly sittings goal (metadata: goal)
+  "paywall_event", // a gate was shown / checkout opened / dismissed / verify failed (metadata: step, gate)
+  "email_clicked", // followed a link in one of our emails (refId = email_sends.id, metadata: kind)
 ] as const;
 
 export type ActivityKind = (typeof ACTIVITY_KINDS)[number];

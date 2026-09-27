@@ -4,6 +4,9 @@ import { redirect } from "next/navigation";
 import { ArrowRight, Map as MapIcon, Target, Timer } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { getSessionUser } from "@/lib/auth";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { logActivityOnce } from "@/lib/activity/service";
+import { surfaceViewedEvent } from "@/lib/activity/views";
 import { getOwnPerformance } from "@/lib/performance/service";
 import { buildPerformance } from "@/lib/performance/compute";
 import { buildLaneNav } from "@/lib/performance/laneNav";
@@ -54,6 +57,7 @@ export default async function MasteryMapPage({ searchParams }: { searchParams: S
 
   const payload = await getOwnPerformance();
   if (!payload) redirect("/login?next=/me/map");
+  await logActivityOnce(createSupabaseServerClient(), user.id, surfaceViewedEvent(user.id, "map", new Date()));
 
   const perf = buildPerformance(payload, new Date());
   const nav = buildLaneNav(perf.lanes, perf.summary.latest?.exam ?? null, searchParams);

@@ -139,6 +139,10 @@ npm run email:welcome -- --report                  # recipients with any activit
 
 **Do not add "you haven't tried X" copy.** The template is content-led by rule; most recipients are the backlog and absence-led copy is the guilt trip the sibling app measured.
 
+### Outbound email — click tracking (2026-09-27, migration 0122)
+
+Every CTA in the mock report, the due nudge and the welcome goes through `https://www.pyqvault.com/api/e/<token>?to=<path>`; the token is on the `email_sends` row (`click_token`) and a click writes one `email_clicked` row to `user_activity` for that student, then redirects. `npm run email:due-nudge -- --report` and `npm run email:welcome -- --report` print `clicked` beside their conversion: **clicked but no drill/activity after = the login wall** (the targets are sign-in gated and a phone reader is often signed out); **not clicked = deliverability or the copy** — check Resend's dashboard for bounces/spam before touching either. Opens are not recorded (no pixel), by choice. Resend's own click tracking stays OFF — turning it on would rewrite the links to Resend's domain and the click would leave our table.
+
 ### Outbound email — the per-attempt mock report (DAILY CRON, 2026-09-20)
 
 **This one is scheduled; the campaign above is not.** `.github/workflows/mock-report.yml` runs at **15:30 UTC (21:00 IST)** daily — after a full study day, batching a student's whole day into one evening email rather than interrupting them three times. GitHub queues schedules under load, so treat it as "around 21:00", not on the minute.

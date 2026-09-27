@@ -19,6 +19,8 @@
 import { NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { logActivityOnce } from "@/lib/activity/service";
+import { surfaceViewedEvent } from "@/lib/activity/views";
 import { getOwnDuePool } from "@/lib/drill/service";
 import { getOwnWeekly } from "@/lib/goals/service";
 import { getOwnProfile } from "@/lib/profile/service";
@@ -40,6 +42,10 @@ export async function GET() {
   try {
     const db = createSupabaseServerClient();
     const now = new Date();
+    // The heartbeat: the header fetches this on every signed-in page, so one
+    // row a day here is "this student was on the site today" — the count the
+    // engagement read lacked (51 of 265 sign-ins in a month left no row).
+    await logActivityOnce(db, user.id, surfaceViewedEvent(user.id, "site", now));
     const [pool, week, profile] = await Promise.all([
       getOwnDuePool(db, user.id, now),
       getOwnWeekly(db, user.id, now),

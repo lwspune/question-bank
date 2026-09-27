@@ -30,6 +30,7 @@ import { createSupabaseAdminClient } from "../../src/lib/supabase/admin";
 import { selectWelcomes, WELCOME_KIND } from "../../src/lib/email/welcome";
 import { readPrimaryExams, readWelcomeConversion } from "../../src/lib/email/welcomeService";
 import { buildWelcomeEmail } from "../../src/lib/email/templates";
+import { newClickToken } from "../../src/lib/email/click";
 import { loopFor } from "../../src/lib/education/howItWorks";
 import { getExamBySlug } from "../../src/lib/exam/examContext";
 import { sendEmail, sleep, THROTTLE_MS } from "../../src/lib/email/resend";
@@ -55,7 +56,7 @@ async function main() {
 
   if (has("report")) {
     const r = await readWelcomeConversion(db, 48);
-    console.log(`\nWelcome sends: ${r.sent}; recipients with any activity within 48h: ${r.activeAfter}`);
+    console.log(`\nWelcome sends: ${r.sent}; clicked: ${r.clicked}; recipients with any activity within 48h: ${r.activeAfter}`);
     if (r.sent > 0) console.log(`Conversion: ${Math.round((r.activeAfter / r.sent) * 100)}%`);
     return;
   }
@@ -90,10 +91,12 @@ async function main() {
     if (limit !== undefined && sent >= limit) break;
 
     const loop = loopFor(getExamBySlug(p.exam));
+    const clickToken = newClickToken();
     const email = buildWelcomeEmail({
       name: p.name,
       loop,
       unsubscribeToken: tokens.get(p.userId) ?? "",
+      clickToken,
     });
 
     // A SAMPLE goes to a reviewer, never the student, and writes NO row — so
@@ -137,6 +140,7 @@ async function main() {
         ref_id: null,
         ref_kind: "start",
         dedupe_key: p.dedupeKey,
+        click_token: clickToken,
         status: outcome.ok ? "sent" : "failed",
         provider_id: outcome.ok ? outcome.providerId : null,
         error: outcome.ok ? null : outcome.error.slice(0, 1000),

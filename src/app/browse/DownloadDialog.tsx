@@ -32,6 +32,7 @@ import type { PassCta } from "@/lib/billing/plans";
 import { resolveExportAccess } from "@/lib/export/access";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
+import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 
 type Mode = "filters" | "cart";
 type Kind = "paper" | "key" | "tags" | "ppt";
@@ -102,6 +103,7 @@ export default function DownloadDialog({
   useEffect(() => {
     if (!open || canDownload) return;
     trackFunnelOnce("teacher_gate_shown", mode, { signedIn: isSignedIn, mode });
+    if (isSignedIn) sendActivityOnce(`teacher_gate:${mode}`, { kind: "paywall_event", step: "shown", gate: "teacher" });
   }, [open, canDownload, mode, isSignedIn]);
   const [title, setTitle] = useState("PYQ Vault Export");
   const [includeSolutions, setIncludeSolutions] = useState(true);

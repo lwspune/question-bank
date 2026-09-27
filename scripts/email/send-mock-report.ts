@@ -32,6 +32,7 @@ import { createSupabaseAdminClient } from "../../src/lib/supabase/admin";
 import { fetchStudentPerformance } from "../../src/lib/performance/query";
 import { buildMockReport, resolveCutoff } from "../../src/lib/email/mockReport";
 import { buildMockReportEmail } from "../../src/lib/email/templates";
+import { newClickToken } from "../../src/lib/email/click";
 import { sendEmail, sleep, THROTTLE_MS } from "../../src/lib/email/resend";
 import { ensureUnsubscribeTokens, readStudents } from "../../src/lib/email/service";
 import { readPeerAccuracy, readReportCandidates } from "../../src/lib/email/mockReportService";
@@ -157,10 +158,12 @@ async function main() {
     }
 
     const tokens = await ensureUnsubscribeTokens(db, [c.userId]);
+    const clickToken = newClickToken();
     const email = buildMockReportEmail({
       report,
       name: student.name,
       unsubscribeToken: tokens.get(c.userId) ?? "",
+      clickToken,
     });
 
     // A SAMPLE is not a send: it goes to a named address (a reviewer's inbox),
@@ -209,6 +212,7 @@ async function main() {
         ref_id: c.attemptId,
         ref_kind: "mock_attempt",
         dedupe_key: dedupeKey,
+        click_token: clickToken,
         status: outcome.ok ? "sent" : "failed",
         provider_id: outcome.ok ? outcome.providerId : null,
         error: outcome.ok ? null : outcome.error.slice(0, 1000),

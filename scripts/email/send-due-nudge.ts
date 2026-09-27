@@ -30,6 +30,7 @@ import { createSupabaseAdminClient } from "../../src/lib/supabase/admin";
 import { selectDueNudges, NUDGE_KIND } from "../../src/lib/email/dueNudge";
 import { readDueCandidates, readNudgeConversion } from "../../src/lib/email/dueNudgeService";
 import { buildDueNudgeEmail } from "../../src/lib/email/templates";
+import { newClickToken } from "../../src/lib/email/click";
 import { sendEmail, sleep, THROTTLE_MS } from "../../src/lib/email/resend";
 import { ensureUnsubscribeTokens, readPriorSends, readStudents } from "../../src/lib/email/service";
 
@@ -53,7 +54,7 @@ async function main() {
 
   if (has("report")) {
     const r = await readNudgeConversion(db, 24);
-    console.log(`\nDue-nudge sends: ${r.sent}; recipients who drilled within 24h: ${r.drilledAfter}`);
+    console.log(`\nDue-nudge sends: ${r.sent}; clicked: ${r.clicked}; recipients who drilled within 24h: ${r.drilledAfter}`);
     if (r.sent > 0) console.log(`Conversion: ${Math.round((r.drilledAfter / r.sent) * 100)}%`);
     return;
   }
@@ -92,10 +93,12 @@ async function main() {
   for (const p of chosen) {
     if (limit !== undefined && sent >= limit) break;
 
+    const clickToken = newClickToken();
     const email = buildDueNudgeEmail({
       name: p.name,
       summary: p.summary,
       unsubscribeToken: tokens.get(p.userId) ?? "",
+      clickToken,
     });
 
     // A SAMPLE goes to a reviewer, never the student, and writes NO row — so it
@@ -138,6 +141,7 @@ async function main() {
         ref_id: null,
         ref_kind: "drill",
         dedupe_key: p.dedupeKey,
+        click_token: clickToken,
         status: outcome.ok ? "sent" : "failed",
         provider_id: outcome.ok ? outcome.providerId : null,
         error: outcome.ok ? null : outcome.error.slice(0, 1000),

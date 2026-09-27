@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { sendActivity } from "@/lib/activity/clientBeacon";
 
 /** Minimal shape of the Razorpay Checkout global we use. */
 type RazorpayOptions = {
@@ -104,7 +105,12 @@ export default function PricingClient({
             router.push("/account");
           }
         },
-        modal: { ondismiss: () => setBusy(false) },
+        modal: {
+          ondismiss: () => {
+            setBusy(false);
+            sendActivity({ kind: "paywall_event", step: "checkout_dismissed", gate: "pricing", planId });
+          },
+        },
       });
       rzp.open();
     } catch (err) {

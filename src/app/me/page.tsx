@@ -16,6 +16,8 @@ import {
 import AppHeader from "@/components/AppHeader";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { logActivityOnce } from "@/lib/activity/service";
+import { surfaceViewedEvent } from "@/lib/activity/views";
 import { getUserAttempts } from "@/lib/mocks/query";
 import { summarizeUserMocks } from "@/lib/mocks/perf";
 import { listOwnNotesProgress } from "@/lib/notes/progressService";
@@ -60,6 +62,7 @@ export default async function MePage() {
   if (!user) redirect("/login?next=/me");
 
   const db = createSupabaseServerClient();
+  await logActivityOnce(db, user.id, surfaceViewedEvent(user.id, "me", new Date()));
   const [attempts, notesRows, bookmarkIds, lastNpsAt, weekly, assigned, profile, examIds] =
     await Promise.all([
     getUserAttempts(db, user.id),

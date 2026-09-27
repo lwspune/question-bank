@@ -9,6 +9,8 @@ import { hasActiveScope } from "@/lib/entitlements/access";
 import { formatRupees, planLengthLabel, type Plan } from "@/lib/billing/plans";
 import { listActivePlans, readFreeMockLimit } from "@/lib/billing/plansQuery";
 import PricingClient from "./PricingClient";
+import { logActivityOnce } from "@/lib/activity/service";
+import { surfaceViewedEvent } from "@/lib/activity/views";
 
 export const dynamic = "force-dynamic";
 
@@ -39,6 +41,9 @@ export default async function PricingPage({
     readFreeMockLimit(anon),
   ]);
   const rows = user && !member ? await loadEntitlements(createSupabaseServerClient(), user.id) : [];
+  if (user) {
+    await logActivityOnce(createSupabaseServerClient(), user.id, surfaceViewedEvent(user.id, "pricing", new Date()));
+  }
   const now = Date.now();
   // Staff already have everything a pass sells.
   const owns = (plan: Plan) => !!member || hasActiveScope(rows, plan.scope, now);

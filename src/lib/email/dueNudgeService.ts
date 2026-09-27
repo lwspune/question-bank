@@ -97,19 +97,20 @@ export async function readDueCandidates(
 export async function readNudgeConversion(
   db: SupabaseClient,
   hours = 24
-): Promise<{ sent: number; drilledAfter: number }> {
+): Promise<{ sent: number; clicked: number; drilledAfter: number }> {
   const { data: sends, error } = await db
     .from("email_sends")
-    .select("user_id, created_at")
+    .select("id, user_id, created_at")
     .eq("kind", "due_nudge")
     .eq("status", "sent")
     .order("created_at", { ascending: true })
     .range(0, PAGE - 1);
   if (error) throw new Error(`readNudgeConversion sends: ${error.message}`);
-  const rows = (sends ?? []) as { user_id: string; created_at: string }[];
-  if (rows.length === 0) return { sent: 0, drilledAfter: 0 };
+  const rows = (sends ?? []) as { id: string; user_id: string; created_at: string }[];
+  if (rows.length === 0) return { sent: 0, clicked: 0, drilledAfter: 0 };
 
   const earliest = rows[0].created_at;
+  const clicked = await countClickedSends(db, rows.map((r) => r.id), earliest);
   const { data: drills, error: dErr } = await db
     .from("user_activity")
     .select("user_id, created_at")
@@ -131,5 +132,33 @@ export async function readNudgeConversion(
     const times = byUser.get(s.user_id) ?? [];
     if (times.some((x) => x >= t && x - t <= hours * 3_600_000)) drilledAfter++;
   }
-  return { sent: rows.length, drilledAfter };
+  return { sent: rows.length, clicked, drilledAfter };
+}
+
+/**
+ * How many of `sendIds` have an `email_clicked` row (one per send, by
+ * dedupe_key — see /api/e/[token]). Reads the clicks since `earliest` in one
+ * pass rather than an `.in()` over ids, which overflows the URL past ~200.
+ */
+export async function countClickedSends(
+  db: SupabaseClient,
+  sendIds: readonly string[],
+  earliest: string
+): Promise<number> {
+  const want = new Set(sendIds);
+  let clicked = 0;
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await db
+      .from("user_activity")
+      .select("ref_id")
+      .eq("kind", "email_clicked")
+      .gte("created_at", earliest)
+      .order("created_at", { ascending: true })
+      .range(from, from + PAGE - 1);
+    if (error) throw new Error(`countClickedSends: ${error.message}`);
+    const rows = (data ?? []) as { ref_id: string | null }[];
+    for (const r of rows) if (r.ref_id && want.has(r.ref_id)) clicked++;
+    if (rows.length < PAGE) break;
+  }
+  return clicked;
 }
