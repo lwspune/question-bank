@@ -22,6 +22,7 @@ import {
 import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
 import StudentTabs from "./StudentTabs";
+import PremiumControl from "./PremiumControl";
 import AttemptsList from "@/app/mock/_components/AttemptsList";
 import { cn } from "@/lib/utils";
 import { getSessionSuperadmin } from "@/lib/auth";
@@ -78,6 +79,10 @@ export default async function StudentDetailPage({ params }: { params: Params }) 
               highlight={premium.active}
             />
           </dl>
+          {/* The grant route resolves the account by email; a phone-only account has none. */}
+          {profile.email.includes("@") && (
+            <PremiumControl email={profile.email} name={profile.name} grants={premium.grants} />
+          )}
         </Section>
 
         {/* Profile — what the student told us. Every field shows, dash when unanswered:

@@ -27,6 +27,7 @@
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getUserAttempts, type UserAttempt } from "@/lib/mocks/query";
+import { activeGrants, type ActiveGrant } from "@/lib/entitlements/compGrant";
 import { displayName, providerLabel } from "./derive";
 import type { RosterRpcRow } from "./rosterQuery";
 
@@ -39,7 +40,13 @@ export type StudentProfile = {
   lastSignInAt: string | null;
 };
 
-export type StudentPremium = { active: boolean; source: string | null; expiresAt: string | null };
+export type StudentPremium = {
+  active: boolean;
+  source: string | null;
+  expiresAt: string | null;
+  /** Every live grant — the profile page's Grant/Revoke control needs the ids. */
+  grants: ActiveGrant[];
+};
 
 /**
  * What the student has told us. Every field is nullable because every one of
@@ -172,7 +179,7 @@ export async function fetchStudentDetail(
 
   const [{ data: ents }, attempts, { data: profileRow }, { data: rosterRow }, activityRes] =
     await Promise.all([
-      db.from("entitlements").select("source, status, expires_at").eq("user_id", userId).eq("status", "active"),
+      db.from("entitlements").select("id, scope, source, status, expires_at").eq("user_id", userId).eq("status", "active"),
       getUserAttempts(db, userId),
       db
         .from("student_profiles")
@@ -195,13 +202,12 @@ export async function fetchStudentDetail(
     ]);
 
   const now = Date.now();
-  const activeEnt = (ents ?? []).find(
-    (e) => !e.expires_at || Date.parse(e.expires_at as string) > now
-  );
+  const grants = activeGrants(ents ?? [], now);
   const premium: StudentPremium = {
-    active: Boolean(activeEnt),
-    source: (activeEnt?.source as string | null) ?? null,
-    expiresAt: (activeEnt?.expires_at as string | null) ?? null,
+    active: grants.length > 0,
+    source: grants[0]?.source ?? null,
+    expiresAt: grants[0]?.expiresAt ?? null,
+    grants,
   };
 
   const p = profileRow as ProfileRowShape | null;

@@ -150,8 +150,8 @@ export default function StartPage() {
           <p className="mt-1 font-serif text-sm leading-relaxed text-muted-foreground">
             Browsing, mocks, the drill and the map need only a free account. Teachers who
             want Word downloads of a paper can{" "}
-            <Link href="/request-access" className="text-brand-accent underline">
-              request teacher access
+            <Link href="/pricing?plan=teacher" className="text-brand-accent underline">
+              get the Teacher Pass
             </Link>
             .
           </p>

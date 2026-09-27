@@ -9,6 +9,7 @@ import { hasActiveScope } from "@/lib/entitlements/access";
 import { formatRupees, planLengthLabel, type Plan } from "@/lib/billing/plans";
 import { listActivePlans, readFreeMockLimit } from "@/lib/billing/plansQuery";
 import PricingClient from "./PricingClient";
+import { afterPurchasePath, pricingHref } from "@/lib/billing/checkoutReturn";
 import { logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
 
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
 export default async function PricingPage({
   searchParams,
 }: {
-  searchParams: { plan?: string };
+  searchParams: { plan?: string; next?: string };
 }) {
   const anon = createSupabaseAnonClient();
   const [member, user, plans, freeMocks] = await Promise.all([
@@ -48,6 +49,9 @@ export default async function PricingPage({
   // Staff already have everything a pass sells.
   const owns = (plan: Plan) => !!member || hasActiveScope(rows, plan.scope, now);
   const highlighted = searchParams.plan;
+  // Where the buyer was blocked (a mock's Start button, the download gate); they
+  // land back there after paying, and the sign-in round-trip keeps it.
+  const returnTo = searchParams.next ? afterPurchasePath(searchParams.next) : undefined;
 
   return (
     <>
@@ -72,7 +76,7 @@ export default async function PricingPage({
             {plans.map((plan) => {
               const key = plan.urlKey;
               const isHighlighted = highlighted === key;
-              const next = `/pricing?plan=${key}`;
+              const next = pricingHref(key, returnTo);
               return (
                 <section
                   key={plan.id}
@@ -115,6 +119,7 @@ export default async function PricingPage({
                     ) : user ? (
                       <PricingClient
                         planId={plan.id}
+                        returnTo={returnTo}
                         buttonLabel={`Buy ${plan.label}: ${formatRupees(plan.amountPaise)}`}
                       />
                     ) : (
@@ -149,13 +154,6 @@ export default async function PricingPage({
             and{" "}
             <Link href="/refunds" className="underline hover:text-foreground">
               7-day refund policy
-            </Link>
-            .
-          </p>
-          <p>
-            An institute with several teachers?{" "}
-            <Link href="/request-access" className="underline hover:text-foreground">
-              Talk to us
             </Link>
             .
           </p>

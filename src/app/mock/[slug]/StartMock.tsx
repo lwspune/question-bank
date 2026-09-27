@@ -11,6 +11,7 @@ import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import type { MockStartState } from "@/lib/mocks/quota";
 import type { PassCta } from "@/lib/billing/plans";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
+import { pricingHref } from "@/lib/billing/checkoutReturn";
 
 /**
  * Starts (or resumes) an attempt, then routes into the runner.
@@ -71,7 +72,7 @@ export default function StartMock({
       {loading ? "Starting…" : "Start test"}
     </Button>
   );
-  if (state.kind === "locked") return <MockPassCard limit={state.limit} pass={mockPass} />;
+  if (state.kind === "locked") return <MockPassCard limit={state.limit} pass={mockPass} slug={slug} />;
   const freeNote =
     state.kind === "free" ? (
       <p className="mt-2 text-center text-xs text-muted-foreground">
@@ -105,7 +106,7 @@ export default function StartMock({
   );
 }
 
-function MockPassCard({ limit, pass }: { limit: number; pass: PassCta | null }) {
+function MockPassCard({ limit, pass, slug }: { limit: number; pass: PassCta | null; slug: string }) {
   return (
     <div className="rounded-lg border-2 border-brand-accent/40 bg-card p-5 text-center">
       <Lock className="mx-auto h-5 w-5 text-brand-accent" aria-hidden />
@@ -119,7 +120,8 @@ function MockPassCard({ limit, pass }: { limit: number; pass: PassCta | null }) 
         Retaking a mock you&apos;ve already started stays free.
       </p>
       <Button asChild variant="brand" size="lg" className="mt-4 w-full">
-        <Link href={pass ? `/pricing?plan=${pass.urlKey}` : "/pricing"}>
+        {/* Back to this paper after paying, not to /account. */}
+        <Link href={pricingHref(pass?.urlKey ?? null, `/mock/${slug}`)}>
           {pass ? `Get the ${pass.label}: ${pass.price}` : "See passes"}
         </Link>
       </Button>

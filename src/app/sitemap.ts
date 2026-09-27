@@ -577,13 +577,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...formulaEntries,
     ...blogEntries,
     {
-      // Teacher-access lead page — a real acquisition surface for coaching staff.
-      url: `${SITE_URL}/request-access`,
-      lastModified: buildDate,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
       // How the product works — the page the welcome email, footer and account
       // menu point at (STUDENT_EDUCATION_SPEC.md). Static and indexable.
       url: `${SITE_URL}/start`,

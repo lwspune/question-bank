@@ -33,6 +33,7 @@ import { resolveExportAccess } from "@/lib/export/access";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
+import { pricingHref } from "@/lib/billing/checkoutReturn";
 
 type Mode = "filters" | "cart";
 type Kind = "paper" | "key" | "tags" | "ppt";
@@ -60,7 +61,7 @@ export default function DownloadDialog({
   isStaff = false,
   /** Active Teacher Pass — unlocks the paper + key (not slides or the sheet). */
   hasTeacherPass = false,
-  /** The pass on sale that unlocks downloads; null = none, so only request-access is offered. */
+  /** The pass on sale that unlocks downloads; null = none on sale, so no CTA. */
   teacherPass = null,
   /** The filtered exam prints Marathi + English (MPSC) — offer a print language. */
   bilingual = false,
@@ -94,10 +95,15 @@ export default function DownloadDialog({
   const cart = useCart();
   const mobilePrompt = useMobilePrompt();
   const [mode, setMode] = useState<Mode>(initialMode ?? "filters");
+  // This page with its filters, so a teacher lands back on the same selection
+  // after buying the pass. Read from the browser (not useSearchParams, which
+  // would bail /browse's static prerender); the dialog only renders on a click.
+  const [here, setHere] = useState<string | undefined>(undefined);
+  useEffect(() => {
+    setHere(window.location.pathname + window.location.search);
+  }, []);
 
-  // The teacher gate was seen. This is the denominator /request-access has never
-  // had: superadmin triage counts the people who asked, and nothing counted the
-  // people who were asked. `mode` splits the two populations that matter — a
+  // The teacher gate was seen — the denominator for Get Teacher Pass clicks. `mode` splits the two populations that matter — a
   // visitor who assembled a CART and then met the wall wanted a paper; one who
   // opened it from FILTERS may only have been looking.
   useEffect(() => {
@@ -224,19 +230,16 @@ export default function DownloadDialog({
         {!canDownload ? (
           <div className="flex-1 space-y-3 overflow-y-auto px-6 py-4 text-sm text-muted-foreground">
             <p>
-              Building and downloading question papers as Word files is a teacher
-              feature.{" "}
-              {teacherPass ? (
+              Downloading question papers as Word files is a teacher feature.{" "}
+              {teacherPass && (
                 <>
-                  Get a <strong className="text-foreground">{teacherPass.label}</strong> ({teacherPass.price} for{" "}
-                  {teacherPass.length}) for instant access, or request a teacher account and we&apos;ll set you up.
+                  Get the <strong className="text-foreground">{teacherPass.label}</strong> ({teacherPass.price} for{" "}
+                  {teacherPass.length}) for instant access.
                 </>
-              ) : (
-                <>Request a teacher account and we&apos;ll set you up.</>
               )}
             </p>
             <p>
-              You&apos;ll be able to filter the bank, assemble papers, and export
+              You&apos;ll be able to filter the bank, pick questions, and export
               the Question Paper and Answer Key — numbered and formatted for the
               classroom.
             </p>
@@ -354,24 +357,19 @@ export default function DownloadDialog({
             {busy ? "Working…" : canDownload ? "Done" : "Cancel"}
           </Button>
           {!canDownload ? (
-            <>
-            <Button asChild variant="outline" className="w-full sm:w-auto">
-              <Link
-                href="/request-access"
-                onClick={() =>
-                  trackFunnelOnce("teacher_gate_cta_click", mode, { signedIn: isSignedIn, mode })
-                }
-              >
-                <GraduationCap className="h-4 w-4" aria-hidden />
-                Request teacher access
-              </Link>
-            </Button>
-            {teacherPass && (
+            teacherPass && (
               <Button asChild variant="brand" className="w-full sm:w-auto">
-                <Link href={`/pricing?plan=${teacherPass.urlKey}`}>Get {teacherPass.label}</Link>
+                <Link
+                  href={pricingHref(teacherPass.urlKey, here)}
+                  onClick={() =>
+                    trackFunnelOnce("teacher_gate_cta_click", mode, { signedIn: isSignedIn, mode })
+                  }
+                >
+                  <GraduationCap className="h-4 w-4" aria-hidden />
+                  Get {teacherPass.label}
+                </Link>
               </Button>
-            )}
-            </>
+            )
           ) : (
             <>
               {canTags && (

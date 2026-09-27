@@ -19,7 +19,7 @@ type Body =
   | { action: "saveSettings"; enabled: boolean; limit: number };
 
 /** Every public page that renders a price or the free-mock number. */
-const PAGES_QUOTING_PLANS = ["/pricing", "/terms", "/refunds", "/request-access"];
+const PAGES_QUOTING_PLANS = ["/pricing", "/terms", "/refunds"];
 
 /**
  * The pass catalogue + the free-mock limit. Platform-wide, so superadmin only.

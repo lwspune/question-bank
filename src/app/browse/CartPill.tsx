@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import Link from "next/link";
 import { FilePlus2, ListPlus, ShoppingCart, Trash2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -45,9 +44,8 @@ type SortMode = "insertion" | "by-chapter";
  * least one item; never appears server-rendered (avoids the SSR-vs-localStorage
  * hydration mismatch — render only after CartProvider hydrates).
  *
- * There is deliberately NO download button here. Downloads are teacher-gated, so
- * for a student or an anon visitor that button was only ever the
- * "request teacher access" funnel — which "Create paper" now carries directly.
+ * There is deliberately NO download button here. The page-level Download button
+ * offers a "Selected · N" mode for the cart, and carries the Teacher Pass gate.
  * Staff still reach the cart export in one click from the top-of-page Download
  * button, which offers a "Selected · N" mode whenever the cart is non-empty, and
  * in full from the paper page itself.
@@ -243,9 +241,9 @@ export default function CartPill({ isOrgMember = false }: {
                 Add to paper
               </Button>
             )}
-            {/* Same label and icon for everyone — only the destination differs.
-                A non-member can't create a paper, so they get the access funnel
-                rather than a dialog that would fail at the server action. */}
+            {/* A non-member can't own a paper (papers.org_id is NOT NULL), and the
+                Teacher Pass doesn't change that — it unlocks the Word download.
+                So they are pointed at Download, which exports this selection. */}
             {isOrgMember ? (
               <Button
                 className="flex-1"
@@ -256,12 +254,10 @@ export default function CartPill({ isOrgMember = false }: {
                 Create paper
               </Button>
             ) : (
-              <Button className="flex-1" asChild>
-                <Link href="/request-access">
-                  <FilePlus2 className="h-4 w-4" aria-hidden />
-                  Create paper
-                </Link>
-              </Button>
+              <p className="flex-1 self-center text-xs text-muted-foreground">
+                Use <span className="font-medium text-foreground">Download</span> at the top of the
+                page to export these {cart.count} as a Word paper.
+              </p>
             )}
           </div>
         </SheetContent>
