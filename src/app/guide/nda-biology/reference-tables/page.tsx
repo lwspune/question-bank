@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import { Leaf } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
@@ -13,7 +14,7 @@ export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title:
-    "NDA Biology Reference Tables — Diseases, Vitamins, Hormones, Scientists",
+    { absolute: fitTitle("NDA Biology Reference Tables — Diseases, Vitamins, Hormones, Scientists") },
   description:
     "The ~50 named-fact pairs NDA PART B Biology actually tests, grouped into 4 themed clusters. Diseases ↔ pathogens, vitamins ↔ deficiencies, hormones ↔ glands, scientists ↔ discoveries. Built for active-recall.",
   alternates: { canonical: "/guide/nda-biology/reference-tables" },

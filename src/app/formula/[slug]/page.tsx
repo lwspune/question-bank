@@ -14,6 +14,7 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import { notFound } from "next/navigation";
 import { ArrowRight, BookOpen, Sigma, Target } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
@@ -54,11 +55,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { topic, chapter } = entry;
 
   const n = topic.questionIds.length;
-  const title = `${topic.name} — ${n} ${chapter.chapterName} questions that use it`;
+  const title = fitTitle(topic.name, [{ text: chapter.chapterName, optional: true }, "Formula"]);
   const description = `${topic.statement} Every question in the bank whose solution uses it, with answers and worked solutions. Free to browse.`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical: `${SITE_URL}/formula/${params.slug}` },
     openGraph: { title, description, type: "website" },

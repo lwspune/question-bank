@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { History } from "lucide-react";
@@ -38,7 +39,7 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   const type = parseMockType(params.type);
   if (!exam || !type) return {};
   return {
-    title: `${exam.examName} ${type.label} — timed & auto-graded mock tests`,
+    title: { absolute: fitTitle(`${exam.examName} ${type.label}`, [{ text: "timed & auto-graded mock tests", optional: true }]) },
     description: `${type.blurb} Free ${exam.examName} mock tests from PYQ Vault, with a live timer and instant scoring.`,
     alternates: { canonical: `/mock/exam/${exam.slug}/${type.slug}` },
   };

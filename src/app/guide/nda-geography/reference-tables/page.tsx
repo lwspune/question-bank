@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import { Globe } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
@@ -13,7 +14,7 @@ export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title:
-    "NDA Geography Reference Tables — Indian Rivers, Mountain Peaks, Mineral/Crop States, Local Winds",
+    { absolute: fitTitle("NDA Geography Reference Tables — Indian Rivers, Mountain Peaks, Mineral/Crop States, Local Winds") },
   description:
     "The ~62 named-fact pairs NDA PART A Geography actually tests, grouped into 4 themed clusters. Indian Rivers ↔ states ↔ tributaries; Indian Mountain Peaks ↔ ranges; Mineral & Crop ↔ producer states; Local Winds + Climate Zones. Built for active-recall.",
   alternates: { canonical: "/guide/nda-geography/reference-tables" },

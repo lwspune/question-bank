@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import Link from "next/link";
 import { ArrowRight, Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf, Newspaper, Scale, TrendingUp } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
@@ -7,7 +8,7 @@ import { buildGuideSideNav } from "@/lib/guide/guidesNav";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 
 export const metadata: Metadata = {
-  title: "NDA Guides — Strategy for Maths, English, Physics, Chemistry, Biology, Geography, History, Polity, Economics and Current Affairs",
+  title: { absolute: fitTitle("NDA Strategy Guides for All 10 Subjects") },
   description:
     "Evidence-led strategy guides for NDA Mathematics, NDA English (GAT), NDA PART B Physics, NDA PART B Chemistry, NDA PART B Biology, NDA PART A Geography, NDA PART A History, NDA PART A Polity, NDA PART A Economics, and NDA Current Affairs. Every claim is measured against the live past-year question bank.",
   alternates: { canonical: "/guide/nda" },

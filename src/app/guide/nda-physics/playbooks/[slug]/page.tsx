@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import { notFound } from "next/navigation";
 import { Lightbulb, Wrench, AlertTriangle } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
@@ -37,7 +38,7 @@ export async function generateMetadata({
   const playbook = PLAYBOOKS.find((p) => p.slug === params.slug);
   if (!playbook) return { title: "Playbook not found" };
   return {
-    title: `${playbook.name} — NDA Physics playbook`,
+    title: { absolute: fitTitle(playbook.name, ["NDA Physics", { text: "Playbook", optional: true }], { shortenLead: false }) },
     description: playbook.summary,
     alternates: { canonical: `/guide/nda-physics/playbooks/${params.slug}` },
   };

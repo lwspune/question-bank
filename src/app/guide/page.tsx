@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Shield, Sigma } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
@@ -17,7 +18,7 @@ const PAGE_INTRO =
   "themselves. Nothing here is copied from a syllabus. Pick your exam, then a subject.";
 
 export const metadata: Metadata = {
-  title: `${PAGE_TITLE} — NDA and MHT-CET, built from the past-year bank`,
+  title: { absolute: fitTitle(`${PAGE_TITLE} — NDA and MHT-CET, built from the past-year bank`) },
   description: PAGE_INTRO,
   alternates: { canonical: "/guide" },
 };

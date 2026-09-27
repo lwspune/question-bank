@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import { Scale } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
@@ -13,7 +14,7 @@ export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title:
-    "NDA Polity Reference Tables — Articles, Amendments, Bodies, Parts/Schedules",
+    { absolute: fitTitle("NDA Polity Reference Tables — Articles, Amendments, Bodies, Parts/Schedules") },
   description:
     "The ~80 Articles + Constitutional Amendments + Bodies + Parts/Schedules NDA PART A Polity actually tests, grouped into 4 themed clusters. Key Articles ↔ Subject; Constitutional Amendments ↔ Year ↔ Theme; Constitutional Bodies ↔ Function ↔ Article; Parts ↔ Schedules ↔ Content. Built for active-recall.",
   alternates: { canonical: "/guide/nda-polity/reference-tables" },

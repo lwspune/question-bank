@@ -31,13 +31,13 @@ import { groupExamFamilies, familyTotal, membersByStage } from "@/lib/exam/examF
 
 export const revalidate = 86400;
 
-const PAGE_TITLE =
-  "PYQ Vault — Past-Year Question Papers for Indian Entrance & Board Exams";
+// Title <= 70 and description <= 160 characters: Bing flags both past those
+// lengths ("Title too long", "Meta Description too long or too short"), and
+// search results cut the rest. The old description was 295 characters.
+const PAGE_TITLE = "PYQ Vault — Past-Year Question Papers for Entrance & Board Exams";
 const PAGE_DESCRIPTION =
-  "Free past-year question banks for NDA, JEE Mains, NEET, MHT-CET, CDS and " +
-  "Maharashtra State Board. Filter PYQs by chapter, difficulty and year, take " +
-  "timed mock tests, download question papers with answer keys, and learn " +
-  "from strategy guides and concept-by-concept notes. Browse free, no sign-up.";
+  "Free past-year questions for NDA, MHT-CET, JEE, NEET, CDS, MPSC and Maharashtra " +
+  "boards, with worked answers, chapter notes and timed mock tests.";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,

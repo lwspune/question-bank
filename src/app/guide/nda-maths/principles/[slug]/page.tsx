@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import { notFound } from "next/navigation";
 import { Lightbulb } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
@@ -38,7 +39,7 @@ export async function generateMetadata({
   const principle = TOP_PRINCIPLES.find((p) => p.slug === params.slug);
   if (!principle) return { title: "Principle not found" };
   return {
-    title: `${principle.name} — NDA Maths principle deep dive`,
+    title: { absolute: fitTitle(principle.name, ["NDA Maths", { text: "Principle", optional: true }], { shortenLead: false }) },
     description: principle.summary,
     alternates: { canonical: `/guide/nda-maths/principles/${params.slug}` },
   };

@@ -6,6 +6,7 @@ import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getExamBySlug } from "@/lib/exam/examContext";
+import { boardChapterTitle } from "@/lib/seo/pageTitles";
 import {
   resolveBoardChapter,
   getBoardChapter,
@@ -71,14 +72,18 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const data = await load(params);
   if (!data) return { title: "Board textbook solutions" };
   const { chapter, pyqSittings } = data;
-  const title = `${chapter.chapterName} — ${chapter.subjectName} textbook solutions`;
+  const title = boardChapterTitle({
+    chapterName: chapter.chapterName,
+    examDisplay: data.displayName,
+    subjectName: chapter.subjectName,
+  });
   const pyqCount = pyqSittings.reduce((n, s) => n + s.questions.length, 0);
   const years = pyqSittings.map((s) => s.year);
   const pyqLine = pyqCount
     ? ` Plus ${pyqCount} solved board past-year questions from ${Math.min(...years)}–${Math.max(...years)}.`
     : "";
   return {
-    title,
+    title: { absolute: title },
     description: `${chapter.chapterName}: every solved example, exercise, and miscellaneous question with model answers — in ${data.displayName} textbook order.${pyqLine}`,
     alternates: { canonical: `/board/${params.examSlug}/${params.subjectRoute}/${params.chapterSlug}` },
   };

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -32,7 +33,7 @@ const PAGE_DESCRIPTION =
   "concept-by-concept teaching notes. Free, no sign-up.";
 
 export const metadata: Metadata = {
-  title: PAGE_TITLE,
+  title: { absolute: fitTitle(PAGE_TITLE) },
   description: PAGE_DESCRIPTION,
   alternates: { canonical: "/nda" },
   openGraph: {

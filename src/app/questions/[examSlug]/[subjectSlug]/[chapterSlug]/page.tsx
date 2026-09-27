@@ -19,6 +19,8 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import QuestionList from "@/app/browse/QuestionList";
 import { getQuestionResources } from "@/lib/links/questionResources";
+import { getExamBySlug } from "@/lib/exam/examContext";
+import { questionsLandingTitle } from "@/lib/seo/pageTitles";
 import {
   listChapterLandings,
   getChapterLanding,
@@ -105,11 +107,16 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (!landing) return { title: "Questions not found" };
 
   const kindWord = landing.practiceOnly ? "practice questions" : "PYQs";
-  const title = `${landing.chapterName} — ${landing.examName} ${landing.subjectName} ${landing.practiceOnly ? "Practice Questions" : "PYQs"}`;
+  const title = questionsLandingTitle({
+    chapterName: landing.chapterName,
+    examDisplay: getExamBySlug(landing.examSlug)?.displayName ?? landing.examName,
+    subjectName: landing.subjectName,
+    practiceOnly: landing.practiceOnly,
+  });
   const description = `${landing.questionCount} ${landing.examName} ${landing.subjectName} ${kindWord} from ${landing.chapterName}, with answers and worked solutions. Free to browse.`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical: `${SITE_URL}${landingHref(landing)}` },
     openGraph: { title, description, type: "website" },

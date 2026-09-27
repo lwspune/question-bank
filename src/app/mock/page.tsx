@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import Link from "next/link";
 import { ArrowRight, Compass, History, Landmark, Shield, Stethoscope, Timer } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
@@ -22,7 +23,7 @@ const PAGE_INTRO =
   "see what's available.";
 
 export const metadata: Metadata = {
-  title: `${EXAMS} Mock Tests — past papers & practice, timed & auto-graded`,
+  title: { absolute: fitTitle("Timed Mock Tests from Past Papers", [{ text: "NDA, MHT-CET, JEE, NEET & more", optional: true }]) },
   description: `Take ${EXAMS} mock tests online: real past papers served whole, plus full-length practice papers built to the exam blueprint. Official marking, live timer, instant scoring. Free, from PYQ Vault.`,
   alternates: { canonical: "/mock" },
 };

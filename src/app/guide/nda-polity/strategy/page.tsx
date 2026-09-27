@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import {
   AlertTriangle,
   Calculator,
@@ -25,7 +26,7 @@ import {
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "NDA Polity Strategy — Cornerstone, Foundation, Specialist Wildcard",
+  title: { absolute: fitTitle("NDA Polity Strategy — Cornerstone, Foundation, Specialist Wildcard") },
   description:
     "Evidence-led NDA PART A Polity preparation: three chapter-tier strands (Cornerstone Government Structure vs Foundation Recall Indian Constitution + FR/DPSP vs Specialist Wildcard World Polity) matched to the bank's actual weights. Per-chapter must-drill subtopics, test-day attempt order, and a ~16-hour time-budget plan. Backed by 99 past-year questions across 19 papers.",
   alternates: { canonical: "/guide/nda-polity/strategy" },

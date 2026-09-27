@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notesSubjectTitle } from "@/lib/notes/titles";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, BookOpen } from "lucide-react";
@@ -43,7 +44,7 @@ export function buildSubjectMetadata(subjectRoute: string): Metadata {
   const meta = subjectMeta(subjectRoute);
   if (!meta) return {};
   return {
-    title: `${meta.title} — Notes for the digital board`,
+    title: { absolute: notesSubjectTitle(meta.first.subjectDisplay) },
     description: meta.intro,
     alternates: { canonical: `/notes/${subjectRoute}` },
   };

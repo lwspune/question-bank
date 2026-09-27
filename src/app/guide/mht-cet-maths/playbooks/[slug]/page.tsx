@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AlertTriangle, BookOpen, Lightbulb, Wrench } from "lucide-react";
@@ -49,7 +50,7 @@ export async function generateMetadata({
   const playbook = PLAYBOOKS.find((p) => p.slug === params.slug);
   if (!playbook) return { title: "Playbook not found" };
   return {
-    title: `${playbook.name} — MHT-CET Maths playbook`,
+    title: { absolute: fitTitle(playbook.name, ["MHT-CET Maths", { text: "Playbook", optional: true }], { shortenLead: false }) },
     description: playbook.summary,
     alternates: { canonical: `/guide/mht-cet-maths/playbooks/${params.slug}` },
   };
