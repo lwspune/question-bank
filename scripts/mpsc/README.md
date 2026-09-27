@@ -132,4 +132,4 @@ misread (one slip in the 2022 pilot, caught at 180 dpi): zoom any doubtful word.
 | ssp-2014 (G03) | 100/100 | 100/100 | PRIVATE, 2026-09-27 (Q93 cancelled; Q99 print note) |
 | ssp-2013 (X01) | 100/100 | 99/99 (Q74 unmarked) | PRIVATE, 2026-09-27 (Q74 cancelled; Q24, Q29 figures) |
 
-**All 10 papers committed PRIVATE (1,000 q, 24 cancelled, 7 figures).** Coaching marks agree with the official final key on 998 of 999 marked questions; the one disagreement (2016 Q22) is the coaching error. Making the exam PUBLIC, the registry entry and mocks are the user's call.
+**All 10 papers committed PRIVATE (1,000 q, 24 cancelled, 7 figures).** Coaching marks agree with the official final key on 998 of 999 marked questions; the one disagreement (2016 Q22) is the coaching error. **PUBLIC since 2026-09-27** (`npx tsx scripts/mpsc/flip-public.ts ssp --apply`), registry slug `mpsc-state-services-prelims` (MPSC → Prelims → State Services), and 10 GS Paper I mocks published (`scripts/mocks/build.ts --paper=mpsc --only=ssp-<year>`; 100 q, 200 marks, 2 h, −0.5 per wrong, cancelled questions as grace).

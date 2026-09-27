@@ -25,6 +25,8 @@ Free, public past-year-question paper builder for Indian entrance exams. Anyone 
 
 **UPSC Civil Services (Prelims)** (`upsc-cse`, graduate, mocks) — PUBLIC since 2026-09-26 (it was withheld until then): both papers of every sitting 2017-2026, 1,799 q including the 10 items UPSC withdrew (grace). It is the one corpus here with a *published official key*, which makes it the only place blind-derivation accuracy can be measured rather than asserted; 2026 rests on the PROVISIONAL key. `scripts/upsc/` · [[upsc-cse-ingestion]]. CUET is on the roadmap.
 
+**MPSC State Services Prelims** (`mpsc-state-services-prelims`, graduate, bilingual, mocks; picker family MPSC → Prelims) — PUBLIC since 2026-09-27: GS Paper I of every sitting 2013-2022, 1,000 q (24 cancelled = grace), keyed from MPSC's FINAL keys; the source scan's coaching answer boxes are only a cross-check (998/999 agree). 10 mocks. CSAT not ingested. `scripts/mpsc/` (exam `ssp`).
+
 **MPSC Mains** (`mpsc-state-services-mains` · `mpsc-group-b-combined-mains` · `mpsc-sti-mains` · `mpsc-aso-mains` · `mpsc-psi-mains`, graduate, mocks; picker family MPSC → Mains) — PUBLIC since 2026-09-27: 19 Marathi & English language booklets 2009-2018 (2,500 rows; the 2009 paper is joint ASO/STI), Marathi-only canonical rows. Two papers have no key, so their grammar answers are derived; 4 papers were dropped on purpose (`dropped` in config). 20 mocks, three printed schemes (MOCKS.md). `scripts/mpsc-mains/`.
 
 A separate `question_kind` axis (`pyq` | `practice`) splits the past-year corpus from the supplementary practice bank *within* an exam — see the Multi-tenancy section below.
