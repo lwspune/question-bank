@@ -6,7 +6,7 @@ import AppHeader from "@/components/AppHeader";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { loadEntitlements } from "@/lib/entitlements/query";
-import { isEntitlementActive } from "@/lib/entitlements/access";
+import { activePassesByScope } from "@/lib/billing/checkoutReturn";
 import BatchesCard from "./BatchesCard";
 import {
   listPendingInvitesForEmail,
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 /** What an active grant is called on this page, and where it leads. */
 const PASS_VIEW: Record<string, { title: string; href: string; cta: string }> = {
   mocks: { title: "Mock Pass active", href: "/mock", cta: "Go to mock tests →" },
-  teacher: { title: "Teacher Pass active", href: "/browse", cta: "Build a paper →" },
+  teacher: { title: "Teacher Pass active", href: "/browse", cta: "Download a paper →" },
 };
 const DEFAULT_VIEW = { title: "Premium active", href: "/mock", cta: "Go to mock tests →" };
 
@@ -53,17 +53,9 @@ export default async function AccountPage() {
     listMyBatches(user.id),
   ]);
   const now = Date.now();
-  const active = rows
-    .filter((r) => isEntitlementActive(r, now))
-    // Show the longest-lasting active grant (null expiry sorts last = best).
-    .sort((a, b) => {
-      if (!a.expiresAt) return -1;
-      if (!b.expiresAt) return 1;
-      return new Date(b.expiresAt).getTime() - new Date(a.expiresAt).getTime();
-    })[0];
-
-  const hasAccess = Boolean(member) || Boolean(active);
-  const view = (active && PASS_VIEW[active.scope]) || DEFAULT_VIEW;
+  // One line per pass held — a teacher who also bought the Mock Pass sees both.
+  const passes = activePassesByScope(rows, now);
+  const hasAccess = Boolean(member) || passes.length > 0;
 
   return (
     <>
@@ -99,28 +91,44 @@ export default async function AccountPage() {
               <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
                 <ShieldCheck className="h-5 w-5" aria-hidden />
               </span>
-              <div>
-                <p className="font-semibold">{member ? "Premium active" : view.title}</p>
-                {member ? (
+              {member ? (
+                <div>
+                  <p className="font-semibold">Premium active</p>
                   <p className="mt-1 text-sm text-muted-foreground">
                     Included with your {member.orgName} staff account.
                   </p>
-                ) : active ? (
-                  <p className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
-                    <Clock className="h-3.5 w-3.5" aria-hidden />
-                    {active.expiresAt
-                      ? `Active until ${formatDate(active.expiresAt)}`
-                      : "Lifetime access"}
-                    {active.source === "comp" && " · complimentary"}
-                  </p>
-                ) : null}
-                <Link
-                  href={view.href}
-                  className="mt-3 inline-block text-sm font-medium text-primary hover:underline"
-                >
-                  {view.cta}
-                </Link>
-              </div>
+                  <Link
+                    href={DEFAULT_VIEW.href}
+                    className="mt-3 inline-block text-sm font-medium text-primary hover:underline"
+                  >
+                    {DEFAULT_VIEW.cta}
+                  </Link>
+                </div>
+              ) : (
+                <ul className="space-y-4">
+                  {passes.map((pass) => {
+                    const view = PASS_VIEW[pass.scope] ?? DEFAULT_VIEW;
+                    return (
+                      <li key={pass.scope}>
+                        <p className="font-semibold">{view.title}</p>
+                        <p className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
+                          <Clock className="h-3.5 w-3.5" aria-hidden />
+                          {pass.expiresAt
+                            ? `Active until ${formatDate(pass.expiresAt)}`
+                            : "Lifetime access"}
+                          {pass.source === "comp" && " · complimentary"}
+                        </p>
+                        <Link
+                          href={view.href}
+                          className="mt-2 inline-block text-sm font-medium text-primary hover:underline"
+                        >
+                          {view.cta}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
             </div>
           ) : (
             <div className="flex items-start gap-3">

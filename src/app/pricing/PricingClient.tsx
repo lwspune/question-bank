@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { sendActivity } from "@/lib/activity/clientBeacon";
+import { afterPurchasePath } from "@/lib/billing/checkoutReturn";
 
 /** Minimal shape of the Razorpay Checkout global we use. */
 type RazorpayOptions = {
@@ -36,9 +37,12 @@ declare global {
 export default function PricingClient({
   planId,
   buttonLabel,
+  returnTo,
 }: {
   planId: string;
   buttonLabel: string;
+  /** Where the buyer was blocked; they go back there once access is granted. */
+  returnTo?: string;
 }) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
@@ -91,7 +95,7 @@ export default function PricingClient({
           const verify = (await verifyRes.json()) as { ok?: boolean; error?: string };
           if (verifyRes.ok && verify.ok) {
             toast.success("Payment successful — access unlocked!");
-            router.push("/account");
+            router.push(afterPurchasePath(returnTo));
             router.refresh();
           } else if (verifyRes.status === 202) {
             // Paid, not yet captured: the order.paid webhook grants it shortly.

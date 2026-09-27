@@ -33,6 +33,7 @@ import { resolveExportAccess } from "@/lib/export/access";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
+import { pricingHref } from "@/lib/billing/checkoutReturn";
 
 type Mode = "filters" | "cart";
 type Kind = "paper" | "key" | "tags" | "ppt";
@@ -94,6 +95,13 @@ export default function DownloadDialog({
   const cart = useCart();
   const mobilePrompt = useMobilePrompt();
   const [mode, setMode] = useState<Mode>(initialMode ?? "filters");
+  // This page with its filters, so a teacher lands back on the same selection
+  // after buying the pass. Read from the browser (not useSearchParams, which
+  // would bail /browse's static prerender); the dialog only renders on a click.
+  const [here, setHere] = useState<string | undefined>(undefined);
+  useEffect(() => {
+    setHere(window.location.pathname + window.location.search);
+  }, []);
 
   // The teacher gate was seen — the denominator for Get Teacher Pass clicks. `mode` splits the two populations that matter — a
   // visitor who assembled a CART and then met the wall wanted a paper; one who
@@ -352,7 +360,7 @@ export default function DownloadDialog({
             teacherPass && (
               <Button asChild variant="brand" className="w-full sm:w-auto">
                 <Link
-                  href={`/pricing?plan=${teacherPass.urlKey}`}
+                  href={pricingHref(teacherPass.urlKey, here)}
                   onClick={() =>
                     trackFunnelOnce("teacher_gate_cta_click", mode, { signedIn: isSignedIn, mode })
                   }
