@@ -12,6 +12,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { isExamSlug, type ExamSlug } from "@/lib/exam/examContext";
 import { WELCOME_KIND } from "./welcome";
+import { countClickedSends } from "./dueNudgeService";
 
 const PAGE = 1000;
 
@@ -49,24 +50,25 @@ export async function readPrimaryExams(db: SupabaseClient): Promise<Map<string, 
 export async function readWelcomeConversion(
   db: SupabaseClient,
   hours = 48
-): Promise<{ sent: number; activeAfter: number }> {
-  const sends: { user_id: string; created_at: string }[] = [];
+): Promise<{ sent: number; clicked: number; activeAfter: number }> {
+  const sends: { id: string; user_id: string; created_at: string }[] = [];
   for (let from = 0; ; from += PAGE) {
     const { data, error } = await db
       .from("email_sends")
-      .select("user_id, created_at")
+      .select("id, user_id, created_at")
       .eq("kind", WELCOME_KIND)
       .eq("status", "sent")
       .order("created_at", { ascending: true })
       .range(from, from + PAGE - 1);
     if (error) throw new Error(`readWelcomeConversion sends: ${error.message}`);
-    const rows = (data ?? []) as { user_id: string; created_at: string }[];
+    const rows = (data ?? []) as { id: string; user_id: string; created_at: string }[];
     sends.push(...rows);
     if (rows.length < PAGE) break;
   }
-  if (sends.length === 0) return { sent: 0, activeAfter: 0 };
+  if (sends.length === 0) return { sent: 0, clicked: 0, activeAfter: 0 };
 
   const earliest = sends[0].created_at;
+  const clicked = await countClickedSends(db, sends.map((s) => s.id), earliest);
   const byUser = new Map<string, number[]>();
   for (let from = 0; ; from += PAGE) {
     const { data, error } = await db
@@ -92,5 +94,5 @@ export async function readWelcomeConversion(
     const times = byUser.get(s.user_id) ?? [];
     if (times.some((x) => x >= t && x - t <= hours * 3_600_000)) activeAfter++;
   }
-  return { sent: sends.length, activeAfter };
+  return { sent: sends.length, clicked, activeAfter };
 }

@@ -48,6 +48,7 @@ import {
   ensureUnsubscribeTokens,
   recordSend,
 } from "../../src/lib/email/service";
+import { newClickToken } from "../../src/lib/email/click";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -135,7 +136,8 @@ async function main() {
     const r = recipients[i];
     const token = tokens.get(r.userId);
     if (!token) throw new Error(`no unsubscribe token minted for ${r.email}`);
-    const email = buildEmail(r, token);
+    const clickToken = newClickToken();
+    const email = buildEmail(r, token, clickToken);
 
     if (i > 0) await sleep(THROTTLE_MS);
 
@@ -148,7 +150,7 @@ async function main() {
       headers: email.headers,
     });
 
-    await recordSend(db, r, email.subject, result);
+    await recordSend(db, r, email.subject, result, clickToken);
 
     if (result.ok) {
       sent++;

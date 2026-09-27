@@ -243,7 +243,8 @@ export async function recordSend(
   db: SupabaseClient,
   r: Recipient,
   subject: string,
-  outcome: SendOutcome
+  outcome: SendOutcome,
+  clickToken?: string
 ): Promise<void> {
   const { error } = await db.from("email_sends").insert({
     user_id: r.userId,
@@ -253,6 +254,7 @@ export async function recordSend(
     ref_id: r.mock.id,
     ref_kind: "mock_test",
     dedupe_key: r.dedupeKey,
+    click_token: clickToken ?? null,
     status: outcome.ok ? "sent" : "failed",
     provider_id: outcome.ok ? outcome.providerId : null,
     error: outcome.ok ? null : outcome.error.slice(0, 1000),
