@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import StatBlock from "@/app/guide/_components/StatBlock";
@@ -11,7 +12,7 @@ import { ROUTES } from "../_data/nda-maths";
 import { COMPOUNDS } from "../_data/compounds";
 
 export const metadata: Metadata = {
-  title: "NDA Maths Compound Tricks — 4 principle pairs that spike HARD",
+  title: { absolute: fitTitle("NDA Maths Compound Tricks — 4 principle pairs that spike HARD") },
   description:
     "When two principles co-occur in NDA Maths — AM-GM + GP, AP + GP, ω + Vieta, extrema + log — the question is reliably hard (40–67% HARD vs 22.1% bank average). Drill the recipe, not the silos.",
   alternates: { canonical: "/guide/nda-maths/compound-tricks" },

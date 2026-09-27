@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, History, Scissors, ScrollText, Target } from "lucide-react";
@@ -36,7 +37,7 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   const family = getMockFamily(params.examSlug);
   if (family) {
     return {
-      title: `${family.name} Mock Tests — past papers, timed & auto-graded`,
+      title: { absolute: fitTitle(`${family.name} Mock Tests`, [{ text: "past papers, timed & auto-graded", optional: true }]) },
       description: `Sit ${family.name} mock tests online: real past papers served whole, on the official marking scheme, with a live timer. Free, from PYQ Vault.`,
       alternates: { canonical: `/mock/exam/${family.slug}` },
     };
@@ -44,7 +45,7 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   const exam = getMockExam(params.examSlug);
   if (!exam) return {};
   return {
-    title: `${exam.examName} Mock Tests — past papers & practice, timed & auto-graded`,
+    title: { absolute: fitTitle(`${exam.examName} Mock Tests`, [{ text: "past papers & practice, timed & auto-graded", optional: true }]) },
     description: `Sit ${exam.examName} mock tests online: real past papers served whole, plus full-length practice papers built to the exam blueprint. Official marking, live timer, instant scoring. Free, from PYQ Vault.`,
     alternates: { canonical: `/mock/exam/${exam.slug}` },
   };

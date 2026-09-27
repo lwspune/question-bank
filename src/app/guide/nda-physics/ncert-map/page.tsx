@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import { Map as MapIcon, Radar, ArrowRight } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
@@ -21,7 +22,7 @@ import {
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "NCERT → NDA Physics chapter map — which NCERT chapter is which",
+  title: { absolute: fitTitle("NCERT → NDA Physics chapter map — which NCERT chapter is which") },
   description:
     "Map every NCERT Class 9–12 physics chapter to the NDA Physics chapter that tests it, with a one-click drill into the question bank. Plus a Class-12 watch-list — topics that would signal a syllabus drift early.",
   alternates: { canonical: "/guide/nda-physics/ncert-map" },

@@ -8,6 +8,7 @@
  */
 import Link from "next/link";
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import { Sigma } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
@@ -21,7 +22,7 @@ export const revalidate = 86400;
 const total = FORMULA_CHAPTERS.reduce((n, c) => n + c.topics.length, 0);
 
 export const metadata: Metadata = {
-  title: `Formula index — ${total} identities, each with the questions that use it`,
+  title: { absolute: fitTitle(`Formula index — ${total} identities, each with the questions that use it`) },
   description: `Every formula, property and technique the Matrices & Determinants solutions in the bank actually use, each with the full set of past-year and practice questions whose solution invokes it. Free to browse.`,
   alternates: { canonical: `${SITE_URL}/formula` },
 };

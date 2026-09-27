@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import { FlaskConical } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
@@ -12,7 +13,7 @@ import { COMPOUND_STATS } from "../_data/common-compounds";
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "NDA Chemistry Common Compounds — Name ↔ Formula ↔ Use reference",
+  title: { absolute: fitTitle("NDA Chemistry Common Compounds — Name ↔ Formula ↔ Use reference") },
   description:
     "The ~50 chemical name ↔ formula ↔ use pairs NDA PART B Chemistry actually tests, grouped into 6 themed clusters. Acids, salts, gases, fuels, allotropes, alloys. Built for active-recall.",
   alternates: { canonical: "/guide/nda-chemistry/common-compounds" },

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { NOTES_INDEX_TITLE } from "@/lib/notes/titles";
 import Link from "next/link";
 import { ArrowRight, BookOpen } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
@@ -17,7 +18,7 @@ const PAGE_INTRO =
   "question, and names the mistakes that keep costing marks. Pick an exam to start.";
 
 export const metadata: Metadata = {
-  title: `${PAGE_TITLE} — Notes for the digital board`,
+  title: { absolute: NOTES_INDEX_TITLE },
   description: PAGE_INTRO,
   alternates: { canonical: "/notes" },
 };

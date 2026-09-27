@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import { Landmark } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
@@ -13,7 +14,7 @@ export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title:
-    "NDA History Timeline & Pairs — Era anchors, Rulers, Reformers, Scholars, British Acts",
+    { absolute: fitTitle("NDA History Timeline & Pairs — Era anchors, Rulers, Reformers, Scholars, British Acts") },
   description:
     "The ~95 chronology anchors + named-pair facts NDA PART A History actually tests, grouped into 5 themed clusters. Era timeline (BCE → 1947+); Rulers ↔ dynasty; Reformers ↔ movement; Scholars ↔ texts; British Acts + Viceroys ↔ year. Built for active-recall.",
   alternates: { canonical: "/guide/nda-history/timeline-and-pairs" },

@@ -17,6 +17,7 @@ import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
 import { loadResolvedDrills } from "@/lib/notes/loadResolvedDrills";
 import { pickInterleavedCheckpoint } from "@/lib/notes/pickInterleavedCheckpoint";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
+import { notesSubtopicTitle } from "@/lib/notes/titles";
 import ConceptUnitCard from "./ConceptUnitCard";
 import NotesPaywall from "./NotesPaywall";
 import PracticeGate from "./PracticeGate";
@@ -43,7 +44,7 @@ export function buildSubtopicMetadata(
   const note = c.notes[subtopicSlug];
   if (!note) return { title: "Note not found" };
   return {
-    title: `${note.title} — ${c.subjectDisplay} ${c.chapter.chapterName} notes`,
+    title: { absolute: notesSubtopicTitle(c, subtopicSlug)! },
     description: note.oneLineDefinition,
     alternates: { canonical: `${routeBase(c)}/${subtopicSlug}` },
   };

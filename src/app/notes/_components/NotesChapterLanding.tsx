@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notesChapterTitle } from "@/lib/notes/titles";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -35,7 +36,7 @@ const routeBase = (c: NotesChapterRegistration) =>
 /** Metadata for a chapter landing — call from the wrapper's metadata export. */
 export function buildChapterMetadata(c: NotesChapterRegistration): Metadata {
   return {
-    title: `${c.subjectDisplay} ${c.chapter.chapterName} — Notes for the digital board`,
+    title: { absolute: notesChapterTitle(c) },
     // The SHORT line, not `intro`. The full intro averages 171 words (~1,100
     // chars) against Google's ~155-char truncation, so it shipped cut mid-word
     // on all 84 chapter pages.

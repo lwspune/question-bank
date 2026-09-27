@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fitTitle } from "@/lib/seo/title";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import StatBlock from "@/app/guide/_components/StatBlock";
@@ -16,7 +17,7 @@ import {
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "NDA English Vocab Families — 13 themes, 270 PYQ-tested words",
+  title: { absolute: fitTitle("NDA English Vocab Families — 13 themes, 270 PYQ-tested words") },
   description:
     "270 words tested across NDA English Synonyms + Antonyms (2017–2026), clustered into 13 themes. The patterns NDA reuses so you can build vocabulary breadth efficiently.",
   alternates: { canonical: "/guide/nda-english/vocab-families" },

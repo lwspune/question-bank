@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notesExamTitle } from "@/lib/notes/titles";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, BookOpen, NotebookPen } from "lucide-react";
@@ -49,9 +50,8 @@ function chapterTotal(group: { subjects: { chapterCount: number }[] }): number {
 export function generateMetadata({ params }: { params: Params }): Metadata {
   const group = getNotesExamGroup(params.examSlug);
   if (!group) return {};
-  const title = `${group.examName} — Teaching Notes`;
   return {
-    title: `${title} — Notes for the digital board`,
+    title: { absolute: notesExamTitle(group.examName) },
     description: examIntro(group.examName, group.subjects.length, chapterTotal(group)),
     alternates: { canonical: `/notes/${group.slug}` },
   };
