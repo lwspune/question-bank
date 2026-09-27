@@ -113,6 +113,8 @@ export const PAPERS: Paper[] = [
   p("grpb-2018", ["grpb"], 2018, "2018-08-26", "W11", [509, 536], [537, 538], 100),
   p("psi-2011", ["psi"], 2011, "2011-09-18", "RAM", [539, 570], [571, 574], 200),
   p("psi-2012", ["psi"], 2012, "2012-07-22", "COO", [575, 606], null, 200, { derived: true }),
+  // This scan (from mpscguidance.com) has the answers pre-marked on the page, so its key
+  // fit is NOT a blind check: the transcriber's answers are the printed marks.
   p("psi-2013", ["psi"], 2013, "2013-12-08", "Y02", [611, 630], [631, 632], 100),
   p("psi-2014", ["psi"], 2014, "2014-09-21", "EO5", [633, 656], [657, 658], 100),
   // Booklet pages are bound out of order: p.663 is booklet page 6 (Q18-23), p.664 page 5 (Q12-17).
