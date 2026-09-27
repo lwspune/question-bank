@@ -78,7 +78,8 @@ function main() {
     const marks: Record<string, KeyLetter | null> = JSON.parse(readFileSync(marksFile, "utf8"));
     const dis = markDisagreements(marks, key);
     for (const d of dis) console.log(`Q${d.n}: coaching mark ${d.mark}, key ${d.key ?? "(none)"}`);
-    marksNote = ` · marks vs key ${Object.keys(marks).length - dis.length}/${Object.keys(marks).length} agree`;
+    const marked = Object.values(marks).filter((v) => v !== null).length; // a question with no mark is not an agreement
+    marksNote = ` · marks vs key ${marked - dis.length}/${marked} agree`;
   }
 
   console.log(
