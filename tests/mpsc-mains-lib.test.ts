@@ -117,3 +117,18 @@ describe("resolveContextRefs", () => {
     ]);
   });
 });
+
+describe("dropped papers", () => {
+  it("records the four papers set aside, each with a reason", async () => {
+    const { PAPERS } = await import("../scripts/mpsc-mains/config");
+    const dropped = PAPERS.filter((p) => p.dropped).map((p) => p.id).sort();
+    expect(dropped).toEqual(["aso-2011", "psi-2012", "psi-2014", "sti-2012"]);
+    for (const p of PAPERS.filter((x) => x.dropped)) expect(p.dropped!.length).toBeGreaterThan(10);
+  });
+
+  it("requirePaper refuses a dropped paper, so merge/commit cannot ingest it", async () => {
+    const { requirePaper } = await import("../scripts/mpsc-mains/config");
+    expect(() => requirePaper("psi-2012")).toThrow(/dropped/);
+    expect(requirePaper("psi-2011").id).toBe("psi-2011");
+  });
+});

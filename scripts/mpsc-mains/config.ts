@@ -66,6 +66,12 @@ export type Paper = {
    * a gap can never be a whole-paper mock.
    */
   missingQuestions?: number[];
+  /**
+   * Set aside at the user's call and NOT ingested — the reason, in a sentence.
+   * requirePaper refuses a dropped paper, so merge.ts / commit.ts cannot load it.
+   * Kept in PAPERS (not deleted) so the page map stays complete and the drop is on record.
+   */
+  dropped?: string;
 };
 
 /** The question numbers a paper's transcription must cover. */
@@ -93,7 +99,7 @@ export const PAPERS: Paper[] = [
   p("ssm-2017", ["ssm"], 2017, "2017-09-19", "Y09", [27, 54], [55, 56], 100),
   p("ssm-2018", ["ssm"], 2018, "2018-08-18", "R11", [57, 80], [81, 82], 100),
   p("sti-2011", ["sti"], 2011, "2011-12-11", "RRM", [83, 114], [115, 118], 200),
-  p("sti-2012", ["sti"], 2012, "2012-11-25", "OOI", [119, 158], [159, 162], 200),
+  p("sti-2012", ["sti"], 2012, "2012-11-25", "OOI", [119, 158], [159, 162], 200, { dropped: "Set aside 2026-09-27 mid-transcription (Q1-173 read, nothing merged) at the user's call." }),
   // The key printed after this booklet (pp.187-188, "STI Mains 2014 · 18 Aug 2015") is for
   // ANOTHER sitting: it agreed with 20 of 93 blind answers (21.5%, chance). Kept aside as
   // data/orphan-p187.keytokens.json; this all-grammar paper's answers are derived.
@@ -105,7 +111,7 @@ export const PAPERS: Paper[] = [
   // Key fit 189/193 (97.9%). NOT fully blind for Q1-43: those key entries were printed to the
   // terminal before transcription began. Q44-200 were answered without sight of the key.
   p("asosti-2009", ["aso", "sti"], 2009, "2010-08-14", "TNS", [267, 298], [299, 302], 200),
-  p("aso-2011", ["aso"], 2011, "2011-11-20", "RGM", [307, 338], [339, 342], 200),
+  p("aso-2011", ["aso"], 2011, "2011-11-20", "RGM", [307, 338], [339, 342], 200, { dropped: "Set aside 2026-09-27 mid-transcription (Q1-195 read, nothing merged) at the user's call." }),
   p("aso-2012", ["aso"], 2012, "2012-09-09", "D01", [343, 374], [375, 378], 200),
   p("aso-2013", ["aso"], 2013, "2014-02-15", "IO3", [379, 402], [403, 404], 100),
   p("aso-2014", ["aso"], 2014, "2015-01-04", "RO5", [405, 428], [429, 430], 100),
@@ -114,11 +120,11 @@ export const PAPERS: Paper[] = [
   p("aso-2017", ["aso"], 2017, "2017-12-10", "O10", [483, 506], [507, 508], 100, { keyImageOnly: true }),
   p("grpb-2018", ["grpb"], 2018, "2018-08-26", "W11", [509, 536], [537, 538], 100),
   p("psi-2011", ["psi"], 2011, "2011-09-18", "RAM", [539, 570], [571, 574], 200),
-  p("psi-2012", ["psi"], 2012, "2012-07-22", "COO", [575, 606], null, 200, { derived: true }),
+  p("psi-2012", ["psi"], 2012, "2012-07-22", "COO", [575, 606], null, 200, { derived: true, dropped: "Set aside 2026-09-27 after transcription (no key; answers would be derived), nothing merged, at the user's call." }),
   // This scan (from mpscguidance.com) has the answers pre-marked on the page, so its key
   // fit is NOT a blind check: the transcriber's answers are the printed marks.
   p("psi-2013", ["psi"], 2013, "2013-12-08", "Y02", [611, 630], [631, 632], 100),
-  p("psi-2014", ["psi"], 2014, "2014-09-21", "EO5", [633, 656], [657, 658], 100),
+  p("psi-2014", ["psi"], 2014, "2014-09-21", "EO5", [633, 656], [657, 658], 100, { dropped: "Set aside 2026-09-27 after Q1-60 were transcribed (data/psi-2014.t01-t02.json, uncommitted), nothing merged, at the user's call." }),
   // Booklet pages are bound out of order: p.663 is booklet page 6 (Q18-23), p.664 page 5 (Q12-17).
   p("psi-2016", ["psi"], 2016, "2017-06-25", "KO9", [659, 682], [683, 684], 100),
   p("psi-2017", ["psi"], 2017, "2017-11-05", "L10", [685, 708], [709, 710], 100),
@@ -143,6 +149,7 @@ export function sourceFileFor(paper: Paper, exam: ExamKey): string {
 export function requirePaper(id: string | undefined): Paper {
   const hit = PAPERS.find((x) => x.id === id);
   if (!hit) throw new Error(`unknown paper "${id}" — one of: ${PAPERS.map((x) => x.id).join(", ")}`);
+  if (hit.dropped) throw new Error(`paper "${id}" is dropped: ${hit.dropped}`);
   return hit;
 }
 
