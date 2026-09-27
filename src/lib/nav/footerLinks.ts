@@ -29,7 +29,7 @@ import { getNotesExamGroups } from "@/lib/notes/notesNav";
 export type FooterLink = {
   href: string;
   label: string;
-  /** True for the one non-route link (the report mailto). */
+  /** True for the one non-route link (the contact mailto). */
   external?: boolean;
 };
 
@@ -81,9 +81,14 @@ export function footerLinks(): FooterGroup[] {
         { href: "/start", label: "How it works" },
         { href: "/blog", label: "Blog" },
         { href: "/about", label: "About" },
+        // The in-app form first: it lands in /dashboard/feedback. The mailto
+        // stays for anyone who would rather write an email. It used to be
+        // labelled "Report a question" with a pre-rebrand subject; a question
+        // is reported with the flag on the question itself.
+        { href: "/feedback", label: "Send feedback" },
         {
-          href: `mailto:${CONTACT_EMAIL}?subject=Question%20Bank%20feedback`,
-          label: "Report a question",
+          href: `mailto:${CONTACT_EMAIL}?subject=PYQ%20Vault%20feedback`,
+          label: "Email us",
           external: true,
         },
       ],

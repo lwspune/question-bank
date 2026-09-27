@@ -101,8 +101,13 @@ function NpsCard() {
   );
 }
 
-function FeatureCard() {
-  const [open, setOpen] = useState(false);
+/**
+ * The suggestion form. Exported so /feedback renders this same card rather
+ * than a second copy: `defaultOpen` shows the text box straight away, and
+ * hides Cancel (there is nothing to cancel back to on a page for this alone).
+ */
+export function FeatureCard({ defaultOpen = false }: { defaultOpen?: boolean }) {
+  const [open, setOpen] = useState(defaultOpen);
   const [message, setMessage] = useState("");
   const [saving, setSaving] = useState(false);
 
@@ -113,7 +118,7 @@ function FeatureCard() {
     setSaving(false);
     if (ok) {
       setMessage("");
-      setOpen(false);
+      setOpen(defaultOpen);
       toast.success("Thanks — we read every suggestion.");
     }
   }
@@ -138,7 +143,8 @@ function FeatureCard() {
             value={message}
             maxLength={1000}
             rows={3}
-            autoFocus
+            autoFocus={!defaultOpen}
+            aria-label="Your suggestion"
             placeholder="e.g. Add CUET papers, or a dark-mode fix on the mock timer…"
             onChange={(e) => setMessage(e.target.value)}
             disabled={saving}
@@ -148,9 +154,11 @@ function FeatureCard() {
             <Button type="button" variant="brand" size="sm" onClick={submit} disabled={saving || !message.trim()}>
               {saving ? "Sending…" : "Send suggestion"}
             </Button>
-            <Button type="button" variant="ghost" size="sm" onClick={() => setOpen(false)} disabled={saving}>
-              Cancel
-            </Button>
+            {!defaultOpen && (
+              <Button type="button" variant="ghost" size="sm" onClick={() => setOpen(false)} disabled={saving}>
+                Cancel
+              </Button>
+            )}
           </div>
         </div>
       )}

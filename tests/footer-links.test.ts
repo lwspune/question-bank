@@ -61,13 +61,23 @@ describe("footerLinks", () => {
     expect(expected).toContain("/notes/nda");
   });
 
-  it("About carries how-it-works, blog, about and the report mailto", () => {
+  it("About carries how-it-works, blog, about, the feedback form and the contact mailto", () => {
     const about = byTitle("About").links.map((l) => l.href);
     expect(about).toContain("/start");
     expect(about).toContain("/blog");
     expect(about).toContain("/about");
+    // The in-app form, so feedback lands in /dashboard/feedback, not an inbox.
+    expect(about).toContain("/feedback");
     const mailto = about.find((h) => h.startsWith("mailto:"));
     expect(mailto).toContain(CONTACT_EMAIL);
+    // The pre-rebrand subject line ("Question Bank feedback") is gone.
+    expect(decodeURIComponent(mailto!)).not.toMatch(/Question Bank/);
+    expect(decodeURIComponent(mailto!)).toContain("PYQ Vault");
+  });
+
+  it("does not label the mailto as a question report (that is the in-app flag)", () => {
+    const labels = byTitle("About").links.map((l) => l.label);
+    expect(labels).not.toContain("Report a question");
   });
 
   it("carries no GitHub link, and no /guide path beyond the index + exam hubs", () => {
