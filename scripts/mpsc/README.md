@@ -122,3 +122,4 @@ misread (one slip in the 2022 pilot, caught at 180 dpi): zoom any doubtful word.
 | paper | transcribed | marks vs key | committed |
 |---|---|---|---|
 | ssp-2022 (H15) | 100/100 | 100/100 | PRIVATE, 2026-09-27 (Q42, Q95, Q96 cancelled; Q2 print note) |
+| ssp-2021 (O14) | 100/100 | 100/100 | PRIVATE, 2026-09-27 (Q2, Q3, Q9, Q37, Q44, Q54, Q61 cancelled; Q45 print note) |
