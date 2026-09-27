@@ -384,6 +384,7 @@ describe("exam tiers", () => {
     graduate: [
       "cds",
       "mpsc-group-b-c",
+      "mpsc-state-services-prelims",
       "mpsc-state-services-mains",
       "mpsc-group-b-combined-mains",
       "mpsc-sti-mains",

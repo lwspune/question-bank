@@ -31,6 +31,7 @@ export type ExamSlug =
   | "ipmat-rohtak"
   | "jipmat"
   | "mpsc-group-b-c"
+  | "mpsc-state-services-prelims"
   | "mpsc-state-services-mains"
   | "mpsc-group-b-combined-mains"
   | "mpsc-sti-mains"
@@ -588,6 +589,23 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     guidesPath: null,
     notesPath: null,
     hasMocks: true, // 14 MPSC mocks published 2026-09-26 — the first bilingual mocks
+  },
+  {
+    slug: "mpsc-state-services-prelims",
+    // Rajyaseva: the state civil services (Deputy Collector, DySP, …), graduate entry.
+    tier: "graduate",
+    displayName: "MPSC State Services Prelims",
+    examName: "MPSC State Services Prelims", // must match the `exams` DB row exactly
+    family: "MPSC",
+    familyStage: "Prelims",
+    familyLabel: "State Services",
+    familyAxis: "Exam",
+    // GS Paper I only (CSAT is not ingested). Marathi + English on every question.
+    bilingual: true,
+    // 10 papers (2013-2022), 1,000 q, PUBLIC since 2026-09-27; keyed from MPSC's final keys.
+    guidesPath: null,
+    notesPath: null,
+    hasMocks: true, // 10 GS Paper I mocks published 2026-09-27
   },
   {
     slug: "mpsc-state-services-mains",
