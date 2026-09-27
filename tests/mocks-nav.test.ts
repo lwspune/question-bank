@@ -74,9 +74,11 @@ describe("mocksNav — cross-exam mock grouping", () => {
    * derived — these pin the derivation rather than the sentence.
    */
   describe("mockExamNames — the derived prose for /mock's metadata", () => {
-    it("names every mock exam and nothing else", () => {
+    // Names what the RAIL shows: a collapsed family (MPSC, IPMAT) once, by its
+    // family name — listing six MPSC exams made the indexed title unreadable.
+    it("names every rail entry and nothing else", () => {
       const prose = mockExamNames();
-      const expected = getMockExams().map((e) => e.displayName);
+      const expected = mockSideNav().slice(1).map((n) => n.label);
       // Split back apart rather than substring-matching, so an exam gaining
       // mocks later can never make this a false alarm — it just joins the list.
       const got = prose.split(/,\s*|\s+and\s+/).filter(Boolean);
@@ -87,7 +89,7 @@ describe("mocksNav — cross-exam mock grouping", () => {
     // and "…, MPSC Group B & C & UPSC CSE" reads as five exams, not two.
     it("reads as a list, with the last item joined by 'and'", () => {
       const prose = mockExamNames();
-      const n = getMockExams().length;
+      const n = mockSideNav().length - 1;
       expect(n).toBeGreaterThan(1); // otherwise the assertion below is vacuous
       expect(prose).toMatch(/ and /);
       // n exams → n-2 commas (none for two exams), so no trailing/doubled comma.

@@ -17,6 +17,9 @@ import { cn } from "@/lib/utils";
 export type SideNavItem = {
   href: string;
   label: string;
+  /** Other routes that light this item up — a collapsed exam family's link
+   *  stays active on each member exam's own page (/mock). */
+  alsoActive?: string[];
 };
 
 type Props = {
@@ -47,7 +50,7 @@ export default function GuideSideNav({ guideTitle, items, landingHref }: Props) 
   const list = (
     <ul className="space-y-1">
       {items.map((item) => {
-        const active = isActive(item.href);
+        const active = isActive(item.href) || (item.alsoActive ?? []).some(isActive);
         return (
           <li key={item.href}>
             <Link

@@ -6,7 +6,16 @@ import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPublishedMocks } from "@/lib/mocks/query";
-import { getMockExam, mockSideNav, mockExamSlugs } from "@/lib/mocks/mocksNav";
+import {
+  buildMockExamCards,
+  getMockExam,
+  getMockFamily,
+  mockFamilyOf,
+  mockSideNav,
+  mockExamSlugs,
+  type MockExamCard,
+  type MockFamilyNav,
+} from "@/lib/mocks/mocksNav";
 import {
   buildMockTypeCards,
   mockTypeHref,
@@ -24,6 +33,14 @@ export function generateStaticParams(): Params[] {
 }
 
 export function generateMetadata({ params }: { params: Params }): Metadata {
+  const family = getMockFamily(params.examSlug);
+  if (family) {
+    return {
+      title: `${family.name} Mock Tests — past papers, timed & auto-graded`,
+      description: `Sit ${family.name} mock tests online: real past papers served whole, on the official marking scheme, with a live timer. Free, from PYQ Vault.`,
+      alternates: { canonical: `/mock/exam/${family.slug}` },
+    };
+  }
   const exam = getMockExam(params.examSlug);
   if (!exam) return {};
   return {
@@ -68,9 +85,87 @@ function metaLine(card: MockTypeCard): string {
  * landed yet. Silently omitting it would make an empty shelf indistinguishable
  * from a shelf that does not exist.
  */
+/** "7 past papers · 2009–2017" for one member card on a family page. */
+function memberMeta(card: MockExamCard): string {
+  if (card.count === 0) return "Coming soon";
+  const span =
+    card.firstYear === 0
+      ? ""
+      : card.firstYear === card.lastYear
+        ? ` · ${card.firstYear}`
+        : ` · ${card.firstYear}–${card.lastYear}`;
+  return `${card.count} ${card.count === 1 ? "test" : "tests"}${span}`;
+}
+
+/**
+ * A family page (/mock/exam/mpsc): the family's exams as cards, under their
+ * stage (Prelims / Mains). The rail shows the family as ONE link, so this is
+ * where its exams are chosen. Every number is derived from the rows.
+ */
+async function MockFamilyPage({ family }: { family: MockFamilyNav }) {
+  const cards = buildMockExamCards(await getPublishedMocks(createSupabaseAnonClient()));
+  const cardOf = (slug: string) => cards.find((c) => c.slug === slug);
+  return (
+    <GuideShell
+      guideTitle="Mock Tests"
+      sideNav={mockSideNav()}
+      breadcrumbs={[{ href: "/mock", label: "Mocks" }, { label: family.name }]}
+    >
+      <GuideHero
+        eyebrow={`${family.name} · Timed mock tests`}
+        title={`${family.name} Mock Tests`}
+        subtitle={`Pick an exam. Each ${family.name} paper is served whole, timed and auto-graded on its own printed marking scheme.`}
+      >
+        <Link
+          href="/mock/attempts"
+          className="inline-flex items-center gap-1.5 rounded-md border px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          <History className="h-4 w-4" aria-hidden />
+          My attempts
+        </Link>
+      </GuideHero>
+
+      {family.stages.map((group) => (
+        <section key={group.stage ?? "all"} className="mt-8">
+          {group.stage && <h2 className="mb-3 text-lg font-semibold">{group.stage}</h2>}
+          <ul className="grid gap-4 sm:grid-cols-2">
+            {group.members.map((member) => {
+              const card = cardOf(member.slug);
+              return (
+                <li key={member.slug}>
+                  <Link
+                    href={`/mock/exam/${member.slug}`}
+                    className="group flex h-full flex-col rounded-lg border bg-card p-5 transition-colors hover:border-primary/40 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    <h3 className="font-semibold leading-tight">{member.displayName}</h3>
+                    <p className="mt-2 flex-1 text-xs font-medium text-muted-foreground tabular-nums">
+                      {card ? memberMeta(card) : "Coming soon"}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand-accent">
+                      Open
+                      <ArrowRight
+                        className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+                        aria-hidden
+                      />
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))}
+    </GuideShell>
+  );
+}
+
 export default async function MockExamTypePicker({ params }: { params: Params }) {
+  const family = getMockFamily(params.examSlug);
+  if (family) return <MockFamilyPage family={family} />;
+
   const exam = getMockExam(params.examSlug);
   if (!exam) notFound();
+  const parent = mockFamilyOf(exam.slug);
 
   const all = await getPublishedMocks(createSupabaseAnonClient());
   const cards = buildMockTypeCards(all.filter((m) => m.examName === exam.examName));
@@ -79,7 +174,11 @@ export default async function MockExamTypePicker({ params }: { params: Params })
     <GuideShell
       guideTitle="Mock Tests"
       sideNav={mockSideNav()}
-      breadcrumbs={[{ href: "/mock", label: "Mocks" }, { label: exam.displayName }]}
+      breadcrumbs={[
+        { href: "/mock", label: "Mocks" },
+        ...(parent ? [{ href: `/mock/exam/${parent.slug}`, label: parent.name }] : []),
+        { label: exam.displayName },
+      ]}
     >
       <GuideHero
         eyebrow={`${exam.displayName} · Timed mock tests`}
