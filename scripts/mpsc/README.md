@@ -130,3 +130,6 @@ misread (one slip in the 2022 pilot, caught at 180 dpi): zoom any doubtful word.
 | ssp-2016 (N07) | 100/100 | 99/100 (Q22: coaching mark wrong, key right) | PRIVATE, 2026-09-27 (Q28, Q31, Q75 cancelled; Q17, Q31 print notes) |
 | ssp-2015 (V05) | 100/100 | 100/100 | PRIVATE, 2026-09-27 (Q16, Q39 cancelled; Q12, Q36, Q98 print notes) |
 | ssp-2014 (G03) | 100/100 | 100/100 | PRIVATE, 2026-09-27 (Q93 cancelled; Q99 print note) |
+| ssp-2013 (X01) | 100/100 | 99/99 (Q74 unmarked) | PRIVATE, 2026-09-27 (Q74 cancelled; Q24, Q29 figures) |
+
+**All 10 papers committed PRIVATE (1,000 q, 24 cancelled, 7 figures).** Coaching marks agree with the official final key on 998 of 999 marked questions; the one disagreement (2016 Q22) is the coaching error. Making the exam PUBLIC, the registry entry and mocks are the user's call.
