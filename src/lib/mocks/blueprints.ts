@@ -550,6 +550,34 @@ export const MPSC_GBC_PAPER: MockPaperBlueprint = {
 };
 
 /**
+ * MPSC State Services (Rajyaseva) Prelims — GS Paper I: 100 questions, 200 marks,
+ * 2 hours, -1/4 of a question's marks per wrong answer (booklet instruction 7;
+ * scripts/mpsc/README.md). CSAT (Paper II) is not ingested, so this is the one
+ * paper per sitting.
+ *
+ * ONE section across the seven subjects the fixed chapter list allows
+ * (scripts/mpsc/config.ts SSP_CHAPTERS): the booklet prints no subject headings.
+ * `count: 100` is hard — a cancelled question is printed and ships as grace.
+ * Sittings are source_file-keyed via scripts/mocks/mpscSittings.ts.
+ */
+export const MPSC_SSP_GS1_PAPER: MockPaperBlueprint = {
+  code: "ssp-gs1",
+  examName: "MPSC State Services Prelims",
+  examSlug: "mpsc-state-services-prelims",
+  paperLabel: "GS Paper I",
+  durationSecs: 120 * 60,
+  marking: { correct: 2, wrong: -0.5 },
+  sections: [
+    {
+      key: "general-studies",
+      label: "General Studies",
+      subjects: ["History", "Geography", "Polity", "Economics", "General Science", "Environment", "Current Affairs"],
+      count: 100,
+    },
+  ],
+};
+
+/**
  * UPSC Civil Services (Prelims) — TWO papers per sitting, both 2 hours, both
  * 200 marks (scripts/upsc/README.md, read off the booklets):
  *
@@ -639,6 +667,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   IPMAT_INDORE_PAPER,
   JIPMAT_PAPER,
   MPSC_GBC_PAPER,
+  MPSC_SSP_GS1_PAPER,
   UPSC_GS1_PAPER,
   UPSC_CSAT_PAPER,
 ];

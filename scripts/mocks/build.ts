@@ -61,6 +61,7 @@ import {
   IPMAT_INDORE_PAPER,
   JIPMAT_PAPER,
   MPSC_GBC_PAPER,
+  MPSC_SSP_GS1_PAPER,
   UPSC_GS1_PAPER,
   UPSC_CSAT_PAPER,
   type MockPaperBlueprint,
@@ -87,8 +88,8 @@ import {
 import { deriveMhtCetSittings } from "./mhtcetSittings";
 import { deriveJeeSittings, JEE_SHIFT_SIZE } from "./jeeSittings";
 import { ipmatIndoreSittings, isGrace, jipmatSittings as deriveJipmatSittings } from "./ipmatSittings";
-import { deriveMpscSittings } from "./mpscSittings";
-import { PAPERS as MPSC_PAPERS } from "../mpsc/config";
+import { deriveMpscSittings, sspMockTitle } from "./mpscSittings";
+import { PAPERS as MPSC_PAPERS, SSP_PAPERS as MPSC_SSP_PAPERS } from "../mpsc/config";
 import { deriveMainsSittings, mainsBlueprint } from "./mpscMainsSittings";
 import { PAPERS as MPSC_MAINS_PAPERS } from "../mpsc-mains/config";
 import { deriveUpscSittings } from "./upscSittings";
@@ -660,8 +661,8 @@ function jeeSittings(bp: MockPaperBlueprint): SourceFileSitting[] {
  * MPSC Group B & C sittings as the shared shape. The official key's cancelled
  * questions ride as grace through `prepare`, as CDS's withdrawn items do.
  */
-function mpscSittings(): SourceFileSitting[] {
-  return deriveMpscSittings(MPSC_PAPERS).map((s) => ({
+function mpscSittings(papers = MPSC_PAPERS, titleFor?: (y: number, note: string) => string): SourceFileSitting[] {
+  return deriveMpscSittings(papers, undefined, titleFor).map((s) => ({
     key: s.key,
     sourceFile: s.sourceFile,
     year: s.year,
@@ -800,6 +801,7 @@ async function main() {
   }
   if (runMpsc) {
     await buildFromSourceFiles(db, MPSC_GBC_PAPER, mpscSittings(), run, "mpscSittings.ts");
+    await buildFromSourceFiles(db, MPSC_SSP_GS1_PAPER, mpscSittings(MPSC_SSP_PAPERS, sspMockTitle), run, "mpscSittings.ts");
   }
   if (runMpscMains) await buildMpscMains(db, run);
 

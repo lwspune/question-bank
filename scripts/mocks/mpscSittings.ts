@@ -47,6 +47,15 @@ export function mpscMockTitle(pyqYear: number, pyqNote: string): string {
   return `MPSC ${group} Prelims ${pyqYear}${date ? ` — ${date}` : ""}`;
 }
 
+/**
+ * "MPSC State Services Prelims 2020 — GS Paper I — 21 Mar 2021". The pyqNote is
+ * "<paper> · <date>" for these papers, not "<group> · <date>".
+ */
+export function sspMockTitle(pyqYear: number, pyqNote: string): string {
+  const [paper, date] = pyqNote.split(" · ");
+  return `MPSC State Services Prelims ${pyqYear} — ${paper}${date ? ` — ${date}` : ""}`;
+}
+
 function readCancelled(id: string): number[] {
   const key = JSON.parse(readFileSync(dataPath(id, "key"), "utf8")) as { cancelled?: number[] };
   return key.cancelled ?? [];
@@ -54,7 +63,8 @@ function readCancelled(id: string): number[] {
 
 export function deriveMpscSittings(
   papers: readonly PaperLike[],
-  cancelledFor: (id: string) => number[] = readCancelled
+  cancelledFor: (id: string) => number[] = readCancelled,
+  titleFor: (pyqYear: number, pyqNote: string) => string = mpscMockTitle
 ): MpscSitting[] {
   return papers.map((p) => {
     const graceNumbers = [...cancelledFor(p.id)].sort((a, b) => a - b);
@@ -67,7 +77,7 @@ export function deriveMpscSittings(
       sourceFile: p.sourceFile,
       year: p.pyqYear,
       slug: mpscMockSlug(p.id),
-      title: mpscMockTitle(p.pyqYear, p.pyqNote),
+      title: titleFor(p.pyqYear, p.pyqNote),
       graceNumbers,
     };
   });
