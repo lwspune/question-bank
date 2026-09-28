@@ -15,6 +15,18 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-28 (tenth) — MHT-CET Physics "Kinetic Theory of Gases" (3 pages · 80 PYQ · 7 concepts · 12 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-thermo-ktg`.**
+
+**Source pass (`_fix-phy-kinetic-theory.ts`, 8 rows; `_fix-phy-kinetic-theory2.ts`, 3 moves).** Every key derived. Key: `45abf5e2` (2 May 2023 S1 #28) — at constant volume λ = 1/(√2πd²n) is unchanged, (a); AK (b) uses λ ∝ T (constant pressure) — flipped against the AK; stem ('1500 d', not 1500/d) and options (d = √(373/273)) restored. Options restored from papers: `4529c10f` (√42/5, 21:25, √21:5; AK (b); its solution had computed 4/25), `944559d2` ((a) copied over (b); AK (a) P/T(Cp − Cv)), `c5be8812` ((a) copied), `df9f272b` (2022 #30 — bank had rewritten all four; the paper's (a) √(m[2]/m1), its key (a); key letter moves D → A with the content), `158611ee` (P′ lost in stem and option (b)), `842f5218` (triple backslashes). Kept with a note: `f066fa66` (3 May 2023 S2 #3) prints v_rms = 1 m/s; M = 2 g/mol needs ~1.93 km/s; AK (a). Twin flags (`1fb887d1`/`e6a8f697`, `db0f55c0`/`749bfc8a`, `1f056b31`/`da903002`) are recurrences.
+
+**Reshape.** 'Mean Free Path and Speed of Sound in Gases' held 3 rows; moved to the kinetic-theory subtopic and the empty subtopic deleted after checking every visibility.
+
+**Authoring.** Gas laws (percentage traps, kelvin) and PV = nRT (molecule counts, density, leak). Kinetic page: pressure as ⅔ E/V (with the mean-free-path point), r.m.s. speed with T and M (and sound), r.m.s. through an adiabatic expansion. Equipartition: average KE (kelvin, container stopped), degrees of freedom and specific heats (mixtures, polyatomic). Worked numbers derived: 14.92 °C, ρ₀/2, 225 J, 1.93 km/s, 16, 8.3 × 10⁻²¹ J, 84R.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:intro clean · quiz:coverage 0 strong gaps, 12 traps.
+
+**Not proven.** Render beyond the build's prerender.
+
 **2026-09-28 (ninth) — MHT-CET Physics "Thermodynamics" (3 pages · 84 PYQ · 7 concepts · 12 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-thermo-ktg`.**
 
 **Source pass (`_fix-phy-thermodynamics.ts`, 8 rows).** Every key derived; none changed. Options: `27afec8d` (16 May 2023 S2 #14) — the bank's options (its (c) '2T') replaced by the paper's (√3T, √(1/2T), √2T, √3T); VP² const gives T ∝ √V, √2T, AK (c). `d699876e` (12 May 2024 S2 #3) — paper stem stops at 'are the lengths'; bank had invented four options; paper's options restored and the stem completed in brackets from the 22 Apr 2025 twin; AK (c). `294856d8` option (d) '−3 v' → −3[p]v. Figures attached: `1b358858` (10 May 2024 S2 #42, graphs (a)-(d)), `a29d0bbb` (10 May 2023 S1 #30, graphs A-D; AK (d) = B), `9cf126fe` (9 May 2023 S2 #11, diagrams A-C). Stem: `05a22ec0` paraphrase restored. Solution: `130bcdbf` had lost the f of \frac to a form feed. Kept on the key: `c3125dd9` (11 May 2023 S2 #31, p–T of a cycle) — AK (d) (E); the options are too small to settle independently. `d93b575d`'s stated 5 J of net heat does not match its graph's 2.5 J; the question's own number decides W_CA = −5 J. Six figure keys read and right.
