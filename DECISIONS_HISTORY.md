@@ -15,6 +15,16 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-28 (eleventh) — MHT-CET Physics "Gravitation" (4 pages · 80 PYQ · 8 concepts · 13 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-gravitation`.**
+
+**Source pass (`_fix-phy-gravitation.ts`, 13 rows).** Every key derived. Keys: `ecb799c4` (11 May 2024 S2 #45) — raise-to-h : put-in-orbit = 2h/R; AK (a); bank keyed (d) R/2h, contradicting its own twin `ec2a8829` — flipped. `af7cc293` (2 May 2023 S1 #41) — F₁/F₂ = R³/(r₁²r₂) = (c), AK (c); bank keyed (b) though its solution derived (c) — flipped. Options restored from papers (roots or fractions lost): `b8dc7994` ((√n − 1)R), `ca672d99` ((√3/2)n), `9ddeafa9` (F/√1.5), `2f11d104` (2√(G(M₁ + M₂)/d), printed as a 'square root of index 2'), `03f7ab91` (1:√8, 1:√3), `ea1ed0f7` (three identical options), `ad93fe6a`. Stem: `6964ad88` paraphrase restored. Triple backslashes: `d61a3b0f`, `f2f05622`, `48f95341`.
+
+**Authoring.** Newton's law and the field inside/outside spheres and shells (one card). Variation of g: height and depth (with pendulums and capillaries), planets by ρR, spin and latitude. Energy: conservation between two distances (the 2h : R ratio) and escape velocity with the height below it. Satellites: orbital speed and period (T² ∝ r³, other force laws, surface orbits) and orbital energy. Worked numbers derived: g₀/2 and g₀/4, 16F, 2R/3, R/2, √(gR), 4R/5, 33.6 km/s, 3 : 1 and 1 : 27, 3GMm/4R.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:intro clean for this chapter · quiz:coverage 0 strong gaps, 13 traps.
+
+**Not proven.** Render beyond the build's prerender.
+
 **2026-09-28 (tenth) — MHT-CET Physics "Kinetic Theory of Gases" (3 pages · 80 PYQ · 7 concepts · 12 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-thermo-ktg`.**
 
 **Source pass (`_fix-phy-kinetic-theory.ts`, 8 rows; `_fix-phy-kinetic-theory2.ts`, 3 moves).** Every key derived. Key: `45abf5e2` (2 May 2023 S1 #28) — at constant volume λ = 1/(√2πd²n) is unchanged, (a); AK (b) uses λ ∝ T (constant pressure) — flipped against the AK; stem ('1500 d', not 1500/d) and options (d = √(373/273)) restored. Options restored from papers: `4529c10f` (√42/5, 21:25, √21:5; AK (b); its solution had computed 4/25), `944559d2` ((a) copied over (b); AK (a) P/T(Cp − Cv)), `c5be8812` ((a) copied), `df9f272b` (2022 #30 — bank had rewritten all four; the paper's (a) √(m[2]/m1), its key (a); key letter moves D → A with the content), `158611ee` (P′ lost in stem and option (b)), `842f5218` (triple backslashes). Kept with a note: `f066fa66` (3 May 2023 S2 #3) prints v_rms = 1 m/s; M = 2 g/mol needs ~1.93 km/s; AK (a). Twin flags (`1fb887d1`/`e6a8f697`, `db0f55c0`/`749bfc8a`, `1f056b31`/`da903002`) are recurrences.
