@@ -322,6 +322,7 @@ export type VisualizationSlug =
   | "ocn-coral-reef-types"
   // CDS Elementary Mathematics — Number System chapter
   | "cds-unit-digit-cycle-wheel"
+  | "cds-trig-right-triangle"
   | "cds-rational-irrational-line"
   // MHT-CET Maths — Mathematical Logic chapter
   | "logic-switch-series-parallel"
