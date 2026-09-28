@@ -84,12 +84,14 @@ describe("formula axis — structural integrity", () => {
 
   it("pins the Matrices & Determinants classification", () => {
     // 768 MCQs read individually; 79 distinct identities found, 40 of them at
-    // or above the publishing floor, covering 707 questions. If a re-tag moves
-    // these, it should be a deliberate change rather than a silent one.
+    // or above the publishing floor, covering 707 questions — 705 since
+    // 2026-09-28, when the MHT-CET label fix hid two copies whose twins were
+    // already tagged (766 MCQs). If a re-tag moves these, it should be a
+    // deliberate change rather than a silent one.
     const chapter = FORMULA_CHAPTERS[0];
     expect(chapter.topics.length).toBe(40);
     const covered = new Set(chapter.topics.flatMap((t) => t.questionIds));
-    expect(covered.size).toBe(707);
+    expect(covered.size).toBe(705);
     // The pilot formula, cross-checked against an independent exhaustive scan
     // of every adjoint-mentioning MCQ in the bank, which also found 14.
     expect(formulaBySlug("adj-adj-a")!.topic.questionIds).toHaveLength(14);
