@@ -685,15 +685,26 @@ describe("getQuestionResources — MHT-CET Maths guide (Template C)", () => {
     expect(res.guide).toBeNull();
   });
 
-  it("returns no guide for MHT-CET subjects with no guide yet", () => {
-    // Chemistry since 2026-09-28, when Physics shipped its guide.
+  it("returns no guide for a subject with no guide", () => {
+    // Every MHT-CET subject has a guide since 2026-09-28, so this uses JEE Mains.
     const res = call({
-      examName: "MHT-CET",
+      examName: "JEE Mains",
       subjectName: "Chemistry",
       chapterName: "Solid State",
       subtopicName: null,
     });
     expect(res.guide).toBeNull();
+  });
+
+  it("links an MHT-CET Chemistry chapter to its own playbook", () => {
+    // Chemical Bonding's playbook slug differs from its DB chapter name.
+    const res = call({
+      examName: "MHT-CET",
+      subjectName: "Chemistry",
+      chapterName: "Chemical Bonding and Molecular Structure",
+      subtopicName: null,
+    });
+    expect(res.guide?.href).toBe("/guide/mht-cet-chemistry/playbooks/chemical-bonding");
   });
 
   it("links an MHT-CET Physics chapter to its own playbook", () => {

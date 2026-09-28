@@ -231,7 +231,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "senior",
     displayName: "MHT-CET",
     examName: "MHT-CET",
-    guidesPath: "/guide/mht-cet", // hub: MHT-CET Mathematics + Physics (Template C)
+    guidesPath: "/guide/mht-cet", // hub: MHT-CET Maths + Physics (Template C) + Chemistry (execution-mode strands)
     notesPath: "/notes/mht-cet", // exam hub: MHT-CET Maths notes
     hasMocks: true, // 60 mocks: Paper I (Maths) + Paper II (Phy & Chem) per sitting
   },

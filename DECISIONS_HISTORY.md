@@ -15,6 +15,20 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-28 (twenty-second) — MHT-CET Chemistry strategy guide (/guide/mht-cet-chemistry), on `feat/mhtcet-chemistry-guide`, after the label fix.**
+
+**Measurement.** 2,074 PUBLIC PYQ, 42 papers (1/1/16/11/13), 30 chapters, EASY 1,084 · MODERATE 923 · HARD 67 (3.2%). Recent (2024-25, 24 papers) rates sum to 49.4, not 50: some papers are a question or two short in the bank, so the test compares the sum with the grid's own mean paper size. Numerical-answer share by chapter: physical 50-71%, organic 3-26%, descriptive 5-31% — execution-mode strands (the Template B default), unlike Maths and Physics.
+
+**Structure.** Calculate 8 chapters (20.8 q/paper), Reactions 6 (11.3), Recall 9 (13.6), tail 7 (3.8). Posture is `first-sweep` / `second-sweep`, not HARD-driven. `/reference` replaces `/formulas`: named reactions and reagents for Reactions, formulas for Calculate, tables for Recall, rendered by the shared FormulaSheet. `playbooks.ts` derives subtopics from the strategy strands. Pages were copied from the Physics guide and every strand-dependent line rewritten; the type system (StrandId) flagged each one.
+
+**Two more data rows, found by the grid.** Two papers held 51 Chemistry rows for 50 items (`_paper_fit.py` scores rows against one paper's 50 items). 19 April 2025 S2: `b780d647` duplicated `804143d8` (#51, in the published mock) — hidden; the Alkenes naming card now features `4333e93c`. 14 May 2024 S1: `517133b2` is 12 May 2024 S1 #65 by its wording, and the published 12 May S1 mock uses it — the 2026-09-26 Alkenes ship had re-dated it to 14 May S1 by reading item 76 of the two-paper file as S1 when it is the first paper, 14 May S2. Restored.
+
+**Downstream.** /guide/mht-cet hub and the /guide picker now list three guides; sitemap, question-card backlinks, strategy-headline test. `tests/question-resources.test.ts`'s 'no guide' fixture moved to JEE Mains Chemistry (no MHT-CET subject lacks one), plus a positive Chemistry test.
+
+**Tests.** tests/guide-mht-cet-chemistry-playbooks.test.ts: grid-pinned rates (a 2-dp tolerance of half a hundredth — 0.875 prints 0.88), strand sums, the 0.9 line both ways, cross-references; live: taxonomy both ways (practice-only 'Empirical and Molecular Formula' excluded by name and proven to hold no PYQ), bank HARD 67, Electrochemistry 11, galvanic page 10, Kinetics' three HARD-free pages 103. tests/mhtcet-chemistry-trends-reconcile.test.ts: drift rows, HARD_BY_YEAR, the EASY shift.
+
+**Not proven.** Render beyond the build's prerender.
+
 **2026-09-28 (twenty-first) — MHT-CET Chemistry label fix (ROADMAP 2026-09-26), on `feat/mhtcet-chem-labels`, after a 360 the user approved.**
 
 **Scope.** 132 PUBLIC Chemistry PYQ rows under the four suspect labels (28 '2023 Shift 1', 35 '16th May Shift 2', 21 '13th May Shift 1', 48 '12th May Shift 2'). Located in the extracted docx papers with `_locate_fuzzy.py --all-items`; planned with `_chem_label_plan.py` (the Physics rule: keep the correctly-labelled row per paper item, hide copies, re-date a sole copy); 9 weak locations resolved by hand. `_chem_label_impact.ts` measured the blast radius; `_chem_label_apply.ts` applied it (rollback file `generated-papers/chem-labels.rollback.json`).

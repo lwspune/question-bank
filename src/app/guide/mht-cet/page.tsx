@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Atom, BookOpen, Sigma } from "lucide-react";
+import { ArrowRight, Atom, BookOpen, FlaskConical, Sigma } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
@@ -13,9 +13,9 @@ const PAGE_INTRO =
   "summary. Pick the subject you're preparing.";
 
 export const metadata: Metadata = {
-  title: "MHT-CET Guides — Strategy for MHT-CET Maths and Physics",
+  title: "MHT-CET Guides — Strategy for Maths, Physics and Chemistry",
   description:
-    "Evidence-led strategy guides for MHT-CET Mathematics and Physics, built from every past paper from 2021 to 2025. Every claim is measured against the live past-year question bank.",
+    "Evidence-led strategy guides for MHT-CET Mathematics, Physics and Chemistry, built from every past paper from 2021 to 2025. Every claim is measured against the live past-year question bank.",
   alternates: { canonical: "/guide/mht-cet" },
 };
 
@@ -30,10 +30,10 @@ type ExamGuide = {
 };
 
 /**
- * Two guides today: Mathematics (2026-08-22) and Physics (2026-09-28), both
- * Template C with tier strands. Chemistry is next and needs its own analysis:
- * it is ~3% HARD and flat, and it splits cleanly by execution mode (physical
- * chapters 59-71% numerical answers, organic and inorganic 3-17%).
+ * All three subjects: Mathematics (2026-08-22) and Physics (2026-09-28), both
+ * Template C with tier strands, and Chemistry (2026-09-28), whose strands are
+ * execution modes — it is ~3% HARD and flat, and it splits cleanly by how a
+ * question is answered (physical chapters mostly numerical answers).
  *
  * This list is hand-written because guides have no registry — see the note in
  * src/lib/guide/guidesNav.ts.
@@ -72,6 +72,21 @@ const GUIDES: ExamGuide[] = [
       "Formula sheet and the ratio, sign and figure traps the paper reuses",
     ],
   },
+  {
+    href: "/guide/mht-cet-chemistry",
+    exam: "MHT-CET Chemistry",
+    title: "How MHT-CET Chemistry actually works",
+    blurb:
+      "Every Chemistry paper from 2021 to 2025, all 2,074 questions. Only 3% of them are HARD, so the axis is speed: answer the recall and reaction questions on sight, calculate after, and hand the saved minutes to Physics.",
+    qCount: 2074,
+    yearWindow: "2021-2025 · 42 papers",
+    highlights: [
+      "Three strands by how a question is answered: Recall, Reactions, Calculate",
+      "23 chapter playbooks with the named reactions and formulas each turns on",
+      "2025: Structure of Atom halved, three chapters rose, EASY fell to 42%",
+      "One reference page of reactions, reagents and formulas",
+    ],
+  },
 ];
 
 export default function MhtCetGuideIndex() {
@@ -84,8 +99,8 @@ export default function MhtCetGuideIndex() {
       <GuideJsonLd
         type="CollectionPage"
         path="/guide/mht-cet"
-        headline="MHT-CET Guides — Strategy for MHT-CET Maths and Physics"
-        description="Evidence-led strategy guides for MHT-CET Mathematics and Physics, built from every past paper from 2021 to 2025."
+        headline="MHT-CET Guides — Strategy for Maths, Physics and Chemistry"
+        description="Evidence-led strategy guides for MHT-CET Mathematics, Physics and Chemistry, built from every past paper from 2021 to 2025."
       />
 
       <GuideHero
@@ -100,7 +115,9 @@ export default function MhtCetGuideIndex() {
             ? Sigma
             : g.href.includes("physics")
               ? Atom
-              : BookOpen;
+              : g.href.includes("chemistry")
+                ? FlaskConical
+                : BookOpen;
           return (
             <li key={g.href}>
               <Link

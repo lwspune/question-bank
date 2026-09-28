@@ -8,7 +8,7 @@ export const ALKENE_STRUCTURE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An alkene is named from the longest chain that contains its C=C, numbered to give the double bond the lowest locant; its stability grows with the number of alkyl groups on the double-bonded carbons.",
   whyItMatters:
-    "14 PYQs, none HARD. Six are IUPAC names of a drawn alkene, four are isomers, sp³ counts and the alkadiene, and four put substituted alkenes in stability order. " +
+    "13 PYQs, none HARD. Five are IUPAC names of a drawn alkene, four are isomers, sp³ counts and the alkadiene, and four put substituted alkenes in stability order. " +
     "Three cards.",
   concepts: [
     {
@@ -44,7 +44,7 @@ export const ALKENE_STRUCTURE_NOTE: SubtopicNote = {
         { prompt: "Parent of CH₃CH₂C(CH₃)=C(Br)CH₂CH₃?", answer: "Hex-3-ene (3-bromo-4-methylhex-3-ene)" },
         { prompt: "Which comes first in a name: bromo or methyl?", answer: "Bromo (alphabetical)" },
       ],
-      pyqExampleId: "b780d647-7ae3-4202-b6cf-17c64d2e064f",
+      pyqExampleId: "4333e93c-530c-407d-9ddd-c97a5e54947a",
       traps: [
         {
           title: "Taking the longest chain that skips the double bond",
