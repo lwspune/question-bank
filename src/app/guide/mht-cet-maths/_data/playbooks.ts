@@ -425,9 +425,9 @@ export const PLAYBOOKS: Playbook[] = [
     slug: "trigonometry-ii",
     name: "Trigonometry - II",
     summary:
-      "39 q - 0.92/paper - 49% HARD. The Std XI identity chapter, on one subtopic and with no notes pages yet. Eight of its 19 HARD questions are evaluations at 18°, 20° and π/8 that fall to a memorised value rather than to algebra; learn those values and the compound-angle list first, and leave the conditional identities for the second pass.",
+      "39 q - 0.92/paper - 49% HARD. The Std XI identity chapter, in three notes pages: compound angles, multiple angles, and sum-to-product. Eight of its 19 HARD questions are evaluations at 18°, 20° and π/8 that fall to a memorised value rather than to algebra; learn those values and the compound-angle list first, and leave the conditional identities for the second pass.",
     chapter: "Trigonometry - II",
-    subtopics: ["Trigonometric Identities and Compound/Half-Angle Formulas"],
+    subtopics: ["Compound Angles and Conditional Identities", "Multiple and Sub-multiple Angles", "Sum-to-Product and Product Formulas"],
     qCount: 39,
     qPerPaper: 0.92,
     pctHard: 49,

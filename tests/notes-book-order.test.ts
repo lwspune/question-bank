@@ -9,6 +9,7 @@ describe("MHT-CET notes follow the Balbharati book order (Class XI, then XII)", 
   it("Maths", () => {
     expect(slugs("mht-cet-maths")).toEqual([
       // Class XI
+      "trigonometry-ii",
       "determinants-and-matrices",
       "straight-line",
       "circle",

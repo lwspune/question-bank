@@ -15,6 +15,16 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-28 (eighteenth) — MHT-CET Maths "Trigonometry - II" (3 pages · 39 PYQ · 6 concepts), 100% concept-tag coverage, on `feat/mhtcet-maths-trig2`.**
+
+**Source pass** (`_fix-mat-trig2.ts`, via `_phy_repair.ts`, now subject-aware). Every row was located in its paper and every key re-derived. `b358ae2f` (14 May 2024 S1): options restored from the paper, 1 ± 4cos²(α/2) forms; key (b) held; solution rewritten (sin²θ = 2cos²(α/2)). `55c4ef9d` (2021 #107): the bank had invented negative options; the paper prints 5/√13, 5/√26, 5/13, √(1/26); the 2021 AK keys (d); cos(x/2) = −1/√26, so the solution names the sign the paper dropped. `e13a4cdc` (4 May 2023 S1 #138): the stem had lost the √ of √3 csc 20°. `89e6575e`: option (c) restored to 2^n. `ce692f83` and `49df6e8f`: solutions rewritten. The `13 May 2024 S1` copy of cos²48° − sin²12° (`de5e24d7`) is left, per the ROADMAP item on that file.
+
+**Reshape.** One subtopic became three, in the book's order: Compound Angles and Conditional Identities (13 q, 2 HARD), Multiple and Sub-multiple Angles (13, 9 HARD), Sum-to-Product and Product Formulas (13, 8 HARD). The old subtopic was renamed to the first, so no row was orphaned. The shipped MHT-CET Maths guide named the old subtopic in its playbook, strategy `mustDrill` and chapter table, and said the chapter had no notes; all were updated, and `tests/guide-mht-cet-maths-playbooks.test.ts` (prod contract) passes. `tests/question-resources.test.ts` used Trigonometry - II as its 'unregistered chapter'; it now uses Sequences and Series.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:intro clean · quiz:coverage 0 strong gaps, 14 traps.
+
+**Not proven.** Render beyond the build's prerender.
+
 **2026-09-28 (seventeenth) — MHT-CET Physics "Units and Measurement" (1 page · 14 PYQ · 2 concepts) and "Mechanical Properties of Solids" (1 page · 6 PYQ · 2 concepts), 100% concept-tag coverage, on `feat/mhtcet-physics-units-solids`.**
 
 **Source pass.** Units (`_fix-phy-units.ts`): `fcb05c7e` (25 Apr 2025 S1 #6) — the paper prints the wire's length as '± 0.06 cm' with no value; 6 cm gives the keyed 4% — [6]; `a8c81d5e` stray dot-accent over s. Solids (`_fix-phy-solids.ts`): `ebe4c03c` (15 May 2023 S2 #50) — the paper's option (b) (K/N)(1 + N) had become K/(N(1 + N)), leaving no correct option; restored, AK (b). All other keys derived and right.
