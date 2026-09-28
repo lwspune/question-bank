@@ -115,6 +115,11 @@ import {
   MHTCET_TRIG2_SLUGS,
 } from "@/app/notes/mht-cet-maths/trigonometry-ii/_data";
 import {
+  MHTCET_CONICS_CHAPTER,
+  MHTCET_CONICS_NOTES,
+  MHTCET_CONICS_SLUGS,
+} from "@/app/notes/mht-cet-maths/conic-sections/_data";
+import {
   MHTCET_DEFINITE_INTEGRATION_CHAPTER,
   MHTCET_DEFINITE_INTEGRATION_NOTES,
   MHTCET_DEFINITE_INTEGRATION_SLUGS,
@@ -1273,6 +1278,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_TRIG2_CHAPTER,
     notes: MHTCET_TRIG2_NOTES,
     slugs: MHTCET_TRIG2_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "conic-sections",
+    chipLabel: "Conic Sections",
+    chapter: MHTCET_CONICS_CHAPTER,
+    notes: MHTCET_CONICS_NOTES,
+    slugs: MHTCET_CONICS_SLUGS,
   },
   {
     examName: "MHT-CET",

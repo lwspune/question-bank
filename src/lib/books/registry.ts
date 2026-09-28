@@ -503,9 +503,10 @@ export const MHT_CET_MATHS: BookDefinition = {
     {
       slug: "conic-sections",
       name: "Conic Sections",
-      // 19 q across 1 subtopic, in descending question count.
+      // 19 q across 2 subtopics (split into the notes pages 2026-09-28), in descending question count.
       groupSubtopics: [
-        { name: "Conic Properties — Eccentricity, Orthogonality, and Intersection" }, // 19
+        { name: "Ellipse and Hyperbola" }, // 11
+        { name: "Parabola" }, // 7
       ],
     },
     {
