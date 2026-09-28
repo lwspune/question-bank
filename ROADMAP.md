@@ -19,6 +19,10 @@ Set aside at the user's call; each carries a `dropped` reason in `scripts/mpsc-m
 
 To revive one: delete its `dropped` field, transcribe into `data/<id>.t0N.json`, then `merge` → `commit`.
 
+## Backfill ledger — the MHT-CET Maths trends matrix still keys its columns by source file (2026-09-28)
+
+**Found building the Physics guide.** `scripts/mhtcet/trends-matrix.ts` grouped questions into columns by `source_file`, but a paper is its year + `pyq_note`: a row re-dated to the paper it came from keeps the file it was ingested from. On Physics that made 44 columns for 42 papers — 14 re-dated rows of 16 May 2023 Shift 2 and 3 undated-compilation rows each stood in a column of their own. The fix, `canonicalPaperFiles` in `scripts/lib/mhtcetTrendsMatrix.ts` (tested), is live for Physics and Chemistry only; **Maths still keys by file**, because switching it moves numbers on the shipped `/guide/mht-cet-maths/trends` page and in `tests/mhtcet-trends-reconcile.test.ts` (Maths has the 132 re-dated "3 May" rows and its own 2025 compilation file). **360 before doing it:** regenerate with the Maths branch removed from the `column` guard, diff `matrix.generated.ts`, and re-derive any trends/playbook prose the grid moves. Needs the user's go.
+
 ## Backfill ledger — three admin reads still resolve names from the FIRST 1,000 accounts only (2026-09-27)
 
 `auth.admin.listUsers({ perPage: 1000 })` returns one page and no error, so past 1,000 accounts (412 today) names silently turn into "(unknown)". The feedback-review fix moved the paged reader into `src/lib/supabase/authUsers.ts` (`listAllAuthUsers`) and switched `/dashboard/feedback` to it. **Still on one page:** `src/lib/mocks/adminStats.ts` (per-mock attempt names), `src/lib/entitlements/admin.ts` (two reads). `src/lib/members/admin.ts` is STAFF-only and does not need it. Not reworked: 360 = low risk, trivial swap, nothing wrong until 1,000 accounts; do it before then.

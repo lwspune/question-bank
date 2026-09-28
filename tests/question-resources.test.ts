@@ -686,13 +686,25 @@ describe("getQuestionResources — MHT-CET Maths guide (Template C)", () => {
   });
 
   it("returns no guide for MHT-CET subjects with no guide yet", () => {
+    // Chemistry since 2026-09-28, when Physics shipped its guide.
     const res = call({
       examName: "MHT-CET",
-      subjectName: "Physics",
-      chapterName: "Electrostatics",
+      subjectName: "Chemistry",
+      chapterName: "Solid State",
       subtopicName: null,
     });
     expect(res.guide).toBeNull();
+  });
+
+  it("links an MHT-CET Physics chapter to its own playbook", () => {
+    // Ray Optics is the one playbook whose slug differs from its DB chapter name.
+    const res = call({
+      examName: "MHT-CET",
+      subjectName: "Physics",
+      chapterName: "Optics (Ray)",
+      subtopicName: null,
+    });
+    expect(res.guide?.href).toBe("/guide/mht-cet-physics/playbooks/ray-optics");
   });
 
   it("does not leak an NDA chapter name into the MHT-CET guide", () => {
