@@ -6,7 +6,7 @@ export const MAXIMA_MINIMA_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Locate the peaks and valleys of a function: find the critical points where the derivative is zero, classify them with the first- or second-derivative test, then apply the machinery to constrained sets, parameter conditions, and real word problems.",
   whyItMatters:
-    "This is the largest and hardest subtopic in the whole chapter — 42 PYQs, heavily HARD. Everything else in Applications of Derivatives feeds into it. The MHT-CET question factory recycles a handful of templates relentlessly: the extreme-value-parameter family (y = a log x + bx² + x, extrema at x = −1 and x = 2), the maximum of a cubic on a set S = {x : quadratic ≤ 0}, wire-cutting and open-tank optimisation, profit maximisation, and the minimum of a sec θ − b tan θ. " +
+    "This is the largest and hardest subtopic in the whole chapter — 39 PYQs, a quarter of them HARD. Everything else in Applications of Derivatives feeds into it. The MHT-CET question factory recycles a handful of templates relentlessly: the extreme-value-parameter family (y = a log x + bx² + x, extrema at x = −1 and x = 2), the maximum of a cubic on a set S = {x : quadratic ≤ 0}, wire-cutting and open-tank optimisation, profit maximisation, and the minimum of a sec θ − b tan θ. " +
     "The recurring traps live here too: the second-derivative sign (f″ < 0 is a MAX, not a min), forgetting to check the endpoints of a constrained set, and dropping the AM-GM shortcut that turns a two-line derivative problem into one line.",
   concepts: [
     // 1 — critical points (FOUNDATION, no PYQ, lint-exempt)

@@ -6,7 +6,7 @@ export const ARRANGEMENTS_WITH_CONSTRAINTS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Arrange in a row under a condition: divide by k! for each letter repeated k times, glue a together-group into one block, place never-together items in the gaps, and fill a fixed position before counting the rest.",
   whyItMatters:
-    "10 PYQs at 50% HARD — the chapter's most expensive large page and the one where a single misread word costs the mark. " +
+    "9 PYQs at 44% HARD — the chapter's most expensive large page and the one where a single misread word costs the mark. " +
     "Word stems recur with the same letters (CALCULATE, HAVANA, MANAMA, BARRACK) and the same three constraints — a fixed first and last letter, two letters kept apart, a group kept together — and the students-on-a-platform stem has been set twice. " +
     "Every one is answered by the four moves below in some order; the difficulty is only in choosing the order.",
   concepts: [

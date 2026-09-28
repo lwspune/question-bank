@@ -6,7 +6,7 @@ export const CORNER_POINT_METHOD_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A linear objective over a polygon takes its maximum and minimum at corners: list the vertices, evaluate Z at each, and read off the largest and smallest.",
   whyItMatters:
-    "16 PYQs and not one HARD — the chapter's largest page and the cheapest two marks in the subject. Half the stems give the constraints, half give the figure with the corners labelled; either way the work is four or five substitutions. " +
+    "14 PYQs and not one HARD — the chapter's largest page and the cheapest two marks in the subject. Half the stems give the constraints, half give the figure with the corners labelled; either way the work is four or five substitutions. " +
     "One 2024 figure stem carries an official key that its own working contradicts (19.8 marked where the corner gives 19.5); it is kept as printed and taught as a trap, and it is the only irregularity in sixteen questions.",
   concepts: [
     // 1 — the theorem

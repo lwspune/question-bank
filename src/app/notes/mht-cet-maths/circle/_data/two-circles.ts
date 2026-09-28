@@ -6,7 +6,7 @@ export const TWO_CIRCLES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Compare the distance d between the centres with r₁ + r₂ and |r₁ − r₂|: d > r₁ + r₂ gives 4 common tangents, d = r₁ + r₂ external touching and 3, |r₁ − r₂| < d < r₁ + r₂ cutting and 2, d = |r₁ − r₂| internal touching and 1, d < |r₁ − r₂| one inside the other and 0.",
   whyItMatters:
-    "8 PYQs at 50% HARD. Four are the count of common tangents (the 2025 stem and three earlier), two are the external-touching condition for x² + y² + 2ax + c = 0 and x² + y² + 2by + c = 0 (set in consecutive 2024 shifts), one is internal touching with a parameter, and one asks for the centre of a circle touching a given circle internally at a given point. " +
+    "7 PYQs at 43% HARD. Four are the count of common tangents (the 2025 stem and three earlier), one is the external-touching condition for x² + y² + 2ax + c = 0 and x² + y² + 2by + c = 0 (2024), one is internal touching with a parameter, and one asks for the centre of a circle touching a given circle internally at a given point. " +
     "The whole page is one comparison — d against the sum and the difference of the radii.",
   concepts: [
     // 1 — relative position and common tangents

@@ -6,7 +6,7 @@ export const COUNTING_NUMBERS_AND_FIGURES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Count numbers by fixing the constrained digit first (no leading zero, last digits for divisibility), and count figures from points by nCr minus the degenerate collinear choices.",
   whyItMatters:
-    "11 PYQs at 36% HARD, and the most mechanical page in the chapter. " +
+    "10 PYQs at 40% HARD, and the most mechanical page in the chapter. " +
     "Digit stems test divisibility by 3 (digit sum), by 25 (last two digits) and the leading-zero exclusion; figure stems are nC2 handshakes and diagonals, nC3 triangles with collinear points removed, and the greatest number of intersections of lines and circles. " +
     "The two HARD outliers — a gcd-with-36 count and triangles using no polygon side — are inclusion–exclusion in disguise.",
   concepts: [

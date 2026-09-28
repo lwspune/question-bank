@@ -103,10 +103,12 @@ describe("the generated grid agrees with itself", () => {
       expect(rateRow.total, rateRow.chapter).toBe(row.total);
       YEAR_COLUMNS.forEach((col, i) => {
         const q = columnsFor([col.year]).reduce((a, c) => a + row.counts[c], 0);
-        expect(rateRow.rates[i], `${rateRow.chapter} ${col.year}`).toBeCloseTo(
-          q / col.shifts,
-          2
-        );
+        // Rates are rounded to 2 places, so an exact tie (2/16 = 0.125 -> 0.13) sits 0.005 away;
+        // toBeCloseTo(_, 2) fails it on floating-point error. Same bound as the Chemistry test.
+        expect(
+          Math.abs(rateRow.rates[i] - q / col.shifts),
+          `${rateRow.chapter} ${col.year}`
+        ).toBeLessThanOrEqual(0.00501);
       });
     }
   });

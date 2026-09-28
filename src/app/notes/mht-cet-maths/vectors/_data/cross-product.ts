@@ -6,7 +6,7 @@ export const CROSS_PRODUCT_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The vector product whose magnitude is the area of a parallelogram and whose direction is the right-hand-rule perpendicular — the engine behind areas, unit normals, angles, and a whole family of vector-equation problems.",
   whyItMatters:
-    "At 66 PYQs this is the chapter's biggest subtopic after the scalar triple product, and nearly as punishing — roughly 64% of these are rated HARD. " +
+    "At 63 PYQs this is the chapter's biggest subtopic after the scalar triple product, and nearly as punishing — roughly 63% of these are rated HARD. " +
     "Three themes dominate: AREA (triangle, parallelogram, from diagonals, or from a side-plus-diagonal), the PERPENDICULAR DIRECTION (unit normal, vector of a given magnitude perpendicular to two), and VECTOR EQUATIONS that mix a cross and a dot condition (solve for the unknown vector, find an unknown component, or expand a vector triple product with the BAC-CAB rule). " +
     "Master the determinant computation and the |a×b| = |a||b|sin θ relation first — every concept below is built on them.",
   concepts: [
@@ -124,7 +124,7 @@ export const CROSS_PRODUCT_NOTE: SubtopicNote = {
         { prompt: "\\(\\sin\\theta = ?\\) in terms of the cross product.", answer: "\\(\\tfrac{|\\vec{a}\\times\\vec{b}|}{|\\vec{a}||\\vec{b}|}\\)" },
         { prompt: "Lagrange: \\(|\\vec{a}\\times\\vec{b}|^2 + (\\vec{a}\\cdot\\vec{b})^2 = ?\\)", answer: "\\(|\\vec{a}|^2|\\vec{b}|^2\\)" },
       ],
-      pyqExampleId: "0cbec2a2-2c52-4da8-ac85-b1b94add5eff",
+      pyqExampleId: "94943155-942a-42fe-8bec-c211a47660cf",
       traps: [
         {
           title: "\\(\\sin\\theta\\) is the same for \\(\\theta\\) and \\(180^\\circ - \\theta\\)",
@@ -596,7 +596,7 @@ export const CROSS_PRODUCT_NOTE: SubtopicNote = {
         { prompt: "If two plane-normals are parallel, the planes are?", answer: "parallel (angle \\(0\\))" },
         { prompt: "Vector along \\(\\vec{a}\\times\\vec{b}\\) is of the form?", answer: "\\(\\lambda(\\vec{a}\\times\\vec{b})\\)" },
       ],
-      pyqExampleId: "17f1485b-7dfe-4dde-833c-ead84026489f",
+      pyqExampleId: "bc49fac2-fe72-4d9c-af37-11003c4c57da",
       traps: [
         {
           title: "Track the sign of the dot product",

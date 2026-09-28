@@ -6,7 +6,7 @@ export const VARIABLE_SEPARABLE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Get every y (with dy) on one side and every x (with dx) on the other, integrate both sides once, and add a single constant — the workhorse method for first-order MHT-CET differential equations.",
   whyItMatters:
-    "This is the most-tested subtopic in the chapter: 33 PYQs sit here (14 HARD, 16 MODERATE, 3 EASY). Almost every first-order MHT-CET equation is separable directly or after one rewrite — taking a log, spotting an exponential, or using a trig product-to-sum. " +
+    "This is one of the three most-tested subtopics in the chapter: 31 PYQs sit here (11 HARD, 16 MODERATE, 4 EASY). Almost every first-order MHT-CET equation is separable directly or after one rewrite — taking a log, spotting an exponential, or using a trig product-to-sum. " +
     "The recurring traps are all here too: forgetting the arbitrary constant (or writing two), dividing by a factor g(y) that can be zero, and slipping on the standard integrals that produce log, arctan and arcsin.",
   concepts: [
     // 0 — foundation: the separate-then-integrate idea (no PYQ, lint-exempt)

@@ -6,7 +6,7 @@ export const TANGENTS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Tangent at (x₁, y₁): xx₁ + yy₁ + g(x + x₁) + f(y + y₁) + c = 0; with slope m to x² + y² = a²: y = mx ± a√(1 + m²); from an external point the tangent length is √S₁ and the two tangents with the two radii make a kite.",
   whyItMatters:
-    "14 PYQs at 50% HARD — the chapter's largest page and its most expensive. The tangent at the far end of a diameter (twice), the parametric tangent, tangents of a given slope, a parabola's tangent that also touches a circle (twice), the kite PAOB area (three times), a tangent-length locus, the 60°-tangents locus, and the classical PQ · RS = (2r)² result. " +
+    "13 PYQs at 46% HARD — the chapter's largest page and its most expensive. The tangent at the far end of a diameter, the parametric tangent, tangents of a given slope, a parabola's tangent that also touches a circle (twice), the kite PAOB area (three times), a tangent-length locus, the 60°-tangents locus, and the classical PQ · RS = (2r)² result. " +
     "Half the marks are the kite: tangent length √S₁ times radius is the area, and sin of the half-angle is r over the distance.",
   concepts: [
     // 1 — tangent at a point

@@ -6,7 +6,7 @@ export const LINEAR_IF_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A first-order linear ODE has the shape dy/dx + P(x)y = Q(x). Multiply by the integrating factor IF = e to the power of the integral of P, and the left side collapses into d/dx(y times IF) — integrate once and you are done.",
   whyItMatters:
-    "This is the workhorse subtopic and the densest HARD pool in the chapter — 24 PYQs, most of them HARD. Nearly every question is one skill: force the equation into standard form, read off P and Q, build the integrating factor, and integrate. " +
+    "This is the workhorse subtopic and the densest HARD pool in the chapter — 23 PYQs, most of them HARD. Nearly every question is one skill: force the equation into standard form, read off P and Q, build the integrating factor, and integrate. " +
     "The recurring MHT-CET traps live entirely here: reading P before the equation is in standard form, missing that some equations are only linear in x (swap the roles of x and y), and failing to spot a Bernoulli equation that becomes linear after one substitution.",
   concepts: [
     // 1 — standard form recognition (FOUNDATION, no PYQ, lint-exempt)

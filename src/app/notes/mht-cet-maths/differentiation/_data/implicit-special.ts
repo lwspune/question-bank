@@ -155,7 +155,7 @@ export const IMPLICIT_SPECIAL_NOTE: SubtopicNote = {
           { symbol: "\\(\\log v(x)\\)", meaning: "log of the base, after taking logs of both sides" },
         ],
       },
-      pyqExampleId: "943a5a7c-1940-4b72-8a7c-a3c656d32e5e",
+      pyqExampleId: "c9c1ec54-fe78-4ec7-a67d-96ca8890b0ee",
       authoredExample: {
         prompt: "If \\(x^{y} = e^{x-y}\\), find \\(\\dfrac{dy}{dx}\\).",
         steps: [
@@ -218,7 +218,7 @@ export const IMPLICIT_SPECIAL_NOTE: SubtopicNote = {
           { symbol: "\\(\\sec^2 y\\)", meaning: "rewritten as \\(1 + \\tan^2 y\\) to substitute the given expression" },
         ],
       },
-      pyqExampleId: "95773188-0bab-4435-a2f2-1c073a573c6a",
+      pyqExampleId: "969a4ee5-f697-4cef-8ab0-8034837e6202",
       authoredExample: {
         prompt:
           "If \\(\\tan y = \\dfrac{2x}{1 - x^2}\\), find \\(\\dfrac{dy}{dx}\\).",

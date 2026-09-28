@@ -126,11 +126,12 @@ describe("question→guide resolver routing", () => {
     expect(res.guide?.href).toBe(href);
   });
 
-  it("a non-NDA exam yields no guide link", () => {
+  it("an exam with no guide yields no guide link", () => {
+    // Was MHT-CET Physics until 2026-09-28, when that subject got its own guide. JEE Mains has none.
     const res = getQuestionResources({
-      examName: "MHT-CET",
-      subjectName: "Physics",
-      chapterName: "Optics (Ray)",
+      examName: "JEE Mains",
+      subjectName: "Chemistry",
+      chapterName: "Chemical Kinetics",
       subtopicName: null,
     });
     expect(res.guide).toBeNull();

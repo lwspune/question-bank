@@ -6,7 +6,7 @@ export const LOCUS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "|z − a| is the distance from z to the point a — so |z − a| = r is a circle, |z − a| = |z − b| is a perpendicular bisector, and the greatest and least |z| on a disc are |a| ± r.",
   whyItMatters:
-    "12 PYQs at 17% HARD — the cheapest page in the chapter once one sentence is fixed: a modulus is a distance. " +
+    "11 PYQs at 18% HARD — the cheapest page in the chapter once one sentence is fixed: a modulus is a distance. " +
     "Every locus question is then geometry: a circle from |z − a| = r or from a ratio of distances, a line from equal distances, and the greatest-and-least-modulus stem that is answered by adding and subtracting a radius — the same move as the Circle chapter's extremum question. " +
     "The one algebraic member is 'Re of a quotient is zero', which is a circle after rationalising.",
   concepts: [
@@ -224,7 +224,7 @@ export const LOCUS_NOTE: SubtopicNote = {
           method: "The origin is inside the disc.",
         },
       ],
-      pyqExampleId: "93f4bc63-a68a-42f5-8d5e-62ceeb20f303",
+      pyqExampleId: "84637a74-738c-4db6-9f96-4a4ca1cf0356",
       traps: [
         {
           title: "Answering 2√5 for the difference",

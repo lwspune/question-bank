@@ -6,7 +6,7 @@ export const ALGEBRAIC_LIMITS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "When substitution gives 0/0 in an algebraic expression, a hidden factor of (x − a) is cancelling — factor it out, rationalise it out, or quote the xⁿ − aⁿ standard form.",
   whyItMatters:
-    "13 PYQs at 46% HARD, spread across every year from 2021 to 2025 — the most evenly recurring page in the chapter. " +
+    "12 PYQs at 42% HARD, spread across every year from 2021 to 2025 — the most evenly recurring page in the chapter. " +
     "Three stems here have been set twice in different sittings with the numbers unchanged, so the forms are worth knowing cold: a double rationalisation, a nested square root, and the 'limit is finite, find a and b' problem. " +
     "The derivative-in-disguise reading at the end is the single fastest tool in the chapter and reappears on the continuity pages.",
   concepts: [

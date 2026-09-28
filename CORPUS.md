@@ -79,6 +79,19 @@ At-a-glance sizing of the cross-subject taxonomy cleanup (chapter + subtopic tec
 
 Workflow: inline chapter-by-chapter in chat (no scripts), descending q-count first, source-source collision-loop for bulk merges, per-question reclassification for catch-all chapters ≤~50 q. Patterns + SQL templates: `[[reclassification-sql-pattern]]` + `[[taxonomy-inline-iteration]]`.
 
+## MHT-CET source-file faults (found 2026-09-26, resolved 2026-09-28)
+
+Two MHT-CET ingest files are not the papers their labels say. **Both were verified from the `.docx` papers themselves on 2026-09-28** — fresh pandoc conversions of `C:\Vilas\LWS_Pune\MHT-CET\PYQPs\` compared with the conversions the row matching had used (identical: text, and every extracted image by md5):
+
+- **"13 May 2024 Shift 1" is the 12 May 2024 Shift 2 paper.** `2024\13 May shift 1 (ques).docx` is identical to `12 May shift 2 (ques).docx` — same text, same 14 images — and the two answer keys are byte-identical. The real 13 May S1 paper is not on disk.
+- **"2023 Shift 1" (`MHT_CET_2023_Analysis.xlsx`) is 16 May 2023 Shift 2.** Its source is `2023\MHT_CET_2023_QP.docx`: all 150 items are the 16 May S2 items in the same order, typeset differently (no bold math, and correct subscripts where 16 May S2 prints z¹ for z₁ — so it is the cleaner copy to read). `MHT_CET_2023_AK.docx` agrees with the 16 May S2 key on all 150 answers.
+
+**Resolution, per subject.** Every affected row was matched to its paper item in the `.docx` (by `pyq_year`+`pyq_note`, never `source_file`); a row whose item already had a correctly-labelled twin went PRIVATE, a sole copy was re-dated. Physics on 2026-09-26, Chemistry and Maths on 2026-09-28 (Maths: 85 hidden, 5 re-dated). Keys were compared pair by pair before hiding — every disagreement was settled by the answer key.
+
+**Two traps from the Maths pass.** (1) *A hand-resolved keep and an automatic re-date can land on the same paper item* — twice — leaving that paper at 51 rows for 50 items; the plan's checks compared hides against their kept twin only. What caught it was the trends generator's **"paper(s) outside 40-50 questions"** warning, so read that line after every label change. (2) *The two copies of an item were transcribed separately*, and fixes had landed on either one: before hiding a copy, diff it against its twin — the hidden copy was the better one for 9 Maths rows (a stem, options, or a polished featured solution), and those were ported.
+
+**The 12 May 2024 S2 ingest doubled its escapes.** 28 PUBLIC rows stored `\\\frac` (three backslashes) outside any matrix/array — all from this one paper, which is why its twins in the copy file rendered and it did not. The 24 Maths rows were fixed in the label pass; **3 Chemistry + 1 Physics rows remain** (ROADMAP backfill). Scan: a run of 2+ backslashes before a letter in a field with no `\begin{` (inside an environment `\\` is a legitimate row break).
+
 ## MPSC Group B & C Prelims (`mpsc-group-b-c`, added 2026-09-26)
 
 **14 papers, 1,400 questions, all PUBLIC since 2026-09-26** — every General Ability Test prelim 2017-2024: Group B 2017-2022 + 2024, Group C 2017-2019 + 2021, 2022, 2024, and the joint Group B & C 2023. Source: one scanned PDF ("Group B & C Pre Papers 2017 to 2024"), Set A booklets, each followed by MPSC's FINAL key. Pipeline + per-paper status: `scripts/mpsc/README.md`. The narrative: the 2026-09-26 Decisions entry.

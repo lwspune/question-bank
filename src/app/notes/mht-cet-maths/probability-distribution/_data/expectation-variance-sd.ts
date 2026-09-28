@@ -6,7 +6,7 @@ export const EXPECTATION_VARIANCE_SD_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Once you can read a probability distribution, three number-summaries follow: the mean E(X) = Σx·P(x) (the long-run average), the variance Var(X) = E(X²) − [E(X)]² (the spread), and the standard deviation SD = √Var — the single most-tested cluster of formulas in this chapter.",
   whyItMatters:
-    "This subtopic carries 35 PYQs (7 HARD, 22 MODERATE, 6 EASY) and every year returns three near-identical shapes: compute mean/variance/SD from a pmf, find the expected winnings of a coin or die game, and use the uniform-distribution shortcuts E(X) = (n+1)/2 and Var(X) = (n²−1)/12. " +
+    "This subtopic carries 33 PYQs (7 HARD, 20 MODERATE, 6 EASY) and every year returns three near-identical shapes: compute mean/variance/SD from a pmf, find the expected winnings of a coin or die game, and use the uniform-distribution shortcuts E(X) = (n+1)/2 and Var(X) = (n²−1)/12. " +
     "The traps are mechanical and repeat: squaring the mean instead of averaging the squares, forgetting to convert a CDF to a pmf first, taking SD as the variance (or vice versa), and mishandling the sign of a loss in a game. Nail the four core formulas and this section is free marks.",
   concepts: [
     // 0 — foundation: expectation as the long-run average (no PYQ, lint-exempt)
@@ -319,7 +319,7 @@ export const EXPECTATION_VARIANCE_SD_NOTE: SubtopicNote = {
         { prompt: "For the uniform on 1..n, evaluate Var(X)/E(X).", answer: "\\(\\dfrac{n-1}{6}\\)", method: "\\(n^2-1 = (n-1)(n+1)\\)" },
         { prompt: "E(X) if \\(P(x) = \\dfrac{2x}{n(n+1)}\\) on \\(1,\\ldots,n\\)?", answer: "\\(\\dfrac{2n+1}{3}\\)", method: "\\(\\sum x^2 = \\tfrac{n(n+1)(2n+1)}{6}\\)" },
       ],
-      pyqExampleId: "5825e8c1-31d6-4463-ac29-99a33c4aebaa", // uniform 1..k → Var = (k²−1)/12
+      pyqExampleId: "e74c8d6c-2a8d-4c83-b238-5c2652cd939d", // uniform 1..k → Var = (k²−1)/12
       traps: [
         {
           title: "Memorise both uniform formulas — mean (n+1)/2 AND variance (n²−1)/12",

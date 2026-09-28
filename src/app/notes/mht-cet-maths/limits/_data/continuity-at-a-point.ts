@@ -6,7 +6,7 @@ export const CONTINUITY_AT_A_POINT_NOTE: SubtopicNote = {
   oneLineDefinition:
     "f is continuous at c when the limit exists and equals f(c) — so a 'find k' or 'find f(0)' question is a limit from the earlier pages, set equal to a value.",
   whyItMatters:
-    "19 PYQs at 58% HARD, the largest page in the chapter and pure recycling: every question here is a limit from the four pages before it, evaluated and then equated. " +
+    "18 PYQs at 61% HARD, one of the two largest pages in the chapter and pure recycling: every question here is a limit from the four pages before it, evaluated and then equated. " +
     "The extra difficulty is clerical — a parameter buried inside the limit, a point that is not 0, an integral in the numerator — never a new idea. " +
     "Four of these stems were set twice in different sittings with identical numbers, so the recurring forms are worth recognising on sight.",
   concepts: [

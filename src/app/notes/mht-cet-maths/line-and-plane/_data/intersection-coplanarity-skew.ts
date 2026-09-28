@@ -499,7 +499,7 @@ export const INTERSECTION_COPLANARITY_SKEW_NOTE: SubtopicNote = {
         { prompt: "\\(\\vec{AB}\\parallel(l,m,n)\\) gives how many independent equations?", answer: "two proportions" },
         { prompt: "\\(\\vec{AB}=(2,-8,4)\\) — is it parallel to \\((1,-4,2)\\)?", answer: "Yes", method: "\\(\\vec{AB}=2(1,-4,2)\\)" },
       ],
-      pyqExampleId: "89d3652d-c455-412c-a1c7-d66ae545084d",
+      pyqExampleId: "3bc9c6fb-1bc5-47e7-ae35-991f73d66dae",
       traps: [
         {
           title: "VERIFY the parallel condition after solving",

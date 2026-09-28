@@ -6,7 +6,7 @@ export const BINOMIAL_MEAN_VARIANCE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "For X ~ B(n, p) you never build the distribution table — the mean is np, the variance is npq, and the standard deviation is √(npq); these three shortcuts answer almost every MHT-CET question on the topic.",
   whyItMatters:
-    "This subtopic is pure formula-recall turned into arithmetic: 15 PYQs sit here (8 EASY, 5 MODERATE, 2 HARD). The EASY band is direct np or npq once you read n and p off a with-replacement or coin-toss setup; the MODERATE and HARD bands reverse the process — given the mean and the variance you recover n and p, then compute a tail probability like P(X ≥ 1). " +
+    "This subtopic is pure formula-recall turned into arithmetic: 14 PYQs sit here (8 EASY, 4 MODERATE, 2 HARD). The EASY band is direct np or npq once you read n and p off a with-replacement or coin-toss setup; the MODERATE and HARD bands reverse the process — given the mean and the variance you recover n and p, then compute a tail probability like P(X ≥ 1). " +
     "The single most reliable check across every question is that the variance npq is always LESS than the mean np (because q < 1) — an answer with variance ≥ mean is wrong on sight.",
   concepts: [
     // 0 — foundation: mean = np (no PYQ, lint-exempt)

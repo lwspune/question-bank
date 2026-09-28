@@ -6,7 +6,7 @@ export const STANDARD_SERIES_AND_MISSING_OBSERVATIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Variance of the first n natural numbers is (n² − 1)/12, and scaling gives the evens; and when two observations are missing, the mean gives x + y and the variance gives x² + y², from which xy and |x − y| follow.",
   whyItMatters:
-    "13 PYQs, none HARD — the chapter's largest page and its most repetitive: 'mean 8, variance 16, five of seven observations are 2, 4, 10, 12, 14' has been set FOUR times (asking for the product, its square root, or the difference of the missing pair), and the first-n-naturals variance three times. " +
+    "12 PYQs, none HARD — the chapter's largest page and its most repetitive: 'mean 8, variance 16, five of seven observations are 2, 4, 10, 12, 14' has been set THREE times (asking for the product, its square root, or the difference of the missing pair), and the first-n-naturals variance three times. " +
     "Two closed results and one algebraic move cover the page.",
   concepts: [
     // 1 — variance of first n naturals and scaled series
@@ -122,7 +122,7 @@ export const STANDARD_SERIES_AND_MISSING_OBSERVATIONS_NOTE: SubtopicNote = {
           answer: "\\(t^2 - 10t + 19 = 0\\)",
         },
       ],
-      pyqExampleId: "6835d8f4-b62b-4d14-9de3-f4cd2a6754b3",
+      pyqExampleId: "f7d8726a-bcc2-4a32-96c2-ab9b1c9ef75c",
       traps: [
         {
           title: "Dividing by n − 1",

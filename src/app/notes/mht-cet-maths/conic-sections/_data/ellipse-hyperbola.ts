@@ -6,8 +6,8 @@ export const ELLIPSE_HYPERBOLA_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The eccentricity of an ellipse and a hyperbola and what fixes it, and the tangent condition c² = a²m² ± b², used for tangents of a given slope, for the area a tangent cuts off, and for curves that cross at right angles.",
   whyItMatters:
-    "11 PYQs, five HARD. Five ask for an eccentricity or an equation — an ellipse after completing the square, a hyperbola through two points, a curve given parametrically, a hyperbola sharing an ellipse's foci. " +
-    "Six are tangents: a tangent of given slope and its intercepts, and two curves that cut at right angles. Two cards.",
+    "10 PYQs, four HARD. Five ask for an eccentricity or an equation — an ellipse after completing the square, a hyperbola through two points, a curve given parametrically, a hyperbola sharing an ellipse's foci. " +
+    "Five are tangents: a tangent of given slope and its intercepts, and two curves that cut at right angles. Two cards.",
   concepts: [
     {
       kind: "formula" as const,

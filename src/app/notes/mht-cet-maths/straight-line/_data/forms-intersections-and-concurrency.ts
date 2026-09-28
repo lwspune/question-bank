@@ -6,7 +6,7 @@ export const FORMS_INTERSECTIONS_AND_CONCURRENCY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Five ways to write a line — point-slope, two-point, intercept x/a + y/b = 1, normal x cos α + y sin α = p, general — plus the point where two lines meet and the determinant test for three lines through one point.",
   whyItMatters:
-    "14 PYQs at 21% HARD. The intercept form carries the most stems (a line through a point with intercepts in a ratio, a triangle of given area with the axes, 1/a² + 1/b² = 1/p²); the normal form appears with the angle of the perpendicular given; medians and parallels test point-slope; and the concurrency determinant was set as a cubic in k in two 2024 shifts. " +
+    "13 PYQs at 15% HARD. The intercept form carries the most stems (a line through a point with intercepts in a ratio, a triangle of given area with the axes, 1/a² + 1/b² = 1/p²); the normal form appears with the angle of the perpendicular given; medians and parallels test point-slope; and the concurrency determinant was set as a cubic in k in 2024. " +
     "The three HARD questions are the area-with-axes count and the concurrency cubic, both of which are careful casework, not new ideas.",
   concepts: [
     // 1 — intercept form

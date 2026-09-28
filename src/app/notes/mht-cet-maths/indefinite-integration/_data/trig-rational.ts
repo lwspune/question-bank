@@ -6,7 +6,7 @@ export const TRIG_RATIONAL_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The hard trig core — fractions in sine and cosine, handled by the half-angle (Weierstrass) substitution, the divide-by-cosine-squared move, the fractional-power tangent trick, and numerator-matching.",
   whyItMatters:
-    "36 PYQs and the chapter's HARDEST pocket — 27 of the 36 are HARD. These are the integrals that decide a top score, and they lean on the standard arctan/log forms you met in Rational Functions & Partial Fractions. " +
+    "34 PYQs and the chapter's HARDEST pocket — 25 of the 34 are HARD. These are the integrals that decide a top score, and they lean on the standard arctan/log forms you met in Rational Functions & Partial Fractions. " +
     "Six named techniques cover almost all of them: Weierstrass t = tan(x/2) for 1/(a+b sin x); divide-by-cos² for 1/(a+b sin²x) (and tan x = t for the 2x version); the product-of-sines split for 1/(sin(x−a)sin(x−b)); the trig-to-partial-fraction bridge when a substitution makes it rational; the fractional-power tan trick for cos/sin power products; and writing a numerator as 'denominator + its derivative'. " +
     "Learn to RECOGNISE which one a question wants — that recognition is the whole skill.",
   concepts: [
@@ -250,7 +250,7 @@ export const TRIG_RATIONAL_NOTE: SubtopicNote = {
         { prompt: "\\(\\int \\tan^{-1/2}x\\,\\sec^2 x\\,dx\\)", answer: "\\(2(\\tan x)^{1/2} + C\\)", method: "\\(t=\\tan x\\)" },
         { prompt: "\\(\\int \\tan^{3/2}x\\,\\sec^2 x\\,dx\\)", answer: "\\(\\dfrac{2}{5}(\\tan x)^{5/2} + C\\)" },
       ],
-      pyqExampleId: "07ef8dac-0b13-4ccf-bd9a-e7221bbb2148",
+      pyqExampleId: "55b4953f-5f8b-445d-9358-c33cee73b1f0",
       traps: [
         {
           title: "Check m + n is an even integer first",

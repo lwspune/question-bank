@@ -6,7 +6,7 @@ export const TRIANGLE_RULES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "In a triangle with sides a, b, c opposite angles A, B, C, the sine rule links each side to its opposite angle, the cosine rule links three sides to one angle, and the projection rule writes each side as the sum of the other two sides' projections on it.",
   whyItMatters:
-    "47 PYQs, the larger of the two triangle pages. Eighteen are the sine rule (angle ratios to side ratios, circumradius, which triangles exist), twenty-four the cosine rule (an angle from three sides, or an angle from a relation among the sides), and five the projection rule. " +
+    "45 PYQs, the larger of the two triangle pages. Sixteen are the sine rule (angle ratios to side ratios, circumradius, which triangles exist), twenty-four the cosine rule (an angle from three sides, or an angle from a relation among the sides), and five the projection rule. " +
     "The rule to use is decided by what the stem gives you, so recognising the given data is most of the question.",
   concepts: [
     // 1 — sine rule

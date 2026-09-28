@@ -6,7 +6,7 @@ export const RATE_OF_CHANGE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A derivative is a rate. When two quantities are linked by a geometric or physical relation, differentiate the relation with respect to time (the chain rule) to convert a known rate into an unknown one.",
   whyItMatters:
-    "This is one of the most reliably-tested MHT-CET applications: 40 PYQs sit here (8 HARD, 20 MODERATE, 12 EASY). Almost every question is one clean pattern — write the relation between the quantities, differentiate w.r.t. t, substitute the given rate and the instant. " +
+    "This is one of the most reliably-tested MHT-CET applications: 37 PYQs sit here (7 HARD, 22 MODERATE, 8 EASY). Almost every question is one clean pattern — write the relation between the quantities, differentiate w.r.t. t, substitute the given rate and the instant. " +
     "The recurring traps are unit conversions (cm vs m vs decimetre), the r = h/2 substitution for cones, taking the magnitude when a quantity is decreasing, and remembering that 'rate of A w.r.t. B' is (dA/dt)/(dB/dt), not A/B.",
   concepts: [
     // 1 — FOUNDATION: the chain that links two rates (no PYQ, lint-exempt)
