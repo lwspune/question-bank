@@ -84,7 +84,8 @@ describe("mht-cet-maths playbooks — static structure", () => {
   });
 
   it("the cornerstone claim is arithmetic on the data, not prose", () => {
-    // "7 chapters carry ~57% of a 50-question paper" is the guide's headline (56% until the
+    // "7 chapters carry ~58% of a 50-question paper" is the guide's headline (57% until the
+    // 2026-09-28 label fix hid 85 copies of two papers and re-keyed the grid by paper; 56% until the
     // 2026-09-26 trigonometry carve moved 47 equation rows into Trigonometric Functions)
     // (55% until 2026-09-25, when three misfiled rows moved into Indefinite
     // Integration and its q/paper rose 3.35 -> 3.41). Derive it here so an
@@ -95,7 +96,7 @@ describe("mht-cet-maths playbooks — static structure", () => {
     );
     expect(cornerstoneQ).toBeGreaterThan(28);
     expect(cornerstoneQ).toBeLessThan(29);
-    expect(Math.round((cornerstoneQ / 50) * 100)).toBe(57);
+    expect(Math.round((cornerstoneQ / 50) * 100)).toBe(58);
   });
 
   it("quick-win chapters really are the low-difficulty ones", () => {

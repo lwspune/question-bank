@@ -5,7 +5,7 @@
  * authored in two part-files; both import PlaybookDetail from ./types to
  * avoid a cycle with the module that merges them.
  *
- * The tail is defined by RECENT weightage (2024-2025, 25 shifts): each of
+ * The tail is defined by RECENT weightage (2024-2025, 24 shifts): each of
  * these chapters runs at roughly one question a paper and most of them are
  * 33-56% HARD. The honest framing throughout is that a tail chapter is worth
  * about two marks and most of them are expensive to buy. Because MHT-CET has
@@ -24,7 +24,7 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A limit that comes out 0/0 or infinity/infinity, or a piecewise function carrying an unknown constant that is asked to be continuous.",
     story: [
-      "90 q, 2.04/paper, 56% HARD — the hardest chapter in the subject by rate. It is also the one chapter in the tail with nowhere to hide: the four limit pages run 44-67% HARD and the three continuity pages 50-58%, so every page is above the paper's overall 38.2% HARD line. There is no cheap corner to cherry-pick.",
+      "86 q, 2.04/paper, 55% HARD — the hardest chapter in the subject by rate. It is also the one chapter in the tail with nowhere to hide: the four limit pages run 44-67% HARD and the three continuity pages 50-58%, so every page is above the paper's overall 38.2% HARD line. There is no cheap corner to cherry-pick.",
       "The two halves ask for different work. Continuity is really equation-solving wearing a calculus costume: write the left-hand limit, the right-hand limit and the value at the point, set all three equal, and solve for the one or two unknowns. It is the more mechanical of the two despite carrying a comparable HARD rate, and it is where a student with a reliable method banks the chapter's marks — 45 of the 90 questions are continuity problems.",
       "Limit Evaluation is recognition, not computation. Almost every question is one of a short list of standard forms in disguise, and the win is deciding within about fifteen seconds which tool applies — factorise, rationalise, divide by the highest power, or quote a standard limit. At 1.8 minutes a question, a limit you have to experiment on has already cost you a question elsewhere.",
       "Practical consequence: give this chapter a hard time cap. Two questions a paper at 56% HARD is four marks that will not come cheaply, and with no negative marking an unresolved limit is still worth a marked option rather than a blank.",
@@ -97,9 +97,9 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "An integral carrying numeric limits — especially symmetric limits, limits running 0 to a, or an absolute value or piecewise expression inside.",
     story: [
-      "69 q, 1.72/paper, 48% HARD, and the chapter splits into a recognition half and a grind half. The three property pages — odd and even symmetry, King's property, modulus and greatest-integer splitting — are 43 q at 42% HARD; the two evaluation pages are 26 q at 58%.",
+      "67 q, 1.75/paper, 46% HARD, and the chapter splits into a recognition half and a grind half. The three property pages — odd and even symmetry, King's property, modulus and greatest-integer splitting — are 41 q at 39% HARD; the two evaluation pages are 26 q at 58%.",
       "The 43-q property block is the highest-leverage recognition anywhere in the calculus block. Once the property is spotted the question collapses in a single line — an odd integrand over symmetric limits is zero with no antiderivative computed at all, and King's property turns an unintegrable-looking expression into twice something trivial or into a constant. At 1.8 minutes a question, that is worth more than the two marks it scores.",
-      "The other half is ordinary integration with limits attached, which makes it Indefinite Integration (159 q, 3.44/paper, 53% HARD) plus one extra step. Its 58% HARD rate is real, but so is the transfer: everything invested in the cornerstone integration chapter is paid back here, so this half needs almost no separate preparation.",
+      "The other half is ordinary integration with limits attached, which makes it Indefinite Integration (151 q, 3.42/paper, 52% HARD) plus one extra step. Its 58% HARD rate is real, but so is the transfer: everything invested in the cornerstone integration chapter is paid back here, so this half needs almost no separate preparation.",
       "Order of attack follows directly: scan every definite integral for a property BEFORE reaching for a technique. Ten seconds of looking saves a minute of integrating on roughly three of every five questions in this chapter.",
     ],
     subSkills: [
@@ -164,7 +164,7 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A matrix raised to a power, an adjoint or an inverse asked for, or a 3x3 determinant set equal to zero.",
     story: [
-      "49 q, 1.12/paper, 49% HARD. Small and expensive — but it carries a compensation the rest of the tail does not: its content is a short list of identities that are memorisable and, unlike most tail material, reusable elsewhere on the paper.",
+      "47 q, 1.13/paper, 47% HARD. Small and expensive — but it carries a compensation the rest of the tail does not: its content is a short list of identities that are memorisable and, unlike most tail material, reusable elsewhere on the paper.",
       "Determinants, Cofactors and the Adjoint Identities is the chapter's hardest corner at 69% HARD across 16 q, and simultaneously its most learnable. Three lines answer most of it directly: A times adj(A) equals |A| times the identity, the determinant of adj(A) is |A| raised to (n - 1), and |kA| is k^n times |A| for an n by n matrix. Those are recall, not derivation.",
       "The transferable idea is the vanishing determinant as a universal degeneracy test. A survey of the bank found it across five to six chapters and roughly 19 to 30 questions, surfacing as concurrency of three lines, collinearity of three points, coplanarity of two lines, the condition for a general second-degree equation to be a pair of lines, and the scalar triple product being zero. Learning to read 'determinant equals zero' as 'these objects are degenerate' pays well outside this chapter.",
       "Systems of Linear Equations and Symmetric, Skew-Symmetric Matrices (8 q, 38% HARD) is half solving and half classification: a non-zero determinant means a unique solution, a zero determinant means either no solution or infinitely many, and telling those two apart is the whole question.",
@@ -222,7 +222,7 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A second-degree equation with equal coefficients on x squared and y squared, a tangency condition, or a distance measured from a point to a circle.",
     story: [
-      "46 q, 1.04/paper, 37% HARD, across five notes pages (/notes/mht-cet-maths/circle). Half of it is ordinary coordinate geometry at ordinary cost: the equation page is 12 q at 33% and concentric-and-touching 6 q at 17%. Tangents (14 q, 50% HARD) and Two Circles (8 q, 50%) are the expensive corners.",
+      "43 q, 1.00/paper, 33% HARD, across five notes pages (/notes/mht-cet-maths/circle). Half of it is ordinary coordinate geometry at ordinary cost: the equation page is 12 q at 33% and concentric-and-touching 6 q at 17%. Tangents (13 q, 46% HARD) and Two Circles (7 q, 43%) are the expensive corners.",
       "The chapter's most reusable move is not calculus. The greatest and least distance from an external point to a circle is the distance to the centre plus or minus the radius, full stop. The identical move answers 'greatest and least modulus of z on a disc' in Complex Numbers and the maximum distance of a point of the circle from a line.",
       "Everything else is centre-and-radius bookkeeping. Read the centre as (-g, -f) and the radius as the square root of g squared plus f squared minus c, then compare a distance against that radius: less than means the line cuts, equal means tangent, greater means it misses. The tangent length from an external point is the square root of the circle's expression at that point, and the kite it makes with the two radii has area r times that length.",
       "The two-circle corner is worth learning as a table rather than as a derivation: compare the distance between the centres against the sum and the absolute difference of the radii, and the number of common tangents (0, 1, 2, 3 or 4) follows from which case you are in.",
@@ -241,17 +241,17 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
       {
         name: "Tangents — At a Point, With a Given Slope, From an External Point and Their Loci",
         description:
-          "T = 0 at a point, y = mx ± a√(1 + m²) for a slope, the tangent length √S1 and the kite area, the angle between the tangents, and loci from tangent lengths. 14 q at 50% HARD — the chapter's expensive corner.",
+          "T = 0 at a point, y = mx ± a√(1 + m²) for a slope, the tangent length √S1 and the kite area, the angle between the tangents, and loci from tangent lengths. 13 q at 46% HARD — the chapter's expensive corner.",
       },
       {
         name: "Distance From a Point to a Circle — Greatest, Least, a Line Cutting the Circle and the Segment Area",
         description:
-          "d ± r for the extreme distances, distance from the centre against r for a line, and the segment as a sector minus a triangle. 6 q at 17% HARD; the same move as the Complex Numbers modulus-on-a-disc family.",
+          "d ± r for the extreme distances, distance from the centre against r for a line, and the segment as a sector minus a triangle. 5 q at 0% HARD; the same move as the Complex Numbers modulus-on-a-disc family.",
       },
       {
         name: "Two Circles — Touching, Common Tangents and Relative Position",
         description:
-          "Compare the distance between centres d against r1 + r2 and |r1 - r2|. Externally tangent when d = r1 + r2, internally tangent when d = |r1 - r2|, and the common-tangent count follows. 8 q at 50% HARD.",
+          "Compare the distance between centres d against r1 + r2 and |r1 - r2|. Externally tangent when d = r1 + r2, internally tangent when d = |r1 - r2|, and the common-tangent count follows. 7 q at 43% HARD.",
       },
     ],
     traps: [
@@ -285,7 +285,7 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "An i in the expression — a modulus or argument asked for, a cube root of unity, or a locus described by a modulus condition.",
     story: [
-      "45 q, 1.00/paper, 31% HARD, and it splits about as cleanly as any chapter in the bank. Modulus and Argument is 18 q at 28% HARD and Locus 12 q at 17% — the softest pages anywhere in the long tail. Algebra with the cube roots of unity is 15 q at 47%. Every PYQ is tagged to one of the three notes pages at /notes/mht-cet-maths/complex-numbers.",
+      "43 q, 1.00/paper, 33% HARD, and it splits about as cleanly as any chapter in the bank. Modulus and Argument is 17 q at 29% HARD and Locus 12 q at 17% — the softest pages anywhere in the long tail. Algebra with the cube roots of unity is 15 q at 47%. Every PYQ is tagged to one of the three notes pages at /notes/mht-cet-maths/complex-numbers.",
       "That asymmetry IS the strategy. Own the modulus and locus pages and treat the algebra page as opportunistic: under 30% HARD at one question a paper is about as close to free marks as the tail offers, and it is reachable with the identities of Trigonometry - I plus De Moivre's theorem.",
       "The harder page runs largely on omega and on a polynomial evaluated at a complex x. Three facts about the cube roots of unity answer the omega stems: omega cubed is 1, 1 + omega + omega squared is 0, and powers of omega cycle with period 3. The polynomial stems are answered by the minimal quadratic of the given root, never by direct substitution.",
       "Locus questions are circles and lines in disguise — a condition of the form |z - a| = r is a circle of radius r centred at a. That is also where the cross-chapter extremum lives: the greatest and least modulus of z on such a disc is |a| plus or minus r, exactly the Circle chapter's distance-to-centre move, with no calculus and no differentiation of a modulus.",
@@ -338,10 +338,10 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "The word area, together with two curves — or a curve, an axis and a pair of bounding lines.",
     story: [
-      "44 q, 1.00/paper, 32% HARD — but effectively a one-skill chapter. The two area pages — under one curve and between two curves — are 35 of the 44 questions, at 29% HARD. The circle, ellipse and hyperbola page is 9 questions at 44% HARD and needs exactly one standard result learnt cold.",
+      "44 q, 1.04/paper, 32% HARD — but effectively a one-skill chapter. The two area pages — under one curve and between two curves — are 35 of the 44 questions, at 29% HARD. The circle, ellipse and hyperbola page is 9 questions at 44% HARD and needs exactly one standard result learnt cold.",
       "That concentration makes it a cheaper page than its headline suggests. One skill, learned once, answers 35 of 44 — which is the opposite shape from Limits, where 90 questions are spread across seven pages with no cheap one among them.",
       "The skill is not the integration; it is the setup. Find where the curves meet, decide which one is on top over each stretch, decide whether the region is simpler in x or in y, and split the interval wherever the top curve changes. Get that right and what remains is an integral you already know how to do.",
-      "It sits directly downstream of Definite Integration (69 q, 1.72/paper) and Indefinite Integration (159 q, 3.44/paper, 53% HARD). If antiderivatives are not fluent this chapter is unreachable; if they are, it is close to free — which is why it belongs late in a plan rather than early.",
+      "It sits directly downstream of Definite Integration (67 q, 1.75/paper) and Indefinite Integration (151 q, 3.42/paper, 52% HARD). If antiderivatives are not fluent this chapter is unreachable; if they are, it is close to free — which is why it belongs late in a plan rather than early.",
     ],
     subSkills: [
       {
@@ -391,7 +391,7 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A homogeneous second-degree expression in x and y, or a general second-degree equation asked whether it represents two straight lines.",
     story: [
-      "44 q, 1.00/paper, 41% HARD — and the 41% overstates how hard it is to PREPARE. This is the most closed chapter on the paper: essentially every question reduces to reading a, h and b out of a combined equation and applying one item from a short list of conditions. Four notes pages (/notes/mht-cet-maths/pair-of-straight-lines): the joint-equation page is 12 q at 17%, the slopes page 10 q at 50%, the angle page 12 q at 58%, the general-equation page 10 q at 40%.",
+      "42 q, 1.00/paper, 43% HARD — and the 41% overstates how hard it is to PREPARE. This is the most closed chapter on the paper: essentially every question reduces to reading a, h and b out of a combined equation and applying one item from a short list of conditions. Four notes pages (/notes/mht-cet-maths/pair-of-straight-lines): the joint-equation page is 12 q at 17%, the slopes page 10 q at 50%, the angle page 12 q at 58%, the general-equation page 10 q at 40%.",
       "The conditions are the cross-chapter angle family speaking this chapter's dialect. Perpendicularity is a + b = 0 here, where straight lines say m1 times m2 equals -1, vectors say the dot product is zero, and Line and Plane says it through the direction ratios. The angle itself is tan θ = 2√(h² − ab)/|a + b|, and the pair through a point at a given angle is the Straight Line two-root problem multiplied out.",
       "The other reusable piece is the degeneracy test. A general second-degree equation represents a pair of lines exactly when a particular 3x3 determinant vanishes — the same universal condition that shows up as concurrency of three lines, collinearity of three points and coplanarity in three dimensions.",
       "Practical upshot: this is the tail chapter with the best ratio of preparation time to reliability. A checklist of six conditions, drilled once, holds up across all 44 questions.",
@@ -410,12 +410,12 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
       {
         name: "Angle Between the Pair — Perpendicular Pairs, Lines at a Given Angle and the Bisectors",
         description:
-          "tan θ = 2√(h² − ab)/|a + b|; perpendicular exactly when a + b = 0, coincident when h² = ab; the pair at a given angle to a line by squaring the angle condition; the bisector pair (x² − y²)/(a − b) = xy/h. 12 q at 58% HARD.",
+          "tan θ = 2√(h² − ab)/|a + b|; perpendicular exactly when a + b = 0, coincident when h² = ab; the pair at a given angle to a line by squaring the angle condition; the bisector pair (x² − y²)/(a − b) = xy/h. 11 q at 64% HARD.",
       },
       {
         name: "General Second-Degree Equation — Condition for a Pair, Parallel Lines and Distances",
         description:
-          "Before applying any homogeneous result to an equation carrying x, y or constant terms, check the 3x3 determinant condition; a parallel pair (h² = ab) factors as a perfect square and its gap is 2√((g² − ac)/(a(a + b))); the product of distances from a point. 10 q at 40% HARD.",
+          "Before applying any homogeneous result to an equation carrying x, y or constant terms, check the 3x3 determinant condition; a parallel pair (h² = ab) factors as a perfect square and its gap is 2√((g² − ac)/(a(a + b))); the product of distances from a point. 9 q at 44% HARD.",
       },
     ],
     traps: [
@@ -449,10 +449,10 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A count of ways — arrangements, selections, seatings, handshakes, or the lines and triangles determined by a set of points.",
     story: [
-      "42 q, 1.00/paper, 40% HARD, and it is the least mechanical chapter on the paper. No formula rescues a misread constraint: once the model is right the arithmetic is trivial, and when the model is wrong the arithmetic is worthless. That is why it is the single question most likely to eat five minutes of a 90-minute paper. Every PYQ is tagged to one of the five notes pages at /notes/mht-cet-maths/permutations-and-combinations.",
-      "The constraint questions — arrangements (10 q, 50% HARD), selections (7 q, 43%) and circular seatings (6 q, 83%) — run on a short recurring list: objects that stay together, objects never together, fixed positions, repeated letters, at least and at most. Each has one standard handling. Learning the handlings is far more productive than grinding assorted problems.",
+      "40 q, 1.00/paper, 40% HARD, and it is the least mechanical chapter on the paper. No formula rescues a misread constraint: once the model is right the arithmetic is trivial, and when the model is wrong the arithmetic is worthless. That is why it is the single question most likely to eat five minutes of a 90-minute paper. Every PYQ is tagged to one of the five notes pages at /notes/mht-cet-maths/permutations-and-combinations.",
+      "The constraint questions — arrangements (9 q, 44% HARD), selections (7 q, 43%) and circular seatings (6 q, 83%) — run on a short recurring list: objects that stay together, objects never together, fixed positions, repeated letters, at least and at most. Each has one standard handling. Learning the handlings is far more productive than grinding assorted problems.",
       "Because there is NO NEGATIVE MARKING, the discipline here is a time cap rather than a skip decision. Give the question ninety seconds; if the model has not resolved by then, mark the option whose order of magnitude matches your partial reasoning and move on. This is the chapter where that rule earns the most, because the downside of persisting is two or three other questions.",
-      "The cheaper corners are the identities page (8 q, none HARD) and the numbers-and-figures page (11 q, 36%): digit counts with a leading-zero exclusion, divisibility by the last digits or the digit sum, handshakes and diagonals as an nC2 equation, and triangles from points with the collinear picks subtracted. Three or four closed results cover them, so they are worth banking even though each is small.",
+      "The cheaper corners are the identities page (8 q, none HARD) and the numbers-and-figures page (10 q, 40%): digit counts with a leading-zero exclusion, divisibility by the last digits or the digit sum, handshakes and diagonals as an nC2 equation, and triangles from points with the collinear picks subtracted. Three or four closed results cover them, so they are worth banking even though each is small.",
     ],
     subSkills: [
       {
@@ -511,7 +511,7 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A trigonometric expression to evaluate or simplify with no equation to solve and no triangle — compound, double or half angles, or a condition such as A + B = 225° or α + β + γ = π.",
     story: [
-      "39 q, 0.92/paper, 49% HARD. This is the Std XI identity chapter, and it holds everything the Std XII trigonometry chapter assumes: compound angles, multiple and sub-multiple angles, sums to products and back. It crossed the playbook line on the 2026-09-26 re-measure. Its notes have three pages: compound angles, multiple angles, and sum-to-product.",
+      "38 q, 0.92/paper, 47% HARD. This is the Std XI identity chapter, and it holds everything the Std XII trigonometry chapter assumes: compound angles, multiple and sub-multiple angles, sums to products and back. It crossed the playbook line on the 2026-09-26 re-measure. Its notes have three pages: compound angles, multiple angles, and sum-to-product.",
       "Its HARD questions are not spread evenly. Eight of the 19 are evaluations at a standard angle — 18°, 20° or π/8 — and they fall to a memorised value, not to algebra: sin 18° = (√5 − 1)/4, cos 36° = (√5 + 1)/4, tan(π/8) = √2 − 1. The same stem recurs, too: cos²48° − sin²12° was set three times in 2024, and tan(π/8) twice.",
       "Seven more HARD questions are conditional identities — a relation such as α + β + γ = π, 3 sin α = 5 sin β, or three sines in H.P., followed by a request for some other expression. These take longest, because the first move is choosing which identity to aim at. They belong on the second pass.",
       "The rest is quick work: a ratio from a given tan, the maximum of a sin x + b cos x (√(a² + b²)), a half angle with its sign read from the quadrant. With no negative marking, a conditional identity you cannot crack in two minutes still gets a marked option.",

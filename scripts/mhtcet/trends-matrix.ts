@@ -201,17 +201,13 @@ function build(questions: QuestionRow[], chapterNames: Map<string, string>): Bui
   let skippedUnfiled = 0;
 
   // Columns are PAPERS (year + pyq_note), not files: a re-dated row keeps the
-  // file it was ingested from. Maths still keys by file — switching it moves
-  // numbers on its shipped trends page, so that is a logged backfill
-  // (ROADMAP), not a silent change.
-  const column =
-    SUBJECT === "Maths"
-      ? null
-      : canonicalPaperFiles(
-          questions
-            .filter((q) => q.source_file && q.pyq_year !== null)
-            .map((q) => ({ sourceFile: q.source_file!, year: q.pyq_year!, pyqNote: q.pyq_note }))
-        );
+  // file it was ingested from. Maths moved to this on 2026-09-28 with its
+  // label fix — until then two of its files were copies of other papers.
+  const column = canonicalPaperFiles(
+    questions
+      .filter((q) => q.source_file && q.pyq_year !== null)
+      .map((q) => ({ sourceFile: q.source_file!, year: q.pyq_year!, pyqNote: q.pyq_note }))
+  );
 
   for (const raw of questions) {
     const q =

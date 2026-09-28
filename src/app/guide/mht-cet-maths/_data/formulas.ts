@@ -216,7 +216,7 @@ export const FORMULA_GROUPS: FormulaGroup[] = [
           "Cyclic rotation leaves it unchanged; swapping any two vectors flips the sign",
         ],
         notes:
-          "This is the bank's single densest vectors subtopic (71 q) and its hardest (72% HARD). The zero-determinant test is universal: it is concurrency of lines, collinearity of points, coplanarity of vectors and coplanarity of two 3-D lines, all the same computation.",
+          "This is the bank's single densest vectors subtopic (68 q) and its hardest (74% HARD). The zero-determinant test is universal: it is concurrency of lines, collinearity of points, coplanarity of vectors and coplanarity of two 3-D lines, all the same computation.",
       },
       {
         id: "collinear-coplanar-conditions",
@@ -516,7 +516,7 @@ export const FORMULA_GROUPS: FormulaGroup[] = [
           "d/dx(sin⁻¹x) = 1/√(1 − x²)      d/dx(cos⁻¹x) = −1/√(1 − x²)\nd/dx(tan⁻¹x) = 1/(1 + x²)        d/dx(cot⁻¹x) = −1/(1 + x²)\nd/dx(sec⁻¹x) = 1/(|x|√(x² − 1))  d/dx(cosec⁻¹x) = −1/(|x|√(x² − 1))",
         legend: ["Domains: |x| < 1 for the first four, |x| > 1 for the last two"],
         notes:
-          "The bank's largest differentiation subtopic (39 q, 49% HARD). Almost every such question is easier after a SIMPLIFYING substitution — x = tan θ for 2x/(1+x²) or (1−x²)/(1+x²) shapes — rather than differentiating the printed expression directly.",
+          "The bank's largest differentiation subtopic (38 q, 47% HARD). Almost every such question is easier after a SIMPLIFYING substitution — x = tan θ for 2x/(1+x²) or (1−x²)/(1+x²) shapes — rather than differentiating the printed expression directly.",
       },
       {
         id: "implicit-differentiation",

@@ -13,17 +13,17 @@
  * questions do I answer first" and "how long am I allowed to stay on this
  * one", never "do I attempt it at all". `DrillPosture` below is built on that.
  *
- * TIERING is on RECENT weightage (2024-2025, 25 shifts) plus %HARD, not on
+ * TIERING is on RECENT weightage (2024-2025, 24 shifts) plus %HARD, not on
  * lifetime average — MHT-CET moved its syllabus for 2025 and a lifetime
  * average hides the move in both directions. See TAIL_CHAPTERS.
  *
- * NUMBERS. Chapter q-counts and %HARD are lifetime figures over the 2,175
- * PUBLIC past-year questions (44 shifts, 2021-2025, 26 chapters, 85
+ * NUMBERS. Chapter q-counts and %HARD are lifetime figures over the 2,090
+ * PUBLIC past-year questions (42 shifts, 2021-2025, 26 chapters, 85
  * subtopics). q/paper figures quoted in prose are the recent-weightage
  * numbers. A strand's `qCount` is the sum of its chapters' lifetime counts and
- * `pctOfBank` is that sum as a share of 2,175 — those two are addition, not
+ * `pctOfBank` is that sum as a share of 2,090 — those two are addition, not
  * new measurements. The three strands plus the five tail chapters below
- * reconcile to 2,175 exactly (1,256 + 347 + 468 + 104), re-measured 2026-09-26 after 83
+ * reconcile to 2,090 exactly (1,207 + 334 + 450 + 99), re-measured 2026-09-28 after the label fix, and before that 2026-09-26 after 83
  * undated "2025 Shift ||" compilation rows went PRIVATE as twins of dated papers, which
  * took 2025 from 14 columns to its 13 real shifts. Trigonometry - II crossed the 0.9 line
  * (0.88 -> 0.92) on that re-measure and moved from the tail block into the long tail. The 2026-09-26 trigonometry
@@ -31,8 +31,8 @@
  * then deleted; 26 chapters) moved +44 q into the cornerstone strand, -77 q out of the
  * long tail and +22 q into the tail block; the strand figures below carry that delta.
  *
- * Difficulty split across the bank: EASY 218 (10.0%) · MODERATE 1,127 (51.8%)
- * · HARD 830 (38.2%).
+ * Difficulty split across the bank: EASY 211 (10.1%) · MODERATE 1,099 (52.6%)
+ * · HARD 780 (37.3%).
  *
  * `mustDrill` / `skipSubtopics` / `targetHard` hold canonical DB subtopic
  * names, resolved to UUIDs at request time for /browse drill links. A typo
@@ -67,7 +67,7 @@ export type DrillPosture =
 
 export type StrandChapter = {
   chapter: string;
-  /** Lifetime PUBLIC PYQ count for the chapter (of 2,175). */
+  /** Lifetime PUBLIC PYQ count for the chapter (of 2,090). */
   qCount: number;
   pctHard: number;
   posture: DrillPosture;
@@ -93,7 +93,7 @@ export type StrategyStrand = {
   label: string;
   /** Sum of the strand's chapters' lifetime q-counts. */
   qCount: number;
-  /** That sum as a share of the 2,175-question bank. */
+  /** That sum as a share of the 2,090-question bank. */
   pctOfBank: number;
   /** One-paragraph "what this strand is" pitch. */
   pitch: string;
@@ -136,24 +136,24 @@ export const STRATEGY_HEADLINE = {
 export const CORNERSTONE_STRAND: StrategyStrand = {
   id: "cornerstone",
   label:
-    "Cornerstone — Vectors · Line and Plane · Applications of Derivative · Trigonometric Functions · Indefinite Integration · Differential Equations · Differentiation (1,256 q · 58% of bank)",
-  qCount: 1256,
+    "Cornerstone — Vectors · Line and Plane · Applications of Derivative · Trigonometric Functions · Indefinite Integration · Differential Equations · Differentiation (1,207 q · 58% of bank)",
+  qCount: 1207,
   pctOfBank: 58,
   pitch:
-    "Seven chapters carry 28.72 questions per paper — 57% of a 50-question paper, or 57 of the 100 marks. Nothing else on this exam concentrates like that, and it is why prep here is not a question of coverage: you cannot reach a good score without these seven, and you cannot reach one on these seven alone either. Because there is no negative marking, the cost of a weak cornerstone is never a wrong answer you should have skipped — it is minutes. A Vectors triple-product question you half-remember eats four minutes of a 90-minute paper and takes two long-tail questions down with it. Order and time discipline decide this paper; selection does not.",
+    "Seven chapters carry 28.76 questions per paper — 58% of a 50-question paper, or about 58 of the 100 marks. Nothing else on this exam concentrates like that, and it is why prep here is not a question of coverage: you cannot reach a good score without these seven, and you cannot reach one on these seven alone either. Because there is no negative marking, the cost of a weak cornerstone is never a wrong answer you should have skipped — it is minutes. A Vectors triple-product question you half-remember eats four minutes of a 90-minute paper and takes two long-tail questions down with it. Order and time discipline decide this paper; selection does not.",
   approach: [
     "Do these seven in prep before anything else, and do them properly — 1.8 minutes per question means a technique you can only half-execute is worth less than one you have never seen, because the half-remembered one is the one you will spend five minutes on.",
     "All seven have shipped teaching notes at /notes/mht-cet-maths — line-and-plane, vectors, applications-of-derivative, trigonometric-functions, differential-equations, indefinite-integration, differentiation. Read a chapter's notes once, then drill subtopic by subtopic; do not read all seven end-to-end first.",
     "Two of them do NOT cherry-pick and you should know which before you plan your hours. Line and Plane spreads 43% HARD across all seven of its subtopics, so there is no cheap third to bank. Vectors is the opposite: at 55% HARD overall it looks worse, but Dot Product, Angle, and Perpendicularity is 48 questions at 25% HARD — a genuinely cheap third of the biggest chapter in the bank. Secure that before you touch Scalar Triple Product at 72%.",
     "Applications of Derivative is the best marks-per-hour chapter on the paper and it is a cornerstone: 3.88 q/paper at 23% HARD, seven subtopics and none above 31%. Approximations using Differentials is 12 questions at 0% HARD. Treat it as a bank-first chapter even though its volume puts it here.",
-    "Trigonometric Functions is the chapter most students under-rate, because the name is unfamiliar: it is the Std XII trigonometry chapter, and it holds trigonometric equations, inverse trigonometry and solution of triangle under one heading. It is the second-largest chapter in the bank and the heaviest on recent papers, 5.04 q/paper across 2024-2025. Its three parts cost about the same (equations 47 q at 36% HARD, solution of triangle 71 q at 41%, inverse trigonometry 93 q at 37%), and they are moving differently: solution of triangle rose from 1.61 to 2.12 a paper while equations fell from 1.07 to 0.80. The cheap pages are inverse-trig values and inverse-trig equations, both under 25% HARD; the expensive one is inverse-trig identities at 63%.",
+    "Trigonometric Functions is the chapter most students under-rate, because the name is unfamiliar: it is the Std XII trigonometry chapter, and it holds trigonometric equations, inverse trigonometry and solution of triangle under one heading. It is the second-largest chapter in the bank and the heaviest on recent papers, 5.08 q/paper across 2024-2025. Its three parts cost about the same (equations 47 q at 36% HARD, solution of triangle 69 q at 39%, inverse trigonometry 91 q at 37%), and they are moving differently: solution of triangle rose from 1.64 to 2.13 a paper while equations fell from 1.12 to 0.83. The cheap pages are inverse-trig values and inverse-trig equations, both under 25% HARD; the expensive one is inverse-trig identities at 63%.",
     "On the paper, cornerstone questions are not all attempted at the same time. The bank-first and split-pass cheap halves go on the opening sweep with the quick-wins; the expensive halves wait for the second pass, when you know how much clock you actually have.",
   ],
   chapters: [
     {
       chapter: "Line and Plane",
-      qCount: 200,
-      pctHard: 43,
+      qCount: 191,
+      pctHard: 40,
       posture: "own-outright",
       mustDrill: [
         "Plane — Equation, Normal, and Construction",
@@ -171,12 +171,12 @@ export const CORNERSTONE_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "4.96 q/paper · about 10 marks",
       studyHours: 16,
       summary:
-        "200 q · 43% HARD · the second-heaviest chapter on recent papers, just behind Trigonometric Functions. Seven subtopics and the HARD is spread rather than pooled, so this chapter does not cherry-pick: you own all seven or you lose ten marks. Only Line — Equation, Direction Cosines, and Vector Form is genuinely cheap at 21% HARD.",
+        "191 q · 40% HARD · the second-heaviest chapter on recent papers, just behind Trigonometric Functions. Seven subtopics and the HARD is spread rather than pooled, so this chapter does not cherry-pick: you own all seven or you lose ten marks. Only Line — Equation, Direction Cosines, and Vector Form is genuinely cheap at 21% HARD.",
     },
     {
       chapter: "Vectors",
-      qCount: 224,
-      pctHard: 55,
+      qCount: 214,
+      pctHard: 56,
       posture: "split-pass",
       mustDrill: [
         "Dot Product, Angle, and Perpendicularity",
@@ -190,15 +190,15 @@ export const CORNERSTONE_STRAND: StrategyStrand = {
         "Scalar Triple Product, Coplanarity, and Volume",
         "Cross Product, Angle, and Area",
       ],
-      expectedYieldPerPaper: "4.84 q/paper · about 10 marks",
+      expectedYieldPerPaper: "4.83 q/paper · about 10 marks",
       studyHours: 18,
       summary:
-        "224 q · 55% HARD · the largest chapter in the bank and the hardest cornerstone. It DOES cherry-pick, which is what makes it manageable: Dot Product (48 q, 25% HARD) is the cheap third, while Scalar Triple Product (71 q, 72%) and Cross Product (66 q, 64%) carry most of the pain. Bank the cheap third on the first sweep; leave triple products for the second pass.",
+        "214 q · 56% HARD · the largest chapter in the bank and the hardest cornerstone. It DOES cherry-pick, which is what makes it manageable: Dot Product (46 q, 26% HARD) is the cheap third, while Scalar Triple Product (68 q, 74%) and Cross Product (63 q, 63%) carry most of the pain. Bank the cheap third on the first sweep; leave triple products for the second pass.",
     },
     {
       chapter: "Applications of Derivative",
-      qCount: 182,
-      pctHard: 23,
+      qCount: 174,
+      pctHard: 21,
       posture: "bank-first",
       mustDrill: [
         "Approximations using Differentials",
@@ -212,11 +212,11 @@ export const CORNERSTONE_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "3.88 q/paper · about 8 marks",
       studyHours: 12,
       summary:
-        "182 q · 23% HARD · the cheapest cornerstone by a distance and the best marks-per-hour chapter on the paper. Seven subtopics, none above 31% HARD, and Approximations using Differentials is 12 q at 0% HARD. Volume puts it in the cornerstone strand; behaviour puts it on your opening sweep.",
+        "174 q · 21% HARD · the cheapest cornerstone by a distance and the best marks-per-hour chapter on the paper. Seven subtopics, none above 31% HARD, and Approximations using Differentials is 12 q at 0% HARD. Volume puts it in the cornerstone strand; behaviour puts it on your opening sweep.",
     },
     {
       chapter: "Trigonometric Functions",
-      qCount: 211,
+      qCount: 207,
       pctHard: 38,
       posture: "split-pass",
       mustDrill: [
@@ -228,15 +228,15 @@ export const CORNERSTONE_STRAND: StrategyStrand = {
       targetHard: [
         "Inverse Trigonometric Identities — Sums, Substitution and Telescoping",
       ],
-      expectedYieldPerPaper: "5.04 q/paper · about 10 marks",
+      expectedYieldPerPaper: "5.08 q/paper · about 10 marks",
       studyHours: 12,
       summary:
-        "211 q · 38% HARD · the second-largest chapter in the bank and the heaviest on recent papers, 5.04 q/paper across 2024-2025. Three parts over six notes pages: equations (47 q, 36% HARD), solution of triangle (71 q across the rules page and the half-angle page, 41%) and inverse trigonometry (94 q across values, identities and equations, 36%). The parts cost about the same, so the chapter is drilled whole — but inside inverse trigonometry the identities page is 63% HARD while the values and equations pages are under 25%, so bank those two first. Solution of triangle is the part that is rising.",
+        "207 q · 38% HARD · the second-largest chapter in the bank and the heaviest on recent papers, 5.08 q/paper across 2024-2025. Three parts over six notes pages: equations (47 q, 36% HARD), solution of triangle (69 q across the rules page and the half-angle page, 41%) and inverse trigonometry (94 q across values, identities and equations, 36%). The parts cost about the same, so the chapter is drilled whole — but inside inverse trigonometry the identities page is 63% HARD while the values and equations pages are under 25%, so bank those two first. Solution of triangle is the part that is rising.",
     },
     {
       chapter: "Differential Equations",
-      qCount: 141,
-      pctHard: 38,
+      qCount: 135,
+      pctHard: 36,
       posture: "split-pass",
       mustDrill: [
         "Order, Degree, Formation of ODE, and Verification of Solutions",
@@ -247,15 +247,15 @@ export const CORNERSTONE_STRAND: StrategyStrand = {
       ],
       skipSubtopics: ["Newton's Law of Cooling"],
       targetHard: ["Linear Differential Equations (Integrating Factor)"],
-      expectedYieldPerPaper: "3.36 q/paper · about 7 marks",
+      expectedYieldPerPaper: "3.38 q/paper · about 7 marks",
       studyHours: 12,
       summary:
-        "141 q · 38% HARD · six subtopics that split by SOLUTION METHOD, which is exactly how the questions are set. Order/Degree/Formation (33 q, 24% HARD) is recognition work and near-free; Linear (Integrating Factor) at 63% is where it gets expensive. Newton's Law of Cooling is 5 q lifetime at 60% HARD — last in the prep queue, and still answered on the paper.",
+        "135 q · 36% HARD · six subtopics that split by SOLUTION METHOD, which is exactly how the questions are set. Order/Degree/Formation (31 q, 23% HARD) is recognition work and near-free; Linear (Integrating Factor) at 63% is where it gets expensive. Newton's Law of Cooling is 5 q lifetime at 60% HARD — last in the prep queue, and still answered on the paper.",
     },
     {
       chapter: "Indefinite Integration",
-      qCount: 159,
-      pctHard: 53,
+      qCount: 151,
+      pctHard: 52,
       posture: "split-pass",
       mustDrill: [
         "Foundations and Standard Formulae",
@@ -269,14 +269,14 @@ export const CORNERSTONE_STRAND: StrategyStrand = {
         "Trigonometric Integrals - Rational and Substitution Forms",
         "Integration by Substitution",
       ],
-      expectedYieldPerPaper: "3.44 q/paper · about 7 marks",
+      expectedYieldPerPaper: "3.42 q/paper · about 7 marks",
       studyHours: 14,
       summary:
-        "159 q · 53% HARD · the most expensive cornerstone per question. Its cheap corner is real but small: Foundations (8 q, 13%) and Trigonometric Integrals - Powers and Identities (11 q, 18%) are 21 questions of near-free marks. Everything else sits at 48% or worse, and Trigonometric Integrals - Rational and Substitution Forms is 36 q at 75% HARD.",
+        "151 q · 52% HARD · the most expensive cornerstone per question. Its cheap corner is real but small: Foundations (8 q, 13%) and Trigonometric Integrals - Powers and Identities (11 q, 18%) are 21 questions of near-free marks. Everything else sits at 48% or worse, and Trigonometric Integrals - Rational and Substitution Forms is 34 q at 74% HARD.",
     },
     {
       chapter: "Differentiation",
-      qCount: 139,
+      qCount: 135,
       pctHard: 47,
       posture: "split-pass",
       mustDrill: [
@@ -291,10 +291,10 @@ export const CORNERSTONE_STRAND: StrategyStrand = {
         "Inverse Functions & Inverse Trigonometric Differentiation",
         "Implicit Differentiation & Special Forms",
       ],
-      expectedYieldPerPaper: "3.20 q/paper · about 6 marks",
+      expectedYieldPerPaper: "3.21 q/paper · about 6 marks",
       studyHours: 12,
       summary:
-        "139 q · 47% HARD. Foundations, Chain Rule & Differentiability (22 q, 32% HARD) is the only cheap entry; the two biggest subtopics — Inverse Trigonometric Differentiation (39 q, 49%) and Implicit & Special Forms (31 q, 52%) — are where the marks and the minutes both are. Derivative of One Function with Respect to Another is 7 q at 71% HARD and goes last.",
+        "135 q · 47% HARD. Foundations, Chain Rule & Differentiability (21 q, 33% HARD) is the only cheap entry; the two biggest subtopics — Inverse Trigonometric Differentiation (38 q, 47%) and Implicit & Special Forms (28 q, 54%) — are where the marks and the minutes both are. Derivative of One Function with Respect to Another is 7 q at 71% HARD and goes last.",
     },
   ],
 };
@@ -302,22 +302,22 @@ export const CORNERSTONE_STRAND: StrategyStrand = {
 export const QUICKWIN_STRAND: StrategyStrand = {
   id: "quickwin",
   label:
-    "Quick-Win — Probability Distribution · Mathematical Logic · Binomial Distribution · Linear Programming · Straight Line (347 q · 16% of bank)",
-  qCount: 347,
+    "Quick-Win — Probability Distribution · Mathematical Logic · Binomial Distribution · Linear Programming · Straight Line (334 q · 16% of bank)",
+  qCount: 334,
   pctOfBank: 16,
   pitch:
-    "Bank these first. Five chapters worth 7.8 questions a paper at an average well below the bank's 38.2% HARD, and the point of doing them first is not that they are worth more — every question on this paper is worth exactly 2 marks — but that they are worth the same for a third of the time. Linear Programming is the cleanest example on the whole exam: 45 questions at 4% HARD, and its corner-point page has produced 16 questions and NEVER a single HARD one. Marks secured in the first twenty minutes are marks the clock cannot take back later.",
+    "Bank these first. Five chapters worth 7.9 questions a paper at an average well below the bank's 37.3% HARD, and the point of doing them first is not that they are worth more — every question on this paper is worth exactly 2 marks — but that they are worth the same for a third of the time. Linear Programming is the cleanest example on the whole exam: 43 questions at 5% HARD, and its corner-point page has produced 16 questions and NEVER a single HARD one. Marks secured in the first twenty minutes are marks the clock cannot take back later.",
   approach: [
     "Attempt every question from these five chapters on the opening sweep, before you look at a triple product or an integrating factor. Roughly 8 questions, roughly 16 marks, and most of them inside the 1.8-minute budget rather than over it.",
     "Probability Distribution and Binomial Distribution both have shipped teaching notes at /notes/mht-cet-maths (probability-distribution, binomial-distribution). Together they are 171 questions at 21% and 22% HARD — the largest block of cheap marks in the bank.",
-    "Linear Programming is 45 q at 4% HARD across four notes pages (/notes/mht-cet-maths/linear-programming), and three of them have never produced a HARD question. If you are short on time before the exam, this is the highest-certainty chapter you can add.",
-    "Mathematical Logic is 86 q at 29% HARD, and the HARD is concentrated in one small subtopic: Switching Circuits, 11 q at 64%. Everything else is well below the chapter average — Negation of Statements and Quantifiers (14 q, 14%), Finding Truth Values of Component Statements (16 q, 19%), Converse, Inverse, and Contrapositive (17 q, 24%) — and all of it is mechanical once you have drilled the forms.",
-    "One chapter outside this strand belongs in the same habit: Sets, Relations and Functions is 40 q at 13% HARD — genuinely cheap marks — but only 0.72 q/paper on recent shifts, which is why it has no playbook. Its four notes pages are at /notes/mht-cet-maths/sets-relations-and-functions; drill it with the tail chapters below, and answer it on the opening sweep when it appears.",
+    "Linear Programming is 43 q at 5% HARD across four notes pages (/notes/mht-cet-maths/linear-programming), and three of them have never produced a HARD question. If you are short on time before the exam, this is the highest-certainty chapter you can add.",
+    "Mathematical Logic is 84 q at 29% HARD, and the HARD is concentrated in one small subtopic: Switching Circuits, 11 q at 64%. Everything else is well below the chapter average — Negation of Statements and Quantifiers (14 q, 14%), Finding Truth Values of Component Statements (15 q, 20%), Converse, Inverse, and Contrapositive (17 q, 24%) — and all of it is mechanical once you have drilled the forms.",
+    "One chapter outside this strand belongs in the same habit: Sets, Relations and Functions is 38 q at 13% HARD — genuinely cheap marks — but only 0.71 q/paper on recent shifts, which is why it has no playbook. Its four notes pages are at /notes/mht-cet-maths/sets-relations-and-functions; drill it with the tail chapters below, and answer it on the opening sweep when it appears.",
   ],
   chapters: [
     {
       chapter: "Probability Distribution",
-      qCount: 112,
+      qCount: 107,
       pctHard: 21,
       posture: "bank-first",
       mustDrill: [
@@ -326,14 +326,14 @@ export const QUICKWIN_STRAND: StrategyStrand = {
         "Expectation, Variance and Standard Deviation",
         "Conditional Probability, Independence and Bayes' Theorem",
       ],
-      expectedYieldPerPaper: "2.64 q/paper · about 5 marks",
+      expectedYieldPerPaper: "2.67 q/paper · about 5 marks",
       studyHours: 8,
       summary:
-        "112 q · 21% HARD · the biggest quick-win and the eighth-heaviest chapter on recent papers. Three of its four subtopics sit at 19% HARD or below; only Conditional Probability, Independence and Bayes' Theorem (25 q, 32%) costs real time.",
+        "107 q · 21% HARD · the biggest quick-win and the eighth-heaviest chapter on recent papers. Three of its four subtopics sit at 19% HARD or below; only Conditional Probability, Independence and Bayes' Theorem (24 q, 33%) costs real time.",
     },
     {
       chapter: "Mathematical Logic",
-      qCount: 86,
+      qCount: 84,
       pctHard: 29,
       posture: "bank-first",
       mustDrill: [
@@ -344,15 +344,15 @@ export const QUICKWIN_STRAND: StrategyStrand = {
         "Logical Equivalence and Algebra of Statements",
       ],
       targetHard: ["Switching Circuits"],
-      expectedYieldPerPaper: "1.92 q/paper · about 4 marks",
+      expectedYieldPerPaper: "1.96 q/paper · about 4 marks",
       studyHours: 6,
       summary:
-        "86 q · 29% HARD. Almost pure procedure: build the table, apply the equivalence, read the switch circuit. The 31% is not spread evenly — Switching Circuits is 11 q at 64% HARD, the densest block in the chapter, while Negation of Statements and Quantifiers is 14 q at 14%. Drill the standard circuit forms rather than reasoning each one out fresh.",
+        "84 q · 29% HARD. Almost pure procedure: build the table, apply the equivalence, read the switch circuit. The 31% is not spread evenly — Switching Circuits is 10 q at 60% HARD, the densest block in the chapter, while Negation of Statements and Quantifiers is 14 q at 14%. Drill the standard circuit forms rather than reasoning each one out fresh.",
     },
     {
       chapter: "Binomial Distribution",
-      qCount: 59,
-      pctHard: 22,
+      qCount: 57,
+      pctHard: 21,
       posture: "bank-first",
       mustDrill: [
         "The Binomial Setting and Probability Mass Function",
@@ -360,15 +360,15 @@ export const QUICKWIN_STRAND: StrategyStrand = {
         "Parameter Estimation and the Probability Ratio",
         "Computing Binomial Probabilities",
       ],
-      expectedYieldPerPaper: "1.28 q/paper · about 3 marks",
+      expectedYieldPerPaper: "1.29 q/paper · about 3 marks",
       studyHours: 4,
       summary:
-        "59 q · 22% HARD across four small subtopics, two of which are at 13% and 10%. Mean = np and variance = npq carry more questions than anything else here; recognising the binomial setting is most of the work.",
+        "57 q · 21% HARD across four small subtopics, two of which are at 13% and 10%. Mean = np and variance = npq carry more questions than anything else here; recognising the binomial setting is most of the work.",
     },
     {
       chapter: "Linear Programming",
-      qCount: 45,
-      pctHard: 4,
+      qCount: 43,
+      pctHard: 5,
       posture: "bank-first",
       mustDrill: [
         "Corner-Point Method — Maximum and Minimum of the Objective Function",
@@ -377,12 +377,12 @@ export const QUICKWIN_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "1.00 q/paper · 2 marks",
       studyHours: 3,
       summary:
-        "45 q · 4% HARD · the cheapest chapter in the bank by some margin. The corner-point page is 16 questions and has never produced a HARD one; the feasible-region page is 13 at 0%; both HARD questions sit on the 9-question reading-constraints-off-a-figure page. Three hours of drilling buys a question a paper at near-certainty.",
+        "43 q · 5% HARD · the cheapest chapter in the bank by some margin. The corner-point page is 16 questions and has never produced a HARD one; the feasible-region page is 13 at 0%; both HARD questions sit on the 9-question reading-constraints-off-a-figure page. Three hours of drilling buys a question a paper at near-certainty.",
     },
     {
       chapter: "Straight Line",
-      qCount: 45,
-      pctHard: 20,
+      qCount: 43,
+      pctHard: 19,
       posture: "bank-first",
       mustDrill: [
         "Distance — From a Point, Between Parallels, Along a Direction and the Foot of the Perpendicular",
@@ -391,7 +391,7 @@ export const QUICKWIN_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "0.96 q/paper · about 2 marks",
       studyHours: 4,
       summary:
-        "45 q · 20% HARD across four notes pages, with every HARD question on the slope-and-angle page. Worth more than its q/paper suggests because the techniques repeat elsewhere: the foot-of-perpendicular and distance work here is the 2-D dialect of Line and Plane, and the perpendicularity condition m1*m2 = -1 is the same idea as the vector dot product being zero.",
+        "43 q · 19% HARD across four notes pages, with every HARD question on the slope-and-angle page. Worth more than its q/paper suggests because the techniques repeat elsewhere: the foot-of-perpendicular and distance work here is the 2-D dialect of Line and Plane, and the perpendicularity condition m1*m2 = -1 is the same idea as the vector dot product being zero.",
     },
   ],
 };
@@ -399,22 +399,22 @@ export const QUICKWIN_STRAND: StrategyStrand = {
 export const LONGTAIL_STRAND: StrategyStrand = {
   id: "longtail",
   label:
-    "Long Tail — Limits · Definite Integration · Determinants and Matrices · Circle · Applications of Definite Integral · Complex Numbers · Pair of Straight Lines · Permutations and Combinations · Trigonometry - II (468 q · 22% of bank)",
-  qCount: 468,
+    "Long Tail — Limits · Definite Integration · Determinants and Matrices · Circle · Applications of Definite Integral · Complex Numbers · Pair of Straight Lines · Permutations and Combinations · Trigonometry - II (450 q · 22% of bank)",
+  qCount: 450,
   pctOfBank: 22,
   pitch:
     "Nine chapters at roughly one to two questions a paper each, and mostly 31-56% HARD — expensive per mark, and collectively too big to ignore at about 11 questions a paper. These come last, on the time remaining after the cornerstones and quick-wins are banked. And you still answer every single one of them, including the ones you have not prepared: there is no negative marking, so an unread Pair of Straight Lines question costs nothing to guess and a blank is strictly worse than a guess. Prep them in weightage order and stop where your hours stop; the paper will not punish the gap the way an NDA paper would.",
   approach: [
     "Every chapter here has shipped teaching notes at /notes/mht-cet-maths, with every PYQ tagged to a page.",
-    "Limits is the sharpest example of a chapter that does not cherry-pick: 90 q at 56% HARD, and the four limit pages and the three continuity pages sit at the same difficulty — Trigonometric Limits is 67% HARD, Continuity at a Point 58%, Piecewise Continuity 55%. There is no cheap half to take. Prepare the whole toolkit or none of it, and on the paper give these questions the second pass, not the first.",
+    "Limits is the sharpest example of a chapter that does not cherry-pick: 86 q at 55% HARD, and the four limit pages and the three continuity pages sit at the same difficulty — Trigonometric Limits is 67% HARD, Continuity at a Point 58%, Piecewise Continuity 55%. There is no cheap half to take. Prepare the whole toolkit or none of it, and on the paper give these questions the second pass, not the first.",
     "Two chapters here reward a technique that skips calculus entirely, and at 1.8 minutes a question that is a time lever rather than an elegance: the greatest and least modulus of a complex number on a disc, and the maximum perpendicular distance from a point on a circle, are the same move — distance to the centre plus or minus the radius.",
     "A vanishing 3x3 determinant is the universal degeneracy test across this strand and the cornerstones both — concurrency of lines, collinearity of points, coplanarity of lines, scalar triple product equal to zero. Learning it once in Determinants and Matrices pays in four other chapters.",
   ],
   chapters: [
     {
       chapter: "Limits",
-      qCount: 90,
-      pctHard: 56,
+      qCount: 86,
+      pctHard: 55,
       posture: "last-pass-guess",
       mustDrill: [
         "Continuity at a Point — Finding f(c) and the Parameter",
@@ -429,12 +429,12 @@ export const LONGTAIL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "2.04 q/paper · about 4 marks",
       studyHours: 6,
       summary:
-        "90 q · 56% HARD · the highest %HARD of any chapter in this strand, and it does not cherry-pick: every one of its seven pages is between 44% and 67% HARD. Two questions a paper at full price. Prepare the whole toolkit or accept that you are guessing them — which, on this exam, is a legitimate choice.",
+        "86 q · 55% HARD · the highest %HARD of any chapter in this strand, and it does not cherry-pick: every one of its seven pages is between 44% and 67% HARD. Two questions a paper at full price. Prepare the whole toolkit or accept that you are guessing them — which, on this exam, is a legitimate choice.",
     },
     {
       chapter: "Definite Integration",
-      qCount: 69,
-      pctHard: 48,
+      qCount: 67,
+      pctHard: 46,
       posture: "last-pass-guess",
       mustDrill: [
         "Odd and Even Integrands — Symmetric Limits",
@@ -442,15 +442,15 @@ export const LONGTAIL_STRAND: StrategyStrand = {
         "Modulus and Greatest-Integer Integrands — Split the Interval",
       ],
       targetHard: ["Trigonometric Definite Integrals — tan x = t, Half-Angle Forms and Powers"],
-      expectedYieldPerPaper: "1.72 q/paper · about 3 marks",
+      expectedYieldPerPaper: "1.75 q/paper · about 4 marks",
       studyHours: 5,
       summary:
-        "69 q · 48% HARD. The three property pages — odd/even symmetry (11 q, 55%), King's property (17 q, 47%) and modulus/greatest-integer splitting (15 q, 27%) — are 43 of the 68, and each is exactly the kind of one-line trick that turns a four-minute integral into a thirty-second one. The trigonometric block (11 q) is the expensive corner at 73% HARD.",
+        "67 q · 46% HARD. The three property pages — odd/even symmetry (11 q, 55%), King's property (17 q, 47%) and modulus/greatest-integer splitting (13 q, 15%) — are 43 of the 68, and each is exactly the kind of one-line trick that turns a four-minute integral into a thirty-second one. The trigonometric block (11 q) is the expensive corner at 73% HARD.",
     },
     {
       chapter: "Determinants and Matrices",
-      qCount: 49,
-      pctHard: 49,
+      qCount: 47,
+      pctHard: 47,
       posture: "last-pass-guess",
       mustDrill: [
         "Inverse of a Matrix — Adjoint Formula, Products and Verification",
@@ -459,15 +459,15 @@ export const LONGTAIL_STRAND: StrategyStrand = {
         "Determinants, Cofactors and the Adjoint Identities",
       ],
       targetHard: ["Determinants, Cofactors and the Adjoint Identities"],
-      expectedYieldPerPaper: "1.12 q/paper · about 2 marks",
+      expectedYieldPerPaper: "1.13 q/paper · about 2 marks",
       studyHours: 4,
       summary:
-        "49 q · 49% HARD, and the determinant and adjoint identities page is 69%. Worth more than one question a paper suggests, because the vanishing-determinant degeneracy test learned here reappears as concurrency, collinearity, coplanarity and the scalar triple product across four other chapters.",
+        "47 q · 47% HARD, and the determinant and adjoint identities page is 69%. Worth more than one question a paper suggests, because the vanishing-determinant degeneracy test learned here reappears as concurrency, collinearity, coplanarity and the scalar triple product across four other chapters.",
     },
     {
       chapter: "Circle",
-      qCount: 46,
-      pctHard: 37,
+      qCount: 43,
+      pctHard: 33,
       posture: "last-pass-guess",
       mustDrill: [
         "Equation of a Circle — Centre-Radius, General, Diameter and Parametric Forms",
@@ -477,15 +477,15 @@ export const LONGTAIL_STRAND: StrategyStrand = {
       skipSubtopics: [
         "Two Circles — Touching, Common Tangents and Relative Position",
       ],
-      expectedYieldPerPaper: "1.04 q/paper · about 2 marks",
+      expectedYieldPerPaper: "1.00 q/paper · 2 marks",
       studyHours: 4,
       summary:
-        "46 q · 37% HARD. The equation page (12 q, 33%) and the concentric-and-touching page (6 q, 17%) are the cheap entry; Tangents (14 q, 50%) and Two Circles (8 q, 50%) are the expensive corners and go last in the queue. The greatest-and-least-distance move here is the same as the complex-modulus-on-a-disc one.",
+        "43 q · 33% HARD. The equation page (12 q, 33%) and the concentric-and-touching page (6 q, 17%) are the cheap entry; Tangents (13 q, 46%) and Two Circles (7 q, 43%) are the expensive corners and go last in the queue. The greatest-and-least-distance move here is the same as the complex-modulus-on-a-disc one.",
     },
     {
       chapter: "Complex Numbers",
-      qCount: 45,
-      pctHard: 31,
+      qCount: 43,
+      pctHard: 33,
       posture: "split-pass",
       mustDrill: [
         "Modulus and Argument — Polar Form, De Moivre and Square Roots",
@@ -495,7 +495,7 @@ export const LONGTAIL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "1.00 q/paper · 2 marks",
       studyHours: 4,
       summary:
-        "45 q · 31% HARD, and it splits cleanly: Modulus and Argument is 18 q at 28% HARD and Locus 12 q at 17%, while Algebra with the cube roots of unity is 15 q at 47%. Take the modulus and locus pages on the first sweep — the greatest-and-least-modulus shape is answered by distance to the centre plus or minus the radius, with no calculus at all.",
+        "43 q · 33% HARD, and it splits cleanly: Modulus and Argument is 17 q at 29% HARD and Locus 12 q at 17%, while Algebra with the cube roots of unity is 15 q at 47%. Take the modulus and locus pages on the first sweep — the greatest-and-least-modulus shape is answered by distance to the centre plus or minus the radius, with no calculus at all.",
     },
     {
       chapter: "Applications of Definite Integral",
@@ -506,15 +506,15 @@ export const LONGTAIL_STRAND: StrategyStrand = {
         "Area Under a Curve — Between a Curve and an Axis",
         "Area Between Two Curves — Intersections First",
       ],
-      expectedYieldPerPaper: "1.00 q/paper · 2 marks",
+      expectedYieldPerPaper: "1.04 q/paper · about 2 marks",
       studyHours: 3,
       summary:
         "44 q · 32% HARD, and 35 of those 44 are the two area pages — under one curve (14 q, 14% HARD) and between two curves (21 q, 38%). That makes it the most concentrated chapter in this strand and a cheap three hours; the circle, ellipse and hyperbola page (9 q, 44%) is the only corner that needs a standard result learnt cold.",
     },
     {
       chapter: "Pair of Straight Lines",
-      qCount: 44,
-      pctHard: 41,
+      qCount: 42,
+      pctHard: 43,
       posture: "last-pass-guess",
       mustDrill: [
         "Joint Equation of Two Lines — Product of Linear Factors and the Triangle They Form",
@@ -524,11 +524,11 @@ export const LONGTAIL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "1.00 q/paper · 2 marks",
       studyHours: 4,
       summary:
-        "44 q · 41% HARD, with the cost concentrated on the angle page (12 q, 58%) while the joint-equation page runs 17%. It is formula-driven rather than insight-driven, which makes it a good late addition: the perpendicularity condition here is a + b = 0, the pair-of-lines dialect of the same idea that is m1*m2 = -1 for lines and a zero dot product for vectors.",
+        "42 q · 43% HARD, with the cost concentrated on the angle page (11 q, 64%) while the joint-equation page runs 17%. It is formula-driven rather than insight-driven, which makes it a good late addition: the perpendicularity condition here is a + b = 0, the pair-of-lines dialect of the same idea that is m1*m2 = -1 for lines and a zero dot product for vectors.",
     },
     {
       chapter: "Permutations and Combinations",
-      qCount: 42,
+      qCount: 40,
       pctHard: 40,
       posture: "last-pass-guess",
       mustDrill: [
@@ -538,18 +538,18 @@ export const LONGTAIL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "1.00 q/paper · 2 marks",
       studyHours: 4,
       summary:
-        "42 q · 40% HARD. The smallest chapter with a playbook and one of the most error-prone: the failure mode is a mis-set-up count rather than a mis-executed formula, and Circular Arrangements (6 q) runs 83% HARD. Drill the constraint shapes — together, never together, at least, at most — rather than the formulas; the digit and polygon counts are the cheapest marks here.",
+        "40 q · 40% HARD. The smallest chapter with a playbook and one of the most error-prone: the failure mode is a mis-set-up count rather than a mis-executed formula, and Circular Arrangements (6 q) runs 83% HARD. Drill the constraint shapes — together, never together, at least, at most — rather than the formulas; the digit and polygon counts are the cheapest marks here.",
     },
     {
       chapter: "Trigonometry - II",
-      qCount: 39,
-      pctHard: 49,
+      qCount: 38,
+      pctHard: 47,
       posture: "last-pass-guess",
       mustDrill: ["Multiple and Sub-multiple Angles", "Sum-to-Product and Product Formulas"],
       expectedYieldPerPaper: "0.92 q/paper · about 2 marks",
       studyHours: 3,
       summary:
-        "39 q · 49% HARD. The HARD questions sit on two pages: multiple angles (9 of 13) and sum-to-product (8 of 13); compound angles is 2 of 13. Eight of its 19 HARD questions are evaluations at 18°, 20° and π/8 that fall to a memorised value rather than to algebra, so learn sin 18°, cos 36° and tan(π/8) first; the conditional identities (α + β + γ = π and the like) are the expensive half and belong on the second pass.",
+        "38 q · 47% HARD. The HARD questions sit on two pages: multiple angles (9 of 13) and sum-to-product (8 of 13); compound angles is 2 of 13. Eight of its 19 HARD questions are evaluations at 18°, 20° and π/8 that fall to a memorised value rather than to algebra, so learn sin 18°, cos 36° and tan(π/8) first; the conditional identities (α + β + γ = π and the like) are the expensive half and belong on the second pass.",
     },
   ],
 };
@@ -564,7 +564,7 @@ export const STRATEGY_STRANDS = [
  * Whether a tail chapter is worth preparing at all right now.
  *
  * "dropped" is a measured claim, not a prediction: Measures of Dispersion ran
- * a question a paper across 29 shifts in 2023-24 and then scored ZERO across
+ * a question a paper across 27 shifts in 2023-24 and then scored ZERO across
  * all 13 papers of 2025. "entering" is its mirror image — Conic Sections had
  * 3 questions before 2025 and 15 in 2025 alone.
  */
@@ -573,7 +573,7 @@ export type TailStatus = "live" | "entering" | "dropped";
 export type TailChapter = {
   chapter: string;
   qCount: number;
-  /** Recent weightage (2024-2025, 25 shifts). All are below the 0.9 q/paper
+  /** Recent weightage (2024-2025, 24 shifts). All are below the 0.9 q/paper
    *  line, which is why none of these ships a playbook. */
   qPerPaper: number;
   pctHard: number;
@@ -592,43 +592,43 @@ export type TailChapter = {
 export const TAIL_CHAPTERS: TailChapter[] = [
   {
     chapter: "Sets, Relations and Functions",
-    qCount: 40,
-    qPerPaper: 0.72,
+    qCount: 38,
+    qPerPaper: 0.71,
     pctHard: 13,
     status: "live",
     note: "The one genuine cheap-marks chapter below the line — 13% HARD, the third-lowest in the bank after Linear Programming and the dropped Measures of Dispersion. Below the playbook line on volume alone; drill it with the quick-wins.",
   },
   {
     chapter: "Conic Sections",
-    qCount: 18,
-    qPerPaper: 0.68,
-    pctHard: 39,
+    qCount: 17,
+    qPerPaper: 0.67,
+    pctHard: 35,
     status: "entering",
     note: "ENTERED in 2025: 3 questions across 2021-2024, then 15 in 2025 alone. Its lifetime weightage understates it badly, and a student prepping from 2023-24 papers has never seen it. Expensive at 39% HARD, but no longer optional.",
   },
   {
     chapter: "Measures of Dispersion",
-    qCount: 32,
-    qPerPaper: 0.48,
-    pctHard: 9,
+    qCount: 30,
+    qPerPaper: 0.46,
+    pctHard: 10,
     status: "dropped",
-    note: "DROPPED after 2024. It ran 1.0 question per paper across 29 shifts in 2023-24 and then scored ZERO across all 13 papers of 2025. At 9% HARD it used to be one of the cheapest chapters on the exam, which is exactly why it is a trap now: it is pleasant to revise and worth nothing. Its notes (/notes/mht-cet-maths/measures-of-dispersion) exist as a formula rehearsal for Probability Distribution, not as a paper topic. Do not spend hours here.",
+    note: "DROPPED after 2024. It ran 1.0 question per paper across 27 shifts in 2023-24 and then scored ZERO across all 13 papers of 2025. At 9% HARD it used to be one of the cheapest chapters on the exam, which is exactly why it is a trap now: it is pleasant to revise and worth nothing. Its notes (/notes/mht-cet-maths/measures-of-dispersion) exist as a formula rehearsal for Probability Distribution, not as a paper topic. Do not spend hours here.",
   },
   {
     chapter: "Sequences and Series",
     qCount: 10,
-    qPerPaper: 0.32,
+    qPerPaper: 0.33,
     pctHard: 40,
     status: "live",
-    note: "10 questions in 44 shifts at 40% HARD. Read the standard AP, GP and sum formulas once so a question is recognisable; do not drill it.",
+    note: "10 questions in 42 shifts at 40% HARD. Read the standard AP, GP and sum formulas once so a question is recognisable; do not drill it.",
   },
   {
     chapter: "Quadratic Equations",
     qCount: 4,
-    qPerPaper: 0.12,
+    qPerPaper: 0.13,
     pctHard: 25,
     status: "live",
-    note: "4 questions in 44 shifts — the smallest chapter in the bank. The roots-and-coefficients relations are worth knowing because they surface inside other chapters; the chapter itself is not worth a session.",
+    note: "4 questions in 42 shifts — the smallest chapter in the bank. The roots-and-coefficients relations are worth knowing because they surface inside other chapters; the chapter itself is not worth a session.",
   },
 ];
 
