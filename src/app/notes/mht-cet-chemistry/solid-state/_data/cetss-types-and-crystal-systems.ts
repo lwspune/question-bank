@@ -6,7 +6,7 @@ export const TYPES_AND_CRYSTAL_SYSTEMS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A crystalline solid has long-range order, a sharp melting point and direction-dependent properties; an amorphous one has none of these. Crystalline solids sort into four bonding classes and their lattices into seven crystal systems with fourteen Bravais lattices.",
   whyItMatters:
-    "17 PYQs, all EASY or MODERATE — pure recall. The exam asks which statement about crystalline solids is NOT true (isotropy is the planted error), which listed solid is amorphous or isotropic, the class of ice or silica, the number of Bravais lattices or crystal systems, and which unit cell every system has. " +
+    "16 PYQs, all EASY or MODERATE — pure recall. The exam asks which statement about crystalline solids is NOT true (isotropy is the planted error), which listed solid is amorphous or isotropic, the class of ice or silica, the number of Bravais lattices or crystal systems, and which unit cell every system has. " +
     "Learn the tables below and every one of these is a ten-second question.",
   concepts: [
     // 1 — crystalline vs amorphous

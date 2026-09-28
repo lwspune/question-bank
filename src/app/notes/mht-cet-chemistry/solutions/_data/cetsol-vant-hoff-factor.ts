@@ -6,7 +6,7 @@ export const VANT_HOFF_FACTOR_NOTE: SubtopicNote = {
   oneLineDefinition:
     "i = (observed colligative property)/(calculated for no dissociation) = ΔTf/(Kf·m); i > 1 for dissociation, i < 1 for association, and the degree of dissociation is α = (i − 1)/(n − 1).",
   whyItMatters:
-    "16 PYQs, none HARD — the page that makes the electrolyte stems on every other page honest. Two-thirds are i from a measured freezing point of a 0.15–0.2 m KCl-type solution (i comes out near 1.8), the rest are the 'x K for urea, so how much for CaCl₂' ratio (3x) or AlCl₃ (4x), one percent-dissociation calculation, and the recall of which properties are colligative. " +
+    "15 PYQs, none HARD — the page that makes the electrolyte stems on every other page honest. Two-thirds are i from a measured freezing point of a 0.15–0.2 m KCl-type solution (i comes out near 1.8), the rest are the 'x K for urea, so how much for CaCl₂' ratio (3x) or AlCl₃ (4x), one percent-dissociation calculation, and the recall of which properties are colligative. " +
     "Learn the ion counts and the two rearrangements; the arithmetic is one division.",
   concepts: [
     // 1 — definition and i from ΔTf

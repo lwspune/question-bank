@@ -6,7 +6,7 @@ export const GIBBS_ENERGY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "ΔG = ΔH − TΔS packs the second law into system-only quantities: negative means spontaneous, zero means equilibrium, and the temperature at which it crosses zero is ΔH/ΔS.",
   whyItMatters:
-    "12 PYQs, none HARD. Half are the sign table — which combination of ΔH and ΔS is spontaneous at all, high or no temperatures — and half are arithmetic: ΔG from ΔH, T and ΔS (units!), the boiling point or equilibrium temperature as ΔH/ΔS, and ΔG° = −2.303RT log K.",
+    "11 PYQs, none HARD. Half are the sign table — which combination of ΔH and ΔS is spontaneous at all, high or no temperatures — and half are arithmetic: ΔG from ΔH, T and ΔS (units!), the boiling point or equilibrium temperature as ΔH/ΔS, and ΔG° = −2.303RT log K.",
   concepts: [
     // 1 — Gibbs energy and the sign table
     {

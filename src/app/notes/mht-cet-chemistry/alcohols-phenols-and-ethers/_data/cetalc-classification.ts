@@ -6,7 +6,7 @@ export const CLASSIFICATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An alcohol is classed by the carbon that carries OH — primary, secondary or tertiary, and allylic (next to C=C), benzylic (on a ring carbon) or vinylic (on the C=C itself) — and by how many OH groups it has: monohydric, dihydric, trihydric; a phenol has OH directly on the benzene ring.",
   whyItMatters:
-    "22 PYQs, 1 HARD — the paper's favourite way into this chapter. Thirteen ask which drawn or named alcohol is primary, secondary or tertiary allylic, secondary benzylic, or vinylic; seven ask which named phenol or polyol is dihydric, trihydric, isomeric with catechol, or not phenolic at all; two are the formula and the anti-Markovnikov preparation of a named alcohol. " +
+    "21 PYQs, 1 HARD — the paper's favourite way into this chapter. Twelve ask which drawn or named alcohol is primary, secondary or tertiary allylic, secondary benzylic, or vinylic; seven ask which named phenol or polyol is dihydric, trihydric, isomeric with catechol, or not phenolic at all; two are the formula and the anti-Markovnikov preparation of a named alcohol. " +
     "Three cards.",
   concepts: [
     // 1 — allylic, benzylic, vinylic

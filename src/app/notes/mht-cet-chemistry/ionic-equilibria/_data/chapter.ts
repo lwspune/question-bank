@@ -4,7 +4,7 @@ export const IONIC_EQUILIBRIA_CHAPTER: ChapterNote = {
   chapterName: "Ionic Equilibria",
   title: "Ionic Equilibria — MHT-CET Chemistry",
   intro:
-    "The most heavily tested MHT-CET Chemistry chapter (124 PYQs) — and almost entirely a calculation chapter built on one idea: weak electrolytes only partly ionise, and a handful of equilibrium constants (Ka, Kb, Kw, Ksp) let you predict everything from that. " +
+    "One of the most heavily tested MHT-CET Chemistry chapters (122 PYQs) — and almost entirely a calculation chapter built on one idea: weak electrolytes only partly ionise, and a handful of equilibrium constants (Ka, Kb, Kw, Ksp) let you predict everything from that. " +
     "It teaches in six movements, foundations first: " +
     "(1) theories of acids and bases — Arrhenius, Bronsted-Lowry and Lewis; " +
     "(2) ionic equilibrium — Ka, Kb, degree of dissociation and Ostwald's dilution law; " +

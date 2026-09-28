@@ -6,7 +6,7 @@ export const DIAZONIUM_SALTS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Aniline with NaNO₂ and HCl at 273–278 K gives benzenediazonium chloride, whose N₂⁺ is replaced by OH (warm water), Cl or Br or CN (Sandmeyer, Cu(I) salts), F (Balz–Schiemann, HBF₄), I (KI) or H (ethanol or H₃PO₂) — and which couples with phenol in mild alkali to give the azo dye p-hydroxyazobenzene.",
   whyItMatters:
-    "13 PYQs, none HARD. Ten are diazotisation and replacement — the reagent, the diazonium salt as A and phenol as B in the same two-step sequence four times, Sandmeyer's reagent and what it cannot make (iodobenzene), fluoroboric acid giving Ar–F, ethanol giving benzene; three are azo coupling — which reaction it is, what it makes, and the mild alkaline medium it needs. " +
+    "12 PYQs, none HARD. Nine are diazotisation and replacement — the reagent, the diazonium salt as A and phenol as B in the same two-step sequence three times, Sandmeyer's reagent and what it cannot make (iodobenzene), fluoroboric acid giving Ar–F, ethanol giving benzene; three are azo coupling — which reaction it is, what it makes, and the mild alkaline medium it needs. " +
     "Two cards.",
   concepts: [
     // 1 — diazotisation and replacement

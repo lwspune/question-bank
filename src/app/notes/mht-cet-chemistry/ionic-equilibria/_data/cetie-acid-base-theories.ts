@@ -6,7 +6,7 @@ export const ACID_BASE_THEORIES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The three definitions of acids and bases (Arrhenius, Bronsted-Lowry, Lewis), how to spot the conjugate acid-base pair in an equilibrium, and which species are amphoteric.",
   whyItMatters:
-    "Around thirteen PYQs here, every one EASY and pure recall — the opening free marks of the chapter. " +
+    "Twelve PYQs here, every one EASY and pure recall — the opening free marks of the chapter. " +
     "They cluster three ways: match a definition to its theory (Lewis base donates an electron pair; a Bronsted base accepts a proton), pick the conjugate acid-base pair out of an equilibrium reaction, and name the amphoteric species (almost always water). " +
     "Memorise the three definitions, learn the one-proton rule for conjugate pairs, and this whole subtopic is guaranteed marks.",
   concepts: [
