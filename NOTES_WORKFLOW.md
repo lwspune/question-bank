@@ -66,6 +66,8 @@ Under `src/app/notes/<exam>/<chapter>/_data/`:
 
 `src/lib/notes/chapters.ts` is the registry. Append one entry — `{examName, subjectName, subjectRoute, subjectDisplay, chapterSlug, chipLabel, chapter, notes, slugs}` — importing the chapter's `_data` exports. Consumers derive from it automatically: the shared page renderers (`NotesChapterLanding` / `NotesSubtopicPage`), `subtopicSlugRegistry` (concept-tag validation + admin tagging UI), `links/notesIndex` (chip lookups), `links/tagNames` (concept-name lookups), `app/sitemap` (route entries), `/notes/<subjectRoute>/page.tsx` (chapter cards), `scripts/notes-lint` + `scripts/notes-latex-audit` (validation). The only per-chapter files are `_data/*` + the two thin route wrappers.
 
+**An MHT-CET chapter also needs its textbook position** in `src/lib/notes/bookOrder.ts` (class, chapter number, and the Balbharati chapter it means, read from the "MH State Board" spine in `syllabus_concepts` — never from memory). CET notes are listed and linked in book order, Class XI then XII (decided 2026-09-28); `tests/notes-book-order.test.ts` fails if a CET chapter ships unplaced. Registry position no longer decides a CET chapter's order, so append it anywhere.
+
 ### 3. Run a chat tagging session
 
 For each chapter, propose a `(question_id, concept_slug)` mapping for every PUBLIC question. Same inline-iteration pattern as the taxonomy cleanup work.

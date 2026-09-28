@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
+import { NOTES_CHAPTERS, getNotesChaptersForSubject } from "@/lib/notes/chapters";
 import {
   topicNav,
   chapterStart,
@@ -33,8 +33,8 @@ describe("topicNav", () => {
     expect(nav.next!.href).toBe(`/notes/mht-cet-maths/differentiation/${order[3]}`);
   });
 
-  it("sends the last topic of a chapter to the next chapter of the same subject", () => {
-    const subject = NOTES_CHAPTERS.filter((c) => c.subjectRoute === "mht-cet-maths");
+  it("sends the last topic of a chapter to the next chapter of the same subject, in reading order", () => {
+    const subject = getNotesChaptersForSubject("mht-cet-maths"); // reading (book) order
     const i = subject.indexOf(DIFF);
     const nav = topicNav(DIFF, order[order.length - 1]);
     expect(nav.next).toEqual({
@@ -45,7 +45,7 @@ describe("topicNav", () => {
   });
 
   it("sends the last topic of a subject's last chapter back to the subject's notes", () => {
-    const subject = NOTES_CHAPTERS.filter((c) => c.subjectRoute === "mht-cet-maths");
+    const subject = getNotesChaptersForSubject("mht-cet-maths"); // reading (book) order
     const last = subject[subject.length - 1];
     const lastOrder = last.chapter.subtopicOrder;
     const nav = topicNav(last, lastOrder[lastOrder.length - 1]);

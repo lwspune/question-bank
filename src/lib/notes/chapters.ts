@@ -13,6 +13,7 @@
  */
 
 import type { ChapterNote, SubtopicNote } from "@/app/notes/_types";
+import { inBookOrder } from "@/lib/notes/bookOrder";
 import {
   STATISTICS_CHAPTER,
   STATISTICS_NOTES,
@@ -2124,8 +2125,12 @@ export function getNotesChapterBySlug(
  * the chapter-index page (and future subject landings) to render cards.
  * Returns an empty array for an unknown subject.
  */
+/**
+ * A subject's chapters in reading order: textbook order where the subject has
+ * one (MHT-CET — src/lib/notes/bookOrder.ts), otherwise registry order.
+ */
 export function getNotesChaptersForSubject(
   subjectRoute: string
 ): NotesChapterRegistration[] {
-  return NOTES_CHAPTERS.filter((c) => c.subjectRoute === subjectRoute);
+  return inBookOrder(NOTES_CHAPTERS.filter((c) => c.subjectRoute === subjectRoute));
 }
