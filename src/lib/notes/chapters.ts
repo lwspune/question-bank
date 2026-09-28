@@ -680,6 +680,11 @@ import {
   MHTCET_LAWS_SLUGS,
 } from "@/app/notes/mht-cet-physics/laws-of-motion/_data";
 import {
+  MHTCET_MAGMAT_CHAPTER,
+  MHTCET_MAGMAT_NOTES,
+  MHTCET_MAGMAT_SLUGS,
+} from "@/app/notes/mht-cet-physics/magnetic-materials/_data";
+import {
   MHTCET_SEMI_CHAPTER,
   MHTCET_SEMI_NOTES,
   MHTCET_SEMI_SLUGS,
@@ -1836,6 +1841,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_LAWS_CHAPTER,
     notes: MHTCET_LAWS_NOTES,
     slugs: MHTCET_LAWS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "magnetic-materials",
+    chipLabel: "Magnetic Materials",
+    chapter: MHTCET_MAGMAT_CHAPTER,
+    notes: MHTCET_MAGMAT_NOTES,
+    slugs: MHTCET_MAGMAT_SLUGS,
   },
   {
     examName: "MHT-CET",

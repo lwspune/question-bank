@@ -98,6 +98,7 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     electrostatics: { cls: 12, chapterNo: 8, book: "XII 8 Electrostatics" },
     "current-electricity": { cls: 12, chapterNo: 9, book: "XII 9 Current Electricity" },
     "magnetic-fields-due-to-electric-current": { cls: 12, chapterNo: 10, book: "XII 10 Magnetic Fields due to Electric Current" },
+    "magnetic-materials": { cls: 12, chapterNo: 11, book: "XII 11 Magnetic Materials" },
     "electromagnetic-induction": { cls: 12, chapterNo: 12, book: "XII 12 Electromagnetic Induction" },
     "ac-circuits": { cls: 12, chapterNo: 13, book: "XII 13 AC Circuits" },
     "dual-nature-of-radiation-and-matter": { cls: 12, chapterNo: 14, book: "XII 14 Dual Nature of Radiation and Matter" },
