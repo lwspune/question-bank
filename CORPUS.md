@@ -90,7 +90,7 @@ Two MHT-CET ingest files are not the papers their labels say. **Both were verifi
 
 **Two traps from the Maths pass.** (1) *A hand-resolved keep and an automatic re-date can land on the same paper item* — twice — leaving that paper at 51 rows for 50 items; the plan's checks compared hides against their kept twin only. What caught it was the trends generator's **"paper(s) outside 40-50 questions"** warning, so read that line after every label change. (2) *The two copies of an item were transcribed separately*, and fixes had landed on either one: before hiding a copy, diff it against its twin — the hidden copy was the better one for 9 Maths rows (a stem, options, or a polished featured solution), and those were ported.
 
-**The 12 May 2024 S2 ingest doubled its escapes.** 28 PUBLIC rows stored `\\\frac` (three backslashes) outside any matrix/array — all from this one paper, which is why its twins in the copy file rendered and it did not. The 24 Maths rows were fixed in the label pass; **3 Chemistry + 1 Physics rows remain** (ROADMAP backfill). Scan: a run of 2+ backslashes before a letter in a field with no `\begin{` (inside an environment `\\` is a legitimate row break).
+**The 12 May 2024 S2 ingest doubled its escapes.** 28 PUBLIC rows stored `\\\frac` (three backslashes) outside any matrix/array — all from this one paper, which is why its twins in the copy file rendered and it did not. The 24 Maths rows were fixed in the label pass and the last 3 Chemistry + 1 Physics rows the same day; the bank now has none. Scan: a run of 2+ backslashes before a letter in a field with no `\begin{` (inside an environment `\\` is a legitimate row break).
 
 ## MPSC Group B & C Prelims (`mpsc-group-b-c`, added 2026-09-26)
 

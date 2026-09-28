@@ -19,7 +19,9 @@ Set aside at the user's call; each carries a `dropped` reason in `scripts/mpsc-m
 
 To revive one: delete its `dropped` field, transcribe into `data/<id>.t0N.json`, then `merge` → `commit`.
 
-## Backfill ledger — four 12 May 2024 S2 rows (3 Chemistry, 1 Physics) store doubled escapes (2026-09-28)
+## ~~Backfill ledger — four 12 May 2024 S2 rows (3 Chemistry, 1 Physics) store doubled escapes~~ — DONE 2026-09-28
+
+Fixed on the user’s go: 4 questions, 8 fields (2 solutions, a stem, 5 options); rollback `generated-papers/doubled-escapes.rollback.json`, `content_hash` untouched. The MHT-CET scan now finds 0 rows. Original entry:
 
 **Found during the Maths label fix.** The 12 May 2024 Shift 2 ingest wrote `\\\frac` (three backslashes) where `\frac` was meant: 28 PUBLIC rows, all from that one paper, so they render broken while their twins in the copy file did not. The 24 Maths rows were fixed in the label pass (they were kept rows). **Still broken:** Chemistry `26d70568` (solution), `464b19ad` (option A), `8f6ef6fd` (solution, `\\\xrightarrow`); Physics `4cef871b` (stem, solution, all four options). Fix = collapse a run of 2+ backslashes before a letter to one, only in fields with no `\begin{` (inside an environment `\\` is a real row break); never rehash. **360:** scope 4 rows in shipped chapters · no count or key moves · reversible by a rollback file · low risk, minutes of work · recommend DO. Needs the user's go.
 
