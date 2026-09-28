@@ -650,6 +650,11 @@ import {
   MHTCET_FLUIDS_SLUGS,
 } from "@/app/notes/mht-cet-physics/mechanical-properties-of-fluids/_data";
 import {
+  MHTCET_EMI_CHAPTER,
+  MHTCET_EMI_NOTES,
+  MHTCET_EMI_SLUGS,
+} from "@/app/notes/mht-cet-physics/electromagnetic-induction/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1700,6 +1705,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_FLUIDS_CHAPTER,
     notes: MHTCET_FLUIDS_NOTES,
     slugs: MHTCET_FLUIDS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "electromagnetic-induction",
+    chipLabel: "Electromagnetic Induction notes",
+    chapter: MHTCET_EMI_CHAPTER,
+    notes: MHTCET_EMI_NOTES,
+    slugs: MHTCET_EMI_SLUGS,
   },
   {
     examName: "NDA",

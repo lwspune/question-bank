@@ -78,6 +78,7 @@ describe("MHT-CET notes follow the Balbharati book order (Class XI, then XII)", 
       "superposition-of-waves",
       "wave-optics",
       "electrostatics",
+      "electromagnetic-induction",
       "ac-circuits",
       "semiconductor-devices",
     ]);
