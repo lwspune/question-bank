@@ -83,6 +83,7 @@ describe("MHT-CET notes follow the Balbharati book order (Class XI, then XII)", 
       "magnetic-fields-due-to-electric-current",
       "electromagnetic-induction",
       "ac-circuits",
+      "structure-of-atoms-and-nuclei",
       "semiconductor-devices",
     ]);
   });
