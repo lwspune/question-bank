@@ -18,6 +18,10 @@ import { loadResolvedDrills } from "@/lib/notes/loadResolvedDrills";
 import { pickInterleavedCheckpoint } from "@/lib/notes/pickInterleavedCheckpoint";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import { notesSubtopicTitle } from "@/lib/notes/titles";
+import { topicNav, mockCta, extraRelated } from "@/lib/notes/keepGoing";
+import NotesKeepGoing from "./NotesKeepGoing";
+import NotesMockCard from "./NotesMockCard";
+import NotesTestBar from "./NotesTestBar";
 import ConceptUnitCard from "./ConceptUnitCard";
 import NotesPaywall from "./NotesPaywall";
 import PracticeGate from "./PracticeGate";
@@ -61,6 +65,9 @@ export default async function NotesSubtopicPage({
 }: Props) {
   const note = chapter.notes[subtopicSlug];
   if (!note) notFound();
+  const nav = topicNav(chapter, subtopicSlug);
+  const mock = mockCta(chapter.examName);
+  const related = extraRelated(note.related, nav);
 
   // Preview-gate (paid chapters only). Reading session cookies makes a paid
   // chapter dynamic — its [subtopicSlug] wrapper must export force-dynamic
@@ -328,6 +335,10 @@ export default async function NotesSubtopicPage({
         </>
       )}
 
+      {/* The way on: next/previous topic, then a real paper to test it on. */}
+      <NotesKeepGoing next={nav.next} prev={nav.prev} />
+      {mock && <NotesMockCard href={mock.href} examDisplay={mock.examDisplay} page="topic" />}
+
       {/* Final drill CTA */}
       <section className="mt-12 rounded-lg border-2 border-primary/40 bg-primary/5 p-6 text-center">
         <h2 className="text-lg font-semibold tracking-tight">
@@ -353,13 +364,13 @@ export default async function NotesSubtopicPage({
         </div>
       </section>
 
-      {note.related && note.related.length > 0 && (
+      {related.length > 0 && (
         <section className="mt-10">
           <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
             Related notes
           </h2>
           <ul className="space-y-2">
-            {note.related.map((r) => (
+            {related.map((r) => (
               <li key={r.href}>
                 <Link
                   href={r.href}
@@ -372,6 +383,7 @@ export default async function NotesSubtopicPage({
           </ul>
         </section>
       )}
+      {mock && <NotesTestBar href={mock.href} examDisplay={mock.examDisplay} />}
     </GuideShell>
   );
 }

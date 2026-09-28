@@ -12,7 +12,8 @@
  * is that the three moments where a stranger is ASKED for something (sign in,
  * request a teacher account, hand over a mobile) only ever recorded the people
  * who said yes. Every conversion number the product has is a numerator with no
- * denominator. These six events are that denominator, and they are aggregate
+ * denominator. The first six events are that denominator (the /notes "test
+ * yourself" pair, added 2026-09-28, measures the notes → mock hop), and all are aggregate
  * counts that identify nobody.
  *
  * WHAT IS DELIBERATELY NOT HERE: anything a pageview already answers (a
@@ -54,6 +55,12 @@ export const FUNNEL_EVENTS = [
   "quiz_gate_shown",
   /** …and submitted it. */
   "quiz_gate_submitted",
+  /** A /notes reader scrolled far enough for the slide-up "test yourself" bar (2026-09-28). */
+  "notes_test_bar_shown",
+  /** …and clicked through to the exam's mocks. */
+  "notes_test_bar_click",
+  /** A /notes reader clicked the end-of-page "test yourself on a real paper" card. */
+  "notes_mock_card_click",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];

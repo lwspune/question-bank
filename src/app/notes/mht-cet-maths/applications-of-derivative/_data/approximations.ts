@@ -311,11 +311,11 @@ export const APPROXIMATIONS_NOTE: SubtopicNote = {
   related: [
     {
       label: "Differentiation — foundations & chain rule",
-      href: "/notes/mht-cet-maths/differentiation/cetdiff-standard-derivatives-rules",
+      href: "/notes/mht-cet-maths/differentiation/foundations-chain#cetdiff-standard-derivatives-rules",
     },
     {
       label: "NDA Application of Derivatives — Tangents & Approximations",
-      href: "/notes/nda-maths/application-of-derivatives/aod-tangents-normals",
+      href: "/notes/nda-maths/application-of-derivatives/aod-tangents",
     },
   ],
 };

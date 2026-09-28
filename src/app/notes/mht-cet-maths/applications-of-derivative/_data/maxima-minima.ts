@@ -527,7 +527,7 @@ export const MAXIMA_MINIMA_NOTE: SubtopicNote = {
   related: [
     {
       label: "Differentiation notes",
-      href: "/notes/mht-cet-maths/differentiation/cetdiff-foundations-chain",
+      href: "/notes/mht-cet-maths/differentiation/foundations-chain",
     },
     { label: "MHT-CET Maths bank", href: "/browse?exam=mht-cet&subject=Mathematics" },
   ],

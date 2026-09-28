@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { notesChapterTitle } from "@/lib/notes/titles";
+import { chapterStart, mockCta } from "@/lib/notes/keepGoing";
+import NotesKeepGoing from "./NotesKeepGoing";
+import NotesMockCard from "./NotesMockCard";
+import NotesTestBar from "./NotesTestBar";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -50,6 +54,7 @@ type Props = { chapter: NotesChapterRegistration };
 export default async function NotesChapterLanding({ chapter }: Props) {
   const base = routeBase(chapter);
   const guideHref = `/guide/${chapter.subjectRoute}`;
+  const mock = mockCta(chapter.examName);
   // Chapters whose solutions have been classified by identity get a link to the
   // formula index. Derived from the registry, so a chapter picks this up the
   // day its tags land — nothing to remember here.
@@ -296,6 +301,11 @@ export default async function NotesChapterLanding({ chapter }: Props) {
       />
 
       <ChapterRevisionSheet groups={revisionGroups} />
+
+      {/* The way in, then a real paper to test the chapter on. */}
+      <NotesKeepGoing next={chapterStart(chapter)} prev={null} />
+      {mock && <NotesMockCard href={mock.href} examDisplay={mock.examDisplay} page="chapter" />}
+      {mock && <NotesTestBar href={mock.href} examDisplay={mock.examDisplay} />}
     </GuideShell>
   );
 }

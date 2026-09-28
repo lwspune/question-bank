@@ -435,7 +435,7 @@ export const RATE_OF_CHANGE_NOTE: SubtopicNote = {
     },
   ],
   related: [
-    { label: "Differentiation notes", href: "/notes/mht-cet-maths/differentiation/cetdiff-foundations-chain" },
-    { label: "NDA: Tangents & Rates of Change", href: "/notes/nda-maths/application-of-derivatives/aod-rate-approximation" },
+    { label: "Differentiation notes", href: "/notes/mht-cet-maths/differentiation/foundations-chain" },
+    { label: "NDA: Tangents & Rates of Change", href: "/notes/nda-maths/application-of-derivatives/aod-tangents" },
   ],
 };

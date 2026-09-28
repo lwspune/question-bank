@@ -742,7 +742,7 @@ export const PLANE_EQUATION_NOTE: SubtopicNote = {
   related: [
     {
       label: "Foot of Perpendicular, Image, and Projection",
-      href: "/notes/mht-cet-maths/line-and-plane/foot-perpendicular-image-projection",
+      href: "/notes/mht-cet-maths/line-and-plane/foot-image-projection",
     },
     {
       label: "Vectors — cross product and the normal",
