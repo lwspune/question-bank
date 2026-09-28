@@ -405,7 +405,7 @@ export const LONGTAIL_STRAND: StrategyStrand = {
   pitch:
     "Nine chapters at roughly one to two questions a paper each, and mostly 31-56% HARD — expensive per mark, and collectively too big to ignore at about 11 questions a paper. These come last, on the time remaining after the cornerstones and quick-wins are banked. And you still answer every single one of them, including the ones you have not prepared: there is no negative marking, so an unread Pair of Straight Lines question costs nothing to guess and a blank is strictly worse than a guess. Prep them in weightage order and stop where your hours stop; the paper will not punish the gap the way an NDA paper would.",
   approach: [
-    "Every chapter here except Trigonometry - II has shipped teaching notes at /notes/mht-cet-maths, with every PYQ tagged to a page; Trigonometry - II is worked from its playbook and timed /browse drills.",
+    "Every chapter here has shipped teaching notes at /notes/mht-cet-maths, with every PYQ tagged to a page.",
     "Limits is the sharpest example of a chapter that does not cherry-pick: 90 q at 56% HARD, and the four limit pages and the three continuity pages sit at the same difficulty — Trigonometric Limits is 67% HARD, Continuity at a Point 58%, Piecewise Continuity 55%. There is no cheap half to take. Prepare the whole toolkit or none of it, and on the paper give these questions the second pass, not the first.",
     "Two chapters here reward a technique that skips calculus entirely, and at 1.8 minutes a question that is a time lever rather than an elegance: the greatest and least modulus of a complex number on a disc, and the maximum perpendicular distance from a point on a circle, are the same move — distance to the centre plus or minus the radius.",
     "A vanishing 3x3 determinant is the universal degeneracy test across this strand and the cornerstones both — concurrency of lines, collinearity of points, coplanarity of lines, scalar triple product equal to zero. Learning it once in Determinants and Matrices pays in four other chapters.",
@@ -545,11 +545,11 @@ export const LONGTAIL_STRAND: StrategyStrand = {
       qCount: 39,
       pctHard: 49,
       posture: "last-pass-guess",
-      mustDrill: ["Trigonometric Identities and Compound/Half-Angle Formulas"],
+      mustDrill: ["Multiple and Sub-multiple Angles", "Sum-to-Product and Product Formulas"],
       expectedYieldPerPaper: "0.92 q/paper · about 2 marks",
       studyHours: 3,
       summary:
-        "39 q · 49% HARD, on one subtopic, and the only chapter in this strand without notes pages. Eight of its 19 HARD questions are evaluations at 18°, 20° and π/8 that fall to a memorised value rather than to algebra, so learn sin 18°, cos 36° and tan(π/8) first; the conditional identities (α + β + γ = π and the like) are the expensive half and belong on the second pass.",
+        "39 q · 49% HARD. The HARD questions sit on two pages: multiple angles (9 of 13) and sum-to-product (8 of 13); compound angles is 2 of 13. Eight of its 19 HARD questions are evaluations at 18°, 20° and π/8 that fall to a memorised value rather than to algebra, so learn sin 18°, cos 36° and tan(π/8) first; the conditional identities (α + β + γ = π and the like) are the expensive half and belong on the second pass.",
     },
   ],
 };

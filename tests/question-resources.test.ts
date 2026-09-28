@@ -654,7 +654,7 @@ describe("getQuestionResources — notes are exam+subject scoped", () => {
     const res = call({
       examName: "MHT-CET",
       subjectName: "Maths",
-      chapterName: "Trigonometry - II",
+      chapterName: "Sequences and Series",
       subtopicName: "Integration by Parts",
     });
     expect(res.notes).toBeNull();

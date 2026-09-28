@@ -483,9 +483,11 @@ export const MHT_CET_MATHS: BookDefinition = {
     {
       slug: "trigonometry-ii",
       name: "Trigonometry - II",
-      // 39 q in a single subtopic (17 until the 2026-09-26 carve moved Trigonometry - I's identity rows here).
+      // 39 q; split into the three notes pages on 2026-09-28 (one subtopic before).
       groupSubtopics: [
-        { name: "Trigonometric Identities and Compound/Half-Angle Formulas" }, // 39
+        { name: "Compound Angles and Conditional Identities" }, // 13
+        { name: "Multiple and Sub-multiple Angles" }, // 13
+        { name: "Sum-to-Product and Product Formulas" }, // 13
       ],
     },
     {

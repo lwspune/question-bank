@@ -356,7 +356,7 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     qPerPaper: 0.92,
     pctHard: 49,
     focus:
-      "Trigonometric Identities and Compound/Half-Angle Formulas (39 · 49% HARD) — the Std XI identity chapter: compound, multiple and half angles, factorisation, and conditional identities in a triangle. Crossed the 0.9 line on the 2026-09-26 re-measure (0.88 to 0.92) and now ships a long-tail playbook; eight of its 19 HARD questions are standard-angle evaluations, and the equations and inverse-trig pages of Trigonometric Functions lean on these identities.",
+      "Compound Angles and Conditional Identities (13 · 15% HARD), Multiple and Sub-multiple Angles (13 · 69%), Sum-to-Product and Product Formulas (13 · 62%) — the Std XI identity chapter. Crossed the 0.9 line on the 2026-09-26 re-measure (0.88 to 0.92) and now ships a long-tail playbook; eight of its 19 HARD questions are standard-angle evaluations, and the equations and inverse-trig pages of Trigonometric Functions lean on these identities.",
   },
   {
     chapter: "Sets, Relations and Functions",

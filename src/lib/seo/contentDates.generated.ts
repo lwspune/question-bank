@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 155
+ * Entries: 157
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -86,6 +86,7 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/mht-cet-physics/magnetic-fields-due-to-electric-current": "2026-09-28T08:16:10+05:30",
   "/notes/mht-cet-physics/magnetic-materials": "2026-09-28T11:35:28+05:30",
   "/notes/mht-cet-physics/mechanical-properties-of-fluids": "2026-09-28T07:07:56+05:30",
+  "/notes/mht-cet-physics/mechanical-properties-of-solids": "2026-09-28T11:51:50+05:30",
   "/notes/mht-cet-physics/motion-in-a-plane": "2026-09-28T11:11:00+05:30",
   "/notes/mht-cet-physics/oscillations": "2026-09-28T07:57:23+05:30",
   "/notes/mht-cet-physics/ray-optics": "2026-09-28T11:05:04+05:30",
@@ -96,6 +97,7 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/mht-cet-physics/superposition-of-waves": "2026-09-26T23:50:03+05:30",
   "/notes/mht-cet-physics/thermal-properties-of-matter": "2026-09-28T10:07:46+05:30",
   "/notes/mht-cet-physics/thermodynamics": "2026-09-28T10:32:16+05:30",
+  "/notes/mht-cet-physics/units-and-measurement": "2026-09-28T11:51:50+05:30",
   "/notes/mht-cet-physics/wave-optics": "2026-09-26T23:36:00+05:30",
   "/notes/nda-biology/biochemistry": "2026-06-12T08:03:46+05:30",
   "/notes/nda-biology/biodiversity-and-classification": "2026-09-14T16:31:56+05:30",

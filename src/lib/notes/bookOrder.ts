@@ -27,6 +27,7 @@ export type BookPosition = { cls: 11 | 12; chapterNo: number; within?: number; b
 
 export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
   "mht-cet-maths": {
+    "trigonometry-ii": { cls: 11, chapterNo: 3, book: "XI 3 Trigonometry - II" },
     "determinants-and-matrices": { cls: 11, chapterNo: 4, book: "XI 4 Determinants and Matrices (and XII 2 Matrices)" },
     "straight-line": { cls: 11, chapterNo: 5, book: "XI 5 Straight Line" },
     circle: { cls: 11, chapterNo: 6, book: "XI 6 Circle" },

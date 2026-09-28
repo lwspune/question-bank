@@ -110,6 +110,11 @@ import {
   MHTCET_TRIG_FUNCTIONS_SLUGS,
 } from "@/app/notes/mht-cet-maths/trigonometric-functions/_data";
 import {
+  MHTCET_TRIG2_CHAPTER,
+  MHTCET_TRIG2_NOTES,
+  MHTCET_TRIG2_SLUGS,
+} from "@/app/notes/mht-cet-maths/trigonometry-ii/_data";
+import {
   MHTCET_DEFINITE_INTEGRATION_CHAPTER,
   MHTCET_DEFINITE_INTEGRATION_NOTES,
   MHTCET_DEFINITE_INTEGRATION_SLUGS,
@@ -1257,6 +1262,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_TRIG_FUNCTIONS_CHAPTER,
     notes: MHTCET_TRIG_FUNCTIONS_NOTES,
     slugs: MHTCET_TRIG_FUNCTIONS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Maths",
+    subjectRoute: "mht-cet-maths",
+    subjectDisplay: "MHT-CET Maths",
+    chapterSlug: "trigonometry-ii",
+    chipLabel: "Trigonometry - II",
+    chapter: MHTCET_TRIG2_CHAPTER,
+    notes: MHTCET_TRIG2_NOTES,
+    slugs: MHTCET_TRIG2_SLUGS,
   },
   {
     examName: "MHT-CET",
