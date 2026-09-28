@@ -88,6 +88,7 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "superposition-of-waves": { cls: 12, chapterNo: 6, book: "XII 6 Superposition of Waves" },
     "wave-optics": { cls: 12, chapterNo: 7, book: "XII 7 Wave Optics" },
     electrostatics: { cls: 12, chapterNo: 8, book: "XII 8 Electrostatics" },
+    "magnetic-fields-due-to-electric-current": { cls: 12, chapterNo: 10, book: "XII 10 Magnetic Fields due to Electric Current" },
     "electromagnetic-induction": { cls: 12, chapterNo: 12, book: "XII 12 Electromagnetic Induction" },
     "ac-circuits": { cls: 12, chapterNo: 13, book: "XII 13 AC Circuits" },
     "semiconductor-devices": { cls: 12, chapterNo: 16, book: "XII 16 Semiconductor Devices" },
