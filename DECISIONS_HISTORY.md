@@ -15,6 +15,20 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-28 (second) — MHT-CET Physics "Electromagnetic Induction" (4 pages · 119 PYQ · 11 concepts · 12 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-emi`.**
+
+**Source pass.** `_phy_locate.py` placed every row; `_phy_loccheck.py` flagged three 12 May S2 rows found in the 13 May S1 file (the known copy — labels right), one 'twin' that is a genuine recurrence across 2023 and 2025, two weak matches and one absent. The weak and absent rows were condensed paraphrases of their stems (`d86a1a4f`, `bd1083ad`) — restored. Every key was then derived, the answer key read where the derivation disagreed, and all 13 figure rows read from a contact sheet (`_phy_figsheet.py`).
+
+**Keys (`_fix-phy-emi.ts`).** `2325854f` (2022 #33): inductor A is steepest, AK (d) — bank had (b), flipped. `0be5d961` (2 May 2023 S1 #17, bicycle wheel): AK (b) BπFR², taking ω = 2πF; bank had (a); option (d) restored to the paper's BπFR²n; the solution says F in r.p.m. would give BπFR²/60, no option. `81230166` (14 May 2024 S1 #50, the second paper in its file): the paper's 50 turns give 0.1 s, option (c); the AK's (d) 1 s uses 500 turns — flipped against it; the same question on 4 May 2023 S2 is keyed 0.1 s. `7b660e29` (21 Apr 2025 S1 #49): a coil with its length vertical moving out of a field, then turned 90° — its shorter side now cuts, so the e.m.f. is LESS, (b); the AK's (a) works a rotating-coil formula. `1e67c50f` (20 Apr 2025 S1 #24): e = −L dI/dt against dI/dt is a line through the origin, figure (B), option (a); the AK's (b) is the flat figure (A). `33c37aea` (12 May 2024 S2 #22): the paper's options restored (the bank had written its own (d) and keyed it); the AK prints (d) but its working ends at μ₀π(nd/2)² = (a); keyed (a).
+
+**Stems.** `dddc6e66`: resistance 25√2 Ω, garbled to 252 (which gives 2.8 mA, no option). `a38c8496` (`_fix-phy-emi2.ts`, found while checking a self-check's arithmetic): current 35 A, garbled to 3.5 A. `6b049df8`: the paper prints '× 10⁻³ Wb' with no number; the AK's working uses 3 — shown as [3]. `0c1c1661`: the paper prints 4 × 10⁻³ J (1.25 H, no option); the AK's working uses 64 × 10⁻³ J — shown as [64]. `94e4b5ea`: options had stray triple backslashes and a wrong (a) — restored. `08ff0715`'s option (b) μ₀πr₁²/(2r₁) is the PAPER's own misprint — left.
+
+**Authoring.** Four pages on the DB's four subtopics. Every page number derived: the 5 m/s terminal-speed example, ½Bωl² = 1 V, the flux trap (a square in the x–y plane links only the k̂ component, 4B₀L²), coupling K = 0.6. A twelfth trap was added so the chapter gets a standalone traps quiz. Book position XII 12 in `bookOrder.ts` and its test.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:intro clean · quiz:coverage 0 strong gaps.
+
+**Not proven.** Render beyond the build's prerender.
+
 **2026-09-28 — MHT-CET Physics "Mechanical Properties of Fluids" (5 pages · 124 PYQ · 13 concepts · 14 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-fluids`.**
 
 **Carve.** No reshape: pressure and buoyancy (6, five HARD), surface tension and surface energy (42, 12 HARD), excess pressure and capillary rise (38, none HARD), viscosity (21, 4 HARD), streamline flow (17, 3 HARD) — the book's own order, XII chapter 2, now in `src/lib/notes/bookOrder.ts` and `tests/notes-book-order.test.ts`. Slugs carry `cetp-fl-` because concept-tag keys are global and `cetp-drops-and-spheres` already belongs to Electrostatics.
