@@ -15,6 +15,7 @@
  */
 import { NOTES_CHAPTERS, type NotesChapterRegistration } from "@/lib/notes/chapters";
 import { getExamByName } from "@/lib/exam/examContext";
+import { inBookOrder } from "@/lib/notes/bookOrder";
 
 export type NavLink = { href: string; label: string; kicker: string };
 
@@ -44,7 +45,9 @@ export function topicNav(
   const prev = i > 0 ? topicLink(c, order[i - 1], "Previous topic") : null;
   if (i >= 0 && i < order.length - 1) return { next: topicLink(c, order[i + 1], "Next topic"), prev };
 
-  const subject = all.filter((x) => x.subjectRoute === c.subjectRoute);
+  // Book order where the subject has one (bookOrder.ts), so "Next chapter"
+  // matches the subject page.
+  const subject = inBookOrder(all.filter((x) => x.subjectRoute === c.subjectRoute));
   const nextChapter = subject[subject.indexOf(c) + 1];
   const next = nextChapter
     ? { href: chapterBase(nextChapter), label: nextChapter.chapter.chapterName, kicker: "Next chapter" }
