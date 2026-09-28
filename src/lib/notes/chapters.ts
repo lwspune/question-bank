@@ -764,6 +764,11 @@ import {
   CDS_MENSURATION_2D_NOTES,
   CDS_MENSURATION_2D_SLUGS,
 } from "@/app/notes/cds-maths/mensuration-2d/_data";
+import {
+  CDS_MENSURATION_3D_CHAPTER,
+  CDS_MENSURATION_3D_NOTES,
+  CDS_MENSURATION_3D_SLUGS,
+} from "@/app/notes/cds-maths/mensuration-3d/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -2454,6 +2459,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_MENSURATION_2D_CHAPTER,
     notes: CDS_MENSURATION_2D_NOTES,
     slugs: CDS_MENSURATION_2D_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "mensuration-3d",
+    chipLabel: "Mensuration 3D notes",
+    chapter: CDS_MENSURATION_3D_CHAPTER,
+    notes: CDS_MENSURATION_3D_NOTES,
+    slugs: CDS_MENSURATION_3D_SLUGS,
   },
 ];
 
