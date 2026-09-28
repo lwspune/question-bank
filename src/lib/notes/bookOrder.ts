@@ -85,6 +85,8 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "thermal-properties-of-matter": { cls: 11, chapterNo: 7, book: "XI 7 Thermal Properties of Matter" },
     "rotational-dynamics": { cls: 12, chapterNo: 1, book: "XII 1 Rotational Dynamics" },
     "mechanical-properties-of-fluids": { cls: 12, chapterNo: 2, book: "XII 2 Mechanical Properties of Fluids" },
+    "kinetic-theory-of-gases": { cls: 12, chapterNo: 3, book: "XII 3 Kinetic Theory of Gases and Radiation" },
+    thermodynamics: { cls: 12, chapterNo: 4, book: "XII 4 Thermodynamics" },
     oscillations: { cls: 12, chapterNo: 5, book: "XII 5 Oscillations" },
     "superposition-of-waves": { cls: 12, chapterNo: 6, book: "XII 6 Superposition of Waves" },
     "wave-optics": { cls: 12, chapterNo: 7, book: "XII 7 Wave Optics" },
