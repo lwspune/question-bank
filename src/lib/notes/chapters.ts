@@ -645,6 +645,11 @@ import {
   MHTCET_SUPERPOSITION_SLUGS,
 } from "@/app/notes/mht-cet-physics/superposition-of-waves/_data";
 import {
+  MHTCET_FLUIDS_CHAPTER,
+  MHTCET_FLUIDS_NOTES,
+  MHTCET_FLUIDS_SLUGS,
+} from "@/app/notes/mht-cet-physics/mechanical-properties-of-fluids/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1684,6 +1689,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_SUPERPOSITION_CHAPTER,
     notes: MHTCET_SUPERPOSITION_NOTES,
     slugs: MHTCET_SUPERPOSITION_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "mechanical-properties-of-fluids",
+    chipLabel: "Fluids notes",
+    chapter: MHTCET_FLUIDS_CHAPTER,
+    notes: MHTCET_FLUIDS_NOTES,
+    slugs: MHTCET_FLUIDS_SLUGS,
   },
   {
     examName: "NDA",
