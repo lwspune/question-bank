@@ -66,6 +66,11 @@ export type StudentCapture = {
   whatsappPromptedAt: string | null;
   emailOptOut: boolean;
   onboardedAt: string | null;
+  /** First-touch channel (0106), captured from 2026-09-17 on. Shown via describeSource. */
+  acqSource: string | null;
+  acqMedium: string | null;
+  acqCampaign: string | null;
+  acqLanding: string | null;
   /** False when the student has no student_profiles row at all (4 of 316). */
   hasProfile: boolean;
 };
@@ -128,6 +133,10 @@ const EMPTY_CAPTURE: StudentCapture = {
   whatsappPromptedAt: null,
   emailOptOut: false,
   onboardedAt: null,
+  acqSource: null,
+  acqMedium: null,
+  acqCampaign: null,
+  acqLanding: null,
   hasProfile: false,
 };
 
@@ -159,6 +168,10 @@ type ProfileRowShape = {
   whatsapp_prompted_at: string | null;
   email_opt_out: boolean | null;
   onboarded_at: string | null;
+  acq_source: string | null;
+  acq_medium: string | null;
+  acq_campaign: string | null;
+  acq_landing: string | null;
 };
 
 export async function fetchStudentDetail(
@@ -184,7 +197,7 @@ export async function fetchStudentDetail(
       db
         .from("student_profiles")
         .select(
-          "mobile, consent, target_exams, stage, medium, academic_stream, city, goal, whatsapp_opt_in, whatsapp_prompted_at, email_opt_out, onboarded_at"
+          "mobile, consent, target_exams, stage, medium, academic_stream, city, goal, whatsapp_opt_in, whatsapp_prompted_at, email_opt_out, onboarded_at, acq_source, acq_medium, acq_campaign, acq_landing"
         )
         .eq("user_id", userId)
         .maybeSingle(),
@@ -225,6 +238,10 @@ export async function fetchStudentDetail(
         whatsappPromptedAt: p.whatsapp_prompted_at,
         emailOptOut: Boolean(p.email_opt_out),
         onboardedAt: p.onboarded_at,
+        acqSource: p.acq_source,
+        acqMedium: p.acq_medium,
+        acqCampaign: p.acq_campaign,
+        acqLanding: p.acq_landing,
         hasProfile: true,
       }
     : EMPTY_CAPTURE;

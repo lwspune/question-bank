@@ -4,7 +4,14 @@ import { EyeOff, TriangleAlert } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
 import { getSessionSuperadmin } from "@/lib/auth";
-import { getPmfSnapshot, getShareSnapshot } from "@/lib/pmf/adminStats";
+import { getAcquisitionSnapshot, getPmfSnapshot, getShareSnapshot } from "@/lib/pmf/adminStats";
+import {
+  ACQ_EXAMS,
+  parseAcqExam,
+  parseAcqWindow,
+  summariseChannels,
+  summariseLandings,
+} from "@/lib/pmf/acquisition";
 import {
   viewCohorts,
   viewFeatures,
@@ -58,9 +65,29 @@ function Cell({ cell }: { cell: RetentionCell }) {
   );
 }
 
-export default async function PmfPage() {
+function pctOf(rate: number | null): string {
+  return rate === null ? "" : ` (${Math.round(rate * 100)}%)`;
+}
+
+export default async function PmfPage({
+  searchParams,
+}: {
+  searchParams: { acqDays?: string | string[]; acqExam?: string | string[] };
+}) {
   // Platform-wide data (not org-scoped) — superadmin only.
   if (!(await getSessionSuperadmin())) redirect("/browse");
+
+  const acqWindow = parseAcqWindow(searchParams.acqDays);
+  const acqExam = parseAcqExam(searchParams.acqExam);
+  const acqRaw = await getAcquisitionSnapshot(acqWindow.since, acqExam);
+  const acqChannels = summariseChannels(acqRaw.channels);
+  const acqLandings = summariseLandings(acqRaw.landings);
+  const acqTotal = acqChannels.reduce((n, c) => n + c.students, 0);
+  const acqHref = (days: string, exam: string | null) => {
+    const p = new URLSearchParams({ acqDays: days });
+    if (exam) p.set("acqExam", exam);
+    return `/dashboard/pmf?${p.toString()}#channels`;
+  };
 
   const snap = await getPmfSnapshot(12);
   const share = viewShare(await getShareSnapshot());
@@ -136,6 +163,113 @@ export default async function PmfPage() {
               </div>
             ))}
           </div>
+        </section>
+
+        {/* ── Where students come from (0125) ────────────────────────────── */}
+        <section id="channels" className="space-y-4 rounded-lg border p-5">
+          <div>
+            <h2 className="text-sm font-semibold">Where students come from</h2>
+            <p className="mt-1 text-xs text-muted-foreground">
+              First channel and first page of each signup — {acqWindow.label}
+              {acqExam ? `, students who chose ${ACQ_EXAMS.find((e) => e.slug === acqExam)?.label}` : ""}.
+              {" "}&ldquo;Did something&rdquo; is real use (a mock, notes progress, a bookmark), not a page
+              view. Rates are hidden below 10 students; counts always show.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2 text-xs">
+            {(["7", "30", "tracked"] as const).map((d) => (
+              <Link
+                key={d}
+                href={acqHref(d, acqExam)}
+                prefetch={false}
+                aria-current={acqWindow.key === d ? "true" : undefined}
+                className={`rounded-full border px-3 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                  acqWindow.key === d ? "border-brand bg-brand/10 font-medium text-brand-accent" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {d === "tracked" ? "Since 17 Sep" : `${d} days`}
+              </Link>
+            ))}
+            <span className="mx-1 text-muted-foreground" aria-hidden>
+              ·
+            </span>
+            {[{ slug: null, label: "All students" }, ...ACQ_EXAMS].map((e) => (
+              <Link
+                key={e.slug ?? "all"}
+                href={acqHref(acqWindow.key, e.slug)}
+                prefetch={false}
+                aria-current={acqExam === e.slug ? "true" : undefined}
+                className={`rounded-full border px-3 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                  acqExam === e.slug ? "border-brand bg-brand/10 font-medium text-brand-accent" : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                {e.label}
+              </Link>
+            ))}
+          </div>
+
+          {acqTotal === 0 ? (
+            <p className="text-sm text-muted-foreground">No signups in this window.</p>
+          ) : (
+            <>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead className="text-left text-xs text-muted-foreground">
+                    <tr>
+                      <th className="py-1 pr-3 font-medium">Channel</th>
+                      <th className="py-1 pr-3 text-right font-medium">Signups</th>
+                      <th className="py-1 pr-3 text-right font-medium">Did something</th>
+                      <th className="py-1 pr-3 text-right font-medium">Finished a mock</th>
+                      <th className="py-1 text-right font-medium">Paid</th>
+                    </tr>
+                  </thead>
+                  <tbody className="tabular-nums">
+                    {acqChannels.map((c) => (
+                      <tr key={c.key} className={`border-t ${c.key === "before-tracking" ? "text-muted-foreground" : ""}`}>
+                        <td className="py-1.5 pr-3">{c.label}</td>
+                        <td className="py-1.5 pr-3 text-right">{c.students}</td>
+                        <td className="py-1.5 pr-3 text-right">{c.signalled}{pctOf(c.signalledRate)}</td>
+                        <td className="py-1.5 pr-3 text-right">{c.mocked}{pctOf(c.mockedRate)}</td>
+                        <td className="py-1.5 text-right">{c.paid}{pctOf(c.paidRate)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <div>
+                <h3 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">First pages</h3>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Grouped by section and exam; signups from before tracking have no first page and are left out.
+                </p>
+                <div className="mt-2 overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead className="text-left text-xs text-muted-foreground">
+                      <tr>
+                        <th className="py-1 pr-3 font-medium">First page</th>
+                        <th className="py-1 pr-3 text-right font-medium">Signups</th>
+                        <th className="py-1 pr-3 text-right font-medium">Did something</th>
+                        <th className="py-1 pr-3 text-right font-medium">Finished a mock</th>
+                        <th className="py-1 text-right font-medium">Paid</th>
+                      </tr>
+                    </thead>
+                    <tbody className="tabular-nums">
+                      {acqLandings.map((l) => (
+                        <tr key={l.group} className="border-t">
+                          <td className="py-1.5 pr-3 font-mono text-xs">{l.group}</td>
+                          <td className="py-1.5 pr-3 text-right">{l.students}</td>
+                          <td className="py-1.5 pr-3 text-right">{l.signalled}</td>
+                          <td className="py-1.5 pr-3 text-right">{l.mocked}</td>
+                          <td className="py-1.5 text-right">{l.paid}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </>
+          )}
         </section>
 
         {/* ── Stickiness (0112) ──────────────────────────────────────────── */}

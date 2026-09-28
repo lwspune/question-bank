@@ -18,7 +18,9 @@ import {
   MessageCircle,
   Clock,
   Activity,
+  Compass,
 } from "lucide-react";
+import { describeSource } from "@/lib/pmf/acquisition";
 import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
 import StudentTabs from "./StudentTabs";
@@ -71,6 +73,17 @@ export default async function StudentDetailPage({ params }: { params: Params }) 
             <Field icon={Mail} label="Email" value={profile.email} />
             <Field icon={LogIn} label="Sign-in" value={profile.provider} />
             <Field icon={CalendarDays} label="Registered" value={fmtDate(profile.createdAt)} />
+            <Field
+              icon={Compass}
+              label="Came from"
+              value={describeSource({
+                source: capture.acqSource,
+                medium: capture.acqMedium,
+                campaign: capture.acqCampaign,
+                landing: capture.acqLanding,
+                createdAt: profile.createdAt,
+              })}
+            />
             <Field icon={Clock} label="Last sign-in" value={relativeTime(profile.lastSignInAt, now)} />
             <Field
               icon={Gem}
