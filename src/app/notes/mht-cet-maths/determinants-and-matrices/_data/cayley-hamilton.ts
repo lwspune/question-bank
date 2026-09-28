@@ -6,7 +6,7 @@ export const CAYLEY_HAMILTON_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Every 2 × 2 matrix satisfies A² − (trace)A + |A|I = 0 — so A⁻¹ is a combination αI + βA, a factored polynomial in A gives A⁻¹ in one line, and powers of A cycle.",
   whyItMatters:
-    "10 PYQs at 50% HARD, and one stem — A⁻¹ = αI + βA for the same 2 × 2 matrix — has been set five times in three years, asked for α − β, α + β, x and y, or 2x + 3y. " +
+    "9 PYQs at 44% HARD, and one stem — A⁻¹ = αI + βA for a given 2 × 2 matrix — has been set four times in three years, asked for α − β, α + β, x and y, or 2x + 3y. " +
     "The rest of the page is the same theorem read differently: a matrix given by (A − 3I)(A − 5I) = 0, an inverse of A + 3I from A² − 4A + 3I = 0, and a power A²⁰²⁹ that collapses because A³ is a scalar. " +
     "Nothing here needs the adjoint; that is the point of the page.",
   concepts: [

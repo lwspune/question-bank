@@ -6,7 +6,7 @@ export const DISTANCE_AND_FOOT_OF_PERPENDICULAR_NOTE: SubtopicNote = {
   oneLineDefinition:
     "|ax₀ + by₀ + c|/√(a² + b²) is the distance from a point to a line; |c₁ − c₂|/√(a² + b²) the gap between parallels; the foot of the perpendicular is where the perpendicular through the point meets the line; distance along a direction needs the parallel line through the point.",
   whyItMatters:
-    "10 PYQs at 10% HARD. The stems are the nearest of four lines to the origin, points on a line at unit distance from another, the area of a square from two parallel sides (set in 2023 and 2024), the distance between two parallel lines once one is fixed by a point, the foot of the perpendicular from (−2, 3) to 3x − y = 1 (twice), a distance measured parallel to a third line, and the distance of an intersection point from the origin. " +
+    "9 PYQs at 11% HARD. The stems are the nearest of four lines to the origin, points on a line at unit distance from another, the area of a square from two parallel sides (set in 2023 and 2024), the distance between two parallel lines once one is fixed by a point, the foot of the perpendicular from (−2, 3) to 3x − y = 1, a distance measured parallel to a third line, and the distance of an intersection point from the origin. " +
     "One formula per stem, applied once.",
   concepts: [
     // 1 — distance from a point
@@ -178,7 +178,7 @@ export const DISTANCE_AND_FOOT_OF_PERPENDICULAR_NOTE: SubtopicNote = {
           answer: "\\((1, 1)\\)",
         },
       ],
-      pyqExampleId: "061547f7-5643-437b-ad79-d489aa7dfbdf",
+      pyqExampleId: "cf48ef57-1ef5-4f5c-9ea4-60a065aad76f",
       traps: [
         {
           title: "Sign slips in the ratio form",

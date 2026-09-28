@@ -6,7 +6,7 @@ export const DISTANCE_TO_A_CIRCLE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The least and greatest distances from an external point to a circle are d − r and d + r (d = distance to the centre); a line cuts the circle when its distance from the centre is less than r; and the area a chord cuts off is a sector minus a triangle.",
   whyItMatters:
-    "6 PYQs at 17% HARD. Greatest and least distance from a point to a circle (twice, once continued to the far end of the diameter), the maximum distance from a point of the circle to a line, a count of integer m for which a line cuts the circle, the minor segment cut off by x = a/√2, and the median of an equilateral triangle inscribed in a circle. " +
+    "5 PYQs, none HARD. Greatest and least distance from a point to a circle (twice, once continued to the far end of the diameter), the maximum distance from a point of the circle to a line, a count of integer m for which a line cuts the circle, and the median of an equilateral triangle inscribed in a circle. " +
     "The first three are the Complex Numbers 'greatest and least modulus' move in coordinate dress.",
   concepts: [
     // 1 — greatest and least distance
@@ -176,7 +176,7 @@ export const DISTANCE_TO_A_CIRCLE_NOTE: SubtopicNote = {
           answer: "\\(3\\sqrt5\\)",
         },
       ],
-      pyqExampleId: "d0af45e9-12f2-4fce-bec5-18973b72694a",
+      pyqExampleId: "28c2a580-d2d6-46e3-bf3f-db89789e9323",
       traps: [
         {
           title: "Taking R as the median",

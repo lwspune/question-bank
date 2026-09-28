@@ -6,7 +6,7 @@ export const BY_PARTS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Integrate a product by trading it for an easier integral — choose u by LIATE, and watch for the cyclic and eˣ[f+f'] shortcuts.",
   whyItMatters:
-    "26 PYQs, and the chapter's second-hardest pocket (14 of 26 are HARD). Three patterns dominate: the LIATE choice for ordinary products; the cyclic integrals (∫eˣ sin x, ∫sin(log x)) that return to themselves; and the recurring eˣ[f(x)+f'(x)] → eˣ f(x) family that MHT-CET tests almost every year. " +
+    "25 PYQs, and the chapter's second-hardest pocket (13 of 25 are HARD). Three patterns dominate: the LIATE choice for ordinary products; the cyclic integrals (∫eˣ sin x, ∫sin(log x)) that return to themselves; and the recurring eˣ[f(x)+f'(x)] → eˣ f(x) family that MHT-CET tests almost every year. " +
     "Recognising the eˣ[f+f'] shape on sight turns a HARD question into a one-line answer.",
   concepts: [
     // 1 — LIATE

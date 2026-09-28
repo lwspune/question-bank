@@ -6,7 +6,7 @@ export const INVERSE_EQUATIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An equation in inverse trigonometric functions is solved by combining terms with a complementary pair or the addition formula, or by converting both sides to one ratio, and every root found must then be checked against the domains and principal ranges it passed through.",
   whyItMatters:
-    "31 PYQs. Thirteen combine two or three arctangents with the addition formula, ten convert both sides to one function or substitute x = tan θ, and eight use a complementary pair. " +
+    "29 PYQs. Twelve combine two or three arctangents with the addition formula, nine convert both sides to one function or substitute x = tan θ, and eight use a complementary pair. " +
     "The algebra is short. The HARD rows are the ones where a root the algebra produced must be thrown out — a negative root when x ≥ 0, a root that makes xy > 1, a root outside a domain — and the answer is a COUNT of roots.",
   concepts: [
     // 1 — complementary pairs

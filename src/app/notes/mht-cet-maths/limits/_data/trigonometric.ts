@@ -6,7 +6,7 @@ export const TRIGONOMETRIC_LIMITS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Every trigonometric limit at 0 reduces to two facts — sin x/x tends to 1 and (1 − cos x)/x² tends to ½ — once the argument is scaled and the point shifted to 0.",
   whyItMatters:
-    "12 PYQs at 67% HARD — the hardest page in the chapter, and the one where the difficulty is real rather than clerical. " +
+    "11 PYQs at 64% HARD — joint hardest in the chapter, and the page where the difficulty is real rather than clerical. " +
     "The pattern is fixed: rewrite with an identity, shift the point to 0 if it is not there already, then read off powers of x. " +
     "Three stems here are third-order — the first-order expansions cancel to 0/0 again — and those are exactly the questions that eat four minutes when you do not know to expand one order further.",
   concepts: [
@@ -68,7 +68,7 @@ export const TRIGONOMETRIC_LIMITS_NOTE: SubtopicNote = {
           method: "\\((\\sin 3x / x)^2 \\to 3^2\\).",
         },
       ],
-      pyqExampleId: "e2837788-76fe-41ff-b9c5-eebe10a80fec",
+      pyqExampleId: "fc46d09a-e80d-4ca2-b309-dd7e071f31f7",
       traps: [
         {
           title: "sin x/x → 1 only as x → 0",

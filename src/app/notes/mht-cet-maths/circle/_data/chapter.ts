@@ -4,7 +4,7 @@ export const MHTCET_CIRCLE_CHAPTER: ChapterNote = {
   chapterName: "Circle",
   title: "Circle — MHT-CET Maths",
   intro:
-    "Circle is one question a paper and sits in the middle of MHT-CET Maths for difficulty: well over a third of its past-year questions are HARD, and they " +
+    "Circle is one question a paper and sits in the middle of MHT-CET Maths for difficulty: about a third of its past-year questions are HARD, and they " +
     "cluster on the tangent page and the two-circles page. Everything in the chapter comes from two facts — a circle is the set of points at distance r " +
     "from its centre, and a tangent is perpendicular to the radius at the point of contact. The distance from the centre to a line therefore decides " +
     "whether the line misses, touches or cuts the circle, and the distance between two centres decides how two circles sit. The greatest and least " +

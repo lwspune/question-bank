@@ -6,7 +6,7 @@ export const GROWTH_DECAY_MODELS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "When a quantity changes at a rate proportional to itself, it grows or decays exponentially. Set up dP/dt = kP, solve to P = P0 e^{kt}, fix k from two data points, and answer — the recurring MHT-CET application of differential equations.",
   whyItMatters:
-    "This is the single densest applied subtopic in the chapter: 33 PYQs sit here (10 HARD, 17 MODERATE, 6 EASY), and MHT-CET repeats the same handful of stories — bacteria/population growth, radioactive/half-life decay, continuous bank compounding, moisture loss, and the special square-root and surface-area rate models — almost verbatim across years. " +
+    "This is the single densest applied subtopic in the chapter: 31 PYQs sit here (8 HARD, 17 MODERATE, 6 EASY), and MHT-CET repeats the same handful of stories — bacteria/population growth, radioactive/half-life decay, continuous bank compounding, moisture loss, and the special square-root and surface-area rate models — almost verbatim across years. " +
     "Master one clean template (write the rate law, separate, integrate, fix the constant, fix k from a second data point) and you can answer every one. The traps are all in the setup: k is negative for decay, 'doubles' means P/P0 = 2 (not +2), and a percentage rate must become a decimal.",
   concepts: [
     // 1 — the modelling step (foundation, no PYQ)

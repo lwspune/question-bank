@@ -6,7 +6,7 @@ export const COMPUTING_BINOMIAL_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Combine the single-term formula P(X=r)=ⁿCᵣpʳqⁿ⁻ʳ into whole answers: add terms for 'at least' / 'at most', use 1−qⁿ for 'at least one', complement for ranges, and N×P(event) for an expected frequency.",
   whyItMatters:
-    "This is the biggest subtopic in the chapter (20 PYQs — 3 EASY, 12 MODERATE, 5 HARD). The single-term PMF is page one; here the marks come from correctly COMBINING those terms. " +
+    "This is the biggest subtopic in the chapter (19 PYQs — 3 EASY, 11 MODERATE, 5 HARD). The single-term PMF is page one; here the marks come from correctly COMBINING those terms. " +
     "Almost every question is a phrasing puzzle first: 'at least 3', 'at most one', 'unable to solve less than two', 'even number of heads', 'second win at the third match' each map to a specific sum of PMF terms. Read the phrase, translate it to the exact set of r-values, then add.",
   concepts: [
     // 0 — foundation: the whole-answer idea (no PYQ, lint-exempt)

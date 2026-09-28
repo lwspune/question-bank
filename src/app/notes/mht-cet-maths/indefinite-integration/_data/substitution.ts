@@ -6,9 +6,9 @@ export const SUBSTITUTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Spot an inner function whose derivative also appears in the integrand, substitute to rename it, and the integral collapses to a standard form.",
   whyItMatters:
-    "52 PYQs — by far the largest bucket in the chapter, and the method every other technique falls back on. " +
+    "49 PYQs — by far the largest bucket in the chapter, and the method every other technique falls back on. " +
     "The single most-tested pattern is f'(x)/f(x) → log|f(x)|. Beyond that: powers of a function times its derivative, root substitutions, and exponential substitutions. " +
-    "Difficulty is steep here (27 of the 52 are HARD), but every one of them reduces to 'find u, find du, rewrite, integrate'.",
+    "Difficulty is steep here (25 of the 49 are HARD), but every one of them reduces to 'find u, find du, rewrite, integrate'.",
   concepts: [
     // 1 — u-sub basics
     {
@@ -54,7 +54,7 @@ export const SUBSTITUTION_NOTE: SubtopicNote = {
         { prompt: "\\(\\int \\dfrac{(\\log x)}{x}\\,dx\\)", answer: "\\(\\dfrac{(\\log x)^2}{2} + C\\)", method: "\\(u = \\log x\\)" },
         { prompt: "\\(\\int \\sin x\\,\\cos x\\,dx\\)", answer: "\\(\\dfrac{\\sin^2 x}{2} + C\\)", method: "\\(u = \\sin x\\)" },
       ],
-      pyqExampleId: "1379296d-474f-4777-a25d-eb9508efecb3",
+      pyqExampleId: "ab39b07a-0de8-4b9d-9cbb-548cdbc6301e",
       traps: [
         {
           title: "Adjust for the missing constant",
@@ -243,14 +243,13 @@ export const SUBSTITUTION_NOTE: SubtopicNote = {
         answer: "\\(-\\dfrac{(x^4+1)^{1/4}}{x} + C\\)",
       },
       selfCheckExample: {
-        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{x^2-1}{x^3\\sqrt{2x^4-2x^2+1}}\\,dx\\).",
+        prompt: "Evaluate \\(\\displaystyle\\int \\dfrac{x^2+1}{x^4+1}\\,dx\\).",
         steps: [
-          "Take \\(x^4\\) out of the root: \\(\\sqrt{2x^4-2x^2+1} = x^2\\sqrt{2 - \\tfrac{2}{x^2} + \\tfrac{1}{x^4}}\\).",
-          "Integrand \\(= \\dfrac{x^2-1}{x^3\\cdot x^2\\sqrt{\\,\\cdot\\,}} = \\dfrac{\\tfrac{1}{x^3}-\\tfrac{1}{x^5}}{\\sqrt{2 - \\tfrac{2}{x^2} + \\tfrac{1}{x^4}}}\\).",
-          "Let \\(u = 2 - \\tfrac{2}{x^2} + \\tfrac{1}{x^4}\\); then \\(du = \\left(\\tfrac{4}{x^3} - \\tfrac{4}{x^5}\\right)dx\\), so the numerator \\(dx = \\tfrac14\\,du\\).",
-          "Integrate: \\(\\tfrac14\\!\\int u^{-1/2}\\,du = \\tfrac14\\cdot 2\\sqrt{u} = \\tfrac12\\sqrt{u}\\).",
+          "Divide numerator and denominator by \\(x^2\\): \\(\\dfrac{1 + \\tfrac{1}{x^2}}{x^2 + \\tfrac{1}{x^2}}\\).",
+          "Let \\(t = x - \\dfrac{1}{x}\\); then \\(dt = \\left(1 + \\dfrac{1}{x^2}\\right)dx\\) and \\(x^2 + \\dfrac{1}{x^2} = t^2 + 2\\).",
+          "Integrate: \\(\\displaystyle\\int \\dfrac{dt}{t^2 + 2} = \\dfrac{1}{\\sqrt2}\\tan^{-1}\\dfrac{t}{\\sqrt2}\\). Back-substitute \\(t = \\dfrac{x^2-1}{x}\\).",
         ],
-        answer: "\\(\\dfrac{\\sqrt{2x^4-2x^2+1}}{2x^2} + C\\)",
+        answer: "\\(\\dfrac{1}{\\sqrt2}\\tan^{-1}\\left(\\dfrac{x^2-1}{\\sqrt2\\,x}\\right) + C\\)",
       },
       practiceSet: [
         { prompt: "In \\(\\int \\dfrac{dx}{x^2(x^4+1)^{3/4}}\\), what do you pull out of the root?", answer: "\\(x^4\\Rightarrow x^3(1+x^{-4})^{3/4}\\)" },
@@ -258,7 +257,7 @@ export const SUBSTITUTION_NOTE: SubtopicNote = {
         { prompt: "\\(\\int \\dfrac{x^2-4}{x^4+9x^2+16}\\,dx\\) — which substitution?", answer: "\\(t = x + \\dfrac{4}{x}\\)", method: "divide N,D by \\(x^2\\); numerator \\(=1-4/x^2=t'\\)" },
         { prompt: "After \\(t = x + \\dfrac{4}{x}\\), \\(\\dfrac{x^4+9x^2+16}{x^2}\\) becomes?", answer: "\\(t^2 + 1\\)", method: "\\(x^2+16/x^2 = t^2-8\\), then \\(+9\\)" },
       ],
-      pyqExampleId: "fe26934e-b655-4968-99e1-07dcce2b63c3",
+      pyqExampleId: "2e299703-3e8d-40b8-8932-c4991f252ec3",
       traps: [
         {
           title: "Pick the sign of t = x ± k/x from the numerator",

@@ -6,7 +6,7 @@ export const MODULUS_ARGUMENT_POLAR_NOTE: SubtopicNote = {
   oneLineDefinition:
     "|z| is the distance from the origin and arg z the angle from the positive real axis — the modulus multiplies and divides, the argument adds and subtracts, and z = r(cos θ + i sin θ) makes powers routine.",
   whyItMatters:
-    "18 PYQs at 28% HARD — the chapter's biggest page and its softest, which is why it is the half worth owning. " +
+    "17 PYQs at 29% HARD — the chapter's biggest page and its softest, which is why it is the half worth owning. " +
     "The modulus of a product or quotient of factors is asked every year and needs no expansion at all; the argument questions are wrong only when the quadrant is ignored; and |z| + z = a + ib has been set four times with two different right-hand sides. " +
     "Three stems here were repaired against the papers this session: a magnitude that belonged to the twin sitting, an argument denominator, and a key that pointed at the twin's answer.",
   concepts: [

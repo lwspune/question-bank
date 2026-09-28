@@ -6,7 +6,7 @@ export const ANGLE_BETWEEN_THE_PAIR_NOTE: SubtopicNote = {
   oneLineDefinition:
     "tan θ = 2√(h² − ab)/|a + b| is the angle between the two lines of ax² + 2hxy + by² = 0; a + b = 0 means perpendicular, h² = ab parallel, and the bisectors are (x² − y²)/(a − b) = xy/h.",
   whyItMatters:
-    "12 PYQs at 58% HARD — the chapter's densest HARD page. The stems are lines through a point at 45° or 60° to a given line written as a joint equation (four sittings), the perpendicular condition a + b = 0 in a trigonometric disguise (twice), the pair perpendicular to a given pair through a point, the angle equal to 2θ with a parameter, a right isosceles triangle's two legs (twice), and the bisector pair (twice). " +
+    "11 PYQs at 64% HARD — the chapter's densest HARD page. The stems are lines through a point at 45° or 60° to a given line written as a joint equation (four sittings), the perpendicular condition a + b = 0 in a trigonometric disguise, the pair perpendicular to a given pair through a point, the angle equal to 2θ with a parameter, a right isosceles triangle's two legs (twice), and the bisector pair (twice). " +
     "The pair through a point at a given angle is the Straight Line chapter's two-root problem multiplied out — that is where the marks are.",
   concepts: [
     // 1 — angle formula, perpendicular, parallel
@@ -59,7 +59,7 @@ export const ANGLE_BETWEEN_THE_PAIR_NOTE: SubtopicNote = {
           answer: "\\(\\dfrac{\\pi}{4}\\)",
         },
       ],
-      pyqExampleId: "f401a478-8b8d-4143-8545-43297527a468",
+      pyqExampleId: "1e83cfac-42cd-4136-a240-25b7a706d03e",
       traps: [
         {
           title: "Using |a − b| in the denominator",

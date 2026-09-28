@@ -6,7 +6,7 @@ export const GENERAL_SECOND_DEGREE_EQUATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "ax² + 2hxy + by² + 2gx + 2fy + c = 0 is a pair of lines iff abc + 2fgh − af² − bg² − ch² = 0 (with h² ≥ ab); when h² = ab the pair is parallel and the gap is 2√((g² − ac)/(a(a + b))).",
   whyItMatters:
-    "10 PYQs at 40% HARD. The determinant condition appears with a parameter to find (k in kxy + 10x + 8y + 16 = 0; the fg = ch identity; a count of integer p), and the parallel-lines case appears as a distance to compute or a p² + q² − pq to evaluate; two stems are the product of perpendicular distances from a point to a homogeneous pair. " +
+    "9 PYQs at 44% HARD. The determinant condition appears with a parameter to find (k in kxy + 10x + 8y + 16 = 0; the fg = ch identity; a count of integer p), and the parallel-lines case appears as a distance to compute or a p² + q² − pq to evaluate; one stem is the product of perpendicular distances from a point to a homogeneous pair. " +
     "Read 2g, 2f, 2h off the equation as HALVES — every wrong answer here is a factor of 2 in g, f or h.",
   concepts: [
     // 1 — condition for a pair

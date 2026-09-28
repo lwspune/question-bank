@@ -6,7 +6,7 @@ export const SLOPE_ANGLE_AND_ROTATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Slope is tan of the inclination; tan θ = |(m₁ − m₂)/(1 + m₁m₂)| gives the angle between two lines, and the same formula, solved for m, gives the lines through a point at a given angle, the rotated line, the angle bisector and the reflected line.",
   whyItMatters:
-    "15 PYQs at 33% HARD — the chapter's largest page and the only one with HARD questions. The recurring stems are a perpendicular-slope condition, an acute angle between two lines (once between the diagonals of a parallelogram), lines through a point at 45° or 60° to a given line, a line rotated about a point by 15° or 45°, and the bisector of angle PQR set in two consecutive years. " +
+    "15 PYQs at 33% HARD — the chapter's largest page and its hardest. The recurring stems are a perpendicular-slope condition, an acute angle between two lines (once between the diagonals of a parallelogram), lines through a point at 45° or 60° to a given line, a line rotated about a point by 15° or 45°, and the bisector of angle PQR set in two consecutive years. " +
     "All five HARD questions are the angle formula run backwards — solve for the unknown slope — and the wrong answer is always the second root.",
   concepts: [
     // 1 — slope, inclination, parallel, perpendicular

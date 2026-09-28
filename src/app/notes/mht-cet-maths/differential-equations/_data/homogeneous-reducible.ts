@@ -6,7 +6,7 @@ export const HOMOGENEOUS_REDUCIBLE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "When an equation's right side depends only on the ratio y over x, the substitution y = vx turns it into a separable one. A second family of equations — where x and y appear together as x plus y (or a x plus b y) — separates after the substitution v = x plus y.",
   whyItMatters:
-    "This is the HARD engine of MHT-CET Differential Equations: 15 PYQs sit here (6 HARD, 8 MODERATE, 1 EASY) and almost every difficult DE question in recent papers is one of these two shapes. The whole skill is reading the equation's form to pick the right substitution — y = vx when you see the ratio y over x, and v = x plus y when the pair travels together — then integrating the resulting separable equation and, crucially, substituting the variable back at the end.",
+    "This is the HARD engine of MHT-CET Differential Equations: 14 PYQs sit here (5 HARD, 8 MODERATE, 1 EASY) and almost every difficult DE question in recent papers is one of these two shapes. The whole skill is reading the equation's form to pick the right substitution — y = vx when you see the ratio y over x, and v = x plus y when the pair travels together — then integrating the resulting separable equation and, crucially, substituting the variable back at the end.",
   concepts: [
     // 1 — recognizing a homogeneous DE (foundation, no PYQ, lint-exempt)
     {

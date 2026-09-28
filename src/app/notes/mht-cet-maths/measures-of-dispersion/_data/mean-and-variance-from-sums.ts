@@ -6,7 +6,7 @@ export const MEAN_AND_VARIANCE_FROM_SUMS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Variance is the mean of the squares minus the square of the mean: σ² = Σx²/n − x̄². Given any two of Σx, Σx², n, mean and variance, the rest follow — and deviations from an assumed mean plug into the same formula.",
   whyItMatters:
-    "9 PYQs, none HARD — the formula page. The stems hand you Σx and Σx² (or Σ(x − a) and Σ(x − a)²) and ask for the SD, or hand you the mean and SD and ask for Σx²; one replaces a wrongly recorded observation, one adds three observations without moving the mean, two are frequency tables. " +
+    "8 PYQs, none HARD — the formula page. The stems hand you Σx and Σx² (or Σ(x − a) and Σ(x − a)²) and ask for the SD, or hand you the mean and SD and ask for Σx²; one replaces a wrongly recorded observation, one adds three observations without moving the mean, two are frequency tables. " +
     "All of it is the single identity below, rearranged.",
   concepts: [
     // 1 — variance from sum of squares

@@ -6,7 +6,7 @@ export const ORDER_DEGREE_FORMATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The order is the highest derivative present; the degree is the power of that highest derivative once the equation is made polynomial in its derivatives; n independent arbitrary constants force an order-n differential equation, which you build by differentiating and eliminating the constants — or verify by substituting a proposed solution back.",
   whyItMatters:
-    "This is the entire MHT-CET differential-equations subtopic and it is a mark-bank: 33 PYQs sit here, spanning EASY definitional order/degree right up to HARD elimination of circle and parabola families. Two mechanical skills carry almost every question — read order/degree only AFTER clearing radicals and fractional powers, and form a family's equation by differentiating once per independent constant and eliminating. " +
+    "This is the entire MHT-CET differential-equations subtopic and it is a mark-bank: 31 PYQs sit here, spanning EASY definitional order/degree right up to HARD elimination of circle and parabola families. Two mechanical skills carry almost every question — read order/degree only AFTER clearing radicals and fractional powers, and form a family's equation by differentiating once per independent constant and eliminating. " +
     "The recurring traps are exactly three: the degree is undefined when a derivative sits inside a log/trig, redundant constants (like C₃e^{x+C₄}) must be collapsed before you count the order, and only INDEPENDENT constants count.",
   concepts: [
     // 1 — DE terminology (foundation, no PYQ — formula-variant, lint-exempt)
@@ -536,7 +536,7 @@ export const ORDER_DEGREE_FORMATION_NOTE: SubtopicNote = {
         { prompt: "\\(\\frac{dy}{dx} = \\frac{1 - y^2}{y}\\) gives which family?", answer: "Circles of radius 1, centre on X-axis", method: "\\((x+c)^2 + y^2 = 1\\)" },
         { prompt: "Family represented by \\(x^2 = c(1 + y^2)\\) with \\(c > 0\\)?", answer: "Hyperbolas (when reduced through a point)", method: "\\(x^2 - c y^2 = c\\)" },
       ],
-      pyqExampleId: "db8d8735-3fab-42ba-9bb3-e38184fc56ff", // parametric, find k = 2
+      pyqExampleId: "3d054e15-b6ff-4161-b638-be13fafeb1d2", // parametric, find k = 2
       traps: [
         {
           title: "Convert parametric derivatives correctly",

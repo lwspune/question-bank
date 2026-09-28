@@ -6,7 +6,7 @@ export const PIECEWISE_CONTINUITY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A piecewise function can only fail at the points where its formula changes — so continuity is one equation per junction, and two unknowns need two junctions.",
   whyItMatters:
-    "20 PYQs at 55% HARD, and the most mechanical page in the chapter once the habit is fixed: find the junctions, write left = right = value at each, solve. " +
+    "19 PYQs at 53% HARD, and the most mechanical page in the chapter once the habit is fixed: find the junctions, write left = right = value at each, solve. " +
     "The same three-piece trigonometric function has been set four times with the question changed only in what combination of a and b it asks for; the 1 − cos 4x family five times. " +
     "The HARD tag here comes from junctions hidden inside an inequality or a limit that must be evaluated with different tools on the two sides — never from new theory.",
   concepts: [
@@ -127,7 +127,7 @@ export const PIECEWISE_CONTINUITY_NOTE: SubtopicNote = {
           answer: "\\(3\\)",
         },
       ],
-      pyqExampleId: "90ce5f78-824f-4285-94d4-6ad7554e6a1d",
+      pyqExampleId: "9ae6a2fb-0145-4be9-8216-5811f4ee8d80",
       traps: [
         {
           title: "Substituting into the surd piece",

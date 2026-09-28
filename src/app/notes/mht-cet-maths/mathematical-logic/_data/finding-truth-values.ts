@@ -6,7 +6,7 @@ export const FINDING_TRUTH_VALUES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Given that a whole statement pattern is false (or true), work backwards to pin down the truth values of p, q and r.",
   whyItMatters:
-    "This is the chapter's signature move and the single most repeated question shape on the paper — 16 PYQs sit here, and only 19% are HARD, " +
+    "This is the chapter's signature move and the single most repeated question shape on the paper — 15 PYQs sit here, and only 20% are HARD, " +
     "which makes it the best return on effort in the chapter. " +
     "The reason it is cheap is that you never build a table: a conditional is false in exactly one row, so being told it is false HANDS you the values " +
     "rather than leaving you to search for them. Recognise the shape and most of these take under a minute.",

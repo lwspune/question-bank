@@ -6,7 +6,7 @@ export const BINOMIAL_PARAMETER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Use the ratio of two adjacent binomial probabilities to turn a condition like P(X=a) = c·P(X=b) into a simple linear equation in p and q, and read off the unknown parameter p (or n) — the engine behind almost every 'find p' MHT-CET question.",
   whyItMatters:
-    "This subtopic is a reliable single-mark scorer: 15 PYQs sit here (4 HARD, 10 MODERATE, 1 EASY). The whole subtopic runs on one idea — the successive-term ratio P(X=k)/P(X=k−1) = ((n−k+1)/k)·(p/q) — which lets the huge factorials cancel so a condition collapses to a linear relation in p and q. " +
+    "This subtopic is a reliable single-mark scorer: 14 PYQs sit here (4 HARD, 9 MODERATE, 1 EASY). The whole subtopic runs on one idea — the successive-term ratio P(X=k)/P(X=k−1) = ((n−k+1)/k)·(p/q) — which lets the huge factorials cancel so a condition collapses to a linear relation in p and q. " +
     "The recurring shapes are always the same: a·P(X=i) = b·P(X=j) to find p, the identity ⁿCₐ = ⁿC_b ⇒ a+b = n to find n, and the most-probable value (mode). Master the cancellation once and every variant falls out.",
   concepts: [
     // 0 — FOUNDATION: PMF + the mean/variance recall (no PYQ, lint-exempt)

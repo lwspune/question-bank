@@ -6,7 +6,7 @@ export const CLASSICAL_PROBABILITY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Count favourable outcomes over equally-likely total outcomes, combine events with the addition theorem P(A∪B) = P(A)+P(B)−P(A∩B), and convert freely between probability and odds — the foundation layer every later probability topic rests on.",
   whyItMatters:
-    "This is the entry point of the chapter and a near-certain 1–2 marks on every MHT-CET paper: 21 PYQs sit here (7 EASY, 12 MODERATE, 2 HARD). The bank tests three recurring shapes — combinatorial counting (tickets, balls via nCr, word-letter arrangements, dice and 'with replacement' pairs), the addition theorem (often applied to a given probability-distribution table, or as 'exactly one occurs'), and odds ↔ probability (single die, and the 'one of A, B, C must and only one can happen' setup). " +
+    "This is the entry point of the chapter and a near-certain 1–2 marks on every MHT-CET paper: 20 PYQs sit here (6 EASY, 12 MODERATE, 2 HARD). The bank tests three recurring shapes — combinatorial counting (tickets, balls via nCr, word-letter arrangements, dice and 'with replacement' pairs), the addition theorem (often applied to a given probability-distribution table, or as 'exactly one occurs'), and odds ↔ probability (single die, and the 'one of A, B, C must and only one can happen' setup). " +
     "The classic slips are all here: subtracting P(A∩B) when you should add it, forgetting the complement in 'at least one', and reading 'odds against' backwards.",
   concepts: [
     // 0 — foundation: classical (equally-likely) probability (no PYQ, lint-exempt)

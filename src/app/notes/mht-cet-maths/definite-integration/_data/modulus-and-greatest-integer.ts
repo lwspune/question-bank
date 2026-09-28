@@ -6,7 +6,7 @@ export const MODULUS_AND_GREATEST_INTEGER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A modulus changes formula where its inside changes sign, and [x] changes value at every integer — so the interval is split at those points and each piece is integrated with its own formula.",
   whyItMatters:
-    "15 PYQs at 27% HARD — the gentlest page in the chapter, and the most mechanical: find the break points, split, integrate each piece. " +
+    "13 PYQs at 15% HARD — the gentlest page in the chapter, and the most mechanical: find the break points, split, integrate each piece. " +
     "The MODERATE tag is where the marks are lost, not the HARD one: a modulus integrated as if it were the bare expression, or a greatest-integer function evaluated at the wrong endpoint, produces a confident wrong answer that is always among the options. " +
     "Two stems ask for the integral of an expression that is piecewise CONSTANT by an inverse-trig identity, and one of them carries an official key that ignores the sign of x.",
   concepts: [

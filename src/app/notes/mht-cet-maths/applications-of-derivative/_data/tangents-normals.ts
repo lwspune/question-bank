@@ -6,7 +6,7 @@ export const TANGENTS_NORMALS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The derivative read geometrically: the slope of the tangent at a point, the perpendicular normal, the special cases where a tangent is horizontal or vertical, and the recurring MHT-CET puzzles that solve for a point or for a curve's constants from tangency conditions.",
   whyItMatters:
-    "This subtopic is the whole chapter's workhorse: 33 PYQs sit here, and it is HARD-heavy — about a quarter are HARD, the rest MODERATE, with only a few EASY. The paper reuses a small set of shapes relentlessly: 'normal parallel to a line ⇒ find the point' (the y = x log x family recurs almost every year), parametric tangent/normal, curve-fitting from touch/gradient conditions, and one-line length/intercept/fixed-point facts. " +
+    "This subtopic is the whole chapter's workhorse: 31 PYQs sit here — about a fifth are HARD, the rest mostly MODERATE, with only a few EASY. The paper reuses a small set of shapes relentlessly: 'normal parallel to a line ⇒ find the point' (the y = x log x family recurs almost every year), parametric tangent/normal, curve-fitting from touch/gradient conditions, and one-line length/intercept/fixed-point facts. " +
     "Master the negative-reciprocal normal slope, the dx/dy = 0 test for a vertical tangent, and the parametric dy/dx = (dy/dθ)/(dx/dθ), and most of these become reliable marks.",
   concepts: [
     // 1 — FOUNDATION: slope of a curve, tangent & normal slope
@@ -337,7 +337,7 @@ export const TANGENTS_NORMALS_NOTE: SubtopicNote = {
         { prompt: "On \\(y = x\\log x\\), the x where the normal has slope \\(1\\).", answer: "\\(x = e^{-2}\\)", method: "\\(1 + \\log x = -1\\)" },
         { prompt: "Slope of a normal parallel to \\(x + 3y = 10\\).", answer: "\\(-\\dfrac{1}{3}\\)", method: "same slope as the line" },
       ],
-      pyqExampleId: "71b22e7c-6602-4f70-b8fe-78f4b1197d1f", // normal to y=x log x parallel to 2x-2y+3=0
+      pyqExampleId: "3b8dbf2c-7b13-49dd-bfbe-1475f28031ee", // normal to y=x log x parallel to 2x-2y+3=0
       traps: [
         {
           title: "'Normal parallel to the line' means the NORMAL slope equals the line slope",
