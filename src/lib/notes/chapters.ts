@@ -660,6 +660,11 @@ import {
   MHTCET_GRAV_SLUGS,
 } from "@/app/notes/mht-cet-physics/gravitation/_data";
 import {
+  MHTCET_RAY_CHAPTER,
+  MHTCET_RAY_NOTES,
+  MHTCET_RAY_SLUGS,
+} from "@/app/notes/mht-cet-physics/ray-optics/_data";
+import {
   MHTCET_SEMI_CHAPTER,
   MHTCET_SEMI_NOTES,
   MHTCET_SEMI_SLUGS,
@@ -1772,6 +1777,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_GRAV_CHAPTER,
     notes: MHTCET_GRAV_NOTES,
     slugs: MHTCET_GRAV_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "ray-optics",
+    chipLabel: "Optics (Ray)",
+    chapter: MHTCET_RAY_CHAPTER,
+    notes: MHTCET_RAY_NOTES,
+    slugs: MHTCET_RAY_SLUGS,
   },
   {
     examName: "MHT-CET",
