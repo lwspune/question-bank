@@ -665,6 +665,11 @@ import {
   MHTCET_MAGFIELD_SLUGS,
 } from "@/app/notes/mht-cet-physics/magnetic-fields-due-to-electric-current/_data";
 import {
+  MHTCET_CURRENT_CHAPTER,
+  MHTCET_CURRENT_NOTES,
+  MHTCET_CURRENT_SLUGS,
+} from "@/app/notes/mht-cet-physics/current-electricity/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1748,6 +1753,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_MAGFIELD_CHAPTER,
     notes: MHTCET_MAGFIELD_NOTES,
     slugs: MHTCET_MAGFIELD_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "current-electricity",
+    chipLabel: "Current Electricity",
+    chapter: MHTCET_CURRENT_CHAPTER,
+    notes: MHTCET_CURRENT_NOTES,
+    slugs: MHTCET_CURRENT_SLUGS,
   },
   {
     examName: "NDA",
