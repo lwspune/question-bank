@@ -6,7 +6,7 @@ export const MECHANISM_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A complex reaction is a sequence of elementary steps; the slowest step sets the rate and its molecularity writes the rate law; a species made in one step and consumed in a later one is an intermediate and never appears in the overall equation.",
   whyItMatters:
-    "8 PYQs, none HARD — a recall page. Which step decides the rate (the slowest), which species is the intermediate in a two-step mechanism (set four times with the ClO⁻ and SO₂/NO pairs), which of four reactions is elementary, the rate law from a slow step, and one catalyst name (Fe–Cr for the water-gas shift). " +
+    "7 PYQs, none HARD — a recall page. Which step decides the rate (the slowest), which species is the intermediate in a two-step mechanism (set three times with the ClO⁻ and SO₂/NO pairs), which of four reactions is elementary, the rate law from a slow step, and one catalyst name (Fe–Cr for the water-gas shift). " +
     "Ten minutes covers it.",
   concepts: [
     // 1 — RDS and rate law from mechanism
@@ -93,7 +93,7 @@ export const MECHANISM_NOTE: SubtopicNote = {
         { prompt: "Catalyst for \\(\\text{CO} + \\text{H}_2\\text{O} \\rightleftharpoons \\text{CO}_2 + \\text{H}_2\\)?", answer: "Fe–Cr" },
         { prompt: "Does an intermediate appear in the overall equation?", answer: "No" },
       ],
-      pyqExampleId: "c3a1b6d2-02fe-45e1-a1ad-c7c0f668f06b",
+      pyqExampleId: "f1c92e06-062e-42bd-b599-2093bb2cf571",
       traps: [
         {
           title: "Picking the product that appears in both steps",

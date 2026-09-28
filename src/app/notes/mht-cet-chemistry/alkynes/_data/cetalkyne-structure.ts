@@ -8,7 +8,7 @@ export const STRUCTURE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An alkyne has a C≡C triple bond whose two carbons are sp hybridised; a haloalkyne has its halogen on one of those triple-bond carbons.",
   whyItMatters:
-    "4 PYQs. Three ask which structure is a haloalkyne, set three times in 2024; one counts sp² carbons in a diyne. " +
+    "3 PYQs. Two ask which structure is a haloalkyne, set twice in 2024; one counts sp² carbons in a diyne. " +
     "One card.",
   concepts: [
     {
@@ -25,7 +25,7 @@ export const STRUCTURE_NOTE: SubtopicNote = {
       table: {
         columns: ["Structure", "Class"],
         rows: [
-          { cells: ["CH₃CH₂C≡C–X", "**Haloalkyne**"], pyqExampleId: "e560f8e8-6d09-4cf5-bb73-22053ac7abe3" },
+          { cells: ["CH₃CH₂C≡C–X", "**Haloalkyne**"], pyqExampleId: "5c806b49-bf20-43ac-847f-99fe41fdc768" },
           { cells: ["Chloroethyne, HC≡C–Cl", "**Haloalkyne**"], pyqExampleId: "44152afa-e783-4b7f-a056-f3e76a6ac621" },
           { cells: ["CH₃C≡C–CH₂X", "Propargylic halide"], pyqExampleId: "5c806b49-bf20-43ac-847f-99fe41fdc768" },
           { cells: ["CH₃CH₂CH=CH–X", "Haloalkene (vinylic)"] },
@@ -37,7 +37,7 @@ export const STRUCTURE_NOTE: SubtopicNote = {
         steps: ["Only in chloroethyne is Cl on a triple-bond carbon; in the others it is one carbon away."],
         answer: "Chloroethyne",
       },
-      pyqExampleId: "e560f8e8-6d09-4cf5-bb73-22053ac7abe3",
+      pyqExampleId: "5c806b49-bf20-43ac-847f-99fe41fdc768",
       traps: [
         {
           title: "Any halogen in an alkyne",

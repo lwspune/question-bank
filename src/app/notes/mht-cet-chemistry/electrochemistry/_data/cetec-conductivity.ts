@@ -6,7 +6,7 @@ export const CONDUCTIVITY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Conductance is the reciprocal of resistance; conductivity is conductance scaled by the cell's geometry, the cell constant l/a — so κ = (cell constant)/R, and the cell constant itself is found once with a standard KCl solution.",
   whyItMatters:
-    "23 PYQs, one HARD (a lost exponent in the stem). Three question shapes: multiply κ by R to get the cell constant, divide the cell constant by R to get κ, and pick the correct or incorrect relation among k = 1/ρ, k = G·(l/a), k = Λ·c. " +
+    "21 PYQs, one HARD (a lost exponent in the stem). Three question shapes: multiply κ by R to get the cell constant, divide the cell constant by R to get κ, and pick the correct or incorrect relation among k = 1/ρ, k = G·(l/a), k = Λ·c. " +
     "The rest is units: siemens, S cm⁻¹, and what 1 S is not.",
   concepts: [
     // 1 — conductance, conductivity and units

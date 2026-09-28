@@ -6,7 +6,7 @@ export const REDOX_AND_TESTS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A carbonyl is reduced to CH₂ by Clemmensen (Zn–Hg/conc. HCl) or Wolff–Kishner (hydrazine, then KOH in ethylene glycol), to the alcohol by LiAlH₄; aldehydes alone are oxidised by Tollens and Fehling and turn Schiff's reagent pink, and methyl ketones and ethanal give the haloform reaction.",
   whyItMatters:
-    "21 PYQs, 1 HARD. Twelve are the two carbonyl-to-methylene reductions — name from reagent, reagent from name, the propiophenone → n-propylbenzene product — plus LiAlH₄ leaving a C=C alone; nine are the tests — Tollens' silver mirror with ethanal, Schiff's magenta, why aldehydes oxidise and ketones do not, which compound lacks the CH₃CO group for the haloform reaction. " +
+    "20 PYQs, 1 HARD. Eleven are the two carbonyl-to-methylene reductions — name from reagent, reagent from name, the propiophenone → n-propylbenzene product — plus LiAlH₄ leaving a C=C alone; nine are the tests — Tollens' silver mirror with ethanal, Schiff's magenta, why aldehydes oxidise and ketones do not, which compound lacks the CH₃CO group for the haloform reaction. " +
     "Two cards.",
   concepts: [
     // 1 — reductions

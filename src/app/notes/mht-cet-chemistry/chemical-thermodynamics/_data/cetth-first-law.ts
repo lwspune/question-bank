@@ -6,7 +6,7 @@ export const FIRST_LAW_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Energy is conserved: ΔU = q + w, with heat absorbed and work done ON the system positive; pressure–volume work against a constant external pressure is −P_ext ΔV, and reversible isothermal work is −2.303 nRT log(V₂/V₁).",
   whyItMatters:
-    "52 PYQs, 2 HARD — the biggest subtopic in the chapter and the one every paper draws from. Five shapes: add q and w with the right signs; compute −P_ext ΔV and convert dm³ bar or L atm to joules; combine the two; work for a gas reaction from Δn_g RT; and the reversible-isothermal logarithm. " +
+    "50 PYQs, 1 HARD — the biggest subtopic in the chapter and the one every paper draws from. Five shapes: add q and w with the right signs; compute −P_ext ΔV and convert dm³ bar or L atm to joules; combine the two; work for a gas reaction from Δn_g RT; and the reversible-isothermal logarithm. " +
     "Get the sign convention and the 100 J per dm³ bar right and every one of these is arithmetic.",
   concepts: [
     // 1 — sign convention

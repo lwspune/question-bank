@@ -6,7 +6,7 @@ export const RATE_LAW_AND_ORDER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "rate = k[A]ˣ[B]ʸ with x + y the (experimental) order; k is the rate at unit concentrations, depends only on temperature, and its unit depends on the order; molecularity is the number of species in an elementary step and equals the order only for elementary reactions.",
   whyItMatters:
-    "38 PYQs, none HARD — the chapter's second-largest page. A third are k from a rate and concentrations (or the reverse), a third are the order read off a rate law or a concentration experiment, and the rest are the change in rate when concentrations are doubled or halved, the order-versus-molecularity contrast, and three named examples (H₂O₂ decomposition first order, H₂ + I₂ second, H₂ + Br₂ order 3/2). " +
+    "36 PYQs, none HARD — the chapter's second-largest page. A third are k from a rate and concentrations (or the reverse), a third are the order read off a rate law or a concentration experiment, and the rest are the change in rate when concentrations are doubled or halved, the order-versus-molecularity contrast, and three named examples (H₂O₂ decomposition first order, H₂ + I₂ second, H₂ + Br₂ order 3/2). " +
     "Nothing here needs more than substitution; the traps are conceptual — order is experimental, k is concentration-independent.",
   concepts: [
     // 1 — rate law and order

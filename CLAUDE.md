@@ -328,6 +328,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 > exactly which entries are in that state; write the long form into the archive before evicting any
 > it lists.
 
+- **2026-09-28 (twenty-first) — MHT-CET Chemistry's two mislabelled source files are resolved: 32 copies hidden, 17 sole copies re-dated, 2 rows repaired; 26 notes pages recounted.**
+  - **Every row was matched to its paper item in the docx, never by file:** 123 automatically, 9 by hand. '13 May 2024 S1' rows belong to 12 May S2 (that file is its copy); '2023 Shift 1' rows to 16 May 2023 S2.
+  - **Pairs are checked for disagreeing keys before a copy is hidden:** two disagreed; the answer key (and, for the IUPAC figure, the structure itself) sided with the kept row both times. Item 92's kept row had also lost option (a), so (a) read the same as (c).
+  - **Hiding a copy moves shipped counts:** 26 notes pages restated, 3 featured examples moved to the kept twin; three pages were already off and now match the bank. No hidden row is in a published mock; all 17 re-dated rows are. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-09-28 (twentieth) — MHT-CET Physics strategy guide ships (/guide/mht-cet-physics: 6 routes · 21 playbooks); the trends generator now keys columns by paper, not file.**
   - **The template was measured, not copied:** 18 of 24 chapters are over 15% HARD with the HARD pooled in a page or two (Template C), and 44-70% of every chapter's answers are numbers, so calculate-vs-recall sorts nothing; tier strands again.
   - **Physics shares its clock:** Paper II is Physics + Chemistry in 90 minutes, and Chemistry is ~3% HARD against Physics' 18%, so the strategy's first section is the split. 55/35 is printed as a starting budget, not a measurement.

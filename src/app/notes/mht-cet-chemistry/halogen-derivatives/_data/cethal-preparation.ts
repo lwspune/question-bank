@@ -6,7 +6,7 @@ export const PREPARATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Alkyl halides come from alcohols (HX, PCl₅, SOCl₂), from alkenes by Markovnikov addition of HX, and from other halides by exchange — Finkelstein for iodides, Swarts for fluorides; the reverse direction, Wurtz and Fittig coupling with sodium, removes the halogen and joins two carbons.",
   whyItMatters:
-    "16 PYQs, none HARD. Seven are the two exchange reactions by name or product (Finkelstein → iodide, Swarts → fluoride, tert-butyl bromide + AgF), six are Wurtz, Fittig and Wurtz–Fittig — which is which, which halide couples to a named alkane, which alkane cannot form — and three are reagent-from-by-products or the alkene that adds HBr to a named product. " +
+    "15 PYQs, none HARD. Six are the two exchange reactions by name or product (Finkelstein → iodide, Swarts → fluoride, tert-butyl bromide + AgF), six are Wurtz, Fittig and Wurtz–Fittig — which is which, which halide couples to a named alkane, which alkane cannot form — and three are reagent-from-by-products or the alkene that adds HBr to a named product. " +
     "Names and one Markovnikov rule.",
   concepts: [
     // 1 — from alcohols and alkenes

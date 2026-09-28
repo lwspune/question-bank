@@ -6,7 +6,7 @@ export const TYPES_SOLUBILITY_HENRY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A solution is named by the physical states of its solute and solvent; a solid's solubility follows the enthalpy of solution and Le Chatelier; a gas's solubility is Henry's law, S = K_H · P.",
   whyItMatters:
-    "29 PYQs, one HARD — the chapter's largest page and its most recall-heavy. Half the stems are Henry's law arithmetic (solubility from K_H and pressure, or K_H from solubility), and the rest name a solution type from an example, pick the salt whose solubility falls on heating (sodium sulphate, four sittings), state which concentration term depends on temperature, or add a lattice and a hydration enthalpy. " +
+    "27 PYQs, one HARD — the chapter's largest page and its most recall-heavy. Half the stems are Henry's law arithmetic (solubility from K_H and pressure, or K_H from solubility), and the rest name a solution type from an example, pick the salt whose solubility falls on heating (sodium sulphate, four sittings), state which concentration term depends on temperature, or add a lattice and a hydration enthalpy. " +
     "Learn the solution-type table and the one salt; the arithmetic is a single multiplication.",
   concepts: [
     // 1 — types of solutions (reference)

@@ -6,7 +6,7 @@ export const FIRST_ORDER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "k = (2.303/t) log([A]₀/[A]ₜ) and t½ = 0.693/k: a first-order half-life is independent of the starting concentration, k has the unit time⁻¹, and 90%, 99% and 99.9% completion take 1, 2 and 3 times 2.303/k.",
   whyItMatters:
-    "44 PYQs, none HARD — the chapter's largest page and the one the paper always draws from. Half are the integrated law solved for k from a percent decomposed (20%, 60%, 80%, 90%) or for the time to a given fraction; a third are the half-life conversion k = 0.693/t½ in either direction, often with an hours-to-seconds step; the rest count half-lives (100 g to 25 g is two) or read k off a plot's slope. " +
+    "42 PYQs, none HARD — the chapter's largest page and the one the paper always draws from. Half are the integrated law solved for k from a percent decomposed (20%, 60%, 80%, 90%) or for the time to a given fraction; a third are the half-life conversion k = 0.693/t½ in either direction, often with an hours-to-seconds step; the rest count half-lives (100 g to 25 g is two) or read k off a plot's slope. " +
     "Learn log 2 = 0.301, log 4 = 0.602 and log 5 = 0.699 and the page is arithmetic.",
   concepts: [
     // 1 — k and half-life

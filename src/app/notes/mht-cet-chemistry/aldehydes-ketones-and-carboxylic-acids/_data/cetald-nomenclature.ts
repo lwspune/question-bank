@@ -6,7 +6,7 @@ export const NOMENCLATURE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Aldehydes (CₙH₂ₙO, R–CHO) and ketones (R–CO–R') are named -al and -one; carboxylic acids are -oic acids and carry the highest IUPAC priority, so in a polyfunctional compound COOH is the parent, then CHO, then OH — and the common acids are learnt by the number of COOH groups they carry.",
   whyItMatters:
-    "24 PYQs, none HARD — recall with one rule. Eight ask which named acid is mono-, di- or tricarboxylic (citric is the only tricarboxylic; valeric and caproic are mono; malonic, succinic, glutaric, adipic, phthalic are di); eight are an IUPAC name from a drawn benzene ring carrying COOH, CHO, OH or CH₃; eight are the general formula, which ketone is simple, which aldehyde smells of butter, which boils highest. " +
+    "23 PYQs, none HARD — recall with one rule. Eight ask which named acid is mono-, di- or tricarboxylic (citric is the only tricarboxylic; valeric and caproic are mono; malonic, succinic, glutaric, adipic, phthalic are di); seven are an IUPAC name read off a drawn ring carrying COOH, CHO, OH, Cl or CH₃; eight are the general formula, which ketone is simple, which aldehyde smells of butter, which boils highest. " +
     "Three cards.",
   concepts: [
     // 1 — named acids (reference)

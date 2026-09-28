@@ -15,6 +15,20 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-28 (twenty-first) — MHT-CET Chemistry label fix (ROADMAP 2026-09-26), on `feat/mhtcet-chem-labels`, after a 360 the user approved.**
+
+**Scope.** 132 PUBLIC Chemistry PYQ rows under the four suspect labels (28 '2023 Shift 1', 35 '16th May Shift 2', 21 '13th May Shift 1', 48 '12th May Shift 2'). Located in the extracted docx papers with `_locate_fuzzy.py --all-items`; planned with `_chem_label_plan.py` (the Physics rule: keep the correctly-labelled row per paper item, hide copies, re-date a sole copy); 9 weak locations resolved by hand. `_chem_label_impact.ts` measured the blast radius; `_chem_label_apply.ts` applied it (rollback file `generated-papers/chem-labels.rollback.json`).
+
+**Result.** keep 83 · hide 32 · re-date 17. Hidden rows: none in a published mock (the apply refuses otherwise). Re-dated rows: all 17 in published mocks, which reference by id and now show the right sitting.
+
+**Key conflicts.** `58daf3e5` ('Shift 1', keyed A) vs `7dc2c6b3` (16 May S2, keyed B) — 16 May 2023 S2 #58, 2-ethyl-5-methylcyclopentanol; answer key (b) and the drawn structure agree, the kept row is right. `db330d20` (keyed A) vs `0f91cb00` (keyed C) — #92; answer key (c). Both rows had lost the paper's option (a) ΔH° = T/ΔS°, so (a) duplicated (c); `0f91cb00`'s options (a) and (d) restored.
+
+**Other repair.** `d9fed875` (Amines) carried three backslashes before `xrightarrow`, rendering as text; reduced to one.
+
+**Notes.** 26 subtopic pages restated their counts and category breakdowns (e.g. 'the same two-step sequence four times' → three), the Ionic Equilibria intro (124 → 122, and 'the most heavily tested' → 'one of' — Solutions has 131). Three pages were already inconsistent with the bank and now match it: Stoichiometry said nine of eight, Galvanic Cells 12 HARD of 11, First Law 2 HARD of 1. Featured examples moved to the kept twin on Solutions (vapour pressure), Chemical Kinetics (mechanism) and Alkynes (structure). Content hashes untouched.
+
+**Still open:** the Maths half of the same ledger entry, and the Maths matrix keying (ROADMAP 2026-09-28).
+
 **2026-09-28 (twentieth) — MHT-CET Physics strategy guide (/guide/mht-cet-physics), on `feat/mhtcet-physics-guide`.**
 
 **Measurement first.** 2,098 PUBLIC PYQ over 42 papers (2021 1 · 2022 1 · 2023 16 · 2024 11 · 2025 13), 18.2% HARD. Recent (2024-25, 24 papers) rates per chapter sum to 50.0. 18 of 24 chapters above 15% HARD, pooled in one or two pages each (Fluids: buoyancy 83% vs capillary 0%) — the Template C cherry-pick pattern. Execution-mode strands fail: the share of numerical answers is 44-70% in every chapter but Semiconductor Devices (24%). So tier strands as for Maths: cornerstone 6 (18.5 q/paper), quick-win 6 (13.3, all <=14% HARD), long tail 9 (16.7), tail 3 (1.45). The one big cross-chapter shape is the ratio stem: 279 across 22 chapters — treated as a trap and a strategy line, not a principles route.

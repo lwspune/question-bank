@@ -6,7 +6,7 @@ export const RATE_AND_STOICHIOMETRY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "For aA + bB → cC + dD the single rate is −(1/a)d[A]/dt = −(1/b)d[B]/dt = (1/c)d[C]/dt = (1/d)d[D]/dt; one species' rate converts to another's through the ratio of coefficients, and the average rate is Δ[X]/Δt.",
   whyItMatters:
-    "26 PYQs, none HARD — the chapter's entry page and its most repetitive: given the rate at which one species appears or disappears, find another's (N₂ + 3H₂ → 2NH₃ and 2N₂O₅ → 4NO₂ + O₂ recur every year), write the rate expression with the right signs and reciprocals, or read a balanced equation back off a rate expression. " +
+    "25 PYQs, none HARD — the chapter's entry page and its most repetitive: given the rate at which one species appears or disappears, find another's (N₂ + 3H₂ → 2NH₃ and 2N₂O₅ → 4NO₂ + O₂ recur every year), write the rate expression with the right signs and reciprocals, or read a balanced equation back off a rate expression. " +
     "The only errors are a missed coefficient ratio or a sign.",
   concepts: [
     // 1 — stoichiometric relations

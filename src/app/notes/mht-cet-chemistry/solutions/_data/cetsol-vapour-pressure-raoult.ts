@@ -6,7 +6,7 @@ export const VAPOUR_PRESSURE_RAOULT_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Each volatile component contributes its pure vapour pressure times its mole fraction; a non-volatile solute lowers the solvent's vapour pressure by the solute's mole fraction — the relative lowering (P° − P)/P° = x₂.",
   whyItMatters:
-    "24 PYQs, one HARD. Two-thirds are the relative lowering of vapour pressure — from the two pressures, from moles, or in the dilute form W₂M₁/(M₂W₁) to recover a molar mass — and the rest are Raoult's law for two volatile liquids solved for a mole fraction or a pure vapour pressure, plus the recall of which mixtures are ideal, positive-deviation or negative-deviation. " +
+    "23 PYQs, one HARD. Two-thirds are the relative lowering of vapour pressure — from the two pressures, from moles, or in the dilute form W₂M₁/(M₂W₁) to recover a molar mass — and the rest are Raoult's law for two volatile liquids solved for a mole fraction or a pure vapour pressure, plus the recall of which mixtures are ideal, positive-deviation or negative-deviation. " +
     "The only real trap is dividing by the wrong pressure.",
   concepts: [
     // 1 — two volatile liquids
@@ -97,7 +97,7 @@ export const VAPOUR_PRESSURE_RAOULT_NOTE: SubtopicNote = {
         { prompt: "\\(\\dfrac{3 \\times 18}{60 \\times 50} = ?\\)", answer: "\\(0.018\\)" },
         { prompt: "\\(P\\) if \\(P^\\circ = 18\\) and relative lowering \\(0.018\\)?", answer: "\\(17.68\\) mm Hg" },
       ],
-      pyqExampleId: "2758632c-fe9c-43c8-8327-7bd59450c416",
+      pyqExampleId: "8b1d4aa8-a8fd-4175-982a-909f6035ecb8",
       traps: [
         {
           title: "Dividing by the solution's pressure, or reporting the solvent's mole fraction",
