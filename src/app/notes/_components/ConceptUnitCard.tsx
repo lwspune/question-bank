@@ -222,6 +222,7 @@ import OcnCoralReefTypes from "./visualizations/OcnCoralReefTypes";
 import CdsUnitDigitCycleWheel from "./visualizations/CdsUnitDigitCycleWheel";
 import CdsTrigRightTriangle from "./visualizations/CdsTrigRightTriangle";
 import CdsTouchingCircles from "./visualizations/CdsTouchingCircles";
+import CdsConeAnatomy from "./visualizations/CdsConeAnatomy";
 import CdsRationalIrrationalLine from "./visualizations/CdsRationalIrrationalLine";
 import LogicSwitchSeriesParallel from "./visualizations/LogicSwitchSeriesParallel";
 import LogicCircuitSimplification from "./visualizations/LogicCircuitSimplification";
@@ -643,6 +644,8 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <CdsTrigRightTriangle />;
     case "cds-touching-circles":
       return <CdsTouchingCircles />;
+    case "cds-cone-anatomy":
+      return <CdsConeAnatomy />;
     case "cds-unit-digit-cycle-wheel":
       return <CdsUnitDigitCycleWheel />;
     case "cds-rational-irrational-line":
