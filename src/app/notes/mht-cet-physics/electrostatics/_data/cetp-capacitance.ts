@@ -6,7 +6,7 @@ export const CAPACITANCE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Capacitance is the charge stored per volt, C = Q/V, fixed by a capacitor's geometry; in series capacitors share one charge and their reciprocals add, in parallel they share one voltage and they add directly.",
   whyItMatters:
-    "22 PYQs, four HARD: two networks read from a figure, a seven-capacitor puzzle, and two plates with unequal charges. The recurring shapes: C from geometry (plates, a sphere, the Earth), " +
+    "23 PYQs, four HARD: two networks read from a figure, a seven-capacitor puzzle, and two plates with unequal charges. The recurring shapes: C from geometry (plates, a sphere, the Earth), " +
     "an equivalent capacitance or a 'which arrangement of seven capacitors gives this value' puzzle, how voltage divides in series, and reading C off a V–Q graph.",
   concepts: [
     // 1 — capacitance from geometry

@@ -6,7 +6,7 @@ export const POTENTIAL_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Potential is the work per unit charge to bring a charge in from infinity; it is a scalar, so potentials from several charges simply add, and the energy of a group of charges is the sum over every pair.",
   whyItMatters:
-    "42 PYQs, the largest page in the chapter, nine of them HARD and spread across all five shapes below. " +
+    "43 PYQs, the largest page in the chapter, nine of them HARD and spread across all five shapes below. " +
     "Five shapes repeat: the potential of charges at the corners of a shape, the field from a potential function, the energy of a group, the speed a charge gains through a potential difference, and drops or spheres that merge or share charge.",
   concepts: [
     // 1 — potential of point charges
