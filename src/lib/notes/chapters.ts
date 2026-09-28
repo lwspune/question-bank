@@ -635,6 +635,11 @@ import {
   MHTCET_ATOMS_SLUGS,
 } from "@/app/notes/mht-cet-physics/structure-of-atoms-and-nuclei/_data";
 import {
+  MHTCET_THERMAL_CHAPTER,
+  MHTCET_THERMAL_NOTES,
+  MHTCET_THERMAL_SLUGS,
+} from "@/app/notes/mht-cet-physics/thermal-properties-of-matter/_data";
+import {
   MHTCET_SEMI_CHAPTER,
   MHTCET_SEMI_NOTES,
   MHTCET_SEMI_SLUGS,
@@ -1692,6 +1697,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_ATOMS_CHAPTER,
     notes: MHTCET_ATOMS_NOTES,
     slugs: MHTCET_ATOMS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "thermal-properties-of-matter",
+    chipLabel: "Thermal Properties of Matter",
+    chapter: MHTCET_THERMAL_CHAPTER,
+    notes: MHTCET_THERMAL_NOTES,
+    slugs: MHTCET_THERMAL_SLUGS,
   },
   {
     examName: "MHT-CET",
