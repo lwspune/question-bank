@@ -75,6 +75,7 @@ describe("MHT-CET notes follow the Balbharati book order (Class XI, then XII)", 
     expect(slugs("mht-cet-physics")).toEqual([
       "rotational-dynamics",
       "mechanical-properties-of-fluids",
+      "oscillations",
       "superposition-of-waves",
       "wave-optics",
       "electrostatics",

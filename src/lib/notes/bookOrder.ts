@@ -84,6 +84,7 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
   "mht-cet-physics": {
     "rotational-dynamics": { cls: 12, chapterNo: 1, book: "XII 1 Rotational Dynamics" },
     "mechanical-properties-of-fluids": { cls: 12, chapterNo: 2, book: "XII 2 Mechanical Properties of Fluids" },
+    oscillations: { cls: 12, chapterNo: 5, book: "XII 5 Oscillations" },
     "superposition-of-waves": { cls: 12, chapterNo: 6, book: "XII 6 Superposition of Waves" },
     "wave-optics": { cls: 12, chapterNo: 7, book: "XII 7 Wave Optics" },
     electrostatics: { cls: 12, chapterNo: 8, book: "XII 8 Electrostatics" },
