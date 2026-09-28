@@ -75,8 +75,10 @@ describe("MHT-CET notes follow the Balbharati book order (Class XI, then XII)", 
     expect(slugs("mht-cet-physics")).toEqual([
       // Class XI
       "motion-in-a-plane",
+      "laws-of-motion",
       "gravitation",
       "thermal-properties-of-matter",
+      "sound",
       "ray-optics",
       // Class XII
       "rotational-dynamics",
@@ -89,6 +91,7 @@ describe("MHT-CET notes follow the Balbharati book order (Class XI, then XII)", 
       "electrostatics",
       "current-electricity",
       "magnetic-fields-due-to-electric-current",
+      "magnetic-materials",
       "electromagnetic-induction",
       "ac-circuits",
       "dual-nature-of-radiation-and-matter",

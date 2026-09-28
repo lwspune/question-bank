@@ -83,8 +83,10 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
   },
   "mht-cet-physics": {
     "motion-in-a-plane": { cls: 11, chapterNo: 3, book: "XI 3 Motion in a Plane" },
+    "laws-of-motion": { cls: 11, chapterNo: 4, book: "XI 4 Laws of Motion" },
     gravitation: { cls: 11, chapterNo: 5, book: "XI 5 Gravitation" },
     "thermal-properties-of-matter": { cls: 11, chapterNo: 7, book: "XI 7 Thermal Properties of Matter" },
+    sound: { cls: 11, chapterNo: 8, book: "XI 8 Sound" },
     "ray-optics": { cls: 11, chapterNo: 9, book: "XI 9 Optics" },
     "rotational-dynamics": { cls: 12, chapterNo: 1, book: "XII 1 Rotational Dynamics" },
     "mechanical-properties-of-fluids": { cls: 12, chapterNo: 2, book: "XII 2 Mechanical Properties of Fluids" },
@@ -96,6 +98,7 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     electrostatics: { cls: 12, chapterNo: 8, book: "XII 8 Electrostatics" },
     "current-electricity": { cls: 12, chapterNo: 9, book: "XII 9 Current Electricity" },
     "magnetic-fields-due-to-electric-current": { cls: 12, chapterNo: 10, book: "XII 10 Magnetic Fields due to Electric Current" },
+    "magnetic-materials": { cls: 12, chapterNo: 11, book: "XII 11 Magnetic Materials" },
     "electromagnetic-induction": { cls: 12, chapterNo: 12, book: "XII 12 Electromagnetic Induction" },
     "ac-circuits": { cls: 12, chapterNo: 13, book: "XII 13 AC Circuits" },
     "dual-nature-of-radiation-and-matter": { cls: 12, chapterNo: 14, book: "XII 14 Dual Nature of Radiation and Matter" },

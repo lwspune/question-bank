@@ -670,6 +670,21 @@ import {
   MHTCET_PLANE_SLUGS,
 } from "@/app/notes/mht-cet-physics/motion-in-a-plane/_data";
 import {
+  MHTCET_SOUND_CHAPTER,
+  MHTCET_SOUND_NOTES,
+  MHTCET_SOUND_SLUGS,
+} from "@/app/notes/mht-cet-physics/sound/_data";
+import {
+  MHTCET_LAWS_CHAPTER,
+  MHTCET_LAWS_NOTES,
+  MHTCET_LAWS_SLUGS,
+} from "@/app/notes/mht-cet-physics/laws-of-motion/_data";
+import {
+  MHTCET_MAGMAT_CHAPTER,
+  MHTCET_MAGMAT_NOTES,
+  MHTCET_MAGMAT_SLUGS,
+} from "@/app/notes/mht-cet-physics/magnetic-materials/_data";
+import {
   MHTCET_SEMI_CHAPTER,
   MHTCET_SEMI_NOTES,
   MHTCET_SEMI_SLUGS,
@@ -1804,6 +1819,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_PLANE_CHAPTER,
     notes: MHTCET_PLANE_NOTES,
     slugs: MHTCET_PLANE_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "sound",
+    chipLabel: "Sound",
+    chapter: MHTCET_SOUND_CHAPTER,
+    notes: MHTCET_SOUND_NOTES,
+    slugs: MHTCET_SOUND_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "laws-of-motion",
+    chipLabel: "Laws of Motion",
+    chapter: MHTCET_LAWS_CHAPTER,
+    notes: MHTCET_LAWS_NOTES,
+    slugs: MHTCET_LAWS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "magnetic-materials",
+    chipLabel: "Magnetic Materials",
+    chapter: MHTCET_MAGMAT_CHAPTER,
+    notes: MHTCET_MAGMAT_NOTES,
+    slugs: MHTCET_MAGMAT_SLUGS,
   },
   {
     examName: "MHT-CET",

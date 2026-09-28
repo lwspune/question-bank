@@ -15,6 +15,36 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-28 (sixteenth) — MHT-CET Physics "Magnetic Materials" (3 pages · 33 PYQ · 6 concepts · 12 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-sound-laws-magmat`.**
+
+**Source pass (`_fix-phy-magnetic-materials.ts`, 2 rows; `…2.ts`, 1 row).** Every key derived; none changed. `72c54e63` (2 May 2023 S1 #50): options garbled ((a) = (b) = '√2/3 s') — paper's restored, 'increased by two times' = 3B gives 2/√3 s = (a). `9717bf86` (14 May 2024 S1 #34): the printed 0.1 m coil gives τ = 6 × 10⁻⁴ N m, but the options (10⁻⁶ N m) fit a 0.01 m coil; key (c) kept, solution says so (the stored solution had B = 6π × 10⁻⁴ T, itself wrong: 1.5π × 10⁻³ T). `32312866`: stored solution treated like poles together as the difference position and then inverted the period ratio to land on (c); rewritten with like poles = sum. `65ab776b` (electromagnet material, 'high retentivity & low coercivity') checked against the 9 May 2024 key, (c) — kept. Both figure keys (χ–T graphs, B–H loop) read and right.
+
+**Authoring.** Dipole: moment, torque, work and oscillation (bent rod 2M/π, halves at 90° M/√2, sum/difference magnets) and the orbital moment (e/2m, Bohr magneton). Magnetisation: B–H–M–χ–μ relations and computing M. Classification: two reference cards (the three classes with Curie's law; hysteresis, electromagnets and shielding). The first draft of the dipole card had the sum/difference convention backwards; corrected before install. `quiz:coverage` flagged Curie's law written in LaTeX in a reference card; written as text. Worked numbers derived: 0.8 J and 0.8 N m, 2μ_B, 8.8 × 10¹⁰ C/kg, 2 A/m and 1.26 × 10⁻³ T, 2 × 10⁶ A/m.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:intro clean · quiz:coverage 0 strong gaps, 12 traps.
+
+**Not proven.** Render beyond the build's prerender.
+
+**2026-09-28 (fifteenth) — MHT-CET Physics "Laws of Motion" (3 pages · 47 PYQ · 6 concepts · 12 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-sound-laws-magmat`.**
+
+**Source pass (`_fix-phy-laws-of-motion.ts`, 6 rows).** Every key derived; none changed. `f23940d5` (15 May 2023 S1 #22): the bank had swapped options (c) and (d) under key (d), so the key sat on cos⁻¹(1/2); the paper's (d) is cos⁻¹(1/√2), what 2Mg cos θ = √2 Mg gives, AK (d). `d20022dd` (14 May 2024 S1 #16): bullet speed 150 m/s in the paper, 50 in the bank (which needs 240 bullets, not an option). `e51f2190`: option (b) mgr/(L² − r²) had become a copy of (a). `4c53824d`: the bracket of the subtracted momentum lost. `44dce20a` paraphrase restored; `5ebe6b4b` 't_i' → t î. Five figure keys read and right (knot, blocks in contact, Atwood, v–t, F–t). Twin flag `f5b563ca`/`0da88624` is a recurrence.
+
+**Authoring.** Newton's laws page split three ways: lifts, blocks and pulleys; force, work, power and circular dynamics (conical pendulum, T = 3mg at the bottom, flat-curve friction); braking, penetration and avoiding collision (with the v–t row filed here). Momentum: impulse and rates (conveyor, gun, rebounding balls, p²/2m), collisions (e, sticking in 2-D, rebound e²h). Equilibrium and centre of mass. Five traps added to reach 12. Worked numbers derived: 2.5 m/s² and 37.5 N, 720 N, 5√5 m/s and 50 W, 5 J, 2 cm, 5 m/s², 10 N s and 500 N, 0 and 3 m/s, 1 m, 275 N and 125 N, 3 m.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:intro clean for this chapter · quiz:coverage 0 strong gaps, 12 traps.
+
+**Not proven.** Render beyond the build's prerender.
+
+**2026-09-28 (fourteenth) — MHT-CET Physics "Sound" (3 pages · 47 PYQ · 5 concepts · 12 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-sound-laws-magmat`.**
+
+**Source pass (`_fix-phy-sound.ts`, 3 rows).** Every key derived. `cb3835ef` (10 May 2024 S1 #32, absent from the locator because it was paraphrased): stem restored; the paper prints the speed as '0 m/s', the AK's working uses 50 m/s — [50]; source moving gives 330/280 = 1.18f, observer moving 380/330 = 1.15f, so the second case is higher, (b); AK (b); bank keyed (c) with a solution asserting 380/330 > 330/280 — flipped. `03a658a3` (2022 #32): closed pipe 100 Hz; string's second harmonic (1/0.5)√(50/μ) = 100 gives μ = 0.02 kg/m and mass μl = 10 g = (b); the 2022 AK gives (a) 20 g, reporting μ (20 g/m) as the mass; bank keyed (d) 5 g — keyed (b) against the AK. `926b3022` paraphrase restored. The ripple-tank row `262c2b45` (56 m/s) was already correct. Twin flag `4e46eab1`/`b130709e` is a recurrence.
+
+**Authoring.** Waves (speed, energy ∝ A²f², decibels, gas mixtures), organ pipes (open vs closed harmonics, overtone numbering, end correction), resonance tubes, strings and beats, and the Doppler effect in one step and two (passing source, echo from a wall, accelerating away). Three traps added to reach 12. Worked numbers derived: 0.68 m and 68 m, 100, 75 cm, 340 and 1020 Hz, 75 and 25 cm, 507 Hz, 6f/5, 5f/4, 562.5 Hz.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:intro clean for this chapter · quiz:coverage 0 strong gaps, 12 traps.
+
+**Not proven.** Render beyond the build's prerender.
+
 **2026-09-28 (thirteenth) — MHT-CET Physics "Motion in a Plane" (5 pages · 53 PYQ · 7 concepts · 12 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-ray-optics-plane`.**
 
 **Source pass (`_fix-phy-motion-in-a-plane.ts`, 5 rows).** Every key derived; none changed. `0a1f130f` (2021 #4): 10 m/s at 30° from a 10 m tower lands 8.66 m out only if thrown 30° below the horizontal (t = 1 s); above, t = 2 s and 17.3 m, not an option. No 2021 key; the stored solution's upward-case arithmetic (t ≈ 1.71 s) was wrong — rewritten, key (b) kept. `234061c4` (9 May 2023 S2 #4): the x–t graphs (a)–(d) were missing — attached; key (a). `5a61abb8` (12 May 2024 S2 #29): option (a) ½g t₁/t₂ had become a copy of (b). `0e2e802d` (22 Apr 2025 S2 #6): the paper's stray dot ran vector C into the question — split. `2d8dc355`: triple backslashes. Three figure keys (a–t triangle 40 m/s, v–t displacement : distance 5 : 9, v–t area 90 m) read and right. Twin flag `9ce41d9a`/`a94acb80` is a recurrence.
