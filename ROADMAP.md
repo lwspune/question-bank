@@ -19,7 +19,13 @@ Set aside at the user's call; each carries a `dropped` reason in `scripts/mpsc-m
 
 To revive one: delete its `dropped` field, transcribe into `data/<id>.t0N.json`, then `merge` → `commit`.
 
-## Backfill ledger — the MHT-CET Maths trends matrix still keys its columns by source file (2026-09-28)
+## Backfill ledger — four 12 May 2024 S2 rows (3 Chemistry, 1 Physics) store doubled escapes (2026-09-28)
+
+**Found during the Maths label fix.** The 12 May 2024 Shift 2 ingest wrote `\\\frac` (three backslashes) where `\frac` was meant: 28 PUBLIC rows, all from that one paper, so they render broken while their twins in the copy file did not. The 24 Maths rows were fixed in the label pass (they were kept rows). **Still broken:** Chemistry `26d70568` (solution), `464b19ad` (option A), `8f6ef6fd` (solution, `\\\xrightarrow`); Physics `4cef871b` (stem, solution, all four options). Fix = collapse a run of 2+ backslashes before a letter to one, only in fields with no `\begin{` (inside an environment `\\` is a real row break); never rehash. **360:** scope 4 rows in shipped chapters · no count or key moves · reversible by a rollback file · low risk, minutes of work · recommend DO. Needs the user's go.
+
+## ~~Backfill ledger — the MHT-CET Maths trends matrix still keys its columns by source file~~ — DONE 2026-09-28
+
+Done with the Maths label fix below, on the user's go: the Maths branch was removed from the `column` guard, so every subject now keys columns by paper; Maths regenerated to 42 papers · 2,090 q, and every trends, playbook, strategy and chapter-table figure was re-derived. Original entry:
 
 **Found building the Physics guide.** `scripts/mhtcet/trends-matrix.ts` grouped questions into columns by `source_file`, but a paper is its year + `pyq_note`: a row re-dated to the paper it came from keeps the file it was ingested from. On Physics that made 44 columns for 42 papers — 14 re-dated rows of 16 May 2023 Shift 2 and 3 undated-compilation rows each stood in a column of their own. The fix, `canonicalPaperFiles` in `scripts/lib/mhtcetTrendsMatrix.ts` (tested), is live for Physics and Chemistry only; **Maths still keys by file**, because switching it moves numbers on the shipped `/guide/mht-cet-maths/trends` page and in `tests/mhtcet-trends-reconcile.test.ts` (Maths has the 132 re-dated "3 May" rows and its own 2025 compilation file). **360 before doing it:** regenerate with the Maths branch removed from the `column` guard, diff `matrix.generated.ts`, and re-derive any trends/playbook prose the grid moves. Needs the user's go.
 
@@ -27,7 +33,9 @@ To revive one: delete its `dropped` field, transcribe into `data/<id>.t0N.json`,
 
 `auth.admin.listUsers({ perPage: 1000 })` returns one page and no error, so past 1,000 accounts (412 today) names silently turn into "(unknown)". The feedback-review fix moved the paged reader into `src/lib/supabase/authUsers.ts` (`listAllAuthUsers`) and switched `/dashboard/feedback` to it. **Still on one page:** `src/lib/mocks/adminStats.ts` (per-mock attempt names), `src/lib/entitlements/admin.ts` (two reads). `src/lib/members/admin.ts` is STAFF-only and does not need it. Not reworked: 360 = low risk, trivial swap, nothing wrong until 1,000 accounts; do it before then.
 
-## Backfill ledger — two MHT-CET source files are copies of other sittings; Chemistry + Maths still carry the copies (2026-09-26)
+## ~~Backfill ledger — two MHT-CET source files are copies of other sittings; Chemistry + Maths still carry the copies~~ — DONE 2026-09-28
+
+Chemistry done 2026-09-28 (32 hidden, 17 re-dated), Maths done 2026-09-28 on the user's go (85 hidden, 5 re-dated, 31 kept rows repaired, 21 featured /notes rows moved (3 to a different PYQ) and 2 /formula tags dropped, every /notes count and the guide re-derived). Both source faults were re-verified from the `.docx` papers first; the record is CORPUS.md "MHT-CET source-file faults". Original entry:
 
 Found while starting Physics notes (`generated-papers/_paper_overlap.py`, item-for-item across the extracted docx papers):
 
