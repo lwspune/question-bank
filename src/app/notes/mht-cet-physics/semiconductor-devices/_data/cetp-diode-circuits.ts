@@ -6,7 +6,7 @@ export const DIODE_CIRCUITS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Solve a diode circuit by deciding which diodes are forward biased (a short, or a 0.7 V drop for silicon) and which reverse (an open switch); a rectifier uses the same one-way action to turn a.c. into pulsating d.c.",
   whyItMatters:
-    "16 PYQs, one HARD. Two shapes: the current in a circuit of ideal or silicon diodes with resistors — find the conducting branches first — " +
+    "18 PYQs, one HARD. Two shapes: the current in a circuit of ideal or silicon diodes with resistors — find the conducting branches first — " +
     "and the half-wave and full-wave rectifier: output frequency, efficiency, and the order rectifier → filter → regulator.",
   concepts: [
     {

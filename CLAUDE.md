@@ -328,10 +328,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 > exactly which entries are in that state; write the long form into the archive before evicting any
 > it lists.
 
-- **2026-09-28 (fifth) — MHT-CET Physics Current Electricity ships (5 pages · 82 PYQ · 9 concepts), every row of its own tagged; three keys flipped, and five misfiled rows are left for permission.**
+- **2026-09-28 (fifth) — MHT-CET Physics Current Electricity ships (5 pages · 82 PYQ · 9 concepts), 100% tagged; three keys flipped, and five misfiled rows moved into two shipped chapters.**
   - **A bridge that looks balanced may not be:** `113e1dec` (arms 4, 4, 1, 3 Ω) was keyed 'zero current'; the potentials differ and current flows S to Q, as the 2022 key says.
   - **An answer-key letter can contradict its own working:** `96eceee1` prints (b) but works to 250 mA, which is (c); the stem's '2O Ω/m' is 2 Ω/m. Keyed (c).
-  - **Five rows in the Ohm's-law subtopic belong to SHIPPED chapters** (3 to Electrostatics, 2 diode rows to Semiconductor Devices). Moving them changes shipped counts, so they are untagged here and raised with the user, not moved. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
+  - **Five rows under Ohm's law belonged to SHIPPED chapters:** 3 went to Electrostatics (now 166), 2 diode rows to Semiconductor Devices (now 129). They moved only after the user said so, and each was tagged on its new page and its count claims updated. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-09-28 (fourth) — MHT-CET Physics Magnetic Fields Due to Electric Current ships (4 pages · 98 PYQ · 10 concepts), 100% tagged; its source pass changed no key, but three stems had lost the symbol that decides the answer.**
   - **A dropped root turns a right key into a wrong one:** `94813f3e`'s paper current is √8·I (fields add to 3μ₀I/2R, the key); the bank had 8I, which gives √65. `dd0fd7de`'s is √2 A (net field μ₀); the bank had 2 A, and its solution said 'the answer key says μ₀' without finding why.
   - **Swapped option texts leave a right letter on a wrong answer:** `ba58cb98` keyed (d) over '2R'; the paper's (d) is √2·R.
