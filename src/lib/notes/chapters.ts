@@ -630,6 +630,11 @@ import {
   MHTCET_AC_SLUGS,
 } from "@/app/notes/mht-cet-physics/ac-circuits/_data";
 import {
+  MHTCET_ATOMS_CHAPTER,
+  MHTCET_ATOMS_NOTES,
+  MHTCET_ATOMS_SLUGS,
+} from "@/app/notes/mht-cet-physics/structure-of-atoms-and-nuclei/_data";
+import {
   MHTCET_SEMI_CHAPTER,
   MHTCET_SEMI_NOTES,
   MHTCET_SEMI_SLUGS,
@@ -1676,6 +1681,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_AC_CHAPTER,
     notes: MHTCET_AC_NOTES,
     slugs: MHTCET_AC_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "structure-of-atoms-and-nuclei",
+    chipLabel: "Structure of Atoms and Nuclei",
+    chapter: MHTCET_ATOMS_CHAPTER,
+    notes: MHTCET_ATOMS_NOTES,
+    slugs: MHTCET_ATOMS_SLUGS,
   },
   {
     examName: "MHT-CET",

@@ -92,6 +92,7 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "magnetic-fields-due-to-electric-current": { cls: 12, chapterNo: 10, book: "XII 10 Magnetic Fields due to Electric Current" },
     "electromagnetic-induction": { cls: 12, chapterNo: 12, book: "XII 12 Electromagnetic Induction" },
     "ac-circuits": { cls: 12, chapterNo: 13, book: "XII 13 AC Circuits" },
+    "structure-of-atoms-and-nuclei": { cls: 12, chapterNo: 15, book: "XII 15 Structure of Atoms and Nuclei" },
     "semiconductor-devices": { cls: 12, chapterNo: 16, book: "XII 16 Semiconductor Devices" },
   },
 };
