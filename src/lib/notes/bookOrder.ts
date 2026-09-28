@@ -82,9 +82,11 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "green-chemistry-and-nanochemistry": { cls: 12, chapterNo: 16, book: "XII 16 Green Chemistry and Nanochemistry" },
   },
   "mht-cet-physics": {
+    "units-and-measurement": { cls: 11, chapterNo: 1, book: "XI 1 Units and Measurements" },
     "motion-in-a-plane": { cls: 11, chapterNo: 3, book: "XI 3 Motion in a Plane" },
     "laws-of-motion": { cls: 11, chapterNo: 4, book: "XI 4 Laws of Motion" },
     gravitation: { cls: 11, chapterNo: 5, book: "XI 5 Gravitation" },
+    "mechanical-properties-of-solids": { cls: 11, chapterNo: 6, book: "XI 6 Mechanical Properties of Solids" },
     "thermal-properties-of-matter": { cls: 11, chapterNo: 7, book: "XI 7 Thermal Properties of Matter" },
     sound: { cls: 11, chapterNo: 8, book: "XI 8 Sound" },
     "ray-optics": { cls: 11, chapterNo: 9, book: "XI 9 Optics" },

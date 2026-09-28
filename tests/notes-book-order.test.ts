@@ -74,9 +74,11 @@ describe("MHT-CET notes follow the Balbharati book order (Class XI, then XII)", 
   it("Physics", () => {
     expect(slugs("mht-cet-physics")).toEqual([
       // Class XI
+      "units-and-measurement",
       "motion-in-a-plane",
       "laws-of-motion",
       "gravitation",
+      "mechanical-properties-of-solids",
       "thermal-properties-of-matter",
       "sound",
       "ray-optics",

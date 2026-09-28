@@ -15,6 +15,18 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-28 (seventeenth) — MHT-CET Physics "Units and Measurement" (1 page · 14 PYQ · 2 concepts) and "Mechanical Properties of Solids" (1 page · 6 PYQ · 2 concepts), 100% concept-tag coverage, on `feat/mhtcet-physics-units-solids`.**
+
+**Source pass.** Units (`_fix-phy-units.ts`): `fcb05c7e` (25 Apr 2025 S1 #6) — the paper prints the wire's length as '± 0.06 cm' with no value; 6 cm gives the keyed 4% — [6]; `a8c81d5e` stray dot-accent over s. Solids (`_fix-phy-solids.ts`): `ebe4c03c` (15 May 2023 S2 #50) — the paper's option (b) (K/N)(1 + N) had become K/(N(1 + N)), leaving no correct option; restored, AK (b). All other keys derived and right.
+
+**Decision.** Both chapters are small but coherent, so they ship as one-page notes (the Chemistry Groups 13–15 precedent, 4 unrelated facts, stays unshipped). Solids' `e23b500e` (rebound with e) and `d60aabce` (bullet heating) are really Laws of Motion and Thermal questions; both of those chapters are shipped, so the rows were tagged on a Solids 'impacts' card that links out to both, instead of moving them.
+
+**Authoring.** Units: means and absolute errors (sums add errors; kinds of error; L/R in seconds) and percentage errors through powers (density, pressure, KE, g from a pendulum). Solids: springs (k ∝ 1/L, series chain, drop onto a platform) and impacts. Worked numbers derived: (2.2 ± 0.1) s, (6.2 ± 0.3) cm, 7%, 4.5%, 900 and 1800 N/m, 0.3 m, 6 m/s and 1.8 m.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:intro clean · quiz:coverage 0 strong gaps (3 traps each: below the traps-quiz threshold, a warning).
+
+**Not proven.** Render beyond the build's prerender.
+
 **2026-09-28 (sixteenth) — MHT-CET Physics "Magnetic Materials" (3 pages · 33 PYQ · 6 concepts · 12 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-sound-laws-magmat`.**
 
 **Source pass (`_fix-phy-magnetic-materials.ts`, 2 rows; `…2.ts`, 1 row).** Every key derived; none changed. `72c54e63` (2 May 2023 S1 #50): options garbled ((a) = (b) = '√2/3 s') — paper's restored, 'increased by two times' = 3B gives 2/√3 s = (a). `9717bf86` (14 May 2024 S1 #34): the printed 0.1 m coil gives τ = 6 × 10⁻⁴ N m, but the options (10⁻⁶ N m) fit a 0.01 m coil; key (c) kept, solution says so (the stored solution had B = 6π × 10⁻⁴ T, itself wrong: 1.5π × 10⁻³ T). `32312866`: stored solution treated like poles together as the difference position and then inverted the period ratio to land on (c); rewritten with like poles = sum. `65ab776b` (electromagnet material, 'high retentivity & low coercivity') checked against the 9 May 2024 key, (c) — kept. Both figure keys (χ–T graphs, B–H loop) read and right.
