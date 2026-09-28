@@ -15,6 +15,18 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-28 (nineteenth) — MHT-CET Maths "Conic Sections" (2 pages · 18 PYQ · 4 concepts), 100% concept-tag coverage, on `feat/mhtcet-maths-conics`; plus the repair of nine rows whose earlier repairs had lost their backslashes.**
+
+**Source pass** (`_fix-mat-conics.ts`). All 18 rows located in their papers and every key re-derived; all right. `ac1049b2` (12 May 2024 S2) stored options (a), (c) and its solution with three backslashes before `frac`, so they rendered as text; restored. Its twin `40f6f493` (13 May 2024 S1) is the known copy-file duplicate (ROADMAP) and is left.
+
+**Reshape.** One subtopic ('Conic Properties — Eccentricity, Orthogonality, and Intersection') became Parabola (7 q, 2 HARD) and Ellipse and Hyperbola (11 q, 5 HARD); the old subtopic was renamed to the first. Only `/books` registry named it; the guide's chapter-table row names no subtopic.
+
+**The backslash incident.** The Conics dump printed `(rac{9}{2})` for a row this pass had just repaired. Cause: the repair specs were written with a bash heredoc, which halves a run of backslashes, so the TS string `"\\(\\frac…"` arrived as `"\(\frac…"` — which TS reads as `(` + form feed + `rac`. Bounded by scanning every `_fix-*.ts`/`_repair-*.ts` for a single backslash before a LaTeX command inside a `"…"` literal: four specs — Trig-II (6 rows, merged to main an hour earlier), Conics (1), Units (2), Solids (1), Magnetic Materials (1). All rewritten with `String.raw` via the Write tool and re-applied; a MHT-CET-wide SQL scan for control characters and backslash-less commands returned 0. `_phy_repair.ts` now throws on any fix string carrying a control character or a bare `frac`/`dfrac`/`sqrt`/`theta`/`alpha`/`lambda`/`pm`/`circ`/`Delta`/`rho`/`cdot`; every existing spec passes it.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:intro clean · quiz:coverage 0 strong gaps, 12 traps.
+
+**Not proven.** Render beyond the build's prerender.
+
 **2026-09-28 (eighteenth) — MHT-CET Maths "Trigonometry - II" (3 pages · 39 PYQ · 6 concepts), 100% concept-tag coverage, on `feat/mhtcet-maths-trig2`.**
 
 **Source pass** (`_fix-mat-trig2.ts`, via `_phy_repair.ts`, now subject-aware). Every row was located in its paper and every key re-derived. `b358ae2f` (14 May 2024 S1): options restored from the paper, 1 ± 4cos²(α/2) forms; key (b) held; solution rewritten (sin²θ = 2cos²(α/2)). `55c4ef9d` (2021 #107): the bank had invented negative options; the paper prints 5/√13, 5/√26, 5/13, √(1/26); the 2021 AK keys (d); cos(x/2) = −1/√26, so the solution names the sign the paper dropped. `e13a4cdc` (4 May 2023 S1 #138): the stem had lost the √ of √3 csc 20°. `89e6575e`: option (c) restored to 2^n. `ce692f83` and `49df6e8f`: solutions rewritten. The `13 May 2024 S1` copy of cos²48° − sin²12° (`de5e24d7`) is left, per the ROADMAP item on that file.

@@ -31,6 +31,7 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "determinants-and-matrices": { cls: 11, chapterNo: 4, book: "XI 4 Determinants and Matrices (and XII 2 Matrices)" },
     "straight-line": { cls: 11, chapterNo: 5, book: "XI 5 Straight Line" },
     circle: { cls: 11, chapterNo: 6, book: "XI 6 Circle" },
+    "conic-sections": { cls: 11, chapterNo: 7, book: "XI 7 Conic Sections" },
     "measures-of-dispersion": { cls: 11, chapterNo: 8, book: "XI 8 Measures of Dispersion" },
     "complex-numbers": { cls: 11, chapterNo: 10, book: "XI 10 Complex Numbers" },
     "permutations-and-combinations": { cls: 11, chapterNo: 12, book: "XI 12 Permutations and Combination" },
