@@ -665,6 +665,11 @@ import {
   MHTCET_RAY_SLUGS,
 } from "@/app/notes/mht-cet-physics/ray-optics/_data";
 import {
+  MHTCET_PLANE_CHAPTER,
+  MHTCET_PLANE_NOTES,
+  MHTCET_PLANE_SLUGS,
+} from "@/app/notes/mht-cet-physics/motion-in-a-plane/_data";
+import {
   MHTCET_SEMI_CHAPTER,
   MHTCET_SEMI_NOTES,
   MHTCET_SEMI_SLUGS,
@@ -1788,6 +1793,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_RAY_CHAPTER,
     notes: MHTCET_RAY_NOTES,
     slugs: MHTCET_RAY_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "motion-in-a-plane",
+    chipLabel: "Motion in a Plane",
+    chapter: MHTCET_PLANE_CHAPTER,
+    notes: MHTCET_PLANE_NOTES,
+    slugs: MHTCET_PLANE_SLUGS,
   },
   {
     examName: "MHT-CET",
