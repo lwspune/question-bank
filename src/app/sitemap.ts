@@ -19,6 +19,8 @@ import { ROUTES as CET_MATHS_ROUTES } from "@/app/guide/mht-cet-maths/_data/mht-
 import { PLAYBOOK_SLUGS as CET_MATHS_PLAYBOOK_SLUGS } from "@/app/guide/mht-cet-maths/_data/playbooks";
 import { ROUTES as CET_PHYSICS_ROUTES } from "@/app/guide/mht-cet-physics/_data/mht-cet-physics";
 import { PLAYBOOK_SLUGS as CET_PHYSICS_PLAYBOOK_SLUGS } from "@/app/guide/mht-cet-physics/_data/playbooks";
+import { ROUTES as CET_CHEMISTRY_ROUTES } from "@/app/guide/mht-cet-chemistry/_data/mht-cet-chemistry";
+import { PLAYBOOK_SLUGS as CET_CHEMISTRY_PLAYBOOK_SLUGS } from "@/app/guide/mht-cet-chemistry/_data/playbooks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { listPosts } from "@/lib/blog/posts";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
@@ -369,6 +371,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     ...CET_PHYSICS_PLAYBOOK_SLUGS.map((slug) => ({
       url: `${SITE_URL}/guide/mht-cet-physics/playbooks/${slug}`,
+      lastModified: buildDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+    ...CET_CHEMISTRY_ROUTES.map((r) => ({
+      url: r.slug
+        ? `${SITE_URL}/guide/mht-cet-chemistry/${r.slug}`
+        : `${SITE_URL}/guide/mht-cet-chemistry`,
+      lastModified: buildDate,
+      changeFrequency: "weekly" as const,
+      priority: r.slug === "" ? 0.9 : 0.8,
+    })),
+    ...CET_CHEMISTRY_PLAYBOOK_SLUGS.map((slug) => ({
+      url: `${SITE_URL}/guide/mht-cet-chemistry/playbooks/${slug}`,
       lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: 0.7,

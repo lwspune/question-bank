@@ -111,6 +111,16 @@ The second MHT-CET guide reuses the Maths variant's routes, tier strands and dat
 - **A multi-shift grid must key columns by PAPER (year + `pyq_note`), not by `source_file`.** Rows re-dated to their real paper keep the file they were ingested from; keyed by file, Physics showed 44 columns for 42 papers. `canonicalPaperFiles` in `scripts/lib/mhtcetTrendsMatrix.ts`; the Maths grid still keys by file (ROADMAP backfill).
 - **Pin every quoted count to its source.** The chapter table, playbooks and tail rates are recomputed from the generated grid, and the two measured shapes the traps quote (279 ratio stems, 221 figure questions) are counted live — `tests/guide-mht-cet-physics-playbooks.test.ts`.
 
+#### Execution-mode variant on the MHT-CET frame (MHT-CET Chemistry, 2026-09-28)
+
+The third MHT-CET guide keeps the MHT-CET route frame and data shapes but swaps the strand axis, because the measurement said to:
+
+- **When the bank is flat, difficulty cannot be the axis.** Chemistry is 3.2% HARD, and only one chapter of any size passes 10%. HARD tiers would sort nothing; the numerical-answer share does sort it (physical chapters 50-71%, the rest 3-31%). Strands are `calculate` / `reactions` / `recall` (`StrandId` in `_data/strategy.ts`), posture is `first-sweep` / `second-sweep`, and the order on the paper is SPEED: answer on sight first, calculate second.
+- **The flat-list page follows the subject.** `/reference` replaces `/formulas`: named reactions and reagents for the Reactions chapters, formulas for Calculate, tables for Recall — still rendered by the shared `FormulaSheet`.
+- **Derive what can be derived.** `playbooks.ts` builds each playbook's subtopic list from the strategy strand, so the two cannot disagree; the live test checks both against the taxonomy both ways.
+- **A flat %HARD can hide a real change.** 2025 moved EASY from 56-60% to 42% while HARD stayed at 2-4%; the trends data carries `easyQ` so the page can show it.
+- **Grid checks find data faults.** The per-paper grid showed two papers with 51 rows for 50 items — a copy and a row re-dated to the wrong sitting. `generated-papers/_paper_fit.py` scores a paper's rows against its 50 items to find the extra one.
+
 ### Single-page landing (NDA Economics)
 
 Use when the bank is **too thin for any multi-route template** to produce a non-parody strategy. NDA Economics: 24 q · 1 chapter · 3 subtopics · 1.5 q/paper · ~6 marks/paper max — Template A impossible (1 chapter rules out cross-chapter levers), Template B/C `STRATEGY_HEADLINE` reads as parody ("attempt 1.5 of 1.5, target 4 of 6"). Deliberately thinner terminal node, not a fourth template variant.

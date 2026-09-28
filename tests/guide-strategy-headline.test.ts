@@ -28,6 +28,7 @@ import { STRATEGY_HEADLINE as CHEMISTRY_HEADLINE } from "@/app/guide/nda-chemist
 import { STRATEGY_HEADLINE as BIOLOGY_HEADLINE } from "@/app/guide/nda-biology/_data/strategy";
 import { STRATEGY_HEADLINE as CET_MATHS_HEADLINE } from "@/app/guide/mht-cet-maths/_data/strategy";
 import { STRATEGY_HEADLINE as CET_PHYSICS_HEADLINE } from "@/app/guide/mht-cet-physics/_data/strategy";
+import { STRATEGY_HEADLINE as CET_CHEMISTRY_HEADLINE } from "@/app/guide/mht-cet-chemistry/_data/strategy";
 
 type Headline = {
   paperQ: number;
@@ -67,6 +68,7 @@ const GUIDES: GuideSpec[] = [
   // short form in the DB while NDA uses the long one.
   { guide: "mht-cet-maths", headline: CET_MATHS_HEADLINE, examName: "MHT-CET", subjectName: "Maths",       marking: "none" },
   { guide: "mht-cet-physics", headline: CET_PHYSICS_HEADLINE, examName: "MHT-CET", subjectName: "Physics", marking: "none" },
+  { guide: "mht-cet-chemistry", headline: CET_CHEMISTRY_HEADLINE, examName: "MHT-CET", subjectName: "Chemistry", marking: "none" },
 ];
 
 const HAS_ENV =
