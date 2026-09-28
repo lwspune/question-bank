@@ -85,6 +85,7 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "motion-in-a-plane": { cls: 11, chapterNo: 3, book: "XI 3 Motion in a Plane" },
     gravitation: { cls: 11, chapterNo: 5, book: "XI 5 Gravitation" },
     "thermal-properties-of-matter": { cls: 11, chapterNo: 7, book: "XI 7 Thermal Properties of Matter" },
+    sound: { cls: 11, chapterNo: 8, book: "XI 8 Sound" },
     "ray-optics": { cls: 11, chapterNo: 9, book: "XI 9 Optics" },
     "rotational-dynamics": { cls: 12, chapterNo: 1, book: "XII 1 Rotational Dynamics" },
     "mechanical-properties-of-fluids": { cls: 12, chapterNo: 2, book: "XII 2 Mechanical Properties of Fluids" },

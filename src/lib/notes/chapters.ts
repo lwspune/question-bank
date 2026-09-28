@@ -670,6 +670,11 @@ import {
   MHTCET_PLANE_SLUGS,
 } from "@/app/notes/mht-cet-physics/motion-in-a-plane/_data";
 import {
+  MHTCET_SOUND_CHAPTER,
+  MHTCET_SOUND_NOTES,
+  MHTCET_SOUND_SLUGS,
+} from "@/app/notes/mht-cet-physics/sound/_data";
+import {
   MHTCET_SEMI_CHAPTER,
   MHTCET_SEMI_NOTES,
   MHTCET_SEMI_SLUGS,
@@ -1804,6 +1809,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_PLANE_CHAPTER,
     notes: MHTCET_PLANE_NOTES,
     slugs: MHTCET_PLANE_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "sound",
+    chipLabel: "Sound",
+    chapter: MHTCET_SOUND_CHAPTER,
+    notes: MHTCET_SOUND_NOTES,
+    slugs: MHTCET_SOUND_SLUGS,
   },
   {
     examName: "MHT-CET",

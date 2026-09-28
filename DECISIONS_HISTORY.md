@@ -15,6 +15,16 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-28 (fourteenth) — MHT-CET Physics "Sound" (3 pages · 47 PYQ · 5 concepts · 12 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-sound-laws-magmat`.**
+
+**Source pass (`_fix-phy-sound.ts`, 3 rows).** Every key derived. `cb3835ef` (10 May 2024 S1 #32, absent from the locator because it was paraphrased): stem restored; the paper prints the speed as '0 m/s', the AK's working uses 50 m/s — [50]; source moving gives 330/280 = 1.18f, observer moving 380/330 = 1.15f, so the second case is higher, (b); AK (b); bank keyed (c) with a solution asserting 380/330 > 330/280 — flipped. `03a658a3` (2022 #32): closed pipe 100 Hz; string's second harmonic (1/0.5)√(50/μ) = 100 gives μ = 0.02 kg/m and mass μl = 10 g = (b); the 2022 AK gives (a) 20 g, reporting μ (20 g/m) as the mass; bank keyed (d) 5 g — keyed (b) against the AK. `926b3022` paraphrase restored. The '5 gram / 56 m/s' ripple-tank row `262c2b45` was already fixed. Twin flag `4e46eab1`/`b130709e` is a recurrence.
+
+**Authoring.** Waves (speed, energy ∝ A²f², decibels, gas mixtures), organ pipes (open vs closed harmonics, overtone numbering, end correction), resonance tubes, strings and beats, and the Doppler effect in one step and two (passing source, echo from a wall, accelerating away). Three traps added to reach 12. Worked numbers derived: 0.68 m and 68 m, 100, 75 cm, 340 and 1020 Hz, 75 and 25 cm, 507 Hz, 6f/5, 5f/4, 562.5 Hz.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:intro clean for this chapter · quiz:coverage 0 strong gaps, 12 traps.
+
+**Not proven.** Render beyond the build's prerender.
+
 **2026-09-28 (thirteenth) — MHT-CET Physics "Motion in a Plane" (5 pages · 53 PYQ · 7 concepts · 12 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-ray-optics-plane`.**
 
 **Source pass (`_fix-phy-motion-in-a-plane.ts`, 5 rows).** Every key derived; none changed. `0a1f130f` (2021 #4): 10 m/s at 30° from a 10 m tower lands 8.66 m out only if thrown 30° below the horizontal (t = 1 s); above, t = 2 s and 17.3 m, not an option. No 2021 key; the stored solution's upward-case arithmetic (t ≈ 1.71 s) was wrong — rewritten, key (b) kept. `234061c4` (9 May 2023 S2 #4): the x–t graphs (a)–(d) were missing — attached; key (a). `5a61abb8` (12 May 2024 S2 #29): option (a) ½g t₁/t₂ had become a copy of (b). `0e2e802d` (22 Apr 2025 S2 #6): the paper's stray dot ran vector C into the question — split. `2d8dc355`: triple backslashes. Three figure keys (a–t triangle 40 m/s, v–t displacement : distance 5 : 9, v–t area 90 m) read and right. Twin flag `9ce41d9a`/`a94acb80` is a recurrence.
