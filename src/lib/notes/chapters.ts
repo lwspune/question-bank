@@ -660,6 +660,11 @@ import {
   MHTCET_OSCILLATIONS_SLUGS,
 } from "@/app/notes/mht-cet-physics/oscillations/_data";
 import {
+  MHTCET_MAGFIELD_CHAPTER,
+  MHTCET_MAGFIELD_NOTES,
+  MHTCET_MAGFIELD_SLUGS,
+} from "@/app/notes/mht-cet-physics/magnetic-fields-due-to-electric-current/_data";
+import {
   STATES_OF_MATTER_CHAPTER,
   STATES_OF_MATTER_NOTES,
   STATES_OF_MATTER_SLUGS,
@@ -1732,6 +1737,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_OSCILLATIONS_CHAPTER,
     notes: MHTCET_OSCILLATIONS_NOTES,
     slugs: MHTCET_OSCILLATIONS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "magnetic-fields-due-to-electric-current",
+    chipLabel: "Magnetic Fields notes",
+    chapter: MHTCET_MAGFIELD_CHAPTER,
+    notes: MHTCET_MAGFIELD_NOTES,
+    slugs: MHTCET_MAGFIELD_SLUGS,
   },
   {
     examName: "NDA",
