@@ -8,13 +8,24 @@
  */
 import "server-only";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { fetchPmfSnapshot, fetchShareSnapshot, type PmfSnapshot } from "./query";
+import {
+  fetchAcquisitionSnapshot,
+  fetchPmfSnapshot,
+  fetchShareSnapshot,
+  type AcquisitionRows,
+  type PmfSnapshot,
+} from "./query";
 import type { ShareCounts } from "./snapshot";
 
 export type { PmfSnapshot, MaturePool } from "./query";
 
 export async function getPmfSnapshot(weeks = 12): Promise<PmfSnapshot> {
   return fetchPmfSnapshot(createSupabaseAdminClient(), weeks);
+}
+
+/** Where students come from (0125). Same posture: SECURITY DEFINER, service_role only. */
+export async function getAcquisitionSnapshot(since: string, exam: string | null): Promise<AcquisitionRows> {
+  return fetchAcquisitionSnapshot(createSupabaseAdminClient(), since, exam);
 }
 
 /** The share loop (0109/0111). Same posture: SECURITY DEFINER, service_role only. */

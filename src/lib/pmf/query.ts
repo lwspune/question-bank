@@ -23,6 +23,7 @@ import type {
   StickinessCounts,
 } from "./snapshot";
 import { SHARE_LIVE_SINCE } from "./snapshot";
+import type { AcqRow, Downstream } from "./acquisition";
 
 /** The mature (signed up 28d+ ago) pool the lift + segment arms are drawn from. */
 export type MaturePool = { students: number; signalled: number; retained: number };
@@ -88,6 +89,30 @@ export async function fetchShareSnapshot(
     byChannel: { ...base.byChannel, ...(raw.byChannel ?? {}) },
     byMock: raw.byMock ?? [],
   };
+}
+
+export type AcquisitionRows = {
+  channels: AcqRow[];
+  landings: (Downstream & { landing: string | null })[];
+};
+
+/**
+ * "Where students come from", via get_acquisition_snapshot (migration 0125).
+ * Guarded like the share panel: a failure is warned and rendered as empty, so
+ * it cannot take the rest of the PMF page down.
+ */
+export async function fetchAcquisitionSnapshot(
+  db: SupabaseClient,
+  since: string,
+  exam: string | null
+): Promise<AcquisitionRows> {
+  const { data, error } = await db.rpc("get_acquisition_snapshot", { p_since: since, p_exam: exam });
+  if (error) {
+    console.warn(`fetchAcquisitionSnapshot: ${error.message}`);
+    return { channels: [], landings: [] };
+  }
+  const raw = (data ?? {}) as Partial<AcquisitionRows>;
+  return { channels: raw.channels ?? [], landings: raw.landings ?? [] };
 }
 
 export function emptySnapshot(weeks: number): PmfSnapshot {

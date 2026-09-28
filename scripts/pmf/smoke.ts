@@ -273,6 +273,31 @@ share loop: ${sc.events} intents over ${sc.opportunities} opportunities since ${
     );
   }
 
+  // ── Where students come from (0125) — the page's own loader + pure core ────
+  const { fetchAcquisitionSnapshot } = await import("@/lib/pmf/query");
+  const { parseAcqWindow, summariseChannels, summariseLandings } = await import("@/lib/pmf/acquisition");
+  for (const [days, exam] of [["30", null], ["tracked", null], ["30", "mht-cet"]] as const) {
+    const w = parseAcqWindow(days);
+    const raw = await fetchAcquisitionSnapshot(db, w.since, exam);
+    const channels = summariseChannels(raw.channels);
+    const landings = summariseLandings(raw.landings);
+    const total = channels.reduce((n, c) => n + c.students, 0);
+    console.log(`\nchannels — ${w.label}${exam ? `, chose ${exam}` : ""}: ${total} signups`);
+    for (const c of channels) {
+      assert(c.signalled <= c.students, `channel ${c.label}: signalled exceeds signups`);
+      assert(c.mocked <= c.students && c.paid <= c.students, `channel ${c.label}: mocked/paid exceeds signups`);
+      assert(c.students >= 10 || c.signalledRate === null, `channel ${c.label}: a rate leaked below the floor`);
+      console.log(`  ${c.label.padEnd(32)} ${String(c.students).padStart(4)}  did ${c.signalled}  mock ${c.mocked}  paid ${c.paid}`);
+    }
+    if (days === "tracked") {
+      assert(!channels.some((c) => c.key === "before-tracking"), "'since tracking' window shows before-tracking signups");
+    }
+    const landed = raw.landings.reduce((n, l) => n + l.students, 0);
+    const tracked = channels.filter((c) => c.key !== "before-tracking").reduce((n, c) => n + c.students, 0);
+    assert(landed === tracked, `landings (${landed}) do not add up to tracked signups (${tracked})`);
+    console.log(`  top first pages: ${landings.slice(0, 5).map((l) => `${l.group} ${l.students}`).join(" · ")}`);
+  }
+
   // ── Coverage map ──────────────────────────────────────────────────────────
   const dark = SURFACE_COVERAGE.filter((s) => s.tracked === "none");
   console.log(`\ncoverage: ${dark.length} of ${SURFACE_COVERAGE.length} surfaces record nothing:`);
