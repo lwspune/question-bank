@@ -78,6 +78,7 @@ describe("MHT-CET notes follow the Balbharati book order (Class XI, then XII)", 
       // Class XII
       "rotational-dynamics",
       "mechanical-properties-of-fluids",
+      "thermodynamics",
       "oscillations",
       "superposition-of-waves",
       "wave-optics",

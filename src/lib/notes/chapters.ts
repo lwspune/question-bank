@@ -645,6 +645,11 @@ import {
   MHTCET_DUAL_SLUGS,
 } from "@/app/notes/mht-cet-physics/dual-nature-of-radiation-and-matter/_data";
 import {
+  MHTCET_THERMO_CHAPTER,
+  MHTCET_THERMO_NOTES,
+  MHTCET_THERMO_SLUGS,
+} from "@/app/notes/mht-cet-physics/thermodynamics/_data";
+import {
   MHTCET_SEMI_CHAPTER,
   MHTCET_SEMI_NOTES,
   MHTCET_SEMI_SLUGS,
@@ -1724,6 +1729,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_DUAL_CHAPTER,
     notes: MHTCET_DUAL_NOTES,
     slugs: MHTCET_DUAL_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "thermodynamics",
+    chipLabel: "Thermodynamics",
+    chapter: MHTCET_THERMO_CHAPTER,
+    notes: MHTCET_THERMO_NOTES,
+    slugs: MHTCET_THERMO_SLUGS,
   },
   {
     examName: "MHT-CET",
