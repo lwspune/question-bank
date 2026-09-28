@@ -754,6 +754,11 @@ import {
   CDS_NUMBER_SYSTEM_NOTES,
   CDS_NUMBER_SYSTEM_SLUGS,
 } from "@/app/notes/cds-maths/number-system/_data";
+import {
+  CDS_TRIGONOMETRY_CHAPTER,
+  CDS_TRIGONOMETRY_NOTES,
+  CDS_TRIGONOMETRY_SLUGS,
+} from "@/app/notes/cds-maths/trigonometry/_data";
 
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
@@ -2422,6 +2427,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_NUMBER_SYSTEM_CHAPTER,
     notes: CDS_NUMBER_SYSTEM_NOTES,
     slugs: CDS_NUMBER_SYSTEM_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "trigonometry",
+    chipLabel: "Trigonometry notes",
+    chapter: CDS_TRIGONOMETRY_CHAPTER,
+    notes: CDS_TRIGONOMETRY_NOTES,
+    slugs: CDS_TRIGONOMETRY_SLUGS,
   },
 ];
 
