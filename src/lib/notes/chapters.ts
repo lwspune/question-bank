@@ -655,6 +655,11 @@ import {
   MHTCET_KTG_SLUGS,
 } from "@/app/notes/mht-cet-physics/kinetic-theory-of-gases/_data";
 import {
+  MHTCET_GRAV_CHAPTER,
+  MHTCET_GRAV_NOTES,
+  MHTCET_GRAV_SLUGS,
+} from "@/app/notes/mht-cet-physics/gravitation/_data";
+import {
   MHTCET_SEMI_CHAPTER,
   MHTCET_SEMI_NOTES,
   MHTCET_SEMI_SLUGS,
@@ -1756,6 +1761,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_KTG_CHAPTER,
     notes: MHTCET_KTG_NOTES,
     slugs: MHTCET_KTG_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "gravitation",
+    chipLabel: "Gravitation",
+    chapter: MHTCET_GRAV_CHAPTER,
+    notes: MHTCET_GRAV_NOTES,
+    slugs: MHTCET_GRAV_SLUGS,
   },
   {
     examName: "MHT-CET",
