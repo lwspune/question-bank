@@ -25,6 +25,7 @@ import { PLAYBOOKS as NDA_GEOGRAPHY_PLAYBOOKS } from "@/app/guide/nda-geography/
 import { PLAYBOOKS as NDA_HISTORY_PLAYBOOKS } from "@/app/guide/nda-history/_data/playbooks";
 import { PLAYBOOKS as NDA_POLITY_PLAYBOOKS } from "@/app/guide/nda-polity/_data/playbooks";
 import { PLAYBOOKS as MHT_CET_MATHS_PLAYBOOKS } from "@/app/guide/mht-cet-maths/_data/playbooks";
+import { PLAYBOOKS as MHT_CET_PHYSICS_PLAYBOOKS } from "@/app/guide/mht-cet-physics/_data/playbooks";
 import { getSubtopicNotesEntry } from "@/lib/notes/subtopicSlugRegistry";
 import { getNotesChapterEntry } from "./notesIndex";
 import { getPrincipleName, getConceptName } from "./tagNames";
@@ -103,6 +104,7 @@ const CHAPTER_KEYED_GUIDES: ReadonlyArray<{
   // so it slots straight into this registry. Note the subject literal is
   // "Maths", not "Mathematics": NDA uses the latter, MHT-CET and JEE the former.
   { exam: "MHT-CET", subject: "Maths", guideSlug: "mht-cet-maths", playbooks: MHT_CET_MATHS_PLAYBOOKS },
+  { exam: "MHT-CET", subject: "Physics", guideSlug: "mht-cet-physics", playbooks: MHT_CET_PHYSICS_PLAYBOOKS },
 ];
 
 const chapterKeyedKey = (exam: string, subject: string) => `${exam}::${subject}`;

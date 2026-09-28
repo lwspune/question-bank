@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Sigma } from "lucide-react";
+import { ArrowRight, Atom, BookOpen, Sigma } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
@@ -9,13 +9,13 @@ import { buildGuideSideNav } from "@/lib/guide/guidesNav";
 export const revalidate = 86400;
 
 const PAGE_INTRO =
-  "Built from the live past-year question bank — 44 shifts of real papers, not a syllabus " +
+  "Built from the live past-year question bank — every MHT-CET paper from 2021 to 2025, not a syllabus " +
   "summary. Pick the subject you're preparing.";
 
 export const metadata: Metadata = {
-  title: "MHT-CET Guides — Strategy for MHT-CET Mathematics",
+  title: "MHT-CET Guides — Strategy for MHT-CET Maths and Physics",
   description:
-    "Evidence-led strategy guides for MHT-CET, built from 2,175 past-year Mathematics questions across 44 shifts (2021-2025). Every claim is measured against the live past-year question bank.",
+    "Evidence-led strategy guides for MHT-CET Mathematics and Physics, built from every past paper from 2021 to 2025. Every claim is measured against the live past-year question bank.",
   alternates: { canonical: "/guide/mht-cet" },
 };
 
@@ -30,11 +30,10 @@ type ExamGuide = {
 };
 
 /**
- * One guide today (Mathematics). Physics and Chemistry are the natural next
- * two — their banks are comparable in size (2,221 and 2,165 PYQ) but their
- * shapes differ sharply from Maths, so each needs its own template analysis
- * rather than a copy of this one: MHT-CET Chemistry is 3.3% HARD and flat,
- * where Maths is 38.4% and steeply tiered.
+ * Two guides today: Mathematics (2026-08-22) and Physics (2026-09-28), both
+ * Template C with tier strands. Chemistry is next and needs its own analysis:
+ * it is ~3% HARD and flat, and it splits cleanly by execution mode (physical
+ * chapters 59-71% numerical answers, organic and inorganic 3-17%).
  *
  * This list is hand-written because guides have no registry — see the note in
  * src/lib/guide/guidesNav.ts.
@@ -58,6 +57,21 @@ const GUIDES: ExamGuide[] = [
       "Formula sheet and the distractor traps MHT-CET reuses",
     ],
   },
+  {
+    href: "/guide/mht-cet-physics",
+    exam: "MHT-CET Physics",
+    title: "How MHT-CET Physics actually works",
+    blurb:
+      "Every Physics paper from 2021 to 2025, all 2,098 questions. Physics shares a 90-minute paper with Chemistry, so the first decision is how to split the clock — then which cheap pages to bank before the hard ones.",
+    qCount: 2098,
+    yearWindow: "2021-2025 · 42 papers",
+    highlights: [
+      "Six quick-win chapters: 13 questions a paper at 14% HARD or less",
+      "21 chapter playbooks with per-subtopic %HARD and drill links",
+      "2025 moves: Gravitation and Ray Optics halved, Units and Measurement entered",
+      "Formula sheet and the ratio, sign and figure traps the paper reuses",
+    ],
+  },
 ];
 
 export default function MhtCetGuideIndex() {
@@ -70,8 +84,8 @@ export default function MhtCetGuideIndex() {
       <GuideJsonLd
         type="CollectionPage"
         path="/guide/mht-cet"
-        headline="MHT-CET Guides — Strategy for MHT-CET Mathematics"
-        description="Evidence-led strategy guides for MHT-CET, built from 2,175 past-year Mathematics questions across 44 shifts (2021-2025)."
+        headline="MHT-CET Guides — Strategy for MHT-CET Maths and Physics"
+        description="Evidence-led strategy guides for MHT-CET Mathematics and Physics, built from every past paper from 2021 to 2025."
       />
 
       <GuideHero
@@ -82,7 +96,11 @@ export default function MhtCetGuideIndex() {
 
       <ul className="mt-8 grid gap-5 sm:grid-cols-2">
         {GUIDES.map((g) => {
-          const Icon = g.href.includes("maths") ? Sigma : BookOpen;
+          const Icon = g.href.includes("maths")
+            ? Sigma
+            : g.href.includes("physics")
+              ? Atom
+              : BookOpen;
           return (
             <li key={g.href}>
               <Link

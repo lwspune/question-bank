@@ -48,8 +48,9 @@ type GuideCopy = {
    * corpus these guides are actually measured against.
    *
    * MHT-CET's count stays hand-written because it is SUBJECT-scoped (this card
-   * is the Maths guide alone, 2,175 of the exam's 7,000-odd PYQs) and there is
-   * no subject-aware helper yet. Verified against the bank 2026-09-16.
+   * is the Maths and Physics guides, 2,175 + 2,098 = 4,273 of the exam's
+   * 6,000-odd PYQs; Chemistry has no guide yet) and there is no subject-aware
+   * helper yet. Verified against the bank 2026-09-28.
    */
   meta: string;
   icon: typeof BookOpen;
@@ -64,10 +65,10 @@ const COPY: Record<string, GuideCopy> = {
     icon: Shield,
   },
   "mht-cet": {
-    title: "MHT-CET — Mathematics",
+    title: "MHT-CET — Maths and Physics",
     blurb:
-      "Seven chapters carry 57% of the Maths paper. There is no negative marking and you get 1.8 minutes per question, so this guide is built around order and time rather than what to skip.",
-    meta: "2,175 questions · 44 shifts · 2021-2025",
+      "There is no negative marking on either paper, so both guides are built around order and time rather than what to skip — and Physics also has to share its 90 minutes with Chemistry.",
+    meta: "4,273 questions · 2021-2025",
     icon: Sigma,
   },
 };

@@ -38,6 +38,7 @@ import {
   detectLabelConflicts,
   buildChapterMatrix,
   buildYearRateMatrix,
+  canonicalPaperFiles,
   type SourcePaper,
   type MatrixCell,
 } from "../scripts/lib/mhtcetTrendsMatrix";
@@ -513,5 +514,41 @@ describe("buildYearRateMatrix", () => {
     expect(rows.map((r) => r.chapter)).toEqual(
       buildChapterMatrix(cells, papers).map((r) => r.chapter)
     );
+  });
+});
+
+describe("canonicalPaperFiles", () => {
+  // A paper is its year + pyq_note, not its source_file: a re-dated row keeps
+  // the file it was ingested from, so keying columns by file splits one paper.
+  it("maps a minority file onto the file that holds most of the same paper", () => {
+    const rows = [
+      ...Array(36).fill({ sourceFile: "16May_S2.xlsx", year: 2023, pyqNote: "16th May Shift 2" }),
+      ...Array(14).fill({ sourceFile: "2023_Analysis.xlsx", year: 2023, pyqNote: "16th May Shift 2" }),
+    ];
+    const map = canonicalPaperFiles(rows);
+    expect(map.get("2023_Analysis.xlsx|2023|16th May Shift 2")).toBe("16May_S2.xlsx");
+    expect(map.get("16May_S2.xlsx|2023|16th May Shift 2")).toBe("16May_S2.xlsx");
+  });
+
+  it("keeps distinct notes in one file as distinct papers", () => {
+    const rows = [
+      ...Array(50).fill({ sourceFile: "14May.xlsx", year: 2024, pyqNote: "14th May Shift 2" }),
+      ...Array(49).fill({ sourceFile: "14May.xlsx", year: 2024, pyqNote: "14th May Shift 1" }),
+    ];
+    const map = canonicalPaperFiles(rows);
+    expect(map.get("14May.xlsx|2024|14th May Shift 2")).toBe("14May.xlsx");
+    expect(map.get("14May.xlsx|2024|14th May Shift 1")).toBe("14May.xlsx#14th May Shift 1");
+  });
+
+  it("leaves an undated row on its own file", () => {
+    const map = canonicalPaperFiles([{ sourceFile: "2021.xlsx", year: 2021, pyqNote: null }]);
+    expect(map.get("2021.xlsx|2021|")).toBe("2021.xlsx");
+  });
+
+  it("breaks a tie on file name, so the result does not depend on row order", () => {
+    const a = { sourceFile: "b.xlsx", year: 2025, pyqNote: "19 April Shift II" };
+    const b = { sourceFile: "a.xlsx", year: 2025, pyqNote: "19 April Shift II" };
+    expect(canonicalPaperFiles([a, b]).get("b.xlsx|2025|19 April Shift II")).toBe("a.xlsx");
+    expect(canonicalPaperFiles([b, a]).get("b.xlsx|2025|19 April Shift II")).toBe("a.xlsx");
   });
 });

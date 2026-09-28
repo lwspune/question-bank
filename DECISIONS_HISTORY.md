@@ -15,6 +15,20 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-28 (twentieth) — MHT-CET Physics strategy guide (/guide/mht-cet-physics), on `feat/mhtcet-physics-guide`.**
+
+**Measurement first.** 2,098 PUBLIC PYQ over 42 papers (2021 1 · 2022 1 · 2023 16 · 2024 11 · 2025 13), 18.2% HARD. Recent (2024-25, 24 papers) rates per chapter sum to 50.0. 18 of 24 chapters above 15% HARD, pooled in one or two pages each (Fluids: buoyancy 83% vs capillary 0%) — the Template C cherry-pick pattern. Execution-mode strands fail: the share of numerical answers is 44-70% in every chapter but Semiconductor Devices (24%). So tier strands as for Maths: cornerstone 6 (18.5 q/paper), quick-win 6 (13.3, all <=14% HARD), long tail 9 (16.7), tail 3 (1.45). The one big cross-chapter shape is the ratio stem: 279 across 22 chapters — treated as a trap and a strategy line, not a principles route.
+
+**The shared clock.** src/lib/mocks/blueprints.ts confirms Paper II = Physics 1-50 + Chemistry 51-100, 1 mark each, 90 minutes. The strategy page's first section is the split; 55 min Physics / 35 min Chemistry is labelled everywhere as a budget to test in mocks.
+
+**The generator fix.** `scripts/mhtcet/trends-matrix.ts` took `--subject=` and first produced 44 Physics columns for 42 papers: 14 rows re-dated to 16 May 2023 S2 (from the '2023 Shift 1' fault) and 3 compilation rows kept their files. New pure helper `canonicalPaperFiles` (4 tests, one a first-draft tie-break the test caught) maps each row to the file holding most of its paper; a smaller paper sharing a file gets `file#note`. Applied to non-Maths subjects only; Maths `--check` still passes byte-for-byte. ROADMAP backfill entry logged for Maths.
+
+**Downstream.** /guide/mht-cet hub and the /guide picker card now name both guides; sitemap, question-card backlinks (`questionResources`), strategy-headline test. `tests/question-resources.test.ts` used MHT-CET Physics as its 'no guide yet' fixture — now Chemistry, plus a positive Physics test.
+
+**Tests.** tests/guide-mht-cet-physics-playbooks.test.ts pins every chapter-table, playbook and tail rate to the grid, the 0.9 line both ways, strand and tail sums, every slug cross-reference, and — live — the taxonomy plus the 279 ratio stems and 221 figure questions the traps quote. tests/mhtcet-physics-trends-reconcile.test.ts pins the drift rows and HARD_BY_YEAR.
+
+**Not proven.** Render beyond the build's prerender.
+
 **2026-09-28 (nineteenth) — MHT-CET Maths "Conic Sections" (2 pages · 18 PYQ · 4 concepts), 100% concept-tag coverage, on `feat/mhtcet-maths-conics`; plus the repair of nine rows whose earlier repairs had lost their backslashes.**
 
 **Source pass** (`_fix-mat-conics.ts`). All 18 rows located in their papers and every key re-derived; all right. `ac1049b2` (12 May 2024 S2) stored options (a), (c) and its solution with three backslashes before `frac`, so they rendered as text; restored. Its twin `40f6f493` (13 May 2024 S1) is the known copy-file duplicate (ROADMAP) and is left.

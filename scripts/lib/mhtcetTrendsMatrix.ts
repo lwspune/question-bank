@@ -432,3 +432,45 @@ export function buildYearRateMatrix(
 function round2(n: number): number {
   return Math.round(n * 100) / 100;
 }
+
+/** One question row, as far as paper identity is concerned. */
+export type PaperRow = { sourceFile: string; year: number; pyqNote: string | null };
+
+/**
+ * Map every (source_file, year, pyq_note) seen in the rows to the COLUMN id of
+ * the paper it belongs to. Key of the returned map: `${file}|${year}|${note}`.
+ *
+ * A paper is its year + pyq_note, never its source_file: a row re-dated to the
+ * paper it really came from keeps the file it was ingested from, so a matrix
+ * keyed by file splits that paper into two columns (Physics 2026-09-28: 14 rows
+ * of 16 May 2023 Shift 2 stood in their own column). Each paper is filed under
+ * the file that holds most of its rows (ties to the lexically first file). If
+ * that file is already the column of a larger paper — one file holding two
+ * papers — the smaller one gets `${file}#${note}`. An undated row stays on its
+ * own file, because without a note there is nothing to join it on.
+ */
+export function canonicalPaperFiles(rows: PaperRow[]): Map<string, string> {
+  const papers = new Map<string, { size: number; files: Map<string, number> }>();
+  const paperOf = (r: PaperRow) =>
+    r.pyqNote ? `${r.year}|${r.pyqNote}` : `${r.year}|file:${r.sourceFile}`;
+  for (const r of rows) {
+    const k = paperOf(r);
+    let p = papers.get(k);
+    if (!p) papers.set(k, (p = { size: 0, files: new Map() }));
+    p.size += 1;
+    p.files.set(r.sourceFile, (p.files.get(r.sourceFile) ?? 0) + 1);
+  }
+  const claimed = new Set<string>();
+  const column = new Map<string, string>();
+  const ordered = [...papers.entries()].sort((a, b) => b[1].size - a[1].size || (a[0] < b[0] ? -1 : 1));
+  for (const [k, p] of ordered) {
+    const [file] = [...p.files.entries()].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1))[0];
+    const note = k.slice(k.indexOf("|") + 1);
+    const id = claimed.has(file) ? `${file}#${note}` : file;
+    claimed.add(id);
+    column.set(k, id);
+  }
+  const out = new Map<string, string>();
+  for (const r of rows) out.set(`${r.sourceFile}|${r.year}|${r.pyqNote ?? ""}`, column.get(paperOf(r))!);
+  return out;
+}

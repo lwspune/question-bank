@@ -37,6 +37,7 @@ import {
   detectLabelConflicts,
   buildChapterMatrix,
   buildYearRateMatrix,
+  canonicalPaperFiles,
   type SourcePaper,
   type MatrixCell,
   type ShiftPaper,
@@ -46,14 +47,30 @@ const local = path.join(process.cwd(), ".env.local");
 if (fs.existsSync(local)) require("dotenv").config({ path: local, override: true });
 
 const EXAM = "MHT-CET";
-const SUBJECT = "Maths";
+
+/**
+ * Subject → the guide route whose `_data/matrix.generated.ts` it writes.
+ * `--subject=Physics` selects one; Maths is the default so the original
+ * `npm run mhtcet:matrix` (and its `--check`) is unchanged.
+ */
+const GUIDE_ROUTE: Record<string, string> = {
+  Maths: "mht-cet-maths",
+  Physics: "mht-cet-physics",
+  Chemistry: "mht-cet-chemistry",
+};
+const SUBJECT =
+  process.argv.find((a) => a.startsWith("--subject="))?.slice("--subject=".length) ?? "Maths";
+if (!GUIDE_ROUTE[SUBJECT]) {
+  throw new Error(`--subject must be one of ${Object.keys(GUIDE_ROUTE).join(", ")}`);
+}
+const ROUTE = GUIDE_ROUTE[SUBJECT];
 
 const OUT_PATH = path.join(
   process.cwd(),
   "src",
   "app",
   "guide",
-  "mht-cet-maths",
+  ROUTE,
   "_data",
   "matrix.generated.ts"
 );
@@ -183,7 +200,24 @@ function build(questions: QuestionRow[], chapterNames: Map<string, string>): Bui
   const cellCounts = new Map<string, Map<string, number>>();
   let skippedUnfiled = 0;
 
-  for (const q of questions) {
+  // Columns are PAPERS (year + pyq_note), not files: a re-dated row keeps the
+  // file it was ingested from. Maths still keys by file — switching it moves
+  // numbers on its shipped trends page, so that is a logged backfill
+  // (ROADMAP), not a silent change.
+  const column =
+    SUBJECT === "Maths"
+      ? null
+      : canonicalPaperFiles(
+          questions
+            .filter((q) => q.source_file && q.pyq_year !== null)
+            .map((q) => ({ sourceFile: q.source_file!, year: q.pyq_year!, pyqNote: q.pyq_note }))
+        );
+
+  for (const raw of questions) {
+    const q =
+      column && raw.source_file && raw.pyq_year !== null
+        ? { ...raw, source_file: column.get(`${raw.source_file}|${raw.pyq_year}|${raw.pyq_note ?? ""}`)! }
+        : raw;
     if (!q.source_file || q.pyq_year === null || !q.chapter_id) {
       // A row with no source file cannot be placed in a column, and a row with
       // no chapter cannot be placed in a row. Counted and reported rather than
@@ -347,12 +381,20 @@ function render(built: Built): string {
         ` * year rather than placed at a guessed position:\n` +
         undated.map((p) => ` *   ${p.id} (${p.year})`).join("\n");
 
+  // Maths keeps its original header byte-for-byte, so its --check is unchanged.
+  const runCmd =
+    SUBJECT === "Maths" ? "npm run mhtcet:matrix" : `npm run mhtcet:matrix -- --subject=${SUBJECT}`;
+  const zeroExample =
+    SUBJECT === "Maths"
+      ? ` * Measures of Dispersion runs a question a paper for two years and then goes\n * to zero across every shift of 2025.`
+      : ` * a chapter that stops being set shows as a run of zeros, not as a gap.`;
+
   return `/**
- * GENERATED FILE — do not edit by hand. Run \`npm run mhtcet:matrix\`.
+ * GENERATED FILE — do not edit by hand. Run \`${runCmd}\`.
  *
- * The MHT-CET Maths chapter x shift matrix behind /guide/mht-cet-maths/trends,
+ * The MHT-CET ${SUBJECT} chapter x shift matrix behind /guide/${ROUTE}/trends,
  * derived from the live bank by scripts/mhtcet/trends-matrix.ts. Re-run it
- * after any MHT-CET Maths ingest; \`-- --check\` fails if this file is stale.
+ * after any MHT-CET ${SUBJECT} ingest; \`-- --check\` fails if this file is stale.
  *
  * ${papers.length} papers · ${rows.length} chapters · ${grand} PUBLIC PYQ questions.
  *
@@ -366,8 +408,7 @@ function render(built: Built): string {
  *
  * A ZERO IS A MEASURED ZERO. A chapter absent from a paper scored nothing in
  * it; the cell is not missing data. That distinction is the page's headline —
- * Measures of Dispersion runs a question a paper for two years and then goes
- * to zero across every shift of 2025.
+${zeroExample}
  *
 ${undatedNote}
  *
