@@ -323,6 +323,7 @@ export type VisualizationSlug =
   // CDS Elementary Mathematics — Number System chapter
   | "cds-unit-digit-cycle-wheel"
   | "cds-trig-right-triangle"
+  | "cds-touching-circles"
   | "cds-rational-irrational-line"
   // MHT-CET Maths — Mathematical Logic chapter
   | "logic-switch-series-parallel"
