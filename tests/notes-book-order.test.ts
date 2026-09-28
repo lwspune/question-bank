@@ -75,6 +75,7 @@ describe("MHT-CET notes follow the Balbharati book order (Class XI, then XII)", 
     expect(slugs("mht-cet-physics")).toEqual([
       // Class XI
       "motion-in-a-plane",
+      "laws-of-motion",
       "gravitation",
       "thermal-properties-of-matter",
       "sound",

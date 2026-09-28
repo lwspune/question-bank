@@ -675,6 +675,11 @@ import {
   MHTCET_SOUND_SLUGS,
 } from "@/app/notes/mht-cet-physics/sound/_data";
 import {
+  MHTCET_LAWS_CHAPTER,
+  MHTCET_LAWS_NOTES,
+  MHTCET_LAWS_SLUGS,
+} from "@/app/notes/mht-cet-physics/laws-of-motion/_data";
+import {
   MHTCET_SEMI_CHAPTER,
   MHTCET_SEMI_NOTES,
   MHTCET_SEMI_SLUGS,
@@ -1820,6 +1825,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_SOUND_CHAPTER,
     notes: MHTCET_SOUND_NOTES,
     slugs: MHTCET_SOUND_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "laws-of-motion",
+    chipLabel: "Laws of Motion",
+    chapter: MHTCET_LAWS_CHAPTER,
+    notes: MHTCET_LAWS_NOTES,
+    slugs: MHTCET_LAWS_SLUGS,
   },
   {
     examName: "MHT-CET",

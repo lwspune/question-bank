@@ -83,6 +83,7 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
   },
   "mht-cet-physics": {
     "motion-in-a-plane": { cls: 11, chapterNo: 3, book: "XI 3 Motion in a Plane" },
+    "laws-of-motion": { cls: 11, chapterNo: 4, book: "XI 4 Laws of Motion" },
     gravitation: { cls: 11, chapterNo: 5, book: "XI 5 Gravitation" },
     "thermal-properties-of-matter": { cls: 11, chapterNo: 7, book: "XI 7 Thermal Properties of Matter" },
     sound: { cls: 11, chapterNo: 8, book: "XI 8 Sound" },
