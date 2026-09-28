@@ -685,6 +685,16 @@ import {
   MHTCET_MAGMAT_SLUGS,
 } from "@/app/notes/mht-cet-physics/magnetic-materials/_data";
 import {
+  MHTCET_UNITS_CHAPTER,
+  MHTCET_UNITS_NOTES,
+  MHTCET_UNITS_SLUGS,
+} from "@/app/notes/mht-cet-physics/units-and-measurement/_data";
+import {
+  MHTCET_SOLIDS_CHAPTER,
+  MHTCET_SOLIDS_NOTES,
+  MHTCET_SOLIDS_SLUGS,
+} from "@/app/notes/mht-cet-physics/mechanical-properties-of-solids/_data";
+import {
   MHTCET_SEMI_CHAPTER,
   MHTCET_SEMI_NOTES,
   MHTCET_SEMI_SLUGS,
@@ -1852,6 +1862,28 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: MHTCET_MAGMAT_CHAPTER,
     notes: MHTCET_MAGMAT_NOTES,
     slugs: MHTCET_MAGMAT_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "units-and-measurement",
+    chipLabel: "Units and Measurement",
+    chapter: MHTCET_UNITS_CHAPTER,
+    notes: MHTCET_UNITS_NOTES,
+    slugs: MHTCET_UNITS_SLUGS,
+  },
+  {
+    examName: "MHT-CET",
+    subjectName: "Physics",
+    subjectRoute: "mht-cet-physics",
+    subjectDisplay: "MHT-CET Physics",
+    chapterSlug: "mechanical-properties-of-solids",
+    chipLabel: "Mechanical Properties of Solids",
+    chapter: MHTCET_SOLIDS_CHAPTER,
+    notes: MHTCET_SOLIDS_NOTES,
+    slugs: MHTCET_SOLIDS_SLUGS,
   },
   {
     examName: "MHT-CET",
