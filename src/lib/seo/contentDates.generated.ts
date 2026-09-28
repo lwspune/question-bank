@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 138
+ * Entries: 139
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -33,7 +33,7 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/mht-cet-chemistry/aromatic-compounds": "2026-09-26T14:27:44+05:30",
   "/notes/mht-cet-chemistry/basic-principles-of-organic-chemistry": "2026-09-25T09:45:18+05:30",
   "/notes/mht-cet-chemistry/biomolecules": "2026-09-25T09:45:18+05:30",
-  "/notes/mht-cet-chemistry/chemical-bonding": "2026-09-26T17:50:14+05:30",
+  "/notes/mht-cet-chemistry/chemical-bonding": "2026-09-28T00:29:38+05:30",
   "/notes/mht-cet-chemistry/chemical-kinetics": "2026-09-25T04:09:55+05:30",
   "/notes/mht-cet-chemistry/chemical-thermodynamics": "2026-09-25T04:55:36+05:30",
   "/notes/mht-cet-chemistry/coordination-compounds": "2026-09-25T22:11:43+05:30",
@@ -54,17 +54,17 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/mht-cet-chemistry/surface-chemistry": "2026-09-26T13:47:59+05:30",
   "/notes/mht-cet-chemistry/transition-and-inner-transition-elements": "2026-09-26T18:54:31+05:30",
   "/notes/mht-cet-maths/applications-of-definite-integral": "2026-09-25T01:35:58+05:30",
-  "/notes/mht-cet-maths/applications-of-derivative": "2026-09-26T17:50:14+05:30",
+  "/notes/mht-cet-maths/applications-of-derivative": "2026-09-28T00:29:38+05:30",
   "/notes/mht-cet-maths/binomial-distribution": "2026-09-26T17:50:14+05:30",
   "/notes/mht-cet-maths/circle": "2026-09-25T03:38:25+05:30",
   "/notes/mht-cet-maths/complex-numbers": "2026-09-25T02:36:34+05:30",
   "/notes/mht-cet-maths/definite-integration": "2026-09-26T18:38:18+05:30",
   "/notes/mht-cet-maths/determinants-and-matrices": "2026-09-25T01:53:13+05:30",
-  "/notes/mht-cet-maths/differential-equations": "2026-09-26T17:50:14+05:30",
+  "/notes/mht-cet-maths/differential-equations": "2026-09-28T00:29:38+05:30",
   "/notes/mht-cet-maths/differentiation": "2026-09-26T17:50:14+05:30",
   "/notes/mht-cet-maths/indefinite-integration": "2026-09-26T17:50:14+05:30",
   "/notes/mht-cet-maths/limits": "2026-09-26T18:38:18+05:30",
-  "/notes/mht-cet-maths/line-and-plane": "2026-09-26T17:50:14+05:30",
+  "/notes/mht-cet-maths/line-and-plane": "2026-09-28T00:29:38+05:30",
   "/notes/mht-cet-maths/linear-programming": "2026-09-25T02:59:56+05:30",
   "/notes/mht-cet-maths/mathematical-logic": "2026-09-26T17:50:14+05:30",
   "/notes/mht-cet-maths/measures-of-dispersion": "2026-09-25T02:59:56+05:30",
@@ -79,6 +79,7 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/mht-cet-physics/electrostatics": "2026-09-26T22:32:59+05:30",
   "/notes/mht-cet-physics/rotational-dynamics": "2026-09-26T22:33:21+05:30",
   "/notes/mht-cet-physics/semiconductor-devices": "2026-09-26T23:25:17+05:30",
+  "/notes/mht-cet-physics/superposition-of-waves": "2026-09-26T23:50:03+05:30",
   "/notes/mht-cet-physics/wave-optics": "2026-09-26T23:36:00+05:30",
   "/notes/nda-biology/biochemistry": "2026-06-12T08:03:46+05:30",
   "/notes/nda-biology/biodiversity-and-classification": "2026-09-14T16:31:56+05:30",

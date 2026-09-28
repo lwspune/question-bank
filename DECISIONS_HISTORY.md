@@ -15,6 +15,18 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-28 — MHT-CET Physics "Mechanical Properties of Fluids" (5 pages · 124 PYQ · 13 concepts · 14 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-fluids`.**
+
+**Carve.** No reshape: pressure and buoyancy (6, five HARD), surface tension and surface energy (42, 12 HARD), excess pressure and capillary rise (38, none HARD), viscosity (21, 4 HARD), streamline flow (17, 3 HARD) — the book's own order, XII chapter 2, now in `src/lib/notes/bookOrder.ts` and `tests/notes-book-order.test.ts`. Slugs carry `cetp-fl-` because concept-tag keys are global and `cetp-drops-and-spheres` already belongs to Electrostatics.
+
+**Source pass.** The previous session applied `_fix-phy-fluids.ts`, `-fluids2.ts` and `-fluids3.ts` (a degree sign lost as U+FFFD; `37d26c56` capillary rise flipped to the answer key's 3 cm; `81ce0045`'s invented square roots removed and its key flipped to (d) 2T/(ρgd); `8ade39c3`'s trailing arithmetic rewritten; `8a5d73ae`'s inconsistent '1.5 s' named in its solution). This session, while checking the page's own numbers: `7d095352` (11 May 2024 S2 #20) prints ΔP = 5.6 N/m² with T = 3.2 × 10⁻² — a 4.6 cm bubble, no option — and the answer key's working uses 25.6, giving 1 cm, key (c). Stem restored to 25.6 by `_fix-phy-fluids4.ts`, key held, content_hash untouched per the CET source-text rule. `a1103060` ('mechanical force per unit area' of a charged bubble) is keyed on the excess-pressure reading and left as keyed.
+
+**Authoring.** Every page number was derived rather than copied from a row: the rising bubble (8 atmospheres, seven from water), the maximum sinking depth hρ/(σ − ρ), the film-between-plates force 2TA²/V (28 N example), drop splitting 4πR²T(n^(1/3) − 1), excess pressure 4T/r against 2T/r, capillary h ∝ 1/r with mass ∝ r, terminal velocity ∝ r², continuity, Bernoulli and Torricelli. The first Bernoulli worked example came out at a negative gauge pressure and was replaced; four featured PYQs that matched their own self-checks were repointed.
+
+**Gates.** notes:lint 0 errors · notes:latex OK · notes:arc 0 · notes:intro clean · quiz:coverage 0 strong gaps after the Reynolds card was converted from reference to formula · book-order test updated.
+
+**Not proven.** Render beyond the build's prerender.
+
 **2026-09-26 (twentieth) — MHT-CET Physics "Superposition of Waves" (5 pages · 123 PYQ · 11 concepts · 12 traps · 100% concept-tag coverage) on `feat/mhtcet-physics-notes-2`.**
 
 **Reshape.** The seven 'distance between points so many degrees apart' rows moved from the superposition subtopic onto the progressive-wave page (34), leaving superposition proper with eight; strings (36) gained the two harmonic-of-a-fork rows and three string rows filed under Pipes or Beats; a pipe-in-water row moved to Pipes (23). The two-row 'Resonance and Tuning Forks' subtopic was then empty and was deleted by `generated-papers/_drop_empty_subtopic.ts`, which refuses unless no question of ANY visibility or kind points at it ([[fk-set-null-on-subtopic-drop]]).
