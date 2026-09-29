@@ -9,6 +9,7 @@ import {
   allowedCounts,
   enumeratedItems,
   longestSentenceWords,
+  leadsWithBankFact,
 } from "@/lib/notes/introAudit";
 
 describe("extractCountClaims", () => {
@@ -93,5 +94,27 @@ describe("longestSentenceWords", () => {
 
   it("does not split on a decimal point", () => {
     expect(longestSentenceWords("The value 2.5 metres is fixed.")).toBe(6);
+  });
+});
+
+describe("leadsWithBankFact", () => {
+  it("accepts a digit count, a spelled-out count and a per-paper rate", () => {
+    expect(leadsWithBankFact("165 past-year questions across 2017–2026 cluster around a few techniques. More.")).toBe(true);
+    expect(leadsWithBankFact("Alkynes is one of the smallest chapters, eleven past-year questions, but nine are HARD. More.")).toBe(true);
+    expect(leadsWithBankFact("Solid State is about three questions a paper in MHT-CET Chemistry. More.")).toBe(true);
+    expect(leadsWithBankFact("A small chapter — only a handful of PYQs across 2017–2026. More.")).toBe(true);
+  });
+
+  it("rejects an intro whose first sentence is a definition, even when the count follows", () => {
+    expect(
+      leadsWithBankFact("A vector is a quantity with both magnitude AND direction — an arrow, not a number. 102 PYQs span 2017–2026.")
+    ).toBe(false);
+  });
+
+  it("does not mistake a single-digit technique count for a bank fact", () => {
+    // Digits anywhere in the first sentence count — a chapter that says
+    // "4 recognitions cover them" in its opening line is rare enough that the
+    // probe's human read is the right filter, not a stricter regex.
+    expect(leadsWithBankFact("")).toBe(false);
   });
 });

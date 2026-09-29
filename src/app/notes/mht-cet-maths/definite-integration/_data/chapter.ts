@@ -4,7 +4,7 @@ export const MHTCET_DEFINITE_INTEGRATION_CHAPTER: ChapterNote = {
   chapterName: "Definite Integration",
   title: "Definite Integration — MHT-CET Maths",
   intro:
-    "Definite Integration in MHT-CET Maths is two chapters wearing one name. The first is a grind: evaluate the integral, which means every technique from " +
+    "Definite Integration is 67 past-year questions in the MHT-CET Maths bank across 2021–2025, and two chapters wearing one name. The first is a grind: evaluate the integral, which means every technique from " +
     "Indefinite Integration with limits attached, and it is where the HARD questions live. The second is recognition: nearly two-thirds of the past-year " +
     "questions are built so that the direct antiderivative is long or impossible, and the whole mark is won by spotting a property — an odd integrand over " +
     "symmetric limits, King's substitution, a modulus or greatest-integer function that must be split — in the first fifteen seconds. Work the pages below " +

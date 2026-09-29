@@ -92,6 +92,30 @@ export function longestSentenceWords(text: string): number {
 }
 
 /**
+ * Does the intro's FIRST sentence state a fact about the bank?
+ *
+ * The hero collapses the intro behind "Read more", so the first sentence is
+ * the one a phone shows and the one an AI search engine quotes. A bank fact
+ * is a digit ("165 past-year questions across 2017–2026", "about a dozen PYQs
+ * across 2017 to 2025"), a spelled-out count ("thirty-five past-year
+ * questions") or a per-paper rate ("about three questions a paper") — all
+ * three are how these intros talk, and any of them tells the reader what the
+ * chapter IS before the prose tells them what it is about.
+ *
+ * Measured 2026-09-29: 137 of 151 shipped intros already did; the 14 that
+ * opened on a definition ("A vector is a quantity with both magnitude AND
+ * direction") were reordered the same day. Reported by `npm run notes:intro`
+ * so a new chapter cannot quietly regress it.
+ */
+export function leadsWithBankFact(intro: string): boolean {
+  const first = intro.split(/[.!?](?=\s)/)[0] ?? "";
+  return BANK_FACT.test(first);
+}
+
+const BANK_FACT =
+  /\d|\b(?:dozen|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred)\b|questions? a paper/i;
+
+/**
  * Numbers in a chapter's prose that are NOT bank counts, as
  * `<subjectRoute>/<chapterSlug>` → the exempt values.
  *

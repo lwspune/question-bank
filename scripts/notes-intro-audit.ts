@@ -23,6 +23,13 @@
  *      <p> in the hero, so a 156-word sentence is ~35 lines on a phone before
  *      the first tappable thing, and this audience is mobile-first.
  *
+ *   4. NARRATIVE LEAD — an intro whose FIRST sentence states no bank fact
+ *      (no count, no year, no per-paper rate). The hero collapses the intro
+ *      behind "Read more", so that sentence is the one a phone shows and the
+ *      one an AI search engine quotes; "A vector is a quantity with both
+ *      magnitude AND direction" tells neither what the chapter IS. 14 of 151
+ *      shipped intros opened that way on 2026-09-29 and were reordered.
+ *
  * Classes 2 and 3 are JUDGEMENT, not defects — a long intro that says
  * something the cards cannot say is fine. Read them, don't sweep them.
  *
@@ -38,6 +45,7 @@ import {
   enumeratedItems,
   longestSentenceWords,
   isExemptCount,
+  leadsWithBankFact,
 } from "../src/lib/notes/introAudit";
 
 /** A sentence past this, rendered in one <p>, is a wall. */
@@ -111,6 +119,7 @@ async function main() {
   const stale: string[] = [];
   const duplicated: string[] = [];
   const long: string[] = [];
+  const narrative: string[] = [];
   let scanned = 0;
 
   for (const c of NOTES_CHAPTERS as any[]) {
@@ -163,6 +172,12 @@ async function main() {
     if (words > LONG_INTRO || longest > LONG_SENTENCE) {
       long.push(`${route} — ${words} words, longest sentence ${longest}`);
     }
+
+    // 4. NARRATIVE LEAD.
+    if (!leadsWithBankFact(c.chapter.intro)) {
+      const first = c.chapter.intro.split(/[.!?](?=\s)/)[0] ?? "";
+      narrative.push(`${route} — "${first.slice(0, 90)}${first.length > 90 ? "…" : ""}"`);
+    }
   }
 
   const section = (title: string, rows: string[]) => {
@@ -175,6 +190,7 @@ async function main() {
   section("1. STALE COUNT — matches no live chapter/subtopic/pair-sum", stale);
   section("2. DUPLICATE STRUCTURE — intro re-lists the subtopic cards below it", duplicated);
   section(`3. LENGTH — over ${LONG_INTRO} words or a sentence over ${LONG_SENTENCE}`, long);
+  section("4. NARRATIVE LEAD — first sentence states no bank fact (count, year or per-paper rate)", narrative);
   console.log(
     "\nTriage, not a gate. Class 1 in an intro/cardBlurb is also gated by" +
       " tests/notes-intro-counts.test.ts; class 1 in a subtopic is not."
