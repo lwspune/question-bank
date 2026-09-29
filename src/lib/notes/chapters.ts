@@ -890,6 +890,11 @@ import {
   JEE_3D_GEOMETRY_NOTES,
   JEE_3D_GEOMETRY_SLUGS,
 } from "@/app/notes/jee-mains-maths/three-dimensional-geometry/_data";
+import {
+  JEE_SEQUENCES_CHAPTER,
+  JEE_SEQUENCES_NOTES,
+  JEE_SEQUENCES_SLUGS,
+} from "@/app/notes/jee-mains-maths/sequences-and-series/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2854,6 +2859,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_3D_GEOMETRY_CHAPTER,
     notes: JEE_3D_GEOMETRY_NOTES,
     slugs: JEE_3D_GEOMETRY_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "sequences-and-series",
+    chipLabel: "Sequences and Series notes",
+    chapter: JEE_SEQUENCES_CHAPTER,
+    notes: JEE_SEQUENCES_NOTES,
+    slugs: JEE_SEQUENCES_SLUGS,
   },
 ];
 
