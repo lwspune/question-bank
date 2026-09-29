@@ -875,6 +875,11 @@ import {
   CDS_SEQUENCES_NOTES,
   CDS_SEQUENCES_SLUGS,
 } from "@/app/notes/cds-maths/sequences/_data";
+import {
+  CDS_INEQUALITIES_CHAPTER,
+  CDS_INEQUALITIES_NOTES,
+  CDS_INEQUALITIES_SLUGS,
+} from "@/app/notes/cds-maths/inequalities/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2806,6 +2811,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_SEQUENCES_CHAPTER,
     notes: CDS_SEQUENCES_NOTES,
     slugs: CDS_SEQUENCES_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "inequalities",
+    chipLabel: "Inequalities notes",
+    chapter: CDS_INEQUALITIES_CHAPTER,
+    notes: CDS_INEQUALITIES_NOTES,
+    slugs: CDS_INEQUALITIES_SLUGS,
   },
 ];
 
