@@ -845,6 +845,11 @@ import {
   CDS_HEIGHTS_NOTES,
   CDS_HEIGHTS_SLUGS,
 } from "@/app/notes/cds-maths/heights/_data";
+import {
+  CDS_LINEAR_EQUATIONS_CHAPTER,
+  CDS_LINEAR_EQUATIONS_NOTES,
+  CDS_LINEAR_EQUATIONS_SLUGS,
+} from "@/app/notes/cds-maths/linear-equations/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2710,6 +2715,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_HEIGHTS_CHAPTER,
     notes: CDS_HEIGHTS_NOTES,
     slugs: CDS_HEIGHTS_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "linear-equations",
+    chipLabel: "Linear Equations notes",
+    chapter: CDS_LINEAR_EQUATIONS_CHAPTER,
+    notes: CDS_LINEAR_EQUATIONS_NOTES,
+    slugs: CDS_LINEAR_EQUATIONS_SLUGS,
   },
 ];
 
