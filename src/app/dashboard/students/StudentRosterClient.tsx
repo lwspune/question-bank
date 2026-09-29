@@ -51,7 +51,7 @@ export default function StudentRosterClient({ rows }: { rows: StudentRosterRow[]
   const [windowId, setWindowId] = useState("all");
   const [dateField, setDateField] = useState<DateField>("lastActive");
   const [search, setSearch] = useState("");
-  const [sortKey, setSortKey] = useState<SortKey>("mocksSubmitted");
+  const [sortKey, setSortKey] = useState<SortKey>("signedUp");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
 
   // One clock for filtering and the summary, so a row can't be "active" for one
