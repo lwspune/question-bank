@@ -785,6 +785,11 @@ import {
   CDS_QUADRATIC_EQUATIONS_NOTES,
   CDS_QUADRATIC_EQUATIONS_SLUGS,
 } from "@/app/notes/cds-maths/quadratic-equations/_data";
+import {
+  CDS_SURDS_INDICES_CHAPTER,
+  CDS_SURDS_INDICES_NOTES,
+  CDS_SURDS_INDICES_SLUGS,
+} from "@/app/notes/cds-maths/surds-indices/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2518,6 +2523,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_QUADRATIC_EQUATIONS_CHAPTER,
     notes: CDS_QUADRATIC_EQUATIONS_NOTES,
     slugs: CDS_QUADRATIC_EQUATIONS_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "surds-indices",
+    chipLabel: "Surds and Indices notes",
+    chapter: CDS_SURDS_INDICES_CHAPTER,
+    notes: CDS_SURDS_INDICES_NOTES,
+    slugs: CDS_SURDS_INDICES_SLUGS,
   },
 ];
 
