@@ -885,6 +885,11 @@ import {
   JEE_CONIC_SECTIONS_NOTES,
   JEE_CONIC_SECTIONS_SLUGS,
 } from "@/app/notes/jee-mains-maths/conic-sections/_data";
+import {
+  JEE_3D_GEOMETRY_CHAPTER,
+  JEE_3D_GEOMETRY_NOTES,
+  JEE_3D_GEOMETRY_SLUGS,
+} from "@/app/notes/jee-mains-maths/three-dimensional-geometry/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2838,6 +2843,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_CONIC_SECTIONS_CHAPTER,
     notes: JEE_CONIC_SECTIONS_NOTES,
     slugs: JEE_CONIC_SECTIONS_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "three-dimensional-geometry",
+    chipLabel: "3D Geometry notes",
+    chapter: JEE_3D_GEOMETRY_CHAPTER,
+    notes: JEE_3D_GEOMETRY_NOTES,
+    slugs: JEE_3D_GEOMETRY_SLUGS,
   },
 ];
 
