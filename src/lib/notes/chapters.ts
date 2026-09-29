@@ -820,6 +820,11 @@ import {
   CDS_QUADRILATERALS_NOTES,
   CDS_QUADRILATERALS_SLUGS,
 } from "@/app/notes/cds-maths/quadrilaterals/_data";
+import {
+  CDS_DATA_INTERPRETATION_CHAPTER,
+  CDS_DATA_INTERPRETATION_NOTES,
+  CDS_DATA_INTERPRETATION_SLUGS,
+} from "@/app/notes/cds-maths/data-interpretation/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2630,6 +2635,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_QUADRILATERALS_CHAPTER,
     notes: CDS_QUADRILATERALS_NOTES,
     slugs: CDS_QUADRILATERALS_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "data-interpretation",
+    chipLabel: "Data Interpretation notes",
+    chapter: CDS_DATA_INTERPRETATION_CHAPTER,
+    notes: CDS_DATA_INTERPRETATION_NOTES,
+    slugs: CDS_DATA_INTERPRETATION_SLUGS,
   },
 ];
 
