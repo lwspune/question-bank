@@ -790,6 +790,11 @@ import {
   CDS_SURDS_INDICES_NOTES,
   CDS_SURDS_INDICES_SLUGS,
 } from "@/app/notes/cds-maths/surds-indices/_data";
+import {
+  CDS_STATISTICS_CHAPTER,
+  CDS_STATISTICS_NOTES,
+  CDS_STATISTICS_SLUGS,
+} from "@/app/notes/cds-maths/statistics/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2534,6 +2539,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_SURDS_INDICES_CHAPTER,
     notes: CDS_SURDS_INDICES_NOTES,
     slugs: CDS_SURDS_INDICES_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "statistics",
+    chipLabel: "Statistics notes",
+    chapter: CDS_STATISTICS_CHAPTER,
+    notes: CDS_STATISTICS_NOTES,
+    slugs: CDS_STATISTICS_SLUGS,
   },
 ];
 
