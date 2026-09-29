@@ -815,6 +815,11 @@ import {
   CDS_CIRCLES_NOTES,
   CDS_CIRCLES_SLUGS,
 } from "@/app/notes/cds-maths/circles/_data";
+import {
+  CDS_QUADRILATERALS_CHAPTER,
+  CDS_QUADRILATERALS_NOTES,
+  CDS_QUADRILATERALS_SLUGS,
+} from "@/app/notes/cds-maths/quadrilaterals/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2614,6 +2619,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_CIRCLES_CHAPTER,
     notes: CDS_CIRCLES_NOTES,
     slugs: CDS_CIRCLES_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "quadrilaterals",
+    chipLabel: "Quadrilaterals notes",
+    chapter: CDS_QUADRILATERALS_CHAPTER,
+    notes: CDS_QUADRILATERALS_NOTES,
+    slugs: CDS_QUADRILATERALS_SLUGS,
   },
 ];
 
