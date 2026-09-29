@@ -15,6 +15,14 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-29 (fifteenth) — CDS Elementary Mathematics "Averages" (3 pages · 47 PYQ · 5 concepts · 6 traps), 100% tagged, on `feat/cds-maths-averages`. The seventeenth CDS notes chapter.**
+
+**Why three pages.** All 47 stems and solutions were read first. "Average and Weighted Average" (43) held three techniques: working through the TOTAL (sum = count × mean — an added or dropped item, an item shared by two groups, the largest possible reading), COMBINING groups with different means (the combined mean, and the ratio of group sizes by alligation), and the average of CONSECUTIVE numbers (the middle term). "Correction of Mean" (4) is the first technique applied to a misread value, so it joined that page instead of standing alone.
+
+**Source pass** (`generated-papers/_fix-cds-av.ts`). Sixteen plain-text solutions rewritten in LaTeX and re-derived against the stored key. Two in the 2023-II cousins set had stopped mid-working — 1f6cba1c read 'Using the ages from the previous item, (12+10+18+16+14)/5' and 8e515017 was a bare sum — so both now derive the ages (A 6, B 12, C 10, D 18, E 16, G 14) and the weights (201 kg in all) from the premise. No key changed.
+
+**Judgement calls.** Kept out of featured slots: 230ef4a6 (keyed 'None of the above'), d326d98e (the rise of 1.5 can be read against two different means; only one reading matches an option).
+
 **2026-09-29 (fourteenth) — CDS Elementary Mathematics "Percentage, Profit and Loss" (4 pages · 50 PYQ · 7 concepts · 10 traps), 100% tagged, on `feat/cds-maths-percentage`. The sixteenth CDS notes chapter.**
 
 **Why four pages.** All 50 stems and solutions were read first. "Percentage" (26) held two different moves: taking a percentage OF a base (pass marks, populations, what-per-cent-of, more-than versus less-than) and chaining percentage CHANGES (area from two sides, rent times rooms, a rise then a fall, price against consumption). Each gets a page. The single discount row filed under "Profit, Loss and Discount" joined the discount page, and the rest became "Profit and Loss", whose second concept is profit hidden in quantities (false weights, lost goods, the cost of 100 equal to the price of 80).
