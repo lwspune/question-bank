@@ -111,6 +111,13 @@ The second MHT-CET guide reuses the Maths variant's routes, tier strands and dat
 - **A multi-shift grid must key columns by PAPER (year + `pyq_note`), not by `source_file`.** Rows re-dated to their real paper keep the file they were ingested from; keyed by file, Physics showed 44 columns for 42 papers. `canonicalPaperFiles` in `scripts/lib/mhtcetTrendsMatrix.ts`; the Maths grid still keys by file (ROADMAP backfill).
 - **Pin every quoted count to its source.** The chapter table, playbooks and tail rates are recomputed from the generated grid, and the two measured shapes the traps quote (279 ratio stems, 221 figure questions) are counted live — `tests/guide-mht-cet-physics-playbooks.test.ts`.
 
+#### Template C variant — a one-third-penalty paper outside NDA (CDS Mathematics, 2026-09-29)
+
+The Maths variant's routes and tier strands, with the MHT-CET axis swapped back: CDS deducts 1/3 per wrong answer, so **the strategy axis is attempt-versus-leave** and the guide states the guessing rule as data (`GUESS_RULE`: 4 options left = 0, 3 = +1/9, 2 = +1/3). Two lessons that generalise:
+
+- **Keep trend prose free of figures.** Callouts carry a chapter, a direction and words; the page prints the rates from the generated grid, and a test fails when a direction stops matching. A number typed into prose is the thing that goes stale after the next ingest.
+- **A generator in Python rounds half-to-even.** 12.5% prints as 12 in Python and 13 in `Math.round`. Any generated figure the site also computes must use half-up — the live test that re-measures every "Name (count · N%)" pair is what caught six of them.
+
 #### Execution-mode variant on the MHT-CET frame (MHT-CET Chemistry, 2026-09-28)
 
 The third MHT-CET guide keeps the MHT-CET route frame and data shapes but swaps the strand axis, because the measurement said to:
