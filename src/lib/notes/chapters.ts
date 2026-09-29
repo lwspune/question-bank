@@ -775,6 +775,11 @@ import {
   CDS_TRIANGLES_SLUGS,
 } from "@/app/notes/cds-maths/triangles/_data";
 
+import {
+  CDS_ALGEBRAIC_IDENTITIES_CHAPTER,
+  CDS_ALGEBRAIC_IDENTITIES_NOTES,
+  CDS_ALGEBRAIC_IDENTITIES_SLUGS,
+} from "@/app/notes/cds-maths/algebraic-identities/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2486,6 +2491,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_TRIANGLES_CHAPTER,
     notes: CDS_TRIANGLES_NOTES,
     slugs: CDS_TRIANGLES_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "algebraic-identities",
+    chipLabel: "Algebraic Identities notes",
+    chapter: CDS_ALGEBRAIC_IDENTITIES_CHAPTER,
+    notes: CDS_ALGEBRAIC_IDENTITIES_NOTES,
+    slugs: CDS_ALGEBRAIC_IDENTITIES_SLUGS,
   },
 ];
 
