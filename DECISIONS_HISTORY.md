@@ -15,6 +15,21 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-29 (eighth) — CDS Maths wave 2 closes: Algebraic Identities (8 pages · 98 PYQ), Quadratic Equations (9 · 89), Surds and Indices (8 · 82), Statistics (6 · 80) and Polynomials (5 · 79) ship, all 100% tagged; no key changed.**
+- **Statistics is cut by kind of data, not by measure:** ten premise sets ask for the mean, median and mode of one table, so a mean/median/mode split would scatter every set.
+- **A name-keyed lookup broke silently:** `/go/learn` resolves chapters by name, so CDS Statistics and Quadratic Equations re-pointed nda-tracker's NDA links. CDS now yields shared names; nine older NDA/MHT-CET collisions are unchanged and await a decision.
+- **Builds hit ENOSPC on a ~2 GB-free disk** after the new notes pages were prerendered; tests passed each time. Long forms in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
+
+**2026-09-29 (seventh) — CDS Elementary Mathematics "Polynomials" (5 pages · 79 PYQ · 13 concepts · 13 traps), 100% tagged, on `feat/cds-maths-polynomials`. The tenth CDS notes chapter; wave 2 is complete.**
+
+**Why five pages from six subtopics.** All 79 stems and solutions were read first. "Remainder and Factor Theorem" (27) held two different moves — EVALUATING a remainder (f(a), a linear remainder on division by a quadratic, xⁿ ± aⁿ patterns) and FINDING COEFFICIENTS so that given factors divide exactly — so each gets a page. The degree, zeros-and-coefficients and integer-valued buckets (7 questions between them) became one opening page. HCF and LCM keeps its own page: at 25 questions it is the largest, and every item is 'factorise, then read off'.
+
+**Source pass** (`generated-papers/_fix-cds-po.ts`). Twelve plain-text solutions rewritten; 1dacac91's closing remark about 'the printed pair' was restated. No key changed.
+
+**Judgement calls.** Kept out of featured slots: 782f955a (its own solution notes the stem is over-determined), cd2a39d1 (the printed HCF does not divide the printed LCM), 1dacac91 (the keyed option reads 'b any integer').
+
+**A regression found by the gate, not by review.** The Statistics gate failed `tests/go-links.test.ts`: `/go/learn` (nda-tracker's 'Learn this' target) resolves chapters by NAME with last-write-wins, so CDS Statistics and CDS Quadratic Equations had silently re-pointed NDA's links for those chapters at the CDS pages. Fixed on the Statistics branch: a CDS chapter never takes a name another chapter already holds. The nine older NDA/MHT-CET collisions (Vectors, Sound, Gravitation and others) keep their existing last-write-wins winner, which sends NDA's links to the MHT-CET pages; that is logged for a decision rather than changed.
+
 **2026-09-29 (sixth) — CDS Elementary Mathematics "Statistics" (6 pages · 80 PYQ · 14 concepts · 14 traps), 100% tagged, on `feat/cds-maths-statistics`. The ninth CDS notes chapter.**
 
 **Why the cut is by kind of data, not by measure.** All 80 stems and solutions were read first. "Measures of Central Tendency" held 61 of the 80, i.e. the chapter under one name. The obvious split — a page each for mean, median and mode — would scatter ten premise sets, because the paper asks for the mean, the median and the mode of ONE table in consecutive items (the 2025-I 205-observation set spans five). So the pages follow the data: vocabulary, scales and diagrams; x–f and cumulative tables; the properties of the mean (shift, scale, deviations, pooling); the median of a raw list and how it responds to changes; grouped class-interval data with its three formulas and missing frequencies; and a closing page on which average to choose, with the empirical relation. Every set is co-located.
