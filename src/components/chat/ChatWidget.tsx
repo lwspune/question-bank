@@ -1,10 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
 import { toast } from "sonner";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { PREDEFINED_QUESTIONS, type ChatFaqId } from "@/lib/chat/faq";
+import { vPlacement } from "@/lib/chat/placement";
+import { useCart } from "@/lib/cart/CartProvider";
 
 type VAvatar = "idle" | "laugh" | "think" | "talk";
 
@@ -49,6 +52,9 @@ export default function ChatWidget() {
   const listRef = useRef<HTMLDivElement>(null);
   const launcherRef = useRef<HTMLButtonElement>(null);
   const openRecordedRef = useRef(false);
+  const pathname = usePathname() ?? "/";
+  const cart = useCart();
+  const placement = vPlacement(pathname, cart);
 
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight });
@@ -101,8 +107,14 @@ export default function ChatWidget() {
     }
   }
 
+  if (placement.hidden) return null;
+
+  // Vertical position lives in globals.css (.chat-launcher-offset): clear of
+  // MobileTabBar below sm, and raised by --v-lift over /browse's cart pill.
+  const lift = { "--v-lift": placement.aboveCart ? "3.5rem" : "0px" } as CSSProperties;
+
   return (
-    <div className="fixed bottom-4 right-4 z-50">
+    <div className="chat-launcher-offset fixed right-4 z-50 print:hidden" style={lift}>
       {open && (
         <div
           role="dialog"

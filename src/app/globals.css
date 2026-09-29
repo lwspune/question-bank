@@ -85,8 +85,8 @@
   @media print { body { padding-bottom: 0; } }
 
   /*
-    Two fixed elements collide with the bar: the /browse cart pill and the
-    /drill "Next question" bar. Same two-value shape as the body clearance
+    Three fixed elements collide with the bar: the /browse cart pill, the
+    /drill "Next question" bar, and V (below). Same two-value shape as the body clearance
     above: lifted clear below sm, unchanged from sm up, where no bar renders.
 
     The drill bar shipped (2026-09-19) after the pill was declared "the only"
@@ -101,5 +101,19 @@
   .drill-bar-offset { bottom: calc(3.5rem + env(safe-area-inset-bottom)); }
   @media (min-width: 640px) {
     .drill-bar-offset { bottom: 0; }
+  }
+
+  /*
+    V, the FAQ helper (2026-09-29) — the third collider, and it shipped
+    breaking this very rule: pinned at bottom-4 it covered the Board tab on
+    every phone page. Same shape as the cart pill. It also shares the pill's
+    corner on /browse, so --v-lift (set inline by ChatWidget from
+    lib/chat/placement.ts) raises it one pill-height while the pill shows.
+  */
+  .chat-launcher-offset {
+    bottom: calc(var(--v-lift, 0px) + 3.5rem + max(1rem, env(safe-area-inset-bottom)));
+  }
+  @media (min-width: 640px) {
+    .chat-launcher-offset { bottom: calc(var(--v-lift, 0px) + max(1rem, env(safe-area-inset-bottom))); }
   }
 }
