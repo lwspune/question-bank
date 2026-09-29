@@ -15,6 +15,14 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-29 (thirteenth) — CDS Elementary Mathematics "Data Interpretation" (4 pages · 52 PYQ · 6 concepts · 8 traps), 100% tagged, on `feat/cds-maths-data-interpretation`. The fifteenth CDS notes chapter.**
+
+**Why no re-cut.** All 52 stems and solutions were read first. The bank already files the chapter by kind of display, and all 13 premise sets sit wholly on one display, so a cut by skill (percentages, averages) would have split sets across pages. The skills are instead the concepts within each page: tables carry a percentage concept and an averages concept, pie charts an angle-share-count concept and a different-totals concept.
+
+**Source pass** (`generated-papers/_fix-cds-di.ts`). Seventeen plain-text solutions rewritten in LaTeX and re-derived against the stored key. Several pointed at a sibling item ('from the same computed series', 'with the total established in Q83') or carried 'FIGURE READ (p13)' notes; each now states the figures it uses, so it reads on its own. No key changed.
+
+**Judgement calls.** Kept out of featured slots: 2be97925 ('increased by three times' can mean ×3 or ×4; its solution already names both readings).
+
 **2026-09-29 (twelfth) — CDS Elementary Mathematics "Quadrilaterals" (5 pages · 54 PYQ · 9 concepts · 12 traps), 100% tagged, on `feat/cds-maths-quadrilaterals`. The fourteenth CDS notes chapter.**
 
 **Why five pages.** All 54 stems and solutions were read first. "Trapezium, Rhombus and Kite" (16) held two figures with different tools: trapeziums (similar triangles on the parallel sides, the midline) and rhombuses and kites (perpendicular diagonals, area half their product). Each gets a page. The single tangential-quadrilateral row joined the general page, and the two midpoint-figure rows filed as general (Varignon) joined Parallelograms, where the other midpoint rows already sat.
