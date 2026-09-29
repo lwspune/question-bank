@@ -7,7 +7,8 @@
  * bigger wall), and mixed gangs whose workers must first be converted to one unit (men and women,
  * goats and sheep). "Efficiency and Wages" (4) is not a technique of its own: its two
  * men-versus-women rows join the mixed-gang page and its rate and wage rows join the rates page.
- * "Pipes and Cisterns" keeps its page.
+ * "Pipes and Cisterns" keeps its page. 2021-2 Q39 (stitching suits; no option is correct) is in the
+ * data file but was withheld from the bank, so its data row was moved to "Work Rates" by hand.
  */
 import type { ReshapePlan } from "../reshape";
 
