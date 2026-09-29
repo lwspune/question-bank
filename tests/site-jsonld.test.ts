@@ -10,7 +10,7 @@
  */
 import { describe, it, expect } from "vitest";
 import { buildSiteJsonLd } from "../src/lib/seo/siteJsonLd";
-import { CONTACT_EMAIL, FOUNDER_LINKEDIN_URL, GITHUB_REPO_URL } from "../src/lib/brand";
+import { CONTACT_EMAIL, FOUNDER_LINKEDIN_URL, GITHUB_REPO_URL, LINKEDIN_COMPANY_URL } from "../src/lib/brand";
 
 const graph = buildSiteJsonLd();
 const org = graph["@graph"].find((n) => n["@type"] === "Organization")!;
@@ -30,7 +30,7 @@ describe("buildSiteJsonLd", () => {
   });
 
   it("links only genuine profiles in sameAs, and names the founder as a Person", () => {
-    expect(org.sameAs).toEqual([GITHUB_REPO_URL]);
+    expect(org.sameAs).toEqual([LINKEDIN_COMPANY_URL, GITHUB_REPO_URL]);
     expect(org.founder).toEqual({
       "@type": "Person",
       name: "Vilas Shinde",

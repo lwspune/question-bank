@@ -55,9 +55,9 @@ export const CONTACT_EMAIL = "hello@pyqvault.com";
 /**
  * Genuine public profiles, for `sameAs` in the site-wide Organization JSON-LD
  * (lib/seo/siteJsonLd.ts) and the About page. Only profiles that actually
- * exist go here — a fabricated `sameAs` is worse than none. A LinkedIn
- * COMPANY page does not exist yet (2026-09-29); add it here when it does.
+ * exist go here — a fabricated `sameAs` is worse than none.
  */
+export const LINKEDIN_COMPANY_URL = "https://www.linkedin.com/company/pyq-vault/";
 export const GITHUB_REPO_URL = "https://github.com/lwspune/question-bank";
 export const FOUNDER_NAME = "Vilas Shinde";
 export const FOUNDER_LINKEDIN_URL = "https://www.linkedin.com/in/vilas-shinde-26b98474/";
