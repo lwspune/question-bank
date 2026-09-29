@@ -15,6 +15,14 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-29 (eighteenth) — CDS Elementary Mathematics "Heights and Distances" (4 pages · 41 PYQ · 5 concepts · 6 traps), 100% tagged, on `feat/cds-maths-heights`. The nineteenth CDS notes chapter and the first of wave 4.**
+
+**Why four pages.** All 41 stems and solutions were read first. "Angles of Elevation and Depression" (34) held four different set-ups: one right triangle (a shadow, a broken tree, a ladder), two observation points on one line (walking towards a tower, opposite sides, complementary angles), an observer standing above the ground who sees both an elevation and a depression (building and tree, a ship's deck, a cloud and its reflection), and towers standing on a plane figure (hexagon, square, rectangle). Each gets a page. The two-object rows joined the two-point page, and the single bearings row joined the plane-figure page. Fourteen of the 41 are HARD, five of them on the plane-figure page.
+
+**Source pass** (`generated-papers/_fix-cds-hd.ts`). One plain-text solution rewritten in LaTeX. No key changed.
+
+**Judgement calls.** Kept out of featured slots: 8d360ff0 (as printed the pole between the towers forces a negative height; the keyed 85 feet needs the pole 75 feet beyond the shorter tower, and the solution says so), 6e5efe2c (the circling plane admits 15 seconds as well as the keyed 105; only 105 is printed).
+
 **2026-09-29 (sixteenth) — CDS Elementary Mathematics "Time and Work" (4 pages · 46 PYQ · 5 concepts · 7 traps), 100% tagged, on `feat/cds-maths-time-work`. The eighteenth CDS notes chapter; wave 3 is complete.**
 
 **Why four pages.** All 46 stems and solutions were read first. The subtopic named after the chapter (36) held three techniques: individual work RATES (a fraction of the job a day; together, leaving part-way, taking turns, efficiency multiples), MAN-DAYS (men × days × hours constant for a job; extra men, men who leave, a bigger wall), and MIXED gangs whose workers must first be put in one unit (men and women, goats and sheep). "Efficiency and Wages" (4) was not a separate technique: its two men-versus-women rows joined the mixed-gang page and its rate and wage rows joined the rates page. Pipes and cisterns kept its page.
