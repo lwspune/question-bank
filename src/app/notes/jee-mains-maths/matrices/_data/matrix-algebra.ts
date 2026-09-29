@@ -6,7 +6,7 @@ export const MATRIX_ALGEBRA_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The core operations on matrices — order and equality, adding and scalar-multiplying, multiplying by the row-by-column rule, transposing, and counting matrices — all governed by conformability and the fact that AB is generally not BA.",
   whyItMatters:
-    "Twelve PYQs, every one MODERATE — this is the operations layer the whole Matrices chapter is built on, and JEE Mains tests it every year. " +
+    "Thirteen PYQs, every one MODERATE — this is the operations layer the whole Matrices chapter is built on, and JEE Mains tests it every year. " +
     "Questions solve for entries by equating matrices, extract a column by hitting a matrix with a basis vector, use the [1,1,1]·B·[1,1,1] sum-of-entries trick, force a matrix to be scalar from a transpose relation, count singular matrices from a value set, and lean on the fact that AB = O with A, B nonzero forces both to be singular. Master the six concepts below and these become fast, reliable marks.",
   concepts: [
     // C1 — order, equality, linear combinations, trace
