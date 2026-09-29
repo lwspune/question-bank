@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { fitTitle } from "@/lib/seo/title";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Shield, Sigma } from "lucide-react";
+import { ArrowRight, BookOpen, Shield, Compass, Sigma } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
@@ -19,7 +19,7 @@ const PAGE_INTRO =
   "themselves. Nothing here is copied from a syllabus. Pick your exam, then a subject.";
 
 export const metadata: Metadata = {
-  title: { absolute: fitTitle(`${PAGE_TITLE} — NDA and MHT-CET, built from the past-year bank`) },
+  title: { absolute: fitTitle(`${PAGE_TITLE} — NDA, MHT-CET and CDS, built from the past-year bank`) },
   description: PAGE_INTRO,
   alternates: { canonical: "/guide" },
 };
@@ -72,6 +72,14 @@ const COPY: Record<string, GuideCopy> = {
     meta: "6,347 questions · 2021-2025",
     icon: Sigma,
   },
+  cds: {
+    title: "CDS — Elementary Mathematics",
+    blurb:
+      "A wrong answer costs a third of a mark, so this guide is about what to attempt: the cheap pages of each chapter, where the HARD questions pool, and when a guess pays.",
+    // Subject-scoped like MHT-CET's: CDS Maths PYQs only. Verified 2026-09-29.
+    meta: "2,096 questions · 2016-2026",
+    icon: Compass,
+  },
 };
 
 export default async function GuideIndex() {
@@ -92,7 +100,7 @@ export default async function GuideIndex() {
       <GuideJsonLd
         type="CollectionPage"
         path="/guide"
-        headline={`${PAGE_TITLE} — NDA and MHT-CET`}
+        headline={`${PAGE_TITLE} — NDA, MHT-CET and CDS`}
         description={PAGE_INTRO}
       />
 

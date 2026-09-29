@@ -251,9 +251,28 @@ const MHT_CET_GUIDES: SubjectGuideCard[] = [
   },
 ];
 
+const CDS_GUIDES: SubjectGuideCard[] = [
+  {
+    href: "/guide/cds-maths",
+    exam: "CDS Elementary Mathematics",
+    title: "How CDS Maths actually works",
+    blurb:
+      "Five chapters are nearly half the paper, and a wrong answer costs a third of a mark. So the guide is about what to attempt: which pages of each chapter are cheap, where the HARD questions pool, and when a guess is worth making.",
+    qCount: 2096,
+    yearWindow: "2016–2026 · 21 papers",
+    highlights: [
+      "Cornerstone (Trigonometry, Number System, the two Mensurations, Triangles) / Quick-Win / Selective tier-strands",
+      "22 chapter playbooks, each linked to full teaching notes",
+      "The guessing rule: a blind guess is worth 0; rule out one option and it is worth +1/9",
+      "Trends: Trigonometry and Number System up to 13 questions a paper; Linear Equations almost gone",
+    ],
+  },
+];
+
 export const GUIDE_CATALOG: Partial<Record<ExamSlug, SubjectGuideCard[]>> = {
   nda: NDA_GUIDES,
   "mht-cet": MHT_CET_GUIDES,
+  cds: CDS_GUIDES,
 };
 
 /** The subject guides of one exam, in hub order; empty when it has none. */
