@@ -805,6 +805,11 @@ import {
   CDS_RATIO_NOTES,
   CDS_RATIO_SLUGS,
 } from "@/app/notes/cds-maths/ratio/_data";
+import {
+  CDS_TSD_CHAPTER,
+  CDS_TSD_NOTES,
+  CDS_TSD_SLUGS,
+} from "@/app/notes/cds-maths/tsd/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2582,6 +2587,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_RATIO_CHAPTER,
     notes: CDS_RATIO_NOTES,
     slugs: CDS_RATIO_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "tsd",
+    chipLabel: "Time, Speed and Distance notes",
+    chapter: CDS_TSD_CHAPTER,
+    notes: CDS_TSD_NOTES,
+    slugs: CDS_TSD_SLUGS,
   },
 ];
 
