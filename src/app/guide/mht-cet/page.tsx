@@ -5,6 +5,7 @@ import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { buildGuideSideNav } from "@/lib/guide/guidesNav";
+import { getSubjectGuides } from "@/lib/guide/guideCatalog";
 
 export const revalidate = 86400;
 
@@ -19,75 +20,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/guide/mht-cet" },
 };
 
-type ExamGuide = {
-  href: string;
-  exam: string;
-  title: string;
-  blurb: string;
-  qCount: number;
-  yearWindow: string;
-  highlights: string[];
-};
 
-/**
- * All three subjects: Mathematics (2026-08-22) and Physics (2026-09-28), both
- * Template C with tier strands, and Chemistry (2026-09-28), whose strands are
- * execution modes — it is ~3% HARD and flat, and it splits cleanly by how a
- * question is answered (physical chapters mostly numerical answers).
- *
- * This list is hand-written because guides have no registry — see the note in
- * src/lib/guide/guidesNav.ts.
- */
-const GUIDES: ExamGuide[] = [
-  {
-    href: "/guide/mht-cet-maths",
-    exam: "MHT-CET Mathematics",
-    title: "How MHT-CET Maths actually works",
-    blurb:
-      // Deliberately NOT phrased like the /guide picker's MHT-CET card: a
-      // reader arrives here straight from that card, and two near-identical
-      // sentences one click apart is exactly what reads as machine-written.
-      "Every Mathematics shift from 2021 to 2025, all 2,175 questions. The short version: nothing is deducted for a wrong answer and you have 1.8 minutes a question, so the order you attempt in matters more than what you leave out.",
-    qCount: 2228,
-    yearWindow: "2021-2025 · 44 shifts",
-    highlights: [
-      "Cornerstone / Quick-Win / Long-tail tiers built on recent weightage, not lifetime averages",
-      "21 chapter playbooks with per-subtopic %HARD and drill links",
-      "The 2025 syllabus shift: Measures of Dispersion out, Conic Sections in",
-      "Formula sheet and the distractor traps MHT-CET reuses",
-    ],
-  },
-  {
-    href: "/guide/mht-cet-physics",
-    exam: "MHT-CET Physics",
-    title: "How MHT-CET Physics actually works",
-    blurb:
-      "Every Physics paper from 2021 to 2025, all 2,098 questions. Physics shares a 90-minute paper with Chemistry, so the first decision is how to split the clock — then which cheap pages to bank before the hard ones.",
-    qCount: 2098,
-    yearWindow: "2021-2025 · 42 papers",
-    highlights: [
-      "Six quick-win chapters: 13 questions a paper at 14% HARD or less",
-      "21 chapter playbooks with per-subtopic %HARD and drill links",
-      "2025 moves: Gravitation and Ray Optics halved, Units and Measurement entered",
-      "Formula sheet and the ratio, sign and figure traps the paper reuses",
-    ],
-  },
-  {
-    href: "/guide/mht-cet-chemistry",
-    exam: "MHT-CET Chemistry",
-    title: "How MHT-CET Chemistry actually works",
-    blurb:
-      "Every Chemistry paper from 2021 to 2025, all 2,074 questions. Only 3% of them are HARD, so the axis is speed: answer the recall and reaction questions on sight, calculate after, and hand the saved minutes to Physics.",
-    qCount: 2074,
-    yearWindow: "2021-2025 · 42 papers",
-    highlights: [
-      "Three strands by how a question is answered: Recall, Reactions, Calculate",
-      "23 chapter playbooks with the named reactions and formulas each turns on",
-      "2025: Structure of Atom halved, three chapters rose, EASY fell to 42%",
-      "One reference page of reactions, reagents and formulas",
-    ],
-  },
-];
+
+/** The cards live in src/lib/guide/guideCatalog.ts. */
+const GUIDES = getSubjectGuides("mht-cet");
 
 export default function MhtCetGuideIndex() {
   return (
