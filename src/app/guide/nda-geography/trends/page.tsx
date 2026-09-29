@@ -7,6 +7,8 @@ import BrowseLink from "@/app/guide/_components/BrowseLink";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import DriftTable from "@/app/guide/_components/DriftTable";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
+import ReportProvenance from "@/app/guide/_components/ReportProvenance";
+import { trendsReportFor } from "@/lib/guide/trendsReports";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { ROUTES } from "../_data/nda-geography";
@@ -42,6 +44,8 @@ export default async function Trends() {
     counts: r.counts,
   }));
 
+  const report = trendsReportFor("/guide/nda-geography/trends")!;
+
   return (
     <GuideShell
       guideTitle="NDA Geography Guide"
@@ -62,11 +66,12 @@ export default async function Trends() {
       />
       <GuideHero
         eyebrow="Trends"
-        title="NDA Geography 2026 is structurally similar to NDA Geography 2017"
+        title={report.claim}
         subtitle="The most important pattern in NDA Geography trends is the ABSENCE of a monotonic one — UNLIKE Physics (which hardened ~19× per question), Geography has bounced 6% to 42% HARD across the 10-year window with no trajectory. 2018 was an outlier high; 2025 hardened again; 2019 + 2021 were unusually easy. Chapter mix has shifted (Climatology + Earth's Structure grew, World/Human faded), but the difficulty floor is stable. Drill all 10 years equally."
       >
         <StatBlock stats={stats} />
       </GuideHero>
+      <ReportProvenance route="/guide/nda-geography/trends" papers={stats[1].value} questions={stats[2].value} />
 
       {/* The headline NON-hardening callout */}
       <section className="mt-12 rounded-lg border-l-4 border-emerald-500 bg-emerald-50/40 p-5 dark:bg-emerald-950/20">

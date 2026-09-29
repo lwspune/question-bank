@@ -8,6 +8,8 @@ import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import DriftTable from "@/app/guide/_components/DriftTable";
 import ExamPaperMatrix from "@/app/guide/_components/ExamPaperMatrix";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
+import ReportProvenance from "@/app/guide/_components/ReportProvenance";
+import { trendsReportFor } from "@/lib/guide/trendsReports";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { ROUTES } from "../_data/nda-maths";
@@ -42,6 +44,8 @@ export default async function Trends() {
     { value: "15", label: "principles tracked" },
   ];
 
+  const report = trendsReportFor("/guide/nda-maths/trends")!;
+
   return (
     <GuideShell
       guideTitle="NDA Mathematics Guide"
@@ -60,11 +64,12 @@ export default async function Trends() {
       />
       <GuideHero
         eyebrow="Trends"
-        title="NDA Mathematics 2026 is not the NDA Mathematics from 2017"
+        title={report.claim}
         subtitle="The bank's principle distribution drifts year over year. A 10-year window shows the real inflections; the most recent papers are the more accurate forecast of the next one."
       >
         <StatBlock stats={stats} />
       </GuideHero>
+      <ReportProvenance route="/guide/nda-maths/trends" papers={stats[1].value} questions={stats[2].value} />
 
       {/* The big shifts */}
       <section className="mt-12">
