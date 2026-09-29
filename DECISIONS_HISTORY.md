@@ -15,6 +15,14 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-29 (twenty-fifth) — CDS Elementary Mathematics "Inequalities" (2 pages · 13 PYQ · 3 concepts · 3 traps), 100% tagged, on `feat/cds-maths-inequalities`. The twenty-sixth CDS notes chapter; every CDS Elementary Mathematics chapter now has notes.**
+
+**Why two pages.** All 13 stems and solutions were read first. "Linear Inequalities" (10) held two kinds of item: solving for x (with the two quadratic rows, solved the same way by factorising) and reasoning about signs without solving (data-sufficiency items on signs and powers, a negative x, x + 1/x ≥ 2). Each gets a page; the one powers row joined the second.
+
+**Source pass** (`generated-papers/_fix-cds-iq.ts`). Two plain-text solutions rewritten. 31b53528 had an EMPTY solution; it now shows that m/n > 1 and m > 2n together still allow both m > n (n = 1, m = 3) and m < n (n = −2, m = −3), which confirms the stored key. No key changed.
+
+**Judgement calls.** Kept out of featured slots: 55d0c235 (the expression reads q² − 5p − 4 while the question asks for the largest p; its solution names the reading used).
+
 **2026-09-29 (twenty-fourth) — CDS Elementary Mathematics "Sequence and Series" (2 pages · 19 PYQ · 3 concepts · 3 traps), 100% tagged, on `feat/cds-maths-sequences`. The twenty-fifth CDS notes chapter.**
 
 **Why two pages.** All 19 stems and solutions were read first. Ten sum something (AP and GP sums, sums of squares and cubes, telescoping series) and nine ask about the arithmetic, geometric and harmonic means of two numbers, so the three progression buckets became one page. The only two HARD items are telescoping sums, which get their own concept.
