@@ -15,6 +15,14 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-29 (ninth) — CDS Elementary Mathematics "Ratio, Proportion and Variation" (6 pages · 76 PYQ · 11 concepts · 11 traps), 100% tagged, on `feat/cds-maths-ratio`. The eleventh CDS notes chapter and the first of wave 3.**
+
+**Why six pages from four subtopics.** All 76 stems and solutions were read first. "Ratio and Proportion" (40) held three different moves: combining and dividing by ratios (chained A : B : C, splitting a sum, a will), ratios that change inside a story (incomes and savings, ages, fares), and the algebra of equal ratios (put each ratio = k, cross-multiply and factor, componendo and dividendo). Each gets a page. Variation, partnership and mixtures kept their own pages.
+
+**Source pass** (`generated-papers/_fix-cds-ra.ts`). Eighteen plain-text solutions rewritten and re-derived against the stored key. 6742660d carried a bracketed reviewer note about an external key, and 4b507cb1 stated its misprint note twice; both restated. No key changed.
+
+**Judgement calls.** Kept out of featured slots: 8eed5886 (the keyed Rs. 2307 is P's amount AFTER the deduction; the share itself is Rs. 2400, which no option prints — the solution says so), 6742660d (its first statement holds only when k is not ±1, which the stem never says), 4b507cb1 (one option is printed with its exponents missing).
+
 **2026-09-29 (eighth) — CDS Maths wave 2 closes: Algebraic Identities (8 pages · 98 PYQ), Quadratic Equations (9 · 89), Surds and Indices (8 · 82), Statistics (6 · 80) and Polynomials (5 · 79) ship, all 100% tagged; no key changed.**
 - **Statistics is cut by kind of data, not by measure:** ten premise sets ask for the mean, median and mode of one table, so a mean/median/mode split would scatter every set.
 - **A name-keyed lookup broke silently:** `/go/learn` resolves chapters by name, so CDS Statistics and Quadratic Equations re-pointed nda-tracker's NDA links. CDS now yields shared names; nine older NDA/MHT-CET collisions are unchanged and await a decision.
