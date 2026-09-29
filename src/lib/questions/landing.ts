@@ -25,6 +25,7 @@ import { EXAM_REGISTRY, isPracticeOnlyExam } from "@/lib/exam/examContext";
 import { slugifyName, dedupeBySlug, findBySlug } from "@/lib/questions/slugs";
 import { queryQuestions, type QueryResult } from "@/lib/questions/query";
 import { parseFilters } from "@/lib/questions/filters";
+import type { ChapterProfile, LandingSubtopic } from "@/lib/questions/landingSummary";
 
 /**
  * A chapter needs at least this many PUBLIC questions to earn a landing page.
@@ -64,10 +65,25 @@ export type ChapterLanding = {
    * src/lib/seo/lastmod.ts.
    */
   lastAdded: string | null;
+  /**
+   * Years covered, distinct papers and the difficulty split (migration 0126),
+   * or null if that lookup failed — the header then keeps its plain count
+   * sentence rather than claiming anything it cannot back.
+   */
+  profile: ChapterProfile | null;
 };
 
 type FacetRow = { chapter_id: string; q_count: number };
 type LastAddedRow = { chapter_id: string; last_added: string };
+type ProfileRow = {
+  chapter_id: string;
+  min_year: number | null;
+  max_year: number | null;
+  sittings: number;
+  easy_count: number;
+  moderate_count: number;
+  hard_count: number;
+};
 
 /**
  * Build the full routing table: every chapter with enough PUBLIC questions to
@@ -101,7 +117,7 @@ export const listChapterLandings = unstable_cache(
         .order("name");
 
       for (const subject of dedupeBySlug(subjects ?? [])) {
-        const [{ data: chapters }, { data: facets }, lastAddedRes] =
+        const [{ data: chapters }, { data: facets }, lastAddedRes, profileRes] =
           await Promise.all([
             db
               .from("chapters")
@@ -125,6 +141,13 @@ export const listChapterLandings = unstable_cache(
               p_subject_id: subject.id,
               p_kind: kind,
             }),
+            // Years / papers / difficulty split per chapter (migration 0126) —
+            // the quotable header. Same subject scope, same Promise.all, so it
+            // rides questions_filter_idx and costs no extra round-trip.
+            db.rpc("get_chapter_profile", {
+              p_subject_id: subject.id,
+              p_kind: kind,
+            }),
           ]);
 
         // Surfaced, not swallowed: a silent `{ data }` destructure is exactly how
@@ -138,8 +161,27 @@ export const listChapterLandings = unstable_cache(
           );
         }
 
+        if (profileRes.error) {
+          console.warn(
+            `[landing] profile lookup failed for ${subject.name}: ${profileRes.error.message}`
+          );
+        }
+
         const counts = new Map(
           ((facets ?? []) as FacetRow[]).map((f) => [f.chapter_id, f.q_count])
+        );
+        const profileByChapter = new Map<string, ChapterProfile>(
+          ((profileRes.data ?? []) as ProfileRow[]).map((r) => [
+            r.chapter_id,
+            {
+              minYear: r.min_year,
+              maxYear: r.max_year,
+              sittings: r.sittings,
+              easy: r.easy_count,
+              moderate: r.moderate_count,
+              hard: r.hard_count,
+            },
+          ])
         );
         const lastAddedByChapter = new Map(
           ((lastAddedRes.data ?? []) as LastAddedRow[]).map((r) => [
@@ -164,6 +206,7 @@ export const listChapterLandings = unstable_cache(
             questionCount,
             practiceOnly,
             lastAdded: lastAddedByChapter.get(chapter.id) ?? null,
+            profile: profileByChapter.get(chapter.id) ?? null,
           });
         }
       }
@@ -240,6 +283,45 @@ export async function loadLandingQuestions(
     parseFilters(landingFilterParams(landing)),
     LANDING_PAGE_SIZE
   );
+}
+
+/**
+ * The chapter's subtopics with their PUBLIC counts — the "most-asked
+ * subtopics" line of the header. Counts come from the facet aggregate (never
+ * from row payloads); names from one small `subtopics` read. Best-effort: a
+ * failure returns [] and the header simply omits the line.
+ */
+export async function loadLandingSubtopics(
+  landing: ChapterLanding
+): Promise<LandingSubtopic[]> {
+  const db = createSupabaseAnonClient();
+  const { data: facets, error } = await db.rpc("get_subtopic_facets", {
+    p_chapter_ids: [landing.chapterId],
+    p_exam_id: landing.examId,
+    p_subject_id: landing.subjectId,
+    p_difficulties: null,
+    p_pyq_years: null,
+    p_q: null,
+    p_kind: landing.practiceOnly ? "practice" : "pyq",
+  });
+  if (error) {
+    console.warn(`[landing] subtopic facets failed for ${landing.chapterName}: ${error.message}`);
+    return [];
+  }
+  const rows = (facets ?? []) as { subtopic_id: string; q_count: number }[];
+  if (rows.length === 0) return [];
+
+  const { data: names } = await db
+    .from("subtopics")
+    .select("id, name")
+    .in(
+      "id",
+      rows.map((r) => r.subtopic_id)
+    );
+  const nameById = new Map((names ?? []).map((s) => [s.id as string, s.name as string]));
+  return rows
+    .filter((r) => nameById.has(r.subtopic_id))
+    .map((r) => ({ name: nameById.get(r.subtopic_id)!, count: r.q_count }));
 }
 
 /** Deep link into the interactive tool with this chapter's filters pre-applied. */

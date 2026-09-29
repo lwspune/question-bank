@@ -230,6 +230,7 @@ function landing(
     examName: examSlug.toUpperCase(),
     subjectName: "Maths",
     chapterName,
+    profile: null,
     examId: `exam-${examSlug}`,
     subjectId: `subject-${examSlug}`,
     chapterId: `chapter-${chapterName}`,
@@ -253,5 +254,6 @@ function item(
     practiceOnly: false,
     boardExam: false,
     href: `/notes/${slug}`,
+    examId: null,
   };
 }
