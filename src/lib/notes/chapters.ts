@@ -860,6 +860,11 @@ import {
   CDS_LOGARITHMS_NOTES,
   CDS_LOGARITHMS_SLUGS,
 } from "@/app/notes/cds-maths/logarithms/_data";
+import {
+  CDS_SETS_CHAPTER,
+  CDS_SETS_NOTES,
+  CDS_SETS_SLUGS,
+} from "@/app/notes/cds-maths/sets/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2758,6 +2763,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_LOGARITHMS_CHAPTER,
     notes: CDS_LOGARITHMS_NOTES,
     slugs: CDS_LOGARITHMS_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "sets",
+    chipLabel: "Sets notes",
+    chapter: CDS_SETS_CHAPTER,
+    notes: CDS_SETS_NOTES,
+    slugs: CDS_SETS_SLUGS,
   },
 ];
 
