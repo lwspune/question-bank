@@ -16,6 +16,7 @@ import {
   FOUNDER_LINKEDIN_URL,
   FOUNDER_NAME,
   GITHUB_REPO_URL,
+  LINKEDIN_COMPANY_URL,
 } from "@/lib/brand";
 
 const SITE_URL = "https://www.pyqvault.com";
@@ -43,7 +44,7 @@ export function buildSiteJsonLd(): SiteJsonLd {
       name: FOUNDER_NAME,
       sameAs: [FOUNDER_LINKEDIN_URL],
     },
-    sameAs: [GITHUB_REPO_URL],
+    sameAs: [LINKEDIN_COMPANY_URL, GITHUB_REPO_URL],
     areaServed: "IN",
   };
 

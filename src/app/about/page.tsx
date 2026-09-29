@@ -20,7 +20,12 @@ import { Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
-import { CONTACT_EMAIL, FOUNDER_INSTAGRAM_URL, FOUNDER_LINKEDIN_URL } from "@/lib/brand";
+import {
+  CONTACT_EMAIL,
+  FOUNDER_INSTAGRAM_URL,
+  FOUNDER_LINKEDIN_URL,
+  LINKEDIN_COMPANY_URL,
+} from "@/lib/brand";
 import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
 import { getCachedBankYearRange } from "@/lib/exam/bankYears";
 import { examCoverageGroups, joinList } from "@/lib/exam/coverage";
@@ -200,7 +205,16 @@ export default async function AboutPage() {
             </a>
           </p>
           <p className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 font-serif text-muted-foreground">
-            <span>Follow me:</span>
+            <span>Follow:</span>
+            <a
+              href={LINKEDIN_COMPANY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-brand-accent underline"
+            >
+              <Linkedin aria-hidden className="h-3.5 w-3.5" />
+              PYQ Vault on LinkedIn
+            </a>
             <a
               href={LINKEDIN_URL}
               target="_blank"
