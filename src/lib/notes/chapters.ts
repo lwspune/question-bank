@@ -780,6 +780,11 @@ import {
   CDS_ALGEBRAIC_IDENTITIES_NOTES,
   CDS_ALGEBRAIC_IDENTITIES_SLUGS,
 } from "@/app/notes/cds-maths/algebraic-identities/_data";
+import {
+  CDS_QUADRATIC_EQUATIONS_CHAPTER,
+  CDS_QUADRATIC_EQUATIONS_NOTES,
+  CDS_QUADRATIC_EQUATIONS_SLUGS,
+} from "@/app/notes/cds-maths/quadratic-equations/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2502,6 +2507,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_ALGEBRAIC_IDENTITIES_CHAPTER,
     notes: CDS_ALGEBRAIC_IDENTITIES_NOTES,
     slugs: CDS_ALGEBRAIC_IDENTITIES_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "quadratic-equations",
+    chipLabel: "Quadratic Equations notes",
+    chapter: CDS_QUADRATIC_EQUATIONS_CHAPTER,
+    notes: CDS_QUADRATIC_EQUATIONS_NOTES,
+    slugs: CDS_QUADRATIC_EQUATIONS_SLUGS,
   },
 ];
 
