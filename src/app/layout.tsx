@@ -8,6 +8,7 @@ import { CartProvider } from "@/lib/cart/CartProvider";
 import { BookmarksProvider } from "@/lib/bookmarks/BookmarksProvider";
 import { MobilePromptProvider } from "@/lib/profile/MobilePromptProvider";
 import "./globals.css";
+import { buildSiteJsonLd } from "@/lib/seo/siteJsonLd";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,6 +35,12 @@ const devanagari = Noto_Serif_Devanagari({
 
 const SITE_URL = "https://www.pyqvault.com";
 const SITE_NAME = "PYQ Vault";
+
+// Site-wide Organization + WebSite structured data (lib/seo/siteJsonLd.ts):
+// who "PYQ Vault" is, once, on every page. Static JSON — no cookies, no
+// request data — so it cannot de-cache anything (see the shell-component
+// pitfall in CLAUDE.md).
+const siteJsonLd = JSON.stringify(buildSiteJsonLd());
 const SITE_DESCRIPTION =
   "Free past-year question banks for NDA, JEE Mains, NEET, MHT-CET, CDS and Maharashtra Board. Filter PYQs by chapter, difficulty and year, take timed mock tests, download question papers with answer keys, and learn from strategy guides and concept notes. Browse free, no sign-up.";
 
@@ -94,6 +101,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${inter.variable} ${sourceSerif.variable} ${devanagari.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: siteJsonLd }} />
       </head>
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         <CartProvider>

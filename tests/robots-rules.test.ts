@@ -101,3 +101,30 @@ describe("robotsAllows precedence", () => {
     );
   });
 });
+
+/**
+ * OpenAI's search crawler and its live-fetch agent are named explicitly
+ * (2026-09-29). A NAMED group REPLACES the wildcard group for that agent, so
+ * each one must carry the wildcard's disallows too — a bare "Allow: /" would
+ * free exactly these bots to walk the filtered browse space and /dashboard.
+ * Asserted rule for rule, in both directions.
+ */
+describe("named AI search agents", () => {
+  const groups = Array.isArray(rule) ? rule : [rule];
+  const wildcard = groups.find((g) => g.userAgent === "*")!;
+  const named = ["OAI-SearchBot", "ChatGPT-User"];
+
+  it.each(named)("declares a group for %s", (agent) => {
+    expect(groups.some((g) => g.userAgent === agent)).toBe(true);
+  });
+
+  it.each(named)("%s carries exactly the wildcard's allow and disallow lists", (agent) => {
+    const g = groups.find((x) => x.userAgent === agent)!;
+    expect(g.allow).toEqual(wildcard.allow);
+    expect(g.disallow).toEqual(wildcard.disallow);
+  });
+
+  it("does not name the training crawler — GPTBot falls to the wildcard, as before", () => {
+    expect(groups.some((g) => g.userAgent === "GPTBot")).toBe(false);
+  });
+});
