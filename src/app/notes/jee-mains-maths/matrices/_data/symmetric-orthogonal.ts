@@ -6,7 +6,7 @@ export const SYMMETRIC_ORTHOGONAL_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Three matrix families defined by how A relates to its transpose — symmetric (A = Aᵀ), skew-symmetric (A = −Aᵀ, forcing a zero diagonal), and orthogonal (AAᵀ = I, so A⁻¹ = Aᵀ) — each carrying tell-tale determinant and structure facts JEE tests relentlessly.",
   whyItMatters:
-    "Fourteen PYQs, every one MODERATE — this is one of the most reliably recurring Matrices themes in " +
+    "Fifteen PYQs, every one MODERATE — this is one of the most reliably recurring Matrices themes in " +
     "JEE Mains. The questions cluster into a few fixed shapes: counting symmetric/skew matrices over an " +
     "entry set, splitting A into its symmetric and skew parts, tracking whether a product like ABᵀ or " +
     "A¹³B²⁶ comes out symmetric or skew, the XᵀAX = 0 characterisation of skew matrices, and orthogonal/" +

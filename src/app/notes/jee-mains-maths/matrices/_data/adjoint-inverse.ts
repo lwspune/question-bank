@@ -6,7 +6,7 @@ export const ADJOINT_INVERSE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The identity toolkit that turns adjoint, inverse and determinant questions into one-line exponent arithmetic — det(AB)=det A·det B, |adj A|=|A|ⁿ⁻¹, adj(adj A)=|A|ⁿ⁻² A, and A⁻¹=adj A/|A|.",
   whyItMatters:
-    "Twenty-five PYQs, and JEE Mains repeats this cluster almost every session. Very few of them ask you to actually compute an adjoint or an inverse entry-by-entry — the paper rewards students who KNOW the identities cold and finish in three lines of exponent arithmetic. " +
+    "Thirty-seven PYQs, and JEE Mains repeats this cluster almost every session. Very few of them ask you to actually compute an adjoint or an inverse entry-by-entry — the paper rewards students who KNOW the identities cold and finish in three lines of exponent arithmetic. " +
     "The heaviest hitter is the adjoint-of-adjoint family: for a 3×3 matrix, adj(adj A)=|A|·A and |adj(adj A)|=|A|⁴, and getting the order n and the power right is the whole question. " +
     "The rest split between the Cayley–Hamilton route to a 2×2 inverse (A⁻¹=αA+βI), invertibility conditions (det≠0), and a few counting/special-inverse twists. Seven concepts cover every one.",
   concepts: [

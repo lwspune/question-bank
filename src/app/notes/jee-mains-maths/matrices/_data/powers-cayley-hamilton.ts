@@ -6,9 +6,9 @@ export const POWERS_CAYLEY_HAMILTON_NOTE: SubtopicNote = {
   oneLineDefinition:
     "To find a high power of a matrix you almost never multiply it out — you spot a structure (a cycle, a nilpotent shift, an idempotent, or the matrix's own characteristic equation) that collapses every power into a simple pattern.",
   whyItMatters:
-    "Forty-four PYQs, one from almost every JEE Mains sitting 2021-2025 — the single most-tested idea in the Matrices chapter, and all MODERATE. " +
+    "Fifty PYQs, one from almost every JEE Mains sitting 2021-2026 — the single most-tested idea in the Matrices chapter, and all MODERATE. " +
     "Nobody computes A raised to 2007 by hand: the exam rewards recognising WHICH shortcut applies. " +
-    "The nine tools below — cyclic powers, the nilpotent A = I + N binomial, idempotent/involutory reductions, the Cayley-Hamilton equation, polynomial recurrences, sums of powers, conjugation P^{-1}BP, period-counting, and eigenvalue/trace-determinant reasoning — between them crack every one of these 44 questions in under two minutes.",
+    "The nine tools below — cyclic powers, the nilpotent A = I + N binomial, idempotent/involutory reductions, the Cayley-Hamilton equation, polynomial recurrences, sums of powers, conjugation P^{-1}BP, period-counting, and eigenvalue/trace-determinant reasoning — between them crack every one of these 50 questions in under two minutes.",
   concepts: [
     // 1 — cyclic / pattern powers
     {
