@@ -64,7 +64,7 @@ export const RELATION_TYPES_FN_NOTE: SubtopicNote = {
         "An equivalence relation has all three properties. Its usual shape is '\\(aRb\\) when \\(g(a)=g(b)\\)' for some function \\(g\\), and every relation of that shape is an equivalence. Rewrite the condition into that shape: '\\(2a+3b\\) is a multiple of 5' is the same as '\\(a\\) and \\(b\\) leave the same remainder on division by 5'. The classes split the set into disjoint pieces, one for each value of \\(g\\).",
       definition:
         "- **Equivalence:** reflexive, symmetric and transitive.\n" +
-        "- \\(aRb\\iff g(a)=g(b)\\) is always an equivalence.\n" +
+        "- \\(aRb\\iff g(a)=g(b)\\) is always an equivalence (\\(\\iff\\) reads 'if and only if').\n" +
         "- **Class of \\(a\\):** all \\(b\\) with \\(bRa\\). Classes are disjoint and cover the set.\n" +
         "- Classes of sizes \\(k_1,k_2,\\dots\\) give a relation with \\(k_1^2+k_2^2+\\dots\\) pairs.",
       formula: {
