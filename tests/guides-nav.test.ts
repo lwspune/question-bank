@@ -20,10 +20,11 @@ describe("getGuideExamGroups", () => {
     expect(groups.map((g) => g.slug)).toEqual(expected.map((e) => e.slug));
   });
 
-  it("includes NDA and MHT-CET today", () => {
+  it("includes NDA, MHT-CET and CDS today", () => {
     const slugs = getGuideExamGroups().map((g) => g.slug);
     expect(slugs).toContain("nda");
     expect(slugs).toContain("mht-cet");
+    expect(slugs).toContain("cds"); // /guide/cds since 2026-09-29
   });
 
   it("excludes exams with no guide subtree", () => {
@@ -31,7 +32,6 @@ describe("getGuideExamGroups", () => {
     // These have notes and/or a bank but no /guide subtree.
     expect(slugs).not.toContain("jee-mains");
     expect(slugs).not.toContain("neet");
-    expect(slugs).not.toContain("cds");
   });
 
   it("preserves EXAM_REGISTRY order", () => {

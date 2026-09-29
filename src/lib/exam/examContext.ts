@@ -250,7 +250,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "graduate",
     displayName: "CDS",
     examName: "CDS", // must match the `exams` DB row exactly
-    guidesPath: null, // no /guide subtree yet — falls back to the index
+    guidesPath: "/guide/cds", // hub: CDS Maths (Template C, 2026-09-29)
     notesPath: "/notes/cds", // exam hub: live since 2026-09-15 (Mathematics — Number System)
     hasMocks: true, // CDS English mocks (2017-I … 2026-I) published at /mock
   },

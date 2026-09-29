@@ -8,11 +8,10 @@
  * /notes had one, and the guide index/hubs had none.
  *
  * DELIBERATELY THINNER THAN notesNav.ts. That module also groups SUBJECTS,
- * because /notes derives everything from the NOTES_CHAPTERS registry. Guides
- * have no such registry — each hub hardcodes its own list of subject guides
- * (NDA 10 entries, MHT-CET 1) — so this only models the exam level, which is
- * all the rail needs. If a hub ever has to become data-driven, or the rail has
- * to show subjects, that missing registry is the piece to build first.
+ * because /notes derives everything from the NOTES_CHAPTERS registry. The
+ * guide equivalent is GUIDE_CATALOG (src/lib/guide/guideCatalog.ts, 2026-09-29),
+ * which the per-exam hubs read; the rail only models the exam level, which is
+ * all it needs. If the rail ever has to show subjects, read them from there.
  *
  * Pure (no DB / no React); unit-tested in tests/guides-nav.test.ts.
  */

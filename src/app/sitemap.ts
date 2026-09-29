@@ -21,6 +21,8 @@ import { ROUTES as CET_PHYSICS_ROUTES } from "@/app/guide/mht-cet-physics/_data/
 import { PLAYBOOK_SLUGS as CET_PHYSICS_PLAYBOOK_SLUGS } from "@/app/guide/mht-cet-physics/_data/playbooks";
 import { ROUTES as CET_CHEMISTRY_ROUTES } from "@/app/guide/mht-cet-chemistry/_data/mht-cet-chemistry";
 import { PLAYBOOK_SLUGS as CET_CHEMISTRY_PLAYBOOK_SLUGS } from "@/app/guide/mht-cet-chemistry/_data/playbooks";
+import { ROUTES as CDS_MATHS_ROUTES } from "@/app/guide/cds-maths/_data/cds-maths";
+import { PLAYBOOK_SLUGS as CDS_MATHS_PLAYBOOK_SLUGS } from "@/app/guide/cds-maths/_data/playbooks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { listPosts } from "@/lib/blog/posts";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
@@ -387,6 +389,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     ...CET_CHEMISTRY_PLAYBOOK_SLUGS.map((slug) => ({
       url: `${SITE_URL}/guide/mht-cet-chemistry/playbooks/${slug}`,
+      lastModified: buildDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+    // CDS — the exam hub, then the Maths guide (Template C).
+    {
+      url: `${SITE_URL}/guide/cds`,
+      lastModified: buildDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
+    ...CDS_MATHS_ROUTES.map((r) => ({
+      url: r.slug ? `${SITE_URL}/guide/cds-maths/${r.slug}` : `${SITE_URL}/guide/cds-maths`,
+      lastModified: buildDate,
+      changeFrequency: "weekly" as const,
+      priority: r.slug === "" ? 0.9 : 0.8,
+    })),
+    ...CDS_MATHS_PLAYBOOK_SLUGS.map((slug) => ({
+      url: `${SITE_URL}/guide/cds-maths/playbooks/${slug}`,
       lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: 0.7,

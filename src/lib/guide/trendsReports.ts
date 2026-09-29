@@ -107,6 +107,13 @@ export const TRENDS_REPORTS: readonly TrendsReport[] = [
     claim: "MHT-CET Chemistry, 2021 to 2025: what the 2025 paper moved, shift by shift",
     dataThrough: "MHT-CET 2025",
   },
+  {
+    route: "/guide/cds-maths/trends",
+    exam: "CDS",
+    subject: "Mathematics",
+    claim: "CDS Maths, 2016 to 2026: 2,096 questions, and Trigonometry up from 9 to 13 a paper",
+    dataThrough: "CDS II 2026",
+  },
 ];
 
 export function trendsReportFor(route: string): TrendsReport | null {

@@ -29,6 +29,7 @@ import { STRATEGY_HEADLINE as BIOLOGY_HEADLINE } from "@/app/guide/nda-biology/_
 import { STRATEGY_HEADLINE as CET_MATHS_HEADLINE } from "@/app/guide/mht-cet-maths/_data/strategy";
 import { STRATEGY_HEADLINE as CET_PHYSICS_HEADLINE } from "@/app/guide/mht-cet-physics/_data/strategy";
 import { STRATEGY_HEADLINE as CET_CHEMISTRY_HEADLINE } from "@/app/guide/mht-cet-chemistry/_data/strategy";
+import { STRATEGY_HEADLINE as CDS_MATHS_HEADLINE } from "@/app/guide/cds-maths/_data/strategy";
 
 type Headline = {
   paperQ: number;
@@ -48,7 +49,7 @@ type Headline = {
  * headline. Making the scheme explicit data is what keeps the invariant
  * meaningful for both.
  */
-type MarkingScheme = "nda-one-third" | "none";
+type MarkingScheme = "one-third" | "none";
 
 type GuideSpec = {
   guide: string;
@@ -59,16 +60,18 @@ type GuideSpec = {
 };
 
 const GUIDES: GuideSpec[] = [
-  { guide: "nda-maths",     headline: MATHS_HEADLINE,     examName: "NDA",     subjectName: "Mathematics", marking: "nda-one-third" },
-  { guide: "nda-english",   headline: ENGLISH_HEADLINE,   examName: "NDA",     subjectName: "English",     marking: "nda-one-third" },
-  { guide: "nda-physics",   headline: PHYSICS_HEADLINE,   examName: "NDA",     subjectName: "Physics",     marking: "nda-one-third" },
-  { guide: "nda-chemistry", headline: CHEMISTRY_HEADLINE, examName: "NDA",     subjectName: "Chemistry",   marking: "nda-one-third" },
-  { guide: "nda-biology",   headline: BIOLOGY_HEADLINE,   examName: "NDA",     subjectName: "Biology",     marking: "nda-one-third" },
+  { guide: "nda-maths",     headline: MATHS_HEADLINE,     examName: "NDA",     subjectName: "Mathematics", marking: "one-third" },
+  { guide: "nda-english",   headline: ENGLISH_HEADLINE,   examName: "NDA",     subjectName: "English",     marking: "one-third" },
+  { guide: "nda-physics",   headline: PHYSICS_HEADLINE,   examName: "NDA",     subjectName: "Physics",     marking: "one-third" },
+  { guide: "nda-chemistry", headline: CHEMISTRY_HEADLINE, examName: "NDA",     subjectName: "Chemistry",   marking: "one-third" },
+  { guide: "nda-biology",   headline: BIOLOGY_HEADLINE,   examName: "NDA",     subjectName: "Biology",     marking: "one-third" },
   // Subject literal is "Maths", not "Mathematics" — MHT-CET and JEE use the
   // short form in the DB while NDA uses the long one.
   { guide: "mht-cet-maths", headline: CET_MATHS_HEADLINE, examName: "MHT-CET", subjectName: "Maths",       marking: "none" },
   { guide: "mht-cet-physics", headline: CET_PHYSICS_HEADLINE, examName: "MHT-CET", subjectName: "Physics", marking: "none" },
   { guide: "mht-cet-chemistry", headline: CET_CHEMISTRY_HEADLINE, examName: "MHT-CET", subjectName: "Chemistry", marking: "none" },
+  // CDS shares the one-third rule with NDA: 1 mark right, 1/3 lost wrong, on a 100-question paper.
+  { guide: "cds-maths", headline: CDS_MATHS_HEADLINE, examName: "CDS", subjectName: "Mathematics", marking: "one-third" },
 ];
 
 const HAS_ENV =
@@ -86,7 +89,7 @@ describe("STRATEGY_HEADLINE — internal invariants (pure)", () => {
       });
 
       it("penaltyPerWrong matches the exam's declared marking scheme", () => {
-        if (marking === "nda-one-third") {
+        if (marking === "one-third") {
           expect(headline.penaltyPerWrong).toBeCloseTo(
             headline.marksPerCorrect / 3,
             2 // allow rounding (NDA Maths uses 0.83, exact would be 0.833)

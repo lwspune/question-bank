@@ -718,6 +718,25 @@ describe("getQuestionResources — MHT-CET Maths guide (Template C)", () => {
     expect(res.guide?.href).toBe("/guide/mht-cet-physics/playbooks/ray-optics");
   });
 
+  it("links a CDS Maths chapter to its own playbook", () => {
+    // The DB chapter name differs from the playbook slug.
+    const res = call({
+      examName: "CDS",
+      subjectName: "Mathematics",
+      chapterName: "Trigonometric Ratios and Identities",
+      subtopicName: null,
+    });
+    expect(res.guide?.href).toBe("/guide/cds-maths/playbooks/trigonometry");
+  });
+
+  it("keeps CDS and NDA apart where both banks share a chapter name", () => {
+    // "Statistics" is a Mathematics chapter in both banks, and both subjects are named "Mathematics".
+    const cds = call({ examName: "CDS", subjectName: "Mathematics", chapterName: "Statistics", subtopicName: null });
+    const nda = call({ examName: "NDA", subjectName: "Mathematics", chapterName: "Statistics", subtopicName: null });
+    expect(cds.guide?.href).toBe("/guide/cds-maths/playbooks/statistics");
+    expect(nda.guide?.href ?? "").not.toContain("cds-maths");
+  });
+
   it("does not leak an NDA chapter name into the MHT-CET guide", () => {
     // "Vectors" is a chapter in BOTH banks; the registry is keyed by
     // (exam, subject) so each must resolve to its own guide.

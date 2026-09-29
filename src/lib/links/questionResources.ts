@@ -27,6 +27,7 @@ import { PLAYBOOKS as NDA_POLITY_PLAYBOOKS } from "@/app/guide/nda-polity/_data/
 import { PLAYBOOKS as MHT_CET_MATHS_PLAYBOOKS } from "@/app/guide/mht-cet-maths/_data/playbooks";
 import { PLAYBOOKS as MHT_CET_PHYSICS_PLAYBOOKS } from "@/app/guide/mht-cet-physics/_data/playbooks";
 import { PLAYBOOKS as MHT_CET_CHEMISTRY_PLAYBOOKS } from "@/app/guide/mht-cet-chemistry/_data/playbooks";
+import { PLAYBOOKS as CDS_MATHS_PLAYBOOKS } from "@/app/guide/cds-maths/_data/playbooks";
 import { getSubtopicNotesEntry } from "@/lib/notes/subtopicSlugRegistry";
 import { getNotesChapterEntry } from "./notesIndex";
 import { getPrincipleName, getConceptName } from "./tagNames";
@@ -107,6 +108,8 @@ const CHAPTER_KEYED_GUIDES: ReadonlyArray<{
   { exam: "MHT-CET", subject: "Maths", guideSlug: "mht-cet-maths", playbooks: MHT_CET_MATHS_PLAYBOOKS },
   { exam: "MHT-CET", subject: "Physics", guideSlug: "mht-cet-physics", playbooks: MHT_CET_PHYSICS_PLAYBOOKS },
   { exam: "MHT-CET", subject: "Chemistry", guideSlug: "mht-cet-chemistry", playbooks: MHT_CET_CHEMISTRY_PLAYBOOKS },
+  // CDS Maths is Template C too. Its subject literal is "Mathematics", like NDA's — the key is (exam, subject).
+  { exam: "CDS", subject: "Mathematics", guideSlug: "cds-maths", playbooks: CDS_MATHS_PLAYBOOKS },
 ];
 
 const chapterKeyedKey = (exam: string, subject: string) => `${exam}::${subject}`;
@@ -146,9 +149,9 @@ function resolveGuide(
   input: ResourceInput,
   tags?: ResourceTags
 ): ResourceLink | null {
-  // MHT-CET (Template C) — chapter-grain playbooks only; this exam has no
-  // principle axis, so it never touches the principle-tag path below.
-  if (input.examName === "MHT-CET") {
+  // MHT-CET and CDS (Template C) — chapter-grain playbooks only; neither exam
+  // has a principle axis, so they never touch the principle-tag path below.
+  if (input.examName === "MHT-CET" || input.examName === "CDS") {
     const ck = CHAPTER_KEYED_BY_SUBJECT.get(
       chapterKeyedKey(input.examName, input.subjectName)
     );

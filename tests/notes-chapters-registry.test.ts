@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import * as path from "node:path";
 import { describe, it, expect } from "vitest";
 import {
   NOTES_CHAPTERS,
@@ -34,6 +36,29 @@ describe("NOTES_CHAPTERS registry shape", () => {
         expect(noteKeys.has(slug)).toBe(true);
       }
     }
+  });
+
+  // Every subject landing links /notes/<subjectRoute>/<chapterSlug>, so a registered chapter without
+  // its own page.tsx is a 404 behind a live link. 22 CDS Maths chapters were merged that way on
+  // 2026-09-29 (the subtopic pages existed; the chapter landing did not) and no gate noticed.
+  it("every registered chapter has a chapter landing page", () => {
+    const missing = NOTES_CHAPTERS.filter(
+      (c) => !existsSync(path.join(process.cwd(), "src", "app", "notes", c.subjectRoute, c.chapterSlug, "page.tsx"))
+    ).map((c) => `${c.subjectRoute}/${c.chapterSlug}`);
+    expect(missing).toEqual([]);
+  });
+
+  // Every notes chapter and subtopic page links "<subject> strategy" to /guide/<subjectRoute>
+  // unconditionally, so a notes subject without a guide ships a 404 on every page. The allow-list is
+  // the known debt (SUGGESTIONS.md backfill ledger, 2026-09-29) — it may shrink, never grow.
+  it("every notes subject has the strategy guide its pages link to", () => {
+    const KNOWN_MISSING = new Set(["jee-mains-maths"]);
+    const routes = [...new Set(NOTES_CHAPTERS.map((c) => c.subjectRoute))];
+    const missing = routes.filter(
+      (r) => !KNOWN_MISSING.has(r) && !existsSync(path.join(process.cwd(), "src", "app", "guide", r, "page.tsx"))
+    );
+    expect(missing).toEqual([]);
+    for (const r of KNOWN_MISSING) expect(routes, `${r} left the registry — drop it from KNOWN_MISSING`).toContain(r);
   });
 
   it("(subjectRoute, chapterSlug) pairs are unique across the registry", () => {
