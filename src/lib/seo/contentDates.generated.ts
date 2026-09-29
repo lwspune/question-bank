@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 191
+ * Entries: 192
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -52,8 +52,9 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/cds-maths/trigonometry": "2026-09-28T21:33:03+05:30",
   "/notes/cds-maths/tsd": "2026-09-29T13:41:18+05:30",
   "/notes/jee-mains-maths/conic-sections": "2026-09-29T19:30:25+05:30",
+  "/notes/jee-mains-maths/definite-integration": "2026-09-30T00:44:09+05:30",
   "/notes/jee-mains-maths/matrices": "2026-09-29T17:27:54+05:30",
-  "/notes/jee-mains-maths/relations-and-functions": "2026-09-30T00:24:07+05:30",
+  "/notes/jee-mains-maths/relations-and-functions": "2026-09-30T00:24:59+05:30",
   "/notes/jee-mains-maths/sequences-and-series": "2026-09-30T00:04:47+05:30",
   "/notes/jee-mains-maths/three-dimensional-geometry": "2026-09-29T23:37:59+05:30",
   "/notes/mht-cet-chemistry/alcohols-phenols-and-ethers": "2026-09-28T18:05:54+05:30",
