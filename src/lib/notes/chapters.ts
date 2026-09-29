@@ -900,6 +900,11 @@ import {
   JEE_FUNCTIONS_NOTES,
   JEE_FUNCTIONS_SLUGS,
 } from "@/app/notes/jee-mains-maths/relations-and-functions/_data";
+import {
+  JEE_DEFINITE_INTEGRATION_CHAPTER,
+  JEE_DEFINITE_INTEGRATION_NOTES,
+  JEE_DEFINITE_INTEGRATION_SLUGS,
+} from "@/app/notes/jee-mains-maths/definite-integration/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2886,6 +2891,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_FUNCTIONS_CHAPTER,
     notes: JEE_FUNCTIONS_NOTES,
     slugs: JEE_FUNCTIONS_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "definite-integration",
+    chipLabel: "Definite Integration notes",
+    chapter: JEE_DEFINITE_INTEGRATION_CHAPTER,
+    notes: JEE_DEFINITE_INTEGRATION_NOTES,
+    slugs: JEE_DEFINITE_INTEGRATION_SLUGS,
   },
 ];
 
