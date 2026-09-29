@@ -15,6 +15,14 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-29 (fourteenth) — CDS Elementary Mathematics "Percentage, Profit and Loss" (4 pages · 50 PYQ · 7 concepts · 10 traps), 100% tagged, on `feat/cds-maths-percentage`. The sixteenth CDS notes chapter.**
+
+**Why four pages.** All 50 stems and solutions were read first. "Percentage" (26) held two different moves: taking a percentage OF a base (pass marks, populations, what-per-cent-of, more-than versus less-than) and chaining percentage CHANGES (area from two sides, rent times rooms, a rise then a fall, price against consumption). Each gets a page. The single discount row filed under "Profit, Loss and Discount" joined the discount page, and the rest became "Profit and Loss", whose second concept is profit hidden in quantities (false weights, lost goods, the cost of 100 equal to the price of 80).
+
+**Source pass** (`generated-papers/_fix-cds-pp.ts`). Twenty-one plain-text solutions rewritten in LaTeX and re-derived against the stored key. No key changed.
+
+**Judgement calls.** Kept out of featured slots: 185f495e (the options print '%' after a rupee amount; its solution says so), dd531bfa (keyed 'None of the above', the 80% it computes being unprinted).
+
 **2026-09-29 (thirteenth) — CDS Elementary Mathematics "Data Interpretation" (4 pages · 52 PYQ · 6 concepts · 8 traps), 100% tagged, on `feat/cds-maths-data-interpretation`. The fifteenth CDS notes chapter.**
 
 **Why no re-cut.** All 52 stems and solutions were read first. The bank already files the chapter by kind of display, and all 13 premise sets sit wholly on one display, so a cut by skill (percentages, averages) would have split sets across pages. The skills are instead the concepts within each page: tables carry a percentage concept and an averages concept, pie charts an angle-share-count concept and a different-totals concept.
