@@ -421,12 +421,12 @@
     "86": {
       "subject": "Maths",
       "chapter": "Integrals",
-      "subtopic": "Definite Integrals"
+      "subtopic": "Integral Equations and Leibniz's Rule"
     },
     "87": {
       "subject": "Maths",
       "chapter": "Integrals",
-      "subtopic": "Definite Integrals"
+      "subtopic": "Greatest Integer, Modulus and Max-Min Integrands"
     },
     "88": {
       "subject": "Maths",
@@ -766,12 +766,12 @@
     "156": {
       "subject": "Maths",
       "chapter": "Integrals",
-      "subtopic": "Properties of Definite Integrals"
+      "subtopic": "Odd, Even and Periodic Integrands"
     },
     "157": {
       "subject": "Maths",
       "chapter": "Integrals",
-      "subtopic": "Definite Integrals"
+      "subtopic": "Limits of Sums as Integrals"
     },
     "158": {
       "subject": "Maths",
@@ -1104,7 +1104,7 @@
     "153": "From \\(x+2z=1\\) and \\(3x+y+z=4\\): \\(x=1-2z,\\ y=1+5z\\). Substituting in the first equation gives \\((3+\\alpha)z=0\\), so for a unique solution \\(z=0\\) and \\((x^*,y^*,z^*)=(1,1,0)\\). Collinearity of \\((\\alpha,1),(1,\\alpha),(1,-1)\\): two points share \\(x=1\\), forcing \\(\\alpha=1\\); or \\((1,\\alpha)=(1,-1)\\) giving \\(\\alpha=-1\\). Sum of absolute values \\(=|1|+|-1|=2\\).",
     "154": "Write \\(3x+2y=x+x+x+y+y\\) and apply AM-GM to the five terms: \\(\\frac{3x+2y}{5}\\ge\\left(x^3y^2\\right)^{1/5}=\\left(2^{15}\\right)^{1/5}=2^3=8\\). Hence \\(3x+2y\\ge 40\\), the least value.",
     "155": "On \\((-2,-1)\\), \\(\\frac{\\sin(x+2)}{x+2}\\) is smooth. On \\((-1,1)\\), \\([|x|]=0\\) so \\(f=\\max\\{2x,0\\}\\), continuous with a corner at \\(x=0\\). At \\(x=-1\\): left limit \\(\\sin 1\\), value \\(1\\), right limit \\(0\\Rightarrow\\) discontinuous. At \\(x=1\\): left limit \\(2\\), value \\(1\\Rightarrow\\) discontinuous. So \\(m=2\\) (at \\(x=\\pm1\\)); non-differentiable at \\(x=-1,1\\) and the corner \\(x=0\\), so \\(n=3\\). Thus \\((m,n)=(2,3)\\).",
-    "156": "Since \\(g(x)=\\frac{1}{\\sin^6x+\\cos^6x}\\) is even, \\(\\int_{-\\pi/2}^{\\pi/2}\\frac{g(x)}{1+e^x}dx=\\int_0^{\\pi/2}g(x)\\,dx\\). Now \\(\\sin^6x+\\cos^6x=\\cos^2x+\\frac14\\sin^2\\cdot\\) ... using \\(1-\\tfrac34\\sin^2 2x\\), the integral reduces to \\(\\int_0^{\\pi/2}\\frac{du}{\\cos^2u+\\frac14\\sin^2u}=\\frac{\\pi}{2\\cdot1\\cdot\\frac12}=\\pi\\).",
+    "156": "\\(g(x)=\\frac1{\\sin^6x+\\cos^6x}\\) is even, so \\(\\int_{-\\pi/2}^{\\pi/2}\\frac{g(x)}{1+e^x}dx=\\int_0^{\\pi/2}g(x)\\,dx\\). Divide by \\(\\cos^6x\\) and put \\(t=\\tan x\\): \\(\\int_0^\\infty\\frac{(1+t^2)^2}{1+t^6}dt=\\int_0^\\infty\\frac{1+t^2}{t^4-t^2+1}dt\\). Dividing by \\(t^2\\) and putting \\(u=t-\\frac1t\\) gives \\(\\int_{-\\infty}^{\\infty}\\frac{du}{u^2+1}=\\pi\\).",
     "157": "The general term is \\(\\frac{n^2}{(n^2+r^2)(n+r)}=\\frac1n\\cdot\\frac{1}{\\left(1+(r/n)^2\\right)(1+r/n)}\\), so the limit is \\(\\int_0^1\\frac{dx}{(1+x^2)(1+x)}\\). Partial fractions give \\(\\int_0^1\\left(\\frac{1/2}{1+x}+\\frac{-x/2+1/2}{1+x^2}\\right)dx=\\frac12\\ln2-\\frac14\\ln2+\\frac12\\cdot\\frac{\\pi}{4}=\\frac{\\pi}{8}+\\frac14\\log_e 2\\).",
     "158": "Tangent at \\(P(x,y)\\) meets the x-axis at \\(Q\\left(x-\\frac{y}{y'},0\\right)\\). The y-axis bisects \\(PQ\\) means the midpoint x-coordinate is \\(0\\): \\(2x-\\frac{y}{y'}=0\\Rightarrow\\frac{dy}{dx}=\\frac{y}{2x}\\). Integrating, \\(y^2=Cx\\); through \\((3,3)\\) gives \\(y^2=3x\\), a parabola with latus rectum \\(3\\).",
     "159": "With vertex \\((a,0)\\) and the opposite side vertical at \\(x_0=a\\cos t,\\ y_0=2\\sin t\\), area \\(=y_0(a-x_0)=2a\\sin t(1-\\cos t)\\). Maximizing gives \\(\\cos t=\\cos 2t\\Rightarrow t=\\frac{2\\pi}{3}\\), so area \\(=\\frac{3\\sqrt3}{2}a=6\\sqrt3\\Rightarrow a=4\\). Then \\(e=\\sqrt{1-\\frac{4}{16}}=\\frac{\\sqrt3}{2}\\).",
