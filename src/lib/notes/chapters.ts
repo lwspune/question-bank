@@ -840,6 +840,11 @@ import {
   CDS_TIME_WORK_NOTES,
   CDS_TIME_WORK_SLUGS,
 } from "@/app/notes/cds-maths/time-work/_data";
+import {
+  CDS_HEIGHTS_CHAPTER,
+  CDS_HEIGHTS_NOTES,
+  CDS_HEIGHTS_SLUGS,
+} from "@/app/notes/cds-maths/heights/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2694,6 +2699,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_TIME_WORK_CHAPTER,
     notes: CDS_TIME_WORK_NOTES,
     slugs: CDS_TIME_WORK_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "heights",
+    chipLabel: "Heights and Distances notes",
+    chapter: CDS_HEIGHTS_CHAPTER,
+    notes: CDS_HEIGHTS_NOTES,
+    slugs: CDS_HEIGHTS_SLUGS,
   },
 ];
 
