@@ -79,6 +79,11 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 **Judgement calls.** Kept out of featured slots: 8eed5886 (the keyed Rs. 2307 is P's amount AFTER the deduction; the share itself is Rs. 2400, which no option prints — the solution says so), 6742660d (its first statement holds only when k is not ±1, which the stem never says), 4b507cb1 (one option is printed with its exponents missing).
 
+**2026-09-29 (seventeenth) — CDS Maths wave 3 closes: Ratio (6 pages · 76 PYQ), Time, Speed and Distance (7 · 75), Circles (7 · 69), Quadrilaterals (5 · 54), Data Interpretation (4 · 52), Percentage, Profit and Loss (4 · 50), Averages (3 · 47) and Time and Work (4 · 46) ship, all 100% tagged; no key changed.**
+- **Two derived keys disagree on one idea:** 168349e9 (2022-II) accepts a similarity statement whose vertices are out of order, d8ca84ec (2026-I) rejects one; both keys are left, neither is featured, and the pair awaits a decision.
+- **A re-cut refusal came after the bank was written:** a withheld Time and Work row stopped reshape.ts only after the bank and catalog.json had moved; data files are now checked first (`reshapeFiles.ts`, tested).
+- **Data Interpretation was not re-cut:** all 13 premise sets sit on one display each, so a skill-based cut would split them. Long forms in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
+
 **2026-09-29 (eighth) — CDS Maths wave 2 closes: Algebraic Identities (8 pages · 98 PYQ), Quadratic Equations (9 · 89), Surds and Indices (8 · 82), Statistics (6 · 80) and Polynomials (5 · 79) ship, all 100% tagged; no key changed.**
 - **Statistics is cut by kind of data, not by measure:** ten premise sets ask for the mean, median and mode of one table, so a mean/median/mode split would scatter every set.
 - **A name-keyed lookup broke silently:** `/go/learn` resolves chapters by name, so CDS Statistics and Quadratic Equations re-pointed nda-tracker's NDA links. CDS now yields shared names; nine older NDA/MHT-CET collisions are unchanged and await a decision.
