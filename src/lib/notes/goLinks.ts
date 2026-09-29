@@ -43,12 +43,19 @@ const BY_NAME: Map<string, SubtopicLocation> = new Map();
 // chapters (root-cause concepts), not individual subtopics. Keyed by chapter
 // name alone — same last-write-wins convention as BY_NAME (a name shared across
 // exams resolves to the last-registered notes chapter).
+//
+// EXCEPTION: a CDS chapter never takes a name another chapter already holds.
+// /go/learn is nda-tracker's "Learn this" target and carries no exam, so when
+// CDS Statistics and CDS Quadratic Equations shipped (2026-09-29) last-write-wins
+// silently re-pointed NDA's links for those chapters at the CDS pages. The
+// older NDA/MHT-CET name collisions keep their existing last-write-wins winner.
 const BY_CHAPTER: Map<string, ChapterLocation> = new Map();
+const yieldsName = (examName: string, taken: boolean) => examName === "CDS" && taken;
 const nameKey = (chapterName: string, subtopicName: string) =>
   `${chapterName}\u0000${subtopicName}`;
 
 for (const ch of NOTES_CHAPTERS) {
-  BY_CHAPTER.set(ch.chapter.chapterName, {
+  if (!yieldsName(ch.examName, BY_CHAPTER.has(ch.chapter.chapterName))) BY_CHAPTER.set(ch.chapter.chapterName, {
     examName: ch.examName,
     subjectName: ch.subjectName,
     subjectRoute: ch.subjectRoute,
@@ -67,7 +74,8 @@ for (const ch of NOTES_CHAPTERS) {
       conceptSlugs: note.concepts.map((c) => c.slug),
     };
     BY_SLUG.set(subtopicSlug, loc);
-    BY_NAME.set(nameKey(ch.chapter.chapterName, note.subtopicName), loc);
+    const key = nameKey(ch.chapter.chapterName, note.subtopicName);
+    if (!yieldsName(ch.examName, BY_NAME.has(key))) BY_NAME.set(key, loc);
   }
 }
 

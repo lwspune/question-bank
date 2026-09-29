@@ -153,3 +153,11 @@ describe("subject helpers", () => {
     expect(corpusForSubject("Physics")).toBe("pyq");
   });
 });
+
+describe("chapter names shared with CDS", () => {
+  // /go/learn carries no exam; nda-tracker's links must keep resolving to NDA
+  // after CDS ships chapters of the same name (2026-09-29 regression).
+  it.each(["Statistics", "Quadratic Equations"])("%s still resolves to NDA", (name) => {
+    expect(getChapterByName(name)?.examName).toBe("NDA");
+  });
+});
