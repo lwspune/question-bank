@@ -425,7 +425,18 @@ export default async function BrowsePage({ searchParams }: PageProps) {
         </div>
       </main>
       <BackToNotes />
-      <CartPill isOrgMember={isStaff} />
+      <CartPill
+        isOrgMember={isStaff}
+        download={{
+          filters,
+          totalCount,
+          isSignedIn,
+          isStaff,
+          hasTeacherPass,
+          teacherPass,
+          bilingual: bilingualExam,
+        }}
+      />
       <Footer />
     </>
   );

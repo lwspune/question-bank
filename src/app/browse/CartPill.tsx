@@ -1,7 +1,20 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import { FilePlus2, ListPlus, ShoppingCart, Trash2, X } from "lucide-react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ComponentProps,
+} from "react";
+import {
+  Download,
+  FilePlus2,
+  ListPlus,
+  ShoppingCart,
+  Trash2,
+  X,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -23,6 +36,7 @@ import { safeSnippet } from "@/lib/text/safeSnippet";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import AddToPaperDialog from "./AddToPaperDialog";
 import CreatePaperDialog from "./CreatePaperDialog";
+import DownloadDialog from "./DownloadDialog";
 
 type Preview = {
   id: string;
@@ -44,13 +58,16 @@ type SortMode = "insertion" | "by-chapter";
  * least one item; never appears server-rendered (avoids the SSR-vs-localStorage
  * hydration mismatch — render only after CartProvider hydrates).
  *
- * There is deliberately NO download button here. The page-level Download button
- * offers a "Selected · N" mode for the cart, and carries the Teacher Pass gate.
- * Staff still reach the cart export in one click from the top-of-page Download
- * button, which offers a "Selected · N" mode whenever the cart is non-empty, and
- * in full from the paper page itself.
+ * The footer's Download opens the SAME DownloadDialog as the page-level button,
+ * pre-set to the cart — one export path, one Teacher Pass gate. It lives here
+ * because the Sheet covers the page-level button on desktop, so text pointing
+ * at "Download at the top of the page" pointed at something the user could not
+ * see or reach.
  */
-export default function CartPill({ isOrgMember = false }: {
+export default function CartPill({
+  isOrgMember = false,
+  download,
+}: {
   /**
    * Signed-in org member (ADMIN/TEACHER) — unlocks "Add to paper" and lets
    * "Create paper" actually create one. Everyone else gets the same "Create
@@ -59,12 +76,18 @@ export default function CartPill({ isOrgMember = false }: {
    * cannot own a paper at all.
    */
   isOrgMember?: boolean;
+  /** The page-level DownloadDialog's props; the cart opens it in cart mode. */
+  download: Omit<
+    ComponentProps<typeof DownloadDialog>,
+    "initialMode" | "externalOpen" | "onExternalOpenChange" | "hideTrigger"
+  >;
 }) {
   const cart = useCart();
   const [open, setOpen] = useState(false);
   const [createPaperOpen, setCreatePaperOpen] = useState(false);
   const [addPaperOpen, setAddPaperOpen] = useState(false);
   const [clearConfirmOpen, setClearConfirmOpen] = useState(false);
+  const [downloadOpen, setDownloadOpen] = useState(false);
   const [previews, setPreviews] = useState<Preview[]>([]);
   const [sortMode, setSortMode] = useState<SortMode>("insertion");
   const [loading, setLoading] = useState(false);
@@ -229,7 +252,16 @@ export default function CartPill({ isOrgMember = false }: {
             </ul>
           </div>
 
-          <div className="flex gap-2 border-t bg-background p-4">
+          <div className="flex flex-wrap gap-2 border-t bg-background p-4">
+            <Button
+              variant={isOrgMember ? "outline" : "brand"}
+              className="flex-1"
+              onClick={() => setDownloadOpen(true)}
+              disabled={cart.count === 0}
+            >
+              <Download className="h-4 w-4" aria-hidden />
+              Download
+            </Button>
             {isOrgMember && (
               <Button
                 variant="outline"
@@ -243,8 +275,8 @@ export default function CartPill({ isOrgMember = false }: {
             )}
             {/* A non-member can't own a paper (papers.org_id is NOT NULL), and the
                 Teacher Pass doesn't change that — it unlocks the Word download.
-                So they are pointed at Download, which exports this selection. */}
-            {isOrgMember ? (
+                So they get Download alone, which exports this selection. */}
+            {isOrgMember && (
               <Button
                 className="flex-1"
                 onClick={() => setCreatePaperOpen(true)}
@@ -253,15 +285,18 @@ export default function CartPill({ isOrgMember = false }: {
                 <FilePlus2 className="h-4 w-4" aria-hidden />
                 Create paper
               </Button>
-            ) : (
-              <p className="flex-1 self-center text-xs text-muted-foreground">
-                Use <span className="font-medium text-foreground">Download</span> at the top of the
-                page to export these {cart.count} as a Word paper.
-              </p>
             )}
           </div>
         </SheetContent>
       </Sheet>
+
+      <DownloadDialog
+        {...download}
+        initialMode="cart"
+        externalOpen={downloadOpen}
+        onExternalOpenChange={setDownloadOpen}
+        hideTrigger
+      />
 
       {isOrgMember && (
         <>
