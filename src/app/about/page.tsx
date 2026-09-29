@@ -20,7 +20,7 @@ import { Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
-import { CONTACT_EMAIL } from "@/lib/brand";
+import { CONTACT_EMAIL, FOUNDER_INSTAGRAM_URL, FOUNDER_LINKEDIN_URL } from "@/lib/brand";
 import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
 import { getCachedBankYearRange } from "@/lib/exam/bankYears";
 import { examCoverageGroups, joinList } from "@/lib/exam/coverage";
@@ -41,8 +41,10 @@ export const metadata: Metadata = {
   openGraph: { title: PAGE_TITLE, description: PAGE_DESCRIPTION, type: "website" },
 };
 
-const LINKEDIN_URL = "https://www.linkedin.com/in/vilas-shinde-26b98474/";
-const INSTAGRAM_URL = "https://www.instagram.com/vilasvshinde/";
+// The profiles live in lib/brand so the site-wide Organization JSON-LD and
+// this page cannot name different ones.
+const LINKEDIN_URL = FOUNDER_LINKEDIN_URL;
+const INSTAGRAM_URL = FOUNDER_INSTAGRAM_URL;
 
 function H2({ children }: { children: React.ReactNode }) {
   return (
