@@ -865,6 +865,11 @@ import {
   CDS_SETS_NOTES,
   CDS_SETS_SLUGS,
 } from "@/app/notes/cds-maths/sets/_data";
+import {
+  CDS_LINES_ANGLES_CHAPTER,
+  CDS_LINES_ANGLES_NOTES,
+  CDS_LINES_ANGLES_SLUGS,
+} from "@/app/notes/cds-maths/lines-angles/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2774,6 +2779,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_SETS_CHAPTER,
     notes: CDS_SETS_NOTES,
     slugs: CDS_SETS_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "lines-angles",
+    chipLabel: "Lines, Angles and Polygons notes",
+    chapter: CDS_LINES_ANGLES_CHAPTER,
+    notes: CDS_LINES_ANGLES_NOTES,
+    slugs: CDS_LINES_ANGLES_SLUGS,
   },
 ];
 
