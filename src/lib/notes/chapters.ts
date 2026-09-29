@@ -895,6 +895,11 @@ import {
   JEE_SEQUENCES_NOTES,
   JEE_SEQUENCES_SLUGS,
 } from "@/app/notes/jee-mains-maths/sequences-and-series/_data";
+import {
+  JEE_FUNCTIONS_CHAPTER,
+  JEE_FUNCTIONS_NOTES,
+  JEE_FUNCTIONS_SLUGS,
+} from "@/app/notes/jee-mains-maths/relations-and-functions/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2870,6 +2875,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_SEQUENCES_CHAPTER,
     notes: JEE_SEQUENCES_NOTES,
     slugs: JEE_SEQUENCES_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "relations-and-functions",
+    chipLabel: "Relations and Functions notes",
+    chapter: JEE_FUNCTIONS_CHAPTER,
+    notes: JEE_FUNCTIONS_NOTES,
+    slugs: JEE_FUNCTIONS_SLUGS,
   },
 ];
 
