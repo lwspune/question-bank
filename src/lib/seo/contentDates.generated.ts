@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 165
+ * Entries: 166
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -24,6 +24,7 @@ export const CONTENT_DATES: ContentDateMap = {
   "/guide/nda-maths": "2026-09-19T14:48:07+05:30",
   "/guide/nda-physics": "2026-09-14T14:45:43+05:30",
   "/guide/nda-polity": "2026-09-14T14:45:43+05:30",
+  "/notes/cds-maths/algebraic-identities": "2026-09-29T10:56:00+05:30",
   "/notes/cds-maths/mensuration-2d": "2026-09-28T22:21:27+05:30",
   "/notes/cds-maths/mensuration-3d": "2026-09-28T22:46:55+05:30",
   "/notes/cds-maths/number-system": "2026-09-20T23:17:35+05:30",
