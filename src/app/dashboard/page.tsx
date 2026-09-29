@@ -16,6 +16,7 @@ import {
   GraduationCap,
   IndianRupee,
   ListChecks,
+  MessageCircle,
   MessageSquareHeart,
   Search,
   Table2,
@@ -343,6 +344,14 @@ function QuickActions({
           icon={<Activity className="h-5 w-5" aria-hidden />}
           title="Usage shape"
           description="How students actually use the app — daily or in bursts — before we build engagement mechanics."
+        />
+      )}
+      {isSuperadmin && (
+        <ActionCard
+          href="/dashboard/chat"
+          icon={<MessageCircle className="h-5 w-5" aria-hidden />}
+          title="V usage"
+          description="How often visitors open V, the FAQ helper, and which questions they ask."
         />
       )}
       {isSuperadmin && (
