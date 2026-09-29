@@ -325,6 +325,7 @@ export type VisualizationSlug =
   | "cds-trig-right-triangle"
   | "cds-touching-circles"
   | "cds-cone-anatomy"
+  | "cds-altitude-hypotenuse"
   | "cds-rational-irrational-line"
   // MHT-CET Maths — Mathematical Logic chapter
   | "logic-switch-series-parallel"

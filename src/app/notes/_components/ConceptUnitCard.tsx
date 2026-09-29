@@ -223,6 +223,7 @@ import CdsUnitDigitCycleWheel from "./visualizations/CdsUnitDigitCycleWheel";
 import CdsTrigRightTriangle from "./visualizations/CdsTrigRightTriangle";
 import CdsTouchingCircles from "./visualizations/CdsTouchingCircles";
 import CdsConeAnatomy from "./visualizations/CdsConeAnatomy";
+import CdsAltitudeHypotenuse from "./visualizations/CdsAltitudeHypotenuse";
 import CdsRationalIrrationalLine from "./visualizations/CdsRationalIrrationalLine";
 import LogicSwitchSeriesParallel from "./visualizations/LogicSwitchSeriesParallel";
 import LogicCircuitSimplification from "./visualizations/LogicCircuitSimplification";
@@ -644,6 +645,8 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <CdsTrigRightTriangle />;
     case "cds-touching-circles":
       return <CdsTouchingCircles />;
+    case "cds-altitude-hypotenuse":
+      return <CdsAltitudeHypotenuse />;
     case "cds-cone-anatomy":
       return <CdsConeAnatomy />;
     case "cds-unit-digit-cycle-wheel":
