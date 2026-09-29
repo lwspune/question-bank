@@ -15,6 +15,12 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-29 (twenty-second) — CDS Elementary Mathematics "Sets" (2 pages · 28 PYQ · 3 concepts · 4 traps), 100% tagged, on `feat/cds-maths-sets`. The twenty-third CDS notes chapter.**
+
+**Why two pages.** All 28 stems and solutions were read first. The three classification buckets mixed two skills: reading a set exactly ({0} is not the empty set, {a} is not a, the set of birds on Earth is finite) and counting with inclusion-exclusion. Each gets a page; the three premise sets (Class XII subjects, three newspapers, 500 candidates) all sit on the counting page.
+
+**Source pass** (`generated-papers/_fix-cds-se.ts`). Eight plain-text solutions rewritten in LaTeX and re-derived against the stored key; 7d30cce0's pointer to 'Q97 and Q98' was replaced by the numbers themselves. No key changed.
+
 **2026-09-29 (twenty-first) — CDS Elementary Mathematics "Logarithms" (3 pages · 33 PYQ · 3 concepts · 4 traps), 100% tagged, on `feat/cds-maths-logarithms`. The twenty-second CDS notes chapter.**
 
 **Why three pages.** All 33 stems and solutions were read first. The bank's cut into the laws of logarithms, counting digits (and leading zeros after the decimal point), and equations was sound; the single "Comparison of Logarithmic and Power Expressions" row uses the sign of log m for 0 < m < 1 and joined the laws page. Five of the chapter's eight HARD items are equations.
