@@ -4,6 +4,7 @@ import { Toaster } from "sonner";
 import OfflineBanner from "@/components/OfflineBanner";
 import { Analytics } from "@vercel/analytics/next";
 import AcquisitionCapture from "@/components/acquisition/AcquisitionCapture";
+import ChatWidget from "@/components/chat/ChatWidget";
 import { CartProvider } from "@/lib/cart/CartProvider";
 import { BookmarksProvider } from "@/lib/bookmarks/BookmarksProvider";
 import { MobilePromptProvider } from "@/lib/profile/MobilePromptProvider";
@@ -119,6 +120,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* Client island: parks first-touch attribution in a cookie. Touches no
               server API, so prerendered routes stay prerendered. */}
           <AcquisitionCapture />
+          {/* V, the FAQ helper. No server read at mount — it only calls out when
+              opened or a question is clicked — so prerendered routes stay cached. */}
+          <ChatWidget />
           </MobilePromptProvider>
           </BookmarksProvider>
         </CartProvider>

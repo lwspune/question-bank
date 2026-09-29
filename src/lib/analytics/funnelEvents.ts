@@ -61,6 +61,10 @@ export const FUNNEL_EVENTS = [
   "notes_test_bar_click",
   /** A /notes reader clicked the end-of-page "test yourself on a real paper" card. */
   "notes_mock_card_click",
+  /** V's launcher was opened (fires once per page session). */
+  "chat_launcher_click",
+  /** A predefined V question was clicked; questionId names which one. */
+  "chat_faq_click",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];
