@@ -15,6 +15,16 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-29 (twentieth) — CDS Elementary Mathematics "Simple and Compound Interest" (3 pages · 34 PYQ · 5 concepts · 5 traps), 100% tagged, on `feat/cds-maths-interest`. The twenty-first CDS notes chapter.**
+
+**Why three pages.** All 34 stems and solutions were read first. The bank's cut by kind of interest was already sound; the only change is that the two "Principal, Rate and Time Relationships" rows (a change of rate on a fixed sum, and a data-sufficiency item on P and R) are simple-interest work, so they joined that page. Compound interest carries two concepts: the amount formula with half-yearly and quarterly periods, and growth (doubling times, the least n for more than k times, logarithms).
+
+**A prefix collision, caught after the fact.** This chapter's scratch files were first written under the code `si`, which Surds & Indices already used, so its local `generated-papers/_fix-cds-si.ts` was overwritten. That spec had been applied and merged hours earlier, its rollback file survived, and generated-papers is gitignored, so nothing shipped was affected. Interest now uses `in`, and every prefix in use was listed before choosing the rest of wave 4's.
+
+**Source pass** (`generated-papers/_fix-cds-in.ts`). Eleven plain-text solutions rewritten in LaTeX and re-derived against the stored key. No key changed.
+
+**Judgement calls.** Kept out of featured slots: 14622523 (asks for the original annual income but keys Rs. 25,600, the capital; the solution says so), 960f806e (never says whether the interest is simple or compound).
+
 **2026-09-29 (nineteenth) — CDS Elementary Mathematics "Linear Equations" (4 pages · 40 PYQ · 5 concepts · 5 traps), 100% tagged, on `feat/cds-maths-linear-equations`. The twentieth CDS notes chapter.**
 
 **Why four pages.** All 40 stems and solutions were read first. "Word Problems and Applications" (25) held two kinds of story: ages (present ages from past and future relations) and everything else (numbers and digits, fractions, pay with fines, two-part bills, rows of chairs). Each gets a page. "Consistency of Simultaneous Equations" (4) is the other half of solving a pair of equations and joined "Solving Linear Systems". The 2023-II cousins premise set spans two chapters — three rows here, two in Averages — so each of its solutions now derives the ages and weights from the premise rather than pointing at a sibling.

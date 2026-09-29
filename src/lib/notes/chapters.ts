@@ -850,6 +850,11 @@ import {
   CDS_LINEAR_EQUATIONS_NOTES,
   CDS_LINEAR_EQUATIONS_SLUGS,
 } from "@/app/notes/cds-maths/linear-equations/_data";
+import {
+  CDS_INTEREST_CHAPTER,
+  CDS_INTEREST_NOTES,
+  CDS_INTEREST_SLUGS,
+} from "@/app/notes/cds-maths/interest/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2726,6 +2731,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_LINEAR_EQUATIONS_CHAPTER,
     notes: CDS_LINEAR_EQUATIONS_NOTES,
     slugs: CDS_LINEAR_EQUATIONS_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "interest",
+    chipLabel: "Simple and Compound Interest notes",
+    chapter: CDS_INTEREST_CHAPTER,
+    notes: CDS_INTEREST_NOTES,
+    slugs: CDS_INTEREST_SLUGS,
   },
 ];
 
