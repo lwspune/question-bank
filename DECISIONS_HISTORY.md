@@ -137,6 +137,11 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 **Judgement calls.** Kept out of featured slots: 8eed5886 (the keyed Rs. 2307 is P's amount AFTER the deduction; the share itself is Rs. 2400, which no option prints — the solution says so), 6742660d (its first statement holds only when k is not ±1, which the stem never says), 4b507cb1 (one option is printed with its exponents missing).
 
+**2026-09-29 (twenty-sixth) — CDS Maths wave 4 closes, and every CDS Elementary Mathematics chapter now has notes: Heights and Distances (4 pages · 41 PYQ), Linear Equations (4 · 40), Simple and Compound Interest (3 · 34), Logarithms (3 · 33), Sets (2 · 28), Lines, Angles and Polygons (2 · 22), Sequence and Series (2 · 19) and Inequalities (2 · 13) ship, all 100% tagged; no key changed.**
+- **Defective rows kept, not featured:** 8d360ff0 is unanswerable as printed, 6e5efe2c has two valid answers with one printed, and 31b53528 had an empty solution; each solution now says so or derives the key.
+- **Scratch codes collide:** Interest first reused `si`, the Surds code, and overwrote that chapter's applied local spec; codes are now chosen from a listing of the ones in use.
+- **Stacked branches, one gate:** each chapter kept its own branch and commits, and one full gate on the tip covered a batch before the branches merged in order. Long forms in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
+
 **2026-09-29 (seventeenth) — CDS Maths wave 3 closes: Ratio (6 pages · 76 PYQ), Time, Speed and Distance (7 · 75), Circles (7 · 69), Quadrilaterals (5 · 54), Data Interpretation (4 · 52), Percentage, Profit and Loss (4 · 50), Averages (3 · 47) and Time and Work (4 · 46) ship, all 100% tagged; no key changed.**
 - **Two derived keys disagree on one idea:** 168349e9 (2022-II) accepts a similarity statement whose vertices are out of order, d8ca84ec (2026-I) rejects one; both keys are left, neither is featured, and the pair awaits a decision.
 - **A re-cut refusal came after the bank was written:** a withheld Time and Work row stopped reshape.ts only after the bank and catalog.json had moved; data files are now checked first (`reshapeFiles.ts`, tested).
