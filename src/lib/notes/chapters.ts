@@ -810,6 +810,11 @@ import {
   CDS_TSD_NOTES,
   CDS_TSD_SLUGS,
 } from "@/app/notes/cds-maths/tsd/_data";
+import {
+  CDS_CIRCLES_CHAPTER,
+  CDS_CIRCLES_NOTES,
+  CDS_CIRCLES_SLUGS,
+} from "@/app/notes/cds-maths/circles/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2598,6 +2603,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_TSD_CHAPTER,
     notes: CDS_TSD_NOTES,
     slugs: CDS_TSD_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "circles",
+    chipLabel: "Circles notes",
+    chapter: CDS_CIRCLES_CHAPTER,
+    notes: CDS_CIRCLES_NOTES,
+    slugs: CDS_CIRCLES_SLUGS,
   },
 ];
 
