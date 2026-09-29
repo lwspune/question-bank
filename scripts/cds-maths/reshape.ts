@@ -23,6 +23,7 @@ import { pathToFileURL } from "node:url";
 import { readFileSync, writeFileSync } from "node:fs";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { PAPERS, dataPath } from "./config";
+import { planFileEdits } from "./reshapeFiles";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -130,6 +131,20 @@ async function main() {
   if (drift) die(`${drift} target count(s) disagree with the reviewed plan`);
   console.log(`rows to move: ${moves.length}`);
 
+  // Resolve the data files BEFORE writing anything: a refusal here used to come after the bank
+  // and catalog.json had already been written (see reshapeFiles.ts).
+  const filePlans: { path: string; raw: string; list: any[]; changes: { index: number; to: string }[] }[] = [];
+  const fileProblems: string[] = [];
+  for (const pid of Object.keys(PAPERS)) {
+    const path = dataPath(pid, "questions");
+    const raw = readFileSync(path, "utf8");
+    const list = JSON.parse(raw) as any[];
+    const { changes, problems: p } = planFileEdits(list, { pid, chapter, order, whole, byKey });
+    fileProblems.push(...p);
+    if (changes.length) filePlans.push({ path, raw, list, changes });
+  }
+  if (fileProblems.length) die(`${fileProblems.length} data row(s) do not join to the bank`, fileProblems);
+
   // ---------- 1. the bank ----------
   const existing = new Map<string, string>();
   {
@@ -180,28 +195,16 @@ async function main() {
   console.log(`\n[2/3] catalog.json: ${same ? "already current" : `${(cat[chapter] ?? []).length} -> ${order.length} entries`}`);
   if (APPLY && !same) { cat[chapter] = order; writePreserving(CATALOG, catRaw, cat); }
 
-  // ---------- 3. <paper>.questions.json ----------
-  let files = 0, touched = 0;
-  const fileProblems: string[] = [];
-  for (const pid of Object.keys(PAPERS)) {
-    const path = dataPath(pid, "questions");
-    const raw = readFileSync(path, "utf8");
-    const list = JSON.parse(raw) as any[];
-    let n = 0;
-    for (const q of list) {
-      if (q?.chapter !== chapter) continue;
-      // A data row with no bank row was deliberately left out at commit (e.g. 2021-1 Q49: no
-      // option is correct). It still follows a whole-subtopic move so the file stays consistent.
-      const to = byKey.get(`${pid}#${Number(q.number)}`) ?? (order.includes(q.subtopic) ? q.subtopic : whole[q.subtopic]);
-      if (!to) { fileProblems.push(`NO DB ROW ${pid} Q${q.number} subtopic="${q.subtopic}" and no whole-subtopic move`); continue; }
-      if (q.subtopic !== to) { q.subtopic = to; n++; }
-    }
-    if (!n) continue;
-    files++; touched += n;
+  // ---------- 3. <paper>.questions.json (resolved and checked above) ----------
+  // A data row with no bank row was deliberately left out at commit (e.g. 2021-1 Q49: no option is
+  // correct). It still follows a whole-subtopic move so the file stays consistent.
+  let touched = 0;
+  for (const { path, raw, list, changes } of filePlans) {
+    for (const { index, to } of changes) list[index].subtopic = to;
+    touched += changes.length;
     if (APPLY) writePreserving(path, raw, list);
   }
-  if (fileProblems.length) die(`${fileProblems.length} data row(s) do not join to the bank`, fileProblems);
-  console.log(`\n[3/3] questions.json: ${touched} row(s) across ${files} file(s)${APPLY ? " written" : ""}`);
+  console.log(`\n[3/3] questions.json: ${touched} row(s) across ${filePlans.length} file(s)${APPLY ? " written" : ""}`);
   console.log(APPLY ? "\nDONE. Next: npm run notes:order once the chapter's notes are registered." : "\nDRY RUN COMPLETE. Nothing written.");
 }
 
