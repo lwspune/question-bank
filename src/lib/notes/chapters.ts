@@ -830,6 +830,11 @@ import {
   CDS_PERCENTAGE_NOTES,
   CDS_PERCENTAGE_SLUGS,
 } from "@/app/notes/cds-maths/percentage/_data";
+import {
+  CDS_AVERAGES_CHAPTER,
+  CDS_AVERAGES_NOTES,
+  CDS_AVERAGES_SLUGS,
+} from "@/app/notes/cds-maths/averages/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2662,6 +2667,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_PERCENTAGE_CHAPTER,
     notes: CDS_PERCENTAGE_NOTES,
     slugs: CDS_PERCENTAGE_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "averages",
+    chipLabel: "Averages notes",
+    chapter: CDS_AVERAGES_CHAPTER,
+    notes: CDS_AVERAGES_NOTES,
+    slugs: CDS_AVERAGES_SLUGS,
   },
 ];
 
