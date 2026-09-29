@@ -15,6 +15,14 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-29 (twenty-first) — CDS Elementary Mathematics "Logarithms" (3 pages · 33 PYQ · 3 concepts · 4 traps), 100% tagged, on `feat/cds-maths-logarithms`. The twenty-second CDS notes chapter.**
+
+**Why three pages.** All 33 stems and solutions were read first. The bank's cut into the laws of logarithms, counting digits (and leading zeros after the decimal point), and equations was sound; the single "Comparison of Logarithmic and Power Expressions" row uses the sign of log m for 0 < m < 1 and joined the laws page. Five of the chapter's eight HARD items are equations.
+
+**Source pass** (`generated-papers/_fix-cds-lg.ts`). Five plain-text solutions rewritten in LaTeX and re-derived against the stored key. No key changed.
+
+**Judgement calls.** Kept out of featured slots: 0a9a27b3 (its solution notes that a widely circulated key gives 2 < x < 3; solving exactly gives x = 1.769, which matches the stored 1 < x < 2).
+
 **2026-09-29 (twentieth) — CDS Elementary Mathematics "Simple and Compound Interest" (3 pages · 34 PYQ · 5 concepts · 5 traps), 100% tagged, on `feat/cds-maths-interest`. The twenty-first CDS notes chapter.**
 
 **Why three pages.** All 34 stems and solutions were read first. The bank's cut by kind of interest was already sound; the only change is that the two "Principal, Rate and Time Relationships" rows (a change of rate on a fixed sum, and a data-sufficiency item on P and R) are simple-interest work, so they joined that page. Compound interest carries two concepts: the amount formula with half-yearly and quarterly periods, and growth (doubling times, the least n for more than k times, logarithms).
