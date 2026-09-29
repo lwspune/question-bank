@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import * as path from "node:path";
 import { describe, it, expect } from "vitest";
 import {
   NOTES_CHAPTERS,
@@ -34,6 +36,16 @@ describe("NOTES_CHAPTERS registry shape", () => {
         expect(noteKeys.has(slug)).toBe(true);
       }
     }
+  });
+
+  // Every subject landing links /notes/<subjectRoute>/<chapterSlug>, so a registered chapter without
+  // its own page.tsx is a 404 behind a live link. 22 CDS Maths chapters were merged that way on
+  // 2026-09-29 (the subtopic pages existed; the chapter landing did not) and no gate noticed.
+  it("every registered chapter has a chapter landing page", () => {
+    const missing = NOTES_CHAPTERS.filter(
+      (c) => !existsSync(path.join(process.cwd(), "src", "app", "notes", c.subjectRoute, c.chapterSlug, "page.tsx"))
+    ).map((c) => `${c.subjectRoute}/${c.chapterSlug}`);
+    expect(missing).toEqual([]);
   });
 
   it("(subjectRoute, chapterSlug) pairs are unique across the registry", () => {
