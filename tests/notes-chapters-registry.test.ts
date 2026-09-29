@@ -48,6 +48,19 @@ describe("NOTES_CHAPTERS registry shape", () => {
     expect(missing).toEqual([]);
   });
 
+  // Every notes chapter and subtopic page links "<subject> strategy" to /guide/<subjectRoute>
+  // unconditionally, so a notes subject without a guide ships a 404 on every page. The allow-list is
+  // the known debt (SUGGESTIONS.md backfill ledger, 2026-09-29) — it may shrink, never grow.
+  it("every notes subject has the strategy guide its pages link to", () => {
+    const KNOWN_MISSING = new Set(["jee-mains-maths"]);
+    const routes = [...new Set(NOTES_CHAPTERS.map((c) => c.subjectRoute))];
+    const missing = routes.filter(
+      (r) => !KNOWN_MISSING.has(r) && !existsSync(path.join(process.cwd(), "src", "app", "guide", r, "page.tsx"))
+    );
+    expect(missing).toEqual([]);
+    for (const r of KNOWN_MISSING) expect(routes, `${r} left the registry — drop it from KNOWN_MISSING`).toContain(r);
+  });
+
   it("(subjectRoute, chapterSlug) pairs are unique across the registry", () => {
     const seen = new Set<string>();
     for (const c of NOTES_CHAPTERS) {
