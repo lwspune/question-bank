@@ -800,6 +800,11 @@ import {
   CDS_POLYNOMIALS_NOTES,
   CDS_POLYNOMIALS_SLUGS,
 } from "@/app/notes/cds-maths/polynomials/_data";
+import {
+  CDS_RATIO_CHAPTER,
+  CDS_RATIO_NOTES,
+  CDS_RATIO_SLUGS,
+} from "@/app/notes/cds-maths/ratio/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2566,6 +2571,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_POLYNOMIALS_CHAPTER,
     notes: CDS_POLYNOMIALS_NOTES,
     slugs: CDS_POLYNOMIALS_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "ratio",
+    chipLabel: "Ratio and Proportion notes",
+    chapter: CDS_RATIO_CHAPTER,
+    notes: CDS_RATIO_NOTES,
+    slugs: CDS_RATIO_SLUGS,
   },
 ];
 
