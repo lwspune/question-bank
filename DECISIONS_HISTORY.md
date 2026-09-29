@@ -15,6 +15,12 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-29 (twenty-fourth) — CDS Elementary Mathematics "Sequence and Series" (2 pages · 19 PYQ · 3 concepts · 3 traps), 100% tagged, on `feat/cds-maths-sequences`. The twenty-fifth CDS notes chapter.**
+
+**Why two pages.** All 19 stems and solutions were read first. Ten sum something (AP and GP sums, sums of squares and cubes, telescoping series) and nine ask about the arithmetic, geometric and harmonic means of two numbers, so the three progression buckets became one page. The only two HARD items are telescoping sums, which get their own concept.
+
+**Source pass** (`generated-papers/_fix-cds-ss.ts`). Four plain-text solutions rewritten in LaTeX and re-derived against the stored key. No key changed.
+
 **2026-09-29 (twenty-third) — CDS Elementary Mathematics "Lines, Angles and Polygons" (2 pages · 22 PYQ · 3 concepts · 3 traps), 100% tagged, on `feat/cds-maths-lines-angles`. The twenty-fourth CDS notes chapter.**
 
 **Why two pages.** All 22 stems and solutions were read first. The chapter holds two kinds of question: angles made by lines (a linear pair, vertical angles, complements, the angle-bisector locus, parallels and transversals, counting intersection points) and polygon angle sums. The four line buckets became one page. None of the 22 is HARD.
