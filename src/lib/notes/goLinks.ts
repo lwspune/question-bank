@@ -44,13 +44,15 @@ const BY_NAME: Map<string, SubtopicLocation> = new Map();
 // name alone — same last-write-wins convention as BY_NAME (a name shared across
 // exams resolves to the last-registered notes chapter).
 //
-// EXCEPTION: a CDS chapter never takes a name another chapter already holds.
-// /go/learn is nda-tracker's "Learn this" target and carries no exam, so when
-// CDS Statistics and CDS Quadratic Equations shipped (2026-09-29) last-write-wins
-// silently re-pointed NDA's links for those chapters at the CDS pages. The
+// EXCEPTION: a CDS or JEE Mains chapter never takes a name another chapter
+// already holds. /go/learn is nda-tracker's "Learn this" target and carries no
+// exam, so when CDS Statistics and CDS Quadratic Equations shipped (2026-09-29)
+// last-write-wins silently re-pointed NDA's links for those chapters at the CDS
+// pages; JEE reuses MHT-CET and NDA names the same way ("Conic Sections"). The
 // older NDA/MHT-CET name collisions keep their existing last-write-wins winner.
 const BY_CHAPTER: Map<string, ChapterLocation> = new Map();
-const yieldsName = (examName: string, taken: boolean) => examName === "CDS" && taken;
+const YIELDING_EXAMS = new Set(["CDS", "JEE Mains"]);
+const yieldsName = (examName: string, taken: boolean) => YIELDING_EXAMS.has(examName) && taken;
 const nameKey = (chapterName: string, subtopicName: string) =>
   `${chapterName}\u0000${subtopicName}`;
 

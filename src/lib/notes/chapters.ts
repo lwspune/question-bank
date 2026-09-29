@@ -880,6 +880,11 @@ import {
   CDS_INEQUALITIES_NOTES,
   CDS_INEQUALITIES_SLUGS,
 } from "@/app/notes/cds-maths/inequalities/_data";
+import {
+  JEE_CONIC_SECTIONS_CHAPTER,
+  JEE_CONIC_SECTIONS_NOTES,
+  JEE_CONIC_SECTIONS_SLUGS,
+} from "@/app/notes/jee-mains-maths/conic-sections/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2822,6 +2827,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_INEQUALITIES_CHAPTER,
     notes: CDS_INEQUALITIES_NOTES,
     slugs: CDS_INEQUALITIES_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "conic-sections",
+    chipLabel: "Conic Sections notes",
+    chapter: JEE_CONIC_SECTIONS_CHAPTER,
+    notes: JEE_CONIC_SECTIONS_NOTES,
+    slugs: JEE_CONIC_SECTIONS_SLUGS,
   },
 ];
 

@@ -161,3 +161,11 @@ describe("chapter names shared with CDS", () => {
     expect(getChapterByName(name)?.examName).toBe("NDA");
   });
 });
+
+describe("chapter names shared with JEE Mains", () => {
+  // JEE chapters ship after the NDA and MHT-CET ones and reuse their names, so
+  // they yield the same way CDS does rather than re-pointing existing links.
+  it("Conic Sections still resolves to MHT-CET", () => {
+    expect(getChapterByName("Conic Sections")?.examName).toBe("MHT-CET");
+  });
+});
