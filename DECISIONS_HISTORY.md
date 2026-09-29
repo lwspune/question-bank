@@ -15,6 +15,14 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-29 (tenth) — CDS Elementary Mathematics "Time, Speed and Distance" (7 pages · 75 PYQ · 11 concepts · 11 traps), 100% tagged, on `feat/cds-maths-tsd`. The twelfth CDS notes chapter.**
+
+**Why seven pages from five subtopics.** All 75 stems and solutions were read first. The subtopic named after the chapter (35) held three techniques: average speed over legs (the harmonic mean) with the rule that speed ratio is the inverse of time ratio; equations built from a change in speed ('5 km/hr faster, 2 hours less'); and relative speed between two movers, chasing and meeting. Each gets a page. "Trains and Relative Speed" (23) also held meeting problems with no train length; those joined the relative-speed page, so the trains page is crossings that use lengths. The premise set 03667ff3 / 9861368d / ff2cff23 stays together on the relative-speed page. Boats, races and clocks kept their pages.
+
+**Source pass** (`generated-papers/_fix-cds-td.ts`). Twenty-four plain-text solutions rewritten and re-derived against the stored key; several also carried cross-check or 'solved exactly' notes, now folded into the working. No key changed.
+
+**Judgement calls.** Kept out of featured slots: 9d9a0f7d (the minute and second hands coincide 118 times, so the key is 'None of the above' — a fine question, but a poor first example), e5983f2f ('How long was the journey?' asks for a distance, though it reads as a time).
+
 **2026-09-29 (ninth) — CDS Elementary Mathematics "Ratio, Proportion and Variation" (6 pages · 76 PYQ · 11 concepts · 11 traps), 100% tagged, on `feat/cds-maths-ratio`. The eleventh CDS notes chapter and the first of wave 3.**
 
 **Why six pages from four subtopics.** All 76 stems and solutions were read first. "Ratio and Proportion" (40) held three different moves: combining and dividing by ratios (chained A : B : C, splitting a sum, a will), ratios that change inside a story (incomes and savings, ages, fares), and the algebra of equal ratios (put each ratio = k, cross-multiply and factor, componendo and dividendo). Each gets a page. Variation, partnership and mixtures kept their own pages.
