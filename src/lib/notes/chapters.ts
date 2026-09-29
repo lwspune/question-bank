@@ -825,6 +825,11 @@ import {
   CDS_DATA_INTERPRETATION_NOTES,
   CDS_DATA_INTERPRETATION_SLUGS,
 } from "@/app/notes/cds-maths/data-interpretation/_data";
+import {
+  CDS_PERCENTAGE_CHAPTER,
+  CDS_PERCENTAGE_NOTES,
+  CDS_PERCENTAGE_SLUGS,
+} from "@/app/notes/cds-maths/percentage/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2646,6 +2651,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_DATA_INTERPRETATION_CHAPTER,
     notes: CDS_DATA_INTERPRETATION_NOTES,
     slugs: CDS_DATA_INTERPRETATION_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Mathematics",
+    subjectRoute: "cds-maths",
+    subjectDisplay: "CDS Mathematics",
+    chapterSlug: "percentage",
+    chipLabel: "Percentage, Profit and Loss notes",
+    chapter: CDS_PERCENTAGE_CHAPTER,
+    notes: CDS_PERCENTAGE_NOTES,
+    slugs: CDS_PERCENTAGE_SLUGS,
   },
 ];
 
