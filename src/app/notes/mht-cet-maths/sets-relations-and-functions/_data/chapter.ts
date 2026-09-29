@@ -4,7 +4,7 @@ export const MHTCET_SRF_CHAPTER: ChapterNote = {
   chapterName: "Sets, Relations and Functions",
   title: "Sets, Relations and Functions — MHT-CET Maths",
   intro:
-    "Sets, Relations and Functions is the cheapest chapter in MHT-CET Maths. Barely one in eight of its past-year questions is HARD, it appears in most " +
+    "Sets, Relations and Functions is 38 past-year questions in the MHT-CET Maths bank across 2021–2025 and its cheapest chapter. Barely one in eight of them is HARD, it appears in most " +
     "papers, and its questions are the same handful of stems with the numbers changed: the domain of 2ˣ + 2ʸ = 2, the greatest-integer quadratic, a composite " +
     "evaluated at a point, the inverse of a linear-fractional function. It is also the vocabulary every calculus chapter assumes — domain, range, one-one, onto, " +
     "composition, inverse. The pages below run from the definitions through domain-and-range technique to composition and then inversion, because an inverse " +

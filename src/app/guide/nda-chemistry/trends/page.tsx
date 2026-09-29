@@ -7,6 +7,8 @@ import BrowseLink from "@/app/guide/_components/BrowseLink";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import DriftTable from "@/app/guide/_components/DriftTable";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
+import ReportProvenance from "@/app/guide/_components/ReportProvenance";
+import { trendsReportFor } from "@/lib/guide/trendsReports";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { ROUTES } from "../_data/nda-chemistry";
@@ -42,6 +44,8 @@ export default async function Trends() {
     counts: r.counts,
   }));
 
+  const report = trendsReportFor("/guide/nda-chemistry/trends")!;
+
   return (
     <GuideShell
       guideTitle="NDA Chemistry Guide"
@@ -62,11 +66,12 @@ export default async function Trends() {
       />
       <GuideHero
         eyebrow="Trends"
-        title="NDA Chemistry 2026 is structurally similar to NDA Chemistry 2017"
+        title={report.claim}
         subtitle="The most important pattern in NDA Chemistry trends is the ABSENCE of one — UNLIKE Physics (which hardened 22× per question), Chemistry has stayed remarkably stable. %HARD oscillates 0–14% with no trajectory. Chapter mix has shifted (Industrial grew, Mole Concept faded), but the paper's overall character is the same. Drill all 10 years equally."
       >
         <StatBlock stats={stats} />
       </GuideHero>
+      <ReportProvenance route="/guide/nda-chemistry/trends" papers={stats[1].value} questions={stats[2].value} />
 
       {/* The headline NON-hardening callout */}
       <section className="mt-12 rounded-lg border-l-4 border-emerald-500 bg-emerald-50/40 p-5 dark:bg-emerald-950/20">

@@ -8,6 +8,8 @@ import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import ExamPaperMatrix from "@/app/guide/_components/ExamPaperMatrix";
 import ChapterRateTable from "@/app/guide/_components/ChapterRateTable";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
+import ReportProvenance from "@/app/guide/_components/ReportProvenance";
+import { trendsReportFor } from "@/lib/guide/trendsReports";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { OVERVIEW, ROUTES } from "../_data/mht-cet-chemistry";
@@ -110,6 +112,8 @@ export default async function Trends() {
     { value: String(OVERVIEW.chapters), label: "chapters tracked" },
   ];
 
+  const report = trendsReportFor("/guide/mht-cet-chemistry/trends")!;
+
   return (
     <GuideShell
       guideTitle="MHT-CET Chemistry Guide"
@@ -130,11 +134,12 @@ export default async function Trends() {
       />
       <GuideHero
         eyebrow="Trends"
-        title="The 2025 paper is not the paper you are practising from"
+        title={report.claim}
         subtitle={`The 2025 papers weighted Chemistry differently and made it less easy, and neither shows unless you date your practice papers. Everything below is measured across ${TOTAL_PAPERS} papers and ${TOTAL_Q} questions from ${YEARS[0]} to ${YEARS[YEARS.length - 1]}.`}
       >
         <StatBlock stats={stats} />
       </GuideHero>
+      <ReportProvenance route="/guide/mht-cet-chemistry/trends" papers={stats[1].value} questions={stats[2].value} />
 
       {/* Read-this-first: why rates, not counts */}
       <section className="mt-10 rounded-lg border-l-4 border-primary bg-primary/5 p-5">

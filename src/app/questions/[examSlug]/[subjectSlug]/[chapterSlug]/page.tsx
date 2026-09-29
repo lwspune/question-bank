@@ -13,7 +13,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowRight, BookOpen, Compass } from "lucide-react";
+import { ArrowRight, BookOpen, ClipboardCheck, Compass } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -26,11 +26,19 @@ import {
   getChapterLanding,
   getSiblingLandings,
   loadLandingQuestions,
+  loadLandingSubtopics,
   browseHrefFor,
   landingHref,
   LANDING_PAGE_SIZE,
   type ChapterLanding,
 } from "@/lib/questions/landing";
+import {
+  landingLead,
+  difficultyLine,
+  subtopicsLine,
+  updatedLine,
+} from "@/lib/questions/landingSummary";
+import { mockCta } from "@/lib/notes/keepGoing";
 
 const SITE_URL = "https://www.pyqvault.com";
 
@@ -106,14 +114,15 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   );
   if (!landing) return { title: "Questions not found" };
 
-  const kindWord = landing.practiceOnly ? "practice questions" : "PYQs";
   const title = questionsLandingTitle({
     chapterName: landing.chapterName,
     examDisplay: getExamBySlug(landing.examSlug)?.displayName ?? landing.examName,
     subjectName: landing.subjectName,
     practiceOnly: landing.practiceOnly,
   });
-  const description = `${landing.questionCount} ${landing.examName} ${landing.subjectName} ${kindWord} from ${landing.chapterName}, with answers and worked solutions. Free to browse.`;
+  // The same sentence the page opens with, so the <meta> tag and the first
+  // screen state the same facts (count, papers, years).
+  const description = `${landing.chapterName}: ${landingLead(landing)} Free to browse.`;
 
   return {
     title: { absolute: title },
@@ -157,10 +166,20 @@ export default async function ChapterQuestionsPage({ params }: Params) {
   );
   if (!landing) notFound();
 
-  const [questions, siblings] = await Promise.all([
+  const [questions, siblings, subtopics] = await Promise.all([
     loadLandingQuestions(landing),
     getSiblingLandings(landing),
+    loadLandingSubtopics(landing),
   ]);
+
+  // The quotable header: every line is a fact the bank can back, and a line
+  // the bank cannot back is null and simply not rendered.
+  const headerLines = [
+    difficultyLine(landing.profile),
+    subtopicsLine(subtopics),
+    updatedLine(landing.lastAdded),
+  ].filter((s): s is string => s !== null);
+  const mock = landing.practiceOnly ? null : mockCta(landing.examName);
 
   // Reuse the same chapter→notes/guide mapping the /browse cards use, so a
   // rename stays a one-place fix rather than drifting between surfaces.
@@ -195,12 +214,14 @@ export default async function ChapterQuestionsPage({ params }: Params) {
         <h1 className="mt-3 text-3xl font-semibold tracking-tight">
           {landing.chapterName}
         </h1>
-        <p className="mt-2 text-muted-foreground">
-          {landing.questionCount}{" "}
-          {landing.examName} {landing.subjectName}{" "}
-          {landing.practiceOnly ? "practice questions" : "past-year questions"}{" "}
-          with answers and solutions.
-        </p>
+        <p className="mt-2 text-muted-foreground">{landingLead(landing)}</p>
+        {headerLines.length > 0 && (
+          <ul className="mt-2 space-y-0.5 text-sm text-muted-foreground">
+            {headerLines.map((line) => (
+              <li key={line}>{line}</li>
+            ))}
+          </ul>
+        )}
 
         <div className="mt-5 flex flex-wrap gap-2">
           <Button asChild variant="brand">
@@ -222,6 +243,14 @@ export default async function ChapterQuestionsPage({ params }: Params) {
               <Link href={resources.guide.href}>
                 <Compass className="mr-1.5 h-4 w-4" />
                 {resources.guide.label}
+              </Link>
+            </Button>
+          )}
+          {mock && (
+            <Button asChild variant="outline">
+              <Link href={mock.href}>
+                <ClipboardCheck className="mr-1.5 h-4 w-4" />
+                Sit a {mock.examDisplay} paper as a timed mock
               </Link>
             </Button>
           )}

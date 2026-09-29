@@ -7,6 +7,8 @@ import BrowseLink from "@/app/guide/_components/BrowseLink";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import DriftTable from "@/app/guide/_components/DriftTable";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
+import ReportProvenance from "@/app/guide/_components/ReportProvenance";
+import { trendsReportFor } from "@/lib/guide/trendsReports";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { ROUTES } from "../_data/nda-polity";
@@ -42,6 +44,8 @@ export default async function Trends() {
     counts: r.counts,
   }));
 
+  const report = trendsReportFor("/guide/nda-polity/trends")!;
+
   return (
     <GuideShell
       guideTitle="NDA Polity Guide"
@@ -62,11 +66,12 @@ export default async function Trends() {
       />
       <GuideHero
         eyebrow="Trends"
-        title="NDA Polity 2026 isn't reliably harder than NDA Polity 2017 — but recent papers favour Govt Structure"
+        title={report.claim}
         subtitle="The most important pattern in NDA Polity trends is the ABSENCE of monotonic hardening — UNLIKE Physics, Polity bounces 0% to 50% HARD across the 10-year window with no trajectory. 2026 NDA-1 was peak HARD (50% — but only 10 q sample); 2020+2021 were 0% HARD (small + easy years); recent average ~26%. The smallest GAT section means single-paper %HARD swings are inherently noisy. Secondary headline: 2026 NDA-1 was MOST Govt-Structure-heavy (7 of 10 q); 2021 was the FR/DPSP outlier (7 of 14 q). Drill all 10 years equally."
       >
         <StatBlock stats={stats} />
       </GuideHero>
+      <ReportProvenance route="/guide/nda-polity/trends" papers={stats[1].value} questions={stats[2].value} />
 
       {/* The headline NON-hardening callout */}
       <section className="mt-12 rounded-lg border-l-4 border-emerald-500 bg-emerald-50/40 p-5 dark:bg-emerald-950/20">

@@ -7,6 +7,8 @@ import BrowseLink from "@/app/guide/_components/BrowseLink";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import DriftTable from "@/app/guide/_components/DriftTable";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
+import ReportProvenance from "@/app/guide/_components/ReportProvenance";
+import { trendsReportFor } from "@/lib/guide/trendsReports";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { ROUTES } from "../_data/nda-physics";
@@ -42,6 +44,8 @@ export default async function Trends() {
     counts: r.counts,
   }));
 
+  const report = trendsReportFor("/guide/nda-physics/trends")!;
+
   return (
     <GuideShell
       guideTitle="NDA Physics Guide"
@@ -62,11 +66,12 @@ export default async function Trends() {
       />
       <GuideHero
         eyebrow="Trends"
-        title="NDA Physics 2026 is not the NDA Physics from 2021"
+        title={report.claim}
         subtitle="Two structural shifts dominate the 2017–2026 window: a chapter-mix reweighting (E&M tripled, Laws of Motion grew 3×, Modern Physics faded) and — far more important — a difficulty hardening. Per-question, the 2026 paper is ~22× more difficulty-dense than 2021. If you only practiced one cohort of papers, you have a blind spot."
       >
         <StatBlock stats={stats} />
       </GuideHero>
+      <ReportProvenance route="/guide/nda-physics/trends" papers={stats[1].value} questions={stats[2].value} />
 
       {/* The headline hardening callout */}
       <section className="mt-12 rounded-lg border-l-4 border-rose-500 bg-rose-50/40 p-5 dark:bg-rose-950/20">

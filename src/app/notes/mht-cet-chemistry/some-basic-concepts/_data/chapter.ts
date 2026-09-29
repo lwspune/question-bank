@@ -4,7 +4,7 @@ export const SOME_BASIC_CONCEPTS_CHAPTER: ChapterNote = {
   chapterName: "Some Basic Concepts of Chemistry",
   title: "Some Basic Concepts of Chemistry — MHT-CET Chemistry",
   intro:
-    "The arithmetic backbone of MHT-CET Chemistry — the chapter that turns grams, litres and molecule-counts into each other. It is heavily tested and mostly straightforward: master a handful of bridges and nearly every question falls in one or two steps. " +
+    "Some Basic Concepts of Chemistry is 51 past-year questions in the MHT-CET bank across 2023–2025, and the arithmetic backbone of MHT-CET Chemistry — the chapter that turns grams, litres and molecule-counts into each other. It is heavily tested and mostly straightforward: master a handful of bridges and nearly every question falls in one or two steps. " +
     "It teaches in four movements, foundations first: " +
     "(1) SI units, physical properties, matter classification and average atomic mass — the measurement groundwork; " +
     "(2) the laws of chemical combination, Dalton's atomic theory and percentage composition; " +

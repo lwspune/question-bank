@@ -21,6 +21,9 @@ import Link from "next/link";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { CONTACT_EMAIL } from "@/lib/brand";
+import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
+import { getCachedBankYearRange } from "@/lib/exam/bankYears";
+import { examCoverageGroups, joinList } from "@/lib/exam/coverage";
 import ContactForm from "./ContactForm";
 
 export const revalidate = 86400;
@@ -57,7 +60,18 @@ function P({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  // Live numbers, never typed: the same cached catalogue the homepage prints
+  // and the bank's own year span. Either failing leaves the sentence
+  // shorter, not wrong.
+  const [catalog, years] = await Promise.all([
+    getCachedExamCatalog(),
+    getCachedBankYearRange(),
+  ]);
+  const publicExams = catalog.exams.filter((e) => e.totalPublicQuestions > 0);
+  const totalQuestions = catalog.totalPublicQuestions;
+  const coverage = examCoverageGroups();
+
   return (
     <>
       <AppHeader />
@@ -73,9 +87,39 @@ export default function AboutPage() {
             PYQ Vault is built and maintained by{" "}
             <strong className="text-foreground">Vilas Shinde</strong>, in Pune.
             It is a free, public bank of past-year questions for Indian entrance
-            and board exams.
+            and board exams
+            {totalQuestions > 0 && (
+              <>
+                {" "}
+                &mdash; {totalQuestions.toLocaleString("en-IN")} questions across{" "}
+                {publicExams.length} exams
+                {years ? `, from papers set between ${years.min} and ${years.max}` : ""}
+              </>
+            )}
+            .
           </p>
         </header>
+
+        <H2>What is here</H2>
+        <P>
+          Past-year papers, taken apart question by question, for{" "}
+          {joinList(coverage)}. Every question is filed by exam, subject,
+          chapter, subtopic, difficulty and the year it was asked, and most
+          carry a worked solution. Around the bank sit timed mocks rebuilt from
+          real sittings, chapter notes, strategy guides with year-by-year trend
+          reports, and a textbook-solutions reader for the school boards.
+        </P>
+        <P>
+          New papers are added within weeks of a sitting. Corrections come
+          from readers and from our own re-checks against the published keys,
+          and a changed answer is recorded on the question itself. Every
+          chapter has its own page under{" "}
+          <Link href="/questions" className="text-brand-accent underline">
+            the question bank by chapter
+          </Link>
+          , which states how many questions it holds and which years they
+          span.
+        </P>
 
         <H2>Why it exists</H2>
         <P>

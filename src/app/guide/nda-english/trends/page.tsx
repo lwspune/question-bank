@@ -7,6 +7,8 @@ import BrowseLink from "@/app/guide/_components/BrowseLink";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import DriftTable from "@/app/guide/_components/DriftTable";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
+import ReportProvenance from "@/app/guide/_components/ReportProvenance";
+import { trendsReportFor } from "@/lib/guide/trendsReports";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { ROUTES } from "../_data/nda-english";
@@ -43,6 +45,8 @@ export default async function Trends() {
     counts: r.counts,
   }));
 
+  const report = trendsReportFor("/guide/nda-english/trends")!;
+
   return (
     <GuideShell
       guideTitle="NDA English Guide"
@@ -63,11 +67,12 @@ export default async function Trends() {
       />
       <GuideHero
         eyebrow="Trends"
-        title="NDA English 2026 is not the NDA English from 2017"
+        title={report.claim}
         subtitle="The chapter mix has shifted dramatically over the 10-year window. Grammar exploded, Spotting Errors went quiet, Cloze returned after a 6-year gap. If you only practiced one cohort of papers, you have a blind spot."
       >
         <StatBlock stats={stats} />
       </GuideHero>
+      <ReportProvenance route="/guide/nda-english/trends" papers={stats[1].value} questions={stats[2].value} />
 
       {/* The shifts */}
       <section className="mt-12">

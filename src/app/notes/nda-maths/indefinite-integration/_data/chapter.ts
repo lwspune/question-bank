@@ -4,9 +4,9 @@ export const NDA_INDEFINITE_INTEGRATION_CHAPTER: ChapterNote = {
   chapterName: "Indefinite Integration",
   title: "Indefinite Integration — NDA Maths",
   intro:
-    "Indefinite Integration is a pure-technique chapter: there is no theory to memorise, only a toolbox of " +
-    "methods and the judgement to pick the right one. 42 PYQs span 2017–2026, and only 6 of them are EASY — " +
-    "the NDA reliably makes you simplify, substitute, or decompose before a standard formula appears. " +
+    "Indefinite Integration is 42 NDA PYQs across 2017–2026, only 6 of them EASY, and a pure-technique " +
+    "chapter: there is no theory to memorise, only a toolbox of methods and the judgement to pick the right one. " +
+    "The NDA reliably makes you simplify, substitute, or decompose before a standard formula appears. " +
     "The notes teach in four movements, easiest tool first: " +
     "(1) Foundations & Standard Forms — what an antiderivative is, the +C, the standard-formula table, the " +
     "exponential/logarithm laws that collapse a scary integrand to a one-liner, and the recurring eˣ-pattern " +

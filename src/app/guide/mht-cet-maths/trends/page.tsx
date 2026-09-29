@@ -8,6 +8,8 @@ import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import ExamPaperMatrix from "@/app/guide/_components/ExamPaperMatrix";
 import ChapterRateTable from "@/app/guide/_components/ChapterRateTable";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
+import ReportProvenance from "@/app/guide/_components/ReportProvenance";
+import { trendsReportFor } from "@/lib/guide/trendsReports";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { OVERVIEW, ROUTES } from "../_data/mht-cet-maths";
@@ -110,6 +112,8 @@ export default async function Trends() {
     { value: String(OVERVIEW.chapters), label: "chapters tracked" },
   ];
 
+  const report = trendsReportFor("/guide/mht-cet-maths/trends")!;
+
   return (
     <GuideShell
       guideTitle="MHT-CET Maths Guide"
@@ -130,11 +134,12 @@ export default async function Trends() {
       />
       <GuideHero
         eyebrow="Trends"
-        title="The 2025 paper is not the paper you are practising from"
+        title={report.claim}
         subtitle={`MHT-CET moved its syllabus for 2025 and the move is invisible unless you date your practice papers. One chapter left the paper entirely and another arrived. Everything below is measured across ${TOTAL_PAPERS} shifts and ${TOTAL_Q} questions from ${YEARS[0]} to ${YEARS[YEARS.length - 1]}.`}
       >
         <StatBlock stats={stats} />
       </GuideHero>
+      <ReportProvenance route="/guide/mht-cet-maths/trends" papers={stats[1].value} questions={stats[2].value} />
 
       {/* Read-this-first: why rates, not counts */}
       <section className="mt-10 rounded-lg border-l-4 border-primary bg-primary/5 p-5">

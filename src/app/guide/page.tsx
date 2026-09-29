@@ -7,6 +7,7 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import ExamFeedList from "@/components/exam/ExamFeedList";
 import { getGuideExamGroups, buildGuideSideNav } from "@/lib/guide/guidesNav";
+import { TRENDS_REPORTS } from "@/lib/guide/trendsReports";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getExamHomeStats } from "@/lib/exam/examHomeStats";
 
@@ -153,6 +154,24 @@ export default async function GuideIndex() {
           };
         })}
       />
+
+      {/* The trends pages, as dated reports — the part of the guides other
+          sites and AI search engines can cite (src/lib/guide/trendsReports.ts). */}
+      <section className="mt-10 rounded-lg border border-dashed bg-muted/30 p-5 sm:p-6">
+        <h2 className="text-base font-semibold tracking-tight">Trend reports</h2>
+        <p className="mt-2 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground">
+          Every guide carries a year-by-year analysis of the papers behind it —
+          which chapters grew, which faded, and how hard each sitting was. They
+          are listed together, each with the sitting its data runs through.
+        </p>
+        <Link
+          href="/guide/reports"
+          className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand-accent hover:underline"
+        >
+          All {TRENDS_REPORTS.length} trend reports
+          <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+        </Link>
+      </section>
     </GuideShell>
   );
 }

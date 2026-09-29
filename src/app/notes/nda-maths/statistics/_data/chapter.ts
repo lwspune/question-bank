@@ -4,8 +4,8 @@ export const STATISTICS_CHAPTER: ChapterNote = {
   chapterName: "Statistics",
   title: "Statistics — NDA Mathematics",
   intro:
-    "Statistics is one of the most predictable scoring chapters in NDA Mathematics. " +
-    "165 past-year questions across 2017–2026 cluster around a small set of techniques — " +
+    "Statistics is 165 past-year NDA questions across 2017–2026 and one of the most " +
+    "predictable scoring chapters in NDA Mathematics. They cluster around a small set of techniques — " +
     "central tendency and dispersion alone account for 122 of them. Each note below is " +
     "built for the digital board: explain the formula, work two real PYQs side by side, " +
     "then drill the rest from the bank.",

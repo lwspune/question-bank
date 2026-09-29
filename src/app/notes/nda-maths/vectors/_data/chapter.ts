@@ -4,6 +4,7 @@ export const VECTORS_CHAPTER: ChapterNote = {
   chapterName: "Vectors",
   title: "Vectors — NDA Mathematics",
   intro:
+    "Vectors is 102 past-year NDA questions across 2017–2026, small but high-yield. " +
     "A vector is a quantity with both magnitude AND direction — an arrow, not a " +
     "number. This chapter builds vectors from the ground up: first what they are " +
     "and how to add, scale, and anchor them at an origin; then the four " +
