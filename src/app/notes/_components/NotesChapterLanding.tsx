@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { notesChapterTitle } from "@/lib/notes/titles";
 import { chapterStart, mockCta } from "@/lib/notes/keepGoing";
+import { getExamByName } from "@/lib/exam/examContext";
+import { examHomeHref as examHomeHrefFor } from "@/lib/exam/examHome";
 import NotesKeepGoing from "./NotesKeepGoing";
 import NotesMockCard from "./NotesMockCard";
 import NotesTestBar from "./NotesTestBar";
@@ -61,7 +63,9 @@ export default async function NotesChapterLanding({ chapter }: Props) {
   const hasFormulaIndex = FORMULA_CHAPTERS.some(
     (c) => c.chapterSlug === chapter.chapterSlug
   );
-  const examHomeHref = `/${chapter.examName.toLowerCase()}`;
+  // Was `/${examName.toLowerCase()}`, which only ever resolved for NDA —
+  // "/mht-cet" and "/jee mains" were dead links on every other exam's notes.
+  const examHomeHref = examHomeHrefFor(getExamByName(chapter.examName)?.slug ?? "nda");
   const meta = chapter.chapter;
 
   const supabase = createSupabaseAnonClient();

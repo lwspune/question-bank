@@ -28,6 +28,8 @@ export type ExamCatalogItem = {
   boardExam: boolean;
   /** Best landing for this exam's card (guide → shipped notes → bank). */
   href: string;
+  /** DB UUID, or null when the exam is registered in code but not seeded. */
+  examId: string | null;
 };
 
 export type ExamCatalog = {
@@ -77,6 +79,7 @@ export function shapeExamCatalog(
       practiceOnly: exam.practiceOnly === true,
       boardExam: exam.boardExam === true,
       href: pickExamCardHref(exam, examId, notesSlugs.has(exam.slug)),
+      examId,
     };
   });
 

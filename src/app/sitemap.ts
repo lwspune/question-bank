@@ -33,7 +33,9 @@ import {
 } from "@/lib/mocks/sitemapEntries";
 import type { MockScope, MockSource } from "@/lib/mocks/query";
 import { FORMULA_CHAPTERS, topicsByWeight } from "@/lib/formula";
-import { BOARD_EXAMS } from "@/lib/exam/examContext";
+import { BOARD_EXAMS, EXAM_REGISTRY } from "@/lib/exam/examContext";
+import { examHomeHref } from "@/lib/exam/examHome";
+import { TRENDS_REPORTS, reportUpdatedIso } from "@/lib/guide/trendsReports";
 import { listBoardChapters } from "@/lib/board/query";
 import {
   buildBoardSitemapEntries,
@@ -491,12 +493,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  const examHomeEntries: MetadataRoute.Sitemap = [
+  // One home per exam with public content: /nda (hand-built) plus the
+  // data-driven /exams/<slug> pages (2026-09-29). Derived from the registry so
+  // a new exam's home is advertised the day its entry lands.
+  const examHomeEntries: MetadataRoute.Sitemap = EXAM_REGISTRY.filter(
+    (e) => !e.noPublicContent
+  ).map((e) => ({
+    url: `${SITE_URL}${examHomeHref(e.slug)}`,
+    lastModified: buildDate,
+    changeFrequency: "weekly",
+    priority: e.slug === "nda" ? 0.95 : 0.85,
+  }));
+
+  // The trends pages, listed as dated reports (src/lib/guide/trendsReports.ts).
+  const reportsIndexEntry: MetadataRoute.Sitemap = [
     {
-      url: `${SITE_URL}/nda`,
-      lastModified: buildDate,
-      changeFrequency: "weekly",
-      priority: 0.95,
+      url: `${SITE_URL}/guide/reports`,
+      lastModified: newestOf(
+        TRENDS_REPORTS.map((r) => reportUpdatedIso(r.route)),
+        buildDate
+      ),
+      changeFrequency: "monthly",
+      priority: 0.7,
     },
   ];
 
@@ -601,6 +619,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     ...landingEntries,
     ...examHomeEntries,
+    ...reportsIndexEntry,
     ...withContentDates(guideEntries, contentDates, buildDate),
     ...withContentDates(notesEntries, contentDates, buildDate),
     ...quizEntries,

@@ -15,6 +15,7 @@ import {
   landingHref,
   type ChapterLanding,
 } from "@/lib/questions/landing";
+import { examHomeHref } from "@/lib/exam/examHome";
 
 const SITE_URL = "https://www.pyqvault.com";
 
@@ -77,7 +78,12 @@ export default async function QuestionsIndexPage() {
         {Array.from(grouped.entries()).map(([examSlug, exam]) => (
           <section key={examSlug} className="mt-10">
             <h2 className="text-xl font-semibold tracking-tight">
-              {exam.examName}
+              <Link
+                href={examHomeHref(examSlug)}
+                className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {exam.examName}
+              </Link>
             </h2>
             {Array.from(exam.subjects.entries()).map(([subjectName, rows]) => (
               <div key={subjectName} className="mt-5">
