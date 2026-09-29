@@ -2,9 +2,9 @@
 
 Free, public past-year-question bank for Indian entrance and board exams. Filter and preview by exam, chapter, subtopic, difficulty and PYQ year; sit timed mock tests reconstructed from real papers; read per-chapter teaching notes, strategy guides and book-faithful textbook solutions. Live at **https://www.pyqvault.com**.
 
-Browsing and previewing are fully open to anyone. Downloading a paper + answer key as Word files requires a **teacher account** — a downloadable Word paper is a teacher artifact, so students get the online product and other visitors get a "request teacher access" CTA.
+Browsing and previewing are fully open to anyone. Downloading a paper + answer key as Word files requires a **Teacher Pass** (or a staff account) — a downloadable Word paper is a teacher artifact, so students get the online product and other visitors see a "Get Teacher Pass" CTA.
 
-Covers NDA, CDS, JEE Mains, NEET, MHT-CET, CBSE Classes 10/11/12, Maharashtra State Board Classes 9/10/11/12, and two worksheet courses. **Run `npm run stats` for live bank size** — any count written in prose, here or anywhere else in the repo, lags the bank.
+Covers NDA, CDS, UPSC Civil Services Prelims, JEE Mains, NEET, MHT-CET, IPMAT (Indore, Rohtak, JIPMAT), MPSC (Group B & C, State Services Prelims and five Mains papers), CBSE Classes 10/11/12, Maharashtra State Board Classes 9/10/11/12, and two worksheet courses. The exam registry in `src/lib/exam/examContext.ts` is the source of truth for that list. **Run `npm run stats` for live bank size** — any count written in prose, here or anywhere else in the repo, lags the bank.
 
 > The repo, folder and Vercel project are still named `question-bank`; the product was rebranded to PYQ Vault on 2026-06-04. Lowercase "question bank" in prose means the question corpus, not the brand.
 
