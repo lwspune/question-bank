@@ -15,6 +15,12 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-29 (sixteenth) — CDS Elementary Mathematics "Time and Work" (4 pages · 46 PYQ · 5 concepts · 7 traps), 100% tagged, on `feat/cds-maths-time-work`. The eighteenth CDS notes chapter; wave 3 is complete.**
+
+**Why four pages.** All 46 stems and solutions were read first. The subtopic named after the chapter (36) held three techniques: individual work RATES (a fraction of the job a day; together, leaving part-way, taking turns, efficiency multiples), MAN-DAYS (men × days × hours constant for a job; extra men, men who leave, a bigger wall), and MIXED gangs whose workers must first be put in one unit (men and women, goats and sheep). "Efficiency and Wages" (4) was not a separate technique: its two men-versus-women rows joined the mixed-gang page and its rate and wage rows joined the rates page. Pipes and cisterns kept its page.
+
+**Source pass** (`generated-papers/_fix-cds-tw.ts`). Eleven plain-text solutions rewritten in LaTeX and re-derived against the stored key. No key changed.
+
 **2026-09-29 (fifteenth) — CDS Elementary Mathematics "Averages" (3 pages · 47 PYQ · 5 concepts · 6 traps), 100% tagged, on `feat/cds-maths-averages`. The seventeenth CDS notes chapter.**
 
 **Why three pages.** All 47 stems and solutions were read first. "Average and Weighted Average" (43) held three techniques: working through the TOTAL (sum = count × mean — an added or dropped item, an item shared by two groups, the largest possible reading), COMBINING groups with different means (the combined mean, and the ratio of group sizes by alligation), and the average of CONSECUTIVE numbers (the middle term). "Correction of Mean" (4) is the first technique applied to a misread value, so it joined that page instead of standing alone.
