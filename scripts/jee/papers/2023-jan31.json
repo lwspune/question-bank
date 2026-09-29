@@ -381,7 +381,7 @@
     "76": {
       "subject": "Maths",
       "chapter": "Sequences and Series",
-      "subtopic": "Geometric Progression"
+      "subtopic": "GP: Terms and Sums"
     },
     "77": {
       "subject": "Maths",
@@ -446,7 +446,7 @@
     "89": {
       "subject": "Maths",
       "chapter": "Sequences and Series",
-      "subtopic": "Telescoping Series"
+      "subtopic": "Telescoping Sums"
     },
     "90": {
       "subject": "Maths",
@@ -811,7 +811,7 @@
     "162": {
       "subject": "Maths",
       "chapter": "Sequences and Series",
-      "subtopic": "Arithmetic Progression"
+      "subtopic": "AP: Terms and Sums"
     },
     "163": {
       "subject": "Maths",
@@ -901,7 +901,7 @@
     "180": {
       "subject": "Maths",
       "chapter": "Sequences and Series",
-      "subtopic": "Special Sums"
+      "subtopic": "Sums by Standard Formulas"
     }
   },
   "answerOverrides": {
@@ -1151,7 +1151,7 @@
     "177": "By geometric probability on the square \\([0,60]^2\\), \\(P(|x-y|\\le a)=1-(1-a/60)^2=\\tfrac{11}{36}\\). Then \\((1-a/60)^2=\\tfrac{25}{36}\\), so \\(a/60=\\tfrac16\\) and \\(a=10\\).",
     "178": "\\(\\frac{^{2n+1}P_{n-1}}{^{2n-1}P_n}=\\frac{2(2n+1)}{(n+2)(n+1)}=\\frac{11}{21}\\) gives \\(11n^2-51n-20=0\\), so \\(n=5\\). Then \\(n^2+n+15=45\\).",
     "179": "\\(2(\\vec a\\times\\vec b)=3(\\vec c\\times\\vec a)\\Rightarrow\\vec a\\times(2\\vec b+3\\vec c)=0\\), so \\(\\vec a=\\pm(2\\vec b+3\\vec c)\\) since \\(|2\\vec b+3\\vec c|^2=31=|\\vec a|^2\\) (using \\(\\vec b\\cdot\\vec c=-\\tfrac12\\)). Then \\((\\vec a\\cdot\\vec b)^2=1\\) and \\(|\\vec a\\times\\vec c|^2=|2(\\vec b\\times\\vec c)|^2=3\\), so the ratio is \\(3\\).",
-    "180": "The \\(r\\)th term is \\((-1)^{r+1}r(2r-1)^2=(-1)^{r+1}(4r^3-4r^2+r)\\), \\(r=1,\\dots,15\\). Evaluating the alternating sum term by term gives \\(6952\\)."
+    "180": "The \\(r\\)th term is \\(\\pm r(2r-1)^2=\\pm(4r^3-4r^2+r)\\), with \\(+\\) for odd \\(r\\). So the sum is (all terms) \\(-\\,2\\,\\)(even terms). All \\(r=1\\) to \\(15\\): \\(4\\cdot120^2-4\\cdot1240+120=52760\\). Even \\(r=2k\\), \\(k=1\\) to \\(7\\): \\(32\\sum k^3-16\\sum k^2+2\\sum k=32\\cdot784-16\\cdot140+2\\cdot28=22904\\). Sum \\(=52760-2\\cdot22904=6952\\)."
   },
   "stemOverrides": {
     "1": "The maximum potential energy of a block executing simple harmonic motion is \\(25\\text{ }J\\). A is amplitude of oscillation. At \\(A/2\\), the kinetic energy of the block is:",
