@@ -846,7 +846,7 @@
     "146": 11,
     "147": 379,
     "148": 2,
-    "149": 65,
+    "149": 64,
     "150": 164
   },
   "skip": [
@@ -952,7 +952,7 @@
     "146": "\\(\\alpha=\\omega\\): \\((\\alpha^k+\\alpha^{-k})^2=4\\) if \\(3\\mid k\\), else \\(1\\). Sum \\(=n+3\\lfloor n/3\\rfloor=20\\Rightarrow n=11\\) (as \\(11+3\\cdot3=20\\)).",
     "147": "With \\(t=\\sqrt{1+x^2}+x\\), \\(\\sqrt{1+x^2}-x=1/t\\), the integrand \\(=t^{19}\\) and \\(dx=\\frac{t^2+1}{2t^2}dt\\). Integrating gives \\(\\frac{t^{18}}{36}+\\frac{t^{20}}{40}=\\frac{1}{m}t^n(n\\sqrt{1+x^2}-x)\\) with \\(n=19,\\ m=360\\). \\(m+n=379\\).",
     "148": "Bayes: \\(P(\\text{spade}\\mid E)=\\frac{\\tfrac14\\binom{12}{n}}{\\tfrac14\\binom{12}{n}+\\tfrac34\\binom{13}{n}}=\\frac{13-n}{52-n}=\\frac{11}{50}\\Rightarrow n=2\\).",
-    "149": "\\(m=6a,\\ n=6b\\) with \\(a<b,\\ \\gcd(a,b)=1,\\ a,b\\in\\{2,\\dots,16\\}\\) (so \\(6a,6b\\) are 2-digit). Counting coprime pairs in \\(\\{2,\\dots,16\\}\\) gives \\(65\\).",
+    "149": "Write \\(m=6a\\), \\(n=6b\\) with \\(a<b\\) and \\(\\gcd(a,b)=1\\). Two-digit \\(m,n\\) need \\(2\\le a<b\\le16\\). For each \\(b\\), the valid \\(a\\) are the numbers in \\([2,b-1]\\) coprime to \\(b\\), i.e. \\(\\varphi(b)-1\\). Summing over \\(b=3,\\dots,16\\): \\(1+1+3+1+5+3+5+3+9+3+11+5+7+7=64\\).",
     "150": "Side lengths\\(^2\\): \\(6,35,41\\) (sum \\(82\\)). For centroid \\(G\\), \\(|AG|^2+|BG|^2+|CG|^2=\\frac13(82)\\). Hence \\(6\\cdot\\frac{82}{3}=164\\)."
   },
   "stemOverrides": {
