@@ -99,8 +99,8 @@ export const CELLS_ELEC_NOTE: SubtopicNote = {
         label: "Standard cell potential",
         latex: "E^\\circ_{cell}=E^\\circ_{cathode}-E^\\circ_{anode}",
         symbols: [
-          { symbol: "E^\\circ_{cathode}", meaning: "reduction potential of the couple that is reduced (higher)" },
-          { symbol: "E^\\circ_{anode}", meaning: "reduction potential of the couple that is oxidised (lower)" },
+          { symbol: "\\(E^\\circ_{cathode}\\)", meaning: "reduction potential of the couple that is reduced (higher)" },
+          { symbol: "\\(E^\\circ_{anode}\\)", meaning: "reduction potential of the couple that is oxidised (lower)" },
         ],
       },
       authoredExample: {
