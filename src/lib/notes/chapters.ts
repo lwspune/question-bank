@@ -930,6 +930,11 @@ import {
   JEE_PROBABILITY_NOTES,
   JEE_PROBABILITY_SLUGS,
 } from "@/app/notes/jee-mains-maths/probability/_data";
+import {
+  JEE_COMPLEX_NUMBERS_CHAPTER,
+  JEE_COMPLEX_NUMBERS_NOTES,
+  JEE_COMPLEX_NUMBERS_SLUGS,
+} from "@/app/notes/jee-mains-maths/complex-numbers/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2982,6 +2987,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_PROBABILITY_CHAPTER,
     notes: JEE_PROBABILITY_NOTES,
     slugs: JEE_PROBABILITY_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "complex-numbers",
+    chipLabel: "Complex Numbers notes",
+    chapter: JEE_COMPLEX_NUMBERS_CHAPTER,
+    notes: JEE_COMPLEX_NUMBERS_NOTES,
+    slugs: JEE_COMPLEX_NUMBERS_SLUGS,
   },
 ];
 
