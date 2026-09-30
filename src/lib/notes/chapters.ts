@@ -915,6 +915,11 @@ import {
   JEE_DIFFERENTIAL_EQUATIONS_NOTES,
   JEE_DIFFERENTIAL_EQUATIONS_SLUGS,
 } from "@/app/notes/jee-mains-maths/differential-equations/_data";
+import {
+  JEE_BINOMIAL_THEOREM_CHAPTER,
+  JEE_BINOMIAL_THEOREM_NOTES,
+  JEE_BINOMIAL_THEOREM_SLUGS,
+} from "@/app/notes/jee-mains-maths/binomial-theorem/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2934,6 +2939,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_DIFFERENTIAL_EQUATIONS_CHAPTER,
     notes: JEE_DIFFERENTIAL_EQUATIONS_NOTES,
     slugs: JEE_DIFFERENTIAL_EQUATIONS_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "binomial-theorem",
+    chipLabel: "Binomial Theorem notes",
+    chapter: JEE_BINOMIAL_THEOREM_CHAPTER,
+    notes: JEE_BINOMIAL_THEOREM_NOTES,
+    slugs: JEE_BINOMIAL_THEOREM_SLUGS,
   },
 ];
 
