@@ -55,11 +55,29 @@ SSP_PAPERS = {
     "ssp-2013": (365, 412),
     "ssp-2014": (413, 460),
 }
+# CSAT Paper II (config.ts SSP_CSAT_PAPERS): booklet file year, booklet pages.
+# paper-2017.pdf is the 2018 booklet; no 2017 booklet exists in the source.
+SSP_CSAT_DIR = r"C:/Users/vilas/Downloads/mpsc-ssp-csat"
+SSP_CSAT_PAPERS = {
+    "ssp-csat-2022": (2022, 64),
+    "ssp-csat-2021": (2021, 56),
+    "ssp-csat-2020": (2020, 64),
+    "ssp-csat-2019": (2019, 56),
+    "ssp-csat-2018": (2017, 56),
+    "ssp-csat-2016": (2016, 56),
+    "ssp-csat-2015": (2015, 56),
+    "ssp-csat-2014": (2014, 48),
+    "ssp-csat-2013": (2013, 48),
+}
 IMAGE_ONLY_KEYS = {"2019-c", "ssp-2019"}
 
 
 def source(pid):
     """(booklet doc path, booklet pages, key doc path, key pages) for a paper."""
+    if pid in SSP_CSAT_PAPERS:
+        file_year, n = SSP_CSAT_PAPERS[pid]
+        key = os.path.join(SSP_CSAT_DIR, f"key-{pid[-4:]}.pdf")
+        return os.path.join(SSP_CSAT_DIR, f"paper-{file_year}.pdf"), (1, n), key, (1, len(doc_for(key)))
     if pid in SSP_PAPERS:
         return SSP_SRC, SSP_PAPERS[pid], os.path.join(SSP_KEY_DIR, pid[4:] + ".pdf"), (1, 2)
     pages, keypages = PAPERS[pid]
@@ -77,7 +95,7 @@ def doc_for(path):
 
 def keys(only=None):
     os.makedirs(DATA, exist_ok=True)
-    for pid in [*PAPERS, *SSP_PAPERS]:
+    for pid in [*PAPERS, *SSP_PAPERS, *SSP_CSAT_PAPERS]:
         if only and not pid.startswith(only):
             continue
         _, _, keypath, (k1, k2) = source(pid)
@@ -87,7 +105,8 @@ def keys(only=None):
             continue
         lines = []
         numbered_by_position = False
-        for page_idx, n in enumerate((k1, k2)):
+        base = 1  # first question number on the page, for keys numbered by position
+        for page_idx, n in enumerate(range(k1, k2 + 1)):
             page_lines = []
             # Group words into printed lines by y (the flat text stream's column
             # order differs between keys). The header prose is Devanagari in a
@@ -110,16 +129,18 @@ def keys(only=None):
                 cur.append(w)
             if cur:
                 page_lines.append([t[4].strip() for t in sorted(cur, key=lambda t: t[0])])
-            # 2021-c prints its question numbers outside the text layer, leaving
-            # 25 lines of 8 answers (left column 1-25, right 26-50 on page 1).
-            # Number them by position ONLY in that exact shape - anything else
-            # is left for parseKeyLines to refuse.
+            # Some keys (2021-c, several CSAT) print their question numbers
+            # outside the text layer, leaving R lines of 8 answers: left column
+            # base..base+R-1, right column the next R. Number them by position
+            # ONLY in that exact shape - anything else is left for
+            # parseKeyLines to refuse. set balance (keys.ts) then checks it.
             body = [l for l in page_lines if len(l) > 2]
-            if len(body) == 25 and all(len(l) == 8 for l in body):
-                base = 1 + 50 * page_idx
+            if body and all(len(l) == 8 for l in body):
+                R = len(body)
                 page_lines = [
-                    [str(base + i), *l[:4], str(base + 25 + i), *l[4:]] for i, l in enumerate(body)
+                    [str(base + i), *l[:4], str(base + R + i), *l[4:]] for i, l in enumerate(body)
                 ]
+                base += 2 * R
                 numbered_by_position = True
             lines.extend(page_lines)
         with open(os.path.join(DATA, f"{pid}.keytokens.json"), "w", encoding="utf-8") as f:

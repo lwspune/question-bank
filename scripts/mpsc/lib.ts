@@ -28,8 +28,13 @@ export type BilingualQuestion = {
   chapter: string;
   subtopic: string;
   difficulty: "EASY" | "MODERATE" | "HARD";
-  en: Version;
-  mr: Version;
+  /**
+   * The printed versions. Almost every question has both; CSAT Paper II's
+   * language-comprehension questions are printed in ONE language only
+   * (booklet instruction 4(c)), and then the other is absent.
+   */
+  en?: Version;
+  mr?: Version;
   /**
    * The question depends on a printed figure. `box` is [x0, y0, x1, y1] in pixels
    * of the 130-dpi page render (extract.py render), on PDF page `page`. Only a
@@ -196,10 +201,12 @@ const lineCount = (s: string) => s.split("\n").filter((l) => l.trim() !== "").le
 export function parityIssues(q: BilingualQuestion): string[] {
   const out: string[] = [];
   const { en, mr } = q;
+  if (!en && !mr) return ["no printed version"];
 
   for (const [lang, v] of [["en", en], ["mr", mr]] as const) {
-    if (v.options.length !== 4) out.push(`${lang} has ${v.options.length} options, expected 4`);
+    if (v && v.options.length !== 4) out.push(`${lang} has ${v.options.length} options, expected 4`);
   }
+  if (!en || !mr) return out; // printed in one language only: nothing to compare
 
   if (Boolean(en.context) !== Boolean(mr.context)) {
     out.push(`context present in ${en.context ? "en" : "mr"} only`);
@@ -259,7 +266,8 @@ export type MpscRow = {
 export function buildRecords(
   questions: BilingualQuestion[],
   key: Record<number, KeyLetter>,
-  cancelledNote = "Cancelled by MPSC in its final answer key. No option is correct."
+  cancelledNote = "Cancelled by MPSC in its final answer key. No option is correct.",
+  graded: Record<number, number[]> = {}
 ): { rows: MpscRow[]; cancelled: number[]; errors: string[] } {
   const rows: MpscRow[] = [];
   const cancelled: number[] = [];
@@ -270,16 +278,23 @@ export function buildRecords(
       errors.push(`Q${q.n}: no key entry`);
       continue;
     }
+    const marks = graded[q.n];
+    if (marks && k !== "#" && gradedKeyLetter(marks) !== k) {
+      errors.push(`Q${q.n}: key ${k} but its graded marks make ${gradedKeyLetter(marks)} the best option`);
+      continue;
+    }
+    const solution = questionSolution(q.printNote, marks);
     if (k === "#") cancelled.push(q.n);
-    const [a, b, c, d] = q.en.options;
+    const v = (q.en ?? q.mr)!; // canonical: English, else the one language printed
+    const [a, b, c, d] = v.options;
     rows.push({
       sourceRow: q.n,
       questionNumber: String(q.n),
       subject: q.subject,
       chapter: q.chapter,
       subtopic: q.subtopic,
-      ...(q.en.context ? { context: q.en.context } : {}),
-      question: q.en.stem,
+      ...(v.context ? { context: v.context } : {}),
+      question: v.stem,
       optionA: a,
       optionB: b,
       optionC: c,
@@ -287,7 +302,7 @@ export function buildRecords(
       answer: k === "#" ? "CANCELLED" : k,
       difficulty: q.difficulty,
       ...(k === "#" ? { cancelledNote } : {}),
-      ...(q.printNote ? { solution: printNoteSolution(q.printNote)!.en } : {}),
+      ...(solution ? { solution: solution.en } : {}),
     });
   }
   return { rows, cancelled, errors };
@@ -305,4 +320,57 @@ export function printNoteSolution(note: string | undefined): { en: string; mr: s
     en: `**Note on the printed paper:** the Marathi and English versions of this question differ. ${note}`,
     mr: `**मुद्रित प्रश्नपत्रिकेबाबत टीप:** या प्रश्नाच्या मराठी व इंग्रजी आवृत्तीत फरक आहे. ${note}`,
   };
+}
+
+/**
+ * CSAT Paper II's decision-making questions are not keyed to one answer: the
+ * final key prints MARKS per option (e.g. 0, 1, 1.5, 2.5) and none of them
+ * deducts. The bank holds one correct option per MCQ, so the option worth the
+ * most is keyed and every option's marks are kept in the solution
+ * (`gradedRemark`). Throws on a row that has no single best option — that is a
+ * misread, and guessing would key the wrong one.
+ */
+export function gradedKeyLetter(marks: number[]): KeyLetter {
+  if (marks.length !== 4) throw new Error(`graded row needs 4 marks, got ${marks.length}`);
+  const best = Math.max(...marks);
+  if (marks.filter((m) => m === best).length !== 1) throw new Error(`graded row [${marks.join(",")}] has no single best option`);
+  return "ABCD"[marks.indexOf(best)] as KeyLetter;
+}
+
+/**
+ * The four booklet sets carry the same decision-making questions in another
+ * order, so each set's collection of mark rows (each row sorted) must match — a
+ * checksum on a hand-transcribed grid, as `setBalanceIssues` is for letters.
+ */
+export function gradedBalanceIssues(sets: Record<string, Record<string | number, number[]>>): string[] {
+  const shape = (rows: Record<string | number, number[]>) =>
+    Object.values(rows)
+      .map((r) => [...r].sort((a, b) => a - b).join("/"))
+      .sort()
+      .join(" ");
+  const shapes = Object.entries(sets).map(([set, rows]) => [set, shape(rows)] as const);
+  if (shapes.every(([, s]) => s === shapes[0][1])) return [];
+  return [`graded mark rows differ between sets: ${shapes.map(([set, s]) => `${set} {${s}}`).join(" ")}`];
+}
+
+/** Every option's marks, in both languages — the remark a graded question carries. */
+export function gradedRemark(marks: number[]): { en: string; mr: string } {
+  const list = marks.map((m, i) => `(${"ABCD"[i]}) ${m}`).join(" · ");
+  return {
+    en:
+      `**Decision-making question — marks per option.** MPSC's final key gives each option its own marks, ` +
+      `and no option loses marks: ${list}. The option shown as correct is the one worth full marks.`,
+    mr:
+      `**निर्णयक्षमता प्रश्न — पर्यायनिहाय गुण.** आयोगाच्या अंतिम उत्तरतालिकेत प्रत्येक पर्यायाला स्वतंत्र गुण आहेत, ` +
+      `आणि कोणत्याही पर्यायासाठी गुण वजा होत नाहीत: ${list}. बरोबर दाखवलेला पर्याय पूर्ण गुणांचा आहे.`,
+  };
+}
+
+/** A question's solution text: the graded remark, then the print note; null when neither applies. */
+export function questionSolution(printNote: string | undefined, marks: number[] | undefined): { en: string; mr: string } | null {
+  const parts = [marks ? gradedRemark(marks) : null, printNoteSolution(printNote)].filter(
+    (p): p is { en: string; mr: string } => p !== null
+  );
+  if (!parts.length) return null;
+  return { en: parts.map((p) => p.en).join("\n\n"), mr: parts.map((p) => p.mr).join("\n\n") };
 }
