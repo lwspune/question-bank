@@ -965,6 +965,11 @@ import {
   JEE_DIFFERENTIATION_NOTES,
   JEE_DIFFERENTIATION_SLUGS,
 } from "@/app/notes/jee-mains-maths/differentiation/_data";
+import {
+  JEE_AOI_CHAPTER,
+  JEE_AOI_NOTES,
+  JEE_AOI_SLUGS,
+} from "@/app/notes/jee-mains-maths/application-of-integrals/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3094,6 +3099,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_DIFFERENTIATION_CHAPTER,
     notes: JEE_DIFFERENTIATION_NOTES,
     slugs: JEE_DIFFERENTIATION_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "application-of-integrals",
+    chipLabel: "Application of Integrals notes",
+    chapter: JEE_AOI_CHAPTER,
+    notes: JEE_AOI_NOTES,
+    slugs: JEE_AOI_SLUGS,
   },
 ];
 
