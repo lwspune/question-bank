@@ -1090,6 +1090,11 @@ import {
   JEE_CH_ALC_NOTES,
   JEE_CH_ALC_SLUGS,
 } from "@/app/notes/jee-mains-chemistry/alcohols-phenols-and-ethers/_data";
+import {
+  JEE_CH_GOC_CHAPTER,
+  JEE_CH_GOC_NOTES,
+  JEE_CH_GOC_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/organic-basic-principles/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3494,6 +3499,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_CH_ALC_CHAPTER,
     notes: JEE_CH_ALC_NOTES,
     slugs: JEE_CH_ALC_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "organic-basic-principles",
+    chipLabel: "Basic Principles of Organic Chemistry notes",
+    chapter: JEE_CH_GOC_CHAPTER,
+    notes: JEE_CH_GOC_NOTES,
+    slugs: JEE_CH_GOC_SLUGS,
   },
 ];
 

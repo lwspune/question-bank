@@ -130,6 +130,7 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "haloalkanes-and-haloarenes": { cls: 12, chapterNo: 6, book: "NCERT XII 6 Haloalkanes and Haloarenes" },
     hydrocarbons: { cls: 11, chapterNo: 9, book: "NCERT XI 9 Hydrocarbons" },
     "alcohols-phenols-and-ethers": { cls: 12, chapterNo: 7, book: "NCERT XII 7 Alcohols, Phenols and Ethers" },
+    "organic-basic-principles": { cls: 11, chapterNo: 8, book: "NCERT XI 8 Organic Chemistry - Some Basic Principles and Techniques" },
   },
 };
 
