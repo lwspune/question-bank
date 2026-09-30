@@ -132,6 +132,7 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "alcohols-phenols-and-ethers": { cls: 12, chapterNo: 7, book: "NCERT XII 7 Alcohols, Phenols and Ethers" },
     "organic-basic-principles": { cls: 11, chapterNo: 8, book: "NCERT XI 8 Organic Chemistry - Some Basic Principles and Techniques" },
     "aldehydes-ketones-and-carboxylic-acids": { cls: 12, chapterNo: 8, book: "NCERT XII 8 Aldehydes, Ketones and Carboxylic Acids" },
+    biomolecules: { cls: 12, chapterNo: 10, book: "NCERT XII 10 Biomolecules" },
   },
 };
 

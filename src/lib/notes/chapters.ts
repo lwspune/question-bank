@@ -1100,6 +1100,11 @@ import {
   JEE_CH_ALD_NOTES,
   JEE_CH_ALD_SLUGS,
 } from "@/app/notes/jee-mains-chemistry/aldehydes-ketones-and-carboxylic-acids/_data";
+import {
+  JEE_CH_BIO_CHAPTER,
+  JEE_CH_BIO_NOTES,
+  JEE_CH_BIO_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/biomolecules/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3526,6 +3531,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_CH_ALD_CHAPTER,
     notes: JEE_CH_ALD_NOTES,
     slugs: JEE_CH_ALD_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "biomolecules",
+    chipLabel: "Biomolecules notes",
+    chapter: JEE_CH_BIO_CHAPTER,
+    notes: JEE_CH_BIO_NOTES,
+    slugs: JEE_CH_BIO_SLUGS,
   },
 ];
 
