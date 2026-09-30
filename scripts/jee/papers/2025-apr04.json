@@ -196,7 +196,7 @@
     "39": {
       "subject": "Chemistry",
       "chapter": "Biomolecules",
-      "subtopic": "Proteins"
+      "subtopic": "Peptides and Protein Structure"
     },
     "40": {
       "subject": "Chemistry",
@@ -516,7 +516,7 @@
     "104": {
       "subject": "Chemistry",
       "chapter": "Biomolecules",
-      "subtopic": "Proteins"
+      "subtopic": "Peptides and Protein Structure"
     },
     "105": {
       "subject": "Chemistry",
@@ -854,7 +854,7 @@
     49,
     118
   ],
-  "notes": "4 April 2025 — Maths only. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry option repair] Restored the full option block for Q29, Q35, Q38, Q39, Q42 from the agent's verbatim recovery — extraction had returned no options for these rows, which commit.ts cannot ship.\n4 April 2025 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry stem repair] Q121, Q122, Q48, Q125, Q46: content-free math zones left by pandoc where an answer blank stood. parseLatex reduces them to a bare backslash, which KaTeX rejects — taking the whole stem down — while scan-flip passes them because the delimiters balance. Cleaned by stripEmptyMath.\n[Chemistry image] Q38 (f8afe15f): the stem image was only the glyph '(Y)'; cleared 2026-09-30 (the stem names the compounds). Do not re-attach.",
+  "notes": "4 April 2025 — Maths only. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry option repair] Restored the full option block for Q29, Q35, Q38, Q39, Q42 from the agent's verbatim recovery — extraction had returned no options for these rows, which commit.ts cannot ship.\n4 April 2025 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry stem repair] Q121, Q122, Q48, Q125, Q46: content-free math zones left by pandoc where an answer blank stood. parseLatex reduces them to a bare backslash, which KaTeX rejects — taking the whole stem down — while scan-flip passes them because the delimiters balance. Cleaned by stripEmptyMath.\n[Chemistry image] Q38 (f8afe15f): the stem image was only the glyph '(Y)'; cleared 2026-09-30 (the stem names the compounds). Do not re-attach.\n[Chemistry image] Q39 (7e2f5003): the stem image was the options' four alanine structures stacked without labels; cleared 2026-09-30 (the options carry the structures as text). Do not re-attach.",
   "authoredSolutions": {
     "26": "Reverse osmosis needs a genuinely semipermeable partition, so cellophane and parchment paper qualify while a merely porous partition lets solute through and does not. Chamber 1 holds the more concentrated solution \\(\\left(c_{1}>c_{2}\\right)\\), so solvent has to be driven OUT of chamber 1, which requires the pressure applied on chamber 1 to exceed the osmotic pressure, i.e. \\(p_{1}>\\pi\\). Statement A (cellophane, \\(p_{1}>\\pi\\)) and statement C (parchment paper, \\(p_{1}>\\pi\\)) meet both requirements; B fails on the membrane and D pushes on the dilute side. Hence the correct choice is option (C), 'A and C only'.",
     "27": "Spontaneity requires \\(\\Delta G=\\Delta H-T\\Delta S<0\\). With both \\(\\Delta H>0\\) and \\(\\Delta S>0\\), the term \\(-T\\Delta S\\) only overcomes the positive \\(\\Delta H\\) at sufficiently high temperature. At equilibrium \\(\\Delta G=0\\), which defines \\(T_{e}=\\Delta H/\\Delta S\\). Therefore \\(\\Delta G<0\\) whenever \\(T>\\Delta H/\\Delta S=T_{e}\\), i.e. the reaction becomes spontaneous for \\(T>T_{e}\\), which is option (C).",
@@ -964,6 +964,7 @@
     "46": "In Dumas' method for estimation of nitrogen 1 g of an organic compound gave 150 mL of nitrogen collected at 300 K temperature and 900 mm Hg pressure. The percentage composition of nitrogen in the compound is % (nearest integer). (Aqueous tension at \\(300\\text{ }K = 15\\text{ }mmHg\\) )",
     "47": "\\({KMnO}_{4}\\) acts as an oxidising agent in acidic medium. ' X ' is the difference between the oxidation states of Mn in reactant and product. ' Y ' is the number of ' \\(d\\) ' electrons present in the brown red precipitate formed at the end of the acetate ion test with neutral ferric chloride. The value of \\(X + Y\\) is ____.",
     "48": "Fortification of food with iron is done using \\({FeSO}_{4}.7H_{2}O\\). The mass in grams of the \\({FeSO}_{4}.7H_{2}O\\) required to achieve 12 ppm of iron in 150 kg of wheat is (Nearest integer) [Given : Molar mass of Fe, S and O respectively are 56,32 and \\(16\\text{ }g{\\text{ }mol}^{- 1}\\) ]",
+    "50": "The total number of hydrogen bonds of a DNA double helix whose one strand has the following sequence of bases is ____. \\[5'-G-G-C-A-A-A-T-C-G-G-C-T-A-3'\\]",
     "65": "Let the three sides of a triangle are on the lines \\(4x- 7y+ 10 = 0,x+y=5\\) and \\(7x+ 4y= 15\\). Then the distance of its orthocenter from the orthocenter of the triangle formed by the lines \\(x= 0,y= 0\\) and \\(x+y= 1\\) is.",
     "75": "Let \\(m\\) and \\(n\\) be the number of points at which the function \\(f(x) =\\) \\(\\max\\left\\{ x,x^{3},x^{5},\\ldots\\ldots,x^{21} \\right\\},x \\in \\mathbb{R}\\), is not differentiable and not continuous, respectively. Then \\(m + n\\) is equal to:",
     "89": "A block of mass 25 kg is pulled along a horizontal surface by a force at an angle \\(45^{\\circ}\\) with the horizontal. The friction coefficient between the block and the surface is 0.25 . If the block moves with uniform velocity, the work done by the force for a displacement of 5 m of the block is:",
