@@ -326,7 +326,7 @@
     "68": {
       "subject": "Maths",
       "chapter": "Determinants",
-      "subtopic": "Properties of Determinants"
+      "subtopic": "Determinants as Functions of x"
     },
     "69": {
       "subject": "Maths",
@@ -386,7 +386,7 @@
     "81": {
       "subject": "Maths",
       "chapter": "Determinants",
-      "subtopic": "System of Linear Equations"
+      "subtopic": "Homogeneous Systems and Non-trivial Solutions"
     },
     "82": {
       "subject": "Maths",
@@ -826,7 +826,7 @@
     "170": {
       "subject": "Maths",
       "chapter": "Determinants",
-      "subtopic": "Properties of Determinants"
+      "subtopic": "Determinants of kA, adj A and Products"
     },
     "171": {
       "subject": "Maths",
@@ -866,7 +866,7 @@
     "179": {
       "subject": "Maths",
       "chapter": "Determinants",
-      "subtopic": "System of Linear Equations"
+      "subtopic": "Infinitely Many Solutions: Parameters in Two Equations"
     },
     "180": {
       "subject": "Maths",
@@ -1226,7 +1226,7 @@
     "167": "\\(a\\times(\\hat i+\\hat j)=(1,-1,1);\\;\\times\\hat i=(0,1,1);\\;\\times\\hat i=(0,1,-1)=b.\\) \\(a\\cdot b=2,|b|=\\sqrt2,\\) projection \\(=\\frac{2}{\\sqrt2}=\\sqrt2,\\) square \\(=2.\\)",
     "168": "\\(Area=\\int_1^2\\left(\\frac1x-\\frac{a}{x^2}\\right)dx=[\\ln x+\\tfrac{a}{x}]_1^2=\\ln2-\\tfrac{a}{2}.\\) Set \\(=\\ln2-\\tfrac17\\Rightarrow a=\\tfrac27.\\) \\(7a-3=2-3=-1.\\)",
     "169": "\\(\\int\\frac{dx}{a^2\\sin^2x+b^2\\cos^2x}=\\frac1{ab}\\tan^{-1}(\\tfrac{a}{b}\\tan x).\\) So \\(\\tfrac1{ab}=\\tfrac1{12},\\tfrac{a}{b}=3\\Rightarrow a=6,b=2.\\) Max of \\(a\\sin x+b\\cos x=\\sqrt{36+4}=\\sqrt{40}.\\)",
-    "170": "\\(Order 3: \\det(\\mathrm{adj}\\,M)=\\det(M)^2,\\;\\det(kM)=k^3\\det M.\\) Tracking from \\((2A)^{-1}\\) with \\(\\det A=3\\): final \\(\\det=2^{-36}3^{20}.\\) \\(m=-36,n=20,\\;m+2n=4.\\)",
+    "170": "For order 3, \\(|kM|=k^3|M|\\) and \\(|\\mathrm{adj}\\,M|=|M|^2\\). Work outwards from \\(|(2A)^{-1}|=\\frac{1}{24}=2^{-3}3^{-1}\\): adj gives \\(2^{-6}3^{-2}\\); times 3 gives \\(2^{-6}3\\); adj gives \\(2^{-12}3^2\\); times \\(-3\\) gives \\(-2^{-12}3^5\\); adj gives \\(2^{-24}3^{10}\\); times \\(-4\\) gives \\(-2^{-18}3^{10}\\); adj gives \\(2^{-36}3^{20}\\). So \\(m=-36,\\ n=20\\) and \\(m+2n=4\\).",
     "171": "\\([\\tfrac{x}{2}+3]\\) jumps at \\(x=2,4,6,8;\\;[\\sqrt x]\\) jumps at \\(x=1,4.\\) At \\(x=4\\) both jump \\(+1\\Rightarrow f\\) continuous. Discontinuities: \\(\\{1,2,6,8\\},\\) sum \\(=17.\\)",
     "173": "\\(S(x)=\\sum_{k=1}^{60}k t^k,\\,t=1+x.\\) \\(60^2S(60)=3600S(60)=61(1+59\\cdot61^{61})=3599\\cdot61^{61}+61.\\) So \\(a=3599,b=61,\\;a+b=3660.\\)",
     "174": "\\(\\int_0^3[x^2]dx=21-3\\sqrt2-\\sqrt3-\\sqrt5-\\sqrt6-\\sqrt7.\\) \\(\\int_0^3[\\tfrac{x^2}{2}]dx=10-3\\sqrt2-\\sqrt6.\\) Sum \\(=31-6\\sqrt2-\\sqrt3-\\sqrt5-2\\sqrt6-\\sqrt7.\\) So \\(a=31,b=-6,c=-2,\\;a+b+c=23.\\)",
@@ -1234,7 +1234,7 @@
     "176": "\\(\\cos A=\\frac{15+c^2}{16c}=\\frac23\\Rightarrow3c^2-32c+45=0\\Rightarrow c=9.\\) \\(\\cos C=\\frac{49+64-81}{112}=\\frac27.\\) \\(\\cos3C=4(\\tfrac27)^3-3\\cdot\\tfrac27=-\\frac{262}{343}.\\) \\(49\\cos3C+42=-\\tfrac{262}{7}+42=\\frac{32}{7}.\\) \\(m+n=39.\\)",
     "177": "\\(d_1\\times d_2=(-6,-15,3),|d_1\\times d_2|=3\\sqrt{30}.\\) \\((P_2-P_1)\\cdot(d_1\\times d_2)=6\\lambda+126.\\) \\(\\frac{|6\\lambda+126|}{3\\sqrt{30}}=\\frac{44}{\\sqrt{30}}\\Rightarrow|6\\lambda+126|=132\\Rightarrow\\lambda=1\\) or \\(-43.\\) Largest \\(|\\lambda|=43.\\)",
     "178": "\\(Recurrence: U_n=-\\sqrt{2}\\,U_{n-1}+8U_{n-2}\\Rightarrow U_{10}+\\sqrt{2}\\,U_9=8U_8.\\) Hence \\(\\frac{U_{10}+\\sqrt{2}\\,U_9}{2U_8}=\\frac{8U_8}{2U_8}=4.\\)",
-    "179": "\\(Solve first two for x,y in z, substitute into third; identity requires constant: 22+\\mu=-17\\Rightarrow\\mu=-39,\\) and \\(z\\)-coeff: \\(119\\lambda+119=0\\Rightarrow\\lambda=-1.\\) \\(\\lambda-\\mu=-1+39=38.\\)",
+    "179": "For infinitely many solutions the third equation must be \\(p(\\text{eq }1)+q(\\text{eq }2)\\). The \\(x\\) coefficients and the right-hand sides give \\(2p+3q=1\\) and \\(3p+4q=-1\\), so \\(p=-7,\\ q=5\\). Then the \\(y\\) coefficient gives \\(\\mu=7p+2q=-49+10=-39\\), and the \\(z\\) coefficient gives \\(32=\\lambda p+5q=-7\\lambda+25\\), so \\(\\lambda=-1\\). Hence \\(\\lambda-\\mu=-1+39=38\\).",
     "180": "\\(\\cot x\\,dx=-\\frac{e^y}{e^y+1}dy\\Rightarrow\\sin x(e^y+1)=C.\\) At \\((\\tfrac{\\pi}{2},0):C=2.\\) At \\(x=\\tfrac{\\pi}{6}:\\tfrac12(e^y+1)=2\\Rightarrow e^y=3.\\)"
   },
   "stemOverrides": {
@@ -1252,7 +1252,8 @@
     "114": "Three balls of masses \\(2\\text{ }kg,4\\text{ }kg\\) and \\(6\\text{ }kg\\) respectively are arranged at centre of the edges of an equilateral triangle of side \\(2\\text{ }m\\). The moment of inertia of the system about an axis through the centroid and perpendicular to the plane of triangle, will be ___ \\(kgm^{2}\\).",
     "117": "A wire of cross-sectional area A, modulus of elasticity \\(2 \\times10^{11}Nm^{- 2}\\) and length \\(2\\text{ }m\\) is stretched between two vertical rigid supports. When a mass of \\(2\\text{ }kg\\) is suspended at the middle it sags lower from its original position making angle \\(\\theta =\\frac{1}{100}\\) radian on the points of support. The value of \\(A\\) is ____ \\(\\times10^{- 4}{\\text{ }m}^{2}\\) (consider \\(x < < L\\) ). (given: \\(g = 10\\text{ }m/s^{2}\\) )",
     "147": "Total number of species from the following with central atom utilising \\(sp^{2}\\) hybrid orbitals for bonding is \\_\\_\\_\\_\\_\\_ \\(NH_{3},SO_{2},SiO_{2},BeCl_{2},C_{2}H_{2},C_{2}H_{4},BCl_{3},HCHO\\), \\(C_{6}H_{6},BF_{3},C_{2}H_{4}Cl_{2}\\)",
-    "161": "Let \\(\\overrightarrow{a}= 6\\widehat{i}+\\widehat{j}-\\widehat{k}\\) and \\(\\overrightarrow{b}=\\widehat{i}+\\widehat{j}\\). If \\(\\overrightarrow{c}\\) is a vector such that \\(|\\overrightarrow{c}| \\geq 6,\\overrightarrow{a}\\cdot\\overrightarrow{c}= 6|\\overrightarrow{c}|,|\\overrightarrow{c}-\\overrightarrow{a}| = 2\\sqrt{2}\\) and the angle between \\(\\overrightarrow{a}\\times\\overrightarrow{b}\\) and \\(\\overrightarrow{c}\\) is \\(60^{\\circ}\\), then \\(|(\\overrightarrow{a}\\times\\overrightarrow{b}) \\times\\overrightarrow{c}|\\) is equal to:"
+    "161": "Let \\(\\overrightarrow{a}= 6\\widehat{i}+\\widehat{j}-\\widehat{k}\\) and \\(\\overrightarrow{b}=\\widehat{i}+\\widehat{j}\\). If \\(\\overrightarrow{c}\\) is a vector such that \\(|\\overrightarrow{c}| \\geq 6,\\overrightarrow{a}\\cdot\\overrightarrow{c}= 6|\\overrightarrow{c}|,|\\overrightarrow{c}-\\overrightarrow{a}| = 2\\sqrt{2}\\) and the angle between \\(\\overrightarrow{a}\\times\\overrightarrow{b}\\) and \\(\\overrightarrow{c}\\) is \\(60^{\\circ}\\), then \\(|(\\overrightarrow{a}\\times\\overrightarrow{b}) \\times\\overrightarrow{c}|\\) is equal to:",
+    "170": "If A is a square matrix of order 3 such that \\(det(A) = 3\\) and \\[det\\left( adj\\left( - 4adj\\left( - 3adj\\left( 3adj\\left( (2\\text{ }A)^{- 1} \\right) \\right) \\right) \\right) \\right)=2^{m}3^{n}\\] then \\(m + 2n\\) is equal to:"
   },
   "optionOverrides": {
     "13": {

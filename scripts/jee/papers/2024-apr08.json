@@ -761,7 +761,7 @@
     "153": {
       "subject": "Maths",
       "chapter": "Determinants",
-      "subtopic": "Properties of Determinants"
+      "subtopic": "Simplifying Determinants by Row and Column Operations"
     },
     "154": {
       "subject": "Maths",
@@ -781,7 +781,7 @@
     "157": {
       "subject": "Maths",
       "chapter": "Determinants",
-      "subtopic": "System of Linear Equations"
+      "subtopic": "Infinitely Many Solutions: Parameters in Two Equations"
     },
     "158": {
       "subject": "Maths",
@@ -1228,7 +1228,7 @@
     "150": "The solute is ethyl alcohol, so its mass is \\(1\\times 46=46\\text{ g}\\), and the solvent water contributes \\(9\\times 18=162\\text{ g}\\). The solution therefore weighs \\(46+162=208\\text{ g}\\). Mass percent of solute \\(=(46/208)\\times 100=22.1\\), so the integer answer is 22.",
     "151": "Reflecting \\((-4,5)\\) in \\(x+2y=2\\): \\(d=\\frac{-4+10-2}{5}=\\frac45\\), image \\(=\\left(-\\frac{28}{5},\\frac95\\right)\\). Substituting into the circle: \\(\\left(-\\frac85\\right)^2+\\left(-\\frac65\\right)^2=\\frac{100}{25}=4=r^2\\), so \\(r=2\\).",
     "152": "\\(\\vec b+\\vec c=5\\hat i+2\\hat j+(\\lambda-5)\\hat k\\). From \\(\\vec r\\cdot\\vec a=\\frac{(\\vec b+\\vec c)\\cdot\\vec a}{|\\vec b+\\vec c|}=3\\): \\(\\frac{3\\lambda-6}{\\sqrt{29+(\\lambda-5)^2}}=3\\), so \\((\\lambda-2)^2=29+(\\lambda-5)^2\\Rightarrow6\\lambda=50\\), \\(\\lambda=\\frac{25}3\\), giving \\(3\\lambda=25\\). (The paper prints 25 as both (b) and (c); (c) is the keyed option.)",
-    "153": "With \\(p=a-\\alpha,\\ q=\\beta-b,\\ r=\\gamma-c\\), expanding the determinant gives \\(\\alpha qr-bpr-cpq=0\\), i.e. \\(\\frac{\\alpha}{a-\\alpha}=\\frac{b}{\\beta-b}+\\frac{c}{\\gamma-c}\\). Hence \\(\\frac{a}{\\alpha-a}+\\frac{b}{\\beta-b}+\\frac{\\gamma}{\\gamma-c}=0\\) (verified numerically).",
+    "153": "Apply \\(R_2\\to R_2-R_1\\), \\(R_3\\to R_3-R_1\\) and write \\(p=\\alpha-a,\\ q=\\beta-b,\\ r=\\gamma-c\\): the rows become \\((-p,q,0)\\) and \\((-p,0,r)\\). Expanding, \\(\\alpha qr+bpr+cpq=0\\), and dividing by \\(pqr\\): \\(\\frac{\\alpha}{\\alpha-a}+\\frac{b}{\\beta-b}+\\frac{c}{\\gamma-c}=0\\). Since \\(\\frac{a}{\\alpha-a}=\\frac{\\alpha}{\\alpha-a}-1\\) and \\(\\frac{\\gamma}{\\gamma-c}=\\frac{c}{\\gamma-c}+1\\), the required sum is \\(0-1+1=0\\).",
     "154": "\\(a_3a_5=(ar^3)^2=49\\Rightarrow ar^3=7\\). \\(a_2+a_6=7\\left(\\frac1{r^2}+r^2\\right)=\\frac{70}3\\Rightarrow r^2+\\frac1{r^2}=\\frac{10}3\\Rightarrow r^2=3\\) (increasing). \\(a_4+a_6+a_8=7(1+3+9)=91\\).",
     "155": "MATHEMATICS has 8 distinct letters with M, A, T doubled. Choosing 5: all distinct \\(\\binom85=56\\); one pair \\(3\\binom73=105\\); two pairs \\(\\binom32\\cdot6=18\\). Total \\(=179\\).",
     "156": "\\(\\frac{1+i\\cos\\theta}{1-2i\\cos\\theta}\\) has real part \\(\\frac{1-2\\cos^2\\theta}{1+4\\cos^2\\theta}\\); purely imaginary needs \\(\\cos^2\\theta=\\frac12\\), \\(\\cos\\theta=\\pm\\frac1{\\sqrt2}\\). In \\([-\\pi,2\\pi]\\): \\(-\\frac{3\\pi}4,-\\frac\\pi4,\\frac\\pi4,\\frac{3\\pi}4,\\frac{5\\pi}4,\\frac{7\\pi}4\\); sum \\(=3\\pi\\).",
@@ -1277,6 +1277,7 @@
     "147": "Molality of an aqueous solution of urea is \\(4.44\\text{ }m\\). Mole fraction of urea in solution is \\(x\\times10^{-3}\\). Value of \\(x\\) is _______ . (integer answer)",
     "149": "Wavenumber for a radiation having \\(5800\\text{\\AA}\\) wavelength is \\(x\\times 10{\\text{ }cm}^{-1}\\). The value of \\(x\\) is ____",
     "154": "In an increasing geometric progression of positive terms, the sum of the second and sixth terms is \\(\\frac{70}{3}\\) and the product of the third and fifth terms is 49. Then the sum of the \\(4^{\\text{th~}},6^{\\text{th~}}\\) and \\(8^{\\text{th~}}\\) terms is: -",
+    "157": "If the system of equations \\(x+ 4y-z=\\lambda\\), \\(7x+ 9y+\\mu z= - 3,5x+y+ 2z= - 1\\) has infinitely many solutions, then \\((2\\mu + 3\\lambda)\\) is equal to :",
     "160": "Let \\(y = y(x)\\) be the solution curve of the differential equation secy \\(\\frac{dy}{dx}+ 2xsiny =x^{3}\\cos y\\) \\(y(1) = 0\\). Then \\(y(\\sqrt{3})\\) is equal to:",
     "167": "Let \\(f(x) =\\left\\{ \\begin{matrix} - a & \\text{~if~}- a \\leq x \\leq 0 \\\\ x + a & \\text{~if~}0 < x \\leq a \\end{matrix} \\right.\\) where \\(a > 0\\) and \\(g(x) = (f(|x|) - |f(x)|)/2\\). Then the function \\(g:\\lbrack - a,a\\rbrack \\rightarrow \\lbrack - a,a\\rbrack\\) is",
     "179": "Let \\(\\alpha|x| = |y|e^{xy - \\beta},\\alpha,\\beta \\in N\\) be the solution of the differential equation \\(xdy - ydx + xy(xdy + ydx) = 0\\), \\(y(1) = 2\\). Then \\(\\alpha + \\beta\\) is equal to"

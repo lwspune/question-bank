@@ -329,7 +329,7 @@
     },
     "67": {
       "chapter": "Determinants",
-      "subtopic": "System of Linear Equations"
+      "subtopic": "Classifying a System: Unique, Infinite or None"
     },
     "68": {
       "chapter": "Limits and Continuity",
@@ -373,7 +373,7 @@
     },
     "78": {
       "chapter": "Determinants",
-      "subtopic": "Properties of Determinants"
+      "subtopic": "Determinants of kA, adj A and Products"
     },
     "79": {
       "chapter": "Binomial Theorem",
@@ -899,8 +899,10 @@
     "58": "The cell reaction is \\(H_2 + 2Fe^{3+} \\rightarrow 2H^{+} + 2Fe^{2+}\\), with \\(n = 2\\) and \\(E^{o}_{cell} = 0.771 - 0 = 0.771\\ V\\). The Nernst equation gives \\(E = E^{o} - \\frac{0.059}{2}\\log\\frac{[H^{+}]^2[Fe^{2+}]^2}{p_{H_2}[Fe^{3+}]^2}\\). With \\([H^{+}] = 1\\) and \\(p_{H_2} = 1\\ atm\\) this reduces to \\(E = 0.771 - 0.059\\log\\frac{[Fe^{2+}]}{[Fe^{3+}]}\\). Substituting \\(E = 0.712\\ V\\): \\(0.059\\log\\frac{[Fe^{2+}]}{[Fe^{3+}]} = 0.771 - 0.712 = 0.059\\), so \\(\\log\\frac{[Fe^{2+}]}{[Fe^{3+}]} = 1\\) and the ratio is 10.",
     "59": "Ozone is a resonance hybrid of \\(O=\\overset{+}{O}-\\overset{-}{O}\\) and its mirror image. In one canonical structure the central oxygen forms one double and one single bond and carries a positive formal charge, so it has 1 lone pair; the doubly bonded terminal oxygen has 2 lone pairs; the singly bonded terminal oxygen carries a negative formal charge and has 3 lone pairs. Total \\(= 1 + 2 + 3 = 6\\) lone pairs. (Check by electron count: \\(3 \\times 6 = 18\\) valence electrons; 2 sigma bonds and 1 pi bond use 6, leaving 12 electrons, i.e. 6 lone pairs.)",
     "60": "The added \\(HCl\\) converts an equal number of moles of the base to its conjugate acid: \\(NH_3 + HCl \\rightarrow NH_4Cl\\). After adding 0.02 mol \\(HCl\\), \\(n(NH_3) = 0.10 - 0.02 = 0.08\\ mol\\) and \\(n(NH_4^{+}) = 0.10 + 0.02 = 0.12\\ mol\\) in 1 L. For a basic buffer, \\(pOH = pK_b + \\log\\frac{[salt]}{[base]} = 4.745 + \\log\\frac{0.12}{0.08} = 4.745 + \\log 1.5\\). Since \\(\\log 1.5 = \\log 3 - \\log 2 = 0.477 - 0.301 = 0.176\\), \\(pOH = 4.921\\) and \\(pH = 14 - 4.921 = 9.08 \\approx 9\\).",
+    "67": "Take \\(a\\) out of the first row: \\(\\Delta=a\\begin{vmatrix}1&2&-3\\\\2a+1&2a+3&a+1\\\\3a+5&a+5&a+2\\end{vmatrix}\\). With \\(C_2\\to C_2-2C_1\\) and \\(C_3\\to C_3+3C_1\\) the first row becomes \\((1,0,0)\\), so \\(\\Delta=a[(1-2a)(10a+17)+(7a+4)(5a+5)]=a(15a^2+31a+37)\\). The quadratic has discriminant \\(31^2-4\\cdot15\\cdot37<0\\), so \\(\\Delta\\ne0\\) for every \\(a\\ne0\\) and the solution is always unique. Hence \\(S_1=R-\\{0\\}\\) and \\(S_2=\\Phi\\).",
     "69": "The implication is false only if \\(p\\land(\\sim q)\\) is true and \\(p\\Rightarrow(\\sim q)\\) is false. But \\(p\\land(\\sim q)\\) true forces \\(p=T,\\ q=F\\), and then \\(p\\Rightarrow(\\sim q)=\\sim p\\vee\\sim q=T\\). So the statement is never false — it is a tautology.",
     "72": "For \\(0\\le x\\le2\\), \\(f(x)=\\int_0^x e^{x-t}dt+\\int_x^2 e^{t-x}dt=(e^x-1)+(e^{2-x}-1)=e^x+e^{2-x}-2\\). By AM-GM, \\(e^x+e^{2-x}\\ge2e\\), with equality at \\(x=1\\), so the least value on \\([0,2]\\) is \\(2e-2\\). Outside, \\(f\\) is larger: for \\(x<0\\), \\(f(x)=e^{-x}(e^2-1)>e^2-1\\), and for \\(x>2\\), \\(f(x)=e^x(1-e^{-2})>e^2-1\\). Minimum \\(=2(e-1)\\).",
+    "78": "Write \\(l_x=\\ln x\\), \\(l_y=\\ln y\\), \\(l_z=\\ln z\\). Each entry is \\(a_{ij}=\\frac{l_j}{l_i}m_{ij}\\) with \\(M=\\begin{bmatrix}1&1&1\\\\1&2&1\\\\1&1&3\\end{bmatrix}\\), so \\(A=D^{-1}MD\\) with \\(D=\\mathrm{diag}(l_x,l_y,l_z)\\), and \\(|A|=|M|=5-2-1=2\\). For order 3, \\(|\\mathrm{adj}(\\mathrm{adj}\\,A^2)|=|A^2|^4=|A|^8=2^8\\).",
     "83": "Modulo 3 the elements are: \\(3\\) (residue 0); \\(1,7,10\\) (residue 1); \\(2,5,11\\) (residue 2). With \\(\\omega\\) a cube root of unity, the number of subsets with sum \\(\\equiv0\\) is \\(\\frac13\\left[F(1)+F(\\omega)+F(\\omega^2)\\right]\\) where \\(F(t)=2(1+t)^3(1+t^2)^3\\). \\(F(1)=128\\) and \\(F(\\omega)=F(\\omega^2)=2(-\\omega^2)^3(-\\omega)^3=2\\). So there are \\(\\frac{128+4}{3}=44\\) such subsets, including the empty set; the non-empty ones number \\(43\\).",
     "87": "Each residue class mod 5 has 5 numbers in \\(1,\\dots,25\\). Ordered pairs of distinct numbers with \\(x+y\\equiv0\\pmod5\\): both \\(\\equiv0\\): \\(5\\cdot4=20\\); residues \\((1,4),(4,1),(2,3),(3,2)\\): \\(25\\) each, \\(100\\). Total \\(=120\\).",
     "121": "\\(pH = -\\log[H^{+}]\\). If the hydrogen ion concentration changes by a factor of 1000, then \\(\\Delta pH = -\\log\\left( 10^{3} \\right) = -3\\) for a thousand-fold INCREASE (and \\(+3\\) for a thousand-fold decrease). Either way the magnitude of the change is 3 units, and the only option quoting 3 units is (D), a decrease by 3 units, corresponding to the concentration rising a thousand-fold. Options (A) and (C) quote 2 units, and (B) confuses the concentration factor with a pH change.",
@@ -999,6 +1001,7 @@
     "27": "The distance between two consecutive points with phase difference of \\(60^{\\circ}\\) in a wave of frequency \\(500\\text{ }Hz\\) is \\(6.0\\text{ }m\\). The velocity with which wave is traveling is___ \\(\\frac{km}{s}\\)",
     "55": "The density of a monobasic strong acid (Molar mass \\(24.2\\text{ }g/mol\\) ) is \\(1.21\\text{ }kg/L\\). The volume of its solution required for the complete neutralization of \\(25\\text{ }mL\\) of \\(0.24MNaOH\\) is\\_\\_ \\(\\times10^{- 2}\\text{ }mL\\) (Nearest integer)",
     "61": "Let the points of intersection of the line \\(ax+by=0\\ (a\\neq b)\\) and the circle \\(x^{2}+y^{2}-2x=0\\) be \\(A(\\alpha,0)\\) and \\(B(1,\\beta)\\). The image of the circle with \\(AB\\) as a diameter in the line \\(x+y+2=0\\) is:",
+    "67": "Let \\(S_{1}\\) and \\(S_{2}\\) be respectively the sets of all \\(\\mathbf{a \\in R - \\{ 0\\}}\\) for which the system of linear equations \\[\\begin{matrix} & ax + 2ay - 3az = 1 \\\\ & \\ (2a + 1)x + (2a + 3)y + (a + 1)z = 2 \\\\ & \\ (3a + 5)x + (a + 5)y + (a + 2)z = 3 \\end{matrix}\\] has unique solution and infinitely many solutions respectively. Then",
     "87": "Let \\(x\\) and \\(y\\) be distinct integers where \\(1 \\leq x \\leq 25\\) and \\(1 \\leq y \\leq 25\\). Then, the number of ways of choosing \\(x\\) and \\(y\\) such that \\(x+y\\) is divisible by 5, is",
     "90": "Let \\(A_{1},A_{2},A_{3}\\) be the three A.P. with the same common difference \\(d\\) and having their first terms as \\(A,A + 1,\\text{ }A + 2\\), respectively. Let \\(a,b,c\\) be the \\(7^{\\text{th~}},9^{\\text{th~}},17^{\\text{th~}}\\) terms of \\(A_{1},{\\text{ }A}_{2},{\\text{ }A}_{3}\\), respectively such that \\(\\left| \\begin{matrix} a & 7 & 1 \\\\ 2b & 17 & 1 \\\\ c & 17 & 1 \\end{matrix} \\right|+ 70 = 0\\). If \\(a = 29\\), then the sum of first 20 terms of an AP whose first term is \\(c - a - b\\) and common difference is \\(\\frac{d}{12}\\), is equal to",
     "92": "A wire of length \\(1\\text{ }m\\) moving with velocity \\(8\\text{ }m/s\\) at right angles to a magnetic field of \\(2\\text{ }T\\). The magnitude of induced emf, between the ends of wire will be",

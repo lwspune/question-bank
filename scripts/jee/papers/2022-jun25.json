@@ -326,7 +326,7 @@
     "65": {
       "subject": "Maths",
       "chapter": "Determinants",
-      "subtopic": "System of Linear Equations"
+      "subtopic": "Classifying a System: Unique, Infinite or None"
     },
     "66": {
       "subject": "Maths",
@@ -761,7 +761,7 @@
     "154": {
       "subject": "Maths",
       "chapter": "Determinants",
-      "subtopic": "System of Linear Equations"
+      "subtopic": "No Solution and Inconsistent Systems"
     },
     "155": {
       "subject": "Maths",
@@ -1142,7 +1142,7 @@
     "62": "Put \\(u=\\cos x\\), \\(du=-\\sin x\\,dx\\): \\(I=\\int_{-1}^{1}\\frac{e^{u}}{(1+u^2)(e^{u}+e^{-u})}du\\). Replacing \\(u\\to -u\\) and adding gives \\(2I=\\int_{-1}^{1}\\frac{du}{1+u^2}=\\big[\\arctan u\\big]_{-1}^{1}=\\frac{\\pi}{2}\\). Hence \\(I=\\frac{\\pi}{4}\\).",
     "63": "With \\(\\frac{a+b}{7}=\\frac{b+c}{8}=\\frac{c+a}{9}=t\\), summing gives \\(a+b+c=12t\\), so \\(a=4t,b=3t,c=5t\\) (a \\(3,4,5\\) right triangle). Then \\(R=\\frac{5t}{2}\\) and \\(r=\\frac{\\text{area}}{s}=\\frac{6t^2}{6t}=t\\), so \\(\\frac{R}{r}=\\frac{5}{2}\\).",
     "64": "From \\(f(x+y)=2f(x)f(y)\\), \\(f(1)=2\\), we get \\(f(x)=2^{2x-1}\\). Then \\(\\sum_{k=1}^{10}f(\\alpha+k)=2^{2\\alpha-1}\\sum_{k=1}^{10}4^{k}=2^{2\\alpha+1}\\frac{2^{20}-1}{3}\\). Setting this equal to \\(\\frac{512}{3}(2^{20}-1)\\) gives \\(2^{2\\alpha+1}=2^{9}\\), so \\(\\alpha=4\\).",
-    "65": "Reconstructing \\(A\\) from the given images, \\(A-2I=\\begin{pmatrix}-4&3&1\\\\-1&0&1\\\\-1&1&0\\end{pmatrix}\\) with \\(\\det=0\\). Reducing the augmented system \\([\\,A-2I\\mid(4,1,1)^T\\,]\\) yields \\(x_2=1+x_1,\\ x_3=1+x_1\\) and the first row reduces to \\(0=0\\). The system is consistent with a free parameter, so it has infinitely many solutions.",
+    "65": "From the data, \\(Ae_3=(1,1,2)^T\\), \\(Ae_1=A(e_1+e_3)-Ae_3=(-2,-1,-1)^T\\) and \\(Ae_2=A(e_1+e_2)-Ae_1=(3,2,1)^T\\). So \\(A-2I=\\begin{bmatrix}-4&3&1\\\\-1&0&1\\\\-1&1&0\\end{bmatrix}\\), whose determinant is \\(4-3-1=0\\). The last two equations give \\(x_3=1+x_1\\) and \\(x_2=1+x_1\\), and the first becomes \\(-4x_1+3(1+x_1)+(1+x_1)=4\\), which holds for every \\(x_1\\). So the system has infinitely many solutions.",
     "66": "\\(g=f^{-1}\\). Solve \\(f(a)=63\\Rightarrow a^3+a-5=63\\Rightarrow a=4\\), so \\(g(63)=4\\). With \\(f'(x)=3x^2+1\\), \\(g'(63)=\\frac{1}{f'(4)}=\\frac{1}{49}\\).",
     "67": "\\(p\\to((\\sim p)\\vee q)\\) is FALSE forces \\(p=T,\\ q=F\\). Then \\(P1:\\sim(p\\to\\sim q)=\\sim(T\\to T)=\\sim T=F\\); and \\(P2:(p\\wedge\\sim q)\\wedge((\\sim p)\\vee q)=T\\wedge F=F\\). Both are FALSE.",
     "68": "Multiplying each term by \\(2^{10}3^{10}\\), \\(K=\\sum_{k=1}^{10}2^{10-k}3^{k-1}=2^{9}\\sum_{j=0}^{9}\\left(\\frac{3}{2}\\right)^{j}=2^{10}\\left(\\left(\\frac{3}{2}\\right)^{10}-1\\right)=3^{10}-2^{10}\\). Mod 6: \\(3^{10}\\equiv 3,\\ 2^{10}\\equiv 4\\), so \\(K\\equiv -1\\equiv 5\\).",

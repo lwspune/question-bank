@@ -940,6 +940,11 @@ import {
   JEE_AOD_NOTES,
   JEE_AOD_SLUGS,
 } from "@/app/notes/jee-mains-maths/application-of-derivatives/_data";
+import {
+  JEE_DETERMINANTS_CHAPTER,
+  JEE_DETERMINANTS_NOTES,
+  JEE_DETERMINANTS_SLUGS,
+} from "@/app/notes/jee-mains-maths/determinants/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3014,6 +3019,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_AOD_CHAPTER,
     notes: JEE_AOD_NOTES,
     slugs: JEE_AOD_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "determinants",
+    chipLabel: "Determinants notes",
+    chapter: JEE_DETERMINANTS_CHAPTER,
+    notes: JEE_DETERMINANTS_NOTES,
+    slugs: JEE_DETERMINANTS_SLUGS,
   },
 ];
 
