@@ -1055,6 +1055,11 @@ import {
   JEE_CH_PER_NOTES,
   JEE_CH_PER_SLUGS,
 } from "@/app/notes/jee-mains-chemistry/periodicity/_data";
+import {
+  JEE_CH_COORD_CHAPTER,
+  JEE_CH_COORD_NOTES,
+  JEE_CH_COORD_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/coordination-compounds/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3382,6 +3387,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_CH_PER_CHAPTER,
     notes: JEE_CH_PER_NOTES,
     slugs: JEE_CH_PER_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "coordination-compounds",
+    chipLabel: "Coordination Compounds notes",
+    chapter: JEE_CH_COORD_CHAPTER,
+    notes: JEE_CH_COORD_NOTES,
+    slugs: JEE_CH_COORD_SLUGS,
   },
 ];
 
