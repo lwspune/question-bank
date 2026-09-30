@@ -1045,6 +1045,11 @@ import {
   JEE_CH_SBC_NOTES,
   JEE_CH_SBC_SLUGS,
 } from "@/app/notes/jee-mains-chemistry/some-basic-concepts/_data";
+import {
+  JEE_CH_BOND_CHAPTER,
+  JEE_CH_BOND_NOTES,
+  JEE_CH_BOND_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/chemical-bonding/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3350,6 +3355,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_CH_SBC_CHAPTER,
     notes: JEE_CH_SBC_NOTES,
     slugs: JEE_CH_SBC_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "chemical-bonding",
+    chipLabel: "Chemical Bonding notes",
+    chapter: JEE_CH_BOND_CHAPTER,
+    notes: JEE_CH_BOND_NOTES,
+    slugs: JEE_CH_BOND_SLUGS,
   },
 ];
 

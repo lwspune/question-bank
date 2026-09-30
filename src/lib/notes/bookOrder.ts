@@ -121,6 +121,7 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     solutions: { cls: 12, chapterNo: 1, book: "NCERT XII 1 Solutions" },
     electrochemistry: { cls: 12, chapterNo: 2, book: "NCERT XII 2 Electrochemistry" },
     "chemical-kinetics": { cls: 12, chapterNo: 3, book: "NCERT XII 3 Chemical Kinetics" },
+    "chemical-bonding": { cls: 11, chapterNo: 4, book: "NCERT XI 4 Chemical Bonding and Molecular Structure" },
   },
 };
 
