@@ -950,6 +950,11 @@ import {
   JEE_LIMITS_NOTES,
   JEE_LIMITS_SLUGS,
 } from "@/app/notes/jee-mains-maths/limits-and-continuity/_data";
+import {
+  JEE_QUADRATIC_EQUATIONS_CHAPTER,
+  JEE_QUADRATIC_EQUATIONS_NOTES,
+  JEE_QUADRATIC_EQUATIONS_SLUGS,
+} from "@/app/notes/jee-mains-maths/quadratic-equations/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3046,6 +3051,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_LIMITS_CHAPTER,
     notes: JEE_LIMITS_NOTES,
     slugs: JEE_LIMITS_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "quadratic-equations",
+    chipLabel: "Quadratic Equations notes",
+    chapter: JEE_QUADRATIC_EQUATIONS_CHAPTER,
+    notes: JEE_QUADRATIC_EQUATIONS_NOTES,
+    slugs: JEE_QUADRATIC_EQUATIONS_SLUGS,
   },
 ];
 

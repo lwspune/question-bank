@@ -325,7 +325,7 @@
     },
     "66": {
       "chapter": "Quadratic Equations",
-      "subtopic": "Roots and Relations"
+      "subtopic": "Roots and Coefficients"
     },
     "67": {
       "chapter": "Permutations and Combinations",
@@ -821,7 +821,7 @@
     },
     "175": {
       "chapter": "Quadratic Equations",
-      "subtopic": "Equations with Absolute Value"
+      "subtopic": "Equations with Modulus and Greatest Integer"
     },
     "176": {
       "chapter": "Conic Sections",
@@ -1048,6 +1048,7 @@
     "171": "The greatest integer \\([x^2]\\) jumps where \\(x^2\\) becomes a perfect integer, i.e. at \\(x=1,\\sqrt2,\\sqrt3,2,\\sqrt5\\) within \\([0,2.4]\\) (since \\(2.4^2=5.76\\)). Thus \\(\\int_0^{2.4}[x^2]\\,dx = 1(\\sqrt2-1)+2(\\sqrt3-\\sqrt2)+3(2-\\sqrt3)+4(\\sqrt5-2)+5(2.4-\\sqrt5)\\). Collecting like terms gives \\(9-\\sqrt2-\\sqrt3-\\sqrt5\\), so \\(\\alpha=9,\\ \\beta=\\gamma=\\delta=-1\\), and \\(\\alpha+\\beta+\\gamma+\\delta=6\\).",
     "172": "Differentiability at \\(x=1\\) requires both continuity and matching slopes. Continuity gives \\(3+k\\sqrt2=m+k^2\\), while the derivative match \\(6+\\frac{k}{2\\sqrt2}=2m\\); solving these yields \\(k=\\frac{7\\sqrt2}{8}\\) and \\(m=\\frac{103}{32}\\). For \\(x\\ge1\\), \\(f'(x)=2mx\\), so \\(f'(8)=16m=\\frac{103}{2}\\) and \\(8f'(8)=412\\); for \\(0<x<1\\), \\(f'(x)=6x+\\frac{k}{2\\sqrt{x+1}}\\), so \\(f'\\!\\left(\\tfrac18\\right)=\\frac34+\\frac{k\\sqrt2}{3}=\\frac43\\). Hence \\(\\frac{8f'(8)}{f'(1/8)}=\\frac{412}{4/3}=309\\).",
     "174": "For the logarithm, \\(\\frac{6x^2+5x+1}{2x-1}=\\frac{(2x+1)(3x+1)}{2x-1}>0\\) gives \\(x\\in\\left(-\\tfrac12,-\\tfrac13\\right)\\cup\\left(\\tfrac12,\\infty\\right)\\). For \\(\\cos^{-1}\\) we need \\(\\left|\\frac{2x^2-3x+4}{3x-5}\\right|\\le1\\); since \\(2x^2-3x+4>0\\), the condition \\(\\le1\\) gives \\(\\frac{2x^2-6x+9}{3x-5}\\le0\\Rightarrow x<\\tfrac53\\), and \\(\\ge-1\\) gives \\(\\frac{2x^2-1}{3x-5}\\ge0\\Rightarrow -\\tfrac1{\\sqrt2}\\le x\\le\\tfrac1{\\sqrt2}\\). Intersecting all conditions, the domain is \\(\\left(-\\tfrac12,-\\tfrac13\\right)\\cup\\left(\\tfrac12,\\tfrac1{\\sqrt2}\\right]\\), so \\(18\\left(\\tfrac14+\\tfrac19+\\tfrac14+\\tfrac12\\right)=18\\cdot\\tfrac{10}{9}=20\\).",
+    "175": "First equation: write \\(\\lbrack x\\rbrack=x-\\{x\\}\\), so \\(\\{x\\}=x^2-11x+31\\). This must lie in \\([0,1)\\): \\(x^2-11x+31\\ge0\\) always, and \\(x^2-11x+30<0\\) gives \\(5<x<6\\), so \\(\\lbrack x\\rbrack=5\\). Then \\(x^2-12x+36=0\\), \\(x=6\\), which is outside \\((5,6)\\). So \\(m=0\\). Second equation: for \\(x\\ge-2\\), \\(x^2-5x-14=0\\), \\(x=7\\) or \\(x=-2\\), both valid; for \\(x<-2\\), \\(x^2+5x+6=0\\), and \\(x=-3\\) is valid (\\(-2\\) is not below \\(-2\\)). So \\(n=3\\) and \\(m^2+mn+n^2=9\\).",
     "177": "Substitute \\(t=\\log_e(\\cos y)\\), so \\(\\tan y\\,dy=-dt\\); the equation becomes the linear ODE \\(\\frac{dx}{dt}+\\frac{3}{t}x=-\\frac1{t^2}\\). With integrating factor \\(t^3\\), \\(\\frac{d}{dt}(xt^3)=-t\\), giving \\(xt^3=-\\frac{t^2}{2}+C\\), i.e. \\(x=-\\frac1{2t}+\\frac{C}{t^3}\\). Applying \\(x\\!\\left(\\tfrac{\\pi}{3}\\right)=\\frac1{2\\log_e2}\\) with \\(t=-\\log_e2\\) forces \\(C=0\\), so \\(x=-\\frac1{2\\log_e(\\cos y)}\\). At \\(y=\\tfrac{\\pi}{6}\\), \\(t=\\log_e\\tfrac{\\sqrt3}{2}\\), giving \\(x=\\frac1{\\log_e4-\\log_e3}\\); thus \\(m=4,\\ n=3\\) and \\(mn=12\\).",
     "179": "The total number of onto functions \\(f:R\\to S\\) with \\(|R|=5,\\ |S|=4\\) is \\(4!\\,S(5,4)=24\\cdot10=240\\). By symmetry among the four possible images of the element \\(a\\), exactly \\(\\frac{240}{4}=60\\) of these have \\(f(a)=1\\). Therefore the number of onto functions with \\(f(a)\\neq1\\) is \\(240-60=180\\)."
   },
