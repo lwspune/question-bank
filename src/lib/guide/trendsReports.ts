@@ -114,6 +114,13 @@ export const TRENDS_REPORTS: readonly TrendsReport[] = [
     claim: "CDS Maths, 2016 to 2026: 2,096 questions, and Trigonometry up from 9 to 13 a paper",
     dataThrough: "CDS II 2026",
   },
+  {
+    route: "/guide/jee-mains-maths/trends",
+    exam: "JEE Mains",
+    subject: "Mathematics",
+    claim: "JEE Mains Maths, 2021 to 2026: 3,556 questions, and Conic Sections up to one in eight",
+    dataThrough: "JEE Main 2026, 8 April Shift 2",
+  },
 ];
 
 export function trendsReportFor(route: string): TrendsReport | null {

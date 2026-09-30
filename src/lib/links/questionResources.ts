@@ -28,6 +28,7 @@ import { PLAYBOOKS as MHT_CET_MATHS_PLAYBOOKS } from "@/app/guide/mht-cet-maths/
 import { PLAYBOOKS as MHT_CET_PHYSICS_PLAYBOOKS } from "@/app/guide/mht-cet-physics/_data/playbooks";
 import { PLAYBOOKS as MHT_CET_CHEMISTRY_PLAYBOOKS } from "@/app/guide/mht-cet-chemistry/_data/playbooks";
 import { PLAYBOOKS as CDS_MATHS_PLAYBOOKS } from "@/app/guide/cds-maths/_data/playbooks";
+import { PLAYBOOKS as JEE_MAINS_MATHS_PLAYBOOKS } from "@/app/guide/jee-mains-maths/_data/playbooks";
 import { getSubtopicNotesEntry } from "@/lib/notes/subtopicSlugRegistry";
 import { getNotesChapterEntry } from "./notesIndex";
 import { getPrincipleName, getConceptName } from "./tagNames";
@@ -110,6 +111,8 @@ const CHAPTER_KEYED_GUIDES: ReadonlyArray<{
   { exam: "MHT-CET", subject: "Chemistry", guideSlug: "mht-cet-chemistry", playbooks: MHT_CET_CHEMISTRY_PLAYBOOKS },
   // CDS Maths is Template C too. Its subject literal is "Mathematics", like NDA's — the key is (exam, subject).
   { exam: "CDS", subject: "Mathematics", guideSlug: "cds-maths", playbooks: CDS_MATHS_PLAYBOOKS },
+  // JEE Mains Maths is Template C; subject literal "Maths", like MHT-CET.
+  { exam: "JEE Mains", subject: "Maths", guideSlug: "jee-mains-maths", playbooks: JEE_MAINS_MATHS_PLAYBOOKS },
 ];
 
 const chapterKeyedKey = (exam: string, subject: string) => `${exam}::${subject}`;

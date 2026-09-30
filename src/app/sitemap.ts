@@ -23,6 +23,8 @@ import { ROUTES as CET_CHEMISTRY_ROUTES } from "@/app/guide/mht-cet-chemistry/_d
 import { PLAYBOOK_SLUGS as CET_CHEMISTRY_PLAYBOOK_SLUGS } from "@/app/guide/mht-cet-chemistry/_data/playbooks";
 import { ROUTES as CDS_MATHS_ROUTES } from "@/app/guide/cds-maths/_data/cds-maths";
 import { PLAYBOOK_SLUGS as CDS_MATHS_PLAYBOOK_SLUGS } from "@/app/guide/cds-maths/_data/playbooks";
+import { ROUTES as JEE_MATHS_ROUTES } from "@/app/guide/jee-mains-maths/_data/jee-mains-maths";
+import { PLAYBOOK_SLUGS as JEE_MATHS_PLAYBOOK_SLUGS } from "@/app/guide/jee-mains-maths/_data/playbooks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { listPosts } from "@/lib/blog/posts";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
@@ -408,6 +410,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     ...CDS_MATHS_PLAYBOOK_SLUGS.map((slug) => ({
       url: `${SITE_URL}/guide/cds-maths/playbooks/${slug}`,
+      lastModified: buildDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+    // JEE Mains — the exam hub, then the Maths guide (Template C).
+    {
+      url: `${SITE_URL}/guide/jee-mains`,
+      lastModified: buildDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
+    ...JEE_MATHS_ROUTES.map((r) => ({
+      url: r.slug ? `${SITE_URL}/guide/jee-mains-maths/${r.slug}` : `${SITE_URL}/guide/jee-mains-maths`,
+      lastModified: buildDate,
+      changeFrequency: "weekly" as const,
+      priority: r.slug === "" ? 0.9 : 0.8,
+    })),
+    ...JEE_MATHS_PLAYBOOK_SLUGS.map((slug) => ({
+      url: `${SITE_URL}/guide/jee-mains-maths/playbooks/${slug}`,
       lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: 0.7,
