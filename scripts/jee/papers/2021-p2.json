@@ -307,6 +307,10 @@
     },
     "70": {
       "A": "\\(a = 1,b = 1,c = 0\\)"
+    },
+    "74": {
+      "A": "\\(1200\\sqrt{3}\\text{ }m\\)",
+      "D": "\\(2400\\sqrt{3}\\text{ }m\\)"
     }
   },
   "stemOverrides": {
@@ -316,6 +320,7 @@
     "62": "Let \\(f\\) be a twice differentiable function defined on \\(R\\) such that \\(f(0) = 1,f^{'}(0) = 2\\) and \\(f^{'}(x) \\neq 0\\) for all \\(x\\in R\\). If \\(\\left| \\begin{matrix} f(x) & f^{'}(x) \\\\ f^{'}(x) & f^{''}(x) \\end{matrix} \\right|= 0\\), for all \\(x\\in R\\) then the value of \\(f(1)\\) lies in the interval:",
     "64": "The probability that two randomly selected subsets of the set \\(\\mathbf{\\{ 1,2,3,4,5\\}}\\) have exactly two elements in their intersection is",
     "69": "Let \\(f:R \\rightarrow R\\) be defined as \\[f(x) = \\begin{cases} -55x, & \\text{if } x < -5 \\\\ 2x^3 - 3x^2 - 120x, & \\text{if } -5 \\leq x \\leq 4 \\\\ 2x^3 - 3x^2 - 36x - 336, & \\text{if } x > 4 \\end{cases}\\] Let \\(A = \\{x \\in R : f \\text{ is increasing}\\}\\). Then \\(A\\) is equal to:",
+    "74": "The angle of elevation of a jet plane from a point \\(A\\) on the ground is \\(60^{\\circ}\\). After a flight of 20 seconds at the speed of \\(432\\text{ km/hour}\\), the angle of elevation changes to \\(30^{\\circ}\\). If the jet plane is flying at a constant height, then its height is:",
     "75": "For the statements \\(p\\) and \\(q\\), consider the following compound statements: (A) \\(( \\sim q \\land (p \\rightarrow q)) \\rightarrow \\sim p\\) (B) \\(((p \\vee q) \\land \\sim p) \\rightarrow q\\) Then which of the following statements is correct?",
     "80": "Let \\(f(x)\\) be a differentiable function defined on \\(\\lbrack 0,2\\rbrack\\) such that \\(f^{'}(x) =f^{'}(2 -x)\\) for all \\(x\\in (0,2),f(0) = 1\\) and \\(f(2) =e^{2}\\). Then the value of \\(\\int_{0}^{2} f(x)dx\\) is:"
   },
@@ -337,6 +342,7 @@
     "69": "\\(f\\) increases where \\(f'(x) > 0\\). For \\(x < -5\\), \\(f'(x) = -55 < 0\\). For \\(-5 < x < 4\\), \\(f'(x) = 6x^2 - 6x - 120 = 6(x-5)(x+4)\\), positive only for \\(x < -4\\), so \\(f\\) increases on \\((-5, -4)\\). For \\(x > 4\\), \\(f'(x) = 6x^2 - 6x - 36 = 6(x-3)(x+2) > 0\\), so \\(f\\) increases on \\((4, \\infty)\\). Hence \\(A = (-5, -4) \\cup (4, \\infty)\\), option (A).",
     "71": "By De Morgan, \\(\\sim[\\sim p \\land (p \\vee q)] = p \\vee \\sim(p \\vee q) = p \\vee (\\sim p \\land \\sim q)\\), which simplifies by absorption to \\(p \\vee \\sim q\\). Hence option (D).",
     "73": "The point \\(\\left(\\frac{3\\sqrt3}{2},\\frac12\\right)\\) lies on all four curves, so test the tangent there. For \\(x^2+9y^2=9\\) the tangent at \\((x_1,y_1)\\) is \\(xx_1+9yy_1=9\\): \\(\\frac{3\\sqrt3}{2}x+\\frac92y=9\\), i.e. \\(x+\\sqrt3\\,y=2\\sqrt3\\), the given line. The others give different lines: \\(2x^2-18y^2=9\\) gives \\(\\sqrt3x-3y=3\\); \\(y^2=\\frac{x}{6\\sqrt3}\\) gives \\(x-6\\sqrt3\\,y+\\frac{3\\sqrt3}{2}=0\\); \\(x^2+y^2=7\\) gives \\(3\\sqrt3x+y=14\\). Hence (A).",
+    "74": "Speed \\(=432\\times\\frac{1000}{3600}=120\\) m/s, so in 20 s the plane flies \\(2400\\) m at constant height \\(h\\). Its horizontal distance from \\(A\\) is \\(h\\cot60^\\circ=\\frac{h}{\\sqrt3}\\) at first and \\(h\\cot30^\\circ=\\sqrt3\\,h\\) later. Hence \\(\\sqrt3\\,h-\\frac{h}{\\sqrt3}=2400\\), i.e. \\(\\frac{2h}{\\sqrt3}=2400\\), so \\(h=1200\\sqrt3\\) m.",
     "75": "(A) \\((\\sim q \\land (p \\rightarrow q)) \\rightarrow \\sim p\\) is modus tollens, a tautology. (B) \\(((p \\vee q) \\land \\sim p) \\rightarrow q\\) is disjunctive syllogism, also a tautology. Both are tautologies, so option (C).",
     "81": "Split on the modulus.\n\\[\\textbf{Case } x<5:\\ (x+1)^2-(x-5)=\\frac{27}{4}\\Rightarrow x^2+x+6=\\frac{27}{4}\\Rightarrow x^2+x-\\frac34=0.\\]\nThis gives \\(x=\\dfrac{-1\\pm 2}{2}=\\dfrac12,\\,-\\dfrac32\\); both satisfy \\(x<5\\), so \\(2\\) roots.\n\\[\\textbf{Case } x\\ge 5:\\ (x+1)^2+(x-5)=\\frac{27}{4}\\Rightarrow x^2+3x-\\frac{43}{4}=0.\\]\nHere \\(x=\\dfrac{-3\\pm\\sqrt{52}}{2}\\approx 2.1,\\,-5.1\\), neither is \\(\\ge 5\\), so no roots.\nHence the total number of real roots is \\(\\boxed{2}\\).",
     "82": "Groups \\(A,B,C\\) are distinct, each non-empty, with \\(|C|\\le 3\\). Fix \\(|C|=c\\): choose \\(C\\) in \\(\\binom{10}{c}\\) ways and distribute the remaining \\(10-c\\) students onto \\(A,B\\) with both non-empty in \\(2^{10-c}-2\\) ways.\n\\[c=1:\\ \\binom{10}{1}(2^{9}-2)=10\\cdot 510=5100,\\]\n\\[c=2:\\ \\binom{10}{2}(2^{8}-2)=45\\cdot 254=11430,\\]\n\\[c=3:\\ \\binom{10}{3}(2^{7}-2)=120\\cdot 126=15120.\\]\nTotal \\(=5100+11430+15120=\\boxed{31650}\\).",
