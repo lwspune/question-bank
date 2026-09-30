@@ -1095,6 +1095,11 @@ import {
   JEE_CH_GOC_NOTES,
   JEE_CH_GOC_SLUGS,
 } from "@/app/notes/jee-mains-chemistry/organic-basic-principles/_data";
+import {
+  JEE_CH_ALD_CHAPTER,
+  JEE_CH_ALD_NOTES,
+  JEE_CH_ALD_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/aldehydes-ketones-and-carboxylic-acids/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3510,6 +3515,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_CH_GOC_CHAPTER,
     notes: JEE_CH_GOC_NOTES,
     slugs: JEE_CH_GOC_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "aldehydes-ketones-and-carboxylic-acids",
+    chipLabel: "Aldehydes, Ketones and Carboxylic Acids notes",
+    chapter: JEE_CH_ALD_CHAPTER,
+    notes: JEE_CH_ALD_NOTES,
+    slugs: JEE_CH_ALD_SLUGS,
   },
 ];
 
