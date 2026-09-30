@@ -5,6 +5,7 @@ import { ArrowUpRight, BookOpen, Compass, Sparkles } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
+import { hasSubjectGuide } from "@/lib/guide/guideCatalog";
 import BrowseLink from "@/app/guide/_components/BrowseLink";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -101,7 +102,8 @@ export default async function NotesSubtopicPage({
 
   const base = routeBase(chapter);
   const chapterName = chapter.chapter.chapterName;
-  const guideHref = `/guide/${chapter.subjectRoute}`;
+  // Only a subject with a strategy guide links one (JEE Chemistry has none yet).
+  const guideHref = hasSubjectGuide(chapter.subjectRoute) ? `/guide/${chapter.subjectRoute}` : null;
   const metaSuffix = `${chapter.subjectDisplay} ${chapterName} notes`;
 
   // "Test yourself" CTA — the newest published public quiz for this chapter, if
@@ -218,17 +220,19 @@ export default async function NotesSubtopicPage({
           <BookOpen className="h-3.5 w-3.5" aria-hidden />
           <span>All {chapterName} notes</span>
         </Link>
-        <Link
-          href={guideHref}
-          className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
-        >
-          <Compass className="h-3.5 w-3.5" aria-hidden />
-          <span>{chapter.subjectDisplay} strategy</span>
-          <ArrowUpRight
-            className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            aria-hidden
-          />
-        </Link>
+        {guideHref && (
+          <Link
+            href={guideHref}
+            className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
+          >
+            <Compass className="h-3.5 w-3.5" aria-hidden />
+            <span>{chapter.subjectDisplay} strategy</span>
+            <ArrowUpRight
+              className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              aria-hidden
+            />
+          </Link>
+        )}
       </div>
 
       {/* Track controls — signed-in only (renders null for anon, keeping the

@@ -18,6 +18,7 @@ import {
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
+import { hasSubjectGuide } from "@/lib/guide/guideCatalog";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
 import { deriveSummary } from "@/lib/notes/deriveSummary";
@@ -55,7 +56,8 @@ type Props = { chapter: NotesChapterRegistration };
 
 export default async function NotesChapterLanding({ chapter }: Props) {
   const base = routeBase(chapter);
-  const guideHref = `/guide/${chapter.subjectRoute}`;
+  // Only a subject with a strategy guide links one (JEE Chemistry has none yet).
+  const guideHref = hasSubjectGuide(chapter.subjectRoute) ? `/guide/${chapter.subjectRoute}` : null;
   const mock = mockCta(chapter.examName);
   // Chapters whose solutions have been classified by identity get a link to the
   // formula index. Derived from the registry, so a chapter picks this up the
@@ -198,17 +200,19 @@ export default async function NotesChapterLanding({ chapter }: Props) {
       </div>
 
       <div className="mb-8 flex flex-wrap items-center gap-2 text-xs">
-        <Link
-          href={guideHref}
-          className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
-        >
-          <Compass className="h-3.5 w-3.5" aria-hidden />
-          <span>{chapter.subjectDisplay} strategy</span>
-          <ArrowUpRight
-            className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            aria-hidden
-          />
-        </Link>
+        {guideHref && (
+          <Link
+            href={guideHref}
+            className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
+          >
+            <Compass className="h-3.5 w-3.5" aria-hidden />
+            <span>{chapter.subjectDisplay} strategy</span>
+            <ArrowUpRight
+              className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              aria-hidden
+            />
+          </Link>
+        )}
         <Link
           href={examHomeHref}
           className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
