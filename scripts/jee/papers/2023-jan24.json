@@ -377,7 +377,7 @@
     },
     "79": {
       "chapter": "Mathematical Reasoning",
-      "subtopic": "Logical Equivalence"
+      "subtopic": "Negation and Simplification"
     },
     "80": {
       "chapter": "Three Dimensional Geometry",
@@ -785,7 +785,7 @@
     },
     "166": {
       "chapter": "Mathematical Reasoning",
-      "subtopic": "Logical Equivalence"
+      "subtopic": "Negation and Simplification"
     },
     "167": {
       "chapter": "Limits and Continuity",
@@ -979,6 +979,7 @@
     "74": "Take \\(\\Omega=[0,1]\\) with a point chosen uniformly. \\(A=\\left\\{\\frac12\\right\\}\\) has \\(P(A)=0\\) but \\(A\\neq\\varnothing\\), and its complement has probability 1 but is not \\(\\Omega\\). So both statements are false.",
     "75": "Write \\(\\binom{23}{r}=\\binom{23}{23-r}\\). Then \\(\\sum_{r=0}^{22}\\binom{22}{r}\\binom{23}{23-r}\\) is the coefficient of \\(x^{23}\\) in \\((1+x)^{22}(1+x)^{23}=(1+x)^{45}\\), i.e. \\(\\binom{45}{23}\\).",
     "78": "\\(\\left|x^2\\sin\\frac{1}{x}\\right|\\le x^2\\to0\\), so \\(f\\) is continuous at 0. Also \\(\\frac{f(h)-f(0)}{h}=h\\sin\\frac{1}{h}\\to0\\), so \\(f'(0)=0\\). For \\(x\\ne0\\), \\(f'(x)=2x\\sin\\frac{1}{x}-\\cos\\frac{1}{x}\\). As \\(x\\to0\\), \\(2x\\sin\\frac{1}{x}\\to0\\) but \\(\\cos\\frac{1}{x}\\) keeps oscillating between \\(-1\\) and \\(1\\), so \\(\\lim_{x\\to0}f'(x)\\) does not exist. Hence \\(f\\) is continuous (indeed differentiable) at 0, but \\(f'\\) is not continuous there: option (d).",
+    "79": "The connective \\(\\Rightarrow\\) is applied last, so the statement is \\([\\sim(P\\land Q)\\vee(\\sim P\\land Q)]\\Rightarrow(\\sim P\\land\\sim Q)\\). The antecedent is \\(\\sim P\\vee\\sim Q\\vee(\\sim P\\land Q)=\\sim P\\vee\\sim Q\\), since \\(\\sim P\\land Q\\) already makes \\(\\sim P\\) true. So the statement is \\((\\sim P\\vee\\sim Q)\\Rightarrow(\\sim P\\land\\sim Q)=(P\\land Q)\\vee(\\sim P\\land\\sim Q)\\), true exactly when \\(P\\) and \\(Q\\) have the same truth value. That is \\(((\\sim P)\\vee Q)\\land((\\sim Q)\\vee P)\\), option (d).",
     "80": "Two edge vectors of the plane are \\((-3,4,-3)\\) and \\((1,-1,1)\\); their cross product gives the normal \\((1,0,-1)\\), so the plane is \\(x-z-1=0\\). The distance of \\((7,-3,-4)\\) is \\(\\frac{|7-(-4)-1|}{\\sqrt{1^{2}+(-1)^{2}}}=\\frac{10}{\\sqrt{2}}=5\\sqrt{2}\\).",
     "81": "Write \\(E\\) as \\((|x|-1)^2=1-|\\lambda-3|\\). The right side is at most 1, so \\((|x|-1)^2\\le1\\) and \\(|x|\\le2\\). For \\(x=2\\): \\((2-1)^2=1\\) needs \\(|\\lambda-3|=0\\), \\(\\lambda=3\\), giving \\(x+\\lambda=5\\). For \\(x=1\\): \\(0=1-|\\lambda-3|\\), so \\(\\lambda=2\\) or \\(4\\), giving at most \\(5\\). For \\(x\\le0\\): \\(\\lambda\\le4\\), so \\(x+\\lambda\\le4\\). The largest element of \\(S\\) is \\(5\\).",
     "86": "The digits are 1, 1, 1, 2, 2, 3, 3, 4, 4. The four even places take the even digits 2, 2, 4, 4: \\(\\frac{4!}{2!\\,2!}=6\\) ways. The five odd places take 1, 1, 1, 3, 3: \\(\\frac{5!}{3!\\,2!}=10\\) ways. Total \\(=60\\).",
@@ -1018,6 +1019,7 @@
     "157": "With \\(t=x+\\frac1x\\), \\(x^2+\\frac1{x^2}=t^2-2\\), so \\(3(t^2-2)-2t+5=0\\), i.e. \\(3t^2-2t-1=0\\), and \\(t=1\\) or \\(t=-\\frac13\\). For real \\(x\\ne0\\), \\(\\left|x+\\frac1x\\right|\\ge2\\), and neither value qualifies. So there are 0 real solutions.",
     "164": "Let the A.P. be \\(a,a+d,\\dots,a+5d\\). \\(a_1+a_3=2a+2d=10\\Rightarrow a+d=5\\), and mean \\(=\\frac{2a+5d}{2}=\\frac{19}{2}\\Rightarrow2a+5d=19\\). So \\(d=3,\\ a=2\\), giving \\(2,5,8,11,14,17\\). The variance of an A.P. of \\(n\\) terms is \\(\\frac{d^2(n^2-1)}{12}=\\frac{9\\cdot35}{12}=\\frac{105}{4}\\). Hence \\(8\\sigma^2=210\\).",
     "165": "\\(A\\) lies on the \\(y\\)-axis, which forces \\((\\lambda-2)^{2}=0\\), so \\(\\lambda=2\\), giving \\(A(0,2)\\), \\(AB:3x+2y=4\\) and \\(AC:y=2x+2\\). With orthocentre \\((1,2)\\), the altitude from \\(A\\) is \\(y=2\\) and the altitude from \\(C\\) (slope \\(\\frac{2}{3}\\)) meets \\(AC\\) at \\(C\\left(-\\frac{1}{2},1\\right)\\). A tangent from \\(C\\) to \\(y^{2}=6x\\) touches the first-quadrant branch at \\(\\left(\\frac{3}{2},3\\right)\\), so its length is \\(\\sqrt{2^{2}+2^{2}}=2\\sqrt{2}\\).",
+    "166": "\\(p\\land(p\\Rightarrow\\sim q)=p\\land(\\sim p\\vee\\sim q)=(p\\land\\sim p)\\vee(p\\land\\sim q)=p\\land\\sim q\\). Its negation is \\(\\sim p\\vee q\\), option (c).",
     "167": "\\([x-5]-[2x+2]=[x]-[2x]-7\\), so we need \\([x]-[2x]=7\\) on both sides of \\(a\\). Write \\(x=n+f\\) with \\(0\\le f<1\\). If \\(f<\\frac12\\), \\([x]-[2x]=-n\\), which is 7 for \\(x\\in[-7,-6.5)\\); if \\(f\\ge\\frac12\\), it is \\(-n-1\\), which is 7 for \\(x\\in[-7.5,-7)\\). So \\([x]-[2x]=7\\) exactly on \\([-7.5,-6.5)\\). The two-sided limit is 0 when \\(a\\) lies inside this set, not at its ends: \\(a\\in(-7.5,-6.5)\\).",
     "169": "The \\(5\\)-digit numbers use all digits: \\(5!=120\\), and each exceeds \\(7000\\). A \\(4\\)-digit number exceeds \\(7000\\) only when its leading digit is \\(7\\) or \\(8\\): \\(2\\times P(4,3)=2\\times24=48\\). Total \\(=120+48=168\\).",
     "170": "Write \\(\\sin\\frac{2\\pi}9=\\cos b\\) and \\(\\cos\\frac{2\\pi}9=\\sin b\\) with \\(b=\\frac\\pi2-\\frac{2\\pi}9=\\frac{5\\pi}{18}\\). Then \\(1+\\cos b+i\\sin b=2\\cos\\frac b2\\,e^{ib/2}\\) and \\(1+\\cos b-i\\sin b=2\\cos\\frac b2\\,e^{-ib/2}\\), so the fraction is \\(e^{ib}\\), and its cube is \\(e^{i5\\pi/6}=-\\frac{\\sqrt3}2+\\frac i2=-\\frac12(\\sqrt3-i)\\).",

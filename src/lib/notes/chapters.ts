@@ -975,6 +975,11 @@ import {
   JEE_STRAIGHT_LINES_NOTES,
   JEE_STRAIGHT_LINES_SLUGS,
 } from "@/app/notes/jee-mains-maths/straight-lines/_data";
+import {
+  JEE_MATHEMATICAL_REASONING_CHAPTER,
+  JEE_MATHEMATICAL_REASONING_NOTES,
+  JEE_MATHEMATICAL_REASONING_SLUGS,
+} from "@/app/notes/jee-mains-maths/mathematical-reasoning/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3126,6 +3131,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_STRAIGHT_LINES_CHAPTER,
     notes: JEE_STRAIGHT_LINES_NOTES,
     slugs: JEE_STRAIGHT_LINES_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "mathematical-reasoning",
+    chipLabel: "Mathematical Reasoning notes",
+    chapter: JEE_MATHEMATICAL_REASONING_CHAPTER,
+    notes: JEE_MATHEMATICAL_REASONING_NOTES,
+    slugs: JEE_MATHEMATICAL_REASONING_SLUGS,
   },
 ];
 

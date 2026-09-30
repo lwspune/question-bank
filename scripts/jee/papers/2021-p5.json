@@ -201,7 +201,7 @@
     },
     "70": {
       "chapter": "Mathematical Reasoning",
-      "subtopic": "Tautology and Logical Connectives"
+      "subtopic": "Truth Values, Tautologies and Contradictions"
     },
     "71": {
       "chapter": "Complex Numbers",
@@ -305,6 +305,7 @@
     "61": "For \\(x\\ge0\\): \\((x-3)(x+4)=6\\), i.e. \\(x^2+x-18=0\\), root \\(\\frac{-1+\\sqrt{73}}{2}\\) (the other is negative). For \\(-4\\le x<0\\): \\((-x-3)(x+4)=6\\), i.e. \\(x^2+7x+18=0\\), negative discriminant. For \\(x<-4\\): \\((-x-3)(-x-4)=6\\), i.e. \\(x^2+7x+6=0\\), root \\(x=-6\\) (\\(-1\\) is out of range). So the set has 2 elements.",
     "66": "\\(A^2=\\begin{bmatrix} -2 & 2 \\\\ 2 & -2 \\end{bmatrix}\\); squaring repeatedly gives \\(A^8=\\begin{bmatrix} 128 & -128 \\\\ -128 & 128 \\end{bmatrix}\\). The system becomes \\(128(x-y)=8\\) and \\(-128(x-y)=64\\), i.e. \\(x-y=\\tfrac{1}{16}\\) and \\(x-y=-\\tfrac12\\) at once — a contradiction. So the system has no solution. Hence option (C).",
     "69": "\\(g\\) is differentiable on all of \\(\\mathbb{R}\\) (at \\(x=1\\) both pieces give slope 3). \\(f\\) is smooth except at \\(x=0\\), where it jumps (\\(0+2=2\\) from the left, \\(0\\) from the right). So \\(f(g(x))\\) can fail to be differentiable only where \\(g(x)=0\\), i.e. \\(x^3=0\\Rightarrow x=0\\); there \\(f\\circ g\\) is even discontinuous. That is the only such point, so the count is 1. Hence option (B).",
+    "70": "(d): \\((p\\land q)\\rightarrow(p\\rightarrow q)=\\sim p\\vee\\sim q\\vee\\sim p\\vee q\\), which contains \\(q\\vee\\sim q\\): a tautology. The others reduce to (a) \\(p\\vee q\\), (b) \\(\\sim p\\vee q\\) and (c) \\(p\\land q\\), each false for some values.",
     "71": "The base \\(\\tfrac{1}{\\sqrt2}<1\\), so \\(\\log_{1/\\sqrt2}t\\le 2\\) reverses to \\(t\\ge(\\tfrac{1}{\\sqrt2})^2=\\tfrac12\\). With \\(r=|z|\\): \\(\\frac{r+11}{(r-1)^2}\\ge\\tfrac12\\Rightarrow 2r+22\\ge r^2-2r+1\\Rightarrow r^2-4r-21\\le0\\Rightarrow (r-7)(r+3)\\le0\\), so \\(-3\\le r\\le 7\\). The largest value of \\(|z|\\) is 7. Hence option (B).",
     "74": "\\(2\\cot\\frac x2\\sin^2\\frac x2=2\\sin\\frac x2\\cos\\frac x2=\\sin x\\), so \\(f(x)=(4a-3)(x+\\ln5)+(a-7)\\sin x\\) and \\(f'(x)=(4a-3)+(a-7)\\cos x\\). A critical point needs \\(\\cos x=\\frac{3-4a}{a-7}\\) to lie in \\([-1,1]\\): \\((3-4a)^2\\le(a-7)^2\\), i.e. \\(15a^2-10a-40\\le0\\), i.e. \\((3a+4)(a-2)\\le0\\). Hence \\(a\\in\\left[-\\frac43,2\\right]\\).",
     "81": "Take the AP with four of its terms \\(11,16,21,26\\) (\\(a=11,\\ d=5\\)) and the GP with four of its terms \\(4,8,16,32\\) (\\(a=4,\\ r=2\\)), each extended to the largest four-digit term.\n\\[\\text{AP: } t_k=11+5k \\equiv 1 \\pmod 5,\\qquad \\text{GP: } 4\\cdot 2^m \\le 9999.\\]\nThe GP terms are \\(4,8,16,32,64,128,256,512,1024,2048,4096,8192\\). A common term must be \\(\\equiv 1 \\pmod 5\\):\n\\[16\\equiv1,\\quad 256\\equiv1,\\quad 4096\\equiv1 \\pmod 5,\\]\nand each also lies in the AP (\\(16-11,256-11,4096-11\\) are all multiples of \\(5\\)) and is \\(\\le 9999\\).\n\\[\\text{Number of common terms} = 3.\\]",
