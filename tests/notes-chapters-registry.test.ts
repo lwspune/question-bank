@@ -1,5 +1,6 @@
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import * as path from "node:path";
+import { hasSubjectGuide } from "@/lib/guide/guideCatalog";
 import { describe, it, expect } from "vitest";
 import {
   NOTES_CHAPTERS,
@@ -48,17 +49,20 @@ describe("NOTES_CHAPTERS registry shape", () => {
     expect(missing).toEqual([]);
   });
 
-  // Every notes chapter and subtopic page links "<subject> strategy" to /guide/<subjectRoute>
-  // unconditionally, so a notes subject without a guide ships a 404 on every page. The allow-list is
-  // the known debt (SUGGESTIONS.md backfill ledger, 2026-09-29) — it may shrink, never grow.
-  it("every notes subject has the strategy guide its pages link to", () => {
-    const KNOWN_MISSING = new Set(["jee-mains-maths"]);
+  // The notes chapter and subtopic pages link "<subject> strategy" to /guide/<subjectRoute> only when
+  // hasSubjectGuide says that guide exists (2026-09-30). Before, the link was unconditional and a notes
+  // subject without a guide shipped a 404 on every page; this pins both halves of the fix.
+  it("links a subject's strategy guide only where one exists", () => {
     const routes = [...new Set(NOTES_CHAPTERS.map((c) => c.subjectRoute))];
-    const missing = routes.filter(
-      (r) => !KNOWN_MISSING.has(r) && !existsSync(path.join(process.cwd(), "src", "app", "guide", r, "page.tsx"))
-    );
-    expect(missing).toEqual([]);
-    for (const r of KNOWN_MISSING) expect(routes, `${r} left the registry — drop it from KNOWN_MISSING`).toContain(r);
+    for (const r of routes) {
+      const onDisk = existsSync(path.join(process.cwd(), "src", "app", "guide", r, "page.tsx"));
+      expect(hasSubjectGuide(r), r).toBe(onDisk);
+    }
+    for (const f of ["NotesChapterLanding.tsx", "NotesSubtopicPage.tsx"]) {
+      const src = readFileSync(path.join(process.cwd(), "src", "app", "notes", "_components", f), "utf8");
+      expect(src, f).toMatch(/hasSubjectGuide\(chapter\.subjectRoute\)/);
+      expect(src, f).toMatch(/\{guideHref && \(/);
+    }
   });
 
   it("(subjectRoute, chapterSlug) pairs are unique across the registry", () => {

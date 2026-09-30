@@ -15,6 +15,36 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-09-30 (seventh) — JEE Mains Chemistry notes: 20 chapters ship (147 pages · 2,972 PYQ · 378 concepts), each 100% concept-tagged, on branches `feat/jee-chem-setup` → `-sbc` → `-atom` → `-thermo` → `-eq` → `-kin` → `-elec` → `-sol` → `feat/jee-chem-notes-b1`. Thirteen keys changed.**
+
+**Scope.** The bank files JEE Chemistry under 28 chapters. Eight were left out because they left the JEE Main syllabus: Environmental Chemistry, Hydrogen, Surface Chemistry, Chemistry in Everyday Life, Solid State, s-Block Elements, Metallurgy and Polymers. Their rows stay on /browse; they get no notes. Organic Reaction Mechanisms was kept as its own chapter. Its rows span several organic chapters, and its functional-group tests have no other home.
+
+**Method.** The same pipeline as JEE Maths (NOTES_WORKFLOW.md §0b): prep agents read every row and drafted fix specs, re-cuts and tag files; draft agents wrote only a chapter's `_data`; the main session re-derived every proposed key, applied data, registered, tagged and ran the probes. The tools now take `JEE_SUBJECT` / `JEE_ROUTE`.
+
+**Keys changed** (each re-derived by the main session before it was applied):
+- Some Basic Concepts: 7f8843c7 7.18 → 7.
+- Chemical Kinetics: 989a64a4 16.67 → 17.
+- Electrochemistry: 3a2dffca 0.9 → 1; c00c37c0 1.93 → 2.
+- Solutions: 066cc02d 6 → 3 ("dilute" selects the n₂/n₁ form of the mole fraction); 811771fd 14.88 → 15.
+- p-Block: bd45fa12 1 → 2 (H₄P₂O₅ has two P–H hydrogens).
+- Organic Chemistry – Basic Principles: ebebd84c 7 → 6 (Rf is measured from the base line).
+- Hydrocarbons: 66fb669f C → A; 0c60e380 2 → 1 (an sp³ CH₂ is present); b10b72bc 4 → 6 (stereoisomers count).
+- Alcohols, Phenols and Ethers: 317925e3 C → A.
+- Biomolecules: d41ed5a9 C → A. The key counted the bottom CH₂OH corner of each Fischer drawing as a chiral carbon; read correctly, three of the four sugars are D, as the paper's own solution prints.
+
+**Why decimal numeric keys were rounded.** A JEE numeric answer is an integer, and the mock grader's tolerance is 0.005. So a stored 16.67 marks every student who types the official 17 as wrong. The decimals came from our own blind derivations on 2024 papers that have no source key. The 2021 compilation papers print their decimals (3054cb9b 0.004, e0ced450 0.9, ee70f1c1 0.4), so those stay as printed.
+
+**Scrambled pictures.** Organic chapters often split each option's pictures across the stem image and the four option slots, so an option shows half of one choice and half of another. The key letter was right each time, but what students saw was wrong chemistry. Nine rows were repaired by writing the options as text and clearing the stray images with SQL guarded on the exact old paths: 7c78daab, dc5fa00f, 60dcf44e, 05c244e4, be2b834f, 151c3215, 7e2f5003, 6e16fb01 and 8ce4c3d9 (a composite of four plots replaced the stem). Stray crops were also cleared from 8fc02634, f8afe15f, 0b3d98ad and 55fb9258. Each change is noted in its paper JSON so attach-images does not re-attach it.
+
+**Other defects found.**
+- The dump did not print option images, so agents reported graph options as blank. It does now.
+- `apply-chapter.sh` does not write an override for a fix the DB already holds, so a later `resync` could undo it. Re-running `fix.ts --apply` after the apply records it.
+- A withheld row (a085e42a) kept an emptied Aldehydes subtopic alive. It was moved by hand.
+- Notes pages linked `/guide/<subject>` unconditionally, so every JEE Chemistry page linked a 404. `hasSubjectGuide()` now decides, with a test that keeps it in step with the filesystem.
+- `bookOrder.ts` may only hold positions for registered chapters, so unshipped positions were parked and added back as each chapter shipped.
+
+**Found, not fixed (on the SUGGESTIONS.md ledger).** MHT-CET's Halogen Derivatives notes teach KNO₂ → nitroalkane and AgNO₂ → nitrite, the reverse of NCERT. Changing shipped notes needs the user's decision.
+
 **2026-09-30 (sixth) — MHT-CET chapter tests: the first `scope='sectional'` mocks. 72 tests built and verified as DRAFTS on `feat/cet-sectional`; the publish was refused by auto mode and handed to the user.**
 
 - **Why now, and why as an experiment.** Students open a full CET paper and stop: over all time, 20 graded attempts on the 34 Maths papers answered a median 50%, and 8 on the 30 Physics & Chemistry papers answered a median 8%. The 2026-09-07 type axis had already built an empty "Sectional tests" slot on every exam. The user's 2026-09-24 decline of "short sittings as the default first unit" was about replacing the full paper as the entry point; asked directly, the user chose to run chapter tests as an added type and read the result.

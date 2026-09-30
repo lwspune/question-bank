@@ -1010,6 +1010,106 @@ import {
   JEE_TRIANGLE_NOTES,
   JEE_TRIANGLE_SLUGS,
 } from "@/app/notes/jee-mains-maths/properties-of-triangle/_data";
+import {
+  JEE_CH_SOL_CHAPTER,
+  JEE_CH_SOL_NOTES,
+  JEE_CH_SOL_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/solutions/_data";
+import {
+  JEE_CH_ATOM_CHAPTER,
+  JEE_CH_ATOM_NOTES,
+  JEE_CH_ATOM_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/structure-of-atom/_data";
+import {
+  JEE_CH_KIN_CHAPTER,
+  JEE_CH_KIN_NOTES,
+  JEE_CH_KIN_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/chemical-kinetics/_data";
+import {
+  JEE_CH_EQ_CHAPTER,
+  JEE_CH_EQ_NOTES,
+  JEE_CH_EQ_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/equilibrium/_data";
+import {
+  JEE_CH_ELEC_CHAPTER,
+  JEE_CH_ELEC_NOTES,
+  JEE_CH_ELEC_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/electrochemistry/_data";
+import {
+  JEE_CH_THERMO_CHAPTER,
+  JEE_CH_THERMO_NOTES,
+  JEE_CH_THERMO_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/thermodynamics/_data";
+import {
+  JEE_CH_SBC_CHAPTER,
+  JEE_CH_SBC_NOTES,
+  JEE_CH_SBC_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/some-basic-concepts/_data";
+import {
+  JEE_CH_BOND_CHAPTER,
+  JEE_CH_BOND_NOTES,
+  JEE_CH_BOND_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/chemical-bonding/_data";
+import {
+  JEE_CH_PER_CHAPTER,
+  JEE_CH_PER_NOTES,
+  JEE_CH_PER_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/periodicity/_data";
+import {
+  JEE_CH_COORD_CHAPTER,
+  JEE_CH_COORD_NOTES,
+  JEE_CH_COORD_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/coordination-compounds/_data";
+import {
+  JEE_CH_ORM_CHAPTER,
+  JEE_CH_ORM_NOTES,
+  JEE_CH_ORM_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/organic-reaction-mechanisms/_data";
+import {
+  JEE_CH_PB_CHAPTER,
+  JEE_CH_PB_NOTES,
+  JEE_CH_PB_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/p-block-elements/_data";
+import {
+  JEE_CH_DFB_CHAPTER,
+  JEE_CH_DFB_NOTES,
+  JEE_CH_DFB_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/d-and-f-block-elements/_data";
+import {
+  JEE_CH_HALO_CHAPTER,
+  JEE_CH_HALO_NOTES,
+  JEE_CH_HALO_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/haloalkanes-and-haloarenes/_data";
+import {
+  JEE_CH_HC_CHAPTER,
+  JEE_CH_HC_NOTES,
+  JEE_CH_HC_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/hydrocarbons/_data";
+import {
+  JEE_CH_ALC_CHAPTER,
+  JEE_CH_ALC_NOTES,
+  JEE_CH_ALC_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/alcohols-phenols-and-ethers/_data";
+import {
+  JEE_CH_GOC_CHAPTER,
+  JEE_CH_GOC_NOTES,
+  JEE_CH_GOC_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/organic-basic-principles/_data";
+import {
+  JEE_CH_ALD_CHAPTER,
+  JEE_CH_ALD_NOTES,
+  JEE_CH_ALD_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/aldehydes-ketones-and-carboxylic-acids/_data";
+import {
+  JEE_CH_BIO_CHAPTER,
+  JEE_CH_BIO_NOTES,
+  JEE_CH_BIO_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/biomolecules/_data";
+import {
+  JEE_CH_AMINE_CHAPTER,
+  JEE_CH_AMINE_NOTES,
+  JEE_CH_AMINE_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/amines/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3238,6 +3338,226 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_TRIANGLE_CHAPTER,
     notes: JEE_TRIANGLE_NOTES,
     slugs: JEE_TRIANGLE_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "solutions",
+    chipLabel: "Solutions notes",
+    chapter: JEE_CH_SOL_CHAPTER,
+    notes: JEE_CH_SOL_NOTES,
+    slugs: JEE_CH_SOL_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "structure-of-atom",
+    chipLabel: "Structure of Atom notes",
+    chapter: JEE_CH_ATOM_CHAPTER,
+    notes: JEE_CH_ATOM_NOTES,
+    slugs: JEE_CH_ATOM_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "chemical-kinetics",
+    chipLabel: "Chemical Kinetics notes",
+    chapter: JEE_CH_KIN_CHAPTER,
+    notes: JEE_CH_KIN_NOTES,
+    slugs: JEE_CH_KIN_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "equilibrium",
+    chipLabel: "Equilibrium notes",
+    chapter: JEE_CH_EQ_CHAPTER,
+    notes: JEE_CH_EQ_NOTES,
+    slugs: JEE_CH_EQ_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "electrochemistry",
+    chipLabel: "Electrochemistry notes",
+    chapter: JEE_CH_ELEC_CHAPTER,
+    notes: JEE_CH_ELEC_NOTES,
+    slugs: JEE_CH_ELEC_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "thermodynamics",
+    chipLabel: "Thermodynamics notes",
+    chapter: JEE_CH_THERMO_CHAPTER,
+    notes: JEE_CH_THERMO_NOTES,
+    slugs: JEE_CH_THERMO_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "some-basic-concepts",
+    chipLabel: "Some Basic Concepts notes",
+    chapter: JEE_CH_SBC_CHAPTER,
+    notes: JEE_CH_SBC_NOTES,
+    slugs: JEE_CH_SBC_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "chemical-bonding",
+    chipLabel: "Chemical Bonding notes",
+    chapter: JEE_CH_BOND_CHAPTER,
+    notes: JEE_CH_BOND_NOTES,
+    slugs: JEE_CH_BOND_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "periodicity",
+    chipLabel: "Periodicity notes",
+    chapter: JEE_CH_PER_CHAPTER,
+    notes: JEE_CH_PER_NOTES,
+    slugs: JEE_CH_PER_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "coordination-compounds",
+    chipLabel: "Coordination Compounds notes",
+    chapter: JEE_CH_COORD_CHAPTER,
+    notes: JEE_CH_COORD_NOTES,
+    slugs: JEE_CH_COORD_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "organic-reaction-mechanisms",
+    chipLabel: "Organic Reaction Mechanisms notes",
+    chapter: JEE_CH_ORM_CHAPTER,
+    notes: JEE_CH_ORM_NOTES,
+    slugs: JEE_CH_ORM_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "p-block-elements",
+    chipLabel: "p-Block Elements notes",
+    chapter: JEE_CH_PB_CHAPTER,
+    notes: JEE_CH_PB_NOTES,
+    slugs: JEE_CH_PB_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "d-and-f-block-elements",
+    chipLabel: "d- and f-Block Elements notes",
+    chapter: JEE_CH_DFB_CHAPTER,
+    notes: JEE_CH_DFB_NOTES,
+    slugs: JEE_CH_DFB_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "haloalkanes-and-haloarenes",
+    chipLabel: "Haloalkanes and Haloarenes notes",
+    chapter: JEE_CH_HALO_CHAPTER,
+    notes: JEE_CH_HALO_NOTES,
+    slugs: JEE_CH_HALO_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "hydrocarbons",
+    chipLabel: "Hydrocarbons notes",
+    chapter: JEE_CH_HC_CHAPTER,
+    notes: JEE_CH_HC_NOTES,
+    slugs: JEE_CH_HC_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "alcohols-phenols-and-ethers",
+    chipLabel: "Alcohols, Phenols and Ethers notes",
+    chapter: JEE_CH_ALC_CHAPTER,
+    notes: JEE_CH_ALC_NOTES,
+    slugs: JEE_CH_ALC_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "organic-basic-principles",
+    chipLabel: "Basic Principles of Organic Chemistry notes",
+    chapter: JEE_CH_GOC_CHAPTER,
+    notes: JEE_CH_GOC_NOTES,
+    slugs: JEE_CH_GOC_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "aldehydes-ketones-and-carboxylic-acids",
+    chipLabel: "Aldehydes, Ketones and Carboxylic Acids notes",
+    chapter: JEE_CH_ALD_CHAPTER,
+    notes: JEE_CH_ALD_NOTES,
+    slugs: JEE_CH_ALD_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "biomolecules",
+    chipLabel: "Biomolecules notes",
+    chapter: JEE_CH_BIO_CHAPTER,
+    notes: JEE_CH_BIO_NOTES,
+    slugs: JEE_CH_BIO_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "amines",
+    chipLabel: "Amines notes",
+    chapter: JEE_CH_AMINE_CHAPTER,
+    notes: JEE_CH_AMINE_NOTES,
+    slugs: JEE_CH_AMINE_SLUGS,
   },
 ];
 

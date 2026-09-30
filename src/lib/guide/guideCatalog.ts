@@ -298,3 +298,13 @@ export const GUIDE_CATALOG: Partial<Record<ExamSlug, SubjectGuideCard[]>> = {
 export function getSubjectGuides(slug: ExamSlug): SubjectGuideCard[] {
   return GUIDE_CATALOG[slug] ?? [];
 }
+
+/**
+ * Whether /guide/<subjectRoute> exists. The notes pages link their subject's strategy
+ * guide; before this they linked it unconditionally, so a notes subject without a guide
+ * (JEE Chemistry) carried a 404 on every page.
+ */
+export function hasSubjectGuide(subjectRoute: string): boolean {
+  const href = `/guide/${subjectRoute}`;
+  return Object.values(GUIDE_CATALOG).some((cards) => cards?.some((c) => c.href === href));
+}

@@ -109,6 +109,32 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "structure-of-atoms-and-nuclei": { cls: 12, chapterNo: 15, book: "XII 15 Structure of Atoms and Nuclei" },
     "semiconductor-devices": { cls: 12, chapterNo: 16, book: "XII 16 Semiconductor Devices" },
   },
+  // JEE Mains Chemistry follows the rationalised NCERT books (the "NCERT" spine in
+  // syllabus_concepts). Judgment calls: The p-Block Elements is no longer in either
+  // rationalised book but stays on the JEE syllabus, so it sits before The d- and f-Block
+  // Elements at XII 4, the inorganic chapter that follows it in the old book (XII 7).
+  "jee-mains-chemistry": {
+    "some-basic-concepts": { cls: 11, chapterNo: 1, book: "NCERT XI 1 Some Basic Concepts of Chemistry" },
+    "structure-of-atom": { cls: 11, chapterNo: 2, book: "NCERT XI 2 Structure of Atom" },
+    thermodynamics: { cls: 11, chapterNo: 5, book: "NCERT XI 5 Thermodynamics" },
+    equilibrium: { cls: 11, chapterNo: 6, book: "NCERT XI 6 Equilibrium" },
+    solutions: { cls: 12, chapterNo: 1, book: "NCERT XII 1 Solutions" },
+    electrochemistry: { cls: 12, chapterNo: 2, book: "NCERT XII 2 Electrochemistry" },
+    "chemical-kinetics": { cls: 12, chapterNo: 3, book: "NCERT XII 3 Chemical Kinetics" },
+    "chemical-bonding": { cls: 11, chapterNo: 4, book: "NCERT XI 4 Chemical Bonding and Molecular Structure" },
+    periodicity: { cls: 11, chapterNo: 3, book: "NCERT XI 3 Classification of Elements and Periodicity in Properties" },
+    "coordination-compounds": { cls: 12, chapterNo: 5, book: "NCERT XII 5 Coordination Compounds" },
+    "organic-reaction-mechanisms": { cls: 11, chapterNo: 8, within: 1, book: "NCERT XI 8 (reaction mechanisms, if kept as its own chapter)" },
+    "p-block-elements": { cls: 12, chapterNo: 4, book: "old NCERT XII 7 The p-Block Elements (not in the rationalised book)" },
+    "d-and-f-block-elements": { cls: 12, chapterNo: 4, within: 1, book: "NCERT XII 4 The d- and f-Block Elements" },
+    "haloalkanes-and-haloarenes": { cls: 12, chapterNo: 6, book: "NCERT XII 6 Haloalkanes and Haloarenes" },
+    hydrocarbons: { cls: 11, chapterNo: 9, book: "NCERT XI 9 Hydrocarbons" },
+    "alcohols-phenols-and-ethers": { cls: 12, chapterNo: 7, book: "NCERT XII 7 Alcohols, Phenols and Ethers" },
+    "organic-basic-principles": { cls: 11, chapterNo: 8, book: "NCERT XI 8 Organic Chemistry - Some Basic Principles and Techniques" },
+    "aldehydes-ketones-and-carboxylic-acids": { cls: 12, chapterNo: 8, book: "NCERT XII 8 Aldehydes, Ketones and Carboxylic Acids" },
+    biomolecules: { cls: 12, chapterNo: 10, book: "NCERT XII 10 Biomolecules" },
+    amines: { cls: 12, chapterNo: 9, book: "NCERT XII 9 Amines" },
+  },
 };
 
 /** Sort key: class, then chapter, then order inside a shared book chapter. */
