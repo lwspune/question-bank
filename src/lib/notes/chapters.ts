@@ -955,6 +955,11 @@ import {
   JEE_QUADRATIC_EQUATIONS_NOTES,
   JEE_QUADRATIC_EQUATIONS_SLUGS,
 } from "@/app/notes/jee-mains-maths/quadratic-equations/_data";
+import {
+  JEE_STATISTICS_CHAPTER,
+  JEE_STATISTICS_NOTES,
+  JEE_STATISTICS_SLUGS,
+} from "@/app/notes/jee-mains-maths/statistics/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3062,6 +3067,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_QUADRATIC_EQUATIONS_CHAPTER,
     notes: JEE_QUADRATIC_EQUATIONS_NOTES,
     slugs: JEE_QUADRATIC_EQUATIONS_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "statistics",
+    chipLabel: "Statistics notes",
+    chapter: JEE_STATISTICS_CHAPTER,
+    notes: JEE_STATISTICS_NOTES,
+    slugs: JEE_STATISTICS_SLUGS,
   },
 ];
 

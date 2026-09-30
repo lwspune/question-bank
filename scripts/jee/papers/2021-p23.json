@@ -381,7 +381,7 @@
     },
     "80": {
       "chapter": "Statistics",
-      "subtopic": "Standard Deviation"
+      "subtopic": "Finding Unknown Observations"
     },
     "81": {
       "chapter": "Binomial Theorem",
@@ -529,6 +529,7 @@
     "72": "Put \\(y=tx\\): \\(tx\\left(t+x\\frac{dt}{dx}\\right)=x\\left(t^2+\\frac{\\phi(t^2)}{\\phi'(t^2)}\\right)\\), so \\(xt\\frac{dt}{dx}=\\frac{\\phi(t^2)}{\\phi'(t^2)}\\), i.e. \\(\\frac{\\phi'(t^2)\\,2t\\,dt}{\\phi(t^2)}=\\frac{2\\,dx}{x}\\). Integrating, \\(\\ln\\phi(t^2)=2\\ln x+C\\), so \\(\\phi\\!\\left(\\frac{y^2}{x^2}\\right)=kx^2\\). At \\(x=1,\\ y=-1\\): \\(k=\\phi(1)\\). Then \\(\\phi\\!\\left(\\frac{y^2}{4}\\right)\\) is the value at \\(x=2\\): \\(4\\phi(1)\\).",
     "73": "Write every term in base 2: \\(x+1=\\log_22^{x+1}\\) and \\(2\\log_4(10-2^{-x})=\\log_2(10-2^{-x})\\). The equation becomes \\(\\frac{2^{x+1}(10-2^{-x})}{(3+2^x)^2}=1\\), i.e. \\(20\\cdot2^x-2=9+6\\cdot2^x+4^x\\). With \\(t=2^x\\): \\(t^2-14t+11=0\\), \\(t=7\\pm\\sqrt{38}\\), both positive and both with \\(10-\\frac1t>0\\). So \\(2^{x_1}\\cdot2^{x_2}=11\\) and \\(x_1+x_2=\\log_211\\).",
     "74": "\\(\\frac{z-i}{z-1}\\) purely imaginary means \\(z\\) sees the segment from \\(1\\) to \\(i\\) at a right angle, so \\(z\\) lies on the circle with that diameter: centre \\(\\frac{1+i}2\\), radius \\(\\frac1{\\sqrt2}\\). The distance from \\(3+3i\\) to the centre is \\(\\frac{5}{\\sqrt2}\\), so the minimum of \\(|z-(3+3i)|\\) is \\(\\frac5{\\sqrt2}-\\frac1{\\sqrt2}=2\\sqrt2\\).",
+    "80": "The seven values sum to \\(7(8)=56\\) and \\(\\sum x^2=7(16+64)=560\\). Removing \\(6\\) and \\(8\\), the other five sum to \\(42\\) and have \\(\\sum x^2=560-36-64=460\\). Their variance \\(=\\frac{460}{5}-\\left(\\frac{42}{5}\\right)^2=\\frac{2300-1764}{25}=\\frac{536}{25}\\).",
     "83": "There are 9000 four-digit numbers. Multiples of 3: 3000. Multiples of 7: from 1001 to 9996, \\(\\frac{9996-1001}{7}+1=1286\\). Multiples of 21: from 1008 to 9996, \\(\\frac{9996-1008}{21}+1=429\\). Multiples of 3 or 7: \\(3000+1286-429=3857\\). Neither: \\(9000-3857=5143\\).",
     "90": "\\(f'\\) is a quadratic with its minimum at \\(x=-1\\), so \\(f'(x)=3k(x+1)^2+m\\); \\(f'(1)=0\\) gives \\(m=-12k\\). Then \\(f(x)=k(x+1)^3-12kx+c\\). \\(f(-1)=12k+c=6\\) and \\(f(1)=8k-12k+c=-4k+c=-10\\) give \\(k=1\\), \\(c=-6\\). So \\(f(x)=(x+1)^3-12x-6\\) and \\(f(3)=64-36-6=22\\)."
   },

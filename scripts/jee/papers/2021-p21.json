@@ -417,7 +417,7 @@
     },
     "89": {
       "chapter": "Statistics",
-      "subtopic": "Standard Deviation"
+      "subtopic": "Correcting Data and Combining Groups"
     },
     "90": {
       "chapter": "Indefinite Integration",
@@ -488,6 +488,7 @@
     "85": "Modulo 3: \\(3,6,9\\) have residue 0, \\(1,4\\) residue 1, \\(2,5\\) residue 2. With \\(F(t)=2^3(1+t)^2(1+t^2)^2\\), the subsets with sum \\(\\equiv0\\pmod3\\) number \\(\\frac13\\left[F(1)+F(\\omega)+F(\\omega^2)\\right]=\\frac13(128+8+8)=48\\), including the empty set. The subsets whose sum is not a multiple of 3 are \\(128-48=80\\), all non-empty.",
     "86": "Differentiate the hyperbola \\(2x^{2}-y^{2}=2\\) implicitly: \\(4x-2y\\,y'=0\\), so the tangent slope at \\((x_1,y_1)\\) is \\(y'=\\dfrac{2x_1}{y_1}\\) and the normal slope is \\(-\\dfrac{y_1}{2x_1}\\).\n\nAt \\(A(\\sec\\theta,\\ 2\\tan\\theta)\\) the normal slope is \\(-\\dfrac{2\\tan\\theta}{2\\sec\\theta}=-\\sin\\theta\\). Its equation is\n\\[y-2\\tan\\theta=-\\sin\\theta\\,(x-\\sec\\theta)\\ \\Rightarrow\\ y=-x\\sin\\theta+\\tan\\theta+2\\tan\\theta=-x\\sin\\theta+3\\tan\\theta,\\]\nusing \\(\\sin\\theta\\sec\\theta=\\tan\\theta\\).\n\nSince \\(\\phi=\\dfrac{\\pi}{2}-\\theta\\), we have \\(\\sec\\phi=\\csc\\theta\\) and \\(\\tan\\phi=\\cot\\theta\\). At \\(B(\\csc\\theta,\\ 2\\cot\\theta)\\) the normal slope is \\(-\\cos\\theta\\), giving\n\\[y=-x\\cos\\theta+\\cot\\theta+2\\cot\\theta=-x\\cos\\theta+3\\cot\\theta.\\]\n\nSet the two normals equal to find the intersection:\n\\[-x\\sin\\theta+3\\tan\\theta=-x\\cos\\theta+3\\cot\\theta\\ \\Rightarrow\\ x(\\cos\\theta-\\sin\\theta)=3(\\cot\\theta-\\tan\\theta)=\\frac{3(\\cos\\theta-\\sin\\theta)(\\cos\\theta+\\sin\\theta)}{\\sin\\theta\\cos\\theta}.\\]\nHence \\(\\alpha=x=\\dfrac{3(\\cos\\theta+\\sin\\theta)}{\\sin\\theta\\cos\\theta}\\).\n\nNow\n\\[\\beta=-\\alpha\\sin\\theta+3\\tan\\theta=-\\frac{3(\\cos\\theta+\\sin\\theta)}{\\cos\\theta}+\\frac{3\\sin\\theta}{\\cos\\theta}=\\frac{-3\\cos\\theta-3\\sin\\theta+3\\sin\\theta}{\\cos\\theta}=-3.\\]\n\nTherefore \\((2\\beta)^{2}=(-6)^{2}=36.\\)",
     "88": "\\(3\\cdot7^{22}=3(1+6)^{22}=3+3\\cdot22\\cdot6+36(\\dots)\\equiv3+396\\equiv3\\pmod{18}\\), since \\(396=22\\cdot18\\) and every later term has \\(36\\). \\(2\\cdot10^{22}=2(1+9)^{22}=2+2\\cdot22\\cdot9+162(\\dots)\\equiv2+396\\equiv2\\pmod{18}\\). So the number is \\(\\equiv3+2-44=-39\\equiv15\\pmod{18}\\). The remainder is 15.",
+    "89": "Girls' mean: \\(\\mu=\\frac{50(15)-20(12)}{30}=\\frac{510}{30}=17\\). The group means differ from the overall mean 15 by \\(d_1=-3\\) (boys) and \\(d_2=2\\) (girls). Combined variance \\(\\sigma^2=\\frac{20(2+9)+30(2+4)}{50}=\\frac{220+180}{50}=8\\). Hence \\(\\mu+\\sigma^2=17+8=25\\).",
     "90": "Write \\(2e^{x}+3e^{-x}=A(4e^{x}+7e^{-x})+B(4e^{x}-7e^{-x})\\). Matching coefficients gives \\(4A+4B=2\\) and \\(7A-7B=3\\), so \\(A=\\frac{13}{28},\\ B=\\frac{1}{28}\\). The integral becomes \\(Ax+B\\log_{e}(4e^{x}+7e^{-x})+C=\\frac{1}{14}\\left(\\frac{13}{2}x+\\frac12\\log_{e}(4e^{x}+7e^{-x})\\right)+C\\), so \\(u=\\frac{13}{2},\\ v=\\frac12\\) and \\(u+v=7\\)."
   },
   "answerOverrides": {
