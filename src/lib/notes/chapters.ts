@@ -1105,6 +1105,11 @@ import {
   JEE_CH_BIO_NOTES,
   JEE_CH_BIO_SLUGS,
 } from "@/app/notes/jee-mains-chemistry/biomolecules/_data";
+import {
+  JEE_CH_AMINE_CHAPTER,
+  JEE_CH_AMINE_NOTES,
+  JEE_CH_AMINE_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/amines/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3542,6 +3547,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_CH_BIO_CHAPTER,
     notes: JEE_CH_BIO_NOTES,
     slugs: JEE_CH_BIO_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "amines",
+    chipLabel: "Amines notes",
+    chapter: JEE_CH_AMINE_CHAPTER,
+    notes: JEE_CH_AMINE_NOTES,
+    slugs: JEE_CH_AMINE_SLUGS,
   },
 ];
 
