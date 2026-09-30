@@ -331,7 +331,7 @@
     "66": {
       "subject": "Maths",
       "chapter": "Application of Integrals",
-      "subtopic": "Area Between Curves"
+      "subtopic": "Trigonometric, Exponential and Reciprocal Curves"
     },
     "67": {
       "subject": "Maths",
@@ -477,7 +477,7 @@
     "63": "Take \\(A(2,5,2)\\) on the line with direction \\(\\vec d=(2,3,4)\\); \\(\\vec{AP}=(3,1,5)\\), \\(|\\vec{AP}|^2=35\\).\nProjection of \\(\\vec{AP}\\) on \\(\\vec d\\): \\(\\vec{AP}\\cdot\\vec d=6+3+20=29\\) and \\(|\\vec d|^2=29\\).\nSquared distance \\(=|\\vec{AP}|^2-\\dfrac{(\\vec{AP}\\cdot\\vec d)^2}{|\\vec d|^2}=35-\\dfrac{29^2}{29}=35-29=6\\).",
     "64": "\\(\\vec r\\times\\vec a+\\vec a\\times\\vec b=\\vec0\\Rightarrow \\vec r\\times\\vec a=\\vec b\\times\\vec a\\Rightarrow(\\vec r-\\vec b)\\times\\vec a=\\vec0\\), so \\(\\vec r=\\vec b+\\lambda\\vec a\\).\nUsing \\(\\vec r\\cdot\\vec a=0\\): \\(\\vec b\\cdot\\vec a+\\lambda|\\vec a|^2=0\\), where \\(\\vec b\\cdot\\vec a=-1\\), \\(|\\vec a|^2=9\\), giving \\(\\lambda=\\tfrac{1}{9}\\).\nThen \\(\\vec r=\\tfrac{\\sqrt7}{9}\\hat i+\\tfrac{10}{9}\\hat j+\\tfrac{17}{9}\\hat k\\), \\(|\\vec r|^2=\\dfrac{396}{81}\\).\nHence \\(|3\\vec r|^2=9|\\vec r|^2=\\dfrac{9\\cdot396}{81}=44\\).",
     "65": "Line 1: \\((1+\\lambda a,\\,1-\\lambda,\\,-1)\\); Line 2: \\((4+2\\mu,\\,0,\\,-1+a\\mu)\\).\nEquating: \\(y\\Rightarrow \\lambda=1\\); \\(z\\Rightarrow a\\mu=0\\), and since \\(a\\neq0\\), \\(\\mu=0\\); \\(x\\Rightarrow 1+a=4\\Rightarrow a=3\\).\nThe point of intersection is \\((4,0,-1)\\).\nSquared distance from the origin \\(=16+0+1=17\\).",
-    "66": "For \\(1\\le y\\le x^2\\) and \\(xy\\le27\\), the upper bound is \\(x^2\\) for \\(1\\le x\\le3\\) and \\(27/x\\) for \\(3\\le x\\le27\\).\n\\(\\text{Area}=\\int_1^3(x^2-1)\\,dx+\\int_3^{27}\\left(\\dfrac{27}{x}-1\\right)dx\\).\n\\(=\\dfrac{20}{3}+\\big[27\\ln x-x\\big]_3^{27}=\\dfrac{20}{3}+(27\\ln9-24)=\\dfrac{20}{3}+54\\ln3-24\\).\n\\(=54\\log_e3-\\dfrac{52}{3}\\).",
+    "66": "As printed the region has no condition \\(x\\ge0\\): for \\(x\\le-1\\), \\(xy\\le0\\le27\\) and \\(1\\le y\\le x^2\\) always hold, so that part is unbounded. The key takes \\(x\\ge0\\). Then the region needs \\(x^2\\ge1\\) and \\(\\frac{27}{x}\\ge1\\), and its top is \\(x^2\\) for \\(1\\le x\\le3\\) and \\(\\frac{27}{x}\\) for \\(3\\le x\\le27\\). Area \\(=\\int_1^3(x^2-1)\\,dx+\\int_3^{27}\\left(\\frac{27}{x}-1\\right)dx=\\frac{20}{3}+27\\ln9-24=54\\log_e3-\\frac{52}{3}\\).",
     "67": "For small \\(x\\), \\(1-\\cos(\\alpha x)\\cos((\\alpha+1)x)\\cos((\\alpha+2)x)\\approx\\dfrac{x^2}{2}\\big(\\alpha^2+(\\alpha+1)^2+(\\alpha+2)^2\\big)\\) and \\(\\sin^2((\\alpha+1)x)\\approx((\\alpha+1)x)^2\\).\nSo the limit is \\(\\dfrac{3\\alpha^2+6\\alpha+5}{2(\\alpha+1)^2}=2\\).\nThis gives \\(3\\alpha^2+6\\alpha+5=4(\\alpha+1)^2\\Rightarrow \\alpha^2+2\\alpha-1=0\\).\nThe product of the roots is \\(-1\\).",
     "68": "Put \\(x=2t\\): \\(I=\\int_0^\\infty\\dfrac{\\ln x}{x^2+4}\\,dx=\\dfrac{1}{2}\\int_0^\\infty\\dfrac{\\ln2+\\ln t}{t^2+1}\\,dt\\).\nUsing \\(\\int_0^\\infty\\dfrac{dt}{t^2+1}=\\dfrac{\\pi}{2}\\) and \\(\\int_0^\\infty\\dfrac{\\ln t}{t^2+1}\\,dt=0\\),\n\\(I=\\dfrac{1}{2}\\left(\\ln2\\cdot\\dfrac{\\pi}{2}\\right)=\\dfrac{\\pi\\log_e2}{4}\\).",
     "69": "The relation \\(f\\!\\left(\\tfrac{x+y}{3}\\right)=\\tfrac{f(x)+f(y)}{3}\\) forces \\(f\\) linear with \\(f(0)=0\\); with \\(f'(0)=3\\), \\(f(x)=3x\\).\nThen \\(g(x)=3+3xe^{x}\\) and \\(g'(x)=3e^{x}(1+x)=0\\Rightarrow x=-1\\) (a minimum).\n\\(g(-1)=3-\\dfrac{3}{e}=3\\left(\\dfrac{e-1}{e}\\right)\\).",

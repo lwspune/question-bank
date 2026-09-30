@@ -417,7 +417,7 @@
     },
     "89": {
       "chapter": "Application of Integrals",
-      "subtopic": "Area Between Curves"
+      "subtopic": "Unknown Parameters and Area Ratios"
     },
     "90": {
       "chapter": "Sequences and Series",
@@ -765,7 +765,7 @@
     },
     "161": {
       "chapter": "Application of Integrals",
-      "subtopic": "Area Between Curves"
+      "subtopic": "Curves and Lines: Vertical Strips"
     },
     "162": {
       "chapter": "Probability",
@@ -908,6 +908,7 @@
     "78": "Write \\(l_x=\\ln x\\), \\(l_y=\\ln y\\), \\(l_z=\\ln z\\). Each entry is \\(a_{ij}=\\frac{l_j}{l_i}m_{ij}\\) with \\(M=\\begin{bmatrix}1&1&1\\\\1&2&1\\\\1&1&3\\end{bmatrix}\\), so \\(A=D^{-1}MD\\) with \\(D=\\mathrm{diag}(l_x,l_y,l_z)\\), and \\(|A|=|M|=5-2-1=2\\). For order 3, \\(|\\mathrm{adj}(\\mathrm{adj}\\,A^2)|=|A^2|^4=|A|^8=2^8\\).",
     "83": "Modulo 3 the elements are: \\(3\\) (residue 0); \\(1,7,10\\) (residue 1); \\(2,5,11\\) (residue 2). With \\(\\omega\\) a cube root of unity, the number of subsets with sum \\(\\equiv0\\) is \\(\\frac13\\left[F(1)+F(\\omega)+F(\\omega^2)\\right]\\) where \\(F(t)=2(1+t)^3(1+t^2)^3\\). \\(F(1)=128\\) and \\(F(\\omega)=F(\\omega^2)=2(-\\omega^2)^3(-\\omega)^3=2\\). So there are \\(\\frac{128+4}{3}=44\\) such subsets, including the empty set; the non-empty ones number \\(43\\).",
     "87": "Each residue class mod 5 has 5 numbers in \\(1,\\dots,25\\). Ordered pairs of distinct numbers with \\(x+y\\equiv0\\pmod5\\): both \\(\\equiv0\\): \\(5\\cdot4=20\\); residues \\((1,4),(4,1),(2,3),(3,2)\\): \\(25\\) each, \\(100\\). Total \\(=120\\).",
+    "89": "\\(P_1:y=\\frac52x^2\\) and \\(P_2:y=x^2+6\\) meet at \\(x=\\pm2\\), so the first area is \\(\\int_{-2}^{2}\\left(6-\\frac32x^2\\right)dx=24-8=16\\). The line \\(y=\\alpha x\\) meets \\(P_1\\) at \\(x=0\\) and \\(x=\\frac{2\\alpha}{5}\\), enclosing \\(\\int_0^{2\\alpha/5}\\left(\\alpha x-\\frac52x^2\\right)dx=\\frac{2\\alpha^3}{25}-\\frac{4\\alpha^3}{75}=\\frac{2\\alpha^3}{75}\\). Setting \\(\\frac{2\\alpha^3}{75}=16\\) gives \\(\\alpha^3=600\\).",
     "121": "\\(pH = -\\log[H^{+}]\\). If the hydrogen ion concentration changes by a factor of 1000, then \\(\\Delta pH = -\\log\\left( 10^{3} \\right) = -3\\) for a thousand-fold INCREASE (and \\(+3\\) for a thousand-fold decrease). Either way the magnitude of the change is 3 units, and the only option quoting 3 units is (D), a decrease by 3 units, corresponding to the concentration rising a thousand-fold. Options (A) and (C) quote 2 units, and (B) confuses the concentration factor with a pH change.",
     "122": "The substrate is 2,2,6-trimethylcyclohexan-1-ol. Concentrated \\(H_2SO_4\\) with heat causes E1 dehydration: protonation of \\(-OH\\) and loss of water gives a SECONDARY carbocation at C-1. This is flanked by the quaternary C-2 bearing two methyls, so a 1,2-methyl shift from C-2 to C-1 occurs, generating the far more stable TERTIARY carbocation at C-2 while placing a methyl on C-1. Loss of the proton from C-1 then gives the \\(C_1=C_2\\) alkene, which is TETRASUBSTITUTED (a methyl on each alkene carbon plus both ring bonds) and hence the most stable product, with the third methyl left on the adjacent ring carbon: 1,2,3-trimethylcyclohex-1-ene. That is option (D). Option (C) is the unrearranged elimination product (only trisubstituted, and keeps the gem-dimethyl), (B) is the exocyclic (least substituted) alkene and (A) has the wrong methyl placement.",
     "123": "Carbon forms two important oxides, \\(CO\\) and \\(CO_2\\). Carbon monoxide is a neutral oxide - it forms neither an acid with water nor a salt with base - while carbon dioxide is acidic, giving carbonic acid with water and carbonates with alkali. So Assertion A is correct. The Reason states that \\(CO_2\\) combines with water in a limited way to form carbonic acid while \\(CO\\) is sparingly soluble in water; this is factually correct and is exactly why one oxide is acidic and the other behaves as neutral. Both are correct and R correctly explains A, option (C).",
@@ -1011,6 +1012,7 @@
     "68": "The value of \\(\\lim_{n \\rightarrow \\infty} \\frac{1 + 2 - 3 + 4 + 5 - 6 + \\cdots\\ldots + (3n - 2) + (3n - 1) - 3n}{\\sqrt{2n^{4}+ 4n + 3}-\\sqrt{n^{4}+ 5n + 4}}\\) is :",
     "87": "Let \\(x\\) and \\(y\\) be distinct integers where \\(1 \\leq x \\leq 25\\) and \\(1 \\leq y \\leq 25\\). Then, the number of ways of choosing \\(x\\) and \\(y\\) such that \\(x+y\\) is divisible by 5, is",
     "88": "Let \\(S =\\left\\{ \\alpha:\\log_{2}\\left( 9^{2\\alpha - 4}+ 13 \\right)-\\log_{2}\\left( \\frac{5}{2}\\cdot3^{2\\alpha - 4}+ 1 \\right)= 2 \\right\\}\\). Then the maximum value of \\(\\beta\\) for which the equation \\(x^{2}- 2\\left( \\sum_{\\alpha \\in S} \\alpha \\right)^{2}x +\\sum_{\\alpha \\in S} (\\alpha + 1)^{2}\\beta = 0\\) has real roots, is",
+    "89": "If the area enclosed by the parabolas \\(P_{1}:2y = 5x^{2}\\) and \\(P_{2}:x^{2}- y + 6 = 0\\) is equal to the area enclosed by \\(P_{1}\\) and \\(y = \\alpha x,\\alpha > 0\\), then \\(\\alpha^{3}\\) is equal to",
     "90": "Let \\(A_{1},A_{2},A_{3}\\) be the three A.P. with the same common difference \\(d\\) and having their first terms as \\(A,A + 1,\\text{ }A + 2\\), respectively. Let \\(a,b,c\\) be the \\(7^{\\text{th~}},9^{\\text{th~}},17^{\\text{th~}}\\) terms of \\(A_{1},{\\text{ }A}_{2},{\\text{ }A}_{3}\\), respectively such that \\(\\left| \\begin{matrix} a & 7 & 1 \\\\ 2b & 17 & 1 \\\\ c & 17 & 1 \\end{matrix} \\right|+ 70 = 0\\). If \\(a = 29\\), then the sum of first 20 terms of an AP whose first term is \\(c - a - b\\) and common difference is \\(\\frac{d}{12}\\), is equal to",
     "92": "A wire of length \\(1\\text{ }m\\) moving with velocity \\(8\\text{ }m/s\\) at right angles to a magnetic field of \\(2\\text{ }T\\). The magnitude of induced emf, between the ends of wire will be",
     "96": "Match List I with List II\n\n| LIST I | LIST II |\n|---|---|\n| A. Young's Modulus \\((Y)\\) | I. \\(\\left\\lbrack ML^{-1}T^{-1} \\right\\rbrack\\) |\n| B. Co-efficient of Viscosity \\((\\eta)\\) | II. \\(\\left\\lbrack ML^{2}T^{-1} \\right\\rbrack\\) |\n| C. Planck's Constant \\((h)\\) | III. \\(\\left\\lbrack ML^{-1}T^{-2} \\right\\rbrack\\) |\n| D. Work Function \\((\\varphi)\\) | IV. \\(\\left\\lbrack ML^{2}T^{-2} \\right\\rbrack\\) |\n\nChoose the correct answer from the options given below:",

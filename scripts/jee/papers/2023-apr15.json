@@ -413,7 +413,7 @@
     },
     "88": {
       "chapter": "Application of Integrals",
-      "subtopic": "Area Between Curves"
+      "subtopic": "Horizontal Strips and Sideways Parabolas"
     },
     "89": {
       "chapter": "Application of Derivatives",
@@ -458,7 +458,8 @@
     "67": "For \\(x\\ge0\\): \\(x^2-5(x+2)+6=0\\), i.e. \\(x^2-5x-4=0\\), root \\(\\frac{5+\\sqrt{41}}{2}\\) (the other is negative). For \\(-2\\le x<0\\): \\(-x^2-5x-4=0\\), i.e. \\(x^2+5x+4=0\\), root \\(x=-1\\) (\\(-4\\) is out of range). For \\(x<-2\\): \\(-x^2+5(x+2)+6=0\\), i.e. \\(x^2-5x-16=0\\), root \\(\\frac{5-\\sqrt{89}}{2}\\approx-2.2\\) (the other is positive). So there are 3 real roots.",
     "74": "Solve the first three equations. Subtracting the first from the second: \\(y+16z=2\\). Subtracting twice the first from the third: \\(-3y+23z=-6\\). Then \\(3(y+16z)+(-3y+23z)=0\\) gives \\(71z=0\\), so \\(z=0,\\ y=2,\\ x=-3\\). The fourth equation then fixes \\(\\lambda=-3(-3)+2+0=11\\). The distance of \\((-3,2,0)\\) from \\(2x-2y+z=11\\) is \\(\\frac{|-6-4+0-11|}{3}=7\\).",
     "82": "The four distinct digits include \\(7\\) as the largest, the other three coming from \\(\\{0,1,\\dots,6\\}\\). Since the first two digits and the last two have equal sum, the four digits split into two pairs of equal sum, one pair containing \\(7\\). Pairing \\(7\\) with \\(x\\) forces the remaining two digits to sum to \\(7+x\\); the number of valid pairs is \\(3,2,2,1,1\\) for \\(x=0,1,2,3,4\\), i.e. \\(9\\) digit-configurations. Each configuration gives \\(2\\times2\\times2=8\\) codes (which pair occupies the first two places, and the order within each pair), so the number of possible codes is \\(9\\times8=72\\).",
-    "86": "Modulo 7, the powers of 3 repeat with period 6: \\(3^1\\equiv3,\\ 3^7\\equiv3\\), and in general \\(3^n\\equiv3\\) exactly when \\(n\\equiv1\\pmod6\\). In \\(10\\le n\\le100\\) these are \\(n=13,19,\\dots,97\\), which is \\(\\frac{97-13}{6}+1=15\\) values."
+    "86": "Modulo 7, the powers of 3 repeat with period 6: \\(3^1\\equiv3,\\ 3^7\\equiv3\\), and in general \\(3^n\\equiv3\\) exactly when \\(n\\equiv1\\pmod6\\). In \\(10\\le n\\le100\\) these are \\(n=13,19,\\dots,97\\), which is \\(\\frac{97-13}{6}+1=15\\) values.",
+    "88": "The parabola \\(x=\\frac{2y^2}{3}\\) meets \\(x=3-y\\) where \\(2y^2+3y-9=0\\Rightarrow(2y-3)(y+3)=0\\), so \\(y=\\frac32\\). The region between them above \\(y=0\\) has area \\(\\int_0^{3/2}\\left(3-y-\\frac{2y^2}{3}\\right)dy=\\frac92-\\frac98-\\frac34=\\frac{21}{8}\\). The circle's centre \\((3,0)\\) lies on both \\(y=0\\) and \\(x+y=3\\), which meet there at \\(45^\\circ\\), so the part of the circle inside the region is a sector of angle \\(\\frac\\pi4\\) and radius \\(\\sqrt2\\), of area \\(\\frac12\\cdot2\\cdot\\frac\\pi4=\\frac\\pi4\\). Thus \\(A=\\frac{21}{8}-\\frac\\pi4\\) and \\(4(\\pi+4A)=4\\cdot\\frac{21}{2}=42\\)."
   },
   "notes": "2023 15 Apr sitting — SINGLE shift (90 q: Maths = Q61-90 = 20 MCQ + 10 NAT). Clean sequential soln numbering (number-matched keys, spot-verified Q61/Q67). No overrides needed.\n15 Apr 2023 — Chemistry only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.\n[Chemistry stem repair] Q52: unmatched bracket plus a spurious minus. [Cr(H2O)5Cl]Cl2 has 2 ionisable chlorides, giving 4 mL, which matches the key.",
   "stemOverrides": {

@@ -335,7 +335,7 @@
     },
     "71": {
       "chapter": "Application of Integrals",
-      "subtopic": "Area Between Curves"
+      "subtopic": "Circles, Ellipses and Other Conics"
     },
     "72": {
       "chapter": "Binomial Theorem",
@@ -633,7 +633,7 @@
     },
     "133": {
       "chapter": "Application of Integrals",
-      "subtopic": "Area Between Curves"
+      "subtopic": "Unknown Parameters and Area Ratios"
     },
     "134": {
       "chapter": "Application of Derivatives",
@@ -853,6 +853,7 @@
     "60": "\\(3|\\bar z-i|=|2\\bar z+i|\\). With \\(\\bar z=x-iy\\): \\(9\\left(x^2+(y+1)^2\\right)=4x^2+(1-2y)^2\\), i.e. \\(5x^2+5y^2+22y+8=0\\), a circle with centre \\(C\\left(0,-\\frac{11}5\\right)\\). The triangle with vertices \\((0,0)\\), \\(C\\) and \\((\\alpha,0)\\) has area \\(\\frac12|\\alpha|\\cdot\\frac{11}5=11\\), so \\(|\\alpha|=10\\) and \\(\\alpha^2=100\\).",
     "61": "Reflexivity needs \\((1,1),(2,2),(4,4)\\): 3 pairs. Symmetry needs \\((2,1),(3,2)\\): 2 pairs. Transitivity then joins 1, 2 and 3 into one class, adding \\((1,3),(3,1)\\): 2 pairs. The classes are \\(\\{1,2,3\\}\\) and \\(\\{4\\}\\), so the relation has \\(9+1=10\\) pairs, 3 of them given: \\(7\\) added.",
     "66": "For grouped data, median \\(=l+\\dfrac{\\frac{N}{2}-F}{f}\\times h\\), with \\(l=12,\\ F=18,\\ f=12,\\ h=6\\). So \\(14=12+\\dfrac{\\frac{N}{2}-18}{12}\\times6\\Rightarrow\\frac{N}{2}-18=4\\Rightarrow N=44\\).",
+    "71": "\\(y=|x-1|\\) meets \\(x^2+y^2=25\\) at \\((4,3)\\) and \\((-3,4)\\). The smaller part lies above the V: \\(\\int_{-3}^{4}\\sqrt{25-x^2}\\,dx-\\int_{-3}^{4}|x-1|\\,dx\\). The first integral is \\(12+\\frac{25}{2}\\left(\\sin^{-1}\\frac45+\\sin^{-1}\\frac35\\right)=12+\\frac{25\\pi}{4}\\); the second is \\(8+\\frac92=\\frac{25}{2}\\). So the smaller part is \\(\\frac{25\\pi}{4}-\\frac12\\), and the larger is \\(25\\pi-\\frac{25\\pi}{4}+\\frac12=\\frac14(75\\pi+2)\\). Hence \\(b+c=77\\).",
     "72": "A term of the multinomial expansion is \\(\\frac{6!}{r_1!\\,r_2!\\,r_3!}\\,2^{r_2/3}\\,3^{r_3/2}\\) with \\(r_1+r_2+r_3=6\\). It is rational when \\(3\\mid r_2\\) and \\(2\\mid r_3\\). With \\(r_2=0\\): \\(r_3=0,2,4,6\\) give \\(1+45+135+27=208\\). With \\(r_2=3\\): \\(r_3=0\\) gives \\(20\\cdot2=40\\) and \\(r_3=2\\) gives \\(60\\cdot2\\cdot3=360\\). With \\(r_2=6\\): \\(2^2=4\\). The sum is \\(208+400+4=612\\).",
     "75": "The coefficients add to zero, \\(a(b-c)+b(c-a)+c(a-b)=0\\), so \\(x=1\\) is a root. With equal roots both roots are 1, so their product is 1: \\(\\frac{c(a-b)}{a(b-c)}=1\\), i.e. \\(ca-cb=ab-ac\\), so \\(2ac=b(a+c)=\\frac{36}{5}\\cdot15=108\\) and \\(ac=54\\). Then \\(a^2+c^2=(a+c)^2-2ac=225-108=117\\).",
     "76": "At launch \\(KE = \\tfrac{1}{2}mu^{2}\\). At the highest point only the horizontal component survives, \\[v = u\\cos 60^{\\circ} = \\frac{u}{2},\\] so \\[KE' = \\frac{1}{2}m\\left( \\frac{u}{2} \\right)^{2} = \\frac{1}{4}\\left( \\frac{1}{2}mu^{2} \\right) = \\frac{KE}{4}.\\] The correct choice is B.",
@@ -905,6 +906,7 @@
     "123": "Convert to moles: \\(81.0/27.0 = 3\\ \\text{mol}\\) of \\(Al\\) and \\(128.0/32.0 = 4\\ \\text{mol}\\) of \\(O_{2}\\). The balanced equation \\(4Al + 3O_{2} \\rightarrow 2Al_{2}O_{3}\\) requires \\(3 \\times (3/4) = 2.25\\ \\text{mol}\\) of \\(O_{2}\\) for the aluminium available, and \\(4\\ \\text{mol}\\) is present, so aluminium is the limiting reagent. It yields \\(3 \\times (2/4) = 1.5\\ \\text{mol}\\) of \\(Al_{2}O_{3}\\), and with a molar mass of \\(2(27) + 3(16) = 102\\ g\\ mol^{-1}\\) that is \\(153\\ g\\).",
     "124": "Build the Born-Haber cycle for \\(M(s) + \\frac{1}{2}X_{2}(g) \\rightarrow M^{+}X^{-}(s)\\): \\(\\Delta H_{f}^{\\circ} = \\Delta H_{\\text{sub}}^{\\circ} + \\Delta H_{i}^{\\circ} + \\frac{1}{2}\\Delta H_{\\text{bond}}^{\\circ} + \\Delta H_{eg}^{\\circ} - \\Delta H_{\\text{lattice}}^{\\circ}\\); the lattice term is subtracted because the value given is for the dissociation of the solid into gaseous ions. Substituting, \\(-400 = 100 + 500 + \\frac{1}{2}\\Delta H_{\\text{bond}}^{\\circ} - 300 - 800\\). The constants sum to \\(-500\\), so \\(\\frac{1}{2}\\Delta H_{\\text{bond}}^{\\circ} = 100\\) and \\(\\Delta H_{\\text{bond}}^{\\circ} = 200\\ kJ\\ mol^{-1}\\).",
     "125": "Absorbing 2 moles of hydrogen shows that X holds two \\(C=C\\) bonds, and oxidative cleavage by \\(KMnO_{4}/H^{+}\\) turns a fully substituted alkene carbon into a ketone and a \\(=CH-\\) carbon into \\(-COOH\\). Acetone requires a \\((CH_{3})_{2}C=\\) terminus and acetic acid a \\(=CH-CH_{3}\\) terminus, while 4-oxopentanoic acid is the middle fragment carrying a ketone at one end and an acid at the other. Reassembling gives \\(X = (CH_{3})_{2}C=C(CH_{3})-CH_{2}-CH_{2}-CH=CH-CH_{3}\\), i.e. \\(C_{10}H_{18}\\). An acyclic \\(C_{10}\\) skeleton has 9 carbon-carbon links, each contributing one \\(\\sigma\\) bond, plus 18 \\(C-H\\) bonds, so the total is \\(9 + 18 = 27\\).",
+    "133": "For \\(-1\\le x\\le0\\), \\(e^{|x|}-e^{-x}=0\\), so the height is \\(a\\) and that part has area \\(a\\). For \\(0\\le x\\le1\\) the height is \\(a+e^x-e^{-x}\\): \\(\\int_0^1(a+e^x-e^{-x})\\,dx=\\left[ax+e^x+e^{-x}\\right]_0^1=a+e+\\frac1e-2\\). The total is \\(2a+e+\\frac1e-2=\\frac{e^2+8e+1}{e}=e+8+\\frac1e\\), so \\(2a=10\\) and \\(a=5\\).",
     "136": "Put \\(x=vy\\Rightarrow \\frac{dx}{dy}=v+y\\frac{dv}{dy}\\). Then \\(x-y\\frac{dx}{dy}=-y^2\\frac{dv}{dy}\\), so \\(y=\\big(x-y\\frac{dx}{dy}\\big)\\sin\\frac{x}{y}\\) becomes \\(y=-y^2\\frac{dv}{dy}\\sin v\\), i.e. \\(-\\sin v\\,dv=\\frac{dy}{y}.\\) Integrating: \\(\\cos v=\\log_e y+C\\), i.e. \\(\\cos\\frac{x}{y}=\\log_e y+C.\\) At \\(y=1,\\;x=\\frac{\\pi}{2}\\): \\(0=C\\), so \\(\\cos\\frac{x}{y}=\\log_e y.\\) At \\(y=2\\): \\(\\cos\\frac{x}{2}=\\log_e2\\), hence \\(\\cos(x(2))=2\\cos^2\\tfrac{x}{2}-1=2(\\log_e2)^2-1.\\)",
     "138": "A point on \\(y^2=4x\\) is \\((t^2,2t)\\); its squared distance from \\((a,0)\\) is \\((t^2-a)^2+4t^2\\). Minimizing gives \\(t^2=a-2\\), and the minimum squared distance is \\(4a-4\\). Setting \\(\\sqrt{4a-4}=4\\Rightarrow a=5\\), so the point is \\((5,0)\\). The focus of \\(y^2=4x\\) is \\((1,0)\\); a circle through \\((5,0)\\) and \\((1,0)\\) with centre on the \\(x\\)-axis has centre \\((3,0)\\), radius \\(2\\). Thus \\((x-3)^2+y^2=4\\Rightarrow x^2+y^2-6x+5=0.\\)",
     "142": "With \\(z=e^{i\\theta}\\), \\(\\frac z{\\bar z}=e^{2i\\theta}\\) and \\(\\frac{\\bar z}z=e^{-2i\\theta}\\), so the condition is \\(|2\\cos2\\theta|=1\\), i.e. \\(\\cos2\\theta=\\pm\\frac12\\). For \\(\\theta\\in[0,2\\pi)\\), \\(2\\theta\\) runs over \\([0,4\\pi)\\), where each of \\(\\cos=\\frac12\\) and \\(\\cos=-\\frac12\\) has 4 solutions. So there are 8 such \\(z\\).",

@@ -426,7 +426,7 @@
     "86": {
       "subject": "Maths",
       "chapter": "Application of Integrals",
-      "subtopic": "Area Between Curves"
+      "subtopic": "Unknown Parameters and Area Ratios"
     },
     "87": {
       "subject": "Maths",
@@ -876,7 +876,7 @@
     "177": {
       "subject": "Maths",
       "chapter": "Application of Integrals",
-      "subtopic": "Area Between Curves"
+      "subtopic": "Circles, Ellipses and Other Conics"
     },
     "178": {
       "subject": "Maths",
@@ -1074,7 +1074,7 @@
     "83": "For a \\(3\\times3\\) matrix, \\(\\operatorname{adj}(\\operatorname{adj}A)=|A|^{n-2}A=|A|\\,A\\). Taking determinants, \\(\\det(\\operatorname{adj}(\\operatorname{adj}A))=|A|^3\\cdot|A|=|A|^4\\). The given matrix equals \\(14\\) times a matrix of determinant \\(14\\), so its determinant is \\(14^3\\cdot14=14^4\\); hence \\(|A|^4=14^4\\), giving \\(|A|=14\\).",
     "84": "Let the blue counts be \\(x_0,x_1,x_2,x_3,x_4,x_5\\) (before, between, after the \\(5\\) reds) with \\(x_1,\\dots,x_4\\ge2\\) and \\(\\sum x_i=11\\). Substituting \\(y_i=x_i-2\\) for the four inner gaps gives \\(x_0+y_1+y_2+y_3+y_4+x_5=3\\) in non-negative integers, with \\(\\binom{3+5}{5}=\\binom{8}{5}=56\\) solutions.",
     "85": "The general term gives \\(x\\)-power \\(30-\\tfrac{5r}{6}=10\\Rightarrow r=24\\). The explicit power of \\(5\\) is \\(-\\tfrac{60-r}{4}+\\tfrac{r}{2}=3\\), and \\(\\binom{60}{24}\\) contributes \\(v_5=14-4-8=2\\) more. Hence \\(k=3+2=5\\).",
-    "86": "By symmetry in \\(x\\), area\\((A_1)=2\\left(\\int_0^2 y^2\\,dy+\\int_2^4(8-2y)\\,dy\\right)=2\\left(\\tfrac83+4\\right)=\\tfrac{40}{3}\\), where \\(x=y^2\\) meets \\(x=8-2y\\) at \\(y=2\\). Area\\((A_2)=2k^2\\). From \\(27\\cdot\\tfrac{40}{3}=5\\cdot2k^2\\) we get \\(360=10k^2\\Rightarrow k=6\\).",
+    "86": "As printed \\(A_1\\) is unbounded: for \\(y<0\\), both \\(|x|\\le y^2\\) and \\(|x|\\le8-2y\\) let \\(|x|\\) grow without limit as \\(y\\to-\\infty\\). The key takes \\(y\\ge0\\). Then \\(|x|=y^2\\) meets \\(|x|=8-2y\\) at \\(y=2\\), and area\\((A_1)=2\\left(\\int_0^2y^2\\,dy+\\int_2^4(8-2y)\\,dy\\right)=2\\left(\\frac83+4\\right)=\\frac{40}{3}\\). Area\\((A_2)=2k^2\\). From \\(27\\cdot\\frac{40}{3}=5\\cdot2k^2\\), \\(k^2=36\\) and \\(k=6\\).",
     "87": "The \\(n\\)-th term is \\(\\tfrac{n}{4n^4+1}=\\tfrac{n}{(2n^2-2n+1)(2n^2+2n+1)}=\\tfrac14\\left(\\tfrac{1}{2n^2-2n+1}-\\tfrac{1}{2n^2+2n+1}\\right)\\). Telescoping over \\(n=1\\) to \\(10\\): \\(\\tfrac14\\left(1-\\tfrac{1}{221}\\right)=\\tfrac{55}{221}\\). With \\(m=55,n=221\\) coprime, \\(m+n=276\\).",
     "88": "One side runs from \\((1,2)\\) to \\((3,6)\\), length \\(2\\sqrt5\\), midpoint \\((2,4)\\). The circle's centre lies on the perpendicular bisector \\(y-4=-\\tfrac12(x-2)\\) and on \\(2x-y+4=0\\), giving centre \\((\\tfrac25,\\tfrac{24}{5})\\). Its distance to \\((2,4)\\) is \\(\\tfrac{4\\sqrt5}{5}\\), half the adjacent side, so that side is \\(\\tfrac{8\\sqrt5}{5}\\) and area \\(=2\\sqrt5\\cdot\\tfrac{8\\sqrt5}{5}=16\\).",
     "89": "For \\(y^2=2x\\), vertex \\((0,0)\\) and focus \\((\\tfrac12,0)\\); a circle of radius \\(2\\) through both has centre \\((\\tfrac14,k)\\) with \\(\\tfrac1{16}+k^2=4\\Rightarrow k^2=\\tfrac{63}{16}\\). Taking the circle below the axis, it touches the upward parabola \\(y=(x-\\tfrac14)^2+\\alpha\\) at its vertex, so \\(\\alpha=k+2\\) and \\(4\\alpha-8=4k\\). Thus \\((4\\alpha-8)^2=16k^2=63\\).",
@@ -1154,6 +1154,7 @@
     "35": "Given below are two statements: one is labelled as Assertion A and the other is labelled as Reason R. Assertion A: The ionic radii of \\(O^{2-}\\) and \\(Mg^{2+}\\) are same. Reason R: Both \\(O^{2-}\\) and \\(Mg^{2+}\\) are isoelectronic species. In the light of the above statements, choose the correct answer from the options given below:",
     "74": "If two straight lines whose direction cosines are given by the relations \\(l + m - n = 0,\\ 3l^{2}+m^{2}+ cnl = 0\\) are parallel, then the positive value of \\(c\\) is:",
     "76": "Five numbers \\(x_{1},x_{2},x_{3},x_{4},x_{5}\\) are randomly selected from the numbers \\(1,2,3,\\ldots,18\\) and are arranged in the increasing order \\(\\left( x_{1}<x_{2}<x_{3}<x_{4}<x_{5} \\right)\\). The probability that \\(x_{2}= 7\\) and \\(x_{4}= 11\\) is:",
+    "86": "Let \\(A_{1}=\\left\\{ (x,y):|x| \\leq y^{2},|x| + 2y\\leq 8 \\right\\}\\) and \\(A_{2}= \\{(x,y):|x| + |y| \\leq k\\}\\). If \\(27\\left( \\right.\\) Area \\(\\left. \\ A_{1} \\right)= 5\\) (Area \\(A_{2}\\) ), then \\(k\\) is equal to:",
     "102": "Three identical charged balls each of charge \\(2C\\) are suspended from a common point \\(P\\) by silk threads of \\(2\\text{ }m\\) each (as shown in figure). They form an equilateral triangle of side \\(1\\text{ }m\\). The ratio of net force on a charged ball to the force between any two charged balls will be:",
     "110": "We do not transmit low frequency signal to long distances because (A) The size of the antenna should be comparable to signal wavelength which is unreal solution for a signal of longer wavelength. (B) Effective power radiated by a long wavelength baseband signal would be low. (C) We want to avoid mixing up signals transmitted by different transmitter simultaneously. (D) Low frequency signal can be sent to long distances by superimposing with a high frequency wave as well. Therefore, the most suitable options will be:",
     "114": "A particle executes simple harmonic motion. Its amplitude is \\(8\\text{ }cm\\) and time period is \\(6\\text{ }s\\). The time it will take to travel from its position of maximum displacement to the point corresponding to half of its amplitude, is s.",
@@ -1166,6 +1167,7 @@
     "159": "The integral \\(\\int_{0}^{1} \\frac{1}{7^{\\left\\lbrack \\frac{1}{x} \\right\\rbrack}}dx\\), where [.] denotes the greatest integer function is equal to",
     "166": "The mean and variance of the data \\(4,5,6,6,7,8,x,y\\) where \\(x < y\\) are 6 , and \\(\\frac{9}{4}\\) respectively. Then \\(x^{4}+y^{2}\\) is equal to",
     "176": "If \\(y(x)=\\left(x^{x}\\right)^{x},\\ x>0\\), then \\(\\dfrac{d^{2}x}{dy^{2}}+20\\) at \\(x=1\\) is equal to:",
+    "177": "If the area of the region \\(\\left\\{ (x,y):x^{\\frac{2}{3}}+y^{\\frac{2}{3}}\\leq 1,\\ x+y\\geq 0,y\\geq 0 \\right\\}\\) is A, then \\(\\frac{256A}{\\pi}\\) is",
     "178": "Let \\(y = y(x)\\) be the solution of the differential equation \\(\\left( 1 -x^{2} \\right)dy=\\left( xy+\\left( x^{3}+ 2 \\right)\\sqrt{1 -x^{2}} \\right)dx, - 1 <x< 1\\)and \\(y(0) = 0\\) if \\(\\int_{-\\frac{1}{2}}^{\\frac{1}{2}} \\sqrt{1 -x^{2}}y(x)dx=k\\) then \\(k^{- 1}\\) is equal to:",
     "180": "Let \\(S =\\left\\{ E_{1},E_{2}\\ldots E_{8} \\right\\}\\) be a sample space of random experiment such that \\(P\\left( E_{n} \\right)=\\frac{n}{36}\\) for every \\(n = 1,2\\ldots 8\\). Then the number of elements in the set \\(\\left\\{ A \\subset S:P(A) \\geq\\frac{4}{5} \\right\\}\\) is"
   },
