@@ -361,7 +361,7 @@
     },
     "75": {
       "chapter": "Trigonometric Equations",
-      "subtopic": "Trigonometric Equations"
+      "subtopic": "Range and Existence of Solutions"
     },
     "76": {
       "chapter": "Sequences and Series",
@@ -813,7 +813,7 @@
     },
     "173": {
       "chapter": "Trigonometric Equations",
-      "subtopic": "Trigonometric Equations"
+      "subtopic": "Exponential, Bounded and Graphical Equations"
     },
     "174": {
       "chapter": "Three Dimensional Geometry",
@@ -1015,6 +1015,7 @@
     "168": "Compare cofactors. \\(A_{11}=2\\alpha^2-\\alpha\\beta=3\\alpha\\) and \\(A_{21}=-(2\\alpha^2-3\\alpha)=-\\alpha\\), so \\(2\\alpha^2=4\\alpha\\) and \\(\\alpha=2\\) (as \\(\\alpha\\ne0\\)); then \\(8-2\\beta=6\\) gives \\(\\beta=1\\). \\(B\\) is the cofactor matrix, so \\(|B|=|\\mathrm{adj}\\,A|=|A|^2\\) and \\(|AB|=|A|^3\\). With \\(A=\\begin{bmatrix}1&2&3\\\\2&2&1\\\\-1&2&4\\end{bmatrix}\\), \\(|A|=6-18+18=6\\), so \\(|AB|=216\\).",
     "169": "Write \\(c=\\cos\\theta\\). The numerator is \\(2c+2c^2-1\\). The denominator is \\((4c^3-3c)+4(2c^2-1)+5c+2=4c^3+8c^2+2c-2=(2c^2+2c-1)(2c+2)\\). So \\(y=\\frac{1}{2(1+\\cos\\theta)}\\). Then \\(y'=\\frac{\\sin\\theta}{2(1+\\cos\\theta)^2}\\) and \\(y''=\\frac{\\cos\\theta(1+\\cos\\theta)+2\\sin^2\\theta}{2(1+\\cos\\theta)^3}\\). At \\(\\theta=\\frac{\\pi}{2}\\): \\(y=\\frac12\\), \\(y'=\\frac12\\), \\(y''=1\\), so \\(y''+y'+y=2\\).",
     "171": "Probabilities add to 1: \\(\\frac13+K+\\frac16+\\frac14=1\\Rightarrow K=\\frac14\\). Mean \\(\\mu=\\frac{\\alpha}{3}+\\frac14-\\frac34=\\frac{\\alpha}{3}-\\frac12\\). \\(E(X^2)=\\frac{\\alpha^2}{3}+\\frac14+\\frac94=\\frac{\\alpha^2}{3}+\\frac52\\), so \\(\\sigma^2=E(X^2)-\\mu^2=\\frac{2\\alpha^2}{9}+\\frac{\\alpha}{3}+\\frac94\\). From \\(\\sigma=\\mu+2=\\frac{\\alpha}{3}+\\frac32\\), \\(\\sigma^2=\\frac{\\alpha^2}{9}+\\alpha+\\frac94\\). Equating: \\(\\frac{\\alpha^2}{9}=\\frac{2\\alpha}{3}\\Rightarrow\\alpha=0\\) or \\(\\alpha=6\\). \\(\\alpha=0\\) is rejected because 0 is already a value of \\(X\\). So \\(\\alpha=6\\), \\(\\mu=\\frac32\\), \\(\\sigma=\\frac72\\), and \\(\\sigma+\\mu=5\\).",
+    "173": "Since \\(2+2x-x^2=3-(x-1)^2\\), the equation is \\(\\sin^2x+\\left(3-(x-1)^2\\right)\\sin x-3(x-1)^2=0\\), i.e. \\((\\sin x+3)\\left(\\sin x-(x-1)^2\\right)=0\\). So \\(\\sin x=(x-1)^2\\). This needs \\((x-1)^2\\le1\\), i.e. \\(x\\in[0,2]\\). Let \\(g(x)=\\sin x-(x-1)^2\\): \\(g(0)=-1<0\\), \\(g(1)=\\sin1>0\\), \\(g(2)=\\sin2-1<0\\), and \\(g''(x)=-\\sin x-2<0\\), so \\(g\\) is concave and has exactly \\(2\\) zeros.",
     "176": "Since \\(a\\) is a root of \\(2x^2+x-2=0\\), \\(\\frac1a\\) is a root of \\(2+x-2x^2=0\\) (divide by \\(x^2\\)). The roots of \\(2x^2+x-2=0\\) are \\(a=\\frac{-1+\\sqrt{17}}{4}\\) and \\(b=\\frac{-1-\\sqrt{17}}{4}\\), so \\(2+x-2x^2=-2\\left(x-\\frac1a\\right)\\left(x-\\frac1b\\right)\\). Near \\(x=\\frac1a\\), \\(1-\\cos(2+x-2x^2)\\approx\\frac12(2+x-2x^2)^2=2\\left(x-\\frac1a\\right)^2\\left(x-\\frac1b\\right)^2\\), and \\((1-ax)^2=a^2\\left(x-\\frac1a\\right)^2\\). So the limit is \\(\\frac{32}{a^2}\\left(\\frac1a-\\frac1b\\right)^2\\). Here \\(\\frac1a-\\frac1b=\\frac{b-a}{ab}=\\frac{-\\sqrt{17}/2}{-1}=\\frac{\\sqrt{17}}{2}\\), so the limit is \\(\\frac{136}{a^2}=\\frac{136\\cdot16}{18-2\\sqrt{17}}=\\frac{1088(9+\\sqrt{17})}{64}=153+17\\sqrt{17}\\). Hence \\(\\alpha+\\beta=153+17=170\\).",
     "178": "Put \\(y=\\sqrt{8x-x^2-12}\\ge0\\); then \\((x-4)^2+y^2=4\\), the upper half of the circle with centre \\((4,0)\\) and radius 2. The expression is the squared distance from \\((x,y)\\) to \\((7,4)\\), whose distance from the centre is 5. The nearest point of the circle, in the direction of \\((7,4)\\), has \\(y>0\\), so \\(m=(5-2)^2=9\\). The farthest point of the full circle has \\(y<0\\), so on the half circle the maximum is at an end: \\((2,0)\\) gives \\(25+16=41\\) and \\((6,0)\\) gives \\(17\\). So \\(M=41\\) and \\(M^2-m^2=1681-81=1600\\)."
   }
