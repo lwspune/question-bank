@@ -35,6 +35,13 @@ export const SOURCE_PDF = "C:/Users/vilas/Downloads/Group B & C Pre Papers 2017 
  */
 export const SSP_SOURCE_PDF = "C:/Users/vilas/Downloads/MPSC Rajyaseva PYQ by ACHIEVERS MENTORSHIP.pdf";
 export const SSP_KEY_DIR = "C:/Users/vilas/Downloads/mpsc-ssp-final-keys";
+/**
+ * CSAT Paper II: each year's booklet and final key are their own PDFs from
+ * mpscmaterial.com (paper-<year>.pdf, key-<year>.pdf). The file named
+ * paper-2017.pdf is really the 2018 booklet (cover: G11, 8 April 2018) and no
+ * 2017 booklet was on the listing, so 2017 has a key but no paper.
+ */
+export const SSP_CSAT_DIR = "C:/Users/vilas/Downloads/mpsc-ssp-csat";
 
 /** The exams this pipeline writes to. Ids are printed by seed.ts --apply. */
 export type ExamKey = "gbc" | "ssp";
@@ -75,6 +82,10 @@ export type Paper = {
   /** First and last PDF page of the booklet (cover included). */
   pages: [number, number];
   keyPages: [number, number];
+  /** Questions in the booklet; absent means QUESTIONS_PER_PAPER. */
+  questions?: number;
+  /** The fixed subject -> chapter list merge.ts holds this paper to (absent: none). */
+  chapters?: Record<string, readonly string[]>;
   /** Key has no text layer — tokens are hand-transcribed. */
   keyImageOnly?: boolean;
   pyqNote: string;
@@ -126,41 +137,6 @@ export const PAPERS: Paper[] = [
 ];
 
 /**
- * State Services Prelims, GS Paper I — 100 questions, 200 marks, 2 hours, -1/4 of
- * a question's marks per wrong answer (booklet instruction 7). Page ranges are
- * 1-based pages of SSP_SOURCE_PDF, read from each booklet's cover; the scan is NOT
- * in year order (2017 precedes 2018, 2013 precedes 2014). `pyqYear` is the
- * exam-year label: the "2020" paper sat on 21 Mar 2021 and "2021" on 23 Jan 2022.
- * Dates are the final key's "परीक्षेचा दिनांक".
- */
-const ssp = (pyqYear: number, date: string, code: string, pages: [number, number], label: string): Paper => ({
-  id: `ssp-${pyqYear}`,
-  exam: "ssp",
-  pyqYear,
-  date,
-  code,
-  pages,
-  sourcePdf: SSP_SOURCE_PDF,
-  keyPdf: `${SSP_KEY_DIR}/${pyqYear}.pdf`,
-  keyPages: [1, 2],
-  pyqNote: `GS Paper I · ${label}`,
-  sourceFile: `MPSC-ssp-${pyqYear}-${code}`,
-});
-
-export const SSP_PAPERS: Paper[] = [
-  ssp(2022, "2022-08-21", "H15", [1, 40], "21 Aug 2022"),
-  ssp(2021, "2022-01-23", "O14", [41, 88], "23 Jan 2022"),
-  ssp(2020, "2021-03-21", "Y13", [89, 136], "21 Mar 2021"),
-  ssp(2019, "2019-02-17", "T12", [137, 184], "17 Feb 2019"),
-  ssp(2017, "2017-04-02", "W08", [185, 232], "2 Apr 2017"),
-  ssp(2018, "2018-04-08", "F11", [233, 276], "8 Apr 2018"),
-  ssp(2016, "2016-04-10", "N07", [277, 316], "10 Apr 2016"),
-  ssp(2015, "2015-04-05", "V05", [317, 364], "5 Apr 2015"),
-  ssp(2013, "2013-05-18", "X01", [365, 412], "18 May 2013"),
-  ssp(2014, "2014-02-02", "G03", [413, 460], "2 Feb 2014"),
-];
-
-/**
  * The ONLY subject/chapter pairs a State Services Prelims transcription may use
  * (merge.ts refuses anything else). Fixed up front so ten papers transcribed
  * over many sessions land on one taxonomy. Subjects mirror seed.ts SUBJECTS.ssp.
@@ -187,12 +163,98 @@ export const SSP_CHAPTERS: Record<string, readonly string[]> = {
   ],
 };
 
+/**
+ * State Services Prelims, GS Paper I — 100 questions, 200 marks, 2 hours, -1/4 of
+ * a question's marks per wrong answer (booklet instruction 7). Page ranges are
+ * 1-based pages of SSP_SOURCE_PDF, read from each booklet's cover; the scan is NOT
+ * in year order (2017 precedes 2018, 2013 precedes 2014). `pyqYear` is the
+ * exam-year label: the "2020" paper sat on 21 Mar 2021 and "2021" on 23 Jan 2022.
+ * Dates are the final key's "परीक्षेचा दिनांक".
+ */
+const ssp = (pyqYear: number, date: string, code: string, pages: [number, number], label: string): Paper => ({
+  id: `ssp-${pyqYear}`,
+  exam: "ssp",
+  pyqYear,
+  date,
+  code,
+  pages,
+  sourcePdf: SSP_SOURCE_PDF,
+  keyPdf: `${SSP_KEY_DIR}/${pyqYear}.pdf`,
+  keyPages: [1, 2],
+  pyqNote: `GS Paper I · ${label}`,
+  sourceFile: `MPSC-ssp-${pyqYear}-${code}`,
+  chapters: SSP_CHAPTERS,
+});
+
+export const SSP_PAPERS: Paper[] = [
+  ssp(2022, "2022-08-21", "H15", [1, 40], "21 Aug 2022"),
+  ssp(2021, "2022-01-23", "O14", [41, 88], "23 Jan 2022"),
+  ssp(2020, "2021-03-21", "Y13", [89, 136], "21 Mar 2021"),
+  ssp(2019, "2019-02-17", "T12", [137, 184], "17 Feb 2019"),
+  ssp(2017, "2017-04-02", "W08", [185, 232], "2 Apr 2017"),
+  ssp(2018, "2018-04-08", "F11", [233, 276], "8 Apr 2018"),
+  ssp(2016, "2016-04-10", "N07", [277, 316], "10 Apr 2016"),
+  ssp(2015, "2015-04-05", "V05", [317, 364], "5 Apr 2015"),
+  ssp(2013, "2013-05-18", "X01", [365, 412], "18 May 2013"),
+  ssp(2014, "2014-02-02", "G03", [413, 460], "2 Feb 2014"),
+];
+
+/**
+ * CSAT Paper II's fixed list. Comprehension chapters group passages by theme
+ * (the subtopic is the passage title, so a passage's questions stay together);
+ * the aptitude heads follow the syllabus; decision-making questions carry their
+ * own marking rule (no penalty), so they are their own subject.
+ */
+export const SSP_CSAT_CHAPTERS: Record<string, readonly string[]> = {
+  Comprehension: [
+    "Society and Development", "Environment and Science", "Economy and Governance",
+    "History and Culture", "Education and Personality", "Language Comprehension",
+  ],
+  "Reasoning and Aptitude": ["Logical Reasoning", "Analytical Ability", "General Mental Ability", "Basic Numeracy", "Data Interpretation"],
+  "Decision Making": ["Decision Making and Problem Solving", "Interpersonal and Communication Skills"],
+};
+
+/**
+ * State Services Prelims, CSAT Paper II — 80 questions, 200 marks, 2 hours.
+ * Each booklet and key is its own PDF in SSP_CSAT_DIR; `file` is the year in
+ * the booklet's file name (see SSP_CSAT_DIR for the 2018 mislabel). The key's
+ * page range is its whole file (2015's runs to 3 pages).
+ */
+const csat = (pyqYear: number, date: string, code: string, pageCount: number, label: string, file = pyqYear): Paper => ({
+  id: `ssp-csat-${pyqYear}`,
+  exam: "ssp",
+  pyqYear,
+  date,
+  code,
+  pages: [1, pageCount],
+  sourcePdf: `${SSP_CSAT_DIR}/paper-${file}.pdf`,
+  keyPdf: `${SSP_CSAT_DIR}/key-${pyqYear}.pdf`,
+  keyPages: [1, pyqYear === 2015 ? 3 : 2],
+  questions: 80,
+  chapters: SSP_CSAT_CHAPTERS,
+  pyqNote: `CSAT Paper II · ${label}`,
+  sourceFile: `MPSC-ssp-csat-${pyqYear}-${code}`,
+});
+
+export const SSP_CSAT_PAPERS: Paper[] = [
+  csat(2022, "2022-08-21", "I15", 64, "21 Aug 2022"),
+  csat(2021, "2022-01-23", "P14", 56, "23 Jan 2022"),
+  csat(2020, "2021-03-21", "Z13", 64, "21 Mar 2021"),
+  csat(2019, "2019-02-17", "U12", 56, "17 Feb 2019"),
+  csat(2018, "2018-04-08", "G11", 56, "8 Apr 2018", 2017),
+  csat(2016, "2016-04-10", "O07", 56, "10 Apr 2016"),
+  csat(2015, "2015-04-05", "W05", 56, "5 Apr 2015"),
+  csat(2014, "2014-02-02", "H03", 48, "2 Feb 2014"),
+  csat(2013, "2013-05-18", "Y01", 48, "18 May 2013"),
+];
+
 /** Every paper this pipeline can load. `PAPERS` stays Group B & C only — the mock builder derives its sittings from it. */
-export const ALL_PAPERS: Paper[] = [...PAPERS, ...SSP_PAPERS];
+export const ALL_PAPERS: Paper[] = [...PAPERS, ...SSP_PAPERS, ...SSP_CSAT_PAPERS];
 
 /** The booklets on file are all Set A, so the key's first column applies. */
 export const BOOKLET_SET_INDEX = 0;
 export const QUESTIONS_PER_PAPER = 100;
+export const questionCount = (p: Paper): number => p.questions ?? QUESTIONS_PER_PAPER;
 
 export function requirePaper(id: string | undefined): Paper {
   const p = ALL_PAPERS.find((x) => x.id === id);

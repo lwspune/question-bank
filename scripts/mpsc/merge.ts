@@ -16,13 +16,13 @@
  * "८ व्या" where English prints "Eighth"). A waiver needs a reason, and a waived
  * flag is still counted in the summary so it never disappears.
  *
- * State Services papers (ssp-*) are also held to the fixed chapter list
- * (config.ts SSP_CHAPTERS), and when data/<id>.boxes.json exists (the coaching
+ * A paper with a fixed chapter list (config.ts Paper.chapters — State Services
+ * GS and CSAT) is held to it, and when data/<id>.boxes.json exists (the coaching
  * marks drawn on the scan) every mark is compared with the official key.
  */
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { DATA_DIR, QUESTIONS_PER_PAPER, SSP_CHAPTERS, dataPath, requirePaper } from "./config";
+import { DATA_DIR, dataPath, questionCount, requirePaper } from "./config";
 import { markDisagreements, offListChapters, parityIssues, type BilingualQuestion, type KeyLetter } from "./lib";
 
 export function loadBatches(id: string): BilingualQuestion[] {
@@ -41,7 +41,7 @@ function main() {
   for (const q of qs) seen.set(q.n, (seen.get(q.n) ?? 0) + 1);
   const dupes = [...seen].filter(([, c]) => c > 1).map(([n]) => n);
   const missing: number[] = [];
-  for (let n = 1; n <= QUESTIONS_PER_PAPER; n++) if (!seen.has(n)) missing.push(n);
+  for (let n = 1; n <= questionCount(paper); n++) if (!seen.has(n)) missing.push(n);
 
   const waiverFile = dataPath(paper.id, "waivers");
   const waivers: Record<string, string> = existsSync(waiverFile) ? JSON.parse(readFileSync(waiverFile, "utf8")) : {};
@@ -52,6 +52,7 @@ function main() {
     const issues = parityIssues(q);
     for (const lang of ["en", "mr"] as const) {
       const v = q[lang];
+      if (!v) continue;
       for (const s of [v.stem, v.context ?? "", ...v.options]) if (/\\n(?![a-z])/.test(s)) literal++;
     }
     if (issues.length && waivers[q.n]) {
@@ -63,14 +64,16 @@ function main() {
     if (args.includes("--show")) {
       const k = key[q.n];
       const idx = k && k !== "#" ? "ABCD".indexOf(k) : -1;
+      const v = (q.en ?? q.mr)!;
+      const other = q.en && q.mr ? q.mr : null; // printed in one language only: no second column
       console.log(
-        `Q${q.n} [${k ?? "?"}] ${q.en.stem.split("\n")[0].slice(0, 90)}\n    -> ${idx >= 0 ? q.en.options[idx] : "(cancelled)"}  |  ${idx >= 0 ? q.mr.options[idx] : ""}`
+        `Q${q.n} [${k ?? "?"}] ${v.stem.split("\n")[0].slice(0, 90)}\n    -> ${idx >= 0 ? v.options[idx] : "(cancelled)"}  |  ${idx >= 0 && other ? other.options[idx] : ""}`
       );
     }
   }
 
   // State Services: a fixed chapter list, and the coaching marks read against the key.
-  const offList = paper.exam === "ssp" ? offListChapters(qs, SSP_CHAPTERS) : [];
+  const offList = paper.chapters ? offListChapters(qs, paper.chapters) : [];
   for (const o of offList) console.log(`off-list chapter — ${o}`);
   const marksFile = dataPath(paper.id, "boxes");
   let marksNote = "";

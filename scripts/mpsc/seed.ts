@@ -25,7 +25,11 @@ export const SUBJECTS: Record<ExamKey, readonly string[]> = {
   gbc: ["History", "Geography", "Polity", "Economics", "General Science", "Current Affairs", "Reasoning and Aptitude"],
   // GS Paper I: no aptitude (that is CSAT, Paper II); its syllabus names
   // "Environmental Ecology, Bio-diversity and Climate Change" as its own head.
-  ssp: ["History", "Geography", "Polity", "Economics", "General Science", "Environment", "Current Affairs"],
+  // CSAT Paper II shares the exam row: its three heads (config.ts SSP_CSAT_CHAPTERS).
+  ssp: [
+    "History", "Geography", "Polity", "Economics", "General Science", "Environment", "Current Affairs",
+    "Comprehension", "Reasoning and Aptitude", "Decision Making",
+  ],
 };
 
 async function main() {

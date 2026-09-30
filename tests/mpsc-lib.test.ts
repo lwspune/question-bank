@@ -7,11 +7,19 @@ import {
   parseKeyTokens,
   parityIssues,
   printNoteSolution,
+  questionSolution,
+  gradedKeyLetter,
+  gradedBalanceIssues,
+  gradedRemark,
   setBalanceIssues,
   markDisagreements,
   offListChapters,
   type BilingualQuestion,
+  type Version,
 } from "../scripts/mpsc/lib";
+
+/** A question printed in both languages (the fixtures below edit both). */
+type Both = BilingualQuestion & { en: Version; mr: Version };
 
 describe("devanagariDigitsToAscii", () => {
   it("maps every Devanagari digit to its ASCII twin", () => {
@@ -152,7 +160,7 @@ describe("offListChapters", () => {
 });
 
 describe("parityIssues", () => {
-  const base = (): BilingualQuestion => ({
+  const base = (): Both => ({
     n: 2,
     subject: "History",
     chapter: "Modern India",
@@ -206,7 +214,7 @@ describe("parityIssues", () => {
 });
 
 describe("buildRecords", () => {
-  const q = (n: number): BilingualQuestion => ({
+  const q = (n: number): Both => ({
     n,
     subject: "Polity",
     chapter: "Indian Constitution",
@@ -263,5 +271,104 @@ describe("printNoteSolution", () => {
 
   it("gives nothing for a question without a note", () => {
     expect(printNoteSolution(undefined)).toBeNull();
+  });
+});
+
+describe("gradedKeyLetter", () => {
+  it("keys a decision-making question to the option worth the most marks", () => {
+    expect(gradedKeyLetter([0, 1, 1.5, 2.5])).toBe("D");
+    expect(gradedKeyLetter([2.5, 0, 1, 1.5])).toBe("A");
+  });
+
+  it("refuses a row that is not four marks or has no single best option", () => {
+    expect(() => gradedKeyLetter([0, 1, 2.5])).toThrow(/4 marks/);
+    expect(() => gradedKeyLetter([2.5, 1, 2.5, 0])).toThrow(/single best/);
+  });
+});
+
+describe("gradedBalanceIssues", () => {
+  it("passes when every set holds the same mark rows, in any question order and option order", () => {
+    expect(
+      gradedBalanceIssues({
+        A: { 76: [0, 1, 1.5, 2.5], 77: [2.5, 0, 1, 1.5] },
+        B: { 76: [2.5, 0, 1, 1.5], 77: [1.5, 1, 0, 2.5] },
+      })
+    ).toEqual([]);
+  });
+
+  it("flags a misread cell, which leaves one set's rows different", () => {
+    expect(
+      gradedBalanceIssues({
+        A: { 76: [0, 1, 1.5, 2.5] },
+        B: { 76: [0, 1, 1, 2.5] },
+      })
+    ).toHaveLength(1);
+  });
+});
+
+describe("gradedRemark + questionSolution", () => {
+  it("lists every option's marks in both languages", () => {
+    const r = gradedRemark([0, 1, 1.5, 2.5]);
+    expect(r.en).toContain("(A) 0 · (B) 1 · (C) 1.5 · (D) 2.5");
+    expect(r.mr).toContain("(A) 0 · (B) 1 · (C) 1.5 · (D) 2.5");
+  });
+
+  it("joins the graded remark and a print note, graded first; nothing when neither applies", () => {
+    const s = questionSolution("Marathi says X.", [0, 1, 1.5, 2.5])!;
+    expect(s.en.indexOf("graded")).toBeLessThan(s.en.indexOf("Note on the printed paper"));
+    expect(s.en.split("\n\n")).toHaveLength(2);
+    expect(questionSolution(undefined, undefined)).toBeNull();
+    expect(questionSolution("Marathi says X.", undefined)).toEqual(printNoteSolution("Marathi says X."));
+  });
+
+  it("buildRecords puts the graded remark on a decision-making row and keys its best option", () => {
+    const q = {
+      n: 76, subject: "Decision Making", chapter: "Decision Making and Problem Solving", subtopic: "Workplace",
+      difficulty: "EASY" as const,
+      en: { stem: "What would you do?", options: ["a", "b", "c", "d"] },
+      mr: { stem: "तुम्ही काय कराल?", options: ["अ", "ब", "क", "ड"] },
+    };
+    const { rows, errors } = buildRecords([q], { 76: "B" }, undefined, { 76: [1, 2.5, 0, 1.5] });
+    expect(errors).toEqual([]);
+    expect(rows[0].answer).toBe("B");
+    expect(rows[0].solution).toContain("(A) 1 · (B) 2.5 · (C) 0 · (D) 1.5");
+  });
+
+  it("buildRecords refuses a graded row whose key letter is not its best option", () => {
+    const q = {
+      n: 76, subject: "Decision Making", chapter: "Decision Making and Problem Solving", subtopic: "Workplace",
+      difficulty: "EASY" as const,
+      en: { stem: "What would you do?", options: ["a", "b", "c", "d"] },
+      mr: { stem: "तुम्ही काय कराल?", options: ["अ", "ब", "क", "ड"] },
+    };
+    expect(buildRecords([q], { 76: "A" }, undefined, { 76: [1, 2.5, 0, 1.5] }).errors).toEqual([
+      "Q76: key A but its graded marks make B the best option",
+    ]);
+  });
+});
+
+describe("single-language questions (CSAT language comprehension)", () => {
+  const base = {
+    subject: "Comprehension", chapter: "Language Comprehension", subtopic: "Marathi Passage", difficulty: "EASY" as const,
+  };
+  const mrOnly: BilingualQuestion = { n: 41, ...base, mr: { stem: "प्रश्न", context: "उतारा", options: ["अ", "ब", "क", "ड"] } };
+  const enOnly: BilingualQuestion = { n: 42, ...base, en: { stem: "Question", context: "Passage", options: ["a", "b", "c", "d"] } };
+
+  it("has nothing to compare, so the parity probe checks only the printed version's shape", () => {
+    expect(parityIssues(mrOnly)).toEqual([]);
+    expect(parityIssues({ ...enOnly, en: { ...enOnly.en!, options: ["a", "b", "c"] } })).toEqual(["en has 3 options, expected 4"]);
+  });
+
+  it("refuses a question with neither version", () => {
+    expect(parityIssues({ n: 43, ...base })).toEqual(["no printed version"]);
+  });
+
+  it("builds the canonical row from whichever language was printed", () => {
+    const { rows, errors } = buildRecords([mrOnly, enOnly], { 41: "A", 42: "D" });
+    expect(errors).toEqual([]);
+    expect(rows.map((r) => [r.question, r.context, r.optionD])).toEqual([
+      ["प्रश्न", "उतारा", "ड"],
+      ["Question", "Passage", "d"],
+    ]);
   });
 });

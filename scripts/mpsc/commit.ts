@@ -29,8 +29,8 @@ import { join } from "node:path";
 import { commitStaged } from "../../src/lib/upload/commit";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { validateRow } from "../../src/lib/upload/validate";
-import { CREATED_BY, DATA_DIR, ORG_ID, QUESTIONS_PER_PAPER, dataPath, examIdFor, requirePaper } from "./config";
-import { buildRecords, parityIssues, printNoteSolution, type BilingualQuestion, type KeyLetter } from "./lib";
+import { CREATED_BY, DATA_DIR, ORG_ID, dataPath, examIdFor, questionCount, requirePaper } from "./config";
+import { buildRecords, parityIssues, questionSolution, type BilingualQuestion, type KeyLetter } from "./lib";
 
 const BUCKET = "question-images";
 
@@ -45,7 +45,10 @@ async function main() {
     if (!existsSync(dataPath(paper.id, kind))) throw new Error(`${dataPath(paper.id, kind)} missing`);
   }
   const questions: BilingualQuestion[] = JSON.parse(readFileSync(dataPath(paper.id, "merged"), "utf8")).questions;
-  const key: Record<number, KeyLetter> = JSON.parse(readFileSync(dataPath(paper.id, "key"), "utf8")).key;
+  const keyFile = JSON.parse(readFileSync(dataPath(paper.id, "key"), "utf8"));
+  const key: Record<number, KeyLetter> = keyFile.key;
+  // CSAT decision-making questions: marks per option (keys.ts, from data/<id>.graded.json).
+  const graded: Record<number, number[]> = keyFile.graded ?? {};
   const waiverFile = dataPath(paper.id, "waivers");
   const waivers: Record<string, string> = existsSync(waiverFile) ? JSON.parse(readFileSync(waiverFile, "utf8")) : {};
 
@@ -54,7 +57,7 @@ async function main() {
   const cancelledNote =
     `Cancelled by MPSC in the final answer key for this paper (${paper.pyqNote}). ` +
     `No option is correct. In PYQ Vault mocks it is awarded to every candidate.`;
-  const { rows, cancelled, errors } = buildRecords(questions, key, cancelledNote);
+  const { rows, cancelled, errors } = buildRecords(questions, key, cancelledNote, graded);
   const nl = (s: string) => normalizeNewlines(s);
   for (const r of rows) {
     r.question = nl(r.question);
@@ -80,7 +83,7 @@ async function main() {
   console.log(
     `${questions.length} transcribed · ${rows.length} rows · cancelled [${cancelled.join(",")}] · figures [${figures.join(",")}]`
   );
-  if (rows.length !== QUESTIONS_PER_PAPER) errors.push(`${rows.length} rows, expected ${QUESTIONS_PER_PAPER}`);
+  if (rows.length !== questionCount(paper)) errors.push(`${rows.length} rows, expected ${questionCount(paper)}`);
   if (errors.length) {
     for (const e of errors) console.log(`  - ${e}`);
     throw new Error(`${errors.length} validation error(s) — nothing written`);
@@ -163,20 +166,25 @@ async function main() {
       problems.push(`Q${q.n}: ${opts.length} options in the bank`);
       continue;
     }
-    const { error } = await client.rpc("put_question_translation", {
-      p_question_id: row.id,
-      p_lang: "mr",
-      p_text: nl(q.mr.stem),
-      p_context: q.mr.context ? nl(q.mr.context) : null,
-      p_solution: printNoteSolution(q.printNote)?.mr ?? null,
-      p_options: opts.map((o, i) => ({ option_id: o.id, text: nl(q.mr.options[i]) })),
-    });
-    if (error) problems.push(`Q${q.n}: ${error.message}`);
-    else translated++;
-    // The print-difference remark on the English row. commitStaged never
-    // rewrites an existing row, so a re-run sets it here (solution is outside
-    // content_hash, so this cannot change the question's identity).
-    const remark = printNoteSolution(q.printNote);
+    // A question printed in one language only (CSAT language comprehension)
+    // IS its canonical row — there is nothing to translate.
+    const mr = q.en ? q.mr : undefined;
+    if (mr) {
+      const { error } = await client.rpc("put_question_translation", {
+        p_question_id: row.id,
+        p_lang: "mr",
+        p_text: nl(mr.stem),
+        p_context: mr.context ? nl(mr.context) : null,
+        p_solution: questionSolution(q.printNote, graded[q.n])?.mr ?? null,
+        p_options: opts.map((o, i) => ({ option_id: o.id, text: nl(mr.options[i]) })),
+      });
+      if (error) problems.push(`Q${q.n}: ${error.message}`);
+      else translated++;
+    }
+    // The print-difference / graded-marks remark on the English row.
+    // commitStaged never rewrites an existing row, so a re-run sets it here
+    // (solution is outside content_hash, so this cannot change the question's identity).
+    const remark = questionSolution(q.printNote, graded[q.n]);
     if (remark) {
       const { error: sErr } = await client.from("questions").update({ solution: nl(remark.en) }).eq("id", row.id);
       if (sErr) problems.push(`Q${q.n}: solution update failed — ${sErr.message}`);

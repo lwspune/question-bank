@@ -38,16 +38,32 @@ def match_opts(*perms):
     return [", ".join(f"({l})-({r})" for l, r in zip("abcd", p)) for p in perms]
 
 
-def Q(n, subject, chapter, subtopic, diff, mr, mr_opts, en, en_opts, box, note=None, figure=None):
+def passage(*paras):
+    """A reading passage: its heading and paragraphs as one context string."""
+    return "\n\n".join(p.strip() for p in paras)
+
+
+def _version(stem, opts, ctx):
+    v = {"stem": "\n".join(stem).strip("\n"), "options": opts}
+    if ctx:
+        v["context"] = ctx
+    return v
+
+
+def Q(n, subject, chapter, subtopic, diff, mr, mr_opts, en, en_opts, box, note=None, figure=None, ctx_mr=None, ctx_en=None):
+    """mr=None or en=None: the question is printed in the other language only
+    (CSAT language comprehension, booklet instruction 4(c)). ctx_*: the passage."""
     q = {
         "n": n,
         "subject": subject,
         "chapter": chapter,
         "subtopic": subtopic,
         "difficulty": diff,
-        "mr": {"stem": "\n".join(mr).strip("\n"), "options": mr_opts},
-        "en": {"stem": "\n".join(en).strip("\n"), "options": en_opts},
     }
+    if mr is not None:
+        q["mr"] = _version(mr, mr_opts, ctx_mr)
+    if en is not None:
+        q["en"] = _version(en, en_opts, ctx_en)
     if note:
         q["printNote"] = note
     if figure:
