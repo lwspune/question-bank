@@ -311,7 +311,7 @@
     },
     "65": {
       "chapter": "Limits and Continuity",
-      "subtopic": "Evaluation of Limits"
+      "subtopic": "Limits at Infinity and Limits of Sums"
     },
     "66": {
       "chapter": "Definite Integration",
@@ -343,7 +343,7 @@
     },
     "73": {
       "chapter": "Limits and Continuity",
-      "subtopic": "Evaluation of Limits"
+      "subtopic": "Greatest Integer and One-Sided Limits"
     },
     "74": {
       "chapter": "Permutations and Combinations",
@@ -689,7 +689,7 @@
     },
     "147": {
       "chapter": "Limits and Continuity",
-      "subtopic": "Evaluation of Limits"
+      "subtopic": "Exponential Limits (1 to the Power Infinity)"
     },
     "148": {
       "chapter": "Sequences and Series",
@@ -876,6 +876,7 @@
     "136": "The coefficient determinant \\(\\begin{vmatrix}1&1&1\\\\1&2&4\\\\1&4&10\\end{vmatrix}=4-6+2=0\\) for every \\(m\\): the coefficient rows satisfy \\((1,4,10)=-2(1,1,1)+3(1,2,4)\\). Infinitely many solutions need the right-hand sides to follow the same combination: \\(m^2=-2+3m\\), i.e. \\(m^2-3m+2=0\\), so \\(m=1,2\\). With \\(\\alpha=1,\\beta=2\\): \\(\\sum_{n=1}^{10}(n+n^2)=55+385=440\\).",
     "140": "\\(\\det A=a_{11}a_{22}-a_{12}a_{21}\\) with entries 0 or 1 (16 matrices). \\(\\det A=1\\) needs \\(a_{11}=a_{22}=1\\) and \\(a_{12}a_{21}=0\\): 3 matrices; likewise \\(\\det A=-1\\): 3; \\(\\det A=0\\): 10. So \\(E(X)=0\\), \\(E(X^2)=\\frac{6}{16}\\), and \\(\\operatorname{Var}(X)=\\frac38\\).",
     "145": "The integrating factor is \\(\\sec x\\): \\(\\frac{d}{dx}(y\\sec x)=\\frac{\\sec x(2+\\sec x)}{(1+2\\sec x)^2}=\\frac{1+2\\cos x}{(2+\\cos x)^2}\\). Since \\(\\frac{d}{dx}\\frac{\\sin x}{2+\\cos x}=\\frac{\\cos x(2+\\cos x)+\\sin^2x}{(2+\\cos x)^2}=\\frac{1+2\\cos x}{(2+\\cos x)^2}\\), \\(y\\sec x=\\frac{\\sin x}{2+\\cos x}+C\\). At \\(x=\\frac\\pi3\\): \\(\\frac{\\sqrt3}{5}=\\frac{\\sqrt3}{5}+C\\), so \\(C=0\\) and \\(y=\\frac{\\sin x\\cos x}{2+\\cos x}\\). Then \\(f\\left(\\frac\\pi4\\right)=\\frac{1/2}{2+1/\\sqrt2}=\\frac{1}{4+\\sqrt2}=\\frac{4-\\sqrt2}{14}\\).",
+    "147": "\\(I(t)=\\int_0^1(3x+5)^tdx=\\frac{8^{t+1}-5^{t+1}}{3(t+1)}\\) and \\(I(0)=1\\), so the limit is a \\(1^\\infty\\) form equal to \\(e^{I'(0)}\\). Differentiating, \\(I'(0)=\\frac{3(8\\ln8-5\\ln5)-9}{9}=\\frac{8\\ln8-5\\ln5}{3}-1\\). So the limit is \\(\\frac1e\\left(\\frac{8^8}{5^5}\\right)^{1/3}=\\frac{256}{e\\cdot5^{5/3}}\\). The right side is \\(\\frac{\\alpha}{5e}\\cdot\\frac{4}{5^{2/3}}=\\frac{4\\alpha}{e\\cdot5^{5/3}}\\). Hence \\(4\\alpha=256\\) and \\(\\alpha=64\\).",
     "149": "Using \\(1+\\omega+\\omega^2=0\\), the determinant equals \\(z^3\\), so \\(z^3=1\\) and \\(z\\in\\{1,\\omega,\\omega^2\\}\\). \\(\\left|\\frac{z-a}{z+b}\\right|=1\\) puts \\(z\\) on the perpendicular bisector of \\(a\\) and \\(-b\\), the line \\(\\mathrm{Re}(z)=\\frac{a-b}2\\). For \\(z=1\\): \\(a-b=2\\), pairs \\((-1,-3),(0,-2),(2,0),(3,1)\\) (dropping \\((1,-1)\\), where \\(a+b=0\\)): 4. For \\(z=\\omega,\\omega^2\\) (real part \\(-\\frac12\\)): \\(a-b=-1\\): 6 pairs. Total 10."
   }
 }

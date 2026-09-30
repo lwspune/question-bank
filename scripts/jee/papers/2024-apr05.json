@@ -333,7 +333,7 @@
     },
     "68": {
       "chapter": "Limits and Continuity",
-      "subtopic": "Continuity"
+      "subtopic": "Series Expansions and Unknown Constants"
     },
     "69": {
       "chapter": "Definite Integration",
@@ -725,7 +725,7 @@
     },
     "151": {
       "chapter": "Limits and Continuity",
-      "subtopic": "Continuity"
+      "subtopic": "Counting Discontinuities and Non-Differentiability"
     },
     "152": {
       "chapter": "Differential Equations",
@@ -825,7 +825,7 @@
     },
     "176": {
       "chapter": "Limits and Continuity",
-      "subtopic": "Evaluation of Limits"
+      "subtopic": "Standard Limits and Algebraic Forms"
     },
     "177": {
       "chapter": "Integrals",
@@ -867,7 +867,8 @@
     "153": "Let \\(S_{1}\\mathbf{= \\{ z \\in C:|z| \\leq 5\\}}\\), \\(S_{2}=\\left\\{ z \\in C:Im\\left( \\frac{z + 1 -\\sqrt{3}i}{1 -\\sqrt{3}i} \\right)\\geq 0 \\right\\}\\) and \\(S_{3}\\mathbf{= \\{ z \\in C:Re(z) \\geq 0\\}}\\). Then the area of the region \\(S_{1}\\cap S_{2}\\cap S_{3}\\) is",
     "156": "Let \\(\\overrightarrow{a}= 2\\widehat{i}+ 5\\widehat{j}-\\widehat{k},\\overrightarrow{b}= 2\\widehat{i}- 2\\widehat{j}+ 2\\widehat{k}\\) and \\(\\overrightarrow{c}\\) be three vectors such that \\[(\\overrightarrow{c}+\\widehat{i}) \\times (\\overrightarrow{a}+\\overrightarrow{b}+\\widehat{i}) =\\overrightarrow{a}\\times (\\overrightarrow{c}+\\widehat{i})\\] and \\(\\overrightarrow{a}\\cdot\\overrightarrow{c}= - 29\\), then \\(\\overrightarrow{c}\\cdot ( - 2\\widehat{i}+\\widehat{j}+\\widehat{k})\\) is equal to:",
     "159": "Let \\((\\alpha,\\beta,\\gamma)\\) be the image of the point \\((8,5,7)\\) in the line \\(\\frac{x - 1}{2} = \\frac{y + 1}{3} = \\frac{z - 2}{5}\\). Then \\(\\alpha + \\beta + \\gamma\\) is equal to",
-    "167": "Let \\(\\beta(m,n) =\\int_{0}^{1} x^{m - 1}(1 - x)^{n - 1}dx,m,n > 0\\). If \\(\\int_{0}^{1} \\left( 1 -x^{10} \\right)^{20}dx = a \\times \\beta(b,c)\\), then \\(100(a + b + c)\\) equals"
+    "167": "Let \\(\\beta(m,n) =\\int_{0}^{1} x^{m - 1}(1 - x)^{n - 1}dx,m,n > 0\\). If \\(\\int_{0}^{1} \\left( 1 -x^{10} \\right)^{20}dx = a \\times \\beta(b,c)\\), then \\(100(a + b + c)\\) equals",
+    "176": "Let \\(a > 0\\) be a root of the equation \\(2x^{2}+ x - 2 = 0\\). If \\(\\lim_{x \\rightarrow\\frac{1}{a}} \\frac{16\\left( 1 - \\cos\\left( 2 + x - 2x^{2} \\right) \\right)}{\\left( 1 - ax \\right)^{2}}= \\alpha + \\beta\\sqrt{17}\\), where \\(\\alpha,\\beta \\in Z\\) then \\(\\alpha + \\beta\\) is equal to"
   },
   "answerOverrides": {
     "31": "D",
@@ -965,6 +966,7 @@
     "58": "The Sandmeyer reaction converts an arenediazonium salt into an aryl halide using a CUPROUS halide:\n\\(ArN_{2}^{+}Cl^{-} \\xrightarrow{CuCl/HCl} ArCl\\) and \\(ArN_{2}^{+}Cl^{-} \\xrightarrow{CuBr/HBr} ArBr\\)\n\nSo from the five shown, only chlorobenzene (II) and bromobenzene (III) are Sandmeyer products.\n\nFluorobenzene (I) is made by the Balz-Schiemann route (\\(ArN_{2}^{+}BF_{4}^{-}\\), heat), iodobenzene (IV) needs only KI with no copper catalyst, and astatobenzene (V) is not a Sandmeyer product.\n\nCount = 2.",
     "59": "\\(NO_{2}^{-}\\) has \\(5 + 2(6) + 1 = 18\\) valence electrons in total.\n\nIn the Lewis structure nitrogen is doubly bonded to one oxygen, singly bonded to the other, and carries one lone pair:\n\\(\\left[O=N-\\ddot{O}\\right]^{-}\\)\n\nCounting the electrons around nitrogen: 4 in the double bond + 2 in the single bond + 2 in its lone pair = 8.\n\nNitrogen therefore obeys the octet rule, with 8 valence electrons around it.",
     "60": "Aniline is powerfully activated by \\(-NH_{2}\\), so with bromine water it brominates at both ortho positions and the para position, precipitating white 2,4,6-tribromoaniline.\n\n\\(C_{6}H_{5}NH_{2} + 3Br_{2} \\rightarrow C_{6}H_{2}Br_{3}NH_{2} + 3HBr\\)\n\nMoles of aniline \\(= 9.3/93 = 0.1\\ mol\\).\nMolar mass of 2,4,6-tribromoaniline \\(= 72 + 2 + 3(80) + 14 + 2 = 330\\ g\\ mol^{-1}\\).\nTheoretical mass of P \\(= 0.1 \\times 330 = 33\\ g\\).\n\n\\(\\text{yield} = \\dfrac{26.4}{33} \\times 100 = 80\\ \\%\\)",
+    "68": "Expand: \\(\\sin3x=3x-\\frac92x^3+\\cdots\\), \\(\\alpha\\sin x=\\alpha x-\\frac\\alpha6x^3+\\cdots\\), \\(\\beta\\cos3x=\\beta-\\frac{9\\beta}{2}x^2+\\cdots\\). The numerator is \\(-\\beta+(3+\\alpha)x+\\frac{9\\beta}{2}x^2+\\left(-\\frac92-\\frac\\alpha6\\right)x^3+\\cdots\\). A finite limit over \\(x^3\\) needs \\(\\beta=0\\) and \\(\\alpha=-3\\). Then \\(f(0)=-\\frac92+\\frac12=-4\\).",
     "71": "Take determinants factor by factor. For order 3, \\(|\\mathrm{adj}\\,M|=|M|^2\\): \\(|\\mathrm{adj}(2A)|=(8\\cdot3)^2=576\\), \\(|\\mathrm{adj}(4B)|=(64\\cdot2)^2=2^{14}\\) and \\(|\\mathrm{adj}(AB)|=6^2=36\\). The four factors \\(A^T,A,A,A^T\\) give \\(3^4\\). So the determinant is \\(3^4\\cdot\\frac{1}{576}\\cdot2^{14}\\cdot\\frac{1}{36}=\\frac{3^4\\cdot2^{14}}{2^8\\cdot3^4}=2^6=64\\).",
     "81": "\\(X\\) is hypergeometric with \\(N=10\\) items, \\(K=3\\) defective, sample \\(n=5\\): \\(\\sigma^2=n\\cdot\\frac KN\\cdot\\frac{N-K}{N}\\cdot\\frac{N-n}{N-1}=5\\cdot\\frac{3}{10}\\cdot\\frac{7}{10}\\cdot\\frac59=\\frac{7}{12}\\). So \\(96\\sigma^2=56\\).",
     "90": "For \\(y^2=12x\\), \\(a=3\\). A focal chord at angle \\(\\theta\\) to the axis has length \\(l=\\frac{4a}{\\sin^2\\theta}=\\frac{12}{\\sin^2\\theta}\\). It passes through the focus \\((3,0)\\), so its distance from the origin is \\(d=3\\sin\\theta\\), i.e. \\(\\sin^2\\theta=\\frac{d^2}{9}\\). Hence \\(l=\\frac{108}{d^2}\\) and \\(l\\,d^2=108\\).",
@@ -998,11 +1000,13 @@
     "148": "Propylbenzene with hot alkaline \\(KMnO_{4}\\) undergoes side-chain oxidation: however long the alkyl chain, provided it carries a benzylic hydrogen the WHOLE chain is degraded to a single \\(-COO^{-}\\) group attached to the ring.\n\\(A\\) = potassium benzoate.\n\nAcidification with \\(H_{3}O^{+}\\) gives \\(B\\) = benzoic acid.\n\n\\(-COOH\\) is deactivating and META-directing, so \\(Br_{2}/FeBr_{3}\\) gives \\(C\\) = 3-bromobenzoic acid.\n\nCounting \\(\\pi\\) bonds in C:\nbenzene ring = 3 \\(\\pi\\) bonds\ncarboxyl \\(C=O\\) = 1 \\(\\pi\\) bond\n(the \\(C-Br\\) and \\(O-H\\) bonds are \\(\\sigma\\) only)\n\nTotal = 4.",
     "149": "Mass of acetic acid \\(= 5\\ mL \\times 1.2\\ g\\ mL^{-1} = 6\\ g\\); moles \\(= 6/60 = 0.1\\ mol\\).\nSolvent = 1 L water = 1000 g = 1 kg, so molality \\(m = 0.1\\ mol\\ kg^{-1}\\).\n\nDegree of dissociation of the weak acid (Ostwald dilution law, \\(\\alpha \\ll 1\\)):\n\\(\\alpha = \\sqrt{\\dfrac{K_{a}}{C}} = \\sqrt{\\dfrac{6.25 \\times 10^{-5}}{0.1}} = \\sqrt{6.25 \\times 10^{-4}} = 0.025\\)\n\nAcetic acid gives 2 particles on dissociation, so the van't Hoff factor is\n\\(i = 1 + \\alpha = 1.025\\)\n\n\\(\\Delta T_{f} = i\\,K_{f}\\,m = 1.025 \\times 1.86 \\times 0.1 = 0.1907\\ K\\)\n\nFreezing point \\(= 0 - 0.1907 = -0.1907\\ ^{\\circ}C = -19.07 \\times 10^{-2}\\ ^{\\circ}C\\)\n\nNearest integer: \\(x = 19\\).",
     "150": "A molecule has zero net dipole moment when its individual bond dipoles cancel by symmetry (or when there are no polar bonds at all).\n\nZERO dipole moment:\n\\(H_{2}\\) — homonuclear, no bond dipole.\n\\(CO_{2}\\) — linear \\(O=C=O\\), the two equal dipoles are antiparallel.\n\\(BF_{3}\\) — trigonal planar, three dipoles at \\(120^{\\circ}\\) sum to zero.\n\\(CH_{4}\\) — regular tetrahedral, four identical dipoles cancel.\n\\(SiF_{4}\\) — regular tetrahedral, same argument.\n\\(BeF_{2}\\) — linear \\(F-Be-F\\), dipoles cancel.\n\nNON-ZERO dipole moment:\n\\(HF\\) (polar diatomic), \\(H_{2}S\\) and \\(H_{2}O\\) (bent, lone pairs on the central atom), \\(NH_{3}\\) (pyramidal), \\(CHCl_{3}\\) (tetrahedral but with unlike substituents, so no cancellation).\n\nCount = 6.",
+    "151": "\\(2x^2+x\\) is continuous, so only \\([x^2]-[x]\\) can jump. On \\([-1,2]\\), \\([x]\\) jumps at \\(x=0,1,2\\) and \\([x^2]\\) jumps at \\(x=-1,1,\\sqrt2,\\sqrt3,2\\) (not at \\(x=0\\), where \\(x^2\\) has a minimum). At \\(x=-1\\): \\(f(-1)=2-1+1+1=3\\) but the right limit is \\(2-1+0+1=2\\), so \\(f\\) is discontinuous. At \\(x=0\\) only \\([x]\\) jumps: discontinuous. At \\(x=1\\) both jump by 1 and cancel: continuous. At \\(\\sqrt2\\) and \\(\\sqrt3\\) only \\([x^2]\\) jumps: discontinuous. At \\(x=2\\) the left limit \\(8+2+3-1=12\\) equals \\(f(2)=8+2+4-2=12\\): continuous. So \\(f\\) is discontinuous at \\(-1,0,\\sqrt2,\\sqrt3\\): 4 points.",
     "153": "\\(\\frac{z+1-\\sqrt3i}{1-\\sqrt3i}=\\frac{z}{1-\\sqrt3i}+1=\\frac{z(1+\\sqrt3i)}4+1\\), whose imaginary part is \\(\\frac{y+\\sqrt3x}{4}\\). So \\(S_2\\) is \\(y\\ge-\\sqrt3x\\): the half-plane of directions from \\(-\\frac\\pi3\\) to \\(\\frac{2\\pi}3\\). \\(S_3\\) is \\(x\\ge0\\): directions from \\(-\\frac\\pi2\\) to \\(\\frac\\pi2\\). Together they leave the sector from \\(-\\frac\\pi3\\) to \\(\\frac\\pi2\\), an angle of \\(\\frac{5\\pi}6\\), inside the disk of radius 5. Area \\(=\\frac12\\cdot25\\cdot\\frac{5\\pi}6=\\frac{125\\pi}{12}\\).",
     "155": "In dictionary order the letters are B, B, H, J, O. Words starting with B: \\(\\frac{4!}{1!}=24\\); with H: \\(\\frac{4!}{2!}=12\\); with J: \\(12\\). That is 48 words. Words starting with O: OBBHJ is the 49th and OBBJH the 50th.",
     "163": "\\(S=\\{2^1,\\dots,2^9\\}\\) has 9 elements. Splitting them into sets \\(A,B,C\\) of 3 each (the sets are named, so their order matters): \\(\\frac{9!}{3!\\,3!\\,3!}=1680\\).",
     "166": "Take \\(A(0,0)\\), \\(B(4,0)\\), \\(C(4,4)\\), \\(D(0,4)\\). Then \\(E=(2,0)\\) and \\(F=(2,2)\\), the corner of the small square on the diagonal \\(AC\\). A circle touching \\(BC\\) (\\(x=4\\)) and \\(CD\\) (\\(y=4\\)) has centre \\((4-r,\\,4-r)\\) and radius \\(r\\). Passing through \\(F\\): \\((2-r)^2+(2-r)^2=r^2\\Rightarrow r^2-8r+8=0\\).",
     "168": "Compare cofactors. \\(A_{11}=2\\alpha^2-\\alpha\\beta=3\\alpha\\) and \\(A_{21}=-(2\\alpha^2-3\\alpha)=-\\alpha\\), so \\(2\\alpha^2=4\\alpha\\) and \\(\\alpha=2\\) (as \\(\\alpha\\ne0\\)); then \\(8-2\\beta=6\\) gives \\(\\beta=1\\). \\(B\\) is the cofactor matrix, so \\(|B|=|\\mathrm{adj}\\,A|=|A|^2\\) and \\(|AB|=|A|^3\\). With \\(A=\\begin{bmatrix}1&2&3\\\\2&2&1\\\\-1&2&4\\end{bmatrix}\\), \\(|A|=6-18+18=6\\), so \\(|AB|=216\\).",
+    "176": "Since \\(a\\) is a root of \\(2x^2+x-2=0\\), \\(\\frac1a\\) is a root of \\(2+x-2x^2=0\\) (divide by \\(x^2\\)). The roots of \\(2x^2+x-2=0\\) are \\(a=\\frac{-1+\\sqrt{17}}{4}\\) and \\(b=\\frac{-1-\\sqrt{17}}{4}\\), so \\(2+x-2x^2=-2\\left(x-\\frac1a\\right)\\left(x-\\frac1b\\right)\\). Near \\(x=\\frac1a\\), \\(1-\\cos(2+x-2x^2)\\approx\\frac12(2+x-2x^2)^2=2\\left(x-\\frac1a\\right)^2\\left(x-\\frac1b\\right)^2\\), and \\((1-ax)^2=a^2\\left(x-\\frac1a\\right)^2\\). So the limit is \\(\\frac{32}{a^2}\\left(\\frac1a-\\frac1b\\right)^2\\). Here \\(\\frac1a-\\frac1b=\\frac{b-a}{ab}=\\frac{-\\sqrt{17}/2}{-1}=\\frac{\\sqrt{17}}{2}\\), so the limit is \\(\\frac{136}{a^2}=\\frac{136\\cdot16}{18-2\\sqrt{17}}=\\frac{1088(9+\\sqrt{17})}{64}=153+17\\sqrt{17}\\). Hence \\(\\alpha+\\beta=153+17=170\\).",
     "178": "Put \\(y=\\sqrt{8x-x^2-12}\\ge0\\); then \\((x-4)^2+y^2=4\\), the upper half of the circle with centre \\((4,0)\\) and radius 2. The expression is the squared distance from \\((x,y)\\) to \\((7,4)\\), whose distance from the centre is 5. The nearest point of the circle, in the direction of \\((7,4)\\), has \\(y>0\\), so \\(m=(5-2)^2=9\\). The farthest point of the full circle has \\(y<0\\), so on the half circle the maximum is at an end: \\((2,0)\\) gives \\(25+16=41\\) and \\((6,0)\\) gives \\(17\\). So \\(M=41\\) and \\(M^2-m^2=1681-81=1600\\)."
   }
 }

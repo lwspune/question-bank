@@ -207,7 +207,7 @@
     "42": {
       "subject": "Maths",
       "chapter": "Limits and Continuity",
-      "subtopic": "Evaluation of Limits"
+      "subtopic": "Limits via Derivatives and Integrals"
     },
     "43": {
       "subject": "Maths",
@@ -227,7 +227,7 @@
     "46": {
       "subject": "Maths",
       "chapter": "Limits and Continuity",
-      "subtopic": "Evaluation of Limits"
+      "subtopic": "Continuity at a Point"
     },
     "47": {
       "subject": "Maths",
@@ -262,7 +262,7 @@
     "55": {
       "subject": "Maths",
       "chapter": "Limits and Continuity",
-      "subtopic": "Continuity"
+      "subtopic": "Counting Discontinuities and Non-Differentiability"
     },
     "56": {
       "subject": "Maths",
@@ -342,7 +342,7 @@
     "38": "Barfoed's reagent is copper acetate in a mildly acidic acetic acid medium. Under these weakly acidic conditions only a monosaccharide is a strong enough reducing agent to throw a brick red precipitate of \\(Cu_{2}O\\) within a few minutes; a reducing disaccharide reacts far more slowly and gives no precipitate in that time, so the two classes are told apart. The iodine test detects polysaccharides such as starch, Seliwanoff's test distinguishes ketoses from aldoses, and Tollens' reagent is reduced by every reducing sugar, whether mono- or disaccharide. Option (C).",
     "39": "\\([Co(NH_{3})_{3}(NO_{2})_{3}]\\) is an octahedral complex of the \\(Ma_{3}b_{3}\\) type. Such a complex has exactly two geometrical isomers, the facial one in which the three identical ligands occupy one triangular face and the meridional one in which they lie on a meridian, so \\(a = 2\\). \\([Cr(C_{2}O_{4})_{3}]^{3-}\\) carries three identical symmetrical bidentate oxalate ligands; a chelate of the \\(M(AA)_{3}\\) type has no geometrical isomers at all, only a pair of non-superimposable optical isomers, so \\(b = 0\\). Hence \\(a+b = 2\\).",
     "40": "The Freundlich adsorption isotherm is \\(x/m = kp^{1/n}\\), so on changing the pressure the extent of adsorption scales as \\((p_{2}/p_{1})^{1/n}\\). Doubling the pressure multiplies \\(x/m\\) by \\(2^{1/n}\\), and this is given to be \\(64\\). Writing \\(64 = 2^{6}\\) gives \\(2^{1/n} = 2^{6}\\), so \\(1/n = 6\\) and \\(n = 1/6 = 0.1667\\). Expressed in units of \\(10^{-2}\\) this is \\(16.67\\), which rounds to \\(17\\).",
-    "42": "With \\(f(2)=4,\\ f'(2)=1\\), the numerator \\(\\to 4f(2)-4f(2)=0\\) — a \\(\\frac00\\) form. By L'Hopital, \\(\\lim_{x\\to2}\\frac{2x\\,f(2)-4f'(x)}{1}=4f(2)-4f'(2)=16-4=12\\).",
+    "42": "The numerator \\(x^2f(2)-4f(x)\\to4f(2)-4f(2)=0\\), a \\(\\frac00\\) form. By L'Hospital the limit is \\(2xf(2)-4f'(x)\\) at \\(x=2\\): \\(4\\cdot4-4\\cdot1=12\\).",
     "43": "In \\((x^2+\\tfrac1{bx})^{11}\\) the \\(x^7\\) term needs \\(22-3r=7\\Rightarrow r=5\\), coefficient \\(\\binom{11}{5}b^{-5}\\). In \\((x-\\tfrac1{bx^2})^{11}\\) the \\(x^{-7}\\) term needs \\(11-3r=-7\\Rightarrow r=6\\), coefficient \\(\\binom{11}{6}b^{-6}\\). Since \\(\\binom{11}{5}=\\binom{11}{6}\\), \\(b^{-5}=b^{-6}\\Rightarrow b=1\\).",
     "44": "Because \\(g(x)=x\\cos x\\) is odd, \\(\\frac1{1+e^{g}}+\\frac1{1+e^{-g}}=1\\), so \\(I=\\int_0^{\\pi/4}\\frac{dx}{\\sin^4x+\\cos^4x}\\). Substituting \\(t=\\tan x\\), \\(\\int_0^1\\frac{1+t^2}{1+t^4}\\,dt=\\frac{\\pi}{2\\sqrt2}\\).",
     "45": "Here \\(\\alpha+\\beta=-20^{1/4}\\) and \\(\\alpha\\beta=\\sqrt5\\), so \\(\\alpha^2+\\beta^2=\\sqrt{20}-2\\sqrt5=0\\). Then \\(\\alpha^4+\\beta^4=-2(\\alpha\\beta)^2=-10\\), and \\(\\alpha^8+\\beta^8=(\\alpha^4+\\beta^4)^2-2(\\alpha\\beta)^4=100-50=50\\).",
@@ -371,8 +371,9 @@
     "21": "\\(CH_{4}+ I_{2}\\rightleftharpoons CH_{3}- I + HI\\)Which reagent can stop backward reaction?",
     "29": "\\(PCl_{5}\\rightleftharpoons PCl_{3}+Cl_{2},{\\text{ }K}_{C}= 1.844\\)If 3 moles of \\(PCl_{5}\\) are taken in \\(1\\text{ }L\\) vessel. Find equilibrium concentration of \\(PCl_{5}\\).",
     "30": "Decomposition of \\(N_{2}O_{5}\\) is a ______ order reaction",
-    "42": "\\(\\lim_{x\\rightarrow 2} \\frac{x^{2}f(2) - 4f(x)}{(x- 2)}=\\) Where, \\(f(2) = 4f^{'}(2) = 1\\)",
+    "42": "\\(\\lim_{x\\rightarrow 2} \\frac{x^{2}f(2) - 4f(x)}{(x- 2)}\\), where \\(f(2) = 4\\) and \\(f^{'}(2) = 1\\), is equal to",
     "43": "If Coefficient of \\(x^{7}\\) in \\(\\left( x^{2}+\\frac{1}{bx} \\right)^{11}\\) and \\(x^{- 7}\\) in \\(\\left\\lbrack x-\\frac{1}{bx^{2}} \\right\\rbrack^{11},b\\neq 0\\), are equal then find \\(b\\).",
+    "46": "If \\(f(x) =\\left\\{ \\begin{matrix} (1 + |\\sin x|)^{\\frac{3a}{|\\sin x|}}, & x\\in\\left( \\frac{-\\pi}{4},0 \\right) \\\\ b, & x= 0 \\\\ e^{\\frac{\\cot4x}{\\cot2x}}, & x> 0 \\end{matrix} \\right.\\) is continuous at \\(x = 0\\), then \\(6a+b^{2}\\) is equal to",
     "49": "From the point \\(( - 1,1)\\) two tangents are drawn to \\(x^{2}+y^{2}- 2x- 6y+ 6 = 0\\) that touch the circle at \\(A\\) and \\(B\\). A point \\(D\\) on the circle such that \\(AD=AB\\). Find the area of \\(\\bigtriangleup ABD\\).",
     "53": "If \\(\\log_{3}2,\\log_{3}\\left( 2^{x}- 5 \\right),\\log_{3}\\left( 2^{x}-\\frac{7}{2} \\right)\\) are in an arithmetic progression then the value of \\(x\\) is equal to",
     "55": "\\(f(x) =\\) minimum \\(\\{ x - \\lbrack x\\rbrack,\\ 1 + \\lbrack x\\rbrack - x\\}\\), \\(\\lbrack 0,3\\rbrack \\rightarrow R\\), \\(p\\) is the number of points where it is discontinuous, \\(q\\) is the number of points where it is not differentiable. Find \\(p+q\\)."

@@ -361,7 +361,7 @@
     },
     "75": {
       "chapter": "Limits and Continuity",
-      "subtopic": "Continuity"
+      "subtopic": "Continuity at a Point"
     },
     "76": {
       "chapter": "Differential Equations",
@@ -369,7 +369,7 @@
     },
     "77": {
       "chapter": "Limits and Continuity",
-      "subtopic": "Evaluation of Limits"
+      "subtopic": "Standard Limits and Algebraic Forms"
     },
     "78": {
       "chapter": "Height & Distance",
@@ -483,6 +483,7 @@
     "73": "\\(D=\\begin{vmatrix}2&1&1\\\\1&-1&1\\\\1&1&a\\end{vmatrix}=1-3a\\), so \\(D=0\\) only for \\(a=\\frac13\\). Then \\(D_3=\\begin{vmatrix}2&1&5\\\\1&-1&3\\\\1&1&b\\end{vmatrix}=7-3b\\), which is non-zero for \\(b\\ne\\frac73\\). So there is no solution when \\(a=\\frac13\\) and \\(b\\ne\\frac73\\).",
     "74": "The vertex lies at \\((R,0)\\) and the focus at \\((S,0)\\) with \\(S>R\\), so the vertex-focus distance is \\(a=S-R\\). The latus rectum has length \\(4a=4(S-R)\\). Hence (C).",
     "75": "As \\(x\\to 0^{-}\\), \\(\\frac{1}{x}\\log_{e}\\frac{1+x/a}{1-x/b}\\to\\frac{1}{a}+\\frac{1}{b}\\). As \\(x\\to 0^{+}\\), \\(\\frac{\\cos^{2}x-\\sin^{2}x-1}{\\sqrt{x^{2}+1}-1}=\\frac{\\cos 2x-1}{\\sqrt{x^{2}+1}-1}\\to\\frac{-2x^{2}}{x^{2}/2}=-4\\). Continuity forces \\(\\frac{1}{a}+\\frac{1}{b}=k=-4\\), so \\(\\frac{1}{a}+\\frac{1}{b}+\\frac{4}{k}=-4+\\frac{4}{-4}=-5\\). Hence (A).",
+    "77": "Let \\(t=1-\\cos^4x=(1-\\cos^2x)(1+\\cos^2x)=\\sin^2x(1+\\cos^2x)\\), so \\(t\\sim2x^2\\). Then \\(\\sin(\\pi\\cos^4x)=\\sin(\\pi-\\pi t)=\\sin\\pi t\\sim\\pi t\\sim2\\pi x^2\\). So \\(\\sin^2(\\pi\\cos^4x)\\sim4\\pi^2x^4\\) and the limit is \\(4\\pi^2\\).",
     "79": "\\(a_r=e^{2\\pi ir/9}=a_1^r\\), so the rows are \\(a_1(1,a_1,a_1^2)\\), \\(a_1^4(1,a_1,a_1^2)\\) and \\(a_1^7(1,a_1,a_1^2)\\). Proportional rows make the determinant \\(0\\). Among the options, \\(a_1a_9-a_3a_7=a_1^{10}-a_1^{10}=0\\).",
     "82": "\\(\\arg\\frac{z-2}{z+2}=\\frac\\pi4\\) is an arc of the circle through \\(\\pm2\\) on which the chord of length 4 subtends \\(\\frac\\pi4\\): its centre is \\((0,2)\\) and radius \\(2\\sqrt2\\) (the arc above the real axis). The point \\(9\\sqrt2+2i\\) is \\(9\\sqrt2\\) from the centre, and the nearest point of the circle, \\(2\\sqrt2+2i\\), lies on the arc. So the minimum distance is \\(9\\sqrt2-2\\sqrt2=7\\sqrt2\\), and its square is 98.",
     "84": "\\(f'(x)=2x+a\\). Increasing on \\([1,2]\\) needs \\(2x+a\\ge0\\) for every \\(x\\) there, i.e. \\(a\\ge-2\\); so \\(R=-2\\). Decreasing on \\([1,2]\\) needs \\(2x+a\\le0\\) there, i.e. \\(a\\le-4\\); so \\(S=-4\\). Hence \\(|R-S|=2\\)."

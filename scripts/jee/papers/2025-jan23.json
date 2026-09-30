@@ -263,7 +263,7 @@
     },
     "53": {
       "chapter": "Limits and Continuity",
-      "subtopic": "Continuity"
+      "subtopic": "Continuity at a Point"
     },
     "54": {
       "chapter": "Conic Sections",
@@ -681,7 +681,7 @@
     },
     "145": {
       "chapter": "Limits and Continuity",
-      "subtopic": "Evaluation of Limits"
+      "subtopic": "Exponential Limits (1 to the Power Infinity)"
     },
     "146": {
       "chapter": "Permutations and Combinations",
@@ -906,6 +906,7 @@
     "136": "Put \\(x=vy\\Rightarrow \\frac{dx}{dy}=v+y\\frac{dv}{dy}\\). Then \\(x-y\\frac{dx}{dy}=-y^2\\frac{dv}{dy}\\), so \\(y=\\big(x-y\\frac{dx}{dy}\\big)\\sin\\frac{x}{y}\\) becomes \\(y=-y^2\\frac{dv}{dy}\\sin v\\), i.e. \\(-\\sin v\\,dv=\\frac{dy}{y}.\\) Integrating: \\(\\cos v=\\log_e y+C\\), i.e. \\(\\cos\\frac{x}{y}=\\log_e y+C.\\) At \\(y=1,\\;x=\\frac{\\pi}{2}\\): \\(0=C\\), so \\(\\cos\\frac{x}{y}=\\log_e y.\\) At \\(y=2\\): \\(\\cos\\frac{x}{2}=\\log_e2\\), hence \\(\\cos(x(2))=2\\cos^2\\tfrac{x}{2}-1=2(\\log_e2)^2-1.\\)",
     "138": "A point on \\(y^2=4x\\) is \\((t^2,2t)\\); its squared distance from \\((a,0)\\) is \\((t^2-a)^2+4t^2\\). Minimizing gives \\(t^2=a-2\\), and the minimum squared distance is \\(4a-4\\). Setting \\(\\sqrt{4a-4}=4\\Rightarrow a=5\\), so the point is \\((5,0)\\). The focus of \\(y^2=4x\\) is \\((1,0)\\); a circle through \\((5,0)\\) and \\((1,0)\\) with centre on the \\(x\\)-axis has centre \\((3,0)\\), radius \\(2\\). Thus \\((x-3)^2+y^2=4\\Rightarrow x^2+y^2-6x+5=0.\\)",
     "142": "With \\(z=e^{i\\theta}\\), \\(\\frac z{\\bar z}=e^{2i\\theta}\\) and \\(\\frac{\\bar z}z=e^{-2i\\theta}\\), so the condition is \\(|2\\cos2\\theta|=1\\), i.e. \\(\\cos2\\theta=\\pm\\frac12\\). For \\(\\theta\\in[0,2\\pi)\\), \\(2\\theta\\) runs over \\([0,4\\pi)\\), where each of \\(\\cos=\\frac12\\) and \\(\\cos=-\\frac12\\) has 4 solutions. So there are 8 such \\(z\\).",
+    "145": "Write \\(\\frac{(3x-1)^{x/2}}{(3x+2)^{x/2}}=\\left(1-\\frac{3}{3x+2}\\right)^{x/2}\\), a \\(1^\\infty\\) form whose exponent limit is \\(\\lim\\frac x2\\cdot\\left(-\\frac{3}{3x+2}\\right)=-\\frac12\\); so it tends to \\(e^{-1/2}\\). The polynomial ratio \\(\\frac{2x^2-3x+5}{3x^2+5x+4}\\to\\frac23\\). The limit is \\(\\frac23e^{-1/2}=\\frac{2}{3\\sqrt e}\\).",
     "147": "Each root satisfies \\(x^2=ax+b\\), so \\(P_{n+2}=aP_{n+1}+bP_n\\). From \\(P_6=aP_5+bP_4\\): \\(45=11a-3b\\); from \\(P_5=aP_4+bP_3\\): \\(11=-3a-5b\\). Solving, \\(a=3\\), \\(b=-4\\). So \\(\\alpha+\\beta=3\\), \\(\\alpha\\beta=4\\), \\(\\alpha^2+\\beta^2=9-8=1\\), and \\(\\alpha^4+\\beta^4=1-2\\cdot16=-31\\). Hence \\(|\\alpha^4+\\beta^4|=31\\).",
     "149": "The numbers form an A.P. with first term \\(8\\), common difference \\(13\\) and last term \\(320\\), so \\(n=\\frac{320-8}{13}+1=25\\). The variance of an A.P. is \\(\\frac{d^{2}\\left(n^{2}-1\\right)}{12}=\\frac{13^{2}\\left(25^{2}-1\\right)}{12}=\\frac{169\\cdot 624}{12}=8788\\)."
   },

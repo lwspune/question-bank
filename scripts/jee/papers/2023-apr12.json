@@ -393,7 +393,7 @@
     },
     "83": {
       "chapter": "Limits and Continuity",
-      "subtopic": "Continuity"
+      "subtopic": "Counting Discontinuities and Non-Differentiability"
     },
     "84": {
       "chapter": "Three Dimensional Geometry",
@@ -511,6 +511,7 @@
     "72": "The first 50 terms of \\((1-x)^{100}\\) have coefficients \\((-1)^r\\binom{100}{r}\\), \\(r=0,\\dots,49\\). Using \\(\\sum_{r=0}^{k}(-1)^r\\binom{n}{r}=(-1)^k\\binom{n-1}{k}\\) (from \\(\\binom nr=\\binom{n-1}{r}+\\binom{n-1}{r-1}\\), which telescopes), the sum is \\((-1)^{49}\\binom{99}{49}=-\\binom{99}{49}\\).",
     "77": "\\(|z_1-z_0|=\\left|\\frac{1-i}2\\right|=\\frac1{\\sqrt2}\\), so \\(|z_2-z_0|=\\sqrt2\\) (outside \\(C\\), as needed). Collinearity puts \\(z_2\\) on the line through \\(z_0\\) in the direction of \\(z_1-z_0\\), whose unit vector is \\(\\frac{1-i}{\\sqrt2}\\): \\(z_2=z_0\\pm(1-i)\\), i.e. \\(\\frac32+\\frac i2\\) or \\(-\\frac12+\\frac{5i}2\\). Their \\(|z_2|^2\\) are \\(\\frac52\\) and \\(\\frac{13}2\\); the smaller is \\(\\frac52\\).",
     "79": "\\(\\alpha\\) and \\(\\beta\\) are independent, each with variance \\(\\frac{35}{12}\\), so \\(\\operatorname{Var}(\\alpha-\\beta)=\\frac{35}{12}+\\frac{35}{12}=\\frac{35}{6}\\). Thus \\(p=35\\), whose positive divisors \\(1,5,7,35\\) add to \\(48\\).",
+    "83": "\\(f\\) can jump only at integers. At \\(x=-1\\): the left limit is \\(|-2|+\\sqrt1=3\\) and the right limit is \\(|-1|+0=1\\), so \\(f\\) is discontinuous. At \\(x=0\\): the left limit is \\(|-1|+1=2\\) and the right limit is \\(0\\), so \\(f\\) is discontinuous. These are the only integers in \\((-2,1)\\), so the answer is 2.",
     "86": "Only the first row depends on \\(k\\), so \\(\\sum_{k=1}^n D_k\\) is the determinant with first row \\(\\left(n,\\ n(n+1),\\ n^2\\right)\\), the sums of \\(1\\), \\(2k\\) and \\(2k-1\\). \\(R_2\\to R_2-R_1\\) and \\(R_3\\to R_3-R_1\\) give rows \\((0,2,0)\\) and \\((0,0,n+2)\\), so the sum is \\(2n(n+2)=96\\). Then \\(n^2+2n-48=0\\) and \\(n=6\\)."
   }
 }

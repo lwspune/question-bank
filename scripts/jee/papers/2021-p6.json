@@ -173,7 +173,7 @@
     },
     "63": {
       "chapter": "Limits and Continuity",
-      "subtopic": "Continuity"
+      "subtopic": "Greatest Integer and One-Sided Limits"
     },
     "64": {
       "chapter": "Three Dimensional Geometry",
@@ -261,7 +261,7 @@
     },
     "85": {
       "chapter": "Limits and Continuity",
-      "subtopic": "Continuity"
+      "subtopic": "Continuity at a Point"
     },
     "86": {
       "chapter": "Sequences and Series",
@@ -321,7 +321,7 @@
     "82": "For two groups the combined variance is \\[\\sigma^{2}=\\frac{n_{1}\\sigma_{1}^{2}+n_{2}\\sigma_{2}^{2}}{N}+\\frac{n_{1}n_{2}}{N^{2}}\\,(\\bar x_{1}-\\bar x_{2})^{2},\\] with \\(n_{1}=10,\\ \\sigma_{1}^{2}=2,\\ n_{2}=n,\\ \\sigma_{2}^{2}=1,\\ \\bar x_{1}-\\bar x_{2}=2-3=-1,\\ N=10+n.\\) Thus \\[\\sigma^{2}=\\frac{20+n}{10+n}+\\frac{10n}{(10+n)^{2}}=\\frac{17}{9}.\\] Try \\(n=5\\): \\(\\dfrac{25}{15}+\\dfrac{50}{225}=\\dfrac{5}{3}+\\dfrac{2}{9}=\\dfrac{15+2}{9}=\\dfrac{17}{9}.\\) Hence \\(n=5.\\)",
     "83": "From \\(A=XB\\), \\[a_{1}=\\tfrac{1}{\\sqrt3}(b_{1}-b_{2}),\\qquad a_{2}=\\tfrac{1}{\\sqrt3}(b_{1}+kb_{2}).\\] Then \\[a_{1}^{2}+a_{2}^{2}=\\tfrac{1}{3}\\big[(b_{1}-b_{2})^{2}+(b_{1}+kb_{2})^{2}\\big]=\\tfrac{1}{3}\\big[2b_{1}^{2}+(1+k^{2})b_{2}^{2}+(2k-2)b_{1}b_{2}\\big].\\] Setting this equal to \\(\\tfrac{2}{3}(b_{1}^{2}+b_{2}^{2})\\) and multiplying by \\(3\\): \\[(k^{2}-1)b_{2}^{2}+2(k-1)b_{1}b_{2}=0\\Rightarrow (k-1)\\big[(k+1)b_{2}^{2}+2b_{1}b_{2}\\big]=0.\\] Since \\((k+1)b_{2}^{2}\\neq-2b_{1}b_{2}\\), the bracket is non-zero, forcing \\(k-1=0.\\) Hence \\(k=1.\\)",
     "84": "Let \\(u=\\dfrac{x^{2}+1}{x}=x+\\dfrac1x\\), so \\(du=\\dfrac{x^{2}-1}{x^{2}}dx\\) and \\(x^{4}+3x^{2}+1=x^{2}(u^{2}+1).\\) Split the integrand: \\[\\int\\frac{(x^{2}-1)\\,dx}{x^{2}(u^{2}+1)\\tan^{-1}u}+\\int\\frac{dx}{x^{2}(u^{2}+1)}.\\] First integral \\(=\\displaystyle\\int\\frac{du}{(u^{2}+1)\\tan^{-1}u}=\\ln\\big(\\tan^{-1}u\\big)\\Rightarrow\\alpha=1.\\) For the second, write \\(\\frac{1}{x^{2}}=\\tfrac12(1+\\tfrac1{x^{2}})-\\tfrac12(1-\\tfrac1{x^{2}})\\); with \\(v=x-\\tfrac1x\\ (v^{2}+5=x^{2}+3+\\tfrac1{x^{2}})\\) and \\(u=x+\\tfrac1x\\ (u^{2}+1)\\): \\[\\frac{1}{2\\sqrt5}\\tan^{-1}\\!\\frac{x^{2}-1}{\\sqrt5\\,x}-\\frac12\\tan^{-1}\\!\\frac{x^{2}+1}{x}.\\] So \\(\\beta=\\tfrac{1}{2\\sqrt5},\\ \\gamma=\\tfrac{1}{\\sqrt5},\\ \\delta=-\\tfrac12\\), giving \\(\\beta\\gamma=\\tfrac1{10}\\) and \\(\\alpha+\\beta\\gamma+\\delta=1+\\tfrac1{10}-\\tfrac12=\\tfrac35.\\) Thus \\(10(\\alpha+\\beta\\gamma+\\delta)=6.\\)",
-    "85": "Continuity of \\((g\\circ f)\\) is tested at \\(x=0\\) (where \\(f\\) switches) and at points where \\(f=0\\) (where \\(g\\) switches). At \\(x=0\\): left limit \\(f\\to a\\ge0\\Rightarrow g(a)=(a-1)^{2}+b\\); right limit \\(f\\to|{-1}|=1\\Rightarrow g(1)=b.\\) Continuity gives \\((a-1)^{2}+b=b\\Rightarrow a=1.\\) For \\(x<0,\\ f=x+1\\), which is \\(0\\) at \\(x=-1\\): left \\(g(f)=f+1\\to1\\); right \\(g(f)=(f-1)^{2}+b\\to1+b.\\) Continuity gives \\(1=1+b\\Rightarrow b=0.\\) (For \\(x\\ge0,\\ f=|x-1|\\ge0\\) always uses the same branch of \\(g\\), so it is continuous.) Hence \\(a+b=1.\\)",
+    "85": "At \\(x=0\\): \\(f(0)=1\\) and \\(g(1)=b\\), so \\((g\\circ f)(0)=b\\), and the right limit is also \\(b\\). For \\(x<0\\), \\(f(x)=x+a\\to a\\) from below. If \\(a>0\\), the left limit is \\(g(a)=(a-1)^2+b\\), so continuity needs \\(a=1\\); then \\(f=x+1\\) changes sign at \\(x=-1\\), where \\(g\\circ f\\) has left limit \\(1\\) and value \\(1+b\\), so \\(b=0\\). If \\(a=0\\), \\(f\\to0\\) from below and the left limit is \\(1\\), so \\(b=1\\) (and \\(g\\circ f=x+1\\) for \\(x<0\\) is continuous). Either way \\(a+b=1\\).",
     "86": "GP condition on \\(\\tfrac1{16},a,b\\): \\(a^{2}=\\tfrac{1}{16}\\,b\\Rightarrow b=16a^{2}.\\) AP condition on \\(\\tfrac1a,\\tfrac1b,6\\): \\(\\dfrac{2}{b}=\\dfrac1a+6.\\) Substituting \\(b=16a^{2}\\): \\[\\frac{2}{16a^{2}}=\\frac1a+6\\Rightarrow\\frac{1}{8a^{2}}=\\frac1a+6\\Rightarrow 48a^{2}+8a-1=0.\\] Solving, \\(a=\\dfrac{-8\\pm16}{96}\\); taking \\(a>0\\) gives \\(a=\\tfrac{1}{12},\\ b=16\\cdot\\tfrac{1}{144}=\\tfrac19.\\) Then \\(a+b=\\tfrac{1}{12}+\\tfrac19=\\tfrac{7}{36}\\) and \\(72(a+b)=72\\cdot\\tfrac{7}{36}=14.\\)",
     "87": "With \\(AC=b=12,\\ AB=c=5\\), area \\(=\\tfrac12\\,bc\\sin A=\\tfrac12(12)(5)\\sin A=30\\sin A=30\\Rightarrow\\sin A=1\\), so \\(A=90^{\\circ}.\\) The triangle is right-angled at \\(A\\), so hypotenuse \\(BC=\\sqrt{12^{2}+5^{2}}=13.\\) Circumradius \\(R=\\dfrac{BC}{2}=\\dfrac{13}{2}.\\) With \\(s=\\dfrac{5+12+13}{2}=15\\), inradius \\(r=\\dfrac{\\text{area}}{s}=\\dfrac{30}{15}=2.\\) Hence \\(2R+r=13+2=15.\\)",
     "88": "Using \\(\\displaystyle\\sum_{k=0}^{n}(-1)^{k}\\binom{n}{k}r^{k}=(1-r)^{n}\\), \\[A=\\Big(\\tfrac12\\Big)^{n}+\\Big(\\tfrac14\\Big)^{n}+\\Big(\\tfrac18\\Big)^{n}+\\Big(\\tfrac1{16}\\Big)^{n}+\\Big(\\tfrac1{32}\\Big)^{n}=\\sum_{j=1}^{5}\\frac{1}{2^{jn}}.\\] This is a GP with first term \\(2^{-n}\\), ratio \\(2^{-n}\\), five terms: \\[A=\\frac{2^{-n}\\big(1-2^{-5n}\\big)}{1-2^{-n}}=\\frac{1-2^{-5n}}{2^{n}-1}.\\] Given \\(63A=1-\\dfrac{1}{2^{30}}\\), take \\(n=6\\): \\(2^{n}-1=63\\) and \\(2^{-5n}=2^{-30}\\), giving \\(63A=1-2^{-30}.\\) Hence \\(n=6.\\)",
