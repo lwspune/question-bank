@@ -356,7 +356,7 @@
     "72": {
       "subject": "Maths",
       "chapter": "Determinants",
-      "subtopic": "System of Linear Equations"
+      "subtopic": "Infinitely Many Solutions: Parameters in Two Equations"
     },
     "73": {
       "subject": "Maths",
@@ -786,7 +786,7 @@
     "158": {
       "subject": "Maths",
       "chapter": "Determinants",
-      "subtopic": "System of Linear Equations"
+      "subtopic": "Infinitely Many Solutions: Parameters in Two Equations"
     },
     "159": {
       "subject": "Maths",
@@ -1240,7 +1240,7 @@
     "155": "The roots of \\(x^2-px+\\tfrac54 p=0\\) are rational iff the discriminant \\(p^2-5p=p(p-5)\\) is a perfect square; over \\(p\\in[0,10]\\) this holds for \\(p=0,5,9\\), so \\(q=9\\). The area is \\(\\int_0^9 (x-9)^2\\,dx=\\left[\\tfrac{(x-9)^3}{3}\\right]_0^9=\\tfrac{729}{3}=243\\).",
     "156": "For \\(t=x-1\\to0\\): as \\(t\\to0^-\\), \\([t]=-1,\\ f(t)=-1\\), and as \\(t\\to0^+\\), \\([t]=0,\\ f(t)=1\\), so in both cases \\(h(t)=2[t]-f(t)=-1\\). Hence \\(h(x-1)\\to-1\\) and \\(g(-1)=1\\) (its defined value), so the limit is \\(1\\).",
     "157": "For \\(100\\) consecutive integers the mean is \\(a_1+49.5\\), and the mean deviation about the mean is \\(\\tfrac{1}{100}\\sum_{k=0}^{99}|k-49.5|=\\tfrac{2(0.5+1.5+\\cdots+49.5)}{100}=\\tfrac{2500}{100}=25\\), independent of \\(a_1\\). Hence every \\(a_1\\in\\mathbb N\\) works, so \\(S=\\mathbb N\\).",
-    "158": "For infinitely many solutions the coefficient determinant vanishes: \\(\\begin{vmatrix}1&-1&1\\\\2&2&\\alpha\\\\3&-1&4\\end{vmatrix}=8-2\\alpha=0\\Rightarrow\\alpha=4\\). Consistency (equation 3 equals \\(2\\cdot\\)eq1 \\(+\\) (eq2 simplified)) gives \\(\\beta=14\\). So \\(\\alpha,\\beta\\) are the roots of \\(x^2-(\\alpha+\\beta)x+\\alpha\\beta=x^2-18x+56=0\\).",
+    "158": "\\(\\begin{vmatrix}1&-1&1\\\\2&2&\\alpha\\\\3&-1&4\\end{vmatrix}=8-2\\alpha=0\\), so \\(\\alpha=4\\). The third equation is then \\(2(\\text{eq }1)+\\frac12(\\text{eq }2)\\): \\((2+1,\\ -2+1,\\ 2+2)=(3,-1,4)\\), so \\(\\beta=2(5)+\\frac12(8)=14\\). Hence \\(\\alpha,\\beta\\) are the roots of \\(x^2-18x+56=0\\).",
     "159": "Since \\(\\vec b\\cdot(\\vec a\\times\\vec b)=0\\), we get \\(\\vec b\\cdot\\vec c=\\vec b\\cdot(2(\\vec a\\times\\vec b)-3\\vec b)=0-3|\\vec b|^2=-3(16)=-48\\).",
     "160": "Here \\(f'(x)=x^2+ax+2b\\) and \\(g'(x)=x^2+2bx+a\\). At a common extreme point \\(f'=g'=0\\Rightarrow(a-2b)x-(a-2b)=0\\), and since \\(a\\neq2b\\), \\(x=1\\). Then \\(f'(1)=1+a+2b=0\\Rightarrow a+2b=-1\\), so \\(a+2b+7=6\\).",
     "161": "Transposing \\(P^T=aP+(a-1)I\\) gives \\(P=aP^T+(a-1)I\\); substituting back, \\(P=a^2P+(a^2-1)I\\Rightarrow(1-a^2)P=(a^2-1)I\\Rightarrow P=-I\\). Then \\(\\det P=-1\\) and \\(\\operatorname{Adj}P=\\det(P)\\,P^{-1}=I\\), so \\(|\\operatorname{Adj}P|=1\\).",
