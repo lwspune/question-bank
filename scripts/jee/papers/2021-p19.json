@@ -348,7 +348,7 @@
     },
     "73": {
       "chapter": "Trigonometric Identities",
-      "subtopic": "Trigonometric Identities"
+      "subtopic": "Sum-Product Formulas and Telescoping"
     },
     "74": {
       "chapter": "Complex Numbers",
@@ -364,7 +364,7 @@
     },
     "77": {
       "chapter": "Trigonometric Identities",
-      "subtopic": "Trigonometric Identities"
+      "subtopic": "Compound Angle Formulae"
     },
     "78": {
       "chapter": "Definite Integration",
@@ -443,6 +443,7 @@
     "64": "If the value of the integral \\(\\int_{0}^{5} \\frac{x + \\lbrack x\\rbrack}{e^{x - \\lbrack x\\rbrack}}dx =\\alpha e^{- 1}+\\beta\\), where \\(\\alpha,\\beta\\in R,5\\alpha+ 6\\beta= 0\\), and \\(\\lbrack x\\rbrack\\) denotes the greatest integer less than or equal to \\(x\\); then the value of \\((\\alpha+\\beta)^{2}\\) is equal to:",
     "66": "Let \\(y(x)\\) be the solution of the differential equation \\(2x^{2}dy+\\left( e^{y}- 2x \\right)dx= 0,x> 0\\). If \\(y(e) = 1\\), then \\(y(1)\\) is equal to:",
     "76": "Let \\(P\\) be the plane passing through the point \\((1,2,3)\\) and the line of intersection of the planes \\(\\overrightarrow{r}\\cdot (\\widehat{i}+\\widehat{j}+ 4\\widehat{k}) = 16\\) and \\(\\overrightarrow{r}\\cdot ( -\\widehat{i}+\\widehat{j}+\\widehat{k}) = 6\\). Then which of the following points does NOT lie on P?",
+    "77": "A 10 inches long pencil \\(AB\\) with mid point \\(C\\) and a small eraser \\(P\\) are placed on the horizontal top of a table such that \\(PC =\\sqrt{5}\\) inches and \\(\\angle PCB =\\tan^{- 1}(2)\\). The acute angle through which the pencil must be rotated about \\(C\\) so that the perpendicular distance between eraser and pencil becomes exactly 1 inch is:",
     "86": "Let \\(\\begin{pmatrix} n \\\\ k \\end{pmatrix}\\) denote \\(\\ ^{n}C_{k}\\) and \\(\\begin{bmatrix} n \\\\ k \\end{bmatrix}=\\left\\{ \\begin{matrix} \\begin{pmatrix} n \\\\ k \\end{pmatrix}, & \\text{if } 0 \\leq k \\leq n \\\\ 0, & \\text{otherwise} \\end{matrix} \\right.\\) If \\(A_{k}=\\sum_{i = 0}^{9} \\begin{pmatrix} 9 \\\\ i \\end{pmatrix}\\begin{bmatrix} 12 \\\\ 12 - k + i \\end{bmatrix}+\\sum_{i = 0}^{8} \\begin{pmatrix} 8 \\\\ i \\end{pmatrix}\\begin{bmatrix} 13 \\\\ 13 - k + i \\end{bmatrix}\\) and \\(A_{4}-A_{3}= 190p\\), then \\(p\\) is equal to:"
   },
   "answerOverrides": {
@@ -465,7 +466,8 @@
     "47": "C",
     "48": "D",
     "49": "C",
-    "50": "C"
+    "50": "C",
+    "77": "A"
   },
   "numericOverrides": {
     "51": 42,
@@ -478,7 +480,11 @@
     "58": 269,
     "60": 3
   },
-  "optionOverrides": {},
+  "optionOverrides": {
+    "77": {
+      "B": "\\(\\tan^{- 1}(1)\\)"
+    }
+  },
   "authoredSolutions": {
     "8": "Take the \\(2\\ \\Omega\\) and \\(4\\ \\Omega\\) in parallel, and put that combination in series with the \\(6\\ \\Omega\\) and \\(8\\ \\Omega\\). \\[R_{p} = \\frac{2 \\times 4}{2 + 4} = \\frac{8}{6} = \\frac{4}{3}\\ \\Omega\\] \\[R_{eq} = \\frac{4}{3} + 6 + 8 = \\frac{4}{3} + 14 = \\frac{4 + 42}{3} = \\frac{46}{3}\\ \\Omega\\] which is the required value, so the correct choice is D. None of the other groupings reproduces it: pairing \\(4\\ \\Omega\\) with \\(6\\ \\Omega\\) gives \\(2.4 + 10 = 12.4\\ \\Omega\\), pairing \\(6\\ \\Omega\\) with \\(8\\ \\Omega\\) gives \\(\\frac{24}{7} + 6 \\approx 9.43\\ \\Omega\\), and pairing \\(2\\ \\Omega\\) with \\(6\\ \\Omega\\) gives \\(1.5 + 12 = 13.5\\ \\Omega\\).",
     "18": "The capacitive branch has \\(X_{C} = \\dfrac{1}{\\omega C} = 100\\ \\Omega\\) with \\(R = 100\\ \\Omega\\), so \\(Z_{1} = 100\\sqrt{2}\\ \\Omega\\) and \\(i_{1} = \\dfrac{200}{100\\sqrt{2}} = \\sqrt{2}\\text{ A}\\) leading by \\(45^{\\circ}\\). The inductive branch has \\(X_{L} = \\omega L = 50\\ \\Omega\\) with \\(R = 50\\ \\Omega\\), so \\(Z_{2} = 50\\sqrt{2}\\ \\Omega\\) and \\(i_{2} = \\dfrac{200}{50\\sqrt{2}} = 2\\sqrt{2}\\text{ A}\\) lagging by \\(45^{\\circ}\\). The two branch currents are \\(90^{\\circ}\\) apart, so they add in quadrature: \\[I = \\sqrt{i_{1}^{2} + i_{2}^{2}} = \\sqrt{2 + 8} = \\sqrt{10} = 3.16\\text{ A}\\] [Textbook note: 3.16 A is not among the four printed options, and the booklet's own worked solution also ends at \"I = 3.16 A\" while its key marks 4.24 A — which is \\(3\\sqrt{2}\\), the two magnitudes added as if they were in phase. The question is defective as set.]",
@@ -512,6 +518,8 @@
     "58": "Ethylene glycol \\((M = 62\\text{ }g\\text{ }mol^{-1})\\) is a non-electrolyte, so the van't Hoff factor is 1. Molality \\(= \\dfrac{83/62}{0.625\\text{ }kg}= 2.142\\text{ }mol\\text{ }kg^{-1}\\). The depression is \\(\\Delta T_{f}= K_{f}m = 1.86 \\times2.142 = 3.98 \\approx 4\\text{ }K\\). The freezing point of the solution is therefore \\(273 - 4 = 269\\text{ }K\\).",
     "60": "At STP \\(448\\text{ }mL\\) of vapour is \\(\\dfrac{0.448}{22.4}= 0.02\\text{ }mol\\), so the molar mass of A is \\(\\dfrac{1.53}{0.02}= 76.5\\text{ }g\\text{ }mol^{-1}\\). Because ozonolysis followed by hydrolysis yields aldehydes, A must contain a \\(C = C\\) double bond with a hydrogen on each doubly bonded carbon. The only chloroalkene of mass \\(76.5\\) is \\(C_{3}H_{5}Cl\\) \\((36 + 5 + 35.5 = 76.5)\\), i.e. 1-chloroprop-1-ene \\(CH_{3}CH = CHCl\\), which on ozonolysis gives \\(CH_{3}CHO\\) and \\(HCOCl\\). The molecule therefore contains \\(3\\) carbon atoms.",
     "67": "(S1): \\((p\\rightarrow q)\\vee(\\sim q\\rightarrow p)=(\\sim p\\vee q)\\vee(q\\vee p)\\), which contains \\(p\\vee\\sim p\\): a tautology. (S2): \\(\\sim p\\vee q=\\sim(p\\land\\sim q)\\), so \\((p\\land\\sim q)\\land(\\sim p\\vee q)\\) joins a statement with its own negation and is always false: a fallacy. Both are true, option (c).",
+    "73": "Since \\(\\sin\\frac{5\\pi}{8} = \\sin\\frac{3\\pi}{8}\\), \\(\\sin\\frac{6\\pi}{8} = \\sin\\frac{2\\pi}{8}\\) and \\(\\sin\\frac{7\\pi}{8} = \\sin\\frac{\\pi}{8}\\), the value is \\(2\\sin^2\\frac{\\pi}{8}\\sin^2\\frac{\\pi}{4}\\sin^2\\frac{3\\pi}{8}\\). Now \\(\\sin^2\\frac{\\pi}{4} = \\frac{1}{2}\\) and \\(\\sin\\frac{3\\pi}{8} = \\cos\\frac{\\pi}{8}\\), so it equals \\(\\sin^2\\frac{\\pi}{8}\\cos^2\\frac{\\pi}{8} = \\frac{1}{4}\\sin^2\\frac{\\pi}{4} = \\frac{1}{8}\\).",
+    "77": "Take \\(C\\) as the pivot. The distance of \\(P\\) from the line of the pencil is \\(PC\\sin\\theta\\), where \\(\\theta\\) is the angle between \\(CP\\) and the pencil. Now \\(\\tan\\theta = 2\\) gives \\(\\sin\\theta = \\frac{2}{\\sqrt{5}}\\), so the distance is \\(\\sqrt{5}\\cdot\\frac{2}{\\sqrt{5}} = 2\\) inches. For a distance of 1 inch the new angle \\(\\beta\\) needs \\(\\sqrt{5}\\sin\\beta = 1\\), so \\(\\sin\\beta = \\frac{1}{\\sqrt{5}}\\) and \\(\\tan\\beta = \\frac{1}{2}\\). Rotating the pencil towards \\(P\\) through \\(\\alpha\\) gives \\(\\alpha + \\beta = \\tan^{-1}2\\), so \\(\\tan\\alpha = \\frac{2 - \\frac{1}{2}}{1 + 2\\cdot\\frac{1}{2}} = \\frac{3}{4}\\). Rotating the other way needs \\(\\tan^{-1}2 + \\alpha = \\pi - \\beta\\), which gives \\(\\alpha = \\frac{\\pi}{2}\\), not an acute angle. So the pencil turns through \\(\\tan^{-1}\\left(\\frac{3}{4}\\right)\\), option (A). The booklet's own working also reaches \\(\\tan\\alpha = \\frac{3}{4}\\) but prints the answer as (c).",
     "81": "The three-digit multiples of 11 up to 500 run from 110 to 495. Removing those containing the digit 1 leaves 22 numbers: 209, 220, 242, 253, 264, 275, 286, 297, 308, 330, 352, 363, 374, 385, 396, 407, 429, 440, 462, 473, 484, 495. Their sum is \\(7744\\).",
     "87": "Let \\(\\alpha\\) be the common root: \\(\\alpha^2-\\alpha+2\\lambda=0\\) and \\(3\\alpha^2-10\\alpha+27\\lambda=0\\). Three times the first minus the second: \\(7\\alpha-21\\lambda=0\\), so \\(\\alpha=3\\lambda\\). Then \\(9\\lambda^2-3\\lambda+2\\lambda=0\\) gives \\(\\lambda=\\frac19\\) (as \\(\\lambda\\ne0\\)) and \\(\\alpha=\\frac13\\). So \\(\\beta=1-\\frac13=\\frac23\\), \\(\\gamma=\\frac{10}{3}-\\frac13=3\\), and \\(\\frac{\\beta\\gamma}{\\lambda}=\\frac{2}{1/9}=18\\).",
     "90": "Use \\((1-i)^2=-2i\\). For \\(n=6\\): \\((2i)^6=-64\\) and \\((1-i)^4=(-2i)^2=-4\\), giving \\(16\\), a positive integer. Smaller \\(n\\) fail: \\(n=1,2,3,4,5\\) give \\(2+2i,\\ -4,\\ 4-4i,\\ 8i,\\ -8-8i\\). So the least \\(n\\) is 6."

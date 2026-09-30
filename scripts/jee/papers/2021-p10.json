@@ -233,7 +233,7 @@
     },
     "78": {
       "chapter": "Trigonometric Identities",
-      "subtopic": "Trigonometric Identities"
+      "subtopic": "Powers of Sine and Cosine"
     },
     "79": {
       "chapter": "Application of Integrals",
@@ -312,6 +312,7 @@
     "70": "\\(|w|=2\\), so \\(|z|=\\frac12\\). The angle between \\(z\\) and \\(w\\) at the origin is \\(\\frac\\pi2\\), so the triangle is right-angled there, with area \\(\\frac12\\cdot|z|\\cdot|w|=\\frac12\\cdot\\frac12\\cdot2=\\frac12\\).",
     "71": "The \\(2n\\) values (\\(n\\) copies of \\(a\\) and \\(n\\) of \\(-a\\)) have mean 0 and variance \\(a^2\\), so the standard deviation is \\(|a|\\). Adding \\(b\\) moves the mean to \\(b\\) and leaves the standard deviation unchanged: \\(b=5\\) and \\(|a|=20\\). Hence \\(a^2+b^2=400+25=425\\).",
     "76": "\\(ARB\\) iff \\(B=P^{-1}AP\\) for some non-singular \\(P\\) (matrix similarity). It is reflexive (\\(P=I\\)), symmetric (\\(B=P^{-1}AP\\Rightarrow A=PBP^{-1}\\)) and transitive (composing the similarity transforms). So \\(R\\) is an equivalence relation. Hence option (C).",
+    "78": "Write \\(6 = 6(\\sin^2\\alpha + \\cos^2\\alpha)^2\\). Then \\(15\\sin^4\\alpha + 10\\cos^4\\alpha = 6\\sin^4\\alpha + 12\\sin^2\\alpha\\cos^2\\alpha + 6\\cos^4\\alpha\\), so \\(9\\sin^4\\alpha - 12\\sin^2\\alpha\\cos^2\\alpha + 4\\cos^4\\alpha = 0\\), that is \\((3\\sin^2\\alpha - 2\\cos^2\\alpha)^2 = 0\\). Hence \\(\\tan^2\\alpha = \\frac{2}{3}\\) and \\(\\cot^2\\alpha = \\frac{3}{2}\\). So \\(\\sec^2\\alpha = 1 + \\tan^2\\alpha = \\frac{5}{3}\\) and \\(\\csc^2\\alpha = 1 + \\cot^2\\alpha = \\frac{5}{2}\\). Then \\(27\\sec^6\\alpha + 8\\csc^6\\alpha = 27\\cdot\\frac{125}{27} + 8\\cdot\\frac{125}{8} = 125 + 125 = 250\\).",
     "79": "The curve \\(4y^2=x^2(4-x)(x-2)\\) is real for \\(2\\le x\\le4\\), with \\(y=\\pm\\frac{x}{2}\\sqrt{(4-x)(x-2)}\\). Since \\((4-x)(x-2)=1-(x-3)^2\\), the area \\(=2\\int_2^4\\frac{x}{2}\\sqrt{1-(x-3)^2}\\,dx\\); putting \\(x-3=\\sin\\theta\\) gives \\(\\int_{-\\pi/2}^{\\pi/2}(3+\\sin\\theta)\\cos^2\\theta\\,d\\theta=\\frac{3\\pi}{2}\\). Hence option (C).",
     "80": "Left limit: \\(\\lim_{x\\to0^-}\\left(\\frac{\\sin(a+1)x}{2x}+\\frac{\\sin2x}{2x}\\right)=\\frac{a+1}{2}+1\\). Right limit: rationalise, \\(\\frac{\\sqrt{x+bx^3}-\\sqrt x}{bx^{5/2}}=\\frac{bx^3}{bx^{5/2}(\\sqrt{x+bx^3}+\\sqrt x)}=\\frac{1}{\\sqrt{1+bx^2}+1}\\to\\frac12\\). Continuity: \\(\\frac{a+1}{2}+1=b=\\frac12\\), so \\(b=\\frac12\\) and \\(a=-2\\). Hence \\(a+b=-\\frac32\\).",
     "81": "The roots of \\(x^{2}+x+1=0\\) are the complex cube roots of unity \\(\\omega,\\omega^{2}\\), which satisfy \\(\\omega^{3}=1\\). Since \\(x^{2}+x+1\\) divides \\(P(x)\\), both roots make \\(P\\) vanish:\n\\[P(\\omega)=f(\\omega^{3})+\\omega\\,g(\\omega^{3})=f(1)+\\omega\\,g(1)=0,\\]\n\\[P(\\omega^{2})=f(\\omega^{6})+\\omega^{2} g(\\omega^{6})=f(1)+\\omega^{2} g(1)=0.\\]\nSubtracting gives \\((\\omega-\\omega^{2})g(1)=0\\); as \\(\\omega\\neq\\omega^{2}\\), we get \\(g(1)=0\\), and hence \\(f(1)=0\\). Therefore\n\\[P(1)=f(1)+1\\cdot g(1)=0+0=0.\\]",

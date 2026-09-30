@@ -846,7 +846,7 @@
     "169": {
       "subject": "Maths",
       "chapter": "Trigonometric Identities",
-      "subtopic": "Trigonometric Identities"
+      "subtopic": "Sum-Product Formulas and Telescoping"
     },
     "170": {
       "subject": "Maths",
@@ -1139,7 +1139,7 @@
     "166": "Lines: \\((-7,6,0)+t(-6,7,1)\\) and \\((7,2,6)+s(-2,1,1)\\). \\(d_1\\times d_2=(6,4,8)\\); joining vector \\((14,-4,6)\\). Shortest distance \\(=\\dfrac{|(14,-4,6)\\cdot(6,4,8)|}{|(6,4,8)|}=\\dfrac{116}{\\sqrt{116}}=\\sqrt{116}=2\\sqrt{29}\\).",
     "167": "\\(|a|^2=6\\). From \\(|a\\times b|^2=|a|^2|b|^2-(a\\cdot b)^2\\): \\(5=6|b|^2-9\\Rightarrow|b|^2=\\tfrac73\\). Then \\(b\\cdot(a-b)=a\\cdot b-|b|^2=3-\\tfrac73=\\tfrac23\\), and \\(|a-b|^2=6-6+\\tfrac73=\\tfrac73\\). Projection \\(=\\dfrac{2/3}{\\sqrt{7/3}}=\\dfrac{2}{\\sqrt{21}}\\).",
     "168": "For \\(8\\) ordered values, median \\(=\\tfrac{2k+12}{2}=k+6\\) (needs \\(3.5\\le k\\le6\\)). The sum of absolute deviations simplifies to \\(58-2k\\), so mean deviation \\(=\\dfrac{58-2k}{8}=6\\Rightarrow k=5\\). Hence median \\(=k+6=11\\).",
-    "169": "The product \\(2\\prod_{k=1}^{5}\\sin\\dfrac{(2k-1)\\pi}{22}\\) uses the odd multiples of \\(\\pi/22\\) (with \\(11\\cdot\\tfrac{\\pi}{22}=\\tfrac\\pi2\\)). Evaluating the product of these five sines gives \\(\\dfrac{1}{32}\\), so twice it is \\(\\dfrac{1}{16}\\).",
+    "169": "For \\(k = 1, \\ldots, 5\\), \\(\\sin\\frac{(2k-1)\\pi}{22} = \\cos\\left(\\frac{\\pi}{2} - \\frac{(2k-1)\\pi}{22}\\right) = \\cos\\frac{(6-k)\\pi}{11}\\). So the five sines are \\(\\cos\\frac{\\pi}{11}, \\cos\\frac{2\\pi}{11}, \\cos\\frac{3\\pi}{11}, \\cos\\frac{4\\pi}{11}, \\cos\\frac{5\\pi}{11}\\); call their product \\(P\\). With \\(\\theta = \\frac{\\pi}{11}\\), \\(\\cos 8\\theta = -\\cos 3\\theta\\) and \\(\\cos 16\\theta = -\\cos 5\\theta\\), so \\(P = \\cos\\theta\\cos 2\\theta\\cos 4\\theta\\cos 8\\theta\\cos 16\\theta = \\frac{\\sin 32\\theta}{32\\sin\\theta}\\). Since \\(32\\theta = 3\\pi - \\theta\\), \\(\\sin 32\\theta = \\sin\\theta\\) and \\(P = \\frac{1}{32}\\). The required value is \\(2P = \\frac{1}{16}\\).",
     "170": "With honest \\(=\\sim R\\) and not rich \\(=\\sim Q\\), the statement is \\((P\\wedge\\sim R)\\Leftrightarrow\\sim Q\\). Negation of \\(X\\Leftrightarrow Y\\) is \\((X\\wedge\\sim Y)\\vee(\\sim X\\wedge Y)\\), i.e. \\(((P\\wedge\\sim R)\\wedge Q)\\vee((\\sim P\\vee R)\\wedge\\sim Q)\\), which is option (D).",
     "171": "\\(|B|\\) (either \\(1\\notin T\\) or \\(2\\in T\\)) \\(=2^7-2^5=96\\), its complement \\(B^c=\\{1\\in T,2\\notin T\\}\\). So \\(|B\\cup C|=|B|+|C\\cap B^c|\\). For \\(T\\in B^c\\), sum \\(=1+s\\) with \\(s\\) a subset-sum of \\(\\{3,4,5,6,7\\}\\); counting those with \\(1+s\\) prime gives \\(11\\). Total \\(=96+11=107\\).",
     "172": "Let \\(f(x)=x^2+bx+p\\) with \\(f(1)=1+b+p=\\tfrac13\\Rightarrow b=-\\tfrac23-p\\). A common root \\(\\alpha\\) of \\(f\\) and \\(f\\circ f\\circ f\\circ f\\) forces the orbit \\(0\\to p\\to f(p)\\to0\\). Here \\(f(p)=\\tfrac{p}{3}\\) and \\(f\\!\\left(\\tfrac p3\\right)=-\\tfrac{2p^2}{9}+\\tfrac{7p}{9}=0\\Rightarrow p=\\tfrac72\\). Then \\(b=-\\tfrac{25}{6}\\) and \\(f(-3)=9+\\tfrac{75}{6}+\\tfrac72=25\\).",

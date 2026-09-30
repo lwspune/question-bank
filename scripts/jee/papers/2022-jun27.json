@@ -386,7 +386,7 @@
     "78": {
       "subject": "Maths",
       "chapter": "Trigonometric Identities",
-      "subtopic": "Trigonometric Identities"
+      "subtopic": "Sum-Product Formulas and Telescoping"
     },
     "79": {
       "subject": "Maths",
@@ -836,7 +836,7 @@
     "169": {
       "subject": "Maths",
       "chapter": "Trigonometric Identities",
-      "subtopic": "Trigonometric Identities"
+      "subtopic": "Standard Values and Multiple Angles"
     },
     "170": {
       "subject": "Maths",
@@ -1066,7 +1066,7 @@
     "75": "A solution of \\(\\vec b\\times\\vec c=\\vec a\\) requires \\(\\vec a\\) to be perpendicular to \\(\\vec c\\), i.e. \\(\\vec a\\cdot\\vec c=0\\). Here \\(\\vec a\\cdot\\vec c=2-3-2=-3\\neq0\\), so no vector \\(\\vec b\\) exists. The number of such \\(\\vec b\\) is \\(0\\).",
     "76": "Fix \\(x_2=7,x_4=11\\). Choose \\(x_1\\) from \\(\\{1,\\dots,6\\}\\) (\\(6\\) ways), \\(x_3\\) from \\(\\{8,9,10\\}\\) (\\(3\\) ways), \\(x_5\\) from \\(\\{12,\\dots,18\\}\\) (\\(7\\) ways): \\(6\\cdot3\\cdot7=126\\) favourable ordered selections. Total \\(=\\binom{18}{5}=8568\\), so probability \\(=\\tfrac{126}{8568}=\\tfrac{1}{68}\\).",
     "77": "\\(P(X=3)=5P(X=4)\\) with \\(\\binom73=\\binom74\\) gives \\(q=5p\\); with \\(p+q=1\\), \\(p=\\tfrac16,q=\\tfrac56\\). Mean \\(=np=\\tfrac76\\), variance \\(=npq=\\tfrac{35}{36}\\); their sum is \\(\\tfrac{42}{36}+\\tfrac{35}{36}=\\tfrac{77}{36}\\).",
-    "78": "The sum \\(\\cos\\tfrac{2\\pi}{7}+\\cos\\tfrac{4\\pi}{7}+\\cos\\tfrac{6\\pi}{7}\\) is the real part of the seventh roots of unity excluding \\(1\\); since all seven cosines sum to \\(0\\) and pair symmetrically, this partial sum equals \\(-\\tfrac12\\).",
+    "78": "Let \\(S = \\cos\\frac{2\\pi}{7} + \\cos\\frac{4\\pi}{7} + \\cos\\frac{6\\pi}{7}\\) and multiply by \\(2\\sin\\frac{\\pi}{7}\\). Each term gives \\(2\\sin\\frac{\\pi}{7}\\cos\\frac{2k\\pi}{7} = \\sin\\frac{(2k+1)\\pi}{7} - \\sin\\frac{(2k-1)\\pi}{7}\\). The sum telescopes to \\(\\sin\\pi - \\sin\\frac{\\pi}{7} = -\\sin\\frac{\\pi}{7}\\), so \\(2\\sin\\frac{\\pi}{7}\\,S = -\\sin\\frac{\\pi}{7}\\) and \\(S = -\\frac{1}{2}\\).",
     "79": "\\(\\sin^{-1}(\\sin\\tfrac{2\\pi}{3})=\\pi-\\tfrac{2\\pi}{3}=\\tfrac{\\pi}{3}\\); \\(\\cos^{-1}(\\cos\\tfrac{7\\pi}{6})=2\\pi-\\tfrac{7\\pi}{6}=\\tfrac{5\\pi}{6}\\); \\(\\tan^{-1}(\\tan\\tfrac{3\\pi}{4})=\\tfrac{3\\pi}{4}-\\pi=-\\tfrac{\\pi}{4}\\). Sum \\(=\\tfrac{\\pi}{3}+\\tfrac{5\\pi}{6}-\\tfrac{\\pi}{4}=\\tfrac{11\\pi}{12}\\).",
     "80": "\\(\\sim(p\\wedge q)\\vee q=(\\sim p\\vee\\sim q)\\vee q=\\sim p\\vee(\\sim q\\vee q)=\\sim p\\vee T=T\\), a tautology. Among the options, \\(p\\to(p\\vee q)=\\sim p\\vee(p\\vee q)=T\\) is also a tautology, so the expression is equivalent to \\(p\\to(p\\vee q)\\).",
     "81": "With \\(f(x)=\\tfrac{2e^{2x}}{e^{2x}+e}\\), one checks \\(f(x)+f(1-x)=\\tfrac{2e^{2x}}{e^{2x}+e}+\\tfrac{2e}{e^{2x}+e}=2\\). Pairing \\(\\tfrac{k}{100}\\) with \\(\\tfrac{100-k}{100}\\) gives \\(49\\) pairs summing to \\(2\\) plus the middle term \\(f(\\tfrac12)=1\\), so the total is \\(49\\cdot2+1=99\\).",
@@ -1167,6 +1167,7 @@
     "153": "Let for some real numbers \\(\\alpha\\) and \\(\\beta,a = \\alpha - i\\beta\\). If the system of equations \\(4ix + (1 + i)y = 0\\) and \\(8\\left( \\cos\\frac{2\\pi}{3}+ i\\sin\\frac{2\\pi}{3} \\right)x +\\bar{a}y = 0\\) has more than one solution then \\(\\frac{\\alpha}{\\beta}\\) is equal to:",
     "159": "The integral \\(\\int_{0}^{1} \\frac{1}{7^{\\left\\lbrack \\frac{1}{x} \\right\\rbrack}}dx\\), where [.] denotes the greatest integer function is equal to",
     "166": "The mean and variance of the data \\(4,5,6,6,7,8,x,y\\) where \\(x < y\\) are 6 , and \\(\\frac{9}{4}\\) respectively. Then \\(x^{4}+y^{2}\\) is equal to",
+    "169": "\\(\\alpha = \\sin36^{\\circ}\\) is a root of which of the following equations?",
     "176": "If \\(y(x)=\\left(x^{x}\\right)^{x},\\ x>0\\), then \\(\\dfrac{d^{2}x}{dy^{2}}+20\\) at \\(x=1\\) is equal to:",
     "177": "If the area of the region \\(\\left\\{ (x,y):x^{\\frac{2}{3}}+y^{\\frac{2}{3}}\\leq 1,\\ x+y\\geq 0,y\\geq 0 \\right\\}\\) is A, then \\(\\frac{256A}{\\pi}\\) is",
     "178": "Let \\(y = y(x)\\) be the solution of the differential equation \\(\\left( 1 -x^{2} \\right)dy=\\left( xy+\\left( x^{3}+ 2 \\right)\\sqrt{1 -x^{2}} \\right)dx, - 1 <x< 1\\)and \\(y(0) = 0\\) if \\(\\int_{-\\frac{1}{2}}^{\\frac{1}{2}} \\sqrt{1 -x^{2}}y(x)dx=k\\) then \\(k^{- 1}\\) is equal to:",
@@ -1191,6 +1192,12 @@
       "B": "1-bromo-1-phenylethene",
       "C": "1-chloroethynyl-4-bromobenzene",
       "D": "4-bromostyrene (4-bromophenylethene)"
+    },
+    "169": {
+      "A": "\\(10x^{4} - 10x^{2} - 5 = 0\\)",
+      "B": "\\(16x^{4} + 20x^{2} - 5 = 0\\)",
+      "C": "\\(16x^{4} - 20x^{2} + 5 = 0\\)",
+      "D": "\\(16x^{4} - 10x^{2} + 5 = 0\\)"
     }
   },
   "skip": [

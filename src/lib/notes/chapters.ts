@@ -995,6 +995,11 @@ import {
   JEE_INDEFINITE_INTEGRATION_NOTES,
   JEE_INDEFINITE_INTEGRATION_SLUGS,
 } from "@/app/notes/jee-mains-maths/indefinite-integration/_data";
+import {
+  JEE_TRIG_IDENTITIES_CHAPTER,
+  JEE_TRIG_IDENTITIES_NOTES,
+  JEE_TRIG_IDENTITIES_SLUGS,
+} from "@/app/notes/jee-mains-maths/trigonometric-identities/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3190,6 +3195,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_INDEFINITE_INTEGRATION_CHAPTER,
     notes: JEE_INDEFINITE_INTEGRATION_NOTES,
     slugs: JEE_INDEFINITE_INTEGRATION_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "trigonometric-identities",
+    chipLabel: "Trigonometric Identities notes",
+    chapter: JEE_TRIG_IDENTITIES_CHAPTER,
+    notes: JEE_TRIG_IDENTITIES_NOTES,
+    slugs: JEE_TRIG_IDENTITIES_SLUGS,
   },
 ];
 

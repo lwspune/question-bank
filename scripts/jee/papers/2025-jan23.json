@@ -311,7 +311,7 @@
     },
     "65": {
       "chapter": "Trigonometric Identities",
-      "subtopic": "Trigonometric Identities"
+      "subtopic": "Compound Angle Formulae"
     },
     "66": {
       "chapter": "Statistics",
@@ -649,7 +649,7 @@
     },
     "137": {
       "chapter": "Trigonometric Identities",
-      "subtopic": "Trigonometric Identities"
+      "subtopic": "Maximum, Minimum and Range"
     },
     "138": {
       "chapter": "Conic Sections",
@@ -853,6 +853,7 @@
     "60": "\\(3|\\bar z-i|=|2\\bar z+i|\\). With \\(\\bar z=x-iy\\): \\(9\\left(x^2+(y+1)^2\\right)=4x^2+(1-2y)^2\\), i.e. \\(5x^2+5y^2+22y+8=0\\), a circle with centre \\(C\\left(0,-\\frac{11}5\\right)\\). The triangle with vertices \\((0,0)\\), \\(C\\) and \\((\\alpha,0)\\) has area \\(\\frac12|\\alpha|\\cdot\\frac{11}5=11\\), so \\(|\\alpha|=10\\) and \\(\\alpha^2=100\\).",
     "61": "Reflexivity needs \\((1,1),(2,2),(4,4)\\): 3 pairs. Symmetry needs \\((2,1),(3,2)\\): 2 pairs. Transitivity then joins 1, 2 and 3 into one class, adding \\((1,3),(3,1)\\): 2 pairs. The classes are \\(\\{1,2,3\\}\\) and \\(\\{4\\}\\), so the relation has \\(9+1=10\\) pairs, 3 of them given: \\(7\\) added.",
     "64": "Let \\(\\alpha=\\tan^{-1}\\frac{5}{12}\\), so \\(\\cos\\alpha=\\frac{12}{13}\\), \\(\\sin\\alpha=\\frac{5}{13}\\) and \\(\\alpha\\approx0.39\\). The argument is \\(\\cos x\\cos\\alpha+\\sin x\\sin\\alpha=\\cos(x-\\alpha)\\). For \\(\\frac{\\pi}{2}\\le x\\le\\frac{3\\pi}{4}\\), \\(x-\\alpha\\) lies between about \\(1.18\\) and \\(1.96\\), inside \\([0,\\pi]\\), the principal range of \\(\\cos^{-1}\\). Hence \\(\\cos^{-1}(\\cos(x-\\alpha))=x-\\alpha=x-\\tan^{-1}\\frac{5}{12}\\): option (b).",
+    "65": "\\(\\cot 10^\\circ\\cot 70^\\circ - 1 = \\frac{\\cos 10^\\circ\\cos 70^\\circ - \\sin 10^\\circ\\sin 70^\\circ}{\\sin 10^\\circ\\sin 70^\\circ} = \\frac{\\cos 80^\\circ}{\\sin 10^\\circ\\sin 70^\\circ}\\). Multiplying by \\(\\sin 70^\\circ\\) gives \\(\\frac{\\cos 80^\\circ}{\\sin 10^\\circ} = 1\\), since \\(\\cos 80^\\circ = \\sin 10^\\circ\\).",
     "66": "For grouped data, median \\(=l+\\dfrac{\\frac{N}{2}-F}{f}\\times h\\), with \\(l=12,\\ F=18,\\ f=12,\\ h=6\\). So \\(14=12+\\dfrac{\\frac{N}{2}-18}{12}\\times6\\Rightarrow\\frac{N}{2}-18=4\\Rightarrow N=44\\).",
     "71": "\\(y=|x-1|\\) meets \\(x^2+y^2=25\\) at \\((4,3)\\) and \\((-3,4)\\). The smaller part lies above the V: \\(\\int_{-3}^{4}\\sqrt{25-x^2}\\,dx-\\int_{-3}^{4}|x-1|\\,dx\\). The first integral is \\(12+\\frac{25}{2}\\left(\\sin^{-1}\\frac45+\\sin^{-1}\\frac35\\right)=12+\\frac{25\\pi}{4}\\); the second is \\(8+\\frac92=\\frac{25}{2}\\). So the smaller part is \\(\\frac{25\\pi}{4}-\\frac12\\), and the larger is \\(25\\pi-\\frac{25\\pi}{4}+\\frac12=\\frac14(75\\pi+2)\\). Hence \\(b+c=77\\).",
     "72": "A term of the multinomial expansion is \\(\\frac{6!}{r_1!\\,r_2!\\,r_3!}\\,2^{r_2/3}\\,3^{r_3/2}\\) with \\(r_1+r_2+r_3=6\\). It is rational when \\(3\\mid r_2\\) and \\(2\\mid r_3\\). With \\(r_2=0\\): \\(r_3=0,2,4,6\\) give \\(1+45+135+27=208\\). With \\(r_2=3\\): \\(r_3=0\\) gives \\(20\\cdot2=40\\) and \\(r_3=2\\) gives \\(60\\cdot2\\cdot3=360\\). With \\(r_2=6\\): \\(2^2=4\\). The sum is \\(208+400+4=612\\).",
@@ -910,6 +911,7 @@
     "129": "By parts three times, \\(\\int x^3\\sin x\\,dx=-x^3\\cos x+3x^2\\sin x+6x\\cos x-6\\sin x+C\\), so \\(g(x)=-x^3\\cos x+3x^2\\sin x+6x\\cos x-6\\sin x\\) and \\(g'(x)=x^3\\sin x\\). At \\(x=\\frac\\pi2\\): \\(g=\\frac{3\\pi^2}{4}-6\\) and \\(g'=\\frac{\\pi^3}{8}\\). So \\(8(g+g')=\\pi^3+6\\pi^2-48\\), giving \\(\\alpha=1,\\ \\beta=6,\\ \\gamma=-48\\) and \\(\\alpha+\\beta-\\gamma=55\\).",
     "133": "For \\(-1\\le x\\le0\\), \\(e^{|x|}-e^{-x}=0\\), so the height is \\(a\\) and that part has area \\(a\\). For \\(0\\le x\\le1\\) the height is \\(a+e^x-e^{-x}\\): \\(\\int_0^1(a+e^x-e^{-x})\\,dx=\\left[ax+e^x+e^{-x}\\right]_0^1=a+e+\\frac1e-2\\). The total is \\(2a+e+\\frac1e-2=\\frac{e^2+8e+1}{e}=e+8+\\frac1e\\), so \\(2a=10\\) and \\(a=5\\).",
     "136": "Put \\(x=vy\\Rightarrow \\frac{dx}{dy}=v+y\\frac{dv}{dy}\\). Then \\(x-y\\frac{dx}{dy}=-y^2\\frac{dv}{dy}\\), so \\(y=\\big(x-y\\frac{dx}{dy}\\big)\\sin\\frac{x}{y}\\) becomes \\(y=-y^2\\frac{dv}{dy}\\sin v\\), i.e. \\(-\\sin v\\,dv=\\frac{dy}{y}.\\) Integrating: \\(\\cos v=\\log_e y+C\\), i.e. \\(\\cos\\frac{x}{y}=\\log_e y+C.\\) At \\(y=1,\\;x=\\frac{\\pi}{2}\\): \\(0=C\\), so \\(\\cos\\frac{x}{y}=\\log_e y.\\) At \\(y=2\\): \\(\\cos\\frac{x}{2}=\\log_e2\\), hence \\(\\cos(x(2))=2\\cos^2\\tfrac{x}{2}-1=2(\\log_e2)^2-1.\\)",
+    "137": "\\(\\cos x\\cos\\left(\\frac{\\pi}{3} - x\\right)\\cos\\left(\\frac{\\pi}{3} + x\\right) = \\frac{1}{4}\\cos 3x\\), so \\(f(x) = 6 + 4\\cos 3x\\sin 3x\\cos 6x = 6 + 2\\sin 6x\\cos 6x = 6 + \\sin 12x\\). The range is \\([5, 7]\\), so \\((\\alpha, \\beta) = (5, 7)\\). Its distance from \\(3x + 4y + 12 = 0\\) is \\(\\frac{|15 + 28 + 12|}{5} = 11\\).",
     "138": "A point on \\(y^2=4x\\) is \\((t^2,2t)\\); its squared distance from \\((a,0)\\) is \\((t^2-a)^2+4t^2\\). Minimizing gives \\(t^2=a-2\\), and the minimum squared distance is \\(4a-4\\). Setting \\(\\sqrt{4a-4}=4\\Rightarrow a=5\\), so the point is \\((5,0)\\). The focus of \\(y^2=4x\\) is \\((1,0)\\); a circle through \\((5,0)\\) and \\((1,0)\\) with centre on the \\(x\\)-axis has centre \\((3,0)\\), radius \\(2\\). Thus \\((x-3)^2+y^2=4\\Rightarrow x^2+y^2-6x+5=0.\\)",
     "142": "With \\(z=e^{i\\theta}\\), \\(\\frac z{\\bar z}=e^{2i\\theta}\\) and \\(\\frac{\\bar z}z=e^{-2i\\theta}\\), so the condition is \\(|2\\cos2\\theta|=1\\), i.e. \\(\\cos2\\theta=\\pm\\frac12\\). For \\(\\theta\\in[0,2\\pi)\\), \\(2\\theta\\) runs over \\([0,4\\pi)\\), where each of \\(\\cos=\\frac12\\) and \\(\\cos=-\\frac12\\) has 4 solutions. So there are 8 such \\(z\\).",
     "145": "Write \\(\\frac{(3x-1)^{x/2}}{(3x+2)^{x/2}}=\\left(1-\\frac{3}{3x+2}\\right)^{x/2}\\), a \\(1^\\infty\\) form whose exponent limit is \\(\\lim\\frac x2\\cdot\\left(-\\frac{3}{3x+2}\\right)=-\\frac12\\); so it tends to \\(e^{-1/2}\\). The polynomial ratio \\(\\frac{2x^2-3x+5}{3x^2+5x+4}\\to\\frac23\\). The limit is \\(\\frac23e^{-1/2}=\\frac{2}{3\\sqrt e}\\).",
@@ -958,6 +960,7 @@
     "125": "A compound ' X ' absorbs 2 moles of hydrogen and ' X ' upon oxidation with \\(KMnO_{4}/H^{+}\\) gives The total number of \\(\\sigma\\) bonds present in the compound ' X ' is \\(\\_\\_\\_\\_\\_\\_\\) .",
     "129": "Let \\(\\int x^{3}\\sin x\\,dx = g(x)+C\\), where \\(C\\) is the constant of integration. If \\(8\\left(g\\left(\\frac{\\pi}{2}\\right)+g'\\left(\\frac{\\pi}{2}\\right)\\right)=\\alpha\\pi^{3}+\\beta\\pi^{2}+\\gamma,\\ \\alpha,\\beta,\\gamma\\in Z\\), then \\(\\alpha+\\beta-\\gamma\\) equals:",
     "130": "A rod of length eight units moves such that its ends \\(A\\) and \\(B\\) always lie on the lines \\(x - y + 2 = 0\\) and \\(y + 2 = 0\\), respectively. If the locus of the point \\(P\\), that divides the rod \\(AB\\) internally in the ratio \\(2:1\\) is \\(9\\left( x^{2}+ \\alpha y^{2}+ \\beta xy + \\gamma x + 28y \\right)- 76 = 0\\), then \\(\\alpha - \\beta - \\gamma\\) is equal to :",
+    "137": "Let the range of the function \\(f(x) = 6 + 16\\cos x \\cdot \\cos\\left( \\frac{\\pi}{3}- x \\right)\\cdot \\cos\\left( \\frac{\\pi}{3}+ x \\right) \\cdot \\sin3x \\cdot \\cos6x,\\ x \\in R\\) be \\(\\lbrack\\alpha,\\beta\\rbrack\\). Then the distance of the point \\((\\alpha,\\beta)\\) from the line \\(3x + 4y + 12 = 0\\) is :",
     "144": "If \\(I =\\int_{0}^{\\frac{\\pi}{2}} \\frac{\\sin^{\\frac{3}{2}}x}{\\sin^{\\frac{3}{2}}x +\\cos^{\\frac{3}{2}}x}dx\\), then \\(\\int_{0}^{2I} \\frac{x\\sin x\\cos x}{\\sin^{4}x +\\cos^{4}x}dx\\) equals:",
     "150": "The roots of the quadratic equation \\(3x^{2}-px+q=0\\) are the \\(10^{\\text{th}}\\) and \\(11^{\\text{th}}\\) terms of an arithmetic progression with common difference \\(\\frac{3}{2}\\). If the sum of the first 11 terms of this arithmetic progression is 88, then \\(q-2p\\) is equal to"
   },
