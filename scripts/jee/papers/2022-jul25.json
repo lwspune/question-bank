@@ -161,7 +161,7 @@
     "32": {
       "subject": "Chemistry",
       "chapter": "Structure of Atom",
-      "subtopic": "Quantum Mechanical Model, de Broglie, Heisenberg and Quantum Numbers"
+      "subtopic": "Quantum Numbers and Electron Counting"
     },
     "33": {
       "subject": "Chemistry",
@@ -716,7 +716,7 @@
     "143": {
       "subject": "Chemistry",
       "chapter": "Structure of Atom",
-      "subtopic": "Hydrogen Spectrum and Rydberg Equation"
+      "subtopic": "Hydrogen Spectrum and Spectral Series"
     },
     "144": {
       "subject": "Chemistry",
@@ -1113,7 +1113,7 @@
     "140": "Methyl orange is a weak acid-base indicator whose two tautomers differ in colour: the yellow benzenoid (azo) form dominates in basic medium and the red quinonoid form in acidic medium. In a titration of base against acid the end point is reached on the acidic side (methyl orange changes over \\(pH\\ 3.1\\) to \\(4.4\\)), so the indicator exists as the quinonoid form. Hence option (A).",
     "141": "By Gay-Lussac's law of gaseous volumes the coefficients of \\(N_{2}(g) + 3H_{2}(g) \\rightarrow 2NH_{3}(g)\\) apply directly to volumes at the same temperature and pressure. Producing \\(20\\) L of \\(NH_{3}\\) consumes \\(20/2 = 10\\) L of \\(N_{2}\\). Starting from \\(56.0\\) L, the unused nitrogen is \\(56 - 10 = 46\\) L.",
     "142": "Moles of propane \\(= 11/44 = 0.25\\). From \\(PV = nRT\\) with \\(P = 2 \\times 10^{6}\\) Pa and \\(V = 2 \\times 10^{-3}\\) m\\(^{3}\\), \\[T = \\frac{2 \\times 10^{6} \\times 2 \\times 10^{-3}}{0.25 \\times 8.3} = \\frac{4000}{2.075} = 1927.7\\ K\\] Converting, \\(t = 1927.7 - 273 = 1654.7\\ ^{\\circ}C\\), which to the nearest integer is 1655.",
-    "143": "When electrons de-excite from level \\(n\\) to the ground state, the maximum number of distinct spectral lines a sample can emit is the number of ways of choosing two levels, \\[\\frac{n(n-1)}{2} = \\frac{5 \\times 4}{2} = 10\\] These are the four Lyman, three Balmer, two Paschen and one Brackett transition. Hence the answer is 10. (The printed solution's remark that a single atom shows only 4 lines refers to one cascade path, not to the maximum number of lines observable.)",
+    "143": "With the electron starting in \\(n = 5\\), the number of distinct lines that a large sample of atoms can emit is the number of pairs of levels: \\(\\frac{n(n-1)}{2}=\\frac{5\\times4}{2}=10\\) (four Lyman, three Balmer, two Paschen and one Brackett line). The key, 10, takes this reading. As printed the question is flawed: it speaks of \"the excited electron of a H atom\", and a single electron cascading from \\(n = 5\\) can give at most \\(n-1 = 4\\) lines (\\(5\\rightarrow4\\rightarrow3\\rightarrow2\\rightarrow1\\)). The official solution notes the single-atom answer 4 and still keys 10.",
     "144": "\\(HCl\\) is a strong acid, so its heat of neutralisation, \\(-57.3\\) kJ mol\\(^{-1}\\), is the enthalpy of the reaction \\(H^{+} + OH^{-} \\rightarrow H_{2}O\\) alone. Acetic acid is weak, so part of the released energy is consumed in ionising it first, making the observed value less exothermic. Therefore \\[\\Delta H_{ionisation} = (-55.3) - (-57.3) = +2.0\\ kJ\\ mol^{-1}\\] and the answer is 2.",
     "145": "For a first order reaction the integrated rate law is \\(\\ln(p/p^{0}) = -kt\\), so a plot of \\(\\ln(p/p^{0})\\) against \\(t\\) is a straight line of slope \\(-k\\). The graph gives slope \\(= -3.465 \\times 10^{4}\\), hence \\(k = 3.465 \\times 10^{4}\\) s\\(^{-1}\\), and \\[t_{1/2} = \\frac{\\ln 2}{k} = \\frac{0.693}{3.465 \\times 10^{4}} = 2 \\times 10^{-5}\\ s\\] So the answer is 2.",
     "146": "Xenon contributes 8 valence electrons in each case. In \\(XeO_{3}\\), three double bonds use 6 electrons leaving 1 lone pair. In \\(XeOF_{4}\\), one double bond and four \\(Xe-F\\) bonds use 6 electrons leaving 1 lone pair. In \\(XeF_{6}\\), six \\(Xe-F\\) bonds use 6 electrons leaving 1 lone pair. The sum is \\(1 + 1 + 1 = 3\\).",
@@ -1188,6 +1188,12 @@
     "177": "Let \\(a_{n}=\\int_{- 1}^{n} \\left( 1 +\\frac{x}{2}+\\frac{x^{2}}{3}+\\frac{x^{3}}{4}+ \\ldots\\ldots. +\\frac{x^{n - 1}}{n} \\right)dx\\) for \\(n \\in N\\). Then the sum of all the elements of the set \\(\\left\\{ n \\in N:a_{n}\\in (2,30) \\right\\}\\) is"
   },
   "optionOverrides": {
+    "32": {
+      "A": "\\(n = 3,l = 2,m_{l} = 0,\\text{ }s = + \\frac{1}{2}\\)",
+      "B": "\\(n = 3,l = 2,m_{l} = - 2,\\text{ }s = + \\frac{1}{2}\\)",
+      "C": "\\(n = 3,l = 3,m_{l} = - 3,\\text{ }s = - \\frac{1}{2}\\)",
+      "D": "\\(n = 3,l = 0,m_{l} = 0,\\text{ }s = - \\frac{1}{2}\\)"
+    },
     "71": {
       "A": "\\(\\left( y^{2} + x \\right)^{4} = C\\left| \\left( y^{2} + 2x \\right)^{3} \\right|\\)",
       "B": "\\(\\left( y^{2} + 2x \\right)^{4} = C\\left| \\left( y^{2} + x \\right)^{3} \\right|\\)"
