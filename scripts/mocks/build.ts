@@ -94,6 +94,7 @@ import { deriveMainsSittings, mainsBlueprint } from "./mpscMainsSittings";
 import { PAPERS as MPSC_MAINS_PAPERS } from "../mpsc-mains/config";
 import { deriveUpscSittings } from "./upscSittings";
 import { PAPERS as UPSC_PAPERS } from "../upsc/config";
+import { mockTestRow } from "../../src/lib/mocks/row";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -292,19 +293,14 @@ async function emitMock(
   );
   if (run.apply) {
     const { error } = await db.from("mock_tests").upsert(
-      {
-        id: snap.id, slug: snap.slug, exam_id: examId, paper_code: snap.paperCode,
-        // Stated, not left to the column default (0088). Every paper THIS
-        // script builds is a real sitting served whole; the practice and
-        // sectional builders are separate paths and will set their own. An
-        // explicit value also means a row can never acquire a type by
-        // accident if a default is ever changed.
-        source: "pyq", scope: "full",
-        pyq_year: snap.pyqYear, pyq_month: snap.pyqMonth, title: snap.title,
-        duration_secs: snap.durationSecs, marking: snap.marking, sections: snap.sections,
-        questions: snap.questions, total_questions: snap.totalQuestions, total_marks: snap.totalMarks,
-        status: run.publish ? "published" : "draft", updated_at: new Date().toISOString(),
-      },
+      // Stated, not left to the column default (0088). Every paper THIS script
+      // builds is a real sitting served whole; the practice and chapter-test
+      // builders are separate paths and state their own type.
+      mockTestRow(snap, {
+        examId, source: "pyq", scope: "full",
+        pyqYear: snap.pyqYear, pyqMonth: snap.pyqMonth,
+        publish: run.publish, now: new Date(),
+      }),
       { onConflict: "id" }
     );
     if (error) { run.failures.push(`${snap.slug}: upsert ${error.message}`); return; }

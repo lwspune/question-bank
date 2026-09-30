@@ -44,6 +44,7 @@ import {
   type PaperQuestionRow,
 } from "../../src/lib/mocks/reconstruct";
 import type { PracticeQuestionRef } from "./practiceSittings";
+import { mockTestRow } from "../../src/lib/mocks/row";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -210,16 +211,12 @@ async function main() {
       const { data: exam, error: eErr } = await db.from("exams").select("id").eq("name", bp.examName).single();
       if (eErr || !exam) { failures.push(`${s.slug}: exam ${bp.examName} not found`); continue; }
       const { error } = await db.from("mock_tests").upsert(
-        {
-          id: snap.id, slug: snap.slug, exam_id: exam.id, paper_code: snap.paperCode,
-          // An assembled paper has NO sitting — see migration 0088. The CHECK
-          // permits a null year only because source/scope say what this is.
-          source: "practice", scope: "full", pyq_year: null, pyq_month: null,
-          title: snap.title, duration_secs: snap.durationSecs, marking: snap.marking,
-          sections: snap.sections, questions: snap.questions,
-          total_questions: snap.totalQuestions, total_marks: snap.totalMarks,
-          status: publish ? "published" : "draft", updated_at: new Date().toISOString(),
-        },
+        // An assembled paper has NO sitting — see migration 0088. The CHECK
+        // permits a null year only because source/scope say what this is.
+        mockTestRow(snap, {
+          examId: exam.id, source: "practice", scope: "full",
+          pyqYear: null, pyqMonth: null, publish, now: new Date(),
+        }),
         { onConflict: "id" }
       );
       if (error) { failures.push(`${s.slug}: upsert ${error.message}`); continue; }

@@ -337,6 +337,10 @@ export async function submitAttempt(
       refKind: "mock_attempt",
       metadata: {
         mockId: attempt.mock_id,
+        // The mock's TYPE (migration 0088), so a readout can split chapter
+        // tests from full papers without joining back to mock_tests.
+        source: mock.source,
+        scope: mock.scope,
         score: result.score,
         maxScore: result.maxScore,
         correct: result.correct,
