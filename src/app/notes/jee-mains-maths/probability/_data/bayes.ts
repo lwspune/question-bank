@@ -6,7 +6,7 @@ export const BAYES_PROB_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Splitting an event over the ways it can happen (total probability), and reversing a conditional to find which way it most likely happened (Bayes' theorem), including cases where the contents of a bag are unknown.",
   whyItMatters:
-    "Twenty-six PYQs, the largest page in the chapter, and all but three multiple choice. Five only need the total probability of an outcome; sixteen then reverse it with Bayes' theorem; five infer an unknown bag or a lost card from what was drawn. Three ideas cover the page.",
+    "Twenty-six PYQs, all but three of them multiple choice. Five only need the total probability of an outcome; sixteen then reverse it with Bayes' theorem; five infer an unknown bag or a lost card from what was drawn. Three ideas cover the page.",
   concepts: [
     // C1 — total probability
     {
