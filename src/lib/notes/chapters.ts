@@ -985,6 +985,11 @@ import {
   JEE_ITF_NOTES,
   JEE_ITF_SLUGS,
 } from "@/app/notes/jee-mains-maths/inverse-trigonometric-functions/_data";
+import {
+  JEE_TRIG_EQUATIONS_CHAPTER,
+  JEE_TRIG_EQUATIONS_NOTES,
+  JEE_TRIG_EQUATIONS_SLUGS,
+} from "@/app/notes/jee-mains-maths/trigonometric-equations/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3158,6 +3163,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_ITF_CHAPTER,
     notes: JEE_ITF_NOTES,
     slugs: JEE_ITF_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "trigonometric-equations",
+    chipLabel: "Trigonometric Equations notes",
+    chapter: JEE_TRIG_EQUATIONS_CHAPTER,
+    notes: JEE_TRIG_EQUATIONS_NOTES,
+    slugs: JEE_TRIG_EQUATIONS_SLUGS,
   },
 ];
 
