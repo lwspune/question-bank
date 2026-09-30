@@ -6,6 +6,8 @@ main session checks) is in NOTES_WORKFLOW.md §0b; this file only says what each
 Run everything from the repo root. Working data — chapter dumps, fix specs, re-cut plans, tag specs —
 goes in `generated-papers/`, which is gitignored. Each tool reads `.env.local` for the Supabase keys.
 
+**Subject.** The tools default to Maths. For another subject set `JEE_SUBJECT=Chemistry` (or `Physics`) for `dump.ts`, `apply-chapter.sh` and `register.py`, and `JEE_ROUTE=jee-mains-chemistry` for `probe.sh`.
+
 | Tool | What it does | Writes to the DB? |
 |---|---|---|
 | `dump.ts "<chapter>" <outName>` | Dumps a chapter's PUBLIC rows to `generated-papers/<outName>.json` (adds `.json` itself). | No |

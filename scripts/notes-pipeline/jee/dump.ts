@@ -6,7 +6,7 @@ const [chapterName, outName] = process.argv.slice(2);
 async function main() {
   const sb = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
   const { data: exam } = await sb.from("exams").select("id").eq("name", process.env.EXAM ?? "JEE Mains").single();
-  const { data: subj } = await sb.from("subjects").select("id").eq("exam_id", exam!.id).eq("name", "Maths").single();
+  const { data: subj } = await sb.from("subjects").select("id").eq("exam_id", exam!.id).eq("name", process.env.JEE_SUBJECT ?? "Maths").single();
   const { data: ch } = await sb.from("chapters").select("id,name,order_index").eq("subject_id", subj!.id).eq("name", chapterName).single();
   const { data: subs } = await sb.from("subtopics").select("id,name,order_index").eq("chapter_id", ch!.id);
   const { data: qs, error } = await sb.from("questions")

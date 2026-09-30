@@ -1,5 +1,5 @@
 /**
- * Spec-driven repair for JEE Maths rows, persisted to the SOURCE OF RECORD
+ * Spec-driven repair for JEE rows (any subject), persisted to the SOURCE OF RECORD
  * (scripts/jee/papers/<id>.json) and then to the DB.
  *
  *   npx tsx scripts/notes-pipeline/jee/fix.ts <spec.json> [--apply]
