@@ -118,6 +118,14 @@ The Maths variant's routes and tier strands, with the MHT-CET axis swapped back:
 - **Keep trend prose free of figures.** Callouts carry a chapter, a direction and words; the page prints the rates from the generated grid, and a test fails when a direction stops matching. A number typed into prose is the thing that goes stale after the next ingest.
 - **A generator in Python rounds half-to-even.** 12.5% prints as 12 in Python and 13 in `Math.round`. Any generated figure the site also computes must use half-up — the live test that re-measures every "Name (count · N%)" pair is what caught six of them.
 
+#### Template C variant — an ungraded bank on a +4/−1 paper (JEE Mains Mathematics, 2026-09-30)
+
+The CDS routes and tier shape, with two measured differences:
+
+- **The same penalty can need two rules.** JEE takes 1 of 4 marks on MCQ and numeric alike, so a blind MCQ guess is worth +0.25 and a blind numeric guess close to −1. The guide states both as data (`GUESS_RULE`, `NUMERIC_RULE`), and the chapter table shows each chapter's numeric share, because a numeric-heavy chapter is one a guess cannot rescue.
+- **No difficulty grading means tiers on weight, and a moving syllabus means RECENT weight.** Every JEE row is MODERATE, so %HARD sorts nothing. Tiers come from the 2025-26 rate per 25-question paper (`tierOf`), chapters with no recent question are listed as having left the paper, and a test pins the membership so an ingest that moves a chapter across a line is reviewed rather than silent.
+- **When papers change length, compare shares, not counts.** JEE went from 30 printed questions to 25 in 2025, and older sitting notes merge shifts, so the grid is chapter × YEAR and every rate is a share of that year scaled to one paper (`src/lib/guide/jeeTrendsMatrix.ts`). The shared headline test measures the live paper size only from `liveFromYear` for the same reason.
+
 #### Execution-mode variant on the MHT-CET frame (MHT-CET Chemistry, 2026-09-28)
 
 The third MHT-CET guide keeps the MHT-CET route frame and data shapes but swaps the strand axis, because the measurement said to:
