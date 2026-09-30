@@ -421,7 +421,7 @@
     },
     "90": {
       "chapter": "Differentiation",
-      "subtopic": "Differentiation"
+      "subtopic": "Implicit, Parametric and Logarithmic Differentiation"
     }
   },
   "stemOverrides": {
@@ -472,7 +472,8 @@
     "80": "The hexagon has perimeter \\(6s\\), so the square has perimeter \\(20-6s\\) and side \\(\\frac{10-3s}{2}\\). The combined area is \\(A=\\left(\\frac{10-3s}{2}\\right)^{2}+\\frac{3\\sqrt{3}}{2}s^{2}\\). Setting \\(\\frac{dA}{ds}=-\\frac{3(10-3s)}{2}+3\\sqrt{3}\\,s=0\\) gives \\(2\\sqrt{3}\\,s=10-3s\\), so \\(s=\\frac{10}{3+2\\sqrt{3}}\\). Since \\(\\frac{d^{2}A}{ds^{2}}>0\\), this is the minimum. Hence (D).",
     "82": "\\(f(x)=3x^4+4x^3-12x^2+4\\) has \\(f'(x)=12x(x+2)(x-1)\\): local minima at \\(x=-2\\) and \\(x=1\\), a local maximum at \\(x=0\\). \\(f(-2)=-28<0\\), \\(f(0)=4>0\\), \\(f(1)=-1<0\\), and \\(f\\to\\infty\\) at both ends. So the graph crosses the axis once on each side of each minimum: 4 distinct real roots.",
     "85": "Completing the square, \\(x^{2}+x+1=\\left(x+\\tfrac12\\right)^{2}+\\tfrac34\\). With \\(u=x+\\tfrac12,\\ k=\\tfrac{\\sqrt3}{2}\\), \\(\\int\\frac{du}{(u^{2}+k^{2})^{2}}=\\frac{1}{2k^{2}}\\left[\\frac{u}{u^{2}+k^{2}}+\\frac1k\\tan^{-1}\\frac{u}{k}\\right]\\) gives \\(a=\\frac{4}{3\\sqrt3}\\) and \\(b=\\frac13\\). Hence \\(9(\\sqrt3\\,a+b)=9\\left(\\frac43+\\frac13\\right)=15\\).",
-    "89": "A six-digit palindrome \\(\\overline{abccba}\\) (with \\(a\\neq0\\)) is automatically divisible by 11, since its alternating digit sum is \\(a-b+c-c+b-a=0\\). Divisibility by 5 needs the last digit \\(a\\in\\{0,5\\}\\); as \\(a\\neq0\\), \\(a=5\\). With \\(b,c\\) each free (10 ways), the count is \\(10\\times10=100\\)."
+    "89": "A six-digit palindrome \\(\\overline{abccba}\\) (with \\(a\\neq0\\)) is automatically divisible by 11, since its alternating digit sum is \\(a-b+c-c+b-a=0\\). Divisibility by 5 needs the last digit \\(a\\in\\{0,5\\}\\); as \\(a\\neq0\\), \\(a=5\\). With \\(b,c\\) each free (10 ways), the count is \\(10\\times10=100\\).",
+    "90": "Solving the quadratic in \\(y^{1/4}\\) gives \\(y^{1/4}=x\\pm\\sqrt{x^2-1}\\). Take \\(y^{1/4}=x+\\sqrt{x^2-1}\\); the other root gives the same result. Then \\(\\frac14y^{-3/4}y'=1+\\frac{x}{\\sqrt{x^2-1}}=\\frac{y^{1/4}}{\\sqrt{x^2-1}}\\), so \\(\\sqrt{x^2-1}\\,y'=4y\\). Squaring, \\((x^2-1)y'^2=16y^2\\). Differentiate and divide by \\(2y'\\): \\((x^2-1)y''+xy'=16y\\), i.e. \\((x^2-1)y''+xy'-16y=0\\). So \\(\\alpha=1\\), \\(\\beta=-16\\), and \\(|\\alpha-\\beta|=17\\)."
   },
   "answerOverrides": {
     "31": "D",

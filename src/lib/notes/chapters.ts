@@ -960,6 +960,11 @@ import {
   JEE_STATISTICS_NOTES,
   JEE_STATISTICS_SLUGS,
 } from "@/app/notes/jee-mains-maths/statistics/_data";
+import {
+  JEE_DIFFERENTIATION_CHAPTER,
+  JEE_DIFFERENTIATION_NOTES,
+  JEE_DIFFERENTIATION_SLUGS,
+} from "@/app/notes/jee-mains-maths/differentiation/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3078,6 +3083,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_STATISTICS_CHAPTER,
     notes: JEE_STATISTICS_NOTES,
     slugs: JEE_STATISTICS_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "differentiation",
+    chipLabel: "Differentiation notes",
+    chapter: JEE_DIFFERENTIATION_CHAPTER,
+    notes: JEE_DIFFERENTIATION_NOTES,
+    slugs: JEE_DIFFERENTIATION_SLUGS,
   },
 ];
 
