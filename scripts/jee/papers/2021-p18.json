@@ -85,7 +85,7 @@
     },
     "31": {
       "chapter": "Coordination Compounds",
-      "subtopic": "Colour of Complexes"
+      "subtopic": "Crystal Field Theory and d-Orbital Splitting"
     },
     "32": {
       "chapter": "Surface Chemistry",
@@ -300,6 +300,7 @@
   "authoredSolutions": {
     "9": "Each of the first two NAND gates has both inputs tied, so they act as inverters: \\(X=\\bar A\\), \\(Y=\\bar B\\). The final AND gate gives \\(Z=\\bar A\\cdot\\bar B=(A+B)'\\) (De Morgan) — a NOR operation. Hence option (C).",
     "13": "Inside the solid conducting sphere the field is zero; in the gap between the sphere and the shell it falls as \\(\\frac{1}{r^{2}}\\) (\\(E=\\frac{kq}{r^{2}}\\)); the potential is constant inside each conductor and continuous across the gap. The graph showing \\(E=0\\) inside, a \\(1/r^{2}\\) decay in the gap, and the corresponding step-and-decay potential is option (A).",
+    "31": "(a) \\([\\mathrm{Fe(CN)_6}]^{4-}\\), ferrocyanide: pale yellow. (b) \\([\\mathrm{Fe(SCN)_6}]^{3-}\\): blood red, the thiocyanate test for \\(\\mathrm{Fe^{3+}}\\). (c) \\(\\mathrm{Fe_4[Fe(CN)_6]_3}\\): Prussian blue. (d) \\([\\mathrm{Fe(CN)_5NOS}]^{4-}\\): violet; it forms when sulphide ion is added to sodium nitroprusside, the test for \\(\\mathrm{S^{2-}}\\). Option (d).",
     "35": "\\(SOCl_2\\) with methanol esterifies the carboxylic acid (via the acid chloride), converting the \\(-COOH\\) of tryptophan to its methyl ester \\(-COOCH_3\\); the amino and indole groups are untouched. So the major product is tryptophan methyl ester. Hence option (C).",
     "36": "Isoprene is a conjugated diene, so HBr adds 1,4 (Markovnikov, the thermodynamically favoured product): \\(H\\) to C1 and \\(Br\\) to C4 gives 1-bromo-3-methylbut-2-ene, \\((CH_3)_2C{=}CH{-}CH_2Br\\). Hence option (A).",
     "38": "Statement I: by Kohlrausch's law, \\(\\Lambda_{m}^{\\circ}(\\mathrm{KCl}) = \\lambda^{\\circ}(\\mathrm{K^{+}}) + \\lambda^{\\circ}(\\mathrm{Cl^{-}}) = 73.5 + 76.3 = 149.8\\ \\mathrm{S\\,cm^{2}\\,mol^{-1}}\\), while \\(\\Lambda_{m}^{\\circ}(\\mathrm{CH_{3}COOH}) = \\lambda^{\\circ}(\\mathrm{H^{+}}) + \\lambda^{\\circ}(\\mathrm{CH_{3}COO^{-}}) = 349.6 + 40.9 = 390.5\\ \\mathrm{S\\,cm^{2}\\,mol^{-1}}\\). The weak acid has the LARGER limiting value because the proton is exceptionally mobile; being a weak electrolyte lowers \\(\\Lambda_{m}\\) at finite concentration, not \\(\\Lambda_{m}^{\\circ}\\). Statement I is false. Statement II: when the concentration decreases, molar conductivity INCREASES for every electrolyte, because interionic attraction weakens and, for a weak electrolyte, the degree of dissociation rises. Statement II is false. Both statements are false, option (d).",
@@ -327,5 +328,13 @@
     "88": "At \\(x=0\\), \\(\\log_{e}(0+y)=0\\Rightarrow y=1\\). Differentiate \\(\\log_{e}(x+y)=4xy\\):\n\\[\\frac{1+y'}{x+y}=4(y+xy').\\]\nAt \\((0,1)\\): \\(1+y'=4\\Rightarrow y'=3\\).\nDifferentiate again:\n\\[\\frac{y''(x+y)-(1+y')^{2}}{(x+y)^{2}}=4\\big(2y'+xy''\\big).\\]\nAt \\(x=0,\\ y=1,\\ y'=3\\): \\(\\dfrac{y''-16}{1}=4(6)=24\\), so\n\\[\\frac{d^{2}y}{dx^{2}}=y''=40.\\]",
     "89": "The number is even, so the units digit is \\(0,4,\\) or \\(6\\).\nUnits \\(=0\\): hundreds from \\(\\{1,3,4,6,7\\}\\) gives \\(5\\) choices, tens from the remaining \\(4\\): \\(5\\times4=20\\).\nUnits \\(=4\\): hundreds cannot be \\(0\\), leaving \\(\\{1,3,6,7\\}\\) i.e. \\(4\\) choices, tens from remaining \\(4\\): \\(4\\times4=16\\).\nUnits \\(=6\\): similarly \\(4\\times4=16\\).\n\\[\\text{Total}=20+16+16=52.\\]",
     "90": "For \\(x\\le 0\\), \\(f(0)=a\\sin\\frac{\\pi}{2}(0-1)=a\\sin\\left(-\\frac{\\pi}{2}\\right)=-a\\).\nFor \\(x>0\\), use \\(\\tan 2x-\\sin 2x=\\sin 2x\\cdot\\frac{1-\\cos 2x}{\\cos 2x}\\). As \\(x\\to0^{+}\\), \\(\\sin 2x\\approx 2x\\), \\(1-\\cos 2x\\approx 2x^{2}\\), \\(\\cos 2x\\to1\\), so the numerator \\(\\approx 4x^{3}\\) and\n\\[\\lim_{x\\to0^{+}}\\frac{\\tan 2x-\\sin 2x}{bx^{3}}=\\frac{4}{b}.\\]\nContinuity at \\(0\\) gives \\(-a=\\dfrac{4}{b}\\Rightarrow ab=-4\\). Hence\n\\[10-ab=10-(-4)=14.\\]"
+  },
+  "optionOverrides": {
+    "31": {
+      "A": "\\(\\left\\lbrack Fe(CN)_{6} \\right\\rbrack^{4 -}\\)",
+      "B": "\\(\\left\\lbrack Fe(SCN)_{6} \\right\\rbrack^{3 -}\\)",
+      "C": "\\({Fe}_{4}\\left\\lbrack Fe(CN)_{6} \\right\\rbrack_{3} \\cdot H_{2}O\\)",
+      "D": "\\(\\left\\lbrack Fe(CN)_{5}NOS \\right\\rbrack^{4 -}\\)"
+    }
   }
 }
