@@ -1060,6 +1060,11 @@ import {
   JEE_CH_COORD_NOTES,
   JEE_CH_COORD_SLUGS,
 } from "@/app/notes/jee-mains-chemistry/coordination-compounds/_data";
+import {
+  JEE_CH_ORM_CHAPTER,
+  JEE_CH_ORM_NOTES,
+  JEE_CH_ORM_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/organic-reaction-mechanisms/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3398,6 +3403,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_CH_COORD_CHAPTER,
     notes: JEE_CH_COORD_NOTES,
     slugs: JEE_CH_COORD_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "organic-reaction-mechanisms",
+    chipLabel: "Organic Reaction Mechanisms notes",
+    chapter: JEE_CH_ORM_CHAPTER,
+    notes: JEE_CH_ORM_NOTES,
+    slugs: JEE_CH_ORM_SLUGS,
   },
 ];
 
