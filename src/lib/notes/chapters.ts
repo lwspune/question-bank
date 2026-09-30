@@ -925,6 +925,11 @@ import {
   JEE_PNC_NOTES,
   JEE_PNC_SLUGS,
 } from "@/app/notes/jee-mains-maths/permutations-and-combinations/_data";
+import {
+  JEE_PROBABILITY_CHAPTER,
+  JEE_PROBABILITY_NOTES,
+  JEE_PROBABILITY_SLUGS,
+} from "@/app/notes/jee-mains-maths/probability/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2966,6 +2971,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_PNC_CHAPTER,
     notes: JEE_PNC_NOTES,
     slugs: JEE_PNC_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "probability",
+    chipLabel: "Probability notes",
+    chapter: JEE_PROBABILITY_CHAPTER,
+    notes: JEE_PROBABILITY_NOTES,
+    slugs: JEE_PROBABILITY_SLUGS,
   },
 ];
 
