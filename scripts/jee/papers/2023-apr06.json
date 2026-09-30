@@ -351,7 +351,7 @@
     "71": {
       "subject": "Maths",
       "chapter": "Indefinite Integration",
-      "subtopic": "Standard Integrals & Techniques"
+      "subtopic": "Integration by Parts and Reverse Differentiation"
     },
     "73": {
       "subject": "Maths",
@@ -939,7 +939,7 @@
     "68": "D",
     "69": "D",
     "70": "D",
-    "71": "A",
+    "71": "C",
     "73": "A",
     "74": "A",
     "75": "A",
@@ -1146,7 +1146,7 @@
     "68": "Second differences constant \\(=2\\Rightarrow a_n=n^2+3n+1.\\) \\(\\sum_{1}^{20}=\\dfrac{20\\cdot21\\cdot41}{6}+3\\cdot\\dfrac{20\\cdot21}{2}+20=2870+630+20=3520.\\)",
     "69": "Combined mean \\(=13;\\) deviations \\(d_1=-1,d_2=1.\\) \\(13=\\dfrac{15(14+1)+15(\\sigma^2+1)}{30}\\Rightarrow390=240+15\\sigma^2\\Rightarrow\\sigma^2=10.\\)",
     "70": "Cayley-Hamilton: \\(A^2=aA-bI\\) with \\(a=\\text{tr}A,b=|A|.\\) \\(A^2=I\\Rightarrow aA=(1+b)I.\\) If \\(a\\ne0\\), \\(A\\) is scalar (diagonal), contradicting all \\(a_{ij}\\ne0\\); so \\(a=0\\Rightarrow b=-1.\\) \\(3a^2+4b^2=0+4=4.\\)",
-    "71": "The antiderivative is \\(I(x)=2\\ln(x\\tan x+1)-\\dfrac{x^2}{x\\tan x+1}\\) with \\(I(0)=0.\\) At \\(x=\\pi/4\\), \\(x\\tan x+1=(\\pi+4)/4\\), so \\(I(\\pi/4)=\\ln\\dfrac{(\\pi+4)^2}{16}-\\dfrac{\\pi^2}{4(\\pi+4)}.\\)",
+    "71": "Let \\(u=x\\tan x+1\\), so \\(u'=\\tan x+x\\sec^2x\\) and the integrand is \\(x^2\\frac{u'}{u^2}\\). By parts, \\(I=-\\frac{x^2}{u}+\\int\\frac{2x}{x\\tan x+1}dx=-\\frac{x^2}{x\\tan x+1}+\\int\\frac{2x\\cos x}{x\\sin x+\\cos x}dx\\). Since \\(\\frac{d}{dx}(x\\sin x+\\cos x)=x\\cos x\\), \\(I=2\\ln|x\\sin x+\\cos x|-\\frac{x^2}{x\\tan x+1}+C\\), and \\(I(0)=0\\) gives \\(C=0\\). At \\(x=\\frac\\pi4\\): \\(x\\sin x+\\cos x=\\frac{\\pi+4}{4\\sqrt2}\\), so the log term is \\(\\ln\\frac{(\\pi+4)^2}{32}\\), and \\(\\frac{x^2}{x\\tan x+1}=\\frac{\\pi^2/16}{(\\pi+4)/4}=\\frac{\\pi^2}{4(\\pi+4)}\\). Hence \\(I\\left(\\frac\\pi4\\right)=\\ln\\frac{(\\pi+4)^2}{32}-\\frac{\\pi^2}{4(\\pi+4)}\\), option (c). (The old key (a) came from \\(2\\ln(x\\tan x+1)\\), which differs from \\(2\\ln(x\\sin x+\\cos x)\\) by \\(2\\ln\\cos x\\) and is not an antiderivative.)",
     "73": "\\((P\\Rightarrow Q)\\wedge(R\\Rightarrow Q)=(\\lnot P\\vee Q)\\wedge(\\lnot R\\vee Q)=Q\\vee(\\lnot P\\wedge\\lnot R)=Q\\vee\\lnot(P\\vee R)=(P\\vee R)\\Rightarrow Q.\\)",
     "74": "On \\([3,5]:\\ -(x^2-8x+15)-2x+7=0\\Rightarrow x^2-6x+8=0\\Rightarrow x=4.\\) Outside: \\(x^2-10x+22=0\\Rightarrow x=5\\pm\\sqrt3\\), only \\(5+\\sqrt3\\) valid. Sum \\(=4+(5+\\sqrt3)=9+\\sqrt3.\\)",
     "75": "\\(\\dfrac{1}{\\sqrt{a_k}+\\sqrt{a_{k+1}}}=\\dfrac{\\sqrt{a_{k+1}}-\\sqrt{a_k}}{d}\\), so the sum telescopes to \\(\\dfrac{\\sqrt{a_n}-\\sqrt{a_1}}{d}.\\) With \\(a_n\\approx nd\\), \\(\\sqrt{d/n}\\cdot\\dfrac{\\sqrt{nd}}{d}=\\sqrt{d^2}/d=1.\\)",
@@ -1267,6 +1267,7 @@
     "29": "Two identical solid spheres each of mass \\(2\\text{ }kg\\) and radii \\(10\\text{ }cm\\) are fixed at the ends of a light rod. The separation between the centres of the spheres is \\(40\\text{ }cm\\). The moment of inertia of the system about an axis perpendicular to the rod passing through its middle point is \\(\\_\\_\\_\\times10^{- 3}\\text{ }kg -m^{2}\\)",
     "64": "If the ratio of the fifth term from the begining to the fifth term from the end in the expansion of \\(\\left( \\sqrt[4]{2}+\\frac{1}{\\sqrt[4]{3}} \\right)^{n}\\) is \\(\\sqrt{6}:1\\), then the third term from the beginning is:",
     "66": "The straight lines \\(l_{1}\\) and \\(l_{2}\\) pass through the origin and trisect the line segment of the line L: \\(9x + 5y = 45\\) between the axes. If \\(m_{1}\\) and \\(m_{2}\\) are the slopes of the lines \\(l_{1}\\) and \\(l_{2}\\),then the point of intersection of the line \\(y =\\left( m_{1}+m_{2} \\right)x\\) with \\(L\\) lies on",
+    "71": "Let \\(I(x) = \\int\\frac{x^{2}\\left( x\\sec^{2}x + \\tan x \\right)}{(x\\tan x + 1)^{2}}dx\\). If \\(I(0) = 0\\), then \\(I\\left( \\frac{\\pi}{4} \\right)\\) is equal to",
     "79": "Let the position vectors of the points \\(A,B,C\\) and \\(D\\) be \\(5\\widehat{i}+ 5\\widehat{j}+ 2\\lambda\\widehat{k},\\widehat{i}+ 2\\widehat{j}+ 3\\widehat{k}, - 2\\widehat{i}+ \\lambda\\widehat{j}+ 4\\widehat{k}\\) and \\(-\\widehat{i}+ 5\\widehat{j}+ 6\\widehat{k}\\). Let \\(S=\\{\\lambda\\in R:\\) the points \\(A,B,C\\) and \\(D\\) are coplanar\\(\\}\\). Then \\(\\sum_{\\lambda \\in S} (\\lambda + 2)^{2}\\) is equal to",
     "92": "A capacitor of capacitance \\(150.0\\mu F\\) is connected to an alternating source of emf given by \\(e = 36\\) \\(sin(120\\pi t)V\\). The maximum value of current in the circuit is approximately equal to:",
     "99": "A child of mass \\(5\\text{ }kg\\) is going round a merry-goround that makes 1 rotation in \\(3.14\\text{ }s\\). The radius of the merry-go-round is \\(2\\text{ }m\\). The centrifugal force on the child will be",
@@ -1285,6 +1286,12 @@
     "180": "If the mean and variance of the frequency distribution\n\n| \\(x_{i}\\) | 2 | 4 | 6 | 8 | 10 | 12 | 14 | 16 |\n|---|---|---|---|---|---|---|---|---|\n| \\(f_{i}\\) | 4 | 4 | \\(\\alpha\\) | 15 | 8 | \\(\\beta\\) | 4 | 5 |\n\nare 9 and 15.08 respectively, then the value of \\(\\alpha^{2}+\\beta^{2}-\\alpha\\beta\\) is"
   },
   "optionOverrides": {
+    "71": {
+      "A": "\\(\\log_{e}\\frac{(\\pi + 4)^{2}}{16} - \\frac{\\pi^{2}}{4(\\pi + 4)}\\)",
+      "B": "\\(\\log_{e}\\frac{(\\pi + 4)^{2}}{16} + \\frac{\\pi^{2}}{4(\\pi + 4)}\\)",
+      "C": "\\(\\log_{e}\\frac{(\\pi + 4)^{2}}{32} - \\frac{\\pi^{2}}{4(\\pi + 4)}\\)",
+      "D": "\\(\\log_{e}\\frac{(\\pi + 4)^{2}}{32} + \\frac{\\pi^{2}}{4(\\pi + 4)}\\)"
+    },
     "128": {
       "A": "Number of intermediates \\(= 3\\), Number of activated complexes \\(= 2\\), Rate determining step \\(=\\) II",
       "B": "Number of intermediates \\(= 2\\), Number of activated complexes \\(= 3\\), Rate determining step \\(=\\) II",

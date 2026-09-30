@@ -176,7 +176,7 @@
     },
     "63": {
       "chapter": "Indefinite Integration",
-      "subtopic": "Standard Integrals & Techniques"
+      "subtopic": "Trigonometric Integrals"
     },
     "64": {
       "chapter": "Height & Distance",
@@ -296,7 +296,7 @@
     "48": "HCl adds across the ring double bond by Markovnikov's rule to give the alkyl chloride A. \\(NaI\\) in dry acetone (Finkelstein reaction) then exchanges chloride for iodide, giving the alkyl iodide B. Hence option (D).",
     "61": "For real and equal roots, \\(b^2 = 4ac\\) with \\(a,b,c \\in \\{1,\\dots,6\\}\\): \\(b=2\\ (ac=1)\\), \\(b=4\\ (ac=4: (1,4),(2,2),(4,1))\\), \\(b=6\\ (ac=9: (3,3))\\) — 5 favourable triples out of \\(6^3 = 216\\). Hence the probability is \\(\\frac{5}{216}\\), option (D).",
     "62": "From \\(l+m-n=0\\), \\(n=l+m\\); substituting into \\(l^2+m^2-n^2=0\\) gives \\(l^2+m^2=(l+m)^2\\), so \\(lm=0\\). One line then has \\(l=0\\), i.e. \\((0,\\tfrac{1}{\\sqrt2},\\tfrac{1}{\\sqrt2})\\), and the other \\(m=0\\), i.e. \\((\\tfrac{1}{\\sqrt2},0,\\tfrac{1}{\\sqrt2})\\), so \\(\\cos\\alpha=\\tfrac12\\). Then \\(\\cos^2\\alpha=\\tfrac14,\\ \\sin^2\\alpha=\\tfrac34\\), giving \\(\\sin^4\\alpha+\\cos^4\\alpha=\\tfrac{9}{16}+\\tfrac{1}{16}=\\tfrac{5}{8}\\). Hence option (C).",
-    "63": "Using \\(1-\\cos2\\theta = 2\\sin^2\\theta\\) and \\(\\sin2\\theta = 2\\sin\\theta\\cos\\theta\\), the integrand simplifies to \\(\\cos\\theta\\,(\\sin^6\\theta+\\sin^4\\theta+\\sin^2\\theta)\\sqrt{2\\sin^4\\theta+3\\sin^2\\theta+6}\\). The substitution \\(t=\\sin\\theta\\) then reduces it to a standard integral whose value is the expression in option (C).",
+    "63": "Since \\(1-\\cos2\\theta=2\\sin^2\\theta\\) and \\(\\sin2\\theta=2\\sin\\theta\\cos\\theta\\), the integrand is \\(\\cos\\theta\\,(\\sin^6\\theta+\\sin^4\\theta+\\sin^2\\theta)\\sqrt{2\\sin^4\\theta+3\\sin^2\\theta+6}\\). Put \\(t=\\sin\\theta\\) (with \\(t>0\\)): it becomes \\((t^5+t^3+t)\\sqrt{2t^6+3t^4+6t^2}\\,dt\\). With \\(w=2t^6+3t^4+6t^2\\), \\(dw=12(t^5+t^3+t)\\,dt\\), so the integral is \\(\\frac1{12}\\cdot\\frac23w^{3/2}=\\frac1{18}\\left(2\\sin^6\\theta+3\\sin^4\\theta+6\\sin^2\\theta\\right)^{3/2}+c\\). Writing \\(\\sin^2\\theta=1-\\cos^2\\theta\\) turns the bracket into \\(11-18\\cos^2\\theta+9\\cos^4\\theta-2\\cos^6\\theta\\), option (c).",
     "67": "\\(A\\rightarrow(B\\rightarrow A)=\\sim A\\vee\\sim B\\vee A\\), which contains \\(A\\vee\\sim A\\), so it is a tautology. Option (b), \\(A\\rightarrow(A\\vee B)=\\sim A\\vee A\\vee B\\), is also a tautology. Options (a) and (c) both reduce to \\(\\sim A\\vee B\\), and (d) is false at \\(A=T,B=F\\). So the statement is equivalent to (b).",
     "69": "The line \\(2x+y=1\\) has slope \\(-2\\), so the perpendicular tangent has slope \\(\\tfrac12\\). A tangent to \\(y^2=6x\\) of slope \\(m\\) is \\(y=mx+\\tfrac{3/2}{m}\\); with \\(m=\\tfrac12\\) this is \\(y=\\tfrac{x}{2}+3\\), i.e. \\(x-2y+6=0\\). Testing the points, \\((5,4)\\) gives \\(5-8+6=3\\neq0\\), so it does NOT lie on the tangent. Hence option (D).",
     "70": "Putting \\(n=1,2,\\dots\\) in \\(f(n+1)=f(n)+f(1)\\) gives \\(f(n)=nf(1)\\), so \\(f\\) is one-one: (A) holds. If \\(f\\circ g\\) is one-one then \\(g\\) must be one-one: (B) holds. If \\(f\\) is onto, 1 is a value, so \\(f(1)=1\\) and \\(f(n)=n\\): (D) holds. But \\(g\\) onto does not make \\(f\\circ g\\) one-one: take \\(g(1)=1\\) and \\(g(n)=n-1\\) for \\(n\\ge2\\), which is onto but sends 1 and 2 to the same value. So (C) is NOT true.",
