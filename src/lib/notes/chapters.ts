@@ -1075,6 +1075,11 @@ import {
   JEE_CH_DFB_NOTES,
   JEE_CH_DFB_SLUGS,
 } from "@/app/notes/jee-mains-chemistry/d-and-f-block-elements/_data";
+import {
+  JEE_CH_HALO_CHAPTER,
+  JEE_CH_HALO_NOTES,
+  JEE_CH_HALO_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/haloalkanes-and-haloarenes/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3446,6 +3451,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_CH_DFB_CHAPTER,
     notes: JEE_CH_DFB_NOTES,
     slugs: JEE_CH_DFB_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "haloalkanes-and-haloarenes",
+    chipLabel: "Haloalkanes and Haloarenes notes",
+    chapter: JEE_CH_HALO_CHAPTER,
+    notes: JEE_CH_HALO_NOTES,
+    slugs: JEE_CH_HALO_SLUGS,
   },
 ];
 
