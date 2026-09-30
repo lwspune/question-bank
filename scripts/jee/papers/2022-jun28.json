@@ -386,7 +386,7 @@
     "80": {
       "subject": "Maths",
       "chapter": "Mathematical Reasoning",
-      "subtopic": "Logical Equivalence"
+      "subtopic": "Implications, Converse and Statements in Words"
     },
     "81": {
       "subject": "Maths",
@@ -876,7 +876,7 @@
     "180": {
       "subject": "Maths",
       "chapter": "Mathematical Reasoning",
-      "subtopic": "Tautology and Logical Connectives"
+      "subtopic": "Truth Values, Tautologies and Contradictions"
     }
   },
   "answerOverrides": {
@@ -1234,7 +1234,7 @@
     "177": "Eigenvalues of \\(A\\): \\(\\lambda^2-(1+i)\\lambda+i=0\\Rightarrow\\lambda=1,i\\) (distinct, so \\(A\\) diagonalizable). \\(A^n=A\\iff i^n=i\\iff n\\equiv1\\pmod4\\). In \\(\\{1,\\dots,100\\}\\) that is \\(1,5,\\dots,97\\): \\(25\\) values.",
     "178": "With \\(z=x+iy\\), \\(\\bar z=(1+i)z^2-z\\) splits into \\(x^2-y^2+2xy=0\\) and \\(x^2-y^2-2xy-2x=0\\). Solutions: \\(z=0\\) (\\(|z|^2=0\\)) and \\(y=-\\tfrac12,\\ x=\\tfrac{1\\pm\\sqrt2}2\\) with \\(|z|^2=x+\\tfrac12=1\\pm\\tfrac{\\sqrt2}2\\). Sum \\(=0+(1+\\tfrac{\\sqrt2}2)+(1-\\tfrac{\\sqrt2}2)=2\\).",
     "179": "The condition forces \\(f(a,b)=f(b,a)\\ge\\max(a,b)\\), so \\(f\\) is fixed by its values on the 10 unordered pairs. Pairs whose larger entry is 4 must map to 4. Only \\(\\{1,1\\}\\) can give 1, so \\(f(1,1)=1\\). The pairs \\(\\{1,2\\},\\{2,2\\}\\) take values in \\(\\{2,3,4\\}\\) and must include a 2; the pairs \\(\\{1,3\\},\\{2,3\\},\\{3,3\\}\\) take values in \\(\\{3,4\\}\\), and some pair must give 3. If the first two pairs are \\((2,3)\\) or \\((3,2)\\): \\(2\\times2^3=16\\). If they are \\((2,2),(2,4)\\) or \\((4,2)\\), a 3 must come from the other three: \\(3\\times(2^3-1)=21\\). Total \\(37\\).",
-    "180": "For a suitable truth assignment to \\(p,q,r,s\\) (e.g. one making the disjunctions cover), all nine disjunctive clauses can be satisfied simultaneously; hence the maximum number simultaneously true is \\(9\\)."
+    "180": "Take \\(p=T,\\ r=F,\\ s=F\\) and any \\(q\\). Then \\(p\\) is true, which satisfies the first three propositions; \\(\\sim r\\) is true, which satisfies \\(\\sim p\\vee\\sim r\\vee s\\) and \\(\\sim p\\vee\\sim r\\vee\\sim s\\); and \\(\\sim s\\) is true, which satisfies the last four. So all nine can be true at once, and the maximum is \\(9\\)."
   },
   "skip": [
     24,
@@ -1259,13 +1259,15 @@
     "75": "If two distinct points \\(Q,R\\) lie on the line of intersection of the planes \\(-x + 2y - z = 0\\) and \\(3x - 5y + 2z = 0\\) and \\(PQ = PR =\\sqrt{18}\\) where the point \\(P\\) is \\((1, - 2,3)\\), then the area of the triangle \\(PQR\\) is equal to",
     "76": "The acute angle between the planes \\(P_{1}\\) and \\(P_{2}\\), when \\(P_{1}\\) and \\(P_{2}\\) are the planes passing through the intersection of the planes \\(5x + 8y + 13z - 29 = 0\\) and \\(8x - 7y + z - 20 = 0\\) and the points \\((2,1,3)\\) and \\((0,1,2)\\), respectively, is",
     "77": "Let the plane \\(P:\\overrightarrow{r}\\cdot\\overrightarrow{a}= d\\) contain the line of intersection of the planes \\(\\overrightarrow{r}\\cdot (\\widehat{i}+ 3\\widehat{j}-\\widehat{k}) = 6\\) and \\(\\overrightarrow{r}\\cdot ( - 6\\widehat{i}+ 5\\widehat{j}-\\widehat{k}) = 7\\). If the plane \\(P\\) passes through the point \\(\\left( 2,3,\\frac{1}{2} \\right)\\), then the value of \\(\\frac{|13\\overrightarrow{a}|^{2}}{d^{2}}\\) is equal to",
+    "80": "Let \\(p,q,r\\) be three logical statements. Consider the compound statements \\(S_{1}:(( \\sim p) \\vee q) \\vee (( \\sim p) \\vee r)\\) and \\(S_{2}:p \\rightarrow (q \\vee r)\\) Then, which of the following is NOT true?",
     "89": "The number of elements in the set \\(\\{ z = a + ib \\in \\mathbb{C}:a,b \\in \\mathbb{Z}\\) and \\(1 < |z - 3 + 2i| < 4\\}\\) is",
     "105": "An EM wave propagating in \\(x\\)-direction has a wavelength of \\(8\\text{ }mm\\). The electric field vibrating ydirection has maximum magnitude of \\(60Vm^{- 1}\\). Choose the correct equations for electric and magnetic fields if the EM wave is propagating in vacuum:",
     "111": "A student in the laboratory measures thickness of a wire using screw gauge. The readings are 1.22 \\(mm,1.23\\text{ }mm,1.19\\text{ }mm\\) and \\(1.20\\text{ }mm\\). The percentage error is \\(\\frac{x}{121}\\%\\). The value of \\(x\\) is",
     "118": "A liquid of density \\(750kgm^{- 3}\\) flows smoothly through a horizontal pipe that tapers in crosssectional area from \\(A_{1}= 1.2 \\times10^{- 2}{\\text{ }m}^{2}\\) to \\(A_{2}=\\frac{A_{1}}{2}\\). The pressure difference between the wide and narrow sections of the pipe is \\(4500\\text{ }Pa\\). The rate of flow of liquid is \\(\\times10^{- 3}{\\text{ }m}^{3}{\\text{ }s}^{- 1}\\).",
     "152": "Let \\(f(x)\\) be a quadratic polynomial such that \\(f( - 2) + f(3) = 0\\). If one of the roots of \\(f(x) = 0\\) is -1 , then the sum of the roots of \\(f(x) = 0\\) is equal to:",
     "163": "Let \\(a > 0,\\text{ }b > 0\\). Let \\(e\\) and \\(\\mathcal{l}\\) respectively be the eccentricity and length of the latus rectum of the hyperbola \\(\\frac{x^{2}}{a^{2}}-\\frac{y^{2}}{{\\text{ }b}^{2}}= 1\\). Let \\(e^{'}\\) and \\(\\mathcal{l}^{'}\\) respectively be the eccentricity and length of the latus rectum of its conjugate hyperbola. If \\(e^{2}=\\frac{11}{14}\\mathcal{l}\\) and \\(\\left( e^{'} \\right)^{2}=\\frac{11}{8}\\mathcal{l}^{'}\\), then the value of \\(77a + 44b\\) is equal to",
-    "166": "Let the plane \\(ax + by + cz = d\\) pass through \\((2,3, - 5)\\) and is perpendicular to the planes \\(2x + y - 5z = 10\\) and \\(3x + 5y - 7z = 12\\). If \\(a,b,c,d\\) are integers \\(d > 0\\) and \\(\\gcd(|a|,|b|,|c|,d)= 1\\), then the value of \\(a + 7b + c + 20d\\) is equal to"
+    "166": "Let the plane \\(ax + by + cz = d\\) pass through \\((2,3, - 5)\\) and is perpendicular to the planes \\(2x + y - 5z = 10\\) and \\(3x + 5y - 7z = 12\\). If \\(a,b,c,d\\) are integers \\(d > 0\\) and \\(\\gcd(|a|,|b|,|c|,d)= 1\\), then the value of \\(a + 7b + c + 20d\\) is equal to",
+    "180": "The maximum number of compound propositions, out of \\(p \\vee r \\vee s,p \\vee r \\vee \\sim s,p \\vee \\sim q \\vee s\\), \\(\\sim p \\vee \\sim r \\vee s, \\sim p \\vee \\sim r \\vee \\sim s, \\sim p \\vee q \\vee \\sim s\\), \\(q \\vee r \\vee \\sim s,q \\vee \\sim r \\vee \\sim s, \\sim p \\vee \\sim q \\vee \\sim s\\) that can be made simultaneously true by an assignment of the truth values to \\(p,q,r\\) and \\(s\\), is equal to"
   },
   "optionOverrides": {
     "4": {
