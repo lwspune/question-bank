@@ -30,6 +30,7 @@ import { STRATEGY_HEADLINE as CET_MATHS_HEADLINE } from "@/app/guide/mht-cet-mat
 import { STRATEGY_HEADLINE as CET_PHYSICS_HEADLINE } from "@/app/guide/mht-cet-physics/_data/strategy";
 import { STRATEGY_HEADLINE as CET_CHEMISTRY_HEADLINE } from "@/app/guide/mht-cet-chemistry/_data/strategy";
 import { STRATEGY_HEADLINE as CDS_MATHS_HEADLINE } from "@/app/guide/cds-maths/_data/strategy";
+import { STRATEGY_HEADLINE as JEE_MATHS_HEADLINE } from "@/app/guide/jee-mains-maths/_data/strategy";
 
 type Headline = {
   paperQ: number;
@@ -49,7 +50,7 @@ type Headline = {
  * headline. Making the scheme explicit data is what keeps the invariant
  * meaningful for both.
  */
-type MarkingScheme = "one-third" | "none";
+type MarkingScheme = "one-third" | "one-quarter" | "none";
 
 type GuideSpec = {
   guide: string;
@@ -57,6 +58,12 @@ type GuideSpec = {
   examName: string;
   subjectName: string;
   marking: MarkingScheme;
+  /**
+   * Measure the live average only from this year on. The headline describes the CURRENT paper; when
+   * the format changed, older sittings measure a different paper. JEE Mains went from 30 printed
+   * Maths questions to 25 in 2025, and its pre-2025 rows carry sitting notes that merge shifts.
+   */
+  liveFromYear?: number;
 };
 
 const GUIDES: GuideSpec[] = [
@@ -72,6 +79,8 @@ const GUIDES: GuideSpec[] = [
   { guide: "mht-cet-chemistry", headline: CET_CHEMISTRY_HEADLINE, examName: "MHT-CET", subjectName: "Chemistry", marking: "none" },
   // CDS shares the one-third rule with NDA: 1 mark right, 1/3 lost wrong, on a 100-question paper.
   { guide: "cds-maths", headline: CDS_MATHS_HEADLINE, examName: "CDS", subjectName: "Mathematics", marking: "one-third" },
+  // JEE Mains: +4 right, -1 wrong on MCQ and numeric alike — a quarter of the mark, not a third.
+  { guide: "jee-mains-maths", headline: JEE_MATHS_HEADLINE, examName: "JEE Mains", subjectName: "Maths", marking: "one-quarter", liveFromYear: 2025 },
 ];
 
 const HAS_ENV =
@@ -94,6 +103,8 @@ describe("STRATEGY_HEADLINE — internal invariants (pure)", () => {
             headline.marksPerCorrect / 3,
             2 // allow rounding (NDA Maths uses 0.83, exact would be 0.833)
           );
+        } else if (marking === "one-quarter") {
+          expect(headline.penaltyPerWrong).toBe(headline.marksPerCorrect / 4);
         } else {
           // MHT-CET deducts nothing. This is not a missing value — it is the
           // fact the whole guide's strategy rests on, so pin it as exactly 0.
@@ -162,7 +173,7 @@ describe.skipIf(!HAS_ENV)(
       );
     });
 
-    for (const { guide, headline, examName, subjectName } of GUIDES) {
+    for (const { guide, headline, examName, subjectName, liveFromYear } of GUIDES) {
       it(`${guide}: paperQ within ±30% of live avg q/paper for ${examName}/${subjectName}`, async () => {
         // Each paper = distinct (pyq_year, pyq_month, pyq_note). Group, count
         // per group, average across groups. Mirrors the SQL probe in the
@@ -189,6 +200,7 @@ describe.skipIf(!HAS_ENV)(
               .eq("exams.name", examName)
               .eq("subjects.name", subjectName)
               .not("pyq_year", "is", null)
+              .gte("pyq_year", liveFromYear ?? 0)
               .range(offset, offset + pageSize - 1)
           );
 

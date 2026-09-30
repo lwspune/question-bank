@@ -269,10 +269,29 @@ const CDS_GUIDES: SubjectGuideCard[] = [
   },
 ];
 
+const JEE_MAINS_GUIDES: SubjectGuideCard[] = [
+  {
+    href: "/guide/jee-mains-maths",
+    exam: "JEE Mains Mathematics",
+    title: "How JEE Mains Maths actually works",
+    blurb:
+      "Four chapters carry a third of the paper, and a wrong answer costs a mark on multiple-choice and numeric questions alike. So the guide is about what to learn first, which answers to guess and which to leave blank.",
+    qCount: 3556,
+    yearWindow: "2021–2026 · every shift",
+    highlights: [
+      "Cornerstone (Conic Sections, 3D Geometry, Relations and Functions, Sequences and Series) / Core / Long-tail tiers, set by the 2025–26 papers",
+      "24 chapter playbooks, each linked to full teaching notes",
+      "The guessing rule: a blind MCQ guess is worth +0.25, a blind numeric guess close to −1",
+      "Trends: Conic Sections and Relations and Functions up; three chapters gone from the paper",
+    ],
+  },
+];
+
 export const GUIDE_CATALOG: Partial<Record<ExamSlug, SubjectGuideCard[]>> = {
   nda: NDA_GUIDES,
   "mht-cet": MHT_CET_GUIDES,
   cds: CDS_GUIDES,
+  "jee-mains": JEE_MAINS_GUIDES,
 };
 
 /** The subject guides of one exam, in hub order; empty when it has none. */

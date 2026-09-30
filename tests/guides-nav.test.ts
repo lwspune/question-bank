@@ -30,8 +30,8 @@ describe("getGuideExamGroups", () => {
   it("excludes exams with no guide subtree", () => {
     const slugs = getGuideExamGroups().map((g) => g.slug);
     // These have notes and/or a bank but no /guide subtree.
-    expect(slugs).not.toContain("jee-mains");
     expect(slugs).not.toContain("neet");
+    expect(slugs).not.toContain("mh-hsc-12");
   });
 
   it("preserves EXAM_REGISTRY order", () => {

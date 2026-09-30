@@ -94,7 +94,7 @@ describe("buildExamHome", () => {
 
   it("links what the registry flags unlock, and nothing else", () => {
     expect(model.links.bank).toBe("/browse?examId=exam-uuid");
-    expect(model.links.guide).toBeNull(); // JEE has no /guide subtree
+    expect(model.links.guide).toBe("/guide/jee-mains"); // JEE Maths guide, 2026-09-30
     expect(model.links.notes).toBe("/notes/jee-mains");
     expect(model.links.mocks).toBe("/mock/exam/jee-mains");
     expect(model.links.board).toBeNull();
