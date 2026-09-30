@@ -291,7 +291,7 @@
     },
     "60": {
       "chapter": "Complex Numbers",
-      "subtopic": "Geometry of Complex Numbers"
+      "subtopic": "Lines and Circles in the Complex Plane"
     },
     "61": {
       "chapter": "Relations and Functions",
@@ -669,7 +669,7 @@
     },
     "142": {
       "chapter": "Complex Numbers",
-      "subtopic": "Modulus and Properties"
+      "subtopic": "Polar Form, Argument and De Moivre"
     },
     "143": {
       "chapter": "Three Dimensional Geometry",
@@ -689,7 +689,7 @@
     },
     "147": {
       "chapter": "Complex Numbers",
-      "subtopic": "Quadratic Equations and Complex Roots"
+      "subtopic": "Quadratic Equations with Complex Roots"
     },
     "148": {
       "chapter": "Conic Sections",
@@ -850,6 +850,7 @@
     "55": "Separate the variables: \\[\\frac{2e^{2x}}{7+e^{2x}}\\,dx=\\frac{dy}{3+y}.\\] With \\(u=7+e^{2x}\\), the left side integrates to \\(\\log_e(7+e^{2x})\\): \\(\\log_e(7+e^{2x})=\\log_e(3+y)+C\\Rightarrow 3+y=A(7+e^{2x}).\\) At \\((0,5)\\): \\(8=8A\\Rightarrow A=1\\), so \\(y=4+e^{2x}\\). At \\(x=\\log_e 2\\), \\(e^{2x}=4\\), giving \\(k=4+4=8.\\)",
     "56": "\\(f\\circ g=\\log_e\\big(g(x)\\big)\\) is defined where \\(g(x)>0\\). The denominator \\(2x^{2}-2x+1=2\\left(x-\\tfrac12\\right)^{2}+\\tfrac12>0\\), and the numerator \\(x^{4}-2x^{3}+3x^{2}-2x+2=(x^{2}-x)^{2}+2\\left(\\left(x-\\tfrac12\\right)^{2}+\\tfrac34\\right)>0\\) for every real \\(x\\). Hence \\(g(x)>0\\) for all \\(x\\), and the domain of \\(f\\circ g\\) is \\(R\\).",
     "57": "With unit radius, \\(\\angle AOB=15^\\circ\\) and \\(\\angle BOC=75^\\circ\\). Dot \\(\\overrightarrow{OC}=\\alpha\\overrightarrow{OA}+\\beta\\overrightarrow{OB}\\) with \\(\\overrightarrow{OA}\\): \\(0=\\alpha+\\beta\\cos15^\\circ\\); with \\(\\overrightarrow{OB}\\): \\(\\cos75^\\circ=\\alpha\\cos15^\\circ+\\beta\\). So \\(\\beta\\sin^215^\\circ=\\sin15^\\circ\\): \\(\\beta=\\frac1{\\sin15^\\circ}\\), \\(\\alpha=-\\cot15^\\circ=-(2+\\sqrt3)\\). Since \\(\\sin15^\\circ=\\frac{\\sqrt3-1}{2\\sqrt2}\\), \\(\\sqrt2(\\sqrt3-1)\\beta=4\\), and \\(\\alpha+\\sqrt2(\\sqrt3-1)\\beta=2-\\sqrt3\\).",
+    "60": "\\(3|\\bar z-i|=|2\\bar z+i|\\). With \\(\\bar z=x-iy\\): \\(9\\left(x^2+(y+1)^2\\right)=4x^2+(1-2y)^2\\), i.e. \\(5x^2+5y^2+22y+8=0\\), a circle with centre \\(C\\left(0,-\\frac{11}5\\right)\\). The triangle with vertices \\((0,0)\\), \\(C\\) and \\((\\alpha,0)\\) has area \\(\\frac12|\\alpha|\\cdot\\frac{11}5=11\\), so \\(|\\alpha|=10\\) and \\(\\alpha^2=100\\).",
     "61": "Reflexivity needs \\((1,1),(2,2),(4,4)\\): 3 pairs. Symmetry needs \\((2,1),(3,2)\\): 2 pairs. Transitivity then joins 1, 2 and 3 into one class, adding \\((1,3),(3,1)\\): 2 pairs. The classes are \\(\\{1,2,3\\}\\) and \\(\\{4\\}\\), so the relation has \\(9+1=10\\) pairs, 3 of them given: \\(7\\) added.",
     "72": "A term of the multinomial expansion is \\(\\frac{6!}{r_1!\\,r_2!\\,r_3!}\\,2^{r_2/3}\\,3^{r_3/2}\\) with \\(r_1+r_2+r_3=6\\). It is rational when \\(3\\mid r_2\\) and \\(2\\mid r_3\\). With \\(r_2=0\\): \\(r_3=0,2,4,6\\) give \\(1+45+135+27=208\\). With \\(r_2=3\\): \\(r_3=0\\) gives \\(20\\cdot2=40\\) and \\(r_3=2\\) gives \\(60\\cdot2\\cdot3=360\\). With \\(r_2=6\\): \\(2^2=4\\). The sum is \\(208+400+4=612\\).",
     "76": "At launch \\(KE = \\tfrac{1}{2}mu^{2}\\). At the highest point only the horizontal component survives, \\[v = u\\cos 60^{\\circ} = \\frac{u}{2},\\] so \\[KE' = \\frac{1}{2}m\\left( \\frac{u}{2} \\right)^{2} = \\frac{1}{4}\\left( \\frac{1}{2}mu^{2} \\right) = \\frac{KE}{4}.\\] The correct choice is B.",
@@ -904,6 +905,8 @@
     "125": "Absorbing 2 moles of hydrogen shows that X holds two \\(C=C\\) bonds, and oxidative cleavage by \\(KMnO_{4}/H^{+}\\) turns a fully substituted alkene carbon into a ketone and a \\(=CH-\\) carbon into \\(-COOH\\). Acetone requires a \\((CH_{3})_{2}C=\\) terminus and acetic acid a \\(=CH-CH_{3}\\) terminus, while 4-oxopentanoic acid is the middle fragment carrying a ketone at one end and an acid at the other. Reassembling gives \\(X = (CH_{3})_{2}C=C(CH_{3})-CH_{2}-CH_{2}-CH=CH-CH_{3}\\), i.e. \\(C_{10}H_{18}\\). An acyclic \\(C_{10}\\) skeleton has 9 carbon-carbon links, each contributing one \\(\\sigma\\) bond, plus 18 \\(C-H\\) bonds, so the total is \\(9 + 18 = 27\\).",
     "136": "Put \\(x=vy\\Rightarrow \\frac{dx}{dy}=v+y\\frac{dv}{dy}\\). Then \\(x-y\\frac{dx}{dy}=-y^2\\frac{dv}{dy}\\), so \\(y=\\big(x-y\\frac{dx}{dy}\\big)\\sin\\frac{x}{y}\\) becomes \\(y=-y^2\\frac{dv}{dy}\\sin v\\), i.e. \\(-\\sin v\\,dv=\\frac{dy}{y}.\\) Integrating: \\(\\cos v=\\log_e y+C\\), i.e. \\(\\cos\\frac{x}{y}=\\log_e y+C.\\) At \\(y=1,\\;x=\\frac{\\pi}{2}\\): \\(0=C\\), so \\(\\cos\\frac{x}{y}=\\log_e y.\\) At \\(y=2\\): \\(\\cos\\frac{x}{2}=\\log_e2\\), hence \\(\\cos(x(2))=2\\cos^2\\tfrac{x}{2}-1=2(\\log_e2)^2-1.\\)",
     "138": "A point on \\(y^2=4x\\) is \\((t^2,2t)\\); its squared distance from \\((a,0)\\) is \\((t^2-a)^2+4t^2\\). Minimizing gives \\(t^2=a-2\\), and the minimum squared distance is \\(4a-4\\). Setting \\(\\sqrt{4a-4}=4\\Rightarrow a=5\\), so the point is \\((5,0)\\). The focus of \\(y^2=4x\\) is \\((1,0)\\); a circle through \\((5,0)\\) and \\((1,0)\\) with centre on the \\(x\\)-axis has centre \\((3,0)\\), radius \\(2\\). Thus \\((x-3)^2+y^2=4\\Rightarrow x^2+y^2-6x+5=0.\\)",
+    "142": "With \\(z=e^{i\\theta}\\), \\(\\frac z{\\bar z}=e^{2i\\theta}\\) and \\(\\frac{\\bar z}z=e^{-2i\\theta}\\), so the condition is \\(|2\\cos2\\theta|=1\\), i.e. \\(\\cos2\\theta=\\pm\\frac12\\). For \\(\\theta\\in[0,2\\pi)\\), \\(2\\theta\\) runs over \\([0,4\\pi)\\), where each of \\(\\cos=\\frac12\\) and \\(\\cos=-\\frac12\\) has 4 solutions. So there are 8 such \\(z\\).",
+    "147": "Each root satisfies \\(x^2=ax+b\\), so \\(P_{n+2}=aP_{n+1}+bP_n\\). From \\(P_6=aP_5+bP_4\\): \\(45=11a-3b\\); from \\(P_5=aP_4+bP_3\\): \\(11=-3a-5b\\). Solving, \\(a=3\\), \\(b=-4\\). So \\(\\alpha+\\beta=3\\), \\(\\alpha\\beta=4\\), \\(\\alpha^2+\\beta^2=9-8=1\\), and \\(\\alpha^4+\\beta^4=1-2\\cdot16=-31\\). Hence \\(|\\alpha^4+\\beta^4|=31\\).",
     "149": "The numbers form an A.P. with first term \\(8\\), common difference \\(13\\) and last term \\(320\\), so \\(n=\\frac{320-8}{13}+1=25\\). The variance of an A.P. is \\(\\frac{d^{2}\\left(n^{2}-1\\right)}{12}=\\frac{13^{2}\\left(25^{2}-1\\right)}{12}=\\frac{169\\cdot 624}{12}=8788\\)."
   },
   "numericOverrides": {
