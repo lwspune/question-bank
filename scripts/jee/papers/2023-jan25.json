@@ -345,7 +345,7 @@
     },
     "71": {
       "chapter": "Indefinite Integration",
-      "subtopic": "Standard Integrals & Techniques"
+      "subtopic": "Rational Functions and Standard Forms"
     },
     "72": {
       "chapter": "Definite Integration",
@@ -903,6 +903,7 @@
     "67": "Take \\(a\\) out of the first row: \\(\\Delta=a\\begin{vmatrix}1&2&-3\\\\2a+1&2a+3&a+1\\\\3a+5&a+5&a+2\\end{vmatrix}\\). With \\(C_2\\to C_2-2C_1\\) and \\(C_3\\to C_3+3C_1\\) the first row becomes \\((1,0,0)\\), so \\(\\Delta=a[(1-2a)(10a+17)+(7a+4)(5a+5)]=a(15a^2+31a+37)\\). The quadratic has discriminant \\(31^2-4\\cdot15\\cdot37<0\\), so \\(\\Delta\\ne0\\) for every \\(a\\ne0\\) and the solution is always unique. Hence \\(S_1=R-\\{0\\}\\) and \\(S_2=\\Phi\\).",
     "68": "Group the numerator in threes: \\((3k-2)+(3k-1)-3k=3k-3\\), so it equals \\(\\sum_{k=1}^{n}(3k-3)=\\frac32(n^2-n)\\). The denominator is \\(\\sqrt{2n^4+4n+3}-\\sqrt{n^4+5n+4}=n^2\\left(\\sqrt{2+\\frac{4}{n^3}+\\frac{3}{n^4}}-\\sqrt{1+\\frac{5}{n^3}+\\frac{4}{n^4}}\\right)\\), which behaves like \\(n^2(\\sqrt2-1)\\). The limit is \\(\\frac{3}{2(\\sqrt2-1)}=\\frac32(\\sqrt2+1)\\).",
     "69": "The implication is false only if \\(p\\land(\\sim q)\\) is true and \\(p\\Rightarrow(\\sim q)\\) is false. But \\(p\\land(\\sim q)\\) true forces \\(p=T,\\ q=F\\), and then \\(p\\Rightarrow(\\sim q)=\\sim p\\vee\\sim q=T\\). So the statement is never false — it is a tautology.",
+    "71": "Put \\(t=x^2\\): \\(f=\\int\\frac{dt}{(t+1)(t+3)}=\\frac12\\ln\\frac{t+1}{t+3}+C=\\frac12\\ln\\frac{x^2+1}{x^2+3}+C\\). \\(f(3)=\\frac12\\ln\\frac{10}{12}=\\frac12(\\ln5-\\ln6)\\), so \\(C=0\\). Then \\(f(4)=\\frac12\\ln\\frac{17}{19}=\\frac12(\\ln17-\\ln19)\\). (The booklet prints the two arguments as the letters \\(c\\) and \\(d\\); \\(\\frac{c^2+1}{c^2+3}=\\frac56\\) forces \\(c^2=9\\), and option (d) needs \\(d^2=16\\).)",
     "72": "For \\(0\\le x\\le2\\), \\(f(x)=\\int_0^x e^{x-t}dt+\\int_x^2 e^{t-x}dt=(e^x-1)+(e^{2-x}-1)=e^x+e^{2-x}-2\\). By AM-GM, \\(e^x+e^{2-x}\\ge2e\\), with equality at \\(x=1\\), so the least value on \\([0,2]\\) is \\(2e-2\\). Outside, \\(f\\) is larger: for \\(x<0\\), \\(f(x)=e^{-x}(e^2-1)>e^2-1\\), and for \\(x>2\\), \\(f(x)=e^x(1-e^{-2})>e^2-1\\). Minimum \\(=2(e-1)\\).",
     "76": "Multiply by \\(1-x\\): \\((1-x)y=1-x^{32}\\), and \\(y(-1)=0\\). Differentiate: \\((1-x)y'-y=-32x^{31}\\); at \\(x=-1\\), \\(2y'=32\\), so \\(y'=16\\). Differentiate again: \\((1-x)y''-2y'=-992x^{30}\\); at \\(x=-1\\), \\(2y''-32=-992\\), so \\(y''=-480\\). Hence \\(y'-y''=16+480=496\\).",
     "78": "Write \\(l_x=\\ln x\\), \\(l_y=\\ln y\\), \\(l_z=\\ln z\\). Each entry is \\(a_{ij}=\\frac{l_j}{l_i}m_{ij}\\) with \\(M=\\begin{bmatrix}1&1&1\\\\1&2&1\\\\1&1&3\\end{bmatrix}\\), so \\(A=D^{-1}MD\\) with \\(D=\\mathrm{diag}(l_x,l_y,l_z)\\), and \\(|A|=|M|=5-2-1=2\\). For order 3, \\(|\\mathrm{adj}(\\mathrm{adj}\\,A^2)|=|A^2|^4=|A|^8=2^8\\).",
@@ -1011,6 +1012,7 @@
     "61": "Let the points of intersection of the line \\(ax+by=0\\ (a\\neq b)\\) and the circle \\(x^{2}+y^{2}-2x=0\\) be \\(A(\\alpha,0)\\) and \\(B(1,\\beta)\\). The image of the circle with \\(AB\\) as a diameter in the line \\(x+y+2=0\\) is:",
     "67": "Let \\(S_{1}\\) and \\(S_{2}\\) be respectively the sets of all \\(\\mathbf{a \\in R - \\{ 0\\}}\\) for which the system of linear equations \\[\\begin{matrix} & ax + 2ay - 3az = 1 \\\\ & \\ (2a + 1)x + (2a + 3)y + (a + 1)z = 2 \\\\ & \\ (3a + 5)x + (a + 5)y + (a + 2)z = 3 \\end{matrix}\\] has unique solution and infinitely many solutions respectively. Then",
     "68": "The value of \\(\\lim_{n \\rightarrow \\infty} \\frac{1 + 2 - 3 + 4 + 5 - 6 + \\cdots\\ldots + (3n - 2) + (3n - 1) - 3n}{\\sqrt{2n^{4}+ 4n + 3}-\\sqrt{n^{4}+ 5n + 4}}\\) is :",
+    "71": "Let \\(f(x) = \\int\\frac{2x}{\\left( x^{2}+ 1 \\right)\\left( x^{2}+ 3 \\right)}dx\\). If \\(f(3) =\\frac{1}{2}\\left( \\log_{e}5 -\\log_{e}6 \\right)\\), then \\(f(4)\\) is equal to",
     "87": "Let \\(x\\) and \\(y\\) be distinct integers where \\(1 \\leq x \\leq 25\\) and \\(1 \\leq y \\leq 25\\). Then, the number of ways of choosing \\(x\\) and \\(y\\) such that \\(x+y\\) is divisible by 5, is",
     "88": "Let \\(S =\\left\\{ \\alpha:\\log_{2}\\left( 9^{2\\alpha - 4}+ 13 \\right)-\\log_{2}\\left( \\frac{5}{2}\\cdot3^{2\\alpha - 4}+ 1 \\right)= 2 \\right\\}\\). Then the maximum value of \\(\\beta\\) for which the equation \\(x^{2}- 2\\left( \\sum_{\\alpha \\in S} \\alpha \\right)^{2}x +\\sum_{\\alpha \\in S} (\\alpha + 1)^{2}\\beta = 0\\) has real roots, is",
     "89": "If the area enclosed by the parabolas \\(P_{1}:2y = 5x^{2}\\) and \\(P_{2}:x^{2}- y + 6 = 0\\) is equal to the area enclosed by \\(P_{1}\\) and \\(y = \\alpha x,\\alpha > 0\\), then \\(\\alpha^{3}\\) is equal to",

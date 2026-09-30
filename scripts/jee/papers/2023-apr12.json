@@ -401,7 +401,7 @@
     },
     "85": {
       "chapter": "Indefinite Integration",
-      "subtopic": "Standard Integrals & Techniques"
+      "subtopic": "Algebraic Substitution"
     },
     "86": {
       "chapter": "Determinants",
@@ -438,6 +438,7 @@
     "70": "Among the two statements (S1) : \\((p \\Rightarrow q) \\land (q \\land ( \\sim q))\\) is a contradiction and (S2) : \\((p \\land q) \\vee (( \\sim p) \\land q) \\vee (p \\land ( \\sim q)) \\vee (( \\sim p) \\land ( \\sim q))\\) is a tautology",
     "75": "Let the plane \\(P:4x-y+z=10\\) be rotated by an angle \\(\\frac{\\pi}{2}\\) about its line of intersection with the plane \\(x+y-z=4\\). If \\(\\alpha\\) is the distance of the point \\((2,3,-4)\\) from the new position of the plane \\(P\\), then \\(35\\alpha\\) is",
     "78": "If the point \\(\\left( \\alpha,\\frac{7\\sqrt{3}}{3} \\right)\\) lies on the curve traced by the mid-points of the line segments of the lines \\(x\\cos\\theta + y\\sin\\theta = 7,\\theta \\in\\left( 0,\\frac{\\pi}{2} \\right)\\) between the coordinates axes, then \\(\\alpha\\) is equal to",
+    "85": "Let \\(I(x) = \\int\\sqrt{\\frac{x + 7}{x}}dx\\) and \\(I(9) = 12 + 7\\log_{e}7\\). If \\(I(1) = \\alpha + 7\\log_{e}(1 + 2\\sqrt{2})\\), then \\(\\alpha^{4}\\) is equal to",
     "86": "Let \\(D_{k}=\\left| \\begin{matrix} 1 & 2k & 2k - 1 \\\\ n & n^{2}+ n + 2 & n^{2} \\\\ n & n^{2}+ n & n^{2}+ n + 2 \\end{matrix} \\right|\\). If \\(\\sum_{k = 1}^{n} D_{k}= 96\\), then \\(n\\) is equal to"
   },
   "notes": "2023 12 Apr sitting — SINGLE shift (90 q: Phy 1-30, Chem 31-60, Maths 61-90 = 30 Maths: 20 MCQ + 10 NAT). Clean sequential soln numbering (number-matched keys; soln doc has extra sub-numbered lines but no duplicate 1-90 labels). Q75 truncated stem completed from soln (rotation about line of intersection with x+y-z=4).\n12 Apr 2023 — Chemistry only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.\n[Chemistry stem repair] Q39: leading 3 dropped. Molar mass = 0.57 x 22400/100 = 128; 55% of that is 70.4 = 2 x 35.5. Unsolvable as printed.\n[Chemistry stem repair] Q58: leading digit lost. rms_X(M=40) = most-probable_Y(90 K) gives M_Y = 2400/T; T = 600 yields exactly M_Y = 4 (helium).\n[Chemistry stem repair] Q59: the equilibrium arrow is glued to the next token, making an undefined control sequence that will not render.",
@@ -516,6 +517,7 @@
     "77": "\\(|z_1-z_0|=\\left|\\frac{1-i}2\\right|=\\frac1{\\sqrt2}\\), so \\(|z_2-z_0|=\\sqrt2\\) (outside \\(C\\), as needed). Collinearity puts \\(z_2\\) on the line through \\(z_0\\) in the direction of \\(z_1-z_0\\), whose unit vector is \\(\\frac{1-i}{\\sqrt2}\\): \\(z_2=z_0\\pm(1-i)\\), i.e. \\(\\frac32+\\frac i2\\) or \\(-\\frac12+\\frac{5i}2\\). Their \\(|z_2|^2\\) are \\(\\frac52\\) and \\(\\frac{13}2\\); the smaller is \\(\\frac52\\).",
     "79": "\\(\\alpha\\) and \\(\\beta\\) are independent, each with variance \\(\\frac{35}{12}\\), so \\(\\operatorname{Var}(\\alpha-\\beta)=\\frac{35}{12}+\\frac{35}{12}=\\frac{35}{6}\\). Thus \\(p=35\\), whose positive divisors \\(1,5,7,35\\) add to \\(48\\).",
     "83": "\\(f\\) can jump only at integers. At \\(x=-1\\): the left limit is \\(|-2|+\\sqrt1=3\\) and the right limit is \\(|-1|+0=1\\), so \\(f\\) is discontinuous. At \\(x=0\\): the left limit is \\(|-1|+1=2\\) and the right limit is \\(0\\), so \\(f\\) is discontinuous. These are the only integers in \\((-2,1)\\), so the answer is 2.",
+    "85": "Put \\(x=t^2\\): \\(\\int\\sqrt{\\frac{x+7}{x}}\\,dx=\\int2\\sqrt{t^2+7}\\,dt=t\\sqrt{t^2+7}+7\\ln\\left(t+\\sqrt{t^2+7}\\right)+C\\), i.e. \\(I(x)=\\sqrt{x(x+7)}+7\\ln\\left(\\sqrt x+\\sqrt{x+7}\\right)+C\\). \\(I(9)=12+7\\ln7\\) gives \\(C=0\\). Then \\(I(1)=\\sqrt8+7\\ln(1+2\\sqrt2)\\), so \\(\\alpha=2\\sqrt2\\) and \\(\\alpha^4=64\\). (The booklet prints the argument as the letter \\(a\\); \\(x=1\\) is the value whose log term is \\(7\\ln(1+2\\sqrt2)\\).)",
     "86": "Only the first row depends on \\(k\\), so \\(\\sum_{k=1}^n D_k\\) is the determinant with first row \\(\\left(n,\\ n(n+1),\\ n^2\\right)\\), the sums of \\(1\\), \\(2k\\) and \\(2k-1\\). \\(R_2\\to R_2-R_1\\) and \\(R_3\\to R_3-R_1\\) give rows \\((0,2,0)\\) and \\((0,0,n+2)\\), so the sum is \\(2n(n+2)=96\\). Then \\(n^2+2n-48=0\\) and \\(n=6\\)."
   }
 }

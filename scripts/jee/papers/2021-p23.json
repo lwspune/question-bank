@@ -397,7 +397,7 @@
     },
     "84": {
       "chapter": "Indefinite Integration",
-      "subtopic": "Standard Integrals & Techniques"
+      "subtopic": "Rational Functions and Standard Forms"
     },
     "85": {
       "chapter": "Conic Sections",
@@ -533,6 +533,7 @@
     "74": "\\(\\frac{z-i}{z-1}\\) purely imaginary means \\(z\\) sees the segment from \\(1\\) to \\(i\\) at a right angle, so \\(z\\) lies on the circle with that diameter: centre \\(\\frac{1+i}2\\), radius \\(\\frac1{\\sqrt2}\\). The distance from \\(3+3i\\) to the centre is \\(\\frac{5}{\\sqrt2}\\), so the minimum of \\(|z-(3+3i)|\\) is \\(\\frac5{\\sqrt2}-\\frac1{\\sqrt2}=2\\sqrt2\\).",
     "80": "The seven values sum to \\(7(8)=56\\) and \\(\\sum x^2=7(16+64)=560\\). Removing \\(6\\) and \\(8\\), the other five sum to \\(42\\) and have \\(\\sum x^2=560-36-64=460\\). Their variance \\(=\\frac{460}{5}-\\left(\\frac{42}{5}\\right)^2=\\frac{2300-1764}{25}=\\frac{536}{25}\\).",
     "83": "There are 9000 four-digit numbers. Multiples of 3: 3000. Multiples of 7: from 1001 to 9996, \\(\\frac{9996-1001}{7}+1=1286\\). Multiples of 21: from 1008 to 9996, \\(\\frac{9996-1008}{21}+1=429\\). Multiples of 3 or 7: \\(3000+1286-429=3857\\). Neither: \\(9000-3857=5143\\).",
+    "84": "Divide numerator and denominator by \\(\\cos^3x\\) and put \\(t=\\tan x\\): \\(\\int\\frac{\\tan x\\sec^2x}{1+\\tan^3x}dx=\\int\\frac{t\\,dt}{(t+1)(t^2-t+1)}\\). Partial fractions give \\(\\frac{t}{(t+1)(t^2-t+1)}=-\\frac{1}{3(t+1)}+\\frac{t+1}{3(t^2-t+1)}\\), and \\(\\frac{t+1}{3(t^2-t+1)}=\\frac16\\cdot\\frac{2t-1}{t^2-t+1}+\\frac12\\cdot\\frac{1}{\\left(t-\\frac12\\right)^2+\\frac34}\\). Integrating: \\(-\\frac13\\ln|1+t|+\\frac16\\ln|t^2-t+1|+\\frac1{\\sqrt3}\\tan^{-1}\\frac{2t-1}{\\sqrt3}+C\\). So \\(\\alpha=-\\frac13,\\ \\beta=\\frac16,\\ \\gamma=\\frac1{\\sqrt3}\\), and \\(18\\left(-\\frac13+\\frac16+\\frac13\\right)=3\\).",
     "90": "\\(f'\\) is a quadratic with its minimum at \\(x=-1\\), so \\(f'(x)=3k(x+1)^2+m\\); \\(f'(1)=0\\) gives \\(m=-12k\\). Then \\(f(x)=k(x+1)^3-12kx+c\\). \\(f(-1)=12k+c=6\\) and \\(f(1)=8k-12k+c=-4k+c=-10\\) give \\(k=1\\), \\(c=-6\\). So \\(f(x)=(x+1)^3-12x-6\\) and \\(f(3)=64-36-6=22\\)."
   },
   "notes": "\n[Chemistry stem repair] Q48: The extracted stem is truncated to the bare lead-in \"For the following:\" - the words naming what is being asked (the reaction sequence and its products) were lost. The reaction scheme itself survives intact in the attached figure, so the question is fully answerable; only the lead-in sentence is missing.\nPaper 23 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.",
