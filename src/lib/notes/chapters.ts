@@ -970,6 +970,11 @@ import {
   JEE_AOI_NOTES,
   JEE_AOI_SLUGS,
 } from "@/app/notes/jee-mains-maths/application-of-integrals/_data";
+import {
+  JEE_STRAIGHT_LINES_CHAPTER,
+  JEE_STRAIGHT_LINES_NOTES,
+  JEE_STRAIGHT_LINES_SLUGS,
+} from "@/app/notes/jee-mains-maths/straight-lines/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3110,6 +3115,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_AOI_CHAPTER,
     notes: JEE_AOI_NOTES,
     slugs: JEE_AOI_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "straight-lines",
+    chipLabel: "Straight Lines notes",
+    chapter: JEE_STRAIGHT_LINES_CHAPTER,
+    notes: JEE_STRAIGHT_LINES_NOTES,
+    slugs: JEE_STRAIGHT_LINES_SLUGS,
   },
 ];
 
