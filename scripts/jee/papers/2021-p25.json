@@ -299,7 +299,7 @@
     },
     "62": {
       "chapter": "Binomial Theorem",
-      "subtopic": "General Term and Irrational Terms"
+      "subtopic": "The General Term"
     },
     "63": {
       "chapter": "Definite Integration",
@@ -383,7 +383,7 @@
     },
     "83": {
       "chapter": "Binomial Theorem",
-      "subtopic": "Binomial Coefficient Sums"
+      "subtopic": "Coefficient Sums by Substitution and Differentiation"
     },
     "84": {
       "chapter": "Differential Equations",
@@ -469,7 +469,8 @@
     "58": "From \\(P(V_{m}-b) = RT\\) we get \\(V_{m}= \\frac{RT}{P}+ b\\). The compressibility factor is \\(Z = \\frac{PV_{m}}{RT}= \\frac{P}{RT}\\left( \\frac{RT}{P}+ b \\right) = 1 + \\frac{Pb}{RT}\\). Differentiating at constant temperature, \\(\\left( \\frac{\\partial Z}{\\partial P} \\right)_{T}= \\frac{b}{RT}\\). Comparing with \\(\\frac{xb}{RT}\\) gives \\(x = 1\\).",
     "60": "Chromate and dichromate are interconverted by \\(pH\\): in base the orange dichromate ion is converted to the yellow chromate ion, \\(Cr_{2}O_{7}^{2-}+ 2OH^{-}\\rightarrow 2CrO_{4}^{2-}+ H_{2}O\\). This is not a redox change, only a condensation-hydrolysis equilibrium, so chromium keeps the same oxidation state throughout. In \\(CrO_{4}^{2-}\\), letting the oxidation number of \\(Cr\\) be \\(y\\), \\(y + 4(-2) = -2\\) gives \\(y = +6\\). The answer is \\(6\\).",
     "72": "The line \\(x-y=0\\) has slope \\(1\\); \\(x+2y=3\\) has slope \\(-\\frac{1}{2}\\); \\(2x+y=6\\) has slope \\(-2\\). The acute angle between the first and second satisfies \\(\\tan\\theta=\\left|\\frac{1-(-1/2)}{1+1\\cdot(-1/2)}\\right|=3\\), and between the first and third \\(\\tan\\theta=\\left|\\frac{1-(-2)}{1+1\\cdot(-2)}\\right|=3\\). Two equal angles make the triangle isosceles. Hence (C).",
-    "81": "Substitute \\(u=x-1\\), so the curve becomes \\(y=\\big||u|-2\\big|\\); the answer is the same because a horizontal shift does not change area.\n\nFind where the curve meets \\(y=2\\): \\(\\big||u|-2\\big|=2\\Rightarrow |u|-2=\\pm 2\\Rightarrow |u|=4\\) or \\(|u|=0\\). So the line touches the curve at \\(u=-4,\\ 0,\\ 4\\).\n\nOn \\([0,4]\\): for \\(0\\le u\\le 2\\), \\(y=2-u\\); for \\(2\\le u\\le 4\\), \\(y=u-2\\). The curve dips to \\(y=0\\) at \\(u=2\\) and rises back to \\(y=2\\) at \\(u=4\\). By symmetry the shape on \\([-4,0]\\) is the mirror image, so the required area is\n\\[\\text{Area}=2\\int_{0}^{4}\\big(2-y\\big)\\,du.\\]\n\nCompute the two pieces:\n\\[\\int_{0}^{2}\\big(2-(2-u)\\big)\\,du=\\int_{0}^{2}u\\,du=2,\\qquad \\int_{2}^{4}\\big(2-(u-2)\\big)\\,du=\\int_{2}^{4}(4-u)\\,du=\\Big[4u-\\tfrac{u^{2}}{2}\\Big]_{2}^{4}=8-6=2.\\]\n\nThus \\(\\int_{0}^{4}(2-y)\\,du=2+2=4\\), and the total area \\(=2\\times 4=8.\\)"
+    "81": "Substitute \\(u=x-1\\), so the curve becomes \\(y=\\big||u|-2\\big|\\); the answer is the same because a horizontal shift does not change area.\n\nFind where the curve meets \\(y=2\\): \\(\\big||u|-2\\big|=2\\Rightarrow |u|-2=\\pm 2\\Rightarrow |u|=4\\) or \\(|u|=0\\). So the line touches the curve at \\(u=-4,\\ 0,\\ 4\\).\n\nOn \\([0,4]\\): for \\(0\\le u\\le 2\\), \\(y=2-u\\); for \\(2\\le u\\le 4\\), \\(y=u-2\\). The curve dips to \\(y=0\\) at \\(u=2\\) and rises back to \\(y=2\\) at \\(u=4\\). By symmetry the shape on \\([-4,0]\\) is the mirror image, so the required area is\n\\[\\text{Area}=2\\int_{0}^{4}\\big(2-y\\big)\\,du.\\]\n\nCompute the two pieces:\n\\[\\int_{0}^{2}\\big(2-(2-u)\\big)\\,du=\\int_{0}^{2}u\\,du=2,\\qquad \\int_{2}^{4}\\big(2-(u-2)\\big)\\,du=\\int_{2}^{4}(4-u)\\,du=\\Big[4u-\\tfrac{u^{2}}{2}\\Big]_{2}^{4}=8-6=2.\\]\n\nThus \\(\\int_{0}^{4}(2-y)\\,du=2+2=4\\), and the total area \\(=2\\times 4=8.\\)",
+    "83": "The sum is \\(S=\\sum_{r=0}^{30}(30-r)\\binom{30}{r}=30\\sum\\binom{30}{r}-\\sum r\\binom{30}{r}=30\\cdot2^{30}-30\\cdot2^{29}=30\\cdot2^{29}=15\\cdot2^{30}\\). So \\(n=15\\) (odd) and \\(m=30\\), giving \\(n+m=45\\)."
   },
   "answerOverrides": {
     "1": "C",
