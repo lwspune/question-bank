@@ -109,7 +109,7 @@ export default async function MePage() {
           </span>
           <div>
             <h1 className="text-2xl font-semibold tracking-tight">Your dashboard</h1>
-            <p className="text-sm text-muted-foreground">{user.email}</p>
+            <p className="text-sm text-muted-foreground" data-clarity-mask="true">{user.email}</p>
           </div>
         </header>
 

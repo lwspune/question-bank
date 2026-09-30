@@ -113,7 +113,7 @@ export default async function MockResultPage({ params }: { params: Params }) {
           {headline.detail && (
             <p className="mt-1 text-sm text-muted-foreground">{headline.detail}</p>
           )}
-          <p className="mt-3 text-sm tabular-nums text-muted-foreground">
+          <p className="mt-3 text-sm tabular-nums text-muted-foreground" data-clarity-mask="true">
             {summary.score} / {summary.maxScore} marks
             {headline.attempted > 0 && (
               <>
