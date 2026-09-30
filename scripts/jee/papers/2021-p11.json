@@ -251,7 +251,7 @@
     "51": {
       "subject": "Maths",
       "chapter": "Differential Equations",
-      "subtopic": "Homogeneous Differential Equations"
+      "subtopic": "Homogeneous Equations"
     },
     "52": {
       "subject": "Maths",
@@ -276,7 +276,7 @@
     "56": {
       "subject": "Maths",
       "chapter": "Differential Equations",
-      "subtopic": "Linear Differential Equations"
+      "subtopic": "Separating the Variables"
     },
     "57": {
       "subject": "Maths",
@@ -309,6 +309,7 @@
     "16": "A person standing on a weighing machine is slowly taken from the surface of the Earth to the surface of Mars. Given that the value of \\(g\\) on Earth is \\(10\\text{ }ms^{-2}\\) and that on Mars is \\(4\\text{ }ms^{-2}\\), the graph of weight versus distance from the Earth's surface is:",
     "18": "A particle of mass \\(m\\) and speed \\(u\\) collides elastically with the end of a uniform rod of mass \\(M\\) and length \\(L\\), as shown. If the particle comes to rest after the collision, find \\(\\frac{m}{M}\\).",
     "53": "Let \\(A=[a_{ij}]\\) be a \\(3\\times3\\) matrix, where \\(a_{ij}=\\begin{cases} 1, & i=j \\\\ -x, & |i-j|=1 \\\\ 2x+80, & \\text{otherwise} \\end{cases}\\). Let \\(f:\\mathbb{R}\\to\\mathbb{R}\\) be defined as \\(f(x)=\\det(A)\\). Then the sum of the maximum and minimum values of \\(f\\) on \\(\\mathbb{R}\\) is equal to:",
+    "56": "Let \\(y=y(x)\\) be the solution of the differential equation \\(e^{x}\\sqrt{1 -y^{2}}dx+\\left( \\frac{y}{x} \\right)dy= 0,y(1) = - 1\\). Then the value of \\((y(3))^{2}\\) is equal to:",
     "58": "Let \\(f:\\mathbb{R}\\to\\mathbb{R}\\) be defined as \\(f(x)=\\begin{cases} \\sin x-e^{x}, & x\\leq 0 \\\\ a+[-x], & 0<x<1 \\\\ 2x-b, & x\\geq 1 \\end{cases}\\), where \\([x]\\) is the greatest integer \\(\\leq x\\). If \\(f\\) is continuous on \\(\\mathbb{R}\\), then \\((a+b)\\) is equal to:"
   },
   "notes": {
@@ -336,12 +337,12 @@
     "48": "Since \\(|\\bar z\\omega|=1\\) and \\(\\arg(\\bar z\\omega)=-(\\arg z-\\arg\\omega)=-\\tfrac{3\\pi}{2}\\equiv\\tfrac{\\pi}{2}\\), \\(\\bar z\\omega=i\\). Then \\(\\dfrac{1-2i}{1+3i}=-\\tfrac12-\\tfrac12 i\\), which lies in the third quadrant with argument \\(-\\tfrac{3\\pi}{4}\\). Hence option (B). [Source key (C) is incorrect.]",
     "49": "\\(\\cos B=\\tfrac35\\Rightarrow\\sin B=\\tfrac45\\); the sine rule gives \\(b=2R\\sin B=8\\) and \\(\\sin C=\\tfrac{AB}{2R}=\\tfrac12\\), so \\(C=30^\\circ\\) and \\(A=180^\\circ-B-30^\\circ\\). Area \\(=\\tfrac12\\,b\\,c\\,\\sin A=\\tfrac12\\cdot8\\cdot5\\cdot\\sin A=6+8\\sqrt3\\). Hence option (C).",
     "50": "Let \\(n=[x]\\). Need \\(\\frac{|n|-2}{|n|-3}\\ge0\\) with \\(|n|\\ne3\\): \\(|n|\\le2\\) or \\(|n|\\ge4\\). So \\(n\\le-4\\) (\\(x<-3\\)), \\(-2\\le n\\le2\\) (\\(-2\\le x<3\\)), or \\(n\\ge4\\) (\\(x\\ge4\\)). Domain \\((-\\infty,-3)\\cup[-2,3)\\cup[4,\\infty)\\): \\(a=-3,\\ b=-2,\\ c=3\\), and \\(a+b+c=-2\\).",
-    "51": "Putting \\(y=vx\\) makes the equation separable; solving and applying \\(y(\\tfrac12)=\\tfrac{\\pi}{6}\\) determines the curve \\(y=y(x)\\), and the area it bounds with \\(x=0\\) and \\(x=\\tfrac1{\\sqrt2}\\) in the upper half plane evaluates to \\(\\tfrac18(\\pi-1)\\). Hence option (A).",
+    "51": "Put \\(y=vx\\): \\(x\\tan v\\,(v\\,dx+x\\,dv)=(vx\\tan v-x)\\,dx\\), so \\(x^2\\tan v\\,dv=-x\\,dx\\) and \\(\\tan v\\,dv=-\\frac{dx}{x}\\). Integrating, \\(\\ln\\cos v=\\ln x+C\\), i.e. \\(\\cos\\frac yx=kx\\). At \\(x=\\frac12\\), \\(v=\\frac\\pi3\\): \\(k=1\\), so \\(y=x\\cos^{-1}x\\). The area is \\(\\int_0^{1/\\sqrt2}x\\cos^{-1}x\\,dx=\\left[\\frac{x^2}{2}\\cos^{-1}x\\right]_0^{1/\\sqrt2}+\\int_0^{1/\\sqrt2}\\frac{x^2}{2\\sqrt{1-x^2}}dx=\\frac{\\pi}{16}+\\left(\\frac{\\pi}{16}-\\frac18\\right)=\\frac18(\\pi-1)\\).",
     "52": "Because \\((1-x)(x^2+x+1)=1-x^3\\), the expression is \\((1-x)(1-x^3)^{100}\\). The \\(x^{256}\\) term comes only from \\(-x\\cdot(-1)^{85}\\,{}^{100}C_{85}x^{255}\\), giving coefficient \\({}^{100}C_{85}={}^{100}C_{15}\\). Hence option (B).",
     "53": "Treating \\(f(x)=\\det(A)\\) as a function of \\(x\\) and summing its local extreme values gives \\(-\\tfrac{88}{27}\\) (the source key). NOTE: this question's matrix entry rendered as '\\(2x+80\\)' in the source and appears corrupted, so the value is reported per the source key rather than independently re-derived. Hence option (D).",
     "54": "\\(|\\vec c-\\vec a|^2=|\\vec c|^2-2(\\vec a\\cdot\\vec c)+|\\vec a|^2=|\\vec c|^2-2|\\vec c|+9=8\\Rightarrow|\\vec c|=1\\). With \\(\\vec a\\times\\vec b=(2,-2,1)\\), \\(|\\vec a\\times\\vec b|=3\\), so \\(|(\\vec a\\times\\vec b)\\times\\vec c|=|\\vec a\\times\\vec b||\\vec c|\\sin\\tfrac{\\pi}{6}=3\\cdot1\\cdot\\tfrac12=\\tfrac32\\). Hence option (D).",
     "55": "\\(\\sin^{-1}\\sqrt{x^2+x+1}\\) needs \\(x^2+x\\le0\\) (\\(x\\in[-1,0]\\)); \\(\\tan^{-1}\\sqrt{x(x+1)}\\) needs \\(x(x+1)\\ge0\\) (\\(x\\le-1\\) or \\(x\\ge0\\)). The only common points are \\(x=0,-1\\), and at both the left side equals \\(\\tfrac{\\pi}{2}\\neq\\tfrac{\\pi}{4}\\). So there are no real roots. Hence option (D).",
-    "56": "Multiplying through by \\(x\\) and separating, \\(x e^x dx=-\\dfrac{y\\,dy}{\\sqrt{1-y^2}}\\), which integrates to \\((x-1)e^x=\\sqrt{1-y^2}+C\\); applying the given conditions yields \\((y(c))^2=1-4e^{6}\\). Hence option (B).",
+    "56": "Multiplying by \\(x\\) and separating: \\(xe^x\\,dx=-\\frac{y\\,dy}{\\sqrt{1-y^2}}\\). Integrating, \\((x-1)e^x=\\sqrt{1-y^2}+C\\). With \\(y(1)=-1\\): \\(0=0+C\\), so \\(C=0\\). At \\(x=3\\): \\(2e^3=\\sqrt{1-y^2}\\), so \\((y(3))^2=1-4e^6\\), option (B).",
     "57": "\\(f\\) increasing then decreasing about \\(x=\\tfrac34\\) forces \\(a<0\\) with vertex \\(-\\tfrac{3}{a}=\\tfrac34\\Rightarrow a=-4\\). Then \\(g(x)=-4x^2-6x+15\\) has \\(g'(x)=-8x-6=0\\) at \\(x=-\\tfrac34\\) with \\(g''<0\\): a local maximum at \\(x=-\\tfrac34\\). Hence option (A).",
     "58": "Continuity at \\(x=0\\): \\(\\sin0-e^0=-1\\) must equal \\(a+[-x]\\to a-1\\) (since \\([-x]=-1\\) for \\(0<x<1\\)), so \\(a=0\\). Continuity at \\(x=1\\): \\(a-1=-1\\) must equal \\(2(1)-b\\), so \\(b=3\\). Thus \\(a+b=3\\). Hence option (B).",
     "59": "EXAMINATION has 11 letters with \\(M\\) appearing once. By symmetry every position is equally likely to hold the single \\(M\\), so \\(P(M\\text{ at 4th})=\\tfrac1{11}\\). Hence option (B).",

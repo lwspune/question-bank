@@ -910,6 +910,11 @@ import {
   JEE_VECTOR_ALGEBRA_NOTES,
   JEE_VECTOR_ALGEBRA_SLUGS,
 } from "@/app/notes/jee-mains-maths/vector-algebra/_data";
+import {
+  JEE_DIFFERENTIAL_EQUATIONS_CHAPTER,
+  JEE_DIFFERENTIAL_EQUATIONS_NOTES,
+  JEE_DIFFERENTIAL_EQUATIONS_SLUGS,
+} from "@/app/notes/jee-mains-maths/differential-equations/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2918,6 +2923,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_VECTOR_ALGEBRA_CHAPTER,
     notes: JEE_VECTOR_ALGEBRA_NOTES,
     slugs: JEE_VECTOR_ALGEBRA_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "differential-equations",
+    chipLabel: "Differential Equations notes",
+    chapter: JEE_DIFFERENTIAL_EQUATIONS_CHAPTER,
+    notes: JEE_DIFFERENTIAL_EQUATIONS_NOTES,
+    slugs: JEE_DIFFERENTIAL_EQUATIONS_SLUGS,
   },
 ];
 
