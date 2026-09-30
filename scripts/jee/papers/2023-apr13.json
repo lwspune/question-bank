@@ -411,7 +411,7 @@
     "82": {
       "subject": "Maths",
       "chapter": "Inverse Trigonometric Functions",
-      "subtopic": "Properties and Values"
+      "subtopic": "Equations in Inverse Trigonometric Functions"
     },
     "83": {
       "subject": "Maths",
@@ -811,7 +811,7 @@
     "162": {
       "subject": "Maths",
       "chapter": "Inverse Trigonometric Functions",
-      "subtopic": "Properties and Values"
+      "subtopic": "Domain, Range and Principal Values"
     },
     "163": {
       "subject": "Maths",
@@ -881,7 +881,7 @@
     "176": {
       "subject": "Maths",
       "chapter": "Inverse Trigonometric Functions",
-      "subtopic": "Properties and Values"
+      "subtopic": "Equations in Inverse Trigonometric Functions"
     },
     "177": {
       "subject": "Maths",
@@ -1193,7 +1193,7 @@
     "173": "With \\(f(x)=\\sum_{k=1}^{10}kx^k\\), \\(2f(2)+f'(2)=\\sum_{k=1}^{10}(2k\\cdot 2^k+k^2 2^{k-1})=\\sum_{k=1}^{10}k(k+4)2^{k-1}=121857\\). Since \\(121857=119\\cdot 2^{10}+1\\), we get \\(n=10\\).",
     "174": "Divisibility by 6 requires the last digit even (\\(2\\) or \\(4\\)) and digit-sum divisible by 3. The residues of \\(1,2,3,4,5\\bmod 3\\) have counts \\(\\{0{:}1,1{:}2,2{:}2\\}\\), and for each even last digit exactly \\(8\\) pairs \\((d_1,d_2)\\) satisfy the sum condition, giving \\(8+8=16\\).",
     "175": "Since \\([\\sqrt n]=k\\) for the \\(2k+1\\) integers \\(k^2\\le n\\le k^2+2k\\), and \\(k=1,\\dots,10\\) exactly covers \\(n=1,\\dots,120\\) (as \\(10^2+2\\cdot 10=120\\)), the sum is \\(\\sum_{k=1}^{10}k(2k+1)=2\\sum k^2+\\sum k=2(385)+55=825\\).",
-    "176": "Both sides equal \\(0\\) at \\(x=0\\) and equal \\(\\frac{\\pi}{2}\\) at \\(x=1\\). Elsewhere on \\((-1,1]\\) the function \\(g(x)=\\sin^{-1}x-2\\tan^{-1}x\\) is nonzero, so there are exactly \\(2\\) solutions.",
+    "176": "On \\((-1,1]\\), \\(2\\tan^{-1}x\\in\\left(-\\frac{\\pi}{2},\\frac{\\pi}{2}\\right]\\), the range where sine is one-to-one, as is \\(\\sin^{-1}x\\). So the equation holds exactly when the sines agree: \\(x=\\sin(2\\tan^{-1}x)=\\frac{2x}{1+x^2}\\). This gives \\(x(1+x^2)=2x\\), so \\(x=0\\) or \\(x^2=1\\). In \\((-1,1]\\) that leaves \\(x=0\\) and \\(x=1\\) (check: \\(\\sin^{-1}1=\\frac{\\pi}{2}=2\\tan^{-1}1\\)). So there are \\(2\\) solutions.",
     "177": "The integrating factor is \\((x^2-1)^2\\), giving \\(y(x^2-1)^2=\\sqrt{x^2-1}+2\\ln(x+\\sqrt{x^2-1})+C\\). Using \\(y(2)=\\frac29\\ln(2+\\sqrt3)\\) gives \\(C=-\\sqrt3\\). At \\(x=\\sqrt2\\), \\(y=2\\ln(\\sqrt2+1)+1-\\sqrt3\\), so \\(\\alpha=2,\\beta=1,\\gamma=3\\) and \\(\\alpha\\beta\\gamma=6\\).",
     "178": "From \\(ae=2,\\ e=\\frac32\\) we get \\(a^2=\\frac{16}{9},\\ b^2=\\frac{20}{9}\\). A tangent of slope \\(\\frac32\\) is \\(y=\\frac32x\\pm\\sqrt{a^2m^2-b^2}=\\frac32x\\pm\\frac43\\); the first-quadrant contact gives intercepts \\(a=\\frac89,\\ b=-\\frac43\\), so \\(|6a|+|5b|=\\frac{16}{3}+\\frac{20}{3}=12\\).",
     "179": "Substituting \\(s=\\sin x\\), \\(f_n=\\int_0^1 P_nQ_n\\,ds\\) with \\(P_n=\\sum_{k=1}^n s^{k-1}\\) and \\(Q_n=\\sum_{k=1}^n(2k-1)s^{k-1}\\). Since \\(\\frac{d}{ds}(sP_n^2)=P_n(P_n+2sP_n')=P_nQ_n\\), \\(f_n=[sP_n^2]_0^1=P_n(1)^2=n^2\\). Thus \\(f_{21}-f_{20}=441-400=41\\).",
@@ -1211,6 +1211,7 @@
     "70": "The area of the region enclosed by the curve \\(f(x) = \\max\\{ \\sin x,\\cos x\\}, - \\pi \\leq x \\leq \\pi\\) and the \\(x\\)-axis is",
     "73": "Let \\(PQ\\) be a focal chord of the parabola \\(y^{2}= 36x\\) of length 100, making an acute angle with the positive \\(x\\)-axis. Let the ordinate of \\(P\\) be positive and \\(M\\) be the point on the line segment \\(PQ\\) such that \\(PM:MQ = 3:1\\). Then which of the following points does NOT lie on the line passing through \\(M\\) and perpendicular to the line \\(PQ\\)?",
     "74": "For \\(x\\in R\\), two real valued functions \\(f(x)\\) and \\(g(x)\\) are such that, \\(g(x) =\\sqrt{x}+ 1\\) and \\(f \\circ g(x) = x + 3 -\\sqrt{x}\\). Then \\(f(0)\\) is equal to",
+    "82": "If \\(S =\\left\\{ x\\in R:\\sin^{- 1}\\left( \\frac{x + 1}{\\sqrt{x^{2}+ 2x + 2}} \\right)-\\sin^{- 1}\\left( \\frac{x}{\\sqrt{x^{2}+ 1}} \\right)=\\frac{\\pi}{4} \\right\\}\\), Then \\(\\sum_{x \\in S} \\left( \\sin\\left( \\left( x^{2}+ x + 5 \\right)\\frac{\\pi}{2} \\right)- \\cos\\left( \\left( x^{2}+ x + 5 \\right)\\pi \\right) \\right)\\) is equal to",
     "84": "Let for \\(x \\in R,S_{0}(x) = x\\), \\[\\begin{matrix} & S_{k}(x) =C_{k}x + k\\int_{0}^{x} S_{k - 1}(t)dt\\text{, where~} \\\\ & C_{0}= 1,C_{k}= 1 -\\int_{0}^{1} S_{k - 1}(x)dx,k = 1,2,3\\ldots..\\text{~Then~} \\end{matrix}\\] \\(S_{2}(3) + 6C_{3}\\) is equal to",
     "90": "Let the mean of the data\n\n| \\(x\\) | 1 | 3 | 5 | 7 | 9 |\n|---|---|---|---|---|---|\n| Frequency \\((f)\\) | 4 | 24 | 28 | \\(\\alpha\\) | 8 |\n\nbe 5. If \\(m\\) and \\(\\sigma^{2}\\) are respectively the mean deviation about the mean and the variance of the data, then \\(\\frac{3\\alpha}{m +\\sigma^{2}}\\) is equal to",
     "96": "A passenger sitting in a train A moving at \\(90\\text{ }km/h\\) observes another train B moving in the opposite direction for \\(8\\text{ }s\\). If the velocity of the train \\(B\\) is \\(54\\text{ }km/h\\), then length of train B is:",

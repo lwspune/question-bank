@@ -401,7 +401,7 @@
     },
     "85": {
       "chapter": "Inverse Trigonometric Functions",
-      "subtopic": "Properties and Values"
+      "subtopic": "Equations in Inverse Trigonometric Functions"
     },
     "86": {
       "chapter": "Conic Sections",
@@ -907,6 +907,7 @@
     "76": "Multiply by \\(1-x\\): \\((1-x)y=1-x^{32}\\), and \\(y(-1)=0\\). Differentiate: \\((1-x)y'-y=-32x^{31}\\); at \\(x=-1\\), \\(2y'=32\\), so \\(y'=16\\). Differentiate again: \\((1-x)y''-2y'=-992x^{30}\\); at \\(x=-1\\), \\(2y''-32=-992\\), so \\(y''=-480\\). Hence \\(y'-y''=16+480=496\\).",
     "78": "Write \\(l_x=\\ln x\\), \\(l_y=\\ln y\\), \\(l_z=\\ln z\\). Each entry is \\(a_{ij}=\\frac{l_j}{l_i}m_{ij}\\) with \\(M=\\begin{bmatrix}1&1&1\\\\1&2&1\\\\1&1&3\\end{bmatrix}\\), so \\(A=D^{-1}MD\\) with \\(D=\\mathrm{diag}(l_x,l_y,l_z)\\), and \\(|A|=|M|=5-2-1=2\\). For order 3, \\(|\\mathrm{adj}(\\mathrm{adj}\\,A^2)|=|A^2|^4=|A|^8=2^8\\).",
     "83": "Modulo 3 the elements are: \\(3\\) (residue 0); \\(1,7,10\\) (residue 1); \\(2,5,11\\) (residue 2). With \\(\\omega\\) a cube root of unity, the number of subsets with sum \\(\\equiv0\\) is \\(\\frac13\\left[F(1)+F(\\omega)+F(\\omega^2)\\right]\\) where \\(F(t)=2(1+t)^3(1+t^2)^3\\). \\(F(1)=128\\) and \\(F(\\omega)=F(\\omega^2)=2(-\\omega^2)^3(-\\omega)^3=2\\). So there are \\(\\frac{128+4}{3}=44\\) such subsets, including the empty set; the non-empty ones number \\(43\\).",
+    "85": "For \\(-1<x<1\\), \\(\\tan^{-1}\\frac{2x}{1-x^2}=2\\tan^{-1}x\\). The \\(\\cot^{-1}\\) term depends on the sign of \\(\\frac{1-x^2}{2x}\\). If \\(0<x<1\\) it is positive, so \\(\\cot^{-1}\\frac{1-x^2}{2x}=\\tan^{-1}\\frac{2x}{1-x^2}=2\\tan^{-1}x\\); the equation is \\(4\\tan^{-1}x=\\frac{\\pi}{3}\\), so \\(x=\\tan\\frac{\\pi}{12}=2-\\sqrt3\\). If \\(-1<x<0\\) it is negative, so \\(\\cot^{-1}\\frac{1-x^2}{2x}=\\pi+2\\tan^{-1}x\\); the equation is \\(\\pi+4\\tan^{-1}x=\\frac{\\pi}{3}\\), so \\(\\tan^{-1}x=-\\frac{\\pi}{6}\\) and \\(x=-\\frac{1}{\\sqrt3}\\). Sum \\(=2-\\sqrt3-\\frac{1}{\\sqrt3}=2-\\frac{4}{\\sqrt3}\\), so \\(\\alpha=2\\).",
     "87": "Each residue class mod 5 has 5 numbers in \\(1,\\dots,25\\). Ordered pairs of distinct numbers with \\(x+y\\equiv0\\pmod5\\): both \\(\\equiv0\\): \\(5\\cdot4=20\\); residues \\((1,4),(4,1),(2,3),(3,2)\\): \\(25\\) each, \\(100\\). Total \\(=120\\).",
     "89": "\\(P_1:y=\\frac52x^2\\) and \\(P_2:y=x^2+6\\) meet at \\(x=\\pm2\\), so the first area is \\(\\int_{-2}^{2}\\left(6-\\frac32x^2\\right)dx=24-8=16\\). The line \\(y=\\alpha x\\) meets \\(P_1\\) at \\(x=0\\) and \\(x=\\frac{2\\alpha}{5}\\), enclosing \\(\\int_0^{2\\alpha/5}\\left(\\alpha x-\\frac52x^2\\right)dx=\\frac{2\\alpha^3}{25}-\\frac{4\\alpha^3}{75}=\\frac{2\\alpha^3}{75}\\). Setting \\(\\frac{2\\alpha^3}{75}=16\\) gives \\(\\alpha^3=600\\).",
     "121": "\\(pH = -\\log[H^{+}]\\). If the hydrogen ion concentration changes by a factor of 1000, then \\(\\Delta pH = -\\log\\left( 10^{3} \\right) = -3\\) for a thousand-fold INCREASE (and \\(+3\\) for a thousand-fold decrease). Either way the magnitude of the change is 3 units, and the only option quoting 3 units is (D), a decrease by 3 units, corresponding to the concentration rising a thousand-fold. Options (A) and (C) quote 2 units, and (B) confuses the concentration factor with a pH change.",
