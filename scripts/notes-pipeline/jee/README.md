@@ -14,8 +14,8 @@ goes in `generated-papers/`, which is gitignored. Each tool reads `.env.local` f
 | `src.py <dump.json> <idprefix> [--soln]` | Shows a row's block in its SOURCE docx (and solution doc). `JEE_PYQ_ROOT` overrides the source folder. | No |
 | `fix.ts <spec> [--apply]` | Applies a fix spec (stems, options, keys, solutions, subtopics) through `scripts/jee/papers/*.json` + `resync`, so a re-sync cannot undo it. Dry run by default. | With `--apply` |
 | `recut.js <dump.json> <plan.json> <out-spec.json>` | Turns a re-cut plan into a fix spec for `fix.ts`. | No |
-| `del-empty-sub.mts <id> [--apply]` | Deletes a subtopic that holds no rows. | With `--apply` |
-| `sync-classification.mts [--apply]` | Checks the paper JSONs' classifications match the DB. | With `--apply` |
+| `del-empty-sub.mts <id> [--apply]` | Deletes a subtopic only if no question of any visibility or kind points at it. | With `--apply` |
+| `sync-classification.mts [--apply]` | Checks the paper JSONs' classifications match the DB; `--apply` rewrites the paper JSONs to match (a file write, not a DB write). | No |
 | `duphash.mts <dump.json>` | Checks a chapter for duplicate content hashes. | No |
 | `tag-chapter.ts <spec.json> [--dry]` | Writes concept tags from a tag spec. **Applies by default.** | Yes |
 | `apply-chapter.sh "<chapter>" <code>` | Runs the data half for one chapter: fix spec, re-cut, empty-subtopic delete, sync + dup checks. | Yes |

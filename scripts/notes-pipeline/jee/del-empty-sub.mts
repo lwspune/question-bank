@@ -1,4 +1,4 @@
-// usage: _del_empty_sub.mts <subtopic-uuid> [--apply] — delete a subtopic only if NO question (any visibility/kind) points at it
+// usage: npx tsx --env-file=.env.local scripts/notes-pipeline/jee/del-empty-sub.mts <subtopic-uuid> [--apply] — delete a subtopic only if NO question (any visibility/kind) points at it
 import { createClient } from "@supabase/supabase-js";
 const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
 const id = process.argv[2];
