@@ -406,7 +406,7 @@
     "82": {
       "subject": "Maths",
       "chapter": "Quadratic Equations",
-      "subtopic": "Roots and Relations"
+      "subtopic": "Equations Reducible to Quadratics"
     },
     "83": {
       "subject": "Maths",
@@ -851,7 +851,7 @@
     "172": {
       "subject": "Maths",
       "chapter": "Quadratic Equations",
-      "subtopic": "Roots and Relations"
+      "subtopic": "Common Roots and New Equations"
     },
     "173": {
       "subject": "Maths",
@@ -988,7 +988,7 @@
     "59": 2,
     "60": 6,
     "81": 99,
-    "82": 45,
+    "82": 2,
     "83": 14,
     "84": 56,
     "85": 5,
@@ -1070,7 +1070,7 @@
     "79": "\\(\\sin^{-1}(\\sin\\tfrac{2\\pi}{3})=\\pi-\\tfrac{2\\pi}{3}=\\tfrac{\\pi}{3}\\); \\(\\cos^{-1}(\\cos\\tfrac{7\\pi}{6})=2\\pi-\\tfrac{7\\pi}{6}=\\tfrac{5\\pi}{6}\\); \\(\\tan^{-1}(\\tan\\tfrac{3\\pi}{4})=\\tfrac{3\\pi}{4}-\\pi=-\\tfrac{\\pi}{4}\\). Sum \\(=\\tfrac{\\pi}{3}+\\tfrac{5\\pi}{6}-\\tfrac{\\pi}{4}=\\tfrac{11\\pi}{12}\\).",
     "80": "\\(\\sim(p\\wedge q)\\vee q=(\\sim p\\vee\\sim q)\\vee q=\\sim p\\vee(\\sim q\\vee q)=\\sim p\\vee T=T\\), a tautology. Among the options, \\(p\\to(p\\vee q)=\\sim p\\vee(p\\vee q)=T\\) is also a tautology, so the expression is equivalent to \\(p\\to(p\\vee q)\\).",
     "81": "With \\(f(x)=\\tfrac{2e^{2x}}{e^{2x}+e}\\), one checks \\(f(x)+f(1-x)=\\tfrac{2e^{2x}}{e^{2x}+e}+\\tfrac{2e}{e^{2x}+e}=2\\). Pairing \\(\\tfrac{k}{100}\\) with \\(\\tfrac{100-k}{100}\\) gives \\(49\\) pairs summing to \\(2\\) plus the middle term \\(f(\\tfrac12)=1\\), so the total is \\(49\\cdot2+1=99\\).",
-    "82": "Multiplying by \\(e^x\\) and setting \\(t=e^x\\) gives \\(t^3-11t^2+\\tfrac{81}{2}t-45=0\\), whose product of roots is \\(45\\). The sum of the \\(x\\)-roots is \\(\\sum\\log t_i=\\log(t_1t_2t_3)=\\log 45\\), so \\(P=45\\).",
+    "82": "Multiply by \\(e^x\\) and put \\(t=e^x>0\\): \\(t^3-11t^2+\\frac{81}{2}t-45=0\\), i.e. \\(2t^3-22t^2+81t-90=0\\). Here \\(t=2\\) is a root, and \\(2t^3-22t^2+81t-90=(t-2)(2t^2-18t+45)\\), where \\(2t^2-18t+45\\) has discriminant \\(324-360<0\\). So the only real root is \\(x=\\log_e2\\), and \\(P=2\\). (The booklet's key, 45, is the product of all three roots \\(t\\), two of which are non-real and give no real \\(x\\).)",
     "83": "For a \\(3\\times3\\) matrix, \\(\\operatorname{adj}(\\operatorname{adj}A)=|A|^{n-2}A=|A|\\,A\\). Taking determinants, \\(\\det(\\operatorname{adj}(\\operatorname{adj}A))=|A|^3\\cdot|A|=|A|^4\\). The given matrix equals \\(14\\) times a matrix of determinant \\(14\\), so its determinant is \\(14^3\\cdot14=14^4\\); hence \\(|A|^4=14^4\\), giving \\(|A|=14\\).",
     "84": "Let the blue counts be \\(x_0,x_1,x_2,x_3,x_4,x_5\\) (before, between, after the \\(5\\) reds) with \\(x_1,\\dots,x_4\\ge2\\) and \\(\\sum x_i=11\\). Substituting \\(y_i=x_i-2\\) for the four inner gaps gives \\(x_0+y_1+y_2+y_3+y_4+x_5=3\\) in non-negative integers, with \\(\\binom{3+5}{5}=\\binom{8}{5}=56\\) solutions.",
     "85": "The general term gives \\(x\\)-power \\(30-\\tfrac{5r}{6}=10\\Rightarrow r=24\\). The explicit power of \\(5\\) is \\(-\\tfrac{60-r}{4}+\\tfrac{r}{2}=3\\), and \\(\\binom{60}{24}\\) contributes \\(v_5=14-4-8=2\\) more. Hence \\(k=3+2=5\\).",
