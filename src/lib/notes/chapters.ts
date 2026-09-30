@@ -935,6 +935,11 @@ import {
   JEE_COMPLEX_NUMBERS_NOTES,
   JEE_COMPLEX_NUMBERS_SLUGS,
 } from "@/app/notes/jee-mains-maths/complex-numbers/_data";
+import {
+  JEE_AOD_CHAPTER,
+  JEE_AOD_NOTES,
+  JEE_AOD_SLUGS,
+} from "@/app/notes/jee-mains-maths/application-of-derivatives/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2998,6 +3003,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_COMPLEX_NUMBERS_CHAPTER,
     notes: JEE_COMPLEX_NUMBERS_NOTES,
     slugs: JEE_COMPLEX_NUMBERS_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "application-of-derivatives",
+    chipLabel: "Application of Derivatives notes",
+    chapter: JEE_AOD_CHAPTER,
+    notes: JEE_AOD_NOTES,
+    slugs: JEE_AOD_SLUGS,
   },
 ];
 
