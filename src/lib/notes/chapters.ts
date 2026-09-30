@@ -920,6 +920,11 @@ import {
   JEE_BINOMIAL_THEOREM_NOTES,
   JEE_BINOMIAL_THEOREM_SLUGS,
 } from "@/app/notes/jee-mains-maths/binomial-theorem/_data";
+import {
+  JEE_PNC_CHAPTER,
+  JEE_PNC_NOTES,
+  JEE_PNC_SLUGS,
+} from "@/app/notes/jee-mains-maths/permutations-and-combinations/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -2950,6 +2955,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_BINOMIAL_THEOREM_CHAPTER,
     notes: JEE_BINOMIAL_THEOREM_NOTES,
     slugs: JEE_BINOMIAL_THEOREM_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "permutations-and-combinations",
+    chipLabel: "Permutations and Combinations notes",
+    chapter: JEE_PNC_CHAPTER,
+    notes: JEE_PNC_NOTES,
+    slugs: JEE_PNC_SLUGS,
   },
 ];
 
