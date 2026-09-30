@@ -4,6 +4,7 @@ import { Toaster } from "sonner";
 import OfflineBanner from "@/components/OfflineBanner";
 import { Analytics } from "@vercel/analytics/next";
 import AcquisitionCapture from "@/components/acquisition/AcquisitionCapture";
+import ClarityScript from "@/components/analytics/ClarityScript";
 import ChatWidget from "@/components/chat/ChatWidget";
 import { CartProvider } from "@/lib/cart/CartProvider";
 import { BookmarksProvider } from "@/lib/bookmarks/BookmarksProvider";
@@ -120,6 +121,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* Client island: parks first-touch attribution in a cookie. Touches no
               server API, so prerendered routes stay prerendered. */}
           <AcquisitionCapture />
+          {/* Microsoft Clarity recordings. Pathname-gated client island: never
+              loads on staff routes, reads no server API, so prerendered routes
+              stay prerendered. Off entirely without NEXT_PUBLIC_CLARITY_PROJECT_ID. */}
+          <ClarityScript />
           {/* V, the FAQ helper. No server read at mount — it only calls out when
               opened or a question is clicked — so prerendered routes stay cached. */}
           <ChatWidget />

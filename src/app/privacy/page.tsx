@@ -106,8 +106,12 @@ export default function PrivacyPage() {
         Signed-in accounts use a session cookie. We remember your chosen exam in a cookie, and
         your quiz name and mobile in your browser&rsquo;s local storage so you don&rsquo;t have
         to retype them. We use Vercel Analytics to count page visits; it does not use
-        advertising cookies. You can clear cookies and local storage from your browser at any
-        time.
+        advertising cookies. On the public and student pages we also use Microsoft Clarity,
+        which sets its own cookies and records how a page is used (clicks, scrolling, and a
+        replay of the screen with typed text masked) so we can see where a page confuses
+        people. Clarity is never loaded on staff pages, and we do not send it your name,
+        email or mobile number. You can clear cookies and local storage from your browser at
+        any time.
       </LegalP>
 
       <LegalH2>Contact</LegalH2>

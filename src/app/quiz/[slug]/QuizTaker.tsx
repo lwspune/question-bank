@@ -529,7 +529,7 @@ function Gate({
         <div className="mt-5 space-y-3">
           {stored && !editing ? (
             <>
-              <p className="text-sm">
+              <p className="text-sm" data-clarity-mask="true">
                 Continue as <span className="font-medium">{stored.name}</span> · {stored.mobile}
               </p>
               {!priorConsent && consentField}
