@@ -580,7 +580,7 @@ export function buildWelcomeEmail(input: WelcomeEmailInput): BuiltEmail {
     ...loop.steps.flatMap((s, i) => [
       `${i + 1}. ${s.title}`,
       `   ${s.body}`,
-      `   ${s.cta}: ${SITE_URL}${s.href}`,
+      `   ${s.cta}: ${ctaHref(s.href, clickToken)}`,
       "",
     ]),
     `Everything on the site, one line each: ${startUrl}`,
@@ -598,7 +598,7 @@ export function buildWelcomeEmail(input: WelcomeEmailInput): BuiltEmail {
       (s, i) => `  <div style="border:1px solid #e2e8f0;border-radius:8px;padding:14px 16px;margin:0 0 12px">
     <p style="margin:0 0 4px;font-weight:600;color:#0f172a">${i + 1}. ${escapeHtml(s.title)}</p>
     <p style="margin:0 0 10px;color:${MUTED};font-size:14px">${escapeHtml(s.body)}</p>
-    <a href="${SITE_URL}${s.href}" style="background:${ACCENT};color:#fff;text-decoration:none;padding:9px 16px;border-radius:6px;display:inline-block;font-weight:600;font-size:14px">${escapeHtml(s.cta)}</a>
+    <a href="${ctaHref(s.href, clickToken)}" style="background:${ACCENT};color:#fff;text-decoration:none;padding:9px 16px;border-radius:6px;display:inline-block;font-weight:600;font-size:14px">${escapeHtml(s.cta)}</a>
   </div>`
     )
     .join("\n");
