@@ -161,7 +161,7 @@
     "32": {
       "subject": "Chemistry",
       "chapter": "Chemical Kinetics",
-      "subtopic": "Order of Reaction and Half-Life"
+      "subtopic": "Zero Order and Finding the Order"
     },
     "33": {
       "subject": "Chemistry",
@@ -481,7 +481,7 @@
     "101": {
       "subject": "Chemistry",
       "chapter": "Chemical Kinetics",
-      "subtopic": "Rate of Reaction and Rate Expressions (stoichiometric rate relations)"
+      "subtopic": "Rate Law, Order and Molecularity"
     },
     "102": {
       "subject": "Chemistry",
@@ -551,7 +551,7 @@
     "115": {
       "subject": "Chemistry",
       "chapter": "Chemical Kinetics",
-      "subtopic": "First Order Reactions"
+      "subtopic": "First Order in Gases and Radioactive Decay"
     },
     "116": {
       "subject": "Chemistry",
@@ -969,7 +969,7 @@
     "112": "Hot \\(KMnO_{4}\\) oxidises a side chain to \\(-COOH\\) only if the carbon attached to the ring carries at least one BENZYLIC hydrogen, and the whole chain is cut back to a single carboxyl carbon regardless of its length. Toluene, ethylbenzene, isopropylbenzene, isobutylbenzene and n-propylbenzene all have a benzylic C-H and all give benzoic acid, which is 5 compounds. tert-Butylbenzene and 2-phenylpropan-2-ol have no benzylic hydrogen and are not attacked, and 4,4'-dimethylbiphenyl has two oxidisable methyls but yields biphenyl-4,4'-dicarboxylic acid, not benzoic acid. The total is 5, option (D).",
     "113": "The substrate is 3,5-dibromo-2-phenylheptane, \\(CH_{3}-CH(C_{6}H_{5})-CHBr-CH_{2}-CHBr-CH_{2}CH_{3}\\), and excess alcoholic KOH on heating removes two molecules of HBr. Elimination follows Zaitsev and, more strongly here, the demand for CONJUGATION: losing HBr from C-3 towards C-2 puts a double bond next to the ring, and losing HBr from C-5 towards C-4 places the second double bond adjacent to the first. The product is therefore the fully conjugated diene \\(CH_{3}-C(C_{6}H_{5})=CH-CH=CH-CH_{2}CH_{3}\\). Numbering the seven-carbon chain so the double bonds get the lowest locants gives 2,4 (not 3,5) and puts the phenyl at C-2, so the product is 2-phenylhepta-2,4-diene, option (D).",
     "114": "Newlands proposed the Law of Octaves in 1865, decades before the concept of atomic number existed; he arranged the elements in increasing order of ATOMIC WEIGHT and noticed that every eighth element repeated the properties of the first. Statement I is therefore false. Lothar Meyer likewise worked before Moseley: he plotted physical properties such as atomic volume against ATOMIC WEIGHT and obtained the famous periodically repeating curve. Statement II is therefore false as well, and the answer is option (D).",
-    "115": "Radioactive decay is first order, \\(N = N_{0}e^{-\\lambda t}\\), so an exponential law of the same FORM but with growth rather than loss gives \\(N = N_{0}e^{+kt}\\) for a multiplying bacterial colony, since each division makes the rate of increase proportional to the number already present. A plot of \\(\\frac{N}{N_{0}}\\) against time must therefore start at 1 and rise ever more steeply, with no upper limit within the model. The decaying curve and the straight falling line describe loss, and the curve that flattens to a plateau describes a saturating (logistic) process rather than the simple exponential law asked for. The correct graph is the exponentially rising one, option (D).",
+    "115": "Radioactive decay is first order, \\(N=N_{0}e^{-\\lambda t}\\). Bacterial growth follows the same law with the opposite sign: each cell divides, so the rate of increase is proportional to the number present, \\(\\frac{dN}{dt}=kN\\) and \\(N=N_{0}e^{kt}\\). So \\(\\frac{N}{N_{0}}\\) must start at 1 and rise more and more steeply with time. In the figure the first graph decays, the second falls in a straight line and the third levels off to a plateau. Only the fourth rises exponentially, option (d).",
     "116": "Hydrogen has only one electron, so there is no inter-electronic repulsion and the orbital energy depends solely on the principal quantum number \\(n\\); all orbitals of a given shell are degenerate and the order is simply \\(1s < 2s = 2p < 3s = 3p = 3d < 4s\\). Statement (A) \\(1s<2p<3d<4s\\) is consistent with this and so is (B) \\(1s<2s=2p<3s=3p\\). Statement (C) places 2s below 2p, which is true only in multielectron atoms, so it is NOT correct for hydrogen, and (D) places 4s below 3d, which is the multielectron \\((n+l)\\) ordering and again wrong for hydrogen. The statements that are not correct are (C) and (D), option (C).",
     "118": "Check each claim. (A) is false: primary AROMATIC amines react with \\(NaNO_{2}/HCl\\) at 273-278 K to give stable arenediazonium salts, so primary amines certainly can give diazonium salts. (B) is true: any primary amine, aliphatic or aromatic, heated with \\(CHCl_{3}\\) and ethanolic KOH gives the foul-smelling isocyanide, which is the carbylamine test. (C) is false, because that test is specific to PRIMARY amines and secondary and tertiary amines give no isocyanide. (D) is true: benzenesulfonyl chloride is Hinsberg's reagent. (E) is false, since tertiary amines have no hydrogen on nitrogen and do not react with it. The correct statements are (B) and (D), option (A).",
     "119": "Statement I compares methylcyclopentane with hex-3-ene. Both have the molecular formula \\(C_{6}H_{12}\\) and one degree of unsaturation, supplied by a ring in the first and by a double bond in the second, so they are genuine isomers (ring-chain isomers) and Statement I is correct. Statement II compares pentan-1-amine, \\(CH_{3}(CH_{2})_{4}NH_{2}\\), with N-ethylpropan-1-amine, \\(CH_{3}CH_{2}NHCH_{2}CH_{2}CH_{3}\\); both are \\(C_{5}H_{13}N\\), but the first bears a primary \\(-NH_{2}\\) group and the second a secondary \\(>NH\\) group, which are different functional groups, so they are functional group isomers and Statement II is also correct. Hence option (B).",
@@ -1020,6 +1020,12 @@
       "B": "\\([A]: CH_{2}=CH_{2},\\ [B]: CH_{3}COCH_{3},\\ [C]: HCHO\\)",
       "C": "\\([A]: CH_{3}-CH=CH_{2},\\ [B]: CH_{3}CHO,\\ [C]: CH_{3}CH_{2}OH\\)",
       "D": "\\([A]: CH_{3}CH_{2}CH_{3},\\ [B]: CH_{3}CHO,\\ [C]: HCHO\\)"
+    },
+    "115": {
+      "A": "The first graph in the figure",
+      "B": "The second graph in the figure",
+      "C": "The third graph in the figure",
+      "D": "The fourth graph in the figure"
     },
     "140": {
       "B": "\\(( - \\infty,\\infty)\\)"
