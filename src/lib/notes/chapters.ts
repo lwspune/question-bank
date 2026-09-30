@@ -1010,6 +1010,41 @@ import {
   JEE_TRIANGLE_NOTES,
   JEE_TRIANGLE_SLUGS,
 } from "@/app/notes/jee-mains-maths/properties-of-triangle/_data";
+import {
+  JEE_CH_SOL_CHAPTER,
+  JEE_CH_SOL_NOTES,
+  JEE_CH_SOL_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/solutions/_data";
+import {
+  JEE_CH_ATOM_CHAPTER,
+  JEE_CH_ATOM_NOTES,
+  JEE_CH_ATOM_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/structure-of-atom/_data";
+import {
+  JEE_CH_KIN_CHAPTER,
+  JEE_CH_KIN_NOTES,
+  JEE_CH_KIN_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/chemical-kinetics/_data";
+import {
+  JEE_CH_EQ_CHAPTER,
+  JEE_CH_EQ_NOTES,
+  JEE_CH_EQ_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/equilibrium/_data";
+import {
+  JEE_CH_ELEC_CHAPTER,
+  JEE_CH_ELEC_NOTES,
+  JEE_CH_ELEC_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/electrochemistry/_data";
+import {
+  JEE_CH_THERMO_CHAPTER,
+  JEE_CH_THERMO_NOTES,
+  JEE_CH_THERMO_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/thermodynamics/_data";
+import {
+  JEE_CH_SBC_CHAPTER,
+  JEE_CH_SBC_NOTES,
+  JEE_CH_SBC_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/some-basic-concepts/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3238,6 +3273,83 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_TRIANGLE_CHAPTER,
     notes: JEE_TRIANGLE_NOTES,
     slugs: JEE_TRIANGLE_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "solutions",
+    chipLabel: "Solutions notes",
+    chapter: JEE_CH_SOL_CHAPTER,
+    notes: JEE_CH_SOL_NOTES,
+    slugs: JEE_CH_SOL_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "structure-of-atom",
+    chipLabel: "Structure of Atom notes",
+    chapter: JEE_CH_ATOM_CHAPTER,
+    notes: JEE_CH_ATOM_NOTES,
+    slugs: JEE_CH_ATOM_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "chemical-kinetics",
+    chipLabel: "Chemical Kinetics notes",
+    chapter: JEE_CH_KIN_CHAPTER,
+    notes: JEE_CH_KIN_NOTES,
+    slugs: JEE_CH_KIN_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "equilibrium",
+    chipLabel: "Equilibrium notes",
+    chapter: JEE_CH_EQ_CHAPTER,
+    notes: JEE_CH_EQ_NOTES,
+    slugs: JEE_CH_EQ_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "electrochemistry",
+    chipLabel: "Electrochemistry notes",
+    chapter: JEE_CH_ELEC_CHAPTER,
+    notes: JEE_CH_ELEC_NOTES,
+    slugs: JEE_CH_ELEC_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "thermodynamics",
+    chipLabel: "Thermodynamics notes",
+    chapter: JEE_CH_THERMO_CHAPTER,
+    notes: JEE_CH_THERMO_NOTES,
+    slugs: JEE_CH_THERMO_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "some-basic-concepts",
+    chipLabel: "Some Basic Concepts notes",
+    chapter: JEE_CH_SBC_CHAPTER,
+    notes: JEE_CH_SBC_NOTES,
+    slugs: JEE_CH_SBC_SLUGS,
   },
 ];
 
