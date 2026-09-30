@@ -341,7 +341,7 @@
     "68": {
       "subject": "Maths",
       "chapter": "Statistics",
-      "subtopic": "Variance and Standard Deviation"
+      "subtopic": "Frequency Distributions"
     },
     "69": {
       "subject": "Maths",
@@ -478,7 +478,7 @@
     "65": "Distributing \\(16\\) identical oranges to \\(4\\) children with each getting at least one gives \\(\\binom{16-1}{4-1}=\\binom{15}{3}=455\\).",
     "66": "Residues mod \\(3\\) split \\(A\\) into \\(\\{0,3,6,9\\},\\{1,4,7\\},\\{2,5,8\\}\\); \\(R\\) relates equal residues, so it is reflexive, symmetric and transitive — Statement II is correct. \\(n(R)=4^2+3^2+3^2=34\\ne36\\), so Statement I is incorrect.",
     "67": "\\(z=\\cos\\frac\\pi6+i\\sin\\frac\\pi6=e^{i\\pi/6}\\), so \\(z^{201}=e^{i\\,201\\pi/6}=e^{i\\,3\\pi/2}=-i\\). Then \\(z^{201}-i=-2i\\) and \\((-2i)^8=2^8\\,i^8=256\\).",
-    "68": "Midpoints are \\(6,10,14,18\\) with \\(N=14+\\lambda\\). Trying \\(\\lambda=6\\): \\(N=20\\), \\(\\mu=\\frac{260}{20}=13\\), variance \\(=\\frac{3760}{20}-13^2=188-169=19\\) as required. Hence \\(\\lambda+\\mu=6+13=19\\).",
+    "68": "Class marks \\(6,10,14,18\\): \\(N=14+\\lambda\\), \\(\\sum fx=200+10\\lambda\\), \\(\\sum fx^2=3160+100\\lambda\\). Variance 19: \\((3160+100\\lambda)(14+\\lambda)-(200+10\\lambda)^2=19(14+\\lambda)^2\\Rightarrow19\\lambda^2-28\\lambda-516=0\\Rightarrow(\\lambda-6)(19\\lambda+86)=0\\), so \\(\\lambda=6\\). Then \\(N=20\\), \\(\\mu=\\frac{260}{20}=13\\), and \\(\\lambda+\\mu=19\\).",
     "69": "Take \\(A=(t^2,2t)\\), \\(B=(t^2,-2t)\\). Equilateral \\(OAB\\) gives \\(OA=AB\\Rightarrow t^4+4t^2=16t^2\\Rightarrow t^2=12\\). The circle on \\(AB\\) as diameter has centre \\((12,0)\\) and radius \\(4\\sqrt3\\), so the minimum distance from \\(O\\) is \\(12-4\\sqrt3=4(3-\\sqrt3)\\).",
     "70": "\\(a_n=S_n-S_{n-1}=2\\alpha n+(\\beta-\\alpha)\\), an AP. \\(a_{10}=19\\alpha+\\beta=59\\); \\(a_6=7a_1\\Rightarrow11\\alpha+\\beta=7(\\alpha+\\beta)\\Rightarrow2\\alpha=3\\beta\\). Solving gives \\(\\alpha=3,\\beta=2\\), so \\(\\alpha+\\beta=5\\).",
     "71": "Rewrite as \\(y'-\\frac{2x}{x^2-4}y=-2x(x^2-4)\\). With integrating factor \\(\\frac{1}{x^2-4}\\), \\(\\frac{y}{x^2-4}=-x^2+C\\). Through \\((3,15)\\): \\(C=12\\), so \\(y=(x^2-4)(12-x^2)=-x^4+16x^2-48\\). \\(f'(x)=-4x(x^2-8)=0\\Rightarrow x=2\\sqrt2\\), giving local maximum \\(f(2\\sqrt2)=16\\).",
@@ -495,6 +495,7 @@
     "55": "Consider two sets \\(A=\\{x\\in Z:||x-3|-3|\\le 1\\}\\) and \\(B=\\left\\{x\\in R-\\{1,2\\}:\\frac{(x-2)(x-4)}{x-1}\\log_{e}(|x-2|)=0\\right\\}\\). Then the number of onto functions \\(f:A\\rightarrow B\\) is equal to:",
     "56": "The system of linear equations \\(x + y + z = 6\\), \\(2x + 5y + az = 36\\), \\(x + 2y + 3z = b\\) has",
     "58": "If the points of intersection of the ellipses \\(x^{2}+ 2y^{2}- 6x - 12y + 23 = 0\\) and \\(4x^{2}+ 2y^{2}- 20x - 12y + 35 = 0\\) lie on a circle of radius \\(r\\) and centre \\((a,b)\\), then the value of \\(ab + 18r^{2}\\) is",
+    "68": "If the mean and the variance of the data\n\n| Class | 4-8 | 8-12 | 12-16 | 16-20 |\n|---|---|---|---|---|\n| Frequency | 3 | \\(\\lambda\\) | 4 | 7 |\n\nare \\(\\mu\\) and 19 respectively, then the value of \\(\\lambda + \\mu\\) is",
     "71": "If the solution curve \\(y = f(x)\\) of the differential equation \\(\\left( x^{2} - 4 \\right)y' - 2xy + 2x\\left( 4 - x^{2} \\right)^{2} = 0,\\ x > 2\\), passes through the point ( 3,15 ), then the local maximum value of f is \\(\\_\\_\\_\\_\\)",
     "72": "If the image of the point \\(P(a,2,a)\\) in the line \\(\\frac{x}{2} = \\frac{y + a}{1} = \\frac{z}{1}\\) is Q and the image of Q in the line \\(\\frac{x - 2b}{2} = \\frac{y - a}{1} = \\frac{z + 2b}{- 5}\\) is \\(P\\), then \\(a + b\\) is equal to \\(\\_\\_\\_\\_\\)"
   },

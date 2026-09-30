@@ -441,7 +441,7 @@
     "88": {
       "subject": "Maths",
       "chapter": "Statistics",
-      "subtopic": "Variance and Standard Deviation"
+      "subtopic": "Frequency Distributions"
     },
     "89": {
       "subject": "Maths",
@@ -851,7 +851,7 @@
     "170": {
       "subject": "Maths",
       "chapter": "Statistics",
-      "subtopic": "Variance and Standard Deviation"
+      "subtopic": "Frequency Distributions"
     },
     "171": {
       "subject": "Maths",
@@ -1088,7 +1088,7 @@
     "85": "Treating \\(153\\) as a block gives \\(5!=120\\); \\(2467\\) as a block gives \\(4!=24\\); both blocks together use all digits, giving \\(2!=2\\). Containing at least one string \\(=120+24-2=142\\), so neither \\(=7!-142=5040-142=4898\\).",
     "86": "Put \\(p=\\ln a,\\ q=\\ln b,\\ r=\\ln c,\\ s=\\ln2\\). The relations become \\((s+p)p=(q+r)q\\) and \\(qs=pr\\). Substituting \\(r=\\frac{qs}{p}\\) into the first: \\(p^2(p+s)=q^2(p+s)\\), so \\((p+s)(p^2-q^2)=0\\). \\(p=q\\) gives \\(a=b\\), excluded. The key takes \\(p=-s\\): \\(a=\\frac12\\), then \\(r=-q\\), so \\(bc=1\\) and \\(6a+5bc=3+5=8\\). As printed, though, \\(p=-q\\) also works: then \\(r=-s\\), i.e. \\(b=\\frac1a,\\ c=\\frac12\\) (for example \\(a=3,\\ b=\\frac13,\\ c=\\frac12\\) satisfy both relations), and \\(6a+5bc=6a+\\frac{5}{2a}\\) is not fixed. So the value is not determined as printed; the key, 8, is the \\(a=\\frac12\\) case.",
     "87": "The parabola is \\(p(x)=1-x^2\\). Shifting \\(u=x+1,v=y-1\\), the region is \\(u^2+v^2\\le1,\\ v\\le-(u-1)^2\\), bounded by the arc from \\((0,-1)\\) to \\((1,0)\\). \\(A=\\int_0^1\\left[\\sqrt{1-u^2}-(u-1)^2\\right]du=\\frac\\pi4-\\frac13\\), so \\(12(\\pi-4A)=12\\cdot\\frac43=16\\).",
-    "88": "Using the class marks with mean \\(\\bar x=28\\), the unknown frequencies are found from \\(\\sum f_i=N\\) and \\(\\sum f_i x_i=28N\\). Substituting these into \\(\\sigma^2=\\frac{\\sum f_i x_i^2}{N}-\\bar x^2\\) gives the variance \\(=151\\).",
+    "88": "The classes \\(0-10,\\dots,40-50\\) have class marks \\(5,15,25,35,45\\) and frequencies \\(2,3,x,5,4\\). Mean \\(=\\frac{10+45+25x+175+180}{14+x}=28\\Rightarrow 410+25x=392+28x\\Rightarrow x=6\\), so \\(N=20\\). \\(\\sum f_ix_i^2=50+675+3750+6125+8100=18700\\). Variance \\(=\\frac{18700}{20}-28^2=935-784=151\\).",
     "89": "With \\(n\\) couples, a valid mixed-doubles match (no married pair in the same match) can be formed in \\(\\frac{n(n-1)(n-2)(n-3)}{2}\\) ways. Setting this equal to \\(840\\) gives \\(n=8\\), so the total number of persons is \\(2n=16\\).",
     "90": "\\(n^2-10n+19=(n-5)^2-6\\), so \\(|(n-5)^2-6|<6\\Rightarrow 0<(n-5)^2<12\\). Thus \\(n\\neq5\\) and \\(|n-5|\\le3\\), giving \\(n\\in\\{2,3,4,6,7,8\\}\\) — \\(6\\) elements.",
     "121": "Ozonolysis of an alkene cleaves the double bond at the ozonide stage and, on work-up, gives carbonyl compounds: reductive work-up with \\(Zn/H_2O\\) gives aldehydes and ketones and oxidative work-up gives carboxylic acids. It never gives an alcohol, so it is the incorrect method. The other three are standard alcohol syntheses: a ketone with \\(RMgBr\\) followed by hydrolysis gives a tertiary alcohol; hydroboration-oxidation of an alkene gives the anti-Markovnikov alcohol with syn addition; and an alkyl halide with aqueous \\(NaOH\\) is hydrolysed to the alcohol.",
@@ -1176,7 +1176,8 @@
     "116": "A point object, ' \\(O\\) ' is placed in front of two thin symmetrical coaxial convex lenses \\(L_{1}\\) and \\(L_{2}\\) with focal length \\(24\\text{ }cm\\) and \\(9\\text{ }cm\\) respectively. The distance between two lenses is \\(10\\text{ }cm\\) and the object is placed \\(6\\text{ }cm\\) away from lens \\(L_{1}\\) as shown in the figure. The distance between the object and the image formed by the system of two lenses is ___ \\(cm\\).",
     "117": "A rectangular parallelopiped is measured as \\(1\\text{ }cm \\times 1\\text{ }cm \\times 100\\text{ }cm\\). If its specific resistance is \\(3 \\times10^{- 7}\\Omega m\\), then the resistance between its two opposite rectangular faces will be___ \\(\\times 10^{- 7}\\Omega\\).",
     "120": "An electron revolves around an infinite cylindrical wire having uniform linear charge density \\(2 \\times10^{- 8}Cm^{- 1}\\) in circular path under the influence of attractive electrostatic field as shown in the figure. The velocity of electron with which it is revolving is____ \\(\\times10^{6}{\\text{ }ms}^{- 1}\\). Given mass of electron \\(= 9 \\times10^{- 31}\\text{ }kg\\).",
-    "123": "In Carius tube, an organic compound ' \\(X\\) ' is treated with sodium peroxide to form a mineral acid ' \\(Y\\) '. The solution of \\(BaCl_{2}\\) is added to ' \\(Y\\) ' to form a precipitate ' \\(Z\\) '. ' \\(Z\\) ' is used for the quantitative estimation of an extra element. ' \\(X\\) ' could be:"
+    "123": "In Carius tube, an organic compound ' \\(X\\) ' is treated with sodium peroxide to form a mineral acid ' \\(Y\\) '. The solution of \\(BaCl_{2}\\) is added to ' \\(Y\\) ' to form a precipitate ' \\(Z\\) '. ' \\(Z\\) ' is used for the quantitative estimation of an extra element. ' \\(X\\) ' could be:",
+    "170": "Let \\(\\mu\\) be the mean and \\(\\sigma\\) be the standard deviation of the distribution\n\n| \\(x_{i}\\) | 0 | 1 | 2 | 3 | 4 | 5 |\n|---|---|---|---|---|---|---|\n| \\(f_{i}\\) | \\(k + 2\\) | \\(2k\\) | \\(k^{2}- 1\\) | \\(k^{2}- 1\\) | \\(k^{2}+ 1\\) | \\(k - 3\\) |\n\nwhere \\(\\sum f_{i}= 62\\). If \\(\\lbrack x\\rbrack\\) denotes the greatest integer \\(\\leq x\\), then \\(\\left\\lbrack \\mu^{2}+\\sigma^{2} \\right\\rbrack\\) is equal to"
   },
   "skip": [
     53

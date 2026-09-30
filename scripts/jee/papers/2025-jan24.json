@@ -307,7 +307,7 @@
     },
     "64": {
       "chapter": "Statistics",
-      "subtopic": "Standard Deviation"
+      "subtopic": "Correcting Data and Combining Groups"
     },
     "65": {
       "chapter": "Conic Sections",
@@ -734,6 +734,7 @@
     "56": "Each root satisfies \\(2z-3-\\frac{2i}{z}=0\\), i.e. \\(z-\\frac iz=\\frac32\\). Squaring, \\(z^2-2i-\\frac1{z^2}=\\frac94\\), so \\(z^2-\\frac1{z^2}=\\frac94+2i\\), and \\(z^4+\\frac1{z^4}=\\left(z^2-\\frac1{z^2}\\right)^2+2=\\frac{49}{16}+9i\\). Since \\(\\alpha^{19}+\\alpha^{11}=\\alpha^{15}\\left(\\alpha^4+\\alpha^{-4}\\right)\\) and the same value \\(\\frac{49}{16}+9i\\) holds for \\(\\beta\\), the fraction equals \\(\\frac{49}{16}+9i\\). Then \\(16\\cdot\\frac{49}{16}\\cdot9=441\\).",
     "57": "Rationalise. Both roots tend to \\(\\sqrt5\\). The difference of the radicands is \\(\\cos^2x+3\\cos x-4-\\sin x=(\\cos x+4)(\\cos x-1)-\\sin x\\). So the expression is \\(\\frac{(\\cos x+4)(\\cos x-1)-\\sin x}{\\sin x\\left(\\sqrt{2\\cos^2x+3\\cos x}+\\sqrt{\\cos^2x+\\sin x+4}\\right)}\\). Since \\(\\frac{\\cos x-1}{\\sin x}\\to0\\), the numerator divided by \\(\\sin x\\) tends to \\(-1\\), while the sum of roots tends to \\(2\\sqrt5\\). The limit is \\(-\\frac{1}{2\\sqrt5}\\).",
     "62": "Take a rectangle \\([0,w]\\times[c,t]\\) inside \\(R\\). The lower bound \\(y\\ge x\\) forces \\(c\\ge w\\), and \\(y\\le 9-\\frac{11}{3}x^{2}\\) forces \\(t\\le 9-\\frac{11}{3}w^{2}\\), so the area is at most \\(A(w)=w\\left(9-w-\\frac{11}{3}w^{2}\\right)\\). Setting \\(A'(w)=9-2w-11w^{2}=0\\) gives \\(w=\\frac{9}{11}\\), and \\(A\\left(\\frac{9}{11}\\right)=\\frac{9}{11}\\cdot\\frac{63}{11}=\\frac{567}{121}\\).",
+    "64": "Recorded data: \\(\\sum x_i=10(5.5)=55\\) and \\(\\sum x_i^2=371\\). Correcting \\(4,5\\) to \\(6,8\\): \\(\\sum x_i=55-9+14=60\\) and \\(\\sum x_i^2=371-(16+25)+(36+64)=430\\). Variance \\(=\\frac{430}{10}-6^2=43-36=7\\).",
     "65": "Reflecting the centre \\((1,-2)\\) of the given circle (radius \\(3\\)) in \\(2x-3y+5=0\\) gives the centre of \\(C\\) as \\(O=(-3,4)\\). With \\(OA\\) horizontal and \\(A\\) to the right of \\(O\\), \\(A=(0,4)\\). Arc \\(AB=\\frac16\\) of the perimeter means \\(\\angle AOB=60^{\\circ}\\); taking \\(\\beta<4\\) gives \\(B=\\left(-\\frac32,\\,4-\\frac{3\\sqrt3}{2}\\right)\\). Then \\(\\beta-\\sqrt3\\,\\alpha=\\left(4-\\frac{3\\sqrt3}{2}\\right)-\\sqrt3\\left(-\\frac32\\right)=4\\).",
     "70": "Infinitely many solutions need \\(\\Delta=0\\) and every Cramer determinant zero. The one without \\(\\mu\\) is \\(\\Delta_3=\\begin{vmatrix}2&-1&4\\\\5&\\lambda&12\\\\100&-47&212\\end{vmatrix}=24\\lambda+48=0\\), so \\(\\lambda=-2\\). Then \\(\\Delta=\\begin{vmatrix}2&-1&1\\\\5&-2&3\\\\100&-47&\\mu\\end{vmatrix}=2(-2\\mu+141)+(5\\mu-300)+(-235+200)=\\mu-53=0\\), so \\(\\mu=53\\). Hence \\(\\mu-2\\lambda=53+4=57\\).",
     "74": "\\(X^{T}AX=0\\) for all \\(X\\) forces \\(A\\) to be skew-symmetric, \\(A=\\begin{bmatrix}0&a&b\\\\-a&0&c\\\\-b&-c&0\\end{bmatrix}\\). The two given products give \\(a=-1,\\ b=2,\\ c=3\\). Then \\(\\det(A+I)=15\\), so \\(\\det(2(A+I))=2^{3}\\cdot15=120\\) and \\(\\det(\\operatorname{adj}(2(A+I)))=120^{2}=14400=2^{6}3^{2}5^{2}\\). Hence \\(\\alpha=6,\\beta=2,\\gamma=2\\) and \\(\\alpha^{2}+\\beta^{2}+\\gamma^{2}=44\\).",
