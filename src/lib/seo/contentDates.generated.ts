@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 214
+ * Entries: 234
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -52,6 +52,26 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/cds-maths/triangles": "2026-09-29T08:59:50+05:30",
   "/notes/cds-maths/trigonometry": "2026-09-28T21:33:03+05:30",
   "/notes/cds-maths/tsd": "2026-09-29T13:41:18+05:30",
+  "/notes/jee-mains-chemistry/alcohols-phenols-and-ethers": "2026-09-30T23:20:11+05:30",
+  "/notes/jee-mains-chemistry/aldehydes-ketones-and-carboxylic-acids": "2026-09-30T23:37:30+05:30",
+  "/notes/jee-mains-chemistry/amines": "2026-09-30T23:54:03+05:30",
+  "/notes/jee-mains-chemistry/biomolecules": "2026-09-30T23:48:25+05:30",
+  "/notes/jee-mains-chemistry/chemical-bonding": "2026-09-30T22:35:20+05:30",
+  "/notes/jee-mains-chemistry/chemical-kinetics": "2026-09-30T22:20:56+05:30",
+  "/notes/jee-mains-chemistry/coordination-compounds": "2026-09-30T22:43:58+05:30",
+  "/notes/jee-mains-chemistry/d-and-f-block-elements": "2026-09-30T22:56:36+05:30",
+  "/notes/jee-mains-chemistry/electrochemistry": "2026-09-30T23:03:39+05:30",
+  "/notes/jee-mains-chemistry/equilibrium": "2026-09-30T22:20:56+05:30",
+  "/notes/jee-mains-chemistry/haloalkanes-and-haloarenes": "2026-09-30T23:04:06+05:30",
+  "/notes/jee-mains-chemistry/hydrocarbons": "2026-09-30T23:20:11+05:30",
+  "/notes/jee-mains-chemistry/organic-basic-principles": "2026-09-30T23:24:57+05:30",
+  "/notes/jee-mains-chemistry/organic-reaction-mechanisms": "2026-09-30T22:48:46+05:30",
+  "/notes/jee-mains-chemistry/p-block-elements": "2026-09-30T22:54:19+05:30",
+  "/notes/jee-mains-chemistry/periodicity": "2026-09-30T22:41:01+05:30",
+  "/notes/jee-mains-chemistry/solutions": "2026-09-30T22:20:56+05:30",
+  "/notes/jee-mains-chemistry/some-basic-concepts": "2026-09-30T22:20:56+05:30",
+  "/notes/jee-mains-chemistry/structure-of-atom": "2026-09-30T22:20:56+05:30",
+  "/notes/jee-mains-chemistry/thermodynamics": "2026-09-30T22:20:56+05:30",
   "/notes/jee-mains-maths/application-of-derivatives": "2026-09-30T10:42:42+05:30",
   "/notes/jee-mains-maths/application-of-integrals": "2026-09-30T13:03:40+05:30",
   "/notes/jee-mains-maths/binomial-theorem": "2026-09-30T07:34:28+05:30",
@@ -68,7 +88,7 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/jee-mains-maths/mathematical-reasoning": "2026-09-30T13:18:42+05:30",
   "/notes/jee-mains-maths/matrices": "2026-09-29T17:27:54+05:30",
   "/notes/jee-mains-maths/permutations-and-combinations": "2026-09-30T07:54:45+05:30",
-  "/notes/jee-mains-maths/probability": "2026-09-30T08:12:38+05:30",
+  "/notes/jee-mains-maths/probability": "2026-09-30T16:58:49+05:30",
   "/notes/jee-mains-maths/properties-of-triangle": "2026-09-30T14:38:20+05:30",
   "/notes/jee-mains-maths/quadratic-equations": "2026-09-30T11:21:32+05:30",
   "/notes/jee-mains-maths/relations-and-functions": "2026-09-30T00:24:59+05:30",
