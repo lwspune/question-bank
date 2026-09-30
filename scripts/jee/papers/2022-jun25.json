@@ -401,7 +401,7 @@
     "80": {
       "subject": "Maths",
       "chapter": "Complex Numbers",
-      "subtopic": "Geometry of Complex Numbers"
+      "subtopic": "Polar Form, Argument and De Moivre"
     },
     "81": {
       "subject": "Maths",
@@ -756,7 +756,7 @@
     "153": {
       "subject": "Maths",
       "chapter": "Complex Numbers",
-      "subtopic": "Modulus and Properties"
+      "subtopic": "Polar Form, Argument and De Moivre"
     },
     "154": {
       "subject": "Maths",
@@ -1228,7 +1228,7 @@
     "150": "At the neutralisation point the equivalents of acid equal the equivalents of base. The base \\(M(OH)_{2}\\) has acidity \\(2\\), so it supplies \\(30\\times 0.05\\times 2 = 3\\text{ }m\\text{ }eq\\). The acid supplies \\(10\\times 0.1\\times b = 1\\times b\\text{ }m\\text{ }eq\\), where \\(b\\) is its basicity. Setting the two equal gives \\(b = 3\\), so the acid is tribasic.",
     "151": "\\(A=\\{x:|x+1|<2\\}=(-3,1)\\) and \\(B=\\{x:|x-1|\\ge2\\}=(-\\infty,-1]\\cup[3,\\infty).\\) Then \\(A-B=A\\cap B^{c}=(-3,1)\\cap(-1,3)=(-1,1)\\) (A true); \\(A\\cap B=(-3,-1]\\) (C true); \\(A\\cup B=(-\\infty,1)\\cup[3,\\infty)=R-[1,3)\\) (D true). But \\(B-A=(-\\infty,-3]\\cup[3,\\infty)\\neq R-(-3,1)=(-\\infty,-3]\\cup[1,\\infty),\\) so (B) is NOT true.",
     "152": "\\(ax^{2}-2bx+15=0\\) has a repeated root, so its discriminant \\(4b^{2}-60a=0\\Rightarrow b^{2}=15a,\\) and \\(\\alpha=\\tfrac{b}{a}=\\tfrac{b}{b^{2}/15}=\\tfrac{15}{b}.\\) For \\(x^{2}-2bx+21=0:\\ \\alpha+\\beta=2b,\\ \\alpha\\beta=21.\\) From \\(\\tfrac{15}{b}+\\tfrac{21b}{15}=2b\\) we get \\(b=5,\\ \\alpha=3,\\ \\beta=7.\\) Hence \\(\\alpha^{2}+\\beta^{2}=9+49=58.\\)",
-    "153": "\\(\\bar z_{1}=i\\bar z_{2}\\) gives (conjugating) \\(z_{1}=-iz_{2}.\\) With \\(z_{2}=re^{i\\theta_{2}},\\ \\tfrac{z_{1}}{\\bar z_{2}}=-i\\,e^{2i\\theta_{2}},\\) and \\(\\arg=\\pi\\) (a negative real) forces \\(-\\tfrac{\\pi}{2}+2\\theta_{2}=\\pi\\Rightarrow\\theta_{2}=\\tfrac{3\\pi}{4}.\\) Then \\(\\arg z_{1}=\\arg(-i)+\\theta_{2}=-\\tfrac{\\pi}{2}+\\tfrac{3\\pi}{4}=\\tfrac{\\pi}{4}.\\)",
+    "153": "Conjugating \\(\\bar z_1=i\\bar z_2\\) gives \\(z_1=-iz_2\\). With \\(z_2=re^{i\\theta}\\), \\(\\frac{z_1}{\\bar z_2}=-ie^{2i\\theta}=e^{i(2\\theta-\\pi/2)}\\), and argument \\(\\pi\\) needs \\(2\\theta-\\frac\\pi2=\\pi+2k\\pi\\), so \\(\\theta=\\frac{3\\pi}{4}\\) or \\(-\\frac{\\pi}{4}\\). Then \\(\\arg z_1=\\theta-\\frac\\pi2\\) is \\(\\frac\\pi4\\) or \\(-\\frac{3\\pi}{4}\\). The key is (c), \\(\\arg z_1=\\frac\\pi4\\) (taking \\(\\arg z_2=\\frac{3\\pi}4\\)); the conditions also allow \\(\\arg z_1=-\\frac{3\\pi}{4}\\), option (d).",
     "154": "The coefficient determinant \\(\\Delta=\\begin{vmatrix}-k&3&-14\\\\-15&4&-k\\\\-4&1&3\\end{vmatrix}=-k(12+k)-3(-45-4k)-14=-k^{2}+121=-(k-11)(k+11).\\) So \\(\\Delta\\neq0\\) (unique solution) for \\(k\\neq\\pm11,\\) and at \\(k=\\pm11\\) the system is inconsistent. Hence consistent for all \\(k\\in R-\\{-11,11\\}.\\)",
     "155": "Put \\(s=\\sin x.\\) Rationalizing, the bracket \\(=\\dfrac{s^{2}-3s+2}{\\sqrt{2s^{2}+3s+4}+\\sqrt{s^{2}+6s+2}}=\\dfrac{(s-1)(s-2)}{\\sqrt{\\ }+\\sqrt{\\ }}.\\) With \\(\\tan^{2}x=\\dfrac{s^{2}}{(1-s)(1+s)},\\) the product \\(=\\dfrac{-s^{2}(s-2)}{(1+s)(\\sqrt{\\ }+\\sqrt{\\ })}.\\) As \\(s\\to1:\\ \\dfrac{-1\\cdot(-1)}{2\\cdot6}=\\dfrac{1}{12}.\\)",
     "156": "\\(y^{2}=2x-1\\Rightarrow x=\\tfrac{y^{2}+1}{2};\\ y^{2}=4x-3\\Rightarrow x=\\tfrac{y^{2}+3}{4}.\\) They meet where \\(y=\\pm1.\\) Right minus left \\(=\\tfrac{y^{2}+3}{4}-\\tfrac{y^{2}+1}{2}=\\tfrac{1-y^{2}}{4}.\\) Area \\(=\\int_{-1}^{1}\\tfrac{1-y^{2}}{4}\\,dy=\\tfrac{1}{4}\\cdot\\tfrac{4}{3}=\\tfrac{1}{3}.\\)",
@@ -1265,6 +1265,7 @@
     "19": "The difference of speed of light in the two media \\(A\\) and \\(B\\left( v_{A}-v_{B} \\right)\\) is \\(2.6 \\times10^{7}\\text{ }m/s\\). If the refractive index of medium \\(B\\) is 1.47 , then the ratio of refractive index of medium \\(B\\) to medium A is : (Given : speed of light in vacuum \\(\\left. \\ c = 3 \\times10^{8}{\\text{ }ms}^{- 1} \\right)\\)",
     "25": "The first overtone frequency of an open organ pipe is equal to the fundamental frequency of a closed organ pipe. If the length of the closed organ pipe is \\(20\\text{ }cm\\). The length of the open organ pipe is \\(cm\\).",
     "27": "A resistor develops \\(300\\text{ }J\\) of thermal energy in \\(15\\text{ }s\\), when a current of \\(2\\text{ }A\\) is passed through it. If the current increases to \\(3\\text{ }A\\), the energy developed in 10 s is J.",
+    "80": "Let a circle \\(C\\) in complex plane pass through the points \\(z_{1}= 3 + 4i,z_{2}= 4 + 3i\\) and \\(z_{3}= 5i\\). If \\(z\\left( \\neq z_{1} \\right)\\) is a point on \\(C\\) such that the line through \\(z\\) and \\(z_{1}\\) is perpendicular to the line through \\(z_{2}\\) and \\(z_{3}\\), then \\(arg(z)\\) is equal to :",
     "103": "The electromagnetic waves travel in a medium at a speed of \\(2.0 \\times10^{8}\\text{ }m/s\\). The relative permeability of the medium is 1.0. The relative permittivity of the medium will be:",
     "112": "A curved in a level road has a radius \\(75\\text{ }m\\). The maximum speed of a car turning this curved road can be \\(30\\text{ }m/s\\) without skidding. If radius of curved road is changed to \\(48\\text{ }m\\) and the coefficient of friction between the tyres and the road remains same, then maximum allowed speed would be \\(m/s\\).",
     "119": "In a series LCR circuit, the inductance, capacitance and resistance are \\(L = 100mH,C = 100\\mu F\\) and \\(R =\\) \\(10\\Omega\\) respectively. They are connected to an \\(AC\\) source of voltage \\(220\\text{ }V\\) and frequency of \\(50\\text{ }Hz\\). The approximate value of current in the circuit will be A.",
