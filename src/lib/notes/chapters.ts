@@ -945,6 +945,11 @@ import {
   JEE_DETERMINANTS_NOTES,
   JEE_DETERMINANTS_SLUGS,
 } from "@/app/notes/jee-mains-maths/determinants/_data";
+import {
+  JEE_LIMITS_CHAPTER,
+  JEE_LIMITS_NOTES,
+  JEE_LIMITS_SLUGS,
+} from "@/app/notes/jee-mains-maths/limits-and-continuity/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3030,6 +3035,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_DETERMINANTS_CHAPTER,
     notes: JEE_DETERMINANTS_NOTES,
     slugs: JEE_DETERMINANTS_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "limits-and-continuity",
+    chipLabel: "Limits and Continuity notes",
+    chapter: JEE_LIMITS_CHAPTER,
+    notes: JEE_LIMITS_NOTES,
+    slugs: JEE_LIMITS_SLUGS,
   },
 ];
 

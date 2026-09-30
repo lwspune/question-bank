@@ -316,7 +316,7 @@
     "67": {
       "subject": "Maths",
       "chapter": "Limits and Continuity",
-      "subtopic": "Evaluation of Limits"
+      "subtopic": "Standard Limits and Algebraic Forms"
     },
     "68": {
       "subject": "Maths",
@@ -366,7 +366,7 @@
     "77": {
       "subject": "Maths",
       "chapter": "Limits and Continuity",
-      "subtopic": "Continuity"
+      "subtopic": "Continuity at a Point"
     },
     "78": {
       "subject": "Maths",
@@ -761,7 +761,7 @@
     "160": {
       "subject": "Maths",
       "chapter": "Limits and Continuity",
-      "subtopic": "Evaluation of Limits"
+      "subtopic": "Limits at Infinity and Limits of Sums"
     },
     "161": {
       "subject": "Maths",
@@ -846,7 +846,7 @@
     "177": {
       "subject": "Maths",
       "chapter": "Limits and Continuity",
-      "subtopic": "Evaluation of Limits"
+      "subtopic": "Series Expansions and Unknown Constants"
     },
     "178": {
       "subject": "Maths",
@@ -920,7 +920,7 @@
     "74": "D",
     "75": "A",
     "76": "D",
-    "77": "A",
+    "77": "D",
     "78": "C",
     "79": "D",
     "80": "B",
@@ -1124,7 +1124,7 @@
     "74": "\\(\\text{Direction}=(2,3,5)\\times(-1,3,2)=(-9,-9,9)\\parallel(1,1,-1)\\). Line through \\(P(5,-4,3)\\). \\(\\vec{PQ}=(-5,6,-5)\\); \\(\\vec{PQ}\\times(1,1,-1)=(-1,-10,-11)\\), magnitude \\(\\sqrt{222}\\). Distance \\(=\\tfrac{\\sqrt{222}}{\\sqrt3}=\\sqrt{74}\\).",
     "75": "\\(\\sin^{-1}\\alpha+\\sin^{-1}\\beta+\\sin^{-1}\\gamma=\\pi\\Rightarrow\\alpha=\\sin A,\\beta=\\sin B,\\gamma=\\sin C,\\ A+B+C=\\pi\\). \\((\\alpha+\\beta)^2-\\gamma^2=3\\alpha\\beta\\Rightarrow\\alpha^2+\\beta^2-\\gamma^2=\\alpha\\beta=2\\alpha\\beta\\cos C\\Rightarrow\\cos C=\\tfrac12,C=\\tfrac\\pi3\\). \\(\\gamma=\\sin\\tfrac\\pi3=\\tfrac{\\sqrt3}{2}\\).",
     "76": "\\(\\text{Total}=75\\), with replacement. \\(P(\\text{red then white})=\\tfrac{10}{75}\\cdot\\tfrac{30}{75}=\\tfrac{2}{15}\\cdot\\tfrac{2}{5}=\\tfrac{4}{75}\\).",
-    "77": "\\(\\lim_{x\\to0^+}\\big(\\tfrac{1+x}{2+x}\\big)^{1/x}=0\\Rightarrow g(0)=0\\), so \\(g(x)=mx\\). \\(f'(1)=f(1)\\big(-\\ln\\tfrac23+\\tfrac16\\big)=\\tfrac23(\\ln\\tfrac32+\\tfrac16)\\); \\(f(-1)=g(-1)=-m\\). \\(f'(1)=f(-1)\\Rightarrow m=\\tfrac23\\ln\\tfrac23-\\tfrac19\\). \\(g(1)=\\tfrac13\\ln\\tfrac49-\\tfrac19=\\tfrac13\\ln\\big(\\tfrac{4}{9e^{1/3}}\\big)\\).",
+    "77": "As \\(x\\to0^+\\), \\(\\frac{1+x}{2+x}\\to\\frac12\\) and \\(\\frac1x\\to\\infty\\), so \\(\\left(\\frac{1+x}{2+x}\\right)^{1/x}\\to0\\). Continuity gives \\(g(0)=0\\), so \\(g(x)=mx\\). For \\(x>0\\), \\(\\ln f=\\frac1x\\ln\\frac{1+x}{2+x}\\); at \\(x=1\\), \\(f(1)=\\frac23\\) and \\(\\frac{f'(1)}{f(1)}=-\\ln\\frac23+\\left(\\frac12-\\frac13\\right)=\\ln\\frac32+\\frac16\\), so \\(f'(1)=\\frac23\\left(\\ln\\frac32+\\frac16\\right)\\). \\(f'(1)=f(-1)=-m\\) gives \\(m=\\frac23\\ln\\frac23-\\frac19=\\frac13\\left(\\ln\\frac49-\\frac13\\right)\\). Then \\(g(3)=3m=\\ln\\frac49-\\frac13=\\log_e\\left(\\frac{4}{9e^{1/3}}\\right)\\), option (d). (The booklet prints letters for digits: \\(f'(a)\\) is \\(f'(1)\\) and \\(g(c)\\) is \\(g(3)\\); option (a) is \\(g(1)\\).)",
     "78": "\\(f(0)=\\det\\begin{vmatrix}0&1&1\\\\2&0&6\\\\0&4&-2\\end{vmatrix}=12\\). \\(f'(0)=\\) sum of row-differentiated dets \\(=24+0-6=18\\). \\(2f(0)+f'(0)=24+18=42\\).",
     "79": "\\(\\text{Hypergeometric: }P(0)=\\tfrac{105}{153},P(1)=\\tfrac{45}{153},P(2)=\\tfrac{3}{153}\\). \\(E[X]=\\tfrac{51}{153}=\\tfrac13\\), \\(E[X^2]=\\tfrac{57}{153}\\). \\(\\operatorname{Var}=\\tfrac{57}{153}-\\tfrac19=\\tfrac{40}{153}\\).",
     "80": "\\(x^2-8x+32>0\\ \\forall x\\) (discriminant \\(<0\\)), so need numerator \\(ax^2+2(a+1)x+9a+4<0\\ \\forall x\\), which requires leading coeff \\(a<0\\). No positive integer \\(a\\) works, so \\(|S|=0\\).",
@@ -1235,6 +1235,7 @@
     "58": "Consider the following reaction at \\(298\\text{ K}\\). \\(\\dfrac{3}{2}O_{2(g)} \\rightleftharpoons O_{3(g)}\\); \\(K_{p} = 2.47 \\times 10^{-29}\\). \\(\\Delta_{r}G^{\\ominus}\\) for the reaction is \\_\\_\\_\\_\\_\\_ \\(kJ\\). (Given \\(R = 8.314\\,J\\,K^{-1}\\,mol^{-1}\\))",
     "64": "If one of the diameters of the circle \\(x^{2}+y^{2}- 10x+\\) \\(4y+ 13 = 0\\) is a chord of another circle \\(C\\), whose centre is the point of intersection of the lines \\(2x+\\) \\(3y= 12\\) and \\(3x- 2y= 5\\), then the radius of the circle \\(C\\) is",
     "66": "If \\(f(x) =\\frac{4x + 3}{6x - 4},x \\neq\\frac{2}{3}\\) and (fof) \\((x) = g(x)\\), where \\(g:\\mathbb{R}-\\left\\{ \\frac{2}{3} \\right\\}\\rightarrow\\mathbb{R}-\\left\\{ \\frac{2}{3} \\right\\}\\), then (gogog) \\((4)\\) is equal to",
+    "77": "Let \\(g(x)\\) be a linear function and \\(f(x) =\\left\\{ \\begin{matrix} g(x) & ,x\\leq 0 \\\\ \\left( \\frac{1 +x}{2 +x} \\right)^{\\frac{1}{x}} & ,x> 0 \\end{matrix} \\right.\\), is continuous at \\(x= 0\\). If \\(f^{'}(1) =f( - 1)\\), then the value of \\(g(3)\\) is",
     "82": "Let \\(S = ( - 1,\\infty)\\) and \\(f:S \\rightarrow R\\) be defined as \\(f(x) =\\int_{- 1}^{x} \\left( e^{t}- 1 \\right)^{11}(2t - 1)^{5}(t - 2)^{7}(t - 3)^{12}(2t - 10)^{61}dt\\). Let \\(p =\\) Sum of square of the values of \\(x\\), where \\(f(x)\\) attains local maxima on S. and \\(q =\\) Sum of the values of \\(x\\), where \\(f(x)\\) attains local minima on \\(S\\). Then, the value of \\(p^{2}+ 2q\\) is",
     "97": "The speed of sound in oxygen at S.T.P. will be approximately: (Given, \\(R = 8.3\\text{ }JK^{- 1}mol^{- 1},\\gamma = 1.4\\) )",
     "103": "By what percentage will the illumination of the lamp decrease if the current drops by \\(20\\%\\) ?",
@@ -1243,6 +1244,7 @@
     "131": "\\(A_{(g)} \\rightleftharpoons B_{(g)} + \\frac{1}{2}C_{(g)}\\). The correct relationship between \\(K_{P}\\), \\(\\alpha\\) and equilibrium pressure \\(P\\) is",
     "141": "A diatomic molecule has a dipole moment of \\(1.2\\text{ D}\\). If the bond distance is \\(1\\,\\mathring{A}\\), then fractional charge on each atom is \\_\\_\\_\\_\\_\\_ \\(\\times 10^{-10}\\) esu. (Given \\(1\\text{ D} = 10^{-18}\\) esu cm)",
     "156": "Let \\((\\alpha,\\beta,\\gamma)\\) be mirror image of the point \\((2,3,5)\\) in the line \\(\\frac{x - 1}{2}=\\frac{y - 2}{3}=\\frac{z - 3}{4}\\). Then \\(2\\alpha + 3\\beta + 4\\gamma\\) is equal to",
+    "160": "Let \\(f:R \\rightarrow (0,\\infty)\\) be strictly increasing function such that \\(\\lim_{x \\rightarrow \\infty} \\frac{f(7x)}{f(x)}= 1\\). Then, the value of \\(\\lim_{x \\rightarrow \\infty} \\left\\lbrack \\frac{f(5x)}{f(x)}- 1 \\right\\rbrack\\) is equal to",
     "168": "A coin is biased so that a head is twice as likely to occur as a tail. If the coin is tossed 3 times, then the probability of getting two tails and one head is-",
     "175": "Let \\(A\\) be a \\(3 \\times 3\\) matrix and \\(det(A) = 2\\). If \\(n = \\det(\\mathrm{adj}(\\mathrm{adj}(\\ldots(\\mathrm{adj}\\,A)\\ldots)))\\), where adj is applied 2024 times, then the remainder when \\(n\\) is divided by 9 is equal to"
   },

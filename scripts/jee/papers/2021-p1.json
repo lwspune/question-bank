@@ -189,7 +189,7 @@
     },
     "67": {
       "chapter": "Limits and Continuity",
-      "subtopic": "Continuity"
+      "subtopic": "Counting Discontinuities and Non-Differentiability"
     },
     "68": {
       "chapter": "Application of Derivatives",
@@ -201,7 +201,7 @@
     },
     "70": {
       "chapter": "Limits and Continuity",
-      "subtopic": "Evaluation of Limits"
+      "subtopic": "Limits via Derivatives and Integrals"
     },
     "71": {
       "chapter": "Height & Distance",
@@ -311,6 +311,7 @@
     "46": "A free phenolic \\(-OH\\) condenses with phthalic anhydride in conc. \\(H_2SO_4\\) to form phenolphthalein, which turns pink in alkali (\\(NaOH\\)). Of the options only 2-propylphenol has a free phenolic \\(-OH\\), so it gives the pink colour, option (B).",
     "47": "First ionisation enthalpy rises across a period but with two dips: \\(Al\\) is lower than \\(Mg\\) (removing \\(Mg\\)'s stable filled \\(3s^2\\) electron costs more), and \\(S\\) is lower than \\(P\\) (\\(P\\) has a stable half-filled \\(3p^3\\)). The order is therefore \\(Al < Mg < Si < S < P\\), option (A).",
     "49": "Leaching \\(Al_2O_3\\) with alkali gives sodium tetrahydroxoaluminate \\(Na[Al(OH)_4]\\) (X). Passing \\(CO_2\\) (Y) through this solution neutralises the alkali and precipitates aluminium hydroxide \\(Al(OH)_3\\) (Z). Hence \\(X = Na[Al(OH)_4]\\) and \\(Y = CO_2\\), option (A).",
+    "70": "By Leibniz's rule the derivative of the numerator is \\(2x\\sin\\sqrt{x^2}=2x\\sin|x|\\), so by L'Hospital the limit is \\(\\lim\\frac{2x\\sin|x|}{3x^2}=\\frac23\\lim\\frac{\\sin|x|}{x}\\). This is \\(\\frac23\\) as \\(x\\to0^+\\) but \\(-\\frac23\\) as \\(x\\to0^-\\): the numerator is even in \\(x\\) and the denominator odd. So the two-sided limit as printed does not exist and no option is exactly right; the key (a) \\(\\frac23\\) is the right-hand limit.",
     "77": "\\(\\binom n2\\left(\\frac12\\right)^n=\\binom n3\\left(\\frac12\\right)^n\\) gives \\(n=5\\). The number of odd results is odd with probability \\(\\frac{\\binom51+\\binom53+\\binom55}{2^5}=\\frac{16}{32}=\\frac12\\).",
     "80": "\\(\\Delta=\\begin{vmatrix}3&-2&-k\\\\2&-4&-2\\\\1&2&-1\\end{vmatrix}=24-8k\\), so \\(\\Delta=0\\) only for \\(k=3\\) (for \\(k\\ne3\\) the solution is unique). With \\(k=3\\), the first equation's coefficients are the sum of the other two: \\((2,-4,-2)+(1,2,-1)=(3,-2,-3)\\). The right-hand sides must match for consistency: \\(6+5m=10\\), i.e. \\(m=\\frac45\\). So the system is inconsistent exactly when \\(k=3\\) and \\(m\\ne\\frac45\\).",
     "81": "Since \\(PQ=kI_3\\), we have \\(Q=kP^{-1}\\), so \\(|Q|=\\dfrac{k^3}{|P|}\\). Given \\(|Q|=\\dfrac{k^2}{2}\\Rightarrow \\dfrac{k^3}{|P|}=\\dfrac{k^2}{2}\\Rightarrow |P|=2k\\).\n\nCompute \\(|P|\\) with \\(P=\\begin{bmatrix} 3 & -1 & -2 \\\\ 2 & 0 & \\alpha \\\\ 3 & -5 & 0 \\end{bmatrix}\\):\n\\[|P|=3(0-(-5\\alpha))-(-1)(0-3\\alpha)+(-2)(-10-0)=15\\alpha-3\\alpha+20=12\\alpha+20.\\]\n\nEntry \\(q_{23}=k\\,(P^{-1})_{23}=k\\cdot\\dfrac{C_{32}}{|P|}\\), where \\(C_{32}=(-1)^{3+2}\\det\\begin{bmatrix}3 & -2 \\\\ 2 & \\alpha\\end{bmatrix}=-(3\\alpha+4)\\).\nGiven \\(q_{23}=-\\dfrac{k}{8}\\):\n\\[\\frac{k\\big(-(3\\alpha+4)\\big)}{|P|}=-\\frac{k}{8}\\Rightarrow |P|=8(3\\alpha+4)=24\\alpha+32.\\]\n\nEquate: \\(12\\alpha+20=24\\alpha+32\\Rightarrow \\alpha=-1\\). Then \\(|P|=12(-1)+20=8=2k\\Rightarrow k=4\\).\n\\[\\alpha^2+k^2=1+16=17.\\]",
