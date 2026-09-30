@@ -303,7 +303,7 @@
     },
     "63": {
       "chapter": "Application of Integrals",
-      "subtopic": "Area Between Curves"
+      "subtopic": "Modulus Curves"
     },
     "64": {
       "chapter": "Statistics",
@@ -669,7 +669,7 @@
     },
     "142": {
       "chapter": "Application of Integrals",
-      "subtopic": "Area Between Curves"
+      "subtopic": "Trigonometric, Exponential and Reciprocal Curves"
     },
     "143": {
       "chapter": "Quadratic Equations",
@@ -734,6 +734,7 @@
     "56": "Each root satisfies \\(2z-3-\\frac{2i}{z}=0\\), i.e. \\(z-\\frac iz=\\frac32\\). Squaring, \\(z^2-2i-\\frac1{z^2}=\\frac94\\), so \\(z^2-\\frac1{z^2}=\\frac94+2i\\), and \\(z^4+\\frac1{z^4}=\\left(z^2-\\frac1{z^2}\\right)^2+2=\\frac{49}{16}+9i\\). Since \\(\\alpha^{19}+\\alpha^{11}=\\alpha^{15}\\left(\\alpha^4+\\alpha^{-4}\\right)\\) and the same value \\(\\frac{49}{16}+9i\\) holds for \\(\\beta\\), the fraction equals \\(\\frac{49}{16}+9i\\). Then \\(16\\cdot\\frac{49}{16}\\cdot9=441\\).",
     "57": "Rationalise. Both roots tend to \\(\\sqrt5\\). The difference of the radicands is \\(\\cos^2x+3\\cos x-4-\\sin x=(\\cos x+4)(\\cos x-1)-\\sin x\\). So the expression is \\(\\frac{(\\cos x+4)(\\cos x-1)-\\sin x}{\\sin x\\left(\\sqrt{2\\cos^2x+3\\cos x}+\\sqrt{\\cos^2x+\\sin x+4}\\right)}\\). Since \\(\\frac{\\cos x-1}{\\sin x}\\to0\\), the numerator divided by \\(\\sin x\\) tends to \\(-1\\), while the sum of roots tends to \\(2\\sqrt5\\). The limit is \\(-\\frac{1}{2\\sqrt5}\\).",
     "62": "Take a rectangle \\([0,w]\\times[c,t]\\) inside \\(R\\). The lower bound \\(y\\ge x\\) forces \\(c\\ge w\\), and \\(y\\le 9-\\frac{11}{3}x^{2}\\) forces \\(t\\le 9-\\frac{11}{3}w^{2}\\), so the area is at most \\(A(w)=w\\left(9-w-\\frac{11}{3}w^{2}\\right)\\). Setting \\(A'(w)=9-2w-11w^{2}=0\\) gives \\(w=\\frac{9}{11}\\), and \\(A\\left(\\frac{9}{11}\\right)=\\frac{9}{11}\\cdot\\frac{63}{11}=\\frac{567}{121}\\).",
+    "63": "Put \\(t=x+2\\): the region becomes \\(t^2-2\\le y\\le|t|\\), with the same area. The curves meet where \\(|t|^2-2=|t|\\Rightarrow|t|=2\\). By symmetry, area \\(=2\\int_0^2\\big(t-(t^2-2)\\big)\\,dt=2\\left[\\frac{t^2}{2}-\\frac{t^3}{3}+2t\\right]_0^2=2\\left(2-\\frac83+4\\right)=\\frac{20}{3}\\).",
     "64": "Recorded data: \\(\\sum x_i=10(5.5)=55\\) and \\(\\sum x_i^2=371\\). Correcting \\(4,5\\) to \\(6,8\\): \\(\\sum x_i=55-9+14=60\\) and \\(\\sum x_i^2=371-(16+25)+(36+64)=430\\). Variance \\(=\\frac{430}{10}-6^2=43-36=7\\).",
     "65": "Reflecting the centre \\((1,-2)\\) of the given circle (radius \\(3\\)) in \\(2x-3y+5=0\\) gives the centre of \\(C\\) as \\(O=(-3,4)\\). With \\(OA\\) horizontal and \\(A\\) to the right of \\(O\\), \\(A=(0,4)\\). Arc \\(AB=\\frac16\\) of the perimeter means \\(\\angle AOB=60^{\\circ}\\); taking \\(\\beta<4\\) gives \\(B=\\left(-\\frac32,\\,4-\\frac{3\\sqrt3}{2}\\right)\\). Then \\(\\beta-\\sqrt3\\,\\alpha=\\left(4-\\frac{3\\sqrt3}{2}\\right)-\\sqrt3\\left(-\\frac32\\right)=4\\).",
     "70": "Infinitely many solutions need \\(\\Delta=0\\) and every Cramer determinant zero. The one without \\(\\mu\\) is \\(\\Delta_3=\\begin{vmatrix}2&-1&4\\\\5&\\lambda&12\\\\100&-47&212\\end{vmatrix}=24\\lambda+48=0\\), so \\(\\lambda=-2\\). Then \\(\\Delta=\\begin{vmatrix}2&-1&1\\\\5&-2&3\\\\100&-47&\\mu\\end{vmatrix}=2(-2\\mu+141)+(5\\mu-300)+(-235+200)=\\mu-53=0\\), so \\(\\mu=53\\). Hence \\(\\mu-2\\lambda=53+4=57\\).",
@@ -765,6 +766,7 @@
     "124": "The compound is a hydrocarbon, so it contains only carbon and hydrogen.\n\nMass of carbon in one mole:\n\\[0.90 \\times 80 = 72\\ g \\Rightarrow \\frac{72}{12} = 6\\ \\text{carbon atoms}\\]\n\nThe remaining mass is hydrogen:\n\\[80 - 72 = 8\\ g \\Rightarrow \\frac{8}{1} = 8\\ \\text{hydrogen atoms}\\]\n\nSo the molecular formula is \\(C_{6}H_{8}\\).\n\nThe degree of unsaturation (number of rings plus \\(\\pi\\) bonds) for \\(C_{n}H_{m}\\) is\n\\[DoU = \\frac{2n + 2 - m}{2} = \\frac{2(6) + 2 - 8}{2} = \\frac{14 - 8}{2} = 3\\]\n\nThe hydrocarbon therefore has 3 degrees of unsaturation (for example cyclohexa-1,3-diene, or hexa-1,3,5-triene).",
     "125": "In the Carius method the organic compound is heated with fuming nitric acid and silver nitrate in a sealed tube; all the halogen is converted quantitatively to the silver halide, which is filtered, dried and weighed.\n\nMolar mass of \\(AgBr = 108 + 80 = 188\\ g\\ mol^{-1}\\), of which the bromine fraction is \\(80/188\\).\n\n\\[\\% Br = \\frac{80}{188} \\times \\frac{\\text{mass of } AgBr}{\\text{mass of compound}} \\times 100\\]\n\\[\\% Br = \\frac{80}{188} \\times \\frac{0.15}{0.25} \\times 100\\]\n\\[\\% Br = 0.4255 \\times 0.60 \\times 100 = 25.53\\ \\%\\]\n\nThe answer is required as \\(x \\times 10^{-1}\\ \\%\\), so\n\\[x = 25.53 \\times 10 = 255.3 \\approx 255\\]",
     "138": "The \\(30^{\\text{th}}\\) and \\(12^{\\text{th}}\\) terms of \\((1+x)^{N}\\), \\(N=2n-1\\), have coefficients \\(A=\\binom{N}{29}\\) and \\(B=\\binom{N}{11}\\). Try \\(N-29=12\\): then \\(A=\\binom{N}{12}\\) and \\(\\frac{A}{B}=\\frac{\\binom{N}{12}}{\\binom{N}{11}}=\\frac{N-11}{12}\\). Setting this equal to \\(\\frac52\\) gives \\(N=41\\), which indeed has \\(N-29=12\\). So \\(2n-1=41\\) and \\(n=21\\).",
+    "142": "For \\(x>0\\), \\(|e^x-1|=e^x-1<e^x\\), so the curves never meet there. For \\(x<0\\), \\(|e^x-1|=1-e^x\\), which equals \\(e^x\\) at \\(x=-\\ln2\\). Area \\(=\\int_{-\\ln2}^{0}\\big(e^x-(1-e^x)\\big)dx=\\left[2e^x-x\\right]_{-\\ln2}^{0}=2-(1+\\ln2)=1-\\log_e2\\).",
     "143": "\\(|x-3|\\le|x+2|\\) exactly when \\(x\\ge\\frac12\\). For \\(x\\ge\\frac12\\) the equation is \\(x^2+3x+2=|x-3|\\): on \\([\\frac12,3]\\) it is \\(x^2+4x-1=0\\), \\(x=-2\\pm\\sqrt5\\), and \\(-2+\\sqrt5\\approx0.24<\\frac12\\); for \\(x>3\\) it is \\(x^2+2x+5=0\\), no real root. For \\(x<\\frac12\\) the equation is \\(x^2+3x+2=|x+2|\\): on \\([-2,\\frac12)\\) it is \\(x^2+2x=0\\), so \\(x=0\\) or \\(x=-2\\), both valid; for \\(x<-2\\) it is \\(x^2+4x+4=0\\), \\(x=-2\\), not below \\(-2\\). So the solutions are \\(0\\) and \\(-2\\): 2 real solutions.",
     "146": "Exactly one of the \\(98\\) integers in \\(\\{1,\\dots,98\\}\\) is assigned \\(1\\) (the rest \\(0\\)): \\(98\\) choices. The two remaining integers \\(99,100\\) may each map to \\(0\\) or \\(1\\) freely: \\(2^{2}=4\\) ways. Total \\(=98\\times4=392\\)."
   },

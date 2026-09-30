@@ -411,7 +411,7 @@
     "82": {
       "subject": "Maths",
       "chapter": "Application of Integrals",
-      "subtopic": "Area Between Curves"
+      "subtopic": "Max, Min and Piecewise Boundaries"
     },
     "83": {
       "subject": "Maths",
@@ -876,7 +876,7 @@
     "175": {
       "subject": "Maths",
       "chapter": "Application of Integrals",
-      "subtopic": "Area Between Curves"
+      "subtopic": "Modulus Curves"
     },
     "176": {
       "subject": "Maths",
@@ -1146,7 +1146,7 @@
     "172": "Using \\(\\det(\\mathrm{adj}\\,M)=|M|^{n-1}\\) and \\(\\det(kM)=k^n|M|\\): \\(|2A^{-1}|=2^{n-1}\\), \\(|\\mathrm{adj}(2A^{-1})|=2^{(n-1)^2}\\), \\(|2\\,\\mathrm{adj}(2A^{-1})|=2^{n+(n-1)^2}\\), and the outer adjoint gives exponent \\((n-1)(n+(n-1)^2)=84\\). Solving, \\(n=5\\) (since \\(4\\cdot21=84\\)).",
     "173": "The general term is \\(\\binom9r(-1)^r2^{3r-9}x^{(5/2)(9-r)-lr}\\). The constant term \\(-84\\) occurs at \\(r=3\\), forcing \\(l=5\\). The coefficient of \\(x^{-15}\\) is at \\(r=5\\): \\(\\binom95(-1)2^6=-8064=2^7(-63)\\), so \\(\\alpha=7,\\ \\beta=-63\\) and \\(|\\alpha l-\\beta|=|35+63|=98\\).",
     "174": "The tangent at \\(P(b,c)\\) on \\(y^2=2ax\\) meets \\(y=0\\) at \\((-b,0)\\); with the line \\(x=b\\) the triangle has base \\(2b\\) and height \\(c\\), so area \\(=bc=16\\). Using \\(a=c^2/(2b)\\in\\mathbb N\\), the pairs \\((b,c)=(1,16),(2,8),(4,4)\\) give \\(a=128,16,2\\). Hence \\(\\sum a=146\\).",
-    "175": "The region runs from \\(x=\\tfrac{3-\\sqrt5}2\\) to \\(x=\\tfrac{\\sqrt5-1}2\\) and is symmetric about \\(x=\\tfrac12\\). So \\(A=2\\int_{(3-\\sqrt5)/2}^{1/2}(-x^2+3x-1)\\,dx\\approx0.03006\\), giving \\((6A+11)^2=125\\).",
+    "175": "On \\([0,1]\\), \\(|x^2-x|=x-x^2\\). The condition \\(|2x-1|\\le x-x^2\\) gives \\(x^2-3x+1\\le0\\) for \\(x\\le\\frac12\\) and \\(x^2+x-1\\le0\\) for \\(x\\ge\\frac12\\), so \\(x\\in[a,1-a]\\) with \\(a=\\frac{3-\\sqrt5}{2}\\), and the region is symmetric about \\(x=\\frac12\\). \\(A=2\\int_a^{1/2}(-x^2+3x-1)\\,dx\\). Using \\(a^2=3a-1\\) and \\(a^3=8a-3\\), the antiderivative \\(-\\frac{x^3}{3}+\\frac{3x^2}{2}-x\\) is \\(-\\frac16\\) at \\(\\frac12\\) and \\(\\frac{5a}{6}-\\frac12\\) at \\(a\\). So \\(A=2\\left(\\frac13-\\frac{5a}{6}\\right)=\\frac{5\\sqrt5-11}{6}\\), \\(6A+11=5\\sqrt5\\) and \\((6A+11)^2=125\\).",
     "176": "The term is \\(\\binom9r(4/5)^{9-r}(5/2)^r x^{9-3r}\\); \\(9-3r=-6\\Rightarrow r=5\\). The coefficient is \\(\\binom95(4/5)^4(5/2)^5=126\\cdot8\\cdot5=5040\\).",
     "177": "By geometric probability on the square \\([0,60]^2\\), \\(P(|x-y|\\le a)=1-(1-a/60)^2=\\tfrac{11}{36}\\). Then \\((1-a/60)^2=\\tfrac{25}{36}\\), so \\(a/60=\\tfrac16\\) and \\(a=10\\).",
     "178": "\\(\\frac{^{2n+1}P_{n-1}}{^{2n-1}P_n}=\\frac{2(2n+1)}{(n+2)(n+1)}=\\frac{11}{21}\\) gives \\(11n^2-51n-20=0\\), so \\(n=5\\). Then \\(n^2+n+15=45\\).",
