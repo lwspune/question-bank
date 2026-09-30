@@ -1070,6 +1070,11 @@ import {
   JEE_CH_PB_NOTES,
   JEE_CH_PB_SLUGS,
 } from "@/app/notes/jee-mains-chemistry/p-block-elements/_data";
+import {
+  JEE_CH_DFB_CHAPTER,
+  JEE_CH_DFB_NOTES,
+  JEE_CH_DFB_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/d-and-f-block-elements/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3430,6 +3435,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_CH_PB_CHAPTER,
     notes: JEE_CH_PB_NOTES,
     slugs: JEE_CH_PB_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "d-and-f-block-elements",
+    chipLabel: "d- and f-Block Elements notes",
+    chapter: JEE_CH_DFB_CHAPTER,
+    notes: JEE_CH_DFB_NOTES,
+    slugs: JEE_CH_DFB_SLUGS,
   },
 ];
 

@@ -126,6 +126,7 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "coordination-compounds": { cls: 12, chapterNo: 5, book: "NCERT XII 5 Coordination Compounds" },
     "organic-reaction-mechanisms": { cls: 11, chapterNo: 8, within: 1, book: "NCERT XI 8 (reaction mechanisms, if kept as its own chapter)" },
     "p-block-elements": { cls: 12, chapterNo: 4, book: "old NCERT XII 7 The p-Block Elements (not in the rationalised book)" },
+    "d-and-f-block-elements": { cls: 12, chapterNo: 4, within: 1, book: "NCERT XII 4 The d- and f-Block Elements" },
   },
 };
 
