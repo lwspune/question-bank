@@ -1000,6 +1000,11 @@ import {
   JEE_TRIG_IDENTITIES_NOTES,
   JEE_TRIG_IDENTITIES_SLUGS,
 } from "@/app/notes/jee-mains-maths/trigonometric-identities/_data";
+import {
+  JEE_HEIGHTS_CHAPTER,
+  JEE_HEIGHTS_NOTES,
+  JEE_HEIGHTS_SLUGS,
+} from "@/app/notes/jee-mains-maths/height-and-distance/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3206,6 +3211,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_TRIG_IDENTITIES_CHAPTER,
     notes: JEE_TRIG_IDENTITIES_NOTES,
     slugs: JEE_TRIG_IDENTITIES_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Maths",
+    subjectRoute: "jee-mains-maths",
+    subjectDisplay: "JEE Mains Maths",
+    chapterSlug: "height-and-distance",
+    chipLabel: "Heights and Distances notes",
+    chapter: JEE_HEIGHTS_CHAPTER,
+    notes: JEE_HEIGHTS_NOTES,
+    slugs: JEE_HEIGHTS_SLUGS,
   },
 ];
 
