@@ -1065,6 +1065,11 @@ import {
   JEE_CH_ORM_NOTES,
   JEE_CH_ORM_SLUGS,
 } from "@/app/notes/jee-mains-chemistry/organic-reaction-mechanisms/_data";
+import {
+  JEE_CH_PB_CHAPTER,
+  JEE_CH_PB_NOTES,
+  JEE_CH_PB_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/p-block-elements/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3414,6 +3419,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_CH_ORM_CHAPTER,
     notes: JEE_CH_ORM_NOTES,
     slugs: JEE_CH_ORM_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "p-block-elements",
+    chipLabel: "p-Block Elements notes",
+    chapter: JEE_CH_PB_CHAPTER,
+    notes: JEE_CH_PB_NOTES,
+    slugs: JEE_CH_PB_SLUGS,
   },
 ];
 
