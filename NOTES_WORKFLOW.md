@@ -46,6 +46,17 @@ Used to take JEE Mains Maths from 11 to 27 noted chapters in one session. One ch
 
 **Recurring findings worth checking in any booklet-sourced chapter:** letters printed for digits apply as one mapping per row (a→1, b→2, c→3 — if `f'(a)` is f'(1), then `g(c)` is g(3)); a key can be the NEXT question's answer (8 Apr 2024 Q177/Q178 were shifted by one); a quadratic in eˣ keyed with the product of all roots, non-real ones included; determinant keys that skip dividing by |A|; stems whose missing domain (x ≥ 0) makes the region unbounded — keep the key, say so, never feature it.
 
+**Second run: JEE Chemistry, 20 chapters (2026-09-30).** What it added:
+- **Pick the subject with env vars.** Set `JEE_SUBJECT=Chemistry` for dump, apply-chapter and register, and `JEE_ROUTE=jee-mains-chemistry` for probe. Maths is the default.
+- **Re-run `fix.ts --apply` after `apply-chapter.sh`.** A fix the DB already holds is reported as "already fixed" and is not written to the paper JSON as an override. The second run records it, and a later `resync` would otherwise undo it.
+- **The dump prints option images.** Before this, rows whose options are pictures looked blank, and agents reported graphs as "missing options".
+- **Scrambled pictures are common in organic chapters.** The source's option pictures are often split across the stem image and the four option slots, so an option can show half of one choice and half of another. The key letter is usually still right.
+  - The fix tool cannot repair this. Write the options as text in the spec (keep the block out of `fixes` until you have viewed the pictures).
+  - Then clear the stray `image_url`s with SQL guarded on the exact old paths, and add a line to the paper JSON's `notes` so attach-images never re-attaches them. Older paper files keep `notes` as an object keyed by question number, not a string.
+- **Withheld (PRIVATE) rows are invisible to the dump,** so an emptied subtopic can still hold one. Move it by hand, update its `classification` in the paper JSON, then delete the subtopic.
+- **`bookOrder.ts` holds positions only for registered chapters** (a test enforces it). Park the others and add each position back when its chapter ships.
+- **A subject with no strategy guide:** notes pages link `/guide/<subject>` only when `hasSubjectGuide()` says the guide exists.
+
 **Tools live in `scripts/notes-pipeline/jee/` (tracked; README there):** `dump.ts`, `read.js`, `list.js`, `qnat.ts`, `src.py`, `fix.ts`, `recut.js`, `del-empty-sub.mts`, `sync-classification.mts`, `duphash.mts`, `tag-chapter.ts`, `apply-chapter.sh`, `register.py`, `probe.sh`. Run them from the repo root. Their WORKING DATA (chapter dumps `_jee_<code>.json`, fix specs `_fix-jee-<code>.ts`, re-cut plans, tag specs) stays in `generated-papers/`, which is gitignored.
 
 **Prompt skeletons** (fill in chapter, code, slug prefixes and any chapter-specific traps):
