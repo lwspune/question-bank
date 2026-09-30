@@ -225,7 +225,7 @@
     },
     "76": {
       "chapter": "Differentiation",
-      "subtopic": "Differentiation"
+      "subtopic": "Functional Equations and Derivative Constants"
     },
     "77": {
       "chapter": "Definite Integration",
@@ -295,6 +295,7 @@
     "34": "Identify the elements \\(X\\) and \\(Y\\) using the ionisation energy values (kJ/mol) given below:\n\n| Element | 1st IE | 2nd IE |\n|---|---|---|\n| X | 495 | 4563 |\n| Y | 731 | 1450 |",
     "63": "Let \\(\\alpha\\in\\mathbb{R}\\) be such that the function \\(f(x)=\\begin{cases} \\dfrac{\\cos^{-1}(1-\\{x\\}^2)\\,\\sin^{-1}(1-\\{x\\})}{\\{x\\}-\\{x\\}^3}, & x\\neq 0 \\\\ \\alpha, & x=0 \\end{cases}\\) is continuous at \\(x=0\\), where \\(\\{x\\}=x-[x]\\) and \\([x]\\) is the greatest integer less than or equal to \\(x\\). Then:",
     "72": "If the points of intersection of the ellipse \\(\\frac{x^{2}}{16}+\\frac{y^{2}}{b^{2}}= 1\\) and the circle \\(x^{2}+y^{2}= 4b,b> 4\\) lie on the curve \\(y^{2}= 3x^{2}\\), then \\(b\\) is equal to:",
+    "76": "Let \\(f:S \\rightarrow S\\) where \\(S = (0,\\infty)\\) be a twice differentiable function such that \\(f(x + 1) = xf(x)\\). If \\(g:S \\rightarrow R\\) be defined as \\(g(x) =\\log_{e}f(x)\\), then the value of \\(\\left| g^{''}(5) -g^{''}(1) \\right|\\) is equal to:",
     "82": "Consider the statistics of two sets of observations as follows:\n\n| Set | Size | Mean | Variance |\n|---|---|---|---|\n| Observation I | 10 | 2 | 2 |\n| Observation II | \\(n\\) | 3 | 1 |\n\nIf the variance of the combined set of these two observations is \\(\\frac{17}{9}\\), then the value of \\(n\\) is equal to",
     "88": "Let \\(n\\) be a positive integer. Let \\[A =\\sum_{k = 0}^{n} ( - 1)^{k}\\ ^{n}C_{k}\\left\\lbrack \\left( \\frac{1}{2} \\right)^{k}+\\left( \\frac{3}{4} \\right)^{k}+\\left( \\frac{7}{8} \\right)^{k}+\\left( \\frac{15}{16} \\right)^{k}+\\left( \\frac{31}{32} \\right)^{k} \\right\\rbrack\\] If \\(63\\text{ }A = 1 -\\frac{1}{2^{30}}\\), then \\(n\\) is equal to"
   },
@@ -317,6 +318,7 @@
     "44": "Basicity falls as the nitrogen lone pair is delocalised onto electron-withdrawing acyl groups. \\((CH_3CO)_2\\overset{..}{N}H\\) has its lone pair tied up by two carbonyl groups (an imide-type nitrogen) and is far less basic than the dialkyl/trialkyl amine choices, so it is the least basic. Hence option (C).",
     "50": "Phenylmagnesium bromide (1 equivalent) adds to the most electrophilic group, the nitrile \\(-C\\equiv N\\), giving a magnesium ketimine salt; acidic hydrolysis (\\(H_3O^+\\)) then converts it to a ketone \\(-C(=O)C_6H_5\\). The methoxy (\\(-OCH_3\\)) group is untouched. So X is the aryl phenyl ketone bearing the intact \\(-CH(OCH_3)CH_3\\) side chain. Hence option (D).",
     "70": "\\(|5\\sqrt7+9i|=\\sqrt{175+81}=16\\) and \\(\\log_{\\sqrt2}16=8\\). With \\(r=|z|\\), the left side is \\(2^{\\frac{(r+3)(r-1)}{r+1}}\\), so the inequality is \\(\\frac{(r+3)(r-1)}{r+1}\\ge3\\), i.e. \\(r^2+2r-3\\ge3r+3\\), i.e. \\((r-3)(r+2)\\ge0\\). Hence \\(r\\ge3\\), and the least value of \\(|z|\\) is 3.",
+    "76": "Take logs: \\(g(x+1)=\\log_e x+g(x)\\). Differentiate twice: \\(g''(x+1)-g''(x)=-\\frac{1}{x^2}\\). Put \\(x=1,2,3,4\\) and add: \\(g''(5)-g''(1)=-\\left(1+\\frac14+\\frac19+\\frac{1}{16}\\right)=-\\frac{144+36+16+9}{144}=-\\frac{205}{144}\\). So \\(|g''(5)-g''(1)|=\\frac{205}{144}\\).",
     "79": "With \\(y=vx\\), \\(2xy\\,y'=y^2-x^2\\) integrates to \\(C_1: x^2+y^2-2x=0\\) (a unit circle centred at \\((1,0)\\)) through \\((1,1)\\); similarly \\(y'=\\frac{2xy}{x^2-y^2}\\) gives \\(C_2: x^2+y^2-2y=0\\) (unit circle centred at \\((0,1)\\)). The circles meet at \\((0,0)\\) and \\((1,1)\\), and the enclosed lens area is \\(2\\int_0^1\\left(\\sqrt{2x-x^2}-x\\right)dx=\\frac{\\pi}{2}-1\\). Hence option (B).",
     "81": "The line has direction ratios \\((3,-m,1)\\) (writing \\(\\frac{2-y}{m}=\\frac{y-2}{-m}\\)). A point moving from \\((1,-2,3)\\) parallel to this line is \\[(1+3t,\\,-2-mt,\\,3+t).\\] Substituting into \\(x+2y-3z+10=0\\): \\[(1+3t)+2(-2-mt)-3(3+t)+10=-2-2mt=0\\Rightarrow t=-\\frac{1}{m}.\\] The distance covered is the length of the displacement \\((3t,-mt,t)\\): \\[|t|\\sqrt{9+m^{2}+1}=\\frac{1}{|m|}\\sqrt{10+m^{2}}=\\sqrt{\\frac{7}{2}}.\\] Squaring: \\(\\dfrac{10+m^{2}}{m^{2}}=\\dfrac{7}{2}\\Rightarrow 20+2m^{2}=7m^{2}\\Rightarrow m^{2}=4.\\) Hence \\(|m|=2.\\)",
     "82": "With \\(N=10+n\\), the combined variance is \\(\\frac{n_1\\sigma_1^2+n_2\\sigma_2^2}{N}+\\frac{n_1n_2}{N^2}(\\bar x_1-\\bar x_2)^2=\\frac{20+n}{10+n}+\\frac{10n}{(10+n)^2}\\). Setting this equal to \\(\\frac{17}{9}\\): \\(9[(20+n)(10+n)+10n]=17(10+n)^2\\Rightarrow 8n^2-20n-100=0\\Rightarrow 2n^2-5n-25=0\\Rightarrow(n-5)(2n+5)=0\\). So \\(n=5\\).",
