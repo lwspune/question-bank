@@ -67,8 +67,9 @@ const SOURCE_DEFECTS: Record<string, string> = {
     "is the answer, so the question is still unambiguous.]",
 };
 
+// JEE Main began in 2013; the booklet tags the 2012 question AIEEE-2012, and so must the note.
 const PYQ_NOTE = (y: number) =>
-  `JEE Main ${y} past-year question, as reprinted in Allen's "Compound Angles" module exercise. ` +
+  `${y < 2013 ? "AIEEE" : "JEE Main"} ${y} past-year question, as reprinted in Allen's "Compound Angles" module exercise. ` +
   `The booklet prints the year only - the session and shift are not stated in the source.`;
 
 // ---- load ---------------------------------------------------------------
