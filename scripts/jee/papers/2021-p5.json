@@ -217,7 +217,7 @@
     },
     "74": {
       "chapter": "Application of Derivatives",
-      "subtopic": "Maxima and Minima"
+      "subtopic": "Increasing and Decreasing Functions"
     },
     "75": {
       "chapter": "Probability",
@@ -269,7 +269,7 @@
     },
     "87": {
       "chapter": "Application of Derivatives",
-      "subtopic": "Tangents and Normals"
+      "subtopic": "Tangents, Normals and Rates of Change"
     },
     "88": {
       "chapter": "Application of Integrals",
@@ -305,6 +305,7 @@
     "66": "\\(A^2=\\begin{bmatrix} -2 & 2 \\\\ 2 & -2 \\end{bmatrix}\\); squaring repeatedly gives \\(A^8=\\begin{bmatrix} 128 & -128 \\\\ -128 & 128 \\end{bmatrix}\\). The system becomes \\(128(x-y)=8\\) and \\(-128(x-y)=64\\), i.e. \\(x-y=\\tfrac{1}{16}\\) and \\(x-y=-\\tfrac12\\) at once — a contradiction. So the system has no solution. Hence option (C).",
     "69": "\\(g\\) is differentiable on all of \\(\\mathbb{R}\\) (at \\(x=1\\) both pieces give slope 3). \\(f\\) is smooth except at \\(x=0\\), where it jumps (\\(0+2=2\\) from the left, \\(0\\) from the right). So \\(f(g(x))\\) can fail to be differentiable only where \\(g(x)=0\\), i.e. \\(x^3=0\\Rightarrow x=0\\); there \\(f\\circ g\\) is even discontinuous. That is the only such point, so the count is 1. Hence option (B).",
     "71": "The base \\(\\tfrac{1}{\\sqrt2}<1\\), so \\(\\log_{1/\\sqrt2}t\\le 2\\) reverses to \\(t\\ge(\\tfrac{1}{\\sqrt2})^2=\\tfrac12\\). With \\(r=|z|\\): \\(\\frac{r+11}{(r-1)^2}\\ge\\tfrac12\\Rightarrow 2r+22\\ge r^2-2r+1\\Rightarrow r^2-4r-21\\le0\\Rightarrow (r-7)(r+3)\\le0\\), so \\(-3\\le r\\le 7\\). The largest value of \\(|z|\\) is 7. Hence option (B).",
+    "74": "\\(2\\cot\\frac x2\\sin^2\\frac x2=2\\sin\\frac x2\\cos\\frac x2=\\sin x\\), so \\(f(x)=(4a-3)(x+\\ln5)+(a-7)\\sin x\\) and \\(f'(x)=(4a-3)+(a-7)\\cos x\\). A critical point needs \\(\\cos x=\\frac{3-4a}{a-7}\\) to lie in \\([-1,1]\\): \\((3-4a)^2\\le(a-7)^2\\), i.e. \\(15a^2-10a-40\\le0\\), i.e. \\((3a+4)(a-2)\\le0\\). Hence \\(a\\in\\left[-\\frac43,2\\right]\\).",
     "81": "Take the AP with four of its terms \\(11,16,21,26\\) (\\(a=11,\\ d=5\\)) and the GP with four of its terms \\(4,8,16,32\\) (\\(a=4,\\ r=2\\)), each extended to the largest four-digit term.\n\\[\\text{AP: } t_k=11+5k \\equiv 1 \\pmod 5,\\qquad \\text{GP: } 4\\cdot 2^m \\le 9999.\\]\nThe GP terms are \\(4,8,16,32,64,128,256,512,1024,2048,4096,8192\\). A common term must be \\(\\equiv 1 \\pmod 5\\):\n\\[16\\equiv1,\\quad 256\\equiv1,\\quad 4096\\equiv1 \\pmod 5,\\]\nand each also lies in the AP (\\(16-11,256-11,4096-11\\) are all multiples of \\(5\\)) and is \\(\\le 9999\\).\n\\[\\text{Number of common terms} = 3.\\]",
     "82": "The bracket is the Riemann sum \\(\\sum_{k=1}^{n} f(k/n)\\):\n\\[\\lim_{n\\to\\infty}\\frac{2}{n}\\sum_{k=1}^{n} f\\!\\left(\\frac{k}{n}\\right)=2\\int_0^1 \\log_2\\!\\left(1+\\tan\\tfrac{\\pi x}{4}\\right)dx = 2I.\\]\nApply \\(x\\to 1-x\\): \\(\\tan\\frac{\\pi(1-x)}{4}=\\frac{1-t}{1+t}\\) with \\(t=\\tan\\frac{\\pi x}{4}\\), so\n\\[1+\\tan\\tfrac{\\pi(1-x)}{4}=\\frac{2}{1+t}\\Rightarrow \\log_2(\\cdots)=1-\\log_2(1+t).\\]\nAdding the two forms of \\(I\\): \\(2I=\\int_0^1 1\\,dx=1\\Rightarrow I=\\tfrac12\\).\n\\[2I = 1.\\]",
     "83": "Place \\(A=(0,0),B=(1,0),C=(1,1),D=(0,1)\\). \\(C_2\\) is tangent to \\(AB,AD\\), so its centre is \\((r,r)\\) with radius \\(r\\). Internal tangency with \\(C_1\\) (centre \\(A\\), radius \\(1\\)):\n\\[r\\sqrt2 = 1-r \\Rightarrow r=\\frac{1}{\\sqrt2+1}=\\sqrt2-1.\\]\nLet \\(E=(e,0)\\). Line \\(CE\\) through \\((1,1),(e,0)\\) is \\(x-(1-e)y-e=0\\); tangency to \\(C_2\\) gives\n\\[\\frac{e(1-r)}{\\sqrt{1+(1-e)^2}}=r.\\]\nWith \\(1-r=2-\\sqrt2\\) and \\(r=\\sqrt2-1\\), squaring yields \\(2e^2=2-2e+e^2\\Rightarrow e^2+2e-2=0\\Rightarrow e=\\sqrt3-1\\).\n\\[EB=1-e=2-\\sqrt3=\\alpha+\\sqrt3\\,\\beta\\Rightarrow \\alpha=2,\\ \\beta=-1,\\ \\alpha+\\beta=1.\\]",

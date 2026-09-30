@@ -421,7 +421,7 @@
     },
     "90": {
       "chapter": "Application of Derivatives",
-      "subtopic": "Maxima and Minima"
+      "subtopic": "Functions Built from Their Extrema"
     }
   },
   "stemOverrides": {
@@ -441,7 +441,8 @@
     "67": "Negation of the statement \\((p\\vee r)\\Rightarrow(q\\vee r)\\) is:",
     "71": "The angle of intersection of the curves \\(\\frac{x^{2}}{a^{2}}+\\frac{y^{2}}{b^{2}}=1\\) and \\(x^{2}+y^{2}=ab,\\ a>b,\\) is:",
     "72": "If \\(y\\frac{dy}{dx}=x\\left\\lbrack \\frac{y^{2}}{x^{2}}+\\frac{\\phi\\left( \\frac{y^{2}}{x^{2}} \\right)}{\\phi^{'}\\left( \\frac{y^{2}}{x^{2}} \\right)} \\right\\rbrack,x> 0,\\phi> 0\\), and \\(y(1) = - 1\\), then \\(\\phi\\left( \\frac{y^{2}}{4} \\right)\\) is equal to:",
-    "78": "Let \\(f\\) be any continuous function on \\(\\lbrack 0,2\\rbrack\\) and twice differentiable on \\((0,2)\\). If \\(f(0) = 0, f(1) = 1\\) and \\(f(2) = 2\\), then"
+    "78": "Let \\(f\\) be any continuous function on \\(\\lbrack 0,2\\rbrack\\) and twice differentiable on \\((0,2)\\). If \\(f(0) = 0, f(1) = 1\\) and \\(f(2) = 2\\), then",
+    "90": "Let \\(f(x)\\) be a cubic polynomial with \\(f(1) = - 10\\), \\(f( - 1) = 6\\), and has a local minima at \\(x = 1\\), and \\(f^{'}(x)\\) has a local minima at \\(x = - 1\\). Then \\(f(3)\\) is equal to"
   },
   "optionOverrides": {
     "72": {
@@ -525,7 +526,8 @@
     "65": "Put \\(m=n=1\\): \\(f(2)=2f(1)\\). Put \\(m=2,n=1\\): \\(f(3)=3f(1)\\). Put \\(m=n=3\\): \\(f(6)=2f(3)=18\\), so \\(f(3)=9\\), \\(f(1)=3\\), \\(f(2)=6\\). Hence \\(f(2)\\cdot f(3)=54\\).",
     "72": "Put \\(y=tx\\): \\(tx\\left(t+x\\frac{dt}{dx}\\right)=x\\left(t^2+\\frac{\\phi(t^2)}{\\phi'(t^2)}\\right)\\), so \\(xt\\frac{dt}{dx}=\\frac{\\phi(t^2)}{\\phi'(t^2)}\\), i.e. \\(\\frac{\\phi'(t^2)\\,2t\\,dt}{\\phi(t^2)}=\\frac{2\\,dx}{x}\\). Integrating, \\(\\ln\\phi(t^2)=2\\ln x+C\\), so \\(\\phi\\!\\left(\\frac{y^2}{x^2}\\right)=kx^2\\). At \\(x=1,\\ y=-1\\): \\(k=\\phi(1)\\). Then \\(\\phi\\!\\left(\\frac{y^2}{4}\\right)\\) is the value at \\(x=2\\): \\(4\\phi(1)\\).",
     "74": "\\(\\frac{z-i}{z-1}\\) purely imaginary means \\(z\\) sees the segment from \\(1\\) to \\(i\\) at a right angle, so \\(z\\) lies on the circle with that diameter: centre \\(\\frac{1+i}2\\), radius \\(\\frac1{\\sqrt2}\\). The distance from \\(3+3i\\) to the centre is \\(\\frac{5}{\\sqrt2}\\), so the minimum of \\(|z-(3+3i)|\\) is \\(\\frac5{\\sqrt2}-\\frac1{\\sqrt2}=2\\sqrt2\\).",
-    "83": "There are 9000 four-digit numbers. Multiples of 3: 3000. Multiples of 7: from 1001 to 9996, \\(\\frac{9996-1001}{7}+1=1286\\). Multiples of 21: from 1008 to 9996, \\(\\frac{9996-1008}{21}+1=429\\). Multiples of 3 or 7: \\(3000+1286-429=3857\\). Neither: \\(9000-3857=5143\\)."
+    "83": "There are 9000 four-digit numbers. Multiples of 3: 3000. Multiples of 7: from 1001 to 9996, \\(\\frac{9996-1001}{7}+1=1286\\). Multiples of 21: from 1008 to 9996, \\(\\frac{9996-1008}{21}+1=429\\). Multiples of 3 or 7: \\(3000+1286-429=3857\\). Neither: \\(9000-3857=5143\\).",
+    "90": "\\(f'\\) is a quadratic with its minimum at \\(x=-1\\), so \\(f'(x)=3k(x+1)^2+m\\); \\(f'(1)=0\\) gives \\(m=-12k\\). Then \\(f(x)=k(x+1)^3-12kx+c\\). \\(f(-1)=12k+c=6\\) and \\(f(1)=8k-12k+c=-4k+c=-10\\) give \\(k=1\\), \\(c=-6\\). So \\(f(x)=(x+1)^3-12x-6\\) and \\(f(3)=64-36-6=22\\)."
   },
   "notes": "\n[Chemistry stem repair] Q48: The extracted stem is truncated to the bare lead-in \"For the following:\" - the words naming what is being asked (the reaction sequence and its products) were lost. The reaction scheme itself survives intact in the attached figure, so the question is fully answerable; only the lead-in sentence is missing.\nPaper 23 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.",
   "skip": []
