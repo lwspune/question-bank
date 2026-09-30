@@ -92,7 +92,7 @@
     "18": {
       "subject": "Chemistry",
       "chapter": "Alcohols, Phenols and Ethers",
-      "subtopic": "Chemical Reactions of Alcohols and Acidity"
+      "subtopic": "Reactions of Alcohols: Substitution, Dehydration and Rearrangement"
     },
     "19": {
       "subject": "Chemistry",
@@ -319,7 +319,7 @@
   },
   "notes": "2021 compilation Paper 16, Maths only. Source answer key AGREES with independent blind re-derivation on all 8 clean MCQ (Q42-49) — aligned and trustworthy. Shipped 14 of 20 (8 MCQ + 6 integer-NAT). Skipped: Q50 (two-point answer), Q52 (irrational limit), Q57 (irrational area), Q58 (ambiguous vector stem), Q59 (irrational), Q60 (irrational distance, garbled stem).\n[Chemistry skip cleanup] Removed 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 from skip[]. These were written by an EARLIER subject's pass (skip[] is paper-global and keyed on question number), and the compilation re-tag has since reassigned them to Chemistry. Left in place they would silently suppress questions this pass answered.\n[Chemistry option repair] Restored the full option block for Q21, Q22, Q23, Q24, Q25, Q26, Q27, Q28, Q29, Q30 from the agent's verbatim recovery — extraction had returned no options for these rows, which commit.ts cannot ship.\n2021 Compilation Paper 16 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry stem repair] Q29: the math zone ended in stranded control-spaces; parseLatex trims them to a bare backslash that KaTeX rejects, breaking the WHOLE stem. scan-flip passed it (its delimiters balance), so it shipped PUBLIC broken and only validate-db caught it. Trimmed by the extended stripEmptyMath, which now runs at commit for every paper.",
   "authoredSolutions": {
-    "18": "Cyclohexylmethanol is a primary alcohol; with \\(H_{3}PO_{4}\\) at \\(120^{\\circ}C\\) it loses water to a primary carbocation, which immediately undergoes ring expansion by a 1,2-alkyl shift to the far more stable tertiary 1-methylcyclohexyl cation. Loss of a proton gives the Zaitsev alkene, so \\(A\\) is 1-methylcyclohexene. Hydroboration-oxidation then adds \\(-H\\) and \\(-OH\\) across that double bond in anti-Markovnikov, syn fashion, placing the \\(-OH\\) on the less substituted carbon. \\(B\\) is therefore 2-methylcyclohexan-1-ol, option (B). Option (A), 1-methylcyclohexanol, is the trap for anyone who applies Markovnikov addition instead.",
+    "18": "Cyclohexylmethanol is a primary alcohol. With \\(H_{3}PO_{4}\\) at \\(120^{\\circ}C\\) it is protonated and loses water. The primary cation \\(C_{6}H_{11}-CH_{2}^{+}\\) is very unstable, and a 1,2-hydride shift from the ring carbon next to it gives the tertiary 1-methylcyclohexyl cation. Loss of a proton from a ring \\(CH_{2}\\) gives the more substituted alkene, so \\(A\\) is 1-methylcyclohexene. Hydroboration-oxidation adds \\(H\\) and \\(OH\\) syn and anti-Markovnikov: the \\(OH\\) goes to the less substituted alkene carbon, the ring \\(CH\\). \\(B\\) is 2-methylcyclohexan-1-ol (the trans isomer), option (B). Option (A), 1-methylcyclohexan-1-ol, is the Markovnikov product of acid-catalysed hydration.",
     "19": "The key rests on an assumption the stem does not state: that \\(1\\text{ }cm^{3}\\) of the solution contains \\(1\\text{ }cm^{3}\\) of water. Then \\(1\\text{ }cm^{3}\\) of solution weighs \\(1.2\\text{ }g\\), the water in it weighs \\(1\\text{ }g\\), and the \\(NaOH\\) weighs \\(0.2\\text{ }g\\), i.e. \\(\\frac{0.2}{40}=5\\times10^{-3}\\text{ }mol\\). Molality \\(=\\frac{5\\times10^{-3}}{1\\times10^{-3}\\text{ }kg}=5\\text{ }m\\), option (A). As printed the question is flawed: a density alone cannot fix a concentration (dissolving a solid changes the volume), and the options are written in M although molality is asked.",
     "20": "Both \\(CO\\) and \\(NO^{+}\\) carry 14 electrons and are isoelectronic with \\(N_{2}\\). The molecular orbital filling is \\(\\sigma 1s^{2}\\sigma^{*}1s^{2}\\sigma 2s^{2}\\sigma^{*}2s^{2}\\pi 2p_{x}^{2}\\pi 2p_{y}^{2}\\sigma 2p_{z}^{2}\\), giving a bond order of \\((10-4)/2 = 3\\) for each. The difference in bond order is therefore \\(0\\), so \\(x/2 = 0\\) and \\(x = 0\\). Option (B).",
     "21": "Direct iodination of methane, \\(CH_{4}+I_{2}\\rightleftharpoons CH_{3}I+HI\\), is reversible because the \\(HI\\) produced is a good reducing agent and converts \\(CH_{3}I\\) straight back to \\(CH_{4}\\). The reverse step is suppressed by adding an oxidising agent that destroys the \\(HI\\) as it forms; concentrated \\(HIO_{3}\\) oxidises \\(HI\\) to \\(I_{2}\\), which is then available for the forward reaction again. Dilute \\(HNO_{2}\\) and \\(HClO\\) are not the reagents used for this purpose, and aqueous \\(NH_{3}\\) merely neutralises the acid without oxidising the iodide. Option (B).",
@@ -384,10 +384,10 @@
   },
   "optionOverrides": {
     "18": {
-      "A": "1-methylcyclohexan-1-ol (structure in image9.png)",
-      "B": "2-methylcyclohexan-1-ol (structure in image10.png)",
-      "C": "1-cyclohexylethan-1-ol (structure in image11.png)",
-      "D": "3-methylcyclohexan-1-ol (structure in image12.png)"
+      "A": "1-methylcyclohexan-1-ol",
+      "B": "2-methylcyclohexan-1-ol",
+      "C": "1-cyclohexylethan-1-ol",
+      "D": "3-methylcyclohexan-1-ol"
     },
     "21": {
       "A": "Dilute \\(HNO_{2}\\)",
