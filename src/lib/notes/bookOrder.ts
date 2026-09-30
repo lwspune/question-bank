@@ -128,6 +128,8 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "p-block-elements": { cls: 12, chapterNo: 4, book: "old NCERT XII 7 The p-Block Elements (not in the rationalised book)" },
     "d-and-f-block-elements": { cls: 12, chapterNo: 4, within: 1, book: "NCERT XII 4 The d- and f-Block Elements" },
     "haloalkanes-and-haloarenes": { cls: 12, chapterNo: 6, book: "NCERT XII 6 Haloalkanes and Haloarenes" },
+    hydrocarbons: { cls: 11, chapterNo: 9, book: "NCERT XI 9 Hydrocarbons" },
+    "alcohols-phenols-and-ethers": { cls: 12, chapterNo: 7, book: "NCERT XII 7 Alcohols, Phenols and Ethers" },
   },
 };
 

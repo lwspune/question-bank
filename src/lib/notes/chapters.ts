@@ -1080,6 +1080,16 @@ import {
   JEE_CH_HALO_NOTES,
   JEE_CH_HALO_SLUGS,
 } from "@/app/notes/jee-mains-chemistry/haloalkanes-and-haloarenes/_data";
+import {
+  JEE_CH_HC_CHAPTER,
+  JEE_CH_HC_NOTES,
+  JEE_CH_HC_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/hydrocarbons/_data";
+import {
+  JEE_CH_ALC_CHAPTER,
+  JEE_CH_ALC_NOTES,
+  JEE_CH_ALC_SLUGS,
+} from "@/app/notes/jee-mains-chemistry/alcohols-phenols-and-ethers/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3462,6 +3472,28 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_CH_HALO_CHAPTER,
     notes: JEE_CH_HALO_NOTES,
     slugs: JEE_CH_HALO_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "hydrocarbons",
+    chipLabel: "Hydrocarbons notes",
+    chapter: JEE_CH_HC_CHAPTER,
+    notes: JEE_CH_HC_NOTES,
+    slugs: JEE_CH_HC_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Chemistry",
+    subjectRoute: "jee-mains-chemistry",
+    subjectDisplay: "JEE Mains Chemistry",
+    chapterSlug: "alcohols-phenols-and-ethers",
+    chipLabel: "Alcohols, Phenols and Ethers notes",
+    chapter: JEE_CH_ALC_CHAPTER,
+    notes: JEE_CH_ALC_NOTES,
+    slugs: JEE_CH_ALC_SLUGS,
   },
 ];
 
