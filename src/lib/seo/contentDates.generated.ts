@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 235
+ * Entries: 263
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -100,6 +100,34 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/jee-mains-maths/trigonometric-equations": "2026-09-30T13:32:45+05:30",
   "/notes/jee-mains-maths/trigonometric-identities": "2026-09-30T13:47:42+05:30",
   "/notes/jee-mains-maths/vector-algebra": "2026-09-30T06:57:21+05:30",
+  "/notes/jee-mains-physics/alternating-current": "2026-10-01T08:56:20+05:30",
+  "/notes/jee-mains-physics/atoms": "2026-10-01T10:08:25+05:30",
+  "/notes/jee-mains-physics/communication-systems": "2026-10-01T10:08:25+05:30",
+  "/notes/jee-mains-physics/current-electricity": "2026-10-01T10:08:25+05:30",
+  "/notes/jee-mains-physics/dual-nature": "2026-10-01T10:08:25+05:30",
+  "/notes/jee-mains-physics/electromagnetic-induction": "2026-10-01T08:56:20+05:30",
+  "/notes/jee-mains-physics/electromagnetic-waves": "2026-10-01T10:08:25+05:30",
+  "/notes/jee-mains-physics/electrostatics": "2026-10-01T10:08:25+05:30",
+  "/notes/jee-mains-physics/gravitation": "2026-10-01T08:56:20+05:30",
+  "/notes/jee-mains-physics/kinetic-theory": "2026-10-01T08:56:20+05:30",
+  "/notes/jee-mains-physics/laws-of-motion": "2026-10-01T08:56:20+05:30",
+  "/notes/jee-mains-physics/magnetism-and-matter": "2026-10-01T08:56:20+05:30",
+  "/notes/jee-mains-physics/mechanical-properties-of-fluids": "2026-10-01T08:56:20+05:30",
+  "/notes/jee-mains-physics/mechanical-properties-of-solids": "2026-10-01T08:56:20+05:30",
+  "/notes/jee-mains-physics/motion-in-a-plane": "2026-10-01T08:56:20+05:30",
+  "/notes/jee-mains-physics/motion-in-a-straight-line": "2026-10-01T08:03:07+05:30",
+  "/notes/jee-mains-physics/moving-charges-and-magnetism": "2026-10-01T10:08:25+05:30",
+  "/notes/jee-mains-physics/nuclei": "2026-10-01T10:08:25+05:30",
+  "/notes/jee-mains-physics/oscillations": "2026-10-01T08:56:20+05:30",
+  "/notes/jee-mains-physics/ray-optics": "2026-10-01T10:08:25+05:30",
+  "/notes/jee-mains-physics/rotational-motion": "2026-10-01T08:56:20+05:30",
+  "/notes/jee-mains-physics/semiconductor-electronics": "2026-10-01T10:08:25+05:30",
+  "/notes/jee-mains-physics/thermal-properties-of-matter": "2026-10-01T08:56:20+05:30",
+  "/notes/jee-mains-physics/thermodynamics": "2026-10-01T08:56:20+05:30",
+  "/notes/jee-mains-physics/units-and-measurements": "2026-10-01T07:55:04+05:30",
+  "/notes/jee-mains-physics/wave-optics": "2026-10-01T10:08:25+05:30",
+  "/notes/jee-mains-physics/waves": "2026-10-01T08:56:20+05:30",
+  "/notes/jee-mains-physics/work-energy-and-power": "2026-10-01T08:56:20+05:30",
   "/notes/mht-cet-chemistry/alcohols-phenols-and-ethers": "2026-09-28T18:05:54+05:30",
   "/notes/mht-cet-chemistry/aldehydes-ketones-and-carboxylic-acids": "2026-09-28T18:05:54+05:30",
   "/notes/mht-cet-chemistry/alkanes": "2026-09-26T14:38:57+05:30",
