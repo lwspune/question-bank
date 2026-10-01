@@ -126,6 +126,16 @@ The CDS routes and tier shape, with two measured differences:
 - **No difficulty grading means tiers on weight, and a moving syllabus means RECENT weight.** Every JEE row is MODERATE, so %HARD sorts nothing. Tiers come from the 2025-26 rate per 25-question paper (`tierOf`), chapters with no recent question are listed as having left the paper, and a test pins the membership so an ingest that moves a chapter across a line is reviewed rather than silent.
 - **When papers change length, compare shares, not counts.** JEE went from 30 printed questions to 25 in 2025, and older sitting notes merge shifts, so the grid is chapter × YEAR and every rate is a share of that year scaled to one paper (`src/lib/guide/jeeTrendsMatrix.ts`). The shared headline test measures the live paper size only from `liveFromYear` for the same reason.
 
+#### Template C variant — strands by kind of work on a flat, ungraded bank (JEE Mains Chemistry, 2026-10-01)
+
+The JEE Maths frame (marking rules, chapter × year grid, no %HARD) with the MHT-CET Chemistry axis, because the measurement said so:
+
+- **When weight is flat too, neither difficulty nor weight can be the axis.** Every live JEE Chemistry chapter sets one or two questions a paper, so `tierOf` would put almost all of them in one tier. The kind of work splits them: strands are Calculate / Reactions / Structure and recall.
+- **Draw the split on a measured line and pin it.** `isCalculationRow` (numeric answer, or an MCQ whose options are ALL plain numbers) gives each chapter a calculation share; Calculate is every chapter at or above `CALC_LINE` (40%), with a test asserting the gap holds both ways. A first SQL pass that read "starts with a digit" as a number counted IUPAC locants ("2-methylbutane"), inflating organic chapters; the helper rejects locants, degree labels and statement combinations, and has its own tests.
+- **Measure what a numeric answer IS per strand.** Outside physical chemistry most numeric answers are counts from a list ("how many of the following…"), not calculations — so the strategy page carries a FORMAT section (two statements, match the list, the count from a list, the numeric entry), and the paper-wide traps include the count that is one item off.
+- **A chapter that left the syllabus can still show recent rows.** Here they were rows on live topics filed under the old chapter. Read them before calling a chapter "back"; the guide tolerates them under `LEFT_MAX_RECENT`, and moving them is a backfill decision (SUGGESTIONS.md), because shipped notes count their pages' rows.
+- **Share rules across a family's guides instead of copying them.** `GUESS_RULE` / `NUMERIC_RULE` moved to `src/lib/guide/jeeMarking.ts`; the generator took `--subject` with an opt-in calc count, so the committed Maths grid stayed byte-identical.
+
 #### Execution-mode variant on the MHT-CET frame (MHT-CET Chemistry, 2026-09-28)
 
 The third MHT-CET guide keeps the MHT-CET route frame and data shapes but swaps the strand axis, because the measurement said to:
