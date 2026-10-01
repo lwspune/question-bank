@@ -1285,6 +1285,11 @@ import {
   CDS_CH_INDUSTRIAL_NOTES,
   CDS_CH_INDUSTRIAL_SLUGS,
 } from "@/app/notes/cds-chemistry/industrial-chemistry/_data";
+import {
+  CDS_CH_MOLE_CHAPTER,
+  CDS_CH_MOLE_NOTES,
+  CDS_CH_MOLE_SLUGS,
+} from "@/app/notes/cds-chemistry/mole-concept/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4118,6 +4123,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_CH_INDUSTRIAL_CHAPTER,
     notes: CDS_CH_INDUSTRIAL_NOTES,
     slugs: CDS_CH_INDUSTRIAL_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Chemistry",
+    subjectRoute: "cds-chemistry",
+    subjectDisplay: "CDS Chemistry",
+    chapterSlug: "mole-concept",
+    chipLabel: "Mole Concept notes",
+    chapter: CDS_CH_MOLE_CHAPTER,
+    notes: CDS_CH_MOLE_NOTES,
+    slugs: CDS_CH_MOLE_SLUGS,
   },
 ];
 
