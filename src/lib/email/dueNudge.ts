@@ -11,7 +11,9 @@
  *
  * THE ANTI-NAG RULES, in the order they are checked:
  *   not-a-student     — org staff are not mailed (readStudents already excludes them)
- *   no-email / opted-out
+ *   no-email / opted-out / has-push   — the EMAIL run only; a student with a live
+ *                       browser push subscription gets push instead (PUSH_SPEC.md)
+ *   no-subscription   — the PUSH run only, which ignores email consent
  *   nothing-due       — an empty nudge IS the guilt trip
  *   drilled-recently  — they were in the drill inside NUDGE_QUIET_HOURS; they know
  *   already-today     — the day's dedupe key is used (a same-day re-run)
@@ -82,6 +84,8 @@ export type NudgeSkipReason =
   | "not-a-student"
   | "no-email"
   | "opted-out"
+  | "has-push"
+  | "no-subscription"
   | "nothing-due"
   | "drilled-recently"
   | "already-today"
@@ -115,13 +119,23 @@ export type SelectInput = {
   candidates: readonly NudgeCandidate[];
   /** The mailable roster, keyed by userId. Absence means staff. */
   students: ReadonlyMap<string, StudentLite>;
-  /** Every prior send; other kinds are ignored here. */
+  /** Every prior send — email AND push (both use dueNudgeDedupeKey), so the
+   *  daily cap, the gap and the backoff hold across channels. Other kinds are
+   *  ignored here. */
   priorSends: readonly PriorSend[];
   now: Date;
+  /** Which transport this run is for (PUSH_SPEC.md). Default email. */
+  channel?: "email" | "push";
+  /** Students with a live browser push subscription. The email run skips
+   *  them (push replaces email, never doubles it); the push run picks only
+   *  them, and ignores email consent, because the subscription is its own. */
+  pushUsers?: ReadonlySet<string>;
 };
 
 export function selectDueNudges(input: SelectInput): { picks: NudgePick[]; skipped: NudgeSkip[] } {
   const { candidates, students, priorSends, now } = input;
+  const channel = input.channel ?? "email";
+  const pushUsers = input.pushUsers ?? new Set<string>();
   const prefix = `${NUDGE_KIND}:`;
 
   // Every prior NUDGE per student (timestamps), and the set of keys already used.
@@ -147,13 +161,24 @@ export function selectDueNudges(input: SelectInput): { picks: NudgePick[]; skipp
       skip(c.userId, "not-a-student");
       continue;
     }
-    if (!s.email) {
-      skip(c.userId, "no-email");
-      continue;
-    }
-    if (s.emailOptOut) {
-      skip(c.userId, "opted-out");
-      continue;
+    if (channel === "push") {
+      if (!pushUsers.has(c.userId)) {
+        skip(c.userId, "no-subscription");
+        continue;
+      }
+    } else {
+      if (!s.email) {
+        skip(c.userId, "no-email");
+        continue;
+      }
+      if (s.emailOptOut) {
+        skip(c.userId, "opted-out");
+        continue;
+      }
+      if (pushUsers.has(c.userId)) {
+        skip(c.userId, "has-push");
+        continue;
+      }
     }
     if (c.due.length === 0) {
       skip(c.userId, "nothing-due");
@@ -186,7 +211,7 @@ export function selectDueNudges(input: SelectInput): { picks: NudgePick[]; skipp
     }
     picks.push({
       userId: c.userId,
-      email: s.email,
+      email: s.email ?? "",
       name: s.name,
       dedupeKey,
       summary: summarizeDue(c.due),
