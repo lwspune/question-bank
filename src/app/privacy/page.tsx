@@ -105,7 +105,10 @@ export default function PrivacyPage() {
       <LegalP>
         Signed-in accounts use a session cookie. We remember your chosen exam in a cookie, and
         your quiz name and mobile in your browser&rsquo;s local storage so you don&rsquo;t have
-        to retype them. We use Vercel Analytics to count page visits; it does not use
+        to retype them. If you are not signed in, local storage also keeps which answers you
+        have opened, to count your free answer reveals. Once those are used up we may show
+        Google&rsquo;s own sign-in prompt, which loads from Google; Google shares your name and
+        email with us only if you choose to continue. We use Vercel Analytics to count page visits; it does not use
         advertising cookies. On the public and student pages we also use Microsoft Clarity,
         which sets its own cookies and records how a page is used (clicks, scrolling, and a
         replay of the screen with typed text masked) so we can see where a page confuses

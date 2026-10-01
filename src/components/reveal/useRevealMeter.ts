@@ -1,8 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 import { useSignedIn } from "@/components/auth/useSignedIn";
-import { revealDecision, FREE_REVEAL_LIMIT } from "@/lib/questions/revealMeter";
+import { revealDecision, isRevealLocked, FREE_REVEAL_LIMIT } from "@/lib/questions/revealMeter";
 import { recordPractice } from "./practiceBeacon";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import type { PracticeSurface } from "@/lib/questions/practiceBatch";
@@ -26,6 +26,56 @@ function writeIds(ids: string[]): void {
   } catch {
     /* private mode / disabled storage — meter just won't persist */
   }
+  notify();
+}
+
+/*
+ * ONE store for every card on the page. Each card mounts its own copy of this
+ * hook, and while each copy kept its own `useState`, a card never learned that
+ * ANOTHER card had spent the last free reveal — so it could not render locked
+ * until it was tapped and refused, which is the invisible wall this replaced.
+ * The snapshot is cached by raw string so useSyncExternalStore sees a stable
+ * reference between writes. The `storage` event keeps other tabs in step.
+ */
+const EMPTY: string[] = [];
+const listeners = new Set<() => void>();
+let cachedRaw: string | null = null;
+let cachedIds: string[] = EMPTY;
+
+function notify(): void {
+  listeners.forEach((l) => l());
+}
+
+function subscribe(listener: () => void): () => void {
+  listeners.add(listener);
+  const onStorage = (e: StorageEvent) => {
+    if (e.key === KEY) listener();
+  };
+  window.addEventListener("storage", onStorage);
+  return () => {
+    listeners.delete(listener);
+    window.removeEventListener("storage", onStorage);
+  };
+}
+
+function getSnapshot(): string[] {
+  let raw: string | null = null;
+  try {
+    raw = localStorage.getItem(KEY);
+  } catch {
+    return EMPTY;
+  }
+  if (raw !== cachedRaw) {
+    cachedRaw = raw;
+    cachedIds = readIds();
+  }
+  return cachedIds;
+}
+
+// The server (and the hydration pass) never sees localStorage, so nothing is
+// locked there; the lock appears on the client's first commit after hydration.
+function getServerSnapshot(): string[] {
+  return EMPTY;
 }
 
 /**
@@ -48,11 +98,7 @@ function writeIds(ids: string[]): void {
  */
 export function useRevealMeter(surface: PracticeSurface, examName: string) {
   const { signedIn, loading } = useSignedIn();
-  const [ids, setIds] = useState<string[]>([]);
-
-  useEffect(() => {
-    setIds(readIds());
-  }, []);
+  const ids = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const attemptReveal = useCallback(
     (questionId: string): boolean => {
@@ -60,10 +106,7 @@ export function useRevealMeter(surface: PracticeSurface, examName: string) {
       // by a brief loading window.
       if (loading) return true;
       const decision = revealDecision({ signedIn, revealedIds: readIds(), questionId });
-      if (decision.allow && !signedIn) {
-        writeIds(decision.nextIds);
-        setIds(decision.nextIds);
-      }
+      if (decision.allow && !signedIn) writeIds(decision.nextIds);
       // Persist the reveal as a practice signal (migration 0105), tagged with
       // the surface that revealed it (0107/0108). Signed-in only — recordPractice
       // no-ops for anon. This is the ONLY place the bank or the board reader
@@ -84,6 +127,13 @@ export function useRevealMeter(surface: PracticeSurface, examName: string) {
     [signedIn, loading, surface, examName]
   );
 
+  /** Render this card locked (before any tap)? See `isRevealLocked`. */
+  const isLocked = useCallback(
+    (questionId: string): boolean =>
+      isRevealLocked({ signedIn, loading, revealedIds: ids, questionId }),
+    [signedIn, loading, ids]
+  );
+
   const remaining = signedIn ? Infinity : Math.max(0, FREE_REVEAL_LIMIT - ids.length);
-  return { attemptReveal, remaining, signedIn, loading };
+  return { attemptReveal, isLocked, remaining, signedIn, loading };
 }
