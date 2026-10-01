@@ -49,7 +49,7 @@ export const FUNNEL_EVENTS = [
   "reveal_wall_signin_click",
   /** A non-staff visitor opened the download dialog and saw the teacher gate. */
   "teacher_gate_shown",
-  /** …and clicked Get Teacher Pass (→ /pricing). Before 2026-09-27: → /request-access. */
+  /** …and clicked the pass button (→ /pricing). Before 2026-09-27: → /request-access. Name kept for continuity. */
   "teacher_gate_cta_click",
   /** An anon quiz taker reached the name+mobile gate. */
   "quiz_gate_shown",

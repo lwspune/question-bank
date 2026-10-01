@@ -40,10 +40,20 @@ describe("buildFaqAnswer", () => {
     expect(a).not.toContain("Hidden Exam");
   });
 
-  it("quotes the live Student Mock Pass price for 'mock-pass'", () => {
+  it("quotes the live pass price for 'mock-pass'", () => {
     const a = buildFaqAnswer("mock-pass", input);
     expect(a).toContain("₹99");
     expect(a).toMatch(/6 months/);
+  });
+
+  // 2026-10-01: the one pass also unlocks Word downloads, and its NAME is data
+  // (/dashboard/pricing), so the answer reads the label rather than hardcoding one.
+  it("names the pass by its live label and says it unlocks downloads", () => {
+    const renamed = { ...input, plans: [{ label: "PYQ Vault Pass", amountPaise: 9900, durationDays: 182, scope: "mocks" }] };
+    const a = buildFaqAnswer("mock-pass", renamed);
+    expect(a).toContain("PYQ Vault Pass");
+    expect(a).not.toContain("Student Mock Pass");
+    expect(a).toMatch(/download/i);
   });
 
   it("degrades gracefully when no mock pass is on sale", () => {

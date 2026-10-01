@@ -59,7 +59,7 @@ export const NAV_FACTS: readonly string[] = [
   "/notes — self-sufficient teaching notes per chapter, free to read.",
   "/guide — exam strategy guides (which chapters to prioritise, how to spend your time).",
   "/board — a textbook-style reader for board exams (Maharashtra State Board, CBSE), section by section.",
-  "/pricing — the Teacher Pass (Word paper + answer-key downloads) and the Student Mock Pass.",
+  "/pricing — the PYQ Vault Pass: unlimited timed mock tests plus Word paper + answer-key downloads.",
 ];
 
 export type ChatFacts = {

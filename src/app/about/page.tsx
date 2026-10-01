@@ -159,13 +159,11 @@ export default async function AboutPage() {
           </Link>
           ). The one genuinely
           restricted thing is downloading a question paper and answer key as
-          Word files. That is a teacher&rsquo;s tool rather than a
-          student&rsquo;s, so it needs the Teacher Pass. If you teach and want
-          it,{" "}
-          <Link href="/pricing?plan=teacher" className="text-brand-accent underline">
-            get the Teacher Pass here
+          Word files, which comes with the{" "}
+          <Link href="/pricing?plan=mocks" className="text-brand-accent underline">
+            PYQ Vault Pass
           </Link>
-          .
+          , for students and teachers alike.
         </P>
 
         <H2>Corrections</H2>

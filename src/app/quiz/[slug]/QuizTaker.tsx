@@ -840,14 +840,14 @@ function ConversionCta({ billingLive }: { billingLive: boolean }) {
         <>
           <p className="mt-3 font-semibold">Ready for the real paper?</p>
           <p className="mt-1 text-sm text-muted-foreground">
-            Sit full timed NDA past papers, graded instantly. Start free; the Mock Pass
+            Sit full timed NDA past papers, graded instantly. Start free; the PYQ Vault Pass
             unlocks unlimited.
           </p>
           <Link
             href={`/signup?next=${encodeURIComponent("/pricing?plan=mocks")}&utm_source=quiz`}
             className="mt-4 inline-flex items-center gap-1.5 rounded-xl bg-brand px-5 py-2.5 text-sm font-semibold text-brand-foreground transition-all hover:brightness-110"
           >
-            See the Mock Pass <ArrowRight className="h-4 w-4" />
+            See the PYQ Vault Pass <ArrowRight className="h-4 w-4" />
           </Link>
         </>
       ) : (

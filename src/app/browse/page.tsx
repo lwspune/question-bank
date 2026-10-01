@@ -4,7 +4,7 @@ import { Inbox } from "lucide-react";
 import type { Metadata } from "next";
 import { getPageIdentity } from "@/lib/auth";
 import { sessionHasScope } from "@/lib/entitlements/session";
-import { SCOPE_TEACHER } from "@/lib/entitlements/access";
+import { DOWNLOAD_PASS_SCOPE } from "@/lib/export/access";
 import { passCta, passForScope } from "@/lib/billing/plans";
 import { listActivePlans } from "@/lib/billing/plansQuery";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -67,7 +67,7 @@ import { TOP_PRINCIPLES } from "@/app/guide/nda-maths/_data/principles";
 export const metadata: Metadata = {
   title: "Browse questions",
   description:
-    "Filter past-year questions by exam, chapter, difficulty, and year, and preview them free. Teachers can download the Question Paper + Answer Key as Word files.",
+    "Filter past-year questions by exam, chapter, difficulty, and year, and preview them free. Download the Question Paper + Answer Key as Word files with the PYQ Vault Pass.",
   alternates: { canonical: "/browse" },
 };
 
@@ -98,18 +98,18 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   // canEditContent is superadmin-only (migration 0056) — the per-question
   // "Edit" affordance shows only for the platform admin.
   const { isStaff, isSignedIn, canEditContent } = await getPageIdentity();
-  // Teacher Pass: a paid grant that unlocks the paper + key for an account with
-  // no org. Only a signed-in non-staff viewer needs the lookup.
-  const hasTeacherPass =
-    isSignedIn && !isStaff ? await sessionHasScope(SCOPE_TEACHER) : false;
+  // The PYQ Vault Pass: a paid grant that unlocks the paper + key for an
+  // account with no org. Only a signed-in non-staff viewer needs the lookup.
+  const hasDownloadPass =
+    isSignedIn && !isStaff ? await sessionHasScope(DOWNLOAD_PASS_SCOPE) : false;
 
   const rawParams = paramsFromSearch(searchParams);
   let filters = parseFilters(rawParams);
   const supabase = createSupabaseServerClient();
   // The pass the download dialog offers a non-staff viewer (null = none on sale).
-  const teacherPass = isStaff || hasTeacherPass
+  const downloadPass = isStaff || hasDownloadPass
     ? null
-    : passCta(passForScope(await listActivePlans(supabase), SCOPE_TEACHER));
+    : passCta(passForScope(await listActivePlans(supabase), DOWNLOAD_PASS_SCOPE));
 
   // Practice-only exams (e.g. Foundation Course — no PYQ corpus) default the
   // kind filter to "practice" so the default view isn't an empty PYQ list.
@@ -344,8 +344,8 @@ export default async function BrowsePage({ searchParams }: PageProps) {
               totalCount={totalCount}
               isSignedIn={isSignedIn}
               isStaff={isStaff}
-              hasTeacherPass={hasTeacherPass}
-              teacherPass={teacherPass}
+              hasDownloadPass={hasDownloadPass}
+              downloadPass={downloadPass}
               bilingual={bilingualExam}
             />
           </div>
@@ -432,8 +432,8 @@ export default async function BrowsePage({ searchParams }: PageProps) {
           totalCount,
           isSignedIn,
           isStaff,
-          hasTeacherPass,
-          teacherPass,
+          hasDownloadPass,
+          downloadPass,
           bilingual: bilingualExam,
         }}
       />
