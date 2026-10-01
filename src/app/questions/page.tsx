@@ -76,7 +76,9 @@ export default async function QuestionsIndexPage() {
         )}
 
         {Array.from(grouped.entries()).map(([examSlug, exam]) => (
-          <section key={examSlug} className="mt-10">
+          // The id is the anchor the practice-first welcome step opens for NDA
+          // (/questions#nda), whose own home lists guides rather than chapters.
+          <section key={examSlug} id={examSlug} className="mt-10 scroll-mt-20">
             <h2 className="text-xl font-semibold tracking-tight">
               <Link
                 href={examHomeHref(examSlug)}

@@ -6,6 +6,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getOnboardingState } from "@/lib/profile/service";
 import { needsOnboarding } from "@/lib/profile/onboarding";
 import { isExamSlug } from "@/lib/exam/examContext";
+import { onboardingArm } from "@/lib/education/howItWorks";
 import ExamOnboarding from "./ExamOnboarding";
 
 export const dynamic = "force-dynamic";
@@ -41,5 +42,7 @@ export default async function WelcomePage({
   const cookieExam = cookies().get("qb_exam")?.value;
   const initialExam = isExamSlug(cookieExam) ? cookieExam : null;
 
-  return <ExamOnboarding next={next} initialExam={initialExam} />;
+  return (
+    <ExamOnboarding next={next} initialExam={initialExam} arm={onboardingArm(user.id)} />
+  );
 }
