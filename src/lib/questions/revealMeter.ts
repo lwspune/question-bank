@@ -48,3 +48,24 @@ export function revealDecision(input: {
   // Budget spent.
   return { allow: false, nextIds: [...revealedIds], remaining: 0 };
 }
+
+/**
+ * Should this card render LOCKED before the viewer taps it? Same rule as
+ * `revealDecision` (a locked card is exactly one whose reveal would be denied),
+ * so the lock a viewer sees and the wall they would hit can never disagree.
+ *
+ * Exists because the wall used to be invisible until a tap was refused: the
+ * refused tap changed nothing on screen, so visitors read it as a broken button
+ * and tapped again (Clarity dead + rage clicks, 2026-10-01). Never locks while
+ * auth is loading, matching `attemptReveal`'s "never wall a signed-in user".
+ */
+export function isRevealLocked(input: {
+  signedIn: boolean;
+  loading: boolean;
+  revealedIds: readonly string[];
+  questionId: string;
+  limit?: number;
+}): boolean {
+  if (input.loading) return false;
+  return !revealDecision(input).allow;
+}

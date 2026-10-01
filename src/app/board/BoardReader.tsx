@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 import { useRevealMeter } from "@/components/reveal/useRevealMeter";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
+import RevealLockedLink from "@/components/reveal/RevealLockedLink";
 import { boardPyqPaperStats } from "@/lib/board/papers";
 import {
   defaultOpenGroups,
@@ -84,6 +85,12 @@ export default function BoardReader({
   // "board", not the bank: a reveal here is the textbook reader being used, and
   // until 2026-09-18 it was recorded as a /browse reveal and measured as one.
   const meter = useRevealMeter("board", examName);
+  // Free reveals spent: an unseen answer shows a sign-in link up front instead
+  // of a button whose tap would be refused. One link node, shared by every card.
+  const lock: RevealLock = {
+    isLocked: meter.isLocked,
+    link: <RevealLockedLink surface="board" examName={examName} />,
+  };
   const mobilePrompt = useMobilePrompt();
   // Which sections open on load. Decided HERE rather than inside GroupSection
   // because it depends on a group's SIBLINGS: a lone group has no outline to
@@ -148,6 +155,7 @@ export default function BoardReader({
               chapterName={chapterName}
               revealed={revealed}
               blocked={blocked}
+              lock={lock}
               onToggleReveal={toggleOne}
             />
           ))}
@@ -174,6 +182,7 @@ export default function BoardReader({
                 sittingIndex={i}
                 revealed={revealed}
                 blocked={blocked}
+                lock={lock}
                 onToggleReveal={toggleOne}
               />
             ))}
@@ -340,6 +349,7 @@ function PyqSitting({
   sittingIndex,
   revealed,
   blocked,
+  lock,
   onToggleReveal,
 }: {
   sitting: BoardPyqSitting;
@@ -351,6 +361,7 @@ function PyqSitting({
   sittingIndex: number;
   revealed: Set<string>;
   blocked: Set<string>;
+  lock: RevealLock;
   onToggleReveal: (id: string) => void;
 }) {
   return (
@@ -387,6 +398,7 @@ function PyqSitting({
                 order={sittingIndex * 1000 + i}
                 revealed={revealed.has(q.id)}
                 blocked={blocked.has(q.id)}
+                lockedLink={lock.isLocked(q.id) ? lock.link : null}
                 onToggleReveal={() => onToggleReveal(q.id)}
                 // The one honest bridge back to the book half. A PYQ has exactly
                 // ONE subtopic; a book section spans several, so the link only
@@ -415,6 +427,7 @@ function GroupSection({
   chapterName,
   revealed,
   blocked,
+  lock,
   onToggleReveal,
 }: {
   group: BoardSectionGroup;
@@ -423,6 +436,7 @@ function GroupSection({
   chapterName: string;
   revealed: Set<string>;
   blocked: Set<string>;
+  lock: RevealLock;
   onToggleReveal: (id: string) => void;
 }) {
   const total = group.blocks.reduce((n, b) => n + b.questions.length, 0);
@@ -447,6 +461,7 @@ function GroupSection({
           chapterName={chapterName}
           revealed={revealed}
           blocked={blocked}
+          lock={lock}
           onToggleReveal={onToggleReveal}
         />
       ))}
@@ -461,6 +476,7 @@ function BlockSection({
   chapterName,
   revealed,
   blocked,
+  lock,
   onToggleReveal,
 }: {
   block: BoardBlock;
@@ -469,6 +485,7 @@ function BlockSection({
   chapterName: string;
   revealed: Set<string>;
   blocked: Set<string>;
+  lock: RevealLock;
   onToggleReveal: (id: string) => void;
 }) {
   // A single-block group (e.g. "Miscellaneous Exercise 2 (A)") has no distinct
@@ -497,6 +514,7 @@ function BlockSection({
               order={block.seq * 1000 + i}
               revealed={revealed.has(q.id)}
               blocked={blocked.has(q.id)}
+              lockedLink={lock.isLocked(q.id) ? lock.link : null}
               onToggleReveal={() => onToggleReveal(q.id)}
             />
           </li>
@@ -524,6 +542,9 @@ function BlockSection({
   );
 }
 
+/** The anon reveal wall, built once in BoardReader and passed down to every card. */
+type RevealLock = { isLocked: (id: string) => boolean; link: ReactNode };
+
 function BoardQuestionItem({
   q,
   supabaseUrl,
@@ -531,6 +552,7 @@ function BoardQuestionItem({
   order,
   revealed,
   blocked,
+  lockedLink,
   onToggleReveal,
   meta,
 }: {
@@ -541,6 +563,8 @@ function BoardQuestionItem({
   order: number;
   revealed: boolean;
   blocked: boolean;
+  /** Set when the anon reveal budget is spent and this answer is unseen. */
+  lockedLink: ReactNode | null;
   onToggleReveal: () => void;
   /** Optional provenance shown under the question and ABOVE the reveal — it
    *  describes the question, never the answer, so it must not sit inside the
@@ -598,14 +622,18 @@ function BoardQuestionItem({
 
       {hasAnswer ? (
         <div className="mt-3">
-          <button
-            type="button"
-            onClick={onToggleReveal}
-            aria-expanded={revealed}
-            className="text-xs font-medium text-brand-accent hover:underline"
-          >
-            {revealed ? "Hide answer" : q.format === "subjective" ? "Show model answer" : "Show answer"}
-          </button>
+          {lockedLink && !revealed ? (
+            lockedLink
+          ) : (
+            <button
+              type="button"
+              onClick={onToggleReveal}
+              aria-expanded={revealed}
+              className="text-xs font-medium text-brand-accent hover:underline"
+            >
+              {revealed ? "Hide answer" : q.format === "subjective" ? "Show model answer" : "Show answer"}
+            </button>
+          )}
           {blocked && !revealed && <RevealSignInPrompt surface="board" />}
           {revealed && q.solution && (
             <div className="mt-2 rounded-md border border-dashed bg-background p-3 font-serif text-[15px] leading-relaxed [&_.katex]:max-w-full">
