@@ -1260,6 +1260,11 @@ import {
   CDS_CH_ATOMIC_NOTES,
   CDS_CH_ATOMIC_SLUGS,
 } from "@/app/notes/cds-chemistry/atomic-structure/_data";
+import {
+  CDS_CH_METALS_CHAPTER,
+  CDS_CH_METALS_NOTES,
+  CDS_CH_METALS_SLUGS,
+} from "@/app/notes/cds-chemistry/metals-non-metals/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4038,6 +4043,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_CH_ATOMIC_CHAPTER,
     notes: CDS_CH_ATOMIC_NOTES,
     slugs: CDS_CH_ATOMIC_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Chemistry",
+    subjectRoute: "cds-chemistry",
+    subjectDisplay: "CDS Chemistry",
+    chapterSlug: "metals-non-metals",
+    chipLabel: "Metals and Non-Metals notes",
+    chapter: CDS_CH_METALS_CHAPTER,
+    notes: CDS_CH_METALS_NOTES,
+    slugs: CDS_CH_METALS_SLUGS,
   },
 ];
 
