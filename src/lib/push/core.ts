@@ -127,21 +127,4 @@ export function shouldDropAfterFailure(failCount: number): boolean {
   return failCount + 1 >= PUSH_MAX_FAILS;
 }
 
-/**
- * iPhone and iPad browsers can receive push only from a site installed to the
- * Home Screen. iPadOS reports a Mac user agent, so a touch-capable "Mac" is
- * treated as an iPad.
- */
-export function isIosNotStandalone(userAgent: string, standalone: boolean, maxTouchPoints = 0): boolean {
-  const ios = /iPhone|iPad|iPod/.test(userAgent) || (/Macintosh/.test(userAgent) && maxTouchPoints > 1);
-  return ios && !standalone;
-}
-
-/** A base64url VAPID public key → the bytes `pushManager.subscribe` wants. */
-export function urlBase64ToUint8Array(base64: string): Uint8Array {
-  const padded = base64.replace(/-/g, "+").replace(/_/g, "/") + "=".repeat((4 - (base64.length % 4)) % 4);
-  const raw = atob(padded);
-  const out = new Uint8Array(raw.length);
-  for (let i = 0; i < raw.length; i++) out[i] = raw.charCodeAt(i);
-  return out;
-}
+export { isIosNotStandalone, urlBase64ToUint8Array } from "./browser";
