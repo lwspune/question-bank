@@ -1300,6 +1300,11 @@ import {
   CDS_CH_BONDING_NOTES,
   CDS_CH_BONDING_SLUGS,
 } from "@/app/notes/cds-chemistry/chemical-bonding/_data";
+import {
+  CDS_CH_WATER_CHAPTER,
+  CDS_CH_WATER_NOTES,
+  CDS_CH_WATER_SLUGS,
+} from "@/app/notes/cds-chemistry/hydrogen-water/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4166,6 +4171,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_CH_BONDING_CHAPTER,
     notes: CDS_CH_BONDING_NOTES,
     slugs: CDS_CH_BONDING_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Chemistry",
+    subjectRoute: "cds-chemistry",
+    subjectDisplay: "CDS Chemistry",
+    chapterSlug: "hydrogen-water",
+    chipLabel: "Hydrogen and Water notes",
+    chapter: CDS_CH_WATER_CHAPTER,
+    notes: CDS_CH_WATER_NOTES,
+    slugs: CDS_CH_WATER_SLUGS,
   },
 ];
 
