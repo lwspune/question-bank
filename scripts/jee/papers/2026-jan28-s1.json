@@ -26,7 +26,7 @@
     "5": {
       "subject": "Physics",
       "chapter": "Motion in a Straight Line",
-      "subtopic": "Uniformly Accelerated Motion"
+      "subtopic": "Motion Under Gravity"
     },
     "6": {
       "subject": "Physics",
@@ -86,7 +86,7 @@
     "17": {
       "subject": "Physics",
       "chapter": "Units and Measurements",
-      "subtopic": "Measuring Instruments"
+      "subtopic": "Vernier Callipers, Screw Gauge and Zero Error"
     },
     "18": {
       "subject": "Physics",
@@ -101,12 +101,12 @@
     "20": {
       "subject": "Physics",
       "chapter": "Motion in a Straight Line",
-      "subtopic": "Motion Graphs"
+      "subtopic": "Motion Graphs: Slopes and Areas"
     },
     "21": {
       "subject": "Physics",
       "chapter": "Oscillations",
-      "subtopic": "Simple Harmonic Motion"
+      "subtopic": "Timing in SHM and Combining SHMs"
     },
     "22": {
       "subject": "Physics",
@@ -436,6 +436,7 @@
   },
   "notes": "28 Jan 2026 Shift 1 — Maths only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.\n28 Jan 2026 Shift 1 — Chemistry only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.\n[Chemistry images] Q38 (60dcf44e): the attached pictures were scrambled (the stem image held option (a) and half of (b); stored options A-C held the other halves). The four options are now written as text (optionOverrides) and the stem and option A-D image_url were cleared 2026-09-30. The source prints no product for (d). Do not re-attach.",
   "authoredSolutions": {
+    "20": "Newton's second law gives \\(m\\frac{dv}{dt} = mg - kv\\). Separating, \\[\\int_{0}^{v}\\frac{dv}{mg - kv} = \\int_{0}^{t}\\frac{dt}{m} \\Rightarrow v = \\frac{mg}{k}\\left(1 - e^{-kt/m}\\right).\\] The velocity starts at 0 with slope \\(g\\); the slope falls as \\(v\\) grows, and \\(v\\) approaches the terminal value \\(\\frac{mg}{k}\\). The graph rises from the origin and bends over to a horizontal asymptote: graph (B).",
     "26": "Moles of gas: \\(n = \\frac{P_{1}V_{1}}{RT} = \\frac{(0.5\\times10^{6})(20\\times10^{-3})}{8.314\\times600} \\approx 2\\) mol.\n\nFor an ideal gas at constant temperature the internal energy and enthalpy depend only on \\(T\\), so \\(\\Delta U = 0\\) and \\(\\Delta H = 0\\).\n\nReversible isothermal work: \\(w = -2.303\\,nRT\\log\\frac{P_{1}}{P_{2}} = -2.303\\times2\\times8.314\\times600\\times\\log\\frac{0.5}{0.2}\\).\n\n\\(\\log 2.5 = \\log5 - \\log2 = 0.6989 - 0.3010 = 0.3979\\), so \\(w = -2.303\\times9976.8\\times0.3979 \\approx -9.1\\times10^{3}\\) J \\(= -9.1\\) kJ.\n\nFrom the first law \\(\\Delta U = q + w = 0 \\Rightarrow q = -w = +9.1\\) kJ.\n\nHence \\(w = -9.1\\) kJ, \\(\\Delta U = 0\\), \\(\\Delta H = 0\\), \\(q = +9.1\\) kJ.",
     "27": "A carbanion is stabilised when its lone pair sits in an orbital of higher s-character, because s-orbitals are closer to the nucleus and hold the negative charge more tightly.\n\nHybridisation of the carbanion carbon: \\(CH \\equiv C^{-}\\) is sp (50% s), \\(CH_{2}=CH^{-}\\) is \\(sp^{2}\\) (33% s), \\(CH_{3}-CH_{2}^{-}\\) is \\(sp^{3}\\) (25% s).\n\nTherefore stability follows \\(CH \\equiv C^{-} > CH_{2}=CH^{-} > CH_{3}-CH_{2}^{-}\\), which is also why terminal alkynes are the most acidic of the three parent hydrocarbons.",
     "28": "For an ideal solution, \\(P = x_{A}P_{A}^{\\circ} + x_{B}P_{B}^{\\circ}\\).\n\nStage 1 (2 mol A, 3 mol B, total 5): \\(\\frac{2}{5}P_{A}^{\\circ} + \\frac{3}{5}P_{B}^{\\circ} = 320 \\Rightarrow 2P_{A}^{\\circ} + 3P_{B}^{\\circ} = 1600\\).\n\nStage 2 (3 mol A, 4 mol B, total 7): \\(\\frac{3}{7}P_{A}^{\\circ} + \\frac{4}{7}P_{B}^{\\circ} = 328.6 \\Rightarrow 3P_{A}^{\\circ} + 4P_{B}^{\\circ} = 2300.2\\).\n\nMultiply the first by 3 and the second by 2: \\(6P_{A}^{\\circ} + 9P_{B}^{\\circ} = 4800\\) and \\(6P_{A}^{\\circ} + 8P_{B}^{\\circ} = 4600.4\\). Subtracting gives \\(P_{B}^{\\circ} \\approx 200\\) mm Hg.\n\nThen \\(2P_{A}^{\\circ} = 1600 - 600 = 1000 \\Rightarrow P_{A}^{\\circ} = 500\\) mm Hg.\n\nSo \\(P_{A}^{\\circ} = 500\\) and \\(P_{B}^{\\circ} = 200\\) mm Hg respectively.",
@@ -488,6 +489,7 @@
     "75": "\\(S\\) equidistant from lines \\(PQ,PR\\) means \\(\\overrightarrow{PS}\\) is along the internal bisector \\(\\frac{\\overrightarrow{PQ}}{|\\overrightarrow{PQ}|}+\\frac{\\overrightarrow{PR}}{|\\overrightarrow{PR}|}=\\frac{3\\overrightarrow{PQ}+\\overrightarrow{PR}}{9}\\) (\\(|\\overrightarrow{PQ}|=3,\\ |\\overrightarrow{PR}|=9\\)). So \\(\\overrightarrow{PS}\\parallel(a-6,\\,b-3,\\,2)\\); comparing with \\((1,-7,2)\\) gives \\(a-6=1,\\ b-3=-7\\Rightarrow a=7,\\ b=-4\\) (and \\(a^2+b^2=65\\) checks). Thus \\(3a-4b=21+16=37\\)."
   },
   "stemOverrides": {
+    "17": "When both jaws of Vernier calipers touch each other, zero mark of the vernier scale is right to zero mark of main scale, \\(4^{\\text{th~}}\\) mark on Vernier scale coincides with certain mark on the main scale. While measuring the length of a cylinder, observer observes 15 divisions on main scale and \\(5^{\\text{th}}\\) division of Vernier scale coincides with a main scale division. Measured length of cylinder is \\(\\_\\_\\_\\_\\) mm. (Least count of Vernier caliper \\(= 0.1\\text{ }mm\\) )",
     "18": "The magnetic field at the center of a current carrying circular loop of radius \\(R\\) is \\(16\\mu\\text{ }T\\). The magnetic field at a distance \\(x = \\sqrt{3}R\\) on its axis from the centre is \\(\\_\\_\\_\\_\\) \\(\\mu T\\).",
     "26": "\\(20.0dm^{3}\\) of an ideal gas ' X ' at 600 K and 0.5 MPa undergoes isothermal reversible expansion until pressure of the gas is 0.2 MPa . Which of the following option is correct? (Given: \\(\\log2 = 0.3010\\) and \\(\\log5 = 0.6989\\) )",
     "37": "Given below are two statements:\nStatement I: Griess-Ilosvay test is used for the detection of nitrite ion, which involves the use of sulphanilic acid and \\(\\alpha\\)-naphthylamine reagent.\nStatement II: In the above test, sulphanilic acid is diazotized by the acidified nitrite ion, which on further coupling with \\(\\alpha\\)-naphthylamine forms an azo-dye.\nIn the light of the above statements, choose the correct answer from the options given below",

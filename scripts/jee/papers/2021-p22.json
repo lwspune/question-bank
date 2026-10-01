@@ -41,12 +41,12 @@
     "8": {
       "subject": "Physics",
       "chapter": "Work, Energy and Power",
-      "subtopic": "Collisions"
+      "subtopic": "Elastic Collisions and Coefficient of Restitution"
     },
     "9": {
       "subject": "Physics",
       "chapter": "Gravitation",
-      "subtopic": "Escape Velocity"
+      "subtopic": "Escape Velocity and Energy Conservation"
     },
     "10": {
       "subject": "Physics",
@@ -71,7 +71,7 @@
     "14": {
       "subject": "Physics",
       "chapter": "Units and Measurements",
-      "subtopic": "Dimensional Analysis"
+      "subtopic": "Dimensions of Mechanical and Thermal Quantities"
     },
     "15": {
       "subject": "Physics",
@@ -81,7 +81,7 @@
     "16": {
       "subject": "Physics",
       "chapter": "Units and Measurements",
-      "subtopic": "Dimensional Analysis"
+      "subtopic": "Dimensional Homogeneity and Unknown Constants"
     },
     "17": {
       "subject": "Physics",
@@ -111,7 +111,7 @@
     "22": {
       "subject": "Physics",
       "chapter": "Oscillations",
-      "subtopic": "Simple Harmonic Motion"
+      "subtopic": "Timing in SHM and Combining SHMs"
     },
     "23": {
       "subject": "Physics",
@@ -136,7 +136,7 @@
     "27": {
       "subject": "Physics",
       "chapter": "Work, Energy and Power",
-      "subtopic": "Collisions"
+      "subtopic": "Impulse, Explosions and Perfectly Inelastic Collisions"
     },
     "28": {
       "subject": "Physics",
@@ -449,6 +449,7 @@
     "79": "If \\(a_{r}= \\cos\\frac{2r\\pi}{9}+i\\sin\\frac{2r\\pi}{9},r = 1,2,3,\\ldots,i=\\sqrt{- 1}\\), then the determinant \\(\\left| \\begin{matrix} a_{1} & a_{2} & a_{3} \\\\ a_{4} & a_{5} & a_{6} \\\\ a_{7} & a_{8} & a_{9} \\end{matrix} \\right|\\) is equal to :"
   },
   "authoredSolutions": {
+    "8": "Let both bodies leave at angle \\(\\theta\\) on opposite sides of the initial direction, with speeds \\(V_{1}\\) (mass \\(M\\)) and \\(V_{2}\\) (mass \\(m\\)). Momentum across the initial line: \\(MV_{1}\\sin\\theta = mV_{2}\\sin\\theta\\), so \\(mV_{2} = MV_{1}\\). Momentum along it: \\(MV_{0} = (MV_{1} + mV_{2})\\cos\\theta = 2MV_{1}\\cos\\theta\\), so \\(V_{0} = 2V_{1}\\cos\\theta\\). Kinetic energy: \\(MV_{0}^{2} = MV_{1}^{2} + mV_{2}^{2} = MV_{1}^{2} + \\frac{M^{2}V_{1}^{2}}{m}\\), so \\(V_{0}^{2} = V_{1}^{2}\\left(1 + \\frac{M}{m}\\right)\\). Substituting \\(V_{0}\\) gives \\(4\\cos^{2}\\theta = 1 + \\frac{M}{m}\\). Since \\(\\cos^{2}\\theta \\leq 1\\), \\(\\frac{M}{m} \\leq 3\\); the largest value is 3, option (c).",
     "31": "Acetate ion in acetic acid is a weak nucleophile in a polar protic solvent, so the substitution is a solvolysis that goes by \\(S_{N}1\\) and the rate order is simply the order of carbocation stability. Ionisation of the first chloride gives an allylic cation whose positive charge is delocalised onto the methyl-bearing alkene carbon, i.e. a tertiary allylic cation, the most stable of the four. The second chloride is also allylic but its delocalised cation reaches only secondary centres; the third has chlorine at a non-allylic secondary carbon so no allylic delocalisation is possible; the last is a primary \\(CH_{2}Cl\\) whose cation gets neither alkyl nor allylic help. The sequence tertiary allylic > secondary allylic > secondary > primary is option (A).",
     "32": "Adsorption of a gas obeys the Freundlich isotherm \\(\\frac{x}{m}=kP^{1/n}\\) with \\(0<\\frac{1}{n}<1\\), so a plot of \\(x/m\\) against \\(P\\) rises steeply at first and then flattens towards saturation. That immediately rules out the two straight-line graphs. Adsorption is exothermic, so raising the temperature shifts the equilibrium back and lowers the amount adsorbed at any given pressure. Since \\(T_{1}>T_{2}\\), the \\(T_{2}\\) curve must lie above the \\(T_{1}\\) curve, and only option (D) shows two saturating curves with \\(T_{2}\\) on top.",
     "33": "Portland cement is a mixture of calcium silicates and calcium aluminate obtained by heating limestone with clay. Its approximate composition is tricalcium silicate \\(3CaO\\cdot SiO_{2}\\) about \\(51\\%\\), dicalcium silicate \\(2CaO\\cdot SiO_{2}\\) about \\(26\\%\\) and tricalcium aluminate \\(3CaO\\cdot Al_{2}O_{3}\\) about \\(11\\%\\). The single largest component is therefore tricalcium silicate, option (B).",
@@ -529,7 +530,9 @@
   "optionOverrides": {
     "16": {
       "C": "\\(J = \\epsilon\\frac{\\partial E}{\\partial t}\\)",
-      "D": "\\(W = \\Gamma\\theta\\)"
+      "D": "\\(W = \\Gamma\\theta\\)",
+      "A": "\\(v = \\frac{\\pi p a^{4}}{8\\eta L}\\)",
+      "B": "\\(h = \\frac{2s\\sin\\theta}{\\rho rg}\\)"
     }
   },
   "skip": [],

@@ -11,7 +11,7 @@
     "3": {
       "subject": "Physics",
       "chapter": "Work, Energy and Power",
-      "subtopic": "Variable Force"
+      "subtopic": "Power"
     },
     "4": {
       "subject": "Physics",
@@ -26,7 +26,7 @@
     "6": {
       "subject": "Physics",
       "chapter": "Gravitation",
-      "subtopic": "Gravitational Field and Orbital Motion"
+      "subtopic": "Satellites: Orbital Speed, Energy and Mutual Orbits"
     },
     "7": {
       "subject": "Physics",
@@ -46,12 +46,12 @@
     "10": {
       "subject": "Physics",
       "chapter": "Motion in a Straight Line",
-      "subtopic": "Uniformly Accelerated Motion"
+      "subtopic": "Average Speed, Average Velocity and Relative Velocity"
     },
     "11": {
       "subject": "Physics",
       "chapter": "Oscillations",
-      "subtopic": "Simple Harmonic Motion"
+      "subtopic": "SHM Equation, Velocity and Acceleration"
     },
     "13": {
       "subject": "Physics",
@@ -61,7 +61,7 @@
     "14": {
       "subject": "Physics",
       "chapter": "Work, Energy and Power",
-      "subtopic": "Kinetic Energy"
+      "subtopic": "Work-Energy Theorem and Kinetic Energy"
     },
     "15": {
       "subject": "Physics",
@@ -297,6 +297,9 @@
     "_paper": "NON-STANDARD compilation (68 q): Physics Q1-18, Chemistry Q19-38, Maths Q39-68. 54 committable MCQ (15 Phy + 19 Chem + 20 Maths; 1 Phy deduped vs P11). Skipped: Q1, Q12 (Physics numerical), Q29 (no key), Q59-68 (Maths numerical). FINISHED 2026-07-17: every key independently re-derived (3 blind subject solvers + self-adjudication + 6 image Qs viewed) -> 0 wrong keys. Physics+Chem carry the source worked solutions (self-verifying); all 20 Maths reproduced independently. 26 solutions authored (Q18 broken source; Q27/Q30/Q35/Q37/Q38; Q39-58). Q49 stem OCR-fixed (f''(b)/f''(a) -> f''(2)/f''(1)). Q26 ambiguous (both phenol+methanal are shared monomers) -> source key B kept. Q54 stem is truncated/incomplete (references an undefined 'a') -> kept PRIVATE."
   },
   "authoredSolutions": {
+    "3": "With constant power, \\(Fv = P\\), so \\(mv\\frac{dv}{dt} = P\\). Starting from rest, \\(\\int_{0}^{v} v\\,dv = \\frac{P}{m}\\int_{0}^{t} dt\\) gives \\(v = \\sqrt{\\frac{2P}{m}}\\,t^{1/2}\\). Then \\(\\frac{dx}{dt} = \\sqrt{\\frac{2P}{m}}\\,t^{1/2}\\), and with \\(x = 0\\) at \\(t = 0\\), \\[x = \\sqrt{\\frac{2P}{m}}\\cdot\\frac{2}{3}\\,t^{3/2} \\propto t^{3/2}.\\] Hence option (b).",
+    "6": "Both stars turn about their centre of mass with the same angular speed \\(\\omega\\), separated by \\(r_{1} + r_{2}\\). For star 1: \\(\\frac{Gm_{1}m_{2}}{\\left(r_{1} + r_{2}\\right)^{2}} = m_{1}\\omega^{2}r_{1}\\). The centre of mass gives \\(m_{1}r_{1} = m_{2}r_{2}\\), so \\(r_{1} = \\frac{m_{2}\\left(r_{1} + r_{2}\\right)}{m_{1} + m_{2}}\\). Substituting, \\[\\omega^{2} = \\frac{G\\left(m_{1} + m_{2}\\right)}{\\left(r_{1} + r_{2}\\right)^{3}},\\qquad T = \\frac{2\\pi}{\\omega} = \\frac{2\\pi\\left(r_{1} + r_{2}\\right)^{3/2}}{\\sqrt{G\\left(m_{1} + m_{2}\\right)}}.\\] Option (c). As printed, option (a) \\(2\\pi\\sqrt{\\frac{\\left(r_{1} + r_{2}\\right)^{3}}{G\\left(m_{1} + m_{2}\\right)}}\\) is the same expression, so (a) is equally correct; the key follows the booklet.",
+    "10": "Let the path length be \\(L\\). Walking on the stationary escalator takes \\(t_{1}\\), so the boy's walking speed is \\(\\frac{L}{t_{1}}\\). Standing on the moving escalator takes \\(t_{2}\\), so the escalator's speed is \\(\\frac{L}{t_{2}}\\). Walking on the moving escalator, the speeds add: \\[v = L\\left(\\frac{1}{t_{1}} + \\frac{1}{t_{2}}\\right).\\] The time is \\(\\frac{L}{v} = \\frac{t_{1}t_{2}}{t_{1} + t_{2}}\\), option (d).",
     "18": "Apparent angle of dip in a vertical plane at angle \\(\\alpha\\) to the magnetic meridian obeys \\(\\tan\\delta' = \\frac{\\tan\\delta}{\\cos\\alpha}\\), where \\(\\delta\\) is the true dip. Here \\(\\alpha = 30^{\\circ}\\) and \\(\\delta' = 45^{\\circ}\\), so \\[\\tan 45^{\\circ} = \\frac{\\tan\\delta}{\\cos 30^{\\circ}} \\Rightarrow \\tan\\delta = \\cos 30^{\\circ} = \\frac{\\sqrt{3}}{2}.\\] Hence the true dip is \\(\\delta = \\tan^{-1}\\!\\left(\\frac{\\sqrt{3}}{2}\\right).\\)",
     "21": "Count the \\(\\sigma\\) bonds and lone pairs on nitrogen (the steric number). \\(NO_{2}^{-}\\): two \\(\\sigma\\) bonds and one lone pair, steric number 3, \\(sp^{2}\\), bent. \\(NO_{2}^{+}\\): \\(O=N^{+}=O\\) has two \\(\\sigma\\) bonds and no lone pair (it is isoelectronic with \\(CO_{2}\\)), steric number 2, \\(sp\\), linear. \\(NH_{4}^{+}\\): four \\(\\sigma\\) bonds and no lone pair, steric number 4, \\(sp^{3}\\), tetrahedral. So the order is \\(sp^{2}, sp, sp^{3}\\), option (A).",
     "22": "In the Carius method a known mass of the compound is heated with fuming nitric acid in the presence of silver nitrate in a sealed hard-glass tube, the Carius tube. Carbon and hydrogen are oxidised to \\(\\mathrm{CO_{2}}\\) and \\(\\mathrm{H_{2}O}\\), and the halogen forms the silver halide, which is filtered, washed, dried and weighed. Option (A).",

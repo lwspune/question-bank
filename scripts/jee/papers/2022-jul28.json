@@ -6,17 +6,17 @@
     "1": {
       "subject": "Physics",
       "chapter": "Units and Measurements",
-      "subtopic": "Dimensional Analysis"
+      "subtopic": "Dimensions of Electric and Magnetic Quantities"
     },
     "2": {
       "subject": "Physics",
       "chapter": "Motion in a Straight Line",
-      "subtopic": "Uniformly Accelerated Motion"
+      "subtopic": "Motion Under Gravity"
     },
     "3": {
       "subject": "Physics",
       "chapter": "Work, Energy and Power",
-      "subtopic": "Collisions"
+      "subtopic": "Impulse, Explosions and Perfectly Inelastic Collisions"
     },
     "4": {
       "subject": "Physics",
@@ -26,7 +26,7 @@
     "5": {
       "subject": "Physics",
       "chapter": "Gravitation",
-      "subtopic": "Acceleration due to Gravity"
+      "subtopic": "Acceleration due to Gravity: Surface and Height"
     },
     "6": {
       "subject": "Physics",
@@ -141,12 +141,12 @@
     "28": {
       "subject": "Physics",
       "chapter": "Mechanical Properties of Fluids",
-      "subtopic": "Viscosity and Reynolds Number"
+      "subtopic": "Terminal Velocity"
     },
     "29": {
       "subject": "Physics",
       "chapter": "Work, Energy and Power",
-      "subtopic": "Variable Force"
+      "subtopic": "Potential Energy and Conservation of Mechanical Energy"
     },
     "30": {
       "subject": "Physics",
@@ -456,12 +456,12 @@
     "91": {
       "subject": "Physics",
       "chapter": "Units and Measurements",
-      "subtopic": "Dimensional Analysis"
+      "subtopic": "Dimensional Homogeneity and Unknown Constants"
     },
     "92": {
       "subject": "Physics",
       "chapter": "Motion in a Straight Line",
-      "subtopic": "Variable Acceleration"
+      "subtopic": "Variable Acceleration: Differentiate and Integrate"
     },
     "93": {
       "subject": "Physics",
@@ -476,17 +476,17 @@
     "95": {
       "subject": "Physics",
       "chapter": "Work, Energy and Power",
-      "subtopic": "Kinetic Energy"
+      "subtopic": "Work-Energy Theorem and Kinetic Energy"
     },
     "96": {
       "subject": "Physics",
       "chapter": "Oscillations",
-      "subtopic": "Simple Pendulum"
+      "subtopic": "Simple Pendulum and Effective g"
     },
     "97": {
       "subject": "Physics",
       "chapter": "Mechanical Properties of Fluids",
-      "subtopic": "Pressure and Pascal's Law"
+      "subtopic": "Continuity, Bernoulli's Equation and Efflux"
     },
     "98": {
       "subject": "Physics",
@@ -556,7 +556,7 @@
     "111": {
       "subject": "Physics",
       "chapter": "Motion in a Straight Line",
-      "subtopic": "Uniformly Accelerated Motion"
+      "subtopic": "Motion Under Gravity"
     },
     "112": {
       "subject": "Physics",
@@ -576,7 +576,7 @@
     "115": {
       "subject": "Physics",
       "chapter": "Oscillations",
-      "subtopic": "Simple Harmonic Motion"
+      "subtopic": "Spring Systems and Restoring Forces"
     },
     "116": {
       "subject": "Physics",
@@ -601,7 +601,7 @@
     "120": {
       "subject": "Physics",
       "chapter": "Units and Measurements",
-      "subtopic": "Errors in Measurement"
+      "subtopic": "Errors in Laboratory Experiments"
     },
     "121": {
       "subject": "Chemistry",
@@ -1091,6 +1091,8 @@
     "88": "Here \\(x_i=\\frac{3}{2^{i-1}}\\) and \\(20\\bar x=\\sum x_i^2-2\\sum ix_i+\\sum i^2\\). \\(\\sum x_i^2=9\\sum_{i=1}^{20}4^{1-i}=12(1-4^{-20})\\); \\(\\sum ix_i=3\\sum_{i=1}^{20}i\\,2^{1-i}=12\\left(1-\\frac{11}{2^{20}}\\right)\\); \\(\\sum i^2=\\frac{20\\cdot21\\cdot41}{6}=2870\\). So \\(20\\bar x=2858+\\epsilon\\) with \\(0<\\epsilon<0.001\\), giving \\(\\bar x\\approx142.9\\). The greatest integer is \\(142\\).",
     "89": "With \\(h(u)=u^3+2u^2+3\\sin u\\), the base is \\(\\frac{h(x+2\\cos x)}{h(x+2)}\\to1\\) as \\(x\\to0\\) (both \\(\\to h(2)\\)). It is \\(1^\\infty\\): exponent \\(\\frac{100}{x}\\big(\\frac{N}{D}-1\\big)\\approx\\frac{100}{x}\\cdot\\frac{h'(2)\\,2(\\cos x-1)}{h(2)}\\to0\\) since \\(\\cos x-1\\sim-x^2/2\\). Limit \\(=e^0=1\\).",
     "90": "Let \\(a=3x^2-9x+17,\\ b=x^2+3x+10,\\ c=2x^2+2x+2\\); then the RHS numerator and denominator are \\(a+c\\) and \\(b+c\\). \\(\\frac ab=\\frac{a+c}{b+c}\\Rightarrow c(a-b)=0\\). \\(c=2(x^2+x+1)\\ne0\\) (no real roots), so \\(a=b\\): \\(2x^2-12x+7=0\\), whose sum of roots is \\(6\\).",
+    "97": "Apply Bernoulli's equation between the water surface under the piston and the hole, 10 m lower; the tank is wide, so the surface speed is negligible. The piston adds \\(\\frac{F}{A} = \\frac{5\\times10^{5}}{\\pi(1)^{2}} = 1.59\\times10^{5}\\ Pa\\). The key takes this as the only pressure on the surface (no atmosphere above the piston), while the jet leaves into the atmosphere: \\[1.59\\times10^{5} + 10^{3}\\times10\\times10 = 1.01\\times10^{5} + \\frac{1}{2}\\times10^{3}v^{2},\\] so \\(v^{2} \\approx 316\\) and \\(v \\approx 17.8\\ m/s\\), option (c). If the atmosphere also pressed on the piston, \\(v^{2} = \\frac{2\\left(1.59\\times10^{5} + 10^{5}\\right)}{10^{3}} \\approx 518\\) and \\(v \\approx 22.8\\ m/s\\), which is not an option.",
+    "120": "From \\(T = 2\\pi\\sqrt{\\frac{l}{g}}\\), \\(g = \\frac{4\\pi^{2}l}{T^{2}}\\), so \\[\\frac{\\Delta g}{g} = \\frac{\\Delta l}{l} + 2\\frac{\\Delta T}{T}.\\] Length: \\(\\frac{1\\ mm}{10\\ cm} = \\frac{0.1}{10} = 0.01\\). Time: 100 oscillations of \\(0.5\\ s\\) take \\(50\\ s\\), read with a \\(1\\ s\\) watch, so \\(\\frac{\\Delta T}{T} = \\frac{1}{50} = 0.02\\). Hence \\(\\frac{\\Delta g}{g} = 0.01 + 2(0.02) = 0.05 = 5\\%\\), and \\(x = 5\\).",
     "121": "Overlap of atomic orbitals is classified as positive, negative or zero according to the SIGN of the wave functions in the region where the lobes meet. Zero overlap arises when the two orbitals approach along a direction for which the in-phase (positive) contribution is exactly cancelled by the out-of-phase (negative) contribution, for example an \\(s\\) orbital approaching a \\(p\\) orbital perpendicular to its axis; the net overlap integral is then zero and no bond forms. So the Assertion is true, and the Reason, that this comes from the relative orientation and direction of approach of the orbitals, is precisely why the cancellation occurs. Both statements are true and the Reason correctly explains the Assertion, option (A).",
     "122": "Metallic character increases DOWN a group (atomic size grows, ionisation enthalpy falls) and decreases ACROSS a period from left to right. \\(Na\\), \\(Mg\\), \\(Si\\) and \\(P\\) are all period-3 elements, so along the period \\(Na > Mg > Si > P\\). \\(Be\\) sits above \\(Mg\\) in group 2, so \\(Mg > Be\\), and \\(Be\\) is still more metallic than the metalloid \\(Si\\). Combining these gives \\(Na > Mg > Be > Si > P\\), option (A).",
     "123": "For any reduction \\(\\Delta G^{\\circ} = \\Delta H^{\\circ} - T\\Delta S^{\\circ}\\), and the process is feasible when \\(\\Delta G^{\\circ}\\) is negative. A liquid is more disordered than a solid, so producing the metal in the molten state makes \\(\\Delta S^{\\circ}\\) for the reduction larger and the \\(-T\\Delta S^{\\circ}\\) term more negative. This is exactly why an Ellingham line kinks downward at the melting point of the metal, and why reductions are carried out above it. Both the Assertion and the Reason are correct and the Reason explains the Assertion, option (A).",
@@ -1159,7 +1161,7 @@
     "23": "In a Young's double slit experiment, a laser light of \\(560\\text{ }nm\\) produces an interference pattern with consecutive bright fringes' separation of \\(7.2\\text{ }mm\\). Now another light is used to produce an interference pattern with consecutive bright fringes' separation of \\(8.1\\text{ }mm\\). The wavelength of second light is nm.",
     "25": "As shown in the figure, a potentiometer wire of resistance \\(20\\Omega\\) and length \\(300\\text{ }cm\\) is connected with resistance box (R.B.) and a standard cell of emf \\(4\\text{ }V\\). For a resistance ' \\(R\\) ' of resistance box introduced into the circuit, the null point for a cell of \\(20mV\\) is found to be \\(60\\text{ }cm\\). The value of ' \\(R\\) ' is \\(\\Omega\\).",
     "27": "The frequency of echo will be \\(Hz\\) if the train blowing a whistle of frequency \\(320\\text{ }Hz\\) is moving with a velocity of \\(36\\text{ }km/h\\) towards a hill from which an echo is heard by the train driver. Velocity of sound in air is \\(330\\text{ }m/s\\).",
-    "28": "The diameter of an air bubble which was initially \\(2\\text{ }mm\\), rises steadily through a solution of density \\(1750\\text{ }kg{\\text{ }m}^{- 3}\\) at the rate of \\(0.35cms^{- 1}\\). The coefficient of viscosity of the solution is poise (in nearest integer). (the density of air is negligible).",
+    "28": "The diameter of an air bubble which was initially \\(2\\text{ }mm\\), rises steadily through a solution of density \\(1750\\text{ }kg{\\text{ }m}^{- 3}\\) at the rate of \\(0.35cms^{- 1}\\). The coefficient of viscosity of the solution is \\(\\_\\_\\_\\_\\) poise (in nearest integer). (the density of air is negligible).",
     "33": "Match List-I with List-II.\n\n|  | List-I |  | List-II |\n| --- | --- | --- | --- |\n| (A) | \\(Cd(s) + 2Ni(OH)_{3}(s) \\rightarrow CdO(s) + 2Ni(OH)_{2}(s) + H_{2}O(l)\\) | (I) | Primary battery |\n| (B) | \\(Zn(Hg) + HgO(s) \\rightarrow ZnO(s) + Hg(l)\\) | (II) | Discharging of secondary battery |\n| (C) | \\(2PbSO_{4}(s) + 2H_{2}O(l) \\rightarrow Pb(s) + PbO_{2}(s) + 2H_{2}SO_{4}(aq)\\) | (III) | Fuel cell |\n| (D) | \\(2H_{2}(g) + O_{2}(g) \\rightarrow 2H_{2}O(l)\\) | (IV) | Charging of secondary battery |\n\nChoose the correct answer from the options given below:",
     "39": "Match List-I with List-II: match the gas evolved during each reaction.\n\n|  | List-I |  | List-II |\n| --- | --- | --- | --- |\n| (A) | \\(\\mathrm{(NH_4)_2Cr_2O_7 \\xrightarrow{\\Delta}}\\) | (I) | \\(\\mathrm{H_2}\\) |\n| (B) | \\(\\mathrm{KMnO_4 + HCl \\rightarrow}\\) | (II) | \\(\\mathrm{N_2}\\) |\n| (C) | \\(\\mathrm{Al + NaOH + H_2O \\rightarrow}\\) | (III) | \\(\\mathrm{O_2}\\) |\n| (D) | \\(\\mathrm{NaNO_3 \\xrightarrow{\\Delta}}\\) | (IV) | \\(\\mathrm{Cl_2}\\) |\n\nChoose the correct answer from the options given below:",
     "51": "In the given reaction, \\[X + Y + 3Z \\rightleftharpoons XYZ_{3}\\] if one mole of each of \\(X\\) and \\(Y\\) with \\(0.05\\text{ }mol\\) of \\(Z\\) gives compound \\(XYZ_{3}\\). (Given: Atomic masses of \\(X,Y\\) and \\(Z\\) are 10,20 and \\(30amu\\), respectively). The yield of \\(XYZ_{3}\\) is _____ g. (Nearest integer)",
@@ -1170,6 +1172,7 @@
     "88": "Let \\(x_{1},x_{2},x_{3},\\ldots\\ldots,x_{20}\\) be in geometric progression with \\(x_{1}= 3\\) and the common ratio \\(\\frac{1}{2}\\). A new data is constructed replacing each \\(x_{i}\\) by \\(\\left( x_{i}- i \\right)^{2}\\). If \\(\\bar{x}\\) is the mean of new data, then the greatest integer less than or equal to \\(\\bar{x}\\) is",
     "92": "At time \\(t = 0\\) a particle starts travelling from a height \\(7\\widehat{z}\\text{ }cm\\) in a plane keeping \\(z\\) coordinate constant. At any instant of time it's position along the \\(x\\) and \\(y\\) directions are defined as \\(3t\\) and \\(5t^{3}\\) respectively. At \\(t = 1\\text{ }s\\) acceleration of the particle will be",
     "93": "A pressure-pump has a horizontal tube of cross-sectional area \\(10{\\text{ }cm}^{2}\\) for the outflow of water at a speed of \\(20\\text{ }m/s\\). The force exerted on the vertical wall just in front of the tube which stops water horizontally flowing out of the tube, is: [given: density of water \\(= 1000\\text{ }kg/m^{3}\\) ]",
+    "97": "Consider a cylindrical tank of radius \\(1\\text{ }m\\) is filled with water. The top surface of water is at \\(15\\text{ }m\\) from the bottom of the cylinder. There is a hole on the wall of cylinder at a height of \\(5\\text{ }m\\) from the bottom. A force of \\(5 \\times10^{5}\\text{ }N\\) is applied on the top surface of water using a piston. The speed of efflux from the hole will be: (given atmospheric pressure \\(P_{A}= 1.01 \\times10^{5}\\text{ }Pa\\), density of water \\(\\rho_{w}= 1000\\text{ }kg/m^{3}\\) and gravitational acceleration \\(g= 10\\text{ }m/s^{2}\\) )",
     "100": "A uniform electric field \\(E = (8\\text{ }m/e)V/m\\) is created between two parallel plates of length \\(1\\text{ }m\\) as shown in figure, (where \\(m =\\) mass of electron and \\(e =\\) charge of electron). An electron enters the field symmetrically between the plates with a speed of \\(2\\text{ }m/s\\). The angle of the deviation \\((\\theta)\\) of the path of the electron as it comes out of the field will be",
     "102": "A triangular shaped wire carrying \\(10\\text{ }A\\) current is placed in a uniform magnetic field of \\(0.5\\text{ }T\\), as shown in figure. The magnetic force on segment \\(CD\\) is (Given \\(BC = CD = BD = 5\\text{ }cm\\) ).",
     "104": "A transformer operating at primary voltage \\(8kV\\) and secondary voltage \\(160\\text{ }V\\) serves a load of \\(80\\text{ }kW\\). Assuming the transformer to be ideal with purely resistive load and working on unity power factor, the loads in the primary and secondary circuit would be",
@@ -1196,6 +1199,12 @@
     },
     "61": {
       "A": "\\(\\frac{1}{2}\\)"
+    },
+    "92": {
+      "A": "\\(-30\\hat{y}\\)",
+      "B": "\\(30\\hat{y}\\)",
+      "C": "\\(3\\hat{x} + 15\\hat{y}\\)",
+      "D": "\\(3\\hat{x} + 15\\hat{y} + 7\\hat{z}\\)"
     },
     "126": {
       "B": "\\({PCl}_{3},{SO}_{2}\\) and \\(S_{2}{Cl}_{2}\\)"

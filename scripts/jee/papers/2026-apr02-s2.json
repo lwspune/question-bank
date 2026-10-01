@@ -6,7 +6,7 @@
     "1": {
       "subject": "Physics",
       "chapter": "Units and Measurements",
-      "subtopic": "Dimensional Analysis"
+      "subtopic": "Deriving Relations and Changing Base Quantities"
     },
     "2": {
       "subject": "Physics",
@@ -31,17 +31,17 @@
     "6": {
       "subject": "Physics",
       "chapter": "Gravitation",
-      "subtopic": "Escape Velocity"
+      "subtopic": "Escape Velocity and Energy Conservation"
     },
     "7": {
       "subject": "Physics",
       "chapter": "Units and Measurements",
-      "subtopic": "Measuring Instruments"
+      "subtopic": "Vernier Callipers, Screw Gauge and Zero Error"
     },
     "8": {
       "subject": "Physics",
       "chapter": "Mechanical Properties of Fluids",
-      "subtopic": "Surface Tension"
+      "subtopic": "Surface Energy of Drops and Bubbles"
     },
     "9": {
       "subject": "Physics",
@@ -51,12 +51,12 @@
     "10": {
       "subject": "Physics",
       "chapter": "Mechanical Properties of Fluids",
-      "subtopic": "Viscosity and Reynolds Number"
+      "subtopic": "Terminal Velocity"
     },
     "11": {
       "subject": "Physics",
       "chapter": "Work, Energy and Power",
-      "subtopic": "Kinetic Energy"
+      "subtopic": "Work-Energy Theorem and Kinetic Energy"
     },
     "12": {
       "subject": "Physics",
@@ -101,7 +101,7 @@
     "20": {
       "subject": "Physics",
       "chapter": "Oscillations",
-      "subtopic": "Simple Harmonic Motion"
+      "subtopic": "SHM Equation, Velocity and Acceleration"
     },
     "21": {
       "subject": "Physics",
@@ -437,6 +437,9 @@
   },
   "notes": "2 Apr 2026 Shift 2 — Maths only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.\n2 Apr 2026 Shift 2 — Chemistry only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.\n[Chemistry skip] Q50 dropped: the reaction sequence defining product P is absent from the extracted stem AND no figure was captured, so the Carius calculation cannot be done. Unanswerable as extracted.",
   "authoredSolutions": {
+    "6": "Mechanical energy is conserved. At infinity the body is at rest and its potential energy is zero; at the surface it has \\(U = -\\frac{GMm}{R}\\). So \\[0 = \\frac{1}{2}mv^{2} - \\frac{GMm}{R} \\Rightarrow v = \\sqrt{\\frac{2GM}{R}} = \\sqrt{2gR}.\\] With \\(g = 9.8\\ m/s^{2}\\) and \\(R = 6.4 \\times 10^{6}\\ m\\), \\(v = \\sqrt{2 \\times 9.8 \\times 6.4 \\times 10^{6}} = \\sqrt{1.254 \\times 10^{8}} \\approx 1.12 \\times 10^{4}\\ m/s = 11.2\\ km/s\\). The kinetic energy of the 1 kg body is \\(\\frac{1}{2}mv^{2} = mgR = 1 \\times 9.8 \\times 6.4 \\times 10^{6} = 6.27 \\times 10^{7}\\ J\\). Option (a). (The body arrives with the escape speed: falling from infinity is escape run backwards.)",
+    "10": "At steady speed the buoyant force on the bubble balances the viscous drag (the weight of the air is negligible): \\(\\frac{4}{3}\\pi R^{3}\\rho g = 6\\pi\\eta Rv\\), so \\(\\eta = \\frac{2R^{2}\\rho g}{9v}\\). With \\(R = 1\\ mm = 10^{-3}\\ m\\), \\(\\rho = 2000\\ kg\\,m^{-3}\\) and \\(v = 0.5\\ cm/s = 5\\times10^{-3}\\ m/s\\): \\[\\eta = \\frac{2\\times10^{-6}\\times2000\\times10}{9\\times5\\times10^{-3}} = \\frac{0.04}{0.045} = 0.889\\ Pa\\,s.\\] Since \\(1\\ Pa\\,s = 10\\) poise, \\(\\eta \\approx 8.9\\) poise, option (b).",
+    "20": "\\(x = a\\sin\\left(50t + \\frac{\\pi}{3}\\right)\\), so the velocity is \\(50a\\cos\\left(50t + \\frac{\\pi}{3}\\right)\\) and the acceleration is \\(-2500\\,x\\). The particle is at rest when the phase first reaches \\(\\frac{\\pi}{2}\\): \\(50t_{1} = \\frac{\\pi}{2} - \\frac{\\pi}{3} = \\frac{\\pi}{6}\\), so \\(t_{1} = \\frac{\\pi}{300}\\ s\\). The acceleration is zero when \\(x = 0\\), which next happens when the phase reaches \\(\\pi\\): \\(50t_{2} = \\pi - \\frac{\\pi}{3} = \\frac{2\\pi}{3}\\), so \\(t_{2} = \\frac{\\pi}{75}\\ s\\). Hence option (a).",
     "26": "Mass ratio \\(C:H = 12:1\\) gives mole ratio \\(\\frac{12}{12} : \\frac{1}{1} = 1:1\\), so the empirical formula is \\(CH\\). With two carbon atoms the molecular formula is \\(C_2H_2\\), molar mass \\(= 2(12) + 2(1) = 26\\ g\\ mol^{-1}\\).\n\nMoles of hydrocarbon \\(= \\frac{3.38}{26} = 0.13\\ mol\\).\n\nCombustion: \\(C_2H_2 + \\frac{5}{2}O_2 \\rightarrow 2CO_2 + H_2O\\), so moles of \\(CO_2 = 2 \\times 0.13 = 0.26\\ mol\\).\n\nMass of \\(CO_2 = 0.26 \\times 44 = 11.44\\ g\\).",
     "27": "The 0.1 M HCl is a strong acid, so \\([H^+] = 0.1\\ M\\) and this common-ion effect suppresses the ionisation of the very weak acid \\(H_2A\\) almost completely. Hence \\([H_2A] \\approx 0.1\\ M\\).\n\nFor the first ionisation \\(H_2A \\rightleftharpoons H^+ + HA^-\\):\n\\(K_{a1} = \\frac{[H^+][HA^-]}{[H_2A]}\\)\n\n\\([HA^-] = \\frac{K_{a1}[H_2A]}{[H^+]} = \\frac{(8.1 \\times 10^{-8})(0.1)}{0.1} = 8.1 \\times 10^{-8}\\ M\\).\n\n(\\(K_{a2}\\) is far smaller and removes a negligible amount of \\(HA^-\\).)",
     "28": "\\(SF_4\\): S has 6 valence electrons, 4 are used in bonding, leaving 1 lone pair. It is \\(AX_4E\\) -- trigonal bipyramidal electron geometry, see-saw shape.\n\n(A) \\(BrF_4^-\\): \\(AX_4E_2\\), square planar -- not isostructural.\n(B) \\(CH_4\\): \\(AX_4\\), tetrahedral -- no.\n(C) \\(IF_4^+\\): valence electrons \\(= 7 - 1 = 6\\); 4 used in bonding, 1 lone pair left, \\(AX_4E\\) see-saw -- YES.\n(D) \\(XeF_4\\): \\(AX_4E_2\\), square planar -- no.\n(E) \\(XeO_2F_2\\): 4 sigma bonds (2 to O, 2 to F) and 1 lone pair on Xe, \\(AX_4E\\) see-saw -- YES.\n\nHence (C) and (E) only.",
