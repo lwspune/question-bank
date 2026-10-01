@@ -39,6 +39,7 @@ import {
   updatedLine,
 } from "@/lib/questions/landingSummary";
 import { mockCta } from "@/lib/notes/keepGoing";
+import { examHomeHref } from "@/lib/exam/examHome";
 
 const SITE_URL = "https://www.pyqvault.com";
 
@@ -205,7 +206,11 @@ export default async function ChapterQuestionsPage({ params }: Params) {
               </Link>
             </li>
             <li aria-hidden="true">/</li>
-            <li>{landing.examName}</li>
+            <li>
+              <Link href={examHomeHref(landing.examSlug)} className="hover:underline">
+                {landing.examName}
+              </Link>
+            </li>
             <li aria-hidden="true">/</li>
             <li>{landing.subjectName}</li>
           </ol>
