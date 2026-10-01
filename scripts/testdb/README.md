@@ -29,6 +29,14 @@ Decisions log).
 
 ## Gotchas
 
+- **`getaddrinfo ENOENT db.<ref>.supabase.co` = this network cannot reach the
+  direct host**, which is IPv6-only. Use the IPv4 session pooler instead: user
+  `postgres.<ref>`, host `aws-0-ap-northeast-2.pooler.supabase.com`, port 5432,
+  same password. `migrate.ts` already accepts that URL shape. Override it for
+  one run (`TEST_SUPABASE_DB_URL=<pooler url> npm run testdb:migrate`) rather
+  than editing `.env.test.local`, so a machine with IPv6 keeps the direct path.
+  Found 2026-10-01; the region was found by probing, so re-probe if it moves.
+
 - **Free projects pause after ~7 days idle.** CI activity normally prevents
   it; if tests suddenly fail with connection errors, unpause from the
   dashboard (data survives).
