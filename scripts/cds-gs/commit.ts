@@ -44,7 +44,7 @@ async function main() {
 
   const { errors: catErrors, warnings: catWarnings } = validateCatalog(questions, catalog());
 
-  const built = buildRecords(questions, answers.derivations, { reconciled });
+  const built = buildRecords(questions, answers.derivations, { reconciled, answerKey: !!paper.answerKey });
   // Normalise long-form text at the write boundary, mirroring the upload parser.
   for (const r of built) {
     r.question = normalizeNewlines(r.question);

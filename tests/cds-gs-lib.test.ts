@@ -224,6 +224,12 @@ describe("buildRecords", () => {
     expect(row.solution).toMatch(/no official key/);
   });
 
+  it("stamps the official-key tail when the paper has a key", () => {
+    const [row] = buildRecords([q()], [der()], { answerKey: true });
+    expect(row.solution).toMatch(/official UPSC provisional/);
+    expect(row.solution).not.toMatch(/no official key/);
+  });
+
   it("carries NO context — a GK paper has no shared directions or passage", () => {
     const [row] = buildRecords([q()], [der()]);
     expect(row.context).toBeUndefined();

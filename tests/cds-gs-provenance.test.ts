@@ -14,6 +14,8 @@ import {
   KEYED_CLAUSE,
   derivedModel,
   provenanceClause,
+  restampSolution,
+  solutionTail,
   stampNote,
 } from "../scripts/cds-gs/provenance";
 import { PAPERS } from "../scripts/cds-gs/config";
@@ -66,6 +68,60 @@ describe("stampNote", () => {
 
   it("tolerates a null note rather than writing the string 'null'", () => {
     expect(stampNote(null, false)).toBe(DERIVED_CLAUSE);
+  });
+});
+
+describe("solutionTail — the bracket that ends every solution", () => {
+  it("keeps the derived wording, with confidence, for a key-less paper", () => {
+    expect(solutionTail({ hasAnswerKey: false, confidence: "HIGH", agreed: true })).toBe(
+      "[Derived answer — this booklet carries no official key. Two independent blind derivations agreed; " +
+        "confidence: HIGH. Verify before relying on it.]"
+    );
+    expect(solutionTail({ hasAnswerKey: false, confidence: "LOW", agreed: false })).toMatch(
+      /were reconciled by hand; confidence: LOW/
+    );
+  });
+
+  it("names the official key on a keyed paper and makes no derivation claim", () => {
+    // 2026-II shipped 120 rows whose solution said 'no official key' while the
+    // note said the opposite: the tail was hardcoded where the note was not.
+    const tail = solutionTail({ hasAnswerKey: true, confidence: "HIGH", agreed: true });
+    expect(tail).toMatch(/official UPSC provisional (answer )?key/);
+    expect(tail).not.toMatch(/no official key/i);
+    expect(tail).not.toMatch(/two independent blind derivations/i);
+    expect(tail).not.toMatch(/confidence/i);
+  });
+});
+
+describe("restampSolution — repairing rows already in the bank", () => {
+  const body = "Hydrogen sulphide is the gas released by decay.";
+  const derived = `${body} ${solutionTail({ hasAnswerKey: false, confidence: "HIGH", agreed: true })}`;
+  const keyed = `${body} ${solutionTail({ hasAnswerKey: true, confidence: "HIGH", agreed: true })}`;
+
+  it("swaps the derived tail for the keyed one on a keyed paper", () => {
+    expect(restampSolution(derived, true)).toBe(keyed);
+  });
+
+  it("swaps a hand-reconciled derived tail too", () => {
+    const reconciled = `${body} ${solutionTail({ hasAnswerKey: false, confidence: "MED", agreed: false })}`;
+    expect(restampSolution(reconciled, true)).toBe(keyed);
+  });
+
+  it("is idempotent", () => {
+    expect(restampSolution(restampSolution(derived, true), true)).toBe(keyed);
+  });
+
+  it("never touches a key-less paper's row", () => {
+    expect(restampSolution(derived, false)).toBe(derived);
+  });
+
+  it("leaves a solution with no recognised tail unchanged rather than guessing", () => {
+    expect(restampSolution(body, true)).toBe(body);
+  });
+
+  it("only replaces a tail at the END — a bracket quoted mid-text stays", () => {
+    const mid = `${derived} A later remark.`;
+    expect(restampSolution(mid, true)).toBe(mid);
   });
 });
 
