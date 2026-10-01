@@ -35,6 +35,7 @@ import {
   type Filters,
 } from "@/lib/questions/filters";
 import { applyPartial } from "@/lib/questions/applyPartial";
+import { showsChapterFilter, showsSubtopicFilter } from "@/lib/questions/filterVisibility";
 import { selectRecentYears } from "@/lib/questions/selectRecentYears";
 
 type Option = { id: string; name: string; count?: number };
@@ -604,12 +605,16 @@ export default function FilterBar({
   //            State Board). Seven of the nine top-level entries are single
   //            exams with no class to pick.
   //   examStage — only while a family with a stage level is selected (MPSC).
+  //   chapters / subtopics — only once their parent is picked, or while they
+  //            are themselves active. See lib/questions/filterVisibility.ts.
   const order: SectionKey[] = (mode === "staged" ? STAGED_ORDER : LIVE_ORDER).filter(
     (k) =>
       (k !== "fit" || isFitExam(filters.examId)) &&
       (k !== "format" || showFormat) &&
       (k !== "examClass" || examSelection.members.length > 0) &&
-      (k !== "examStage" || examSelection.stages.length > 0)
+      (k !== "examStage" || examSelection.stages.length > 0) &&
+      (k !== "chapters" || showsChapterFilter(filters)) &&
+      (k !== "subtopics" || showsSubtopicFilter(filters))
   );
 
   return (
