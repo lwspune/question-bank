@@ -11,7 +11,7 @@
     "2": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Logic Gates"
+      "subtopic": "Logic Gates: Truth Tables, Waveforms and Input Conditions"
     },
     "3": {
       "subject": "Physics",
@@ -46,7 +46,7 @@
     "9": {
       "subject": "Physics",
       "chapter": "Atoms",
-      "subtopic": "Bohr Model and Hydrogen Spectrum"
+      "subtopic": "Bohr Orbits: Radius, Speed and Energy"
     },
     "10": {
       "subject": "Physics",
@@ -136,7 +136,7 @@
     "27": {
       "subject": "Physics",
       "chapter": "Nuclei",
-      "subtopic": "Mass-Energy and Binding Energy"
+      "subtopic": "Q-value, Fission and Fusion"
     },
     "28": {
       "subject": "Physics",
@@ -426,7 +426,7 @@
     "91": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Refraction through Prism"
+      "subtopic": "Prisms: Minimum Deviation, Grazing Emergence and Dispersion"
     },
     "92": {
       "subject": "Physics",
@@ -436,7 +436,7 @@
     "93": {
       "subject": "Physics",
       "chapter": "Atoms",
-      "subtopic": "Bohr Model and Hydrogen Spectrum"
+      "subtopic": "Rutherford Scattering and Bohr's Postulates"
     },
     "94": {
       "subject": "Physics",
@@ -481,7 +481,7 @@
     "102": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Logic Gates"
+      "subtopic": "Logic Gates: Truth Tables, Waveforms and Input Conditions"
     },
     "103": {
       "subject": "Physics",
@@ -531,7 +531,7 @@
     "112": {
       "subject": "Physics",
       "chapter": "Atoms",
-      "subtopic": "Bohr Model and Hydrogen Spectrum"
+      "subtopic": "Spectral Series and Wavelength Ratios"
     },
     "113": {
       "subject": "Physics",
@@ -959,6 +959,7 @@
   "notes": "5 Apr 2024 — Chemistry only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.\n[Chemistry key flip] Q126 A -> D: both statements are the same common-ion principle applied twice. Statement II (HCl gas through saturated NaCl precipitates NaCl) is verbatim NCERT from the purification of common salt, so it is correct, and a key calling I right and II wrong is internally inconsistent. The stem's '$' damage sits around the 'Statement I' LABEL, not Statement II's text, which is intact.\n[Chemistry stem repair] Q60: leading 2 lost. 9.3 g aniline = 0.1 mol; 2,4,6-tribromoaniline theoretical = 33 g, and 26.4/33 = 80% exactly (the key). 6.4 g would give 19.4%.\n[Chemistry stem repair] Q51: leading 2 lost from the Rydberg constant, whose standard value is 2.18e-18 J.\n[Chemistry stem repair] Q131: leading 1 lost; the same stem states Na's metallic radius as 1.86 A two clauses earlier.\n[Chemistry stem repair] Q141: the coefficient 6 before CO2 was dropped, leaving the equation unbalanced in carbon, and every liquid-state label was OCR'd (as digit 1 or as 'a'). The stored key confirms all of it: 6(-393.5) + 3(-286) - 48.5 = -3267.5, doubled = -6535, which is the key. That arithmetic needs SIX CO2, and it needs the LIQUID values for water (-286, not -241.8 gas) and benzene (48.5, not 82.9 gas).\n[Chemistry stem repair] Q32: the equilibrium arrow was glued to Fe (an undefined control sequence that will not render) AND the coefficient 2 was dropped; Fe2O3 + 3CO gives 2Fe + 3CO2.\n[Chemistry stem repair] Q126: a stray '$' opened a zone that swallowed the 'Statement I' label and inverted every following delimiter. The prose was untouched, so only the five math zones (I, HCl(g), BaCl2, HCl, NaCl) needed rebuilding. This also completes the Q126 key flip: with Statement I readable, both statements are plainly correct, and option D is 'Both Statement I and Statement II are correct'.",
   "authoredSolutions": {
     "1": "Rays from a source at the focus of a convex lens leave parallel to the axis. A wavefront is perpendicular to the rays, so for parallel rays it is a plane. Hence option (d).",
+    "2": "\\(A\\) passes through a NOR with tied inputs, giving \\(\\overline{A}\\). The NAND gives \\(\\overline{BC}\\). The NOR of these gives \\[P = \\overline{\\overline{A} + \\overline{BC}} = A\\cdot BC.\\] \\(D\\) through a NOR with tied inputs gives \\(Q = \\overline{D}\\). The bulb (with R) is connected between P and Q, so it glows only when they differ. (a) \\(P = 0, Q = 0\\): off. (b) \\(A = 1, B = C = D = 0\\): \\(P = 0\\), \\(Q = 1\\): on. (c) \\(P = 0, Q = 0\\): off. (d) \\(P = 1, Q = 1\\): off. Hence option (b).",
     "8": "Apply Ampere's law to a circle coaxial with the cable. Outside the cable the circle encloses \\(I - I = 0\\), and by symmetry \\(B\\) is the same all round it, so \\(B = 0\\). Between the conductors the circle encloses the inner current, so \\(B = \\frac{\\mu_{0}I}{2\\pi r} \\neq 0\\). Inside the inner conductor (part of its current enclosed) and inside the outer conductor (all the inner current, part of the outer) the enclosed current is not zero either. Hence option (c).",
     "10": "In a closed chamber the number density \\(n\\) does not change, so the mean free path \\(\\lambda = \\frac{1}{\\sqrt{2}\\pi d^{2}n}\\) is the same at both temperatures. The collision frequency \\(Z = \\frac{\\bar{v}}{\\lambda}\\) then follows \\(\\bar{v} \\propto \\sqrt{T}\\): \\[\\frac{Z'}{Z} = \\sqrt{\\frac{400}{300}} = \\frac{2}{\\sqrt{3}},\\] so \\(Z' = \\frac{2}{\\sqrt{3}}Z\\). Hence option (c).",
     "13": "For a planet of mass \\(m\\) in a circular orbit of radius \\(a\\) about the Sun: gravity supplies the centripetal force, \\(\\frac{mv^{2}}{a} = \\frac{GMm}{a^{2}}\\), so the kinetic energy is \\(\\frac{GMm}{2a}\\) (A - II). The potential energy of the Sun-planet system is \\(-\\frac{GMm}{a}\\) (B - I). The total energy is \\(\\frac{GMm}{2a} - \\frac{GMm}{a} = -\\frac{GMm}{2a}\\) (C - IV). To escape from the surface of a planet of mass \\(m\\) and radius \\(r\\), a unit mass needs energy equal to the depth of its potential well there, \\(\\frac{Gm}{r}\\) (D - III). Option (a).",
@@ -1005,8 +1006,10 @@
     "92": "\\(eV_{0} = K_{max} = h\\nu - \\phi\\). So \\(V_{0}\\) depends on the metal (through \\(\\phi\\)) and on the frequency of the light, and it is \\(\\frac{1}{e}\\) times \\(K_{max}\\). It does not depend on the intensity. The statement that is not true is (c).",
     "98": "The electric force on a charge is \\(\\overrightarrow{F_{1}} = q\\overrightarrow{E}\\), whatever its velocity. The magnetic force is \\(\\overrightarrow{F_{2}} = q\\left(\\overrightarrow{v} \\times \\overrightarrow{B}\\right)\\); the order matters, since \\(\\overrightarrow{B} \\times \\overrightarrow{v}\\) points the opposite way. Hence option (c).",
     "100": "Only the inductor's voltage is needed: \\(V_{L} = IX_{L}\\) with\n\\[X_{L} = 2\\pi fL = 2 \\times 3.14 \\times 50 \\times 10 \\times 10^{-3} = 3.14\\ \\Omega.\\]\nSo \\(I = \\frac{31.4}{3.14} = 10\\ A\\): option (c).",
+    "102": "The upper OR gate gives \\(A + B\\). The AND gate takes \\(B\\) and the constant input 1, giving \\(B\\). The output OR gate gives \\[Y = (A + B) + B = A + B.\\] So \\(Y = 0\\) only when \\(A = 0\\) and \\(B = 0\\). Hence option (b).",
     "104": "Infrared runs from \\(1\\ mm\\) to \\(700\\ nm\\): (A)-(III). Ultraviolet runs from \\(400\\ nm\\) to \\(1\\ nm\\): (B)-(II). X-rays run from \\(1\\ nm\\) to \\(10^{-3}\\ nm\\): (C)-(IV). Gamma rays are shorter than \\(10^{-3}\\ nm\\): (D)-(I). Hence option (b).",
     "105": "For an adiabatic process \\(PV^{\\gamma}\\) is constant. Put \\(V = \\frac{nRT}{P}\\): then \\(P^{1 - \\gamma}T^{\\gamma}\\) is constant, so \\(P \\propto T^{\\frac{\\gamma}{\\gamma - 1}}\\). Given \\(P \\propto T^{3}\\): \\[\\frac{\\gamma}{\\gamma - 1} = 3 \\Rightarrow \\gamma = 3\\gamma - 3 \\Rightarrow \\gamma = \\frac{3}{2}.\\] Hence option (c).",
+    "112": "The shortest Lyman wavelength is the series limit (\\(\\infty \\to 1\\)): \\(\\frac{1}{\\lambda_{0}} = R\\), so \\(\\frac{1}{R} = 915\\ \\text{Å}\\). The longest Balmer line is \\(3 \\to 2\\): \\[\\frac{1}{\\lambda} = R\\left(\\frac{1}{4} - \\frac{1}{9}\\right) = \\frac{5R}{36}\\ \\Rightarrow\\ \\lambda = \\frac{36}{5} \\times 915 = 6588\\ \\text{Å}.\\]",
     "113": "The first minimum of a single slit of width \\(a\\) is at \\(a\\sin\\theta = \\lambda\\), so on a screen at distance \\(D\\) it lies at \\[y_{1} = \\frac{\\lambda D}{a} = \\frac{550 \\times 10^{-9} \\times 1}{0.20 \\times 10^{-3}} = 2.75 \\times 10^{-3}\\ m = 275 \\times 10^{-5}\\ m.\\] So \\(x = 275\\).",
     "121": "Apply VSEPR to each interhalogen (central atom is iodine or chlorine):\n\n(A) \\(ICl\\) — a diatomic molecule, necessarily LINEAR \\(\\rightarrow\\) (IV).\n(B) \\(ICl_{3}\\) — \\(AB_{3}L_{2}\\), 5 electron pairs (3 bonding + 2 lone), trigonal bipyramidal arrangement with both lone pairs equatorial \\(\\rightarrow\\) T-SHAPE \\(\\rightarrow\\) (I).\n(C) \\(ClF_{5}\\) — \\(AB_{5}L\\), 6 pairs (5 bonding + 1 lone), octahedral arrangement \\(\\rightarrow\\) SQUARE PYRAMIDAL \\(\\rightarrow\\) (II).\n(D) \\(IF_{7}\\) — \\(AB_{7}\\), 7 bond pairs, no lone pair \\(\\rightarrow\\) PENTAGONAL BIPYRAMIDAL \\(\\rightarrow\\) (III).\n\nMatching: (A)-(IV), (B)-(I), (C)-(II), (D)-(III).",
     "122": "Mohr's salt is the double salt \\(FeSO_{4}\\cdot(NH_{4})_{2}SO_{4}\\cdot 6H_{2}O\\).\n\n\\(Fe^{2+}\\) is a small, doubly charged cation and its aqua ion is appreciably acidic, so in plain water ferrous sulphate hydrolyses:\n\\(\\left[Fe(H_{2}O)_{6}\\right]^{2+} + H_{2}O \\rightleftharpoons \\left[Fe(H_{2}O)_{5}(OH)\\right]^{+} + H_{3}O^{+}\\)\ngiving a turbid basic-salt/hydroxide precipitate that spoils the crystals.\n\nAdding dilute \\(H_{2}SO_{4}\\) supplies \\(H_{3}O^{+}\\), which by Le Chatelier's principle pushes this hydrolysis equilibrium back to the left, so the solution stays clear and pure crystals separate.\n\nThe purpose is therefore to prevent hydrolysis of ferrous sulphate — not to make the medium strongly acidic (only a little acid is used), and \\((NH_{4})_{2}SO_{4}\\) is not the species at risk.",

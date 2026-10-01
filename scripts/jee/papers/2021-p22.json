@@ -11,7 +11,7 @@
     "2": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Logic Gates"
+      "subtopic": "Logic Gates: Truth Tables, Waveforms and Input Conditions"
     },
     "3": {
       "subject": "Physics",
@@ -26,12 +26,12 @@
     "5": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Lenses and Lensmaker's Formula"
+      "subtopic": "Thin Lens Formula and Lens Combinations"
     },
     "6": {
       "subject": "Physics",
       "chapter": "Nuclei",
-      "subtopic": "Radioactivity and Half-Life"
+      "subtopic": "Decay Constant, Activity and Two-Isotope Decay"
     },
     "7": {
       "subject": "Physics",
@@ -56,7 +56,7 @@
     "11": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Semiconductor Diodes"
+      "subtopic": "Diode Circuits and Rectifiers"
     },
     "12": {
       "subject": "Physics",
@@ -66,7 +66,7 @@
     "13": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Spherical Mirrors"
+      "subtopic": "Plane and Spherical Mirrors"
     },
     "14": {
       "subject": "Physics",
@@ -116,7 +116,7 @@
     "23": {
       "subject": "Physics",
       "chapter": "Communication Systems",
-      "subtopic": "Antennas and Propagation"
+      "subtopic": "Line-of-Sight Range of a Tower"
     },
     "24": {
       "subject": "Physics",
@@ -451,9 +451,13 @@
   },
   "authoredSolutions": {
     "1": "The packet keeps the helicopter's horizontal speed \\(v\\) and falls the height \\(h\\) in \\(t = \\sqrt{\\frac{2h}{g}}\\), so it lands a horizontal distance \\(x = v\\sqrt{\\frac{2h}{g}}\\) ahead of the release point. The man must stand there, so at the moment of release the helicopter is at a distance \\[\\sqrt{x^{2} + h^{2}} = \\sqrt{\\frac{2v^{2}h}{g} + h^{2}}\\] from him, option (c).",
+    "2": "The AND gate gives \\(AB\\) and the OR gate \\(A + B\\); the NAND gives \\[Y = \\overline{AB\\,(A + B)} = \\overline{AB}.\\] So \\(Y = 1, 1, 1, 0\\) for (0,0), (0,1), (1,0), (1,1). Hence option (c).",
     "4": "\\(\\eta = 1 - \\frac{T_{2}}{T_{1}} = \\frac{1}{4}\\), so \\(T_{2} = \\frac{3}{4}T_{1}\\). Lowering the sink by \\(58\\) degrees doubles the efficiency: \\[\\frac{1}{2} = 1 - \\frac{T_{2} - 58}{T_{1}} \\Rightarrow \\frac{T_{2}}{T_{1}} - \\frac{58}{T_{1}} = \\frac{1}{2} \\Rightarrow \\frac{58}{T_{1}} = \\frac{1}{4}.\\] So \\(T_{1} = 232\\ K\\) and \\(T_{2} = 174\\ K\\), that is \\(-99^{\\circ}C\\). The official key is option (a), printed as \\(174^{\\circ}C\\): the sink temperature is \\(174\\ K\\), and the unit in the option is wrong.",
     "8": "Let both bodies leave at angle \\(\\theta\\) on opposite sides of the initial direction, with speeds \\(V_{1}\\) (mass \\(M\\)) and \\(V_{2}\\) (mass \\(m\\)). Momentum across the initial line: \\(MV_{1}\\sin\\theta = mV_{2}\\sin\\theta\\), so \\(mV_{2} = MV_{1}\\). Momentum along it: \\(MV_{0} = (MV_{1} + mV_{2})\\cos\\theta = 2MV_{1}\\cos\\theta\\), so \\(V_{0} = 2V_{1}\\cos\\theta\\). Kinetic energy: \\(MV_{0}^{2} = MV_{1}^{2} + mV_{2}^{2} = MV_{1}^{2} + \\frac{M^{2}V_{1}^{2}}{m}\\), so \\(V_{0}^{2} = V_{1}^{2}\\left(1 + \\frac{M}{m}\\right)\\). Substituting \\(V_{0}\\) gives \\(4\\cos^{2}\\theta = 1 + \\frac{M}{m}\\). Since \\(\\cos^{2}\\theta \\leq 1\\), \\(\\frac{M}{m} \\leq 3\\); the largest value is 3, option (c).",
+    "11": "The diode and the \\(3\\ V\\) cell oppose the source: current flows only while \\(V_{i} = 10\\sin\\omega t\\) exceeds \\(3\\ V\\). Then the voltage across \\(R\\) is \\(V_{R} = 10\\sin\\omega t - 3\\), a cap of the sine wave with peak \\(7\\ V\\). For \\(V_{i} \\le 3\\ V\\) the diode is reverse biased and \\(V_{R} = 0\\). So the output is a train of positive pulses, present only while the input is above \\(+3\\ V\\): option (c). (The option pictures show only the dashed input wave; the output traces are missing in the source paper too.)",
     "12": "Under its own weight the tension in a hanging rod grows from zero at the bottom to \\(W\\) at the top, so the rod stretches as if the average tension \\(\\frac{W}{2}\\) acted along its whole length: \\(\\Delta l = \\frac{WL}{2AY}\\). With \\(W = 10\\ N\\), \\(L = 0.2\\ m\\) and \\(A = 100\\ cm^{2} = 10^{-2}\\ m^{2}\\): \\[\\Delta l = \\frac{10\\times0.2}{2\\times10^{-2}\\times2\\times10^{11}} = \\frac{2}{4\\times10^{9}} = 5\\times10^{-10}\\ m,\\] option (d).",
+    "13": "Take \\(M_{1}\\) as the y-axis and \\(M_{2}\\) as the x-axis. P is \\(a\\) from \\(M_{1}\\) and \\(2a\\) from \\(M_{2}\\), so \\(P = (a, 2a)\\). The images are \\(I_{1} = (-a, 2a)\\) in \\(M_{1}\\), \\(I_{2} = (a, -2a)\\) in \\(M_{2}\\), and \\(I_{3} = (-a, -2a)\\), formed by both mirrors. Distances: \\[I_{1}I_{2} = \\sqrt{(2a)^{2} + (4a)^{2}} = 2\\sqrt{5}\\,a = 4.6a,\\qquad I_{1}I_{3} = 4a,\\qquad I_{2}I_{3} = 2a.\\] As printed, the shortest distance between the images is \\(2a\\), which is not offered. The official answer, option (b) \\(4.6a\\), is the distance between the two images formed by a single reflection, \\(I_{1}\\) and \\(I_{2}\\).",
+    "23": "For heights \\(h_{T}\\) and \\(h_{R}\\) the range is \\(d = \\sqrt{2R}\\left(\\sqrt{h_{T}} + \\sqrt{h_{R}}\\right)\\). With \\(h_{T} = x\\) and \\(h_{R} = 160 - x\\), the sum \\(\\sqrt{x} + \\sqrt{160 - x}\\) is largest when \\(\\frac{1}{2\\sqrt{x}} = \\frac{1}{2\\sqrt{160 - x}}\\), that is at \\(x = 80\\text{ }m\\): equal heights. Then \\[d_{\\max} = 2\\sqrt{2Rh} = 2\\sqrt{2 \\times 6.4 \\times 10^{6} \\times 80}\\text{ }m = 2 \\times 3.2 \\times 10^{4}\\text{ }m = 64\\text{ }km.\\]",
     "24": "The wire's total resistance is \\(4 \\times 3 = 12\\Omega\\). Bent into a circle, two diametrically opposite points split it into two semicircles of \\(6\\Omega\\) each, in parallel: \\[R = \\frac{6 \\times 6}{6 + 6} = 3\\Omega.\\]",
     "25": "The wave speed is \\(v = \\sqrt{\\frac{T}{\\mu}} = \\sqrt{\\frac{900}{9.0 \\times 10^{-4}}} = 1000\\ m/s\\). For a wire fixed at both ends \\(f_{n} = \\frac{nv}{2L}\\), so two consecutive resonant frequencies differ by the fundamental: \\[\\frac{v}{2L} = 550 - 500 = 50\\ Hz \\Rightarrow L = \\frac{1000}{2 \\times 50} = 10\\ m.\\]",
     "26": "Upper branch: \\(4\\Omega \\parallel 4\\Omega = 2\\Omega\\), then \\(2\\Omega\\), then \\(15\\Omega \\parallel 10\\Omega = 6\\Omega\\), a total of \\(10\\Omega\\). Lower branch: \\(8\\Omega \\parallel 8\\Omega = 4\\Omega\\) and \\(12\\Omega \\parallel 12\\Omega = 6\\Omega\\), also \\(10\\Omega\\). The two branches in parallel give \\(5\\Omega\\); with the \\(1\\Omega\\), \\(I = \\frac{12}{6} = 2\\text{ }A\\), so each branch carries \\(1\\text{ }A\\). The drop across the \\(15\\Omega \\parallel 10\\Omega\\) pair is \\(1 \\times 6 = 6\\text{ }V\\), and that is the drop across the \\(15\\Omega\\).",

@@ -61,7 +61,7 @@
     "12": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Semiconductor Diodes"
+      "subtopic": "Diode Circuits and Rectifiers"
     },
     "13": {
       "subject": "Physics",
@@ -76,12 +76,12 @@
     "15": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Refraction through Prism"
+      "subtopic": "Prisms: Minimum Deviation, Grazing Emergence and Dispersion"
     },
     "16": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Lenses and Lensmaker's Formula"
+      "subtopic": "Refraction at a Spherical Surface and the Lens-Maker's Formula"
     },
     "17": {
       "subject": "Physics",
@@ -96,7 +96,7 @@
     "19": {
       "subject": "Physics",
       "chapter": "Atoms",
-      "subtopic": "Bohr Model and Hydrogen Spectrum"
+      "subtopic": "Rutherford Scattering and Bohr's Postulates"
     },
     "20": {
       "subject": "Physics",
@@ -440,10 +440,13 @@
     "7": "As drawn, the slab (\\(K = 5\\)) covers the whole plate area to thickness \\(\\frac{d}{2}\\), so the slab and the air gap are in series. Each part alone: \\(C_{1} = \\frac{5\\varepsilon_{0}A}{d/2} = 10C\\) and \\(C_{2} = \\frac{\\varepsilon_{0}A}{d/2} = 2C\\). \\[C_{f} = \\frac{10C \\times 2C}{10C + 2C} = \\frac{5}{3}C.\\] The increase is \\(\\frac{5/3 - 1}{1} \\times 100 = 66.67\\%\\). Hence option (b).",
     "8": "At constant pressure for a diatomic gas: \\(\\Delta Q = nC_{p}\\Delta T = \\frac{7}{2}nR\\Delta T\\), \\(\\Delta U = nC_{v}\\Delta T = \\frac{5}{2}nR\\Delta T\\), and \\(\\Delta W = P\\Delta V = nR\\Delta T\\). So \\(\\Delta Q : \\Delta U : \\Delta W = \\frac{7}{2} : \\frac{5}{2} : 1 = 7 : 5 : 2\\). Hence option (d).",
     "11": "The point x is on the axis of A and on the equatorial line of B. A gives \\(\\frac{2kp_{1}}{x^{3}}\\) along Ox and B gives \\(\\frac{kp_{2}}{x^{3}}\\) perpendicular to Ox. The resultant makes an angle \\(\\theta\\) with Ox where \\[\\tan\\theta = \\frac{kp_{2}/x^{3}}{2kp_{1}/x^{3}} = \\frac{p_{2}}{2p_{1}}.\\] With \\(\\theta = 60^{\\circ}\\), \\(\\frac{p_{2}}{p_{1}} = 2\\tan 60^{\\circ} = 2\\sqrt{3}\\). Hence option (b).",
+    "12": "For the positive half cycle the middle branch has its ideal diode forward biased and its Zener diode reverse biased, so the output is held at \\(+5\\ V\\) by Zener breakdown; the component between X and Y must then act as an open circuit. For the negative half cycle the ideal diode in the middle branch is reverse biased and that branch is open, yet the output is \\(-5\\ V\\): now the X-Y branch must conduct and break down at \\(5\\ V\\). Option (b) does both: an ordinary diode with its cathode towards X, then a \\(5\\ V\\) Zener diode with its cathode towards Y. When X is positive the ordinary diode blocks; when Y is positive it conducts and the Zener breaks down at \\(5\\ V\\). Hence option (b).",
     "13": "Power dissipated: \\(P = \\frac{\\varepsilon^{2}}{R}\\). The emf is \\(\\varepsilon = NA\\frac{dB}{dt}\\), so \\(\\varepsilon \\propto NA\\). The wire has length \\(N \\times 2\\pi a\\), where the coil radius is \\(a = \\sqrt{\\frac{A}{\\pi}}\\), and cross-section \\(\\pi r^{2}\\), so \\(R \\propto \\frac{N\\sqrt{A}}{r^{2}}\\). Then \\[P \\propto \\frac{N^{2}A^{2}r^{2}}{N\\sqrt{A}} = NA^{3/2}r^{2}.\\] For the second coil, \\(\\frac{P'}{P} = 2 \\times 2^{3/2} \\times 3^{2} = 36\\sqrt{2}\\). So \\(P' = \\sqrt{2} \\times 36P\\) and \\(\\alpha = 36\\). Hence option (a).",
     "14": "A semi-infinite wire whose end lies on the perpendicular from the point gives \\(\\frac{\\mu_{0}I}{4\\pi r}\\); a semicircle gives \\(\\frac{\\mu_{0}I}{4r}\\) at its centre. Figure (I): both straight wires end on the perpendicular through P, and with the semicircle all three fields point into the page: \\[B_{1} = \\frac{2\\mu_{0}I}{4\\pi r} + \\frac{\\mu_{0}I}{4r} = \\frac{\\mu_{0}I}{4\\pi r}(2 + \\pi).\\] Figure (II): the horizontal wire gives \\(\\frac{\\mu_{0}I}{4\\pi r}\\), the vertical wire leaves along a line through Q and gives nothing: \\[B_{2} = \\frac{\\mu_{0}I}{4\\pi r} + \\frac{\\mu_{0}I}{4r} = \\frac{\\mu_{0}I}{4\\pi r}(1 + \\pi).\\] So \\(\\frac{B_{1}}{B_{2}} = \\frac{2 + \\pi}{1 + \\pi}\\). Hence option (a).",
+    "16": "From the figure: object height \\(2\\ cm\\), \\(u = -40\\ cm\\), and the centre of curvature is on the object side, so \\(R = -20\\ cm\\); \\(\\mu_{1} = 1\\), \\(\\mu_{2} = 1.54\\). \\[\\frac{1.54}{v} - \\frac{1}{-40} = \\frac{1.54 - 1}{-20}\\ \\Rightarrow\\ \\frac{1.54}{v} = -0.027 - 0.025 = -0.052\\ \\Rightarrow\\ v = -29.6\\ cm.\\] Magnification: \\(m = \\frac{\\mu_{1}v}{\\mu_{2}u} = \\frac{-29.6}{1.54\\times(-40)} = 0.48\\), so the image height is \\(0.48\\times2 = 0.96 \\approx 1\\ cm\\). Hence option (a).",
     "17": "Einstein's equation for the two wavelengths: \\(\\frac{hc}{\\lambda} - \\phi = 3eV_{0}\\) and \\(\\frac{hc}{2\\lambda} - \\phi = eV_{0}\\). Multiply the second by 3 and equate: \\(\\frac{hc}{\\lambda} - \\phi = \\frac{3hc}{2\\lambda} - 3\\phi\\), so \\(2\\phi = \\frac{hc}{2\\lambda}\\) and \\(\\phi = \\frac{hc}{4\\lambda}\\). The threshold wavelength is \\(\\lambda_{0} = \\frac{hc}{\\phi} = 4\\lambda\\), so \\(\\alpha = 4\\). Hence option (b).",
     "18": "The wave travels along \\(x\\) with \\(\\overrightarrow{E}\\) along \\(y\\), so \\(\\overrightarrow{B}\\) is along \\(z\\) with \\(B = \\frac{E}{c}\\). The electron moves along \\(y\\), perpendicular to \\(\\overrightarrow{B}\\). The electric force is \\(F_{e} = qE\\) and the magnetic force is \\(F_{m} = qvB = \\frac{qvE}{c}\\). So \\[\\frac{F_{e}}{F_{m}} = \\frac{c}{v} = \\frac{3 \\times 10^{8}}{1.5 \\times 10^{6}} = 200.\\] Hence option (a).",
+    "19": "Bohr's condition is \\(L = \\frac{nh}{2\\pi}\\). Here \\(\\frac{3h}{\\pi} = \\frac{6h}{2\\pi}\\), so \\(n = 6\\). Then \\[E_{6} = -\\frac{13.6}{6^{2}}\\ eV = -\\frac{13.6}{36}\\ eV \\approx -0.38\\ eV.\\] Hence option (c).",
     "20": "Volume is conserved: \\(\\frac{4}{3}\\pi R^{3} = 512\\cdot\\frac{4}{3}\\pi r^{3}\\), so with \\(R = 1\\ mm\\), \\(r = \\frac{R}{8} = \\frac{1}{8}\\ mm\\). The surface area grows by \\[\\Delta A = 4\\pi\\left(512r^{2} - R^{2}\\right) = 4\\pi\\left(\\frac{512}{64} - 1\\right)\\ mm^{2} = 28\\pi\\times10^{-6}\\ m^{2}.\\] The surface energy rises by \\(\\Delta E = T\\,\\Delta A = 0.08\\times28\\pi\\times10^{-6} \\approx 7.04\\times10^{-6}\\ J\\), so \\(\\alpha \\approx 7\\), option (b).",
     "22": "\\(\\gamma = \\frac{C_{p}}{C_{v}} = \\frac{3R}{2R} = \\frac{3}{2}\\). Adiabatic: \\(P_{1}V_{1}^{\\gamma} = P_{2}V_{2}^{\\gamma}\\), so \\[V_{2} = V_{1}\\left(\\frac{P_{1}}{P_{2}}\\right)^{1/\\gamma} = 0.15 \\times 8^{2/3} = 0.15 \\times 4 = 0.6\\ m^{3}.\\] Work done by the gas: \\[W = \\frac{P_{1}V_{1} - P_{2}V_{2}}{\\gamma - 1} = \\frac{(8 \\times 0.15 - 1 \\times 0.6) \\times 10^{5}}{0.5} = 1.2 \\times 10^{5}\\ J = 120\\ kJ.\\] The temperature \\(140^{\\circ}C\\) is not needed.",
     "23": "\\(\\overrightarrow{F} = q\\left(\\overrightarrow{v} \\times \\overrightarrow{B}\\right)\\) with \\(\\overrightarrow{v} = \\widehat{i} - 2\\widehat{j} + 3\\widehat{k}\\) and \\(\\overrightarrow{B} = 2\\widehat{i} + 3\\widehat{j} - 5\\widehat{k}\\): \\[\\overrightarrow{v} \\times \\overrightarrow{B} = \\left((-2)(-5) - (3)(3)\\right)\\widehat{i} - \\left((1)(-5) - (3)(2)\\right)\\widehat{j} + \\left((1)(3) - (-2)(2)\\right)\\widehat{k} = \\widehat{i} + 11\\widehat{j} + 7\\widehat{k}.\\] So \\(\\left|\\overrightarrow{F}\\right| = 10^{- 6}\\sqrt{1 + 121 + 49} = \\sqrt{171} \\times 10^{- 6}\\text{ }N\\), and \\(\\alpha = 171\\).",
@@ -502,6 +505,7 @@
   "stemOverrides": {
     "1": "The dimensional formula of \\(\\frac{1}{2}\\epsilon_{0}E^{2}\\) (\\(\\epsilon_{0} =\\) permittivity of vacuum and \\(E =\\) electric field) is \\(M^{a}L^{b}T^{c}\\). The value of \\(2a - b + c =\\) \\(\\_\\_\\_\\_\\) .",
     "2": "The diameter of a wire measured by a screw gauge of least count 0.001 cm is 0.08 cm . The length measured by a scale of least count 0.1 cm is 150 cm . When a weight of 100 N is applied to the wire, the extension in length is 0.5 cm , measured by a micrometer of least count 0.001 cm . The error in the measured Young's modulus is \\(\\alpha \\times10^{9}\\text{ }N/m^{2}\\). The value of \\(\\alpha\\) is \\(\\_\\_\\_\\_\\).(Ignore the contribution of the load to Young's modulus error calculation)",
+    "12": "For the given circuit (shown in part (A)) the time dependent input voltage \\(v_{\\text{in~}}(t)\\) and corresponding output \\(v_{0}(t)\\) are shown in part (B) and part (C), respectively. Identify the components used in the circuit between points X and Y.",
     "17": "For a certain metal, when monochromatic light of wavelength \\(\\lambda\\) is incident, the stopping potential for photoelectrons is \\(3V_{0}\\). When the same metal is illuminated by light of wavelength \\(2\\lambda\\), then the stopping potential becomes \\(V_{0}\\). The threshold wavelength for photoelectric emission for the given metal is \\(\\alpha\\lambda\\). The value of \\(\\alpha\\) is \\(\\_\\_\\_\\_\\) .",
     "20": "A liquid drop of diameter 2 mm breaks into 512 droplets. The change in surface energy is \\(\\alpha \\times10^{- 6}\\text{ }J\\). The value of \\(\\alpha\\) is \\(\\_\\_\\_\\_\\) . (Take surface tension of liquid \\(= 0.08\\text{ }N/m\\) )",
     "27": "What is the energy (in \\(\\mathrm{J\\ atom^{-1}}\\)) required for the following process?\n\\(Li^{2 +}(g) \\rightarrow Li^{3 +}(g) +e^{-}\\) (Take the ionization energy for the H atom in the ground state as \\(2.18 \\times10^{- 18}\\ \\mathrm{J\\ atom^{-1}}\\))",

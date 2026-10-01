@@ -6,7 +6,7 @@
     "1": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Refraction through Prism"
+      "subtopic": "Prisms: Minimum Deviation, Grazing Emergence and Dispersion"
     },
     "2": {
       "subject": "Physics",
@@ -56,17 +56,17 @@
     "11": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Total Internal Reflection"
+      "subtopic": "Critical Angle and Total Internal Reflection"
     },
     "12": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Semiconductor Diodes"
+      "subtopic": "Zener Diode as a Voltage Regulator"
     },
     "13": {
       "subject": "Physics",
       "chapter": "Atoms",
-      "subtopic": "Bohr Model and Hydrogen Spectrum"
+      "subtopic": "Spectral Series and Wavelength Ratios"
     },
     "14": {
       "subject": "Physics",
@@ -435,10 +435,13 @@
   },
   "notes": "23 Jan 2026 Shift 1 — Maths only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.\n23 Jan 2026 Shift 1 — Chemistry only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.\n23 Jan 2026 Shift 1 — Chemistry only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.",
   "authoredSolutions": {
+    "1": "For dispersion without deviation the two thin prisms are placed opposite ways and their mean deviations cancel: \\[(\\mu_{1} - 1)A_{1} = (\\mu_{2} - 1)A_{2}\\ \\Rightarrow\\ A_{2} = \\frac{0.72\\times5^{\\circ}}{0.9} = 4^{\\circ}.\\] Hence option (c).",
     "6": "20 oscillations in \\(10\\ s\\) give \\(T = 0.5\\ s\\); 40 oscillations in \\(10\\ s\\) need \\(T' = 0.25\\ s\\), half the period. Since \\(T \\propto \\sqrt{l}\\), halving \\(T\\) needs a quarter of the length: \\(l' = \\frac{30}{4} = 7.5\\ cm\\). Hence option (c).",
     "8": "Each cylinder has mass \\(M' = \\frac{M}{4}\\), radius \\(R\\) and length \\(L\\). The axis lies in the plane of the square and passes through the midpoints of two opposite sides. Those two cylinders are perpendicular to the axis, which passes through their centres, so each has \\(I = \\frac{M'R^{2}}{4} + \\frac{M'L^{2}}{12}\\). The other two cylinders are parallel to the axis at a distance \\(\\frac{L}{2}\\), so each has \\(I = \\frac{M'R^{2}}{2} + M'\\left(\\frac{L}{2}\\right)^{2}\\). Adding, \\(I = 2\\left(\\frac{M'R^{2}}{4} + \\frac{M'L^{2}}{12}\\right) + 2\\left(\\frac{M'R^{2}}{2} + \\frac{M'L^{2}}{4}\\right) = \\frac{3}{2}M'R^{2} + \\frac{2}{3}M'L^{2}\\). With \\(M' = \\frac{M}{4}\\), \\(I = \\frac{3}{8}MR^{2} + \\frac{1}{6}ML^{2}\\), option (d).",
     "9": "Between \\(A\\) and \\(B\\) there are three paths: the shorter arc (a quarter circle, length \\(\\frac{\\pi r}{2}\\)), the longer arc (\\(\\frac{3\\pi r}{2}\\)) and the straight wire through the centre (\\(2r\\)). Their resistances are \\(\\frac{\\pi\\lambda r}{2}\\), \\(\\frac{3\\pi\\lambda r}{2}\\) and \\(2\\lambda r\\), all in parallel: \\[\\frac{1}{R_{AB}} = \\frac{1}{\\lambda r}\\left(\\frac{2}{\\pi} + \\frac{2}{3\\pi} + \\frac{1}{2}\\right) = \\frac{1}{\\lambda r} \\cdot \\frac{16 + 3\\pi}{6\\pi},\\] so \\(R_{AB} = \\frac{6\\pi\\lambda r}{3\\pi + 16}\\). Hence option (c).",
     "10": "On a strain-stress plot the slope is \\(\\frac{\\text{strain}}{\\text{stress}} = \\frac{1}{Y}\\). The largest Young's modulus belongs to the line with the smallest slope, the one closest to the stress axis: C, option (a).",
+    "11": "Light is slower in A, so A is the denser medium and total internal reflection from A to B is possible. At the critical angle \\(n_{A}\\sin c = n_{B}\\), so \\[\\sin c = \\frac{n_{B}}{n_{A}} = \\frac{v_{A}}{v_{B}} = \\frac{2.4}{2.7} = \\frac{8}{9}.\\] Then \\(\\cos c = \\frac{\\sqrt{81 - 64}}{9} = \\frac{\\sqrt{17}}{9}\\) and \\(\\tan c = \\frac{8}{\\sqrt{17}}\\). Hence option (c); option (d) gives the cosine, not the sine.",
+    "12": "The Zener can carry four times the load current: \\(I_{Z,max} = 4 \\times 5 = 20\\ mA\\). The worst case for the diode is the largest input, \\(25\\ V\\), with the load disconnected, when all of the series current flows through the Zener: \\[R_{S} = \\frac{25 - 5}{20 \\times 10^{-3}} = 1000\\ \\Omega.\\] (With the load connected the series current could be \\(20 + 5 = 25\\ mA\\), giving \\(800\\ \\Omega\\), which is not offered.) Hence option (d).",
     "20": "(A) is true: in a ferromagnet the atomic dipoles interact strongly and line up spontaneously over small regions, the domains. (R) is true: above the Curie temperature thermal agitation breaks this alignment, the domains disappear and the material becomes paramagnetic. But (R) describes what happens at high temperature; it does not explain why domains form. Hence option (b).",
     "21": "Each element of the wire moves on a circle about the point of suspension, so the wire is a rod rotating about one end: \\(\\varepsilon = \\frac{1}{2}B\\omega l^{2}\\), largest when \\(\\omega\\) is largest, at the lowest point. Treating the bob as a point mass at distance \\(l\\), energy conservation from \\(60^{\\circ}\\) gives \\[mgl\\left(1 - \\cos 60^{\\circ}\\right) = \\frac{1}{2}ml^{2}\\omega_{\\max}^{2}\\ \\Rightarrow\\ \\omega_{\\max}^{2} = \\frac{g}{l} = \\frac{10}{0.1} = 100,\\] so \\(\\omega_{\\max} = 10\\ rad/s\\). Then \\[\\varepsilon_{\\max} = \\frac{1}{2} \\times 2 \\times 10 \\times (0.1)^{2} = 0.1\\ V = 100\\ mV.\\]",
     "22": "The speed is \\(v = \\frac{\\omega}{k} = \\frac{6.27 \\times 10^{3}}{2.09 \\times 10^{-5}} = 3 \\times 10^{8}\\ m/s\\), so the wave is in free space. The average intensity is \\[I = \\frac{1}{2}c\\varepsilon_{0}E_{0}^{2} = \\frac{E_{0}^{2}}{2}\\sqrt{\\frac{\\varepsilon_{0}}{\\mu_{0}}} = \\frac{E_{0}^{2}}{2 \\times 377},\\] using \\(c\\varepsilon_{0} = \\sqrt{\\frac{\\varepsilon_{0}}{\\mu_{0}}}\\). With \\(E_{0}^{2} = 377\\), \\(I = \\frac{1}{2}\\ W/m^{2}\\), so \\(\\frac{1}{\\alpha} = \\frac{1}{2}\\) and \\(\\alpha = 2\\).",

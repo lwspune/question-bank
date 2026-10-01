@@ -46,7 +46,7 @@
     "9": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Spherical Mirrors"
+      "subtopic": "Plane and Spherical Mirrors"
     },
     "10": {
       "subject": "Physics",
@@ -76,7 +76,7 @@
     "15": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Logic Gates"
+      "subtopic": "Logic Gates: Reducing a Network to One Gate"
     },
     "16": {
       "subject": "Physics",
@@ -101,7 +101,7 @@
     "20": {
       "subject": "Physics",
       "chapter": "Atoms",
-      "subtopic": "Bohr Model and Hydrogen Spectrum"
+      "subtopic": "Bohr Orbits: Radius, Speed and Energy"
     },
     "21": {
       "subject": "Physics",
@@ -116,7 +116,7 @@
     "23": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Spherical Mirrors"
+      "subtopic": "Plane and Spherical Mirrors"
     },
     "24": {
       "subject": "Physics",
@@ -376,7 +376,7 @@
     "76": {
       "subject": "Physics",
       "chapter": "Nuclei",
-      "subtopic": "Radioactivity and Half-Life"
+      "subtopic": "Decay Constant, Activity and Two-Isotope Decay"
     },
     "77": {
       "subject": "Physics",
@@ -391,7 +391,7 @@
     "79": {
       "subject": "Physics",
       "chapter": "Atoms",
-      "subtopic": "Bohr Model and Hydrogen Spectrum"
+      "subtopic": "Rutherford Scattering and Bohr's Postulates"
     },
     "80": {
       "subject": "Physics",
@@ -451,7 +451,7 @@
     "91": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Intrinsic and Extrinsic Semiconductors"
+      "subtopic": "Semiconductors and the p-n Junction"
     },
     "92": {
       "subject": "Physics",
@@ -466,7 +466,7 @@
     "94": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Spherical Mirrors"
+      "subtopic": "Plane and Spherical Mirrors"
     },
     "95": {
       "subject": "Physics",
@@ -866,8 +866,10 @@
     "12": "Horizontal balance: \\(T_{1}\\cos\\theta_{1} = T_{2}\\cos\\theta_{2}\\). With \\(T_{1} = \\sqrt{3}T_{2}\\) this needs \\(\\sqrt{3}\\cos\\theta_{1} = \\cos\\theta_{2}\\), which \\(\\theta_{1} = 60^{\\circ}\\), \\(\\theta_{2} = 30^{\\circ}\\) satisfies (\\(\\sqrt{3} \\times \\frac{1}{2} = \\frac{\\sqrt{3}}{2}\\)); the pairs \\(30^{\\circ}, 60^{\\circ}\\) and \\(45^{\\circ}, 45^{\\circ}\\) do not. Vertical balance: \\(T_{1}\\sin60^{\\circ} + T_{2}\\sin30^{\\circ} = mg\\), i.e. \\(T_{2}\\left(\\frac{3}{2} + \\frac{1}{2}\\right) = mg\\), so \\(T_{2} = \\frac{mg}{2}\\). Option (b).",
     "13": "\\[q = \\int_{1}^{2}(0.02t + 0.01)\\,dt = \\left[0.01t^{2} + 0.01t\\right]_{1}^{2} = 0.01(4 - 1) + 0.01(2 - 1) = 0.04\\text{ }C.\\] Hence option (d).",
     "14": "To reach infinity the body needs kinetic energy equal to the magnitude of its potential energy at the surface: \\(K = \\frac{GMm}{R} = mgR\\), using \\(GM = gR^{2}\\). Equivalently \\(K = \\frac{1}{2}mv_{e}^{2} = \\frac{1}{2}m\\cdot\\frac{2GM}{R} = mgR\\). The Assertion's \\(\\frac{1}{2}mgR\\) is half of this, so the Assertion is false. Gravitational potential energy is negative everywhere and rises to its largest value, zero, at infinity, so the Reason is true. Option (a).",
+    "15": "\\(Y = A\\overline{B}C + \\overline{A}\\,\\overline{C}\\). A: a 3-input AND for \\(A\\overline{B}C\\) needs one NOT (for \\(B\\)); a 2-input AND for \\(\\overline{A}\\,\\overline{C}\\) needs two more NOTs; a 2-input OR adds the two terms. That is one 3-input AND, three NOTs, one 2-input AND and one 2-input OR: A works. B: \\(\\overline{A}\\,\\overline{C} = \\overline{A + C}\\) is a single 2-input NOR, so one 3-input AND, one NOT (for \\(B\\)), one NOR and one OR also work. C: a 3-input OR, three NOTs and one 2-input AND cannot form both product terms and add them. So A and B only, option (b).",
     "17": "For a simple pendulum at small angles the angular acceleration is \\(\\alpha = -\\frac{g}{l}\\theta\\). Equal angular accelerations give \\(\\frac{g}{l_{1}}\\theta_{1} = \\frac{g}{l_{2}}\\theta_{2}\\), so \\(\\theta_{1}l_{2} = \\theta_{2}l_{1}\\). Hence option (d).",
     "18": "Between the two identical sheets their fields cancel; outside the pair they add to \\(\\frac{\\sigma}{\\varepsilon_{0}}\\), pointing away from the sheets. So at A and B only the sphere's field acts, and A is nearer the sphere: \\(E_{A} > E_{B}\\). At C and D the sheets give \\(\\frac{\\sigma}{\\varepsilon_{0}}\\) to the left at C and to the right at D, and the sphere's field also points away from it (left at C, right at D) but is stronger at D, which is nearer. So the fields at C and D differ: \\(\\vec{E}_{C} \\neq \\vec{E}_{D}\\). Hence option (c).",
+    "20": "For a hydrogen-like ion \\(r_{n} = a_{0}\\frac{n^{2}}{Z}\\). Both electrons are in the same orbit (\\(n = 5\\)), so \\(r \\propto \\frac{1}{Z}\\): \\[\\frac{r_{Li^{2+}}}{r_{He^{+}}} = \\frac{Z_{He}}{Z_{Li}} = \\frac{2}{3}.\\] Hence option (d).",
     "24": "Number the junctions along the row of capacitors 1 to 5 from left to right. The top wire joins junctions 1, 3 and 5 to B; the bottom wire joins junctions 2 and 4 to A. So every capacitor has one plate on A and the other on B: all four are in parallel. \\[C_{AB} = 4C = 4 \\times 16 = 64\\ \\mu F.\\]",
     "26": "Reverse osmosis needs a genuinely semipermeable partition, so cellophane and parchment paper qualify while a merely porous partition lets solute through and does not. Chamber 1 holds the more concentrated solution \\(\\left(c_{1}>c_{2}\\right)\\), so solvent has to be driven OUT of chamber 1, which requires the pressure applied on chamber 1 to exceed the osmotic pressure, i.e. \\(p_{1}>\\pi\\). Statement A (cellophane, \\(p_{1}>\\pi\\)) and statement C (parchment paper, \\(p_{1}>\\pi\\)) meet both requirements; B fails on the membrane and D pushes on the dilute side. Hence the correct choice is option (C), 'A and C only'.",
     "27": "Spontaneity requires \\(\\Delta G=\\Delta H-T\\Delta S<0\\). With both \\(\\Delta H>0\\) and \\(\\Delta S>0\\), the term \\(-T\\Delta S\\) only overcomes the positive \\(\\Delta H\\) at sufficiently high temperature. At equilibrium \\(\\Delta G=0\\), which defines \\(T_{e}=\\Delta H/\\Delta S\\). Therefore \\(\\Delta G<0\\) whenever \\(T>\\Delta H/\\Delta S=T_{e}\\), i.e. the reaction becomes spontaneous for \\(T>T_{e}\\), which is option (C).",
@@ -923,6 +925,7 @@
     "83": "The amount of gas is conserved: the sum of \\(n = \\frac{PV}{RT}\\) over the two vessels does not change. With the small vessel of volume \\(V\\) and the large one \\(2V\\): \\[\\frac{8 \\times 2V}{1000R} + \\frac{7 \\times V}{500R} = \\frac{P \\times 3V}{600R}.\\] The left side is \\(\\frac{16V + 14V}{1000R} = \\frac{30V}{1000R}\\) and the right side is \\(\\frac{PV}{200R}\\), so \\(P = \\frac{30 \\times 200}{1000} = 6\\ kPa\\). Hence option (b).",
     "86": "Average velocity is the change in position divided by the time; instantaneous velocity is the slope of the \\(x-t\\) graph. From the graph: \\(x = 0\\) at \\(t = 0\\), \\(-5\\) at 1 s (A), 0 at 2 s (B), 5 at 3 s (C), 5 at 5 s (D), 10 at 6 s (E), 0 at 7 s (F), \\(-5\\) at 8 s (G) and 0 at 9 s (H).\n(A) 0 to 3 s: \\(\\frac{5 - 0}{3} = \\frac{5}{3}\\ m/s\\), not 10. False.\n(B) 3 to 5 s: \\(\\frac{5 - 5}{2} = 0\\). True.\n(C) At 2 s the segment BC rises 5 m in 1 s, so \\(v = 5\\ m/s\\). True.\n(D) 5 to 7 s: \\(\\frac{0 - 5}{2} = -2.5\\ m/s\\); at 6.5 s the segment EF has slope \\(\\frac{0 - 10}{1} = -10\\ m/s\\). Not equal. False.\n(E) 0 to 9 s: \\(x\\) goes from 0 to 0, so the average velocity is 0. True.\nHence (B), (C) and (E): option (d).",
     "90": "Let the light leaving \\(P_{1}\\) have intensity \\(I_{1}\\). \\(P_{1}\\) and \\(P_{2}\\) are crossed, so if \\(P_{3}\\) makes \\(\\theta\\) with \\(P_{1}\\) it makes \\(90^{\\circ} - \\theta\\) with \\(P_{2}\\). By Malus's law \\[I = I_{1}\\cos^{2}\\theta\\cos^{2}(90^{\\circ} - \\theta) = I_{1}\\cos^{2}\\theta\\sin^{2}\\theta = \\frac{I_{1}}{4}\\sin^{2}2\\theta.\\] This is largest when \\(2\\theta = 90^{\\circ}\\), so \\(\\theta = 45^{\\circ}\\) and the angle between \\(P_{2}\\) and \\(P_{3}\\) is also \\(45^{\\circ} = \\frac{\\pi}{4}\\). Hence option (a).",
+    "91": "(A) True: in an n-type semiconductor electrons are the majority carriers and holes the minority carriers. (B) True: the dopant is pentavalent (a donor). (C) False: in thermal equilibrium the law of mass action holds for a doped semiconductor too, \\(n_{e}n_{h} = n_{i}^{2}\\). (D) is meant as \"the product exceeds \\(n_{i}^{2}\\)\", which is false: the product is exactly \\(n_{i}^{2}\\). (E) True: donors release electrons only; the few holes come from thermal generation of electron-hole pairs. So (A), (B) and (E), option (c).",
     "93": "Here \\(\\omega = 628\\ rad/s\\), so \\(f = \\frac{\\omega}{2\\pi} = \\frac{628}{6.28} = 100\\ Hz\\). With wave speed \\(300\\ m/s\\), \\[\\lambda = \\frac{v}{f} = \\frac{300}{100} = 3\\ m.\\] Hence option (b).",
     "97": "The sphere keeps its shape and uniform density, so when its radius halves its mass falls to \\(\\frac{M}{8}\\). The intended answer treats the angular momentum of the sphere as conserved: \\(\\frac{2}{5}MR^{2}\\omega_{1} = \\frac{2}{5}\\left(\\frac{M}{8}\\right)\\left(\\frac{R}{2}\\right)^{2}\\omega_{2}\\), so \\(\\omega_{2} = 32\\omega_{1}\\) and \\(x = 32\\). Caveat: mass that leaves with the speed of the surface carries its own angular momentum away, and then \\(\\omega\\) need not change at all. The value 32 holds only if the lost mass takes no angular momentum with it.",
     "100": "\\(X_{L} = 2\\pi fL = 2\\pi \\times 50 \\times 1 = 100\\pi\\ \\Omega\\), equal to \\(R\\). So\n\\[Z = \\sqrt{R^{2} + X_{L}^{2}} = 100\\sqrt{2}\\pi\\ \\Omega,\\qquad I_{rms} = \\frac{100\\pi}{100\\sqrt{2}\\pi} = \\frac{1}{\\sqrt{2}}\\ A.\\]\nTaking the supply's \\(100\\pi\\ V\\) as its rms value, the maximum current is \\(I_{0} = \\sqrt{2}I_{rms} = 1\\ A\\).",
@@ -977,7 +980,10 @@
     "150": "Side lengths\\(^2\\): \\(6,35,41\\) (sum \\(82\\)). For centroid \\(G\\), \\(|AG|^2+|BG|^2+|CG|^2=\\frac13(82)\\). Hence \\(6\\cdot\\frac{82}{3}=164\\)."
   },
   "stemOverrides": {
+    "15": "The Boolean expression \\(Y=A\\bar{B}C+\\bar{A}\\bar{C}\\) can be realised with which of the following gate configurations. A. One 3-input AND gate, 3 NOT gates and one 2input OR gate, One 2-input AND gate, B. One 3-input AND gate, 1 NOT gate, One 2-input NOR gate and one 2-input OR gate C. 3-input OR gate, 3 NOT gates and one 2-input AND gate Choose the correct answer from the options given below",
+    "20": "Considering the Bohr model of hydrogen like atoms, the ratio of the radius of the \\(5^{\\text{th~}}\\) orbit of the electron in \\(Li^{2 +}\\) to that in \\(He^{+}\\) is",
     "22": "Two slabs with square cross section of different materials \\((1,2)\\) with equal sides \\((l)\\) and thickness \\(d_{1}\\) and \\(d_{2}\\) such that \\(d_{2} = 2{\\text{ }d}_{1}\\) and \\(l > d_{2}\\). Considering lower edges of these slabs are fixed to the floor, we apply equal shearing force on the narrow faces. The angle of deformation is \\(\\theta_{2} = 2\\theta_{1}\\). If the shear modulus of material 1 is \\(4 \\times 10^{9}\\text{ }N/m^{2}\\), then the shear modulus of material 2 is \\(x \\times 10^{9}\\text{ }N/m^{2}\\), where the value of \\(x\\) is \\(\\_\\_\\_\\_\\).",
+    "23": "Distance between object and its image (magnified by \\(- \\frac{1}{3}\\) ) is 30 cm . The focal length of the mirror used is \\(\\left( \\frac{x}{4} \\right)cm\\), where magnitude of value of \\(x\\) is \\(\\_\\_\\_\\_\\).",
     "28": "Which of the following molecule(s) show/s paramagnetic behaviour? (A) \\(O_{2}\\) (B) \\(N_{2}\\) (C) \\(F_{2}\\) (D) \\(S_{2}\\) (E) \\(Cl_{2}\\) Choose the correct answer from the options given below :",
     "30": "One mole of an ideal gas expands isothermally and reversibly from \\(10dm^{3}\\) to \\(20dm^{3}\\) at \\(300\\text{ }K\\). \\(\\Delta U\\), q and work done in the process respectively are Given : \\(R = 8.3\\ JK^{- 1}mol^{- 1}\\), \\(\\ln 10 = 2.3\\),\n\\(\\log2 = 0.30,\\ \\log3 = 0.48\\)",
     "37": "Given below are two statements :\nStatement I : Nitrogen forms oxides with +1 to +5 oxidation states due to the formation of \\(p\\pi - p\\pi\\) bond with oxygen .\nStatement II : Nitrogen does not form halides with +5 oxidation state due to the absence of d-orbital in it. In the light of given statements,\nchoose the correct answer from the options given below.",

@@ -11,7 +11,7 @@
     "2": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Logic Gates"
+      "subtopic": "Logic Gates: Reducing a Network to One Gate"
     },
     "3": {
       "subject": "Physics",
@@ -21,7 +21,7 @@
     "4": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Refraction through Prism"
+      "subtopic": "Prisms: Minimum Deviation, Grazing Emergence and Dispersion"
     },
     "5": {
       "subject": "Physics",
@@ -31,7 +31,7 @@
     "6": {
       "subject": "Physics",
       "chapter": "Atoms",
-      "subtopic": "Bohr Model and Hydrogen Spectrum"
+      "subtopic": "Spectral Series and Wavelength Ratios"
     },
     "7": {
       "subject": "Physics",
@@ -501,7 +501,7 @@
     "105": {
       "subject": "Physics",
       "chapter": "Nuclei",
-      "subtopic": "Nuclear Composition and Isotopes"
+      "subtopic": "Nuclear Size, Mass Defect and Binding Energy"
     },
     "106": {
       "subject": "Physics",
@@ -521,7 +521,7 @@
     "109": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Logic Gates"
+      "subtopic": "Logic Gates: Reducing a Network to One Gate"
     },
     "110": {
       "subject": "Physics",
@@ -536,7 +536,7 @@
     "112": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Lenses and Lensmaker's Formula"
+      "subtopic": "Refraction at a Spherical Surface and the Lens-Maker's Formula"
     },
     "113": {
       "subject": "Physics",
@@ -571,7 +571,7 @@
     "120": {
       "subject": "Physics",
       "chapter": "Nuclei",
-      "subtopic": "Nuclear Composition and Isotopes"
+      "subtopic": "Nuclear Size, Mass Defect and Binding Energy"
     },
     "121": {
       "subject": "Chemistry",
@@ -1057,7 +1057,7 @@
     "3": "Differentiating \\(t=\\alpha x^{2}+\\beta x\\) with respect to \\(x\\), \\[\\frac{dt}{dx}=2\\alpha x+\\beta=\\frac{1}{v}\\quad\\Rightarrow\\quad v=\\frac{1}{2\\alpha x+\\beta}.\\] Then \\[a=\\frac{dv}{dt}=v\\frac{dv}{dx}=v\\left(-\\frac{2\\alpha}{(2\\alpha x+\\beta)^{2}}\\right)=-2\\alpha v\\cdot v^{2}=-2\\alpha v^{3}.\\] Independent route: write \\(v^{-1}=2\\alpha x+\\beta\\) and differentiate with respect to \\(t\\), giving \\(-v^{-2}\\dfrac{dv}{dt}=2\\alpha\\dfrac{dx}{dt}=2\\alpha v\\), so again \\(a=-2\\alpha v^{3}\\). Hence the correct choice is A.",
     "4": "At minimum deviation \\[\\mu=\\frac{\\sin\\frac{A+\\delta_{m}}{2}}{\\sin\\frac{A}{2}}.\\] With \\(\\mu=\\cot\\frac{A}{2}=\\dfrac{\\cos\\frac{A}{2}}{\\sin\\frac{A}{2}}\\) this gives \\(\\sin\\frac{A+\\delta_{m}}{2}=\\cos\\frac{A}{2}=\\sin\\left(90^{\\circ}-\\frac{A}{2}\\right)\\), so \\[\\frac{A+\\delta_{m}}{2}=90^{\\circ}-\\frac{A}{2}\\quad\\Rightarrow\\quad \\delta_{m}=180^{\\circ}-2A.\\] Numerical check with \\(A=60^{\\circ}\\): \\(\\mu=\\cot30^{\\circ}=\\sqrt{3}\\), and the formula gives \\(\\delta_{m}=60^{\\circ}\\); substituting back, \\(\\sin\\frac{60+60}{2}/\\sin30^{\\circ}=\\sin60^{\\circ}/\\sin30^{\\circ}=\\sqrt{3}\\), which matches. Hence the correct choice is D.",
     "5": "In a uniform field the force on a wire depends only on the straight vector from where the current enters the field to where it leaves: \\(\\overrightarrow{F} = i\\overrightarrow{L} \\times \\overrightarrow{B}\\). The current enters going up the left straight section and leaves going down the right one, which are a diameter apart, so \\(\\overrightarrow{L} = 2R\\widehat{i}\\): \\[\\overrightarrow{F} = i\\left(2R\\widehat{i}\\right) \\times \\left(B\\widehat{k}\\right) = -2iBR\\widehat{j}.\\] Check piece by piece: the two straight sections carry opposite currents over the same length in the field, so their forces cancel; the semicircle, with end-to-end vector \\(2R\\widehat{i}\\), gives \\(-2iBR\\widehat{j}\\). Hence option (d).",
-    "6": "For the Lyman series the transitions end at \\(n=1\\). First member (\\(n=2\\to1\\)): \\[\\frac{1}{\\lambda}=R\\left(1-\\frac{1}{4}\\right)=\\frac{3R}{4}.\\] Second member (\\(n=3\\to1\\)): \\[\\frac{1}{\\lambda'}=R\\left(1-\\frac{1}{9}\\right)=\\frac{8R}{9}.\\] Dividing, \\(\\dfrac{\\lambda'}{\\lambda}=\\dfrac{3R/4}{8R/9}=\\dfrac{27}{32}\\), so \\(\\lambda'=\\dfrac{27}{32}\\lambda\\). Sanity check on direction: the second member is a larger energy jump, so it must be the shorter wavelength, and \\(27/32<1\\) indeed makes \\(\\lambda'<\\lambda\\); options C and D are larger than \\(\\lambda\\) or absurdly small and are ruled out on that ground alone. Hence the correct choice is A.",
+    "6": "The Lyman series ends on \\(n = 1\\). First member (\\(2 \\to 1\\)): \\(\\frac{1}{\\lambda} = R\\left(1 - \\frac{1}{4}\\right) = \\frac{3R}{4}\\). Second member (\\(3 \\to 1\\)): \\(\\frac{1}{\\lambda'} = R\\left(1 - \\frac{1}{9}\\right) = \\frac{8R}{9}\\). Dividing, \\[\\frac{\\lambda'}{\\lambda} = \\frac{3/4}{8/9} = \\frac{27}{32},\\] so \\(\\lambda' = \\frac{27}{32}\\lambda\\). The larger energy jump gives the shorter wavelength, as \\(\\frac{27}{32} < 1\\) shows. Hence option (a).",
     "7": "Let the side be \\(a\\). The two adjacent masses each pull with \\(\\dfrac{Gm^{2}}{a^{2}}\\) along perpendicular directions, giving a resultant \\(\\sqrt{2}\\dfrac{Gm^{2}}{a^{2}}\\) along the diagonal. The diagonally opposite mass is at \\(a\\sqrt{2}\\) and pulls with \\(\\dfrac{Gm^{2}}{2a^{2}}\\) along the same diagonal, so \\[F=\\frac{Gm^{2}}{a^{2}}\\left(\\sqrt{2}+\\frac{1}{2}\\right)=\\frac{\\left(2\\sqrt{2}+1\\right)}{2}\\frac{Gm^{2}}{a^{2}}.\\] Setting this equal to \\(\\dfrac{\\left(2\\sqrt{2}+1\\right)}{32}\\dfrac{Gm^{2}}{L^{2}}\\) gives \\(\\dfrac{1}{2a^{2}}=\\dfrac{1}{32L^{2}}\\), i.e. \\(a^{2}=16L^{2}\\) and \\(a=4L\\). Hence the correct choice is B.",
     "8": "For a fixed mass of an ideal gas at constant pressure, \\(V=\\dfrac{nR}{P}T\\), so a \\(V\\) versus \\(T\\) isobar is a straight line through the origin of slope \\(\\dfrac{nR}{P}\\). The slope is therefore inversely proportional to the pressure. In the figure the line labelled \\(P_{2}\\) is the steeper of the two, so it corresponds to the smaller pressure, giving \\(P_{2}<P_{1}\\), i.e. \\(P_{1}>P_{2}\\). The strict inequality also rules out the non-strict option A and the equality option C. Hence the correct choice is D.",
     "9": "For a wire of length \\(L\\) and diameter \\(d\\), \\[R=\\frac{\\rho L}{A}=\\frac{4\\rho L}{\\pi d^{2}}.\\] Taking logarithms and differentiating, \\[\\frac{\\Delta R}{R}=\\frac{\\Delta L}{L}+2\\frac{\\Delta d}{d}=0.1\\%+2\\times0.1\\%=0.3\\%.\\] Note the diameter enters squared through the area, so it must be weighted by 2; treating it linearly would give the distractor \\(0.2\\%\\), and adding in quadrature (which is not the rule for maximum error) would give the distractor \\(0.144\\%\\). Hence the correct choice is B.",

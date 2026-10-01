@@ -81,7 +81,7 @@
     "16": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Lenses and Lensmaker's Formula"
+      "subtopic": "Refraction at a Spherical Surface and the Lens-Maker's Formula"
     },
     "17": {
       "subject": "Physics",
@@ -91,7 +91,7 @@
     "18": {
       "subject": "Physics",
       "chapter": "Atoms",
-      "subtopic": "Rutherford Scattering"
+      "subtopic": "Rutherford Scattering and Bohr's Postulates"
     },
     "19": {
       "subject": "Physics",
@@ -101,12 +101,12 @@
     "20": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Semiconductor Diodes"
+      "subtopic": "Semiconductors and the p-n Junction"
     },
     "21": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Semiconductor Diodes"
+      "subtopic": "Zener Diode as a Voltage Regulator"
     },
     "22": {
       "subject": "Physics",
@@ -445,7 +445,10 @@
     "13": "Assertion A is true: in electrostatic equilibrium the field inside a conductor is zero, so by Gauss's law any closed surface inside it encloses no net charge; any excess charge sits on the surface. Reason R is true: in the empty gap of a charged capacitor the field pushes any free charge, which drifts. But R is about the gap between the plates, not the inside of a conductor, so it does not explain A. Hence option (b).",
     "15": "The phase \\(2\\pi\\nu t - \\frac{2\\pi x}{\\lambda}\\) means the wave travels along \\(+x\\), and \\(\\overrightarrow{B}\\) is along \\(\\widehat{j}\\). The fields must satisfy \\(\\widehat{E} \\times \\widehat{B} = \\widehat{i}\\). Since \\((-\\widehat{k}) \\times \\widehat{j} = \\widehat{i}\\), \\(\\overrightarrow{E}\\) is along \\(-\\widehat{k}\\). The amplitude is \\(E_{0} = cB_{0} = \\nu\\lambda B_{0}\\), in phase with \\(\\overrightarrow{B}\\). So \\(\\overrightarrow{E} = -\\nu\\lambda B_{0}\\sin\\left(2\\pi\\nu t - \\frac{2\\pi x}{\\lambda}\\right)\\widehat{k}\\), option (a). (The paper writes the frequency as \\(v\\).)",
     "17": "After the first polarizer (axis at \\(30^{\\circ}\\)) the intensity is \\(\\frac{I_{0}}{2}\\). Without the third polarizer the next axis is at \\(90^{\\circ}\\), \\(60^{\\circ}\\) away: \\(I = \\frac{I_{0}}{2}\\cos^{2}60^{\\circ} = \\frac{I_{0}}{8}\\). With the polarizer at \\(60^{\\circ}\\) in between, each step is \\(30^{\\circ}\\): \\[I' = \\frac{I_{0}}{2}\\cos^{2}30^{\\circ}\\cos^{2}30^{\\circ} = \\frac{I_{0}}{2} \\times \\frac{9}{16} = \\frac{9I_{0}}{32}.\\] The ratio is \\(\\frac{I'}{I} = \\frac{9I_{0}/32}{I_{0}/8} = \\frac{9}{4}\\). Hence option (c).",
+    "18": "An alpha particle bounces back only if it heads almost straight at a nucleus. (A) True: the nucleus is tiny compared with the atom, so few particles pass close to one. (B) False: the alpha particle carries \\(2e\\), the gold nucleus \\(79e\\). (C) True: only a few particles have an impact parameter close to zero. (D) False: all the particles in the beam have the same energy. (E) True: only a few undergo a near head-on collision. So (A), (C) and (E). Hence option (d).",
     "19": "Accelerated through \\(V\\), a charge \\(e\\) gains kinetic energy \\(eV\\), so \\(\\lambda = \\frac{h}{\\sqrt{2meV}}\\). The electron and the proton carry the same charge, so \\(\\lambda \\propto \\frac{1}{\\sqrt{m}}\\) and \\[\\frac{\\lambda_{e}}{\\lambda_{p}} = \\sqrt{\\frac{m_{p}}{m_{e}}}.\\] Hence option (a).",
+    "20": "The assertion describes the reverse characteristic correctly: a very small reverse current, nearly independent of voltage, until a critical (breakdown) voltage where the current rises sharply. The reason is false: below breakdown the reverse current is carried by MINORITY carriers, not majority carriers. Hence option (c).",
+    "21": "The maximum Zener current is \\(i = \\frac{P}{V_{Z}} = \\frac{0.5}{10} = 0.05\\ A\\). The series resistor drops \\(25 - 10 = 15\\ V\\), and the current through it must not exceed \\(0.05\\ A\\) (the worst case is no load, when all of it flows through the Zener): \\[R = \\frac{15}{0.05} = 300\\ \\Omega.\\]",
     "23": "P is \\(5\\ cm\\) from the centre of each magnet. P lies on the axis of the left magnet, so that magnet's field there is \\(B_{1} = \\frac{\\mu_{0}}{4\\pi}\\frac{2M}{r^{3}}\\). P lies on the equatorial line of the right magnet, so its field is \\(B_{2} = \\frac{\\mu_{0}}{4\\pi}\\frac{M}{r^{3}}\\), perpendicular to \\(B_{1}\\). With \\(r = 0.05\\ m\\), \\[\\frac{\\mu_{0}}{4\\pi}\\frac{M}{r^{3}} = 10^{-7} \\times \\frac{3\\sqrt{5}}{1.25 \\times 10^{-4}} = 2.4\\sqrt{5} \\times 10^{-3}\\ T.\\] So \\[B = \\sqrt{B_{1}^{2} + B_{2}^{2}} = \\sqrt{5}\\,\\frac{\\mu_{0}}{4\\pi}\\frac{M}{r^{3}} = \\sqrt{5} \\times 2.4\\sqrt{5} \\times 10^{-3} = 12 \\times 10^{-3}\\ T,\\] and \\(\\alpha = 12\\).",
     "24": "The torque on a coil is \\(\\tau = NIAB\\sin\\theta\\), where \\(\\theta\\) is the angle between the axis of the coil (its magnetic moment) and the field: \\[\\tau = 125 \\times 1 \\times \\pi(0.02)^{2} \\times 0.4 \\times \\sin 30^{\\circ} = 125 \\times 3.14 \\times 4 \\times 10^{- 4} \\times 0.4 \\times 0.5 = 3.14 \\times 10^{- 2}\\text{ }N\\,m.\\] This is \\(314 \\times 10^{- 4}\\text{ }N\\,m\\), so \\(\\alpha = 314\\).",
     "25": "The sheet adds an optical path \\((\\mu - 1)t\\). The central fringe moves to the 7th bright fringe, so this extra path is \\(7\\lambda\\): \\[(\\mu - 1)t = 7\\lambda\\ \\Rightarrow\\ t = \\frac{7 \\times 450 \\times 10^{-9}}{0.56} = 5625 \\times 10^{-9}\\ m.\\] So \\(\\alpha = 5625\\).",

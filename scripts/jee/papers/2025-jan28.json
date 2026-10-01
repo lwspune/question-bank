@@ -26,7 +26,7 @@
     "5": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Total Internal Reflection"
+      "subtopic": "Critical Angle and Total Internal Reflection"
     },
     "6": {
       "subject": "Physics",
@@ -61,12 +61,12 @@
     "12": {
       "subject": "Physics",
       "chapter": "Nuclei",
-      "subtopic": "Radioactivity and Half-Life"
+      "subtopic": "Decay Modes and Half-Lives"
     },
     "13": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Logic Gates"
+      "subtopic": "Logic Gates: Reducing a Network to One Gate"
     },
     "14": {
       "subject": "Physics",
@@ -101,7 +101,7 @@
     "20": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Refraction through Prism"
+      "subtopic": "Prisms: Minimum Deviation, Grazing Emergence and Dispersion"
     },
     "21": {
       "subject": "Physics",
@@ -381,12 +381,12 @@
     "81": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Lenses and Lensmaker's Formula"
+      "subtopic": "Refraction at a Spherical Surface and the Lens-Maker's Formula"
     },
     "82": {
       "subject": "Physics",
       "chapter": "Atoms",
-      "subtopic": "Bohr Model and Hydrogen Spectrum"
+      "subtopic": "Bohr Orbits: Radius, Speed and Energy"
     },
     "83": {
       "subject": "Physics",
@@ -416,7 +416,7 @@
     "88": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Spherical Mirrors"
+      "subtopic": "Plane and Spherical Mirrors"
     },
     "89": {
       "subject": "Physics",
@@ -426,7 +426,7 @@
     "90": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Semiconductor Diodes"
+      "subtopic": "Diode Circuits and Rectifiers"
     },
     "91": {
       "subject": "Physics",
@@ -869,7 +869,7 @@
     "2": "For a ball falling through a viscous liquid the terminal velocity is \\[v_{T} = \\frac{2}{9}\\frac{R^{2}g}{\\eta}(d - \\rho).\\] Statement A: \\(v_{T} \\propto R^{2}\\), so a plot of \\(v_{T}\\) against \\(R\\) is a parabola — true. Statement B: \\(v_{T}\\) depends on \\(R^{2}\\), so balls of different diameter have different terminal velocities — false. Statement C: \\(\\eta\\) varies with temperature, so the measured terminal velocity is temperature dependent — true. Statement D: the liquid density \\(\\rho\\) appears explicitly in the expression, so the experiment can be used to assess it — true. Statement E: the terminal velocity is the steady-state value at which net force vanishes and is independent of the launch speed, so \\(\\eta\\) is unaffected — false. Only A, C and D hold, so the correct choice is B.",
     "3": "Statement A is stated the wrong way round: surface molecules possess the extra energy relative to interior molecules, which is the origin of surface tension — false. Statement B: for liquids the coefficient of viscosity decreases as temperature rises — false. Statement C: for gases viscosity arises from momentum transport by molecular motion, and \\(\\eta \\propto \\sqrt{T}\\), so it increases with temperature — true. Statement D: the transition from laminar to turbulent flow is governed by the Reynolds number \\(Re = \\frac{\\rho v D}{\\eta}\\) — true. Statement E: in steady flow the velocity at a point is unique, so two streamlines can never cross — true. Only C, D and E hold, so the correct choice is B.",
     "4": "For an infinite line charge of density \\(\\lambda\\), the field at perpendicular distance \\(r\\) is \\(E = \\frac{2k\\lambda}{r}\\), so the potential is \\[V = -\\int E\\,dr = -2k\\lambda \\ln r + \\text{const}.\\] The perpendicular distances of the point \\((x,y,z)\\) from the \\(x\\)-, \\(y\\)- and \\(z\\)-axes are \\(\\sqrt{y^{2}+z^{2}}\\), \\(\\sqrt{z^{2}+x^{2}}\\) and \\(\\sqrt{x^{2}+y^{2}}\\). Superposing, \\[V = -2k\\lambda\\ln\\!\\left[\\sqrt{(x^{2}+y^{2})(y^{2}+z^{2})(z^{2}+x^{2})}\\right] + \\text{const}.\\] \\(V\\) is constant precisely when the product \\((x^{2}+y^{2})(y^{2}+z^{2})(z^{2}+x^{2})\\) is constant, so the correct choice is C.",
-    "5": "Let the hemisphere have radius \\(R\\) with centre \\(C\\) at the middle of the flat top face; the coin sits at \\(O\\), the lowest point, a distance \\(R\\) below \\(C\\). The ray that can reach the observer at \\(E\\) leaves \\(O\\) and meets the curved surface at the rim point \\(B\\), which lies a distance \\(R\\) horizontally from \\(C\\). Taking \\(C\\) as origin, \\(O = (0,-R)\\) and \\(B = (R,0)\\), so the ray \\(OB\\) has direction \\((R,R)\\) while the normal at \\(B\\) is radial, along \\((R,0)\\). The angle of incidence inside the liquid is therefore \\[i = 45^{\\circ}.\\] For the refracted ray to graze along \\(BE\\), the refraction angle must be \\(90^{\\circ}\\): \\[\\mu \\sin 45^{\\circ} = \\sin 90^{\\circ} = 1 \\quad \\Rightarrow \\quad \\mu = \\sqrt{2}.\\] Hence the correct choice is C.",
+    "5": "Take the centre \\(C\\) of the flat liquid surface as origin. The coin is at \\(O = (0, -R)\\) and the rim at \\(B = (R, 0)\\). The observer at \\(E\\) is level with the surface, so a ray reaches \\(E\\) only if it leaves the surface grazing it (angle of refraction \\(90^{\\circ}\\)). The normal to the flat surface is vertical, so a ray from \\(O\\) that meets the surface a horizontal distance \\(x\\) from \\(C\\) has angle of incidence \\(i\\) with \\(\\tan i = \\frac{x}{R}\\). The largest possible angle is at the rim, \\(x = R\\): \\(i = 45^{\\circ}\\). Grazing emergence needs \\(\\mu\\sin i = 1\\), i.e. \\(\\sin i = \\frac{1}{\\mu}\\), and this angle must be available inside the vessel: \\(\\frac{1}{\\mu} \\leq \\sin 45^{\\circ}\\), so \\(\\mu \\geq \\sqrt{2}\\). The minimum value is \\(\\sqrt{2}\\): option (c).",
     "6": "Take the wire along \\(z\\) with current \\(I\\) in the \\(+z\\) direction, and let the particle be at distance \\(x\\) on the \\(x\\)-axis where \\(\\vec{B} = \\frac{\\mu_{0}I}{2\\pi x}\\hat{j}\\). The equations of motion are \\[m\\frac{dv_{x}}{dt} = -qv_{z}B, \\qquad m\\frac{dv_{z}}{dt} = qv_{x}B = q\\frac{dx}{dt}\\frac{\\mu_{0}I}{2\\pi x}.\\] Integrating the second equation from \\(x = a\\), where \\(v_{z} = v_{0}\\), gives \\[v_{z} = v_{0} + \\frac{q\\mu_{0}I}{2\\pi m}\\ln\\!\\left(\\frac{x}{a}\\right).\\] The magnetic force does no work, so the speed stays \\(v_{0}\\); at the turning point \\(v_{x} = 0\\) and therefore \\(v_{z} = -v_{0}\\). Substituting, \\[-v_{0} = v_{0} + \\frac{q\\mu_{0}I}{2\\pi m}\\ln\\!\\left(\\frac{x}{a}\\right) \\quad \\Rightarrow \\quad x = a\\,e^{-\\frac{4\\pi m v_{0}}{q\\mu_{0}I}}.\\] Hence the correct choice is D.",
     "7": "For a Carnot engine \\(\\eta = 1 - \\frac{T_{C}}{T_{H}}\\). For the single engine \\[\\eta_{12} = 1 - \\frac{273}{473} = \\frac{200}{473} = 0.423.\\] For the two staged engines \\[\\eta_{1} = 1 - \\frac{373}{473} = \\frac{100}{473} = 0.211, \\qquad \\eta_{2} = 1 - \\frac{273}{373} = \\frac{100}{373} = 0.268.\\] Their sum is \\(\\eta_{1} + \\eta_{2} = 0.479\\), which exceeds \\(\\eta_{12} = 0.423\\). (Algebraically, \\(\\eta_{1} + \\eta_{2} = \\eta_{12} + \\eta_{1}\\eta_{2} > \\eta_{12}\\).) Hence the correct choice is A.",
     "8": "The speed of sound in a medium is \\(v = \\sqrt{\\frac{B}{\\rho}}\\). Although solids are far denser than gases, their bulk modulus is larger by a much greater factor, so sound indeed travels faster in solids — Assertion A is true. The Reason claims gases have a higher bulk modulus than solids, which is the opposite of the truth: solids are far less compressible and so have the much larger bulk modulus. Reason R is false. Hence the correct choice is D.",

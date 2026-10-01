@@ -11,7 +11,7 @@
     "2": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Lenses and Lensmaker's Formula"
+      "subtopic": "Thin Lens Formula and Lens Combinations"
     },
     "3": {
       "subject": "Physics",
@@ -26,12 +26,12 @@
     "5": {
       "subject": "Physics",
       "chapter": "Atoms",
-      "subtopic": "Bohr Model and Hydrogen Spectrum"
+      "subtopic": "Spectral Series and Wavelength Ratios"
     },
     "6": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Semiconductor Diodes"
+      "subtopic": "Semiconductors and the p-n Junction"
     },
     "7": {
       "subject": "Physics",
@@ -61,7 +61,7 @@
     "12": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Lenses and Lensmaker's Formula"
+      "subtopic": "Lenses in a Medium, Cut Lenses and Silvered Lenses"
     },
     "13": {
       "subject": "Physics",
@@ -76,7 +76,7 @@
     "15": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Lenses and Lensmaker's Formula"
+      "subtopic": "Lenses in a Medium, Cut Lenses and Silvered Lenses"
     },
     "16": {
       "subject": "Physics",
@@ -421,12 +421,12 @@
     "89": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Optical Instruments"
+      "subtopic": "Optical Instruments and the Eye"
     },
     "90": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Logic Gates"
+      "subtopic": "Logic Gates: Truth Tables, Waveforms and Input Conditions"
     },
     "91": {
       "subject": "Physics",
@@ -705,7 +705,9 @@
     }
   },
   "authoredSolutions": {
+    "6": "(A) False: a solar cell has a LARGE junction area, to collect as much light as possible. (B) True: a solar cell generates its own emf and needs no external bias. (C) False: an LED is a heavily doped p-n junction. (D) False: the light intensity rises with forward current only up to a point and then falls. (E) True: an LED emits light only under forward bias. So B and E only, option (d).",
     "7": "Breaking a drop of radius \\(R\\) into \\(n\\) equal drops: volume conservation gives \\(r = \\frac{R}{n^{1/3}}\\), and the area grows by \\(n\\cdot4\\pi r^{2} - 4\\pi R^{2} = 4\\pi R^{2}\\left(n^{1/3} - 1\\right)\\). So \\(W = 4\\pi R^{2}S\\left(n^{1/3} - 1\\right)\\). For 27 drops \\(W = 4\\pi R^{2}S(3 - 1) = 10\\ J\\); for 64 drops \\(W' = 4\\pi R^{2}S(4 - 1)\\). Dividing, \\(\\frac{W'}{W} = \\frac{3}{2}\\), so \\(W' = 15\\ J\\), option (a).",
+    "12": "Light enters the curved face, reflects at the silvered plane face and leaves through the curved face, so the system is a mirror of focal length \\(F = \\frac{f_{L}}{2}\\) (the plane mirror adds no power). In the liquid \\(\\frac{1}{f_{L}} = \\left(\\frac{1.5}{1.2} - 1\\right)\\frac{1}{R} = \\frac{1}{4R}\\), so \\(f_{L} = 4R\\) and \\(F = 2R\\). With \\(F = 0.2\\ m\\), \\(R = 0.10\\ m\\). Hence option (b).",
     "16": "\\(I_{A}\\sin\\omega t\\) and \\(I_{B}\\cos\\omega t\\) are \\(90^{\\circ}\\) apart, so they add to one sinusoid of amplitude \\(I_{0} = \\sqrt{I_{A}^{2} + I_{B}^{2}}\\). Hence\n\\[I_{rms} = \\frac{I_{0}}{\\sqrt{2}} = \\sqrt{\\frac{I_{A}^{2} + I_{B}^{2}}{2}}:\\]\noption (c). Directly: the cross term \\(\\sin\\omega t\\cos\\omega t\\) averages to zero and each square averages to \\(\\frac{1}{2}\\).",
     "18": "\\(C = \\frac{\\varepsilon_{0}lb}{d}\\), so compare \\(\\frac{lb}{d}\\) (in \\(cm^{2}\\) per \\(\\mu m\\)). Initially \\(\\frac{3 \\times 1}{3} = 1\\). (A) \\(\\frac{30 \\times 1}{1} = 30\\); (B) \\(\\frac{3 \\times 1}{30} = 0.1\\); (C) \\(\\frac{6 \\times 5}{3} = 10\\); (D) \\(\\frac{1 \\times 1}{10} = 0.1\\); (E) \\(\\frac{5 \\times 2}{1} = 10\\). Only (C) and (E) give 10 times the capacitance. Hence option (a).",
     "20": "Read \"pressure increases linearly with temperature\" as \\(P \\propto T\\) (a line through the origin), the reading the official answer uses. For an ideal gas \\(\\frac{P}{T} = \\frac{nR}{V}\\), so \\(V\\) is constant: the process is isochoric (E). No volume change means \\(W = 0\\) (A), so \\(Q = \\Delta U\\) and (B) is false; (C) is false. The temperature rises, so the internal energy increases (D). Hence A, D and E only: option (b). (A line \\(P = a + bT\\) that does not pass through the origin would not be isochoric.)",
@@ -751,6 +753,8 @@
     "83": "\\(\\vec{v} = \\frac{d\\vec{r}}{dt} = 10t\\hat{i} - 5\\hat{j}\\); at \\(t = 2\\ s\\), \\(\\vec{v} = 20\\hat{i} - 5\\hat{j}\\ m/s\\). Its magnitude is \\(\\sqrt{400 + 25} = \\sqrt{425} = 5\\sqrt{17}\\ m/s\\). The velocity has 20 units along \\(+x\\) for every 5 units along \\(-y\\), so its angle \\(\\theta\\) with the \\(-y\\) axis has \\(\\tan\\theta = \\frac{20}{5} = 4\\). (With the \\(+x\\) axis the angle would be \\(\\tan^{-1}\\frac{1}{4}\\).) Option (c).",
     "85": "\\(\\frac{C}{5} = \\frac{F - 32}{9}\\) gives \\(C = \\frac{5}{9}F - \\frac{160}{9}\\). Plotted with C up and F across, this is a straight line of positive slope \\(\\frac{5}{9}\\) that cuts the C-axis below the origin (at \\(-\\frac{160}{9} \\approx -17.8\\)) and the F-axis to the right of the origin (at \\(F = 32\\)). Only graph (b) has a positive slope and a negative C-intercept. Hence option (b).",
     "87": "\\(eV_{0} = h\\nu - \\phi\\), so \\(V_{0} = \\frac{h}{e}\\nu - \\frac{\\phi}{e}\\). (A) The graph is a straight line: true. (B) Its slope is \\(\\frac{h}{e}\\), not \\(\\frac{\\phi_{0}}{h}\\): false. (C) The slope gives \\(h\\): true. (D) Getting \\(h\\) from the slope \\(\\frac{h}{e}\\) needs the value of \\(e\\): false. (E) The intercept on the \\(V_{0}\\) axis is \\(-\\frac{\\phi}{e}\\), so \\(\\phi\\) follows from it without \\(h\\): true. So (A), (C) and (E): option (c).",
+    "89": "The landscape is \\(400\\ km^{2}\\), a square of side \\(20\\ km = 2\\times10^{4}\\ m\\), and its image fills the \\(2\\ cm\\) film. The magnification is \\(\\frac{2\\times10^{-2}}{2\\times10^{4}} = 10^{-6}\\). The landscape is so far away that the image forms at the focal plane, so \\(\\frac{f}{H} = 10^{-6}\\): \\[f = 18\\times10^{3}\\times10^{-6}\\ m = 1.8\\times10^{-2}\\ m = 1.8\\ cm.\\] Hence option (a).",
+    "90": "The first gate is an OR: \\(X + Y\\). The second is a NOR with tied inputs, so it inverts: the output is \\(\\overline{X + Y}\\), a NOR. This is 1 only for \\(X = Y = 0\\) and 0 for the other three inputs, (B), (C) and (D). Hence option (c).",
     "91": "Average form of Newton's law of cooling, with \\(T_{s} = 16^{\\circ}C\\). First 4 minutes: \\(\\frac{40 - 24}{4} = K\\left(\\frac{40 + 24}{2} - 16\\right)\\), i.e. \\(4 = 16K\\) and \\(K = \\frac{1}{4}\\ min^{-1}\\). Next 4 minutes, ending at \\(T\\): \\[\\frac{24 - T}{4} = \\frac{1}{4}\\left(\\frac{24 + T}{2} - 16\\right) \\Rightarrow 24 - T = \\frac{T - 8}{2} \\Rightarrow 48 - 2T = T - 8,\\] so \\(T = \\frac{56}{3}^{\\circ}C\\). (Check: the excess over the air falls from 24 to 8, a factor \\(\\frac{1}{3}\\), and in the next equal interval to \\(\\frac{8}{3}\\), giving \\(16 + \\frac{8}{3} = \\frac{56}{3}\\).) Hence option (c).",
     "95": "Unpolarized light of intensity \\(I_{0}\\) falls on \\(P_{1}\\) and on \\(P_{2}\\), so each slit receives \\(\\frac{I_{0}}{2}\\), polarized along \\(P_{1}\\) and along \\(P_{2}\\). \\(P_{3}\\) is at \\(45^{\\circ}\\) to both, so each beam leaves \\(P_{3}\\) with \\(\\frac{I_{0}}{2}\\cos^{2}45^{\\circ} = \\frac{I_{0}}{4}\\), and both are now polarized along the same axis, so they interfere. A path difference of \\(\\frac{\\lambda}{3}\\) is a phase difference of \\(\\frac{2\\pi}{3}\\): \\[I = \\frac{I_{0}}{4} + \\frac{I_{0}}{4} + 2 \\cdot \\frac{I_{0}}{4}\\cos\\frac{2\\pi}{3} = \\frac{I_{0}}{2} - \\frac{I_{0}}{4} = \\frac{I_{0}}{4}.\\] Hence option (b).",
     "100": "The acceleration due to gravity at the surface is \\(g = \\frac{GM}{R^{2}}\\). If the diameter becomes one third, the radius also becomes \\(\\frac{R}{3}\\), and the mass is unchanged, so \\[g' = \\frac{GM}{\\left(\\frac{R}{3}\\right)^{2}} = 9\\,\\frac{GM}{R^{2}} = 9g.\\] The answer is 9.",

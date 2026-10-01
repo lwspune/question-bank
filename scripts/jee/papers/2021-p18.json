@@ -13,7 +13,7 @@
     },
     "3": {
       "chapter": "Ray Optics",
-      "subtopic": "Spherical Mirrors"
+      "subtopic": "Plane and Spherical Mirrors"
     },
     "4": {
       "chapter": "Gravitation",
@@ -37,11 +37,11 @@
     },
     "9": {
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Logic Gates"
+      "subtopic": "Logic Gates: Reducing a Network to One Gate"
     },
     "10": {
       "chapter": "Atoms",
-      "subtopic": "Bohr Model and Hydrogen Spectrum"
+      "subtopic": "Spectral Series and Wavelength Ratios"
     },
     "11": {
       "chapter": "Dual Nature of Radiation and Matter",
@@ -81,7 +81,7 @@
     },
     "20": {
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Intrinsic and Extrinsic Semiconductors"
+      "subtopic": "Semiconductors and the p-n Junction"
     },
     "31": {
       "chapter": "Coordination Compounds",
@@ -302,11 +302,14 @@
   },
   "authoredSolutions": {
     "1": "At the centre \\(B_{c} = \\frac{\\mu_{0}i}{2a}\\); on the axis at distance \\(r\\), \\(B = \\frac{\\mu_{0}ia^{2}}{2\\left(a^{2} + r^{2}\\right)^{3/2}}\\). The fractional change is \\[\\frac{B_{c} - B}{B_{c}} = 1 - \\left(1 + \\frac{r^{2}}{a^{2}}\\right)^{- 3/2}.\\] The options assume \\(r\\) is much smaller than \\(a\\) (the stem says only \\(r < a\\)), so use \\((1 + y)^{- 3/2} \\approx 1 - \\frac{3}{2}y\\): the change is about \\(\\frac{3}{2}\\frac{r^{2}}{a^{2}}\\). Hence option (d).",
+    "3": "A rear-view mirror is convex: \\(f = +10\\ cm = 0.1\\ m\\) and \\(u = -1.9\\ m\\). \\(m = \\frac{f}{f - u} = \\frac{0.1}{0.1 + 1.9} = \\frac{1}{20}\\). For motion along the axis the image speed is \\(m^{2}\\) times the object speed: \\[v_{I} = \\frac{1}{400}\\times40 = 0.1\\ m\\,s^{-1}.\\] Hence option (d).",
     "6": "First law per second: \\(\\frac{dQ}{dt} = \\frac{dU}{dt} + \\frac{dW}{dt}\\). Heat in: \\(\\frac{6000}{60} = 100\\ W\\); power delivered: \\(90\\ W\\). So \\(\\frac{dU}{dt} = 10\\ W\\), and the time to raise \\(U\\) by \\(2.5 \\times 10^{3}\\ J\\) is \\[t = \\frac{2.5 \\times 10^{3}}{10} = 250\\ s = 2.5 \\times 10^{2}\\ s.\\] Hence option (a).",
     "8": "The average power is greatest at resonance, \\(X_{C} = X_{L}\\):\n\\[\\frac{1}{2\\pi(50)C} = 250\\pi \\Rightarrow C = \\frac{1}{25000\\pi^{2}} = \\frac{1}{2.5 \\times 10^{5}} = 4 \\times 10^{-6}\\ F = 4\\ \\mu F,\\]\nusing \\(\\pi^{2} = 10\\). Option (a).",
     "9": "Each of the first two NAND gates has both inputs tied, so they act as inverters: \\(X=\\bar A\\), \\(Y=\\bar B\\). The final AND gate gives \\(Z=\\bar A\\cdot\\bar B=(A+B)'\\) (De Morgan) — a NOR operation. Hence option (C).",
+    "10": "For a given ion the emitted frequency is proportional to \\(\\frac{1}{n_{f}^{2}} - \\frac{1}{n_{i}^{2}}\\). So \\[\\frac{f_{2 \\to 1}}{f_{3 \\to 1}} = \\frac{1 - \\frac{1}{4}}{1 - \\frac{1}{9}} = \\frac{3/4}{8/9} = \\frac{27}{32},\\] and \\(f_{2 \\to 1} = \\frac{27}{32} \\times 2.92 \\times 10^{15} = 2.46 \\times 10^{15}\\ Hz\\). Hence option (d).",
     "13": "Inside the solid conducting sphere the field is zero; in the gap between the sphere and the shell it falls as \\(\\frac{1}{r^{2}}\\) (\\(E=\\frac{kq}{r^{2}}\\)); the potential is constant inside each conductor and continuous across the gap. The graph showing \\(E=0\\) inside, a \\(1/r^{2}\\) decay in the gap, and the corresponding step-and-decay potential is option (A).",
     "19": "The material between the plates has resistance \\(R = \\frac{\\rho d}{A}\\), and \\(C = \\frac{K\\varepsilon_{0}A}{d}\\), so \\(RC = \\rho K\\varepsilon_{0}\\). Then \\[i = \\frac{V}{R} = \\frac{CV}{\\rho K\\varepsilon_{0}} = \\frac{2 \\times 10^{-12} \\times 40}{200 \\times 50 \\times 8.85 \\times 10^{-12}} = 9.0 \\times 10^{-4}\\ A = 0.9\\ mA.\\] Hence option (c).",
+    "20": "Statement I is true: a pentavalent dopant (such as phosphorus or arsenic) gives one free electron per atom, so the electron density increases. Statement II is false: each donor atom that gives up an electron becomes a positive ion, so the n-type crystal as a whole stays electrically neutral. Hence option (a).",
     "31": "(a) \\([\\mathrm{Fe(CN)_6}]^{4-}\\), ferrocyanide: pale yellow. (b) \\([\\mathrm{Fe(SCN)_6}]^{3-}\\): blood red, the thiocyanate test for \\(\\mathrm{Fe^{3+}}\\). (c) \\(\\mathrm{Fe_4[Fe(CN)_6]_3}\\): Prussian blue. (d) \\([\\mathrm{Fe(CN)_5NOS}]^{4-}\\): violet; it forms when sulphide ion is added to sodium nitroprusside, the test for \\(\\mathrm{S^{2-}}\\). Option (d).",
     "33": "Under nitrogen nothing is oxidised by air, so only the salt's own ion counts. \\(\\mathrm{CuCl_2}\\) dissolves to give hydrated \\(\\mathrm{Cu^{2+}}\\) (\\(3d^9\\)), which is blue: a coloured solution. \\(\\mathrm{AgCl}\\) is insoluble. \\(\\mathrm{ZnCl_2}\\) gives \\(\\mathrm{Zn^{2+}}\\) (\\(3d^{10}\\)), which is colourless. \\(\\mathrm{Cu_2Cl_2}\\) (copper(I), \\(3d^{10}\\)) is insoluble in water and, kept away from air, is not oxidised to \\(\\mathrm{Cu^{2+}}\\). Option (A).",
     "34": "Acetophenone, \\(C_{6}H_{5}COCH_{3}\\), is a methyl ketone, so \\(Br_{2}\\) in \\(KOH\\) (hypobromite, \\(OBr^{-}\\)) runs the haloform reaction. The base removes an alpha hydrogen of the \\(CH_{3}\\) group and the enolate is brominated; each bromine makes the remaining hydrogens more acidic, so the methyl group is brominated three times, to \\(C_{6}H_{5}COCBr_{3}\\). Hydroxide then adds to the carbonyl carbon and expels \\(CBr_{3}^{-}\\), which takes a proton to give bromoform, \\(CHBr_{3}\\). The acyl part leaves as benzoic acid, which in KOH is potassium benzoate, \\(C_{6}H_{5}COOK\\). So A is \\(C_{6}H_{5}COOK\\) and B is \\(CHBr_{3}\\), option (A). The ring is not brominated: in base the reaction takes place at the alpha carbon.",

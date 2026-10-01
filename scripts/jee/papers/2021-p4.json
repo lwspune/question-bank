@@ -5,7 +5,7 @@
   "classification": {
     "1": {
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Semiconductor Diodes"
+      "subtopic": "Diode Circuits and Rectifiers"
     },
     "2": {
       "chapter": "Oscillations",
@@ -17,7 +17,7 @@
     },
     "4": {
       "chapter": "Atoms",
-      "subtopic": "Bohr Model and Hydrogen Spectrum"
+      "subtopic": "Transition Energies, Excitation and X-rays"
     },
     "5": {
       "chapter": "Magnetism and Matter",
@@ -57,7 +57,7 @@
     },
     "14": {
       "chapter": "Communication Systems",
-      "subtopic": "Amplitude Modulation"
+      "subtopic": "Communication Systems, Bands and Antenna Size"
     },
     "15": {
       "chapter": "Kinetic Theory",
@@ -73,11 +73,11 @@
     },
     "18": {
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Intrinsic and Extrinsic Semiconductors"
+      "subtopic": "Semiconductors and the p-n Junction"
     },
     "19": {
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Logic Gates"
+      "subtopic": "Logic Gates: Truth Tables, Waveforms and Input Conditions"
     },
     "20": {
       "chapter": "Units and Measurements",
@@ -285,6 +285,7 @@
     }
   },
   "stemOverrides": {
+    "1": "Match List I with List II. List I List II (A) Rectifier (i) Used either for stepping up or stepping down the a.c. Voltage (B) Stabilizer (ii) Used to convert a.c. voltage into d.c. voltage (C) Transformer (iii) Used to remove any ripple in the rectified output voltage (D) Filter (iv) Used for constant output voltage even when the input voltage or load current change Choose the correct answer from the options given below:",
     "5": "In a ferromagnetic material, below the Curie temperature, a domain is defined as:",
     "6": "The point \\(A\\) moves with a uniform speed along the circumference of a circle of radius \\(0.36\\text{ }m\\) and cover \\(30^{\\circ}\\) in \\(0.1\\text{ }s\\). The perpendicular projection ' \\(P\\) ' from ' \\(A\\) ' on the diameter \\(MN\\) represents the simple harmonic motion of ' \\(P\\) '. The restoration force per unit mass when \\(P\\) touches \\(M\\) will be:",
     "7": "The stopping potential for electrons emitted from a photosensitive surface illuminated by light of wavelength \\(491\\text{ }nm\\) is \\(0.710\\text{ }V\\). When the incident wavelength is changed to a new value, the stopping potential is \\(1.43\\text{ }V\\). The new wavelength is:",
@@ -306,6 +307,7 @@
     "10": "For a circular aperture of diameter \\(D\\) the first dark ring is at \\(\\sin\\theta = \\frac{1.22\\lambda}{D}\\). A larger pinhole gives a smaller \\(\\theta\\), so the pattern shrinks, and more light passes through the larger hole, so it is brighter. Hence option (a). (As printed the pinhole, \\(0.1\\ \\mu m\\), is smaller than any visible wavelength, so \\(\\frac{1.22\\lambda}{D} > 1\\) and there would be no dark ring at all; the question intends only the trend.)",
     "12": "The figure gives \\(PV^{1/2}\\) constant. For one mole \\(P = \\frac{RT}{V}\\), so \\(\\frac{RT}{V} \\times V^{1/2} = \\frac{RT}{V^{1/2}}\\) is constant, that is \\(T \\propto V^{1/2}\\). Then \\[\\frac{T_{2}}{T_{1}} = \\sqrt{\\frac{V_{2}}{V_{1}}} = \\sqrt{2}.\\] Hence option (d).",
     "17": "With \\(C\\) removed, the LR circuit has the current lagging by \\(45^{\\circ}\\): \\(X_{L} = R\\). With \\(L\\) removed, the RC circuit has the current leading by \\(45^{\\circ}\\): \\(X_{C} = R\\). So \\(X_{L} = X_{C}\\): the full LCR circuit is at resonance, \\(Z = R = 110\\ \\Omega\\), and\n\\[I_{rms} = \\frac{220}{110} = 2\\ A.\\]\nOption (b).",
+    "19": "The upper AND gate gets \\(A\\) and \\(\\overline{B}\\); the lower AND gate gets \\(B\\) and \\(\\overline{A}\\). The output gate is a NOR: \\[Y = \\overline{A\\overline{B} + \\overline{A}B},\\] the complement of XOR. \\(Y = 1\\) when \\(A = B\\): for (0,0), (0,1), (1,0), (1,1) the outputs are 1, 0, 0, 1. Hence option (d).",
     "31": "In ammoniacal medium \\(Ni^{2+}\\) gives a characteristic rosy-red precipitate with dimethylglyoxime, so it is a standard identification test for \\(Ni^{2+}\\) — Statement I is true. Dimethylglyoxime is bidentate, but on coordinating it loses one \\(O\\text{-}H\\) proton per ligand and binds as a uninegative (monoanionic) ligand, not a neutral one, so Statement II is false. Hence option (D).",
     "32": "The carbylamine reaction converts a primary amine, on warming with \\(CHCl_3\\) and alcoholic \\(KOH\\), into a foul-smelling isocyanide. With aniline the product is phenyl isocyanide, \\(C_6H_5NC\\). Hence option (B).",
     "33": "Bond dissociation enthalpies in \\(kJ\\ mol^{-1}\\): \\(\\mathrm{Cl_2}\\) 242.6, \\(\\mathrm{Br_2}\\) 192.8, \\(\\mathrm{F_2}\\) 158.8, \\(\\mathrm{I_2}\\) 151.1. From Cl to I the value falls as the atoms grow and orbital overlap gets poorer. \\(\\mathrm{F_2}\\) is out of line: the F-F bond is so short that the lone pairs on the two atoms repel strongly and weaken it. So \\(\\mathrm{Cl_2 > Br_2 > F_2 > I_2}\\), option (C).",
@@ -349,6 +351,9 @@
     },
     "7": {
       "A": "\\(400\\text{ }nm\\)"
+    },
+    "14": {
+      "C": "\\(\\frac{c}{f_{m}}\\)"
     }
   }
 }

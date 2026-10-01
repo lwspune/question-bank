@@ -6,7 +6,7 @@
     "1": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Lenses and Lensmaker's Formula"
+      "subtopic": "Refraction at Plane Surfaces and Apparent Depth"
     },
     "2": {
       "subject": "Physics",
@@ -16,12 +16,12 @@
     "3": {
       "subject": "Physics",
       "chapter": "Communication Systems",
-      "subtopic": "Amplitude Modulation"
+      "subtopic": "Modulation Index, Sidebands and Bandwidth"
     },
     "4": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Transistors"
+      "subtopic": "Transistors and the CE Amplifier"
     },
     "5": {
       "subject": "Physics",
@@ -91,7 +91,7 @@
     "18": {
       "subject": "Physics",
       "chapter": "Atoms",
-      "subtopic": "Bohr Model and Hydrogen Spectrum"
+      "subtopic": "Transition Energies, Excitation and X-rays"
     },
     "19": {
       "subject": "Physics",
@@ -131,7 +131,7 @@
     "26": {
       "subject": "Physics",
       "chapter": "Nuclei",
-      "subtopic": "Mass-Energy and Binding Energy"
+      "subtopic": "Q-value, Fission and Fusion"
     },
     "27": {
       "subject": "Physics",
@@ -141,7 +141,7 @@
     "28": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Lenses and Lensmaker's Formula"
+      "subtopic": "Thin Lens Formula and Lens Combinations"
     },
     "29": {
       "subject": "Physics",
@@ -426,6 +426,7 @@
   },
   "stemOverrides": {
     "1": "An ice cube has a bubble inside. When viewed from one side the apparent distance of the bubble is \\(12\\text{ }cm\\). when viewed from the opposite side, the apparent distance of the bubble is observed as \\(4\\text{ }cm\\). If the side of the ice cube is \\(24\\text{ }cm\\), the refractive index of the ice cube is",
+    "3": "The amplitude of \\(15\\sin(1000\\pi t)\\) is modulated by \\(10\\sin(4\\pi t)\\) signal. The amplitude modulated signal contains frequencies of (A) \\(500\\text{ }Hz\\) (B) \\(2\\text{ }Hz\\) (C) \\(250\\text{ }Hz\\) (D) \\(498\\text{ }Hz\\) (E) \\(502\\text{ }Hz\\). Choose the correct answer from the options given below:",
     "7": "Given below are two statements:\nStatement I: The diamagnetic property depends on temperature.\nStatement II: The induced magnetic dipole moment in a diamagnetic sample is always opposite to the magnetizing field. In the light of given statement,\nchoose the correct answer from the options given below:",
     "9": "Match List I with List II\n\n| List I | List II |\n|---|---|\n| (A) Spring constant | (I) \\(\\left( T^{-1} \\right)\\) |\n| (B) Angular speed | (II) \\(\\left( MT^{-2} \\right)\\) |\n| (C) Angular momentum | (III) \\(\\left( ML^{2} \\right)\\) |\n| (D) Moment of Inertia | (IV) \\(\\left( ML^{2}T^{-1} \\right)\\) |\n\nChoose the correct answer from the options given below:",
     "10": "Three force \\(F_{1}= 10\\text{ }N,F_{2}= 8\\text{ }N,F_{3}= 6\\text{ }N\\) are acting on a particle of mass \\(5\\text{ }kg\\). The forces \\(F_{2}\\) and \\(F_{3}\\) are applied perpendicular so that particle remains at rest. If the force \\(F_{1}\\) is removed, then the acceleration of the particle is:",
@@ -492,9 +493,11 @@
     }
   },
   "authoredSolutions": {
+    "3": "The carrier \\(15\\sin(1000\\pi t)\\) has \\(f_{c} = \\frac{1000\\pi}{2\\pi} = 500\\text{ }Hz\\); the message \\(10\\sin(4\\pi t)\\) has \\(f_{m} = \\frac{4\\pi}{2\\pi} = 2\\text{ }Hz\\). An AM wave contains the carrier and the two side bands: \\(f_{c} = 500\\text{ }Hz\\), \\(f_{c} - f_{m} = 498\\text{ }Hz\\) and \\(f_{c} + f_{m} = 502\\text{ }Hz\\). The message frequency \\(2\\text{ }Hz\\) itself is not present. Hence (A), (D) and (E): option (d).",
     "7": "Diamagnetism arises from the change induced in the orbital motion of the electrons by the applied field, not from the alignment of pre-existing permanent dipoles. Since there is no permanent moment for thermal agitation to disturb, the diamagnetic susceptibility is essentially independent of temperature, unlike paramagnetism and ferromagnetism which follow \\(\\chi \\propto \\dfrac{1}{T}\\). Statement I is therefore incorrect. By Lenz's law the induced moment always opposes the change that produced it, so the moment induced in a diamagnetic sample is always directed opposite to the magnetizing field, which also explains the negative susceptibility and the weak repulsion of a diamagnet out of a field. Statement II is therefore true, and the correct choice is A.",
     "11": "Average form of Newton's law of cooling, with the surroundings at \\(20^{\\circ}C\\). First interval: \\(\\frac{80 - 60}{5} = k(70 - 20)\\), so \\(4 = 50k\\) and \\(k = \\frac{2}{25}\\ min^{-1}\\). Second interval: \\[\\frac{60 - 40}{t} = \\frac{2}{25}(50 - 20) = \\frac{12}{5} \\Rightarrow t = \\frac{20 \\times 5}{12} = \\frac{25}{3}\\ min = 500\\ s.\\] Hence option (a). (Option (b) is the same number in the wrong unit.)",
     "15": "Taking upward as positive, \\(v = 150 - 10t\\). At \\(t = 3\\ s\\), \\(v = 120\\ m/s\\); at \\(t = 5\\ s\\), \\(v = 100\\ m/s\\). The ratio is \\(\\frac{120}{100} = \\frac{6}{5} = \\frac{x + 1}{x}\\), so \\(x = 5\\), option (b).",
+    "18": "A colliding electron can hand over any part of its energy, but the atom takes only an amount equal to a gap between its levels; the electron keeps the rest. From the ground state the gaps are \\(1 \\to 2\\): \\(10.2\\ eV\\), \\(1 \\to 3\\): \\(12.09\\ eV\\), \\(1 \\to 4\\): \\(12.75\\ eV\\). A \\(12.5\\ eV\\) electron can lift atoms to \\(n = 3\\) but not to \\(n = 4\\). From \\(n = 3\\) the lines are \\(3 \\to 2\\), \\(3 \\to 1\\) and \\(2 \\to 1\\): \\(\\frac{3 \\times 2}{2} = 3\\) lines. Hence option (c).",
     "19": "Escape velocity is \\(v_{e} = \\sqrt{\\dfrac{2GM}{R}}\\), so \\(v_{e} \\propto \\sqrt{\\dfrac{M}{R}}\\). \\[\\frac{v_{planet}}{v_{earth}} = \\sqrt{\\frac{M_{p}}{M_{e}} \\cdot \\frac{R_{e}}{R_{p}}} = \\sqrt{16 \\times \\frac{1}{4}} = \\sqrt{4} = 2\\] The ratio is therefore \\(2:1\\). [Source answer-key error: the booklet prints the ratio as 4:1, but its own worked solution ends \"= 2(V escape for Earth)\", which is the value used here.]",
     "20": "Statement I: \\(I = \\frac{V}{\\sqrt{R^{2} + \\left(\\omega L - \\frac{1}{\\omega C}\\right)^{2}}}\\). As \\(\\omega\\) rises from low values, \\(X_{C}\\) falls, the net reactance shrinks and the current rises. It is largest at \\(\\omega_{0} = \\frac{1}{\\sqrt{LC}}\\), where \\(X_{L} = X_{C}\\); above it \\(X_{L}\\) dominates and the current falls. True.\nStatement II: at resonance \\(Z = R\\), so the power factor \\(\\frac{R}{Z} = 1\\). True.\nOption (d).",
     "23": "The needle oscillates in the horizontal component \\(B_{H} = B\\cos\\delta\\), and its frequency is \\(n \\propto \\sqrt{B_{H}}\\). So \\[\\left(\\frac{n_{1}}{n_{2}}\\right)^{2} = \\frac{B_{1}\\cos 30^{\\circ}}{B_{2}\\cos 60^{\\circ}}\\ \\Rightarrow\\ \\frac{4}{9} = \\sqrt{3}\\,\\frac{B_{1}}{B_{2}},\\] which gives \\[\\frac{B_{1}}{B_{2}} = \\frac{4}{9\\sqrt{3}} = \\frac{4}{\\sqrt{243}}.\\] Hence \\(x = 243\\).",

@@ -71,17 +71,17 @@
     "14": {
       "subject": "Physics",
       "chapter": "Atoms",
-      "subtopic": "Rutherford Scattering"
+      "subtopic": "Rutherford Scattering and Bohr's Postulates"
     },
     "15": {
       "subject": "Physics",
       "chapter": "Nuclei",
-      "subtopic": "Mass-Energy and Binding Energy"
+      "subtopic": "Q-value, Fission and Fusion"
     },
     "16": {
       "subject": "Physics",
       "chapter": "Communication Systems",
-      "subtopic": "Antennas and Propagation"
+      "subtopic": "Communication Systems, Bands and Antenna Size"
     },
     "17": {
       "subject": "Physics",
@@ -111,12 +111,12 @@
     "22": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Lenses and Lensmaker's Formula"
+      "subtopic": "Lenses in a Medium, Cut Lenses and Silvered Lenses"
     },
     "23": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Transistors"
+      "subtopic": "Transistors and the CE Amplifier"
     },
     "24": {
       "subject": "Physics",
@@ -541,7 +541,7 @@
     "110": {
       "subject": "Physics",
       "chapter": "Atoms",
-      "subtopic": "Bohr Model and Hydrogen Spectrum"
+      "subtopic": "Bohr Orbits: Radius, Speed and Energy"
     },
     "111": {
       "subject": "Physics",
@@ -551,7 +551,7 @@
     "112": {
       "subject": "Physics",
       "chapter": "Communication Systems",
-      "subtopic": "Antennas and Propagation"
+      "subtopic": "Communication Systems, Bands and Antenna Size"
     },
     "113": {
       "subject": "Physics",
@@ -566,17 +566,17 @@
     "115": {
       "subject": "Physics",
       "chapter": "Semiconductor Electronics",
-      "subtopic": "Semiconductor Diodes"
+      "subtopic": "Zener Diode as a Voltage Regulator"
     },
     "116": {
       "subject": "Physics",
       "chapter": "Nuclei",
-      "subtopic": "Radioactivity and Half-Life"
+      "subtopic": "Decay Constant, Activity and Two-Isotope Decay"
     },
     "117": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Refraction through Prism"
+      "subtopic": "Refraction at Plane Surfaces and Apparent Depth"
     },
     "118": {
       "subject": "Physics",
@@ -1014,6 +1014,7 @@
   "authoredSolutions": {
     "2": "The magnetic force \\(q\\overrightarrow{v} \\times \\overrightarrow{B}\\) is always perpendicular to the velocity, so it does no work. The speed, and so the kinetic energy, cannot change: (a) is true. (R) states exactly that perpendicularity, which is the reason. Hence option (a).",
     "13": "The question gives the magnetic intensity \\(H\\), not \\(B\\). In a medium \\(\\frac{E}{H} = \\sqrt{\\frac{\\mu}{\\varepsilon}} = \\sqrt{\\frac{\\mu_{0}}{\\varepsilon_{0}}}\\sqrt{\\frac{\\mu_{r}}{\\varepsilon_{r}}}\\), and \\(\\sqrt{\\frac{\\mu_{0}}{\\varepsilon_{0}}} = \\mu_{0}c = 4\\pi \\times 10^{-7} \\times 3 \\times 10^{8} = 377\\ \\Omega\\). Here \\(\\sqrt{\\frac{\\mu_{r}}{\\varepsilon_{r}}} = \\sqrt{\\frac{1.61}{6.44}} = \\frac{1}{2}\\), so \\(\\frac{E}{H} = 188.5\\ \\Omega\\) and \\[E = 188.5 \\times 4.5 \\times 10^{-2} = 8.48\\ V/m.\\] (Check: \\(B = \\mu_{r}\\mu_{0}H = 9.10 \\times 10^{-8}\\ T\\) and \\(v = \\frac{c}{\\sqrt{1.61 \\times 6.44}} = 9.32 \\times 10^{7}\\ m/s\\) give \\(E = vB = 8.48\\ V/m\\).) Hence option (c).",
+    "14": "(a) is reversed: in Thomson's model an electron at rest in the ground state is in stable equilibrium, while in Rutherford's model the electron orbits and always feels a net (centripetal) force. (b) is reversed too: Rutherford's atom has its mass concentrated in a tiny nucleus (highly non-uniform), while Thomson's spreads it nearly uniformly. (d) is false: in both models the positive part carries most of the mass. (c) is true: an orbiting electron accelerates, so by classical electrodynamics it radiates energy and spirals into the nucleus. Hence option (c).",
     "20": "The blocks are in series with the same area, so the same heat current flows through both: \\(K_{1}A\\frac{100 - 80}{16} = KA\\frac{80 - 0}{8}\\). So \\(\\frac{20K_{1}}{16} = 10K\\) and \\(K_{1} = 8K\\). Hence option (b).",
     "21": "\\(0.056\\ kg\\) of \\(N_{2}\\) is \\(\\frac{56}{28} = 2\\) mol. \"Speed\" here is the rms speed, which goes as \\(\\sqrt{T}\\), so doubling it needs \\(T\\) to rise from \\(400\\ K\\) to \\(1600\\ K\\). The vessel is closed, so the heat goes in at constant volume with \\(C_{v} = \\frac{5}{2}R\\) (diatomic): \\[Q = nC_{v}\\Delta T = 2 \\times \\frac{5}{2} \\times 2 \\times 1200 = 12000\\ cal = 12\\ kcal.\\] So the answer is 12.",
     "25": "The first secondary maximum of a single slit is at about \\(a\\sin\\theta = \\frac{3\\lambda}{2}\\), so on a screen at distance \\(L\\) it lies at \\(y = \\frac{3\\lambda L}{2a}\\). The two wavelengths give \\[\\Delta y = \\frac{3(\\lambda_{2} - \\lambda_{1})L}{2a} = \\frac{3 \\times 5 \\times 10^{-9} \\times 2.0}{2 \\times 0.5 \\times 10^{-3}} = 3 \\times 10^{-5}\\ m.\\] So the answer is \\(3\\).",
@@ -1083,7 +1084,12 @@
     "100": "Statement I: the net reactance \\(X_{L} - X_{C}\\) is zero when \\(X_{L} = X_{C}\\), which needs both an inductor and a capacitor (resonance). So it is possible: true.\nStatement II: the average power is \\(P = V_{rms}I_{rms}\\cos\\phi\\). In a circuit with no resistance (a pure inductor, a pure capacitor, or an ideal LC combination) \\(\\phi = 90^{\\circ}\\) and \\(P = 0\\). So the average power can be zero: false.\nOption (c).",
     "102": "The weight is \\(50\\ N\\) and the drag \\(10\\ N\\). Going up, both act downward: retardation \\(\\frac{50 + 10}{5} = 12\\ ms^{-2}\\). Coming down, the drag acts upward: acceleration \\(\\frac{50 - 10}{5} = 8\\ ms^{-2}\\). The height \\(h\\) is the same both ways. The ascent ends at rest, so read backwards it is \\(h = \\frac{1}{2}(12)t_{1}^{2}\\); the descent starts from rest, \\(h = \\frac{1}{2}(8)t_{2}^{2}\\). So \\(12t_{1}^{2} = 8t_{2}^{2}\\) and \\[\\frac{t_{1}}{t_{2}} = \\sqrt{\\frac{8}{12}} = \\frac{\\sqrt{2}}{\\sqrt{3}},\\] option (b).",
     "104": "Kinetic energy of the hammer: \\(\\frac{1}{2} \\times 1.5 \\times 60^{2} = 2700\\ J\\). One fourth of it, \\(675\\ J\\), heats the nail: \\[675 = ms\\Delta T = 100 \\times 0.42 \\times \\Delta T \\Rightarrow \\Delta T = \\frac{675}{42} = 16.07^{\\circ}C.\\] Hence option (c). (Option (a), 675, is the heat in joules, not the temperature rise.)",
+    "110": "In a Bohr orbit of radius \\(r\\): \\(K = \\frac{ke^{2}}{2r}\\), \\(P = -\\frac{ke^{2}}{r}\\) and \\(E = K + P = -\\frac{ke^{2}}{2r}\\), so \\(K = -E\\) and \\(P = 2E\\). Going to a higher level, \\(r\\) grows: \\(K\\) decreases, while \\(P\\) and \\(E\\), both negative, rise towards zero, that is, they increase. Hence option (b).",
+    "112": "An antenna radiates efficiently only if its length is at least a quarter of the wavelength, \\(l \\geq \\frac{\\lambda}{4}\\). For a maximum size \\(l = 5.0\\text{ }mm\\) the longest wavelength it can radiate is \\(\\lambda = 4l = 20\\text{ }mm\\), measured in the medium. In the medium the wave speed is \\[v = \\frac{c}{\\sqrt{\\mu_{r}\\varepsilon_{r}}} = \\frac{3 \\times 10^{8}}{\\sqrt{6.25}} = 1.2 \\times 10^{8}\\text{ }m\\,s^{-1}.\\] The lowest frequency is therefore \\[f = \\frac{v}{\\lambda} = \\frac{1.2 \\times 10^{8}}{20 \\times 10^{-3}} = 6 \\times 10^{9}\\text{ }Hz = 6\\text{ }GHz.\\]",
     "114": "In \\(y = 10\\cos(\\pi x)\\sin\\frac{2\\pi t}{T}\\), the amplitude of the particle at position \\(x\\) is \\(\\left|10\\cos\\pi x\\right|\\). At \\(x = \\frac{4}{3}\\ cm\\): \\[\\left|10\\cos\\frac{4\\pi}{3}\\right| = 10 \\times \\frac{1}{2} = 5\\ cm.\\]",
+    "115": "Without the Zener, the load would get \\(10 \\times \\frac{1000}{1800} = 5.6\\ V\\), more than \\(5\\ V\\), so the Zener conducts and holds the load at \\(5\\ V\\). Then \\[I_{L} = \\frac{5}{1000} = 5\\ mA.\\] (The series current is \\(\\frac{10 - 5}{800} = 6.25\\ mA\\), so the Zener carries \\(1.25\\ mA\\).)",
+    "116": "Both start with \\(10^{-2}\\ kg\\). In 16 s, A (half-life 4 s) goes through 4 half-lives and B (half-life 8 s) through 2. The masses left are \\(\\frac{10^{-2}}{16}\\ kg\\) of A and \\(\\frac{10^{-2}}{4}\\ kg\\) of B, so the ratio of the amounts is \\[\\frac{1/16}{1/4} = \\frac{1}{4} = \\frac{25}{100},\\] and \\(x = 25\\). (The atomic weights matter only if \"amount\" means the number of atoms: A starts with twice as many atoms, which gives \\(\\frac{1}{2}\\), \\(x = 50\\). The official answer reads \"amount\" as mass.)",
+    "117": "Snell's law: \\(\\sin 60^{\\circ} = \\sqrt{3}\\sin r\\), so \\(\\sin r = \\frac{1}{2}\\) and \\(r = 30^{\\circ}\\). The lateral shift is \\[d = \\frac{t\\sin(i - r)}{\\cos r} = \\frac{t\\sin 30^{\\circ}}{\\cos 30^{\\circ}} = \\frac{t}{\\sqrt{3}}.\\] Setting \\(\\frac{t}{\\sqrt{3}} = 4\\sqrt{3}\\) gives \\(t = 12\\ cm\\).",
     "120": "The graph gives the excess temperature \\(\\Delta T\\) of the water over the surroundings: 60 at \\(t = 0\\), 40 at \\(t = 6\\) min, 20 at \\(t = t_{2}\\). Newton's law of cooling makes the excess decay exponentially, \\(\\Delta T = 60e^{-\\lambda t}\\): \\[40 = 60e^{-6\\lambda} \\Rightarrow 6\\lambda = \\ln 1.5, \\qquad 20 = 60e^{-\\lambda t_{2}} \\Rightarrow \\lambda t_{2} = \\ln 3,\\] so \\(t_{2} = 6 \\times \\frac{\\ln 3}{\\ln 1.5} = 6 \\times \\frac{1.099}{0.405} = 16.25\\) min, about \\(16\\). The average-temperature form gives exactly 16: \\(\\frac{60 - 40}{6} = k \\times 50\\) gives \\(k = \\frac{1}{15}\\), and \\(\\frac{40 - 20}{t_{2} - 6} = \\frac{1}{15} \\times 30\\) gives \\(t_{2} - 6 = 10\\). The initial \\(80^{\\circ}C\\) is not needed.",
     "121": "\\(330\\text{ }g\\) of \\(CO_{2}\\) is \\(330/44 = 7.5\\) mol, which carries \\(7.5 \\times 12 = 90\\text{ }g\\) of carbon. \\(270\\text{ }g\\) of water is \\(270/18 = 15\\) mol, which carries \\(15 \\times 2 = 30\\text{ }g\\) of hydrogen. These sum to \\(120\\text{ }g\\), confirming the compound contains only \\(C\\) and \\(H\\). Hence \\(\\%C = \\frac{90}{120} \\times 100 = 75\\) and \\(\\%H = \\frac{30}{120} \\times 100 = 25\\), option (D).",
     "122": "The energy of one mole of photons is \\(E = \\frac{N_{A}hc}{\\lambda}\\). Substituting, \\(E = \\frac{(6.02 \\times 10^{23})(6.63 \\times 10^{-34})(3 \\times 10^{8})}{300 \\times 10^{-9}}\\). The numerator is \\(1.197 \\times 10^{-1}\\) and dividing by \\(3 \\times 10^{-7}\\text{ }m\\) gives \\(3.99 \\times 10^{5}\\text{ }J\\text{ }mol^{-1}\\), i.e. about \\(399\\text{ }kJ\\text{ }mol^{-1}\\), option (C).",
@@ -1152,6 +1158,7 @@
     "7": "A boy ties a stone of mass \\(100\\text{ }g\\) to the end of a 2 \\(m\\) long string and whirls it around in a horizontal plane. The string can withstand the maximum tension of \\(80\\text{ }N\\). If the maximum speed with which the stone can revolve is \\(\\frac{K}{\\pi}rev\\). / \\(\\min\\). The value of \\(K\\) is : (Assume the string is massless and unstretchable)",
     "18": "A parallel plate capacitor is formed by two plates each of area \\(30\\pi cm^{2}\\) separated by \\(1\\text{ }mm\\). A material of dielectric strength \\(3.6 \\times10^{7}Vm^{- 1}\\) is filled between the plates. If the maximum charge that can be stored on the capacitor without causing any dielectric breakdown is \\(7 \\times10^{- 6}C\\), the value of dielectric constant of the material is: (Use: \\(\\left. \\ \\frac{1}{4\\pi\\varepsilon_{0}}= 9 \\times10^{9}Nm^{2}C^{- 2} \\right\\}\\)",
     "21": "\\(\\ 0.056\\text{ }kg\\) of Nitrogen is enclosed in a vessel at a temperature of \\(127^{\\circ}C\\). The amount of heat required to double the speed of its molecules is _____ kcal. (Take \\(R = 2\\) cal mole \\(\\ ^{- 1}{\\text{ }K}^{- 1}\\) )",
+    "22": "Two identical thin biconvex lenses of focal length \\(15\\text{ }cm\\) and refractive index 1.5 are in contact with each other. The space between the lenses is filled with a liquid of refractive index 1.25. The focal length of the combination is \\(\\_\\_\\_\\_\\) \\(cm\\).",
     "23": "A transistor is used in common-emitter mode in an amplifier circuit. When a signal of \\(10mV\\) is added to the base-emitter voltage, the base current changes by \\(10\\mu A\\) and the collector current changes by \\(1.5\\text{ }mA\\). The load resistance is \\(5k\\Omega\\). The voltage gain of the transistor will be",
     "24": "As shown in the figure an inductor of inductance \\(200mH\\) is connected to an AC source of emf \\(220\\text{ }V\\) and frequency \\(50\\text{ }Hz\\). The instantaneous voltage of the source is \\(0\\text{ }V\\) when the peak value of current is \\(\\frac{\\sqrt{a}}{\\pi}\\) A. The value of a is",
     "25": "Sodium light of wavelengths \\(650\\text{ }nm\\) and \\(655\\text{ }nm\\) is used to study diffraction at a single slit of aperture \\(0.5\\text{ }mm\\). The distance between the slit and the screen is \\(2.0\\text{ }m\\). The separation between the positions of the first maxima of diffraction pattern obtained in the two cases is \\(\\_\\_\\_\\_ \\times10^{- 5}\\text{ }m\\).",
@@ -1177,9 +1184,11 @@
     "106": "A long cylindrical volume contains a uniformly distributed charge of density \\(\\rho\\). The radius of cylindrical volume is R. A charge particle (q) revolves around the cylinder in a circular path. The kinetic energy of the particle is:",
     "107": "An electric bulb is rated as \\(200\\text{ }W\\). What will be the peak magnetic field at \\(4\\text{ }m\\) distance produced by the radiations coming from this bulb? Consider this bulb as a point source with \\(3.5\\%\\) efficiency.",
     "108": "The light of two different frequencies whose photons have energies \\(3.8eV\\) and \\(1.4eV\\) respectively, illuminate a metallic surface whose work function is \\(0.6eV\\) successively. The ratio of maximum speeds of emitted electrons for the two frequencies respectively will be:",
+    "110": "In Bohr's atomic model of hydrogen, let K, P and E be the kinetic energy, potential energy and total energy of the electron respectively. Choose the correct option when the electron undergoes transitions to a higher level:",
     "111": "A body is projected from the ground at an angle of \\(45^{\\circ}\\) with the horizontal. Its velocity after \\(2\\text{ }s\\) is \\(20{\\text{ }ms}^{- 1}\\). The maximum height reached by the body during its motion is \\(\\_\\_\\_\\_\\) m. (use \\(g= 10{\\text{ }ms}^{- 2}\\) )",
-    "112": "An antenna is placed in a dielectric medium of dielectric constant 6.25. If the maximum size of that antenna is \\(5.0\\text{ }mm\\). it can radiate a signal of minimum frequency of GHz. (Given \\(\\mu_{r}= 1\\) for dielectric medium)",
-    "117": "A ray of ligh is incident at an angle of incidence \\(60^{\\circ}\\) on the glass slab of refractive index \\(\\sqrt{3}\\). After refraction, the light ray emerges out from other parallel faces and lateral shift between incident ray and emergent ray is \\(4\\sqrt{3}\\text{ }cm\\). The thickness of the glass slab is \\(cm\\).",
+    "112": "An antenna is placed in a dielectric medium of dielectric constant 6.25. If the maximum size of that antenna is \\(5.0\\text{ }mm\\). it can radiate a signal of minimum frequency of \\(\\_\\_\\_\\_\\) GHz. (Given \\(\\mu_{r}= 1\\) for dielectric medium)",
+    "115": "In the given circuit, the value of current \\(I_{L}\\) will be \\(\\_\\_\\_\\_\\) mA. (When \\(R_{L}= 1k\\Omega\\) )",
+    "117": "A ray of light is incident at an angle of incidence \\(60^{\\circ}\\) on the glass slab of refractive index \\(\\sqrt{3}\\). After refraction, the light ray emerges out from other parallel faces and lateral shift between incident ray and emergent ray is \\(4\\sqrt{3}\\text{ }cm\\). The thickness of the glass slab is \\(\\_\\_\\_\\_\\) \\(cm\\).",
     "118": "A circular coil of 1000 turns each with area \\(1{\\text{ }m}^{2}\\) is rotated about its vertical diameter at the rate of one revolution per second in a uniform horizontal magnetic field of \\(0.07\\text{ }T\\). The maximum voltage generated will be \\(\\_\\_\\_\\_\\) V.",
     "119": "A monoatomic gas performs a work of \\(\\frac{Q}{4}\\) where \\(Q\\) is the heat supplied to it. The molar heat capacity of the gas will be \\(\\_\\_\\_\\_\\ R\\) during this transformation. Where \\(R\\) is the gas constant.",
     "120": "In an experiment to verify Newton's law of cooling, a graph is plotted between, the temperature difference \\((\\Delta T)\\) of the water and surroundings and time as shown in figure. The initial temperature of water is taken as \\(80^{\\circ}C\\). The value of \\(t_{2}\\) as mentioned in the graph will be _____ minute",
@@ -1211,6 +1220,9 @@
     },
     "104": {
       "C": "\\({16.07}^{\\circ}C\\)"
+    },
+    "110": {
+      "A": "All of K, P and E increase."
     },
     "136": {
       "A": "2-pentene",
