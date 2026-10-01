@@ -40,6 +40,7 @@ import {
 } from "@/lib/questions/landingSummary";
 import { mockCta } from "@/lib/notes/keepGoing";
 import { examHomeHref } from "@/lib/exam/examHome";
+import ChapterShareCard from "@/components/ChapterShareCard";
 
 const SITE_URL = "https://www.pyqvault.com";
 
@@ -300,6 +301,15 @@ export default async function ChapterQuestionsPage({ params }: Params) {
             </Button>
           </div>
         )}
+
+        <ChapterShareCard
+          path={landingHref(landing)}
+          chapterName={landing.chapterName}
+          examDisplay={getExamBySlug(landing.examSlug)?.displayName ?? landing.examName}
+          questionCount={landing.questionCount}
+          practiceOnly={landing.practiceOnly}
+          surface="questions"
+        />
 
         <SiblingLinks siblings={siblings} />
       </main>

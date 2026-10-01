@@ -41,7 +41,7 @@
  * attempt's numbers. Spec: tests/mock-share.test.ts.
  */
 
-const SITE_URL = "https://www.pyqvault.com";
+export const SITE_URL = "https://www.pyqvault.com";
 
 /** Ties every share affordance to one rollup in student_profiles.acq_campaign. */
 export const SHARE_CAMPAIGN = "mock-result";
