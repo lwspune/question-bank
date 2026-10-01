@@ -27,6 +27,12 @@ name: Send per-attempt mock reports
 # and the runner reads those first, so a second pass on the same day mails
 # nobody twice. --limit caps the blast radius if a multi-day outage ever lets a
 # backlog build up behind the window.
+#
+# THE SHARED DAILY BUDGET. Resend's free plan is 100 emails/day, and Supabase
+# Auth SMTP (sign-up confirmation, password reset) sends through the SAME
+# account. Welcome 30 + due nudge 30 + mock report 10 = 70 at worst, leaving
+# ~30 for auth mail. On 2026-09-28 the three jobs tried 202 and 52 failed on
+# quota. Raise one --limit and you must re-add all three.
 
 on:
   schedule:
@@ -61,4 +67,4 @@ jobs:
         # --apply is deliberate here and nowhere else: running `npm run
         # email:mock-report` by hand stays a dry run, so a human asking "who is
         # owed a report?" can never send one as a side effect.
-        run: npm run email:mock-report -- --apply --lookback-hours=48 --limit=25
+        run: npm run email:mock-report -- --apply --lookback-hours=48 --limit=10

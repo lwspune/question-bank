@@ -21,6 +21,12 @@ name: Send due-queue nudges
 # --apply lives HERE and nowhere else, so `npm run email:due-nudge` by hand
 # stays a dry run. --limit caps the blast radius: the first run has every
 # eligible student in the pool at once.
+#
+# THE SHARED DAILY BUDGET. Resend's free plan is 100 emails/day, and Supabase
+# Auth SMTP (sign-up confirmation, password reset) sends through the SAME
+# account. Welcome 30 + due nudge 30 + mock report 10 = 70 at worst, leaving
+# ~30 for auth mail. On 2026-09-28 the three jobs tried 202 and 52 failed on
+# quota. Raise one --limit and you must re-add all three.
 
 on:
   schedule:
@@ -48,4 +54,4 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
-        run: npm run email:due-nudge -- --apply --limit=200
+        run: npm run email:due-nudge -- --apply --limit=30
