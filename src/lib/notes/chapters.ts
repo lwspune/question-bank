@@ -1275,6 +1275,11 @@ import {
   CDS_CH_MATTER_NOTES,
   CDS_CH_MATTER_SLUGS,
 } from "@/app/notes/cds-chemistry/matter-states/_data";
+import {
+  CDS_CH_REACTIONS_CHAPTER,
+  CDS_CH_REACTIONS_NOTES,
+  CDS_CH_REACTIONS_SLUGS,
+} from "@/app/notes/cds-chemistry/chemical-reactions/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4086,6 +4091,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_CH_MATTER_CHAPTER,
     notes: CDS_CH_MATTER_NOTES,
     slugs: CDS_CH_MATTER_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Chemistry",
+    subjectRoute: "cds-chemistry",
+    subjectDisplay: "CDS Chemistry",
+    chapterSlug: "chemical-reactions",
+    chipLabel: "Chemical Reactions notes",
+    chapter: CDS_CH_REACTIONS_CHAPTER,
+    notes: CDS_CH_REACTIONS_NOTES,
+    slugs: CDS_CH_REACTIONS_SLUGS,
   },
 ];
 
