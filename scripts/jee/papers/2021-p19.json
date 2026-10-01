@@ -16,17 +16,17 @@
     "3": {
       "subject": "Physics",
       "chapter": "Motion in a Plane",
-      "subtopic": "Circular Motion"
+      "subtopic": "Dynamics of Circular Motion: Roads, Strings and Vertical Circles"
     },
     "4": {
       "subject": "Physics",
       "chapter": "Kinetic Theory",
-      "subtopic": "Kinetic Theory of Gases"
+      "subtopic": "Ideal Gas Equation and Gas Laws"
     },
     "5": {
       "subject": "Physics",
       "chapter": "Motion in a Plane",
-      "subtopic": "Vector Addition"
+      "subtopic": "Vectors: Resultant, Components and Products"
     },
     "6": {
       "subject": "Physics",
@@ -46,7 +46,7 @@
     "9": {
       "subject": "Physics",
       "chapter": "System of Particles and Rotational Motion",
-      "subtopic": "Moment of Inertia"
+      "subtopic": "Parallel and Perpendicular Axes and Composite Bodies"
     },
     "10": {
       "subject": "Physics",
@@ -56,7 +56,7 @@
     "11": {
       "subject": "Physics",
       "chapter": "Motion in a Plane",
-      "subtopic": "Projectile Motion"
+      "subtopic": "Velocity in a Plane and Relative Velocity"
     },
     "12": {
       "subject": "Physics",
@@ -101,12 +101,12 @@
     "20": {
       "subject": "Physics",
       "chapter": "Mechanical Properties of Solids",
-      "subtopic": "Elastic Moduli"
+      "subtopic": "Loaded Wires, Combinations and Breaking Stress"
     },
     "21": {
       "subject": "Physics",
       "chapter": "Waves",
-      "subtopic": "Interference of Sound Waves"
+      "subtopic": "Superposition and Standing Waves on Strings"
     },
     "22": {
       "subject": "Physics",
@@ -151,7 +151,7 @@
     "30": {
       "subject": "Physics",
       "chapter": "Laws of Motion",
-      "subtopic": "Friction"
+      "subtopic": "Static and Kinetic Friction"
     },
     "31": {
       "subject": "Chemistry",
@@ -485,6 +485,9 @@
     "60": 3
   },
   "optionOverrides": {
+    "5": {
+      "C": "\\(\\tan^{- 1}\\left( \\frac{\\sqrt{3}B}{2\\text{ }A - B} \\right)\\)"
+    },
     "37": {
       "A": "a-ii, b-iv, c-iii, d-i",
       "C": "a-ii, b-iii, c-iv, d-i"
@@ -494,8 +497,13 @@
     }
   },
   "authoredSolutions": {
+    "1": "The masses are equal, so call the specific heats \\(s_{x}, s_{y}, s_{z}\\) and cancel the mass. x with y (final \\(16^{\\circ}C\\)): \\(s_{x}(16 - 10) = s_{y}(20 - 16)\\), so \\(s_{x} = \\frac{2}{3}s_{y}\\). y with z (final \\(26^{\\circ}C\\)): \\(s_{y}(26 - 20) = s_{z}(30 - 26)\\), so \\(s_{z} = \\frac{3}{2}s_{y}\\). x with z, final \\(T\\): \\[s_{x}(T - 10) = s_{z}(30 - T) \\Rightarrow \\frac{2}{3}(T - 10) = \\frac{3}{2}(30 - T) \\Rightarrow 4T - 40 = 270 - 9T,\\] so \\(T = \\frac{310}{13} = 23.85^{\\circ}C\\), which is option (c), \\(23.84^{\\circ}C\\).",
+    "5": "The figure marks \\(120^{\\circ}\\) between \\(\\vec{B}\\) and the backward direction of \\(\\vec{A}\\), so the angle between \\(\\vec{A}\\) and \\(\\vec{B}\\) is \\(60^{\\circ}\\). Take \\(\\vec{A}\\) along x: \\(\\vec{B} = B(\\cos 60^{\\circ}\\hat{i} + \\sin 60^{\\circ}\\hat{j})\\), so \\[\\vec{A} - \\vec{B} = \\left(A - \\frac{B}{2}\\right)\\hat{i} - \\frac{\\sqrt{3}B}{2}\\hat{j}.\\] The angle \\(\\beta\\) between \\(\\vec{A}\\) and \\(\\vec{A} - \\vec{B}\\) satisfies \\[\\tan\\beta = \\frac{\\sqrt{3}B/2}{A - B/2} = \\frac{\\sqrt{3}B}{2A - B},\\] option (c).",
     "8": "Take the \\(2\\ \\Omega\\) and \\(4\\ \\Omega\\) in parallel, and put that combination in series with the \\(6\\ \\Omega\\) and \\(8\\ \\Omega\\). \\[R_{p} = \\frac{2 \\times 4}{2 + 4} = \\frac{8}{6} = \\frac{4}{3}\\ \\Omega\\] \\[R_{eq} = \\frac{4}{3} + 6 + 8 = \\frac{4}{3} + 14 = \\frac{4 + 42}{3} = \\frac{46}{3}\\ \\Omega\\] which is the required value, so the correct choice is D. None of the other groupings reproduces it: pairing \\(4\\ \\Omega\\) with \\(6\\ \\Omega\\) gives \\(2.4 + 10 = 12.4\\ \\Omega\\), pairing \\(6\\ \\Omega\\) with \\(8\\ \\Omega\\) gives \\(\\frac{24}{7} + 6 \\approx 9.43\\ \\Omega\\), and pairing \\(2\\ \\Omega\\) with \\(6\\ \\Omega\\) gives \\(1.5 + 12 = 13.5\\ \\Omega\\).",
+    "9": "AB is the axis of the cylinder and CD is parallel to it at a distance \\(\\frac{L}{2} = 0.4\\ m\\). By the parallel-axis theorem, \\(I_{CD} = \\frac{Mr^{2}}{2} + M\\left(\\frac{L}{2}\\right)^{2} = M\\left(\\frac{0.04}{2} + 0.16\\right) = 0.18M\\). Setting \\(0.18M = 2.7\\) gives \\(M = 15\\ kg\\). The volume is \\(\\pi r^{2}L = \\pi(0.2)^{2}(0.8) \\approx 0.1005\\ m^{3}\\), so \\(\\rho = \\frac{15}{0.1005} \\approx 149\\ kg/m^{3} = 1.49 \\times 10^{2}\\ kg/m^{3}\\), option (d).",
+    "11": "The bomb leaves the plane with the plane's horizontal velocity \\(u\\), and the plane keeps moving at \\(u\\). Relative to the plane, \\[\\vec{v}_{bomb} - \\vec{v}_{plane} = (u\\hat{i} - gt\\hat{j}) - u\\hat{i} = -gt\\hat{j},\\] so the observer in the plane sees the bomb fall straight down below the plane. (An observer on the ground sees a parabola.) Option (c).",
     "18": "The capacitive branch has \\(X_{C} = \\dfrac{1}{\\omega C} = 100\\ \\Omega\\) with \\(R = 100\\ \\Omega\\), so \\(Z_{1} = 100\\sqrt{2}\\ \\Omega\\) and \\(i_{1} = \\dfrac{200}{100\\sqrt{2}} = \\sqrt{2}\\text{ A}\\) leading by \\(45^{\\circ}\\). The inductive branch has \\(X_{L} = \\omega L = 50\\ \\Omega\\) with \\(R = 50\\ \\Omega\\), so \\(Z_{2} = 50\\sqrt{2}\\ \\Omega\\) and \\(i_{2} = \\dfrac{200}{50\\sqrt{2}} = 2\\sqrt{2}\\text{ A}\\) lagging by \\(45^{\\circ}\\). The two branch currents are \\(90^{\\circ}\\) apart, so they add in quadrature: \\[I = \\sqrt{i_{1}^{2} + i_{2}^{2}} = \\sqrt{2 + 8} = \\sqrt{10} = 3.16\\text{ A}\\] [Textbook note: 3.16 A is not among the four printed options, and the booklet's own worked solution also ends at \"I = 3.16 A\" while its key marks 4.24 A — which is \\(3\\sqrt{2}\\), the two magnitudes added as if they were in phase. The question is defective as set.]",
+    "21": "The phase difference is \\(kx_{0} = 6.28\\ cm^{-1} \\times 3.5\\ cm = 21.98 = 7\\pi\\). An odd multiple of \\(\\pi\\) means the two waves are in opposite phase, so \\[A = \\sqrt{A_{1}^{2} + A_{2}^{2} + 2A_{1}A_{2}\\cos 7\\pi} = \\sqrt{144 + 25 - 120} = \\sqrt{49} = 7\\ mm.\\] Equivalently, \\(A = A_{1} - A_{2} = 12 - 5 = 7\\ mm\\).",
     "31": "A phenolphthalein-type dye is formed when a phenol condenses with phthalic anhydride through the ring position PARA to its \\(-OH\\) group. In phenol (A), resorcinol (C) and catechol (D) that para position carries only hydrogen and is free, so a coloured phthalein is produced (resorcinol in fact gives fluorescein). In p-cresol the para position is blocked by the \\(-CH_{3}\\) group, so no phthalein can form and no colour develops. Hence the correct option is (B).",
     "32": "Photochemical smog is an oxidising smog: its characteristic constituents are ozone, nitric oxide, acrolein, formaldehyde and peroxyacetyl nitrate (PAN), all of which are strong oxidants. These oxidants attack the residual \\(C = C\\) double bonds left in natural and synthetic rubber, so rubber hardens and cracks. Both (A) and (R) are true, and the oxidising character described in (R) is exactly why the rubber cracks, so (R) is the correct explanation of (A). Hence the correct option is (D).",
     "33": "London (dispersion) forces arise from an instantaneous dipole inducing a dipole in a neighbouring particle. The resulting interaction energy falls off very steeply with separation, \\(E \\propto \\dfrac{1}{r^{6}}\\), i.e. \\(E \\propto r^{-6}\\). Comparing with \\(r^{x}\\) gives \\(x = -6\\). (The corresponding FORCE varies as \\(r^{-7}\\); it is the energy that goes as \\(r^{-6}\\).) Hence the correct option is (C).",

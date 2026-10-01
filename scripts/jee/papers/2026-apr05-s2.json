@@ -16,7 +16,7 @@
     "3": {
       "subject": "Physics",
       "chapter": "Laws of Motion",
-      "subtopic": "Friction"
+      "subtopic": "Static and Kinetic Friction"
     },
     "4": {
       "subject": "Physics",
@@ -26,12 +26,12 @@
     "5": {
       "subject": "Physics",
       "chapter": "System of Particles and Rotational Motion",
-      "subtopic": "Rotational Kinematics"
+      "subtopic": "Rotational Kinematics, Torque and Equilibrium"
     },
     "6": {
       "subject": "Physics",
       "chapter": "System of Particles and Rotational Motion",
-      "subtopic": "Rolling Motion"
+      "subtopic": "Rolling on Inclines: Acceleration, Speed and Friction"
     },
     "7": {
       "subject": "Physics",
@@ -46,7 +46,7 @@
     "9": {
       "subject": "Physics",
       "chapter": "Thermal Properties of Matter",
-      "subtopic": "Thermal Expansion"
+      "subtopic": "Temperature Scales, Expansion and Thermal Stress"
     },
     "10": {
       "subject": "Physics",
@@ -106,7 +106,7 @@
     "21": {
       "subject": "Physics",
       "chapter": "Mechanical Properties of Solids",
-      "subtopic": "Elastic Moduli"
+      "subtopic": "Hooke's Law and Elastic Potential Energy"
     },
     "22": {
       "subject": "Physics",
@@ -435,6 +435,7 @@
   },
   "notes": "5 Apr 2026 Shift 2 — Maths only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.\n5 Apr 2026 Shift 2 — Chemistry only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.",
   "authoredSolutions": {
+    "22": "Work in grams, with \\(c = 4.2\\ J\\,g^{-1}K^{-1}\\) and \\(L = 2256\\ J\\,g^{-1}\\). Cooling \\(x\\) g of water from \\(50^{\\circ}C\\) to \\(0^{\\circ}C\\) releases \\(x \\times 4.2 \\times 50 = 210x\\ J\\). Evaporating \\((1000 - x)\\) g that starts at \\(50^{\\circ}C\\) needs heating to \\(100^{\\circ}C\\) first and then vaporising: \\((1000 - x)(4.2 \\times 50 + 2256) = 2466(1000 - x)\\ J\\). Equating, \\[210x = 2466(1000 - x) \\Rightarrow 2676x = 2466000 \\Rightarrow x = 921.5,\\] so the closest integer is \\(922\\).",
     "26": "Mass of the acid solution \\(= 50 \\times 1.3 = 65\\) g. At \\(50\\%\\) purity the mass of \\(H_{2}SO_{4}\\) is \\(32.5\\) g, so \\(n(H_{2}SO_{4}) = 32.5/98 = 0.332\\) mol. Moles of zinc \\(= 20/65 = 0.3077\\) mol. The reaction \\(Zn + H_{2}SO_{4} \\rightarrow ZnSO_{4} + H_{2}\\) consumes the two reactants in a 1:1 ratio, so zinc is the limiting reagent and \\(n(H_{2}) = 0.3077\\) mol. At STP the volume is \\(0.3077 \\times 22.4 = 6.892\\) L.",
     "27": "(A) True. For equal \\((n + l)\\) the Madelung rule places the orbital of lower \\(n\\) lower in energy (e.g. \\(3d\\) below \\(4p\\), both with \\(n + l = 5\\)).\n(B) False. As the nuclear charge rises the electron is bound more tightly, so the energy of an orbital of a given subshell DECREASES (becomes more negative) with increasing atomic number.\n(C) True. For the same \\(l\\), size grows with \\(n\\), so \\(2p_{x}\\) is smaller than \\(3p_{x}\\).\n(D) False. Radial nodes \\(= n - l - 1\\): \\(5f \\rightarrow 1\\), \\(6s \\rightarrow 5\\), \\(4d \\rightarrow 1\\), \\(5p \\rightarrow 3\\), \\(5d \\rightarrow 2\\). The \\(5d\\) orbital does have 2 radial nodes, so the claim that none of them has 2 fails.\nOnly A and C are true.",
     "28": "The covalent radius is half the internuclear distance between two like bonded atoms, so for a heteronuclear bond the bond length is the sum of the two covalent radii: \\(d_{A-B} = r_{A} + r_{B}\\). The overall (end-to-end) length of the molecule adds one atomic radius beyond each nucleus: \\(r_{A} + (r_{A} + r_{B}) + r_{B} = 2(r_{A} + r_{B})\\). Hence bond length \\(= (r_{A} + r_{B})\\) and total length \\(= 2(r_{A} + r_{B})\\).",
@@ -488,8 +489,10 @@
   },
   "stemOverrides": {
     "1": "Match List-I with List-II.\n\n| List-I | List-II |\n|---|---|\n| (A) Meter (L) | (I) \\(\\sqrt{\\frac{hc}{G}}\\) |\n| (B) Second (S) | (II) \\(\\sqrt{\\frac{Gh}{c^{5}}}\\) |\n| (C) Kilogram (M) | (III) \\(\\sqrt{\\frac{K^{2}L^{2}c^{3}}{Gh}}\\) |\n| (D) Kelvin (K) | (IV) \\(\\sqrt{\\frac{Gh}{c^{3}}}\\) |\n\nwhere \\(h\\) (Planck's constant), \\(G\\) (gravitational constant) and \\(c\\) (speed of light in vacuum) are the fundamental units. Choose the correct answer from the options given below:",
-    "3": "A mass of 1 kg kept in a inclined plane with \\(30^{\\circ}\\) inclination with respect to horizontal plane and it is at rest initially. Then the whole assembly is moved up with constant velocity of \\(4\\text{ }m/s\\). The work done by the frictional force in time 2 s is \\(\\_\\_\\_\\_\\) J. (Take \\(g = 10\\text{ }m/s^{2}\\) )",
+    "3": "A mass of 1 kg kept on an inclined plane with \\(30^{\\circ}\\) inclination with respect to horizontal plane and it is at rest initially. Then the whole assembly is moved up with constant velocity of \\(4\\text{ }m/s\\). The work done by the frictional force in time 2 s is \\(\\_\\_\\_\\_\\) J. (Take \\(g = 10\\text{ }m/s^{2}\\) )",
+    "6": "An object of uniform density rolls up the curved path with the initial velocity \\(v_{0}\\) as shown in the figure. If the maximum height attained by an object is \\(\\frac{7v_{0}^{2}}{10\\text{ }g}\\) (\\(g =\\) acceleration due to gravity), the object is a \\(\\_\\_\\_\\_\\) .",
     "10": "Match List-I with List-II.\n\n| List-I | List-II |\n|---|---|\n| (A) \\(\\sin^{2}\\omega t\\) | (I) Periodic with time period \\(T = \\frac{\\pi}{\\omega}\\) but not simple harmonic motion (SHM) |\n| (B) \\(\\sin^{3}(2\\omega t)\\) | (II) Periodic with time period \\(T = \\frac{2\\pi}{\\omega}\\) but not SHM |\n| (C) \\(\\sin(\\omega t) + \\cos(\\pi\\omega t)\\) | (III) Periodic with time period \\(T = \\frac{\\pi}{\\omega}\\) and SHM |\n| (D) \\(\\cos\\omega t + \\cos 2\\omega t\\) | (IV) Non-periodic |\n\nChoose the correct answer from the options given below.",
+    "22": "The heat extracted out of x gram of water initially at \\(50^{\\circ}C\\) to cool it down to \\(0^{\\circ}C\\) is sufficient to evaporate (\\(1000 - x\\)) gram of water also initially at \\(50^{\\circ}C\\). The value of x (closest integer) is \\(\\_\\_\\_\\_\\) . (Take latent heat of water \\(2256\\text{ }kJ/kg\\), specific heat capacity of water \\(4200\\text{ }J/kg\\ K\\))",
     "29": "Consider the following data for the reaction\n\\(X_{2}(\\text{ }g) +Y_{2}(\\text{ }g) \\rightleftharpoons 2XY(g)\\) at 600 K. The \\(\\Delta_{r}G^{\\ominus}\\) (in \\(kJ\\,mol^{-1}\\)) for the reaction is:\n\n| Compound | \\[\\Delta_{f}H_{600\\text{ }K}^{\\Theta}\\] \\[\\left( kJmol^{- 1} \\right)\\] | \\[S_{600\\text{ }K}^{\\Theta}\\] \\[\\left( Jmol^{- 1}{\\text{ }K}^{- 1} \\right)\\] |\n| --- | --- | --- |\n| \\[XY(g)\\] | 42 | 200 |\n| \\[X_{2}(\\text{ }g)\\] | 8 | 140 |\n| \\[Y_{2}(\\text{ }g)\\] | 80 | 250 |",
     "37": "Match List-I with List-II.\n\n|  | List-I (Purification technique) |  | List-II (Used to separate) |\n| --- | --- | --- | --- |\n| (A) | Simple distillation | (I) | Steam volatile compound |\n| (B) | Fractional distillation | (II) | Two liquids with large difference in boiling points |\n| (C) | Steam distillation | (III) | Liquid decomposing at its boiling point |\n| (D) | Distillation under reduced pressure | (IV) | Two liquids with close boiling points |\n\nChoose the correct answer from the options given below :",
     "41": "Given below are two statements :\nStatement-I : The condensation reaction between \\({CH}_{3} - CH = O\\) and semicarbazide, \\({H}_{2}N - NH - CO - {NH}_{2}\\), under optimum pH will produce \\({CH}_{3} - CH = N - CO - NH - {NH}_{2}\\)\nStatement-II : The molecule \\(Ph - CH(OH)(O{CH}_{3})\\) will generate \\(Ph - CH = O\\) in the presence of dilute acid.\nIn the light of the above statements, choose the correct answer from the options given below:",

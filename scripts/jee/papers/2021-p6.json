@@ -21,7 +21,7 @@
     },
     "5": {
       "chapter": "Motion in a Plane",
-      "subtopic": "Vector Addition"
+      "subtopic": "Velocity in a Plane and Relative Velocity"
     },
     "6": {
       "chapter": "Electrostatics",
@@ -41,7 +41,7 @@
     },
     "10": {
       "chapter": "Kinetic Theory",
-      "subtopic": "Kinetic Theory of Gases"
+      "subtopic": "Molecular Speeds and Mean Free Path"
     },
     "11": {
       "chapter": "Ray Optics",
@@ -49,11 +49,11 @@
     },
     "12": {
       "chapter": "Mechanical Properties of Solids",
-      "subtopic": "Elastic Moduli"
+      "subtopic": "Stress, Strain and Young's Modulus"
     },
     "13": {
       "chapter": "Thermal Properties of Matter",
-      "subtopic": "Thermal Expansion"
+      "subtopic": "Temperature Scales, Expansion and Thermal Stress"
     },
     "14": {
       "chapter": "Current Electricity",
@@ -61,7 +61,7 @@
     },
     "15": {
       "chapter": "Motion in a Plane",
-      "subtopic": "Circular Motion"
+      "subtopic": "Dynamics of Circular Motion: Roads, Strings and Vertical Circles"
     },
     "16": {
       "chapter": "Communication Systems",
@@ -291,6 +291,7 @@
     "2": "A large block of wood of mass \\(M = 5.99\\text{ }kg\\) is hanging from two long massless cords. A bullet of mass \\(m = 10\\text{ }g\\) is fired into the block and gets embedded in it. The (block + bullet) then swing upwards, their centre of mass rising a vertical distance \\(h = 9.8\\text{ }cm\\) before the pendulum comes momentarily to rest at the end of its arc. The speed of the bullet just before collision is: (Take \\(g = 9.8\\ ms^{-2}\\))",
     "7": "The de-Broglie wavelength associated with an electron and a proton were calculated by accelerating them through the same potential of \\(100\\text{ }V\\). What should nearly be the ratio of their wavelengths? \\(\\left( m_{P}= 1.00727\\,u,\\ m_{e}= 0.00055\\,u \\right)\\)",
     "10": "Calculate the value of mean free path \\((\\lambda)\\) for oxygen molecules at temperature \\(27^{\\circ}C\\) and pressure \\(1.01 \\times10^{5}\\text{ }Pa\\). Assume the molecular diameter is \\(0.3\\text{ }nm\\) and the gas is ideal. \\(\\left( k = 1.38 \\times 10^{-23}\\ J\\,K^{-1} \\right)\\)",
+    "13": "A bimetallic strip consists of metals \\(A\\) and \\(B\\). It is mounted rigidly as shown. The metal A has higher coefficient of expansion compared to that of metal B. When the bimetallic strip is placed in a cold bath, it will:",
     "14": "A resistor develops \\(500\\text{ }J\\) of thermal energy in \\(20\\text{ }s\\) when a current of \\(1.5\\text{ }A\\) is passed through it. If the current is increased from \\(1.5\\text{ }A\\) to \\(3\\text{ }A\\), what will be the energy developed in \\(20\\text{ }s\\)?",
     "34": "Identify the elements \\(X\\) and \\(Y\\) using the ionisation energy values (kJ/mol) given below:\n\n| Element | 1st IE | 2nd IE |\n|---|---|---|\n| X | 495 | 4563 |\n| Y | 731 | 1450 |",
     "37": "\\(\\mathrm{Fe}x_{2}\\) and \\(\\mathrm{Fe}y_{3}\\) are known when \\(x\\) and \\(y\\) are:",
@@ -310,8 +311,11 @@
   },
   "authoredSolutions": {
     "1": "Each of the first two NAND gates has both inputs tied together, so it acts as an inverter, producing \\(\\bar{A}\\) and \\(\\bar{B}\\). The third NAND gives \\((\\bar{A}\\cdot\\bar{B})' = A+B\\) (De Morgan), and the final NAND (again an inverter) gives \\((A+B)'\\). So \\(Y=(A+B)'\\) — a NOR gate. Hence option (A).",
+    "5": "At \\(t = 2\\ s\\), \\(\\vec{v} = 0.5(4)\\hat{i} + 3(2)\\hat{j} + 9\\hat{k} = 2\\hat{i} + 6\\hat{j} + 9\\hat{k}\\ m/s\\), of magnitude \\(11\\ m/s\\). The direction of motion makes \\(\\cos^{-1}\\frac{2}{11}\\), \\(\\cos^{-1}\\frac{6}{11}\\) and \\(\\cos^{-1}\\frac{9}{11}\\) with the x, y and z axes, and no option gives this. The key matches the direction of the acceleration: \\(\\vec{a} = \\frac{d\\vec{v}}{dt} = t\\hat{i} + 3\\hat{j}\\), which at \\(t = 2\\ s\\) is \\(2\\hat{i} + 3\\hat{j}\\), in the xy-plane at \\(\\tan^{-1}\\frac{2}{3}\\) from the y-axis. Option (b), read as the direction of the mosquito's acceleration.",
     "7": "For a charge accelerated through a potential \\(V\\), \\(\\lambda=\\frac{h}{\\sqrt{2mqV}}\\). The electron and proton carry the same charge and are accelerated through the same \\(V\\), so \\(V\\) cancels and \\(\\frac{\\lambda_e}{\\lambda_p}=\\sqrt{\\frac{m_p}{m_e}}=\\sqrt{\\frac{1.00727}{0.00055}}\\approx\\sqrt{1831}\\approx 43\\). Hence option (D).",
     "9": "Number of atoms \\(N=\\frac{1.5\\times10^{-3}}{198}\\times 6\\times10^{23}=4.55\\times10^{18}\\). Decay constant \\(\\lambda=\\frac{0.693}{2.7\\times24\\times3600}=2.97\\times10^{-6}\\ s^{-1}\\). Activity \\(=\\lambda N=1.35\\times10^{13}\\ Bq=\\frac{1.35\\times10^{13}}{3.7\\times10^{10}}\\approx 357\\ Ci\\). Hence option (B).",
+    "10": "\\[\\lambda = \\frac{kT}{\\sqrt{2}\\pi d^{2}P} = \\frac{1.38 \\times 10^{-23} \\times 300}{1.414 \\times 3.14 \\times \\left(0.3 \\times 10^{-9}\\right)^{2} \\times 1.01 \\times 10^{5}} = \\frac{4.14 \\times 10^{-21}}{4.04 \\times 10^{-14}} \\approx 1.02 \\times 10^{-7}\\ m = 102\\ nm.\\] Hence option (d).",
+    "13": "In the cold bath both metals contract. Metal A has the larger coefficient of expansion, so it shrinks more and becomes the shorter strip. A bimetallic strip curls so that the shorter metal is on the inner (concave) side. A is on the left in the figure, so the free end bends towards the left. Hence option (d).",
     "15": "Statement I: the maximum safe speed on the unbanked road is \\(v_{max}=\\sqrt{\\mu g r}=\\sqrt{0.2\\times9.8\\times2}=1.97\\ m/s\\); the cyclist's \\(7\\ km/h=1.94\\ m/s<1.97\\), so he does not slip — I is true. Statement II: on a road banked at \\(45^\\circ\\) with the same friction, \\(v_{max}=\\sqrt{rg\\,\\frac{\\tan\\theta+\\mu}{1-\\mu\\tan\\theta}}=\\sqrt{2\\times9.8\\times\\frac{1.2}{0.8}}=5.42\\ m/s\\); \\(18.5\\ km/h=5.14\\ m/s<5.42\\), so he crosses safely — II is true. Hence option (D).",
     "32": "The ring methyl group is oxidised to a carboxylic acid (\\(-CH_3\\to -COOH\\)), turning 3-methoxytoluene into 3-methoxybenzoic acid. Such side-chain oxidation is achieved with alkaline \\(KMnO_4\\) followed by acidification. \\(NaBH_4\\) and \\(LiAlH_4\\) are reducing agents and \\(HCl/Zn\\text{-}Hg\\) is a reduction, so none of those work. Hence option (C).",
     "34": "A very large jump between two successive ionisation enthalpies marks the point where the valence shell has been emptied.\n\nX: \\(IE_1 = 495\\) is low and \\(IE_2 = 4563\\) is about nine times larger. X has one valence electron, and \\(X^{+}\\) has a noble-gas core, so X is sodium, \\(\\mathrm{[Ne]3s^1}\\).\n\nY: \\(IE_1 = 731\\) and \\(IE_2 = 1450\\) are both moderate, about a factor of 2 apart, so both electrons come from the valence shell. Y is magnesium, \\(\\mathrm{[Ne]3s^2}\\); its big jump comes at \\(IE_3\\).\n\nFluorine would have a very high \\(IE_1\\) (1681). So X = Na and Y = Mg, option (a).",

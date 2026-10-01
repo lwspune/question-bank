@@ -11,12 +11,12 @@
     "2": {
       "subject": "Physics",
       "chapter": "Mechanical Properties of Solids",
-      "subtopic": "Elastic Moduli"
+      "subtopic": "Bulk Modulus, Shear Modulus and Poisson's Ratio"
     },
     "3": {
       "subject": "Physics",
       "chapter": "Laws of Motion",
-      "subtopic": "Friction"
+      "subtopic": "Static and Kinetic Friction"
     },
     "4": {
       "subject": "Physics",
@@ -26,12 +26,12 @@
     "5": {
       "subject": "Physics",
       "chapter": "System of Particles and Rotational Motion",
-      "subtopic": "Moment of Inertia"
+      "subtopic": "Moment of Inertia and Radius of Gyration"
     },
     "6": {
       "subject": "Physics",
       "chapter": "Motion in a Plane",
-      "subtopic": "Projectile Motion"
+      "subtopic": "Projectile: Time of Flight, Maximum Height and Range"
     },
     "7": {
       "subject": "Physics",
@@ -46,12 +46,12 @@
     "9": {
       "subject": "Physics",
       "chapter": "Mechanical Properties of Solids",
-      "subtopic": "Elastic Moduli"
+      "subtopic": "Loaded Wires, Combinations and Breaking Stress"
     },
     "10": {
       "subject": "Physics",
       "chapter": "Kinetic Theory",
-      "subtopic": "Kinetic Theory of Gases"
+      "subtopic": "Ideal Gas Equation and Gas Laws"
     },
     "11": {
       "subject": "Physics",
@@ -437,6 +437,8 @@
   },
   "notes": "4 Apr 2026 Shift 1 — Maths only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.\n4 Apr 2026 Shift 1 — Chemistry only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.\n[Chemistry option repair] Q40 options B/C/D: OCR dropped the closing paren after (D. Pairings unchanged; key B is correct (Finkelstein-NaI, Swarts-SbF3, Sandmeyer-Cu2Cl2, Fittig-Na/dry ether).",
   "authoredSolutions": {
+    "6": "For the same speed, \\(R = \\frac{u^{2}\\sin 2\\theta}{g}\\) is proportional to \\(\\sin 2\\theta\\): \\[\\frac{R_{15^{\\circ}}}{R_{30^{\\circ}}} = \\frac{\\sin 30^{\\circ}}{\\sin 60^{\\circ}} = \\frac{1/2}{\\sqrt{3}/2} = \\frac{1}{\\sqrt{3}}.\\] The ratio is \\(1:\\sqrt{3}\\), so \\(x = \\sqrt{3}\\), option (b).",
+    "9": "Both strings carry the same tension \\(mg = 0.8\\times10 = 8\\ N\\) and have the same area \\(A = \\pi r^{2} = 3.14\\times\\left(2\\times10^{-4}\\right)^{2} = 1.256\\times10^{-7}\\ m^{2}\\). B has twice the length and twice the modulus, so it stretches exactly as much as A: \\[\\Delta l = \\frac{mgl}{AY} + \\frac{mg(2l)}{A(2Y)} = \\frac{2mgl}{AY} = \\frac{2\\times8\\times0.314}{1.256\\times10^{-7}\\times2\\times10^{10}} = \\frac{5.024}{2512} = 2\\times10^{-3}\\ m.\\] The net change is 2 mm, option (b).",
     "22": "A soap bubble has two surfaces, so the work done is \\(W = T\\cdot8\\pi\\left(r_{2}^{2} - r_{1}^{2}\\right)\\). With \\(T = 3.5\\times10^{-2}\\ N/m\\), \\(r_{1} = 0.01\\ m\\) and \\(r_{2} = 0.02\\ m\\): \\[W = 3.5\\times10^{-2}\\times8\\times\\frac{22}{7}\\times(4 - 1)\\times10^{-4} = 2.64\\times10^{-4}\\ J = 264\\times10^{-6}\\ J.\\] So \\(\\alpha = 264\\).",
     "26": "At STP one mole of an ideal gas occupies \\(22.4\\ L\\).\n\nMoles of \\(SO_{2} = \\frac{1.4187}{22.4} = 0.0633\\).\n\nNumber of molecules \\(= 0.0633 \\times 6.022 \\times 10^{23} = 3.812 \\times 10^{22}\\).\n\nOnly option B pairs these two values consistently: options A and C double the number of moles, and option D keeps the correct mole value but doubles the molecule count.",
     "27": "For a transition \\(n_{2} \\rightarrow n_{1}\\) in the hydrogen atom the wave number is \\(\\bar{\\nu} = R\\left(\\frac{1}{n_{1}^{2}} - \\frac{1}{n_{2}^{2}}\\right)\\).\n\nThe first (lowest energy) Balmer line is \\(3 \\rightarrow 2\\):\n\\(\\bar{\\nu}_{Balmer} = R\\left(\\frac{1}{4} - \\frac{1}{9}\\right) = \\frac{5R}{36}\\).\n\nThe first Brackett line is \\(5 \\rightarrow 4\\):\n\\(\\bar{\\nu}_{Brackett} = R\\left(\\frac{1}{16} - \\frac{1}{25}\\right) = \\frac{9R}{400}\\).\n\nRatio \\(= \\frac{5/36}{9/400} = \\frac{2000}{324} = 6.17\\).\n\nExpressed with 5 as the first term, \\(6.17 = \\frac{5}{0.81}\\), i.e. \\(5 : 0.81\\).",
@@ -491,6 +493,7 @@
   },
   "stemOverrides": {
     "2": "The increase in the pressure required to decrease the volume ( \\(\\Delta V\\) ) of water is \\(6.3 \\times10^{7}\\text{ }N/m^{2}\\). The percentage decrease in the volume is \\(\\_\\_\\_\\_\\) . (Bulk modulus of water \\(= 2.1 \\times10^{9}\\text{ }N/m^{2}\\))",
+    "5": "A solid sphere of mass M and radius R is divided into two unequal parts. The smaller part having mass M/8 is converted into a sphere of radius r and the larger part is converted into a circular disc of thickness \\(t\\) and radius \\(2R\\). If \\(I_{1}\\) is moment of inertia of a sphere having radius r about an axis through its centre and \\(I_{2}\\) is the moment of inertia of a disc about its diameter, the ratio of their moment of inertia \\(I_{2}/I_{1}=\\) \\(\\_\\_\\_\\_\\) .",
     "16": "An insulated wire is wound so that it forms a flat coil with \\(N = 200\\) turns. The radius of the innermost turn is \\(r_{1}= 3\\text{ }cm\\), and of the outermost turn \\(r_{2}= 6\\text{ }cm\\). If 20 mA current flow in it then the magnetic moment will be \\(\\alpha \\times10^{- 2}\\text{ }A.m^{2}\\). The value of \\(\\alpha\\) is \\(\\_\\_\\_\\_\\) .",
     "17": "Consider a circuit consisting of a capacitor \\((20\\mu\\text{ }F)\\), resistor ( \\(100\\Omega\\) ) and two identical diodes as shown in figure. The resistance of diode under forward biasing condition is \\(10\\Omega\\). The time constant of the circuit is \\(\\alpha \\times10^{- 3}\\text{ }s\\). The value of \\(\\alpha\\) is \\(\\_\\_\\_\\_\\) .",
     "22": "The surface tension of a soap solution is \\(3.5 \\times 10^{- 2}\\text{ }N/m\\). The work required to increase the radius of a soap bubble from 1 cm to 2 cm is \\(\\alpha \\times 10^{- 6}\\text{ }J\\). The value of \\(\\alpha\\) is \\(\\_\\_\\_\\_\\) . \\((\\pi = 22/7)\\)",

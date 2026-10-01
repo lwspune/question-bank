@@ -6,7 +6,7 @@
     "1": {
       "subject": "Physics",
       "chapter": "Motion in a Plane",
-      "subtopic": "Projectile Motion"
+      "subtopic": "Projectile: Velocity, Trajectory and Projection from a Height"
     },
     "2": {
       "subject": "Physics",
@@ -61,7 +61,7 @@
     "12": {
       "subject": "Physics",
       "chapter": "Mechanical Properties of Solids",
-      "subtopic": "Elastic Moduli"
+      "subtopic": "Loaded Wires, Combinations and Breaking Stress"
     },
     "13": {
       "subject": "Physics",
@@ -76,7 +76,7 @@
     "15": {
       "subject": "Physics",
       "chapter": "Kinetic Theory",
-      "subtopic": "Kinetic Theory of Gases"
+      "subtopic": "Ideal Gas Equation and Gas Laws"
     },
     "16": {
       "subject": "Physics",
@@ -86,7 +86,7 @@
     "17": {
       "subject": "Physics",
       "chapter": "System of Particles and Rotational Motion",
-      "subtopic": "Collisions and Angular Momentum"
+      "subtopic": "Angular Momentum and Its Conservation"
     },
     "18": {
       "subject": "Physics",
@@ -106,7 +106,7 @@
     "21": {
       "subject": "Physics",
       "chapter": "Mechanical Properties of Solids",
-      "subtopic": "Elastic Moduli"
+      "subtopic": "Bulk Modulus, Shear Modulus and Poisson's Ratio"
     },
     "22": {
       "subject": "Physics",
@@ -126,7 +126,7 @@
     "25": {
       "subject": "Physics",
       "chapter": "Waves",
-      "subtopic": "Resonance and Standing Waves"
+      "subtopic": "Superposition and Standing Waves on Strings"
     },
     "26": {
       "subject": "Physics",
@@ -151,7 +151,7 @@
     "30": {
       "subject": "Physics",
       "chapter": "Laws of Motion",
-      "subtopic": "Pseudo Force and Non-Inertial Frames"
+      "subtopic": "Lifts, Pseudo Forces and Circular Motion"
     },
     "31": {
       "subject": "Chemistry",
@@ -426,6 +426,7 @@
   },
   "stemOverrides": {
     "3": "Two particles \\(A\\) and \\(B\\) having charges \\(20\\mu C\\) and \\(- 5\\mu C\\) respectively are held fixed with a separation of \\(5\\text{ }cm\\). At what position a third charged particle should be placed so that it does not experience a net electric force?",
+    "12": "A uniform heavy rod of weight \\(10\\text{ }kg{\\text{ }ms}^{- 2}\\), cross-sectional area \\(100{\\text{ }cm}^{2}\\) and length \\(20\\text{ }cm\\) is hanging from a fixed support. Young modulus of the material of the rod is \\(2 \\times10^{11}Nm^{- 2}\\). Neglecting the lateral contraction, find the elongation of rod due to its own weight.",
     "14": "Match List-I with List-II.\n\n| List-I | List-II |\n|---|---|\n| (A) Torque | (i) \\(MLT^{-1}\\) |\n| (B) Impulse | (ii) \\(MT^{-2}\\) |\n| (C) Tension | (iii) \\(ML^{2}T^{-2}\\) |\n| (D) Surface Tension | (iv) \\(MLT^{-2}\\) |\n\nChoose the most appropriate answer from the option given below:",
     "21": "When a rubber ball is taken to a depth of ___ m in deep sea, its volume decreases by \\(0.5\\%\\). (The bulk modulus of rubber \\(= 9.8 \\times10^{8}Nm^{- 2}\\) Density of sea water \\(=10^{3}kgm^{- 3}\\) \\(g = 9.8\\text{ }m/s^{2}\\) )",
     "23": "If the sum of the heights of transmitting and receiving antennas in the line of sight of communication is fixed at \\(160\\text{ }m\\), then the maximum range of LOS communication is ___ km. (Take radius of Earth \\(= 6400\\text{ }km\\) )",
@@ -449,7 +450,10 @@
     "79": "If \\(a_{r}= \\cos\\frac{2r\\pi}{9}+i\\sin\\frac{2r\\pi}{9},r = 1,2,3,\\ldots,i=\\sqrt{- 1}\\), then the determinant \\(\\left| \\begin{matrix} a_{1} & a_{2} & a_{3} \\\\ a_{4} & a_{5} & a_{6} \\\\ a_{7} & a_{8} & a_{9} \\end{matrix} \\right|\\) is equal to :"
   },
   "authoredSolutions": {
+    "1": "The packet keeps the helicopter's horizontal speed \\(v\\) and falls the height \\(h\\) in \\(t = \\sqrt{\\frac{2h}{g}}\\), so it lands a horizontal distance \\(x = v\\sqrt{\\frac{2h}{g}}\\) ahead of the release point. The man must stand there, so at the moment of release the helicopter is at a distance \\[\\sqrt{x^{2} + h^{2}} = \\sqrt{\\frac{2v^{2}h}{g} + h^{2}}\\] from him, option (c).",
     "8": "Let both bodies leave at angle \\(\\theta\\) on opposite sides of the initial direction, with speeds \\(V_{1}\\) (mass \\(M\\)) and \\(V_{2}\\) (mass \\(m\\)). Momentum across the initial line: \\(MV_{1}\\sin\\theta = mV_{2}\\sin\\theta\\), so \\(mV_{2} = MV_{1}\\). Momentum along it: \\(MV_{0} = (MV_{1} + mV_{2})\\cos\\theta = 2MV_{1}\\cos\\theta\\), so \\(V_{0} = 2V_{1}\\cos\\theta\\). Kinetic energy: \\(MV_{0}^{2} = MV_{1}^{2} + mV_{2}^{2} = MV_{1}^{2} + \\frac{M^{2}V_{1}^{2}}{m}\\), so \\(V_{0}^{2} = V_{1}^{2}\\left(1 + \\frac{M}{m}\\right)\\). Substituting \\(V_{0}\\) gives \\(4\\cos^{2}\\theta = 1 + \\frac{M}{m}\\). Since \\(\\cos^{2}\\theta \\leq 1\\), \\(\\frac{M}{m} \\leq 3\\); the largest value is 3, option (c).",
+    "12": "Under its own weight the tension in a hanging rod grows from zero at the bottom to \\(W\\) at the top, so the rod stretches as if the average tension \\(\\frac{W}{2}\\) acted along its whole length: \\(\\Delta l = \\frac{WL}{2AY}\\). With \\(W = 10\\ N\\), \\(L = 0.2\\ m\\) and \\(A = 100\\ cm^{2} = 10^{-2}\\ m^{2}\\): \\[\\Delta l = \\frac{10\\times0.2}{2\\times10^{-2}\\times2\\times10^{11}} = \\frac{2}{4\\times10^{9}} = 5\\times10^{-10}\\ m,\\] option (d).",
+    "25": "The wave speed is \\(v = \\sqrt{\\frac{T}{\\mu}} = \\sqrt{\\frac{900}{9.0 \\times 10^{-4}}} = 1000\\ m/s\\). For a wire fixed at both ends \\(f_{n} = \\frac{nv}{2L}\\), so two consecutive resonant frequencies differ by the fundamental: \\[\\frac{v}{2L} = 550 - 500 = 50\\ Hz \\Rightarrow L = \\frac{1000}{2 \\times 50} = 10\\ m.\\]",
     "31": "Acetate ion in acetic acid is a weak nucleophile in a polar protic solvent, so the substitution is a solvolysis that goes by \\(S_{N}1\\) and the rate order is simply the order of carbocation stability. Ionisation of the first chloride gives an allylic cation whose positive charge is delocalised onto the methyl-bearing alkene carbon, i.e. a tertiary allylic cation, the most stable of the four. The second chloride is also allylic but its delocalised cation reaches only secondary centres; the third has chlorine at a non-allylic secondary carbon so no allylic delocalisation is possible; the last is a primary \\(CH_{2}Cl\\) whose cation gets neither alkyl nor allylic help. The sequence tertiary allylic > secondary allylic > secondary > primary is option (A).",
     "32": "Adsorption of a gas obeys the Freundlich isotherm \\(\\frac{x}{m}=kP^{1/n}\\) with \\(0<\\frac{1}{n}<1\\), so a plot of \\(x/m\\) against \\(P\\) rises steeply at first and then flattens towards saturation. That immediately rules out the two straight-line graphs. Adsorption is exothermic, so raising the temperature shifts the equilibrium back and lowers the amount adsorbed at any given pressure. Since \\(T_{1}>T_{2}\\), the \\(T_{2}\\) curve must lie above the \\(T_{1}\\) curve, and only option (D) shows two saturating curves with \\(T_{2}\\) on top.",
     "33": "Portland cement is a mixture of calcium silicates and calcium aluminate obtained by heating limestone with clay. Its approximate composition is tricalcium silicate \\(3CaO\\cdot SiO_{2}\\) about \\(51\\%\\), dicalcium silicate \\(2CaO\\cdot SiO_{2}\\) about \\(26\\%\\) and tricalcium aluminate \\(3CaO\\cdot Al_{2}O_{3}\\) about \\(11\\%\\). The single largest component is therefore tricalcium silicate, option (B).",
@@ -528,6 +532,9 @@
     "60": 108
   },
   "optionOverrides": {
+    "15": {
+      "A": "\\(\\frac{p_{0}}{aeR}\\)"
+    },
     "16": {
       "C": "\\(J = \\epsilon\\frac{\\partial E}{\\partial t}\\)",
       "D": "\\(W = \\Gamma\\theta\\)",

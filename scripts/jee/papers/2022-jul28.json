@@ -21,7 +21,7 @@
     "4": {
       "subject": "Physics",
       "chapter": "Laws of Motion",
-      "subtopic": "Variable Mass and Rocket Propulsion"
+      "subtopic": "Newton's Second Law, Impulse and Variable Mass"
     },
     "5": {
       "subject": "Physics",
@@ -31,7 +31,7 @@
     "6": {
       "subject": "Physics",
       "chapter": "Mechanical Properties of Solids",
-      "subtopic": "Elastic Moduli"
+      "subtopic": "Stress, Strain and Young's Modulus"
     },
     "7": {
       "subject": "Physics",
@@ -41,12 +41,12 @@
     "8": {
       "subject": "Physics",
       "chapter": "Kinetic Theory",
-      "subtopic": "Kinetic Theory of Gases"
+      "subtopic": "Molecular Speeds and Mean Free Path"
     },
     "9": {
       "subject": "Physics",
       "chapter": "Waves",
-      "subtopic": "Travelling Waves"
+      "subtopic": "Wave Equation and Particle Motion"
     },
     "10": {
       "subject": "Physics",
@@ -106,7 +106,7 @@
     "21": {
       "subject": "Physics",
       "chapter": "Motion in a Plane",
-      "subtopic": "Vector Addition"
+      "subtopic": "Vectors: Resultant, Components and Products"
     },
     "22": {
       "subject": "Physics",
@@ -136,7 +136,7 @@
     "27": {
       "subject": "Physics",
       "chapter": "Waves",
-      "subtopic": "Doppler Effect"
+      "subtopic": "Beats and the Doppler Effect"
     },
     "28": {
       "subject": "Physics",
@@ -151,7 +151,7 @@
     "30": {
       "subject": "Physics",
       "chapter": "System of Particles and Rotational Motion",
-      "subtopic": "Moment of Inertia"
+      "subtopic": "Parallel and Perpendicular Axes and Composite Bodies"
     },
     "31": {
       "subject": "Chemistry",
@@ -466,12 +466,12 @@
     "93": {
       "subject": "Physics",
       "chapter": "Laws of Motion",
-      "subtopic": "Variable Mass and Rocket Propulsion"
+      "subtopic": "Newton's Second Law, Impulse and Variable Mass"
     },
     "94": {
       "subject": "Physics",
       "chapter": "Laws of Motion",
-      "subtopic": "Equilibrium and Free-Body Diagrams"
+      "subtopic": "Connected Bodies and Pulleys"
     },
     "95": {
       "subject": "Physics",
@@ -491,7 +491,7 @@
     "98": {
       "subject": "Physics",
       "chapter": "Kinetic Theory",
-      "subtopic": "Kinetic Theory of Gases"
+      "subtopic": "Internal Energy and Gas Mixtures"
     },
     "99": {
       "subject": "Physics",
@@ -561,12 +561,12 @@
     "112": {
       "subject": "Physics",
       "chapter": "System of Particles and Rotational Motion",
-      "subtopic": "Centre of Mass"
+      "subtopic": "Centre of Mass and Its Motion"
     },
     "113": {
       "subject": "Physics",
       "chapter": "Mechanical Properties of Solids",
-      "subtopic": "Elastic Moduli"
+      "subtopic": "Loaded Wires, Combinations and Breaking Stress"
     },
     "114": {
       "subject": "Physics",
@@ -1031,6 +1031,8 @@
   },
   "notes": "28 July 2022 — Maths only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.\n28 July 2022 — Chemistry only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.\n[Chemistry paper defect, key RETAINED] Q128 asks which pair is NOT isoelectronic, and TWO options qualify: (A) Sm2+ = 60 e- vs Er3+ = 65 e-, and the keyed (D) Tb2+ = 63 e- vs Tm4+ = 65 e-. (B) Yb2+/Lu3+ = 68/68 and (C) Eu2+/Tb4+ = 61/61 are both genuinely isoelectronic. The printed solution proves the defect against itself: it tabulates all four counts as 60, 65, 63, 65 and braces the whole block 'not isoelectronic' without ever saying why A is excluded. This is a defect in the printed paper, not a wrong key, so the official answer D is preserved with this note rather than flipped.\n[Chemistry stem repair] Q51: The reaction arrow has swallowed the product: the extracted text reads '\\\\rightleftarrowsXYZ_{3}', i.e. the LaTeX command is glued to 'XYZ_{3}' with no separating space, so the math zone will not render.\n[Chemistry stem repair] Q142: The edge length has lost its leading digit: the extracted stem reads '.0 \\\\times 10^{-8} cm'. It must be 4.0 x 10^-8 cm - this is forced by the data, since M = d*NA*a^3/Z must come out at 87, and the printed solution states 'a = 4 x 10^-8 cm' explicitly.\n[Chemistry stem repair] Q143: The wavelength has lost its leading digit: the extracted stem reads '.3 \\\\times 10^{-10} m'. It must be 3.3 x 10^-10 m - the printed solution uses lambda^2 = 10.89 x 10^-20, i.e. lambda = 3.3 x 10^-10 m, and no other leading digit gives a ratio near 2.\n[Chemistry stem repair] Q146: The collection pressure has lost its leading digit: the extracted stem reads '59 mmHg'. It must be 759 mmHg - with 59 mmHg the answer would be 1.3 per cent, and the printed solution writes 'P_total = 759 mmHg' and 'P_N2 = 759 - 14.2 = 744.8 mmHg'.\n[Chemistry stem repair] Q148: The plot description is garbled: 'the graph of \\\\(nkvv\\\\frac{1}{T}\\\\)' should read 'the graph of ln k vs 1/T'. Uniquely recoverable from the attached figure, whose axes are labelled ln k and 1/T (K^-1).",
   "authoredSolutions": {
+    "8": "Statement I is false: the molecules move in all directions at random, so the average momentum (a vector) is zero at every temperature. Statement II is true: \\(v_{rms} = \\sqrt{\\frac{3RT}{M}}\\). Doubling \\(T\\) and halving \\(M\\) (\\(O_{2} \\to O\\)) multiplies \\(\\frac{T}{M}\\) by 4, so the speed becomes \\(2v\\). Hence option (d).",
+    "30": "Each disc has radius \\(R = \\frac{a}{2}\\). From the figure, OO' passes through the centres of the top and bottom discs along a diameter, so each has \\(I = \\frac{MR^{2}}{4}\\). The left and right discs have their centres a distance \\(R\\) from OO', which is parallel to their diameters, so each has \\(I = \\frac{MR^{2}}{4} + MR^{2} = \\frac{5}{4}MR^{2}\\). The total is \\(I = 2 \\times \\frac{MR^{2}}{4} + 2 \\times \\frac{5}{4}MR^{2} = 3MR^{2} = \\frac{3}{4}Ma^{2}\\), so \\(x = 3\\).",
     "31": "Bohr pictured the electron moving in a fixed circular path around the nucleus, and the discrete lines of the hydrogen spectrum are exactly the experimental support for those quantised orbits, so (A) and (C) are sound. An orbital is by definition a one-electron wave function \\(\\Psi\\) obtained from the Schrodinger equation, so (B) is sound. An atomic orbital, however, needs THREE quantum numbers to be fully specified: \\(n\\) fixes the size, \\(l\\) the shape and \\(m_{l}\\) the orientation in space; \\(n\\) and \\(l\\) alone are not enough. The incorrect statement is therefore option (D).",
     "32": "The first law is \\(\\Delta U = q + W\\), so (B) is correct. The second law written for system plus surroundings is \\(\\Delta S_{sys} + \\Delta S_{surr} \\geq 0\\), so (C) is correct, and (D) is the definition of Gibbs free energy. Enthalpy is defined as \\(H = U + PV\\), so at constant pressure \\(\\Delta H = \\Delta U + P\\Delta V\\). The sign in (A) is reversed, so the relation that is NOT correct is option (A).",
     "33": "\\(Cd + 2Ni(OH)_{3} \\rightarrow CdO + 2Ni(OH)_{2} + H_{2}O\\) is the Ni-Cd cell running forwards, i.e. discharging of a secondary battery, so (A)-(II). \\(Zn(Hg) + HgO \\rightarrow ZnO + Hg\\) is the mercury button cell, a non-rechargeable primary battery, so (B)-(I). \\(2PbSO_{4} + 2H_{2}O \\rightarrow Pb + PbO_{2} + 2H_{2}SO_{4}\\) is the REVERSE of the lead-storage discharge, i.e. charging of a secondary battery, so (C)-(IV). \\(2H_{2} + O_{2} \\rightarrow 2H_{2}O\\) is the hydrogen-oxygen fuel cell, so (D)-(III). The correct match is option (C).",
@@ -1091,7 +1093,9 @@
     "88": "Here \\(x_i=\\frac{3}{2^{i-1}}\\) and \\(20\\bar x=\\sum x_i^2-2\\sum ix_i+\\sum i^2\\). \\(\\sum x_i^2=9\\sum_{i=1}^{20}4^{1-i}=12(1-4^{-20})\\); \\(\\sum ix_i=3\\sum_{i=1}^{20}i\\,2^{1-i}=12\\left(1-\\frac{11}{2^{20}}\\right)\\); \\(\\sum i^2=\\frac{20\\cdot21\\cdot41}{6}=2870\\). So \\(20\\bar x=2858+\\epsilon\\) with \\(0<\\epsilon<0.001\\), giving \\(\\bar x\\approx142.9\\). The greatest integer is \\(142\\).",
     "89": "With \\(h(u)=u^3+2u^2+3\\sin u\\), the base is \\(\\frac{h(x+2\\cos x)}{h(x+2)}\\to1\\) as \\(x\\to0\\) (both \\(\\to h(2)\\)). It is \\(1^\\infty\\): exponent \\(\\frac{100}{x}\\big(\\frac{N}{D}-1\\big)\\approx\\frac{100}{x}\\cdot\\frac{h'(2)\\,2(\\cos x-1)}{h(2)}\\to0\\) since \\(\\cos x-1\\sim-x^2/2\\). Limit \\(=e^0=1\\).",
     "90": "Let \\(a=3x^2-9x+17,\\ b=x^2+3x+10,\\ c=2x^2+2x+2\\); then the RHS numerator and denominator are \\(a+c\\) and \\(b+c\\). \\(\\frac ab=\\frac{a+c}{b+c}\\Rightarrow c(a-b)=0\\). \\(c=2(x^2+x+1)\\ne0\\) (no real roots), so \\(a=b\\): \\(2x^2-12x+7=0\\), whose sum of roots is \\(6\\).",
+    "94": "The longer side, \\(L - l\\), pulls the chain round. With \\(\\lambda\\) the mass per unit length, the net driving force is \\(\\lambda(L - l)g - \\lambda lg\\) and the whole mass \\(\\lambda L\\) moves, so \\(a = \\frac{(L - 2l)g}{L}\\). Setting \\(a = \\frac{g}{2}\\): \\(L - 2l = \\frac{L}{2}\\), so \\(l = \\frac{L}{4}\\) and \\(x = 4\\), option (d).",
     "97": "Apply Bernoulli's equation between the water surface under the piston and the hole, 10 m lower; the tank is wide, so the surface speed is negligible. The piston adds \\(\\frac{F}{A} = \\frac{5\\times10^{5}}{\\pi(1)^{2}} = 1.59\\times10^{5}\\ Pa\\). The key takes this as the only pressure on the surface (no atmosphere above the piston), while the jet leaves into the atmosphere: \\[1.59\\times10^{5} + 10^{3}\\times10\\times10 = 1.01\\times10^{5} + \\frac{1}{2}\\times10^{3}v^{2},\\] so \\(v^{2} \\approx 316\\) and \\(v \\approx 17.8\\ m/s\\), option (c). If the atmosphere also pressed on the piston, \\(v^{2} = \\frac{2\\left(1.59\\times10^{5} + 10^{5}\\right)}{10^{3}} \\approx 518\\) and \\(v \\approx 22.8\\ m/s\\), which is not an option.",
+    "113": "At the bottom of the circle the string must hold up the weight and also supply the centripetal force: \\[T = mg + \\frac{mv^{2}}{r} = 2\\times10 + \\frac{2\\times5^{2}}{0.5} = 20 + 100 = 120\\ N.\\] With \\(A = 4\\ mm^{2} = 4\\times10^{-6}\\ m^{2}\\), \\[\\text{strain} = \\frac{T}{AY} = \\frac{120}{4\\times10^{-6}\\times10^{11}} = 3\\times10^{-4} = 30\\times10^{-5}.\\]",
     "120": "From \\(T = 2\\pi\\sqrt{\\frac{l}{g}}\\), \\(g = \\frac{4\\pi^{2}l}{T^{2}}\\), so \\[\\frac{\\Delta g}{g} = \\frac{\\Delta l}{l} + 2\\frac{\\Delta T}{T}.\\] Length: \\(\\frac{1\\ mm}{10\\ cm} = \\frac{0.1}{10} = 0.01\\). Time: 100 oscillations of \\(0.5\\ s\\) take \\(50\\ s\\), read with a \\(1\\ s\\) watch, so \\(\\frac{\\Delta T}{T} = \\frac{1}{50} = 0.02\\). Hence \\(\\frac{\\Delta g}{g} = 0.01 + 2(0.02) = 0.05 = 5\\%\\), and \\(x = 5\\).",
     "121": "Overlap of atomic orbitals is classified as positive, negative or zero according to the SIGN of the wave functions in the region where the lobes meet. Zero overlap arises when the two orbitals approach along a direction for which the in-phase (positive) contribution is exactly cancelled by the out-of-phase (negative) contribution, for example an \\(s\\) orbital approaching a \\(p\\) orbital perpendicular to its axis; the net overlap integral is then zero and no bond forms. So the Assertion is true, and the Reason, that this comes from the relative orientation and direction of approach of the orbitals, is precisely why the cancellation occurs. Both statements are true and the Reason correctly explains the Assertion, option (A).",
     "122": "Metallic character increases DOWN a group (atomic size grows, ionisation enthalpy falls) and decreases ACROSS a period from left to right. \\(Na\\), \\(Mg\\), \\(Si\\) and \\(P\\) are all period-3 elements, so along the period \\(Na > Mg > Si > P\\). \\(Be\\) sits above \\(Mg\\) in group 2, so \\(Mg > Be\\), and \\(Be\\) is still more metallic than the metalloid \\(Si\\). Combining these gives \\(Na > Mg > Be > Si > P\\), option (A).",
@@ -1157,10 +1161,12 @@
   "stemOverrides": {
     "2": "A NCC parade is going at a uniform speed of \\(9\\text{ }km/h\\) under a mango tree on which a monkey is sitting at a height of \\(19.6\\text{ }m\\). At any particular instant, the monkey drops a mango. A cadet will receive the mango whose distance from the tree at time of drop is: (Given \\(g = 9.8\\text{ }m/s^{2}\\) )",
     "4": "A balloon has mass of \\(10\\text{ }g\\) in air. The air escapes from the balloon at a uniform rate with velocity \\(4.5\\text{ }cm/s\\). If the balloon shrinks in \\(5\\text{ }s\\) completely. Then, the average force acting on that balloon will be (in dyne).",
+    "6": "The force required to stretch a wire of cross-section \\(1{\\text{ }cm}^{2}\\) to double its length will be: (Given Young's modulus of the wire \\(= 2 \\times10^{11}\\text{ }N/m^{2}\\) )",
     "16": "In normal adjustment, for a refracting telescope, the distance between objective and eye piece is \\(30\\text{ }cm\\). The focal length of the objective, when the angular magnification of the telescope is 2, will be:",
+    "21": "If the projection of \\(2\\widehat{i}+ 4\\widehat{j}- 2\\widehat{k}\\) on \\(\\widehat{i}+ 2\\widehat{j}+ \\alpha\\widehat{k}\\) is zero. Then, the value of \\(\\alpha\\) will be \\(\\_\\_\\_\\_\\).",
     "23": "In a Young's double slit experiment, a laser light of \\(560\\text{ }nm\\) produces an interference pattern with consecutive bright fringes' separation of \\(7.2\\text{ }mm\\). Now another light is used to produce an interference pattern with consecutive bright fringes' separation of \\(8.1\\text{ }mm\\). The wavelength of second light is nm.",
     "25": "As shown in the figure, a potentiometer wire of resistance \\(20\\Omega\\) and length \\(300\\text{ }cm\\) is connected with resistance box (R.B.) and a standard cell of emf \\(4\\text{ }V\\). For a resistance ' \\(R\\) ' of resistance box introduced into the circuit, the null point for a cell of \\(20mV\\) is found to be \\(60\\text{ }cm\\). The value of ' \\(R\\) ' is \\(\\Omega\\).",
-    "27": "The frequency of echo will be \\(Hz\\) if the train blowing a whistle of frequency \\(320\\text{ }Hz\\) is moving with a velocity of \\(36\\text{ }km/h\\) towards a hill from which an echo is heard by the train driver. Velocity of sound in air is \\(330\\text{ }m/s\\).",
+    "27": "The frequency of echo will be \\(\\_\\_\\_\\_\\) \\(Hz\\) if the train blowing a whistle of frequency \\(320\\text{ }Hz\\) is moving with a velocity of \\(36\\text{ }km/h\\) towards a hill from which an echo is heard by the train driver. Velocity of sound in air is \\(330\\text{ }m/s\\).",
     "28": "The diameter of an air bubble which was initially \\(2\\text{ }mm\\), rises steadily through a solution of density \\(1750\\text{ }kg{\\text{ }m}^{- 3}\\) at the rate of \\(0.35cms^{- 1}\\). The coefficient of viscosity of the solution is \\(\\_\\_\\_\\_\\) poise (in nearest integer). (the density of air is negligible).",
     "33": "Match List-I with List-II.\n\n|  | List-I |  | List-II |\n| --- | --- | --- | --- |\n| (A) | \\(Cd(s) + 2Ni(OH)_{3}(s) \\rightarrow CdO(s) + 2Ni(OH)_{2}(s) + H_{2}O(l)\\) | (I) | Primary battery |\n| (B) | \\(Zn(Hg) + HgO(s) \\rightarrow ZnO(s) + Hg(l)\\) | (II) | Discharging of secondary battery |\n| (C) | \\(2PbSO_{4}(s) + 2H_{2}O(l) \\rightarrow Pb(s) + PbO_{2}(s) + 2H_{2}SO_{4}(aq)\\) | (III) | Fuel cell |\n| (D) | \\(2H_{2}(g) + O_{2}(g) \\rightarrow 2H_{2}O(l)\\) | (IV) | Charging of secondary battery |\n\nChoose the correct answer from the options given below:",
     "39": "Match List-I with List-II: match the gas evolved during each reaction.\n\n|  | List-I |  | List-II |\n| --- | --- | --- | --- |\n| (A) | \\(\\mathrm{(NH_4)_2Cr_2O_7 \\xrightarrow{\\Delta}}\\) | (I) | \\(\\mathrm{H_2}\\) |\n| (B) | \\(\\mathrm{KMnO_4 + HCl \\rightarrow}\\) | (II) | \\(\\mathrm{N_2}\\) |\n| (C) | \\(\\mathrm{Al + NaOH + H_2O \\rightarrow}\\) | (III) | \\(\\mathrm{O_2}\\) |\n| (D) | \\(\\mathrm{NaNO_3 \\xrightarrow{\\Delta}}\\) | (IV) | \\(\\mathrm{Cl_2}\\) |\n\nChoose the correct answer from the options given below:",
@@ -1173,12 +1179,14 @@
     "92": "At time \\(t = 0\\) a particle starts travelling from a height \\(7\\widehat{z}\\text{ }cm\\) in a plane keeping \\(z\\) coordinate constant. At any instant of time it's position along the \\(x\\) and \\(y\\) directions are defined as \\(3t\\) and \\(5t^{3}\\) respectively. At \\(t = 1\\text{ }s\\) acceleration of the particle will be",
     "93": "A pressure-pump has a horizontal tube of cross-sectional area \\(10{\\text{ }cm}^{2}\\) for the outflow of water at a speed of \\(20\\text{ }m/s\\). The force exerted on the vertical wall just in front of the tube which stops water horizontally flowing out of the tube, is: [given: density of water \\(= 1000\\text{ }kg/m^{3}\\) ]",
     "97": "Consider a cylindrical tank of radius \\(1\\text{ }m\\) is filled with water. The top surface of water is at \\(15\\text{ }m\\) from the bottom of the cylinder. There is a hole on the wall of cylinder at a height of \\(5\\text{ }m\\) from the bottom. A force of \\(5 \\times10^{5}\\text{ }N\\) is applied on the top surface of water using a piston. The speed of efflux from the hole will be: (given atmospheric pressure \\(P_{A}= 1.01 \\times10^{5}\\text{ }Pa\\), density of water \\(\\rho_{w}= 1000\\text{ }kg/m^{3}\\) and gravitational acceleration \\(g= 10\\text{ }m/s^{2}\\) )",
+    "98": "A vessel contains \\(14\\text{ }g\\) of nitrogen gas at a temperature of \\(27^{\\circ}C\\). The amount of heat to be transferred to the gas to double the r.m.s. speed of its molecules will be : (Take \\(R = 8.32\\text{ }J{\\text{ }mol}^{- 1}K^{- 1}\\))",
     "100": "A uniform electric field \\(E = (8\\text{ }m/e)V/m\\) is created between two parallel plates of length \\(1\\text{ }m\\) as shown in figure, (where \\(m =\\) mass of electron and \\(e =\\) charge of electron). An electron enters the field symmetrically between the plates with a speed of \\(2\\text{ }m/s\\). The angle of the deviation \\((\\theta)\\) of the path of the electron as it comes out of the field will be",
     "102": "A triangular shaped wire carrying \\(10\\text{ }A\\) current is placed in a uniform magnetic field of \\(0.5\\text{ }T\\), as shown in figure. The magnetic force on segment \\(CD\\) is (Given \\(BC = CD = BD = 5\\text{ }cm\\) ).",
     "104": "A transformer operating at primary voltage \\(8kV\\) and secondary voltage \\(160\\text{ }V\\) serves a load of \\(80\\text{ }kW\\). Assuming the transformer to be ideal with purely resistive load and working on unity power factor, the loads in the primary and secondary circuit would be",
     "108": "A radioactive sample decays \\(\\frac{7}{8}\\) times its original quantity in 15 minutes. The half-life of the sample is",
     "111": "A ball is thrown vertically upwards with a velocity of \\(19.6{\\text{ }ms}^{- 1}\\) from the top of a tower. The ball strikes the ground after \\(6\\text{ }s\\). The height from the ground up to which the ball can rise will be \\(\\left( \\frac{k}{5} \\right)m\\). The value of \\(k\\) is .... (use \\(g = 9.8\\text{ }m/s^{2}\\)",
-    "113": "A string of area of cross-section \\(4{\\text{ }mm}^{2}\\) and length 0.5 m is connected with a rigid body of mass \\(2\\text{ }kg\\). The body is rotated in a vertical circular path of radius \\(0.5\\text{ }m\\). The body acquires a speed of \\(5\\text{ }m/s\\) at the bottom of the circular path. Strain produced in the string when the body is at the bottom of the circle is \\(\\ldots... \\times10^{- 5}\\). (Use Young's modulus \\(10^{11}\\text{ }N/m^{2}\\) and \\(g = 10\\text{ }m/s^{2}\\) )",
+    "112": "The distance of centre of mass from end \\(A\\) of a one- dimensional rod (AB) having mass density \\(\\rho =\\rho_{0}\\left( 1 -\\frac{x^{2}}{L^{2}} \\right)kg/m\\) and length \\(L\\) (in meter) is \\(\\frac{3\\text{ }L}{\\alpha}m\\). The value of \\(\\alpha\\) is (where \\(x\\) is the distance from end \\(A\\) )",
+    "113": "A string of area of cross-section \\(4{\\text{ }mm}^{2}\\) and length 0.5 m is connected with a rigid body of mass \\(2\\text{ }kg\\). The body is rotated in a vertical circular path of radius \\(0.5\\text{ }m\\). The body acquires a speed of \\(5\\text{ }m/s\\) at the bottom of the circular path. Strain produced in the string when the body is at the bottom of the circle is \\(\\_\\_\\_\\_\\times10^{- 5}\\). (Use Young's modulus \\(10^{11}\\text{ }N/m^{2}\\) and \\(g = 10\\text{ }m/s^{2}\\) )",
     "116": "An electrical bulb rated \\(220\\text{ }V,100\\text{ }W\\), is connected in series with another bulb rated \\(220\\text{ }V\\), \\(60\\text{ }W\\). If the voltage across combination is \\(220\\text{ }V\\), the power consumed by the \\(100\\text{ }W\\) bulb will be about W.",
     "118": "An object ' \\(o\\) ' is placed at a distance of \\(100\\text{ }cm\\) in front of a concave mirror of radius of curvature \\(200\\text{ }cm\\) as shown in the figure. The object starts moving towards the mirror at a speed \\(2\\text{ }cm/s\\). The position of the image from the mirror after \\(10\\text{ }s\\) will be at \\(cm\\).",
     "139": "Fructose gives \\(A\\) with \\(HCN\\) followed by \\(H_{3}O^{+}\\), and gives \\(B\\) with (i) \\(NaBH_{4}\\), (ii) \\(HI/P\\). The formulas of \\(A\\) and \\(B\\) are",
