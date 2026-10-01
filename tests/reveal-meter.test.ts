@@ -39,4 +39,13 @@ describe("revealDecision", () => {
     const ids = Array.from({ length: FREE_REVEAL_LIMIT }, (_, i) => `q${i}`);
     expect(revealDecision({ signedIn: false, revealedIds: ids, questionId: "new" }).allow).toBe(false);
   });
+
+  // Product decision 2026-10-01: Clarity showed anon visitors walled at the 4th
+  // reveal (3 was the limit) and almost none signed in. Ten is the new budget.
+  it("lets an anon viewer reveal 10 new questions and walls the 11th", () => {
+    const nine = Array.from({ length: 9 }, (_, i) => `q${i}`);
+    expect(revealDecision({ signedIn: false, revealedIds: nine, questionId: "q9" }).allow).toBe(true);
+    const ten = Array.from({ length: 10 }, (_, i) => `q${i}`);
+    expect(revealDecision({ signedIn: false, revealedIds: ten, questionId: "q10" }).allow).toBe(false);
+  });
 });

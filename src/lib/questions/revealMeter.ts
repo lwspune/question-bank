@@ -5,8 +5,12 @@
  * free sign-in. Signed-in viewers are unlimited. Re-revealing a question already
  * counted is free (no double-charge). Soft nudge over PUBLIC content — the
  * answer is in the payload — so a client meter is the right tool.
+ *
+ * 10, not 3, since 2026-10-01: Clarity recordings showed anon visitors (most of
+ * them arriving from ChatGPT on a /questions chapter page) spending all 3 on the
+ * landing page, tapping the 4th card repeatedly, and leaving without signing in.
  */
-export const FREE_REVEAL_LIMIT = 3;
+export const FREE_REVEAL_LIMIT = 10;
 
 export type RevealDecision = {
   allow: boolean;
