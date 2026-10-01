@@ -285,6 +285,21 @@ const JEE_MAINS_GUIDES: SubjectGuideCard[] = [
       "Trends: Conic Sections and Relations and Functions up; three chapters gone from the paper",
     ],
   },
+  {
+    href: "/guide/jee-mains-chemistry",
+    exam: "JEE Mains Chemistry",
+    title: "How JEE Mains Chemistry actually works",
+    blurb:
+      "Every chapter still on the paper sets one or two questions, so weight decides little. What differs is the work: calculate, follow a reaction, or recall a structure or fact. The guide sorts the chapters that way and sets the order to take the paper.",
+    qCount: 3455,
+    yearWindow: "2021–2026 · every shift",
+    highlights: [
+      "Calculate (physical) / Reactions (organic) / Structure and recall strands, drawn on a measured calculation share",
+      "19 chapter playbooks, each linked to full teaching notes",
+      "How to work the formats: two statements, match the list, and the count from a list",
+      "Trends: physical chemistry up from 6 to 9 questions a paper as eight chapters left the syllabus",
+    ],
+  },
 ];
 
 export const GUIDE_CATALOG: Partial<Record<ExamSlug, SubjectGuideCard[]>> = {

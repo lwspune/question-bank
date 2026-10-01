@@ -25,6 +25,8 @@ import { ROUTES as CDS_MATHS_ROUTES } from "@/app/guide/cds-maths/_data/cds-math
 import { PLAYBOOK_SLUGS as CDS_MATHS_PLAYBOOK_SLUGS } from "@/app/guide/cds-maths/_data/playbooks";
 import { ROUTES as JEE_MATHS_ROUTES } from "@/app/guide/jee-mains-maths/_data/jee-mains-maths";
 import { PLAYBOOK_SLUGS as JEE_MATHS_PLAYBOOK_SLUGS } from "@/app/guide/jee-mains-maths/_data/playbooks";
+import { ROUTES as JEE_CHEM_ROUTES } from "@/app/guide/jee-mains-chemistry/_data/jee-mains-chemistry";
+import { PLAYBOOK_SLUGS as JEE_CHEM_PLAYBOOK_SLUGS } from "@/app/guide/jee-mains-chemistry/_data/playbooks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { listPosts } from "@/lib/blog/posts";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
@@ -429,6 +431,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     ...JEE_MATHS_PLAYBOOK_SLUGS.map((slug) => ({
       url: `${SITE_URL}/guide/jee-mains-maths/playbooks/${slug}`,
+      lastModified: buildDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+    // JEE Mains Chemistry guide (Template C, strands by kind of work).
+    ...JEE_CHEM_ROUTES.map((r) => ({
+      url: r.slug ? `${SITE_URL}/guide/jee-mains-chemistry/${r.slug}` : `${SITE_URL}/guide/jee-mains-chemistry`,
+      lastModified: buildDate,
+      changeFrequency: "weekly" as const,
+      priority: r.slug === "" ? 0.9 : 0.8,
+    })),
+    ...JEE_CHEM_PLAYBOOK_SLUGS.map((slug) => ({
+      url: `${SITE_URL}/guide/jee-mains-chemistry/playbooks/${slug}`,
       lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: 0.7,

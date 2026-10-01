@@ -31,6 +31,7 @@ import { STRATEGY_HEADLINE as CET_PHYSICS_HEADLINE } from "@/app/guide/mht-cet-p
 import { STRATEGY_HEADLINE as CET_CHEMISTRY_HEADLINE } from "@/app/guide/mht-cet-chemistry/_data/strategy";
 import { STRATEGY_HEADLINE as CDS_MATHS_HEADLINE } from "@/app/guide/cds-maths/_data/strategy";
 import { STRATEGY_HEADLINE as JEE_MATHS_HEADLINE } from "@/app/guide/jee-mains-maths/_data/strategy";
+import { STRATEGY_HEADLINE as JEE_CHEM_HEADLINE } from "@/app/guide/jee-mains-chemistry/_data/strategy";
 
 type Headline = {
   paperQ: number;
@@ -81,6 +82,7 @@ const GUIDES: GuideSpec[] = [
   { guide: "cds-maths", headline: CDS_MATHS_HEADLINE, examName: "CDS", subjectName: "Mathematics", marking: "one-third" },
   // JEE Mains: +4 right, -1 wrong on MCQ and numeric alike — a quarter of the mark, not a third.
   { guide: "jee-mains-maths", headline: JEE_MATHS_HEADLINE, examName: "JEE Mains", subjectName: "Maths", marking: "one-quarter", liveFromYear: 2025 },
+  { guide: "jee-mains-chemistry", headline: JEE_CHEM_HEADLINE, examName: "JEE Mains", subjectName: "Chemistry", marking: "one-quarter", liveFromYear: 2025 },
 ];
 
 const HAS_ENV =

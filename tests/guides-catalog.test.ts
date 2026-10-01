@@ -43,7 +43,8 @@ describe("hasSubjectGuide — the notes pages' strategy chip", () => {
   it("is true for a subject with a guide and false for one without", () => {
     expect(hasSubjectGuide("jee-mains-maths")).toBe(true);
     expect(hasSubjectGuide("cds-maths")).toBe(true);
-    expect(hasSubjectGuide("jee-mains-chemistry")).toBe(false);
+    expect(hasSubjectGuide("jee-mains-chemistry")).toBe(true);
+    expect(hasSubjectGuide("jee-mains-physics")).toBe(false);
   });
 
   it("agrees with the filesystem for every notes subject, both ways", () => {

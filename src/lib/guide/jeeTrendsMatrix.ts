@@ -19,6 +19,8 @@ export type JeeRow = {
   pyq_year: number | null;
   chapter: string;
   question_format: string | null;
+  /** Whether the row is a calculation (see isCalculationRow). Read only with `countCalc`. */
+  calc?: boolean;
 };
 
 export type JeeYear = { year: number; total: number };
@@ -28,20 +30,60 @@ export type JeeMatrixRow = {
   total: number;
   /** Numeric-answer (Section B) rows. */
   numeric: number;
+  /** Calculation rows (numeric answers + all-number MCQs). Present only when built with `countCalc`. */
+  calc?: number;
   /** Column i is years[i]. */
   counts: number[];
 };
+
+/** Unit words an all-number option may carry: "−285.8 kJ mol⁻¹" is still a number. */
+const UNIT_WORDS = new Set(
+  "mol kJ J g kg mg L mL dm cm mm m nm pm atm bar Pa kPa K M N s min h Hz V A C F cal kcal amu u eV Hg D S".split(" "),
+);
+
+/** Is one option text a plain number (optionally with a power of ten and units)? */
+function isNumberOption(raw: string): boolean {
+  let s = raw
+    .replace(/\\[()[\]]/g, " ")
+    .replace(/\\(?:mathrm|text|mathbf|operatorname)\s*/g, "")
+    .replace(/\\times|×/g, " x ")
+    .replace(/\\%|%/g, " ")
+    .replace(/\\[,;:! ]|~|\\quad/g, " ")
+    .replace(/[{}]/g, " ")
+    .replace(/−/g, "-")
+    .trim();
+  // A locant ("2-methyl", "2,2-dimethyl") or a degree label ("1°") is a name, not a number.
+  if (/^\d+(\s*,\s*\d+)*\s*-\s*[a-z]/i.test(s) || /°/.test(s)) return false;
+  const m = s.match(/^[-+]?\s*\d+(\.\d+)?(\s*x\s*10\s*\^\s*[-+]?\s*\d+)?/);
+  if (!m) return false;
+  s = s.slice(m[0].length);
+  // What follows the number may only be units, their powers, and separators.
+  const rest = s.replace(/\^\s*[-+]?\s*\d+/g, " ").replace(/[\s/.()-]+/g, " ").trim();
+  return rest === "" || rest.split(" ").every((w) => UNIT_WORDS.has(w));
+}
+
+/**
+ * Is a question a CALCULATION? Every numeric-answer row is; an MCQ is when every option is a plain
+ * number. This is the measure that splits JEE Chemistry's physical chapters from the rest, so it
+ * must not read an IUPAC locant ("2-methylbutane") or a statement combination ("1 and 2 only") as one.
+ */
+export function isCalculationRow(format: string | null, optionTexts: string[]): boolean {
+  if (format === "numeric") return true;
+  if (format !== "mcq" || optionTexts.length === 0) return false;
+  return optionTexts.every(isNumberOption);
+}
 
 export type JeeMatrix = { years: JeeYear[]; rows: JeeMatrixRow[]; excluded: number };
 
 /** Questions in one JEE Maths paper from 2025 on (20 MCQ + 5 numeric). */
 export const PAPER_Q = 25;
 
-export function buildJeeMatrix(rows: JeeRow[], opts: { fromYear: number }): JeeMatrix {
+export function buildJeeMatrix(rows: JeeRow[], opts: { fromYear: number; countCalc?: boolean }): JeeMatrix {
   let excluded = 0;
   const yearTotals = new Map<number, number>();
   const cells = new Map<string, Map<number, number>>();
   const numeric = new Map<string, number>();
+  const calc = new Map<string, number>();
 
   for (const r of rows) {
     if (r.pyq_year == null || r.pyq_year < opts.fromYear) {
@@ -53,6 +95,7 @@ export function buildJeeMatrix(rows: JeeRow[], opts: { fromYear: number }): JeeM
     byYear.set(r.pyq_year, (byYear.get(r.pyq_year) ?? 0) + 1);
     cells.set(r.chapter, byYear);
     if (r.question_format === "numeric") numeric.set(r.chapter, (numeric.get(r.chapter) ?? 0) + 1);
+    if (r.calc) calc.set(r.chapter, (calc.get(r.chapter) ?? 0) + 1);
   }
 
   const years: JeeYear[] = [...yearTotals.entries()]
@@ -61,7 +104,12 @@ export function buildJeeMatrix(rows: JeeRow[], opts: { fromYear: number }): JeeM
 
   const out: JeeMatrixRow[] = [...cells.entries()].map(([chapter, m]) => {
     const counts = years.map((y) => m.get(y.year) ?? 0);
-    return { chapter, total: counts.reduce((s, n) => s + n, 0), numeric: numeric.get(chapter) ?? 0, counts };
+    const total = counts.reduce((s, n) => s + n, 0);
+    const num = numeric.get(chapter) ?? 0;
+    // Key order is the generated file's column order, so keep `counts` last.
+    return opts.countCalc
+      ? { chapter, total, numeric: num, calc: calc.get(chapter) ?? 0, counts }
+      : { chapter, total, numeric: num, counts };
   });
   out.sort((a, b) => b.total - a.total || a.chapter.localeCompare(b.chapter));
 

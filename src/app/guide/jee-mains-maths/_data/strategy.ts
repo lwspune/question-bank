@@ -35,19 +35,7 @@ export const STRATEGY_HEADLINE = {
   minutesPerQuestion: PAPER.minutesPerQuestion,
 };
 
-/** Expected marks from one MCQ guess, by how many options are still in play (+4 / −1). */
-export const GUESS_RULE: { optionsLeft: number; expected: string; verdict: string }[] = [
-  { optionsLeft: 4, expected: "+0.25", verdict: "A blind guess still pays on average. Never leave an MCQ blank at the end." },
-  { optionsLeft: 3, expected: "+0.67", verdict: "Rule out one option and the guess is worth two-thirds of a mark." },
-  { optionsLeft: 2, expected: "+1.5", verdict: "Down to two, a guess is worth more than a mark." },
-];
-
-/** The numeric-answer rule, the opposite of the MCQ one. */
-export const NUMERIC_RULE = {
-  expected: "close to −1",
-  verdict:
-    "A numeric answer has no options, so a guess is almost never right and still costs a mark. Enter one only when you have worked it out.",
-};
+export { GUESS_RULE, NUMERIC_RULE } from "@/lib/guide/jeeMarking";
 
 /** How to spend the shared clock. A starting budget, not a measurement of anyone's paper. */
 export const TIME_PLAN: { step: string; detail: string }[] = [

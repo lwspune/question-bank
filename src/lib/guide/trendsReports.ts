@@ -121,6 +121,13 @@ export const TRENDS_REPORTS: readonly TrendsReport[] = [
     claim: "JEE Mains Maths, 2021 to 2026: 3,556 questions, and Conic Sections up to one in eight",
     dataThrough: "JEE Main 2026, 8 April Shift 2",
   },
+  {
+    route: "/guide/jee-mains-chemistry/trends",
+    exam: "JEE Mains",
+    subject: "Chemistry",
+    claim: "JEE Mains Chemistry, 2021 to 2026: 3,455 questions, and physical chemistry up from 6 to 9 a paper",
+    dataThrough: "JEE Main 2026, 8 April Shift 2",
+  },
 ];
 
 export function trendsReportFor(route: string): TrendsReport | null {
