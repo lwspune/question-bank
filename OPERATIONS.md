@@ -90,6 +90,8 @@ Checkout is dormant until 4 env vars are set in Vercel + `.env.local`: `RAZORPAY
 
 **Provider:** Resend, account `official.lwspune`. Domain `pyqvault.com` **Verified**, region Tokyo (ap-northeast-1), DNS auto-configured at GoDaddy. Free tier = **100 emails/day, 3,000/month, 2 req/sec** (the 600ms throttle in [resend.ts](src/lib/email/resend.ts) is sized to that rate limit). Env (`.env.local`, **not** Vercel — this is a local script, not a route): `RESEND_API_KEY` (send-only key) + `EMAIL_FROM` (`"PYQ Vault <mocks@pyqvault.com>"`). Missing either ⇒ the script fails fast before touching an address.
 
+**The 100/day quota is SHARED with Supabase Auth mail** (see the SMTP section below — same Resend account), so the three crons are capped at **welcome 30 + due nudge 30 + mock report 10 = 70/day worst case**, leaving ~30 for sign-up confirmations and password resets. On 2026-09-28 the crons tried 202 sends and 52 nudges failed with `429 daily sending quota`; any auth mail that day would have failed too. Raising one `--limit` means re-adding all three.
+
 **Run it:**
 ```sh
 npm run email:preview -- --html          # render the templates — no DB, no key, no send
