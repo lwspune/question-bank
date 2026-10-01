@@ -1,0 +1,236 @@
+/**
+ * Content for /guide/jee-mains-physics/formulas, first half — the formulas JEE Mains Physics actually
+ * tests for the mechanics, properties-of-matter, heat and oscillation chapters, one group per
+ * playbook chapter. The second half (electricity onwards) lives in formulas-b.ts.
+ *
+ * PLAIN TEXT + UNICODE, NOT LaTeX: the shared FormulaSheet prints `formula` as raw text, so LaTeX
+ * would ship as literal markup (see GUIDE_TEMPLATES.md). Each entry is drawn from a concept's
+ * formula box or definition in the chapter's /notes/jee-mains-physics pages — what the notes rest
+ * on, not a syllabus dump.
+ *
+ * Notation: a compound exponent is written with ^( ), e.g. e^(−bt/2m); a subscript that has no
+ * unicode form is written after an underscore, e.g. v_rms.
+ */
+
+import type { FormulaGroup } from "./types";
+
+export const FORMULA_GROUPS_A: FormulaGroup[] = [
+  {
+    chapter: "Units and Measurements",
+    playbookSlug: "units-and-measurements",
+    formulas: [
+      { id: "sig-figs", name: "Significant figures in a result", formula: "sum or difference: fewest decimal places     product or quotient: fewest significant figures", legend: ["exact numbers (a count, the 2 in 2πr) never limit the answer"], notes: "Leading zeros never count; trailing zeros count only after a decimal point. A mean takes the decimal place of the least precise reading." },
+      { id: "mechanical-dimensions", name: "Dimensions to know by heart", formula: "force MLT⁻²     energy, torque ML²T⁻²     power ML²T⁻³     pressure, stress, modulus ML⁻¹T⁻²     angular momentum ML²T⁻¹", legend: ["M, L, T = mass, length, time"], notes: "Energy density and every elastic modulus have the dimensions of pressure; impulse has those of momentum." },
+      { id: "em-combinations", name: "Electromagnetic combinations", formula: "1/(μ₀ε₀) = c²     √(μ₀/ε₀) ~ resistance     ½ε₀E² = B²/(2μ₀) ~ energy per volume     RC, L/R, √(LC) ~ time", legend: ["μ₀, ε₀ = permeability and permittivity of free space", "R, L, C = resistance, inductance, capacitance", "~ = has the dimensions of"] },
+      { id: "homogeneity", name: "Homogeneity and the argument rule", formula: "Q = X + Y  ⇒  [Q] = [X] = [Y]     Q = A sin(Bx)  ⇒  [B] = [x]⁻¹,  [A] = [Q]", legend: ["[ ] = dimensions of"], notes: "In (P + a/V²)(V − b) = RT: [a/V²] = [P] and [b] = [V]. The argument of sin, exp or log is dimensionless." },
+      { id: "change-of-units", name: "Changing the base units", formula: "n₂ = n₁ (M₁/M₂)ᵃ (L₁/L₂)ᵇ (T₁/T₂)ᶜ", legend: ["n₁, n₂ = numerical values in the two systems", "a, b, c = dimensions of the quantity in M, L, T"], notes: "To find unknown powers, write Q = k AᵃBᵇCᶜ and equate the powers of M, L and T." },
+      { id: "max-relative-error", name: "Error in a product of powers", formula: "Q = a^p b^q / c^r  ⇒  ΔQ/Q = p Δa/a + q Δb/b + r Δc/c", legend: ["Δa/a = fractional (relative) error in a", "p, q, r = sizes of the powers"], notes: "Every term is added, even for a quantity in the denominator; a square root counts ½. Constants such as 4π² carry no error. Multiply by 100 for a percentage." },
+      { id: "sum-errors", name: "Errors in sums and parallel combinations", formula: "Δ(A ± B) = ΔA + ΔB     parallel resistors:  ΔR/R² = ΔR₁/R₁² + ΔR₂/R₂²", legend: ["ΔA, ΔB = absolute errors"], notes: "For values given as value ± error, find each relative error first, then ΔQ = Q × (sum of relative errors)." },
+      { id: "lab-errors", name: "Errors in experiments", formula: "pendulum:  Δg/g = Δl/l + 2 Δt/t     one reading:  Δx = LC     a difference:  Δ(x₂ − x₁) = 2 LC     lens:  Δf/f² = Δu/u² + Δv/v²", legend: ["t = total time of n oscillations", "LC = least count"], notes: "Timing many oscillations keeps Δt fixed while t grows, so the relative error falls." },
+      { id: "least-count", name: "Vernier and screw gauge", formula: "vernier:  LC = 1 MSD − 1 VSD = (1 − m/N) MSD     screw gauge:  LC = pitch / circular divisions     true reading = MSR + n × LC − (zero error)", legend: ["N vernier divisions = m main-scale divisions", "MSR = main-scale reading, n = coinciding division"], notes: "A negative zero error is subtracted as a negative, so it is added to the reading." },
+    ],
+  },
+  {
+    chapter: "Motion in a Straight Line",
+    playbookSlug: "motion-in-a-straight-line",
+    formulas: [
+      { id: "equations-of-motion", name: "Equations of motion", formula: "v = u + at     s = ut + ½at²     v² = u² + 2as     s = ((u + v)/2) t", legend: ["u, v = initial and final velocity", "a = constant acceleration", "s = displacement in time t"] },
+      { id: "nth-second", name: "Distance in the nth second", formula: "sₙ = u + (a/2)(2n − 1)", legend: ["n = the second counted"] },
+      { id: "stopping", name: "Stopping distance", formula: "s = u²/(2a)     s₂/s₁ = (u₂/u₁)²", legend: ["a = size of the braking deceleration"], notes: "Same brakes, double the speed: four times the distance." },
+      { id: "average-speed", name: "Average speed", formula: "v̄ = total distance / total time     equal distances:  v̄ = 2v₁v₂/(v₁ + v₂)", legend: ["v₁, v₂ = speeds on the two legs"], notes: "Average velocity uses total displacement, not distance." },
+      { id: "relative-1d", name: "Relative velocity in a line", formula: "v_BA = v_B − v_A     time to cross = (L₁ + L₂)/v_rel", legend: ["L₁, L₂ = lengths of the two trains", "v_rel = relative speed"] },
+      { id: "free-fall", name: "Free fall from rest", formula: "h = ½gt²     v = gt     v = √(2gh)", legend: ["h = height fallen"] },
+      { id: "vertical-throw", name: "Thrown up or down", formula: "s = ut − ½gt²  (up positive)     H = u²/(2g)     dropped from a tower:  t = √(t₁t₂)", legend: ["t₁ = time to land thrown up, t₂ = thrown down at the same speed", "H = greatest height"], notes: "The two times at one height are roots of h = ut − ½gt², so their product is 2h/g. At the top v = 0 but the acceleration is still g." },
+      { id: "variable-acceleration", name: "Variable acceleration", formula: "v = dx/dt     a = dv/dt = v dv/dx     v = u + ∫a dt     x = x₀ + ∫v dt", legend: ["integrals run from 0 to t"], notes: "v = k√x gives a constant a = k²/2. Area under v–t is displacement; under a–t, change of velocity." },
+    ],
+  },
+  {
+    chapter: "Motion in a Plane",
+    playbookSlug: "motion-in-a-plane",
+    formulas: [
+      { id: "resultant", name: "Resultant of two vectors", formula: "R = √(A² + B² + 2AB cos θ)     tan α = B sin θ / (A + B cos θ)", legend: ["θ = angle between A and B", "α = angle of R from A"], notes: "Equal vectors: |A + B| = 2A cos(θ/2)." },
+      { id: "products", name: "Dot, cross and projection", formula: "A · B = AB cos θ     |A × B| = AB sin θ     projection of A on B = (A · B)/|B|", legend: ["θ = angle between A and B"] },
+      { id: "river", name: "Crossing a river", formula: "shortest time:  t = d/v,  drift = ud/v     shortest path:  sin α = u/v,  t = d/√(v² − u²)", legend: ["d = width, u = river speed", "v = swimmer's speed in still water", "α = heading upstream from straight across"] },
+      { id: "relative-2d", name: "Relative velocity and rain", formula: "v_AB = v_A − v_B     vertical rain on a moving man:  tan θ = v_man / v_rain", legend: ["θ = angle of the umbrella from the vertical, tilted forward"] },
+      { id: "projectile", name: "Projectile on level ground", formula: "T = 2u sin θ / g     H = u² sin²θ / (2g)     R = u² sin 2θ / g", legend: ["u = launch speed, θ = angle above the horizontal"] },
+      { id: "range-relations", name: "Range relations", formula: "R_max = u²/g at 45°     R/H = 4/tan θ     θ and 90° − θ give the same R:  R = 4√(H₁H₂)", legend: ["H₁, H₂ = heights for the two angles"], notes: "For that pair, T₁T₂ = 2R/g and H₁ + H₂ = u²/(2g)." },
+      { id: "trajectory", name: "Path of a projectile", formula: "y = x tan θ − gx²/(2u² cos²θ)     y = px − qx²:  R = p/q,  H = p²/(4q)", legend: ["p, q = coefficients of the given path"], notes: "At the top only the horizontal velocity is left, so KE there = K cos²θ." },
+      { id: "horizontal-launch", name: "Thrown horizontally from a height", formula: "t = √(2h/g)     x = u√(2h/g)     v = √(u² + 2gh)", legend: ["h = height of the launch", "u = horizontal speed"] },
+      { id: "circular-kinematics", name: "Circular motion", formula: "v = ωr     a_c = v²/r = ω²r     a = √(a_t² + a_c²),  a_t = dv/dt", legend: ["a_c = centripetal, a_t = tangential acceleration"], notes: "Displacement over an angle θ on the circle: 2r sin(θ/2)." },
+      { id: "roads", name: "Curves and conical pendulum", formula: "flat road:  v_max = √(μrg)     banked, no friction:  tan θ = v²/(rg)     conical pendulum:  tan θ = v²/(rg)", legend: ["μ = coefficient of friction", "θ = bank angle, or string angle from the vertical"] },
+      { id: "vertical-circle", name: "Vertical circle on a string", formula: "T_bottom = mv_b²/r + mg     T_top = mv_t²/r − mg     v_b² = v_t² + 4gr     full loop:  v_b ≥ √(5gr)", legend: ["v_b, v_t = speeds at the bottom and the top"] },
+    ],
+  },
+  {
+    chapter: "Laws of Motion",
+    playbookSlug: "laws-of-motion",
+    formulas: [
+      { id: "second-law", name: "Second law and apparent weight", formula: "F_net = ma     lift or rope:  N = m(g + a) accelerating up,  m(g − a) accelerating down", legend: ["N = scale reading or rope tension"], notes: "Free fall: N = 0. Slowing while going up is a downward acceleration." },
+      { id: "impulse", name: "Impulse", formula: "F_avg Δt = Δp     rebound:  |Δp| = m(v + v′)", legend: ["v, v′ = speeds before and after the bounce"] },
+      { id: "variable-mass", name: "Variable mass", formula: "thrust:  F = v_rel dm/dt     conveyor belt:  P = v² dm/dt", legend: ["v_rel = speed of the ejected mass relative to the body", "dm/dt = mass flow rate"] },
+      { id: "equilibrium", name: "Equilibrium of forces", formula: "ΣF_x = 0,  ΣF_y = 0     N = mg ± F sin θ     smooth incline held by a horizontal force:  F = mg tan θ", legend: ["F sin θ = the part of a slanted force across the surface"], notes: "A chain hung at angle θ to the horizontal at both ends has tension (mg/2) cot θ at its lowest point." },
+      { id: "atwood", name: "Atwood machine", formula: "a = (m₂ − m₁)g/(m₁ + m₂)     T = 2m₁m₂g/(m₁ + m₂)", legend: ["m₂ > m₁"], notes: "Block on a rough table pulled by a hanging block: a = (m_h g − μ_k m_t g)/(m_h + m_t)." },
+      { id: "constraint", name: "String constraints", formula: "Σ Tᵢ aᵢ = 0     movable pulley:  a_load = a_end / 2", legend: ["Tᵢ, aᵢ = tension on and acceleration of each attached point"] },
+      { id: "friction", name: "Friction", formula: "f_s ≤ μ_s N     f_k = μ_k N     least pull at angle θ:  F = μmg/(cos θ + μ sin θ)", legend: ["μ_s, μ_k = static and kinetic coefficients"] },
+      { id: "rough-incline", name: "Rough incline", formula: "push up:  F = mg(sin θ + μ cos θ)     hold:  F = mg(sin θ − μ cos θ)     slide down:  a = g(sin θ − μ cos θ)", legend: ["θ = incline angle"], notes: "Constant velocity down the slope: μ = tan θ. Rough time n times the smooth time: μ = tan θ (1 − 1/n²)." },
+      { id: "pseudo-force", name: "Pseudo force", formula: "F_pseudo = −m a₀     bob in an accelerating car:  tan θ = a₀/g", legend: ["a₀ = acceleration of the frame", "θ = string angle from the vertical"] },
+      { id: "banked-friction", name: "Banked road with friction", formula: "v_max² = rg (tan θ + μ)/(1 − μ tan θ)", legend: ["θ = bank angle, r = radius"] },
+    ],
+  },
+  {
+    chapter: "Work, Energy and Power",
+    playbookSlug: "work-energy-and-power",
+    formulas: [
+      { id: "work", name: "Work", formula: "W = F · s = Fs cos θ = F_x s_x + F_y s_y + F_z s_z     variable force:  W = ∫F(x) dx", legend: ["θ = angle between force and displacement"] },
+      { id: "work-energy", name: "Work-energy theorem", formula: "W_net = ΣWᵢ = K_f − K_i = ½m(v₂² − v₁²)", legend: ["K = kinetic energy"], notes: "Count the work of every force, gravity and friction included." },
+      { id: "k-and-p", name: "Kinetic energy and momentum", formula: "K = p²/(2m)     p = √(2mK)", legend: ["p = momentum"] },
+      { id: "potential", name: "Potential energy and springs", formula: "F = −dU/dx     W_cons = −ΔU     spring:  U = ½kx²,  W(x₁ → x₂) = ½k(x₂² − x₁²)", legend: ["k = spring constant", "x = extension from the natural length"] },
+      { id: "conservation", name: "Mechanical energy", formula: "½mv₁² + mgh₁ = ½mv₂² + mgh₂     full vertical circle on a string:  v_bottom² ≥ 5gL", legend: ["L = string length"] },
+      { id: "power", name: "Power", formula: "P = F · v     P_avg = W/t     constant power from rest:  v = √(2P/m) t^(1/2),  x = √(8P/(9m)) t^(3/2)", legend: ["v = velocity at the instant"] },
+      { id: "momentum", name: "Momentum and sticking collisions", formula: "J = ∫F dt = Δp     m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂     KE lost on sticking:  ½ (m₁m₂/(m₁ + m₂)) (u₁ − u₂)²", legend: ["J = impulse"] },
+      { id: "ballistic-pendulum", name: "Ballistic pendulum", formula: "mu = (M + m)V     V = √(2gh)", legend: ["m, u = bullet's mass and speed", "M = block, h = height it rises"], notes: "Momentum in the impact, energy in the swing; never energy across the impact." },
+      { id: "elastic", name: "Elastic collision with a target at rest", formula: "v₁ = (m₁ − m₂)u/(m₁ + m₂)     v₂ = 2m₁u/(m₁ + m₂)     K₂/K₁ = 4m₁m₂/(m₁ + m₂)²", legend: ["m₁ moving at u hits m₂ at rest"], notes: "Equal masses exchange velocities." },
+      { id: "restitution", name: "Coefficient of restitution", formula: "e = (v₂ − v₁)/(u₁ − u₂)     bounce height h′ = e²h     K′/K = e²", legend: ["e = 1 elastic, e = 0 perfectly inelastic"] },
+    ],
+  },
+  {
+    chapter: "System of Particles and Rotational Motion",
+    playbookSlug: "rotational-motion",
+    formulas: [
+      { id: "centre-of-mass", name: "Centre of mass", formula: "x_cm = Σmᵢxᵢ / Σmᵢ     continuous:  ∫x dm / ∫dm     piece removed:  x_cm = (Mx₁ − mx₂)/(M − m)", legend: ["M, x₁ = whole body; m, x₂ = removed piece"] },
+      { id: "com-motion", name: "Motion of the centre of mass", formula: "v_cm = Σmᵢvᵢ / Σmᵢ     M a_cm = F_ext", legend: ["F_ext = net external force"], notes: "An explosion leaves the centre of mass on its old path." },
+      { id: "rotational-kinematics", name: "Constant angular acceleration", formula: "ω = ω₀ + αt     θ = ω₀t + ½αt²     ω² = ω₀² + 2αθ", legend: ["α = angular acceleration"] },
+      { id: "torque", name: "Torque and equilibrium", formula: "τ = r × F     equilibrium:  ΣF = 0  and  Στ = 0 about any point", legend: ["r = position of the point of application"] },
+      { id: "standard-moi", name: "Standard moments of inertia", formula: "ring MR²     hollow sphere ⅔MR²     disc, solid cylinder ½MR²     solid sphere ⅖MR²     rod about centre ML²/12,  about an end ML²/3", legend: ["axis through the centre (normal to a ring or disc)", "I = Mk², k = radius of gyration"], notes: "Ring about a diameter ½MR²; disc about a diameter ¼MR²." },
+      { id: "axis-theorems", name: "Axis theorems and removed pieces", formula: "I = I_cm + Md²     I_z = I_x + I_y  (flat body)     I_rest = I_full − (I_hole + m_hole d²)", legend: ["d = distance between parallel axes"], notes: "k² = k_cm² + d²." },
+      { id: "rotational-dynamics", name: "Rotational dynamics", formula: "τ = Iα     P = τω     K_rot = ½Iω²     heavy pulley:  a = (m₁ − m₂)g/(m₁ + m₂ + I/R²)", legend: ["I, R = pulley's moment of inertia and radius"] },
+      { id: "angular-momentum", name: "Angular momentum", formula: "L = r × mv,  |L| = mvd     I₁ω₁ = I₂ω₂     KE lost on locking:  I₁I₂(ω₁ − ω₂)²/(2(I₁ + I₂))", legend: ["d = perpendicular distance from the point to the line of motion"], notes: "Projectile about the launch point at the top: L = mu³ sin²θ cos θ/(2g)." },
+      { id: "rolling", name: "Rolling without slipping", formula: "v_cm = ωR     K = ½mv²(1 + k²/R²)     speed of a point P:  v_P = ω r_P", legend: ["r_P = distance of P from the contact point", "k = radius of gyration"], notes: "Translational : rotational KE = 1 : k²/R²." },
+      { id: "rolling-incline", name: "Rolling down a slope", formula: "a = g sin θ/(1 + k²/R²)     v = √(2gh/(1 + k²/R²))     f = mg sin θ (k²/R²)/(1 + k²/R²)", legend: ["f = friction needed for pure rolling", "h = height descended"], notes: "Racing from rest down one slope: solid sphere first, then disc and solid cylinder, then hollow sphere, then ring." },
+    ],
+  },
+  {
+    chapter: "Gravitation",
+    playbookSlug: "gravitation",
+    formulas: [
+      { id: "newton-law", name: "Newton's law and potential energy", formula: "F = Gm₁m₂/r²     U = −Σ Gmᵢmⱼ/rᵢⱼ  over pairs     ΔU (R to R + h) = mgh/(1 + h/R)", legend: ["r = distance between centres", "R = planet's radius"], notes: "Several masses: add the forces as vectors." },
+      { id: "sphere-field", name: "Field and potential of a uniform sphere", formula: "r ≥ R:  E = GM/r²,  V = −GM/r     r < R:  E = GMr/R³,  V = −GM(3R² − r²)/(2R³)", legend: ["M, R = mass and radius", "r = distance from the centre"], notes: "Inside a thin shell E = 0 and V = −GM/R." },
+      { id: "surface-g", name: "Surface gravity", formula: "g = GM/R² = (4/3)πGρR", legend: ["ρ = mean density"] },
+      { id: "g-height", name: "g at a height", formula: "g_h = g/(1 + h/R)² ≈ g(1 − 2h/R)  (h ≪ R)", legend: ["h = height above the surface"] },
+      { id: "g-depth", name: "g at a depth", formula: "g_d = g(1 − d/R)     equal g below and above:  d ≈ 2h", legend: ["d = depth below the surface"], notes: "g is zero at the centre and greatest at the surface." },
+      { id: "g-rotation", name: "Effect of the earth's spin", formula: "g′ = g − ω²R cos²λ", legend: ["λ = latitude", "ω = the earth's angular speed"], notes: "No change at the poles; the largest drop at the equator." },
+      { id: "escape", name: "Escape velocity", formula: "v_e = √(2GM/R) = √(2gR) = R√(8πGρ/3)", legend: ["independent of the launched mass and direction"], notes: "Launched at k·v_e (k < 1), the body rises to R/(1 − k²) from the centre." },
+      { id: "orbit", name: "Circular orbit", formula: "v₀ = √(GM/r)     T = 2π√(r³/GM)     L = m√(GMr)", legend: ["r = orbit radius from the centre"], notes: "Near the surface, v_e = √2 × v₀." },
+      { id: "satellite-energy", name: "Satellite energy", formula: "KE = GMm/(2r)     U = −GMm/r     E = −GMm/(2r)     to move r₁ → r₂:  ΔE = (GMm/2)(1/r₁ − 1/r₂)", legend: ["E = total energy, negative for a bound orbit"] },
+      { id: "binary", name: "Two bodies orbiting each other", formula: "m₁r₁ = m₂r₂     T = 2π√(d³/(G(m₁ + m₂)))", legend: ["d = separation, r₁ + r₂ = d"] },
+      { id: "kepler", name: "Kepler's laws", formula: "T² = (4π²/GM) r³     dA/dt = L/(2m) = constant     v_max r_min = v_min r_max", legend: ["r = orbit radius or semi-major axis"] },
+    ],
+  },
+  {
+    chapter: "Mechanical Properties of Solids",
+    playbookSlug: "mechanical-properties-of-solids",
+    formulas: [
+      { id: "youngs-modulus", name: "Young's modulus", formula: "Y = (F/A)/(ΔL/L)     ΔL = FL/(AY)", legend: ["F/A = stress, ΔL/L = strain"], notes: "Y is a property of the material, not of the wire's length or thickness." },
+      { id: "two-wires", name: "Comparing two wires", formula: "ΔL₁/ΔL₂ = (F₁/F₂)(L₁/L₂)(d₂/d₁)²(Y₂/Y₁)", legend: ["d = diameter"] },
+      { id: "series-wires", name: "Wires in series", formula: "ΔL = T(L₁/(A₁Y₁) + L₂/(A₂Y₂))     equal lengths and areas:  Y_eq = 2Y₁Y₂/(Y₁ + Y₂)", legend: ["T = tension, the same in both"] },
+      { id: "breaking", name: "Breaking stress and own weight", formula: "T_max = σ_b A     largest upward acceleration:  a_max = σ_b A/m − g     own weight:  ΔL = MgL/(2AY)", legend: ["σ_b = breaking stress"], notes: "Longest wire that can hang without breaking: L_max = σ_b/(ρg), whatever its area." },
+      { id: "bulk-modulus", name: "Bulk modulus", formula: "B = −ΔP/(ΔV/V)     ΔV = ΔP V/B     Δρ = ρΔP/B     at depth h:  ΔV/V = ρgh/B", legend: ["ρ = density of the liquid above"] },
+      { id: "shear-poisson", name: "Shear modulus and Poisson's ratio", formula: "η = (F/A)/(x/h)     Y = 2η(1 + σ) = 3B(1 − 2σ)", legend: ["x/h = shear strain", "σ = Poisson's ratio"] },
+      { id: "natural-length", name: "Natural length from two loads", formula: "T = k(l − l₀)     l₀ = (T₂l₁ − T₁l₂)/(T₂ − T₁)", legend: ["l₁, l₂ = lengths under tensions T₁, T₂"] },
+      { id: "elastic-energy", name: "Energy stored", formula: "energy per volume = ½ × stress × strain = ½Yε²     U = ½F ΔL", legend: ["ε = strain"] },
+    ],
+  },
+  {
+    chapter: "Mechanical Properties of Fluids",
+    playbookSlug: "mechanical-properties-of-fluids",
+    formulas: [
+      { id: "pressure-depth", name: "Pressure at a depth", formula: "P = P₀ + ρgh", legend: ["P₀ = pressure at the surface", "ρgh = gauge pressure"] },
+      { id: "hydraulic-lift", name: "Pascal's law", formula: "F₁/A₁ = F₂/A₂     F₁d₁ = F₂d₂", legend: ["d = distance each piston moves"] },
+      { id: "floating", name: "Floating bodies", formula: "V_sub/V = ρ_body/ρ_liquid", legend: ["V_sub = volume under the liquid"], notes: "Buoyant force = weight of the liquid displaced." },
+      { id: "bernoulli", name: "Continuity and Bernoulli", formula: "A₁v₁ = A₂v₂     P + ρgh + ½ρv² = constant", legend: ["along one streamline"], notes: "Lift on a wing: F = ½ρ(v_top² − v_bottom²)A, with A the total wing area." },
+      { id: "torricelli", name: "Torricelli's law", formula: "v = √(2gh)     range on the floor:  x = 2√(hy)", legend: ["h = depth of the hole below the surface", "y = height of the hole above the floor"], notes: "The range is greatest for a hole at mid-depth, and then equals the water's height." },
+      { id: "viscosity", name: "Viscosity and Reynolds number", formula: "F = ηA v/d     Re = ρvd/η     Stokes:  F = 6πηrv", legend: ["η = coefficient of viscosity", "d = gap between the layers, or pipe diameter"] },
+      { id: "terminal-velocity", name: "Terminal velocity", formula: "v_T = 2r²(ρ − σ)g/(9η)", legend: ["ρ = sphere's density, σ = fluid's density"], notes: "v_T ∝ r². n equal drops merging: R = n^(1/3) r, so v′ = n^(2/3) v." },
+      { id: "surface-energy", name: "Surface energy", formula: "split into n drops:  W = 4πR²T(n^(1/3) − 1)     blow a bubble r₁ → r₂:  W = 8πT(r₂² − r₁²)", legend: ["T = surface tension", "a soap bubble has two surfaces"] },
+      { id: "excess-pressure", name: "Excess pressure", formula: "drop or air bubble in a liquid:  ΔP = 2T/r     soap bubble:  ΔP = 4T/r", legend: ["r = radius"] },
+      { id: "capillary-rise", name: "Capillary rise", formula: "h = 2T cos θ/(ρgr)", legend: ["θ = contact angle", "r = tube radius"], notes: "h ∝ T/(ρr). A tilted tube keeps the same vertical height; hot water rises less than cold." },
+    ],
+  },
+  {
+    chapter: "Thermal Properties of Matter",
+    playbookSlug: "thermal-properties-of-matter",
+    formulas: [
+      { id: "temperature-scales", name: "Linear temperature scales", formula: "(X − X_ice)/(X_steam − X_ice) = C/100 = (F − 32)/180 = (K − 273)/100", legend: ["X = reading on any linear scale"] },
+      { id: "expansion", name: "Thermal expansion", formula: "ΔL = LαΔT     ΔA = A(2α)ΔT     ΔV = V(3α)ΔT", legend: ["α = coefficient of linear expansion"], notes: "Ideal gas at constant pressure: γ = 1/T." },
+      { id: "thermal-stress", name: "Thermal stress", formula: "σ = YαΔT     F = YAαΔT     energy per volume = ½Y(αΔT)²", legend: ["rod clamped so it cannot expand"], notes: "The force does not depend on the rod's length." },
+      { id: "calorimetry", name: "Heat and latent heat", formula: "Q = msΔT     Q = mL     heater:  ηPt = msΔT", legend: ["s = specific heat, L = latent heat", "η = fraction of the power that heats"], notes: "Falling water: ΔT = gh/s, whatever the mass. On a heating curve, slope dT/dQ = 1/(ms)." },
+      { id: "mixing", name: "Mixing ice and water", formula: "heat lost = heat gained:  m_w s_w(T_w − T) = m_i s_i(0 − T_i) + m_i L + m_i s_w(T − 0)", legend: ["T_i = ice's starting temperature (°C)", "T = final temperature"], notes: "First check whether the water has enough heat to melt all the ice." },
+      { id: "conduction", name: "Conduction", formula: "H = KAΔT/L     R = L/(KA)     series:  R = R₁ + R₂     parallel:  1/R = 1/R₁ + 1/R₂", legend: ["K = thermal conductivity", "H = heat current"], notes: "Junction of two in series: θ = (θ₁R₂ + θ₂R₁)/(R₁ + R₂). Spherical shell: R = (r₂ − r₁)/(4πKr₁r₂)." },
+      { id: "radiation", name: "Stefan and Wien", formula: "P = eσAT⁴     net loss:  eσA(T⁴ − T₀⁴)     λ_m T = b", legend: ["T in kelvin, e = emissivity", "b = Wien's constant"], notes: "For a sphere P ∝ er²T⁴; hotter means a shorter peak wavelength." },
+      { id: "newton-cooling", name: "Newton's law of cooling", formula: "(T₁ − T₂)/t = k((T₁ + T₂)/2 − T_s)     exactly:  T − T_s = (T₀ − T_s)e^(−kt)", legend: ["T_s = surroundings", "T₁ → T₂ = fall in time t"] },
+    ],
+  },
+  {
+    chapter: "Thermodynamics",
+    playbookSlug: "thermodynamics",
+    formulas: [
+      { id: "first-law", name: "First law", formula: "ΔQ = ΔU + W     W = ∫P dV", legend: ["W = work done BY the gas, positive on expansion"] },
+      { id: "internal-energy", name: "Internal energy and heat capacities", formula: "ΔU = nC_VΔT  (any process)     C_V = (f/2)R     C_P − C_V = R     γ = 1 + 2/f", legend: ["f = degrees of freedom"] },
+      { id: "isobaric-split", name: "How heat splits at constant pressure", formula: "Q : ΔU : W = C_P : C_V : R", legend: ["one isobaric process"], notes: "So ΔU = Q/γ and W = Q(1 − 1/γ)." },
+      { id: "isothermal-work", name: "Isothermal work", formula: "W = nRT ln(V₂/V₁)     ΔU = 0,  Q = W", legend: ["V₁ → V₂ at temperature T"] },
+      { id: "polytropic", name: "Process PVˣ = constant", formula: "W = (P₁V₁ − P₂V₂)/(x − 1) = nR(T₁ − T₂)/(x − 1)     C = C_V + R/(1 − x)", legend: ["C = molar heat capacity of the process"], notes: "x = 0 gives C_P; x = γ gives 0; x = 1 (isothermal) gives an infinite C." },
+      { id: "adiabatic", name: "Adiabatic relations", formula: "PV^γ = const     TV^(γ − 1) = const     P^(1 − γ)T^γ = const", legend: ["γ = C_P/C_V"], notes: "An adiabatic curve is steeper than an isothermal one through the same point." },
+      { id: "adiabatic-work", name: "Adiabatic work", formula: "W = nR(T₁ − T₂)/(γ − 1) = (P₁V₁ − P₂V₂)/(γ − 1) = −ΔU", legend: ["Q = 0"] },
+      { id: "cycle", name: "Cyclic process", formula: "W_net = Q_net = enclosed area     ΔU = 0 over a cycle", legend: ["area on the P–V graph"], notes: "Clockwise on P–V: the gas does net positive work. An elliptical loop encloses πab." },
+      { id: "carnot", name: "Engines and refrigerators", formula: "η = W/Q₁ = 1 − T₂/T₁     Q₁ = W + Q₂     COP = Q₂/W = T₂/(T₁ − T₂)", legend: ["T₁, T₂ = hot and cold reservoirs (kelvin)", "Q₁ in, Q₂ out (engine)"], notes: "For a Carnot cycle Q₂/Q₁ = T₂/T₁." },
+      { id: "series-entropy", name: "Engines in series and entropy", formula: "η = 1 − T₃/T₁ = η₁ + η₂ − η₁η₂     ΔS = Q/T     heating:  ΔS = ms ln(T₂/T₁)", legend: ["T₁ → T₂ → T₃ = the three reservoirs"], notes: "Equal work from the two engines: T₂ = (T₁ + T₃)/2." },
+    ],
+  },
+  {
+    chapter: "Kinetic Theory",
+    playbookSlug: "kinetic-theory",
+    formulas: [
+      { id: "ideal-gas", name: "Ideal gas equation", formula: "PV = nRT = NkT     P₁V₁/T₁ = P₂V₂/T₂", legend: ["N = number of molecules, k = Boltzmann constant"] },
+      { id: "moles-conserved", name: "Mixtures and joined vessels", formula: "n = PV/(RT)     joined vessels:  Σ PᵢVᵢ/Tᵢ = constant", legend: ["moles are conserved"], notes: "On a given path P(V), the hottest state is where d(PV)/dV = 0." },
+      { id: "kinetic-pressure", name: "Pressure from molecular impacts", formula: "P = ⅓ρv_rms²     PV = ⅔E_trans", legend: ["ρ = gas density", "E_trans = total translational KE"] },
+      { id: "mean-ke", name: "Kinetic energy and temperature", formula: "mean KE per molecule = (3/2)kT     E_trans = (3/2)nRT", legend: ["depends on T alone, not on the gas"], notes: "Equal temperatures, equal mean KE, so v_rms ∝ 1/√m." },
+      { id: "speeds", name: "Molecular speeds", formula: "v_rms = √(3RT/M)     v̄ = √(8RT/(πM))     v_p = √(2RT/M)", legend: ["M = molar mass in kg/mol"], notes: "v_p < v̄ < v_rms; each scales as √(T/M). Also v_rms = √(3P/ρ)." },
+      { id: "mean-free-path", name: "Mean free path", formula: "λ = 1/(√2 πd²n) = kT/(√2 πd²P)     collision frequency = v̄/λ", legend: ["d = molecular diameter", "n = molecules per volume"] },
+      { id: "heat-capacities", name: "Heat capacities from f", formula: "C_v = (f/2)R     C_p = C_v + R     γ = 1 + 2/f", legend: ["f = 3 monatomic, 5 rigid diatomic or linear, 6 rigid non-linear"], notes: "Equipartition: ½kT per degree of freedom per molecule." },
+      { id: "internal-energy", name: "Internal energy", formula: "U = n(f/2)RT = (f/2)PV     ΔU = nC_vΔT", legend: ["f = degrees of freedom"] },
+      { id: "mixture", name: "A mixture as one gas", formula: "f_mix = (n₁f₁ + n₂f₂)/(n₁ + n₂)     γ_mix = 1 + 2/f_mix", legend: ["n₁, n₂ = moles of each gas"] },
+    ],
+  },
+  {
+    chapter: "Oscillations",
+    playbookSlug: "oscillations",
+    formulas: [
+      { id: "shm", name: "SHM equation", formula: "x = A sin(ωt + φ)     v = Aω cos(ωt + φ)     a = −ω²x", legend: ["A = amplitude, φ = initial phase"] },
+      { id: "speed-at-x", name: "Speed at a displacement", formula: "v = ω√(A² − x²)     v_max = Aω     a_max = ω²A", legend: ["x = displacement from the mean"] },
+      { id: "timing", name: "Time between two positions", formula: "t = Δθ/ω = (Δθ/2π) T", legend: ["Δθ = phase covered"], notes: "Mean to A/2 takes T/12; A/2 to A takes T/6; mean to A/√2 takes T/8." },
+      { id: "combining", name: "Adding SHMs of one frequency", formula: "A = √(A₁² + A₂² + 2A₁A₂ cos Δφ)     a sin ωt + b cos ωt has amplitude √(a² + b²)", legend: ["Δφ = phase difference"] },
+      { id: "springs", name: "Cut and combined springs", formula: "k ∝ 1/l     series:  1/k = 1/k₁ + 1/k₂     parallel:  k = k₁ + k₂", legend: ["l = length of the spring piece"] },
+      { id: "spring-mass", name: "Spring–mass period", formula: "T = 2π√(m/k)     two masses on one spring:  ω = √(k/μ),  μ = m₁m₂/(m₁ + m₂)", legend: ["μ = reduced mass"] },
+      { id: "restoring", name: "Any restoring force or torque", formula: "F = −Cx  ⇒  ω = √(C/m)     τ = −κθ  ⇒  ω = √(κ/I)", legend: ["C, κ = restoring constants"] },
+      { id: "pendulum", name: "Simple pendulum", formula: "T = 2π√(L/g_eff)     ΔT/T = ½ ΔL/L", legend: ["g_eff = g ± a in a lift; g(R/(R + h))² at a height"], notes: "In free fall g_eff = 0 and the pendulum does not swing." },
+      { id: "energy", name: "Energy in SHM", formula: "E = ½kA² = ½mω²A²     U = ½kx²     K = ½k(A² − x²)", legend: ["k = mω²"], notes: "K = U at x = A/√2. KE and PE each oscillate at twice the motion's frequency." },
+      { id: "amplitude-change", name: "Amplitude changes and damping", formula: "after a sudden change at x:  A′² = x² + v′²/ω′²     damping:  A = A₀e^(−bt/2m),  E = E₀e^(−bt/m)", legend: ["v′, ω′ = new speed and angular frequency", "b = damping constant"], notes: "Mass m placed gently on M at the mean: A′ = A√(M/(M + m)). Added at an extreme: A unchanged." },
+    ],
+  },
+  {
+    chapter: "Waves",
+    playbookSlug: "waves",
+    formulas: [
+      { id: "wave-parameters", name: "Reading a wave equation", formula: "v = ω/k = fλ     ω = 2πf     k = 2π/λ     Δφ = (2π/λ) Δx", legend: ["k = wave number", "Δx = separation of two points"] },
+      { id: "travelling-wave", name: "A travelling wave", formula: "y = A sin(ωt − kx + φ₀)     y = f(x ∓ vt)", legend: ["x − vt: moving towards +x", "x + vt: moving towards −x"] },
+      { id: "particle-motion", name: "Particle speed and intensity", formula: "v_p,max = Aω     v_p,max / v = Ak = 2πA/λ     point source:  I = P/(4πr²)", legend: ["v = wave speed", "P = power of the source"] },
+      { id: "wave-speed", name: "Wave speed", formula: "string:  v = √(T/μ)     solid:  v = √(Y/ρ)     gas:  v = √(γP/ρ) = √(γRT/M)", legend: ["μ = mass per length", "M = molar mass"], notes: "In a gas v ∝ √T and does not change with pressure at fixed temperature." },
+      { id: "superposition", name: "Two waves of one frequency", formula: "A² = A₁² + A₂² + 2A₁A₂ cos φ     φ = (2π/λ) × path difference", legend: ["φ = phase difference"] },
+      { id: "string-harmonics", name: "String fixed at both ends", formula: "fₙ = (n/2L)√(T/μ)     fₙ₊₁ − fₙ = v/(2L)     standing wave:  y = 2A cos kx sin ωt", legend: ["n = harmonic number", "L = vibrating length"] },
+      { id: "pipes", name: "Organ pipes", formula: "open:  fₙ = nv/(2L), all harmonics     closed:  f = (2n − 1)v/(4L), odd harmonics only", legend: ["L = pipe length"], notes: "Open pipe: kth overtone = (k + 1)th harmonic. Closed pipe: kth overtone = (2k + 1)th harmonic." },
+      { id: "resonance-tube", name: "Resonance tube", formula: "lₙ + e = (2n − 1)λ/4     l₂ − l₁ = λ/2     e = 0.3d", legend: ["e = end correction", "d = tube diameter"], notes: "The difference of two resonance lengths cancels the end correction." },
+      { id: "beats", name: "Beats", formula: "f_beat = |f₁ − f₂| = v|1/λ₁ − 1/λ₂|", legend: ["f₁, f₂ = two close frequencies"], notes: "Loading a fork with wax lowers its frequency." },
+      { id: "doppler", name: "Doppler effect", formula: "f′ = f (v ± v_o)/(v ∓ v_s)     echo from a wall approached at u:  f′ = f(v + u)/(v − u)", legend: ["v = speed of sound", "v_o, v_s = speeds of observer and source"], notes: "Choose each sign so that motion towards the other raises f′. Light from a receding source: Δλ/λ = v/c." },
+    ],
+  },
+];

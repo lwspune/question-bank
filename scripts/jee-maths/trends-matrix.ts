@@ -3,6 +3,7 @@
  *
  *   npm run jee:matrix                               # Maths: src/app/guide/jee-mains-maths/_data/matrix.generated.ts
  *   npm run jee:matrix -- --subject=Chemistry        # Chemistry: src/app/guide/jee-mains-chemistry/_data/matrix.generated.ts
+ *   npm run jee:matrix -- --subject=Physics          # Physics: src/app/guide/jee-mains-physics/_data/matrix.generated.ts
  *   npm run jee:matrix -- --check [--subject=...]    # exit 1 if the committed file is stale
  *
  * Chemistry also counts CALCULATION rows per chapter (numeric answers + all-number MCQs, see
@@ -24,6 +25,9 @@ if (fs.existsSync(local)) require("dotenv").config({ path: local, override: true
 const SUBJECTS = {
   Maths: { route: "jee-mains-maths", countCalc: false },
   Chemistry: { route: "jee-mains-chemistry", countCalc: true },
+  // Physics tiers on recent weight, as Maths does: its calculation shares run from a quarter to
+  // three quarters with no gap, so a calculation line would sort it by nothing.
+  Physics: { route: "jee-mains-physics", countCalc: false },
 } as const;
 type Subject = keyof typeof SUBJECTS;
 const SUBJECT = (process.argv.find((a) => a.startsWith("--subject="))?.slice("--subject=".length) ?? "Maths") as Subject;

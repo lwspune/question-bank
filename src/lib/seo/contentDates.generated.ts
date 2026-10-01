@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 263
+ * Entries: 264
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -14,6 +14,7 @@ export const CONTENT_DATES: ContentDateMap = {
   "/guide/cds-maths": "2026-09-29T15:47:28+05:30",
   "/guide/jee-mains-chemistry": "2026-10-01T06:47:47+05:30",
   "/guide/jee-mains-maths": "2026-10-01T06:33:10+05:30",
+  "/guide/jee-mains-physics": "2026-10-01T10:57:31+05:30",
   "/guide/mht-cet-chemistry": "2026-09-28T18:42:36+05:30",
   "/guide/mht-cet-maths": "2026-09-28T20:24:47+05:30",
   "/guide/mht-cet-physics": "2026-09-28T13:58:54+05:30",
@@ -114,13 +115,13 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/jee-mains-physics/magnetism-and-matter": "2026-10-01T08:56:20+05:30",
   "/notes/jee-mains-physics/mechanical-properties-of-fluids": "2026-10-01T08:56:20+05:30",
   "/notes/jee-mains-physics/mechanical-properties-of-solids": "2026-10-01T08:56:20+05:30",
-  "/notes/jee-mains-physics/motion-in-a-plane": "2026-10-01T08:56:20+05:30",
+  "/notes/jee-mains-physics/motion-in-a-plane": "2026-10-01T10:21:16+05:30",
   "/notes/jee-mains-physics/motion-in-a-straight-line": "2026-10-01T08:03:07+05:30",
   "/notes/jee-mains-physics/moving-charges-and-magnetism": "2026-10-01T10:08:25+05:30",
   "/notes/jee-mains-physics/nuclei": "2026-10-01T10:08:25+05:30",
   "/notes/jee-mains-physics/oscillations": "2026-10-01T08:56:20+05:30",
   "/notes/jee-mains-physics/ray-optics": "2026-10-01T10:08:25+05:30",
-  "/notes/jee-mains-physics/rotational-motion": "2026-10-01T08:56:20+05:30",
+  "/notes/jee-mains-physics/rotational-motion": "2026-10-01T10:21:16+05:30",
   "/notes/jee-mains-physics/semiconductor-electronics": "2026-10-01T10:08:25+05:30",
   "/notes/jee-mains-physics/thermal-properties-of-matter": "2026-10-01T08:56:20+05:30",
   "/notes/jee-mains-physics/thermodynamics": "2026-10-01T08:56:20+05:30",

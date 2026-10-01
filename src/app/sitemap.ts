@@ -27,6 +27,8 @@ import { ROUTES as JEE_MATHS_ROUTES } from "@/app/guide/jee-mains-maths/_data/je
 import { PLAYBOOK_SLUGS as JEE_MATHS_PLAYBOOK_SLUGS } from "@/app/guide/jee-mains-maths/_data/playbooks";
 import { ROUTES as JEE_CHEM_ROUTES } from "@/app/guide/jee-mains-chemistry/_data/jee-mains-chemistry";
 import { PLAYBOOK_SLUGS as JEE_CHEM_PLAYBOOK_SLUGS } from "@/app/guide/jee-mains-chemistry/_data/playbooks";
+import { ROUTES as JEE_PHYS_ROUTES } from "@/app/guide/jee-mains-physics/_data/jee-mains-physics";
+import { PLAYBOOK_SLUGS as JEE_PHYS_PLAYBOOK_SLUGS } from "@/app/guide/jee-mains-physics/_data/playbooks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { listPosts } from "@/lib/blog/posts";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
@@ -444,6 +446,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     ...JEE_CHEM_PLAYBOOK_SLUGS.map((slug) => ({
       url: `${SITE_URL}/guide/jee-mains-chemistry/playbooks/${slug}`,
+      lastModified: buildDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })),
+    // JEE Mains Physics guide (Template C, tiers on recent weight, as JEE Maths).
+    ...JEE_PHYS_ROUTES.map((r) => ({
+      url: r.slug ? `${SITE_URL}/guide/jee-mains-physics/${r.slug}` : `${SITE_URL}/guide/jee-mains-physics`,
+      lastModified: buildDate,
+      changeFrequency: "weekly" as const,
+      priority: r.slug === "" ? 0.9 : 0.8,
+    })),
+    ...JEE_PHYS_PLAYBOOK_SLUGS.map((slug) => ({
+      url: `${SITE_URL}/guide/jee-mains-physics/playbooks/${slug}`,
       lastModified: buildDate,
       changeFrequency: "weekly" as const,
       priority: 0.7,
