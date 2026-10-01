@@ -300,6 +300,21 @@ const JEE_MAINS_GUIDES: SubjectGuideCard[] = [
       "Trends: physical chemistry up from 6 to 9 questions a paper as eight chapters left the syllabus",
     ],
   },
+  {
+    href: "/guide/jee-mains-physics",
+    exam: "JEE Mains Physics",
+    title: "How JEE Mains Physics actually works",
+    blurb:
+      "Four chapters carry about a third of the paper: Electrostatics, Ray Optics, Units and Measurements and Rotational Motion. The guide ranks every chapter by its weight on the recent papers, gives each a playbook, and sets the order to learn them.",
+    qCount: 3482,
+    yearWindow: "2021–2026 · every shift",
+    highlights: [
+      "Cornerstone / Core / Long-tail tiers set by questions a paper on the 2025-26 papers",
+      "27 chapter playbooks, each linked to full teaching notes",
+      "A formula sheet drawn from the notes, chapter by chapter",
+      "Trends: Ray Optics up from about one question a paper to two; Current Electricity, Gravitation and AC down",
+    ],
+  },
 ];
 
 export const GUIDE_CATALOG: Partial<Record<ExamSlug, SubjectGuideCard[]>> = {

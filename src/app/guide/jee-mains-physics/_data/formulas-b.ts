@@ -1,0 +1,222 @@
+/**
+ * Content for /guide/jee-mains-physics/formulas, second half: electricity, magnetism, optics and
+ * modern physics, one group per playbook chapter.
+ *
+ * PLAIN TEXT + UNICODE, NOT LaTeX: the shared FormulaSheet prints `formula` as raw text, so LaTeX
+ * would ship as literal markup (see GUIDE_TEMPLATES.md). Each entry is drawn from a concept's
+ * formula box or definition in the chapter's /notes/jee-mains-physics pages — what the notes rest
+ * on, not a syllabus dump.
+ *
+ * Notation: a compound exponent is written with ^( ), e.g. e^(−t/RC); a subscript longer than one
+ * character uses an underscore, e.g. X_L, V_rms; a bar over a letter (Ā) is NOT in logic.
+ */
+
+import type { FormulaGroup } from "./types";
+
+export const FORMULA_GROUPS_B: FormulaGroup[] = [
+  {
+    chapter: "Electrostatics",
+    playbookSlug: "electrostatics",
+    formulas: [
+      { id: "coulomb", name: "Coulomb's law", formula: "F = kq₁q₂/r²,   k = 1/(4πε₀) = 9 × 10⁹ N m² C⁻²     in a medium:  F_m = F/K", legend: ["q₁, q₂ = charges, signs included", "r = separation", "K = dielectric constant"], notes: "A separation r in the medium gives the force of r√K in vacuum. Identical spheres touched share (q₁ + q₂)/2 each, signs included." },
+      { id: "field-shapes", name: "Fields of standard shapes", formula: "point: E = kq/r²     line: E = λ/(2πε₀r) = 2kλ/r     sheet: E = σ/(2ε₀)     just outside a conductor: E = σ/ε₀", legend: ["λ = charge per length", "σ = charge per area"], notes: "Sheets +σ and −σ: σ/ε₀ between them, zero outside. A sheet's field does not fall with distance." },
+      { id: "ring-arc", name: "Ring on its axis and arc at its centre", formula: "ring: E = kQz/(z² + R²)^(3/2), largest at z = R/√2     arc: E = (2kλ/R) sin(φ/2)", legend: ["z = distance along the axis", "R = radius", "φ = angle the arc spans at the centre"], notes: "Half ring: 2kλ/R. Full ring at its centre: zero." },
+      { id: "gauss", name: "Flux and Gauss's law", formula: "φ = E · A = EA cos θ     ∮ E · dA = q_enc/ε₀", legend: ["A = area vector, along the normal", "q_enc = charge inside the closed surface"], notes: "Charge at a cube's centre: q/6ε₀ through each face. Charges outside add nothing to the net flux." },
+      { id: "gauss-results", name: "Spheres, shells and cylinders", formula: "solid sphere: E = kQr/R³ = ρr/(3ε₀) inside, kQ/r² outside     shell: E = 0 inside     long cylinder: E = ρr/(2ε₀) inside", legend: ["R = radius of the body", "ρ = charge per volume"], notes: "The solid sphere's field is largest at its surface." },
+      { id: "potential", name: "Potential and its link to E", formula: "V = Σ kqᵢ/rᵢ     shell: V = kQ/R inside, kQ/r outside     E = −dV/dr", legend: ["rᵢ = distance from each charge", "R = shell radius"], notes: "n identical drops merging: potential × n^(2/3). Spheres joined by a wire: q ∝ R, σ ∝ 1/R." },
+      { id: "work-energy", name: "Work and potential energy", formula: "W_ext = q(V_B − V_A)     U = Σ kqᵢqⱼ/rᵢⱼ  (each pair once)", legend: ["W_ext = work by an agent moving q slowly from A to B"], notes: "Work by the field is the negative of this." },
+      { id: "dipole-field", name: "Short dipole", formula: "p = qd     E_axial = 2kp/r³     E_equatorial = kp/r³     V = kp cos θ/r²", legend: ["p points from −q to +q", "θ = angle from the axis"], notes: "The axial field points along p, the equatorial field opposite to it; V is zero on the equatorial line." },
+      { id: "dipole-torque", name: "Dipole in a uniform field", formula: "τ = p × E  (pE sin θ)     U = −pE cos θ     W = pE(cos θ₁ − cos θ₂)", legend: ["θ = angle between p and E"], notes: "Net force zero in a uniform field. Turning from aligned to reversed costs 2pE." },
+      { id: "deflection", name: "Charge crossing a field", formula: "y = qEL²/(2mv²)     tan θ = qEL/(mv²)", legend: ["L = length of the plates", "v = entry speed along the plates"], notes: "The velocity part across the field never changes." },
+      { id: "capacitance", name: "Capacitance", formula: "plates: C = Kε₀A/d     sphere: C = 4πε₀R     spherical: C = 4πε₀R₁R₂/(R₂ − R₁)", legend: ["A = plate area, d = gap", "R₁, R₂ = inner and outer radii"] },
+      { id: "combinations", name: "Series and parallel", formula: "series: 1/C = Σ 1/Cᵢ     parallel: C = Σ Cᵢ", legend: ["series: same Q", "parallel: same V"], notes: "Steady DC: no current flows through a capacitor's branch." },
+      { id: "slab", name: "Slabs in the gap", formula: "across the gap: C = ε₀A/(d − t + t/K)     side by side: C = (ε₀/d) Σ KᵢAᵢ", legend: ["t = slab thickness", "Aᵢ = area each dielectric covers"], notes: "A metal sheet gives ε₀A/(d − t). A boundary parallel to the plates is series; perpendicular to them, parallel." },
+      { id: "stored-energy", name: "Stored energy", formula: "U = ½CV² = Q²/(2C) = ½QV     u = ½Kε₀E²", legend: ["u = energy per unit volume"], notes: "Slab inserted with the battery on (V fixed): U → KU. Battery removed (Q fixed): U → U/K." },
+      { id: "charge-sharing", name: "Joining two capacitors", formula: "V = (C₁V₁ + C₂V₂)/(C₁ + C₂)     ΔU = C₁C₂(V₁ − V₂)²/(2(C₁ + C₂))", legend: ["like plates joined", "ΔU = energy lost as heat"], notes: "Unlike plates joined: use C₁V₁ − C₂V₂ and (V₁ + V₂)²." },
+    ],
+  },
+  {
+    chapter: "Current Electricity",
+    playbookSlug: "current-electricity",
+    formulas: [
+      { id: "drift", name: "Current and drift", formula: "I = dq/dt = neAv_d     v_d = eEτ/m = μE     J = nev_d = σE", legend: ["n = free electrons per m³", "τ = mean time between collisions", "μ = mobility"], notes: "At a fixed voltage, v_d does not depend on the area; at a fixed current, v_d ∝ 1/A." },
+      { id: "resistance", name: "Resistance from shape", formula: "R = ρl/A     σ = 1/ρ", legend: ["l = length along the current", "A = area across it"] },
+      { id: "stretching", name: "Stretching a wire", formula: "length × n at constant volume:  R → n²R     same mass:  R ∝ 1/r⁴     ΔR/R ≈ 2Δl/l", legend: ["r = radius of the wire"], notes: "Increased BY twice its length means the new length is three times the old." },
+      { id: "temperature", name: "Resistance and temperature", formula: "R_T = R₀(1 + αΔT)", legend: ["R₀ = resistance at the reference temperature", "α = temperature coefficient"], notes: "Metals: α > 0. Semiconductors: α < 0." },
+      { id: "series-parallel", name: "Series, parallel and loops", formula: "R_s = Σ Rᵢ     1/R_p = Σ 1/Rᵢ     loop tapped at fractions x and 1 − x:  R = R_loop · x(1 − x)", legend: ["R_loop = resistance of the whole loop"], notes: "A wire cut into n equal pieces, all in parallel: R/n²." },
+      { id: "dividers", name: "Voltage and current dividers", formula: "V₁ = V R₁/(R₁ + R₂)     I₁ = I R₂/(R₁ + R₂)", legend: ["series pair across V", "parallel pair carrying I (the OTHER resistor on top)"] },
+      { id: "kirchhoff", name: "Kirchhoff's laws", formula: "junction:  Σ I_in = Σ I_out     loop:  Σ ε = Σ IR", legend: ["IR drops along the current, rises against it"], notes: "A current that comes out negative flows the other way." },
+      { id: "bridge", name: "Wheatstone and meter bridge", formula: "balance:  P/Q = R/S     meter bridge:  P/Q = l/(100 − l)", legend: ["P, Q, R, S = the four arms", "l = null point in cm from P's end"], notes: "At balance the middle arm carries no current whatever its resistance." },
+      { id: "cell", name: "A real cell", formula: "I = ε/(R + r)     V = ε − Ir  (discharging),  ε + Ir  (charging)     P_max = ε²/(4r) at R = r", legend: ["ε = emf, r = internal resistance", "R = external resistance"] },
+      { id: "cell-combinations", name: "Cells together", formula: "series:  ε_eq = Σ ±εᵢ,  r_eq = Σ rᵢ     parallel:  ε_eq = (Σ εᵢ/rᵢ)/(Σ 1/rᵢ),  1/r_eq = Σ 1/rᵢ", legend: ["minus sign for a reversed cell"], notes: "m rows of n identical cells: I = nε/(R + nr/m)." },
+      { id: "potentiometer", name: "Potentiometer", formula: "ε = kl,   k = V_wire/L     ε₁/ε₂ = l₁/l₂     r = R(l₁ − l₂)/l₂", legend: ["k = potential gradient", "l₁ = open-circuit balance, l₂ = balance with R across the cell"] },
+      { id: "power", name: "Power and ratings", formula: "P = VI = I²R = V²/R     rated:  R = V₀²/P₀,  P = P₀(V/V₀)²     H = I²Rt", legend: ["V₀, P₀ = rated voltage and power"], notes: "In series the lower-rated bulb glows more; in parallel the higher-rated one does." },
+      { id: "rc-lr", name: "RC and LR circuits", formula: "RC:  q = Q₀(1 − e^(−t/RC)),  discharge q = q₀e^(−t/RC)     LR:  i = (E/R)(1 − e^(−tR/L))", legend: ["τ = RC or L/R"], notes: "Time to fall to 1/n: τ ln n. Energy halves in ½τ ln 2. Just after switching an inductor is open; long after, a capacitor is open." },
+    ],
+  },
+  {
+    chapter: "Moving Charges and Magnetism",
+    playbookSlug: "moving-charges-and-magnetism",
+    formulas: [
+      { id: "biot-savart", name: "Biot–Savart law", formula: "dB = (μ₀/4π) I dl sin θ/r²", legend: ["θ = angle between dl and the line to the point"], notes: "μ₀/4π = 10⁻⁷ T m/A. A point on the line of the wire itself gets zero." },
+      { id: "straight-wire", name: "Straight wires", formula: "infinite:  B = μ₀I/(2πd)     finite:  B = (μ₀I/4πd)(sin α₁ + sin α₂)", legend: ["d = perpendicular distance", "α₁, α₂ = angles measured from the perpendicular"], notes: "Semi-infinite wire, point on the perpendicular through its end: μ₀I/(4πd), half the infinite value." },
+      { id: "loops", name: "Arcs and circular coils", formula: "arc at centre:  B = μ₀Iθ/(4πR)     coil centre:  B = μ₀NI/(2R)     axis:  B = μ₀NIR²/(2(R² + x²)^(3/2))", legend: ["θ = arc angle in radians", "x = distance along the axis"] },
+      { id: "ampere", name: "Ampère's law", formula: "∮ B · dl = μ₀I_enc     solid wire:  B = μ₀Ir/(2πa²) inside,  μ₀I/(2πr) outside", legend: ["a = radius of the wire"], notes: "Hollow tube: zero inside. Coaxial cable with equal and opposite currents: zero outside." },
+      { id: "solenoid", name: "Solenoid and toroid", formula: "solenoid:  B = μ₀nI   (core: μ₀μ_r nI)     toroid:  B = μ₀NI/(2πr)", legend: ["n = turns per metre", "N = total turns"], notes: "H = nI has no μ₀ in it." },
+      { id: "lorentz", name: "Lorentz force", formula: "F = q(E + v × B)     magnetic part:  qvB sin θ     selector:  v = E/B", legend: ["θ = angle between v and B"], notes: "The magnetic force does no work, so speed never changes under it alone." },
+      { id: "circular-path", name: "Circle, helix and cyclotron", formula: "r = mv/(qB) = √(2mK)/(qB)     T = 2πm/(qB)     pitch = 2πmv cos θ/(qB)", legend: ["K = kinetic energy", "θ = angle between v and B"], notes: "T does not depend on the speed. Cyclotron: K_max = q²B²R²/(2m)." },
+      { id: "wire-force", name: "Force on currents", formula: "F = I L × B  (ILB sin θ)     parallel wires:  F/L = μ₀I₁I₂/(2πd)", legend: ["L = length in the field", "d = gap between the wires"], notes: "Like currents attract. A bent wire acts like the straight line joining its ends." },
+      { id: "coil-torque", name: "Moment and torque of a coil", formula: "m = NIA     τ = m × B   (NIAB sin θ)", legend: ["θ = angle between the coil's normal and B"], notes: "Largest torque when the coil's plane is parallel to B." },
+      { id: "galvanometer", name: "Galvanometer, ammeter, voltmeter", formula: "NIAB = Cθ     shunt:  S = I_gG/(I − I_g)     series:  R = V/I_g − G", legend: ["C = torsional constant", "G = coil resistance, I_g = full-scale current"], notes: "Current sensitivity θ/I = NAB/C; voltage sensitivity θ/V = NAB/(CR)." },
+    ],
+  },
+  {
+    chapter: "Magnetism and Matter",
+    playbookSlug: "magnetism-and-matter",
+    formulas: [
+      { id: "bar-magnet", name: "Short bar magnet", formula: "M = m(2l)     B_axial = (μ₀/4π)(2M/r³)     B_equatorial = (μ₀/4π)(M/r³)", legend: ["m = pole strength", "2l = magnetic length", "M points from S to N"], notes: "Bending keeps m: a semicircle gives 2M/π, an L at the middle gives M/√2." },
+      { id: "magnet-in-field", name: "Dipole in a uniform field", formula: "τ = MB sin θ     U = −MB cos θ     W = MB(cos θ₁ − cos θ₂)", legend: ["θ = angle between M and B"], notes: "Stable to unstable costs 2MB." },
+      { id: "earth-field", name: "Earth's field and dip", formula: "B_H = B cos δ     B_V = B sin δ     tan δ = B_V/B_H", legend: ["δ = angle of dip"], notes: "In a plane at α to the magnetic meridian: tan δ′ = tan δ/cos α. Two perpendicular planes: cot²δ = cot²δ₁ + cot²δ₂." },
+      { id: "oscillating-magnet", name: "Oscillating magnet", formula: "T = 2π√(I/(MB_H))", legend: ["I = moment of inertia of the magnet"], notes: "One needle at two places: n² ∝ B cos δ." },
+      { id: "magnetisation", name: "Magnetising a material", formula: "M = χH     B = μ₀(H + M) = μ₀μ_r H     μ_r = 1 + χ", legend: ["M here = magnetisation (moment per volume)", "H = magnetic intensity, A/m", "χ = susceptibility"] },
+      { id: "curie", name: "Susceptibility and temperature", formula: "paramagnet:  χ = C/T     ferromagnet above T_C:  χ = C/(T − T_C)", legend: ["C = Curie constant", "T_C = Curie temperature"], notes: "Diamagnet: −1 ≤ χ < 0, independent of temperature." },
+    ],
+  },
+  {
+    chapter: "Electromagnetic Induction",
+    playbookSlug: "electromagnetic-induction",
+    formulas: [
+      { id: "faraday", name: "Flux and Faraday's law", formula: "Φ = NBA cos θ     ε = −dΦ/dt", legend: ["θ = angle between B and the normal"], notes: "The minus sign is Lenz's law: the induced current opposes the change." },
+      { id: "induced-charge", name: "Charge through the circuit", formula: "Q = NΔΦ/R", legend: ["ΔΦ = change of flux through one turn"], notes: "Pulled out of the field: ΔΦ = BA. Field reversed or coil flipped: 2BA." },
+      { id: "motional", name: "Motional emf and a rod on rails", formula: "ε = Blv     F = B²l²v/R     terminal speed  v_t = mgR/(B²l²)", legend: ["l = length between the rails", "R = whole circuit's resistance"], notes: "A wing or a horizontal rod moving horizontally cuts the vertical component B sin δ." },
+      { id: "rotating-rod", name: "Rotating rod or disc", formula: "ε = ½Bωl²", legend: ["l = rod length (or disc radius)", "ω = angular speed"], notes: "Fan blades are in parallel, so the emf is that of one blade." },
+      { id: "generator", name: "Rotating coil", formula: "ε = NBAω sin ωt     ε₀ = NBAω", legend: ["ω = 2π × revolutions per second"], notes: "Plane perpendicular to B: flux largest, emf zero." },
+      { id: "self-inductance", name: "Self-inductance", formula: "ε = −L dI/dt     solenoid:  L = μ₀n²Al = μ₀N²A/l", legend: ["n = turns per metre", "l = solenoid length"], notes: "L depends on geometry and core, not on the current." },
+      { id: "mutual", name: "Mutual inductance", formula: "ε₂ = −M dI₁/dt     coil on a solenoid:  M = μ₀nN₂A     series coils:  L = L₁ + L₂ ± 2M", legend: ["N₂ = turns of the outer coil", "plus when the fluxes aid"], notes: "M ≤ √(L₁L₂)." },
+      { id: "inductor-energy", name: "Inductor energy and LR growth", formula: "U = ½LI²     u = B²/(2μ)     I = (E/R)(1 − e^(−t/τ)),  τ = L/R", legend: ["u = energy per unit volume"], notes: "A fraction f of the final energy needs I = √f × E/R." },
+    ],
+  },
+  {
+    chapter: "Alternating Current",
+    playbookSlug: "alternating-current",
+    formulas: [
+      { id: "rms", name: "RMS values", formula: "I_rms = I₀/√2     V_rms = V₀/√2     d.c. + a.c.:  I_rms = √(I_dc² + I₀²/2)", legend: ["I₀, V₀ = peak values"], notes: "Meters and supply ratings are rms. The rms of a sum is not the sum of the rms values." },
+      { id: "reactance", name: "Reactances", formula: "X_L = ωL = 2πfL     X_C = 1/(ωC) = 1/(2πfC)", legend: ["f = frequency"], notes: "In L the voltage leads by π/2; in C the current leads by π/2." },
+      { id: "impedance", name: "Series LCR impedance", formula: "Z = √(R² + (X_L − X_C)²)     V² = V_R² + (V_L − V_C)²", legend: ["V_R, V_L, V_C = voltages across each part"] },
+      { id: "phase", name: "Phase and power factor", formula: "tan φ = (X_L − X_C)/R     cos φ = R/Z", legend: ["φ = angle between voltage and current"], notes: "X_L > X_C: current lags. X_C > X_L: current leads." },
+      { id: "average-power", name: "Average power", formula: "P = V_rms I_rms cos φ = ½V₀I₀ cos φ = I_rms² R", legend: ["cos φ = power factor"], notes: "Pure L or pure C: zero power, a wattless current." },
+      { id: "resonance", name: "Resonance", formula: "ω₀ = 1/√(LC)     f₀ = 1/(2π√(LC))     at resonance:  Z = R,  I = V/R", legend: ["R does not set the resonant frequency"] },
+      { id: "quality-factor", name: "Quality factor and bandwidth", formula: "Q = ω₀L/R = (1/R)√(L/C)     Δω = R/L = ω₀/Q", legend: ["Δω = gap between the half-power frequencies"] },
+      { id: "lc-oscillation", name: "LC oscillations", formula: "ω = 1/√(LC)     I_max = Q₀/√(LC) = V₀√(C/L)", legend: ["Q₀, V₀ = starting charge and voltage"], notes: "q²/(2C) + ½Li² = Q₀²/(2C) at every instant." },
+      { id: "transformer", name: "Transformer", formula: "V_s/V_p = N_s/N_p     ideal:  I_s/I_p = N_p/N_s     V_sI_s = η V_pI_p", legend: ["η = efficiency"] },
+    ],
+  },
+  {
+    chapter: "Electromagnetic Waves",
+    playbookSlug: "electromagnetic-waves",
+    formulas: [
+      { id: "displacement-current", name: "Displacement current", formula: "i_d = ε₀ dΦ_E/dt = C dV/dt", legend: ["Φ_E = electric flux"], notes: "Between capacitor plates it equals the conduction current in the leads." },
+      { id: "wave-speed", name: "Wave speed", formula: "c = 1/√(μ₀ε₀)     v = c/√(μ_rε_r)     n = √(μ_rε_r)     v = ω/k,  λ = 2π/k", legend: ["k = wave number"], notes: "Entering a medium, the frequency stays; speed and wavelength fall by n." },
+      { id: "e-and-b", name: "E and B in a wave", formula: "E₀ = cB₀     B = (k × E)/ω     travel along E × B", legend: ["E, B and the direction of travel are mutually perpendicular"], notes: "B carries exactly the same phase as E." },
+      { id: "energy-density", name: "Energy density", formula: "⟨u⟩ = ½ε₀E₀² = B₀²/(2μ₀)", legend: ["⟨u⟩ = average over a cycle"], notes: "The electric and magnetic shares are equal." },
+      { id: "intensity", name: "Intensity", formula: "I = ½cε₀E₀² = cB₀²/(2μ₀)     point source:  I = P/(4πr²)", legend: ["P = power radiated"] },
+      { id: "radiation-pressure", name: "Momentum and radiation pressure", formula: "p = U/c     absorbed:  P = I/c     reflected:  P = 2I/c", legend: ["U = energy delivered", "P here = pressure"], notes: "Force = pressure × area." },
+      { id: "spectrum", name: "Order of the spectrum", formula: "γ-rays < X-rays < ultraviolet < visible < infrared < microwaves < radio  (rising λ)", legend: ["frequency rises the other way"], notes: "Photon energy E = hc/λ ≈ 1240/λ eV with λ in nm." },
+    ],
+  },
+  {
+    chapter: "Ray Optics",
+    playbookSlug: "ray-optics",
+    formulas: [
+      { id: "plane-mirror", name: "Plane mirrors", formula: "δ = 180° − 2i     mirror turned by θ:  ray turns by 2θ     images between mirrors at θ:  360°/θ − 1", legend: ["i = angle of incidence"], notes: "The image-count rule holds when 360°/θ is even." },
+      { id: "mirror-formula", name: "Mirror formula", formula: "1/v + 1/u = 1/f     f = R/2     m = −v/u = f/(f − u)", legend: ["u, v = object and image distances from the pole"], notes: "Cartesian sign convention throughout: distances from the pole or optical centre, positive along the incident light, heights positive upward. So a concave mirror has f < 0 and a convex one f > 0." },
+      { id: "image-speed", name: "Image speed", formula: "dv/dt = −m² du/dt", legend: ["m = magnification at that instant"], notes: "Across the axis the image moves at m times the object's speed." },
+      { id: "snell", name: "Snell's law and the slab", formula: "n₁ sin i = n₂ sin r     n = c/v     lateral shift  d = t sin(i − r)/cos r", legend: ["angles measured from the normal", "t = slab thickness"] },
+      { id: "apparent-depth", name: "Apparent depth", formula: "d_app = d/μ     shift = d(1 − 1/μ)     layers:  d_app = Σ dᵢ/μᵢ", legend: ["viewed from the rarer medium, near the normal"], notes: "Looking from the denser side at an object in the rarer one: d_app = μd." },
+      { id: "critical-angle", name: "Critical angle", formula: "sin C = n_rarer/n_denser  (= 1/μ into air)     circle of light:  r = h tan C = h/√(μ² − 1)", legend: ["h = depth of the source"], notes: "Total internal reflection needs the denser side and i > C." },
+      { id: "single-surface", name: "One spherical surface", formula: "μ₂/v − μ₁/u = (μ₂ − μ₁)/R     m = μ₁v/(μ₂u)", legend: ["μ₁ = medium the light comes from, μ₂ = the one it enters"] },
+      { id: "lens-maker", name: "Lens-maker's formula", formula: "1/f = (μ − 1)(1/R₁ − 1/R₂)     in a medium:  1/f = (μ_l/μ_m − 1)(1/R₁ − 1/R₂)", legend: ["R₁ = face the light meets first", "μ_l = lens, μ_m = surrounding medium"], notes: "Equiconvex: f = R/(2(μ − 1)). Plano-convex: f = R/(μ − 1)." },
+      { id: "thin-lens", name: "Thin lens", formula: "1/v − 1/u = 1/f     m = v/u = f/(f + u)     P = 1/f", legend: ["P in dioptres with f in metres"] },
+      { id: "lens-combinations", name: "Lenses together", formula: "in contact:  P = P₁ + P₂     separated by d:  P = P₁ + P₂ − dP₁P₂", legend: ["d = separation"], notes: "Step by step instead: total m = m₁m₂." },
+      { id: "silvered-lens", name: "Silvered lens", formula: "P = 2P_L + P_M     F = 1/P     plane face silvered:  F = f_L/2", legend: ["P_L = lens power", "P_M = 2/R, the silvered face as a mirror"], notes: "The system behaves as a concave mirror of focal length F." },
+      { id: "prism", name: "Prism", formula: "r₁ + r₂ = A     δ = i + e − A     μ = sin((A + δ_m)/2)/sin(A/2)", legend: ["A = prism angle", "δ_m = minimum deviation, where i = e"], notes: "Grazing emergence: r₂ = C." },
+      { id: "thin-prism", name: "Thin prism and dispersion", formula: "δ = (μ − 1)A     dispersive power  ω = (μ_v − μ_r)/(μ_y − 1)", legend: ["μ_y = mean (yellow) index"], notes: "No deviation: (μ₁ − 1)A₁ = (μ₂ − 1)A₂. No dispersion: (μ_v − μ_r) A equal for both prisms." },
+      { id: "instruments", name: "Microscopes and telescopes", formula: "simple:  M = D/f  (1 + D/f, image at D)     compound:  M = (L/f_o)(D/f_e)     telescope:  M = f_o/f_e,  length f_o + f_e", legend: ["D = 25 cm", "L = tube length"] },
+    ],
+  },
+  {
+    chapter: "Wave Optics",
+    playbookSlug: "wave-optics",
+    formulas: [
+      { id: "medium", name: "Light in a medium", formula: "f unchanged     v = c/μ     λ = λ₀/μ", legend: ["λ₀ = wavelength in vacuum"] },
+      { id: "superposition", name: "Two coherent beams", formula: "I = I₁ + I₂ + 2√(I₁I₂) cos φ     equal beams:  I = 4I₀ cos²(φ/2)", legend: ["φ = phase difference"], notes: "Incoherent beams simply add: I₁ + I₂." },
+      { id: "contrast", name: "Brightest and darkest", formula: "I_max/I_min = ((√I₁ + √I₂)/(√I₁ − √I₂))² = ((r + 1)/(r − 1))²", legend: ["r = amplitude ratio = √(I₁/I₂)"], notes: "Intensity through a slit is proportional to its width unless the stem says amplitude." },
+      { id: "path-phase", name: "Path and phase", formula: "φ = (2π/λ)Δx     Δx = yd/D", legend: ["y = position on the screen", "d = slit gap, D = screen distance"] },
+      { id: "fringes", name: "Double-slit fringes", formula: "β = λD/d     angular width λ/d     bright:  y = nλD/d     dark:  y = (n − ½)λD/d", legend: ["β = fringe width"], notes: "In a liquid: β/μ. Two wavelengths coincide where n₁λ₁ = n₂λ₂." },
+      { id: "sheet-shift", name: "Sheet over one slit", formula: "shift = (μ − 1)tD/d     fringes shifted  N = (μ − 1)t/λ", legend: ["t = sheet thickness"], notes: "The pattern moves towards the covered slit; the fringe width stays." },
+      { id: "thin-film", name: "Thin film, normal incidence", formula: "one phase reversal:  reflected bright at 2μt = (n − ½)λ,  dark at 2μt = nλ", legend: ["t = film thickness"], notes: "With no reversal, or two, swap bright and dark." },
+      { id: "single-slit", name: "Single slit", formula: "minima:  a sin θ = nλ     central maximum:  2λ/a (angle),  2λD/a (on the screen)", legend: ["a = slit width"], notes: "Secondary maxima are half as wide as the central one." },
+      { id: "resolution", name: "Resolving power", formula: "telescope:  Δθ = 1.22λ/D     microscope:  RP = 2μ sin θ/(1.22λ)", legend: ["D = aperture diameter"] },
+      { id: "malus", name: "Malus' law", formula: "unpolarised in:  I = I₀/2     then  I = I′ cos²θ", legend: ["θ = angle between successive axes"], notes: "A sheet at θ between crossed polaroids passes (I₀/8) sin²2θ." },
+      { id: "brewster", name: "Brewster's law", formula: "tan i_B = μ₂/μ₁     i_B + r = 90°", legend: ["i_B = polarising angle"], notes: "The reflected light is completely polarised, perpendicular to the plane of incidence." },
+    ],
+  },
+  {
+    chapter: "Dual Nature of Radiation and Matter",
+    playbookSlug: "dual-nature",
+    formulas: [
+      { id: "photon", name: "Photon energy and momentum", formula: "E = hν = hc/λ ≈ 1240/λ eV  (λ in nm)     p = h/λ = E/c", legend: ["1 eV = 1.6 × 10⁻¹⁹ J"], notes: "Use the hc the stem prints if it differs." },
+      { id: "photon-rate", name: "Photons per second and force", formula: "n = P/E = Pλ/(hc)     force:  P/c absorbed,  2P/c reflected", legend: ["P = power of the beam"] },
+      { id: "threshold", name: "Threshold", formula: "φ = hν₀ = hc/λ₀", legend: ["φ = work function"], notes: "No emission below ν₀, however bright the light." },
+      { id: "einstein", name: "Einstein's equation", formula: "hν = φ + K_max     K_max = eV₀ = ½mv_max²", legend: ["V₀ = stopping potential"], notes: "V₀ depends on frequency and metal, not on intensity; the saturation current grows with intensity." },
+      { id: "stopping-graph", name: "Stopping potential against frequency", formula: "V₀ = (h/e)ν − φ/e", legend: ["slope h/e, the same for every metal", "meets the ν-axis at ν₀"] },
+      { id: "two-wavelengths", name: "Two wavelengths, one metal", formula: "e(V₁ − V₂) = hc(1/λ₁ − 1/λ₂)", legend: ["φ cancels"] },
+      { id: "de-broglie", name: "de Broglie wavelength", formula: "λ = h/p = h/√(2mK) = h/√(2mqV)     electron:  λ = 1.227/√V nm", legend: ["V = accelerating voltage"], notes: "Equal λ means equal momentum. Same K: λ ∝ 1/√m." },
+      { id: "thermal-wavelength", name: "Particle at temperature T", formula: "λ = h/√(3mkT)", legend: ["k = Boltzmann constant"] },
+    ],
+  },
+  {
+    chapter: "Atoms",
+    playbookSlug: "atoms",
+    formulas: [
+      { id: "closest-approach", name: "Rutherford scattering", formula: "r₀ = (1/4πε₀)(2Ze²/K)     b = (r₀/2) cot(θ/2)", legend: ["K = alpha's kinetic energy", "b = impact parameter, θ = scattering angle"], notes: "e²/(4πε₀) = 1.44 MeV fm." },
+      { id: "bohr-postulates", name: "Bohr's postulates", formula: "mvr = nh/(2π)     hν = E_upper − E_lower", legend: ["n = 1, 2, 3, …"] },
+      { id: "orbit", name: "Radius and speed", formula: "r_n = 0.529 n²/Z Å     v_n = 2.19 × 10⁶ Z/n m/s", legend: ["Z = atomic number"], notes: "Period ∝ n³/Z²; current of the orbit ∝ Z²/n³; field at the nucleus ∝ Z³/n⁵; moment μ = neh/(4πm)." },
+      { id: "energy-levels", name: "Energy levels", formula: "E_n = −13.6 Z²/n² eV     K = −E,   U = 2E", legend: ["n = 1 is the ground state"], notes: "Ionisation energy from level n = 13.6 Z²/n² eV." },
+      { id: "rydberg", name: "Rydberg formula", formula: "1/λ = RZ²(1/n_f² − 1/n_i²)     R = 1.097 × 10⁷ m⁻¹", legend: ["n_f = lower level, n_i = upper level"], notes: "Lyman ends on 1, Balmer on 2, Paschen on 3. Series limit: λ = n_f²/(RZ²)." },
+      { id: "transition-energy", name: "Transition energy", formula: "ΔE = 13.6 Z²(1/n_f² − 1/n_i²) eV     λ (nm) = 1240/ΔE (eV)", legend: ["ΔE = photon energy"] },
+      { id: "line-count", name: "Number of lines", formula: "N = n(n − 1)/2", legend: ["n = highest level reached"], notes: "A single atom gives at most n − 1 photons." },
+      { id: "x-ray-recoil", name: "X-ray cut-off and recoil", formula: "λ_min = hc/(eV) ≈ 1240/V nm     v_recoil = E/(Mc)", legend: ["V = tube voltage", "M = mass of the whole atom"] },
+    ],
+  },
+  {
+    chapter: "Nuclei",
+    playbookSlug: "nuclei",
+    formulas: [
+      { id: "radius", name: "Nuclear radius", formula: "R = R₀A^(1/3),   R₀ ≈ 1.2 fm", legend: ["A = mass number"], notes: "Every nucleus has the same density, since A cancels." },
+      { id: "binding-energy", name: "Mass defect and binding energy", formula: "Δm = Zm_p + (A − Z)m_n − M     BE = Δm c²,   1 u c² = 931.5 MeV", legend: ["M = nuclear mass"], notes: "Compare stability by BE/A, not by total BE." },
+      { id: "q-value", name: "Q-value", formula: "Q = (Σ m_reactants − Σ m_products)c² = Σ BE_products − Σ BE_reactants", legend: ["Q > 0: energy released"], notes: "A free proton or neutron has zero binding energy." },
+      { id: "alpha-share", name: "Alpha decay at rest", formula: "K_α = Q(A − 4)/A     K_daughter = 4Q/A", legend: ["A = parent's mass number"] },
+      { id: "decay-count", name: "Counting decays", formula: "n_α = ΔA/4     n_β = 2n_α − ΔZ", legend: ["ΔA, ΔZ = parent minus daughter"] },
+      { id: "decay-law", name: "Decay law", formula: "N = N₀e^(−λt) = N₀(½)^(t/T½)     A = λN", legend: ["λ = decay constant", "A = activity"] },
+      { id: "half-life", name: "Half-life and mean life", formula: "T½ = ln 2/λ ≈ 0.693/λ     τ = 1/λ ≈ 1.44 T½", legend: ["τ = mean life"], notes: "1 Ci = 3.7 × 10¹⁰ Bq." },
+      { id: "parallel-decay", name: "Two routes", formula: "λ = λ₁ + λ₂     T = T₁T₂/(T₁ + T₂)", legend: ["T₁, T₂ = half-lives of each route alone"] },
+      { id: "sample-energy", name: "Energy from a sample", formula: "E = (m/M)N_A Q     reactions per second = P/Q", legend: ["M = molar mass", "P = power"], notes: "1 MeV = 1.6 × 10⁻¹³ J." },
+    ],
+  },
+  {
+    chapter: "Semiconductor Electronics",
+    playbookSlug: "semiconductor-electronics",
+    formulas: [
+      { id: "mass-action", name: "Carriers", formula: "n_e n_h = n_i²", legend: ["n_i = intrinsic carrier density"], notes: "n-type: electrons are the majority. p-type: holes are. Both stay neutral." },
+      { id: "photon-gap", name: "LED and photodiode", formula: "λ (nm) ≈ 1240/E_g (eV)", legend: ["E_g = band gap"], notes: "LED: forward biased. Photodiode: reverse biased. Solar cell: no bias." },
+      { id: "diode-drop", name: "Diodes in a loop", formula: "I = (V − Σ V_D)/Σ R", legend: ["V_D = drop of each conducting diode"], notes: "About 0.7 V for silicon and 0.3 V for germanium unless stated. A reverse-biased ideal diode is an open branch." },
+      { id: "rectifier", name: "Rectifiers", formula: "half-wave:  output at f     full-wave:  2f     bridge peak:  V_m − 2V_D", legend: ["f = input frequency"] },
+      { id: "zener", name: "Zener regulator", formula: "I_s = (V_in − V_Z)/R_s     I_L = V_Z/R_L     I_Z = I_s − I_L     P_Z = V_Z I_Z", legend: ["R_s = series resistor"], notes: "Check breakdown first: without the Zener, does the load voltage exceed V_Z?" },
+      { id: "transistor", name: "Transistor currents", formula: "I_E = I_B + I_C     α = β/(1 + β)     β = α/(1 − α)", legend: ["α = I_C/I_E", "β = I_C/I_B"] },
+      { id: "ce-amplifier", name: "Common-emitter gains", formula: "β = ΔI_C/ΔI_B     A_V = β R_L/r_i     A_P = βA_V", legend: ["r_i = ΔV_BE/ΔI_B, input resistance", "R_L = load"], notes: "The output is 180° out of phase with the input." },
+      { id: "de-morgan", name: "De Morgan's laws", formula: "NOT(A·B) = Ā + B̄     NOT(A + B) = Ā·B̄", legend: ["· = AND, + = OR"], notes: "NAND or NOR with tied inputs is a NOT gate." },
+      { id: "boolean", name: "Simplifying rules", formula: "A + AB = A     A + ĀB = A + B     A ⊕ B = AB̄ + ĀB", legend: ["⊕ = XOR, 1 when the inputs differ"] },
+    ],
+  },
+];

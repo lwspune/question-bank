@@ -128,6 +128,13 @@ export const TRENDS_REPORTS: readonly TrendsReport[] = [
     claim: "JEE Mains Chemistry, 2021 to 2026: 3,455 questions, and physical chemistry up from 6 to 9 a paper",
     dataThrough: "JEE Main 2026, 8 April Shift 2",
   },
+  {
+    route: "/guide/jee-mains-physics/trends",
+    exam: "JEE Mains",
+    subject: "Physics",
+    claim: "JEE Mains Physics, 2021 to 2026: 3,482 questions, and Ray Optics up from about one question a paper to two",
+    dataThrough: "JEE Main 2026, 8 April Shift 2",
+  },
 ];
 
 export function trendsReportFor(route: string): TrendsReport | null {
