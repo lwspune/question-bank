@@ -165,4 +165,34 @@ describe.skipIf(!HAS_ENV)("email click redirect", () => {
     const res2 = await GET(req(token, "//evil.example/x"), { params: { token } });
     expect(res2.headers.get("location")).toBe("https://www.pyqvault.com/");
   });
+
+  it("a notification tap (a push_sends token) records push_clicked once and redirects (0128)", async () => {
+    jar.clear();
+    const pushToken = newClickToken();
+    const { data, error } = await admin
+      .from("push_sends")
+      .insert({
+        user_id: userId,
+        kind: "due_nudge",
+        dedupe_key: `test:push:${pushToken}`,
+        status: "sent",
+        click_token: pushToken,
+      })
+      .select("id")
+      .single();
+    if (error) throw new Error(error.message);
+    const pushId = data.id as string;
+
+    const res = await GET(req(pushToken, "/drill"), { params: { token: pushToken } });
+    await GET(req(pushToken, "/drill"), { params: { token: pushToken } });
+    expect(res.headers.get("location")).toBe("https://www.pyqvault.com/drill");
+
+    const { data: rows } = await admin
+      .from("user_activity")
+      .select("kind, ref_id, ref_kind, metadata")
+      .eq("dedupe_key", `push_click:${pushId}`);
+    expect(rows).toHaveLength(1);
+    expect(rows![0]).toMatchObject({ kind: "push_clicked", ref_id: pushId, ref_kind: "push_send", metadata: { kind: "due_nudge" } });
+    expect(await clickMeta(pushId)).toBeNull(); // nothing filed under an email click
+  });
 });

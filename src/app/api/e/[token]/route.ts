@@ -25,18 +25,37 @@ export const dynamic = "force-dynamic";
  * the click row as `metadata.signIn`, so a report can tell a wall from a
  * channel. The response is built LAST so the session cookies the sign-in
  * sets are on it.
+ *
+ * Since 2026-10-01 (migration 0128) a browser NOTIFICATION's tap comes through
+ * here too: a token found in push_sends instead records `push_clicked`, under
+ * the same one-per-send rule and the same sign-in rule.
  */
+type Channel = { table: "email_sends" | "push_sends"; kind: "email_clicked" | "push_clicked"; refKind: string; prefix: string };
+const CHANNELS: Channel[] = [
+  { table: "email_sends", kind: "email_clicked", refKind: "email_send", prefix: "email_click" },
+  { table: "push_sends", kind: "push_clicked", refKind: "push_send", prefix: "push_click" },
+];
+
 export async function GET(request: NextRequest, { params }: { params: { token: string } }) {
   const target = resolveClickTarget(request.nextUrl.searchParams.get("to"));
 
   if (CLICK_TOKEN_RE.test(params.token)) {
     try {
       const admin = createSupabaseAdminClient();
-      const { data: send } = await admin
-        .from("email_sends")
-        .select("id, user_id, kind, created_at")
-        .eq("click_token", params.token)
-        .maybeSingle();
+      let send: Record<string, unknown> | null = null;
+      let channel = CHANNELS[0];
+      for (const c of CHANNELS) {
+        const { data } = await admin
+          .from(c.table)
+          .select("id, user_id, kind, created_at")
+          .eq("click_token", params.token)
+          .maybeSingle();
+        if (data) {
+          send = data;
+          channel = c;
+          break;
+        }
+      }
       if (send?.user_id) {
         const userId = send.user_id as string;
         let signIn = "failed";
@@ -49,11 +68,11 @@ export async function GET(request: NextRequest, { params }: { params: { token: s
           console.error("email click redirect: sign-in failed", e);
         }
         await logActivityOnce(admin, userId, {
-          kind: "email_clicked",
+          kind: channel.kind,
           refId: send.id as string,
-          refKind: "email_send",
+          refKind: channel.refKind,
           metadata: { kind: send.kind, to: target, signIn },
-          dedupeKey: `email_click:${send.id}`,
+          dedupeKey: `${channel.prefix}:${send.id}`,
         });
       }
     } catch (e) {
