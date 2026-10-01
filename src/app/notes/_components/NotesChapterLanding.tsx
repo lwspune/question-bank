@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notesChapterTitle } from "@/lib/notes/titles";
 import { chapterStart, mockCta } from "@/lib/notes/keepGoing";
-import { getExamByName } from "@/lib/exam/examContext";
+import { getExamByName, getExamBySlug } from "@/lib/exam/examContext";
 import { examHomeHref as examHomeHrefFor } from "@/lib/exam/examHome";
 import NotesKeepGoing from "./NotesKeepGoing";
 import NotesMockCard from "./NotesMockCard";
@@ -34,6 +34,7 @@ import { printHandoutHref } from "@/lib/notes/printDoc";
 import ConceptWeightTable from "./ConceptWeightTable";
 import { listChapterLandings, landingHref } from "@/lib/questions/landing";
 import { findChapterLanding } from "@/lib/questions/findLanding";
+import ChapterShareCard from "@/components/ChapterShareCard";
 
 /**
  * Chapter-agnostic renderer for a /notes chapter landing page. Each chapter's
@@ -344,6 +345,18 @@ export default async function NotesChapterLanding({ chapter }: Props) {
       {/* The way in, then a real paper to test the chapter on. */}
       <NotesKeepGoing next={chapterStart(chapter)} prev={null} />
       {mock && <NotesMockCard href={mock.href} examDisplay={mock.examDisplay} page="chapter" />}
+      {questionsLanding && (
+        <ChapterShareCard
+          path={landingHref(questionsLanding)}
+          chapterName={questionsLanding.chapterName}
+          examDisplay={
+            getExamBySlug(questionsLanding.examSlug)?.displayName ?? questionsLanding.examName
+          }
+          questionCount={questionsLanding.questionCount}
+          practiceOnly={questionsLanding.practiceOnly}
+          surface="notes"
+        />
+      )}
       {mock && <NotesTestBar href={mock.href} examDisplay={mock.examDisplay} />}
     </GuideShell>
   );

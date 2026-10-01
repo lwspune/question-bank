@@ -65,6 +65,13 @@ export const FUNNEL_EVENTS = [
   "chat_launcher_click",
   /** A predefined V question was clicked; questionId names which one. */
   "chat_faq_click",
+  /**
+   * A chapter share button was tapped (2026-10-01); props: channel, surface
+   * ("questions" | "notes"). Intent only — the arrival half is the
+   * utm_campaign=chapter-share signups. No `_shown` partner: the card is always
+   * on the page, so page views of /questions and /notes chapters are the scale.
+   */
+  "chapter_share_click",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];
