@@ -11,14 +11,15 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { CHAPTER_SHARE_CAMPAIGN } from "@/lib/share/chapterShare";
-import { EXPERIMENTS, NORTH_STAR_KINDS } from "./registry";
-import type { ArmCounts, EmailDay, NorthStarWeek, SignupWeek } from "./snapshot";
+import { CHAPTER_TESTS_EXAM, EXPERIMENTS, NORTH_STAR_KINDS } from "./registry";
+import type { ArmCounts, ChapterTestWeek, EmailDay, NorthStarWeek, SignupWeek } from "./snapshot";
 
 export type GrowthSnapshotRaw = {
   weeks: NorthStarWeek[];
   signupWeeks: SignupWeek[];
   arms: ArmCounts[];
   chapterShare: { signups: number; signalled: number };
+  chapterTests: ChapterTestWeek[];
   emailDays: EmailDay[];
 };
 
@@ -43,6 +44,7 @@ export function growthParams(weeks = GROWTH_WEEKS) {
     p_mock_exams: EXAM_REGISTRY.filter((e) => e.hasMocks === true).map((e) => e.slug),
     p_share_since: liveSince("chapter-share"),
     p_share_campaign: CHAPTER_SHARE_CAMPAIGN,
+    p_chapter_exam: CHAPTER_TESTS_EXAM,
   };
 }
 
@@ -59,6 +61,7 @@ export async function fetchGrowthSnapshot(
     signupWeeks: raw.signupWeeks ?? [],
     arms: raw.arms ?? [],
     chapterShare: raw.chapterShare ?? { signups: 0, signalled: 0 },
+    chapterTests: raw.chapterTests ?? [],
     emailDays: raw.emailDays ?? [],
   };
 }

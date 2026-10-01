@@ -1,5 +1,10 @@
 import { describe, it, expect } from "vitest";
 import {
+  CHAPTER_TESTS_ANSWERED_KEEP,
+  CHAPTER_TESTS_MIN_SITTINGS,
+  CHAPTER_TESTS_STUDENTS_KEEP,
+  chapterTestsVerdict,
+  type ChapterTestWeek,
   CHAPTER_SHARE_KEEP,
   EMAIL_DAILY_CAP,
   INDEXING_GOAL,
@@ -189,5 +194,77 @@ describe("indexingView", () => {
     const v = indexingView([]);
     expect(v.latest).toBeNull();
     expect(v.change).toBeNull();
+  });
+});
+
+describe("chapterTestsVerdict", () => {
+  const LIVE_CT = "2026-10-01"; // a Thursday: its week starts 2026-09-28
+  const week = (weekStart: string, p: Partial<ChapterTestWeek> = {}): ChapterTestWeek => ({
+    weekStart,
+    fullSittings: 0, fullStudents: 0, fullAnswered: 0, fullQuestions: 0,
+    chapterSittings: 0, chapterStudents: 0, chapterAnswered: 0, chapterQuestions: 0,
+    anyStudents: 0,
+    ...p,
+  });
+
+  it("counts only weeks from the one it went live in", () => {
+    const v = chapterTestsVerdict(
+      [week("2026-09-21", { fullSittings: 9, fullAnswered: 50, fullQuestions: 100 }), week("2026-09-28", { fullSittings: 2, chapterSittings: 3 })],
+      "2026-10-02",
+      LIVE_CT
+    );
+    expect(v.since.fullSittings).toBe(2);
+    expect(v.since.chapterSittings).toBe(3);
+  });
+
+  it("is running before the check date", () => {
+    const v = chapterTestsVerdict([week("2026-09-28", { chapterSittings: 4 })], "2026-10-10", LIVE_CT);
+    expect(v.status).toBe("running");
+  });
+
+  it(`withholds the answered share below ${CHAPTER_TESTS_MIN_SITTINGS} chapter-test sittings`, () => {
+    const v = chapterTestsVerdict(
+      [week("2026-09-28", { chapterSittings: CHAPTER_TESTS_MIN_SITTINGS - 1, chapterAnswered: 90, chapterQuestions: 100 })],
+      "2026-10-10",
+      LIVE_CT
+    );
+    expect(v.since.chapterAnsweredPct).toBeNull();
+  });
+
+  it("reports the last full week's MHT-CET mock students, not the partial one", () => {
+    const v = chapterTestsVerdict(
+      [week("2026-10-19", { anyStudents: 7 }), week("2026-10-26", { anyStudents: 2 })],
+      "2026-10-30",
+      LIVE_CT
+    );
+    expect(v.lastFullWeekStudents).toBe(7);
+  });
+
+  it(`keeps them featured once weekly MHT-CET mock students reach ${CHAPTER_TESTS_STUDENTS_KEEP}`, () => {
+    const v = chapterTestsVerdict(
+      [week("2026-10-19", { anyStudents: CHAPTER_TESTS_STUDENTS_KEEP }), week("2026-10-26")],
+      "2026-10-30",
+      LIVE_CT
+    );
+    expect(v.status).toBe("keep");
+  });
+
+  it(`keeps them featured when chapter tests average ${CHAPTER_TESTS_ANSWERED_KEEP}%+ answered`, () => {
+    const v = chapterTestsVerdict(
+      [week("2026-10-19", { anyStudents: 4, chapterSittings: 12, chapterAnswered: 180, chapterQuestions: 240 })],
+      "2026-10-30",
+      LIVE_CT
+    );
+    expect(v.since.chapterAnsweredPct).toBe(75);
+    expect(v.status).toBe("keep");
+  });
+
+  it("stops featuring them when neither bar is met by the check date", () => {
+    const v = chapterTestsVerdict(
+      [week("2026-10-19", { anyStudents: 6, chapterSittings: 12, chapterAnswered: 120, chapterQuestions: 240 })],
+      "2026-10-30",
+      LIVE_CT
+    );
+    expect(v.status).toBe("kill");
   });
 });

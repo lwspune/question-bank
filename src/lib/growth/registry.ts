@@ -49,6 +49,14 @@ export const CHAPTER_SHARE_KEEP = 5;
 export const EMAIL_DAILY_CAP = 70;
 /** Google-indexed pages we are aiming for (39 on 2026-09-21). */
 export const INDEXING_GOAL = 200;
+/** The exam whose chapter tests are being judged. */
+export const CHAPTER_TESTS_EXAM = "MHT-CET";
+/** MHT-CET students sitting any mock in a week, before chapter tests: about 5. */
+export const CHAPTER_TESTS_STUDENTS_KEEP = 10;
+/** Share of a chapter test answered that counts as "students finish these". */
+export const CHAPTER_TESTS_ANSWERED_KEEP = 70;
+/** Chapter-test sittings needed before the answered share is stated. */
+export const CHAPTER_TESTS_MIN_SITTINGS = 10;
 
 /** The ISO date `EXPERIMENT_WINDOW_DAYS` after `liveSince`. */
 export function checkOn(liveSince: string): string {
@@ -57,7 +65,7 @@ export function checkOn(liveSince: string): string {
   return d.toISOString().slice(0, 10);
 }
 
-export type Readout = "onboarding-arms" | "chapter-share" | "indexing" | "email-cap";
+export type Readout = "onboarding-arms" | "chapter-share" | "indexing" | "email-cap" | "chapter-tests";
 
 export type Experiment = {
   id: string;
@@ -101,6 +109,18 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep if it brings ${CHAPTER_SHARE_KEEP}+ signups by the check date; remove it otherwise.`,
     liveSince: "2026-10-01",
     readout: "chapter-share",
+    status: "running",
+  },
+  {
+    id: "chapter-tests",
+    title: "MHT-CET chapter tests",
+    change:
+      "72 chapter tests (20 questions, 18-36 minutes) published next to the full papers, and linked from each chapter's /questions and notes pages.",
+    why: "A full paper is a hard first step: before launch about 5 MHT-CET students a week sat a mock, answering about half of it.",
+    metric: "MHT-CET students sitting any mock per week; share of each sitting answered, chapter tests vs full papers",
+    rule: `Keep them featured if weekly MHT-CET mock students reach ${CHAPTER_TESTS_STUDENTS_KEEP}+ or chapter tests average ${CHAPTER_TESTS_ANSWERED_KEEP}%+ answered by the check date; otherwise stop featuring them on chapter pages.`,
+    liveSince: "2026-10-01",
+    readout: "chapter-tests",
     status: "running",
   },
   {

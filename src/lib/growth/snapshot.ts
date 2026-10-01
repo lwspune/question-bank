@@ -14,6 +14,9 @@
 import { INSTRUMENT_CHANGED_SINCE, MIN_LIFT_N } from "@/lib/pmf/snapshot";
 import type { OnboardingArm } from "@/lib/education/howItWorks";
 import {
+  CHAPTER_TESTS_ANSWERED_KEEP,
+  CHAPTER_TESTS_MIN_SITTINGS,
+  CHAPTER_TESTS_STUDENTS_KEEP,
   CHAPTER_SHARE_KEEP,
   EMAIL_DAILY_CAP,
   INDEXING_GOAL,
@@ -22,7 +25,15 @@ import {
   type Reading,
 } from "./registry";
 
-export { CHAPTER_SHARE_KEEP, EMAIL_DAILY_CAP, INDEXING_GOAL, ONBOARDING_KEEP_POINTS };
+export {
+  CHAPTER_SHARE_KEEP,
+  CHAPTER_TESTS_ANSWERED_KEEP,
+  CHAPTER_TESTS_MIN_SITTINGS,
+  CHAPTER_TESTS_STUDENTS_KEEP,
+  EMAIL_DAILY_CAP,
+  INDEXING_GOAL,
+  ONBOARDING_KEEP_POINTS,
+};
 
 export type VerdictStatus =
   | "too-early"
@@ -218,6 +229,94 @@ export function chapterShareVerdict(signups: number, today: string, liveSince: s
   return signups >= CHAPTER_SHARE_KEEP
     ? { status: "keep", reason: `${signups} signups, at or above ${CHAPTER_SHARE_KEEP}.` }
     : { status: "kill", reason: `${signups} signups, below ${CHAPTER_SHARE_KEEP}: remove the card.` };
+}
+
+/* ── Chapter tests ──────────────────────────────────────────────────────── */
+
+/** One IST week of one exam's mock sittings, split by scope. Students only. */
+export type ChapterTestWeek = {
+  weekStart: string;
+  fullSittings: number;
+  fullStudents: number;
+  fullAnswered: number;
+  fullQuestions: number;
+  chapterSittings: number;
+  chapterStudents: number;
+  chapterAnswered: number;
+  chapterQuestions: number;
+  /** Distinct students who sat either kind that week. */
+  anyStudents: number;
+};
+
+export type ChapterTestsVerdict = Verdict & {
+  /** Totals from the week the tests went live onward. */
+  since: {
+    chapterSittings: number;
+    fullSittings: number;
+    /** Null below CHAPTER_TESTS_MIN_SITTINGS. */
+    chapterAnsweredPct: number | null;
+    fullAnsweredPct: number | null;
+  };
+  /** Students who sat any mock in the latest full week since launch. */
+  lastFullWeekStudents: number | null;
+  checkOn: string;
+};
+
+/**
+ * Counts from the week containing the launch day, so the launch week mixes a
+ * few days of full papers alone; that can only understate the change.
+ */
+export function chapterTestsVerdict(
+  rows: readonly ChapterTestWeek[],
+  today: string,
+  liveSince: string
+): ChapterTestsVerdict {
+  const live = rows.filter((w) => addDays(w.weekStart, 7) > liveSince);
+  const sum = (k: keyof Omit<ChapterTestWeek, "weekStart">) => live.reduce((n, w) => n + w[k], 0);
+  const chapterSittings = sum("chapterSittings");
+  const fullSittings = sum("fullSittings");
+  const chapterQuestions = sum("chapterQuestions");
+  const fullQuestions = sum("fullQuestions");
+  const since = {
+    chapterSittings,
+    fullSittings,
+    chapterAnsweredPct:
+      chapterSittings >= CHAPTER_TESTS_MIN_SITTINGS && chapterQuestions > 0
+        ? pct(sum("chapterAnswered"), chapterQuestions)
+        : null,
+    fullAnsweredPct:
+      fullSittings >= CHAPTER_TESTS_MIN_SITTINGS && fullQuestions > 0
+        ? pct(sum("fullAnswered"), fullQuestions)
+        : null,
+  };
+  const full = [...live]
+    .filter((w) => addDays(w.weekStart, 7) <= today)
+    .sort((a, b) => a.weekStart.localeCompare(b.weekStart));
+  const lastFullWeekStudents = full.at(-1)?.anyStudents ?? null;
+  const due = checkOn(liveSince);
+  const base = { since, lastFullWeekStudents, checkOn: due };
+
+  if (today < due) {
+    return {
+      ...base,
+      status: "running",
+      reason: `${chapterSittings} chapter-test sittings so far; decided on ${due}.`,
+    };
+  }
+  const students = lastFullWeekStudents ?? 0;
+  const answered = since.chapterAnsweredPct;
+  if (students >= CHAPTER_TESTS_STUDENTS_KEEP || (answered !== null && answered >= CHAPTER_TESTS_ANSWERED_KEEP)) {
+    return {
+      ...base,
+      status: "keep",
+      reason: `${students} students in the last full week; chapter tests ${answered ?? "—"}% answered.`,
+    };
+  }
+  return {
+    ...base,
+    status: "kill",
+    reason: `${students} students a week and ${answered ?? "—"}% answered: stop featuring them on chapter pages.`,
+  };
 }
 
 /* ── Email cap ──────────────────────────────────────────────────────────── */

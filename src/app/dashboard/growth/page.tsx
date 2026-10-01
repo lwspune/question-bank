@@ -14,7 +14,9 @@ import {
   type Experiment,
 } from "@/lib/growth/registry";
 import {
+  CHAPTER_TESTS_MIN_SITTINGS,
   chapterShareVerdict,
+  chapterTestsVerdict,
   emailCapVerdict,
   indexingView,
   onboardingVerdict,
@@ -248,6 +250,56 @@ export default async function GrowthPage() {
             </p>
             <VerdictLine verdict={v} />
             <ReadingsList metric="google-indexed" />
+          </div>
+        );
+      }
+      case "chapter-tests": {
+        const v = chapterTestsVerdict(raw.chapterTests, today, e.liveSince);
+        const recent = raw.chapterTests.slice(-6).reverse();
+        return (
+          <div className="space-y-3">
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[22rem] text-sm">
+                <caption className="sr-only">MHT-CET mock sittings since chapter tests launched</caption>
+                <thead>
+                  <tr className="border-b text-left text-xs text-muted-foreground">
+                    <th scope="col" className="py-1.5 pr-3 font-medium">Since launch</th>
+                    <th scope="col" className="py-1.5 pr-3 text-right font-medium">Chapter tests</th>
+                    <th scope="col" className="py-1.5 text-right font-medium">Full papers</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b">
+                    <th scope="row" className="py-1.5 pr-3 text-left font-normal text-muted-foreground">Sittings</th>
+                    <td className="py-1.5 pr-3 text-right tabular-nums">{v.since.chapterSittings}</td>
+                    <td className="py-1.5 text-right tabular-nums">{v.since.fullSittings}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row" className="py-1.5 pr-3 text-left font-normal text-muted-foreground">Share answered</th>
+                    <td className="py-1.5 pr-3 text-right tabular-nums">{pctOrDash(v.since.chapterAnsweredPct)}</td>
+                    <td className="py-1.5 text-right tabular-nums">{pctOrDash(v.since.fullAnsweredPct)}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p className="text-sm">
+              MHT-CET students sitting any mock, last full week:{" "}
+              <span className="font-semibold tabular-nums">{v.lastFullWeekStudents ?? "—"}</span>{" "}
+              <span className="text-muted-foreground">(about 5 a week before launch)</span>
+            </p>
+            <VerdictLine verdict={v} />
+            <ul className="space-y-0.5 text-xs tabular-nums text-muted-foreground">
+              {recent.map((w) => (
+                <li key={w.weekStart}>
+                  Week of {fmtDate(w.weekStart)}: {w.chapterSittings} chapter tests · {w.fullSittings} full papers ·{" "}
+                  {w.anyStudents} students
+                </li>
+              ))}
+            </ul>
+            <p className="text-xs text-muted-foreground">
+              The share answered shows from {CHAPTER_TESTS_MIN_SITTINGS} sittings. The launch week mixes a few days of full
+              papers alone, which can only understate the change.
+            </p>
           </div>
         );
       }
