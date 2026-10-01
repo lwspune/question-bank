@@ -3,6 +3,7 @@
  *
  *   npx tsx scripts/cds-gs/refile.ts <paperId>          # dry-run
  *   npx tsx scripts/cds-gs/refile.ts <paperId> --apply  # update source + DB
+ *   ... --map=<path>                                   # read that map instead of data/<paperId>.refile.json
  *
  * Reads data/<paperId>.refile.json — `[{ number, subject, chapter, subtopic, why }]` —
  * validates every target against the CURRENT catalog, rewrites the committed
@@ -40,7 +41,10 @@ async function main() {
   const apply = process.argv.includes("--apply");
   loadEnv();
 
-  const rPath = dataPath(paper.id, "refile");
+  // --map=<path> reads a one-off map instead of the paper's standing refile.json, so a later batch
+  // never re-runs an old one (which would move a row back after a re-cut had moved it on).
+  const mapArg = process.argv.find((a) => a.startsWith("--map="));
+  const rPath = mapArg ? mapArg.slice("--map=".length) : dataPath(paper.id, "refile");
   if (!existsSync(rPath)) throw new Error(`missing ${rPath}`);
   const refiles: Refile[] = JSON.parse(readFileSync(rPath, "utf8"));
   const questions: TQ[] = JSON.parse(readFileSync(dataPath(paper.id, "questions"), "utf8"));
