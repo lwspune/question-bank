@@ -6,7 +6,7 @@ export const DYNAMICS_PLANE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Circular motion needs a net force mv²/r towards the centre, and some real force has to supply it: friction on a level road, the slope of a banked road, the tension in a string, the pull of a spring or the push of a wall; in a vertical circle gravity joins in and the speed changes from top to bottom.",
   whyItMatters:
-    "Thirty-three PYQs, twenty-eight of them multiple choice, and three from 2026: the largest page in the chapter. Nine are about roads, turntables and rotor drums, where friction or banking supplies the force. Fourteen use a string, a spring or a wall in a horizontal circle, including the conical pendulum. Ten are vertical circles, loops and smooth surfaces, where energy conservation and the centripetal equation are used together. The first step is always the same: name the force that points at the centre.",
+    "Thirty-two PYQs, twenty-seven of them multiple choice, and three from 2026: the largest page in the chapter. Nine are about roads, turntables and rotor drums, where friction or banking supplies the force. Thirteen use a string, a spring or a wall in a horizontal circle, including the conical pendulum. Ten are vertical circles, loops and smooth surfaces, where energy conservation and the centripetal equation are used together. The first step is always the same: name the force that points at the centre.",
   concepts: [
     // C1 — friction and banking
     {

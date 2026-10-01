@@ -6,7 +6,7 @@ export const ANGMOM_ROT_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A particle's angular momentum about a point is r × p; a rigid body's about its axis is Iω; with no external torque it stays constant, so a change in I forces a change in ω.",
   whyItMatters:
-    "Twenty-six PYQs, twelve of them asking for a number, and four from 2026. Twelve find a particle's angular momentum: along a straight line, in a circle, as a projectile, or from r × p in components. Fourteen conserve it: a disc dropped on a spinning disc, particles stuck on a ring, a shrinking earth, a moving body striking a rod.",
+    "Twenty-seven PYQs, twelve of them asking for a number, and four from 2026. Thirteen find a particle's angular momentum: along a straight line, in a circle (a conical pendulum among them), as a projectile, or from r × p in components. Fourteen conserve it: a disc dropped on a spinning disc, particles stuck on a ring, a shrinking earth, a moving body striking a rod.",
   concepts: [
     // C1 — angular momentum of a particle
     {
