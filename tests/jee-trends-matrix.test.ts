@@ -1,5 +1,59 @@
 import { describe, expect, it } from "vitest";
-import { buildJeeMatrix, perPaper, windowPerPaper } from "../src/lib/guide/jeeTrendsMatrix";
+import { buildJeeMatrix, isCalculationRow, perPaper, windowPerPaper } from "../src/lib/guide/jeeTrendsMatrix";
+
+describe("isCalculationRow", () => {
+  const mcq = (...options: string[]) => isCalculationRow("mcq", options);
+
+  it("counts every numeric-answer row", () => {
+    expect(isCalculationRow("numeric", [])).toBe(true);
+  });
+
+  it("counts an MCQ whose options are all plain numbers", () => {
+    expect(mcq("4", "6", "8", "10")).toBe(true);
+    expect(mcq("\\(1.5\\)", "\\(-0.75\\)", "\\(2\\)", "\\(+3\\)")).toBe(true);
+  });
+
+  it("allows units and powers of ten", () => {
+    expect(mcq("\\(-285.8\\ kJ\\ mol^{-1}\\)", "\\(2.5 \\times 10^{-3}\\) M", "\\(4.0 \\mathrm{~g}\\)", "\\(36 \\%\\)")).toBe(true);
+  });
+
+  it("does not count IUPAC names, whose locants start with a digit", () => {
+    expect(mcq("2-methylbutane", "2,2-dimethylpropane", "3-bromophenol", "1-nitropropane")).toBe(false);
+  });
+
+  it("does not count degree labels or statement combinations", () => {
+    expect(mcq("1° amine", "2° amine", "3° amine", "4° salt")).toBe(false);
+    expect(mcq("1 and 2 only", "2 and 3 only", "1, 2 and 3", "3 only")).toBe(false);
+  });
+
+  it("needs EVERY option to be a number", () => {
+    expect(mcq("4", "6", "8", "cannot be found")).toBe(false);
+  });
+
+  it("does not count an MCQ with no options, or a subjective row", () => {
+    expect(mcq()).toBe(false);
+    expect(isCalculationRow("subjective", ["4"])).toBe(false);
+  });
+});
+
+describe("buildJeeMatrix calc counts", () => {
+  it("adds a calc count per chapter only when asked", () => {
+    const rows = [
+      { pyq_year: 2025, chapter: "Solutions", question_format: "numeric", calc: true },
+      { pyq_year: 2025, chapter: "Solutions", question_format: "mcq", calc: true },
+      { pyq_year: 2025, chapter: "Solutions", question_format: "mcq", calc: false },
+    ];
+    expect(buildJeeMatrix(rows, { fromYear: 2021, countCalc: true }).rows[0]).toEqual({
+      chapter: "Solutions",
+      total: 3,
+      numeric: 1,
+      calc: 2,
+      counts: [3],
+    });
+    // Without the flag the row keeps its old shape, so the Maths grid stays byte-identical.
+    expect(buildJeeMatrix(rows, { fromYear: 2021 }).rows[0]).not.toHaveProperty("calc");
+  });
+});
 
 const row = (pyq_year: number | null, chapter: string, numeric = false) => ({
   pyq_year,
