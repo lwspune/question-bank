@@ -138,6 +138,21 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
   "jee-mains-physics": {
     "units-and-measurements": { cls: 11, chapterNo: 1, book: "NCERT XI 1 Units and Measurement" },
     "motion-in-a-straight-line": { cls: 11, chapterNo: 2, book: "NCERT XI 2 Motion in a Straight Line" },
+    "laws-of-motion": { cls: 11, chapterNo: 4, book: "NCERT XI 4 Laws of Motion" },
+    "work-energy-and-power": { cls: 11, chapterNo: 5, book: "NCERT XI 5 Work, Energy and Power" },
+    "rotational-motion": { cls: 11, chapterNo: 6, book: "NCERT XI 6 System of Particles and Rotational Motion" },
+    gravitation: { cls: 11, chapterNo: 7, book: "NCERT XI 7 Gravitation" },
+    "mechanical-properties-of-fluids": { cls: 11, chapterNo: 9, book: "NCERT XI 9 Mechanical Properties of Fluids" },
+    oscillations: { cls: 11, chapterNo: 13, book: "NCERT XI 13 Oscillations" },
+    "motion-in-a-plane": { cls: 11, chapterNo: 3, book: "NCERT XI 3 Motion in a Plane" },
+    "mechanical-properties-of-solids": { cls: 11, chapterNo: 8, book: "NCERT XI 8 Mechanical Properties of Solids" },
+    "thermal-properties-of-matter": { cls: 11, chapterNo: 10, book: "NCERT XI 10 Thermal Properties of Matter" },
+    "kinetic-theory": { cls: 11, chapterNo: 12, book: "NCERT XI 12 Kinetic Theory" },
+    waves: { cls: 11, chapterNo: 14, book: "NCERT XI 14 Waves" },
+    "magnetism-and-matter": { cls: 12, chapterNo: 5, book: "NCERT XII 5 Magnetism and Matter" },
+    "electromagnetic-induction": { cls: 12, chapterNo: 6, book: "NCERT XII 6 Electromagnetic Induction" },
+    "alternating-current": { cls: 12, chapterNo: 7, book: "NCERT XII 7 Alternating Current" },
+    thermodynamics: { cls: 11, chapterNo: 11, book: "NCERT XI 11 Thermodynamics" },
   },
 };
 

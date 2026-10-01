@@ -1120,6 +1120,81 @@ import {
   JEE_PH_SL_NOTES,
   JEE_PH_SL_SLUGS,
 } from "@/app/notes/jee-mains-physics/motion-in-a-straight-line/_data";
+import {
+  JEE_PH_PLANE_CHAPTER,
+  JEE_PH_PLANE_NOTES,
+  JEE_PH_PLANE_SLUGS,
+} from "@/app/notes/jee-mains-physics/motion-in-a-plane/_data";
+import {
+  JEE_PH_LOM_CHAPTER,
+  JEE_PH_LOM_NOTES,
+  JEE_PH_LOM_SLUGS,
+} from "@/app/notes/jee-mains-physics/laws-of-motion/_data";
+import {
+  JEE_PH_WEP_CHAPTER,
+  JEE_PH_WEP_NOTES,
+  JEE_PH_WEP_SLUGS,
+} from "@/app/notes/jee-mains-physics/work-energy-and-power/_data";
+import {
+  JEE_PH_ROT_CHAPTER,
+  JEE_PH_ROT_NOTES,
+  JEE_PH_ROT_SLUGS,
+} from "@/app/notes/jee-mains-physics/rotational-motion/_data";
+import {
+  JEE_PH_GRAV_CHAPTER,
+  JEE_PH_GRAV_NOTES,
+  JEE_PH_GRAV_SLUGS,
+} from "@/app/notes/jee-mains-physics/gravitation/_data";
+import {
+  JEE_PH_SOLID_CHAPTER,
+  JEE_PH_SOLID_NOTES,
+  JEE_PH_SOLID_SLUGS,
+} from "@/app/notes/jee-mains-physics/mechanical-properties-of-solids/_data";
+import {
+  JEE_PH_FLUID_CHAPTER,
+  JEE_PH_FLUID_NOTES,
+  JEE_PH_FLUID_SLUGS,
+} from "@/app/notes/jee-mains-physics/mechanical-properties-of-fluids/_data";
+import {
+  JEE_PH_THERMAL_CHAPTER,
+  JEE_PH_THERMAL_NOTES,
+  JEE_PH_THERMAL_SLUGS,
+} from "@/app/notes/jee-mains-physics/thermal-properties-of-matter/_data";
+import {
+  JEE_PH_THERMO_CHAPTER,
+  JEE_PH_THERMO_NOTES,
+  JEE_PH_THERMO_SLUGS,
+} from "@/app/notes/jee-mains-physics/thermodynamics/_data";
+import {
+  JEE_PH_KTG_CHAPTER,
+  JEE_PH_KTG_NOTES,
+  JEE_PH_KTG_SLUGS,
+} from "@/app/notes/jee-mains-physics/kinetic-theory/_data";
+import {
+  JEE_PH_OSC_CHAPTER,
+  JEE_PH_OSC_NOTES,
+  JEE_PH_OSC_SLUGS,
+} from "@/app/notes/jee-mains-physics/oscillations/_data";
+import {
+  JEE_PH_WAVE_CHAPTER,
+  JEE_PH_WAVE_NOTES,
+  JEE_PH_WAVE_SLUGS,
+} from "@/app/notes/jee-mains-physics/waves/_data";
+import {
+  JEE_PH_MM_CHAPTER,
+  JEE_PH_MM_NOTES,
+  JEE_PH_MM_SLUGS,
+} from "@/app/notes/jee-mains-physics/magnetism-and-matter/_data";
+import {
+  JEE_PH_EMI_CHAPTER,
+  JEE_PH_EMI_NOTES,
+  JEE_PH_EMI_SLUGS,
+} from "@/app/notes/jee-mains-physics/electromagnetic-induction/_data";
+import {
+  JEE_PH_AC_CHAPTER,
+  JEE_PH_AC_NOTES,
+  JEE_PH_AC_SLUGS,
+} from "@/app/notes/jee-mains-physics/alternating-current/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3590,6 +3665,171 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_PH_SL_CHAPTER,
     notes: JEE_PH_SL_NOTES,
     slugs: JEE_PH_SL_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "motion-in-a-plane",
+    chipLabel: "Motion in a Plane notes",
+    chapter: JEE_PH_PLANE_CHAPTER,
+    notes: JEE_PH_PLANE_NOTES,
+    slugs: JEE_PH_PLANE_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "laws-of-motion",
+    chipLabel: "Laws of Motion notes",
+    chapter: JEE_PH_LOM_CHAPTER,
+    notes: JEE_PH_LOM_NOTES,
+    slugs: JEE_PH_LOM_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "work-energy-and-power",
+    chipLabel: "Work, Energy and Power notes",
+    chapter: JEE_PH_WEP_CHAPTER,
+    notes: JEE_PH_WEP_NOTES,
+    slugs: JEE_PH_WEP_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "rotational-motion",
+    chipLabel: "Rotational Motion notes",
+    chapter: JEE_PH_ROT_CHAPTER,
+    notes: JEE_PH_ROT_NOTES,
+    slugs: JEE_PH_ROT_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "gravitation",
+    chipLabel: "Gravitation notes",
+    chapter: JEE_PH_GRAV_CHAPTER,
+    notes: JEE_PH_GRAV_NOTES,
+    slugs: JEE_PH_GRAV_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "mechanical-properties-of-solids",
+    chipLabel: "Mechanical Properties of Solids notes",
+    chapter: JEE_PH_SOLID_CHAPTER,
+    notes: JEE_PH_SOLID_NOTES,
+    slugs: JEE_PH_SOLID_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "mechanical-properties-of-fluids",
+    chipLabel: "Mechanical Properties of Fluids notes",
+    chapter: JEE_PH_FLUID_CHAPTER,
+    notes: JEE_PH_FLUID_NOTES,
+    slugs: JEE_PH_FLUID_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "thermal-properties-of-matter",
+    chipLabel: "Thermal Properties of Matter notes",
+    chapter: JEE_PH_THERMAL_CHAPTER,
+    notes: JEE_PH_THERMAL_NOTES,
+    slugs: JEE_PH_THERMAL_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "thermodynamics",
+    chipLabel: "Thermodynamics notes",
+    chapter: JEE_PH_THERMO_CHAPTER,
+    notes: JEE_PH_THERMO_NOTES,
+    slugs: JEE_PH_THERMO_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "kinetic-theory",
+    chipLabel: "Kinetic Theory notes",
+    chapter: JEE_PH_KTG_CHAPTER,
+    notes: JEE_PH_KTG_NOTES,
+    slugs: JEE_PH_KTG_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "oscillations",
+    chipLabel: "Oscillations notes",
+    chapter: JEE_PH_OSC_CHAPTER,
+    notes: JEE_PH_OSC_NOTES,
+    slugs: JEE_PH_OSC_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "waves",
+    chipLabel: "Waves notes",
+    chapter: JEE_PH_WAVE_CHAPTER,
+    notes: JEE_PH_WAVE_NOTES,
+    slugs: JEE_PH_WAVE_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "magnetism-and-matter",
+    chipLabel: "Magnetism and Matter notes",
+    chapter: JEE_PH_MM_CHAPTER,
+    notes: JEE_PH_MM_NOTES,
+    slugs: JEE_PH_MM_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "electromagnetic-induction",
+    chipLabel: "Electromagnetic Induction notes",
+    chapter: JEE_PH_EMI_CHAPTER,
+    notes: JEE_PH_EMI_NOTES,
+    slugs: JEE_PH_EMI_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "alternating-current",
+    chipLabel: "Alternating Current notes",
+    chapter: JEE_PH_AC_CHAPTER,
+    notes: JEE_PH_AC_NOTES,
+    slugs: JEE_PH_AC_SLUGS,
   },
 ];
 
