@@ -1255,6 +1255,11 @@ import {
   CDS_CH_ACIDS_NOTES,
   CDS_CH_ACIDS_SLUGS,
 } from "@/app/notes/cds-chemistry/acids-bases-salts/_data";
+import {
+  CDS_CH_ATOMIC_CHAPTER,
+  CDS_CH_ATOMIC_NOTES,
+  CDS_CH_ATOMIC_SLUGS,
+} from "@/app/notes/cds-chemistry/atomic-structure/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4022,6 +4027,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_CH_ACIDS_CHAPTER,
     notes: CDS_CH_ACIDS_NOTES,
     slugs: CDS_CH_ACIDS_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Chemistry",
+    subjectRoute: "cds-chemistry",
+    subjectDisplay: "CDS Chemistry",
+    chapterSlug: "atomic-structure",
+    chipLabel: "Atomic Structure notes",
+    chapter: CDS_CH_ATOMIC_CHAPTER,
+    notes: CDS_CH_ATOMIC_NOTES,
+    slugs: CDS_CH_ATOMIC_SLUGS,
   },
 ];
 
