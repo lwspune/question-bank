@@ -6,13 +6,14 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 234
+ * Entries: 235
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
 export const CONTENT_DATES: ContentDateMap = {
   "/guide/cds-maths": "2026-09-29T15:47:28+05:30",
-  "/guide/jee-mains-maths": "2026-09-30T16:06:56+05:30",
+  "/guide/jee-mains-chemistry": "2026-10-01T06:47:47+05:30",
+  "/guide/jee-mains-maths": "2026-10-01T06:33:10+05:30",
   "/guide/mht-cet-chemistry": "2026-09-28T18:42:36+05:30",
   "/guide/mht-cet-maths": "2026-09-28T20:24:47+05:30",
   "/guide/mht-cet-physics": "2026-09-28T13:58:54+05:30",
@@ -116,7 +117,7 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/mht-cet-chemistry/elements-of-group-1-and-2": "2026-09-26T14:15:46+05:30",
   "/notes/mht-cet-chemistry/elements-of-group-16-17-and-18": "2026-09-28T18:05:54+05:30",
   "/notes/mht-cet-chemistry/green-chemistry-and-nanochemistry": "2026-09-26T14:46:56+05:30",
-  "/notes/mht-cet-chemistry/halogen-derivatives": "2026-09-28T18:05:54+05:30",
+  "/notes/mht-cet-chemistry/halogen-derivatives": "2026-10-01T06:25:51+05:30",
   "/notes/mht-cet-chemistry/introduction-to-polymer-chemistry": "2026-09-28T18:05:54+05:30",
   "/notes/mht-cet-chemistry/ionic-equilibria": "2026-09-28T18:05:54+05:30",
   "/notes/mht-cet-chemistry/modern-periodic-table": "2026-09-26T14:52:43+05:30",
