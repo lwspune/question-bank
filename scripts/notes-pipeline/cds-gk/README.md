@@ -22,6 +22,10 @@ tool below writes those AND the bank, so a rebuild cannot undo a change.
    **Count every number from the dump with a one-line script before writing it** ("three of them
    from 2025 (I)", "asked twice"). The intro-count gate checks only "N questions" claims, never a
    year or a repeat count, and two such hand counts were wrong in the first seven chapters.
+   **No practice rep or self-check may restate its concept's featured PYQ** (NOTES_ARC_LEDGER
+   class 1): practice renders before the featured question, so "Which allotrope conducts?" above
+   a featured "Which allotropes conduct?" turns the transfer test into a re-read. notes:lint only
+   catches number overlap, so read each concept's reps against its featured row by eye.
 5. `python scripts/notes-pipeline/cds-gk/register.py <spec.json>` (index.ts, route pages, subject
    landing, registry entry). Then `npx tsx scripts/notes-pipeline/jee/tag-chapter.ts <tag.json>`
    (100% of rows) and `npm run notes:order`.

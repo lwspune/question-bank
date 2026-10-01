@@ -53,7 +53,7 @@ export const CDS_CH_MS_COLLOIDS_NOTE: SubtopicNote = {
         answer: "Solid in gas: an aerosol.",
       },
       practiceSet: [
-        { prompt: "An emulsion is made of what?", answer: "Two liquids" },
+        { prompt: "What is the dispersed phase in a foam?", answer: "A gas" },
         { prompt: "What is the dispersion medium in fog?", answer: "Gas (air)" },
         { prompt: "What kind of colloid is jelly?", answer: "A gel (liquid in solid)" },
       ],

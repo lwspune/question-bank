@@ -93,7 +93,7 @@ export const CDS_CH_EV_CHEMICALS_NOTE: SubtopicNote = {
       pyqExampleId: "856d11bc-f8d2-4185-816c-4e3ecbc50a37",
       practiceSet: [
         { prompt: "Which gas is used to make soft drinks?", answer: "Carbon dioxide" },
-        { prompt: "What two solutions react in a soda-acid fire extinguisher?", answer: "Sodium hydrogen carbonate and sulphuric acid" },
+        { prompt: "What is the role of potassium nitrate in gunpowder?", answer: "It is the oxidiser" },
         { prompt: "Below what pH of the mouth does tooth decay start?", answer: "5.5" },
         { prompt: "Why are chip packets flushed with nitrogen?", answer: "To stop the food oxidising" },
       ],

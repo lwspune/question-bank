@@ -122,7 +122,7 @@ export const CDS_CH_CR_DAILY_NOTE: SubtopicNote = {
       pyqExampleId: "3b145612-08ec-4627-9c9d-16b12ba0a503",
       practiceSet: [
         { prompt: "Which gas forms at the anode when brine is electrolysed?", answer: "Chlorine" },
-        { prompt: "Which compound is left in solution after electrolysing brine?", answer: "Sodium hydroxide" },
+        { prompt: "Which gas forms at the cathode when brine is electrolysed?", answer: "Hydrogen" },
       ],
     },
   ],

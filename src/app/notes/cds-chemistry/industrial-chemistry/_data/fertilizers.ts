@@ -41,7 +41,7 @@ export const CDS_CH_IC_FERTILIZERS_NOTE: SubtopicNote = {
       practiceSet: [
         { prompt: "What is the chemical formula of urea?", answer: "(NH₂)₂CO" },
         { prompt: "Which three nutrients do fertilizers mainly supply?", answer: "Nitrogen, phosphorus and potassium" },
-        { prompt: "Can most plants use nitrogen gas from the air directly?", answer: "No" },
+        { prompt: "About what percentage of nitrogen does urea contain?", answer: "About 46%" },
       ],
       traps: [
         {
@@ -79,7 +79,7 @@ export const CDS_CH_IC_FERTILIZERS_NOTE: SubtopicNote = {
       pyqExampleId: "eed83c35-7ce9-4fb8-8a2f-b1340b95c1b4",
       practiceSet: [
         { prompt: "Which disease is caused by nitrate in drinking water?", answer: "Blue baby syndrome (methaemoglobinaemia)" },
-        { prompt: "Which fertilizer's excess pollutes groundwater most?", answer: "Nitrogen fertilizer" },
+        { prompt: "What is eutrophication?", answer: "Overgrowth of algae in water fed by fertilizer run-off" },
       ],
       traps: [
         {

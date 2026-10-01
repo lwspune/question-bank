@@ -35,7 +35,7 @@ export const CDS_CH_CR_TYPES_NOTE: SubtopicNote = {
       practiceSet: [
         { prompt: "Is dissolving sugar in water a physical or a chemical change?", answer: "Physical" },
         { prompt: "Is burning of paper a physical or a chemical change?", answer: "Chemical" },
-        { prompt: "Name an everyday event that involves both kinds of change.", answer: "A burning candle" },
+        { prompt: "Is melting of ice a physical or a chemical change?", answer: "Physical" },
       ],
       traps: [
         {
@@ -177,7 +177,7 @@ export const CDS_CH_CR_TYPES_NOTE: SubtopicNote = {
       practiceSet: [
         { prompt: "Is heat q a state function or a path function?", answer: "A path function" },
         { prompt: "What sign does ΔG have for a spontaneous reaction?", answer: "Negative" },
-        { prompt: "Is H − TS a state function?", answer: "Yes — it is the Gibbs energy G" },
+        { prompt: "Is internal energy a state function?", answer: "Yes" },
         { prompt: "Does an exothermic reaction have a positive or negative ΔH?", answer: "Negative" },
       ],
       traps: [

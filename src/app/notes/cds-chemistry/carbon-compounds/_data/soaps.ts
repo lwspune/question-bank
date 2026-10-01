@@ -86,7 +86,7 @@ export const CDS_CH_CB_SOAPS_NOTE: SubtopicNote = {
       },
       pyqExampleId: "1d778c22-6167-42ee-9473-b7cedaad8b3f",
       practiceSet: [
-        { prompt: "Which metal catalyses the hydrogenation of vegetable oils?", answer: "Nickel" },
+        { prompt: "What is hydrogenated vegetable oil commonly called in India?", answer: "Vanaspati ghee" },
         { prompt: "What does hydrogenation turn an oil into?", answer: "A solid, saturated fat" },
         { prompt: "What is the role of concentrated sulphuric acid in esterification?", answer: "Dehydrating agent" },
       ],

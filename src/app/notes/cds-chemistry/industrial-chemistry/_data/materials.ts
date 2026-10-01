@@ -39,7 +39,7 @@ export const CDS_CH_IC_MATERIALS_NOTE: SubtopicNote = {
       practiceSet: [
         { prompt: "Which glass is used to make lenses and prisms?", answer: "Flint glass" },
         { prompt: "What is water glass?", answer: "Sodium silicate" },
-        { prompt: "Is glass crystalline or amorphous?", answer: "Amorphous" },
+        { prompt: "Which glass is used for laboratory flasks that are heated?", answer: "Pyrex (borosilicate)" },
       ],
       traps: [
         {
@@ -79,7 +79,7 @@ export const CDS_CH_IC_MATERIALS_NOTE: SubtopicNote = {
       pyqExampleId: "88592aad-fbca-4ead-a5ab-aa45c6214cb3",
       practiceSet: [
         { prompt: "Which substance is added to cement to slow its setting?", answer: "Gypsum" },
-        { prompt: "Why is new concrete covered with wet gunny bags?", answer: "To stop water evaporating before hydration is complete" },
+        { prompt: "What are the raw materials of Portland cement?", answer: "Limestone and clay" },
       ],
       traps: [
         {

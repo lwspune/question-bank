@@ -48,7 +48,7 @@ export const CDS_CH_AB_PH_NOTE: SubtopicNote = {
         { prompt: "A solution has pH 9. Is it acidic, neutral or basic?", answer: "Basic" },
         { prompt: "What is the pH of a solution whose [H⁺] is \\(10^{-5}\\) mol/L?", answer: "5" },
         { prompt: "Does pH rise or fall as [H⁺] increases?", answer: "It falls" },
-        { prompt: "What kind of solution has pH 0?", answer: "A highly acidic solution" },
+        { prompt: "What is the pH of a solution whose [H⁺] is \\(10^{-2}\\) mol/L?", answer: "2" },
       ],
       traps: [
         {
@@ -145,7 +145,7 @@ export const CDS_CH_AB_PH_NOTE: SubtopicNote = {
       practiceSet: [
         { prompt: "Which living organism gives litmus?", answer: "Lichen" },
         { prompt: "What colour is phenolphthalein in a basic solution?", answer: "Pink" },
-        { prompt: "Which indicator is a mixture of several indicators?", answer: "Universal indicator" },
+        { prompt: "What colour is methyl orange in an acid?", answer: "Red" },
         { prompt: "What colour does turmeric turn in soap solution?", answer: "Reddish-brown" },
       ],
       traps: [

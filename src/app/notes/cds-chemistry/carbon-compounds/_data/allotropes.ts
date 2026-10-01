@@ -51,7 +51,7 @@ export const CDS_CH_CB_ALLOTROPES_NOTE: SubtopicNote = {
         answer: "Its layers are held together only weakly, so they slide over each other.",
       },
       practiceSet: [
-        { prompt: "Which allotrope of carbon conducts electricity?", answer: "Graphite (and graphene)" },
+        { prompt: "Which allotrope of carbon is the hardest natural substance?", answer: "Diamond" },
         { prompt: "How many carbon atoms is each carbon bonded to in diamond?", answer: "Four" },
         { prompt: "What is the formula of buckminsterfullerene?", answer: "C₆₀" },
         { prompt: "Is coal an allotrope of carbon?", answer: "No" },

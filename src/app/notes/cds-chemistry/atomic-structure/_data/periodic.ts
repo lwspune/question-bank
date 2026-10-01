@@ -104,7 +104,7 @@ export const CDS_CH_AT_PERIODIC_NOTE: SubtopicNote = {
       },
       practiceSet: [
         { prompt: "Is the modern periodic table arranged by atomic mass or atomic number?", answer: "Atomic number" },
-        { prompt: "Is samarium (Sm) a lanthanoid or an actinoid?", answer: "A lanthanoid" },
+        { prompt: "Is uranium a lanthanoid or an actinoid?", answer: "An actinoid" },
         { prompt: "What is the symbol for tin?", answer: "Sn" },
         { prompt: "About how many elements occur in nature?", answer: "94" },
       ],

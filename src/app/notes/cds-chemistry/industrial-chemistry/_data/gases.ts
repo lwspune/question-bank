@@ -45,7 +45,7 @@ export const CDS_CH_IC_GASES_NOTE: SubtopicNote = {
       },
       pyqExampleId: "2dc57815-6e4a-4065-b773-6765777e10c0",
       practiceSet: [
-        { prompt: "Which liquefied gas is used to store blood and organs?", answer: "Liquid nitrogen" },
+        { prompt: "At about what temperature does liquid nitrogen boil?", answer: "About −196 °C" },
         { prompt: "Which gas fills ordinary electric bulbs?", answer: "Argon (often with nitrogen)" },
         { prompt: "Which gas smells like rotten eggs?", answer: "Hydrogen sulphide" },
         { prompt: "Why are chip packets filled with nitrogen?", answer: "To keep out oxygen and stop the food oxidising" },
@@ -88,7 +88,7 @@ export const CDS_CH_IC_GASES_NOTE: SubtopicNote = {
       },
       pyqExampleId: "5d1c6a12-b120-44ef-aef8-13e0f704fd3e",
       practiceSet: [
-        { prompt: "Which alkali is used to pulp wood for paper?", answer: "Caustic soda (sodium hydroxide)" },
+        { prompt: "Name one chlorine compound used to bleach paper pulp.", answer: "Chlorine dioxide or bleaching powder" },
         { prompt: "Which element's compounds are used to bleach paper pulp?", answer: "Chlorine" },
       ],
       traps: [

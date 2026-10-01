@@ -81,7 +81,7 @@ export const CDS_CH_EV_MEDICINES_NOTE: SubtopicNote = {
       },
       pyqExampleId: "4cec5da1-dbc5-4d62-9448-7cdbc54eb45e",
       practiceSet: [
-        { prompt: "Which salt is given before an X-ray of the stomach and intestines?", answer: "Barium sulphate" },
+        { prompt: "Is barium sulphate soluble in water?", answer: "No — practically insoluble" },
         { prompt: "Why is barium chloride not used for a barium meal?", answer: "It is soluble, so its barium ions would poison the patient" },
       ],
       traps: [

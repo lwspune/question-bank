@@ -57,7 +57,7 @@ export const CDS_CH_MS_SEPARATION_NOTE: SubtopicNote = {
       practiceSet: [
         { prompt: "Which method separates cream from milk?", answer: "Centrifugation" },
         { prompt: "Which method separates the colours in an ink?", answer: "Chromatography" },
-        { prompt: "Which method separates salt from ammonium chloride?", answer: "Sublimation" },
+        { prompt: "Which method separates camphor from sand?", answer: "Sublimation" },
         { prompt: "How are hydrogen and oxygen obtained from water?", answer: "By electrolysis" },
       ],
       traps: [

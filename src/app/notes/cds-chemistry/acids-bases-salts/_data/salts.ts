@@ -53,8 +53,8 @@ export const CDS_CH_AB_SALTS_NOTE: SubtopicNote = {
         answer: "(c): washing soda is Na₂CO₃·10H₂O, not NaHCO₃.",
       },
       practiceSet: [
-        { prompt: "What is the formula of bleaching powder?", answer: "CaOCl₂" },
-        { prompt: "What is the chemical name of washing soda?", answer: "Sodium carbonate decahydrate, Na₂CO₃·10H₂O" },
+        { prompt: "What is the chemical name of quicklime?", answer: "Calcium oxide, CaO" },
+        { prompt: "What is the formula of gypsum?", answer: "CaSO₄·2H₂O" },
         { prompt: "Which white paste is used to hold a fractured bone in place?", answer: "Plaster of Paris" },
         { prompt: "What is the chemical name of slaked lime?", answer: "Calcium hydroxide, Ca(OH)₂" },
       ],
@@ -156,7 +156,7 @@ export const CDS_CH_AB_SALTS_NOTE: SubtopicNote = {
         { prompt: "What is the main constituent of pearl?", answer: "Calcium carbonate" },
         { prompt: "Which gas does baking soda give off when heated?", answer: "Carbon dioxide" },
         { prompt: "Which alkali metal forms no solid hydrogen carbonate?", answer: "Lithium" },
-        { prompt: "Name two natural forms of calcium carbonate.", answer: "Any two of marble, chalk, limestone" },
+        { prompt: "What is an eggshell mainly made of?", answer: "Calcium carbonate" },
       ],
       traps: [
         {

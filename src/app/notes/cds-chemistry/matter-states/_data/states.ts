@@ -44,7 +44,7 @@ export const CDS_CH_MS_STATES_NOTE: SubtopicNote = {
         answer: "Particles are in constant motion, and particles of different substances intermix on their own.",
       },
       practiceSet: [
-        { prompt: "Which two elements are liquid at room temperature?", answer: "Bromine and mercury" },
+        { prompt: "Is gallium a solid or a liquid at room temperature?", answer: "A solid (it melts just above room temperature)" },
         { prompt: "What is called the fifth state of matter?", answer: "Bose-Einstein condensate" },
         { prompt: "Is carbon dioxide diatomic?", answer: "No — it is triatomic (CO₂)" },
         { prompt: "What is the spreading of one substance through another on its own called?", answer: "Diffusion" },

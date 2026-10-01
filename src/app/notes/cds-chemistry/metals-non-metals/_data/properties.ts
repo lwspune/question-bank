@@ -44,7 +44,7 @@ export const CDS_CH_MN_PROPERTIES_NOTE: SubtopicNote = {
       practiceSet: [
         { prompt: "What is the property that lets a metal be drawn into wire?", answer: "Ductility" },
         { prompt: "Why are bells made of metal?", answer: "Metals are sonorous: they ring when struck" },
-        { prompt: "Which metal is the best conductor of electricity?", answer: "Silver" },
+        { prompt: "Which metal is the most malleable?", answer: "Gold" },
         { prompt: "Which metal is a liquid at room temperature?", answer: "Mercury" },
       ],
       traps: [
@@ -87,7 +87,7 @@ export const CDS_CH_MN_PROPERTIES_NOTE: SubtopicNote = {
       pyqExampleId: "024ce928-93f2-4b2d-bbbf-86a923b70062",
       practiceSet: [
         { prompt: "Which non-metal is lustrous?", answer: "Iodine" },
-        { prompt: "Name a metalloid used as a semiconductor.", answer: "Silicon or germanium" },
+        { prompt: "Is boron a metal, a non-metal or a metalloid?", answer: "A metalloid" },
         { prompt: "Which form of carbon conducts electricity?", answer: "Graphite" },
         { prompt: "Is arsenic a metal, a non-metal or a metalloid?", answer: "A metalloid" },
       ],

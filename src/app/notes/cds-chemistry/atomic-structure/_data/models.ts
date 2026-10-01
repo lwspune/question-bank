@@ -88,7 +88,7 @@ export const CDS_CH_AT_MODELS_NOTE: SubtopicNote = {
         answer: "An atom is mostly empty space.",
       },
       practiceSet: [
-        { prompt: "What did Rutherford's alpha-scattering experiment discover?", answer: "The atomic nucleus" },
+        { prompt: "In the gold-foil experiment, about how many alpha particles bounced back?", answer: "About 1 in 20,000" },
         { prompt: "Which particle did J. J. Thomson discover?", answer: "The electron" },
         { prompt: "Who discovered the neutron?", answer: "James Chadwick" },
         { prompt: "Which feature of the atom could Rutherford's model not explain?", answer: "Its stability" },

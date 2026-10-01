@@ -66,8 +66,8 @@ export const CDS_CH_AB_ACIDS_NOTE: SubtopicNote = {
       },
       practiceSet: [
         { prompt: "Which acid is vitamin C?", answer: "Ascorbic acid" },
-        { prompt: "Which acid is present in tomato?", answer: "Oxalic acid" },
-        { prompt: "Vinegar is a dilute solution of which acid?", answer: "Acetic acid (about 5–8%)" },
+        { prompt: "Which acid gives lemon its sour taste?", answer: "Citric acid" },
+        { prompt: "Which acid is found in grapes?", answer: "Tartaric acid" },
         { prompt: "Which acid gives tamarind its sour taste?", answer: "Tartaric acid" },
         { prompt: "Which acid is used as a mild antiseptic in eye washes?", answer: "Boric acid" },
       ],
@@ -126,7 +126,7 @@ export const CDS_CH_AB_ACIDS_NOTE: SubtopicNote = {
         answer: "Methanoic acid; the baking soda neutralises it.",
       },
       practiceSet: [
-        { prompt: "Which acid does a nettle leaf inject?", answer: "Methanoic (formic) acid" },
+        { prompt: "What is the common name of methanoic acid?", answer: "Formic acid" },
         { prompt: "Which mineral acid is present in the human stomach?", answer: "Hydrochloric acid" },
         { prompt: "Which acid builds up in muscles during hard exercise?", answer: "Lactic acid" },
         { prompt: "Is methanoic acid a mineral acid or an organic acid?", answer: "Organic" },

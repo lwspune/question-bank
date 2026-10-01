@@ -127,7 +127,7 @@ export const CDS_CH_CB_HYDROCARBONS_NOTE: SubtopicNote = {
       },
       pyqExampleId: "738aa02a-4788-4ce3-9fc2-8086a162b83d",
       practiceSet: [
-        { prompt: "Which compound is called cetane?", answer: "n-Hexadecane" },
+        { prompt: "Is the cetane number used to rate petrol or diesel?", answer: "Diesel" },
         { prompt: "Which fuel is rated by octane number?", answer: "Petrol" },
         { prompt: "Does branching raise or lower the octane number?", answer: "Raises it" },
         { prompt: "Which has the higher octane number, pentane or hexane?", answer: "Pentane" },
