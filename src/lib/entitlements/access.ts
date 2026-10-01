@@ -13,10 +13,10 @@ export type EntitlementStatus = "active" | "expired" | "revoked" | "cancelled";
 /** The full-premium scope. A grant with this scope unlocks everything. */
 export const SCOPE_ALL = "all";
 
-/** Student Mock Pass: unlimited mock tests past the free limit. */
+/** The PYQ Vault Pass: unlimited mocks past the free limit, and Word paper + key downloads (DOWNLOAD_PASS_SCOPE). */
 export const SCOPE_MOCKS = "mocks";
 
-/** Teacher Pass: Word paper + answer-key downloads, and everything SCOPE_MOCKS gives. */
+/** The retired ₹499 Teacher Pass (2026-09-26 to 2026-10-01). Still a valid scope: it covers SCOPE_MOCKS, and so downloads. */
 export const SCOPE_TEACHER = "teacher";
 
 /**

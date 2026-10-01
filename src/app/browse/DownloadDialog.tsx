@@ -5,7 +5,6 @@ import Link from "next/link";
 import {
   Download,
   FileText,
-  GraduationCap,
   Key,
   Presentation,
   Table,
@@ -55,14 +54,14 @@ export default function DownloadDialog({
   externalOpen,
   onExternalOpenChange,
   hideTrigger,
-  /** Signed-in (any account) — unlocks the paper + key downloads. */
+  /** Signed-in (any account). Alone it unlocks nothing; see resolveExportAccess. */
   isSignedIn = false,
   /** Org staff (ADMIN/TEACHER) — additionally unlocks the tagged sheet. */
   isStaff = false,
-  /** Active Teacher Pass — unlocks the paper + key (not slides or the sheet). */
-  hasTeacherPass = false,
+  /** Active PYQ Vault Pass — unlocks the paper + key (not slides or the sheet). */
+  hasDownloadPass = false,
   /** The pass on sale that unlocks downloads; null = none on sale, so no CTA. */
-  teacherPass = null,
+  downloadPass = null,
   /** The filtered exam prints Marathi + English (MPSC) — offer a print language. */
   bilingual = false,
 }: {
@@ -74,15 +73,17 @@ export default function DownloadDialog({
   hideTrigger?: boolean;
   isSignedIn?: boolean;
   isStaff?: boolean;
-  hasTeacherPass?: boolean;
-  teacherPass?: PassCta | null;
+  hasDownloadPass?: boolean;
+  downloadPass?: PassCta | null;
   bilingual?: boolean;
 }) {
-  // Downloads are staff-only (paper/key/tags all require an org account). A
-  // non-staff visitor (anon OR signed-in student) sees a "request teacher access"
-  // prompt instead — derived from the same gate the API enforces.
-  const who = { isSignedIn, isStaff, hasTeacherPass };
-  const canDownload = resolveExportAccess({ kind: "paper", ...who }).allowed;
+  // Paper + key need org staff or the pass; anyone else sees the pass offer
+  // instead — derived from the same gate the API enforces. `who` is typed so a
+  // renamed gate input fails to compile here rather than silently reading false.
+  const who: Omit<Parameters<typeof resolveExportAccess>[0], "kind"> = { isSignedIn, isStaff, hasDownloadPass };
+  const paperAccess = resolveExportAccess({ kind: "paper", ...who });
+  const canDownload = paperAccess.allowed;
+  const branded = paperAccess.allowed && paperAccess.branded;
   const canTags = resolveExportAccess({ kind: "tags", ...who }).allowed;
   const canSlides = resolveExportAccess({ kind: "ppt", ...who }).allowed;
   const [internalOpen, setInternalOpen] = useState(false);
@@ -103,7 +104,9 @@ export default function DownloadDialog({
     setHere(window.location.pathname + window.location.search);
   }, []);
 
-  // The teacher gate was seen — the denominator for Get Teacher Pass clicks. `mode` splits the two populations that matter — a
+  // The download gate was seen — the denominator for pass clicks. The event
+  // names still say "teacher" (the gate's name until 2026-10-01) so the series
+  // stays continuous. `mode` splits the two populations that matter — a
   // visitor who assembled a CART and then met the wall wanted a paper; one who
   // opened it from FILTERS may only have been looking.
   useEffect(() => {
@@ -207,7 +210,7 @@ export default function DownloadDialog({
           <DialogTitle>
             {canDownload
               ? `Download ${activeCount} question${activeCount === 1 ? "" : "s"}`
-              : "Papers are for teachers"}
+              : "Download papers with the pass"}
           </DialogTitle>
           <DialogDescription>
             {canDownload ? (
@@ -220,6 +223,7 @@ export default function DownloadDialog({
                 {canTags
                   ? ", and a tagged sheet (.xlsx) for nda-tracker, numbered to match the paper."
                   : "."}
+                {branded && " Pages carry a light PYQ Vault watermark."}
               </>
             ) : (
               "Browsing, preview, timed mock tests and notes stay free — no account needed."
@@ -230,18 +234,20 @@ export default function DownloadDialog({
         {!canDownload ? (
           <div className="flex-1 space-y-3 overflow-y-auto px-6 py-4 text-sm text-muted-foreground">
             <p>
-              Downloading question papers as Word files is a teacher feature.{" "}
-              {teacherPass && (
+              {downloadPass ? (
                 <>
-                  Get the <strong className="text-foreground">{teacherPass.label}</strong> ({teacherPass.price} for{" "}
-                  {teacherPass.length}) for instant access.
+                  Downloading question papers as Word files comes with the{" "}
+                  <strong className="text-foreground">{downloadPass.label}</strong> ({downloadPass.price} for{" "}
+                  {downloadPass.length}). It also unlocks unlimited timed mock tests.
                 </>
+              ) : (
+                "Downloading question papers as Word files needs a pass."
               )}
             </p>
             <p>
               You&apos;ll be able to filter the bank, pick questions, and export
-              the Question Paper and Answer Key — numbered and formatted for the
-              classroom.
+              the Question Paper and Answer Key, numbered and ready to print.
+              Pages carry a light PYQ Vault watermark.
             </p>
           </div>
         ) : (
@@ -357,16 +363,16 @@ export default function DownloadDialog({
             {busy ? "Working…" : canDownload ? "Done" : "Cancel"}
           </Button>
           {!canDownload ? (
-            teacherPass && (
+            downloadPass && (
               <Button asChild variant="brand" className="w-full sm:w-auto">
                 <Link
-                  href={pricingHref(teacherPass.urlKey, here)}
+                  href={pricingHref(downloadPass.urlKey, here)}
                   onClick={() =>
                     trackFunnelOnce("teacher_gate_cta_click", mode, { signedIn: isSignedIn, mode })
                   }
                 >
-                  <GraduationCap className="h-4 w-4" aria-hidden />
-                  Get {teacherPass.label}
+                  <Download className="h-4 w-4" aria-hidden />
+                  Get {downloadPass.label}
                 </Link>
               </Button>
             )

@@ -1,15 +1,13 @@
 /**
  * Unit spec for the export access gate (pure). This is the source of truth for
  * who can download which artifact:
- *   - paper / key  → org STAFF only (teacher/admin accounts). A downloadable
- *                    Word paper is a teacher artifact; students get the online
- *                    product (preview, mocks, notes) instead. (Was "any signed-in
- *                    account" until 2026-07-18.)
- *   - tags (.xlsx) → org staff only (unchanged)
- *   - anon         → nothing (browse/preview stays free; download is staff-gated)
+ *   - paper / key  → org STAFF, or anyone holding the PYQ Vault Pass (2026-10-01;
+ *                    before that a separate Teacher Pass, and before 2026-09-26
+ *                    staff only). Pass downloads are BRANDED, staff ones are not.
+ *   - tags / ppt   → org staff only
+ *   - anon         → nothing (browse/preview stays free)
  *
- * So the matrix collapses: every kind now requires isStaff. A signed-in student
- * (no org membership) is denied 403 for all three; anon is denied 401.
+ * A signed-in account with neither is denied 403; anon is denied 401.
  *
  * The API route and the DownloadDialog UI both derive from this one function so
  * they can never diverge. The cookie-bound route path only reaches the anon
@@ -17,7 +15,8 @@
  * lives here.
  */
 import { describe, it, expect } from "vitest";
-import { resolveExportAccess, type ExportKind } from "@/lib/export/access";
+import { resolveExportAccess, DOWNLOAD_PASS_SCOPE, type ExportKind } from "@/lib/export/access";
+import { scopeCovers, SCOPE_ALL, SCOPE_MOCKS, SCOPE_TEACHER } from "@/lib/entitlements/access";
 
 const anon = { isSignedIn: false, isStaff: false };
 const student = { isSignedIn: true, isStaff: false };
@@ -55,10 +54,17 @@ describe("resolveExportAccess", () => {
     }
   });
 
-  // Teacher Pass (2026-09-26): a paid pass unlocks the Word paper + answer key
-  // for an account with no org. Slides and the tag sheet stay org-staff only.
-  describe("teacher pass", () => {
-    const passHolder = { isSignedIn: true, isStaff: false, hasTeacherPass: true };
+  // The PYQ Vault Pass (2026-10-01): the one paid pass unlocks the Word paper +
+  // answer key for anyone with no org, student or teacher. Slides and the tag
+  // sheet stay org-staff only. (Was a separate ₹499 Teacher Pass, 2026-09-26.)
+  describe("download pass", () => {
+    // The pass on sale is scope "mocks". Old "teacher" grants (none exist, but
+    // the scope is still valid) and the full-premium "all" must keep working.
+    it.each([SCOPE_MOCKS, SCOPE_TEACHER, SCOPE_ALL])("a %s grant unlocks downloads", (granted) => {
+      expect(scopeCovers(granted, DOWNLOAD_PASS_SCOPE)).toBe(true);
+    });
+
+    const passHolder = { isSignedIn: true, isStaff: false, hasDownloadPass: true };
     it.each(["paper", "key"] as ExportKind[])("allows %s", (kind) => {
       expect(resolveExportAccess({ kind, ...passHolder }).allowed).toBe(true);
     });
@@ -68,12 +74,34 @@ describe("resolveExportAccess", () => {
       if (!r.allowed) expect(r.status).toBe(403);
     });
     it("means nothing to an anon caller", () => {
-      const r = resolveExportAccess({ kind: "paper", isSignedIn: false, isStaff: false, hasTeacherPass: true });
+      const r = resolveExportAccess({ kind: "paper", isSignedIn: false, isStaff: false, hasDownloadPass: true });
       expect(r.allowed).toBe(false);
     });
-    it("a student denied the paper is told the pass exists", () => {
+    it("a student denied the paper is told a pass unlocks it, not that it is for teachers", () => {
       const r = resolveExportAccess({ kind: "paper", ...student });
-      if (!r.allowed) expect(r.message).toMatch(/Teacher Pass/);
+      expect(r.allowed).toBe(false);
+      if (!r.allowed) {
+        expect(r.message).toMatch(/pass/i);
+        expect(r.message).not.toMatch(/teacher/i);
+      }
+    });
+  });
+
+  // Branding (2026-10-01): a pass download carries the PYQ Vault watermark and
+  // footer; an institute's own staff download stays unbranded (the owner's
+  // earlier "teachers' papers stay unbranded" call, kept for institutes).
+  describe("branding", () => {
+    it.each(["paper", "key"] as ExportKind[])("brands a pass holder's %s", (kind) => {
+      const r = resolveExportAccess({ kind, isSignedIn: true, isStaff: false, hasDownloadPass: true });
+      expect(r).toEqual({ allowed: true, branded: true });
+    });
+    it.each(KINDS)("never brands institute staff (%s)", (kind) => {
+      const r = resolveExportAccess({ kind, ...staff });
+      expect(r).toEqual({ allowed: true, branded: false });
+    });
+    it("staff who also hold a pass stay unbranded", () => {
+      const r = resolveExportAccess({ kind: "paper", ...staff, hasDownloadPass: true });
+      expect(r).toEqual({ allowed: true, branded: false });
     });
   });
 });

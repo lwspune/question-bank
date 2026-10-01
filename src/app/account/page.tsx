@@ -25,7 +25,8 @@ export const metadata: Metadata = {
 
 /** What an active grant is called on this page, and where it leads. */
 const PASS_VIEW: Record<string, { title: string; href: string; cta: string }> = {
-  mocks: { title: "Mock Pass active", href: "/mock", cta: "Go to mock tests →" },
+  mocks: { title: "PYQ Vault Pass active", href: "/mock", cta: "Go to mock tests →" },
+  // The retired ₹499 pass (2026-10-01). No grant holds it; kept so one would still read right.
   teacher: { title: "Teacher Pass active", href: "/browse", cta: "Download a paper →" },
 };
 const DEFAULT_VIEW = { title: "Premium active", href: "/mock", cta: "Go to mock tests →" };
@@ -140,7 +141,7 @@ export default async function AccountPage() {
                 <p className="mt-1 text-sm text-muted-foreground">
                   The question bank, guides and notes are always free
                   {freeMocks === null ? ", and so are mock tests" : `, and so are your first ${freeMocks} mock tests`}.
-                  A one-time pass unlocks unlimited mocks, or Word paper downloads for teachers.
+                  A one-time pass unlocks unlimited mocks and Word paper downloads.
                 </p>
                 <Link
                   href="/pricing"

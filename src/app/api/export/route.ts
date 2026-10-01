@@ -2,9 +2,8 @@ import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
-import { resolveExportAccess, type ExportKind } from "@/lib/export/access";
+import { resolveExportAccess, DOWNLOAD_PASS_SCOPE, type ExportKind } from "@/lib/export/access";
 import { userHasAccess } from "@/lib/entitlements/query";
-import { SCOPE_TEACHER } from "@/lib/entitlements/access";
 import { recordExportEvent } from "@/lib/export/log";
 import { applyExportLanguage, parseExportLang } from "@/lib/export/exportLanguage";
 import {
@@ -93,16 +92,16 @@ export async function POST(request: NextRequest) {
     }
     const isStaff = !!member;
     const isSignedIn = !!user;
-    // Teacher Pass: a paid grant that unlocks paper + key without an org.
-    const hasTeacherPass =
+    // The PYQ Vault Pass: a paid grant that unlocks paper + key without an org.
+    const hasDownloadPass =
       user && !isStaff
-        ? await userHasAccess(createSupabaseServerClient(), user.id, SCOPE_TEACHER)
+        ? await userHasAccess(createSupabaseServerClient(), user.id, DOWNLOAD_PASS_SCOPE)
         : false;
     const bucket = user
       ? `export:user:${user.id}`
       : `export:anon:${getClientIp(request)}`;
     const limit =
-      isStaff || hasTeacherPass ? AUTHED_LIMIT : isSignedIn ? STUDENT_LIMIT : ANON_LIMIT;
+      isStaff || hasDownloadPass ? AUTHED_LIMIT : isSignedIn ? STUDENT_LIMIT : ANON_LIMIT;
 
     const admin = createSupabaseAdminClient();
     const rl = await checkAndIncrement(admin, bucket, {
@@ -160,10 +159,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Download gate: staff, or a Teacher Pass for paper/key. Enforced
-    // server-side (never trust the hidden UI buttons), after the cheap payload
-    // validation and before the expensive query.
-    const access = resolveExportAccess({ kind, isSignedIn, isStaff, hasTeacherPass });
+    // Download gate: staff, or the pass for paper/key. Enforced server-side
+    // (never trust the hidden UI buttons), after the cheap payload validation
+    // and before the expensive query. It also decides branding: pass downloads
+    // carry the PYQ Vault watermark + footer, institute staff ones do not.
+    const access = resolveExportAccess({ kind, isSignedIn, isStaff, hasDownloadPass });
     if (!access.allowed) {
       return NextResponse.json({ error: access.message }, { status: access.status });
     }
@@ -321,6 +321,7 @@ export async function POST(request: NextRequest) {
         imageBytes,
         groupBySubtopic,
         includeSourceTag,
+        branded: access.branded,
       });
       filename = `QP_${safeName}.docx`;
     } else {
@@ -329,6 +330,7 @@ export async function POST(request: NextRequest) {
         questions,
         includeSolutions,
         groupBySubtopic,
+        branded: access.branded,
       });
       filename = `Answers_${safeName}.docx`;
     }

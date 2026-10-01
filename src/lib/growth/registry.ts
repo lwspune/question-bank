@@ -153,10 +153,16 @@ export type DecidedAgainst = { title: string; decision: string; on: string; why:
 
 export const DECIDED_AGAINST: readonly DecidedAgainst[] = [
   {
-    title: "Brand line on the Word paper",
-    decision: "No",
+    title: "Brand line on institute papers",
+    decision: "No; pass downloads are branded instead",
     on: "2026-10-01",
-    why: "Owner's call: teachers' papers stay unbranded.",
+    why: "Owner's call: an institute's own staff papers stay unbranded. Papers downloaded with the pass carry a light PYQ Vault watermark and www.pyqvault.com in the footer.",
+  },
+  {
+    title: "Separate ₹499 Teacher Pass",
+    decision: "Retired; one ₹99 PYQ Vault Pass unlocks downloads for everyone",
+    on: "2026-10-01",
+    why: "44 of 52 teacher-access requests came from students, a teacher cannot be verified, and the Teacher Pass sold none. Owner's call: 6 months, no download cap for now.",
   },
   {
     title: "Paywall change",

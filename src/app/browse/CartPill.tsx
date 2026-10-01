@@ -59,7 +59,7 @@ type SortMode = "insertion" | "by-chapter";
  * hydration mismatch — render only after CartProvider hydrates).
  *
  * The footer's Download opens the SAME DownloadDialog as the page-level button,
- * pre-set to the cart — one export path, one Teacher Pass gate. It lives here
+ * pre-set to the cart — one export path, one pass gate. It lives here
  * because the Sheet covers the page-level button on desktop, so text pointing
  * at "Download at the top of the page" pointed at something the user could not
  * see or reach.
@@ -274,7 +274,7 @@ export default function CartPill({
               </Button>
             )}
             {/* A non-member can't own a paper (papers.org_id is NOT NULL), and the
-                Teacher Pass doesn't change that — it unlocks the Word download.
+                PYQ Vault Pass doesn't change that — it unlocks the Word download.
                 So they get Download alone, which exports this selection. */}
             {isOrgMember && (
               <Button
