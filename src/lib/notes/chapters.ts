@@ -1250,6 +1250,11 @@ import {
   JEE_PH_COMM_NOTES,
   JEE_PH_COMM_SLUGS,
 } from "@/app/notes/jee-mains-physics/communication-systems/_data";
+import {
+  CDS_CH_ACIDS_CHAPTER,
+  CDS_CH_ACIDS_NOTES,
+  CDS_CH_ACIDS_SLUGS,
+} from "@/app/notes/cds-chemistry/acids-bases-salts/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4006,6 +4011,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_PH_COMM_CHAPTER,
     notes: JEE_PH_COMM_NOTES,
     slugs: JEE_PH_COMM_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Chemistry",
+    subjectRoute: "cds-chemistry",
+    subjectDisplay: "CDS Chemistry",
+    chapterSlug: "acids-bases-salts",
+    chipLabel: "Acids, Bases and Salts notes",
+    chapter: CDS_CH_ACIDS_CHAPTER,
+    notes: CDS_CH_ACIDS_NOTES,
+    slugs: CDS_CH_ACIDS_SLUGS,
   },
 ];
 
