@@ -12,6 +12,7 @@ import {
   ArrowUpRight,
   BookOpen,
   Compass,
+  ListChecks,
   Sigma,
   Sparkles,
 } from "lucide-react";
@@ -31,6 +32,8 @@ import ChapterRevisionSheet from "./ChapterRevisionSheet";
 import NotesHandoutLink from "./NotesHandoutLink";
 import { printHandoutHref } from "@/lib/notes/printDoc";
 import ConceptWeightTable from "./ConceptWeightTable";
+import { listChapterLandings, landingHref } from "@/lib/questions/landing";
+import { findChapterLanding } from "@/lib/questions/findLanding";
 
 /**
  * Chapter-agnostic renderer for a /notes chapter landing page. Each chapter's
@@ -69,6 +72,18 @@ export default async function NotesChapterLanding({ chapter }: Props) {
   // "/mht-cet" and "/jee mains" were dead links on every other exam's notes.
   const examHomeHref = examHomeHrefFor(getExamByName(chapter.examName)?.slug ?? "nda");
   const meta = chapter.chapter;
+
+  // The chapter's public /questions page. Notes are the most-cited pages we
+  // have, and they linked to the question bank only through /browse, which
+  // robots.ts disallows. A failed lookup renders no link, never a guessed one.
+  const questionsLanding = findChapterLanding(
+    await listChapterLandings().catch(() => []),
+    {
+      examName: chapter.examName,
+      subjectName: chapter.subjectName,
+      chapterName: meta.chapterName,
+    }
+  );
 
   const supabase = createSupabaseAnonClient();
   const taxonomy = await getNotesTaxonomy(
@@ -200,6 +215,22 @@ export default async function NotesChapterLanding({ chapter }: Props) {
       </div>
 
       <div className="mb-8 flex flex-wrap items-center gap-2 text-xs">
+        {questionsLanding && (
+          <Link
+            href={landingHref(questionsLanding)}
+            className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
+          >
+            <ListChecks className="h-3.5 w-3.5" aria-hidden />
+            <span>
+              All {questionsLanding.questionCount.toLocaleString("en-IN")}{" "}
+              {questionsLanding.practiceOnly ? "practice" : "past"} questions
+            </span>
+            <ArrowUpRight
+              className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              aria-hidden
+            />
+          </Link>
+        )}
         {guideHref && (
           <Link
             href={guideHref}

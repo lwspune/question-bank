@@ -6,6 +6,7 @@ import {
   type ExamEntry,
 } from "./examContext";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
+import { examHomeHref } from "./examHome";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 
 /**
@@ -26,7 +27,7 @@ export type ExamCatalogItem = {
   totalPublicQuestions: number;
   practiceOnly: boolean;
   boardExam: boolean;
-  /** Best landing for this exam's card (guide → shipped notes → bank). */
+  /** Best landing for this exam's card (guide → shipped notes → exam home → bank). */
   href: string;
   /** DB UUID, or null when the exam is registered in code but not seeded. */
   examId: string | null;
@@ -42,7 +43,11 @@ export type ExamCatalog = {
  *   1. its `/guide` subtree, if one has shipped;
  *   2. else its `/notes/<slug>` hub, if that exam has at least one notes chapter
  *      (a bare "coming soon" hub is a dead end, so we skip it);
- *   3. else that exam's question bank (`/browse?examId=…`).
+ *   3. else its exam home (`/exams/<slug>`), which lists every chapter page;
+ *   4. else, for an exam with no public content (its exam home 404s), the
+ *      question bank (`/browse?examId=…`).
+ * Step 3 replaced the bank on 2026-10-01: robots.ts disallows `/browse?*`, so
+ * for Google a card pointing there led nowhere.
  * Pure — unit-tested.
  */
 export function pickExamCardHref(
@@ -52,6 +57,7 @@ export function pickExamCardHref(
 ): string {
   if (exam.guidesPath) return exam.guidesPath;
   if (hasShippedNotes && exam.notesPath) return exam.notesPath;
+  if (!exam.noPublicContent) return examHomeHref(exam.slug);
   return resolveBankHref(examId);
 }
 
