@@ -22,6 +22,8 @@ import { notesSubtopicTitle } from "@/lib/notes/titles";
 import { topicNav, mockCta, extraRelated } from "@/lib/notes/keepGoing";
 import NotesKeepGoing from "./NotesKeepGoing";
 import NotesMockCard from "./NotesMockCard";
+import { mockCtaCopy, withChapterTest } from "@/lib/mocks/chapterTests";
+import { listChapterTests } from "@/lib/mocks/chapterTestsQuery";
 import NotesTestBar from "./NotesTestBar";
 import ConceptUnitCard from "./ConceptUnitCard";
 import NotesPaywall from "./NotesPaywall";
@@ -67,7 +69,7 @@ export default async function NotesSubtopicPage({
   const note = chapter.notes[subtopicSlug];
   if (!note) notFound();
   const nav = topicNav(chapter, subtopicSlug);
-  const mock = mockCta(chapter.examName);
+  const paperCta = mockCta(chapter.examName);
   const related = extraRelated(note.related, nav);
 
   // Preview-gate (paid chapters only). Reading session cookies makes a paid
@@ -139,6 +141,12 @@ export default async function NotesSubtopicPage({
   );
   const chapterTax = taxonomy.chapters.get(chapterName);
   const subtopicId = chapterTax?.subtopics.get(note.subtopicName) ?? null;
+  // The chapter's own test when it has one, else the exam's past papers.
+  const mock = withChapterTest(
+    paperCta,
+    chapterTax ? (await listChapterTests()).get(chapterTax.id) : undefined,
+    chapterName
+  );
 
   // Drill tags + total subtopic count fire in parallel.
   const conceptsForResolver = note.concepts.map((c) => ({
@@ -341,7 +349,14 @@ export default async function NotesSubtopicPage({
 
       {/* The way on: next/previous topic, then a real paper to test it on. */}
       <NotesKeepGoing next={nav.next} prev={nav.prev} />
-      {mock && <NotesMockCard href={mock.href} examDisplay={mock.examDisplay} page="topic" />}
+      {mock && (
+        <NotesMockCard
+          href={mock.href}
+          examDisplay={mock.examDisplay}
+          copy={mockCtaCopy(mock)}
+          page="topic"
+        />
+      )}
 
       {/* Final drill CTA */}
       <section className="mt-12 rounded-lg border-2 border-primary/40 bg-primary/5 p-6 text-center">
@@ -387,7 +402,9 @@ export default async function NotesSubtopicPage({
           </ul>
         </section>
       )}
-      {mock && <NotesTestBar href={mock.href} examDisplay={mock.examDisplay} />}
+      {mock && (
+        <NotesTestBar href={mock.href} examDisplay={mock.examDisplay} line={mockCtaCopy(mock).bar} />
+      )}
     </GuideShell>
   );
 }

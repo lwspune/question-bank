@@ -33,7 +33,16 @@ function writeLastShown(at: number) {
  * arrival: it waits until the reader is 70% down, shows at most once a day per
  * device, and closes with one tap. Rules: shouldShowTestBar.
  */
-export default function NotesTestBar({ href, examDisplay }: { href: string; examDisplay: string }) {
+export default function NotesTestBar({
+  href,
+  examDisplay,
+  line,
+}: {
+  href: string;
+  examDisplay: string;
+  /** "Sit a real X paper, timed." or the chapter test's line (mockCtaCopy). */
+  line: string;
+}) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -66,7 +75,7 @@ export default function NotesTestBar({ href, examDisplay }: { href: string; exam
         <ClipboardCheck className="h-5 w-5 shrink-0 text-brand-accent" aria-hidden />
         <p className="flex-1 text-sm">
           <span className="font-medium">Ready to test this?</span>{" "}
-          <span className="text-muted-foreground">Sit a real {examDisplay} paper, timed.</span>
+          <span className="text-muted-foreground">{line}</span>
         </p>
         <Link
           href={href}

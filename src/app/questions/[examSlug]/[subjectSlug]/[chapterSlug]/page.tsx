@@ -39,6 +39,8 @@ import {
   updatedLine,
 } from "@/lib/questions/landingSummary";
 import { mockCta } from "@/lib/notes/keepGoing";
+import { mockCtaCopy, withChapterTest } from "@/lib/mocks/chapterTests";
+import { listChapterTests } from "@/lib/mocks/chapterTestsQuery";
 import { examHomeHref } from "@/lib/exam/examHome";
 import ChapterShareCard from "@/components/ChapterShareCard";
 
@@ -168,10 +170,11 @@ export default async function ChapterQuestionsPage({ params }: Params) {
   );
   if (!landing) notFound();
 
-  const [questions, siblings, subtopics] = await Promise.all([
+  const [questions, siblings, subtopics, chapterTests] = await Promise.all([
     loadLandingQuestions(landing),
     getSiblingLandings(landing),
     loadLandingSubtopics(landing),
+    listChapterTests(),
   ]);
 
   // The quotable header: every line is a fact the bank can back, and a line
@@ -181,7 +184,12 @@ export default async function ChapterQuestionsPage({ params }: Params) {
     subtopicsLine(subtopics),
     updatedLine(landing.lastAdded),
   ].filter((s): s is string => s !== null);
-  const mock = landing.practiceOnly ? null : mockCta(landing.examName);
+  // The chapter's own test when it has one, else the exam's past papers.
+  const mock = withChapterTest(
+    landing.practiceOnly ? null : mockCta(landing.examName),
+    chapterTests.get(landing.chapterId),
+    landing.chapterName
+  );
 
   // Reuse the same chapter→notes/guide mapping the /browse cards use, so a
   // rename stays a one-place fix rather than drifting between surfaces.
@@ -256,7 +264,7 @@ export default async function ChapterQuestionsPage({ params }: Params) {
             <Button asChild variant="outline">
               <Link href={mock.href}>
                 <ClipboardCheck className="mr-1.5 h-4 w-4" />
-                Sit a {mock.examDisplay} paper as a timed mock
+                {mockCtaCopy(mock).short}
               </Link>
             </Button>
           )}
