@@ -135,6 +135,9 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     biomolecules: { cls: 12, chapterNo: 10, book: "NCERT XII 10 Biomolecules" },
     amines: { cls: 12, chapterNo: 9, book: "NCERT XII 9 Amines" },
   },
+  "jee-mains-physics": {
+    "units-and-measurements": { cls: 11, chapterNo: 1, book: "NCERT XI 1 Units and Measurement" },
+  },
 };
 
 /** Sort key: class, then chapter, then order inside a shared book chapter. */

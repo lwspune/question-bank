@@ -1110,6 +1110,11 @@ import {
   JEE_CH_AMINE_NOTES,
   JEE_CH_AMINE_SLUGS,
 } from "@/app/notes/jee-mains-chemistry/amines/_data";
+import {
+  JEE_PH_UNIT_CHAPTER,
+  JEE_PH_UNIT_NOTES,
+  JEE_PH_UNIT_SLUGS,
+} from "@/app/notes/jee-mains-physics/units-and-measurements/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3558,6 +3563,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_CH_AMINE_CHAPTER,
     notes: JEE_CH_AMINE_NOTES,
     slugs: JEE_CH_AMINE_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "units-and-measurements",
+    chipLabel: "Units and Measurements notes",
+    chapter: JEE_PH_UNIT_CHAPTER,
+    notes: JEE_PH_UNIT_NOTES,
+    slugs: JEE_PH_UNIT_SLUGS,
   },
 ];
 
