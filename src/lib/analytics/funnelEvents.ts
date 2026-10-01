@@ -57,9 +57,13 @@ export const FUNNEL_EVENTS = [
   "quiz_gate_submitted",
   /** A /notes reader scrolled far enough for the slide-up "test yourself" bar (2026-09-28). */
   "notes_test_bar_shown",
-  /** …and clicked through to the exam's mocks. */
+  /**
+   * …and clicked through. Since 2026-10-01 the bar opens the chapter's own test
+   * where one exists (MHT-CET), else the exam's past papers — so a click before
+   * and after that date is not the same act.
+   */
   "notes_test_bar_click",
-  /** A /notes reader clicked the end-of-page "test yourself on a real paper" card. */
+  /** A /notes reader clicked the end-of-page "test yourself" card (same 2026-10-01 change). */
   "notes_mock_card_click",
   /** V's launcher was opened (fires once per page session). */
   "chat_launcher_click",

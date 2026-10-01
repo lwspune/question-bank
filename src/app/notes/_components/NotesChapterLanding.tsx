@@ -35,6 +35,8 @@ import ConceptWeightTable from "./ConceptWeightTable";
 import { listChapterLandings, landingHref } from "@/lib/questions/landing";
 import { findChapterLanding } from "@/lib/questions/findLanding";
 import ChapterShareCard from "@/components/ChapterShareCard";
+import { mockCtaCopy, withChapterTest } from "@/lib/mocks/chapterTests";
+import { listChapterTests } from "@/lib/mocks/chapterTestsQuery";
 
 /**
  * Chapter-agnostic renderer for a /notes chapter landing page. Each chapter's
@@ -62,7 +64,7 @@ export default async function NotesChapterLanding({ chapter }: Props) {
   const base = routeBase(chapter);
   // Only a subject with a strategy guide links one (JEE Chemistry has none yet).
   const guideHref = hasSubjectGuide(chapter.subjectRoute) ? `/guide/${chapter.subjectRoute}` : null;
-  const mock = mockCta(chapter.examName);
+  const paperCta = mockCta(chapter.examName);
   // Chapters whose solutions have been classified by identity get a link to the
   // formula index. Derived from the registry, so a chapter picks this up the
   // day its tags land — nothing to remember here.
@@ -93,6 +95,12 @@ export default async function NotesChapterLanding({ chapter }: Props) {
     chapter.subjectName
   );
   const chapterTax = taxonomy.chapters.get(meta.chapterName);
+  // The chapter's own test when it has one, else the exam's past papers.
+  const mock = withChapterTest(
+    paperCta,
+    chapterTax ? (await listChapterTests()).get(chapterTax.id) : undefined,
+    meta.chapterName
+  );
 
   const subtopicIds = meta.subtopicOrder
     .map((slug) => chapter.notes[slug]?.subtopicName)
@@ -344,7 +352,14 @@ export default async function NotesChapterLanding({ chapter }: Props) {
 
       {/* The way in, then a real paper to test the chapter on. */}
       <NotesKeepGoing next={chapterStart(chapter)} prev={null} />
-      {mock && <NotesMockCard href={mock.href} examDisplay={mock.examDisplay} page="chapter" />}
+      {mock && (
+        <NotesMockCard
+          href={mock.href}
+          examDisplay={mock.examDisplay}
+          copy={mockCtaCopy(mock)}
+          page="chapter"
+        />
+      )}
       {questionsLanding && (
         <ChapterShareCard
           path={landingHref(questionsLanding)}
@@ -357,7 +372,9 @@ export default async function NotesChapterLanding({ chapter }: Props) {
           surface="notes"
         />
       )}
-      {mock && <NotesTestBar href={mock.href} examDisplay={mock.examDisplay} />}
+      {mock && (
+        <NotesTestBar href={mock.href} examDisplay={mock.examDisplay} line={mockCtaCopy(mock).bar} />
+      )}
     </GuideShell>
   );
 }
