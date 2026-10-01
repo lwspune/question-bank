@@ -57,6 +57,14 @@ Used to take JEE Mains Maths from 11 to 27 noted chapters in one session. One ch
 - **`bookOrder.ts` holds positions only for registered chapters** (a test enforces it). Park the others and add each position back when its chapter ships.
 - **A subject with no strategy guide:** notes pages link `/guide/<subject>` only when `hasSubjectGuide()` says the guide exists.
 
+**Third run: JEE Physics, 28 chapters (2026-10-01).** What it added:
+- **An unregistered chapter folder breaks `next build`.** Its route page calls `getNotesChapterBySlug(...)!`, which is undefined until `register.py` runs. Create route pages only for chapters you will register before the next build or gate.
+- **`apply-chapter.sh` warns when classification sync is not 0 after an apply.** A re-cut pass died mid-run once: the DB moved but the paper JSONs did not, and its `tail` hid the error. Re-run the re-cut fix until sync reads 0, or the next resync undoes it.
+- **Missing figures become composites, not text.** When a stem names (a)–(d) or figures I and II and the row carries one picture, unzip the others from the source docx (`word/media/imageN`), stack them with `scripts/jee/compose_figures.py` (label the panels when the stem labels them), view the result, then attach with `attach-option-images.ts` using `stem` + `replaceStem` (the current path). Note it in the paper JSON.
+- **Ask drafts to say how recent a dropped topic's questions are, from the dump.** Communication Systems (none since 2023), transistors (none since April 2023) and radioactivity (4 of 44 after 2023) each state the year the data shows, not a syllabus claim alone.
+- **A featured PYQ must not need a later page's formula.** One draft featured an electron circling inside a solenoid on the Ampère page, which needs T = 2πm/qB from the next page; it was swapped for a plain solenoid row. `notes:arc` does not catch this, so read each page's featured row against what the page has taught.
+- **Interrupted agents resume from their transcript:** send the agent's id a message naming the files already written; it finishes the rest.
+
 **Tools live in `scripts/notes-pipeline/jee/` (tracked; README there):** `dump.ts`, `read.js`, `list.js`, `qnat.ts`, `src.py`, `fix.ts`, `recut.js`, `del-empty-sub.mts`, `sync-classification.mts`, `duphash.mts`, `tag-chapter.ts`, `apply-chapter.sh`, `register.py`, `probe.sh`. Run them from the repo root. Their WORKING DATA (chapter dumps `_jee_<code>.json`, fix specs `_fix-jee-<code>.ts`, re-cut plans, tag specs) stays in `generated-papers/`, which is gitignored.
 
 **Prompt skeletons** (fill in chapter, code, slug prefixes and any chapter-specific traps):

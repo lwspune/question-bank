@@ -1110,6 +1110,146 @@ import {
   JEE_CH_AMINE_NOTES,
   JEE_CH_AMINE_SLUGS,
 } from "@/app/notes/jee-mains-chemistry/amines/_data";
+import {
+  JEE_PH_UNIT_CHAPTER,
+  JEE_PH_UNIT_NOTES,
+  JEE_PH_UNIT_SLUGS,
+} from "@/app/notes/jee-mains-physics/units-and-measurements/_data";
+import {
+  JEE_PH_SL_CHAPTER,
+  JEE_PH_SL_NOTES,
+  JEE_PH_SL_SLUGS,
+} from "@/app/notes/jee-mains-physics/motion-in-a-straight-line/_data";
+import {
+  JEE_PH_PLANE_CHAPTER,
+  JEE_PH_PLANE_NOTES,
+  JEE_PH_PLANE_SLUGS,
+} from "@/app/notes/jee-mains-physics/motion-in-a-plane/_data";
+import {
+  JEE_PH_LOM_CHAPTER,
+  JEE_PH_LOM_NOTES,
+  JEE_PH_LOM_SLUGS,
+} from "@/app/notes/jee-mains-physics/laws-of-motion/_data";
+import {
+  JEE_PH_WEP_CHAPTER,
+  JEE_PH_WEP_NOTES,
+  JEE_PH_WEP_SLUGS,
+} from "@/app/notes/jee-mains-physics/work-energy-and-power/_data";
+import {
+  JEE_PH_ROT_CHAPTER,
+  JEE_PH_ROT_NOTES,
+  JEE_PH_ROT_SLUGS,
+} from "@/app/notes/jee-mains-physics/rotational-motion/_data";
+import {
+  JEE_PH_GRAV_CHAPTER,
+  JEE_PH_GRAV_NOTES,
+  JEE_PH_GRAV_SLUGS,
+} from "@/app/notes/jee-mains-physics/gravitation/_data";
+import {
+  JEE_PH_SOLID_CHAPTER,
+  JEE_PH_SOLID_NOTES,
+  JEE_PH_SOLID_SLUGS,
+} from "@/app/notes/jee-mains-physics/mechanical-properties-of-solids/_data";
+import {
+  JEE_PH_FLUID_CHAPTER,
+  JEE_PH_FLUID_NOTES,
+  JEE_PH_FLUID_SLUGS,
+} from "@/app/notes/jee-mains-physics/mechanical-properties-of-fluids/_data";
+import {
+  JEE_PH_THERMAL_CHAPTER,
+  JEE_PH_THERMAL_NOTES,
+  JEE_PH_THERMAL_SLUGS,
+} from "@/app/notes/jee-mains-physics/thermal-properties-of-matter/_data";
+import {
+  JEE_PH_THERMO_CHAPTER,
+  JEE_PH_THERMO_NOTES,
+  JEE_PH_THERMO_SLUGS,
+} from "@/app/notes/jee-mains-physics/thermodynamics/_data";
+import {
+  JEE_PH_KTG_CHAPTER,
+  JEE_PH_KTG_NOTES,
+  JEE_PH_KTG_SLUGS,
+} from "@/app/notes/jee-mains-physics/kinetic-theory/_data";
+import {
+  JEE_PH_OSC_CHAPTER,
+  JEE_PH_OSC_NOTES,
+  JEE_PH_OSC_SLUGS,
+} from "@/app/notes/jee-mains-physics/oscillations/_data";
+import {
+  JEE_PH_WAVE_CHAPTER,
+  JEE_PH_WAVE_NOTES,
+  JEE_PH_WAVE_SLUGS,
+} from "@/app/notes/jee-mains-physics/waves/_data";
+import {
+  JEE_PH_ES_CHAPTER,
+  JEE_PH_ES_NOTES,
+  JEE_PH_ES_SLUGS,
+} from "@/app/notes/jee-mains-physics/electrostatics/_data";
+import {
+  JEE_PH_CE_CHAPTER,
+  JEE_PH_CE_NOTES,
+  JEE_PH_CE_SLUGS,
+} from "@/app/notes/jee-mains-physics/current-electricity/_data";
+import {
+  JEE_PH_MAG_CHAPTER,
+  JEE_PH_MAG_NOTES,
+  JEE_PH_MAG_SLUGS,
+} from "@/app/notes/jee-mains-physics/moving-charges-and-magnetism/_data";
+import {
+  JEE_PH_MM_CHAPTER,
+  JEE_PH_MM_NOTES,
+  JEE_PH_MM_SLUGS,
+} from "@/app/notes/jee-mains-physics/magnetism-and-matter/_data";
+import {
+  JEE_PH_EMI_CHAPTER,
+  JEE_PH_EMI_NOTES,
+  JEE_PH_EMI_SLUGS,
+} from "@/app/notes/jee-mains-physics/electromagnetic-induction/_data";
+import {
+  JEE_PH_AC_CHAPTER,
+  JEE_PH_AC_NOTES,
+  JEE_PH_AC_SLUGS,
+} from "@/app/notes/jee-mains-physics/alternating-current/_data";
+import {
+  JEE_PH_EMW_CHAPTER,
+  JEE_PH_EMW_NOTES,
+  JEE_PH_EMW_SLUGS,
+} from "@/app/notes/jee-mains-physics/electromagnetic-waves/_data";
+import {
+  JEE_PH_RAY_CHAPTER,
+  JEE_PH_RAY_NOTES,
+  JEE_PH_RAY_SLUGS,
+} from "@/app/notes/jee-mains-physics/ray-optics/_data";
+import {
+  JEE_PH_WO_CHAPTER,
+  JEE_PH_WO_NOTES,
+  JEE_PH_WO_SLUGS,
+} from "@/app/notes/jee-mains-physics/wave-optics/_data";
+import {
+  JEE_PH_DUAL_CHAPTER,
+  JEE_PH_DUAL_NOTES,
+  JEE_PH_DUAL_SLUGS,
+} from "@/app/notes/jee-mains-physics/dual-nature/_data";
+import {
+  JEE_PH_ATOM_CHAPTER,
+  JEE_PH_ATOM_NOTES,
+  JEE_PH_ATOM_SLUGS,
+} from "@/app/notes/jee-mains-physics/atoms/_data";
+import {
+  JEE_PH_NUC_CHAPTER,
+  JEE_PH_NUC_NOTES,
+  JEE_PH_NUC_SLUGS,
+} from "@/app/notes/jee-mains-physics/nuclei/_data";
+import {
+  JEE_PH_SEMI_CHAPTER,
+  JEE_PH_SEMI_NOTES,
+  JEE_PH_SEMI_SLUGS,
+} from "@/app/notes/jee-mains-physics/semiconductor-electronics/_data";
+import {
+  JEE_PH_COMM_CHAPTER,
+  JEE_PH_COMM_NOTES,
+  JEE_PH_COMM_SLUGS,
+} from "@/app/notes/jee-mains-physics/communication-systems/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3558,6 +3698,314 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_CH_AMINE_CHAPTER,
     notes: JEE_CH_AMINE_NOTES,
     slugs: JEE_CH_AMINE_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "units-and-measurements",
+    chipLabel: "Units and Measurements notes",
+    chapter: JEE_PH_UNIT_CHAPTER,
+    notes: JEE_PH_UNIT_NOTES,
+    slugs: JEE_PH_UNIT_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "motion-in-a-straight-line",
+    chipLabel: "Motion in a Straight Line notes",
+    chapter: JEE_PH_SL_CHAPTER,
+    notes: JEE_PH_SL_NOTES,
+    slugs: JEE_PH_SL_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "motion-in-a-plane",
+    chipLabel: "Motion in a Plane notes",
+    chapter: JEE_PH_PLANE_CHAPTER,
+    notes: JEE_PH_PLANE_NOTES,
+    slugs: JEE_PH_PLANE_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "laws-of-motion",
+    chipLabel: "Laws of Motion notes",
+    chapter: JEE_PH_LOM_CHAPTER,
+    notes: JEE_PH_LOM_NOTES,
+    slugs: JEE_PH_LOM_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "work-energy-and-power",
+    chipLabel: "Work, Energy and Power notes",
+    chapter: JEE_PH_WEP_CHAPTER,
+    notes: JEE_PH_WEP_NOTES,
+    slugs: JEE_PH_WEP_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "rotational-motion",
+    chipLabel: "Rotational Motion notes",
+    chapter: JEE_PH_ROT_CHAPTER,
+    notes: JEE_PH_ROT_NOTES,
+    slugs: JEE_PH_ROT_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "gravitation",
+    chipLabel: "Gravitation notes",
+    chapter: JEE_PH_GRAV_CHAPTER,
+    notes: JEE_PH_GRAV_NOTES,
+    slugs: JEE_PH_GRAV_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "mechanical-properties-of-solids",
+    chipLabel: "Mechanical Properties of Solids notes",
+    chapter: JEE_PH_SOLID_CHAPTER,
+    notes: JEE_PH_SOLID_NOTES,
+    slugs: JEE_PH_SOLID_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "mechanical-properties-of-fluids",
+    chipLabel: "Mechanical Properties of Fluids notes",
+    chapter: JEE_PH_FLUID_CHAPTER,
+    notes: JEE_PH_FLUID_NOTES,
+    slugs: JEE_PH_FLUID_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "thermal-properties-of-matter",
+    chipLabel: "Thermal Properties of Matter notes",
+    chapter: JEE_PH_THERMAL_CHAPTER,
+    notes: JEE_PH_THERMAL_NOTES,
+    slugs: JEE_PH_THERMAL_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "thermodynamics",
+    chipLabel: "Thermodynamics notes",
+    chapter: JEE_PH_THERMO_CHAPTER,
+    notes: JEE_PH_THERMO_NOTES,
+    slugs: JEE_PH_THERMO_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "kinetic-theory",
+    chipLabel: "Kinetic Theory notes",
+    chapter: JEE_PH_KTG_CHAPTER,
+    notes: JEE_PH_KTG_NOTES,
+    slugs: JEE_PH_KTG_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "oscillations",
+    chipLabel: "Oscillations notes",
+    chapter: JEE_PH_OSC_CHAPTER,
+    notes: JEE_PH_OSC_NOTES,
+    slugs: JEE_PH_OSC_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "waves",
+    chipLabel: "Waves notes",
+    chapter: JEE_PH_WAVE_CHAPTER,
+    notes: JEE_PH_WAVE_NOTES,
+    slugs: JEE_PH_WAVE_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "electrostatics",
+    chipLabel: "Electrostatics notes",
+    chapter: JEE_PH_ES_CHAPTER,
+    notes: JEE_PH_ES_NOTES,
+    slugs: JEE_PH_ES_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "current-electricity",
+    chipLabel: "Current Electricity notes",
+    chapter: JEE_PH_CE_CHAPTER,
+    notes: JEE_PH_CE_NOTES,
+    slugs: JEE_PH_CE_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "moving-charges-and-magnetism",
+    chipLabel: "Moving Charges and Magnetism notes",
+    chapter: JEE_PH_MAG_CHAPTER,
+    notes: JEE_PH_MAG_NOTES,
+    slugs: JEE_PH_MAG_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "magnetism-and-matter",
+    chipLabel: "Magnetism and Matter notes",
+    chapter: JEE_PH_MM_CHAPTER,
+    notes: JEE_PH_MM_NOTES,
+    slugs: JEE_PH_MM_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "electromagnetic-induction",
+    chipLabel: "Electromagnetic Induction notes",
+    chapter: JEE_PH_EMI_CHAPTER,
+    notes: JEE_PH_EMI_NOTES,
+    slugs: JEE_PH_EMI_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "alternating-current",
+    chipLabel: "Alternating Current notes",
+    chapter: JEE_PH_AC_CHAPTER,
+    notes: JEE_PH_AC_NOTES,
+    slugs: JEE_PH_AC_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "electromagnetic-waves",
+    chipLabel: "Electromagnetic Waves notes",
+    chapter: JEE_PH_EMW_CHAPTER,
+    notes: JEE_PH_EMW_NOTES,
+    slugs: JEE_PH_EMW_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "ray-optics",
+    chipLabel: "Ray Optics notes",
+    chapter: JEE_PH_RAY_CHAPTER,
+    notes: JEE_PH_RAY_NOTES,
+    slugs: JEE_PH_RAY_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "wave-optics",
+    chipLabel: "Wave Optics notes",
+    chapter: JEE_PH_WO_CHAPTER,
+    notes: JEE_PH_WO_NOTES,
+    slugs: JEE_PH_WO_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "dual-nature",
+    chipLabel: "Dual Nature notes",
+    chapter: JEE_PH_DUAL_CHAPTER,
+    notes: JEE_PH_DUAL_NOTES,
+    slugs: JEE_PH_DUAL_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "atoms",
+    chipLabel: "Atoms notes",
+    chapter: JEE_PH_ATOM_CHAPTER,
+    notes: JEE_PH_ATOM_NOTES,
+    slugs: JEE_PH_ATOM_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "nuclei",
+    chipLabel: "Nuclei notes",
+    chapter: JEE_PH_NUC_CHAPTER,
+    notes: JEE_PH_NUC_NOTES,
+    slugs: JEE_PH_NUC_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "semiconductor-electronics",
+    chipLabel: "Semiconductor Electronics notes",
+    chapter: JEE_PH_SEMI_CHAPTER,
+    notes: JEE_PH_SEMI_NOTES,
+    slugs: JEE_PH_SEMI_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "communication-systems",
+    chipLabel: "Communication Systems notes",
+    chapter: JEE_PH_COMM_CHAPTER,
+    notes: JEE_PH_COMM_NOTES,
+    slugs: JEE_PH_COMM_SLUGS,
   },
 ];
 

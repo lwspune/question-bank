@@ -7,67 +7,67 @@
     "1": {
       "subject": "Physics",
       "chapter": "Oscillations",
-      "subtopic": "Simple Harmonic Motion"
+      "subtopic": "Energy in SHM, Amplitude Changes and Damping"
     },
     "2": {
       "subject": "Physics",
       "chapter": "Current Electricity",
-      "subtopic": "Transient RC and LR Circuits"
+      "subtopic": "Capacitors and Inductors in DC Circuits"
     },
     "3": {
       "subject": "Physics",
       "chapter": "Work, Energy and Power",
-      "subtopic": "Collisions"
+      "subtopic": "Elastic Collisions and Coefficient of Restitution"
     },
     "4": {
       "subject": "Physics",
       "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "de Broglie Wavelength"
+      "subtopic": "Comparing de Broglie Wavelengths"
     },
     "5": {
       "subject": "Physics",
       "chapter": "System of Particles and Rotational Motion",
-      "subtopic": "Moment of Inertia"
+      "subtopic": "Moment of Inertia and Radius of Gyration"
     },
     "6": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Capacitance and Combinations"
+      "subtopic": "Energy Stored and Charge Sharing in Capacitors"
     },
     "7": {
       "subject": "Physics",
       "chapter": "Kinetic Theory",
-      "subtopic": "Kinetic Theory of Gases"
+      "subtopic": "Pressure, Kinetic Energy and Temperature"
     },
     "8": {
       "subject": "Physics",
       "chapter": "Thermodynamics",
-      "subtopic": "First Law and Cyclic Processes"
+      "subtopic": "Cyclic Processes"
     },
     "9": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Coulomb's Law"
+      "subtopic": "Coulomb's Law and Equilibrium of Charges"
     },
     "10": {
       "subject": "Physics",
       "chapter": "Current Electricity",
-      "subtopic": "Transient RC and LR Circuits"
+      "subtopic": "Capacitors and Inductors in DC Circuits"
     },
     "11": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Capacitance and Combinations"
+      "subtopic": "Dielectric Slabs and Partly Filled Capacitors"
     },
     "12": {
       "subject": "Physics",
       "chapter": "Mechanical Properties of Solids",
-      "subtopic": "Elastic Moduli"
+      "subtopic": "Hooke's Law and Elastic Potential Energy"
     },
     "13": {
       "subject": "Physics",
       "chapter": "Wave Optics",
-      "subtopic": "Young's Double Slit Experiment"
+      "subtopic": "Double Slit Fringe Width and Fringe Positions"
     },
     "14": {
       "subject": "Physics",
@@ -77,17 +77,17 @@
     "15": {
       "subject": "Physics",
       "chapter": "Mechanical Properties of Fluids",
-      "subtopic": "Pressure and Pascal's Law"
+      "subtopic": "Continuity, Bernoulli's Equation and Efflux"
     },
     "16": {
       "subject": "Physics",
       "chapter": "Ray Optics",
-      "subtopic": "Refraction through Prism"
+      "subtopic": "Prisms: Minimum Deviation, Grazing Emergence and Dispersion"
     },
     "17": {
       "subject": "Physics",
       "chapter": "Gravitation",
-      "subtopic": "Escape Velocity"
+      "subtopic": "Escape Velocity and Energy Conservation"
     },
     "18": {
       "subject": "Chemistry",
@@ -319,6 +319,10 @@
   },
   "notes": "2021 compilation Paper 16, Maths only. Source answer key AGREES with independent blind re-derivation on all 8 clean MCQ (Q42-49) — aligned and trustworthy. Shipped 14 of 20 (8 MCQ + 6 integer-NAT). Skipped: Q50 (two-point answer), Q52 (irrational limit), Q57 (irrational area), Q58 (ambiguous vector stem), Q59 (irrational), Q60 (irrational distance, garbled stem).\n[Chemistry skip cleanup] Removed 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 from skip[]. These were written by an EARLIER subject's pass (skip[] is paper-global and keyed on question number), and the compilation re-tag has since reassigned them to Chemistry. Left in place they would silently suppress questions this pass answered.\n[Chemistry option repair] Restored the full option block for Q21, Q22, Q23, Q24, Q25, Q26, Q27, Q28, Q29, Q30 from the agent's verbatim recovery — extraction had returned no options for these rows, which commit.ts cannot ship.\n2021 Compilation Paper 16 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry stem repair] Q29: the math zone ended in stranded control-spaces; parseLatex trims them to a bare backslash that KaTeX rejects, breaking the WHOLE stem. scan-flip passed it (its delimiters balance), so it shipped PUBLIC broken and only validate-db caught it. Trimmed by the extended stripEmptyMath, which now runs at commit for every paper.",
   "authoredSolutions": {
+    "8": "A to B and D to C are isotherms, so \\(T_{A} = T_{B}\\) and \\(T_{D} = T_{C}\\). B to C and D to A are adiabatics. In an adiabatic process the work done by the gas is \\(W = \\frac{nR\\left(T_{initial} - T_{final}\\right)}{\\gamma - 1}\\), so \\[W_{BC} = \\frac{nR\\left(T_{B} - T_{C}\\right)}{\\gamma - 1}, \\qquad W_{AD} = \\frac{nR\\left(T_{A} - T_{D}\\right)}{\\gamma - 1}.\\] The temperatures are equal pair by pair, so \\(W_{BC} = W_{AD}\\). Hence option (d). (\\(W_{BC} + W_{DA} = 0\\), not positive; and \\(W_{AB} = 9P_{0}V_{0}\\ln 3.5\\) is larger than \\(\\left|W_{CD}\\right| = 1.5P_{0}V_{0}\\ln\\frac{11}{3}\\).)",
+    "12": "The strain is \\(\\varepsilon = \\frac{0.001}{0.1} = 10^{-2}\\) and the volume is \\(V = Al = 0.04\\times10^{-4}\\times0.1 = 4\\times10^{-7}\\ m^{3}\\). The stored energy is \\[U = \\frac{1}{2}Y\\varepsilon^{2}V = \\frac{1}{2}\\times0.5\\times10^{9}\\times10^{-4}\\times4\\times10^{-7} = 0.01\\ J.\\] All of it becomes kinetic energy of the 20 g particle: \\(\\frac{1}{2}\\times0.02\\times v^{2} = 0.01\\), so \\(v^{2} = 1\\) and \\(v = 1\\ m/s\\), option (a).",
+    "13": "Fringe width is \\(\\beta = \\frac{\\lambda D}{d}\\), so \\(\\beta \\propto \\lambda\\). Blue light has a shorter wavelength than orange, so the fringe width decreases. The centre stays a maximum. Hence option (b).",
+    "16": "At the contact surface light passes from one glass into the other; it is not bent there when the two refractive indices are equal: \\[1.2 + \\frac{10.8\\times10^{-14}}{\\lambda^{2}} = 1.45 + \\frac{1.8\\times10^{-14}}{\\lambda^{2}}\\ \\Rightarrow\\ \\frac{9\\times10^{-14}}{\\lambda^{2}} = 0.25\\ \\Rightarrow\\ \\lambda^{2} = 3.6\\times10^{-13}\\ m^{2},\\] so \\(\\lambda = 6\\times10^{-7}\\ m = 600\\ nm\\). (With equal angles placed opposite ways, the same condition also makes the net deviation zero.) Hence option (b).",
     "18": "Cyclohexylmethanol is a primary alcohol. With \\(H_{3}PO_{4}\\) at \\(120^{\\circ}C\\) it is protonated and loses water. The primary cation \\(C_{6}H_{11}-CH_{2}^{+}\\) is very unstable, and a 1,2-hydride shift from the ring carbon next to it gives the tertiary 1-methylcyclohexyl cation. Loss of a proton from a ring \\(CH_{2}\\) gives the more substituted alkene, so \\(A\\) is 1-methylcyclohexene. Hydroboration-oxidation adds \\(H\\) and \\(OH\\) syn and anti-Markovnikov: the \\(OH\\) goes to the less substituted alkene carbon, the ring \\(CH\\). \\(B\\) is 2-methylcyclohexan-1-ol (the trans isomer), option (B). Option (A), 1-methylcyclohexan-1-ol, is the Markovnikov product of acid-catalysed hydration.",
     "19": "The key rests on an assumption the stem does not state: that \\(1\\text{ }cm^{3}\\) of the solution contains \\(1\\text{ }cm^{3}\\) of water. Then \\(1\\text{ }cm^{3}\\) of solution weighs \\(1.2\\text{ }g\\), the water in it weighs \\(1\\text{ }g\\), and the \\(NaOH\\) weighs \\(0.2\\text{ }g\\), i.e. \\(\\frac{0.2}{40}=5\\times10^{-3}\\text{ }mol\\). Molality \\(=\\frac{5\\times10^{-3}}{1\\times10^{-3}\\text{ }kg}=5\\text{ }m\\), option (A). As printed the question is flawed: a density alone cannot fix a concentration (dissolving a solid changes the volume), and the options are written in M although molality is asked.",
     "20": "Both \\(CO\\) and \\(NO^{+}\\) carry 14 electrons and are isoelectronic with \\(N_{2}\\). The molecular orbital filling is \\(\\sigma 1s^{2}\\sigma^{*}1s^{2}\\sigma 2s^{2}\\sigma^{*}2s^{2}\\pi 2p_{x}^{2}\\pi 2p_{y}^{2}\\sigma 2p_{z}^{2}\\), giving a bond order of \\((10-4)/2 = 3\\) for each. The difference in bond order is therefore \\(0\\), so \\(x/2 = 0\\) and \\(x = 0\\). Option (B).",
@@ -364,8 +368,9 @@
     "6": "Two capacitor \\(C_{1}\\) with capacitor \\(2C\\), and \\(C_{2}\\) with capacitance \\(C\\) are connected in parallel. They are charged and then the battery is removed. If a material of dielectric constant \\(K\\) is inserted in \\(C_{2}\\), find final potential across them",
     "7": "Pressure of a monatomic gas in a container is \\(2\\text{ }atm\\). Average kinetic energy per molecule is \\(2 \\times10^{- 9}\\text{ }J\\). Volume of gas is 1 litre. Find number of molecules of gas present in the container.",
     "8": "If \\(V_{A}=V_{0};V_{B}= 3.5V_{0},V_{C}= 5.5V_{0},V_{D}= 1.5V_{0},P_{A}= 9P_{0},P_{D}=P_{0}\\) in the given indicator diagram, choose correct option",
-    "12": "Young's modulus of a string is \\(0.5 \\times10^{9}\\text{ }Pa\\), length of the wire without any force applied is \\(0.1\\text{ }m\\) and area is \\(0.04 \\times10^{- 4}{\\text{ }m}^{2}\\). If this wire is stretched by a length of \\(0.001\\text{ }m\\). The energy stored in this string is transferred to a particle of mass 20 grams. Find speed of the partcile",
+    "12": "Young's modulus of a string is \\(0.5 \\times10^{9}\\text{ }Pa\\), length of the wire without any force applied is \\(0.1\\text{ }m\\) and area is \\(0.04 \\times10^{- 4}{\\text{ }m}^{2}\\). If this wire is stretched by a length of \\(0.001\\text{ }m\\). The energy stored in this string is transferred to a particle of mass 20 grams. Find speed of the particle.",
     "14": "No pandoc grid table is present in the stored stem - the match-the-column data lives entirely inside image7.png as a rendered table, so there is nothing to convert to a GFM pipe-table. For reference the figure reads: Column A - A: rod M, length 2L, axis through the centre perpendicular to the rod; B: rod 2M, length 2L, axis at one end perpendicular; C: rod 2M, length L, axis at one end perpendicular; D: rod M, length L, axis through the centre perpendicular. Column B - i: (8/3)ML^2; ii: ML^2/3; iii: 2ML^2/3; iv: ML^2/12. See figureDependent and problemRows for the ordering defect this exposes.",
+    "15": "A cylindrical massless container of cross-sectional area 'A' have a fluid filled upto height ' \\(h\\) ' and have a small orifice of area ' \\(a\\) ' in wall near its bottom. Find minimum coefficient of friction between container and ground, so that container does not move.",
     "17": "Two planets \\(A\\) and \\(B\\) of masses \\(M\\) and \\(9M\\) with radii \\(R\\) and \\(2R\\) respectively are present 8 \\(R\\) distance away from each other. Minimum velocity with which a particle is projected from surface of A such that it reaches planet B is given by \\(\\sqrt{\\frac{aGM}{7R}}\\). Value of ' \\(a\\) ' is",
     "19": "If density of aqueous \\(NaOH\\) solution is \\(1.2\\text{ }g/cm^{3}\\), then find its molality. [Given that: density of water \\(= 1gm/cm^{3}\\) and molar mass of \\(NaOH = 40gm\\) ]",
     "21": "\\(CH_{4}+ I_{2}\\rightleftharpoons CH_{3}- I + HI\\) Which reagent can stop backward reaction?",
