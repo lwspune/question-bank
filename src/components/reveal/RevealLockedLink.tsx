@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Lock } from "lucide-react";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import type { PracticeSurface } from "@/lib/questions/practiceBatch";
+import { useGoogleOneTap } from "@/components/auth/useGoogleOneTap";
 import { useSignInHref } from "./useSignInHref";
 
 /**
@@ -16,6 +17,9 @@ import { useSignInHref } from "./useSignInHref";
  * and gets refused, so `reveal_wall_hit` would otherwise go quiet while
  * `reveal_wall_signin_click` kept counting, and the conversion rate would lose
  * its denominator. Both are once per session, as before.
+ *
+ * It also offers Google One Tap: the visitor can sign in over this page instead
+ * of following the link to /login (where most of them left within seconds).
  */
 export default function RevealLockedLink({
   surface,
@@ -25,10 +29,16 @@ export default function RevealLockedLink({
   examName: string;
 }) {
   const href = useSignInHref();
+  const offerOneTap = useGoogleOneTap();
 
   useEffect(() => {
     trackFunnelOnce("reveal_wall_hit", surface, { surface, exam: examName });
   }, [surface, examName]);
+
+  // Re-runs when the hook's own auth check resolves; One Tap asks once a page.
+  useEffect(() => {
+    offerOneTap();
+  }, [offerOneTap]);
 
   return (
     <Link

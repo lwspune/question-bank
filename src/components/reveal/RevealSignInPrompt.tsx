@@ -1,9 +1,11 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import { Lock, LogIn } from "lucide-react";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import type { PracticeSurface } from "@/lib/questions/practiceBatch";
+import { useGoogleOneTap } from "@/components/auth/useGoogleOneTap";
 import { useSignInHref } from "./useSignInHref";
 
 /**
@@ -17,9 +19,15 @@ import { useSignInHref } from "./useSignInHref";
  *
  * The caller re-keys this on every refused tap, so the entry animation replays:
  * a second tap that changes nothing on screen reads as a broken button.
+ * It offers Google One Tap too (once a page), like RevealLockedLink.
  */
 export default function RevealSignInPrompt({ surface }: { surface: PracticeSurface }) {
   const href = useSignInHref();
+  const offerOneTap = useGoogleOneTap();
+
+  useEffect(() => {
+    offerOneTap();
+  }, [offerOneTap]);
 
   return (
     <div className="mt-2 flex flex-wrap items-center gap-2 rounded-md border border-dashed border-primary/30 bg-primary/5 px-3 py-2 text-sm animate-in fade-in zoom-in-95 duration-300">
