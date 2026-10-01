@@ -137,6 +137,7 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
   },
   "jee-mains-physics": {
     "units-and-measurements": { cls: 11, chapterNo: 1, book: "NCERT XI 1 Units and Measurement" },
+    "motion-in-a-straight-line": { cls: 11, chapterNo: 2, book: "NCERT XI 2 Motion in a Straight Line" },
   },
 };
 

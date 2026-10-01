@@ -1115,6 +1115,11 @@ import {
   JEE_PH_UNIT_NOTES,
   JEE_PH_UNIT_SLUGS,
 } from "@/app/notes/jee-mains-physics/units-and-measurements/_data";
+import {
+  JEE_PH_SL_CHAPTER,
+  JEE_PH_SL_NOTES,
+  JEE_PH_SL_SLUGS,
+} from "@/app/notes/jee-mains-physics/motion-in-a-straight-line/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -3574,6 +3579,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: JEE_PH_UNIT_CHAPTER,
     notes: JEE_PH_UNIT_NOTES,
     slugs: JEE_PH_UNIT_SLUGS,
+  },
+  {
+    examName: "JEE Mains",
+    subjectName: "Physics",
+    subjectRoute: "jee-mains-physics",
+    subjectDisplay: "JEE Mains Physics",
+    chapterSlug: "motion-in-a-straight-line",
+    chipLabel: "Motion in a Straight Line notes",
+    chapter: JEE_PH_SL_CHAPTER,
+    notes: JEE_PH_SL_NOTES,
+    slugs: JEE_PH_SL_SLUGS,
   },
 ];
 
