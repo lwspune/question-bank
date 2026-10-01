@@ -2,6 +2,11 @@ node_modules/
 .next/
 out/
 build/
+# ...except the IPMAT normalised corpus, which IS source data: its README
+# says committed, scripts read it, and tests/ipmat-taxonomy.test.ts checks
+# the taxonomy against it. The catch-all above swallowed it silently, so
+# that test passed only on the one machine that had run build.ts (2026-10-01).
+!scripts/ipmat/data/build/
 coverage/
 
 .env
