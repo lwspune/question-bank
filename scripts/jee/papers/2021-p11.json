@@ -26,7 +26,7 @@
     "5": {
       "subject": "Physics",
       "chapter": "Thermodynamics",
-      "subtopic": "Thermodynamic Processes"
+      "subtopic": "Thermodynamic Processes and Work from P-V Graphs"
     },
     "6": {
       "subject": "Physics",
@@ -86,7 +86,7 @@
     "17": {
       "subject": "Physics",
       "chapter": "Thermodynamics",
-      "subtopic": "First Law and Work Done"
+      "subtopic": "Internal Energy and Heat Capacities"
     },
     "18": {
       "subject": "Physics",
@@ -324,6 +324,7 @@
     "_paper": "NON-STANDARD compilation (71 q, not a 90-q shift): Physics Q1-19, Chemistry Q20-41, Maths Q42-71. Extracted with --compilation (position-based section skip disabled); subjects assigned per-question by content via classification.subject. Committable MCQ = 60 (19 Phy + 21 Chem + 20 Maths); Q41 + Q62-71 are integer/numerical answers (skipped, MCQ-only). Maths soln doc is answer-key-only (no derivations) — Maths worked solutions authored from scratch."
   },
   "answerOverrides": {
+    "5": "C",
     "15": "D",
     "18": "C",
     "48": "B"
@@ -331,6 +332,7 @@
   "authoredSolutions": {
     "2": "A travelling wave keeps its shape and shifts. At \\(t = 0\\) the peak (\\(y = 1\\ mm\\)) is at \\(x = 0\\); at \\(t = 3\\ s\\) the profile \\(\\frac{1}{1 + (x + 1)^{2}}\\) has its peak at \\(x = -1\\ cm\\). So the pulse moved \\(1\\ cm\\) towards \\(-x\\) in \\(3\\ s\\): \\[v = \\frac{1\\ cm}{3\\ s} = \\frac{1}{3}\\ cm/s,\\] along the negative \\(x\\) direction. Hence option (c).",
     "3": "The platform accelerates downward at \\(a = 2\\ m/s^{2}\\), so in its frame every block feels an effective gravity \\(g - a = 8\\ m/s^{2}\\). The two 10 kg pillars stand on the 20 kg block and carry the 10 kg slab on top: 30 kg in all, shared equally. Each pillar presses on the 20 kg block with \\(N = \\frac{30 \\times 8}{2} = 120\\ N\\), option (c).",
+    "5": "The curve runs from \\(A(20\\ m^{3}, 20\\ Pa)\\) out to \\(V = 40\\ m^{3}\\) and back to \\(B(20\\ m^{3}, 40\\ Pa)\\): half of an ellipse whose semi-axes are \\(40 - 20 = 20\\ m^{3}\\) along \\(V\\) and \\(\\frac{40 - 20}{2} = 10\\ Pa\\) along \\(P\\). The work done by the gas is \\(\\int P\\,dV\\). On the lower half the volume grows at low pressure; on the upper half it shrinks at higher pressure. So the gas does net negative work, equal in size to the area between the curve and the line \\(V = 20\\ m^{3}\\): \\[W_{gas} = -\\frac{1}{2}\\pi \\times 20 \\times 10 = -100\\pi\\ J.\\] The external agent does \\(W_{ext} = -W_{gas} = 100\\pi\\ J\\). Hence option (c). (The booklet's working uses \\(20\\) for both semi-axes and gets \\(200\\pi\\ J\\); the pressure semi-axis is only \\(10\\ Pa\\).)",
     "15": "By Hooke's law the tension is proportional to the extension: \\(T_{1} = k\\left(l_{1} - l_{0}\\right)\\) and \\(T_{2} = k\\left(l_{2} - l_{0}\\right)\\). Dividing removes \\(k\\): \\(T_{1}\\left(l_{2} - l_{0}\\right) = T_{2}\\left(l_{1} - l_{0}\\right)\\), so \\[l_{0} = \\frac{T_{2}l_{1} - T_{1}l_{2}}{T_{2} - T_{1}},\\] option (d). Check with a spring of \\(k = 2\\) and \\(l_{0} = 1\\): \\(T_{1} = 2\\) at \\(l_{1} = 2\\) and \\(T_{2} = 4\\) at \\(l_{2} = 3\\); option (d) gives \\(\\frac{8 - 6}{2} = 1\\).",
     "16": "The reading is the net gravitational pull on the person. It starts at \\(W_{0} = mg_{E}\\) on the earth. As the person moves away the earth's pull falls as \\(\\frac{1}{r^{2}}\\) and the pull of Mars grows; at the neutral point the two cancel and the reading is zero. Beyond it Mars wins, and on the surface of Mars the reading is \\(mg_{M} = m \\times 4 = \\frac{W_{0}}{2.5}\\), since \\(g_{E} = 10 = 2.5 \\times 4\\). Both the fall to zero and the rise are inverse-square, so the graph is curved, not straight: it falls along a curve to zero and rises along a curve to \\(\\frac{W_{0}}{2.5}\\). Option (c).",
     "18": "Take the rod pivoted at its centre, as the dot in the figure and the source solution do. Angular momentum about the pivot is conserved: \\(mu\\frac{L}{2} = \\frac{ML^{2}}{12}\\omega\\). The collision is elastic and the particle stops, so the struck end moves off with the particle's speed: \\(\\omega\\frac{L}{2} = u\\), that is \\(\\omega = \\frac{2u}{L}\\). (Kinetic energy gives the same: \\(\\frac{1}{2}mu^{2} = \\frac{1}{2}\\cdot\\frac{ML^{2}}{12}\\omega^{2}\\).) Substituting, \\(mu\\frac{L}{2} = \\frac{ML^{2}}{12}\\cdot\\frac{2u}{L} = \\frac{MLu}{6}\\), so \\(\\frac{m}{2} = \\frac{M}{6}\\) and \\(\\frac{m}{M} = \\frac{1}{3}\\), option (c). (If the rod were free on a smooth table, linear momentum would also be conserved and the answer would be \\(\\frac{1}{4}\\).)",

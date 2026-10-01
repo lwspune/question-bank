@@ -6,7 +6,7 @@
     "1": {
       "subject": "Physics",
       "chapter": "Electromagnetic Induction",
-      "subtopic": "Self Inductance and Energy"
+      "subtopic": "Self and Mutual Inductance, Energy and LR Circuits"
     },
     "2": {
       "subject": "Physics",
@@ -46,7 +46,7 @@
     "9": {
       "subject": "Physics",
       "chapter": "Thermodynamics",
-      "subtopic": "Thermodynamic Processes"
+      "subtopic": "Thermodynamic Processes and Work from P-V Graphs"
     },
     "10": {
       "subject": "Physics",
@@ -116,7 +116,7 @@
     "23": {
       "subject": "Physics",
       "chapter": "Thermodynamics",
-      "subtopic": "Thermodynamic Processes"
+      "subtopic": "Adiabatic Processes"
     },
     "24": {
       "subject": "Physics",
@@ -126,7 +126,7 @@
     "25": {
       "subject": "Physics",
       "chapter": "Electromagnetic Induction",
-      "subtopic": "Self Inductance and Energy"
+      "subtopic": "Self and Mutual Inductance, Energy and LR Circuits"
     },
     "26": {
       "subject": "Chemistry",
@@ -426,7 +426,7 @@
     "90": {
       "subject": "Physics",
       "chapter": "Thermodynamics",
-      "subtopic": "Thermodynamic Processes"
+      "subtopic": "Heat Engines, Carnot Cycle and Refrigerators"
     },
     "91": {
       "subject": "Physics",
@@ -441,7 +441,7 @@
     "93": {
       "subject": "Physics",
       "chapter": "Thermodynamics",
-      "subtopic": "First Law and Work Done"
+      "subtopic": "Thermodynamic Processes and Work from P-V Graphs"
     },
     "94": {
       "subject": "Physics",
@@ -872,7 +872,7 @@
     "87": "The shunt carries the excess current, so \\[I_{g}R_{g} = \\left( I - I_{g} \\right)S\\] \\[\\left( 20 \\times 10^{-3} \\right)(30) = (3 - 0.02)S\\qquad\\Rightarrow\\qquad 0.6 = 2.98\\,S.\\] Hence \\[S = \\frac{0.6}{2.98} = \\frac{30}{X}\\qquad\\Rightarrow\\qquad X = \\frac{30 \\times 2.98}{0.6} = 149.\\] The correct choice is C.",
     "88": "Field strength varies with slit width, so the amplitudes are \\(A_{1} \\propto d\\) and \\(A_{2} \\propto xd\\). Then \\[\\frac{I_{\\max}}{I_{\\min}} = \\left( \\frac{A_{2}+A_{1}}{A_{2}-A_{1}} \\right)^{2} = \\frac{9}{4}\\qquad\\Rightarrow\\qquad \\frac{xd+d}{xd-d} = \\frac{3}{2}.\\] \\[2(x+1) = 3(x-1)\\qquad\\Rightarrow\\qquad 2x+2 = 3x-3\\qquad\\Rightarrow\\qquad x = 5.\\] The correct choice is C.",
     "89": "The binding-energy-per-nucleon curve is indeed nearly flat at about \\(8.5\\ \\mathrm{MeV}\\) for \\(30 < A < 170\\), so the Assertion is true. The explanation, however, is that the nuclear force is SHORT range and saturates -- each nucleon interacts only with its immediate neighbours, so the binding energy grows in proportion to \\(A\\). The Reason as stated (nuclear force is long range) is false. The correct choice is B.",
-    "90": "For slow (reversible) heating, \\(dQ = ms\\,dT\\), so \\[\\Delta S = \\int \\frac{dQ}{T} = \\int_{T_{1}}^{T_{2}} \\frac{ms\\,dT}{T} = ms\\ln\\frac{T_{2}}{T_{1}}.\\] With the given \\(s = 1\\ \\mathrm{J\\,kg^{-1}K^{-1}}\\), \\[\\Delta S = m\\ln\\left( \\frac{T_{2}}{T_{1}} \\right).\\] The correct choice is D.",
+    "90": "For slow (reversible) heating \\(dQ = ms\\,dT\\), so \\[\\Delta S = \\int_{T_{1}}^{T_{2}}\\frac{ms\\,dT}{T} = ms\\ln\\frac{T_{2}}{T_{1}}.\\] With \\(s = 1\\ J\\,kg^{-1}K^{-1}\\) this is \\(m\\ln\\frac{T_{2}}{T_{1}}\\) when \\(m\\) is in kilograms. Hence option (d). (The stem gives the mass in grams; strictly \\(\\Delta S = 10^{-3}m\\ln\\frac{T_{2}}{T_{1}}\\ J/K\\). The options ignore the unit.)",
     "91": "Both diodes point the same way, so both are forward biased and behave as ideal shorts. The two branches are then just \\(20\\ \\Omega\\) in parallel with \\(20\\ \\Omega\\): \\[R_{eq} = \\frac{20 \\times 20}{20+20} = 10\\ \\Omega.\\] Hence \\[I = \\frac{V}{R_{eq}} = \\frac{5}{10} = 0.5\\ \\mathrm{A}.\\] The correct choice is C.",
     "92": "In free space the field magnitudes are related by \\(E = cB\\), so \\[B = \\frac{E}{c} = \\frac{9.3}{3 \\times 10^{8}} = 3.1 \\times 10^{-8}\\ \\mathrm{T}.\\] With propagation along \\(+x\\) and \\(\\vec{E}\\) along \\(+y\\), \\(\\vec{E}\\times\\vec{B}\\) must point along \\(+x\\), which puts \\(\\vec{B}\\) along \\(+z\\). The correct choice is D.",
     "93": "Read the vertices from the diagram: \\(A\\left( 2V_{0},P_{0} \\right)\\), \\(B\\left( 3V_{0},P_{0} \\right)\\), \\(C\\left( 3V_{0},2P_{0} \\right)\\), \\(D\\left( V_{0},2P_{0} \\right)\\). \\[W_{AB} = P_{0}\\left( 3V_{0}-2V_{0} \\right) = P_{0}V_{0}\\] \\[W_{BC} = 0 \\quad (\\text{isochoric})\\] \\[W_{CD} = 2P_{0}\\left( V_{0}-3V_{0} \\right) = -4P_{0}V_{0}\\] \\[W_{ABCD} = P_{0}V_{0} + 0 - 4P_{0}V_{0} = -3P_{0}V_{0}.\\] The correct choice is D.",
@@ -944,6 +944,7 @@
   "stemOverrides": {
     "4": "A sub-atomic particle of mass \\(10^{- 30}\\text{ }kg\\) is moving with a velocity \\(2.21 \\times10^{6}\\text{ }m/s\\). Under the matter wave consideration, the particle will behave closely like \\(\\_\\_\\_\\_\\_\\) . \\(\\left( h = 6.63 \\times10^{- 34}\\text{ }J.s \\right)\\)",
     "8": "The position of a particle moving on \\(x\\)-axis is given by \\(x(t) = A\\sin t + B\\cos^{2}t + Ct^{2}+ D\\), where \\(t\\) is time. The dimension of \\(\\frac{ABC}{D}\\) is-",
+    "9": "Match the List-I with List-II \n\n| List-I | List-II |\n|---|---|\n| (A) Pressure varies inversely with volume of an ideal gas. | (I) Adiabatic process |\n| (B) Heat absorbed goes partly to increase internal energy and partly to do work. | (II) Isochoric process |\n| (C) Heat is neither absorbed nor released by a system | (III) Isothermal process |\n| (D) No work is done on or by a gas | (IV) Isobaric process |\n\nChoose the correct answer from the options given below :",
     "21": "A positive ion \\(A\\) and a negative ion \\(B\\) has charges \\(6.67 \\times10^{- 19}C\\) and \\(9.6 \\times10^{- 10}C\\), and masses \\(19.2 \\times10^{- 27}\\text{ }kg\\) and \\(9 \\times10^{- 27}\\text{ }kg\\) respectively. At an instant, the ions are separated by a certain distance r. At that instant the ratio of the magnitudes of electrostatic force to gravitational force is \\(P \\times10^{44}\\), where the value of P is \\(\\ \\_\\_\\_\\_\\_\\_\\) . (Take \\(\\frac{1}{4\\pi\\varepsilon_{0}}= 9 \\times10^{9}Nm^{2}C^{- 1}\\) and universal gravitational constant as \\(6.67 \\times10^{- 11}Nm^{2}{\\text{ }kg}^{- 2}\\) )",
     "29": "\\(CrCl_{3} \\cdot xNH_{3}\\) can exist as a complex. 0.1 molal aqueous solution of this complex shows a depression in freezing point of \\(0.558^{\\circ}C\\). Assuming \\(100\\%\\) ionisation of this complex and coordination number of Cr is 6 , the complex will be (Given \\(K_{f}= 1.86\\text{ }K\\text{ }kg{\\text{ }mol}^{- 1}\\) )",
     "31": "Match the LIST-I with LIST-II\n\n|  | LIST-I (Name reaction) |  | LIST-II (Product obtainable) |\n| --- | --- | --- | --- |\n| (A) | Swarts reaction | (I) | Ethyl benzene |\n| (B) | Sandmeyer's reaction | (II) | Ethyl iodide |\n| (C) | Wurtz-Fittig reaction | (III) | Cyanobenzene |\n| (D) | Finkelstein reaction | (IV) | Ethyl fluoride |\n\nChoose the correct answer from the options given below:",
@@ -978,6 +979,10 @@
   "optionOverrides": {
     "11": {
       "A": "\\(\\frac{a}{r} \\sim 20\\)"
+    },
+    "90": {
+      "C": "\\(m\\ln\\left( \\frac{T_{1}}{T_{2}} \\right)\\)",
+      "D": "\\(m\\ln\\left( \\frac{T_{2}}{T_{1}} \\right)\\)"
     },
     "117": {
       "A": "[A] phenol, [B] sodium phenoxide",

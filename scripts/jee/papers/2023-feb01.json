@@ -26,7 +26,7 @@
     "5": {
       "subject": "Physics",
       "chapter": "Thermodynamics",
-      "subtopic": "First Law and Work Done"
+      "subtopic": "Adiabatic Processes"
     },
     "6": {
       "subject": "Physics",
@@ -476,7 +476,7 @@
     "98": {
       "subject": "Physics",
       "chapter": "Thermodynamics",
-      "subtopic": "Carnot Engine and Efficiency"
+      "subtopic": "Heat Engines, Carnot Cycle and Refrigerators"
     },
     "99": {
       "subject": "Physics",
@@ -511,7 +511,7 @@
     "105": {
       "subject": "Physics",
       "chapter": "Electromagnetic Induction",
-      "subtopic": "Faraday's Law"
+      "subtopic": "Magnetic Flux, Faraday's Law and Lenz's Law"
     },
     "106": {
       "subject": "Physics",
@@ -546,7 +546,7 @@
     "112": {
       "subject": "Physics",
       "chapter": "Electromagnetic Induction",
-      "subtopic": "Faraday's Law"
+      "subtopic": "Rotating Coils, Rods and Discs"
     },
     "113": {
       "subject": "Physics",
@@ -1168,7 +1168,7 @@
     "102": "On the planet \\(g' = \\frac{g}{4} = 2.5\\ m/s^{2}\\), so the load is \\(F = 4\\times2.5 = 10\\ N\\). With \\(A = 3\\ mm^{2} = 3\\times10^{-6}\\ m^{2}\\): \\[\\Delta L = \\frac{FL}{AY} = \\frac{10\\times6}{3\\times10^{-6}\\times2\\times10^{11}} = \\frac{60}{6\\times10^{5}} = 10^{-4}\\ m = 0.1\\ mm,\\] option (b).",
     "103": "The modulation index is \\(\\mu = \\dfrac{A_m}{A_c}\\). In the first case \\(\\mu_1 = \\dfrac{X}{Y}\\); in the second the carrier amplitude is doubled, so \\(\\mu_2 = \\dfrac{X}{2Y}\\). Therefore \\[\\frac{\\mu_1}{\\mu_2} = \\frac{X/Y}{X/2Y} = 2,\\] that is \\(2:1\\). Hence the correct choice is A.",
     "104": "Einstein's equation gives \\(\\tfrac{1}{2}mv_{max}^{2} = h\\left(f-f_0\\right)\\). At \\(f = 2f_0\\), \\[\\tfrac{1}{2}mv_1^{2} = h\\left(2f_0-f_0\\right) = hf_0.\\] At \\(f = 5f_0\\), \\[\\tfrac{1}{2}mv_2^{2} = h\\left(5f_0-f_0\\right) = 4hf_0.\\] Dividing, \\(\\dfrac{v_1^{2}}{v_2^{2}} = \\dfrac{1}{4}\\), so \\(\\dfrac{v_1}{v_2} = \\dfrac{1}{2}\\). Hence the correct choice is D.",
-    "105": "The flux is \\(\\phi = BA\\cos\\theta\\), where \\(\\theta\\) is the angle between \\(\\overrightarrow{B}\\) and the normal to the coil. It therefore changes if the field magnitude \\(B\\) changes (statement A), if the area \\(A\\) inside the field changes (statement B), or if the orientation of the coil relative to the field changes (statement C). The combination that contains exactly these three is A, B and C only. Hence the correct choice is C.",
+    "105": "The flux is \\(\\phi = BA\\cos\\theta\\), where \\(\\theta\\) is the angle between \\(\\vec{B}\\) and the normal to the coil. Changing \\(B\\) (statement A), the area in the field (statement B) or the orientation (statement C) changes it. Statement D changes it too: reversing the field takes the flux from \\(+BA\\) to \\(-BA\\), a change of \\(2BA\\) (this is how the charge \\(\\frac{2NBA}{R}\\) is induced when a field is reversed). No option lists all four; the official answer is A, B and C only, option (c).",
     "106": "For a simple pendulum \\(T = 2\\pi\\sqrt{L/g}\\), so \\[T^{2} = \\frac{4\\pi^{2}}{g}L,\\] a direct proportionality. The graph must therefore be a straight line passing through the origin with positive slope. Reading the four option images, only the first graph shows a straight line through the origin; the second is a straight line of negative slope, the third a decaying curve and the fourth a saturating curve. Hence the correct choice is A.",
     "107": "In the figure the two straight portions are collinear with the centre \\(O\\), so for each of them \\(d\\overrightarrow{l}\\times\\widehat{r} = 0\\) and they contribute nothing. Only the semicircular arc contributes: \\[B = \\frac{\\mu_0 I}{4R} = \\frac{\\left(4\\pi\\times 10^{-7}\\right)(3)}{4\\left(\\pi/10\\right)} = \\frac{12\\pi\\times 10^{-7}\\times 10}{4\\pi} = 30\\times 10^{-7}\\text{ }T = 3\\ \\mu T.\\] Hence the correct choice is B.",
     "108": "The figure shows \\(F\\) pulling upward at \\(30^{\\circ}\\) above the horizontal, so the normal reaction is reduced: \\[N = mg-F\\sin 30^{\\circ}.\\] At the point of slipping \\(F\\cos 30^{\\circ} = \\mu_s N\\), so \\[F\\left(\\cos 30^{\\circ}+\\mu_s\\sin 30^{\\circ}\\right) = \\mu_s mg = 0.25\\times 10\\times 10 = 25.\\] Therefore \\[F = \\frac{25}{0.866+0.125} = \\frac{25}{0.991} = 25.2\\text{ }N.\\] Hence the correct choice is C.",
@@ -1268,6 +1268,7 @@
     "96": "Two objects A and B are placed at \\(15\\text{ }cm\\) and \\(25\\text{ }cm\\) from the pole in front of a concave mirror having radius of curvature \\(40\\text{ }cm\\). The distance between images formed by the mirror is",
     "102": "The Young's modulus of a steel wire of length \\(6\\text{ }m\\) and cross-sectional area \\(3{\\text{ }mm}^{2}\\), is \\(2 \\times10^{11}\\text{ }N/m^{2}\\). The wire is suspended from its support on a given planet. A block of mass \\(4\\text{ }kg\\) is attached to the free end of the wire. The acceleration due to gravity on the planet is \\(\\frac{1}{4}\\) of its value on the earth. The elongation of wire is (Take \\(g\\) on the earth \\(= 10\\text{ }m/s^{2}\\) ):",
     "111": "A block is fastened to a horizontal spring. The block is pulled to a distance \\(x = 10\\text{ }cm\\) from its equilibrium position (at \\(x = 0\\) ) on a frictionless surface from rest. The energy of the block at \\(x = 5\\text{ }cm\\) is \\(0.25\\text{ }J\\). The spring constant of the spring is \\(\\_\\_\\_\\_\\) \\(Nm^{- 1}\\)",
+    "112": "A square shaped coil of area \\(70{\\text{ }cm}^{2}\\) having 600 turns rotates in a magnetic field of \\(0.4wbm^{- 2}\\), about an axis which is parallel to one of the side of the coil and perpendicular to the direction of field. If the coil completes 500 revolution in a minute, the instantaneous emf when the plane of the coil is inclined at \\(60^{\\circ}\\) with the field, will be \\(\\_\\_\\_\\_\\) V. (Take \\(\\pi=\\frac{22}{7}\\) )",
     "113": "As shown in the figure, in Young's double slit experiment, a thin plate of thickness \\(t = 10\\mu m\\) and refractive index \\(\\mu = 1.2\\) is inserted infront of slit \\(S_{1}\\). The experiment is conducted in air \\((\\mu = 1)\\) and uses a monochromatic light of wavelength \\(\\lambda = 500\\text{ }nm\\). Due to the insertion of the plate, central maxima is shifted by a distance of \\(x\\beta_{0}.\\beta_{0}\\) is the fringe-width befor the insertion of the plate. The value of the \\(x\\) is",
     "115": "For a train engine moving with speed of \\(20{\\text{ }ms}^{- 1}\\), the driver must apply brakes at a distance of \\(500\\text{ }m\\) before the station for the train to come to rest at the station. If the brakes were applied at half of this distance, the train engine would cross the station with speed \\(\\sqrt{x}{\\text{ }ms}^{- 1}\\). The value of \\(x\\) is___ (Assuming same retardation is produced by brakes)",
     "116": "A cubical volume is bounded by the surfaces \\(x = 0,x = a,y = 0,y = a,z = 0,z = a\\). The electric field in the region is given by \\(\\overrightarrow{E}=E_{0}x\\widehat{\\imath}\\). Where \\(E_{0}= 4 \\times10^{4}NC^{- 1}{\\text{ }m}^{- 1}\\). If \\(a = 2\\text{ }cm\\), the charge contained in the cubical volume is \\(Q \\times10^{- 14}C\\). The value of \\(Q\\) is .___ (Take \\(\\left. \\ \\epsilon_{0}= 9 \\times\\frac{10^{- 12}C^{2}}{Nm^{2}} \\right)\\)",

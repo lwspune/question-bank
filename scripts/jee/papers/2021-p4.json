@@ -21,7 +21,7 @@
     },
     "5": {
       "chapter": "Magnetism and Matter",
-      "subtopic": "Magnetic Materials"
+      "subtopic": "Magnetic Properties of Materials and Hysteresis"
     },
     "6": {
       "chapter": "Oscillations",
@@ -49,7 +49,7 @@
     },
     "12": {
       "chapter": "Thermodynamics",
-      "subtopic": "Thermodynamic Processes"
+      "subtopic": "Thermodynamic Processes and Work from P-V Graphs"
     },
     "13": {
       "chapter": "Motion in a Straight Line",
@@ -285,6 +285,7 @@
     }
   },
   "stemOverrides": {
+    "5": "In a ferromagnetic material, below the Curie temperature, a domain is defined as:",
     "6": "The point \\(A\\) moves with a uniform speed along the circumference of a circle of radius \\(0.36\\text{ }m\\) and cover \\(30^{\\circ}\\) in \\(0.1\\text{ }s\\). The perpendicular projection ' \\(P\\) ' from ' \\(A\\) ' on the diameter \\(MN\\) represents the simple harmonic motion of ' \\(P\\) '. The restoration force per unit mass when \\(P\\) touches \\(M\\) will be:",
     "37": "In which of the following orders are the given complex ions arranged correctly with respect to their decreasing spin only magnetic moment ? (i) \\(\\left\\lbrack FeF_{6} \\right\\rbrack^{3 -}\\) (ii) \\(\\left\\lbrack Co\\left( NH_{3} \\right)_{6} \\right\\rbrack^{3 +}\\) (iii) \\(\\left\\lbrack NiCl_{4} \\right\\rbrack^{2 -}\\) (iv) \\(\\left\\lbrack Cu\\left( NH_{3} \\right)_{4} \\right\\rbrack^{2 +}\\)",
     "39": "The correct sequence of reagents used in the preparation of 4-bromo-2-nitroethyl benzene from benzene is:",
@@ -299,6 +300,8 @@
     "44": "Source rendered the four compounds as four separate structure images; only the first could attach to the single image_url. Resolved by compositing all four (image35-38) into one labelled figure (I phenol / II 4-nitrobenzoic acid / III benzoic acid / IV 4-methylbenzoic acid) via scripts/jee/out/media/2021-p4/media/q44_composite.png, uploaded to question-images and set as Q44.image_url; stem references the figure. Source crops for (II)/(IV) carried faint trailing roman-numeral fragments, trimmed 7px before compositing."
   },
   "authoredSolutions": {
+    "5": "Below the Curie temperature the atomic dipoles inside one domain are all aligned, so each domain is magnetised to saturation. Different domains point in different directions, which is why an unmagnetised piece of iron has no net moment. Hence option (c).",
+    "12": "The figure gives \\(PV^{1/2}\\) constant. For one mole \\(P = \\frac{RT}{V}\\), so \\(\\frac{RT}{V} \\times V^{1/2} = \\frac{RT}{V^{1/2}}\\) is constant, that is \\(T \\propto V^{1/2}\\). Then \\[\\frac{T_{2}}{T_{1}} = \\sqrt{\\frac{V_{2}}{V_{1}}} = \\sqrt{2}.\\] Hence option (d).",
     "31": "In ammoniacal medium \\(Ni^{2+}\\) gives a characteristic rosy-red precipitate with dimethylglyoxime, so it is a standard identification test for \\(Ni^{2+}\\) — Statement I is true. Dimethylglyoxime is bidentate, but on coordinating it loses one \\(O\\text{-}H\\) proton per ligand and binds as a uninegative (monoanionic) ligand, not a neutral one, so Statement II is false. Hence option (D).",
     "32": "The carbylamine reaction converts a primary amine, on warming with \\(CHCl_3\\) and alcoholic \\(KOH\\), into a foul-smelling isocyanide. With aniline the product is phenyl isocyanide, \\(C_6H_5NC\\). Hence option (B).",
     "33": "Bond dissociation enthalpies in \\(kJ\\ mol^{-1}\\): \\(\\mathrm{Cl_2}\\) 242.6, \\(\\mathrm{Br_2}\\) 192.8, \\(\\mathrm{F_2}\\) 158.8, \\(\\mathrm{I_2}\\) 151.1. From Cl to I the value falls as the atoms grow and orbital overlap gets poorer. \\(\\mathrm{F_2}\\) is out of line: the F-F bond is so short that the lone pairs on the two atoms repel strongly and weaken it. So \\(\\mathrm{Cl_2 > Br_2 > F_2 > I_2}\\), option (C).",
@@ -335,5 +338,10 @@
     "88": "The units digit of \\(3^n\\) cycles \\(3,9,7,1\\) and of \\(7^n\\) cycles \\(7,9,3,1\\) with period \\(4\\). Adding, \\(3^n+7^n \\pmod{10}\\) gives \\(0,8,0,2\\) for \\(n\\equiv 1,2,3,4\\). So \\(3^n+7^n\\) is a multiple of \\(10\\) exactly when \\(n\\) is odd. The two-digit odd numbers are \\(11,13,\\dots,99\\): \\[\\frac{99-11}{2}+1 = 45.\\]",
     "89": "Here \\(\\vec a\\cdot\\vec b = 3-\\alpha^2+3 = 6-\\alpha^2\\), and \\(|\\vec a|^2=|\\vec b|^2=10+\\alpha^2\\). Using \\(|\\vec a\\times\\vec b|^2 = |\\vec a|^2|\\vec b|^2-(\\vec a\\cdot\\vec b)^2\\) with area \\(=8\\sqrt3\\): \\[(10+\\alpha^2)^2-(6-\\alpha^2)^2 = (8\\sqrt3)^2 = 192.\\] Factor the difference of squares: \\[(16)(4+2\\alpha^2)=192 \\Rightarrow 4+2\\alpha^2 = 12 \\Rightarrow \\alpha^2=4.\\] Therefore \\(\\vec a\\cdot\\vec b = 6-\\alpha^2 = 6-4 = 2.\\)",
     "90": "Rewrite \\((2xy^2-y)\\,dx + x\\,dy = 0\\) as \\(\\tfrac{dy}{dx}-\\tfrac{y}{x}=-2y^2\\) (Bernoulli). Put \\(v=y^{-1}\\): \\[v'+\\tfrac1x v = 2,\\quad \\text{IF}=x \\Rightarrow (xv)'=2x \\Rightarrow xv=x^2+C.\\] So \\(\\tfrac1y = x+\\tfrac{C}{x}\\). The lines \\(2x-3y=1\\) and \\(3x+2y=8\\) meet at \\((2,1)\\); the curve passes through it: \\(1 = 2+\\tfrac{C}{2}\\Rightarrow C=-2\\), giving \\(y=\\dfrac{x}{x^2-2}\\). Then \\(y(1)=\\dfrac{1}{1-2}=-1\\), so \\(|y(1)|=1.\\)"
+  },
+  "optionOverrides": {
+    "5": {
+      "A": "a macroscopic region with consecutive magnetic dipoles oriented in opposite direction."
+    }
   }
 }

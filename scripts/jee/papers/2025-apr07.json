@@ -36,7 +36,7 @@
     "7": {
       "subject": "Physics",
       "chapter": "Magnetism and Matter",
-      "subtopic": "Magnetic Materials"
+      "subtopic": "Magnetic Properties of Materials and Hysteresis"
     },
     "8": {
       "subject": "Physics",
@@ -426,7 +426,7 @@
     "90": {
       "subject": "Physics",
       "chapter": "Magnetism and Matter",
-      "subtopic": "Bar Magnet and Magnetic Field"
+      "subtopic": "Bar Magnets and Magnetic Dipoles"
     },
     "91": {
       "subject": "Physics",
@@ -436,7 +436,7 @@
     "92": {
       "subject": "Physics",
       "chapter": "Thermodynamics",
-      "subtopic": "Thermodynamic Processes"
+      "subtopic": "Thermodynamic Processes and Work from P-V Graphs"
     },
     "93": {
       "subject": "Physics",
@@ -706,6 +706,7 @@
   },
   "authoredSolutions": {
     "1": "Use \\(2\\cos P\\cos Q = \\cos(P + Q) + \\cos(P - Q)\\): \\[x = a\\cos(1.5t)\\cos(50.5t) = \\frac{a}{2}\\cos(52t) + \\frac{a}{2}\\cos(49t).\\] So the two waves have \\(\\omega_{1} = 52\\ rad/s\\) and \\(\\omega_{2} = 49\\ rad/s\\). The beat frequency is \\[f_{b} = \\frac{\\omega_{1} - \\omega_{2}}{2\\pi} = \\frac{3}{2\\pi}\\ Hz,\\] and the beat period is \\(\\frac{2\\pi}{3} = 2.09\\ s \\approx 2\\ s\\). Hence option (d).",
+    "7": "With the core filled, \\(B = \\mu_{0}\\mu_{r}ni\\); with the core empty, \\(B_{0} = \\mu_{0}ni\\). The fractional increase is \\[\\frac{B - B_{0}}{B_{0}} = \\mu_{r} - 1 = \\chi = 1.2 \\times 10^{-5},\\] which is \\(1.2 \\times 10^{-3}\\%\\), that is \\(\\frac{6}{5} \\times 10^{-3}\\%\\). Hence option (a).",
     "12": "The time of flight \\(T = \\frac{2u\\sin\\theta}{g}\\) is proportional to \\(\\sin\\theta\\) for the same speed: \\[\\frac{T_{1}}{T_{2}} = \\frac{\\sin(45^{\\circ}+\\alpha)}{\\sin(45^{\\circ}-\\alpha)} = \\frac{\\cos\\alpha + \\sin\\alpha}{\\cos\\alpha - \\sin\\alpha} = \\frac{1+\\tan\\alpha}{1-\\tan\\alpha}\\] (expanding both sines and dividing through by \\(\\cos\\alpha\\)). Option (d).",
     "24": "Stefan's law: \\(P = e\\sigma AT^{4}\\). The radiating surface is the curved surface of the wire, \\(A = \\pi dL = 3.14 \\times 0.5 \\times 10^{-3} \\times 0.1 = 1.57 \\times 10^{-4}\\ m^{2}\\). The temperature is \\(T = 1727 + 273 = 2000\\ K\\), so \\(T^{4} = 1.6 \\times 10^{13}\\ K^{4}\\). Then \\[\\sigma AT^{4} = 6.0 \\times 10^{-8} \\times 1.57 \\times 10^{-4} \\times 1.6 \\times 10^{13} = 150.72\\ W,\\] and \\(e = \\frac{94.2}{150.72} = 0.625 = \\frac{5}{8}\\). So \\(x = 5\\).",
     "26": "Statement I: cis-2-butene is \\(CH_{3}CH=CHCH_{3}\\). Reductive ozonolysis (\\(O_{3}\\), then \\(Zn/H_{2}O\\)) cleaves the double bond into two carbonyl fragments, each \\(CH_{3}CHO\\). So ethanal is indeed the product and Statement I is TRUE.\n\nStatement II: 3,6-dimethyloct-4-ene is \\(CH_{3}CH_{2}CH(CH_{3})-CH=CH-CH(CH_{3})CH_{2}CH_{3}\\). Ozonolysis cleaves the C4=C5 bond, giving two identical molecules of 2-methylbutanal, \\(OHC-CH(CH_{3})-CH_{2}CH_{3}\\). The carbon bearing the methyl group now carries four different groups: \\(-CHO\\), \\(-CH_{3}\\), \\(-C_{2}H_{5}\\) and \\(-H\\); it is therefore a chiral carbon. The claim that the product has no chiral carbon is FALSE.\n\nStatement I true, Statement II false.",
@@ -744,6 +745,7 @@
     "71": "\\(\\left[\\frac{x^2}{2}\\right]\\) jumps where \\(\\frac{x^2}{2}\\) is an integer: \\(x=\\sqrt2,2,\\sqrt6,\\sqrt8,\\sqrt{10},\\sqrt{12},\\sqrt{14},4\\). \\([\\sqrt x]\\) jumps at \\(x=1,4\\). At \\(x=4\\) both jump up by 1, so the difference is continuous there: the left limit is \\(7-1=6=f(4)=8-2\\). At \\(x=0\\) both terms are \\(0\\) on the right, so \\(f\\) is continuous. The other points \\(1,\\sqrt2,2,\\sqrt6,\\sqrt8,\\sqrt{10},\\sqrt{12},\\sqrt{14}\\) are discontinuities: 8 in all.",
     "75": "A subset of \\(\\{1,\\dots,n\\}\\) with no two consecutive elements is counted by the Fibonacci number \\(F_{n+2}\\) (each element is either omitted, or included forcing the next to be omitted). For \\(n=5\\), \\(n(S_5)=F_7=13\\).",
     "88": "Here \\(k = 20\\pi\\ m^{-1}\\), so \\(\\lambda = \\frac{2\\pi}{k} = 0.1\\ m = 10\\ cm\\). A particle's speed is \\(A\\omega\\left|\\cos(20\\pi x + 10\\pi t)\\right|\\). Two points have the same speed at every instant when their phases differ by \\(\\pi\\), that is, when they are \\(\\frac{\\lambda}{2}\\) apart: they always move with equal speed in opposite directions. The minimum such distance is \\(\\frac{\\lambda}{2} = 5\\ cm\\). Hence option (a).",
+    "90": "Both statements are true. No isolated magnetic pole has ever been found, and magnetic field lines have no starting or ending points: they form closed loops, so the net magnetic flux through any closed surface is zero. The two facts go together, but the reasoning runs the other way: the lines close on themselves because there are no monopoles for them to start or end on. So (R) follows from (A); it does not explain it. Hence option (a).",
     "93": "The helicopter's speed is \\(360\\ km/h = 100\\ m/s\\). The object keeps this horizontal velocity, so in \\(20\\ s\\) it moves \\(x = 100 \\times 20 = 2000\\ m = 2\\ km\\) horizontally. Its vertical fall in \\(20\\ s\\) is \\(\\frac{1}{2}gt^{2} = \\frac{1}{2} \\times 10 \\times 400 = 2000\\ m\\), which matches the altitude. The displacement from the release point to O is \\[\\sqrt{2^{2} + 2^{2}}\\ km = 2\\sqrt{2}\\ km,\\] option (d).",
     "98": "The rods are in series, so the same heat current flows through both. A rod's thermal resistance is \\(R = \\frac{L}{K\\pi r^{2}}\\), so \\[\\frac{R_{A}}{R_{B}} = \\frac{L_{A}}{L_{B}} \\times \\left(\\frac{r_{B}}{r_{A}}\\right)^{2} \\times \\frac{K_{B}}{K_{A}} = \\frac{1}{2} \\times \\frac{1}{4} \\times 2 = \\frac{1}{4}.\\] With the interface at \\(T\\): \\(\\frac{400 - T}{R_{A}} = \\frac{T - 200}{R_{B}}\\), so \\(\\frac{400 - T}{T - 200} = \\frac{1}{4}\\), \\(1600 - 4T = T - 200\\) and \\(T = 360\\ K\\).",
     "101": "Statement (I): Hydrolysis of ANY peptide or protein gives \\(\\alpha\\)-amino acids, because the peptide backbone is built exclusively from \\(\\alpha\\)-amino acids. Saying that proteins give a large number of \\(\\beta\\)-amino acids is wrong. INCORRECT.\n\nStatement (II): Denaturation destroys the secondary and tertiary structure while leaving the primary structure intact, and it converts the water-SOLUBLE GLOBULAR form into the water-insoluble FIBROUS form (coagulation of egg white is the standard example). The statement reverses this by describing 'the water soluble form of fibrous proteins'. INCORRECT.\n\nBoth statements are incorrect.",

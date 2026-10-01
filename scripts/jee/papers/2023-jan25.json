@@ -96,7 +96,7 @@
     "19": {
       "subject": "Physics",
       "chapter": "Thermodynamics",
-      "subtopic": "Carnot Engine and Efficiency"
+      "subtopic": "Heat Engines, Carnot Cycle and Refrigerators"
     },
     "20": {
       "subject": "Physics",
@@ -431,7 +431,7 @@
     "92": {
       "subject": "Physics",
       "chapter": "Electromagnetic Induction",
-      "subtopic": "Motional EMF"
+      "subtopic": "Motional EMF: Rods, Rails and Moving Loops"
     },
     "93": {
       "subject": "Physics",
@@ -501,7 +501,7 @@
     "106": {
       "subject": "Physics",
       "chapter": "Thermodynamics",
-      "subtopic": "Thermodynamic Processes"
+      "subtopic": "Thermodynamic Processes and Work from P-V Graphs"
     },
     "107": {
       "subject": "Physics",
@@ -913,6 +913,7 @@
     "85": "For \\(-1<x<1\\), \\(\\tan^{-1}\\frac{2x}{1-x^2}=2\\tan^{-1}x\\). The \\(\\cot^{-1}\\) term depends on the sign of \\(\\frac{1-x^2}{2x}\\). If \\(0<x<1\\) it is positive, so \\(\\cot^{-1}\\frac{1-x^2}{2x}=\\tan^{-1}\\frac{2x}{1-x^2}=2\\tan^{-1}x\\); the equation is \\(4\\tan^{-1}x=\\frac{\\pi}{3}\\), so \\(x=\\tan\\frac{\\pi}{12}=2-\\sqrt3\\). If \\(-1<x<0\\) it is negative, so \\(\\cot^{-1}\\frac{1-x^2}{2x}=\\pi+2\\tan^{-1}x\\); the equation is \\(\\pi+4\\tan^{-1}x=\\frac{\\pi}{3}\\), so \\(\\tan^{-1}x=-\\frac{\\pi}{6}\\) and \\(x=-\\frac{1}{\\sqrt3}\\). Sum \\(=2-\\sqrt3-\\frac{1}{\\sqrt3}=2-\\frac{4}{\\sqrt3}\\), so \\(\\alpha=2\\).",
     "87": "Each residue class mod 5 has 5 numbers in \\(1,\\dots,25\\). Ordered pairs of distinct numbers with \\(x+y\\equiv0\\pmod5\\): both \\(\\equiv0\\): \\(5\\cdot4=20\\); residues \\((1,4),(4,1),(2,3),(3,2)\\): \\(25\\) each, \\(100\\). Total \\(=120\\).",
     "89": "\\(P_1:y=\\frac52x^2\\) and \\(P_2:y=x^2+6\\) meet at \\(x=\\pm2\\), so the first area is \\(\\int_{-2}^{2}\\left(6-\\frac32x^2\\right)dx=24-8=16\\). The line \\(y=\\alpha x\\) meets \\(P_1\\) at \\(x=0\\) and \\(x=\\frac{2\\alpha}{5}\\), enclosing \\(\\int_0^{2\\alpha/5}\\left(\\alpha x-\\frac52x^2\\right)dx=\\frac{2\\alpha^3}{25}-\\frac{4\\alpha^3}{75}=\\frac{2\\alpha^3}{75}\\). Setting \\(\\frac{2\\alpha^3}{75}=16\\) gives \\(\\alpha^3=600\\).",
+    "106": "Isothermal: \\(T\\) is constant, so \\(\\Delta U = 0\\) (II). Adiabatic: \\(Q = 0\\), so \\(W = -\\Delta U\\); work done by the gas decreases its internal energy (I). Isochoric: \\(\\Delta V = 0\\), so no work is done (IV). Isobaric: \\(Q = \\Delta U + P\\Delta V\\) with both terms non-zero, so the heat goes partly into internal energy and partly into work (III). A-II, B-I, C-IV, D-III: option (b).",
     "121": "\\(pH = -\\log[H^{+}]\\). If the hydrogen ion concentration changes by a factor of 1000, then \\(\\Delta pH = -\\log\\left( 10^{3} \\right) = -3\\) for a thousand-fold INCREASE (and \\(+3\\) for a thousand-fold decrease). Either way the magnitude of the change is 3 units, and the only option quoting 3 units is (D), a decrease by 3 units, corresponding to the concentration rising a thousand-fold. Options (A) and (C) quote 2 units, and (B) confuses the concentration factor with a pH change.",
     "122": "The substrate is 2,2,6-trimethylcyclohexan-1-ol. Concentrated \\(H_2SO_4\\) with heat causes E1 dehydration: protonation of \\(-OH\\) and loss of water gives a SECONDARY carbocation at C-1. This is flanked by the quaternary C-2 bearing two methyls, so a 1,2-methyl shift from C-2 to C-1 occurs, generating the far more stable TERTIARY carbocation at C-2 while placing a methyl on C-1. Loss of the proton from C-1 then gives the \\(C_1=C_2\\) alkene, which is TETRASUBSTITUTED (a methyl on each alkene carbon plus both ring bonds) and hence the most stable product, with the third methyl left on the adjacent ring carbon: 1,2,3-trimethylcyclohex-1-ene. That is option (D). Option (C) is the unrearranged elimination product (only trisubstituted, and keeps the gem-dimethyl), (B) is the exocyclic (least substituted) alkene and (A) has the wrong methyl placement.",
     "123": "Carbon forms two important oxides, \\(CO\\) and \\(CO_2\\). Carbon monoxide is a neutral oxide - it forms neither an acid with water nor a salt with base - while carbon dioxide is acidic, giving carbonic acid with water and carbonates with alkali. So Assertion A is correct. The Reason states that \\(CO_2\\) combines with water in a limited way to form carbonic acid while \\(CO\\) is sparingly soluble in water; this is factually correct and is exactly why one oxide is acidic and the other behaves as neutral. Both are correct and R correctly explains A, option (C).",
@@ -1032,6 +1033,7 @@
     "96": "Match List I with List II\n\n| LIST I | LIST II |\n|---|---|\n| A. Young's Modulus \\((Y)\\) | I. \\(\\left\\lbrack ML^{-1}T^{-1} \\right\\rbrack\\) |\n| B. Co-efficient of Viscosity \\((\\eta)\\) | II. \\(\\left\\lbrack ML^{2}T^{-1} \\right\\rbrack\\) |\n| C. Planck's Constant \\((h)\\) | III. \\(\\left\\lbrack ML^{-1}T^{-2} \\right\\rbrack\\) |\n| D. Work Function \\((\\varphi)\\) | IV. \\(\\left\\lbrack ML^{2}T^{-2} \\right\\rbrack\\) |\n\nChoose the correct answer from the options given below:",
     "97": "Match List I with List II\n\n| LIST I | LIST II |\n|---|---|\n| A. Troposphere | I. Approximate \\(65 - 75\\text{ }km\\) over Earth's surface |\n| B. E- Part of Stratosphere | II. Approximate \\(300\\text{ }km\\) over Earth's surface |\n| C. F2- Part of Thermosphere | III. Approximate \\(10\\text{ }km\\) over Earth's surface |\n| D. D- Part of Stratosphere | IV. Approximate \\(100\\text{ }km\\) over Earth's surface |\n\nChoose the correct answer from the options given below:",
     "103": "Match List I with List II\n\n| LIST I | LIST II |\n|---|---|\n| A. Gauss's Law in Electrostatics | I. \\(\\oint\\overrightarrow{E}\\cdot d\\overrightarrow{l} = -\\frac{d\\phi_{B}}{dt}\\) |\n| B. Faraday's Law | II. \\(\\oint\\overrightarrow{B}\\cdot d\\overrightarrow{A} = 0\\) |\n| C. Gauss's Law in Magnetism | III. \\(\\oint\\overrightarrow{B}\\cdot d\\overrightarrow{l} = \\mu_{0}i_{c} + \\mu_{0}\\epsilon_{0}\\frac{d\\phi_{E}}{dt}\\) |\n| D. Ampere-Maxwell Law | IV. \\(\\oint\\overrightarrow{E}\\cdot d\\overrightarrow{s} = \\frac{q}{\\epsilon_{0}}\\) |\n\nChoose the correct answer from the options given below:",
+    "106": "Match List I with List II\n\n| List I | List II |\n|---|---|\n| A. Isothermal Process | I. Work done by the gas decreases internal energy |\n| B. Adiabatic Process | II. No change in internal energy |\n| C. Isochoric Process | III. The heat absorbed goes partly to increase internal energy and partly to do work |\n| D. Isobaric Process | IV. No work is done on or by the gas |\n\nChoose the correct answer from the options given below:",
     "110": "A body of mass \\(m\\) is taken from earth surface to the height \\(h\\) equal to twice the radius of earth \\(\\left( R_{e} \\right)\\), the increase in potential energy will be: ( \\(g =\\) acceleration due to gravity on the surface of Earth)",
     "114": "A train blowing a whistle of frequency \\(320\\text{ }Hz\\) approaches an observer standing on the platform at a speed of \\(66\\text{ }m/s\\). The frequency observed by the observer will be \\(\\_\\_\\_\\_\\) Hz (given speed of sound \\(= 330{\\text{ }ms}^{- 1}\\))",
     "115": "A body of mass \\(1\\text{ }kg\\) collides head on elastically with a stationary body of mass \\(3\\text{ }kg\\). After collision, the smaller body reverses its direction of motion and moves with a speed of \\(\\frac{2\\text{ }m}{s}\\). The initial speed of the smaller body before collision is \\(\\_\\_\\_\\_\\) \\(ms^{- 1}\\).",

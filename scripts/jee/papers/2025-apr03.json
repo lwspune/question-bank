@@ -6,7 +6,7 @@
     "1": {
       "subject": "Physics",
       "chapter": "Thermodynamics",
-      "subtopic": "First Law and Work Done"
+      "subtopic": "First Law and Energy Bookkeeping"
     },
     "2": {
       "subject": "Physics",
@@ -56,12 +56,12 @@
     "11": {
       "subject": "Physics",
       "chapter": "Thermodynamics",
-      "subtopic": "First Law and Work Done"
+      "subtopic": "First Law and Energy Bookkeeping"
     },
     "12": {
       "subject": "Physics",
       "chapter": "Thermodynamics",
-      "subtopic": "Thermodynamic Processes"
+      "subtopic": "Adiabatic Processes"
     },
     "13": {
       "subject": "Physics",
@@ -356,7 +356,7 @@
     "76": {
       "subject": "Physics",
       "chapter": "Magnetism and Matter",
-      "subtopic": "Bar Magnet and Magnetic Field"
+      "subtopic": "Bar Magnets and Magnetic Dipoles"
     },
     "77": {
       "subject": "Physics",
@@ -376,7 +376,7 @@
     "80": {
       "subject": "Physics",
       "chapter": "Thermodynamics",
-      "subtopic": "First Law and Cyclic Processes"
+      "subtopic": "Cyclic Processes"
     },
     "81": {
       "subject": "Physics",
@@ -807,6 +807,8 @@
   "notes": "2025 3 Apr sitting — 2025 layout (Maths Q51-75 + Q126-150 = 50 q). Clean number-matched keys. Q51 RTL-formatted options (25/26/27/28) + answer C=27; Q56 no-token block value-matched to 338=D; Q140 answer A=0 (equilateral centroid identity); Q75 'Physics' leak stripped.\n3 Apr 2025 — Chemistry only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.",
   "authoredSolutions": {
     "2": "Apply Bernoulli's equation between the top surface (its speed is negligible because the tank is wide) and the hole, which is \\(1.6 - 0.9 = 0.7\\ m\\) below the surface: \\[P_{0} + \\frac{mg}{A} + \\rho gh = P_{0} + \\frac{1}{2}\\rho v^{2}.\\] Here \\(\\frac{mg}{A} = \\frac{50\\times10}{0.5} = 1000\\ Pa\\) and \\(\\rho gh = 10^{3}\\times10\\times0.7 = 7000\\ Pa\\), so \\(\\frac{1}{2}\\times10^{3}v^{2} = 8000\\), \\(v^{2} = 16\\) and \\(v = 4\\ m/s\\), option (d).",
+    "11": "The official answer adds three terms: the work done by the gas in the isothermal expansion, \\(\\int P\\,dV = nRT\\ln\\frac{AL_{1}}{AL_{0}} = nRT\\ln\\frac{L_{1}}{L_{0}}\\); the gain in gravitational energy of the piston, \\(Mg\\left(L_{1} - L_{0}\\right)\\); and the spring energy \\(\\int kx^{3}\\,dx\\), taken as \\(\\frac{k}{4}\\left(L_{1}^{4} - L_{0}^{4}\\right)\\). This gives option (c). The question is not self-consistent. At constant \\(T\\) the gas pressure falls as the piston rises while the load on the piston grows, so the piston cannot rise slowly. The spring is at its natural length at \\(L_{0}\\), so its energy should be \\(\\frac{k}{4}\\left(L_{1} - L_{0}\\right)^{4}\\). And for an isothermal ideal gas the heat supplied already equals the work done by the gas. Option (c) is the official key.",
+    "12": "Adiabatic: \\(TV^{\\gamma - 1}\\) is constant, with \\(\\gamma - 1 = 0.5\\) and \\(T_{1} = 300\\ K\\). \\[T_{2} = 300\\left(\\frac{800}{200}\\right)^{0.5} = 300 \\times 2 = 600\\ K.\\] The change in temperature is \\(600 - 300 = 300\\ K\\). Hence option (d).",
     "26": "Bohr pictured the electron travelling in a well-defined circular orbit of fixed radius. The quantum mechanical model rejects this: the Heisenberg uncertainty principle forbids simultaneously fixing the position and momentum of an electron, so a definite circular path cannot be assigned. The electron is instead described by an orbital, a region of probability given by the square of the wave function. The other three postulates survive in the quantum mechanical description: stationary states of constant energy exist (B), an atom in a stationary state does not radiate (A), and a photon of energy \\(\\Delta E = h\\nu\\) is emitted when the electron drops to a lower stationary state (C). Hence (D).",
     "27": "Statement I has two clauses and only one of them is right. Bond enthalpies: \\(N-N \\approx 159\\) kJ mol\\(^{-1}\\) against \\(P-P \\approx 213\\) kJ mol\\(^{-1}\\), so the N-N single bond really is weaker (lone-pair repulsion on the small nitrogen atoms). But bond lengths are \\(N-N \\approx 145\\) pm and \\(P-P \\approx 221\\) pm, so N-N is much SHORTER, not longer. Statement I is therefore false. Statement II is also false: on descending group 15 the inert pair effect makes the +3 state progressively MORE stable, so Sb(III) and Bi(III) are perfectly stable and do not disproportionate. Only nitrogen(III), as \\(HNO_{2}\\), disproportionates, and that is a special case rather than a group property. Both statements false, so (B).",
     "28": "Statement I is true: a catalyst speeds the forward and reverse reactions by the same factor, so it changes how fast equilibrium is reached but not \\(K_{c}\\) at a fixed temperature. Statement II is false by the textbook (NCERT) rule: a catalyst does not change the equilibrium composition either, because the composition is fixed by \\(K_{c}\\) and the amounts taken. The official key is (b), both true. Its argument is that a catalyst added at constant pressure dilutes the mixture, and for a reaction with \\(\\Delta n_{g}\\neq 0\\) dilution moves the position, as an inert gas would. That effect comes from adding a substance, not from catalysis. The key (b) is kept, but as printed the question is flawed: the textbook answer is (d).",
@@ -839,7 +841,9 @@
     "63": "The line is \\(y=x\\). It meets \\(L_1\\) at \\(A(-2,-2)\\) and \\(L_2\\) at \\(B\\left(\\frac p6,\\frac p6\\right)\\); \\(AB=\\sqrt2\\left(\\frac p6+2\\right)=\\frac{9}{\\sqrt2}\\) gives \\(p=15\\). Since \\(AM\\perp L_2\\) and \\(B\\) lies on \\(L_2\\), triangle \\(AMB\\) is right-angled at \\(M\\), and \\(\\frac{AM}{BM}=\\tan\\angle ABM\\), where \\(\\angle ABM\\) is the angle between \\(y=x\\) (slope \\(1\\)) and \\(L_2\\) (slope \\(-2\\)): \\(\\tan\\angle ABM=\\left|\\frac{1-(-2)}{1+1\\cdot(-2)}\\right|=3\\).",
     "65": "Put \\(3-x^2=t^2\\), so \\(x\\,dx=-t\\,dt\\) and \\(x^3\\sqrt{3-x^2}\\,dx=(3-t^2)\\,t\\,(-t\\,dt)=(t^4-3t^2)\\,dt\\). Hence \\(f(x)=\\frac{(3-x^2)^{5/2}}{5}-(3-x^2)^{3/2}+c\\). \\(5f(\\sqrt2)=-4\\) means \\(\\frac15-1+c=-\\frac45\\), so \\(c=0\\). Then \\(f(1)=\\frac{2^{5/2}}{5}-2^{3/2}=\\frac{4\\sqrt2}{5}-2\\sqrt2=-\\frac{6\\sqrt2}{5}\\).",
     "75": "For \\(x<0\\), \\(x|x-2|<0\\), so \\(y=|x|=-x\\). For \\(x\\ge0\\): \\(x(2-x)\\ge x\\) exactly when \\(x\\le1\\), and \\(x(x-2)\\ge x\\) exactly when \\(x\\ge3\\). So \\(y=-x\\) on \\([-2,0]\\), \\(y=2x-x^2\\) on \\([0,1]\\), \\(y=x\\) on \\([1,3]\\) and \\(y=x^2-2x\\) on \\([3,4]\\), all non-negative. Area \\(=2+\\int_0^1(2x-x^2)\\,dx+\\int_1^3x\\,dx+\\int_3^4(x^2-2x)\\,dx=2+\\frac23+4+\\frac{16}{3}=12\\).",
+    "76": "\\(\\tau = MB\\sin 60^{\\circ} = \\frac{\\sqrt{3}}{2}MB = 80\\sqrt{3}\\), so \\(MB = 160\\ J\\). Then \\[U = -MB\\cos 60^{\\circ} = -160 \\times \\frac{1}{2} = -80\\ J.\\] Hence option (d).",
     "78": "Connected at the bottom, the two equal vessels end at a common level \\(h = \\frac{10 + 6}{2} = 8\\ m\\). A column of height \\(h\\) has its centre of mass at \\(h/2\\), so its potential energy is \\(\\frac{1}{2}\\rho Agh^{2}\\). Initially \\(U_{i} = \\frac{1}{2}\\rho Ag\\left(10^{2} + 6^{2}\\right) = 68\\rho Ag\\); finally \\(U_{f} = 2\\times\\frac{1}{2}\\rho Ag\\left(8^{2}\\right) = 64\\rho Ag\\). The work done by gravity is \\[W = U_{i} - U_{f} = 4\\rho Ag = 4\\times1000\\times2\\times10 = 8\\times10^{4}\\ J,\\] option (d).",
+    "80": "Isothermal expansion from \\(V_{0}\\) to \\(4V_{0}\\): \\(W_{1} = P_{0}V_{0}\\ln 4 = 2P_{0}V_{0}\\ln 2\\), and the pressure falls to \\(\\frac{P_{0}}{4}\\). Isobaric compression at \\(\\frac{P_{0}}{4}\\) from \\(4V_{0}\\) back to \\(V_{0}\\): \\(W_{2} = \\frac{P_{0}}{4}\\left(V_{0} - 4V_{0}\\right) = -\\frac{3}{4}P_{0}V_{0}\\). Isochoric heating: \\(W_{3} = 0\\). Over the cycle \\(\\Delta U = 0\\), so the net heat equals the net work: \\[Q = P_{0}V_{0}\\left(2\\ln 2 - 0.75\\right).\\] Hence option (a).",
     "94": "Inside the rough region the retarding force does work \\[W = -\\int_{0.1}^{1.9} kx\\,dx = -\\frac{10}{2}\\left(1.9^{2} - 0.1^{2}\\right) = -5(3.61 - 0.01) = -18\\ \\mathrm{J}.\\] By the work-energy theorem \\(\\frac{1}{2}mv^{2} = \\frac{1}{2}mv_{i}^{2} + W = \\frac{1}{2}(1)(10)^{2} - 18 = 32\\ \\mathrm{J}\\), so \\(v^{2} = 64\\) and \\(v = 8\\ \\mathrm{m/s}\\). Hence option (d).",
     "100": "Write \\(C = p^{1}q^{2}r^{-3}s^{-1/2}\\). For a product of powers the maximum percentage errors add, each multiplied by the MAGNITUDE of its exponent: \\[\\frac{\\Delta C}{C}\\times 100 = 1(1\\%) + 2(2\\%) + 3(3\\%) + \\frac{1}{2}(2\\%) = 1 + 4 + 9 + 1 = 15\\%.\\] The answer is 15.",
     "101": "Read the three straight segments of the plot. From 0 to 2.0 mL the conductance FALLS (A to B): highly mobile \\(H^{+}\\) from the fully ionised HCl is being replaced by the much slower \\(Na^{+}\\), so this leg neutralises the strong acid. From 2.0 to 5.0 mL the conductance rises only gently (B to C): here the feebly ionised \\(CH_{3}COOH\\) is converted to fully ionised sodium acetate, a small net gain in ions. Beyond 5.0 mL the sharp rise (C to D) is free excess NaOH. So HCl needs 2.0 mL and acetic acid \\(5.0 - 2.0 = 3.0\\) mL of 0.1 M NaOH. Moles HCl \\(= 0.1 \\times 2.0 = 0.2\\) mmol in 40 mL, giving \\(0.2/40 = 0.005\\) M, so (B) is correct. Acetic acid works out at \\(0.3/40 = 0.0075\\) M, not 0.005 M, ruling out (A); the strong acid is neutralised first, ruling out (C); and it is point B, not C, that marks complete neutralisation of HCl, ruling out (D).",
