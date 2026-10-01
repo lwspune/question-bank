@@ -5,7 +5,7 @@
   "classification": {
     "1": {
       "chapter": "Electrostatics",
-      "subtopic": "Motion of Charge in Electric Field"
+      "subtopic": "Charges Moving in Electric Fields"
     },
     "2": {
       "chapter": "Communication Systems",
@@ -17,7 +17,7 @@
     },
     "4": {
       "chapter": "Electromagnetic Waves",
-      "subtopic": "Properties of EM Waves"
+      "subtopic": "E and B Fields of a Plane Wave"
     },
     "5": {
       "chapter": "System of Particles and Rotational Motion",
@@ -25,7 +25,7 @@
     },
     "6": {
       "chapter": "Moving Charges and Magnetism",
-      "subtopic": "Magnetic Field of a Solenoid"
+      "subtopic": "Ampere's Law: Thick Wires and Solenoids"
     },
     "7": {
       "chapter": "Units and Measurements",
@@ -49,11 +49,11 @@
     },
     "12": {
       "chapter": "Wave Optics",
-      "subtopic": "Young's Double Slit Experiment"
+      "subtopic": "Double Slit Fringe Width and Fringe Positions"
     },
     "13": {
       "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "de Broglie Wavelength"
+      "subtopic": "Comparing de Broglie Wavelengths"
     },
     "14": {
       "chapter": "Motion in a Straight Line",
@@ -61,15 +61,15 @@
     },
     "15": {
       "chapter": "Current Electricity",
-      "subtopic": "Resistance and Resistivity"
+      "subtopic": "Resistance, Resistivity and Temperature"
     },
     "16": {
       "chapter": "Alternating Current",
-      "subtopic": "LCR Series Circuit"
+      "subtopic": "Resonance, Quality Factor and Bandwidth"
     },
     "17": {
       "chapter": "Alternating Current",
-      "subtopic": "RMS and Average Values"
+      "subtopic": "RMS Values and Timing in AC"
     },
     "18": {
       "chapter": "Ray Optics",
@@ -77,7 +77,7 @@
     },
     "19": {
       "chapter": "Moving Charges and Magnetism",
-      "subtopic": "Force on a Moving Charge"
+      "subtopic": "Forces and Torques on Current-Carrying Wires"
     },
     "20": {
       "chapter": "Gravitation",
@@ -288,8 +288,12 @@
     "17": "A"
   },
   "stemOverrides": {
+    "6": "Four identical long solenoids A, B, C and D are connected to each other as shown in the figure. If the magnetic field at the center of \\(A\\) is \\(3\\text{ }T\\), the field at the center of \\(C\\) would be: (Assume that the magnetic field is confined with in the volume of respective solenoid).",
     "9": "What will be the average value of energy along one degree of freedom for an ideal gas in thermal equilibrium at a temperature \\(T\\)? (\\(k_B\\) is the Boltzmann constant)",
     "10": "A radioactive sample disintegrates via two independent decay processes having half-lives \\(T_{1/2}^{(a)}\\) and \\(T_{1/2}^{(b)}\\) respectively. The effective half-life \\(T_{1/2}\\) of the nuclei is:",
+    "12": "In Young's double slit arrangement, slits are separated by a gap of \\(0.5\\text{ }mm\\), and the screen is placed at a distance of \\(0.5\\text{ }m\\) from them. The distance between the first and the third bright fringe formed when the slits are illuminated by a monochromatic light of \\(5890\\text{Å}\\) is :-",
+    "15": "In the experiment of Ohm's law, a potential difference of \\(5.0\\text{ }V\\) is applied across the end of a conductor of length \\(10.0\\text{ }cm\\) and diameter of \\(5.00\\text{ }mm\\). The measured current in the conductor is 2.00 A. The maximum permissible percentage error in the resistivity of the conductor is:",
+    "16": "In a series LCR resonance circuit, if we change the resistance only, from a lower to higher value:",
     "36": "Match List-I with List-II. Choose the correct answer from the options given below:",
     "39": "Match List-I with List-II:\n\n|  | List-I (Chemicals) |  | List-II (Use / Preparation / Constituent) |\n| --- | --- | --- | --- |\n| (A) | Alcoholic potassium hydroxide | (i) | Electrodes in batteries |\n| (B) | \\(Pd/BaSO_{4}\\) | (ii) | Obtained by addition reaction |\n| (C) | BHC (Benzene hexachloride) | (iii) | Used for \\(\\beta\\)-elimination reaction |\n| (D) | Polyacetylene | (iv) | Lindlar's catalyst |\n\nChoose the most appropriate match:",
     "43": "The correct structures of trans-\\(\\left[NiBr_2(PPh_3)_2\\right]\\) and meridional-\\(\\left[Co(NH_3)_3(NO_2)_3\\right]\\), respectively, are:",
@@ -304,6 +308,9 @@
     "88": "If \\(f(x)=\\int\\dfrac{5x^{8}+7x^{6}}{\\left(x^{2}+1+2x^{7}\\right)^{2}}\\,dx\\), \\((x\\geq 0)\\), \\(f(0)=0\\) and \\(f(1)=\\dfrac{1}{K}\\), then the value of \\(K\\) is"
   },
   "optionOverrides": {
+    "4": {
+      "B": "\\(6.0\\widehat{k}\\ V/m\\)"
+    },
     "9": {
       "A": "\\(\\frac{1}{2}k_{B}T\\)",
       "B": "\\(\\frac{2}{3}k_{B}T\\)",
@@ -334,8 +341,10 @@
     "17": "Soln doc gave the answer as the value '(2.5)', which matched both option A (2.5 ms) and C (2.5 s) so the key didn't auto-resolve; t = 1/(8f) = 1/400 = 2.5 ms = option A."
   },
   "authoredSolutions": {
+    "6": "The whole current \\(i\\) passes through A. It then divides equally among B, C and D, which are identical and in parallel, so each carries \\(\\frac{i}{3}\\). Inside a long solenoid \\(B = \\mu_{0}nI\\), so for identical solenoids \\(B \\propto I\\): \\[B_{C} = \\frac{B_{A}}{3} = \\frac{3}{3} = 1\\text{ }T.\\] Hence option (d).",
     "11": "From the figure \\(C(4\\ m^{3}, 100\\ N/m^{2})\\) and \\(D(3\\ m^{3}, 200\\ N/m^{2})\\), and the adiabatic runs from C to D, a compression. The work done by the gas in an adiabatic process is \\[W_{CD} = \\frac{P_{C}V_{C} - P_{D}V_{D}}{\\gamma - 1} = \\frac{400 - 600}{0.4} = -500\\ J.\\] Hence option (a).",
     "12": "The fringe width is \\(\\beta=\\frac{\\lambda D}{d}=\\frac{5890\\times10^{-10}\\times0.5}{5\\times10^{-4}}=5.89\\times10^{-4}\\) m. The distance between the first and third bright fringes is \\(2\\beta=1.178\\times10^{-3}\\) m \\(=1178\\times10^{-6}\\) m. Hence option (B).",
+    "16": "In a series LCR circuit \\(\\omega_{0} = \\frac{1}{\\sqrt{LC}}\\) does not depend on \\(R\\); the bandwidth is \\(\\Delta\\omega = \\frac{R}{L}\\) and the quality factor is \\(Q = \\frac{\\omega_{0}L}{R}\\). Raising \\(R\\) widens the bandwidth and lowers \\(Q\\), and leaves \\(\\omega_{0}\\) unchanged. Option (a).",
     "31": "At \\(273\\text{-}278\\ K\\), aniline is diazotised by \\(NaNO_2/HCl\\) to benzenediazonium chloride (X). This couples at the para position of the highly activated N,N-dimethylaniline to give the azo dye Y, 4-(N,N-dimethylamino)azobenzene. Hence option (B).",
     "32": "\\(\\mathrm{Na^+}\\), \\(\\mathrm{Mg^{2+}}\\) and \\(\\mathrm{Al^{3+}}\\) are isoelectronic: each has 10 electrons. With the same number of electrons, a larger nuclear charge (11, 12, 13) pulls them in harder, so the radius falls: \\(\\mathrm{Na^+ > Mg^{2+} > Al^{3+}}\\).\n\nSo both values must be below \\(1.02\\ \\mathring{A}\\), with the \\(\\mathrm{Al^{3+}}\\) value the smaller. Only option (b) fits: \\(0.72\\ \\mathring{A}\\) and \\(0.54\\ \\mathring{A}\\) (NCERT gives 72 pm and 53.5 pm). Options (a) and (c) have a value above or close to \\(1.02\\ \\mathring{A}\\), and (d) has \\(\\mathrm{Al^{3+}}\\) larger than \\(\\mathrm{Mg^{2+}}\\).",
     "33": "\\(C_2H_5MgBr\\) adds to the carbonyl of acetophenone (\\(C_6H_5COCH_3\\), \\(C_8H_8O\\)); hydrolysis gives the tertiary alcohol A, 2-phenylbutan-2-ol. Being tertiary (and benzylic), it reacts instantly with Lucas reagent to give the tertiary chloride B, 2-chloro-2-phenylbutane (\\(C_{10}H_{13}Cl\\)). Hence option (C).",

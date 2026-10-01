@@ -11,7 +11,7 @@
     "2": {
       "subject": "Physics",
       "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "Photon Momentum and Energy"
+      "subtopic": "Photon Energy, Momentum and Threshold"
     },
     "3": {
       "subject": "Physics",
@@ -26,12 +26,12 @@
     "5": {
       "subject": "Physics",
       "chapter": "Wave Optics",
-      "subtopic": "Young's Double Slit Experiment"
+      "subtopic": "Double Slit Fringe Width and Fringe Positions"
     },
     "6": {
       "subject": "Physics",
       "chapter": "Alternating Current",
-      "subtopic": "RMS and Average Values"
+      "subtopic": "RMS Values and Timing in AC"
     },
     "7": {
       "subject": "Physics",
@@ -51,7 +51,7 @@
     "10": {
       "subject": "Physics",
       "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "Photoelectric Effect"
+      "subtopic": "Photoelectric Laws and Graphs"
     },
     "11": {
       "subject": "Physics",
@@ -66,7 +66,7 @@
     "13": {
       "subject": "Physics",
       "chapter": "Current Electricity",
-      "subtopic": "Electric Current and Charge"
+      "subtopic": "Current, Drift Velocity and Current Density"
     },
     "14": {
       "subject": "Physics",
@@ -91,12 +91,12 @@
     "18": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Electric Field and Superposition"
+      "subtopic": "Electric Field of Charges, Rods, Rings and Sheets"
     },
     "19": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Electric Field and Superposition"
+      "subtopic": "Electric Dipoles: Field, Torque and Energy"
     },
     "20": {
       "subject": "Physics",
@@ -121,7 +121,7 @@
     "24": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Capacitance and Combinations"
+      "subtopic": "Capacitance and Capacitor Combinations"
     },
     "25": {
       "subject": "Physics",
@@ -381,7 +381,7 @@
     "77": {
       "subject": "Physics",
       "chapter": "Current Electricity",
-      "subtopic": "Heating Effect of Current"
+      "subtopic": "Electrical Power and Heating"
     },
     "78": {
       "subject": "Physics",
@@ -401,12 +401,12 @@
     "81": {
       "subject": "Physics",
       "chapter": "Current Electricity",
-      "subtopic": "DC Circuits"
+      "subtopic": "Equivalent Resistance: Series, Parallel and Symmetry"
     },
     "82": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Electric Field and Superposition"
+      "subtopic": "Electric Field of Charges, Rods, Rings and Sheets"
     },
     "83": {
       "subject": "Physics",
@@ -421,7 +421,7 @@
     "85": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Capacitance and Combinations"
+      "subtopic": "Capacitance and Capacitor Combinations"
     },
     "86": {
       "subject": "Physics",
@@ -446,7 +446,7 @@
     "90": {
       "subject": "Physics",
       "chapter": "Wave Optics",
-      "subtopic": "Polarisation"
+      "subtopic": "Polarisation by Polaroids and by Reflection"
     },
     "91": {
       "subject": "Physics",
@@ -476,7 +476,7 @@
     "96": {
       "subject": "Physics",
       "chapter": "Moving Charges and Magnetism",
-      "subtopic": "Force on a Moving Charge"
+      "subtopic": "Circular and Helical Paths of Charges"
     },
     "97": {
       "subject": "Physics",
@@ -486,17 +486,17 @@
     "98": {
       "subject": "Physics",
       "chapter": "Electromagnetic Waves",
-      "subtopic": "Properties of EM Waves"
+      "subtopic": "Displacement Current, Maxwell's Equations and Wave Speed"
     },
     "99": {
       "subject": "Physics",
       "chapter": "Wave Optics",
-      "subtopic": "Diffraction"
+      "subtopic": "Single-Slit Diffraction and Resolving Power"
     },
     "100": {
       "subject": "Physics",
       "chapter": "Alternating Current",
-      "subtopic": "LCR Series Circuit"
+      "subtopic": "Series LCR: Impedance, Phase and Power"
     },
     "101": {
       "subject": "Chemistry",
@@ -857,13 +857,18 @@
   "notes": "4 April 2025 — Maths only. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry option repair] Restored the full option block for Q29, Q35, Q38, Q39, Q42 from the agent's verbatim recovery — extraction had returned no options for these rows, which commit.ts cannot ship.\n4 April 2025 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry stem repair] Q121, Q122, Q48, Q125, Q46: content-free math zones left by pandoc where an answer blank stood. parseLatex reduces them to a bare backslash, which KaTeX rejects — taking the whole stem down — while scan-flip passes them because the delimiters balance. Cleaned by stripEmptyMath.\n[Chemistry image] Q38 (f8afe15f): the stem image was only the glyph '(Y)'; cleared 2026-09-30 (the stem names the compounds). Do not re-attach.\n[Chemistry image] Q39 (7e2f5003): the stem image was the options' four alanine structures stacked without labels; cleared 2026-09-30 (the options carry the structures as text). Do not re-attach.",
   "authoredSolutions": {
     "1": "The collision frequency is the average speed divided by the mean free path: \\[f = \\frac{\\bar{v}}{\\lambda} = \\frac{600}{3 \\times 10^{-7}} = 2 \\times 10^{9}\\ s^{-1}.\\] Hence option (c).",
+    "2": "The mirror reflects the pulse straight back, so it receives twice the momentum of the light: \\(mv = \\frac{2E}{c}\\), so \\(v = \\frac{2E}{mc}\\). The mirror then swings up like a pendulum: \\(\\frac{1}{2}mv^{2} = mgl(1 - \\cos\\theta) \\approx mgl\\frac{\\theta^{2}}{2}\\) for a small angle. So \\[\\theta = \\frac{v}{\\sqrt{gl}} = \\frac{2E}{mc\\sqrt{gl}}.\\] Hence option (d).",
     "3": "\\(K = \\frac{\\cos\\theta_{A}}{\\cos\\theta_{B}}\\) is negative when the two cosines have opposite signs: one contact angle is acute (\\(\\cos\\theta > 0\\), concave meniscus) and the other obtuse (\\(\\cos\\theta < 0\\), convex meniscus). Option (c) is the only option of that kind. (\\(K = 0\\) would need \\(\\theta_{A} = 90^{\\circ}\\), a flat meniscus for A, so (d) fails.) From \\(K\\) alone the reverse pairing, A convex and B concave, is equally possible, but no option offers it.",
     "4": "A: \\(\\vec{r} \\times \\vec{L}\\) is not a torque; torque is the rate of change of \\(\\vec{L}\\). Incorrect. B: \\(\\vec{L} = \\vec{r} \\times \\vec{p}\\) and \\(\\vec{\\tau} = \\frac{d\\vec{L}}{dt}\\), so \\(\\vec{\\tau} = \\frac{d}{dt}(\\vec{r} \\times \\vec{p})\\). Correct. C: \\(\\frac{d}{dt}(\\vec{r} \\times \\vec{p}) = \\vec{v} \\times m\\vec{v} + \\vec{r} \\times \\frac{d\\vec{p}}{dt} = \\vec{r} \\times \\frac{d\\vec{p}}{dt}\\), because \\(\\vec{v} \\times \\vec{v} = 0\\). Correct. D: for rotation about a fixed axis, \\(\\tau = I\\alpha\\). Correct. E: \\(\\vec{\\tau} = \\vec{r} \\times \\vec{F}\\) is the definition. Correct. So B, C, D and E, option (c).",
     "7": "At the same \\(\\frac{P}{\\rho}\\), \\(v = \\sqrt{\\frac{\\gamma P}{\\rho}}\\) gives \\(v \\propto \\sqrt{\\gamma}\\). Helium is monatomic: \\(\\gamma = \\frac{5}{3}\\). Methane is a non-linear polyatomic molecule (3 translational and 3 rotational degrees of freedom): \\(\\gamma = \\frac{4}{3}\\). The keyed answer, option (c), also takes \\(\\gamma = \\frac{4}{3}\\) for \\(CO_{2}\\), close to its measured value (about 1.3). The rigid-molecule model gives a different value: \\(CO_{2}\\) is linear, with only 2 rotational degrees of freedom, so \\(f = 5\\) and \\(\\gamma = \\frac{7}{5}\\); on that reading the ratio is \\(\\sqrt{\\frac{5}{3}}:\\sqrt{\\frac{4}{3}}:\\sqrt{\\frac{7}{5}}\\), which is option (b). The key is option (c).",
+    "10": "The stopping potential \\(V_{0} = \\frac{h\\nu - \\phi}{e}\\) depends on the frequency, not on the intensity, so A is false. Above the threshold frequency, a brighter beam brings more photons per second and so ejects more electrons per second: R is true. Hence option (b).",
     "11": "The position vector \\(\\vec{r} = a(\\hat{i}\\cos\\omega t + \\hat{j}\\sin\\omega t)\\) describes uniform circular motion of radius \\(a\\). Differentiating twice, \\[\\vec{a} = \\frac{d^{2}\\vec{r}}{dt^{2}} = -\\omega^{2}a(\\hat{i}\\cos\\omega t + \\hat{j}\\sin\\omega t) = -\\omega^{2}\\vec{r}.\\] So \\(\\vec{F} = m\\vec{a}\\) points opposite to \\(\\vec{r}\\), towards the centre. It is perpendicular to both \\(\\vec{P}\\) and \\(\\vec{L}\\); and since \\(\\vec{L} \\times \\vec{P} = (\\vec{r} \\times \\vec{P}) \\times \\vec{P} = -P^{2}\\vec{r}\\), the force is along \\(\\vec{L} \\times \\vec{P}\\), not opposite to it. Option (a).",
     "12": "Horizontal balance: \\(T_{1}\\cos\\theta_{1} = T_{2}\\cos\\theta_{2}\\). With \\(T_{1} = \\sqrt{3}T_{2}\\) this needs \\(\\sqrt{3}\\cos\\theta_{1} = \\cos\\theta_{2}\\), which \\(\\theta_{1} = 60^{\\circ}\\), \\(\\theta_{2} = 30^{\\circ}\\) satisfies (\\(\\sqrt{3} \\times \\frac{1}{2} = \\frac{\\sqrt{3}}{2}\\)); the pairs \\(30^{\\circ}, 60^{\\circ}\\) and \\(45^{\\circ}, 45^{\\circ}\\) do not. Vertical balance: \\(T_{1}\\sin60^{\\circ} + T_{2}\\sin30^{\\circ} = mg\\), i.e. \\(T_{2}\\left(\\frac{3}{2} + \\frac{1}{2}\\right) = mg\\), so \\(T_{2} = \\frac{mg}{2}\\). Option (b).",
+    "13": "\\[q = \\int_{1}^{2}(0.02t + 0.01)\\,dt = \\left[0.01t^{2} + 0.01t\\right]_{1}^{2} = 0.01(4 - 1) + 0.01(2 - 1) = 0.04\\text{ }C.\\] Hence option (d).",
     "14": "To reach infinity the body needs kinetic energy equal to the magnitude of its potential energy at the surface: \\(K = \\frac{GMm}{R} = mgR\\), using \\(GM = gR^{2}\\). Equivalently \\(K = \\frac{1}{2}mv_{e}^{2} = \\frac{1}{2}m\\cdot\\frac{2GM}{R} = mgR\\). The Assertion's \\(\\frac{1}{2}mgR\\) is half of this, so the Assertion is false. Gravitational potential energy is negative everywhere and rises to its largest value, zero, at infinity, so the Reason is true. Option (a).",
     "17": "For a simple pendulum at small angles the angular acceleration is \\(\\alpha = -\\frac{g}{l}\\theta\\). Equal angular accelerations give \\(\\frac{g}{l_{1}}\\theta_{1} = \\frac{g}{l_{2}}\\theta_{2}\\), so \\(\\theta_{1}l_{2} = \\theta_{2}l_{1}\\). Hence option (d).",
+    "18": "Between the two identical sheets their fields cancel; outside the pair they add to \\(\\frac{\\sigma}{\\varepsilon_{0}}\\), pointing away from the sheets. So at A and B only the sphere's field acts, and A is nearer the sphere: \\(E_{A} > E_{B}\\). At C and D the sheets give \\(\\frac{\\sigma}{\\varepsilon_{0}}\\) to the left at C and to the right at D, and the sphere's field also points away from it (left at C, right at D) but is stronger at D, which is nearer. So the fields at C and D differ: \\(\\vec{E}_{C} \\neq \\vec{E}_{D}\\). Hence option (c).",
+    "24": "Number the junctions along the row of capacitors 1 to 5 from left to right. The top wire joins junctions 1, 3 and 5 to B; the bottom wire joins junctions 2 and 4 to A. So every capacitor has one plate on A and the other on B: all four are in parallel. \\[C_{AB} = 4C = 4 \\times 16 = 64\\ \\mu F.\\]",
     "26": "Reverse osmosis needs a genuinely semipermeable partition, so cellophane and parchment paper qualify while a merely porous partition lets solute through and does not. Chamber 1 holds the more concentrated solution \\(\\left(c_{1}>c_{2}\\right)\\), so solvent has to be driven OUT of chamber 1, which requires the pressure applied on chamber 1 to exceed the osmotic pressure, i.e. \\(p_{1}>\\pi\\). Statement A (cellophane, \\(p_{1}>\\pi\\)) and statement C (parchment paper, \\(p_{1}>\\pi\\)) meet both requirements; B fails on the membrane and D pushes on the dilute side. Hence the correct choice is option (C), 'A and C only'.",
     "27": "Spontaneity requires \\(\\Delta G=\\Delta H-T\\Delta S<0\\). With both \\(\\Delta H>0\\) and \\(\\Delta S>0\\), the term \\(-T\\Delta S\\) only overcomes the positive \\(\\Delta H\\) at sufficiently high temperature. At equilibrium \\(\\Delta G=0\\), which defines \\(T_{e}=\\Delta H/\\Delta S\\). Therefore \\(\\Delta G<0\\) whenever \\(T>\\Delta H/\\Delta S=T_{e}\\), i.e. the reaction becomes spontaneous for \\(T>T_{e}\\), which is option (C).",
     "28": "The five in-stem structures are (A) \\(O_{2}\\), (B) \\(N_{2}\\), (C) \\(F_{2}\\), (D) \\(S_{2}\\) and (E) \\(Cl_{2}\\). By molecular orbital theory \\(O_{2}\\) ends its configuration as \\(\\pi^{*}2p_{x}^{1}\\ \\pi^{*}2p_{y}^{1}\\), i.e. two unpaired electrons, so it is paramagnetic. \\(S_{2}\\) is the sulphur analogue of \\(O_{2}\\) with the identical valence-shell filling and is paramagnetic for the same reason. In \\(N_{2}\\), \\(F_{2}\\) and \\(Cl_{2}\\) every molecular orbital is doubly occupied, so all three are diamagnetic. Only A and D are paramagnetic, giving option (D).",
@@ -914,10 +919,13 @@
     "74": "\\(x+y=3\\) touches \\(C\\) at \\(P=(1,2)\\). \\(P\\) is midpoint of \\(QR\\) with \\(PQ=PR=\\frac{2\\sqrt2}{3}\\), so \\(Q,R=P\\pm\\frac23(1,-1)=(5/3,4/3),(1/3,8/3)\\). \\(x_1y_1+x_2y_2+x_3y_3=2+\\frac{28}{9}=\\frac{46}{9}\\); \\(9(\\cdot)=46.\\)",
     "75": "\\(f=\\max\\{x,x^3,\\dots,x^{21}\\}\\) is continuous (max of continuous), so \\(n=0\\). \\(f=x\\) for \\(x<-1\\) and \\(0<x<1\\), \\(f=x^{21}\\) for \\(-1<x<0\\) and \\(x>1\\); corners at \\(x=-1,0,1\\Rightarrow m=3\\). \\(m+n=3.\\)",
     "78": "The heat raises the temperature by \\(\\Delta T = \\frac{Q}{ms} = \\frac{8.1 \\times 10^{2}}{0.1 \\times 900} = 9\\ K\\). The sheet's area is \\(A_{0} = 9 \\times 4 = 36\\ cm^{2} = 3.6 \\times 10^{-3}\\ m^{2}\\), and the coefficient of area expansion is \\(\\beta = 2\\alpha\\): \\[\\Delta A = A_{0}(2\\alpha)\\Delta T = 3.6 \\times 10^{-3} \\times 6.2 \\times 10^{-5} \\times 9 = 2.0 \\times 10^{-6}\\ m^{2}.\\] Hence option (a).",
+    "82": "By symmetry the field of the quarter arc AB at O points along the bisector of angle AOB, with magnitude E. Arc ABC is arc AB plus arc BC; the field of BC has the same magnitude E along the bisector of angle BOC, which is at \\(90^{\\circ}\\) to the first. So \\[E_{ABC} = \\sqrt{E^{2} + E^{2}} = \\sqrt{2}E.\\] Hence option (b).",
     "83": "The amount of gas is conserved: the sum of \\(n = \\frac{PV}{RT}\\) over the two vessels does not change. With the small vessel of volume \\(V\\) and the large one \\(2V\\): \\[\\frac{8 \\times 2V}{1000R} + \\frac{7 \\times V}{500R} = \\frac{P \\times 3V}{600R}.\\] The left side is \\(\\frac{16V + 14V}{1000R} = \\frac{30V}{1000R}\\) and the right side is \\(\\frac{PV}{200R}\\), so \\(P = \\frac{30 \\times 200}{1000} = 6\\ kPa\\). Hence option (b).",
     "86": "Average velocity is the change in position divided by the time; instantaneous velocity is the slope of the \\(x-t\\) graph. From the graph: \\(x = 0\\) at \\(t = 0\\), \\(-5\\) at 1 s (A), 0 at 2 s (B), 5 at 3 s (C), 5 at 5 s (D), 10 at 6 s (E), 0 at 7 s (F), \\(-5\\) at 8 s (G) and 0 at 9 s (H).\n(A) 0 to 3 s: \\(\\frac{5 - 0}{3} = \\frac{5}{3}\\ m/s\\), not 10. False.\n(B) 3 to 5 s: \\(\\frac{5 - 5}{2} = 0\\). True.\n(C) At 2 s the segment BC rises 5 m in 1 s, so \\(v = 5\\ m/s\\). True.\n(D) 5 to 7 s: \\(\\frac{0 - 5}{2} = -2.5\\ m/s\\); at 6.5 s the segment EF has slope \\(\\frac{0 - 10}{1} = -10\\ m/s\\). Not equal. False.\n(E) 0 to 9 s: \\(x\\) goes from 0 to 0, so the average velocity is 0. True.\nHence (B), (C) and (E): option (d).",
+    "90": "Let the light leaving \\(P_{1}\\) have intensity \\(I_{1}\\). \\(P_{1}\\) and \\(P_{2}\\) are crossed, so if \\(P_{3}\\) makes \\(\\theta\\) with \\(P_{1}\\) it makes \\(90^{\\circ} - \\theta\\) with \\(P_{2}\\). By Malus's law \\[I = I_{1}\\cos^{2}\\theta\\cos^{2}(90^{\\circ} - \\theta) = I_{1}\\cos^{2}\\theta\\sin^{2}\\theta = \\frac{I_{1}}{4}\\sin^{2}2\\theta.\\] This is largest when \\(2\\theta = 90^{\\circ}\\), so \\(\\theta = 45^{\\circ}\\) and the angle between \\(P_{2}\\) and \\(P_{3}\\) is also \\(45^{\\circ} = \\frac{\\pi}{4}\\). Hence option (a).",
     "93": "Here \\(\\omega = 628\\ rad/s\\), so \\(f = \\frac{\\omega}{2\\pi} = \\frac{628}{6.28} = 100\\ Hz\\). With wave speed \\(300\\ m/s\\), \\[\\lambda = \\frac{v}{f} = \\frac{300}{100} = 3\\ m.\\] Hence option (b).",
     "97": "The sphere keeps its shape and uniform density, so when its radius halves its mass falls to \\(\\frac{M}{8}\\). The intended answer treats the angular momentum of the sphere as conserved: \\(\\frac{2}{5}MR^{2}\\omega_{1} = \\frac{2}{5}\\left(\\frac{M}{8}\\right)\\left(\\frac{R}{2}\\right)^{2}\\omega_{2}\\), so \\(\\omega_{2} = 32\\omega_{1}\\) and \\(x = 32\\). Caveat: mass that leaves with the speed of the surface carries its own angular momentum away, and then \\(\\omega\\) need not change at all. The value 32 holds only if the lost mass takes no angular momentum with it.",
+    "100": "\\(X_{L} = 2\\pi fL = 2\\pi \\times 50 \\times 1 = 100\\pi\\ \\Omega\\), equal to \\(R\\). So\n\\[Z = \\sqrt{R^{2} + X_{L}^{2}} = 100\\sqrt{2}\\pi\\ \\Omega,\\qquad I_{rms} = \\frac{100\\pi}{100\\sqrt{2}\\pi} = \\frac{1}{\\sqrt{2}}\\ A.\\]\nTaking the supply's \\(100\\pi\\ V\\) as its rms value, the maximum current is \\(I_{0} = \\sqrt{2}I_{rms} = 1\\ A\\).",
     "101": "All three are lactams (cyclic amides). In P, the ordinary N-methyl lactam, the nitrogen lone pair is delocalised into the adjacent \\(C=O\\), so P is only weakly basic. Q is the same lactam with a \\(C=C\\) conjugated to the carbonyl; the extra \\(sp^{2}\\) carbons are electron-withdrawing, so Q is weaker still, just as an unsaturated or aryl amide is a weaker base than a saturated one. R is a bridged bicyclic lactam with the nitrogen at a bridgehead: the ring holds the nitrogen pyramidal, with its lone pair at right angles to the carbonyl \\(\\pi\\) system, so the lone pair cannot be delocalised and is as available as in an ordinary amine. The order is \\(R > P > Q\\), option (B).",
     "102": "Removing an electron from \\(Mn^{2+}\\) means breaking the stable half-filled \\(3d^{5}\\) configuration, which is unusually difficult, so the third ionisation enthalpy of manganese \\(\\left(3248\\ kJ\\ mol^{-1}\\right)\\) is HIGHER than that of iron \\(\\left(2957\\ kJ\\ mol^{-1}\\right)\\), whose \\(Fe^{2+}\\) is \\(3d^{6}\\). The relation \\(Mn^{2+}<Fe^{2+}\\) is therefore the incorrect one. The others are sound: \\(Cr^{+}\\) is \\(3d^{5}\\) and so harder to ionise than \\(Mn^{+}\\), and successive ionisation enthalpies of the same element always increase, which covers \\(Mn^{+}<Mn^{2+}\\) and \\(Fe^{2+}<Fe^{3+}\\). Hence option (D).",
     "103": "The yellow solid is iodoform, \\(CHI_{3}\\), formed only by compounds containing a \\(CH_{3}CO-\\) group or a \\(CH_{3}CH(OH)-\\) group that \\(NaOI\\) can oxidise to it. Compound (A) is butan-2-ol, \\(CH_{3}CH(OH)C_{2}H_{5}\\), which has the required methyl carbinol unit, and compound (C) is butan-2-one, \\(CH_{3}COC_{2}H_{5}\\), which has the methyl ketone unit; both give a positive test. Propan-1-ol (B) has no such grouping, acetic acid (D) is a carboxylic acid and is not oxidised further to iodoform, and propanal (E) has its \\(CH_{3}\\) two carbons away from the carbonyl. Only (A) and (C) respond, option (B).",
@@ -984,6 +992,7 @@
     "89": "A block of mass 25 kg is pulled along a horizontal surface by a force at an angle \\(45^{\\circ}\\) with the horizontal. The friction coefficient between the block and the surface is 0.25 . If the block moves with uniform velocity, the work done by the force for a displacement of 5 m of the block is:",
     "92": "Match List-I with List-II.\n\n| List-I | List-II |\n|---|---|\n| (A) Isobaric | (I) \\(\\Delta Q = \\Delta W\\) |\n| (B) Isochoric | (II) \\(\\Delta Q = \\Delta U\\) |\n| (C) Adiabatic | (III) \\(\\Delta Q =\\) zero |\n| (D) Isothermal | (IV) \\(\\Delta Q = \\Delta U + P\\Delta V\\) |\n\n\\(\\Delta Q =\\) Heat supplied \\(\\Delta W =\\) Work done by the system \\(\\Delta U =\\) Change in internal energy \\(P =\\) Pressure of the system \\(\\Delta V =\\) Change in volume of the system.\n\nChoose the correct answer from the options given below :",
     "96": "A particle of charge \\(1.6\\mu C\\) and mass \\(16\\mu\\text{ }g\\) is present in a strong magnetic field of 6.28 T . The particle is then fired perpendicular to magnetic field. The time required for the particle to return to original location for the first time is \\(\\_\\_\\_\\_\\) ms. ( \\(\\pi = 3.14\\) )",
+    "100": "An inductor of self inductance 1 H connected in series with a resistor of \\(100\\pi ohm\\) and an ac supply of \\(100\\pi\\) volt, 50 Hz . Maximum current flowing in the circuit is \\(\\_\\_\\_\\_\\) A.",
     "103": "Which among the following compounds give yellow solid when reacted with \\(NaOI/NaOH\\) ? (A) \\({CH}_{3} - CH(OH) - {C}_{2}{H}_{5}\\) (B) \\({CH}_{3} - {CH}_{2} - {CH}_{2} - OH\\) (C) \\({CH}_{3} - CO - {C}_{2}{H}_{5}\\) (D) \\({CH}_{3}COOH\\) (E) \\({CH}_{3} - {CH}_{2} - CHO\\) Choose the correct answer from the options given below:",
     "105": "In which pairs, the first ion is more stable than the second? The pairs (A), (B), (C) and (D) are shown in the figure, from top to bottom.",
     "109": "Match List-I with List-II -\n\n|  | List-I (Separation of) |  | List-II (Separation technique) |\n| --- | --- | --- | --- |\n| (A) | Aniline from aniline-water mixture | (I) | Simple distillation |\n| (B) | Glycerol from spent-lye in soap industry | (II) | Fractional distillation |\n| (C) | Different fractions of crude oil in petroleum industry | (III) | Distillation at reduced pressure |\n| (D) | Chloroform Aniline mixture | (IV) | Steam distillation |\n\nChoose the correct answer from the options given below:",

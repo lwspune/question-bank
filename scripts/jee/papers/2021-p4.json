@@ -29,11 +29,11 @@
     },
     "7": {
       "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "Photoelectric Effect"
+      "subtopic": "Einstein's Equation and Stopping Potential"
     },
     "8": {
       "chapter": "Electrostatics",
-      "subtopic": "Gauss's Law and Electric Flux"
+      "subtopic": "Electric Flux and Gauss's Law"
     },
     "9": {
       "chapter": "System of Particles and Rotational Motion",
@@ -41,11 +41,11 @@
     },
     "10": {
       "chapter": "Wave Optics",
-      "subtopic": "Diffraction"
+      "subtopic": "Single-Slit Diffraction and Resolving Power"
     },
     "11": {
       "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "de Broglie Wavelength"
+      "subtopic": "Comparing de Broglie Wavelengths"
     },
     "12": {
       "chapter": "Thermodynamics",
@@ -65,11 +65,11 @@
     },
     "16": {
       "chapter": "Electrostatics",
-      "subtopic": "Motion of Charge in Electric Field"
+      "subtopic": "Charges Moving in Electric Fields"
     },
     "17": {
       "chapter": "Alternating Current",
-      "subtopic": "LCR Series Circuit"
+      "subtopic": "Resonance, Quality Factor and Bandwidth"
     },
     "18": {
       "chapter": "Semiconductor Electronics",
@@ -287,6 +287,7 @@
   "stemOverrides": {
     "5": "In a ferromagnetic material, below the Curie temperature, a domain is defined as:",
     "6": "The point \\(A\\) moves with a uniform speed along the circumference of a circle of radius \\(0.36\\text{ }m\\) and cover \\(30^{\\circ}\\) in \\(0.1\\text{ }s\\). The perpendicular projection ' \\(P\\) ' from ' \\(A\\) ' on the diameter \\(MN\\) represents the simple harmonic motion of ' \\(P\\) '. The restoration force per unit mass when \\(P\\) touches \\(M\\) will be:",
+    "7": "The stopping potential for electrons emitted from a photosensitive surface illuminated by light of wavelength \\(491\\text{ }nm\\) is \\(0.710\\text{ }V\\). When the incident wavelength is changed to a new value, the stopping potential is \\(1.43\\text{ }V\\). The new wavelength is:",
     "37": "In which of the following orders are the given complex ions arranged correctly with respect to their decreasing spin only magnetic moment ? (i) \\(\\left\\lbrack FeF_{6} \\right\\rbrack^{3 -}\\) (ii) \\(\\left\\lbrack Co\\left( NH_{3} \\right)_{6} \\right\\rbrack^{3 +}\\) (iii) \\(\\left\\lbrack NiCl_{4} \\right\\rbrack^{2 -}\\) (iv) \\(\\left\\lbrack Cu\\left( NH_{3} \\right)_{4} \\right\\rbrack^{2 +}\\)",
     "39": "The correct sequence of reagents used in the preparation of 4-bromo-2-nitroethyl benzene from benzene is:",
     "44": "The correct order of acid character of the following compounds (I), (II), (III) and (IV) shown below is:",
@@ -301,7 +302,10 @@
   },
   "authoredSolutions": {
     "5": "Below the Curie temperature the atomic dipoles inside one domain are all aligned, so each domain is magnetised to saturation. Different domains point in different directions, which is why an unmagnetised piece of iron has no net moment. Hence option (c).",
+    "7": "Einstein's equation for the two wavelengths: \\(eV_{1} = \\frac{hc}{\\lambda_{1}} - \\phi\\) and \\(eV_{2} = \\frac{hc}{\\lambda_{2}} - \\phi\\). Subtracting, \\(V_{2} - V_{1} = \\frac{hc}{e}\\left(\\frac{1}{\\lambda_{2}} - \\frac{1}{\\lambda_{1}}\\right)\\). With \\(\\frac{hc}{e} = 1240\\ V\\,nm\\), \\[\\frac{1}{\\lambda_{2}} = \\frac{1}{491} + \\frac{1.43 - 0.710}{1240} = 0.002037 + 0.000581 = 0.002618\\ nm^{-1},\\] so \\(\\lambda_{2} = 382\\ nm\\). Hence option (b).",
+    "10": "For a circular aperture of diameter \\(D\\) the first dark ring is at \\(\\sin\\theta = \\frac{1.22\\lambda}{D}\\). A larger pinhole gives a smaller \\(\\theta\\), so the pattern shrinks, and more light passes through the larger hole, so it is brighter. Hence option (a). (As printed the pinhole, \\(0.1\\ \\mu m\\), is smaller than any visible wavelength, so \\(\\frac{1.22\\lambda}{D} > 1\\) and there would be no dark ring at all; the question intends only the trend.)",
     "12": "The figure gives \\(PV^{1/2}\\) constant. For one mole \\(P = \\frac{RT}{V}\\), so \\(\\frac{RT}{V} \\times V^{1/2} = \\frac{RT}{V^{1/2}}\\) is constant, that is \\(T \\propto V^{1/2}\\). Then \\[\\frac{T_{2}}{T_{1}} = \\sqrt{\\frac{V_{2}}{V_{1}}} = \\sqrt{2}.\\] Hence option (d).",
+    "17": "With \\(C\\) removed, the LR circuit has the current lagging by \\(45^{\\circ}\\): \\(X_{L} = R\\). With \\(L\\) removed, the RC circuit has the current leading by \\(45^{\\circ}\\): \\(X_{C} = R\\). So \\(X_{L} = X_{C}\\): the full LCR circuit is at resonance, \\(Z = R = 110\\ \\Omega\\), and\n\\[I_{rms} = \\frac{220}{110} = 2\\ A.\\]\nOption (b).",
     "31": "In ammoniacal medium \\(Ni^{2+}\\) gives a characteristic rosy-red precipitate with dimethylglyoxime, so it is a standard identification test for \\(Ni^{2+}\\) — Statement I is true. Dimethylglyoxime is bidentate, but on coordinating it loses one \\(O\\text{-}H\\) proton per ligand and binds as a uninegative (monoanionic) ligand, not a neutral one, so Statement II is false. Hence option (D).",
     "32": "The carbylamine reaction converts a primary amine, on warming with \\(CHCl_3\\) and alcoholic \\(KOH\\), into a foul-smelling isocyanide. With aniline the product is phenyl isocyanide, \\(C_6H_5NC\\). Hence option (B).",
     "33": "Bond dissociation enthalpies in \\(kJ\\ mol^{-1}\\): \\(\\mathrm{Cl_2}\\) 242.6, \\(\\mathrm{Br_2}\\) 192.8, \\(\\mathrm{F_2}\\) 158.8, \\(\\mathrm{I_2}\\) 151.1. From Cl to I the value falls as the atoms grow and orbital overlap gets poorer. \\(\\mathrm{F_2}\\) is out of line: the F-F bond is so short that the lone pairs on the two atoms repel strongly and weaken it. So \\(\\mathrm{Cl_2 > Br_2 > F_2 > I_2}\\), option (C).",
@@ -342,6 +346,9 @@
   "optionOverrides": {
     "5": {
       "A": "a macroscopic region with consecutive magnetic dipoles oriented in opposite direction."
+    },
+    "7": {
+      "A": "\\(400\\text{ }nm\\)"
     }
   }
 }

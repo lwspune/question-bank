@@ -16,7 +16,7 @@
     "3": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Electric Field and Superposition"
+      "subtopic": "Electric Field of Charges, Rods, Rings and Sheets"
     },
     "4": {
       "subject": "Physics",
@@ -31,7 +31,7 @@
     "6": {
       "subject": "Physics",
       "chapter": "Current Electricity",
-      "subtopic": "DC Circuits"
+      "subtopic": "Meters, Meter Bridge and Potentiometer"
     },
     "7": {
       "subject": "Physics",
@@ -86,12 +86,12 @@
     "17": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Electric Potential and Potential Energy"
+      "subtopic": "Electric Potential, Conductors and Work"
     },
     "18": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Motion of Charge in Electric Field"
+      "subtopic": "Charges Moving in Electric Fields"
     },
     "19": {
       "subject": "Physics",
@@ -111,7 +111,7 @@
     "22": {
       "subject": "Physics",
       "chapter": "Electromagnetic Waves",
-      "subtopic": "Properties of EM Waves"
+      "subtopic": "Displacement Current, Maxwell's Equations and Wave Speed"
     },
     "23": {
       "subject": "Physics",
@@ -435,14 +435,19 @@
   },
   "notes": "22 Jan 2026 Shift 1 — Maths only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.\n22 Jan 2026 Shift 1 — Chemistry only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.\n22 Jan 2026 Shift 1 — Chemistry only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.",
   "authoredSolutions": {
+    "3": "Let \\(E_{0} = \\frac{kQ}{R^{2}}\\). The +Q charges at the top and bottom cancel. The +Q charges at \\(30^{\\circ}\\) and \\(-30^{\\circ}\\) give \\(2E_{0}\\cos 30^{\\circ} = \\sqrt{3}E_{0}\\) along \\(-\\hat{i}\\). The +Q at \\(210^{\\circ}\\) pushes along the \\(30^{\\circ}\\) direction, \\(E_{0}\\left(\\frac{\\sqrt{3}}{2}\\hat{i} + \\frac{1}{2}\\hat{j}\\right)\\), and the \\(-Q\\) at \\(150^{\\circ}\\) pulls towards itself, \\(E_{0}\\left(-\\frac{\\sqrt{3}}{2}\\hat{i} + \\frac{1}{2}\\hat{j}\\right)\\); together \\(E_{0}\\hat{j}\\). \\[\\vec{E} = -\\sqrt{3}E_{0}\\hat{i} + E_{0}\\hat{j} = -\\frac{Q}{4\\pi\\varepsilon_{0}R^{2}}(\\sqrt{3}\\hat{i} - \\hat{j}).\\] Hence option (b).",
     "4": "Only the length \\(l\\) between the rails carries current, so the motional emf is \\(Blv\\) and the current is \\(\\frac{Blv}{R}\\). The magnetic force on the rod opposes its motion: \\(F = \\frac{B^{2}l^{2}v}{R}\\), upward. The speed stops growing when this force balances the weight: \\[mg = \\frac{B^{2}l^{2}v_{t}}{R}\\ \\Rightarrow\\ v_{t} = \\frac{mgR}{B^{2}l^{2}}.\\] The rod's full length \\(L\\) does not enter. Hence option (d).",
+    "6": "Balance at \\(40\\text{ }cm\\): \\(\\frac{R_{1}}{R_{2}} = \\frac{40}{60} = \\frac{2}{3}\\). With \\(16\\Omega\\) across \\(R_{2}\\), balance at \\(50\\text{ }cm\\) means the gaps are equal: \\(R_{1} = \\frac{16R_{2}}{16 + R_{2}}\\). So \\(\\frac{2}{3}R_{2} = \\frac{16R_{2}}{16 + R_{2}}\\), giving \\(16 + R_{2} = 24\\), \\(R_{2} = 8\\Omega\\) and \\(R_{1} = \\frac{16}{3}\\Omega\\). Hence option (c).",
     "7": "The horizontal component of velocity does not change during the flight. At launch it is \\(u\\cos 60^{\\circ} = \\frac{u}{2}\\). When the velocity makes \\(45^{\\circ}\\) with the horizontal the speed is \\(20\\ m/s\\), so the horizontal component is \\(20\\cos 45^{\\circ} = 10\\sqrt{2}\\ m/s\\). Equating, \\(\\frac{u}{2} = 10\\sqrt{2}\\), so \\(u = 20\\sqrt{2}\\ m/s\\), option (d).",
     "10": "Let each corner be at distance \\(r\\) from the centre and let \\(m_{0}\\) be a test mass there; each mass pulls the test mass towards itself. Pull along a diagonal from opposite masses \\(m_{a}\\) and \\(m_{b}\\) is \\(\\frac{Gm_{0}}{r^{2}}|m_{a} - m_{b}|\\). In the figure, 4M (top left) faces 2M (bottom right) and 3M (top right) faces M (bottom left): each diagonal leaves a net \\(2M\\), and the two diagonals are perpendicular, so \\(F_{1} = 2\\sqrt{2}\\frac{GMm_{0}}{r^{2}}\\). After swapping 3M and 4M, 3M faces 2M (net \\(M\\)) and 4M faces M (net \\(3M\\)), so \\(F_{2} = \\sqrt{1^{2} + 3^{2}}\\frac{GMm_{0}}{r^{2}} = \\sqrt{10}\\frac{GMm_{0}}{r^{2}}\\). Then \\[\\frac{F_{1}}{F_{2}} = \\frac{2\\sqrt{2}}{\\sqrt{10}} = \\frac{2}{\\sqrt{5}},\\] so \\(\\alpha = 2\\), option (a).",
     "12": "Take a thin slice of gas, thickness \\(dx\\), at distance \\(x\\) from A. It moves in a circle, so the net pressure force on it supplies the centripetal force: \\(A\\,dP = (\\rho A\\,dx)\\,\\omega^{2}x\\). For an ideal gas \\(\\rho = \\frac{PM}{RT}\\), so \\[\\frac{dP}{P} = \\frac{M\\omega^{2}}{RT}x\\,dx.\\] Integrating from A (\\(x = 0\\)) to B (\\(x = l\\)) at constant \\(T\\): \\[\\ln\\frac{P_{B}}{P_{A}} = \\frac{M\\omega^{2}l^{2}}{2RT},\\qquad P_{B} = P_{A}\\exp\\left(\\frac{M\\omega^{2}l^{2}}{2RT}\\right).\\] Hence option (a).",
     "13": "All six rods have the same length and area. Since \\(K_{x} = 3K_{y}\\), an x rod has thermal resistance \\(R\\) and a y rod \\(3R\\). From B to E there are two paths in parallel: BCE (two y rods) is \\(6R\\) and BDE (two x rods) is \\(2R\\), together \\(\\frac{6R \\times 2R}{8R} = \\frac{3R}{2}\\). With AB \\(= R\\) and EF \\(= 3R\\) in series, the total is \\(R + \\frac{3R}{2} + 3R = \\frac{11R}{2}\\), so the heat current is \\(H = \\frac{60}{11R/2} = \\frac{120}{11R}\\). Then \\[T_{B} = 100 - HR = 100 - \\frac{120}{11} = 89.1^{\\circ}C,\\qquad T_{E} = 40 + H(3R) = 40 + \\frac{360}{11} = 72.7^{\\circ}C.\\] So about \\(89^{\\circ}C\\) and \\(73^{\\circ}C\\): option (a).",
     "16": "No heat exchange in a reversible change means an adiabatic process, so \\(TV^{\\gamma - 1}\\) is constant: \\[TV^{\\gamma - 1} = \\frac{T}{4}(8V)^{\\gamma - 1} \\Rightarrow 8^{\\gamma - 1} = 4 \\Rightarrow 2^{3(\\gamma - 1)} = 2^{2} \\Rightarrow \\gamma = \\frac{5}{3}.\\] \\(\\gamma = \\frac{5}{3}\\) means a monoatomic gas: helium. Hence option (d).",
+    "17": "\\(V(0,0) - V(10,20) = \\int_{(0,0)}^{(10,20)}\\vec{E}\\cdot d\\vec{r} = \\left[5x^{2} + \\frac{5y^{2}}{2}\\right]_{(0,0)}^{(10,20)} = 500 + 1000 = 1500\\ V\\). So \\(V(0,0) = 500 + 1500 = 2000\\ V\\). Hence option (c).",
+    "18": "In equilibrium the bob is at rest under its weight mg (down), the electric force qE (horizontal) and the tension. The tension balances the resultant of the other two: \\[T = \\sqrt{(mg)^{2} + (qE)^{2}}.\\] Hence option (c).",
     "20": "View all three coils from the same side. An anticlockwise current gives a field pointing towards the viewer, a clockwise one a field pointing away. So at \\(C_{2}\\) the field of \\(C_{1}\\) points towards the viewer and the field of \\(C_{3}\\) away; with \\(C_{2}\\) exactly midway they cancel. A clockwise induced current in \\(C_{2}\\) makes its own field point away from the viewer, so by Lenz's law the flux through \\(C_{2}\\) towards the viewer must be increasing. That happens when \\(C_{1}\\) comes closer (its field at \\(C_{2}\\) grows) and \\(C_{3}\\) moves away (the opposing field shrinks). Moving both towards, or both away, at equal speeds changes the two fields equally and the flux stays zero. Hence option (b).",
     "21": "In the figure \\(L_{1}\\) and \\(L_{2}\\) are \\(5\\ m\\) above and below the line through A, and the line AB is \\(40\\ m\\) from the speakers. At A the two paths are equal, so the path difference is zero. B is \\(25\\ m\\) from A along the line, so it is \\(20\\ m\\) beyond the level of \\(L_{1}\\) and \\(30\\ m\\) beyond the level of \\(L_{2}\\): \\[L_{1}B = \\sqrt{40^{2} + 20^{2}} = 20\\sqrt{5} = 44.6\\ m,\\qquad L_{2}B = \\sqrt{40^{2} + 30^{2}} = 50\\ m.\\] The path difference grows from \\(0\\) to \\(50 - 44.6 = 5.4\\ m\\). Each full cycle of maximum and minimum means the path difference changed by one wavelength, so \\(10\\lambda = 5.4\\ m\\) and \\(\\lambda = 0.54\\ m\\). Then \\[f = \\frac{v}{\\lambda} = \\frac{324}{0.54} = 600\\ Hz.\\]",
+    "22": "Read the phase \\(kx - \\omega t\\): \\(k = 3 \\times 10^{6}\\ m^{-1}\\) and \\(\\omega = 4.5 \\times 10^{14}\\ rad\\,s^{-1}\\), so the speed in the medium is \\[v = \\frac{\\omega}{k} = \\frac{4.5 \\times 10^{14}}{3 \\times 10^{6}} = 1.5 \\times 10^{8}\\ m/s.\\] The refractive index is \\(n = \\frac{c}{v} = 2\\). For a non-magnetic medium \\(\\mu_{r} = 1\\), and \\(n = \\sqrt{\\mu_{r}\\varepsilon_{r}}\\) gives \\(\\varepsilon_{r} = n^{2} = 4\\). The dielectric constant is 4.",
     "25": "The energy density inside a long solenoid is \\(u = \\frac{B^{2}}{2\\mu_{0}}\\) with \\(B = \\mu_{0}nI\\), so \\(u = \\frac{\\mu_{0}n^{2}I^{2}}{2}\\). This needs \\(n\\), the number of turns per metre; the stem's \"\\(10^{4}\\) turns\" only gives an answer if it is read as \\(n = 10^{4}\\) turns per metre (the inductance \\(10\\ mH\\) is then not needed). The maximum current is \\(I_{0} = \\frac{10}{10} = 1\\ A\\), so \\(I = \\frac{1}{e}\\ A\\) and \\[u = \\frac{4\\pi \\times 10^{-7} \\times 10^{8}}{2} \\times \\frac{1}{e^{2}} = 20\\pi \\times \\frac{1}{e^{2}}\\ J/m^{3}.\\] So \\(\\alpha = 20\\).",
     "26": "All four are low-spin octahedral, so electrons fill \\(t_{2g}\\) completely before entering \\(e_{g}\\). \\(Cr^{3+}\\) is \\(d^{3}\\): \\(t_{2g}^{3}\\), 3 unpaired. \\(Mn^{3+}\\) is \\(d^{4}\\): low spin \\(t_{2g}^{4}\\), one pair plus 2 singles, so 2 unpaired. \\(Fe^{3+}\\) is \\(d^{5}\\): low spin \\(t_{2g}^{5}\\), 1 unpaired. \\(Co^{3+}\\) is \\(d^{6}\\): low spin \\(t_{2g}^{6}\\), 0 unpaired. Decreasing order of unpaired electrons: \\(Cr^{3+}(3) > Mn^{3+}(2) > Fe^{3+}(1) > Co^{3+}(0)\\), which is option (D).",
     "27": "Formal charge \\(= V - L - \\frac{1}{2}S\\), where \\(V\\) is the number of valence electrons, \\(L\\) the lone-pair electrons and \\(S\\) the bonding electrons. From the Lewis diagram of \\(HNO_{3}\\): atom (1) is the hydroxyl oxygen with 2 lone pairs and 2 single bonds, \\(6 - 4 - 2 = 0\\). Atom (2) is nitrogen with no lone pair and four bonds (one to each single-bonded O plus a double bond), \\(5 - 0 - 4 = +1\\). Atom (3) is the doubly bonded oxygen with 2 lone pairs, \\(6 - 4 - 2 = 0\\). Atom (4) is the singly bonded oxygen carrying 3 lone pairs, \\(6 - 6 - 1 = -1\\). Hence the set is \\(0, +1, 0, -1\\), option (C).",
@@ -497,6 +502,7 @@
   },
   "stemOverrides": {
     "19": "Match the LIST-I with LIST-II\n\n| List-I | List-II |\n|---|---|\n| (A) Spring constant | (I) \\(ML^{2}T^{-2}K^{-1}\\) |\n| (B) Thermal conductivity | (II) \\(ML^{0}T^{-2}\\) |\n| (C) Boltzmann constant | (III) \\(ML^{2}T^{-3}A^{-2}\\) |\n| (D) Inductive reactance | (IV) \\(MLT^{-3}K^{-1}\\) |\n\nChoose the correct answer from the options given below:",
+    "22": "The electric field of a plane electromagnetic wave, travelling in an unknown non-magnetic medium is given by, \\(E_{y} = 20\\sin\\left( 3 \\times 10^{6}x - 4.5 \\times 10^{14}t \\right)V/m\\)(where \\(x,t\\) and other values have S.I. units). The dielectric constant of the medium is \\(\\_\\_\\_\\_\\) (speed of light in free space is \\(3 \\times 10^{8}\\text{ }m/s\\))",
     "27": "The formal charges on the atoms marked as (1) to (4) in the Lewis representation of \\(HNO_{3}\\) molecule respectively are",
     "28": "Given below are two statements :\nStatement I: Phenol on treatment with \\({CHCl}_{3}/\\) aq. KOH under refluxing condition, followed by acidification produces \\(p\\)-hydroxy benzladehyde as the major product and \\(o\\)-hydroxybenzaldehyde as the minor product.\nStatement II : The mixture of \\(p\\)-hydroxybenzaldehyde and \\(o\\)-hydroxybenzaldehyde can be easily separated through steam distillation.\nIn the light of the above statements, choose the correct answer from the options given below :",
     "30": "A 'p'-block element (E) and hydrogen form a binary cation \\(\\left( EH_{x} \\right)^{+}\\), while \\(EH_{3}\\) on treatment with \\(K_{2}HgI_{4}\\) in alkaline medium gives a precipitate of basic mercury(II) amido-iodide. Given below are first ionisation enthalpy values ( \\(kJmol^{- 1}\\) ) for first element each from group 13, 14, 15 and 16. Identify the correct first ionisation enthalpy value for element E .",

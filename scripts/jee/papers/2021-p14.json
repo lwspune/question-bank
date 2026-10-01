@@ -7,7 +7,7 @@
     "1": {
       "subject": "Physics",
       "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "de Broglie Wavelength"
+      "subtopic": "Comparing de Broglie Wavelengths"
     },
     "2": {
       "subject": "Physics",
@@ -27,7 +27,7 @@
     "5": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Capacitance and Combinations"
+      "subtopic": "Dielectric Slabs and Partly Filled Capacitors"
     },
     "6": {
       "subject": "Physics",
@@ -67,7 +67,7 @@
     "13": {
       "subject": "Physics",
       "chapter": "Current Electricity",
-      "subtopic": "Heating Effect of Current"
+      "subtopic": "Electrical Power and Heating"
     },
     "14": {
       "subject": "Physics",
@@ -77,17 +77,17 @@
     "15": {
       "subject": "Physics",
       "chapter": "Current Electricity",
-      "subtopic": "EMF and Internal Resistance"
+      "subtopic": "Meters, Meter Bridge and Potentiometer"
     },
     "16": {
       "subject": "Physics",
       "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "de Broglie Wavelength"
+      "subtopic": "Comparing de Broglie Wavelengths"
     },
     "17": {
       "subject": "Physics",
       "chapter": "Wave Optics",
-      "subtopic": "Young's Double Slit Experiment"
+      "subtopic": "Double Slit Fringe Width and Fringe Positions"
     },
     "18": {
       "subject": "Physics",
@@ -345,7 +345,7 @@
     "2": "The gravitational force on the earth is central, so the angular momentum of the earth about the sun is conserved. Speed is greatest at perihelion (distance \\(r_{\\min}\\)) and least at aphelion (distance \\(r_{\\max}\\)); at both of these turning points the velocity is perpendicular to the radius, so \\[m\\,v_{\\max}\\,r_{\\min}=m\\,v_{\\min}\\,r_{\\max}.\\] Therefore \\[v_{\\max}=\\frac{r_{\\max}\\,v_{\\min}}{r_{\\min}},\\] and the correct choice is C. This is exactly Kepler's law of equal areas written for the two apsides.",
     "3": "For the carrier \\(c(t)=4\\sin(2\\pi\\times 10^{7}t)\\) the carrier frequency is \\(f_{c}=10^{7}\\) Hz, and for the message \\(m(t)=2\\sin(2\\pi\\times 10^{5}t)\\) the modulating frequency is \\(f_{m}=10^{5}\\) Hz. Amplitude modulation produces two sidebands, \\[f_{\\text{USB}}=f_{c}+f_{m},\\qquad f_{\\text{LSB}}=f_{c}-f_{m},\\] so the bandwidth of the broadcast signal is \\[\\Delta f=f_{\\text{USB}}-f_{\\text{LSB}}=\\left(f_{c}+f_{m}\\right)-\\left(f_{c}-f_{m}\\right)=2f_{m}.\\] The carrier frequency cancels and only the modulating frequency survives: \\[\\Delta f=2\\times 10^{5}\\ \\text{Hz}=0.2\\ \\text{MHz}.\\] Hence the correct choice is A.",
     "4": "A wall can only exert a force along its normal, so only the normal component of the ball's momentum is reversed; the tangential component is unchanged. For normal incidence with speed \\(v\\), the normal component is \\(v\\) and \\[|\\Delta p|_{1}=mv-\\left(-mv\\right)=2mv.\\] For incidence at \\(45^{\\circ}\\) to the normal the normal component is \\(v\\cos 45^{\\circ}\\), so \\[|\\Delta p|_{2}=2mv\\cos 45^{\\circ}=\\frac{2mv}{\\sqrt{2}}=\\sqrt{2}\\,mv.\\] The ratio of the impulses is \\[\\frac{|\\Delta p|_{1}}{|\\Delta p|_{2}}=\\frac{2mv}{\\sqrt{2}\\,mv}=\\frac{\\sqrt{2}}{1}.\\] Hence the correct choice is B.",
-    "5": "The permittivity varies along \\(x\\), the direction from one plate to the other, so the slab behaves as an infinite set of elementary capacitors in SERIES. An element of thickness \\(dx\\) has capacitance \\(dC=\\varepsilon(x)A/dx\\), so \\[\\frac{1}{C}=\\int_{0}^{d}\\frac{dx}{\\varepsilon(x)A}=\\frac{1}{\\varepsilon_{0}A}\\left[\\int_{0}^{d/2}\\frac{dx}{1+\\frac{kx}{d}}+\\int_{d/2}^{d}\\frac{dx}{1+\\frac{k(d-x)}{d}}\\right].\\] For the first integral put \\(u=1+kx/d\\), giving \\(\\frac{d}{k}\\ln\\left(1+\\frac{k}{2}\\right)\\); by the symmetry \\(x\\to d-x\\) the second integral is identical. Hence \\[\\frac{1}{C}=\\frac{1}{\\varepsilon_{0}A}\\cdot\\frac{2d}{k}\\ln\\left(1+\\frac{k}{2}\\right),\\qquad C=\\frac{k\\varepsilon_{0}A}{2d\\,\\ln\\left(1+\\frac{k}{2}\\right)}.\\] The intended option is B, which carries the factor \\(\\frac{k\\varepsilon_{0}A}{2d}\\) together with \\(\\ln\\left(1+\\frac{k}{2}\\right)\\); the correct choice is B.",
+    "5": "The permittivity changes from one plate to the other, so the slab is a stack of thin layers in series: \\(\\frac{1}{C} = \\int_{0}^{d}\\frac{dx}{\\varepsilon(x)A}\\). The two halves are mirror images, so \\[\\frac{1}{C} = \\frac{2}{\\varepsilon_{0}A}\\int_{0}^{d/2}\\frac{dx}{1 + \\frac{kx}{d}} = \\frac{2d}{k\\varepsilon_{0}A}\\ln\\left(1 + \\frac{k}{2}\\right),\\qquad C = \\frac{k\\varepsilon_{0}A}{2d\\ln\\left(1 + \\frac{k}{2}\\right)}.\\] Hence option (b). (The booklet prints option (b) with the logarithm in the numerator; the logarithm belongs in the denominator.)",
     "6": "Only gravity does work on the bob, so mechanical energy is conserved. Rising through an angle \\(\\theta=60^{\\circ}\\) from the lowest point raises the particle by \\(h=L\\left(1-\\cos\\theta\\right)\\): \\[\\frac{1}{2}mu^{2}=\\frac{1}{2}mv^{2}+mgL\\left(1-\\cos 60^{\\circ}\\right).\\] With \\(L=0.5\\) m, \\(u=3\\ \\text{m s}^{-1}\\) and \\(1-\\cos 60^{\\circ}=\\tfrac{1}{2}\\), \\[v^{2}=u^{2}-gL=9-\\left(10\\right)\\left(0.5\\right)=4,\\] so \\(v=2\\ \\text{m/s}\\) (taking \\(g=9.8\\ \\text{m s}^{-2}\\) gives \\(v=\\sqrt{4.1}\\approx 2.02\\ \\text{m/s}\\), the same option). Hence the correct choice is D.",
     "7": "Number of nuclei in \\(2\\) mg of gold (molar mass \\(197\\ \\text{g mol}^{-1}\\)): \\[N=\\frac{2\\times 10^{-3}}{197}\\times 6.022\\times 10^{23}=6.11\\times 10^{18}.\\] The decay constant for a half-life of 3 days is \\[\\lambda=\\frac{0.693}{T_{1/2}}=\\frac{0.693}{3\\times 24\\times 3600}=2.67\\times 10^{-6}\\ \\text{s}^{-1}.\\] The activity is \\[R=\\lambda N=\\left(2.67\\times 10^{-6}\\right)\\left(6.11\\times 10^{18}\\right)=1.63\\times 10^{13}\\ \\text{Bq}.\\] Converting with \\(1\\ \\text{Ci}=3.7\\times 10^{10}\\ \\text{Bq}\\), \\[R=\\frac{1.63\\times 10^{13}}{3.7\\times 10^{10}}\\approx 441\\ \\text{curie}.\\] Hence the correct choice is C.",
     "8": "Springs in series add their compliances, so \\[k_{eq}=\\frac{k\\cdot 4k}{k+4k}=\\frac{4k}{5}=0.8k=0.8\\times 20=16\\ \\text{N/m}.\\] A two-body spring oscillator vibrates about its centre of mass with the reduced mass \\[\\mu=\\frac{m_{1}m_{2}}{m_{1}+m_{2}}=\\frac{0.2\\times 0.8}{0.2+0.8}=0.16\\ \\text{kg}.\\] Therefore \\[\\omega=\\sqrt{\\frac{k_{eq}}{\\mu}}=\\sqrt{\\frac{16}{0.16}}=\\sqrt{100}=10\\ \\text{rad/s}.\\] Hence the correct choice is A.",
@@ -421,6 +421,9 @@
     "62": "Let \\(f\\left( x \\right)=\\left\\{ \\begin{matrix} \\mu, & x= 2 \\\\ e^{\\frac{\\tan\\left( x- 2 \\right)}{x-\\left\\lbrack x \\right\\rbrack}}, & x< 2 \\\\ \\frac{\\left| x^{2}- 5x+ 6 \\right|\\lambda}{\\left( -x^{2}+ 5x- 6 \\right)\\mu}, & x> 2 \\end{matrix} \\right.\\) If \\(f\\) is continuous at \\(x = 2\\), then \\(\\mu+\\lambda\\) is equal to"
   },
   "optionOverrides": {
+    "5": {
+      "B": "\\(\\frac{k\\varepsilon_{0}A}{2d\\ln\\left\\lbrack 1 + \\frac{k}{2} \\right\\rbrack}\\)"
+    },
     "21": {
       "A": "\\(P = Q\\)",
       "B": "\\(P > Q\\)",

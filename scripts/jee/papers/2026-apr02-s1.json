@@ -36,7 +36,7 @@
     "7": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Capacitance and Combinations"
+      "subtopic": "Dielectric Slabs and Partly Filled Capacitors"
     },
     "8": {
       "subject": "Physics",
@@ -46,7 +46,7 @@
     "9": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Electric Potential and Potential Energy"
+      "subtopic": "Electric Potential, Conductors and Work"
     },
     "10": {
       "subject": "Physics",
@@ -56,7 +56,7 @@
     "11": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Electric Field and Superposition"
+      "subtopic": "Electric Dipoles: Field, Torque and Energy"
     },
     "12": {
       "subject": "Physics",
@@ -71,7 +71,7 @@
     "14": {
       "subject": "Physics",
       "chapter": "Moving Charges and Magnetism",
-      "subtopic": "Biot-Savart Law"
+      "subtopic": "Field of Straight Wires and Arcs"
     },
     "15": {
       "subject": "Physics",
@@ -86,12 +86,12 @@
     "17": {
       "subject": "Physics",
       "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "Photoelectric Effect"
+      "subtopic": "Einstein's Equation and Stopping Potential"
     },
     "18": {
       "subject": "Physics",
       "chapter": "Electromagnetic Waves",
-      "subtopic": "Properties of EM Waves"
+      "subtopic": "E and B Fields of a Plane Wave"
     },
     "19": {
       "subject": "Physics",
@@ -106,7 +106,7 @@
     "21": {
       "subject": "Physics",
       "chapter": "Wave Optics",
-      "subtopic": "Diffraction"
+      "subtopic": "Single-Slit Diffraction and Resolving Power"
     },
     "22": {
       "subject": "Physics",
@@ -116,7 +116,7 @@
     "23": {
       "subject": "Physics",
       "chapter": "Moving Charges and Magnetism",
-      "subtopic": "Force on a Moving Charge"
+      "subtopic": "Lorentz Force and Crossed Fields"
     },
     "24": {
       "subject": "Physics",
@@ -437,10 +437,16 @@
   "notes": "2 Apr 2026 Shift 1 — Maths only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.\n2 Apr 2026 Shift 1 — Chemistry only. Keys from the extracted source key; every key independently agent-verified (disagreements flagged + adjudicated). Solutions authored to the verified answer.",
   "authoredSolutions": {
     "5": "For a circular orbit of radius \\(r\\) about a star of mass \\(M_{s}\\), \\(T = 2\\pi\\sqrt{\\frac{r^{3}}{GM_{s}}}\\), so \\(T \\propto \\sqrt{\\frac{r^{3}}{M_{s}}}\\). \\[\\frac{T_{P_{2}}}{T_{P_{1}}} = \\sqrt{\\frac{(2R)^{3}}{4M}\\cdot\\frac{2M}{R^{3}}} = \\sqrt{\\frac{8 \\times 2}{4}} = \\sqrt{4} = 2.\\] Option (b).",
+    "7": "As drawn, the slab (\\(K = 5\\)) covers the whole plate area to thickness \\(\\frac{d}{2}\\), so the slab and the air gap are in series. Each part alone: \\(C_{1} = \\frac{5\\varepsilon_{0}A}{d/2} = 10C\\) and \\(C_{2} = \\frac{\\varepsilon_{0}A}{d/2} = 2C\\). \\[C_{f} = \\frac{10C \\times 2C}{10C + 2C} = \\frac{5}{3}C.\\] The increase is \\(\\frac{5/3 - 1}{1} \\times 100 = 66.67\\%\\). Hence option (b).",
     "8": "At constant pressure for a diatomic gas: \\(\\Delta Q = nC_{p}\\Delta T = \\frac{7}{2}nR\\Delta T\\), \\(\\Delta U = nC_{v}\\Delta T = \\frac{5}{2}nR\\Delta T\\), and \\(\\Delta W = P\\Delta V = nR\\Delta T\\). So \\(\\Delta Q : \\Delta U : \\Delta W = \\frac{7}{2} : \\frac{5}{2} : 1 = 7 : 5 : 2\\). Hence option (d).",
+    "11": "The point x is on the axis of A and on the equatorial line of B. A gives \\(\\frac{2kp_{1}}{x^{3}}\\) along Ox and B gives \\(\\frac{kp_{2}}{x^{3}}\\) perpendicular to Ox. The resultant makes an angle \\(\\theta\\) with Ox where \\[\\tan\\theta = \\frac{kp_{2}/x^{3}}{2kp_{1}/x^{3}} = \\frac{p_{2}}{2p_{1}}.\\] With \\(\\theta = 60^{\\circ}\\), \\(\\frac{p_{2}}{p_{1}} = 2\\tan 60^{\\circ} = 2\\sqrt{3}\\). Hence option (b).",
     "13": "Power dissipated: \\(P = \\frac{\\varepsilon^{2}}{R}\\). The emf is \\(\\varepsilon = NA\\frac{dB}{dt}\\), so \\(\\varepsilon \\propto NA\\). The wire has length \\(N \\times 2\\pi a\\), where the coil radius is \\(a = \\sqrt{\\frac{A}{\\pi}}\\), and cross-section \\(\\pi r^{2}\\), so \\(R \\propto \\frac{N\\sqrt{A}}{r^{2}}\\). Then \\[P \\propto \\frac{N^{2}A^{2}r^{2}}{N\\sqrt{A}} = NA^{3/2}r^{2}.\\] For the second coil, \\(\\frac{P'}{P} = 2 \\times 2^{3/2} \\times 3^{2} = 36\\sqrt{2}\\). So \\(P' = \\sqrt{2} \\times 36P\\) and \\(\\alpha = 36\\). Hence option (a).",
+    "14": "A semi-infinite wire whose end lies on the perpendicular from the point gives \\(\\frac{\\mu_{0}I}{4\\pi r}\\); a semicircle gives \\(\\frac{\\mu_{0}I}{4r}\\) at its centre. Figure (I): both straight wires end on the perpendicular through P, and with the semicircle all three fields point into the page: \\[B_{1} = \\frac{2\\mu_{0}I}{4\\pi r} + \\frac{\\mu_{0}I}{4r} = \\frac{\\mu_{0}I}{4\\pi r}(2 + \\pi).\\] Figure (II): the horizontal wire gives \\(\\frac{\\mu_{0}I}{4\\pi r}\\), the vertical wire leaves along a line through Q and gives nothing: \\[B_{2} = \\frac{\\mu_{0}I}{4\\pi r} + \\frac{\\mu_{0}I}{4r} = \\frac{\\mu_{0}I}{4\\pi r}(1 + \\pi).\\] So \\(\\frac{B_{1}}{B_{2}} = \\frac{2 + \\pi}{1 + \\pi}\\). Hence option (a).",
+    "17": "Einstein's equation for the two wavelengths: \\(\\frac{hc}{\\lambda} - \\phi = 3eV_{0}\\) and \\(\\frac{hc}{2\\lambda} - \\phi = eV_{0}\\). Multiply the second by 3 and equate: \\(\\frac{hc}{\\lambda} - \\phi = \\frac{3hc}{2\\lambda} - 3\\phi\\), so \\(2\\phi = \\frac{hc}{2\\lambda}\\) and \\(\\phi = \\frac{hc}{4\\lambda}\\). The threshold wavelength is \\(\\lambda_{0} = \\frac{hc}{\\phi} = 4\\lambda\\), so \\(\\alpha = 4\\). Hence option (b).",
+    "18": "The wave travels along \\(x\\) with \\(\\overrightarrow{E}\\) along \\(y\\), so \\(\\overrightarrow{B}\\) is along \\(z\\) with \\(B = \\frac{E}{c}\\). The electron moves along \\(y\\), perpendicular to \\(\\overrightarrow{B}\\). The electric force is \\(F_{e} = qE\\) and the magnetic force is \\(F_{m} = qvB = \\frac{qvE}{c}\\). So \\[\\frac{F_{e}}{F_{m}} = \\frac{c}{v} = \\frac{3 \\times 10^{8}}{1.5 \\times 10^{6}} = 200.\\] Hence option (a).",
     "20": "Volume is conserved: \\(\\frac{4}{3}\\pi R^{3} = 512\\cdot\\frac{4}{3}\\pi r^{3}\\), so with \\(R = 1\\ mm\\), \\(r = \\frac{R}{8} = \\frac{1}{8}\\ mm\\). The surface area grows by \\[\\Delta A = 4\\pi\\left(512r^{2} - R^{2}\\right) = 4\\pi\\left(\\frac{512}{64} - 1\\right)\\ mm^{2} = 28\\pi\\times10^{-6}\\ m^{2}.\\] The surface energy rises by \\(\\Delta E = T\\,\\Delta A = 0.08\\times28\\pi\\times10^{-6} \\approx 7.04\\times10^{-6}\\ J\\), so \\(\\alpha \\approx 7\\), option (b).",
     "22": "\\(\\gamma = \\frac{C_{p}}{C_{v}} = \\frac{3R}{2R} = \\frac{3}{2}\\). Adiabatic: \\(P_{1}V_{1}^{\\gamma} = P_{2}V_{2}^{\\gamma}\\), so \\[V_{2} = V_{1}\\left(\\frac{P_{1}}{P_{2}}\\right)^{1/\\gamma} = 0.15 \\times 8^{2/3} = 0.15 \\times 4 = 0.6\\ m^{3}.\\] Work done by the gas: \\[W = \\frac{P_{1}V_{1} - P_{2}V_{2}}{\\gamma - 1} = \\frac{(8 \\times 0.15 - 1 \\times 0.6) \\times 10^{5}}{0.5} = 1.2 \\times 10^{5}\\ J = 120\\ kJ.\\] The temperature \\(140^{\\circ}C\\) is not needed.",
+    "23": "\\(\\overrightarrow{F} = q\\left(\\overrightarrow{v} \\times \\overrightarrow{B}\\right)\\) with \\(\\overrightarrow{v} = \\widehat{i} - 2\\widehat{j} + 3\\widehat{k}\\) and \\(\\overrightarrow{B} = 2\\widehat{i} + 3\\widehat{j} - 5\\widehat{k}\\): \\[\\overrightarrow{v} \\times \\overrightarrow{B} = \\left((-2)(-5) - (3)(3)\\right)\\widehat{i} - \\left((1)(-5) - (3)(2)\\right)\\widehat{j} + \\left((1)(3) - (-2)(2)\\right)\\widehat{k} = \\widehat{i} + 11\\widehat{j} + 7\\widehat{k}.\\] So \\(\\left|\\overrightarrow{F}\\right| = 10^{- 6}\\sqrt{1 + 121 + 49} = \\sqrt{171} \\times 10^{- 6}\\text{ }N\\), and \\(\\alpha = 171\\).",
     "25": "The coin's weight is carried by the extra buoyancy of the extra submerged volume: \\(m_{c}g = \\rho_{w}\\left(A\\,\\Delta h\\right)g\\). With \\(A = 10\\times10 = 100\\ cm^{2}\\), \\(\\Delta h = 3.87\\ cm\\) and \\(\\rho_{w} = 1\\ g/cm^{3}\\): \\[m_{c} = 1\\times100\\times3.87 = 387\\ g.\\] The density of the wood is not needed.",
     "26": "Iron reacts with steam as \\(3Fe + 4H_{2}O \\rightarrow Fe_{3}O_{4} + 4H_{2}\\).\n\nMoles of steam \\(= 18/18 = 1\\) mol.\n\nFrom the balanced equation, 4 mol of \\(H_{2}O\\) consume 3 mol of Fe, so 1 mol of \\(H_{2}O\\) consumes \\(3/4 = 0.75\\) mol of Fe.\n\nMass of Fe \\(= 0.75 \\times 56 = 42\\) g. Iron is in excess, so steam is limiting and the answer is 42 g.",
     "27": "\\(Li^{2+}\\) is a one-electron (hydrogen-like) species with \\(Z = 3\\), its single electron being in \\(n = 1\\).\n\nFor a hydrogen-like ion the ionization energy is \\(IE = 2.18 \\times 10^{-18} \\times \\frac{Z^{2}}{n^{2}}\\) J per atom.\n\nSo \\(IE = 2.18 \\times 10^{-18} \\times \\frac{3^{2}}{1^{2}} = 2.18 \\times 10^{-18} \\times 9 = 1.962 \\times 10^{-17}\\) J per atom.",

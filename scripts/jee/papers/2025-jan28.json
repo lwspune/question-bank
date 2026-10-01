@@ -6,7 +6,7 @@
     "1": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Capacitance and Combinations"
+      "subtopic": "Energy Stored and Charge Sharing in Capacitors"
     },
     "2": {
       "subject": "Physics",
@@ -21,7 +21,7 @@
     "4": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Electric Potential and Potential Energy"
+      "subtopic": "Electric Potential, Conductors and Work"
     },
     "5": {
       "subject": "Physics",
@@ -31,7 +31,7 @@
     "6": {
       "subject": "Physics",
       "chapter": "Moving Charges and Magnetism",
-      "subtopic": "Force on a Moving Charge"
+      "subtopic": "Lorentz Force and Crossed Fields"
     },
     "7": {
       "subject": "Physics",
@@ -71,27 +71,27 @@
     "14": {
       "subject": "Physics",
       "chapter": "Current Electricity",
-      "subtopic": "DC Circuits"
+      "subtopic": "Equivalent Resistance: Series, Parallel and Symmetry"
     },
     "15": {
       "subject": "Physics",
       "chapter": "Current Electricity",
-      "subtopic": "Resistance and Resistivity"
+      "subtopic": "Equivalent Resistance: Series, Parallel and Symmetry"
     },
     "16": {
       "subject": "Physics",
       "chapter": "Electromagnetic Waves",
-      "subtopic": "Properties of EM Waves"
+      "subtopic": "Energy, Intensity and Radiation Pressure"
     },
     "17": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Motion of Charge in Electric Field"
+      "subtopic": "Charges Moving in Electric Fields"
     },
     "18": {
       "subject": "Physics",
       "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "de Broglie Wavelength"
+      "subtopic": "Comparing de Broglie Wavelengths"
     },
     "19": {
       "subject": "Physics",
@@ -126,7 +126,7 @@
     "25": {
       "subject": "Physics",
       "chapter": "Wave Optics",
-      "subtopic": "Young's Double Slit Experiment"
+      "subtopic": "Double Slit Fringe Width and Fringe Positions"
     },
     "26": {
       "subject": "Chemistry",
@@ -361,7 +361,7 @@
     "77": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Capacitance and Combinations"
+      "subtopic": "Capacitance and Capacitor Combinations"
     },
     "78": {
       "subject": "Physics",
@@ -391,7 +391,7 @@
     "83": {
       "subject": "Physics",
       "chapter": "Wave Optics",
-      "subtopic": "Wave Nature of Light"
+      "subtopic": "Wavefronts and Light in a Medium"
     },
     "84": {
       "subject": "Physics",
@@ -431,7 +431,7 @@
     "91": {
       "subject": "Physics",
       "chapter": "Moving Charges and Magnetism",
-      "subtopic": "Biot-Savart Law"
+      "subtopic": "Field of Straight Wires and Arcs"
     },
     "92": {
       "subject": "Physics",
@@ -446,7 +446,7 @@
     "94": {
       "subject": "Physics",
       "chapter": "Electromagnetic Waves",
-      "subtopic": "Properties of EM Waves"
+      "subtopic": "E and B Fields of a Plane Wave"
     },
     "95": {
       "subject": "Physics",
@@ -461,7 +461,7 @@
     "97": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Electric Potential and Potential Energy"
+      "subtopic": "Electric Dipoles: Field, Torque and Energy"
     },
     "98": {
       "subject": "Physics",
@@ -471,12 +471,12 @@
     "99": {
       "subject": "Physics",
       "chapter": "Current Electricity",
-      "subtopic": "DC Circuits"
+      "subtopic": "Kirchhoff's Laws and the Wheatstone Bridge"
     },
     "100": {
       "subject": "Physics",
       "chapter": "Wave Optics",
-      "subtopic": "Interference of Light"
+      "subtopic": "Coherent Sources and Resultant Intensity"
     },
     "101": {
       "subject": "Chemistry",
@@ -865,7 +865,7 @@
   },
   "notes": "2025 28 Jan sitting — 2025 layout (Maths Q51-75 + Q126-150 = 50 q). HYBRID soln numbering (79 blocks labeled '1' + correct labels 80-150): the ENTIRE shift-1 Maths (Q51-75) is in the '1'-run. Recovered positionally from ordered blocks 51-75 (verified Q54=81/2=B, Q60=0=B, Q66=1=A by re-derivation). Tail Q126-150 number-matched (Q128 recovered from its labeled block). Fixes: Q64 piecewise, Q75 'Physics' leak. ALL shift-1 solutions need authoring (source labeled '1').\n28 January 2025 — Physics. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[Chemistry option repair] Restored the full option block for Q33, Q104 from the agent's verbatim recovery — extraction had returned no options for these rows, which commit.ts cannot ship.\n[Chemistry stem repair] Q30: The quantity asked for is mangled by extraction: the stem prints \"the correct expression of \\\\(\\\\left. \\\\ pH =pK_{a} \\\\right)\\\\)\" - the minus sign has been lost and the bracket is unbalanced. The intended quantity is \\(pH - pK_{a}\\), which is forced by the options (all are logarithmic expressions in the degree of dissociation, and only a difference\n28 January 2025 — Chemistry. BROKEN-numbering paper: source key untrustworthy, every answer BLIND-derived by an independent solver (compilation playbook). Shipped MCQ-letter + integer-NAT; dropped ambiguous.\n[table repair 2026-08-13] Q111, Q32: pandoc grid/simple-table debris rebuilt as GFM pipe tables (separator row added so parseTableBlocks forms a real table). Transcribed from out/2025-jan28.md; options and answers unchanged.",
   "authoredSolutions": {
-    "1": "In a parallel combination both capacitors share the same potential difference \\(V\\). From the charge-time graph the second capacitor settles at the larger charge, so \\(q_{1} < q_{2}\\). Since \\(q = CV\\) with \\(V\\) common, \\(C_{1} < C_{2}\\). The stored energy is \\(U = \\tfrac{1}{2}CV^{2}\\), and with the same \\(V\\) this gives \\(U_{1} < U_{2}\\). Note also that at a common \\(V\\) the pairings \\(C_{1} > C_{2}\\) with \\(U_{1} < U_{2}\\), and \\(C_{2} > C_{1}\\) with \\(U_{2} < U_{1}\\), are internally impossible, so only two of the four options can even be considered. Hence the correct choice is D.",
+    "1": "Capacitors in parallel share the same voltage V, so \\(q = CV\\) and \\(U = \\frac{1}{2}CV^{2}\\) both grow with C: the larger capacitor holds both the larger charge and the larger energy. That rules out options (b) and (c), which pair the larger C with the smaller U. The charge-time graph decides between (a) and (d); it is missing here (and from the source paper). The stored answer, option (d), corresponds to \\(C_{2}\\) settling at the larger charge: \\(C_{2} > C_{1}\\) and \\(U_{2} > U_{1}\\).",
     "2": "For a ball falling through a viscous liquid the terminal velocity is \\[v_{T} = \\frac{2}{9}\\frac{R^{2}g}{\\eta}(d - \\rho).\\] Statement A: \\(v_{T} \\propto R^{2}\\), so a plot of \\(v_{T}\\) against \\(R\\) is a parabola — true. Statement B: \\(v_{T}\\) depends on \\(R^{2}\\), so balls of different diameter have different terminal velocities — false. Statement C: \\(\\eta\\) varies with temperature, so the measured terminal velocity is temperature dependent — true. Statement D: the liquid density \\(\\rho\\) appears explicitly in the expression, so the experiment can be used to assess it — true. Statement E: the terminal velocity is the steady-state value at which net force vanishes and is independent of the launch speed, so \\(\\eta\\) is unaffected — false. Only A, C and D hold, so the correct choice is B.",
     "3": "Statement A is stated the wrong way round: surface molecules possess the extra energy relative to interior molecules, which is the origin of surface tension — false. Statement B: for liquids the coefficient of viscosity decreases as temperature rises — false. Statement C: for gases viscosity arises from momentum transport by molecular motion, and \\(\\eta \\propto \\sqrt{T}\\), so it increases with temperature — true. Statement D: the transition from laminar to turbulent flow is governed by the Reynolds number \\(Re = \\frac{\\rho v D}{\\eta}\\) — true. Statement E: in steady flow the velocity at a point is unique, so two streamlines can never cross — true. Only C, D and E hold, so the correct choice is B.",
     "4": "For an infinite line charge of density \\(\\lambda\\), the field at perpendicular distance \\(r\\) is \\(E = \\frac{2k\\lambda}{r}\\), so the potential is \\[V = -\\int E\\,dr = -2k\\lambda \\ln r + \\text{const}.\\] The perpendicular distances of the point \\((x,y,z)\\) from the \\(x\\)-, \\(y\\)- and \\(z\\)-axes are \\(\\sqrt{y^{2}+z^{2}}\\), \\(\\sqrt{z^{2}+x^{2}}\\) and \\(\\sqrt{x^{2}+y^{2}}\\). Superposing, \\[V = -2k\\lambda\\ln\\!\\left[\\sqrt{(x^{2}+y^{2})(y^{2}+z^{2})(z^{2}+x^{2})}\\right] + \\text{const}.\\] \\(V\\) is constant precisely when the product \\((x^{2}+y^{2})(y^{2}+z^{2})(z^{2}+x^{2})\\) is constant, so the correct choice is C.",

@@ -41,27 +41,27 @@
     "8": {
       "subject": "Physics",
       "chapter": "Moving Charges and Magnetism",
-      "subtopic": "Force on a Moving Charge"
+      "subtopic": "Lorentz Force and Crossed Fields"
     },
     "9": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Capacitance and Combinations"
+      "subtopic": "Dielectric Slabs and Partly Filled Capacitors"
     },
     "10": {
       "subject": "Physics",
       "chapter": "Electromagnetic Waves",
-      "subtopic": "Properties of EM Waves"
+      "subtopic": "E and B Fields of a Plane Wave"
     },
     "11": {
       "subject": "Physics",
       "chapter": "Wave Optics",
-      "subtopic": "Young's Double Slit Experiment"
+      "subtopic": "Double Slit Intensity and Slab Shifts"
     },
     "12": {
       "subject": "Physics",
       "chapter": "Dual Nature of Radiation and Matter",
-      "subtopic": "Photoelectric Effect"
+      "subtopic": "Einstein's Equation and Stopping Potential"
     },
     "13": {
       "subject": "Physics",
@@ -101,7 +101,7 @@
     "20": {
       "subject": "Physics",
       "chapter": "Electrostatics",
-      "subtopic": "Electric Potential and Potential Energy"
+      "subtopic": "Electric Potential, Conductors and Work"
     },
     "21": {
       "subject": "Physics",
@@ -111,7 +111,7 @@
     "22": {
       "subject": "Physics",
       "chapter": "Current Electricity",
-      "subtopic": "Heating Effect of Current"
+      "subtopic": "Electrical Power and Heating"
     },
     "23": {
       "subject": "Physics",
@@ -456,7 +456,7 @@
     "19": "Total energy in a circular orbit is \\(E = -\\frac{GMm}{2r}\\), so the energy required is \\(\\Delta E = \\frac{GMm}{2}\\left(\\frac{1}{r_{1}} - \\frac{1}{r_{2}}\\right)\\). With \\(GM = gR_{E}^{2} = 3.6 \\times 10^{14}\\), \\(r_{1} = 1.5R_{E} = 9 \\times 10^{6}\\) and \\(r_{2} = 3R_{E} = 1.8 \\times 10^{7}\\): \\(\\Delta E = \\frac{3.6 \\times 10^{14} \\times 100}{2}\\left(\\frac{1}{9 \\times 10^{6}} - \\frac{1}{1.8 \\times 10^{7}}\\right) = 1.0 \\times 10^{9}\\text{ }J\\). So \\(\\alpha = 1000\\). Hence (D).",
     "20": "\\(r_{A} = \\sqrt{16 + 16 + 4} = 6\\text{ }m\\) and \\(r_{B} = \\sqrt{4 + 4 + 1} = 3\\text{ }m\\). The work done by the external agent is \\(W = q(V_{B} - V_{A}) = 2 \\times 10^{- 6} \\times 9 \\times 10^{9} \\times 10^{- 8}\\left(\\frac{1}{3} - \\frac{1}{6}\\right) = 30 \\times 10^{- 6}\\text{ }J\\). Hence (C).",
     "21": "For a collimated beam expander the two lenses share a common focus, and the magnification is the ratio of the beam diameters: \\(\\frac{f_{2}}{f_{1}} = \\frac{14}{2} = 7\\). Hence \\(f_{2} = 7 \\times 40 = 280\\text{ }mm\\).",
-    "22": "The network between A and B is a Wheatstone bridge: the upper arms are (1Omega) and (2Omega), the lower arms (2Omega) and (4Omega), so (\frac{1}{2} = \frac{2}{4}) and the bridge is BALANCED. No current flows through the central (1Omega), which can be ignored. Then (R_{AB} = (1 + 2) parallel (2 + 4) = 3 parallel 6 = 2Omega). With the internal resistance, (I = \frac{9}{2 + 1} = 3\text{ }A), so the power dissipated between A and B is (I^{2}R_{AB} = 9 \times 2 = 18\text{ }W). In one minute the heat generated is (18 \times 60 = 1080\text{ }J).",
+    "22": "The network between \\(A\\) and \\(B\\) is a Wheatstone bridge: upper arms \\(1\\Omega\\) and \\(2\\Omega\\), lower arms \\(2\\Omega\\) and \\(4\\Omega\\). Since \\(\\frac{1}{2} = \\frac{2}{4}\\), it is balanced and the middle \\(1\\Omega\\) carries no current. Then \\(R_{AB} = (1 + 2) \\parallel (2 + 4) = 3 \\parallel 6 = 2\\Omega\\). With the internal resistance, \\(I = \\frac{9}{2 + 1} = 3\\text{ }A\\), and the power in the network is \\(I^{2}R_{AB} = 9 \\times 2 = 18\\text{ }W\\). In one minute the heat is \\(18 \\times 60 = 1080\\text{ }J\\).",
     "23": "Take the axis through P perpendicular to the plane. The vertical rod has P at its end, so \\(I_{1} = \\frac{ML^{2}}{3}\\). The horizontal rod has its centre a distance L from P, so by the parallel-axis theorem \\(I_{2} = \\frac{ML^{2}}{12} + ML^{2} = \\frac{13ML^{2}}{12}\\). Total \\(I = \\frac{4ML^{2}}{12} + \\frac{13ML^{2}}{12} = \\frac{17}{12}ML^{2}\\), so \\(X = 17\\).",
     "24": "At constant volume \\(\\Delta U = nC_{V}\\Delta T\\) with \\(C_{V} = C_{P} - R = 7 - 2 = 5\\text{ }cal/mol\\ ^{\\circ}C\\). Hence \\(\\Delta U = 10 \\times 5 \\times (40 - 30) = 500\\text{ }cal\\).",
     "25": "For normal adjustment \\(M = \\frac{L}{f_{0}} \\times \\frac{D}{f_{e}}\\) with \\(D = 25\\text{ }cm\\). Hence \\(M = \\frac{32}{2} \\times \\frac{25}{4} = 16 \\times 6.25 = 100\\).",
@@ -542,6 +542,7 @@
   "stemOverrides": {
     "4": "Water flows through a horizontal tube as shown in the figure. The difference in height between the water columns in vertical tubes is 5 cm and the areas of cross-section at \\(A\\) and \\(B\\) are \\(6{\\text{ }cm}^{2}\\) and \\(3{\\text{ }cm}^{2}\\) respectively. The rate of flow will be \\(\\_\\_\\_\\_\\) \\(cm^{3}/s\\). (take \\(g = 10\\text{ }m/s^{2}\\))",
     "8": "A current carrying solenoid is placed vertically and a particle of mass m with charge Q is released from rest. The particle moves along the axis of solenoid. If g is acceleration due to gravity then the acceleration (a) of the charged particle will satisfy :",
+    "12": "A light wave described by \\(E = 60\\left[\\sin\\left(3 \\times 10^{15}t\\right) + \\sin\\left(12 \\times 10^{15}t\\right)\\right]\\) (in SI units) falls on a metal surface of work function 2.8 eV . The maximum kinetic energy of ejected photoelectron is (approximately) \\(\\_\\_\\_\\_\\) eV. (\\(h = 6.6 \\times 10^{-34}\\ J\\,s\\) and \\(e = 1.6 \\times 10^{-19}\\ C\\))",
     "15": "An aluminium and steel rods having same lengths and cross-sections are joined to make total length of 120 cm at \\(30^{\\circ}C\\). The coefficient of linear expansion of aluminium and steel are \\(24 \\times 10^{- 6}/\\ ^{\\circ}C\\) and \\(1.2 \\times 10^{- 5}/\\ ^{\\circ}C\\), respectively. The length of this composite rod when its temperature is raised to \\(100^{\\circ}C\\), is \\(\\_\\_\\_\\_\\) cm.",
     "23": "Two identical thin rods of mass M kg and length L m are connected as shown in figure. Moment of inertia of the combined rod system about an axis passing through point P and perpendicular to the plane of the rods is \\(\\frac{X}{12}ML^{2}\\). The value of \\(X\\) is \\(\\_\\_\\_\\_\\) .",
     "25": "In a microscope the objective is having focal length \\(f_{0} = 2\\text{ }cm\\) and eye-piece is having focal length \\(f_{e} = 4\\text{ }cm\\). The tube length is 32 cm. The magnification produced by this microscope for normal adjustment is \\(\\_\\_\\_\\_\\) .",
