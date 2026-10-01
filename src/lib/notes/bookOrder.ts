@@ -153,6 +153,17 @@ export const BOOK_POSITION: Record<string, Record<string, BookPosition>> = {
     "electromagnetic-induction": { cls: 12, chapterNo: 6, book: "NCERT XII 6 Electromagnetic Induction" },
     "alternating-current": { cls: 12, chapterNo: 7, book: "NCERT XII 7 Alternating Current" },
     thermodynamics: { cls: 11, chapterNo: 11, book: "NCERT XI 11 Thermodynamics" },
+    "electromagnetic-waves": { cls: 12, chapterNo: 8, book: "NCERT XII 8 Electromagnetic Waves" },
+    "wave-optics": { cls: 12, chapterNo: 10, book: "NCERT XII 10 Wave Optics" },
+    "dual-nature": { cls: 12, chapterNo: 11, book: "NCERT XII 11 Dual Nature of Radiation and Matter" },
+    atoms: { cls: 12, chapterNo: 12, book: "NCERT XII 12 Atoms" },
+    nuclei: { cls: 12, chapterNo: 13, book: "NCERT XII 13 Nuclei" },
+    "semiconductor-electronics": { cls: 12, chapterNo: 14, book: "NCERT XII 14 Semiconductor Electronics" },
+    "communication-systems": { cls: 12, chapterNo: 15, book: "NCERT XII 15 Communication Systems (pre-2023 syllabus)" },
+    electrostatics: { cls: 12, chapterNo: 1, book: "NCERT XII 1-2 Electric Charges and Fields; Electrostatic Potential and Capacitance" },
+    "current-electricity": { cls: 12, chapterNo: 3, book: "NCERT XII 3 Current Electricity" },
+    "moving-charges-and-magnetism": { cls: 12, chapterNo: 4, book: "NCERT XII 4 Moving Charges and Magnetism" },
+    "ray-optics": { cls: 12, chapterNo: 9, book: "NCERT XII 9 Ray Optics and Optical Instruments" },
   },
 };
 
