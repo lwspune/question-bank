@@ -43,6 +43,7 @@ export const ACTIVITY_KINDS = [
   "goal_set", // chose or changed the weekly sittings goal (metadata: goal)
   "paywall_event", // a gate was shown / checkout opened / dismissed / verify failed (metadata: step, gate)
   "email_clicked", // followed a link in one of our emails (refId = email_sends.id, metadata: kind)
+  "push_clicked", // tapped one of our browser notifications (refId = push_sends.id, metadata: kind) — 0128
 ] as const;
 
 export type ActivityKind = (typeof ACTIVITY_KINDS)[number];

@@ -66,6 +66,7 @@ const ACTIVITY_LABELS: Record<ActivityKind, string> = {
   goal_set: "Set a weekly goal",
   paywall_event: "Reached a paywall step",
   email_clicked: "Clicked an email link",
+  push_clicked: "Tapped a notification",
 };
 
 const ACTIVITY_KIND_SET: ReadonlySet<string> = new Set(ACTIVITY_KINDS);

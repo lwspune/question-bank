@@ -27,6 +27,7 @@ export const KIND_LABELS: Record<ActivityKind, string> = {
   goal_set: "Weekly goal set",
   paywall_event: "Paywall step",
   email_clicked: "Email link clicked",
+  push_clicked: "Notification tapped",
 };
 
 export type KindStat = { kind: string; events: number; users: number };

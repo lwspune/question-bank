@@ -171,6 +171,7 @@ export const TELEMETRY_KINDS: readonly string[] = [
   "goal_set",
   "paywall_event",
   "email_clicked",
+  "push_clicked",
 ];
 
 export const FEATURE_LABELS: Partial<Record<ActivityKind, string>> = {
@@ -747,6 +748,13 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
     kinds: ["email_clicked"],
     tracked: "partial",
     lost: "Opens are not recorded (no tracking pixel, by choice), and a click before 2026-09-27 left nothing — the links were bare URLs. A click that then meets the login wall is visible only as email_clicked with no view row after it.",
+  },
+  {
+    surface: "Browser notifications (the due nudge by push)",
+    via: "push_sends (the send) + push_subscriptions (who opted in) + user_activity push_clicked via the same /api/e/<token> redirect, one per send — from 2026-10-01 (migration 0128)",
+    kinds: ["push_clicked"],
+    tracked: "partial",
+    lost: "A notification shown but not tapped leaves nothing: the push service confirms delivery to the browser, not display. The ask itself is a stamp on student_profiles.push_prompted_at, not an activity row, so Not now and Turn on are told apart only by whether a subscription row exists.",
   },
   {
     surface: "Saved questions (/saved)",
