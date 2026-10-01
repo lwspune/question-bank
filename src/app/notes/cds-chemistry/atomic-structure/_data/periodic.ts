@@ -113,6 +113,10 @@ export const CDS_CH_AT_PERIODIC_NOTE: SubtopicNote = {
           title: "Sn is tin, Sb is antimony",
           body: "Tin is **Sn** (stannum). **Sb** is antimony, and **Ga** is gallium, not gold. Gold is **Au**.",
         },
+        {
+          title: "Lanthanoids fill 4f, actinoids 5f",
+          body: "Samarium (Sm) is a **lanthanoid**; neptunium (Np) is an **actinoid**. Osmium (Os) is a d-block transition metal and caesium (Cs) an alkali metal. Match-the-list options swap the two f-series.",
+        },
       ],
     },
     {

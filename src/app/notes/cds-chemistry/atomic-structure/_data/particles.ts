@@ -147,6 +147,12 @@ export const CDS_CH_AT_PARTICLES_NOTE: SubtopicNote = {
         { prompt: "Is K⁺ isoelectronic with Ar?", answer: "Yes — both have 18 electrons" },
         { prompt: "Which of Na⁺, Cl⁻, Ca²⁺ is isoelectronic with neon?", answer: "Na⁺" },
       ],
+      traps: [
+        {
+          title: "Count the ion's electrons, not the atom's",
+          body: "Magnesium has 12 electrons, but **Mg²⁺ has 10**. So Mg²⁺ belongs with neon, not with the 18-electron ions such as Cl⁻ and K⁺.",
+        },
+      ],
     },
   ],
 };
