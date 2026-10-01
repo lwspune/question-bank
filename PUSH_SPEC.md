@@ -2,7 +2,7 @@
 
 **Written for:** a Claude coding session implementing this in the `question-bank` repo, with no access to the conversation that produced it. Everything you need is here or in the files it names. Read CLAUDE.md first (always loaded), then this file end to end, then ENGAGEMENT_SPEC.md §C2. Present your plan to the user before writing code; follow TDD on every pure part; do not use subagents.
 
-**Status:** specified 2026-10-01, copy and icon revised against the mockups the same day; implementation started 2026-10-01 on `feat/browser-push`. Decided by the user on 2026-09-30 after the email channel was measured (see §1). The three defaults in §2 were offered to the user as defaults and not changed — treat them as decided.
+**Status:** specified 2026-10-01, copy and icon revised against the mockups the same day; **BUILT the same day on `feat/browser-push`** (migration 0128 applied to prod). Three departures from the text below, each recorded where it applies: (1) push sends use the email's OWN dedupe key format, with no `push:` prefix, in their own table — the union of both tables then feeds `selectDueNudges` unchanged; (2) the sender tries EVERY stored subscription, not only `failed_at is null` ones, because a failing row is deleted after `PUSH_MAX_FAILS` and filtering on `failed_at` would drop it after one; (3) the two browser helpers live in `lib/push/browser.ts`, because `core.ts` reaches `node:crypto` through `lib/email/click.ts` and cannot enter a client bundle. Decided by the user on 2026-09-30 after the email channel was measured (see §1). The three defaults in §2 were offered to the user as defaults and not changed — treat them as decided.
 
 ---
 
@@ -63,7 +63,7 @@ create table public.push_sends (                    -- the log, the shape of ema
   user_id          uuid not null references auth.users(id) on delete cascade,
   subscription_id  uuid references public.push_subscriptions(id) on delete set null,
   kind             text not null check (kind in ('due_nudge')),
-  dedupe_key       text not null unique,             -- push:due_nudge:<userId>:<IST day>
+  dedupe_key       text not null unique,             -- due_nudge:<userId>:<IST day> — the email's format (as built)
   click_token      text unique,                       -- same mint as email (newClickToken), looked up by /api/e
   status           text not null check (status in ('sent','failed','gone')),  -- gone = 404/410, the subscription was deleted
   status_code      int,
@@ -116,7 +116,7 @@ export function buildDuePushPayload(input: { summary: DueSummary; clickToken: st
 /** JSON string of the payload, asserted < 3500 bytes (web-push's 4 KB cap, with headroom). */
 export function serializePayload(p: PushPayload): string;
 
-export function pushDedupeKey(userId: string, now: Date): string;   // `push:${dueNudgeDedupeKey(userId, now)}` — the email's IST-day key, prefixed
+// (As built: no pushDedupeKey — a push send uses dueNudgeDedupeKey, the email's own key, in push_sends.)
 
 export type DeliveryOutcome = "sent" | "gone" | "failed";
 /** 200/201 → sent. 404/410 → gone (delete the subscription). Everything else → failed (keep, fail_count+1). A thrown non-HTTP error → failed. */
@@ -129,7 +129,7 @@ export function isIosNotStandalone(userAgent: string, standalone: boolean): bool
 export function urlBase64ToUint8Array(base64: string): Uint8Array;   // the VAPID public key → applicationServerKey
 ```
 
-Test cases to pin: endpoint must be https and ≤ 2048; missing/short keys rejected; userAgent truncated; payload under the cap with 10 chapters; title singular at 1 and plural above, and short enough not to truncate (≤ 34 chars at a 3-digit total); time line at 1, 3, 5 and 40; body with 1, 3 and 5 chapters (the "+K more" count is CHAPTERS left out, not questions); icon and badge paths present; dedupe key carries the IST day and the `push:` prefix; every status code class; drop at exactly `PUSH_MAX_FAILS`; iPad/iPhone UAs with `standalone` true vs false; the base64url conversion against a known vector.
+Test cases to pin: endpoint must be https and ≤ 2048; missing/short keys rejected; userAgent truncated; payload under the cap with 10 chapters; title singular at 1 and plural above, and short enough not to truncate (≤ 34 chars at a 3-digit total); time line at 1, 3, 5 and 40; body with 1, 3 and 5 chapters (the "+K more" count is CHAPTERS left out, not questions); icon and badge paths present; one-a-day across channels (a push sent today blocks the email run and the reverse); every status code class; drop at exactly `PUSH_MAX_FAILS`; iPad/iPhone UAs with `standalone` true vs false; the base64url conversion against a known vector.
 
 **Email selection gains one skip reason.** In `src/lib/email/dueNudge.ts`, `SelectInput` gets `pushUsers?: ReadonlySet<string>` and `NudgeSkipReason` gets `"has-push"`, checked right after `opted-out` (a subscribed student is skipped by the email run). Add the case to `tests/email-due-nudge.test.ts`. The `priorSends` the email run reads must INCLUDE push sends (so the 3-day gap and the 3-unanswered backoff count across both transports): extend `readPriorSends` in `src/lib/email/service.ts` to read `push_sends` too and map rows to the same shape (`kind: "due_nudge"`), or add `readPriorPushSends` and concatenate in both senders — your call, state it.
 
@@ -155,7 +155,7 @@ Test cases to pin: endpoint must be https and ≤ 2048; missing/short keys rejec
 
 Mirror `scripts/email/send-due-nudge.ts` line for line in shape: `--apply` (REAL SENDS; lives ONLY in the workflow), `--only=<email>`, `--limit=N`, `--report`, dry-run default printing the skip-reason histogram. Add `--self-test=<email>`: sends a fixed `{ title: "PYQ Vault test", body: "Notifications are working.", url: clickUrl(token, "/me") }` to every live subscription of that user and writes NO `push_sends` row (the `--sample-to` precedent — a test must not burn the day's dedupe key). The self-test is the browser check and may target a staff account; the real send never does, because `readStudents` excludes `org_members`.
 
-Flow: `readStudents` + `readPriorSends` (both transports) + `readDueCandidates` → `readLiveSubscriptions(db)` (ALL rows with `failed_at is null`, PAGED — never a bare `.select()`; group by user) → `selectDueNudges` over candidates INTERSECTED with subscribed users (a student with no live subscription is the email run's) → for each pick: mint `newClickToken()`, `buildDuePushPayload`, then for EACH of the user's live subscriptions `webpush.sendNotification(sub, serializePayload(p), { TTL: PUSH_TTL_SECONDS, urgency: "normal" })` → `classifyDelivery` → `gone`: delete the subscription row; `failed`: `fail_count+1`, `failed_at=now`, drop at `PUSH_MAX_FAILS`; `sent`: reset `fail_count`. Write ONE `push_sends` row per pick (status = best outcome across that user's subscriptions; `subscription_id` = the one that succeeded), `dedupe_key = pushDedupeKey(userId, now)`, `metadata: { due, top, devices: n }`. Throttle 100 ms between sends. `--report`: sends · tapped (`push_clicked` joined on `push_sends.id` — copy `countClickedSends` in `src/lib/email/dueNudgeService.ts`, ONE pass, no `.in()` over ids) · drilled within 24 h.
+Flow: `readStudents` + `readPriorSends` (both transports) + `readDueCandidates` → `readSubscriptions(db)` (ALL rows — as built; see Status — PAGED — never a bare `.select()`; group by user) → `selectDueNudges` over candidates INTERSECTED with subscribed users (a student with no live subscription is the email run's) → for each pick: mint `newClickToken()`, `buildDuePushPayload`, then for EACH of the user's live subscriptions `webpush.sendNotification(sub, serializePayload(p), { TTL: PUSH_TTL_SECONDS, urgency: "normal" })` → `classifyDelivery` → `gone`: delete the subscription row; `failed`: `fail_count+1`, `failed_at=now`, drop at `PUSH_MAX_FAILS`; `sent`: reset `fail_count`. Write ONE `push_sends` row per pick (status = best outcome across that user's subscriptions; `subscription_id` = the one that succeeded), `dedupe_key = p.dedupeKey` (the selection's own key), `metadata: { due, top, devices: n }`. Throttle 100 ms between sends. `--report`: sends · tapped (`push_clicked` joined on `push_sends.id` — copy `countClickedSends` in `src/lib/email/dueNudgeService.ts`, ONE pass, no `.in()` over ids) · drilled within 24 h.
 
 `web-push` setup: `webpush.setVapidDetails(process.env.VAPID_SUBJECT!, process.env.VAPID_PUBLIC_KEY!, process.env.VAPID_PRIVATE_KEY!)`; fail loudly at start if any is missing (the `emailEnv()` precedent). Dependencies: `web-push` + `@types/web-push` (dev). Under `tsx` it is CJS; `import webpush from "web-push"` works with the repo's `esModuleInterop`.
 

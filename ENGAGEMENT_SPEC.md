@@ -61,7 +61,7 @@ is why the share loop already keeps the score opt-in).
 | 4 | Daily set: five questions, due drill first then unseen from weak subtopics | **SHIPPED 2026-09-24** as a FILL of `/drill` (no new route): due first, then unseen PYQs from the two weakest subtopics, then the target exam |
 | 10 | Feed the drill from /browse, notes checkpoints and public quizzes | **PARKED by the user, 2026-09-24** (too much hassle for the return). Not to be re-proposed unless the drill runs dry of mock misses. |
 | 7 | Teacher-assigned paper with a deadline for a batch | **SHIPPED 2026-09-24** — `mock_assignments` (migration 0115), teacher card on the batch roster, due list on `/me`, line on the mock page |
-| 8 | Content-led nudges at 12:30 IST | **SHIPPED 2026-09-24** — email only (`npm run email:due-nudge`, cron `.github/workflows/due-nudge.yml`, migration 0114) |
+| 8 | Content-led nudges at 12:30 IST | **SHIPPED 2026-09-24** — email (`npm run email:due-nudge`, cron `.github/workflows/due-nudge.yml`, migration 0114); **browser push added 2026-10-01** for students who opt in (`npm run push:due-nudge`, migration 0128, PUSH_SPEC.md) |
 | 9 | Exam date and days-to-exam | **SHIPPED 2026-09-24** — `src/lib/exam/calendar.ts` + `student_profiles.exam_date` (0116); every calendar date is EXPECTED, not official, and says so |
 | — | Per-question peer rates on the findings card | **SHIPPED 2026-09-24** — the result page passes a real peer map for that attempt's questions; question level only |
 | 3 | Short sittings as the default first unit | **Declined by the user, 2026-09-24.** Not built. |
@@ -246,6 +246,18 @@ Deadline pull only, no ranking.
 **SHIPPED 2026-09-24, email only.** Who: students with a due drill pool, not opted out, no drill activity in the last 24 hours, no nudge in the last 3 days, and no more after three unanswered nudges until they drill again; one a day at most (the dedupe key carries the IST day, enforced by the UNIQUE index). What: subject leads with the top chapter and its count ("3 Trigonometry questions are waiting"), body lists the chapters and the cost of a drill, one "Fix them" link to `/drill`, never "we miss you". When: 07:00 UTC = 12:30 IST, `--apply --limit=200` in the workflow only. Measure: `npm run email:due-nudge -- --report` prints recipients who drilled within 24 hours of a send. **Needs the same two repo secrets as the mock report (`RESEND_API_KEY`, `EMAIL_FROM`).** Pure core `src/lib/email/dueNudge.ts` (TDD), reads `dueNudgeService.ts` (one pass over `user_activity`, the drill's own fold), template `buildDueNudgeEmail`. The decision was: email only (Resend, exists) or WhatsApp too (no
 provider yet). Rule either way: send only when something is due, name the
 content, one per day at most, 12:30 IST, and never "we miss you".
+
+**Browser push (2026-10-01, migration 0128, [PUSH_SPEC.md](PUSH_SPEC.md)).** The
+email was measured on 2026-09-30 as moving nothing, and WhatsApp was declined, so
+the SAME nudge now also goes as a browser notification to students who turn it on
+— asked once on the mock result page (push first, the WhatsApp card as its
+fallback when the browser cannot push), toggled on `/account`. A subscribed
+student gets push INSTEAD of email (the email run skips them as `has-push`); both
+channels share one send history, so every rule above holds across them. The
+notification reads "N mistakes are waiting in Fix" with the chapters and a time
+that follows the count. Measure: `npm run push:due-nudge -- --report` —
+subscribers, sends, taps, drills within 24 h. It is retention for students who
+come back; it cannot reach the dormant backlog.
 
 ### C3. Exam date (item 9)
 

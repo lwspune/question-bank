@@ -141,7 +141,19 @@ npm run email:welcome -- --report                  # recipients with any activit
 
 ### Outbound email — click tracking (2026-09-27, migration 0122)
 
-Every CTA in the mock report, the due nudge and the welcome goes through `https://www.pyqvault.com/api/e/<token>?to=<path>`; the token is on the `email_sends` row (`click_token`) and a click writes one `email_clicked` row to `user_activity` for that student, then redirects. `npm run email:due-nudge -- --report` and `npm run email:welcome -- --report` print `clicked` beside their conversion: **clicked but no drill/activity after = the login wall** (the targets are sign-in gated and a phone reader is often signed out); **not clicked = deliverability or the copy** — check Resend's dashboard for bounces/spam before touching either. Opens are not recorded (no pixel), by choice. Resend's own click tracking stays OFF — turning it on would rewrite the links to Resend's domain and the click would leave our table.
+Every CTA in the mock report, the due nudge and the welcome goes through `https://www.pyqvault.com/api/e/<token>?to=<path>` (so does a browser notification's tap, whose token is on a `push_sends` row and writes `push_clicked` — 0128); the token is on the `email_sends` row (`click_token`) and a click writes one `email_clicked` row to `user_activity` for that student, then redirects. `npm run email:due-nudge -- --report` and `npm run email:welcome -- --report` print `clicked` beside their conversion: **clicked but no drill/activity after = the login wall** (the targets are sign-in gated and a phone reader is often signed out); **not clicked = deliverability or the copy** — check Resend's dashboard for bounces/spam before touching either. Opens are not recorded (no pixel), by choice. Resend's own click tracking stays OFF — turning it on would rewrite the links to Resend's domain and the click would leave our table.
+
+### Browser push — the due-queue nudge (DAILY CRON, 2026-10-01, migration 0128)
+
+A student who taps **Turn on** on the mock result page (or on `/account`) gets the due nudge as a browser notification instead of an email. Spec: [PUSH_SPEC.md](PUSH_SPEC.md). The cron (`.github/workflows/due-nudge.yml`) runs `npm run push:due-nudge -- --apply` FIRST, then the email; the email run skips every subscribed student (`has-push`) and both read each other's send log, so one-a-day holds across channels.
+
+**Secrets — three, generated once with `npx web-push generate-vapid-keys`:** `VAPID_SUBJECT` (`mailto:` the owner), `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`. They live in `.env.local`. **Vercel gets the PUBLIC key only** (the result page and `/account` pass it to the browser as a prop; nothing on Vercel sends). **GitHub repo secrets get all three** (the cron sends). Until the public key is on Vercel the ask card and the account card render nothing; until the GitHub secrets exist the push step fails loudly and the email step still runs.
+
+**Rotating the keys invalidates every subscription** (a browser's subscription is bound to the public key) — every student would have to turn notifications on again. Do not rotate without a reason.
+
+**Test it on a real browser:** turn notifications on at `/account`, then `npm run push:due-nudge -- --self-test=<your email>`. It sends a "PYQ Vault test" notification to every browser that account subscribed and writes NO `push_sends` row, so it cannot burn the day's nudge. Staff accounts can self-test; the real run never reaches staff. `-- --report` prints subscribed browsers, sends, taps and drills within 24 h.
+
+**What is not seen:** delivery is confirmed to the browser, not display; a notification shown and dismissed leaves nothing. iPhone browsers cannot receive push unless the site is added to the Home Screen; the account card says so.
 
 ### Outbound email — the per-attempt mock report (DAILY CRON, 2026-09-20)
 
