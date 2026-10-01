@@ -11,6 +11,7 @@ import {
   ChevronRight,
   FileSpreadsheet,
   FileText,
+  FlaskConical,
   Flag,
   Gem,
   GraduationCap,
@@ -360,6 +361,14 @@ function QuickActions({
           icon={<TrendingUp className="h-5 w-5" aria-hidden />}
           title="Product/market fit"
           description="Cohort retention, feature adoption and which exam segment is actually sticking — plus what we still cannot see."
+        />
+      )}
+      {isSuperadmin && (
+        <ActionCard
+          href="/dashboard/growth"
+          icon={<FlaskConical className="h-5 w-5" aria-hidden />}
+          title="Growth"
+          description="The North Star, signups by week, and each growth experiment against its own decision rule."
         />
       )}
       {isSuperadmin && (
