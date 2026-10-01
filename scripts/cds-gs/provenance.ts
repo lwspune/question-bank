@@ -60,3 +60,42 @@ export function stampNote(existing: string | null, hasAnswerKey: boolean): strin
   if (ALL_MARKERS.some((m) => note.includes(m))) return note;
   return `${note}${provenanceClause(hasAnswerKey)}`;
 }
+
+/**
+ * The bracket that ends every solution. Same rule as the note: chosen per paper,
+ * from whether it has an `answerKey`.
+ *
+ * Until 2026-10-01 this lived in lib.ts hardcoded to the derived wording, so
+ * the 120 rows of CDS (II) 2026 shipped saying "no official key" in their
+ * solution while their note said the answer came from the official key. The
+ * keyed wording makes no claim about two blind passes or a confidence: that
+ * paper's blindness was ordering only, and the key, not a confidence, is what
+ * the answer rests on.
+ */
+export function solutionTail(o: { hasAnswerKey: boolean; confidence: string; agreed: boolean }): string {
+  if (o.hasAnswerKey) {
+    return (
+      "[Answer from the official UPSC provisional answer key for this sitting. " +
+      "The explanation was written blind before the key was opened and checked against it.]"
+    );
+  }
+  return (
+    `[Derived answer — this booklet carries no official key. ` +
+    `Two independent blind derivations ${o.agreed ? "agreed" : "were reconciled by hand"}; ` +
+    `confidence: ${o.confidence}. Verify before relying on it.]`
+  );
+}
+
+/** A derived tail at the very END of a solution (either agreed or reconciled). */
+const DERIVED_TAIL_AT_END = /\s*\[Derived answer — this booklet carries no official key\.[^\]]*\]\s*$/;
+
+/**
+ * Repair a solution already in the bank: on a keyed paper, replace a trailing
+ * derived tail with the keyed one. Idempotent; a key-less row, or a solution
+ * without a recognised tail at its end, is returned unchanged.
+ */
+export function restampSolution(solution: string, hasAnswerKey: boolean): string {
+  if (!hasAnswerKey || !DERIVED_TAIL_AT_END.test(solution)) return solution;
+  const tail = solutionTail({ hasAnswerKey: true, confidence: "", agreed: true });
+  return `${solution.replace(DERIVED_TAIL_AT_END, "")} ${tail}`;
+}

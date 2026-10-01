@@ -88,8 +88,8 @@ async function main() {
 
     // 3. every row has a derived solution carrying its provenance
     if (!r.solution || !r.solution.trim()) fail.push(`Q${n}: no solution`);
-    else if (!/no official key/i.test(r.solution)) {
-      warn.push(`Q${n}: solution is missing the derived-answer provenance bracket`);
+    else if (!(paper.answerKey ? /official UPSC provisional answer key/ : /no official key/i).test(r.solution)) {
+      warn.push(`Q${n}: solution is missing its ${paper.answerKey ? "official-key" : "derived-answer"} provenance bracket`);
     }
 
     // 4. taxonomy is in the catalog, and the chapter belongs to ITS OWN subject

@@ -13,6 +13,7 @@
 // A GK paper is 120 standalone MCQs. See config.ts's header.
 import type { RawRow } from "../../src/lib/upload/validate";
 import type { Catalog } from "./config";
+import { solutionTail } from "./provenance";
 
 export type Option = { label: string; text: string };
 
@@ -269,17 +270,6 @@ export function crosstab(
 }
 
 /**
- * The provenance bracket every derived answer carries. This corpus has no
- * printed key and no external anchor, and the answer-key export prints
- * `solution` verbatim — so a reader of a downloaded paper sees this too, which
- * is the intent.
- */
-const provenance = (confidence: string, agreed: boolean) =>
-  `[Derived answer — this booklet carries no official key. ` +
-  `Two independent blind derivations ${agreed ? "agreed" : "were reconciled by hand"}; ` +
-  `confidence: ${confidence}. Verify before relying on it.]`;
-
-/**
  * Assemble bank rows. A question with no derivation is DROPPED, not defaulted —
  * an answer nobody derived must not be invented at assembly time, and the
  * coverage gate below turns the omission into a loud "missing Qn".
@@ -287,7 +277,7 @@ const provenance = (confidence: string, agreed: boolean) =>
 export function buildRecords(
   questions: TQ[],
   derivations: Derivation[],
-  opts: { reconciled?: Set<number> } = {}
+  opts: { reconciled?: Set<number>; answerKey?: boolean } = {}
 ): RawRow[] {
   const byNumber = new Map(derivations.map((d) => [d.number, d]));
   const rows: RawRow[] = [];
@@ -310,7 +300,11 @@ export function buildRecords(
       optionD: opt("D"),
       answer: d.answer.toUpperCase(),
       difficulty: q.difficulty,
-      solution: `${d.reasoning.trim()} ${provenance(d.confidence.toUpperCase(), agreed)}`.trim(),
+      solution: `${d.reasoning.trim()} ${solutionTail({
+        hasAnswerKey: !!opts.answerKey,
+        confidence: d.confidence.toUpperCase(),
+        agreed,
+      })}`.trim(),
     });
   }
   return rows;
