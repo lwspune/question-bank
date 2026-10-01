@@ -19,6 +19,9 @@ tool below writes those AND the bank, so a rebuild cannot undo a change.
 3. Solution repairs: `scripts/cds-gs/fix-solutions.ts <spec.json>` (dry run, then `--apply`).
 4. Re-dump, author `src/app/notes/<route>/<chapter>/_data/` (pages + `chapter.ts`): plain-text
    fields without LaTeX, intro opens on a bank fact, ≥12 traps per chapter, every table cell filled.
+   **Count every number from the dump with a one-line script before writing it** ("three of them
+   from 2025 (I)", "asked twice"). The intro-count gate checks only "N questions" claims, never a
+   year or a repeat count, and two such hand counts were wrong in the first seven chapters.
 5. `python scripts/notes-pipeline/cds-gk/register.py <spec.json>` (index.ts, route pages, subject
    landing, registry entry). Then `npx tsx scripts/notes-pipeline/jee/tag-chapter.ts <tag.json>`
    (100% of rows) and `npm run notes:order`.

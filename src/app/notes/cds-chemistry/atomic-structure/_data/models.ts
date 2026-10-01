@@ -6,7 +6,7 @@ export const CDS_CH_AT_MODELS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "What Dalton's theory explained and could not, what Rutherford's gold-foil experiment found, and the one problem Bohr's model fixed.",
   whyItMatters:
-    "Six CDS questions, four of them in a single 2025 (I) paper. Three ask what the gold-foil experiment discovered (the nucleus), and two ask what a model could NOT explain.",
+    "Six CDS questions, three of them in a single 2025 (I) paper. Three ask what the gold-foil experiment discovered (the nucleus), and two ask what a model could NOT explain.",
   concepts: [
     {
       kind: "reference" as const,
