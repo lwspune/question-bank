@@ -29,6 +29,7 @@ import { PLAYBOOKS as MHT_CET_PHYSICS_PLAYBOOKS } from "@/app/guide/mht-cet-phys
 import { PLAYBOOKS as MHT_CET_CHEMISTRY_PLAYBOOKS } from "@/app/guide/mht-cet-chemistry/_data/playbooks";
 import { PLAYBOOKS as CDS_MATHS_PLAYBOOKS } from "@/app/guide/cds-maths/_data/playbooks";
 import { PLAYBOOKS as JEE_MAINS_MATHS_PLAYBOOKS } from "@/app/guide/jee-mains-maths/_data/playbooks";
+import { PLAYBOOKS as JEE_MAINS_CHEMISTRY_PLAYBOOKS } from "@/app/guide/jee-mains-chemistry/_data/playbooks";
 import { getSubtopicNotesEntry } from "@/lib/notes/subtopicSlugRegistry";
 import { getNotesChapterEntry } from "./notesIndex";
 import { getPrincipleName, getConceptName } from "./tagNames";
@@ -113,6 +114,7 @@ const CHAPTER_KEYED_GUIDES: ReadonlyArray<{
   { exam: "CDS", subject: "Mathematics", guideSlug: "cds-maths", playbooks: CDS_MATHS_PLAYBOOKS },
   // JEE Mains Maths is Template C; subject literal "Maths", like MHT-CET.
   { exam: "JEE Mains", subject: "Maths", guideSlug: "jee-mains-maths", playbooks: JEE_MAINS_MATHS_PLAYBOOKS },
+  { exam: "JEE Mains", subject: "Chemistry", guideSlug: "jee-mains-chemistry", playbooks: JEE_MAINS_CHEMISTRY_PLAYBOOKS },
 ];
 
 const chapterKeyedKey = (exam: string, subject: string) => `${exam}::${subject}`;
