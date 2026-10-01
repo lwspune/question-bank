@@ -1290,6 +1290,11 @@ import {
   CDS_CH_MOLE_NOTES,
   CDS_CH_MOLE_SLUGS,
 } from "@/app/notes/cds-chemistry/mole-concept/_data";
+import {
+  CDS_CH_EVERYDAY_CHAPTER,
+  CDS_CH_EVERYDAY_NOTES,
+  CDS_CH_EVERYDAY_SLUGS,
+} from "@/app/notes/cds-chemistry/everyday-life/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4134,6 +4139,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_CH_MOLE_CHAPTER,
     notes: CDS_CH_MOLE_NOTES,
     slugs: CDS_CH_MOLE_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Chemistry",
+    subjectRoute: "cds-chemistry",
+    subjectDisplay: "CDS Chemistry",
+    chapterSlug: "everyday-life",
+    chipLabel: "Chemistry in Everyday Life notes",
+    chapter: CDS_CH_EVERYDAY_CHAPTER,
+    notes: CDS_CH_EVERYDAY_NOTES,
+    slugs: CDS_CH_EVERYDAY_SLUGS,
   },
 ];
 
