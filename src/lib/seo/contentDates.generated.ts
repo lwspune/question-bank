@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 264
+ * Entries: 275
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -28,6 +28,17 @@ export const CONTENT_DATES: ContentDateMap = {
   "/guide/nda-maths": "2026-09-19T14:48:07+05:30",
   "/guide/nda-physics": "2026-09-14T14:45:43+05:30",
   "/guide/nda-polity": "2026-09-14T14:45:43+05:30",
+  "/notes/cds-chemistry/acids-bases-salts": "2026-10-02T01:09:44+05:30",
+  "/notes/cds-chemistry/atomic-structure": "2026-10-02T01:09:44+05:30",
+  "/notes/cds-chemistry/carbon-compounds": "2026-10-02T01:09:44+05:30",
+  "/notes/cds-chemistry/chemical-bonding": "2026-10-02T01:16:54+05:30",
+  "/notes/cds-chemistry/chemical-reactions": "2026-10-02T01:09:44+05:30",
+  "/notes/cds-chemistry/everyday-life": "2026-10-02T01:09:44+05:30",
+  "/notes/cds-chemistry/hydrogen-water": "2026-10-02T01:24:54+05:30",
+  "/notes/cds-chemistry/industrial-chemistry": "2026-10-02T01:09:44+05:30",
+  "/notes/cds-chemistry/matter-states": "2026-10-02T01:09:44+05:30",
+  "/notes/cds-chemistry/metals-non-metals": "2026-10-02T01:09:44+05:30",
+  "/notes/cds-chemistry/mole-concept": "2026-10-02T00:58:01+05:30",
   "/notes/cds-maths/algebraic-identities": "2026-09-29T10:56:00+05:30",
   "/notes/cds-maths/averages": "2026-09-29T14:08:54+05:30",
   "/notes/cds-maths/circles": "2026-09-29T14:02:53+05:30",
