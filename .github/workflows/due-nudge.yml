@@ -21,6 +21,13 @@ name: Send due-queue nudges
 # --apply lives HERE and nowhere else, so `npm run email:due-nudge` by hand
 # stays a dry run. --limit caps the blast radius: the first run has every
 # eligible student in the pool at once.
+#
+# BROWSER PUSH RUNS FIRST (PUSH_SPEC.md, 2026-10-01). A student who turned
+# notifications on gets the nudge by push and the email run then skips them
+# (has-push), so nobody gets both. The two runs read each other's send log, so
+# one-a-day, the 3-day gap and the backoff hold ACROSS channels. Until the
+# three VAPID secrets exist the push step fails loudly and the email step
+# still runs (continue-on-error), so a missing secret cannot cost the email.
 
 on:
   schedule:
@@ -41,6 +48,16 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      - name: Push due-queue nudges to subscribed browsers
+        continue-on-error: true
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT }}
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+        run: npm run push:due-nudge -- --apply --limit=200
 
       - name: Mail due-queue nudges
         env:

@@ -139,11 +139,13 @@ export async function readNudgeConversion(
  * How many of `sendIds` have an `email_clicked` row (one per send, by
  * dedupe_key — see /api/e/[token]). Reads the clicks since `earliest` in one
  * pass rather than an `.in()` over ids, which overflows the URL past ~200.
+ * `kind` = push_clicked counts notification taps on push_sends ids (0128).
  */
 export async function countClickedSends(
   db: SupabaseClient,
   sendIds: readonly string[],
-  earliest: string
+  earliest: string,
+  kind: "email_clicked" | "push_clicked" = "email_clicked"
 ): Promise<number> {
   const want = new Set(sendIds);
   let clicked = 0;
@@ -151,7 +153,7 @@ export async function countClickedSends(
     const { data, error } = await db
       .from("user_activity")
       .select("ref_id")
-      .eq("kind", "email_clicked")
+      .eq("kind", kind)
       .gte("created_at", earliest)
       .order("created_at", { ascending: true })
       .range(from, from + PAGE - 1);
