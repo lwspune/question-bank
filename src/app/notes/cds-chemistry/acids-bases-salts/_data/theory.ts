@@ -175,7 +175,7 @@ export const CDS_CH_AB_THEORY_NOTE: SubtopicNote = {
       },
       practiceSet: [
         { prompt: "Is the oxide of a non-metal usually acidic or basic?", answer: "Acidic" },
-        { prompt: "Name an oxide that reacts with both hydrochloric acid and sodium hydroxide.", answer: "Zinc oxide or aluminium oxide" },
+        { prompt: "Is phosphorus pentoxide, P₄O₁₀, acidic or basic?", answer: "Acidic" },
         { prompt: "Is magnesium oxide acidic, basic or amphoteric?", answer: "Basic" },
         { prompt: "Name a neutral oxide of carbon.", answer: "Carbon monoxide (CO)" },
       ],

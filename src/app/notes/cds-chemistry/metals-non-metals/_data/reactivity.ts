@@ -55,7 +55,7 @@ export const CDS_CH_MN_REACTIVITY_NOTE: SubtopicNote = {
         { prompt: "Which is more reactive, aluminium or iron?", answer: "Aluminium" },
         { prompt: "Does copper give hydrogen with dilute HCl?", answer: "No — copper is below hydrogen" },
         { prompt: "Which gas does a carbonate give with dilute acid?", answer: "Carbon dioxide" },
-        { prompt: "Put Zn, Mg and Fe in decreasing order of reactivity.", answer: "Mg > Zn > Fe" },
+        { prompt: "Put K, Cu and Zn in decreasing order of reactivity.", answer: "K > Zn > Cu" },
       ],
       traps: [
         {

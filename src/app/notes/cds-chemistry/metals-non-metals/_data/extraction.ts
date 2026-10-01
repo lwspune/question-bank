@@ -49,7 +49,7 @@ export const CDS_CH_MN_EXTRACTION_NOTE: SubtopicNote = {
       },
       practiceSet: [
         { prompt: "What is the ore of aluminium?", answer: "Bauxite" },
-        { prompt: "What is the process of heating a sulphide ore in excess air called?", answer: "Roasting" },
+        { prompt: "From which ore is iron extracted?", answer: "Haematite (Fe₂O₃)" },
         { prompt: "Why is sodium not obtained by reducing its oxide with carbon?", answer: "It is too reactive; it is won by electrolysis of the molten chloride" },
         { prompt: "Which ore is mercury obtained from?", answer: "Cinnabar (HgS)" },
       ],
@@ -94,7 +94,7 @@ export const CDS_CH_MN_EXTRACTION_NOTE: SubtopicNote = {
       pyqExampleId: "655070a3-36c8-421e-8b0a-cc342cdfb25e",
       practiceSet: [
         { prompt: "What are the constituents of brass?", answer: "Copper and zinc" },
-        { prompt: "Which alloy is used to join electrical wires?", answer: "Solder (lead and tin)" },
+        { prompt: "What are the constituents of bronze?", answer: "Copper and tin" },
         { prompt: "What is an amalgam?", answer: "An alloy of mercury" },
         { prompt: "Which metals are added to iron to make stainless steel?", answer: "Chromium and nickel" },
       ],

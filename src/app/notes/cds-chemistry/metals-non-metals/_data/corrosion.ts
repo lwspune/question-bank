@@ -44,7 +44,7 @@ export const CDS_CH_MN_CORROSION_NOTE: SubtopicNote = {
         answer: "No — without water, iron does not rust.",
       },
       practiceSet: [
-        { prompt: "What is the black coating on old silver?", answer: "Silver sulphide, Ag₂S" },
+        { prompt: "What is rust, chemically?", answer: "Hydrated iron(III) oxide, Fe₂O₃·xH₂O" },
         { prompt: "What two things does iron need in order to rust?", answer: "Oxygen and water" },
         { prompt: "What colour coating forms on copper in moist air?", answer: "Green (basic copper carbonate)" },
       ],
@@ -84,8 +84,7 @@ export const CDS_CH_MN_CORROSION_NOTE: SubtopicNote = {
       pyqExampleId: "8d4adaab-3641-40a2-93da-e3763afa3d5a",
       practiceSet: [
         { prompt: "Which metal is used to galvanise iron?", answer: "Zinc" },
-        { prompt: "In anodising, is the aluminium article the anode or the cathode?", answer: "The anode" },
-        { prompt: "At which electrode is oxygen released during anodising?", answer: "The anode" },
+        { prompt: "Why does a zinc coat protect iron even after it is scratched?", answer: "Zinc is more reactive, so it corrodes first" },
       ],
       traps: [
         {

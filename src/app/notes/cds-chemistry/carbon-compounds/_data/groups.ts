@@ -45,7 +45,7 @@ export const CDS_CH_CB_GROUPS_NOTE: SubtopicNote = {
         answer: "Aldehyde, alcohol, carboxylic acid.",
       },
       practiceSet: [
-        { prompt: "What is the functional group of a carboxylic acid?", answer: "–COOH" },
+        { prompt: "What is the functional group of an aldehyde?", answer: "–CHO" },
         { prompt: "What class does CH₃COCH₃ belong to?", answer: "Ketone" },
         { prompt: "Into what does the liver oxidise methanol?", answer: "Methanal (formaldehyde)" },
       ],
@@ -123,7 +123,7 @@ export const CDS_CH_CB_GROUPS_NOTE: SubtopicNote = {
       practiceSet: [
         { prompt: "Which metal is fused with the compound in Lassaigne's test?", answer: "Sodium" },
         { prompt: "What colour is the silver chloride precipitate?", answer: "White" },
-        { prompt: "Which halogen does Lassaigne's test miss, and why?", answer: "Fluorine — silver fluoride is soluble" },
+        { prompt: "What colour is the silver iodide precipitate?", answer: "Yellow" },
       ],
     },
   ],
