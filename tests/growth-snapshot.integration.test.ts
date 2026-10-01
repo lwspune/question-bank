@@ -39,10 +39,12 @@ function istNoon(daysAgo: number): Date {
 type Role = "returner" | "mocker" | "viewer" | "fresh" | "staff";
 type Fixture = { id: string; role: Role; arm: OnboardingArm };
 
-describe.skipIf(!HAS_ENV)("get_growth_snapshot (migration 0129)", () => {
+describe.skipIf(!HAS_ENV)("get_growth_snapshot (migrations 0129, 0130)", () => {
   let admin: SupabaseClient;
   let anonClient: SupabaseClient;
   let orgId = "";
+  let examId = "";
+  const mockIds: string[] = [];
   const fixtures: Fixture[] = [];
   const since = new Date(Date.now() - 30 * DAY).toISOString();
   const shareSince = new Date(Date.now() - 3600_000).toISOString();
@@ -54,6 +56,7 @@ describe.skipIf(!HAS_ENV)("get_growth_snapshot (migration 0129)", () => {
     p_mock_exams: [EXAM],
     p_share_since: shareSince,
     p_share_campaign: CAMPAIGN,
+    p_chapter_exam: EXAM,
   };
   const snapshot = async () => {
     const { data, error } = await admin.rpc("get_growth_snapshot", params);
@@ -130,6 +133,62 @@ describe.skipIf(!HAS_ENV)("get_growth_snapshot (migration 0129)", () => {
       }
     }
 
+    // One chapter test and one full paper on a throwaway exam named EXAM.
+    // returner #0 sits the chapter test (answers 1 of 4, flags 1 unanswered);
+    // the mocker sits the full paper (answers 1 of 4).
+    const { data: exam, error: exErr } = await admin.from("exams").insert({ name: EXAM }).select("id").single();
+    expect(exErr).toBeNull();
+    examId = exam!.id;
+    const { data: qs } = await admin.from("questions").select("id").eq("visibility", "PUBLIC").limit(2);
+    expect(qs?.length).toBe(2);
+    for (const scope of ["sectional", "full"] as const) {
+      const id = randomUUID();
+      mockIds.push(id);
+      const { error } = await admin.from("mock_tests").insert({
+        id,
+        slug: `growthtest-${scope}-${RUN_ID}`,
+        exam_id: examId,
+        paper_code: "maths",
+        pyq_year: 2099, // a full past paper must carry its year (0088)
+        title: `Growth test ${scope} ${RUN_ID}`,
+        duration_secs: 60,
+        marking: { correct: 1, wrong: 0 },
+        sections: [{ key: "mathematics", label: "Mathematics", count: 4 }],
+        questions: [{ position: 1, questionId: qs![0].id, sectionKey: "mathematics", marks: 1, negMarks: 0 }],
+        total_questions: 4,
+        total_marks: 4,
+        status: "draft",
+        source: "pyq",
+        scope,
+      });
+      expect(error).toBeNull();
+    }
+    const sitter = { sectional: fixtures.find((f) => f.role === "returner")!, full: fixtures.find((f) => f.role === "mocker")! };
+    for (const [i, scope] of (["sectional", "full"] as const).entries()) {
+      const { data: att, error: aErr } = await admin
+        .from("mock_attempts")
+        .insert({
+          mock_id: mockIds[i],
+          user_id: sitter[scope].id,
+          expires_at: new Date(Date.now() + 3600_000).toISOString(),
+          status: "submitted",
+          submitted_at: new Date().toISOString(),
+        })
+        .select("id")
+        .single();
+      expect(aErr).toBeNull();
+      // Every row carries every column: a batch insert sends NULL for a key
+      // one row omits, and is_flagged is NOT NULL.
+      const answers: { attempt_id: string; question_id: string; selected_label: string | null; is_flagged: boolean }[] = [
+        { attempt_id: att!.id, question_id: qs![0].id, selected_label: "A", is_flagged: false },
+      ];
+      if (scope === "sectional") {
+        answers.push({ attempt_id: att!.id, question_id: qs![1].id, selected_label: null, is_flagged: true });
+      }
+      const { error: ansErr } = await admin.from("attempt_answers").insert(answers);
+      expect(ansErr).toBeNull();
+    }
+
     const { data: org } = await admin.from("organizations").insert({ name: `__growth_${RUN_ID}` }).select("id").single();
     orgId = org!.id;
     const staff = fixtures.find((f) => f.role === "staff")!;
@@ -139,6 +198,13 @@ describe.skipIf(!HAS_ENV)("get_growth_snapshot (migration 0129)", () => {
 
   afterAll(async () => {
     if (!admin) return;
+    for (const id of mockIds) {
+      const { data: atts } = await admin.from("mock_attempts").select("id").eq("mock_id", id);
+      for (const a of atts ?? []) await admin.from("attempt_answers").delete().eq("attempt_id", a.id);
+      await admin.from("mock_attempts").delete().eq("mock_id", id);
+      await admin.from("mock_tests").delete().eq("id", id);
+    }
+    if (examId) await admin.from("exams").delete().eq("id", examId);
     await admin.from("user_activity").delete().like("dedupe_key", `growthtest:${RUN_ID}:%`);
     if (orgId) {
       await admin.from("org_members").delete().eq("org_id", orgId);
@@ -182,6 +248,22 @@ describe.skipIf(!HAS_ENV)("get_growth_snapshot (migration 0129)", () => {
     expect(s.signupWeeks).toHaveLength(params.p_weeks);
     expect(s.emailDays).toHaveLength(14);
     for (const w of s.weeks) expect(new Date(`${w.weekStart}T00:00:00Z`).getUTCDay()).toBe(1); // Monday
+  });
+
+  it("splits one exam's sittings into chapter tests and full papers, counting real answers only", async () => {
+    const s = await snapshot();
+    expect(s.chapterTests).toHaveLength(params.p_weeks);
+    expect(s.chapterTests.at(-1)).toMatchObject({
+      chapterSittings: 1,
+      chapterStudents: 1,
+      chapterAnswered: 1, // the flagged-but-blank row is not an answer
+      chapterQuestions: 4,
+      fullSittings: 1,
+      fullStudents: 1,
+      fullAnswered: 1,
+      fullQuestions: 4,
+      anyStudents: 2,
+    });
   });
 
   it("cannot be called by anon", async () => {

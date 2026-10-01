@@ -46,6 +46,13 @@ async function main() {
     assert(a.firstPractice + a.firstMock <= a.onboarded, `${a.arm}: first acts > onboarded`);
   }
   assert(raw.chapterShare.signalled <= raw.chapterShare.signups, "chapter share: signalled > signups");
+  assert(raw.chapterTests.length === GROWTH_WEEKS, `chapterTests: ${raw.chapterTests.length} rows`);
+  for (const w of raw.chapterTests) {
+    assert(w.chapterStudents <= w.chapterSittings && w.fullStudents <= w.fullSittings, `week ${w.weekStart}: students > sittings`);
+    assert(w.chapterAnswered <= w.chapterQuestions && w.fullAnswered <= w.fullQuestions, `week ${w.weekStart}: answered > offered`);
+    assert(w.anyStudents <= w.chapterStudents + w.fullStudents, `week ${w.weekStart}: any > chapter + full`);
+    assert(w.anyStudents >= Math.max(w.chapterStudents, w.fullStudents), `week ${w.weekStart}: any < either`);
+  }
 
   const north = s.viewNorthStar(raw.weeks, today);
   console.log(`today (IST) ${today}`);
@@ -65,6 +72,9 @@ async function main() {
     } else if (e.readout === "chapter-share") {
       const v = s.chapterShareVerdict(raw.chapterShare.signups, today, e.liveSince);
       line = `${v.status} — ${v.reason} (${raw.chapterShare.signalled} did something)`;
+    } else if (e.readout === "chapter-tests") {
+      const v = s.chapterTestsVerdict(raw.chapterTests, today, e.liveSince);
+      line = `${v.status} — ${v.reason} | since launch ${JSON.stringify(v.since)} | last full week students ${v.lastFullWeekStudents}`;
     } else if (e.readout === "indexing") {
       const v = s.indexingView(READINGS["google-indexed"].entries);
       line = `${v.status} — ${v.reason}`;
