@@ -63,37 +63,37 @@ export const NUCLEOPHILIC_SUBSTITUTION_NOTE: SubtopicNote = {
       slug: "cethal-nucleophiles-and-products",
       name: "Which Nucleophile Gives Which Product",
       intuition:
-        "The product is the nucleophile bonded through its attacking atom. Aqueous OH⁻ gives the alcohol; alkoxide gives an ether; a silver carboxylate gives an ester; KCN attacks through carbon to give a nitrile while AgCN attacks through nitrogen to give an isocyanide; KNO₂ gives a nitroalkane while AgNO₂ gives an alkyl nitrite. Silver salts favour the more electronegative atom because Ag⁺ pulls the halide off (SN1-like).",
+        "The product is the nucleophile bonded through its attacking atom. Aqueous OH⁻ gives the alcohol; alkoxide gives an ether; a silver carboxylate gives an ester; KCN attacks through carbon to give a nitrile while AgCN attacks through nitrogen to give an isocyanide; KNO₂ gives an alkyl nitrite while AgNO₂ gives a nitroalkane. The ionic potassium salts free the whole ion; the silver salts are largely covalent, so the atom bonded to silver is tied up and the other end attacks: nitrogen in Ag–C≡N, and nitrogen again in Ag–O–N=O.",
       definition:
         "- \\(\\text{R-X} + \\text{aq. NaOH} \\to \\text{R-OH}\\): 2-bromobutane → butan-2-ol (alcoholic KOH would give but-2-ene).\n" +
         "- \\(\\text{R-X} + \\text{R'ONa} \\to \\text{R-O-R'}\\) (Williamson ether synthesis).\n" +
         "- \\(\\text{R-X} + \\text{R'COOAg} \\to \\text{R'COOR}\\): ethyl bromide + silver acetate → ethyl acetate \\(\\text{CH}_3\\text{COOC}_2\\text{H}_5\\); + silver propanoate → ethyl propanoate.\n" +
         "- \\(\\text{R-X} + \\text{KCN (alc.)} \\to \\text{R-CN}\\) (nitrile, C-attack); \\(+ \\text{AgCN} \\to \\text{R-NC}\\) (isocyanide, N-attack).\n" +
-        "- \\(\\text{R-X} + \\text{KNO}_2 \\to \\text{R-NO}_2\\) (nitroalkane); \\(+ \\text{AgNO}_2 \\to \\text{R-O-N=O}\\) (alkyl nitrite).\n" +
+        "- \\(\\text{R-X} + \\text{KNO}_2 \\to \\text{R-O-N=O}\\) (alkyl nitrite, O-attack); \\(+ \\text{AgNO}_2 \\to \\text{R-NO}_2\\) (nitroalkane, N-attack).\n" +
         "- \\(\\text{R-X} + \\text{NH}_3 \\to\\) amines (Hofmann); \\(+ \\text{NaSH} \\to \\text{R-SH}\\); \\(+ \\text{NaI} \\to \\text{R-I}\\) (Finkelstein).",
       formula: {
         label: "Ambident nucleophiles",
         latex:
-          "\\text{KCN} \\to \\text{R-C≡N};\\quad \\text{AgCN} \\to \\text{R-N≡C};\\qquad \\text{KNO}_2 \\to \\text{R-NO}_2;\\quad \\text{AgNO}_2 \\to \\text{R-O-N=O}",
+          "\\text{KCN} \\to \\text{R-C≡N};\\quad \\text{AgCN} \\to \\text{R-N≡C};\\qquad \\text{KNO}_2 \\to \\text{R-O-N=O};\\quad \\text{AgNO}_2 \\to \\text{R-NO}_2",
       },
       authoredExample: {
         prompt: "Give the products of 1-bromopropane with (i) alcoholic KCN, (ii) AgNO₂, (iii) silver acetate.",
         steps: [
-          "(i) Butanenitrile \\(\\text{CH}_3\\text{CH}_2\\text{CH}_2\\text{CN}\\). (ii) Propyl nitrite \\(\\text{CH}_3\\text{CH}_2\\text{CH}_2\\text{-O-N=O}\\). (iii) Propyl acetate \\(\\text{CH}_3\\text{COOCH}_2\\text{CH}_2\\text{CH}_3\\).",
+          "(i) Butanenitrile \\(\\text{CH}_3\\text{CH}_2\\text{CH}_2\\text{CN}\\). (ii) 1-Nitropropane \\(\\text{CH}_3\\text{CH}_2\\text{CH}_2\\text{NO}_2\\): covalent \\(\\text{AgNO}_2\\) attacks through nitrogen. (iii) Propyl acetate \\(\\text{CH}_3\\text{COOCH}_2\\text{CH}_2\\text{CH}_3\\).",
         ],
-        answer: "Butanenitrile; propyl nitrite; propyl acetate",
+        answer: "Butanenitrile; 1-nitropropane; propyl acetate",
       },
       selfCheckExample: {
         prompt: "Identify Y in \\(\\text{C}_2\\text{H}_5\\text{Cl} + \\text{Y} \\to \\text{C}_2\\text{H}_5\\text{CN}\\), and the reagent that turns an alkyl halide into an alkyl nitrite.",
         steps: [
-          "Nitrile from KCN (alcoholic); nitrite from AgNO₂.",
+          "Nitrile from KCN (alcoholic). The alkyl nitrite needs the free nitrite ion to attack through oxygen, so it comes from ionic KNO₂, not covalent AgNO₂.",
         ],
-        answer: "KCN (alc.); \\(\\text{AgNO}_2\\)",
+        answer: "KCN (alc.); \\(\\text{KNO}_2\\)",
       },
       practiceSet: [
         { prompt: "2-Bromobutane + aqueous NaOH →?", answer: "Butan-2-ol" },
         { prompt: "\\(\\text{CH}_3\\text{CH}_2\\text{Br} + \\text{CH}_3\\text{COOAg} \\to\\)?", answer: "\\(\\text{CH}_3\\text{COOCH}_2\\text{CH}_3\\) (ethyl acetate)" },
-        { prompt: "Reagent for alkyl halide → alkyl nitrite?", answer: "\\(\\text{AgNO}_2\\)" },
+        { prompt: "Reagent for alkyl halide → alkyl nitrite?", answer: "\\(\\text{KNO}_2\\)" },
         { prompt: "Reagent A in ethyl bromide → ethyl propanoate?", answer: "Silver propanoate" },
       ],
       pyqExampleId: "2456f540-0a70-4821-bcf2-dfd8d692aedb",
