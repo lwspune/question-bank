@@ -22,7 +22,7 @@ export default function Footer() {
           including the anon browse and landing surfaces that are the whole SEO
           funnel. It excluded the 95% of accounts that are students, and it was
           backwards on its own terms: browsing is what is free to everyone,
-          while the Word download is the TEACHER-gated capability.
+          while the Word download is the PASS-gated capability (teacher-gated until 2026-10-01).
 
           Names a person on every page. This line read "From the team at PYQ
           Vault" until 2026-09-16, which is what a site with no team says — and

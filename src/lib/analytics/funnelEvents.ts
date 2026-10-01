@@ -49,7 +49,7 @@ export const FUNNEL_EVENTS = [
   "reveal_wall_signin_click",
   /** A non-staff visitor opened the download dialog and saw the teacher gate. */
   "teacher_gate_shown",
-  /** …and clicked Get Teacher Pass (→ /pricing). Before 2026-09-27: → /request-access. */
+  /** …and clicked the pass button (→ /pricing). Before 2026-09-27: → /request-access. Name kept for continuity. */
   "teacher_gate_cta_click",
   /** An anon quiz taker reached the name+mobile gate. */
   "quiz_gate_shown",
@@ -57,14 +57,25 @@ export const FUNNEL_EVENTS = [
   "quiz_gate_submitted",
   /** A /notes reader scrolled far enough for the slide-up "test yourself" bar (2026-09-28). */
   "notes_test_bar_shown",
-  /** …and clicked through to the exam's mocks. */
+  /**
+   * …and clicked through. Since 2026-10-01 the bar opens the chapter's own test
+   * where one exists (MHT-CET), else the exam's past papers — so a click before
+   * and after that date is not the same act.
+   */
   "notes_test_bar_click",
-  /** A /notes reader clicked the end-of-page "test yourself on a real paper" card. */
+  /** A /notes reader clicked the end-of-page "test yourself" card (same 2026-10-01 change). */
   "notes_mock_card_click",
   /** V's launcher was opened (fires once per page session). */
   "chat_launcher_click",
   /** A predefined V question was clicked; questionId names which one. */
   "chat_faq_click",
+  /**
+   * A chapter share button was tapped (2026-10-01); props: channel, surface
+   * ("questions" | "notes"). Intent only — the arrival half is the
+   * utm_campaign=chapter-share signups. No `_shown` partner: the card is always
+   * on the page, so page views of /questions and /notes chapters are the scale.
+   */
+  "chapter_share_click",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];

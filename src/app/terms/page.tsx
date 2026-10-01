@@ -72,7 +72,7 @@ export default async function TermsPage() {
             Each pass is a <strong>one-time payment</strong>. Access starts when the payment
             succeeds and lasts for the period shown.
           </>,
-          "A Teacher Pass is for one teacher's own use. Papers you download may be printed and handed out to your own students; they may not be resold or republished.",
+          "A pass is for one person's own use. Papers you download may be printed for your own study or, if you teach, handed out to your own students; they may not be resold or republished, and the PYQ Vault watermark and footer must stay on them.",
           <>
             It does <strong>not renew automatically</strong>. We never charge you again unless you
             choose to buy again.

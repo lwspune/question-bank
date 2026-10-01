@@ -151,6 +151,27 @@ Success is feature breadth within seven days of signup, not visits to
 Re-measure with the SQL in the 2026-09-24 Decisions entry after two weeks of
 the cron running.
 
+## 7. Experiment: practice-first welcome step (2026-10-01)
+
+Half of new students whose exam has mocks see a different welcome step 2:
+**practise one chapter → sit a paper when ready → fix what you missed**, with
+"Practise a chapter" as the main button (the exam home; NDA goes to
+`/questions#nda`) and "Sit a paper" as the second. The other half see the mock
+loop as before. Board and practice-only exams, and a skipped onboarding, are
+unchanged. `/start` and the welcome email keep the mock loop.
+
+- **Why:** a full paper is a hard first step (27% of attempts abandoned), and
+  bank practice has the largest retention lift on `/dashboard/pmf` — but that
+  lift is a correlation, so it is tested on half, not shipped to all.
+- **Arm:** fixed per account by the first hex digit of the user id, odd =
+  practice-first (`onboardingArm` in `lib/education/howItWorks.ts`). No column
+  stores it; in SQL: `('x' || left(user_id::text, 1))::bit(4)::int % 2 = 1`.
+- **Readout (about 4 weeks after the push):** students onboarded since the push
+  whose first target exam has mocks, by arm — share with any `user_activity` on
+  IST days +1..+7 after signup, and weekly learners on 2+ days. About 80–100
+  students per arm in 4 weeks, so only a large difference (~15–20 points) will
+  show; a small one reads as "no difference".
+
 ## Appendix A — classroom script for teachers (five minutes)
 
 Read aloud or paraphrase. Assumes students have phones and have signed up.

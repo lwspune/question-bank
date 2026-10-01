@@ -13,6 +13,12 @@ import {
   TableCell,
   WidthType,
   BorderStyle,
+  Header,
+  Footer,
+  HorizontalPositionAlign,
+  HorizontalPositionRelativeFrom,
+  VerticalPositionAlign,
+  VerticalPositionRelativeFrom,
   type ParagraphChild,
 } from "docx";
 import JSZip from "jszip";
@@ -24,6 +30,7 @@ import { groupBySet, type Group } from "./groupBySet";
 import { headingsOnChange } from "./subtopicHeadings";
 import { stripPassageCountPhrase } from "./stripPassageCount";
 import { formatSourceTag } from "./sourceTag";
+import { WATERMARK_PNG_BASE64, WATERMARK_PX } from "./watermark.generated";
 
 const MARGIN = 720; // 0.5" in twips
 const COL_SPACE = 720;
@@ -98,6 +105,72 @@ const documentDefaults = {
   },
 };
 
+// ── Branding (pass downloads, 2026-10-01) ───────────────────────────────────
+// A light diagonal "PYQ Vault" picture behind every page and the site address
+// in every footer. The watermark lives in the HEADER, anchored to the page
+// centre and behind the text — that is how Word itself draws a watermark, and
+// unlike Word's own VML watermark a picture also shows in Google Docs and WPS,
+// where most students open these files. Unbranded documents keep the
+// header/footer distance of 0 they have always had.
+const BRAND_URL = "www.pyqvault.com";
+const BRAND_EDGE = 288; // 0.2" from the page edge, inside the 0.5" margin
+const WATERMARK_WIDTH_PX = 560; // ~5.8" on an 8.5" page
+
+function brandedSection<T extends { properties: typeof sectionProperties; children: unknown[] }>(
+  section: T,
+  branded: boolean
+) {
+  if (!branded) return section;
+  const height = Math.round((WATERMARK_WIDTH_PX * WATERMARK_PX.height) / WATERMARK_PX.width);
+  return {
+    ...section,
+    properties: {
+      ...section.properties,
+      page: {
+        ...section.properties.page,
+        margin: { ...section.properties.page.margin, header: BRAND_EDGE, footer: BRAND_EDGE },
+      },
+    },
+    headers: {
+      default: new Header({
+        children: [
+          new Paragraph({
+            children: [
+              new ImageRun({
+                type: "png",
+                data: Buffer.from(WATERMARK_PNG_BASE64, "base64"),
+                transformation: { width: WATERMARK_WIDTH_PX, height },
+                floating: {
+                  horizontalPosition: {
+                    relative: HorizontalPositionRelativeFrom.PAGE,
+                    align: HorizontalPositionAlign.CENTER,
+                  },
+                  verticalPosition: {
+                    relative: VerticalPositionRelativeFrom.PAGE,
+                    align: VerticalPositionAlign.CENTER,
+                  },
+                  behindDocument: true,
+                  allowOverlap: true,
+                },
+              }),
+            ],
+          }),
+        ],
+      }),
+    },
+    footers: {
+      default: new Footer({
+        children: [
+          new Paragraph({
+            alignment: AlignmentType.CENTER,
+            children: [new TextRun({ text: BRAND_URL, size: 16, color: "808080" })],
+          }),
+        ],
+      }),
+    },
+  };
+}
+
 export type QuestionPaperInput = {
   title: string;
   questions: QuestionRow[];
@@ -112,6 +185,8 @@ export type QuestionPaperInput = {
    * ./sourceTag.
    */
   includeSourceTag?: boolean;
+  /** PYQ Vault watermark + footer on every page — pass downloads only (see resolveExportAccess). */
+  branded?: boolean;
 };
 
 export type AnswerKeyInput = {
@@ -122,6 +197,8 @@ export type AnswerKeyInput = {
   imageBytes?: Map<string, Buffer>;
   /** When true, print a bold subtopic heading before each new subtopic run. */
   groupBySubtopic?: boolean;
+  /** PYQ Vault watermark + footer on every page — pass downloads only (see resolveExportAccess). */
+  branded?: boolean;
 };
 
 // Heading text for a question with no subtopic — keeps the grouping total.
@@ -220,7 +297,7 @@ export async function buildQuestionPaper(
 
   const doc = new Document({
     ...documentDefaults,
-    sections: [{ properties: sectionProperties, children }],
+    sections: [brandedSection({ properties: sectionProperties, children }, !!input.branded)],
   });
   return finalize(doc, builder);
 }
@@ -352,7 +429,7 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
 
   const doc = new Document({
     ...documentDefaults,
-    sections: [{ properties: sectionProperties, children }],
+    sections: [brandedSection({ properties: sectionProperties, children }, !!input.branded)],
   });
   return finalize(doc, builder);
 }

@@ -18,14 +18,14 @@ export type ChatFaqId =
   | "mocks"
   | "bank-size";
 
-// Student-facing on purpose — a teacher/download question doesn't belong in
-// V's default set for a student audience (see the "student specific" pivot).
+// Student-facing on purpose (see the "student specific" pivot). Downloads are
+// answered inside "mock-pass" since 2026-10-01, when the one pass took them on.
 export const PREDEFINED_QUESTIONS: readonly { id: ChatFaqId; label: string }[] = [
   { id: "exams", label: "Which exams do you cover?" },
   { id: "signup", label: "Do I need an account to browse questions?" },
   { id: "notes", label: "Where do I find notes for a subject?" },
   { id: "mocks", label: "Do you have timed mock tests?" },
-  { id: "mock-pass", label: "What's the Student Mock Pass?" },
+  { id: "mock-pass", label: "What's the PYQ Vault Pass?" },
   { id: "bank-size", label: "How many questions are in the bank?" },
 ];
 
@@ -50,7 +50,7 @@ function mockPassLine(input: ChatFaqInput): string {
   if (!plan) {
     return "There's no mock pass on sale right now — a set number of mocks are free for everyone, no pass needed yet. Check /pricing for current passes.";
   }
-  return `The Student Mock Pass is ${formatRupees(plan.amountPaise)} for ${planLengthLabel(plan)} — it unlocks unlimited timed mock tests once you use up your free ones.`;
+  return `The ${plan.label} is ${formatRupees(plan.amountPaise)} for ${planLengthLabel(plan)} — it unlocks unlimited timed mock tests once you use up your free ones, and Word downloads of question papers and answer keys.`;
 }
 
 export function buildFaqAnswer(id: ChatFaqId, input: ChatFaqInput): string {

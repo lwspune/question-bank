@@ -78,7 +78,7 @@ export async function startOrResumeAttempt(
 
   // The free-mock limit (migration 0120's trigger) refused a NEW mock.
   if (error?.code === FREE_MOCK_LIMIT_CODE) {
-    throw new MockError(402, "You've used your free mock tests. Get the Mock Pass to keep going.");
+    throw new MockError(402, "You've used your free mock tests. Get the PYQ Vault Pass to keep going.");
   }
 
   // Lost a race with a concurrent start (partial unique index) → resume theirs.

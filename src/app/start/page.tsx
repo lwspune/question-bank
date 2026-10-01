@@ -148,10 +148,10 @@ export default function StartPage() {
         <section className="mt-10 rounded-xl border bg-card p-6">
           <p className="font-semibold">Free to use</p>
           <p className="mt-1 font-serif text-sm leading-relaxed text-muted-foreground">
-            Browsing, mocks, the drill and the map need only a free account. Teachers who
-            want Word downloads of a paper can{" "}
-            <Link href="/pricing?plan=teacher" className="text-brand-accent underline">
-              get the Teacher Pass
+            Browsing, mocks, the drill and the map need only a free account. Word downloads
+            of a paper and its answer key come with the{" "}
+            <Link href="/pricing?plan=mocks" className="text-brand-accent underline">
+              PYQ Vault Pass
             </Link>
             .
           </p>

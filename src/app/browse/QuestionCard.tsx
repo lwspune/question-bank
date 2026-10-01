@@ -31,6 +31,7 @@ import type { QuestionResources } from "@/lib/links/questionResources";
 import { useRevealMeter } from "@/components/reveal/useRevealMeter";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
+import RevealLockedLink from "@/components/reveal/RevealLockedLink";
 import PresentButton from "@/components/present/PresentButton";
 import { fromQuestionRow } from "@/lib/present/viewModel";
 import BookmarkButton from "./BookmarkButton";
@@ -111,6 +112,8 @@ export default function QuestionCard({
   const meter = useRevealMeter("bank", question.exam.name);
   const mobilePrompt = useMobilePrompt();
   const [revealBlocked, setRevealBlocked] = useState(false);
+  // Re-keys the prompt on every refused tap so it visibly replays.
+  const [blockedTaps, setBlockedTaps] = useState(0);
   function tryReveal(): boolean {
     if (meter.attemptReveal(question.id)) {
       setRevealBlocked(false);
@@ -120,6 +123,7 @@ export default function QuestionCard({
       return true;
     }
     setRevealBlocked(true);
+    setBlockedTaps((n) => n + 1);
     return false;
   }
   function pickOption(label: OptionLabel) {
@@ -132,6 +136,13 @@ export default function QuestionCard({
     }
     if (tryReveal()) setShowSolution(true);
   }
+
+  // Free reveals spent and this answer not yet seen: show the wall up front.
+  const locked = meter.isLocked(question.id) && !revealed && !showSolution;
+  // The locked link stands in for a reveal button; once a refused option tap
+  // has shown the prompt (which carries its own Sign in), one link is enough.
+  const lockedLink =
+    locked && !revealBlocked ? <RevealLockedLink surface="bank" examName={question.exam.name} /> : null;
 
   const breadcrumb = buildBreadcrumb(question, { includeExam });
 
@@ -407,11 +418,11 @@ export default function QuestionCard({
             )}
             {!isOpenFormat && !revealed && !cancelled && (
               <p className="pt-1 text-center text-xs text-muted-foreground">
-                Tap an option to check your answer.
+                {locked ? "Sign in free to check answers." : "Tap an option to check your answer."}
               </p>
             )}
 
-            {revealBlocked && !revealed && <RevealSignInPrompt surface="bank" />}
+            {revealBlocked && !revealed && <RevealSignInPrompt key={blockedTaps} surface="bank" />}
 
             {isSubjective && !question.solution && (
               <p className="pt-2 text-xs italic text-muted-foreground">
@@ -423,13 +434,17 @@ export default function QuestionCard({
                 solution if present. The answer is a plain number (no options). */}
             {isNumeric && (
               <div>
-                <button
-                  type="button"
-                  onClick={toggleSolution}
-                  className="font-sans text-xs font-medium text-primary hover:underline"
-                >
-                  {showSolution ? "Hide answer" : "Show answer"}
-                </button>
+                {locked ? (
+                  lockedLink
+                ) : (
+                  <button
+                    type="button"
+                    onClick={toggleSolution}
+                    className="font-sans text-xs font-medium text-primary hover:underline"
+                  >
+                    {showSolution ? "Hide answer" : "Show answer"}
+                  </button>
+                )}
                 {showSolution && (
                   <div className="mt-2 rounded-md border border-dashed bg-background p-3 text-sm">
                     <p className="font-sans">
@@ -448,19 +463,23 @@ export default function QuestionCard({
 
             {!isNumeric && question.solution && (
               <div>
-                <button
-                  type="button"
-                  onClick={toggleSolution}
-                  className="font-sans text-xs font-medium text-primary hover:underline"
-                >
-                  {isSubjective
-                    ? showSolution
-                      ? "Hide model answer"
-                      : "Show model answer"
-                    : showSolution
-                    ? "Hide solution"
-                    : "Show solution"}
-                </button>
+                {locked ? (
+                  lockedLink
+                ) : (
+                  <button
+                    type="button"
+                    onClick={toggleSolution}
+                    className="font-sans text-xs font-medium text-primary hover:underline"
+                  >
+                    {isSubjective
+                      ? showSolution
+                        ? "Hide model answer"
+                        : "Show model answer"
+                      : showSolution
+                      ? "Hide solution"
+                      : "Show solution"}
+                  </button>
+                )}
                 {showSolution && (
                   <div className="mt-2 rounded-md border border-dashed bg-background p-3 text-sm">
                     {/* BlockText (not KatexRenderer) so a GFM pipe-table in a

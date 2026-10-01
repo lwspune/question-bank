@@ -229,7 +229,7 @@ export default async function Home() {
               {catalog.totalPublicQuestions.toLocaleString("en-IN")} questions
             </span>
             <span className="text-muted-foreground">
-              {catalog.exams.length} exams · free to browse · teachers download papers
+              {catalog.exams.length} exams · free to browse · Word papers with the pass
             </span>
           </div>
           <div className="mt-5 flex flex-wrap gap-3">

@@ -40,9 +40,10 @@ const nextConfig = {
       {
         // 2026-09-27: teacher access is bought, not requested. The lead form is
         // gone; the old URL (linked from emails, the sitemap and past gates)
-        // lands on the Teacher Pass card, which handles sign-in → payment.
+        // lands on the pass card, which handles sign-in → payment. Since
+        // 2026-10-01 that is the one PYQ Vault Pass (the Teacher Pass is retired).
         source: "/request-access",
-        destination: "/pricing?plan=teacher",
+        destination: "/pricing?plan=mocks",
         permanent: true,
       },
       {

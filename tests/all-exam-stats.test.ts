@@ -4,12 +4,11 @@ import {
   shapeExamCatalog,
   type ExamCatalogCachePayload,
 } from "@/lib/exam/allExamStats";
-import { getExamBySlug } from "@/lib/exam/examContext";
+import { EXAM_REGISTRY, getExamBySlug } from "@/lib/exam/examContext";
 
 describe("pickExamCardHref", () => {
   const nda = getExamBySlug("nda")!; // has a /guide subtree
   const mhtcet = getExamBySlug("mht-cet")!; // gained a /guide subtree 2026-08-22
-  const jee = getExamBySlug("jee-mains")!; // no guide, has shipped notes
   const neet = getExamBySlug("neet")!; // no guide, no shipped notes yet
 
   it("prefers the guide subtree when the exam has one", () => {
@@ -17,23 +16,32 @@ describe("pickExamCardHref", () => {
   });
 
   it("falls back to the notes hub when there's no guide but notes have shipped", () => {
-    // Was mht-cet until it shipped a guide on 2026-08-22; jee-mains is now the
-    // exam that has notes (jee-mains-maths) and no /guide subtree.
-    expect(pickExamCardHref(jee, "uuid-jee", true)).toBe("/notes/jee-mains");
+    // A synthetic entry: real exams kept gaining guides (mht-cet 2026-08-22,
+    // jee-mains 2026-09-30) and each one broke a test that named a real exam.
+    const notesOnly = { ...neet, guidesPath: null, notesPath: "/notes/neet" };
+    expect(pickExamCardHref(notesOnly, "uuid-neet", true)).toBe("/notes/neet");
   });
 
   it("prefers the guide over the notes hub for mht-cet, which now has both", () => {
     expect(pickExamCardHref(mhtcet, "uuid-cet", true)).toBe("/guide/mht-cet");
   });
 
-  it("falls back to the exam's bank when there's neither a guide nor shipped notes", () => {
-    expect(pickExamCardHref(neet, "uuid-neet", false)).toBe(
-      "/browse?examId=uuid-neet"
-    );
+  // The exam home lists every chapter page and the mocks, and it is crawlable.
+  // The old fallback, /browse?examId=, is disallowed by robots.ts, so for
+  // Google the card led nowhere (2026-10-01).
+  it("falls back to the exam home when there's neither a guide nor shipped notes", () => {
+    expect(pickExamCardHref(neet, "uuid-neet", false)).toBe("/exams/neet");
   });
 
-  it("falls back to the bare bank when the exam UUID is unresolved", () => {
-    expect(pickExamCardHref(neet, null, false)).toBe("/browse");
+  it("uses the exam home even when the exam UUID is unresolved", () => {
+    expect(pickExamCardHref(neet, null, false)).toBe("/exams/neet");
+  });
+
+  it("falls back to the bank for an exam with no public content (its exam home 404s)", () => {
+    const empty = EXAM_REGISTRY.find((e) => e.noPublicContent)!;
+    expect(empty).toBeDefined();
+    expect(pickExamCardHref(empty, "uuid-x", false)).toBe("/browse?examId=uuid-x");
+    expect(pickExamCardHref(empty, null, false)).toBe("/browse");
   });
 
   it("guide wins even when notes have also shipped", () => {
@@ -76,8 +84,8 @@ describe("shapeExamCatalog", () => {
     // Keep coverage of the TRUE case, which is what this assertion was for —
     // Class 9 is not a board year, so it can never acquire PYQs.
     expect(exams.find((e) => e.slug === "mh-sb-9")!.practiceOnly).toBe(true);
-    // No guide, no shipped notes → bank href with the resolved id.
-    expect(board.href).toBe("/browse?examId=id-board");
+    // No guide, no shipped notes → the exam home.
+    expect(board.href).toBe("/exams/mh-hsc-12");
 
     // Grand total sums every exam's count (missing → 0).
     expect(totalPublicQuestions).toBe(8259 + 6638 + 1435);
