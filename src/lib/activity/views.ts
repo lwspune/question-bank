@@ -22,6 +22,7 @@ export const SURFACES = [
   "result",
   "mock_start",
   "pricing",
+  "handout", // the notes print handout (2026-10-02); metadata.browser = "standard" | "inapp"
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];

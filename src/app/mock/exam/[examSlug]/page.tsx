@@ -19,7 +19,9 @@ import {
 } from "@/lib/mocks/mocksNav";
 import {
   buildMockTypeCards,
+  comingSoonLine,
   mockTypeHref,
+  splitMockTypeCards,
   type MockTypeCard,
   type MockTypeSlug,
 } from "@/lib/mocks/catalogue";
@@ -81,10 +83,11 @@ function metaLine(card: MockTypeCard): string {
  * paper has no year to head a group with. So the leaf list moved down to
  * /mock/exam/[slug]/[type], matching what /mock itself does one level up.
  *
- * A type with nothing published still renders — as an unlinked "Coming soon"
- * card, the same posture the exam picker takes for an exam whose build has not
- * landed yet. Silently omitting it would make an empty shelf indistinguishable
- * from a shelf that does not exist.
+ * A type with nothing published still shows, but as one sentence under the
+ * cards ("Practice mocks and sectional tests are coming soon for CDS"), not as
+ * a card. Silently omitting it would make an empty shelf indistinguishable from
+ * a shelf that does not exist; drawing it as a faded card made it look
+ * tappable, and Clarity (2026-10-01) recorded a visitor tapping both.
  */
 /** "7 past papers · 2009–2017" for one member card on a family page. */
 function memberMeta(card: MockExamCard): string {
@@ -169,7 +172,10 @@ export default async function MockExamTypePicker({ params }: { params: Params })
   const parent = mockFamilyOf(exam.slug);
 
   const all = await getPublishedMocks(createSupabaseAnonClient());
-  const cards = buildMockTypeCards(all.filter((m) => m.examName === exam.examName));
+  const { open, comingSoon } = splitMockTypeCards(
+    buildMockTypeCards(all.filter((m) => m.examName === exam.examName))
+  );
+  const soonLine = comingSoonLine(comingSoon, exam.examName);
 
   return (
     <GuideShell
@@ -196,9 +202,8 @@ export default async function MockExamTypePicker({ params }: { params: Params })
       </GuideHero>
 
       <ul className="mt-8 grid gap-5 sm:grid-cols-2">
-        {cards.map((card) => {
+        {open.map((card) => {
           const Icon = TYPE_ICON[card.slug];
-          const empty = card.count === 0;
           const body = (
             <>
               <div className="flex items-center gap-3">
@@ -223,29 +228,24 @@ export default async function MockExamTypePicker({ params }: { params: Params })
 
           return (
             <li key={card.slug}>
-              {empty ? (
-                <div className="flex h-full flex-col rounded-lg border border-dashed bg-card/50 p-6 opacity-70">
-                  {body}
-                </div>
-              ) : (
-                <Link
-                  href={mockTypeHref(exam.slug, card.slug)}
-                  className="group flex h-full flex-col rounded-lg border bg-card p-6 transition-colors hover:border-primary/40 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                >
-                  {body}
-                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-brand-accent">
-                    Open {card.label.toLowerCase()}
-                    <ArrowRight
-                      className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-                      aria-hidden
-                    />
-                  </span>
-                </Link>
-              )}
+              <Link
+                href={mockTypeHref(exam.slug, card.slug)}
+                className="group flex h-full flex-col rounded-lg border bg-card p-6 transition-colors hover:border-primary/40 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                {body}
+                <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-brand-accent">
+                  Open {card.label.toLowerCase()}
+                  <ArrowRight
+                    className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+                    aria-hidden
+                  />
+                </span>
+              </Link>
             </li>
           );
         })}
       </ul>
+      {soonLine && <p className="mt-4 text-sm text-muted-foreground">{soonLine}</p>}
     </GuideShell>
   );
 }

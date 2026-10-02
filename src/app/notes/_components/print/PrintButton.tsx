@@ -1,8 +1,10 @@
 "use client";
 
 /**
- * The only client JS on the print handout — a screen-only "Save as PDF"
- * button. Hidden by `@media print` so it never appears in the output.
+ * A screen-only "Save as PDF" button on the print handout, hidden by
+ * `@media print` so it never appears in the output. Its one client sibling is
+ * HandoutAutoPrint, which opens the same dialog when the chapter's
+ * "Download as PDF" link asked for it.
  */
 export default function PrintButton() {
   return (

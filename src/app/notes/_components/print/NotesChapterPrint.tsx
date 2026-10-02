@@ -9,6 +9,7 @@ import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import type { AuthoredExample, ConceptUnit } from "@/app/notes/_types";
 import { renderVisualization } from "../ConceptUnitCard";
 import PrintButton from "./PrintButton";
+import HandoutAutoPrint from "./HandoutAutoPrint";
 import { WATERMARK_PNG_BASE64 } from "@/lib/export/watermark.generated";
 import { PRINT_CSS } from "./printStyles";
 
@@ -277,6 +278,7 @@ export default async function NotesChapterPrint({ chapter }: Props) {
           </span>
           <PrintButton />
         </div>
+        <HandoutAutoPrint />
 
         <header className="pcover">
           <p className="brand">PYQ Vault · {chapter.subjectDisplay} notes</p>

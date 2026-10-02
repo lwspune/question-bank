@@ -122,6 +122,31 @@ export type MockTypeCard = MockTypeDef & {
   paperCount: number;
 };
 
+/**
+ * Types with tests render as cards; empty ones as one sentence under them.
+ * Clarity (2026-10-01) showed a visitor tapping both faded "Coming soon" cards
+ * on /mock/exam/cds, which are not links. An empty shelf stays visible (the
+ * page's rule: never omit it silently) without looking like something to tap.
+ */
+export function splitMockTypeCards(cards: MockTypeCard[]): {
+  open: MockTypeCard[];
+  comingSoon: MockTypeCard[];
+} {
+  return {
+    open: cards.filter((c) => c.count > 0),
+    comingSoon: cards.filter((c) => c.count === 0),
+  };
+}
+
+/** "Practice mocks and sectional tests are coming soon for CDS." Null if none. */
+export function comingSoonLine(comingSoon: MockTypeCard[], examName: string): string | null {
+  if (comingSoon.length === 0) return null;
+  const names = comingSoon.map((c, i) => (i === 0 ? c.label : c.label.toLowerCase()));
+  const list =
+    names.length === 1 ? names[0] : `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
+  return `${list} are coming soon for ${examName}.`;
+}
+
 /** One card per type for the exam page's picker, in MOCK_TYPES order. */
 export function buildMockTypeCards(mocks: MockListItem[]): MockTypeCard[] {
   return MOCK_TYPES.map((t) => {

@@ -75,3 +75,31 @@ describe("paywallEvent (server builder)", () => {
     );
   });
 });
+
+// The notes handout (2026-10-02): nothing recorded whether anyone opened it,
+// so its value could not be judged. One row per student per day, with which
+// kind of browser opened it, because in-app browsers cannot save the PDF.
+describe("parseClientEvent — handout surface", () => {
+  it("accepts a handout view with its browser kind", () => {
+    const r = parseClientEvent({ kind: "surface_viewed", surface: "handout", browser: "inapp" }, "u1", NOW);
+    expect(r).toEqual({
+      ok: true,
+      value: {
+        kind: "surface_viewed",
+        metadata: { surface: "handout", browser: "inapp" },
+        dedupeKey: "view:handout:u1:2026-09-27",
+      },
+    });
+  });
+
+  it("accepts a handout view without a browser kind", () => {
+    const r = parseClientEvent({ kind: "surface_viewed", surface: "handout" }, "u1", NOW);
+    expect(r.ok && r.value.metadata).toEqual({ surface: "handout" });
+  });
+
+  it("refuses a browser kind outside the closed list", () => {
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "handout", browser: "netscape" }, "u1", NOW).ok).toBe(false);
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "handout", browser: 1 }, "u1", NOW).ok).toBe(false);
+  });
+});
+
