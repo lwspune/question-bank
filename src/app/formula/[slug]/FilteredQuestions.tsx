@@ -2,8 +2,9 @@
 
 import { useMemo, useState } from "react";
 import { Filter } from "lucide-react";
-import QuestionList from "@/app/browse/QuestionList";
+import QuestionListView from "@/app/browse/QuestionListView";
 import type { QuestionRow } from "@/lib/questions/query";
+import type { QuestionResources } from "@/lib/links/questionResources";
 import {
   applyFilters,
   buildFacets,
@@ -17,6 +18,10 @@ type Props = {
   /** Ids whose `question_kind` is 'practice'. Everything else is a PYQ. */
   practiceIds: string[];
   supabaseUrl: string;
+  /** Each question's guide/notes backlinks, resolved by the server page. This
+   *  component must not resolve them itself: that import chain reaches the
+   *  whole notes registry and would ship it to the browser (12.9 MB, 2026-10-02). */
+  resourcesById: Record<string, QuestionResources>;
 };
 
 function Chip({
@@ -62,6 +67,7 @@ export default function FilteredQuestions({
   questions,
   practiceIds,
   supabaseUrl,
+  resourcesById,
 }: Props) {
   const [exam, setExam] = useState<ExamFilter>("all");
   const [kind, setKind] = useState<KindFilter>("all");
@@ -161,13 +167,14 @@ export default function FilteredQuestions({
 
       {shown.length > 0 && (
         <div className="mt-6">
-          <QuestionList
+          <QuestionListView
             questions={shown}
             pageOffset={0}
             canEdit={false}
             isLoggedIn={false}
             supabaseUrl={supabaseUrl}
             includeExam={examsInView.size > 1}
+            resourcesById={resourcesById}
           />
         </div>
       )}

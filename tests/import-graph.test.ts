@@ -104,4 +104,32 @@ describe("collectImports", () => {
     });
     expect([...collectImports("scripts/deep/x.ts", read)]).toEqual(["src/lib/b.ts"]);
   });
+
+  it("with valueOnly, skips type-only imports and re-exports — they never reach a bundle", () => {
+    const read = memFs({
+      "src/a.ts":
+        `import type { T } from "./types";
+` +
+        `export type { U } from "./more-types";
+` +
+        `import { type V, w } from "./mixed";
+` +
+        `import {
+  x,
+} from "./x";`,
+      "src/types.ts": ``,
+      "src/more-types.ts": ``,
+      "src/mixed.ts": ``,
+      "src/x.ts": ``,
+    });
+    expect([...collectImports("src/a.ts", read, { valueOnly: true })].sort()).toEqual([
+      "src/mixed.ts",
+      "src/x.ts",
+    ]);
+  });
+
+  it("without valueOnly, still counts type-only imports (the default the lint guard relies on)", () => {
+    const read = memFs({ "src/a.ts": `import type { T } from "./types";`, "src/types.ts": `` });
+    expect([...collectImports("src/a.ts", read)]).toEqual(["src/types.ts"]);
+  });
 });

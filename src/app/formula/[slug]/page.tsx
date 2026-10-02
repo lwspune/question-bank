@@ -25,6 +25,7 @@ import FilteredQuestions from "./FilteredQuestions";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { queryQuestionsByIds, type QuestionRow } from "@/lib/questions/query";
 import { loadPracticeIds } from "@/lib/formula/query";
+import { resolveResourcesById } from "@/lib/links/questionResources";
 import { buildBrowseUrl } from "@/lib/guide/buildBrowseUrl";
 import {
   formulaBySlug,
@@ -241,6 +242,7 @@ export default async function FormulaPage({ params }: Params) {
                 questions={rows}
                 practiceIds={[...practiceIds]}
                 supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
+                resourcesById={resolveResourcesById(rows)}
               />
             </Suspense>
           )}

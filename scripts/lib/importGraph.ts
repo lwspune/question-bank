@@ -11,8 +11,10 @@
  * mirrors what tsx does for this repo: relative specifiers, the `@/` alias →
  * `src/`, extension-less imports tried as .ts / .tsx / index.ts / index.tsx.
  * Bare specifiers (`node:fs`, packages) are not our files and are skipped.
- * `import type` counts: a type-only import still names a file whose change
- * can break the importer.
+ * `import type` counts by default: a type-only import still names a file whose
+ * change can break the importer. Pass `{ valueOnly: true }` to skip them when
+ * the question is what a BUNDLE carries — type-only imports and re-exports are
+ * erased by the compiler (tests/client-bundle-notes-registry.test.ts).
  *
  * Deliberately a regex scanner, not a TypeScript program — that is a few
  * hundred files under /notes and this runs inside `npm test`. Prose inside a
@@ -22,6 +24,15 @@
 import path from "node:path";
 
 export type ReadFile = (repoRelativePath: string) => string | null;
+
+export type CollectOptions = {
+  /** Skip `import type … from` and `export type … from`: they never reach a bundle. */
+  valueOnly?: boolean;
+};
+
+// A whole type-only import/export statement, possibly spanning lines. A mixed
+// list (`import { type A, b }`) is NOT matched: it still imports a value.
+const TYPE_ONLY_RE = /\b(?:import|export)\s+type\s+[^;]*?\bfrom\s*["'][^"'\n]+["']/g;
 
 const EXTENSIONS = [".ts", ".tsx", ".js", ".mjs", ".json"];
 
@@ -37,9 +48,10 @@ function stripComments(src: string): string {
   return src.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
 }
 
-function specifiers(src: string): string[] {
+function specifiers(src: string, valueOnly: boolean): string[] {
   const out: string[] = [];
-  for (const m of stripComments(src).matchAll(SPECIFIER_RE)) {
+  const code = valueOnly ? stripComments(src).replace(TYPE_ONLY_RE, "") : stripComments(src);
+  for (const m of code.matchAll(SPECIFIER_RE)) {
     out.push(m[1] ?? m[2] ?? m[3]);
   }
   return out;
@@ -64,14 +76,14 @@ function candidates(p: string): string[] {
  * repo-relative POSIX paths. Throws on a relative/alias import that resolves
  * to nothing — a silent drop would let the guard pass on a broken scan.
  */
-export function collectImports(entry: string, read: ReadFile): Set<string> {
+export function collectImports(entry: string, read: ReadFile, opts: CollectOptions = {}): Set<string> {
   const seen = new Set<string>([entry]);
   const queue = [entry];
   while (queue.length) {
     const file = queue.shift()!;
     const src = read(file);
     if (src === null) throw new Error(`importGraph: cannot read ${file}`);
-    for (const spec of specifiers(src)) {
+    for (const spec of specifiers(src, opts.valueOnly === true)) {
       const t = target(file, spec);
       if (t === null) continue; // bare: package or builtin
       const hit = candidates(t).find((c) => read(c) !== null);
