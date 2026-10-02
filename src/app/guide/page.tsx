@@ -145,7 +145,7 @@ export default async function GuideIndex() {
                 {copy?.meta ? (
                   <p className="mt-4 text-xs font-medium text-muted-foreground">
                     {exam.slug === "nda" && ndaPyqCount > 0
-                      ? `${ndaPyqCount.toLocaleString("en-IN")} questions · ${copy.meta}`
+                      ? `${ndaPyqCount.toLocaleString("en-IN")} past-year questions · ${copy.meta}`
                       : copy.meta}
                   </p>
                 ) : null}

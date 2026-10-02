@@ -29,7 +29,9 @@ export type ExamHomeModel = {
   displayName: string;
   examName: string;
   practiceOnly: boolean;
-  /** Catalogue head-count (PUBLIC, pyq + practice) — the honest exam total. */
+  /** The count this page labels and its bank button lands on: past-year, or
+   *  practice for a practice-only exam. NOT the every-kind total, which the
+   *  description once called "past-year questions" (UX_REVIEW_TRIAGE.md A1). */
   totalQuestions: number;
   /** Chapters with a landing page (≥15 PUBLIC questions). */
   chapterCount: number;
