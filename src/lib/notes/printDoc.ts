@@ -30,6 +30,26 @@ export function collectPyqIds(notes: readonly SubtopicNote[]): string[] {
   );
 }
 
+/**
+ * A formula-legend symbol as text for KatexRenderer.
+ *
+ * The registry stores symbols three ways: already delimited ("\\(f_i\\)" or a
+ * mix like "Sign of \\(r\\)"), bare math ("f_1, f_2") and bare prose ("Class
+ * width"). Wrapping all of them doubled the delimiters on the first kind, and
+ * KaTeX printed a parse error for each (59 in the Statistics handout). So:
+ * a delimited symbol is kept as stored, bare prose stays text (math mode would
+ * drop its spaces), and only bare math is wrapped. Prose = a word of 3+
+ * letters and none of the characters that only math uses. Unicode super- and
+ * subscripts ("ⁿCᵣ") also stay text: they already read as math, and KaTeX has
+ * no metrics for them.
+ */
+export function legendSymbolText(symbol: string): string {
+  if (symbol.includes("\\(") || symbol.includes("$")) return symbol;
+  if (/[\u02B0-\u02FF\u1D2C-\u1D6A\u2070-\u209F]/.test(symbol)) return symbol;
+  const prose = /[A-Za-z]{3,}/.test(symbol) && !/[_^=\\{}<>+*/|]/.test(symbol);
+  return prose ? symbol : `\\(${symbol}\\)`;
+}
+
 export type PrintDocStats = {
   subtopics: number;
   concepts: number;

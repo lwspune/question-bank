@@ -4,7 +4,7 @@ import BlockText from "@/components/math/BlockText";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { loadWorkedExamples, type WorkedExample } from "@/lib/guide/loadWorkedExamples";
 import { deriveSummary } from "@/lib/notes/deriveSummary";
-import { collectPyqIds, printDocStats } from "@/lib/notes/printDoc";
+import { collectPyqIds, legendSymbolText, printDocStats } from "@/lib/notes/printDoc";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import type { AuthoredExample, ConceptUnit } from "@/app/notes/_types";
 import { renderVisualization } from "../ConceptUnitCard";
@@ -102,7 +102,8 @@ function ConceptBlock({
             <ul className="psyms">
               {concept.formula.symbols.map((s, i) => (
                 <li key={i}>
-                  <KatexRenderer text={`\\(${s.symbol}\\)`} /> = {s.meaning}
+                  <KatexRenderer text={legendSymbolText(s.symbol)} /> ={" "}
+                  <KatexRenderer text={s.meaning} />
                 </li>
               ))}
             </ul>
