@@ -31,7 +31,7 @@ tool below writes those AND the bank, so a rebuild cannot undo a change.
    (100% of rows) and `npm run notes:order`.
 6. `sh scripts/notes-pipeline/cds-gk/probe.sh <route> <chapter>` — all of step 4 of the workflow.
    Fix every finding, then read the chapter against NOTES_ARC_LEDGER.md's eight classes.
-7. Commit. At the end of a batch: one full `npm run gate` on the tip, `npm run seo:dates`,
+7. Commit. At the end of a batch: one full `npm run gate` on the tip, `npm run seo:dates`, `npm run notes:nav-index`,
    `npm run stats`, ARCHITECTURE.md lines, a CLAUDE.md digest + DECISIONS_HISTORY.md long form,
    then merge the stacked branches in order.
 

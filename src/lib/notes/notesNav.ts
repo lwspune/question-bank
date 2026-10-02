@@ -1,6 +1,7 @@
 /**
  * Cross-exam navigation model for /notes, derived entirely from the
- * NOTES_CHAPTERS registry + EXAM_REGISTRY. The /notes top index and the
+ * NOTES_CHAPTERS registry (through its generated nav index —
+ * `npm run notes:nav-index`) + EXAM_REGISTRY. The /notes top index and the
  * per-exam hubs (/notes/<examSlug>) render from these groupings, so adding a
  * new exam's notes is just a registry entry — no new hand-written hub page.
  *
@@ -8,7 +9,9 @@
  */
 
 import { EXAM_REGISTRY, type ExamEntry, type ExamSlug } from "@/lib/exam/examContext";
-import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
+// The generated index, NOT the registry: this module is on every page through
+// AppHeader, and the registry imports the whole notes corpus. See notesNavIndex.ts.
+import { NOTES_NAV_INDEX } from "@/lib/notes/notesNavIndex.generated";
 
 export type NotesSubjectGroup = {
   /** URL segment, e.g. "nda-biology" → /notes/nda-biology. */
@@ -31,10 +34,10 @@ export type NotesExamGroup = {
 /** Build the subject groups for a single exam (registration order preserved). */
 function subjectsForExam(examName: string): NotesSubjectGroup[] {
   const bySubject = new Map<string, NotesSubjectGroup>();
-  for (const c of NOTES_CHAPTERS) {
+  for (const c of NOTES_NAV_INDEX) {
     if (c.examName !== examName) continue;
     const existing = bySubject.get(c.subjectRoute);
-    const subtopics = c.slugs.length;
+    const subtopics = c.subtopicCount;
     if (existing) {
       existing.chapterCount += 1;
       existing.subtopicCount += subtopics;
