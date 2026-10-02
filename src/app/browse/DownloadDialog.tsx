@@ -81,9 +81,7 @@ export default function DownloadDialog({
   // instead — derived from the same gate the API enforces. `who` is typed so a
   // renamed gate input fails to compile here rather than silently reading false.
   const who: Omit<Parameters<typeof resolveExportAccess>[0], "kind"> = { isSignedIn, isStaff, hasDownloadPass };
-  const paperAccess = resolveExportAccess({ kind: "paper", ...who });
-  const canDownload = paperAccess.allowed;
-  const branded = paperAccess.allowed && paperAccess.branded;
+  const canDownload = resolveExportAccess({ kind: "paper", ...who }).allowed;
   const canTags = resolveExportAccess({ kind: "tags", ...who }).allowed;
   const canSlides = resolveExportAccess({ kind: "ppt", ...who }).allowed;
   const [internalOpen, setInternalOpen] = useState(false);
@@ -223,7 +221,6 @@ export default function DownloadDialog({
                 {canTags
                   ? ", and a tagged sheet (.xlsx) for nda-tracker, numbered to match the paper."
                   : "."}
-                {branded && " Pages carry a light PYQ Vault watermark."}
               </>
             ) : (
               "Browsing, preview, timed mock tests and notes stay free — no account needed."
@@ -247,7 +244,6 @@ export default function DownloadDialog({
             <p>
               You&apos;ll be able to filter the bank, pick questions, and export
               the Question Paper and Answer Key, numbered and ready to print.
-              Pages carry a light PYQ Vault watermark.
             </p>
           </div>
         ) : (
