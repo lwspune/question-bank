@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 275
+ * Entries: 283
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -39,6 +39,14 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/cds-chemistry/matter-states": "2026-10-02T01:09:44+05:30",
   "/notes/cds-chemistry/metals-non-metals": "2026-10-02T01:09:44+05:30",
   "/notes/cds-chemistry/mole-concept": "2026-10-02T00:58:01+05:30",
+  "/notes/cds-english/cloze-test": "2026-10-02T07:57:02+05:30",
+  "/notes/cds-english/fill-in-the-blanks": "2026-10-02T07:57:02+05:30",
+  "/notes/cds-english/grammar": "2026-10-02T07:57:02+05:30",
+  "/notes/cds-english/idioms-and-phrases": "2026-10-02T07:57:02+05:30",
+  "/notes/cds-english/reading-comprehension": "2026-10-02T08:05:44+05:30",
+  "/notes/cds-english/sentence-rearrangement": "2026-10-02T07:57:02+05:30",
+  "/notes/cds-english/spotting-errors": "2026-10-02T07:57:02+05:30",
+  "/notes/cds-english/vocabulary": "2026-10-02T07:57:02+05:30",
   "/notes/cds-maths/algebraic-identities": "2026-09-29T10:56:00+05:30",
   "/notes/cds-maths/averages": "2026-09-29T14:08:54+05:30",
   "/notes/cds-maths/circles": "2026-09-29T14:02:53+05:30",

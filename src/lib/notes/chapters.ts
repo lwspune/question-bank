@@ -1305,6 +1305,46 @@ import {
   CDS_CH_WATER_NOTES,
   CDS_CH_WATER_SLUGS,
 } from "@/app/notes/cds-chemistry/hydrogen-water/_data";
+import {
+  CDSEN_IDIOMS_CHAPTER,
+  CDSEN_IDIOMS_NOTES,
+  CDSEN_IDIOMS_SLUGS,
+} from "@/app/notes/cds-english/idioms-and-phrases/_data";
+import {
+  CDSEN_CLOZE_CHAPTER,
+  CDSEN_CLOZE_NOTES,
+  CDSEN_CLOZE_SLUGS,
+} from "@/app/notes/cds-english/cloze-test/_data";
+import {
+  CDSEN_VOCAB_CHAPTER,
+  CDSEN_VOCAB_NOTES,
+  CDSEN_VOCAB_SLUGS,
+} from "@/app/notes/cds-english/vocabulary/_data";
+import {
+  CDSEN_GRAMMAR_CHAPTER,
+  CDSEN_GRAMMAR_NOTES,
+  CDSEN_GRAMMAR_SLUGS,
+} from "@/app/notes/cds-english/grammar/_data";
+import {
+  CDSEN_FILL_CHAPTER,
+  CDSEN_FILL_NOTES,
+  CDSEN_FILL_SLUGS,
+} from "@/app/notes/cds-english/fill-in-the-blanks/_data";
+import {
+  CDSEN_ERRORS_CHAPTER,
+  CDSEN_ERRORS_NOTES,
+  CDSEN_ERRORS_SLUGS,
+} from "@/app/notes/cds-english/spotting-errors/_data";
+import {
+  CDSEN_REARR_CHAPTER,
+  CDSEN_REARR_NOTES,
+  CDSEN_REARR_SLUGS,
+} from "@/app/notes/cds-english/sentence-rearrangement/_data";
+import {
+  CDSEN_RC_CHAPTER,
+  CDSEN_RC_NOTES,
+  CDSEN_RC_SLUGS,
+} from "@/app/notes/cds-english/reading-comprehension/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4182,6 +4222,94 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_CH_WATER_CHAPTER,
     notes: CDS_CH_WATER_NOTES,
     slugs: CDS_CH_WATER_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "English",
+    subjectRoute: "cds-english",
+    subjectDisplay: "CDS English",
+    chapterSlug: "idioms-and-phrases",
+    chipLabel: "Idioms and Phrases notes",
+    chapter: CDSEN_IDIOMS_CHAPTER,
+    notes: CDSEN_IDIOMS_NOTES,
+    slugs: CDSEN_IDIOMS_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "English",
+    subjectRoute: "cds-english",
+    subjectDisplay: "CDS English",
+    chapterSlug: "cloze-test",
+    chipLabel: "Cloze Test notes",
+    chapter: CDSEN_CLOZE_CHAPTER,
+    notes: CDSEN_CLOZE_NOTES,
+    slugs: CDSEN_CLOZE_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "English",
+    subjectRoute: "cds-english",
+    subjectDisplay: "CDS English",
+    chapterSlug: "vocabulary",
+    chipLabel: "Vocabulary notes",
+    chapter: CDSEN_VOCAB_CHAPTER,
+    notes: CDSEN_VOCAB_NOTES,
+    slugs: CDSEN_VOCAB_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "English",
+    subjectRoute: "cds-english",
+    subjectDisplay: "CDS English",
+    chapterSlug: "grammar",
+    chipLabel: "Grammar notes",
+    chapter: CDSEN_GRAMMAR_CHAPTER,
+    notes: CDSEN_GRAMMAR_NOTES,
+    slugs: CDSEN_GRAMMAR_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "English",
+    subjectRoute: "cds-english",
+    subjectDisplay: "CDS English",
+    chapterSlug: "fill-in-the-blanks",
+    chipLabel: "Fill in the Blanks notes",
+    chapter: CDSEN_FILL_CHAPTER,
+    notes: CDSEN_FILL_NOTES,
+    slugs: CDSEN_FILL_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "English",
+    subjectRoute: "cds-english",
+    subjectDisplay: "CDS English",
+    chapterSlug: "spotting-errors",
+    chipLabel: "Spotting Errors notes",
+    chapter: CDSEN_ERRORS_CHAPTER,
+    notes: CDSEN_ERRORS_NOTES,
+    slugs: CDSEN_ERRORS_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "English",
+    subjectRoute: "cds-english",
+    subjectDisplay: "CDS English",
+    chapterSlug: "sentence-rearrangement",
+    chipLabel: "Sentence Rearrangement notes",
+    chapter: CDSEN_REARR_CHAPTER,
+    notes: CDSEN_REARR_NOTES,
+    slugs: CDSEN_REARR_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "English",
+    subjectRoute: "cds-english",
+    subjectDisplay: "CDS English",
+    chapterSlug: "reading-comprehension",
+    chipLabel: "Reading Comprehension notes",
+    chapter: CDSEN_RC_CHAPTER,
+    notes: CDSEN_RC_NOTES,
+    slugs: CDSEN_RC_SLUGS,
   },
 ];
 
