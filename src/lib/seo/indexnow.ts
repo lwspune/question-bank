@@ -10,8 +10,8 @@
  * requests a day the backlog clears in roughly 9.5 years.
  *
  * Google offers no API to change that — its only manual lever is URL Inspection
- * at ~10 URLs/day (see SEO_INDEXING_WORKLIST.md, which ranks what to spend that
- * quota on). IndexNow is the lever that does exist: Bing, Yandex, Naver and
+ * at ~10 URLs/day (see SEO_INDEXING_WORKLIST.md, generated locally by
+ * `npm run seo:worklist`, which ranks what to spend that quota on). IndexNow is the lever that does exist: Bing, Yandex, Naver and
  * Seznam accept a pushed URL list and act on it in days.
  *
  * **Google does NOT participate in IndexNow.** Nothing in this module helps

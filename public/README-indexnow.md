@@ -26,7 +26,7 @@ Reaches Bing, Yandex, Naver and Seznam.
 
 **Google does not participate in IndexNow.** Google's only manual lever is URL
 Inspection → Request Indexing at ~10 URLs/day, which is what
-[SEO_INDEXING_WORKLIST.md](../SEO_INDEXING_WORKLIST.md) ranks. Nothing here
+`SEO_INDEXING_WORKLIST.md` ranks (generated locally by `npm run seo:worklist`, gitignored). Nothing here
 affects Google, and a successful submission must never be read as if it did.
 
 Bing is worth reaching on its own merits: it sent 204 visitors in the 30 days to
