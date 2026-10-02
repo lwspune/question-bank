@@ -49,3 +49,4 @@ source papers and books are all on the owner's machine; each pipeline's
 | Batch | Rows | Date |
 |---|---|---|
 | `upsc-2018-p2` (UPSC CSE 2018 Paper II) | 19 + 8 option images | 2026-10-03 |
+| `cds-gk-2017-ii`, `cds-gk-2022-ii`, `cds-gk-2023-ii` (CDS General Knowledge) | 6 (two maps, a circuit, a graph, a plant cell, a pendulum) | 2026-10-03 |
