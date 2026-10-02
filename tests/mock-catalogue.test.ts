@@ -15,6 +15,8 @@
 import { describe, it, expect } from "vitest";
 import {
   MOCK_TYPES,
+  splitMockTypeCards,
+  comingSoonLine,
   parseMockType,
   mockTypeOf,
   mocksOfType,
@@ -326,5 +328,52 @@ describe("mockKindNote — the honesty line on the instructions page", () => {
     const fromBank = note({ source: "practice", scope: "sectional", examName: "NDA", totalQuestions: 25 });
     expect(fromBank).toMatch(/not a full paper/i);
     expect(fromBank).not.toMatch(/past-paper questions/i);
+  });
+});
+
+// Clarity (2026-10-01): on /mock/exam/cds a visitor tapped both faded "Coming
+// soon" cards (no CDS sectional tests or practice mocks), which are not links.
+// Empty types keep their place on the page as ONE plain sentence, so an empty
+// shelf is still visible without looking like something to tap.
+describe("splitMockTypeCards", () => {
+  it("separates types with tests from types without, keeping MOCK_TYPES order", () => {
+    const cards = buildMockTypeCards([mock({ slug: "p1" })]);
+    const { open, comingSoon } = splitMockTypeCards(cards);
+    expect(open.map((c) => c.slug)).toEqual(["past-papers"]);
+    expect(comingSoon.map((c) => c.slug)).toEqual(["practice", "sectional"]);
+  });
+
+  it("puts every type in open when all have tests", () => {
+    const cards = buildMockTypeCards([
+      mock({ slug: "p1" }),
+      mock({ slug: "x1", source: "practice", pyqYear: null }),
+      mock({ slug: "s1", source: "practice", scope: "sectional", pyqYear: null }),
+    ]);
+    expect(splitMockTypeCards(cards).comingSoon).toEqual([]);
+  });
+});
+
+describe("comingSoonLine", () => {
+  const empty = (slugs: string[]) =>
+    buildMockTypeCards([]).filter((c) => slugs.includes(c.slug));
+
+  it("names two missing types in one sentence", () => {
+    expect(comingSoonLine(empty(["practice", "sectional"]), "CDS")).toBe(
+      "Practice mocks and sectional tests are coming soon for CDS."
+    );
+  });
+
+  it("names one missing type", () => {
+    expect(comingSoonLine(empty(["sectional"]), "NDA")).toBe("Sectional tests are coming soon for NDA.");
+  });
+
+  it("names three with commas", () => {
+    expect(comingSoonLine(empty(["past-papers", "practice", "sectional"]), "IPMAT")).toBe(
+      "Past papers, practice mocks and sectional tests are coming soon for IPMAT."
+    );
+  });
+
+  it("is null when nothing is missing", () => {
+    expect(comingSoonLine([], "NDA")).toBeNull();
   });
 });
