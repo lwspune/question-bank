@@ -171,11 +171,14 @@ export default async function PricingPage({
   );
 }
 
+// The signed-out twin of PricingClient's buy button: same brand fill, and a
+// visible keyboard focus ring (it had none — the one primary action on the
+// page a keyboard user could not see focused).
 function Button({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <Link
       href={href}
-      className="inline-flex h-10 w-full items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+      className="inline-flex h-10 w-full items-center justify-center rounded-md bg-brand px-4 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
       {children}
     </Link>
