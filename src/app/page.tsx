@@ -26,6 +26,10 @@ import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
 import { countSummary } from "@/lib/exam/questionCounts";
+import { examCardAnchor, homeExamChips } from "@/lib/exam/homeChips";
+import HomeExamChips from "@/components/home/HomeExamChips";
+import HowItWorks from "@/components/HowItWorks";
+import { loopFor } from "@/lib/education/howItWorks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { groupExamFamilies, familyTotal, membersByStage } from "@/lib/exam/examFamily";
@@ -217,10 +221,12 @@ export default async function Home() {
           count does (see the /guide picker's old "8,259 questions" line).
         */}
         <GuideHero
-          eyebrow="PYQ Vault"
           title="Every past paper, sorted question by question."
           subtitle={`${catalog.totals.pyq.toLocaleString("en-IN")} past-year questions, plus ${catalog.totals.practice.toLocaleString("en-IN")} from textbooks and practice sets, across ${catalog.exams.length} exams. Every one is tagged by chapter, subtopic and difficulty, so you can drill the thing you keep getting wrong instead of sitting another whole paper. Browsing is free and needs no account.`}
         />
+
+        {/* A8: pick an exam without scrolling past every card. */}
+        <HomeExamChips chips={homeExamChips(examNodes)} />
 
         {/* Live total + primary CTA */}
         <section className="mb-12 rounded-xl border bg-card p-5 shadow-sm sm:p-6">
@@ -252,6 +258,25 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* A9: the loop /start teaches, rendered from the same object so it
+            cannot describe a loop the app does not have. /start had one
+            signed-in viewer in the week to 2026-10-02. */}
+        <section className="mb-12" aria-labelledby="how-it-works">
+          <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
+            <h2 id="how-it-works" className="text-xl font-semibold tracking-tight sm:text-2xl">
+              How it works
+            </h2>
+            <Link
+              href="/start"
+              className="inline-flex items-center gap-1 rounded text-sm font-medium text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
+              More on this
+              <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+            </Link>
+          </div>
+          <HowItWorks loop={loopFor(null)} compact />
+        </section>
+
         {/* Exam catalog — the pick-your-exam front door */}
         <section className="mb-12">
           <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
@@ -272,7 +297,7 @@ export default async function Home() {
                 };
                 const familySummary = countSummary(familyCounts);
                 return (
-                  <li key={node.key}>
+                  <li key={node.key} id={examCardAnchor(node.key)} className="scroll-mt-20">
                     <div className="flex h-full flex-col rounded-lg border bg-card p-4">
                       <div className="mb-2 flex items-center gap-3">
                         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
@@ -329,7 +354,7 @@ export default async function Home() {
                   ? "Worksheets"
                   : null;
               return (
-                <li key={exam.slug}>
+                <li key={exam.slug} id={examCardAnchor(exam.slug)} className="scroll-mt-20">
                   <Link
                     href={exam.href}
                     className="group flex h-full flex-col rounded-lg border bg-card p-4 transition-colors hover:border-primary/40 hover:bg-accent"
@@ -391,7 +416,7 @@ export default async function Home() {
                   <p className="mt-1 font-serif text-sm leading-relaxed text-muted-foreground">
                     {blurb}
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                  <span className="mt-4 inline-flex items-center gap-1 text-xs font-medium text-primary">
                     Open
                     <ArrowRight className="h-3 w-3" aria-hidden />
                   </span>
