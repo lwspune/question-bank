@@ -756,15 +756,15 @@
    },
    {
     "label": "C",
-    "text": "1 only"
+    "text": "2 only"
    },
    {
     "label": "D",
-    "text": "1, 2 and 3"
+    "text": "3 only"
    }
   ],
-  "answer": "B",
-  "reasoning": "Sentence 3 ('deport' = expel from a country) is clearly correct, and sentence 2 uses 'deplore' (to regret/condemn) in a grammatically valid way; sentence 1 misuses 'depose' (to remove from office / testify) where 'disrobe/divest' is intended.",
+  "answer": "D",
+  "reasoning": "Only sentence 3 is correct. To deport is to expel someone from a country, which is exactly how sentence 3 uses it. In sentence 1, to depose is to remove someone from office or to give evidence under oath; the director wants the actor to stop posing, so the word needed is 'pose', not 'depose'. In sentence 2, to deplore is to condemn strongly, which clashes with 'enthusiastically' and with a 'salutary' (beneficial) impact; the sense needs a word like 'applaud'. So the answer is 3 only.",
   "confidence": "LOW",
   "difficulty": "HARD"
  },
@@ -1857,7 +1857,7 @@
  {
   "number": 71,
   "type": "match-list",
-  "stem": "| List I (Parts of Speech) | List II (Word) |\n| --- | --- |\n| A. Noun | 1. Qualification |\n| B. Verb | 2. Conditionally |\n| C. Adverb | 3. Qualify |\n| D. Adjective | 4. Qualifiable |",
+  "stem": "| List I (Parts of Speech) | List II (Word) |\n| --- | --- |\n| A. Noun | 1. Qualification |\n| B. Verb | 2. Conditionally |\n| C. Adverb | 3. Qualify |\n| D. Adjective | 4. Qualifying |",
   "options": [
    {
     "label": "A",
@@ -1877,7 +1877,7 @@
    }
   ],
   "answer": "C",
-  "reasoning": "A (Noun)->Qualification(1), B (Verb)->Qualify(3), C (Adverb)->Conditionally(2), D (Adjective)->Qualifiable(4). Derived match A-1, B-3, C-2, D-4. The code grid reading for option C was partly ambiguous in the scan but matches this derivation.",
+  "reasoning": "'Qualification' is the noun (A-1) and 'qualify' is the verb (B-3). 'Conditionally' ends in -ly, so it is the adverb (C-2). 'Qualifying' is the present participle used as an adjective, as in 'a qualifying round' (D-4). The code A-1, B-3, C-2, D-4 is option (c).",
   "confidence": "MED",
   "difficulty": "EASY"
  },
@@ -1888,23 +1888,23 @@
   "options": [
    {
     "label": "A",
-    "text": "A-4, B-3, C-2, D-3"
+    "text": "A-4, B-3, C-2, D-1"
    },
    {
     "label": "B",
-    "text": "A-1, B-3, C-2, D-4"
+    "text": "A-1, B-2, C-3, D-4"
    },
    {
     "label": "C",
-    "text": "A-1, B-2, C-2, D-4"
+    "text": "A-1, B-3, C-2, D-4"
    },
    {
     "label": "D",
-    "text": "A-4, B-3, C-2, D-1"
+    "text": "A-4, B-2, C-3, D-1"
    }
   ],
-  "answer": "B",
-  "reasoning": "A (Noun)->Error(1), B (Verb)->Err(3), C (Adverb)->Erroneously(2), D (Adjective)->Erroneous(4) = A-1, B-3, C-2, D-4 = option B.",
+  "answer": "C",
+  "reasoning": "Match each word by its ending. 'Error' is the noun (A-1). 'Err' is the verb (B-3). 'Erroneously' ends in -ly, the adverb (C-2). 'Erroneous' ends in -ous, the adjective (D-4). The code A-1, B-3, C-2, D-4 is option (c).",
   "confidence": "MED",
   "difficulty": "EASY"
  },
@@ -1969,23 +1969,23 @@
   "options": [
    {
     "label": "A",
-    "text": "A-2, B-4, C-3, D-1"
+    "text": "A-1, B-3, C-4, D-2"
    },
    {
     "label": "B",
-    "text": "A-1, B-2, C-3, D-4"
+    "text": "A-2, B-4, C-3, D-1"
    },
    {
     "label": "C",
-    "text": "A-2, B-1, C-3, D-4"
+    "text": "A-2, B-3, C-4, D-1"
    },
    {
     "label": "D",
     "text": "A-1, B-4, C-3, D-2"
    }
   ],
-  "answer": "A",
-  "reasoning": "A (Noun)->Exodus(2), B (Verb)->Exit(4), C (Adverb)->Outward(3), D (Adjective)->Emanant(1) = A-2, B-4, C-3, D-1. The code grid for Q75 was cut off at the foot of the page; the option letters are reconstructed and the answer follows the derivation.",
+  "answer": "B",
+  "reasoning": "'Exodus' is a noun, a mass departure (A-2). 'Exit' here is the verb, to go out (B-4). 'Outward' is the adverb, towards the outside (C-3). 'Emanant' is the adjective, flowing out from a source (D-1). The code A-2, B-4, C-3, D-1 is option (b).",
   "confidence": "LOW",
   "difficulty": "MODERATE"
  },
@@ -2120,7 +2120,7 @@
    }
   ],
   "answer": "B",
-  "reasoning": "A (Noun)->Intuition(2), B (Verb)->Intuit(4), C (Adverb)->Intuitively(3), D (Adjective)->Intuitive(1) = A-2, B-4, C-3, D-1, which is printed option (b). KEY FIX PENDING: the stored key A predates the option repair (the four codes were rotated by one) and must move A -> B via scripts/cds/apply-key-fixes.ts.",
+  "reasoning": "'Intuition' is the noun (A-2) and 'intuit' is the verb (B-4). 'Intuitively' ends in -ly, the adverb (C-3). 'Intuitive' ends in -ive, the adjective (D-1). The code A-2, B-4, C-3, D-1 is option (b).",
   "confidence": "MED",
   "difficulty": "EASY"
  },
@@ -2476,11 +2476,11 @@
    },
    {
     "label": "C",
-    "text": "Appraise is a noun meaning to inform about something. Apprise is a verb meaning to examine and form an opinion about something."
+    "text": "Appraise is a noun meaning to inform about something. Apprise is a noun meaning to examine and form an opinion about something."
    },
    {
     "label": "D",
-    "text": "Appraise is an adverb meaning to inform about something. Apprise is a noun meaning to examine and form an opinion about something."
+    "text": "Appraise is an adverb meaning to examine and form an opinion about something. Apprise is a verb meaning to inform about something."
    }
   ],
   "answer": "B",
@@ -2494,7 +2494,7 @@
   "options": [
    {
     "label": "A",
-    "text": "Climactic is an adverb meaning moment of heightened excitement. Climatic is an adjective meaning climate of a particular area."
+    "text": "Climactic is an adverb meaning moment of heightened excitement. Climatic is an adverb meaning climate of a particular area."
    },
    {
     "label": "B",
@@ -2502,7 +2502,7 @@
    },
    {
     "label": "C",
-    "text": "Climactic is a verb meaning moment of heightened excitement. Climatic is an adjective meaning climate of a particular area."
+    "text": "Climactic is a verb meaning moment of heightened excitement. Climatic is a verb meaning climate of a particular area."
    },
    {
     "label": "D",
@@ -2532,11 +2532,11 @@
    },
    {
     "label": "D",
-    "text": "Elders are often advising their children on various aspects of their heritage."
+    "text": "Elders are often advicing their children on various aspects of their heritage."
    }
   ],
-  "answer": "D",
-  "reasoning": "This item tests correct use of advice (noun) vs advise (verb). The verb form is 'advise' (and past 'advised'), not 'adviced'. Options A and C use the non-word 'adviced'. Option B uses 'advice' correctly as a noun, but is phrased oddly with 'went unheeded by his patient' (the patient is the doctor's, so the possessive/sense is fine, yet the question seeks the sentence using the words correctly). Option D correctly uses the verb 'advising'. Selecting D as the grammatically correct usage of the verb form.",
+  "answer": "B",
+  "reasoning": "'Advice' is a noun (a suggestion); the verb is 'advise', with the forms advised and advising. Sentences (a) and (c) use 'adviced', and sentence (d) uses 'advicing'; neither is an English word, because the noun 'advice' never takes verb endings. Sentence (b) uses 'advice' as a noun, the subject of 'went unheeded', which is correct. So (b) is the answer.",
   "confidence": "LOW",
   "difficulty": "HARD"
  },
@@ -2796,7 +2796,7 @@
    }
   ],
   "answer": "C",
-  "reasoning": "Feat = an achievement requiring great courage (4); Fate = development of events outside a person's control (1); Fathom = used to measure depth of water (2); Faux pas = an embarrassing mistake (3). So A-4, B-1, C-2, D-3, which is printed option (c). KEY FIX PENDING: the stored key A predates the option repair (printed (a) and (c) had been swapped) and must move A -> C via scripts/cds/apply-key-fixes.ts.",
+  "reasoning": "A feat is an achievement requiring great courage or skill (A-4). Fate is the course of events outside a person's control (B-1). A fathom is a unit used to measure the depth of water (C-2). A faux pas is an embarrassing mistake (D-3). The code A-4, B-1, C-2, D-3 is option (c).",
   "confidence": "HIGH",
   "difficulty": "MODERATE"
  },
@@ -2900,7 +2900,7 @@
    }
   ],
   "answer": "B",
-  "reasoning": "Devious = skilful in using underhand tactics (2); Devolution = transfer of power from higher to lower government (3); Detriment = the state of being harmed or damaged (4); Detract = cause something to seem less valuable (1). So A-2, B-3, C-4, D-1, which is printed option (b). KEY FIX PENDING: the stored key A predates the option repair (printed (a) and (b) had been swapped) and must move A -> B via scripts/cds/apply-key-fixes.ts.",
+  "reasoning": "Devious means skilful in using underhand tactics (A-2). Devolution is the transfer of power from a higher to a lower level of government (B-3). Detriment is the state of being harmed or damaged (C-4). To detract is to make something seem less valuable (D-1). The code A-2, B-3, C-4, D-1 is option (b).",
   "confidence": "HIGH",
   "difficulty": "MODERATE"
  },
