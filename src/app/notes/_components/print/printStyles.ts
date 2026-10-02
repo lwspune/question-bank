@@ -99,6 +99,11 @@ export const PRINT_CSS = `
 /* ---- figures ---- */
 .pfig { margin-top: 4mm; text-align: center; break-inside: avoid-page; page-break-inside: avoid; }
 .pfig svg { max-width: 100%; height: auto; }
+/* Paper cannot slide, tap or rotate. Drop the sliders, Reset buttons and
+   unselected options; keep each slider's label (it states the value the
+   picture is drawn at) and show the selected option as plain text. */
+.pfig input, .pfig select, .pfig button:not([aria-pressed="true"]) { display: none !important; }
+.pfig button[aria-pressed="true"] { background: none !important; border: 0 !important; color: inherit !important; padding: 0 !important; font-weight: 700; }
 
 /* ---- reference table ---- */
 .pcon table { width: 100%; border-collapse: collapse; font-size: 9pt; margin-top: 2mm; }
