@@ -12,10 +12,14 @@
  * word-pair section above them.
  *
  * Each row is rebuilt with buildRecords -> normalizeNewlines -> validateRow (the commit pipeline)
- * and the rebuilt text, context, solution, options, content_hash, chapter, subtopic and set_id
+ * and the rebuilt text, context, options, content_hash, chapter, subtopic and set_id
  * (`<upload_job_id>:<setLabel>`, the commitStaged rule) are written onto the EXISTING row. The
  * chapter must already exist under CDS English; a missing subtopic is created in it. One
  * stem_fixed review per row (run "notes:cds-english").
+ *
+ * `--changed` in place of question numbers finds every row whose rebuilt form differs from the bank
+ * (after a builder or sections.json change). Solutions are NEVER written or compared: several are
+ * hand-rewritten in the bank on purpose, and apply-notes-fixes.ts owns solution changes.
  */
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -33,10 +37,11 @@ async function main() {
   const args = process.argv.slice(2);
   const apply = args.includes("--apply");
   const why = args.find((a) => a.startsWith("--why="))?.slice(6);
+  const changed = args.includes("--changed");
   const [pid, ...rest] = args.filter((a) => !a.startsWith("--"));
-  const nums = rest.map(Number);
-  if (!pid || !nums.length || nums.some((n) => !Number.isInteger(n)) || !why) {
-    throw new Error('usage: sync-rows.ts <paperId> <q> [...] --why="..." [--apply]');
+  let nums = rest.map(Number);
+  if (!pid || (!changed && !nums.length) || nums.some((n) => !Number.isInteger(n)) || !why) {
+    throw new Error('usage: sync-rows.ts <paperId> (<q> [...] | --changed) --why="..." [--apply]');
   }
   const paper = requirePaper(pid);
   const sections: Section[] = JSON.parse(readFileSync(dataPath(paper.id, "sections"), "utf8"));
@@ -47,6 +52,34 @@ async function main() {
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
   const { data: subj, error: se } = await db.from("subjects").select("id").eq("exam_id", EXAM_ID).eq("name", "English").single();
   if (se || !subj) throw new Error(`CDS English subject: ${se?.message}`);
+
+  // --changed: every row whose rebuilt form differs from the bank row in any field this tool writes
+  // (a builder or sections.json change moves many rows at once; listing them by hand misses some).
+  if (changed) {
+    const { data: live, error } = await db.from("questions")
+      .select("question_number, upload_job_id, text, context, set_id, content_hash, chapters(name), subtopics(name), options(label, text, is_correct)")
+      .eq("exam_id", EXAM_ID).eq("source_file", paper.sourceFile);
+    if (error) throw error;
+    const byNum = new Map((live ?? []).map((r: any) => [String(r.question_number), r]));
+    nums = [];
+    for (const r of rows) {
+      const b: any = byNum.get(String(r.questionNumber));
+      if (!b) continue; // not in the bank: a commit, not a sync
+      r.question = normalizeNewlines(r.question);
+      if (r.context) r.context = normalizeNewlines(r.context);
+      if (r.solution) r.solution = normalizeNewlines(r.solution);
+      const p = validateRow(r).parsed;
+      if (!p) continue;
+      const opts = [...(b.options ?? [])].sort((x: any, y: any) => x.label.localeCompare(y.label));
+      const same = b.text === p.text && (b.context ?? null) === (p.context ?? null)
+        && b.content_hash === p.contentHash && b.chapters?.name === p.chapterName && b.subtopics?.name === p.subtopicName
+        && (b.set_id ?? null) === (p.setLabel ? `${b.upload_job_id}:${p.setLabel}` : null)
+        && opts.length === p.options.length && opts.every((o: any, i: number) => o.text === p.options[i].text && o.is_correct === p.options[i].isCorrect);
+      if (!same) nums.push(Number(r.questionNumber));
+    }
+    console.log(`${pid}: ${nums.length} row(s) differ from the source build${nums.length ? `: Q${nums.join(", Q")}` : ""}`);
+    if (!nums.length) return;
+  }
 
   const reviews: ReviewInput[] = [];
   for (const n of nums) {
@@ -88,7 +121,7 @@ async function main() {
       if (error) throw error;
     }
     const { error: ue } = await db.from("questions").update({
-      text: p.text, context: p.context ?? null, solution: p.solution ?? null, content_hash: p.contentHash,
+      text: p.text, context: p.context ?? null, content_hash: p.contentHash,
       chapter_id: ch.id, subtopic_id: st!.id, set_id: setId,
     }).eq("id", row.id);
     if (ue) throw ue;

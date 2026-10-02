@@ -108,6 +108,50 @@ describe("buildRecords", () => {
     expect(flags).toEqual([]);
   });
 
+  it("adds no full stop after an error stem whose last part already ends in . ? or !", () => {
+    // The page prints the sentence's own end mark inside part (c); appending "." showed students
+    // "...too long.}}\)." and "...doesn't he?}}\)." on every Spotting Errors section.
+    const s = [sec({ type: "spotting-errors", qFrom: 1, qTo: 2, setLabel: "S1" })];
+    const parts = (c: string) => [{ label: "A", text: "He said" }, { label: "B", text: "that he" }, { label: "C", text: c }, { label: "D", text: "No error" }];
+    const { rows } = buildRecords(s, [
+      q({ number: 1, stem: "(unused)", subtopic: "Tense and Verb Form", options: parts("would come.") }),
+      q({ number: 2, stem: "(unused)", subtopic: "Tense and Verb Form", options: parts("doesn't he?") }),
+    ], {});
+    expect(rows[0].question).toBe("\\(\\underline{\\text{He said}}\\) \\(\\underline{\\text{that he}}\\) \\(\\underline{\\text{would come.}}\\)");
+    expect(rows[1].question.endsWith("\\(\\underline{\\text{doesn't he?}}\\)")).toBe(true);
+  });
+
+  it("does not add a second 'Passage' heading when the passage text carries its own", () => {
+    // Most transcribed passages open "Passage – I" or "Passage"; prefixing another label printed it twice.
+    const s = [sec({ type: "reading-comprehension", qFrom: 1, qTo: 1, setLabel: "S1", directions: "Read the passage.", passage: "Passage – I\n\nOnce upon a time." })];
+    const { rows } = buildRecords(s, [q({ number: 1, stem: "What happened?", subtopic: "Literal Comprehension" })], {});
+    expect(rows[0].context).toBe("Directions: Read the passage.\n\nPassage – I\n\nOnce upon a time.");
+  });
+
+  it("applies an underline token in a section type that has no underline mode", () => {
+    // Idioms printed inside a sentence, an RC antonym item, S1/S2 usage pairs: the page underlines the
+    // tested words, so a token in underlines.json must show even where the section type sets no mode.
+    // Without a token nothing is flagged: most rows of these types carry no underline.
+    const s = [sec({ type: "idioms", qFrom: 1, qTo: 2, setLabel: "S1" })];
+    const { rows, flags } = buildRecords(
+      s,
+      [q({ number: 1, stem: "It is all at sea now." }), q({ number: 2, stem: "Blue blood" })],
+      { single: { "1": "at sea" } }
+    );
+    expect(rows[0].question).toBe("It is all \\(\\underline{\\text{at sea}}\\) now.");
+    expect(rows[1].question).toBe("Blue blood");
+    expect(flags).toEqual([]);
+  });
+
+  it("underlines S1/S2 lines from a triple token, as it does numbered lines", () => {
+    const s = [sec({ type: "sentence-relationship", qFrom: 1, qTo: 1, setLabel: "S1" })];
+    const stem = "S1: The matter was settled between the group.\nS2: Among them the two never quarrel.";
+    const { rows } = buildRecords(s, [q({ number: 1, stem })], { triple: { "1": { "1": "between", "2": "Among" } } });
+    expect(rows[0].question).toBe(
+      "S1: The matter was settled \\(\\underline{\\text{between}}\\) the group.\nS2: \\(\\underline{\\text{Among}}\\) them the two never quarrel."
+    );
+  });
+
   it("honours a row's own subtopic in any section, so a /notes re-cut can file it by technique", () => {
     // The section type still fixes the CHAPTER; the subtopic is a teaching choice. Without this a
     // re-cut written to <paper>.questions.json is ignored for every non-perQuestionSubtopic section.
