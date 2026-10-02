@@ -550,8 +550,8 @@
     "text": "QRPS"
    }
   ],
-  "answer": "A",
-  "reasoning": "Coherent sentence: 'India has become (P) with time (Q) the world's largest extractor of groundwater (S) accounting for 25 per cent of the total available water (R)' -> PQSR. None matches exactly; closest grammatical reading among options is PQRS (A) where 'with time' follows 'India has become' and the rest follows. Best available is PQRS.",
+  "answer": "C",
+  "reasoning": "With time (Q) India has become (P) the world's largest extractor of groundwater (S), accounting for 25 per cent of the total available water (R). 'With time' is an opening adverbial; 'India has become' needs its complement 'the world's largest extractor of groundwater'; the participle phrase 'accounting for 25 per cent of the total available water' then describes that extraction. Order QPSR. PQRS leaves 'has become' without a complement and puts 'accounting for...' before the thing it describes.",
   "confidence": "MED",
   "difficulty": "MODERATE"
  },
@@ -669,19 +669,19 @@
    },
    {
     "label": "B",
-    "text": "SRQP"
+    "text": "QRSP"
    },
    {
     "label": "C",
-    "text": "QRSP"
+    "text": "SRQP"
    },
    {
     "label": "D",
     "text": "QSPR"
    }
   ],
-  "answer": "A",
-  "reasoning": "'The Aravalli hill ranges (P) are spread out over the natural landscapes (R) the biodiversity parks (S) of the Yamuna river and (Q)' -> reads awkwardly; better: 'The Aravalli hill ranges (P) ... and the biodiversity parks (S) of the Yamuna river (Q) are spread out... (R)'. Among options, PRSQ (A) keeps subject P first and is the most defensible ordering.",
+  "answer": "C",
+  "reasoning": "The biodiversity parks (S) are spread out over the natural landscapes (R) of the Yamuna river and (Q) the Aravalli hill ranges (P). S is the subject and R its verb phrase; 'of the Yamuna river and' must follow 'landscapes' and needs a second item after 'and', which only P supplies. Order SRQP. PRSQ ends the sentence on a dangling 'and'.",
   "confidence": "LOW",
   "difficulty": "MODERATE"
  },
@@ -765,7 +765,7 @@
  },
  {
   "number": 30,
-  "stem": "Rearrange the following parts to form a coherent sentence.\nP: emerge at last into\nQ: those who passed through\nR: country of unearthly beauty\nS: that valley of darkness",
+  "stem": "Rearrange the following parts to form a coherent sentence.\nP: emerge at last into a\nQ: those who passed through\nR: country of unearthly beauty\nS: that valley of darkness",
   "options": [
    {
     "label": "A",
@@ -785,7 +785,7 @@
    }
   ],
   "answer": "B",
-  "reasoning": "'Those who passed through (Q) that valley of darkness (S) emerge at last into (P) country of unearthly beauty (R)' -> QSPR forms a complete, coherent sentence.",
+  "reasoning": "Those who passed through (Q) that valley of darkness (S) emerge at last into a (P) country of unearthly beauty (R). Q opens with the subject 'those who passed through', whose object is 'that valley of darkness'; the main verb 'emerge at last into a' then needs its noun, 'country of unearthly beauty'. Order QSPR.",
   "confidence": "HIGH",
   "difficulty": "MODERATE"
  },
@@ -1652,8 +1652,8 @@
     "text": "QPSR"
    }
   ],
-  "answer": "D",
-  "reasoning": "S1 (kings had banner and seal) -> Q (royal palace maintained in great state) continues the royal grandeur theme. Q -> P (all members of royal family shared in administration). P -> S (there were opportunities to influence the king). S -> R (the king was in theory an autocrat) qualifies the influence. R -> S6 (so high officials commanded great respect). Order Q-P-S-R = QPSR.",
+  "answer": "B",
+  "reasoning": "S1 introduces the kings and their royal symbols. Q continues with the grandeur of the palace. R then says the king was in theory an autocrat, and P and S show how that power was shared in practice: all members of the royal family took part in administration, and there were opportunities to influence the king's policies. S6 ('So the high officials commanded great respect') follows from S: because officials could influence policy, they were respected. Order QRPS. In QPSR, 'The king was in theory an autocrat' would come just before 'So the high officials commanded great respect', and that conclusion does not follow from it.",
   "confidence": "LOW",
   "difficulty": "HARD"
  },
@@ -1667,7 +1667,7 @@
    },
    {
     "label": "B",
-    "text": "PQRS"
+    "text": "PQSR"
    },
    {
     "label": "C",
@@ -1675,11 +1675,11 @@
    },
    {
     "label": "D",
-    "text": "QPSR"
+    "text": "RPSQ"
    }
   ],
-  "answer": "B",
-  "reasoning": "S1 (rise of East Asia is a major event) -> P (gives concrete growth-rate evidence). P -> Q (widespread assumption: modernization = westernization). Q -> R (Certainly, the balance shifted West to East) — 'Certainly' affirms. R -> S (However, the notion of a distinctively East Asian political form is less familiar) -> S6 (translated into political terms...). Order P-Q-R-S = PQRS.",
+  "answer": "D",
+  "reasoning": "S1 claims the rise of East Asia may matter more than the collapse of communism. R ('Certainly, the balance of the world's economy shifted... in this period') confirms it, and 'this period' points back to the late twentieth century in S1. P gives the evidence: growth rates two to four times higher. S turns with 'However' from economics to politics: a distinct East Asian political form is a less familiar idea. Q explains why: the usual assumption is that modernization means westernization. S6 ('Translated into political terms, this means...') must come right after Q, because 'this' is that assumption. Order RPSQ.",
   "confidence": "LOW",
   "difficulty": "HARD"
  },
@@ -1763,7 +1763,7 @@
  },
  {
   "number": 68,
-  "stem": "S1: During the past two decades, many organizations in both the manufacturing and service sectors have faced dramatic changes in their business environment.\nS6: At the same time there has been a significant reduction in product life cycles arising from technological innovations and the need to meet increasingly discriminating customer demands.\nP: To succeed in today's highly competitive environment, companies have made customer satisfaction an overriding priority.\nQ: They have also adopted new management approaches and manufacturing companies have changed their manufacturing systems and invested in new technologies.\nR: Deregulation and extensive competition from overseas companies in domestic markets have resulted in a situation in which most companies now operate in a highly competitive global market.\nS: At the same time there has been a significant reduction in product life cycle arising from technological innovations and the need to meet increasingly discriminating customer demands.",
+  "stem": "S1: During the past two decades, many organizations in both the manufacturing and service sectors have faced dramatic changes in their business environment.\nS6: These changes have had a significant influence on management accounting systems.\nP: To succeed in today's highly competitive environment, companies have made customer satisfaction an overriding priority.\nQ: They have also adopted new management approaches and manufacturing companies have changed their manufacturing systems and invested in new technologies.\nR: Deregulation and extensive competition from overseas companies in domestic markets have resulted in a situation in which most companies now operate in a highly competitive global market.\nS: At the same time there has been a significant reduction in product life cycles arising from technological innovations and the need to meet increasingly discriminating customer demands.",
   "options": [
    {
     "label": "A",
@@ -1789,7 +1789,7 @@
  },
  {
   "number": 69,
-  "stem": "S1: Gregor Johann Mendel was born on July 22, 1822 in Austria.\nS6: His pioneering work laid the foundation of science of genetics and therefore, he is known as the 'Father of Genetics'.\nP: His pioneering work laid the foundation of science of genetics and therefore, he is known as the 'Father of Genetics'.\nQ: There he was exposed to the lab facilities and got interested in research and teaching.\nR: In 1843, Mendel began studying even while being a monk at St. Thomas Monastery in Brno.\nS: His experiments focussed on cross-breeding of pea plants and gathering data on the variations of several generations.\nP2: Based on his experiments on a total of seven characteristics in garden pea, he established Law of Segregation and Law of Independent Assortment.",
+  "stem": "S1: Gregor Johann Mendel was born on July 22, 1822 in Austria.\nS6: Based on his experiments on a total of seven characteristics in garden pea, he established Law of Segregation and Law of Independent Assortment.\nP: His pioneering work laid the foundation of science of genetics and therefore, he is known as the 'Father of Genetics'.\nQ: There he was exposed to the lab facilities and got interested in research and teaching.\nR: In 1843, Mendel began studying even while being a monk at St. Thomas Monastery in Brno.\nS: His experiments focussed on cross-breeding of pea plants and gathering data on the variations of several generations.",
   "options": [
    {
     "label": "A",
@@ -1809,13 +1809,13 @@
    }
   ],
   "answer": "C",
-  "reasoning": "S1 (Mendel born 1822) -> P (based on experiments on seven characteristics he established the two laws) — note: the printed P-segment describes his garden-pea experiments and the two laws. P -> R (in 1843 Mendel began studying as a monk at St. Thomas Monastery) -> Q (there he was exposed to lab facilities, got interested in research) -> S (his experiments focussed on cross-breeding of pea plants) -> S6 (pioneering work laid foundation of genetics). Order P-R-Q-S = PRQS.",
+  "reasoning": "After S1 (his birth), P states why Mendel matters: his work founded genetics and earned him the title 'Father of Genetics'. His life then runs in order: R (in 1843 he began studying as a monk at St. Thomas Monastery), Q ('There' means the monastery, where he became interested in research), S (his experiments on cross-breeding pea plants). S6 (based on these experiments on seven characteristics he established his two laws) follows S. Order PRQS.",
   "confidence": "LOW",
   "difficulty": "HARD"
  },
  {
   "number": 70,
-  "stem": "S1: Mahatma Gandhi found in salt a powerful symbol that could unite the nation.\nS6: The most stirring of all was the demand to abolish the salt tax.\nP: On 31 January, 1930, he sent a letter to Viceroy Irwin stating eleven demands.\nQ: The idea was to make the demands wide-ranging, so that all classes within Indian society could identify with them and everyone could be brought together in a united campaign.\nR: Salt was something consumed by the rich and the poor alike, and it was one of the most essential items of food.\nS: The tax on salt and the government monopoly over its production, Mahatma Gandhi declared, revealed the most oppressive face of the British rule.",
+  "stem": "S1: Mahatma Gandhi found in salt a powerful symbol that could unite the nation.\nS6: The tax on salt and the government monopoly over its production, Mahatma Gandhi declared, revealed the most oppressive face of the British rule.\nP: On 31 January, 1930, he sent a letter to Viceroy Irwin stating eleven demands.\nQ: The idea was to make the demands wide-ranging, so that all classes within Indian society could identify with them and everyone could be brought together in a united campaign.\nR: Salt was something consumed by the rich and the poor alike, and it was one of the most essential items of food.\nS: The most stirring of all was the demand to abolish the salt tax.",
   "options": [
    {
     "label": "A",
@@ -1835,7 +1835,7 @@
    }
   ],
   "answer": "A",
-  "reasoning": "S1 (salt a powerful symbol to unite the nation) -> P (on 31 Jan 1930 he sent Viceroy Irwin a letter with eleven demands). P -> Q (the idea was to make demands wide-ranging so all classes could identify). Q -> S (the tax on salt and government monopoly revealed the oppressive face of British rule). S -> R (salt was consumed by rich and poor alike, an essential item of food). R -> S6 (the most stirring was the demand to abolish the salt tax). Order P-Q-S-R = PQSR.",
+  "reasoning": "S1 says Gandhi saw salt as a symbol that could unite the nation. P: on 31 January 1930 he sent Viceroy Irwin eleven demands. Q explains why the demands were wide-ranging: so that every class could join. S: the most stirring of them was the demand to abolish the salt tax ('of all' refers to the demands in P and Q). R explains why salt mattered: rich and poor alike consumed it. S6 completes the point: the tax on salt and the government monopoly over its production revealed the most oppressive face of British rule. Order PQSR.",
   "confidence": "MED",
   "difficulty": "HARD"
  },
@@ -2101,7 +2101,7 @@
  },
  {
   "number": 81,
-  "stem": "It is necessary, _______ in regard to any war, to consider, not its proper justification in past agreements ...",
+  "stem": "It is necessary, _______ any war, to consider, not its proper justification in past agreements ...",
   "options": [
    {
     "label": "A",
@@ -2121,7 +2121,7 @@
    }
   ],
   "answer": "A",
-  "reasoning": "The blank precedes the fixed prepositional phrase that fits the syntax; the four candidate words/phrases are tested for the slot. 'in regard to' completes the idiomatic construction naturally before the object 'any war'.",
+  "reasoning": "The blank links 'It is necessary' to 'any war': it is necessary, concerning any war, to consider its real justification. 'In regard to' means 'concerning' and takes 'any war' as its object. 'Connecting', 'describing' and 'linking' do not give this meaning and would leave the sentence without sense.",
   "confidence": "MED",
   "difficulty": "MODERATE"
  },
@@ -2205,7 +2205,7 @@
  },
  {
   "number": 85,
-  "stem": "... even when war is actually in progress it _______ to be natural and right that a citizen of an enemy country should regard the victory of his side as assured and highly _______ ...",
+  "stem": "... even when war is actually in progress it _______ to be natural and right that a citizen of an enemy country should regard the victory of his side as assured ...",
   "options": [
    {
     "label": "A",
@@ -2283,7 +2283,7 @@
  },
  {
   "number": 88,
-  "stem": "... blind to the evils inseparable from war and _______ equally certain whichever side may ultimately prove _______ ...",
+  "stem": "... blind to the evils inseparable from war and equally certain whichever side may ultimately prove _______ ...",
   "options": [
    {
     "label": "A",
@@ -2302,14 +2302,14 @@
     "text": "failing."
    }
   ],
-  "answer": "D",
-  "reasoning": "The blank needs a noun-like fit for 'evils ... equally certain'. Reading the slot as referring to the evils that follow, 'failing' fits the syntactic position adjacent to 'equally certain'; among the set it is the term that pairs with the inevitability of war's evils. (Cloze slot placement; option text used verbatim.)",
+  "answer": "C",
+  "reasoning": "The evils of war are certain whichever side wins, so the blank needs a word for winning a war: 'whichever side may ultimately prove victorious'. 'Successful' is close in meaning, but 'victorious' is the exact word for the side that wins a war. 'Thriving' does not describe the result of a war, and 'failing' reverses the sense: the point is that even the winning side cannot escape the evils.",
   "confidence": "LOW",
   "difficulty": "HARD"
  },
  {
   "number": 89,
-  "stem": "... equally certain whichever side may ultimately prove _______ ...",
+  "stem": "Yet so long as these are not fully realized, it is impossible _______ justly ...",
   "options": [
    {
     "label": "A",
@@ -2329,13 +2329,13 @@
    }
   ],
   "answer": "A",
-  "reasoning": "The slot 'it is impossible _______ whether a war is or is not likely to be beneficial' takes the infinitive 'to judge'; the other forms are ungrammatical after 'impossible'.",
+  "reasoning": "'Impossible' is followed by an infinitive: 'it is impossible to judge justly whether a war is or is not likely to be beneficial'. The active 'to judge' is needed because we are the ones judging and 'whether a war is...' is what we judge. 'To be judged' is passive and leaves that clause with nothing to depend on; 'to judging' and 'having judged' are not used after 'impossible'.",
   "confidence": "HIGH",
   "difficulty": "MODERATE"
  },
  {
   "number": 90,
-  "stem": "Yet so long as these are not fully realized, it is impossible to judge _______ a war is or is not likely to be beneficial to the human race.",
+  "stem": "Yet so long as these are not fully realized, it is impossible to judge justly _______ a war is or is not likely to be beneficial to the human race.",
   "options": [
    {
     "label": "A",
@@ -2821,7 +2821,7 @@
    },
    {
     "label": "B",
-    "text": "getting in your new job?"
+    "text": "getting of in your new job?"
    },
    {
     "label": "C",
@@ -2937,8 +2937,8 @@
     "text": "culture and civilization"
    }
   ],
-  "answer": "A",
-  "reasoning": "The passage argues machines were meant to give more leisure/energy but instead enslaved us; the loss highlighted is the higher, spiritual freedom we failed to gain.",
+  "answer": "D",
+  "reasoning": "The author says machines have saved us time and given us new energy, so (b) is something they did bring. But 'the machines themselves... are not civilization but aids to civilization', and we use the time they save mainly to make more machines instead of becoming more civilized. So machines have failed to bring us culture and civilization. 'Spiritual freedom' is never discussed, and 'slavery and destruction' is a danger machines pose, not something we expected them to bring.",
   "confidence": "MED",
   "difficulty": "MODERATE",
   "subtopic": "Inferential Comprehension"
@@ -2964,8 +2964,8 @@
     "text": "if man discovers how to prevent poverty"
    }
   ],
-  "answer": "C",
-  "reasoning": "The passage states civilization will be greater when machines serve man rather than the reverse.",
+  "answer": "A",
+  "reasoning": "The last sentence gives the condition: if a person gives the time and energy the machines have won 'to make more beautiful things', to find out more about the universe, to remove the causes of quarrels between nations and to discover how to prevent poverty, then civilization would be greater. Both (a) and (d) appear in that list, so the item has two defensible answers; (a) is the keyed answer because making beautiful things comes first and is also part of the author's definition of being civilized. (b) describes the present problem, and (c) only restates what machines were made for; the passage never says that this would make civilization greater.",
   "confidence": "HIGH",
   "difficulty": "EASY",
   "subtopic": "Literal Comprehension"
@@ -3072,8 +3072,8 @@
     "text": "All of the above"
    }
   ],
-  "answer": "D",
-  "reasoning": "The passage stresses plastic's omnipresence, found from the deepest ocean to remote/high places, so all the listed locations apply.",
+  "answer": "A",
+  "reasoning": "The passage says plastic has been found 'on even the most remote, uninhabited islands, and in the deepest parts of the ocean'. That supports (a), the oceanic depths. Mountain tops and metals and minerals are never mentioned, so 'All of the above' cannot be right.",
   "confidence": "MED",
   "difficulty": "MODERATE",
   "subtopic": "Literal Comprehension"
