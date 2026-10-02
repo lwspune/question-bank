@@ -27,8 +27,14 @@ async function main() {
     })
   );
   const sb = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
-  const { data: pub, error } = await sb.from("questions").select("id,question_kind,subtopics(name)").in("id", rows.map((r) => r.question_id)).eq("visibility", "PUBLIC");
-  if (error) throw error;
+  // .in() puts the ids in the URL: chunk at 200 or a large chapter (512 ids) overflows the request headers.
+  const pub: any[] = [];
+  const allIds = rows.map((r) => r.question_id);
+  for (let i = 0; i < allIds.length; i += 200) {
+    const { data, error } = await sb.from("questions").select("id,question_kind,subtopics(name)").in("id", allIds.slice(i, i + 200)).eq("visibility", "PUBLIC");
+    if (error) throw error;
+    pub.push(...(data ?? []));
+  }
   console.log("rows:", rows.length, "PUBLIC:", pub!.length, `(expect ${spec.expect})`);
   if (pub!.length !== rows.length || rows.length !== spec.expect) throw new Error("count mismatch");
   if (pub!.some((q: any) => q.question_kind !== "pyq")) throw new Error("a non-PYQ row is in the map");
