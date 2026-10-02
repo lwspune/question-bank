@@ -791,7 +791,7 @@
  },
  {
   "number": 31,
-  "stem": "S1: The Attorney-General of India is appointed by the President of India.\nS6: He shall receive such remuneration as the President may determine.\nP: In the performance of his duties, the Attorney-General shall have the right of audience in all courts in the territory of India.\nQ: The Attorney-General shall hold office during the pleasure of the President.\nR: Any person qualified to be a judge of the Supreme Court can be appointed for the post.\nS: The duty of the Attorney-General is to give advice to the Government of India upon such legal matters, and to perform such other duties of a legal character as may from time to time be assigned to him by the President, and to discharge the functions conferred on him by or under the Constitution or any other law for the time being in force.",
+  "stem": "S1: The Attorney-General of India is appointed by the President of India.\nS6: He shall receive such remuneration as the President may determine.\nP: In the performance of his duties, the Attorney-General shall have the right of audience in all courts in the territory of India.\nQ: The Attorney-General shall hold office during the pleasure of the President.\nR: Any person qualified to be a judge of the Supreme Court can be appointed for the post.\nS: The duty of the Attorney-General is to give advice to the Government of India upon such legal matters, and to perform such other duties of a legal character, as may from time to time be referred to him or assigned to him by the President, and to discharge the functions conferred on him by or under the Constitution or any other law for the time being in force.",
   "options": [
    {
     "label": "A",
@@ -817,11 +817,11 @@
  },
  {
   "number": 32,
-  "stem": "S1: COVID-19 was a health catastrophe that caused great distress.\nS6: During the pandemic, India re-established its credentials as the Pharmacy of the World by supplying medicines and equipment to over 150 countries in the face of daunting logistical challenges.\nP: India also undertook the Vande Bharat Mission.\nQ: Made-in-India vaccines were sent to more than 90 countries on a commercial and grant basis.\nR: India justified its credentials as a global HADR player deploying Rapid Response Teams to Maldives, Kuwait and Mauritius launching the multiphased mission SAGAR.\nS: It triggered the movement of more than 7 million people through lockdown and post-lockdown periods.",
+  "stem": "S1: COVID-19 was a health catastrophe that caused great distress.\nS6: It triggered the movement of more than 7 million people through lockdown and post-lockdown periods.\nP: India also undertook the Vande Bharat Mission.\nQ: Made-in-India vaccines were sent to more than 90 countries on a commercial and grant basis.\nR: India justified its credentials as a global HADR player deploying Rapid Response Teams to Maldives, Kuwait and Mauritius launching the multiphased mission SAGAR.\nS: During the pandemic, India re-established its credentials as the Pharmacy of the World by supplying medicines and equipment to over 150 countries in the face of daunting logistical challenges.",
   "options": [
    {
     "label": "A",
-    "text": "SQPR"
+    "text": "SQRP"
    },
    {
     "label": "B",
@@ -836,14 +836,14 @@
     "text": "QRSP"
    }
   ],
-  "answer": "B",
-  "reasoning": "S1 (COVID-19 distress) -> S ('It triggered the movement of 7 million people') -> P (Vande Bharat Mission) -> R (global HADR player, SAGAR) -> Q (Made-in-India vaccines to 90 countries) -> S6 (Pharmacy of the World) = SPRQ. 'It' in S refers to COVID-19.",
+  "answer": "A",
+  "reasoning": "S1 introduces the pandemic. S says that during the pandemic India re-established its credentials as the Pharmacy of the World, and Q gives an example: Made-in-India vaccines sent to more than 90 countries. R adds a second role, India as a global humanitarian assistance and disaster relief (HADR) player. P then says India 'also' undertook the Vande Bharat Mission, and S6 must follow P: 'It triggered the movement of more than 7 million people' only makes sense if 'It' is the Vande Bharat Mission, which moved people home through the lockdown periods. The order is SQRP, option (a).",
   "confidence": "MED",
   "difficulty": "MODERATE"
  },
  {
   "number": 33,
-  "stem": "S1: The New Development Bank (NDB) has been instituted with a vision to support and foster infrastructure and sustainable initiatives in emerging economies.\nS6: India is one of the largest borrowers from the Bank in the sectors of transport, health, water and financial sectors.\nP: The purpose of the Bank is to mobilise resources for infrastructure and sustainable projects in BRICS and other emerging economies.\nQ: Each member country has a shareholding of 20 per cent.\nR: The founding members of NDB—Brazil, Russia, India, China and South Africa—brought in capital USD 1 billion as initial contribution.\nS: India and other four founding members have equal shareholding in the Bank.",
+  "stem": "S1: The New Development Bank (NDB) has been instituted with a vision to support and foster infrastructure and sustainable initiatives in emerging economies.\nS6: India is one of the largest borrowers from the Bank in the sectors of transport, health, water and financial sectors.\nP: The purpose of the Bank is to mobilise resources for infrastructure and sustainable projects in BRICS and other emerging economies.\nQ: Each member country has a shareholding of 20 per cent.\nR: The founding members of the NDB—Brazil, Russia, India, China and South Africa—brought in capital USD 1 billion as initial contribution.\nS: India and other four founding members have equal shareholding in the Bank.",
   "options": [
    {
     "label": "A",
@@ -862,8 +862,8 @@
     "text": "RSQP"
    }
   ],
-  "answer": "A",
-  "reasoning": "S1 (NDB vision) -> P (purpose: mobilise resources) -> Q (each member 20% shareholding) -> S (India and four founding members equal shareholding) -> R (founding members brought USD 1 billion) -> S6 (India largest borrower) = PQSR. Of the options only (a) begins with the defining 'purpose' sentence.",
+  "answer": "D",
+  "reasoning": "R names the five founding members. S follows naturally: India and the other four founding members have equal shareholding. Q then makes 'equal' exact: each member country holds 20 per cent. Each of these sentences depends on the one before it, so R-S-Q is a fixed block, and only (d) contains it. P states the Bank's purpose, mobilising resources for infrastructure in BRICS and other emerging economies, which leads into S6: India is one of the largest borrowers from the Bank. The order is RSQP. Option (a) PQSR gives the 20 per cent figure before the members are introduced, and names the founding members only after S has already referred to 'other four founding members'.",
   "confidence": "LOW",
   "difficulty": "HARD"
  },
@@ -921,7 +921,7 @@
  },
  {
   "number": 36,
-  "stem": "S1: Cotton is one of the most important cash crops in India, and it makes India an important global player in cotton production.\nS6: In the raw material consumption basket of the Indian textile industry, the proportion of cotton is around 60 per cent.\nP: An estimated 508 million cotton farmers and 40-50 million people are engaged in related activities such as cotton processing and trade.\nQ: India's contribution to cotton production comes from around 126 lakh hectares under cotton cultivation which is around 38 per cent of the world area.\nR: The country accounts for around 25 per cent of the total global fibre production.\nS: To support the cotton industry, the Government of India regularly announces Minimum Support Price (MSP) for two basic staple groups, viz., medium staple and long staple cotton.",
+  "stem": "S1: Cotton is one of the most important cash crops in India, and it makes India an important global player in cotton production.\nS6: To support the cotton industry, the Government of India regularly announces Minimum Support Price (MSP) for two basic staple groups, viz., medium staple and long staple cotton.\nP: Cotton sustains the livelihood of an estimated 508 million cotton farmers and 40-50 million people engaged in related activities such as cotton processing and trade.\nQ: India's contribution to cotton production comes from around 126 lakh hectares under cotton cultivation which is around 38 per cent of the world area.\nR: The country accounts for around 25 per cent of the total global fibre production.\nS: In the raw material consumption basket of the Indian textile industry, the proportion of cotton is around 60 per cent.",
   "options": [
    {
     "label": "A",
@@ -941,7 +941,7 @@
    }
   ],
   "answer": "A",
-  "reasoning": "S1 (cotton important, global player in production) -> P (508 million farmers etc.) -> Q (126 lakh hectares, 38% of world area) -> R (25% of global fibre production) -> S (MSP support) -> S6 (60% raw material consumption). Production-share statements Q and R sit adjacent; PQRS groups scale/area/fibre then policy then consumption = PQRS.",
+  "reasoning": "S1 calls cotton an important cash crop that makes India a global player in cotton production. P gives the human scale: cotton sustains millions of farmers and people in processing and trade. Q and R give India's place in world production, its share of world cotton area and of world fibre production, and belong together. S moves to the textile industry, where cotton is about 60 per cent of raw material, and S6 closes with the government's support for the cotton industry through the Minimum Support Price. The order is PQRS, option (a). Option (d) RQSP also reads smoothly; (a) is the keyed answer because it keeps the two production figures in the order area, then output, and moves from people to production to industry to support.",
   "confidence": "LOW",
   "difficulty": "HARD"
  },
@@ -973,7 +973,7 @@
  },
  {
   "number": 38,
-  "stem": "S1: Rural Postal Life Insurance was started in 1995.\nS6: With liberalisation of the insurance sector, Postal Life Insurance and Rural Postal Life Insurance are operating in a very competitive market.\nP: It also aims to spread insurance awareness among the rural population.\nQ: However, PLI and RPLI continue to offer life insurance cover at lower premium rate and higher bonus.\nR: The prime objective of the scheme is to provide insurance cover to the rural public in general and to benefit weaker sections and women workers of rural areas in particular.\nS: Therefore, various schemes of PLI and RPLI are very popular amongst eligible clients.",
+  "stem": "S1: Rural Postal Life Insurance was started in 1995.\nS6: Therefore, various schemes of PLI and RPLI are very popular amongst eligible clients.\nP: It also aims to spread insurance awareness among the rural population.\nQ: However, PLI and RPLI continue to offer life insurance cover at lower premium rate and higher bonus.\nR: The prime objective of the scheme is to provide insurance cover to the rural public in general and to benefit weaker sections and women workers of rural areas in particular.\nS: With liberalisation of the insurance sector, Postal Life Insurance and Rural Postal Life Insurance are operating in a very competitive market.",
   "options": [
    {
     "label": "A",
@@ -993,13 +993,13 @@
    }
   ],
   "answer": "C",
-  "reasoning": "S1 (RPLI started 1995) -> R (prime objective: insurance cover to rural public) -> P (also aims to spread awareness) -> S (Therefore schemes are very popular) -> Q (However, continue lower premium and higher bonus) -> S6 (with liberalisation, operating in competitive market). Q's 'However' contrasts into S6's competitive market = RPSQ.",
+  "reasoning": "S1 introduces Rural Postal Life Insurance. R gives the prime objective of the scheme and P adds a second aim with 'also'. S sets the scene: with liberalisation, PLI and RPLI now operate in a very competitive market. Q answers that with 'However': they still offer cover at a lower premium and a higher bonus. S6 draws the conclusion with 'Therefore': the schemes are very popular amongst eligible clients. The order is RPSQ, option (c).",
   "confidence": "LOW",
   "difficulty": "HARD"
  },
  {
   "number": 39,
-  "stem": "S1: Digital Locker is a key initiative under Digital India, aimed at transforming India into a digitally empowered society and knowledge economy.\nS6: Indian residents, who sign up for a DigiLocker account, get a dedicated cloud storage space.\nP: Targeted at the idea of paperless governance, Digital Locker is a platform for issuance and verification of documents and certificates in a digital way.\nQ: Organisations that are registered with Digital Locker can push electronic copies of documents and certificates directly into citizens' lockers.\nR: Citizens can also upload scanned copies of their legacy documents in their accounts.\nS: These legacy documents can be electronically signed using the eSign facility.",
+  "stem": "S1: Digital Locker is a key initiative under Digital India, aimed at transforming India into a digitally empowered society and knowledge economy.\nS6: These legacy documents can be electronically signed using the eSign facility.\nP: Targeted at the idea of paperless governance, Digital Locker is a platform for issuance and verification of documents and certificates in a digital way.\nQ: Organisations that are registered with Digital Locker can push electronic copies of documents and certificates directly into citizens' lockers.\nR: Citizens can also upload scanned copies of their legacy documents in their accounts.\nS: Indian residents, who sign up for a DigiLocker account, get a dedicated cloud storage space.",
   "options": [
    {
     "label": "A",
@@ -1018,8 +1018,8 @@
     "text": "SPRQ"
    }
   ],
-  "answer": "C",
-  "reasoning": "'These legacy documents' (S) requires the antecedent 'legacy documents' from R, so R->S is fixed and only option (c) has that adjacency. R (citizens upload legacy documents) -> S (these can be eSigned) -> P (paperless platform) -> Q (organisations push documents) -> S6 (residents get cloud storage) = RSPQ.",
+  "answer": "A",
+  "reasoning": "S6 begins 'These legacy documents', so it must come straight after R, the only sentence that mentions citizens' legacy documents. Only option (a) ends with R. Reading it through: P defines Digital Locker as a platform for issuing and verifying documents; S says residents who sign up get a dedicated cloud storage space; Q says registered organisations can push documents directly into those lockers; R adds that citizens can also upload scanned copies of their own legacy documents; S6 says these can be eSigned. The order is PSQR.",
   "confidence": "MED",
   "difficulty": "MODERATE"
  },
@@ -1330,8 +1330,8 @@
     "text": "the fear of the spirit"
    }
   ],
-  "answer": "B",
-  "reasoning": "Passage opens by stating that the present tragedy is general and physical-fear-based, and that the young writer has forgotten the problems of the human heart.",
+  "answer": "C",
+  "reasoning": "The passage opens: 'Our tragedy today is a general and universal physical fear so long sustained by now that we can even bear it.' The tragedy is this fear, which we have lived with so long that we have learnt to bear it: option (c). Option (b), forgetting the problems of the human heart, is what follows from the fear ('Because of this, the young man or woman writing today has forgotten...'). It is a consequence, and the passage says it of young writers, not of all of us.",
   "confidence": "HIGH",
   "difficulty": "MEDIUM",
   "subtopic": "Literal Comprehension"
@@ -1412,7 +1412,7 @@
    }
   ],
   "answer": "D",
-  "reasoning": "Author refuses to accept the end of man; man is immortal not only for his inexhaustible voice but because he has a soul, a spirit of compassion and sacrifice.",
+  "reasoning": "The author refuses to accept the end of man. Man is immortal, he says, 'not because he alone among creatures has an inexhaustible voice, but because he has a soul, a spirit capable of compassion and sacrifice'. So the end of man is untenable because of his spirit, born of his soul: option (d). The voice (a) and mere endurance (b) are the reasons the author rejects.",
   "confidence": "MED",
   "difficulty": "HARD",
   "subtopic": "Inferential Comprehension"
@@ -1493,7 +1493,7 @@
    }
   ],
   "answer": "B",
-  "reasoning": "The passage clarifies meaning \"by identifying and describing its separate dimensions\" and uses \"aspects\" throughout, which is option (b) \"there is clarity regarding its aspects\". The previously keyed (a) \"find meaning of the innovation in their use\" introduces a concept absent from the excerpt, and the printed Directions restrict answers to the contents of the passage only. All five stems and twenty options of this set were verified against printed p17, so the transcription is faithful and the key alone was wrong.",
+  "reasoning": "The passage says the meaning of an educational change can be made clear 'by identifying and describing its separate dimensions', and that ignorance of these dimensions explains 'why some people accept an innovation they do not understand'. So people accept an innovation with understanding when there is clarity about its aspects: option (b). Options (a), (c) and (d) are not stated in the passage.",
   "confidence": "HIGH",
   "difficulty": "HARD",
   "subtopic": "Inferential Comprehension"
@@ -2052,7 +2052,7 @@
    },
    {
     "label": "C",
-    "text": "delivered by Swami Vivekananda."
+    "text": "delivered by Swami Vivekananda"
    },
    {
     "label": "D",
@@ -2079,7 +2079,7 @@
    },
    {
     "label": "C",
-    "text": "for the job."
+    "text": "for the job"
    },
    {
     "label": "D",
@@ -2106,7 +2106,7 @@
    },
    {
     "label": "C",
-    "text": "to eat."
+    "text": "to eat"
    },
    {
     "label": "D",
@@ -2255,23 +2255,23 @@
   "options": [
    {
     "label": "A",
-    "text": "establishes the first"
+    "text": "expands the first"
    },
    {
     "label": "B",
-    "text": "develops an axiom based on the first"
+    "text": "contrasts with the first"
    },
    {
     "label": "C",
-    "text": "contradicts the first"
+    "text": "proposes a solution"
    },
    {
     "label": "D",
-    "text": "delegitimises the premise of the first"
+    "text": "states an effect"
    }
   ],
   "answer": "A",
-  "reasoning": "S2 elaborates how civics classes develop concepts that build toward participative citizenship, supporting and establishing the claim in S1. It confirms/establishes rather than develops a separate axiom or contradicts.",
+  "reasoning": "S1 says what civics classes focus on: citizenship and governance. S2 adds detail about what the subject does, developing concepts that let the reader apply knowledge of government and the state to participative citizenship. It builds on and expands S1's statement: option (a). It does not contrast with S1, propose a solution to a problem, or state an effect of S1.",
   "confidence": "MED",
   "difficulty": "MODERATE"
  },
@@ -2946,8 +2946,8 @@
     "text": "tripped in"
    }
   ],
-  "answer": "A",
-  "reasoning": "To 'trip out (along)' / move lightly and quickly along a road fits the sense of walking off briskly after saying goodbye; 'tripped over/off/in' do not give the 'moved along' meaning. Of the given options 'tripped out' best conveys moving lightly along.",
+  "answer": "C",
+  "reasoning": "To trip off is to go away with light, quick steps, which fits someone who says goodbye and sets off along the road: 'She said goodbye and tripped off along the road.' Tripped over means stumbled on something; tripped out and tripped in do not mean leaving lightly along a road.",
   "confidence": "LOW",
   "difficulty": "HARD"
  },
@@ -3057,7 +3057,7 @@
  },
  {
   "number": 117,
-  "stem": "S1: The matter was resolved amicably between the group even though there were so many of them.\nS2: Among them two never have problems sharing what they have.",
+  "stem": "S1: The matter was resolved amicably between the group even though there were so many of them.\nS2: Among them the two never have problems sharing what they have.",
   "options": [
    {
     "label": "A",
@@ -3076,8 +3076,8 @@
     "text": "Both S1 and S2 are right"
    }
   ],
-  "answer": "B",
-  "reasoning": "Underlined words: 'between' (S1) and 'Among' (S2). 'Between' is used for two; for a group of many ('so many of them') the correct word is 'among', so S1 is wrong. 'Among them two' referring to a group of more than two is correct, so S2 is right. S1 wrong, S2 right.",
+  "answer": "C",
+  "reasoning": "The underlined words are between (S1) and Among (S2). Between is used for two, among for more than two. S1 speaks of a group with 'so many of them', so it needs among: S1 is wrong. In S2, 'them the two' refers to a pair, so it needs between: 'Between them the two never have problems sharing what they have.' S2 is wrong too. Both are wrong: option (c).",
   "confidence": "MED",
   "difficulty": "HARD"
  },
@@ -3154,8 +3154,8 @@
     "text": "Both S1 and S2 are right"
    }
   ],
-  "answer": "C",
-  "reasoning": "Underlined words: 'any' (S1) and 'some' (S2). S1: reported speech with past 'enquired' requires backshift — 'is' should be 'was', so S1 is wrong as written. S2: in a question/enquiry, the determiner should be 'any' not 'some' ('whether she had any pets'), so S2 is wrong. Both wrong.",
+  "answer": "A",
+  "reasoning": "The underlined words are any (S1) and some (S2). In an indirect question introduced by whether, the usual determiner is any. S1, 'whether there is any problem with the question paper', uses it correctly, so S1 is right. S2 should read 'whether she had any pets at home', so some is wrong there. S1 is right and S2 is wrong: option (a). The item judges only the underlined words, not the tense of the reporting verb.",
   "confidence": "LOW",
   "difficulty": "HARD"
  }
