@@ -4,11 +4,12 @@ import BlockText from "@/components/math/BlockText";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { loadWorkedExamples, type WorkedExample } from "@/lib/guide/loadWorkedExamples";
 import { deriveSummary } from "@/lib/notes/deriveSummary";
-import { collectPyqIds, printDocStats } from "@/lib/notes/printDoc";
+import { collectPyqIds, legendSymbolText, printDocStats } from "@/lib/notes/printDoc";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import type { AuthoredExample, ConceptUnit } from "@/app/notes/_types";
 import { renderVisualization } from "../ConceptUnitCard";
 import PrintButton from "./PrintButton";
+import { WATERMARK_PNG_BASE64 } from "@/lib/export/watermark.generated";
 import { PRINT_CSS } from "./printStyles";
 
 /**
@@ -102,7 +103,8 @@ function ConceptBlock({
             <ul className="psyms">
               {concept.formula.symbols.map((s, i) => (
                 <li key={i}>
-                  <KatexRenderer text={`\\(${s.symbol}\\)`} /> = {s.meaning}
+                  <KatexRenderer text={legendSymbolText(s.symbol)} /> ={" "}
+                  <KatexRenderer text={s.meaning} />
                 </li>
               ))}
             </ul>
@@ -261,6 +263,12 @@ export default async function NotesChapterPrint({ chapter }: Props) {
           __html: `document.documentElement.classList.remove("dark");`,
         }}
       />
+
+      {/* The same diagonal PYQ Vault picture the branded Word paper carries.
+          position:fixed repeats it on every printed page; an <img> (not a CSS
+          background) so it prints even with "Background graphics" off. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className="pwm" src={`data:image/png;base64,${WATERMARK_PNG_BASE64}`} alt="" aria-hidden />
 
       <div className="pdoc">
         <div className="pbar no-print">

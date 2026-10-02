@@ -8,7 +8,24 @@
  * Units are mm because the target is a physical A4 page, not a viewport.
  */
 export const PRINT_CSS = `
-@page { size: A4; margin: 14mm 12mm 16mm 12mm; }
+/* The site address on every page, in the bottom margin, as the branded Word
+   paper has it (Word prints it at 8pt; a little larger here). A page margin
+   box, so it can never overlap the content above it. */
+@page {
+  size: A4;
+  margin: 14mm 12mm 16mm 12mm;
+  @bottom-center {
+    content: "www.pyqvault.com";
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 10pt;
+    color: #808080;
+  }
+}
+
+/* ---- watermark ---- */
+/* Above the content, not behind it: the shaded boxes would hide it. The PNG's
+   own alpha (about 12% black) keeps the text under it readable. */
+.pwm { position: fixed; top: 50%; left: 50%; width: 130mm; height: auto; transform: translate(-50%, -50%); pointer-events: none; z-index: 50; }
 
 .pdoc { max-width: 186mm; margin: 0 auto; padding: 8mm 0 24mm; color: #111; background: #fff; }
 .pdoc a { color: inherit; text-decoration: none; }
@@ -99,6 +116,11 @@ export const PRINT_CSS = `
 /* ---- figures ---- */
 .pfig { margin-top: 4mm; text-align: center; break-inside: avoid-page; page-break-inside: avoid; }
 .pfig svg { max-width: 100%; height: auto; }
+/* Paper cannot slide, tap or rotate. Drop the sliders, Reset buttons and
+   unselected options; keep each slider's label (it states the value the
+   picture is drawn at) and show the selected option as plain text. */
+.pfig input, .pfig select, .pfig button:not([aria-pressed="true"]) { display: none !important; }
+.pfig button[aria-pressed="true"] { background: none !important; border: 0 !important; color: inherit !important; padding: 0 !important; font-weight: 700; }
 
 /* ---- reference table ---- */
 .pcon table { width: 100%; border-collapse: collapse; font-size: 9pt; margin-top: 2mm; }
