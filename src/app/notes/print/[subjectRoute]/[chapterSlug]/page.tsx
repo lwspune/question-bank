@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getNotesChapterBySlug, NOTES_CHAPTERS } from "@/lib/notes/chapters";
+import { getNotesChapterBySlug } from "@/lib/notes/chapters";
 import NotesChapterPrint from "@/app/notes/_components/print/NotesChapterPrint";
 
 /**
@@ -19,11 +19,16 @@ export const revalidate = 86400;
 
 type Params = { subjectRoute: string; chapterSlug: string };
 
+/**
+ * BUILT ON FIRST VISIT, then cached for `revalidate` (2026-10-02). It used to
+ * pre-render every chapter at build time: 801 files, ~420 MB, up to 13 MB a
+ * page (each KaTeX formula is written twice, HTML + MathML). Handouts are
+ * opened rarely, and the route is NOINDEX and absent from the sitemap, so the
+ * one cost — a slower first open of each handout — falls on no crawler.
+ * Pinned by tests/notes-print-route.test.ts.
+ */
 export function generateStaticParams(): Params[] {
-  return NOTES_CHAPTERS.map((c) => ({
-    subjectRoute: c.subjectRoute,
-    chapterSlug: c.chapterSlug,
-  }));
+  return [];
 }
 
 export function generateMetadata({ params }: { params: Params }): Metadata {

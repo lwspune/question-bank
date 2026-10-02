@@ -1,24 +1,8 @@
-import { Layers } from "lucide-react";
-import BlockText from "@/components/math/BlockText";
-import { groupBySet } from "@/lib/export/groupBySet";
 import type { QuestionRow } from "@/lib/questions/query";
-import { getQuestionResources } from "@/lib/links/questionResources";
+import { resolveResourcesById } from "@/lib/links/questionResources";
 import type { ResourceTags } from "@/lib/links/getResourceTagsForQuestions";
-import { PresentRegistry } from "@/components/present/PresentRegistry";
-import QuestionCard from "./QuestionCard";
 import type { ItemStatAggregate } from "@/lib/itemStats/types";
-
-function resourcesFor(q: QuestionRow, tags?: ResourceTags) {
-  return getQuestionResources(
-    {
-      examName: q.exam.name,
-      subjectName: q.subject.name,
-      chapterName: q.chapter.name,
-      subtopicName: q.subtopic?.name ?? null,
-    },
-    tags
-  );
-}
+import QuestionListView from "./QuestionListView";
 
 type Props = {
   questions: QuestionRow[];
@@ -42,112 +26,19 @@ type Props = {
 };
 
 /**
- * Lays out the per-page question list. Consecutive set siblings collapse
- * under a passage banner; standalone questions render as plain cards. The
- * banner shows the passage once; member cards hide their per-card Context
- * to avoid duplicating it.
- *
- * Indices stay sequential across groups (Q34 stays Q34 whether it's in a
- * set or not).
+ * The question list for SERVER pages (/browse, the /questions landings):
+ * resolves each card's guide/notes backlinks here, on the server, and renders
+ * QuestionListView. A client component must render QuestionListView directly
+ * with resources its server page resolved — importing this wrapper into a
+ * client component would ship the whole notes corpus to the browser (see
+ * QuestionListView's header).
  */
-export default function QuestionList({
-  questions,
-  pageOffset,
-  canEdit,
-  isLoggedIn,
-  supabaseUrl,
-  includeExam,
-  resourceTags,
-  itemStats,
-}: Props) {
-  const groups = groupBySet(questions);
-  const idToIndex = new Map<string, number>();
-  questions.forEach((q, i) => idToIndex.set(q.id, pageOffset + i + 1));
-
+export default function QuestionList({ questions, resourceTags, ...rest }: Props) {
   return (
-    // Wraps the page so the projection overlay can step through the whole
-    // list; see PresentRegistry for why the cards register rather than receive.
-    <PresentRegistry>
-      <ul className="space-y-3">
-        {groups.map((group, gi) => {
-          if (group.kind === "single") {
-            return (
-              <li key={`single-${group.question.id}`}>
-                <QuestionCard
-                  question={group.question}
-                  index={idToIndex.get(group.question.id)!}
-                  canEdit={canEdit}
-                  isLoggedIn={isLoggedIn}
-                  supabaseUrl={supabaseUrl}
-                  includeExam={includeExam}
-                  resources={resourcesFor(
-                    group.question,
-                    resourceTags?.get(group.question.id)
-                  )}
-                  itemStats={itemStats?.get(group.question.id)}
-                />
-              </li>
-            );
-          }
-          return (
-            <li key={`set-${group.setId}-${gi}`}>
-              <SetBanner
-                passage={group.passage}
-                count={group.questions.length}
-              >
-                <ul className="space-y-2">
-                  {group.questions.map((q) => (
-                    <li key={q.id}>
-                      <QuestionCard
-                        question={q}
-                        index={idToIndex.get(q.id)!}
-                        canEdit={canEdit}
-                        isLoggedIn={isLoggedIn}
-                        supabaseUrl={supabaseUrl}
-                        hideContext
-                        includeExam={includeExam}
-                        resources={resourcesFor(q, resourceTags?.get(q.id))}
-                        itemStats={itemStats?.get(q.id)}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </SetBanner>
-            </li>
-          );
-        })}
-      </ul>
-    </PresentRegistry>
-  );
-}
-
-function SetBanner({
-  passage,
-  count,
-  children,
-}: {
-  passage: string;
-  count: number;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="rounded-xl border border-primary/30 bg-primary/[0.03] p-3 sm:p-4">
-      <div className="mb-3 flex items-start gap-2">
-        <span className="mt-0.5 inline-flex shrink-0 items-center gap-1 rounded-full border border-primary/30 bg-card px-2 py-0.5 text-[11px] font-medium text-primary">
-          <Layers className="h-3 w-3" aria-hidden />
-          Set · {count} question{count === 1 ? "" : "s"}
-        </span>
-      </div>
-      {passage && (
-        <div className="mb-3 font-serif text-sm italic leading-relaxed text-foreground/85">
-          {/* BlockText, not KatexRenderer: a set's shared context is where
-              "match the columns" tables live (61 sets bank-wide), and
-              KatexRenderer prints a pipe-table as raw pipes. Contract pinned
-              by tests/long-form-field-renderer-contract.test.ts. */}
-          <BlockText text={passage} />
-        </div>
-      )}
-      {children}
-    </div>
+    <QuestionListView
+      questions={questions}
+      resourcesById={resolveResourcesById(questions, resourceTags)}
+      {...rest}
+    />
   );
 }

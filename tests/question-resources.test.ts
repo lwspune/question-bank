@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { getQuestionResources } from "@/lib/links/questionResources";
+import { getQuestionResources, resolveResourcesById } from "@/lib/links/questionResources";
 import type { ResourceTags } from "@/lib/links/getResourceTagsForQuestions";
 
 function call(
@@ -749,3 +749,49 @@ describe("getQuestionResources — MHT-CET Maths guide (Template C)", () => {
     expect(nda.guide!.href).toBe("/guide/nda-maths");
   });
 });
+
+describe("resolveResourcesById — the server-side batch the client views receive", () => {
+  // QuestionListView takes resources as data so a client component never
+  // imports this module (it reaches the whole notes registry). The batch must
+  // give exactly what the per-question call gives, or /browse chips would move.
+  const q = (id: string, exam: string, subject: string, chapter: string, subtopic: string | null) => ({
+    id,
+    exam: { name: exam },
+    subject: { name: subject },
+    chapter: { name: chapter },
+    subtopic: subtopic === null ? null : { name: subtopic },
+  });
+
+  it("matches getQuestionResources for every question, keyed by id", () => {
+    const rows = [
+      q("a", "NDA", "Mathematics", "Functions", "Domain and Range"),
+      q("b", "MHT-CET", "Mathematics", "Vectors", null),
+      q("c", "JEE Mains", "Physics", "Electrostatics", null),
+    ];
+    const out = resolveResourcesById(rows);
+    expect(Object.keys(out)).toEqual(["a", "b", "c"]);
+    for (const r of rows) {
+      expect(out[r.id]).toEqual(
+        getQuestionResources({
+          examName: r.exam.name,
+          subjectName: r.subject.name,
+          chapterName: r.chapter.name,
+          subtopicName: r.subtopic?.name ?? null,
+        })
+      );
+    }
+  });
+
+  it("passes each question's own tags through", () => {
+    const rows = [q("a", "NDA", "Mathematics", "Functions", "Domain and Range")];
+    const tags: ResourceTags = { principleSlugs: ["vieta"], conceptTags: [] };
+    const out = resolveResourcesById(rows, new Map([["a", tags]]));
+    expect(out.a).toEqual(
+      getQuestionResources(
+        { examName: "NDA", subjectName: "Mathematics", chapterName: "Functions", subtopicName: "Domain and Range" },
+        tags
+      )
+    );
+  });
+});
+

@@ -142,6 +142,40 @@ const SINGLE_PAGE_GUIDES: Record<string, ResourceLink> = {
 
 // ─── Public API ───────────────────────────────────────────────────────────
 
+/** The fields of a question row this module reads. */
+export type ResourceQuestion = {
+  id: string;
+  exam: { name: string };
+  subject: { name: string };
+  chapter: { name: string };
+  subtopic?: { name: string } | null;
+};
+
+/**
+ * Every question's backlinks, keyed by id, as a PLAIN object so a server page
+ * can hand it to a client component. SERVER-SIDE ONLY in practice: this module
+ * reaches the whole notes registry, so a client component that imports it ships
+ * the notes corpus to the browser (tests/client-bundle-notes-registry.test.ts).
+ */
+export function resolveResourcesById(
+  questions: readonly ResourceQuestion[],
+  tagsById?: ReadonlyMap<string, ResourceTags>
+): Record<string, QuestionResources> {
+  const out: Record<string, QuestionResources> = {};
+  for (const q of questions) {
+    out[q.id] = getQuestionResources(
+      {
+        examName: q.exam.name,
+        subjectName: q.subject.name,
+        chapterName: q.chapter.name,
+        subtopicName: q.subtopic?.name ?? null,
+      },
+      tagsById?.get(q.id)
+    );
+  }
+  return out;
+}
+
 export function getQuestionResources(
   input: ResourceInput,
   tags?: ResourceTags
