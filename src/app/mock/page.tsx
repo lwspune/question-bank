@@ -18,7 +18,7 @@ export const revalidate = 3600;
 const EXAMS = mockExamNames();
 
 const PAGE_INTRO =
-  "Real past papers, served whole and timed the way they were sat. We use the official " +
+  "Real past papers, the full paper as it was set, timed the way it was sat. We use the official " +
   "marking scheme, so the score you get is the score you would have got. Pick an exam to " +
   "see what's available.";
 
@@ -65,7 +65,7 @@ const COPY: Record<string, ExamCopy> = {
     // hand-typed string this file's own header warns about.
     tagline: "English · GK · Maths",
     blurb:
-      "The CDS papers, served whole — English with its Directions-based comprehension, cloze and spotting-errors sets intact, alongside General Knowledge and Elementary Mathematics, on the exam's own fractional marking scheme.",
+      "The full CDS papers: English with its comprehension, cloze and error-spotting sets kept together, General Knowledge and Elementary Mathematics, marked the way CDS marks them.",
     icon: Compass,
   },
   neet: {
@@ -174,7 +174,7 @@ export default async function MockCatalogue() {
 
                 <p className="mt-4 flex-1 text-sm text-muted-foreground">
                   {copy?.blurb ??
-                    `${card.examName} papers served whole as full-length timed tests, on the exam's own marking scheme.`}
+                    `Full ${card.examName} papers as timed tests, marked the way the exam marks them.`}
                 </p>
 
                 <p className="mt-4 text-xs font-medium text-muted-foreground tabular-nums">

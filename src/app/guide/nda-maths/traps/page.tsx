@@ -178,8 +178,9 @@ export default async function Traps() {
               If the question feels easy or moderate
             </p>
             <p className="mt-1 font-serif text-sm leading-relaxed">
-              When stuck, pick <strong>B or C</strong>. Combined share on
-              EASY+MODERATE is ~56%, vs A+D&rsquo;s ~44%.
+              When stuck, pick <strong>B or C</strong>. On easy and medium
+              questions they are the answer about 56% of the time, against 44%
+              for A and D.
             </p>
           </div>
           <div className="rounded-md border border-rose-500/40 bg-rose-500/5 p-4">

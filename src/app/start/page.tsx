@@ -51,7 +51,7 @@ const TABS = [
     Icon: Timer,
     label: "Mocks",
     href: "/mock",
-    line: "Real past papers served whole as timed tests. Your score, section split and every question reviewable.",
+    line: "Full past papers as timed tests. See your score, how each section went, and every question afterwards.",
   },
   {
     Icon: NotebookPen,

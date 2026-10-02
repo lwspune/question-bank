@@ -4,6 +4,7 @@ import Link from "next/link";
 import {
   ArrowRight,
   Atom,
+  Timer,
   BookOpen,
   Compass,
   FlaskConical,
@@ -23,6 +24,7 @@ import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getExamHomeStats } from "@/lib/exam/examHomeStats";
 import { resolveBankHref } from "@/lib/exam/examContext";
+import { mockCatalogueHref } from "@/lib/exam/examLinks";
 
 export const revalidate = 86400;
 
@@ -110,6 +112,7 @@ export default async function NdaHomePage() {
   const supabase = createSupabaseAnonClient();
   const stats = await getExamHomeStats(supabase, "NDA");
   const bankHref = resolveBankHref(stats.examId);
+  const mockHref = mockCatalogueHref("nda");
 
   return (
     <>
@@ -125,7 +128,7 @@ export default async function NdaHomePage() {
         <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground">
           <ol className="flex flex-wrap items-center gap-1.5">
             <li>
-              <Link href="/browse" className="hover:text-foreground">
+              <Link href="/" className="hover:text-foreground">
                 Home
               </Link>
             </li>
@@ -140,7 +143,7 @@ export default async function NdaHomePage() {
           <GuideHero
             eyebrow="NDA Preparation"
             title="One home for NDA past papers, strategy, and concept notes"
-            subtitle="Everything in one place — built from the live past-year question bank. Free, no sign-up. Anonymous-friendly."
+            subtitle="Every NDA past paper since 2017, sorted by chapter. Free."
           />
         </div>
 
@@ -153,13 +156,22 @@ export default async function NdaHomePage() {
             <span className="text-muted-foreground">10 subjects · 2017–2026</span>
           </div>
           <div className="mt-5 flex flex-wrap gap-3">
+            {/* The student's job leads (UX_REVIEW_TRIAGE.md A3): this page had no
+                link to a mock at all, and its brand button was a teacher's. */}
             <Link
-              href={bankHref}
+              href={mockHref}
               className="inline-flex items-center gap-2 rounded-md bg-brand px-4 py-2.5 text-sm font-semibold text-brand-foreground shadow-sm transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
-              <Compass className="h-4 w-4" aria-hidden />
-              Build a paper
+              <Timer className="h-4 w-4" aria-hidden />
+              Sit a past NDA paper
               <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+            </Link>
+            <Link
+              href={bankHref}
+              className="inline-flex items-center gap-2 rounded-md border border-input bg-background px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
+              <Compass className="h-4 w-4" aria-hidden />
+              Practise in the bank
             </Link>
             <Link
               href="/guide/nda"
@@ -279,7 +291,7 @@ export default async function NdaHomePage() {
         {/* Footer banner — return to the bank */}
         <section className="rounded-xl border border-dashed bg-muted/30 p-5 sm:p-6">
           <h2 className="text-base font-semibold tracking-tight">
-            Build the next paper
+            For teachers: build a paper
           </h2>
           <p className="mt-2 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground">
             Filter the bank by subject, chapter, difficulty, and PYQ year — then
@@ -290,7 +302,7 @@ export default async function NdaHomePage() {
             className="mt-4 inline-flex items-center gap-2 rounded-md border border-input bg-background px-3 py-2 text-sm font-semibold transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             <Compass className="h-4 w-4" aria-hidden />
-            Open the question bank
+            Build a paper
             <ArrowRight className="h-3.5 w-3.5" aria-hidden />
           </Link>
         </section>
