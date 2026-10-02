@@ -3,6 +3,7 @@ import {
   CLARITY_EXCLUDED_PREFIXES,
   buildClaritySnippet,
   clarityCommandFor,
+  isClarityHost,
   resolveClarityProjectId,
   shouldLoadClarity,
 } from "@/lib/analytics/clarity";
@@ -50,6 +51,38 @@ describe("shouldLoadClarity", () => {
   it("fails closed on an unusable pathname", () => {
     expect(shouldLoadClarity("")).toBe(false);
     expect(shouldLoadClarity(null)).toBe(false);
+  });
+});
+
+// Only the live site records. On 2026-10-01 two of 76 recorded sessions were
+// localhost dev visits: .env.local carries the production project id, so every
+// local test landed in the same project as real students. Preview deploys
+// would do the same. An allowlist fails closed on any host nobody named.
+describe("isClarityHost", () => {
+  it("records on the production hosts", () => {
+    expect(isClarityHost("www.pyqvault.com")).toBe(true);
+    expect(isClarityHost("pyqvault.com")).toBe(true);
+  });
+
+  it("never records local development", () => {
+    for (const h of ["localhost", "127.0.0.1", "[::1]", "192.168.1.5", "mypc.local"]) {
+      expect(isClarityHost(h), h).toBe(false);
+    }
+  });
+
+  it("never records preview or legacy deploy hosts", () => {
+    expect(isClarityHost("question-bank-git-feat-x-lws-pune.vercel.app")).toBe(false);
+    expect(isClarityHost("question-bank-sage.vercel.app")).toBe(false);
+  });
+
+  it("fails closed on lookalikes and junk", () => {
+    for (const h of ["pyqvault.com.evil.io", "evilpyqvault.com", "", null, undefined]) {
+      expect(isClarityHost(h as string), String(h)).toBe(false);
+    }
+  });
+
+  it("ignores case, as hostnames do", () => {
+    expect(isClarityHost("WWW.PyqVault.com")).toBe(true);
   });
 });
 

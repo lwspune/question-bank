@@ -40,6 +40,20 @@ function underPrefix(pathname: string, prefix: string): boolean {
   return pathname === prefix || pathname.startsWith(`${prefix}/`);
 }
 
+/**
+ * Hosts that record. An allowlist, not a localhost check: `.env.local` carries
+ * the production project id, so on 2026-10-01 local dev visits were landing in
+ * the same Clarity project as real students (2 of 76 recorded sessions), and a
+ * Vercel preview deploy would do the same. Anything not named here — localhost,
+ * a LAN address, a preview URL, a lookalike — does not record.
+ */
+export const CLARITY_HOSTS = ["www.pyqvault.com", "pyqvault.com"] as const;
+
+export function isClarityHost(hostname: string | null | undefined): boolean {
+  const h = (hostname ?? "").toLowerCase();
+  return (CLARITY_HOSTS as readonly string[]).includes(h);
+}
+
 /** May the tag load on this pathname? Fails CLOSED on anything unusable. */
 export function shouldLoadClarity(pathname: string | null | undefined): boolean {
   if (!pathname || !pathname.startsWith("/")) return false;

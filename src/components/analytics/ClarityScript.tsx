@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
 import Script from "next/script";
 import {
   buildClaritySnippet,
   clarityCommandFor,
+  isClarityHost,
   resolveClarityProjectId,
   shouldLoadClarity,
 } from "@/lib/analytics/clarity";
@@ -27,14 +28,25 @@ import {
  *
  * The project id is a BUILD-TIME NEXT_PUBLIC_* value; unset means the island
  * renders nothing anywhere.
+ *
+ * WHY THE HOST IS READ ON THE CLIENT: only the live site records
+ * (`isClarityHost`), and the server cannot know the host without reading
+ * headers, which would make every page dynamic. The server snapshot is empty,
+ * so the server and hydration render nothing and the loader appears on the
+ * first client commit — which is when `afterInteractive` would load it anyway.
  */
 const PROJECT_ID = resolveClarityProjectId(process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID);
 
 type ClarityFn = (command: "start" | "stop") => void;
 
+const noSubscribe = () => () => {};
+const clientHost = () => window.location.hostname;
+const serverHost = () => "";
+
 export default function ClarityScript() {
   const pathname = usePathname();
-  const allowed = shouldLoadClarity(pathname);
+  const host = useSyncExternalStore(noSubscribe, clientHost, serverHost);
+  const allowed = shouldLoadClarity(pathname) && isClarityHost(host);
 
   useEffect(() => {
     if (!PROJECT_ID) return;
