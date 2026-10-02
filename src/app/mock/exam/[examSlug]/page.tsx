@@ -115,7 +115,7 @@ async function MockFamilyPage({ family }: { family: MockFamilyNav }) {
       <GuideHero
         eyebrow={`${family.name} · Timed mock tests`}
         title={`${family.name} Mock Tests`}
-        subtitle={`Pick an exam. Each ${family.name} paper is served whole, timed and auto-graded on its own printed marking scheme.`}
+        subtitle={`Pick an exam. Each ${family.name} paper is the full paper, timed and marked the way that exam marks it.`}
       >
         <Link
           href="/mock/attempts"
@@ -184,7 +184,7 @@ export default async function MockExamTypePicker({ params }: { params: Params })
       <GuideHero
         eyebrow={`${exam.displayName} · Timed mock tests`}
         title={`${exam.examName} Mock Tests`}
-        subtitle={`Sit ${exam.examName} papers online, timed and auto-graded — real past papers served whole, plus full-length practice papers built to the same blueprint.`}
+        subtitle={`Sit ${exam.examName} papers online, timed and marked for you: full past papers, plus practice papers with the same number of questions per subject.`}
       >
         <Link
           href="/mock/attempts"
