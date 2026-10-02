@@ -1340,6 +1340,11 @@ import {
   CDSEN_REARR_NOTES,
   CDSEN_REARR_SLUGS,
 } from "@/app/notes/cds-english/sentence-rearrangement/_data";
+import {
+  CDSEN_RC_CHAPTER,
+  CDSEN_RC_NOTES,
+  CDSEN_RC_SLUGS,
+} from "@/app/notes/cds-english/reading-comprehension/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4294,6 +4299,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDSEN_REARR_CHAPTER,
     notes: CDSEN_REARR_NOTES,
     slugs: CDSEN_REARR_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "English",
+    subjectRoute: "cds-english",
+    subjectDisplay: "CDS English",
+    chapterSlug: "reading-comprehension",
+    chipLabel: "Reading Comprehension notes",
+    chapter: CDSEN_RC_CHAPTER,
+    notes: CDSEN_RC_NOTES,
+    slugs: CDSEN_RC_SLUGS,
   },
 ];
 
