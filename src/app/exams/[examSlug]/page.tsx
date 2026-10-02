@@ -29,6 +29,7 @@ import { Button } from "@/components/ui/button";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { EXAM_REGISTRY, getExamBySlug } from "@/lib/exam/examContext";
 import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
+import { defaultViewCount } from "@/lib/exam/questionCounts";
 import { getNotesExamGroup } from "@/lib/notes/notesNav";
 import { listChapterLandings } from "@/lib/questions/landing";
 import {
@@ -63,7 +64,10 @@ async function loadModel(slug: string): Promise<ExamHomeModel | null> {
   const notes = getNotesExamGroup(entry.slug);
   return buildExamHome(entry, landings, {
     examId: item?.examId ?? null,
-    totalPublicQuestions: item?.totalPublicQuestions ?? 0,
+    // The count the page LABELS (past-year, or practice for a practice-only
+    // exam) and the bank button lands on — never the every-kind total, which
+    // this page used to call "past-year questions" (UX_REVIEW_TRIAGE.md A1).
+    totalPublicQuestions: item ? defaultViewCount(item.counts, item.practiceOnly) : 0,
     hasShippedNotes: (notes?.subjects.length ?? 0) > 0,
   });
 }

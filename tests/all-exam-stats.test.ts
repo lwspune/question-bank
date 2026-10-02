@@ -5,6 +5,7 @@ import {
   type ExamCatalogCachePayload,
 } from "@/lib/exam/allExamStats";
 import { EXAM_REGISTRY, getExamBySlug } from "@/lib/exam/examContext";
+import type { KindCounts } from "@/lib/exam/questionCounts";
 
 describe("pickExamCardHref", () => {
   const nda = getExamBySlug("nda")!; // has a /guide subtree
@@ -51,10 +52,10 @@ describe("pickExamCardHref", () => {
 
 describe("shapeExamCatalog", () => {
   it("orders items by registry order and carries counts + flags + href", () => {
-    const counts = new Map<string, number>([
-      ["NDA", 8259],
-      ["MHT-CET", 6638],
-      ["Maharashtra HSC Class 12", 1435],
+    const counts = new Map<string, KindCounts>([
+      ["NDA", { pyq: 5130, practice: 3129 }],
+      ["MHT-CET", { pyq: 6638, practice: 0 }],
+      ["Maharashtra HSC Class 12", { pyq: 343, practice: 1092 }],
     ]);
     const notesSlugs = new Set<string>(["nda", "mht-cet"]);
     const examIds = new Map<string, string>([
@@ -63,7 +64,7 @@ describe("shapeExamCatalog", () => {
       ["mh-hsc-12", "id-board"],
     ]);
 
-    const { exams, totalPublicQuestions } = shapeExamCatalog(
+    const { exams, totalPublicQuestions, totals } = shapeExamCatalog(
       counts,
       examIds,
       notesSlugs
@@ -72,6 +73,8 @@ describe("shapeExamCatalog", () => {
     // Registry order: nda first.
     expect(exams[0].slug).toBe("nda");
     expect(exams[0].totalPublicQuestions).toBe(8259);
+    // Both kinds travel separately, so a surface can say which it shows (A1).
+    expect(exams[0].counts).toEqual({ pyq: 5130, practice: 3129 });
     expect(exams[0].href).toBe("/guide/nda");
 
     const board = exams.find((e) => e.slug === "mh-hsc-12")!;
@@ -87,8 +90,9 @@ describe("shapeExamCatalog", () => {
     // No guide, no shipped notes → the exam home.
     expect(board.href).toBe("/exams/mh-hsc-12");
 
-    // Grand total sums every exam's count (missing → 0).
+    // Grand total sums every exam's count (missing → 0), and so does each kind.
     expect(totalPublicQuestions).toBe(8259 + 6638 + 1435);
+    expect(totals).toEqual({ pyq: 5130 + 6638 + 343, practice: 3129 + 1092 });
   });
 
   it("treats a missing count as zero without throwing", () => {
@@ -98,6 +102,7 @@ describe("shapeExamCatalog", () => {
       new Set()
     );
     expect(exams.every((e) => e.totalPublicQuestions === 0)).toBe(true);
+    expect(exams.every((e) => e.counts.pyq === 0 && e.counts.practice === 0)).toBe(true);
     expect(totalPublicQuestions).toBe(0);
   });
 });
@@ -111,8 +116,8 @@ describe("ExamCatalogCachePayload — the unstable_cache serialisation contract"
   it("survives a JSON round-trip and still produces correct counts", () => {
     const payload: ExamCatalogCachePayload = {
       counts: [
-        ["NDA", 9224],
-        ["JEE Mains", 10614],
+        ["NDA", { pyq: 5130, practice: 4094 }],
+        ["JEE Mains", { pyq: 10614, practice: 0 }],
       ],
       ids: [["nda", "id-nda"]],
     };
@@ -125,12 +130,13 @@ describe("ExamCatalogCachePayload — the unstable_cache serialisation contract"
     );
 
     expect(exams.find((e) => e.examName === "NDA")!.totalPublicQuestions).toBe(9224);
+    expect(exams.find((e) => e.examName === "NDA")!.counts).toEqual({ pyq: 5130, practice: 4094 });
     expect(exams.find((e) => e.examName === "JEE Mains")!.totalPublicQuestions).toBe(10614);
     expect(totalPublicQuestions).toBe(9224 + 10614);
   });
 
   it("proves the failure mode this contract exists to prevent: a Map does NOT survive", () => {
-    const asMap = new Map<string, number>([["NDA", 9224]]);
+    const asMap = new Map<string, KindCounts>([["NDA", { pyq: 9224, practice: 0 }]]);
     expect(JSON.parse(JSON.stringify(asMap))).toEqual({});
     // …and rebuilding from that gives a catalog of zeroes, silently.
     expect(shapeExamCatalog(new Map(), new Map(), new Set()).totalPublicQuestions).toBe(0);

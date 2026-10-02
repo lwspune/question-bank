@@ -25,6 +25,7 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
+import { countSummary } from "@/lib/exam/questionCounts";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { groupExamFamilies, familyTotal, membersByStage } from "@/lib/exam/examFamily";
@@ -218,7 +219,7 @@ export default async function Home() {
         <GuideHero
           eyebrow="PYQ Vault"
           title="Every past paper, sorted question by question."
-          subtitle={`${catalog.totalPublicQuestions.toLocaleString("en-IN")} questions from ${catalog.exams.length} exams. Every one is tagged by chapter, subtopic and difficulty, so you can drill the thing you keep getting wrong instead of sitting another whole paper. Browsing is free and needs no account.`}
+          subtitle={`${catalog.totals.pyq.toLocaleString("en-IN")} past-year questions, plus ${catalog.totals.practice.toLocaleString("en-IN")} from textbooks and practice sets, across ${catalog.exams.length} exams. Every one is tagged by chapter, subtopic and difficulty, so you can drill the thing you keep getting wrong instead of sitting another whole paper. Browsing is free and needs no account.`}
         />
 
         {/* Live total + primary CTA */}
@@ -226,7 +227,7 @@ export default async function Home() {
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
             <span className="inline-flex items-center gap-1.5 rounded-full border bg-background px-2.5 py-1 font-semibold tabular-nums">
               <Sparkles className="h-3.5 w-3.5 text-brand-accent" aria-hidden />
-              {catalog.totalPublicQuestions.toLocaleString("en-IN")} questions
+              {catalog.totals.pyq.toLocaleString("en-IN")} past-year questions
             </span>
             <span className="text-muted-foreground">
               {catalog.exams.length} exams · free to browse · Word papers with the pass
@@ -263,10 +264,13 @@ export default async function Home() {
               if (node.kind === "family") {
                 const meta = FAMILY_META[node.key] ?? DEFAULT_EXAM_META;
                 const Icon = meta.Icon;
-                // Summed from THIS surface's own numbers (total PUBLIC). The
-                // /browse pills sum a different count for the same families —
-                // see familyTotal.
-                const total = familyTotal(node, (e) => e.totalPublicQuestions);
+                // Each kind summed separately and named (UX_REVIEW_TRIAGE.md
+                // A1), so the past-year figure matches what /browse shows.
+                const familyCounts = {
+                  pyq: familyTotal(node, (e) => e.counts.pyq),
+                  practice: familyTotal(node, (e) => e.counts.practice),
+                };
+                const familySummary = countSummary(familyCounts);
                 return (
                   <li key={node.key}>
                     <div className="flex h-full flex-col rounded-lg border bg-card p-4">
@@ -279,9 +283,7 @@ export default async function Home() {
                             {node.label}
                           </p>
                           <p className="text-xs tabular-nums text-muted-foreground">
-                            {total > 0
-                              ? `${total.toLocaleString("en-IN")} questions`
-                              : "Coming soon"}
+                            {familySummary ?? "Coming soon"}
                           </p>
                         </div>
                       </div>
@@ -341,9 +343,7 @@ export default async function Home() {
                           {exam.displayName}
                         </p>
                         <p className="text-xs tabular-nums text-muted-foreground">
-                          {exam.totalPublicQuestions > 0
-                            ? `${exam.totalPublicQuestions.toLocaleString("en-IN")} questions`
-                            : "Coming soon"}
+                          {countSummary(exam.counts) ?? "Coming soon"}
                           {tag && (
                             <span className="ml-1.5 rounded-full border px-1.5 py-0.5 text-[10px] uppercase tracking-wide">
                               {tag}

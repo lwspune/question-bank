@@ -151,7 +151,7 @@ export default async function NdaHomePage() {
         <section className="mb-12 rounded-xl border bg-card p-5 shadow-sm sm:p-6">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
             <span className="inline-flex items-center gap-1.5 rounded-full border bg-background px-2.5 py-1 font-semibold tabular-nums">
-              {stats.totalPublicQuestions.toLocaleString("en-IN")} questions
+              {stats.totalPublicQuestions.toLocaleString("en-IN")} past-year questions
             </span>
             <span className="text-muted-foreground">10 subjects · 2017–2026</span>
           </div>

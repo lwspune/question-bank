@@ -7,6 +7,7 @@
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
 import { buildLlmsTxt } from "@/lib/seo/llmsTxt";
+import { defaultViewCount } from "@/lib/exam/questionCounts";
 
 export const revalidate = 86400;
 
@@ -20,7 +21,9 @@ export async function GET() {
       slug: e.slug,
       displayName: e.displayName,
       examName: e.examName,
-      totalPublicQuestions: e.totalPublicQuestions,
+      // The count the line LABELS ("past-year questions", or practice for a
+      // practice-only exam) — never the every-kind total (UX_REVIEW_TRIAGE.md A1).
+      totalPublicQuestions: defaultViewCount(e.counts, e.practiceOnly),
       practiceOnly: e.practiceOnly,
       noPublicContent: noPublic.has(e.slug),
     })),

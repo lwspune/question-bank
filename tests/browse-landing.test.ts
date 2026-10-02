@@ -100,6 +100,7 @@ describe("shouldShowBrowseLanding", () => {
 describe("buildExamStarters", () => {
   const catalog: ExamCatalog = {
     totalPublicQuestions: 19_000,
+    totals: { pyq: 19_000, practice: 0 },
     exams: [
       item("nda", "NDA", "NDA", 8259),
       item("jee-mains", "JEE Mains", "JEE Mains", 10614),
@@ -152,7 +153,7 @@ describe("buildExamStarters", () => {
   });
 
   it("returns an empty list rather than throwing when the catalog is empty", () => {
-    expect(buildExamStarters({ exams: [], totalPublicQuestions: 0 }, {}, {})).toEqual(
+    expect(buildExamStarters({ exams: [], totalPublicQuestions: 0, totals: { pyq: 0, practice: 0 } }, {}, {})).toEqual(
       []
     );
   });
@@ -251,6 +252,7 @@ function item(
     displayName,
     examName,
     totalPublicQuestions,
+    counts: { pyq: totalPublicQuestions, practice: 0 },
     practiceOnly: false,
     boardExam: false,
     href: `/notes/${slug}`,

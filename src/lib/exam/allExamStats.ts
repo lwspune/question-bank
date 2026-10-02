@@ -8,6 +8,7 @@ import {
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { examHomeHref } from "./examHome";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
+import type { KindCounts } from "./questionCounts";
 
 /**
  * Catalog stats for the site homepage (`/`) — one row per exam in the
@@ -24,7 +25,11 @@ export type ExamCatalogItem = {
   slug: string;
   displayName: string;
   examName: string;
+  /** Every PUBLIC question, both kinds. Fine for an overall total; a per-exam
+   *  figure on a page must come from `counts` and say its kind (A1). */
   totalPublicQuestions: number;
+  /** PUBLIC questions by kind — what lib/exam/questionCounts.ts labels. */
+  counts: KindCounts;
   practiceOnly: boolean;
   boardExam: boolean;
   /** Best landing for this exam's card (guide → shipped notes → exam home → bank). */
@@ -36,6 +41,8 @@ export type ExamCatalogItem = {
 export type ExamCatalog = {
   exams: ExamCatalogItem[];
   totalPublicQuestions: number;
+  /** The grand total by kind (the homepage headline names both). */
+  totals: KindCounts;
 };
 
 /**
@@ -70,18 +77,19 @@ export function pickExamCardHref(
  * @param notesSlugs        exam slugs that have at least one shipped notes chapter
  */
 export function shapeExamCatalog(
-  countsByExamName: Map<string, number>,
+  countsByExamName: Map<string, KindCounts>,
   idsBySlug: Map<string, string>,
   notesSlugs: Set<string>
 ): ExamCatalog {
   const exams: ExamCatalogItem[] = EXAM_REGISTRY.map((exam) => {
-    const count = countsByExamName.get(exam.examName) ?? 0;
+    const counts = countsByExamName.get(exam.examName) ?? { pyq: 0, practice: 0 };
     const examId = idsBySlug.get(exam.slug) ?? null;
     return {
       slug: exam.slug,
       displayName: exam.displayName,
       examName: exam.examName,
-      totalPublicQuestions: count,
+      totalPublicQuestions: counts.pyq + counts.practice,
+      counts,
       practiceOnly: exam.practiceOnly === true,
       boardExam: exam.boardExam === true,
       href: pickExamCardHref(exam, examId, notesSlugs.has(exam.slug)),
@@ -89,12 +97,12 @@ export function shapeExamCatalog(
     };
   });
 
-  const totalPublicQuestions = exams.reduce(
-    (sum, e) => sum + e.totalPublicQuestions,
-    0
-  );
+  const totals: KindCounts = {
+    pyq: exams.reduce((sum, e) => sum + e.counts.pyq, 0),
+    practice: exams.reduce((sum, e) => sum + e.counts.practice, 0),
+  };
 
-  return { exams, totalPublicQuestions };
+  return { exams, totalPublicQuestions: totals.pyq + totals.practice, totals };
 }
 
 /**
@@ -106,8 +114,8 @@ export function shapeExamCatalog(
  * on every card, with no error in any log. Rebuild the Maps on the way out.
  */
 export type ExamCatalogCachePayload = {
-  /** exam DB name → PUBLIC question count */
-  counts: [string, number][];
+  /** exam DB name → PUBLIC question counts by kind */
+  counts: [string, KindCounts][];
   /** exam slug → DB UUID */
   ids: [string, string][];
 };
@@ -136,17 +144,23 @@ export async function loadExamCatalogPayload(
     if (id) ids.push([exam.slug, id]);
   }
 
-  // One exact head-count per exam — total PUBLIC (pyq + practice).
-  const counts: [string, number][] = await Promise.all(
-    EXAM_REGISTRY.map(async (exam): Promise<[string, number]> => {
+  // Two exact head-counts per exam, one per kind, so every surface can say
+  // which it shows (UX_REVIEW_TRIAGE.md A1). Head counts: no row payload.
+  const headCount = async (examId: string, kind: "pyq" | "practice") => {
+    const { count } = await client
+      .from("questions")
+      .select("id", { count: "exact", head: true })
+      .eq("exam_id", examId)
+      .eq("visibility", "PUBLIC")
+      .eq("question_kind", kind);
+    return count ?? 0;
+  };
+  const counts: [string, KindCounts][] = await Promise.all(
+    EXAM_REGISTRY.map(async (exam): Promise<[string, KindCounts]> => {
       const id = idByName.get(exam.examName);
-      if (!id) return [exam.examName, 0];
-      const { count } = await client
-        .from("questions")
-        .select("id", { count: "exact", head: true })
-        .eq("exam_id", id)
-        .eq("visibility", "PUBLIC");
-      return [exam.examName, count ?? 0];
+      if (!id) return [exam.examName, { pyq: 0, practice: 0 }];
+      const [pyq, practice] = await Promise.all([headCount(id, "pyq"), headCount(id, "practice")]);
+      return [exam.examName, { pyq, practice }];
     })
   );
 
@@ -171,7 +185,9 @@ export async function loadExamCatalogPayload(
 const loadCachedExamCatalogPayload = unstable_cache(
   async (): Promise<ExamCatalogCachePayload> =>
     loadExamCatalogPayload(createSupabaseAnonClient()),
-  ["exam-catalog-payload"],
+  // v2 (2026-10-02): counts became {pyq, practice}. A new key, because an entry
+  // cached in the old number shape would deserialize as a number here.
+  ["exam-catalog-payload-v2"],
   { revalidate: 86400 }
 );
 
