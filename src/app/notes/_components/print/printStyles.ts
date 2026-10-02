@@ -8,7 +8,24 @@
  * Units are mm because the target is a physical A4 page, not a viewport.
  */
 export const PRINT_CSS = `
-@page { size: A4; margin: 14mm 12mm 16mm 12mm; }
+/* The site address on every page, in the bottom margin, as the branded Word
+   paper has it (Word prints it at 8pt; a little larger here). A page margin
+   box, so it can never overlap the content above it. */
+@page {
+  size: A4;
+  margin: 14mm 12mm 16mm 12mm;
+  @bottom-center {
+    content: "www.pyqvault.com";
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 10pt;
+    color: #808080;
+  }
+}
+
+/* ---- watermark ---- */
+/* Above the content, not behind it: the shaded boxes would hide it. The PNG's
+   own alpha (about 12% black) keeps the text under it readable. */
+.pwm { position: fixed; top: 50%; left: 50%; width: 130mm; height: auto; transform: translate(-50%, -50%); pointer-events: none; z-index: 50; }
 
 .pdoc { max-width: 186mm; margin: 0 auto; padding: 8mm 0 24mm; color: #111; background: #fff; }
 .pdoc a { color: inherit; text-decoration: none; }

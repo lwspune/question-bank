@@ -9,6 +9,7 @@ import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import type { AuthoredExample, ConceptUnit } from "@/app/notes/_types";
 import { renderVisualization } from "../ConceptUnitCard";
 import PrintButton from "./PrintButton";
+import { WATERMARK_PNG_BASE64 } from "@/lib/export/watermark.generated";
 import { PRINT_CSS } from "./printStyles";
 
 /**
@@ -262,6 +263,12 @@ export default async function NotesChapterPrint({ chapter }: Props) {
           __html: `document.documentElement.classList.remove("dark");`,
         }}
       />
+
+      {/* The same diagonal PYQ Vault picture the branded Word paper carries.
+          position:fixed repeats it on every printed page; an <img> (not a CSS
+          background) so it prints even with "Background graphics" off. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className="pwm" src={`data:image/png;base64,${WATERMARK_PNG_BASE64}`} alt="" aria-hidden />
 
       <div className="pdoc">
         <div className="pbar no-print">
