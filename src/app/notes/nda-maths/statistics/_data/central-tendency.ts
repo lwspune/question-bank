@@ -10,7 +10,7 @@ export const CENTRAL_TENDENCY_NOTE: SubtopicNote = {
     "Most questions test linear-transformation effects on the mean, grouped-data " +
     "calculations, replacement / wrong-value corrections, special-case mean " +
     "shortcuts, the combined-mean of two groups, or the sum-of-deviations identity. " +
-    "Master the eleven concepts below and you cover the entire EASY + MODERATE " +
+    "Master the seventeen concepts below and you cover the entire EASY + MODERATE " +
     "bandwidth reliably.",
   concepts: [
     // F1 — what-is-data ──────────────────────────────────────────────────────
