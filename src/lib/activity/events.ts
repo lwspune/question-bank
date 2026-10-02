@@ -19,11 +19,15 @@
 export const ACTIVITY_KINDS = [
   "mock_submitted", // finished + graded a timed mock (metadata: score, maxScore, …)
   "mock_started", // OPENED a timed mock (new attempt only — a resume must not re-fire)
-  "answer_wrong", // missed a question in a graded mock (refId = questionId) — drill fuel
+  // Missed a question (refId = questionId) — drill fuel. From a graded mock
+  // (no surface), the drill (surface 'drill') or, from 2026-10-02, a tapped
+  // option in the bank (surface 'bank', one per question per IST day).
+  "answer_wrong",
   // RECOVERED a question: got it right having previously missed it (refId =
   // questionId). NOT every correct answer — a mock emits this only where the
-  // student already has an `answer_wrong` row for that question, and /drill
-  // emits it on any drilled question (all of which are missed by definition).
+  // student already has an `answer_wrong` row for that question, /drill
+  // emits it on any drilled question (all of which are missed by definition),
+  // and the bank (2026-10-02) emits it on a right tap after an earlier miss.
   // So a COUNT OF THIS IS NOT "questions answered correctly". The symmetric
   // version was measured and rejected: 20,250 rows to change the drill pool
   // by 484. See lib/mocks/correctEvents.ts.
@@ -31,7 +35,10 @@ export const ACTIVITY_KINDS = [
   "chapter_mastered", // marked a /notes subtopic mastered (refId = subtopicSlug)
   "note_checkpoint", // completed a /notes mastery checkpoint (metadata: score, total)
   "question_bookmarked", // saved a question (refId = questionId)
-  "question_practiced", // revealed a bank answer on /browse or /board (refId = questionId)
+  // Revealed an answer on /browse, /board or a /guide worked example (refId =
+  // questionId). From 2026-10-02 a bank reveal from a TAPPED option carries the
+  // server's verdict in metadata (chose, correct) — see lib/questions/bankVerdict.
+  "question_practiced",
   "quiz_taken", // completed a public/daily quiz
   "drill_completed", // finished a personalised weak-area drill (future phase)
   // ── Reach + funnel instrumentation (2026-09-27). Not learning acts, and never

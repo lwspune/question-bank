@@ -44,7 +44,7 @@ describe("addToBatch — client-side queue", () => {
 describe("parsePracticeBatch — untrusted request body", () => {
   it("accepts a clean batch", () => {
     const r = parsePracticeBatch({ questionIds: [uuid(1), uuid(2)] });
-    expect(r).toEqual({ ok: true, ids: [uuid(1), uuid(2)], surface: "bank" });
+    expect(r).toEqual({ ok: true, ids: [uuid(1), uuid(2)], surface: "bank", picks: {} });
   });
 
   it("dedupes server-side too — the client is not trusted to have done it", () => {
@@ -112,7 +112,7 @@ describe("parsePracticeBatch — which SURFACE the reveal happened on", () => {
 
   it("carries the guide surface through, since that is the whole point", () => {
     const r = parsePracticeBatch({ questionIds: [uuid(1)], surface: "guide" });
-    expect(r).toEqual({ ok: true, ids: [uuid(1)], surface: "guide" });
+    expect(r).toEqual({ ok: true, ids: [uuid(1)], surface: "guide", picks: {} });
   });
 
   it("carries the board surface through — the reader is its own product", () => {
@@ -123,7 +123,7 @@ describe("parsePracticeBatch — which SURFACE the reveal happened on", () => {
     // harder to notice than a dark surface: the events are there, just filed
     // under another product.
     const r = parsePracticeBatch({ questionIds: [uuid(1)], surface: "board" });
-    expect(r).toEqual({ ok: true, ids: [uuid(1)], surface: "board" });
+    expect(r).toEqual({ ok: true, ids: [uuid(1)], surface: "board", picks: {} });
   });
 
   it("REJECTS an unknown surface rather than falling back to the bank", () => {
@@ -142,5 +142,55 @@ describe("parsePracticeBatch — which SURFACE the reveal happened on", () => {
 
   it("keeps the surface list closed — it is written into metadata and queried by name", () => {
     expect(PRACTICE_SURFACES).toEqual(["bank", "guide", "board"]);
+  });
+});
+
+describe("parsePracticeBatch — which OPTION was tapped (bank verdicts, 2026-10-02)", () => {
+  // The client says only WHICH option the student tapped. Whether that was
+  // right is decided by the server against the key (lib/questions/bankVerdict),
+  // because a browser-asserted verdict could retire its own drill questions.
+
+  it("has no picks when the field is absent — every pre-verdict body still parses", () => {
+    // Deploy back-compat: an open tab running the old bundle keeps sending
+    // {questionIds, surface}. Those reveals are real and must still record.
+    const r = parsePracticeBatch({ questionIds: [uuid(1)], surface: "bank" });
+    expect(r.ok && r.picks).toEqual({});
+  });
+
+  it("carries a pick through, keyed by the normalised question id", () => {
+    const r = parsePracticeBatch({
+      questionIds: [uuid(1).toUpperCase(), uuid(2)],
+      surface: "bank",
+      picks: { [uuid(1).toUpperCase()]: "c" },
+    });
+    expect(r.ok && r.picks).toEqual({ [uuid(1)]: "C" });
+  });
+
+  it("accepts a reveal without a pick beside one with a pick", () => {
+    // "Show solution" reveals without tapping an option: a reveal, not an attempt.
+    const r = parsePracticeBatch({ questionIds: [uuid(1), uuid(2)], picks: { [uuid(2)]: "A" } });
+    expect(r.ok && r.ids).toEqual([uuid(1), uuid(2)]);
+    expect(r.ok && r.picks).toEqual({ [uuid(2)]: "A" });
+  });
+
+  it("REJECTS a pick for a question that is not in the batch", () => {
+    // A verdict with no reveal row would be a fact about nothing the student did here.
+    const r = parsePracticeBatch({ questionIds: [uuid(1)], picks: { [uuid(2)]: "A" } });
+    expect(r.ok).toBe(false);
+  });
+
+  it("REJECTS a label outside A–D rather than guessing what was meant", () => {
+    // The bank carries exactly four options on every MCQ (A–D, measured 2026-10-02).
+    for (const bad of ["E", "", "AB", 1, null, {}]) {
+      const r = parsePracticeBatch({ questionIds: [uuid(1)], picks: { [uuid(1)]: bad } });
+      expect(r.ok, JSON.stringify(bad)).toBe(false);
+    }
+  });
+
+  it("REJECTS picks that are not a plain object", () => {
+    for (const bad of [[], "A", 42, null]) {
+      const r = parsePracticeBatch({ questionIds: [uuid(1)], picks: bad });
+      expect(r.ok, JSON.stringify(bad)).toBe(false);
+    }
   });
 });

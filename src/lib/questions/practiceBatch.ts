@@ -77,9 +77,27 @@ export function addToBatch(batch: readonly string[], questionId: string): string
   return next.length > PRACTICE_BATCH_MAX ? next.slice(next.length - PRACTICE_BATCH_MAX) : next;
 }
 
+/** The four option labels every bank MCQ carries (A–D on every row, measured
+ *  2026-10-02 — no question has an E). */
+export const PICK_LABELS = ["A", "B", "C", "D"] as const;
+
+export type PickLabel = (typeof PICK_LABELS)[number];
+
+/**
+ * Which option the student tapped, by question id. Only the TAP travels: the
+ * verdict is decided on the server against the key (lib/questions/bankVerdict),
+ * for the drill's reason — a browser-asserted verdict could retire its own
+ * questions from the spaced-repetition ladder.
+ */
+export type BatchPicks = Record<string, PickLabel>;
+
 export type ParsedBatch =
-  | { ok: true; ids: string[]; surface: PracticeSurface }
+  | { ok: true; ids: string[]; surface: PracticeSurface; picks: BatchPicks }
   | { ok: false; error: string };
+
+function isPlainObject(v: unknown): v is Record<string, unknown> {
+  return typeof v === "object" && v !== null && !Array.isArray(v);
+}
 
 /**
  * Validate an untrusted batch body. The client is not trusted to have deduped,
@@ -116,5 +134,25 @@ export function parsePracticeBatch(raw: unknown): ParsedBatch {
     if (!UUID_RE.test(norm)) return { ok: false, error: "questionIds must be uuids." };
     if (!out.includes(norm)) out.push(norm);
   }
-  return { ok: true, ids: out, surface };
+
+  // Optional, so a tab still running the pre-verdict bundle keeps recording its
+  // reveals through a deploy. Malformed picks reject the whole batch, for the
+  // same reason an oversized batch does: a quietly dropped pick would leave the
+  // client believing an answer was recorded that never was.
+  const rawPicks = (raw as { picks?: unknown }).picks;
+  const picks: BatchPicks = {};
+  if (rawPicks !== undefined) {
+    if (!isPlainObject(rawPicks)) return { ok: false, error: "picks must be an object." };
+    for (const [id, label] of Object.entries(rawPicks)) {
+      const norm = id.trim().toLowerCase();
+      // A pick with no reveal in this batch would be a verdict about nothing.
+      if (!out.includes(norm)) return { ok: false, error: "A pick must name a question in the batch." };
+      const upper = typeof label === "string" ? label.toUpperCase() : null;
+      if (upper === null || !(PICK_LABELS as readonly string[]).includes(upper)) {
+        return { ok: false, error: "A pick must be an option label A-D." };
+      }
+      picks[norm] = upper as PickLabel;
+    }
+  }
+  return { ok: true, ids: out, surface, picks };
 }

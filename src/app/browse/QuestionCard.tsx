@@ -114,8 +114,8 @@ export default function QuestionCard({
   const [revealBlocked, setRevealBlocked] = useState(false);
   // Re-keys the prompt on every refused tap so it visibly replays.
   const [blockedTaps, setBlockedTaps] = useState(0);
-  function tryReveal(): boolean {
-    if (meter.attemptReveal(question.id)) {
+  function tryReveal(chose?: OptionLabel): boolean {
+    if (meter.attemptReveal(question.id, chose)) {
       setRevealBlocked(false);
       // Engagement signal for the soft mobile prompt (no-op unless signed-in
       // without a mobile; fires only once, at the reveal threshold).
@@ -127,7 +127,10 @@ export default function QuestionCard({
     return false;
   }
   function pickOption(label: OptionLabel) {
-    if (tryReveal()) setPicked(label);
+    // The tapped option travels with the reveal so the server can grade it.
+    // Not for a cancelled question: no option is right, so there is no verdict
+    // to record (the server refuses it too; this keeps the request honest).
+    if (tryReveal(cancelled ? undefined : label)) setPicked(label);
   }
   function toggleSolution() {
     if (showSolution) {

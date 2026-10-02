@@ -160,7 +160,7 @@ function EmptyState() {
       <p className="mt-3 font-semibold">Nothing to practise right now</p>
       <p className="mx-auto mt-2 max-w-sm text-sm text-muted-foreground">
         Nothing is due, and there are no new questions to draw from until you pick a target
-        exam on your account page. A question you get right comes back around {COOL_DOWN_DAYS}{" "}
+        exam on your account page. A question you miss in a mock or in the bank lands here. A question you get right comes back around {COOL_DOWN_DAYS}{" "}
         days later, once, to check it stuck.
       </p>
       <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:justify-center">
@@ -175,7 +175,7 @@ function EmptyState() {
           href="/browse"
           className="inline-flex h-12 items-center justify-center rounded-xl border px-6 text-base font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
-          Browse questions
+          Answer questions in the bank
         </Link>
       </div>
     </div>
