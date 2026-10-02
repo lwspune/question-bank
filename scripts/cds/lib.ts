@@ -177,7 +177,10 @@ export function buildRecords(
     const cat: SectionType | undefined = SECTION_CATALOG[sec.type];
     if (!cat) { flags.push({ number: q.number, reason: `unknown section type "${sec.type}"` }); continue; }
 
-    const subtopic = cat.perQuestionSubtopic ? (q.subtopic || cat.subtopic) : cat.subtopic;
+    // A row's own subtopic wins in ANY section: the section type fixes the chapter, the subtopic is a
+    // teaching choice (a /notes re-cut writes it to <paper>.questions.json). perQuestionSubtopic
+    // sections still REQUIRE one, which is what the flag below checks.
+    const subtopic = q.subtopic || cat.subtopic;
     if (cat.perQuestionSubtopic && !q.subtopic) flags.push({ number: q.number, reason: `perQuestionSubtopic section but no subtopic given (fell back to "${cat.subtopic}")` });
 
     let stem = q.stem.trim();

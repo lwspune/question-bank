@@ -93,6 +93,21 @@ describe("buildRecords", () => {
     expect(rows[0].subtopic).toBe("Subject-Verb Agreement"); // perQuestionSubtopic honoured
   });
 
+  it("honours a row's own subtopic in any section, so a /notes re-cut can file it by technique", () => {
+    // The section type still fixes the CHAPTER; the subtopic is a teaching choice. Without this a
+    // re-cut written to <paper>.questions.json is ignored for every non-perQuestionSubtopic section.
+    const s = [sec({ type: "synonyms", qFrom: 1, qTo: 2, setLabel: "S1" })];
+    const { rows, flags } = buildRecords(
+      s,
+      [q({ number: 1, stem: "He felt nadir.", subtopic: "Synonyms: Words for Feeling" }), q({ number: 2, stem: "A zenith." })],
+      { single: { "1": "nadir", "2": "zenith" } }
+    );
+    expect(rows[0].subtopic).toBe("Synonyms: Words for Feeling");
+    expect(rows[0].chapter).toBe("Vocabulary");
+    expect(rows[1].subtopic).toBe("Synonyms"); // no override → the section default
+    expect(flags).toEqual([]);
+  });
+
   it("underlines each numbered sentence in a triple (homophone) section", () => {
     const s = [sec({ type: "homophones", qFrom: 1, qTo: 1, setLabel: "S1" })];
     const stem = "crops, corps, corpse\n1. growing GM crops?\n2. The volunteer corps marched.\n3. like a corpse.";
