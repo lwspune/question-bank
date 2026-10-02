@@ -47,8 +47,12 @@ export default function NotesHandoutLink({
   }
 
   return (
+    // No prefetch: a handout's payload runs to megabytes (one KaTeX-heavy
+    // chapter is 13 MB of HTML) and the route builds on first visit, so a
+    // prefetch would download it — and build it — for every chapter view.
     <Link
       href={href}
+      prefetch={false}
       aria-label={`Download the ${chapterName} notes as a printable PDF`}
       className="inline-flex items-center gap-2 rounded-md bg-brand px-3 py-2 text-sm font-medium text-brand-foreground hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
