@@ -59,7 +59,7 @@ is why the share loop already keeps the score opt-in).
 | 6 | Weekly sittings goal, student-chosen, with a progress ring | **Tranche A — building** |
 | 5 | Mastery map: chapter tiles with subtopic dots from the existing weak/mastered bands | **SHIPPED 2026-09-24** at `/me/map` (no schema; `npm run map:smoke`) |
 | 4 | Daily set: five questions, due drill first then unseen from weak subtopics | **SHIPPED 2026-09-24** as a FILL of `/drill` (no new route): due first, then unseen PYQs from the two weakest subtopics, then the target exam |
-| 10 | Feed the drill from /browse, notes checkpoints and public quizzes | **PARKED by the user, 2026-09-24** (too much hassle for the return). Not to be re-proposed unless the drill runs dry of mock misses. |
+| 10 | Feed the drill from /browse, notes checkpoints and public quizzes | **Bank part SHIPPED 2026-10-02** (user decision after UX_REVIEW_TRIAGE.md Y1): a tapped option on `/browse` and `/questions` is graded server-side and feeds the drill. Notes checkpoints, public quizzes and `/board` stay parked. |
 | 7 | Teacher-assigned paper with a deadline for a batch | **SHIPPED 2026-09-24** — `mock_assignments` (migration 0115), teacher card on the batch roster, due list on `/me`, line on the mock page |
 | 8 | Content-led nudges at 12:30 IST | **SHIPPED 2026-09-24** — email only (`npm run email:due-nudge`, cron `.github/workflows/due-nudge.yml`, migration 0114) |
 | 9 | Exam date and days-to-exam | **SHIPPED 2026-09-24** — `src/lib/exam/calendar.ts` + `student_profiles.exam_date` (0116); every calendar date is EXPECTED, not official, and says so |
@@ -224,7 +224,7 @@ like it" transfer half; build it once Tranche A shows drills being finished.
 
 ### B3. Feed the drill from every surface (item 10)
 
-**PARKED 2026-09-24 (user).** Making /browse attempt-first touches the public reveal flow on the most visited pages for a second source of misses the drill does not yet need: the fill (B2) already serves unseen questions when the mock pool is short. Revisit only if the mock-miss pool proves too thin to sustain the drill. As specified:
+**Bank part SHIPPED 2026-10-02 (user decision).** What changed the call: in the week to 2026-10-02, 52 signed-in students revealed 1,229 bank answers while 22 sat 30 mocks, so the drill's only fuel came from the surface students use least. `/browse` was already answer-first on the client (tap an option → Correct / Your pick); what was missing was the server's verdict. Now the beacon carries the tapped option (`picks`), `/api/activity/practice` grades it against the key, the verdict rides on the `question_practiced` row (`chose`, `correct`), and `answer_wrong` / `answer_correct` (recovery only) go beside it with a dedupe key per question per IST day. First act only: a pick after "Show solution", or a re-pick in the same page session, is not graded. Pure core `src/lib/questions/bankVerdict.ts`; integration test `tests/practice-route-verdict.integration.test.ts`. **Check on 2026-10-16:** the bank wrong rate. Mocks run ~30% wrong when attempted; ≥70% would mean students tap just to see the answer, and the fix is a separate "Show answer" that records nothing. Still parked: notes checkpoints, public quizzes, `/board`. Original spec, for the record:
 
 `answer_wrong` is mock-only. Make `/browse`'s reveal attempt-first (choose,
 then reveal, like `/board`) and record the verdict server-side; emit

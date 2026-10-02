@@ -320,6 +320,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-10
 
+- **2026-10-02 (fourth) — The bank records right or wrong: a tapped option on /browse and /questions is graded server-side and feeds the drill (ENGAGEMENT_SPEC B3, bank part; unparked by the user).**
+  - **Why unparked:** in the week to 10-02, 52 students revealed 1,229 bank answers while 22 sat 30 mocks; the drill and all progress were fed by the surface used least.
+  - **The server grades, the browser only names the tap** (the drill's rule). The verdict rides on the one `question_practiced` per reveal (`chose`, `correct`); `answer_wrong` beside a miss, `answer_correct` only for a recovery.
+  - **First act only, one ladder verdict per question per IST day** (dedupe key), so re-tapping the answer just shown fixes nothing. `/board` stays plain.
+  - **Check 2026-10-16:** a bank wrong rate ≥70% (mocks ~30%) means tap-to-see noise. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-10-02 (third) — CDS English notes: all 8 chapters ship (106 pages · 2,400 PYQ, 100% tagged), after every row of all 20 papers was checked against its printed page: 441 repairs, 145 key changes.**
   - **Most wrong keys were derived from corrupted text** (S/S6 swaps, sentences from the next item, options shifted by a label). Every key change was re-derived in the main session; method in NOTES_WORKFLOW.md §0b "Fourth run", tools in `scripts/notes-pipeline/cds-en/`.
   - **Slice a page check by PAPER, not chapter:** a page holds rows of 3-4 chapters, so per-paper agents read each page once (the user's speed question).
