@@ -12,6 +12,14 @@ import { istDayKey } from "@/lib/email/dueNudge";
 import type { ActivityEvent } from "./events";
 import { isSurface, viewDedupeKey } from "./views";
 
+/**
+ * Which kind of browser recorded a view. Only the handout sends it: in-app
+ * browsers (WhatsApp, Instagram…) cannot save its PDF, so how many readers
+ * open it there is what decides whether that path is worth more work.
+ */
+export const VIEW_BROWSERS = ["standard", "inapp"] as const;
+const BROWSER_SET: ReadonlySet<string> = new Set(VIEW_BROWSERS);
+
 export const PAYWALL_GATES = ["mock_limit", "teacher", "pricing"] as const;
 export type PaywallGate = (typeof PAYWALL_GATES)[number];
 
@@ -57,11 +65,14 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
 
   if (raw.kind === "surface_viewed") {
     if (!isSurface(raw.surface)) return { ok: false, error: "Unknown surface." };
+    if (raw.browser !== undefined && (typeof raw.browser !== "string" || !BROWSER_SET.has(raw.browser))) {
+      return { ok: false, error: "Unknown browser." };
+    }
     return {
       ok: true,
       value: {
         kind: "surface_viewed",
-        metadata: { surface: raw.surface },
+        metadata: raw.browser ? { surface: raw.surface, browser: raw.browser } : { surface: raw.surface },
         dedupeKey: viewDedupeKey(userId, raw.surface, now),
       },
     };
