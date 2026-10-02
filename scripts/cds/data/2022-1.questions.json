@@ -805,7 +805,7 @@
   "options": [
    {
     "label": "A",
-    "text": "QRPS"
+    "text": "QRSP"
    },
    {
     "label": "B",
@@ -821,7 +821,7 @@
    }
   ],
   "answer": "C",
-  "reasoning": "Coherent sentence: 'As soon as[P] the session commenced[S] the government was pressed to do[Q] something for the poor[R].' Order P-S-Q-R = PSQR. Grid label-to-fragment binding read as columns 1-4 = P/Q/R/S; the natural reordering that yields a grammatical sentence matches option C.",
+  "reasoning": "The sentence reads: 'As soon as (P) the session commenced (S), the government was pressed to do (Q) something for the poor (R).' 'As soon as' must introduce the time clause 'the session commenced', and the main clause 'the government was pressed to do something for the poor' follows it. The order is P-S-Q-R, option (c).",
   "confidence": "MED",
   "difficulty": "MODERATE"
  },
@@ -869,7 +869,7 @@
    },
    {
     "label": "D",
-    "text": "RPSQ"
+    "text": "RPQS"
    }
   ],
   "answer": "B",
@@ -905,11 +905,11 @@
  },
  {
   "number": 35,
-  "stem": "P: has become\nQ: ever since the COVID-19 pandemic began\nR: a fixture of everyday life\nS: calibrating disease-related risk",
+  "stem": "P: has become\nQ: ever since the COVID-19 pandemic began,\nR: a fixture of everyday life\nS: calibrating disease-related risk",
   "options": [
    {
     "label": "A",
-    "text": "QRSP"
+    "text": "QSPR"
    },
    {
     "label": "B",
@@ -924,8 +924,8 @@
     "text": "QPRS"
    }
   ],
-  "answer": "B",
-  "reasoning": "Intended sentence: 'Calibrating disease-related risk[S] has become a fixture of everyday life ever since the COVID-19 pandemic began.' The subject 'calibrating disease-related risk'(S) must lead, so the only S-initial option is SRQP (B). NOTE: the natural full order reads S-P-R-Q ('calibrating... has become a fixture... ever since...'), which is NOT among the offered options, so my column-to-label binding for this grid item is uncertain; selecting the S-initial option by elimination.",
+  "answer": "A",
+  "reasoning": "The sentence reads: 'Ever since the COVID-19 pandemic began (Q), calibrating disease-related risk (S) has become (P) a fixture of everyday life (R).' The time clause, which ends in a comma, opens the sentence. The subject 'calibrating disease-related risk' follows, then the verb 'has become' and its complement 'a fixture of everyday life'. The order is Q-S-P-R, option (a).",
   "confidence": "LOW",
   "difficulty": "MODERATE"
  },
@@ -950,8 +950,8 @@
     "text": "PQRS"
    }
   ],
-  "answer": "B",
-  "reasoning": "Intended sentence: 'Although he is in his late sixties he still enjoys vigorous health.' The connector 'although' begins the sentence and sits inside fragment S ('health; although' — the OCR appears to have merged the trailing word 'health' with the leading 'although'), so the S fragment leads, giving the only S-initial option SPRQ (B). NOTE: grid is ambiguous — fragment S reads as 'health; although' (semicolon suggests two merged pieces) and the clean order S-R-P-Q is not offered; LOW confidence on the P/Q/R/S binding.",
+  "answer": "C",
+  "reasoning": "The sentence reads: 'He still enjoys vigorous (Q) health; although (S) he is in his (R) late sixties (P).' 'Vigorous' needs its noun 'health', so Q is followed by S. The clause after 'although' must be 'he is in his late sixties', so R comes before P. The order is Q-S-R-P, option (c).",
   "confidence": "LOW",
   "difficulty": "MODERATE"
  },
@@ -1087,7 +1087,7 @@
  },
  {
   "number": 42,
-  "stem": "S1: The Indian Meteorological Department (IMD) was established in 1875.\nS6: It is the natural meteorological service and the principal agency in all matters related to meteorology.\nP: The Meteorological Department is perhaps also burdened with the most critical form of soothsaying i.e., forecasting the monsoon.\nQ: The Crop Yield Formation Unit of the department has developed statistical models using correlation and regression techniques.\nR: These predictions have an effect on the Indian economy that belies any belief that the economy of our country is not solely dependent on agriculture and the rains that feed it.\nS: It is the IMD that issued the first operational long range forecast of seasonal south-west monsoon rainfall in India in 1986.",
+  "stem": "S1: The Indian Meteorological Department (IMD) was established in 1875.\nS6: These predictions have an effect on the Indian economy that belies any belief that the economy of our country is not solely dependent on agriculture and the rains that feed it.\nP: The Meteorological Department is perhaps also burdened with the most critical form of soothsaying i.e., forecasting the monsoon.\nQ: The Crop Yield Formation Unit of the department has developed statistical models using correlation and regression techniques.\nR: The IMD issued the first operational long range forecast of seasonal south-west monsoon rainfall in India in 1986.\nS: It is the natural meteorological service and the principal agency in all matters related to meteorology.",
   "options": [
    {
     "label": "A",
@@ -1106,8 +1106,8 @@
     "text": "PQRS"
    }
   ],
-  "answer": "D",
-  "reasoning": "S1 establishes the IMD (1875). P introduces its key role (forecasting the monsoon). Q describes the Crop Yield Formation Unit's statistical models built for this. R then states the economic impact of these predictions. S notes the first operational long-range forecast in 1986, leading to S6's summary of IMD's role. Sequence P-Q-R-S = PQRS, option D.",
+  "answer": "B",
+  "reasoning": "S1 introduces the IMD. S ('It is the natural meteorological service and the principal agency...') follows directly, because 'It' refers to the IMD. R gives a landmark in its work, the first operational long-range monsoon forecast in 1986. Q describes the statistical models of its Crop Yield Formation Unit. P adds that the department is 'also' burdened with forecasting the monsoon, and S6 ('These predictions have an effect on the Indian economy...') takes up those monsoon forecasts. The order is S-R-Q-P, option (b).",
   "confidence": "MED",
   "difficulty": "MODERATE"
  },
@@ -1139,7 +1139,7 @@
  },
  {
   "number": 44,
-  "stem": "S1: People of every country think very highly of themselves and consider their country the best or the greatest.\nS6: We have to keep what is good.\nP: And discard what is bad.\nQ: No country can be absolutely good, just as no man can be thoroughly good.\nR: One must cultivate the ability to discern the good from the bad.\nS: We should accept whatever good we may find in other countries.",
+  "stem": "S1: People of every country think very highly of themselves and consider their country the best or the greatest.\nS6: We should accept whatever good we may find in other countries.\nP: And discard what is bad.\nQ: No country can be absolutely good, just as no man can be thoroughly good.\nR: One must cultivate the ability to discern the good from the bad.\nS: We have to keep what is good.",
   "options": [
    {
     "label": "A",
@@ -1159,13 +1159,13 @@
    }
   ],
   "answer": "C",
-  "reasoning": "S1 says people overrate their own country. Q counters that no country is absolutely good. R follows: one must learn to discern good from bad. S applies this: accept whatever good is found in other countries. P ('And discard what is bad') leads directly into S6 ('We have to keep what is good'). Sequence Q-R-S-P = QRSP, option C. P's 'And discard...' pairs with S6's 'keep what is good', fixing P last.",
+  "reasoning": "S1 says people think their own country the best. Q answers that no country can be absolutely good. R draws the lesson: one must learn to tell the good from the bad. S ('We have to keep what is good') and P ('And discard what is bad') form a pair, with P's 'And' continuing S. S6 then extends the idea to other countries: 'We should accept whatever good we may find in other countries.' The order is Q-R-S-P, option (c).",
   "confidence": "MED",
   "difficulty": "MODERATE"
  },
  {
   "number": 45,
-  "stem": "S1: Poverty is wrongly considered an evil.\nS6: The poor lead a happier life than the rich.\nP: Most of the great men on Earth are those who have sprung from the ranks of the poor.\nQ: The home of poverty, free from care and social envy, is characterised by love and unity among its members.\nR: The children of rich men are not so fortunate as those of poor men.\nS: To abolish poverty would be to destroy the soil upon which mankind produces the virtues conducive to higher civilisation.",
+  "stem": "S1: Poverty is wrongly considered an evil.\nS6: To abolish poverty would be to destroy the soil upon which mankind produces the virtues conducive to higher civilisation.\nP: Most of the great men on Earth are those who have sprung from the ranks of the poor.\nQ: The home of poverty, free from care and social envy, is characterised by love and unity among its members.\nR: The children of rich men are not so fortunate as those of poor men.\nS: The poor lead a happier life than the rich.",
   "options": [
    {
     "label": "A",
@@ -1184,14 +1184,14 @@
     "text": "QRPS"
    }
   ],
-  "answer": "C",
-  "reasoning": "S1 says poverty is wrongly considered evil. S ('To abolish poverty would be to destroy the soil... conducive to higher civilisation') defends poverty's value and follows S1. P ('Most of the great men... sprung from the ranks of the poor') gives evidence. Q ('The home of poverty... love and unity') and R ('children of rich men are not so fortunate') build toward S6 ('The poor lead a happier life than the rich'). Sequence S-P-Q-R = SPQR, option C.",
+  "answer": "B",
+  "reasoning": "S1 claims poverty is wrongly thought an evil. S states the main point: the poor lead a happier life than the rich. R continues the comparison with the rich: their children are not so fortunate as those of the poor. Q explains why, describing the home of poverty as free from care and envy and full of love and unity. P adds that most great men have sprung from the ranks of the poor, which leads to S6: abolishing poverty would destroy the soil in which such virtues grow. The order is S-R-Q-P, option (b).",
   "confidence": "MED",
   "difficulty": "MODERATE"
  },
  {
   "number": 46,
-  "stem": "S1: 'All work and no play makes Jack a dull boy' — There is a lot of truth in this proverb.\nS6: Pupils should play for an hour or two.\nP: Then, they can go back to their books, refreshed.\nQ: Games provide the best form of recreation in schools.\nR: Unless pupils enjoy some sort of recreation, they become dull and their reading suffers as a consequence.\nS: Games provide recreation for the pupils, and also make their bodies strong.",
+  "stem": "S1: 'All work and no play makes Jack a dull boy' — There is a lot of truth in this proverb.\nS6: Games provide recreation for the pupils, and also make their bodies strong.\nP: Then, they can go back to their books, refreshed.\nQ: Games provide the best form of recreation in schools.\nR: Unless pupils enjoy some sort of recreation, they become dull and their reading suffers as a consequence.\nS: Pupils should play for an hour or two.",
   "options": [
    {
     "label": "A",
@@ -1211,7 +1211,7 @@
    }
   ],
   "answer": "A",
-  "reasoning": "S1 quotes the proverb on the need for play. R explains the consequence of no recreation (pupils become dull, reading suffers). Q states games are the best form of recreation in schools. S elaborates games provide recreation and strengthen bodies. P ('Then, they can go back to their books, refreshed') leads into S6 about playing for an hour or two. Sequence R-Q-S-P = RQSP, option A.",
+  "reasoning": "S1 quotes the proverb on the need for play. R explains why: without recreation pupils grow dull and their reading suffers. Q names games as the best form of recreation in schools. S says pupils should play for an hour or two, and P follows: 'Then, they can go back to their books, refreshed.' S6 adds a second benefit: games also make their bodies strong. The order is R-Q-S-P, option (a).",
   "confidence": "MED",
   "difficulty": "MODERATE"
  },
@@ -1237,13 +1237,13 @@
    }
   ],
   "answer": "B",
-  "reasoning": "S1 introduces putting up with something unpleasant. P gives an example (shifting into a house near a factory). S follows the example ('At first, the noise... makes it impossible for us to sleep at night'). Q continues ('As time goes by, we are able to adapt...'), R concludes ('Thus, we can get used to anything'), leading into S6. NOTE: the smoothest narrative order is P-S-Q-R, but that is not offered. Among the offered options, PQRS (B) keeps P first (the example must follow S1) and R last (the 'Thus' conclusion before S6); selecting B by best fit.",
+  "reasoning": "S1 states the general idea, and P gives the example of moving into a house near a factory that runs all day. Q and R generalise: as time goes by we adapt, and 'Thus, we can get used to anything.' S ('At first, the noise of the machinery makes it impossible for us to sleep at night') must come just before S6, because S6 ('But we find ourselves getting accustomed to it in due course of time') answers its 'At first' with 'But ... in due course'. The only option that places S fourth is PQRS, option (b). The item is not perfectly built: P-S-Q-R would read more smoothly, but it is not offered.",
   "confidence": "LOW",
   "difficulty": "MODERATE"
  },
  {
   "number": 48,
-  "stem": "S1: A large city is the best school for studying life.\nS6: The various facets of life can be found reflected in a large city.\nP: If we live in a city for a year or two, we will be able to acquire a good knowledge of life.\nQ: In a large city we encounter different types of persons.\nR: The rich and the poor, the proud and the humble, the deceitful and the innocent, the rough and the gentle.\nS: Thus a city can teach us many aspects of life.",
+  "stem": "S1: A large city is the best school for studying life.\nS6: Thus a city can teach us many aspects of life.\nP: If we live in a city for a year or two, we will be able to acquire a good knowledge of life.\nQ: In a large city we encounter different types of persons.\nR: The rich and the poor, the proud and the humble, the deceitful and the innocent, the rough and the gentle.\nS: The various facets of life can be found reflected in a large city.",
   "options": [
    {
     "label": "A",
@@ -1262,8 +1262,8 @@
     "text": "QRSP"
    }
   ],
-  "answer": "A",
-  "reasoning": "S1 calls a large city the best school for studying life. P develops the time-in-a-city idea ('If we live in a city for a year or two...'). Q ('we encounter different types of persons') and R (the catalogue of types) belong together with Q before R. S ('Thus a city can teach us many aspects of life') concludes, leading into S6. The chain Q-R is fixed (R lists the types Q introduces) and S concludes. NOTE: the most natural order is P-Q-R-S, but that is not offered; PQSR (A) keeps P first and the Q...R/S block, chosen as the best available fit. LOW confidence.",
+  "answer": "D",
+  "reasoning": "S1 says a large city is the best school for studying life. Q says that in a city we meet different types of persons, and R must follow it directly, because it lists those types ('The rich and the poor, the proud and the humble...'). S sums this up: the various facets of life are reflected in a large city. P then says that living in a city for a year or two gives a good knowledge of life, and S6 concludes: 'Thus a city can teach us many aspects of life.' The order is Q-R-S-P, option (d).",
   "confidence": "LOW",
   "difficulty": "MODERATE"
  },
@@ -1288,14 +1288,14 @@
     "text": "PQRS"
    }
   ],
-  "answer": "C",
-  "reasoning": "S1 says great talkers are never great doers. R introduces the people ('We come across people who are eloquent over great things'). S elaborates ('Many who deliver wonderful speeches... do no valuable service'). Q ('But when the time for action comes, they keep themselves away') and P ('Rather they serve themselves and never the community') continue, with P leading into S6. Sequence R-S-Q-P = RSQP, option C.",
+  "answer": "B",
+  "reasoning": "S1 says great talkers are never great doers. R introduces such people, eloquent over great things, and Q continues with 'But': when the time for action comes, they keep away. S adds that many who make fine speeches about their own greatness do no valuable service to the country, and P follows with 'Rather': they serve themselves and never the community. S6 sums up: those who do nothing are usually the most talkative. The order is R-Q-S-P, option (b).",
   "confidence": "MED",
   "difficulty": "MODERATE"
  },
  {
   "number": 50,
-  "stem": "S1: Leisure is perhaps as important as work.\nS6: After a little relaxation, we can work more energetically and efficiently.\nP: And we feel very tired.\nQ: Unless we have some break, we cannot carry on and our health may suffer.\nR: Sometimes we work continuously.\nS: We should take care to make proper use of leisure.",
+  "stem": "S1: Leisure is perhaps as important as work.\nS6: We should take care to make proper use of leisure.\nP: And we feel very tired.\nQ: Unless we have some break, we cannot carry on and our health may suffer.\nR: Sometimes we work continuously.\nS: After a little relaxation, we can work more energetically and efficiently.",
   "options": [
    {
     "label": "A",
@@ -1315,7 +1315,7 @@
    }
   ],
   "answer": "D",
-  "reasoning": "S1 says leisure is as important as work. R ('Sometimes we work continuously') begins the scenario, P ('And we feel very tired') follows directly (the 'And' continues R), Q ('Unless we have some break... our health may suffer') states the consequence, and S ('We should take care to make proper use of leisure') advises, leading into S6. Sequence R-P-Q-S = RPQS, option D. The 'And we feel very tired' (P) clearly follows 'we work continuously' (R).",
+  "reasoning": "S1 says leisure is as important as work. R ('Sometimes we work continuously') and P ('And we feel very tired') go together, P's 'And' continuing R. Q gives the consequence: without a break we cannot carry on and our health may suffer. S says that after a little relaxation we work better, and S6 concludes that we should take care to make proper use of leisure. The order is R-P-Q-S, option (d).",
   "confidence": "MED",
   "difficulty": "MODERATE"
  },
@@ -2023,7 +2023,7 @@
  },
  {
   "number": 78,
-  "stem": "Blank (78): \"___ to affect one's health.\" (referring to alcohol)",
+  "stem": "Blank (78): \"Alcohol, even if taken in small quantities, ___ to affect one's health.\"",
   "options": [
    {
     "label": "A",
@@ -2094,8 +2094,8 @@
     "text": "therapeutic"
    }
   ],
-  "answer": "A",
-  "reasoning": "'serious related legal and health issues' fits as an adjective qualifying the issues; the other options do not fit grammatically or in sense.",
+  "answer": "B",
+  "reasoning": "The sentence gives the defining symptom of alcoholism: continuing to drink in spite of the trouble it causes. 'Despite' is a preposition that takes the noun phrase 'related legal and health issues': 'repeated alcohol consumption despite related legal and health issues'. 'Serious' cannot join the two noun phrases ('consumption serious related issues' has no linking word), and 'meaning' and 'therapeutic' make no sense here.",
   "confidence": "MED",
   "difficulty": "MODERATE"
  },
@@ -2217,7 +2217,7 @@
    },
    {
     "label": "C",
-    "text": "should he more honest."
+    "text": "should he be more honest."
    },
    {
     "label": "D",
@@ -2225,7 +2225,7 @@
    }
   ],
   "answer": "D",
-  "reasoning": "Subjunctive inversion in the unreal condition requires 'were he' (subjunctive 'were'); the other forms are ungrammatical.",
+  "reasoning": "'He would be happier' describes an unreal present situation, so the condition takes the past subjunctive 'were' with inversion: 'were he more honest' (= if he were more honest). 'Was he more honest' is a question form, not a condition, and 'had he more honest' has no verb. 'Should he be more honest' points to an unlikely future event rather than the present state the sentence describes, so (d) is the best answer.",
   "confidence": "HIGH",
   "difficulty": "MODERATE"
  },
@@ -2243,7 +2243,7 @@
    },
    {
     "label": "C",
-    "text": "did the flight took off."
+    "text": "did the flight take off."
    },
    {
     "label": "D",
@@ -2251,7 +2251,7 @@
    }
   ],
   "answer": "B",
-  "reasoning": "'No sooner ... than' is the fixed correlative; past-time agreement gives 'than the flight took off.'",
+  "reasoning": "'No sooner ... than' is a fixed pair, so the completion must begin with 'than'; 'then' (a) is wrong. The past 'did I arrive' needs the past 'took off', which rules out 'shall take off' (d). Option (c) repeats the inversion instead of supplying 'than'.",
   "confidence": "HIGH",
   "difficulty": "EASY"
  },
@@ -2786,7 +2786,7 @@
    }
   ],
   "answer": "B",
-  "reasoning": "The narrative describes a long sea voyage across the Atlantic on a ship, so 'living on the ocean' means being on that extended voyage.",
+  "reasoning": "The narrators had moved deep into the Atlantic and felt they belonged there, while the passing ships were only 'hurrying strangers'. 'Living on the ocean' means they were spending a long time at sea on their voyage into the Atlantic. Nothing suggests they were homeless, without income, or fishing for a living.",
   "confidence": "MED",
   "difficulty": "MODERATE",
   "subtopic": "Inferential Comprehension"
@@ -2840,7 +2840,7 @@
    }
   ],
   "answer": "A",
-  "reasoning": "The log entry expresses fear so far never known, describing facing the worst kind of fear in developing a situation that provided fear.",
+  "reasoning": "In the log the author writes, 'I have known fear many times in my life ... I have never known anything like this.' He means this was the worst fear he had ever felt, even though he had sought out fear in boxing and parachuting. The log does not say they were excellent at those sports, that they faced the storms bravely, or that they starved.",
   "confidence": "MED",
   "difficulty": "MODERATE",
   "subtopic": "Literal Comprehension"
@@ -2867,7 +2867,7 @@
    }
   ],
   "answer": "C",
-  "reasoning": "The passage describes raging storms (wind, seas, the boat rubbed down) growing worse, which is why hope of survival was lost.",
+  "reasoning": "The log describes a storm growing worse through the night: 'All night the wind screams louder and louder, and the sound of the sea grows.' They write that nothing could save them and that no ship could get them off these seas even if it arrived, so their despair comes from the severe storm. The passage does not mention freezing cold, and the whales and dolphins were friendly company.",
   "confidence": "MED",
   "difficulty": "MODERATE",
   "subtopic": "Inferential Comprehension"
