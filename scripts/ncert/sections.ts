@@ -1241,6 +1241,101 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "12.4 Domestic Electric Circuits", label: "Questions", kind: "exercise", refPrefixes: ["IT 12.5 Q"] },
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 12 Q"] },
   ],
+
+  // ── CBSE Class 10 SOCIAL SCIENCE (2026-10-02) — four books, one subject.
+  //    Geography and Political Science have ONE question block per chapter (the
+  //    end-of-chapter Exercises); History has TWO ("Write in brief", then
+  //    "Discuss", on the closing page); none of the three has worked examples or
+  //    an in-text lane. Map-marking and project items were never transcribed.
+  //
+  //    ECONOMICS is the only book with an in-text lane — 32 LET'S WORK TH{ESE,IS}
+  //    OUT boxes. Each box is grouped under the 14pt section heading it CLOSES,
+  //    read off page geometry (box y vs the next heading's y, the Science rule),
+  //    and boxes that close the same section share one block. The 18pt titles
+  //    are case-study panels, not sections — except "Variety of Credit
+  //    Arrangements" (Money and Credit p9), a full-page titled spread whose
+  //    Sonpur questions are box LW 3.5, so that box takes its title.
+  c10HistNationalismEurope: [
+    { group: "Write in brief", label: "Write in brief", kind: "exercise", refPrefixes: ["WB 1 Q"] },
+    { group: "Discuss", label: "Discuss", kind: "exercise", refPrefixes: ["DS 1 Q"] },
+  ],
+  c10HistNationalismIndia: [
+    { group: "Write in brief", label: "Write in brief", kind: "exercise", refPrefixes: ["WB 2 Q"] },
+    { group: "Discuss", label: "Discuss", kind: "exercise", refPrefixes: ["DS 2 Q"] },
+  ],
+  // Ch.3 numbers its two blocks CONTINUOUSLY (Write in brief 1-5, Discuss 6-9);
+  // the WB/DS prefix, not the number, decides the block.
+  c10HistGlobalWorld: [
+    { group: "Write in brief", label: "Write in brief", kind: "exercise", refPrefixes: ["WB 3 Q"] },
+    { group: "Discuss", label: "Discuss", kind: "exercise", refPrefixes: ["DS 3 Q"] },
+  ],
+  c10HistIndustrialisation: [
+    { group: "Write in brief", label: "Write in brief", kind: "exercise", refPrefixes: ["WB 4 Q"] },
+    { group: "Discuss", label: "Discuss", kind: "exercise", refPrefixes: ["DS 4 Q"] },
+  ],
+  c10HistPrintCulture: [
+    { group: "Write in brief", label: "Write in brief", kind: "exercise", refPrefixes: ["WB 5 Q"] },
+    { group: "Discuss", label: "Discuss", kind: "exercise", refPrefixes: ["DS 5 Q"] },
+  ],
+
+  c10GeoResources: [{ group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 1 Q"] }],
+  c10GeoForestWildlife: [{ group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 2 Q"] }],
+  c10GeoWater: [{ group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 3 Q"] }],
+  c10GeoAgriculture: [{ group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 4 Q"] }],
+  c10GeoMinerals: [{ group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 5 Q"] }],
+  c10GeoManufacturing: [{ group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 6 Q"] }],
+  c10GeoLifelines: [{ group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 7 Q"] }],
+
+  c10PolPowerSharing: [{ group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 1 Q"] }],
+  c10PolFederalism: [{ group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 2 Q"] }],
+  c10PolGenderReligionCaste: [{ group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 3 Q"] }],
+  c10PolPoliticalParties: [{ group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 4 Q"] }],
+  c10PolOutcomesDemocracy: [{ group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 5 Q"] }],
+
+  c10EcoDevelopment: [
+    { group: "Income and Other Goals", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 1.1 Q"] },
+    { group: "National Development", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 1.2 Q"] },
+    { group: "How to Compare Different Countries or States?", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 1.3 Q"] },
+    { group: "Public Facilities", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 1.4 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 1 Q"] },
+  ],
+  // Box 3's heading wraps ("LET'S WORK THESE" / "OUT", p7) — the reason a
+  // single-line scan counts five boxes here, not six.
+  c10EcoSectors: [
+    { group: "Sectors of Economic Activities", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 2.1 Q"] },
+    { group: "Comparing the Three Sectors", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 2.2 Q"] },
+    { group: "Primary, Secondary and Tertiary Sectors in India", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 2.3 Q", "LW 2.4 Q", "LW 2.5 Q"] },
+    { group: "Division of Sectors as Organised and Unorganised", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 2.6 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 2 Q"] },
+  ],
+  c10EcoMoneyCredit: [
+    { group: "Money as a Medium of Exchange", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 3.1 Q"] },
+    { group: "Modern Forms of Money", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 3.2 Q"] },
+    { group: "Two Different Credit Situations", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 3.3 Q"] },
+    { group: "Terms of Credit", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 3.4 Q"] },
+    { group: "Variety of Credit Arrangements", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 3.5 Q"] },
+    { group: "Formal Sector Credit in India", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 3.6 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 3 Q"] },
+  ],
+  // Box 1 is headed in the SINGULAR (LET'S WORK THIS OUT); the label follows it.
+  c10EcoGlobalisation: [
+    { group: "Production across Countries", label: "Let's Work This Out", kind: "exercise", refPrefixes: ["LW 4.1 Q"] },
+    { group: "Interlinking Production across Countries", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 4.2 Q"] },
+    { group: "Foreign Trade and Integration of Markets", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 4.3 Q"] },
+    { group: "What is Globalisation?", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 4.4 Q"] },
+    { group: "Factors that have Enabled Globalisation", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 4.5 Q", "LW 4.6 Q"] },
+    { group: "World Trade Organisation", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 4.7 Q"] },
+    { group: "Impact of Globalisation in India", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 4.8 Q", "LW 4.9 Q", "LW 4.10 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 4 Q"] },
+  ],
+  // Five boxes close the long "Consumer Rights" section, two of them headed
+  // LET'S WORK THIS OUT (p9, p11) — one block, labelled with the plural.
+  c10EcoConsumerRights: [
+    { group: "The Consumer in the Marketplace", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 5.1 Q"] },
+    { group: "Consumer Movement", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 5.2 Q"] },
+    { group: "Consumer Rights", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 5.3 Q", "LW 5.4 Q", "LW 5.5 Q", "LW 5.6 Q", "LW 5.7 Q"] },
+    { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 5 Q"] },
+  ],
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

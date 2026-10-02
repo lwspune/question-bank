@@ -202,12 +202,16 @@ const cls10Maths = (p: string) => join(SOURCE_ROOT, "10th", "Maths", p);
 const cls10Sci = (p: string) => join(SOURCE_ROOT, "10th", "Science", p);
 
 // ── SOCIAL SCIENCE path helpers (2026-09-24) ───────────────────────────────────
-// FOUR BOOKS, FOUR SUBJECTS. CBSE Class 10 Social Science is one board paper but
-// four separate books, which is the inverse of Science — where the one-paper,
-// ONE-BOOK argument is what made Science a single subject. Here the books decide
-// it: `/board` renders per book in book order, and mh-ssc-10 and mh-sb-9 already
-// model Geography, History and Political Science as separate subjects on one
-// exam. Chapter numbers therefore restart per subject, as they do in each book.
+// FOUR BOOKS, ONE SUBJECT: "Social Science" (user decision 2026-10-02). On this
+// exam a subject is what CBSE examines as ONE paper — Social Science is one paper
+// (code 087) and one mark-sheet score, with History, Geography, Political Science
+// and Economics as ~20-mark sections inside it. That is the rule that made Science
+// one subject, and it lets a teacher pull a mixed paper with one /browse filter
+// (the subject filter is single-select). It deliberately differs from mh-ssc-10 /
+// mh-sb-9, which split by book. Chapter numbers still restart per BOOK (chapterNo
+// feeds only the per-chapter grounding filter), so ORDER comes from
+// chapters.order_index, which commit assigns as max+1: commit the 22 chapters in
+// CBSE syllabus order — History, Geography, Political Science, Economics.
 //
 // **THERE IS NO ANSWER KEY. FOR ANY OF THE FOUR.** Science had jesc1an.pdf; these
 // folders hold only chapter PDFs, prelims (jess*ps.pdf) and one Geography
@@ -3566,7 +3570,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10GeoResources",
     chapterName: "Resources and Development",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Geography",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_Geography__Resources.pdf",
     pdf: cls10SS("Geography", "01. Resources and Development.pdf"),
     chapterNo: 1,
@@ -3585,7 +3589,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10GeoForestWildlife",
     chapterName: "Forest and Wildlife Resources",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Geography",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_Geography__ForestWildlife.pdf",
     pdf: cls10SS("Geography", "02. Forest and Wildlife Resources.pdf"),
     chapterNo: 2,
@@ -3603,7 +3607,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10GeoWater",
     chapterName: "Water Resources",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Geography",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_Geography__Water.pdf",
     pdf: cls10SS("Geography", "03. Water Resources.pdf"),
     chapterNo: 3,
@@ -3620,7 +3624,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10GeoAgriculture",
     chapterName: "Agriculture",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Geography",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_Geography__Agriculture.pdf",
     pdf: cls10SS("Geography", "04. Agriculture.pdf"),
     chapterNo: 4,
@@ -3638,7 +3642,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10GeoMinerals",
     chapterName: "Minerals and Energy Resources",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Geography",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_Geography__Minerals.pdf",
     pdf: cls10SS("Geography", "05. Minerals and Energy Resources.pdf"),
     chapterNo: 5,
@@ -3658,7 +3662,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10GeoManufacturing",
     chapterName: "Manufacturing Industries",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Geography",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_Geography__Manufacturing.pdf",
     pdf: cls10SS("Geography", "06. Manufacturing Industries.pdf"),
     chapterNo: 6,
@@ -3676,7 +3680,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10GeoLifelines",
     chapterName: "Lifelines of National Economy",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Geography",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_Geography__Lifelines.pdf",
     pdf: cls10SS("Geography", "07. Lifelines of National Economy.pdf"),
     chapterNo: 7,
@@ -3704,7 +3708,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10EcoDevelopment",
     chapterName: "Development",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Economics",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_Economics__Development.pdf",
     pdf: cls10SS("Economics", "01. DEVELOPMENT.pdf"),
     chapterNo: 1,
@@ -3724,7 +3728,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10EcoSectors",
     chapterName: "Sectors of the Indian Economy",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Economics",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_Economics__Sectors.pdf",
     pdf: cls10SS("Economics", "02. SECTORS OF THE INDIAN ECONOMY.pdf"),
     chapterNo: 2,
@@ -3742,7 +3746,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10EcoMoneyCredit",
     chapterName: "Money and Credit",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Economics",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_Economics__MoneyCredit.pdf",
     pdf: cls10SS("Economics", "03. MONEY AND CREDIT.pdf"),
     chapterNo: 3,
@@ -3762,7 +3766,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10EcoGlobalisation",
     chapterName: "Globalisation and the Indian Economy",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Economics",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_Economics__Globalisation.pdf",
     pdf: cls10SS("Economics", "04. GLOBALISATION AND THE INDIAN ECONOMY.pdf"),
     chapterNo: 4,
@@ -3783,7 +3787,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10EcoConsumerRights",
     chapterName: "Consumer Rights",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Economics",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_Economics__ConsumerRights.pdf",
     pdf: cls10SS("Economics", "05. CONSUMER RIGHTS.pdf"),
     chapterNo: 5,
@@ -3808,7 +3812,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10PolPowerSharing",
     chapterName: "Power-sharing",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Political Science",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_Polity__PowerSharing.pdf",
     pdf: cls10SS("Polity", "01. Power-sharing.pdf"),
     chapterNo: 1,
@@ -3826,7 +3830,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10PolFederalism",
     chapterName: "Federalism",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Political Science",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_Polity__Federalism.pdf",
     pdf: cls10SS("Polity", "02. Federalism.pdf"),
     chapterNo: 2,
@@ -3843,7 +3847,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10PolGenderReligionCaste",
     chapterName: "Gender, Religion and Caste",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Political Science",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_Polity__GenderReligionCaste.pdf",
     pdf: cls10SS("Polity", "03. Gender, Religion, and Caste.pdf"),
     chapterNo: 3,
@@ -3859,7 +3863,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10PolPoliticalParties",
     chapterName: "Political Parties",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Political Science",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_Polity__PoliticalParties.pdf",
     pdf: cls10SS("Polity", "04. Political Parties.pdf"),
     chapterNo: 4,
@@ -3878,7 +3882,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10PolOutcomesDemocracy",
     chapterName: "Outcomes of Democracy",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "Political Science",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_Polity__OutcomesDemocracy.pdf",
     pdf: cls10SS("Polity", "05. Outcomes of Democracy.pdf"),
     chapterNo: 5,
@@ -3918,7 +3922,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10HistNationalismEurope",
     chapterName: "The Rise of Nationalism in Europe",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "History",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_History__NationalismEurope.pdf",
     pdf: cls10SS("History", "01. The Rise of Nationalism in Europe.pdf"),
     chapterNo: 1,
@@ -3937,7 +3941,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10HistNationalismIndia",
     chapterName: "Nationalism in India",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "History",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_History__NationalismIndia.pdf",
     pdf: cls10SS("History", "02. Nationalism in India.pdf"),
     chapterNo: 2,
@@ -3954,7 +3958,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10HistGlobalWorld",
     chapterName: "The Making of a Global World",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "History",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_History__GlobalWorld.pdf",
     pdf: cls10SS("History", "03. The Making of a Global World.pdf"),
     chapterNo: 3,
@@ -3971,7 +3975,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10HistIndustrialisation",
     chapterName: "The Age of Industrialisation",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "History",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_History__Industrialisation.pdf",
     pdf: cls10SS("History", "04. The Age of Industrialisation.pdf"),
     chapterNo: 4,
@@ -3990,7 +3994,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "c10HistPrintCulture",
     chapterName: "Print Culture and the Modern World",
     examId: EXAM_ID_CBSE_10,
-    subjectName: "History",
+    subjectName: "Social Science",
     sourceFile: "NCERT_10_History__PrintCulture.pdf",
     pdf: cls10SS("History", "05. Print Culture and the Modern World.pdf"),
     chapterNo: 5,
