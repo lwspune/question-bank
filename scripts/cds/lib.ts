@@ -177,35 +177,50 @@ export function buildRecords(
     const cat: SectionType | undefined = SECTION_CATALOG[sec.type];
     if (!cat) { flags.push({ number: q.number, reason: `unknown section type "${sec.type}"` }); continue; }
 
-    const subtopic = cat.perQuestionSubtopic ? (q.subtopic || cat.subtopic) : cat.subtopic;
+    // A row's own subtopic wins in ANY section: the section type fixes the chapter, the subtopic is a
+    // teaching choice (a /notes re-cut writes it to <paper>.questions.json). perQuestionSubtopic
+    // sections still REQUIRE one, which is what the flag below checks.
+    const subtopic = q.subtopic || cat.subtopic;
     if (cat.perQuestionSubtopic && !q.subtopic) flags.push({ number: q.number, reason: `perQuestionSubtopic section but no subtopic given (fell back to "${cat.subtopic}")` });
 
     let stem = q.stem.trim();
     let options = q.options.map((o) => ({ ...o }));
 
     // ── underlines ──
-    if (cat.underline === "single") {
-      const w = underlines.single?.[String(q.number)];
-      if (w) stem = undFirst(stem, w);
-      else flags.push({ number: q.number, reason: "single-underline section but no underline token" });
-    } else if (cat.underline === "triple") {
-      const m = (underlines.triple?.[String(q.number)] || {}) as Record<string, string>;
+    // A token in underlines.json underlines its word in ANY section: the page also underlines the tested
+    // word in idioms printed inside a sentence, an RC antonym item and S1/S2 usage pairs, none of which
+    // has an underline mode. The mode only decides whether a MISSING token is a defect.
+    const single = underlines.single?.[String(q.number)];
+    const triple = underlines.triple?.[String(q.number)] as Record<string, string> | undefined;
+    if (cat.underline === "single" && !single) flags.push({ number: q.number, reason: "single-underline section but no underline token" });
+    if (single && cat.underline !== "errorParts") stem = undFirst(stem, single);
+    if (triple) {
+      // numbered lines ("1. ...") and sentence-pair lines ("S1: ...") take the token for their number
       stem = stem.split("\n").map((ln) => {
-        const mt = ln.match(/^(\d)\.\s/);
+        const mt = ln.match(/^(?:(\d)\.|S(\d)\s*:)\s/);
         if (!mt) return ln;
-        const tok = m[mt[1]];
+        const tok = triple[mt[1] ?? mt[2]];
         return tok ? undFirst(ln, tok) : ln;
       }).join("\n");
-    } else if (cat.underline === "errorParts") {
-      const parts = options.filter((o) => o.label !== "D").map((o) => o.text);
-      if (parts.length === 3) stem = `${und(parts[0])} ${und(parts[1])} ${und(parts[2])}.`;
-      else flags.push({ number: q.number, reason: "errorParts section needs exactly 3 labelled parts (A,B,C)" });
+    }
+    if (cat.underline === "errorParts") {
+      // Most items print three parts + "No error"; a few print FOUR parts and no "No error" (2019-2
+      // Q89/90/93/103, 2017-1 Q27). Option D is then a sentence part and belongs in the stem.
+      const dText = options.find((o) => o.label === "D")?.text ?? "";
+      const fourParts = dText !== "" && !/^\s*no\s+error\.?\s*$/i.test(dText);
+      const parts = options.filter((o) => fourParts || o.label !== "D").map((o) => o.text);
+      // The page prints the sentence's own end mark inside the last part; add "." only when it has none.
+      const end = /[.?!]\s*$/.test(parts[parts.length - 1] ?? "") ? "" : ".";
+      if (parts.length === (fourParts ? 4 : 3)) stem = `${parts.map(und).join(" ")}${end}`;
+      else flags.push({ number: q.number, reason: "errorParts section needs 3 parts + No error, or 4 parts" });
     }
 
     // ── context = directions (+ passage for passage sections) ──
     const dir = normalizeDirections(sec.directions);
+    // Most transcribed passages open with their own heading ("Passage – I", "Passage"); label only the rest.
+    const passage = (sec.passage || "").trim();
     const context = cat.passage
-      ? `${dir}\n\nPassage\n${(sec.passage || "").trim()}`
+      ? `${dir}\n\n${/^passage\b/i.test(passage) ? "" : "Passage\n"}${passage}`
       : dir;
 
     /**
