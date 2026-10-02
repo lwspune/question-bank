@@ -65,6 +65,15 @@ Used to take JEE Mains Maths from 11 to 27 noted chapters in one session. One ch
 - **A featured PYQ must not need a later page's formula.** One draft featured an electron circling inside a solenoid on the Ampère page, which needs T = 2πm/qB from the next page; it was swapped for a plain solenoid row. `notes:arc` does not catch this, so read each page's featured row against what the page has taught.
 - **Interrupted agents resume from their transcript:** send the agent's id a message naming the files already written; it finishes the rest.
 
+**Fourth run: CDS English — check every row against its printed page first (2026-10-02).** The source was transcribed from scanned papers, and chapter-sliced prep agents had page-checked only the rows they doubted. An every-row check found 441 defects in 2,400 rows (145 wrong keys, mostly derived from corrupted text: sentences swapped between labels, options from the neighbouring item, parts shifted by one). What changed in the method, so it was faster without being looser:
+- **Slice by PAPER, not chapter.** A printed page holds rows of three or four chapters; per-paper agents read each page once. 20 papers ran as 20 agents, ≤9 live.
+- **One pass, not two.** The agent writes its answers before opening the keys, then a dry-run-validated fix spec and a 120-line ledger. The main session still re-derives every key change and opens the page image when an option claim is doubtful (2024-1 Q32: the agent read the page right but left the option fix out of its spec).
+- **Cheap prechecks point agents at likely defects** (solution letter ≠ key, internal notes, duplicate options, "underlined" directions over a stem with no underline); they are starting points, never a sample.
+- **Agents must test every printed option for an ordering key** — one claimed "only (b) keeps Q-S together" when (c) did too and was better.
+- **Structural fixes go to the source, then `sync-rows.ts --changed`** moves every affected row in place; it never writes solutions (several are hand-rewritten on purpose). A source passage can be SHORTER than the bank (2024-1): check context before any sync, or the rebuild deletes text.
+- **Scratch files need a per-agent prefix** — two agents overwrote each other's `m.txt`.
+Tools and briefs: `scripts/notes-pipeline/cds-en/` (README there).
+
 **Tools live in `scripts/notes-pipeline/jee/` (tracked; README there):** `dump.ts`, `read.js`, `list.js`, `qnat.ts`, `src.py`, `fix.ts`, `recut.js`, `del-empty-sub.mts`, `sync-classification.mts`, `duphash.mts`, `tag-chapter.ts`, `apply-chapter.sh`, `register.py`, `probe.sh`. Run them from the repo root. Their WORKING DATA (chapter dumps `_jee_<code>.json`, fix specs `_fix-jee-<code>.ts`, re-cut plans, tag specs) stays in `generated-papers/`, which is gitignored.
 
 **Prompt skeletons** (fill in chapter, code, slug prefixes and any chapter-specific traps):
