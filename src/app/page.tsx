@@ -28,6 +28,8 @@ import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
 import { countSummary } from "@/lib/exam/questionCounts";
 import { examCardAnchor, homeExamChips } from "@/lib/exam/homeChips";
 import HomeExamChips from "@/components/home/HomeExamChips";
+import HowItWorks from "@/components/HowItWorks";
+import { loopFor } from "@/lib/education/howItWorks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { groupExamFamilies, familyTotal, membersByStage } from "@/lib/exam/examFamily";
@@ -254,6 +256,25 @@ export default async function Home() {
               Explore the guides
             </Link>
           </div>
+        </section>
+
+        {/* A9: the loop /start teaches, rendered from the same object so it
+            cannot describe a loop the app does not have. /start had one
+            signed-in viewer in the week to 2026-10-02. */}
+        <section className="mb-12" aria-labelledby="how-it-works">
+          <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
+            <h2 id="how-it-works" className="text-xl font-semibold tracking-tight sm:text-2xl">
+              How it works
+            </h2>
+            <Link
+              href="/start"
+              className="inline-flex items-center gap-1 rounded text-sm font-medium text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
+              More on this
+              <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+            </Link>
+          </div>
+          <HowItWorks loop={loopFor(null)} compact />
         </section>
 
         {/* Exam catalog — the pick-your-exam front door */}
