@@ -1,43 +1,67 @@
 /**
- * Apply adjudicated CDS English key fixes found during the /notes pass — bank AND source together,
- * row id kept.
+ * Apply adjudicated CDS English repairs found during the /notes pass — source edited, row rebuilt
+ * through the REAL commit pipeline, bank row updated IN PLACE (id kept).
  *
  *   npx tsx scripts/cds/apply-notes-fixes.ts <spec.json>           # dry run
  *   npx tsx scripts/cds/apply-notes-fixes.ts <spec.json> --apply   # write
  *
- * spec: [{ "id": "<full uuid>", "paper": "2023-1", "q": 61, "from": "B", "to": "C",
- *          "reasoning": "<new solution reasoning>", "why": "<adjudication>",
- *          "options": { "A": "...", ... }   // OPTIONAL: printed option texts, ONLY when read off the page
- *       }]
+ * spec: [{ "id": "<full uuid>", "paper": "2018-1", "q": 34,
+ *          "verdict": "key_fixed" | "stem_fixed" | "solution_rewritten",
+ *          "from": "C",                         // REQUIRED when `set.answer` changes the key: the bank's current key
+ *          "set": { "answer": "B", "reasoning": "...", "stem": "...",
+ *                   "options": { "B": "composed", "D": "heedless" },   // printed text, read off the page
+ *                   "underline": "anxious" },    // single-underline token (underlines.json)
+ *          "why": "<adjudication, with the page evidence>" }]
  *
- * WHY NOT fix-keys.ts OR apply-key-fixes.ts. fix-keys.ts flips the key in the bank only, so the
- * source <paper>.questions.json still hashes to the OLD row and the next `resync.ts` would delete
- * the fixed row as stale. apply-key-fixes.ts edits the source only, so a re-commit mints a NEW row
- * (new uuid) and leaves concept tags and 20 mocks pointing at the old one. This does both, in place:
- *   - bank: options.is_correct (and printed option text when given), questions.solution
- *     ("Answer: X. reasoning", the lib.ts template) and content_hash re-stamped with the real
- *     contentHash helper over the corrected content;
- *   - source: the row's answer, reasoning and (when given) option texts;
- *   - question_reviews: one key_fixed row stamped with the NEW hash (run "notes:cds-english").
- * So `resync.ts <paper>` stays a no-op afterwards (run it dry to prove that).
+ * WHY THIS SHAPE. `content_hash` covers stem + options + answer, and for CDS English the stored stem
+ * is BUILT (underline markup, error-part stems rebuilt from option text — lib.ts buildRecords). Editing
+ * the bank directly would drift from what the source implies; re-committing mints a NEW uuid and
+ * orphans concept tags and 20 mock refs. So: edit <paper>.questions.json / underlines.json, rebuild the
+ * paper with buildRecords → normalizeNewlines → validateRow (exactly resync.ts's pipeline), take the
+ * rebuilt row, and write its text, solution, options and content_hash onto the EXISTING bank row.
+ * `resync.ts <paper>` is then a no-op, which the run checks for every paper it touched.
+ * One question_reviews row per fix, stamped with the NEW hash (run "notes:cds-english").
  *
- * Guards, all before any write: the bank row must join to (paper, q) by source_file and
- * question_number; its current key must equal `from` (a row already at `to` with matching options is
- * a no-op); `to` must be a real option; given option texts must cover A-D. Mis-slot repairs (option
- * text moved between letters) must come from the printed page — see the defect class in README.md.
+ * Mis-slot / option-text repairs must come from the PRINTED PAGE (README "the defect class").
  */
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { contentHash } from "../../src/lib/upload/hash";
+import { validateRow } from "../../src/lib/upload/validate";
+import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { recordReviews, formatRecordResult } from "../../src/lib/reviews/service";
 import type { ReviewInput } from "../../src/lib/reviews/record";
+import { buildRecords, normalizeQuestions, type Section, type Underlines } from "./lib";
 import { EXAM_ID, dataPath, requirePaper } from "./config";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
-type Fix = { id: string; paper: string; q: number; from: string; to: string; reasoning: string; why: string; options?: Record<string, string> };
+type Fix = {
+  id: string; paper: string; q: number; verdict: "key_fixed" | "stem_fixed" | "solution_rewritten"; from?: string; why: string;
+  set: { answer?: string; reasoning?: string; stem?: string; options?: Record<string, string>; underline?: string };
+};
 const RUN_LABEL = "notes:cds-english";
+type Src = { qPath: string; qRaw: string; list: any[]; uPath: string; uRaw: string | null; underlines: Underlines; sections: Section[] };
+
+function writeLike(path: string, raw: string, data: unknown, indent: number) {
+  let out = JSON.stringify(data, null, indent);
+  if (/\n$/.test(raw)) out += "\n";
+  if (raw.includes("\r\n")) out = out.replace(/\n/g, "\r\n");
+  writeFileSync(path, out, "utf8");
+}
+const indentOf = (raw: string) => (raw.match(/\n( +)"/)?.[1].length ?? 1);
+
+function rebuild(src: Src, q: number) {
+  const { rows } = buildRecords(src.sections, normalizeQuestions(src.list), src.underlines);
+  const r = rows.find((x) => Number(x.questionNumber) === q);
+  if (!r) throw new Error(`Q${q}: no row built`);
+  r.question = normalizeNewlines(r.question);
+  if (r.context) r.context = normalizeNewlines(r.context);
+  if (r.solution) r.solution = normalizeNewlines(r.solution);
+  const v = validateRow(r);
+  if (v.errors.length || !v.parsed) throw new Error(`Q${q} does not validate: ${v.errors.join("; ")}`);
+  return v.parsed;
+}
 
 async function main() {
   const specPath = process.argv[2];
@@ -46,75 +70,82 @@ async function main() {
   const fixes: Fix[] = JSON.parse(readFileSync(specPath, "utf8"));
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
 
-  type Plan = { fix: Fix; text: string; opts: { label: string; text: string }[]; hash: string; solution: string };
+  const srcs = new Map<string, Src>();
+  const load = (pid: string): Src => {
+    if (!srcs.has(pid)) {
+      const qPath = dataPath(pid, "questions"), uPath = dataPath(pid, "underlines");
+      const qRaw = readFileSync(qPath, "utf8");
+      const uRaw = existsSync(uPath) ? readFileSync(uPath, "utf8") : null;
+      srcs.set(pid, {
+        qPath, qRaw, list: JSON.parse(qRaw), uPath, uRaw, underlines: uRaw ? JSON.parse(uRaw) : {},
+        sections: JSON.parse(readFileSync(dataPath(pid, "sections"), "utf8")),
+      });
+    }
+    return srcs.get(pid)!;
+  };
+
+  type Plan = { fix: Fix; parsed: ReturnType<typeof rebuild> };
   const plans: Plan[] = [];
-  const files = new Map<string, { path: string; raw: string; list: any[] }>();
   for (const fix of fixes) {
     const paper = requirePaper(fix.paper);
-    const { data: q, error } = await db.from("questions")
-      .select("id, exam_id, text, content_hash, source_file, question_number, options(label, text, is_correct)")
-      .eq("id", fix.id).single();
-    if (error || !q) throw new Error(`${fix.id}: ${error?.message ?? "not found"}`);
-    if (q.exam_id !== EXAM_ID || q.source_file !== paper.sourceFile || Number(q.question_number) !== fix.q) {
-      throw new Error(`${fix.id}: does not join to ${fix.paper} Q${fix.q} (${q.source_file} Q${q.question_number})`);
+    if (!fix.why?.trim()) throw new Error(`${fix.id}: why is required`);
+    const { data: b, error } = await db.from("questions")
+      .select("id, exam_id, source_file, question_number, content_hash, options(label, is_correct)").eq("id", fix.id).single();
+    if (error || !b) throw new Error(`${fix.id}: ${error?.message ?? "not found"}`);
+    if (b.exam_id !== EXAM_ID || b.source_file !== paper.sourceFile || Number(b.question_number) !== fix.q) {
+      throw new Error(`${fix.id}: does not join to ${fix.paper} Q${fix.q} (${b.source_file} Q${b.question_number})`);
     }
-    const stored = ((q.options ?? []) as any[]).sort((a, b) => a.label.localeCompare(b.label));
-    const current = stored.filter((o) => o.is_correct).map((o) => o.label);
-    if (fix.options && Object.keys(fix.options).sort().join("") !== stored.map((o) => o.label).join("")) {
-      throw new Error(`${fix.id}: given options must cover exactly ${stored.map((o) => o.label).join("")}`);
+    const bankKey = ((b.options ?? []) as any[]).filter((o) => o.is_correct).map((o) => o.label).join("");
+
+    const src = load(paper.id);
+    const row = src.list.find((x) => Number(x.number) === fix.q);
+    if (!row) throw new Error(`${fix.paper} Q${fix.q}: not in ${src.qPath}`);
+    const s = fix.set;
+    if (s.answer !== undefined && String(row.answer).toUpperCase() !== s.answer) {
+      if (!fix.from) throw new Error(`${fix.id}: a key change needs "from"`);
+      if (bankKey !== fix.from) throw new Error(`${fix.id}: bank key is ${bankKey}, expected ${fix.from}`);
+      row.answer = s.answer;
     }
-    const opts = stored.map((o) => ({ label: o.label, text: fix.options?.[o.label] ?? o.text }));
-    if (!opts.some((o) => o.label === fix.to)) throw new Error(`${fix.id}: no option ${fix.to}`);
-    const optsSame = opts.every((o, i) => o.text === stored[i].text);
-    if (current.length === 1 && current[0] === fix.to && optsSame) { console.log(`= ${fix.paper} Q${fix.q} already ${fix.to}`); continue; }
-    if (current.length !== 1 || current[0] !== fix.from) throw new Error(`${fix.id}: expected key ${fix.from}, found [${current.join(",")}]`);
-    if (!fix.reasoning?.trim() || !fix.why?.trim()) throw new Error(`${fix.id}: reasoning and why are required`);
-
-    const hash = contentHash(q.text as string, opts.map((o) => o.text), fix.to);
-    const solution = `Answer: ${fix.to}. ${fix.reasoning.trim()}`;
-    plans.push({ fix, text: q.text as string, opts, hash, solution });
-
-    const fp = dataPath(paper.id, "questions");
-    if (!files.has(fp)) { const raw = readFileSync(fp, "utf8"); files.set(fp, { path: fp, raw, list: JSON.parse(raw) }); }
-    const row = files.get(fp)!.list.find((x) => Number(x.number) === fix.q);
-    if (!row) throw new Error(`${fix.paper} Q${fix.q}: not in ${fp}`);
-    if (String(row.answer).toUpperCase() !== fix.from && String(row.answer).toUpperCase() !== fix.to) {
-      throw new Error(`${fix.paper} Q${fix.q}: source answer is ${row.answer}, expected ${fix.from}`);
+    if (s.reasoning !== undefined) row.reasoning = s.reasoning.trim();
+    if (s.stem !== undefined) row.stem = s.stem;
+    if (s.options) for (const [label, text] of Object.entries(s.options)) {
+      const o = row.options.find((x: any) => x.label === label);
+      if (!o) throw new Error(`${fix.id}: no option ${label} in source`);
+      o.text = text;
     }
-    row.answer = fix.to;
-    row.reasoning = fix.reasoning.trim();
-    if (fix.options) for (const o of row.options) if (fix.options[o.label] !== undefined) o.text = fix.options[o.label];
-
-    console.log(`${fix.paper} Q${fix.q} (${fix.id.slice(0, 8)})  ${fix.from} -> ${fix.to}${fix.options ? "  + printed option text" : ""}`);
+    if (s.underline !== undefined) {
+      src.underlines.single = { ...(src.underlines.single ?? {}), [String(fix.q)]: s.underline };
+    }
+    const parsed = rebuild(src, fix.q);
+    plans.push({ fix, parsed });
+    const key = parsed.options.filter((o) => o.isCorrect).map((o) => o.label).join("");
+    console.log(`${fix.paper} Q${fix.q} (${fix.id.slice(0, 8)}) ${fix.verdict}: key ${bankKey} -> ${key}; hash ${String(b.content_hash).slice(0, 10)} -> ${parsed.contentHash.slice(0, 10)}`);
     console.log(`  ${fix.why}`);
   }
 
-  console.log(`\n${plans.length} fix(es) to apply`);
+  console.log(`\n${plans.length} fix(es)`);
   if (!apply) return console.log("dry run — add --apply to write");
 
   const reviews: ReviewInput[] = [];
-  for (const p of plans) {
-    for (const o of p.opts) {
-      const { error } = await db.from("options")
-        .update({ is_correct: o.label === p.fix.to, text: o.text })
-        .eq("question_id", p.fix.id).eq("label", o.label);
-      if (error) throw new Error(`${p.fix.id} option ${o.label}: ${error.message}`);
+  for (const { fix, parsed } of plans) {
+    for (const o of parsed.options) {
+      const { error } = await db.from("options").update({ text: o.text, is_correct: o.isCorrect }).eq("question_id", fix.id).eq("label", o.label);
+      if (error) throw new Error(`${fix.id} option ${o.label}: ${error.message}`);
     }
-    const { error } = await db.from("questions").update({ content_hash: p.hash, solution: p.solution }).eq("id", p.fix.id);
-    if (error) throw new Error(`${p.fix.id}: ${error.message}`);
+    const { error } = await db.from("questions")
+      .update({ text: parsed.text, solution: parsed.solution ?? null, content_hash: parsed.contentHash }).eq("id", fix.id);
+    if (error) throw new Error(`${fix.id}: ${error.message}`);
     reviews.push({
-      questionId: p.fix.id, reviewedContentHash: p.hash, method: "blind_rederivation", verdict: "key_fixed",
-      runLabel: RUN_LABEL, derivedModel: "claude-opus-5", note: p.fix.why.slice(0, 480),
+      questionId: fix.id, reviewedContentHash: parsed.contentHash, method: "blind_rederivation", verdict: fix.verdict,
+      runLabel: RUN_LABEL, derivedModel: "claude-opus-5", note: fix.why.slice(0, 480),
     });
   }
-  for (const f of files.values()) {
-    let out = JSON.stringify(f.list, null, 1);
-    if (/\n$/.test(f.raw)) out += "\n";
-    if (f.raw.includes("\r\n")) out = out.replace(/\n/g, "\r\n");
-    writeFileSync(f.path, out, "utf8");
+  for (const s of srcs.values()) {
+    writeLike(s.qPath, s.qRaw, s.list, indentOf(s.qRaw));
+    if (s.uRaw !== null) writeLike(s.uPath, s.uRaw, s.underlines, indentOf(s.uRaw));
   }
   console.log(formatRecordResult(await recordReviews(db, reviews)));
-  console.log(`applied ${plans.length}; now run: npx tsx scripts/cds/resync.ts <paper> (dry) for each paper touched — it must report 0 stale rows`);
+  console.log(`applied ${plans.length}. Check: npx tsx scripts/cds/resync.ts <paper> for ${[...srcs.keys()].join(", ")} — each must read "in sync".`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
