@@ -27,6 +27,14 @@
  * coalesces a missing surface to 'bank', which is true of every row written
  * before today.
  *
+ * RIGHT OR WRONG (2026-10-02). A bank reveal that came from TAPPING an option
+ * arrives with `picks` ({questionId: "A"–"D"}). The route reads the key and
+ * grades it here — never trusting the browser's verdict, for the drill's reason
+ * — and the verdict rides on the reveal row, with `answer_wrong` /
+ * `answer_correct` written beside it as drill fuel. Bank only for now (the
+ * board reader is a separate decision); picks from another surface are
+ * recorded as plain reveals. Pure core and the row rules: lib/questions/bankVerdict.
+ *
  * Responses are deliberately terse (204/400/401): this is fire-and-forget from
  * sendBeacon, where nothing reads the body.
  */
@@ -35,9 +43,16 @@ import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { checkAndIncrement } from "@/lib/rate-limit";
-import { logActivityBatch } from "@/lib/activity/service";
-import { parsePracticeBatch } from "@/lib/questions/practiceBatch";
-import type { ActivityEvent } from "@/lib/activity/events";
+import { logActivityBatch, logActivityBatchOnce } from "@/lib/activity/service";
+import { parsePracticeBatch, type BatchPicks } from "@/lib/questions/practiceBatch";
+import {
+  correctlyAnsweredIds,
+  gradePicks,
+  practiceEvents,
+  type AnswerKey,
+  type PickVerdict,
+} from "@/lib/questions/bankVerdict";
+import type { SupabaseClient } from "@supabase/supabase-js";
 
 /** Generous for a real reader, tight enough to bound a scripted client. */
 const LIMIT_PER_HOUR = 120;
@@ -71,18 +86,79 @@ export async function POST(request: NextRequest) {
   const parsed = parsePracticeBatch(raw);
   if (!parsed.ok) return NextResponse.json({ error: parsed.error }, { status: 400 });
 
-  const events: ActivityEvent[] = parsed.ids.map((questionId) => ({
-    kind: "question_practiced",
-    refId: questionId,
-    refKind: "question",
-    // Written on EVERY row, including the bank's, so a row is self-describing
-    // rather than meaningful only by the absence of a field.
-    metadata: { surface: parsed.surface },
-  }));
+  // Through the user's JWT throughout: PUBLIC questions and options are
+  // readable by any signed-in user, user_activity is own-row under RLS, and
+  // this is the student's own action.
+  const db = createSupabaseServerClient();
 
-  // Through the user's JWT: user_activity is own-row insert under RLS, and this
-  // is the student's own action. Best-effort — logActivityBatch never throws.
-  await logActivityBatch(createSupabaseServerClient(), user.id, events);
+  let verdicts = new Map<string, PickVerdict>();
+  let priorWrongIds = new Set<string>();
+  if (parsed.surface === "bank" && Object.keys(parsed.picks).length > 0) {
+    try {
+      verdicts = gradePicks(parsed.picks, await readAnswerKeys(db, parsed.picks));
+      priorWrongIds = await readPriorWrongIds(db, user.id, correctlyAnsweredIds(verdicts));
+    } catch (e) {
+      // A failed grade must not cost the reveal: record it plain, as before.
+      console.error("bank verdict grade failed", e);
+      verdicts = new Map();
+      priorWrongIds = new Set();
+    }
+  }
+
+  // Every row carries its surface, including the bank's, so a row is
+  // self-describing rather than meaningful only by the absence of a field.
+  const { reveals, ladder } = practiceEvents({
+    ids: parsed.ids,
+    surface: parsed.surface,
+    verdicts,
+    priorWrongIds,
+    userId: user.id,
+    now: new Date(),
+  });
+
+  // Best-effort — both writers never throw. The ladder rows are deduped per
+  // question per IST day; a dropped one fails safe (the question stays due).
+  await logActivityBatch(db, user.id, reveals);
+  await logActivityBatchOnce(db, user.id, ladder);
 
   return new NextResponse(null, { status: 204 });
+}
+
+/** The key for each picked question, read at grade time. ≤50 ids (the batch
+ *  cap), well under the ~200 an `.in()` filter can carry in a URL. */
+async function readAnswerKeys(db: SupabaseClient, picks: BatchPicks): Promise<Map<string, AnswerKey>> {
+  const ids = Object.keys(picks);
+  const { data, error } = await db
+    .from("questions")
+    .select("id, question_format, cancelled_note, options(label, is_correct)")
+    .eq("visibility", "PUBLIC")
+    .in("id", ids);
+  if (error) throw new Error(`readAnswerKeys: ${error.message}`);
+  const out = new Map<string, AnswerKey>();
+  for (const row of (data ?? []) as {
+    id: string;
+    question_format: string | null;
+    cancelled_note: string | null;
+    options: { label: string; is_correct: boolean }[] | null;
+  }[]) {
+    out.set(row.id, {
+      format: row.question_format,
+      cancelled: row.cancelled_note !== null,
+      options: (row.options ?? []).map((o) => ({ label: o.label, isCorrect: o.is_correct })),
+    });
+  }
+  return out;
+}
+
+/** Which of these questions the student has missed before (any surface). */
+async function readPriorWrongIds(db: SupabaseClient, userId: string, ids: string[]): Promise<Set<string>> {
+  if (ids.length === 0) return new Set();
+  const { data, error } = await db
+    .from("user_activity")
+    .select("ref_id")
+    .eq("user_id", userId)
+    .eq("kind", "answer_wrong")
+    .in("ref_id", ids);
+  if (error) throw new Error(`readPriorWrongIds: ${error.message}`);
+  return new Set(((data ?? []) as { ref_id: string }[]).map((r) => r.ref_id));
 }

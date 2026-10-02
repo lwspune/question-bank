@@ -764,11 +764,11 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
   },
   {
     surface: "Question bank (/browse, /questions)",
-    via: "user_activity via the reveal beacon (surface='bank')",
-    kinds: ["question_practiced"],
+    via: "user_activity via the reveal beacon (surface='bank'); a tapped option is graded server-side from 2026-10-02",
+    kinds: ["question_practiced", "answer_wrong", "answer_correct"],
     practiceSurface: "bank",
     tracked: "partial",
-    lost: "Only a SIGNED-IN student's answer reveals are recorded. Anonymous visitors — most of the traffic, and the whole point of the 317 landing pages — leave nothing, by design: attributing them over time would need a persistent device id, on an audience that is largely under 18.",
+    lost: "Only a SIGNED-IN student's answer reveals are recorded. A reveal from a tapped option carries its verdict (metadata.chose/correct) only from 2026-10-02; earlier reveals have none, and a reveal via 'Show solution' never does. Anonymous visitors — most of the traffic, and the whole point of the 317 landing pages — leave nothing, by design: attributing them over time would need a persistent device id, on an audience that is largely under 18.",
   },
   {
     surface: "Board reader (/board)",

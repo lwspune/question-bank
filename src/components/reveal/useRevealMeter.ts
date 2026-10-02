@@ -5,7 +5,7 @@ import { useSignedIn } from "@/components/auth/useSignedIn";
 import { revealDecision, isRevealLocked, FREE_REVEAL_LIMIT } from "@/lib/questions/revealMeter";
 import { recordPractice } from "./practiceBeacon";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
-import type { PracticeSurface } from "@/lib/questions/practiceBatch";
+import type { PickLabel, PracticeSurface } from "@/lib/questions/practiceBatch";
 
 const KEY = "qb_revealed";
 
@@ -100,8 +100,10 @@ export function useRevealMeter(surface: PracticeSurface, examName: string) {
   const { signedIn, loading } = useSignedIn();
   const ids = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
+  /** `chose`: the option tapped, when this reveal is an answer — graded on the
+   *  server (bank verdicts, 2026-10-02). Omitted for a "Show solution" reveal. */
   const attemptReveal = useCallback(
-    (questionId: string): boolean => {
+    (questionId: string, chose?: PickLabel): boolean => {
       // Don't gate before auth resolves — a signed-in user must never be walled
       // by a brief loading window.
       if (loading) return true;
@@ -112,7 +114,7 @@ export function useRevealMeter(surface: PracticeSurface, examName: string) {
       // no-ops for anon. This is the ONLY place the bank or the board reader
       // tells the server it was used; everything else about /browse,
       // /questions and /board is invisible by construction.
-      if (decision.allow) recordPractice(questionId, signedIn, surface);
+      if (decision.allow) recordPractice(questionId, signedIn, surface, chose);
       // The wall bit: an anon viewer has spent their free reveals and is about
       // to meet RevealSignInPrompt. This is the sharpest conversion moment in
       // the product and, until now, the only one that emitted nothing at all —

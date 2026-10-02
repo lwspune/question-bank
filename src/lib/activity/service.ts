@@ -74,3 +74,32 @@ export async function logActivityOnce(
     console.error("logActivityOnce threw", e);
   }
 }
+
+/**
+ * The batch form of `logActivityOnce`: one upsert, ON CONFLICT DO NOTHING per
+ * dedupe_key. Events without a key are dropped with a logged error rather than
+ * inserted, because a caller reaching for this wants AT MOST ONCE, and a keyless
+ * row would quietly become "every time". Best-effort — never throws.
+ */
+export async function logActivityBatchOnce(
+  db: SupabaseClient,
+  userId: string,
+  events: ActivityEvent[],
+  nowMs: number = Date.now()
+): Promise<void> {
+  const keyed = events.filter((e) => e.dedupeKey);
+  if (keyed.length !== events.length) {
+    console.error("logActivityBatchOnce: dropped events with no dedupeKey", events.length - keyed.length);
+  }
+  if (keyed.length === 0) return;
+  try {
+    const nowIso = new Date(nowMs).toISOString();
+    const rows = keyed.map((e) => buildActivityRow(userId, e, nowIso));
+    const { error } = await db
+      .from("user_activity")
+      .upsert(rows, { onConflict: "dedupe_key", ignoreDuplicates: true });
+    if (error) console.error("logActivityBatchOnce upsert failed", error.message);
+  } catch (e) {
+    console.error("logActivityBatchOnce threw", e);
+  }
+}

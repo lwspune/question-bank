@@ -12,7 +12,7 @@ import type { ActivityKind } from "./events";
 export const KIND_LABELS: Record<ActivityKind, string> = {
   mock_submitted: "Mock completed",
   mock_started: "Mock opened",
-  answer_wrong: "Mock question missed",
+  answer_wrong: "Question missed",
   // "Recovered", not "correct": this fires only for a question the student
   // had previously missed. See ACTIVITY_KINDS in events.ts.
   answer_correct: "Question recovered",

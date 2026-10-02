@@ -4,6 +4,7 @@ import {
   addToBatch,
   PRACTICE_BATCH_MAX,
   DEFAULT_PRACTICE_SURFACE,
+  type PickLabel,
   type PracticeSurface,
 } from "@/lib/questions/practiceBatch";
 
@@ -37,14 +38,25 @@ const ENDPOINT = "/api/activity/practice";
 const FLUSH_DEBOUNCE_MS = 5000;
 
 const queues = new Map<PracticeSurface, string[]>();
+/** The option tapped, for reveals that came from a tap (bank verdicts,
+ *  2026-10-02). Kept beside the id queue, not in it, so `addToBatch` and the
+ *  server's id list stay exactly as they were. */
+const picks = new Map<PracticeSurface, Map<string, PickLabel>>();
 const sent = new Set<string>();
 let timer: ReturnType<typeof setTimeout> | null = null;
 let listening = false;
 
-function payload(ids: readonly string[], surface: PracticeSurface): Blob {
-  return new Blob([JSON.stringify({ questionIds: ids, surface })], {
-    type: "application/json",
-  });
+/** The request body. `picks` only names ids still in the batch: the parser
+ *  rejects a pick with no reveal beside it. */
+function body(ids: readonly string[], surface: PracticeSurface, tapped: ReadonlyMap<string, PickLabel>): string {
+  const sentPicks: Record<string, PickLabel> = {};
+  for (const id of ids) {
+    const label = tapped.get(id);
+    if (label) sentPicks[id] = label;
+  }
+  return JSON.stringify(
+    Object.keys(sentPicks).length > 0 ? { questionIds: ids, surface, picks: sentPicks } : { questionIds: ids, surface }
+  );
 }
 
 /** Send whatever is queued, one request per surface. `useBeacon` for page-hide. */
@@ -57,22 +69,25 @@ function flush(useBeacon: boolean): void {
   // Drain BEFORE sending: a send that throws must not leave the same ids queued
   // to be sent again on the next flush.
   const pending = [...queues.entries()];
+  const pendingPicks = new Map(picks);
   queues.clear();
+  picks.clear();
   for (const [surface, ids] of pending) {
-    if (ids.length > 0) send(ids, surface, useBeacon);
+    if (ids.length > 0) send(body(ids, surface, pendingPicks.get(surface) ?? new Map()), useBeacon);
   }
 }
 
-function send(ids: readonly string[], surface: PracticeSurface, useBeacon: boolean): void {
+function send(json: string, useBeacon: boolean): void {
   try {
     if (useBeacon && typeof navigator !== "undefined" && navigator.sendBeacon) {
-      navigator.sendBeacon(ENDPOINT, payload(ids, surface));
+      // A Blob with an explicit JSON type: a bare string would go as text/plain.
+      navigator.sendBeacon(ENDPOINT, new Blob([json], { type: "application/json" }));
       return;
     }
     void fetch(ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ questionIds: ids, surface }),
+      body: json,
       keepalive: true,
     }).catch(() => {
       /* a lost practice signal is not worth surfacing to a student */
@@ -99,11 +114,18 @@ function ensureListeners(): void {
  *
  * `surface` defaults to the bank so the two original callers (/browse, /board)
  * read exactly as before.
+ *
+ * `chose` is the option tapped, when the reveal came from a tap; the server
+ * grades it. FIRST ACT ONLY, by construction: `sent` admits one reveal per
+ * question per surface per page session, so a pick after "Show solution", or a
+ * second pick after collapsing and re-opening the card, records no verdict —
+ * neither is an attempt.
  */
 export function recordPractice(
   questionId: string,
   signedIn: boolean,
-  surface: PracticeSurface = DEFAULT_PRACTICE_SURFACE
+  surface: PracticeSurface = DEFAULT_PRACTICE_SURFACE,
+  chose?: PickLabel
 ): void {
   if (!signedIn || !questionId) return;
   const key = `${surface}:${questionId}`;
@@ -113,6 +135,11 @@ export function recordPractice(
   ensureListeners();
   const next = addToBatch(queues.get(surface) ?? [], questionId);
   queues.set(surface, next);
+  if (chose) {
+    const tapped = picks.get(surface) ?? new Map<string, PickLabel>();
+    tapped.set(questionId, chose);
+    picks.set(surface, tapped);
+  }
 
   // A full queue goes now rather than waiting out the debounce — otherwise the
   // oldest ids would start falling off the end of the batch unsent. This flushes
