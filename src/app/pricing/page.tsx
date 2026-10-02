@@ -72,7 +72,15 @@ export default async function PricingPage({
             No passes are on sale right now.
           </p>
         ) : (
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
+          // One pass on sale (2026-10-01) gets one centred column; two keep the
+          // side-by-side grid. The catalogue is data, so the layout follows it.
+          <div
+            className={
+              plans.length === 1
+                ? "mx-auto mt-8 grid max-w-md gap-6"
+                : "mt-8 grid gap-6 md:grid-cols-2"
+            }
+          >
             {plans.map((plan) => {
               const key = plan.urlKey;
               const isHighlighted = highlighted === key;
