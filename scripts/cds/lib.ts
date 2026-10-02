@@ -200,9 +200,13 @@ export function buildRecords(
         return tok ? undFirst(ln, tok) : ln;
       }).join("\n");
     } else if (cat.underline === "errorParts") {
-      const parts = options.filter((o) => o.label !== "D").map((o) => o.text);
-      if (parts.length === 3) stem = `${und(parts[0])} ${und(parts[1])} ${und(parts[2])}.`;
-      else flags.push({ number: q.number, reason: "errorParts section needs exactly 3 labelled parts (A,B,C)" });
+      // Most items print three parts + "No error"; a few print FOUR parts and no "No error" (2019-2
+      // Q89/90/93/103, 2017-1 Q27). Option D is then a sentence part and belongs in the stem.
+      const dText = options.find((o) => o.label === "D")?.text ?? "";
+      const fourParts = dText !== "" && !/^\s*no\s+error\.?\s*$/i.test(dText);
+      const parts = options.filter((o) => fourParts || o.label !== "D").map((o) => o.text);
+      if (parts.length === (fourParts ? 4 : 3)) stem = `${parts.map(und).join(" ")}.`;
+      else flags.push({ number: q.number, reason: "errorParts section needs 3 parts + No error, or 4 parts" });
     }
 
     // ── context = directions (+ passage for passage sections) ──

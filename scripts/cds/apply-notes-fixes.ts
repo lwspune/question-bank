@@ -41,7 +41,9 @@ type Fix = {
   set: { answer?: string; reasoning?: string; stem?: string; options?: Record<string, string>; underline?: string };
 };
 const RUN_LABEL = "notes:cds-english";
-type Src = { qPath: string; qRaw: string; list: any[]; uPath: string; uRaw: string | null; underlines: Underlines; sections: Section[] };
+type Src = { qPath: string; qRaw: string; list: any[]; uPath: string; uRaw: string | null; underlines: Underlines; sections: Section[]; uEdits: { key: string; from: string; to: string }[] };
+
+const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 function writeLike(path: string, raw: string, data: unknown, indent: number) {
   let out = JSON.stringify(data, null, indent);
@@ -49,7 +51,9 @@ function writeLike(path: string, raw: string, data: unknown, indent: number) {
   if (raw.includes("\r\n")) out = out.replace(/\n/g, "\r\n");
   writeFileSync(path, out, "utf8");
 }
-const indentOf = (raw: string) => (raw.match(/\n( +)"/)?.[1].length ?? 1);
+// The indent of the FIRST nested line ("[\n {" → 1, "{\n  \"single\"" → 2). Matching the first
+// `"`-led line instead read a depth-2 key in the 1-space questions files and re-indented them all.
+const indentOf = (raw: string) => (raw.match(/^[[{]\r?\n( +)/)?.[1].length ?? 1);
 
 function rebuild(src: Src, q: number) {
   const { rows } = buildRecords(src.sections, normalizeQuestions(src.list), src.underlines);
@@ -77,7 +81,7 @@ async function main() {
       const qRaw = readFileSync(qPath, "utf8");
       const uRaw = existsSync(uPath) ? readFileSync(uPath, "utf8") : null;
       srcs.set(pid, {
-        qPath, qRaw, list: JSON.parse(qRaw), uPath, uRaw, underlines: uRaw ? JSON.parse(uRaw) : {},
+        qPath, qRaw, list: JSON.parse(qRaw), uPath, uRaw, underlines: uRaw ? JSON.parse(uRaw) : {}, uEdits: [],
         sections: JSON.parse(readFileSync(dataPath(pid, "sections"), "utf8")),
       });
     }
@@ -114,7 +118,11 @@ async function main() {
       o.text = text;
     }
     if (s.underline !== undefined) {
-      src.underlines.single = { ...(src.underlines.single ?? {}), [String(fix.q)]: s.underline };
+      const k = String(fix.q);
+      const prev = src.underlines.single?.[k];
+      if (prev === undefined) throw new Error(`${fix.id}: no existing single-underline token for Q${fix.q} to replace`);
+      src.uEdits.push({ key: k, from: prev, to: s.underline });
+      src.underlines.single = { ...(src.underlines.single ?? {}), [k]: s.underline };
     }
     const parsed = rebuild(src, fix.q);
     plans.push({ fix, parsed });
@@ -142,7 +150,17 @@ async function main() {
   }
   for (const s of srcs.values()) {
     writeLike(s.qPath, s.qRaw, s.list, indentOf(s.qRaw));
-    if (s.uRaw !== null) writeLike(s.uPath, s.uRaw, s.underlines, indentOf(s.uRaw));
+    // underlines.json keeps compact inline "triple" objects that JSON.stringify would expand, so only
+    // the edited "single" tokens are replaced in place.
+    if (s.uRaw !== null && s.uEdits.length) {
+      let text = s.uRaw;
+      for (const e of s.uEdits) {
+        const re = new RegExp(`("${e.key}":\\s*)${escapeRe(JSON.stringify(e.from))}`);
+        if (!re.test(text)) throw new Error(`${s.uPath}: cannot place underline key ${e.key}`);
+        text = text.replace(re, (_m, p1) => p1 + JSON.stringify(e.to));
+      }
+      writeFileSync(s.uPath, text, "utf8");
+    }
   }
   console.log(formatRecordResult(await recordReviews(db, reviews)));
   console.log(`applied ${plans.length}. Check: npx tsx scripts/cds/resync.ts <paper> for ${[...srcs.keys()].join(", ")} — each must read "in sync".`);

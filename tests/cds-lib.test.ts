@@ -93,6 +93,21 @@ describe("buildRecords", () => {
     expect(rows[0].subtopic).toBe("Subject-Verb Agreement"); // perQuestionSubtopic honoured
   });
 
+  it("builds a FOUR-part error stem when option D is a sentence part, not 'No error'", () => {
+    // 2019-2 Q89/Q90/Q93/Q103 and 2017-1 Q27 print four parts and no 'No error'. Building from A-C
+    // alone dropped part (d) from the stem, so the error the key points at was not on screen.
+    const s = [sec({ type: "spotting-errors", qFrom: 1, qTo: 1, setLabel: "S1" })];
+    const eq = q({
+      number: 1, stem: "(unused)", answer: "D", subtopic: "Word Order",
+      options: [{ label: "A", text: "Experience has shown that" }, { label: "B", text: "the change-over from a closed economy" }, { label: "C", text: "has presented" }, { label: "D", text: "in human society innumerable problems" }],
+    });
+    const { rows, flags } = buildRecords(s, [eq], {});
+    expect(rows[0].question).toBe(
+      "\\(\\underline{\\text{Experience has shown that}}\\) \\(\\underline{\\text{the change-over from a closed economy}}\\) \\(\\underline{\\text{has presented}}\\) \\(\\underline{\\text{in human society innumerable problems}}\\)."
+    );
+    expect(flags).toEqual([]);
+  });
+
   it("honours a row's own subtopic in any section, so a /notes re-cut can file it by technique", () => {
     // The section type still fixes the CHAPTER; the subtopic is a teaching choice. Without this a
     // re-cut written to <paper>.questions.json is ignored for every non-perQuestionSubtopic section.
