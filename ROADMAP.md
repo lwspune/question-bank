@@ -2273,3 +2273,22 @@ amendment, and a re-read of the 5 Economics chapters for boxes of the same shape
 History should be surveyed for the class before the rule is written — Polity has titled boxes
 (`Reigning the Reins`, `The States Plead for More Powers`) and History has `Source` boxes, and
 neither has been checked for question content.
+
+**Status 2026-10-02:** the 408 lane rows are now LIVE under ONE subject, "Social Science" (not four
+— the user's call, because CBSE sets one paper). A case-study row taken up later commits under that
+subject, and its `sections.ts` block goes inside the section the box closes, like the LW boxes.
+
+---
+
+### BACKFILL LEDGER — `cbse-10` Maths and Science chapters are in INGEST order, not book order (logged 2026-10-02)
+
+`chapters.order_index` is assigned max+1 at commit, and both `/browse` and `/board` sort by it. So
+Maths reads Real Numbers, Triangles, Statistics, Surface Areas… and Science reads Chemical
+Reactions, **Electricity**, Heredity, Our Environment… — the order the chapters were loaded in. The
+22 Social Science chapters were committed in syllabus order on purpose and are correct.
+
+**360:** scope — 27 chapter rows on one exam, nothing else. Blast radius — chapter order on
+`/browse` and `/board/cbse-10`, plus anything else that sorts on `order_index`; no ids, hashes or
+URLs move. Does it apply — yes, a student reading `/board` expects the book's order. Risk — low,
+reversible with one UPDATE per chapter. Cost — a 27-row UPDATE from each config entry's
+`chapterNo`. Recommendation — DO, but it is shipped data, so it waits for an explicit go.
