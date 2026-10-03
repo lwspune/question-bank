@@ -317,7 +317,9 @@ async function main() {
     const patch: Record<string, string | null> = {};
     if (r.figure && !q.image_url) patch.image_url = await upload(r.figure, q.org_id as string);
     if (textChanged) patch.text = text;
-    if (contextChanged) patch.context = context;
+    // A passage that was all stand-in is cleared to NULL, not "", so nothing
+    // renders an empty set banner.
+    if (contextChanged) patch.context = context === "" ? null : context;
     if (Object.keys(patch).length === 0) continue;
     const { error: uErr } = await db.from("questions").update(patch).eq("id", r.id);
     if (uErr) throw new Error(`${r.id}: ${uErr.message}`);
