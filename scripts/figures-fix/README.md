@@ -107,3 +107,4 @@ with a manifest note that starts "REDRAWN". A row may also carry only a
 | `foundation-carbon-1-options`, `foundation-matter-2`, `foundation-human-eye-1` (Foundation worksheets; option pictures from the Word original where the PDF dropped them) | 4 + 11 option pictures (prism option (d) kept as text: not in the source) | 2026-10-03 |
 | `ncert10-probability`, `ncert11-oscillations` (NCERT Class 10 Probability, Class 11 Oscillations) | 3 | 2026-10-03 |
 | `mh-hsc-12-geo-answer-fixes`, `neet-pariksha-13177-redrawn`, `jee-2025-jan28-redrawn` | 2 Geography answers corrected to the real maps; 2 REDRAWN figures (no copy of the source figure exists) | 2026-10-03 |
+| `ncert-group-c` (NCERT Class 10 Maths, Class 11 and 12 Physics; answerable rows, figure only) | 46 rows, 43 figures | 2026-10-03 |
