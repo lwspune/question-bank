@@ -17,6 +17,7 @@
  * orphan a storage object; stripping is a no-op once the prose is gone.
  */
 import { readFileSync, existsSync, writeFileSync, mkdirSync } from "node:fs";
+import { spawnSync } from "node:child_process";
 import { join, dirname } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { uploadImage } from "../../src/lib/storage/images";
@@ -44,7 +45,44 @@ type ManifestRow = {
   stripOptions?: Strip;
   note?: string;
 };
-type Manifest = { batch: string; pdf: string; figures: Record<string, FigSpec>; rows: ManifestRow[] };
+/** A single region, or several regions of the same PDF stacked top to bottom
+ *  into one image (an example that cites two printed figures). */
+type FigureEntry = FigSpec | { stack: FigSpec[] };
+type Manifest = { batch: string; pdf: string; figures: Record<string, FigureEntry>; rows: ManifestRow[] };
+
+/** Crop every figure; a stacked figure's parts are cropped, then joined into one PNG. */
+function cropAll(pdf: string, figures: Record<string, FigureEntry>, outDir: string): Record<string, string> {
+  const flat: Record<string, FigSpec> = {};
+  for (const [key, f] of Object.entries(figures)) {
+    if ("stack" in f) f.stack.forEach((part, i) => (flat[`${key}__part${i}`] = part));
+    else flat[key] = f;
+  }
+  const crops = cropFigures(pdf, flat, outDir);
+  const out: Record<string, string> = {};
+  for (const [key, f] of Object.entries(figures)) {
+    if (!("stack" in f)) {
+      out[key] = crops[key];
+      continue;
+    }
+    const parts = f.stack.map((_, i) => crops[`${key}__part${i}`]);
+    const target = join(outDir, `fig-${key.replace(/[^A-Za-z0-9]+/g, "_")}.png`);
+    const py = [
+      "import sys",
+      "from PIL import Image",
+      "ims=[Image.open(p).convert('RGB') for p in sys.argv[2:]]",
+      "w=max(i.width for i in ims); gap=24",
+      "h=sum(i.height for i in ims)+gap*(len(ims)-1)",
+      "c=Image.new('RGB',(w,h),'white'); y=0",
+      "for i in ims:",
+      "    c.paste(i,((w-i.width)//2,y)); y+=i.height+gap",
+      "c.save(sys.argv[1], optimize=True)",
+    ].join(String.fromCharCode(10));
+    const res = spawnSync("python", ["-c", py, target, ...parts], { encoding: "utf8" });
+    if (res.status !== 0) throw new Error(`stacking ${key} failed: ${res.stderr}`);
+    out[key] = target;
+  }
+  return out;
+}
 
 function applyStrip(value: string | null, strip: Strip | undefined): string | null {
   if (!value || !strip) return value;
@@ -71,7 +109,7 @@ async function main() {
   }
 
   const outDir = join(process.cwd(), "generated-papers", "figures-fix", batch);
-  const crops = cropFigures(m.pdf, m.figures, outDir);
+  const crops = cropAll(m.pdf, m.figures, outDir);
   console.log(`cropped ${Object.keys(crops).length} figure(s) -> ${outDir}`);
 
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
