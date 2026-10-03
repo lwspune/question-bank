@@ -48,6 +48,9 @@ type ManifestRow = {
   /** Option label -> new text, when the stored option text was itself a
    *  description and the printed label is all that should remain. */
   optionText?: Record<string, string>;
+  /** Same for the Marathi translation's text (question_translations, lang 'mr'),
+   *  which carries its own copy of the stand-in on bilingual exams. */
+  stripTranslation?: Strip;
   note?: string;
 };
 /** A region of the batch PDF, or an image embedded in a Word file (used when a
@@ -187,6 +190,11 @@ async function main() {
     ? await db.from("options").select("id, question_id, label, text, image_url").in("question_id", withOptions)
     : { data: [], error: null };
   if (oErr) throw new Error(oErr.message);
+  const withTr = m.rows.filter((r) => r.stripTranslation).map((r) => r.id);
+  const { data: trRows, error: tErr } = withTr.length
+    ? await db.from("question_translations").select("question_id, text").eq("lang", "mr").in("question_id", withTr)
+    : { data: [], error: null };
+  if (tErr) throw new Error(tErr.message);
 
   // Plan every change first, so a bad row stops the batch before any write.
   const plan = m.rows.map((r) => {
@@ -204,7 +212,15 @@ async function main() {
       const text = r.optionText?.[label] ?? applyStrip(o.text as string | null, r.stripOptions) ?? "";
       return { o, key, text };
     });
-    return { r, q, text, context, opts };
+    let tr: { before: string; after: string } | null = null;
+    if (r.stripTranslation) {
+      const t = (trRows ?? []).find((x) => x.question_id === r.id);
+      if (!t) throw new Error(`${r.id}: stripTranslation set but no 'mr' translation`);
+      const after = applyStrip(t.text as string, r.stripTranslation) ?? "";
+      if (!after.trim()) throw new Error(`${r.id}: stripping would empty the translation`);
+      tr = { before: t.text as string, after };
+    }
+    return { r, q, text, context, opts, tr };
   });
 
   // Keep the rows exactly as they were before the first --apply, so a batch can
@@ -212,8 +228,9 @@ async function main() {
   const backup = join(__dirname, "backup", `${batch}.before.json`);
   if (apply && !existsSync(backup)) {
     mkdirSync(dirname(backup), { recursive: true });
-    const before = plan.map(({ q, opts }) => ({
+    const before = plan.map(({ q, opts, tr }) => ({
       id: q.id,
+      ...(tr ? { translation_mr: tr.before } : {}),
       text: q.text,
       context: q.context,
       image_url: q.image_url,
@@ -237,7 +254,7 @@ async function main() {
     }
     return path;
   };
-  for (const { r, q, text, context, opts } of plan) {
+  for (const { r, q, text, context, opts, tr } of plan) {
     const textChanged = text !== q.text;
     const contextChanged = context !== q.context;
     console.log(`\n[${q.question_number ?? "?"}] ${r.id}  figure=${r.figure ?? "none"}${q.image_url ? "  (image already set)" : ""}`);
@@ -246,7 +263,14 @@ async function main() {
     for (const { o, key, text: ot } of opts) {
       console.log(`  option ${o.label}: figure=${key ?? "-"}${o.image_url ? " (image already set)" : ""}${ot !== o.text ? `  text -> ${JSON.stringify(ot.slice(0, 60))}` : ""}`);
     }
+    if (tr && tr.after !== tr.before) console.log(`  mr text: ${tr.before.replace(/\s+/g, " ").slice(0, 100)}\n       -> ${tr.after.replace(/\s+/g, " ").slice(0, 100)}`);
     if (!apply) continue;
+
+    if (tr && tr.after !== tr.before) {
+      const { error: e3 } = await db.from("question_translations").update({ text: tr.after }).eq("question_id", r.id).eq("lang", "mr");
+      if (e3) throw new Error(`${r.id} translation: ${e3.message}`);
+      console.log("  applied: translation text");
+    }
 
     for (const { o, key, text: ot } of opts) {
       const oPatch: Record<string, string> = {};
