@@ -117,3 +117,13 @@
     .chat-launcher-offset { bottom: calc(var(--v-lift, 0px) + max(1rem, env(safe-area-inset-bottom))); }
   }
 }
+
+/*
+  A link tapped once is waiting for its page (NavigationProgress sets this
+  attribute). Further taps on it are ignored, and it dims slightly so the tap
+  visibly registered. Clarity 2026-10-02: students re-tapped links up to 8 times.
+*/
+a[data-nav-pending] {
+  pointer-events: none;
+  opacity: 0.7;
+}
