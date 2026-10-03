@@ -5,6 +5,7 @@ import OfflineBanner from "@/components/OfflineBanner";
 import { Analytics } from "@vercel/analytics/next";
 import AcquisitionCapture from "@/components/acquisition/AcquisitionCapture";
 import ClarityScript from "@/components/analytics/ClarityScript";
+import NavigationProgress from "@/components/NavigationProgress";
 import ChatWidget from "@/components/chat/ChatWidget";
 import { CartProvider } from "@/lib/cart/CartProvider";
 import { BookmarksProvider } from "@/lib/bookmarks/BookmarksProvider";
@@ -109,6 +110,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CartProvider>
           <BookmarksProvider>
           <MobilePromptProvider>
+          {/* Top-of-page bar from a link tap until the next page arrives. Client
+              island; its search-param read sits behind its own Suspense, so
+              prerendered routes stay prerendered. */}
+          <NavigationProgress />
           {children}
           <OfflineBanner />
           <Toaster
