@@ -28,7 +28,7 @@ import { stripFigureDescriptions, removeExactlyOnce } from "../lib/figures/strip
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
 /** "all" clears the field: for a pictured option whose text is only a description. */
-type StripStep = "brackets" | "all" | { remove: string };
+type StripStep = "brackets" | "all" | { remove: string; with?: string };
 /** One step, or several applied in order (a bracket block plus a table the
  *  transcriber added after it). Each `remove` must match exactly once. */
 type Strip = StripStep | StripStep[] | null;
@@ -54,9 +54,10 @@ type ManifestRow = {
  *  converted PDF dropped the picture: the .docx still holds the original). */
 /** `scale` enlarges a tiny embedded raster by whole pixels, keeping thin lines sharp. */
 type FigPart = FigSpec | { docx: string; media: string; scale?: number };
-/** One part, or several joined into one image: top to bottom by default (an
+/** `existing` reuses a storage path a set sibling already carries (nothing is
+ *  uploaded). Otherwise one part, or several joined into one image: top to bottom by default (an
  *  example citing two printed figures), side by side with `row`. */
-type FigureEntry = FigPart | { stack: FigPart[]; row?: boolean };
+type FigureEntry = FigPart | { stack: FigPart[]; row?: boolean } | { existing: string };
 type Manifest = { batch: string; pdf?: string; figures: Record<string, FigureEntry>; rows: ManifestRow[] };
 
 const safe = (key: string) => key.replace(/[^A-Za-z0-9]+/g, "_");
@@ -71,7 +72,7 @@ function python(script: string[], args: string[], what: string): void {
 function cropAll(pdf: string | undefined, figures: Record<string, FigureEntry>, outDir: string): Record<string, string> {
   mkdirSync(outDir, { recursive: true });
   const parts = new Map<string, FigPart[]>();
-  for (const [key, f] of Object.entries(figures)) parts.set(key, "stack" in f ? f.stack : [f]);
+  for (const [key, f] of Object.entries(figures)) if (!("existing" in f)) parts.set(key, "stack" in f ? f.stack : [f]);
 
   const flat: Record<string, FigSpec> = {};
   const files: Record<string, string> = {};
@@ -117,6 +118,7 @@ function cropAll(pdf: string | undefined, figures: Record<string, FigureEntry>, 
 
   const out: Record<string, string> = {};
   for (const [key, f] of Object.entries(figures)) {
+    if ("existing" in f) continue;
     if (!("stack" in f)) {
       out[key] = files[key];
       continue;
@@ -142,7 +144,15 @@ function applyStrip(value: string | null, strip: Strip | undefined): string | nu
   if (!value || !strip) return value;
   let out = value;
   for (const step of Array.isArray(strip) ? strip : [strip]) {
-    out = step === "all" ? "" : step === "brackets" ? stripFigureDescriptions(out) : removeExactlyOnce(out, step.remove);
+    if (step === "all") out = "";
+    else if (step === "brackets") out = stripFigureDescriptions(out);
+    else if (step.with === undefined) out = removeExactlyOnce(out, step.remove);
+    else {
+      // Replace, keeping what the description also carried that is not about the figure.
+      const n = out.split(step.remove).length - 1;
+      if (n !== 1) throw new Error(`replace target found ${n} times: ${step.remove.slice(0, 60)}`);
+      out = out.replace(step.remove, () => step.with as string);
+    }
   }
   return out;
 }
@@ -216,6 +226,9 @@ async function main() {
   // One upload per figure, shared by every row that uses it (a set's members).
   const uploaded = new Map<string, string>();
   const upload = async (key: string, orgId: string): Promise<string> => {
+    // A set sibling may already carry the figure: reuse its stored object.
+    const f = m.figures[key];
+    if ("existing" in f) return f.existing;
     let path = uploaded.get(key);
     if (!path) {
       const img = crops[key];

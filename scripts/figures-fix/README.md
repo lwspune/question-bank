@@ -63,3 +63,4 @@ source papers and books are all on the owner's machine; each pipeline's
 | `foundation-*` (eight Foundation worksheets: Light, Sound, Biology, Chemistry) | 18 + 16 option graphs; Light WS1 Q3 had no figure in the source, so only its invented description was removed | 2026-10-03 |
 | `jee-2025-apr02` (JEE Main 2 Apr 2025 Q141, from the question .docx) | 1 | 2026-10-03 |
 | `ncert10-electricity`, `ncert11-gravitation`, `ncert11-laws-of-motion` (NCERT worked examples; 11.12 and 7.1(a) use `mask` to blank body text beside a margin figure) | 4 | 2026-10-03 |
+| `mh-sb-9-*`, `mh-ssc-10-*`, `mh-sb-11-*` (Balbharati Class 9 Geometry, Class 10 Probability, Class 11 Physics; SSC 2023 Science I Q4(i)) | 14 (the SSC set reuses its sibling's stored figure via `existing`; Optics Q3(vii) keeps its 37/53 degree note via a replace step) | 2026-10-03 |
