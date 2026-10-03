@@ -51,6 +51,9 @@ type ManifestRow = {
   /** Same for the Marathi translation's text (question_translations, lang 'mr'),
    *  which carries its own copy of the stand-in on bilingual exams. */
   stripTranslation?: Strip;
+  /** Replacement worked solution, only where the old one explained the
+   *  stand-in rather than the printed figure. The old one goes to the backup. */
+  solution?: string;
   note?: string;
 };
 /** A region of the batch PDF, or an image embedded in a Word file (used when a
@@ -215,7 +218,7 @@ async function main() {
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
   const { data, error } = await db
     .from("questions")
-    .select("id, org_id, text, context, image_url, question_number, visibility")
+    .select("id, org_id, text, context, image_url, question_number, visibility, solution")
     .in("id", m.rows.map((r) => r.id));
   if (error) throw new Error(error.message);
   const byId = new Map((data ?? []).map((q) => [q.id as string, q]));
@@ -265,6 +268,7 @@ async function main() {
     const before = plan.map(({ q, opts, tr }) => ({
       id: q.id,
       ...(tr ? { translation_mr: tr.before } : {}),
+      ...(m.rows.find((x) => x.id === q.id)?.solution !== undefined ? { solution: q.solution } : {}),
       text: q.text,
       context: q.context,
       image_url: q.image_url,
@@ -293,6 +297,7 @@ async function main() {
     const contextChanged = context !== q.context;
     console.log(`\n[${q.question_number ?? "?"}] ${r.id}  figure=${r.figure ?? "none"}${q.image_url ? "  (image already set)" : ""}`);
     if (textChanged) console.log(`  text:    ${String(q.text).replace(/\s+/g, " ").slice(0, 140)}\n       -> ${String(text).replace(/\s+/g, " ").slice(0, 140)}`);
+    if (r.solution !== undefined && r.solution !== q.solution) console.log(`  solution -> ${r.solution.replace(/\s+/g, " ").slice(0, 140)}`);
     if (contextChanged) console.log(`  context: ${String(q.context).replace(/\s+/g, " ").slice(0, 140)}\n       -> ${String(context).replace(/\s+/g, " ").slice(0, 140)}`);
     for (const { o, key, text: ot } of opts) {
       console.log(`  option ${o.label}: figure=${key ?? "-"}${o.image_url ? " (image already set)" : ""}${ot !== o.text ? `  text -> ${JSON.stringify(ot.slice(0, 60))}` : ""}`);
@@ -317,7 +322,10 @@ async function main() {
     const patch: Record<string, string | null> = {};
     if (r.figure && !q.image_url) patch.image_url = await upload(r.figure, q.org_id as string);
     if (textChanged) patch.text = text;
-    if (contextChanged) patch.context = context;
+    if (r.solution !== undefined && r.solution !== q.solution) patch.solution = r.solution;
+    // A passage that was all stand-in is cleared to NULL, not "", so nothing
+    // renders an empty set banner.
+    if (contextChanged) patch.context = context === "" ? null : context;
     if (Object.keys(patch).length === 0) continue;
     const { error: uErr } = await db.from("questions").update(patch).eq("id", r.id);
     if (uErr) throw new Error(`${r.id}: ${uErr.message}`);
