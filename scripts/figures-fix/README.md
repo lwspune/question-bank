@@ -52,6 +52,27 @@ source papers and books are all on the owner's machine; each pipeline's
 5. Check from the database that every row has its image and no description is
    left, and fetch one image URL.
 
+## Before you edit text: whose rule owns the hash?
+
+The tool edits text in the bank and leaves `content_hash` alone, which is
+right for most pipelines (they hash the SOURCE text at ingest and never
+rehash). Two are different; check the pipeline before a batch that changes
+text:
+
+- **JEE** keeps stem fixes in `scripts/jee/papers/<id>.json` `stemOverrides`,
+  and `resync.ts` REHASHES from them. Change the override too, then bring the
+  row's hash in line (see `jee-rehash-2025-apr02-q141.ts`; resync itself has
+  no single-question mode).
+- **MPSC** commits from `scripts/mpsc/data/<id>.merged.json` and re-puts the
+  Marathi translation on every run. Record the figure box (130-dpi render
+  pixels, 1-based page) and the stripped Marathi stem there, but leave the
+  English stem as committed: it feeds `content_hash`, so changing it would
+  make a re-commit insert a duplicate.
+
+A set's shared passage lives on every member: find the siblings (same
+`source_file` and `context`) and fix them all; a sibling may already carry
+the figure (`existing`).
+
 ## Batches done
 
 | Batch | Rows | Date |
