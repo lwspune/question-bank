@@ -94,3 +94,4 @@ the figure (`existing`).
 | `mh-hsc-12-geo-*` (Balbharati Std XII Geography, 18 activity sets) | 87 (passages cut back to the book's own instruction; Fig 8.5's typed ad entries KEPT, the printed ad is unreadable on a phone; answer check found 2 mismatches, listed in the batch note) | 2026-10-03 |
 | `mh-ssc-10-*` (Balbharati Class 10: Statistics, Mensuration, Similarity, Effects of Electric Current, Heredity) | 19 (Ex Q11(c) left out: the book prints no figure (c)) | 2026-10-03 |
 | `mh-sb-9-triangles-3-4`, `mh-sb-11-maths-figures`, `mh-sb-11-semiconductors`, `mh-hsc-12-maths-vectors`, `mh-hsc-12-physics-magnetic` (Balbharati Class 9 / 11 / 12) | 11 (a passage that was all description is cleared to NULL) | 2026-10-03 |
+| `nda-21aug-circuits`, `nda-2020-i-maths-venn`, `nda-maths-practice-figures` (NDA test paper, NDA 2020-I Maths, practice workbook) | 7 (Sets Q22: transcription error fixed, see batch note) | 2026-10-03 |
