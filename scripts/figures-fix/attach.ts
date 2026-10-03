@@ -52,14 +52,15 @@ type ManifestRow = {
 };
 /** A region of the batch PDF, or an image embedded in a Word file (used when a
  *  converted PDF dropped the picture: the .docx still holds the original). */
-type FigPart = FigSpec | { docx: string; media: string };
+/** `scale` enlarges a tiny embedded raster by whole pixels, keeping thin lines sharp. */
+type FigPart = FigSpec | { docx: string; media: string; scale?: number };
 /** One part, or several joined into one image: top to bottom by default (an
  *  example citing two printed figures), side by side with `row`. */
 type FigureEntry = FigPart | { stack: FigPart[]; row?: boolean };
 type Manifest = { batch: string; pdf?: string; figures: Record<string, FigureEntry>; rows: ManifestRow[] };
 
 const safe = (key: string) => key.replace(/[^A-Za-z0-9]+/g, "_");
-const isDocx = (p: FigPart): p is { docx: string; media: string } => "docx" in p;
+const isDocx = (p: FigPart): p is { docx: string; media: string; scale?: number } => "docx" in p;
 
 function python(script: string[], args: string[], what: string): void {
   const res = spawnSync("python", ["-c", script.join(String.fromCharCode(10)), ...args], { encoding: "utf8" });
@@ -83,8 +84,14 @@ function cropAll(pdf: string | undefined, figures: Record<string, FigureEntry>, 
       }
       if (!existsSync(part.docx)) throw new Error(`source .docx not found: ${part.docx}`);
       const target = join(outDir, `fig-${safe(id)}${extname(part.media)}`);
-      python(["import sys, zipfile", "open(sys.argv[1],'wb').write(zipfile.ZipFile(sys.argv[2]).read('word/media/'+sys.argv[3]))"],
-        [target, part.docx, part.media], `extracting ${part.media}`);
+      python([
+        "import sys, io, zipfile",
+        "from PIL import Image",
+        "raw=zipfile.ZipFile(sys.argv[2]).read('word/media/'+sys.argv[3]); k=int(sys.argv[4])",
+        "if k<=1: open(sys.argv[1],'wb').write(raw)",
+        "else:",
+        "    im=Image.open(io.BytesIO(raw)); im.resize((im.width*k,im.height*k),Image.NEAREST).save(sys.argv[1])",
+      ], [target, part.docx, part.media, String(part.scale ?? 1)], `extracting ${part.media}`);
       files[id] = target;
     });
   }
