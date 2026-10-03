@@ -16,11 +16,11 @@
  * Idempotent: a row whose image_url is already set keeps it, so a re-run cannot
  * orphan a storage object; stripping is a no-op once the prose is gone.
  */
-import { readFileSync, existsSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, existsSync, writeFileSync, mkdirSync, statSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { join, dirname, extname } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { uploadImage } from "../../src/lib/storage/images";
+import { uploadImage, MAX_SIZE_BYTES } from "../../src/lib/storage/images";
 import { literalNewlineFields } from "../../src/lib/upload/textGuard";
 import { cropFigures, type FigSpec } from "../lib/figures/crop";
 import { stripFigureDescriptions, removeExactlyOnce } from "../lib/figures/strip";
@@ -100,13 +100,21 @@ function cropAll(pdf: string | undefined, figures: Record<string, FigureEntry>, 
     });
   }
   if (Object.keys(flat).length) {
-    if (!pdf || !existsSync(pdf)) throw new Error(`source PDF not found: ${pdf}`);
-    Object.assign(files, cropFigures(pdf, flat, outDir));
-    // Paint `mask` regions white: body text that sits beside a margin figure
+    // A part may name its own `pdf` (a question citing figures from two
+    // chapters); everything else crops from the batch PDF.
+    const byPdf = new Map<string, Record<string, FigSpec>>();
+    for (const [id, spec] of Object.entries(flat)) {
+      const src = (spec as FigSpec & { pdf?: string }).pdf ?? pdf;
+      if (!src || !existsSync(src)) throw new Error(`source PDF not found: ${src}`);
+      (byPdf.get(src) ?? byPdf.set(src, {}).get(src)!)[id] = spec;
+    }
+    for (const [src, specs] of byPdf) Object.assign(files, cropFigures(src, specs, outDir));
+    // Paint `mask` regions white, then apply `rotate`. Masks: body text that sits beside a margin figure
     // and that no rectangle can leave out. Masks are page fractions, like bbox.
     for (const [id, spec] of Object.entries(flat)) {
       const masks = (spec as FigSpec & { mask?: number[][] }).mask;
-      if (!masks?.length) continue;
+      const turn = (spec as FigSpec & { rotate?: number }).rotate;
+      if (!masks?.length && !turn) continue;
       python([
         "import sys, json",
         "from PIL import Image, ImageDraw",
@@ -114,8 +122,11 @@ function cropAll(pdf: string | undefined, figures: Record<string, FigureEntry>, 
         "fx=lambda v:(v-b[0])/(b[2]-b[0])*W; fy=lambda v:(v-b[1])/(b[3]-b[1])*H",
         "dr=ImageDraw.Draw(im)",
         "for m in json.loads(sys.argv[3]): dr.rectangle([fx(m[0]),fy(m[1]),fx(m[2]),fy(m[3])], fill='white')",
+        // `rotate` turns a figure printed sideways upright: degrees clockwise.
+        "k=int(sys.argv[4])",
+        "im=im.rotate(-k, expand=True) if k else im",
         "im.save(sys.argv[1])",
-      ], [files[id], JSON.stringify(spec.bbox), JSON.stringify(masks)], `masking ${id}`);
+      ], [files[id], JSON.stringify(spec.bbox), JSON.stringify(masks ?? []), String(turn ?? 0)], `post-processing ${id}`);
     }
   }
 
@@ -140,6 +151,27 @@ function cropAll(pdf: string | undefined, figures: Record<string, FigureEntry>, 
     ], [target, f.row ? "row" : "column", ...f.stack.map((_, i) => files[`${key}__part${i}`])], `joining ${key}`);
     out[key] = target;
   }
+  // Storage refuses objects over 1 MB (MAX_SIZE_BYTES). A large map at 4x is
+  // over it: reduce to a 256-colour PNG first (lossless enough for line art and
+  // flat map colours), and to JPEG only if that is still too big.
+  for (const [key, file] of Object.entries(out)) {
+    if (statSync(file).size <= MAX_SIZE_BYTES * 0.95) continue;
+    const small = file.replace(/\.(png|jpe?g)$/i, "") + ".small";
+    python([
+      "import sys, os",
+      "from PIL import Image",
+      "src, base, limit = sys.argv[1], sys.argv[2], int(sys.argv[3])",
+      "im = Image.open(src).convert('RGB')",
+      "while True:",
+      "    im.quantize(256, method=Image.Quantize.MEDIANCUT).save(base + '.png', optimize=True)",
+      "    if os.path.getsize(base + '.png') <= limit: print(base + '.png'); break",
+      "    im.save(base + '.jpg', quality=85, optimize=True)",
+      "    if os.path.getsize(base + '.jpg') <= limit: print(base + '.jpg'); break",
+      "    im = im.resize((im.width * 4 // 5, im.height * 4 // 5), Image.LANCZOS)",
+    ], [file, small, String(Math.floor(MAX_SIZE_BYTES * 0.95))], `shrinking ${key}`);
+    const png = `${small}.png`, jpg = `${small}.jpg`;
+    out[key] = existsSync(png) && statSync(png).size <= MAX_SIZE_BYTES * 0.95 ? png : jpg;
+  }
   return out;
 }
 
@@ -153,6 +185,8 @@ function applyStrip(value: string | null, strip: Strip | undefined): string | nu
     else {
       // Replace, keeping what the description also carried that is not about the figure.
       const n = out.split(step.remove).length - 1;
+      // Already replaced on an earlier run (a batch that stopped part-way).
+      if (n === 0 && out.includes(step.with)) continue;
       if (n !== 1) throw new Error(`replace target found ${n} times: ${step.remove.slice(0, 60)}`);
       out = out.replace(step.remove, () => step.with as string);
     }
