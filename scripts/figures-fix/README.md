@@ -61,3 +61,5 @@ source papers and books are all on the owner's machine; each pipeline's
 | `cbse12-ncert-emi`, `cbse12-ncert-ep`, `cbse12-ncert-ro` (CBSE Class 12, NCERT Physics worked examples) | 7 (Example 6.5 carries Figs 6.8 and 6.9 stacked) | 2026-10-03 |
 | `cbse12-pyq-*` (six CBSE Class 12 board papers, 2022-2025, Chemistry + Physics) | 7 + 4 option graphs (55-2-2 Q3; the descriptive option text cleared with `"all"`) | 2026-10-03 |
 | `foundation-*` (eight Foundation worksheets: Light, Sound, Biology, Chemistry) | 18 + 16 option graphs; Light WS1 Q3 had no figure in the source, so only its invented description was removed | 2026-10-03 |
+| `jee-2025-apr02` (JEE Main 2 Apr 2025 Q141, from the question .docx) | 1 | 2026-10-03 |
+| `ncert10-electricity`, `ncert11-gravitation`, `ncert11-laws-of-motion` (NCERT worked examples; 11.12 and 7.1(a) use `mask` to blank body text beside a margin figure) | 4 | 2026-10-03 |

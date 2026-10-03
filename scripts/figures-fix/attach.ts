@@ -98,6 +98,21 @@ function cropAll(pdf: string | undefined, figures: Record<string, FigureEntry>, 
   if (Object.keys(flat).length) {
     if (!pdf || !existsSync(pdf)) throw new Error(`source PDF not found: ${pdf}`);
     Object.assign(files, cropFigures(pdf, flat, outDir));
+    // Paint `mask` regions white: body text that sits beside a margin figure
+    // and that no rectangle can leave out. Masks are page fractions, like bbox.
+    for (const [id, spec] of Object.entries(flat)) {
+      const masks = (spec as FigSpec & { mask?: number[][] }).mask;
+      if (!masks?.length) continue;
+      python([
+        "import sys, json",
+        "from PIL import Image, ImageDraw",
+        "im=Image.open(sys.argv[1]).convert('RGB'); b=json.loads(sys.argv[2]); W,H=im.size",
+        "fx=lambda v:(v-b[0])/(b[2]-b[0])*W; fy=lambda v:(v-b[1])/(b[3]-b[1])*H",
+        "dr=ImageDraw.Draw(im)",
+        "for m in json.loads(sys.argv[3]): dr.rectangle([fx(m[0]),fy(m[1]),fx(m[2]),fy(m[3])], fill='white')",
+        "im.save(sys.argv[1])",
+      ], [files[id], JSON.stringify(spec.bbox), JSON.stringify(masks)], `masking ${id}`);
+    }
   }
 
   const out: Record<string, string> = {};
