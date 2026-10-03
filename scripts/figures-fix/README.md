@@ -77,6 +77,15 @@ A set's shared passage lives on every member: find the siblings (same
 `source_file` and `context`) and fix them all; a sibling may already carry
 the figure (`existing`).
 
+## When no copy of the figure exists
+
+Search the bank for a twin that carries the figure, then every other copy of
+the paper on this machine (question file, solution file, other publishers).
+Only if all fail, redraw it in `drawn/draw.py`, encoding ONLY what the printed
+question, its key and its solution fix, and reference it as `{ "file": ... }`
+with a manifest note that starts "REDRAWN". A row may also carry only a
+`solution` (a model answer that disagreed with the real figure).
+
 ## Batches done
 
 | Batch | Rows | Date |
@@ -97,3 +106,4 @@ the figure (`existing`).
 | `nda-21aug-circuits`, `nda-2020-i-maths-venn`, `nda-maths-practice-figures` (NDA test paper, NDA 2020-I Maths, practice workbook) | 7 (Sets Q22: transcription error fixed, see batch note) | 2026-10-03 |
 | `foundation-carbon-1-options`, `foundation-matter-2`, `foundation-human-eye-1` (Foundation worksheets; option pictures from the Word original where the PDF dropped them) | 4 + 11 option pictures (prism option (d) kept as text: not in the source) | 2026-10-03 |
 | `ncert10-probability`, `ncert11-oscillations` (NCERT Class 10 Probability, Class 11 Oscillations) | 3 | 2026-10-03 |
+| `mh-hsc-12-geo-answer-fixes`, `neet-pariksha-13177-redrawn`, `jee-2025-jan28-redrawn` | 2 Geography answers corrected to the real maps; 2 REDRAWN figures (no copy of the source figure exists) | 2026-10-03 |

@@ -59,7 +59,9 @@ type ManifestRow = {
 /** A region of the batch PDF, or an image embedded in a Word file (used when a
  *  converted PDF dropped the picture: the .docx still holds the original). */
 /** `scale` enlarges a tiny embedded raster by whole pixels, keeping thin lines sharp. */
-type FigPart = FigSpec | { docx: string; media: string; scale?: number };
+/** `file` is a committed image (a figure REDRAWN because no copy of the source
+ *  figure exists; the manifest note must say so). */
+type FigPart = FigSpec | { docx: string; media: string; scale?: number } | { file: string };
 /** `existing` reuses a storage path a set sibling already carries (nothing is
  *  uploaded). Otherwise one part, or several joined into one image: top to bottom by default (an
  *  example citing two printed figures), side by side with `row`. */
@@ -85,6 +87,14 @@ function cropAll(pdf: string | undefined, figures: Record<string, FigureEntry>, 
   for (const [key, list] of parts) {
     list.forEach((part, i) => {
       const id = list.length > 1 ? `${key}__part${i}` : key;
+      if ("file" in part) {
+        const src = join(__dirname, part.file);
+        if (!existsSync(src)) throw new Error(`figure file not found: ${src}`);
+        const target = join(outDir, `fig-${safe(id)}${extname(src)}`);
+        writeFileSync(target, readFileSync(src));
+        files[id] = target;
+        return;
+      }
       if (!isDocx(part)) {
         flat[id] = part;
         return;
@@ -205,7 +215,7 @@ async function main() {
   if (!existsSync(file)) throw new Error(`no manifest at ${file}`);
   const m: Manifest = JSON.parse(readFileSync(file, "utf8"));
   for (const r of m.rows) {
-    if (!r.figure && !r.stripText && !r.stripContext) throw new Error(`row ${r.id} has neither a figure nor a strip`);
+    if (!r.figure && !r.stripText && !r.stripContext && r.solution === undefined) throw new Error(`row ${r.id} has no figure, strip or solution`);
     for (const key of [...(r.figure ? [r.figure] : []), ...Object.values(r.options ?? {})]) {
       if (!m.figures[key]) throw new Error(`row ${r.id} names unknown figure ${key}`);
     }
