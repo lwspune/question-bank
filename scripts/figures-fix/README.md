@@ -30,7 +30,7 @@ source papers and books are all on the owner's machine; each pipeline's
    }
    ```
 
-   A strip is `"brackets"` (every `[Figure|Diagram|Graph|Image: …]` block), a
+   A strip is `"all"` (clears the field; for a pictured option that holds only a description), `"brackets"` (every `[Figure|Diagram|Graph|Image: …]` block), a
    `{ "remove": "<exact text>" }` that must match exactly once, or a list of
    steps applied in order (a bracket block plus the table a transcriber added
    after it). Rows of one set share a figure; the image is uploaded once.
@@ -51,3 +51,4 @@ source papers and books are all on the owner's machine; each pipeline's
 | `upsc-2018-p2` (UPSC CSE 2018 Paper II) | 19 + 8 option images | 2026-10-03 |
 | `cds-gk-2017-ii`, `cds-gk-2022-ii`, `cds-gk-2023-ii` (CDS General Knowledge) | 6 (two maps, a circuit, a graph, a plant cell, a pendulum) | 2026-10-03 |
 | `cbse12-ncert-emi`, `cbse12-ncert-ep`, `cbse12-ncert-ro` (CBSE Class 12, NCERT Physics worked examples) | 7 (Example 6.5 carries Figs 6.8 and 6.9 stacked) | 2026-10-03 |
+| `cbse12-pyq-*` (six CBSE Class 12 board papers, 2022-2025, Chemistry + Physics) | 7 + 4 option graphs (55-2-2 Q3; the descriptive option text cleared with `"all"`) | 2026-10-03 |

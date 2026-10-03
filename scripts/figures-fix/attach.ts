@@ -27,7 +27,8 @@ import { stripFigureDescriptions, removeExactlyOnce } from "../lib/figures/strip
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
-type StripStep = "brackets" | { remove: string };
+/** "all" clears the field: for a pictured option whose text is only a description. */
+type StripStep = "brackets" | "all" | { remove: string };
 /** One step, or several applied in order (a bracket block plus a table the
  *  transcriber added after it). Each `remove` must match exactly once. */
 type Strip = StripStep | StripStep[] | null;
@@ -88,7 +89,7 @@ function applyStrip(value: string | null, strip: Strip | undefined): string | nu
   if (!value || !strip) return value;
   let out = value;
   for (const step of Array.isArray(strip) ? strip : [strip]) {
-    out = step === "brackets" ? stripFigureDescriptions(out) : removeExactlyOnce(out, step.remove);
+    out = step === "all" ? "" : step === "brackets" ? stripFigureDescriptions(out) : removeExactlyOnce(out, step.remove);
   }
   return out;
 }
