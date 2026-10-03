@@ -109,3 +109,4 @@ with a manifest note that starts "REDRAWN". A row may also carry only a
 | `mh-hsc-12-geo-answer-fixes`, `neet-pariksha-13177-redrawn`, `jee-2025-jan28-redrawn` | 2 Geography answers corrected to the real maps; 2 REDRAWN figures (no copy of the source figure exists) | 2026-10-03 |
 | `ncert-group-c` (NCERT Class 10 Maths, Class 11 and 12 Physics; answerable rows, figure only) | 46 rows, 43 figures | 2026-10-03 |
 | `balbharati-group-c` (Balbharati Class 9/10/11/12; answerable rows, figure only) | 28 rows, 24 figures (Electric Current Ex Q.4(ix)/(x) left out: their figure is the colour table already in the text) | 2026-10-03 |
+| `cbse12-pyq-group-c` (CBSE Class 12 Maths board papers 2023/2026; case studies + one vector figure) | 18 rows, 6 figures | 2026-10-03 |
