@@ -13,7 +13,15 @@ source papers and books are all on the owner's machine; each pipeline's
 
 ## One batch
 
-1. **Find each figure in the original.** Render the pages with a fractional
+1. **Find each figure in the original.** When the PDF embeds its figures as
+   pictures (most worksheets and converted .docx files), read their exact boxes
+   with PyMuPDF `page.get_image_info()` instead of judging a grid by eye; eye
+   readings on a dense grid were off by up to 0.1 of a page. A converted PDF can
+   DROP a picture: take it from the .docx (`{ "docx": ..., "media": "image8.jpg" }`).
+   Several parts join into one image with `{ "stack": [...], "row": true }`.
+   A row may omit `figure` when the source prints none and only an invented
+   description must go; `optionText` replaces option text outright.
+   Otherwise: Render the pages with a fractional
    grid (`fitz` at ~1.1x plus 0.05 gridlines) and read the box off it. Page
    numbers are 0-based PDF pages.
 2. **Write `manifest/<batch>.json`** (the source of record for this fix):
@@ -52,3 +60,4 @@ source papers and books are all on the owner's machine; each pipeline's
 | `cds-gk-2017-ii`, `cds-gk-2022-ii`, `cds-gk-2023-ii` (CDS General Knowledge) | 6 (two maps, a circuit, a graph, a plant cell, a pendulum) | 2026-10-03 |
 | `cbse12-ncert-emi`, `cbse12-ncert-ep`, `cbse12-ncert-ro` (CBSE Class 12, NCERT Physics worked examples) | 7 (Example 6.5 carries Figs 6.8 and 6.9 stacked) | 2026-10-03 |
 | `cbse12-pyq-*` (six CBSE Class 12 board papers, 2022-2025, Chemistry + Physics) | 7 + 4 option graphs (55-2-2 Q3; the descriptive option text cleared with `"all"`) | 2026-10-03 |
+| `foundation-*` (eight Foundation worksheets: Light, Sound, Biology, Chemistry) | 18 + 16 option graphs; Light WS1 Q3 had no figure in the source, so only its invented description was removed | 2026-10-03 |

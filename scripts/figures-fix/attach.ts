@@ -18,7 +18,7 @@
  */
 import { readFileSync, existsSync, writeFileSync, mkdirSync } from "node:fs";
 import { spawnSync } from "node:child_process";
-import { join, dirname } from "node:path";
+import { join, dirname, extname } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { uploadImage } from "../../src/lib/storage/images";
 import { literalNewlineFields } from "../../src/lib/upload/textGuard";
@@ -34,8 +34,9 @@ type StripStep = "brackets" | "all" | { remove: string };
 type Strip = StripStep | StripStep[] | null;
 type ManifestRow = {
   id: string;
-  /** Key into `figures`. */
-  figure: string;
+  /** Key into `figures`. Omitted when the source prints no figure and the fix
+   *  is only to remove a description the transcriber invented. */
+  figure?: string;
   /** How to remove the prose stand-in from `text`; null keeps the text. */
   stripText?: Strip;
   /** Same for `context` (a set's shared passage is stored on every member). */
@@ -44,42 +45,72 @@ type ManifestRow = {
   options?: Record<string, string>;
   /** How to remove each pictured option's prose stand-in. */
   stripOptions?: Strip;
+  /** Option label -> new text, when the stored option text was itself a
+   *  description and the printed label is all that should remain. */
+  optionText?: Record<string, string>;
   note?: string;
 };
-/** A single region, or several regions of the same PDF stacked top to bottom
- *  into one image (an example that cites two printed figures). */
-type FigureEntry = FigSpec | { stack: FigSpec[] };
-type Manifest = { batch: string; pdf: string; figures: Record<string, FigureEntry>; rows: ManifestRow[] };
+/** A region of the batch PDF, or an image embedded in a Word file (used when a
+ *  converted PDF dropped the picture: the .docx still holds the original). */
+type FigPart = FigSpec | { docx: string; media: string };
+/** One part, or several joined into one image: top to bottom by default (an
+ *  example citing two printed figures), side by side with `row`. */
+type FigureEntry = FigPart | { stack: FigPart[]; row?: boolean };
+type Manifest = { batch: string; pdf?: string; figures: Record<string, FigureEntry>; rows: ManifestRow[] };
 
-/** Crop every figure; a stacked figure's parts are cropped, then joined into one PNG. */
-function cropAll(pdf: string, figures: Record<string, FigureEntry>, outDir: string): Record<string, string> {
+const safe = (key: string) => key.replace(/[^A-Za-z0-9]+/g, "_");
+const isDocx = (p: FigPart): p is { docx: string; media: string } => "docx" in p;
+
+function python(script: string[], args: string[], what: string): void {
+  const res = spawnSync("python", ["-c", script.join(String.fromCharCode(10)), ...args], { encoding: "utf8" });
+  if (res.status !== 0) throw new Error(`${what} failed: ${res.stderr}`);
+}
+
+/** Produce one image file per figure key. */
+function cropAll(pdf: string | undefined, figures: Record<string, FigureEntry>, outDir: string): Record<string, string> {
+  mkdirSync(outDir, { recursive: true });
+  const parts = new Map<string, FigPart[]>();
+  for (const [key, f] of Object.entries(figures)) parts.set(key, "stack" in f ? f.stack : [f]);
+
   const flat: Record<string, FigSpec> = {};
-  for (const [key, f] of Object.entries(figures)) {
-    if ("stack" in f) f.stack.forEach((part, i) => (flat[`${key}__part${i}`] = part));
-    else flat[key] = f;
+  const files: Record<string, string> = {};
+  for (const [key, list] of parts) {
+    list.forEach((part, i) => {
+      const id = list.length > 1 ? `${key}__part${i}` : key;
+      if (!isDocx(part)) {
+        flat[id] = part;
+        return;
+      }
+      if (!existsSync(part.docx)) throw new Error(`source .docx not found: ${part.docx}`);
+      const target = join(outDir, `fig-${safe(id)}${extname(part.media)}`);
+      python(["import sys, zipfile", "open(sys.argv[1],'wb').write(zipfile.ZipFile(sys.argv[2]).read('word/media/'+sys.argv[3]))"],
+        [target, part.docx, part.media], `extracting ${part.media}`);
+      files[id] = target;
+    });
   }
-  const crops = cropFigures(pdf, flat, outDir);
+  if (Object.keys(flat).length) {
+    if (!pdf || !existsSync(pdf)) throw new Error(`source PDF not found: ${pdf}`);
+    Object.assign(files, cropFigures(pdf, flat, outDir));
+  }
+
   const out: Record<string, string> = {};
   for (const [key, f] of Object.entries(figures)) {
     if (!("stack" in f)) {
-      out[key] = crops[key];
+      out[key] = files[key];
       continue;
     }
-    const parts = f.stack.map((_, i) => crops[`${key}__part${i}`]);
-    const target = join(outDir, `fig-${key.replace(/[^A-Za-z0-9]+/g, "_")}.png`);
-    const py = [
+    const target = join(outDir, `fig-${safe(key)}.png`);
+    python([
       "import sys",
       "from PIL import Image",
-      "ims=[Image.open(p).convert('RGB') for p in sys.argv[2:]]",
-      "w=max(i.width for i in ims); gap=24",
-      "h=sum(i.height for i in ims)+gap*(len(ims)-1)",
-      "c=Image.new('RGB',(w,h),'white'); y=0",
+      "row=sys.argv[2]=='row'; ims=[Image.open(p).convert('RGB') for p in sys.argv[3:]]; gap=24",
+      "w=sum(i.width for i in ims)+gap*(len(ims)-1) if row else max(i.width for i in ims)",
+      "h=max(i.height for i in ims) if row else sum(i.height for i in ims)+gap*(len(ims)-1)",
+      "c=Image.new('RGB',(w,h),'white'); o=0",
       "for i in ims:",
-      "    c.paste(i,((w-i.width)//2,y)); y+=i.height+gap",
+      "    c.paste(i,(o,(h-i.height)//2) if row else ((w-i.width)//2,o)); o+=(i.width if row else i.height)+gap",
       "c.save(sys.argv[1], optimize=True)",
-    ].join(String.fromCharCode(10));
-    const res = spawnSync("python", ["-c", py, target, ...parts], { encoding: "utf8" });
-    if (res.status !== 0) throw new Error(`stacking ${key} failed: ${res.stderr}`);
+    ], [target, f.row ? "row" : "column", ...f.stack.map((_, i) => files[`${key}__part${i}`])], `joining ${key}`);
     out[key] = target;
   }
   return out;
@@ -101,10 +132,9 @@ async function main() {
   const file = join(__dirname, "manifest", `${batch}.json`);
   if (!existsSync(file)) throw new Error(`no manifest at ${file}`);
   const m: Manifest = JSON.parse(readFileSync(file, "utf8"));
-  if (!existsSync(m.pdf)) throw new Error(`source PDF not found: ${m.pdf}`);
-
   for (const r of m.rows) {
-    for (const key of [r.figure, ...Object.values(r.options ?? {})]) {
+    if (!r.figure && !r.stripText && !r.stripContext) throw new Error(`row ${r.id} has neither a figure nor a strip`);
+    for (const key of [...(r.figure ? [r.figure] : []), ...Object.values(r.options ?? {})]) {
       if (!m.figures[key]) throw new Error(`row ${r.id} names unknown figure ${key}`);
     }
   }
@@ -120,7 +150,7 @@ async function main() {
     .in("id", m.rows.map((r) => r.id));
   if (error) throw new Error(error.message);
   const byId = new Map((data ?? []).map((q) => [q.id as string, q]));
-  const withOptions = m.rows.filter((r) => r.options).map((r) => r.id);
+  const withOptions = m.rows.filter((r) => r.options || r.optionText).map((r) => r.id);
   const { data: optRows, error: oErr } = withOptions.length
     ? await db.from("options").select("id, question_id, label, text, image_url").in("question_id", withOptions)
     : { data: [], error: null };
@@ -134,10 +164,13 @@ async function main() {
     const context = applyStrip(q.context as string | null, r.stripContext);
     const bad = literalNewlineFields({ text: text ?? "", context: context ?? "", solution: "" });
     if (bad.length) throw new Error(`${r.id}: stripping left a literal \\n in ${bad.join(", ")}`);
-    const opts = Object.entries(r.options ?? {}).map(([label, key]) => {
+    const labels = new Set([...Object.keys(r.options ?? {}), ...Object.keys(r.optionText ?? {})]);
+    const opts = [...labels].sort().map((label) => {
       const o = (optRows ?? []).find((x) => x.question_id === r.id && x.label === label);
       if (!o) throw new Error(`${r.id}: no option ${label}`);
-      return { o, key, text: applyStrip(o.text as string | null, r.stripOptions) ?? "" };
+      const key = r.options?.[label] ?? null;
+      const text = r.optionText?.[label] ?? applyStrip(o.text as string | null, r.stripOptions) ?? "";
+      return { o, key, text };
     });
     return { r, q, text, context, opts };
   });
@@ -172,24 +205,24 @@ async function main() {
   for (const { r, q, text, context, opts } of plan) {
     const textChanged = text !== q.text;
     const contextChanged = context !== q.context;
-    console.log(`\n[${q.question_number ?? "?"}] ${r.id}  figure=${r.figure}${q.image_url ? "  (image already set)" : ""}`);
+    console.log(`\n[${q.question_number ?? "?"}] ${r.id}  figure=${r.figure ?? "none"}${q.image_url ? "  (image already set)" : ""}`);
     if (textChanged) console.log(`  text:    ${String(q.text).replace(/\s+/g, " ").slice(0, 140)}\n       -> ${String(text).replace(/\s+/g, " ").slice(0, 140)}`);
     if (contextChanged) console.log(`  context: ${String(q.context).replace(/\s+/g, " ").slice(0, 140)}\n       -> ${String(context).replace(/\s+/g, " ").slice(0, 140)}`);
     for (const { o, key, text: ot } of opts) {
-      console.log(`  option ${o.label}: figure=${key}${o.image_url ? " (image already set)" : ""}${ot !== o.text ? `  text -> ${JSON.stringify(ot.slice(0, 60))}` : ""}`);
+      console.log(`  option ${o.label}: figure=${key ?? "-"}${o.image_url ? " (image already set)" : ""}${ot !== o.text ? `  text -> ${JSON.stringify(ot.slice(0, 60))}` : ""}`);
     }
     if (!apply) continue;
 
     for (const { o, key, text: ot } of opts) {
       const oPatch: Record<string, string> = {};
-      if (!o.image_url) oPatch.image_url = await upload(key, q.org_id as string);
+      if (key && !o.image_url) oPatch.image_url = await upload(key, q.org_id as string);
       if (ot !== o.text) oPatch.text = ot;
       if (Object.keys(oPatch).length === 0) continue;
       const { error: e2 } = await db.from("options").update(oPatch).eq("id", o.id);
       if (e2) throw new Error(`${r.id} option ${o.label}: ${e2.message}`);
     }
     const patch: Record<string, string | null> = {};
-    if (!q.image_url) patch.image_url = await upload(r.figure, q.org_id as string);
+    if (r.figure && !q.image_url) patch.image_url = await upload(r.figure, q.org_id as string);
     if (textChanged) patch.text = text;
     if (contextChanged) patch.context = context;
     if (Object.keys(patch).length === 0) continue;
