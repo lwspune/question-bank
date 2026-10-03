@@ -21,7 +21,11 @@ source papers and books are all on the owner's machine; each pipeline's
    Several parts join into one image with `{ "stack": [...], "row": true }`.
    A row may omit `figure` when the source prints none and only an invented
    description must go; `optionText` replaces option text outright.
-   Otherwise: Render the pages with a fractional
+   A map printed sideways takes `rotate: 90` (degrees clockwise). Storage
+   refuses objects over 1 MB, so an oversize crop is reduced to a 256-colour PNG
+   (or JPEG) automatically. A replace step (`{ remove, with }`) is safe to
+   re-run, so a batch that stops part-way (e.g. on an upload) can simply be run
+   again. Otherwise: Render the pages with a fractional
    grid (`fitz` at ~1.1x plus 0.05 gridlines) and read the box off it. Page
    numbers are 0-based PDF pages.
 2. **Write `manifest/<batch>.json`** (the source of record for this fix):
@@ -87,3 +91,4 @@ the figure (`existing`).
 | `mh-sb-9-*`, `mh-ssc-10-*`, `mh-sb-11-*` (Balbharati Class 9 Geometry, Class 10 Probability, Class 11 Physics; SSC 2023 Science I Q4(i)) | 14 (the SSC set reuses its sibling's stored figure via `existing`; Optics Q3(vii) keeps its 37/53 degree note via a replace step) | 2026-10-03 |
 | `neet-pariksha-13136` (ParikshaGruh 13136 Thermodynamics; cropped from inside each question picture) | 5 + 4 option diagrams | 2026-10-03 |
 | `mpsc-group-bc` (MPSC Group B & C prelims: a pie chart and four number-in-circle puzzles; table stripped from English AND the Marathi translation via `stripTranslation`; the figure box and Marathi stem also go into `scripts/mpsc/data/*.merged.json`, the English stem there is left as committed because it feeds content_hash) | 5 | 2026-10-03 |
+| `mh-hsc-12-geo-*` (Balbharati Std XII Geography, 18 activity sets) | 87 (passages cut back to the book's own instruction; Fig 8.5's typed ad entries KEPT, the printed ad is unreadable on a phone; answer check found 2 mismatches, listed in the batch note) | 2026-10-03 |
