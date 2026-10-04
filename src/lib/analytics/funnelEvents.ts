@@ -88,6 +88,23 @@ export const FUNNEL_EVENTS = [
   "next_step_card_shown",
   /** …and one of its links was tapped; prop: target (which link). */
   "next_step_card_click",
+  /**
+   * A visitor signed in with the Google button inside the download box
+   * (2026-10-04), so they can buy without leaving /browse. Its scale is
+   * `teacher_gate_shown` with signedIn=false.
+   */
+  "download_box_signin",
+  /**
+   * The checkout steps, all with prop surface ("download_box" | "pricing").
+   * Razorpay opened; then exactly one of paid, failed (verify refused or the
+   * request broke) or dismissed (closed without paying). Before 2026-10-04
+   * nothing between "Get pass" and the entitlements row was visible for an
+   * anonymous funnel, so a lost sale could not be placed.
+   */
+  "checkout_opened",
+  "checkout_paid",
+  "checkout_failed",
+  "checkout_dismissed",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];

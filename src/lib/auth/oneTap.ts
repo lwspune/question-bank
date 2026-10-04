@@ -16,6 +16,9 @@ import { safeNextPath } from "@/lib/auth/redirect";
 /** Stamped on user_metadata.signup_source for a first-time One Tap account. */
 export const ONE_TAP_SIGNUP_SOURCE = "onetap";
 
+/** Stamped for a first-time account made with the Google button in the download box. */
+export const DOWNLOAD_BOX_SIGNUP_SOURCE = "download_box";
+
 const CLIENT_ID_RE = /^[0-9]+-[a-z0-9]+\.apps\.googleusercontent\.com$/;
 
 /**
