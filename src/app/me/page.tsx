@@ -7,9 +7,6 @@ import {
   BookOpen,
   History,
   LayoutDashboard,
-  Play,
-  Sparkles,
-  Target,
   Timer,
   Trophy,
 } from "lucide-react";
@@ -28,7 +25,7 @@ import { getLastNpsAt } from "@/lib/feedback/service";
 import { needsNps } from "@/lib/feedback/nps";
 import AttemptsList from "../mock/_components/AttemptsList";
 import FeedbackCards from "./FeedbackCards";
-import WeekStrip from "./WeekStrip";
+import TodayCard from "./TodayCard";
 import { getOwnWeekly } from "@/lib/goals/service";
 import { listMyAssignments } from "@/lib/assignments/service";
 import type { StudentAssignmentView } from "@/lib/assignments/core";
@@ -92,6 +89,7 @@ export default async function MePage() {
   // Continue-where-you-left-off: an open mock beats a recently-read chapter.
   const resume = mocks.resumeAttempt;
   const cont = notes.recent[0];
+  const contTitles = cont ? notesTopicTitles(cont) : null;
 
   // The exam-scoped home (EXAM_TIER_SPEC.md §4.2): the student's target exams
   // and the per-exam destinations they unlock.
@@ -125,32 +123,28 @@ export default async function MePage() {
           <StageNudge stageLabel={STAGE_LABELS[stage]} year={now.getFullYear()} />
         )}
 
-        {/* Continue hero */}
-        {resume ? (
-          <ContinueHero
-            eyebrow="Resume your mock test"
-            title={resume.mockTitle}
-            subtitle="You have an attempt in progress — pick up where the timer left off."
-            href={`/mock/${resume.mockSlug}/attempt/${resume.attemptId}`}
-            cta="Resume"
-          />
-        ) : cont ? (
-          <ContinueHero
-            eyebrow="Continue where you left off"
-            title={notesTopicTitles(cont).topic}
-            subtitle={notesTopicTitles(cont).chapter}
-            href={`/notes/${cont.subjectRoute}/${cont.chapterSlug}/${cont.subtopicSlug}`}
-            cta="Continue"
-          />
-        ) : (
-          <WelcomeHero mockHref={mockHref} notesHref={notesHref} />
-        )}
-
-        {/* This week's sittings against the goal + the due-drill count, as one
-            strip (ENGAGEMENT_SPEC.md §A2–A3). It replaced the count-less
-            DrillCard: the honest due count was too expensive to compute on
-            this page, and now arrives from the shared pulse instead. */}
-        <WeekStrip initialDone={weekly.done} initialGoal={weekly.goal} />
+        {/* ONE brand card with ONE lead action (2026-10-05). It replaced the
+            continue card, the welcome card and the week strip, which put three
+            full-width blue buttons on a phone before any progress. */}
+        <TodayCard
+          resume={
+            resume
+              ? { title: resume.mockTitle, href: `/mock/${resume.mockSlug}/attempt/${resume.attemptId}` }
+              : undefined
+          }
+          cont={
+            cont && contTitles
+              ? {
+                  title: contTitles.topic,
+                  chapter: contTitles.chapter,
+                  href: `/notes/${cont.subjectRoute}/${cont.chapterSlug}/${cont.subtopicSlug}`,
+                }
+              : undefined
+          }
+          mockHref={mockHref}
+          initialDone={weekly.done}
+          initialGoal={weekly.goal}
+        />
 
         {/* Papers a teacher has assigned to this student's batch, with the
             deadline (ENGAGEMENT_SPEC.md C1). Rendered only when there is one,
@@ -300,100 +294,21 @@ function YourExams({ links }: { links: ExamLink[] }) {
   );
 }
 
-/** Shown instead of the exam row when the student has no target exam. */
+/** Shown instead of the exam row when the student has no target exam: one
+ *  quiet line, not a card with a full-width button. */
 function NoTargetCard() {
   return (
-    <section className="flex flex-col gap-3 rounded-xl border bg-card p-4 sm:flex-row sm:items-center sm:justify-between">
-      <p className="flex items-center gap-2 text-sm">
-        <GraduationCap className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
-        Tell us your exam and this page will show only what you need.
-      </p>
+    <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+      <GraduationCap className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+      Tell us your exam and this page shows only what you need.
       <Link
         href="/account"
         prefetch={false}
-        className="inline-flex h-9 shrink-0 items-center justify-center rounded-md bg-brand px-4 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        className="font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >
         Choose your exam
       </Link>
-    </section>
-  );
-}
-
-/* ---------------------------------------------------------------- heroes */
-
-function ContinueHero({
-  eyebrow,
-  title,
-  subtitle,
-  href,
-  cta,
-}: {
-  eyebrow: string;
-  title: string;
-  subtitle: string;
-  href: string;
-  cta: string;
-}) {
-  return (
-    <section className="flex flex-col gap-4 rounded-xl border bg-card p-6 sm:flex-row sm:items-center sm:justify-between">
-      <div className="flex min-w-0 items-start gap-3">
-        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand-accent">
-          <Play className="h-5 w-5" aria-hidden />
-        </span>
-        <div className="min-w-0">
-          <p className="text-xs font-semibold uppercase tracking-wide text-brand-accent">
-            {eyebrow}
-          </p>
-          <p className="truncate text-lg font-semibold">{title}</p>
-          <p className="truncate text-sm text-muted-foreground">{subtitle}</p>
-        </div>
-      </div>
-      <Link
-        href={href}
-        className="inline-flex h-10 shrink-0 items-center justify-center gap-1.5 rounded-md bg-brand px-5 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-      >
-        {cta}
-        <ArrowRight className="h-4 w-4" aria-hidden />
-      </Link>
-    </section>
-  );
-}
-
-function WelcomeHero({ mockHref, notesHref }: { mockHref: string; notesHref: string }) {
-  return (
-    <section className="rounded-xl border bg-card p-6">
-      <div className="flex items-start gap-3">
-        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand-accent">
-          <Sparkles className="h-5 w-5" aria-hidden />
-        </span>
-        <div>
-          <p className="font-semibold">Start learning</p>
-          <p className="mt-0.5 text-sm text-muted-foreground">
-            Sit a timed paper, fix what you missed five at a time, and watch your
-            chapter map fill. Everything you do shows up here.{" "}
-            <Link href="/start" className="text-brand-accent underline underline-offset-2">
-              How it works
-            </Link>
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            <Link
-              href={mockHref}
-              className="inline-flex h-9 items-center justify-center gap-1.5 rounded-md bg-brand px-4 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand/90"
-            >
-              <Timer className="h-4 w-4" aria-hidden />
-              Take a mock
-            </Link>
-            <Link
-              href={notesHref}
-              className="inline-flex h-9 items-center justify-center gap-1.5 rounded-md border px-4 text-sm font-medium transition-colors hover:bg-accent"
-            >
-              <BookOpen className="h-4 w-4" aria-hidden />
-              Read notes
-            </Link>
-          </div>
-        </div>
-      </div>
-    </section>
+    </p>
   );
 }
 
