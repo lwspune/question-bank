@@ -69,6 +69,13 @@ export const SECOND_PAGE_KEEP_PCT = 3;
  */
 export const BOX_BUY_MIN_SALES = 2;
 
+/**
+ * Resource chips: taps per 100 cards whose chips were shown that keep them on
+ * the card. Same bar as the second-page nudges: a link almost nobody uses is
+ * clutter on the most-used surface in the product.
+ */
+export const CHIPS_KEEP_PCT = 3;
+
 /** The ISO date `EXPERIMENT_WINDOW_DAYS` after `liveSince`. */
 export function checkOn(liveSince: string): string {
   const d = new Date(`${liveSince}T00:00:00Z`);
@@ -83,7 +90,8 @@ export type Readout =
   | "email-cap"
   | "chapter-tests"
   | "second-page"
-  | "box-buy";
+  | "box-buy"
+  | "resource-chips";
 
 export type Experiment = {
   id: string;
@@ -189,6 +197,18 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "box-buy",
     status: "running",
   },
+  {
+    id: "resource-chips",
+    title: "Strategy and concept chips on question cards",
+    change:
+      "The bank card's links to the strategy guide and the concept notes became one line of small chips shown only once the solution is open (2026-10-04 card redesign). They stay in the page's HTML either way, so crawlers still see the links.",
+    why: "The owner asked whether students use them at all. They take space on the most-used surface (1,229 bank reveals a week against 30 mocks), so they must earn it, either by being tapped or by helping search.",
+    metric: "Tap rate: resource_chips_click ÷ resource_chips_shown in Vercel (props say which chip and which page). If that misses, the fallback is search value: are the notes and guide pages the chips point at indexed, and do they get search clicks (Search Console)?",
+    rule: `Keep them if ${CHIPS_KEEP_PCT}%+ of cards that show them get a tap by the check date. Below that, keep them only if their target pages show search value (indexed and getting search clicks, or cited by AI answers); otherwise retire the chips.`,
+    liveSince: "2026-10-04",
+    readout: "resource-chips",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };
@@ -231,7 +251,8 @@ export type ReadingMetric =
   | "share-taps"
   | "hello-tap-rate"
   | "card-tap-rate"
-  | "box-sales-per-100";
+  | "box-sales-per-100"
+  | "chip-tap-rate";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -266,5 +287,10 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
         note: "Baseline, 7 days before the box sold in place: 107 gate visitors (94 signed out), 56 tapped Get pass, 0 sales",
       },
     ],
+  },
+  "chip-tap-rate": {
+    label: "Question-card chip tap rate (%)",
+    source: "Vercel → Analytics → Events → resource_chips_click ÷ resource_chips_shown",
+    entries: [],
   },
 };
