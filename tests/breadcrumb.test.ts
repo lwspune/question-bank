@@ -49,3 +49,35 @@ describe("buildBreadcrumb", () => {
     expect(Q_FULL).toEqual(snapshot);
   });
 });
+
+describe("buildBreadcrumb: levels the page already fixes are dropped", () => {
+  // Inside one chapter, all 25 cards printed "Mathematics → Vectors → <topic>"
+  // and only the topic changed (2026-10-05). A level the filter or the page
+  // already fixes says nothing on a card.
+  it("drops subject and chapter when both are fixed, keeping the topic", () => {
+    expect(
+      buildBreadcrumb(Q_FULL, { includeExam: false, fixed: { subject: true, chapter: true } })
+    ).toBe("Integration by Substitution");
+  });
+
+  it("drops only the subject when only the subject is fixed", () => {
+    expect(buildBreadcrumb(Q_FULL, { includeExam: false, fixed: { subject: true } })).toBe(
+      "Indefinite Integration → Integration by Substitution"
+    );
+  });
+
+  it("can come out empty when every level is fixed", () => {
+    expect(
+      buildBreadcrumb(Q_FULL, {
+        includeExam: false,
+        fixed: { subject: true, chapter: true, subtopic: true },
+      })
+    ).toBe("");
+  });
+
+  it("a fixed topic on a row with no topic changes nothing", () => {
+    expect(
+      buildBreadcrumb(Q_NO_SUBTOPIC, { includeExam: false, fixed: { subtopic: true } })
+    ).toBe("Mathematics → Trigonometric Equations");
+  });
+});

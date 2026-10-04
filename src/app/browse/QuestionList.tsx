@@ -3,6 +3,7 @@ import { resolveResourcesById } from "@/lib/links/questionResources";
 import type { ResourceTags } from "@/lib/links/getResourceTagsForQuestions";
 import type { ItemStatAggregate } from "@/lib/itemStats/types";
 import QuestionListView from "./QuestionListView";
+import type { BreadcrumbFixed } from "./breadcrumb";
 
 type Props = {
   questions: QuestionRow[];
@@ -20,6 +21,9 @@ type Props = {
   itemStats?: Map<string, ItemStatAggregate>;
   /** Surface the exam name in each card's breadcrumb. Pass true when no exam filter is set. */
   includeExam: boolean;
+  /** Levels every card on this page shares (the chapter on a chapter page, the
+   *  filtered subject), so the card's path line does not repeat them. */
+  breadcrumbFixed?: BreadcrumbFixed;
   /** Per-question principle + concept tags for the backlink chip row.
    *  Questions absent from the map have no DB-backed tags. */
   resourceTags?: Map<string, ResourceTags>;

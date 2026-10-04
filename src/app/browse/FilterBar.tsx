@@ -509,7 +509,7 @@ export default function FilterBar({
                     update({ pyqYears: toggleInArray(filters.pyqYears, year) })
                   }
                   className={cn(
-                    "rounded-full border px-2.5 py-1 font-mono text-xs font-medium tabular-nums transition-colors",
+                    "rounded-full border px-2.5 py-1 text-xs font-medium tabular-nums transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                     on
                       ? "border-primary bg-primary text-primary-foreground"
                       : "border-input bg-background text-muted-foreground hover:text-foreground"
@@ -620,7 +620,7 @@ export default function FilterBar({
   return (
     <div
       className={cn(
-        "space-y-5 rounded-lg border bg-card p-5 shadow-sm",
+        "space-y-6 rounded-xl border bg-card p-5 shadow-sm",
         pending && "pointer-events-none opacity-60"
       )}
     >
@@ -748,7 +748,7 @@ function PresetChip({
     <button
       type="button"
       onClick={onClick}
-      className="rounded-full border border-dashed border-primary/40 bg-primary/[0.04] px-2.5 py-1 text-xs font-medium text-primary transition-colors hover:bg-primary/10"
+      className="rounded-full border border-brand/30 bg-brand/5 px-2.5 py-1 text-xs font-medium text-brand-accent transition-colors hover:bg-brand/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       {label}
     </button>

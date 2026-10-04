@@ -43,7 +43,7 @@ import RevealLockedLink from "@/components/reveal/RevealLockedLink";
 import PresentButton from "@/components/present/PresentButton";
 import { fromQuestionRow } from "@/lib/present/viewModel";
 import BookmarkButton from "./BookmarkButton";
-import { buildBreadcrumb } from "./breadcrumb";
+import { buildBreadcrumb, type BreadcrumbFixed } from "./breadcrumb";
 import ReportQuestionDialog from "./ReportQuestionDialog";
 import { ItemStatChip, ItemStatDetail } from "./ItemStats";
 import CancelledNotice from "@/components/question/CancelledNotice";
@@ -68,6 +68,7 @@ export default function QuestionCard({
   supabaseUrl,
   hideContext = false,
   includeExam = false,
+  breadcrumbFixed,
   hideCart = false,
   resources,
   itemStats,
@@ -84,6 +85,8 @@ export default function QuestionCard({
   hideContext?: boolean;
   /** Surface the exam in the breadcrumb (used when no exam filter is active). */
   includeExam?: boolean;
+  /** Levels the page already fixes, left off the path line (see buildBreadcrumb). */
+  breadcrumbFixed?: BreadcrumbFixed;
   /**
    * Suppress the cart toggle + its in-cart ring. Set on surfaces where "Add to
    * paper" is meaningless because the question is already committed to a paper
@@ -183,7 +186,7 @@ export default function QuestionCard({
   const lockedLink =
     locked && !revealBlocked ? <RevealLockedLink surface={surface} examName={question.exam.name} /> : null;
 
-  const breadcrumb = buildBreadcrumb(question, { includeExam });
+  const breadcrumb = buildBreadcrumb(question, { includeExam, fixed: breadcrumbFixed });
 
   // Printed-language choice (MPSC papers carry Marathi). Shared page-wide; an
   // English-only question ignores it and renders exactly as before.
@@ -253,13 +256,13 @@ export default function QuestionCard({
             <span className="flex min-w-0 flex-1 flex-wrap items-center gap-1.5">
               <span
                 className={cn(
-                  "inline-flex max-w-full items-center rounded-full px-2.5 py-0.5 text-xs font-semibold",
+                  "inline-flex max-w-full items-center rounded-full px-2 py-0.5 text-xs font-semibold sm:px-2.5",
                   tag.kind === "pyq" ? "bg-brand-accent/10 text-brand-accent" : "bg-muted text-muted-foreground"
                 )}
               >
                 <span className="truncate">{tag.label}</span>
               </span>
-              <span className={cn("inline-flex shrink-0 items-center rounded-full px-2.5 py-0.5 text-xs font-semibold", DIFFICULTY_PILL[question.difficulty])}>
+              <span className={cn("inline-flex shrink-0 items-center rounded-full px-2 py-0.5 text-xs font-semibold sm:px-2.5", DIFFICULTY_PILL[question.difficulty])}>
                 {DIFFICULTY_LABEL[question.difficulty]}
               </span>
               <ItemStatChip agg={itemStats} />
@@ -270,9 +273,12 @@ export default function QuestionCard({
                 </span>
               )}
             </span>
+            {/* Hidden on phones: there the tag pills need the width (the
+                difficulty pill was wrapping to a line of its own), and the
+                question text below is itself the open/close control. */}
             <ChevronDown
               className={cn(
-                "h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200",
+                "hidden h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 sm:block",
                 expanded && "rotate-180"
               )}
               aria-hidden
@@ -290,9 +296,13 @@ export default function QuestionCard({
         </div>
 
         <p className="mt-1.5 text-xs text-muted-foreground">
-          <span className="font-mono text-muted-foreground/80">#{index}</span>
-          <span aria-hidden> · </span>
-          {breadcrumb}
+          <span className="tabular-nums text-muted-foreground/80">#{index}</span>
+          {breadcrumb && (
+            <>
+              <span aria-hidden> · </span>
+              {breadcrumb}
+            </>
+          )}
         </p>
 
         <button

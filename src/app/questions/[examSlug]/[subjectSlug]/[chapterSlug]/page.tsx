@@ -298,6 +298,7 @@ export default async function ChapterQuestionsPage({ params }: Params) {
               isLoggedIn={false}
               supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
               includeExam={false}
+              breadcrumbFixed={{ subject: true, chapter: true }}
               insert={{
                 afterQuestions: CARD_AFTER,
                 node: <NextStepCard links={nextStepLinks(secondPage)} />,
