@@ -32,6 +32,16 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 **Measured, not yet acted on.** The 800 `/questions` pages are now the biggest share of a build (~3,400 `questions` reads, ~2,200 facet/profile RPCs). Vercel builds took 6.5-8.5 min on 2026-09-22..26 and 12-14 min on 2026-10-01..04, from page growth. The next lever is caching name lookups across a build (`unstable_cache`), which helps Vercel builds too. If the database wedges again, the remaining option is the Small compute tier (a money decision).
 
+**2026-10-04 (third) — Board options are tappable: a tap checks the answer, as on `/browse` (branch `feat/board-option-tap`, no migration).**
+
+**Why.** The 2-3 Oct Clarity pull showed at least 10 dead taps on board option text ("same frequency", "zero", "Bent - T - Shape"), usually followed by the reader finding "Show answer". On `/browse` an option is a button that checks the answer; on `/board` options were a plain list. About 4,100 board questions are MCQs: CBSE 12 2,240 (2,137 from past papers), MH HSC 12 825, MH SB 11 393, MH SSC 10 378, MH SB 9 128, CBSE 10 110, CBSE 11 26.
+
+**What shipped.** `optionMark({ revealed, picked, isCorrect, cancelled })` decides how an option looks once the answer shows (correct, wrong pick, plain) and is now used by both the `/browse` card and the board reader. Board options are buttons when the question has an answer: the first tap is a reveal through the same `useRevealMeter` budget and sign-in lock as "Show answer" and opens the solution, as the board's reveal always has; a later tap only moves the pick, as on `/browse`; "Hide answer" clears it. The right option says "Correct" and a wrong pick "Your pick", in words as well as colour, and an unanswered MCQ shows "Tap an option to check your answer." (or "Sign in free to check answers." once the free reveals are spent).
+
+**Decisions (owner, 2026-10-04).** No right/wrong is recorded from the board yet: the server grades picks only for the bank surface, and the 2026-10-16 check asks whether `/browse` taps are real attempts or tap-to-see. If they are real, the board joins; otherwise this would have doubled the noise. Moving the pick after the reveal matches `/browse`. A tap opens the solution too, because that is what the board's reveal has always shown.
+
+**Not verifiable here.** The taps are behind interaction; the build proves the board pages still prerender, and the owner checks the taps on a phone.
+
 **2026-10-04 (second) — The download box sells the pass in place, and the pass is renamed Premium Pass (branch `feat/download-box-buy`, no migration).**
 
 **Why.** Vercel's events for the 7 days to 2026-10-04: 107 visitors saw the download gate, 94 of them signed out. 52 of the 94, and 4 of the 17 signed-in, tapped "Get PYQ Vault Pass" with "₹99 for 6 months" in front of them, and nobody bought. Clarity showed all 9 sampled visitors who reached `/pricing` leaving without a tap. For a signed-out visitor, the only action on `/pricing` was "Sign in to buy", then an account, a return and payment. The old box also led with what was free, contradicted itself (mocks free, then "unlocks unlimited timed mock tests"), never named the visitor's selection, and described what they had just done.
@@ -1032,6 +1042,8 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 17. **Four 2026-09-29 CDS Maths digests EVICTED from CLAUDE.md on 2026-10-04** (second, eighth, seventeenth, twenty-sixth: CDS Maths waves 1-4) under the CEILING rule: the three 2026-10-02/03 digests (page fixes, loading bar, figure repair) took the active Decisions log to 38,227 bytes against its 36,000 ceiling. All four were verified present here as long forms before eviction, so nothing was lost.
 
 18. **Two more 2026-09-29 digests EVICTED from CLAUDE.md on 2026-10-04** (twenty-seventh: /guide/cds-maths; twenty-eighth: JEE Conic Sections) under the CEILING rule, when the two 2026-10-04 digests (board caching and the question-list fix; the download box) would have taken the active log past its 36,000-byte ceiling. Both were verified present here as long forms before eviction, so nothing was lost.
+
+19. **The 2026-09-30 (second) digest (JEE Maths batch 2) EVICTED from CLAUDE.md on 2026-10-04** under the CEILING rule, when the board-options digest landed beside the build-load one and took the active log 57 bytes past its 36,000-byte ceiling. Verified present here as a long form before eviction, so nothing was lost.
 
 For all other entries (the consolidated 2026-05-27 milestone, 2026-05-26 infrastructure entries, anything **2026-09-15 onwards**), see `CLAUDE.md` "Decisions log" section. For **2026-09-01 to 2026-09-14** both exist: the DIGEST in `CLAUDE.md`, the full narrative here. The Foundations (M1-M3, 2026-05-08) sub-section also stays in CLAUDE.md.
 
