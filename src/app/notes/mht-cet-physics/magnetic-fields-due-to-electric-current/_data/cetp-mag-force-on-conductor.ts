@@ -32,8 +32,8 @@ export const FORCE_ON_CONDUCTOR_NOTE: SubtopicNote = {
         answer: "0.2 N",
       },
       selfCheckExample: {
-        prompt: "Current I along the x-axis in B = B₀(î − ĵ − k̂). Size of the force on length L?",
-        steps: ["î × (î − ĵ − k̂) = −k̂ + ĵ; magnitude √2."],
+        prompt: "Current I along the x-axis in \\(B = B_0(\\hat{i} - \\hat{j} - \\hat{k})\\). Size of the force on length L?",
+        steps: ["\\(\\hat{i} \\times (\\hat{i} - \\hat{j} - \\hat{k}) = -\\hat{k} + \\hat{j}\\); magnitude \\(\\sqrt{2}\\)."],
         answer: "√2 ILB₀",
       },
       practiceSet: [

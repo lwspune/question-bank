@@ -27,8 +27,8 @@ export const MOVING_CHARGE_NOTE: SubtopicNote = {
         latex: "\\vec F = q\\vec E + q(\\vec v \\times \\vec B)",
       },
       authoredExample: {
-        prompt: "A proton moves with v = (2î + 3ĵ) × 10⁵ m/s in B = 0.5k̂ T. Force on it (e = 1.6 × 10⁻¹⁹ C)?",
-        steps: ["v × B = 10⁵(2î + 3ĵ) × 0.5k̂ = 10⁵(−1ĵ + 1.5î).", "F = 1.6 × 10⁻¹⁹ × 10⁵(1.5î − ĵ) = (2.4î − 1.6ĵ) × 10⁻¹⁴ N."],
+        prompt: "A proton moves with \\(v = (2\\hat{i} + 3\\hat{j}) \\times 10^5\\) m/s in \\(B = 0.5\\hat{k}\\) T. Force on it (e = 1.6 × 10⁻¹⁹ C)?",
+        steps: ["\\(v \\times B = 10^5(2\\hat{i} + 3\\hat{j}) \\times 0.5\\hat{k} = 10^5(-\\hat{j} + 1.5\\hat{i})\\).", "\\(F = 1.6 \\times 10^{-19} \\times 10^5(1.5\\hat{i} - \\hat{j}) = (2.4\\hat{i} - 1.6\\hat{j}) \\times 10^{-14}\\) N."],
         answer: "(2.4î − 1.6ĵ) × 10⁻¹⁴ N",
       },
       selfCheckExample: {
@@ -37,7 +37,7 @@ export const MOVING_CHARGE_NOTE: SubtopicNote = {
         answer: "Zero",
       },
       practiceSet: [
-        { prompt: "v = aî, B = bĵ + ck̂. Magnitude of the force?", answer: "qa√(b² + c²)" },
+        { prompt: "\\(v = a\\hat{i}\\), \\(B = b\\hat{j} + c\\hat{k}\\). Magnitude of the force?", answer: "qa√(b² + c²)" },
         { prompt: "Force on a charge moving along a field line?", answer: "Zero" },
         { prompt: "What can a cyclotron accelerate?", answer: "Positively and negatively charged particles" },
       ],

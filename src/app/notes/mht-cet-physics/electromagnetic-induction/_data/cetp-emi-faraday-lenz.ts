@@ -55,7 +55,7 @@ export const FARADAY_LENZ_NOTE: SubtopicNote = {
         {
           title: "Using the whole field for the flux",
           body:
-            "Only the component of B perpendicular to the coil passes through it. For a square in the x–y plane, B = B₀(2î + 3ĵ + 4k̂) gives 4B₀L², not √29 B₀L².",
+            "Only the component of B perpendicular to the coil passes through it. For a square in the x–y plane, \\(B = B_0(2\\hat{i} + 3\\hat{j} + 4\\hat{k})\\) gives 4B₀L², not √29 B₀L².",
         },
       ],
     },

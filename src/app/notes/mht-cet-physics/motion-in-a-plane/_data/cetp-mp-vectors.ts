@@ -28,9 +28,9 @@ export const VECTORS_NOTE: SubtopicNote = {
         latex: "R^2 = A^2 + B^2 + 2AB\\cos\\theta",
       },
       authoredExample: {
-        prompt: "Unit vector along the sum of 2î + ĵ and î − ĵ + 2k̂?",
-        steps: ["Sum = 3î + 0ĵ + 2k̂, magnitude √13.", "Unit vector = (3î + 2k̂)/√13."],
-        answer: "(3î + 2k̂)/√13",
+        prompt: "Unit vector along the sum of \\(2\\hat{i} + \\hat{j}\\) and \\(\\hat{i} - \\hat{j} + 2\\hat{k}\\)?",
+        steps: ["Sum \\(= 3\\hat{i} + 0\\hat{j} + 2\\hat{k}\\), magnitude \\(\\sqrt{13}\\).", "Unit vector \\(= (3\\hat{i} + 2\\hat{k})/\\sqrt{13}\\)."],
+        answer: "\\((3\\hat{i} + 2\\hat{k})/\\sqrt{13}\\)",
       },
       selfCheckExample: {
         prompt: "Vectors of 3 and 4 units at 90°. Magnitude of their resultant?",
@@ -65,7 +65,7 @@ export const VECTORS_NOTE: SubtopicNote = {
         latex: "\\vec{A}\\cdot\\vec{B} = AB\\cos\\theta, \\qquad |\\vec{A}\\times\\vec{B}| = AB\\sin\\theta",
       },
       authoredExample: {
-        prompt: "For which m are 2î + mĵ − k̂ and î − 3ĵ + k̂ perpendicular?",
+        prompt: "For which \\(m\\) are \\(2\\hat{i} + m\\hat{j} - \\hat{k}\\) and \\(\\hat{i} - 3\\hat{j} + \\hat{k}\\) perpendicular?",
         steps: ["Dot product: 2 − 3m − 1 = 0.", "m = 1/3."],
         answer: "m = 1/3",
       },
@@ -75,7 +75,7 @@ export const VECTORS_NOTE: SubtopicNote = {
         answer: "3 and 3√3",
       },
       practiceSet: [
-        { prompt: "(2î − 3ĵ + k̂) + (3î + ĵ − 2k̂), dotted with 3î + 2ĵ + k̂?", answer: "10" },
+        { prompt: "\\((2\\hat{i} - 3\\hat{j} + \\hat{k}) + (3\\hat{i} + \\hat{j} - 2\\hat{k})\\), dotted with \\(3\\hat{i} + 2\\hat{j} + \\hat{k}\\)?", answer: "10" },
       ],
       pyqExampleId: "06496483-a712-4760-862e-a44fc6c6c3e4",
       traps: [
