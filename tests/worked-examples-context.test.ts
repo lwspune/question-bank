@@ -11,6 +11,7 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { loadWorkedExamples } from "@/lib/guide/loadWorkedExamples";
 import { formatProvenance } from "@/lib/questions/formatProvenance";
+import { sourceTag } from "@/lib/questions/sourceTag";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -131,6 +132,23 @@ describe.skipIf(!HAS_ENV)("loadWorkedExamples — context round-trip", () => {
     expect(row.provenance).toBe(expected);
     expect(row.provenance).toContain(`Q${QNUM}`);
     expect(row.provenance).toContain(String(PYEAR));
+  });
+
+  it("carries the same source tag the bank card shows (2026-10-04 card redesign)", async () => {
+    // The notes/guide past-question card now leads with the bank card's tag
+    // ("NDA · Apr 2024 · Q42"), so both read the same; built by sourceTag.
+    const [row] = await loadWorkedExamples(admin, [withContextId]);
+    expect(row.source).toEqual(
+      sourceTag({
+        questionKind: "pyq",
+        exam: { name: examName ?? "" },
+        questionNumber: QNUM,
+        pyqYear: PYEAR,
+        pyqMonth: PMONTH,
+        pyqNote: PNOTE,
+      })
+    );
+    expect(row.source.label).toContain(`Q${QNUM}`);
   });
 
   it("returns null `provenance` when the question has no PYQ metadata", async () => {

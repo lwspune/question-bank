@@ -26,10 +26,14 @@ export default function PracticeGate({
   children,
   variant = "full",
   label = "practice",
+  preview,
 }: {
   children: ReactNode;
   variant?: "full" | "compact";
   label?: string;
+  /** Static, non-interactive look at what sign-in opens, shown blurred behind
+   *  the full wall. A dashed empty box read as a placeholder, not a reward. */
+  preview?: ReactNode;
 }) {
   const { signedIn, loading } = useSignedIn();
   const state = practiceGateState({ signedIn, loading });
@@ -49,15 +53,17 @@ export default function PracticeGate({
     );
   }
 
-  return <PracticeSignInWall variant={variant} label={label} />;
+  return <PracticeSignInWall variant={variant} label={label} preview={preview} />;
 }
 
 function PracticeSignInWall({
   variant,
   label,
+  preview,
 }: {
   variant: "full" | "compact";
   label: string;
+  preview?: ReactNode;
 }) {
   const pathname = usePathname();
   const next = encodeURIComponent(pathname ?? "/notes");
@@ -81,37 +87,53 @@ function PracticeSignInWall({
     );
   }
 
+  const card = (
+    <div className="flex flex-col items-center gap-4 p-8 text-center">
+      <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand-accent">
+        <Lock className="h-5 w-5" aria-hidden />
+      </span>
+      <div>
+        <h2 className="text-lg font-semibold tracking-tight">
+          Sign in to {label}
+        </h2>
+        <p className="mx-auto mt-2 max-w-md font-serif text-sm leading-relaxed text-muted-foreground">
+          The teaching notes are free to read. Create a free account to attempt
+          the mastery checkpoint, save your score, mark the chapter mastered,
+          and pick up where you left off.
+        </p>
+      </div>
+      <div className="flex flex-wrap items-center justify-center gap-2">
+        <Button asChild>
+          <Link href={signupHref}>Create a free account</Link>
+        </Button>
+        <Button asChild variant="outline">
+          <Link href={loginHref}>
+            <LogIn className="h-4 w-4" aria-hidden />
+            Sign in
+          </Link>
+        </Button>
+      </div>
+    </div>
+  );
+
   return (
     <section
       aria-label="Sign in to practice"
-      className="my-8 overflow-hidden rounded-xl border-2 border-dashed border-brand/30 bg-gradient-to-b from-brand/5 to-background"
+      className="relative my-8 overflow-hidden rounded-2xl border bg-card shadow-sm"
     >
-      <div className="flex flex-col items-center gap-4 p-8 text-center">
-        <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand-accent">
-          <Lock className="h-5 w-5" aria-hidden />
-        </span>
-        <div>
-          <h2 className="text-lg font-semibold tracking-tight">
-            Sign in to {label}
-          </h2>
-          <p className="mx-auto mt-2 max-w-md font-serif text-sm leading-relaxed text-muted-foreground">
-            The teaching notes are free to read. Create a free account to attempt
-            the mastery checkpoint, save your score, mark the chapter mastered,
-            and pick up where you left off.
-          </p>
-        </div>
-        <div className="flex flex-wrap items-center justify-center gap-2">
-          <Button asChild>
-            <Link href={signupHref}>Create a free account</Link>
-          </Button>
-          <Button asChild variant="outline">
-            <Link href={loginHref}>
-              <LogIn className="h-4 w-4" aria-hidden />
-              Sign in
-            </Link>
-          </Button>
-        </div>
-      </div>
+      {preview && (
+        <>
+          {/* Decorative: the real questions are behind sign-in, so the preview
+              is hidden from assistive tech and holds no controls. It fills in
+              BEHIND the card, which sets the height, so a phone's taller card
+              is never clipped. */}
+          <div aria-hidden className="pointer-events-none absolute inset-0 select-none overflow-hidden p-6 blur-[3px]">
+            {preview}
+          </div>
+          <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-card/30 via-card/85 to-card" />
+        </>
+      )}
+      <div className="relative">{card}</div>
     </section>
   );
 }

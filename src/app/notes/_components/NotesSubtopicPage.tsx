@@ -7,6 +7,8 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { hasSubjectGuide } from "@/lib/guide/guideCatalog";
 import BrowseLink from "@/app/guide/_components/BrowseLink";
+import ExpandableProse from "@/app/guide/_components/ExpandableProse";
+import { NotesOnThisPage, NotesReadingProgress } from "./NotesReadingAids";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { resolvePublicQuizForChapter } from "@/lib/quiz/publicQuiz";
@@ -34,7 +36,7 @@ import ConceptUnitCard from "./ConceptUnitCard";
 import NotesPaywall from "./NotesPaywall";
 import PracticeGate from "./PracticeGate";
 import NotesProgressControls from "./NotesProgressControls";
-import SubtopicMasteryCheckpoint from "./SubtopicMasteryCheckpoint";
+import SubtopicMasteryCheckpoint, { CheckpointPreview } from "./SubtopicMasteryCheckpoint";
 import SubtopicSummary from "./SubtopicSummary";
 
 /**
@@ -202,6 +204,19 @@ export default async function NotesSubtopicPage({
   const subtopicUrl = `${base}/${subtopicSlug}`;
   const backLabel = `${chapterName} notes`;
 
+  const drill = (
+    <BrowseLink
+      examId={taxonomy.examId}
+      subjectId={taxonomy.subjectId}
+      subtopicIds={subtopicId ? [subtopicId] : []}
+      from={subtopicUrl}
+      fromLabel={backLabel}
+      variant="outline"
+    >
+      {drillCount > 0 ? `Drill all ${drillCount} questions` : "Open in the bank"}
+    </BrowseLink>
+  );
+
   const sideNav = [
     { href: base, label: "Chapter overview" },
     ...chapter.chapter.subtopicOrder.map((slug) => {
@@ -215,7 +230,11 @@ export default async function NotesSubtopicPage({
       guideTitle={`${chapter.examName} ${chapterName} Notes`}
       sideNav={sideNav}
       breadcrumbs={notesBreadcrumbs(chapter, note.title)}
+      rail={
+        <NotesOnThisPage items={note.concepts.map((c) => ({ id: c.slug, label: c.name }))} />
+      }
     >
+      <NotesReadingProgress />
       <GuideJsonLd
         type="Article"
         path={`${base}/${subtopicSlug}`}
@@ -265,9 +284,15 @@ export default async function NotesSubtopicPage({
           <p className="text-xs font-semibold uppercase tracking-wide text-brand-accent">
             Why this matters
           </p>
-          <p className="mt-2 font-serif text-base leading-relaxed text-foreground">
-            {note.whyItMatters}
-          </p>
+          {/* Clamped to 3 lines on a phone (whole from sm up): it ran ~16 phone
+              lines before the first concept. Plain-text field, so safe to clamp. */}
+          <div className="mt-2">
+            <ExpandableProse
+              text={note.whyItMatters}
+              className="font-serif text-base leading-relaxed text-foreground"
+              mobileOnly
+            />
+          </div>
         </section>
       )}
 
@@ -275,7 +300,7 @@ export default async function NotesSubtopicPage({
       {note.concepts.length > 0 && (
         <nav
           aria-label="Concepts in this subtopic"
-          className="mb-10 rounded-lg border bg-muted/30 p-4"
+          className="mb-10 rounded-lg border bg-muted/30 p-4 xl:hidden"
         >
           <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
             {note.concepts.length} concepts in this subtopic
@@ -345,7 +370,15 @@ export default async function NotesSubtopicPage({
 
           {/* Mastery checkpoint — interleaved questions from the concept-tag pool.
               Gated behind a free sign-in (client-side, so the page stays ISR). */}
-          <PracticeGate variant="full" label="take the mastery checkpoint">
+          <PracticeGate
+            variant="full"
+            label="take the mastery checkpoint"
+            preview={
+              checkpointRows[0] ? (
+                <CheckpointPreview question={checkpointRows[0]} total={checkpointRows.length} />
+              ) : undefined
+            }
+          >
             <SubtopicMasteryCheckpoint
               questions={checkpointRows}
               subtopicSlug={subtopicSlug}
@@ -356,41 +389,31 @@ export default async function NotesSubtopicPage({
         </>
       )}
 
-      {/* The way on: next/previous topic, then a real paper to test it on. */}
+      {/* The way on: next/previous topic, then ONE card to test the topic: a
+          real paper first, the topic's past questions beside it. These were
+          five boxed calls to action of equal weight in a row. */}
       <NotesKeepGoing next={nav.next} prev={nav.prev} />
-      {mock && (
+      {mock ? (
         <NotesMockCard
           href={mock.href}
           examDisplay={mock.examDisplay}
           copy={mockCtaCopy(mock)}
           page="topic"
+          secondary={drill}
         />
-      )}
-
-      {/* Final drill CTA */}
-      <section className="mt-12 rounded-lg border-2 border-brand/40 bg-brand/5 p-6 text-center">
-        <h2 className="text-lg font-semibold tracking-tight">
-          Drill every past-year question on this subtopic
-        </h2>
-        <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
-          {drillCount > 0
-            ? `${drillCount} questions from the bank — paginated, with cart and Word-export support.`
-            : "Open the bank with this subtopic pre-filtered."}
-        </p>
-        <div className="mt-4 flex justify-center">
-          <BrowseLink
-            examId={taxonomy.examId}
-            subjectId={taxonomy.subjectId}
-            subtopicIds={subtopicId ? [subtopicId] : []}
-            from={subtopicUrl}
-            fromLabel={backLabel}
-          >
+      ) : (
+        <section className="mt-6 rounded-2xl border bg-card p-6 shadow-sm">
+          <h2 className="text-lg font-semibold tracking-tight">
+            Drill the past-year questions on this topic
+          </h2>
+          <p className="mt-1 font-serif text-sm leading-relaxed text-muted-foreground">
             {drillCount > 0
-              ? `Drill the ${drillCount} questions`
-              : "Open in Browse"}
-          </BrowseLink>
-        </div>
-      </section>
+              ? `${drillCount} questions from the bank, with cart and Word export.`
+              : "Open the bank with this topic pre-filtered."}
+          </p>
+          <div className="mt-4">{drill}</div>
+        </section>
+      )}
 
       {related.length > 0 && (
         <section className="mt-10">

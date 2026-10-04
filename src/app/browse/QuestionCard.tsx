@@ -30,6 +30,7 @@ import {
 } from "@/components/ui/dialog";
 import type { OptionRow, QuestionRow } from "@/lib/questions/query";
 import { sourceTag } from "@/lib/questions/sourceTag";
+import { DIFFICULTY_LABEL, DIFFICULTY_PILL } from "@/lib/questions/difficultyPill";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { useCart } from "@/lib/cart/CartProvider";
 import type { QuestionResources } from "@/lib/links/questionResources";
@@ -51,18 +52,6 @@ import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import type { ItemStatAggregate } from "@/lib/itemStats/types";
 
 type OptionLabel = OptionRow["label"];
-
-const DIFFICULTY_LABEL: Record<QuestionRow["difficulty"], string> = {
-  EASY: "Easy",
-  MODERATE: "Moderate",
-  HARD: "Hard",
-};
-
-const DIFFICULTY_PILL: Record<QuestionRow["difficulty"], string> = {
-  EASY: "bg-emerald-50 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300",
-  MODERATE: "bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300",
-  HARD: "bg-rose-50 text-rose-700 dark:bg-rose-500/15 dark:text-rose-300",
-};
 
 /** Which page a chip tap came from, for the "resource-chips" readout. */
 function chipPage(pathname: string | null): "browse" | "questions" | "other" {

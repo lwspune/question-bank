@@ -26,9 +26,15 @@ type Props = {
   text: string;
   /** Applied to the paragraph, so the caller keeps its own type scale. */
   className?: string;
+  /**
+   * Clamp on phones only (3 lines) and show the whole text from `sm` up, with
+   * the control hidden there too. For a topic page's "Why this matters", which
+   * is 6-8 lines on a wide screen but ~16 on a phone.
+   */
+  mobileOnly?: boolean;
 };
 
-export default function ExpandableProse({ text, className }: Props) {
+export default function ExpandableProse({ text, className, mobileOnly }: Props) {
   const [expanded, setExpanded] = useState(false);
   /**
    * Starts TRUE so the control is in the server-rendered HTML.
@@ -71,7 +77,7 @@ export default function ExpandableProse({ text, className }: Props) {
         id={bodyId}
         className={cn(
           className,
-          !expanded && "line-clamp-2 sm:line-clamp-4"
+          !expanded && (mobileOnly ? "line-clamp-3 sm:line-clamp-none" : "line-clamp-2 sm:line-clamp-4")
         )}
       >{text}</p>
       {overflows && (
@@ -80,7 +86,10 @@ export default function ExpandableProse({ text, className }: Props) {
           onClick={() => setExpanded((v) => !v)}
           aria-expanded={expanded}
           aria-controls={bodyId}
-          className="mt-2 inline-flex items-center gap-1 rounded text-sm font-medium text-brand-accent transition-colors hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          className={cn(
+            "mt-2 inline-flex items-center gap-1 rounded text-sm font-medium text-brand-accent transition-colors hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+            mobileOnly && "sm:hidden"
+          )}
         >
           {expanded ? "Show less" : "Read more"}
           <ChevronDown

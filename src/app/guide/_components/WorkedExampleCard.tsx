@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CheckCircle2, ChevronDown, Lightbulb } from "lucide-react";
+import { Check, ChevronDown, Eye, Lightbulb, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useSignedIn } from "@/components/auth/useSignedIn";
 import { recordPractice } from "@/components/reveal/practiceBeacon";
@@ -10,241 +10,194 @@ import BlockText from "@/components/math/BlockText";
 import { stripPassageCountPhrase } from "@/lib/export/stripPassageCount";
 import PresentButton from "@/components/present/PresentButton";
 import { fromWorkedExample } from "@/lib/present/viewModel";
+import { optionMark } from "@/lib/questions/optionMark";
+import { DIFFICULTY_LABEL, DIFFICULTY_PILL } from "@/lib/questions/difficultyPill";
 import type { WorkedExample } from "@/lib/guide/loadWorkedExamples";
 
 type Props = {
   rank: number;
   example: WorkedExample;
-  /** Vestigial — scaled fonts for the (removed 2026-06-09) Present mode; no caller passes it now. */
-  presentMode?: boolean;
 };
 
-const DIFFICULTY_STYLES = {
-  EASY: "bg-emerald-100 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300",
-  MODERATE: "bg-sky-100 text-sky-800 dark:bg-sky-950/40 dark:text-sky-300",
-  HARD: "bg-rose-100 text-rose-800 dark:bg-rose-950/40 dark:text-rose-300",
-} as const;
-
-export default function WorkedExampleCard({ rank, example, presentMode }: Props) {
-  // Three-stage reveal: options (neutral) → answer (correct highlighted) → solution.
-  const [showOptions, setShowOptions] = useState(false);
-  const [showAnswer, setShowAnswer] = useState(false);
+/**
+ * A real past-year question on a /notes or /guide page, in the bank card's
+ * style (2026-10-04 redesign): the source tag and difficulty up top, options
+ * shown and tappable, the solution in the blue panel.
+ *
+ * A tap on an option reveals the answer and marks the pick (optionMark, the
+ * rule /browse and /board use). "Show answer" does the same without a pick.
+ * Either way ONE practice event is recorded, with no verdict: notes and guide
+ * pages record that an answer was seen, never right or wrong, as before.
+ *
+ * useSignedIn, NOT useRevealMeter. That hook records AND gates: it spends an
+ * anon viewer's free-reveal budget, and a reveal wall on the public guide and
+ * notes pages would be a product change nobody asked for.
+ */
+export default function WorkedExampleCard({ rank, example }: Props) {
+  const [picked, setPicked] = useState<string | null>(null);
+  const [revealed, setRevealed] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
-
-  // Stage 2 is the retrieval-practice act, and the ONLY choke point worth
-  // recording: stage 1 merely shows the options with no answer yet, and stage 3
-  // is unreachable until `showAnswer` is already true — so one hook here covers
-  // every path to a revealed answer.
-  //
-  // useSignedIn, NOT useRevealMeter. That hook records AND gates — it spends an
-  // anon viewer's FREE_REVEAL_LIMIT budget — and putting a reveal wall on 17
-  // public guide pages would be a product change nobody asked for. Recording is
-  // not gating; these pages stay wide open.
   const { signedIn } = useSignedIn();
-  const revealAnswer = () => {
-    setShowAnswer(true);
-    // Signed-in only, and a no-op otherwise (see the 0105 migration header).
-    recordPractice(example.id, signedIn, "guide");
+
+  const reveal = (label: string | null) => {
+    if (!revealed) {
+      setRevealed(true);
+      recordPractice(example.id, signedIn, "guide");
+    }
+    if (label) setPicked(label);
   };
+
   const correct = example.options.find((o) => o.isCorrect);
-  // Projection view-model for the classroom overlay.
   const presentable = useMemo(() => fromWorkedExample(example), [example]);
+  const path = [example.chapter, example.subtopic].filter(Boolean).join(" · ");
 
   return (
-    <article className="rounded-lg border bg-card shadow-sm">
-      <header
-        className={cn(
-          "flex flex-wrap items-center gap-2 border-b text-muted-foreground",
-          presentMode ? "px-6 py-3 text-lg" : "px-4 py-2.5 text-xs"
-        )}
-      >
-        <span className="font-semibold text-foreground tabular-nums">
-          Example {rank}
-        </span>
-        <span aria-hidden>·</span>
-        <span>{example.chapter}</span>
-        <span
-          className={cn(
-            "ml-auto inline-flex rounded font-medium uppercase tracking-wide",
-            presentMode ? "px-2 py-1 text-sm" : "px-1.5 py-0.5 text-[10px]",
-            DIFFICULTY_STYLES[example.difficulty]
-          )}
-        >
-          {example.difficulty}
-        </span>
-        <PresentButton question={presentable} order={rank} />
-      </header>
-
-      {example.context && (
-        <div
-          className={cn(
-            "border-b bg-muted/30 font-serif italic leading-relaxed text-muted-foreground",
-            presentMode ? "px-6 py-4 text-xl sm:text-2xl" : "px-4 py-3 text-sm"
-          )}
-        >
-          <BlockText text={stripPassageCountPhrase(example.context)} />
-        </div>
-      )}
-
-      <div
-        className={cn(
-          "font-serif leading-relaxed",
-          presentMode ? "px-6 py-5 text-2xl sm:text-3xl" : "px-4 py-3 text-sm"
-        )}
-      >
-        <BlockText text={example.text} />
-        {example.provenance && (
-          <p
-            className={cn(
-              "mt-2 font-sans tabular-nums text-muted-foreground",
-              presentMode ? "text-base" : "text-xs"
-            )}
-          >
-            [{example.provenance}]
-          </p>
-        )}
-      </div>
-
-      {/* Options reveal — stage 1 (neutral) */}
-      <div className={cn("border-t", presentMode ? "px-6 py-4" : "px-4 py-3")}>
-        {!showOptions ? (
-          <button
-            type="button"
-            onClick={() => setShowOptions(true)}
-            className={cn(
-              "inline-flex items-center gap-1.5 font-medium text-primary hover:underline",
-              presentMode ? "text-xl" : "text-xs"
-            )}
-          >
-            <ChevronDown
-              className={presentMode ? "h-5 w-5" : "h-3.5 w-3.5"}
-              aria-hidden
-            />
-            Show options
-          </button>
-        ) : (
-          <>
-            <ol
-              className={cn(presentMode ? "space-y-3 text-2xl" : "space-y-1.5 text-sm")}
+    <article className="overflow-hidden rounded-2xl border bg-card shadow-sm">
+      <div className="space-y-3 p-4 sm:p-5">
+        <div className="flex items-start gap-2">
+          <div className="flex min-w-0 flex-1 flex-wrap items-center gap-1.5">
+            <span
+              className={cn(
+                "inline-flex max-w-full items-center rounded-full px-2.5 py-0.5 text-xs font-semibold",
+                example.source.kind === "pyq"
+                  ? "bg-brand-accent/10 text-brand-accent"
+                  : "bg-muted text-muted-foreground"
+              )}
             >
-              {example.options.map((o) => {
-                const highlight = o.isCorrect && showAnswer;
-                return (
-                  <li
-                    key={o.label}
-                    className={cn(
-                      "flex gap-2 rounded-md",
-                      presentMode ? "px-3 py-2" : "px-2 py-1",
-                      highlight && "bg-emerald-50 dark:bg-emerald-950/30"
-                    )}
+              <span className="truncate">{example.source.label}</span>
+            </span>
+            <span
+              className={cn(
+                "inline-flex shrink-0 items-center rounded-full px-2.5 py-0.5 text-xs font-semibold",
+                DIFFICULTY_PILL[example.difficulty]
+              )}
+            >
+              {DIFFICULTY_LABEL[example.difficulty]}
+            </span>
+          </div>
+          <PresentButton question={presentable} order={rank} />
+        </div>
+
+        <p className="text-xs text-muted-foreground">
+          <span className="font-semibold tabular-nums text-foreground">Example {rank}</span>
+          {path && <span> · {path}</span>}
+        </p>
+
+        {example.context && (
+          <div className="rounded-xl bg-muted/40 px-4 py-3 font-serif text-sm italic leading-relaxed text-muted-foreground">
+            <BlockText text={stripPassageCountPhrase(example.context)} />
+          </div>
+        )}
+
+        <div className="font-serif text-[15px] leading-relaxed">
+          <BlockText text={example.text} />
+        </div>
+
+        {example.options.length > 0 && (
+          <ol className="space-y-2">
+            {example.options.map((o) => {
+              const isPicked = picked === o.label;
+              const mark = optionMark({ revealed, picked: isPicked, isCorrect: o.isCorrect });
+              const showCorrect = mark === "correct";
+              const showWrong = mark === "wrong";
+              const dimmed = revealed && mark === "none";
+              return (
+                <li
+                  key={o.label}
+                  className={cn(
+                    "overflow-hidden rounded-xl border-[1.5px] bg-card transition-colors",
+                    showCorrect && "border-emerald-400 bg-emerald-50 dark:border-emerald-500 dark:bg-emerald-500/10",
+                    showWrong && "border-red-400 bg-red-50 dark:border-red-500 dark:bg-red-500/10",
+                    dimmed && "opacity-60"
+                  )}
+                >
+                  <button
+                    type="button"
+                    onClick={() => reveal(o.label)}
+                    aria-pressed={isPicked}
+                    className="flex w-full items-center gap-3 px-3 py-2.5 text-left font-serif text-[15px] transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
                   >
                     <span
                       className={cn(
-                        "font-semibold tabular-nums",
-                        highlight
-                          ? "text-emerald-700 dark:text-emerald-400"
-                          : "text-muted-foreground"
+                        "inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-sans text-xs font-bold",
+                        showCorrect
+                          ? "bg-emerald-600 text-white"
+                          : showWrong
+                            ? "bg-red-600 text-white"
+                            : "bg-brand-accent/10 text-brand-accent"
                       )}
                     >
-                      {o.label}.
+                      {showCorrect ? <Check className="h-4 w-4" aria-hidden /> : o.label}
+                      {showCorrect && <span className="sr-only">{o.label}</span>}
                     </span>
-                    <span className="font-serif">
+                    <span className="min-w-0 flex-1 overflow-x-auto [&_.katex]:max-w-full">
                       <KatexRenderer text={o.text} />
                     </span>
-                    {highlight && (
-                      <CheckCircle2
-                        className={cn(
-                          "ml-auto shrink-0 text-emerald-600 dark:text-emerald-400",
-                          presentMode ? "h-7 w-7" : "h-4 w-4"
-                        )}
-                        aria-label="Correct answer"
-                      />
+                    {showCorrect && (
+                      <span className="inline-flex shrink-0 items-center gap-1 font-sans text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+                        <Check className="h-3.5 w-3.5" aria-hidden />
+                        Correct
+                      </span>
                     )}
-                  </li>
-                );
-              })}
-            </ol>
-
-            {/* Answer reveal — stage 2 (highlight the correct option) */}
-            {!showAnswer && (
-              <button
-                type="button"
-                onClick={revealAnswer}
-                className={cn(
-                  "mt-3 inline-flex items-center gap-1.5 font-medium text-primary hover:underline",
-                  presentMode ? "text-xl" : "text-xs"
-                )}
-              >
-                <ChevronDown
-                  className={presentMode ? "h-5 w-5" : "h-3.5 w-3.5"}
-                  aria-hidden
-                />
-                Show answer
-              </button>
-            )}
-          </>
+                    {showWrong && (
+                      <span className="inline-flex shrink-0 items-center gap-1 font-sans text-xs font-semibold text-red-700 dark:text-red-300">
+                        <X className="h-3.5 w-3.5" aria-hidden />
+                        Your pick
+                      </span>
+                    )}
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
         )}
-      </div>
 
-      {/* Solution reveal — stage 3 */}
-      {showAnswer && example.solution && (
-        <div
-          className={cn(
-            "border-t bg-muted/30",
-            presentMode ? "px-6 py-4" : "px-4 py-3"
-          )}
-        >
-          {!showSolution ? (
-            <button
-              type="button"
-              onClick={() => setShowSolution(true)}
-              className={cn(
-                "inline-flex items-center gap-1.5 font-medium text-primary hover:underline",
-                presentMode ? "text-xl" : "text-xs"
-              )}
-            >
-              <Lightbulb
-                className={presentMode ? "h-5 w-5" : "h-3.5 w-3.5"}
-                aria-hidden
-              />
-              Show solution
-            </button>
-          ) : (
-            <div
-              className={cn(
-                "font-serif leading-relaxed text-muted-foreground",
-                presentMode ? "text-xl sm:text-2xl" : "text-sm"
-              )}
-            >
-              <p
-                className={cn(
-                  "mb-1 flex items-center gap-1.5 font-semibold uppercase tracking-wide text-primary",
-                  presentMode ? "text-base" : "text-xs"
-                )}
-              >
-                <Lightbulb
-                  className={presentMode ? "h-5 w-5" : "h-3.5 w-3.5"}
-                  aria-hidden
-                />{" "}
-                Solution
-              </p>
+        {showSolution && example.solution && (
+          <div className="rounded-xl border border-brand-accent/20 bg-brand-accent/5 p-3 text-sm motion-safe:animate-fade-in-up sm:p-4">
+            <p className="flex items-center gap-1.5 font-sans text-xs font-bold uppercase tracking-wide text-brand-accent">
+              <Lightbulb className="h-3.5 w-3.5" aria-hidden />
+              Solution
+            </p>
+            <div className="mt-1.5 font-serif leading-relaxed">
               <BlockText text={example.solution} solution />
             </div>
-          )}
-        </div>
-      )}
+          </div>
+        )}
 
-      {showAnswer && !example.solution && correct && (
-        <div
-          className={cn(
-            "border-t bg-muted/30 italic text-muted-foreground",
-            presentMode ? "px-6 py-3 text-lg" : "px-4 py-2 text-xs"
+        {revealed && !example.solution && correct && (
+          <p className="text-xs italic text-muted-foreground">
+            No worked solution recorded for this question. The correct answer is {correct.label}.
+          </p>
+        )}
+
+        <div className="flex flex-wrap items-center gap-2">
+          {!revealed ? (
+            <button
+              type="button"
+              onClick={() => reveal(null)}
+              className="inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <Eye className="h-4 w-4" aria-hidden />
+              Show answer
+            </button>
+          ) : (
+            example.solution && (
+              <button
+                type="button"
+                onClick={() => setShowSolution((v) => !v)}
+                aria-expanded={showSolution}
+                className="inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <ChevronDown
+                  className={cn("h-4 w-4 transition-transform", showSolution && "rotate-180")}
+                  aria-hidden
+                />
+                {showSolution ? "Hide solution" : "Show solution"}
+              </button>
+            )
           )}
-        >
-          No worked solution recorded for this question. The correct answer
-          is {correct.label}.
         </div>
-      )}
+      </div>
     </article>
   );
 }

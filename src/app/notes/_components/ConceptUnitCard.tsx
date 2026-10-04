@@ -726,32 +726,34 @@ export default function ConceptUnitCard({
   return (
     <section
       id={concept.slug}
-      className="scroll-mt-20 rounded-xl border bg-card p-6 shadow-sm"
+      className="scroll-mt-24 rounded-2xl border bg-card p-5 shadow-sm sm:p-8"
     >
-      <header className="mb-5 border-b pb-4">
-        <p className="text-xs font-semibold uppercase tracking-wider text-brand-accent">
-          Concept {index} of {total}
-        </p>
-        <h2 className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">
+      {/* A number badge and the name, not a caps "CONCEPT 1 OF 5" label: the
+          page read like a form with a grey caps label over every block. */}
+      <header className="mb-5 flex items-start gap-3">
+        <span
+          className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold tabular-nums text-brand-foreground"
+          aria-hidden
+        >
+          {index}
+        </span>
+        <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+          <span className="sr-only">
+            Concept {index} of {total}:{" "}
+          </span>
           {concept.name}
         </h2>
       </header>
 
-      {/* Intuition + definition */}
-      <div className="space-y-4">
-        <div>
-          <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            Intuition
-          </p>
-          <div className="font-serif text-base leading-relaxed text-foreground">
-            <KatexRenderer text={concept.intuition} />
-          </div>
+      {/* The intuition opens the concept as a lead paragraph (no label); the
+          definition sits on a thin brand rule, the way a textbook sets one. */}
+      <div className="space-y-5">
+        <div className="font-serif text-[17px] leading-relaxed text-foreground">
+          <KatexRenderer text={concept.intuition} />
         </div>
 
-        <div>
-          <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            Definition
-          </p>
+        <div className="border-l-2 border-brand/40 pl-4">
+          <p className="mb-1 text-xs font-semibold text-brand-accent">Definition</p>
           <RichText
             text={concept.definition}
             className="font-serif text-base leading-relaxed text-foreground"
@@ -769,7 +771,7 @@ export default function ConceptUnitCard({
       {/* Interactive visualization — slotted between the formula and the core
           teaching slot in per-concept teaching order. */}
       {concept.visualizationSlug && (
-        <div className="mt-6">{renderVisualization(concept.visualizationSlug)}</div>
+        <div className="notes-figure mt-6">{renderVisualization(concept.visualizationSlug)}</div>
       )}
 
       {/* Core teaching slot — formula variant gets a worked example;
@@ -814,8 +816,8 @@ export default function ConceptUnitCard({
       {/* Bank PYQ application — same concept on a real past-year question */}
       {pyqExample && (
         <div className="mt-6">
-          <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            From the bank · past-year question
+          <p className="mb-2 text-sm text-muted-foreground">
+            The same idea in a real exam question:
           </p>
           <WorkedExampleCard rank={index} example={pyqExample} />
         </div>

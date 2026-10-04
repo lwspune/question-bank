@@ -141,7 +141,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "chapter-tests",
     title: "MHT-CET chapter tests",
     change:
-      "72 chapter tests (20 questions, 18-36 minutes) published next to the full papers, and linked from each chapter's /questions and notes pages.",
+      "72 chapter tests (20 questions, 18-36 minutes) published next to the full papers, and linked from each chapter's /questions and notes pages. From 2026-10-05 the notes topic page's test card also holds the drill link (a separate drill box below it was removed), so the card is the page's main closing action.",
     why: "A full paper is a hard first step: before launch about 5 MHT-CET students a week sat a mock, answering about half of it.",
     metric: "MHT-CET students sitting any mock per week; share of each sitting answered, chapter tests vs full papers",
     rule: `Keep them featured if weekly MHT-CET mock students reach ${CHAPTER_TESTS_STUDENTS_KEEP}+ or chapter tests average ${CHAPTER_TESTS_ANSWERED_KEEP}%+ answered by the check date; otherwise stop featuring them on chapter pages.`,

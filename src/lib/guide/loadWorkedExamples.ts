@@ -1,6 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Difficulty } from "@/lib/questions/filters";
 import { formatProvenance } from "@/lib/questions/formatProvenance";
+import { sourceTag, type SourceTag } from "@/lib/questions/sourceTag";
 import {
   publicPyqNote,
   type PublicQuestionKind,
@@ -17,6 +18,8 @@ export type WorkedExample = {
   subtopic: string | null;
   /** PYQ citation, e.g. "Q110 · Sep · 2023"; null when metadata is absent. */
   provenance: string | null;
+  /** The tag the bank card leads with ("NDA · Sep 2023 · Q110"); see sourceTag. */
+  source: SourceTag;
   options: {
     label: "A" | "B" | "C" | "D";
     text: string;
@@ -99,6 +102,14 @@ export async function loadWorkedExamples(
         // the redacted one. See publicPyqNote for why the column cannot be
         // published as-is.
         pyqNote: publicPyqNote(r.pyq_note, r.question_kind),
+      }),
+      source: sourceTag({
+        questionKind: r.question_kind ?? undefined,
+        exam: { name: flat(r.exam)?.name ?? "" },
+        pyqYear: r.pyq_year,
+        pyqMonth: r.pyq_month,
+        pyqNote: publicPyqNote(r.pyq_note, r.question_kind),
+        questionNumber: r.question_number,
       }),
       options: (r.options ?? [])
         .map((o) => ({
