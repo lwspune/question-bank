@@ -274,7 +274,7 @@ export default async function Home() {
               src="/marketing/answer-card.webp"
               alt="A 2026 NDA question on PYQ Vault with the correct answer marked and the worked solution below it"
               width={640}
-              height={1180}
+              height={1198}
               className="mx-auto max-h-[340px] w-full max-w-sm rounded-2xl object-cover object-top shadow-2xl ring-1 ring-white/20 [mask-image:linear-gradient(to_bottom,black_75%,transparent)] md:max-h-none md:max-w-[340px] md:[mask-image:none]"
             />
           </div>
