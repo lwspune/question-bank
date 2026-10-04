@@ -4,7 +4,6 @@ import { redirect } from "next/navigation";
 import {
   ArrowRight,
   Bookmark,
-  LayoutDashboard,
 } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { getSessionUser } from "@/lib/auth";
@@ -22,6 +21,7 @@ import { needsNps } from "@/lib/feedback/nps";
 import AttemptsList from "../mock/_components/AttemptsList";
 import FeedbackCards from "./FeedbackCards";
 import TodayCard from "./TodayCard";
+import { greetingFor } from "@/lib/me/today";
 import { getOwnWeekly } from "@/lib/goals/service";
 import { listMyAssignments } from "@/lib/assignments/service";
 import type { StudentAssignmentView } from "@/lib/assignments/core";
@@ -102,18 +102,12 @@ export default async function MePage() {
   return (
     <>
       <AppHeader />
-      <main className="mx-auto max-w-5xl space-y-8 px-6 py-8">
-        <header className="flex items-center gap-3">
-          <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand-accent">
-            <LayoutDashboard className="h-5 w-5" aria-hidden />
-          </span>
-          <div>
-            <h1 className="text-2xl font-semibold tracking-tight">Your dashboard</h1>
-            <p className="text-sm text-muted-foreground" data-clarity-mask="true">{user.email}</p>
-          </div>
+      <main className="mx-auto max-w-4xl space-y-6 px-4 py-6 sm:space-y-8 sm:px-6 sm:py-8">
+        {/* A greeting, not "Your dashboard" over the student's own email. */}
+        <header className="space-y-2">
+          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{greetingFor(istHour(now))}</h1>
+          {examLinks.length > 0 ? <YourExams links={examLinks} /> : <NoTargetCard />}
         </header>
-
-        {examLinks.length > 0 ? <YourExams links={examLinks} /> : <NoTargetCard />}
 
         {showStageNudge && stage && (
           <StageNudge stageLabel={STAGE_LABELS[stage]} year={now.getFullYear()} />
@@ -173,7 +167,6 @@ export default async function MePage() {
               supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
               hideCart
               surface="daily"
-              defaultExpanded
             />
           </section>
         )}
@@ -490,4 +483,11 @@ async function loadQuestionOfDay(
     }
   }
   return null;
+}
+
+/** The hour of the day in India (0-23), for the greeting. */
+function istHour(d: Date): number {
+  return Number(
+    new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", hour: "numeric", hourCycle: "h23" }).format(d)
+  );
 }
