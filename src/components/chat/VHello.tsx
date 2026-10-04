@@ -104,11 +104,13 @@ export default function VHello({ hello, surface }: { hello: Hello | null; surfac
     };
   }, [hello, surface]);
 
-  // Step aside if the chat opens or the notes test bar slides up.
+  // Step aside if the chat opens, the notes test bar slides up, or V's
+  // celebration bubble (VSays) takes the corner.
   useEffect(() => {
     if (!open) return;
     const timer = window.setInterval(() => {
-      if (chatOpen() || document.documentElement.dataset.bottomBar === "open") setOpen(false);
+      const root = document.documentElement.dataset;
+      if (chatOpen() || root.bottomBar === "open" || root.vSays === "open") setOpen(false);
     }, 500);
     return () => window.clearInterval(timer);
   }, [open]);

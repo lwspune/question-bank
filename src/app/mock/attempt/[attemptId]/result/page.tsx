@@ -102,7 +102,7 @@ export default async function MockResultPage({ params }: { params: Params }) {
         )}
 
         <PulseRefresh />
-        <CelebrateOnMount message={milestone !== null ? milestoneMessage(milestone) : null} />
+        <CelebrateOnMount message={milestone !== null ? milestoneMessage(milestone, "mock") : null} />
 
         {/* Headline: accuracy on attempted, the unanswered count as its own
             fact, marks as a secondary line. One card, one primary action. */}

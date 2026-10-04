@@ -70,7 +70,12 @@ describe("the award row", () => {
 
 describe("milestoneMessage", () => {
   it("says what was done, in plain words", () => {
-    expect(milestoneMessage(10)).toBe("10 questions answered.");
-    expect(milestoneMessage(1500)).toBe("1,500 questions answered.");
+    expect(milestoneMessage(10)).toBe("10 questions answered. Good start!");
+    expect(milestoneMessage(100)).toBe("That's 100 questions answered. Every one counts.");
+    expect(milestoneMessage(1500)).toBe("That's 1,500 questions answered. Every one counts.");
+  });
+
+  it("says the paper did it when a mock crossed the line", () => {
+    expect(milestoneMessage(150, "mock")).toBe("That paper took you past 150 questions answered. Every one counts.");
   });
 });

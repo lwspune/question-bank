@@ -7,7 +7,9 @@
  */
 import { describe, it, expect } from "vitest";
 import { fixedCount, type DrillEvent } from "@/lib/drill/select";
-import { answerProgress, fixedMessage, progressLine } from "@/lib/drill/progress";
+import { answerProgress, drillVSays, fixedMessage, progressLine } from "@/lib/drill/progress";
+import { crowdMessage } from "@/lib/celebrate/crowd";
+import { milestoneMessage } from "@/lib/celebrate/milestones";
 
 const NOW = new Date("2026-10-04T06:00:00.000Z");
 const ev = (questionId: string, correct: boolean, at: string): DrillEvent => ({ questionId, correct, at });
@@ -76,7 +78,48 @@ describe("the words", () => {
   });
 
   it("names the running total on a fix, singular and plural", () => {
-    expect(fixedMessage(1)).toBe("Fixed: right twice since you missed it. That's your first fix.");
-    expect(fixedMessage(24)).toBe("Fixed: right twice since you missed it. 24 questions fixed so far.");
+    expect(fixedMessage(1)).toBe("Fixed! That's your first one.");
+    expect(fixedMessage(24)).toBe("Fixed! Right twice since you missed it. That's 24 you've fixed.");
+  });
+
+  it("V's line when a question rests", () => {
+    expect(progressLine("rested")).toBe("Got it this time! I'll bring it back in 10 days to check it stuck.");
+  });
+});
+
+describe("drillVSays — what V says inside the drill's answer panel", () => {
+  const base = { correct: true, progress: "right" as const, fixedTotal: null, crowd: null, milestone: null };
+
+  it("says nothing on a miss, or on a plain right answer to a new question", () => {
+    expect(drillVSays({ ...base, correct: false, progress: "wrong" })).toBeNull();
+    expect(drillVSays(base)).toBeNull();
+  });
+
+  it("talks when a question rests", () => {
+    expect(drillVSays({ ...base, progress: "rested" })).toEqual({
+      lines: [progressLine("rested")],
+      face: "talk",
+      fixed: false,
+    });
+  });
+
+  it("laughs on a fix, and puts the fix first, then the crowd, then a milestone", () => {
+    expect(drillVSays({ ...base, progress: "fixed", fixedTotal: 24, crowd: 90, milestone: 100 })).toEqual({
+      lines: [fixedMessage(24), crowdMessage(90), milestoneMessage(100)],
+      face: "laugh",
+      fixed: true,
+    });
+  });
+
+  it("laughs when a right answer beats the crowd, even on a new question", () => {
+    expect(drillVSays({ ...base, crowd: 70 })).toEqual({ lines: [crowdMessage(70)], face: "laugh", fixed: false });
+  });
+
+  it("talks when only a milestone came with the answer", () => {
+    expect(drillVSays({ ...base, progress: "rested", milestone: 50 })).toEqual({
+      lines: [progressLine("rested"), milestoneMessage(50)],
+      face: "talk",
+      fixed: false,
+    });
   });
 });

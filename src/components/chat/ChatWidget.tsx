@@ -8,6 +8,7 @@ import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { PREDEFINED_QUESTIONS, type ChatFaqId } from "@/lib/chat/faq";
 import { vPlacement } from "@/lib/chat/placement";
 import { useCart } from "@/lib/cart/CartProvider";
+import VSays from "./VSays";
 
 type VAvatar = "idle" | "laugh" | "think" | "talk";
 
@@ -192,6 +193,9 @@ export default function ChatWidget() {
         </div>
       )}
 
+      {/* Celebrations, in V's voice (2026-10-04). Unmounted while the chat is
+          open, so celebrate() falls back to the toast then. */}
+      {!open && <VSays />}
       <button
         ref={launcherRef}
         type="button"

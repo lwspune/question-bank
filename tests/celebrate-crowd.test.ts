@@ -47,9 +47,9 @@ describe("crowdTier", () => {
 
 describe("crowdMessage — the user's wording", () => {
   it("says the tier word, the share and what the student did", () => {
-    expect(crowdMessage(70)).toBe("Nice! 70%+ got it wrong, you got it right.");
-    expect(crowdMessage(80)).toBe("Smart! 80%+ got it wrong, you got it right.");
-    expect(crowdMessage(90)).toBe("Genius! 90%+ got it wrong, you got it right.");
+    expect(crowdMessage(70)).toBe("Nice! 70%+ got this wrong. You got it right.");
+    expect(crowdMessage(80)).toBe("Smart! 80%+ got this wrong. You got it right.");
+    expect(crowdMessage(90)).toBe("Genius! 90%+ got this wrong. You got it right.");
   });
 });
 

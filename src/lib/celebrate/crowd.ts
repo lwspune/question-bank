@@ -2,9 +2,10 @@
  * "Beat the crowd" — the pure core (2026-10-04, the user's tiers and words).
  *
  * When a student answers right a question most students got wrong:
- *   70%+ wrong  "Nice! 70%+ got it wrong, you got it right."
- *   80%+ wrong  "Smart! 80%+ got it wrong, you got it right."
- *   90%+ wrong  "Genius! 90%+ got it wrong, you got it right."
+ *   70%+ wrong  "Nice! 70%+ got this wrong. You got it right."
+ *   80%+ wrong  "Smart! 80%+ got this wrong. You got it right."
+ *   90%+ wrong  "Genius! 90%+ got this wrong. You got it right."
+ * V says it (the user's call, same day).
  *
  * THE SAFETY RULES ARE THE FEATURE. A question most students get wrong is
  * exactly where a wrong key hides: on 2026-10-04 all 45 questions at 80%+
@@ -52,7 +53,7 @@ export function crowdTier(pooled: { attempted: number; correct: number }): Crowd
 }
 
 export function crowdMessage(tier: CrowdTier): string {
-  return `${WORD[tier]} ${tier}%+ got it wrong, you got it right.`;
+  return `${WORD[tier]} ${tier}%+ got this wrong. You got it right.`;
 }
 
 export type CrowdStatRow = {
