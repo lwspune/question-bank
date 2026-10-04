@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import UserMenu from "@/components/UserMenu";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -78,7 +77,12 @@ export default function HeaderBar({
             href={resolveHomeHref(session)}
             className="flex shrink-0 items-center gap-2 text-sm font-semibold tracking-tight"
           >
-            <BookOpen className="h-5 w-5 shrink-0 text-brand-accent" aria-hidden />
+            {/* The brand V (public/icons/mark-96.png, built by
+                scripts/brand/build_icons.py). A plain <img>, not next/image:
+                the repo uses no image optimisation, and this is a ~10 KB static
+                file. Decorative: the wordmark beside it names the link. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/icons/mark-96.png" alt="" aria-hidden width={24} height={24} className="h-6 w-6 shrink-0" />
             {/* The wordmark used to hide below sm so the icon row could fit; the nav
                 has moved to MobileTabBar, so there is room for it again. */}
             <span>PYQ Vault</span>

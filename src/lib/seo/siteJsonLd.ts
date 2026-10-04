@@ -8,7 +8,9 @@
  * reads. Not a ranking signal for ChatGPT search; it removes ambiguity about
  * the brand for everything else.
  *
- * Only genuine profiles in `sameAs`. No `logo`: the repo has no logo file.
+ * Only genuine profiles in `sameAs`. `logo` is the real 512 px brand icon
+ * (the V mark, built by scripts/brand/build_icons.py); Google wants a square
+ * image of at least 112 px on a crawlable URL.
  * Pure — spec in tests/site-jsonld.test.ts.
  */
 import {
@@ -44,6 +46,7 @@ export function buildSiteJsonLd(): SiteJsonLd {
       name: FOUNDER_NAME,
       sameAs: [FOUNDER_LINKEDIN_URL],
     },
+    logo: `${SITE_URL}/icons/icon-512.png`,
     sameAs: [LINKEDIN_COMPANY_URL, GITHUB_REPO_URL],
     areaServed: "IN",
   };

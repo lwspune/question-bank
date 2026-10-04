@@ -4,9 +4,11 @@
  * Article, guide CollectionPage), so nothing told a search engine who
  * "PYQ Vault" is or how its pages relate to the publisher.
  *
- * Only genuine profiles go in `sameAs`. There is no logo property on purpose:
- * the repo has no logo file, and pointing it at a generated OG image would
- * be a fabrication.
+ * Only genuine profiles go in `sameAs`. The logo is the real brand icon
+ * (2026-10-04: the V mark, public/icons/icon-512.png); before that there was
+ * no logo file, and pointing at a generated OG image would have been a
+ * fabrication. Google wants a square image of at least 112 px on a crawlable
+ * URL, which is why it is the 512 px icon and an absolute URL.
  */
 import { describe, it, expect } from "vitest";
 import { buildSiteJsonLd } from "../src/lib/seo/siteJsonLd";
@@ -38,8 +40,8 @@ describe("buildSiteJsonLd", () => {
     });
   });
 
-  it("carries no logo — there is no logo file to point at", () => {
-    expect("logo" in org).toBe(false);
+  it("points the logo at the real 512 px brand icon, by absolute URL", () => {
+    expect(org.logo).toBe("https://www.pyqvault.com/icons/icon-512.png");
   });
 
   it("ties the WebSite to the Organization by id", () => {
