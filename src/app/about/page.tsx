@@ -161,7 +161,7 @@ export default async function AboutPage() {
           restricted thing is downloading a question paper and answer key as
           Word files, which comes with the{" "}
           <Link href="/pricing?plan=mocks" className="text-brand-accent underline">
-            PYQ Vault Pass
+            Premium Pass
           </Link>
           , for students and teachers alike.
         </P>

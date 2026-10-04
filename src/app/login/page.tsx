@@ -200,7 +200,7 @@ function BrandPanel() {
           </p>
           <p className="mt-4 max-w-md text-sm text-primary-foreground/70">
             Your saved questions, mock attempts and notes progress, all waiting
-            for you. With the PYQ Vault Pass you can also download question
+            for you. With the Premium Pass you can also download question
             papers and answer keys as Word files.
           </p>
         </div>

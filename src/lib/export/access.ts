@@ -2,7 +2,7 @@
  * Export access gate (pure — no I/O, importable from both the API route and the
  * client DownloadDialog so the two never diverge).
  *
- *   - paper / key  → org STAFF, or anyone holding the PYQ Vault Pass.
+ *   - paper / key  → org STAFF, or anyone holding the Premium Pass.
  *   - tags (.xlsx nda-tracker sheet) → org staff only.
  *   - ppt (.pptx classroom slide deck) → org staff only. A projected question
  *     deck is a teaching artifact, so it belongs to the provisioned-institute tier.
@@ -25,7 +25,7 @@ import { SCOPE_MOCKS } from "@/lib/entitlements/access";
 
 /**
  * The entitlement scope that unlocks paper + key downloads: the scope the
- * PYQ Vault Pass is sold under. "teacher" (the retired ₹499 pass) and "all"
+ * Premium Pass is sold under. "teacher" (the retired ₹499 pass) and "all"
  * both cover it through scopeCovers, so no older grant loses anything.
  */
 export const DOWNLOAD_PASS_SCOPE = SCOPE_MOCKS;
@@ -55,7 +55,7 @@ export function resolveExportAccess(input: {
     allowed: false,
     status: 403,
     message: wordDoc
-      ? "Word paper downloads come with the PYQ Vault Pass."
+      ? "Word paper downloads come with the Premium Pass."
       : "This download is for institute staff accounts.",
   };
 }

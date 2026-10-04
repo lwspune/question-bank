@@ -173,16 +173,27 @@ export function planForPaidOrder(
 /**
  * What a client component needs to offer a pass: serialisable, no scope or
  * amounts. Built on the server from passForScope; null when nothing sells
- * that scope, and the CTA then falls back to plain /pricing.
+ * that scope, and the CTA then falls back to plain /pricing. `planId` and
+ * `perks` let the download box sell in place (2026-10-04); the order route
+ * re-reads the plan by id, so a client cannot choose its own price.
  */
-export type PassCta = { label: string; price: string; length: string; urlKey: string };
+export type PassCta = {
+  planId: string;
+  label: string;
+  price: string;
+  length: string;
+  urlKey: string;
+  perks: string[];
+};
 
 export function passCta(plan: Plan | null): PassCta | null {
   if (!plan) return null;
   return {
+    planId: plan.id,
     label: plan.label,
     price: formatRupees(plan.amountPaise),
     length: planLengthLabel(plan),
     urlKey: plan.urlKey,
+    perks: [...plan.perks],
   };
 }

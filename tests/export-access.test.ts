@@ -1,7 +1,7 @@
 /**
  * Unit spec for the export access gate (pure). This is the source of truth for
  * who can download which artifact:
- *   - paper / key  → org STAFF, or anyone holding the PYQ Vault Pass (2026-10-01;
+ *   - paper / key  → org STAFF, or anyone holding the Premium Pass (2026-10-01;
  *                    before that a separate Teacher Pass, and before 2026-09-26
  *                    staff only). Pass downloads are BRANDED, staff ones are not.
  *   - tags / ppt   → org staff only
@@ -54,7 +54,7 @@ describe("resolveExportAccess", () => {
     }
   });
 
-  // The PYQ Vault Pass (2026-10-01): the one paid pass unlocks the Word paper +
+  // The Premium Pass (2026-10-01): the one paid pass unlocks the Word paper +
   // answer key for anyone with no org, student or teacher. Slides and the tag
   // sheet stay org-staff only. (Was a separate ₹499 Teacher Pass, 2026-09-26.)
   describe("download pass", () => {

@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
     }
     const isStaff = !!member;
     const isSignedIn = !!user;
-    // The PYQ Vault Pass: a paid grant that unlocks paper + key without an org.
+    // The Premium Pass: a paid grant that unlocks paper + key without an org.
     const hasDownloadPass =
       user && !isStaff
         ? await userHasAccess(createSupabaseServerClient(), user.id, DOWNLOAD_PASS_SCOPE)

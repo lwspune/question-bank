@@ -25,7 +25,7 @@ export const PREDEFINED_QUESTIONS: readonly { id: ChatFaqId; label: string }[] =
   { id: "signup", label: "Do I need an account to browse questions?" },
   { id: "notes", label: "Where do I find notes for a subject?" },
   { id: "mocks", label: "Do you have timed mock tests?" },
-  { id: "mock-pass", label: "What's the PYQ Vault Pass?" },
+  { id: "mock-pass", label: "What's the Premium Pass?" },
   { id: "bank-size", label: "How many questions are in the bank?" },
 ];
 

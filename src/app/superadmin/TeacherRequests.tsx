@@ -71,7 +71,7 @@ export default function TeacherRequests({
           )}
         </h2>
         <p className="mt-1 text-sm text-muted-foreground">
-          Leads from the retired <code>/request-access</code> form (now the PYQ Vault Pass). Onboard the org + provision the
+          Leads from the retired <code>/request-access</code> form (now the Premium Pass). Onboard the org + provision the
           teacher above, then mark the request <em>provisioned</em>.
         </p>
       </header>

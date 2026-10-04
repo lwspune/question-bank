@@ -151,7 +151,7 @@ export default function StartPage() {
             Browsing, mocks, the drill and the map need only a free account. Word downloads
             of a paper and its answer key come with the{" "}
             <Link href="/pricing?plan=mocks" className="text-brand-accent underline">
-              PYQ Vault Pass
+              Premium Pass
             </Link>
             .
           </p>

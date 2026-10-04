@@ -33,6 +33,8 @@ import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
+import { gateTitle } from "@/lib/billing/gateCopy";
+import PassOffer from "./PassOffer";
 
 type Mode = "filters" | "cart";
 type Kind = "paper" | "key" | "tags" | "ppt";
@@ -58,7 +60,7 @@ export default function DownloadDialog({
   isSignedIn = false,
   /** Org staff (ADMIN/TEACHER) — additionally unlocks the tagged sheet. */
   isStaff = false,
-  /** Active PYQ Vault Pass — unlocks the paper + key (not slides or the sheet). */
+  /** Active Premium Pass — unlocks the paper + key (not slides or the sheet). */
   hasDownloadPass = false,
   /** The pass on sale that unlocks downloads; null = none on sale, so no CTA. */
   downloadPass = null,
@@ -119,6 +121,9 @@ export default function DownloadDialog({
   // Shared with the cards: a teacher reading in Marathi prints in Marathi.
   const [lang, setLang] = useQuestionLang();
   const [busyKind, setBusyKind] = useState<Kind | null>(null);
+  // Bought in this box: the refreshed page grants the pass, and the download
+  // view says so once, so the buyer knows the next tap is a file.
+  const [justBought, setJustBought] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const filterCount = totalCount;
@@ -208,6 +213,8 @@ export default function DownloadDialog({
           <DialogTitle>
             {canDownload
               ? `Download ${activeCount} question${activeCount === 1 ? "" : "s"}`
+              : downloadPass
+              ? gateTitle(activeCount, downloadPass.label)
               : "Download papers with the pass"}
           </DialogTitle>
           <DialogDescription>
@@ -222,35 +229,45 @@ export default function DownloadDialog({
                   ? ", and a tagged sheet (.xlsx) for nda-tracker, numbered to match the paper."
                   : "."}
               </>
+            ) : downloadPass ? (
+              `${downloadPass.label} includes:`
             ) : (
-              "Browsing, preview, timed mock tests and notes stay free — no account needed."
+              "Downloading question papers as Word files needs a pass."
             )}
           </DialogDescription>
         </DialogHeader>
 
         {!canDownload ? (
-          <div className="flex-1 space-y-3 overflow-y-auto px-6 py-4 text-sm text-muted-foreground">
-            <p>
-              {downloadPass ? (
-                <>
-                  Downloading question papers as Word files comes with the{" "}
-                  <strong className="text-foreground">{downloadPass.label}</strong> ({downloadPass.price} for{" "}
-                  {downloadPass.length}). It also unlocks unlimited timed mock tests.
-                </>
-              ) : (
-                "Downloading question papers as Word files needs a pass."
-              )}
-            </p>
-            <p>
-              You&apos;ll be able to filter the bank, pick questions, and export
-              the Question Paper and Answer Key, numbered and ready to print.
-            </p>
-          </div>
+          downloadPass ? (
+            <PassOffer
+              pass={downloadPass}
+              isSignedIn={isSignedIn}
+              returnTo={here}
+              mode={mode}
+              onCancel={() => setOpen(false)}
+              onBought={() => setJustBought(true)}
+            />
+          ) : (
+            <div className="flex-1 space-y-3 overflow-y-auto px-6 py-4 text-sm text-muted-foreground">
+              <p>
+                See{" "}
+                <Link href={pricingHref(null, here)} className="font-medium text-foreground underline">
+                  pricing
+                </Link>{" "}
+                for what is on sale.
+              </p>
+            </div>
+          )
         ) : (
         // min-h-0: a flex item's default min-height:auto refuses to shrink below
         // its content, so without it the body never clips, the dialog blows past
         // max-h-[90dvh], and the footer overlaps the last control.
         <div className="min-h-0 flex-1 space-y-4 overflow-y-auto px-6 py-4">
+          {justBought && (
+            <p role="status" className="rounded-md border border-brand-accent/30 bg-brand-accent/5 p-3 text-sm">
+              Pass active. Choose your files below.
+            </p>
+          )}
           {cartAvailable && (
             <div
               role="group"
@@ -349,6 +366,7 @@ export default function DownloadDialog({
             always visible anyway — and `sticky bottom-0` is what let it ride up
             over the content once the body stopped clipping. flex-wrap keeps the
             4 buttons inside the dialog instead of overflowing its left edge. */}
+        {(canDownload || !downloadPass) && (
         <DialogFooter className="shrink-0 flex-col gap-2 border-t bg-background px-6 py-4 sm:flex-row sm:flex-wrap">
           <Button
             variant="outline"
@@ -358,21 +376,7 @@ export default function DownloadDialog({
           >
             {busy ? "Working…" : canDownload ? "Done" : "Cancel"}
           </Button>
-          {!canDownload ? (
-            downloadPass && (
-              <Button asChild variant="brand" className="w-full sm:w-auto">
-                <Link
-                  href={pricingHref(downloadPass.urlKey, here)}
-                  onClick={() =>
-                    trackFunnelOnce("teacher_gate_cta_click", mode, { signedIn: isSignedIn, mode })
-                  }
-                >
-                  <Download className="h-4 w-4" aria-hidden />
-                  Get {downloadPass.label}
-                </Link>
-              </Button>
-            )
-          ) : (
+          {canDownload && (
             <>
               {canTags && (
                 <Button
@@ -417,6 +421,7 @@ export default function DownloadDialog({
             </>
           )}
         </DialogFooter>
+        )}
       </DialogContent>
     </Dialog>
   );

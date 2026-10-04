@@ -67,7 +67,7 @@ import { TOP_PRINCIPLES } from "@/app/guide/nda-maths/_data/principles";
 export const metadata: Metadata = {
   title: "Browse questions",
   description:
-    "Filter past-year questions by exam, chapter, difficulty, and year, and preview them free. Download the Question Paper + Answer Key as Word files with the PYQ Vault Pass.",
+    "Filter past-year questions by exam, chapter, difficulty, and year, and preview them free. Download the Question Paper + Answer Key as Word files with the Premium Pass.",
   alternates: { canonical: "/browse" },
 };
 
@@ -98,7 +98,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   // canEditContent is superadmin-only (migration 0056) — the per-question
   // "Edit" affordance shows only for the platform admin.
   const { isStaff, isSignedIn, canEditContent } = await getPageIdentity();
-  // The PYQ Vault Pass: a paid grant that unlocks the paper + key for an
+  // The Premium Pass: a paid grant that unlocks the paper + key for an
   // account with no org. Only a signed-in non-staff viewer needs the lookup.
   const hasDownloadPass =
     isSignedIn && !isStaff ? await sessionHasScope(DOWNLOAD_PASS_SCOPE) : false;

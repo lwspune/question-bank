@@ -18,7 +18,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "The PYQ Vault Pass: unlimited timed mock tests and Word question-paper + answer-key downloads, for students and teachers. Browsing stays free.",
+    "The Premium Pass: unlimited timed mock tests and Word question-paper + answer-key downloads, for students and teachers. Browsing stays free.",
   // Indexable (a genuine landing surface), but it is reachable with `?plan=`
   // and `?next=`, so it declares its canonical.
   alternates: { canonical: "/pricing" },

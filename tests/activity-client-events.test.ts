@@ -5,7 +5,7 @@
  * because those carry meaning the server alone can vouch for.
  */
 import { describe, it, expect } from "vitest";
-import { parseClientEvent, paywallEvent } from "@/lib/activity/clientEvents";
+import { parseClientEvent, paywallEvent, checkoutGate } from "@/lib/activity/clientEvents";
 
 const NOW = new Date("2026-09-27T03:00:00Z");
 
@@ -73,6 +73,20 @@ describe("paywallEvent (server builder)", () => {
     expect(paywallEvent("shown", "mock_limit", undefined, { userId: "u1", now: NOW }).dedupeKey).toBe(
       "paywall:shown:mock_limit:u1:2026-09-27"
     );
+  });
+});
+
+// Which gate a checkout started from (2026-10-04): the download box buys in
+// place, so the order route can no longer assume /pricing. Only gates that
+// open a checkout are accepted; anything else is /pricing, as before.
+describe("checkoutGate", () => {
+  it("accepts the download gate", () => {
+    expect(checkoutGate("teacher")).toBe("teacher");
+  });
+  it("defaults to pricing for a missing or unknown value", () => {
+    expect(checkoutGate(undefined)).toBe("pricing");
+    expect(checkoutGate("mock_limit")).toBe("pricing");
+    expect(checkoutGate(42)).toBe("pricing");
   });
 });
 

@@ -39,6 +39,15 @@ function isPlainObject(v: unknown): v is Record<string, unknown> {
  * Build a paywall_event. `shown` is an impression and is deduped per day when
  * the caller passes who/when; the other steps are real occurrences and repeat.
  */
+/**
+ * The gate a checkout started from, as the client names it in the order
+ * request. Only the download box ("teacher", the gate's name since 2026-07)
+ * buys outside /pricing; anything else is "pricing", the old assumption.
+ */
+export function checkoutGate(v: unknown): PaywallGate {
+  return v === "teacher" ? "teacher" : "pricing";
+}
+
 export function paywallEvent(
   step: PaywallStep,
   gate: PaywallGate,

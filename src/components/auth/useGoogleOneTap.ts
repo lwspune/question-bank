@@ -11,6 +11,7 @@ import {
   oneTapDestination,
   resolveGoogleClientId,
   shouldOfferOneTap,
+  DOWNLOAD_BOX_SIGNUP_SOURCE,
   ONE_TAP_SIGNUP_SOURCE,
 } from "@/lib/auth/oneTap";
 
@@ -25,6 +26,11 @@ import {
  * Fails quietly by design. No client id, a blocked script, Safari without FedCM,
  * or a visitor who dismissed it recently (Google backs off by itself): every
  * one of those leaves the plain "Sign in" link, which is what existed before.
+ *
+ * The same script also draws the "Continue with Google" button inside the
+ * download box (renderGoogleButton, 2026-10-04), so a visitor can sign in and
+ * buy without leaving /browse. Google keeps ONE configuration per page, so the
+ * button re-initialises it with its own nonce and callback when it renders.
  */
 const CLIENT_ID = resolveGoogleClientId(process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID);
 const SCRIPT_SRC = "https://accounts.google.com/gsi/client";
@@ -41,6 +47,17 @@ type GoogleAccountsId = {
     cancel_on_tap_outside: boolean;
   }): void;
   prompt(): void;
+  renderButton(
+    el: HTMLElement,
+    options: {
+      type: "standard";
+      theme: "filled_blue" | "outline";
+      size: "large";
+      text: "continue_with";
+      shape: "rectangular";
+      width?: number;
+    }
+  ): void;
 };
 
 declare global {
@@ -66,7 +83,8 @@ function loadScript(): Promise<void> {
   return scriptLoad;
 }
 
-async function completeSignIn(credential: string, rawNonce: string): Promise<string | null> {
+/** Signs in with Google's credential; stamps `source` on a brand-new account. */
+async function signInWithCredential(credential: string, rawNonce: string, source: string) {
   const supabase = createSupabaseBrowserClient();
   const { data, error } = await supabase.auth.signInWithIdToken({
     provider: "google",
@@ -79,9 +97,14 @@ async function completeSignIn(credential: string, rawNonce: string): Promise<str
   // Attribution, best effort, for a genuinely new account only (see isNewAccount).
   if (!user.user_metadata?.signup_source && isNewAccount(user.created_at, user.last_sign_in_at)) {
     await supabase.auth
-      .updateUser({ data: { signup_source: ONE_TAP_SIGNUP_SOURCE } })
+      .updateUser({ data: { signup_source: source } })
       .catch(() => undefined);
   }
+  return { supabase, user };
+}
+
+async function completeSignIn(credential: string, rawNonce: string): Promise<string | null> {
+  const { supabase, user } = await signInWithCredential(credential, rawNonce, ONE_TAP_SIGNUP_SOURCE);
 
   // Own-row read under RLS (student_profiles_select_own). The server helper
   // getOnboardingState is server-only, so the same select runs here.
@@ -136,4 +159,51 @@ export function useGoogleOneTap(): () => void {
       }
     })();
   }, [signedIn, loading, router]);
+}
+
+/** Whether the in-page Google button can be offered (a valid client id is set). */
+export const googleButtonAvailable = CLIENT_ID !== null;
+
+/**
+ * Draws Google's "Continue with Google" button into `el`. On a completed
+ * sign-in it calls `onSignedIn`; it never navigates, so the caller's dialog
+ * stays open (a brand-new account meets the welcome screen on a later visit,
+ * not in the middle of a purchase). Resolves false when the button cannot be
+ * drawn (no client id, script blocked), so the caller can show its fallback.
+ */
+export async function renderGoogleButton(
+  el: HTMLElement,
+  handlers: { onSignedIn: () => void; onError: () => void }
+): Promise<boolean> {
+  if (!CLIENT_ID) return false;
+  try {
+    await loadScript();
+    const id = window.google?.accounts?.id;
+    if (!id) return false;
+    const { raw, hashed } = await makeNonce();
+    id.initialize({
+      client_id: CLIENT_ID,
+      nonce: hashed,
+      context: "signin",
+      use_fedcm_for_prompt: true,
+      itp_support: true,
+      cancel_on_tap_outside: true,
+      callback: ({ credential }) => {
+        signInWithCredential(credential, raw, DOWNLOAD_BOX_SIGNUP_SOURCE)
+          .then(() => handlers.onSignedIn())
+          .catch(() => handlers.onError());
+      },
+    });
+    id.renderButton(el, {
+      type: "standard",
+      theme: "filled_blue",
+      size: "large",
+      text: "continue_with",
+      shape: "rectangular",
+      width: Math.min(400, Math.max(200, Math.floor(el.clientWidth))),
+    });
+    return true;
+  } catch {
+    return false;
+  }
 }
