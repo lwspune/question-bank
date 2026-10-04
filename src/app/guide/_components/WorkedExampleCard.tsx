@@ -228,7 +228,7 @@ export default function WorkedExampleCard({ rank, example, presentMode }: Props)
                 />{" "}
                 Solution
               </p>
-              <BlockText text={example.solution} />
+              <BlockText text={example.solution} solution />
             </div>
           )}
         </div>

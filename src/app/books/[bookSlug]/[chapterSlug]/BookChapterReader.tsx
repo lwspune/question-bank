@@ -460,7 +460,7 @@ function Question({
 
           {showAnswer && q.solution ? (
             <div className="rounded-md border-l-2 border-brand-accent bg-muted/30 py-2 pl-3 pr-2 text-[0.9rem]">
-              <BlockText text={q.solution} />
+              <BlockText text={q.solution} solution />
             </div>
           ) : null}
 

@@ -127,3 +127,18 @@ a[data-nav-pending] {
   pointer-events: none;
   opacity: 0.7;
 }
+
+/*
+  Solutions read top-down as working, so their display equations sit at the
+  left, slightly indented, instead of KaTeX's centred default; centred lines
+  between left-aligned prose made the eye zigzag. Opt-in through BlockText's
+  `solution` prop, so stems and /notes formula cards keep the centred default.
+  The Word answer key was already left-aligned (defJc=left in docxBuilder).
+*/
+.solution-math .katex-display,
+.solution-math .katex-display > .katex {
+  text-align: left;
+}
+.solution-math .katex-display > .katex {
+  padding-left: 1em;
+}

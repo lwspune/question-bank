@@ -64,7 +64,7 @@ export default function WorkedExampleAuthored({ example, presentMode }: Props) {
         <>
           <ol
             className={
-              "mt-4 list-decimal space-y-2 pl-6 font-serif text-muted-foreground " +
+              "solution-math mt-4 list-decimal space-y-2 pl-6 font-serif text-muted-foreground " +
               (presentMode ? "text-xl sm:text-2xl space-y-3" : "text-sm")
             }
           >

@@ -90,3 +90,74 @@ describe("long-form fields render through BlockText, never KatexRenderer", () =>
     ).toEqual([]);
   });
 });
+
+/**
+ * Solutions left-align their display equations (2026-10-04, owner's call).
+ *
+ * KaTeX centres `\[...\]` by default. A solution is working read top-down,
+ * so centred equations between left-aligned prose lines make the eye zigzag;
+ * the Word answer key was already left-aligned (`defJc=left`). The fix is
+ * opt-in so stems and /notes formula cards keep the centred default: BlockText
+ * takes a `solution` prop that adds the `solution-math` class, styled once in
+ * globals.css. Like the table rule above, it is a contract across every
+ * render site, so it is pinned the same way, by reading source.
+ */
+describe("solutions render with the solution prop (left-aligned display math)", () => {
+  const files = tsxUnder(ROOT);
+  const TAG_RE = /<BlockText\b[^>]*?\btext=\{([^{}]*(?:\([^()]*\))?[^{}]*)\}[^>]*?\/?>/g;
+  const solutionTags: { file: string; tag: string }[] = [];
+  for (const file of files) {
+    const src = readFileSync(file, "utf8");
+    for (const m of src.matchAll(TAG_RE)) {
+      const expr = m[1].replace(/^\w+\((.*)\)$/, "$1"); // breakSentences(q.solution) -> q.solution
+      if (lastIdentifier(expr).toLowerCase() === "solution") {
+        solutionTags.push({ file: relative(process.cwd(), file), tag: m[0] });
+      }
+    }
+  }
+
+  it("the scan still finds BlockText solution renders (the pattern has not rotted)", () => {
+    expect(solutionTags.length).toBeGreaterThanOrEqual(8);
+  });
+
+  it("every BlockText handed a solution field passes the solution prop", () => {
+    const missing = solutionTags.filter((t) => !/\ssolution(?=[\s/>])/.test(t.tag));
+    expect(missing.map((m) => `${m.file}: ${m.tag}`), "add the `solution` prop").toEqual([]);
+  });
+
+  // The name scan above cannot see a solution renamed on the way in. The /browse
+  // card renders `solutions.map((v) => <BlockText text={v.text} />)`, where
+  // `solutions = solutionVersions(...)` — and it is the bank's main solution
+  // path, so the first version of this rule shipped green while missing it.
+  // Every list built by solutionVersions() is followed to its BlockText.
+  it("every BlockText fed from solutionVersions() passes the solution prop", () => {
+    const sites: string[] = [];
+    for (const file of files) {
+      const src = readFileSync(file, "utf8");
+      for (const m of src.matchAll(/const (\w+) = solutionVersions\(/g)) {
+        const at = src.indexOf(`${m[1]}.map(`, m.index);
+        const tag = at < 0 ? "" : (src.slice(at).match(/<BlockText\b[^>]*?\/?>/) ?? [""])[0];
+        sites.push(`${relative(process.cwd(), file)}: ${tag || `(no ${m[1]}.map → BlockText found)`}`);
+      }
+    }
+    expect(sites.length, "solutionVersions() consumers").toBeGreaterThanOrEqual(2);
+    expect(sites.filter((s) => !/\ssolution(?=[\s/>])/.test(s)), "add the `solution` prop").toEqual([]);
+  });
+
+  it("the bilingual solution (MPSC mock review) passes the solution prop", () => {
+    const src = readFileSync(join(ROOT, "components", "i18n", "BilingualText.tsx"), "utf8");
+    const fn = src.slice(src.indexOf("export function BilingualSolution"));
+    expect(fn.slice(0, fn.indexOf("\n}\n"))).toMatch(/<BlockText text=\{v\.text\} solution \/>/);
+  });
+
+  it("the /notes worked-example and self-check steps sit inside solution-math", () => {
+    for (const f of ["WorkedExampleAuthored.tsx", "SelfCheckCard.tsx"]) {
+      expect(readFileSync(join(ROOT, "app", "notes", "_components", f), "utf8"), f).toContain("solution-math");
+    }
+  });
+
+  it("globals.css left-aligns display math under solution-math", () => {
+    const css = readFileSync(join(ROOT, "app", "globals.css"), "utf8");
+    expect(css).toMatch(/\.solution-math \.katex-display[^{]*\{[^}]*text-align:\s*left/);
+  });
+});

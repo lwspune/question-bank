@@ -40,7 +40,7 @@ export default function SelfCheckCard({ example }: Props) {
           Show solution
         </button>
       ) : (
-        <div className="mt-4 space-y-3">
+        <div className="solution-math mt-4 space-y-3">
           <ol className="list-decimal space-y-2 pl-6 font-serif text-sm text-muted-foreground">
             {example.steps.map((step, i) => (
               <li key={i} className="leading-relaxed">

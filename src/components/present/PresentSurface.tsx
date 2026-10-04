@@ -318,7 +318,7 @@ export default function PresentSurface({
             <div className="mt-2 font-serif text-base leading-relaxed">
               {/* BlockText, not KatexRenderer: a solution may carry a GFM
                   pipe-table, and KatexRenderer prints one as raw `| p | q |`. */}
-              <BlockText text={answer.solution} />
+              <BlockText text={answer.solution} solution />
             </div>
           )}
 

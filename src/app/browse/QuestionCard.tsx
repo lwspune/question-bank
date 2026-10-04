@@ -481,7 +481,7 @@ export default function QuestionCard({
                     </p>
                     {question.solution && (
                       <div className="pt-2">
-                        <BlockText text={question.solution} />
+                        <BlockText text={question.solution} solution />
                       </div>
                     )}
                   </div>
@@ -516,7 +516,7 @@ export default function QuestionCard({
                     <div className="space-y-2">
                       {solutions.map((v, i) => (
                         <div key={v.lang} lang={v.lang} className={i > 0 ? "border-t border-dashed pt-2" : undefined}>
-                          <BlockText text={v.text} />
+                          <BlockText text={v.text} solution />
                         </div>
                       ))}
                     </div>

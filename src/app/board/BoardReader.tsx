@@ -758,7 +758,7 @@ function BoardQuestionItem({
                   e.g. Mathematical Logic truth tables — render as real <table>s,
                   not raw `| p | q |` text. Fast-paths to KatexRenderer when there's
                   no table. breakSentences leaves tables untouched. */}
-              <BlockText text={breakSentences(q.solution)} />
+              <BlockText text={breakSentences(q.solution)} solution />
               {q.solutionImageUrl && (
                 <div className="pt-3">
                   <ZoomableImage src={publicImageUrl(supabaseUrl, q.solutionImageUrl)} alt="Solution figure" />

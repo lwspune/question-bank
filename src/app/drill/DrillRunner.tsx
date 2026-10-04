@@ -269,7 +269,7 @@ export default function DrillRunner({
               )}
               {answered.solution && (
                 <div className="mt-2 rounded-xl border bg-muted/40 p-3 font-serif text-sm leading-relaxed [&_.katex]:max-w-full">
-                  <BlockText text={answered.solution} />
+                  <BlockText text={answered.solution} solution />
                 </div>
               )}
               {answered.solutionImageUrl && (
