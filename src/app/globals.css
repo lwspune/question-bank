@@ -4,59 +4,69 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Theme (2026-10-04): the logo's colours, replacing the stock shadcn slate
+       palette (white page, white cards, near-black buttons) that a user called
+       "black and white". Navy text and dark buttons, royal-blue brand, a tinted
+       page so white cards stand off it. tests/theme-contrast.test.ts checks
+       every text/background pair below against WCAG AA, in both modes. */
+    --background: 220 42.9% 97.3%;          /* #F5F7FB */
+    --foreground: 225.8 66.3% 17.5%;        /* #0F1D4A logo navy */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 225.8 66.3% 17.5%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --popover-foreground: 225.8 66.3% 17.5%;
+    --primary: 225.8 66.3% 17.5%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 218.6 50% 94.5%;           /* #EAEFF8 */
+    --secondary-foreground: 225.8 66.3% 17.5%;
+    --muted: 218.6 50% 94.5%;
+    --muted-foreground: 217.1 19.8% 41.6%;  /* #55657F, AA on --muted too */
+    --accent: 219.1 100% 95.5%;             /* #E8F0FF hover tint */
+    --accent-foreground: 225.8 66.3% 17.5%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 243 75% 59%;
-    --radius: 0.5rem;
-    /* Brand (indigo) — added 2026-06-01. `--brand` is the fill (button bg);
+    --border: 216.7 39.1% 91%;              /* #DFE6F1 */
+    --input: 216.7 39.1% 91%;
+    --ring: 224.3 76.3% 48%;
+    --radius: 0.75rem;
+    /* Brand = the logo's royal blue. `--brand` is the fill (button bg);
        `--brand-accent` is the text/icon/border accent. Two tokens because
        fill vs small-text have different AA-contrast needs. */
-    --brand: 243 75% 59%;
+    --brand: 224.3 76.3% 48%;               /* #1D4ED8 */
     --brand-foreground: 0 0% 100%;
-    --brand-accent: 243 75% 59%;
+    --brand-accent: 224.3 76.3% 48%;
+    --shadow-card: 0 1px 2px rgb(15 29 74 / 0.05), 0 6px 18px -12px rgb(15 29 74 / 0.22);
+    --shadow-card-hover: 0 2px 4px rgb(15 29 74 / 0.06), 0 14px 30px -14px rgb(15 29 74 / 0.32);
   }
 
   .dark {
-    --background: 222.2 47.4% 6%;
-    --foreground: 210 40% 96%;
-    --card: 222.2 47.4% 9%;
-    --card-foreground: 210 40% 96%;
-    --popover: 222.2 47.4% 9%;
-    --popover-foreground: 210 40% 96%;
-    --primary: 210 40% 96%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 96%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 70%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 96%;
+    /* Navy, from the logo, instead of slate black. */
+    --background: 224.2 65.5% 11.4%;        /* #0A1430 */
+    --foreground: 220 56.3% 93.7%;          /* #E6ECF8 */
+    --card: 225 56.4% 15.3%;                /* #111C3D */
+    --card-foreground: 220 56.3% 93.7%;
+    --popover: 225 56.4% 15.3%;
+    --popover-foreground: 220 56.3% 93.7%;
+    --primary: 220 56.3% 93.7%;
+    --primary-foreground: 225.8 66.3% 17.5%;
+    --secondary: 224.4 50.9% 20.8%;         /* #1A2850 */
+    --secondary-foreground: 220 56.3% 93.7%;
+    --muted: 224.4 50.9% 20.8%;
+    --muted-foreground: 222.3 31.4% 72.5%;  /* #A3B0CF */
+    --accent: 224.7 50.4% 22.9%;
+    --accent-foreground: 220 56.3% 93.7%;
     --destructive: 0 72% 51%;
     --destructive-foreground: 210 40% 96%;
-    --border: 217.2 32.6% 20%;
-    --input: 217.2 32.6% 20%;
-    --ring: 234 89% 74%;
-    /* Brand fill stays indigo-600 (white text on it ≈ 5.9:1); the text/icon
-       accent lightens to indigo-400 so it stays AA-legible on the dark card. */
-    --brand: 243 75% 59%;
+    --border: 224.7 45% 25.7%;              /* #24335F */
+    --input: 224.7 45% 25.7%;
+    --ring: 215.6 100% 73.9%;
+    /* Brand fill is blue-600 (white text 5.2:1); the text/icon accent
+       lightens so it stays AA-legible on the navy card. */
+    --brand: 221.2 83.2% 53.3%;             /* #2563EB */
     --brand-foreground: 0 0% 100%;
-    --brand-accent: 234 89% 74%;
+    --brand-accent: 215.6 100% 73.9%;       /* #7AB0FF */
+    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.35), 0 8px 22px -14px rgb(0 0 0 / 0.6);
+    --shadow-card-hover: 0 2px 6px rgb(0 0 0 / 0.4), 0 16px 34px -16px rgb(0 0 0 / 0.7);
   }
 }
 
@@ -141,4 +151,92 @@ a[data-nav-pending] {
 }
 .solution-math .katex-display > .katex {
   padding-left: 1em;
+}
+
+/*
+  Depth and brand moments (2026-10-04). Every rule here is zero-specificity
+  (:where) or a named class, so a component's own utilities always win.
+
+  Cards: about 340 surfaces are hand-written "rounded-* border bg-card" boxes,
+  most with no shadow, which is half of why the site read as flat. One rule
+  gives each bordered card a soft navy-tinted shadow; rounded-md (inner
+  blocks, inputs) and pills are left alone. Linked cards lift slightly on
+  hover, never for users who ask for reduced motion.
+*/
+@layer components {
+  :where(.bg-card.border.rounded-lg, .bg-card.border.rounded-xl, .bg-card.border.rounded-2xl) {
+    box-shadow: var(--shadow-card);
+  }
+  :where(a.bg-card.border) {
+    transition: box-shadow 180ms ease, transform 180ms ease, border-color 180ms ease;
+  }
+  @media (hover: hover) {
+    :where(a.bg-card.border):hover {
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-1px);
+      border-color: hsl(var(--brand-accent) / 0.35);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :where(a.bg-card.border) { transition: none; }
+    :where(a.bg-card.border):hover { transform: none; }
+  }
+
+  /* The one strong moment per page: navy into the logo's blue, a cyan glow. */
+  .hero-brand {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background:
+      radial-gradient(120% 90% at 100% 0%, rgb(34 211 238 / 0.42) 0%, rgb(34 211 238 / 0) 55%),
+      linear-gradient(160deg, #0f1d4a 0%, #142c7a 55%, #1d4ed8 100%);
+    box-shadow: 0 18px 40px -22px rgb(15 29 74 / 0.65);
+  }
+  /* A quieter header band for landing pages (Mocks, Notes, Guides, Pricing). */
+  .hero-soft {
+    background:
+      radial-gradient(80% 120% at 100% 0%, rgb(56 189 248 / 0.16) 0%, rgb(56 189 248 / 0) 60%),
+      linear-gradient(180deg, hsl(219 100% 95.5%) 0%, hsl(var(--card)) 100%);
+    border: 1px solid hsl(var(--border));
+  }
+  .dark .hero-soft {
+    background:
+      radial-gradient(80% 120% at 100% 0%, rgb(56 189 248 / 0.14) 0%, rgb(56 189 248 / 0) 60%),
+      linear-gradient(180deg, hsl(224.7 50.4% 20%) 0%, hsl(var(--card)) 100%);
+  }
+  /* Small icon tiles in cards: tinted blue instead of grey. */
+  .icon-tile {
+    background: linear-gradient(135deg, hsl(219 100% 96%), hsl(220 100% 91%));
+    color: hsl(var(--brand-accent));
+  }
+  .dark .icon-tile { background: linear-gradient(135deg, hsl(224 50% 24%), hsl(222 55% 30%)); }
+  /* Section titles: a short blue-to-cyan bar before the text. */
+  .section-title { display: flex; align-items: center; gap: 0.5rem; }
+  .section-title::before {
+    content: "";
+    flex: none;
+    width: 4px;
+    height: 1em;
+    border-radius: 2px;
+    background: linear-gradient(hsl(var(--brand)), #22d3ee);
+  }
+  /* Big stat numbers in the brand gradient. */
+  .stat-gradient {
+    /* Ends on sky-700, not a light sky: the numbers are text, so both ends
+       must clear AA on a white card (5.9:1 at the light end). */
+    background: linear-gradient(90deg, hsl(var(--brand-accent)), #0369a1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .dark .stat-gradient { background-image: linear-gradient(90deg, hsl(var(--brand-accent)), #67e8f9); }
+}
+
+/*
+  Desktop (2026-10-04): on a laptop the site read as small text in a narrow
+  column. One step up in the root size scales type and spacing together on
+  wide screens only; phones are untouched.
+*/
+@media (min-width: 1280px) {
+  html { font-size: 106.25%; }
 }

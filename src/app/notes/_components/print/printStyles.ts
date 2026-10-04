@@ -32,7 +32,7 @@ export const PRINT_CSS = `
 
 /* ---- cover ---- */
 .pcover { border-bottom: 2px solid #111; padding-bottom: 8mm; margin-bottom: 8mm; }
-.pcover .brand { font-size: 9pt; letter-spacing: .14em; text-transform: uppercase; color: #4f46e5; font-weight: 700; }
+.pcover .brand { font-size: 9pt; letter-spacing: .14em; text-transform: uppercase; color: #1d4ed8; font-weight: 700; }
 .pcover h1 { font-size: 26pt; line-height: 1.12; margin: 4mm 0 2mm; font-weight: 800; letter-spacing: -.01em; }
 .pcover .sub { font-size: 11pt; color: #444; }
 .pcover .intro { font-size: 10.5pt; line-height: 1.55; color: #333; margin-top: 5mm; font-family: var(--font-serif), Georgia, serif; }
@@ -51,7 +51,7 @@ export const PRINT_CSS = `
 /* Glue the subtopic header to whatever follows — a header stranded alone at
    the foot of a page is the worst break this document can make. */
 .psub > header { border-bottom: 1px solid #ccc; padding-bottom: 3mm; margin-bottom: 5mm; break-after: avoid-page; page-break-after: avoid; }
-.psub .kicker { font-size: 8.5pt; letter-spacing: .12em; text-transform: uppercase; color: #4f46e5; font-weight: 700; }
+.psub .kicker { font-size: 8.5pt; letter-spacing: .12em; text-transform: uppercase; color: #1d4ed8; font-weight: 700; }
 .psub h2 { font-size: 18pt; margin: 1.5mm 0 2mm; font-weight: 800; letter-spacing: -.01em; }
 .psub .oneline { font-size: 10.5pt; color: #333; font-family: var(--font-serif), Georgia, serif; }
 .psub .why { font-size: 9.5pt; color: #555; margin-top: 2.5mm; line-height: 1.5; }
@@ -62,7 +62,7 @@ export const PRINT_CSS = `
    Breaks are avoided on the inner boxes (.pbox) instead, which are page-sized. */
 .pcon { border: 1px solid #d4d4d8; border-radius: 6px; padding: 5mm; margin-bottom: 6mm; }
 .pcon > header { margin-bottom: 3.5mm; break-after: avoid-page; page-break-after: avoid; }
-.pcon .cidx { font-size: 8pt; letter-spacing: .1em; text-transform: uppercase; color: #4f46e5; font-weight: 700; }
+.pcon .cidx { font-size: 8pt; letter-spacing: .1em; text-transform: uppercase; color: #1d4ed8; font-weight: 700; }
 .pcon h3 { font-size: 13.5pt; margin: 1mm 0 0; font-weight: 700; }
 .plabel { font-size: 8pt; letter-spacing: .09em; text-transform: uppercase; color: #71717a; font-weight: 700; margin: 0 0 1mm; }
 .pbody { font-family: var(--font-serif), Georgia, serif; font-size: 10pt; line-height: 1.55; }
@@ -131,7 +131,7 @@ export const PRINT_CSS = `
 .psheet { break-before: page; page-break-before: always; }
 .psheet > h2 { font-size: 18pt; font-weight: 800; margin-bottom: 1mm; }
 .psheet .lead { font-size: 9.5pt; color: #555; margin-bottom: 5mm; }
-.psheet h3 { font-size: 10pt; text-transform: uppercase; letter-spacing: .08em; color: #4f46e5; margin: 5mm 0 2mm; border-bottom: 1px solid #e4e4e7; padding-bottom: 1mm; }
+.psheet h3 { font-size: 10pt; text-transform: uppercase; letter-spacing: .08em; color: #1d4ed8; margin: 5mm 0 2mm; border-bottom: 1px solid #e4e4e7; padding-bottom: 1mm; }
 .psheet h4 { font-size: 9pt; color: #52525b; margin: 3mm 0 1mm; font-weight: 700; }
 .psheet .frow { display: grid; grid-template-columns: 48mm 1fr; gap: 3mm; padding: 1.6mm 0; border-bottom: 1px dotted #e4e4e7; font-size: 9.5pt; break-inside: avoid-page; align-items: baseline; }
 .psheet .frow .fl { color: #52525b; font-size: 8.5pt; }
@@ -143,7 +143,7 @@ export const PRINT_CSS = `
 
 /* ---- screen-only affordance ---- */
 .pbar { display: flex; align-items: center; justify-content: space-between; gap: 6mm; background: #111827; color: #fff; padding: 10px 16px; font-size: 13px; border-radius: 8px; margin-bottom: 8mm; }
-.pbar button { background: #4f46e5; color: #fff; border: 0; border-radius: 6px; padding: 7px 14px; font-size: 13px; font-weight: 600; cursor: pointer; }
+.pbar button { background: #1d4ed8; color: #fff; border: 0; border-radius: 6px; padding: 7px 14px; font-size: 13px; font-weight: 600; cursor: pointer; }
 
 @media print {
   .pbar, .no-print { display: none !important; }

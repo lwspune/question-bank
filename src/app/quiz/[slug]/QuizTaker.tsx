@@ -23,7 +23,7 @@ type Phase = "taking" | "review" | "gating" | "results";
 const TONE: Record<VerdictTone, { stroke: string; text: string; soft: string }> = {
   gold: { stroke: "stroke-amber-400", text: "text-amber-500", soft: "bg-amber-400/10" },
   emerald: { stroke: "stroke-emerald-500", text: "text-emerald-600", soft: "bg-emerald-500/10" },
-  brand: { stroke: "stroke-indigo-500", text: "text-brand-accent", soft: "bg-brand/10" },
+  brand: { stroke: "stroke-blue-600", text: "text-brand-accent", soft: "bg-brand/10" },
   amber: { stroke: "stroke-orange-500", text: "text-orange-600", soft: "bg-orange-500/10" },
   slate: { stroke: "stroke-slate-400", text: "text-slate-500", soft: "bg-slate-400/10" },
 };
