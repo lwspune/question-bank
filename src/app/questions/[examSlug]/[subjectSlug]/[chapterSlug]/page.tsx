@@ -43,6 +43,9 @@ import { mockCtaCopy, withChapterTest } from "@/lib/mocks/chapterTests";
 import { listChapterTests } from "@/lib/mocks/chapterTestsQuery";
 import { examHomeHref } from "@/lib/exam/examHome";
 import ChapterShareCard from "@/components/ChapterShareCard";
+import VHello from "@/components/chat/VHello";
+import NextStepCard from "@/components/question/NextStepCard";
+import { pickHello, nextStepLinks, CARD_AFTER, type HelloInput } from "@/lib/growth/secondPage";
 
 const SITE_URL = "https://www.pyqvault.com";
 
@@ -200,6 +203,19 @@ export default async function ChapterQuestionsPage({ params }: Params) {
     subtopicName: null,
   });
 
+  // The "second page" nudges (growth registry "second-page"): V's one-time
+  // hello and the card after the 5th question point at a page that is not
+  // more of the same.
+  const secondPage: HelloInput = {
+    surface: "questions",
+    chapterName: landing.chapterName,
+    questionCount: landing.questionCount,
+    mock,
+    notesHref: resources.notes?.href ?? null,
+    questionsHref: null,
+    bankHref: browseHrefFor(landing),
+  };
+
   const showing = Math.min(questions.rows.length, LANDING_PAGE_SIZE);
   const hasMore = questions.totalCount > showing;
 
@@ -291,6 +307,10 @@ export default async function ChapterQuestionsPage({ params }: Params) {
                 isLoggedIn={false}
                 supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
                 includeExam={false}
+                insert={{
+                  afterQuestions: CARD_AFTER,
+                  node: <NextStepCard links={nextStepLinks(secondPage)} />,
+                }}
               />
             </Suspense>
           )}
@@ -321,6 +341,7 @@ export default async function ChapterQuestionsPage({ params }: Params) {
 
         <SiblingLinks siblings={siblings} />
       </main>
+      <VHello hello={pickHello(secondPage)} surface="questions" />
       <Footer />
     </>
   );

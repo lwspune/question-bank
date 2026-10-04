@@ -78,6 +78,12 @@ function getServerSnapshot(): string[] {
   return EMPTY;
 }
 
+/** The ids this device has revealed while signed out, live across cards and
+ *  tabs. Read-only: for V's hello, which counts reveals on the current page. */
+export function useRevealedIds(): string[] {
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+}
+
 /**
  * Client-side answer-reveal meter, shared across /browse + /board. Anon viewers
  * get FREE_REVEAL_LIMIT distinct-question reveals (persisted in localStorage);

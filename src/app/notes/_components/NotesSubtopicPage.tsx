@@ -25,6 +25,10 @@ import NotesMockCard from "./NotesMockCard";
 import { mockCtaCopy, withChapterTest } from "@/lib/mocks/chapterTests";
 import { listChapterTests } from "@/lib/mocks/chapterTestsQuery";
 import NotesTestBar from "./NotesTestBar";
+import VHello from "@/components/chat/VHello";
+import { pickHello } from "@/lib/growth/secondPage";
+import { listChapterLandings, landingHref } from "@/lib/questions/landing";
+import { findChapterLanding } from "@/lib/questions/findLanding";
 import ConceptUnitCard from "./ConceptUnitCard";
 import NotesPaywall from "./NotesPaywall";
 import PracticeGate from "./PracticeGate";
@@ -146,6 +150,13 @@ export default async function NotesSubtopicPage({
     paperCta,
     chapterTax ? (await listChapterTests()).get(chapterTax.id) : undefined,
     chapterName
+  );
+
+  // The chapter's public /questions page, for V's one-time hello (growth
+  // registry "second-page"). A failed lookup offers the test instead.
+  const questionsLanding = findChapterLanding(
+    await listChapterLandings().catch(() => []),
+    { examName: chapter.examName, subjectName: chapter.subjectName, chapterName }
   );
 
   // Drill tags + total subtopic count fire in parallel.
@@ -405,6 +416,18 @@ export default async function NotesSubtopicPage({
       {mock && (
         <NotesTestBar href={mock.href} examDisplay={mock.examDisplay} line={mockCtaCopy(mock).bar} />
       )}
+      <VHello
+        surface="notes"
+        hello={pickHello({
+          surface: "notes",
+          chapterName,
+          questionCount: questionsLanding?.questionCount ?? 0,
+          mock,
+          notesHref: null,
+          questionsHref: questionsLanding ? landingHref(questionsLanding) : null,
+          bankHref: null,
+        })}
+      />
     </GuideShell>
   );
 }

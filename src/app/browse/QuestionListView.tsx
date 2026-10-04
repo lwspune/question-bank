@@ -6,6 +6,7 @@ import type { QuestionResources } from "@/lib/links/questionResources";
 import { PresentRegistry } from "@/components/present/PresentRegistry";
 import QuestionCard from "./QuestionCard";
 import type { ItemStatAggregate } from "@/lib/itemStats/types";
+import { insertAfterGroup } from "@/lib/growth/secondPage";
 
 type Props = {
   questions: QuestionRow[];
@@ -26,6 +27,9 @@ type Props = {
   /** The guide/notes backlinks per question id, resolved ON THE SERVER. A
    *  plain object so it can cross into a client component (a Map cannot). */
   resourcesById?: Record<string, QuestionResources>;
+  /** Something to place inside the list after `afterQuestions` questions (the
+   *  /questions next-step card). Never splits a passage set. */
+  insert?: { afterQuestions: number; node: React.ReactNode };
 };
 
 /**
@@ -58,8 +62,15 @@ export default function QuestionListView({
   includeExam,
   resourcesById,
   itemStats,
+  insert,
 }: Props) {
   const groups = groupBySet(questions);
+  const insertAt = insert
+    ? insertAfterGroup(
+        groups.map((g) => (g.kind === "single" ? 1 : g.questions.length)),
+        insert.afterQuestions
+      )
+    : null;
   const idToIndex = new Map<string, number>();
   questions.forEach((q, i) => idToIndex.set(q.id, pageOffset + i + 1));
 
@@ -68,53 +79,58 @@ export default function QuestionListView({
     // list; see PresentRegistry for why the cards register rather than receive.
     <PresentRegistry>
       <ul className="space-y-3">
-        {groups.map((group, gi) => {
-          if (group.kind === "single") {
-            return (
-              <li key={`single-${group.question.id}`}>
-                <QuestionCard
-                  question={group.question}
-                  index={idToIndex.get(group.question.id)!}
-                  canEdit={canEdit}
-                  isLoggedIn={isLoggedIn}
-                  supabaseUrl={supabaseUrl}
-                  includeExam={includeExam}
-                  resources={resourcesById?.[group.question.id]}
-                  itemStats={itemStats?.get(group.question.id)}
-                />
-              </li>
-            );
-          }
-          return (
-            <li key={`set-${group.setId}-${gi}`}>
-              <SetBanner
-                passage={group.passage}
-                count={group.questions.length}
-              >
-                <ul className="space-y-2">
-                  {group.questions.map((q) => (
-                    <li key={q.id}>
-                      <QuestionCard
-                        question={q}
-                        index={idToIndex.get(q.id)!}
-                        canEdit={canEdit}
-                        isLoggedIn={isLoggedIn}
-                        supabaseUrl={supabaseUrl}
-                        hideContext
-                        includeExam={includeExam}
-                        resources={resourcesById?.[q.id]}
-                        itemStats={itemStats?.get(q.id)}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </SetBanner>
-            </li>
-          );
+        {groups.flatMap((group, gi) => {
+          const item = renderGroup(group, gi);
+          return gi === insertAt && insert ? [item, <li key="list-insert">{insert.node}</li>] : [item];
         })}
       </ul>
     </PresentRegistry>
   );
+
+  function renderGroup(group: (typeof groups)[number], gi: number) {
+    if (group.kind === "single") {
+      return (
+        <li key={`single-${group.question.id}`}>
+          <QuestionCard
+            question={group.question}
+            index={idToIndex.get(group.question.id)!}
+            canEdit={canEdit}
+            isLoggedIn={isLoggedIn}
+            supabaseUrl={supabaseUrl}
+            includeExam={includeExam}
+            resources={resourcesById?.[group.question.id]}
+            itemStats={itemStats?.get(group.question.id)}
+          />
+        </li>
+      );
+    }
+    return (
+      <li key={`set-${group.setId}-${gi}`}>
+        <SetBanner
+          passage={group.passage}
+          count={group.questions.length}
+        >
+          <ul className="space-y-2">
+            {group.questions.map((q) => (
+              <li key={q.id}>
+                <QuestionCard
+                  question={q}
+                  index={idToIndex.get(q.id)!}
+                  canEdit={canEdit}
+                  isLoggedIn={isLoggedIn}
+                  supabaseUrl={supabaseUrl}
+                  hideContext
+                  includeExam={includeExam}
+                  resources={resourcesById?.[q.id]}
+                  itemStats={itemStats?.get(q.id)}
+                />
+              </li>
+            ))}
+          </ul>
+        </SetBanner>
+      </li>
+    );
+  }
 }
 
 function SetBanner({

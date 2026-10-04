@@ -64,6 +64,18 @@ export default function NotesTestBar({
     return () => window.removeEventListener("scroll", onScroll);
   }, [examDisplay]);
 
+  // Tell other bottom-of-screen elements (V's hello) the bar is up, so the two
+  // never stack. A data attribute rather than shared state: the hello is a
+  // separate island on the same page.
+  useEffect(() => {
+    const root = document.documentElement;
+    if (open) root.dataset.bottomBar = "open";
+    else delete root.dataset.bottomBar;
+    return () => {
+      delete root.dataset.bottomBar;
+    };
+  }, [open]);
+
   if (!open) return null;
   return (
     <div

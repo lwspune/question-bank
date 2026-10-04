@@ -23,6 +23,8 @@ type Props = {
   /** Per-question principle + concept tags for the backlink chip row.
    *  Questions absent from the map have no DB-backed tags. */
   resourceTags?: Map<string, ResourceTags>;
+  /** Passed through to QuestionListView (the /questions next-step card). */
+  insert?: { afterQuestions: number; node: React.ReactNode };
 };
 
 /**

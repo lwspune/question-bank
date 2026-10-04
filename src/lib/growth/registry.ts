@@ -58,6 +58,9 @@ export const CHAPTER_TESTS_ANSWERED_KEEP = 70;
 /** Chapter-test sittings needed before the answered share is stated. */
 export const CHAPTER_TESTS_MIN_SITTINGS = 10;
 
+/** Second page: tap rate (taps per 100 shown) that keeps a nudge. */
+export const SECOND_PAGE_KEEP_PCT = 3;
+
 /** The ISO date `EXPERIMENT_WINDOW_DAYS` after `liveSince`. */
 export function checkOn(liveSince: string): string {
   const d = new Date(`${liveSince}T00:00:00Z`);
@@ -65,7 +68,7 @@ export function checkOn(liveSince: string): string {
   return d.toISOString().slice(0, 10);
 }
 
-export type Readout = "onboarding-arms" | "chapter-share" | "indexing" | "email-cap" | "chapter-tests";
+export type Readout = "onboarding-arms" | "chapter-share" | "indexing" | "email-cap" | "chapter-tests" | "second-page";
 
 export type Experiment = {
   id: string;
@@ -147,6 +150,18 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "email-cap",
     status: "running",
   },
+  {
+    id: "second-page",
+    title: "Second page",
+    change:
+      "On chapter question pages and notes pages, V says hello once per device (not signed in, after 2 reveals or 40 s with a scroll) with one next step; chapter question pages also get a next-step card after the 5th question.",
+    why: "Most search visitors read one page and leave. Both point at a page that is not more of the same: the chapter test, the notes, or the real past questions.",
+    metric: "Tap rate of each (taps / shown), read by hand from Vercel; share of single-page visits on chapter pages, read from Clarity",
+    rule: `Keep each if ${SECOND_PAGE_KEEP_PCT}%+ of those who see it tap it by the check date; remove it otherwise. The two are judged separately.`,
+    liveSince: "2026-10-04",
+    readout: "second-page",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };
@@ -184,7 +199,7 @@ export const DECIDED_AGAINST: readonly DecidedAgainst[] = [
   },
 ];
 
-export type ReadingMetric = "google-indexed" | "share-taps";
+export type ReadingMetric = "google-indexed" | "share-taps" | "hello-tap-rate" | "card-tap-rate";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -197,6 +212,16 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "share-taps": {
     label: "Chapter share taps",
     source: "Vercel → Analytics → Events → chapter_share_click",
+    entries: [],
+  },
+  "hello-tap-rate": {
+    label: "V hello tap rate (%)",
+    source: "Vercel → Analytics → Events → v_hello_click ÷ v_hello_shown",
+    entries: [],
+  },
+  "card-tap-rate": {
+    label: "Next-step card tap rate (%)",
+    source: "Vercel → Analytics → Events → next_step_card_click ÷ next_step_card_shown",
     entries: [],
   },
 };

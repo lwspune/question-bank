@@ -6,6 +6,8 @@ import { examHomeHref as examHomeHrefFor } from "@/lib/exam/examHome";
 import NotesKeepGoing from "./NotesKeepGoing";
 import NotesMockCard from "./NotesMockCard";
 import NotesTestBar from "./NotesTestBar";
+import VHello from "@/components/chat/VHello";
+import { pickHello } from "@/lib/growth/secondPage";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -375,6 +377,18 @@ export default async function NotesChapterLanding({ chapter }: Props) {
       {mock && (
         <NotesTestBar href={mock.href} examDisplay={mock.examDisplay} line={mockCtaCopy(mock).bar} />
       )}
+      <VHello
+        surface="notes"
+        hello={pickHello({
+          surface: "notes",
+          chapterName: meta.chapterName,
+          questionCount: questionsLanding?.questionCount ?? 0,
+          mock,
+          notesHref: null,
+          questionsHref: questionsLanding ? landingHref(questionsLanding) : null,
+          bankHref: null,
+        })}
+      />
     </GuideShell>
   );
 }

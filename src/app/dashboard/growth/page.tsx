@@ -10,6 +10,7 @@ import {
   EXPERIMENTS,
   NORTH_STAR_KINDS,
   READINGS,
+  SECOND_PAGE_KEEP_PCT,
   checkOn,
   type Experiment,
 } from "@/lib/growth/registry";
@@ -239,6 +240,18 @@ export default async function GrowthPage() {
           </div>
         );
       }
+      case "second-page":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand: keep each nudge if {SECOND_PAGE_KEEP_PCT}%+ of those who see it tap it by{" "}
+              {fmtDate(checkOn(e.liveSince))}. Clarity&rsquo;s share of single-page visits on chapter pages is the
+              background check.
+            </p>
+            <ReadingsList metric="hello-tap-rate" />
+            <ReadingsList metric="card-tap-rate" />
+          </div>
+        );
       case "indexing": {
         const v = indexingView(READINGS["google-indexed"].entries);
         return (
