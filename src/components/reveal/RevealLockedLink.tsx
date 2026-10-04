@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
-import Link from "next/link";
 import { Lock } from "lucide-react";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import type { PracticeSurface } from "@/lib/questions/practiceBatch";
 import { useGoogleOneTap } from "@/components/auth/useGoogleOneTap";
-import { useSignInHref } from "./useSignInHref";
+import SignInLink from "./SignInLink";
 
 /**
  * Stands where a reveal button would be once an anon viewer's free reveals are
@@ -28,7 +27,6 @@ export default function RevealLockedLink({
   surface: PracticeSurface;
   examName: string;
 }) {
-  const href = useSignInHref();
   const offerOneTap = useGoogleOneTap();
 
   useEffect(() => {
@@ -41,13 +39,12 @@ export default function RevealLockedLink({
   }, [offerOneTap]);
 
   return (
-    <Link
-      href={href}
+    <SignInLink
       onClick={() => trackFunnelOnce("reveal_wall_signin_click", surface, { surface })}
       className="inline-flex items-center gap-1 rounded-sm font-sans text-xs font-medium text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       <Lock className="h-3.5 w-3.5" aria-hidden />
       Sign in to see the answer
-    </Link>
+    </SignInLink>
   );
 }
