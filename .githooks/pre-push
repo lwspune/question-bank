@@ -76,7 +76,14 @@ else
   target="prepush:quick:nonotes"
 fi
 
-echo "[pre-push] running npm run $target (build=$build notes:lint=$notes) — mirrors CI..."
+# A local build prerenders one notes subtopic page per chapter
+# (src/lib/notes/prerender.ts). When the push changes notes, build them all, so
+# a broken notes page still fails here rather than on Vercel.
+if [ "$notes" -eq 1 ]; then
+  export NOTES_FULL_PRERENDER=1
+fi
+
+echo "[pre-push] running npm run $target (build=$build notes:lint=$notes, full notes prerender=$notes)..."
 npm run "$target" --silent
 
 echo "[pre-push] all gates passed"

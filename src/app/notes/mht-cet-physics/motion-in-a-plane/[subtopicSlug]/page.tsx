@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getNotesChapterBySlug } from "@/lib/notes/chapters";
+import { notesPrerenderParams } from "@/lib/notes/prerender";
 import NotesSubtopicPage, {
   buildSubtopicMetadata,
 } from "@/app/notes/_components/NotesSubtopicPage";
@@ -11,7 +12,7 @@ export const revalidate = 86400;
 type Params = { subtopicSlug: string };
 
 export function generateStaticParams(): Params[] {
-  return CHAPTER.slugs.map((subtopicSlug) => ({ subtopicSlug }));
+  return notesPrerenderParams(CHAPTER.slugs);
 }
 
 export function generateMetadata({ params }: { params: Params }): Metadata {
