@@ -291,9 +291,9 @@ function YourExams({ links }: { links: ExamLink[] }) {
  *  quiet line, not a card with a full-width button. */
 function NoTargetCard() {
   return (
-    <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
-      <GraduationCap className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
-      Tell us your exam and this page shows only what you need.
+    <p className="text-sm text-muted-foreground">
+      <GraduationCap className="mr-1.5 inline h-4 w-4 align-[-3px] text-brand-accent" aria-hidden />
+      Tell us your exam and this page shows only what you need.{" "}
       <Link
         href="/account"
         prefetch={false}
@@ -428,8 +428,8 @@ function KeepReading({
                   href={`/notes/${r.subjectRoute}/${r.chapterSlug}/${r.subtopicSlug}`}
                   className="flex min-w-0 items-baseline gap-2 rounded-lg px-2 py-1.5 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
-                  <span className="truncate text-sm font-medium">{t.topic}</span>
-                  <span className="shrink-0 truncate text-xs text-muted-foreground">{t.chapter}</span>
+                  <span className="min-w-0 flex-1 truncate text-sm font-medium">{t.topic}</span>
+                  <span className="min-w-0 max-w-[40%] truncate text-xs text-muted-foreground">{t.chapter}</span>
                 </Link>
               </li>
             );

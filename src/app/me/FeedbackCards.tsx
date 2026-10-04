@@ -132,9 +132,9 @@ export function FeatureCard({
 
   if (compact && !open) {
     return (
-      <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
-        <Lightbulb className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
-        Missing an exam, a chapter or a feature?
+      <p className="text-sm text-muted-foreground">
+        <Lightbulb className="mr-1.5 inline h-4 w-4 align-[-3px] text-brand-accent" aria-hidden />
+        Missing an exam, a chapter or a feature?{" "}
         <button
           type="button"
           onClick={() => setOpen(true)}
