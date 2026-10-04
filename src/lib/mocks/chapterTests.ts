@@ -16,6 +16,7 @@
  * Pure: no React, no DB, so the client card can import the copy. The cached
  * loader is ./chapterTestsQuery.ts. Spec: tests/chapter-tests.test.ts.
  */
+import { withArticle } from "@/lib/text/article";
 
 export type ChapterTest = {
   chapterId: string;
@@ -111,9 +112,9 @@ export function mockCtaCopy(cta: MockCta): MockCtaCopy {
     return {
       title: "Test yourself on a real paper",
       body: `Sit a past ${cta.examDisplay} paper, timed and marked the way the exam marks it. ${AFTER}`,
-      button: `Sit a ${cta.examDisplay} past paper`,
+      button: `Sit ${withArticle(cta.examDisplay)} past paper`,
       bar: `Sit a real ${cta.examDisplay} paper, timed.`,
-      short: `Sit a ${cta.examDisplay} paper as a timed mock`,
+      short: `Sit ${withArticle(cta.examDisplay)} paper as a timed mock`,
     };
   }
   return {

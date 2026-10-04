@@ -19,6 +19,7 @@ import { loadResolvedDrills } from "@/lib/notes/loadResolvedDrills";
 import { pickInterleavedCheckpoint } from "@/lib/notes/pickInterleavedCheckpoint";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import { notesSubtopicTitle } from "@/lib/notes/titles";
+import { notesBreadcrumbs } from "@/lib/notes/breadcrumbs";
 import { topicNav, mockCta, extraRelated } from "@/lib/notes/keepGoing";
 import NotesKeepGoing from "./NotesKeepGoing";
 import NotesMockCard from "./NotesMockCard";
@@ -213,10 +214,7 @@ export default async function NotesSubtopicPage({
     <GuideShell
       guideTitle={`${chapter.examName} ${chapterName} Notes`}
       sideNav={sideNav}
-      breadcrumbs={[
-        { href: base, label: chapterName },
-        { label: note.title },
-      ]}
+      breadcrumbs={notesBreadcrumbs(chapter, note.title)}
     >
       <GuideJsonLd
         type="Article"

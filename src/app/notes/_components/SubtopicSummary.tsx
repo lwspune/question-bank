@@ -136,7 +136,7 @@ export default function SubtopicSummary({ note }: Props) {
                 </div>
                 <a
                   href={`#${t.slug}`}
-                  className="ml-auto text-[11px] text-muted-foreground hover:text-amber-700 dark:hover:text-amber-300 whitespace-nowrap"
+                  className="ml-auto text-[11px] text-muted-foreground hover:text-amber-700 dark:hover:text-amber-300 min-w-0 max-w-full text-right"
                 >
                   → {t.conceptName}
                 </a>

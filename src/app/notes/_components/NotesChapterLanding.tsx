@@ -31,6 +31,7 @@ import { chapterCardBlurb } from "@/lib/notes/cardBlurb";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import { FORMULA_CHAPTERS } from "@/lib/formula";
 import ChapterRevisionSheet from "./ChapterRevisionSheet";
+import { notesBreadcrumbs } from "@/lib/notes/breadcrumbs";
 import NotesHandoutLink from "./NotesHandoutLink";
 import { printHandoutHref } from "@/lib/notes/printDoc";
 import ConceptWeightTable from "./ConceptWeightTable";
@@ -188,7 +189,7 @@ export default async function NotesChapterLanding({ chapter }: Props) {
     <GuideShell
       guideTitle={`${chapter.examName} ${meta.chapterName} Notes`}
       sideNav={sideNav}
-      breadcrumbs={[{ label: meta.chapterName }]}
+      breadcrumbs={notesBreadcrumbs(chapter)}
     >
       <GuideJsonLd
         type="CollectionPage"

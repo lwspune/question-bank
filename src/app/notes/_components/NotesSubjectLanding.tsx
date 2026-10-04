@@ -10,6 +10,7 @@ import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
 import { getNotesChaptersForSubject } from "@/lib/notes/chapters";
 import { chapterCardBlurb } from "@/lib/notes/cardBlurb";
+import { loadChapterPyqCounts } from "@/lib/notes/chapterCounts";
 
 /**
  * Subject-level notes index (e.g. /notes/nda-biology) — lists every shipped
@@ -74,23 +75,18 @@ export default async function NotesSubjectLanding({
     subtopicCount: Object.keys(c.notes).length,
   }));
 
-  // Live PYQ count per chapter — read from the bank, not curated.
+  // Live PYQ count per chapter — read from the bank, not curated. Counted in
+  // Postgres: a row tally here hit the 1000-row cap and showed "0 PYQs" on
+  // most cards of every big subject.
   const chapterIds = cards
     .map((c) => taxonomy.chapters.get(c.chapterName)?.id)
     .filter((id): id is string => Boolean(id));
 
-  const countsByChapter = new Map<string, number>();
-  if (chapterIds.length > 0) {
-    const { data } = await supabase
-      .from("questions")
-      .select("chapter_id")
-      .in("chapter_id", chapterIds)
-      .eq("question_kind", "pyq"); // PYQ-only per-chapter counts (migration 0036)
-    for (const row of data ?? []) {
-      const id = (row as { chapter_id: string }).chapter_id;
-      countsByChapter.set(id, (countsByChapter.get(id) ?? 0) + 1);
-    }
-  }
+  const countsByChapter = await loadChapterPyqCounts(supabase, {
+    examId: taxonomy.examId,
+    subjectId: taxonomy.subjectId,
+    chapterIds,
+  });
 
   const sideNav = [
     { href: `/notes/${subjectRoute}`, label: "Chapter index" },
