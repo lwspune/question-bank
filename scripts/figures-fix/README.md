@@ -25,7 +25,11 @@ source papers and books are all on the owner's machine; each pipeline's
    refuses objects over 1 MB, so an oversize crop is reduced to a 256-colour PNG
    (or JPEG) automatically. A replace step (`{ remove, with }`) is safe to
    re-run, so a batch that stops part-way (e.g. on an upload) can simply be run
-   again. Otherwise: Render the pages with a fractional
+   again. A question's figures can CONTINUE into the next column or onto the
+   next page (Balbharati Class 10 Science Ex Q11(c) sat at the top of the
+   right-hand column, above unrelated questions): before ruling a figure
+   absent, look at the whole page and the page after, and search the page text
+   for the missing label ("c."). Otherwise: Render the pages with a fractional
    grid (`fitz` at ~1.1x plus 0.05 gridlines) and read the box off it. Page
    numbers are 0-based PDF pages.
 2. **Write `manifest/<batch>.json`** (the source of record for this fix):
