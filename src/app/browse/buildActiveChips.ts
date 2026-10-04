@@ -2,7 +2,10 @@ import type { Difficulty, Filters } from "@/lib/questions/filters";
 
 export type ActiveChip = {
   key: string;
+  /** Full text with the kind ("Exam: NDA"): the remove button's accessible name. */
   label: string;
+  /** The value alone ("NDA"), shown on the chip. The kind cost a phone its row. */
+  short: string;
   nextFilters: () => Filters;
 };
 
@@ -38,6 +41,7 @@ export function buildActiveChips(
     chips.push({
       key: `exam:${filters.examId}`,
       label: `Exam: ${labels.examName(filters.examId)}`,
+      short: labels.examName(filters.examId),
       nextFilters: () => ({
         ...filters,
         examId: null,
@@ -53,6 +57,7 @@ export function buildActiveChips(
     chips.push({
       key: `subject:${filters.subjectId}`,
       label: `Subject: ${labels.subjectName(filters.subjectId)}`,
+      short: labels.subjectName(filters.subjectId),
       nextFilters: () => ({
         ...filters,
         subjectId: null,
@@ -67,6 +72,7 @@ export function buildActiveChips(
     chips.push({
       key: `chapter:${id}`,
       label: `Chapter: ${labels.chapterName(id)}`,
+      short: labels.chapterName(id),
       nextFilters: () => ({
         ...filters,
         chapterIds: filters.chapterIds.filter((x) => x !== id),
@@ -80,6 +86,7 @@ export function buildActiveChips(
     chips.push({
       key: `subtopic:${id}`,
       label: `Subtopic: ${labels.subtopicName(id)}`,
+      short: labels.subtopicName(id),
       nextFilters: () => ({
         ...filters,
         subtopicIds: filters.subtopicIds.filter((x) => x !== id),
@@ -92,6 +99,7 @@ export function buildActiveChips(
     chips.push({
       key: `difficulty:${d}`,
       label: `Difficulty: ${DIFFICULTY_LABEL[d]}`,
+      short: DIFFICULTY_LABEL[d],
       nextFilters: () => ({
         ...filters,
         difficulties: filters.difficulties.filter((x) => x !== d),
@@ -104,6 +112,7 @@ export function buildActiveChips(
     chips.push({
       key: `year:${y}`,
       label: `Year: ${y}`,
+      short: String(y),
       nextFilters: () => ({
         ...filters,
         pyqYears: filters.pyqYears.filter((x) => x !== y),
@@ -121,6 +130,7 @@ export function buildActiveChips(
     chips.push({
       key: `format:${filters.format}`,
       label: `Format: ${FORMAT_LABEL[filters.format]}`,
+      short: FORMAT_LABEL[filters.format],
       nextFilters: () => ({ ...filters, format: "all", page: 1 }),
     });
   }
@@ -129,6 +139,7 @@ export function buildActiveChips(
     chips.push({
       key: `principle:${filters.principleSlug}`,
       label: `Principle: ${labels.principleName(filters.principleSlug)}`,
+      short: labels.principleName(filters.principleSlug),
       nextFilters: () => ({ ...filters, principleSlug: null, page: 1 }),
     });
   }
@@ -137,6 +148,7 @@ export function buildActiveChips(
     chips.push({
       key: `q:${filters.q}`,
       label: `Search: "${filters.q}"`,
+      short: `"${filters.q}"`,
       nextFilters: () => ({ ...filters, q: "", page: 1 }),
     });
   }
