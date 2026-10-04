@@ -6,6 +6,11 @@
  *   npm run ui:shots -- --pages=/pricing --dark --phone     # add dark mode, phone only
  *   npm run ui:shots -- --pages=/ --before=http://localhost:3001 --full --title="Hero"
  *
+ *   A change that exists only on localhost has no live "before":
+ *   npm run ui:shots -- --pages=/about --before=http://localhost:3000 --phase=before --out=generated-papers/ui-shots/about
+ *   ...make the change...
+ *   npm run ui:shots -- --pages=/about --phase=after --out=generated-papers/ui-shots/about
+ *
  * Writes every capture plus sheet.html and sheet.png to
  * generated-papers/ui-shots/<timestamp>/ (or --out=). Start `npm run dev`
  * first when the after side is local.
@@ -107,9 +112,17 @@ async function main() {
   const { proc, cdp } = await launch(profile);
   try {
     for (const c of plan) {
+      if (args.phase !== "both" && c.target !== args.phase) continue;
       process.stdout.write(`${c.target.padEnd(6)} ${c.viewport.padEnd(7)} ${c.theme.padEnd(5)} ${c.url} ... `);
       await capture(cdp, c, args.waitMs, args.fullPage, dir);
       console.log("ok");
+    }
+    // The sheet needs both sides; a before-only run stops here.
+    const missing = plan.filter((c) => !existsSync(join(dir, c.file)));
+    if (missing.length) {
+      console.log(`
+${missing.length} capture(s) still to take (${missing[0].file} ...): run --phase=after with --out=${dir}`);
+      return;
     }
     // The sheet: rendered by the same browser, photographed whole.
     const html = join(dir, "sheet.html");

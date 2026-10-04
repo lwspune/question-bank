@@ -71,6 +71,15 @@ describe("parseShotArgs", () => {
     expect(parseShotArgs(["--pages=guide/nda"]).pages).toEqual(["/guide/nda"]);
   });
 
+  it("splits a local change into a before run and an after run", () => {
+    // A change that exists only on localhost has no live "before": capture the
+    // local page first (--phase=before), edit, then --phase=after into the
+    // same --out folder, which builds the sheet.
+    expect(parseShotArgs(["--pages=/about"]).phase).toBe("both");
+    expect(parseShotArgs(["--pages=/about", "--phase=before"]).phase).toBe("before");
+    expect(() => parseShotArgs(["--pages=/about", "--phase=later"])).toThrow(/--phase/);
+  });
+
   it("refuses to run with no pages, since an empty sheet proves nothing", () => {
     expect(() => parseShotArgs([])).toThrow(/--pages/);
   });

@@ -32,6 +32,9 @@ export type ShotArgs = {
   fullPage: boolean;
   out: string | null;
   title: string;
+  /** "before" / "after" capture one side only (a local-only change: shoot
+   *  before, edit, shoot after into the same --out); "both" does both. */
+  phase: "before" | "after" | "both";
 };
 
 /** "/guide/nda?x=1" → "guide-nda"; "/" → "home". */
@@ -86,6 +89,8 @@ export function parseShotArgs(argv: string[]): ShotArgs {
   const value = (name: string) => argv.find((a) => a.startsWith(`--${name}=`))?.slice(name.length + 3);
   const pages = (value("pages") ?? "").split(",").map((p) => p.trim()).filter(Boolean).map(sitePath);
   if (!pages.length) throw new Error("--pages=/,/mock,... is required: an empty sheet proves nothing");
+  const phase = value("phase") ?? "both";
+  if (phase !== "before" && phase !== "after" && phase !== "both") throw new Error(`--phase must be before, after or both, not "${phase}"`);
   const viewports: Viewport[] = flag("phone") && !flag("desktop") ? ["phone"] : flag("desktop") && !flag("phone") ? ["desktop"] : ["phone", "desktop"];
   return {
     pages,
@@ -99,6 +104,7 @@ export function parseShotArgs(argv: string[]): ShotArgs {
     fullPage: flag("full"),
     out: value("out") ?? null,
     title: value("title") ?? "Before / after",
+    phase,
   };
 }
 
