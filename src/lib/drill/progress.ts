@@ -9,6 +9,8 @@
  * Spec: tests/drill-progress.test.ts.
  */
 import type { QuestionState } from "./select";
+import { crowdMessage, type CrowdTier } from "@/lib/celebrate/crowd";
+import { milestoneMessage } from "@/lib/celebrate/milestones";
 
 export type AnswerProgress = "wrong" | "fixed" | "rested" | "right";
 
@@ -29,7 +31,7 @@ export function progressLine(p: AnswerProgress): string {
     case "fixed":
       return "Fixed: right twice since you missed it.";
     case "rested":
-      return "Right. It rests now and comes back in 10 days to check it stuck.";
+      return "Got it this time! I'll bring it back in 10 days to check it stuck.";
     case "right":
       return "Right.";
     case "wrong":
@@ -37,8 +39,33 @@ export function progressLine(p: AnswerProgress): string {
   }
 }
 
-/** The celebration when an answer fixes a question, with the running total. */
+/** V's line when an answer fixes a question, with the running total. */
 export function fixedMessage(totalFixed: number): string {
-  const tail = totalFixed <= 1 ? "That's your first fix." : `${totalFixed} questions fixed so far.`;
-  return `Fixed: right twice since you missed it. ${tail}`;
+  if (totalFixed <= 1) return "Fixed! That's your first one.";
+  return `Fixed! Right twice since you missed it. That's ${totalFixed} you've fixed.`;
+}
+
+/**
+ * What V says inside the drill's answer panel (2026-10-04). V's launcher is
+ * hidden on the drill (its "Next" bar owns that corner), so V speaks in the
+ * panel instead of a bubble. Null = V stays quiet: a miss, or a plain right
+ * answer to a new question. Order: the fix (the student's own progress), then
+ * beating the crowd, then a milestone. V laughs at a win, talks otherwise.
+ */
+export function drillVSays(input: {
+  correct: boolean;
+  progress: AnswerProgress;
+  fixedTotal: number | null;
+  crowd: CrowdTier | null;
+  milestone: number | null;
+}): { lines: string[]; face: "laugh" | "talk"; fixed: boolean } | null {
+  if (!input.correct) return null;
+  const lines: string[] = [];
+  const fixed = input.progress === "fixed" && input.fixedTotal !== null;
+  if (fixed) lines.push(fixedMessage(input.fixedTotal!));
+  else if (input.progress === "rested") lines.push(progressLine("rested"));
+  if (input.crowd !== null) lines.push(crowdMessage(input.crowd));
+  if (input.milestone !== null) lines.push(milestoneMessage(input.milestone));
+  if (lines.length === 0) return null;
+  return { lines, face: fixed || input.crowd !== null ? "laugh" : "talk", fixed };
 }

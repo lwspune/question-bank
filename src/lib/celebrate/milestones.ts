@@ -45,6 +45,10 @@ export function milestoneEvent(userId: string, milestone: number): ActivityEvent
   };
 }
 
-export function milestoneMessage(milestone: number): string {
-  return `${milestone.toLocaleString("en-IN")} questions answered.`;
+/** V's line. `mock` when a finished paper crossed the line (the result page). */
+export function milestoneMessage(milestone: number, from: "answer" | "mock" = "answer"): string {
+  const n = milestone.toLocaleString("en-IN");
+  if (from === "mock") return `That paper took you past ${n} questions answered. Every one counts.`;
+  if (milestone === 10) return "10 questions answered. Good start!";
+  return `That's ${n} questions answered. Every one counts.`;
 }

@@ -9,10 +9,7 @@ import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { cn } from "@/lib/utils";
 import type { AnswerOutcome, ServedQuestion } from "@/lib/drill/service";
 import { invalidatePulse } from "@/lib/viewer/usePulse";
-import { fixedMessage, progressLine } from "@/lib/drill/progress";
-import { milestoneMessage } from "@/lib/celebrate/milestones";
-import { crowdMessage } from "@/lib/celebrate/crowd";
-import { celebrateInTurn } from "@/components/celebrate/celebrate";
+import { drillVSays, progressLine } from "@/lib/drill/progress";
 
 export type DrillScope = { attemptId: string; mockTitle: string; mockSlug: string } | null;
 
@@ -60,6 +57,7 @@ export default function DrillRunner({
   const answered = question ? verdicts[question.id] : undefined;
   const isLast = index === questions.length - 1;
   const correctCount = Object.values(verdicts).filter((v) => v.correct).length;
+  const vSays = answered ? drillVSays(answered) : null;
 
   async function choose(label: string) {
     if (!question || answered || busy) return;
@@ -77,13 +75,6 @@ export default function DrillRunner({
       }
       const verdict = (await res.json()) as AnswerOutcome;
       setVerdicts((prev) => ({ ...prev, [question.id]: { ...verdict, chose: label } }));
-      // A fix is the student's own progress, so it goes first; beating the
-      // crowd and a milestone follow in turn (celebrations share one slot).
-      const messages: string[] = [];
-      if (verdict.progress === "fixed" && verdict.fixedTotal !== null) messages.push(fixedMessage(verdict.fixedTotal));
-      if (verdict.crowd !== null) messages.push(crowdMessage(verdict.crowd));
-      if (verdict.milestone !== null) messages.push(milestoneMessage(verdict.milestone));
-      celebrateInTurn(messages);
       // The header badge counts this pool; a recorded answer is one of the two
       // moments it changes, so refresh it now rather than at the next page.
       invalidatePulse();
@@ -244,14 +235,38 @@ export default function DrillRunner({
         <div aria-live="polite">
           {answered && (
             <div className="mt-4">
-              <p
-                className={cn(
-                  "text-sm font-semibold",
-                  answered.correct ? "text-emerald-700 dark:text-emerald-400" : "text-red-600"
-                )}
-              >
-                {progressLine(answered.progress)}
-              </p>
+              {vSays ? (
+                // V's launcher is hidden on the drill, so V speaks here: the
+                // fix, beating the crowd, a milestone (lib/drill/progress).
+                <div
+                  className={cn(
+                    "flex items-start gap-2.5 rounded-xl border p-3",
+                    vSays.fixed
+                      ? "border-emerald-200 bg-emerald-50 dark:border-emerald-900 dark:bg-emerald-950/30"
+                      : "border-indigo-200 bg-indigo-50 dark:border-indigo-900 dark:bg-indigo-950/30"
+                  )}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element -- pre-sized static asset, see ChatWidget's VFace */}
+                  <img src={`/chat/v-${vSays.face}.png`} alt="" aria-hidden className="h-8 w-8 shrink-0 rounded-full" />
+                  <div className="space-y-1 text-sm leading-snug">
+                    {vSays.lines.map((line, i) => (
+                      <p key={i}>
+                        {i === 0 && <span className="font-semibold text-brand-accent">V: </span>}
+                        {line}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <p
+                  className={cn(
+                    "text-sm font-semibold",
+                    answered.correct ? "text-emerald-700 dark:text-emerald-400" : "text-red-600"
+                  )}
+                >
+                  {progressLine(answered.progress)}
+                </p>
+              )}
               {answered.solution && (
                 <div className="mt-2 rounded-xl border bg-muted/40 p-3 font-serif text-sm leading-relaxed [&_.katex]:max-w-full">
                   <BlockText text={answered.solution} />

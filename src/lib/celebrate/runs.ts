@@ -56,7 +56,11 @@ export function stepRun(
   return { state: next, level: isRunLevel(length) ? length : null, topic };
 }
 
-/** The message, in plain words: what they did, on what. No streak, no points. */
+/** V's line (the user's call, 2026-10-04: every celebration is V speaking).
+ *  What they did, on what. No streak, no points, nobody else. */
 export function runMessage(level: number, topic: string | null): string {
-  return topic ? `${level} right in a row on ${topic}.` : `${level} right in a row.`;
+  if (level === 3) return topic ? `3 in a row on ${topic}! Keep going.` : "3 in a row! Keep going.";
+  if (level === 5) return topic ? `5 in a row on ${topic}. You're on a roll.` : "5 in a row! You're on a roll.";
+  if (level === 10) return topic ? `10 in a row! ${topic} is clicking for you.` : "10 in a row! It's clicking for you.";
+  return `${level} in a row. That's serious form.`;
 }

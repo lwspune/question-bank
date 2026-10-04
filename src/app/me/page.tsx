@@ -162,13 +162,17 @@ export default async function MePage() {
             the drill, and it is a card, never a pop-up in the way. */}
         {daily && (
           <section aria-labelledby="daily-heading" className="space-y-3">
-            <div>
-              <h2 id="daily-heading" className="text-sm font-semibold tracking-tight">
-                Question of the day
-              </h2>
-              <p className="text-xs text-muted-foreground">
-                A past {daily.exam.name} question. Pick an answer before you look.
-              </p>
+            <div className="flex items-center gap-2.5">
+              {/* eslint-disable-next-line @next/next/no-img-element -- pre-sized static asset, see ChatWidget's VFace */}
+              <img src="/chat/v-talk.png" alt="" aria-hidden className="h-10 w-10 shrink-0 rounded-full" />
+              <div>
+                <h2 id="daily-heading" className="text-sm font-semibold tracking-tight">
+                  V&apos;s question of the day
+                </h2>
+                <p className="text-xs text-muted-foreground">
+                  Here&apos;s today&apos;s {daily.exam.name} one. Try it before you look.
+                </p>
+              </div>
             </div>
             <QuestionCard
               question={daily}

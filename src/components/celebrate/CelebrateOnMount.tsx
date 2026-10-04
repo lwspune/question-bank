@@ -11,7 +11,7 @@ import { celebrate } from "./celebrate";
  */
 export default function CelebrateOnMount({ message }: { message: string | null }) {
   useEffect(() => {
-    if (message) celebrate(message);
+    if (message) celebrate(message, "talk");
   }, [message]);
   return null;
 }

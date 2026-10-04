@@ -76,16 +76,22 @@ describe("stepRun", () => {
   });
 });
 
-describe("runMessage", () => {
+describe("runMessage — V speaking (user, 2026-10-04)", () => {
   it("names the topic when there is one, and stays plain when there is not", () => {
-    expect(runMessage(3, "Probability")).toBe("3 right in a row on Probability.");
-    expect(runMessage(3, null)).toBe("3 right in a row.");
+    expect(runMessage(3, "Probability")).toBe("3 in a row on Probability! Keep going.");
+    expect(runMessage(3, null)).toBe("3 in a row! Keep going.");
+    expect(runMessage(5, "Vector Algebra")).toBe("5 in a row on Vector Algebra. You're on a roll.");
+    expect(runMessage(5, null)).toBe("5 in a row! You're on a roll.");
+    expect(runMessage(10, "Probability")).toBe("10 in a row! Probability is clicking for you.");
+    expect(runMessage(10, null)).toBe("10 in a row! It's clicking for you.");
+    expect(runMessage(20, "Probability")).toBe("20 in a row. That's serious form.");
+    expect(runMessage(40, null)).toBe("40 in a row. That's serious form.");
   });
 
   it("never mentions a streak, points or other students", () => {
     for (const n of [3, 5, 10, 20, 50]) {
       const m = runMessage(n, "Probability").toLowerCase();
-      expect(m).toContain(`${n} right in a row`);
+      expect(m).toContain(`${n} in a row`);
       expect(m).not.toMatch(/streak|points|xp|rank|others|students/);
     }
   });

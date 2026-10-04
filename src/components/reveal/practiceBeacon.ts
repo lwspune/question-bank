@@ -9,7 +9,7 @@ import {
 } from "@/lib/questions/practiceBatch";
 import { milestoneMessage } from "@/lib/celebrate/milestones";
 import { crowdMessage, type CrowdTier } from "@/lib/celebrate/crowd";
-import { celebrateInTurn } from "@/components/celebrate/celebrate";
+import { celebrateInTurn, type VMessage } from "@/components/celebrate/celebrate";
 import { invalidatePulse } from "@/lib/viewer/usePulse";
 
 /**
@@ -115,9 +115,11 @@ function send(json: string, useBeacon: boolean): void {
         // 204 is the normal reply; only a 200 carries a milestone.
         if (res.status !== 200) return;
         const reply = (await res.json()) as { milestone?: unknown; crowd?: unknown };
-        const messages: string[] = [];
-        if (reply.crowd === 70 || reply.crowd === 80 || reply.crowd === 90) messages.push(crowdMessage(reply.crowd as CrowdTier));
-        if (typeof reply.milestone === "number") messages.push(milestoneMessage(reply.milestone));
+        const messages: VMessage[] = [];
+        if (reply.crowd === 70 || reply.crowd === 80 || reply.crowd === 90) {
+          messages.push({ text: crowdMessage(reply.crowd as CrowdTier), face: "laugh" });
+        }
+        if (typeof reply.milestone === "number") messages.push({ text: milestoneMessage(reply.milestone), face: "talk" });
         celebrateInTurn(messages);
         if (typeof reply.milestone === "number") invalidatePulse();
       })
