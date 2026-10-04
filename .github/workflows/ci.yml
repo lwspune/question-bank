@@ -1,8 +1,8 @@
 name: CI
 
-# Runs the full local gate (typecheck → lint → docs:budget → notes:latex →
-# conditional notes:lint → tests → conditional build)
-# on every push to main and every PR. Vercel still owns deploys.
+# Runs the local gate's checks (typecheck → lint → docs:budget → notes:latex →
+# conditional notes:lint → tests) on every push to main and every PR. Vercel
+# owns deploys.
 #
 # The prod-contract suite is NOT here (2026-08-31): it moved to a daily
 # schedule (prod-contract.yml). Its drift arrives from ingestion scripts as
@@ -10,14 +10,17 @@ name: CI
 # prod host's memory stalls were failing pushes on it over questions that had
 # nothing to do with the pushed code.
 #
-# The Build step is CONDITIONAL (2026-08-05) — skipped when a push changed
-# nothing `next build` reads. Vercel's deploy build still runs unconditionally,
-# so a data-only push is still built somewhere before it is served.
+# There is NO build step (removed 2026-10-04). Vercel runs the same `next
+# build` on the same commit, on Linux, and does not deploy a build that fails,
+# so a CI build added no protection. It did add load: CI and Vercel started
+# together after every push, two full prerenders against the production
+# database at once, and that day two back-to-back builds took the database
+# down. The pre-push hook still builds before a push.
 #
 # REQUIRED REPO SECRETS (Settings → Secrets and variables → Actions → New
 # repository secret).
 #
-# PRODUCTION project (build prerender + notes:lint):
+# PRODUCTION project (notes:lint):
 #   NEXT_PUBLIC_SUPABASE_URL
 #   NEXT_PUBLIC_SUPABASE_ANON_KEY
 #   SUPABASE_SERVICE_ROLE_KEY   (service role → catches PRIVATE rows too)
@@ -49,10 +52,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          # Full history so the Build gate below can diff against the push /
-          # PR base. Cheap here (~35 MB, ~1.3k commits). Without it the base
-          # commit is missing and needs-build fails safe to "build", silently
-          # undoing the saving.
+          # Full history so the notes:lint gate below can diff against the
+          # push / PR base. Cheap here (~35 MB, ~1.3k commits). Without it the
+          # base commit is missing and needs-notes-lint fails safe to "run",
+          # silently undoing the saving.
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
@@ -97,21 +100,3 @@ jobs:
           TEST_SUPABASE_ANON_KEY: ${{ secrets.TEST_SUPABASE_ANON_KEY }}
           TEST_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.TEST_SUPABASE_SERVICE_ROLE_KEY }}
         run: npm test
-      # `next build` prerenders 689 pages, ~317 of which query Postgres (~25 MB
-      # of egress). 78 of the last 145 pushes to main changed nothing the
-      # compiler reads, so that build could not have failed. Same rule as the
-      # pre-push hook — scripts/lib/needsBuild.ts, spec'd in
-      # tests/needs-build.test.ts — shared so the two gates cannot drift.
-      # It is an allowlist of SKIPS: anything unrecognised builds.
-      - name: Detect build-relevant changes
-        id: buildcheck
-        run: |
-          BASE="${{ github.event.pull_request.base.sha || github.event.before }}"
-          if npx tsx scripts/needs-build.ts "$BASE" "${{ github.sha }}"; then
-            echo "needed=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "needed=false" >> "$GITHUB_OUTPUT"
-          fi
-      - name: Build
-        if: steps.buildcheck.outputs.needed == 'true'
-        run: npm run build

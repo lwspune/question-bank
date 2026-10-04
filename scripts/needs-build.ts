@@ -1,9 +1,9 @@
 /**
  * Gate helper: does the changeset between two refs warrant `next build`?
  *
- * Shared by the pre-push hook and CI so both use ONE rule (the pure core in
- * scripts/lib/needsBuild.ts, spec'd in tests/needs-build.test.ts). Duplicating
- * the path list in shell and in YAML is how the two gates drift apart.
+ * Used by the pre-push hook (CI used it too until its build step was removed
+ * on 2026-10-04). The pure core is scripts/lib/needsBuild.ts, spec'd in
+ * tests/needs-build.test.ts.
  *
  *   npx tsx scripts/needs-build.ts <baseRef> <headRef>
  *

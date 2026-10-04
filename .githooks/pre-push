@@ -1,9 +1,11 @@
 #!/bin/sh
-# Local gate before pushing to remote. Runs the SAME chain as CI
+# Local gate before pushing to remote. Runs the same checks as CI
 # (.github/workflows/ci.yml) — typecheck, lint, docs:budget, notes:latex,
-# conditionally notes:lint, test, and conditionally build — so a green
-# pre-push means a green CI. Single source of truth: the `prepush*` scripts in
-# package.json; this file only picks WHICH of the four to run.
+# conditionally notes:lint, test — so a green pre-push means a green CI, PLUS a
+# conditional build, which CI no longer runs (2026-10-04: Vercel builds the
+# same commit and refuses to deploy a failing one). Single source of truth: the
+# `prepush*` scripts in package.json; this file only picks WHICH of the four to
+# run.
 #
 # Why the full chain (not just build): pre-push used to run only
 # typecheck+lint+build, so a broken TEST passed pre-push and only failed
@@ -19,8 +21,7 @@
 # failed. It is now skipped for those pushes only; ANY change under src/, or to
 # a build config, or to a path the rule doesn't recognise, still builds. The
 # rule lives in scripts/lib/needsBuild.ts (spec: tests/needs-build.test.ts) and
-# is shared with CI so the two gates cannot drift. It is an allowlist of
-# SKIPS, so it can only ever be too cautious.
+# is an allowlist of SKIPS, so it can only ever be too cautious.
 #
 # CONDITIONAL notes:lint (2026-09-21). It validates the /notes editorial
 # modules against the LIVE taxonomy + tags — 91 s, and it grows with the bank.

@@ -2,7 +2,8 @@
  * Decides whether a changeset warrants running `next build` in the gate.
  *
  * WHY THIS EXISTS. The gate runs `next build` on every push, in two places
- * (the pre-push hook and CI). That build prerenders 689 pages, ~317 of which
+ * (the pre-push hook and CI; CI's build was removed 2026-10-04, so the hook is
+ * now the only caller). That build prerenders 689 pages, ~317 of which
  * query Postgres — roughly 25 MB of egress and a couple of minutes, each time.
  * Measured over 30 days: 78 of 145 pushes to main changed nothing the compiler
  * reads (ingestion data + docs), so ~3.9 GB/month of database egress went on
