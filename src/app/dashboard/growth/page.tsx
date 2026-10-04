@@ -12,6 +12,7 @@ import {
   READINGS,
   SECOND_PAGE_KEEP_PCT,
   BOX_BUY_MIN_SALES,
+  CHIPS_KEEP_PCT,
   checkOn,
   type Experiment,
 } from "@/lib/growth/registry";
@@ -251,6 +252,17 @@ export default async function GrowthPage() {
             </p>
             <ReadingsList metric="hello-tap-rate" />
             <ReadingsList metric="card-tap-rate" />
+          </div>
+        );
+      case "resource-chips":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince))}: keep the chips if {CHIPS_KEEP_PCT}%+ of cards that show
+              them get a tap. Below that, keep them only if the notes and guide pages they point at are indexed and get
+              search clicks (Search Console); otherwise retire them.
+            </p>
+            <ReadingsList metric="chip-tap-rate" />
           </div>
         );
       case "box-buy":

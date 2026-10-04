@@ -65,6 +65,7 @@ describe("EXPERIMENTS", () => {
       "email-cap",
       "indexing",
       "onboarding-arms",
+      "resource-chips",
       "second-page",
     ]);
   });

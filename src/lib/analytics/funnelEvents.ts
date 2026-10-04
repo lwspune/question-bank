@@ -118,6 +118,15 @@ export const FUNNEL_EVENTS = [
    * page views are its scale. Chrome/Edge only, so a floor.
    */
   "slow_tap",
+  /**
+   * The strategy/concept chips on a bank question card were shown (2026-10-04;
+   * growth registry "resource-chips"): they appear only once the solution is
+   * open. Once per card per page; prop: page ("browse" | "questions" | "other").
+   * The scale for the click below, which is what decides whether they stay.
+   */
+  "resource_chips_shown",
+  /** …and one was tapped; props: chip ("guide" | "notes"), page. */
+  "resource_chips_click",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];

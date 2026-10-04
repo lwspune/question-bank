@@ -2,12 +2,15 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   ArrowUpRight,
   BookOpen,
   Check,
   ChevronDown,
+  ChevronUp,
   ImageIcon,
+  Lightbulb,
   NotebookPen,
   Pencil,
   Plus,
@@ -26,7 +29,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import type { OptionRow, QuestionRow } from "@/lib/questions/query";
-import { formatProvenance } from "@/lib/questions/formatProvenance";
+import { sourceTag } from "@/lib/questions/sourceTag";
+import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { useCart } from "@/lib/cart/CartProvider";
 import type { QuestionResources } from "@/lib/links/questionResources";
 import { useCardRevealMeter } from "@/components/reveal/useRevealMeter";
@@ -53,6 +57,19 @@ const DIFFICULTY_LABEL: Record<QuestionRow["difficulty"], string> = {
   MODERATE: "Moderate",
   HARD: "Hard",
 };
+
+const DIFFICULTY_PILL: Record<QuestionRow["difficulty"], string> = {
+  EASY: "bg-emerald-50 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300",
+  MODERATE: "bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300",
+  HARD: "bg-rose-50 text-rose-700 dark:bg-rose-500/15 dark:text-rose-300",
+};
+
+/** Which page a chip tap came from, for the "resource-chips" readout. */
+function chipPage(pathname: string | null): "browse" | "questions" | "other" {
+  if (pathname?.startsWith("/questions")) return "questions";
+  if (pathname?.startsWith("/browse")) return "browse";
+  return "other";
+}
 
 export default function QuestionCard({
   question,
@@ -157,12 +174,17 @@ export default function QuestionCard({
     // to record (the server refuses it too; this keeps the request honest).
     if (tryReveal(cancelled ? undefined : label)) setPicked(label);
   }
+  const pathname = usePathname();
+  const hasChips = Boolean(resources?.guide || resources?.notes);
   function toggleSolution() {
     if (showSolution) {
       setShowSolution(false);
       return;
     }
-    if (tryReveal()) setShowSolution(true);
+    if (tryReveal()) {
+      setShowSolution(true);
+      if (hasChips) trackFunnelOnce("resource_chips_shown", question.id, { page: chipPage(pathname) });
+    }
   }
 
   // Free reveals spent and this answer not yet seen: show the wall up front.
@@ -210,53 +232,55 @@ export default function QuestionCard({
     if (ok) toast.success("Added to paper");
   }
 
+  const tag = sourceTag(question);
+  const toggleLabel = isNumeric
+    ? showSolution ? "Hide answer" : "Show answer"
+    : isSubjective
+      ? showSolution ? "Hide model answer" : "Show model answer"
+      : showSolution ? "Hide solution" : "Show solution";
+  const hasToggle = isNumeric || Boolean(question.solution);
+
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-lg border bg-card shadow-sm transition-all hover:border-primary/30 hover:shadow-md",
+        "overflow-hidden rounded-2xl border bg-card shadow-sm transition-all hover:border-primary/30 hover:shadow-md",
         inCart && "border-primary/60 ring-2 ring-primary/20"
       )}
     >
-      {/* Two stacked rows: a compact META row (badge + breadcrumb + expand
-          chevron + Add), then the question text FULL-WIDTH below it. The old
-          single-row `items-start` layout reserved a full-height right column for
-          the chevron + Add, leaving a dead gutter beside multi-line questions and
-          a gap below short ones; stacking removes both and lets the text wrap
-          the full card width. */}
+      {/* Card layout (2026-10-04): a TAG row (where the question is from +
+          difficulty), the subject path in full, then the question. The tag is
+          sourceTag(): past papers in brand blue with their sitting and number;
+          textbook and practice questions in grey, and a practice question
+          never shows a number that could pass for a paper's. */}
       <div className="p-3 sm:p-4">
-        <div className="flex items-center gap-2">
-          {/* Desktop / tablet: standalone Q-badge; phone uses the inline #N. */}
-          <span className="hidden h-7 w-9 shrink-0 items-center justify-center rounded-full bg-muted px-2 font-mono text-xs text-muted-foreground sm:inline-flex">
-            Q{index}
-          </span>
+        <div className="flex items-start gap-2">
           <button
             type="button"
             onClick={toggleExpanded}
             aria-expanded={expanded}
             aria-label={expanded ? "Collapse question" : "Expand question"}
-            className="flex min-w-0 flex-1 items-center gap-2 rounded py-1 text-left transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="flex min-w-0 flex-1 items-center gap-2 rounded py-0.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
-            {/* Single non-wrapping line: the breadcrumb truncates (min-w-0 makes
-                truncate engage on a flex item); difficulty + separators stay
-                pinned (shrink-0) so the difficulty never orphans to a 2nd line. */}
-            <div className="flex min-w-0 flex-1 items-center gap-x-2 text-xs text-muted-foreground">
-              <span className="shrink-0 font-mono text-muted-foreground/80 sm:hidden">
-                #{index}
+            <span className="flex min-w-0 flex-1 flex-wrap items-center gap-1.5">
+              <span
+                className={cn(
+                  "inline-flex max-w-full items-center rounded-full px-2.5 py-0.5 text-xs font-semibold",
+                  tag.kind === "pyq" ? "bg-brand-accent/10 text-brand-accent" : "bg-muted text-muted-foreground"
+                )}
+              >
+                <span className="truncate">{tag.label}</span>
               </span>
-              <span className="min-w-0 truncate">{breadcrumb}</span>
-              <span className="shrink-0" aria-hidden>·</span>
-              <span className="shrink-0">{DIFFICULTY_LABEL[question.difficulty]}</span>
+              <span className={cn("inline-flex shrink-0 items-center rounded-full px-2.5 py-0.5 text-xs font-semibold", DIFFICULTY_PILL[question.difficulty])}>
+                {DIFFICULTY_LABEL[question.difficulty]}
+              </span>
               <ItemStatChip agg={itemStats} />
               {question.imageUrl && (
-                <>
-                  <span className="shrink-0" aria-hidden>·</span>
-                  <span className="inline-flex shrink-0 items-center gap-1">
-                    <ImageIcon className="h-3 w-3" aria-hidden />
-                    <span className="sr-only">Has image</span>
-                  </span>
-                </>
+                <span className="inline-flex shrink-0 items-center text-muted-foreground">
+                  <ImageIcon className="h-3.5 w-3.5" aria-hidden />
+                  <span className="sr-only">Has image</span>
+                </span>
               )}
-            </div>
+            </span>
             <ChevronDown
               className={cn(
                 "h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200",
@@ -276,6 +300,12 @@ export default function QuestionCard({
           )}
         </div>
 
+        <p className="mt-1.5 text-xs text-muted-foreground">
+          <span className="font-mono text-muted-foreground/80">#{index}</span>
+          <span aria-hidden> · </span>
+          {breadcrumb}
+        </p>
+
         <button
           type="button"
           onClick={toggleExpanded}
@@ -285,7 +315,7 @@ export default function QuestionCard({
         >
           <div
             className={cn(
-              "font-serif text-[15px] leading-relaxed",
+              "font-serif text-base leading-relaxed",
               !expanded ? "line-clamp-2" : "overflow-x-auto [&_.katex]:max-w-full"
             )}
           >
@@ -310,25 +340,6 @@ export default function QuestionCard({
         </button>
       </div>
 
-      {(resources?.guide || resources?.notes) && (
-        <div className="flex flex-wrap items-center gap-1.5 border-t border-dashed bg-muted/15 px-3 py-1.5 text-xs sm:gap-2 sm:px-4">
-          {resources.guide && (
-            <ResourceChip
-              href={resources.guide.href}
-              label={resources.guide.label}
-              Icon={BookOpen}
-            />
-          )}
-          {resources.notes && (
-            <ResourceChip
-              href={resources.notes.href}
-              label={resources.notes.label}
-              Icon={NotebookPen}
-            />
-          )}
-        </div>
-      )}
-
       <div
         className={cn(
           "grid transition-[grid-template-rows] duration-200 ease-out",
@@ -336,14 +347,9 @@ export default function QuestionCard({
         )}
       >
         <div className="overflow-hidden">
-          <div
-            className={cn(
-              "space-y-3 border-t bg-muted/20 px-4 pb-4 font-serif",
-              expanded && "animate-fade-in-up"
-            )}
-          >
+          <div className={cn("space-y-3 px-3 pb-3 font-serif sm:px-4 sm:pb-4", expanded && "animate-fade-in-up")}>
             {itemStats && (
-              <div className="pt-3">
+              <div className="pt-1">
                 <ItemStatDetail
                   agg={itemStats}
                   keyLabel={
@@ -359,13 +365,13 @@ export default function QuestionCard({
               stems
                 .filter((v) => v.context)
                 .map((v) => (
-                  <div key={v.lang} lang={v.lang} className="pt-3 text-sm italic text-muted-foreground">
+                  <div key={v.lang} lang={v.lang} className="text-sm italic text-muted-foreground">
                     <BlockText text={v.context!} />
                   </div>
                 ))}
 
             {question.imageUrl && (
-              <div className="pt-3">
+              <div>
                 <ZoomableImage
                   src={publicImageUrl(supabaseUrl, question.imageUrl)}
                   alt="Question diagram"
@@ -377,17 +383,30 @@ export default function QuestionCard({
             {cancelled && <CancelledNotice note={question.cancelledNote!} />}
 
             {!isOpenFormat && (
-            <ol className="space-y-2 pt-2">
+            <ol className="space-y-2">
               {question.options.map((opt) => {
                 const isPickedByUser = picked === opt.label;
                 const mark = optionMark({ revealed, picked: isPickedByUser, isCorrect: opt.isCorrect, cancelled });
                 const showCorrect = mark === "correct";
                 const showWrong = mark === "wrong";
+                // Once answered, the options that are neither the key nor the
+                // pick step back, so the eye goes straight to the result.
+                const dimmed = revealed && mark === "none";
 
                 const optionContent = (
                   <>
-                    <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-bold text-foreground">
-                      {opt.label}
+                    <span
+                      className={cn(
+                        "inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-sans text-xs font-bold",
+                        showCorrect
+                          ? "bg-emerald-600 text-white"
+                          : showWrong
+                            ? "bg-red-600 text-white"
+                            : "bg-brand-accent/10 text-brand-accent"
+                      )}
+                    >
+                      {showCorrect ? <Check className="h-4 w-4" aria-hidden /> : opt.label}
+                      {showCorrect && <span className="sr-only">{opt.label}</span>}
                     </span>
                     <div className="min-w-0 flex-1 overflow-x-auto [&_.katex]:max-w-full">
                       {optionVersions(question, opt, langPref).map((v, i) => (
@@ -397,13 +416,13 @@ export default function QuestionCard({
                       ))}
                     </div>
                     {showCorrect && (
-                      <span className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">
+                      <span className="inline-flex shrink-0 items-center gap-1 font-sans text-xs font-semibold text-emerald-700 dark:text-emerald-300">
                         <Check className="h-3.5 w-3.5" aria-hidden />
                         Correct
                       </span>
                     )}
                     {showWrong && (
-                      <span className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-red-700 dark:text-red-400">
+                      <span className="inline-flex shrink-0 items-center gap-1 font-sans text-xs font-semibold text-red-700 dark:text-red-300">
                         <X className="h-3.5 w-3.5" aria-hidden />
                         Your pick
                       </span>
@@ -415,22 +434,23 @@ export default function QuestionCard({
                   <li
                     key={opt.label}
                     className={cn(
-                      "overflow-hidden rounded-md border bg-background",
-                      showCorrect && "border-l-2 border-l-emerald-500",
-                      showWrong && "border-l-2 border-l-red-500"
+                      "overflow-hidden rounded-xl border-[1.5px] bg-card transition-colors",
+                      showCorrect && "border-emerald-400 bg-emerald-50 dark:border-emerald-500 dark:bg-emerald-500/10",
+                      showWrong && "border-red-400 bg-red-50 dark:border-red-500 dark:bg-red-500/10",
+                      dimmed && "opacity-60"
                     )}
                   >
                     <button
                       type="button"
                       onClick={() => pickOption(opt.label)}
                       aria-pressed={isPickedByUser}
-                      className="flex w-full items-start gap-3 p-2.5 text-left text-sm transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                      className="flex w-full items-center gap-3 px-3 py-2.5 text-left text-[15px] transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
                     >
                       {optionContent}
                     </button>
                     {opt.imageUrl && (
-                      <div className="px-2.5 pb-2.5">
-                        <div className="ml-9">
+                      <div className="px-3 pb-2.5">
+                        <div className="ml-10">
                           <ZoomableImage
                             src={publicImageUrl(supabaseUrl, opt.imageUrl)}
                             alt={`Option ${opt.label} image`}
@@ -444,126 +464,107 @@ export default function QuestionCard({
               })}
             </ol>
             )}
-            {!isOpenFormat && !revealed && !cancelled && (
-              <p className="pt-1 text-center text-xs text-muted-foreground">
-                {locked ? "Sign in free to check answers." : "Tap an option to check your answer."}
-              </p>
+            {/* No "tap an option" hint: the options read as buttons. The one
+                line that stays is the signed-out wall, because there a tap does
+                nothing and, unexplained, earns repeated angry taps. */}
+            {!isOpenFormat && !revealed && !cancelled && locked && (
+              <p className="text-center font-sans text-xs text-muted-foreground">Sign in free to check answers.</p>
             )}
 
             {revealBlocked && !revealed && <RevealSignInPrompt key={blockedTaps} surface={surface} />}
 
             {isSubjective && !question.solution && (
-              <p className="pt-2 text-xs italic text-muted-foreground">
-                Model answer coming soon.
-              </p>
+              <p className="text-xs italic text-muted-foreground">Model answer coming soon.</p>
             )}
 
-            {/* Numeric (NAT): a reveal showing the exact answer, plus the worked
-                solution if present. The answer is a plain number (no options). */}
-            {isNumeric && (
-              <div>
-                {locked ? (
-                  lockedLink
-                ) : (
-                  <button
-                    type="button"
-                    onClick={toggleSolution}
-                    className="font-sans text-xs font-medium text-primary hover:underline"
-                  >
-                    {showSolution ? "Hide answer" : "Show answer"}
-                  </button>
+            {showSolution && (isNumeric || question.solution) && (
+              <div className="rounded-xl border border-brand-accent/20 bg-brand-accent/5 p-3 text-sm motion-safe:animate-fade-in-up sm:p-4">
+                <p className="flex items-center gap-1.5 font-sans text-xs font-bold uppercase tracking-wide text-brand-accent">
+                  <Lightbulb className="h-3.5 w-3.5" aria-hidden />
+                  {isNumeric ? "Answer" : isSubjective ? "Model answer" : "Solution"}
+                </p>
+                {isNumeric && (
+                  <p className="mt-1.5 font-sans">
+                    <span className="text-lg font-semibold tabular-nums">{question.numericAnswer}</span>
+                  </p>
                 )}
-                {showSolution && (
-                  <div className="mt-2 rounded-md border border-dashed bg-background p-3 text-sm motion-safe:animate-fade-in-up">
-                    <p className="font-sans">
-                      <span className="font-medium">Answer:</span>{" "}
-                      <span className="tabular-nums">{question.numericAnswer}</span>
-                    </p>
-                    {question.solution && (
-                      <div className="pt-2">
-                        <BlockText text={question.solution} solution />
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            )}
-
-            {!isNumeric && question.solution && (
-              <div>
-                {locked ? (
-                  lockedLink
-                ) : (
-                  <button
-                    type="button"
-                    onClick={toggleSolution}
-                    className="font-sans text-xs font-medium text-primary hover:underline"
-                  >
-                    {isSubjective
-                      ? showSolution
-                        ? "Hide model answer"
-                        : "Show model answer"
-                      : showSolution
-                      ? "Hide solution"
-                      : "Show solution"}
-                  </button>
-                )}
-                {showSolution && (
-                  <div className="mt-2 rounded-md border border-dashed bg-background p-3 text-sm motion-safe:animate-fade-in-up">
-                    {/* BlockText (not KatexRenderer) so a GFM pipe-table in a
-                        solution — e.g. a truth table — renders as a real <table>.
-                        Fast-paths to KatexRenderer when there's no table. */}
-                    <div className="space-y-2">
-                      {solutions.map((v, i) => (
+                {question.solution && (
+                  /* BlockText (not KatexRenderer) so a GFM pipe-table in a
+                     solution, e.g. a truth table, renders as a real <table>. */
+                  <div className="mt-1.5 space-y-2">
+                    {isNumeric ? (
+                      <BlockText text={question.solution} solution />
+                    ) : (
+                      solutions.map((v, i) => (
                         <div key={v.lang} lang={v.lang} className={i > 0 ? "border-t border-dashed pt-2" : undefined}>
                           <BlockText text={v.text} solution />
                         </div>
-                      ))}
-                    </div>
-                    {question.solutionImageUrl && (
-                      <div className="pt-3">
-                        <ZoomableImage
-                          src={publicImageUrl(supabaseUrl, question.solutionImageUrl)}
-                          alt="Solution diagram"
-                          className="max-h-64 w-auto rounded border"
-                        />
-                      </div>
+                      ))
                     )}
+                  </div>
+                )}
+                {question.solutionImageUrl && (
+                  <div className="pt-3">
+                    <ZoomableImage
+                      src={publicImageUrl(supabaseUrl, question.solutionImageUrl)}
+                      alt="Solution diagram"
+                      className="max-h-64 w-auto rounded border"
+                    />
                   </div>
                 )}
               </div>
             )}
 
-            <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t pt-2 font-sans">
-              {canEdit ? (
-                <Link
-                  href={`/dashboard/questions/${question.id}/edit`}
-                  className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline"
-                >
-                  <Pencil className="h-3 w-3" aria-hidden />
-                  Edit question
-                </Link>
-              ) : (
-                <span />
-              )}
-              {(() => {
-                const provenance = formatProvenance({
-                  examName: question.exam.name,
-                  questionNumber: question.questionNumber,
-                  pyqYear: question.pyqYear,
-                  pyqMonth: question.pyqMonth,
-                  pyqNote: question.pyqNote,
-                });
-                return provenance ? (
-                  <span className="font-mono text-[11px] text-muted-foreground/80">
-                    [{provenance}]
-                  </span>
-                ) : null;
-              })()}
-              <ReportQuestionDialog
-                questionId={question.id}
-                isLoggedIn={isLoggedIn}
-              />
+            {/* Strategy and concept chips: one line, SHOWN only with the
+                solution, but always in the HTML. On the crawlable /questions
+                pages they are internal links to /notes and /guide (growth
+                registry "internal-links"), so hiding them from the markup would
+                cut that before "resource-chips" has measured anything. */}
+            {hasChips && (
+              // The `hidden` CLASS, not the attribute: a `flex` class outranks the
+              // [hidden] browser style, so the attribute left the chips showing.
+              <div className={cn("min-w-0 flex-nowrap items-center gap-1.5 font-sans text-xs", showSolution ? "flex" : "hidden")}>
+                {resources?.guide && (
+                  <ResourceChip href={resources.guide.href} label="Strategy" title={resources.guide.label} Icon={BookOpen} chip="guide" page={chipPage(pathname)} fixed />
+                )}
+                {resources?.notes && (
+                  <ResourceChip href={resources.notes.href} label={resources.notes.label.replace(/^Concept:\s*/, "")} title={resources.notes.label} Icon={NotebookPen} chip="notes" page={chipPage(pathname)} />
+                )}
+              </div>
+            )}
+
+            {/* One action row: the solution toggle on the left, Report (and
+                Edit, for staff) on the right. The source line that used to sit
+                here moved into the tag at the top. */}
+            <div className="flex flex-wrap items-center justify-between gap-2 border-t pt-3 font-sans">
+              <div className="flex items-center">
+                {hasToggle &&
+                  (locked ? (
+                    lockedLink
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={toggleSolution}
+                      aria-expanded={showSolution}
+                      className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg border bg-card px-3 py-1.5 text-sm font-semibold text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    >
+                      {toggleLabel}
+                      {showSolution ? <ChevronUp className="h-4 w-4" aria-hidden /> : <ChevronDown className="h-4 w-4" aria-hidden />}
+                    </button>
+                  ))}
+              </div>
+              <div className="flex items-center gap-3">
+                {canEdit && (
+                  <Link
+                    href={`/dashboard/questions/${question.id}/edit`}
+                    className="inline-flex items-center gap-1.5 text-xs font-medium text-primary hover:underline"
+                  >
+                    <Pencil className="h-3 w-3" aria-hidden />
+                    Edit question
+                  </Link>
+                )}
+                <ReportQuestionDialog questionId={question.id} isLoggedIn={isLoggedIn} />
+              </div>
             </div>
           </div>
         </div>
@@ -619,21 +620,35 @@ function CartToggle({
 function ResourceChip({
   href,
   label,
+  title,
   Icon,
+  chip,
+  page,
+  fixed = false,
 }: {
   href: string;
   label: string;
+  title: string;
   Icon: typeof BookOpen;
+  chip: "guide" | "notes";
+  page: "browse" | "questions" | "other";
+  /** Never shrink (the short "Strategy" chip); the other shortens with an ellipsis. */
+  fixed?: boolean;
 }) {
   return (
     <Link
       href={href}
-      className="group inline-flex items-center gap-1 rounded-full border border-input bg-background px-2 py-0.5 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
+      title={title}
+      onClick={() => trackFunnel("resource_chips_click", { chip, page })}
+      className={cn(
+        "group inline-flex min-w-0 items-center gap-1 rounded-full border border-input bg-card px-2.5 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
+        fixed ? "shrink-0" : "shrink"
+      )}
     >
-      <Icon className="h-3 w-3" aria-hidden />
-      <span>{label}</span>
+      <Icon className="h-3 w-3 shrink-0" aria-hidden />
+      <span className="truncate">{label}</span>
       <ArrowUpRight
-        className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        className="h-3 w-3 shrink-0 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
         aria-hidden
       />
     </Link>
