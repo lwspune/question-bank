@@ -44,7 +44,7 @@ export function BilingualSolution({ q }: { q: Pick<Bilingual, "translations"> & 
     <div className="space-y-2">
       {versions.map((v, i) => (
         <div key={v.lang} lang={v.lang} className={cn(i > 0 && "border-t border-dashed pt-2")}>
-          <BlockText text={v.text} />
+          <BlockText text={v.text} solution />
         </div>
       ))}
     </div>

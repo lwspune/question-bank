@@ -210,7 +210,7 @@ function ConceptBlock({
           )}
           {pyq.solution && (
             <div className="psoln">
-              <BlockText text={pyq.solution} />
+              <BlockText text={pyq.solution} solution />
             </div>
           )}
         </div>

@@ -4,6 +4,8 @@ import { parseTableBlocks } from "./parseTableBlocks";
 interface Props {
   text: string;
   className?: string;
+  /** A worked solution: display equations left-align (`.solution-math` in globals.css). */
+  solution?: boolean;
 }
 
 /**
@@ -14,8 +16,9 @@ interface Props {
  * questions), it returns a bare <KatexRenderer> — byte-for-byte the prior
  * render behaviour, so existing questions are visually unchanged.
  */
-export default function BlockText({ text, className }: Props) {
+export default function BlockText({ text, className: base, solution }: Props) {
   if (!text) return null;
+  const className = solution ? [base, "solution-math"].filter(Boolean).join(" ") : base;
   const blocks = parseTableBlocks(text);
 
   // Fast path: no table → byte-for-byte the prior KatexRenderer behaviour.
