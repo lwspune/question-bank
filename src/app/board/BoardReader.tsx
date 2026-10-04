@@ -654,16 +654,20 @@ function BoardQuestionItem({
 
   return (
     <div className="rounded-lg border bg-card p-3 sm:p-4">
-      <div className="flex items-start gap-2.5">
+      {/* Phone: the ref chip and Project share a top row and the stem drops
+          below at full width (order-last + basis-full). From sm up there is
+          room for all three side by side. As three columns on a 390px phone
+          the stem got ~40% of the card and wrapped mid-expression. */}
+      <div className="flex flex-wrap items-start gap-2.5 sm:flex-nowrap">
         {q.questionNumber && (
           <span className="mt-0.5 shrink-0 rounded bg-muted px-1.5 py-0.5 font-mono text-[11px] text-muted-foreground">
             {cleanRef(q.questionNumber)}
           </span>
         )}
-        <div className="min-w-0 flex-1 font-serif text-[15px] leading-relaxed [&_.katex]:max-w-full">
+        <div className="order-last min-w-0 basis-full font-serif text-[15px] leading-relaxed sm:order-none sm:flex-1 [&_.katex]:max-w-full">
           <BlockText text={q.text} />
         </div>
-        <PresentButton question={present} order={order} className="mt-0.5" />
+        <PresentButton question={present} order={order} className="ml-auto mt-0.5" />
       </div>
 
       {q.imageUrl && (
