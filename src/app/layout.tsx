@@ -70,6 +70,9 @@ export const metadata: Metadata = {
     "MCQ bank",
   ],
   applicationName: SITE_NAME,
+  // Static, so it cannot de-cache the shell. Push needs it; iPhone needs it to
+  // add the site to the Home Screen, the only place iOS delivers push.
+  manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
     url: SITE_URL,

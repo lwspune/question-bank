@@ -28,6 +28,7 @@ export const KIND_LABELS: Record<ActivityKind, string> = {
   paywall_event: "Paywall step",
   email_clicked: "Email link clicked",
   milestone_reached: "Answered milestone reached",
+  push_clicked: "Notification tapped",
 };
 
 export type KindStat = { kind: string; events: number; users: number };

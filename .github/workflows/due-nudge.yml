@@ -27,6 +27,13 @@ name: Send due-queue nudges
 # account. Welcome 30 + due nudge 30 + mock report 10 = 70 at worst, leaving
 # ~30 for auth mail. On 2026-09-28 the three jobs tried 202 and 52 failed on
 # quota. Raise one --limit and you must re-add all three.
+#
+# BROWSER PUSH RUNS FIRST (PUSH_SPEC.md, 2026-10-01). A student who turned
+# notifications on gets the nudge by push and the email run then skips them
+# (has-push), so nobody gets both. The two runs read each other's send log, so
+# one-a-day, the 3-day gap and the backoff hold ACROSS channels. Until the
+# three VAPID secrets exist the push step fails loudly and the email step
+# still runs (continue-on-error), so a missing secret cannot cost the email.
 
 on:
   schedule:
@@ -47,6 +54,16 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      - name: Push due-queue nudges to subscribed browsers
+        continue-on-error: true
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT }}
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+        run: npm run push:due-nudge -- --apply --limit=200
 
       - name: Mail due-queue nudges
         env:

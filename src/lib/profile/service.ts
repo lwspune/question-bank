@@ -59,6 +59,8 @@ export type ProfileRow = {
   onboardedAt: string | null;
   whatsappOptIn: boolean;
   whatsappPromptedAt: string | null;
+  /** When the browser-push ask was answered (migration 0128); null = not yet. */
+  pushPromptedAt: string | null;
   /** Weekly sittings goal (migration 0113); null = not chosen. */
   weeklyGoal: number | null;
   /** The student's own exam date, YYYY-MM-DD (migration 0116); null = derive. */
@@ -72,7 +74,7 @@ export async function getOwnProfile(
   const { data } = await db
     .from("student_profiles")
     .select(
-      "mobile, consent, target_exams, stage, medium, academic_stream, city, goal, onboarded_at, whatsapp_opt_in, whatsapp_prompted_at, weekly_goal, exam_date"
+      "mobile, consent, target_exams, stage, medium, academic_stream, city, goal, onboarded_at, whatsapp_opt_in, whatsapp_prompted_at, push_prompted_at, weekly_goal, exam_date"
     )
     .eq("user_id", userId)
     .maybeSingle();
@@ -88,6 +90,7 @@ export async function getOwnProfile(
     onboardedAt: (data?.onboarded_at as string | undefined) ?? null,
     whatsappOptIn: (data?.whatsapp_opt_in as boolean | undefined) ?? false,
     whatsappPromptedAt: (data?.whatsapp_prompted_at as string | undefined) ?? null,
+    pushPromptedAt: (data?.push_prompted_at as string | undefined) ?? null,
     weeklyGoal: (data?.weekly_goal as number | null | undefined) ?? null,
     examDate: (data?.exam_date as string | null | undefined) ?? null,
   };
@@ -101,6 +104,8 @@ export type ProfileUpdate = ProfileDetails & {
   /** When present, sets the WhatsApp opt-in AND stamps whatsapp_prompted_at for
    *  either decision (true = opt in, false = decline) — the ask-once gate. */
   whatsappOptIn?: boolean;
+  /** Stamps push_prompted_at: the browser-push ask was answered, either way. */
+  pushPrompted?: true;
   /** Weekly sittings goal; null clears it. */
   weeklyGoal?: number | null;
   /** Own exam date (YYYY-MM-DD); null clears it so the calendar applies. */
@@ -134,6 +139,7 @@ export async function updateOwnProfile(
     row.whatsapp_opt_in = patch.whatsappOptIn;
     row.whatsapp_prompted_at = new Date().toISOString(); // decided → ask once
   }
+  if (patch.pushPrompted) row.push_prompted_at = new Date().toISOString();
 
   const { error } = await db.from("student_profiles").upsert(row, { onConflict: "user_id" });
   if (error) throw new Error(error.message);

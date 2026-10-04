@@ -33,6 +33,7 @@ import { buildDueNudgeEmail } from "../../src/lib/email/templates";
 import { newClickToken } from "../../src/lib/email/click";
 import { sendEmail, sleep, THROTTLE_MS } from "../../src/lib/email/resend";
 import { ensureUnsubscribeTokens, readPriorSends, readStudents } from "../../src/lib/email/service";
+import { readPriorPushSends, readSubscriptions } from "../../src/lib/push/service";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -64,9 +65,14 @@ async function main() {
   );
 
   const now = new Date();
-  const [students, priorSends, candidates] = await Promise.all([
+  // Push sends join the prior-sends list (same key format), so one-a-day, the
+  // gap and the backoff hold across both channels; a student with a browser
+  // subscription is the push run's, and is skipped here as has-push.
+  const [students, priorSends, priorPush, subs, candidates] = await Promise.all([
     readStudents(db),
     readPriorSends(db),
+    readPriorPushSends(db),
+    readSubscriptions(db),
     readDueCandidates(db, now),
   ]);
   console.log(`Students: ${students.length} · candidates with any answer history: ${candidates.length}`);
@@ -74,8 +80,9 @@ async function main() {
   const { picks, skipped } = selectDueNudges({
     candidates,
     students: new Map(students.map((s) => [s.userId, s])),
-    priorSends,
+    priorSends: [...priorSends, ...priorPush],
     now,
+    pushUsers: new Set(subs.map((s) => s.userId)),
   });
 
   const reasons = new Map<string, number>();

@@ -88,6 +88,59 @@ describe("summarizeDue", () => {
   });
 });
 
+describe("selectDueNudges — channels (browser push, PUSH_SPEC.md §2)", () => {
+  const base = { students: students(student()), priorSends: [] as PriorSend[], now: NOW };
+
+  it("the email run skips a student with a live push subscription — push replaces email, never doubles it", () => {
+    const r = selectDueNudges({ ...base, candidates: [candidate()], pushUsers: new Set(["u1"]) });
+    expect(r.picks).toHaveLength(0);
+    expect(r.skipped[0].reason).toBe("has-push");
+  });
+
+  it("the push run picks only subscribed students", () => {
+    const r = selectDueNudges({
+      ...base,
+      students: students(student(), student({ userId: "u2" })),
+      candidates: [candidate(), candidate({ userId: "u2" })],
+      channel: "push",
+      pushUsers: new Set(["u1"]),
+    });
+    expect(r.picks.map((p) => p.userId)).toEqual(["u1"]);
+    expect(r.skipped).toEqual([{ userId: "u2", reason: "no-subscription" }]);
+  });
+
+  it("the push run ignores EMAIL consent — the subscription is its own consent", () => {
+    const r = selectDueNudges({
+      ...base,
+      students: students(student({ emailOptOut: true, email: "" })),
+      candidates: [candidate()],
+      channel: "push",
+      pushUsers: new Set(["u1"]),
+    });
+    expect(r.picks).toHaveLength(1);
+  });
+
+  it("one a day ACROSS channels: a push already sent today blocks the email run, and the reverse", () => {
+    const sentToday: PriorSend[] = [{ userId: "u1", dedupeKey: "due_nudge:u1:2026-09-25", createdAt: iso(NOW.getTime() - HOUR) }];
+    expect(selectDueNudges({ ...base, priorSends: sentToday, candidates: [candidate()] }).skipped[0].reason).toBe("already-today");
+    expect(
+      selectDueNudges({ ...base, priorSends: sentToday, candidates: [candidate()], channel: "push", pushUsers: new Set(["u1"]) })
+        .skipped[0].reason
+    ).toBe("already-today");
+  });
+
+  it("staff stay out of the push run too", () => {
+    const r = selectDueNudges({
+      ...base,
+      students: students(),
+      candidates: [candidate()],
+      channel: "push",
+      pushUsers: new Set(["u1"]),
+    });
+    expect(r.skipped[0].reason).toBe("not-a-student");
+  });
+});
+
 describe("selectDueNudges", () => {
   const base = { students: students(student()), priorSends: [] as PriorSend[], now: NOW };
 

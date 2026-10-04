@@ -1,6 +1,7 @@
 /**
  * Email click tracking through our own redirect: every CTA in an email points
- * at /api/e/<token>?to=<path>, the route records `email_clicked` for the
+ * at /api/e/<token>?to=<path>, the route records `email_clicked` (or, for a
+ * browser notification's token in push_sends, `push_clicked` — 0128) for the
  * student the token belongs to, then redirects. Chosen over Resend's link
  * rewriting (2026-09-27) so the click lands in user_activity beside the
  * student's other acts and the "--report" scripts can join on it.

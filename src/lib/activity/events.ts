@@ -56,6 +56,7 @@ export const ACTIVITY_KINDS = [
   // awarded once and measured. It always sits beside the answer rows that
   // earned it; it is telemetry, never a feature. See lib/celebrate/milestones.
   "milestone_reached", // metadata: answered (the milestone)
+  "push_clicked", // tapped one of our browser notifications (refId = push_sends.id, metadata: kind) — 0128
 ] as const;
 
 export type ActivityKind = (typeof ACTIVITY_KINDS)[number];

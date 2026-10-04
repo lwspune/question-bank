@@ -15,6 +15,7 @@ import {
 import { getOwnProfile } from "@/lib/profile/service";
 import { readFreeMockLimit } from "@/lib/billing/plansQuery";
 import ProfileForm from "./ProfileForm";
+import PushCard from "./PushCard";
 
 export const dynamic = "force-dynamic";
 
@@ -70,6 +71,9 @@ export default async function AccountPage() {
         <div className="mb-6">
           <ProfileForm profile={profile} />
         </div>
+
+        {/* The public key only: nothing on Vercel sends, so the private key never lives there. */}
+        <PushCard vapidKey={process.env.VAPID_PUBLIC_KEY ?? ""} />
 
         <div className="mb-6">
           <BatchesCard

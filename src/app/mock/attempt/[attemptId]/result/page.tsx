@@ -16,12 +16,13 @@ import { getAttemptReview, MockError, type ReviewItem } from "@/lib/mocks/servic
 import { getOwnProfile } from "@/lib/profile/service";
 import { getMockFeedback } from "@/lib/mocks/feedbackService";
 import { needsMobile } from "@/lib/profile/mobile";
-import { needsWhatsappPrompt } from "@/lib/profile/whatsapp";
+import { resultPageAsk } from "@/lib/profile/push";
 import AttemptReviewList from "@/app/mock/_components/AttemptReviewList";
 import MobileGate from "./MobileGate";
 import MockFeedback from "./MockFeedback";
 import ShareResult from "./ShareResult";
 import WhatsappOptIn from "./WhatsappOptIn";
+import PushOptIn from "./PushOptIn";
 import Findings from "./Findings";
 import PulseRefresh from "./PulseRefresh";
 import CelebrateOnMount from "@/components/celebrate/CelebrateOnMount";
@@ -75,6 +76,7 @@ export default async function MockResultPage({ params }: { params: Params }) {
       </>
     );
   }
+  const ask = resultPageAsk(profile);
   // Past the gate → a mobile is on file. Load any existing feedback (to render
   // the widget vs a filled state) and decide whether to offer the WhatsApp opt-in.
   const feedback = await getMockFeedback(db, params.attemptId);
@@ -220,7 +222,14 @@ export default async function MockResultPage({ params }: { params: Params }) {
 
         {report && <Findings report={report} attemptId={params.attemptId} />}
 
-        {needsWhatsappPrompt(profile) && <WhatsappOptIn />}
+        {/* One ask per screen: push first, the WhatsApp card as its fallback
+            (PushOptIn renders it when this browser cannot push) or on a later
+            visit. See lib/profile/push.ts. */}
+        {ask.push ? (
+          <PushOptIn vapidKey={process.env.VAPID_PUBLIC_KEY ?? ""}>{ask.whatsapp && <WhatsappOptIn />}</PushOptIn>
+        ) : (
+          ask.whatsapp && <WhatsappOptIn />
+        )}
 
         {/* Review */}
         <h2 className="mt-8 text-lg font-semibold">Review — all {res.review!.items.length} questions</h2>

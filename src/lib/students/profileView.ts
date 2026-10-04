@@ -67,6 +67,7 @@ const ACTIVITY_LABELS: Record<ActivityKind, string> = {
   paywall_event: "Reached a paywall step",
   email_clicked: "Clicked an email link",
   milestone_reached: "Reached an answered-questions milestone",
+  push_clicked: "Tapped a notification",
 };
 
 const ACTIVITY_KIND_SET: ReadonlySet<string> = new Set(ACTIVITY_KINDS);
