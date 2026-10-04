@@ -321,6 +321,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-10
 
+- **2026-10-04 (fifth) — Dead taps: slow taps are now measured, and a question card redraws only when its own lock changes ([DEAD_TAPS.md](DEAD_TAPS.md)).**
+  - **Not hydration:** 44 of 74 dead reveal taps came after a reveal had worked on the same page, and the identical board button was dead 0 times in 106; the suspect is work after the tap.
+  - **`slow_tap`** (Event Timing, no package): a tap over 200 ms to paint reports kind and `waiting|working|painting:bucket`, once per page per kind; Chrome/Edge only, so a floor.
+  - **`useCardRevealMeter`** subscribes a card to "am I locked?", so one signed-out reveal redraws one card instead of 25-50. Re-check Clarity and `slow_tap` about 3 days after the push. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-10-04 (fourth) — Local builds prerender one notes subtopic page per chapter, CI stops building, and local builds run 2 pages at a time.**
   - **Why:** two back-to-back local builds (~20,000 requests in 12 min; one exam lookup ran 446 times) took the production database down for 30 min, until a dashboard restart. Every push also ran three full builds, CI and Vercel at the same moment.
   - **Local only:** 266 of 1,352 subtopic pages (`notesPrerenderParams`), all of them when the push trips notes:lint's rule. Vercel keeps all: an unbuilt page is ~2.5 s cold and Vercel drops it every deploy (the /questions lesson). A test fails any route not using the helper.

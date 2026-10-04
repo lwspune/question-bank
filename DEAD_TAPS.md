@@ -1,6 +1,6 @@
 # Dead taps: findings and plan
 
-*Written 2026-10-04. Data: Clarity recordings from 2026-10-01 to 2026-10-03 (four pulls, real visitors only), plus the code paths behind each element. Status: measurement and fix proposed, not built.*
+*Written 2026-10-04. Data: Clarity recordings from 2026-10-01 to 2026-10-03 (four pulls, real visitors only), plus the code paths behind each element. Status (2026-10-04): steps 1 and 2 of the plan BUILT (branch `perf/dead-taps`), going live with the next push; step 3, the re-check, is due about 3 days after that.*
 
 A **dead tap** is Clarity's name for a tap after which nothing visible changes. Visitors then tap again, and sometimes rage-tap. They have become the most common complaint in the recordings.
 
@@ -54,7 +54,7 @@ Not proven. Clarity does not record timing.
 - **Notes "Show options"** is a different component that doesn't use the shared store, yet is dead 10 of 51 times. Something else may be at work there: page weight, or the general cost of a heavy notes page.
 - **Background (not yet measured):** every page sends about 277 KB of compressed JavaScript, and the Supabase login library alone is 179 KB. That load lands on cheap phones (item 5a in the session notes).
 
-## Proposed plan (awaiting the owner's go)
+## Plan (steps 1 and 2 built 2026-10-04: `SlowTapReporter` + `src/lib/analytics/slowTap.ts`; `useCardRevealMeter`)
 
 1. **Measure, with a browser feature only (Event Timing API, no new package).**
    - For any tap that takes more than 200 ms to show a result, send one analytics event, `slow_tap`, with two details:
