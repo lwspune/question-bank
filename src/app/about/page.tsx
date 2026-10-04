@@ -24,7 +24,6 @@ import {
   CONTACT_EMAIL,
   FOUNDER_INSTAGRAM_URL,
   FOUNDER_LINKEDIN_URL,
-  LINKEDIN_COMPANY_URL,
 } from "@/lib/brand";
 import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
 import { getCachedBankYearRange } from "@/lib/exam/bankYears";
@@ -92,7 +91,14 @@ export default async function AboutPage() {
           </h1>
           <p className="mt-4 font-serif text-base leading-relaxed text-muted-foreground sm:text-lg">
             PYQ Vault is built and maintained by{" "}
-            <strong className="text-foreground">Vilas Shinde</strong>, in Pune.
+            <a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded font-semibold text-foreground underline decoration-brand-accent/40 underline-offset-4 hover:decoration-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
+              Vilas Shinde<span className="sr-only"> (LinkedIn, opens in a new tab)</span>
+            </a>, in Pune.
             It is a free, public bank of past-year questions for Indian entrance
             and board exams
             {totalQuestions > 0 && (
@@ -192,7 +198,14 @@ export default async function AboutPage() {
             PYQ Vault
           </p>
           <p className="mt-1 font-serif leading-relaxed text-muted-foreground">
-            Vilas Shinde · Pune, Maharashtra, India
+            <a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded text-foreground underline decoration-brand-accent/40 underline-offset-4 hover:decoration-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
+              Vilas Shinde<span className="sr-only"> (LinkedIn, opens in a new tab)</span>
+            </a> · Pune, Maharashtra, India
             <br />
             Or by email:{" "}
             <a
@@ -204,15 +217,6 @@ export default async function AboutPage() {
           </p>
           <p className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 font-serif text-muted-foreground">
             <span>Follow:</span>
-            <a
-              href={LINKEDIN_COMPANY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-brand-accent underline"
-            >
-              <Linkedin aria-hidden className="h-3.5 w-3.5" />
-              PYQ Vault on LinkedIn
-            </a>
             <a
               href={LINKEDIN_URL}
               target="_blank"
