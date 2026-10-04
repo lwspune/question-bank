@@ -39,13 +39,28 @@ export type ShotArgs = {
 
 /** "/guide/nda?x=1" → "guide-nda"; "/" → "home". */
 export function pageSlug(path: string): string {
-  const bare = path.split("?")[0].replace(/^\/+|\/+$/g, "");
-  if (!bare) return "home";
-  return bare
-    .replace(/[^A-Za-z0-9/-]+/g, "")
-    .replace(/\//g, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "");
+  const [pathPart, query] = path.split("?");
+  const bare = pathPart.replace(/^\/+|\/+$/g, "");
+  const base = !bare
+    ? "home"
+    : bare
+        .replace(/[^A-Za-z0-9/-]+/g, "")
+        .replace(/\//g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "");
+  // A query gets a short hash, so /browse and /browse?examId=... do not share
+  // a file name (the second capture used to overwrite the first).
+  return query ? `${base}-q${shortHash(query)}` : base;
+}
+
+/** Six base-36 characters, stable for the same input (FNV-1a, 32-bit). */
+function shortHash(s: string): string {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return h.toString(36).padStart(6, "0").slice(-6);
 }
 
 function join(base: string, path: string): string {

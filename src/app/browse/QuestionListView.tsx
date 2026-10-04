@@ -1,4 +1,5 @@
 import { Layers } from "lucide-react";
+import type { BreadcrumbFixed } from "./breadcrumb";
 import BlockText from "@/components/math/BlockText";
 import { groupBySet } from "@/lib/export/groupBySet";
 import type { QuestionRow } from "@/lib/questions/query";
@@ -24,6 +25,9 @@ type Props = {
   itemStats?: Map<string, ItemStatAggregate>;
   /** Surface the exam name in each card's breadcrumb. Pass true when no exam filter is set. */
   includeExam: boolean;
+  /** Levels every card on this page shares (the chapter on a chapter page, the
+   *  filtered subject), so the card's path line does not repeat them. */
+  breadcrumbFixed?: BreadcrumbFixed;
   /** The guide/notes backlinks per question id, resolved ON THE SERVER. A
    *  plain object so it can cross into a client component (a Map cannot). */
   resourcesById?: Record<string, QuestionResources>;
@@ -60,6 +64,7 @@ export default function QuestionListView({
   isLoggedIn,
   supabaseUrl,
   includeExam,
+  breadcrumbFixed,
   resourcesById,
   itemStats,
   insert,
@@ -98,6 +103,7 @@ export default function QuestionListView({
             isLoggedIn={isLoggedIn}
             supabaseUrl={supabaseUrl}
             includeExam={includeExam}
+            breadcrumbFixed={breadcrumbFixed}
             resources={resourcesById?.[group.question.id]}
             itemStats={itemStats?.get(group.question.id)}
           />
@@ -121,6 +127,7 @@ export default function QuestionListView({
                   supabaseUrl={supabaseUrl}
                   hideContext
                   includeExam={includeExam}
+                  breadcrumbFixed={breadcrumbFixed}
                   resources={resourcesById?.[q.id]}
                   itemStats={itemStats?.get(q.id)}
                 />

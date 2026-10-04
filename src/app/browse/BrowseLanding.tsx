@@ -44,7 +44,11 @@ export default function BrowseLanding({
           <LibraryBig className="h-4 w-4 text-brand-accent" aria-hidden />
           Start with an exam
         </h2>
-        <ul className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Two columns from the smallest phone up (one column made 14 tall
+            cards before the first chapter). A board family, which carries its
+            class links, takes the full width on a phone; `dense` lets a later
+            single exam fill the hole a family leaves. */}
+        <ul className="mt-3 grid grid-flow-dense grid-cols-2 gap-2 lg:grid-cols-3">
           {examNodes.map((node) => {
             if (node.kind === "family") {
               // A family pill CANNOT apply a filter — `examId` is one UUID and
@@ -54,8 +58,8 @@ export default function BrowseLanding({
               // never the homepage's total-PUBLIC figure.
               const total = familyTotal(node, (e) => e.questionCount);
               return (
-                <li key={node.key}>
-                  <div className="flex h-full flex-col rounded-lg border bg-card p-4 shadow-sm">
+                <li key={node.key} className="col-span-2 sm:col-span-1">
+                  <div className="flex h-full flex-col rounded-lg border bg-card p-3 shadow-sm sm:p-4">
                     <span className="block truncate text-sm font-medium">
                       {node.label}
                     </span>
@@ -94,7 +98,7 @@ export default function BrowseLanding({
               <li key={exam.slug}>
                 <Link
                   href={exam.href}
-                  className="group flex items-center justify-between gap-3 rounded-lg border bg-card p-4 shadow-sm transition-colors hover:border-brand-accent/60 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="group flex h-full items-center justify-between gap-2 rounded-lg border bg-card p-3 shadow-sm transition-colors hover:border-brand-accent/60 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:gap-3 sm:p-4"
                 >
                   <span className="min-w-0">
                     <span className="block truncate text-sm font-medium">

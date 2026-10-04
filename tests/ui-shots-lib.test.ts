@@ -14,9 +14,22 @@ describe("pageSlug", () => {
     expect(pageSlug("/notes/nda-maths/")).toBe("notes-nda-maths");
   });
 
-  it("drops the query string and keeps the name file-safe", () => {
-    expect(pageSlug("/browse?examId=abc&q=x")).toBe("browse");
+  it("keeps the name file-safe", () => {
     expect(pageSlug("/board/[x]")).toBe("board-x");
+  });
+
+  it("gives URLs that differ only in their query different names", () => {
+    // Dropping the query made /browse and /browse?examId=... both "browse", so
+    // the second capture overwrote the first (2026-10-05). A short hash keeps
+    // the file name readable when the query is a row of uuids.
+    const bare = pageSlug("/browse");
+    const a = pageSlug("/browse?examId=e4e753d1-c84a-45a8-93ad-6f0bf9733c95");
+    const b = pageSlug("/browse?examId=70e70f9d-c20c-45c6-a346-0c914d65035d");
+    expect(bare).toBe("browse");
+    expect(a).toMatch(/^browse-q[0-9a-z]{6}$/);
+    expect(b).toMatch(/^browse-q[0-9a-z]{6}$/);
+    expect(a).not.toBe(b);
+    expect(pageSlug("/browse?examId=e4e753d1-c84a-45a8-93ad-6f0bf9733c95")).toBe(a);
   });
 });
 

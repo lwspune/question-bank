@@ -324,10 +324,12 @@ export default async function BrowsePage({ searchParams }: PageProps) {
             <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
               {filtered ? "Filtered questions" : "All questions"}
             </h2>
+            {/* The bare page's hero already prints the bank size, so the count
+                here only appears once a filter is set. */}
             <p className="mt-1 text-sm text-muted-foreground">
-              {totalCount.toLocaleString("en-IN")} question
-              {totalCount === 1 ? "" : "s"}
-              {filtered ? " match" : " available"}
+              {filtered
+                ? `${totalCount.toLocaleString("en-IN")} question${totalCount === 1 ? "" : "s"} match`
+                : "Start with an exam below, or narrow it down with the filters."}
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-2">
@@ -413,6 +415,11 @@ export default async function BrowsePage({ searchParams }: PageProps) {
                 isLoggedIn={isStaff}
                 supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
                 includeExam={!filters.examId}
+                breadcrumbFixed={{
+                  subject: Boolean(filters.subjectId),
+                  chapter: filters.chapterIds.length === 1,
+                  subtopic: filters.subtopicIds.length === 1,
+                }}
                 resourceTags={resourceTags}
                 itemStats={itemStats}
               />

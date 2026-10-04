@@ -223,7 +223,7 @@ export default function DownloadDialog({
             Download
             {filterCount > 0 && (
               <span className="ml-1 text-brand-foreground/80">
-                · {filterCount}
+                · {filterCount.toLocaleString("en-IN")}
               </span>
             )}
           </Button>
@@ -495,7 +495,7 @@ function ModeButton({
       )}
     >
       <span>{label}</span>
-      <span className="font-mono tabular-nums opacity-80">· {count}</span>
+      <span className="tabular-nums opacity-80">· {count.toLocaleString("en-IN")}</span>
     </button>
   );
 }
