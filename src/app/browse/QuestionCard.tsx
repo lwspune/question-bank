@@ -17,6 +17,7 @@ import { toast } from "sonner";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import BlockText from "@/components/math/BlockText";
 import { cn } from "@/lib/utils";
+import { optionMark } from "@/lib/questions/optionMark";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import {
   Dialog,
@@ -28,7 +29,7 @@ import type { OptionRow, QuestionRow } from "@/lib/questions/query";
 import { formatProvenance } from "@/lib/questions/formatProvenance";
 import { useCart } from "@/lib/cart/CartProvider";
 import type { QuestionResources } from "@/lib/links/questionResources";
-import { useRevealMeter } from "@/components/reveal/useRevealMeter";
+import { useCardRevealMeter } from "@/components/reveal/useRevealMeter";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
 import RevealLockedLink from "@/components/reveal/RevealLockedLink";
@@ -109,7 +110,8 @@ export default function QuestionCard({
   // nudge. A question already revealed is free to re-open (no double-charge).
   // Projection view-model for the classroom overlay.
   const presentable = useMemo(() => fromQuestionRow(question), [question]);
-  const meter = useRevealMeter("bank", question.exam.name);
+  // Card-level: a reveal elsewhere on the page does not redraw this card.
+  const meter = useCardRevealMeter("bank", question.exam.name, question.id);
   const mobilePrompt = useMobilePrompt();
   const [revealBlocked, setRevealBlocked] = useState(false);
   // Re-keys the prompt on every refused tap so it visibly replays.
@@ -141,7 +143,7 @@ export default function QuestionCard({
   }
 
   // Free reveals spent and this answer not yet seen: show the wall up front.
-  const locked = meter.isLocked(question.id) && !revealed && !showSolution;
+  const locked = meter.locked && !revealed && !showSolution;
   // The locked link stands in for a reveal button; once a refused option tap
   // has shown the prompt (which carries its own Sign in), one link is enough.
   const lockedLink =
@@ -355,9 +357,9 @@ export default function QuestionCard({
             <ol className="space-y-2 pt-2">
               {question.options.map((opt) => {
                 const isPickedByUser = picked === opt.label;
-                const showCorrect = revealed && opt.isCorrect;
-                const showWrong =
-                  revealed && isPickedByUser && !opt.isCorrect && !cancelled;
+                const mark = optionMark({ revealed, picked: isPickedByUser, isCorrect: opt.isCorrect, cancelled });
+                const showCorrect = mark === "correct";
+                const showWrong = mark === "wrong";
 
                 const optionContent = (
                   <>

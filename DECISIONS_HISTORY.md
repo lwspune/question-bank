@@ -15,6 +15,16 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-10-04 (fifth) — Dead taps: slow taps are now measured, and a question card redraws only when its own lock changes (branch `perf/dead-taps`, no migration).**
+
+**Why.** Dead taps became the most common complaint in the Clarity recordings: reveal buttons 74 of 698 dead, the card's expand line 48 of 320. The findings, the ruled-out causes and the plan are in [DEAD_TAPS.md](DEAD_TAPS.md). The deciding facts: 44 of the 74 dead reveal taps came after a reveal had already worked on the same page (so not "page not ready yet"), and the board reader's identical button was dead 0 times in 106 (so not button size). The suspect is the work a tap triggers: a signed-out reveal wrote the shared reveal list, and every card on the page watched that whole list.
+
+**What shipped.**
+- **Measurement.** `SlowTapReporter` (root layout) reads the browser's Event Timing entries and reports any tap over 200 ms to paint as `slow_tap` with two props: `kind` (reveal, expand, nav, option, other, from the tapped element's text, aria-label, header and option-button shape) and `timing` (`<phase>:<bucket>`, where phase is the largest of waiting = phone busy before our handler, working = our handler and the redraw, painting = the frame). Once per interaction and once per page per kind. Pure core `src/lib/analytics/slowTap.ts`, tested. Chrome and Edge only; Safari has no Event Timing, so iPhones report nothing and the counts are a floor. It reads no cookies or search params, so no page loses its caching.
+- **Fix.** `useCardRevealMeter(surface, exam, questionId)` subscribes a `/browse` card to one yes/no, "is this card locked?", via `useSyncExternalStore`, so React redraws a card only when its own answer changes: none on a normal reveal, every unrevealed card when the last free reveal is spent (the 2026-10-01 lock-up-front behaviour, unchanged). The tap logic moved into a shared `useAttemptReveal`; the board reader keeps the page-level `useRevealMeter`. `remaining` was dropped (no caller). A source-scan test pins the card to the card-level hook, since there is no DOM test setup here.
+
+**Reading it.** About 3 days after the push: Clarity's dead-tap rate per element, and the `slow_tap` split. If reveal taps still show mostly *working*, the card is still too heavy; if *waiting* dominates, page weight is next (the Supabase client, 179 KB, on every page).
+
 **2026-10-04 (fourth) — Local builds prerender one notes subtopic page per chapter, CI stops building, and local builds run 2 pages at a time (branch `perf/build-load`, no migration).**
 
 **What happened.** At 09:36 IST a local `next build` ran against production and sent ~8,500 REST requests in five minutes. A second build started at ~09:47 and sent ~11,500 in two (peak 8,075 a minute; normal traffic is under 50). Postgres went to statement timeouts at 09:48, WAL archiving started failing, and from 09:53 the host answered nothing: Cloudflare 522 on `/auth/v1` and `/rest/v1`, MCP `execute_sql` timed out, even `/customer/v1/privileged/metrics`. The load stopped, but the database did not recover by itself; a dashboard restart at ~10:16 brought it back at once with no data loss. The user's report was "I am not able to log in". Supabase's status page showed only a US-East incident; the logs named the dev machine's IP and a `node` user agent.
@@ -31,6 +41,16 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 **Verification.** typecheck, lint and all 506 test files green. One local build from a cleared `.next` (cold fetch cache): 6 min 15 s, 2,173 HTML pages (notes 572: 40 + 266 + 266), ~7,860 requests over four minutes, peak ~2,600 a minute, zero 5xx, the database answering under 2 s throughout (polled every 20 s). Exam lookups fell from ~1,360 to 43.
 
 **Measured, not yet acted on.** The 800 `/questions` pages are now the biggest share of a build (~3,400 `questions` reads, ~2,200 facet/profile RPCs). Vercel builds took 6.5-8.5 min on 2026-09-22..26 and 12-14 min on 2026-10-01..04, from page growth. The next lever is caching name lookups across a build (`unstable_cache`), which helps Vercel builds too. If the database wedges again, the remaining option is the Small compute tier (a money decision).
+
+**2026-10-04 (third) — Board options are tappable: a tap checks the answer, as on `/browse` (branch `feat/board-option-tap`, no migration).**
+
+**Why.** The 2-3 Oct Clarity pull showed at least 10 dead taps on board option text ("same frequency", "zero", "Bent - T - Shape"), usually followed by the reader finding "Show answer". On `/browse` an option is a button that checks the answer; on `/board` options were a plain list. About 4,100 board questions are MCQs: CBSE 12 2,240 (2,137 from past papers), MH HSC 12 825, MH SB 11 393, MH SSC 10 378, MH SB 9 128, CBSE 10 110, CBSE 11 26.
+
+**What shipped.** `optionMark({ revealed, picked, isCorrect, cancelled })` decides how an option looks once the answer shows (correct, wrong pick, plain) and is now used by both the `/browse` card and the board reader. Board options are buttons when the question has an answer: the first tap is a reveal through the same `useRevealMeter` budget and sign-in lock as "Show answer" and opens the solution, as the board's reveal always has; a later tap only moves the pick, as on `/browse`; "Hide answer" clears it. The right option says "Correct" and a wrong pick "Your pick", in words as well as colour, and an unanswered MCQ shows "Tap an option to check your answer." (or "Sign in free to check answers." once the free reveals are spent).
+
+**Decisions (owner, 2026-10-04).** No right/wrong is recorded from the board yet: the server grades picks only for the bank surface, and the 2026-10-16 check asks whether `/browse` taps are real attempts or tap-to-see. If they are real, the board joins; otherwise this would have doubled the noise. Moving the pick after the reveal matches `/browse`. A tap opens the solution too, because that is what the board's reveal has always shown.
+
+**Not verifiable here.** The taps are behind interaction; the build proves the board pages still prerender, and the owner checks the taps on a phone.
 
 **2026-10-04 (second) — The download box sells the pass in place, and the pass is renamed Premium Pass (branch `feat/download-box-buy`, no migration).**
 
@@ -1032,6 +1052,8 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 17. **Four 2026-09-29 CDS Maths digests EVICTED from CLAUDE.md on 2026-10-04** (second, eighth, seventeenth, twenty-sixth: CDS Maths waves 1-4) under the CEILING rule: the three 2026-10-02/03 digests (page fixes, loading bar, figure repair) took the active Decisions log to 38,227 bytes against its 36,000 ceiling. All four were verified present here as long forms before eviction, so nothing was lost.
 
 18. **Two more 2026-09-29 digests EVICTED from CLAUDE.md on 2026-10-04** (twenty-seventh: /guide/cds-maths; twenty-eighth: JEE Conic Sections) under the CEILING rule, when the two 2026-10-04 digests (board caching and the question-list fix; the download box) would have taken the active log past its 36,000-byte ceiling. Both were verified present here as long forms before eviction, so nothing was lost.
+
+19. **The 2026-09-30 (second) digest (JEE Maths batch 2) EVICTED from CLAUDE.md on 2026-10-04** under the CEILING rule, when the board-options digest landed beside the build-load one and took the active log 57 bytes past its 36,000-byte ceiling. Verified present here as a long form before eviction, so nothing was lost.
 
 For all other entries (the consolidated 2026-05-27 milestone, 2026-05-26 infrastructure entries, anything **2026-09-15 onwards**), see `CLAUDE.md` "Decisions log" section. For **2026-09-01 to 2026-09-14** both exist: the DIGEST in `CLAUDE.md`, the full narrative here. The Foundations (M1-M3, 2026-05-08) sub-section also stays in CLAUDE.md.
 

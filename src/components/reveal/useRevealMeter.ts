@@ -2,7 +2,7 @@
 
 import { useCallback, useSyncExternalStore } from "react";
 import { useSignedIn } from "@/components/auth/useSignedIn";
-import { revealDecision, isRevealLocked, FREE_REVEAL_LIMIT } from "@/lib/questions/revealMeter";
+import { revealDecision, isRevealLocked } from "@/lib/questions/revealMeter";
 import { recordPractice } from "./practiceBeacon";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import type { PickLabel, PracticeSurface } from "@/lib/questions/practiceBatch";
@@ -86,7 +86,7 @@ export function useRevealedIds(): string[] {
 
 /**
  * Client-side answer-reveal meter, shared across /browse + /board. Anon viewers
- * get FREE_REVEAL_LIMIT distinct-question reveals (persisted in localStorage);
+ * get FREE_REVEAL_LIMIT (lib/questions/revealMeter) distinct-question reveals (persisted in localStorage);
  * signed-in viewers are unlimited. `attemptReveal(id)` returns whether the
  * reveal is allowed and consumes budget on the first reveal of a new question.
  *
@@ -102,9 +102,9 @@ export function useRevealedIds(): string[] {
  * an unattributed bucket in the wall-hit breakdown. It is the DB `exams.name`
  * on both surfaces, so the two never speak different vocabularies.
  */
-export function useRevealMeter(surface: PracticeSurface, examName: string) {
+/** The tap itself: gate, persist, report. Shared by the page and card hooks. */
+function useAttemptReveal(surface: PracticeSurface, examName: string) {
   const { signedIn, loading } = useSignedIn();
-  const ids = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   /** `chose`: the option tapped, when this reveal is an answer — graded on the
    *  server (bank verdicts, 2026-10-02). Omitted for a "Show solution" reveal. */
@@ -135,6 +135,13 @@ export function useRevealMeter(surface: PracticeSurface, examName: string) {
     [signedIn, loading, surface, examName]
   );
 
+  return { attemptReveal, signedIn, loading };
+}
+
+export function useRevealMeter(surface: PracticeSurface, examName: string) {
+  const { attemptReveal, signedIn, loading } = useAttemptReveal(surface, examName);
+  const ids = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+
   /** Render this card locked (before any tap)? See `isRevealLocked`. */
   const isLocked = useCallback(
     (questionId: string): boolean =>
@@ -142,6 +149,27 @@ export function useRevealMeter(surface: PracticeSurface, examName: string) {
     [signedIn, loading, ids]
   );
 
-  const remaining = signedIn ? Infinity : Math.max(0, FREE_REVEAL_LIMIT - ids.length);
-  return { attemptReveal, isLocked, remaining, signedIn, loading };
+  return { attemptReveal, isLocked, signedIn, loading };
+}
+
+/**
+ * The same meter for ONE card (2026-10-04, DEAD_TAPS.md fix #2). It subscribes
+ * to a yes/no, "is this card locked?", rather than to the whole reveal list,
+ * so React redraws a card only when its own answer changes: on a normal reveal
+ * that is no other card at all, and when the last free reveal is spent it is
+ * every unrevealed card at once, which is the lock-up-front behaviour of
+ * 2026-10-01. Before this, one signed-out reveal redrew all 25-50 cards on a
+ * page. The board reader keeps useRevealMeter: it holds one meter for all of
+ * its items.
+ */
+export function useCardRevealMeter(surface: PracticeSurface, examName: string, questionId: string) {
+  const { attemptReveal, signedIn, loading } = useAttemptReveal(surface, examName);
+  const getLocked = useCallback(
+    () => isRevealLocked({ signedIn, loading, revealedIds: getSnapshot(), questionId }),
+    [signedIn, loading, questionId]
+  );
+  // Nothing is locked on the server or in the hydration pass, as before.
+  const locked = useSyncExternalStore(subscribe, getLocked, () => false);
+
+  return { attemptReveal, locked, signedIn, loading };
 }
