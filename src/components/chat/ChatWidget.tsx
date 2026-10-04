@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { PREDEFINED_QUESTIONS, type ChatFaqId } from "@/lib/chat/faq";
 import { vPlacement } from "@/lib/chat/placement";
+import { launcherHiddenAfterScroll } from "@/lib/chat/launcherScroll";
 import { useCart } from "@/lib/cart/CartProvider";
 import VSays from "./VSays";
 
@@ -50,6 +51,32 @@ export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [turns, setTurns] = useState<ChatTurn[]>([GREETING]);
   const [sending, setSending] = useState(false);
+  // Phones only: tuck the launcher away while the student scrolls down a page
+  // and bring it back on any scroll up (UX_ACTION_PLAN.md A7). It used to sit
+  // over card content on every page. Never while the chat is open.
+  const [tucked, setTucked] = useState(false);
+  useEffect(() => {
+    if (open) {
+      setTucked(false);
+      return;
+    }
+    const phone = window.matchMedia("(max-width: 639px)");
+    let prevY = window.scrollY;
+    let frame = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const y = window.scrollY;
+        setTucked((hidden) => (phone.matches ? launcherHiddenAfterScroll({ prevY, y, hidden }) : false));
+        prevY = y;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, [open]);
   const listRef = useRef<HTMLDivElement>(null);
   const launcherRef = useRef<HTMLButtonElement>(null);
   const openRecordedRef = useRef(false);
@@ -203,12 +230,15 @@ export default function ChatWidget() {
         aria-label={open ? "Close chat with V" : "Chat with V"}
         aria-expanded={open}
         title="Chat with V"
-        className="ml-auto flex h-14 w-14 items-center justify-center rounded-full bg-background shadow-lg transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        tabIndex={tucked ? -1 : undefined}
+        className={`ml-auto flex h-11 w-11 items-center justify-center rounded-full bg-background shadow-lg transition-[transform,opacity] duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none sm:h-14 sm:w-14 ${
+          tucked ? "pointer-events-none translate-y-[160%] opacity-0" : ""
+        }`}
       >
         {open ? (
           <X className="h-5 w-5 text-foreground" aria-hidden />
         ) : (
-          <VFace avatar="idle" className="h-12 w-12 object-contain" />
+          <VFace avatar="idle" className="h-9 w-9 object-contain sm:h-12 sm:w-12" />
         )}
       </button>
     </div>
