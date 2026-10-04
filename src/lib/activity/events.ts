@@ -50,6 +50,12 @@ export const ACTIVITY_KINDS = [
   "goal_set", // chose or changed the weekly sittings goal (metadata: goal)
   "paywall_event", // a gate was shown / checkout opened / dismissed / verify failed (metadata: step, gate)
   "email_clicked", // followed a link in one of our emails (refId = email_sends.id, metadata: kind)
+  // ── Celebrations (2026-10-04, migration 0132). The server's record that a
+  // student crossed an "N questions answered" milestone and was shown it — one
+  // row per milestone (dedupe key `milestone:answered:<user>:<n>`), so it can be
+  // awarded once and measured. It always sits beside the answer rows that
+  // earned it; it is telemetry, never a feature. See lib/celebrate/milestones.
+  "milestone_reached", // metadata: answered (the milestone)
 ] as const;
 
 export type ActivityKind = (typeof ACTIVITY_KINDS)[number];

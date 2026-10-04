@@ -171,6 +171,10 @@ export const TELEMETRY_KINDS: readonly string[] = [
   "goal_set",
   "paywall_event",
   "email_clicked",
+  // A celebration the server awarded (2026-10-04, migration 0132). It always
+  // sits beside the answer rows that earned it, so counting it as adoption
+  // would count those answers twice.
+  "milestone_reached",
 ];
 
 export const FEATURE_LABELS: Partial<Record<ActivityKind, string>> = {
@@ -198,6 +202,7 @@ export const FEATURE_LABELS: Partial<Record<ActivityKind, string>> = {
 export const SURFACE_FEATURE_LABELS: Record<string, string> = {
   "question_practiced:guide": "Guide worked examples",
   "question_practiced:board": "Board reader",
+  "question_practiced:daily": "Question of the day",
 };
 
 export type FeatureRow = {
@@ -806,6 +811,21 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
     practiceSurface: "guide",
     tracked: "partial",
     lost: "Answer reveals inside a worked example are recorded (signed-in only); reading the prose — a playbook, a trap page, a strategy page — is not. Until 2026-09-17 this row claimed guides were a read-only surface that emits nothing, which was never true: the worked-example card has always had the same three-stage reveal as /browse, and the beacon had simply not been wired into it.",
+  },
+  {
+    surface: "Question of the day (/me)",
+    via: "user_activity via the reveal beacon (surface='daily', migration 0132); the tapped option is graded server-side",
+    kinds: ["question_practiced"],
+    practiceSurface: "daily",
+    tracked: "partial",
+    lost: "Signed-in only, like every reveal. Recorded from 2026-10-04, when the card shipped. Seeing the card without answering it leaves nothing; the /me page view is the denominator.",
+  },
+  {
+    surface: "Celebrations (runs, milestones, fixed)",
+    via: "user_activity milestone_reached (one per milestone, migration 0132); runs and fixes are derived",
+    kinds: ["milestone_reached"],
+    tracked: "partial",
+    lost: "Only the answered-questions milestone writes a row. A 'right in a row' message is not recorded: for a signed-in student it can be rebuilt from the graded reveal rows in order, and an anonymous one is not tracked by design. A 'fixed' message is the drill ladder's own state change, already in answer_correct.",
   },
   {
     surface: "Blog (/blog)",
