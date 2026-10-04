@@ -118,6 +118,9 @@ def main():
     badge(mark).save(os.path.join(ICONS, "push-badge-96.png"))
     # Header: the V alone (a white tile would vanish on the white header).
     place(mark, 512, 0.96, rounded=False, bg=CLEAR, dy=0).resize((96, 96), Image.LANCZOS).save(os.path.join(ICONS, "mark-96.png"))
+    # Homepage hero watermark: the V alone, shown faint (~14% opacity), so a
+    # small WebP is enough and keeps the first screen light on phones.
+    place(mark, 768, 0.96, rounded=False, bg=CLEAR, dy=0).resize((256, 256), Image.LANCZOS).save(os.path.join(ICONS, "mark-256.webp"), quality=82, method=6)
     print("wrote favicon.ico, icon.png, apple-icon.png and public/icons/*")
 
 

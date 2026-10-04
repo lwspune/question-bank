@@ -209,7 +209,7 @@ export default async function NdaHomePage() {
                   href={href}
                   className="group flex h-full items-center gap-3 rounded-lg border bg-card p-4 transition-colors hover:border-primary/40 hover:bg-accent"
                 >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg icon-tile">
                     <Icon className="h-4 w-4" aria-hidden />
                   </span>
                   <div className="min-w-0 flex-1">
@@ -258,7 +258,7 @@ export default async function NdaHomePage() {
                   className="group flex h-full flex-col rounded-lg border bg-card p-5 transition-colors hover:border-primary/40 hover:bg-accent"
                 >
                   <div className="mb-2 flex items-center gap-3">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg icon-tile">
                       <NotebookPen className="h-4 w-4" aria-hidden />
                     </span>
                     <div>

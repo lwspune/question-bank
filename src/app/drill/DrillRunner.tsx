@@ -268,7 +268,7 @@ export default function DrillRunner({
                 </p>
               )}
               {answered.solution && (
-                <div className="mt-2 rounded-xl border bg-muted/40 p-3 font-serif text-sm leading-relaxed [&_.katex]:max-w-full">
+                <div className="mt-2 rounded-xl border bg-muted/40 p-3 font-serif text-sm leading-relaxed motion-safe:animate-fade-in-up [&_.katex]:max-w-full">
                   <BlockText text={answered.solution} solution />
                 </div>
               )}

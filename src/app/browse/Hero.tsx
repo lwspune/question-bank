@@ -9,7 +9,7 @@ export default function Hero({
   ];
 
   return (
-    <section className="mb-5 rounded-xl border bg-gradient-to-br from-brand-accent/10 via-background to-background p-4 shadow-sm sm:mb-6 sm:p-6">
+    <section className="hero-soft mb-5 rounded-2xl p-4 sm:mb-6 sm:p-6">
       <h1
         className="animate-fade-in-up font-serif text-2xl font-semibold tracking-tight sm:text-4xl"
         style={{ animationDelay: "0ms" }}
@@ -20,9 +20,8 @@ export default function Hero({
         className="mt-2 max-w-2xl animate-fade-in-up text-sm text-muted-foreground sm:mt-3 sm:text-base"
         style={{ animationDelay: "80ms" }}
       >
-        Filter by exam, chapter, difficulty and year. Reveal answers as you go,
-        and bookmark anything worth coming back to. Teachers can export the
-        whole set as a printable paper with a separate answer key.
+        Filter by exam, chapter, difficulty and year, and reveal answers as you go.
+        Teachers can export any set as a printable paper.
       </p>
 
       {/* Stat band — gives the hero weight + the brand accent its first
@@ -34,7 +33,7 @@ export default function Hero({
         {stats.map((s) => (
           <div key={s.label} className="flex items-baseline gap-1.5">
             <dt className="sr-only">{s.label}</dt>
-            <dd className="text-xl font-semibold tabular-nums tracking-tight text-brand-accent sm:text-2xl">
+            <dd className="stat-gradient text-xl font-bold tabular-nums tracking-tight sm:text-2xl">
               {s.value}
             </dd>
             <span className="text-xs text-muted-foreground sm:text-sm">
