@@ -212,6 +212,16 @@ export const PAPERS: Record<string, Paper> = {
     // each one re-verified against the extracted text before being encoded —
     // two of the four turned out to be already applied in this manuscript.
     errata: {
+      112: {
+        options: { D: "\\(75^{o}\\)" },
+        reason:
+          "option (d) had swallowed the next question's frequency table as a dashed grid (Q113 already carries that table as its context); reduced to its own value (scripts/table-fix, 2026-10-04)",
+      },
+      115: {
+        context: "The following table given the continuous frequency distribution of a continuous variable X.\n| Class interval | 0-10 | 10-20 | 20-30 | 30-40 | 40-50 |\n|---|---|---|---|---|---|\n| Frequency | 5 | 10 | 20 | 5 | 10 |",
+        reason:
+          "the table was stored as a pandoc simple table (a dashed ASCII grid), which nothing in this bank parses, so it rendered as a wall of dashes; rewritten as a GFM pipe-table (scripts/table-fix, 2026-10-04)",
+      },
       113: {
         solution:
           "| Cl | f | cf |\n|---|---|---|\n| 0.5 - 5.5 | 3 | 3 |\n| 5.5 - 10.5 | 7 | 10 |\n" +
@@ -224,6 +234,8 @@ export const PAPERS: Record<string, Paper> = {
           "the frequency table was a pandoc SIMPLE table (a dashed ASCII grid), which no renderer in this bank parses — GFM needs a |---| separator — so it displayed as a wall of dashes and loose numbers. Rewritten as a pipe-table. The class intervals also mixed '-' and '--' between rows; normalised to '-'. One arithmetic gap in the source is closed while here: the median line printed '10.5 + (10.5-10)/6 x = 10.917' with the class width missing after the multiplication sign; d = 5 is what makes the printed 10.917 come out, so it is restored rather than left as a dangling operator",
       },
       114: {
+        // context: the table was stored as a pandoc simple table (a dashed ASCII grid), which nothing in this bank parses, so it rendered as a wall of dashes; rewritten as a GFM pipe-table (scripts/table-fix, 2026-10-04)
+        context: "The following table given the continuous frequency distribution of a continuous variable X.\n| Class interval | 0-10 | 10-20 | 20-30 | 30-40 | 40-50 |\n|---|---|---|---|---|---|\n| Frequency | 5 | 10 | 20 | 5 | 10 |",
         solution:
           "| Cl | f | cf | x | fx |\n|---|---|---|---|---|\n| 0-10 | 5 | 5 | 5 | 25 |\n" +
           "| 10-20 | 10 | 15 | 15 | 150 |\n| 20-30 | 20 | 35 | 25 | 500 |\n" +
@@ -499,6 +511,8 @@ PAPERS.m2 = {
       reason: "option (d) carried a stray trailing '$$' LaTeX delimiter from the extraction",
     },
     70: {
+      // stem: the table was stored as a pandoc simple table (a dashed ASCII grid), which nothing in this bank parses, so it rendered as a wall of dashes; rewritten as a GFM pipe-table (scripts/table-fix, 2026-10-04)
+      stem: "Match List I with List II and select the correct answer using\n| List I | List II |\n|---|---|\n| A. Cube root of unity | 1. \\(-2(1+i)\\) |\n| B. A square root of \\(-1\\) | 2. \\(2i\\) |\n| C. Cube of \\(1-i\\) | 3. \\(i\\) |\n| D. Square of \\(1+i\\) | 4. \\(-\\frac{1}{2}(1 + i\\sqrt{3})\\) |",
       // (a) and (d) are byte-identical (4 1 3 2) in BOTH manuscript and booklet.
       // Key C (4 3 1 2) is the unique correct ordering and is unaffected —
       // verified independently: A -> omega^2 = -1/2(1+i*sqrt3) = 4,
@@ -594,6 +608,11 @@ PAPERS.m3 = {
     93: "image3.png", // three-circle Venn with the shaded region
   },
   errata: {
+    57: {
+      stem: "Consider the two series of observation A and B as follows\n| Series A | 1019 | 1008 | 1015 | 1006 | 1002 |\n|---|---|---|---|---|---|\n| Series B | 1.9 | 0.8 | 1.5 | 0.6 | 0.2 |\nIf the standard deviation of the serie A is \\(\\sqrt{38}\\), then what is the standard deviation of the series B?",
+      reason:
+        "the table was stored as a pandoc simple table (a dashed ASCII grid), which nothing in this bank parses, so it rendered as a wall of dashes; rewritten as a GFM pipe-table (scripts/table-fix, 2026-10-04)",
+    },
     4: {
       // Labels print as (a) () (c) (d) — the second is EMPTY — and option (c)
       // prints '3x + 2y - 0' where the '-' is a misprinted '='.
@@ -1121,6 +1140,8 @@ PAPERS.m8 = {
   note: "NDA Mathematics mock test 8 (LWS test series)",
   errata: {
     109: {
+      // stem: the table was stored as a pandoc simple table (a dashed ASCII grid), which nothing in this bank parses, so it rendered as a wall of dashes; rewritten as a GFM pipe-table (scripts/table-fix, 2026-10-04)
+      stem: "The mean of following frequency table is 50 .\n| Class | Frequency |\n|---|---|\n| 0-20 | 17 |\n| 20-40 | \\(f_{1}\\) |\n| 40-60 | 32 |\n| 60-80 | \\(f_{2}\\) |\n| 80-100 | 19 |\n| Total | 120 |\nThe missing frequencies are",
       solution:
         "| Midpoint (x) | Frequency (f) | fx |\n|---|---|---|\n| 10 | 17 | 170 |\n" +
         "| 30 | \\(f_{1}\\) | \\(30f_{1}\\) |\n| 50 | 32 | 1600 |\n| 70 | \\(f_{2}\\) | \\(70f_{2}\\) |\n" +
