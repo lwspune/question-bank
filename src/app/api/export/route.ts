@@ -5,6 +5,7 @@ import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { resolveExportAccess, DOWNLOAD_PASS_SCOPE, type ExportKind } from "@/lib/export/access";
 import { userHasAccess } from "@/lib/entitlements/query";
 import { recordExportEvent } from "@/lib/export/log";
+import { claimFreeDownload, hasFreeDownloadLeft } from "@/lib/export/freeDownload";
 import { applyExportLanguage, parseExportLang } from "@/lib/export/exportLanguage";
 import {
   queryQuestions,
@@ -163,7 +164,14 @@ export async function POST(request: NextRequest) {
     // (never trust the hidden UI buttons), after the cheap payload validation
     // and before the expensive query. It also decides branding: pass downloads
     // carry the PYQ Vault watermark + footer, institute staff ones do not.
-    const access = resolveExportAccess({ kind, isSignedIn, isStaff, hasDownloadPass });
+    // The one free download (2026-10-04): looked up only for an account that
+    // would otherwise be refused a Word file, so staff and pass holders never
+    // pay a query for it and never spend it.
+    const freeDownloadLeft =
+      user && !isStaff && !hasDownloadPass && (kind === "paper" || kind === "key")
+        ? await hasFreeDownloadLeft(createSupabaseServerClient(), user.id)
+        : undefined;
+    const access = resolveExportAccess({ kind, isSignedIn, isStaff, hasDownloadPass, freeDownloadLeft });
     if (!access.allowed) {
       return NextResponse.json({ error: access.message }, { status: access.status });
     }
@@ -333,6 +341,18 @@ export async function POST(request: NextRequest) {
         branded: access.branded,
       });
       filename = `Answers_${safeName}.docx`;
+    }
+
+    // Spend the free download only now that the file exists, and serve it only
+    // if this request's claim won: a racing second tap gets the refusal.
+    if (access.free && user && (kind === "paper" || kind === "key")) {
+      const won = await claimFreeDownload(createSupabaseAdminClient(), user.id, kind, questions.length);
+      if (!won) {
+        return NextResponse.json(
+          { error: "You've used your free download. Unlimited downloads come with the Premium Pass." },
+          { status: 403 }
+        );
+      }
     }
 
     await recordExportEvent({

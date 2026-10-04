@@ -321,11 +321,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-10
 
-- **2026-10-04 (second) — The download box sells the pass in place, and the pass is renamed Premium Pass.**
-  - **Why:** in the week to 10-04, 52 of 94 signed-out visitors tapped "Get pass" with ₹99 shown, and all were lost on `/pricing`, whose first step was "Sign in to buy". Sales: 0.
-  - **Google's own button signs in over the page** (`renderGoogleButton`, the One Tap script and nonce; a new account skips `/welcome` mid-purchase). `router.refresh()` moves the box on, because `/browse` reads the session on the server and the box keeps its state.
-  - **One checkout for `/pricing` and the box** (`useCheckout`), reporting `checkout_opened/paid/failed/dismissed` by surface; the order route logs the gate (`checkoutGate`), so a box sale is not filed under pricing.
-  - **The name and perks are data** (the plan row, edited by SQL; cached `/pricing` refreshes on deploy). Growth "box-buy": keep if 2+ sales by the check date. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
+- **2026-10-04 (second) — One free Word download per account, then the download box sells the pass in place; the pass is renamed Premium Pass.**
+  - **Why:** in the week to 10-04, 52 of 94 signed-out visitors tapped "Get pass" with ₹99 shown, and all were lost on `/pricing` ("Sign in to buy"). Sales: 0. The owner: one free file (paper OR key) is the proof; sign in to get it.
+  - **Once is the table's primary key** (`free_downloads`, migration 0131): the export route checks, builds, then claims insert-or-nothing and serves only a won claim, so a race gets one file and a failed build spends nothing. No guard against extra accounts (owner: ₹99 is less effort).
+  - **Sign-in and payment happen over the page:** Google's own button (`renderGoogleButton`), then one shared checkout (`useCheckout`, `checkout_*` events by surface); `router.refresh()` moves the box on because `/browse` reads the session on the server.
+  - **Name and perks are plan-row data.** Growth "box-buy": keep if 2+ passes sell through the box by the check date. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-10-04 — Board pages are cached, and question lists render on the server again.**
   - **Board hubs and the 333 chapter readers prerender, refreshed daily**; they rendered per request at 0.4-1.6 s, where Clarity saw dead taps. `tests/board-cache.test.ts` scans both routes for per-viewer reads.
   - **A `useSearchParams()` in a card sent the whole list to the browser:** `/questions` (800 pages), `/formula` and `/board` served lists empty in HTML. `SignInLink` keeps the read behind its own Suspense with a path-only fallback; one page's visible DOM went 29.5 KB -> 345 KB.

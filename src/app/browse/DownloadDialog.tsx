@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
   Download,
@@ -30,10 +31,10 @@ import { useCart } from "@/lib/cart/CartProvider";
 import type { PassCta } from "@/lib/billing/plans";
 import { resolveExportAccess } from "@/lib/export/access";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
-import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
+import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
-import { gateTitle } from "@/lib/billing/gateCopy";
+import { gatePriceLine, gateTitle, selectionTitle } from "@/lib/billing/gateCopy";
 import PassOffer from "./PassOffer";
 
 type Mode = "filters" | "cart";
@@ -62,6 +63,8 @@ export default function DownloadDialog({
   isStaff = false,
   /** Active Premium Pass — unlocks the paper + key (not slides or the sheet). */
   hasDownloadPass = false,
+  /** Signed-in account that has not used its one free download (2026-10-04). */
+  freeDownloadLeft = false,
   /** The pass on sale that unlocks downloads; null = none on sale, so no CTA. */
   downloadPass = null,
   /** The filtered exam prints Marathi + English (MPSC) — offer a print language. */
@@ -76,14 +79,28 @@ export default function DownloadDialog({
   isSignedIn?: boolean;
   isStaff?: boolean;
   hasDownloadPass?: boolean;
+  freeDownloadLeft?: boolean;
   downloadPass?: PassCta | null;
   bilingual?: boolean;
 }) {
   // Paper + key need org staff or the pass; anyone else sees the pass offer
   // instead — derived from the same gate the API enforces. `who` is typed so a
   // renamed gate input fails to compile here rather than silently reading false.
-  const who: Omit<Parameters<typeof resolveExportAccess>[0], "kind"> = { isSignedIn, isStaff, hasDownloadPass };
-  const canDownload = resolveExportAccess({ kind: "paper", ...who }).allowed;
+  const who: Omit<Parameters<typeof resolveExportAccess>[0], "kind"> = {
+    isSignedIn,
+    isStaff,
+    hasDownloadPass,
+    freeDownloadLeft: isSignedIn ? freeDownloadLeft : undefined,
+  };
+  const paperAccess = resolveExportAccess({ kind: "paper", ...who });
+  // On the one free download: the download view says so, offers the pass, and
+  // a finished download refreshes the page so the box moves to the offer.
+  const onFree = paperAccess.allowed && paperAccess.free === true;
+  const router = useRouter();
+  // "Get Premium Pass" tapped from the free download's line: show the offer.
+  const [wantPass, setWantPass] = useState(false);
+  const showDownloadView = paperAccess.allowed && !wantPass;
+  const canDownload = paperAccess.allowed;
   const canTags = resolveExportAccess({ kind: "tags", ...who }).allowed;
   const canSlides = resolveExportAccess({ kind: "ppt", ...who }).allowed;
   const [internalOpen, setInternalOpen] = useState(false);
@@ -176,6 +193,10 @@ export default function DownloadDialog({
       a.remove();
       URL.revokeObjectURL(url);
       toast.success(`${meta.label} downloaded`);
+      if (onFree) {
+        trackFunnel("free_download_used", { kind });
+        router.refresh();
+      }
       // Value moment: nudge a signed-in student with no mobile on file to add it.
       mobilePrompt.requestPrompt("download");
     } catch (err) {
@@ -211,14 +232,16 @@ export default function DownloadDialog({
       <DialogContent className="flex max-h-[90dvh] flex-col gap-0 p-0 sm:max-w-xl">
         <DialogHeader className="px-6 pt-6">
           <DialogTitle>
-            {canDownload
+            {showDownloadView
               ? `Download ${activeCount} question${activeCount === 1 ? "" : "s"}`
               : downloadPass
-              ? gateTitle(activeCount, downloadPass.label)
+              ? isSignedIn
+                ? gateTitle(activeCount, downloadPass.label)
+                : selectionTitle(activeCount)
               : "Download papers with the pass"}
           </DialogTitle>
           <DialogDescription>
-            {canDownload ? (
+            {showDownloadView ? (
               <>
                 Word files — Question Paper and Answer Key (0.5″ margins, 2
                 columns, Cambria 10pt)
@@ -230,18 +253,23 @@ export default function DownloadDialog({
                   : "."}
               </>
             ) : downloadPass ? (
-              `${downloadPass.label} includes:`
+              !isSignedIn
+                ? "Your first download is free."
+                : wantPass
+                ? `${downloadPass.label} includes:`
+                : `You've used your free download. ${downloadPass.label} includes:`
             ) : (
               "Downloading question papers as Word files needs a pass."
             )}
           </DialogDescription>
         </DialogHeader>
 
-        {!canDownload ? (
+        {!showDownloadView ? (
           downloadPass ? (
             <PassOffer
               pass={downloadPass}
               isSignedIn={isSignedIn}
+              freeAfterSignIn={!isSignedIn}
               returnTo={here}
               mode={mode}
               onCancel={() => setOpen(false)}
@@ -267,6 +295,19 @@ export default function DownloadDialog({
             <p role="status" className="rounded-md border border-brand-accent/30 bg-brand-accent/5 p-3 text-sm">
               Pass active. Choose your files below.
             </p>
+          )}
+          {onFree && downloadPass && (
+            <div className="space-y-2 rounded-md border border-brand-accent/30 bg-brand-accent/5 p-3 text-sm">
+              <p>
+                <strong>This download is free:</strong> one file, the Question Paper or the Answer Key.
+              </p>
+              <p className="text-muted-foreground">
+                For unlimited downloads, get {downloadPass.label}: {gatePriceLine(downloadPass)}.
+              </p>
+              <Button type="button" variant="outline" size="sm" onClick={() => setWantPass(true)}>
+                Get {downloadPass.label}
+              </Button>
+            </div>
           )}
           {cartAvailable && (
             <div
@@ -366,7 +407,7 @@ export default function DownloadDialog({
             always visible anyway — and `sticky bottom-0` is what let it ride up
             over the content once the body stopped clipping. flex-wrap keeps the
             4 buttons inside the dialog instead of overflowing its left edge. */}
-        {(canDownload || !downloadPass) && (
+        {(showDownloadView || !downloadPass) && (
         <DialogFooter className="shrink-0 flex-col gap-2 border-t bg-background px-6 py-4 sm:flex-row sm:flex-wrap">
           <Button
             variant="outline"

@@ -87,6 +87,43 @@ describe("resolveExportAccess", () => {
     });
   });
 
+  // One free download per account (2026-10-04): a signed-in account that has
+  // not used it may take ONE Word file, paper or key, branded like a pass
+  // paper, so a visitor sees the proof before paying. `free: true` tells the
+  // route to record the use; it is absent whenever the free file is not what
+  // let the caller in.
+  describe("free download", () => {
+    const fresh = { isSignedIn: true, isStaff: false, hasDownloadPass: false, freeDownloadLeft: true };
+    it.each(["paper", "key"] as ExportKind[])("allows one %s, branded, marked free", (kind) => {
+      expect(resolveExportAccess({ kind, ...fresh })).toEqual({ allowed: true, branded: true, free: true });
+    });
+    it.each(["tags", "ppt"] as ExportKind[])("does not open %s", (kind) => {
+      expect(resolveExportAccess({ kind, ...fresh }).allowed).toBe(false);
+    });
+    it("means nothing to an anon caller", () => {
+      const r = resolveExportAccess({ kind: "paper", isSignedIn: false, isStaff: false, freeDownloadLeft: true });
+      expect(r.allowed).toBe(false);
+      if (!r.allowed) expect(r.status).toBe(401);
+    });
+    it("is not spent by a pass holder", () => {
+      const r = resolveExportAccess({ kind: "paper", ...fresh, hasDownloadPass: true });
+      expect(r).toEqual({ allowed: true, branded: true });
+    });
+    it("is not spent by institute staff", () => {
+      const r = resolveExportAccess({ kind: "paper", ...staff, freeDownloadLeft: true });
+      expect(r).toEqual({ allowed: true, branded: false });
+    });
+    it("once used, says so and points at the pass", () => {
+      const r = resolveExportAccess({ kind: "paper", ...fresh, freeDownloadLeft: false });
+      expect(r.allowed).toBe(false);
+      if (!r.allowed) {
+        expect(r.status).toBe(403);
+        expect(r.message).toMatch(/free download/i);
+        expect(r.message).toMatch(/Premium Pass/);
+      }
+    });
+  });
+
   // Branding (2026-10-01): a pass download carries the PYQ Vault watermark and
   // footer; an institute's own staff download stays unbranded (the owner's
   // earlier "teachers' papers stay unbranded" call, kept for institutes).

@@ -179,11 +179,11 @@ export const EXPERIMENTS: readonly Experiment[] = [
   },
   {
     id: "box-buy",
-    title: "Buy from the download box",
+    title: "Free download + buy in the download box",
     change:
-      "The download box sells the pass in place: its own wording (this selection, the pass's perks, the price), Google sign-in over the page, then Razorpay, then the download view. The pass is renamed Premium Pass.",
+      "Every account gets one free Word download (paper or key, branded) after signing in from the box; after that the box sells the pass in place: the pass's perks and price, Google sign-in over the page, Razorpay, then the download view. The pass is renamed Premium Pass. Both shipped together, so they are judged together.",
     why: "In the week to 2026-10-04, 52 of 94 signed-out visitors tapped \"Get pass\" with the price shown, and all were lost on /pricing, whose first step was \"Sign in to buy\".",
-    metric: "Passes sold through the box (Vercel checkout_paid, surface download_box), per 100 gate visitors (teacher_gate_shown); the checkout_* events show where the rest stop",
+    metric: "Passes sold through the box (Vercel checkout_paid, surface download_box), per 100 gate visitors (teacher_gate_shown); free downloads used (free_download_used, and the free_downloads table) as the step before; the checkout_* events show where the rest stop",
     rule: `Keep it if ${BOX_BUY_MIN_SALES}+ passes sell through the box by the check date; otherwise look at the step where buyers stop before touching the price.`,
     liveSince: "2026-10-04",
     readout: "box-buy",

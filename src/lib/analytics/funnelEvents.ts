@@ -105,6 +105,12 @@ export const FUNNEL_EVENTS = [
   "checkout_paid",
   "checkout_failed",
   "checkout_dismissed",
+  /**
+   * An account took its one free Word download (2026-10-04, migration 0131);
+   * prop: kind ("paper" | "key"). The table is the lasting record; this is the
+   * funnel count beside teacher_gate_shown.
+   */
+  "free_download_used",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];
