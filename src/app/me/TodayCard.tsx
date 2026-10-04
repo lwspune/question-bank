@@ -89,14 +89,20 @@ export default function TodayCard({
         </Link>
       </div>
 
+      {/* A separate, plainly clickable link: grey text right under the button
+          read as part of it, so "Start" seemed to start the reading. */}
       {action.secondary && (
-        <Link
-          href={action.secondary.href}
-          className="mt-3 inline-flex max-w-full items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        >
+        <p className="mt-3 flex min-w-0 items-center gap-1.5 text-sm text-muted-foreground">
           <BookOpen className="h-3.5 w-3.5 shrink-0" aria-hidden />
-          <span className="truncate">Continue reading: {action.secondary.label}</span>
-        </Link>
+          <span className="shrink-0">Or keep reading:</span>
+          <Link
+            href={action.secondary.href}
+            className="inline-flex min-w-0 items-center gap-1 font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <span className="truncate">{action.secondary.label}</span>
+            <ArrowRight className="h-3.5 w-3.5 shrink-0" aria-hidden />
+          </Link>
+        </p>
       )}
 
       {/* The week, on quiet lines under a rule. */}

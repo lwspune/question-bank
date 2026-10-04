@@ -38,7 +38,9 @@ export function pickTodayAction(input: {
       eyebrow: "Today",
       title: `Fix ${due} ${due === 1 ? "mistake" : "mistakes"}`,
       subtitle: "From your mocks, five at a time.",
-      cta: "Start",
+      // Not a bare "Start": a reading link sits under the button, and "Start"
+      // read as starting the reading (owner, 2026-10-05).
+      cta: "Start fixing",
       href: "/drill",
       secondary,
     };

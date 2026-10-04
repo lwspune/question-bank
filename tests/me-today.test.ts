@@ -19,7 +19,9 @@ describe("pickTodayAction", () => {
 
   it("then mistakes to fix, with the count in the title", () => {
     const a = pickTodayAction({ due: 62, cont, mockHref: "/mock" });
-    expect(a).toMatchObject({ kind: "drill", title: "Fix 62 mistakes", href: "/drill" });
+    // The button names its act: under it sits a reading link, and a bare
+    // "Start" read as starting the reading (owner, 2026-10-05).
+    expect(a).toMatchObject({ kind: "drill", title: "Fix 62 mistakes", href: "/drill", cta: "Start fixing" });
     expect(a.secondary?.href).toBe(cont.href);
   });
 
