@@ -240,3 +240,38 @@ describe("buildActiveChips", () => {
     expect(chips.map((c) => c.label)).toEqual(["Principle: unknown-principle"]);
   });
 });
+
+describe("buildActiveChips: short visible text", () => {
+  // On a phone the chip row was "Exam: NDA × Subject: Mathematics × Chapter:…"
+  // and ran off the screen. The VISIBLE text is now the value alone; `label`
+  // keeps the kind ("Exam: NDA") for the remove button's accessible name.
+  it("shows the value alone, quoting a search", () => {
+    const filters: Filters = {
+      ...EMPTY_FILTERS,
+      examId: "exam-mht",
+      subjectId: "subj-physics",
+      chapterIds: ["chap-kin"],
+      subtopicIds: ["sub-1d"],
+      difficulties: ["HARD"],
+      pyqYears: [2023],
+      format: "mcq",
+      q: "newton",
+    };
+    expect(buildActiveChips(filters, labels).map((c) => c.short)).toEqual([
+      "MHT-CET",
+      "Physics",
+      "Kinematics",
+      "1-D motion",
+      "Hard",
+      "2023",
+      "MCQ",
+      '"newton"',
+    ]);
+  });
+
+  it("keeps the kind in the full label", () => {
+    const [chip] = buildActiveChips({ ...EMPTY_FILTERS, examId: "exam-mht" }, labels);
+    expect(chip.label).toBe("Exam: MHT-CET");
+    expect(chip.short).toBe("MHT-CET");
+  });
+});

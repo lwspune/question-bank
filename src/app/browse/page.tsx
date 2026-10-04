@@ -319,21 +319,30 @@ export default async function BrowsePage({ searchParams }: PageProps) {
           <Hero totalPublicQuestions={totalCount} />
         )}
 
-        <header className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        {/* Compact on purpose (2026-10-05): on a phone this block was ~205 px,
+            about 28% of the first screen, before any question. Filtered, the
+            heading IS the count (the chips below say what is filtered), and
+            Filters + Download share one row. */}
+        <header className="mb-3 flex flex-col gap-2.5 sm:mb-4 sm:flex-row sm:items-end sm:justify-between sm:gap-3">
           <div>
-            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
-              {filtered ? "Filtered questions" : "All questions"}
-            </h2>
-            {/* The bare page's hero already prints the bank size, so the count
-                here only appears once a filter is set. */}
-            <p className="mt-1 text-sm text-muted-foreground">
+            <h2 className="text-lg font-semibold tracking-tight tabular-nums sm:text-2xl">
               {filtered
-                ? `${totalCount.toLocaleString("en-IN")} question${totalCount === 1 ? "" : "s"} match`
-                : "Start with an exam below, or narrow it down with the filters."}
-            </p>
+                ? `${totalCount.toLocaleString("en-IN")} question${totalCount === 1 ? "" : "s"}`
+                : "All questions"}
+            </h2>
+            {/* The bare page's hero already prints the bank size. */}
+            {!filtered && (
+              <p className="mt-1 text-sm text-muted-foreground">
+                Start with an exam below, or narrow it down with the filters.
+              </p>
+            )}
           </div>
-          <div className="flex flex-wrap items-center gap-2">
-            {showLangSwitch && <QuestionLangSwitch />}
+          <div className="grid grid-cols-2 items-center gap-2 sm:flex sm:flex-wrap">
+            {showLangSwitch && (
+              <div className="col-span-2 sm:col-span-1">
+                <QuestionLangSwitch />
+              </div>
+            )}
             <div className="lg:hidden">
               <MobileFilters
                 filters={filters}

@@ -128,8 +128,9 @@ export default function ActiveFilterChips({
           onClick={() => navigate(c.nextFilters())}
           className="inline-flex shrink-0 items-center gap-1 rounded-full border bg-card px-2.5 py-0.5 text-xs font-medium transition-colors hover:border-primary/40 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           aria-label={`Remove filter: ${c.label}`}
+          title={c.label}
         >
-          <span>{c.label}</span>
+          <span>{c.short}</span>
           <X className="h-3 w-3 text-muted-foreground" aria-hidden />
         </button>
       ))}
