@@ -58,7 +58,15 @@ describe("EXPERIMENTS", () => {
 
   it("carries each readout the page knows how to compute exactly once", () => {
     const readouts = EXPERIMENTS.map((e) => e.readout).sort();
-    expect(readouts).toEqual(["chapter-share", "chapter-tests", "email-cap", "indexing", "onboarding-arms", "second-page"]);
+    expect(readouts).toEqual([
+      "box-buy",
+      "chapter-share",
+      "chapter-tests",
+      "email-cap",
+      "indexing",
+      "onboarding-arms",
+      "second-page",
+    ]);
   });
 });
 

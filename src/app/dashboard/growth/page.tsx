@@ -11,6 +11,7 @@ import {
   NORTH_STAR_KINDS,
   READINGS,
   SECOND_PAGE_KEEP_PCT,
+  BOX_BUY_MIN_SALES,
   checkOn,
   type Experiment,
 } from "@/lib/growth/registry";
@@ -250,6 +251,17 @@ export default async function GrowthPage() {
             </p>
             <ReadingsList metric="hello-tap-rate" />
             <ReadingsList metric="card-tap-rate" />
+          </div>
+        );
+      case "box-buy":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand: keep it if {BOX_BUY_MIN_SALES}+ passes sell through the download box by{" "}
+              {fmtDate(checkOn(e.liveSince))}. If not, read the checkout_* events to see which step loses buyers
+              before touching the price.
+            </p>
+            <ReadingsList metric="box-sales-per-100" />
           </div>
         );
       case "indexing": {

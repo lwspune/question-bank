@@ -61,6 +61,14 @@ export const CHAPTER_TESTS_MIN_SITTINGS = 10;
 /** Second page: tap rate (taps per 100 shown) that keeps a nudge. */
 export const SECOND_PAGE_KEEP_PCT = 3;
 
+/**
+ * "Buy from the download box": keep it if at least this many passes sell
+ * through the box by the check date. The week before it shipped sold none
+ * (107 gate visitors, 56 "Get pass" taps), so any sale is above baseline;
+ * two is the floor that is not one lucky buyer.
+ */
+export const BOX_BUY_MIN_SALES = 2;
+
 /** The ISO date `EXPERIMENT_WINDOW_DAYS` after `liveSince`. */
 export function checkOn(liveSince: string): string {
   const d = new Date(`${liveSince}T00:00:00Z`);
@@ -68,7 +76,14 @@ export function checkOn(liveSince: string): string {
   return d.toISOString().slice(0, 10);
 }
 
-export type Readout = "onboarding-arms" | "chapter-share" | "indexing" | "email-cap" | "chapter-tests" | "second-page";
+export type Readout =
+  | "onboarding-arms"
+  | "chapter-share"
+  | "indexing"
+  | "email-cap"
+  | "chapter-tests"
+  | "second-page"
+  | "box-buy";
 
 export type Experiment = {
   id: string;
@@ -162,6 +177,18 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "second-page",
     status: "running",
   },
+  {
+    id: "box-buy",
+    title: "Buy from the download box",
+    change:
+      "The download box sells the pass in place: its own wording (this selection, the pass's perks, the price), Google sign-in over the page, then Razorpay, then the download view. The pass is renamed Premium Pass.",
+    why: "In the week to 2026-10-04, 52 of 94 signed-out visitors tapped \"Get pass\" with the price shown, and all were lost on /pricing, whose first step was \"Sign in to buy\".",
+    metric: "Passes sold through the box (Vercel checkout_paid, surface download_box), per 100 gate visitors (teacher_gate_shown); the checkout_* events show where the rest stop",
+    rule: `Keep it if ${BOX_BUY_MIN_SALES}+ passes sell through the box by the check date; otherwise look at the step where buyers stop before touching the price.`,
+    liveSince: "2026-10-04",
+    readout: "box-buy",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };
@@ -199,7 +226,12 @@ export const DECIDED_AGAINST: readonly DecidedAgainst[] = [
   },
 ];
 
-export type ReadingMetric = "google-indexed" | "share-taps" | "hello-tap-rate" | "card-tap-rate";
+export type ReadingMetric =
+  | "google-indexed"
+  | "share-taps"
+  | "hello-tap-rate"
+  | "card-tap-rate"
+  | "box-sales-per-100";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -223,5 +255,16 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
     label: "Next-step card tap rate (%)",
     source: "Vercel → Analytics → Events → next_step_card_click ÷ next_step_card_shown",
     entries: [],
+  },
+  "box-sales-per-100": {
+    label: "Passes sold per 100 download-gate visitors",
+    source: "Vercel → Analytics → Events → checkout_paid (surface download_box) ÷ teacher_gate_shown visitors × 100",
+    entries: [
+      {
+        on: "2026-10-04",
+        value: 0,
+        note: "Baseline, 7 days before the box sold in place: 107 gate visitors (94 signed out), 56 tapped Get pass, 0 sales",
+      },
+    ],
   },
 };
