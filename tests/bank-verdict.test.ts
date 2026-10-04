@@ -4,6 +4,7 @@ import {
   gradePicks,
   correctlyAnsweredIds,
   answerDedupeKey,
+  isGradedSurface,
   practiceEvents,
   type AnswerKey,
   type PickVerdict,
@@ -189,5 +190,40 @@ describe("practiceEvents — the rows one batch writes", () => {
     expect(out.reveals[0].metadata?.surface).toBe("guide");
     expect(out.ladder[0].metadata?.surface).toBe("guide");
     expect(out.ladder[0].dedupeKey).toBe(answerDedupeKey("guide", USER, uuid(1), NOW));
+  });
+});
+
+describe("isGradedSurface — where a tapped option is graded (board from 2026-10-04)", () => {
+  it("grades the bank, the board reader and the question of the day", () => {
+    expect(isGradedSurface("bank")).toBe(true);
+    expect(isGradedSurface("board")).toBe(true);
+    expect(isGradedSurface("daily")).toBe(true);
+  });
+
+  it("does not grade a guide worked example: it is a reveal, not an answer", () => {
+    expect(isGradedSurface("guide")).toBe(false);
+  });
+});
+
+describe("practiceEvents — board picks feed the drill under their own key", () => {
+  it("writes the board's miss with a board dedupe key, separate from the bank's", () => {
+    const out = practiceEvents({
+      ids: [uuid(1)],
+      surface: "board",
+      verdicts: new Map([[uuid(1), { chose: "A", correct: false }]]),
+      priorWrongIds: new Set(),
+      userId: USER,
+      now: NOW,
+    });
+    expect(out.ladder).toEqual([
+      {
+        kind: "answer_wrong",
+        refId: uuid(1),
+        refKind: "question",
+        metadata: { surface: "board", chose: "A" },
+        dedupeKey: answerDedupeKey("board", USER, uuid(1), NOW),
+      },
+    ]);
+    expect(answerDedupeKey("board", USER, uuid(1), NOW)).not.toBe(answerDedupeKey("bank", USER, uuid(1), NOW));
   });
 });

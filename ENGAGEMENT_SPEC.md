@@ -65,6 +65,7 @@ is why the share loop already keeps the score opt-in).
 | 9 | Exam date and days-to-exam | **SHIPPED 2026-09-24** — `src/lib/exam/calendar.ts` + `student_profiles.exam_date` (0116); every calendar date is EXPECTED, not official, and says so |
 | — | Per-question peer rates on the findings card | **SHIPPED 2026-09-24** — the result page passes a real peer map for that attempt's questions; question level only |
 | 3 | Short sittings as the default first unit | **Declined by the user, 2026-09-24.** Not built. |
+| 11 | Celebrations: runs, answered milestones, "fixed", totals, question of the day | **SHIPPED 2026-10-04** — see §6 |
 
 ## 4. Tranche A — the build
 
@@ -116,7 +117,7 @@ findings card's content.
 
 **Data.** `GET /api/me/pulse` → `{ due, week: { done, goal } }`. Signed-in only,
 `no-store`. `due` is the drillable pool size from the same read path as
-`/drill` (`getOwnDuePool`), so the number the header shows is the number the
+`/drill` (`getOwnLadder`, which also counts the fixed questions since 2026-10-04), so the number the header shows is the number the
 drill will serve. Not an approximation, and not a second implementation of the
 ladder.
 
@@ -259,3 +260,34 @@ NDA first. Then `/me` and the header can say "NDA 2027-I in 112 days".
 Recommendation: allow it at question level only, never person level. It is
 metacognitive and it is not a ranking. Needs a service-role read on a student
 page, which is why it is a decision and not a default.
+
+## 6. Celebrations — the motivation layer (2026-10-04)
+
+The user's brief, after an analysis of the live data: students who keep
+practising never see proof that they are improving. A mock score trend cannot
+supply it (same-exam accuracy went up 169 times and down 142, mean +0.7
+points), so every message here is about something the student DID, measured on
+one stick.
+
+| Mechanic | Where | Rule |
+|---|---|---|
+| Right in a row | `/browse`, `/questions`, `/board`, the question of the day | 3, 5, 10, then every 10. First act on a question only (a pick after Show answer, or a re-pick, is not an attempt); a miss ends the run silently. Signed out too; nothing is stored. `lib/celebrate/runs.ts` |
+| N answered | the bank and board (after a flush), the drill, the mock result page | 10, 20, 50, then every 50. ANSWERED, not opened. Awarded once by the server (`milestone_reached`, dedupe key); a mock that jumps several shows only the highest. `lib/celebrate/milestones.ts`, `get_own_answer_totals` (0132) |
+| Fixed | the drill | "Fixed: right twice since you missed it. N questions fixed so far." The fixing rule is unchanged (two right in a row from any surface; user, 2026-10-04), so the copy never says "for good". `lib/drill/progress.ts` |
+| Answered · Right · Fixed | `/me` week strip, the avatar menu | Shown together, never a bare count; hidden until the first answer. Pulse `totals` |
+| Question of the day | top of `/me`, under the week strip | One PYQ MCQ per exam per IST day, the same for everyone; graded (surface `daily`), a miss feeds the drill. Replaced a proposed "thought of the day". `lib/daily/` |
+
+Board picks are graded from the same day (the first tap on an MCQ), so board
+misses feed the drill and count as answered.
+
+**One message at a time:** all celebrations share one toast slot and replace
+each other; nothing blocks the next question.
+
+**Read it about 4 weeks after the push:** signed-in bank answers per session,
+before and after; the share of answering students who see a run;
+`milestone_reached` rows; question-of-the-day answers against `/me` views;
+7-day return per exam segment.
+
+**Queued for analysis (user, 2026-10-04):** "beat the crowd" messages when a
+student gets right a question that 70%, 80% or 90% of students got wrong
+("Nice!", "Smart!", "Genius"), from the pooled per-question rates.

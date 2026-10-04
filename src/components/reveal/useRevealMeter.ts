@@ -5,7 +5,16 @@ import { useSignedIn } from "@/components/auth/useSignedIn";
 import { revealDecision, isRevealLocked } from "@/lib/questions/revealMeter";
 import { recordPractice } from "./practiceBeacon";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
+import { noteRevealForRun } from "@/components/celebrate/answerRun";
 import type { PickLabel, PracticeSurface } from "@/lib/questions/practiceBatch";
+
+/**
+ * A reveal that came from tapping an option. `correct` is the page's own
+ * reading of the key (lib/questions/bankVerdict `gradePick`, the rule the
+ * server grades by), or null when the question cannot be graded. It drives the
+ * "right in a row" message only; the recorded verdict is still the server's.
+ */
+export type RevealPick = { label: PickLabel; correct: boolean | null };
 
 const KEY = "qb_revealed";
 
@@ -106,10 +115,11 @@ export function useRevealedIds(): string[] {
 function useAttemptReveal(surface: PracticeSurface, examName: string) {
   const { signedIn, loading } = useSignedIn();
 
-  /** `chose`: the option tapped, when this reveal is an answer — graded on the
-   *  server (bank verdicts, 2026-10-02). Omitted for a "Show solution" reveal. */
+  /** `pick`: the option tapped, when this reveal is an answer — graded on the
+   *  server (bank verdicts, 2026-10-02). Omitted for a "Show solution" reveal.
+   *  `topic` names the chapter in a "right in a row" message (2026-10-04). */
   const attemptReveal = useCallback(
-    (questionId: string, chose?: PickLabel): boolean => {
+    (questionId: string, pick?: RevealPick, topic: string | null = null): boolean => {
       // Don't gate before auth resolves — a signed-in user must never be walled
       // by a brief loading window.
       if (loading) return true;
@@ -120,7 +130,13 @@ function useAttemptReveal(surface: PracticeSurface, examName: string) {
       // no-ops for anon. This is the ONLY place the bank or the board reader
       // tells the server it was used; everything else about /browse,
       // /questions and /board is invisible by construction.
-      if (decision.allow) recordPractice(questionId, signedIn, surface, chose);
+      if (decision.allow) {
+        recordPractice(questionId, signedIn, surface, pick?.label);
+        // Every allowed reveal goes to the run counter, a pick or not: a
+        // "Show answer" first is what stops a later pick on the same question
+        // from counting. Signed out too — nothing is sent.
+        noteRevealForRun(questionId, pick?.correct ?? null, topic);
+      }
       // The wall bit: an anon viewer has spent their free reveals and is about
       // to meet RevealSignInPrompt. This is the sharpest conversion moment in
       // the product and, until now, the only one that emitted nothing at all —

@@ -11,6 +11,7 @@ import {
 } from "@/lib/goals/weekly";
 import { invalidatePulse, usePulse } from "@/lib/viewer/usePulse";
 import { examCountdownSentence } from "@/lib/exam/calendar";
+import { totalsLine } from "@/lib/pulse/cache";
 
 /**
  * ONE strip for the two engagement numbers on /me: this week's sittings
@@ -40,6 +41,7 @@ export default function WeekStrip({
   const done = pulse?.week.done ?? initialDone;
   const p = weeklyProgress(done, goal);
   const due = pulse?.due ?? null;
+  const totals = pulse?.totals ? totalsLine(pulse.totals) : null;
 
   async function changeGoal(value: string) {
     const next = Number(value);
@@ -73,6 +75,7 @@ export default function WeekStrip({
           This week
         </h2>
         <p className="mt-0.5 text-sm">{weeklyGoalSentence(p)}</p>
+        {totals && <p className="mt-0.5 text-xs font-medium tabular-nums text-muted-foreground">{totals}</p>}
         {pulse?.exam && (
           <p className="mt-0.5 text-xs text-muted-foreground">
             {examCountdownSentence({ ...pulse.exam, source: "calendar", exam: null, date: "" })}

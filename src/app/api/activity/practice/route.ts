@@ -31,12 +31,19 @@
  * arrives with `picks` ({questionId: "A"–"D"}). The route reads the key and
  * grades it here — never trusting the browser's verdict, for the drill's reason
  * — and the verdict rides on the reveal row, with `answer_wrong` /
- * `answer_correct` written beside it as drill fuel. Bank only for now (the
- * board reader is a separate decision); picks from another surface are
- * recorded as plain reveals. Pure core and the row rules: lib/questions/bankVerdict.
+ * `answer_correct` written beside it as drill fuel. Graded on the bank, the
+ * board reader and the question of the day (`isGradedSurface`; the board and
+ * the daily card from 2026-10-04); a pick inside a /guide worked example is
+ * recorded as a plain reveal. Pure core and the row rules: lib/questions/bankVerdict.
  *
- * Responses are deliberately terse (204/400/401): this is fire-and-forget from
- * sendBeacon, where nothing reads the body.
+ * MILESTONES (2026-10-04). When the client sets `celebrate` — only on a flush
+ * whose reply it reads, never on a page-hide beacon — and the batch carried a
+ * graded pick, the route awards the student's "N answered" milestone if one is
+ * newly reached, and returns it as 200 `{ milestone }`. Once per milestone is
+ * the table's dedupe key, not this route's memory (lib/celebrate/service).
+ *
+ * Otherwise responses stay terse (204/400/401): from sendBeacon nothing reads
+ * the body.
  */
 import { NextResponse, type NextRequest } from "next/server";
 import { getSessionUser } from "@/lib/auth";
@@ -45,9 +52,11 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { logActivityBatch, logActivityBatchOnce } from "@/lib/activity/service";
 import { parsePracticeBatch, type BatchPicks } from "@/lib/questions/practiceBatch";
+import { awardAnsweredMilestone } from "@/lib/celebrate/service";
 import {
   correctlyAnsweredIds,
   gradePicks,
+  isGradedSurface,
   practiceEvents,
   type AnswerKey,
   type PickVerdict,
@@ -93,7 +102,7 @@ export async function POST(request: NextRequest) {
 
   let verdicts = new Map<string, PickVerdict>();
   let priorWrongIds = new Set<string>();
-  if (parsed.surface === "bank" && Object.keys(parsed.picks).length > 0) {
+  if (isGradedSurface(parsed.surface) && Object.keys(parsed.picks).length > 0) {
     try {
       verdicts = gradePicks(parsed.picks, await readAnswerKeys(db, parsed.picks));
       priorWrongIds = await readPriorWrongIds(db, user.id, correctlyAnsweredIds(verdicts));
@@ -120,6 +129,12 @@ export async function POST(request: NextRequest) {
   // question per IST day; a dropped one fails safe (the question stays due).
   await logActivityBatch(db, user.id, reveals);
   await logActivityBatchOnce(db, user.id, ladder);
+
+  // Read AFTER the writes above, so the answer that crossed the line counts.
+  if (parsed.celebrate && verdicts.size > 0) {
+    const milestone = await awardAnsweredMilestone(db, user.id);
+    if (milestone !== null) return NextResponse.json({ milestone }, { status: 200 });
+  }
 
   return new NextResponse(null, { status: 204 });
 }

@@ -24,6 +24,9 @@ import ShareResult from "./ShareResult";
 import WhatsappOptIn from "./WhatsappOptIn";
 import Findings from "./Findings";
 import PulseRefresh from "./PulseRefresh";
+import CelebrateOnMount from "@/components/celebrate/CelebrateOnMount";
+import { awardAnsweredMilestone } from "@/lib/celebrate/service";
+import { milestoneMessage } from "@/lib/celebrate/milestones";
 import { buildResultHeadline } from "@/lib/mocks/resultHeadline";
 import { getOwnPerformance } from "@/lib/performance/service";
 import { buildMockReport, type MockReport } from "@/lib/email/mockReport";
@@ -83,6 +86,10 @@ export default async function MockResultPage({ params }: { params: Params }) {
   // paper 27% answered, read as a verdict on the student. See ENGAGEMENT_SPEC.md.
   const headline = buildResultHeadline(summary);
   const fixHref = `/drill?attempt=${params.attemptId}`;
+  // "N questions answered", celebrated at the trigger surface (2026-10-04).
+  // Awarded only past the mobile gate, where the result is actually seen;
+  // once per milestone by the table's dedupe key, so a refresh shows nothing.
+  const milestone = await awardAnsweredMilestone(db, user.id);
 
   return (
     <>
@@ -95,6 +102,7 @@ export default async function MockResultPage({ params }: { params: Params }) {
         )}
 
         <PulseRefresh />
+        <CelebrateOnMount message={milestone !== null ? milestoneMessage(milestone) : null} />
 
         {/* Headline: accuracy on attempted, the unanswered count as its own
             fact, marks as a secondary line. One card, one primary action. */}

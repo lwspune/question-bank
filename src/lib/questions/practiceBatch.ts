@@ -47,8 +47,12 @@ export const PRACTICE_BATCH_MAX = 50;
  * Recorded-but-indistinguishable is the harder failure to spot: the events are
  * all present, so nothing looks missing; they are simply filed under another
  * product, and the textbook reader cannot be measured for retention at all.
+ *
+ * `daily` (2026-10-04) is the question of the day on /me. It is a bank row
+ * answered on a bank card, but it is a different product with a different
+ * reason to exist, so it is measured apart (get_pmf_snapshot learnt it in 0132).
  */
-export const PRACTICE_SURFACES = ["bank", "guide", "board"] as const;
+export const PRACTICE_SURFACES = ["bank", "guide", "board", "daily"] as const;
 
 export type PracticeSurface = (typeof PRACTICE_SURFACES)[number];
 
@@ -83,6 +87,13 @@ export const PICK_LABELS = ["A", "B", "C", "D"] as const;
 
 export type PickLabel = (typeof PICK_LABELS)[number];
 
+/** A stored option label as a pick the server will accept, or null. Checked
+ *  before sending because a label outside A-D rejects the WHOLE batch. */
+export function toPickLabel(label: string): PickLabel | null {
+  const upper = label.toUpperCase();
+  return (PICK_LABELS as readonly string[]).includes(upper) ? (upper as PickLabel) : null;
+}
+
 /**
  * Which option the student tapped, by question id. Only the TAP travels: the
  * verdict is decided on the server against the key (lib/questions/bankVerdict),
@@ -92,7 +103,16 @@ export type PickLabel = (typeof PICK_LABELS)[number];
 export type BatchPicks = Record<string, PickLabel>;
 
 export type ParsedBatch =
-  | { ok: true; ids: string[]; surface: PracticeSurface; picks: BatchPicks }
+  | {
+      ok: true;
+      ids: string[];
+      surface: PracticeSurface;
+      picks: BatchPicks;
+      /** The client will read the reply and can show a milestone (2026-10-04).
+       *  A page-hide beacon never asks: nobody would see the message, and the
+       *  award would be spent. */
+      celebrate: boolean;
+    }
   | { ok: false; error: string };
 
 function isPlainObject(v: unknown): v is Record<string, unknown> {
@@ -154,5 +174,7 @@ export function parsePracticeBatch(raw: unknown): ParsedBatch {
       picks[norm] = upper as PickLabel;
     }
   }
-  return { ok: true, ids: out, surface, picks };
+  // Only a literal true asks: the check costs a totals read per flush.
+  const celebrate = (raw as { celebrate?: unknown }).celebrate === true;
+  return { ok: true, ids: out, surface, picks, celebrate };
 }

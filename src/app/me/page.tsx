@@ -33,6 +33,10 @@ import { listMyAssignments } from "@/lib/assignments/service";
 import type { StudentAssignmentView } from "@/lib/assignments/core";
 import { CalendarClock, Check, GraduationCap } from "lucide-react";
 import StageNudge from "./StageNudge";
+import QuestionCard from "../browse/QuestionCard";
+import { getQuestionOfDayId } from "@/lib/daily/service";
+import { queryQuestionsByIds, type QuestionRow } from "@/lib/questions/query";
+import { istDayKey } from "@/lib/email/dueNudge";
 import { getOnboardingState } from "@/lib/profile/service";
 import {
   STAGE_LABELS,
@@ -98,6 +102,7 @@ export default async function MePage() {
   const notesHref = firstNotesHref(targets, notesSlugs);
   const now = new Date();
   const showStageNudge = needsStageNudge({ stage, now });
+  const daily = await loadQuestionOfDay(db, targets, examIds, now);
 
   return (
     <>
@@ -150,6 +155,33 @@ export default async function MePage() {
             deadline (ENGAGEMENT_SPEC.md C1). Rendered only when there is one,
             so the page gains nothing for the 90% of students with no batch. */}
         {assigned.length > 0 && <DueList items={assigned} />}
+
+        {/* Question of the day (2026-10-04): one real past-year question from
+            the student's exam, the same for everyone that day. It replaced a
+            proposed "thought of the day": answering is practice, a miss joins
+            the drill, and it is a card, never a pop-up in the way. */}
+        {daily && (
+          <section aria-labelledby="daily-heading" className="space-y-3">
+            <div>
+              <h2 id="daily-heading" className="text-sm font-semibold tracking-tight">
+                Question of the day
+              </h2>
+              <p className="text-xs text-muted-foreground">
+                A past {daily.exam.name} question. Pick an answer before you look.
+              </p>
+            </div>
+            <QuestionCard
+              question={daily}
+              index={1}
+              canEdit={false}
+              isLoggedIn
+              supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
+              hideCart
+              surface="daily"
+              defaultExpanded
+            />
+          </section>
+        )}
 
         <div className="grid gap-6 lg:grid-cols-3">
           <section className="space-y-4 lg:col-span-2">
@@ -560,4 +592,32 @@ function EmptyState({ text, href, cta }: { text: string; href: string; cta: stri
       </Link>
     </div>
   );
+}
+
+/**
+ * The first target exam that has past-year MCQs gives today's question; a
+ * practice-only exam (no PYQs) is skipped for the next. Best-effort: any
+ * failure means no card, never a broken dashboard.
+ */
+async function loadQuestionOfDay(
+  db: ReturnType<typeof createSupabaseServerClient>,
+  targets: readonly string[],
+  examIds: Readonly<Record<string, string | null>>,
+  now: Date
+): Promise<QuestionRow | null> {
+  const day = istDayKey(now);
+  for (const slug of targets) {
+    const examId = examIds[slug];
+    if (!examId) continue;
+    const id = await getQuestionOfDayId(slug, examId, day);
+    if (!id) continue;
+    try {
+      const [row] = await queryQuestionsByIds(db, [id]);
+      return row ?? null;
+    } catch (e) {
+      console.error("question of the day load failed", e);
+      return null;
+    }
+  }
+  return null;
 }

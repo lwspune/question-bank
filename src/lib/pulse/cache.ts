@@ -23,6 +23,17 @@ export type Pulse = {
   /** Days to the primary exam (ENGAGEMENT_SPEC.md C3), or null when unknown.
    *  Optional so an entry cached before this field existed still parses. */
   exam?: PulseExam | null;
+  /** Answered · Right · Fixed, across every surface (2026-10-04). Optional for
+   *  the same reason as `exam`. */
+  totals?: PulseTotals | null;
+};
+
+export type PulseTotals = {
+  /** Graded answers: mocks, bank, board, question of the day, drill. */
+  answered: number;
+  right: number;
+  /** Questions right twice in a row since their last miss (the drill's `retired`). */
+  fixed: number;
 };
 
 export type PulseEntry = Pulse & {
@@ -70,5 +81,21 @@ export function parsePulseEntry(raw: string | null): PulseEntry | null {
     if (typeof x.label !== "string" || typeof x.daysLeft !== "number" || typeof x.official !== "boolean") return null;
     exam = { label: x.label, daysLeft: x.daysLeft, official: x.official };
   }
-  return { at: o.at, due: o.due, week: { done: week.done, goal: week.goal as number | null }, exam };
+  let totals: PulseTotals | null = null;
+  if (o.totals !== undefined && o.totals !== null) {
+    if (typeof o.totals !== "object") return null;
+    const t = o.totals as Record<string, unknown>;
+    if (!isCount(t.answered) || !isCount(t.right) || !isCount(t.fixed)) return null;
+    if (t.right > t.answered) return null;
+    totals = { answered: t.answered, right: t.right, fixed: t.fixed };
+  }
+  return { at: o.at, due: o.due, week: { done: week.done, goal: week.goal as number | null }, exam, totals };
+}
+
+/** "Answered 1,240 · Right 780 · Fixed 23" — the three together, so a total is
+ *  never shown as a bare count. Null before the first answer. */
+export function totalsLine(t: PulseTotals): string | null {
+  if (t.answered === 0) return null;
+  const n = (v: number) => v.toLocaleString("en-IN");
+  return `Answered ${n(t.answered)} \u00b7 Right ${n(t.right)} \u00b7 Fixed ${n(t.fixed)}`;
 }

@@ -306,6 +306,29 @@ export async function loadUnseenCandidates(
 
 /** Has this student EVER got this question wrong? Decides whether a correct
  *  drill answer is a recovery (`answer_correct`) or plain practice. */
+/** One question's answer events for one student — what the ladder reads to
+ *  say what an answer just did to it (2026-10-04). One question's history is a
+ *  handful of rows, so no paging. */
+export async function loadQuestionEvents(
+  db: SupabaseClient,
+  userId: string,
+  questionId: string
+): Promise<DrillEvent[]> {
+  const { data, error } = await db
+    .from("user_activity")
+    .select("kind, created_at")
+    .eq("user_id", userId)
+    .eq("ref_id", questionId)
+    .in("kind", ["answer_wrong", "answer_correct"])
+    .order("created_at", { ascending: true });
+  if (error) throw new Error(`loadQuestionEvents: ${error.message}`);
+  return ((data ?? []) as { kind: string; created_at: string }[]).map((r) => ({
+    questionId,
+    correct: r.kind === "answer_correct",
+    at: r.created_at,
+  }));
+}
+
 export async function hasPriorWrong(db: SupabaseClient, userId: string, questionId: string): Promise<boolean> {
   const { count, error } = await db
     .from("user_activity")

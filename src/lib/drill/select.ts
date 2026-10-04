@@ -112,6 +112,23 @@ export function questionState(events: readonly DrillEvent[], now: Date): Questio
   return now.getTime() >= wakesAt ? "due" : "cooling";
 }
 
+/**
+ * How many questions are FIXED: right twice in a row since their last miss
+ * (`retired`). The number the pulse shows as "Fixed" (2026-10-04). Same fold as
+ * the due pool, so the two cannot disagree about a question.
+ */
+export function fixedCount(events: readonly DrillEvent[], now: Date): number {
+  const byQuestion = new Map<string, DrillEvent[]>();
+  for (const e of events) {
+    const list = byQuestion.get(e.questionId);
+    if (list) list.push(e);
+    else byQuestion.set(e.questionId, [e]);
+  }
+  let n = 0;
+  for (const list of byQuestion.values()) if (questionState(list, now) === "retired") n += 1;
+  return n;
+}
+
 /** Taxonomy for a question, supplied by the read layer. `subtopicId` feeds
  *  the daily-set fill (fill.ts); optional so the pure spec fixtures stay small. */
 export type QuestionRef = { chapter: string; subtopic: string; subtopicId?: string | null };

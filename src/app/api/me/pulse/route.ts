@@ -10,9 +10,15 @@
  * minutes (lib/pulse/cache.ts). Folding it into the header call would make
  * every page pay for it.
  *
- * `due` IS THE DRILL'S OWN NUMBER — `getOwnDuePool` is the read /drill serves
+ * `due` IS THE DRILL'S OWN NUMBER — `getOwnLadder` folds the read /drill serves
  * from — not a cheaper count that could overstate. A number a student is shown
  * should be one we would serve.
+ *
+ * `totals` (2026-10-04) is Answered · Right · Fixed. Answered and Right come
+ * from one SQL aggregate (get_own_answer_totals); Fixed from the SAME fold as
+ * `due`, so the two ladder numbers cannot disagree. A failed totals read
+ * leaves `totals` null — the strip hides the line — rather than failing the
+ * due badge with it.
  *
  * `no-store` is essential: per-user, never held by a CDN.
  */
@@ -21,7 +27,8 @@ import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
-import { getOwnDuePool } from "@/lib/drill/service";
+import { getOwnLadder } from "@/lib/drill/service";
+import { getOwnAnswerTotals } from "@/lib/celebrate/service";
 import { getOwnWeekly } from "@/lib/goals/service";
 import { getOwnProfile } from "@/lib/profile/service";
 import { resolveExamDate } from "@/lib/exam/calendar";
@@ -46,16 +53,18 @@ export async function GET() {
     // row a day here is "this student was on the site today" — the count the
     // engagement read lacked (51 of 265 sign-ins in a month left no row).
     await logActivityOnce(db, user.id, surfaceViewedEvent(user.id, "site", now));
-    const [pool, week, profile] = await Promise.all([
-      getOwnDuePool(db, user.id, now),
+    const [ladder, week, profile, answers] = await Promise.all([
+      getOwnLadder(db, user.id, now),
       getOwnWeekly(db, user.id, now),
       getOwnProfile(db, user.id),
+      getOwnAnswerTotals(db),
     ]);
     const countdown = resolveExamDate(profile, now);
     const exam = countdown
       ? { label: countdown.label, daysLeft: countdown.daysLeft, official: countdown.official }
       : null;
-    return NextResponse.json({ due: pool.length, week, exam }, { headers: NO_STORE });
+    const totals = answers ? { answered: answers.answered, right: answers.right, fixed: ladder.fixed } : null;
+    return NextResponse.json({ due: ladder.due.length, week, exam, totals }, { headers: NO_STORE });
   } catch (e) {
     // A wrong number is worse than no badge: fail and let the client render
     // nothing rather than a zero that reads as "nothing to fix".
