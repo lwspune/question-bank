@@ -302,5 +302,5 @@ before and after; the share of answering students who see a run;
 
 **Beat the crowd needs its review run kept up.** A question most students
 get wrong is where a wrong key hides (the 2026-10-04 check fixed 2 keys and 1
-stem, and left 3 printed-vs-intended items to the owner), so a newly hard
+stem, then — on the owner's word — 3 printed-vs-intended keys as printed), so a newly hard
 question carries no message until someone checks it.
