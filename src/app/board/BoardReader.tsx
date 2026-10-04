@@ -753,7 +753,7 @@ function BoardQuestionItem({
           )}
           {blocked && !revealed && <RevealSignInPrompt surface="board" />}
           {revealed && q.solution && (
-            <div className="mt-2 rounded-md border border-dashed bg-background p-3 font-serif text-[15px] leading-relaxed [&_.katex]:max-w-full">
+            <div className="mt-2 rounded-md border border-dashed bg-background p-3 font-serif text-[15px] leading-relaxed motion-safe:animate-fade-in-up [&_.katex]:max-w-full">
               {/* BlockText (not KatexRenderer) so GFM pipe-tables in a solution —
                   e.g. Mathematical Logic truth tables — render as real <table>s,
                   not raw `| p | q |` text. Fast-paths to KatexRenderer when there's

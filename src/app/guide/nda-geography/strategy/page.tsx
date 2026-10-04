@@ -290,7 +290,7 @@ export default async function NdaGeographyStrategy() {
         <ol className="mt-6 space-y-4">
           {TEST_DAY_PLAN.map((phase, i) => (
             <li key={i} className="flex gap-4">
-              <div className="flex h-10 w-16 shrink-0 flex-col items-center justify-center rounded-md bg-primary/10 text-primary">
+              <div className="flex h-10 w-16 shrink-0 flex-col items-center justify-center rounded-lg icon-tile">
                 <span className="text-sm font-bold tabular-nums">
                   {phase.durationMin}
                 </span>

@@ -22,6 +22,10 @@ const PAGE_INTRO =
   "marking scheme, so the score you get is the score you would have got. Pick an exam to " +
   "see what's available.";
 
+// On-page line, kept short (2026-10-04: walls of intro text were half of why
+// the site felt unfinished). PAGE_INTRO stays the meta/JSON-LD description.
+const PAGE_LEDE = "Real past papers, timed and marked exactly as they were sat.";
+
 export const metadata: Metadata = {
   title: { absolute: fitTitle("Timed Mock Tests from Past Papers", [{ text: "NDA, MHT-CET, JEE, NEET & more", optional: true }]) },
   description: `Take ${EXAMS} mock tests online: real past papers served whole, plus full-length practice papers built to the exam blueprint. Official marking, live timer, instant scoring. Free, from PYQ Vault.`,
@@ -130,7 +134,7 @@ export default async function MockCatalogue() {
       <GuideHero
         eyebrow="Timed mock tests"
         title="Mock Tests"
-        subtitle={PAGE_INTRO}
+        subtitle={PAGE_LEDE}
       >
         <Link
           href="/mock/attempts"
@@ -159,7 +163,7 @@ export default async function MockCatalogue() {
                 className="group flex h-full flex-col rounded-lg border bg-card p-6 transition-colors hover:border-primary/40 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               >
                 <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg icon-tile">
                     <Icon className="h-5 w-5" aria-hidden />
                   </span>
                   <div>

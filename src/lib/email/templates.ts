@@ -43,7 +43,7 @@ function ctaHref(path: string, clickToken: string | undefined): string {
 export const REPLY_TO = CONTACT_EMAIL;
 
 const BRAND = "PYQ Vault";
-const ACCENT = "#4f46e5"; // indigo-600 — the brand fill (globals.css --brand)
+const ACCENT = "#1d4ed8"; // the logo's royal blue — the brand fill (globals.css --brand)
 const INK = "#334155";
 const MUTED = "#64748b";
 

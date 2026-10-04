@@ -35,9 +35,11 @@ export default function GuideHero({
   className,
 }: Props) {
   return (
-    <header className={cn("mb-10 sm:mb-12", className)}>
+    // `hero-soft` (globals.css) is the quiet brand band every page header
+    // carries since 2026-10-04; the homepage alone gets the full `hero-brand`.
+    <header className={cn("hero-soft mb-8 rounded-2xl px-5 py-6 sm:mb-10 sm:px-8 sm:py-8", className)}>
       {eyebrow && (
-        <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-primary">
+        <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-brand-accent">
           {eyebrow}
         </p>
       )}

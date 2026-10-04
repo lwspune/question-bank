@@ -474,7 +474,7 @@ export default function QuestionCard({
                   </button>
                 )}
                 {showSolution && (
-                  <div className="mt-2 rounded-md border border-dashed bg-background p-3 text-sm">
+                  <div className="mt-2 rounded-md border border-dashed bg-background p-3 text-sm motion-safe:animate-fade-in-up">
                     <p className="font-sans">
                       <span className="font-medium">Answer:</span>{" "}
                       <span className="tabular-nums">{question.numericAnswer}</span>
@@ -509,7 +509,7 @@ export default function QuestionCard({
                   </button>
                 )}
                 {showSolution && (
-                  <div className="mt-2 rounded-md border border-dashed bg-background p-3 text-sm">
+                  <div className="mt-2 rounded-md border border-dashed bg-background p-3 text-sm motion-safe:animate-fade-in-up">
                     {/* BlockText (not KatexRenderer) so a GFM pipe-table in a
                         solution — e.g. a truth table — renders as a real <table>.
                         Fast-paths to KatexRenderer when there's no table. */}

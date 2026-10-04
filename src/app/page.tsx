@@ -13,7 +13,6 @@ import {
   ListTree,
   NotebookPen,
   School,
-  Sparkles,
   Stethoscope,
   Target,
   Timer,
@@ -21,7 +20,6 @@ import {
 import { redirect } from "next/navigation";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
-import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
@@ -216,54 +214,81 @@ export default async function Home() {
         />
 
         {/*
-          Both figures are read from the catalog this page already fetches, so
-          the headline claim cannot drift from the bank the way a hand-typed
-          count does (see the /guide picker's old "8,259 questions" line).
+          The one strong moment on the site (2026-10-04): the brand panel, with
+          the product itself on the right. Both counts are read from the catalog
+          this page already fetches, so the claim cannot drift from the bank,
+          and both kinds are named (UX_REVIEW_TRIAGE.md D1).
         */}
-        <GuideHero
-          title="Every past paper, sorted question by question."
-          subtitle={`${catalog.totals.pyq.toLocaleString("en-IN")} past-year questions, plus ${catalog.totals.practice.toLocaleString("en-IN")} from textbooks and practice sets, across ${catalog.exams.length} exams. Every one is tagged by chapter, subtopic and difficulty, so you can drill the thing you keep getting wrong instead of sitting another whole paper. Browsing is free and needs no account.`}
-        />
+        <section className="hero-brand mb-8 rounded-3xl px-5 py-7 sm:px-8 sm:py-10">
+          {/* eslint-disable-next-line @next/next/no-img-element -- decorative static asset, 14 KB */}
+          <img
+            src="/icons/mark-256.webp"
+            alt=""
+            aria-hidden
+            width={256}
+            height={256}
+            className="pointer-events-none absolute -right-10 -top-8 w-52 opacity-[0.14] sm:w-64"
+          />
+          <div className="relative grid items-center gap-8 md:grid-cols-[1.15fr_1fr]">
+            <div>
+              <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
+                Every past paper, sorted question by question.
+              </h1>
+              <p className="mt-4 max-w-xl font-serif text-base leading-relaxed text-white/85 sm:text-lg">
+                Practise every past-year question free, then drill the chapters that cost you marks.
+              </p>
+              <ul className="mt-5 flex flex-wrap gap-2 text-xs font-semibold" aria-label="What is in the bank">
+                <li className="rounded-full border border-white/25 bg-white/10 px-3 py-1 tabular-nums">
+                  <span className="text-cyan-200">{catalog.totals.pyq.toLocaleString("en-IN")}</span> past-year questions
+                </li>
+                <li className="rounded-full border border-white/25 bg-white/10 px-3 py-1 tabular-nums">
+                  <span className="text-cyan-200">{catalog.totals.practice.toLocaleString("en-IN")}</span> textbook and practice
+                </li>
+                <li className="rounded-full border border-white/25 bg-white/10 px-3 py-1 tabular-nums">
+                  <span className="text-cyan-200">{catalog.exams.length}</span> exams · free to browse
+                </li>
+              </ul>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/browse"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-[#0f1d4a] shadow-lg transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f1d4a]"
+                >
+                  <Compass className="h-4 w-4" aria-hidden />
+                  Browse the question bank
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+                </Link>
+                <Link
+                  href="/guide/nda"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/35 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f1d4a]"
+                >
+                  <BookOpen className="h-4 w-4" aria-hidden />
+                  Explore the guides
+                </Link>
+              </div>
+            </div>
+            {/* The product, not a description of it: a real 2026 NDA question
+                answered on a bank card (public/marketing/, captured from the
+                live card so it shows exactly what a student gets). */}
+            {/* eslint-disable-next-line @next/next/no-img-element -- static marketing screenshot */}
+            <img
+              src="/marketing/answer-card.webp"
+              alt="A 2026 NDA question on PYQ Vault with the correct answer marked and the worked solution below it"
+              width={640}
+              height={1180}
+              className="mx-auto max-h-[340px] w-full max-w-sm rounded-2xl object-cover object-top shadow-2xl ring-1 ring-white/20 [mask-image:linear-gradient(to_bottom,black_75%,transparent)] md:max-h-none md:max-w-[340px] md:[mask-image:none]"
+            />
+          </div>
+        </section>
 
         {/* A8: pick an exam without scrolling past every card. */}
         <HomeExamChips chips={homeExamChips(examNodes)} />
-
-        {/* Live total + primary CTA */}
-        <section className="mb-12 rounded-xl border bg-card p-5 shadow-sm sm:p-6">
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
-            <span className="inline-flex items-center gap-1.5 rounded-full border bg-background px-2.5 py-1 font-semibold tabular-nums">
-              <Sparkles className="h-3.5 w-3.5 text-brand-accent" aria-hidden />
-              {catalog.totals.pyq.toLocaleString("en-IN")} past-year questions
-            </span>
-            <span className="text-muted-foreground">
-              {catalog.exams.length} exams · free to browse · Word papers with the pass
-            </span>
-          </div>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Link
-              href="/browse"
-              className="inline-flex items-center gap-2 rounded-md bg-brand px-4 py-2.5 text-sm font-semibold text-brand-foreground shadow-sm transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            >
-              <Compass className="h-4 w-4" aria-hidden />
-              Browse the question bank
-              <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-            </Link>
-            <Link
-              href="/guide/nda"
-              className="inline-flex items-center gap-2 rounded-md border border-input bg-background px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            >
-              <BookOpen className="h-4 w-4" aria-hidden />
-              Explore the guides
-            </Link>
-          </div>
-        </section>
 
         {/* A9: the loop /start teaches, rendered from the same object so it
             cannot describe a loop the app does not have. /start had one
             signed-in viewer in the week to 2026-10-02. */}
         <section className="mb-12" aria-labelledby="how-it-works">
           <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
-            <h2 id="how-it-works" className="text-xl font-semibold tracking-tight sm:text-2xl">
+            <h2 id="how-it-works" className="section-title text-xl font-semibold tracking-tight sm:text-2xl">
               How it works
             </h2>
             <Link
@@ -280,7 +305,7 @@ export default async function Home() {
         {/* Exam catalog — the pick-your-exam front door */}
         <section className="mb-12">
           <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
-            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+            <h2 className="section-title text-xl font-semibold tracking-tight sm:text-2xl">
               Choose your exam
             </h2>
           </div>
@@ -300,7 +325,7 @@ export default async function Home() {
                   <li key={node.key} id={examCardAnchor(node.key)} className="scroll-mt-20">
                     <div className="flex h-full flex-col rounded-lg border bg-card p-4">
                       <div className="mb-2 flex items-center gap-3">
-                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg icon-tile">
                           <Icon className="h-4 w-4" aria-hidden />
                         </span>
                         <div className="min-w-0 flex-1">
@@ -360,7 +385,7 @@ export default async function Home() {
                     className="group flex h-full flex-col rounded-lg border bg-card p-4 transition-colors hover:border-primary/40 hover:bg-accent"
                   >
                     <div className="mb-2 flex items-center gap-3">
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg icon-tile">
                         <Icon className="h-4 w-4" aria-hidden />
                       </span>
                       <div className="min-w-0 flex-1">
@@ -394,7 +419,7 @@ export default async function Home() {
         {/* What's inside — surface previews */}
         <section className="mb-12">
           <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
-            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
+            <h2 className="section-title text-xl font-semibold tracking-tight sm:text-2xl">
               What&rsquo;s inside
             </h2>
           </div>
@@ -406,7 +431,7 @@ export default async function Home() {
                   className="group flex h-full flex-col rounded-lg border bg-card p-5 transition-colors hover:border-primary/40 hover:bg-accent"
                 >
                   <div className="mb-2 flex items-center gap-3">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg icon-tile">
                       <Icon className="h-4 w-4" aria-hidden />
                     </span>
                     <h3 className="text-base font-semibold tracking-tight">

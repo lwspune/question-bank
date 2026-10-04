@@ -133,7 +133,7 @@ export function useCheckout({
         name: "PYQ Vault",
         description: order.planLabel,
         prefill: order.email ? { email: order.email } : undefined,
-        theme: { color: "#4f46e5" },
+        theme: { color: "#1d4ed8" },
         handler: async (resp) => {
           try {
             const verifyRes = await fetch("/api/billing/verify", {

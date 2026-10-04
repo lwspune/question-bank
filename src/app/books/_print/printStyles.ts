@@ -145,7 +145,7 @@ export const BOOK_PRINT_CSS = `
   }
   .bbar a { color: #a5b4fc; }
   .bbar button {
-    background: #4f46e5; color: #fff; border: 0; border-radius: 5px;
+    background: #1d4ed8; color: #fff; border: 0; border-radius: 5px;
     padding: 6px 12px; font-size: 13px; cursor: pointer;
   }
   .bbar .bnote { color: #a1a1aa; }
