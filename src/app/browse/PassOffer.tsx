@@ -28,6 +28,7 @@ import type { PassCta } from "@/lib/billing/plans";
 export default function PassOffer({
   pass,
   isSignedIn,
+  freeAfterSignIn = false,
   returnTo,
   mode,
   onCancel,
@@ -35,6 +36,8 @@ export default function PassOffer({
 }: {
   pass: PassCta;
   isSignedIn: boolean;
+  /** Signed out: signing in gets the one free download, so the pass is the second offer. */
+  freeAfterSignIn?: boolean;
   /** This page with its filters: the fallback sign-in comes back here. */
   returnTo?: string;
   mode: "filters" | "cart";
@@ -69,6 +72,7 @@ export default function PassOffer({
   return (
     <>
       <div className="min-h-0 flex-1 space-y-4 overflow-y-auto px-6 py-4 text-sm">
+        {freeAfterSignIn && <p className="font-medium">For unlimited downloads, get {pass.label}:</p>}
         {pass.perks.length > 0 && (
           <ul className="space-y-2">
             {pass.perks.map((perk) => (
@@ -94,7 +98,7 @@ export default function PassOffer({
             {busy ? "Opening checkout…" : `Pay ${pass.price} and download`}
           </Button>
         ) : (
-          <SignInStep returnTo={returnTo} onSignedIn={refresh} />
+          <SignInStep returnTo={returnTo} onSignedIn={refresh} freeAfterSignIn={freeAfterSignIn} />
         )}
         <Button variant="ghost" className="w-full" onClick={onCancel} disabled={busy}>
           Not now
@@ -109,7 +113,15 @@ export default function PassOffer({
  * Where it cannot be drawn (no client id, script blocked) the redirect-style
  * Google button stands in and returns to these filters afterwards.
  */
-function SignInStep({ returnTo, onSignedIn }: { returnTo?: string; onSignedIn: () => void }) {
+function SignInStep({
+  returnTo,
+  onSignedIn,
+  freeAfterSignIn,
+}: {
+  returnTo?: string;
+  onSignedIn: () => void;
+  freeAfterSignIn: boolean;
+}) {
   const slot = useRef<HTMLDivElement>(null);
   const [drawn, setDrawn] = useState<boolean | null>(googleButtonAvailable ? null : false);
   const [signingIn, setSigningIn] = useState(false);
@@ -121,7 +133,7 @@ function SignInStep({ returnTo, onSignedIn }: { returnTo?: string; onSignedIn: (
       onSignedIn: () => {
         trackFunnel("download_box_signin");
         setSigningIn(true);
-        toast.success("Signed in. One more step to download.");
+        toast.success("Signed in.");
         onSignedIn();
       },
       onError: () => toast.error("Google sign-in didn't complete. Try again, or use another way to sign in."),
@@ -137,7 +149,9 @@ function SignInStep({ returnTo, onSignedIn }: { returnTo?: string; onSignedIn: (
 
   return (
     <div className="w-full space-y-2">
-      <p className="text-center text-xs text-muted-foreground">Sign in, then pay. It takes a minute.</p>
+      <p className="text-center text-xs text-muted-foreground">
+        {freeAfterSignIn ? "Sign in to get your free download." : "Sign in, then pay. It takes a minute."}
+      </p>
       {signingIn ? (
         <Button variant="brand" className="w-full" disabled>
           <Loader2 className="h-4 w-4 animate-spin" aria-hidden />

@@ -4,6 +4,7 @@ import { Inbox } from "lucide-react";
 import type { Metadata } from "next";
 import { getPageIdentity } from "@/lib/auth";
 import { sessionHasScope } from "@/lib/entitlements/session";
+import { sessionFreeDownloadLeft } from "@/lib/export/freeDownloadSession";
 import { DOWNLOAD_PASS_SCOPE } from "@/lib/export/access";
 import { passCta, passForScope } from "@/lib/billing/plans";
 import { listActivePlans } from "@/lib/billing/plansQuery";
@@ -102,6 +103,10 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   // account with no org. Only a signed-in non-staff viewer needs the lookup.
   const hasDownloadPass =
     isSignedIn && !isStaff ? await sessionHasScope(DOWNLOAD_PASS_SCOPE) : false;
+  // The one free download (2026-10-04): looked up only for an account the
+  // pass would otherwise be offered to.
+  const freeDownloadLeft =
+    isSignedIn && !isStaff && !hasDownloadPass ? await sessionFreeDownloadLeft() : false;
 
   const rawParams = paramsFromSearch(searchParams);
   let filters = parseFilters(rawParams);
@@ -345,6 +350,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
               isSignedIn={isSignedIn}
               isStaff={isStaff}
               hasDownloadPass={hasDownloadPass}
+              freeDownloadLeft={freeDownloadLeft}
               downloadPass={downloadPass}
               bilingual={bilingualExam}
             />
@@ -433,6 +439,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
           isSignedIn,
           isStaff,
           hasDownloadPass,
+          freeDownloadLeft,
           downloadPass,
           bilingual: bilingualExam,
         }}

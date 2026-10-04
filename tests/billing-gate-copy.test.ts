@@ -5,7 +5,7 @@
  * signed-out visitors who tapped through it in a week left on /pricing.
  */
 import { describe, it, expect } from "vitest";
-import { gateTitle, gatePriceLine } from "@/lib/billing/gateCopy";
+import { gateTitle, gatePriceLine, selectionTitle } from "@/lib/billing/gateCopy";
 import { passCta, type Plan } from "@/lib/billing/plans";
 import { SCOPE_MOCKS } from "@/lib/entitlements/access";
 
@@ -24,6 +24,20 @@ describe("gateTitle", () => {
 
   it("drops the count when there is nothing selected yet", () => {
     expect(gateTitle(0, "Premium Pass")).toBe("Download questions with Premium Pass");
+  });
+});
+
+// Before the free download is spent, the title names only the selection: the
+// first file is free, so leading with the pass would misstate the offer.
+describe("selectionTitle", () => {
+  it("names the count", () => {
+    expect(selectionTitle(48)).toBe("Download these 48 questions");
+  });
+  it("is singular for one question", () => {
+    expect(selectionTitle(1)).toBe("Download this question");
+  });
+  it("drops the count when nothing is selected", () => {
+    expect(selectionTitle(0)).toBe("Download questions");
   });
 });
 
