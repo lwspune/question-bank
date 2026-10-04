@@ -34,7 +34,14 @@ const nextConfig = {
   // fragile. To settle it, re-run the A/B on an IDLE machine with no ingestion
   // or MCP traffic, alternating configs at least twice each (A-B-A-B), and
   // treat a result as real only if the two A runs agree.
-  experimental: { cpus: 4 },
+  //
+  // 2026-10-04: 2 off Vercel, 4 on it. Two back-to-back LOCAL builds took the
+  // production database down that day; what topples it is the request RATE,
+  // and this cap sets it. Off Vercel the build is the pre-push gate, so halve
+  // the rate there. Vercel keeps 4: its builds run one at a time (project
+  // setting), no longer alongside a CI build, and a slower build there would
+  // delay every deploy. `VERCEL=1` is set by Vercel in every build.
+  experimental: { cpus: process.env.VERCEL ? 4 : 2 },
   async redirects() {
     return [
       {
