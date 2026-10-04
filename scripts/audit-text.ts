@@ -48,6 +48,14 @@
  *    Repairable in place — scripts/reviews/reveal-phantom-arrows.ts; the probe
  *    and the repair share one helper (scripts/lib/phantomArrows.ts).
  *
+ * 9. DASHED_TABLE — a table pandoc wrote as a dashed ASCII grid (a "simple" or
+ *    "multiline" table) instead of a GFM pipe-table, so it renders as a wall of
+ *    dashes with each math cell on its own line. 26 public rows across MHT-CET
+ *    2025, JEE 2021-2023 and two NDA mocks on 2026-10-04. Every field AND every
+ *    option (two MHT-CET questions carry a table per option). NOT repairable in
+ *    place: the ingest collapsed the whitespace, so rebuild each table from the
+ *    source paper (scripts/table-fix/).
+ *
  * Every detector reuses production helpers, so a false positive here is a real
  * disagreement worth investigating, not a probe artefact. Math zones are masked
  * by `normalizeNewlines` / `maskMathZones`, so `\neq` / `\nabla` / `\nu` and
@@ -61,6 +69,7 @@ import {
   hasDroppedSymbol,
   leakedOptionValues,
   isFlattenedTable,
+  isDashedTable,
   mixedMatrixDelimiters,
 } from "./lib/textProbes";
 import { pandocArtifactCount, stripPandocArtifacts } from "./lib/pandocArtifacts";
@@ -94,7 +103,8 @@ type Finding = {
     | "PANDOC_ARTIFACT"
     | "FLATTENED_TABLE"
     | "MIXED_MATRIX_DELIM"
-    | "PHANTOM_ARROW";
+    | "PHANTOM_ARROW"
+    | "DASHED_TABLE";
   sample: string;
 };
 
@@ -194,6 +204,23 @@ function inspect(r: Row): Finding[] {
     });
   }
 
+  // A dashed table can sit in any field or option; one finding per question.
+  const dashField = FIELDS.find((f) => typeof r[f] === "string" && isDashedTable(r[f] as string));
+  const dashOpt = (r.options ?? []).find((o) => typeof o.text === "string" && isDashedTable(o.text));
+  if (dashField || dashOpt) {
+    const src = dashField ? (r[dashField] as string) : (dashOpt!.text as string);
+    const at = src.search(/-{8,}/);
+    out.push({
+      id: r.id,
+      source: r.source_file ?? "(none)",
+      qnum: r.question_number ?? "(none)",
+      visibility: r.visibility,
+      field: dashField ?? "text",
+      kind: "DASHED_TABLE",
+      sample: (dashField ? "" : "[option] ") + src.slice(Math.max(0, at - 40), at + 80).replace(/\n/g, "⏎"),
+    });
+  }
+
   // Whole-question probe — the mismatch is usually BETWEEN fields (a round stem
   // against a square solution), so no single field can be inspected alone.
   const allFields = [
@@ -271,6 +298,7 @@ async function main() {
     "FLATTENED_TABLE",
     "MIXED_MATRIX_DELIM",
     "PHANTOM_ARROW",
+    "DASHED_TABLE",
   ] as const) {
     const hits = byKind(kind);
     console.log(`${kind}: ${hits.length}`);

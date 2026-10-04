@@ -101,6 +101,25 @@ export function isFlattenedTable(text: string): boolean {
 }
 
 /**
+ * DASHED_TABLE — a table pandoc wrote as a "simple" or "multiline" table, a
+ * dashed ASCII grid, instead of a GFM pipe-table. Nothing in this bank parses
+ * one, so it renders as a wall of dashes with every math cell on its own line.
+ *
+ * Earned 2026-10-04: 26 public rows (MHT-CET 2025, JEE 2021-23, two NDA mocks)
+ * in stems, options and solutions. Ingest had also collapsed the whitespace, so
+ * the column boundaries are gone: repair from the source paper, never from the
+ * stored text.
+ *
+ * Two signals, both required. A table has a long border or column rule (8+
+ * dashes) AND a row of space-separated dash groups (3+ each). The Balbharati
+ * fill-in blank ("vinegar is -- -- --.") has neither, and a real GFM separator
+ * (`|----|----:|`) joins its groups with pipes, not spaces.
+ */
+export function isDashedTable(text: string): boolean {
+  return /-{8,}/.test(text) && /(?:^|[\s|])-{3,} +-{3,}(?=[\s|]|$)/m.test(text);
+}
+
+/**
  * MIXED_MATRIX_DELIM — one question that draws its matrices in two different
  * brackets. Reported 2026-09-17 on NDA1 2022 Q24, whose stem prints
  * `A = [m n]` and `B = [-n -m]` in square brackets and `C` in round ones, all
