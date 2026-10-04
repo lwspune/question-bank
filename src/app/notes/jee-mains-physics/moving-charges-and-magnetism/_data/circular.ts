@@ -172,7 +172,7 @@ export const CIRCULAR_MAG_NOTE: SubtopicNote = {
         { prompt: "A proton reaches 4 MeV in a cyclotron whose gap voltage is 20 kV. How many revolutions does it make?", answer: "100" },
         { prompt: "What path does a charge follow when its velocity makes \\(45^{\\circ}\\) with a uniform magnetic field?", answer: "A helix with its axis along the field" },
       ],
-      pyqExampleId: "bb2c4386-8597-4d3e-a177-ab74647b1027", // 8 Apr 2026 S2: 5 mg, 5π μC, v = (3, 0, 2) × 10⁻² m/s, B = 0.1 k̂, distance in 5 turns = 2 m
+      pyqExampleId: "bb2c4386-8597-4d3e-a177-ab74647b1027", // 8 Apr 2026 S2: 5 mg, 5π μC, v = (3, 0, 2) × 10⁻² m/s, B = 0.1 k-hat, distance in 5 turns = 2 m
       traps: [
         {
           title: "Only the part of v along B makes the pitch",

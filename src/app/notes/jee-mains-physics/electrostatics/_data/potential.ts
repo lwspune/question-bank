@@ -170,7 +170,7 @@ export const POTENTIAL_ES_NOTE: SubtopicNote = {
         { prompt: "A uniform field \\(\\vec E = 3\\hat i\\) N/C. Work done by the field on \\(5\\ \\mu\\text{C}\\) moved from (0, 0) to (2, 4) m?", answer: "\\(3 \\times 10^{-5}\\) J" },
         { prompt: "Work by an agent to bring \\(1\\ \\mu\\text{C}\\) from infinity to a point at 300 V?", answer: "\\(3 \\times 10^{-4}\\) J" },
       ],
-      pyqExampleId: "7d6cf846-f034-4b18-8852-e2e6e3e2b8cf", // 2026: 3 C moved in E = 2x î + 3y² ĵ + 4 k̂, W = 186 J
+      pyqExampleId: "7d6cf846-f034-4b18-8852-e2e6e3e2b8cf", // 2026: 3 C moved in E = 2x î + 3y² ĵ + 4 k-hat, W = 186 J
       traps: [
         {
           title: "Work by the field or by an agent",

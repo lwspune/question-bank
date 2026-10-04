@@ -4,7 +4,7 @@ export const MAGNITUDE_UNIT_VECTORS_NOTE: SubtopicNote = {
   subtopicName: "Magnitude, Components, and Unit Vectors",
   title: "Magnitude, Components, and Unit Vectors",
   oneLineDefinition:
-    "How to write a vector in î ĵ k̂ component form, measure its length, build a unit vector pointing in any direction, and — the MHT-CET workhorse — find the magnitude of a sum of vectors from given angles or perpendicularity conditions.",
+    "How to write a vector in i, j, k component form, measure its length, build a unit vector pointing in any direction, and — the MHT-CET workhorse — find the magnitude of a sum of vectors from given angles or perpendicularity conditions.",
   whyItMatters:
     "This is the on-ramp to the whole Vectors chapter: every later technique (dot product, cross product, scalar triple product) starts by writing vectors in component form and reading off a magnitude. " +
     "Across the 9 PYQs here, ONE shape dominates — finding the length of a combination like a + b + c by expanding |a + b + c|² = Σ|·|² + 2Σ(a·b) and using the angle or perpendicularity data to evaluate the dot-product cross terms. " +

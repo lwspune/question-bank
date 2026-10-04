@@ -1,6 +1,6 @@
 /**
  * One-shot LaTeX audit of the /notes editorial content. Read-only.
- * Walks every SubtopicNote in NOTES_CHAPTERS and reports four modes (1–3 fail
+ * Walks every SubtopicNote in NOTES_CHAPTERS and reports five modes (1–3 and 5 fail
  * the gate; 4 is informational):
  *   1. LaTeX markup in PLAIN-TEXT fields (title, oneLineDefinition,
  *      whyItMatters, concept.name, formula.label) — these don't go through
@@ -14,8 +14,13 @@
  *      (e.g. "\det A"). Delimiter-balance can't see it (zero delimiters).
  *   4. Non-ASCII characters inside KaTeX fields — inventory, so we can spot
  *      unicode math (°, ×, ≤, →, …) that may render inconsistently.
+ *   5. Combining marks the notes serif does not ship (all of 0x0300-0x036F but
+ *      macron, diaeresis, vertical line below) in ANY field — fails the gate.
+ *      The mark is borrowed from another font and lands off its letter (k + combining circumflex drew its hat
+ *      beside the k, 2026-10-05). Write \(\hat{k}\) or words instead.
  */
 import { NOTES_CHAPTERS } from "../src/lib/notes/chapters";
+import { findCombiningMarks } from "./lib/combiningMarks";
 
 type Hit = { where: string; detail: string };
 
@@ -23,6 +28,13 @@ const plainLeaks: Hit[] = [];
 const delimImbalance: Hit[] = [];
 const unwrappedMacro: Hit[] = [];
 const unicodeCounts = new Map<string, { count: number; sample: string }>();
+const combining: Hit[] = [];
+
+function checkCombining(where: string, s: string | undefined) {
+  if (!s) return;
+  for (const h of findCombiningMarks(s))
+    combining.push({ where, detail: `${h.mark} after "${h.after}" :: ${s.slice(0, 80)}` });
+}
 
 // A formula's symbol/meaning legend (FormulaBlock) hands the string to
 // KatexRenderer RAW — no auto-wrapping like formula.latex gets — so any LaTeX
@@ -47,6 +59,7 @@ const hasLatexMarkup = (s: string) => /\\\(|\\\)|\\\[|\\\]|\\[a-zA-Z]/.test(s);
 const hasMarkdownMarkup = (s: string) => /\*\*/.test(s) || /(^|\n)\s*-\s/.test(s);
 
 function checkPlain(where: string, s: string | undefined) {
+  checkCombining(where, s);
   if (s && (hasLatexMarkup(s) || hasMarkdownMarkup(s)))
     plainLeaks.push({ where, detail: s.slice(0, 90) });
 }
@@ -169,6 +182,7 @@ for (const chapter of NOTES_CHAPTERS) {
       for (const [where, val] of katexFields) {
         checkDelims(where, val);
         inventoryUnicode(where, val);
+        checkCombining(where, val);
       }
     }
   }
@@ -196,11 +210,16 @@ console.log(
   "  (Non-ASCII in prose between math zones is fine — these are informational.)"
 );
 
-// Sections 1 + 2 + 3 are real defects that fail the gate; 4 is informational.
-if (plainLeaks.length > 0 || delimImbalance.length > 0 || unwrappedMacro.length > 0) {
+console.log(`
+=== 5. Combining marks, drawn off their letter (${combining.length}) ===`);
+for (const h of combining) console.log(`  [COMBINING] ${h.where}: ${h.detail}`);
+if (combining.length === 0) console.log("  none");
+
+// Sections 1 + 2 + 3 + 5 are real defects that fail the gate; 4 is informational.
+if (plainLeaks.length > 0 || delimImbalance.length > 0 || unwrappedMacro.length > 0 || combining.length > 0) {
   console.error(
-    `\nnotes-latex: FAIL — ${plainLeaks.length} plain-text leak(s), ${delimImbalance.length} delimiter imbalance(s), ${unwrappedMacro.length} unwrapped-macro leak(s).`
+    `\nnotes-latex: FAIL — ${plainLeaks.length} plain-text leak(s), ${delimImbalance.length} delimiter imbalance(s), ${unwrappedMacro.length} unwrapped-macro leak(s), ${combining.length} combining mark(s).`
   );
   process.exit(1);
 }
-console.log("\nnotes-latex: OK — no plain-text leaks, no delimiter imbalances.");
+console.log("\nnotes-latex: OK — no plain-text leaks, no delimiter imbalances, no stray combining marks.");
