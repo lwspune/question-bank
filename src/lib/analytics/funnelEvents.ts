@@ -111,6 +111,13 @@ export const FUNNEL_EVENTS = [
    * funnel count beside teacher_gate_shown.
    */
   "free_download_used",
+  /**
+   * A tap took over 200 ms to paint (2026-10-04, DEAD_TAPS.md); props: kind
+   * (reveal | expand | nav | option | other) and timing ("<phase>:<bucket>",
+   * phase = waiting | working | painting). Once per page per kind. No partner:
+   * page views are its scale. Chrome/Edge only, so a floor.
+   */
+  "slow_tap",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];

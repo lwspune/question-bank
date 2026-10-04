@@ -5,6 +5,7 @@ import OfflineBanner from "@/components/OfflineBanner";
 import { Analytics } from "@vercel/analytics/next";
 import AcquisitionCapture from "@/components/acquisition/AcquisitionCapture";
 import ClarityScript from "@/components/analytics/ClarityScript";
+import SlowTapReporter from "@/components/analytics/SlowTapReporter";
 import NavigationProgress from "@/components/NavigationProgress";
 import ChatWidget from "@/components/chat/ChatWidget";
 import { CartProvider } from "@/lib/cart/CartProvider";
@@ -130,6 +131,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               loads on staff routes, reads no server API, so prerendered routes
               stay prerendered. Off entirely without NEXT_PUBLIC_CLARITY_PROJECT_ID. */}
           <ClarityScript />
+          {/* Taps that take over 200 ms to paint, as one funnel event per page
+              per kind (DEAD_TAPS.md). Browser timing only, no server read. */}
+          <SlowTapReporter />
           {/* V, the FAQ helper. No server read at mount — it only calls out when
               opened or a question is clicked — so prerendered routes stay cached. */}
           <ChatWidget />

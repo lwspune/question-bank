@@ -9,7 +9,7 @@ import {
 } from "@/lib/analytics/funnelEvents";
 
 describe("FUNNEL_EVENTS", () => {
-  it("is a closed allowlist of the twenty-two anon-funnel moments", () => {
+  it("is a closed allowlist of the twenty-three anon-funnel moments", () => {
     expect([...FUNNEL_EVENTS]).toEqual([
       "reveal_wall_hit",
       "reveal_wall_signin_click",
@@ -33,6 +33,7 @@ describe("FUNNEL_EVENTS", () => {
       "checkout_failed",
       "checkout_dismissed",
       "free_download_used",
+      "slow_tap",
     ]);
   });
 
