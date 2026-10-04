@@ -274,7 +274,7 @@ export default function CartPill({
               </Button>
             )}
             {/* A non-member can't own a paper (papers.org_id is NOT NULL), and the
-                PYQ Vault Pass doesn't change that — it unlocks the Word download.
+                Premium Pass doesn't change that — it unlocks the Word download.
                 So they get Download alone, which exports this selection. */}
             {isOrgMember && (
               <Button

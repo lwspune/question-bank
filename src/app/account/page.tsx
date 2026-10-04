@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 /** What an active grant is called on this page, and where it leads. */
 const PASS_VIEW: Record<string, { title: string; href: string; cta: string }> = {
-  mocks: { title: "PYQ Vault Pass active", href: "/mock", cta: "Go to mock tests →" },
+  mocks: { title: "Premium Pass active", href: "/mock", cta: "Go to mock tests →" },
   // The retired ₹499 pass (2026-10-01). No grant holds it; kept so one would still read right.
   teacher: { title: "Teacher Pass active", href: "/browse", cta: "Download a paper →" },
 };
