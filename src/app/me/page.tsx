@@ -21,7 +21,8 @@ import { surfaceViewedEvent } from "@/lib/activity/views";
 import { getUserAttempts } from "@/lib/mocks/query";
 import { summarizeUserMocks } from "@/lib/mocks/perf";
 import { listOwnNotesProgress } from "@/lib/notes/progressService";
-import { summarizeNotesProgress, prettifyNotesSlug } from "@/lib/notes/progress";
+import { summarizeNotesProgress } from "@/lib/notes/progress";
+import { notesTopicTitles } from "@/lib/notes/topicTitles";
 import { listBookmarkIds } from "@/lib/bookmarks/service";
 import { getLastNpsAt } from "@/lib/feedback/service";
 import { needsNps } from "@/lib/feedback/nps";
@@ -136,8 +137,8 @@ export default async function MePage() {
         ) : cont ? (
           <ContinueHero
             eyebrow="Continue where you left off"
-            title={prettifyNotesSlug(cont.subtopicSlug)}
-            subtitle={prettifyNotesSlug(cont.chapterSlug)}
+            title={notesTopicTitles(cont).topic}
+            subtitle={notesTopicTitles(cont).chapter}
             href={`/notes/${cont.subjectRoute}/${cont.chapterSlug}/${cont.subtopicSlug}`}
             cta="Continue"
           />
@@ -187,11 +188,13 @@ export default async function MePage() {
           </section>
         )}
 
-        <div className="grid gap-6 lg:grid-cols-3">
-          <section className="space-y-4 lg:col-span-2">
+        {/* grid-cols-1 + min-w-0: a grid track defaults to its content's width,
+            so a long attempt title pushed these cards off a phone's screen. */}
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <section className="min-w-0 space-y-4 lg:col-span-2">
             <MockCard mocks={mocks} attempts={attempts} browseHref={mockHref} />
           </section>
-          <div className="space-y-6">
+          <div className="min-w-0 space-y-6">
             <NotesCard
               notesHref={notesHref}
               recent={notes.recent}
@@ -533,10 +536,10 @@ function NotesCard({
                   <Link
                     href={`/notes/${r.subjectRoute}/${r.chapterSlug}/${r.subtopicSlug}`}
                     className="flex items-center gap-1.5 truncate rounded px-2 py-1 text-sm hover:bg-accent hover:text-accent-foreground"
-                    title={prettifyNotesSlug(r.subtopicSlug)}
+                    title={notesTopicTitles(r).topic}
                   >
                     <History className="h-3.5 w-3.5 shrink-0 text-muted-foreground" aria-hidden />
-                    <span className="truncate">{prettifyNotesSlug(r.subtopicSlug)}</span>
+                    <span className="truncate">{notesTopicTitles(r).topic}</span>
                   </Link>
                 </li>
               ))}
