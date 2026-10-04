@@ -230,7 +230,7 @@ export default async function NotesChapterLanding({ chapter }: Props) {
         {questionsLanding && (
           <Link
             href={landingHref(questionsLanding)}
-            className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
+            className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-brand/40 hover:bg-brand/5 hover:text-brand-accent"
           >
             <ListChecks className="h-3.5 w-3.5" aria-hidden />
             <span>
@@ -246,7 +246,7 @@ export default async function NotesChapterLanding({ chapter }: Props) {
         {guideHref && (
           <Link
             href={guideHref}
-            className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
+            className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-brand/40 hover:bg-brand/5 hover:text-brand-accent"
           >
             <Compass className="h-3.5 w-3.5" aria-hidden />
             <span>{chapter.subjectDisplay} strategy</span>
@@ -258,7 +258,7 @@ export default async function NotesChapterLanding({ chapter }: Props) {
         )}
         <Link
           href={examHomeHref}
-          className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
+          className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-brand/40 hover:bg-brand/5 hover:text-brand-accent"
         >
           <BookOpen className="h-3.5 w-3.5" aria-hidden />
           <span>{chapter.examName} home</span>
@@ -270,7 +270,7 @@ export default async function NotesChapterLanding({ chapter }: Props) {
         {hasFormulaIndex && (
           <Link
             href="/formula"
-            className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
+            className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-brand/40 hover:bg-brand/5 hover:text-brand-accent"
           >
             <Sigma className="h-3.5 w-3.5" aria-hidden />
             <span>Questions by formula</span>
@@ -283,8 +283,8 @@ export default async function NotesChapterLanding({ chapter }: Props) {
       </div>
 
       {chapter.tier === "paid" && (
-        <div className="mb-6 flex items-start gap-3 rounded-lg border border-primary/30 bg-primary/5 p-4">
-          <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden />
+        <div className="mb-6 flex items-start gap-3 rounded-lg border border-brand/30 bg-brand/5 p-4">
+          <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
           <p className="text-sm text-foreground">
             <span className="font-semibold">Premium chapter.</span>{" "}
             <span className="text-muted-foreground">
@@ -297,7 +297,7 @@ export default async function NotesChapterLanding({ chapter }: Props) {
 
       <section className="mt-2 grid gap-4 sm:mt-4">
         <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-          <BookOpen className="h-4 w-4 text-primary" aria-hidden />
+          <BookOpen className="h-4 w-4 text-brand-accent" aria-hidden />
           Subtopic notes
         </p>
         <ul className="space-y-3">
@@ -322,20 +322,20 @@ export default async function NotesChapterLanding({ chapter }: Props) {
               <li key={slug}>
                 <Link
                   href={`${base}/${slug}`}
-                  className="group block rounded-lg border bg-card p-5 transition-colors hover:border-primary/40 hover:bg-primary/5"
+                  className="group block rounded-lg border bg-card p-5 transition-colors hover:border-brand/40 hover:bg-brand/5"
                 >
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <h3 className="text-lg font-semibold tracking-tight">
                       {note.title}
                     </h3>
-                    <span className="rounded-md bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary tabular-nums">
+                    <span className="rounded-md bg-brand/10 px-2 py-0.5 text-xs font-medium text-brand-accent tabular-nums">
                       {count} PYQs
                     </span>
                   </div>
                   <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
                     {note.oneLineDefinition}
                   </p>
-                  <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-primary opacity-80 group-hover:opacity-100">
+                  <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-brand-accent opacity-80 group-hover:opacity-100">
                     Open note
                     <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                   </p>

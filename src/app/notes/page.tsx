@@ -60,12 +60,12 @@ export default function NotesIndex() {
             <section>
               <div className="flex items-center justify-between gap-2">
                 <h2 className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-                  <BookOpen className="h-4 w-4 text-primary" aria-hidden />
+                  <BookOpen className="h-4 w-4 text-brand-accent" aria-hidden />
                   {g.displayName}
                 </h2>
                 <Link
                   href={`/notes/${g.slug}`}
-                  className="text-xs font-medium text-primary opacity-80 hover:opacity-100"
+                  className="text-xs font-medium text-brand-accent opacity-80 hover:opacity-100"
                 >
                   All {g.displayName} notes →
                 </Link>
@@ -75,12 +75,12 @@ export default function NotesIndex() {
                   <li key={s.subjectRoute}>
                     <Link
                       href={`/notes/${s.subjectRoute}`}
-                      className="group block h-full rounded-lg border bg-card p-4 transition-colors hover:border-primary/40 hover:bg-primary/5"
+                      className="group block h-full rounded-lg border bg-card p-4 transition-colors hover:border-brand/40 hover:bg-brand/5"
                     >
                       <div className="flex items-center justify-between gap-2">
                         <h3 className="font-semibold tracking-tight">{s.subjectDisplay}</h3>
                         <ArrowRight
-                          className="h-4 w-4 text-primary opacity-60 transition-opacity group-hover:opacity-100"
+                          className="h-4 w-4 text-brand-accent opacity-60 transition-opacity group-hover:opacity-100"
                           aria-hidden
                         />
                       </div>

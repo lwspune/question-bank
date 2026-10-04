@@ -232,7 +232,7 @@ export default async function NotesSubtopicPage({
       <div className="mb-8 flex flex-wrap items-center gap-2 text-xs">
         <Link
           href={base}
-          className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
+          className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-brand/40 hover:bg-brand/5 hover:text-brand-accent"
         >
           <BookOpen className="h-3.5 w-3.5" aria-hidden />
           <span>All {chapterName} notes</span>
@@ -240,7 +240,7 @@ export default async function NotesSubtopicPage({
         {guideHref && (
           <Link
             href={guideHref}
-            className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
+            className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-brand/40 hover:bg-brand/5 hover:text-brand-accent"
           >
             <Compass className="h-3.5 w-3.5" aria-hidden />
             <span>{chapter.subjectDisplay} strategy</span>
@@ -261,8 +261,8 @@ export default async function NotesSubtopicPage({
       />
 
       {note.whyItMatters && (
-        <section className="mb-10 rounded-lg border-l-4 border-primary bg-primary/5 p-5">
-          <p className="text-xs font-semibold uppercase tracking-wide text-primary">
+        <section className="mb-10 rounded-lg border-l-4 border-brand bg-brand/5 p-5">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-accent">
             Why this matters
           </p>
           <p className="mt-2 font-serif text-base leading-relaxed text-foreground">
@@ -287,7 +287,7 @@ export default async function NotesSubtopicPage({
                   href={`#${c.slug}`}
                   className="block rounded px-2 py-1 text-sm text-foreground hover:bg-accent hover:text-accent-foreground"
                 >
-                  <span className="mr-1.5 inline-block w-5 text-right font-semibold tabular-nums text-primary">
+                  <span className="mr-1.5 inline-block w-5 text-right font-semibold tabular-nums text-brand-accent">
                     {i + 1}.
                   </span>
                   {c.name}
@@ -368,7 +368,7 @@ export default async function NotesSubtopicPage({
       )}
 
       {/* Final drill CTA */}
-      <section className="mt-12 rounded-lg border-2 border-primary/40 bg-primary/5 p-6 text-center">
+      <section className="mt-12 rounded-lg border-2 border-brand/40 bg-brand/5 p-6 text-center">
         <h2 className="text-lg font-semibold tracking-tight">
           Drill every past-year question on this subtopic
         </h2>
@@ -402,7 +402,7 @@ export default async function NotesSubtopicPage({
               <li key={r.href}>
                 <Link
                   href={r.href}
-                  className="text-sm text-primary hover:underline"
+                  className="text-sm text-brand-accent hover:underline"
                 >
                   {r.label} →
                 </Link>

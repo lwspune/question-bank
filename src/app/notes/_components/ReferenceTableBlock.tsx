@@ -71,7 +71,7 @@ export default function ReferenceTableBlock({ table, compact = false }: Props) {
                       {cIdx === row.cells.length - 1 && row.pyqExampleId && (
                         <a
                           href={`/browse?ids=${row.pyqExampleId}`}
-                          className="ml-2 inline-flex items-center gap-0.5 rounded-md border border-primary/30 bg-primary/5 px-1.5 py-0.5 align-middle text-[10px] font-medium text-primary hover:bg-primary/10"
+                          className="ml-2 inline-flex items-center gap-0.5 rounded-md border border-brand/30 bg-brand/5 px-1.5 py-0.5 align-middle text-[10px] font-medium text-brand-accent hover:bg-brand/10"
                           aria-label="Featured PYQ for this row"
                           title="Open the past-year question that tests this row"
                         >

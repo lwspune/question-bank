@@ -110,7 +110,7 @@ export default async function NotesSubjectLanding({
 
       <section className="mt-2 grid gap-4 sm:mt-4">
         <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-          <BookOpen className="h-4 w-4 text-primary" aria-hidden />
+          <BookOpen className="h-4 w-4 text-brand-accent" aria-hidden />
           Chapters
         </p>
         <ul className="space-y-3">
@@ -121,18 +121,18 @@ export default async function NotesSubjectLanding({
               <li key={c.slug}>
                 <Link
                   href={`/notes/${subjectRoute}/${c.slug}`}
-                  className="group block rounded-lg border bg-card p-5 transition-colors hover:border-primary/40 hover:bg-primary/5"
+                  className="group block rounded-lg border bg-card p-5 transition-colors hover:border-brand/40 hover:bg-brand/5"
                 >
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <h3 className="text-lg font-semibold tracking-tight">{c.title}</h3>
-                    <span className="rounded-md bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary tabular-nums">
+                    <span className="rounded-md bg-brand/10 px-2 py-0.5 text-xs font-medium text-brand-accent tabular-nums">
                       {count} PYQs · {c.subtopicCount} subtopics
                     </span>
                   </div>
                   <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
                     {c.blurb}
                   </p>
-                  <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-primary opacity-80 group-hover:opacity-100">
+                  <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-brand-accent opacity-80 group-hover:opacity-100">
                     Open chapter notes
                     <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                   </p>

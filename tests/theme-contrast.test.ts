@@ -47,6 +47,30 @@ describe("theme tokens clear WCAG AA in both modes", () => {
   }
 });
 
+/**
+ * Brand-tinted panels (`bg-brand/5`, `bg-brand/10`) sit over the page or a
+ * card. The notes pages moved their callouts onto them (2026-10-04) because a
+ * 5% NAVY tint on the tinted page read as flat grey. Text on those panels must
+ * clear AA too, so check it against the blended colour the browser paints.
+ */
+const blend = (fg: [number, number, number], bg: [number, number, number], alpha: number) =>
+  fg.map((c, i) => Math.round(c * alpha + bg[i] * (1 - alpha))) as [number, number, number];
+
+describe("text on brand-tinted panels clears WCAG AA in both modes", () => {
+  for (const mode of ["light", "dark"] as const) {
+    for (const base of ["background", "card"]) {
+      for (const alpha of [0.05, 0.1]) {
+        for (const text of ["foreground", "muted-foreground", "brand-accent"]) {
+          it(`${mode}: --${text} on brand/${alpha * 100} over --${base}`, () => {
+            const panel = blend(rgb(mode, "brand"), rgb(mode, base), alpha);
+            expect(contrastRatio(rgb(mode, text), panel)).toBeGreaterThanOrEqual(4.5);
+          });
+        }
+      }
+    }
+  }
+});
+
 describe("theme tokens follow the logo", () => {
   it("the light-mode brand fill is the logo's royal blue (#1D4ED8)", () => {
     expect(channelDistance(rgb("light", "brand"), hexToRgb("#1D4ED8"))).toBeLessThanOrEqual(3);

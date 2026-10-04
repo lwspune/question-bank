@@ -84,7 +84,7 @@ export default function NotesProgressControls({
           "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors disabled:opacity-60",
           bookmarked
             ? "border-brand-accent/40 bg-brand/10 text-brand-accent"
-            : "border-input bg-background text-muted-foreground hover:border-primary/40 hover:text-primary"
+            : "border-input bg-background text-muted-foreground hover:border-brand/40 hover:text-brand-accent"
         )}
       >
         {bookmarked ? (
@@ -104,7 +104,7 @@ export default function NotesProgressControls({
           "inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium transition-colors disabled:opacity-60",
           mastered
             ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400"
-            : "border-input bg-background text-muted-foreground hover:border-primary/40 hover:text-primary"
+            : "border-input bg-background text-muted-foreground hover:border-brand/40 hover:text-brand-accent"
         )}
       >
         {mastered ? (

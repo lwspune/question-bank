@@ -46,7 +46,7 @@ export default function ChapterRevisionSheet({ groups }: Props) {
   return (
     <details className="group mt-12 rounded-lg border bg-card">
       <summary className="flex cursor-pointer list-none items-center gap-2 rounded-lg p-5 hover:bg-accent/40">
-        <BookCheck className="h-5 w-5 shrink-0 text-primary" aria-hidden />
+        <BookCheck className="h-5 w-5 shrink-0 text-brand-accent" aria-hidden />
         <div className="flex-1">
           <h2 className="text-lg font-semibold tracking-tight">
             Formula &amp; revision sheet
@@ -77,7 +77,7 @@ export default function ChapterRevisionSheet({ groups }: Props) {
             <div key={g.subtopicHref}>
               <a
                 href={g.subtopicHref}
-                className="inline-flex items-center gap-1 text-sm font-semibold tracking-tight text-foreground hover:text-primary"
+                className="inline-flex items-center gap-1 text-sm font-semibold tracking-tight text-foreground hover:text-brand-accent"
               >
                 {g.subtopicTitle}
                 <ChevronRight className="h-3.5 w-3.5 opacity-60" aria-hidden />
@@ -85,7 +85,7 @@ export default function ChapterRevisionSheet({ groups }: Props) {
 
               {g.summary.formulas.length > 0 && (
                 <div className="mt-3">
-                  <p className="mb-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-primary">
+                  <p className="mb-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-brand-accent">
                     <Sigma className="h-3 w-3" aria-hidden />
                     Formulas ({g.summary.formulas.length})
                   </p>
@@ -93,11 +93,11 @@ export default function ChapterRevisionSheet({ groups }: Props) {
                     {g.summary.formulas.map((f, i) => (
                       <li
                         key={`${f.slug}-${i}`}
-                        className="rounded-md border-l-4 border-primary/50 bg-primary/5 px-3 py-1.5"
+                        className="rounded-md border-l-4 border-brand/50 bg-brand/5 px-3 py-1.5"
                       >
                         <a
                           href={`${g.subtopicHref}#${f.slug}`}
-                          className="text-[11px] font-medium text-muted-foreground hover:text-primary"
+                          className="text-[11px] font-medium text-muted-foreground hover:text-brand-accent"
                         >
                           {f.conceptName} · {f.label}
                         </a>
@@ -112,7 +112,7 @@ export default function ChapterRevisionSheet({ groups }: Props) {
 
               {g.summary.references.length > 0 && (
                 <div className="mt-3">
-                  <p className="mb-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-primary">
+                  <p className="mb-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-brand-accent">
                     <TableProperties className="h-3 w-3" aria-hidden />
                     Reference tables ({g.summary.references.length})
                   </p>
@@ -125,7 +125,7 @@ export default function ChapterRevisionSheet({ groups }: Props) {
                         <summary className="flex cursor-pointer list-none items-center gap-2 px-3 py-1.5 hover:bg-accent/40">
                           <a
                             href={`${g.subtopicHref}#${r.slug}`}
-                            className="text-[11px] font-medium text-muted-foreground hover:text-primary"
+                            className="text-[11px] font-medium text-muted-foreground hover:text-brand-accent"
                           >
                             {r.conceptName}
                           </a>

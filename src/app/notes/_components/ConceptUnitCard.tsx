@@ -729,7 +729,7 @@ export default function ConceptUnitCard({
       className="scroll-mt-20 rounded-xl border bg-card p-6 shadow-sm"
     >
       <header className="mb-5 border-b pb-4">
-        <p className="text-xs font-semibold uppercase tracking-wider text-primary">
+        <p className="text-xs font-semibold uppercase tracking-wider text-brand-accent">
           Concept {index} of {total}
         </p>
         <h2 className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">
@@ -847,7 +847,7 @@ export default function ConceptUnitCard({
               from: backHref,
               fromLabel: backLabel,
             })}
-            className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-primary hover:bg-primary/10"
+            className="inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium text-brand-accent hover:bg-brand/10"
           >
             <Target className="h-3.5 w-3.5" aria-hidden />
             Drill {drillQuestionIds.length} more on {concept.name.toLowerCase()}
