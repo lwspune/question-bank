@@ -11,7 +11,6 @@
  * with the cookie-free anon client, because `createSupabaseServerClient()`
  * reads cookies and would silently de-cache the route.
  */
-import { Suspense } from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { fitTitle } from "@/lib/seo/title";
@@ -234,17 +233,12 @@ export default async function FormulaPage({ params }: Params) {
               No questions are currently listed.
             </p>
           ) : (
-            // QuestionList's bookmark button calls useSearchParams(), which
-            // bails a static prerender out to client rendering. Suspense is the
-            // documented fix, as on the /questions landings.
-            <Suspense fallback={null}>
-              <FilteredQuestions
-                questions={rows}
-                practiceIds={[...practiceIds]}
-                supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
-                resourcesById={resolveResourcesById(rows)}
-              />
-            </Suspense>
+            <FilteredQuestions
+              questions={rows}
+              practiceIds={[...practiceIds]}
+              supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
+              resourcesById={resolveResourcesById(rows)}
+            />
           )}
         </section>
 

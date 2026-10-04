@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
-import Link from "next/link";
 import { Lock, LogIn } from "lucide-react";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import type { PracticeSurface } from "@/lib/questions/practiceBatch";
 import { useGoogleOneTap } from "@/components/auth/useGoogleOneTap";
-import { useSignInHref } from "./useSignInHref";
+import SignInLink from "./SignInLink";
 
 /**
  * Shown in place of an answer once an anon viewer has spent their free reveals
@@ -22,7 +21,6 @@ import { useSignInHref } from "./useSignInHref";
  * It offers Google One Tap too (once a page), like RevealLockedLink.
  */
 export default function RevealSignInPrompt({ surface }: { surface: PracticeSurface }) {
-  const href = useSignInHref();
   const offerOneTap = useGoogleOneTap();
 
   useEffect(() => {
@@ -36,14 +34,13 @@ export default function RevealSignInPrompt({ surface }: { surface: PracticeSurfa
         You&apos;ve used your free answer reveals. Sign in — it&apos;s free — to keep
         checking answers.
       </span>
-      <Link
-        href={href}
+      <SignInLink
         onClick={() => trackFunnelOnce("reveal_wall_signin_click", surface, { surface })}
         className="ml-auto inline-flex items-center gap-1 font-medium text-brand-accent hover:underline"
       >
         <LogIn className="h-3.5 w-3.5" aria-hidden />
         Sign in
-      </Link>
+      </SignInLink>
     </div>
   );
 }
