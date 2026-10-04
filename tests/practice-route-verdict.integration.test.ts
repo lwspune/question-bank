@@ -14,6 +14,7 @@ import { NextRequest } from "next/server";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { mustSignIn } from "./helpers/fixture";
 import { answerDedupeKey } from "@/lib/questions/bankVerdict";
+import { CROWD_REVIEW_RUNS } from "@/lib/celebrate/crowd";
 
 const session = vi.hoisted(() => ({
   user: null as { id: string; email: string } | null,
@@ -30,6 +31,8 @@ const HAS_ENV =
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const STAMP = Date.now();
+/** Marks the crowd fixtures (stats row source_ref, review note) for cleanup. */
+const CROWD_REF = `crowd-test-${STAMP}`;
 const EMAIL = `bank_verdict_${STAMP}@test.local`;
 const PASSWORD = `Pw-${STAMP}-verdict`;
 
@@ -96,6 +99,8 @@ describe.skipIf(!HAS_ENV)("POST /api/activity/practice — bank verdicts", () =>
 
   afterAll(async () => {
     if (!admin || !userId) return;
+    await admin.from("question_item_stats").delete().eq("source_ref", CROWD_REF);
+    await admin.from("question_reviews").delete().eq("note", CROWD_REF);
     await admin.from("user_activity").delete().eq("user_id", userId);
     await admin.from("rate_limits").delete().eq("bucket", `practice:user:${userId}`);
     await admin.auth.admin.deleteUser(userId);
@@ -245,5 +250,50 @@ describe.skipIf(!HAS_ENV)("POST /api/activity/practice — bank verdicts", () =>
     const res = await post({ questionIds: [q.id], surface: "bank", picks: { [q.id]: "E" } });
     expect(res.status).toBe(400);
     expect(await rows(q.id)).toHaveLength(before);
+  });
+
+  it("beat the crowd: a right pick on a CHECKED question most students missed returns its tier", async () => {
+    const q = qs[2];
+    const { data: row, error } = await admin.from("questions").select("content_hash").eq("id", q.id).single();
+    if (error) throw new Error(error.message);
+    const hash = (row as { content_hash: string }).content_hash;
+
+    // 30 attempts, 2 right: 93% wrong, measured on the question as it stands.
+    const { error: sErr } = await admin.from("question_item_stats").insert({
+      question_id: q.id,
+      source: "vault_mock",
+      source_ref: CROWD_REF,
+      seen: 30,
+      attempted: 30,
+      correct: 2,
+      skipped: 0,
+      measured_content_hash: hash,
+      measured_at: new Date().toISOString(),
+    });
+    if (sErr) throw new Error(sErr.message);
+
+    // Not yet checked: no tier, whatever the crowd did.
+    const unchecked = await post({ questionIds: [q.id], surface: "bank", picks: { [q.id]: q.right }, celebrate: true });
+    const before = unchecked.status === 200 ? ((await unchecked.json()) as { crowd?: number }).crowd : undefined;
+    expect(before).toBeUndefined();
+
+    const { error: rErr } = await admin.from("question_reviews").insert({
+      question_id: q.id,
+      reviewed_content_hash: hash,
+      method: "structural_probe",
+      verdict: "confirmed",
+      run_label: CROWD_REVIEW_RUNS[0],
+      note: CROWD_REF,
+    });
+    if (rErr) throw new Error(rErr.message);
+
+    const res = await post({ questionIds: [q.id], surface: "bank", picks: { [q.id]: q.right }, celebrate: true });
+    expect(res.status).toBe(200);
+    expect(((await res.json()) as { crowd?: number }).crowd).toBe(90);
+
+    // A WRONG pick on the same question earns nothing.
+    const wrong = await post({ questionIds: [q.id], surface: "bank", picks: { [q.id]: q.wrong }, celebrate: true });
+    const after = wrong.status === 200 ? ((await wrong.json()) as { crowd?: number }).crowd : undefined;
+    expect(after).toBeUndefined();
   });
 });

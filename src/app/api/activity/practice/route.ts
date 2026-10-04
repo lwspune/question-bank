@@ -41,6 +41,8 @@
  * graded pick, the route awards the student's "N answered" milestone if one is
  * newly reached, and returns it as 200 `{ milestone }`. Once per milestone is
  * the table's dedupe key, not this route's memory (lib/celebrate/service).
+ * The same reply carries `crowd` (70/80/90) when a right answer beat a crowd
+ * on a checked question (lib/celebrate/crowd, 2026-10-04).
  *
  * Otherwise responses stay terse (204/400/401): from sendBeacon nothing reads
  * the body.
@@ -53,6 +55,7 @@ import { checkAndIncrement } from "@/lib/rate-limit";
 import { logActivityBatch, logActivityBatchOnce } from "@/lib/activity/service";
 import { parsePracticeBatch, type BatchPicks } from "@/lib/questions/practiceBatch";
 import { awardAnsweredMilestone } from "@/lib/celebrate/service";
+import { crowdTiers, topTier } from "@/lib/celebrate/crowdService";
 import {
   correctlyAnsweredIds,
   gradePicks,
@@ -131,9 +134,21 @@ export async function POST(request: NextRequest) {
   await logActivityBatchOnce(db, user.id, ladder);
 
   // Read AFTER the writes above, so the answer that crossed the line counts.
+  // `crowd` is "beat the crowd" (lib/celebrate/crowd): the highest tier among
+  // this batch's RIGHT answers, on checked questions only.
   if (parsed.celebrate && verdicts.size > 0) {
-    const milestone = await awardAnsweredMilestone(db, user.id);
-    if (milestone !== null) return NextResponse.json({ milestone }, { status: 200 });
+    const right = correctlyAnsweredIds(verdicts);
+    const [milestone, tiers] = await Promise.all([
+      awardAnsweredMilestone(db, user.id),
+      right.length > 0 ? crowdTiers(right) : Promise.resolve(new Map()),
+    ]);
+    const crowd = topTier(tiers);
+    if (milestone !== null || crowd !== null) {
+      return NextResponse.json(
+        { ...(milestone !== null ? { milestone } : {}), ...(crowd !== null ? { crowd } : {}) },
+        { status: 200 }
+      );
+    }
   }
 
   return new NextResponse(null, { status: 204 });

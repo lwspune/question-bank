@@ -15,6 +15,7 @@ const session = vi.hoisted(() => ({ client: null as unknown }));
 vi.mock("@/lib/supabase/server", () => ({ createSupabaseServerClient: () => session.client }));
 
 import { recordDrillAnswer } from "@/lib/drill/service";
+import { CROWD_REVIEW_RUNS } from "@/lib/celebrate/crowd";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -24,6 +25,7 @@ const HAS_ENV =
 const STAMP = Date.now();
 const EMAIL = `drill_progress_${STAMP}@test.local`;
 const PASSWORD = `Pw-${STAMP}-drill`;
+const CROWD_REF = `crowd-drill-test-${STAMP}`;
 
 type Q = { id: string; right: string; wrong: string };
 
@@ -73,6 +75,8 @@ describe.skipIf(!HAS_ENV)("recordDrillAnswer — progress, fixed count, mileston
 
   afterAll(async () => {
     if (!admin || !userId) return;
+    await admin.from("question_item_stats").delete().eq("source_ref", CROWD_REF);
+    await admin.from("question_reviews").delete().eq("note", CROWD_REF);
     await admin.from("user_activity").delete().eq("user_id", userId);
     await admin.auth.admin.deleteUser(userId);
   });
@@ -112,5 +116,37 @@ describe.skipIf(!HAS_ENV)("recordDrillAnswer — progress, fixed count, mileston
     expect(first?.milestone).toBe(10);
     const second = await recordDrillAnswer(qs[2].id, qs[2].wrong);
     expect(second?.milestone).toBeNull();
+  });
+
+  it("carries the crowd tier on a right answer to a checked question most students missed", async () => {
+    const q = qs[1];
+    const { data: row, error } = await admin.from("questions").select("content_hash").eq("id", q.id).single();
+    if (error) throw new Error(error.message);
+    const hash = (row as { content_hash: string }).content_hash;
+    const { error: sErr } = await admin.from("question_item_stats").insert({
+      question_id: q.id,
+      source: "vault_mock",
+      source_ref: CROWD_REF,
+      seen: 40,
+      attempted: 40,
+      correct: 10,
+      skipped: 0,
+      measured_content_hash: hash,
+      measured_at: new Date().toISOString(),
+    });
+    if (sErr) throw new Error(sErr.message);
+    const { error: rErr } = await admin.from("question_reviews").insert({
+      question_id: q.id,
+      reviewed_content_hash: hash,
+      method: "structural_probe",
+      verdict: "confirmed",
+      run_label: CROWD_REVIEW_RUNS[0],
+      note: CROWD_REF,
+    });
+    if (rErr) throw new Error(rErr.message);
+
+    // 75% wrong → the 70 tier.
+    expect((await recordDrillAnswer(q.id, q.right))?.crowd).toBe(70);
+    expect((await recordDrillAnswer(q.id, q.wrong))?.crowd).toBeNull();
   });
 });

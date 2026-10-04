@@ -11,7 +11,8 @@ import type { AnswerOutcome, ServedQuestion } from "@/lib/drill/service";
 import { invalidatePulse } from "@/lib/viewer/usePulse";
 import { fixedMessage, progressLine } from "@/lib/drill/progress";
 import { milestoneMessage } from "@/lib/celebrate/milestones";
-import { celebrate } from "@/components/celebrate/celebrate";
+import { crowdMessage } from "@/lib/celebrate/crowd";
+import { celebrateInTurn } from "@/components/celebrate/celebrate";
 
 export type DrillScope = { attemptId: string; mockTitle: string; mockSlug: string } | null;
 
@@ -76,13 +77,13 @@ export default function DrillRunner({
       }
       const verdict = (await res.json()) as AnswerOutcome;
       setVerdicts((prev) => ({ ...prev, [question.id]: { ...verdict, chose: label } }));
-      // A fix is the rarer and bigger moment, so it goes first; a milestone
-      // reached on the same answer follows once the fix has had its turn
-      // (celebrations share one slot and replace each other).
+      // A fix is the student's own progress, so it goes first; beating the
+      // crowd and a milestone follow in turn (celebrations share one slot).
       const messages: string[] = [];
       if (verdict.progress === "fixed" && verdict.fixedTotal !== null) messages.push(fixedMessage(verdict.fixedTotal));
+      if (verdict.crowd !== null) messages.push(crowdMessage(verdict.crowd));
       if (verdict.milestone !== null) messages.push(milestoneMessage(verdict.milestone));
-      messages.forEach((m, i) => setTimeout(() => celebrate(m), i * 3200));
+      celebrateInTurn(messages);
       // The header badge counts this pool; a recorded answer is one of the two
       // moments it changes, so refresh it now rather than at the next page.
       invalidatePulse();
