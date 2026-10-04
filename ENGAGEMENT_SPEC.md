@@ -275,6 +275,7 @@ one stick.
 | N answered | the bank and board (after a flush), the drill, the mock result page | 10, 20, 50, then every 50. ANSWERED, not opened. Awarded once by the server (`milestone_reached`, dedupe key); a mock that jumps several shows only the highest. `lib/celebrate/milestones.ts`, `get_own_answer_totals` (0132) |
 | Fixed | the drill | "Fixed: right twice since you missed it. N questions fixed so far." The fixing rule is unchanged (two right in a row from any surface; user, 2026-10-04), so the copy never says "for good". `lib/drill/progress.ts` |
 | Answered · Right · Fixed | `/me` week strip, the avatar menu | Shown together, never a bare count; hidden until the first answer. Pulse `totals` |
+| Beat the crowd | the bank, board, question of the day, drill | "Nice! / Smart! / Genius! 70% / 80% / 90%+ got it wrong, you got it right." Right answers only, on a question a person has CHECKED (crowd review run, hash unchanged), stats measured on the current version, n >= 20; signed-in only (the server decides). 77 questions qualify on day one. `lib/celebrate/crowd.ts`, `npm run itemstats:crowd-candidates` |
 | Question of the day | top of `/me`, under the week strip | One PYQ MCQ per exam per IST day, the same for everyone; graded (surface `daily`), a miss feeds the drill. Replaced a proposed "thought of the day". `lib/daily/` |
 
 Board picks are graded from the same day (the first tap on an MCQ), so board
@@ -288,6 +289,7 @@ before and after; the share of answering students who see a run;
 `milestone_reached` rows; question-of-the-day answers against `/me` views;
 7-day return per exam segment.
 
-**Queued for analysis (user, 2026-10-04):** "beat the crowd" messages when a
-student gets right a question that 70%, 80% or 90% of students got wrong
-("Nice!", "Smart!", "Genius"), from the pooled per-question rates.
+**Beat the crowd needs its review run kept up.** A question most students
+get wrong is where a wrong key hides (the 2026-10-04 check fixed 2 keys and 1
+stem, and left 3 printed-vs-intended items to the owner), so a newly hard
+question carries no message until someone checks it.
