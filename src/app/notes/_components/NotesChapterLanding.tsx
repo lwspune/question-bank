@@ -322,23 +322,31 @@ export default async function NotesChapterLanding({ chapter }: Props) {
               <li key={slug}>
                 <Link
                   href={`${base}/${slug}`}
-                  className="group block rounded-lg border bg-card p-5 transition-colors hover:border-brand/40 hover:bg-brand/5"
+                  className="group flex gap-4 rounded-xl border bg-card p-5 transition-colors hover:border-brand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <h3 className="text-lg font-semibold tracking-tight">
-                      {note.title}
-                    </h3>
-                    <span className="rounded-md bg-brand/10 px-2 py-0.5 text-xs font-medium text-brand-accent tabular-nums">
-                      {count} PYQs
-                    </span>
+                  <span
+                    aria-hidden
+                    className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand/10 text-sm font-bold tabular-nums text-brand-accent"
+                  >
+                    {meta.subtopicOrder.indexOf(slug) + 1}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                      <h3 className="text-base font-semibold tracking-tight sm:text-lg">
+                        {note.title}
+                      </h3>
+                      <span className="text-xs tabular-nums text-muted-foreground">
+                        <span className="font-semibold text-foreground">{count}</span> PYQs
+                      </span>
+                    </div>
+                    <p className="mt-1.5 font-serif text-sm leading-relaxed text-muted-foreground">
+                      {note.oneLineDefinition}
+                    </p>
                   </div>
-                  <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
-                    {note.oneLineDefinition}
-                  </p>
-                  <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-brand-accent opacity-80 group-hover:opacity-100">
-                    Open note
-                    <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-                  </p>
+                  <ArrowRight
+                    className="mt-1.5 h-4 w-4 shrink-0 text-brand-accent transition-transform group-hover:translate-x-0.5"
+                    aria-hidden
+                  />
                 </Link>
               </li>
             );
@@ -346,12 +354,15 @@ export default async function NotesChapterLanding({ chapter }: Props) {
         </ul>
       </section>
 
-      <ConceptWeightTable
-        groups={conceptWeightGroups}
-        chapterTotalPyqs={chapterTotalPyqs}
-      />
-
-      <ChapterRevisionSheet groups={revisionGroups} />
+      {/* The chapter's two study tools, as cards rather than grey rows. The
+          revision sheet leads: it is the one a student comes back for. */}
+      <div className="mt-10 space-y-4">
+        <ChapterRevisionSheet groups={revisionGroups} />
+        <ConceptWeightTable
+          groups={conceptWeightGroups}
+          chapterTotalPyqs={chapterTotalPyqs}
+        />
+      </div>
 
       {/* The way in, then a real paper to test the chapter on. */}
       <NotesKeepGoing next={chapterStart(chapter)} prev={null} />

@@ -3,6 +3,8 @@ import WorkedExampleCard from "@/app/guide/_components/WorkedExampleCard";
 import { PresentRegistry } from "@/components/present/PresentRegistry";
 import type { WorkedExample } from "@/lib/guide/loadWorkedExamples";
 import CheckpointSelfScore from "./CheckpointSelfScore";
+import BlockText from "@/components/math/BlockText";
+import KatexRenderer from "@/components/math/KatexRenderer";
 
 type Props = {
   /** Resolved bank rows for the 5 checkpoint ids, in interleaved order. */
@@ -68,5 +70,34 @@ export default function SubtopicMasteryCheckpoint({
         subjectRoute={subjectRoute}
       />
     </section>
+  );
+}
+
+/**
+ * A still, non-interactive look at the mastery check's first question, shown
+ * blurred behind the sign-in wall (PracticeGate `preview`). No buttons: it is
+ * decoration, and the real check opens on sign-in.
+ */
+export function CheckpointPreview({ question, total }: { question: WorkedExample; total: number }) {
+  return (
+    <div className="space-y-3">
+      <p className="flex items-center gap-2 text-sm font-semibold text-emerald-800 dark:text-emerald-200">
+        <Target className="h-4 w-4" aria-hidden />
+        Mastery check: {total} questions
+      </p>
+      <div className="font-serif text-[15px] leading-relaxed">
+        <BlockText text={question.text} />
+      </div>
+      <ol className="space-y-2">
+        {question.options.map((o) => (
+          <li key={o.label} className="flex items-center gap-3 rounded-xl border-[1.5px] px-3 py-2.5 font-serif text-[15px]">
+            <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-accent/10 font-sans text-xs font-bold text-brand-accent">
+              {o.label}
+            </span>
+            <KatexRenderer text={o.text} />
+          </li>
+        ))}
+      </ol>
+    </div>
   );
 }

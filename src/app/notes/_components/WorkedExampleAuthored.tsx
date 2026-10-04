@@ -24,7 +24,9 @@ export default function WorkedExampleAuthored({ example, presentMode }: Props) {
   return (
     <div
       className={
-        "rounded-lg border bg-card " +
+        // A soft panel, not a bordered box: it sits inside the concept card,
+        // and a border here was the third nested frame on every concept.
+        "rounded-xl bg-muted/50 " +
         (presentMode ? "p-8" : "p-5")
       }
     >

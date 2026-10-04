@@ -210,6 +210,14 @@ a[data-nav-pending] {
     color: hsl(var(--brand-accent));
   }
   .dark .icon-tile { background: linear-gradient(135deg, hsl(224 50% 24%), hsl(222 55% 30%)); }
+  /* The frame every /notes diagram sits in (ConceptUnitCard wraps each one).
+     The 213 diagrams draw their own box, most capped at max-w-sm/md, so they
+     sat small in a wide card with 12px captions. Set once here instead of in
+     213 files: the narrow ones widen a little (the SVG and its labels scale
+     with them) and captions get a readable size. The content hues stay. */
+  .notes-figure > .max-w-sm,
+  .notes-figure > .max-w-md { max-width: 32rem; }
+  .notes-figure p.text-xs:not(.uppercase) { font-size: 0.8125rem; line-height: 1.55; }
   /* Section titles: a short blue-to-cyan bar before the text. */
   .section-title { display: flex; align-items: center; gap: 0.5rem; }
   .section-title::before {

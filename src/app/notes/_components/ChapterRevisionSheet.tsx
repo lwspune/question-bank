@@ -44,9 +44,11 @@ export default function ChapterRevisionSheet({ groups }: Props) {
     return null;
 
   return (
-    <details className="group mt-12 rounded-lg border bg-card">
-      <summary className="flex cursor-pointer list-none items-center gap-2 rounded-lg p-5 hover:bg-accent/40">
-        <BookCheck className="h-5 w-5 shrink-0 text-brand-accent" aria-hidden />
+    <details className="group rounded-2xl border bg-card shadow-sm">
+      <summary className="flex cursor-pointer list-none items-center gap-4 rounded-2xl p-5 hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+        <span className="icon-tile inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
+          <BookCheck className="h-5 w-5" aria-hidden />
+        </span>
         <div className="flex-1">
           <h2 className="text-lg font-semibold tracking-tight">
             Formula &amp; revision sheet

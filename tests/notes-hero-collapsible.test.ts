@@ -111,6 +111,21 @@ describe("ExpandableProse — CSS hides the tail, JS never withholds it", () => 
     expect(src).toContain("sm:line-clamp-4");
   });
 
+  it("mobileOnly clamps 3 lines on a phone and nothing from sm up, button phone-only", () => {
+    // Used by a topic page's "Why this matters" (2026-10-04): ~16 phone lines
+    // stood between the hero and the first concept. On a wider screen it is
+    // 6-8 lines and stays whole, so the control must not show there either.
+    const src = read(...PROSE);
+    expect(src).toContain("mobileOnly");
+    expect(src).toContain("line-clamp-3 sm:line-clamp-none");
+    expect(src).toMatch(/mobileOnly\s*&&\s*"sm:hidden"/);
+  });
+
+  it("the topic page clamps whyItMatters on phones only", () => {
+    const src = read("src", "app", "notes", "_components", "NotesSubtopicPage.tsx");
+    expect(src).toMatch(/<ExpandableProse[\s\S]*?text=\{note\.whyItMatters\}[\s\S]*?mobileOnly/);
+  });
+
   it("the control is a real disclosure button, not a styled div", () => {
     const src = read(...PROSE);
     expect(src).toContain("<button");
