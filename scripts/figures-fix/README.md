@@ -101,7 +101,7 @@ with a manifest note that starts "REDRAWN". A row may also carry only a
 | `neet-pariksha-13136` (ParikshaGruh 13136 Thermodynamics; cropped from inside each question picture) | 5 + 4 option diagrams | 2026-10-03 |
 | `mpsc-group-bc` (MPSC Group B & C prelims: a pie chart and four number-in-circle puzzles; table stripped from English AND the Marathi translation via `stripTranslation`; the figure box and Marathi stem also go into `scripts/mpsc/data/*.merged.json`, the English stem there is left as committed because it feeds content_hash) | 5 | 2026-10-03 |
 | `mh-hsc-12-geo-*` (Balbharati Std XII Geography, 18 activity sets) | 87 (passages cut back to the book's own instruction; Fig 8.5's typed ad entries KEPT, the printed ad is unreadable on a phone; answer check found 2 mismatches, listed in the batch note) | 2026-10-03 |
-| `mh-ssc-10-*` (Balbharati Class 10: Statistics, Mensuration, Similarity, Effects of Electric Current, Heredity) | 19 (Ex Q11(c) left out: the book prints no figure (c)) | 2026-10-03 |
+| `mh-ssc-10-*` (Balbharati Class 10: Statistics, Mensuration, Similarity, Effects of Electric Current, Heredity) | 19 (Ex Q11(c) fixed separately: its figure is at the top of the next column) | 2026-10-03 |
 | `mh-sb-9-triangles-3-4`, `mh-sb-11-maths-figures`, `mh-sb-11-semiconductors`, `mh-hsc-12-maths-vectors`, `mh-hsc-12-physics-magnetic` (Balbharati Class 9 / 11 / 12) | 11 (a passage that was all description is cleared to NULL) | 2026-10-03 |
 | `nda-21aug-circuits`, `nda-2020-i-maths-venn`, `nda-maths-practice-figures` (NDA test paper, NDA 2020-I Maths, practice workbook) | 7 (Sets Q22: transcription error fixed, see batch note) | 2026-10-03 |
 | `foundation-carbon-1-options`, `foundation-matter-2`, `foundation-human-eye-1` (Foundation worksheets; option pictures from the Word original where the PDF dropped them) | 4 + 11 option pictures (prism option (d) kept as text: not in the source) | 2026-10-03 |
@@ -111,3 +111,4 @@ with a manifest note that starts "REDRAWN". A row may also carry only a
 | `balbharati-group-c` (Balbharati Class 9/10/11/12; answerable rows, figure only) | 28 rows, 24 figures (Electric Current Ex Q.4(ix)/(x) left out: their figure is the colour table already in the text) | 2026-10-03 |
 | `cbse12-pyq-group-c` (CBSE Class 12 Maths board papers 2023/2026; case studies + one vector figure) | 18 rows, 6 figures | 2026-10-03 |
 | `group-c-misc` (MHT-CET 2023/2025 and Foundation Word originals, NDA trig workbook) | 10 (JEE 24 Jan 2023 Q104 left: no figure in its source) | 2026-10-03 |
+| `mh-ssc-10-effects-q11c` (Effects of Electric Current Ex Q11(c), a DC generator; figure at the top of the right-hand column) | 1 | 2026-10-04 |
