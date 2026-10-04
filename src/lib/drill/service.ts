@@ -17,6 +17,8 @@ import { composeDailySet, fillUnseen, loadOwnPool } from "./compose";
 import { fixedCount, questionState, scopeToAttempt, selectDrill, DRILL_SIZE, type DueQuestion } from "./select";
 import { answerProgress, type AnswerProgress } from "./progress";
 import { awardAnsweredMilestone } from "@/lib/celebrate/service";
+import { crowdTiers } from "@/lib/celebrate/crowdService";
+import type { CrowdTier } from "@/lib/celebrate/crowd";
 import {
   gradeDrillAnswer,
   hasPriorWrong,
@@ -118,6 +120,8 @@ export type AnswerOutcome = DrillVerdict & {
   fixedTotal: number | null;
   /** An "N answered" milestone this answer newly reached, else null. */
   milestone: number | null;
+  /** "Beat the crowd" tier for a right answer on a checked question, else null. */
+  crowd: CrowdTier | null;
 };
 
 /** The ladder total, alongside the due pool, for the pulse (2026-10-04). Same
@@ -189,9 +193,12 @@ export async function recordDrillAnswer(
       console.error("drill progress read failed", e);
     }
   }
-  const milestone = await awardAnsweredMilestone(db, user.id);
+  const [milestone, tiers] = await Promise.all([
+    awardAnsweredMilestone(db, user.id),
+    verdict.correct ? crowdTiers([questionId]) : Promise.resolve(new Map<string, CrowdTier>()),
+  ]);
 
-  return { ...verdict, recorded: true, progress, fixedTotal, milestone };
+  return { ...verdict, recorded: true, progress, fixedTotal, milestone, crowd: tiers.get(questionId) ?? null };
 }
 
 /**

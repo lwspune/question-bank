@@ -8,7 +8,8 @@ import {
   type PracticeSurface,
 } from "@/lib/questions/practiceBatch";
 import { milestoneMessage } from "@/lib/celebrate/milestones";
-import { celebrate } from "@/components/celebrate/celebrate";
+import { crowdMessage, type CrowdTier } from "@/lib/celebrate/crowd";
+import { celebrateInTurn } from "@/components/celebrate/celebrate";
 import { invalidatePulse } from "@/lib/viewer/usePulse";
 
 /**
@@ -36,9 +37,9 @@ import { invalidatePulse } from "@/lib/viewer/usePulse";
  * because a normal fetch is cancelled during unload; it is also why the payload
  * is a Blob with an explicit JSON type rather than a bare string.
  *
- * MILESTONES (2026-10-04). A debounced flush that carries a pick asks the
- * server to check the student's "N answered" milestone (`celebrate: true`) and
- * reads the reply; a 200 carries a newly awarded milestone to show. The
+ * MILESTONES AND THE CROWD (2026-10-04). A debounced flush that carries a pick
+ * asks the server for celebrations (`celebrate: true`) and reads the reply; a
+ * 200 carries a newly awarded milestone and/or a "beat the crowd" tier. The
  * page-hide beacon never asks — nobody would see the message, and an award is
  * spent once shown. A milestone crossed on a beacon flush is awarded by the
  * next flush that asks, since the award is "the highest reached, if new".
@@ -46,6 +47,10 @@ import { invalidatePulse } from "@/lib/viewer/usePulse";
 
 const ENDPOINT = "/api/activity/practice";
 const FLUSH_DEBOUNCE_MS = 5000;
+/** Sooner when a tapped answer is queued, so a "beat the crowd" message lands
+ *  while the student is still looking at the question. Picks are seconds
+ *  apart, so this is still about one request per answer, as before. */
+const PICK_FLUSH_DEBOUNCE_MS = 1500;
 
 const queues = new Map<PracticeSurface, string[]>();
 /** The option tapped, for reveals that came from a tap (bank verdicts,
@@ -109,11 +114,12 @@ function send(json: string, useBeacon: boolean): void {
       .then(async (res) => {
         // 204 is the normal reply; only a 200 carries a milestone.
         if (res.status !== 200) return;
-        const reply = (await res.json()) as { milestone?: unknown };
-        if (typeof reply.milestone === "number") {
-          celebrate(milestoneMessage(reply.milestone));
-          invalidatePulse();
-        }
+        const reply = (await res.json()) as { milestone?: unknown; crowd?: unknown };
+        const messages: string[] = [];
+        if (reply.crowd === 70 || reply.crowd === 80 || reply.crowd === 90) messages.push(crowdMessage(reply.crowd as CrowdTier));
+        if (typeof reply.milestone === "number") messages.push(milestoneMessage(reply.milestone));
+        celebrateInTurn(messages);
+        if (typeof reply.milestone === "number") invalidatePulse();
       })
       .catch(() => {
         /* a lost practice signal is not worth surfacing to a student */
@@ -176,7 +182,7 @@ export function recordPractice(
     return;
   }
   if (timer) clearTimeout(timer);
-  timer = setTimeout(() => flush(false), FLUSH_DEBOUNCE_MS);
+  timer = setTimeout(() => flush(false), chose ? PICK_FLUSH_DEBOUNCE_MS : FLUSH_DEBOUNCE_MS);
 }
 
 /** Test/diagnostic hook — not used by the app. Totals every surface's queue. */

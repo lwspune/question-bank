@@ -19,3 +19,14 @@ const CELEBRATION_ID = "celebration";
 export function celebrate(message: string): void {
   toast.success(message, { id: CELEBRATION_ID, duration: 3000 });
 }
+
+/** Gap between celebrations that land together, so each gets its own turn. */
+const SEQUENCE_GAP_MS = 3200;
+
+/** Several celebrations from one answer, shown one after another, in order. */
+export function celebrateInTurn(messages: readonly string[]): void {
+  messages.forEach((m, i) => {
+    if (i === 0) celebrate(m);
+    else setTimeout(() => celebrate(m), i * SEQUENCE_GAP_MS);
+  });
+}
