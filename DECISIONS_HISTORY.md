@@ -49,6 +49,8 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 **Verified.** Unit tests for every pure core; integration tests against the test project for the practice route (board graded, guide not, milestone once, totals RPC = the rows) and for `recordDrillAnswer` (rested → fixed with count 1 → right → wrong → milestone once). Typecheck and lint clean. **Not verified: the render.** Every celebration appears only after a tap, /me and /drill are auth-gated, and the repo has no DOM tests, so how the toasts and the card look on a phone is the user's check.
 
+**V says it (same day, user).** Every line was rewritten in V's voice and moved from the top-of-screen toast to V's bubble above the launcher (`components/chat/VSays.tsx`): the toast is where system notices and errors live, so praise there reads as one. Taps pass through the bubble (only its close button is live) and it goes in 3 s. The toast stays as the fallback where V is not mounted (drill, mock runner) or its chat is open; the drill shows V inside its answer panel (`drillVSays`). A message that arrives before V mounts (the result page fires on mount) waits 800 ms for V. Mockups: https://claude.ai/artifact/DgzUmLDEjos9GUQ355aXpT.
+
 **Read it** about 4 weeks after the push: signed-in bank answers per session before/after, the share of answering students who see a run, `milestone_reached` rows, question-of-the-day answers (`surface='daily'`) against /me views, and 7-day return per exam segment.
 
 **2026-10-04 (fifth) — Dead taps: slow taps are now measured, and a question card redraws only when its own lock changes (branch `perf/dead-taps`, no migration).**

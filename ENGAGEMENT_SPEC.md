@@ -281,8 +281,19 @@ one stick.
 Board picks are graded from the same day (the first tap on an MCQ), so board
 misses feed the drill and count as answered.
 
-**One message at a time:** all celebrations share one toast slot and replace
-each other; nothing blocks the next question.
+**V says every celebration (user, 2026-10-04).** The lines are V speaking
+("3 in a row on Probability! Keep going.", "Fixed! That's 24 you've fixed.")
+and arrive in V's speech bubble above V's launcher, not the top-of-screen
+toast, so praise does not share a channel with system notices and errors
+(those stay on the toast). Taps go through the bubble; only its close button
+catches one, and it goes after 3 seconds. Where V is not mounted (the drill,
+the mock runner) or its chat is open, the toast is the fallback; on the drill V
+speaks inside the answer panel instead (`drillVSays`). V laughs at a win (a
+run, a fix, beating the crowd) and talks otherwise. Mockups and every line:
+https://claude.ai/artifact/DgzUmLDEjos9GUQ355aXpT
+
+**One message at a time:** V shows the latest; several from one answer take
+turns 3.2 s apart.
 
 **Read it about 4 weeks after the push:** signed-in bank answers per session,
 before and after; the share of answering students who see a run;
