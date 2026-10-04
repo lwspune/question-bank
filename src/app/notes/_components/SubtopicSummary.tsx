@@ -39,7 +39,7 @@ export default function SubtopicSummary({ note }: Props) {
     <section className="mt-12 rounded-lg border bg-card p-6">
       <header className="mb-5 flex items-start gap-2">
         <BookCheck
-          className="mt-0.5 h-5 w-5 shrink-0 text-primary"
+          className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent"
           aria-hidden
         />
         <div>
@@ -55,7 +55,7 @@ export default function SubtopicSummary({ note }: Props) {
 
       {formulas.length > 0 && (
         <div className="mb-6">
-          <p className="mb-3 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-primary">
+          <p className="mb-3 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-brand-accent">
             <Sigma className="h-3.5 w-3.5" aria-hidden />
             Formulas ({formulas.length})
           </p>
@@ -63,11 +63,11 @@ export default function SubtopicSummary({ note }: Props) {
             {formulas.map((f, i) => (
               <li
                 key={`${f.slug}-${i}`}
-                className="rounded-md border-l-4 border-primary/60 bg-primary/5 px-4 py-2"
+                className="rounded-md border-l-4 border-brand/60 bg-brand/5 px-4 py-2"
               >
                 <a
                   href={`#${f.slug}`}
-                  className="text-xs font-medium text-muted-foreground hover:text-primary"
+                  className="text-xs font-medium text-muted-foreground hover:text-brand-accent"
                 >
                   {f.conceptName}
                 </a>
@@ -85,7 +85,7 @@ export default function SubtopicSummary({ note }: Props) {
 
       {references.length > 0 && (
         <div className="mb-6">
-          <p className="mb-3 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-primary">
+          <p className="mb-3 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-brand-accent">
             <TableProperties className="h-3.5 w-3.5" aria-hidden />
             Reference tables ({references.length})
           </p>
@@ -98,7 +98,7 @@ export default function SubtopicSummary({ note }: Props) {
                 <summary className="flex cursor-pointer list-none items-center gap-2 px-4 py-2 hover:bg-accent/40">
                   <a
                     href={`#${r.slug}`}
-                    className="text-xs font-medium text-muted-foreground hover:text-primary"
+                    className="text-xs font-medium text-muted-foreground hover:text-brand-accent"
                   >
                     {r.conceptName}
                   </a>
@@ -136,7 +136,7 @@ export default function SubtopicSummary({ note }: Props) {
                 </div>
                 <a
                   href={`#${t.slug}`}
-                  className="ml-auto text-[11px] text-muted-foreground hover:text-amber-700 dark:hover:text-amber-300 whitespace-nowrap"
+                  className="ml-auto text-[11px] text-muted-foreground hover:text-amber-700 dark:hover:text-amber-300 min-w-0 max-w-full text-right"
                 >
                   → {t.conceptName}
                 </a>

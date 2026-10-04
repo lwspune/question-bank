@@ -64,7 +64,7 @@ export default function ConceptWeightTable({ groups, chapterTotalPyqs }: Props) 
           <div key={g.subtopicHref}>
             <a
               href={g.subtopicHref}
-              className="inline-flex items-center gap-1 text-sm font-semibold tracking-tight text-foreground hover:text-primary"
+              className="inline-flex items-center gap-1 text-sm font-semibold tracking-tight text-foreground hover:text-brand-accent"
             >
               {g.subtopicTitle}
               <ChevronRight className="h-3.5 w-3.5 opacity-60" aria-hidden />

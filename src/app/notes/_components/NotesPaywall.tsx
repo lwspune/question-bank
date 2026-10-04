@@ -22,15 +22,15 @@ export default function NotesPaywall({
   return (
     <section
       aria-label="Premium content"
-      className="my-10 overflow-hidden rounded-xl border-2 border-primary/30 bg-gradient-to-b from-primary/5 to-background"
+      className="my-10 overflow-hidden rounded-xl border-2 border-brand/30 bg-gradient-to-b from-brand/5 to-background"
     >
       <div className="flex flex-col items-center gap-4 p-8 text-center">
-        <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+        <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand-accent">
           <Lock className="h-5 w-5" aria-hidden />
         </span>
         <div>
           <h2 className="flex items-center justify-center gap-2 text-lg font-semibold tracking-tight">
-            <Sparkles className="h-4 w-4 text-primary" aria-hidden />
+            <Sparkles className="h-4 w-4 text-brand-accent" aria-hidden />
             {lockedCount > 0
               ? `${lockedCount} more concept${lockedCount === 1 ? "" : "s"} + practice locked`
               : "Premium content locked"}

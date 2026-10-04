@@ -17,13 +17,13 @@ export default function FormulaBlock({ formula, presentMode }: Props) {
     <div
       className={
         presentMode
-          ? "rounded-xl border-2 border-primary/40 bg-primary/5 p-8"
-          : "rounded-lg border-l-4 border-primary bg-primary/5 p-4"
+          ? "rounded-xl border-2 border-brand/40 bg-brand/5 p-8"
+          : "rounded-lg border-l-4 border-brand bg-brand/5 p-4"
       }
     >
       <p
         className={
-          "flex items-center gap-1.5 font-semibold uppercase tracking-wide text-primary " +
+          "flex items-center gap-1.5 font-semibold uppercase tracking-wide text-brand-accent " +
           (presentMode ? "text-base sm:text-lg" : "text-xs")
         }
       >

@@ -39,6 +39,7 @@ import {
   type ExamHomeModel,
 } from "@/lib/exam/examHome";
 import { fitTitle } from "@/lib/seo/title";
+import { withArticle } from "@/lib/text/article";
 
 const SITE_URL = "https://www.pyqvault.com";
 
@@ -99,7 +100,7 @@ export default async function ExamHomePage({ params }: Params) {
   const quickLinks = [
     model.links.mocks && {
       href: model.links.mocks,
-      label: `Sit a ${model.displayName} paper as a timed mock`,
+      label: `Sit ${withArticle(model.displayName)} paper as a timed mock`,
       Icon: ClipboardCheck,
     },
     model.links.notes && {

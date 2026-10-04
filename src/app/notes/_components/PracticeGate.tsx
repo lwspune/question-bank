@@ -66,8 +66,8 @@ function PracticeSignInWall({
 
   if (variant === "compact") {
     return (
-      <div className="flex flex-wrap items-center gap-2 rounded-md border border-dashed border-primary/30 bg-primary/5 px-3 py-2 text-sm">
-        <Lock className="h-3.5 w-3.5 shrink-0 text-primary" aria-hidden />
+      <div className="flex flex-wrap items-center gap-2 rounded-md border border-dashed border-brand/30 bg-brand/5 px-3 py-2 text-sm">
+        <Lock className="h-3.5 w-3.5 shrink-0 text-brand-accent" aria-hidden />
         <span className="text-muted-foreground">
           Sign in to {label} — free, and it tracks your progress.
         </span>
@@ -84,10 +84,10 @@ function PracticeSignInWall({
   return (
     <section
       aria-label="Sign in to practice"
-      className="my-8 overflow-hidden rounded-xl border-2 border-dashed border-primary/30 bg-gradient-to-b from-primary/5 to-background"
+      className="my-8 overflow-hidden rounded-xl border-2 border-dashed border-brand/30 bg-gradient-to-b from-brand/5 to-background"
     >
       <div className="flex flex-col items-center gap-4 p-8 text-center">
-        <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+        <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-brand/10 text-brand-accent">
           <Lock className="h-5 w-5" aria-hidden />
         </span>
         <div>

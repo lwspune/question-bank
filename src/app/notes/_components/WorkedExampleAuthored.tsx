@@ -30,7 +30,7 @@ export default function WorkedExampleAuthored({ example, presentMode }: Props) {
     >
       <p
         className={
-          "flex items-center gap-1.5 font-semibold uppercase tracking-wide text-primary " +
+          "flex items-center gap-1.5 font-semibold uppercase tracking-wide text-brand-accent " +
           (presentMode ? "text-base sm:text-lg" : "text-xs")
         }
       >

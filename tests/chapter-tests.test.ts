@@ -90,10 +90,15 @@ describe("mockCtaCopy", () => {
     expect(mockCtaCopy({ kind: "paper", ...PAPER })).toEqual({
       title: "Test yourself on a real paper",
       body: "Sit a past MHT-CET paper, timed and marked the way the exam marks it. You see your score and every answer the moment you finish. Free to start.",
-      button: "Sit a MHT-CET past paper",
+      button: "Sit an MHT-CET past paper",
       bar: "Sit a real MHT-CET paper, timed.",
-      short: "Sit a MHT-CET paper as a timed mock",
+      short: "Sit an MHT-CET paper as a timed mock",
     });
+  });
+
+  it("picks a or an by how the exam name is said", () => {
+    expect(mockCtaCopy({ kind: "paper", href: "/mock/exam/nda", examDisplay: "NDA" }).button).toBe("Sit an NDA past paper");
+    expect(mockCtaCopy({ kind: "paper", href: "/mock/exam/cds", examDisplay: "CDS" }).button).toBe("Sit a CDS past paper");
   });
 
   it("names the chapter, its size and its time for a chapter test", () => {
