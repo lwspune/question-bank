@@ -166,13 +166,77 @@ describe.skipIf(!HAS_ENV)("POST /api/activity/practice — bank verdicts", () =>
     expect(after[after.length - 1].metadata).toEqual({ surface: "bank" });
   });
 
-  it("does not grade picks from other surfaces — the bank only, for now", async () => {
+  it("does not grade a pick inside a guide worked example — a reveal, not an answer", async () => {
     const q = qs[0];
     const before = (await rows(q.id)).length;
-    await post({ questionIds: [q.id], surface: "board", picks: { [q.id]: q.wrong } });
+    await post({ questionIds: [q.id], surface: "guide", picks: { [q.id]: q.wrong } });
     const after = await rows(q.id);
     expect(after).toHaveLength(before + 1);
-    expect(after[after.length - 1]).toMatchObject({ kind: "question_practiced", metadata: { surface: "board" } });
+    expect(after[after.length - 1]).toMatchObject({ kind: "question_practiced", metadata: { surface: "guide" } });
+  });
+
+  it("grades a board pick (2026-10-04): the miss feeds the drill under the board's own key", async () => {
+    const q = qs[0];
+    const res = await post({ questionIds: [q.id], surface: "board", picks: { [q.id]: q.wrong } });
+    expect(res.status).toBe(204);
+    const after = await rows(q.id);
+    expect(after.find((x) => x.kind === "question_practiced" && x.metadata.surface === "board")).toMatchObject({
+      metadata: { surface: "board", chose: q.wrong, correct: false },
+    });
+    expect(after.find((x) => x.kind === "answer_wrong" && x.metadata.surface === "board")).toMatchObject({
+      dedupe_key: answerDedupeKey("board", userId, q.id, new Date()),
+    });
+  });
+
+  it("get_own_answer_totals counts graded reveals, and only the caller's", async () => {
+    const { data: acts, error } = await admin
+      .from("user_activity")
+      .select("metadata")
+      .eq("user_id", userId)
+      .eq("kind", "question_practiced");
+    if (error) throw new Error(error.message);
+    const graded = (acts ?? []).filter((a) => "correct" in (a.metadata as object));
+    const right = graded.filter((a) => (a.metadata as { correct: boolean }).correct === true);
+
+    const { data, error: rpcError } = await (session.client as SupabaseClient).rpc("get_own_answer_totals");
+    if (rpcError) throw new Error(rpcError.message);
+    const row = (data as { answered: number; right_answers: number }[])[0];
+    expect(Number(row.answered)).toBe(graded.length);
+    expect(Number(row.right_answers)).toBe(right.length);
+  });
+
+  it("awards a milestone ONCE, and only when the client asks (celebrate)", async () => {
+    // Top the student up past 10 answered with seeded graded reveals.
+    const seeded = Array.from({ length: 10 }, () => ({
+      user_id: userId,
+      kind: "question_practiced",
+      ref_id: qs[0].id,
+      ref_kind: "question",
+      metadata: { surface: "bank", chose: qs[0].right, correct: true },
+    }));
+    const { error } = await admin.from("user_activity").insert(seeded);
+    if (error) throw new Error(error.message);
+
+    const q = qs[1];
+    // Without the flag: no award, no body.
+    const quiet = await post({ questionIds: [q.id], surface: "bank", picks: { [q.id]: q.right } });
+    expect(quiet.status).toBe(204);
+
+    const first = await post({ questionIds: [q.id], surface: "bank", picks: { [q.id]: q.right }, celebrate: true });
+    expect(first.status).toBe(200);
+    const body = (await first.json()) as { milestone: number | null };
+    expect(body.milestone).toBe(10);
+
+    // A second ask at the same total is a no-op: the dedupe key holds.
+    const again = await post({ questionIds: [q.id], surface: "bank", picks: { [q.id]: q.right }, celebrate: true });
+    expect(again.status).toBe(204);
+
+    const { data: awards } = await admin
+      .from("user_activity")
+      .select("dedupe_key, metadata")
+      .eq("user_id", userId)
+      .eq("kind", "milestone_reached");
+    expect(awards).toEqual([{ dedupe_key: `milestone:answered:${userId}:10`, metadata: { answered: 10 } }]);
   });
 
   it("rejects a malformed pick (400) and writes nothing", async () => {

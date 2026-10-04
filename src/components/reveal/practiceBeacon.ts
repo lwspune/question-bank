@@ -7,6 +7,9 @@ import {
   type PickLabel,
   type PracticeSurface,
 } from "@/lib/questions/practiceBatch";
+import { milestoneMessage } from "@/lib/celebrate/milestones";
+import { celebrate } from "@/components/celebrate/celebrate";
+import { invalidatePulse } from "@/lib/viewer/usePulse";
 
 /**
  * Client-side queue for the answer-reveal practice signal.
@@ -32,6 +35,13 @@ import {
  * which is how most sessions actually end. `sendBeacon` is used on the hide path
  * because a normal fetch is cancelled during unload; it is also why the payload
  * is a Blob with an explicit JSON type rather than a bare string.
+ *
+ * MILESTONES (2026-10-04). A debounced flush that carries a pick asks the
+ * server to check the student's "N answered" milestone (`celebrate: true`) and
+ * reads the reply; a 200 carries a newly awarded milestone to show. The
+ * page-hide beacon never asks — nobody would see the message, and an award is
+ * spent once shown. A milestone crossed on a beacon flush is awarded by the
+ * next flush that asks, since the award is "the highest reached, if new".
  */
 
 const ENDPOINT = "/api/activity/practice";
@@ -48,14 +58,20 @@ let listening = false;
 
 /** The request body. `picks` only names ids still in the batch: the parser
  *  rejects a pick with no reveal beside it. */
-function body(ids: readonly string[], surface: PracticeSurface, tapped: ReadonlyMap<string, PickLabel>): string {
+function body(
+  ids: readonly string[],
+  surface: PracticeSurface,
+  tapped: ReadonlyMap<string, PickLabel>,
+  readsReply: boolean
+): string {
   const sentPicks: Record<string, PickLabel> = {};
   for (const id of ids) {
     const label = tapped.get(id);
     if (label) sentPicks[id] = label;
   }
+  if (Object.keys(sentPicks).length === 0) return JSON.stringify({ questionIds: ids, surface });
   return JSON.stringify(
-    Object.keys(sentPicks).length > 0 ? { questionIds: ids, surface, picks: sentPicks } : { questionIds: ids, surface }
+    readsReply ? { questionIds: ids, surface, picks: sentPicks, celebrate: true } : { questionIds: ids, surface, picks: sentPicks }
   );
 }
 
@@ -73,7 +89,7 @@ function flush(useBeacon: boolean): void {
   queues.clear();
   picks.clear();
   for (const [surface, ids] of pending) {
-    if (ids.length > 0) send(body(ids, surface, pendingPicks.get(surface) ?? new Map()), useBeacon);
+    if (ids.length > 0) send(body(ids, surface, pendingPicks.get(surface) ?? new Map(), !useBeacon), useBeacon);
   }
 }
 
@@ -89,9 +105,19 @@ function send(json: string, useBeacon: boolean): void {
       headers: { "Content-Type": "application/json" },
       body: json,
       keepalive: true,
-    }).catch(() => {
-      /* a lost practice signal is not worth surfacing to a student */
-    });
+    })
+      .then(async (res) => {
+        // 204 is the normal reply; only a 200 carries a milestone.
+        if (res.status !== 200) return;
+        const reply = (await res.json()) as { milestone?: unknown };
+        if (typeof reply.milestone === "number") {
+          celebrate(milestoneMessage(reply.milestone));
+          invalidatePulse();
+        }
+      })
+      .catch(() => {
+        /* a lost practice signal is not worth surfacing to a student */
+      });
   } catch {
     /* storage/network hostile environment — drop silently */
   }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { BookOpen, Check, ChevronDown, ChevronRight, Maximize2, X } from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import BlockText from "@/components/math/BlockText";
@@ -12,7 +12,9 @@ import { breakSentences } from "@/lib/board/formatSolution";
 import { Dialog, DialogClose, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { optionMark } from "@/lib/questions/optionMark";
-import { useRevealMeter } from "@/components/reveal/useRevealMeter";
+import { useRevealMeter, type RevealPick } from "@/components/reveal/useRevealMeter";
+import { gradePick } from "@/lib/questions/bankVerdict";
+import { toPickLabel } from "@/lib/questions/practiceBatch";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
 import RevealLockedLink from "@/components/reveal/RevealLockedLink";
@@ -100,6 +102,27 @@ export default function BoardReader({
   // because it depends on a group's SIBLINGS: a lone group has no outline to
   // reveal, so folding it would only cost a click. See defaultOpenGroups.
   const openByDefault = defaultOpenGroups(groups);
+  // Every question on the page by id, so a tap can be read against its key.
+  const byId = useMemo(() => {
+    const m = new Map<string, BoardQuestion>();
+    for (const g of groups) for (const b of g.blocks) for (const q of b.questions) m.set(q.id, q);
+    for (const s of pyqSittings) for (const q of s.questions) m.set(q.id, q);
+    return m;
+  }, [groups, pyqSittings]);
+
+  /** The tap as a pick: graded on the server (2026-10-04, the user's call),
+   *  and read here by the same rule for the "right in a row" message. */
+  const pickFor = (id: string, label: string): RevealPick | undefined => {
+    const q = byId.get(id);
+    const chose = toPickLabel(label);
+    if (!q || q.format !== "mcq" || !chose) return undefined;
+    const verdict = gradePick(chose, {
+      format: q.format,
+      cancelled: false,
+      options: q.options.map((o) => ({ label: o.label, isCorrect: o.isCorrect })),
+    });
+    return { label: chose, correct: verdict?.correct ?? null };
+  };
 
   const toggleOne = (id: string) => {
     // Hiding an already-revealed answer is always free, and clears the pick so
@@ -130,11 +153,13 @@ export default function BoardReader({
 
   // Tapping an option checks it: the first tap is a reveal (same free budget
   // and sign-in lock as "Show answer"), a later tap only moves the pick, as on
-  // /browse. No verdict is recorded from the board yet (owner's call,
-  // 2026-10-04: revisit after the 2026-10-16 check of /browse verdicts).
+  // /browse. The FIRST tap carries the pick, and the server grades it and feeds
+  // a miss to the drill (2026-10-04, the user's call). A tap after "Show
+  // answer" or after hiding and re-showing is not an attempt: the beacon and
+  // the run counter each admit one act per question per page session.
   const pickOne = (id: string, label: string) => {
     if (!revealed.has(id)) {
-      if (!meter.attemptReveal(id)) {
+      if (!meter.attemptReveal(id, pickFor(id, label), chapterName)) {
         setBlocked((prev) => new Set(prev).add(id));
         return;
       }

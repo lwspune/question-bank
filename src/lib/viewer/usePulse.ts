@@ -10,7 +10,8 @@ import {
 } from "@/lib/pulse/cache";
 
 /**
- * The signed-in student's "pulse" — due drill count + this week's sittings —
+ * The signed-in student's "pulse" — due drill count, this week's sittings,
+ * the exam countdown and Answered · Right · Fixed —
  * resolved in the BROWSER and shared by every component that shows it.
  *
  * Same shape as useViewerSession, for the same reason: the header is on
@@ -36,7 +37,11 @@ const listeners = new Set<(p: Pulse | null) => void>();
 function readCache(nowMs: number): Pulse | null {
   try {
     const entry = parsePulseEntry(sessionStorage.getItem(PULSE_STORAGE_KEY));
-    if (entry && isPulseFresh(entry, nowMs)) return { due: entry.due, week: entry.week };
+    // Every field the entry carries. This returned only due + week until
+    // 2026-10-04, so the exam countdown vanished on every cached read.
+    if (entry && isPulseFresh(entry, nowMs)) {
+      return { due: entry.due, week: entry.week, exam: entry.exam, totals: entry.totals };
+    }
   } catch {
     /* private mode / blocked storage — fall through to a fetch */
   }

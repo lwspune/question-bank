@@ -5,6 +5,7 @@ import {
   PRACTICE_BATCH_MAX,
   PRACTICE_SURFACES,
   DEFAULT_PRACTICE_SURFACE,
+  toPickLabel,
 } from "@/lib/questions/practiceBatch";
 
 const uuid = (n: number) => `00000000-0000-4000-8000-${String(n).padStart(12, "0")}`;
@@ -44,7 +45,7 @@ describe("addToBatch — client-side queue", () => {
 describe("parsePracticeBatch — untrusted request body", () => {
   it("accepts a clean batch", () => {
     const r = parsePracticeBatch({ questionIds: [uuid(1), uuid(2)] });
-    expect(r).toEqual({ ok: true, ids: [uuid(1), uuid(2)], surface: "bank", picks: {} });
+    expect(r).toEqual({ ok: true, ids: [uuid(1), uuid(2)], surface: "bank", picks: {}, celebrate: false });
   });
 
   it("dedupes server-side too — the client is not trusted to have done it", () => {
@@ -112,7 +113,7 @@ describe("parsePracticeBatch — which SURFACE the reveal happened on", () => {
 
   it("carries the guide surface through, since that is the whole point", () => {
     const r = parsePracticeBatch({ questionIds: [uuid(1)], surface: "guide" });
-    expect(r).toEqual({ ok: true, ids: [uuid(1)], surface: "guide", picks: {} });
+    expect(r).toEqual({ ok: true, ids: [uuid(1)], surface: "guide", picks: {}, celebrate: false });
   });
 
   it("carries the board surface through — the reader is its own product", () => {
@@ -123,7 +124,7 @@ describe("parsePracticeBatch — which SURFACE the reveal happened on", () => {
     // harder to notice than a dark surface: the events are there, just filed
     // under another product.
     const r = parsePracticeBatch({ questionIds: [uuid(1)], surface: "board" });
-    expect(r).toEqual({ ok: true, ids: [uuid(1)], surface: "board", picks: {} });
+    expect(r).toEqual({ ok: true, ids: [uuid(1)], surface: "board", picks: {}, celebrate: false });
   });
 
   it("REJECTS an unknown surface rather than falling back to the bank", () => {
@@ -141,7 +142,7 @@ describe("parsePracticeBatch — which SURFACE the reveal happened on", () => {
   });
 
   it("keeps the surface list closed — it is written into metadata and queried by name", () => {
-    expect(PRACTICE_SURFACES).toEqual(["bank", "guide", "board"]);
+    expect(PRACTICE_SURFACES).toEqual(["bank", "guide", "board", "daily"]);
   });
 });
 
@@ -192,5 +193,41 @@ describe("parsePracticeBatch — which OPTION was tapped (bank verdicts, 2026-10
       const r = parsePracticeBatch({ questionIds: [uuid(1)], picks: bad });
       expect(r.ok, JSON.stringify(bad)).toBe(false);
     }
+  });
+});
+
+describe("parsePracticeBatch — the question of the day (2026-10-04)", () => {
+  it("carries the daily surface through: answering it is its own product, measured apart", () => {
+    const r = parsePracticeBatch({ questionIds: [uuid(1)], surface: "daily", picks: { [uuid(1)]: "B" } });
+    expect(r).toEqual({ ok: true, ids: [uuid(1)], surface: "daily", picks: { [uuid(1)]: "B" }, celebrate: false });
+  });
+});
+
+describe("parsePracticeBatch — asking for a milestone check (2026-10-04)", () => {
+  // The award costs a totals read, so the client asks only on a flush it reads
+  // the answer of; a page-hide beacon cannot show a message, so it never asks.
+  it("is false when absent — every older body still parses", () => {
+    const r = parsePracticeBatch({ questionIds: [uuid(1)] });
+    expect(r.ok && r.celebrate).toBe(false);
+  });
+
+  it("is true only for a literal true", () => {
+    expect((parsePracticeBatch({ questionIds: [uuid(1)], celebrate: true }) as { celebrate: boolean }).celebrate).toBe(true);
+    for (const v of ["true", 1, {}, null]) {
+      const r = parsePracticeBatch({ questionIds: [uuid(1)], celebrate: v });
+      expect(r.ok && r.celebrate, JSON.stringify(v)).toBe(false);
+    }
+  });
+});
+
+describe("toPickLabel — a label the server will accept, or nothing", () => {
+  // The server rejects a WHOLE batch on a label outside A-D, so a caller that
+  // sent one would lose every reveal in that flush. Checked before sending.
+  it("accepts A-D in either case", () => {
+    expect(toPickLabel("a")).toBe("A");
+    expect(toPickLabel("D")).toBe("D");
+  });
+  it("returns null for anything else", () => {
+    for (const bad of ["E", "", "(a)", "AB"]) expect(toPickLabel(bad), bad).toBeNull();
   });
 });

@@ -14,11 +14,15 @@ import { getOnboardingState } from "@/lib/profile/service";
 import { primaryExam, sanitizeTargetExams } from "@/lib/profile/onboarding";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { composeDailySet, fillUnseen, loadOwnPool } from "./compose";
-import { scopeToAttempt, selectDrill, DRILL_SIZE, type DueQuestion } from "./select";
+import { fixedCount, questionState, scopeToAttempt, selectDrill, DRILL_SIZE, type DueQuestion } from "./select";
+import { answerProgress, type AnswerProgress } from "./progress";
+import { awardAnsweredMilestone } from "@/lib/celebrate/service";
 import {
   gradeDrillAnswer,
   hasPriorWrong,
+  loadDrillEvents,
   loadDrillQuestions,
+  loadQuestionEvents,
   type DrillQuestion,
   type DrillVerdict,
 } from "./query";
@@ -47,15 +51,6 @@ export type OwnDrill = {
    *  result page): the paper's name for the header, and its due count. */
   scope: { attemptId: string; mockTitle: string; mockSlug: string } | null;
 };
-
-/** The drillable pool alone — what `/api/me/pulse` counts. See compose.ts. */
-export async function getOwnDuePool(
-  db: ReturnType<typeof createSupabaseServerClient>,
-  userId: string,
-  now: Date = new Date()
-): Promise<DueQuestion[]> {
-  return (await loadOwnPool(db, userId, now)).drillable;
-}
 
 export async function getOwnDrill(
   opts: { attemptId?: string | null; now?: Date } = {}
@@ -115,7 +110,26 @@ export async function getOwnDrill(
   return { questions, fresh: questions.filter((q) => q.isNew).length, dueTotal: drillable.length, scope };
 }
 
-export type AnswerOutcome = DrillVerdict & { recorded: boolean };
+export type AnswerOutcome = DrillVerdict & {
+  recorded: boolean;
+  /** What this answer did to the question (lib/drill/progress). */
+  progress: AnswerProgress;
+  /** Questions fixed in all, set only when THIS answer fixed one. */
+  fixedTotal: number | null;
+  /** An "N answered" milestone this answer newly reached, else null. */
+  milestone: number | null;
+};
+
+/** The ladder total, alongside the due pool, for the pulse (2026-10-04). Same
+ *  read, same fold, so "Fixed" and the due count cannot disagree. */
+export async function getOwnLadder(
+  db: ReturnType<typeof createSupabaseServerClient>,
+  userId: string,
+  now: Date = new Date()
+): Promise<{ due: DueQuestion[]; fixed: number }> {
+  const pool = await loadOwnPool(db, userId, now);
+  return { due: pool.drillable, fixed: fixedCount(pool.events, now) };
+}
 
 /**
  * Grade one answer and record it.
@@ -160,7 +174,24 @@ export async function recordDrillAnswer(
     metadata: { surface: DRILL_SURFACE, chose: chosenLabel.toUpperCase(), ...(kind === "question_practiced" ? { correct: true } : {}) },
   });
 
-  return { ...verdict, recorded: true };
+  // What the answer did, read back from the log the write just joined. If that
+  // write was lost the read sees one fewer right answer, so the student is told
+  // "rested" rather than "fixed" — the same safe direction as the ladder.
+  const now = new Date();
+  let progress: AnswerProgress = !verdict.correct ? "wrong" : kind === "answer_correct" ? "rested" : "right";
+  let fixedTotal: number | null = null;
+  if (kind === "answer_correct") {
+    try {
+      const events = await loadQuestionEvents(db, user.id, questionId);
+      progress = answerProgress({ correct: true, missedBefore: true, stateAfter: questionState(events, now) });
+      if (progress === "fixed") fixedTotal = fixedCount(await loadDrillEvents(db, user.id), now);
+    } catch (e) {
+      console.error("drill progress read failed", e);
+    }
+  }
+  const milestone = await awardAnsweredMilestone(db, user.id);
+
+  return { ...verdict, recorded: true, progress, fixedTotal, milestone };
 }
 
 /**

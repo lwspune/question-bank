@@ -7,7 +7,7 @@ import * as Popover from "@radix-ui/react-popover";
 import { BookMarked, Bookmark, CreditCard, FileText, LayoutDashboard, Lightbulb, LogOut, MessageSquarePlus, PenLine, ShieldCheck, TrendingUp, User, Target } from "lucide-react";
 import { toast } from "sonner";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
-import type { Pulse } from "@/lib/pulse/cache";
+import { totalsLine, type Pulse } from "@/lib/pulse/cache";
 import { weeklyProgress } from "@/lib/goals/weekly";
 import { examCountdownSentence } from "@/lib/exam/calendar";
 
@@ -33,6 +33,7 @@ export default function UserMenu({
   const due = pulse?.due ?? 0;
   const week = pulse ? weeklyProgress(pulse.week.done, pulse.week.goal) : null;
   const exam = pulse?.exam ?? null;
+  const totals = pulse?.totals ? totalsLine(pulse.totals) : null;
   const [signingOut, setSigningOut] = useState(false);
 
   async function onSignOut() {
@@ -94,6 +95,7 @@ export default function UserMenu({
                 </>
               )}
             </p>
+            {totals && <p className="mt-0.5 truncate text-xs tabular-nums text-muted-foreground">{totals}</p>}
             {exam && (
               <p className="mt-0.5 truncate text-xs text-muted-foreground">
                 {examCountdownSentence({ ...exam, source: "calendar", exam: null, date: "" })}

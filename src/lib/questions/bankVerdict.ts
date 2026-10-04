@@ -32,6 +32,18 @@ import type { ActivityEvent } from "@/lib/activity/events";
 import { istDayKey } from "@/lib/email/dueNudge";
 import type { BatchPicks, PickLabel, PracticeSurface } from "./practiceBatch";
 
+/**
+ * Where a tapped option is graded. The bank since 2026-10-02; the board reader
+ * and the question of the day since 2026-10-04 (the user's call). A /guide
+ * worked example stays a plain reveal: its options are part of a lesson the
+ * student is reading, not an attempt.
+ */
+const GRADED_SURFACES: ReadonlySet<PracticeSurface> = new Set<PracticeSurface>(["bank", "board", "daily"]);
+
+export function isGradedSurface(surface: PracticeSurface): boolean {
+  return GRADED_SURFACES.has(surface);
+}
+
 /** What the grader needs to know about one question, read at grade time. */
 export type AnswerKey = {
   /** `question_format`; null is treated as MCQ (the column defaults to mcq). */

@@ -30,6 +30,8 @@ import { formatProvenance } from "@/lib/questions/formatProvenance";
 import { useCart } from "@/lib/cart/CartProvider";
 import type { QuestionResources } from "@/lib/links/questionResources";
 import { useCardRevealMeter } from "@/components/reveal/useRevealMeter";
+import { gradePick } from "@/lib/questions/bankVerdict";
+import type { PracticeSurface } from "@/lib/questions/practiceBatch";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
 import RevealLockedLink from "@/components/reveal/RevealLockedLink";
@@ -63,6 +65,8 @@ export default function QuestionCard({
   hideCart = false,
   resources,
   itemStats,
+  surface = "bank",
+  defaultExpanded = false,
 }: {
   question: QuestionRow;
   index: number;
@@ -90,8 +94,14 @@ export default function QuestionCard({
    * case: ~2% of the bank clears the threshold today.
    */
   itemStats?: ItemStatAggregate;
+  /** Which product this card is part of, for the reveal record. Every bank
+   *  list is the default; the question of the day on /me passes "daily". */
+  surface?: PracticeSurface;
+  /** Open on first render: a lone card (the question of the day) has no list
+   *  to scan, so a collapsed preview is just one more tap. */
+  defaultExpanded?: boolean;
 }) {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(defaultExpanded);
   const [showSolution, setShowSolution] = useState(false);
   // Click-to-reveal: every viewer (including admin) picks an option to
   // unlock the answer. Admins audit content via the Edit page.
@@ -111,13 +121,26 @@ export default function QuestionCard({
   // Projection view-model for the classroom overlay.
   const presentable = useMemo(() => fromQuestionRow(question), [question]);
   // Card-level: a reveal elsewhere on the page does not redraw this card.
-  const meter = useCardRevealMeter("bank", question.exam.name, question.id);
+  const meter = useCardRevealMeter(surface, question.exam.name, question.id);
   const mobilePrompt = useMobilePrompt();
   const [revealBlocked, setRevealBlocked] = useState(false);
   // Re-keys the prompt on every refused tap so it visibly replays.
   const [blockedTaps, setBlockedTaps] = useState(0);
   function tryReveal(chose?: OptionLabel): boolean {
-    if (meter.attemptReveal(question.id, chose)) {
+    // The page reads the key by the SAME rule the server grades by, for the
+    // "right in a row" message only; the recorded verdict is the server's.
+    const pick = chose
+      ? {
+          label: chose,
+          correct:
+            gradePick(chose, {
+              format: question.questionFormat ?? null,
+              cancelled,
+              options: question.options.map((o) => ({ label: o.label, isCorrect: o.isCorrect })),
+            })?.correct ?? null,
+        }
+      : undefined;
+    if (meter.attemptReveal(question.id, pick, question.chapter.name)) {
       setRevealBlocked(false);
       // Engagement signal for the soft mobile prompt (no-op unless signed-in
       // without a mobile; fires only once, at the reveal threshold).
@@ -147,7 +170,7 @@ export default function QuestionCard({
   // The locked link stands in for a reveal button; once a refused option tap
   // has shown the prompt (which carries its own Sign in), one link is enough.
   const lockedLink =
-    locked && !revealBlocked ? <RevealLockedLink surface="bank" examName={question.exam.name} /> : null;
+    locked && !revealBlocked ? <RevealLockedLink surface={surface} examName={question.exam.name} /> : null;
 
   const breadcrumb = buildBreadcrumb(question, { includeExam });
 
@@ -427,7 +450,7 @@ export default function QuestionCard({
               </p>
             )}
 
-            {revealBlocked && !revealed && <RevealSignInPrompt key={blockedTaps} surface="bank" />}
+            {revealBlocked && !revealed && <RevealSignInPrompt key={blockedTaps} surface={surface} />}
 
             {isSubjective && !question.solution && (
               <p className="pt-2 text-xs italic text-muted-foreground">

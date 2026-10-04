@@ -7,9 +7,11 @@ import { ArrowRight, Check, Loader2, RotateCcw, X } from "lucide-react";
 import BlockText from "@/components/math/BlockText";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { cn } from "@/lib/utils";
-import type { DrillVerdict } from "@/lib/drill/query";
-import type { ServedQuestion } from "@/lib/drill/service";
+import type { AnswerOutcome, ServedQuestion } from "@/lib/drill/service";
 import { invalidatePulse } from "@/lib/viewer/usePulse";
+import { fixedMessage, progressLine } from "@/lib/drill/progress";
+import { milestoneMessage } from "@/lib/celebrate/milestones";
+import { celebrate } from "@/components/celebrate/celebrate";
 
 export type DrillScope = { attemptId: string; mockTitle: string; mockSlug: string } | null;
 
@@ -49,7 +51,7 @@ export default function DrillRunner({
   scope?: DrillScope;
 }) {
   const [index, setIndex] = useState(0);
-  const [verdicts, setVerdicts] = useState<Record<string, DrillVerdict & { chose: string }>>({});
+  const [verdicts, setVerdicts] = useState<Record<string, AnswerOutcome & { chose: string }>>({});
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
 
@@ -72,8 +74,15 @@ export default function DrillRunner({
         toast.error(body.error ?? "Couldn't check that answer.");
         return;
       }
-      const verdict = (await res.json()) as DrillVerdict;
+      const verdict = (await res.json()) as AnswerOutcome;
       setVerdicts((prev) => ({ ...prev, [question.id]: { ...verdict, chose: label } }));
+      // A fix is the rarer and bigger moment, so it goes first; a milestone
+      // reached on the same answer follows once the fix has had its turn
+      // (celebrations share one slot and replace each other).
+      const messages: string[] = [];
+      if (verdict.progress === "fixed" && verdict.fixedTotal !== null) messages.push(fixedMessage(verdict.fixedTotal));
+      if (verdict.milestone !== null) messages.push(milestoneMessage(verdict.milestone));
+      messages.forEach((m, i) => setTimeout(() => celebrate(m), i * 3200));
       // The header badge counts this pool; a recorded answer is one of the two
       // moments it changes, so refresh it now rather than at the next page.
       invalidatePulse();
@@ -240,7 +249,7 @@ export default function DrillRunner({
                   answered.correct ? "text-emerald-700 dark:text-emerald-400" : "text-red-600"
                 )}
               >
-                {answered.correct ? "Right — that one's on its way out." : "Not this time."}
+                {progressLine(answered.progress)}
               </p>
               {answered.solution && (
                 <div className="mt-2 rounded-xl border bg-muted/40 p-3 font-serif text-sm leading-relaxed [&_.katex]:max-w-full">
