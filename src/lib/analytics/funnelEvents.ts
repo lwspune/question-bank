@@ -76,6 +76,18 @@ export const FUNNEL_EVENTS = [
    * on the page, so page views of /questions and /notes chapters are the scale.
    */
   "chapter_share_click",
+  /**
+   * V's one-time hello appeared (2026-10-04; growth registry "second-page");
+   * props: surface ("questions" | "notes"), target. Once per device, so the
+   * count is close to the number of first-time interested visitors.
+   */
+  "v_hello_shown",
+  /** …and its suggestion was tapped; same props. */
+  "v_hello_click",
+  /** The next-step card on a chapter questions page scrolled into view; prop: target (the first link). */
+  "next_step_card_shown",
+  /** …and one of its links was tapped; prop: target (which link). */
+  "next_step_card_click",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];
