@@ -5,13 +5,14 @@ import { ChevronRight, Home } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
-import { getExamBySlug } from "@/lib/exam/examContext";
+import { BOARD_EXAMS, getExamBySlug } from "@/lib/exam/examContext";
 import { boardChapterTitle } from "@/lib/seo/pageTitles";
 import {
   resolveBoardChapter,
   getBoardChapter,
   getBoardChapterPyqs,
   getSubjectPaperCounts,
+  listBoardChapters,
   type BoardChapter,
   type BoardPaperCount,
   type BoardPyqSitting,
@@ -19,6 +20,38 @@ import {
 import BoardReader from "@/app/board/BoardReader";
 
 type Params = { examSlug: string; subjectRoute: string; chapterSlug: string };
+
+/**
+ * Cached like /notes and /questions. The reader reads nothing per-viewer on the
+ * server (the reveal meter and its lock live in the browser), so every chapter
+ * is built ahead and refreshed daily. Before 2026-10-04 each visit rendered from
+ * the database, 0.4-1.6 s to first byte against ~0.2 s for a cached page, and
+ * Clarity recorded the waiting taps as dead clicks.
+ *
+ * A chapter added after a build renders on its first request and is cached from
+ * then on (dynamicParams stays true), and joins the list at the next build.
+ */
+export const revalidate = 86400;
+
+export async function generateStaticParams(): Promise<Params[]> {
+  try {
+    const client = createSupabaseAnonClient();
+    const out: Params[] = [];
+    for (const exam of BOARD_EXAMS) {
+      const subjects = await listBoardChapters(client, exam.examName);
+      for (const s of subjects) {
+        for (const c of s.chapters) {
+          out.push({ examSlug: exam.slug, subjectRoute: c.subjectRoute, chapterSlug: c.chapterSlug });
+        }
+      }
+    }
+    return out;
+    // A Supabase blip during a build must not fail the deploy; the pages then
+    // render on first request instead (the /questions landings' guard).
+  } catch {
+    return [];
+  }
+}
 
 type Loaded = {
   examName: string;

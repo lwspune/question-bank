@@ -5,10 +5,21 @@ import { BookText, ChevronRight, Home } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
-import { getExamBySlug } from "@/lib/exam/examContext";
+import { BOARD_EXAMS, getExamBySlug } from "@/lib/exam/examContext";
 import { listBoardChapters } from "@/lib/board/query";
 
 type Params = { examSlug: string };
+
+/**
+ * Cached like /notes and /questions: nothing here is per-viewer (no session, no
+ * cookie), so every class hub is built ahead and refreshed daily. Before
+ * 2026-10-04 these rendered on every request, 0.4-1.6 s to first byte.
+ */
+export const revalidate = 86400;
+
+export function generateStaticParams(): Params[] {
+  return BOARD_EXAMS.map((e) => ({ examSlug: e.slug }));
+}
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const exam = getExamBySlug(params.examSlug);
