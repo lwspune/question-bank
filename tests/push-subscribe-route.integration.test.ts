@@ -26,6 +26,7 @@ vi.mock("next/headers", () => ({
 
 import { POST, DELETE } from "@/app/api/push/subscribe/route";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -54,11 +55,13 @@ function req(method: "POST" | "DELETE", body: unknown): NextRequest {
 
 async function signInAs(email: string) {
   jar.clear();
-  const { error } = await createSupabaseServerClient().auth.signInWithPassword({ email, password: PASSWORD });
-  if (error) throw new Error(`sign in ${email}: ${error.message}`);
+  // Waits out an Auth rate limit rather than failing: these sign-ins run
+  // inside tests, late in a suite that has often spent the window.
+  await mustSignIn(email, createSupabaseServerClient(), { email, password: PASSWORD });
 }
 
-describe.skipIf(!HAS_ENV)("/api/push/subscribe", () => {
+// A rate-limit wait is 65 s, past the suite's 30 s test timeout.
+describe.skipIf(!HAS_ENV)("/api/push/subscribe", { timeout: 360_000 }, () => {
   let admin: SupabaseClient;
   let aId = "";
   let bId = "";
