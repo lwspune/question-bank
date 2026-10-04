@@ -11,6 +11,7 @@ import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { breakSentences } from "@/lib/board/formatSolution";
 import { Dialog, DialogClose, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
+import { optionMark } from "@/lib/questions/optionMark";
 import { useRevealMeter } from "@/components/reveal/useRevealMeter";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
@@ -79,6 +80,9 @@ export default function BoardReader({
   // including worked examples; tap "Show answer" to reveal (attempt-first).
   const [revealed, setRevealed] = useState<Set<string>>(new Set());
   const [blocked, setBlocked] = useState<Set<string>>(new Set());
+  // The option a reader tapped, per question (2026-10-04). Board readers had
+  // learned tap-to-check on /browse and tapped board options that did nothing.
+  const [picks, setPicks] = useState<Map<string, string>>(new Map());
   // Which corpus is on screen. Opens on the textbook — /board is the book
   // reader and the URL names a chapter of it.
   const [showPyqs, setShowPyqs] = useState(false);
@@ -98,10 +102,16 @@ export default function BoardReader({
   const openByDefault = defaultOpenGroups(groups);
 
   const toggleOne = (id: string) => {
-    // Hiding an already-revealed answer is always free.
+    // Hiding an already-revealed answer is always free, and clears the pick so
+    // the reader can try again.
     if (revealed.has(id)) {
       setRevealed((prev) => {
         const next = new Set(prev);
+        next.delete(id);
+        return next;
+      });
+      setPicks((prev) => {
+        const next = new Map(prev);
         next.delete(id);
         return next;
       });
@@ -116,6 +126,22 @@ export default function BoardReader({
     // without a mobile; fires only once, at the reveal threshold).
     mobilePrompt.notifyReveal();
     setRevealed((prev) => new Set(prev).add(id));
+  };
+
+  // Tapping an option checks it: the first tap is a reveal (same free budget
+  // and sign-in lock as "Show answer"), a later tap only moves the pick, as on
+  // /browse. No verdict is recorded from the board yet (owner's call,
+  // 2026-10-04: revisit after the 2026-10-16 check of /browse verdicts).
+  const pickOne = (id: string, label: string) => {
+    if (!revealed.has(id)) {
+      if (!meter.attemptReveal(id)) {
+        setBlocked((prev) => new Set(prev).add(id));
+        return;
+      }
+      mobilePrompt.notifyReveal();
+      setRevealed((prev) => new Set(prev).add(id));
+    }
+    setPicks((prev) => new Map(prev).set(id, label));
   };
 
   const textbookTotal = groups.reduce(
@@ -157,6 +183,8 @@ export default function BoardReader({
               blocked={blocked}
               lock={lock}
               onToggleReveal={toggleOne}
+              picks={picks}
+              onPick={pickOne}
             />
           ))}
         </div>
@@ -184,6 +212,8 @@ export default function BoardReader({
                 blocked={blocked}
                 lock={lock}
                 onToggleReveal={toggleOne}
+                picks={picks}
+                onPick={pickOne}
               />
             ))}
           </div>
@@ -351,6 +381,8 @@ function PyqSitting({
   blocked,
   lock,
   onToggleReveal,
+  picks,
+  onPick,
 }: {
   sitting: BoardPyqSitting;
   defaultOpen: boolean;
@@ -363,6 +395,8 @@ function PyqSitting({
   blocked: Set<string>;
   lock: RevealLock;
   onToggleReveal: (id: string) => void;
+  picks: Map<string, string>;
+  onPick: (id: string, label: string) => void;
 }) {
   return (
     <details className="group/sit space-y-4" open={defaultOpen}>
@@ -400,6 +434,8 @@ function PyqSitting({
                 blocked={blocked.has(q.id)}
                 lockedLink={lock.isLocked(q.id) ? lock.link : null}
                 onToggleReveal={() => onToggleReveal(q.id)}
+                pick={picks.get(q.id) ?? null}
+                onPick={(label) => onPick(q.id, label)}
                 // The one honest bridge back to the book half. A PYQ has exactly
                 // ONE subtopic; a book section spans several, so the link only
                 // works in this direction.
@@ -429,6 +465,8 @@ function GroupSection({
   blocked,
   lock,
   onToggleReveal,
+  picks,
+  onPick,
 }: {
   group: BoardSectionGroup;
   defaultOpen: boolean;
@@ -438,6 +476,8 @@ function GroupSection({
   blocked: Set<string>;
   lock: RevealLock;
   onToggleReveal: (id: string) => void;
+  picks: Map<string, string>;
+  onPick: (id: string, label: string) => void;
 }) {
   const total = group.blocks.reduce((n, b) => n + b.questions.length, 0);
 
@@ -463,6 +503,8 @@ function GroupSection({
           blocked={blocked}
           lock={lock}
           onToggleReveal={onToggleReveal}
+          picks={picks}
+          onPick={onPick}
         />
       ))}
     </details>
@@ -478,6 +520,8 @@ function BlockSection({
   blocked,
   lock,
   onToggleReveal,
+  picks,
+  onPick,
 }: {
   block: BoardBlock;
   groupLabel: string;
@@ -487,6 +531,8 @@ function BlockSection({
   blocked: Set<string>;
   lock: RevealLock;
   onToggleReveal: (id: string) => void;
+  picks: Map<string, string>;
+  onPick: (id: string, label: string) => void;
 }) {
   // A single-block group (e.g. "Miscellaneous Exercise 2 (A)") has no distinct
   // sub-heading — the group header already collapses it, so render questions flat.
@@ -516,6 +562,8 @@ function BlockSection({
               blocked={blocked.has(q.id)}
               lockedLink={lock.isLocked(q.id) ? lock.link : null}
               onToggleReveal={() => onToggleReveal(q.id)}
+              pick={picks.get(q.id) ?? null}
+              onPick={(label) => onPick(q.id, label)}
             />
           </li>
         );
@@ -554,6 +602,8 @@ function BoardQuestionItem({
   blocked,
   lockedLink,
   onToggleReveal,
+  pick,
+  onPick,
   meta,
 }: {
   q: BoardQuestion;
@@ -566,6 +616,10 @@ function BoardQuestionItem({
   /** Set when the anon reveal budget is spent and this answer is unseen. */
   lockedLink: ReactNode | null;
   onToggleReveal: () => void;
+  /** The option this reader tapped, if any. */
+  pick: string | null;
+  /** Tap an option: reveals on the first tap, then only moves the pick. */
+  onPick: (label: string) => void;
   /** Optional provenance shown under the question and ABOVE the reveal — it
    *  describes the question, never the answer, so it must not sit inside the
    *  reveal-gated block. */
@@ -594,28 +648,62 @@ function BoardQuestionItem({
       )}
 
       {q.format === "mcq" && q.options.length > 0 && (
-        <ol className="mt-3 grid gap-1.5 sm:grid-cols-2">
-          {q.options.map((o) => {
-            const showCorrect = revealed && o.isCorrect;
-            return (
-              <li
-                key={o.label}
-                className={cn(
-                  "flex items-start gap-2 rounded-md border bg-background px-2.5 py-1.5 text-sm",
-                  showCorrect && "border-emerald-500/60 bg-emerald-500/5"
-                )}
-              >
-                <span className="mt-0.5 shrink-0 font-mono text-xs font-bold text-muted-foreground">{o.label}.</span>
-                <div className="min-w-0 flex-1 font-serif [&_.katex]:max-w-full">
-                  <KatexRenderer text={o.text} />
-                </div>
-                {showCorrect && (
-                  <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden />
-                )}
-              </li>
-            );
-          })}
-        </ol>
+        <>
+          <ol className="mt-3 grid gap-1.5 sm:grid-cols-2">
+            {q.options.map((o) => {
+              const picked = pick === o.label;
+              const mark = optionMark({ revealed, picked, isCorrect: o.isCorrect });
+              const content = (
+                <>
+                  <span className="mt-0.5 shrink-0 font-mono text-xs font-bold text-muted-foreground">{o.label}.</span>
+                  <div className="min-w-0 flex-1 font-serif [&_.katex]:max-w-full">
+                    <KatexRenderer text={o.text} />
+                  </div>
+                  {mark === "correct" && (
+                    <span className="inline-flex shrink-0 items-center gap-1 font-sans text-xs font-medium text-emerald-700 dark:text-emerald-400">
+                      <Check className="h-3.5 w-3.5" aria-hidden />
+                      Correct
+                    </span>
+                  )}
+                  {mark === "wrong" && (
+                    <span className="inline-flex shrink-0 items-center gap-1 font-sans text-xs font-medium text-red-700 dark:text-red-400">
+                      <X className="h-3.5 w-3.5" aria-hidden />
+                      Your pick
+                    </span>
+                  )}
+                </>
+              );
+              return (
+                <li
+                  key={o.label}
+                  className={cn(
+                    "overflow-hidden rounded-md border bg-background text-sm",
+                    mark === "correct" && "border-emerald-500/60 bg-emerald-500/5",
+                    mark === "wrong" && "border-red-500/60 bg-red-500/5"
+                  )}
+                >
+                  {hasAnswer ? (
+                    <button
+                      type="button"
+                      onClick={() => onPick(o.label)}
+                      aria-pressed={picked}
+                      className="flex w-full items-start gap-2 px-2.5 py-1.5 text-left transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                    >
+                      {content}
+                    </button>
+                  ) : (
+                    <div className="flex items-start gap-2 px-2.5 py-1.5">{content}</div>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
+          {hasAnswer && !revealed && (
+            <p className="mt-1.5 text-center text-xs text-muted-foreground">
+              {lockedLink ? "Sign in free to check answers." : "Tap an option to check your answer."}
+            </p>
+          )}
+        </>
       )}
 
       {meta && <div className="mt-2.5">{meta}</div>}

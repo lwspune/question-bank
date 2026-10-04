@@ -17,6 +17,7 @@ import { toast } from "sonner";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import BlockText from "@/components/math/BlockText";
 import { cn } from "@/lib/utils";
+import { optionMark } from "@/lib/questions/optionMark";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import {
   Dialog,
@@ -355,9 +356,9 @@ export default function QuestionCard({
             <ol className="space-y-2 pt-2">
               {question.options.map((opt) => {
                 const isPickedByUser = picked === opt.label;
-                const showCorrect = revealed && opt.isCorrect;
-                const showWrong =
-                  revealed && isPickedByUser && !opt.isCorrect && !cancelled;
+                const mark = optionMark({ revealed, picked: isPickedByUser, isCorrect: opt.isCorrect, cancelled });
+                const showCorrect = mark === "correct";
+                const showWrong = mark === "wrong";
 
                 const optionContent = (
                   <>
