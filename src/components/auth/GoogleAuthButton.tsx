@@ -58,7 +58,7 @@ export default function GoogleAuthButton({
           toast.error("Google sign-in didn't complete. Please try again.");
         },
       },
-      { theme: "outline", source: signupSource }
+      { theme: "filled_blue", source: signupSource }
     ).then((ok) => {
       if (live) setDrawn(ok);
     });
