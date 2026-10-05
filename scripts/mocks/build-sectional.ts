@@ -9,7 +9,14 @@
  *   npx tsx scripts/mocks/build-sectional.ts --exam=nda --only=<slug>
  *
  * `--exam` is one of mht-cet (the default, so the original runbook still
- * works), nda, cds, jee-mains.
+ * works), nda, cds, jee-mains, cbse-12, mh-hsc-12, mh-ssc-10.
+ *
+ * BOARD EXAMS (2026-10-05) differ in three ways. They take textbook MCQs
+ * (`question_kind='practice'`) beside the board's past-year ones, since a
+ * board chapter has too few of either alone. They take a question whose
+ * context is only an instruction ("Choose the correct option.") as a loose
+ * question; see src/lib/mocks/instructionContext.ts. And they list in textbook
+ * order. A test with any textbook question is stored as `source='practice'`.
  *
  * TWO STEPS, and the split is the point. `--plan` asks the bank which
  * questions each chapter test should carry (src/lib/mocks/sectional.ts) and
@@ -44,7 +51,11 @@ import {
   CDS_ENGLISH_PAPER,
   CDS_GK_PAPER,
   CDS_MATHS_PAPER,
+  CBSE_12_CHAPTER_MCQ_PAPER,
   JEE_MAINS_PAPER,
+  MH_HSC_12_CHAPTER_MCQ_PAPER,
+  MH_SSC_10_CHAPTER_MCQ_PAPER,
+  MH_SSC_10_HUMANITIES_MCQ_PAPER,
   MHT_CET_MATHS_PAPER,
   MHT_CET_PHY_CHEM_PAPER,
   NDA_GAT_PAPER,
@@ -57,16 +68,19 @@ import { mockTestRow } from "../../src/lib/mocks/row";
 import {
   isSectionalEligible,
   orderChapters,
+  orderChaptersByBook,
   pickSectionalQuestions,
   pickSectionalSets,
   sectionalBlueprint,
   sectionalSize,
   sectionalSlug,
+  sectionalSource,
   sectionalTitle,
   type SectionalCandidate,
   type SectionalDifficulty,
   type SectionalSet,
 } from "../../src/lib/mocks/sectional";
+import { isInstructionOnlyContext } from "../../src/lib/mocks/instructionContext";
 import { PLAYBOOKS as MATHS_PLAYBOOKS } from "../../src/app/guide/mht-cet-maths/_data/playbooks";
 import { PLAYBOOKS as PHYSICS_PLAYBOOKS } from "../../src/app/guide/mht-cet-physics/_data/playbooks";
 import { PLAYBOOKS as CHEMISTRY_PLAYBOOKS } from "../../src/app/guide/mht-cet-chemistry/_data/playbooks";
@@ -93,12 +107,29 @@ type SubjectPlan = {
   mode?: "sets";
   /** Chapters the exam no longer asks; they get no test. */
   retired?: Set<string>;
+  /**
+   * The textbook's chapter order, where the bank's `chapters.order_index` is
+   * ingestion order instead (CBSE 12 and MH HSC 12 Physics and Chemistry,
+   * 2026-10-05). Copied from the source PDFs' own numbering in
+   * scripts/ncert/config.ts and scripts/stateboard/config.ts.
+   */
+  chapterOrder?: string[];
 };
+
+type QuestionKind = "pyq" | "practice";
 
 /** One exam's chapter tests. */
 type ExamPlan = {
   examName: string;
   examSlug: string;
+  /** The exam's name in a test title when shorter than the DB name: "MH SSC 10". */
+  titleName?: string;
+  /** Which question kinds a test may draw on. Boards add textbook MCQs. */
+  kinds: QuestionKind[];
+  /** Take a question whose context is only an instruction as a loose question. */
+  looseInstructions: boolean;
+  /** List chapters in textbook order rather than by weight or pool size. */
+  bookOrder: boolean;
   dataFile: string;
   /** The smallest pool that gets a test: 30 (15 questions) or 20 (10 questions). */
   minPool: number;
@@ -126,6 +157,72 @@ const retiredOf = (t: { chapter: string; recentPerPaper: number }[]) =>
   new Set(t.filter((x) => x.recentPerPaper < RECENT_FLOOR).map((x) => x.chapter));
 const dataFile = (slug: string) => join(__dirname, "data", `${slug}-sectional.json`);
 
+/** NCERT Class 12 Physics, Parts 1 and 2 (Part 2 restarts at 01: Ray Optics is chapter 9). */
+const NCERT_12_PHYSICS = [
+  "Electric Charges and Fields",
+  "Electrostatic Potential and Capacitance",
+  "Current Electricity",
+  "Moving Charges and Magnetism",
+  "Magnetism and Matter",
+  "Electromagnetic Induction",
+  "Alternating Current",
+  "Electromagnetic Waves",
+  "Ray Optics and Optical Instruments",
+  "Wave Optics",
+  "Dual Nature of Radiation and Matter",
+  "Atoms",
+  "Nuclei",
+  "Semiconductor Electronics: Materials, Devices and Simple Circuits",
+];
+const NCERT_12_CHEMISTRY = [
+  "Solutions",
+  "Electrochemistry",
+  "Chemical Kinetics",
+  "The d-and f-Block Elements",
+  "Coordination Compounds",
+  "Haloalkanes and Haloarenes",
+  "Alcohols, Phenols and Ethers",
+  "Aldehydes, Ketones and Carboxylic Acids",
+  "Amines",
+  "Biomolecules",
+];
+const BALBHARATI_12_PHYSICS = [
+  "Rotational Dynamics",
+  "Mechanical Properties of Fluids",
+  "Kinetic Theory of Gases and Radiation",
+  "Thermodynamics",
+  "Oscillations",
+  "Superposition of Waves",
+  "Wave Optics",
+  "Electrostatics",
+  "Current Electricity",
+  "Magnetic Fields due to Electric Current",
+  "Magnetic Materials",
+  "Electromagnetic Induction",
+  "AC Circuits",
+  "Dual Nature of Radiation and Matter",
+  "Structure of Atoms and Nuclei",
+  "Semiconductor Devices",
+];
+const BALBHARATI_12_CHEMISTRY = [
+  "Solid State",
+  "Solutions",
+  "Ionic Equilibria",
+  "Chemical Thermodynamics",
+  "Electrochemistry",
+  "Chemical Kinetics",
+  "Elements of Groups 16, 17 and 18",
+  "Transition and Inner Transition Elements",
+  "Coordination Compounds",
+  "Halogen Derivatives",
+  "Alcohols, Phenols and Ethers",
+  "Aldehydes, Ketones and Carboxylic Acids",
+  "Amines",
+  "Biomolecules",
+  "Introduction to Polymer Chemistry",
+  "Green Chemistry and Nanochemistry",
+];
+
 /**
  * The GK subjects of NDA and CDS. Current Affairs is left out on purpose
  * (owner, 2026-10-05): its questions go stale, so a chapter test on them
@@ -152,6 +249,9 @@ const EXAMS: Record<string, ExamPlan> = {
   "mht-cet": {
     examName: "MHT-CET",
     examSlug: "mht-cet",
+    kinds: ["pyq"],
+    looseInstructions: false,
+    bookOrder: false,
     dataFile: dataFile("mht-cet"),
     minPool: 30,
     unratedAsModerate: false,
@@ -165,6 +265,9 @@ const EXAMS: Record<string, ExamPlan> = {
   nda: {
     examName: "NDA",
     examSlug: "nda",
+    kinds: ["pyq"],
+    looseInstructions: false,
+    bookOrder: false,
     dataFile: dataFile("nda"),
     minPool: 20,
     unratedAsModerate: true,
@@ -178,6 +281,9 @@ const EXAMS: Record<string, ExamPlan> = {
   cds: {
     examName: "CDS",
     examSlug: "cds",
+    kinds: ["pyq"],
+    looseInstructions: false,
+    bookOrder: false,
     dataFile: dataFile("cds"),
     minPool: 20,
     unratedAsModerate: true,
@@ -191,6 +297,9 @@ const EXAMS: Record<string, ExamPlan> = {
   "jee-mains": {
     examName: "JEE Mains",
     examSlug: "jee-mains",
+    kinds: ["pyq"],
+    looseInstructions: false,
+    bookOrder: false,
     dataFile: dataFile("jee-mains"),
     minPool: 20,
     unratedAsModerate: true,
@@ -200,6 +309,64 @@ const EXAMS: Record<string, ExamPlan> = {
       { bankSubject: "Physics", code: "physics", paper: JEE_MAINS_PAPER, sectionKey: "physics", weights: recentWeightsOf(JEE_PHYSICS_TABLE), retired: retiredOf(JEE_PHYSICS_TABLE) },
       { bankSubject: "Chemistry", code: "chemistry", paper: JEE_MAINS_PAPER, sectionKey: "chemistry", weights: recentWeightsOf(JEE_CHEMISTRY_TABLE), retired: retiredOf(JEE_CHEMISTRY_TABLE) },
       { bankSubject: "Maths", code: "maths", paper: JEE_MAINS_PAPER, sectionKey: "maths", weights: recentWeightsOf(JEE_MATHS_TABLE), retired: retiredOf(JEE_MATHS_TABLE) },
+    ],
+  },
+
+  // Board chapter tests (2026-10-05): textbook and board MCQs together, a
+  // 10-question floor (owner: a 10-question test is big enough), book order.
+  "cbse-12": {
+    examName: "CBSE Class 12",
+    examSlug: "cbse-12",
+    kinds: ["pyq", "practice"],
+    looseInstructions: true,
+    bookOrder: true,
+    dataFile: dataFile("cbse-12"),
+    minPool: 10,
+    unratedAsModerate: true,
+    numericShare: 0,
+    subjects: [
+      { bankSubject: "Physics", code: "physics", paper: CBSE_12_CHAPTER_MCQ_PAPER, sectionKey: "physics", weights: NONE, chapterOrder: NCERT_12_PHYSICS },
+      { bankSubject: "Chemistry", code: "chemistry", paper: CBSE_12_CHAPTER_MCQ_PAPER, sectionKey: "chemistry", weights: NONE, chapterOrder: NCERT_12_CHEMISTRY },
+      { bankSubject: "Mathematics", code: "maths", paper: CBSE_12_CHAPTER_MCQ_PAPER, sectionKey: "mathematics", weights: NONE },
+    ],
+  },
+  "mh-hsc-12": {
+    examName: "Maharashtra HSC Class 12",
+    examSlug: "mh-hsc-12",
+    titleName: "MH HSC 12",
+    kinds: ["pyq", "practice"],
+    looseInstructions: true,
+    bookOrder: true,
+    dataFile: dataFile("mh-hsc-12"),
+    minPool: 10,
+    unratedAsModerate: true,
+    numericShare: 0,
+    // Geography is left out: none of its 8 chapters has 10 MCQs (2026-10-05).
+    subjects: [
+      { bankSubject: "Physics", code: "physics", paper: MH_HSC_12_CHAPTER_MCQ_PAPER, sectionKey: "physics", weights: NONE, chapterOrder: BALBHARATI_12_PHYSICS },
+      { bankSubject: "Chemistry", code: "chemistry", paper: MH_HSC_12_CHAPTER_MCQ_PAPER, sectionKey: "chemistry", weights: NONE, chapterOrder: BALBHARATI_12_CHEMISTRY },
+      { bankSubject: "Mathematics", code: "maths", paper: MH_HSC_12_CHAPTER_MCQ_PAPER, sectionKey: "mathematics", weights: NONE },
+    ],
+  },
+  "mh-ssc-10": {
+    examName: "Maharashtra State Board Class 10",
+    examSlug: "mh-ssc-10",
+    titleName: "MH SSC 10",
+    kinds: ["pyq", "practice"],
+    looseInstructions: true,
+    bookOrder: true,
+    dataFile: dataFile("mh-ssc-10"),
+    minPool: 10,
+    unratedAsModerate: true,
+    numericShare: 0,
+    subjects: [
+      { bankSubject: "Algebra", code: "algebra", paper: MH_SSC_10_CHAPTER_MCQ_PAPER, sectionKey: "algebra", weights: NONE },
+      { bankSubject: "Geometry", code: "geometry", paper: MH_SSC_10_CHAPTER_MCQ_PAPER, sectionKey: "geometry", weights: NONE },
+      { bankSubject: "Science and Technology I", code: "science-1", paper: MH_SSC_10_CHAPTER_MCQ_PAPER, sectionKey: "science-1", weights: NONE },
+      { bankSubject: "Science and Technology II", code: "science-2", paper: MH_SSC_10_CHAPTER_MCQ_PAPER, sectionKey: "science-2", weights: NONE },
+      { bankSubject: "History", code: "history", paper: MH_SSC_10_HUMANITIES_MCQ_PAPER, sectionKey: "history", weights: NONE },
+      { bankSubject: "Political Science", code: "political-science", paper: MH_SSC_10_HUMANITIES_MCQ_PAPER, sectionKey: "political-science", weights: NONE },
+      { bankSubject: "Geography", code: "geography", paper: MH_SSC_10_HUMANITIES_MCQ_PAPER, sectionKey: "geography", weights: NONE },
     ],
   },
 };
@@ -235,7 +402,7 @@ type BankRow = {
   source_row: number | null;
   question_number: string | null;
   chapter_id: string;
-  chapter: { name: string; subject: { name: string } | null } | null;
+  chapter: { name: string; order_index: number | null; subject: { name: string } | null } | null;
   subtopic: { name: string } | null;
   options: { label: string; is_correct: boolean }[];
 };
@@ -243,7 +410,7 @@ type BankRow = {
 const SELECT =
   "id, visibility, question_kind, question_format, numeric_answer, difficulty, set_id, context, " +
   "pyq_year, pyq_month, source_row, question_number, chapter_id, " +
-  "chapter:chapters(name, subject:subjects(name)), subtopic:subtopics(name), options(label, is_correct)";
+  "chapter:chapters(name, order_index, subject:subjects(name)), subtopic:subtopics(name), options(label, is_correct)";
 
 function one<T>(v: T | T[] | null): T | null {
   return Array.isArray(v) ? (v[0] ?? null) : v;
@@ -253,13 +420,23 @@ function normalise(r: BankRow): BankRow {
   const chapter = one(r.chapter as never) as BankRow["chapter"];
   return {
     ...r,
-    chapter: chapter ? { name: chapter.name, subject: one(chapter.subject as never) } : null,
+    chapter: chapter
+      ? { name: chapter.name, order_index: chapter.order_index ?? null, subject: one(chapter.subject as never) }
+      : null,
     subtopic: one(r.subtopic as never),
   };
 }
 
 const formatOf = (r: BankRow) => r.question_format ?? "mcq";
-const setBound = (r: BankRow) => r.set_id !== null || (r.context ?? "").trim() !== "";
+/**
+ * Tied to a shared context, so unusable as a loose question. A board exam lets
+ * an instruction-only context through ("Choose the correct option."): such a
+ * question does not depend on its neighbours.
+ */
+function setBound(r: BankRow, exam: ExamPlan): boolean {
+  const bound = r.set_id !== null || (r.context ?? "").trim() !== "";
+  return bound && !(exam.looseInstructions && isInstructionOnlyContext(r.context));
+}
 const correctCount = (r: BankRow) => (r.options ?? []).filter((o) => o.is_correct).length;
 
 function candidateOf(r: BankRow, exam: ExamPlan): SectionalCandidate {
@@ -267,7 +444,7 @@ function candidateOf(r: BankRow, exam: ExamPlan): SectionalCandidate {
     id: r.id,
     difficulty: r.difficulty ?? (exam.unratedAsModerate ? "MODERATE" : null),
     subtopic: r.subtopic?.name ?? null,
-    setBound: setBound(r),
+    setBound: setBound(r, exam),
     format: formatOf(r),
     // A row without exactly four options is unusable here; report it as
     // not-one-correct so the core's single eligibility rule excludes it.
@@ -304,8 +481,8 @@ async function examId(db: SupabaseClient, exam: ExamPlan): Promise<string> {
   return data.id as string;
 }
 
-/** Every PUBLIC past-year row of the exam, paged past the 1000-row cap. */
-async function fetchPool(db: SupabaseClient, exam: string): Promise<BankRow[]> {
+/** Every PUBLIC row of the exam of the given kinds, paged past the 1000-row cap. */
+async function fetchPool(db: SupabaseClient, exam: string, kinds: QuestionKind[]): Promise<BankRow[]> {
   const out: BankRow[] = [];
   for (let from = 0; ; from += PAGE) {
     const { data, error } = await db
@@ -313,7 +490,7 @@ async function fetchPool(db: SupabaseClient, exam: string): Promise<BankRow[]> {
       .select(SELECT)
       .eq("exam_id", exam)
       .eq("visibility", "PUBLIC")
-      .eq("question_kind", "pyq")
+      .in("question_kind", kinds)
       .order("id")
       .range(from, from + PAGE - 1);
     if (error) throw new Error(`fetchPool: ${error.message}`);
@@ -362,26 +539,33 @@ function readPlan(exam: ExamPlan): PlannedTest[] {
 async function plan(db: SupabaseClient, exam: ExamPlan): Promise<void> {
   const existing = readPlan(exam);
   const planned = new Set(existing.map((t) => t.chapterId));
-  const pool = await fetchPool(db, await examId(db, exam));
-  console.log(`pool: ${pool.length} PUBLIC past-year rows · ${existing.length} tests already planned\n`);
+  const pool = await fetchPool(db, await examId(db, exam), exam.kinds);
+  console.log(`pool: ${pool.length} PUBLIC ${exam.kinds.join("+")} rows · ${existing.length} tests already planned\n`);
 
   const added: PlannedTest[] = [];
   for (const sp of exam.subjects) {
     const rows = pool.filter((r) => r.chapter?.subject?.name === sp.bankSubject);
-    const byChapter = new Map<string, { id: string; name: string; rows: BankRow[] }>();
+    const byChapter = new Map<string, { id: string; name: string; orderIndex: number | null; rows: BankRow[] }>();
     for (const r of rows) {
-      const c = byChapter.get(r.chapter_id) ?? { id: r.chapter_id, name: r.chapter!.name, rows: [] };
+      const c = byChapter.get(r.chapter_id) ?? {
+        id: r.chapter_id, name: r.chapter!.name, orderIndex: r.chapter!.order_index, rows: [],
+      };
       c.rows.push(r);
       byChapter.set(r.chapter_id, c);
     }
-    const chapters = orderChapters(
-      [...byChapter.values()].map((c) => ({
-        ...c,
-        eligible: c.rows.map((r) => candidateOf(r, exam)).filter(isSectionalEligible),
-        pyq: c.rows.length,
-      })),
-      sp.weights
-    );
+    const withPools = [...byChapter.values()].map((c) => ({
+      ...c,
+      eligible: c.rows.map((r) => candidateOf(r, exam)).filter(isSectionalEligible),
+      pyq: c.rows.length,
+    }));
+    if (sp.chapterOrder) {
+      for (const c of withPools) {
+        const at = sp.chapterOrder.indexOf(c.name);
+        if (at < 0) console.log(`  ! ${c.name} is not in the book order list, so it lists last`);
+        c.orderIndex = at < 0 ? null : at;
+      }
+    }
+    const chapters = exam.bookOrder ? orderChaptersByBook(withPools) : orderChapters(withPools, sp.weights);
 
     // New chapters take the next free order numbers, after the committed ones.
     let seq = existing.filter((t) => t.subject === sp.bankSubject).length;
@@ -410,7 +594,7 @@ async function plan(db: SupabaseClient, exam: ExamPlan): Promise<void> {
       seq += 1;
       const test: PlannedTest = {
         slug: sectionalSlug(exam.examSlug, sp.code, seq, c.name),
-        title: sectionalTitle(exam.examName, c.name),
+        title: sectionalTitle(exam.titleName ?? exam.examName, c.name),
         examSlug: exam.examSlug,
         paperCode: sp.paper.code,
         sectionKey: sp.sectionKey,
@@ -431,9 +615,12 @@ async function plan(db: SupabaseClient, exam: ExamPlan): Promise<void> {
         const subs = new Set(picked.map((q) => q.subtopic)).size;
         const allSubs = new Set(c.eligible.map((q) => q.subtopic)).size;
         const nums = picked.filter((q) => q.format === "numeric").length;
+        const kindOf = new Map(c.rows.map((r) => [r.id, r.question_kind]));
+        const textbook = picked.filter((q) => kindOf.get(q.id) === "practice").length;
         detail =
           `E${mix("EASY")}/M${mix("MODERATE")}/H${mix("HARD")} · ${subs}/${allSubs} subtopics` +
-          (nums ? ` · ${nums} numeric` : "");
+          (nums ? ` · ${nums} numeric` : "") +
+          (exam.kinds.includes("practice") ? ` · ${picked.length - textbook} pyq + ${textbook} textbook` : "");
       }
       console.log(
         `  + ${String(seq).padStart(2)} ${c.name.padEnd(41)} ${String(c.rows.length).padStart(4)} rows → ` +
@@ -453,11 +640,11 @@ async function plan(db: SupabaseClient, exam: ExamPlan): Promise<void> {
 
 // ── build ───────────────────────────────────────────────────────────────────
 
-function problemsOf(r: BankRow | undefined, t: PlannedTest, sp: SubjectPlan): string[] {
+function problemsOf(r: BankRow | undefined, t: PlannedTest, sp: SubjectPlan, exam: ExamPlan): string[] {
   if (!r) return ["NOT FOUND in the bank"];
   const p: string[] = [];
   if (r.visibility !== "PUBLIC") p.push(`${r.visibility} (would render BLANK to a student)`);
-  if (r.question_kind !== "pyq") p.push(`question_kind ${r.question_kind}`);
+  if (!exam.kinds.includes(r.question_kind as QuestionKind)) p.push(`question_kind ${r.question_kind}`);
   const format = formatOf(r);
   if (format === "mcq") {
     if ((r.options ?? []).length !== 4) p.push(`${(r.options ?? []).length} options`);
@@ -468,7 +655,7 @@ function problemsOf(r: BankRow | undefined, t: PlannedTest, sp: SubjectPlan): st
   } else {
     p.push(`format ${format}`);
   }
-  if (sp.mode !== "sets" && setBound(r)) p.push("tied to a shared context");
+  if (sp.mode !== "sets" && setBound(r, exam)) p.push("tied to a shared context");
   if (sp.mode === "sets" && !r.set_id) p.push("not in a set");
   if (r.chapter_id !== t.chapterId) p.push(`moved to chapter "${r.chapter?.name}"`);
   return p;
@@ -502,7 +689,7 @@ async function build(
     const issues: string[] = [];
     const rows: PaperQuestionRow[] = t.questionIds.flatMap((id, i) => {
       const r = byId.get(id);
-      const p = problemsOf(r, t, sp);
+      const p = problemsOf(r, t, sp, exam);
       if (p.length) { issues.push(`${id}: ${p.join("; ")}`); return []; }
       return [{
         id,
@@ -542,7 +729,9 @@ async function build(
     if (opts.apply) {
       const { error } = await db.from("mock_tests").upsert(
         mockTestRow(snap, {
-          examId: examRowId, source: "pyq", scope: "sectional",
+          examId: examRowId,
+          source: sectionalSource(t.questionIds.map((id) => byId.get(id)!.question_kind)),
+          scope: "sectional",
           pyqYear: null, pyqMonth: null, publish: opts.publish, now,
         }),
         { onConflict: "id" }

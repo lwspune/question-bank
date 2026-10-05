@@ -21,6 +21,8 @@ import {
   isSectionalEligible,
   pickSectionalQuestions,
   orderChapters,
+  orderChaptersByBook,
+  sectionalSource,
   sectionalSlug,
   sectionalTitle,
   pickSectionalSets,
@@ -28,6 +30,8 @@ import {
   type SectionalSet,
 } from "@/lib/mocks/sectional";
 import {
+  CBSE_12_CHAPTER_MCQ_PAPER,
+  MH_SSC_10_HUMANITIES_MCQ_PAPER,
   MHT_CET_MATHS_PAPER,
   MHT_CET_PHY_CHEM_PAPER,
   NDA_GAT_PAPER,
@@ -366,5 +370,53 @@ describe("slug and title", () => {
   });
   it("titles name the exam and the chapter", () => {
     expect(sectionalTitle("MHT-CET", "Vectors")).toBe("MHT-CET Vectors — Chapter test");
+  });
+});
+
+describe("board chapter tests", () => {
+  it("a board lowers the floor to 10, so a chapter with 10 to 29 MCQs gets a 10-question test", () => {
+    expect(sectionalSize(9, 10)).toBeNull();
+    expect(sectionalSize(10, 10)).toBe(10);
+    expect(sectionalSize(29, 10)).toBe(10);
+    expect(sectionalSize(30, 10)).toBe(15);
+  });
+
+  it("maths and science run a minute and a half a question, marked +1 with nothing off", () => {
+    expect(sectionalDurationSecs(CBSE_12_CHAPTER_MCQ_PAPER, 10)).toBe(15 * 60);
+    expect(sectionalDurationSecs(CBSE_12_CHAPTER_MCQ_PAPER, 15)).toBe(23 * 60);
+    expect(CBSE_12_CHAPTER_MCQ_PAPER.marking).toEqual({ correct: 1, wrong: 0 });
+  });
+
+  it("history, civics and geography run a minute a question", () => {
+    expect(sectionalDurationSecs(MH_SSC_10_HUMANITIES_MCQ_PAPER, 10)).toBe(10 * 60);
+    expect(MH_SSC_10_HUMANITIES_MCQ_PAPER.marking).toEqual({ correct: 1, wrong: 0 });
+  });
+});
+
+describe("sectionalSource: what the catalogue badge may claim", () => {
+  it("a test made only of past-year questions is a past-paper test", () => {
+    expect(sectionalSource(["pyq", "pyq"])).toBe("pyq");
+  });
+
+  it("one textbook question makes it a practice test, so the badge never overclaims", () => {
+    expect(sectionalSource(["pyq", "practice", "pyq"])).toBe("practice");
+    expect(sectionalSource(["practice"])).toBe("practice");
+  });
+
+  it("refuses an empty test rather than labelling it", () => {
+    expect(() => sectionalSource([])).toThrow();
+  });
+});
+
+describe("orderChaptersByBook: board tests list in textbook order", () => {
+  it("sorts by the book's chapter number, unnumbered chapters last by name", () => {
+    const got = orderChaptersByBook([
+      { name: "Circle", orderIndex: 3 },
+      { name: "Similarity", orderIndex: 1 },
+      { name: "Zeta", orderIndex: null },
+      { name: "Alpha", orderIndex: null },
+      { name: "Pythagoras Theorem", orderIndex: 2 },
+    ]).map((c) => c.name);
+    expect(got).toEqual(["Similarity", "Pythagoras Theorem", "Circle", "Alpha", "Zeta"]);
   });
 });

@@ -640,6 +640,65 @@ export const UPSC_CSAT_PAPER: MockPaperBlueprint = {
   ],
 };
 
+/**
+ * Board chapter-test papers (2026-10-05). No board prints an MCQ-only paper:
+ * the MCQs sit inside a long written paper with no clock of their own. So these
+ * are never served whole. They exist to give a chapter test its marking (+1,
+ * nothing off, as every board marks) and its pace, which is set here rather than
+ * measured: 90 seconds for maths and science, where an MCQ can need a
+ * calculation, and 60 for history, civics and geography, which are recall.
+ * A chapter test takes its rate from durationSecs / totalQuestions, so the
+ * counts below are only the denominator.
+ */
+const BOARD_MARKING = { correct: 1, wrong: 0 };
+const STEM_SECS = 90;
+const HUMANITIES_SECS = 60;
+
+function boardPaper(
+  examName: string,
+  examSlug: string,
+  code: string,
+  paperLabel: string,
+  secsPerQuestion: number,
+  subjects: [key: string, subject: string][]
+): MockPaperBlueprint {
+  const count = 20;
+  return {
+    code,
+    examName,
+    examSlug,
+    paperLabel,
+    durationSecs: subjects.length * count * secsPerQuestion,
+    marking: BOARD_MARKING,
+    sections: subjects.map(([key, subject]) => ({ key, label: subject, subjects: [subject], count })),
+  };
+}
+
+export const CBSE_12_CHAPTER_MCQ_PAPER = boardPaper(
+  "CBSE Class 12", "cbse-12", "chapter-mcq", "Chapter MCQs", STEM_SECS,
+  [["physics", "Physics"], ["chemistry", "Chemistry"], ["mathematics", "Mathematics"]]
+);
+
+export const MH_HSC_12_CHAPTER_MCQ_PAPER = boardPaper(
+  "Maharashtra HSC Class 12", "mh-hsc-12", "chapter-mcq", "Chapter MCQs", STEM_SECS,
+  [["physics", "Physics"], ["chemistry", "Chemistry"], ["mathematics", "Mathematics"]]
+);
+
+export const MH_SSC_10_CHAPTER_MCQ_PAPER = boardPaper(
+  "Maharashtra State Board Class 10", "mh-ssc-10", "chapter-mcq", "Chapter MCQs: Maths and Science", STEM_SECS,
+  [
+    ["algebra", "Algebra"],
+    ["geometry", "Geometry"],
+    ["science-1", "Science and Technology I"],
+    ["science-2", "Science and Technology II"],
+  ]
+);
+
+export const MH_SSC_10_HUMANITIES_MCQ_PAPER = boardPaper(
+  "Maharashtra State Board Class 10", "mh-ssc-10", "chapter-mcq-humanities", "Chapter MCQs: Social Science", HUMANITIES_SECS,
+  [["history", "History"], ["political-science", "Political Science"], ["geography", "Geography"]]
+);
+
 /** The NDA blueprints the build script's year+month discovery loop iterates. */
 export const MOCK_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   NDA_MATHS_PAPER,
@@ -670,6 +729,10 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   MPSC_SSP_GS1_PAPER,
   UPSC_GS1_PAPER,
   UPSC_CSAT_PAPER,
+  CBSE_12_CHAPTER_MCQ_PAPER,
+  MH_HSC_12_CHAPTER_MCQ_PAPER,
+  MH_SSC_10_CHAPTER_MCQ_PAPER,
+  MH_SSC_10_HUMANITIES_MCQ_PAPER,
 ];
 
 /** Sum of the DECLARED section counts (0 when a blueprint declares none). */
