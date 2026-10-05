@@ -231,3 +231,9 @@ parenthesis is a double-escape and renders as a stray mark.
 - Every `_note` flag (printed defects, stale cross-references, ambiguous stems)
 - Figure refs and whether you eyeballed the crops
 - Anything that appears to belong to no band, and anything you could not resolve
+
+## Punctuation: no em dashes in what you WRITE (2026-10-05)
+
+Do not use an em dash (—) anywhere in text you write: solutions, model answers, explanations, notes. Our readers type on phone keyboards that have no em dash, so text full of them reads as machine-written (printed exam papers run 0.11 per 1,000 words; our older solutions ran up to 12). Use a full stop, a colon, a comma or brackets instead. Rewrite the sentence; do not swap in " – " or " -- ", which read the same way. An en dash in a range (2017–2024) is fine.
+
+This rule is for YOUR words only. Text you COPY from the source paper or book keeps its own punctuation exactly. After a commit, `npm run audit:voice -- --solutions` reports the rate per exam.

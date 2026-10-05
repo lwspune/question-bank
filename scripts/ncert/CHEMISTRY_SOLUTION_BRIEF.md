@@ -47,3 +47,9 @@ in a `_note` and let the cross-check decide.
 - **A "state with reasons" or "explain why" question gets the actual chemical reason** —
   intermolecular forces, H-bonding, ion-dipole interaction, deviation from Raoult's law —
   not a restatement of the question.
+
+## Punctuation: no em dashes in what you WRITE (2026-10-05)
+
+Do not use an em dash (—) anywhere in text you write: solutions, model answers, explanations, notes. Our readers type on phone keyboards that have no em dash, so text full of them reads as machine-written (printed exam papers run 0.11 per 1,000 words; our older solutions ran up to 12). Use a full stop, a colon, a comma or brackets instead. Rewrite the sentence; do not swap in " – " or " -- ", which read the same way. An en dash in a range (2017–2024) is fine.
+
+This rule is for YOUR words only. Text you COPY from the source paper or book keeps its own punctuation exactly. After a commit, `npm run audit:voice -- --solutions` reports the rate per exam.
