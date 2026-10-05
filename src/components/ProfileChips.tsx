@@ -41,7 +41,11 @@ export default function ProfileChips({
   selected,
   onToggle,
   disabled = false,
+  legendStyle = "label",
 }: {
+  /** "question": a plain-English heading (/welcome); "label": the small caps
+   *  label the /account form uses. */
+  legendStyle?: "label" | "question";
   legend: string;
   options: readonly ChipOption[];
   selected: readonly string[];
@@ -51,7 +55,13 @@ export default function ProfileChips({
   const rows = toRows(options);
   return (
     <fieldset>
-      <legend className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+      <legend
+        className={
+          legendStyle === "question"
+            ? "text-base font-semibold tracking-tight text-foreground"
+            : "text-xs font-semibold uppercase tracking-wide text-muted-foreground"
+        }
+      >
         {legend}
       </legend>
       <div className="mt-3 space-y-3">

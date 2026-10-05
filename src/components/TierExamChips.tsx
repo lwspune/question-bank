@@ -18,7 +18,11 @@ export default function TierExamChips({
   selected,
   onToggle,
   disabled = false,
+  legend = "Target exam",
+  legendStyle = "label",
 }: {
+  legend?: string;
+  legendStyle?: "label" | "question";
   stage: Stage | null;
   selected: readonly string[];
   onToggle: (value: string) => void;
@@ -31,7 +35,8 @@ export default function TierExamChips({
   return (
     <div>
       <ProfileChips
-        legend="Target exam"
+        legend={legend}
+        legendStyle={legendStyle}
         options={shown}
         selected={selected}
         onToggle={onToggle}

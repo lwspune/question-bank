@@ -118,3 +118,18 @@ export function validateOnboardingSubmission(input: OnboardingSubmission): Clean
     stage: isStage(input.stage) ? input.stage : null,
   };
 }
+
+/**
+ * /welcome step 1: whether the exam question shows yet. Spec:
+ * tests/profile-onboarding.test.ts. Once a class is picked (the chips then
+ * narrow to it), at once when an exam is already selected (the one they were
+ * browsing, so a pick is never hidden), or on request. The first view used to
+ * show all ~30 exam chips before a class was picked.
+ */
+export function examQuestionVisible(input: {
+  stage: Stage | null;
+  selectedCount: number;
+  showAnyway: boolean;
+}): boolean {
+  return input.stage !== null || input.selectedCount > 0 || input.showAnyway;
+}
