@@ -23,6 +23,10 @@ export type PaperData = {
   classification: Record<string, { subject?: string; chapter: string; subtopic: string }>;
   optionOverrides?: Record<string, Partial<Record<OptionLabel, string>>>;
   stemOverrides?: Record<string, string>; // supply/replace stem text (e.g. a match-list rendered as an image)
+  // Questions whose stem figure is NOT attached because its stemOverride types it out faithfully
+  // (a match-list table). Without this, attach-images re-attaches the picture to any row whose
+  // image_url is empty, and the question shows the same table twice.
+  textReplacesFigure?: number[];
   answerOverrides?: Record<string, OptionLabel>; // correct the answer when the soln doc mis-keyed it (duplicate/missing number)
   numericOverrides?: Record<string, number>; // supply/correct the answer for a Section-B NAT (numeric) question
   solutionFixes?: Record<string, [string, string][]>;

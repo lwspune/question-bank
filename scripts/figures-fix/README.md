@@ -116,3 +116,5 @@ with a manifest note that starts "REDRAWN". A row may also carry only a
 | `cbse12-pyq-group-c` (CBSE Class 12 Maths board papers 2023/2026; case studies + one vector figure) | 18 rows, 6 figures | 2026-10-03 |
 | `group-c-misc` (MHT-CET 2023/2025 and Foundation Word originals, NDA trig workbook) | 10 (JEE 24 Jan 2023 Q104 left: no figure in its source) | 2026-10-03 |
 | `mh-ssc-10-effects-q11c` (Effects of Electric Current Ex Q11(c), a DC generator; figure at the top of the right-hand column) | 1 | 2026-10-04 |
+| `neet-2026-q65-table` (NEET 2026 Q65: match list stored twice, as a typed table AND the printed picture; the picture keeps the structures, so the typed table goes) | 1 | 2026-10-05 |
+| JEE 1 Feb 2024 Q48, by hand (the reverse case: the typed table in `stemOverrides` is faithful, so the picture goes; `image_url` nulled, prior state in `backup/jee-2024-feb01-q48-table.before.json`, and the paper's `textReplacesFigure` stops `scripts/jee/attach-images.ts` re-attaching it) | 1 | 2026-10-05 |

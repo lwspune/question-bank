@@ -168,11 +168,17 @@ async function main() {
   // 2-scheme + 4-option question) are skipped with a warning and handled by a
   // dedicated one-off (composite the stem schemes + attach options manually).
   const skip = new Set<number>();
+  // A typed table stands in for these stem figures (PaperData.textReplacesFigure).
+  const typed = new Set(paper.textReplacesFigure ?? []);
+  const planOf = (r: Rec) => {
+    const plan = planFor(r, { fallbackDir, paperId });
+    return typed.has(r.questionNumber) ? { ...plan, qImage: null } : plan;
+  };
   console.log(`${imgRecs.length} image-bearing questions.`);
   for (const r of imgRecs) {
     let plan: ReturnType<typeof planFor>;
     try {
-      plan = planFor(r, { fallbackDir, paperId });
+      plan = planOf(r);
     } catch (e) {
       skip.add(r.questionNumber);
       console.warn(`  ${(e as Error).message} — SKIPPING (handle manually)`);
@@ -193,7 +199,7 @@ async function main() {
   let optSet = 0;
   for (const r of imgRecs) {
     if (skip.has(r.questionNumber)) continue;
-    const plan = planFor(r, { fallbackDir, paperId });
+    const plan = planOf(r);
     const { data: q } = await client
       .from("questions")
       .select("id, image_url, options(id, label, image_url)")
