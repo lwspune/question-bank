@@ -325,6 +325,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-10
 
+- **2026-10-05 (fifth) — Board chapter tests: CBSE 12 (37), MH HSC 12 (43), MH SSC 10 (12), as DRAFTS from textbook and board MCQs together.**
+  - **Neither kind is enough alone** outside CBSE 12, so textbook rows join (`source='practice'`). Floor 10 (owner). CBSE 10 ingestion PARKED (ROADMAP).
+  - **An instruction is not a passage:** MH textbook MCQs all carry "Choose the correct option." and were dropped as set-bound. Measured line: instructions 16-137 characters, the shortest case study 180 (`isInstructionOnlyContext`, boards only).
+  - **Chapter tests swap Assertion-Reason directions** for one sentence: the printed ones say "Questions 13 to 16" (`chapterTestContext`).
+  - **`order_index` is ingestion order** in CBSE 12 and MH HSC 12 Physics and Chemistry, so the builder carries book lists (slugs freeze the number); DB fix on the ROADMAP ledger. Publish needs `hasMocks` flipped. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-10-05 (fourth) — One right answer fixes a drill question (was two, ten days apart); a later miss anywhere puts it back.**
   - **Why (owner):** the list only grew, which demotivates. The two-step rule guarded the 25% guessing floor; the owner traded that for a list students can clear.
   - **Same-day counts, decided knowingly:** 157 of 521 first right answers came the same IST day as the miss, 113 within an hour. The bank's per-day dedupe still stops a re-tap the same day.

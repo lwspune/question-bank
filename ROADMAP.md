@@ -6,6 +6,28 @@ Pending features, data-model changes, and content work for Question Bank. Mirror
 
 ---
 
+## CBSE Class 10 Maths + Science board PYQs: PARKED (2026-10-05)
+
+Asked for so CBSE 10 can get chapter tests: today it has 109 textbook MCQs and no chapter
+reaches 10, so it gets none. Parked by the owner the same day. What was found:
+
+- **Source** is CBSE's own archive, the one `scripts/cbse-12-pyq/` used
+  (`cbse.gov.in/cbsenew/{question-paper,Marking-Scheme}/<year>/X/<name>.zip`). Probed by HEAD
+  request (a made-up name returns 404, so a 200 is real): question papers 2023 Science,
+  Mathematics_Standard, Mathematics_Basic; 2024 the same three; 2026 Science and
+  Mathematics_Standard. Marking schemes 2023 Maths_Standard; 2024 Science,
+  Mathematics_Standard, Mathematics; 2025 Science. The rest use names not yet found.
+- **Yield (estimate):** Section A is about 20 MCQs a paper and CBSE prints three near-identical
+  sets, so a few hundred distinct MCQs per subject. Measure on the first paper before planning.
+- **Open decisions for whoever picks it up:** Maths Standard, Basic or both (recommended:
+  Standard first); full papers or MCQs only (recommended: full, as CBSE 12 did); and parallel
+  agents need the owner's explicit go. Dropping `practiceOnly` on `cbse-10` leaves Social
+  Science with an empty PYQ view on `/browse`; check that before the flip.
+- Then `npx tsx scripts/mocks/build-sectional.ts --exam=cbse-10 --plan` needs a `cbse-10`
+  config and blueprint, the same shape as `cbse-12`'s.
+
+---
+
 ## MPSC Mains — four papers dropped, not ingested (2026-09-27)
 
 Set aside at the user's call; each carries a `dropped` reason in `scripts/mpsc-mains/config.ts`, and `requirePaper` refuses them, so `merge`/`commit` cannot load one by accident. Nothing from any of them reached the database.
@@ -2310,3 +2332,18 @@ Reactions, **Electricity**, Heredity, Our Environment… — the order the chapt
 URLs move. Does it apply — yes, a student reading `/board` expects the book's order. Risk — low,
 reversible with one UPDATE per chapter. Cost — a 27-row UPDATE from each config entry's
 `chapterNo`. Recommendation — DO, but it is shipped data, so it waits for an explicit go.
+
+### BACKFILL LEDGER — the same for CBSE 12 and MH HSC 12 Physics and Chemistry (logged 2026-10-05)
+
+Found while building board chapter tests. `order_index` follows ingestion, not the book, in four
+subjects: CBSE 12 Physics (starts at Magnetism and Matter), CBSE 12 Chemistry (Biomolecules third),
+MH HSC 12 Physics (Thermodynamics, Superposition of Waves and Electrostatics at the end) and MH HSC
+12 Chemistry (starts at Amines). Both Maths subjects and every MH SSC 10 subject are in book order.
+The book order is the source PDFs' own numbering in `scripts/ncert/config.ts` and
+`scripts/stateboard/config.ts`.
+
+**360:** scope 56 chapter rows on two exams. Blast radius as above: chapter order on `/browse`
+and `/board`, no ids or URLs. Risk low, one UPDATE per chapter. The chapter tests are NOT affected:
+`build-sectional.ts` carries the four book orders as explicit lists, because a slug freezes its
+number. Recommendation DO, with the cbse-10 fix above, after an explicit go. Once done, the
+builder's `chapterOrder` lists can go.
