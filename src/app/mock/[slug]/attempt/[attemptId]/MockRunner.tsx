@@ -340,7 +340,7 @@ export default function MockRunner({
                   Your answer
                 </label>
                 <p className="mt-1 text-xs text-muted-foreground">
-                  Section B — type the value. There are no options for this
+                  Section B: type the value. There are no options for this
                   question.
                 </p>
                 <input

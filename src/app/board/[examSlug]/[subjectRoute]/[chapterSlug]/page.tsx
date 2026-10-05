@@ -117,7 +117,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     : "";
   return {
     title: { absolute: title },
-    description: `${chapter.chapterName}: every solved example, exercise, and miscellaneous question with model answers — in ${data.displayName} textbook order.${pyqLine}`,
+    description: `${chapter.chapterName}: every solved example, exercise, and miscellaneous question with model answers, in ${data.displayName} textbook order.${pyqLine}`,
     alternates: { canonical: `/board/${params.examSlug}/${params.subjectRoute}/${params.chapterSlug}` },
   };
 }
@@ -151,7 +151,7 @@ export default async function BoardChapterPage({ params }: { params: Params }) {
           </p>
           <h1 className="mt-1 text-2xl font-bold tracking-tight text-foreground">{chapter.chapterName}</h1>
           <p className="mt-1.5 text-sm text-muted-foreground">
-            Every solved example, exercise, and miscellaneous question — in the order the textbook teaches them.
+            Every solved example, exercise, and miscellaneous question, in the order the textbook teaches them.
             {pyqCount > 0 && " Plus every board question asked from this chapter."}
             <span className="text-muted-foreground/70"> · {chapter.total} questions</span>
           </p>

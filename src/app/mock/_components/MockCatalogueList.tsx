@@ -21,7 +21,7 @@ function fmtMins(secs: number) {
  */
 export default function MockCatalogueList({
   groups,
-  emptyMessage = "No mock tests published yet — check back soon.",
+  emptyMessage = "No mock tests published yet. Check back soon.",
   showSourceBadge = false,
 }: {
   groups: MockGroup[];

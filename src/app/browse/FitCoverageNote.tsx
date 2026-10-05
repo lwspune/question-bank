@@ -22,8 +22,8 @@ export default function FitCoverageNote({
     coverage.kind === "partial"
       ? `${coverage.unreviewed
           .map(chapterName)
-          .join(", ")} ${coverage.unreviewed.length === 1 ? "has" : "have"} not been screened yet — questions from ${coverage.unreviewed.length === 1 ? "it" : "them"} are shown unfiltered.`
-      : `Screened so far: ${coverage.reviewedNames.join(", ")}. Every other chapter is shown unfiltered — pick a screened chapter to apply the filter.`;
+          .join(", ")} ${coverage.unreviewed.length === 1 ? "has" : "have"} not been screened yet, so questions from ${coverage.unreviewed.length === 1 ? "it" : "them"} are shown unfiltered.`
+      : `Screened so far: ${coverage.reviewedNames.join(", ")}. Every other chapter is shown unfiltered. Pick a screened chapter to apply the filter.`;
 
   return (
     <div

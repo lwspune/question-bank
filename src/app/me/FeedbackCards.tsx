@@ -48,7 +48,7 @@ function NpsCard() {
     setSaving(false);
     if (ok) {
       setDone(true);
-      toast.success("Thanks — that helps a lot.");
+      toast.success("Thanks, that helps a lot.");
     }
   }
 
@@ -126,7 +126,7 @@ export function FeatureCard({
     if (ok) {
       setMessage("");
       setOpen(defaultOpen);
-      toast.success("Thanks — we read every suggestion.");
+      toast.success("Thanks. We read every suggestion.");
     }
   }
 
@@ -153,7 +153,7 @@ export function FeatureCard({
         Suggest a feature or report a gap
       </h2>
       <p className="mt-1 text-xs text-muted-foreground">
-        Missing an exam, a chapter, or a feature? Tell us — it shapes what we build next.
+        Missing an exam, a chapter, or a feature? Tell us. It shapes what we build next.
       </p>
       {!open ? (
         <Button type="button" variant="outline" size="sm" className="mt-3" onClick={() => setOpen(true)}>

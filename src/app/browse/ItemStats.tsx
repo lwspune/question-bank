@@ -33,7 +33,7 @@ export function ItemStatChip({ agg }: { agg: ItemStatAggregate | undefined }) {
         className={cn("shrink-0 tabular-nums", chip.provisional && "opacity-60")}
         title={
           chip.provisional
-            ? `${chip.pct}% of ${chip.n} attempts answered this correctly — provisional, fewer than 20 attempts`
+            ? `${chip.pct}% of ${chip.n} attempts answered this correctly (provisional: fewer than 20 attempts)`
             : `${chip.pct}% of ${chip.n} attempts answered this correctly`
         }
       >
@@ -78,7 +78,7 @@ export function ItemStatDetail({
           {agg.sittings === 1 ? "" : "s"}
         </span>
         {agg.attempted < 20 && (
-          <span className="text-muted-foreground/70">provisional — under 20 attempts</span>
+          <span className="text-muted-foreground/70">provisional (under 20 attempts)</span>
         )}
       </div>
 
@@ -106,15 +106,15 @@ export function ItemStatDetail({
         </ul>
       ) : (
         <p className="text-muted-foreground">
-          Numeric answer — no option distribution.
+          Numeric answer, so no option distribution.
         </p>
       )}
 
       {flagged && (
         <p className="mt-2 text-muted-foreground">
           A distractor outpulled the key. That can mean the key is wrong, that the
-          distractor is a well-built trap, or that there is a shared misconception —
-          worth a read, not a conclusion.
+          distractor is a well-built trap, or that there is a shared misconception.
+          Worth a read, not a conclusion.
         </p>
       )}
 
@@ -124,7 +124,7 @@ export function ItemStatDetail({
             {agg.verdictMismatch} attempt{agg.verdictMismatch === 1 ? "" : "s"} were marked
             against a different answer than the key.
           </span>{" "}
-          A mis-keyed or dropped question in the sitting it came from — unlike a winning
+          A mis-keyed or dropped question in the sitting it came from. Unlike a winning
           distractor, this one is not ambiguous.
         </p>
       )}
@@ -136,7 +136,7 @@ export function ItemStatDetail({
             <dd className="tabular-nums">
               {agg.discrimination >= 0 ? "+" : ""}
               {agg.discrimination.toFixed(2)}
-              {agg.discrimination < 0 && " — rewards the weaker half"}
+              {agg.discrimination < 0 && " (rewards the weaker half)"}
             </dd>
           </div>
         )}
@@ -157,7 +157,7 @@ export function ItemStatDetail({
             <dd>
               {agg.exposure.cohorts.join(" · ")}
               {agg.exposure.lastSatAt &&
-                ` — last ${new Date(agg.exposure.lastSatAt).toLocaleDateString("en-IN", {
+                `, last sat ${new Date(agg.exposure.lastSatAt).toLocaleDateString("en-IN", {
                   day: "numeric",
                   month: "short",
                   year: "numeric",

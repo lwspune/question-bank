@@ -99,14 +99,14 @@ export function buildEmail(r: Recipient, unsubscribeToken: string, clickToken?: 
     "",
     lead,
     "",
-    `${r.mock.title} — ${shape}, timed and auto-graded.`,
+    `${r.mock.title}: ${shape}, timed and auto-graded.`,
     // Carry the CTA the HTML renders as a button: the text body is a real
     // alternative, not a degraded one, and a bare URL with no label is worse.
     `${cta}: ${mockUrl}`,
     "",
     "It's a real past paper, served exactly as it was set. You get a score, a section split, and every question reviewable with the solution.",
     "",
-    "Stuck, or can't sign in? Just reply to this email — it reaches a person.",
+    "Stuck, or can't sign in? Just reply to this email. A person reads every reply.",
     "",
     `— ${BRAND}`,
     "",
@@ -125,7 +125,7 @@ export function buildEmail(r: Recipient, unsubscribeToken: string, clickToken?: 
     <a href="${mockUrl}" style="background:${ACCENT};color:#fff;text-decoration:none;padding:11px 20px;border-radius:6px;display:inline-block;font-weight:600">${cta}</a>
   </p>
   <p style="margin:0 0 16px;color:${MUTED};font-size:14px">It's a real past paper, served exactly as it was set. You get a score, a section split, and every question reviewable with the solution.</p>
-  <p style="margin:0 0 24px;color:${MUTED};font-size:14px">Stuck, or can&#39;t sign in? Just reply to this email — it reaches a person.</p>
+  <p style="margin:0 0 24px;color:${MUTED};font-size:14px">Stuck, or can&#39;t sign in? Just reply to this email. A person reads every reply.</p>
   <p style="margin:0 0 24px">— ${BRAND}</p>
   <hr style="border:none;border-top:1px solid #e2e8f0;margin:0 0 12px">
   <p style="margin:0;color:#94a3b8;font-size:12px">
@@ -153,7 +153,7 @@ function nextMockCopy(r: Recipient, who: string): { subject: string; lead: strin
     const { score, maxScore, mockTitle } = r.lastScore;
     const pretty = `${round(score)}/${round(maxScore)}`;
     return {
-      subject: who ? `${pretty} last time, ${who} — ready for the next paper?` : `${pretty} last time — ready for the next paper?`,
+      subject: who ? `${pretty} last time, ${who}. Ready for the next paper?` : `${pretty} last time. Ready for the next paper?`,
       lead: `You scored ${pretty} on ${mockTitle}. Here's the next paper you haven't sat yet.`,
     };
   }
@@ -222,7 +222,7 @@ export function buildBatchInviteEmail(input: InviteEmailInput): BuiltEmail {
     "",
     `Accept or decline: ${actionUrl}`,
     "",
-    `Don't recognise ${orgName}? Ignore this email — nothing happens unless you accept.`,
+    `Don't recognise ${orgName}? Ignore this email. Nothing happens unless you accept.`,
     "",
     `— ${BRAND}`,
   ].join("\n");
@@ -238,7 +238,7 @@ ${INVITE_LINES.map((l) => `    <li>${escapeHtml(l)}</li>`).join("\n")}
   <p style="margin:0 0 24px">
     <a href="${actionUrl}" style="background:${ACCENT};color:#fff;text-decoration:none;padding:11px 20px;border-radius:6px;display:inline-block;font-weight:600">Accept or decline</a>
   </p>
-  <p style="margin:0 0 24px;color:${MUTED};font-size:14px">Don&#39;t recognise ${escapeHtml(orgName)}? Ignore this email — nothing happens unless you accept.</p>
+  <p style="margin:0 0 24px;color:${MUTED};font-size:14px">Don&#39;t recognise ${escapeHtml(orgName)}? Ignore this email. Nothing happens unless you accept.</p>
   <p style="margin:0">— ${BRAND}</p>
 </div>`;
 
@@ -270,7 +270,7 @@ const where = formatWhere;
 /** The peer line, only when there IS peer evidence. Absent evidence says
  *  nothing — it must never render as "0% of students got this right". */
 function peerLine(peerPct: number | null): string {
-  return peerPct === null ? "" : ` — ${peerPct}% of students got this right`;
+  return peerPct === null ? "" : ` (${peerPct}% of students got this right)`;
 }
 
 /** Re-exported shape of the core's formatter — see mockReport.formatMarks. */
@@ -302,7 +302,7 @@ export function buildMockReportEmail(input: MockReportEmailInput): BuiltEmail {
   const unsubUrl = `${SITE_URL}/unsubscribe/${unsubscribeToken}`;
   const oneClickUrl = `${SITE_URL}/api/unsubscribe/${unsubscribeToken}`;
 
-  const scoreLine = `${round(r.score)}/${round(r.maxScore)} (${r.pct}%) — ${r.correct} right, ${r.wrong} wrong, ${r.seenBlank} left blank`;
+  const scoreLine = `${round(r.score)}/${round(r.maxScore)} (${r.pct}%): ${r.correct} right, ${r.wrong} wrong, ${r.seenBlank} left blank`;
 
   // A COUNT CLAIM HAS TO SURVIVE ITS OWN EDGE CASES, and this one is the first
   // thing a student reads. One finding is "1 thing"; and a report carried by
@@ -311,8 +311,8 @@ export function buildMockReportEmail(input: MockReportEmailInput): BuiltEmail {
   const fixes = r.easyWrong.length || r.subtopics.length;
   const tail = fixes > 0 ? `${fixes} thing${fixes === 1 ? "" : "s"} to fix` : "what to fix";
   const subject = who
-    ? `${who}, ${round(r.score)}/${round(r.maxScore)} on ${r.mockTitle} — ${tail}`
-    : `${round(r.score)}/${round(r.maxScore)} on ${r.mockTitle} — what to fix`;
+    ? `${who}, ${round(r.score)}/${round(r.maxScore)} on ${r.mockTitle}: ${tail}`
+    : `${round(r.score)}/${round(r.maxScore)} on ${r.mockTitle}: what to fix`;
 
   // ── plain text ────────────────────────────────────────────────────────────
   const t: string[] = [who ? `Hi ${who},` : "Hi,", "", `You finished ${r.mockTitle}.`, scoreLine, ""];
@@ -326,14 +326,14 @@ export function buildMockReportEmail(input: MockReportEmailInput): BuiltEmail {
     t.push(`EASY ONES YOU LOOKED AT AND LEFT (${r.easyLeft.length})`);
     for (const q of r.easyLeft) {
       const dwell = formatDwell(q.secs);
-      t.push(`  Q${q.position} · ${where(q)}${dwell ? ` — you spent ${dwell} on it` : ""}`);
+      t.push(`  Q${q.position} · ${where(q)}${dwell ? ` (you spent ${dwell} on it)` : ""}`);
     }
     t.push("");
   }
   if (r.pacing) {
     t.push("PACING");
     t.push(
-      `  You never reached ${r.pacing.neverReached} questions — ${marks(r.pacing.marksLeft)} marks you didn't get a shot at. That's the clock, not the syllabus.`
+      `  You never reached ${r.pacing.neverReached} questions, worth ${marks(r.pacing.marksLeft)} marks you didn't get a shot at. That's the clock, not the syllabus.`
     );
     t.push("");
   }
@@ -342,7 +342,7 @@ export function buildMockReportEmail(input: MockReportEmailInput): BuiltEmail {
     t.push("  Across every paper you've sat, not just this one:");
     for (const s of r.subtopics) {
       const acc = s.accuracy === null ? "" : ` (you're at ${s.accuracy}% over ${s.judged} questions)`;
-      t.push(`  ${s.chapter} · ${s.subtopic} — about ${marks(s.gap)} marks${acc}`);
+      t.push(`  ${s.chapter} · ${s.subtopic}: about ${marks(s.gap)} marks${acc}`);
     }
     t.push("");
   }
@@ -351,7 +351,7 @@ export function buildMockReportEmail(input: MockReportEmailInput): BuiltEmail {
     `Every question, with the solution: ${resultUrl}`,
     `Your full performance across all papers: ${perfUrl}`,
     "",
-    "Reply to this email if something looks wrong — it reaches a person.",
+    "Reply to this email if something looks wrong. A person reads every reply.",
     "",
     `— ${BRAND}`,
     "",
@@ -370,11 +370,11 @@ export function buildMockReportEmail(input: MockReportEmailInput): BuiltEmail {
     const dwell = showDwell ? formatDwell(q.secs) : "";
     const tail = showDwell
       ? dwell
-        ? `<span style="color:${MUTED}"> — you spent ${escapeHtml(dwell)} on it</span>`
+        ? `<span style="color:${MUTED}"> (you spent ${escapeHtml(dwell)} on it)</span>`
         : ""
       : q.peerPct === null
         ? ""
-        : `<span style="color:${MUTED}"> — ${q.peerPct}% of students got this right</span>`;
+        : `<span style="color:${MUTED}"> (${q.peerPct}% of students got this right)</span>`;
     return `<p style="margin:0 0 8px;font-size:14px"><strong style="color:#0f172a">Q${q.position}</strong> &middot; ${escapeHtml(where(q))}${tail}</p>`;
   };
 
@@ -394,7 +394,7 @@ export function buildMockReportEmail(input: MockReportEmailInput): BuiltEmail {
     sections.push(
       card(
         "Pacing",
-        `<p style="margin:0;font-size:14px">You never reached <strong>${r.pacing.neverReached} questions</strong> — ${escapeHtml(marks(r.pacing.marksLeft))} marks you didn&#39;t get a shot at. That&#39;s the clock, not the syllabus.</p>`
+        `<p style="margin:0;font-size:14px">You never reached <strong>${r.pacing.neverReached} questions</strong>, worth ${escapeHtml(marks(r.pacing.marksLeft))} marks you didn&#39;t get a shot at. That&#39;s the clock, not the syllabus.</p>`
       )
     );
   }
@@ -408,7 +408,7 @@ export function buildMockReportEmail(input: MockReportEmailInput): BuiltEmail {
               const acc =
                 s.accuracy === null
                   ? ""
-                  : `<span style="color:${MUTED}"> — you&#39;re at ${s.accuracy}% over ${s.judged} questions</span>`;
+                  : `<span style="color:${MUTED}"> (you&#39;re at ${s.accuracy}% over ${s.judged} questions)</span>`;
               return `<p style="margin:0 0 8px;font-size:14px"><strong style="color:#0f172a">${escapeHtml(marks(s.gap))} marks</strong> &middot; ${escapeHtml(s.chapter)} &middot; ${escapeHtml(s.subtopic)}${acc}</p>`;
             })
             .join("")
@@ -427,7 +427,7 @@ export function buildMockReportEmail(input: MockReportEmailInput): BuiltEmail {
   <p style="margin:0 0 24px;font-size:14px">
     <a href="${perfUrl}" style="color:${ACCENT}">Your full performance across all papers &rarr;</a>
   </p>
-  <p style="margin:0 0 24px;color:${MUTED};font-size:14px">Reply to this email if something looks wrong — it reaches a person.</p>
+  <p style="margin:0 0 24px;color:${MUTED};font-size:14px">Reply to this email if something looks wrong. A person reads every reply.</p>
   <p style="margin:0 0 24px">— ${BRAND}</p>
   <hr style="border:none;border-top:1px solid #e2e8f0;margin:0 0 12px">
   <p style="margin:0;color:#94a3b8;font-size:12px">
@@ -484,7 +484,7 @@ export function buildDueNudgeEmail(input: DueNudgeEmailInput): BuiltEmail {
   const oneClickUrl = `${SITE_URL}/api/unsubscribe/${unsubscribeToken}`;
 
   const topLine = `${top.count} ${top.chapter} question${top.count === 1 ? "" : "s"} ${top.count === 1 ? "is" : "are"} waiting`;
-  const subject = summary.total > top.count ? `${topLine} — ${summary.total} in all` : topLine;
+  const subject = summary.total > top.count ? `${topLine} (${summary.total} in all)` : topLine;
 
   const total = summary.total;
   const lead = `${total} question${total === 1 ? "" : "s"} you got wrong in a timed test ${total === 1 ? "is" : "are"} waiting to be fixed:`;
@@ -500,7 +500,7 @@ export function buildDueNudgeEmail(input: DueNudgeEmailInput): BuiltEmail {
     how,
     `Fix them: ${drillUrl}`,
     "",
-    "Reply to this email if something looks wrong — it reaches a person.",
+    "Reply to this email if something looks wrong. A person reads every reply.",
     "",
     `— ${BRAND}`,
     "",
@@ -518,7 +518,7 @@ export function buildDueNudgeEmail(input: DueNudgeEmailInput): BuiltEmail {
   <p style="margin:0 0 24px">
     <a href="${drillUrl}" style="background:${ACCENT};color:#fff;text-decoration:none;padding:11px 20px;border-radius:6px;display:inline-block;font-weight:600">Fix them</a>
   </p>
-  <p style="margin:0 0 24px;color:${MUTED};font-size:14px">Reply to this email if something looks wrong — it reaches a person.</p>
+  <p style="margin:0 0 24px;color:${MUTED};font-size:14px">Reply to this email if something looks wrong. A person reads every reply.</p>
   <p style="margin:0 0 24px">— ${BRAND}</p>
   <hr style="border:none;border-top:1px solid #e2e8f0;margin:0 0 12px">
   <p style="margin:0;color:#94a3b8;font-size:12px">
@@ -585,7 +585,7 @@ export function buildWelcomeEmail(input: WelcomeEmailInput): BuiltEmail {
     ]),
     `Everything on the site, one line each: ${startUrl}`,
     "",
-    "Reply to this email if something looks wrong — it reaches a person.",
+    "Reply to this email if something looks wrong. A person reads every reply.",
     "",
     `— ${BRAND}`,
     "",
@@ -608,7 +608,7 @@ export function buildWelcomeEmail(input: WelcomeEmailInput): BuiltEmail {
   <p style="margin:0 0 16px">${escapeHtml(lead)}</p>
 ${stepsHtml}
   <p style="margin:12px 0 24px;color:${MUTED};font-size:14px">Everything on the site, one line each: <a href="${startUrl}" style="color:${ACCENT}">${startUrl}</a></p>
-  <p style="margin:0 0 24px;color:${MUTED};font-size:14px">Reply to this email if something looks wrong — it reaches a person.</p>
+  <p style="margin:0 0 24px;color:${MUTED};font-size:14px">Reply to this email if something looks wrong. A person reads every reply.</p>
   <p style="margin:0 0 24px">— ${BRAND}</p>
   <hr style="border:none;border-top:1px solid #e2e8f0;margin:0 0 12px">
   <p style="margin:0;color:#94a3b8;font-size:12px">

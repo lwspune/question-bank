@@ -98,7 +98,7 @@ export function useCheckout({
     // from the order notes, so send the buyer to their account, as before.
     const paidButUnverified = (message?: string) => {
       trackFunnel("checkout_failed", { surface });
-      toast.error(message || "Payment received — access will activate shortly. Check your account.");
+      toast.error(message || "Payment received. Access will activate shortly. Check your account.");
       setBusy(false);
       onDone("pending");
     };
@@ -144,13 +144,13 @@ export function useCheckout({
             const verify = (await verifyRes.json()) as { ok?: boolean; error?: string };
             if (verifyRes.ok && verify.ok) {
               trackFunnel("checkout_paid", { surface });
-              toast.success("Payment successful — access unlocked!");
+              toast.success("Payment successful. Access unlocked!");
               setBusy(false);
               onDone("paid");
             } else if (verifyRes.status === 202) {
               // Paid, not yet captured: the order.paid webhook grants it shortly.
               trackFunnel("checkout_paid", { surface });
-              toast.info(verify.error || "Payment received — access will activate shortly.");
+              toast.info(verify.error || "Payment received. Access will activate shortly.");
               setBusy(false);
               onDone("pending");
             } else {

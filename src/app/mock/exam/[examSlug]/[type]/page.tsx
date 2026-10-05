@@ -105,7 +105,7 @@ export default async function MockTypeList({ params }: { params: Params }) {
           // list and the badge is the only thing distinguishing them. On the
           // other pages the route already says which type it is.
           showSourceBadge={type.slug === "sectional"}
-          emptyMessage={`${exam.examName} ${type.label.toLowerCase()} are coming soon — check back shortly.`}
+          emptyMessage={`${exam.examName} ${type.label.toLowerCase()} are coming soon. Check back shortly.`}
         />
       </div>
     </GuideShell>

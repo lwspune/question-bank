@@ -101,7 +101,7 @@ export default function ShareResult({
         <div className="min-w-0 flex-1">
           <h2 className="text-sm font-semibold">Pass this paper on</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Send the full timed paper to your study group — it&apos;s free for them too.
+            Send the full timed paper to your study group. It&apos;s free for them too.
           </p>
 
           <label className="mt-3 flex w-fit cursor-pointer items-center gap-2 text-sm">

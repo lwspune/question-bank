@@ -9,7 +9,7 @@ import ExamFeedList from "@/components/exam/ExamFeedList";
 export const metadata: Metadata = {
   title: "Board textbook solutions",
   description:
-    "Read school-board textbooks chapter by chapter — solved examples, exercises, and miscellaneous questions with model answers, in book order. Free.",
+    "Read school-board textbooks chapter by chapter: solved examples, exercises, and miscellaneous questions with model answers, in book order. Free.",
   alternates: { canonical: "/board" },
 };
 
@@ -50,8 +50,8 @@ export default function BoardIndex() {
         <header className="mb-8">
           <h1 className="text-2xl font-bold tracking-tight text-foreground">Textbook Solutions</h1>
           <p className="mt-1.5 text-sm text-muted-foreground">
-            Your board textbook, chapter by chapter — every solved example, exercise, and miscellaneous question with
-            a model answer, laid out the way the book teaches it.
+            Your board textbook, chapter by chapter, laid out the way the book teaches it. Every solved example,
+            exercise and miscellaneous question has a model answer.
           </p>
         </header>
 

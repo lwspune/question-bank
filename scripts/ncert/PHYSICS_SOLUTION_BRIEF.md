@@ -73,3 +73,9 @@ genuinely cannot solve a row, OMIT it and say so; never pad, never reuse a neigh
 Write the file with the **Write tool**, never a shell heredoc or `python -c`. A shell layer
 eats one backslash, so `\theta` arrives as a TAB character + "heta". In JSON a LaTeX
 backslash is `\\`. `apply-solutions.ts` REFUSES control characters and double-escapes.
+
+## Punctuation: no em dashes in what you WRITE (2026-10-05)
+
+Do not use an em dash (—) anywhere in text you write: solutions, model answers, explanations, notes. Our readers type on phone keyboards that have no em dash, so text full of them reads as machine-written (printed exam papers run 0.11 per 1,000 words; our older solutions ran up to 12). Use a full stop, a colon, a comma or brackets instead. Rewrite the sentence; do not swap in " – " or " -- ", which read the same way. An en dash in a range (2017–2024) is fine.
+
+This rule is for YOUR words only. Text you COPY from the source paper or book keeps its own punctuation exactly. After a commit, `npm run audit:voice -- --solutions` reports the rate per exam.

@@ -78,7 +78,7 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
         {item.grace ? (
           <span className="inline-flex items-center gap-1 text-xs font-medium text-amber-700 dark:text-amber-400">
             <Gift className="h-3.5 w-3.5" aria-hidden />
-            Grace — awarded to all
+            Grace: awarded to all
           </span>
         ) : (
           <VerdictBadge verdict={item.verdict} />
@@ -87,7 +87,7 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
       {item.cancelledNote && <CancelledNotice note={item.cancelledNote} className="mt-2" />}
       {item.grace && !item.cancelledNote && (
         <p className="mt-2 rounded-md border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-800 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-300">
-          This question was officially dropped (or marked bonus) by NTA — every candidate was
+          This question was officially dropped (or marked bonus) by NTA. Every candidate was
           awarded full marks regardless of their answer, so there is no correct option. See the
           note in the solution for the reason.
         </p>

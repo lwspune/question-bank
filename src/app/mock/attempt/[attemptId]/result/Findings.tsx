@@ -90,8 +90,8 @@ export default function Findings({ report, attemptId }: { report: MockReport; at
             You never reached{" "}
             <span className="font-medium text-foreground">
               {report.pacing.neverReached} questions
-            </span>{" "}
-            — {formatMarks(report.pacing.marksLeft)} marks you didn&apos;t get a shot at. That&apos;s
+            </span>
+            , worth {formatMarks(report.pacing.marksLeft)} marks you didn&apos;t get a shot at. That&apos;s
             the clock, not the syllabus.
           </p>
         </Block>
@@ -202,7 +202,7 @@ function QuestionLink({
     >
       <span className="font-mono text-xs text-muted-foreground">Q{position}</span>
       <span>{where}</span>
-      {note && <span className="text-xs text-muted-foreground">— {note}</span>}
+      {note && <span className="text-xs text-muted-foreground">({note})</span>}
     </a>
   );
 }

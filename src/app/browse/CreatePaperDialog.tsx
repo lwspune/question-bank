@@ -60,7 +60,7 @@ export default function CreatePaperDialog({
       // selection here would lose the questions that never landed.
       toast.error(
         res.createdId
-          ? `${res.error} — "${clean}" was created but is empty. Your selection is still here; use "Add to paper" to retry.`
+          ? `"${clean}" was created but is empty (${res.error}). Your selection is still here; use "Add to paper" to retry.`
           : res.error
       );
       return;
@@ -100,7 +100,7 @@ export default function CreatePaperDialog({
                 void onCreate();
               }
             }}
-            placeholder="e.g. NDA GAT — Mock 1"
+            placeholder="e.g. NDA GAT Mock 1"
             disabled={busy}
             autoFocus
           />

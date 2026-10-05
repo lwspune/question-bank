@@ -349,9 +349,9 @@ function Summary({
       </p>
       <p className="mx-auto mt-3 max-w-sm text-sm text-muted-foreground">
         {correct === total
-          ? "Every one. Those questions go quiet for a while — you'll see them once more later to be sure it stuck."
+          ? "Every one. Those questions go quiet for a while. You'll see them once more later, to be sure it stuck."
           : correct === 0
-            ? "None this time, and that is exactly what a drill is for — you have the solutions now, and these come back round."
+            ? "None this time, and that is exactly what a drill is for. You have the solutions now, and these come back round."
             : `The ${correct} you fixed go quiet for a while. The other ${total - correct} come back round.`}
       </p>
 
