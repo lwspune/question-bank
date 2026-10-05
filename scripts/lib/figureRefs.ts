@@ -177,13 +177,91 @@ export function describesFigureInText(text: string | null, context: string | nul
  * though its stem says nothing a reference regex can catch.
  *
  * This keys on the transcription's OWN marker rather than on the exam board's
- * prose, which is what makes it precise: the rows that merely SOUND similar
- * ("Which of the following graphs shows the variation of photoelectric current")
- * carry real option descriptions and need no image at all.
+ * prose. It is now one of three cases `optionsStandInForFigure` reports: since
+ * 2026-10-05 a row whose options DESCRIBE the pictures in words is a defect too.
  */
 export function optionsDeferToFigure(options: { text: string | null }[] | null | undefined): boolean {
   if (!options?.length) return false;
-  return options.some((o) => /see the attached figure|as printed/i.test(o.text ?? ""));
+  // `\b` keeps "[No fourth option was printed ...]" from matching "as printed".
+  return options.some((o) => /see the attached figure|\bas printed/i.test(o.text ?? ""));
+}
+
+/**
+ * The OPTIONS stand in for pictures the source printed.
+ *
+ * A "which of the following graphs ...?" question prints four graphs. Vision
+ * ingests stored them three ways, and all three leave the student reading words
+ * where the paper shows a drawing:
+ *   - "marker"    the transcriber's own placeholder ("as printed", "see the
+ *                 attached figure"), with nothing attached;
+ *   - "described" each picture written out ("a plot of V against t that rises
+ *                 linearly ..."), which often states the answer in words;
+ *   - "labels"    the option is only a label for a picture ("Diagram a",
+ *                 "Graph (1)"), unanswerable unless the stem image happens to
+ *                 show all four.
+ *
+ * UNTIL 2026-10-05 "described" counted as answerable (see the plural note above
+ * `PIPE_TABLE`). The owner ruled otherwise after Clarity showed students tapping
+ * "rises linearly" on CBSE 12 Physics 55-2-1: the real paper shows graphs, so
+ * the bank shows graphs.
+ *
+ * "described" needs BOTH a stem asking to choose a picture AND at least two
+ * options written as one. Either half alone is the false positive: "Which locus
+ * in the Argand diagram ...?" has text options ("Circle of radius 3"), and
+ * "Deccan Plateau" or "Parallel to x-axis" are text options under a text stem.
+ * A label needs no stem test, because it must be the WHOLE option (or open it,
+ * followed by ":" or a dash): "Figure (a) and (b) show ..." is a statement about
+ * printed figures, not a stand-in for one.
+ *
+ * Triage, like the rest of this file. "labels" with a stem image is often fine
+ * (the picture shows all four), so the CLI annotates rather than decides.
+ */
+export type OptionFigureCase = "marker" | "described" | "labels";
+
+const STEM_PICKS_PICTURE =
+  /\b(?:which|what)\b[^.?]{0,80}\b(?:graphs?|figures?|diagrams?|curves?|plots?|sketch(?:es)?)\b|\b(?:correct|following)\s+(?:[\w-]+\s+){0,3}(?:graphs?|figures?|diagrams?|curves?|plots?)\b/i;
+
+const OPTION_LABEL =
+  /^\s*(?:graph|figure|fig\.?|diagram|plot|curve)\s*(?:option\s*)?\(?(?:[a-d]|[1-4]|i{1,3}|iv)\)?\s*(?:$|[:\u2014\u2013-]|\()/i;
+
+// Phrases a transcriber uses to draw a curve in words. Each one is a SHAPE,
+// never a bare noun: "A straight line" or "A parabola" is a legitimate text
+// option, "a straight line through the origin, r rising" is a drawing.
+const OPTION_DRAWN_IN_WORDS = new RegExp(
+  [
+    String.raw`^\s*(?:an?\s+)?(?:plot|graph|curve|sketch)\s+of\b`,
+    String.raw`\((?:vertical|horizontal)\s+axis`,
+    String.raw`\b(?:rises|rising|falls|falling|climbs|drops|dips|declines|decreases|increases)\b[^.;]{0,40}?\b(?:linearly|steeply|sharply|gradually|uniformly|steadily|to\s+(?:a\s+)?(?:peak|maximum|zero))\b`,
+    String.raw`\b(?:rises|falls|declines)\s+(?:with|from)\b`,
+    String.raw`\blevels?\s+off\b|\bflatten(?:s|ing)?\b|\bplateau(?:s|ing)\b`,
+    // "through the origin" and not bare "through": "A straight line passing
+    // through (1, 4)" is a text answer about a curve (NDA Apr 2025 Q77).
+    String.raw`\bstraight\s+line\s+(?:of|from|through\s+the\s+origin)\b|\bhorizontal\s+(?:straight\s+)?line\b`,
+    String.raw`\b(?:saturation|parabolic|decreasing|increasing)\s+curve\b|\bconcave[\s-](?:up|down)\b`,
+  ].join("|"),
+  "i",
+);
+
+export function optionsStandInForFigure(
+  stem: string | null,
+  options: { text: string | null; image_url?: string | null }[] | null | undefined,
+): OptionFigureCase | null {
+  if (!options?.length) return null;
+  if (options.some((o) => o.image_url)) return null;
+  if (optionsDeferToFigure(options)) return "marker";
+
+  const texts = options.map((o) => o.text ?? "");
+  const drawn = texts.filter((t) => OPTION_DRAWN_IN_WORDS.test(t)).length;
+  const labels = texts.filter((t) => OPTION_LABEL.test(t)).length;
+
+  if (drawn >= 2 && (STEM_PICKS_PICTURE.test(stem ?? "") || labels >= 2)) return "described";
+  if (labels >= 2) {
+    // A label followed by a description ("Graph (a): PV vs P (straight line)")
+    // is the described case written with labels.
+    const described = texts.filter((t) => OPTION_LABEL.test(t) && t.replace(OPTION_LABEL, "").trim().length > 3).length;
+    return described >= 2 ? "described" : "labels";
+  }
+  return null;
 }
 
 /**

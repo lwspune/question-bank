@@ -20,7 +20,9 @@ source papers and books are all on the owner's machine; each pipeline's
    DROP a picture: take it from the .docx (`{ "docx": ..., "media": "image8.jpg" }`).
    Several parts join into one image with `{ "stack": [...], "row": true }`.
    A row may omit `figure` when the source prints none and only an invented
-   description must go; `optionText` replaces option text outright.
+   description must go; `optionText` replaces option text outright. A row may
+   change only its options. `clearFigure` removes the stem picture (it only
+   repeated the options), or with `figure` replaces it.
    A map printed sideways takes `rotate: 90` (degrees clockwise). Storage
    refuses objects over 1 MB, so an oversize crop is reduced to a 256-colour PNG
    (or JPEG) automatically. A replace step (`{ remove, with }`) is safe to
@@ -118,3 +120,4 @@ with a manifest note that starts "REDRAWN". A row may also carry only a
 | `mh-ssc-10-effects-q11c` (Effects of Electric Current Ex Q11(c), a DC generator; figure at the top of the right-hand column) | 1 | 2026-10-04 |
 | `neet-2026-q65-table` (NEET 2026 Q65: match list stored twice, as a typed table AND the printed picture; the picture keeps the structures, so the typed table goes) | 1 | 2026-10-05 |
 | JEE 1 Feb 2024 Q48, by hand (the reverse case: the typed table in `stemOverrides` is faithful, so the picture goes; `image_url` nulled, prior state in `backup/jee-2024-feb01-q48-table.before.json`, and the paper's `textReplacesFigure` stops `scripts/jee/attach-images.ts` re-attaching it) | 1 | 2026-10-05 |
+| `cbse12-pyq-*` option graphs (15 CBSE Class 12 questions, 13 papers 2022-2026), `neet-reneet-2026-q23`, `neet-option-labels`, `mhtcet-2023-option-figures`, `nda-2017-ii-maths-q86`, `foundation-option-figures` | 34 rows whose options were written descriptions of pictures (`audit:figures` OPTIONS-NO-IMAGE, added 2026-10-05). Each option now carries its picture; a stem picture that only repeated the options is removed (`clearFigure`), or replaced by the stem's own drawing (`clearFigure` + `figure`). Every key was checked against the real figures: Foundation Sound WS1 Q62 moved B to C (the bank had shifted its pictures by one; official solution answers (c)). NDA 2017-II Q86 prints f(x) = x/x, not x/|x|: stem and key left for the owner | 2026-10-05 |

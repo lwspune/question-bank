@@ -54,6 +54,10 @@ type ManifestRow = {
   /** Replacement worked solution, only where the old one explained the
    *  stand-in rather than the printed figure. The old one goes to the backup. */
   solution?: string;
+  /** Remove the stem picture (it only repeated the options' pictures, which
+   *  now sit on the options), or with `figure` replace it with a crop of just
+   *  the stem's own drawing. The old URL goes to the backup. */
+  clearFigure?: boolean;
   note?: string;
 };
 /** A region of the batch PDF, or an image embedded in a Word file (used when a
@@ -107,7 +111,11 @@ function cropAll(pdf: string | undefined, figures: Record<string, FigureEntry>, 
         "raw=zipfile.ZipFile(sys.argv[2]).read('word/media/'+sys.argv[3]); k=int(sys.argv[4])",
         "if k<=1: open(sys.argv[1],'wb').write(raw)",
         "else:",
-        "    im=Image.open(io.BytesIO(raw)); im.resize((im.width*k,im.height*k),Image.NEAREST).save(sys.argv[1])",
+        // A Word ".jpg" can hold an alpha channel, which JPEG cannot store.
+        "    im=Image.open(io.BytesIO(raw)); im=im.resize((im.width*k,im.height*k),Image.NEAREST)",
+        "    if sys.argv[1].lower().endswith(('.jpg','.jpeg')) and im.mode not in ('RGB','L'):",
+        "        rgba=im.convert('RGBA'); bg=Image.new('RGB',rgba.size,'white'); bg.paste(rgba,mask=rgba.split()[3]); im=bg",
+        "    im.save(sys.argv[1])",
       ], [target, part.docx, part.media, String(part.scale ?? 1)], `extracting ${part.media}`);
       files[id] = target;
     });
@@ -215,7 +223,10 @@ async function main() {
   if (!existsSync(file)) throw new Error(`no manifest at ${file}`);
   const m: Manifest = JSON.parse(readFileSync(file, "utf8"));
   for (const r of m.rows) {
-    if (!r.figure && !r.stripText && !r.stripContext && r.solution === undefined) throw new Error(`row ${r.id} has no figure, strip or solution`);
+    // A row may change only its options: the stem already carries its figure.
+    if (!r.figure && !r.stripText && !r.stripContext && r.solution === undefined && !r.options && !r.optionText && !r.clearFigure) {
+      throw new Error(`row ${r.id} has no figure, strip, solution or option change`);
+    }
     for (const key of [...(r.figure ? [r.figure] : []), ...Object.values(r.options ?? {})]) {
       if (!m.figures[key]) throw new Error(`row ${r.id} names unknown figure ${key}`);
     }
@@ -305,7 +316,7 @@ async function main() {
   for (const { r, q, text, context, opts, tr } of plan) {
     const textChanged = text !== q.text;
     const contextChanged = context !== q.context;
-    console.log(`\n[${q.question_number ?? "?"}] ${r.id}  figure=${r.figure ?? "none"}${q.image_url ? "  (image already set)" : ""}`);
+    console.log(`\n[${q.question_number ?? "?"}] ${r.id}  figure=${r.clearFigure ? "CLEARED" : r.figure ?? "none"}${q.image_url ? "  (image already set)" : ""}`);
     if (textChanged) console.log(`  text:    ${String(q.text).replace(/\s+/g, " ").slice(0, 140)}\n       -> ${String(text).replace(/\s+/g, " ").slice(0, 140)}`);
     if (r.solution !== undefined && r.solution !== q.solution) console.log(`  solution -> ${r.solution.replace(/\s+/g, " ").slice(0, 140)}`);
     if (contextChanged) console.log(`  context: ${String(q.context).replace(/\s+/g, " ").slice(0, 140)}\n       -> ${String(context).replace(/\s+/g, " ").slice(0, 140)}`);
@@ -330,7 +341,11 @@ async function main() {
       if (e2) throw new Error(`${r.id} option ${o.label}: ${e2.message}`);
     }
     const patch: Record<string, string | null> = {};
-    if (r.figure && !q.image_url) patch.image_url = await upload(r.figure, q.org_id as string);
+    // clearFigure with a figure REPLACES the stem picture (it held the options
+    // too); without one it removes it. Re-running after either is a no-op only
+    // for the removal, so a replacement batch is applied once.
+    if (r.figure && (!q.image_url || r.clearFigure)) patch.image_url = await upload(r.figure, q.org_id as string);
+    else if (r.clearFigure && q.image_url) patch.image_url = null;
     if (textChanged) patch.text = text;
     if (r.solution !== undefined && r.solution !== q.solution) patch.solution = r.solution;
     // A passage that was all stand-in is cleared to NULL, not "", so nothing

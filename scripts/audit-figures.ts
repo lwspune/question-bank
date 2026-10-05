@@ -30,8 +30,10 @@
  *   • DESCRIBED-IN-TEXT       — the figure was written out in prose on purpose
  *                               (state board, UPSC). Answerable. Listed apart so
  *                               29 correctly-handled rows don't bury the rest.
- *   • DRAWN-OPTIONS-NO-IMAGE  — the OPTIONS are the figure. A stem rule cannot
- *                               see these; keyed on the transcriber's marker.
+ *   • OPTIONS-NO-IMAGE        — the OPTIONS are the figure. A stem rule cannot
+ *                               see these. Three cases (optionsStandInForFigure):
+ *                               the transcriber's marker, pictures DESCRIBED in
+ *                               words (a defect since 2026-10-05), bare labels.
  *   • IMAGE-NO-REFERENCE      — a figure on a row that never mentions one.
  *                               Usually fine, but it is also what a mis-keyed
  *                               attach looks like.
@@ -46,7 +48,8 @@ import { createClient } from "@supabase/supabase-js";
 import {
   referencesFigure,
   describesFigureInText,
-  optionsDeferToFigure,
+  optionsStandInForFigure,
+  type OptionFigureCase,
   studentDraws,
 } from "./lib/figureRefs";
 
@@ -97,29 +100,52 @@ async function loadRows(c: ReturnType<typeof client>, filter?: string): Promise<
   return rows;
 }
 
-/** The drawn-options case, found from the OPTIONS side. Fetching options.text
- *  alongside every question would multiply the payload fivefold to answer a
- *  question about ~30 rows; this asks the small table directly instead. */
-async function drawnOptionQuestionIds(c: ReturnType<typeof client>): Promise<Set<string>> {
-  const ids = new Set<string>();
-  for (const marker of ["%see the attached figure%", "%as printed%"]) {
+/** The options-are-the-figure case, found from the OPTIONS side. Fetching
+ *  options.text alongside every question would multiply the payload fivefold
+ *  to answer a question about ~50 rows, so this reads options only for the
+ *  CANDIDATES: rows whose stem names a picture noun, plus rows whose options
+ *  open with a picture label or carry the transcriber's marker. */
+const PICTURE_NOUN = /\b(?:graph|figure|fig\.|diagram|curve|plot|sketch)/i;
+
+async function optionFigureCases(c: ReturnType<typeof client>, rows: Row[]): Promise<Map<string, OptionFigureCase>> {
+  const byId = new Map(rows.map((r) => [r.id, r]));
+  const candidates = new Set(rows.filter((r) => PICTURE_NOUN.test(r.text ?? "")).map((r) => r.id));
+  for (const pattern of ["graph%", "figure%", "fig%", "diagram%", "plot%", "curve%", "%see the attached figure%", "%as printed%"]) {
     for (let from = 0; ; from += PAGE) {
       const { data, error } = await c
         .from("options")
-        .select("question_id,text")
-        .ilike("text", marker)
+        .select("question_id")
+        .ilike("text", pattern)
         .order("question_id")
         .range(from, from + PAGE - 1);
       if (error) throw new Error(error.message);
       for (const o of data ?? []) {
-        if (optionsDeferToFigure([{ text: (o as { text: string | null }).text }])) {
-          ids.add((o as { question_id: string }).question_id);
-        }
+        const id = (o as { question_id: string }).question_id;
+        if (byId.has(id)) candidates.add(id);
       }
       if (!data || data.length < PAGE) break;
     }
   }
-  return ids;
+
+  const options = new Map<string, { text: string | null; image_url: string | null }[]>();
+  const ids = [...candidates];
+  for (let i = 0; i < ids.length; i += IN_CHUNK) {
+    const { data, error } = await c
+      .from("options")
+      .select("question_id,text,image_url")
+      .in("question_id", ids.slice(i, i + IN_CHUNK));
+    if (error) throw new Error(error.message);
+    for (const o of (data ?? []) as { question_id: string; text: string | null; image_url: string | null }[]) {
+      options.set(o.question_id, [...(options.get(o.question_id) ?? []), o]);
+    }
+  }
+
+  const cases = new Map<string, OptionFigureCase>();
+  for (const [id, opts] of options) {
+    const kase = optionsStandInForFigure(byId.get(id)?.text ?? null, opts);
+    if (kase) cases.set(id, kase);
+  }
+  return cases;
 }
 
 const oneLine = (s: string | null, n = 120) => (s ?? "").replace(/\s+/g, " ").trim().slice(0, n);
@@ -171,7 +197,7 @@ async function main() {
     return;
   }
 
-  const drawnOpts = await drawnOptionQuestionIds(c);
+  const optCases = await optionFigureCases(c, scoped);
 
   type Bucket = { missing: Row[]; described: Row[]; drawn: Row[]; orphan: Row[]; refs: number; withImg: number; named: number };
   const byExam = new Map<string, Bucket>();
@@ -193,7 +219,7 @@ async function main() {
     }
     if (refs && !has) (describesFigureInText(r.text, r.context) ? b.described : b.missing).push(r);
     if (!refs && has) b.orphan.push(r);
-    if (!has && drawnOpts.has(r.id)) b.drawn.push(r);
+    if (optCases.has(r.id)) b.drawn.push(r);
   }
 
   // ── PER-EXAM SUMMARY ───────────────────────────────────────────────────────
@@ -204,7 +230,7 @@ async function main() {
   // from any text rule, so a small NO-IMG there is not good news.
   const order = [...byExam.entries()].sort((a, z) => z[1].missing.length - a[1].missing.length);
   console.log(`\nscanned ${scoped.length} rows | ${withImage.length} carry a figure\n`);
-  console.log(`  ${pad("EXAM", 34)}${pad("RECALL", 8)}${pad("REFS", 7)}${pad("NO IMG", 8)}${pad("RATE", 7)}${pad("DESCR", 7)}${pad("DRAWN", 7)}ORPHAN`);
+  console.log(`  ${pad("EXAM", 34)}${pad("RECALL", 8)}${pad("REFS", 7)}${pad("NO IMG", 8)}${pad("RATE", 7)}${pad("DESCR", 7)}${pad("OPTS", 7)}ORPHAN`);
   let totalMissing = 0;
   let totalPublic = 0;
   for (const [exam, b] of order) {
@@ -256,10 +282,20 @@ async function main() {
     if (!listAll && hits.length > 4) console.log(`    … ${hits.length - 4} more`);
   }
 
+  // A stem image is annotated, not subtracted: with "labels" it often shows all
+  // four pictures (fine); with "described" the words still have to go.
   const drawnAll = order.flatMap(([, b]) => b.drawn);
   if (drawnAll.length) {
-    console.log(`\nDRAWN-OPTIONS-NO-IMAGE (the options ARE the figure): ${drawnAll.length}`);
-    for (const r of drawnAll) console.log(`  ${r.exams?.name} ${r.source_file} ${r.question_number ?? ""}`);
+    const tally = (k: OptionFigureCase) => drawnAll.filter((r) => optCases.get(r.id) === k).length;
+    console.log(
+      `\nOPTIONS-NO-IMAGE (the options ARE the figure): ${drawnAll.length}` +
+        `  (described ${tally("described")} · labels ${tally("labels")} · marker ${tally("marker")})`,
+    );
+    for (const r of drawnAll) {
+      const img = r.image_url ? " [stem image]" : "";
+      console.log(`  ${pad(optCases.get(r.id) ?? "", 10)}${r.visibility === "PUBLIC" ? "" : "(private) "}${r.exams?.name} | ${r.source_file} ${r.question_number ?? ""}${img} | ${r.id}`);
+      if (listAll) console.log(`              ${oneLine(r.text, 110)}`);
+    }
   }
 
   console.log(

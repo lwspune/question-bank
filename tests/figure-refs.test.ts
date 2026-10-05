@@ -3,6 +3,7 @@ import {
   referencesFigure,
   describesFigureInText,
   optionsDeferToFigure,
+  optionsStandInForFigure,
   studentDraws,
 } from "../scripts/lib/figureRefs";
 
@@ -187,6 +188,124 @@ describe("optionsDeferToFigure", () => {
   it("stays silent on a question with no options at all (subjective / numeric)", () => {
     expect(optionsDeferToFigure(null)).toBe(false);
     expect(optionsDeferToFigure([])).toBe(false);
+  });
+});
+
+describe("optionsStandInForFigure", () => {
+  // The OPTIONS of a "which graph?" question are pictures in the source. Until
+  // 2026-10-05 a written description of each picture counted as answerable; the
+  // owner ruled otherwise after Clarity showed students tapping "rises linearly"
+  // on CBSE 12 Physics 55-2-1. The description is a transcription artefact, it
+  // often gives the answer away in words, and the real paper shows graphs.
+  const opts = (...t: string[]) => t.map((text) => ({ text, image_url: null as string | null }));
+
+  // Every fixture is a real row, read out of the bank on 2026-10-05.
+  const DESCRIBED: Array<[string, string, string[]]> = [
+    ["CBSE 12 Physics 55-2-1, inductor voltage",
+      "The alternating current I in an inductor is observed to vary with time t as shown in the graph for a cycle.\n\nWhich one of the following graphs is the correct representation of wave form of voltage V with time t ?",
+      ["a plot of V against t that rises linearly from zero at t = 0 to a peak at t = T/2", "a plot of V against t that rises linearly from zero to a positive peak", "a plot of V against t that holds one constant positive value from t = 0 to t = T/2", "a plot of V against t that is a sine curve"]],
+    ["CBSE 12 Physics 55-5-3, r against B",
+      "Which of the following graphs represents the variation of radius of the circle, with the magnitude of magnetic field \\(\\vec{\\mathrm{B}}\\) ?",
+      ["a horizontal straight line: r stays at the same value as B increases", "a curve starting high on the r-axis and falling steeply, flattening towards the B-axis", "a straight line through the origin, r rising uniformly as B increases", "a curve starting at the origin and rising ever more steeply as B increases"]],
+    ["CBSE 12 Physics 55-5-1, photocurrent (axis form)",
+      "Which of the following graphs shows the variation of photoelectric current I with the intensity of light ?",
+      ["A plot of I (vertical axis) against Intensity (horizontal axis, arrowed)", "A plot of I (vertical axis) against Intensity (horizontal axis, arrowed), curving", "A plot of I (vertical axis) against Intensity (horizontal axis, arrowed), flat", "A plot of I (vertical axis) against Intensity (horizontal axis, arrowed), falling"]],
+    ["Re-NEET 2024 Botany, enzyme velocity",
+      "Which of the following graphs depicts the effect of substrate concentration on velocity of enzyme catalysed reaction?",
+      ["A hyperbolic saturation curve: velocity of reaction rises with substrate concentration and levels off", "A straight line: velocity of reaction increases linearly with substrate concentration", "A parabolic curve: velocity rises to a maximum then declines", "A decreasing curve: velocity of reaction declines from a high value"]],
+    ["MHT-CET 3 May 2023 S2, Boyle's law (label + description)",
+      "Which of the following graphs explains Boyle's law?",
+      ["Graph (a): PV vs P (straight line)", "Graph (b): P vs V (hyperbola)", "Graph (c): V vs T", "Graph (d): P vs T"]],
+    ["Foundation Motion WS1, parachutist",
+      "A parachutist jumps off a plane and opens the parachute at time \\(t_1\\). Which of the following speed-time graphs best shows the parachutist's descent?",
+      ["Speed rises to a peak at \\(t_1\\), then decreases gradually and levels off", "Speed starts at a maximum at t = 0 and decreases steadily to zero", "Speed starts at a maximum, stays high until \\(t_1\\), then drops sharply", "Speed rises linearly to a peak at \\(t_1\\), then drops almost instantly"]],
+  ];
+
+  for (const [name, stem, o] of DESCRIBED) {
+    it(`flags described options: ${name}`, () => {
+      expect(optionsStandInForFigure(stem, opts(...o))).toBe("described");
+    });
+  }
+
+  it("flags options that are bare labels for pictures", () => {
+    expect(
+      optionsStandInForFigure(
+        "The correct representation of covalent bonding in an oxygen molecule is:",
+        opts("Diagram a", "Diagram b", "Diagram c", "Diagram d"),
+      ),
+    ).toBe("labels");
+    expect(
+      optionsStandInForFigure(
+        "The graph which shows the variation of the de Broglie wavelength with the potential is",
+        opts("Graph (1)", "Graph (2)", "Graph (3)", "Graph (4)"),
+      ),
+    ).toBe("labels");
+    expect(
+      optionsStandInForFigure("A prism ABC is placed in different orientations.", opts("Figure (ii)", "Figure (iii)", "Figure (i)", "Figure (iv)")),
+    ).toBe("labels");
+  });
+
+  it("keeps the transcriber's own marker (CBSE 12 Physics 2022 55-5-1, ray paths)", () => {
+    expect(
+      optionsStandInForFigure(
+        "Which one of the following figures best represents the correct path of the ray of light ?",
+        opts("Figure (A) as printed - a drawn ray-path diagram; see the attached figure", "Figure (B) as printed", "Figure (C) as printed", "Figure (D) as printed"),
+      ),
+    ).toBe("marker");
+  });
+
+  it("stays silent once the options carry their pictures", () => {
+    const withImages = opts("Graph (a)", "Graph (b)", "Graph (c)", "Graph (d)").map((o, i) => ({ ...o, image_url: `https://x/${i}.png` }));
+    expect(optionsStandInForFigure("Which of the following graphs explains Boyle's law?", withImages)).toBeNull();
+  });
+
+  // The negatives are real TEXT options: the source printed words, not pictures,
+  // and a probe that flags them is a probe nobody reads.
+  const TEXT_OPTIONS: Array<[string, string, string[]]> = [
+    ["Worksheets, |z| = 3 locus", "Which locus in the Argand diagram represents all complex numbers z such that |z| = 3?",
+      ["Parabola opening upwards", "Circle of radius 3 centered at (3,0)", "Circle of radius 3 centered at origin", "Straight line x = 3"]],
+    ["Worksheets, graph of a function", "Which of the following represents the graph of a function?",
+      ["A circle", "A parabola opening upward", "A vertical line \\(x = 5\\)", "An ellipse"]],
+    ["NDA practice, displacement under constant force", "Which of the following best describes the displacement-time graph of a particle that is acted upon by a constant force?",
+      ["A straight line", "A circle", "A parabola", "Any curve depending upon initial conditions"]],
+    ["Worksheets, undefined slope", "If a line has undefined slope, then it is:",
+      ["Parallel to x-axis", "Parallel to y-axis", "Passing through origin", "None of these"]],
+    ["MPSC, tilted plateau", "Which of the following is not an example of tilted plateau ?",
+      ["Deccan Plateau", "Chota Nagpur Plateau", "Malwa Plateau", "Karnataka Plateau"]],
+    ["MHT-CET, statements about printed figures", "The following figures show the variation of displacement with time of an object.",
+      ["Figure (a) and (b) show object at rest and object moving with uniform velocity", "Figure (b) and (c) show uniform motion", "Figure (c) shows rest", "Figure (d) shows retardation"]],
+    ["JEE, Ellingham diagram", "Which of the following is incorrect about Ellingham diagram?",
+      ["Graph gives idea about rate of reaction", "It explains why some reactions are favourable", "It provides idea about reduction of metal oxides", "None"]],
+  ];
+
+  for (const [name, stem, o] of TEXT_OPTIONS) {
+    it(`stays silent on text options: ${name}`, () => {
+      expect(optionsStandInForFigure(stem, opts(...o))).toBeNull();
+    });
+  }
+
+  // Both found by the first bank-wide run (2026-10-05), each a false hit.
+  it("does not read 'was printed' as the transcriber's 'as printed' marker", () => {
+    expect(
+      optionsStandInForFigure(
+        "Match the following: Name of Shifting Cultivation",
+        opts("a-ii, b-iii, c-iv, d-i", "a-i, b-ii, c-iv, d-iii", "a-i, b-iv, c-i, d-iii", "[No fourth option was printed in the source paper.]"),
+      ),
+    ).toBeNull();
+  });
+
+  it("stays silent on text answers about a curve (NDA Apr 2025 Q77)", () => {
+    expect(
+      optionsStandInForFigure(
+        "What is the nature of the curve?",
+        opts("A straight line passing through \\((1, 4)\\)", "A straight line passing through \\((-1, 4)\\)", "A parabola with vertex at origin and focus at \\((2, 0)\\)", "A parabola with vertex at origin and focus at \\((1, 0)\\)"),
+      ),
+    ).toBeNull();
+  });
+
+  it("stays silent with no options (subjective / numeric)", () => {
+    expect(optionsStandInForFigure("Which graph?", [])).toBeNull();
+    expect(optionsStandInForFigure("Which graph?", null)).toBeNull();
   });
 });
 
