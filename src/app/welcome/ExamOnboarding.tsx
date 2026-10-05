@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ProfileChips from "@/components/ProfileChips";
 import HowItWorks from "@/components/HowItWorks";
@@ -116,10 +116,7 @@ export default function ExamOnboarding({
     return (
       <main className="flex min-h-screen items-center justify-center bg-muted/30 px-4 py-12 sm:px-6">
         <div className="w-full max-w-lg rounded-2xl border bg-card p-6 shadow-sm sm:p-8">
-          <div className="mb-6 flex items-center gap-2 text-brand-accent">
-            <BookOpen className="h-5 w-5" aria-hidden />
-            <span className="text-sm font-semibold tracking-tight">PYQ Vault</span>
-          </div>
+          <BrandMark />
 
           <h1 className="text-2xl font-semibold tracking-tight">
             {loop.examLabel ? `How ${loop.examLabel} prep works here` : "How it works"}
@@ -137,7 +134,9 @@ export default function ExamOnboarding({
           </div>
 
           <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:items-center">
-            <Button asChild variant="brand" size="lg" className="h-12 flex-1 rounded-xl text-base">
+            {/* w-full on a phone, flex-1 only from sm: in the stacked (column)
+                row, flex-1 collapsed the button to its text height (~24 px). */}
+            <Button asChild variant="brand" size="lg" className="h-12 w-full rounded-xl text-base sm:w-auto sm:flex-1">
               <Link href={dest.primary.href} prefetch={false}>
                 {dest.primary.label}
                 <ArrowRight className="h-4 w-4" aria-hidden />
@@ -164,10 +163,7 @@ export default function ExamOnboarding({
   return (
     <main className="flex min-h-screen items-center justify-center bg-muted/30 px-6 py-12">
       <div className="w-full max-w-lg rounded-2xl border bg-card p-8 shadow-sm">
-        <div className="mb-6 flex items-center gap-2 text-brand-accent">
-          <BookOpen className="h-5 w-5" aria-hidden />
-          <span className="text-sm font-semibold tracking-tight">PYQ Vault</span>
-        </div>
+        <BrandMark />
 
         <h1 className="text-2xl font-semibold tracking-tight">What are you preparing for?</h1>
         <p className="mt-2 text-sm text-muted-foreground">
@@ -210,5 +206,16 @@ export default function ExamOnboarding({
         </div>
       </div>
     </main>
+  );
+}
+
+/** The brand V and name (the open-book icon predated the V logo). */
+function BrandMark() {
+  return (
+    <div className="mb-6 flex items-center gap-2">
+      {/* eslint-disable-next-line @next/next/no-img-element -- pre-sized static mark, as in HeaderBar */}
+      <img src="/icons/mark-96.png" alt="" aria-hidden width={24} height={24} className="h-6 w-6 shrink-0" />
+      <span className="text-sm font-semibold tracking-tight">PYQ Vault</span>
+    </div>
   );
 }

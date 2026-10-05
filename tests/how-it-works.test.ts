@@ -182,3 +182,13 @@ describe("welcomeDestination for the practice-first loop", () => {
     expect(d.secondary.href).toBe("/exams/mht-cet");
   });
 });
+
+describe("paper buttons read as English (a / an)", () => {
+  // The welcome step's main button said "Start a NDA paper" (2026-10-05).
+  it("an NDA, an MHT-CET; a CDS, a JEE Mains", () => {
+    expect(loopFor(getExamBySlug("nda")).steps[0].cta).toBe("Start an NDA paper");
+    expect(loopFor(getExamBySlug("cds")).steps[0].cta).toBe("Start a CDS paper");
+    expect(loopForArm(getExamBySlug("mht-cet")!, "practice-first").steps[1].cta).toBe("Start an MHT-CET paper");
+    expect(loopForArm(getExamBySlug("jee-mains")!, "practice-first").steps[1].cta).toBe("Start a JEE Mains paper");
+  });
+});
