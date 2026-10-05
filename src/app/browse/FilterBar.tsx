@@ -35,7 +35,7 @@ import {
   type Filters,
 } from "@/lib/questions/filters";
 import { applyPartial } from "@/lib/questions/applyPartial";
-import { showsChapterFilter, showsSubtopicFilter } from "@/lib/questions/filterVisibility";
+import { showsChapterFilter, showsSubjectFilter, showsSubtopicFilter } from "@/lib/questions/filterVisibility";
 import { selectRecentYears } from "@/lib/questions/selectRecentYears";
 
 type Option = { id: string; name: string; count?: number };
@@ -350,10 +350,9 @@ export default function FilterBar({
       </div>
     ),
     // Rendered ONLY while a family is selected — see the `order` filter below.
-    // Deliberately not a permanently-disabled control like Subject: Subject
-    // applies to every exam, whereas this axis applies to a few of the
-    // top-level entries, so a dead row on NDA would re-add exactly the clutter
-    // this grouping removes.
+    // Hidden rather than disabled: this axis applies to a few of the top-level
+    // entries, so a dead row on NDA would re-add exactly the clutter this
+    // grouping removes.
     //
     // The LABEL comes from the family, not from here. It was hardcoded "Class",
     // which was true while every family was a school ladder and became a lying
@@ -411,14 +410,9 @@ export default function FilterBar({
         <Select
           value={filters.subjectId ?? ALL}
           onValueChange={(v) => update({ subjectId: v === ALL ? null : v })}
-          disabled={!filters.examId}
         >
           <SelectTrigger id="subject">
-            <SelectValue
-              placeholder={
-                filters.examId ? "All subjects" : "Pick an exam first"
-              }
-            />
+            <SelectValue placeholder="All subjects" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value={ALL}>All subjects</SelectItem>
@@ -605,14 +599,16 @@ export default function FilterBar({
   //            State Board). Seven of the nine top-level entries are single
   //            exams with no class to pick.
   //   examStage — only while a family with a stage level is selected (MPSC).
-  //   chapters / subtopics — only once their parent is picked, or while they
-  //            are themselves active. See lib/questions/filterVisibility.ts.
+  //   subject / chapters / subtopics — only once their parent is picked, or
+  //            while they are themselves active. See
+  //            lib/questions/filterVisibility.ts.
   const order: SectionKey[] = (mode === "staged" ? STAGED_ORDER : LIVE_ORDER).filter(
     (k) =>
       (k !== "fit" || isFitExam(filters.examId)) &&
       (k !== "format" || showFormat) &&
       (k !== "examClass" || examSelection.members.length > 0) &&
       (k !== "examStage" || examSelection.stages.length > 0) &&
+      (k !== "subject" || showsSubjectFilter(filters)) &&
       (k !== "chapters" || showsChapterFilter(filters)) &&
       (k !== "subtopics" || showsSubtopicFilter(filters))
   );
