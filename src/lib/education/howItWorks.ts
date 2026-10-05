@@ -16,6 +16,7 @@
  *
  * Pure: no React, no DB. Spec: tests/how-it-works.test.ts.
  */
+import { withArticle } from "@/lib/text/article";
 import type { ExamEntry } from "@/lib/exam/examContext";
 
 /** "practice" is the practice-first experiment's loop — see onboardingArm. */
@@ -52,7 +53,7 @@ function mockLoop(exam: ExamEntry | null): Loop {
         title: "Sit a real past paper.",
         body: "Timed and auto-graded, the exact questions of one sitting. Answer what you can and leave the rest; the result counts what you attempted.",
         href: catalogue,
-        cta: exam ? `Start a ${exam.displayName} paper` : "Pick a paper",
+        cta: exam ? `Start ${withArticle(exam.displayName)} paper` : "Pick a paper",
       },
       {
         title: "Fix what you missed.",
@@ -159,7 +160,7 @@ function practiceFirstLoop(exam: ExamEntry): Loop {
         title: "Sit a real past paper when ready.",
         body: "Timed and auto-graded, the exact questions of one sitting. Answer what you can and leave the rest.",
         href: `/mock/exam/${exam.slug}`,
-        cta: `Start a ${exam.displayName} paper`,
+        cta: `Start ${withArticle(exam.displayName)} paper`,
       },
       {
         title: "Fix what you missed.",

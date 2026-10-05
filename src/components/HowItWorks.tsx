@@ -16,7 +16,11 @@ export default function HowItWorks({
   loop,
   compact = false,
   linkSteps = true,
+  variant = "cards",
 }: {
+  /** "list": steps divided by thin rules, no box each (the /welcome step,
+   *  where three bordered cards pushed the button below a phone's fold). */
+  variant?: "cards" | "list";
   loop: Loop;
   /** Tighter padding + smaller type, for a card inside another page. */
   compact?: boolean;
@@ -24,12 +28,14 @@ export default function HowItWorks({
   linkSteps?: boolean;
 }) {
   return (
-    <ol className={compact ? "space-y-3" : "space-y-4"}>
+    <ol className={variant === "list" ? "divide-y" : compact ? "space-y-3" : "space-y-4"}>
       {loop.steps.map((s, i) => (
         <li
           key={s.href}
           className={
-            "flex gap-4 rounded-xl border bg-card " + (compact ? "p-4" : "p-5 sm:p-6")
+            variant === "list"
+              ? "flex gap-3 py-3 first:pt-0 last:pb-0"
+              : "flex gap-4 rounded-xl border bg-card " + (compact ? "p-4" : "p-5 sm:p-6")
           }
         >
           <span

@@ -4,14 +4,14 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ProfileChips from "@/components/ProfileChips";
 import HowItWorks from "@/components/HowItWorks";
 import { getExamBySlug, isExamSlug, type ExamSlug } from "@/lib/exam/examContext";
 import TierExamChips from "@/components/TierExamChips";
 import { setExamCookie } from "@/lib/exam/examCookie";
-import { STAGES, STAGE_LABELS, type Stage } from "@/lib/profile/onboarding";
+import { STAGES, STAGE_LABELS, examQuestionVisible, type Stage } from "@/lib/profile/onboarding";
 import { loopForArm, welcomeDestination, type OnboardingArm } from "@/lib/education/howItWorks";
 
 /**
@@ -51,6 +51,7 @@ export default function ExamOnboarding({
     initialExam && isExamSlug(initialExam) ? [initialExam] : []
   );
   const [stage, setStage] = useState<Stage | null>(null);
+  const [showExams, setShowExams] = useState(false);
   const [submitting, setSubmitting] = useState<"continue" | "skip" | null>(null);
   // null = still on screen 1; a slug or "none" = screen 2 for that exam.
   const [primary, setPrimary] = useState<ExamSlug | "none" | null>(null);
@@ -116,12 +117,10 @@ export default function ExamOnboarding({
     return (
       <main className="flex min-h-screen items-center justify-center bg-muted/30 px-4 py-12 sm:px-6">
         <div className="w-full max-w-lg rounded-2xl border bg-card p-6 shadow-sm sm:p-8">
-          <div className="mb-6 flex items-center gap-2 text-brand-accent">
-            <BookOpen className="h-5 w-5" aria-hidden />
-            <span className="text-sm font-semibold tracking-tight">PYQ Vault</span>
-          </div>
+          <BrandMark />
 
-          <h1 className="text-2xl font-semibold tracking-tight">
+          <p className="text-xs font-semibold uppercase tracking-wider text-brand-accent">Step 2 of 2</p>
+          <h1 className="mt-1 text-2xl font-semibold tracking-tight">
             {loop.examLabel ? `How ${loop.examLabel} prep works here` : "How it works"}
           </h1>
           <p className="mt-2 text-sm text-muted-foreground">
@@ -133,11 +132,13 @@ export default function ExamOnboarding({
           </p>
 
           <div className="mt-6">
-            <HowItWorks loop={loop} compact linkSteps={false} />
+            <HowItWorks loop={loop} compact linkSteps={false} variant="list" />
           </div>
 
-          <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:items-center">
-            <Button asChild variant="brand" size="lg" className="h-12 flex-1 rounded-xl text-base">
+          <div className="mt-6 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:items-center">
+            {/* w-full on a phone, flex-1 only from sm: in the stacked (column)
+                row, flex-1 collapsed the button to its text height (~24 px). */}
+            <Button asChild variant="brand" size="lg" className="h-12 w-full rounded-xl text-base sm:w-auto sm:flex-1">
               <Link href={dest.primary.href} prefetch={false}>
                 {dest.primary.label}
                 <ArrowRight className="h-4 w-4" aria-hidden />
@@ -164,20 +165,18 @@ export default function ExamOnboarding({
   return (
     <main className="flex min-h-screen items-center justify-center bg-muted/30 px-6 py-12">
       <div className="w-full max-w-lg rounded-2xl border bg-card p-8 shadow-sm">
-        <div className="mb-6 flex items-center gap-2 text-brand-accent">
-          <BookOpen className="h-5 w-5" aria-hidden />
-          <span className="text-sm font-semibold tracking-tight">PYQ Vault</span>
-        </div>
+        <BrandMark />
 
-        <h1 className="text-2xl font-semibold tracking-tight">What are you preparing for?</h1>
+        <p className="text-xs font-semibold uppercase tracking-wider text-brand-accent">Step 1 of 2</p>
+        <h1 className="mt-1 text-2xl font-semibold tracking-tight">Two quick questions</h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Pick your stage, then your exam(s). We&apos;ll put your bank, notes and
-          mocks front and centre. You can change this anytime.
+          We&apos;ll put your bank, notes and mocks front and centre. You can change this anytime.
         </p>
 
         <div className="mt-7">
           <ProfileChips
-            legend="Your stage"
+            legend="Which class are you in?"
+            legendStyle="question"
             options={STAGE_OPTIONS}
             selected={stage ? [stage] : []}
             onToggle={(v) => setStage(stage === v ? null : (v as Stage))}
@@ -185,13 +184,30 @@ export default function ExamOnboarding({
           />
         </div>
 
-        <div className="mt-6">
-          <TierExamChips
-            stage={stage}
-            selected={exams}
-            onToggle={(v) => toggleExam(v as ExamSlug)}
-            disabled={busy}
-          />
+        {/* The exams appear once the class is picked, already narrowed to it.
+            The first view used to show all ~30 exam chips at once. */}
+        <div className="mt-7">
+          {examQuestionVisible({ stage, selectedCount: exams.length, showAnyway: showExams }) ? (
+            <TierExamChips
+              legend="Which exam are you aiming for?"
+              legendStyle="question"
+              stage={stage}
+              selected={exams}
+              onToggle={(v) => toggleExam(v as ExamSlug)}
+              disabled={busy}
+            />
+          ) : (
+            <p className="text-sm text-muted-foreground">
+              Pick your class and we&apos;ll show the exams that fit it.{" "}
+              <button
+                type="button"
+                onClick={() => setShowExams(true)}
+                className="font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                Or see every exam
+              </button>
+            </p>
+          )}
         </div>
 
         <div className="mt-8 flex items-center gap-3">
@@ -208,7 +224,22 @@ export default function ExamOnboarding({
             {submitting === "skip" ? "…" : "Skip for now"}
           </Button>
         </div>
+        {/* A disabled button says nothing on its own. */}
+        {exams.length === 0 && (
+          <p className="mt-2 text-xs text-muted-foreground">Pick at least one exam to continue, or skip for now.</p>
+        )}
       </div>
     </main>
+  );
+}
+
+/** The brand V and name (the open-book icon predated the V logo). */
+function BrandMark() {
+  return (
+    <div className="mb-6 flex items-center gap-2">
+      {/* eslint-disable-next-line @next/next/no-img-element -- pre-sized static mark, as in HeaderBar */}
+      <img src="/icons/mark-96.png" alt="" aria-hidden width={24} height={24} className="h-6 w-6 shrink-0" />
+      <span className="text-sm font-semibold tracking-tight">PYQ Vault</span>
+    </div>
   );
 }

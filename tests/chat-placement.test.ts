@@ -20,6 +20,11 @@ describe("vPlacement", () => {
     expect(vPlacement("/mock/attempt/abc-123/result", empty).hidden).toBe(false);
   });
 
+  it("hides V on /welcome, the sign-up step (it covered the exam chips on a phone)", () => {
+    expect(vPlacement("/welcome", empty).hidden).toBe(true);
+    expect(vPlacement("/welcomes", empty).hidden).toBe(false);
+  });
+
   it("hides V on /drill, whose bottom bar it would cover", () => {
     expect(vPlacement("/drill", empty).hidden).toBe(true);
     expect(vPlacement("/drill/anything", empty).hidden).toBe(true);

@@ -13,7 +13,7 @@ import { ACTIVITY_KINDS } from "@/lib/activity/events";
 describe("stageLabel", () => {
   it("renders the human label for a known stage", () => {
     expect(stageLabel("class-11")).toBe("Class 11");
-    expect(stageLabel("dropper")).toBe("Dropper / repeat attempt");
+    expect(stageLabel("dropper")).toBe("Repeating a year");
   });
   // Absence is absence: a student who never answered must not read as a student
   // who answered "class-9-10" (the DB stores NULL, not a default).

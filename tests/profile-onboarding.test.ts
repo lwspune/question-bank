@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import {
+import { examQuestionVisible,
   STAGES,
   isStage,
   sanitizeTargetExams,
@@ -141,5 +141,23 @@ describe("needsStageNudge", () => {
     expect(needsStageNudge({ stage: "dropper", now })).toBe(false);
     expect(needsStageNudge({ stage: "college", now })).toBe(false);
     expect(needsStageNudge({ stage: null, now })).toBe(false);
+  });
+});
+
+describe("examQuestionVisible (/welcome step 1)", () => {
+  // The first view used to show all ~30 exam chips before a class was picked.
+  // The exam question now appears once a class is picked, or at once when an
+  // exam is already selected (the exam they were browsing), or on request.
+  it("hidden until a class is picked", () => {
+    expect(examQuestionVisible({ stage: null, selectedCount: 0, showAnyway: false })).toBe(false);
+    expect(examQuestionVisible({ stage: "class-12", selectedCount: 0, showAnyway: false })).toBe(true);
+  });
+
+  it("shown at once when an exam is already selected, so a pick is never hidden", () => {
+    expect(examQuestionVisible({ stage: null, selectedCount: 1, showAnyway: false })).toBe(true);
+  });
+
+  it("shown on request ('see every exam')", () => {
+    expect(examQuestionVisible({ stage: null, selectedCount: 0, showAnyway: true })).toBe(true);
   });
 });
