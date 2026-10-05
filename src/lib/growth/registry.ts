@@ -84,6 +84,9 @@ export const CHIPS_KEEP_PCT = 3;
  */
 export const PREMIUM_LIMITS_MIN_SALES = 3;
 
+/** "performance-starter": keep the offer if this share of empty-page viewers start a test within a day. */
+export const STARTER_KEEP_PCT = 15;
+
 /** The ISO date `EXPERIMENT_WINDOW_DAYS` after `liveSince`. */
 export function checkOn(liveSince: string): string {
   const d = new Date(`${liveSince}T00:00:00Z`);
@@ -100,7 +103,8 @@ export type Readout =
   | "second-page"
   | "box-buy"
   | "resource-chips"
-  | "premium-limits";
+  | "premium-limits"
+  | "performance-starter";
 
 export type Experiment = {
   id: string;
@@ -230,6 +234,18 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "premium-limits",
     status: "running",
   },
+  {
+    id: "performance-starter",
+    title: "A first test on the empty performance page",
+    change:
+      "A student with no graded paper used to see a blank box on /performance. It now offers one short test: the chapter test for the chapter they practised last, else their exam's first chapter test, else its newest past paper; a board student is told timed tests are not live yet, and a student with no exam picks one.",
+    why: "Two in three active students (102 of 155, 2026-10-06) have no graded paper, so for most students the page was empty. A full paper is 90 to 180 minutes; a chapter test is 15 to 25, and chapter tests are finished far more often (median 85% answered against 3% for full MHT-CET papers).",
+    metric: "Of students who view /performance with no graded paper (surface_viewed 'performance'), the share who start a mock within 24 hours (mock_started); performance_starter_click in Vercel says which offer they took",
+    rule: `Keep it if ${STARTER_KEEP_PCT}%+ of those viewers start a test within a day by the check date; below that, try a different offer before removing it.`,
+    liveSince: "2026-10-06",
+    readout: "performance-starter",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };
@@ -274,7 +290,8 @@ export type ReadingMetric =
   | "card-tap-rate"
   | "box-sales-per-100"
   | "chip-tap-rate"
-  | "limit-sales";
+  | "limit-sales"
+  | "starter-start-rate";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -303,6 +320,12 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
     label: "Passes sold since the free limits went on",
     source: "entitlements where source = 'razorpay' and granted_at >= the switch-on date; paywall_event shown rows by gate beside it",
     entries: [{ on: "2026-10-05", value: 1, note: "Baseline: 1 pass sold since sales opened on 2026-09-27, before any of these limits" }],
+  },
+  "starter-start-rate": {
+    label: "Empty performance page: started a test within a day (%)",
+    source:
+      "user_activity: surface_viewed 'performance' rows by students with no graded attempt that day, then mock_started by the same student within 24 hours",
+    entries: [],
   },
   "box-sales-per-100": {
     label: "Passes sold per 100 download-gate visitors",

@@ -43,6 +43,7 @@ export default function PerformanceBody({
   viewer,
   projectionLocked,
   projectionNote,
+  starter,
 }: {
   perf: Performance;
   nav: LaneNav;
@@ -55,6 +56,8 @@ export default function PerformanceBody({
   projectionLocked?: ReactNode;
   /** A running trial: one line above the card ("Free for 3 more days"). */
   projectionNote?: string;
+  /** What the empty page offers instead (the student's own page only). */
+  starter?: ReactNode;
 }) {
   const { summary } = perf;
   const selected = nav.selected;
@@ -67,7 +70,11 @@ export default function PerformanceBody({
   return (
     <>
       {summary.graded === 0 ? (
-        <EmptyState inProgress={summary.inProgress} excluded={summary.retakesDropped + summary.belowFloor} />
+        <EmptyState
+          inProgress={summary.inProgress}
+          excluded={summary.retakesDropped + summary.belowFloor}
+          starter={starter}
+        />
       ) : (
         <>
           <section>
@@ -567,21 +574,32 @@ function Chip({
   );
 }
 
-function EmptyState({ inProgress, excluded }: { inProgress: number; excluded: number }) {
+function EmptyState({
+  inProgress,
+  excluded,
+  starter,
+}: {
+  inProgress: number;
+  excluded: number;
+  starter?: ReactNode;
+}) {
   return (
-    <div className="rounded-lg border border-dashed p-8 text-center">
-      <p className="text-sm text-muted-foreground">
-        No graded paper to analyse yet.
-        {inProgress > 0 && ` ${inProgress} attempt${inProgress === 1 ? " is" : "s are"} still in progress.`}
-      </p>
-      {excluded > 0 && (
-        // Saying so matters: otherwise a student with attempts on the roster
-        // shows an empty page here and it reads as a broken query.
-        <p className="mt-1 text-xs text-muted-foreground">
-          {excluded} attempt{excluded === 1 ? " was" : "s were"} excluded as a retake or as
-          abandoned (under 20% answered).
+    <div className="space-y-4">
+      <div className={cn("rounded-lg border border-dashed text-center", starter ? "p-4" : "p-8")}>
+        <p className="text-sm text-muted-foreground">
+          No graded paper to analyse yet.
+          {inProgress > 0 && ` ${inProgress} attempt${inProgress === 1 ? " is" : "s are"} still in progress.`}
         </p>
-      )}
+        {excluded > 0 && (
+          // Saying so matters: otherwise a student with attempts on the roster
+          // shows an empty page here and it reads as a broken query.
+          <p className="mt-1 text-xs text-muted-foreground">
+            {excluded} attempt{excluded === 1 ? " was" : "s were"} excluded as a retake or as
+            abandoned (under 20% answered).
+          </p>
+        )}
+      </div>
+      {starter}
     </div>
   );
 }
