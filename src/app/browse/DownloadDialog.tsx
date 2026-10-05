@@ -41,6 +41,7 @@ type Mode = "filters" | "cart";
 type Kind = "paper" | "key" | "tags" | "ppt";
 
 // Per-kind download metadata: filename prefix, extension, success-toast label.
+// The paper and key extension here is Word's; a PDF download overrides it.
 const KIND_META: Record<Kind, { prefix: string; ext: string; label: string }> = {
   paper: { prefix: "QP", ext: "docx", label: "Question Paper" },
   key: { prefix: "Answers", ext: "docx", label: "Answer Key" },
@@ -93,6 +94,9 @@ export default function DownloadDialog({
     freeDownloadLeft: isSignedIn ? freeDownloadLeft : undefined,
   };
   const paperAccess = resolveExportAccess({ kind: "paper", ...who });
+  // PDF for everyone without staff access, Word for institute staff — the same
+  // field the route reads, so the saved file's extension matches its bytes.
+  const paperFormat = (paperAccess.allowed && paperAccess.format) || "docx";
   // On the one free download: the download view says so, offers the pass, and
   // a finished download refreshes the page so the box moves to the offer.
   const onFree = paperAccess.allowed && paperAccess.free === true;
@@ -185,9 +189,10 @@ export default function DownloadDialog({
       const blob = await res.blob();
       const url = URL.createObjectURL(blob);
       const meta = KIND_META[kind];
+      const ext = kind === "paper" || kind === "key" ? paperFormat : meta.ext;
       const a = document.createElement("a");
       a.href = url;
-      a.download = `${meta.prefix}_${sanitize(title)}.${meta.ext}`;
+      a.download = `${meta.prefix}_${sanitize(title)}.${ext}`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -241,7 +246,9 @@ export default function DownloadDialog({
               : "Download papers with the pass"}
           </DialogTitle>
           <DialogDescription>
-            {showDownloadView ? (
+            {showDownloadView && paperFormat === "pdf" ? (
+              "PDF files — the Question Paper and the Answer Key, set in one column so they read well on a phone and print cleanly."
+            ) : showDownloadView ? (
               <>
                 Word files — Question Paper and Answer Key (0.5″ margins, 2
                 columns, Cambria 10pt)
@@ -259,7 +266,7 @@ export default function DownloadDialog({
                 ? `${downloadPass.label} includes:`
                 : `You've used your free download. ${downloadPass.label} includes:`
             ) : (
-              "Downloading question papers as Word files needs a pass."
+              "Downloading question papers needs a pass."
             )}
           </DialogDescription>
         </DialogHeader>

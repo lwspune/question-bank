@@ -38,8 +38,8 @@ export default async function TermsPage() {
         PYQ Vault is a past-year question bank and study site for Indian entrance and board
         exams. Browsing questions, guides and notes needs no account and is free.{" "}
         {freeMocks === null
-          ? "With a free account you can take timed mock tests; Word paper downloads need a paid pass."
-          : `With a free account you can take ${freeMocks} timed mock tests; more mock tests and Word paper downloads need a paid pass.`}
+          ? "With a free account you can take timed mock tests; paper downloads need a paid pass."
+          : `With a free account you can take ${freeMocks} timed mock tests; more mock tests and paper downloads need a paid pass.`}
       </LegalP>
 
       <LegalH2>Accounts</LegalH2>

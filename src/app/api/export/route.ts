@@ -20,13 +20,20 @@ import {
   buildAnswerKey,
 } from "@/lib/export/docxBuilder";
 import { buildQuestionSlides } from "@/lib/export/pptxBuilder";
+import { buildKeyHtml, buildPaperHtml } from "@/lib/export/pdf/paperHtml";
+import { pdfHead } from "@/lib/export/pdf/assets";
+import { printPdf } from "@/lib/export/pdf/printPdf";
+import { imageDataUris } from "@/lib/export/pdf/images";
 import { PPTX_CONTENT_TYPE } from "@/lib/export/pptxParts";
 import { buildTagRows, tagRowsToAoa } from "@/lib/export/tagsSheet";
 import { getResourceTagsForQuestions } from "@/lib/links/getResourceTagsForQuestions";
 import { downloadImage } from "@/lib/storage/images";
 import * as XLSX from "xlsx";
 
-export const maxDuration = 60;
+// 60 s covered every Word export; a PDF also starts a Chromium (a cold one
+// unpacks itself first) and may wait behind another print on the same
+// instance (printPdf queues them), so it gets more room.
+export const maxDuration = 120;
 
 const EXPORT_CAP = 200;
 const HOUR_MS = 60 * 60 * 1000;
@@ -38,6 +45,7 @@ const AUTHED_LIMIT = 200;
 
 const DOCX_CONTENT_TYPE =
   "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+const PDF_CONTENT_TYPE = "application/pdf";
 const XLSX_CONTENT_TYPE =
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
@@ -241,7 +249,7 @@ export async function POST(request: NextRequest) {
     const includeSolutions = !!options.includeSolutions;
     const groupBySubtopic = !!options.groupBySubtopic;
     const includeSourceTag = !!options.includeSourceTag;
-    // Word outputs only: the tags sheet is structured data for nda-tracker and
+    // Paper and key only (Word or PDF): the tags sheet is structured data for nda-tracker and
     // stays English. Applied here, after the load, so every downstream builder
     // sees ordinary rows and the key never moves.
     if (kind === "paper" || kind === "key") {
@@ -319,11 +327,26 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    let docxBuf: Buffer;
+    // A PDF for everyone without staff access, Word for institute staff (see
+    // resolveExportAccess's `format`). The PDF is one HTML page printed by a
+    // headless Chromium; its pictures are fetched per document, so a paper can
+    // never carry a solution's picture.
+    let fileBuf: Buffer;
     let filename: string;
-    if (kind === "paper") {
+    let contentType = DOCX_CONTENT_TYPE;
+    if (access.format === "pdf") {
+      const images = await imageDataUris(createSupabaseAdminClient(), kind, questions);
+      const common = { title, questions, images, groupBySubtopic, branded: access.branded, head: pdfHead() };
+      const html =
+        kind === "paper"
+          ? buildPaperHtml({ ...common, includeSourceTag })
+          : buildKeyHtml({ ...common, includeSolutions });
+      fileBuf = await printPdf(html);
+      filename = `${kind === "paper" ? "QP" : "Answers"}_${safeName}.pdf`;
+      contentType = PDF_CONTENT_TYPE;
+    } else if (kind === "paper") {
       const imageBytes = await fetchImageBytes(questions);
-      docxBuf = await buildQuestionPaper({
+      fileBuf = await buildQuestionPaper({
         title,
         questions,
         imageBytes,
@@ -333,7 +356,7 @@ export async function POST(request: NextRequest) {
       });
       filename = `QP_${safeName}.docx`;
     } else {
-      docxBuf = await buildAnswerKey({
+      fileBuf = await buildAnswerKey({
         title,
         questions,
         includeSolutions,
@@ -363,12 +386,12 @@ export async function POST(request: NextRequest) {
       mode: isCartMode ? "cart" : "filters",
       isStaff,
     });
-    return new NextResponse(docxBuf as unknown as ArrayBuffer, {
+    return new NextResponse(fileBuf as unknown as ArrayBuffer, {
       status: 200,
       headers: {
-        "Content-Type": DOCX_CONTENT_TYPE,
+        "Content-Type": contentType,
         "Content-Disposition": `attachment; filename="${filename}"`,
-        "Content-Length": String(docxBuf.length),
+        "Content-Length": String(fileBuf.length),
       },
     });
   } catch (err) {

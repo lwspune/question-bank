@@ -41,7 +41,26 @@ const nextConfig = {
   // the rate there. Vercel keeps 4: its builds run one at a time (project
   // setting), no longer alongside a CI build, and a slower build there would
   // delay every deploy. `VERCEL=1` is set by Vercel in every build.
-  experimental: { cpus: process.env.VERCEL ? 4 : 2 },
+  experimental: {
+    cpus: process.env.VERCEL ? 4 : 2,
+    // 2026-10-05: /api/export prints PDFs with a headless Chromium. The
+    // package ships its browser as compressed files it finds by its own path,
+    // so it must stay out of the webpack bundle...
+    serverComponentsExternalPackages: ["@sparticuz/chromium"],
+    // ...and the function only receives files its code visibly imports. The
+    // browser, the PDF fonts and KaTeX's stylesheet + fonts are all read from
+    // disk at run time, so they are listed here; a file missing from this list
+    // simply does not exist on Vercel, and the PDF prints in a fallback font
+    // or not at all. Paths are relative to the project root.
+    outputFileTracingIncludes: {
+      "/api/export": [
+        "./node_modules/@sparticuz/chromium/bin/**",
+        "./src/lib/export/pdf/fonts/*.woff2",
+        "./node_modules/katex/dist/katex.min.css",
+        "./node_modules/katex/dist/fonts/*.woff2",
+      ],
+    },
+  },
   async redirects() {
     return [
       {

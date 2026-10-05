@@ -46,7 +46,7 @@ describe("buildFaqAnswer", () => {
     expect(a).toMatch(/6 months/);
   });
 
-  // 2026-10-01: the one pass also unlocks Word downloads, and its NAME is data
+  // 2026-10-01: the one pass also unlocks paper downloads, and its NAME is data
   // (/dashboard/pricing), so the answer reads the label rather than hardcoding one.
   it("names the pass by its live label and says it unlocks downloads", () => {
     const renamed = { ...input, plans: [{ label: "Premium Pass", amountPaise: 9900, durationDays: 182, scope: "mocks" }] };

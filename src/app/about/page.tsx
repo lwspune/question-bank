@@ -165,7 +165,7 @@ export default async function AboutPage() {
           </Link>
           ). The one genuinely
           restricted thing is downloading a question paper and answer key as
-          Word files, which comes with the{" "}
+          PDF files, which comes with the{" "}
           <Link href="/pricing?plan=mocks" className="text-brand-accent underline">
             Premium Pass
           </Link>
