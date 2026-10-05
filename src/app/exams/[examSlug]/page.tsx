@@ -149,17 +149,17 @@ export default async function ExamHomePage({ params }: Params) {
         <p className="mt-2 max-w-3xl text-muted-foreground">{description}</p>
 
         <div className="mt-5 flex flex-wrap gap-2">
-          <Button asChild variant="brand">
+          <Button asChild variant="brand" size="wrap">
             <Link href={model.links.bank}>
-              <Compass className="mr-1.5 h-4 w-4" />
+              <Compass className="mr-1.5 h-4 w-4 shrink-0" />
               Filter all {model.totalQuestions.toLocaleString("en-IN")} {kind}
-              <ArrowRight className="ml-1.5 h-4 w-4" />
+              <ArrowRight className="ml-1.5 h-4 w-4 shrink-0" />
             </Link>
           </Button>
           {quickLinks.map(({ href, label, Icon }) => (
-            <Button key={href} asChild variant="outline">
+            <Button key={href} asChild variant="outline" size="wrap">
               <Link href={href}>
-                <Icon className="mr-1.5 h-4 w-4" />
+                <Icon className="mr-1.5 h-4 w-4 shrink-0" />
                 {label}
               </Link>
             </Button>

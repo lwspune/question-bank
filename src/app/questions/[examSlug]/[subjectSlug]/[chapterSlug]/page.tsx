@@ -253,32 +253,32 @@ export default async function ChapterQuestionsPage({ params }: Params) {
         )}
 
         <div className="mt-5 flex flex-wrap gap-2">
-          <Button asChild variant="brand">
+          <Button asChild variant="brand" size="wrap">
             <Link href={browseHrefFor(landing)}>
               Filter all {landing.questionCount} in the question bank
-              <ArrowRight className="ml-1.5 h-4 w-4" />
+              <ArrowRight className="ml-1.5 h-4 w-4 shrink-0" />
             </Link>
           </Button>
           {resources.notes && (
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" size="wrap">
               <Link href={resources.notes.href}>
-                <BookOpen className="mr-1.5 h-4 w-4" />
+                <BookOpen className="mr-1.5 h-4 w-4 shrink-0" />
                 {resources.notes.label}
               </Link>
             </Button>
           )}
           {resources.guide && (
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" size="wrap">
               <Link href={resources.guide.href}>
-                <Compass className="mr-1.5 h-4 w-4" />
+                <Compass className="mr-1.5 h-4 w-4 shrink-0" />
                 {resources.guide.label}
               </Link>
             </Button>
           )}
           {mock && (
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" size="wrap">
               <Link href={mock.href}>
-                <ClipboardCheck className="mr-1.5 h-4 w-4" />
+                <ClipboardCheck className="mr-1.5 h-4 w-4 shrink-0" />
                 {mockCtaCopy(mock).short}
               </Link>
             </Button>
