@@ -14,6 +14,10 @@ export async function middleware(request: NextRequest) {
 // only behavioural effect: a signed-in user's session cookie refreshes on these
 // surfaces (+ server actions) rather than on every public page — fine for a
 // public-first site. See the 2026-06-27 Decisions entry.
+//
+// /login and /signup are matched so a visitor who is ALREADY signed in is sent
+// into the site instead of being shown the form (signedInAuthPageRedirect).
+// Both are low-traffic and noindex, so the extra getUser() costs little.
 export const config = {
   matcher: [
     "/dashboard",
@@ -24,5 +28,7 @@ export const config = {
     "/upload/:path*",
     "/uploads",
     "/uploads/:path*",
+    "/login",
+    "/signup",
   ],
 };

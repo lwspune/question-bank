@@ -1,5 +1,6 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { signedInAuthPageRedirect } from "@/lib/auth/redirect";
 
 type CookieToSet = { name: string; value: string; options?: CookieOptions };
 
@@ -45,6 +46,18 @@ export async function updateSession(request: NextRequest): Promise<NextResponse>
     const url = request.nextUrl.clone();
     url.pathname = "/browse";
     return NextResponse.redirect(url);
+  }
+
+  // A signed-in visitor on /login or /signup goes straight into the site
+  // rather than being shown the form again.
+  const authPageTarget = user
+    ? signedInAuthPageRedirect(
+        request.nextUrl.pathname,
+        request.nextUrl.searchParams.get("next")
+      )
+    : null;
+  if (authPageTarget) {
+    return NextResponse.redirect(new URL(authPageTarget, request.url));
   }
 
   return response;
