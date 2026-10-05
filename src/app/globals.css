@@ -75,6 +75,15 @@
   body { @apply bg-background text-foreground; }
 
   /*
+    The page never drags sideways. One element wider than a phone screen made
+    a whole page pannable, so a slanted thumb swipe slid it left (seen in a
+    Clarity recording, 2026-10-05). `clip`, not `hidden`: `hidden` makes a
+    scroll container and breaks the sticky header. Fix the wide element too;
+    this only stops the wobble. Guarded by tests/no-sideways-drag.test.ts.
+  */
+  html, body { overflow-x: clip; }
+
+  /*
     Clearance for MobileTabBar, which is `fixed` and would otherwise cover the
     foot of every page below sm. Applied to body so it covers all 56 AppHeader
     call sites and the Footer in one rule, rather than per-page.
