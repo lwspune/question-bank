@@ -17,7 +17,7 @@ export const STAGE_LABELS: Record<Stage, string> = {
   "class-9-10": "Class 9–10",
   "class-11": "Class 11",
   "class-12": "Class 12",
-  dropper: "Dropper / repeat attempt",
+  dropper: "Repeating a year",
   college: "College / other",
 };
 

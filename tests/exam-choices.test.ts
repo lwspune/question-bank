@@ -63,49 +63,76 @@ describe("EXAM_CHIP_OPTIONS", () => {
   });
 });
 
-import { examChipsForTier } from "@/lib/profile/examChoices";
+import { examChipsForStage } from "@/lib/profile/examChoices";
 
-// EXAM_TIER_SPEC.md §3.4 — the chips narrow to the student's tier, the rest sit
-// behind "Show all exams". Run on the REAL registry: the family-degradation
-// rule is about the real boards.
-describe("examChipsForTier", () => {
-  it("puts everything in shown when the tier is unknown", () => {
-    const { shown, hidden } = examChipsForTier(null, [], EXAM_REGISTRY);
-    expect(hidden).toEqual([]);
-    expect(shown).toEqual(EXAM_CHIP_OPTIONS);
+/**
+ * /welcome and /account (2026-10-05). The class question already says the
+ * student's class, so the board chips stop asking it again ("Class 11 ·
+ * Class 12" under each board): for Class 11/12 they show the BOARD only, in a
+ * "Board exam" row. Entrance exams come first (IPMAT and MPSC rows included;
+ * IPMAT used to sit below the boards), boards next, and worksheet banks
+ * (registry `course`) in their own "Practice courses" list, not posing as exams.
+ */
+describe("examChipsForStage", () => {
+  const values = (cs: { value: string }[]) => cs.map((c) => c.value);
+  const groups = (cs: { group?: string }[]) => [...new Set(cs.map((c) => c.group ?? ""))];
+
+  it("Class 12: that class's boards only, named by board, in a Board exam row", () => {
+    const { shown } = examChipsForStage("class-12", [], EXAM_REGISTRY);
+    const boards = shown.filter((c) => c.group === "Board exam");
+    expect(values(boards).sort()).toEqual(["cbse-12", "mh-hsc-12"]);
+    expect(boards.every((c) => !/Class \d/.test(c.label))).toBe(true);
+    expect(values(shown)).not.toContain("cbse-11");
+    expect(values(shown)).not.toContain("mh-sb-11");
   });
 
-  it("keeps a selected out-of-tier exam visible", () => {
-    const { shown, hidden } = examChipsForTier("school", ["nda"], EXAM_REGISTRY);
-    expect(shown.map((o) => o.value)).toContain("nda");
-    expect(hidden.map((o) => o.value)).not.toContain("nda");
+  it("Class 11: the Class 11 boards", () => {
+    const { shown } = examChipsForStage("class-11", [], EXAM_REGISTRY);
+    expect(values(shown.filter((c) => c.group === "Board exam")).sort()).toEqual(["cbse-11", "mh-sb-11"]);
   });
 
-  it("splits every public exam across shown and hidden exactly once", () => {
-    const { shown, hidden } = examChipsForTier("senior", ["cds"], EXAM_REGISTRY);
-    const all = [...shown, ...hidden].map((o) => o.value);
-    expect(new Set(all).size).toBe(all.length);
-    expect(all.sort()).toEqual(EXAM_CHIP_OPTIONS.map((o) => o.value).sort());
+  it("repeating a year: no board chips, the entrance exams stay", () => {
+    const { shown } = examChipsForStage("dropper", [], EXAM_REGISTRY);
+    expect(shown.some((c) => c.group === "Board exam")).toBe(false);
+    expect(values(shown)).toEqual(expect.arrayContaining(["nda", "jee-mains", "mht-cet", "neet"]));
   });
 
-  it("degrades a board left with one class in the tier to a flat chip", () => {
-    // Filter BEFORE grouping: CBSE has only Class 10 in the school tier.
-    const { shown } = examChipsForTier("school", [], EXAM_REGISTRY);
-    expect(shown.find((o) => o.value === "cbse-10")).toEqual({
-      value: "cbse-10",
-      label: "CBSE Class 10",
-    });
-    // Maharashtra keeps two classes (9 and 10) in school, so it stays a group.
-    expect(shown.find((o) => o.value === "mh-sb-9")?.group).toBe(
-      "Maharashtra State Board"
-    );
+  it("Class 9-10 keeps the class on board chips (9 and 10 share one answer)", () => {
+    const { shown } = examChipsForStage("class-9-10", [], EXAM_REGISTRY);
+    const boardish = shown.filter((c) => /Class (9|10)/.test(c.label));
+    expect(boardish.length).toBeGreaterThan(0);
   });
 
-  it("groups CBSE 11 + 12 in the senior tier", () => {
-    const { shown } = examChipsForTier("senior", [], EXAM_REGISTRY);
-    expect(shown.filter((o) => o.group === "CBSE").map((o) => o.value)).toEqual([
-      "cbse-11",
-      "cbse-12",
-    ]);
+  it("entrance exams (IPMAT included) come before boards", () => {
+    const { shown } = examChipsForStage("class-12", [], EXAM_REGISTRY);
+    const order = groups(shown);
+    const boardAt = order.indexOf("Board exam");
+    const ipmatAt = order.findIndex((g) => g.startsWith("IPMAT"));
+    expect(boardAt).toBeGreaterThan(-1);
+    expect(ipmatAt).toBeGreaterThan(-1);
+    expect(ipmatAt).toBeLessThan(boardAt);
+  });
+
+  it("worksheet banks are courses, never exam chips", () => {
+    const r = examChipsForStage("class-12", [], EXAM_REGISTRY);
+    expect(values(r.shown)).not.toContain("worksheets-11-12");
+    expect(values(r.hidden)).not.toContain("worksheets-11-12");
+    expect(values(r.courses)).toContain("worksheets-11-12");
+    const school = examChipsForStage("class-9-10", [], EXAM_REGISTRY);
+    expect(values(school.courses)).toContain("foundation-course");
+  });
+
+  it("every slug is offered exactly once across shown, hidden and courses", () => {
+    for (const stage of [null, "class-9-10", "class-11", "class-12", "dropper", "college"] as const) {
+      const r = examChipsForStage(stage, [], EXAM_REGISTRY);
+      const all = [...values(r.shown), ...values(r.hidden), ...values(r.courses)].sort();
+      expect(all).toEqual(EXAM_REGISTRY.filter((e) => !e.noPublicContent).map((e) => e.slug).sort());
+    }
+  });
+
+  it("a pick outside the class stays visible", () => {
+    const { shown, courses } = examChipsForStage("class-11", ["cbse-12", "foundation-course"], EXAM_REGISTRY);
+    expect(values(shown)).toContain("cbse-12");
+    expect(values(courses)).toContain("foundation-course");
   });
 });

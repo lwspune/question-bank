@@ -14,9 +14,10 @@
  * a student may legitimately target CBSE Class 11 AND Class 12, so there is
  * nothing to nest and no single selection to resolve.
  */
-import { EXAM_REGISTRY, type ExamEntry, type ExamTier } from "@/lib/exam/examContext";
+import { EXAM_REGISTRY, type ExamEntry } from "@/lib/exam/examContext";
 import { groupExamFamilies } from "@/lib/exam/examFamily";
 import type { ChipOption } from "@/components/ProfileChips";
+import { tierOfStage, type Stage } from "@/lib/profile/onboarding";
 
 /**
  * Ungrouped chips first, then each board's classes in numeric order.
@@ -70,26 +71,74 @@ export function buildExamChips(entries: readonly ExamEntry[]): ChipOption[] {
 
 export const EXAM_CHIP_OPTIONS: readonly ChipOption[] = buildExamChips(EXAM_REGISTRY);
 
+/** The classes whose board exams fit each stage; null = no narrowing. */
+const BOARD_STDS: Record<Stage, readonly number[]> = {
+  "class-9-10": [9, 10],
+  "class-11": [11],
+  "class-12": [12],
+  dropper: [], // boards are done; they are re-sitting an entrance exam
+  college: [],
+};
+
+/** "Maharashtra State Board (HSC)", "CBSE": the board, and the name students
+ *  use for that year where there is one, without the class number. */
+function boardOnlyLabel(e: ExamEntry): string {
+  const year = e.classLabel?.match(/\(([^)]+)\)/)?.[1];
+  return year ? `${e.board} (${year})` : String(e.board);
+}
+
+/** Entrance exams (with their families, IPMAT and MPSC) before board exams. */
+function entranceFirst(list: readonly ExamEntry[]): ChipOption[] {
+  return [...buildExamChips(list.filter((e) => !e.board)), ...buildExamChips(list.filter((e) => e.board))];
+}
+
 /**
- * The chips for a student's tier (EXAM_TIER_SPEC.md §3.4): `shown` renders as
- * today, `hidden` sits behind "Show all exams". An exam already selected is
- * always shown, even outside the tier, so changing the stage never makes a pick
- * vanish. Tier null shows everything.
+ * The /welcome and /account exam chips for a stated class (2026-10-05).
+ * Spec: tests/exam-choices.test.ts.
  *
- * Each half goes through buildExamChips separately, i.e. it is filtered BEFORE
- * grouping: CBSE keeps only Class 10 in the school tier and must render as one
- * flat chip, not a one-option group (groupExamFamilies rule 2).
+ * - The class question already says the class, so for Class 11 and 12 the
+ *   board chips show the BOARD only, in a "Board exam" row ("Maharashtra State
+ *   Board (HSC)", "CBSE") instead of asking "Class 11 · Class 12" again. Class
+ *   9-10 keeps the class on the chip, since 9 and 10 share one answer. Someone
+ *   repeating a year, or at college, gets no board chips.
+ * - Entrance exams come first, IPMAT and MPSC rows included (IPMAT used to
+ *   sit below the boards); everything outside the class sits behind "Show all
+ *   exams" (`hidden`), and a pick outside the class stays in `shown`.
+ * - Worksheet banks (registry `course`) are listed apart as `courses`, never
+ *   as exam chips.
  */
-export function examChipsForTier(
-  tier: ExamTier | null,
+export function examChipsForStage(
+  stage: Stage | null,
   selected: readonly string[],
   entries: readonly ExamEntry[]
-): { shown: ChipOption[]; hidden: ChipOption[] } {
-  if (tier === null) return { shown: buildExamChips(entries), hidden: [] };
+): { shown: ChipOption[]; hidden: ChipOption[]; courses: ChipOption[] } {
+  const live = entries.filter((e) => !e.noPublicContent);
+  const courses = buildExamChips(live.filter((e) => e.course));
+  const exams = live.filter((e) => !e.course);
+  if (stage === null) return { shown: entranceFirst(exams), hidden: [], courses };
+
   const picked = new Set(selected);
-  const inView = (e: ExamEntry) => e.tier === tier || picked.has(e.slug);
+  const tier = tierOfStage(stage);
+  const stds = BOARD_STDS[stage];
+  const fits = (e: ExamEntry) => (e.board ? stds.includes(Number(e.std)) : e.tier === tier);
+  const inView = (e: ExamEntry) => fits(e) || picked.has(e.slug);
+
+  const entrance = buildExamChips(exams.filter((e) => !e.board && inView(e)));
+  const boards = exams.filter((e) => e.board && inView(e));
+  const oneClass = stage === "class-11" || stage === "class-12";
+  const boardChips = oneClass
+    ? [
+        ...boards
+          .filter(fits)
+          .map((e) => ({ value: e.slug, label: boardOnlyLabel(e), group: "Board exam" })),
+        // A pick from another class keeps its class on the chip.
+        ...buildExamChips(boards.filter((e) => !fits(e))),
+      ]
+    : buildExamChips(boards);
+
   return {
-    shown: buildExamChips(entries.filter(inView)),
-    hidden: buildExamChips(entries.filter((e) => !inView(e))),
+    shown: [...entrance, ...boardChips],
+    hidden: entranceFirst(exams.filter((e) => !inView(e))),
+    courses,
   };
 }

@@ -204,6 +204,13 @@ export type ExamEntry = {
   board?: Board;
   std?: Std;
   /**
+   * A practice COURSE (a worksheet bank), not an exam anyone sits. It lives in
+   * the registry because its questions need an exam row, but the profile
+   * pickers list it under "Practice courses", never as a target exam
+   * (lib/profile/examChoices examChipsForStage, 2026-10-05).
+   */
+  course?: boolean;
+  /**
    * Overrides the derived `Class <std>` label used by the grouped exam pickers
    * (see lib/exam/examFamily). Set ONLY where a board names its years something
    * students actually say and search for — Maharashtra's SSC (10) and HSC (12).
@@ -262,6 +269,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     guidesPath: null, // no /guide subtree — falls back to the index
     notesPath: "/notes/foundation-course", // exam hub: "coming soon" until notes ship
     practiceOnly: true, // worksheet-only corpus → /browse defaults to the Practice view
+    course: true, // NDA Foundation worksheets: a course, not an exam
   },
   {
     slug: "neet",
@@ -502,6 +510,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     guidesPath: null, // no /guide subtree — falls back to the index
     notesPath: "/notes/worksheets-11-12", // exam hub: "coming soon" until notes ship
     practiceOnly: true, // Cadetprep concept-practice worksheets → /browse defaults to Practice
+    course: true, // a worksheet course, not an exam
     // NOT boardExam: worksheet content isn't textbook-sectioned, so no /board reader.
   },
   // ── IPMAT ─────────────────────────────────────────────────────────────────

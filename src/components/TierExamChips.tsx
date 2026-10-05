@@ -4,8 +4,8 @@ import { useId, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import ProfileChips from "@/components/ProfileChips";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
-import { examChipsForTier } from "@/lib/profile/examChoices";
-import { tierOfStage, type Stage } from "@/lib/profile/onboarding";
+import { examChipsForStage } from "@/lib/profile/examChoices";
+import type { Stage } from "@/lib/profile/onboarding";
 
 /**
  * The "Target exam" chips on /welcome and /account, narrowed to the stage the
@@ -30,7 +30,9 @@ export default function TierExamChips({
 }) {
   const [showAll, setShowAll] = useState(false);
   const panelId = useId();
-  const { shown, hidden } = examChipsForTier(tierOfStage(stage), selected, EXAM_REGISTRY);
+  // Board chips name the board only once the class is known; worksheet banks
+  // come back as `courses`, listed apart (lib/profile/examChoices).
+  const { shown, hidden, courses } = examChipsForStage(stage, selected, EXAM_REGISTRY);
 
   return (
     <div>
@@ -68,6 +70,18 @@ export default function TierExamChips({
               />
             </div>
           )}
+        </div>
+      )}
+      {courses.length > 0 && (
+        <div className="mt-6">
+          <ProfileChips
+            legend="Practice courses"
+            options={courses}
+            selected={selected}
+            onToggle={onToggle}
+            disabled={disabled}
+          />
+          <p className="mt-2 text-xs text-muted-foreground">Worksheet banks to practise from, not exams.</p>
         </div>
       )}
     </div>
