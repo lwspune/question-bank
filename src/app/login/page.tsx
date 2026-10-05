@@ -201,7 +201,7 @@ function BrandPanel() {
           <p className="mt-4 max-w-md text-sm text-primary-foreground/70">
             Your saved questions, mock attempts and notes progress, all waiting
             for you. With the Premium Pass you can also download question
-            papers and answer keys as Word files.
+            papers and answer keys as PDF files.
           </p>
         </div>
         <p className="text-xs text-primary-foreground/50">

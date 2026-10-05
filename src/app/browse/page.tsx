@@ -68,7 +68,7 @@ import { TOP_PRINCIPLES } from "@/app/guide/nda-maths/_data/principles";
 export const metadata: Metadata = {
   title: "Browse questions",
   description:
-    "Filter past-year questions by exam, chapter, difficulty, and year, and preview them free. Download the Question Paper + Answer Key as Word files with the Premium Pass.",
+    "Filter past-year questions by exam, chapter, difficulty, and year, and preview them free. Download the Question Paper + Answer Key as PDF files with the Premium Pass.",
   alternates: { canonical: "/browse" },
 };
 

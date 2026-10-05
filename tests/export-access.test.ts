@@ -54,7 +54,7 @@ describe("resolveExportAccess", () => {
     }
   });
 
-  // The Premium Pass (2026-10-01): the one paid pass unlocks the Word paper +
+  // The Premium Pass (2026-10-01): the one paid pass unlocks the paper +
   // answer key for anyone with no org, student or teacher. Slides and the tag
   // sheet stay org-staff only. (Was a separate ₹499 Teacher Pass, 2026-09-26.)
   describe("download pass", () => {
@@ -95,7 +95,7 @@ describe("resolveExportAccess", () => {
   describe("free download", () => {
     const fresh = { isSignedIn: true, isStaff: false, hasDownloadPass: false, freeDownloadLeft: true };
     it.each(["paper", "key"] as ExportKind[])("allows one %s, branded, marked free", (kind) => {
-      expect(resolveExportAccess({ kind, ...fresh })).toEqual({ allowed: true, branded: true, free: true });
+      expect(resolveExportAccess({ kind, ...fresh })).toEqual({ allowed: true, branded: true, format: "pdf", free: true });
     });
     it.each(["tags", "ppt"] as ExportKind[])("does not open %s", (kind) => {
       expect(resolveExportAccess({ kind, ...fresh }).allowed).toBe(false);
@@ -107,11 +107,11 @@ describe("resolveExportAccess", () => {
     });
     it("is not spent by a pass holder", () => {
       const r = resolveExportAccess({ kind: "paper", ...fresh, hasDownloadPass: true });
-      expect(r).toEqual({ allowed: true, branded: true });
+      expect(r).toEqual({ allowed: true, branded: true, format: "pdf" });
     });
     it("is not spent by institute staff", () => {
       const r = resolveExportAccess({ kind: "paper", ...staff, freeDownloadLeft: true });
-      expect(r).toEqual({ allowed: true, branded: false });
+      expect(r).toEqual({ allowed: true, branded: false, format: "docx" });
     });
     it("once used, says so and points at the pass", () => {
       const r = resolveExportAccess({ kind: "paper", ...fresh, freeDownloadLeft: false });
@@ -130,15 +130,37 @@ describe("resolveExportAccess", () => {
   describe("branding", () => {
     it.each(["paper", "key"] as ExportKind[])("brands a pass holder's %s", (kind) => {
       const r = resolveExportAccess({ kind, isSignedIn: true, isStaff: false, hasDownloadPass: true });
-      expect(r).toEqual({ allowed: true, branded: true });
+      expect(r).toEqual({ allowed: true, branded: true, format: "pdf" });
     });
     it.each(KINDS)("never brands institute staff (%s)", (kind) => {
       const r = resolveExportAccess({ kind, ...staff });
-      expect(r).toEqual({ allowed: true, branded: false });
+      expect(r).toMatchObject({ allowed: true, branded: false });
     });
     it("staff who also hold a pass stay unbranded", () => {
       const r = resolveExportAccess({ kind: "paper", ...staff, hasDownloadPass: true });
-      expect(r).toEqual({ allowed: true, branded: false });
+      expect(r).toEqual({ allowed: true, branded: false, format: "docx" });
+    });
+  });
+
+  // File format (2026-10-05): the paper and key go out as a PDF to everyone
+  // without staff access, because Word breaks on the phones they open it on;
+  // institute staff keep Word, which they edit. Decided here with branding, on
+  // the same inputs, so the route and the download box cannot disagree.
+  describe("format", () => {
+    const passHolder = { isSignedIn: true, isStaff: false, hasDownloadPass: true };
+    const fresh = { isSignedIn: true, isStaff: false, freeDownloadLeft: true };
+    it.each(["paper", "key"] as ExportKind[])("a pass holder's %s is a PDF", (kind) => {
+      expect(resolveExportAccess({ kind, ...passHolder })).toMatchObject({ format: "pdf" });
+    });
+    it.each(["paper", "key"] as ExportKind[])("the free %s is a PDF", (kind) => {
+      expect(resolveExportAccess({ kind, ...fresh })).toMatchObject({ format: "pdf" });
+    });
+    it.each(["paper", "key"] as ExportKind[])("staff get %s as Word", (kind) => {
+      expect(resolveExportAccess({ kind, ...staff })).toMatchObject({ format: "docx" });
+    });
+    it.each(["tags", "ppt"] as ExportKind[])("%s carries no paper format", (kind) => {
+      const r = resolveExportAccess({ kind, ...staff });
+      expect(r.allowed && r.format).toBeUndefined();
     });
   });
 });

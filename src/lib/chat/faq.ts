@@ -50,7 +50,7 @@ function mockPassLine(input: ChatFaqInput): string {
   if (!plan) {
     return "There's no mock pass on sale right now — a set number of mocks are free for everyone, no pass needed yet. Check /pricing for current passes.";
   }
-  return `The ${plan.label} is ${formatRupees(plan.amountPaise)} for ${planLengthLabel(plan)} — it unlocks unlimited timed mock tests once you use up your free ones, and Word downloads of question papers and answer keys.`;
+  return `The ${plan.label} is ${formatRupees(plan.amountPaise)} for ${planLengthLabel(plan)} — it unlocks unlimited timed mock tests once you use up your free ones, and PDF downloads of question papers and answer keys.`;
 }
 
 export function buildFaqAnswer(id: ChatFaqId, input: ChatFaqInput): string {

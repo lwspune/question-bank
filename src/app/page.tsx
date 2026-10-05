@@ -458,7 +458,7 @@ export default async function Home() {
           </h2>
           <p className="mt-2 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground">
             Pick the chapters and difficulty you want. Check every question on
-            screen, then download two Word files, ready to print: the question
+            screen, then download two files, ready to print: the question
             paper and a separate answer key.
           </p>
           <Link

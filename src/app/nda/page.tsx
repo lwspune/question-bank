@@ -295,7 +295,7 @@ export default async function NdaHomePage() {
           </h2>
           <p className="mt-2 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground">
             Filter the bank by subject, chapter, difficulty, and PYQ year — then
-            download the Question Paper + Answer Key as Word files. Two clicks.
+            download the Question Paper + Answer Key. Two clicks.
           </p>
           <Link
             href={bankHref}

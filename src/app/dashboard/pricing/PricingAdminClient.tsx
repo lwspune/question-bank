@@ -48,8 +48,8 @@ type Draft = {
 };
 
 const SCOPE_HELP: Record<string, string> = {
-  mocks: "Unlimited mock tests past the free limit.",
-  teacher: "Word paper + answer-key downloads. Includes unlimited mocks.",
+  mocks: "Unlimited mock tests past the free limit, plus question paper + answer key PDF downloads.",
+  teacher: "Retired ₹499 pass. Covers the same as the Premium Pass.",
 };
 
 const fieldClass =

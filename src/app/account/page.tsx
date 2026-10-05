@@ -145,7 +145,7 @@ export default async function AccountPage() {
                 <p className="mt-1 text-sm text-muted-foreground">
                   The question bank, guides and notes are always free
                   {freeMocks === null ? ", and so are mock tests" : `, and so are your first ${freeMocks} mock tests`}.
-                  A one-time pass unlocks unlimited mocks and Word paper downloads.
+                  A one-time pass unlocks unlimited mocks and PDF paper downloads.
                 </p>
                 <Link
                   href="/pricing"

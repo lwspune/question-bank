@@ -16,11 +16,11 @@ import {
 /** Scopes a comp grant can carry — only ones something in code enforces. */
 export const COMP_SCOPE_OPTIONS: readonly { value: string; label: string; help: string }[] = [
   { value: SCOPE_ALL, label: "Full premium", help: "Everything below, and any future premium." },
-  { value: SCOPE_MOCKS, label: "Mock pass", help: "Unlimited mock tests past the free limit." },
+  { value: SCOPE_MOCKS, label: "Premium Pass", help: "Unlimited mock tests past the free limit, plus question paper + answer key PDF downloads." },
   {
     value: SCOPE_TEACHER,
     label: "Teacher pass",
-    help: "Word paper + answer-key downloads. Includes unlimited mocks.",
+    help: "Retired ₹499 pass. Covers the same as the Premium Pass.",
   },
 ];
 

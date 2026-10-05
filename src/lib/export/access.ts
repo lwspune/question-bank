@@ -19,11 +19,18 @@
  * institute papers stay unbranded). Decided HERE, on the same inputs that
  * decide access, so the route cannot brand a staff paper by mistake.
  *
- * FREE DOWNLOAD (2026-10-04): every account may take one Word file, paper or
+ * FREE DOWNLOAD (2026-10-04): every account may take one file, paper or
  * key, before paying, so a visitor sees the proof. It is branded like a pass
  * paper, and `free: true` tells the route to record the use (one row per
  * account in `free_downloads`, which is what makes it once). Staff and pass
  * holders never spend it.
+ *
+ * FORMAT (2026-10-05): the paper and key reach everyone without staff access
+ * as a PDF, because they open them on phones, where Word's two columns and
+ * equations break. Institute staff keep the Word file, which they edit. It is
+ * decided here with branding, from the same inputs, and today the two always
+ * agree (branded = PDF): kept as two fields because they answer different
+ * questions, and a later change may part them.
  *
  * Denials carry the HTTP status the route should return (401 = not signed in,
  * 403 = signed in without staff or a pass) plus a user-facing message.
@@ -39,8 +46,11 @@ export const DOWNLOAD_PASS_SCOPE = SCOPE_MOCKS;
 
 export type ExportKind = "paper" | "key" | "tags" | "ppt";
 
+/** The file a paper or key is served as; absent for slides and the tags sheet. */
+export type PaperFormat = "pdf" | "docx";
+
 export type ExportAccess =
-  | { allowed: true; branded: boolean; free?: true }
+  | { allowed: true; branded: boolean; format?: PaperFormat; free?: true }
   | { allowed: false; status: 401 | 403; message: string };
 
 export function resolveExportAccess(input: {
@@ -56,21 +66,21 @@ export function resolveExportAccess(input: {
   freeDownloadLeft?: boolean;
 }): ExportAccess {
   const { kind, isSignedIn, isStaff, hasDownloadPass = false, freeDownloadLeft } = input;
-  const wordDoc = kind === "paper" || kind === "key";
+  const paperOrKey = kind === "paper" || kind === "key";
 
   if (!isSignedIn) {
     return { allowed: false, status: 401, message: "Sign in to download." };
   }
-  if (isStaff) return { allowed: true, branded: false };
-  if (hasDownloadPass && wordDoc) return { allowed: true, branded: true };
-  if (freeDownloadLeft === true && wordDoc) return { allowed: true, branded: true, free: true };
+  if (isStaff) return paperOrKey ? { allowed: true, branded: false, format: "docx" } : { allowed: true, branded: false };
+  if (hasDownloadPass && paperOrKey) return { allowed: true, branded: true, format: "pdf" };
+  if (freeDownloadLeft === true && paperOrKey) return { allowed: true, branded: true, format: "pdf", free: true };
   return {
     allowed: false,
     status: 403,
-    message: !wordDoc
+    message: !paperOrKey
       ? "This download is for institute staff accounts."
       : freeDownloadLeft === false
       ? "You've used your free download. Unlimited downloads come with the Premium Pass."
-      : "Word paper downloads come with the Premium Pass.",
+      : "Question paper and answer key downloads come with the Premium Pass.",
   };
 }
