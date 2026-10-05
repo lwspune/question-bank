@@ -81,7 +81,9 @@ export default function YourNotesStrip() {
         )}
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      {/* grid-cols-1 + min-w-0 children: a grid track defaults to its content's
+          width, so a long topic name ran past the card on a phone. */}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {summary.recent.length > 0 && (
           <ProgressList
             icon={<History className="h-3.5 w-3.5" aria-hidden />}
@@ -115,7 +117,7 @@ function ProgressList({
   titles: Titles;
 }) {
   return (
-    <div>
+    <div className="min-w-0">
       <p className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
         {icon}
         {title}
