@@ -19,6 +19,11 @@
  *     subtopic and a test drawn from one subtopic would diagnose nothing.
  *     Repeats with full papers are allowed on purpose: the questions are the
  *     exam's own, and meeting one twice is practice, not a defect.
+ *   - NUMERIC questions (JEE Section B) ride in a chapter test at the paper's
+ *     own share (numericShare), after the MCQs, as the paper prints them.
+ *   - WHOLE SETS (pickSectionalSets) make the English tests: every English
+ *     question belongs to a set sharing one passage or one set of directions,
+ *     so a test there is built from complete sets, never from loose members.
  *   - Everything is DETERMINISTIC (sorted by id, no randomness), so a dry run
  *     prints exactly what --apply writes. The chosen ids are then COMMITTED as
  *     data by the builder, so a later ingest cannot reshuffle a test students
@@ -41,17 +46,26 @@ export type SectionalCandidate = {
   format: string;
   /** How many options are marked correct. */
   correctCount: number;
+  /** A numeric question carries its answer in `numeric_answer`. */
+  hasNumericKey?: boolean;
 };
 
 /** Pool size at which a chapter carries a 20-question test. */
 export const LONG_TEST_MIN_POOL = 60;
-/** Pool size below which a chapter gets no test at all. */
+/** Pool size below which a chapter gets no test at all, unless the exam lowers it. */
 export const SHORT_TEST_MIN_POOL = 30;
 
-/** The test length a chapter's eligible pool can carry; null = no test. */
-export function sectionalSize(poolCount: number): number | null {
+/**
+ * The test length a chapter's eligible pool can carry; null = no test.
+ *
+ * `minPool` below 30 gives the chapters between it and 30 a 10-question test.
+ * MHT-CET keeps the default; NDA, CDS and JEE lower it to 20 (2026-10-05), so a
+ * thin GK chapter is still something a student can sit in ten minutes.
+ */
+export function sectionalSize(poolCount: number, minPool = SHORT_TEST_MIN_POOL): number | null {
   if (poolCount >= LONG_TEST_MIN_POOL) return 20;
   if (poolCount >= SHORT_TEST_MIN_POOL) return 15;
+  if (poolCount >= minPool) return 10;
   return null;
 }
 
@@ -75,7 +89,13 @@ export function sectionalDurationSecs(bp: MockPaperBlueprint, n: number): number
 export function sectionalBlueprint(
   bp: MockPaperBlueprint,
   sectionKey: string,
-  n: number
+  n: number,
+  /**
+   * The section's name on this test. The catalogue groups chapter tests by it,
+   * so a GK chapter passes its subject ("Physics") instead of the paper's
+   * "General Knowledge". The key, and with it the marking, stays the paper's.
+   */
+  label?: string
 ): MockPaperBlueprint {
   const section = bp.sections.find((s) => s.key === sectionKey);
   if (!section) {
@@ -84,18 +104,20 @@ export function sectionalBlueprint(
   return {
     ...bp,
     durationSecs: sectionalDurationSecs(bp, n),
-    sections: [{ key: section.key, label: section.label, subjects: section.subjects, count: n }],
+    sections: [{ key: section.key, label: label ?? section.label, subjects: section.subjects, count: n }],
   };
 }
 
-/** A single-answer MCQ, rated, and not tied to a shared context. */
+/** The grader can mark it: one correct option, or a numeric answer. */
+function isMarkable(c: SectionalCandidate): boolean {
+  if (c.format === "mcq") return c.correctCount === 1;
+  if (c.format === "numeric") return c.hasNumericKey === true;
+  return false;
+}
+
+/** Markable, rated, and not tied to a shared context. */
 export function isSectionalEligible(c: SectionalCandidate): boolean {
-  return (
-    !c.setBound &&
-    c.format === "mcq" &&
-    c.correctCount === 1 &&
-    c.difficulty !== null
-  );
+  return !c.setBound && isMarkable(c) && c.difficulty !== null;
 }
 
 const DIFFICULTIES: readonly SectionalDifficulty[] = ["EASY", "MODERATE", "HARD"];
@@ -162,21 +184,77 @@ function roundRobin(rows: SectionalCandidate[], k: number): SectionalCandidate[]
  */
 export function pickSectionalQuestions(
   pool: SectionalCandidate[],
-  n: number
+  n: number,
+  /**
+   * The share of the test given to numeric questions — 0.2 for JEE, whose
+   * paper prints 20 MCQs and 5 numeric per subject. Rounded; when the chapter
+   * is short of one format, the other fills the gap.
+   */
+  opts: { numericShare?: number } = {}
 ): SectionalCandidate[] | null {
   const eligible = pool.filter(isSectionalEligible);
   if (eligible.length < n) return null;
 
-  const counts = { EASY: 0, MODERATE: 0, HARD: 0 };
-  for (const c of eligible) counts[c.difficulty!] += 1;
-  const quotas = difficultyQuotas(counts, n);
+  const mcq = eligible.filter((c) => c.format === "mcq");
+  const numeric = eligible.filter((c) => c.format === "numeric");
+  let numericSeats = Math.min(Math.round(n * (opts.numericShare ?? 0)), numeric.length);
+  let mcqSeats = n - numericSeats;
+  if (mcqSeats > mcq.length) {
+    numericSeats += mcqSeats - mcq.length;
+    mcqSeats = mcq.length;
+  }
 
+  // MCQs first, then numeric: the order the paper prints them in.
+  return [...pickByDifficulty(mcq, mcqSeats), ...pickByDifficulty(numeric, numericSeats)];
+}
+
+/** `k` of `rows`, keeping their difficulty mix, easy to hard. */
+function pickByDifficulty(rows: SectionalCandidate[], k: number): SectionalCandidate[] {
+  if (k === 0) return [];
+  const counts = { EASY: 0, MODERATE: 0, HARD: 0 };
+  for (const c of rows) counts[c.difficulty!] += 1;
+  const quotas = difficultyQuotas(counts, k);
   return DIFFICULTIES.flatMap((d) =>
     roundRobin(
-      eligible.filter((c) => c.difficulty === d),
+      rows.filter((c) => c.difficulty === d),
       quotas[d]
     )
   );
+}
+
+/** One set of an English chapter: a passage or a block of shared directions. */
+export type SectionalSet = {
+  setId: string;
+  /** Orders sets newest first, e.g. year * 100 + month. */
+  sitting: number;
+  /** Every member of the set, in printed order. */
+  members: SectionalCandidate[];
+};
+
+/** How long a test built from whole sets may run: at least 15, aim 20, at most 25. */
+export const SET_TEST_SIZE = { min: 15, target: 20, max: 25 } as const;
+
+/**
+ * An English chapter test made of WHOLE sets, newest sitting first, in printed
+ * order. A set is taken while it keeps the test within 25 questions, until the
+ * test reaches 20; a set with any member the grader cannot mark is skipped
+ * whole. Null when whole sets cannot reach 15. Difficulty plays no part: a set
+ * is sat in the order it was printed.
+ */
+export function pickSectionalSets(
+  sets: SectionalSet[],
+  size: { min: number; target: number; max: number } = SET_TEST_SIZE
+): SectionalCandidate[] | null {
+  const usable = sets
+    .filter((s) => s.members.length > 0 && s.members.length <= size.max && s.members.every(isMarkable))
+    .sort((a, b) => b.sitting - a.sitting || a.setId.localeCompare(b.setId));
+
+  const out: SectionalCandidate[] = [];
+  for (const s of usable) {
+    if (out.length >= size.target) break;
+    if (out.length + s.members.length <= size.max) out.push(...s.members);
+  }
+  return out.length >= size.min ? out : null;
 }
 
 /**

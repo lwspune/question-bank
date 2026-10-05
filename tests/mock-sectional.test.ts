@@ -23,9 +23,16 @@ import {
   orderChapters,
   sectionalSlug,
   sectionalTitle,
+  pickSectionalSets,
   type SectionalCandidate,
+  type SectionalSet,
 } from "@/lib/mocks/sectional";
-import { MHT_CET_MATHS_PAPER, MHT_CET_PHY_CHEM_PAPER } from "@/lib/mocks/blueprints";
+import {
+  MHT_CET_MATHS_PAPER,
+  MHT_CET_PHY_CHEM_PAPER,
+  NDA_GAT_PAPER,
+  JEE_MAINS_PAPER,
+} from "@/lib/mocks/blueprints";
 
 function cand(
   id: string,
@@ -34,6 +41,15 @@ function cand(
   over: Partial<SectionalCandidate> = {}
 ): SectionalCandidate {
   return { id, difficulty, subtopic, setBound: false, format: "mcq", correctCount: 1, ...over };
+}
+
+function num(
+  id: string,
+  difficulty: SectionalCandidate["difficulty"],
+  subtopic = "S",
+  over: Partial<SectionalCandidate> = {}
+): SectionalCandidate {
+  return cand(id, difficulty, subtopic, { format: "numeric", correctCount: 0, hasNumericKey: true, ...over });
 }
 
 /** `n` candidates of one difficulty + subtopic, ids prefixed so they sort predictably. */
@@ -55,6 +71,15 @@ describe("sectionalSize — the test length a chapter's pool can carry", () => {
   it("gives no test below 30", () => {
     expect(sectionalSize(29)).toBeNull();
     expect(sectionalSize(0)).toBeNull();
+  });
+  it("gives a 10-question test from 20 to 29 when the exam lowers its floor to 20", () => {
+    expect(sectionalSize(29, 20)).toBe(10);
+    expect(sectionalSize(20, 20)).toBe(10);
+    expect(sectionalSize(19, 20)).toBeNull();
+  });
+  it("a lowered floor leaves the larger sizes alone", () => {
+    expect(sectionalSize(30, 20)).toBe(15);
+    expect(sectionalSize(60, 20)).toBe(20);
   });
 });
 
@@ -86,6 +111,12 @@ describe("sectionalBlueprint — one section of the real paper, sized to the tes
       { key: "chemistry", label: "Chemistry", subjects: ["Chemistry"], count: 15 },
     ]);
   });
+  it("can name the section for the subject, so a GK chapter test files under Physics, not General Knowledge", () => {
+    const bp = sectionalBlueprint(NDA_GAT_PAPER, "gk", 20, "Physics");
+    expect(bp.sections[0].key).toBe("gk");
+    expect(bp.sections[0].label).toBe("Physics");
+    expect(bp.marking).toEqual(NDA_GAT_PAPER.marking);
+  });
   it("refuses a section the paper does not have", () => {
     expect(() => sectionalBlueprint(MHT_CET_MATHS_PAPER, "physics", 20)).toThrow(/physics/);
   });
@@ -98,10 +129,16 @@ describe("isSectionalEligible", () => {
   it("rejects a set member — its shared context would print without its siblings", () => {
     expect(isSectionalEligible(cand("a", "EASY", "S", { setBound: true }))).toBe(false);
   });
-  it("rejects anything but a single-answer MCQ", () => {
-    expect(isSectionalEligible(cand("a", "EASY", "S", { format: "numeric" }))).toBe(false);
+  it("rejects an MCQ without exactly one correct option", () => {
     expect(isSectionalEligible(cand("a", "EASY", "S", { correctCount: 0 }))).toBe(false);
     expect(isSectionalEligible(cand("a", "EASY", "S", { correctCount: 2 }))).toBe(false);
+  });
+  it("accepts a numeric question only when it carries its answer", () => {
+    expect(isSectionalEligible(num("a", "EASY"))).toBe(true);
+    expect(isSectionalEligible(num("a", "EASY", "S", { hasNumericKey: false }))).toBe(false);
+  });
+  it("rejects any other format", () => {
+    expect(isSectionalEligible(cand("a", "EASY", "S", { format: "subjective" }))).toBe(false);
   });
   it("rejects an unrated row rather than guessing its difficulty", () => {
     expect(isSectionalEligible(cand("a", null))).toBe(false);
@@ -169,6 +206,123 @@ describe("pickSectionalQuestions", () => {
     const a = pickSectionalQuestions(pool, 20)!.map((c) => c.id);
     const b = pickSectionalQuestions([...pool].reverse(), 20)!.map((c) => c.id);
     expect(b).toEqual(a);
+  });
+});
+
+describe("pickSectionalQuestions — numeric questions, as the JEE paper mixes them", () => {
+  const nums = (prefix: string, n: number) =>
+    Array.from({ length: n }, (_, i) => num(`${prefix}${String(i).padStart(3, "0")}`, "MODERATE"));
+
+  it("gives numeric questions their share, rounded", () => {
+    const pool = [...many("m", 40, "MODERATE"), ...nums("n", 10)];
+    const count = (n: number) =>
+      pickSectionalQuestions(pool, n, { numericShare: 0.2 })!.filter((c) => c.format === "numeric").length;
+    expect(count(20)).toBe(4);
+    expect(count(15)).toBe(3);
+    expect(count(10)).toBe(2);
+  });
+
+  it("puts the MCQs first and the numeric questions last, as the paper does", () => {
+    const got = pickSectionalQuestions([...nums("n", 10), ...many("m", 40, "HARD")], 20, {
+      numericShare: 0.2,
+    })!;
+    expect(got.slice(0, 16).every((c) => c.format === "mcq")).toBe(true);
+    expect(got.slice(16).every((c) => c.format === "numeric")).toBe(true);
+  });
+
+  it("fills with MCQs when the chapter has too few numeric questions", () => {
+    const got = pickSectionalQuestions([...many("m", 40, "MODERATE"), ...nums("n", 1)], 20, {
+      numericShare: 0.2,
+    })!;
+    expect(got).toHaveLength(20);
+    expect(got.filter((c) => c.format === "numeric")).toHaveLength(1);
+  });
+
+  it("fills with numeric questions when the chapter has too few MCQs", () => {
+    const got = pickSectionalQuestions([...many("m", 12, "MODERATE"), ...nums("n", 20)], 20, {
+      numericShare: 0.2,
+    })!;
+    expect(got).toHaveLength(20);
+    expect(got.filter((c) => c.format === "numeric")).toHaveLength(8);
+  });
+
+  it("without a share, takes MCQs only", () => {
+    const got = pickSectionalQuestions([...many("m", 30, "MODERATE"), ...nums("n", 10)], 20)!;
+    expect(got.every((c) => c.format === "mcq")).toBe(true);
+  });
+});
+
+describe("pickSectionalSets — English tests made of whole sets", () => {
+  function set(setId: string, sitting: number, size: number, over: Partial<SectionalCandidate> = {}): SectionalSet {
+    return {
+      setId,
+      sitting,
+      members: Array.from({ length: size }, (_, i) =>
+        cand(`${setId}-${String(i).padStart(2, "0")}`, null, "S", { setBound: true, ...over })
+      ),
+    };
+  }
+  const ids = (got: SectionalCandidate[] | null) => (got ?? []).map((c) => c.id);
+  const setsOf = (got: SectionalCandidate[] | null) => [...new Set(ids(got).map((id) => id.split("-")[0]))];
+
+  it("takes whole sets, newest sitting first, until the test reaches 20", () => {
+    const got = pickSectionalSets([set("a", 2019, 10), set("b", 2024, 10), set("c", 2022, 10)]);
+    expect(setsOf(got)).toEqual(["b", "c"]);
+    expect(got).toHaveLength(20);
+  });
+
+  it("keeps each set's questions in printed order, all of them", () => {
+    const got = pickSectionalSets([set("b", 2024, 10), set("c", 2022, 10)])!;
+    expect(ids(got).slice(0, 10)).toEqual(set("b", 2024, 10).members.map((m) => m.id));
+  });
+
+  it("skips a set that would take the test past 25 and keeps looking", () => {
+    // 9 + 9 = 18; the next set of 9 would make 27, so the 5-question passage fills in.
+    const got = pickSectionalSets([set("a", 2024, 9), set("b", 2023, 9), set("c", 2022, 9), set("d", 2021, 5)]);
+    expect(setsOf(got)).toEqual(["a", "b", "d"]);
+    expect(got).toHaveLength(23);
+  });
+
+  it("takes several short passages to reach the target", () => {
+    const got = pickSectionalSets([1, 2, 3, 4, 5].map((i) => set(`p${i}`, 2020 + i, 5)));
+    expect(got).toHaveLength(20);
+    expect(setsOf(got)).toEqual(["p5", "p4", "p3", "p2"]);
+  });
+
+  it("never takes a set bigger than 25", () => {
+    const got = pickSectionalSets([set("big", 2024, 26), set("a", 2023, 10), set("b", 2022, 10)]);
+    expect(setsOf(got)).toEqual(["a", "b"]);
+  });
+
+  it("returns null when whole sets cannot reach 15 questions", () => {
+    expect(pickSectionalSets([set("a", 2024, 10)])).toBeNull();
+  });
+
+  it("drops a whole set when any member cannot be marked", () => {
+    const broken = set("x", 2025, 10);
+    broken.members[3] = { ...broken.members[3], correctCount: 2 };
+    const got = pickSectionalSets([broken, set("a", 2024, 10), set("b", 2023, 10)]);
+    expect(setsOf(got)).toEqual(["a", "b"]);
+  });
+
+  it("does not need difficulty ratings — sets keep printed order", () => {
+    const got = pickSectionalSets([set("a", 2024, 10, { difficulty: null }), set("b", 2023, 10)]);
+    expect(got).toHaveLength(20);
+  });
+
+  it("is deterministic — breaks a sitting tie by set id", () => {
+    const sets = [set("b", 2024, 10), set("a", 2024, 10), set("c", 2024, 10)];
+    expect(setsOf(pickSectionalSets(sets))).toEqual(["a", "b"]);
+    expect(setsOf(pickSectionalSets([...sets].reverse()))).toEqual(["a", "b"]);
+  });
+});
+
+describe("sectionalDurationSecs — the other papers", () => {
+  it("JEE runs 2.4 minutes a question", () => {
+    expect(sectionalDurationSecs(JEE_MAINS_PAPER, 20)).toBe(48 * 60);
+  });
+  it("NDA GAT runs a minute a question", () => {
+    expect(sectionalDurationSecs(NDA_GAT_PAPER, 23)).toBe(23 * 60);
   });
 });
 
