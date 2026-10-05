@@ -1,11 +1,15 @@
 /**
- * Build CHAPTER TESTS — the first sectional mocks (migration 0088:
- * `source='pyq'`, `scope='sectional'`, no year).
+ * Build CHAPTER TESTS — sectional mocks (migration 0088: `source='pyq'`,
+ * `scope='sectional'`, no year), for every exam in EXAMS below.
  *
- *   npx tsx scripts/mocks/build-sectional.ts --plan              # choose questions, write data/mht-cet-sectional.json
- *   npx tsx scripts/mocks/build-sectional.ts                     # dry run from the committed plan
- *   npx tsx scripts/mocks/build-sectional.ts --apply --publish   # write the rows
- *   npx tsx scripts/mocks/build-sectional.ts --only=<slug>
+ *   npx tsx scripts/mocks/build-sectional.ts --exam=nda --plan              # choose questions, write data/nda-sectional.json
+ *   npx tsx scripts/mocks/build-sectional.ts --exam=nda                     # dry run from the committed plan
+ *   npx tsx scripts/mocks/build-sectional.ts --exam=nda --apply             # write the rows as DRAFTS
+ *   npx tsx scripts/mocks/build-sectional.ts --exam=nda --apply --publish   # write the rows, published
+ *   npx tsx scripts/mocks/build-sectional.ts --exam=nda --only=<slug>
+ *
+ * `--exam` is one of mht-cet (the default, so the original runbook still
+ * works), nda, cds, jee-mains.
  *
  * TWO STEPS, and the split is the point. `--plan` asks the bank which
  * questions each chapter test should carry (src/lib/mocks/sectional.ts) and
@@ -15,12 +19,21 @@
  * chapters that are new (appended at the end of their subject), so the slugs,
  * and with them the mock ids and every attempt, stay put.
  *
+ * TWO KINDS OF SUBJECT. Most take loose questions (pickSectionalQuestions).
+ * English takes WHOLE SETS (pickSectionalSets): every NDA and CDS English
+ * question belongs to a set sharing a passage or a block of directions, and
+ * each question stores that text in its own `context`, so a set renders in the
+ * runner as it did on the paper, provided all of it is there.
+ *
  * THE GATE. A mock stores question refs and renders them live through the
  * RLS-bound client, so a PRIVATE or deleted row does not error: the student
  * sees a blank question and it scores as skipped. The build step therefore
- * re-asserts, per question: PUBLIC, a past-year question, a four-option MCQ
- * with exactly one correct option, still in the planned chapter, and not tied
- * to a shared context. A test with any failure is refused whole.
+ * re-asserts, per question: PUBLIC, a past-year question, markable (a
+ * four-option MCQ with exactly one correct option, or a numeric question with
+ * its answer), still in the planned chapter, and, for a loose subject, not
+ * tied to a shared context. For a set subject it asserts instead that every
+ * PUBLIC member of each set is in the test. A test with any failure is refused
+ * whole.
  *
  * Writes via the service-role client (bypasses RLS by design, as every builder).
  */
@@ -28,54 +41,167 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import {
+  CDS_ENGLISH_PAPER,
+  CDS_GK_PAPER,
+  CDS_MATHS_PAPER,
+  JEE_MAINS_PAPER,
   MHT_CET_MATHS_PAPER,
   MHT_CET_PHY_CHEM_PAPER,
+  NDA_GAT_PAPER,
+  NDA_MATHS_PAPER,
   type MockPaperBlueprint,
 } from "../../src/lib/mocks/blueprints";
-import type { OptionLabel } from "../../src/lib/mocks/answers";
+import type { MockAnswerKey, OptionLabel } from "../../src/lib/mocks/answers";
 import { buildMockPaper, type PaperQuestionRow } from "../../src/lib/mocks/reconstruct";
 import { mockTestRow } from "../../src/lib/mocks/row";
 import {
   isSectionalEligible,
   orderChapters,
   pickSectionalQuestions,
+  pickSectionalSets,
   sectionalBlueprint,
   sectionalSize,
   sectionalSlug,
   sectionalTitle,
   type SectionalCandidate,
   type SectionalDifficulty,
+  type SectionalSet,
 } from "../../src/lib/mocks/sectional";
 import { PLAYBOOKS as MATHS_PLAYBOOKS } from "../../src/app/guide/mht-cet-maths/_data/playbooks";
 import { PLAYBOOKS as PHYSICS_PLAYBOOKS } from "../../src/app/guide/mht-cet-physics/_data/playbooks";
 import { PLAYBOOKS as CHEMISTRY_PLAYBOOKS } from "../../src/app/guide/mht-cet-chemistry/_data/playbooks";
+import { PLAYBOOKS as CDS_MATHS_PLAYBOOKS } from "../../src/app/guide/cds-maths/_data/playbooks";
+import { CHAPTER_TABLE as JEE_MATHS_TABLE } from "../../src/app/guide/jee-mains-maths/_data/jee-mains-maths";
+import { CHAPTER_TABLE as JEE_PHYSICS_TABLE } from "../../src/app/guide/jee-mains-physics/_data/jee-mains-physics";
+import { CHAPTER_TABLE as JEE_CHEMISTRY_TABLE } from "../../src/app/guide/jee-mains-chemistry/_data/jee-mains-chemistry";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
 /** One subject of an exam that gets chapter tests. */
 type SubjectPlan = {
-  /** Bank subject name — MHT-CET's is "Maths", not "Mathematics". */
+  /** Bank subject name — MHT-CET's and JEE's is "Maths", not "Mathematics". */
   bankSubject: string;
   /** Slug segment, e.g. "maths". */
   code: string;
   paper: MockPaperBlueprint;
   sectionKey: string;
-  /** Recent questions per paper by chapter — the catalogue order. */
+  /** The test's section name when it differs from the paper's (a GK subject). */
+  label?: string;
+  /** Recent questions per paper by chapter — the catalogue order. Empty = by pool size. */
   weights: Map<string, number>;
+  /** "sets" = build from whole sets (English). Default: loose questions. */
+  mode?: "sets";
+  /** Chapters the exam no longer asks; they get no test. */
+  retired?: Set<string>;
+};
+
+/** One exam's chapter tests. */
+type ExamPlan = {
+  examName: string;
+  examSlug: string;
+  dataFile: string;
+  /** The smallest pool that gets a test: 30 (15 questions) or 20 (10 questions). */
+  minPool: number;
+  /** Count a question with no difficulty rating as MODERATE rather than skip it. */
+  unratedAsModerate: boolean;
+  /** Share of a loose test given to numeric questions (JEE: 5 of 25). */
+  numericShare: number;
+  subjects: SubjectPlan[];
 };
 
 const weightsOf = (p: { chapter: string; qPerPaper: number }[]) =>
   new Map(p.map((x) => [x.chapter, x.qPerPaper]));
+const recentWeightsOf = (t: { chapter: string; recentPerPaper: number }[]) =>
+  new Map(t.map((x) => [x.chapter, x.recentPerPaper]));
+const NONE = new Map<string, number>();
 
-const EXAM = {
-  examName: "MHT-CET",
-  examSlug: "mht-cet",
-  dataFile: join(__dirname, "data", "mht-cet-sectional.json"),
-  subjects: [
-    { bankSubject: "Maths", code: "maths", paper: MHT_CET_MATHS_PAPER, sectionKey: "mathematics", weights: weightsOf(MATHS_PLAYBOOKS) },
-    { bankSubject: "Physics", code: "physics", paper: MHT_CET_PHY_CHEM_PAPER, sectionKey: "physics", weights: weightsOf(PHYSICS_PLAYBOOKS) },
-    { bankSubject: "Chemistry", code: "chemistry", paper: MHT_CET_PHY_CHEM_PAPER, sectionKey: "chemistry", weights: weightsOf(CHEMISTRY_PLAYBOOKS) },
-  ] satisfies SubjectPlan[],
+/**
+ * JEE chapters the 2025-26 papers barely ask (under 0.15 questions a paper on
+ * the guide's own grid): the syllabus cut of 2024 (Mathematical Reasoning,
+ * Communication Systems, Hydrogen, Surface Chemistry, ...). A test on one would
+ * drill a topic the exam has dropped. Same reason Current Affairs is left out.
+ */
+const RECENT_FLOOR = 0.15;
+const retiredOf = (t: { chapter: string; recentPerPaper: number }[]) =>
+  new Set(t.filter((x) => x.recentPerPaper < RECENT_FLOOR).map((x) => x.chapter));
+const dataFile = (slug: string) => join(__dirname, "data", `${slug}-sectional.json`);
+
+/**
+ * The GK subjects of NDA and CDS. Current Affairs is left out on purpose
+ * (owner, 2026-10-05): its questions go stale, so a chapter test on them
+ * would teach yesterday's news.
+ */
+const GK_SUBJECTS = [
+  ["Physics", "physics"],
+  ["Chemistry", "chemistry"],
+  ["Biology", "biology"],
+  ["History", "history"],
+  ["Geography", "geography"],
+  ["Polity", "polity"],
+  ["Economics", "economics"],
+] as const;
+
+const gkSubjects = (paper: MockPaperBlueprint, sectionKey: string): SubjectPlan[] =>
+  GK_SUBJECTS.map(([bankSubject, code]) => ({
+    bankSubject, code, paper, sectionKey, label: bankSubject, weights: NONE,
+  }));
+
+const EXAMS: Record<string, ExamPlan> = {
+  // The first chapter tests (2026-09-30). Its rules are frozen: a re-plan with
+  // a lower floor or unrated rows would add tests to a running experiment.
+  "mht-cet": {
+    examName: "MHT-CET",
+    examSlug: "mht-cet",
+    dataFile: dataFile("mht-cet"),
+    minPool: 30,
+    unratedAsModerate: false,
+    numericShare: 0,
+    subjects: [
+      { bankSubject: "Maths", code: "maths", paper: MHT_CET_MATHS_PAPER, sectionKey: "mathematics", weights: weightsOf(MATHS_PLAYBOOKS) },
+      { bankSubject: "Physics", code: "physics", paper: MHT_CET_PHY_CHEM_PAPER, sectionKey: "physics", weights: weightsOf(PHYSICS_PLAYBOOKS) },
+      { bankSubject: "Chemistry", code: "chemistry", paper: MHT_CET_PHY_CHEM_PAPER, sectionKey: "chemistry", weights: weightsOf(CHEMISTRY_PLAYBOOKS) },
+    ],
+  },
+  nda: {
+    examName: "NDA",
+    examSlug: "nda",
+    dataFile: dataFile("nda"),
+    minPool: 20,
+    unratedAsModerate: true,
+    numericShare: 0,
+    subjects: [
+      { bankSubject: "Mathematics", code: "maths", paper: NDA_MATHS_PAPER, sectionKey: "mathematics", weights: NONE },
+      { bankSubject: "English", code: "english", paper: NDA_GAT_PAPER, sectionKey: "english", weights: NONE, mode: "sets" },
+      ...gkSubjects(NDA_GAT_PAPER, "gk"),
+    ],
+  },
+  cds: {
+    examName: "CDS",
+    examSlug: "cds",
+    dataFile: dataFile("cds"),
+    minPool: 20,
+    unratedAsModerate: true,
+    numericShare: 0,
+    subjects: [
+      { bankSubject: "Mathematics", code: "maths", paper: CDS_MATHS_PAPER, sectionKey: "mathematics", weights: weightsOf(CDS_MATHS_PLAYBOOKS) },
+      { bankSubject: "English", code: "english", paper: CDS_ENGLISH_PAPER, sectionKey: "english", weights: NONE, mode: "sets" },
+      ...gkSubjects(CDS_GK_PAPER, "general-knowledge"),
+    ],
+  },
+  "jee-mains": {
+    examName: "JEE Mains",
+    examSlug: "jee-mains",
+    dataFile: dataFile("jee-mains"),
+    minPool: 20,
+    unratedAsModerate: true,
+    // The paper prints 20 MCQs and 5 numeric per subject.
+    numericShare: 0.2,
+    subjects: [
+      { bankSubject: "Physics", code: "physics", paper: JEE_MAINS_PAPER, sectionKey: "physics", weights: recentWeightsOf(JEE_PHYSICS_TABLE), retired: retiredOf(JEE_PHYSICS_TABLE) },
+      { bankSubject: "Chemistry", code: "chemistry", paper: JEE_MAINS_PAPER, sectionKey: "chemistry", weights: recentWeightsOf(JEE_CHEMISTRY_TABLE), retired: retiredOf(JEE_CHEMISTRY_TABLE) },
+      { bankSubject: "Maths", code: "maths", paper: JEE_MAINS_PAPER, sectionKey: "maths", weights: recentWeightsOf(JEE_MATHS_TABLE), retired: retiredOf(JEE_MATHS_TABLE) },
+    ],
+  },
 };
 
 /** One committed chapter test. */
@@ -100,9 +226,14 @@ type BankRow = {
   visibility: string;
   question_kind: string;
   question_format: string | null;
+  numeric_answer: number | string | null;
   difficulty: SectionalDifficulty | null;
   set_id: string | null;
   context: string | null;
+  pyq_year: number | null;
+  pyq_month: number | null;
+  source_row: number | null;
+  question_number: string | null;
   chapter_id: string;
   chapter: { name: string; subject: { name: string } | null } | null;
   subtopic: { name: string } | null;
@@ -110,7 +241,8 @@ type BankRow = {
 };
 
 const SELECT =
-  "id, visibility, question_kind, question_format, difficulty, set_id, context, chapter_id, " +
+  "id, visibility, question_kind, question_format, numeric_answer, difficulty, set_id, context, " +
+  "pyq_year, pyq_month, source_row, question_number, chapter_id, " +
   "chapter:chapters(name, subject:subjects(name)), subtopic:subtopics(name), options(label, is_correct)";
 
 function one<T>(v: T | T[] | null): T | null {
@@ -126,25 +258,49 @@ function normalise(r: BankRow): BankRow {
   };
 }
 
+const formatOf = (r: BankRow) => r.question_format ?? "mcq";
 const setBound = (r: BankRow) => r.set_id !== null || (r.context ?? "").trim() !== "";
 const correctCount = (r: BankRow) => (r.options ?? []).filter((o) => o.is_correct).length;
 
-function candidateOf(r: BankRow): SectionalCandidate {
+function candidateOf(r: BankRow, exam: ExamPlan): SectionalCandidate {
   return {
     id: r.id,
-    difficulty: r.difficulty,
+    difficulty: r.difficulty ?? (exam.unratedAsModerate ? "MODERATE" : null),
     subtopic: r.subtopic?.name ?? null,
     setBound: setBound(r),
-    format: r.question_format ?? "mcq",
+    format: formatOf(r),
     // A row without exactly four options is unusable here; report it as
     // not-one-correct so the core's single eligibility rule excludes it.
     correctCount: (r.options ?? []).length === 4 ? correctCount(r) : -1,
+    hasNumericKey: r.numeric_answer !== null && (r.options ?? []).length === 0,
   };
 }
 
-async function examId(db: SupabaseClient): Promise<string> {
-  const { data, error } = await db.from("exams").select("id").eq("name", EXAM.examName).single();
-  if (error || !data) throw new Error(`exam ${EXAM.examName}: ${error?.message ?? "not found"}`);
+/** A set's printed order: the source row, then the question number. */
+function printedOrder(a: BankRow, b: BankRow): number {
+  return (
+    (a.source_row ?? 0) - (b.source_row ?? 0) ||
+    (parseInt(a.question_number ?? "", 10) || 0) - (parseInt(b.question_number ?? "", 10) || 0) ||
+    a.id.localeCompare(b.id)
+  );
+}
+
+function setsOf(rows: BankRow[], exam: ExamPlan): SectionalSet[] {
+  const bySet = new Map<string, BankRow[]>();
+  for (const r of rows) {
+    if (!r.set_id) continue;
+    bySet.set(r.set_id, [...(bySet.get(r.set_id) ?? []), r]);
+  }
+  return [...bySet.entries()].map(([setId, members]) => ({
+    setId,
+    sitting: Math.max(...members.map((m) => (m.pyq_year ?? 0) * 100 + (m.pyq_month ?? 0))),
+    members: [...members].sort(printedOrder).map((m) => candidateOf(m, exam)),
+  }));
+}
+
+async function examId(db: SupabaseClient, exam: ExamPlan): Promise<string> {
+  const { data, error } = await db.from("exams").select("id").eq("name", exam.examName).single();
+  if (error || !data) throw new Error(`exam ${exam.examName}: ${error?.message ?? "not found"}`);
   return data.id as string;
 }
 
@@ -178,22 +334,39 @@ async function fetchByIds(db: SupabaseClient, ids: string[]): Promise<Map<string
   return out;
 }
 
-function readPlan(): PlannedTest[] {
-  return existsSync(EXAM.dataFile)
-    ? (JSON.parse(readFileSync(EXAM.dataFile, "utf8")) as PlannedTest[])
+/** set_id → the ids of its PUBLIC members, for the whole-set check. */
+async function fetchPublicSetMembers(db: SupabaseClient, setIds: string[]): Promise<Map<string, string[]>> {
+  const out = new Map<string, string[]>();
+  for (let i = 0; i < setIds.length; i += CHUNK) {
+    const { data, error } = await db
+      .from("questions")
+      .select("id, set_id")
+      .eq("visibility", "PUBLIC")
+      .in("set_id", setIds.slice(i, i + CHUNK));
+    if (error) throw new Error(`fetchPublicSetMembers: ${error.message}`);
+    for (const r of (data ?? []) as { id: string; set_id: string }[]) {
+      out.set(r.set_id, [...(out.get(r.set_id) ?? []), r.id]);
+    }
+  }
+  return out;
+}
+
+function readPlan(exam: ExamPlan): PlannedTest[] {
+  return existsSync(exam.dataFile)
+    ? (JSON.parse(readFileSync(exam.dataFile, "utf8")) as PlannedTest[])
     : [];
 }
 
 // ── --plan ──────────────────────────────────────────────────────────────────
 
-async function plan(db: SupabaseClient): Promise<void> {
-  const existing = readPlan();
+async function plan(db: SupabaseClient, exam: ExamPlan): Promise<void> {
+  const existing = readPlan(exam);
   const planned = new Set(existing.map((t) => t.chapterId));
-  const pool = await fetchPool(db, await examId(db));
+  const pool = await fetchPool(db, await examId(db, exam));
   console.log(`pool: ${pool.length} PUBLIC past-year rows · ${existing.length} tests already planned\n`);
 
   const added: PlannedTest[] = [];
-  for (const sp of EXAM.subjects) {
+  for (const sp of exam.subjects) {
     const rows = pool.filter((r) => r.chapter?.subject?.name === sp.bankSubject);
     const byChapter = new Map<string, { id: string; name: string; rows: BankRow[] }>();
     for (const r of rows) {
@@ -204,7 +377,7 @@ async function plan(db: SupabaseClient): Promise<void> {
     const chapters = orderChapters(
       [...byChapter.values()].map((c) => ({
         ...c,
-        eligible: c.rows.map(candidateOf).filter(isSectionalEligible),
+        eligible: c.rows.map((r) => candidateOf(r, exam)).filter(isSectionalEligible),
         pyq: c.rows.length,
       })),
       sp.weights
@@ -212,23 +385,33 @@ async function plan(db: SupabaseClient): Promise<void> {
 
     // New chapters take the next free order numbers, after the committed ones.
     let seq = existing.filter((t) => t.subject === sp.bankSubject).length;
-    console.log(`${sp.bankSubject}`);
+    console.log(`${sp.bankSubject}${sp.mode === "sets" ? " (whole sets)" : ""}`);
     for (const c of chapters) {
-      const size = sectionalSize(c.eligible.length);
       if (planned.has(c.id)) {
         console.log(`  = ${c.name.padEnd(44)} already planned`);
         continue;
       }
-      if (size === null) {
-        console.log(`  – ${c.name.padEnd(44)} ${String(c.eligible.length).padStart(3)} eligible — too few for a test`);
+      if (sp.retired?.has(c.name)) {
+        console.log(`  – ${c.name.padEnd(44)} not on recent papers — no test`);
         continue;
       }
-      const picked = pickSectionalQuestions(c.eligible, size)!;
+      let picked: SectionalCandidate[] | null;
+      if (sp.mode === "sets") {
+        picked = pickSectionalSets(setsOf(c.rows, exam));
+      } else {
+        const size = sectionalSize(c.eligible.length, exam.minPool);
+        picked = size === null ? null : pickSectionalQuestions(c.eligible, size, { numericShare: exam.numericShare });
+      }
+      if (picked === null) {
+        const have = sp.mode === "sets" ? `${c.rows.length} in sets` : `${c.eligible.length} eligible`;
+        console.log(`  – ${c.name.padEnd(44)} ${have.padStart(12)} — too few for a test`);
+        continue;
+      }
       seq += 1;
       const test: PlannedTest = {
-        slug: sectionalSlug(EXAM.examSlug, sp.code, seq, c.name),
-        title: sectionalTitle(EXAM.examName, c.name),
-        examSlug: EXAM.examSlug,
+        slug: sectionalSlug(exam.examSlug, sp.code, seq, c.name),
+        title: sectionalTitle(exam.examName, c.name),
+        examSlug: exam.examSlug,
         paperCode: sp.paper.code,
         sectionKey: sp.sectionKey,
         subject: sp.bankSubject,
@@ -237,13 +420,24 @@ async function plan(db: SupabaseClient): Promise<void> {
         questionIds: picked.map((q) => q.id),
       };
       added.push(test);
-      const mix = (d: string) => picked.filter((q) => q.difficulty === d).length;
-      const subs = new Set(picked.map((q) => q.subtopic)).size;
-      const allSubs = new Set(c.eligible.map((q) => q.subtopic)).size;
-      const mins = sectionalBlueprint(sp.paper, sp.sectionKey, size).durationSecs / 60;
+      const n = picked.length;
+      const mins = sectionalBlueprint(sp.paper, sp.sectionKey, n).durationSecs / 60;
+      let detail: string;
+      if (sp.mode === "sets") {
+        const sets = new Set(c.rows.filter((r) => test.questionIds.includes(r.id)).map((r) => r.set_id)).size;
+        detail = `${sets} whole set(s)`;
+      } else {
+        const mix = (d: string) => picked.filter((q) => q.difficulty === d).length;
+        const subs = new Set(picked.map((q) => q.subtopic)).size;
+        const allSubs = new Set(c.eligible.map((q) => q.subtopic)).size;
+        const nums = picked.filter((q) => q.format === "numeric").length;
+        detail =
+          `E${mix("EASY")}/M${mix("MODERATE")}/H${mix("HARD")} · ${subs}/${allSubs} subtopics` +
+          (nums ? ` · ${nums} numeric` : "");
+      }
       console.log(
-        `  + ${String(seq).padStart(2)} ${c.name.padEnd(41)} ${String(c.eligible.length).padStart(3)} eligible → ` +
-          `${size} q · ${mins} min · E${mix("EASY")}/M${mix("MODERATE")}/H${mix("HARD")} · ${subs}/${allSubs} subtopics`
+        `  + ${String(seq).padStart(2)} ${c.name.padEnd(41)} ${String(c.rows.length).padStart(4)} rows → ` +
+          `${n} q · ${mins} min · ${detail}`
       );
     }
     console.log("");
@@ -253,62 +447,88 @@ async function plan(db: SupabaseClient): Promise<void> {
     console.log("nothing new to plan — the committed file is unchanged");
     return;
   }
-  writeFileSync(EXAM.dataFile, JSON.stringify([...existing, ...added], null, 2) + "\n");
-  console.log(`planned ${added.length} new test(s) → ${EXAM.dataFile}`);
+  writeFileSync(exam.dataFile, JSON.stringify([...existing, ...added], null, 2) + "\n");
+  console.log(`planned ${added.length} new test(s) → ${exam.dataFile}`);
 }
 
 // ── build ───────────────────────────────────────────────────────────────────
 
-function problemsOf(r: BankRow | undefined, t: PlannedTest): string[] {
+function problemsOf(r: BankRow | undefined, t: PlannedTest, sp: SubjectPlan): string[] {
   if (!r) return ["NOT FOUND in the bank"];
   const p: string[] = [];
   if (r.visibility !== "PUBLIC") p.push(`${r.visibility} (would render BLANK to a student)`);
   if (r.question_kind !== "pyq") p.push(`question_kind ${r.question_kind}`);
-  if ((r.question_format ?? "mcq") !== "mcq") p.push(`format ${r.question_format}`);
-  if ((r.options ?? []).length !== 4) p.push(`${(r.options ?? []).length} options`);
-  if (correctCount(r) !== 1) p.push(`${correctCount(r)} correct options`);
-  if (setBound(r)) p.push("tied to a shared context");
+  const format = formatOf(r);
+  if (format === "mcq") {
+    if ((r.options ?? []).length !== 4) p.push(`${(r.options ?? []).length} options`);
+    if (correctCount(r) !== 1) p.push(`${correctCount(r)} correct options`);
+  } else if (format === "numeric") {
+    if (r.numeric_answer === null) p.push("numeric question without its answer");
+    if ((r.options ?? []).length !== 0) p.push(`numeric question with ${(r.options ?? []).length} options`);
+  } else {
+    p.push(`format ${format}`);
+  }
+  if (sp.mode !== "sets" && setBound(r)) p.push("tied to a shared context");
+  if (sp.mode === "sets" && !r.set_id) p.push("not in a set");
   if (r.chapter_id !== t.chapterId) p.push(`moved to chapter "${r.chapter?.name}"`);
   return p;
 }
 
-async function build(db: SupabaseClient, opts: { apply: boolean; publish: boolean; only?: string }) {
-  const tests = readPlan().filter((t) => !opts.only || t.slug === opts.only);
+function answerOf(r: BankRow): MockAnswerKey {
+  if (formatOf(r) === "numeric") return { kind: "numeric", value: Number(r.numeric_answer) };
+  return { kind: "mcq", label: r.options.find((o) => o.is_correct)!.label as OptionLabel };
+}
+
+async function build(
+  db: SupabaseClient,
+  exam: ExamPlan,
+  opts: { apply: boolean; publish: boolean; only?: string }
+) {
+  const tests = readPlan(exam).filter((t) => !opts.only || t.slug === opts.only);
   if (tests.length === 0) throw new Error(`no planned tests${opts.only ? ` match ${opts.only}` : ""} — run --plan first`);
 
-  const exam = await examId(db);
+  const examRowId = await examId(db, exam);
   const byId = await fetchByIds(db, [...new Set(tests.flatMap((t) => t.questionIds))]);
+  const setIds = [...new Set([...byId.values()].map((r) => r.set_id).filter((s): s is string => s !== null))];
+  const setMembers = await fetchPublicSetMembers(db, setIds);
   const now = new Date();
   let built = 0;
   const failures: string[] = [];
 
   for (const t of tests) {
-    const sp = EXAM.subjects.find((s) => s.bankSubject === t.subject);
+    const sp = exam.subjects.find((s) => s.bankSubject === t.subject);
     if (!sp) { failures.push(`${t.slug}: unknown subject ${t.subject}`); continue; }
 
     const issues: string[] = [];
     const rows: PaperQuestionRow[] = t.questionIds.flatMap((id, i) => {
       const r = byId.get(id);
-      const p = problemsOf(r, t);
+      const p = problemsOf(r, t, sp);
       if (p.length) { issues.push(`${id}: ${p.join("; ")}`); return []; }
-      const label = r!.options.find((o) => o.is_correct)!.label as OptionLabel;
       return [{
         id,
         // The planned order IS the sitting order — see pickSectionalQuestions.
         sourceRow: i + 1,
         questionNumber: String(i + 1),
         subjectName: sp.bankSubject,
-        answer: { kind: "mcq" as const, label },
+        answer: answerOf(r!),
       }];
     });
+    if (sp.mode === "sets") {
+      const inTest = new Set(t.questionIds);
+      const sets = new Set(t.questionIds.map((id) => byId.get(id)?.set_id).filter((s): s is string => !!s));
+      for (const s of sets) {
+        const missing = (setMembers.get(s) ?? []).filter((id) => !inTest.has(id));
+        if (missing.length) issues.push(`set ${s}: ${missing.length} PUBLIC member(s) missing from the test`);
+      }
+    }
     if (issues.length) {
-      failures.push(`${t.slug}: ${issues.length} unusable question(s)\n    ${issues.join("\n    ")}`);
+      failures.push(`${t.slug}: ${issues.length} problem(s)\n    ${issues.join("\n    ")}`);
       continue;
     }
 
     let snap;
     try {
-      const bp = sectionalBlueprint(sp.paper, t.sectionKey, t.questionIds.length);
+      const bp = sectionalBlueprint(sp.paper, t.sectionKey, t.questionIds.length, sp.label);
       // year 0 is never stored: mockTestRow writes pyq_year from its own argument.
       snap = buildMockPaper(bp, rows, { year: 0, month: null, title: t.title, slug: t.slug });
     } catch (e) {
@@ -317,12 +537,12 @@ async function build(db: SupabaseClient, opts: { apply: boolean; publish: boolea
     }
 
     console.log(
-      `  ✓ ${snap.slug.padEnd(58)} ${snap.totalQuestions}q / ${snap.totalMarks}m / ${snap.durationSecs / 60} min`
+      `  ✓ ${snap.slug.padEnd(66)} ${snap.totalQuestions}q / ${snap.totalMarks}m / ${snap.durationSecs / 60} min`
     );
     if (opts.apply) {
       const { error } = await db.from("mock_tests").upsert(
         mockTestRow(snap, {
-          examId: exam, source: "pyq", scope: "sectional",
+          examId: examRowId, source: "pyq", scope: "sectional",
           pyqYear: null, pyqMonth: null, publish: opts.publish, now,
         }),
         { onConflict: "id" }
@@ -339,13 +559,17 @@ async function build(db: SupabaseClient, opts: { apply: boolean; publish: boolea
 
 async function main() {
   const args = process.argv.slice(2);
+  const examSlug = args.find((a) => a.startsWith("--exam="))?.slice("--exam=".length) ?? "mht-cet";
+  const exam = EXAMS[examSlug];
+  if (!exam) throw new Error(`unknown --exam=${examSlug}; one of ${Object.keys(EXAMS).join(", ")}`);
+
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !key) throw new Error("missing NEXT_PUBLIC_SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY");
   const db = createClient(url, key, { auth: { persistSession: false } });
 
-  if (args.includes("--plan")) return plan(db);
-  return build(db, {
+  if (args.includes("--plan")) return plan(db, exam);
+  return build(db, exam, {
     apply: args.includes("--apply"),
     publish: args.includes("--publish"),
     only: args.find((a) => a.startsWith("--only="))?.slice("--only=".length),
