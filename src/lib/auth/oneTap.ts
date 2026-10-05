@@ -84,3 +84,15 @@ export function oneTapDestination(state: OnboardingState, currentPath: string): 
   if (!needsOnboarding(state)) return null;
   return `/welcome?next=${encodeURIComponent(safeNextPath(currentPath))}`;
 }
+
+/**
+ * Where to go after signing in with Google's own button on /login or /signup:
+ * the same routing the OAuth callback applies (a brand-new account through
+ * /welcome first, everyone else straight to a safe `next`). That button signs
+ * in on the page, so Google's window no longer names the Supabase project the
+ * redirect flow returns through (wunvtnqlzjrkvolslbnm.supabase.co).
+ */
+export function googleButtonDestination(state: OnboardingState, next: string | null): string {
+  const target = safeNextPath(next, "/dashboard");
+  return needsOnboarding(state) ? `/welcome?next=${encodeURIComponent(target)}` : target;
+}

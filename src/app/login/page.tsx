@@ -8,7 +8,7 @@ import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import GoogleSignInButton from "@/components/GoogleSignInButton";
+import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
 import { safeNextPath } from "@/lib/auth/redirect";
 import { cn } from "@/lib/utils";
 
@@ -74,7 +74,7 @@ function LoginSection() {
             </p>
           </header>
 
-          <GoogleSignInButton next={next} />
+          <GoogleAuthButton next={next} />
 
           <div className="my-5 flex items-center gap-3">
             <span className="h-px flex-1 bg-border" />
