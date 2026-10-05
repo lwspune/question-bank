@@ -87,6 +87,11 @@ function boardOnlyLabel(e: ExamEntry): string {
   return year ? `${e.board} (${year})` : String(e.board);
 }
 
+/** A board's everyday short name, for chips that also carry the class. */
+function shortBoard(e: ExamEntry): string {
+  return e.board === "Maharashtra State Board" ? "Maharashtra" : String(e.board);
+}
+
 /** Entrance exams (with their families, IPMAT and MPSC) before board exams. */
 function entranceFirst(list: readonly ExamEntry[]): ChipOption[] {
   return [...buildExamChips(list.filter((e) => !e.board)), ...buildExamChips(list.filter((e) => e.board))];
@@ -133,13 +138,16 @@ export function examChipsForStage(
   const boardChips = [
     ...boards
       .filter(fits)
+      // By board, then class number: the same order for every class (registry
+      // order put CBSE first for 11, last for 12), and Class 9 before 10.
+      .sort((a, b) => String(a.board).localeCompare(String(b.board)) || Number(a.std) - Number(b.std))
       .map((e) => ({
         value: e.slug,
-        label: oneClass ? boardOnlyLabel(e) : `${e.board} ${classLabelFor(e)}`,
+        // Two classes share one chip row, so the class stays; the board is
+        // shortened so "Maharashtra Class 10 (SSC)" fits one line on a phone.
+        label: oneClass ? boardOnlyLabel(e) : `${shortBoard(e)} ${classLabelFor(e)}`,
         group: "Board exam",
-      }))
-      // Same order for every class (registry order put CBSE first for 11, last for 12).
-      .sort((a, b) => a.label.localeCompare(b.label)),
+      })),
     // A pick from another class keeps its class on the chip.
     ...buildExamChips(boards.filter((e) => !fits(e))),
   ];

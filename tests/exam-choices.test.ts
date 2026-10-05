@@ -102,6 +102,9 @@ describe("examChipsForStage", () => {
     const boards = shown.filter((c) => c.group === "Board exam");
     expect(values(boards).sort()).toEqual(["cbse-10", "mh-sb-9", "mh-ssc-10"]);
     expect(boards.every((c) => /Class (9|10)/.test(c.label))).toBe(true);
+    // By board, then class: CBSE Class 10, then Maharashtra Class 9 before 10.
+    expect(values(boards)).toEqual(["cbse-10", "mh-sb-9", "mh-ssc-10"]);
+    expect(boards.find((c) => c.value === "mh-ssc-10")?.label).toBe("Maharashtra Class 10 (SSC)");
     // CBSE Class 10 used to sit alone in the entrance-exam row.
     expect(shown.filter((c) => !c.group).map((c) => c.value)).not.toContain("cbse-10");
   });
