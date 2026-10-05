@@ -97,10 +97,13 @@ describe("examChipsForStage", () => {
     expect(values(shown)).toEqual(expect.arrayContaining(["nda", "jee-mains", "mht-cet", "neet"]));
   });
 
-  it("Class 9-10 keeps the class on board chips (9 and 10 share one answer)", () => {
+  it("Class 9-10: all its boards in the Board exam row, each with its class (9 and 10 share one answer)", () => {
     const { shown } = examChipsForStage("class-9-10", [], EXAM_REGISTRY);
-    const boardish = shown.filter((c) => /Class (9|10)/.test(c.label));
-    expect(boardish.length).toBeGreaterThan(0);
+    const boards = shown.filter((c) => c.group === "Board exam");
+    expect(values(boards).sort()).toEqual(["cbse-10", "mh-sb-9", "mh-ssc-10"]);
+    expect(boards.every((c) => /Class (9|10)/.test(c.label))).toBe(true);
+    // CBSE Class 10 used to sit alone in the entrance-exam row.
+    expect(shown.filter((c) => !c.group).map((c) => c.value)).not.toContain("cbse-10");
   });
 
   it("entrance exams (IPMAT included) come before boards", () => {
@@ -113,13 +116,17 @@ describe("examChipsForStage", () => {
     expect(ipmatAt).toBeLessThan(boardAt);
   });
 
-  it("worksheet banks are courses, never exam chips", () => {
+  it("worksheet banks are courses, never exam chips, and only the class's own course shows", () => {
     const r = examChipsForStage("class-12", [], EXAM_REGISTRY);
     expect(values(r.shown)).not.toContain("worksheets-11-12");
-    expect(values(r.hidden)).not.toContain("worksheets-11-12");
-    expect(values(r.courses)).toContain("worksheets-11-12");
+    expect(values(r.courses)).toEqual(["worksheets-11-12"]);
     const school = examChipsForStage("class-9-10", [], EXAM_REGISTRY);
-    expect(values(school.courses)).toContain("foundation-course");
+    expect(values(school.courses)).toEqual(["foundation-course"]);
+    // A Class 9-10 student was offered "Worksheets 11+12"; it now waits under
+    // Show all exams, labelled as a practice course.
+    const other = school.hidden.find((c) => c.value === "worksheets-11-12");
+    expect(other?.group).toBe("Practice courses");
+    expect(values(examChipsForStage("college", [], EXAM_REGISTRY).courses)).toEqual([]);
   });
 
   it("every slug is offered exactly once across shown, hidden and courses", () => {

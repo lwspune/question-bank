@@ -15,7 +15,7 @@
  * nothing to nest and no single selection to resolve.
  */
 import { EXAM_REGISTRY, type ExamEntry } from "@/lib/exam/examContext";
-import { groupExamFamilies } from "@/lib/exam/examFamily";
+import { classLabelFor, groupExamFamilies } from "@/lib/exam/examFamily";
 import type { ChipOption } from "@/components/ProfileChips";
 import { tierOfStage, type Stage } from "@/lib/profile/onboarding";
 
@@ -113,9 +113,11 @@ export function examChipsForStage(
   entries: readonly ExamEntry[]
 ): { shown: ChipOption[]; hidden: ChipOption[]; courses: ChipOption[] } {
   const live = entries.filter((e) => !e.noPublicContent);
-  const courses = buildExamChips(live.filter((e) => e.course));
+  const allCourses = live.filter((e) => e.course);
   const exams = live.filter((e) => !e.course);
-  if (stage === null) return { shown: entranceFirst(exams), hidden: [], courses };
+  if (stage === null) {
+    return { shown: entranceFirst(exams), hidden: [], courses: buildExamChips(allCourses) };
+  }
 
   const picked = new Set(selected);
   const tier = tierOfStage(stage);
@@ -125,22 +127,34 @@ export function examChipsForStage(
 
   const entrance = buildExamChips(exams.filter((e) => !e.board && inView(e)));
   const boards = exams.filter((e) => e.board && inView(e));
-  const oneClass = stage === "class-11" || stage === "class-12";
-  const boardChips = oneClass
-    ? [
-        ...boards
-          .filter(fits)
-          .map((e) => ({ value: e.slug, label: boardOnlyLabel(e), group: "Board exam" }))
-          // Same order for every class (registry order put CBSE first for 11, last for 12).
-          .sort((a, b) => a.label.localeCompare(b.label)),
-        // A pick from another class keeps its class on the chip.
-        ...buildExamChips(boards.filter((e) => !fits(e))),
-      ]
-    : buildExamChips(boards);
+  // One class (11 or 12): the board alone. Class 9-10: board + class, since
+  // the answer covers two classes. Either way all of them share one row.
+  const oneClass = stds.length === 1;
+  const boardChips = [
+    ...boards
+      .filter(fits)
+      .map((e) => ({
+        value: e.slug,
+        label: oneClass ? boardOnlyLabel(e) : `${e.board} ${classLabelFor(e)}`,
+        group: "Board exam",
+      }))
+      // Same order for every class (registry order put CBSE first for 11, last for 12).
+      .sort((a, b) => a.label.localeCompare(b.label)),
+    // A pick from another class keeps its class on the chip.
+    ...buildExamChips(boards.filter((e) => !fits(e))),
+  ];
+
+  // Only the class's own course shows; the other waits under "Show all exams",
+  // labelled as a course (a Class 9-10 student was offered "Worksheets 11+12").
+  const courseInView = (e: ExamEntry) => e.tier === tier || picked.has(e.slug);
+  const otherCourses = buildExamChips(allCourses.filter((e) => !courseInView(e))).map((c) => ({
+    ...c,
+    group: "Practice courses",
+  }));
 
   return {
     shown: [...entrance, ...boardChips],
-    hidden: entranceFirst(exams.filter((e) => !inView(e))),
-    courses,
+    hidden: [...entranceFirst(exams.filter((e) => !inView(e))), ...otherCourses],
+    courses: buildExamChips(allCourses.filter(courseInView)),
   };
 }
