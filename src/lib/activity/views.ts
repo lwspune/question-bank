@@ -23,6 +23,7 @@ export const SURFACES = [
   "mock_start",
   "pricing",
   "handout", // the notes print handout (2026-10-02); metadata.browser = "standard" | "inapp"
+  "performance", // /performance, where the projected score lives (2026-10-05); never recorded before
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];

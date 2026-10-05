@@ -19,6 +19,7 @@
  * subset of their own diagnosis than their teacher sees is how a readout stops
  * being trusted.
  */
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { BookOpen, Dumbbell } from "lucide-react";
 import StatCard from "@/app/dashboard/StatCard";
@@ -40,6 +41,8 @@ export default function PerformanceBody({
   links = EMPTY_TAXONOMY_LINKS,
   basePath,
   viewer,
+  projectionLocked,
+  projectionNote,
 }: {
   perf: Performance;
   nav: LaneNav;
@@ -47,6 +50,11 @@ export default function PerformanceBody({
   /** Route the exam/subject pills link back to, without a query string. */
   basePath: string;
   viewer: Viewer;
+  /** The projected score is behind the trial (migration 0134): shown in place
+   *  of the card. The page has already left the projection out of `perf`. */
+  projectionLocked?: ReactNode;
+  /** A running trial: one line above the card ("Free for 3 more days"). */
+  projectionNote?: string;
 }) {
   const { summary } = perf;
   const selected = nav.selected;
@@ -137,7 +145,15 @@ export default function PerformanceBody({
             </nav>
           )}
 
-          {selected && <LaneView lane={selected} links={links} viewer={viewer} />}
+          {selected && (
+            <LaneView
+              lane={selected}
+              links={links}
+              viewer={viewer}
+              projectionLocked={projectionLocked}
+              projectionNote={projectionNote}
+            />
+          )}
         </>
       )}
     </>
@@ -145,7 +161,19 @@ export default function PerformanceBody({
 }
 
 
-function LaneView({ lane, links, viewer }: { lane: Lane; links: TaxonomyLinks; viewer: Viewer }) {
+function LaneView({
+  lane,
+  links,
+  viewer,
+  projectionLocked,
+  projectionNote,
+}: {
+  lane: Lane;
+  links: TaxonomyLinks;
+  viewer: Viewer;
+  projectionLocked?: ReactNode;
+  projectionNote?: string;
+}) {
   const focus = buildFocusAreas(lane.exam, lane.subject, lane.chapters);
   const cov = lane.coverage;
 
@@ -167,13 +195,17 @@ function LaneView({ lane, links, viewer }: { lane: Lane; links: TaxonomyLinks; v
           exam/subject pills it would read as a total across every paper sat,
           which it is not. The `thin` caveat stays adjacent in the heading
           above, so leading with it cannot strand the warning. */}
-      {lane.projection && (
-        <Section
-          title="Projected score"
-          note={`Ranked by recoverable marks. Chapter weight is derived live from the bank's own PYQ counts, and the penalty from this paper's real marking scheme.`}
-        >
-          <ProjectionList projection={lane.projection} links={links} />
-        </Section>
+      {projectionLocked ? (
+        <Section title="Projected score">{projectionLocked}</Section>
+      ) : (
+        lane.projection && (
+          <Section
+            title="Projected score"
+            note={`${projectionNote ? `${projectionNote} ` : ""}Ranked by recoverable marks. Chapter weight is derived live from the bank's own PYQ counts, and the penalty from this paper's real marking scheme.`}
+          >
+            <ProjectionList projection={lane.projection} links={links} />
+          </Section>
+        )
       )}
 
       {/* Coverage — the readout nda-tracker cannot build, because an OMR sheet
