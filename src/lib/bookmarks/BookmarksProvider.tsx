@@ -10,6 +10,7 @@ import {
   type ReactNode,
 } from "react";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
+import { SaveLimitReached } from "./limit";
 
 type BookmarksContextValue = {
   /** True once the initial load (session + rows) has settled. */
@@ -17,7 +18,8 @@ type BookmarksContextValue = {
   /** Whether the current viewer is signed in (bookmarks require an account). */
   signedIn: boolean;
   has: (questionId: string) => boolean;
-  /** Optimistic toggle; persists via /api/bookmarks. Throws on failure (reverted). */
+  /** Optimistic toggle; persists via /api/bookmarks. Throws on failure (reverted):
+   *  `SaveLimitReached` when the free save limit refused it (0134). */
   toggle: (questionId: string) => Promise<void>;
 };
 
@@ -85,6 +87,10 @@ export function BookmarksProvider({ children }: { children: ReactNode }) {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ questionId, bookmarked: next }),
         });
+        if (res.status === 402) {
+          const body = (await res.json().catch(() => ({}))) as { error?: string };
+          throw new SaveLimitReached(body.error ?? "You've used your free saved questions.");
+        }
         if (!res.ok) throw new Error(`Bookmark failed (${res.status})`);
       } catch (err) {
         // Revert the optimistic change.

@@ -8,6 +8,7 @@ import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { setBookmark } from "@/lib/bookmarks/service";
 import { logActivity } from "@/lib/activity/service";
+import { FREE_SAVE_LIMIT_CODE, SaveLimitReached } from "@/lib/bookmarks/limit";
 
 const BodySchema = z.object({
   questionId: z.string().uuid(),
@@ -44,6 +45,9 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ ok: true });
   } catch (err) {
+    if (err instanceof SaveLimitReached) {
+      return NextResponse.json({ error: err.message, code: FREE_SAVE_LIMIT_CODE }, { status: 402 });
+    }
     console.error("bookmark save error", err);
     return NextResponse.json({ error: "Could not save your bookmark." }, { status: 500 });
   }
