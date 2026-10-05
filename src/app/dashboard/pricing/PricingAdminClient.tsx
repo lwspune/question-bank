@@ -24,7 +24,7 @@ import {
   type Plan,
   type PlanInput,
 } from "@/lib/billing/plans";
-import type { PaywallSettings } from "@/lib/billing/paywallSettings";
+import type { PaywallLimit, PaywallSettings } from "@/lib/billing/paywallSettings";
 
 type Props = {
   initialPlans: Plan[];
@@ -108,9 +108,6 @@ export default function PricingAdminClient({ initialPlans, initialSettings, load
   const [busy, setBusy] = useState(false);
   const [draft, setDraft] = useState<Draft | null>(null);
 
-  // Free-mock limit form
-  const [enabled, setEnabled] = useState(initialSettings.freeMockLimit !== null);
-  const [limit, setLimit] = useState(String(initialSettings.freeMockLimit ?? 3));
 
   async function refresh() {
     const res = await callApi({ action: "list" });
@@ -153,17 +150,18 @@ export default function PricingAdminClient({ initialPlans, initialSettings, load
     }
   }
 
-  async function onSaveSettings(e: React.FormEvent) {
-    e.preventDefault();
+  async function saveLimit(which: PaywallLimit, enabled: boolean, limit: number): Promise<boolean> {
     setBusy(true);
-    const res = await callApi({ action: "saveSettings", enabled, limit: Number(limit) });
+    const res = await callApi({ action: "saveSettings", which, enabled, limit });
     setBusy(false);
     if (res.ok) {
-      toast.success(enabled ? `Free-mock limit is on: ${limit}.` : "Free-mock limit is off.");
+      const row = LIMIT_ROWS.find((r) => r.which === which)!;
+      toast.success(enabled ? `${row.label}: ${limit}.` : `${row.label}: off.`);
       await refresh();
-    } else {
-      toast.error(res.error || "Could not save the limit.");
+      return true;
     }
+    toast.error(res.error || "Could not save the limit.");
+    return false;
   }
 
   return (
@@ -222,44 +220,12 @@ export default function PricingAdminClient({ initialPlans, initialSettings, load
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-base">Free mock tests</CardTitle>
+          <CardTitle className="text-base">What a free account gets</CardTitle>
         </CardHeader>
-        <CardContent>
-          <form onSubmit={onSaveSettings} className="space-y-3">
-            <label className="flex items-center gap-2 text-sm">
-              <input
-                type="checkbox"
-                checked={enabled}
-                onChange={(e) => setEnabled(e.target.checked)}
-                className="h-4 w-4 rounded border-input"
-              />
-              Limit how many different mocks a free account can start
-            </label>
-            <div className="flex flex-wrap items-end gap-3">
-              <div className="space-y-1">
-                <Label htmlFor="free-mock-limit">Free mocks</Label>
-                <Input
-                  id="free-mock-limit"
-                  type="number"
-                  min={0}
-                  step={1}
-                  value={limit}
-                  onChange={(e) => setLimit(e.target.value)}
-                  disabled={!enabled}
-                  className="w-28"
-                />
-              </div>
-              <Button type="submit" disabled={busy}>
-                {busy && <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden />}
-                Save
-              </Button>
-            </div>
-            <p className="text-xs text-muted-foreground">
-              {settings.freeMockLimit === null
-                ? "Off: mock tests are unlimited for everyone, and the site quotes no number."
-                : `On since ${new Date(settings.countsFrom ?? "").toLocaleDateString("en-IN", { dateStyle: "medium" })}: mocks started before then do not use a free slot. Changing the number keeps that date; switching off and on again resets it.`}
-            </p>
-          </form>
+        <CardContent className="divide-y">
+          {LIMIT_ROWS.map((row) => (
+            <LimitRow key={row.which} row={row} settings={settings} busy={busy} onSave={saveLimit} />
+          ))}
         </CardContent>
       </Card>
 
@@ -423,4 +389,137 @@ async function callApi(body: unknown): Promise<{ ok: boolean; error?: string; [k
   } catch (err) {
     return { ok: false, error: err instanceof Error ? err.message : "Network error" };
   }
+}
+
+/**
+ * One free limit on the admin page (paywall_settings, migrations 0120 + 0134).
+ * Off = no limit and no number quoted. Mocks and chapter tests count from the
+ * day they are switched on; the others need no date.
+ */
+type LimitRowSpec = {
+  which: PaywallLimit;
+  label: string;
+  unit: string;
+  field: keyof PaywallSettings;
+  since?: keyof PaywallSettings;
+  suggested: number;
+  checkbox: string;
+};
+
+const LIMIT_ROWS: LimitRowSpec[] = [
+  {
+    which: "mocks",
+    label: "Free mock tests",
+    unit: "full mocks",
+    field: "freeMockLimit",
+    since: "countsFrom",
+    suggested: 3,
+    checkbox: "Limit how many different full mocks a free account can start",
+  },
+  {
+    which: "chapterTests",
+    label: "Free chapter tests",
+    unit: "chapter tests",
+    field: "freeChapterTestLimit",
+    since: "chapterTestsCountsFrom",
+    suggested: 5,
+    checkbox: "Limit how many different chapter tests a free account can start (counted apart from mocks)",
+  },
+  {
+    which: "drill",
+    label: "Fix your mistakes",
+    unit: "questions a day",
+    field: "freeDrillPerDay",
+    suggested: 15,
+    checkbox: "Limit drill questions a free account can answer each day (5 = one set)",
+  },
+  {
+    which: "reveals",
+    label: "Answers a day",
+    unit: "answers a day",
+    field: "freeRevealsPerDay",
+    suggested: 50,
+    checkbox: "Limit answers a signed-in free account can open each day (bank, board, guides)",
+  },
+  {
+    which: "saves",
+    label: "Saved questions",
+    unit: "saved questions",
+    field: "freeSaveLimit",
+    suggested: 100,
+    checkbox: "Limit how many questions a free account can save",
+  },
+  {
+    which: "projection",
+    label: "Projected score",
+    unit: "days free after reveal",
+    field: "projectionTrialDays",
+    suggested: 7,
+    checkbox: "Free for a number of days after the student reveals it, then Premium Pass only",
+  },
+];
+
+function LimitRow({
+  row,
+  settings,
+  busy,
+  onSave,
+}: {
+  row: LimitRowSpec;
+  settings: PaywallSettings;
+  busy: boolean;
+  onSave: (which: PaywallLimit, enabled: boolean, limit: number) => Promise<boolean>;
+}) {
+  const current = settings[row.field] as number | null;
+  const [enabled, setEnabled] = useState(current !== null);
+  const [limit, setLimit] = useState(String(current ?? row.suggested));
+  const id = `limit-${row.which}`;
+  const since = row.since ? (settings[row.since] as string | null) : null;
+
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        void onSave(row.which, enabled, Number(limit));
+      }}
+      className="space-y-3 py-4 first:pt-0 last:pb-0"
+    >
+      <p className="text-sm font-medium">{row.label}</p>
+      <label className="flex items-center gap-2 text-sm">
+        <input
+          type="checkbox"
+          checked={enabled}
+          onChange={(e) => setEnabled(e.target.checked)}
+          className="h-4 w-4 rounded border-input focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        />
+        {row.checkbox}
+      </label>
+      <div className="flex flex-wrap items-end gap-3">
+        <div className="space-y-1">
+          <Label htmlFor={id}>{row.unit}</Label>
+          <Input
+            id={id}
+            type="number"
+            min={0}
+            step={1}
+            value={limit}
+            onChange={(e) => setLimit(e.target.value)}
+            disabled={!enabled}
+            className="w-28"
+          />
+        </div>
+        <Button type="submit" disabled={busy}>
+          {busy && <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden />}
+          Save
+        </Button>
+      </div>
+      <p className="text-xs text-muted-foreground">
+        {current === null
+          ? "Off: unlimited for everyone, and the site quotes no number."
+          : since
+            ? `On since ${new Date(since).toLocaleDateString("en-IN", { dateStyle: "medium" })}: ones started before then do not count. Changing the number keeps that date; switching off and on again resets it.`
+            : `On: ${current} ${row.unit}. Pass holders and staff are never limited.`}
+      </p>
+    </form>
+  );
 }

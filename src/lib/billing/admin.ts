@@ -13,6 +13,21 @@ import {
   type PaywallSettingsInput,
 } from "./paywallSettings";
 
+/** paywall_settings columns ↔ PaywallSettings fields, in one place. */
+const SETTINGS_COLUMNS = {
+  free_mock_limit: "freeMockLimit",
+  counts_from: "countsFrom",
+  free_chapter_test_limit: "freeChapterTestLimit",
+  chapter_tests_counts_from: "chapterTestsCountsFrom",
+  free_drill_per_day: "freeDrillPerDay",
+  free_reveals_per_day: "freeRevealsPerDay",
+  free_save_limit: "freeSaveLimit",
+  projection_trial_days: "projectionTrialDays",
+} as const satisfies Record<string, keyof PaywallSettings>;
+
+type SettingsColumn = keyof typeof SETTINGS_COLUMNS;
+const COLUMN_LIST = Object.keys(SETTINGS_COLUMNS).join(", ");
+
 type Err = { kind: "error"; message: string };
 
 export async function listAllPlans(): Promise<{ kind: "ok"; plans: Plan[] } | Err> {
@@ -74,14 +89,16 @@ export async function setPlanActive(id: string, active: boolean): Promise<{ kind
 export async function readPaywallSettings(): Promise<{ kind: "ok"; settings: PaywallSettings } | Err> {
   const { data, error } = await createSupabaseAdminClient()
     .from("paywall_settings")
-    .select("free_mock_limit, counts_from")
+    .select(COLUMN_LIST)
     .eq("id", true)
     .single();
   if (error) return { kind: "error", message: error.message };
-  return {
-    kind: "ok",
-    settings: { freeMockLimit: data.free_mock_limit as number | null, countsFrom: data.counts_from as string | null },
-  };
+  const row = data as unknown as Record<SettingsColumn, number | string | null>;
+  const settings = {} as Record<keyof PaywallSettings, number | string | null>;
+  for (const [col, field] of Object.entries(SETTINGS_COLUMNS) as [SettingsColumn, keyof PaywallSettings][]) {
+    settings[field] = row[col];
+  }
+  return { kind: "ok", settings: settings as PaywallSettings };
 }
 
 export async function savePaywallSettings(
@@ -94,8 +111,12 @@ export async function savePaywallSettings(
   const { error } = await createSupabaseAdminClient()
     .from("paywall_settings")
     .update({
-      free_mock_limit: decided.next.freeMockLimit,
-      counts_from: decided.next.countsFrom,
+      ...Object.fromEntries(
+        (Object.entries(SETTINGS_COLUMNS) as [SettingsColumn, keyof PaywallSettings][]).map(([col, field]) => [
+          col,
+          decided.next[field],
+        ])
+      ),
       updated_at: new Date().toISOString(),
     })
     .eq("id", true);
