@@ -12,9 +12,9 @@ import { Button } from "@/components/ui/button";
  */
 export default function FeedbackCards({ showNps }: { showNps: boolean }) {
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
+    <div className="space-y-4">
       {showNps && <NpsCard />}
-      <FeatureCard />
+      <FeatureCard compact />
     </div>
   );
 }
@@ -106,7 +106,14 @@ function NpsCard() {
  * than a second copy: `defaultOpen` shows the text box straight away, and
  * hides Cancel (there is nothing to cancel back to on a page for this alone).
  */
-export function FeatureCard({ defaultOpen = false }: { defaultOpen?: boolean }) {
+export function FeatureCard({
+  defaultOpen = false,
+  compact = false,
+}: {
+  defaultOpen?: boolean;
+  /** /me: one quiet line until opened (it was a permanent card). */
+  compact?: boolean;
+}) {
   const [open, setOpen] = useState(defaultOpen);
   const [message, setMessage] = useState("");
   const [saving, setSaving] = useState(false);
@@ -121,6 +128,22 @@ export function FeatureCard({ defaultOpen = false }: { defaultOpen?: boolean }) 
       setOpen(defaultOpen);
       toast.success("Thanks — we read every suggestion.");
     }
+  }
+
+  if (compact && !open) {
+    return (
+      <p className="text-sm text-muted-foreground">
+        <Lightbulb className="mr-1.5 inline h-4 w-4 align-[-3px] text-brand-accent" aria-hidden />
+        Missing an exam, a chapter or a feature?{" "}
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        >
+          Tell us
+        </button>
+      </p>
+    );
   }
 
   return (

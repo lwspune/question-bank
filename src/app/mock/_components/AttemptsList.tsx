@@ -40,13 +40,16 @@ export default function AttemptsList({
   attempts,
   showMock = true,
   reviewBase,
+  flush = false,
 }: {
   attempts: UserAttempt[];
   showMock?: boolean;
   reviewBase?: string;
+  /** Inside a card: no border or background of its own (no box in a box). */
+  flush?: boolean;
 }) {
   return (
-    <ul className="divide-y rounded-lg border bg-card">
+    <ul className={flush ? "-mx-3 divide-y sm:-mx-4" : "divide-y rounded-lg border bg-card"}>
       {attempts.map((a) => {
         const live = a.status === "in_progress";
         const href = live

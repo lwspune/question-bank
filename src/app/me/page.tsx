@@ -4,14 +4,6 @@ import { redirect } from "next/navigation";
 import {
   ArrowRight,
   Bookmark,
-  BookOpen,
-  History,
-  LayoutDashboard,
-  Play,
-  Sparkles,
-  Target,
-  Timer,
-  Trophy,
 } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { getSessionUser } from "@/lib/auth";
@@ -21,13 +13,15 @@ import { surfaceViewedEvent } from "@/lib/activity/views";
 import { getUserAttempts } from "@/lib/mocks/query";
 import { summarizeUserMocks } from "@/lib/mocks/perf";
 import { listOwnNotesProgress } from "@/lib/notes/progressService";
-import { summarizeNotesProgress, prettifyNotesSlug } from "@/lib/notes/progress";
+import { summarizeNotesProgress } from "@/lib/notes/progress";
+import { notesTopicTitles } from "@/lib/notes/topicTitles";
 import { listBookmarkIds } from "@/lib/bookmarks/service";
 import { getLastNpsAt } from "@/lib/feedback/service";
 import { needsNps } from "@/lib/feedback/nps";
 import AttemptsList from "../mock/_components/AttemptsList";
 import FeedbackCards from "./FeedbackCards";
-import WeekStrip from "./WeekStrip";
+import TodayCard from "./TodayCard";
+import { greetingFor } from "@/lib/me/today";
 import { getOwnWeekly } from "@/lib/goals/service";
 import { listMyAssignments } from "@/lib/assignments/service";
 import type { StudentAssignmentView } from "@/lib/assignments/core";
@@ -91,6 +85,7 @@ export default async function MePage() {
   // Continue-where-you-left-off: an open mock beats a recently-read chapter.
   const resume = mocks.resumeAttempt;
   const cont = notes.recent[0];
+  const contTitles = cont ? notesTopicTitles(cont) : null;
 
   // The exam-scoped home (EXAM_TIER_SPEC.md §4.2): the student's target exams
   // and the per-exam destinations they unlock.
@@ -107,49 +102,39 @@ export default async function MePage() {
   return (
     <>
       <AppHeader />
-      <main className="mx-auto max-w-5xl space-y-8 px-6 py-8">
-        <header className="flex items-center gap-3">
-          <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand-accent">
-            <LayoutDashboard className="h-5 w-5" aria-hidden />
-          </span>
-          <div>
-            <h1 className="text-2xl font-semibold tracking-tight">Your dashboard</h1>
-            <p className="text-sm text-muted-foreground" data-clarity-mask="true">{user.email}</p>
-          </div>
+      <main className="mx-auto max-w-4xl space-y-6 px-4 py-6 sm:space-y-8 sm:px-6 sm:py-8">
+        {/* A greeting, not "Your dashboard" over the student's own email. */}
+        <header className="space-y-2">
+          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{greetingFor(istHour(now))}</h1>
+          {examLinks.length > 0 ? <YourExams links={examLinks} /> : <NoTargetCard />}
         </header>
-
-        {examLinks.length > 0 ? <YourExams links={examLinks} /> : <NoTargetCard />}
 
         {showStageNudge && stage && (
           <StageNudge stageLabel={STAGE_LABELS[stage]} year={now.getFullYear()} />
         )}
 
-        {/* Continue hero */}
-        {resume ? (
-          <ContinueHero
-            eyebrow="Resume your mock test"
-            title={resume.mockTitle}
-            subtitle="You have an attempt in progress — pick up where the timer left off."
-            href={`/mock/${resume.mockSlug}/attempt/${resume.attemptId}`}
-            cta="Resume"
-          />
-        ) : cont ? (
-          <ContinueHero
-            eyebrow="Continue where you left off"
-            title={prettifyNotesSlug(cont.subtopicSlug)}
-            subtitle={prettifyNotesSlug(cont.chapterSlug)}
-            href={`/notes/${cont.subjectRoute}/${cont.chapterSlug}/${cont.subtopicSlug}`}
-            cta="Continue"
-          />
-        ) : (
-          <WelcomeHero mockHref={mockHref} notesHref={notesHref} />
-        )}
-
-        {/* This week's sittings against the goal + the due-drill count, as one
-            strip (ENGAGEMENT_SPEC.md §A2–A3). It replaced the count-less
-            DrillCard: the honest due count was too expensive to compute on
-            this page, and now arrives from the shared pulse instead. */}
-        <WeekStrip initialDone={weekly.done} initialGoal={weekly.goal} />
+        {/* ONE brand card with ONE lead action (2026-10-05). It replaced the
+            continue card, the welcome card and the week strip, which put three
+            full-width blue buttons on a phone before any progress. */}
+        <TodayCard
+          resume={
+            resume
+              ? { title: resume.mockTitle, href: `/mock/${resume.mockSlug}/attempt/${resume.attemptId}` }
+              : undefined
+          }
+          cont={
+            cont && contTitles
+              ? {
+                  title: contTitles.topic,
+                  chapter: contTitles.chapter,
+                  href: `/notes/${cont.subjectRoute}/${cont.chapterSlug}/${cont.subtopicSlug}`,
+                }
+              : undefined
+          }
+          mockHref={mockHref}
+          initialDone={weekly.done}
+          initialGoal={weekly.goal}
+        />
 
         {/* Papers a teacher has assigned to this student's batch, with the
             deadline (ENGAGEMENT_SPEC.md C1). Rendered only when there is one,
@@ -182,24 +167,29 @@ export default async function MePage() {
               supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
               hideCart
               surface="daily"
-              defaultExpanded
             />
           </section>
         )}
 
-        <div className="grid gap-6 lg:grid-cols-3">
-          <section className="space-y-4 lg:col-span-2">
-            <MockCard mocks={mocks} attempts={attempts} browseHref={mockHref} />
-          </section>
-          <div className="space-y-6">
-            <NotesCard
-              notesHref={notesHref}
-              recent={notes.recent}
-              bookmarkedCount={notes.bookmarkedCount}
-              masteredCount={notes.masteredCount}
-            />
-            <SavedCard count={savedCount} />
-          </div>
+        {/* Progress at a glance: one row of three tiles, each a link. They
+            replaced the saved card (a whole card for one number), the notes
+            counts and the mock card's boxed stat tiles. */}
+        <section aria-label="Your progress" className="grid grid-cols-3 gap-2 sm:gap-3">
+          <StatTile
+            href="/mock/attempts"
+            value={mocks.completed}
+            label={mocks.completed === 1 ? "mock sat" : "mocks sat"}
+            note={mocks.bestPct == null ? undefined : `best ${mocks.bestPct}%`}
+          />
+          <StatTile href={notesHref} value={notes.masteredCount} label="topics mastered" />
+          <StatTile href="/saved" value={savedCount} label={savedCount === 1 ? "question saved" : "questions saved"} />
+        </section>
+
+        {/* grid-cols-1 + min-w-0: a grid track defaults to its content's width,
+            so a long attempt title pushed these cards off a phone's screen. */}
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <RecentMocks mocks={mocks} attempts={attempts} browseHref={mockHref} />
+          <KeepReading notesHref={notesHref} recent={notes.recent} bookmarkedCount={notes.bookmarkedCount} />
         </div>
 
         <FeedbackCards showNps={showNps} />
@@ -297,123 +287,39 @@ function YourExams({ links }: { links: ExamLink[] }) {
   );
 }
 
-/** Shown instead of the exam row when the student has no target exam. */
+/** Shown instead of the exam row when the student has no target exam: one
+ *  quiet line, not a card with a full-width button. */
 function NoTargetCard() {
   return (
-    <section className="flex flex-col gap-3 rounded-xl border bg-card p-4 sm:flex-row sm:items-center sm:justify-between">
-      <p className="flex items-center gap-2 text-sm">
-        <GraduationCap className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
-        Tell us your exam and this page will show only what you need.
-      </p>
+    <p className="text-sm text-muted-foreground">
+      <GraduationCap className="mr-1.5 inline h-4 w-4 align-[-3px] text-brand-accent" aria-hidden />
+      Tell us your exam and this page shows only what you need.{" "}
       <Link
         href="/account"
         prefetch={false}
-        className="inline-flex h-9 shrink-0 items-center justify-center rounded-md bg-brand px-4 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        className="font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >
         Choose your exam
       </Link>
-    </section>
-  );
-}
-
-/* ---------------------------------------------------------------- heroes */
-
-function ContinueHero({
-  eyebrow,
-  title,
-  subtitle,
-  href,
-  cta,
-}: {
-  eyebrow: string;
-  title: string;
-  subtitle: string;
-  href: string;
-  cta: string;
-}) {
-  return (
-    <section className="flex flex-col gap-4 rounded-xl border bg-card p-6 sm:flex-row sm:items-center sm:justify-between">
-      <div className="flex min-w-0 items-start gap-3">
-        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand-accent">
-          <Play className="h-5 w-5" aria-hidden />
-        </span>
-        <div className="min-w-0">
-          <p className="text-xs font-semibold uppercase tracking-wide text-brand-accent">
-            {eyebrow}
-          </p>
-          <p className="truncate text-lg font-semibold">{title}</p>
-          <p className="truncate text-sm text-muted-foreground">{subtitle}</p>
-        </div>
-      </div>
-      <Link
-        href={href}
-        className="inline-flex h-10 shrink-0 items-center justify-center gap-1.5 rounded-md bg-brand px-5 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-      >
-        {cta}
-        <ArrowRight className="h-4 w-4" aria-hidden />
-      </Link>
-    </section>
-  );
-}
-
-function WelcomeHero({ mockHref, notesHref }: { mockHref: string; notesHref: string }) {
-  return (
-    <section className="rounded-xl border bg-card p-6">
-      <div className="flex items-start gap-3">
-        <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand-accent">
-          <Sparkles className="h-5 w-5" aria-hidden />
-        </span>
-        <div>
-          <p className="font-semibold">Start learning</p>
-          <p className="mt-0.5 text-sm text-muted-foreground">
-            Sit a timed paper, fix what you missed five at a time, and watch your
-            chapter map fill. Everything you do shows up here.{" "}
-            <Link href="/start" className="text-brand-accent underline underline-offset-2">
-              How it works
-            </Link>
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            <Link
-              href={mockHref}
-              className="inline-flex h-9 items-center justify-center gap-1.5 rounded-md bg-brand px-4 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand/90"
-            >
-              <Timer className="h-4 w-4" aria-hidden />
-              Take a mock
-            </Link>
-            <Link
-              href={notesHref}
-              className="inline-flex h-9 items-center justify-center gap-1.5 rounded-md border px-4 text-sm font-medium transition-colors hover:bg-accent"
-            >
-              <BookOpen className="h-4 w-4" aria-hidden />
-              Read notes
-            </Link>
-          </div>
-        </div>
-      </div>
-    </section>
+    </p>
   );
 }
 
 /* ------------------------------------------------------------------ cards */
 
-function CardShell({
-  icon,
+function SectionCard({
   title,
   action,
   children,
 }: {
-  icon: React.ReactNode;
   title: string;
   action?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-xl border bg-card p-6">
-      <div className="mb-4 flex items-center justify-between gap-2">
-        <h2 className="flex items-center gap-2 text-sm font-semibold tracking-tight">
-          <span className="text-brand-accent">{icon}</span>
-          {title}
-        </h2>
+    <section className="min-w-0 rounded-2xl border bg-card p-4 sm:p-5">
+      <div className="mb-3 flex items-center justify-between gap-2">
+        <h2 className="text-sm font-semibold tracking-tight">{title}</h2>
         {action}
       </div>
       {children}
@@ -425,7 +331,8 @@ function CardLink({ href, children }: { href: string; children: React.ReactNode 
   return (
     <Link
       href={href}
-      className="inline-flex items-center gap-1 text-xs font-medium text-brand-accent hover:underline"
+      prefetch={false}
+      className="inline-flex items-center gap-1 text-xs font-medium text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       {children}
       <ArrowRight className="h-3 w-3" aria-hidden />
@@ -433,18 +340,31 @@ function CardLink({ href, children }: { href: string; children: React.ReactNode 
   );
 }
 
-function Stat({ value, label }: { value: string; label: string }) {
+function StatTile({
+  href,
+  value,
+  label,
+  note,
+}: {
+  href: string;
+  value: number;
+  label: string;
+  note?: string;
+}) {
   return (
-    <div className="rounded-lg border bg-background p-3 text-center">
-      <div className="text-xl font-bold tabular-nums text-brand-accent">{value}</div>
-      <div className="mt-0.5 text-[11px] uppercase tracking-wide text-muted-foreground">
-        {label}
-      </div>
-    </div>
+    <Link
+      href={href}
+      prefetch={false}
+      className="rounded-xl border bg-card p-3 transition-colors hover:border-brand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:p-4"
+    >
+      <span className="block text-2xl font-bold tabular-nums tracking-tight text-brand-accent">{value}</span>
+      <span className="mt-0.5 block text-xs leading-snug text-muted-foreground">{label}</span>
+      {note && <span className="mt-0.5 block text-xs font-medium tabular-nums text-foreground">{note}</span>}
+    </Link>
   );
 }
 
-function MockCard({
+function RecentMocks({
   mocks,
   attempts,
   browseHref,
@@ -454,147 +374,86 @@ function MockCard({
   /** The first target exam's catalogue, else /mock. */
   browseHref: string;
 }) {
-  const recent = attempts.slice(0, 4);
+  const recent = attempts.slice(0, 3);
   return (
-    <CardShell
-      icon={<Timer className="h-4 w-4" aria-hidden />}
-      title="Mock tests"
-      action={<CardLink href={browseHref}>Browse mocks</CardLink>}
+    <SectionCard
+      title="Recent mocks"
+      action={
+        attempts.length > recent.length ? (
+          <CardLink href="/mock/attempts">All {attempts.length}</CardLink>
+        ) : (
+          <CardLink href={browseHref}>Browse mocks</CardLink>
+        )
+      }
     >
       {attempts.length === 0 ? (
-        <EmptyState
-          text="You haven't taken a mock test yet."
-          href={browseHref}
-          cta="Take your first mock"
-        />
+        <EmptyLine text="No mocks yet." href={browseHref} cta="Take your first mock" />
       ) : (
-        <div className="space-y-4">
-          <div className="grid grid-cols-3 gap-3">
-            <Stat value={String(mocks.completed)} label="Completed" />
-            <Stat value={mocks.bestPct == null ? "—" : `${mocks.bestPct}%`} label="Best" />
-            <Stat value={mocks.avgPct == null ? "—" : `${mocks.avgPct}%`} label="Average" />
-          </div>
-          <AttemptsList attempts={recent} />
-          {/* The diagnosis was reachable only from the profile menu, which is
-              not where a student looks for it. It needs at least one graded
-              sitting to say anything, so it appears with the first one. */}
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            {mocks.completed > 0 ? (
-              <span className="flex flex-wrap gap-x-4 gap-y-1">
-                <CardLink href="/me/map">Your map</CardLink>
-                <CardLink href="/performance">See what to work on</CardLink>
-              </span>
-            ) : (
-              <span />
-            )}
-            {attempts.length > recent.length && (
-              <CardLink href="/mock/attempts">
-                View all {attempts.length} attempts
-              </CardLink>
-            )}
-          </div>
-        </div>
+        <>
+          <AttemptsList attempts={recent} flush />
+          {/* The diagnosis needs one graded sitting to say anything. */}
+          {mocks.completed > 0 && (
+            <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 border-t pt-3">
+              <CardLink href="/me/map">Your map</CardLink>
+              <CardLink href="/performance">What to work on</CardLink>
+            </div>
+          )}
+        </>
       )}
-    </CardShell>
+    </SectionCard>
   );
 }
 
-function NotesCard({
+function KeepReading({
   notesHref,
   recent,
   bookmarkedCount,
-  masteredCount,
 }: {
   /** The first target exam's notes hub, else /notes. */
   notesHref: string;
   recent: ReturnType<typeof summarizeNotesProgress>["recent"];
   bookmarkedCount: number;
-  masteredCount: number;
 }) {
-  const hasActivity = recent.length > 0 || bookmarkedCount > 0 || masteredCount > 0;
   return (
-    <CardShell
-      icon={<BookOpen className="h-4 w-4" aria-hidden />}
-      title="Notes progress"
-      action={<CardLink href={notesHref}>Go to notes</CardLink>}
-    >
-      {!hasActivity ? (
-        <EmptyState
-          text="No notes activity yet."
-          href={notesHref}
-          cta="Explore notes"
-        />
+    <SectionCard title="Keep reading" action={<CardLink href={notesHref}>All notes</CardLink>}>
+      {recent.length === 0 ? (
+        <EmptyLine text="Nothing read yet." href={notesHref} cta="Explore notes" />
       ) : (
-        <div className="space-y-3">
-          {recent.length > 0 && (
-            <ul className="space-y-1">
-              {recent.slice(0, 4).map((r) => (
-                <li key={r.subtopicSlug}>
-                  <Link
-                    href={`/notes/${r.subjectRoute}/${r.chapterSlug}/${r.subtopicSlug}`}
-                    className="flex items-center gap-1.5 truncate rounded px-2 py-1 text-sm hover:bg-accent hover:text-accent-foreground"
-                    title={prettifyNotesSlug(r.subtopicSlug)}
-                  >
-                    <History className="h-3.5 w-3.5 shrink-0 text-muted-foreground" aria-hidden />
-                    <span className="truncate">{prettifyNotesSlug(r.subtopicSlug)}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-          <div className="flex flex-wrap gap-x-4 gap-y-1 border-t pt-3 text-xs text-muted-foreground">
-            <span className="inline-flex items-center gap-1.5">
-              <Bookmark className="h-3.5 w-3.5" aria-hidden />
-              {bookmarkedCount} bookmarked
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Trophy className="h-3.5 w-3.5" aria-hidden />
-              {masteredCount} mastered
-            </span>
-          </div>
-        </div>
+        <ul className="-mx-2 space-y-0.5">
+          {recent.slice(0, 4).map((r) => {
+            const t = notesTopicTitles(r);
+            return (
+              <li key={r.subtopicSlug}>
+                <Link
+                  href={`/notes/${r.subjectRoute}/${r.chapterSlug}/${r.subtopicSlug}`}
+                  className="flex min-w-0 items-baseline gap-2 rounded-lg px-2 py-1.5 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <span className="min-w-0 flex-1 truncate text-sm font-medium">{t.topic}</span>
+                  <span className="min-w-0 max-w-[40%] truncate text-xs text-muted-foreground">{t.chapter}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       )}
-    </CardShell>
+      {bookmarkedCount > 0 && (
+        <p className="mt-3 flex items-center gap-1.5 border-t pt-3 text-xs text-muted-foreground">
+          <Bookmark className="h-3.5 w-3.5" aria-hidden />
+          {bookmarkedCount} bookmarked
+        </p>
+      )}
+    </SectionCard>
   );
 }
 
-function SavedCard({ count }: { count: number }) {
+function EmptyLine({ text, href, cta }: { text: string; href: string; cta: string }) {
   return (
-    <CardShell
-      icon={<Bookmark className="h-4 w-4" aria-hidden />}
-      title="Saved questions"
-      action={count > 0 ? <CardLink href="/saved">View saved</CardLink> : undefined}
-    >
-      {count === 0 ? (
-        <EmptyState
-          text="You haven't saved any questions yet."
-          href="/browse"
-          cta="Browse questions"
-        />
-      ) : (
-        <Link href="/saved" className="block">
-          <div className="text-3xl font-bold tabular-nums text-brand-accent">{count}</div>
-          <p className="mt-0.5 text-sm text-muted-foreground">
-            question{count === 1 ? "" : "s"} saved for later
-          </p>
-        </Link>
-      )}
-    </CardShell>
-  );
-}
-
-function EmptyState({ text, href, cta }: { text: string; href: string; cta: string }) {
-  return (
-    <div className="text-sm">
-      <p className="text-muted-foreground">{text}</p>
-      <Link
-        href={href}
-        className="mt-2 inline-flex items-center gap-1 font-medium text-brand-accent hover:underline"
-      >
+    <p className="text-sm text-muted-foreground">
+      {text}{" "}
+      <Link href={href} prefetch={false} className="font-medium text-brand-accent hover:underline">
         {cta}
-        <ArrowRight className="h-3.5 w-3.5" aria-hidden />
       </Link>
-    </div>
+    </p>
   );
 }
 
@@ -624,4 +483,11 @@ async function loadQuestionOfDay(
     }
   }
   return null;
+}
+
+/** The hour of the day in India (0-23), for the greeting. */
+function istHour(d: Date): number {
+  return Number(
+    new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", hour: "numeric", hourCycle: "h23" }).format(d)
+  );
 }
