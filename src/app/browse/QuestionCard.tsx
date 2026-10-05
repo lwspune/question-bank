@@ -40,6 +40,7 @@ import type { PracticeSurface } from "@/lib/questions/practiceBatch";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
 import RevealLockedLink from "@/components/reveal/RevealLockedLink";
+import FixNudgeLine from "@/components/reveal/FixNudgeLine";
 import PresentButton from "@/components/present/PresentButton";
 import { fromQuestionRow } from "@/lib/present/viewModel";
 import BookmarkButton from "./BookmarkButton";
@@ -471,6 +472,10 @@ export default function QuestionCard({
             )}
 
             {revealBlocked && !revealed && <RevealSignInPrompt key={blockedTaps} surface={surface} />}
+
+            {/* Every fifth wrong bank answer of the day: the misses are saved in
+                Fix your mistakes (lib/drill/fixNudge). Nothing on other cards. */}
+            {surface === "bank" && revealed && <FixNudgeLine questionId={question.id} />}
 
             {isSubjective && !question.solution && (
               <p className="text-xs italic text-muted-foreground">Model answer coming soon.</p>
