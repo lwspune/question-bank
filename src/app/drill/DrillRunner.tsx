@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import type { AnswerOutcome, ServedQuestion } from "@/lib/drill/service";
 import { invalidatePulse } from "@/lib/viewer/usePulse";
 import { drillVSays, progressLine } from "@/lib/drill/progress";
+import { drillHref } from "@/lib/drill/from";
 
 export type DrillScope = { attemptId: string; mockTitle: string; mockSlug: string } | null;
 
@@ -334,7 +335,7 @@ function Summary({
 }) {
   // A scoped drill keeps offering this paper's mistakes while any remain, then
   // hands over to the general pool, which may hold more from other papers.
-  const anotherHref = scope && remaining > 0 ? `/drill?attempt=${scope.attemptId}` : "/drill";
+  const anotherHref = scope && remaining > 0 ? drillHref("again", scope.attemptId) : drillHref("again");
   const anotherLabel =
     scope && remaining > 0
       ? "Another five from this paper"

@@ -22,6 +22,7 @@ import type { Recipient } from "./recommend";
 import type { DueSummary } from "./dueNudge";
 import type { Loop } from "@/lib/education/howItWorks";
 import { INVITE_LINES } from "@/lib/education/classroomScript";
+import { drillHref } from "@/lib/drill/from";
 
 export const SITE_URL = "https://www.pyqvault.com";
 
@@ -479,7 +480,7 @@ export function buildDueNudgeEmail(input: DueNudgeEmailInput): BuiltEmail {
   const { name, summary, unsubscribeToken, clickToken } = input;
   const who = greetingName(name);
   const top = summary.chapters[0] ?? { chapter: "your mock", count: summary.total };
-  const drillUrl = ctaHref("/drill", clickToken);
+  const drillUrl = ctaHref(drillHref("email"), clickToken);
   const unsubUrl = `${SITE_URL}/unsubscribe/${unsubscribeToken}`;
   const oneClickUrl = `${SITE_URL}/api/unsubscribe/${unsubscribeToken}`;
 

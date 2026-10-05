@@ -265,7 +265,7 @@ describe("buildDueNudgeEmail", () => {
   it("links the drill and the unsubscribe page in both bodies", () => {
     const e = buildDueNudgeEmail(input);
     for (const body of [e.text, e.html]) {
-      expect(body).toContain("https://www.pyqvault.com/drill");
+      expect(body).toContain("https://www.pyqvault.com/drill?from=email");
       expect(body).toContain(`/unsubscribe/${TOKEN}`);
     }
     expect(e.headers["List-Unsubscribe"]).toContain(TOKEN);
