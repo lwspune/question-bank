@@ -130,7 +130,9 @@ export function examChipsForStage(
     ? [
         ...boards
           .filter(fits)
-          .map((e) => ({ value: e.slug, label: boardOnlyLabel(e), group: "Board exam" })),
+          .map((e) => ({ value: e.slug, label: boardOnlyLabel(e), group: "Board exam" }))
+          // Same order for every class (registry order put CBSE first for 11, last for 12).
+          .sort((a, b) => a.label.localeCompare(b.label)),
         // A pick from another class keeps its class on the chip.
         ...buildExamChips(boards.filter((e) => !fits(e))),
       ]
