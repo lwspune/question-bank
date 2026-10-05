@@ -10,6 +10,10 @@ import {
   CDS_GK_PAPER,
   CDS_MATHS_PAPER,
   JEE_MAINS_PAPER,
+  CBSE_12_CHAPTER_MCQ_PAPER,
+  MH_HSC_12_CHAPTER_MCQ_PAPER,
+  MH_SSC_10_CHAPTER_MCQ_PAPER,
+  MH_SSC_10_HUMANITIES_MCQ_PAPER,
   getBlueprint,
   totalQuestions,
   totalMarks,
@@ -271,6 +275,10 @@ describe("getBlueprint covers every exported blueprint", () => {
     MHT_CET_MATHS_PAPER,
     MHT_CET_PHY_CHEM_PAPER,
     JEE_MAINS_PAPER,
+    CBSE_12_CHAPTER_MCQ_PAPER,
+    MH_HSC_12_CHAPTER_MCQ_PAPER,
+    MH_SSC_10_CHAPTER_MCQ_PAPER,
+    MH_SSC_10_HUMANITIES_MCQ_PAPER,
   ];
 
   it.each(ALL.map((bp) => [`${bp.examSlug}/${bp.code}`, bp] as const))(
@@ -283,5 +291,50 @@ describe("getBlueprint covers every exported blueprint", () => {
   it("gives every blueprint a unique (examSlug, code)", () => {
     const keys = ALL.map((bp) => `${bp.examSlug}/${bp.code}`);
     expect(new Set(keys).size).toBe(keys.length);
+  });
+});
+
+/**
+ * Board chapter-test papers. No board prints an MCQ-only paper (the MCQs sit
+ * inside a long written paper with no clock of their own), so these exist only
+ * to give chapter tests a marking and a pace. They are never served whole.
+ */
+describe("board chapter-test papers", () => {
+  const BOARD = [
+    CBSE_12_CHAPTER_MCQ_PAPER,
+    MH_HSC_12_CHAPTER_MCQ_PAPER,
+    MH_SSC_10_CHAPTER_MCQ_PAPER,
+    MH_SSC_10_HUMANITIES_MCQ_PAPER,
+  ];
+
+  it.each(BOARD.map((bp) => [`${bp.examSlug}/${bp.code}`, bp] as const))(
+    "%s marks +1 with no negative marking, as the boards do",
+    (_name, bp) => {
+      expect(bp.marking).toEqual({ correct: 1, wrong: 0 });
+    }
+  );
+
+  it("maths and science papers run 90 seconds a question, humanities 60", () => {
+    for (const bp of [CBSE_12_CHAPTER_MCQ_PAPER, MH_HSC_12_CHAPTER_MCQ_PAPER, MH_SSC_10_CHAPTER_MCQ_PAPER]) {
+      expect(bp.durationSecs / totalQuestions(bp)).toBe(90);
+    }
+    expect(MH_SSC_10_HUMANITIES_MCQ_PAPER.durationSecs / totalQuestions(MH_SSC_10_HUMANITIES_MCQ_PAPER)).toBe(60);
+  });
+
+  it("names every subject exactly as the bank spells it", () => {
+    const subjects = (bp: (typeof BOARD)[number]) => bp.sections.flatMap((s) => s.subjects);
+    expect(subjects(CBSE_12_CHAPTER_MCQ_PAPER)).toEqual(["Physics", "Chemistry", "Mathematics"]);
+    expect(subjects(MH_HSC_12_CHAPTER_MCQ_PAPER)).toEqual(["Physics", "Chemistry", "Mathematics"]);
+    expect(subjects(MH_SSC_10_CHAPTER_MCQ_PAPER)).toEqual([
+      "Algebra",
+      "Geometry",
+      "Science and Technology I",
+      "Science and Technology II",
+    ]);
+    expect(subjects(MH_SSC_10_HUMANITIES_MCQ_PAPER)).toEqual(["History", "Political Science", "Geography"]);
+  });
+
+  it("is not in the NDA discovery list", () => {
+    for (const bp of BOARD) expect(MOCK_BLUEPRINTS).not.toContain(bp);
   });
 });

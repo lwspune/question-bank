@@ -26,6 +26,7 @@ import {
 } from "./correctEvents";
 import type { ActivityEvent } from "@/lib/activity/events";
 import { FREE_MOCK_LIMIT_CODE, type MockQuota } from "./quota";
+import { chapterTestContext } from "./instructionContext";
 
 export class MockError extends Error {
   constructor(public status: number, message: string) {
@@ -582,7 +583,7 @@ export async function getAttemptReview(
         position: s.position,
         sectionKey: s.sectionKey,
         text: c?.text ?? "",
-        context: c?.context ?? null,
+        context: chapterTestContext(c?.context ?? null, mock.scope),
         imageUrl: c?.imageUrl ?? null,
         options: c?.options ?? [],
         format,
@@ -635,10 +636,13 @@ export async function getRunnerState(
   const attempt = await loadAttemptRow(db, userId, attemptId);
   const mock = await getMockById(db, attempt.mock_id);
   if (!mock) throw new MockError(404, "Mock test not found");
-  const [questions, answers] = await Promise.all([
+  const [views, answers] = await Promise.all([
     loadMockQuestionViews(db, mock.questions),
     loadSavedAnswers(db, attemptId),
   ]);
+  // A chapter test shows a standard Assertion-Reason direction in place of the
+  // printed one, whose question numbers belong to the full paper.
+  const questions = views.map((q) => ({ ...q, context: chapterTestContext(q.context, mock.scope) }));
   return {
     attempt: {
       id: attempt.id,

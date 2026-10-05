@@ -277,6 +277,35 @@ export function orderChapters<T extends { name: string; pyq: number }>(
   });
 }
 
+/**
+ * Book order for a board's chapter tests: a school student reads the catalogue
+ * against the textbook, so chapter 1 lists first. Chapters with no number go
+ * last, by name. Boards have no recent-weight grid to order by in any case.
+ */
+export function orderChaptersByBook<T extends { name: string; orderIndex: number | null }>(
+  chapters: T[]
+): T[] {
+  return [...chapters].sort((a, b) => {
+    if (a.orderIndex !== null && b.orderIndex !== null) {
+      return a.orderIndex - b.orderIndex || a.name.localeCompare(b.name);
+    }
+    if (a.orderIndex !== null) return -1;
+    if (b.orderIndex !== null) return 1;
+    return a.name.localeCompare(b.name);
+  });
+}
+
+/**
+ * The `source` a chapter test is stored with, from its questions' kinds. The
+ * catalogue badges a sectional test "Past paper" for `pyq`, so one textbook
+ * question makes the whole test `practice`: the badge may undersell a test,
+ * never overclaim one. An empty test is refused rather than labelled.
+ */
+export function sectionalSource(kinds: string[]): "pyq" | "practice" {
+  if (kinds.length === 0) throw new Error("sectionalSource: a test with no questions has no source");
+  return kinds.every((k) => k === "pyq") ? "pyq" : "practice";
+}
+
 function slugify(s: string): string {
   return s
     .toLowerCase()
