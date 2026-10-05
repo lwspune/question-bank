@@ -65,6 +65,7 @@ describe("EXPERIMENTS", () => {
       "email-cap",
       "indexing",
       "onboarding-arms",
+      "performance-starter",
       "premium-limits",
       "resource-chips",
       "second-page",

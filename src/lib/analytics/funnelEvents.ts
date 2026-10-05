@@ -131,6 +131,13 @@ export const FUNNEL_EVENTS = [
   "resource_chips_shown",
   /** …and one was tapped; props: chip ("guide" | "notes"), page. */
   "resource_chips_click",
+  /**
+   * The offer on an empty /performance page was tapped (2026-10-06; growth
+   * registry "performance-starter"); props: target ("chapter" | "paper" |
+   * "board" | "bank" | "pick-exam"), why ("last-read" | "exam" | "none"). No
+   * shown partner: the page's own surface_viewed row is the scale.
+   */
+  "performance_starter_click",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];

@@ -16,6 +16,12 @@ import { projectionAccess } from "@/lib/performance/projectionAccess";
 import ProjectionGate from "@/components/performance/ProjectionGate";
 import { logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
+import type { SupabaseClient } from "@supabase/supabase-js";
+import StarterCard from "@/components/performance/StarterCard";
+import { pickStarter } from "@/lib/performance/starter";
+import { loadLastPractisedChapter, loadStarterCatalogue } from "@/lib/performance/starterQuery";
+import { profileFieldsFromRow } from "@/lib/header-session";
+import { getExamBySlug, isBoardExam, resolveBoardHref } from "@/lib/exam/examContext";
 
 /**
  * A student's own performance diagnosis — the same readout staff have had since
@@ -83,6 +89,10 @@ export default async function OwnPerformancePage({ searchParams }: { searchParam
     ? await getTaxonomyLinks(nav.selected.exam, nav.selected.subject)
     : EMPTY_TAXONOMY_LINKS;
 
+  // Two in three active students have no graded paper (2026-10-06); for them
+  // the page offers one short test instead of a blank box. Read only then.
+  const starter = built.summary.graded === 0 ? await loadStarterCard(db, user.id) : undefined;
+
   return (
     <>
       <AppHeader />
@@ -114,8 +124,29 @@ export default async function OwnPerformancePage({ searchParams }: { searchParam
           viewer="self"
           projectionLocked={projectionLocked}
           projectionNote={projectionNote}
+          starter={starter}
         />
       </main>
     </>
+  );
+}
+
+/** The empty page's offer: the student's exams, last practised chapter and the published tests. */
+async function loadStarterCard(db: SupabaseClient, userId: string) {
+  const [{ data: profile }, lastChapterId, catalogue] = await Promise.all([
+    // Own-row read through the student's session (RLS, migration 0045).
+    db.from("student_profiles").select("stage, target_exams").eq("user_id", userId).maybeSingle(),
+    loadLastPractisedChapter(db, userId),
+    loadStarterCatalogue(),
+  ]);
+  const { targetExams } = profileFieldsFromRow(profile);
+  const starter = pickStarter({ targetExams, lastChapterId, ...catalogue });
+  const exam = starter.kind === "not-yet" ? getExamBySlug(starter.examSlug) : null;
+  return (
+    <StarterCard
+      starter={starter}
+      examName={exam?.displayName ?? null}
+      boardHref={exam && isBoardExam(exam.slug) ? resolveBoardHref(exam.slug) : null}
+    />
   );
 }

@@ -13,6 +13,7 @@ import {
   SECOND_PAGE_KEEP_PCT,
   BOX_BUY_MIN_SALES,
   PREMIUM_LIMITS_MIN_SALES,
+  STARTER_KEEP_PCT,
   CHIPS_KEEP_PCT,
   checkOn,
   type Experiment,
@@ -275,6 +276,16 @@ export default async function GrowthPage() {
               before touching the price.
             </p>
             <ReadingsList metric="box-sales-per-100" />
+          </div>
+        );
+      case "performance-starter":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince))}: keep the offer if {STARTER_KEEP_PCT}%+ of students who
+              open an empty performance page start a test within a day. Below that, try a different offer first.
+            </p>
+            <ReadingsList metric="starter-start-rate" />
           </div>
         );
       case "premium-limits":
