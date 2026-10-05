@@ -4,8 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import { registerVSays, type VMessage } from "@/components/celebrate/celebrate";
 
-/** How long V's bubble stays before it goes on its own. */
-const SHOW_MS = 3000;
+/** How long V's bubble stays at full strength before it starts to go. */
+const SHOW_MS = 2500;
+/** How long it takes to fade out, so it is gone 3 seconds after it came. */
+const FADE_MS = 500;
 
 /**
  * V's speech bubble for celebrations (2026-10-04): "3 in a row on Probability!
@@ -19,19 +21,36 @@ const SHOW_MS = 3000;
  * the page for three seconds; only its close button catches a tap, so it can
  * never swallow a tap meant for the next question.
  *
+ * It FADES out rather than vanishing: after SHOW_MS the bubble switches to a
+ * fade + small slide down (the mirror of how it came in) and is unmounted
+ * FADE_MS later. The close button takes the same way out. Under reduced
+ * motion there is no animation, so it simply goes at the same moment.
+ *
  * The live region is always mounted so a screen reader hears each message.
  * While a message shows, `data-v-says="open"` on <html> tells VHello's tip to
  * step aside, so the two bubbles never stack in the same corner.
  */
 export default function VSays() {
   const [message, setMessage] = useState<VMessage | null>(null);
+  const [leaving, setLeaving] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  function leave() {
+    if (timer.current) clearTimeout(timer.current);
+    setLeaving(true);
+    timer.current = setTimeout(() => {
+      setMessage(null);
+      setLeaving(false);
+    }, FADE_MS);
+  }
 
   useEffect(() => {
     const unregister = registerVSays((m) => {
+      // A new message cancels any fade in progress and shows at full strength.
       if (timer.current) clearTimeout(timer.current);
+      setLeaving(false);
       setMessage(m);
-      timer.current = setTimeout(() => setMessage(null), SHOW_MS);
+      timer.current = setTimeout(leave, SHOW_MS);
     });
     return () => {
       unregister();
@@ -49,14 +68,19 @@ export default function VSays() {
   }, [message]);
 
   function close() {
-    if (timer.current) clearTimeout(timer.current);
-    setMessage(null);
+    if (!leaving) leave();
   }
 
   return (
     <div role="status" aria-live="polite" className="pointer-events-none absolute bottom-full right-0 mb-3 w-[17rem] max-w-[calc(100vw-2rem)]">
       {message && (
-        <div className="relative flex items-start gap-2.5 rounded-xl border border-input bg-background p-3 pr-9 text-sm shadow-lg motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2">
+        <div
+          className={`relative flex items-start gap-2.5 rounded-xl border border-input bg-background p-3 pr-9 text-sm shadow-lg ${
+            leaving
+              ? "motion-safe:animate-out motion-safe:fade-out motion-safe:slide-out-to-bottom-2 motion-safe:duration-500 motion-safe:fill-mode-forwards"
+              : "motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2"
+          }`}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element -- pre-sized static asset, see ChatWidget's VFace */}
           <img src={`/chat/v-${message.face}.png`} alt="" aria-hidden className="h-9 w-9 shrink-0 rounded-full" />
           <p className="leading-snug text-foreground">
