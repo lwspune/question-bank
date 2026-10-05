@@ -182,7 +182,8 @@ export function describesFigureInText(text: string | null, context: string | nul
  */
 export function optionsDeferToFigure(options: { text: string | null }[] | null | undefined): boolean {
   if (!options?.length) return false;
-  return options.some((o) => /see the attached figure|as printed/i.test(o.text ?? ""));
+  // `\b` keeps "[No fourth option was printed ...]" from matching "as printed".
+  return options.some((o) => /see the attached figure|\bas printed/i.test(o.text ?? ""));
 }
 
 /**
@@ -233,7 +234,9 @@ const OPTION_DRAWN_IN_WORDS = new RegExp(
     String.raw`\b(?:rises|rising|falls|falling|climbs|drops|dips|declines|decreases|increases)\b[^.;]{0,40}?\b(?:linearly|steeply|sharply|gradually|uniformly|steadily|to\s+(?:a\s+)?(?:peak|maximum|zero))\b`,
     String.raw`\b(?:rises|falls|declines)\s+(?:with|from)\b`,
     String.raw`\blevels?\s+off\b|\bflatten(?:s|ing)?\b|\bplateau(?:s|ing)\b`,
-    String.raw`\bstraight\s+line\s+(?:through|from|passing|of)\b|\bhorizontal\s+(?:straight\s+)?line\b`,
+    // "through the origin" and not bare "through": "A straight line passing
+    // through (1, 4)" is a text answer about a curve (NDA Apr 2025 Q77).
+    String.raw`\bstraight\s+line\s+(?:of|from|through\s+the\s+origin)\b|\bhorizontal\s+(?:straight\s+)?line\b`,
     String.raw`\b(?:saturation|parabolic|decreasing|increasing)\s+curve\b|\bconcave[\s-](?:up|down)\b`,
   ].join("|"),
   "i",

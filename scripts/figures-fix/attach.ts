@@ -111,7 +111,11 @@ function cropAll(pdf: string | undefined, figures: Record<string, FigureEntry>, 
         "raw=zipfile.ZipFile(sys.argv[2]).read('word/media/'+sys.argv[3]); k=int(sys.argv[4])",
         "if k<=1: open(sys.argv[1],'wb').write(raw)",
         "else:",
-        "    im=Image.open(io.BytesIO(raw)); im.resize((im.width*k,im.height*k),Image.NEAREST).save(sys.argv[1])",
+        // A Word ".jpg" can hold an alpha channel, which JPEG cannot store.
+        "    im=Image.open(io.BytesIO(raw)); im=im.resize((im.width*k,im.height*k),Image.NEAREST)",
+        "    if sys.argv[1].lower().endswith(('.jpg','.jpeg')) and im.mode not in ('RGB','L'):",
+        "        rgba=im.convert('RGBA'); bg=Image.new('RGB',rgba.size,'white'); bg.paste(rgba,mask=rgba.split()[3]); im=bg",
+        "    im.save(sys.argv[1])",
       ], [target, part.docx, part.media, String(part.scale ?? 1)], `extracting ${part.media}`);
       files[id] = target;
     });

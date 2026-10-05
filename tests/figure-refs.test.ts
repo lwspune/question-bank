@@ -284,6 +284,25 @@ describe("optionsStandInForFigure", () => {
     });
   }
 
+  // Both found by the first bank-wide run (2026-10-05), each a false hit.
+  it("does not read 'was printed' as the transcriber's 'as printed' marker", () => {
+    expect(
+      optionsStandInForFigure(
+        "Match the following: Name of Shifting Cultivation",
+        opts("a-ii, b-iii, c-iv, d-i", "a-i, b-ii, c-iv, d-iii", "a-i, b-iv, c-i, d-iii", "[No fourth option was printed in the source paper.]"),
+      ),
+    ).toBeNull();
+  });
+
+  it("stays silent on text answers about a curve (NDA Apr 2025 Q77)", () => {
+    expect(
+      optionsStandInForFigure(
+        "What is the nature of the curve?",
+        opts("A straight line passing through \\((1, 4)\\)", "A straight line passing through \\((-1, 4)\\)", "A parabola with vertex at origin and focus at \\((2, 0)\\)", "A parabola with vertex at origin and focus at \\((1, 0)\\)"),
+      ),
+    ).toBeNull();
+  });
+
   it("stays silent with no options (subjective / numeric)", () => {
     expect(optionsStandInForFigure("Which graph?", [])).toBeNull();
     expect(optionsStandInForFigure("Which graph?", null)).toBeNull();
