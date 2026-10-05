@@ -24,7 +24,8 @@
  *
  * ONE LADDER VERDICT PER QUESTION PER SURFACE PER IST DAY. Without the dedupe
  * key, reload the page and re-tap the answer it just showed you, and the
- * question goes to sleep for ten days unfixed.
+ * question counts as fixed without being fixed (one right answer fixes, since
+ * 2026-10-05).
  *
  * Pure: no DB, no clock of its own. Spec: tests/bank-verdict.test.ts.
  */

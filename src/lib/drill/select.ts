@@ -18,19 +18,14 @@
  * Spec: tests/drill-select.test.ts.
  */
 
-/**
- * How many correct answers retire a question, and how long the first one buys.
- *
- * The user's call, and the reasoning is the guessing floor: a four-option MCQ
- * answered right once, a day after getting it wrong, is weak evidence of
- * durable recall — one in four students who have learned nothing would manage
- * it. So the first correct answer puts the question to SLEEP rather than fixing
- * it, and the second, on the far side of a gap, retires it. That gap is the
- * spaced-repetition principle the engagement gate names; without it the drill
- * would be re-testing this morning's answers.
+/*
+ * ONE correct answer after the last miss fixes a question (the user's call,
+ * 2026-10-05). Until then the ladder took two, ten days apart, on the guessing
+ * floor of a four-option MCQ; the user traded that evidence for a list students
+ * can actually clear, because a queue that only grows demotivates. Same-day
+ * counts too, decided knowingly: on 2026-10-05, 113 of 521 first right answers
+ * came within an hour of the miss. A later miss, anywhere, puts it straight back.
  */
-export const CORRECTS_TO_RETIRE = 2;
-export const COOL_DOWN_DAYS = 10;
 
 /**
  * Five, not ten or twenty. The audience is mobile-first and studies in gaps
@@ -38,8 +33,6 @@ export const COOL_DOWN_DAYS = 10;
  * they finish beats a long one they abandon.
  */
 export const DRILL_SIZE = 5;
-
-const DAY_MS = 86_400_000;
 
 /** Chapter and subtopic joined as a PAIR — a subtopic name is unique only
  *  within its chapter, the same reason performance/links.ts keys this way. */
@@ -55,11 +48,9 @@ export type DrillEvent = {
 };
 
 export type QuestionState =
-  /** Missed, and not yet answered right since — or awake again after cooling. */
+  /** Missed, and not answered right since. */
   | "due"
-  /** Answered right once; resting until the cooling period is up. */
-  | "cooling"
-  /** Answered right CORRECTS_TO_RETIRE times in a row since the last miss. */
+  /** Answered right since the last miss: shown to students as "fixed". */
   | "retired"
   /** Never missed, so it never entered the pool. */
   | "never-missed";
@@ -80,42 +71,39 @@ function chronological(events: readonly DrillEvent[]): DrillEvent[] {
   return [...events].sort((a, b) => (a.at < b.at ? -1 : a.at > b.at ? 1 : 0));
 }
 
-type Fold = { streak: number; lastWrongAt: string | null; lastCorrectAt: string | null };
+type Fold = { rightSinceMiss: boolean; lastWrongAt: string | null };
 
 function fold(events: readonly DrillEvent[]): Fold {
-  let streak = 0;
+  let rightSinceMiss = false;
   let lastWrongAt: string | null = null;
-  let lastCorrectAt: string | null = null;
   for (const e of chronological(events)) {
     if (e.correct) {
-      streak += 1;
-      lastCorrectAt = e.at;
+      rightSinceMiss = true;
     } else {
-      // A miss resets the ladder to the bottom, including from `retired`: they
-      // have just shown they do not have it, so one correct answer afterwards
-      // must not restore the status two correct answers earned.
-      streak = 0;
+      // A miss undoes a fix: they have just shown they do not have it.
+      rightSinceMiss = false;
       lastWrongAt = e.at;
     }
   }
-  return { streak, lastWrongAt, lastCorrectAt };
-}
-
-/** Where one question stands, given everything recorded about it. */
-export function questionState(events: readonly DrillEvent[], now: Date): QuestionState {
-  const { streak, lastWrongAt, lastCorrectAt } = fold(events);
-  // The pool is defined by a MISS, not by presence in the log.
-  if (lastWrongAt === null) return "never-missed";
-  if (streak >= CORRECTS_TO_RETIRE) return "retired";
-  if (streak === 0) return "due";
-  const wakesAt = new Date(lastCorrectAt!).getTime() + COOL_DOWN_DAYS * DAY_MS;
-  return now.getTime() >= wakesAt ? "due" : "cooling";
+  return { rightSinceMiss, lastWrongAt };
 }
 
 /**
- * How many questions are FIXED: right twice in a row since their last miss
- * (`retired`). The number the pulse shows as "Fixed" (2026-10-04). Same fold as
- * the due pool, so the two cannot disagree about a question.
+ * Where one question stands, given everything recorded about it. `now` is
+ * unused since the ten-day rest went (2026-10-05) and kept so every caller
+ * still states the moment it asks about.
+ */
+export function questionState(events: readonly DrillEvent[], _now: Date): QuestionState {
+  const { rightSinceMiss, lastWrongAt } = fold(events);
+  // The pool is defined by a MISS, not by presence in the log.
+  if (lastWrongAt === null) return "never-missed";
+  return rightSinceMiss ? "retired" : "due";
+}
+
+/**
+ * How many questions are FIXED: answered right since their last miss
+ * (`retired`). The number the pulse shows as "Fixed". Same fold as the due
+ * pool, so the two cannot disagree about a question.
  */
 export function fixedCount(events: readonly DrillEvent[], now: Date): number {
   const byQuestion = new Map<string, DrillEvent[]>();
@@ -282,7 +270,7 @@ export function attachRefs(
  *
  * NARROWS, NEVER WIDENS. The result page knows which questions were wrong in
  * this sitting, but whether one is still worth serving is the ladder's call:
- * a question fixed since (cooling or retired) stays out even though the
+ * a question fixed since (retired) stays out even though the
  * attempt lists it. So this is an intersection with the due pool, in the
  * pool's own order, and nothing outside the pool can enter through it.
  */

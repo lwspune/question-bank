@@ -161,8 +161,8 @@ export async function recordDrillAnswer(
   if (!verdict) return null;
 
   // A correct answer is a RECOVERY only if they had got it wrong before — that
-  // is what `answer_correct` means (lib/mocks/correctEvents.ts), and the
-  // ladder retires on two of them. A NEW question (the B2 fill) answered
+  // is what `answer_correct` means (lib/mocks/correctEvents.ts), and one of
+  // them fixes the question. A NEW question (the B2 fill) answered
   // right is plain practice: recorded as `question_practiced` so it joins the
   // seen set and never returns as new, without pretending to be a recovery.
   // A wrong answer enters the ladder either way.
@@ -179,15 +179,15 @@ export async function recordDrillAnswer(
   });
 
   // What the answer did, read back from the log the write just joined. If that
-  // write was lost the read sees one fewer right answer, so the student is told
-  // "rested" rather than "fixed" — the same safe direction as the ladder.
+  // write was lost the read still sees the miss, so the student is told
+  // "right" rather than "fixed" — the same safe direction as the rule.
   const now = new Date();
-  let progress: AnswerProgress = !verdict.correct ? "wrong" : kind === "answer_correct" ? "rested" : "right";
+  let progress: AnswerProgress = verdict.correct ? "right" : "wrong";
   let fixedTotal: number | null = null;
   if (kind === "answer_correct") {
     try {
       const events = await loadQuestionEvents(db, user.id, questionId);
-      progress = answerProgress({ correct: true, missedBefore: true, stateAfter: questionState(events, now) });
+      progress = answerProgress({ correct: true, stateAfter: questionState(events, now) });
       if (progress === "fixed") fixedTotal = fixedCount(await loadDrillEvents(db, user.id), now);
     } catch (e) {
       console.error("drill progress read failed", e);

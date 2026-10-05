@@ -1,6 +1,7 @@
 /**
  * Integration test for what a drill answer reports back (2026-10-04): whether
- * it RESTED or FIXED the question, the running fixed count on a fix, and a
+ * it FIXED the question (one right answer after a miss, since 2026-10-05), the
+ * running fixed count on a fix, and a
  * newly reached "N answered" milestone.
  *
  * Drives `recordDrillAnswer` against the TEST Supabase project as a real
@@ -81,12 +82,7 @@ describe.skipIf(!HAS_ENV)("recordDrillAnswer — progress, fixed count, mileston
     await admin.auth.admin.deleteUser(userId);
   });
 
-  it("a first right answer after a miss RESTS the question", async () => {
-    const out = await recordDrillAnswer(qs[0].id, qs[0].right);
-    expect(out).toMatchObject({ correct: true, progress: "rested", fixedTotal: null });
-  });
-
-  it("the second right answer in a row FIXES it and reports the running count", async () => {
+  it("the first right answer after a miss FIXES it and reports the running count", async () => {
     const out = await recordDrillAnswer(qs[0].id, qs[0].right);
     expect(out).toMatchObject({ correct: true, progress: "fixed", fixedTotal: 1 });
   });

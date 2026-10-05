@@ -8,7 +8,6 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { logActivity, logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
 import { getOwnDrill } from "@/lib/drill/service";
-import { COOL_DOWN_DAYS } from "@/lib/drill/select";
 import { getOnboardingState } from "@/lib/profile/service";
 import { needsPushPrompt } from "@/lib/profile/push";
 import DrillRunner from "./DrillRunner";
@@ -158,11 +157,9 @@ function ScopedEmptyState() {
 }
 
 /**
- * TWO empty states would be better than one, and this is deliberately the
- * honest single version: from the page's point of view "you have never missed
- * anything" and "everything you missed is resting" both arrive as an empty
- * drill, and the copy has to be true of both. It names the resting case
- * explicitly rather than implying the student has nothing to work on.
+ * One empty state for two cases: "you have never missed anything" and "you
+ * have fixed everything you missed" both arrive as an empty drill with no
+ * target exam to fill from, and the copy has to be true of both.
  */
 function EmptyState() {
   return (
@@ -173,8 +170,8 @@ function EmptyState() {
       <p className="mt-3 font-semibold">Nothing to practise right now</p>
       <p className="mx-auto mt-2 max-w-sm text-sm text-muted-foreground">
         Nothing is due, and there are no new questions to draw from until you pick a target
-        exam on your account page. A question you miss in a mock or in the bank lands here. A question you get right comes back around {COOL_DOWN_DAYS}{" "}
-        days later, once, to check it stuck.
+        exam on your account page. A question you miss in a mock or in the bank lands here. Get it
+        right once and it leaves the list; miss it again and it comes back.
       </p>
       <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:justify-center">
         <Link

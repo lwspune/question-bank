@@ -2,16 +2,14 @@
  * The drill's pure core: which of a student's past mistakes are due, and which
  * five they get. No DB, no React.
  *
- * The state machine is the user's call (2026-09-18): a question enters the pool
- * by being answered WRONG, leaves for a cooling period on the first correct,
- * and retires on the second. One correct answer a day later is weak evidence of
- * durable recall on a four-option MCQ with a 25% guessing floor — so "right
- * once" is deliberately not "fixed".
+ * The state machine is the user's call. 2026-09-18: wrong enters the pool, the
+ * first correct rested it for ten days, the second fixed it. 2026-10-05: ONE
+ * correct answer after the last miss fixes it, from any surface and at any
+ * time (same-day included, decided knowingly); a later miss puts it back. The
+ * two-step ladder kept the list growing faster than students could clear it.
  */
 import { describe, it, expect } from "vitest";
 import {
-  COOL_DOWN_DAYS,
-  CORRECTS_TO_RETIRE,
   DRILL_SIZE,
   questionState,
   dueQuestions,
@@ -40,38 +38,34 @@ describe("questionState — the fold", () => {
     expect(questionState([wrong("q1", 30)], NOW)).toBe("due");
   });
 
-  it("one correct answer puts it to sleep, it does not fix it", () => {
-    expect(questionState([wrong("q1", 30), right("q1", 1)], NOW)).toBe("cooling");
+  it("one correct answer after the miss fixes it", () => {
+    expect(questionState([wrong("q1", 30), right("q1", 1)], NOW)).toBe("retired");
   });
 
-  it("wakes up again once the cooling period has passed", () => {
-    expect(questionState([wrong("q1", 30), right("q1", COOL_DOWN_DAYS + 1)], NOW)).toBe("due");
+  it("stays fixed however long ago that answer was — nothing wakes it", () => {
+    expect(questionState([wrong("q1", 300), right("q1", 200)], NOW)).toBe("retired");
   });
 
-  it("retires on the second correct answer", () => {
-    const events = [wrong("q1", 30), right("q1", 20), right("q1", 2)];
-    expect(events.filter((e) => e.correct)).toHaveLength(CORRECTS_TO_RETIRE);
-    expect(questionState(events, NOW)).toBe("retired");
+  it("a right answer minutes after the miss still fixes it (same day counts)", () => {
+    const missed = new Date(NOW.getTime() - 60_000).toISOString();
+    expect(questionState([{ questionId: "q1", correct: false, at: missed }, right("q1", 0)], NOW)).toBe("retired");
   });
 
-  it("a wrong answer sends a retired question straight back, streak reset", () => {
-    // Not "back to cooling" — they have just demonstrated they do not have it,
-    // so the next correct answer starts the ladder again from the bottom.
-    const events = [wrong("q1", 60), right("q1", 50), right("q1", 40), wrong("q1", 3)];
+  it("a wrong answer sends a fixed question straight back", () => {
+    const events = [wrong("q1", 60), right("q1", 50), wrong("q1", 3)];
     expect(questionState(events, NOW)).toBe("due");
-    expect(questionState([...events, right("q1", 1)], NOW)).toBe("cooling");
+    expect(questionState([...events, right("q1", 1)], NOW)).toBe("retired");
   });
 
   it("is chronological regardless of the order it is handed", () => {
     // The read layer orders by created_at, but a fold that silently depends on
     // its input order is a bug waiting for a paginated query.
-    const shuffled = [right("q1", 20), wrong("q1", 30), right("q1", 2)];
-    expect(questionState(shuffled, NOW)).toBe("retired");
+    expect(questionState([right("q1", 2), wrong("q1", 30)], NOW)).toBe("retired");
+    expect(questionState([wrong("q1", 2), right("q1", 30)], NOW)).toBe("due");
   });
 
   it("a question that was never missed is not drill material, however many corrects", () => {
-    // It cannot arise today (only the drill emits a correct, and the drill only
-    // serves misses) but the pool must be defined by a MISS, not by presence.
+    // The pool must be defined by a MISS, not by presence in the log.
     expect(questionState([right("q1", 5), right("q1", 2)], NOW)).toBe("never-missed");
   });
 });
@@ -80,15 +74,15 @@ describe("dueQuestions", () => {
   const events: DrillEvent[] = [
     wrong("due-1", 40),
     wrong("due-2", 10),
-    wrong("sleeping", 30),
-    right("sleeping", 1),
-    wrong("fixed", 60),
-    right("fixed", 50),
-    right("fixed", 5),
+    wrong("fixed", 30),
+    right("fixed", 1),
+    wrong("back", 60),
+    right("back", 50),
+    wrong("back", 5),
   ];
 
   it("returns only the due ones", () => {
-    expect(dueQuestions(events, NOW).map((d) => d.questionId)).toEqual(["due-1", "due-2"]);
+    expect(dueQuestions(events, NOW).map((d) => d.questionId)).toEqual(["due-1", "due-2", "back"]);
   });
 
   it("orders oldest miss first — the most likely to have decayed", () => {
