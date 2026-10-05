@@ -9,10 +9,12 @@ import {
 } from "@/lib/analytics/funnelEvents";
 
 describe("FUNNEL_EVENTS", () => {
-  it("is a closed allowlist of the twenty-five anon-funnel moments", () => {
+  it("is a closed allowlist of the twenty-seven funnel moments", () => {
     expect([...FUNNEL_EVENTS]).toEqual([
       "reveal_wall_hit",
       "reveal_wall_signin_click",
+      "reveal_daily_limit_hit",
+      "reveal_daily_limit_pass_click",
       "teacher_gate_shown",
       "teacher_gate_cta_click",
       "quiz_gate_shown",

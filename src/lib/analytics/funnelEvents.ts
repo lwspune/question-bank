@@ -47,6 +47,10 @@ export const FUNNEL_EVENTS = [
   "reveal_wall_hit",
   /** …and clicked Sign in from it. */
   "reveal_wall_signin_click",
+  /** A signed-in free student used today's free answers (migration 0134). */
+  "reveal_daily_limit_hit",
+  /** …and tapped the pass link from it. */
+  "reveal_daily_limit_pass_click",
   /** A non-staff visitor opened the download dialog and saw the teacher gate. */
   "teacher_gate_shown",
   /** …and clicked the pass button (→ /pricing). Before 2026-09-27: → /request-access. Name kept for continuity. */

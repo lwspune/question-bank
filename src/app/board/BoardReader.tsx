@@ -12,12 +12,13 @@ import { breakSentences } from "@/lib/board/formatSolution";
 import { Dialog, DialogClose, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { optionMark } from "@/lib/questions/optionMark";
-import { useRevealMeter, type RevealPick } from "@/components/reveal/useRevealMeter";
+import { dailyRevealLimit, useRevealMeter, type RevealPick } from "@/components/reveal/useRevealMeter";
 import { gradePick } from "@/lib/questions/bankVerdict";
 import { toPickLabel } from "@/lib/questions/practiceBatch";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
 import RevealLockedLink from "@/components/reveal/RevealLockedLink";
+import { RevealDailyLink, RevealDailyPrompt } from "@/components/reveal/RevealDailyLimit";
 import { boardPyqPaperStats } from "@/lib/board/papers";
 import {
   defaultOpenGroups,
@@ -93,9 +94,14 @@ export default function BoardReader({
   const meter = useRevealMeter("board", examName);
   // Free reveals spent: an unseen answer shows a sign-in link up front instead
   // of a button whose tap would be refused. One link node, shared by every card.
+  // Signed in, a lock can only be today's free-answer limit (migration 0134).
   const lock: RevealLock = {
     isLocked: meter.isLocked,
-    link: <RevealLockedLink surface="board" examName={examName} />,
+    link: meter.signedIn ? (
+      <RevealDailyLink surface="board" />
+    ) : (
+      <RevealLockedLink surface="board" examName={examName} />
+    ),
   };
   const mobilePrompt = useMobilePrompt();
   // Which sections open on load. Decided HERE rather than inside GroupSection
@@ -729,7 +735,11 @@ function BoardQuestionItem({
           </ol>
           {hasAnswer && !revealed && (
             <p className="mt-1.5 text-center text-xs text-muted-foreground">
-              {lockedLink ? "Sign in free to check answers." : "Tap an option to check your answer."}
+              {!lockedLink
+                ? "Tap an option to check your answer."
+                : dailyRevealLimit() !== null
+                  ? "You've opened today's free answers. More tomorrow."
+                  : "Sign in free to check answers."}
             </p>
           )}
         </>
@@ -751,7 +761,14 @@ function BoardQuestionItem({
               {revealed ? "Hide answer" : q.format === "subjective" ? "Show model answer" : "Show answer"}
             </button>
           )}
-          {blocked && !revealed && <RevealSignInPrompt surface="board" />}
+          {blocked &&
+            !revealed &&
+            // A daily quota is loaded only for a signed-in free student.
+            (dailyRevealLimit() !== null ? (
+              <RevealDailyPrompt surface="board" />
+            ) : (
+              <RevealSignInPrompt surface="board" />
+            ))}
           {revealed && q.solution && (
             <div className="mt-2 rounded-md border border-dashed bg-background p-3 font-serif text-[15px] leading-relaxed motion-safe:animate-fade-in-up [&_.katex]:max-w-full">
               {/* BlockText (not KatexRenderer) so GFM pipe-tables in a solution —
