@@ -22,7 +22,7 @@ function assert(cond: boolean, msg: string): void {
 async function main() {
   const { createClient } = await import("@supabase/supabase-js");
   const { fetchGrowthSnapshot, GROWTH_WEEKS } = await import("@/lib/growth/query");
-  const { EXPERIMENTS, READINGS } = await import("@/lib/growth/registry");
+  const { EXPERIMENTS, READINGS, checkOn } = await import("@/lib/growth/registry");
   const s = await import("@/lib/growth/snapshot");
 
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
@@ -64,23 +64,58 @@ async function main() {
   for (const w of raw.signupWeeks.slice(-6).map(s.viewFunnelWeek)) {
     console.log(`  ${w.weekStart}  signups ${w.signups}  did something ${w.signalRate ?? "—"}%  back ≤7d ${w.returnRate ?? "—"}% (of ${w.matured})  paid ${w.paid}`);
   }
+  // The hand-read experiments have no query: print the readings the page lists.
+  const handRead = (liveSince: string, metrics: (keyof typeof READINGS)[]) =>
+    `judged by hand on ${checkOn(liveSince)} | ` +
+    metrics
+      .map((m) => {
+        const last = READINGS[m].entries.at(-1);
+        return `${READINGS[m].label}: ${last ? `${last.value} on ${last.on}` : "no reading yet"}`;
+      })
+      .join(" | ");
+
   for (const e of EXPERIMENTS) {
-    let line = "";
-    if (e.readout === "onboarding-arms") {
-      const v = s.onboardingVerdict(raw.arms, today, e.liveSince);
-      line = `${v.status} — ${v.reason} | practice-first ${JSON.stringify(v.arms["practice-first"])} | control ${JSON.stringify(v.arms["mock-first"])}`;
-    } else if (e.readout === "chapter-share") {
-      const v = s.chapterShareVerdict(raw.chapterShare.signups, today, e.liveSince);
-      line = `${v.status} — ${v.reason} (${raw.chapterShare.signalled} did something)`;
-    } else if (e.readout === "chapter-tests") {
-      const v = s.chapterTestsVerdict(raw.chapterTests, today, e.liveSince);
-      line = `${v.status} — ${v.reason} | since launch ${JSON.stringify(v.since)} | last full week students ${v.lastFullWeekStudents}`;
-    } else if (e.readout === "indexing") {
-      const v = s.indexingView(READINGS["google-indexed"].entries);
-      line = `${v.status} — ${v.reason}`;
-    } else {
-      const v = s.emailCapVerdict(raw.emailDays, today, e.liveSince);
-      line = `${v.status} — ${v.reason} busiest ${v.busiest?.day} ${v.busiest?.total}/${v.cap}`;
+    let line: string;
+    switch (e.readout) {
+      case "onboarding-arms": {
+        const v = s.onboardingVerdict(raw.arms, today, e.liveSince);
+        line = `${v.status} — ${v.reason} | practice-first ${JSON.stringify(v.arms["practice-first"])} | control ${JSON.stringify(v.arms["mock-first"])}`;
+        break;
+      }
+      case "chapter-share": {
+        const v = s.chapterShareVerdict(raw.chapterShare.signups, today, e.liveSince);
+        line = `${v.status} — ${v.reason} (${raw.chapterShare.signalled} did something)`;
+        break;
+      }
+      case "chapter-tests": {
+        const v = s.chapterTestsVerdict(raw.chapterTests, today, e.liveSince);
+        line = `${v.status} — ${v.reason} | since launch ${JSON.stringify(v.since)} | last full week students ${v.lastFullWeekStudents}`;
+        break;
+      }
+      case "indexing": {
+        const v = s.indexingView(READINGS["google-indexed"].entries);
+        line = `${v.status} — ${v.reason}`;
+        break;
+      }
+      case "email-cap": {
+        const v = s.emailCapVerdict(raw.emailDays, today, e.liveSince);
+        line = `${v.status} — ${v.reason} busiest ${v.busiest?.day} ${v.busiest?.total}/${v.cap}`;
+        break;
+      }
+      case "second-page":
+        line = handRead(e.liveSince, ["hello-tap-rate", "card-tap-rate"]);
+        break;
+      case "resource-chips":
+        line = handRead(e.liveSince, ["chip-tap-rate"]);
+        break;
+      case "box-buy":
+        line = handRead(e.liveSince, ["box-sales-per-100"]);
+        break;
+      default: {
+        // A new readout must be added here; this fails the typecheck until it is.
+        const unhandled: never = e.readout;
+        throw new Error(`unhandled readout ${String(unhandled)}`);
+      }
     }
     console.log(`experiment ${e.id}: ${line}`);
   }
