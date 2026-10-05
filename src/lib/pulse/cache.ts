@@ -32,7 +32,7 @@ export type PulseTotals = {
   /** Graded answers: mocks, bank, board, question of the day, drill. */
   answered: number;
   right: number;
-  /** Questions right twice in a row since their last miss (the drill's `retired`). */
+  /** Questions answered right since their last miss (the drill's `retired`). */
   fixed: number;
 };
 
