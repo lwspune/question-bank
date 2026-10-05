@@ -17,12 +17,13 @@ import { getOwnProfile } from "@/lib/profile/service";
 import { getMockFeedback } from "@/lib/mocks/feedbackService";
 import { needsMobile } from "@/lib/profile/mobile";
 import { resultPageAsk } from "@/lib/profile/push";
+import { drillHref } from "@/lib/drill/from";
 import AttemptReviewList from "@/app/mock/_components/AttemptReviewList";
 import MobileGate from "./MobileGate";
 import MockFeedback from "./MockFeedback";
 import ShareResult from "./ShareResult";
 import WhatsappOptIn from "./WhatsappOptIn";
-import PushOptIn from "./PushOptIn";
+import PushOptIn from "@/components/push/PushOptIn";
 import Findings from "./Findings";
 import PulseRefresh from "./PulseRefresh";
 import CelebrateOnMount from "@/components/celebrate/CelebrateOnMount";
@@ -87,7 +88,7 @@ export default async function MockResultPage({ params }: { params: Params }) {
   // It used to print score/max and a percentage of max marks: median 11% on a
   // paper 27% answered, read as a verdict on the student. See ENGAGEMENT_SPEC.md.
   const headline = buildResultHeadline(summary);
-  const fixHref = `/drill?attempt=${params.attemptId}`;
+  const fixHref = drillHref("result", params.attemptId);
   // "N questions answered", celebrated at the trigger surface (2026-10-04).
   // Awarded only past the mobile gate, where the result is actually seen;
   // once per milestone by the table's dedupe key, so a refresh shows nothing.

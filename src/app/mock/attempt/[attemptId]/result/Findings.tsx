@@ -3,6 +3,7 @@ import { ArrowRight, Clock, Target, XCircle } from "lucide-react";
 import { formatDwell } from "@/lib/email/templates";
 import { formatMarks, formatWhere, type MockReport } from "@/lib/email/mockReport";
 import { goPracticeHref } from "@/lib/performance/links";
+import { drillHref } from "@/lib/drill/from";
 
 /**
  * "What to fix next" — the diagnosis, at the moment the student is looking at
@@ -142,7 +143,7 @@ export default function Findings({ report, attemptId }: { report: MockReport; at
         <Link
           // Scoped to THIS attempt, the same target as the headline button
           // above, so the two CTAs on the page agree about where "fix" goes.
-          href={`/drill?attempt=${attemptId}`}
+          href={drillHref("findings", attemptId)}
           prefetch={false}
           className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-brand px-5 text-base font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >

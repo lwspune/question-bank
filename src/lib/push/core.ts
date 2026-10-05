@@ -18,6 +18,7 @@
  */
 import { clickUrl } from "@/lib/email/click";
 import type { DueSummary } from "@/lib/email/dueNudge";
+import { drillHref } from "@/lib/drill/from";
 
 export const PUSH_KIND = "due_nudge" as const;
 /** A phone that was off past this gets nothing, rather than a stale nudge at midnight. */
@@ -98,7 +99,7 @@ export function buildDuePushPayload(input: { summary: DueSummary; clickToken: st
   return {
     title: pushTitle(summary.total),
     body: [...parts, drillTimeLine(summary.total)].join(" · "),
-    url: clickUrl(clickToken, "/drill"),
+    url: clickUrl(clickToken, drillHref("push")),
     tag: "due-nudge",
     icon: PUSH_ICON,
     badge: PUSH_BADGE,

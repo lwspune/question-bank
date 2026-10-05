@@ -7,6 +7,8 @@
  * drill, the topic being read, a timed mock. A topic in progress that is not
  * the lead stays as one quiet link.
  */
+import { drillHref } from "@/lib/drill/from";
+
 export type TodayAction = {
   kind: "resume" | "drill" | "continue" | "mock";
   eyebrow: string;
@@ -41,7 +43,7 @@ export function pickTodayAction(input: {
       // Not a bare "Start": a reading link sits under the button, and "Start"
       // read as starting the reading (owner, 2026-10-05).
       cta: "Start fixing",
-      href: "/drill",
+      href: drillHref("today"),
       secondary,
     };
   }

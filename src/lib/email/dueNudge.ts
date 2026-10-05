@@ -99,6 +99,12 @@ export function istDayKey(d: Date): string {
   return new Date(d.getTime() + IST_OFFSET_MS).toISOString().slice(0, 10);
 }
 
+/** Midnight in India for the day `d` falls on, as a UTC instant: the lower
+ *  bound for "today" in a created_at filter. */
+export function istDayStartIso(d: Date): string {
+  return new Date(Date.parse(`${istDayKey(d)}T00:00:00Z`) - IST_OFFSET_MS).toISOString();
+}
+
 export function dueNudgeDedupeKey(userId: string, now: Date): string {
   return `${NUDGE_KIND}:${userId}:${istDayKey(now)}`;
 }

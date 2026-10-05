@@ -11,6 +11,7 @@ import { milestoneMessage } from "@/lib/celebrate/milestones";
 import { crowdMessage, type CrowdTier } from "@/lib/celebrate/crowd";
 import { celebrateInTurn, type VMessage } from "@/components/celebrate/celebrate";
 import { invalidatePulse } from "@/lib/viewer/usePulse";
+import { parseFixNudge, showFixNudge } from "./fixNudgeStore";
 
 /**
  * Client-side queue for the answer-reveal practice signal.
@@ -43,6 +44,10 @@ import { invalidatePulse } from "@/lib/viewer/usePulse";
  * page-hide beacon never asks — nobody would see the message, and an award is
  * spent once shown. A milestone crossed on a beacon flush is awarded by the
  * next flush that asks, since the award is "the highest reached, if new".
+ *
+ * THE FIX NUDGE (2026-10-05) rides on the same reply: `fixNudge` names the
+ * bank card whose wrong answer was the day's 5th, 10th, 15th… and that card
+ * shows the line (fixNudgeStore). The due badge is refreshed with it.
  */
 
 const ENDPOINT = "/api/activity/practice";
@@ -114,14 +119,16 @@ function send(json: string, useBeacon: boolean): void {
       .then(async (res) => {
         // 204 is the normal reply; only a 200 carries a milestone.
         if (res.status !== 200) return;
-        const reply = (await res.json()) as { milestone?: unknown; crowd?: unknown };
+        const reply = (await res.json()) as { milestone?: unknown; crowd?: unknown; fixNudge?: unknown };
+        const nudge = parseFixNudge(reply.fixNudge);
+        if (nudge) showFixNudge(nudge);
         const messages: VMessage[] = [];
         if (reply.crowd === 70 || reply.crowd === 80 || reply.crowd === 90) {
           messages.push({ text: crowdMessage(reply.crowd as CrowdTier), face: "laugh" });
         }
         if (typeof reply.milestone === "number") messages.push({ text: milestoneMessage(reply.milestone), face: "talk" });
         celebrateInTurn(messages);
-        if (typeof reply.milestone === "number") invalidatePulse();
+        if (typeof reply.milestone === "number" || nudge) invalidatePulse();
       })
       .catch(() => {
         /* a lost practice signal is not worth surfacing to a student */

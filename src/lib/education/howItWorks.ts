@@ -18,6 +18,7 @@
  */
 import { withArticle } from "@/lib/text/article";
 import type { ExamEntry } from "@/lib/exam/examContext";
+import { drillHref } from "@/lib/drill/from";
 
 /** "practice" is the practice-first experiment's loop — see onboardingArm. */
 export type LoopKind = "mock" | "bank" | "practice";
@@ -58,7 +59,7 @@ function mockLoop(exam: ExamEntry | null): Loop {
       {
         title: "Fix what you missed.",
         body: "Five of the questions you got wrong, with solutions. A question you get right goes quiet; one you miss comes back round. About five minutes.",
-        href: "/drill",
+        href: drillHref("start"),
         cta: "Fix your mistakes",
       },
       {
@@ -165,7 +166,7 @@ function practiceFirstLoop(exam: ExamEntry): Loop {
       {
         title: "Fix what you missed.",
         body: "Five of the questions you got wrong, with solutions. A question you get right goes quiet; one you miss comes back round.",
-        href: "/drill",
+        href: drillHref("start"),
         cta: "Fix your mistakes",
       },
     ],

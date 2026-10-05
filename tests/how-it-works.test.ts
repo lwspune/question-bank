@@ -29,7 +29,7 @@ describe("loopFor", () => {
     const loop = loopFor(getExamBySlug("nda"));
     expect(loop.kind).toBe("mock");
     expect(loop.examLabel).toBe("NDA");
-    expect(stepsOf(loop)).toEqual(["/mock/exam/nda", "/drill", "/me/map"]);
+    expect(stepsOf(loop)).toEqual(["/mock/exam/nda", "/drill?from=start", "/me/map"]);
   });
 
   it("a board exam without mocks gets the bank loop, entered through its book reader", () => {
@@ -54,7 +54,7 @@ describe("loopFor", () => {
     const loop = loopFor(null);
     expect(loop.kind).toBe("mock");
     expect(loop.examLabel).toBeNull();
-    expect(stepsOf(loop)).toEqual(["/mock", "/drill", "/me/map"]);
+    expect(stepsOf(loop)).toEqual(["/mock", "/drill?from=start", "/me/map"]);
   });
 
   it("mocks win over the board flag when an exam carries both", () => {
@@ -153,7 +153,7 @@ describe("loopForArm", () => {
     const loop = loopForArm(cet, "practice-first");
     expect(loop.kind).toBe("practice");
     expect(loop.examLabel).toBe(cet.displayName);
-    expect(stepsOf(loop)).toEqual(["/exams/mht-cet", "/mock/exam/mht-cet", "/drill"]);
+    expect(stepsOf(loop)).toEqual(["/exams/mht-cet", "/mock/exam/mht-cet", "/drill?from=start"]);
     expect(loop.steps[0].cta).toBe("Practise a chapter");
   });
 

@@ -155,16 +155,17 @@ export async function updateOwnProfile(
 export async function getOnboardingState(
   db: SupabaseClient,
   userId: string
-): Promise<{ targetExams: string[]; stage: string | null; onboardedAt: string | null }> {
+): Promise<{ targetExams: string[]; stage: string | null; onboardedAt: string | null; pushPromptedAt: string | null }> {
   const { data } = await db
     .from("student_profiles")
-    .select("target_exams, stage, onboarded_at")
+    .select("target_exams, stage, onboarded_at, push_prompted_at")
     .eq("user_id", userId)
     .maybeSingle();
   return {
     targetExams: (data?.target_exams as string[] | undefined) ?? [],
     stage: (data?.stage as string | undefined) ?? null,
     onboardedAt: (data?.onboarded_at as string | undefined) ?? null,
+    pushPromptedAt: (data?.push_prompted_at as string | undefined) ?? null,
   };
 }
 

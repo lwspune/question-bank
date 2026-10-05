@@ -12,6 +12,7 @@ import { buildPerformance } from "@/lib/performance/compute";
 import { buildLaneNav } from "@/lib/performance/laneNav";
 import { buildMasteryMap, BAND_ORDER, type Band, type MapTile } from "@/lib/performance/masteryMap";
 import { cn } from "@/lib/utils";
+import { drillHref } from "@/lib/drill/from";
 
 /**
  * `/me/map` — the mastery map. ENGAGEMENT_SPEC.md B1.
@@ -225,7 +226,7 @@ function EmptyState() {
           Take a mock test
         </Link>
         <Link
-          href="/drill"
+          href={drillHref("map")}
           prefetch={false}
           className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border px-6 text-base font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >

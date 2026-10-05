@@ -10,6 +10,7 @@ import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { totalsLine, type Pulse } from "@/lib/pulse/cache";
 import { weeklyProgress } from "@/lib/goals/weekly";
 import { examCountdownSentence } from "@/lib/exam/calendar";
+import { drillHref } from "@/lib/drill/from";
 
 export default function UserMenu({
   email,
@@ -175,7 +176,7 @@ export default function UserMenu({
             // a drill reads this student's whole answer history, and a prefetch
             // would run it for anyone who merely opened the menu.
             prefetch={false}
-            href="/drill"
+            href={drillHref("menu")}
             className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
           >
             <Target className="h-4 w-4" aria-hidden />

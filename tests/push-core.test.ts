@@ -111,7 +111,7 @@ describe("buildDuePushPayload", () => {
 
   it("opens the drill through the click tracker, with the brand icon and badge", () => {
     const p = buildDuePushPayload({ summary: summary(["Vectors", 1]), clickToken: TOKEN });
-    expect(p.url).toBe(`${SITE_URL}/api/e/${TOKEN}?to=%2Fdrill`);
+    expect(p.url).toBe(`${SITE_URL}/api/e/${TOKEN}?to=%2Fdrill%3Ffrom%3Dpush`);
     expect(p.tag).toBe("due-nudge");
     expect(p.icon).toBe(PUSH_ICON);
     expect(p.badge).toBe(PUSH_BADGE);

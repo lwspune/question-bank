@@ -36,10 +36,12 @@ import { useCart } from "@/lib/cart/CartProvider";
 import type { QuestionResources } from "@/lib/links/questionResources";
 import { useCardRevealMeter } from "@/components/reveal/useRevealMeter";
 import { gradePick } from "@/lib/questions/bankVerdict";
+import { shouldAutoOpenSolution } from "@/lib/questions/autoOpen";
 import type { PracticeSurface } from "@/lib/questions/practiceBatch";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
 import RevealLockedLink from "@/components/reveal/RevealLockedLink";
+import FixNudgeLine from "@/components/reveal/FixNudgeLine";
 import PresentButton from "@/components/present/PresentButton";
 import { fromQuestionRow } from "@/lib/present/viewModel";
 import BookmarkButton from "./BookmarkButton";
@@ -138,17 +140,7 @@ export default function QuestionCard({
   function tryReveal(chose?: OptionLabel): boolean {
     // The page reads the key by the SAME rule the server grades by, for the
     // "right in a row" message only; the recorded verdict is the server's.
-    const pick = chose
-      ? {
-          label: chose,
-          correct:
-            gradePick(chose, {
-              format: question.questionFormat ?? null,
-              cancelled,
-              options: question.options.map((o) => ({ label: o.label, isCorrect: o.isCorrect })),
-            })?.correct ?? null,
-        }
-      : undefined;
+    const pick = chose ? { label: chose, correct: pickIsCorrect(chose) } : undefined;
     if (meter.attemptReveal(question.id, pick, question.chapter.name)) {
       setRevealBlocked(false);
       // Engagement signal for the soft mobile prompt (no-op unless signed-in
@@ -164,7 +156,23 @@ export default function QuestionCard({
     // The tapped option travels with the reveal so the server can grade it.
     // Not for a cancelled question: no option is right, so there is no verdict
     // to record (the server refuses it too; this keeps the request honest).
-    if (tryReveal(cancelled ? undefined : label)) setPicked(label);
+    const first = picked === null;
+    if (!tryReveal(cancelled ? undefined : label)) return;
+    setPicked(label);
+    // A wrong FIRST pick opens the solution at once (lib/questions/autoOpen).
+    // Later taps only move the pick and leave the solution as the student set it.
+    if (
+      first &&
+      !showSolution &&
+      shouldAutoOpenSolution({
+        picked: true,
+        isCorrect: pickIsCorrect(label),
+        hasSolution: Boolean(question.solution),
+        cancelled,
+      })
+    ) {
+      openSolution();
+    }
   }
   const pathname = usePathname();
   const hasChips = Boolean(resources?.guide || resources?.notes);
@@ -173,10 +181,21 @@ export default function QuestionCard({
       setShowSolution(false);
       return;
     }
-    if (tryReveal()) {
-      setShowSolution(true);
-      if (hasChips) trackFunnelOnce("resource_chips_shown", question.id, { page: chipPage(pathname) });
-    }
+    if (tryReveal()) openSolution();
+  }
+  function openSolution() {
+    setShowSolution(true);
+    if (hasChips) trackFunnelOnce("resource_chips_shown", question.id, { page: chipPage(pathname) });
+  }
+  /** The page's reading of the key, by the server's rule; null if ungradable. */
+  function pickIsCorrect(label: OptionLabel): boolean | null {
+    return (
+      gradePick(label, {
+        format: question.questionFormat ?? null,
+        cancelled,
+        options: question.options.map((o) => ({ label: o.label, isCorrect: o.isCorrect })),
+      })?.correct ?? null
+    );
   }
 
   // Free reveals spent and this answer not yet seen: show the wall up front.
@@ -471,6 +490,10 @@ export default function QuestionCard({
             )}
 
             {revealBlocked && !revealed && <RevealSignInPrompt key={blockedTaps} surface={surface} />}
+
+            {/* Every fifth wrong bank answer of the day: the misses are saved in
+                Fix your mistakes (lib/drill/fixNudge). Nothing on other cards. */}
+            {surface === "bank" && revealed && <FixNudgeLine questionId={question.id} />}
 
             {isSubjective && !question.solution && (
               <p className="text-xs italic text-muted-foreground">Model answer coming soon.</p>

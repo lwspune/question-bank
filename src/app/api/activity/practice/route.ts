@@ -44,6 +44,12 @@
  * The same reply carries `crowd` (70/80/90) when a right answer beat a crowd
  * on a checked question (lib/celebrate/crowd, 2026-10-04).
  *
+ * FIX NUDGE (2026-10-05). On the same read-the-reply flush, a BANK batch with a
+ * wrong pick counts the student's bank misses today before and after the
+ * write; when that crosses a multiple of five the reply carries `fixNudge`
+ * ({questionId, wrongToday, due}) and that card says the misses are saved in
+ * Fix your mistakes. Pure rule: lib/drill/fixNudge.
+ *
  * Otherwise responses stay terse (204/400/401): from sendBeacon nothing reads
  * the body.
  */
@@ -64,6 +70,9 @@ import {
   type AnswerKey,
   type PickVerdict,
 } from "@/lib/questions/bankVerdict";
+import { pickFixNudge, type FixNudge } from "@/lib/drill/fixNudge";
+import { getOwnLadder } from "@/lib/drill/service";
+import { istDayStartIso } from "@/lib/email/dueNudge";
 import type { SupabaseClient } from "@supabase/supabase-js";
 
 /** Generous for a real reader, tight enough to bound a scripted client. */
@@ -117,6 +126,13 @@ export async function POST(request: NextRequest) {
     }
   }
 
+  // The fix nudge counts the day's bank misses around the write, so only a
+  // flush whose reply is read and that carries a wrong pick pays for it.
+  const now = new Date();
+  const wrongIds = [...verdicts].filter(([, v]) => !v.correct).map(([id]) => id);
+  const nudgeCounts = parsed.celebrate && parsed.surface === "bank" && wrongIds.length > 0;
+  const wrongBefore = nudgeCounts ? await countBankWrongsToday(db, user.id, now) : null;
+
   // Every row carries its surface, including the bank's, so a row is
   // self-describing rather than meaningful only by the absence of a field.
   const { reveals, ladder } = practiceEvents({
@@ -125,7 +141,7 @@ export async function POST(request: NextRequest) {
     verdicts,
     priorWrongIds,
     userId: user.id,
-    now: new Date(),
+    now,
   });
 
   // Best-effort — both writers never throw. The ladder rows are deduped per
@@ -138,14 +154,19 @@ export async function POST(request: NextRequest) {
   // this batch's RIGHT answers, on checked questions only.
   if (parsed.celebrate && verdicts.size > 0) {
     const right = correctlyAnsweredIds(verdicts);
-    const [milestone, tiers] = await Promise.all([
+    const [milestone, tiers, fixNudge] = await Promise.all([
       awardAnsweredMilestone(db, user.id),
       right.length > 0 ? crowdTiers(right) : Promise.resolve(new Map()),
+      wrongBefore !== null ? readFixNudge(db, user.id, now, wrongBefore, wrongIds) : Promise.resolve(null),
     ]);
     const crowd = topTier(tiers);
-    if (milestone !== null || crowd !== null) {
+    if (milestone !== null || crowd !== null || fixNudge !== null) {
       return NextResponse.json(
-        { ...(milestone !== null ? { milestone } : {}), ...(crowd !== null ? { crowd } : {}) },
+        {
+          ...(milestone !== null ? { milestone } : {}),
+          ...(crowd !== null ? { crowd } : {}),
+          ...(fixNudge !== null ? { fixNudge } : {}),
+        },
         { status: 200 }
       );
     }
@@ -191,4 +212,44 @@ async function readPriorWrongIds(db: SupabaseClient, userId: string, ids: string
     .in("ref_id", ids);
   if (error) throw new Error(`readPriorWrongIds: ${error.message}`);
   return new Set(((data ?? []) as { ref_id: string }[]).map((r) => r.ref_id));
+}
+
+/** The student's bank misses so far today (IST). One row per question per day
+ *  by the ladder's dedupe key, so this counts distinct questions missed.
+ *  Null on failure: no count, no nudge, never a wrong one. */
+async function countBankWrongsToday(db: SupabaseClient, userId: string, now: Date): Promise<number | null> {
+  const { count, error } = await db
+    .from("user_activity")
+    .select("id", { count: "exact", head: true })
+    .eq("user_id", userId)
+    .eq("kind", "answer_wrong")
+    .eq("metadata->>surface", "bank")
+    .gte("created_at", istDayStartIso(now));
+  if (error) {
+    console.error("fix nudge count failed", error.message);
+    return null;
+  }
+  return count ?? 0;
+}
+
+/** The nudge, when this batch carried today's count past a multiple of five,
+ *  with the drill's own due count for the link. Best-effort throughout. */
+async function readFixNudge(
+  db: ReturnType<typeof createSupabaseServerClient>,
+  userId: string,
+  now: Date,
+  before: number,
+  wrongIds: string[]
+): Promise<(FixNudge & { due: number | null }) | null> {
+  const after = await countBankWrongsToday(db, userId, now);
+  if (after === null) return null;
+  const nudge = pickFixNudge({ before, after, wrongIds });
+  if (!nudge) return null;
+  let due: number | null = null;
+  try {
+    due = (await getOwnLadder(db, userId, now)).due.length;
+  } catch (e) {
+    console.error("fix nudge due count failed", e);
+  }
+  return { ...nudge, due };
 }

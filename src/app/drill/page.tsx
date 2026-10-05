@@ -9,7 +9,10 @@ import { logActivity, logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
 import { getOwnDrill } from "@/lib/drill/service";
 import { COOL_DOWN_DAYS } from "@/lib/drill/select";
+import { getOnboardingState } from "@/lib/profile/service";
+import { needsPushPrompt } from "@/lib/profile/push";
 import DrillRunner from "./DrillRunner";
+import { drillHref, parseDrillFrom } from "@/lib/drill/from";
 
 /**
  * `/drill` — five questions this student has already got wrong, served back.
@@ -36,7 +39,7 @@ const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
 export default async function DrillPage({
   searchParams,
 }: {
-  searchParams?: { attempt?: string };
+  searchParams?: { attempt?: string; from?: string | string[] };
 }) {
   const user = await getSessionUser();
   if (!user) redirect("/login?next=/drill");
@@ -47,21 +50,30 @@ export default async function DrillPage({
   const attemptId =
     searchParams?.attempt && UUID_RE.test(searchParams.attempt) ? searchParams.attempt : null;
 
-  const drill = await getOwnDrill({ attemptId });
+  // Which link brought them (lib/drill/from): recorded, never acted on.
+  const from = parseDrillFrom(searchParams?.from);
+
+  const [drill, profile] = await Promise.all([
+    getOwnDrill({ attemptId }),
+    getOnboardingState(createSupabaseServerClient(), user.id),
+  ]);
   if (!drill) redirect("/login?next=/drill");
+  // The end screen's reminder ask, until it is answered on any screen.
+  const remind = needsPushPrompt(profile) ? { vapidKey: process.env.VAPID_PUBLIC_KEY ?? "" } : null;
 
   // Reach: the view (once a day) and, when there is something to do, the
   // start — so "opened the drill and left" is no longer invisible.
   {
     const db = createSupabaseServerClient();
     const now = new Date();
-    await logActivityOnce(db, user.id, surfaceViewedEvent(user.id, "drill", now, attemptId ?? undefined));
+    const view = surfaceViewedEvent(user.id, "drill", now, attemptId ?? undefined);
+    await logActivityOnce(db, user.id, { ...view, metadata: { ...view.metadata, from } });
     if (drill.questions.length > 0) {
       await logActivity(db, user.id, {
         kind: "drill_started",
         refId: attemptId ?? undefined,
         refKind: attemptId ? "mock_attempt" : undefined,
-        metadata: { count: drill.questions.length, scoped: Boolean(drill.scope) },
+        metadata: { count: drill.questions.length, scoped: Boolean(drill.scope), from },
       });
     }
   }
@@ -100,6 +112,7 @@ export default async function DrillPage({
               fresh={drill.fresh}
               supabaseUrl={supabaseUrl}
               scope={drill.scope}
+              remind={remind}
             />
           ) : drill.scope ? (
             <ScopedEmptyState />
@@ -126,7 +139,7 @@ function ScopedEmptyState() {
       </p>
       <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:justify-center">
         <Link
-          href="/drill"
+          href={drillHref("again")}
           prefetch={false}
           className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-brand px-6 text-base font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
