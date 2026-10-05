@@ -12,6 +12,7 @@ import {
   READINGS,
   SECOND_PAGE_KEEP_PCT,
   BOX_BUY_MIN_SALES,
+  PREMIUM_LIMITS_MIN_SALES,
   CHIPS_KEEP_PCT,
   checkOn,
   type Experiment,
@@ -274,6 +275,16 @@ export default async function GrowthPage() {
               before touching the price.
             </p>
             <ReadingsList metric="box-sales-per-100" />
+          </div>
+        );
+      case "premium-limits":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand: keep the limits if {PREMIUM_LIMITS_MIN_SALES}+ passes sell by{" "}
+              {fmtDate(checkOn(e.liveSince))} and the students who meet the answer limit keep coming back.
+            </p>
+            <ReadingsList metric="limit-sales" />
           </div>
         );
       case "indexing": {

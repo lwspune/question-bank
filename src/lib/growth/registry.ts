@@ -76,6 +76,14 @@ export const BOX_BUY_MIN_SALES = 2;
  */
 export const CHIPS_KEEP_PCT = 3;
 
+/**
+ * Premium limits (migration 0134): keep them if at least this many passes sell
+ * by the check date. One pass sold in the pass's first nine days, so three is
+ * a clear rise rather than one lucky buyer. A provisional bar: the owner sets
+ * the final one.
+ */
+export const PREMIUM_LIMITS_MIN_SALES = 3;
+
 /** The ISO date `EXPERIMENT_WINDOW_DAYS` after `liveSince`. */
 export function checkOn(liveSince: string): string {
   const d = new Date(`${liveSince}T00:00:00Z`);
@@ -91,7 +99,8 @@ export type Readout =
   | "chapter-tests"
   | "second-page"
   | "box-buy"
-  | "resource-chips";
+  | "resource-chips"
+  | "premium-limits";
 
 export type Experiment = {
   id: string;
@@ -209,6 +218,18 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "resource-chips",
     status: "running",
   },
+  {
+    id: "premium-limits",
+    title: "Free limits on what students use",
+    change:
+      "Premium Pass now covers what students do, with a free allowance of each: 5 chapter tests (apart from the 3 mocks), 15 Fix your mistakes questions a day, 50 answers a day signed in, 100 saved questions, and the projected score for 7 days after revealing it. Each limit is switched on at /dashboard/pricing.",
+    why: "The pass sold mocks and downloads, which few use: in the 14 days to 2026-10-05, 122 students revealed 3,277 answers while 39 started a mock, only 5 had ever reached the mock limit, and 1 pass sold.",
+    metric: "Passes sold since the limits went on (entitlements, source razorpay); paywall_event 'shown' by gate (chapter_test, drill, reveals, saves, projection) says which limit is met; return visits of the students who hit the 50-answer limit say whether it costs us learners",
+    rule: `Keep them if ${PREMIUM_LIMITS_MIN_SALES}+ passes sell by the check date and the students who meet the answer limit keep coming back; if those students stop returning, raise or drop that limit first.`,
+    liveSince: "2026-10-05",
+    readout: "premium-limits",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };
@@ -252,7 +273,8 @@ export type ReadingMetric =
   | "hello-tap-rate"
   | "card-tap-rate"
   | "box-sales-per-100"
-  | "chip-tap-rate";
+  | "chip-tap-rate"
+  | "limit-sales";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -276,6 +298,11 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
     label: "Next-step card tap rate (%)",
     source: "Vercel → Analytics → Events → next_step_card_click ÷ next_step_card_shown",
     entries: [],
+  },
+  "limit-sales": {
+    label: "Passes sold since the free limits went on",
+    source: "entitlements where source = 'razorpay' and granted_at >= the switch-on date; paywall_event shown rows by gate beside it",
+    entries: [{ on: "2026-10-05", value: 1, note: "Baseline: 1 pass sold since sales opened on 2026-09-27, before any of these limits" }],
   },
   "box-sales-per-100": {
     label: "Passes sold per 100 download-gate visitors",
