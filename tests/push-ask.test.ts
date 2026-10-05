@@ -7,7 +7,7 @@
  * never see the WhatsApp card again.
  */
 import { describe, it, expect } from "vitest";
-import { needsPushPrompt, resultPageAsk } from "@/lib/profile/push";
+import { homeReminderAsk, needsPushPrompt, resultPageAsk } from "@/lib/profile/push";
 
 describe("needsPushPrompt", () => {
   it("asks until either answer is stamped", () => {
@@ -31,5 +31,22 @@ describe("resultPageAsk", () => {
   it("push alone once WhatsApp has been answered, and nothing once both have", () => {
     expect(resultPageAsk({ pushPromptedAt: null, whatsappPromptedAt: at })).toEqual({ push: true, whatsapp: false });
     expect(resultPageAsk({ pushPromptedAt: at, whatsappPromptedAt: at })).toEqual({ push: false, whatsapp: false });
+  });
+});
+
+describe("homeReminderAsk (/me, 2026-10-05)", () => {
+  const at = "2026-10-01T07:00:00Z";
+
+  it("asks on /me only while mistakes are waiting and the ask is unanswered", () => {
+    expect(homeReminderAsk({ pushPromptedAt: null }, 3)).toBe(true);
+  });
+
+  it("stays quiet with nothing due, or while the due count is still loading", () => {
+    expect(homeReminderAsk({ pushPromptedAt: null }, 0)).toBe(false);
+    expect(homeReminderAsk({ pushPromptedAt: null }, null)).toBe(false);
+  });
+
+  it("never asks twice: an answer on any screen silences it here", () => {
+    expect(homeReminderAsk({ pushPromptedAt: at }, 12)).toBe(false);
   });
 });

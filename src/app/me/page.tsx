@@ -21,6 +21,7 @@ import { needsNps } from "@/lib/feedback/nps";
 import AttemptsList from "../mock/_components/AttemptsList";
 import FeedbackCards from "./FeedbackCards";
 import TodayCard from "./TodayCard";
+import HomeReminder from "./HomeReminder";
 import { greetingFor } from "@/lib/me/today";
 import { getOwnWeekly } from "@/lib/goals/service";
 import { listMyAssignments } from "@/lib/assignments/service";
@@ -135,6 +136,10 @@ export default async function MePage() {
           initialDone={weekly.done}
           initialGoal={weekly.goal}
         />
+
+        {/* The reminder ask, one row, only while mistakes are waiting and
+            only until it is answered on any screen (2026-10-05). */}
+        <HomeReminder vapidKey={process.env.VAPID_PUBLIC_KEY ?? ""} pushPromptedAt={profile.pushPromptedAt} />
 
         {/* Papers a teacher has assigned to this student's batch, with the
             deadline (ENGAGEMENT_SPEC.md C1). Rendered only when there is one,

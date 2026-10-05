@@ -11,6 +11,7 @@ import type { AnswerOutcome, ServedQuestion } from "@/lib/drill/service";
 import { invalidatePulse } from "@/lib/viewer/usePulse";
 import { drillVSays, progressLine } from "@/lib/drill/progress";
 import { drillHref } from "@/lib/drill/from";
+import PushOptIn from "@/components/push/PushOptIn";
 
 export type DrillScope = { attemptId: string; mockTitle: string; mockSlug: string } | null;
 
@@ -39,6 +40,7 @@ export default function DrillRunner({
   fresh = 0,
   supabaseUrl,
   scope = null,
+  remind = null,
 }: {
   questions: ServedQuestion[];
   dueTotal: number;
@@ -48,6 +50,9 @@ export default function DrillRunner({
   /** Set when this drill is one attempt's mistakes ("Fix these" from a result
    *  page). Changes only the end screen's next step and the pool label. */
   scope?: DrillScope;
+  /** The reminder ask for the end screen, when this student has never
+   *  answered it (lib/profile/push); null asks nothing. */
+  remind?: { vapidKey: string } | null;
 }) {
   const [index, setIndex] = useState(0);
   const [verdicts, setVerdicts] = useState<Record<string, AnswerOutcome & { chose: string }>>({});
@@ -107,12 +112,23 @@ export default function DrillRunner({
 
   if (done) {
     return (
-      <Summary
-        total={questions.length}
-        correct={correctCount}
-        remaining={Math.max(0, dueTotal - correctCount)}
-        scope={scope}
-      />
+      <>
+        <Summary
+          total={questions.length}
+          correct={correctCount}
+          remaining={Math.max(0, dueTotal - correctCount)}
+          scope={scope}
+        />
+        {/* Asked here because this is the student who has just used the
+            drill: the one most likely to want to hear when it refills. */}
+        {remind && (
+          <PushOptIn
+            vapidKey={remind.vapidKey}
+            title="Remind me when these come back"
+            body="One notification a day at most, only when mistakes are waiting. Never on a day you already practised."
+          />
+        )}
+      </>
     );
   }
 

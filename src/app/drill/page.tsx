@@ -9,6 +9,8 @@ import { logActivity, logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
 import { getOwnDrill } from "@/lib/drill/service";
 import { COOL_DOWN_DAYS } from "@/lib/drill/select";
+import { getOnboardingState } from "@/lib/profile/service";
+import { needsPushPrompt } from "@/lib/profile/push";
 import DrillRunner from "./DrillRunner";
 import { drillHref, parseDrillFrom } from "@/lib/drill/from";
 
@@ -51,8 +53,13 @@ export default async function DrillPage({
   // Which link brought them (lib/drill/from): recorded, never acted on.
   const from = parseDrillFrom(searchParams?.from);
 
-  const drill = await getOwnDrill({ attemptId });
+  const [drill, profile] = await Promise.all([
+    getOwnDrill({ attemptId }),
+    getOnboardingState(createSupabaseServerClient(), user.id),
+  ]);
   if (!drill) redirect("/login?next=/drill");
+  // The end screen's reminder ask, until it is answered on any screen.
+  const remind = needsPushPrompt(profile) ? { vapidKey: process.env.VAPID_PUBLIC_KEY ?? "" } : null;
 
   // Reach: the view (once a day) and, when there is something to do, the
   // start — so "opened the drill and left" is no longer invisible.
@@ -105,6 +112,7 @@ export default async function DrillPage({
               fresh={drill.fresh}
               supabaseUrl={supabaseUrl}
               scope={drill.scope}
+              remind={remind}
             />
           ) : drill.scope ? (
             <ScopedEmptyState />

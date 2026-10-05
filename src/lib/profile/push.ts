@@ -17,6 +17,15 @@ export function needsPushPrompt(state: PushState): boolean {
   return !state?.pushPromptedAt;
 }
 
+/**
+ * The /me reminder row (2026-10-05): only while mistakes are waiting, since a
+ * reminder about an empty queue is a promise with nothing behind it. `due` is
+ * null while the pulse is loading, which asks nothing yet.
+ */
+export function homeReminderAsk(state: PushState, due: number | null): boolean {
+  return needsPushPrompt(state) && due !== null && due > 0;
+}
+
 export function resultPageAsk(state: {
   pushPromptedAt: string | null;
   whatsappPromptedAt: string | null;

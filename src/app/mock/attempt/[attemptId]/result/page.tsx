@@ -23,7 +23,7 @@ import MobileGate from "./MobileGate";
 import MockFeedback from "./MockFeedback";
 import ShareResult from "./ShareResult";
 import WhatsappOptIn from "./WhatsappOptIn";
-import PushOptIn from "./PushOptIn";
+import PushOptIn from "@/components/push/PushOptIn";
 import Findings from "./Findings";
 import PulseRefresh from "./PulseRefresh";
 import CelebrateOnMount from "@/components/celebrate/CelebrateOnMount";
