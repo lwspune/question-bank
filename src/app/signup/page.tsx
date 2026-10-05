@@ -9,7 +9,7 @@ import { validateSignup } from "@/lib/auth/credentials";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import GoogleSignInButton from "@/components/GoogleSignInButton";
+import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
 import { cn } from "@/lib/utils";
 
 export default function SignupPage() {
@@ -109,7 +109,7 @@ export default function SignupPage() {
                 </p>
               </header>
 
-              <GoogleSignInButton next={next} signupSource={signupSource} />
+              <GoogleAuthButton next={next} signupSource={signupSource} />
 
               <div className="my-5 flex items-center gap-3">
                 <span className="h-px flex-1 bg-border" />

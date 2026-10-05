@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { useSignedIn } from "@/components/auth/useSignedIn";
+import type { OnboardingState } from "@/lib/profile/onboarding";
 import {
   isNewAccount,
   makeNonce,
@@ -83,8 +84,8 @@ function loadScript(): Promise<void> {
   return scriptLoad;
 }
 
-/** Signs in with Google's credential; stamps `source` on a brand-new account. */
-async function signInWithCredential(credential: string, rawNonce: string, source: string) {
+/** Signs in with Google's credential; stamps `source` (if any) on a brand-new account. */
+async function signInWithCredential(credential: string, rawNonce: string, source: string | undefined) {
   const supabase = createSupabaseBrowserClient();
   const { data, error } = await supabase.auth.signInWithIdToken({
     provider: "google",
@@ -95,7 +96,7 @@ async function signInWithCredential(credential: string, rawNonce: string, source
   const user = data.user;
 
   // Attribution, best effort, for a genuinely new account only (see isNewAccount).
-  if (!user.user_metadata?.signup_source && isNewAccount(user.created_at, user.last_sign_in_at)) {
+  if (source && !user.user_metadata?.signup_source && isNewAccount(user.created_at, user.last_sign_in_at)) {
     await supabase.auth
       .updateUser({ data: { signup_source: source } })
       .catch(() => undefined);
@@ -103,17 +104,23 @@ async function signInWithCredential(credential: string, rawNonce: string, source
   return { supabase, user };
 }
 
-async function completeSignIn(credential: string, rawNonce: string): Promise<string | null> {
-  const { supabase, user } = await signInWithCredential(credential, rawNonce, ONE_TAP_SIGNUP_SOURCE);
-
-  // Own-row read under RLS (student_profiles_select_own). The server helper
-  // getOnboardingState is server-only, so the same select runs here.
-  const { data: profile } = await supabase
+/**
+ * The signed-in student's onboarding state. Own-row read under RLS
+ * (student_profiles_select_own); the server helper getOnboardingState is
+ * server-only, so the same select runs here.
+ */
+export async function readOwnOnboardingState(userId: string): Promise<OnboardingState> {
+  const { data: profile } = await createSupabaseBrowserClient()
     .from("student_profiles")
     .select("onboarded_at")
-    .eq("user_id", user.id)
+    .eq("user_id", userId)
     .maybeSingle();
-  return oneTapDestination({ onboardedAt: profile?.onboarded_at ?? null }, window.location.pathname + window.location.search);
+  return { onboardedAt: profile?.onboarded_at ?? null };
+}
+
+async function completeSignIn(credential: string, rawNonce: string): Promise<string | null> {
+  const { user } = await signInWithCredential(credential, rawNonce, ONE_TAP_SIGNUP_SOURCE);
+  return oneTapDestination(await readOwnOnboardingState(user.id), window.location.pathname + window.location.search);
 }
 
 /** Returns `offer()`: show One Tap now if the rules allow. Safe to call often. */
@@ -166,14 +173,17 @@ export const googleButtonAvailable = CLIENT_ID !== null;
 
 /**
  * Draws Google's "Continue with Google" button into `el`. On a completed
- * sign-in it calls `onSignedIn`; it never navigates, so the caller's dialog
- * stays open (a brand-new account meets the welcome screen on a later visit,
- * not in the middle of a purchase). Resolves false when the button cannot be
- * drawn (no client id, script blocked), so the caller can show its fallback.
+ * sign-in it calls `onSignedIn` with the user's id; it never navigates, so the
+ * download box's dialog stays open (a brand-new account meets the welcome
+ * screen on a later visit, not in the middle of a purchase) and /login +
+ * /signup decide where to go themselves (GoogleAuthButton). Resolves false when
+ * the button cannot be drawn (no client id, script blocked), so the caller can
+ * show its fallback. `source` defaults to the download box's.
  */
 export async function renderGoogleButton(
   el: HTMLElement,
-  handlers: { onSignedIn: () => void; onError: () => void }
+  handlers: { onSignedIn: (userId: string) => void; onError: () => void },
+  options: { theme?: "filled_blue" | "outline"; source?: string } = {}
 ): Promise<boolean> {
   if (!CLIENT_ID) return false;
   try {
@@ -189,14 +199,14 @@ export async function renderGoogleButton(
       itp_support: true,
       cancel_on_tap_outside: true,
       callback: ({ credential }) => {
-        signInWithCredential(credential, raw, DOWNLOAD_BOX_SIGNUP_SOURCE)
-          .then(() => handlers.onSignedIn())
+        signInWithCredential(credential, raw, "source" in options ? options.source : DOWNLOAD_BOX_SIGNUP_SOURCE)
+          .then(({ user }) => handlers.onSignedIn(user.id))
           .catch(() => handlers.onError());
       },
     });
     id.renderButton(el, {
       type: "standard",
-      theme: "filled_blue",
+      theme: options.theme ?? "filled_blue",
       size: "large",
       text: "continue_with",
       shape: "rectangular",
