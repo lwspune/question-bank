@@ -9,6 +9,7 @@ import {
   savePaywallSettings,
 } from "@/lib/billing/admin";
 import type { PlanInput } from "@/lib/billing/plans";
+import { isPaywallLimit } from "@/lib/billing/paywallSettings";
 
 export const maxDuration = 30;
 
@@ -16,7 +17,7 @@ type Body =
   | { action: "list" }
   | { action: "upsert"; plan: PlanInput & { active: boolean } }
   | { action: "setActive"; id: string; active: boolean }
-  | { action: "saveSettings"; enabled: boolean; limit: number };
+  | { action: "saveSettings"; which?: string; enabled: boolean; limit: number };
 
 /** Every public page that renders a price or the free-mock number. */
 const PAGES_QUOTING_PLANS = ["/pricing", "/terms", "/refunds"];
@@ -60,7 +61,9 @@ export async function POST(request: NextRequest) {
       }
       case "saveSettings": {
         if (typeof body.enabled !== "boolean") return bad("Missing enabled");
-        const result = await savePaywallSettings({ enabled: body.enabled, limit: Number(body.limit) });
+        const which = body.which ?? "mocks";
+        if (!isPaywallLimit(which)) return bad("Unknown limit");
+        const result = await savePaywallSettings({ which, enabled: body.enabled, limit: Number(body.limit) });
         if (result.kind === "invalid") return bad(result.message);
         if (result.kind === "error") return err500(result.message);
         revalidateQuotingPages();

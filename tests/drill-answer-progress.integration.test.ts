@@ -108,9 +108,9 @@ describe.skipIf(!HAS_ENV)("recordDrillAnswer — progress, fixed count, mileston
     const { error } = await admin.from("user_activity").insert(seeded);
     if (error) throw new Error(error.message);
 
-    const first = await recordDrillAnswer(qs[2].id, qs[2].wrong);
+    const first = graded(await recordDrillAnswer(qs[2].id, qs[2].wrong));
     expect(first?.milestone).toBe(10);
-    const second = await recordDrillAnswer(qs[2].id, qs[2].wrong);
+    const second = graded(await recordDrillAnswer(qs[2].id, qs[2].wrong));
     expect(second?.milestone).toBeNull();
   });
 
@@ -142,7 +142,12 @@ describe.skipIf(!HAS_ENV)("recordDrillAnswer — progress, fixed count, mileston
     if (rErr) throw new Error(rErr.message);
 
     // 75% wrong → the 70 tier.
-    expect((await recordDrillAnswer(q.id, q.right))?.crowd).toBe(70);
-    expect((await recordDrillAnswer(q.id, q.wrong))?.crowd).toBeNull();
+    expect(graded(await recordDrillAnswer(q.id, q.right))?.crowd).toBe(70);
+    expect(graded(await recordDrillAnswer(q.id, q.wrong))?.crowd).toBeNull();
   });
 });
+
+/** A graded answer, or null: the daily limit is off in the test project. */
+function graded(o: Awaited<ReturnType<typeof recordDrillAnswer>>) {
+  return o && !("limitReached" in o) ? o : null;
+}

@@ -62,6 +62,32 @@ export async function loadDrillEvents(
 }
 
 /**
+ * Question ids this student answered IN THE DRILL since `sinceIso` (midnight
+ * IST), for the free daily allowance (lib/drill/allowance). Every graded drill
+ * answer writes exactly one of these three kinds tagged `surface: "drill"`
+ * (recordDrillAnswer), so this is "answers given", never "drills opened".
+ * A free day is capped at a few dozen rows, far under the 1000-row page; a pass
+ * holder's day is never read.
+ */
+export async function loadDrillAnsweredToday(
+  db: SupabaseClient,
+  userId: string,
+  sinceIso: string
+): Promise<string[]> {
+  const { data, error } = await db
+    .from("user_activity")
+    .select("ref_id")
+    .eq("user_id", userId)
+    .in("kind", ["answer_wrong", "answer_correct", "question_practiced"])
+    .eq("metadata->>surface", "drill")
+    .gte("created_at", sinceIso)
+    .not("ref_id", "is", null)
+    .limit(1000);
+  if (error) throw new Error(`loadDrillAnsweredToday: ${error.message}`);
+  return ((data ?? []) as { ref_id: string }[]).map((r) => r.ref_id);
+}
+
+/**
  * Chapter + subtopic for the interleaver, and the eligibility filter.
  *
  * DELIBERATELY NARROW, and not `queryQuestionsByIds`. A student's due pool runs

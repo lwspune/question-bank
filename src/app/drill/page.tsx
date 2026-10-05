@@ -12,6 +12,9 @@ import { getOnboardingState } from "@/lib/profile/service";
 import { needsPushPrompt } from "@/lib/profile/push";
 import DrillRunner from "./DrillRunner";
 import { drillHref, parseDrillFrom } from "@/lib/drill/from";
+import PremiumLimitCard from "@/components/premium/PremiumLimitCard";
+import { premiumPassCta } from "@/lib/billing/premiumLimits";
+import { paywallEvent } from "@/lib/activity/clientEvents";
 
 /**
  * `/drill` — five questions this student has already got wrong, served back.
@@ -77,6 +80,17 @@ export default async function DrillPage({
     }
   }
 
+  // Today's free questions are used (migration 0134): the pass card, and the
+  // impression, once a day.
+  const pass = drill.allowance.kind === "locked" ? await premiumPassCta() : null;
+  if (drill.allowance.kind === "locked") {
+    await logActivityOnce(
+      createSupabaseServerClient(),
+      user.id,
+      paywallEvent("shown", "drill", pass?.urlKey, { userId: user.id, now: new Date() })
+    );
+  }
+
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 
   return (
@@ -104,15 +118,33 @@ export default async function DrillPage({
         </header>
 
         <div className="mt-6">
-          {drill.questions.length > 0 ? (
-            <DrillRunner
-              questions={drill.questions}
-              dueTotal={drill.dueTotal}
-              fresh={drill.fresh}
-              supabaseUrl={supabaseUrl}
-              scope={drill.scope}
-              remind={remind}
+          {drill.allowance.kind === "locked" ? (
+            <PremiumLimitCard
+              title={`You've done today's ${drill.allowance.limit} free questions`}
+              body={`Your mistakes are saved, and more come back free tomorrow. ${
+                pass
+                  ? `The ${pass.label} gives you unlimited Fix your mistakes for ${pass.length}.`
+                  : "A pass gives you unlimited Fix your mistakes."
+              }`}
+              pass={pass}
+              returnTo="/drill"
             />
+          ) : drill.questions.length > 0 ? (
+            <>
+              <DrillRunner
+                questions={drill.questions}
+                dueTotal={drill.dueTotal}
+                fresh={drill.fresh}
+                supabaseUrl={supabaseUrl}
+                scope={drill.scope}
+                remind={remind}
+              />
+              {drill.allowance.kind === "free" && (
+                <p className="mt-3 text-center text-xs text-muted-foreground">
+                  Today: {drill.allowance.limit - drill.allowance.left} of {drill.allowance.limit} free questions done.
+                </p>
+              )}
+            </>
           ) : drill.scope ? (
             <ScopedEmptyState />
           ) : (

@@ -3,6 +3,7 @@ import { getSessionSuperadmin } from "@/lib/auth";
 import AppHeader from "@/components/AppHeader";
 import { listAllPlans, readPaywallSettings } from "@/lib/billing/admin";
 import PricingAdminClient from "./PricingAdminClient";
+import { EMPTY_PAYWALL_SETTINGS } from "@/lib/billing/paywallSettings";
 
 export const dynamic = "force-dynamic";
 
@@ -25,7 +26,7 @@ export default async function PricingAdminPage() {
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Pricing</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            What /pricing sells, and how many mock tests a free account gets. A
+            What /pricing sells, and what a free account gets. A
             change is live on the next page load. A price change never affects a
             checkout already open, or a pass already bought.
           </p>
@@ -33,7 +34,7 @@ export default async function PricingAdminPage() {
 
         <PricingAdminClient
           initialPlans={plans.kind === "ok" ? plans.plans : []}
-          initialSettings={settings.kind === "ok" ? settings.settings : { freeMockLimit: null, countsFrom: null }}
+          initialSettings={settings.kind === "ok" ? settings.settings : EMPTY_PAYWALL_SETTINGS}
           loadError={loadError}
         />
       </main>

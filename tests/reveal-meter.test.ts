@@ -84,3 +84,63 @@ describe("isRevealLocked", () => {
     }
   });
 });
+
+/**
+ * The signed-in daily limit (2026-10-05, owner): 50 answers a day free, on the
+ * bank, the board reader and guides. `daily` is null while it is off, while
+ * the student holds a pass, and before the count has loaded: in all three a
+ * signed-in student is never walled (a pass holder must never see a lock
+ * flash while the count is on its way).
+ */
+describe("revealDecision: signed-in daily limit", () => {
+  const today = (n: number) => Array.from({ length: n }, (_, i) => `d${i}`);
+  const signedIn = (n: number, questionId: string, limit = 50) =>
+    revealDecision({ signedIn: true, revealedIds: [], questionId, daily: { limit, todayIds: today(n) } });
+
+  it("is unlimited with no daily quota (off, pass, or not loaded yet)", () => {
+    const d = revealDecision({ signedIn: true, revealedIds: [], questionId: "x", daily: null });
+    expect(d.allow).toBe(true);
+    expect(d.remaining).toBe(Infinity);
+  });
+
+  it("allows the 50th new answer of the day and adds it to today's list", () => {
+    const d = signedIn(49, "new");
+    expect(d.allow).toBe(true);
+    expect(d.nextIds).toEqual([...today(49), "new"]);
+    expect(d.remaining).toBe(0);
+  });
+
+  it("refuses the 51st with the daily wall, not the sign-in wall", () => {
+    const d = signedIn(50, "new");
+    expect(d.allow).toBe(false);
+    expect(d.wall).toBe("daily");
+    expect(d.nextIds).toEqual(today(50));
+  });
+
+  it("lets a question already answered today be opened again at the limit", () => {
+    expect(signedIn(50, "d7").allow).toBe(true);
+  });
+
+  it("a signed-out refusal names the sign-in wall", () => {
+    const d = revealDecision({ signedIn: false, revealedIds: ["a", "b", "c"], questionId: "z", limit: 3 });
+    expect(d.wall).toBe("signin");
+  });
+
+  it("an allowed reveal names no wall", () => {
+    expect(signedIn(3, "new").wall).toBeUndefined();
+  });
+});
+
+describe("isRevealLocked: signed-in daily limit", () => {
+  const daily = { limit: 2, todayIds: ["a", "b"] };
+
+  it("locks a new question once today's answers are used", () => {
+    expect(isRevealLocked({ signedIn: true, loading: false, revealedIds: [], questionId: "c", daily })).toBe(true);
+  });
+  it("never locks a question already answered today", () => {
+    expect(isRevealLocked({ signedIn: true, loading: false, revealedIds: [], questionId: "a", daily })).toBe(false);
+  });
+  it("never locks a signed-in student with no daily quota", () => {
+    expect(isRevealLocked({ signedIn: true, loading: false, revealedIds: [], questionId: "c", daily: null })).toBe(false);
+  });
+});

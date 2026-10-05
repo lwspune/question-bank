@@ -111,6 +111,9 @@ async function main() {
       case "box-buy":
         line = handRead(e.liveSince, ["box-sales-per-100"]);
         break;
+      case "premium-limits":
+        line = handRead(e.liveSince, ["limit-sales"]);
+        break;
       default: {
         // A new readout must be added here; this fails the typecheck until it is.
         const unhandled: never = e.readout;

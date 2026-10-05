@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import LanguageSwitch from "@/components/i18n/LanguageSwitch";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
-import type { MockStartState } from "@/lib/mocks/quota";
+import type { MockStartState, TestUnit } from "@/lib/mocks/quota";
 import type { PassCta } from "@/lib/billing/plans";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
@@ -21,17 +21,21 @@ import { pricingHref } from "@/lib/billing/checkoutReturn";
  * so the runner opens in it — and can still switch mid-test, as the printed
  * booklet lets a candidate read either version at any time.
  *
- * Free-mock limit (migration 0120): past the free mocks, the Start button
- * becomes a Mock Pass card. The page decides from my_mock_quota(); a 402 from
- * the start route (a stale page, a second tab) flips it here too.
+ * Free-test limits (migrations 0120 + 0134): past the free mocks, or the free
+ * chapter tests (counted separately), the Start button becomes a pass card. The
+ * page decides from my_mock_quota(); a 402 from the start route (a stale page,
+ * a second tab) flips it here too.
  */
 export default function StartMock({
   slug,
   bilingual = false,
   startState = { kind: "open" },
   mockPass = null,
+  unit = "mock",
 }: {
   slug: string;
+  /** A chapter test or a full mock: which free count this paper uses. */
+  unit?: TestUnit;
   bilingual?: boolean;
   startState?: MockStartState;
   /** The pass on sale for unlimited mocks; null = none (the card links to /pricing). */
@@ -48,8 +52,9 @@ export default function StartMock({
       const res = await fetch(`/api/mock/${slug}/start`, { method: "POST" });
       const data = await res.json();
       if (res.status === 402) {
-        setState({ kind: "locked", limit: state.kind === "free" ? state.limit : 0 });
-        sendActivityOnce(`mock_limit:${slug}`, { kind: "paywall_event", step: "shown", gate: "mock_limit" });
+        setState({ kind: "locked", limit: state.kind === "free" ? state.limit : 0, unit });
+        const gate = unit === "chapter_test" ? "chapter_test" : "mock_limit";
+        sendActivityOnce(`${gate}:${slug}`, { kind: "paywall_event", step: "shown", gate });
         setLoading(false);
         return;
       }
@@ -72,13 +77,15 @@ export default function StartMock({
       {loading ? "Starting…" : "Start test"}
     </Button>
   );
-  if (state.kind === "locked") return <MockPassCard limit={state.limit} pass={mockPass} slug={slug} />;
+  if (state.kind === "locked") {
+    return <MockPassCard limit={state.limit} unit={state.unit} pass={mockPass} slug={slug} />;
+  }
   const freeNote =
     state.kind === "free" ? (
       <p className="mt-2 text-center text-xs text-muted-foreground">
         {state.left === 1
-          ? "This is your last free mock test."
-          : `You have ${state.left} of ${state.limit} free mock tests left.`}
+          ? `This is your last free ${testNoun(state.unit, 1)}.`
+          : `You have ${state.left} of ${state.limit} free ${testNoun(state.unit, 2)} left.`}
       </p>
     ) : null;
   if (!bilingual) {
@@ -106,18 +113,35 @@ export default function StartMock({
   );
 }
 
-function MockPassCard({ limit, pass, slug }: { limit: number; pass: PassCta | null; slug: string }) {
+/** "mock test(s)" or "chapter test(s)". */
+function testNoun(unit: TestUnit, n: number): string {
+  const noun = unit === "chapter_test" ? "chapter test" : "mock test";
+  return n === 1 ? noun : `${noun}s`;
+}
+
+function MockPassCard({
+  limit,
+  unit,
+  pass,
+  slug,
+}: {
+  limit: number;
+  unit: TestUnit;
+  pass: PassCta | null;
+  slug: string;
+}) {
+  const plural = testNoun(unit, 2);
   return (
     <div className="rounded-lg border-2 border-brand-accent/40 bg-card p-5 text-center">
       <Lock className="mx-auto h-5 w-5 text-brand-accent" aria-hidden />
       <p className="mt-2 font-semibold">
-        {limit > 0 ? `You've used your ${limit} free mock tests` : "You've used your free mock tests"}
+        {limit > 0 ? `You've used your ${limit} free ${plural}` : `You've used your free ${plural}`}
       </p>
       <p className="mt-1 text-sm text-muted-foreground">
         {pass
-          ? `Get the ${pass.label} for unlimited mock tests for ${pass.length}, for ${pass.price}. `
-          : "A pass unlocks unlimited mock tests. "}
-        Retaking a mock you&apos;ve already started stays free.
+          ? `Get the ${pass.label} for unlimited ${plural} for ${pass.length}, for ${pass.price}. `
+          : `A pass unlocks unlimited ${plural}. `}
+        Retaking a test you&apos;ve already started stays free.
       </p>
       <Button asChild variant="brand" size="lg" className="mt-4 w-full">
         {/* Back to this paper after paying, not to /account. */}

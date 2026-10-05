@@ -67,6 +67,13 @@ export async function POST(request: NextRequest) {
   if (!outcome) {
     return NextResponse.json({ error: "That question can't be graded." }, { status: 404 });
   }
+  // Today's free drill questions are used (migration 0134, 2026-10-05).
+  if ("limitReached" in outcome) {
+    return NextResponse.json(
+      { error: `You've done today's ${outcome.limit} free questions.`, code: "FREE_DRILL_LIMIT", limit: outcome.limit },
+      { status: 402 }
+    );
+  }
 
   return NextResponse.json(outcome);
 }

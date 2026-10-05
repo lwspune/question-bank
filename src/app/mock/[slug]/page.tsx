@@ -45,9 +45,9 @@ export default async function MockInstructions({ params }: { params: Params }) {
         getMockQuota(createSupabaseServerClient()),
       ])
     : [[], null];
-  // Free-mock limit (migration 0120): open, "N free left", or locked. A retake
-  // of this paper is always open.
-  const startState = mockStartState(quota, myAttempts.length > 0);
+  // Free-test limits (0120 + 0134): open, "N free left", or locked. A chapter
+  // test counts against its own limit; a retake of this paper is always open.
+  const startState = mockStartState(quota, myAttempts.length > 0, mock.scope);
   // The pass offered at the limit (null = none on sale; the card then links to /pricing).
   const mockPass =
     startState.kind === "open"
@@ -58,7 +58,8 @@ export default async function MockInstructions({ params }: { params: Params }) {
     const now = new Date();
     await logActivityOnce(db, user.id, surfaceViewedEvent(user.id, "mock_start", now, mock.id));
     if (startState.kind === "locked") {
-      await logActivityOnce(db, user.id, paywallEvent("shown", "mock_limit", mockPass?.urlKey, { userId: user.id, now }));
+      const gate = mock.scope === "sectional" ? "chapter_test" : "mock_limit";
+      await logActivityOnce(db, user.id, paywallEvent("shown", gate, mockPass?.urlKey, { userId: user.id, now }));
     }
   }
   // Set by a teacher? One line under the title, only for a student in a batch
@@ -155,6 +156,7 @@ export default async function MockInstructions({ params }: { params: Params }) {
               bilingual={getExamByName(mock.examName)?.bilingual === true}
               startState={startState}
               mockPass={mockPass}
+              unit={mock.scope === "sectional" ? "chapter_test" : "mock"}
             />
           ) : (
             <div className="rounded-lg border border-dashed p-5 text-center">

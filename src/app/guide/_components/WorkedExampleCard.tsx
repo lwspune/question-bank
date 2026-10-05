@@ -5,6 +5,8 @@ import { Check, ChevronDown, Eye, Lightbulb, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useSignedIn } from "@/components/auth/useSignedIn";
 import { recordPractice } from "@/components/reveal/practiceBeacon";
+import { useDailyRevealGate } from "@/components/reveal/useRevealMeter";
+import { RevealDailyPrompt } from "@/components/reveal/RevealDailyLimit";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import BlockText from "@/components/math/BlockText";
 import { stripPassageCountPhrase } from "@/lib/export/stripPassageCount";
@@ -31,16 +33,24 @@ type Props = {
  *
  * useSignedIn, NOT useRevealMeter. That hook records AND gates: it spends an
  * anon viewer's free-reveal budget, and a reveal wall on the public guide and
- * notes pages would be a product change nobody asked for.
+ * notes pages would be a product change nobody asked for. The one gate here is
+ * the signed-in DAILY limit (migration 0134, owner 2026-10-05: guides count
+ * toward the 50 free answers a day), via useDailyRevealGate.
  */
 export default function WorkedExampleCard({ rank, example }: Props) {
   const [picked, setPicked] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [showSolution, setShowSolution] = useState(false);
-  const { signedIn } = useSignedIn();
+  const [blockedTaps, setBlockedTaps] = useState(0);
+  const { signedIn, loading } = useSignedIn();
+  const dailyGate = useDailyRevealGate(signedIn, loading, "guide");
 
   const reveal = (label: string | null) => {
     if (!revealed) {
+      if (!dailyGate(example.id)) {
+        setBlockedTaps((n) => n + 1);
+        return;
+      }
       setRevealed(true);
       recordPractice(example.id, signedIn, "guide");
     }
@@ -151,6 +161,9 @@ export default function WorkedExampleCard({ rank, example }: Props) {
             })}
           </ol>
         )}
+
+        {/* Today's free answers are used (signed in, migration 0134). */}
+        {blockedTaps > 0 && !revealed && <RevealDailyPrompt key={blockedTaps} surface="guide" />}
 
         {showSolution && example.solution && (
           <div className="rounded-xl border border-brand-accent/20 bg-brand-accent/5 p-3 text-sm motion-safe:animate-fade-in-up sm:p-4">

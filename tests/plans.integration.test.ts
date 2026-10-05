@@ -146,7 +146,7 @@ describe.skipIf(!HAS_ENV)("public.plans", () => {
     // Editing the number keeps counts_from.
     await savePaywallSettings({ enabled: true, limit: 5 });
     const s2 = await readPaywallSettings();
-    expect(s2.kind === "ok" && s2.settings).toEqual({ freeMockLimit: 5, countsFrom });
+    expect(s2.kind === "ok" && s2.settings).toMatchObject({ freeMockLimit: 5, countsFrom });
 
     await savePaywallSettings({ enabled: false, limit: 5 });
     expect(await readFreeMockLimit(anon)).toBeNull();

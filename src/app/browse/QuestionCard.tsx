@@ -41,6 +41,7 @@ import type { PracticeSurface } from "@/lib/questions/practiceBatch";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
 import RevealLockedLink from "@/components/reveal/RevealLockedLink";
+import { RevealDailyLink, RevealDailyPrompt } from "@/components/reveal/RevealDailyLimit";
 import FixNudgeLine from "@/components/reveal/FixNudgeLine";
 import PresentButton from "@/components/present/PresentButton";
 import { fromQuestionRow } from "@/lib/present/viewModel";
@@ -202,8 +203,15 @@ export default function QuestionCard({
   const locked = meter.locked && !revealed && !showSolution;
   // The locked link stands in for a reveal button; once a refused option tap
   // has shown the prompt (which carries its own Sign in), one link is enough.
+  // Signed in, a lock can only be today's free-answer limit (migration 0134).
   const lockedLink =
-    locked && !revealBlocked ? <RevealLockedLink surface={surface} examName={question.exam.name} /> : null;
+    locked && !revealBlocked ? (
+      meter.signedIn ? (
+        <RevealDailyLink surface={surface} />
+      ) : (
+        <RevealLockedLink surface={surface} examName={question.exam.name} />
+      )
+    ) : null;
 
   const breadcrumb = buildBreadcrumb(question, { includeExam, fixed: breadcrumbFixed });
 
@@ -486,10 +494,20 @@ export default function QuestionCard({
                 line that stays is the signed-out wall, because there a tap does
                 nothing and, unexplained, earns repeated angry taps. */}
             {!isOpenFormat && !revealed && !cancelled && locked && (
-              <p className="text-center font-sans text-xs text-muted-foreground">Sign in free to check answers.</p>
+              <p className="text-center font-sans text-xs text-muted-foreground">
+                {meter.signedIn
+                  ? "You've opened today's free answers. More tomorrow."
+                  : "Sign in free to check answers."}
+              </p>
             )}
 
-            {revealBlocked && !revealed && <RevealSignInPrompt key={blockedTaps} surface={surface} />}
+            {revealBlocked &&
+              !revealed &&
+              (meter.signedIn ? (
+                <RevealDailyPrompt key={blockedTaps} surface={surface} />
+              ) : (
+                <RevealSignInPrompt key={blockedTaps} surface={surface} />
+              ))}
 
             {/* Every fifth wrong bank answer of the day: the misses are saved in
                 Fix your mistakes (lib/drill/fixNudge). Nothing on other cards. */}

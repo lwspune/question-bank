@@ -20,7 +20,19 @@ import { isSurface, viewDedupeKey } from "./views";
 export const VIEW_BROWSERS = ["standard", "inapp"] as const;
 const BROWSER_SET: ReadonlySet<string> = new Set(VIEW_BROWSERS);
 
-export const PAYWALL_GATES = ["mock_limit", "teacher", "pricing"] as const;
+/** Where a paywall met the student. The last five are the 0134 limits
+ *  (2026-10-05): chapter tests, the drill, daily answers, saves, the
+ *  projected score. */
+export const PAYWALL_GATES = [
+  "mock_limit",
+  "teacher",
+  "pricing",
+  "chapter_test",
+  "drill",
+  "reveals",
+  "saves",
+  "projection",
+] as const;
 export type PaywallGate = (typeof PAYWALL_GATES)[number];
 
 export const PAYWALL_STEPS = ["shown", "checkout_opened", "checkout_dismissed", "verify_failed"] as const;

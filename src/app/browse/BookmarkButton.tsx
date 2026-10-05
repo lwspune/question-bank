@@ -5,6 +5,9 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { useBookmarks } from "@/lib/bookmarks/BookmarksProvider";
 import SignInLink from "@/components/reveal/SignInLink";
+import { SaveLimitReached } from "@/lib/bookmarks/limit";
+import { sendActivityOnce } from "@/lib/activity/clientBeacon";
+import { pricingHref } from "@/lib/billing/checkoutReturn";
 
 const BASE =
   "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
@@ -34,7 +37,21 @@ export default function BookmarkButton({ questionId }: { questionId: string }) {
     if (!hydrated) return;
     try {
       await toggle(questionId);
-    } catch {
+    } catch (err) {
+      if (err instanceof SaveLimitReached) {
+        // The free save limit (0134): say so, and where unlimited saves are.
+        sendActivityOnce("saves", { kind: "paywall_event", step: "shown", gate: "saves" });
+        toast.error(err.message, {
+          description: "Remove a saved question to make room, or get Premium Pass for unlimited saves.",
+          action: {
+            label: "Get pass",
+            onClick: () => {
+              window.location.href = pricingHref(null, window.location.pathname + window.location.search);
+            },
+          },
+        });
+        return;
+      }
       toast.error("Couldn't save. Try again.");
     }
   }

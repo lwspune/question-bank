@@ -12,6 +12,8 @@
  *   - a mock pass, a teacher pass, and org staff are never blocked
  *   - the refusal is SQLSTATE PT402, which PostgREST serves as HTTP 402
  *   - my_mock_quota() reports the same numbers the trigger uses
+ *   - a chapter test (scope 'sectional') counts against its OWN limit
+ *     (free_chapter_test_limit, migration 0134), never against the mocks
  *
  * The settings row is global, so this suite restores it in afterAll. Other
  * suites start at most one mock per user, so the limit cannot trip them.
@@ -38,13 +40,21 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
   const clients = {} as Record<Role, SupabaseClient>;
   const mockIds: string[] = [];
   let orgId = "";
-  let saved: { free_mock_limit: number | null; counts_from: string | null } | null = null;
+  const chapterIds: string[] = [];
+  let saved: Record<string, unknown> | null = null;
   let countsFrom = "";
 
   const start = (role: Role, mockIdx: number) =>
     clients[role]
       .from("mock_attempts")
       .insert({ mock_id: mockIds[mockIdx], user_id: ids[role], expires_at: FUTURE })
+      .select("id")
+      .single();
+
+  const startChapter = (role: Role, idx: number) =>
+    clients[role]
+      .from("mock_attempts")
+      .insert({ mock_id: chapterIds[idx], user_id: ids[role], expires_at: FUTURE })
       .select("id")
       .single();
 
@@ -75,12 +85,14 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
       .order("created_at", { ascending: true })
       .limit(1)
       .single();
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 6; i++) {
+      const chapter = i >= 4;
       const { data, error } = await admin
         .from("mock_tests")
         .insert({
           id: randomUUID(),
           slug: `free-mock-limit-${i}-${RUN_ID}`,
+          scope: chapter ? "sectional" : "full",
           exam_id: exam!.id,
           paper_code: "maths",
           pyq_year: 2099,
@@ -98,7 +110,7 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
         .select("id")
         .single();
       expect(error).toBeNull();
-      mockIds.push(data!.id);
+      (chapter ? chapterIds : mockIds).push(data!.id);
     }
 
     await admin.from("entitlements").insert([
@@ -126,13 +138,18 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
 
     const { data: prev, error: readErr } = await admin
       .from("paywall_settings")
-      .select("free_mock_limit, counts_from")
+      .select("free_mock_limit, counts_from, free_chapter_test_limit, chapter_tests_counts_from")
       .single();
     expect(readErr).toBeNull();
     saved = prev;
     const { error: setErr } = await admin
       .from("paywall_settings")
-      .update({ free_mock_limit: 3, counts_from: countsFrom })
+      .update({
+        free_mock_limit: 3,
+        counts_from: countsFrom,
+        free_chapter_test_limit: 1,
+        chapter_tests_counts_from: countsFrom,
+      })
       .eq("id", true);
     expect(setErr).toBeNull();
   });
@@ -142,7 +159,8 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
       await admin.from("paywall_settings").update(saved).eq("id", true);
     }
     // Deleting the mocks cascades their attempts; deleting users cascades the rest.
-    if (mockIds.length) await admin.from("mock_tests").delete().in("id", mockIds);
+    const all = [...mockIds, ...chapterIds];
+    if (all.length) await admin.from("mock_tests").delete().in("id", all);
     if (orgId) await admin.from("organizations").delete().eq("id", orgId);
     for (const role of ROLES) if (ids[role]) await admin.auth.admin.deleteUser(ids[role]);
   });
@@ -156,7 +174,21 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
   it("reports the student's quota: 3 of 3 used, no pass", async () => {
     const { data, error } = await clients.student.rpc("my_mock_quota");
     expect(error).toBeNull();
-    expect(data).toEqual({ limit: 3, used: 3, hasPass: false });
+    expect(data).toEqual({ limit: 3, used: 3, hasPass: false, chapterLimit: 1, chapterUsed: 0 });
+  });
+
+  it("lets a student with no free mocks left still start a chapter test, then refuses the next", async () => {
+    expect((await startChapter("student", 0)).error).toBeNull();
+    const { error } = await startChapter("student", 1);
+    expect(error?.code).toBe("PT402");
+    const { data } = await clients.student.rpc("my_mock_quota");
+    expect(data).toEqual({ limit: 3, used: 3, hasPass: false, chapterLimit: 1, chapterUsed: 1 });
+  });
+
+  it("does not count chapter tests against the mock limit", async () => {
+    expect((await startChapter("early", 0)).error).toBeNull();
+    const { data } = await clients.early.rpc("my_mock_quota");
+    expect(data).toMatchObject({ used: 0, chapterUsed: 1 });
   });
 
   it("lets a student at the limit retake a mock they already started", async () => {
@@ -172,13 +204,14 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
   it("does not count a mock first started before the limit began", async () => {
     for (let i = 0; i < 3; i++) expect((await start("early", i)).error).toBeNull();
     const { data } = await clients.early.rpc("my_mock_quota");
-    expect(data).toEqual({ limit: 3, used: 3, hasPass: false });
+    expect(data).toMatchObject({ limit: 3, used: 3, hasPass: false });
   });
 
   it.each(["mockpass", "teacherpass", "staff"] as Role[])(
     "never blocks %s",
     async (role) => {
       for (let i = 0; i < 4; i++) expect((await start(role, i)).error).toBeNull();
+      for (let i = 0; i < 2; i++) expect((await startChapter(role, i)).error).toBeNull();
     }
   );
 
@@ -188,11 +221,18 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
   });
 
   it("blocks nothing when the limit is NULL (off)", async () => {
-    await admin.from("paywall_settings").update({ free_mock_limit: null }).eq("id", true);
+    await admin
+      .from("paywall_settings")
+      .update({ free_mock_limit: null, free_chapter_test_limit: null })
+      .eq("id", true);
     for (let i = 0; i < 4; i++) expect((await start("off", i)).error).toBeNull();
+    for (let i = 0; i < 2; i++) expect((await startChapter("off", i)).error).toBeNull();
     const { data } = await clients.off.rpc("my_mock_quota");
-    expect(data).toMatchObject({ limit: null });
-    await admin.from("paywall_settings").update({ free_mock_limit: 3 }).eq("id", true);
+    expect(data).toMatchObject({ limit: null, chapterLimit: null });
+    await admin
+      .from("paywall_settings")
+      .update({ free_mock_limit: 3, free_chapter_test_limit: 1 })
+      .eq("id", true);
   });
 
   it("hides the settings row from a signed-in student", async () => {

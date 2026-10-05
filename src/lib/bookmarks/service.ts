@@ -5,6 +5,7 @@
  */
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { SaveLimitReached } from "./limit";
 
 export async function setBookmark(
   db: SupabaseClient,
@@ -19,6 +20,8 @@ export async function setBookmark(
         { user_id: userId, question_id: questionId },
         { onConflict: "user_id,question_id", ignoreDuplicates: true }
       );
+    // The free save limit (0134): the trigger's own words name the number.
+    if (error?.code === "PT402") throw new SaveLimitReached(error.message);
     if (error) throw new Error(`setBookmark: ${error.message}`);
   } else {
     const { error } = await db

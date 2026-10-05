@@ -19,9 +19,13 @@ import { answerProgress, type AnswerProgress } from "./progress";
 import { awardAnsweredMilestone } from "@/lib/celebrate/service";
 import { crowdTiers } from "@/lib/celebrate/crowdService";
 import type { CrowdTier } from "@/lib/celebrate/crowd";
+import { getPremiumLimits } from "@/lib/billing/premiumLimits";
+import { istDayStartIso } from "@/lib/email/dueNudge";
+import { canAnswerDrillQuestion, drillAllowance, servedCount, type DrillAllowance, type DrillAllowanceInput } from "./allowance";
 import {
   gradeDrillAnswer,
   hasPriorWrong,
+  loadDrillAnsweredToday,
   loadDrillEvents,
   loadDrillQuestions,
   loadQuestionEvents,
@@ -52,7 +56,29 @@ export type OwnDrill = {
   /** Set when the drill was scoped to one attempt ("Fix these mistakes" from a
    *  result page): the paper's name for the header, and its due count. */
   scope: { attemptId: string; mockTitle: string; mockSlug: string } | null;
+  /** Today's free allowance (2026-10-05): "open" with a pass or the limit off. */
+  allowance: DrillAllowance;
 };
+
+/** The inputs to the free daily allowance. A failed read is "no limit": a
+ *  student is never walled by our own error. */
+async function readDrillAllowanceInput(
+  db: ReturnType<typeof createSupabaseServerClient>,
+  userId: string,
+  now: Date
+): Promise<DrillAllowanceInput> {
+  const limits = await getPremiumLimits(db);
+  if (!limits || limits.hasPass || limits.drillPerDay === null) {
+    return { limit: null, hasPass: limits?.hasPass ?? false, answeredToday: [] };
+  }
+  try {
+    const answeredToday = await loadDrillAnsweredToday(db, userId, istDayStartIso(now));
+    return { limit: limits.drillPerDay, hasPass: false, answeredToday };
+  } catch (e) {
+    console.error("drill allowance read failed", e);
+    return { limit: null, hasPass: false, answeredToday: [] };
+  }
+}
 
 export async function getOwnDrill(
   opts: { attemptId?: string | null; now?: Date } = {}
@@ -64,7 +90,13 @@ export async function getOwnDrill(
   } = await db.auth.getUser();
   if (!user) return null;
 
-  const pool = await loadOwnPool(db, user.id, now);
+  const [pool, allowanceInput] = await Promise.all([
+    loadOwnPool(db, user.id, now),
+    readDrillAllowanceInput(db, user.id, now),
+  ]);
+  const allowance = drillAllowance(allowanceInput);
+  // Today's free questions decide the set size: five, or what is left.
+  const size = servedCount(allowance, DRILL_SIZE);
   let drillable = pool.drillable;
   let scope: OwnDrill["scope"] = null;
 
@@ -88,29 +120,40 @@ export async function getOwnDrill(
     }
   }
 
-  const picked = selectDrill(drillable, DRILL_SIZE);
+  if (size === 0) return { questions: [], fresh: 0, dueTotal: drillable.length, scope, allowance };
+
+  const picked = selectDrill(drillable, size);
 
   // THE FILL (B2). An unscoped drill short of five is topped up with unseen
   // PYQs: from the subtopics this student has got wrong most often, then from
   // their target exam. A scoped drill ("fix these from this paper") is not
   // filled — it promised that paper's mistakes and nothing else.
   let fresh: string[] = [];
-  if (!scope && picked.length < DRILL_SIZE) {
+  if (!scope && picked.length < size) {
     const { targetExams } = await getOnboardingState(db, user.id);
     const slug = primaryExam(sanitizeTargetExams(targetExams));
     const examId = slug ? ((await getExamIdMap())[slug] ?? null) : null;
-    fresh = await fillUnseen(db, user.id, pool.events, DRILL_SIZE - picked.length, examId);
+    fresh = await fillUnseen(db, user.id, pool.events, size - picked.length, examId);
   }
 
-  const set = composeDailySet(picked, fresh, DRILL_SIZE);
-  if (set.length === 0) return { questions: [], fresh: 0, dueTotal: drillable.length, scope };
+  const set = composeDailySet(picked, fresh, size);
+  if (set.length === 0) return { questions: [], fresh: 0, dueTotal: drillable.length, scope, allowance };
 
   const loaded = await loadDrillQuestions(db, set.map((s) => s.questionId));
   const origin = new Map(set.map((s) => [s.questionId, s.origin]));
   const questions: ServedQuestion[] = loaded.map((q) => ({ ...q, isNew: origin.get(q.id) === "new" }));
 
-  return { questions, fresh: questions.filter((q) => q.isNew).length, dueTotal: drillable.length, scope };
+  return {
+    questions,
+    fresh: questions.filter((q) => q.isNew).length,
+    dueTotal: drillable.length,
+    scope,
+    allowance,
+  };
 }
+
+/** The free daily allowance is used up; the route answers 402. */
+export type DrillLimitReached = { limitReached: true; limit: number };
 
 export type AnswerOutcome = DrillVerdict & {
   recorded: boolean;
@@ -150,12 +193,19 @@ export async function getOwnLadder(
 export async function recordDrillAnswer(
   questionId: string,
   chosenLabel: string
-): Promise<AnswerOutcome | null> {
+): Promise<AnswerOutcome | DrillLimitReached | null> {
   const db = createSupabaseServerClient();
   const {
     data: { user },
   } = await db.auth.getUser();
   if (!user) return null;
+
+  // Today's free allowance, checked BEFORE grading: the key is first sent to
+  // the browser in this answer's reply, so refusing here is a real limit.
+  const allowanceInput = await readDrillAllowanceInput(db, user.id, new Date());
+  if (!canAnswerDrillQuestion(allowanceInput, questionId)) {
+    return { limitReached: true, limit: allowanceInput.limit ?? 0 };
+  }
 
   const verdict = await gradeDrillAnswer(db, questionId, chosenLabel);
   if (!verdict) return null;
