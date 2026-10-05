@@ -61,31 +61,31 @@ const EXAM_META: Record<
 > = {
   nda: {
     Icon: Target,
-    blurb: "National Defence Academy — Maths + GAT across nine subjects.",
+    blurb: "National Defence Academy: Maths + GAT across nine subjects.",
   },
   "mht-cet": {
     Icon: FlaskConical,
-    blurb: "Maharashtra CET — Physics, Chemistry & Maths, shift-wise PYQs.",
+    blurb: "Maharashtra CET: Physics, Chemistry & Maths, shift-wise PYQs.",
   },
   "jee-mains": {
     Icon: Layers,
-    blurb: "JEE Mains — shift-wise PCM past papers.",
+    blurb: "JEE Mains: shift-wise PCM past papers.",
   },
   neet: {
     Icon: Stethoscope,
-    blurb: "NEET (UG) — Physics, Chemistry, Botany & Zoology with keys.",
+    blurb: "NEET (UG): Physics, Chemistry, Botany & Zoology with keys.",
   },
   cds: {
     Icon: GraduationCap,
-    blurb: "Combined Defence Services — English past papers.",
+    blurb: "Combined Defence Services: English past papers.",
   },
   "foundation-course": {
     Icon: School,
-    blurb: "Class 9/10 NCERT worksheets — Physics, Chemistry & Biology.",
+    blurb: "Class 9/10 NCERT worksheets: Physics, Chemistry & Biology.",
   },
   "mh-hsc-12": {
     Icon: BookMarked,
-    blurb: "Maharashtra State Board — Class 12 textbook solutions, book-faithful.",
+    blurb: "Maharashtra State Board: Class 12 textbook solutions, book-faithful.",
   },
 };
 
@@ -115,7 +115,7 @@ const FAMILY_META: Record<string, { Icon: typeof BookOpen; blurb: string }> = {
   MPSC: {
     Icon: Landmark,
     blurb:
-      "Maharashtra PSC — Group B & C Prelims, plus the Mains Marathi & English papers, with MPSC's final keys.",
+      "Maharashtra PSC: Group B & C Prelims, plus the Mains Marathi & English papers, with MPSC's final keys.",
   },
 };
 

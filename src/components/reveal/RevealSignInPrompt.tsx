@@ -31,7 +31,7 @@ export default function RevealSignInPrompt({ surface }: { surface: PracticeSurfa
     <div className="mt-2 flex flex-wrap items-center gap-2 rounded-md border border-dashed border-primary/30 bg-primary/5 px-3 py-2 text-sm animate-in fade-in zoom-in-95 duration-300">
       <Lock className="h-3.5 w-3.5 shrink-0 text-primary" aria-hidden />
       <span className="text-muted-foreground">
-        You&apos;ve used your free answer reveals. Sign in — it&apos;s free — to keep
+        You&apos;ve used your free answer reveals. Sign in (it&apos;s free) to keep
         checking answers.
       </span>
       <SignInLink

@@ -38,7 +38,7 @@ export default function OfflineBanner() {
       style={{ bottom: "env(safe-area-inset-bottom)" }}
     >
       <WifiOff className="h-4 w-4" aria-hidden />
-      You&apos;re offline — downloads and filtering won&apos;t work until you reconnect.
+      You&apos;re offline. Downloads and filtering won&apos;t work until you reconnect.
     </div>
   );
 }

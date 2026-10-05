@@ -154,7 +154,7 @@ export default function BrowseLanding({
       )}
 
       <p className="text-sm text-muted-foreground">
-        Or use the filters to narrow by chapter, difficulty and year —{" "}
+        Or use the filters to narrow by chapter, difficulty and year, or{" "}
         <Link
           href="/questions"
           className="font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"

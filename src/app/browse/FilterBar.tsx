@@ -676,17 +676,17 @@ const FORMATS: { value: Filters["format"]; label: string; title: string }[] = [
   {
     value: "mcq",
     label: "MCQ",
-    title: "Multiple choice only — four options, one correct",
+    title: "Multiple choice only: four options, one correct",
   },
   {
     value: "subjective",
     label: "Written",
-    title: "Free-response only — no options, a model answer",
+    title: "Free-response only: no options, a model answer",
   },
   {
     value: "numeric",
     label: "Numeric",
-    title: "Numeric-answer only (JEE Section B) — no options, an exact value",
+    title: "Numeric-answer only (JEE Section B): no options, an exact value",
   },
 ];
 

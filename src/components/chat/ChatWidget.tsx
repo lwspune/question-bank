@@ -120,14 +120,14 @@ export default function ChatWidget() {
         error?: string;
       };
       if (!res.ok || !data.ok || !data.reply) {
-        const errorText = data.error || "V couldn't answer that — please try again.";
+        const errorText = data.error || "V couldn't answer that. Please try again.";
         setTurns((t) => [...t, { role: "assistant", avatar: "idle", text: errorText }]);
         toast.error(errorText);
         return;
       }
       setTurns((t) => [...t, { role: "assistant", avatar: "idle", text: data.reply as string }]);
     } catch {
-      const errorText = "V is unavailable right now — please try again.";
+      const errorText = "V is unavailable right now. Please try again.";
       setTurns((t) => [...t, { role: "assistant", avatar: "idle", text: errorText }]);
       toast.error(errorText);
     } finally {

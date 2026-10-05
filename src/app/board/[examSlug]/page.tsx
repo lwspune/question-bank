@@ -51,10 +51,10 @@ export default async function BoardExamHub({ params }: { params: Params }) {
         </nav>
 
         <header className="mb-8">
-          <h1 className="text-2xl font-bold tracking-tight text-foreground">{exam.displayName} — Textbook</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-foreground">{exam.displayName}: Textbook</h1>
           <p className="mt-1.5 text-sm text-muted-foreground">
-            Read each chapter the way the book teaches it — solved examples, then exercises, then the miscellaneous
-            set — every question with a model answer.
+            Read each chapter the way the book teaches it: solved examples, then exercises, then the miscellaneous
+            set. Every question has a model answer.
           </p>
         </header>
 

@@ -180,7 +180,7 @@ export default function DownloadDialog({
         };
         const msg =
           res.status === 429 && json.retryAfter
-            ? `Too many downloads — try again in ${formatRetry(json.retryAfter)}.`
+            ? `Too many downloads. Try again in ${formatRetry(json.retryAfter)}.`
             : json.error ?? `Download failed (${res.status})`;
         setError(msg);
         toast.error(msg);
@@ -247,13 +247,13 @@ export default function DownloadDialog({
           </DialogTitle>
           <DialogDescription>
             {showDownloadView && paperFormat === "pdf" ? (
-              "PDF files — the Question Paper and the Answer Key, set in one column so they read well on a phone and print cleanly."
+              "PDF files: the Question Paper and the Answer Key, set in one column so they read well on a phone and print cleanly."
             ) : showDownloadView ? (
               <>
-                Word files — Question Paper and Answer Key (0.5″ margins, 2
+                Word files: Question Paper and Answer Key (0.5″ margins, 2
                 columns, Cambria 10pt)
                 {canSlides
-                  ? " — plus a PowerPoint deck (.pptx), one question per slide for projecting in class"
+                  ? ", plus a PowerPoint deck (.pptx), one question per slide for projecting in class"
                   : ""}
                 {canTags
                   ? ", and a tagged sheet (.xlsx) for nda-tracker, numbered to match the paper."

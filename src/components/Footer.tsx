@@ -29,7 +29,7 @@ export default function Footer() {
           nothing else on the public site named a human at all. See /about.
         */}
         <p>
-          <span className="font-medium">PYQ Vault</span> — built in Pune by{" "}
+          <span className="font-medium">PYQ Vault</span>, built in Pune by{" "}
           <Link href="/about" className="underline hover:text-foreground">
             Vilas Shinde
           </Link>

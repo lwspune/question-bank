@@ -26,7 +26,7 @@ export default function WhatsappOptIn() {
       });
       const data = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string };
       if (!res.ok || !data.ok) throw new Error(data.error ?? "Could not save.");
-      if (optIn) toast.success("You're in — we'll send your weekly report on WhatsApp.");
+      if (optIn) toast.success("You're in. We'll send your weekly report on WhatsApp.");
       setDone(true);
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Could not save. Please try again.");
@@ -43,7 +43,7 @@ export default function WhatsappOptIn() {
         <div className="min-w-0 flex-1">
           <h2 className="text-sm font-semibold">Get your weekly weak-area report on WhatsApp</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            A short, weekly nudge on what to revise next — straight to your WhatsApp.
+            A short weekly nudge on what to revise next, sent to your WhatsApp.
             By opting in you agree to be contacted by PYQ Vault per our{" "}
             <Link href="/privacy" className="underline underline-offset-2 hover:text-foreground" target="_blank">
               privacy policy

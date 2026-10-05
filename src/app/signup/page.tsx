@@ -239,7 +239,7 @@ function BrandPanel() {
           </p>
         </div>
         <p className="text-xs text-primary-foreground/50">
-          Free to start — no card required.
+          Free to start. No card required.
         </p>
       </div>
     </aside>

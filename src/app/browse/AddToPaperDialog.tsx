@@ -152,7 +152,7 @@ export default function AddToPaperDialog({
   // Add the given ids to the target (existing or freshly created) paper.
   async function doAdd(ids: string[]) {
     if (ids.length === 0) {
-      toast.message("Nothing to add — all selected questions are used elsewhere.");
+      toast.message("Nothing to add. All selected questions are used elsewhere.");
       return;
     }
     if (creating) {
@@ -199,7 +199,7 @@ export default function AddToPaperDialog({
               id="atp-title"
               value={newTitle}
               onChange={(e) => setNewTitle(e.target.value)}
-              placeholder="e.g. NDA GAT — Mock 1"
+              placeholder="e.g. NDA GAT Mock 1"
               disabled={busy}
               autoFocus
             />
@@ -273,7 +273,7 @@ export default function AddToPaperDialog({
               </select>
             )}
             <p className="text-xs text-muted-foreground">
-              Showing the {PAPER_PICKER_LIMIT} most recent drafts — search or filter
+              Showing the {PAPER_PICKER_LIMIT} most recent drafts. Search or filter
               to reach older ones.
             </p>
             <button

@@ -100,7 +100,7 @@ export default async function MockResultPage({ params }: { params: Params }) {
         <p className="text-sm text-muted-foreground">{mock.title}</p>
         <h1 className="mt-1 text-2xl font-bold tracking-tight">Your result</h1>
         {res.status === "expired" && (
-          <p className="mt-1 text-sm text-amber-600">Time ran out — the test was auto-submitted.</p>
+          <p className="mt-1 text-sm text-amber-600">Time ran out, so the test was auto-submitted.</p>
         )}
 
         <PulseRefresh />
@@ -232,7 +232,7 @@ export default async function MockResultPage({ params }: { params: Params }) {
         )}
 
         {/* Review */}
-        <h2 className="mt-8 text-lg font-semibold">Review — all {res.review!.items.length} questions</h2>
+        <h2 className="mt-8 text-lg font-semibold">Review: all {res.review!.items.length} questions</h2>
         <AttemptReviewList items={res.review!.items} supabaseUrl={supabaseUrl} />
       </main>
     </>

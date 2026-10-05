@@ -67,7 +67,7 @@ export default function ReportQuestionDialog({
         }),
       });
       if (res.status === 201) {
-        toast.success("Report received. Thanks — we'll take a look.");
+        toast.success("Report received. Thanks, we'll take a look.");
         setSubmitted(true);
         setTimeout(() => {
           setOpen(false);
@@ -87,7 +87,7 @@ export default function ReportQuestionDialog({
       toast.error(body.error ?? `Report failed (${res.status})`);
     } catch (err) {
       toast.error(
-        err instanceof Error ? err.message : "Report failed — try again"
+        err instanceof Error ? err.message : "Report failed. Try again"
       );
     } finally {
       setSubmitting(false);

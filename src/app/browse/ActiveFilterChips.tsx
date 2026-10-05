@@ -65,7 +65,7 @@ export default function ActiveFilterChips({
     try {
       await navigator.clipboard.writeText(url);
       setCopied(true);
-      toast.success("Link copied — share it anywhere");
+      toast.success("Link copied. Share it anywhere");
       setTimeout(() => setCopied(false), 2000);
     } catch {
       toast.error("Couldn't copy link");

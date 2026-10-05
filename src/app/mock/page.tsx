@@ -60,7 +60,7 @@ const COPY: Record<string, ExamCopy> = {
   nda: {
     tagline: "Paper I & Paper II",
     blurb:
-      "Paper I Mathematics and Paper II General Ability Test — English and all eight General Knowledge subjects in the printed order, on the official UPSC marking scheme with a live timer.",
+      "Paper I Mathematics and Paper II General Ability Test (English and all eight General Knowledge subjects) in the printed order, on the official UPSC marking scheme with a live timer.",
     icon: Shield,
   },
   cds: {
@@ -75,14 +75,14 @@ const COPY: Record<string, ExamCopy> = {
   neet: {
     tagline: "Full paper, incl. Re-NEET",
     blurb:
-      "Complete NEET (UG) papers — Physics, Chemistry, Botany and Zoology — including the Re-NEET sittings, with officially dropped questions awarded to everyone exactly as the NTA did.",
+      "Complete NEET (UG) papers in Physics, Chemistry, Botany and Zoology, including the Re-NEET sittings, with officially dropped questions awarded to everyone exactly as the NTA did.",
     icon: Stethoscope,
   },
   // Collapsed families (one card opens the family page) — keyed by family slug.
   mpsc: {
     tagline: "Prelims & Mains",
     blurb:
-      "Maharashtra Public Service Commission papers — the Group B & C Prelims General Ability Test and the Mains language papers — on each paper's own printed marking scheme.",
+      "Maharashtra Public Service Commission papers (the Group B & C Prelims General Ability Test and the Mains language papers) on each paper's own printed marking scheme.",
     icon: Landmark,
   },
 };

@@ -46,7 +46,7 @@ export default function BookmarkButton({ questionId }: { questionId: string }) {
       disabled={!hydrated}
       aria-pressed={saved}
       aria-label={saved ? "Remove from saved" : "Save this question"}
-      title={saved ? "Saved — click to remove" : "Save this question"}
+      title={saved ? "Saved. Click to remove" : "Save this question"}
       className={cn(BASE, saved ? "border-brand-accent/40 bg-brand/10 text-brand-accent" : IDLE)}
     >
       {saved ? (

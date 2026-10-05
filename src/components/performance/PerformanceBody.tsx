@@ -94,7 +94,7 @@ export default function PerformanceBody({
                 total on purpose, and an unexplained discrepancy reads as a bug. */}
             <p className="mt-3 text-xs text-muted-foreground">
               Counting <span className="font-medium text-foreground">{summary.graded}</span>{" "}
-              paper{summary.graded === 1 ? "" : "s"} — first attempts only.
+              paper{summary.graded === 1 ? "" : "s"}, first attempts only.
               {summary.retakesDropped > 0 && ` ${summary.retakesDropped} retake${summary.retakesDropped === 1 ? "" : "s"} excluded (the review screen shows the answers).`}
               {summary.belowFloor > 0 && ` ${summary.belowFloor} abandoned attempt${summary.belowFloor === 1 ? "" : "s"} excluded (under 20% answered).`}
               {summary.inProgress > 0 && ` ${summary.inProgress} still in progress.`}
@@ -199,7 +199,7 @@ function LaneView({ lane, links, viewer }: { lane: Lane; links: TaxonomyLinks; v
           <p className="mt-3 text-xs text-muted-foreground">
             {cov.inPaper} questions across {lane.attempts} paper{lane.attempts === 1 ? "" : "s"}.{" "}
             <span className="font-medium text-foreground">Never reached</span> means no answer row
-            was written at all — a clock problem, not a knowledge gap, and it is kept out of the
+            was written at all. That is a clock problem, not a knowledge gap, so it is kept out of the
             skipped audit for that reason.
           </p>
         </div>
@@ -228,7 +228,7 @@ function LaneView({ lane, links, viewer }: { lane: Lane; links: TaxonomyLinks; v
       {focus && (focus.startHere.length > 0 || focus.readyToLearn.length > 0) && (
         <Section
           title="Where to focus"
-          note="Root cause from the NDA Mathematics prerequisite graph — the deepest weak chapter a weakness traces back to."
+          note="Root cause from the NDA Mathematics prerequisite graph: the deepest weak chapter a weakness traces back to."
         >
           {focus.startHere.length > 0 && (
             <ul className="space-y-2">
@@ -271,7 +271,7 @@ function LaneView({ lane, links, viewer }: { lane: Lane; links: TaxonomyLinks; v
       </Section>
 
       {lane.wrongAudit.length > 0 && (
-        <Section title="Wrong-answer audit" note="Subtopics by wrong count — the highest-priority revision targets.">
+        <Section title="Wrong-answer audit" note="Subtopics by wrong count, highest-priority revision targets first.">
           <AuditList rows={lane.wrongAudit} kind="wrong" />
         </Section>
       )}
@@ -279,7 +279,7 @@ function LaneView({ lane, links, viewer }: { lane: Lane; links: TaxonomyLinks; v
       {lane.skipAudit.length > 0 && (
         <Section
           title="Skipped audit"
-          note={`Questions ${viewer === "self" ? "you saw" : "they SAW"} and left blank. Questions never reached are excluded — those are a pacing problem, reported above.`}
+          note={`Questions ${viewer === "self" ? "you saw" : "they SAW"} and left blank. Questions never reached are excluded. Those are a pacing problem, reported above.`}
         >
           <AuditList rows={lane.skipAudit} kind="skipped" />
         </Section>
@@ -315,7 +315,7 @@ function TimeCard({ lane }: { lane: Lane }) {
   return (
     <Section
       title="Time analysis"
-      note="Where the clock went, and what it bought. Medians throughout — dwell is wall-clock on the question, so one abandoned tab would move a mean."
+      note="Where the clock went, and what it bought. Medians throughout, because dwell is wall-clock on the question, so one abandoned tab would move a mean."
     >
       <div className="space-y-4 rounded-lg border bg-card p-4">
         <div>

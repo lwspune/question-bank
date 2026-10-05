@@ -24,7 +24,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "Question bank by chapter",
   description:
-    "Every chapter in the PYQ Vault question bank — NDA, NEET, JEE Mains, MHT-CET, CDS and board exams — with past-year questions, answers and worked solutions. Free to browse.",
+    "Every chapter in the PYQ Vault question bank (NDA, NEET, JEE Mains, MHT-CET, CDS and board exams) with past-year questions, answers and worked solutions. Free to browse.",
   alternates: { canonical: `${SITE_URL}/questions` },
 };
 

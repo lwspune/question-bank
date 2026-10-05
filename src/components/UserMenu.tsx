@@ -57,7 +57,7 @@ export default function UserMenu({
       <Popover.Trigger asChild>
         <button
           type="button"
-          aria-label={due > 0 ? `Open user menu — ${due} questions to fix` : "Open user menu"}
+          aria-label={due > 0 ? `Open user menu, ${due} questions to fix` : "Open user menu"}
           className="relative inline-flex h-9 w-9 items-center justify-center rounded-full border border-input bg-background text-sm font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
           <span aria-hidden>{initial}</span>
