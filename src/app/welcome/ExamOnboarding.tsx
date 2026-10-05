@@ -132,10 +132,10 @@ export default function ExamOnboarding({
           </p>
 
           <div className="mt-6">
-            <HowItWorks loop={loop} compact linkSteps={false} />
+            <HowItWorks loop={loop} compact linkSteps={false} variant="list" />
           </div>
 
-          <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:items-center">
+          <div className="mt-6 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:items-center">
             {/* w-full on a phone, flex-1 only from sm: in the stacked (column)
                 row, flex-1 collapsed the button to its text height (~24 px). */}
             <Button asChild variant="brand" size="lg" className="h-12 w-full rounded-xl text-base sm:w-auto sm:flex-1">
