@@ -31,7 +31,7 @@ import StageNudge from "./StageNudge";
 import QuestionCard from "../browse/QuestionCard";
 import { getQuestionOfDayId } from "@/lib/daily/service";
 import { queryQuestionsByIds, type QuestionRow } from "@/lib/questions/query";
-import { istDayKey } from "@/lib/email/dueNudge";
+import { istDayKey, istDayStartIso } from "@/lib/email/dueNudge";
 import { getOnboardingState } from "@/lib/profile/service";
 import {
   STAGE_LABELS,
@@ -98,7 +98,7 @@ export default async function MePage() {
   const notesHref = firstNotesHref(targets, notesSlugs);
   const now = new Date();
   const showStageNudge = needsStageNudge({ stage, now });
-  const daily = await loadQuestionOfDay(db, targets, examIds, now);
+  const daily = await loadQuestionOfDay(db, user.id, targets, examIds, now);
 
   return (
     <>
@@ -466,9 +466,15 @@ function EmptyLine({ text, href, cta }: { text: string; href: string; cta: strin
  * The first target exam that has past-year MCQs gives today's question; a
  * practice-only exam (no PYQs) is skipped for the next. Best-effort: any
  * failure means no card, never a broken dashboard.
+ *
+ * ONCE ANSWERED, GONE FOR THE DAY (owner, 2026-10-05): the card takes a lot of
+ * /me, so after the student has revealed it (a tapped option or Show answer,
+ * on any surface) the next load of /me leaves it out. It stays on screen for
+ * the visit in which they answer, so they still see the verdict and solution.
  */
 async function loadQuestionOfDay(
   db: ReturnType<typeof createSupabaseServerClient>,
+  userId: string,
   targets: readonly string[],
   examIds: Readonly<Record<string, string | null>>,
   now: Date
@@ -480,6 +486,7 @@ async function loadQuestionOfDay(
     const id = await getQuestionOfDayId(slug, examId, day);
     if (!id) continue;
     try {
+      if (await revealedToday(db, userId, id, now)) return null;
       const [row] = await queryQuestionsByIds(db, [id]);
       return row ?? null;
     } catch (e) {
@@ -488,6 +495,24 @@ async function loadQuestionOfDay(
     }
   }
   return null;
+}
+
+/** Whether this student revealed this question's answer since IST midnight. */
+async function revealedToday(
+  db: ReturnType<typeof createSupabaseServerClient>,
+  userId: string,
+  questionId: string,
+  now: Date
+): Promise<boolean> {
+  const { count, error } = await db
+    .from("user_activity")
+    .select("id", { count: "exact", head: true })
+    .eq("user_id", userId)
+    .eq("kind", "question_practiced")
+    .eq("ref_id", questionId)
+    .gte("created_at", istDayStartIso(now));
+  if (error) throw new Error(`revealedToday: ${error.message}`);
+  return (count ?? 0) > 0;
 }
 
 /** The hour of the day in India (0-23), for the greeting. */
