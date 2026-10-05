@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { safeNextPath } from "@/lib/auth/redirect";
+import { safeNextPath, signedInAuthPageRedirect } from "@/lib/auth/redirect";
 
 describe("safeNextPath", () => {
   it("returns the fallback for non-string input", () => {
@@ -38,5 +38,43 @@ describe("safeNextPath", () => {
     expect(safeNextPath("")).toBe("/browse");
     expect(safeNextPath("me")).toBe("/browse");
     expect(safeNextPath("javascript:alert(1)")).toBe("/browse");
+  });
+});
+
+describe("signedInAuthPageRedirect", () => {
+  it("sends a signed-in visitor on /login to /dashboard by default", () => {
+    expect(signedInAuthPageRedirect("/login", null)).toBe("/dashboard");
+  });
+
+  it("sends a signed-in visitor on /signup to /dashboard by default", () => {
+    expect(signedInAuthPageRedirect("/signup", null)).toBe("/dashboard");
+  });
+
+  it("honours a safe ?next=", () => {
+    expect(signedInAuthPageRedirect("/login", "/browse?exam=nda")).toBe(
+      "/browse?exam=nda"
+    );
+    expect(signedInAuthPageRedirect("/signup", "/pricing")).toBe("/pricing");
+  });
+
+  it("refuses an off-site ?next=", () => {
+    expect(signedInAuthPageRedirect("/login", "//evil.com")).toBe("/dashboard");
+    expect(signedInAuthPageRedirect("/login", "https://evil.com")).toBe(
+      "/dashboard"
+    );
+  });
+
+  it("never points back at an auth page (no redirect loop)", () => {
+    expect(signedInAuthPageRedirect("/login", "/login")).toBe("/dashboard");
+    expect(signedInAuthPageRedirect("/login", "/signup?next=/me")).toBe(
+      "/dashboard"
+    );
+    expect(signedInAuthPageRedirect("/signup", "/login/")).toBe("/dashboard");
+  });
+
+  it("leaves every other path alone", () => {
+    expect(signedInAuthPageRedirect("/dashboard", null)).toBeNull();
+    expect(signedInAuthPageRedirect("/account", "/me")).toBeNull();
+    expect(signedInAuthPageRedirect("/loginx", null)).toBeNull();
   });
 });

@@ -42,6 +42,39 @@ describe("middleware route guard", () => {
     expect([200, 204]).toContain(res.status);
   });
 
+  it("sends a signed-in visitor on /login into the site", async () => {
+    mockUser = { id: "00000000-0000-0000-0000-000000000001" };
+    const { updateSession } = await import("@/lib/supabase/middleware");
+    const res = await updateSession(
+      new NextRequest("http://localhost:3000/login")
+    );
+
+    expect(res.status).toBe(307);
+    expect(res.headers.get("location")).toBe("http://localhost:3000/dashboard");
+  });
+
+  it("honours a safe ?next= for a signed-in visitor on /signup", async () => {
+    mockUser = { id: "00000000-0000-0000-0000-000000000001" };
+    const { updateSession } = await import("@/lib/supabase/middleware");
+    const res = await updateSession(
+      new NextRequest("http://localhost:3000/signup?next=%2Fmock%2Fnda-2024-i")
+    );
+
+    expect(res.status).toBe(307);
+    expect(res.headers.get("location")).toBe(
+      "http://localhost:3000/mock/nda-2024-i"
+    );
+  });
+
+  it("still shows /signup to a signed-out visitor", async () => {
+    const { updateSession } = await import("@/lib/supabase/middleware");
+    const res = await updateSession(
+      new NextRequest("http://localhost:3000/signup?next=/me")
+    );
+
+    expect([200, 204]).toContain(res.status);
+  });
+
   it("allows authenticated users through to /dashboard", async () => {
     mockUser = { id: "00000000-0000-0000-0000-000000000001" };
     const { updateSession } = await import("@/lib/supabase/middleware");
@@ -59,6 +92,8 @@ describe("middleware matcher scope", () => {
   // traffic (/browse, /notes, /guide, ...) — which was ~40% of Vercel Active
   // CPU (the entire Edge runtime line). See the 2026-06-27 Decisions entry.
   const AUTH_PREFIXES = ["/dashboard", "/account", "/upload", "/uploads"];
+  // Exact paths only: a signed-in visitor here is sent into the site.
+  const AUTH_PAGES = ["/login", "/signup"];
 
   it("scopes the matcher to authenticated surfaces only — no public catch-all", async () => {
     const { config } = await import("@/middleware");
@@ -69,9 +104,10 @@ describe("middleware matcher scope", () => {
       // that ran middleware on every public page. Guard against regressing to it.
       expect(entry.startsWith("/((")).toBe(false);
       expect(
-        AUTH_PREFIXES.some(
-          (p) => entry === p || entry.startsWith(p + "/")
-        )
+        AUTH_PAGES.includes(entry) ||
+          AUTH_PREFIXES.some(
+            (p) => entry === p || entry.startsWith(p + "/")
+          )
       ).toBe(true);
     }
   });
@@ -82,5 +118,10 @@ describe("middleware matcher scope", () => {
       expect(config.matcher).toContain(prefix);
       expect(config.matcher).toContain(`${prefix}/:path*`);
     }
+  });
+
+  it("covers the sign-in and sign-up pages", async () => {
+    const { config } = await import("@/middleware");
+    for (const page of AUTH_PAGES) expect(config.matcher).toContain(page);
   });
 });
