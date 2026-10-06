@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { getOnboardingState } from "@/lib/profile/service";
+import { getOnboardingState, saveFirstTouch } from "@/lib/profile/service";
 import { needsOnboarding } from "@/lib/profile/onboarding";
 import { safeNextPath, signedInHome, type OrgRole } from "@/lib/auth/redirect";
 
@@ -33,6 +33,13 @@ export async function GET(request: NextRequest) {
           // doesn't overwrite the original source. Best-effort — never block sign-in.
           if (signupSource && !data.user.user_metadata?.signup_source) {
             await supabase.auth.updateUser({ data: { signup_source: signupSource } });
+          }
+          // First-touch channel, saved now rather than on /welcome, which a
+          // signup can skip. New accounts only; never blocks sign-in.
+          try {
+            await saveFirstTouch(supabase, data.user, request.cookies.get("qb_acq")?.value);
+          } catch (e) {
+            console.error("acquisition save at sign-in", e instanceof Error ? e.message : e);
           }
           // Route a student who hasn't done the one-time intent capture through
           // /welcome first, then on to where they were headed. /welcome
