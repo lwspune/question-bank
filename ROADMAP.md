@@ -68,7 +68,7 @@ Legend symbols come in three shapes (delimited `\(f_i\)`, bare math `f_1, f_2`, 
 
 ## Backfill ledger — three admin reads still resolve names from the FIRST 1,000 accounts only (2026-09-27)
 
-`auth.admin.listUsers({ perPage: 1000 })` returns one page and no error, so past 1,000 accounts (412 today) names silently turn into "(unknown)". The feedback-review fix moved the paged reader into `src/lib/supabase/authUsers.ts` (`listAllAuthUsers`) and switched `/dashboard/feedback` to it. **Still on one page:** `src/lib/mocks/adminStats.ts` (per-mock attempt names), `src/lib/entitlements/admin.ts` (two reads). `src/lib/members/admin.ts` is STAFF-only and does not need it. Not reworked: 360 = low risk, trivial swap, nothing wrong until 1,000 accounts; do it before then.
+`auth.admin.listUsers({ perPage: 1000 })` returns one page and no error, so past 1,000 accounts (412 today) names silently turn into "(unknown)". The feedback-review fix moved the paged reader into `src/lib/supabase/authUsers.ts` (`listAllAuthUsers`) and switched `/dashboard/feedback` to it. **Still on one page:** `src/lib/mocks/adminStats.ts` (per-mock attempt names), `src/lib/entitlements/admin.ts` (two reads). `src/lib/members/admin.ts` was wrongly listed as not needing it (createMember looked up ALL accounts, not staff); switched 2026-10-06 with the password-overwrite fix. Not reworked: 360 = low risk, trivial swap, nothing wrong until 1,000 accounts; do it before then.
 
 ## ~~Backfill ledger — two MHT-CET source files are copies of other sittings; Chemistry + Maths still carry the copies~~ — DONE 2026-09-28
 
