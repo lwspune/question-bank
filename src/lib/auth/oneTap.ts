@@ -92,7 +92,9 @@ export function oneTapDestination(state: OnboardingState, currentPath: string): 
  * in on the page, so Google's window no longer names the Supabase project the
  * redirect flow returns through (wunvtnqlzjrkvolslbnm.supabase.co).
  */
-export function googleButtonDestination(state: OnboardingState, next: string | null): string {
-  const target = safeNextPath(next, "/dashboard");
+export function googleButtonDestination(state: OnboardingState, next: string | null, home: string): string {
+  // `home` is signedInHome(role): no `next` lands the person on their own
+  // page rather than on /dashboard, which would only redirect them.
+  const target = safeNextPath(next, home);
   return needsOnboarding(state) ? `/welcome?next=${encodeURIComponent(target)}` : target;
 }

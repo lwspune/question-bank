@@ -9,8 +9,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
-import { safeNextPath } from "@/lib/auth/redirect";
+import { safeNextPath, signedInHome } from "@/lib/auth/redirect";
 import { cn } from "@/lib/utils";
+import { readOwnRole } from "@/components/auth/useGoogleOneTap";
 
 export default function LoginPage() {
   return (
@@ -28,9 +29,11 @@ function LoginSection() {
   const router = useRouter();
   const searchParams = useSearchParams();
   // Where to land after login: a validated `?next=` (used by the sign-up gates
-  // to return the student to the page they came from), else the dashboard —
-  // which itself routes org staff to their console and students to /me.
-  const next = safeNextPath(searchParams.get("next"), "/dashboard");
+  // to return the student to the page they came from), else null, which sends
+  // the person straight to their own home by role (signedInHome) instead of
+  // through /dashboard.
+  const asked = safeNextPath(searchParams.get("next"), "");
+  const next = asked === "" ? null : asked;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -43,7 +46,7 @@ function LoginSection() {
     setError(null);
 
     const supabase = createSupabaseBrowserClient();
-    const { error: signInError } = await supabase.auth.signInWithPassword({
+    const { data: signedIn, error: signInError } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
@@ -53,7 +56,8 @@ function LoginSection() {
       setSubmitting(false);
       return;
     }
-    router.replace(next);
+    const role = next ? null : await readOwnRole(signedIn.user.id).catch(() => null);
+    router.replace(next ?? signedInHome(role));
     router.refresh();
   }
 

@@ -20,6 +20,21 @@ export function safeNextPath(raw: unknown, fallback = "/browse"): string {
   return raw;
 }
 
+/** An org role, or null for a signed-in person with no org membership (a student). */
+export type OrgRole = "ADMIN" | "TEACHER" | null;
+
+/**
+ * Where a signed-in person lands when nothing else was asked for. The same
+ * routing /dashboard applies to whoever reaches it, so a caller that knows the
+ * role sends people straight there: before 2026-10-06 every student login went
+ * through /dashboard only to be redirected to /me (Clarity recordings).
+ */
+export function signedInHome(role: OrgRole): string {
+  if (role === "ADMIN") return "/dashboard";
+  if (role === "TEACHER") return "/browse";
+  return "/me";
+}
+
 const AUTH_PAGES = ["/login", "/signup"];
 
 function isAuthPage(path: string): boolean {

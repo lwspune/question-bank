@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { safeNextPath, signedInAuthPageRedirect } from "@/lib/auth/redirect";
+import { safeNextPath, signedInAuthPageRedirect, signedInHome } from "@/lib/auth/redirect";
 
 describe("safeNextPath", () => {
   it("returns the fallback for non-string input", () => {
@@ -76,5 +76,22 @@ describe("signedInAuthPageRedirect", () => {
     expect(signedInAuthPageRedirect("/dashboard", null)).toBeNull();
     expect(signedInAuthPageRedirect("/account", "/me")).toBeNull();
     expect(signedInAuthPageRedirect("/loginx", null)).toBeNull();
+  });
+});
+
+describe("signedInHome", () => {
+  // Where a signed-in person lands when nothing else was asked for. It mirrors
+  // /dashboard's own routing, so sending people here directly saves the hop
+  // through /dashboard that every student login took (Clarity, 2026-10-05).
+  it("sends a student (no org membership) to /me", () => {
+    expect(signedInHome(null)).toBe("/me");
+  });
+
+  it("sends a teacher to the bank", () => {
+    expect(signedInHome("TEACHER")).toBe("/browse");
+  });
+
+  it("sends an admin to the dashboard", () => {
+    expect(signedInHome("ADMIN")).toBe("/dashboard");
   });
 });
