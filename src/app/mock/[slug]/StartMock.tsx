@@ -12,6 +12,7 @@ import type { MockStartState, TestUnit } from "@/lib/mocks/quota";
 import type { PassCta } from "@/lib/billing/plans";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
+import { lockedPassLine } from "@/lib/mocks/passLine";
 
 /**
  * Starts (or resumes) an attempt, then routes into the runner.
@@ -32,8 +33,11 @@ export default function StartMock({
   startState = { kind: "open" },
   mockPass = null,
   unit = "mock",
+  isPastPaper = false,
 }: {
   slug: string;
+  /** A whole past paper: the pass card also offers its PDF download. */
+  isPastPaper?: boolean;
   /** A chapter test or a full mock: which free count this paper uses. */
   unit?: TestUnit;
   bilingual?: boolean;
@@ -78,7 +82,9 @@ export default function StartMock({
     </Button>
   );
   if (state.kind === "locked") {
-    return <MockPassCard limit={state.limit} unit={state.unit} pass={mockPass} slug={slug} />;
+    return (
+      <MockPassCard limit={state.limit} unit={state.unit} pass={mockPass} slug={slug} isPastPaper={isPastPaper} />
+    );
   }
   const freeNote =
     state.kind === "free" ? (
@@ -124,11 +130,13 @@ function MockPassCard({
   unit,
   pass,
   slug,
+  isPastPaper,
 }: {
   limit: number;
   unit: TestUnit;
   pass: PassCta | null;
   slug: string;
+  isPastPaper: boolean;
 }) {
   const plural = testNoun(unit, 2);
   return (
@@ -138,9 +146,7 @@ function MockPassCard({
         {limit > 0 ? `You've used your ${limit} free ${plural}` : `You've used your free ${plural}`}
       </p>
       <p className="mt-1 text-sm text-muted-foreground">
-        {pass
-          ? `Get the ${pass.label} for unlimited ${plural} for ${pass.length}, for ${pass.price}. `
-          : `A pass unlocks unlimited ${plural}. `}
+        {lockedPassLine({ pass, plural, isPastPaper })}
         Retaking a test you&apos;ve already started stays free.
       </p>
       <Button asChild variant="brand" size="lg" className="mt-4 w-full">

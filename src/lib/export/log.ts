@@ -28,8 +28,13 @@ export type ExportEvent = {
   orgId: string | null;
   kind: ExportKind;
   questionCount: number;
-  /** 'cart' = explicit question ids; 'filters' = a filtered slice of the bank. */
-  mode: "cart" | "filters";
+  /**
+   * 'cart' = explicit question ids; 'filters' = a filtered slice of the bank;
+   * 'mock' = a published past paper, downloaded whole (migration 0136).
+   */
+  mode: "cart" | "filters" | "mock";
+  /** The past paper, on a 'mock' export only. Public, so naming it is safe. */
+  mockId?: string;
   isStaff: boolean;
 };
 
@@ -42,6 +47,7 @@ export async function recordExportEvent(ev: ExportEvent): Promise<void> {
       kind: ev.kind,
       question_count: Math.max(0, Math.floor(ev.questionCount)),
       mode: ev.mode,
+      ...(ev.mockId ? { mock_id: ev.mockId } : {}),
       is_staff: ev.isStaff,
     });
     if (error) console.error("recordExportEvent", error.message);

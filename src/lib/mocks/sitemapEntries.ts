@@ -28,6 +28,7 @@
 
 import {
   MOCK_TYPES,
+  mockDownloadHref,
   mockTypeOf,
   mockTypeHref,
   type MockTypeSlug,
@@ -119,6 +120,13 @@ export function buildMockSitemapEntries(
     })
   );
 
+  // The download page lists past papers only, so only they create and date it.
+  const downloadEntries: MockSitemapEntry[] = exams.flatMap((e) => {
+    const iso = byExamType.get(`${e.examName}|past-papers`) ?? null;
+    if (!iso) return [];
+    return [{ path: mockDownloadHref(e.slug), iso, changeFrequency: "weekly" as const, priority: 0.75 }];
+  });
+
   return [
     {
       path: "/mock",
@@ -128,5 +136,6 @@ export function buildMockSitemapEntries(
     },
     ...examEntries,
     ...typeEntries,
+    ...downloadEntries,
   ];
 }

@@ -6,11 +6,25 @@
 import { describe, it, expect } from "vitest";
 import {
   extensionForContentType,
+  filenameFromDisposition,
   PDF_CONTENT_TYPE,
   DOCX_CONTENT_TYPE,
   XLSX_CONTENT_TYPE,
 } from "@/lib/export/fileType";
 import { PPTX_CONTENT_TYPE } from "@/lib/export/pptxParts";
+
+describe("filenameFromDisposition", () => {
+  it("takes the name the server chose", () => {
+    expect(filenameFromDisposition('attachment; filename="QP_JEE_Mains_2026.pdf"', "x.pdf")).toBe(
+      "QP_JEE_Mains_2026.pdf"
+    );
+  });
+
+  it("keeps the fallback when the header is missing or has no name", () => {
+    expect(filenameFromDisposition(null, "Answers.pdf")).toBe("Answers.pdf");
+    expect(filenameFromDisposition("attachment", "Answers.pdf")).toBe("Answers.pdf");
+  });
+});
 
 describe("extensionForContentType", () => {
   it("maps each file the route serves", () => {

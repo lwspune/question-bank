@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { resolveExportAccess, DOWNLOAD_PASS_SCOPE, type ExportKind } from "@/lib/export/access";
@@ -27,6 +27,8 @@ import { imageDataUris } from "@/lib/export/pdf/images";
 import { PPTX_CONTENT_TYPE } from "@/lib/export/pptxParts";
 import { DOCX_CONTENT_TYPE, PDF_CONTENT_TYPE, XLSX_CONTENT_TYPE } from "@/lib/export/fileType";
 import { buildPaperFile } from "@/lib/export/paperFile";
+import { getMockBySlug } from "@/lib/mocks/query";
+import { mockPaperExport } from "@/lib/mocks/paperExport";
 import { buildTagRows, tagRowsToAoa } from "@/lib/export/tagsSheet";
 import { getResourceTagsForQuestions } from "@/lib/links/getResourceTagsForQuestions";
 import { downloadImage } from "@/lib/storage/images";
@@ -64,11 +66,13 @@ type ExportOptions = {
   lang?: string;
 };
 
-// Either filter-mode or cart-mode; never both. Front-end picks one.
+// Filter-mode, cart-mode, or a past paper by slug (2026-10-07); exactly one.
 type Body = {
   kind?: ExportKind;
   filters?: Filters;
   questionIds?: string[];
+  /** A published past paper, downloaded whole as its paper or key. */
+  mockSlug?: unknown;
   options?: ExportOptions;
 };
 
@@ -152,7 +156,24 @@ export async function POST(request: NextRequest) {
     }
     const options = body.options;
     const isCartMode = Array.isArray(body.questionIds);
-    if (!body.filters && !isCartMode) {
+    const isMockMode = body.mockSlug !== undefined;
+    if (isMockMode) {
+      if (typeof body.mockSlug !== "string" || !body.mockSlug.trim()) {
+        return NextResponse.json({ error: "mockSlug must name a past paper" }, { status: 400 });
+      }
+      if (body.filters || isCartMode) {
+        return NextResponse.json(
+          { error: "Send a past paper, filters or questionIds, not more than one" },
+          { status: 400 }
+        );
+      }
+      if (kind !== "paper" && kind !== "key") {
+        return NextResponse.json(
+          { error: "A past paper downloads as its question paper or answer key" },
+          { status: 400 }
+        );
+      }
+    } else if (!body.filters && !isCartMode) {
       return NextResponse.json(
         { error: "Either filters or questionIds is required" },
         { status: 400 }
@@ -186,7 +207,35 @@ export async function POST(request: NextRequest) {
     const supabase = createSupabaseServerClient();
 
     let questions: QuestionRow[];
-    if (isCartMode) {
+    // A past paper: its own questions in printed order, headed by its sections.
+    let mockId: string | undefined;
+    let mockTitle: string | undefined;
+    let sectionOf: Map<string, string> | undefined;
+    if (isMockMode) {
+      const mock = await getMockBySlug(createSupabaseAnonClient(), String(body.mockSlug).trim());
+      if (!mock) {
+        return NextResponse.json({ error: "That paper is not available." }, { status: 404 });
+      }
+      const paper = mockPaperExport(mock);
+      if (!paper.ok) {
+        return NextResponse.json({ error: paper.reason }, { status: 400 });
+      }
+      questions = await queryQuestionsByIds(supabase, paper.questionIds);
+      // A paper with a question missing would print wrong numbers against the
+      // real sitting, so it is refused rather than served short.
+      if (questions.length !== paper.questionIds.length) {
+        console.error(
+          `export: paper ${mock.slug} resolved ${questions.length} of ${paper.questionIds.length} questions`
+        );
+        return NextResponse.json(
+          { error: "This paper can't be downloaded right now. Please try again later." },
+          { status: 409 }
+        );
+      }
+      mockId = mock.id;
+      mockTitle = paper.title;
+      sectionOf = paper.sectionOf;
+    } else if (isCartMode) {
       const ids = (body.questionIds ?? []).filter(
         (s): s is string => typeof s === "string" && s.length > 0
       );
@@ -240,9 +289,10 @@ export async function POST(request: NextRequest) {
     }
 
     const title =
-      typeof options.title === "string" && options.title.trim()
+      mockTitle ??
+      (typeof options.title === "string" && options.title.trim()
         ? options.title.trim()
-        : "PYQ Vault Export";
+        : "PYQ Vault Export");
     const includeSolutions = !!options.includeSolutions;
     const groupBySubtopic = !!options.groupBySubtopic;
     const includeSourceTag = !!options.includeSourceTag;
@@ -333,7 +383,15 @@ export async function POST(request: NextRequest) {
     const built = await buildPaperFile(access.format ?? "docx", {
       buildPdf: async () => {
         const images = await imageDataUris(createSupabaseAdminClient(), kind, questions);
-        const common = { title, questions, images, groupBySubtopic, branded: access.branded, head: pdfHead() };
+        const common = {
+          title,
+          questions,
+          images,
+          groupBySubtopic,
+          sectionOf,
+          branded: access.branded,
+          head: pdfHead(),
+        };
         const html =
           kind === "paper"
             ? buildPaperHtml({ ...common, includeSourceTag })
@@ -347,6 +405,7 @@ export async function POST(request: NextRequest) {
               questions,
               imageBytes: await fetchImageBytes(questions),
               groupBySubtopic,
+              sectionOf,
               includeSourceTag,
               branded: access.branded,
             })
@@ -355,6 +414,7 @@ export async function POST(request: NextRequest) {
               questions,
               includeSolutions,
               groupBySubtopic,
+              sectionOf,
               branded: access.branded,
             }),
       onPdfFailure: (err) => console.error("export pdf failed, serving docx", err),
@@ -380,7 +440,8 @@ export async function POST(request: NextRequest) {
       orgId: member?.orgId ?? null,
       kind,
       questionCount: questions.length,
-      mode: isCartMode ? "cart" : "filters",
+      mode: isMockMode ? "mock" : isCartMode ? "cart" : "filters",
+      mockId,
       isStaff,
     });
     return new NextResponse(fileBuf as unknown as ArrayBuffer, {

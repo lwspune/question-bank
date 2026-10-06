@@ -30,12 +30,16 @@ declare global {
   }
 }
 
-/** Where a checkout started. The download box buys in place since 2026-10-04. */
-export type CheckoutSurface = "download_box" | "pricing";
+/**
+ * Where a checkout started. The download box buys in place since 2026-10-04;
+ * "paper_download" is the past-paper box on /mock pages (2026-10-07).
+ */
+export type CheckoutSurface = "download_box" | "paper_download" | "pricing";
 
 /** The paywall gate the server logs for each surface (see checkoutGate). */
 const GATE: Record<CheckoutSurface, "teacher" | "pricing"> = {
   download_box: "teacher",
+  paper_download: "teacher",
   pricing: "pricing",
 };
 

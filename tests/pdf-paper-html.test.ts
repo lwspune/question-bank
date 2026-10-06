@@ -179,6 +179,22 @@ describe("buildPaperHtml", () => {
     expect(html.match(/class="subtopic"/g)).toHaveLength(1);
   });
 
+  it("heads a past paper by its own sections, on paper and key", () => {
+    const qs = [q({ id: "p1" }), q({ id: "p2" }), q({ id: "c1" })];
+    const sectionOf = new Map([
+      ["p1", "Physics"],
+      ["p2", "Physics"],
+      ["c1", "Chemistry"],
+    ]);
+    const paper = buildPaperHtml({ ...base, questions: qs, sectionOf });
+    expect(paper.match(/class="subtopic"/g)).toHaveLength(2);
+    expect(paper.indexOf(">Physics<")).toBeLessThan(paper.indexOf(">Chemistry<"));
+    expect(paper).not.toContain(">Addition<");
+    const key = buildKeyHtml({ ...base, questions: qs, sectionOf, includeSolutions: true });
+    expect(key.match(/class="subtopic"/g)).toHaveLength(2);
+    expect(key).toContain(">Chemistry<");
+  });
+
   it("brands a pass paper and leaves an unbranded one clean", () => {
     expect(buildPaperHtml({ ...base, questions: [q()], branded: true })).toContain('class="watermark"');
     expect(buildPaperHtml({ ...base, questions: [q()], branded: false })).not.toContain(

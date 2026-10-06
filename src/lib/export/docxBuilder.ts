@@ -27,7 +27,7 @@ import { parseTableBlocks, type TableBlock } from "@/components/math/parseTableB
 import { textWithMathToOmmlSegments } from "./ommlBuilder";
 import { readImageDimensions, fitWithinBox } from "./imageDimensions";
 import { groupBySet, type Group } from "./groupBySet";
-import { headingsOnChange } from "./subtopicHeadings";
+import { headingLabel, headingsOnChange } from "./subtopicHeadings";
 import { stripPassageCountPhrase } from "./stripPassageCount";
 import { formatSourceTag } from "./sourceTag";
 import { WATERMARK_PNG_BASE64, WATERMARK_PX } from "./watermark.generated";
@@ -185,6 +185,11 @@ export type QuestionPaperInput = {
    * ./sourceTag.
    */
   includeSourceTag?: boolean;
+  /**
+   * A past paper downloaded whole: question id → its section ("Physics").
+   * When given, the headings are the paper's sections, not subtopics.
+   */
+  sectionOf?: ReadonlyMap<string, string>;
   /** PYQ Vault watermark + footer on every page — pass downloads only (see resolveExportAccess). */
   branded?: boolean;
 };
@@ -197,12 +202,15 @@ export type AnswerKeyInput = {
   imageBytes?: Map<string, Buffer>;
   /** When true, print a bold subtopic heading before each new subtopic run. */
   groupBySubtopic?: boolean;
+  /**
+   * A past paper downloaded whole: question id → its section ("Physics").
+   * When given, the headings are the paper's sections, not subtopics.
+   */
+  sectionOf?: ReadonlyMap<string, string>;
   /** PYQ Vault watermark + footer on every page — pass downloads only (see resolveExportAccess). */
   branded?: boolean;
 };
 
-// Heading text for a question with no subtopic — keeps the grouping total.
-const NO_SUBTOPIC_LABEL = "Other";
 
 // Maximum render boxes (px). Images smaller than the cap render at their
 // natural size; larger images scale-to-fit while preserving aspect ratio.
@@ -238,15 +246,15 @@ export async function buildQuestionPaper(
   // set stays under one heading; the label comes from the group's first
   // question (set siblings are co-located on one subtopic by invariant).
   const groups = groupBySet(input.questions);
-  const headings = input.groupBySubtopic
-    ? headingsOnChange(groups.map((g) => groupSubtopicLabel(g)))
+  const headings = input.groupBySubtopic || input.sectionOf
+    ? headingsOnChange(groups.map((g) => groupHeadingLabel(g, input.sectionOf)))
     : [];
 
   const includeSourceTag = !!input.includeSourceTag;
   let position = 1;
   for (let gi = 0; gi < groups.length; gi++) {
     const group = groups[gi];
-    if (input.groupBySubtopic && headings[gi]) {
+    if (headings[gi]) {
       children.push(subtopicHeading(headings[gi]!));
     }
     if (group.kind === "single") {
@@ -319,15 +327,15 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
   );
   children.push(blank());
 
-  const keyHeadings = input.groupBySubtopic
+  const keyHeadings = input.groupBySubtopic || input.sectionOf
     ? headingsOnChange(
-        input.questions.map((q) => q.subtopic?.name ?? NO_SUBTOPIC_LABEL)
+        input.questions.map((q) => headingLabel(q, input.sectionOf))
       )
     : [];
 
   for (let i = 0; i < input.questions.length; i++) {
     const q = input.questions[i];
-    if (input.groupBySubtopic && keyHeadings[i]) {
+    if (keyHeadings[i]) {
       children.push(subtopicHeading(keyHeadings[i]!));
     }
     if (q.questionFormat === "subjective") {
@@ -441,10 +449,9 @@ function titleParagraph(title: string): Paragraph {
   });
 }
 
-/** Subtopic of a set-group, taken from its first question (siblings co-located). */
-function groupSubtopicLabel(group: Group): string {
-  const q = group.kind === "single" ? group.question : group.questions[0];
-  return q.subtopic?.name ?? NO_SUBTOPIC_LABEL;
+/** Heading of a set-group, taken from its first question (siblings co-located). */
+function groupHeadingLabel(group: Group, sectionOf?: ReadonlyMap<string, string>): string {
+  return headingLabel(group.kind === "single" ? group.question : group.questions[0], sectionOf);
 }
 
 /** Bold, underlined section heading printed before a new subtopic run. */
