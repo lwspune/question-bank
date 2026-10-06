@@ -103,11 +103,19 @@ function bankLoop(exam: ExamEntry | null): Loop {
 }
 
 /** The loop for a student's primary exam; null (no exam chosen) gets the
- *  general mock loop from the whole catalogue. */
+ *  general mock loop from the whole catalogue. A board exam keeps the book
+ *  loop even with mocks: its mocks are chapter tests, and the mock loop
+ *  promises "the exact questions of one sitting". */
 export function loopFor(exam: ExamEntry | null | undefined): Loop {
   if (!exam) return mockLoop(null);
-  if (exam.hasMocks === true) return mockLoop(exam);
+  if (hasPaperMocks(exam)) return mockLoop(exam);
   return bankLoop(exam);
+}
+
+/** Mocks that are past papers: a board exam's mocks are chapter tests. The
+ *  practice-first arm and its growth readout both key on this. */
+export function hasPaperMocks(exam: ExamEntry): boolean {
+  return exam.hasMocks === true && exam.boardExam !== true;
 }
 
 /**
@@ -173,9 +181,9 @@ function practiceFirstLoop(exam: ExamEntry): Loop {
   };
 }
 
-/** The welcome step's loop for one arm. Exams without mocks are unaffected. */
+/** The welcome step's loop for one arm. Exams without paper mocks are unaffected. */
 export function loopForArm(exam: ExamEntry | null | undefined, arm: OnboardingArm): Loop {
-  if (arm === "practice-first" && exam && exam.hasMocks === true) return practiceFirstLoop(exam);
+  if (arm === "practice-first" && exam && hasPaperMocks(exam)) return practiceFirstLoop(exam);
   return loopFor(exam);
 }
 

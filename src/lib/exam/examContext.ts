@@ -289,6 +289,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     mixedFormats: true, // 2,582 subjective vs 268 MCQ
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/mh-hsc-12", // exam hub: "coming soon" until notes ship
+    hasMocks: true, // 43 chapter tests published 2026-10-06 (no full-paper mocks: see the caveat below)
     // NOT practiceOnly since 2026-08-13: Class 12 IS a board year and the board
     // PYQ corpus is now in — 317 questions across ALL 15 Maths chapters, every
     // sitting 2015-2025 (no 2021, the exams were cancelled). The flag tracks
@@ -389,6 +390,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     mixedFormats: true, // 760 MCQ vs 2,696 subjective (re-measured 2026-09-08, Physics complete)
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/cbse-12", // exam hub: "coming soon" until notes ship
+    hasMocks: true, // 37 chapter tests published 2026-10-06
     // NOT practiceOnly since 2026-08-21: Class 12 IS a board year and the board
     // PYQ corpus is in — 1,766 questions from all 78 papers of 2022-2026, beside
     // the 1,414 NCERT textbook rows on the SAME chapters, separated by
@@ -487,6 +489,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     mixedFormats: true, // 1,390 subjective vs 245 MCQ
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/mh-ssc-10", // exam hub: "coming soon" until notes ship
+    hasMocks: true, // 12 chapter tests published 2026-10-06
     // NOT practiceOnly: Class 10 IS a board year → these are real past-year board
     // papers (question_kind='pyq'), so /browse defaults to the PYQ view.
     boardExam: true, // FLIPPED 2026-09-03. This read false with the comment "PYQ

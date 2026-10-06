@@ -4,7 +4,8 @@
  * disagree across surfaces. STUDENT_EDUCATION_SPEC.md §3.
  *
  * The loop is chosen from the registry FLAGS, never from prose: an exam with
- * mocks gets the mock loop, a board exam without mocks gets the book loop,
+ * mocks gets the mock loop, a board exam gets the book loop (even with chapter
+ * tests published: the mock loop promises "the exact questions of one sitting"),
  * and a practice-only exam gets the bank loop with /browse as its first step.
  */
 import { describe, it, expect } from "vitest";
@@ -32,10 +33,10 @@ describe("loopFor", () => {
     expect(stepsOf(loop)).toEqual(["/mock/exam/nda", "/drill?from=start", "/me/map"]);
   });
 
-  it("a board exam without mocks gets the bank loop, entered through its book reader", () => {
+  it("a board exam gets the bank loop, entered through its book reader, even with chapter tests", () => {
     const exam = getExamBySlug("mh-hsc-12");
     expect(exam?.boardExam).toBe(true);
-    expect(exam?.hasMocks).not.toBe(true);
+    expect(exam?.hasMocks).toBe(true);
     const loop = loopFor(exam);
     expect(loop.kind).toBe("bank");
     expect(stepsOf(loop)).toEqual(["/board/mh-hsc-12", "/browse", "/saved"]);
@@ -57,13 +58,11 @@ describe("loopFor", () => {
     expect(stepsOf(loop)).toEqual(["/mock", "/drill?from=start", "/me/map"]);
   });
 
-  it("mocks win over the board flag when an exam carries both", () => {
-    const synthetic: ExamEntry = {
-      ...(getExamBySlug("mh-hsc-12") as ExamEntry),
-      hasMocks: true,
-    };
-    expect(loopFor(synthetic).kind).toBe("mock");
-    expect(stepsOf(loopFor(synthetic))[0]).toBe("/mock/exam/mh-hsc-12");
+  it("the board flag wins over mocks: a board exam's mocks are chapter tests, not past papers", () => {
+    for (const exam of EXAM_REGISTRY.filter((e) => e.boardExam === true)) {
+      expect(loopFor({ ...exam, hasMocks: true }).kind).toBe("bank");
+      expect(stepsOf(loopFor({ ...exam, hasMocks: true }))[0]).toBe(`/board/${exam.slug}`);
+    }
   });
 
   it("every registry exam yields three complete steps with same-origin hrefs", () => {
