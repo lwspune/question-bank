@@ -20,23 +20,24 @@ import {
  */
 describe("SUPERADMIN_TABS", () => {
   it("has a stable id set", () => {
-    expect(SUPERADMIN_TABS.map((t) => t.id)).toEqual(["orgs", "teachers", "contact"]);
+    expect(SUPERADMIN_TABS.map((t) => t.id)).toEqual(["teachers", "contact"]);
   });
 
   it("gives every tab a non-empty label", () => {
     for (const t of SUPERADMIN_TABS) expect(t.label.trim().length).toBeGreaterThan(0);
   });
 
-  it("opens on Organisations", () => {
-    // Deliberate: the console's identity is cross-org management, so it always
-    // opens the same way rather than jumping to whichever queue has unread
-    // items. The queues advertise themselves through count badges instead.
-    expect(DEFAULT_TAB_ID).toBe("orgs");
+  it("opens on the first queue, always", () => {
+    // Deliberate: the console always opens the same way rather than jumping to
+    // whichever queue has unread items; the queues advertise themselves through
+    // count badges instead. Organisations left the strip on 2026-10-06 for their
+    // own page (/superadmin/orgs).
+    expect(DEFAULT_TAB_ID).toBe("teachers");
     expect(SUPERADMIN_TABS[0].id).toBe(DEFAULT_TAB_ID);
   });
 
   it("only declares ids the union permits", () => {
-    const ids: SuperadminTabId[] = ["orgs", "teachers", "contact"];
+    const ids: SuperadminTabId[] = ["teachers", "contact"];
     for (const t of SUPERADMIN_TABS) expect(ids).toContain(t.id);
   });
 });

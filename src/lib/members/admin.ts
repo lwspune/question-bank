@@ -55,16 +55,15 @@ export async function listMembers(orgId: string): Promise<ListMembersResult> {
       .eq("org_id", orgId);
     if (error) return { kind: "error", message: error.message };
 
-    // Hydrate from auth.users via the admin API. listUsers paginates;
-    // for our scale (single-digit teachers per org) one page is enough.
-    const { data: usersPage, error: listErr } =
-      await admin.auth.admin.listUsers({ perPage: 1000 });
-    if (listErr) return { kind: "error", message: listErr.message };
+    // Hydrate from auth.users. PAGED: staff accounts sit among every student
+    // account, so one 1,000-row page would turn a member into "(unknown)".
+    const allUsers = await listAllAuthUsers(admin);
+    const signIns = await lastSignInsFor(admin, (rows ?? []).map((r) => r.user_id as string));
 
     // Branch assignments for this org's members (migration 0057), keyed by user.
     const branchIdsByUser = await getBranchAssignments(admin, orgId);
 
-    const byId = new Map(usersPage.users.map((u) => [u.id, u]));
+    const byId = new Map(allUsers.map((u) => [u.id, u]));
     const members: MemberRow[] = (rows ?? []).map((r) => {
       const u = byId.get(r.user_id);
       const meta = (u?.user_metadata ?? {}) as { name?: string };
@@ -73,7 +72,7 @@ export async function listMembers(orgId: string): Promise<ListMembersResult> {
         email: u?.email ?? "(unknown)",
         name: meta.name ?? null,
         role: r.role as MemberRole,
-        lastSignInAt: u?.last_sign_in_at ?? null,
+        lastSignInAt: signIns.get(r.user_id) ?? null,
         branchIds: branchIdsByUser.get(r.user_id) ?? [],
       };
     });
@@ -404,4 +403,16 @@ export async function updateMemberRole(
   } catch (err) {
     return { kind: "error", message: err instanceof Error ? err.message : String(err) };
   }
+}
+
+/** last_sign_in_at for a few user ids (AuthUserLite does not carry it). */
+async function lastSignInsFor(admin: SupabaseClient, ids: string[]) {
+  const out = new Map<string, string | null>();
+  await Promise.all(
+    ids.map(async (id) => {
+      const { data } = await admin.auth.admin.getUserById(id);
+      out.set(id, data.user?.last_sign_in_at ?? null);
+    })
+  );
+  return out;
 }

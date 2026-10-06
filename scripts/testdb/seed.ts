@@ -147,7 +147,14 @@ async function main(): Promise<void> {
   console.log("extra taxonomy (NDA branch): ok");
 
   // ── 2) org ────────────────────────────────────────────────────────────────
-  const orgId = await ensure(admin, "organizations", { name: SEED_ORG_NAME }, { name: SEED_ORG_NAME });
+  // deletion_protected mirrors prod (migration 0135): seeding runs AFTER the
+  // migrations on a reset, so the migration's UPDATE never sees this row.
+  const orgId = await ensure(
+    admin,
+    "organizations",
+    { name: SEED_ORG_NAME },
+    { name: SEED_ORG_NAME, deletion_protected: true }
+  );
   console.log(`org "${SEED_ORG_NAME}": ${orgId}`);
 
   // ── 3) seed owner user + ADMIN membership ─────────────────────────────────
