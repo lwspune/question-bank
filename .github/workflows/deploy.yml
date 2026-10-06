@@ -1,0 +1,83 @@
+# Build the site on GitHub, then hand Vercel the finished output to host.
+#
+# WHY (2026-10-07). Vercel bills every build by the CPU minute on any machine:
+# about $0.35 a push on Enhanced, about a third of the Vercel bill. Standard
+# (8 GB) cannot hold the compile step: it was killed out of memory on 10-04 and
+# again on 10-06, 38 minutes in. This repo is public, so GitHub's standard
+# runner (4 CPUs, 16 GB) is free, and Vercel supports deploying a prebuilt
+# output (`vercel build` + `vercel deploy --prebuilt`).
+#
+# ROLL-OUT. Manual only for now: run it from the Actions tab, and it deploys a
+# PREVIEW unless you pick production. Once a preview has been checked against
+# the live site, a later commit adds the push trigger and Vercel's own Git
+# builds get switched off (otherwise every push is built twice and billed once
+# anyway). Fallback at any time: switch Vercel's Git builds back on.
+#
+# SECRETS (Settings -> Secrets and variables -> Actions):
+#   VERCEL_TOKEN       vercel.com -> Account Settings -> Tokens
+#   VERCEL_ORG_ID      Vercel team Settings -> General -> Team ID
+#   VERCEL_PROJECT_ID  the question-bank project -> Settings -> General -> Project ID
+# `vercel pull` brings the project's environment variables (including the
+# database service key) onto the runner, so this must never run for a fork's
+# pull request. workflow_dispatch can only be started by people with write access.
+
+name: Deploy (GitHub build)
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "Where to deploy"
+        type: choice
+        options: [preview, production]
+        default: preview
+
+# One deploy at a time; a second waits rather than racing the first.
+concurrency:
+  group: deploy-${{ inputs.target }}
+  cancel-in-progress: false
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+  VERCEL_CLI: vercel@62.4.0
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      # Next's build cache (compiled modules), kept between runs as Vercel does.
+      - uses: actions/cache@v4
+        with:
+          path: .next/cache
+          key: nextcache-${{ hashFiles('package-lock.json') }}-${{ github.sha }}
+          restore-keys: nextcache-${{ hashFiles('package-lock.json') }}-
+
+      - name: Pull Vercel project settings and environment
+        run: npx --yes "$VERCEL_CLI" pull --yes --environment=${{ inputs.target }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      # VERCEL=1 makes the build produce exactly what a Vercel-hosted build
+      # does: next.config.mjs renders 4 pages at a time, and every notes page is
+      # prebuilt (src/lib/notes/prerender.ts). Set explicitly rather than trusting
+      # the CLI to set it.
+      - name: Build
+        env:
+          VERCEL: "1"
+          NOTES_FULL_PRERENDER: "1"
+        run: npx --yes "$VERCEL_CLI" build ${{ inputs.target == 'production' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      # Not piped: GitHub's default shell does not fail a pipeline, so `| tee`
+      # would report a failed deploy as a success. The URL is the CLI's stdout.
+      - name: Deploy the prebuilt output
+        run: |
+          url=$(npx --yes "$VERCEL_CLI" deploy --prebuilt ${{ inputs.target == 'production' && '--prod' || '' }} --token=${{ secrets.VERCEL_TOKEN }})
+          echo "$url"
+          echo "Deployed ${{ inputs.target }}: $url" >> "$GITHUB_STEP_SUMMARY"
