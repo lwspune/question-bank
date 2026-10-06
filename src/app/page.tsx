@@ -22,6 +22,7 @@ import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
+import { signedInHome } from "@/lib/auth/redirect";
 import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
 import { countSummary } from "@/lib/exam/questionCounts";
 import { examCardAnchor, homeExamChips } from "@/lib/exam/homeChips";
@@ -188,11 +189,12 @@ const SURFACES: SurfacePreview[] = [
 
 export default async function Home() {
   // Signed-in users keep their existing fast paths — only anonymous visitors
-  // see the landing page. Admins → dashboard; orphan students → dashboard.
+  // see the landing page. Each goes straight to their own home (signedInHome),
+  // not through /dashboard, which would only redirect them again.
   const member = await getSessionMember();
-  if (member) redirect("/dashboard");
+  if (member) redirect(signedInHome(member.role === "ADMIN" || member.role === "TEACHER" ? member.role : null));
   const user = await getSessionUser();
-  if (user) redirect("/dashboard");
+  if (user) redirect(signedInHome(null));
 
   // Cached (24h) — the two session reads above make this route dynamic, so
   // without the cache these 12 head-counts would run on every anonymous hit.

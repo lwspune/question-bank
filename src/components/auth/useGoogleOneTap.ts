@@ -15,6 +15,7 @@ import {
   DOWNLOAD_BOX_SIGNUP_SOURCE,
   ONE_TAP_SIGNUP_SOURCE,
 } from "@/lib/auth/oneTap";
+import type { OrgRole } from "@/lib/auth/redirect";
 
 /**
  * Google One Tap, offered at the answer-reveal wall. Rules live in
@@ -116,6 +117,21 @@ export async function readOwnOnboardingState(userId: string): Promise<Onboarding
     .eq("user_id", userId)
     .maybeSingle();
   return { onboardedAt: profile?.onboarded_at ?? null };
+}
+
+/**
+ * The signed-in person's org role, through their own session (RLS: a member
+ * reads their own row). No row is a student. Read alongside the onboarding
+ * state so a sign-in lands on the person's home without a detour.
+ */
+export async function readOwnRole(userId: string): Promise<OrgRole> {
+  const { data } = await createSupabaseBrowserClient()
+    .from("org_members")
+    .select("role")
+    .eq("user_id", userId)
+    .maybeSingle();
+  const role = data?.role;
+  return role === "ADMIN" || role === "TEACHER" ? role : null;
 }
 
 async function completeSignIn(credential: string, rawNonce: string): Promise<string | null> {

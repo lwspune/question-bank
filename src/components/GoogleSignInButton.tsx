@@ -19,7 +19,8 @@ export default function GoogleSignInButton({
   signupSource,
   className,
 }: {
-  next?: string;
+  /** Where to land; null lets the callback choose the person's home by role. */
+  next?: string | null;
   /** Attribution (e.g. "quiz") — forwarded to the callback, which stamps it onto
    *  user_metadata.signup_source for first-time OAuth sign-ups. */
   signupSource?: string;
@@ -33,7 +34,8 @@ export default function GoogleSignInButton({
     setError(null);
     const supabase = createSupabaseBrowserClient();
     const src = signupSource ? `&signup_source=${encodeURIComponent(signupSource)}` : "";
-    const redirectTo = `${window.location.origin}/api/auth/callback?next=${encodeURIComponent(next)}${src}`;
+    const query = next === null ? src.replace(/^&/, "") : `next=${encodeURIComponent(next)}${src}`;
+    const redirectTo = `${window.location.origin}/api/auth/callback${query ? `?${query}` : ""}`;
     const { error: oauthError } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: { redirectTo },

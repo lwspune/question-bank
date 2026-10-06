@@ -9,9 +9,11 @@ import GoogleSignInButton from "@/components/GoogleSignInButton";
 import {
   googleButtonAvailable,
   readOwnOnboardingState,
+  readOwnRole,
   renderGoogleButton,
 } from "@/components/auth/useGoogleOneTap";
 import { googleButtonDestination } from "@/lib/auth/oneTap";
+import { signedInHome } from "@/lib/auth/redirect";
 
 /**
  * "Continue with Google" on /login and /signup, drawn by Google itself.
@@ -30,7 +32,8 @@ export default function GoogleAuthButton({
   next,
   signupSource,
 }: {
-  next: string;
+  /** Where to land; null sends the person to their own home by role. */
+  next: string | null;
   /** Stamped on a brand-new account only, as the OAuth callback does. */
   signupSource?: string;
 }) {
@@ -47,12 +50,13 @@ export default function GoogleAuthButton({
       {
         onSignedIn: (userId) => {
           setSigningIn(true);
-          void readOwnOnboardingState(userId)
-            .catch(() => ({ onboardedAt: null }))
-            .then((state) => {
-              router.replace(googleButtonDestination(state, next));
-              router.refresh();
-            });
+          void Promise.all([
+            readOwnOnboardingState(userId).catch(() => ({ onboardedAt: null })),
+            readOwnRole(userId).catch(() => null),
+          ]).then(([state, role]) => {
+            router.replace(googleButtonDestination(state, next, signedInHome(role)));
+            router.refresh();
+          });
         },
         onError: () => {
           toast.error("Google sign-in didn't complete. Please try again.");

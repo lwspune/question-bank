@@ -82,24 +82,22 @@ describe("oneTapDestination", () => {
 
 describe("googleButtonDestination", () => {
   it("sends a brand-new account through /welcome, then on to next", () => {
-    expect(googleButtonDestination({ onboardedAt: null }, "/mock/nda-2024-i")).toBe(
+    expect(googleButtonDestination({ onboardedAt: null }, "/mock/nda-2024-i", "/me")).toBe(
       "/welcome?next=%2Fmock%2Fnda-2024-i"
     );
   });
 
   it("sends an onboarded account straight to next", () => {
-    expect(googleButtonDestination({ onboardedAt: "2026-09-01T00:00:00Z" }, "/browse?x=1")).toBe(
+    expect(googleButtonDestination({ onboardedAt: "2026-09-01T00:00:00Z" }, "/browse?x=1", "/me")).toBe(
       "/browse?x=1"
     );
   });
 
-  it("falls back to /dashboard for a missing or off-site next", () => {
+  it("falls back to the person's home for a missing or off-site next", () => {
     const onboarded = { onboardedAt: "2026-09-01T00:00:00Z" };
-    expect(googleButtonDestination(onboarded, null)).toBe("/dashboard");
-    expect(googleButtonDestination(onboarded, "//evil.com")).toBe("/dashboard");
-    expect(googleButtonDestination({ onboardedAt: null }, "https://evil.com")).toBe(
-      "/welcome?next=%2Fdashboard"
-    );
+    expect(googleButtonDestination(onboarded, null, "/me")).toBe("/me");
+    expect(googleButtonDestination(onboarded, "//evil.com", "/dashboard")).toBe("/dashboard");
+    expect(googleButtonDestination({ onboardedAt: null }, "https://evil.com", "/me")).toBe("/welcome?next=%2Fme");
   });
 });
 
