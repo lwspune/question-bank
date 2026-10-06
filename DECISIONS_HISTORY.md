@@ -15,6 +15,20 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-10-06 — MPSC chapter tests: 68 written as DRAFTS across six MPSC exams by the existing builder (`build-sectional.ts --exam=<mpsc slug>`). Branch `feat/mpsc-chapter-tests`.**
+
+The user asked for "sectional tests for mpsc" and picked option (b) of three: Prelims plus Mains per exam (over Prelims only, and over Mains pooled across the five language-paper exams).
+
+**What was built.** Group B & C Prelims 14 · State Services Prelims 15 · ASO Mains 16 · STI Mains 13 · PSI Mains 8 · State Services Mains 2 · Group B Combined Mains 0 (no chapter reaches 20 usable questions). Every test passed the build gate (PUBLIC, one correct option, still in its chapter, no shared context) in a dry run and again on `--apply`. All are `status='draft'`; publishing is the user's (`--apply --publish`, or a status flip).
+
+**Rules, inherited from NDA/CDS (2026-10-05):** 20-question floor (10/15/20-question tests as the pool grows), unrated counted as moderate (no MPSC row is unrated), Current Affairs left out (stale). Chapter order is by pool size: MPSC has no guide grid to weight by.
+
+**Prelims:** each subject is its own test group with its own label (the GK pattern), because the booklet prints one section across all subjects. Marking and pace are the paper's: GAT +1/-0.25 at 36 s a question, GS I +2/-0.5 at 72 s. Cancelled questions drop out on their own: migration 0119 forbids a key on a cancelled question, so it has no correct option and the eligibility rule excludes it. The tests are bilingual with no code change: the runner reads `bilingual` from EXAM_REGISTRY by exam name.
+
+**Mains:** the full-paper blueprint is built per paper (200-question 2009-2012 booklets ran 2 hours, later ones 1 hour), so a chapter test needed its own: `mainsChapterBlueprint(exam)` in `scripts/mocks/mpscMainsSittings.ts`, the 100-question shape. Every printed scheme runs at 36 s a question; State Services keeps its -1/3, the rest -1/4. Same paper code and section key as the full-paper mocks, Marathi and English only. TDD in `tests/mock-mpsc-mains-sittings.test.ts` (failed first on the missing function).
+
+**Left out, logged on the ROADMAP:** Mains Comprehension (all five exams) stores its passage in `context` with NO `set_id`, so neither loose mode (context-bound) nor set mode (needs set_id) can take it. Group B & C has near-duplicate chapters ("Local Self-Government" 23 / "Local Self Government" 3, "Economy of Maharashtra" 11 / "Maharashtra Economy" 3, "Defence" / "Defence and Security"); merging them would grow two pools but would not change today's tests.
+
 **2026-10-05 (sixth) — Premium Pass covers what students use: free limits on chapter tests, the drill, daily answers, saves and the projected score (migration 0134, branch `feat/premium-limits`).**
 
 The owner said the pass "doesn't seem valuable to current users" and asked which features could go behind it. The data said the pass sold the wrong things. In the 14 days to 2026-10-05: 122 students revealed 3,277 bank and board answers, 46 read notes, 39 started a mock, 26 opened the drill. Only 5 of 31 mock-takers since the 3-mock limit went on (2026-09-27) had ever reached it; 21 students saw a paywall, 1 opened a checkout, 1 pass sold. Board students (HSC 12, CBSE 12, SSC 10) had no live mock at all, so the pass gave them nothing but downloads.

@@ -6,6 +6,15 @@ Pending features, data-model changes, and content work for Question Bank. Mirror
 
 ---
 
+## MPSC chapter tests: two pools left out (2026-10-06)
+
+The 68 MPSC chapter tests (`scripts/mocks/data/mpsc-*-sectional.json`) skip two things, both data fixes rather than builder work:
+
+- **Mains Comprehension, all five exams** (ASO 55+71, STI 41+46, PSI 30+35, State Services 15+15, Group B 5+5 English+Marathi rows). Each passage question carries the passage in `context` but has no `set_id`, so the builder can take it neither as a loose question nor as a whole set. Fix: backfill `set_id` per passage in `scripts/mpsc-mains/`, then add `mode: "sets"` for that chapter.
+- **Group B & C near-duplicate chapters:** "Local Self-Government" (23) / "Local Self Government" (3), "Economy of Maharashtra" (11) / "Maharashtra Economy" (3), "Defence" (5) / "Defence and Security" (9). A merge (the reclassification SQL pattern) would bring Economy of Maharashtra to 14, still under the 20 floor, so no new test; worth doing for /browse, not urgent.
+
+Re-run `npx tsx scripts/mocks/build-sectional.ts --exam=<slug> --plan` after either: it only appends, so published tests keep their slugs.
+
 ## CBSE Class 10 Maths + Science board PYQs: PARKED (2026-10-05)
 
 Asked for so CBSE 10 can get chapter tests: today it has 109 textbook MCQs and no chapter

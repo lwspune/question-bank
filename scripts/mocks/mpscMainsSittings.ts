@@ -64,6 +64,23 @@ export function mainsBlueprint(paper: Paper, exam: ExamKey): MockPaperBlueprint 
   };
 }
 
+/**
+ * The paper a Mains CHAPTER TEST is cut from (scripts/mocks/build-sectional.ts).
+ * A chapter test has no sitting, so it takes the 100-question booklet's shape:
+ * every printed scheme runs at 36 seconds a question, and the exam keeps its
+ * own penalty. Marathi and English only: the Group B GK chapters are far too
+ * small for a test.
+ */
+export function mainsChapterBlueprint(exam: ExamKey): MockPaperBlueprint {
+  const bp = mainsBlueprint({ questions: 100, exams: [exam] } as Paper, exam);
+  const label = "Marathi & English";
+  return {
+    ...bp,
+    paperLabel: label,
+    sections: [{ key: "language", label, subjects: ["Marathi", "English"], count: 100 }],
+  };
+}
+
 export type MainsSitting = {
   /** "<paper id>:<exam>" — the `--only` key. */
   key: string;

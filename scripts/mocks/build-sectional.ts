@@ -9,7 +9,10 @@
  *   npx tsx scripts/mocks/build-sectional.ts --exam=nda --only=<slug>
  *
  * `--exam` is one of mht-cet (the default, so the original runbook still
- * works), nda, cds, jee-mains, cbse-12, mh-hsc-12, mh-ssc-10.
+ * works), nda, cds, jee-mains, cbse-12, mh-hsc-12, mh-ssc-10, and the MPSC
+ * exams by slug (mpsc-group-b-c, mpsc-state-services-prelims, mpsc-aso-mains,
+ * mpsc-sti-mains, mpsc-psi-mains, mpsc-state-services-mains,
+ * mpsc-group-b-combined-mains).
  *
  * BOARD EXAMS (2026-10-05) differ in three ways. They take textbook MCQs
  * (`question_kind='practice'`) beside the board's past-year ones, since a
@@ -58,6 +61,8 @@ import {
   MH_SSC_10_HUMANITIES_MCQ_PAPER,
   MHT_CET_MATHS_PAPER,
   MHT_CET_PHY_CHEM_PAPER,
+  MPSC_GBC_PAPER,
+  MPSC_SSP_GS1_PAPER,
   NDA_GAT_PAPER,
   NDA_MATHS_PAPER,
   type MockPaperBlueprint,
@@ -81,6 +86,8 @@ import {
   type SectionalSet,
 } from "../../src/lib/mocks/sectional";
 import { isInstructionOnlyContext } from "../../src/lib/mocks/instructionContext";
+import { MAINS_EXAM_SLUG, mainsChapterBlueprint } from "./mpscMainsSittings";
+import { EXAMS as MAINS_EXAMS, type ExamKey as MainsExamKey } from "../mpsc-mains/config";
 import { PLAYBOOKS as MATHS_PLAYBOOKS } from "../../src/app/guide/mht-cet-maths/_data/playbooks";
 import { PLAYBOOKS as PHYSICS_PLAYBOOKS } from "../../src/app/guide/mht-cet-physics/_data/playbooks";
 import { PLAYBOOKS as CHEMISTRY_PLAYBOOKS } from "../../src/app/guide/mht-cet-chemistry/_data/playbooks";
@@ -243,6 +250,61 @@ const gkSubjects = (paper: MockPaperBlueprint, sectionKey: string): SubjectPlan[
     bankSubject, code, paper, sectionKey, label: bankSubject, weights: NONE,
   }));
 
+/**
+ * An MPSC prelims paper prints one section across every subject, so each
+ * subject's test carries its own label (the GK pattern). Current Affairs is
+ * left out for the same reason as on NDA and CDS.
+ */
+const mpscPrelimsSubjects = (paper: MockPaperBlueprint, sectionKey: string): SubjectPlan[] =>
+  paper.sections[0].subjects
+    .filter((s) => s !== "Current Affairs")
+    .map((bankSubject) => ({
+      bankSubject,
+      code: bankSubject.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+      paper,
+      sectionKey,
+      label: bankSubject,
+      weights: NONE,
+    }));
+
+const mpscPrelims = (paper: MockPaperBlueprint, sectionKey: string, titleName: string): ExamPlan => ({
+  examName: paper.examName,
+  examSlug: paper.examSlug,
+  titleName,
+  kinds: ["pyq"],
+  looseInstructions: false,
+  bookOrder: false,
+  dataFile: dataFile(paper.examSlug),
+  minPool: 20,
+  unratedAsModerate: true,
+  numericShare: 0,
+  subjects: mpscPrelimsSubjects(paper, sectionKey),
+});
+
+/**
+ * MPSC Mains language papers, one exam row each. Comprehension gets no test:
+ * its passage questions carry the passage in `context` but no `set_id`, so
+ * they cannot be kept together as a set.
+ */
+const mpscMains = (exam: MainsExamKey): ExamPlan => {
+  const paper = mainsChapterBlueprint(exam);
+  return {
+    examName: MAINS_EXAMS[exam].name,
+    examSlug: MAINS_EXAM_SLUG[exam],
+    kinds: ["pyq"],
+    looseInstructions: false,
+    bookOrder: false,
+    dataFile: dataFile(MAINS_EXAM_SLUG[exam]),
+    minPool: 20,
+    unratedAsModerate: true,
+    numericShare: 0,
+    subjects: [
+      { bankSubject: "Marathi", code: "marathi", paper, sectionKey: "language", label: "Marathi", weights: NONE },
+      { bankSubject: "English", code: "english", paper, sectionKey: "language", label: "English", weights: NONE },
+    ],
+  };
+};
+
 const EXAMS: Record<string, ExamPlan> = {
   // The first chapter tests (2026-09-30). Its rules are frozen: a re-plan with
   // a lower floor or unrated rows would add tests to a running experiment.
@@ -369,6 +431,16 @@ const EXAMS: Record<string, ExamPlan> = {
       { bankSubject: "Geography", code: "geography", paper: MH_SSC_10_HUMANITIES_MCQ_PAPER, sectionKey: "geography", weights: NONE },
     ],
   },
+
+  // MPSC (2026-10-06): the NDA/CDS rules (20-question floor, no Current
+  // Affairs). Prelims tests are bilingual, as the exam is.
+  "mpsc-group-b-c": mpscPrelims(MPSC_GBC_PAPER, "general-ability", "MPSC Group B & C"),
+  "mpsc-state-services-prelims": mpscPrelims(MPSC_SSP_GS1_PAPER, "general-studies", "MPSC State Services Prelims"),
+  "mpsc-aso-mains": mpscMains("aso"),
+  "mpsc-sti-mains": mpscMains("sti"),
+  "mpsc-psi-mains": mpscMains("psi"),
+  "mpsc-state-services-mains": mpscMains("ssm"),
+  "mpsc-group-b-combined-mains": mpscMains("grpb"),
 };
 
 /** One committed chapter test. */
