@@ -3,6 +3,7 @@ import { PAPERS, type Paper } from "../scripts/mpsc-mains/config";
 import {
   deriveMainsSittings,
   mainsBlueprint,
+  mainsChapterBlueprint,
   mainsScheme,
   MAINS_EXAM_SLUG,
 } from "../scripts/mocks/mpscMainsSittings";
@@ -50,6 +51,32 @@ describe("mainsBlueprint", () => {
     expect([...mainsBlueprint(byId("grpb-2018"), "grpb").sections[0].subjects].sort()).toEqual(
       ["English", "General Knowledge", "Marathi"]
     );
+  });
+});
+
+describe("mainsChapterBlueprint — the paper a chapter test is cut from", () => {
+  it("runs at every printed paper's own rate: 36 seconds a question", () => {
+    for (const exam of Object.keys(MAINS_EXAM_SLUG) as (keyof typeof MAINS_EXAM_SLUG)[]) {
+      const bp = mainsChapterBlueprint(exam);
+      expect(bp.durationSecs / bp.sections[0].count!).toBe(36);
+    }
+  });
+
+  it("keeps each exam's own penalty: -1/3 for State Services, -1/4 for the rest", () => {
+    expect(mainsChapterBlueprint("ssm").marking.wrong).toBeCloseTo(-1 / 3, 10);
+    for (const exam of ["aso", "sti", "psi", "grpb"] as const) {
+      expect(mainsChapterBlueprint(exam).marking).toEqual({ correct: 1, wrong: -0.25 });
+    }
+  });
+
+  it("files under the same paper and section as that exam's full-paper mocks", () => {
+    const full = mainsBlueprint(byId("aso-2014"), "aso");
+    const ch = mainsChapterBlueprint("aso");
+    expect(ch.examSlug).toBe("mpsc-aso-mains");
+    expect(ch.examName).toBe(full.examName);
+    expect(ch.code).toBe(full.code);
+    expect(ch.sections.map((s) => s.key)).toEqual(["language"]);
+    expect([...ch.sections[0].subjects].sort()).toEqual(["English", "Marathi"]);
   });
 });
 
