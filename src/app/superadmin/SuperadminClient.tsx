@@ -83,8 +83,11 @@ export default function SuperadminClient({ initialOrgs }: { initialOrgs: OrgStat
     });
     setBusy(false);
     if (res.ok) {
+      const who = mRole === "ADMIN" ? "Admin" : "Teacher";
       toast.success(
-        `${mRole === "ADMIN" ? "Admin" : "Teacher"} created for ${memberFor.name}. Share the password with ${mEmail.trim()}.`
+        res.linked
+          ? `${mEmail.trim()} already had a login. Made ${who.toLowerCase()} of ${memberFor.name}; their own password is unchanged, so don't share the one typed here.`
+          : `${who} created for ${memberFor.name}. Share the password with ${mEmail.trim()}.`
       );
       setMemberFor(null);
       router.refresh();

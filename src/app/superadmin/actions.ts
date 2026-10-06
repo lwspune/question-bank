@@ -58,19 +58,25 @@ export async function createOrgMemberAction(input: {
   password: string;
   name: string;
   role: MemberRole;
-}): Promise<Result<{ userId: string }>> {
+}): Promise<Result<{ userId: string; linked: boolean }>> {
   const denied = await gate();
   if (denied) return denied;
-  const result = await createMember(input.orgId, {
-    email: input.email,
-    password: input.password,
-    name: input.name,
-    role: input.role,
-  });
+  // Superadmin may promote an existing account (staff often sign up as students
+  // first). createMember links it WITHOUT touching its password.
+  const result = await createMember(
+    input.orgId,
+    {
+      email: input.email,
+      password: input.password,
+      name: input.name,
+      role: input.role,
+    },
+    { linkExistingAccount: true }
+  );
   switch (result.kind) {
     case "ok":
       revalidatePath("/superadmin");
-      return { ok: true, userId: result.userId };
+      return { ok: true, userId: result.userId, linked: result.linked };
     case "invalid_email":
       return { ok: false, error: "Email looks invalid." };
     case "invalid_password":
@@ -83,6 +89,8 @@ export async function createOrgMemberAction(input: {
       return { ok: false, error: "This email is already a member of an org." };
     case "email_taken_other_org":
       return { ok: false, error: "This email already belongs to another org's member." };
+    case "email_has_account":
+      return { ok: false, error: "This email already has a login." };
     case "error":
       return { ok: false, error: result.message };
   }

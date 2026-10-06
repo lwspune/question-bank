@@ -15,6 +15,7 @@ import { KeyRound, Mail, RefreshCw, UserMinus, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { RosterStudent } from "@/lib/batches/invitesAdmin";
 import { formatJoinCode } from "@/lib/batches/joinCode";
+import StudentLoginsCard from "./StudentLoginsCard";
 
 type PendingInvite = { id: string; email: string; expiresAt: string };
 
@@ -249,6 +250,8 @@ export default function RosterClient({
           {sending ? "Sending…" : "Send invitations"}
         </Button>
       </section>
+
+      <StudentLoginsCard batchId={batchId} />
 
       {pendingInvites.length > 0 && (
         <section className="rounded-xl border bg-card p-4">
