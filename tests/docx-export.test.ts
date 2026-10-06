@@ -335,6 +335,23 @@ describe("groupBySubtopic — section headings", () => {
     );
   });
 
+  it("heads a past paper by its own sections, on paper and key", async () => {
+    const sectionOf = new Map([
+      ["a", "Physics"],
+      ["b", "Physics"],
+      ["c", "Chemistry"],
+    ]);
+    for (const buf of [
+      await buildQuestionPaper({ title: "T", questions: ordered, sectionOf }),
+      await buildAnswerKey({ title: "T", questions: ordered, includeSolutions: false, sectionOf }),
+    ]) {
+      const xml = await readDocXml(buf);
+      expect(xml.match(/Physics/g)?.length).toBe(1);
+      expect(xml.indexOf("Physics")).toBeLessThan(xml.indexOf("Chemistry"));
+      expect(xml).not.toContain("Matrix Operations");
+    }
+  });
+
   it('falls back to "Other" for a null subtopic', async () => {
     const buf = await buildQuestionPaper({
       title: "T",

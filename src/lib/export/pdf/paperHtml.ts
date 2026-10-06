@@ -27,7 +27,7 @@ import { parseRichSegments } from "@/components/math/parseLatex";
 import { parseTableBlocks } from "@/components/math/parseTableBlocks";
 import { matchUnderlineBypass } from "@/components/math/underlineBypass";
 import { groupBySet, type Group } from "../groupBySet";
-import { headingsOnChange } from "../subtopicHeadings";
+import { headingLabel, headingsOnChange } from "../subtopicHeadings";
 import { stripPassageCountPhrase } from "../stripPassageCount";
 import { formatSourceTag } from "../sourceTag";
 import { WATERMARK_PNG_BASE64 } from "../watermark.generated";
@@ -38,6 +38,11 @@ export type PaperHtmlInput = {
   /** Storage path → data URI. A path that is missing is skipped, as in Word. */
   images?: Map<string, string>;
   groupBySubtopic?: boolean;
+  /**
+   * A past paper downloaded whole: question id → its section ("Physics").
+   * When given, the headings are the paper's sections, not subtopics.
+   */
+  sectionOf?: ReadonlyMap<string, string>;
   includeSourceTag?: boolean;
   /** PYQ Vault watermark on every page (the footer is drawn by the printer). */
   branded?: boolean;
@@ -48,8 +53,6 @@ export type PaperHtmlInput = {
 export type KeyHtmlInput = Omit<PaperHtmlInput, "includeSourceTag"> & {
   includeSolutions: boolean;
 };
-
-const NO_SUBTOPIC_LABEL = "Other";
 
 // ── Text ────────────────────────────────────────────────────────────────────
 
@@ -227,9 +230,13 @@ function page(title: string, kindLabel: string, count: number, body: string, inp
   );
 }
 
-function groupSubtopicLabel(group: Group): string {
-  const q = group.kind === "single" ? group.question : group.questions[0];
-  return q.subtopic?.name ?? NO_SUBTOPIC_LABEL;
+function groupHeadingLabel(group: Group, sectionOf: PaperHtmlInput["sectionOf"]): string {
+  return headingLabel(group.kind === "single" ? group.question : group.questions[0], sectionOf);
+}
+
+/** Headings print when grouping by subtopic or when the paper has sections. */
+function wantsHeadings(input: PaperHtmlInput): boolean {
+  return !!input.groupBySubtopic || !!input.sectionOf;
 }
 
 function figure(path: string | null | undefined, images: Map<string, string> | undefined): string {
@@ -256,11 +263,13 @@ function questionHtml(q: QuestionRow, n: number, input: PaperHtmlInput, showCont
 
 export function buildPaperHtml(input: PaperHtmlInput): string {
   const groups = groupBySet(input.questions);
-  const headings = input.groupBySubtopic ? headingsOnChange(groups.map(groupSubtopicLabel)) : [];
+  const headings = wantsHeadings(input)
+    ? headingsOnChange(groups.map((g) => groupHeadingLabel(g, input.sectionOf)))
+    : [];
   const parts: string[] = [];
   let n = 1;
   groups.forEach((group, gi) => {
-    if (input.groupBySubtopic && headings[gi]) parts.push(`<div class="subtopic">${esc(headings[gi]!)}</div>`);
+    if (headings[gi]) parts.push(`<div class="subtopic">${esc(headings[gi]!)}</div>`);
     if (group.kind === "single" || group.questions.length === 1) {
       const q = group.kind === "single" ? group.question : group.questions[0];
       parts.push(questionHtml(q, n++, input, true));
@@ -301,11 +310,11 @@ export function buildKeyHtml(input: KeyHtmlInput): string {
   const detailed = qs
     .map((q, i) => ({ q, n: i + 1 }))
     .filter(({ q }) => input.includeSolutions || q.questionFormat === "subjective" || !!q.cancelledNote);
-  const headings = input.groupBySubtopic
-    ? headingsOnChange(detailed.map(({ q }) => q.subtopic?.name ?? NO_SUBTOPIC_LABEL))
+  const headings = wantsHeadings(input)
+    ? headingsOnChange(detailed.map(({ q }) => headingLabel(q, input.sectionOf)))
     : [];
   const details = detailed.map(({ q, n }, i) => {
-    const heading = input.groupBySubtopic && headings[i] ? `<div class="subtopic">${esc(headings[i]!)}</div>` : "";
+    const heading = headings[i] ? `<div class="subtopic">${esc(headings[i]!)}</div>` : "";
     let body: string;
     if (q.cancelledNote) {
       body = `<div class="ans">Cancelled</div><div class="p">${richHtml(q.cancelledNote)}</div>`;

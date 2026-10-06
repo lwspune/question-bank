@@ -12,6 +12,21 @@
  * subtopic; in cart/mixed order a label can recur if its items aren't
  * contiguous (intended — grouping makes no contiguity assumption).
  */
+/** Heading text for a question with no subtopic: keeps the grouping total. */
+export const NO_SUBTOPIC_LABEL = "Other";
+
+/**
+ * The heading a question sits under. A past paper downloaded whole is headed by
+ * its own sections (`sectionOf`, question id → "Physics"); otherwise by the
+ * question's subtopic.
+ */
+export function headingLabel(
+  q: { id: string; subtopic: { name: string } | null },
+  sectionOf?: ReadonlyMap<string, string>
+): string {
+  return sectionOf?.get(q.id) ?? q.subtopic?.name ?? NO_SUBTOPIC_LABEL;
+}
+
 export function headingsOnChange(labels: string[]): (string | null)[] {
   const out: (string | null)[] = [];
   let prev: string | null = null;
