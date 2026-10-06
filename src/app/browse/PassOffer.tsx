@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
 import GoogleSignInButton from "@/components/GoogleSignInButton";
 import { googleButtonAvailable, renderGoogleButton } from "@/components/auth/useGoogleOneTap";
-import { useCheckout, type CheckoutOutcome } from "@/components/billing/useCheckout";
+import { useCheckout, type CheckoutOutcome, type CheckoutSurface } from "@/components/billing/useCheckout";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { gatePriceLine } from "@/lib/billing/gateCopy";
 import type { PassCta } from "@/lib/billing/plans";
@@ -31,8 +31,10 @@ export default function PassOffer({
   freeAfterSignIn = false,
   returnTo,
   mode,
+  surface = "download_box",
   onCancel,
   onBought,
+  onSignedIn,
 }: {
   pass: PassCta;
   isSignedIn: boolean;
@@ -40,10 +42,19 @@ export default function PassOffer({
   freeAfterSignIn?: boolean;
   /** This page with its filters: the fallback sign-in comes back here. */
   returnTo?: string;
-  mode: "filters" | "cart";
+  /** "mock" = a past paper's box on /mock pages (2026-10-07). */
+  mode: "filters" | "cart" | "mock";
+  /** Which box the checkout started from, for the checkout events. */
+  surface?: CheckoutSurface;
   onCancel: () => void;
   /** Payment cleared: the parent shows its download view with a "pass active" line. */
   onBought: () => void;
+  /**
+   * After a sign-in over the page. Default: re-render the server page, which is
+   * how /browse learns the session. A box on a CACHED page cannot learn it that
+   * way (a refresh re-serves the same copy), so it passes its own re-check.
+   */
+  onSignedIn?: () => void;
 }) {
   const router = useRouter();
 
@@ -58,9 +69,9 @@ export default function PassOffer({
     },
     [onBought, router]
   );
-  const { start, busy } = useCheckout({ planId: pass.planId, surface: "download_box", onDone });
+  const { start, busy } = useCheckout({ planId: pass.planId, surface, onDone });
   // Stable, so Google's button is drawn once rather than on every render.
-  const refresh = useCallback(() => router.refresh(), [router]);
+  const refresh = useCallback(() => (onSignedIn ? onSignedIn() : router.refresh()), [onSignedIn, router]);
 
   const onPay = () => {
     // Kept for continuity: since 2026-10-04 this is the in-box Pay tap, which

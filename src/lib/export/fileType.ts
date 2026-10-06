@@ -24,3 +24,11 @@ export function extensionForContentType(contentType: string | null, expected: st
   const type = contentType?.split(";")[0].trim().toLowerCase() ?? "";
   return EXTENSION[type] ?? expected;
 }
+
+/**
+ * The file name the server chose (`attachment; filename="QP_….pdf"`), so the
+ * saved name and its extension always match the bytes. Falls back when absent.
+ */
+export function filenameFromDisposition(header: string | null, fallback: string): string {
+  return header?.match(/filename="([^"]+)"/)?.[1] ?? fallback;
+}
