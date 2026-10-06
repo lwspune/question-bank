@@ -7,6 +7,11 @@
  * cookie, no session — so it can be cached and embedded in a page that is served
  * to all visitors alike. That property is what lets the rest of the header move
  * to the browser without the nav losing its exam filter.
+ *
+ * DAILY: the header is on every page, and Next.js refreshes a page as often as
+ * its shortest cache, so the hour this used to be made ~3,000 daily pages
+ * refresh hourly (2026-07-29 to 2026-10-06; tests/page-cache-window.test.ts).
+ * Exam ids only change when an exam is added, and that ships with a deploy.
  */
 import { unstable_cache } from "next/cache";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
@@ -32,5 +37,5 @@ export const getExamIdMap = unstable_cache(
     return map;
   },
   ["exam-id-map"],
-  { revalidate: 3600 }
+  { revalidate: 86400 }
 );
