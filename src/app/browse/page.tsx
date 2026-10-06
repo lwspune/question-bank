@@ -7,7 +7,9 @@ import { sessionHasScope } from "@/lib/entitlements/session";
 import { sessionFreeDownloadLeft } from "@/lib/export/freeDownloadSession";
 import { DOWNLOAD_PASS_SCOPE } from "@/lib/export/access";
 import { passCta, passForScope } from "@/lib/billing/plans";
-import { listActivePlans } from "@/lib/billing/plansQuery";
+import { listActivePlansCached } from "@/lib/billing/plansQuery";
+import { getCachedPyqYears } from "@/lib/exam/bankYears";
+import { yearsSource } from "@/lib/questions/browseSharedReads";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import {
   listExams,
@@ -112,9 +114,9 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   let filters = parseFilters(rawParams);
   const supabase = createSupabaseServerClient();
   // The pass the download dialog offers a non-staff viewer (null = none on sale).
-  const downloadPass = isStaff || hasDownloadPass
-    ? null
-    : passCta(passForScope(await listActivePlans(supabase), DOWNLOAD_PASS_SCOPE));
+  // The remembered price list (cleared on every price save), started now and
+  // awaited after the main batch so it never adds a trip of its own.
+  const plansPromise = isStaff || hasDownloadPass ? null : listActivePlansCached();
 
   // Practice-only exams (e.g. Foundation Course — no PYQ corpus) default the
   // kind filter to "practice" so the default view isn't an empty PYQ list.
@@ -172,6 +174,15 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   // the PUBLIC-only cached catalog cannot see. See lib/questions/browseLanding.
   const showLanding = shouldShowBrowseLanding({ filters, isStaff });
 
+  // The card chips need only the page's ids, so they are fetched the moment
+  // queryQuestions knows them, alongside the rows rather than after them.
+  // Failures degrade to the chapter-level chips, as before.
+  let tagsPromise: Promise<Awaited<ReturnType<typeof getResourceTagsForQuestions>>> =
+    Promise.resolve(new Map());
+  const startTagLookup = (ids: string[]) => {
+    tagsPromise = getResourceTagsForQuestions(supabase, ids).catch(() => new Map());
+  };
+
   // Taxonomy (exams/subjects/chapters/subtopics) is cached — it's identical for
   // every visitor and only moves on an ingest. The facet RPCs and the question
   // query below are NOT cached: they're `security invoker`, so their results are
@@ -205,7 +216,13 @@ export default async function BrowsePage({ searchParams }: PageProps) {
       : Promise.resolve({
           data: [] as { subtopic_id: string; q_count: number }[],
         }),
-    supabase.rpc("get_pyq_years"),
+    // The remembered signed-out year list for viewers who see PUBLIC only;
+    // staff and the superadmin read live (they can see private questions).
+    yearsSource({ isStaff, canEditContent }) === "cached"
+      ? getCachedPyqYears()
+          .then((data) => ({ data }))
+          .catch(() => supabase.rpc("get_pyq_years"))
+      : supabase.rpc("get_pyq_years"),
     showLanding
       ? Promise.resolve({ totalCount: 0, rows: [] })
       : // Superadmins read the RAW pyq_note; everyone else gets it redacted in
@@ -213,6 +230,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
         // or how we derived the answer) never reaches the payload at all.
         queryQuestions(supabase, null, filters, DEFAULT_PAGE_SIZE, {
           includeRawProvenance: canEditContent,
+          onPageIds: startTagLookup,
         }),
     showLanding ? loadLandingPanel() : Promise.resolve(null),
     // slug → uuid, cached hourly and already paid for by the header. Needed
@@ -239,16 +257,15 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   const totalPages = Math.max(1, Math.ceil(totalCount / DEFAULT_PAGE_SIZE));
 
   // Tier 1.5 — batched per-question tag fetch for QuestionCard backlinks.
-  // Two parallel SELECTs against the principle + concept tag tables, one
-  // round-trip total. Failures degrade gracefully — backlinks fall back to
-  // the chapter-level chips. Skipped outright on the landing branch: there are
-  // no rows to tag, and `.in("id", [])` is a PostgREST 400.
-  const resourceTags = landing
-    ? new Map()
-    : await getResourceTagsForQuestions(
-        supabase,
-        questionsResult.rows.map((r) => r.id)
-      ).catch(() => new Map());
+  // Two parallel SELECTs against the principle + concept tag tables, started
+  // by queryQuestions' onPageIds above so they run alongside the row fetch.
+  // Never started on the landing branch or an empty page (no ids to tag, and
+  // `.in("id", [])` is a PostgREST 400), so it stays an empty Map there.
+  const resourceTags = await tagsPromise;
+
+  const downloadPass = plansPromise
+    ? passCta(passForScope(await plansPromise, DOWNLOAD_PASS_SCOPE))
+    : null;
 
   // Pooled student performance, for the same 25 ids. STAFF ONLY — skipped
   // outright for anon and students, so the hot path and the cached landing

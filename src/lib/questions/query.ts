@@ -106,7 +106,17 @@ export async function queryQuestions(
    * routes that resolve identity during server render — see
    * `queryQuestionsByIds`.
    */
-  opts?: { includeRawProvenance?: boolean }
+  opts?: {
+    includeRawProvenance?: boolean;
+    /**
+     * Called with the page's ids, in page order, the moment phase A knows
+     * them and BEFORE phase B's row fetch is awaited, so a caller can start a
+     * lookup that needs only the ids (e.g. /browse's tag chips) in parallel
+     * with the rows instead of after them. Never called for an empty page.
+     * Kick work off and return; this function does not await it.
+     */
+    onPageIds?: (ids: string[]) => void;
+  }
 ): Promise<QueryResult> {
   // Principle filter resolves to a question-id list via the tag table BEFORE
   // building the main query, so the result narrows by `id IN (taggedIds)` and
@@ -279,6 +289,7 @@ export async function queryQuestions(
   const pageIds = ((data ?? []) as { id: string }[]).map((r) => r.id);
   // A page past the end of the result set still has a real total to report.
   if (pageIds.length === 0) return { totalCount, rows: [] };
+  opts?.onPageIds?.(pageIds);
 
   // PHASE B — the wide row shape, for these 25 ids only.
   //
@@ -287,7 +298,9 @@ export async function queryQuestions(
   // in phase A, so fetching exactly those ids cannot reach outside the page.
   // It restores the caller's id order, which is what carries phase A's ORDER BY
   // through to the result — see the ordering tests in tests/browse-query.test.ts.
-  const rows = await queryQuestionsByIds(client, pageIds, opts);
+  const rows = await queryQuestionsByIds(client, pageIds, {
+    includeRawProvenance: opts?.includeRawProvenance,
+  });
 
   return { totalCount, rows };
 }

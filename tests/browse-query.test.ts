@@ -79,6 +79,29 @@ describe.skipIf(!HAS_ENV)("queryQuestions (against LWS Pune seed)", () => {
     expect(result.rows[0].options).toHaveLength(4);
   });
 
+  it("hands onPageIds the page's ids, in page order, before the rows come back", async () => {
+    let seen: string[] | null = null;
+    const result = await queryQuestions(client, orgId, { ...EMPTY_FILTERS, examId }, 25, {
+      onPageIds: (ids) => {
+        seen = ids;
+      },
+    });
+    expect(seen).toEqual(result.rows.map((r) => r.id));
+  });
+
+  it("does not call onPageIds for an empty page (nothing to look up)", async () => {
+    let called = false;
+    const result = await queryQuestions(
+      client,
+      orgId,
+      { ...EMPTY_FILTERS, examId, q: "zqxjvwkfnomatchterm" },
+      25,
+      { onPageIds: () => { called = true; } }
+    );
+    expect(result.rows).toHaveLength(0);
+    expect(called).toBe(false);
+  });
+
   it("filters by subject", async () => {
     const result = await queryQuestions(
       client,

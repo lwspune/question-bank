@@ -4,6 +4,8 @@
  * so a cached public page (/terms, /refunds) can use the anon client.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { unstable_cache } from "next/cache";
+import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import type { Plan } from "./plans";
 
 export type PlanRow = {
@@ -51,6 +53,42 @@ export async function listActivePlans(client: SupabaseClient): Promise<Plan[]> {
     return [];
   }
   return ((data ?? []) as PlanRow[]).map(rowToPlan);
+}
+
+/** Cleared by /api/admin/plans on every price save, so a change shows at once. */
+export const PLANS_CACHE_TAG = "plans";
+
+/**
+ * The active passes, remembered for /browse instead of read on every visit
+ * (3,695 reads a day, measured 2026-10-06). Read SIGNED OUT: the read policy
+ * shows active rows to everyone alike, so one copy fits every viewer. A save
+ * clears it through PLANS_CACHE_TAG; the day-long expiry is only a backstop
+ * for a price changed outside the pricing page. A failed read throws inside
+ * the cache so it is never remembered, and degrades to "no passes" like
+ * listActivePlans. CHECKOUT NEVER READS THIS: /api/billing/order prices the
+ * order through getActivePlan, live.
+ */
+const listActivePlansRemembered = unstable_cache(
+  async (): Promise<Plan[]> => {
+    const { data, error } = await createSupabaseAnonClient()
+      .from("plans")
+      .select(PLAN_COLUMNS)
+      .eq("active", true)
+      .order("sort_order", { ascending: true });
+    if (error) throw new Error(error.message);
+    return ((data ?? []) as PlanRow[]).map(rowToPlan);
+  },
+  ["active-plans-v1"],
+  { revalidate: 86400, tags: [PLANS_CACHE_TAG] }
+);
+
+export async function listActivePlansCached(): Promise<Plan[]> {
+  try {
+    return await listActivePlansRemembered();
+  } catch (e) {
+    console.error("listActivePlansCached:", (e as Error).message);
+    return [];
+  }
 }
 
 /** One active plan by id, for /api/billing/order. Null if missing or inactive. */
