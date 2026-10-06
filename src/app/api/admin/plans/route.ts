@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
+import { PLANS_CACHE_TAG } from "@/lib/billing/plansQuery";
 import { requireSuperadmin, HttpError } from "@/lib/auth";
 import {
   listAllPlans,
@@ -83,6 +84,8 @@ export async function POST(request: NextRequest) {
 
 function revalidateQuotingPages() {
   for (const p of PAGES_QUOTING_PLANS) revalidatePath(p);
+  // The price list /browse remembers (listActivePlansCached).
+  revalidateTag(PLANS_CACHE_TAG);
 }
 function bad(msg: string) {
   return NextResponse.json({ error: msg }, { status: 400 });
