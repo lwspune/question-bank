@@ -325,7 +325,7 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-10
 
-- **2026-10-06 — MPSC chapter tests: 68 DRAFTS (Group B & C 14 · State Services Prelims 15 · ASO 16 · STI 13 · PSI 8 · State Services Mains 2; Group B Combined 0), by the same builder (`--exam=<mpsc slug>`).**
+- **2026-10-06 — MPSC chapter tests: 68 PUBLISHED the same day (Group B & C 14 · State Services Prelims 15 · ASO 16 · STI 13 · PSI 8 · State Services Mains 2; Group B Combined 0), by the same builder (`--exam=<mpsc slug>`).**
   - **NDA/CDS rules:** 20-question floor, no Current Affairs; Prelims subjects labelled one by one (the paper prints one section). Cancelled questions drop out alone (0119: no key allowed).
   - **Prelims are bilingual for free:** the runner reads `bilingual` from the registry by exam name.
   - **Mains needed `mainsChapterBlueprint`:** full papers are built per booklet (2 h or 1 h); every scheme runs at 36 s a question, State Services keeps −1/3.
