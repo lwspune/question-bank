@@ -54,6 +54,10 @@ export async function POST(request: NextRequest) {
             return bad("Role must be ADMIN or TEACHER");
           case "already_member":
             return conflict("This email is already a member of your org");
+          case "email_has_account":
+            return conflict(
+              "This email already has a PYQ Vault login, so it can't be added here. Use a different email, or contact PYQ Vault support to make that login staff."
+            );
           case "email_taken_other_org":
             return conflict(
               "This email belongs to a member of another org — they can't be added here"

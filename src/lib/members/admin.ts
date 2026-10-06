@@ -11,6 +11,7 @@
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { listAllAuthUsers } from "@/lib/supabase/authUsers";
 
 // Credential validators live in the client-safe module; imported for local
 // use here and re-exported so existing imports (route + tests) keep working.
@@ -178,19 +179,38 @@ export type CreateMemberInput = {
   role: MemberRole;
 };
 
+export type CreateMemberOptions = {
+  /**
+   * Superadmin only. Attach an EXISTING org-less account (staff often sign up
+   * as students before onboarding) without touching its password. Never pass
+   * this from an org-admin surface: an admin who can attach an existing account
+   * can then resetMemberPassword it, which is an account takeover.
+   */
+  linkExistingAccount?: boolean;
+};
+
 export type CreateMemberResult =
-  | { kind: "ok"; userId: string }
+  | { kind: "ok"; userId: string; linked: boolean }
   | { kind: "invalid_email" }
   | { kind: "invalid_password" }
   | { kind: "invalid_role" }
   | { kind: "invalid_name" }
   | { kind: "email_taken_other_org" }
   | { kind: "already_member" }
+  /** An account with this email exists and linking was not allowed. */
+  | { kind: "email_has_account" }
   | { kind: "error"; message: string };
 
+/**
+ * Create a staff login, or (superadmin, linkExistingAccount) attach an existing
+ * account. NEVER writes the password of an account that already exists: until
+ * 2026-10-06 it did, so any org admin could type a student's email, choose a
+ * password and sign in as them.
+ */
 export async function createMember(
   orgId: string,
-  input: CreateMemberInput
+  input: CreateMemberInput,
+  opts: CreateMemberOptions = {}
 ): Promise<CreateMemberResult> {
   if (!isValidEmail(input.email)) return { kind: "invalid_email" };
   if (!isValidPassword(input.password)) return { kind: "invalid_password" };
@@ -202,17 +222,15 @@ export async function createMember(
   const name = input.name.trim();
 
   try {
-    // Does an auth user with this email already exist?
-    const { data: usersPage, error: listErr } =
-      await admin.auth.admin.listUsers({ perPage: 1000 });
-    if (listErr) return { kind: "error", message: listErr.message };
-    const existing = usersPage.users.find(
+    // Does an auth user with this email already exist? Paged: one page of
+    // listUsers silently stops at 1,000 accounts.
+    const existing = (await listAllAuthUsers(admin)).find(
       (u) => u.email?.toLowerCase() === email
     );
 
     let userId: string;
+    let linked = false;
     if (existing) {
-      // Existing auth user — check if already a member of THIS org.
       const { data: membership } = await admin
         .from("org_members")
         .select("user_id, org_id")
@@ -220,13 +238,10 @@ export async function createMember(
         .maybeSingle();
       if (membership?.org_id === orgId) return { kind: "already_member" };
       if (membership) return { kind: "email_taken_other_org" };
-      // Existing user, not in any org — update password + name then add to this org.
-      const { error: updErr } = await admin.auth.admin.updateUserById(existing.id, {
-        password: input.password,
-        user_metadata: { ...(existing.user_metadata ?? {}), name },
-      });
-      if (updErr) return { kind: "error", message: updErr.message };
+      if (!opts.linkExistingAccount) return { kind: "email_has_account" };
+      // Link only: the password and profile stay the account owner's.
       userId = existing.id;
+      linked = true;
     } else {
       const { data: created, error: createErr } =
         await admin.auth.admin.createUser({
@@ -249,7 +264,7 @@ export async function createMember(
       if (memErr.code === "23505") return { kind: "already_member" };
       return { kind: "error", message: memErr.message };
     }
-    return { kind: "ok", userId };
+    return { kind: "ok", userId, linked };
   } catch (err) {
     return { kind: "error", message: err instanceof Error ? err.message : String(err) };
   }
