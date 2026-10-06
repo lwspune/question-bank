@@ -30,6 +30,7 @@ import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import { useCart } from "@/lib/cart/CartProvider";
 import type { PassCta } from "@/lib/billing/plans";
 import { resolveExportAccess } from "@/lib/export/access";
+import { extensionForContentType } from "@/lib/export/fileType";
 import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
@@ -189,7 +190,11 @@ export default function DownloadDialog({
       const blob = await res.blob();
       const url = URL.createObjectURL(blob);
       const meta = KIND_META[kind];
-      const ext = kind === "paper" || kind === "key" ? paperFormat : meta.ext;
+      // From what the server sent: a PDF that failed to print arrives as Word.
+      const ext = extensionForContentType(
+        res.headers.get("Content-Type"),
+        kind === "paper" || kind === "key" ? paperFormat : meta.ext
+      );
       const a = document.createElement("a");
       a.href = url;
       a.download = `${meta.prefix}_${sanitize(title)}.${ext}`;
