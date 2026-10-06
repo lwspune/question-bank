@@ -13,6 +13,7 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -48,11 +49,7 @@ describe.skipIf(!HAS_ENV)("question_audience_exclusions RLS", () => {
     userId = created.user!.id;
 
     userClient = createClient(url, anonKey, { auth: { persistSession: false } });
-    const { error: sErr } = await userClient.auth.signInWithPassword({
-      email: USER_EMAIL,
-      password: PASSWORD,
-    });
-    if (sErr) throw sErr;
+    await mustSignIn("audience user", userClient, { email: USER_EMAIL, password: PASSWORD });
 
     // Any real PUBLIC question — the FK needs a live row.
     const { data: q } = await admin

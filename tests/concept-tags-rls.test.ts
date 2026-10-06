@@ -15,7 +15,7 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
-import { mustDo } from "./helpers/fixture";
+import { mustDo, mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -133,9 +133,9 @@ describe.skipIf(!HAS_ENV)("question_concept_tags RLS", () => {
     teacherAClient = createClient(url, anon, { auth: { persistSession: false } });
     adminBClient = createClient(url, anon, { auth: { persistSession: false } });
     await Promise.all([
-      adminAClient.auth.signInWithPassword({ email: ADMIN_A_EMAIL, password: PASSWORD }),
-      teacherAClient.auth.signInWithPassword({ email: TEACHER_A_EMAIL, password: PASSWORD }),
-      adminBClient.auth.signInWithPassword({ email: ADMIN_B_EMAIL, password: PASSWORD }),
+      mustSignIn("admin A", adminAClient, { email: ADMIN_A_EMAIL, password: PASSWORD }),
+      mustSignIn("teacher A", teacherAClient, { email: TEACHER_A_EMAIL, password: PASSWORD }),
+      mustSignIn("admin B", adminBClient, { email: ADMIN_B_EMAIL, password: PASSWORD }),
     ]);
   });
 

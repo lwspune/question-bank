@@ -20,6 +20,7 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { createMember } from "@/lib/members/admin";
+import { signInWorks } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -46,8 +47,7 @@ describe.skipIf(!HAS_ENV)("createMember never takes over an existing account", (
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
       { auth: { persistSession: false } }
     );
-    const { error } = await c.auth.signInWithPassword({ email, password });
-    return !error;
+    return signInWorks(email, c, { email, password });
   }
 
   async function membershipOf(userId: string) {
