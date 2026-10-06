@@ -230,7 +230,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     why: "The pass sold mocks and downloads, which few use: in the 14 days to 2026-10-05, 122 students revealed 3,277 answers while 39 started a mock, only 5 had ever reached the mock limit, and 1 pass sold.",
     metric: "Passes sold since the limits went on (entitlements, source razorpay); paywall_event 'shown' by gate (chapter_test, drill, reveals, saves, projection) says which limit is met; return visits of the students who hit the 50-answer limit say whether it costs us learners",
     rule: `Keep them if ${PREMIUM_LIMITS_MIN_SALES}+ passes sell by the check date and the students who meet the answer limit keep coming back; if those students stop returning, raise or drop that limit first.`,
-    liveSince: "2026-10-05",
+    liveSince: "2026-10-06", // switched on at /dashboard/pricing; merged 2026-10-05 with every limit off
     readout: "premium-limits",
     status: "running",
   },
