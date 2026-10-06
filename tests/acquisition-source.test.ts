@@ -74,6 +74,51 @@ describe("parseAcquisition — internal navigation is not an acquisition", () =>
   });
 });
 
+describe("parseAcquisition — a sign-in hop is not an arrival", () => {
+  // A visitor with no referrer who signs in through Google's redirect comes
+  // back to /welcome with accounts.google.com as the referrer. Reading that as
+  // a Google search credited 27 accounts to Google that Google never sent.
+  it("returns null when the referrer is Google's sign-in page", () => {
+    for (const host of ["accounts.google.com", "accounts.google.co.in"]) {
+      const a = parseAcquisition({ url: at("/welcome"), referrer: `https://${host}/`, selfHost: SELF });
+      expect(a, host).toBeNull();
+    }
+  });
+
+  it("returns null when the referrer is our Supabase auth host", () => {
+    const a = parseAcquisition({
+      url: at("/welcome"),
+      referrer: "https://wunvtnqlzjrkvolslbnm.supabase.co/auth/v1/callback",
+      selfHost: SELF,
+    });
+    expect(a).toBeNull();
+  });
+
+  it("still reads a Google SEARCH referrer as organic", () => {
+    const a = parseAcquisition({ url: at("/"), referrer: "https://www.google.com/", selfHost: SELF });
+    expect(a!.source).toBe("google");
+    expect(a!.medium).toBe("organic");
+  });
+
+  it("but a UTM on the landing URL still counts, as on an internal link", () => {
+    const a = parseAcquisition({
+      url: at("/welcome?utm_source=newsletter&utm_medium=email"),
+      referrer: "https://accounts.google.com/",
+      selfHost: SELF,
+    });
+    expect(a!.source).toBe("newsletter");
+  });
+});
+
+describe("parseAcquisition — Gmail is email, not Google search", () => {
+  it("reads mail.google.com as gmail / email", () => {
+    const a = parseAcquisition({ url: at("/mock"), referrer: "https://mail.google.com/", selfHost: SELF });
+    expect(a!.source).toBe("gmail");
+    expect(a!.medium).toBe("email");
+    expect(a!.referrerHost).toBe("mail.google.com");
+  });
+});
+
 describe("parseAcquisition — UTM wins over the referrer", () => {
   it("prefers explicit campaign tags", () => {
     const a = parseAcquisition({

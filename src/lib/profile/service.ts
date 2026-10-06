@@ -10,6 +10,8 @@ import type { ExamSlug } from "@/lib/exam/examContext";
 import type { Stage } from "@/lib/profile/onboarding";
 import type { ProfileDetails } from "@/lib/profile/fields";
 import { logActivity } from "@/lib/activity/service";
+import { isNewAccount } from "@/lib/auth/oneTap";
+import { readAcquisitionCookie } from "@/lib/acquisition/cookie";
 
 /** The student's stored contact mobile (canonical 91XXXXXXXXXX), or null if not
  *  yet captured. Used by the mock-result gate to decide whether to ask. */
@@ -210,6 +212,14 @@ export async function persistAcquisition(
   userId: string,
   acq: { source: string; medium: string; campaign: string | null; landing: string; referrerHost: string | null }
 ): Promise<void> {
+  // The row may not exist yet: at sign-in it never does, and the download box
+  // signs people in without sending them to /welcome. Insert-or-nothing, so an
+  // existing row (mobile, onboarding) is never touched.
+  const { error: rowError } = await db
+    .from("student_profiles")
+    .upsert({ user_id: userId }, { onConflict: "user_id", ignoreDuplicates: true });
+  if (rowError) throw new Error(rowError.message);
+
   const { error } = await db
     .from("student_profiles")
     .update({
@@ -223,4 +233,30 @@ export async function persistAcquisition(
     .eq("user_id", userId)
     .is("acq_source", null);
   if (error) throw new Error(error.message);
+}
+
+/**
+ * Save the first-touch channel parked in the `qb_acq` cookie when an account is
+ * CREATED: called by the OAuth callback and after every in-page Google sign-in.
+ *
+ * It used to be saved only on the /welcome submit, so a signup that skipped
+ * /welcome (the download box does, by design) never had its channel saved:
+ * 9 of 16 accounts with no source in the three weeks to 2026-10-06.
+ *
+ * NEW ACCOUNTS ONLY: a returning student signing in on a new browser carries
+ * that browser's first touch, which did not earn the account. An old account
+ * with no channel stays without one ("never learned" is the honest value).
+ *
+ * Best-effort by contract, like persistAcquisition: the caller must not fail a
+ * sign-in because this did not land.
+ */
+export async function saveFirstTouch(
+  db: SupabaseClient,
+  user: { id: string; created_at?: string | null; last_sign_in_at?: string | null },
+  rawCookie: string | null | undefined
+): Promise<void> {
+  if (!isNewAccount(user.created_at, user.last_sign_in_at)) return;
+  const acq = readAcquisitionCookie(rawCookie);
+  if (!acq) return;
+  await persistAcquisition(db, user.id, acq);
 }

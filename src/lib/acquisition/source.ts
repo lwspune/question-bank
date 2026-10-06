@@ -45,7 +45,9 @@ export type Acquisition = {
  * Order matters — the first match wins, so put specific hosts before the
  * families that would also match them.
  */
-const KNOWN_CHANNELS: readonly { match: string; name: string; medium: "organic" | "social" }[] = [
+const KNOWN_CHANNELS: readonly { match: string; name: string; medium: "organic" | "social" | "email" }[] = [
+  // Before "google.", which would otherwise claim Gmail as a Google search.
+  { match: "mail.google.", name: "gmail", medium: "email" },
   { match: "google.", name: "google", medium: "organic" },
   { match: "bing.", name: "bing", medium: "organic" },
   { match: "duckduckgo.", name: "duckduckgo", medium: "organic" },
@@ -89,8 +91,19 @@ function hostOf(url: string | null | undefined): string | null {
   }
 }
 
+/**
+ * Hosts a visitor passes through while SIGNING IN, never while finding us. A
+ * visitor with no referrer who signs in through Google's redirect lands on
+ * /welcome with accounts.google.com as the referrer; read as a channel, that
+ * credited 27 accounts to Google search (2026-09-19 to 10-06) that Google never
+ * sent. Treated like an internal page move: nothing to attribute.
+ */
+function isSignInHop(host: string): boolean {
+  return host.startsWith("accounts.google.") || host.endsWith(".supabase.co");
+}
+
 /** Collapse a referrer host to its channel, or fall back to the host itself. */
-function classifyHost(host: string): { source: string; medium: "organic" | "social" | "referral" } {
+function classifyHost(host: string): { source: string; medium: "organic" | "social" | "email" | "referral" } {
   for (const c of KNOWN_CHANNELS) {
     if (host === c.match || host.includes(c.match)) return { source: c.name, medium: c.medium };
   }
@@ -124,6 +137,9 @@ export function parseAcquisition(input: {
   // An internal navigation is a page move, not an arrival — unless it carries a
   // campaign tag, which makes it a tagged click worth attributing.
   if (isInternal && !utmSource) return null;
+  // A sign-in hop is a page move too, under the same exception for a UTM tag.
+  const isHop = refHost !== null && isSignInHop(refHost);
+  if (isHop && !utmSource) return null;
 
   const landing = (parsed.pathname || "/").slice(0, LANDING_MAX_LEN);
 
@@ -135,7 +151,7 @@ export function parseAcquisition(input: {
       landing,
       // The referrer is kept alongside the tag — it is corroborating evidence,
       // not a contradiction of it.
-      referrerHost: isInternal ? null : refHost,
+      referrerHost: isInternal || isHop ? null : refHost,
     };
   }
 

@@ -97,10 +97,15 @@ async function signInWithCredential(credential: string, rawNonce: string, source
   const user = data.user;
 
   // Attribution, best effort, for a genuinely new account only (see isNewAccount).
-  if (source && !user.user_metadata?.signup_source && isNewAccount(user.created_at, user.last_sign_in_at)) {
-    await supabase.auth
-      .updateUser({ data: { signup_source: source } })
-      .catch(() => undefined);
+  if (isNewAccount(user.created_at, user.last_sign_in_at)) {
+    // Where they came from (the qb_acq cookie), saved now: the download box
+    // skips /welcome, which used to be the only place it was saved.
+    void fetch("/api/profile/acquisition", { method: "POST", keepalive: true }).catch(() => undefined);
+    if (source && !user.user_metadata?.signup_source) {
+      await supabase.auth
+        .updateUser({ data: { signup_source: source } })
+        .catch(() => undefined);
+    }
   }
   return { supabase, user };
 }
