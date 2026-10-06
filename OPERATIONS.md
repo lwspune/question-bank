@@ -58,6 +58,15 @@ Six custom events measure the three moments a stranger is ASKED for something. T
   and anything off this machine. The dumps contain `auth.users`, student mobiles
   and quiz-lead consent records, so they must never leave `backups/` unencrypted.
 
+### Building on GitHub instead of Vercel (2026-10-07, rolling out)
+
+`.github/workflows/deploy.yml` builds the site on GitHub's free runner (public repo; 4 CPUs, 16 GB) and hands Vercel the finished output (`vercel build` + `vercel deploy --prebuilt`). Why: Vercel bills builds by the CPU minute (~$0.35 a push), and its 8 GB Standard machine runs out of memory compiling this site.
+
+- **Needs three repo secrets:** `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` (where to find each is in the workflow header).
+- **Today it is manual:** Actions → "Deploy (GitHub build)" → Run workflow, target `preview` (default) or `production`.
+- **Switch-over, after a preview checks out:** a commit adds the push trigger, then Vercel → Settings → Git → turn off automatic builds, so a push is not built twice. **Fallback:** turn them back on.
+- The build sets `VERCEL=1` itself, so it renders the same pages a Vercel build would (4 at a time, every notes page).
+
 ### When to upgrade tiers
 
 - **Vercel Pro (since 2026-09-20)** bills a $20 seat plus metered usage (~$1-2 a day in early October; the breakdown is in CLAUDE.md's Production line). Read Settings → Billing weekly: the meters that move are function invocations + Active CPU (a prefetch or caching regression shows up here first), ISR writes, deployment storage and **builds, which are billed on every machine type** ($0.0035 per CPU minute = build minutes × vCPUs; ~$0.35 a push on Enhanced, measured 2026-10-06; Usage → Build CPU Minutes shows the machine each day used). Observability Plus was switched off 2026-10-06; if "Observability Events" reappears on the bill, it was switched back on. Going back to Hobby is ruled out: it is non-commercial only and its hard caps (Active CPU 4 h/month, ISR writes 200k/month) are below a few days of our usage.
@@ -89,7 +98,7 @@ Checkout is dormant until 4 env vars are set in Vercel + `.env.local`: `RAZORPAY
 
 ### Outbound email (Resend) — the mock-recommendation campaign
 
-**Provider:** Resend, account `official.lwspune`. Domain `pyqvault.com` **Verified**, region Tokyo (ap-northeast-1), DNS auto-configured at GoDaddy. Free tier = **100 emails/day, 3,000/month, 2 req/sec** (the 600ms throttle in [resend.ts](src/lib/email/resend.ts) is sized to that rate limit). Env (`.env.local`, **not** Vercel — this is a local script, not a route): `RESEND_API_KEY` (send-only key) + `EMAIL_FROM` (`"PYQ Vault <mocks@pyqvault.com>"`). Missing either ⇒ the script fails fast before touching an address.
+**Provider:** Resend, account `official.lwspune`. Domain `pyqvault.com` **Verified**, region Tokyo (ap-northeast-1), DNS auto-configured at GoDaddy. Free tier = **100 emails/day, 3,000/month, 2 req/sec** (the 600ms throttle in [resend.ts](src/lib/email/resend.ts) is sized to that rate limit). Env: `RESEND_API_KEY` + `EMAIL_FROM` (`"PYQ Vault <mocks@pyqvault.com>"`), in THREE places: `.env.local` (hand-run scripts), GitHub repo secrets (the crons) **and Vercel Production** — the `/contact` alert to `hello@pyqvault.com` is sent by a ROUTE (`/api/contact` → `notifyNewContactMessage`), so it needs them on Vercel. They were missing there until 2026-10-06 and every contact alert silently never sent: the message row still saved and the sender still saw success, so only Resend's log (no send to `hello@` at all) showed it. A failed alert logs `contact notification not sent` in Vercel → Logs. Missing either ⇒ a script fails fast before touching an address.
 
 **The 100/day quota is SHARED with Supabase Auth mail** (see the SMTP section below — same Resend account), so the three crons are capped at **welcome 30 + due nudge 30 + mock report 10 = 70/day worst case**, leaving ~30 for sign-up confirmations and password resets. On 2026-09-28 the crons tried 202 sends and 52 nudges failed with `429 daily sending quota`; any auth mail that day would have failed too. Raising one `--limit` means re-adding all three.
 
