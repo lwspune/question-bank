@@ -65,6 +65,22 @@ Not proven. Clarity does not record timing.
 2. **Likely fix, tested against that measurement:** each card listens only to its own locked or unlocked state, not the whole reveal list, so one reveal redraws one card instead of all of them. It's a small change in `useRevealMeter`, written test-first.
 3. **Re-check about 3 days after shipping:** Clarity's dead-tap rate per element, plus the `slow_tap` split.
 
+## Early read, 2026-10-05, and the bar for building a fix
+
+One day after the fixes went live (100 recordings): dead taps were 5% of all taps, and the two big patterns from 1-3 Oct (board option text, "Show answer") were gone. What remained was small and spread out:
+
+| Pattern | Sessions |
+|---|---|
+| Board section header ("NN questions · 2019-2025", "Board PYQs") | 3 |
+| The grey line under a question card's tag ("#3 · chapter") | 3 |
+| Guide strategy table rows | 1 |
+| Board "Question figure" (wanting it bigger) | 1 |
+| A one-row "Match the columns" table cell (MH SSC 10) | 1 |
+
+Not counted: taps on blank space (Clarity names the element by the theme script, `(function(){try{var t=loc`), dead taps paired with text selection (someone copying text), taps on the header while scrolling, and the mock runner's "Question N of M" heading (tapped often, but not dead).
+
+**The bar (owner, 2026-10-06): build a fix only for a pattern seen in 5 or more sessions** in the 3-day re-check. The board option and "Show answer" fixes cleared it easily (10+ a day across many sessions); none of the patterns above did. Fewer than 5 sessions is a note here, not a change.
+
 ## Open questions
 
 - Does the header need a change? A second tap during loading is harmless, and the cure is faster pages, not different tap handling.
