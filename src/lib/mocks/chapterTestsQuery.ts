@@ -20,6 +20,7 @@
  * the past-paper link instead of failing to render.
  */
 import { unstable_cache } from "next/cache";
+import { singleFlight } from "@/lib/cache/singleFlight";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import {
@@ -85,7 +86,9 @@ const listChapterTestEntries = unstable_cache(
 /** chapterId → its published chapter test. */
 export async function listChapterTests(): Promise<Map<string, ChapterTest>> {
   try {
-    return new Map(await listChapterTestEntries());
+    // Shared while in progress: every notes and /questions page asks at once
+    // during a build, before the cache has filled (see lib/cache/singleFlight).
+    return new Map(await singleFlight("mock-chapter-tests", listChapterTestEntries));
   } catch (e) {
     console.error("listChapterTests", e instanceof Error ? e.message : e);
     return new Map();
