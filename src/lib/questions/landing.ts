@@ -20,6 +20,7 @@
  * cookie-bound client cannot be used inside `unstable_cache`.
  */
 import { unstable_cache } from "next/cache";
+import { singleFlight } from "@/lib/cache/singleFlight";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { EXAM_REGISTRY, isPracticeOnlyExam } from "@/lib/exam/examContext";
 import { slugifyName, dedupeBySlug, findBySlug } from "@/lib/questions/slugs";
@@ -93,8 +94,14 @@ type ProfileRow = {
  * 0037) rather than from counting fetched rows — the row-counting version would
  * silently truncate at PostgREST's 1000-row cap, which is the single most-repeated
  * bug in this codebase. One RPC per subject (~31 total), then cached for a day.
+ *
+ * Shared while in progress (`listChapterLandings` below): every /questions and
+ * /notes page calls this, a build starts hundreds of them at once, and the
+ * cache fills only after the first load finishes. Unshared, the ~475-request
+ * table ran ~9 times per healthy build and ~58 times when the database was
+ * slow (2026-10-06), two thirds of that build's requests.
  */
-export const listChapterLandings = unstable_cache(
+const loadChapterLandings = unstable_cache(
   async (): Promise<ChapterLanding[]> => {
     const db = createSupabaseAnonClient();
 
@@ -217,6 +224,10 @@ export const listChapterLandings = unstable_cache(
   ["questions-landing", "chapter-index"],
   { revalidate: LANDING_TTL_SECONDS }
 );
+
+export function listChapterLandings(): Promise<ChapterLanding[]> {
+  return singleFlight("questions-landing", loadChapterLandings);
+}
 
 /**
  * Resolve a URL back to its chapter. The routing table above IS the lookup —

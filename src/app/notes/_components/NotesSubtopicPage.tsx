@@ -12,6 +12,7 @@ import { NotesOnThisPage, NotesReadingProgress } from "./NotesReadingAids";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { resolvePublicQuizForChapter } from "@/lib/quiz/publicQuiz";
+import { singleFlight } from "@/lib/cache/singleFlight";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { userHasAccess } from "@/lib/entitlements/query";
 import { isNotesGated, splitPreview } from "@/lib/notes/access";
@@ -120,10 +121,16 @@ export default async function NotesSubtopicPage({
   // Guarded so a DB/env hiccup never fails the (ISR-prerendered) notes page.
   let publicQuiz = null;
   try {
-    publicQuiz = await resolvePublicQuizForChapter(
-      createSupabaseAdminClient(),
-      chapter.subjectRoute,
-      chapter.chapterSlug
+    // Shared while in progress: a chapter's subtopic pages build at once and
+    // all ask for the same quiz (lib/cache/singleFlight).
+    publicQuiz = await singleFlight(
+      `notes-public-quiz:${chapter.subjectRoute}/${chapter.chapterSlug}`,
+      () =>
+        resolvePublicQuizForChapter(
+          createSupabaseAdminClient(),
+          chapter.subjectRoute,
+          chapter.chapterSlug
+        )
     );
   } catch {
     publicQuiz = null;

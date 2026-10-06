@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { singleFlight } from "@/lib/cache/singleFlight";
 import {
   resolveTaxonomy,
   type ResolvedTaxonomy,
@@ -29,7 +30,11 @@ export async function getNotesTaxonomy(
   const hit = cache.get(key);
   if (hit) return hit;
 
-  const fresh = await resolveTaxonomy(client, examName, subjectName);
+  // Shared while in progress: a build renders a subject's notes pages at
+  // once, and each one missed until the first resolve landed in the cache.
+  const fresh = await singleFlight(`notes-taxonomy:${key}`, () =>
+    resolveTaxonomy(client, examName, subjectName)
+  );
   cache.set(key, fresh);
   return fresh;
 }
