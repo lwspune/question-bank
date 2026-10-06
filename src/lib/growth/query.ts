@@ -10,6 +10,7 @@
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
+import { hasPaperMocks } from "@/lib/education/howItWorks";
 import { CHAPTER_SHARE_CAMPAIGN } from "@/lib/share/chapterShare";
 import { CHAPTER_TESTS_EXAM, EXPERIMENTS, NORTH_STAR_KINDS } from "./registry";
 import type { ArmCounts, ChapterTestWeek, EmailDay, NorthStarWeek, SignupWeek } from "./snapshot";
@@ -41,7 +42,7 @@ export function growthParams(weeks = GROWTH_WEEKS) {
     p_weeks: weeks,
     p_kinds: [...NORTH_STAR_KINDS],
     p_onboarding_since: liveSince("onboarding-arms"),
-    p_mock_exams: EXAM_REGISTRY.filter((e) => e.hasMocks === true).map((e) => e.slug),
+    p_mock_exams: EXAM_REGISTRY.filter(hasPaperMocks).map((e) => e.slug),
     p_share_since: liveSince("chapter-share"),
     p_share_campaign: CHAPTER_SHARE_CAMPAIGN,
     p_chapter_exam: CHAPTER_TESTS_EXAM,

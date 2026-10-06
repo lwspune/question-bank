@@ -7,6 +7,9 @@ import {
   checkOn,
 } from "@/lib/growth/registry";
 import { ACTIVITY_KINDS } from "@/lib/activity/events";
+import { EXAM_REGISTRY } from "@/lib/exam/examContext";
+import { loopForArm } from "@/lib/education/howItWorks";
+import { growthParams } from "@/lib/growth/query";
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -89,6 +92,21 @@ describe("READINGS", () => {
       const dates = metric.entries.map((e) => e.on);
       for (const d of dates) expect(d).toMatch(ISO_DATE);
       expect([...dates].sort()).toEqual(dates);
+    }
+  });
+});
+
+describe("growthParams onboarding population", () => {
+  it("is exactly the exams whose welcome loop the practice-first arm changes", () => {
+    const changed = EXAM_REGISTRY.filter(
+      (e) => loopForArm(e, "practice-first").kind === "practice"
+    ).map((e) => e.slug);
+    expect(growthParams().p_mock_exams).toEqual(changed);
+  });
+
+  it("leaves out board exams, whose mocks are chapter tests and whose loop the arm never changes", () => {
+    for (const e of EXAM_REGISTRY.filter((x) => x.boardExam === true)) {
+      expect(growthParams().p_mock_exams).not.toContain(e.slug);
     }
   });
 });
