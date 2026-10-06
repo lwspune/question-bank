@@ -103,6 +103,14 @@ export function mocksOfType(
   return mocks.filter((m) => mockTypeOf(m) === type);
 }
 
+/**
+ * The route for one exam's "Download past papers" page (2026-10-07): its past
+ * papers, each downloadable whole as a PDF paper and answer key.
+ */
+export function mockDownloadHref(examSlug: string): string {
+  return `/mock/exam/${examSlug}/download`;
+}
+
 /** The route for one exam's list of one type. */
 export function mockTypeHref(examSlug: string, type: MockTypeSlug): string {
   return `/mock/exam/${examSlug}/${type}`;

@@ -67,11 +67,21 @@ describe("buildMockSitemapEntries", () => {
         "/mock",
         "/mock/exam/cds",
         "/mock/exam/cds/past-papers",
+        "/mock/exam/cds/download",
         "/mock/exam/nda",
         "/mock/exam/nda/past-papers",
+        "/mock/exam/nda/download",
         "/mock/exam/nda/practice",
       ].sort()
     );
+  });
+
+  it("advertises an exam's download page only where it has past papers, dated from them", () => {
+    // The download page lists past papers only, so a practice paper neither
+    // creates it nor dates it.
+    expect(byPath("/mock/exam/nda/download")?.iso).toBe("2026-09-14T00:00:00.000Z");
+    const practiceOnly = [row({ slug: "nda-practice-1", source: "practice" })];
+    expect(paths(practiceOnly)).not.toContain("/mock/exam/nda/download");
   });
 
   it("dates an exam hub from mocks it no longer emits", () => {

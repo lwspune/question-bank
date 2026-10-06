@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { fitTitle } from "@/lib/seo/title";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, History, Scissors, ScrollText, Target } from "lucide-react";
+import { ArrowRight, Download, History, Scissors, ScrollText, Target } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
@@ -20,6 +20,7 @@ import {
 import {
   buildMockTypeCards,
   comingSoonLine,
+  mockDownloadHref,
   mockTypeHref,
   splitMockTypeCards,
   type MockTypeCard,
@@ -176,6 +177,8 @@ export default async function MockExamTypePicker({ params }: { params: Params })
     buildMockTypeCards(all.filter((m) => m.examName === exam.examName))
   );
   const soonLine = comingSoonLine(comingSoon, exam.examName);
+  // Only an exam with past papers has any to download.
+  const hasPastPapers = open.some((c) => c.slug === "past-papers" && c.count > 0);
 
   return (
     <GuideShell
@@ -192,13 +195,24 @@ export default async function MockExamTypePicker({ params }: { params: Params })
         title={`${exam.examName} Mock Tests`}
         subtitle={`Sit ${exam.examName} papers online, timed and marked for you: full past papers, plus practice papers with the same number of questions per subject.`}
       >
-        <Link
-          href="/mock/attempts"
-          className="inline-flex items-center gap-1.5 rounded-md border px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        >
-          <History className="h-4 w-4" aria-hidden />
-          My attempts
-        </Link>
+        <div className="flex flex-wrap gap-2">
+          <Link
+            href="/mock/attempts"
+            className="inline-flex items-center gap-1.5 rounded-md border px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <History className="h-4 w-4" aria-hidden />
+            My attempts
+          </Link>
+          {hasPastPapers && (
+            <Link
+              href={mockDownloadHref(exam.slug)}
+              className="inline-flex items-center gap-1.5 rounded-md border px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <Download className="h-4 w-4" aria-hidden />
+              Download past papers
+            </Link>
+          )}
+        </div>
       </GuideHero>
 
       <ul className="mt-8 grid gap-5 sm:grid-cols-2">

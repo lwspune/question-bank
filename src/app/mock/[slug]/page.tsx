@@ -21,6 +21,7 @@ import { paywallEvent } from "@/lib/activity/clientEvents";
 import { getExamByName } from "@/lib/exam/examContext";
 import ShareMock from "./ShareMock";
 import AttemptsList from "../_components/AttemptsList";
+import PaperDownload from "../_components/PaperDownload";
 import { listMyAssignments } from "@/lib/assignments/service";
 
 type Params = { slug: string };
@@ -71,6 +72,10 @@ export default async function MockInstructions({ params }: { params: Params }) {
     : null;
 
   const mins = Math.round(mock.durationSecs / 60);
+  // A whole past paper can also be downloaded (2026-10-07); a chapter test or
+  // a practice paper is not a paper anyone sat, so it cannot.
+  const isPastPaper = mock.source === "pyq" && mock.scope === "full";
+  const bilingual = getExamByName(mock.examName)?.bilingual === true;
   // Copy is derived, not hard-coded: MHT-CET has NO negative marking, and the
   // old wording asserted a penalty and told the reader to "skip if unsure" —
   // advice that costs marks when a blank scores the same as a wrong answer.
@@ -153,10 +158,11 @@ export default async function MockInstructions({ params }: { params: Params }) {
           {user ? (
             <StartMock
               slug={mock.slug}
-              bilingual={getExamByName(mock.examName)?.bilingual === true}
+              bilingual={bilingual}
               startState={startState}
               mockPass={mockPass}
               unit={mock.scope === "sectional" ? "chapter_test" : "mock"}
+              isPastPaper={isPastPaper}
             />
           ) : (
             <div className="rounded-lg border border-dashed p-5 text-center">
@@ -167,6 +173,11 @@ export default async function MockInstructions({ params }: { params: Params }) {
                   Sign in to start
                 </Link>
               </Button>
+            </div>
+          )}
+          {isPastPaper && (
+            <div className="mt-3">
+              <PaperDownload slug={mock.slug} paperTitle={mock.title} bilingual={bilingual} />
             </div>
           )}
         </div>
