@@ -14,16 +14,19 @@
  * package ("every new dependency must be justified by a clear capability gap").
  */
 
-export type SuperadminTabId = "orgs" | "teachers" | "contact";
+export type SuperadminTabId = "teachers" | "contact";
 
 export type SuperadminTab = {
   id: SuperadminTabId;
   label: string;
 };
 
-/** Left-to-right order of the strip. `orgs` is first AND the default. */
+/**
+ * Left-to-right order of the strip; the first is the default. Organisations
+ * moved to their own page (/superadmin/orgs) on 2026-10-06, so the strip is the
+ * two inbound queues.
+ */
 export const SUPERADMIN_TABS: readonly SuperadminTab[] = [
-  { id: "orgs", label: "Organisations" },
   { id: "teachers", label: "Teacher requests" },
   { id: "contact", label: "Contact messages" },
 ] as const;
@@ -36,7 +39,7 @@ export const SUPERADMIN_TABS: readonly SuperadminTab[] = [
  * disorienting, and the burial problem it would solve is better solved by the
  * count badges, which are visible WITHOUT selecting the tab.
  */
-export const DEFAULT_TAB_ID: SuperadminTabId = "orgs";
+export const DEFAULT_TAB_ID: SuperadminTabId = "teachers";
 
 /**
  * Rows still awaiting triage, for the tab badge.

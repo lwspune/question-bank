@@ -9,8 +9,14 @@
  */
 import { revalidatePath } from "next/cache";
 import { requireSuperadmin, HttpError } from "@/lib/auth";
-import { createOrg, listOrgsWithStats, type OrgStat } from "@/lib/superadmin/admin";
-import { createMember, type MemberRole } from "@/lib/members/admin";
+import {
+  createOrg,
+  deleteOrg,
+  listOrgsWithStats,
+  renameOrg,
+  type OrgStat,
+} from "@/lib/superadmin/admin";
+import { createMember, updateMemberRole, type MemberRole } from "@/lib/members/admin";
 import {
   setTeacherAccessRequestStatus,
   type TeacherRequestStatus,
@@ -122,4 +128,52 @@ export async function setContactMessageStatusAction(
 
 function msg(e: unknown): string {
   return e instanceof Error ? e.message : String(e);
+}
+
+export async function renameOrgAction(orgId: string, name: string): Promise<Result> {
+  const denied = await gate();
+  if (denied) return denied;
+  const res = await renameOrg(orgId, name);
+  if (!res.ok) return res;
+  revalidatePath("/superadmin/orgs");
+  revalidatePath(`/superadmin/orgs/${orgId}`);
+  return { ok: true };
+}
+
+export async function deleteOrgAction(orgId: string, typedName: string): Promise<Result> {
+  const denied = await gate();
+  if (denied) return denied;
+  const res = await deleteOrg(orgId, typedName);
+  if (!res.ok) return res;
+  revalidatePath("/superadmin/orgs");
+  return { ok: true };
+}
+
+export async function setMemberRoleAction(input: {
+  orgId: string;
+  userId: string;
+  role: MemberRole;
+}): Promise<Result> {
+  let callerId: string;
+  try {
+    callerId = (await requireSuperadmin()).id;
+  } catch (e) {
+    return { ok: false, error: e instanceof HttpError ? e.message : "Not authorized." };
+  }
+  const res = await updateMemberRole(input.orgId, callerId, input.userId, input.role);
+  switch (res.kind) {
+    case "ok":
+      revalidatePath(`/superadmin/orgs/${input.orgId}`);
+      return { ok: true };
+    case "would_remove_last_admin":
+      return { ok: false, error: "This is the org's only admin. Make someone else admin first." };
+    case "cannot_change_own_role":
+      return { ok: false, error: "You can't change your own role here." };
+    case "not_member":
+      return { ok: false, error: "That person is no longer a member." };
+    case "invalid_role":
+      return { ok: false, error: "Role must be Admin or Teacher." };
+    case "error":
+      return { ok: false, error: res.message };
+  }
 }

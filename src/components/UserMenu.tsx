@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import * as Popover from "@radix-ui/react-popover";
-import { BookMarked, Bookmark, CreditCard, FileText, LayoutDashboard, Lightbulb, LogOut, MessageSquarePlus, PenLine, ShieldCheck, TrendingUp, User, Target } from "lucide-react";
+import { BookMarked, Bookmark, Building2, CreditCard, FileText, LayoutDashboard, Lightbulb, LogOut, MessageSquarePlus, PenLine, ShieldCheck, TrendingUp, User, Target } from "lucide-react";
 import { toast } from "sonner";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { totalsLine, type Pulse } from "@/lib/pulse/cache";
@@ -110,6 +110,16 @@ export default function UserMenu({
             >
               <ShieldCheck className="h-4 w-4 text-brand-accent" aria-hidden />
               Superadmin console
+            </Link>
+          )}
+          {isSuperadmin && (
+            <Link
+              href="/superadmin/orgs"
+              prefetch={false}
+              className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
+            >
+              <Building2 className="h-4 w-4 text-brand-accent" aria-hidden />
+              Organisations
             </Link>
           )}
           {/*
