@@ -60,7 +60,7 @@ Six custom events measure the three moments a stranger is ASKED for something. T
 
 ### When to upgrade tiers
 
-- **Vercel Hobby (current)** is bounded by ~100 GB-h/month of function execution and ~100 GB of bandwidth. The export endpoint is the heavy hitter — when daily traffic crosses ~500 papers, watch the dashboard's bandwidth meter weekly.
+- **Vercel Pro (since 2026-09-20)** bills a $20 seat plus metered usage (~$1-2 a day in early October; the breakdown is in CLAUDE.md's Production line). Read Settings → Billing weekly: the meters that move are function invocations + Active CPU (a prefetch or caching regression shows up here first), ISR writes and deployment storage. Observability Plus was switched off 2026-10-06; if "Observability Events" reappears on the bill, it was switched back on. Going back to Hobby is ruled out: it is non-commercial only and its hard caps (Active CPU 4 h/month, ISR writes 200k/month) are below a few days of our usage.
 - **Supabase Free (current)** is bounded by 500 MB DB + 1 GB storage egress + 5 GB bandwidth. The public bucket of question images is the egress risk; if egress crosses ~80% of the cap mid-month, plan a Pro upgrade.
 
 ### Rate limit visibility

@@ -11,10 +11,13 @@
  * CACHED AS ENTRIES, NOT A MAP: unstable_cache serialises its result, and a
  * Map comes back as `{}` — every lookup would miss with no error.
  *
- * Hourly, matching the mock catalogue (`revalidate = 3600`): a newly
- * published test shows on the catalogue and on its chapter's pages within the
- * same hour. A failed read returns no tests, so the pages fall back to the
- * past-paper link instead of failing to render.
+ * DAILY, not hourly like the mock catalogue. This cache sits on ~3,000 daily
+ * pages and Next.js refreshes a page as often as its shortest cache, so an
+ * hour here made every one of them refresh hourly (until 2026-10-06; guarded
+ * by tests/page-cache-window.test.ts). A newly published test is on the
+ * catalogue within the hour and on its chapter's pages within a day, or at
+ * the next deploy. A failed read returns no tests, so the pages fall back to
+ * the past-paper link instead of failing to render.
  */
 import { unstable_cache } from "next/cache";
 import type { SupabaseClient } from "@supabase/supabase-js";
@@ -76,7 +79,7 @@ const listChapterTestEntries = unstable_cache(
   async (): Promise<[string, ChapterTest][]> =>
     readChapterTestEntries(createSupabaseAnonClient()),
   ["mock-chapter-tests"],
-  { revalidate: 3600 }
+  { revalidate: 86400 }
 );
 
 /** chapterId → its published chapter test. */

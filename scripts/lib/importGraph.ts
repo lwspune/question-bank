@@ -34,7 +34,8 @@ export type CollectOptions = {
 // list (`import { type A, b }`) is NOT matched: it still imports a value.
 const TYPE_ONLY_RE = /\b(?:import|export)\s+type\s+[^;]*?\bfrom\s*["'][^"'\n]+["']/g;
 
-const EXTENSIONS = [".ts", ".tsx", ".js", ".mjs", ".json"];
+// `.css`: an App Router layout imports its stylesheet (`import "./globals.css"`).
+const EXTENSIONS = [".ts", ".tsx", ".js", ".mjs", ".json", ".css"];
 
 // Three shapes, each capturing the specifier:
 //   … from "x"        (import/export lists, possibly spanning lines)
