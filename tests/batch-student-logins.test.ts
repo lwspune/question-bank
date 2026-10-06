@@ -15,7 +15,7 @@ import { randomUUID } from "node:crypto";
 import { createBranch } from "@/lib/branches/admin";
 import { createBatch } from "@/lib/batches/admin";
 import { createStudentLogins } from "@/lib/batches/studentLoginsAdmin";
-import { mustSignIn } from "./helpers/fixture";
+import { mustSignIn, signInWorks } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -51,8 +51,7 @@ describe.skipIf(!HAS_ENV)("createStudentLogins", () => {
     );
   }
   async function canSignIn(email: string, password: string) {
-    const { error } = await anon().auth.signInWithPassword({ email, password });
-    return !error;
+    return signInWorks(email, anon(), { email, password });
   }
   async function userIdOf(email: string): Promise<string | null> {
     const { data } = await admin.auth.admin.listUsers({ perPage: 1000 });

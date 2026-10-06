@@ -21,6 +21,7 @@ import {
   savePaywallSettings,
 } from "@/lib/billing/admin";
 import { SCOPE_ALL, SCOPE_MOCKS, SCOPE_TEACHER } from "@/lib/entitlements/access";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -47,7 +48,7 @@ describe.skipIf(!HAS_ENV)("public.plans", () => {
     const created = await admin.auth.admin.createUser({ email: EMAIL, password: PASSWORD, email_confirm: true });
     studentId = created.data.user!.id;
     student = createClient(url, key, { auth: { persistSession: false } });
-    await student.auth.signInWithPassword({ email: EMAIL, password: PASSWORD });
+    await mustSignIn("plans student", student, { email: EMAIL, password: PASSWORD });
     const s = await readPaywallSettings();
     if (s.kind !== "ok") throw new Error(s.message);
     originalSettings = s.settings;

@@ -14,6 +14,7 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -88,8 +89,8 @@ describe.skipIf(!HAS_ENV)("quiz_atoms RLS", () => {
     adminClient = createClient(url, anon, { auth: { persistSession: false } });
     teacherClient = createClient(url, anon, { auth: { persistSession: false } });
     await Promise.all([
-      adminClient.auth.signInWithPassword({ email: ADMIN_EMAIL, password: PASSWORD }),
-      teacherClient.auth.signInWithPassword({ email: TEACHER_EMAIL, password: PASSWORD }),
+      mustSignIn("quiz admin", adminClient, { email: ADMIN_EMAIL, password: PASSWORD }),
+      mustSignIn("quiz teacher", teacherClient, { email: TEACHER_EMAIL, password: PASSWORD }),
     ]);
   });
 

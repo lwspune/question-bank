@@ -15,6 +15,7 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { updateReport } from "@/lib/reports/updateReport";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -132,15 +133,15 @@ describe.skipIf(!HAS_ENV)("updateReport", () => {
       { auth: { persistSession: false } }
     );
     await Promise.all([
-      adminAClient.auth.signInWithPassword({
+      mustSignIn("admin A", adminAClient, {
         email: `rupd-admin-a-${RUN_ID}@test.local`,
         password: PASSWORD,
       }),
-      adminBClient.auth.signInWithPassword({
+      mustSignIn("admin B", adminBClient, {
         email: `rupd-admin-b-${RUN_ID}@test.local`,
         password: PASSWORD,
       }),
-      teacherAClient.auth.signInWithPassword({
+      mustSignIn("teacher A", teacherAClient, {
         email: `rupd-teacher-a-${RUN_ID}@test.local`,
         password: PASSWORD,
       }),

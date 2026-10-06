@@ -20,6 +20,7 @@ import { grantRazorpayEntitlement, revokeRazorpayEntitlement } from "@/lib/billi
 import { userHasAccess } from "@/lib/entitlements/query";
 import { computeExpiry } from "@/lib/billing/plans";
 import { SCOPE_ALL, SCOPE_MOCKS } from "@/lib/entitlements/access";
+import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -39,6 +40,14 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
   let expiredClient: SupabaseClient;
   let paidUserId = "";
   let expiredUserId = "";
+
+  // A first grant must start from nothing. vitest's retry re-runs a failed
+  // test, and the failed attempt's grant is still there, so without this the
+  // retry answers "already_granted" and can never pass (2026-10-06).
+  async function clearGrant(paymentId: string) {
+    const { error } = await admin.from("entitlements").delete().eq("provider_ref", paymentId);
+    if (error) throw new Error(`clear grant ${paymentId}: ${error.message}`);
+  }
 
   beforeAll(async () => {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -65,11 +74,8 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
     paidClient = createClient(url, anon, { auth: { persistSession: false } });
     expiredClient = createClient(url, anon, { auth: { persistSession: false } });
     await Promise.all([
-      paidClient.auth.signInWithPassword({ email: PAID_EMAIL, password: PASSWORD }),
-      expiredClient.auth.signInWithPassword({
-        email: EXPIRED_EMAIL,
-        password: PASSWORD,
-      }),
+      mustSignIn("billing paid", paidClient, { email: PAID_EMAIL, password: PASSWORD }),
+      mustSignIn("billing expired", expiredClient, { email: EXPIRED_EMAIL, password: PASSWORD }),
     ]);
   });
 
@@ -86,6 +92,7 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
   });
 
   it("grants a 6-month Mock Pass and the user's own client sees active access", async () => {
+    await clearGrant(PAY_PAID);
     const result = await grantRazorpayEntitlement({
       userId: paidUserId,
       paymentId: PAY_PAID,
@@ -142,6 +149,7 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
   });
 
   it("a grant whose expiry has passed does not confer access", async () => {
+    await clearGrant(PAY_EXPIRED);
     const result = await grantRazorpayEntitlement({
       userId: expiredUserId,
       paymentId: PAY_EXPIRED,

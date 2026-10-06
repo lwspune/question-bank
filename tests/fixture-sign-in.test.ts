@@ -15,7 +15,7 @@
  * not. Any other error still throws at once.
  */
 import { describe, it, expect } from "vitest";
-import { mustSignIn } from "./helpers/fixture";
+import { mustSignIn, signInWorks } from "./helpers/fixture";
 
 type Creds = { email: string; password: string };
 type AuthResult = {
@@ -79,5 +79,51 @@ describe("mustSignIn", () => {
   it("treats no-error-but-no-session as a failure — never hands back an anonymous client", async () => {
     const client = fakeClient({ data: { session: null }, error: null });
     await expect(mustSignIn("alice", client, CREDS)).rejects.toThrow(/sign in "alice".*no session/);
+  });
+});
+
+/**
+ * `signInWorks` — for tests whose QUESTION is "does this password work?"
+ * (a member-create flow must not overwrite an existing account's password).
+ * A plain `!error` read a rate limit as "this password does not work", which
+ * is exactly the answer such a test asserts on, so it could pass or fail on
+ * the auth window rather than the code. Only "Invalid login credentials" is a
+ * "no"; a rate limit is waited out as in `mustSignIn`; anything else throws.
+ */
+describe("signInWorks", () => {
+  it("answers true when the sign-in returns a session", async () => {
+    const client = fakeClient({ data: { session: { access_token: "t" } }, error: null });
+    await expect(signInWorks("alice", client, CREDS)).resolves.toBe(true);
+    expect(client.calls).toEqual([CREDS]);
+  });
+
+  it("answers false on invalid credentials, without retrying", async () => {
+    const client = fakeClient({
+      data: { session: null },
+      error: { message: "Invalid login credentials" },
+    });
+    await expect(signInWorks("alice", client, CREDS, { waitMs: 0, maxWaits: 5 })).resolves.toBe(false);
+    expect(client.calls).toHaveLength(1);
+  });
+
+  it("never reads a rate limit as false: waits it out, then THROWS", async () => {
+    const client = fakeClient({
+      data: { session: null },
+      error: { message: "Request rate limit reached" },
+    });
+    await expect(signInWorks("alice", client, CREDS, { waitMs: 0, maxWaits: 2 })).rejects.toThrow(
+      /sign in "alice".*Request rate limit reached/
+    );
+    expect(client.calls).toHaveLength(3);
+  });
+
+  it("throws on any other error rather than answering", async () => {
+    const client = fakeClient({ data: { session: null }, error: { message: "fetch failed" } });
+    await expect(signInWorks("alice", client, CREDS)).rejects.toThrow(/sign in "alice".*fetch failed/);
+  });
+
+  it("throws on no-error-but-no-session", async () => {
+    const client = fakeClient({ data: { session: null }, error: null });
+    await expect(signInWorks("alice", client, CREDS)).rejects.toThrow(/sign in "alice".*no session/);
   });
 });

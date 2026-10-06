@@ -132,3 +132,25 @@ export async function mustSignIn(
     return;
   }
 }
+
+/**
+ * For a test whose QUESTION is "does this password work?" (a member-create
+ * flow must not overwrite an existing account's password). A plain `!error`
+ * read a rate limit as "no", which is the very answer such a test asserts on.
+ * Only "Invalid login credentials" answers false; a rate limit is waited out
+ * exactly as in `mustSignIn`; any other failure throws.
+ */
+export async function signInWorks(
+  label: string,
+  client: SignInClient,
+  creds: SignInCreds,
+  opts: SignInWaitOptions = {},
+): Promise<boolean> {
+  try {
+    await mustSignIn(label, client, creds, opts);
+    return true;
+  } catch (err) {
+    if (err instanceof Error && /Invalid login credentials/i.test(err.message)) return false;
+    throw err;
+  }
+}

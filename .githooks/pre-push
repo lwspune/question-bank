@@ -85,6 +85,23 @@ if [ "$notes" -eq 1 ]; then
 fi
 
 echo "[pre-push] running npm run $target (build=$build notes:lint=$notes, full notes prerender=$notes)..."
-npm run "$target" --silent
+
+# KEEP THE OUTPUT (2026-10-06). A red gate used to leave nothing behind but
+# the terminal, so a failure seen once could not be read again: a 36-test red
+# run that day was lost to `| tail -40`, and every earlier flake fix had been a
+# guess from fragments. Each run now writes its full output to a timestamped
+# log (gitignored, newest 20 kept). The exit code is carried out of the pipe in
+# a file, because a pipeline reports tee's status, not the gate's.
+log_dir="generated-papers/gate-logs"
+mkdir -p "$log_dir"
+log="$log_dir/pre-push-$(date +%Y%m%d-%H%M%S).log"
+{ npm run "$target" --silent 2>&1; echo $? > "$log.status"; } | tee "$log"
+code=$(cat "$log.status" 2>/dev/null || echo 1)
+rm -f "$log.status"
+for old in $(ls -1t "$log_dir"/pre-push-*.log 2>/dev/null | tail -n +21); do rm -f "$old"; done
+if [ "$code" -ne 0 ]; then
+  echo "[pre-push] FAILED (exit $code). Full output: $log"
+  exit "$code"
+fi
 
 echo "[pre-push] all gates passed"
