@@ -16,6 +16,7 @@ import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "no
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
+import { appendTail, browserStartFailure, devToolsPortFromOutput } from "./browserStart";
 
 const WINDOWS_BROWSERS = [
   "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
@@ -24,6 +25,8 @@ const WINDOWS_BROWSERS = [
 ];
 
 const TIMEOUT_MS = 45_000;
+/** How much of the browser's error output a failure carries. */
+const OUTPUT_TAIL = 4000;
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 async function browser(): Promise<{ path: string; args: string[] }> {
@@ -42,14 +45,27 @@ type Cdp = {
   close: () => void;
 };
 
-async function connect(profile: string, proc: ChildProcess): Promise<Cdp> {
+/**
+ * The browser's DevTools port. The headless shell on Vercel announces it on its
+ * error output; Edge on Windows writes it to `DevToolsActivePort`. Either wins.
+ */
+async function waitForPort(profile: string, proc: ChildProcess, output: () => string): Promise<string> {
   const portFile = join(profile, "DevToolsActivePort");
-  for (let i = 0; i < 120 && !existsSync(portFile); i++) {
-    if (proc.exitCode !== null) throw new Error(`browser exited (${proc.exitCode})`);
+  for (let i = 0; i < 120; i++) {
+    const announced = devToolsPortFromOutput(output());
+    if (announced) return announced;
+    if (existsSync(portFile)) {
+      const written = readFileSync(portFile, "utf8").split("\n")[0].trim();
+      if (written) return written;
+    }
+    if (proc.exitCode !== null || proc.signalCode !== null) break;
     await sleep(100);
   }
-  if (!existsSync(portFile)) throw new Error("browser did not start");
-  const port = readFileSync(portFile, "utf8").split("\n")[0].trim();
+  throw browserStartFailure({ exitCode: proc.exitCode, signal: proc.signalCode, output: output() });
+}
+
+async function connect(profile: string, proc: ChildProcess, output: () => string): Promise<Cdp> {
+  const port = await waitForPort(profile, proc, output);
   let pageWs = "";
   for (let i = 0; i < 50 && !pageWs; i++) {
     try {
@@ -118,13 +134,25 @@ async function printOnce(html: string): Promise<Buffer> {
     path,
     [...args, "--disable-gpu", "--no-first-run", "--hide-scrollbars", "--remote-debugging-port=0",
       "--allow-file-access-from-files", `--user-data-dir=${profile}`, "about:blank"],
-    { stdio: "ignore" }
+    // stderr is read, not ignored: it carries the headless shell's port and,
+    // when the browser fails, the reason, which goes into the error.
+    { stdio: ["ignore", "ignore", "pipe"] }
   );
+  let output = "";
+  proc.stderr?.setEncoding("utf8");
+  proc.stderr?.on("data", (chunk: string) => {
+    output = appendTail(output, chunk, OUTPUT_TAIL);
+  });
+  // A browser that cannot be launched at all emits "error"; unheard, that
+  // event would throw past every catch. Recorded, it lands in the error.
+  proc.on("error", (err) => {
+    output = appendTail(output, `spawn error: ${err.message}\n`, OUTPUT_TAIL);
+  });
   let cdp: Cdp | null = null;
   let timer: NodeJS.Timeout | undefined;
   try {
     const work = (async () => {
-      cdp = await connect(profile, proc);
+      cdp = await connect(profile, proc, () => output);
       await cdp.send("Page.navigate", { url: pathToFileURL(file).href });
       for (let i = 0; i < 300 && (await evaluate(cdp, "document.readyState")) !== "complete"; i++) await sleep(50);
       await evaluate(cdp, "document.fonts.ready.then(() => true)");

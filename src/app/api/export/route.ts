@@ -25,6 +25,8 @@ import { pdfHead } from "@/lib/export/pdf/assets";
 import { printPdf } from "@/lib/export/pdf/printPdf";
 import { imageDataUris } from "@/lib/export/pdf/images";
 import { PPTX_CONTENT_TYPE } from "@/lib/export/pptxParts";
+import { DOCX_CONTENT_TYPE, PDF_CONTENT_TYPE, XLSX_CONTENT_TYPE } from "@/lib/export/fileType";
+import { buildPaperFile } from "@/lib/export/paperFile";
 import { buildTagRows, tagRowsToAoa } from "@/lib/export/tagsSheet";
 import { getResourceTagsForQuestions } from "@/lib/links/getResourceTagsForQuestions";
 import { downloadImage } from "@/lib/storage/images";
@@ -43,11 +45,6 @@ const ANON_LIMIT = 20;
 const STUDENT_LIMIT = 50;
 const AUTHED_LIMIT = 200;
 
-const DOCX_CONTENT_TYPE =
-  "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-const PDF_CONTENT_TYPE = "application/pdf";
-const XLSX_CONTENT_TYPE =
-  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
 // "tags" = the nda-tracker enrichment sheet (.xlsx) — same question set as the
 // paper, numbered identically, so it imports without any hand-typing.
@@ -331,40 +328,40 @@ export async function POST(request: NextRequest) {
     // resolveExportAccess's `format`). The PDF is one HTML page printed by a
     // headless Chromium; its pictures are fetched per document, so a paper can
     // never carry a solution's picture.
-    let fileBuf: Buffer;
-    let filename: string;
-    let contentType = DOCX_CONTENT_TYPE;
-    if (access.format === "pdf") {
-      const images = await imageDataUris(createSupabaseAdminClient(), kind, questions);
-      const common = { title, questions, images, groupBySubtopic, branded: access.branded, head: pdfHead() };
-      const html =
+    // If the PDF fails to print, the Word file is served instead (buildPaperFile),
+    // so a student gets a file rather than a 500, and the failure is logged.
+    const built = await buildPaperFile(access.format ?? "docx", {
+      buildPdf: async () => {
+        const images = await imageDataUris(createSupabaseAdminClient(), kind, questions);
+        const common = { title, questions, images, groupBySubtopic, branded: access.branded, head: pdfHead() };
+        const html =
+          kind === "paper"
+            ? buildPaperHtml({ ...common, includeSourceTag })
+            : buildKeyHtml({ ...common, includeSolutions });
+        return printPdf(html);
+      },
+      buildDocx: async () =>
         kind === "paper"
-          ? buildPaperHtml({ ...common, includeSourceTag })
-          : buildKeyHtml({ ...common, includeSolutions });
-      fileBuf = await printPdf(html);
-      filename = `${kind === "paper" ? "QP" : "Answers"}_${safeName}.pdf`;
-      contentType = PDF_CONTENT_TYPE;
-    } else if (kind === "paper") {
-      const imageBytes = await fetchImageBytes(questions);
-      fileBuf = await buildQuestionPaper({
-        title,
-        questions,
-        imageBytes,
-        groupBySubtopic,
-        includeSourceTag,
-        branded: access.branded,
-      });
-      filename = `QP_${safeName}.docx`;
-    } else {
-      fileBuf = await buildAnswerKey({
-        title,
-        questions,
-        includeSolutions,
-        groupBySubtopic,
-        branded: access.branded,
-      });
-      filename = `Answers_${safeName}.docx`;
-    }
+          ? buildQuestionPaper({
+              title,
+              questions,
+              imageBytes: await fetchImageBytes(questions),
+              groupBySubtopic,
+              includeSourceTag,
+              branded: access.branded,
+            })
+          : buildAnswerKey({
+              title,
+              questions,
+              includeSolutions,
+              groupBySubtopic,
+              branded: access.branded,
+            }),
+      onPdfFailure: (err) => console.error("export pdf failed, serving docx", err),
+    });
+    const fileBuf = built.buf;
+    const filename = `${kind === "paper" ? "QP" : "Answers"}_${safeName}.${built.format}`;
+    const contentType = built.format === "pdf" ? PDF_CONTENT_TYPE : DOCX_CONTENT_TYPE;
 
     // Spend the free download only now that the file exists, and serve it only
     // if this request's claim won: a racing second tap gets the refusal.
