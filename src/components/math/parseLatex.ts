@@ -77,6 +77,45 @@ type Zone = { type: "inline" | "block"; content: string };
 
 const MASK_RE = new RegExp(MASK_OPEN + "(\\d+)" + MASK_CLOSE, "g");
 
+/**
+ * Several lines of working stored as ONE display equation (2026-10-07).
+ *
+ * A source conversion packed multi-line solutions into `\[{line 1}{line 2}\]`:
+ * one brace group per line, side by side, so KaTeX drew them on one line and
+ * they ran together or off the page (~240 public rows, JEE and NDA solutions
+ * mostly). When a display is NOTHING BUT two or more non-empty top-level
+ * groups, they are stacked with `gathered`; anything else (a single group,
+ * `{x}^{2}`, text between groups, unbalanced braces) is returned unchanged.
+ * Pure; applied to display math only, by maskZones, so the site, the PDF and
+ * the Word file all draw it the same way.
+ */
+export function stackGroupedLines(tex: string): string {
+  const groups: string[] = [];
+  let i = 0;
+  const n = tex.length;
+  while (i < n) {
+    while (i < n && /\s/.test(tex[i])) i++;
+    if (i >= n) break;
+    if (tex[i] !== "{") return tex;
+    let depth = 0;
+    let j = i;
+    for (; j < n; j++) {
+      const c = tex[j];
+      if (c === "\\") {
+        j++;
+        continue;
+      }
+      if (c === "{") depth++;
+      else if (c === "}" && --depth === 0) break;
+    }
+    if (j >= n) return tex;
+    groups.push(tex.slice(i + 1, j).trim());
+    i = j + 1;
+  }
+  if (groups.length < 2 || groups.some((g) => g === "")) return tex;
+  return `\\begin{gathered}${groups.join(" \\\\ ")}\\end{gathered}`;
+}
+
 /** Replace math zones with sentinels, returning the zones in mask order. */
 function maskZones(input: string): { masked: string; zones: Zone[] } {
   const zones: Zone[] = [];
@@ -85,7 +124,7 @@ function maskZones(input: string): { masked: string; zones: Zone[] } {
     let content: string;
     if (raw.startsWith("\\[") || raw.startsWith("$$")) {
       type = "block";
-      content = raw.slice(2, -2).trim();
+      content = stackGroupedLines(raw.slice(2, -2).trim());
     } else if (raw.startsWith("\\(")) {
       type = "inline";
       content = raw.slice(2, -2).trim();
