@@ -130,8 +130,34 @@ jobs:
       # more than 15,000 loose ones (2026-10-07); one archive goes up instead.
       # Not piped: GitHub's default shell does not fail a pipeline, so `| tee`
       # would report a failed deploy as a success. The URL is the CLI's stdout.
+      #
+      # A failed deploy COMMAND is not always a failed DEPLOY. On 2026-10-07 the
+      # upload finished, Vercel was "Deploying outputs...", and the CLI's wait
+      # dropped (`Error: fetch failed`): the run went red while Vercel served the
+      # deploy as Ready and Current. So when the command fails after Vercel has
+      # created the deployment (its URL is in the progress output), the verdict
+      # is Vercel's own `readyState`: READY passes, anything else, or an answer
+      # that cannot be read, fails.
       - name: Deploy the prebuilt output
         run: |
-          url=$(npx --yes "$VERCEL_CLI" deploy --prebuilt --archive=tgz --prod ${{ inputs.target == 'staged' && '--skip-domain' || '' }} --token=${{ secrets.VERCEL_TOKEN }})
+          set +e
+          url=$(npx --yes "$VERCEL_CLI" deploy --prebuilt --archive=tgz --prod ${{ inputs.target == 'staged' && '--skip-domain' || '' }} --token=${{ secrets.VERCEL_TOKEN }} 2>deploy-progress.txt)
+          code=$?
+          set -e
+          cat deploy-progress.txt >&2
+          if [ "$code" -ne 0 ]; then
+            url=$(grep -oE 'https://[a-z0-9.-]+\.vercel\.app' deploy-progress.txt | head -n 1)
+            if [ -z "$url" ]; then
+              echo "::error::The deploy failed before Vercel created a deployment."
+              exit "$code"
+            fi
+            echo "::warning::The deploy command failed after Vercel created $url. Asking Vercel for its real state."
+            state=$(npx --yes "$VERCEL_CLI" inspect "$url" --wait --timeout 10m --json --token=${{ secrets.VERCEL_TOKEN }} | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{try{console.log(JSON.parse(s).readyState||"UNKNOWN")}catch{console.log("UNREADABLE")}})')
+            echo "Vercel says: $state"
+            if [ "$state" != "READY" ]; then
+              echo "::error::Deployment $url is $state, not READY."
+              exit 1
+            fi
+          fi
           echo "$url"
           echo "Deployed ${{ inputs.target || 'production' }}: $url" >> "$GITHUB_STEP_SUMMARY"
