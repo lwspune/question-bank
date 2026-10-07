@@ -70,6 +70,21 @@ jobs:
       - name: Pull Vercel project settings and environment
         run: npx --yes "$VERCEL_CLI" pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
+      # Vercel will not hand out "Sensitive" settings: `vercel pull` writes the
+      # placeholder [SENSITIVE] instead (11 of them, 2026-10-07). The ones the
+      # build reads come from GitHub's copies; runtime-only secrets stay with
+      # Vercel, which supplies them to the live functions. Stops here, naming
+      # the setting, if the build needs one GitHub does not have.
+      - name: Fill locked settings from GitHub secrets
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          NEXT_PUBLIC_GOOGLE_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID }}
+          NEXT_PUBLIC_CLARITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_CLARITY_PROJECT_ID }}
+          NEXT_PUBLIC_FUNNEL_ANALYTICS: ${{ secrets.NEXT_PUBLIC_FUNNEL_ANALYTICS }}
+        run: npx tsx scripts/deploy/fill-vercel-env.ts
+
       # VERCEL=1 makes the build produce exactly what a Vercel-hosted build
       # does: next.config.mjs renders 4 pages at a time, and every notes page is
       # prebuilt (src/lib/notes/prerender.ts). Set explicitly rather than trusting
@@ -79,6 +94,16 @@ jobs:
           VERCEL: "1"
           NOTES_FULL_PRERENDER: "1"
         run: npx --yes "$VERCEL_CLI" build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      # The last line of defence: a placeholder that reached a page, a script or
+      # a function's settings would break the live site quietly, so its
+      # presence anywhere in the output cancels the deploy.
+      - name: No locked-setting placeholder in the built site
+        run: |
+          if grep -rlF "[SENSITIVE]" .vercel/output; then
+            echo "::error::[SENSITIVE] found in the built output (files above). Not deploying."
+            exit 1
+          fi
 
       # Not piped: GitHub's default shell does not fail a pipeline, so `| tee`
       # would report a failed deploy as a success. The URL is the CLI's stdout.
