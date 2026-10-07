@@ -1,19 +1,13 @@
-import Link from "next/link";
-import { ChevronRight, Home } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
+import Breadcrumbs, { type Crumb } from "@/components/nav/Breadcrumbs";
 import Footer from "@/components/Footer";
 import { cn } from "@/lib/utils";
 import GuideSideNav, { type SideNavItem } from "./GuideSideNav";
 
-type Breadcrumb = {
-  href?: string;
-  label: string;
-};
-
 type Props = {
   guideTitle: string;
   sideNav: SideNavItem[];
-  breadcrumbs: Breadcrumb[];
+  breadcrumbs: Crumb[];
   children: React.ReactNode;
   /** Landing route — passed through to GuideSideNav so the "Overview" link
    *  doesn't activate on every sub-route. Defaults to the first nav item's
@@ -60,35 +54,5 @@ export default function GuideShell({
       </main>
       <Footer />
     </>
-  );
-}
-
-function Breadcrumbs({ items }: { items: Breadcrumb[] }) {
-  return (
-    <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground">
-      <ol className="flex flex-wrap items-center gap-1.5">
-        <li>
-          <Link
-            href="/"
-            className="inline-flex items-center hover:text-foreground"
-            aria-label="Home"
-          >
-            <Home className="h-3.5 w-3.5" aria-hidden />
-          </Link>
-        </li>
-        {items.map((item, i) => (
-          <li key={`${item.label}-${i}`} className="flex items-center gap-1.5">
-            <ChevronRight className="h-3 w-3" aria-hidden />
-            {item.href ? (
-              <Link href={item.href} className="hover:text-foreground">
-                {item.label}
-              </Link>
-            ) : (
-              <span className="font-medium text-foreground">{item.label}</span>
-            )}
-          </li>
-        ))}
-      </ol>
-    </nav>
   );
 }

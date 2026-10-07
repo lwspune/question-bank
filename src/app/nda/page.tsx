@@ -25,6 +25,7 @@ import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getExamHomeStats } from "@/lib/exam/examHomeStats";
 import { resolveBankHref } from "@/lib/exam/examContext";
 import { mockCatalogueHref } from "@/lib/exam/examLinks";
+import Breadcrumbs from "@/components/nav/Breadcrumbs";
 
 export const revalidate = 86400;
 
@@ -125,19 +126,7 @@ export default async function NdaHomePage() {
           description={PAGE_DESCRIPTION}
         />
 
-        <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground">
-          <ol className="flex flex-wrap items-center gap-1.5">
-            <li>
-              <Link href="/" className="hover:text-foreground">
-                Home
-              </Link>
-            </li>
-            <li className="flex items-center gap-1.5">
-              <ArrowRight className="h-3 w-3" aria-hidden />
-              <span className="font-medium text-foreground">NDA</span>
-            </li>
-          </ol>
-        </nav>
+        <Breadcrumbs items={[{ label: "NDA" }]} />
 
         <div className="mt-6 sm:mt-8">
           <GuideHero

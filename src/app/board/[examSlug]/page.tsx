@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { BookText, ChevronRight, Home } from "lucide-react";
+import { BookText, ChevronRight } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
+import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import Footer from "@/components/Footer";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { BOARD_EXAMS, getExamBySlug } from "@/lib/exam/examContext";
@@ -42,13 +43,7 @@ export default async function BoardExamHub({ params }: { params: Params }) {
     <>
       <AppHeader />
       <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
-        <nav aria-label="Breadcrumb" className="mb-4 flex items-center gap-1 text-xs text-muted-foreground">
-          <Link href="/board" className="inline-flex items-center gap-1 hover:text-foreground">
-            <Home className="h-3 w-3" aria-hidden /> Board
-          </Link>
-          <ChevronRight className="h-3 w-3" aria-hidden />
-          <span className="text-foreground">{exam.displayName}</span>
-        </nav>
+        <Breadcrumbs className="mb-4" items={[{ href: "/board", label: "Board" }, { label: exam.displayName }]} />
 
         <header className="mb-8">
           <h1 className="text-2xl font-bold tracking-tight text-foreground">{exam.displayName}: Textbook</h1>
