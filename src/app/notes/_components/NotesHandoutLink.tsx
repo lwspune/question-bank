@@ -43,7 +43,7 @@ export default function NotesHandoutLink({
     return (
       <Link
         href={`/login?next=${encodeURIComponent(pathname)}`}
-        className="inline-flex items-center gap-2 rounded-md border px-3 py-2 text-sm font-medium text-foreground hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        className="inline-flex items-center gap-2 rounded-md bg-brand px-3 py-2 text-sm font-medium text-brand-foreground hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >
         <LogIn className="h-4 w-4" aria-hidden />
         Sign in to download as PDF
@@ -61,7 +61,7 @@ export default function NotesHandoutLink({
           type="button"
           onClick={() => setShowTip((v) => !v)}
           aria-expanded={showTip}
-          className="inline-flex items-center gap-2 rounded-md border px-3 py-2 text-sm font-medium text-foreground hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="inline-flex items-center gap-2 rounded-md bg-brand px-3 py-2 text-sm font-medium text-brand-foreground hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <ExternalLink className="h-4 w-4" aria-hidden />
           Open in Chrome to download
