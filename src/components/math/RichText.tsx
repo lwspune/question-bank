@@ -32,12 +32,13 @@ function renderRuns(runs: RichInline[]) {
         </BlockMath>
       );
     }
-    const node =
+    let node =
       r.type === "inline" ? (
         <InlineMath renderError={renderError}>{r.content}</InlineMath>
       ) : (
         <span style={{ whiteSpace: "pre-wrap" }}>{r.content}</span>
       );
+    if (r.italic) node = <em>{node}</em>;
     return r.bold ? <strong key={i}>{node}</strong> : <span key={i}>{node}</span>;
   });
 }

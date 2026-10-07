@@ -3,7 +3,7 @@ import { mml2omml } from "mathml2omml";
 import { parseRichSegments } from "@/components/math/parseLatex";
 
 export type OmmlSegment =
-  | { type: "text"; content: string; bold?: true }
+  | { type: "text"; content: string; bold?: true; italic?: true }
   | { type: "math"; content: string; display: boolean }
   | { type: "underlined-text"; content: string; italic: boolean };
 
@@ -391,6 +391,16 @@ export function prettifyMathFallback(latex: string): string {
  * Tokenize a question/option/solution text into a flat list of text and OMML
  * segments, ready to be emitted into a docx Paragraph.
  */
+/** A text segment carrying the source run's bold / italic flags (absent when off). */
+function textSeg(content: string, flags: { bold?: true; italic?: true }): OmmlSegment {
+  return {
+    type: "text",
+    content,
+    ...(flags.bold ? { bold: true as const } : {}),
+    ...(flags.italic ? { italic: true as const } : {}),
+  };
+}
+
 export function textWithMathToOmmlSegments(text: string): OmmlSegment[] {
   // parseRichSegments (not parseLatex) so Markdown `**bold**` is resolved —
   // it used to pass straight through and print as literal ** in every
@@ -399,11 +409,7 @@ export function textWithMathToOmmlSegments(text: string): OmmlSegment[] {
   const out: OmmlSegment[] = [];
   for (const seg of parsed) {
     if (seg.type === "text") {
-      out.push(
-        seg.bold
-          ? { type: "text", content: seg.content, bold: true }
-          : { type: "text", content: seg.content }
-      );
+      out.push(textSeg(seg.content, seg));
       continue;
     }
     if (seg.type === "inline") {
@@ -429,11 +435,7 @@ export function textWithMathToOmmlSegments(text: string): OmmlSegment[] {
       // that catches the mml2omml superscript-on-\cap/\cup-group crash and any
       // future conversion failure. Surfaced by `npm run audit:omml`.
       const fallback = prettifyMathFallback(seg.content);
-      out.push(
-        seg.bold
-          ? { type: "text", content: fallback, bold: true }
-          : { type: "text", content: fallback }
-      );
+      out.push(textSeg(fallback, seg));
     }
   }
   return out;

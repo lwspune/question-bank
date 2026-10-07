@@ -55,6 +55,8 @@ export default function KatexRenderer({ text, className }: Props) {
         } else {
           node = <span style={{ whiteSpace: "pre-wrap" }}>{seg.content}</span>;
         }
+        // *italic* wraps prose and inline math (block math returned above).
+        if (seg.italic) node = <em>{node}</em>;
         return seg.bold ? <strong key={i}>{node}</strong> : <span key={i}>{node}</span>;
       })}
     </span>
