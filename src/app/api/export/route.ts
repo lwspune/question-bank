@@ -7,7 +7,8 @@ import { userHasAccess } from "@/lib/entitlements/query";
 import { recordExportEvent } from "@/lib/export/log";
 import { readPaywallSettings } from "@/lib/billing/admin";
 import type { BrandingParts } from "@/lib/export/branding";
-import { claimFreeDownload, hasFreeDownloadLeft } from "@/lib/export/freeDownload";
+import { claimFreeDownload, isPaperFree } from "@/lib/export/freeDownload";
+import { paperKey } from "@/lib/export/freePaper";
 import {
   claimMockPaperDownload,
   decideMockPaperDownload,
@@ -201,9 +202,17 @@ export async function POST(request: NextRequest) {
     // The one free download (2026-10-04): looked up only for an account that
     // would otherwise be refused a Word file, so staff and pass holders never
     // pay a query for it and never spend it.
+    // One free PAPER since 0139: the request names the paper (past paper slug,
+    // selected ids or filters), and a paper already taken free stays free, so
+    // its Answer Key does not meet the pass offer.
+    const freeKey = paperKey({
+      mockSlug: isMockMode ? String(body.mockSlug).trim() : null,
+      questionIds: isCartMode ? body.questionIds : null,
+      filters: !isMockMode && !isCartMode ? (body.filters as Record<string, unknown> | undefined) : null,
+    });
     const freeDownloadLeft =
       user && !isStaff && !hasDownloadPass && (kind === "paper" || kind === "key")
-        ? await hasFreeDownloadLeft(createSupabaseServerClient(), user.id)
+        ? await isPaperFree(createSupabaseServerClient(), user.id, freeKey)
         : undefined;
     const access = resolveExportAccess({ kind, isSignedIn, isStaff, hasDownloadPass, freeDownloadLeft });
     if (!access.allowed) {
@@ -483,10 +492,10 @@ export async function POST(request: NextRequest) {
     // Spend the free download only now that the file exists, and serve it only
     // if this request's claim won: a racing second tap gets the refusal.
     if (access.free && user && (kind === "paper" || kind === "key")) {
-      const won = await claimFreeDownload(createSupabaseAdminClient(), user.id, kind, questions.length);
+      const won = await claimFreeDownload(createSupabaseAdminClient(), user.id, kind, questions.length, freeKey);
       if (!won) {
         return NextResponse.json(
-          { error: "You've used your free download. Unlimited downloads come with the Premium Pass." },
+          { error: "You've had your free paper. Every paper with its answer key comes with the Premium Pass." },
           { status: 403 }
         );
       }

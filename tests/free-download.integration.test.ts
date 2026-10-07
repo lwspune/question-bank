@@ -1,12 +1,14 @@
 /**
- * One free Word download per account (migration 0131). The once-only rule is a
- * property of the TABLE (user_id is the primary key), so it is tested against
- * a real database: a second claim for the same account must lose, a student's
- * own JWT may read but never write the row, and a fresh account has one left.
+ * One free PAPER per account (migration 0131; one paper, not one file, since
+ * 0139). The once-only rule is a property of the TABLE (user_id is the primary
+ * key), so it is tested against a real database: a claim for the SAME paper
+ * (its other file) still serves, a claim for a different paper loses, an old
+ * one-file row (no key) frees nothing, and a student's own JWT may read but
+ * never write the row.
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { claimFreeDownload, hasFreeDownloadLeft } from "@/lib/export/freeDownload";
+import { claimFreeDownload, isPaperFree } from "@/lib/export/freeDownload";
 import { mustSignIn } from "./helpers/fixture";
 
 const HAS_ENV =
@@ -39,26 +41,37 @@ describe.skipIf(!HAS_ENV)("free_downloads", () => {
     await admin.auth.admin.deleteUser(studentId);
   });
 
-  it("a fresh account has its free download", async () => {
-    expect(await hasFreeDownloadLeft(student, studentId)).toBe(true);
+  const PAPER = "mock:nda-2026-sep-maths";
+  const OTHER = "mock:nda-2026-sep-gat";
+
+  it("a fresh account has its free paper", async () => {
+    expect(await isPaperFree(student, studentId, PAPER)).toBe(true);
   });
 
   it("a student cannot write the row with their own JWT", async () => {
     const { error } = await student
       .from("free_downloads")
-      .insert({ user_id: studentId, kind: "paper", question_count: 10 });
+      .insert({ user_id: studentId, kind: "paper", question_count: 10, set_key: PAPER });
     expect(error).not.toBeNull();
-    expect(await hasFreeDownloadLeft(student, studentId)).toBe(true);
+    expect(await isPaperFree(student, studentId, PAPER)).toBe(true);
   });
 
-  it("the first claim wins and the second loses", async () => {
-    expect(await claimFreeDownload(admin, studentId, "paper", 48)).toBe(true);
-    expect(await claimFreeDownload(admin, studentId, "key", 48)).toBe(false);
+  it("the free paper's other file is still free; another paper is not", async () => {
+    expect(await claimFreeDownload(admin, studentId, "paper", 48, PAPER)).toBe(true);
+    expect(await claimFreeDownload(admin, studentId, "key", 48, PAPER)).toBe(true);
+    expect(await claimFreeDownload(admin, studentId, "paper", 48, OTHER)).toBe(false);
   });
 
-  it("once claimed, the account has none left, and reads its own row", async () => {
-    expect(await hasFreeDownloadLeft(student, studentId)).toBe(false);
-    const { data } = await student.from("free_downloads").select("kind, question_count").eq("user_id", studentId);
-    expect(data).toEqual([{ kind: "paper", question_count: 48 }]);
+  it("once claimed, only that paper reads as free, and the student reads their own row", async () => {
+    expect(await isPaperFree(student, studentId, PAPER)).toBe(true);
+    expect(await isPaperFree(student, studentId, OTHER)).toBe(false);
+    const { data } = await student.from("free_downloads").select("kind, question_count, set_key").eq("user_id", studentId);
+    expect(data).toEqual([{ kind: "paper", question_count: 48, set_key: PAPER }]);
+  });
+
+  it("an old one-file row (no paper key) frees nothing", async () => {
+    await admin.from("free_downloads").update({ set_key: null }).eq("user_id", studentId);
+    expect(await isPaperFree(student, studentId, PAPER)).toBe(false);
+    expect(await claimFreeDownload(admin, studentId, "key", 48, PAPER)).toBe(false);
   });
 });

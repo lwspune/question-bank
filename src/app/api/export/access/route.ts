@@ -1,7 +1,8 @@
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import { getPageIdentity } from "@/lib/auth";
 import { sessionHasScope } from "@/lib/entitlements/session";
-import { sessionFreeDownloadLeft } from "@/lib/export/freeDownloadSession";
+import { sessionPaperFree } from "@/lib/export/freeDownloadSession";
+import { paperKey } from "@/lib/export/freePaper";
 import { DOWNLOAD_PASS_SCOPE } from "@/lib/export/access";
 import { passCta, passForScope, type PassCta } from "@/lib/billing/plans";
 import { listActivePlansCached } from "@/lib/billing/plansQuery";
@@ -23,7 +24,11 @@ const ANON: Omit<ExportViewerAccess, "pass"> = {
   freeDownloadLeft: false,
 };
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  // The paper the box is for (a past paper's slug), so a paper already taken
+  // free still reads as free: its other file is part of the same free paper.
+  const slug = request.nextUrl.searchParams.get("mockSlug");
+  const freeKey = paperKey({ mockSlug: slug && /^[a-z0-9-]{1,120}$/.test(slug) ? slug : null });
   let viewer = ANON;
   try {
     const { isSignedIn, isStaff } = await getPageIdentity();
@@ -33,7 +38,7 @@ export async function GET() {
         signedIn: true,
         isStaff,
         hasDownloadPass,
-        freeDownloadLeft: !isStaff && !hasDownloadPass && (await sessionFreeDownloadLeft()),
+        freeDownloadLeft: !isStaff && !hasDownloadPass && (await sessionPaperFree(freeKey)),
       };
     }
   } catch {

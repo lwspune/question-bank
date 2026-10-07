@@ -80,7 +80,7 @@ export function resolveExportAccess(input: {
     message: !paperOrKey
       ? "This download is for institute staff accounts."
       : freeDownloadLeft === false
-      ? "You've used your free download. Unlimited downloads come with the Premium Pass."
+      ? "You've had your free paper. Every paper with its answer key comes with the Premium Pass."
       : "Question paper and answer key downloads come with the Premium Pass.",
   };
 }
