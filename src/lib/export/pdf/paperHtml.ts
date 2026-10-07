@@ -20,6 +20,7 @@
  * pinching; one column with room to breathe is what reads well on a phone.
  * Short options sit four to a line or two by two, as printed papers set them.
  */
+import { brandingParts, type BrandingParts } from "@/lib/export/branding";
 import katex from "katex";
 import "katex/contrib/mhchem";
 import type { OptionRow, QuestionRow } from "@/lib/questions/query";
@@ -46,6 +47,8 @@ export type PaperHtmlInput = {
   includeSourceTag?: boolean;
   /** PYQ Vault watermark on every page (the footer is drawn by the printer). */
   branded?: boolean;
+  /** The owner's per-piece switches (lib/export/branding); a piece left out is on. */
+  brandingParts?: Partial<BrandingParts>;
   /** Font faces + KaTeX stylesheet (./assets.ts). Empty in tests. */
   head: string;
 };
@@ -208,22 +211,29 @@ h2 { font-size: 12pt; color: #0F1D4A; margin: 18pt 0 8pt; break-after: avoid; }
  * ignores any font it declares, so it printed in Arial, which the server may
  * not even have. A margin box uses the page's fonts.
  */
-function footerCss(branded: boolean): string {
-  const brand = branded ? `"www.pyqvault.com  ·  " ` : "";
+function footerCss(siteUrl: boolean): string {
+  const brand = siteUrl ? `"www.pyqvault.com  ·  " ` : "";
   return (
     `@page { @bottom-center { content: ${brand}"Page " counter(page) " of " counter(pages);` +
     ` font-family: "PV Serif", serif; font-size: 7.5pt; color: #6B7280; } }`
   );
 }
 
-function page(title: string, kindLabel: string, count: number, body: string, input: { head: string; branded?: boolean }): string {
-  const watermark = input.branded
+function page(
+  title: string,
+  kindLabel: string,
+  count: number,
+  body: string,
+  input: { head: string; branded?: boolean; brandingParts?: Partial<BrandingParts> }
+): string {
+  const brand = brandingParts(input.branded, input.brandingParts);
+  const watermark = brand.watermark
     ? `<img class="watermark" src="data:image/png;base64,${WATERMARK_PNG_BASE64}" alt="">`
     : "";
-  const brandline = input.branded ? `<div class="brandline">PYQ Vault</div>` : "";
+  const brandline = brand.nameLine ? `<div class="brandline">PYQ Vault</div>` : "";
   return (
     `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${esc(title)}</title>` +
-    `${input.head}<style>${CSS}${footerCss(!!input.branded)}</style></head><body>${watermark}` +
+    `${input.head}<style>${CSS}${footerCss(brand.siteUrl)}</style></head><body>${watermark}` +
     `<header class="masthead">${brandline}<h1>${esc(title)}</h1>` +
     `<div class="meta">${kindLabel} · ${count} question${count === 1 ? "" : "s"}</div></header>` +
     `<main>${body}</main></body></html>`

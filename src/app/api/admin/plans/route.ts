@@ -7,10 +7,11 @@ import {
   upsertPlan,
   setPlanActive,
   readPaywallSettings,
-  savePaywallSettings,
+  savePaywallSettings, saveBrandingSettings,
 } from "@/lib/billing/admin";
 import type { PlanInput } from "@/lib/billing/plans";
 import { isPaywallLimit } from "@/lib/billing/paywallSettings";
+import { parseBrandingSwitches } from "@/lib/export/branding";
 
 export const maxDuration = 30;
 
@@ -18,7 +19,8 @@ type Body =
   | { action: "list" }
   | { action: "upsert"; plan: PlanInput & { active: boolean } }
   | { action: "setActive"; id: string; active: boolean }
-  | { action: "saveSettings"; which?: string; enabled: boolean; limit: number };
+  | { action: "saveSettings"; which?: string; enabled: boolean; limit: number }
+  | { action: "saveBranding"; watermark: boolean; siteUrl: boolean; nameLine: boolean };
 
 /** Every public page that renders a price or the free-mock number. */
 const PAGES_QUOTING_PLANS = ["/pricing", "/terms", "/refunds"];
@@ -68,6 +70,15 @@ export async function POST(request: NextRequest) {
         if (result.kind === "invalid") return bad(result.message);
         if (result.kind === "error") return err500(result.message);
         revalidateQuotingPages();
+        return NextResponse.json({ ok: true, settings: result.settings });
+      }
+      case "saveBranding": {
+        // Download branding switches (migration 0138). Read per download, so a
+        // change applies to the next file; no public page quotes them.
+        const parsed = parseBrandingSwitches(body);
+        if (!parsed.ok) return bad(parsed.message);
+        const result = await saveBrandingSettings(parsed.parts);
+        if (result.kind === "error") return err500(result.message);
         return NextResponse.json({ ok: true, settings: result.settings });
       }
       default:

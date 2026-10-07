@@ -18,6 +18,9 @@ const REST = {
   freeSaveLimit: null,
   projectionTrialDays: null,
   mockPapersPerDay: null,
+  brandWatermark: true,
+  brandSiteUrl: true,
+  brandNameLine: true,
 };
 const off = { freeMockLimit: null, countsFrom: null, ...REST };
 const on = { freeMockLimit: 3, countsFrom: "2026-09-20T00:00:00.000Z", ...REST };
@@ -76,6 +79,9 @@ describe("nextPaywallSettings: the premium limits", () => {
     freeSaveLimit: null,
     projectionTrialDays: null,
     mockPapersPerDay: null,
+    brandWatermark: true,
+    brandSiteUrl: true,
+    brandNameLine: true,
   };
 
   it("defaults to the mock limit when `which` is absent (the old form)", () => {

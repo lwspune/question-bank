@@ -6,6 +6,7 @@
  *   npm run pdf:sample                        # the dense maths + chemistry set below
  *   npm run pdf:sample -- --ids=<uuid>,<uuid> # your own questions, in that order
  *   npm run pdf:sample -- --unbranded         # as institute staff would get it
+ *   npm run pdf:sample -- --no-watermark --no-site-url --no-name-line   # the /dashboard/pricing branding switches (0138), any mix
  *   npm run pdf:sample -- --out=generated-papers/pdf-sample-2   # another folder (a PDF open in a viewer is locked on Windows)
  *
  * Writes generated-papers/pdf-sample/{QP,Answers}_sample.pdf plus the HTML.
@@ -51,6 +52,11 @@ async function main() {
   const idsArg = args.find((a) => a.startsWith("--ids="));
   const ids = idsArg ? idsArg.slice(6).split(",").filter(Boolean) : SAMPLE_IDS;
   const branded = !args.includes("--unbranded");
+  const brandingParts = {
+    watermark: !args.includes("--no-watermark"),
+    siteUrl: !args.includes("--no-site-url"),
+    nameLine: !args.includes("--no-name-line"),
+  };
 
   const admin = createSupabaseAdminClient();
   const rows = await queryQuestionsByIds(admin, ids);
@@ -63,11 +69,11 @@ async function main() {
   const head = pdfHead();
   const title = "JEE Mains + MHT-CET · Maths and Chemistry";
   const paper = buildPaperHtml({
-    title, questions, branded, head, includeSourceTag: true,
+    title, questions, branded, brandingParts, head, includeSourceTag: true,
     images: await imageDataUris(admin, "paper", questions),
   });
   const key = buildKeyHtml({
-    title, questions, branded, head, includeSolutions: true,
+    title, questions, branded, brandingParts, head, includeSolutions: true,
     images: await imageDataUris(admin, "key", questions),
   });
   for (const [name, html] of [["QP_sample", paper], ["Answers_sample", key]] as const) {

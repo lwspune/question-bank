@@ -5,6 +5,8 @@ import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { resolveExportAccess, DOWNLOAD_PASS_SCOPE, type ExportKind } from "@/lib/export/access";
 import { userHasAccess } from "@/lib/entitlements/query";
 import { recordExportEvent } from "@/lib/export/log";
+import { readPaywallSettings } from "@/lib/billing/admin";
+import type { BrandingParts } from "@/lib/export/branding";
 import { claimFreeDownload, hasFreeDownloadLeft } from "@/lib/export/freeDownload";
 import {
   claimMockPaperDownload,
@@ -394,6 +396,24 @@ export async function POST(request: NextRequest) {
     // resolveExportAccess's `format`). The PDF is one HTML page printed by a
     // headless Chromium; its pictures are fetched per document, so a paper can
     // never carry a solution's picture.
+    // The owner's branding switches (migration 0138, /dashboard/pricing). Read
+    // only for a branded download; they can remove pieces, never add them, so a
+    // staff paper stays clean. A failed read keeps every piece on (today's
+    // behaviour) rather than shipping an unbranded pass paper by accident.
+    let brandParts: Partial<BrandingParts> | undefined;
+    if (access.branded) {
+      const settings = await readPaywallSettings();
+      if (settings.kind === "ok") {
+        brandParts = {
+          watermark: settings.settings.brandWatermark,
+          siteUrl: settings.settings.brandSiteUrl,
+          nameLine: settings.settings.brandNameLine,
+        };
+      } else {
+        console.error("export: branding switches unreadable, keeping full branding", settings.message);
+      }
+    }
+
     // If the PDF fails to print, the Word file is served instead (buildPaperFile),
     // so a student gets a file rather than a 500, and the failure is logged.
     const built = await buildPaperFile(access.format ?? "docx", {
@@ -406,6 +426,7 @@ export async function POST(request: NextRequest) {
           groupBySubtopic,
           sectionOf,
           branded: access.branded,
+          brandingParts: brandParts,
           head: pdfHead(),
         };
         const html =
@@ -424,6 +445,7 @@ export async function POST(request: NextRequest) {
               sectionOf,
               includeSourceTag,
               branded: access.branded,
+          brandingParts: brandParts,
             })
           : buildAnswerKey({
               title,
@@ -432,6 +454,7 @@ export async function POST(request: NextRequest) {
               groupBySubtopic,
               sectionOf,
               branded: access.branded,
+          brandingParts: brandParts,
             }),
       onPdfFailure: (err) => console.error("export pdf failed, serving docx", err),
     });

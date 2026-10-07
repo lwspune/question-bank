@@ -210,6 +210,41 @@ describe("buildPaperHtml", () => {
     expect(plain).not.toContain("www.pyqvault.com");
   });
 
+  // The owner's switches (2026-10-07): each piece can be turned off on its own.
+  it("drops only the watermark when the watermark is off", () => {
+    const html = buildPaperHtml({ ...base, questions: [q()], branded: true, brandingParts: { watermark: false } });
+    expect(html).not.toContain('class="watermark"');
+    expect(html).toContain("www.pyqvault.com");
+    expect(html).toContain('class="brandline"');
+  });
+
+  it("drops only the footer address when the address is off, keeping page numbers", () => {
+    const html = buildPaperHtml({ ...base, questions: [q()], branded: true, brandingParts: { siteUrl: false } });
+    expect(html).not.toContain("www.pyqvault.com");
+    expect(html).toMatch(/@bottom-center\s*\{[^}]*counter\(page\)/);
+    expect(html).toContain('class="watermark"');
+    expect(html).toContain('class="brandline"');
+  });
+
+  it("drops only the name line when the name line is off", () => {
+    const html = buildKeyHtml({ ...base, questions: [q()], includeSolutions: true, branded: true, brandingParts: { nameLine: false } });
+    expect(html).not.toContain('class="brandline"');
+    expect(html).toContain('class="watermark"');
+    expect(html).toContain("www.pyqvault.com");
+  });
+
+  it("never brands an unbranded paper, whatever the switches say", () => {
+    const html = buildPaperHtml({
+      ...base,
+      questions: [q()],
+      branded: false,
+      brandingParts: { watermark: true, siteUrl: true, nameLine: true },
+    });
+    expect(html).not.toContain('class="watermark"');
+    expect(html).not.toContain("www.pyqvault.com");
+    expect(html).not.toContain('class="brandline"');
+  });
+
   it("escapes the title", () => {
     const html = buildPaperHtml({ ...base, title: "<b>x</b>", questions: [q()] });
     expect(html).toContain("&lt;b&gt;x&lt;/b&gt;");
