@@ -316,6 +316,191 @@ const cls12Phy = (p: string) => join(SOURCE_ROOT, "12th", "Physics", p);
 const cls11Chem = (p: string) => join(SOURCE_ROOT, "11th", "Chemistry", p);
 const cls12Chem = (p: string) => join(SOURCE_ROOT, "12th", "Chemistry", p);
 
+// ── BIOLOGY (CBSE Class 11 + 12, 2026-10-06) ───────────────────────────────────
+// One subject, "Biology", per exam: CBSE examines it as one paper (code 044) from
+// one book per class. NOT NEET's Botany/Zoology split, although the chapter names
+// are identical to NEET's, so a later cross-exam link is a plain name join.
+//
+// Files are NCERT's own chapter splits: Class 11 `kebo101`-`kebo119` (19 ch,
+// Reprint 2024-25), Class 12 `lebo101`-`lebo113` (13 ch, Reprint 2026-27).
+// FILE NUMBER = CHAPTER NUMBER in both books (no Physics-style offset).
+//
+// Until 2026-10-06 the `12th\Biology` folder held a byte-identical copy of the
+// Class 11 files. The book code in the filename is the check: `kebo` is Class
+// 11, `lebo` is Class 12.
+//
+// What was measured on the PDFs before any row was written:
+//
+// 1. **NO ANSWER KEY AT ALL.** NCERT publishes none for Biology (`kebo1ps` /
+//    `lebo1ps` are front matter). So no chapter carries `answersPdf`, and that
+//    absence is the record: stamp-provenance stamps every row as derived, and
+//    the grounding gate (science-grounding.ts) carries the whole weight.
+// 2. **ONE QUESTION LANE.** A single end-of-chapter EXERCISES block; no in-text
+//    question boxes and no worked examples. Refs: `Ex <ch> Q<n>` / `Ex <ch> Q<n> (a)`.
+// 3. **NUMBERED SECTIONS**, `<ch>.<n> Title`, so the Science lane's chapter-
+//    filtered `deriveAnchors` works unchanged once a one-letter title word is
+//    allowed ("10.2 M Phase", "6.8 A Brief Account of Evolution").
+// 4. **THE TEXT LAYER IS CLEAN PROSE**, unlike Chemistry. Some chapters still
+//    paint headings several times (Class 11 Ch.10). Structure is read off the
+//    render all the same.
+// 5. **Class 12 Ch.4's opening contents list disagrees with its body**: it omits
+//    4.4 Polygenic Inheritance and 4.5 Pleiotropy, and numbers Mutation 4.5 where
+//    the body prints 4.7. The BODY's number is the anchor.
+// 6. Item mix: written answers, true/false sets, match-the-columns, fill in the
+//    blanks, "name the following", ~20 draw-a-diagram items and a few open-ended
+//    activities. Activities are skipped; diagrams keep the book's own figure as
+//    the model answer (solution_image_url).
+const cls11Bio = (p: string) => join(SOURCE_ROOT, "11th", "Biology", p);
+const cls12Bio = (p: string) => join(SOURCE_ROOT, "12th", "Biology", p);
+
+/** [chapterNo, chapterName, subtopics] — ids/files/notes are derived below. */
+type BioRow = [number, string, string[]];
+
+const BIO_11: BioRow[] = [
+  [1, "The Living World", ["Diversity in the Living World", "Taxonomic Categories"]],
+  [2, "Biological Classification", [
+    "Five Kingdom Classification", "Kingdom Monera", "Kingdom Protista", "Kingdom Fungi",
+    "Kingdom Plantae and Animalia", "Viruses, Viroids and Lichens",
+  ]],
+  [3, "Plant Kingdom", ["Algae", "Bryophytes", "Pteridophytes", "Gymnosperms", "Angiosperms"]],
+  [4, "Animal Kingdom", [
+    "Basis of Classification", "Porifera, Coelenterata and Ctenophora",
+    "Platyhelminthes, Aschelminthes and Annelida", "Arthropoda, Mollusca and Echinodermata",
+    "Hemichordata and Chordata",
+  ]],
+  [5, "Morphology of Flowering Plants", [
+    "The Root", "The Stem", "The Leaf", "The Inflorescence", "The Flower", "The Fruit and Seed",
+    "Description of a Flowering Plant and Its Families",
+  ]],
+  [6, "Anatomy of Flowering Plants", ["The Tissue Systems", "Anatomy of Roots", "Anatomy of Stems", "Anatomy of Leaves"]],
+  [7, "Structural Organisation in Animals", ["Organ and Organ System", "Morphology and Anatomy of Frog"]],
+  [8, "Cell: The Unit of Life", [
+    "Cell and Cell Theory", "An Overview of Cell", "Prokaryotic Cells", "Cell Membrane and Cell Wall",
+    "Endomembrane System", "Mitochondria, Plastids and Ribosomes",
+    "Cytoskeleton, Cilia, Flagella and Centrioles", "Nucleus and Microbodies",
+  ]],
+  [9, "Biomolecules", [
+    "Chemical Composition of Living Tissue", "Proteins", "Polysaccharides", "Nucleic Acids", "Enzymes",
+  ]],
+  [10, "Cell Cycle and Cell Division", ["Cell Cycle", "M Phase (Mitosis)", "Meiosis", "Significance of Mitosis and Meiosis"]],
+  [11, "Photosynthesis in Higher Plants", [
+    "Early Experiments", "Site of Photosynthesis and Pigments", "Light Reaction and Electron Transport",
+    "Calvin Cycle", "The C4 Pathway", "Photorespiration", "Factors Affecting Photosynthesis",
+  ]],
+  [12, "Respiration in Plants", [
+    "Do Plants Breathe?", "Glycolysis", "Fermentation", "Aerobic Respiration",
+    "Respiratory Balance Sheet", "Amphibolic Pathway and Respiratory Quotient",
+  ]],
+  [13, "Plant Growth and Development", [
+    "Growth", "Differentiation, Dedifferentiation and Redifferentiation", "Development",
+    "Plant Growth Regulators",
+  ]],
+  [14, "Breathing and Exchange of Gases", [
+    "Respiratory Organs", "Mechanism of Breathing", "Exchange of Gases", "Transport of Gases",
+    "Regulation of Respiration", "Disorders of Respiratory System",
+  ]],
+  [15, "Body Fluids and Circulation", [
+    "Blood", "Lymph (Tissue Fluid)", "Circulatory Pathways", "Double Circulation",
+    "Regulation of Cardiac Activity", "Disorders of Circulatory System",
+  ]],
+  [16, "Excretory Products and their Elimination", [
+    "Modes of Excretion", "Human Excretory System", "Urine Formation", "Function of the Tubules",
+    "Mechanism of Concentration of the Filtrate", "Regulation of Kidney Function", "Micturition",
+    "Role of Other Organs in Excretion", "Disorders of the Excretory System",
+  ]],
+  [17, "Locomotion and Movement", [
+    "Types of Movement", "Muscle", "Skeletal System", "Joints", "Disorders of Muscular and Skeletal System",
+  ]],
+  [18, "Neural Control and Coordination", [
+    "Neural System", "Human Neural System", "Neuron and Nerve Impulse", "Central Neural System",
+  ]],
+  [19, "Chemical Coordination and Integration", [
+    "Endocrine Glands and Hormones", "Hypothalamus and Pituitary", "Pineal, Thyroid and Parathyroid",
+    "Thymus, Adrenal, Pancreas and Gonads", "Hormones of Heart, Kidney and Gastrointestinal Tract",
+    "Mechanism of Hormone Action",
+  ]],
+];
+
+const BIO_12: BioRow[] = [
+  [1, "Sexual Reproduction in Flowering Plants", [
+    "The Flower", "Stamen, Microsporangium and Pollen Grain", "Pistil, Megasporangium and Embryo Sac",
+    "Pollination", "Double Fertilisation", "Post-fertilisation: Structures and Events",
+    "Apomixis and Polyembryony",
+  ]],
+  [2, "Human Reproduction", [
+    "The Male Reproductive System", "The Female Reproductive System", "Gametogenesis", "Menstrual Cycle",
+    "Fertilisation and Implantation", "Pregnancy and Embryonic Development", "Parturition and Lactation",
+  ]],
+  [3, "Reproductive Health", [
+    "Reproductive Health: Problems and Strategies", "Population Explosion and Birth Control",
+    "Medical Termination of Pregnancy", "Sexually Transmitted Infections", "Infertility",
+  ]],
+  [4, "Principles of Inheritance and Variation", [
+    "Mendel's Laws of Inheritance", "Inheritance of One Gene", "Inheritance of Two Genes",
+    "Chromosomal Theory, Linkage and Recombination", "Polygenic Inheritance and Pleiotropy",
+    "Sex Determination", "Mutation", "Genetic Disorders",
+  ]],
+  [5, "Molecular Basis of Inheritance", [
+    "The DNA", "The Search for Genetic Material", "RNA World", "Replication", "Transcription",
+    "Genetic Code", "Translation", "Regulation of Gene Expression", "Human Genome Project",
+    "DNA Fingerprinting",
+  ]],
+  [6, "Evolution", [
+    "Origin of Life", "Evolution of Life Forms: A Theory", "Evidences for Evolution", "Adaptive Radiation",
+    "Biological Evolution", "Mechanism of Evolution", "Hardy-Weinberg Principle",
+    "A Brief Account of Evolution", "Origin and Evolution of Man",
+  ]],
+  [7, "Human Health and Disease", ["Common Diseases in Humans", "Immunity", "AIDS", "Cancer", "Drugs and Alcohol Abuse"]],
+  [8, "Microbes in Human Welfare", [
+    "Microbes in Household Products", "Microbes in Industrial Products", "Microbes in Sewage Treatment",
+    "Microbes in Production of Biogas", "Microbes as Biocontrol Agents", "Microbes as Biofertilisers",
+  ]],
+  [9, "Biotechnology: Principles and Processes", [
+    "Principles of Biotechnology", "Restriction Enzymes", "Cloning Vectors and Competent Host",
+    "Isolation, Cutting and Amplification of DNA", "Insertion, Expression and Downstream Processing",
+  ]],
+  [10, "Biotechnology and its Applications", [
+    "Biotechnological Applications in Agriculture", "Biotechnological Applications in Medicine",
+    "Transgenic Animals", "Ethical Issues",
+  ]],
+  [11, "Organisms and Populations", [
+    "Population Attributes", "Population Growth", "Life History Variation", "Population Interactions",
+  ]],
+  [12, "Ecosystem", [
+    "Ecosystem: Structure and Function", "Productivity", "Decomposition", "Energy Flow", "Ecological Pyramids",
+  ]],
+  [13, "Biodiversity and Conservation", [
+    "Species Numbers and Patterns of Biodiversity", "Importance of Species Diversity",
+    "Loss of Biodiversity", "Biodiversity Conservation",
+  ]],
+];
+
+/** "Cell: The Unit of Life" → "CellTheUnitOfLife". */
+const pascal = (s: string) =>
+  s.replace(/[^A-Za-z0-9 ]/g, " ").split(/\s+/).filter(Boolean).map((w) => w[0].toUpperCase() + w.slice(1)).join("");
+
+function bioChapters(cls: 11 | 12, rows: BioRow[]): Record<string, Chapter> {
+  const out: Record<string, Chapter> = {};
+  for (const [no, name, subtopics] of rows) {
+    const id = `c${cls}Bio${pascal(name)}`;
+    const file = `${cls === 11 ? "kebo" : "lebo"}1${String(no).padStart(2, "0")}.pdf`;
+    out[id] = {
+      id,
+      examId: cls === 11 ? EXAM_ID_CBSE_11 : EXAM_ID_CBSE_12,
+      chapterName: name,
+      subjectName: "Biology",
+      sourceFile: `NCERT_${cls}_Biology__${pascal(name)}.pdf`,
+      pdf: cls === 11 ? cls11Bio(file) : cls12Bio(file),
+      chapterNo: no,
+      note: `NCERT (CBSE Class ${cls}) — ${name} (Chapter ${no}, NCERT Biology)`,
+      subtopics,
+    };
+  }
+  return out;
+}
+
+/** Class 11 then Class 12, each in book order: commit in this order (order_index = max+1). */
+const BIOLOGY_CHAPTERS: Record<string, Chapter> = { ...bioChapters(11, BIO_11), ...bioChapters(12, BIO_12) };
 
 export const CHAPTERS: Record<string, Chapter> = {
   // ── Validation chapter — Ch.7 Integrals (12th, Part 2). 67pp, ~300 questions.
@@ -4012,7 +4197,7 @@ export const CHAPTERS: Record<string, Chapter> = {
     ],
   },
 
-
+  ...BIOLOGY_CHAPTERS,
 };
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);

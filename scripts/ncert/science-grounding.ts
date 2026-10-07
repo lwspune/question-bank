@@ -1,7 +1,7 @@
 /**
  * GROUNDING GATE for the Class 10 Science lane.
  *
- *   npx tsx scripts/ncert/science-grounding.ts <chapterId>
+ *   npx tsx scripts/ncert/science-grounding.ts <chapterId> [--anchors]
  *
  * WHY THIS EXISTS, AND WHY IT IS A GATE RATHER THAN TRIAGE.
  *
@@ -64,6 +64,13 @@ function main() {
       `chapter "${id}" has no chapterNo in config.ts — the anchor filter needs it, ` +
         `and defaulting it would silently admit another chapter's sections.`
     );
+  }
+
+  // `--anchors`: print what this chapter lets an author cite, before any row exists.
+  if (process.argv.includes("--anchors")) {
+    const anchors = deriveAnchors(chapterText(ch.pdf), ch.chapterNo);
+    console.log(`${id}: ${anchors.length} citable anchors\n  ${anchors.join("\n  ")}`);
+    return;
   }
 
   const path = questionsJsonPath(id);
