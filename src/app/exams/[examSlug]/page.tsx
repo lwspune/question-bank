@@ -40,6 +40,7 @@ import {
 } from "@/lib/exam/examHome";
 import { fitTitle } from "@/lib/seo/title";
 import { withArticle } from "@/lib/text/article";
+import Breadcrumbs from "@/components/nav/Breadcrumbs";
 
 const SITE_URL = "https://www.pyqvault.com";
 
@@ -131,17 +132,7 @@ export default async function ExamHomePage({ params }: Params) {
           description={description}
         />
 
-        <nav aria-label="Breadcrumb" className="text-sm text-muted-foreground">
-          <ol className="flex flex-wrap items-center gap-1.5">
-            <li>
-              <Link href="/questions" className="hover:underline">
-                Questions
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li>{model.displayName}</li>
-          </ol>
-        </nav>
+        <Breadcrumbs items={[{ href: "/questions", label: "Questions" }, { label: model.displayName }]} />
 
         <h1 className="mt-3 text-3xl font-semibold tracking-tight">
           {model.examName}

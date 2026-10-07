@@ -14,6 +14,7 @@ import {
   FIVE_YEAR_PLANS,
   POST_PLAN_NOTE,
 } from "./_data/nda-economics";
+import Breadcrumbs from "@/components/nav/Breadcrumbs";
 
 export const revalidate = 86400;
 
@@ -58,31 +59,13 @@ export default async function NdaEconomicsLanding() {
           description="A 25-question analysis of NDA Economics across every paper 2017–2026. Five Year Plans dominate at 75% of the bank; schemes and trade are thin and current-affairs-heavy. The Plan timeline + an honest strategic cap on a single page."
         />
 
-        <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground">
-          <ol className="flex flex-wrap items-center gap-1.5">
-            <li>
-              <a href="/" className="hover:text-foreground">
-                Home
-              </a>
-            </li>
-            <li className="flex items-center gap-1.5">
-              <span aria-hidden>›</span>
-              <a href="/guide" className="hover:text-foreground">
-                Guides
-              </a>
-            </li>
-            <li className="flex items-center gap-1.5">
-              <span aria-hidden>›</span>
-              <a href="/guide/nda" className="hover:text-foreground">
-                NDA
-              </a>
-            </li>
-            <li className="flex items-center gap-1.5">
-              <span aria-hidden>›</span>
-              <span className="font-medium text-foreground">NDA Economics</span>
-            </li>
-          </ol>
-        </nav>
+        <Breadcrumbs
+          items={[
+            { href: "/guide", label: "Guides" },
+            { href: "/guide/nda", label: "NDA" },
+            { label: "NDA Economics" },
+          ]}
+        />
 
         <div className="mt-6 sm:mt-8">
           <GuideHero
