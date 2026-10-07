@@ -10,6 +10,10 @@ const buttonVariants = cva(
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
         brand: "bg-brand text-brand-foreground hover:bg-brand/90",
+        // A blue action that sits under a solid brand button (a mock's Start)
+        // and must not compete with it.
+        brandOutline:
+          "border border-brand bg-background text-brand-accent hover:bg-brand/10",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:

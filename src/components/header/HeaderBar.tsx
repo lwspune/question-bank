@@ -37,10 +37,13 @@ import { usePulse } from "@/lib/viewer/usePulse";
 export default function HeaderBar({
   examIds,
   notesExamSlugs,
+  soleGuides,
 }: {
   examIds: ExamIdMap;
   /** Exams with shipped notes — public, identical for everyone, from AppHeader. */
   notesExamSlugs: ExamSlug[];
+  /** Exam → its only subject guide, from AppHeader (same reasoning). */
+  soleGuides: Partial<Record<ExamSlug, string>>;
 }) {
   // Start at null (= no exam chosen) so the server HTML and the first client
   // render agree (no hydration mismatch); the cookie is applied immediately
@@ -67,7 +70,7 @@ export default function HeaderBar({
   // every width without adding chrome.
   const pulse = usePulse(!!session);
 
-  const nav = resolveExamNav(examSlug, examIds, notesExamSlugs);
+  const nav = resolveExamNav(examSlug, examIds, notesExamSlugs, soleGuides);
 
   return (
     <>

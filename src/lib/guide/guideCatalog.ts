@@ -330,6 +330,20 @@ export function getSubjectGuides(slug: ExamSlug): SubjectGuideCard[] {
 }
 
 /**
+ * Exam slug → its guide, for exams with exactly ONE subject guide. Their hub
+ * would be a page with one card on it, so the Guides tab goes straight there.
+ * Computed on the server (AppHeader) and passed down, so the header's client
+ * bundle never carries this catalogue.
+ */
+export function soleGuideHrefs(): Partial<Record<ExamSlug, string>> {
+  const out: Partial<Record<ExamSlug, string>> = {};
+  for (const [slug, cards] of Object.entries(GUIDE_CATALOG) as [ExamSlug, SubjectGuideCard[]][]) {
+    if (cards.length === 1) out[slug] = cards[0].href;
+  }
+  return out;
+}
+
+/**
  * Whether /guide/<subjectRoute> exists. The notes pages link their subject's strategy
  * guide; before this they linked it unconditionally, so a notes subject without a guide
  * (JEE Chemistry) carried a 404 on every page.

@@ -72,6 +72,19 @@ describe("resolveExamNav", () => {
     expect(resolveExamNav("nda", IDS).notesHref).toBe("/notes");
   });
 
+  // An exam hub with one card is a dead tap: Guides goes straight to the guide.
+  // The one-guide map is passed in, so HeaderBar never bundles the catalogue.
+  it("sends Guides straight to the guide when the exam has only one", () => {
+    const SOLE = { cds: "/guide/cds-maths" };
+    expect(resolveExamNav("cds", IDS, [], SOLE).guidesHref).toBe("/guide/cds-maths");
+    expect(resolveExamNav("nda", IDS, [], SOLE).guidesHref).toBe("/guide/nda");
+    expect(resolveExamNav(null, IDS, [], SOLE).guidesHref).toBe("/guide");
+  });
+
+  it("keeps Guides on the exam hub when no one-guide map is passed", () => {
+    expect(resolveExamNav("cds", IDS).guidesHref).toBe("/guide/cds");
+  });
+
   it("sends Mocks to the exam's catalogue only when it has mocks", () => {
     expect(resolveExamNav("nda", IDS).mockHref).toBe("/mock/exam/nda");
     expect(resolveExamNav("cbse-11", IDS).mockHref).toBe("/mock");

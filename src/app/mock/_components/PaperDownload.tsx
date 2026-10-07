@@ -163,12 +163,12 @@ export default function PaperDownload({
     >
       <DialogTrigger asChild>
         {variant === "row" ? (
-          <Button variant="outline" size="sm" aria-label={`Download ${paperTitle}`}>
+          <Button variant="brand" size="sm" aria-label={`Download ${paperTitle}`}>
             <Download className="h-4 w-4" aria-hidden />
             Download
           </Button>
         ) : (
-          <Button variant="outline" size="lg" className="w-full">
+          <Button variant="brandOutline" size="lg" className="w-full">
             <Download className="h-4 w-4" aria-hidden />
             Download paper and answer key
           </Button>
