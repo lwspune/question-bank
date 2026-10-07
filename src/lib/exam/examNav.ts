@@ -50,16 +50,20 @@ export type ExamNav = {
  * `notesSlugs` is passed in (computed once on the server by AppHeader) so this
  * module, and HeaderBar with it, never bundles the NOTES_CHAPTERS registry.
  * Omitted, Notes stays on the index.
+ *
+ * `soleGuides` (exam → its only guide, from guideCatalog's soleGuideHrefs) skips
+ * a hub that would hold a single card. Passed in for the same bundle reason.
  */
 export function resolveExamNav(
   rawSlug: string | null | undefined,
   examIds: ExamIdMap,
-  notesSlugs: readonly ExamSlug[] = []
+  notesSlugs: readonly ExamSlug[] = [],
+  soleGuides: Partial<Record<ExamSlug, string>> = {}
 ): ExamNav {
   const slug: ExamSlug | null = isExamSlug(rawSlug) ? rawSlug : null;
   return {
     bankHref: resolveBankHref(slug ? examIds[slug] ?? null : null),
-    guidesHref: resolveGuidesHref(slug),
+    guidesHref: (slug && soleGuides[slug]) || resolveGuidesHref(slug),
     notesHref: notesHubHref(slug, new Set(notesSlugs)),
     mockHref: mockCatalogueHref(slug),
     boardHref: resolveBoardHref(slug),

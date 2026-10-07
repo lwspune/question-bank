@@ -1,6 +1,7 @@
 import HeaderBar from "@/components/header/HeaderBar";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
+import { soleGuideHrefs } from "@/lib/guide/guideCatalog";
 
 /**
  * Site navigation — a thin, CACHEABLE server shell around the client navs.
@@ -25,9 +26,12 @@ export default async function AppHeader() {
   // for every visitor, so it keeps this shell cacheable. Computed here so the
   // registry never enters HeaderBar's client bundle.
   const notesExamSlugs = getNotesExamGroups().map((g) => g.slug);
+  // Same reasoning: exams with a single subject guide, so Guides skips their
+  // one-card hub without the guide catalogue entering the client bundle.
+  const soleGuides = soleGuideHrefs();
 
   // HeaderBar owns the <header> element itself, because it also renders the
   // phone tab bar pinned to the bottom of the viewport — the two are siblings
   // sharing one resolution of the session and the exam cookie.
-  return <HeaderBar examIds={examIds} notesExamSlugs={notesExamSlugs} />;
+  return <HeaderBar examIds={examIds} notesExamSlugs={notesExamSlugs} soleGuides={soleGuides} />;
 }
