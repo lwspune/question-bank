@@ -63,13 +63,13 @@ export default function PaperDownload({
   const loadAccess = useCallback(async () => {
     setLoadFailed(false);
     try {
-      const res = await fetch("/api/export/access", { cache: "no-store" });
+      const res = await fetch(`/api/export/access?mockSlug=${encodeURIComponent(slug)}`, { cache: "no-store" });
       if (!res.ok) throw new Error(String(res.status));
       setAccess((await res.json()) as ExportViewerAccess);
     } catch {
       setLoadFailed(true);
     }
-  }, []);
+  }, [slug]);
 
   useEffect(() => {
     if (!open) return;
@@ -184,10 +184,10 @@ export default function PaperDownload({
                 ? `${paperTitle}. ${isWord ? "Word files" : "PDF files"}: the question paper, and its answer key with solutions.`
                 : pass
                   ? !signedIn
-                    ? "Your first download is free."
+                    ? "Your first paper is free: the question paper and its answer key."
                     : wantPass
                       ? `${pass.label} includes:`
-                      : `You've used your free download. ${pass.label} includes:`
+                      : `You've had your free paper. ${pass.label} includes:`
                   : "Downloading past papers needs a pass."}
           </DialogDescription>
         </DialogHeader>
@@ -216,14 +216,11 @@ export default function PaperDownload({
               {onFree && pass && (
                 <div className="space-y-2 rounded-md border border-brand-accent/30 bg-brand-accent/5 p-3">
                   <p>
-                    <strong>This download is free:</strong> one file, the question paper or the answer key.
+                    <strong>Your first paper is free:</strong> the question paper and its answer key, both files.
                   </p>
                   <p className="text-muted-foreground">
-                    For unlimited downloads, get {pass.label}: {gatePriceLine(pass)}.
+                    After that, every paper with its key comes with {pass.label}: {gatePriceLine(pass)}.
                   </p>
-                  <Button type="button" variant="outline" size="sm" onClick={() => setWantPass(true)}>
-                    Get {pass.label}
-                  </Button>
                 </div>
               )}
               {bilingual && (

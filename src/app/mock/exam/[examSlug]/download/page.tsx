@@ -31,7 +31,7 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
         { text: "with answer keys", optional: true },
       ]),
     },
-    description: `Download ${exam.examName} previous year question papers as PDFs: each paper exactly as it was set, with an answer key and solutions. Your first download is free, from PYQ Vault.`,
+    description: `Download ${exam.examName} previous year question papers as PDFs: each paper exactly as it was set, with an answer key and solutions. Your first paper and its key are free, from PYQ Vault.`,
     alternates: { canonical: mockDownloadHref(exam.slug) },
   };
 }
@@ -69,7 +69,7 @@ export default async function MockDownloadList({ params }: { params: Params }) {
       <GuideHero
         eyebrow={`${exam.displayName} · Past papers`}
         title={`Download ${exam.examName} past papers`}
-        subtitle="Each paper exactly as it was set, in the printed order, as a PDF. Its answer key with solutions is a second file. Your first download is free."
+        subtitle="Each paper exactly as it was set, in the printed order, as a PDF. Its answer key with solutions is a second file. Your first paper and its key are free."
       >
         <Link
           href="/mock/attempts"

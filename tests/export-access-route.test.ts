@@ -7,13 +7,16 @@
  * make, so this pins the signed-out answer and that it is never cached.
  */
 import { describe, it, expect } from "vitest";
+import { NextRequest } from "next/server";
+
+const req = () => new NextRequest("http://localhost/api/export/access?mockSlug=nda-2026-sep-maths");
 
 const HAS_ENV = !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 describe.skipIf(!HAS_ENV)("GET /api/export/access", () => {
   it("tells a signed-out visitor they are signed out, and offers the pass on sale", async () => {
     const { GET } = await import("@/app/api/export/access/route");
-    const res = await GET();
+    const res = await GET(req());
     expect(res.status).toBe(200);
     const body = await res.json();
     expect(body).toMatchObject({
@@ -27,7 +30,7 @@ describe.skipIf(!HAS_ENV)("GET /api/export/access", () => {
 
   it("is never cached: the answer differs per viewer", async () => {
     const { GET } = await import("@/app/api/export/access/route");
-    const res = await GET();
+    const res = await GET(req());
     expect(res.headers.get("Cache-Control")).toContain("no-store");
   });
 });
