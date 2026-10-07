@@ -43,24 +43,33 @@ export async function POST(request: NextRequest) {
   // student's own recorded mistakes, so there is nothing to serve an anon.
   if (!user) return NextResponse.json({ error: "Sign in to drill." }, { status: 401 });
 
-  // Rate limit BEFORE parsing, so junk bodies still cost the caller their budget.
-  const rl = await checkAndIncrement(createSupabaseAdminClient(), `drill:user:${user.id}`, {
+  // The rate limit is STARTED before parsing, so junk bodies still cost the
+  // caller their budget, but not awaited here: the service waits for it
+  // alongside its own reads and writes nothing until it says yes. Awaiting it
+  // first cost a full round trip to the database on every answer.
+  const allowed = checkAndIncrement(createSupabaseAdminClient(), `drill:user:${user.id}`, {
     limit: LIMIT_PER_HOUR,
     windowMs: HOUR_MS,
-  });
-  if (!rl.ok) return NextResponse.json({ error: "Slow down a moment." }, { status: 429 });
+  }).then((rl) => rl.ok);
 
   let raw: unknown;
   try {
     raw = await request.json();
   } catch {
+    if (!(await allowed)) return NextResponse.json({ error: "Slow down a moment." }, { status: 429 });
     return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
   }
 
   const parsed = parseDrillAnswer(raw);
-  if (!parsed.ok) return NextResponse.json({ error: parsed.error }, { status: 400 });
+  if (!parsed.ok) {
+    if (!(await allowed)) return NextResponse.json({ error: "Slow down a moment." }, { status: 429 });
+    return NextResponse.json({ error: parsed.error }, { status: 400 });
+  }
 
-  const outcome = await recordDrillAnswer(parsed.questionId, parsed.label);
+  const outcome = await recordDrillAnswer(user.id, parsed.questionId, parsed.label, { allowed });
+  if (outcome && "rateLimited" in outcome) {
+    return NextResponse.json({ error: "Slow down a moment." }, { status: 429 });
+  }
   // Null means the question has no key to grade against — flipped PRIVATE since
   // the miss, deleted, or carrying no correct option. Inventing `correct: false`
   // would punish the student for a data defect, so say nothing happened.

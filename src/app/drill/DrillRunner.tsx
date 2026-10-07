@@ -56,7 +56,10 @@ export default function DrillRunner({
 }) {
   const [index, setIndex] = useState(0);
   const [verdicts, setVerdicts] = useState<Record<string, AnswerOutcome & { chose: string }>>({});
-  const [busy, setBusy] = useState(false);
+  // The option tapped and still being graded: marked at once, so the tap is
+  // answered on screen before the server is (2026-10-07).
+  const [pending, setPending] = useState<string | null>(null);
+  const busy = pending !== null;
   const [done, setDone] = useState(false);
 
   const question = questions[index];
@@ -67,7 +70,7 @@ export default function DrillRunner({
 
   async function choose(label: string) {
     if (!question || answered || busy) return;
-    setBusy(true);
+    setPending(label);
     try {
       const res = await fetch("/api/drill/answer", {
         method: "POST",
@@ -87,7 +90,7 @@ export default function DrillRunner({
     } catch {
       toast.error("Couldn't reach the server. Check your connection.");
     } finally {
-      setBusy(false);
+      setPending(null);
     }
   }
 
@@ -194,6 +197,7 @@ export default function DrillRunner({
         <ul className="mt-4 space-y-2">
           {question.options.map((opt) => {
             const isChosen = answered?.chose === opt.label;
+            const isPending = pending === opt.label;
             const isKey = answered?.correctLabel === opt.label;
             return (
               <li key={opt.label}>
@@ -201,13 +205,17 @@ export default function DrillRunner({
                   type="button"
                   onClick={() => choose(opt.label)}
                   disabled={!!answered || busy}
-                  aria-pressed={isChosen}
+                  aria-pressed={isChosen || isPending}
+                  aria-busy={isPending || undefined}
                   className={cn(
                     // min-h-[3.25rem] keeps every option a comfortable tap
                     // target on a phone even when its text is one character.
                     "flex min-h-[3.25rem] w-full items-start gap-3 rounded-xl border p-3 text-left transition-colors",
                     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-                    !answered && "hover:bg-accent/50 active:bg-accent",
+                    !answered && !busy && "hover:bg-accent/50 active:bg-accent",
+                    // Tapped, waiting for the verdict: the pick is marked now.
+                    isPending && "border-brand bg-brand/5",
+                    busy && !isPending && "opacity-60",
                     // After the commit: the key is always green, and a wrong
                     // pick is red. Both are marked with an ICON as well as a
                     // colour — colour alone is not an accessible signal.
@@ -220,6 +228,7 @@ export default function DrillRunner({
                     className={cn(
                       "mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full border text-xs font-bold",
                       isKey && "border-emerald-500 text-emerald-700 dark:text-emerald-400",
+                      isPending && "border-brand text-brand-accent",
                       answered && isChosen && !answered.correct && "border-red-500 text-red-600"
                     )}
                   >
@@ -236,6 +245,9 @@ export default function DrillRunner({
                       />
                     )}
                   </span>
+                  {isPending && (
+                    <Loader2 className="mt-0.5 h-5 w-5 shrink-0 animate-spin text-brand-accent" aria-hidden />
+                  )}
                   {answered && isKey && (
                     <Check className="mt-0.5 h-5 w-5 shrink-0 text-emerald-600" aria-label="Correct answer" />
                   )}
@@ -250,6 +262,7 @@ export default function DrillRunner({
 
         {/* aria-live so the verdict is announced, not just painted. */}
         <div aria-live="polite">
+          {busy && <p className="sr-only">Checking your answer</p>}
           {answered && (
             <div className="mt-4">
               {vSays ? (
@@ -322,12 +335,6 @@ export default function DrillRunner({
         </div>
       )}
 
-      {busy && (
-        <p className="mt-3 flex items-center gap-2 text-sm text-muted-foreground">
-          <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
-          Checking…
-        </p>
-      )}
     </div>
   );
 }
@@ -352,6 +359,7 @@ function Summary({
   // A scoped drill keeps offering this paper's mistakes while any remain, then
   // hands over to the general pool, which may hold more from other papers.
   const anotherHref = scope && remaining > 0 ? drillHref("again", scope.attemptId) : drillHref("again");
+  const [leaving, setLeaving] = useState(false);
   const anotherLabel =
     scope && remaining > 0
       ? "Another five from this paper"
@@ -374,14 +382,29 @@ function Summary({
 
       <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:justify-center">
         {(remaining > 0 || scope) && (
-          <Link
+          // A FULL page load, not a <Link> (2026-10-07). A client navigation to
+          // /drill kept this screen's state, so the new five arrived under the
+          // "Drill complete" card and the button looked dead; and within 30 s
+          // Next's router cache can hand back the same five again. A real load
+          // asks the server for a fresh set every time.
+          <a
             href={anotherHref}
-            prefetch={false}
+            onClick={(e) => {
+              if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+              e.preventDefault();
+              setLeaving(true);
+              window.location.assign(anotherHref);
+            }}
+            aria-disabled={leaving || undefined}
             className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-brand px-6 text-base font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
-            <RotateCcw className="h-5 w-5" aria-hidden />
-            {anotherLabel}
-          </Link>
+            {leaving ? (
+              <Loader2 className="h-5 w-5 animate-spin" aria-hidden />
+            ) : (
+              <RotateCcw className="h-5 w-5" aria-hidden />
+            )}
+            {leaving ? "Loading five more…" : anotherLabel}
+          </a>
         )}
         <Link
           href="/me/map"
