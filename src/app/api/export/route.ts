@@ -6,6 +6,12 @@ import { resolveExportAccess, DOWNLOAD_PASS_SCOPE, type ExportKind } from "@/lib
 import { userHasAccess } from "@/lib/entitlements/query";
 import { recordExportEvent } from "@/lib/export/log";
 import { claimFreeDownload, hasFreeDownloadLeft } from "@/lib/export/freeDownload";
+import {
+  claimMockPaperDownload,
+  decideMockPaperDownload,
+  mockPaperLimitMessage,
+  readTodaysMockPapers,
+} from "@/lib/export/mockPaperLimit";
 import { applyExportLanguage, parseExportLang } from "@/lib/export/exportLanguage";
 import {
   queryQuestions,
@@ -235,6 +241,16 @@ export async function POST(request: NextRequest) {
       mockId = mock.id;
       mockTitle = paper.title;
       sectionOf = paper.sectionOf;
+      // The daily paper limit (migration 0137), checked before the file is
+      // built so a refusal costs no PDF. The trigger is the real limit; this
+      // is the early answer. Applies to staff and pass holders alike.
+      if (user) {
+        const today = await readTodaysMockPapers(createSupabaseAdminClient(), user.id);
+        const decision = decideMockPaperDownload({ ...today, mockId: mock.id });
+        if (!decision.allowed) {
+          return NextResponse.json({ error: mockPaperLimitMessage(decision.limit) }, { status: 429 });
+        }
+      }
     } else if (isCartMode) {
       const ids = (body.questionIds ?? []).filter(
         (s): s is string => typeof s === "string" && s.length > 0
@@ -422,6 +438,24 @@ export async function POST(request: NextRequest) {
     const fileBuf = built.buf;
     const filename = `${kind === "paper" ? "QP" : "Answers"}_${safeName}.${built.format}`;
     const contentType = built.format === "pdf" ? PDF_CONTENT_TYPE : DOCX_CONTENT_TYPE;
+
+    // Record the paper against today's limit now that the file exists, and
+    // serve it only if the claim succeeds: two downloads at the same instant
+    // cannot both pass the trigger. Before the free-download claim, so a refusal
+    // here never spends the free download. A failed write refuses rather than
+    // serving an unrecorded paper.
+    if (isMockMode && mockId && user) {
+      const claim = await claimMockPaperDownload(createSupabaseAdminClient(), user.id, mockId);
+      if (claim.kind === "limit") {
+        return NextResponse.json({ error: mockPaperLimitMessage(claim.limit) }, { status: 429 });
+      }
+      if (claim.kind === "error") {
+        return NextResponse.json(
+          { error: "This paper can't be downloaded right now. Please try again later." },
+          { status: 503 }
+        );
+      }
+    }
 
     // Spend the free download only now that the file exists, and serve it only
     // if this request's claim won: a racing second tap gets the refusal.

@@ -457,6 +457,14 @@ const LIMIT_ROWS: LimitRowSpec[] = [
     suggested: 7,
     checkbox: "Free for a number of days after the student reveals it, then Premium Pass only",
   },
+  {
+    which: "paperDownloads",
+    label: "Past-paper downloads",
+    unit: "papers a day",
+    field: "mockPapersPerDay",
+    suggested: 5,
+    checkbox: "Limit how many different past papers ANY account (pass holders and staff) can download each day; a paper's answer key is free",
+  },
 ];
 
 function LimitRow({

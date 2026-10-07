@@ -23,6 +23,7 @@ const SETTINGS_COLUMNS = {
   free_reveals_per_day: "freeRevealsPerDay",
   free_save_limit: "freeSaveLimit",
   projection_trial_days: "projectionTrialDays",
+  mock_papers_per_day: "mockPapersPerDay",
 } as const satisfies Record<string, keyof PaywallSettings>;
 
 type SettingsColumn = keyof typeof SETTINGS_COLUMNS;

@@ -17,6 +17,7 @@ const REST = {
   freeRevealsPerDay: null,
   freeSaveLimit: null,
   projectionTrialDays: null,
+  mockPapersPerDay: null,
 };
 const off = { freeMockLimit: null, countsFrom: null, ...REST };
 const on = { freeMockLimit: 3, countsFrom: "2026-09-20T00:00:00.000Z", ...REST };
@@ -74,6 +75,7 @@ describe("nextPaywallSettings: the premium limits", () => {
     freeRevealsPerDay: null,
     freeSaveLimit: null,
     projectionTrialDays: null,
+    mockPapersPerDay: null,
   };
 
   it("defaults to the mock limit when `which` is absent (the old form)", () => {
@@ -106,6 +108,7 @@ describe("nextPaywallSettings: the premium limits", () => {
     ["reveals", "freeRevealsPerDay", 50],
     ["saves", "freeSaveLimit", 100],
     ["projection", "projectionTrialDays", 7],
+    ["paperDownloads", "mockPapersPerDay", 5],
   ] as const)("%s sets %s and nothing else, with no date", (which, field, n) => {
     const on = nextPaywallSettings(base, { which, enabled: true, limit: n }, NOW);
     expect(on).toEqual({ ok: true, next: { ...base, [field]: n } });
@@ -114,7 +117,7 @@ describe("nextPaywallSettings: the premium limits", () => {
   });
 
   it("validates every limit the same way", () => {
-    for (const which of ["chapterTests", "drill", "reveals", "saves", "projection"] as const) {
+    for (const which of ["chapterTests", "drill", "reveals", "saves", "projection", "paperDownloads"] as const) {
       expect(nextPaywallSettings(base, { which, enabled: true, limit: -1 }, NOW).ok).toBe(false);
       expect(nextPaywallSettings(base, { which, enabled: true, limit: 1.5 }, NOW).ok).toBe(false);
     }
