@@ -7,6 +7,7 @@ import {
 } from "@/lib/nav/mobileTabs";
 import { resolveExamNav, type ExamIdMap } from "@/lib/exam/examNav";
 import { EXAM_REGISTRY, getActiveTab } from "@/lib/exam/examContext";
+import { FIX_TAB_HREF } from "@/lib/nav/fifthTab";
 
 const EXAM_IDS: ExamIdMap = Object.fromEntries(
   EXAM_REGISTRY.map((e, i) => [e.slug, `00000000-0000-4000-8000-${String(i).padStart(12, "0")}`])
@@ -45,12 +46,28 @@ describe("mobile tab bar — shape", () => {
     }
   });
 
-  it("takes no session argument, so the bar cannot grow by role", () => {
-    // The 10-tap-target row this replaces was caused by a nav whose SHAPE moved
-    // with permissions. A single parameter is what makes that impossible here:
-    // if someone adds a session/role argument, this fails and they have to
-    // re-read the reasoning above rather than discover it in production.
-    expect(resolveMobileTabs).toHaveLength(1);
+  it("swaps exactly one tab by tier and never grows", () => {
+    // The 10-tap-target row this replaced was caused by a nav whose SHAPE moved
+    // with permissions. The one thing allowed to move now is the fifth slot:
+    // Board for most students, Fix for graduates, who never use Board. Same
+    // count, same first four, and still no staff surfaces.
+    for (const fifth of ["board", "fix"] as const) {
+      for (const slug of [null, ...EXAM_REGISTRY.map((e) => e.slug)]) {
+        const ids = resolveMobileTabs(resolveExamNav(slug, EXAM_IDS), fifth).map((t) => t.id);
+        expect(ids).toEqual(["bank", "guides", "notes", "mock", fifth]);
+      }
+    }
+  });
+
+  it("shows Board when nobody says otherwise", () => {
+    const ids = resolveMobileTabs(resolveExamNav(null, EXAM_IDS)).map((t) => t.id);
+    expect(ids[4]).toBe("board");
+  });
+
+  it("sends the Fix tab to the drill, tagged so its visits can be counted", () => {
+    const fix = resolveMobileTabs(resolveExamNav("cds", EXAM_IDS), "fix").find((t) => t.id === "fix")!;
+    expect(fix).toEqual({ id: "fix", label: "Fix", href: "/drill?from=nav" });
+    expect(fix.href).toBe(FIX_TAB_HREF);
   });
 
   it("labels every tab", () => {
@@ -111,10 +128,11 @@ describe("mobile tab bar — active state", () => {
       ["/notes/nda-physics/sound", "notes"],
       ["/mock/nda-2024-apr-maths", "mock"],
       ["/board/mh-sb-9", "board"],
+      ["/drill", "fix"],
     ];
     for (const [path, expected] of cases) {
       const active = getActiveTab(path);
-      const lit = MOBILE_TAB_IDS.filter((id) => isMobileTabActive(id, active));
+      const lit = [...MOBILE_TAB_IDS, "fix" as const].filter((id) => isMobileTabActive(id, active));
       expect(lit).toEqual([expected]);
     }
   });

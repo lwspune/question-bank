@@ -216,6 +216,12 @@ describe("getActiveTab", () => {
     expect(getActiveTab("/mock/attempt/abc-123/result")).toBe("mock");
   });
 
+  it("returns 'fix' for /drill, the page the graduate Fix tab opens", () => {
+    expect(getActiveTab("/drill")).toBe("fix");
+    expect(getActiveTab("/drill?from=nav")).toBe("fix");
+    expect(getActiveTab("/drilling")).toBeNull();
+  });
+
   it("returns 'blog' for /blog and sub-routes", () => {
     expect(getActiveTab("/blog")).toBe("blog");
     expect(getActiveTab("/blog/")).toBe("blog");

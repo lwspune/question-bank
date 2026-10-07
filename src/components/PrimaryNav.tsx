@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookMarked, BookOpen, Compass, FileText, Library, NotebookPen, PenLine, Timer, User } from "lucide-react";
+import { BookMarked, BookOpen, Compass, FileText, Library, NotebookPen, PenLine, Target, Timer, User } from "lucide-react";
 import { getActiveTab, type ActiveTab } from "@/lib/exam/examContext";
+import { FIX_TAB_HREF, type FifthTab } from "@/lib/nav/fifthTab";
 
 type Props = {
   bankHref: string;
@@ -11,6 +12,8 @@ type Props = {
   notesHref: string;
   mockHref: string;
   boardHref: string;
+  /** Board, or Fix for a graduate student (lib/nav/fifthTab). Default Board. */
+  fifth?: FifthTab;
   /** Org members (ADMIN/TEACHER) get the Papers tab; everyone else doesn't —
    *  /dashboard/papers redirects non-members to /login, so showing it to anon
    *  or students would dead-end them. */
@@ -26,6 +29,8 @@ type Tab = {
   label: string;
   href: string;
   Icon: typeof BookOpen;
+  /** False for a page built fresh per student, so it is not loaded on every page view. */
+  prefetch?: false;
 };
 
 export default function PrimaryNav({
@@ -34,6 +39,7 @@ export default function PrimaryNav({
   notesHref,
   mockHref,
   boardHref,
+  fifth = "board",
   showPapers = false,
   showBooks = false,
 }: Props) {
@@ -49,9 +55,12 @@ export default function PrimaryNav({
     // mockHref is the exam's own catalogue when it has mocks, else /mock, which
     // lists every published mock — so the tab can't dead-end anyone.
     { id: "mock", label: "Mocks", href: mockHref, Icon: Timer },
-    // Board reader — always visible (like Notes); boardHref resolves per-exam:
-    // /board (index) normally, /board/<slug> when a board exam is active.
-    { id: "board", label: "Board", href: boardHref, Icon: Library },
+    // Board reader — boardHref resolves per-exam: /board (index) normally,
+    // /board/<slug> when a board exam is active. A graduate student gets Fix
+    // (/drill) in this slot instead, never both: see lib/nav/fifthTab.
+    fifth === "fix"
+      ? { id: "fix", label: "Fix", href: FIX_TAB_HREF, Icon: Target, prefetch: false }
+      : { id: "board", label: "Board", href: boardHref, Icon: Library },
     // Blog — public, so it sits with the open surfaces rather than after the
     // role-gated pair below. It has no phone tab: MobileTabBar is a fixed five
     // (lib/nav/mobileTabs.ts), so below sm it appears in the account menu, the
@@ -92,12 +101,13 @@ export default function PrimaryNav({
       aria-label="Primary"
       className="hidden min-w-0 shrink items-center gap-1 sm:flex"
     >
-      {tabs.map(({ id, label, href, Icon }) => {
+      {tabs.map(({ id, label, href, Icon, prefetch }) => {
         const isActive = active === id;
         return (
           <Link
             key={id}
             href={href}
+            prefetch={prefetch}
             aria-current={isActive ? "page" : undefined}
             aria-label={label}
             className={
