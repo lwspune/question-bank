@@ -58,14 +58,15 @@ Six custom events measure the three moments a stranger is ASKED for something. T
   and anything off this machine. The dumps contain `auth.users`, student mobiles
   and quiz-lead consent records, so they must never leave `backups/` unencrypted.
 
-### Building on GitHub instead of Vercel (2026-10-07, rolling out)
+### Building on GitHub instead of Vercel (live since 2026-10-07)
 
-`.github/workflows/deploy.yml` builds the site on GitHub's free runner (public repo; 4 CPUs, 16 GB) and hands Vercel the finished output (`vercel build` + `vercel deploy --prebuilt`). Why: Vercel bills builds by the CPU minute (~$0.35 a push), and its 8 GB Standard machine runs out of memory compiling this site.
+Every push to `main` is built by `.github/workflows/deploy.yml` on GitHub's free runner (public repo; 4 CPUs, 16 GB) and handed to Vercel prebuilt (`vercel build` + `vercel deploy --prebuilt --archive=tgz`). Vercel only hosts. Why: Vercel bills builds by the CPU minute (~$0.35 a push), and its 8 GB Standard machine runs out of memory compiling this site.
 
-- **Needs three repo secrets:** `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` (where to find each is in the workflow header).
-- **Today it is manual:** Actions → "Deploy (GitHub build)" → Run workflow, target `preview` (default) or `production`.
-- **Switch-over, after a preview checks out:** a commit adds the push trigger, then Vercel → Settings → Git → turn off automatic builds, so a push is not built twice. **Fallback:** turn them back on.
-- The build sets `VERCEL=1` itself, so it renders the same pages a Vercel build would (4 at a time, every notes page).
+- **Watching a deploy:** GitHub → Actions → "Deploy (GitHub build)". Not Vercel's build log: Vercel's own Git builds are off (`vercel.json` → `git.deploymentEnabled: false`).
+- **Going back to Vercel building:** delete `vercel.json` and push (and set the machine to Enhanced: Standard runs out of memory).
+- **Secrets in GitHub:** `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`, plus the Supabase trio. Vercel will not hand out its **Sensitive** variables (`vercel pull` writes `[SENSITIVE]`), so the ones the BUILD reads come from GitHub (`scripts/deploy/fill-vercel-env.ts`, which names any that are missing). Runtime-only secrets stay in Vercel alone. **When you rotate a Supabase key, change it in Vercel AND GitHub**: a stale GitHub copy builds without complaint.
+- **A staged test without going live:** Actions → Run workflow → `staged` builds with the production settings and uploads with `--skip-domain`; open the URL from the run summary (Vercel login required), then Vercel → Deployments → Promote, or leave it. Google sign-in fails on that `vercel.app` URL (`origin_mismatch`, an unregistered origin); test with email sign-in there.
+- **Guards before every deploy:** no `[SENSITIVE]` and no service-key value anywhere in the built output. Only `.next/cache/webpack` is cached: in a public repo a pull request can read Actions caches.
 
 ### When to upgrade tiers
 
