@@ -25,9 +25,11 @@ export type PaywallSettings = {
   freeSaveLimit: number | null;
   /** Days the projected score stays free after the student reveals it. */
   projectionTrialDays: number | null;
+  /** Different whole past papers ANY account may download per IST day (0137). */
+  mockPapersPerDay: number | null;
 };
 
-export const PAYWALL_LIMITS = ["mocks", "chapterTests", "drill", "reveals", "saves", "projection"] as const;
+export const PAYWALL_LIMITS = ["mocks", "chapterTests", "drill", "reveals", "saves", "projection", "paperDownloads"] as const;
 export type PaywallLimit = (typeof PAYWALL_LIMITS)[number];
 
 const LIMIT_SET: ReadonlySet<string> = new Set(PAYWALL_LIMITS);
@@ -47,6 +49,7 @@ export const EMPTY_PAYWALL_SETTINGS: PaywallSettings = {
   freeRevealsPerDay: null,
   freeSaveLimit: null,
   projectionTrialDays: null,
+  mockPapersPerDay: null,
 };
 
 /** The number field and, for a lifetime count, its date field. */
@@ -57,6 +60,7 @@ const FIELDS: Record<PaywallLimit, { value: keyof PaywallSettings; since?: keyof
   reveals: { value: "freeRevealsPerDay" },
   saves: { value: "freeSaveLimit" },
   projection: { value: "projectionTrialDays" },
+  paperDownloads: { value: "mockPapersPerDay" },
 };
 
 export function nextPaywallSettings(
