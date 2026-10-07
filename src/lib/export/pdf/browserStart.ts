@@ -46,3 +46,26 @@ export function browserStartFailure(state: {
     .slice(-6);
   return new Error(lines.length > 0 ? `${what}: ${lines.join(" | ")}` : what);
 }
+
+/**
+ * The flags the printer starts its browser with: the platform's own first
+ * (the headless shell's, or Edge's), then ours, then a blank page.
+ *
+ * `--disable-dev-shm-usage` (2026-10-07): Vercel's functions have no /dev/shm,
+ * and Chrome keeps shared memory there by default, so every print died with
+ * "Creating shared memory in /dev/shm ... failed" (SIGTRAP). The flag moves it
+ * to the temp folder. Puppeteer adds it by default; a raw spawn must say it.
+ */
+export function printBrowserArgs(platformArgs: string[], profile: string): string[] {
+  return [
+    ...platformArgs,
+    "--disable-dev-shm-usage",
+    "--disable-gpu",
+    "--no-first-run",
+    "--hide-scrollbars",
+    "--remote-debugging-port=0",
+    "--allow-file-access-from-files",
+    `--user-data-dir=${profile}`,
+    "about:blank",
+  ];
+}
