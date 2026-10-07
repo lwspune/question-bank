@@ -9,13 +9,13 @@ import GuideHubList from "@/app/guide/_components/GuideHubList";
 export const revalidate = 86400;
 
 const PAGE_INTRO =
-  "Built from the live past-year question bank — every JEE Mains shift from 2021 to 2026, not a syllabus " +
-  "summary. Mathematics is live; Physics and Chemistry guides are not written yet.";
+  "Built from the live past-year question bank: every JEE Mains shift from 2021 to 2026, not a syllabus " +
+  "summary. One guide each for Mathematics, Physics and Chemistry.";
 
 export const metadata: Metadata = {
-  title: "JEE Mains Guides — Strategy for Mathematics",
+  title: "JEE Mains Guides: Strategy for Maths, Physics and Chemistry",
   description:
-    "Evidence-led strategy guide for JEE Mains Mathematics, built from every shift from 2021 to 2026. Every claim is measured against the live past-year question bank.",
+    "Evidence-led strategy guides for JEE Mains Mathematics, Physics and Chemistry, built from every shift from 2021 to 2026. Every claim is measured against the live past-year question bank.",
   alternates: { canonical: "/guide/jee-mains" },
 };
 
@@ -32,8 +32,8 @@ export default function JeeMainsGuideIndex() {
       <GuideJsonLd
         type="CollectionPage"
         path="/guide/jee-mains"
-        headline="JEE Mains Guides — Strategy for Mathematics"
-        description="Evidence-led strategy guide for JEE Mains Mathematics, built from every shift from 2021 to 2026."
+        headline="JEE Mains Guides: Strategy for Maths, Physics and Chemistry"
+        description="Evidence-led strategy guides for JEE Mains Mathematics, Physics and Chemistry, built from every shift from 2021 to 2026."
       />
 
       <GuideHero
