@@ -7,17 +7,19 @@
 # runner (4 CPUs, 16 GB) is free, and Vercel supports deploying a prebuilt
 # output (`vercel build` + `vercel deploy --prebuilt`).
 #
-# ROLL-OUT. Manual only for now: run it from the Actions tab. `staged` (the
-# default) builds with the PRODUCTION settings and uploads the result to Vercel
-# without putting it on the live domain (`--skip-domain`); check its URL, then
-# make it live with Vercel's Promote button or `vercel promote <url>`.
-# `production` goes live directly. Once a staged build has checked out, a later
-# commit adds the push trigger and Vercel's own Git builds get switched off
-# (otherwise every push is built twice). Fallback: switch them back on.
+# HOW IT RUNS (live since 2026-10-07). Every push to main builds here and goes
+# live. Vercel's own Git builds are off (vercel.json `git.deploymentEnabled`),
+# so nothing is built twice. To go back to Vercel building, delete vercel.json.
 #
-# Why not a preview: the site's variables in Vercel are Production-only, so a
-# preview build had no database address (first run, 2026-10-07). Copying them
-# to Preview would also hand live payment keys to every preview deploy.
+# By hand (Actions tab -> Run workflow): `staged` builds with the production
+# settings and uploads WITHOUT going live (`--skip-domain`); check its URL, then
+# Vercel -> Deployments -> Promote. `production` goes live directly. Staged is
+# how this pipeline was proven: the GitHub-built copy was checked (pages, email
+# sign-in, Razorpay checkout opening = runtime secrets reach the server) and
+# promoted, then Google sign-in checked on www.pyqvault.com.
+#
+# Production settings, never Preview: a staged production build is the real
+# thing minus the domain, so it is the better test.
 #
 # SECRETS (Settings -> Secrets and variables -> Actions):
 #   VERCEL_TOKEN       vercel.com -> Account Settings -> Tokens
@@ -30,6 +32,8 @@
 name: Deploy (GitHub build)
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       target:
@@ -130,4 +134,4 @@ jobs:
         run: |
           url=$(npx --yes "$VERCEL_CLI" deploy --prebuilt --archive=tgz --prod ${{ inputs.target == 'staged' && '--skip-domain' || '' }} --token=${{ secrets.VERCEL_TOKEN }})
           echo "$url"
-          echo "Deployed ${{ inputs.target }}: $url" >> "$GITHUB_STEP_SUMMARY"
+          echo "Deployed ${{ inputs.target || 'production' }}: $url" >> "$GITHUB_STEP_SUMMARY"
