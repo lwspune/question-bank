@@ -11,7 +11,28 @@
  * null) looked the same as a slow start.
  */
 import { describe, it, expect } from "vitest";
-import { devToolsPortFromOutput, browserStartFailure, appendTail } from "@/lib/export/pdf/browserStart";
+import { devToolsPortFromOutput, browserStartFailure, appendTail, printBrowserArgs } from "@/lib/export/pdf/browserStart";
+
+describe("printBrowserArgs", () => {
+  const args = printBrowserArgs(["--headless='shell'"], "/tmp/pv-pdf-x/profile");
+
+  it("keeps Chrome's shared memory out of /dev/shm, which Vercel does not have", () => {
+    // 2026-10-07: every Vercel print died "Creating shared memory in /dev/shm
+    // ... failed" (SIGTRAP). Puppeteer adds this flag by default; a raw spawn
+    // has to say it.
+    expect(args).toContain("--disable-dev-shm-usage");
+  });
+
+  it("keeps the platform's own flags first and opens a blank page last", () => {
+    expect(args[0]).toBe("--headless='shell'");
+    expect(args.at(-1)).toBe("about:blank");
+  });
+
+  it("asks for a DevTools port and uses the given profile", () => {
+    expect(args).toContain("--remote-debugging-port=0");
+    expect(args).toContain("--user-data-dir=/tmp/pv-pdf-x/profile");
+  });
+});
 
 describe("devToolsPortFromOutput", () => {
   it("reads the port from the headless shell's announcement", () => {

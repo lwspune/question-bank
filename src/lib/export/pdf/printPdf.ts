@@ -16,7 +16,7 @@ import { existsSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "no
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
-import { appendTail, browserStartFailure, devToolsPortFromOutput } from "./browserStart";
+import { appendTail, browserStartFailure, devToolsPortFromOutput, printBrowserArgs } from "./browserStart";
 
 const WINDOWS_BROWSERS = [
   "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
@@ -132,8 +132,7 @@ async function printOnce(html: string): Promise<Buffer> {
   const { path, args } = await browser();
   const proc = spawn(
     path,
-    [...args, "--disable-gpu", "--no-first-run", "--hide-scrollbars", "--remote-debugging-port=0",
-      "--allow-file-access-from-files", `--user-data-dir=${profile}`, "about:blank"],
+    printBrowserArgs(args, profile),
     // stderr is read, not ignored: it carries the headless shell's port and,
     // when the browser fails, the reason, which goes into the error.
     { stdio: ["ignore", "ignore", "pipe"] }
