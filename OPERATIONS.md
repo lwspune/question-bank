@@ -63,8 +63,8 @@ Six custom events measure the three moments a stranger is ASKED for something. T
 `.github/workflows/deploy.yml` builds the site on GitHub's free runner (public repo; 4 CPUs, 16 GB) and hands Vercel the finished output (`vercel build` + `vercel deploy --prebuilt`). Why: Vercel bills builds by the CPU minute (~$0.35 a push), and its 8 GB Standard machine runs out of memory compiling this site.
 
 - **Needs three repo secrets:** `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` (where to find each is in the workflow header).
-- **Today it is manual:** Actions → "Deploy (GitHub build)" → Run workflow, target `preview` (default) or `production`.
-- **Switch-over, after a preview checks out:** a commit adds the push trigger, then Vercel → Settings → Git → turn off automatic builds, so a push is not built twice. **Fallback:** turn them back on.
+- **Today it is manual:** Actions → "Deploy (GitHub build)" → Run workflow. `staged` (default) builds with the production settings and uploads WITHOUT going live; check the URL in the run summary, then Vercel → Deployments → Promote. `production` goes live directly. (A `preview` target was dropped: the site's Vercel variables are Production-only, so a preview build has no database address.)
+- **Switch-over, after a staged build checks out:** a commit adds the push trigger, then Vercel → Settings → Git → turn off automatic builds, so a push is not built twice. **Fallback:** turn them back on.
 - The build sets `VERCEL=1` itself, so it renders the same pages a Vercel build would (4 at a time, every notes page).
 
 ### When to upgrade tiers
