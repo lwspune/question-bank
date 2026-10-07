@@ -1,8 +1,7 @@
 "use client";
 
-import { Fragment, useId, useState, type ReactNode } from "react";
-import Link from "next/link";
-import { ChevronDown } from "lucide-react";
+import { Fragment, type ReactNode } from "react";
+import FeedSections from "@/components/exam/FeedSections";
 import type { ExamSlug } from "@/lib/exam/examContext";
 import { splitByFeed } from "@/lib/exam/examFeed";
 import { useExamFeed } from "@/lib/viewer/useExamFeed";
@@ -40,8 +39,6 @@ export default function ExamFeedList({
   className?: string;
 }) {
   const { feed } = useExamFeed();
-  const [open, setOpen] = useState(false);
-  const panelId = useId();
 
   const renderGroup = (group: FeedListItem[], extraClass = "") => {
     const cls = [className, extraClass].filter(Boolean).join(" ") || undefined;
@@ -71,36 +68,11 @@ export default function ExamFeedList({
   }
 
   return (
-    <div>
-      <div className="mt-8 flex flex-wrap items-baseline justify-between gap-2">
-        <p className="text-xs font-semibold uppercase tracking-wide text-brand-accent">
-          Your exams
-        </p>
-        <Link
-          href="/account"
-          prefetch={false}
-          className="text-xs font-medium text-muted-foreground underline-offset-2 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        >
-          Change your exams
-        </Link>
-      </div>
-      {renderGroup(primary, "!mt-3")}
-      <div className="mt-8 border-t pt-4">
-        <button
-          type="button"
-          aria-expanded={open}
-          aria-controls={panelId}
-          onClick={() => setOpen((v) => !v)}
-          className="inline-flex items-center gap-1.5 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-        >
-          Other exams ({other.length})
-          <ChevronDown
-            className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`}
-            aria-hidden
-          />
-        </button>
-        {open && <div id={panelId}>{renderGroup(other, "!mt-4")}</div>}
-      </div>
-    </div>
+    <FeedSections
+      eyebrow="Your exams"
+      primary={renderGroup(primary, "!mt-3")}
+      otherLabel={`Other exams (${other.length})`}
+      other={renderGroup(other, "!mt-4")}
+    />
   );
 }
