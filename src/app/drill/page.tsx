@@ -132,6 +132,10 @@ export default async function DrillPage({
           ) : drill.questions.length > 0 ? (
             <>
               <DrillRunner
+                // A new set is a new runner: without a key, any client
+                // navigation back to /drill kept the old one's answers and
+                // its finished state over the new questions.
+                key={drill.questions.map((q) => q.id).join(",")}
                 questions={drill.questions}
                 dueTotal={drill.dueTotal}
                 fresh={drill.fresh}

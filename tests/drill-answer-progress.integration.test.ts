@@ -83,18 +83,28 @@ describe.skipIf(!HAS_ENV)("recordDrillAnswer — progress, fixed count, mileston
   });
 
   it("the first right answer after a miss FIXES it and reports the running count", async () => {
-    const out = await recordDrillAnswer(qs[0].id, qs[0].right);
+    const out = await recordDrillAnswer(userId, qs[0].id, qs[0].right);
     expect(out).toMatchObject({ correct: true, progress: "fixed", fixedTotal: 1 });
   });
 
   it("a right answer to a question never missed is just right", async () => {
-    const out = await recordDrillAnswer(qs[1].id, qs[1].right);
+    const out = await recordDrillAnswer(userId, qs[1].id, qs[1].right);
     expect(out).toMatchObject({ correct: true, progress: "right", fixedTotal: null });
   });
 
   it("a wrong answer is wrong", async () => {
-    const out = await recordDrillAnswer(qs[2].id, qs[2].wrong);
+    const out = await recordDrillAnswer(userId, qs[2].id, qs[2].wrong);
     expect(out).toMatchObject({ correct: false, progress: "wrong", fixedTotal: null });
+  });
+
+  // The rate limit is checked in parallel with the reads (2026-10-07), so the
+  // service waits for its verdict before writing. A refusal must leave no row.
+  it("writes nothing and reveals no key when the rate limit refuses", async () => {
+    const before = await admin.from("user_activity").select("id", { count: "exact", head: true }).eq("user_id", userId);
+    const out = await recordDrillAnswer(userId, qs[2].id, qs[2].wrong, { allowed: Promise.resolve(false) });
+    expect(out).toEqual({ rateLimited: true });
+    const after = await admin.from("user_activity").select("id", { count: "exact", head: true }).eq("user_id", userId);
+    expect(after.count).toBe(before.count);
   });
 
   it("reports a newly reached milestone once", async () => {
@@ -108,9 +118,9 @@ describe.skipIf(!HAS_ENV)("recordDrillAnswer — progress, fixed count, mileston
     const { error } = await admin.from("user_activity").insert(seeded);
     if (error) throw new Error(error.message);
 
-    const first = graded(await recordDrillAnswer(qs[2].id, qs[2].wrong));
+    const first = graded(await recordDrillAnswer(userId, qs[2].id, qs[2].wrong));
     expect(first?.milestone).toBe(10);
-    const second = graded(await recordDrillAnswer(qs[2].id, qs[2].wrong));
+    const second = graded(await recordDrillAnswer(userId, qs[2].id, qs[2].wrong));
     expect(second?.milestone).toBeNull();
   });
 
@@ -142,12 +152,12 @@ describe.skipIf(!HAS_ENV)("recordDrillAnswer — progress, fixed count, mileston
     if (rErr) throw new Error(rErr.message);
 
     // 75% wrong → the 70 tier.
-    expect(graded(await recordDrillAnswer(q.id, q.right))?.crowd).toBe(70);
-    expect(graded(await recordDrillAnswer(q.id, q.wrong))?.crowd).toBeNull();
+    expect(graded(await recordDrillAnswer(userId, q.id, q.right))?.crowd).toBe(70);
+    expect(graded(await recordDrillAnswer(userId, q.id, q.wrong))?.crowd).toBeNull();
   });
 });
 
 /** A graded answer, or null: the daily limit is off in the test project. */
 function graded(o: Awaited<ReturnType<typeof recordDrillAnswer>>) {
-  return o && !("limitReached" in o) ? o : null;
+  return o && !("limitReached" in o) && !("rateLimited" in o) ? o : null;
 }
