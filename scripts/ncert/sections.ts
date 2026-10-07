@@ -14,6 +14,7 @@
 // "0"), and "7.1 Eg" is NOT a prefix of "7.10 Eg" — so per-exercise blocks don't
 // collide. Verified against the reconstructed outline after transcription.
 import type { SectionSpec } from "./lib";
+import { CHAPTERS } from "./config";
 
 export const SECTIONS: Record<string, SectionSpec[]> = {
   // ── Ch.2 Inverse Trigonometric Functions (12th, Part 1). Two numbered
@@ -1336,6 +1337,21 @@ export const SECTIONS: Record<string, SectionSpec[]> = {
     { group: "Consumer Rights", label: "Let's Work These Out", kind: "exercise", refPrefixes: ["LW 5.3 Q", "LW 5.4 Q", "LW 5.5 Q", "LW 5.6 Q", "LW 5.7 Q"] },
     { group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: ["Ex 5 Q"] },
   ],
+
+  // ── CBSE Class 11 + 12 BIOLOGY (2026-10-07) — 32 chapters, ONE block each.
+  //    Measured on every chapter PDF: a single end-of-chapter EXERCISES block,
+  //    no in-text question boxes, no worked examples. So the outline is the
+  //    same shape everywhere and is generated from config rather than typed 32
+  //    times. A chapter that ever grows a second block must be written out by
+  //    hand BELOW this spread (the later key wins).
+  ...Object.fromEntries(
+    Object.values(CHAPTERS)
+      .filter((c) => c.subjectName === "Biology")
+      .map((c) => [
+        c.id,
+        [{ group: "Exercises", label: "Exercises", kind: "exercise", refPrefixes: [`Ex ${c.chapterNo} Q`] }] as SectionSpec[],
+      ])
+  ),
 };
 
 export function sectionsFor(id: string): SectionSpec[] {

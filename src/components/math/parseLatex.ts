@@ -32,6 +32,46 @@ export function splitBold(text: string): { bold: boolean; text: string }[] {
 }
 
 /**
+ * Single-asterisk `*italic*`, STRICT form: the opening star must follow the
+ * start of a line, whitespace or opening punctuation and precede a non-space;
+ * the closing star must follow a non-space and precede the end, whitespace or
+ * punctuation; both on one line. Deliberately stricter than CommonMark, which
+ * allows intra-word emphasis and would italicize `sigma_x*sigma_y*`.
+ *
+ * Measured 2026-10-07 over every row and the /notes + /guide sources: this
+ * rule italicizes 1,716 intended spans and leaves all 904 other asterisks
+ * (multiplication, inline bullets, footnote markers, broken bold) exactly as
+ * they were. tests/render-italic-contract.test.ts pins both halves.
+ */
+const ITALIC_RE =
+  /(^|[\s(\[{"'“‘/—–-])\*(?=[^\s*])([^*\n]*?[^\s*])\*(?=$|[\s)\]}"'”’.,;:!?/—–-])/gm;
+/** A masked math zone, ignored when asking "does this span hold any text?". */
+const MASKED_ZONE_RE = new RegExp(`${MASK_OPEN}\\d+${MASK_CLOSE}`, "g");
+
+/**
+ * Split a NON-bold run on `*italic*` into italic / plain pieces, verbatim
+ * otherwise. A span must contain a letter or digit outside maths, so junk such
+ * as the `*\*` a Word conversion left in some solutions stays literal. Run it on
+ * text whose maths is already masked (as runsFromMasked does), so a `*` inside
+ * \(...\) can never open or close italics. Pure.
+ */
+export function splitItalic(text: string): { italic: boolean; text: string }[] {
+  const out: { italic: boolean; text: string }[] = [];
+  const re = new RegExp(ITALIC_RE.source, "gm");
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text)) !== null) {
+    if (!/[\p{L}\p{N}]/u.test(m[2].replace(MASKED_ZONE_RE, ""))) continue;
+    const open = m.index + m[1].length;
+    if (open > last) out.push({ italic: false, text: text.slice(last, open) });
+    out.push({ italic: true, text: m[2] });
+    last = open + m[2].length + 2;
+  }
+  if (last < text.length) out.push({ italic: false, text: text.slice(last) });
+  return out;
+}
+
+/**
  * Mask every math zone (`\(...\)`, `\[...\]`, `$...$`, `$$...$$`) to an opaque
  * Private-Use-Area sentinel and return the masked string plus an `unmask` that
  * restores the ORIGINAL math verbatim. Lets line/pipe/structure scanners (e.g.
@@ -64,6 +104,8 @@ export type RichSegment = {
   type: "text" | "inline" | "block";
   content: string;
   bold?: true;
+  /** `*italic*` (single asterisk, strict rule — see splitItalic). */
+  italic?: true;
 };
 
 /** Alias kept for the notes renderer, which speaks in "runs". */
@@ -142,8 +184,14 @@ function maskZones(input: string): { masked: string; zones: Zone[] } {
 const seg = (
   type: RichSegment["type"],
   content: string,
-  bold: boolean
-): RichSegment => (bold ? { type, content, bold: true } : { type, content });
+  bold: boolean,
+  italic = false
+): RichSegment => ({
+  type,
+  content,
+  ...(bold ? { bold: true as const } : {}),
+  ...(italic ? { italic: true as const } : {}),
+});
 
 /**
  * Build runs from an ALREADY-MASKED string. Bold is resolved FIRST, on the
@@ -154,21 +202,23 @@ const seg = (
  */
 function runsFromMasked(masked: string, zones: Zone[]): RichSegment[] {
   const out: RichSegment[] = [];
-  for (const piece of splitBold(masked)) {
+  const emit = (text: string, bold: boolean, italic: boolean) => {
     MASK_RE.lastIndex = 0;
     let last = 0;
     let m: RegExpExecArray | null;
-    while ((m = MASK_RE.exec(piece.text)) !== null) {
-      if (m.index > last) {
-        out.push(seg("text", piece.text.slice(last, m.index), piece.bold));
-      }
+    while ((m = MASK_RE.exec(text)) !== null) {
+      if (m.index > last) out.push(seg("text", text.slice(last, m.index), bold, italic));
       const z = zones[Number(m[1])];
-      if (z) out.push(seg(z.type, z.content, piece.bold));
+      if (z) out.push(seg(z.type, z.content, bold, italic));
       last = m.index + m[0].length;
     }
-    if (last < piece.text.length) {
-      out.push(seg("text", piece.text.slice(last), piece.bold));
-    }
+    if (last < text.length) out.push(seg("text", text.slice(last), bold, italic));
+  };
+  for (const piece of splitBold(masked)) {
+    // Italic is resolved only OUTSIDE bold: a star inside a bold span renders
+    // as it always has (literal), so no existing bold span changes.
+    if (piece.bold) emit(piece.text, true, false);
+    else for (const ip of splitItalic(piece.text)) emit(ip.text, false, ip.italic);
   }
   return out;
 }

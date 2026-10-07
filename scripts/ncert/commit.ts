@@ -129,6 +129,15 @@ async function main() {
     .update({ status: "COMPLETED", total_rows: linked ?? 0, inserted: result.inserted, skipped: result.skipped, finished_at: new Date().toISOString() })
     .eq("id", jobId);
   console.log(`done. ${linked} rows linked to job ${jobId}.`);
+
+  // A failed row must fail the RUN. This used to exit 0 with every row failed
+  // ("Subject Biology does not exist for this exam", Class 12 Biology before its
+  // subject was seeded), so a chained ship script went on to stamp and flip
+  // nothing and only broke one step later, on a "matched 0 rows" it could not explain.
+  if (result.failed > 0) {
+    console.error(`\nFAILED: ${result.failed} row(s) did not commit (see the err lines above).`);
+    process.exitCode = 1;
+  }
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

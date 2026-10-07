@@ -483,7 +483,7 @@ function segmentRuns(segments: OmmlSegment[], opts: ParaOpts): string {
       if (line) {
         out += textRun(line, opts.size, {
           bold: seg.bold || opts.bold,
-          italic: opts.italic,
+          italic: seg.italic || opts.italic,
           color: opts.color,
         });
       }

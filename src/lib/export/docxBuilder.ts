@@ -776,7 +776,11 @@ function mathRuns(text: string, builder: Builder): ParagraphChild[] {
         // Markdown **bold** becomes a native Word bold run. Math inside a bold
         // span stays unbolded: it goes through the OMML path, which carries no
         // run properties (the web renderer is the same — KaTeX sets its font).
-        if (line) out.push(new TextRun({ text: line, bold: seg.bold ? true : undefined }));
+        // Markdown *italic* becomes a native italic run the same way.
+        if (line)
+          out.push(
+            new TextRun({ text: line, bold: seg.bold ? true : undefined, italics: seg.italic ? true : undefined })
+          );
       });
     } else if (seg.type === "underlined-text") {
       // Native Word underline run — bypasses the OMML borderBox path

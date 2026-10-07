@@ -45,11 +45,12 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { DATA, requireChapter } from "./config";
+import { DATA, questionsJsonPath, requireChapter, type Chapter } from "./config";
 
 type CrossCheckRow = { ref: string; verdict: string; note?: string };
 
 const DERIVED_MODEL = "claude-opus-5 (authored; NCERT key prints no answer for this question)";
+const DERIVED_MODEL_NO_KEY = "claude-opus-5 (authored; this NCERT book publishes no answer key)";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -60,6 +61,20 @@ async function main() {
   const apply = process.argv.includes("--apply");
   const ch = requireChapter(id);
   loadEnv();
+
+  // A BOOK WITH NO ANSWER KEY (Biology; config carries no `answersPdf`): there is
+  // no cross-check to read, and every authored answer is unconfirmed by
+  // construction. Stamp every row except worked examples. Read from config, not a
+  // flag, so the key-less case cannot be forgotten and a keyed chapter cannot opt
+  // into it.
+  if (!ch.answersPdf) {
+    const qPath = questionsJsonPath(id);
+    if (!existsSync(qPath)) throw new Error(`no merged transcription at ${qPath} — run merge.ts first`);
+    const all: { ref: string }[] = JSON.parse(readFileSync(qPath, "utf8"));
+    const keyless = all.filter((r) => !r.ref.startsWith("Eg ")).map((r) => ({ ref: r.ref, verdict: "NO-KEY-ENTRY" }));
+    console.log(`${id}: this book publishes no answer key — all ${keyless.length} row(s) are derived.`);
+    return stamp(ch, keyless, apply, DERIVED_MODEL_NO_KEY);
+  }
 
   const path = join(DATA, `${id}.crosscheck.json`);
   if (!existsSync(path)) {
@@ -86,7 +101,10 @@ async function main() {
         `construction — they must not be recorded as NO-KEY-ENTRY. Fix the cross-check output.`
     );
   }
+  return stamp(ch, targets, apply, DERIVED_MODEL);
+}
 
+async function stamp(ch: Chapter, targets: CrossCheckRow[], apply: boolean, model: string) {
   console.log(`\n${targets.length} row(s) to stamp (verdict NO-KEY-ENTRY):`);
   for (const r of targets) console.log(`  ${r.ref}`);
   if (!targets.length) {
@@ -108,7 +126,7 @@ async function main() {
   for (const r of targets) {
     const { error, count } = await client
       .from("questions")
-      .update({ derived_model: DERIVED_MODEL, derived_at: now }, { count: "exact" })
+      .update({ derived_model: model, derived_at: now }, { count: "exact" })
       .eq("exam_id", ch.examId)
       .eq("source_file", ch.sourceFile)
       .eq("question_number", r.ref);

@@ -74,7 +74,7 @@ function tex(src: string, displayMode: boolean): string {
 }
 
 /**
- * Prose + math + **bold**, as inline HTML. Prose is escaped; math is KaTeX's
+ * Prose + math + **bold** + *italic*, as inline HTML. Prose is escaped; math is KaTeX's
  * own markup. ❌ (an emoji, in 2 rows) has no glyph in the bundled fonts, so
  * it prints as ✗, which they carry.
  */
@@ -92,6 +92,7 @@ export function richHtml(text: string): string {
       } else {
         inner = esc(seg.content).replace(/\n/g, "<br>");
       }
+      if (seg.italic) inner = `<em>${inner}</em>`;
       return seg.bold ? `<strong>${inner}</strong>` : inner;
     })
     .join("");
