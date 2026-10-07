@@ -310,7 +310,7 @@ describe("deriveAnchors", () => {
 
   it("collects section numbers, activities, figures and tables", () => {
     expect(deriveAnchors(CH1, 1).sort()).toEqual(
-      ["1.1", "1.2", "1.2.1", "Activity 1.1", "Fig. 1.3", "Fig. 1.4", "Table 1.1"].sort()
+      ["1.0", "1.1", "1.2", "1.2.1", "Activity 1.1", "Fig. 1.3", "Fig. 1.4", "Table 1.1"].sort()
     );
   });
 
@@ -341,8 +341,65 @@ describe("deriveAnchors", () => {
     // capital cannot mint an anchor. Found by running the probe on the book, not
     // by reading the regex.
     expect(deriveAnchors("1.50 A. What is the power of the bulb?", 1)).toEqual([]);
-    expect(deriveAnchors("1.1 CHEMICAL EQUATIONS", 1)).toEqual(["1.1"]);
+    expect(deriveAnchors("1.1 CHEMICAL EQUATIONS", 1)).toEqual(["1.1", "1.0"]);
     expect(deriveAnchors("1.1.1 Writing a Chemical Equation", 1)).toEqual(["1.1.1"]);
+  });
+
+  it("reads a heading whose title opens with a ONE-LETTER word", () => {
+    // NCERT Biology prints "10.2 M Phase" (Class 11) and "6.8 A Brief Account of
+    // Evolution" (Class 12); requiring a second letter dropped both, so any answer
+    // grounded in them failed the gate.
+    expect(deriveAnchors("10.2 M Phase\n10.3 Significance of", 10)).toEqual(["10.2", "10.3"]);
+    expect(deriveAnchors("6.8 A BRIEF ACCOUNT OF EVOLUTION", 6)).toEqual(["6.8"]);
+    // ...while a value + unit followed by a new sentence stays rejected.
+    expect(deriveAnchors("1.50 A. What is the power of the bulb?", 1)).toEqual([]);
+    expect(deriveAnchors("1.5 A current flows", 1)).toEqual([]);
+  });
+
+  it("reads an ALL-CAPS table caption and normalises it to `Table`", () => {
+    // NCERT Biology prints "TABLE 3.1 Divisions of Algae and their Main Characteristics";
+    // matching only "Table" left every table in the book uncitable.
+    expect(deriveAnchors("TABLE 3.1 Divisions of Algae", 3)).toEqual(["Table 3.1"]);
+    expect(parseCitations("§3.1; TABLE 3.1 — flagella")).toEqual(["3.1", "Table 3.1"]);
+    expect(parseCitations("Table 3.1 — flagella")).toEqual(["Table 3.1"]);
+  });
+
+  it("reads a title opening with a lowercase-then-capital term (tRNA, mRNA, pH)", () => {
+    // Biology Class 12 Ch.5 prints "5.6.2 tRNA– the Adapter Molecule"; the
+    // capital-first rule dropped it, and Class 10 Science lost "§2.4.2 pH of Salts".
+    expect(deriveAnchors("5.6.2 tRNA– the Adapter Molecule", 5)).toEqual(["5.6.2"]);
+    expect(deriveAnchors("2.4.2 pH of Salts", 2)).toEqual(["2.4.2"]);
+    // Ordinary lowercase prose at line start is still not a heading (the phantoms
+    // the Science lane measured when it tried a general lowercase rule).
+    expect(deriveAnchors("1.7 double of the amount", 1)).toEqual([]);
+    expect(deriveAnchors("10.10 shows the actual", 10)).toEqual([]);
+  });
+
+  it("does not join a line-final word to the NEXT line's section number", () => {
+    // Biology Ch.15's contents list wraps "Regulation of Cardiac\nActivity\n15.6
+    // Disorders of": crossing the line break minted a phantom "Activity 15.6",
+    // a citable anchor for an activity the chapter does not have (fail-open).
+    expect(deriveAnchors("15.5 Regulation of\nCardiac\nActivity\n15.6 Disorders of", 15)).not.toContain("Activity 15.6");
+    expect(parseCitations("Table\n15.1")).toEqual([]);
+    // Same-line captions still resolve, single or double spaced.
+    expect(parseCitations("TABLE 15.1  Blood Groups; see Table 15.1.")).toEqual(["Table 15.1"]);
+  });
+
+  it("reads four-level sections (§4.2.11.1, the vertebrate classes)", () => {
+    expect(deriveAnchors("4.2.11.1 Class – Cyclostomata", 4)).toEqual(["4.2.11.1"]);
+    expect(parseCitations("§4.2.11.5 — reptiles")).toEqual(["4.2.11.5"]);
+  });
+
+  it("derives §<ch>.0, the unnumbered chapter opening, only when §<ch>.1 exists", () => {
+    // NCERT Biology teaches real content before §1: Class 11 Ch.16's opening is
+    // where ammonotelism and flame cells live, and three exercise items rest on it.
+    const text = "A survey of animal kingdom presents a variety of excretory structures.\n16.1 Human Excretory System\n";
+    expect(deriveAnchors(text, 16)).toEqual(["16.1", "16.0"]);
+    expect(parseCitations("§16.0 — the chapter opening on ammonotelism")).toEqual(["16.0"]);
+    // No §<ch>.1 heading, no opening anchor: it is derived, never assumed.
+    expect(deriveAnchors("16.2 Urine Formation", 16)).toEqual(["16.2"]);
+    // And another chapter's opening is still filtered out.
+    expect(deriveAnchors("9.1 Proteins", 1)).toEqual([]);
   });
 });
 

@@ -147,12 +147,15 @@ export function bandPrefixes(chapterNo: number, boxNo: number): { eg: string; in
 
 // One pass over the text finds every anchor spelling the book uses. Kept as a
 // single alternation so the match ORDER is the order they appear in the prose.
-//   §1.2 / Section 1.2.1     → "1.2" / "1.2.1"
-//   Activity|Table|Example N.N → verbatim
+//   §1.2 / Section 1.2.1     → "1.2" / "1.2.1"  (up to four levels: §4.2.11.1)
+//   Activity|Table|Example N.N → verbatim ("TABLE 3.1", Biology's caption, → "Table 3.1")
 //   Fig. | Fig | Figure N.N  → normalised to "Fig. N.N"
+// Label and number must share a LINE (space or tab, never \s): Biology Ch.15's
+// contents list wraps "Cardiac / Activity / 15.6 Disorders" over three lines, and
+// \s minted a phantom "Activity 15.6", a citable anchor for nothing.
 // A bare decimal is deliberately NOT an anchor: "1.6 ohm m" is a value, and
 // admitting it would let an ungrounded answer pass on its own arithmetic.
-const CITE_RE = /(?:§\s*|\bSection\s+)(\d+\.\d+(?:\.\d+)?)|\b(Activity|Table|Example)\s+(\d+\.\d+)|\bFig(?:ure|\.)?\s*(\d+\.\d+)/g;
+const CITE_RE = /(?:§\s*|\bSection\s+)(\d+\.\d+(?:\.\d+){0,2})|\b(Activity|Table|TABLE|Example)[ \t]+(\d+\.\d+)|\bFig(?:ure|\.)?[ \t]*(\d+\.\d+)/g;
 
 /**
  * Anchors cited by a piece of prose, in order of first appearance, de-duplicated.
@@ -165,7 +168,8 @@ export function parseCitations(s: string): string[] {
   const re = new RegExp(CITE_RE.source, "g");
   let m: RegExpExecArray | null;
   while ((m = re.exec(s)) !== null) {
-    const token = m[1] ? m[1] : m[2] ? `${m[2]} ${m[3]}` : `Fig. ${m[4]}`;
+    // NCERT Biology captions tables in capitals ("TABLE 3.1"); one spelling only.
+    const token = m[1] ? m[1] : m[2] ? `${m[2] === "TABLE" ? "Table" : m[2]} ${m[3]}` : `Fig. ${m[4]}`;
     if (!seen.has(token)) {
       seen.add(token);
       out.push(token);
@@ -179,7 +183,13 @@ export function parseCitations(s: string): string[] {
 // The second letter matters: Ch.11 p20 opens a line "0.50 A. What is the power
 // of the bulb?", and `\s+[A-Z]` alone reads that as section "0.50". Requiring a
 // word rather than a lone capital is what rejects a value-plus-unit.
-const SECTION_HEAD_RE = /^[ \t]*(\d+\.\d+(?:\.\d+)?)\s+[A-Z][A-Za-z]/gm;
+// A lone capital IS a title word when another capitalised word follows it:
+// NCERT Biology prints "10.2 M Phase" and "6.8 A Brief Account of Evolution".
+// "0.50 A. What" (period) and "1.5 A current" (lowercase) stay rejected.
+// A lowercase-then-CAPITAL opening is a title term ("5.6.2 tRNA– the Adapter
+// Molecule", "2.4.2 pH of Salts"); a lowercase word ("1.7 double of the amount")
+// stays rejected, which is what keeps the phantoms out.
+const SECTION_HEAD_RE = /^[ \t]*(\d+\.\d+(?:\.\d+){0,2})\s+(?:[A-Z](?:[A-Za-z]|[ \t]+[A-Z][A-Za-z])|[a-z][A-Z])/gm;
 
 /**
  * The anchors a chapter's own text declares — the list `groundingViolations`
@@ -204,6 +214,12 @@ export function deriveAnchors(text: string, chapterNo: number): string[] {
   let h: RegExpExecArray | null;
   while ((h = headRe.exec(text)) !== null) push(h[1]);
   for (const c of parseCitations(text)) push(c);
+  // §<ch>.0 = the chapter's UNNUMBERED OPENING, the prose before §<ch>.1. NCERT
+  // Biology teaches real content there (Class 11 Ch.16's ammonotelism and flame
+  // cells; Ch.2's Five Kingdom system), and with no anchor an answer resting on
+  // it must either fail or cite a section that does not hold the fact. Derived,
+  // not assumed: it exists only when the chapter prints a §<ch>.1 heading.
+  if (seen.has(`${chapterNo}.1`)) push(`${chapterNo}.0`);
 
   // An anchor belongs to this chapter iff its leading number is the chapter's.
   const mine = (a: string) => {
