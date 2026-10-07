@@ -110,4 +110,46 @@ describe("docx branding", () => {
       await buildAnswerKey({ title: "T", questions: [Q], includeSolutions: true, branded: false })
     );
   });
+
+  // The owner's switches (2026-10-07): each piece can be turned off on its own.
+  it("keeps the footer address but drops the watermark when the watermark is off", async () => {
+    const buf = await buildQuestionPaper({
+      title: "T",
+      questions: [Q],
+      branded: true,
+      brandingParts: { watermark: false },
+    });
+    const zip = await JSZip.loadAsync(buf);
+    const files = await filesOf(buf);
+    for (const [, xml] of matching(files, /^word\/footer\d*\.xml$/)) expect(xml).toContain("www.pyqvault.com");
+    expect(matching(files, /^word\/footer\d*\.xml$/).length).toBeGreaterThan(0);
+    expect(matching(files, /^word\/header\d*\.xml$/)).toEqual([]);
+    expect(Object.keys(zip.files).filter((n) => n.startsWith("word/media/"))).toEqual([]);
+  });
+
+  it("keeps the watermark but drops the footer address when the address is off", async () => {
+    const buf = await buildAnswerKey({
+      title: "T",
+      questions: [Q],
+      includeSolutions: true,
+      branded: true,
+      brandingParts: { siteUrl: false },
+    });
+    const zip = await JSZip.loadAsync(buf);
+    const files = await filesOf(buf);
+    for (const [, xml] of files) expect(xml).not.toContain("www.pyqvault.com");
+    expect(matching(files, /^word\/header\d*\.xml$/).length).toBeGreaterThan(0);
+    expect(Object.keys(zip.files).filter((n) => n.startsWith("word/media/")).length).toBeGreaterThan(0);
+  });
+
+  it("is fully unbranded when both Word pieces are off", async () => {
+    await expectUnbranded(
+      await buildQuestionPaper({
+        title: "T",
+        questions: [Q],
+        branded: true,
+        brandingParts: { watermark: false, siteUrl: false },
+      })
+    );
+  });
 });

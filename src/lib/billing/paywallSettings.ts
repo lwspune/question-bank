@@ -27,6 +27,10 @@ export type PaywallSettings = {
   projectionTrialDays: number | null;
   /** Different whole past papers ANY account may download per IST day (0137). */
   mockPapersPerDay: number | null;
+  /** Download branding switches (0138); they only remove pieces, never add them. */
+  brandWatermark: boolean;
+  brandSiteUrl: boolean;
+  brandNameLine: boolean;
 };
 
 export const PAYWALL_LIMITS = ["mocks", "chapterTests", "drill", "reveals", "saves", "projection", "paperDownloads"] as const;
@@ -50,6 +54,9 @@ export const EMPTY_PAYWALL_SETTINGS: PaywallSettings = {
   freeSaveLimit: null,
   projectionTrialDays: null,
   mockPapersPerDay: null,
+  brandWatermark: true,
+  brandSiteUrl: true,
+  brandNameLine: true,
 };
 
 /** The number field and, for a lifetime count, its date field. */

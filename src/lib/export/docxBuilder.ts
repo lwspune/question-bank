@@ -1,3 +1,4 @@
+import { brandingParts, type BrandingParts } from "@/lib/export/branding";
 import {
   Document,
   ImageRun,
@@ -118,9 +119,9 @@ const WATERMARK_WIDTH_PX = 560; // ~5.8" on an 8.5" page
 
 function brandedSection<T extends { properties: typeof sectionProperties; children: unknown[] }>(
   section: T,
-  branded: boolean
+  brand: BrandingParts
 ) {
-  if (!branded) return section;
+  if (!brand.watermark && !brand.siteUrl) return section;
   const height = Math.round((WATERMARK_WIDTH_PX * WATERMARK_PX.height) / WATERMARK_PX.width);
   return {
     ...section,
@@ -128,46 +129,58 @@ function brandedSection<T extends { properties: typeof sectionProperties; childr
       ...section.properties,
       page: {
         ...section.properties.page,
-        margin: { ...section.properties.page.margin, header: BRAND_EDGE, footer: BRAND_EDGE },
+        margin: {
+          ...section.properties.page.margin,
+          ...(brand.watermark ? { header: BRAND_EDGE } : {}),
+          ...(brand.siteUrl ? { footer: BRAND_EDGE } : {}),
+        },
       },
     },
-    headers: {
-      default: new Header({
-        children: [
-          new Paragraph({
-            children: [
-              new ImageRun({
-                type: "png",
-                data: Buffer.from(WATERMARK_PNG_BASE64, "base64"),
-                transformation: { width: WATERMARK_WIDTH_PX, height },
-                floating: {
-                  horizontalPosition: {
-                    relative: HorizontalPositionRelativeFrom.PAGE,
-                    align: HorizontalPositionAlign.CENTER,
-                  },
-                  verticalPosition: {
-                    relative: VerticalPositionRelativeFrom.PAGE,
-                    align: VerticalPositionAlign.CENTER,
-                  },
-                  behindDocument: true,
-                  allowOverlap: true,
-                },
-              }),
-            ],
-          }),
-        ],
-      }),
-    },
-    footers: {
-      default: new Footer({
-        children: [
-          new Paragraph({
-            alignment: AlignmentType.CENTER,
-            children: [new TextRun({ text: BRAND_URL, size: 16, color: "808080" })],
-          }),
-        ],
-      }),
-    },
+    ...(brand.watermark
+      ? {
+          headers: {
+            default: new Header({
+              children: [
+                new Paragraph({
+                  children: [
+                    new ImageRun({
+                      type: "png",
+                      data: Buffer.from(WATERMARK_PNG_BASE64, "base64"),
+                      transformation: { width: WATERMARK_WIDTH_PX, height },
+                      floating: {
+                        horizontalPosition: {
+                          relative: HorizontalPositionRelativeFrom.PAGE,
+                          align: HorizontalPositionAlign.CENTER,
+                        },
+                        verticalPosition: {
+                          relative: VerticalPositionRelativeFrom.PAGE,
+                          align: VerticalPositionAlign.CENTER,
+                        },
+                        behindDocument: true,
+                        allowOverlap: true,
+                      },
+                    }),
+                  ],
+                }),
+              ],
+            }),
+          },
+        }
+      : {}),
+    ...(brand.siteUrl
+      ? {
+          footers: {
+            default: new Footer({
+              children: [
+                new Paragraph({
+                  alignment: AlignmentType.CENTER,
+                  children: [new TextRun({ text: BRAND_URL, size: 16, color: "808080" })],
+                }),
+              ],
+            }),
+          },
+        }
+      : {}),
   };
 }
 
@@ -192,6 +205,8 @@ export type QuestionPaperInput = {
   sectionOf?: ReadonlyMap<string, string>;
   /** PYQ Vault watermark + footer on every page — pass downloads only (see resolveExportAccess). */
   branded?: boolean;
+  /** The owner's per-piece switches (lib/export/branding); a piece left out is on. */
+  brandingParts?: Partial<BrandingParts>;
 };
 
 export type AnswerKeyInput = {
@@ -209,6 +224,8 @@ export type AnswerKeyInput = {
   sectionOf?: ReadonlyMap<string, string>;
   /** PYQ Vault watermark + footer on every page — pass downloads only (see resolveExportAccess). */
   branded?: boolean;
+  /** The owner's per-piece switches (lib/export/branding); a piece left out is on. */
+  brandingParts?: Partial<BrandingParts>;
 };
 
 
@@ -305,7 +322,7 @@ export async function buildQuestionPaper(
 
   const doc = new Document({
     ...documentDefaults,
-    sections: [brandedSection({ properties: sectionProperties, children }, !!input.branded)],
+    sections: [brandedSection({ properties: sectionProperties, children }, brandingParts(input.branded, input.brandingParts))],
   });
   return finalize(doc, builder);
 }
@@ -437,7 +454,7 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
 
   const doc = new Document({
     ...documentDefaults,
-    sections: [brandedSection({ properties: sectionProperties, children }, !!input.branded)],
+    sections: [brandedSection({ properties: sectionProperties, children }, brandingParts(input.branded, input.brandingParts))],
   });
   return finalize(doc, builder);
 }

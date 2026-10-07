@@ -5,6 +5,7 @@
  * src/lib/entitlements/admin.ts.
  */
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import type { BrandingParts } from "@/lib/export/branding";
 import { validatePlan, type Plan, type PlanInput } from "./plans";
 import { PLAN_COLUMNS, rowToPlan, type PlanRow } from "./plansQuery";
 import {
@@ -24,6 +25,9 @@ const SETTINGS_COLUMNS = {
   free_save_limit: "freeSaveLimit",
   projection_trial_days: "projectionTrialDays",
   mock_papers_per_day: "mockPapersPerDay",
+  brand_watermark: "brandWatermark",
+  brand_site_url: "brandSiteUrl",
+  brand_name_line: "brandNameLine",
 } as const satisfies Record<string, keyof PaywallSettings>;
 
 type SettingsColumn = keyof typeof SETTINGS_COLUMNS;
@@ -94,8 +98,8 @@ export async function readPaywallSettings(): Promise<{ kind: "ok"; settings: Pay
     .eq("id", true)
     .single();
   if (error) return { kind: "error", message: error.message };
-  const row = data as unknown as Record<SettingsColumn, number | string | null>;
-  const settings = {} as Record<keyof PaywallSettings, number | string | null>;
+  const row = data as unknown as Record<SettingsColumn, number | string | boolean | null>;
+  const settings = {} as Record<keyof PaywallSettings, number | string | boolean | null>;
   for (const [col, field] of Object.entries(SETTINGS_COLUMNS) as [SettingsColumn, keyof PaywallSettings][]) {
     settings[field] = row[col];
   }
@@ -123,4 +127,21 @@ export async function savePaywallSettings(
     .eq("id", true);
   if (error) return { kind: "error", message: error.message };
   return { kind: "ok", settings: decided.next };
+}
+
+/** The three download-branding switches (migration 0138), saved together. */
+export async function saveBrandingSettings(
+  parts: BrandingParts
+): Promise<{ kind: "ok"; settings: PaywallSettings } | Err> {
+  const { error } = await createSupabaseAdminClient()
+    .from("paywall_settings")
+    .update({
+      brand_watermark: parts.watermark,
+      brand_site_url: parts.siteUrl,
+      brand_name_line: parts.nameLine,
+      updated_at: new Date().toISOString(),
+    })
+    .eq("id", true);
+  if (error) return { kind: "error", message: error.message };
+  return readPaywallSettings();
 }

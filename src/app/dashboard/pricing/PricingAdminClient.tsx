@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
+import type { BrandingParts } from "@/lib/export/branding";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Dialog,
@@ -150,6 +151,18 @@ export default function PricingAdminClient({ initialPlans, initialSettings, load
     }
   }
 
+  async function saveBranding(parts: BrandingParts): Promise<void> {
+    setBusy(true);
+    const res = await callApi({ action: "saveBranding", ...parts });
+    setBusy(false);
+    if (res.ok) {
+      toast.success("Download branding saved. It applies to the next download.");
+      await refresh();
+      return;
+    }
+    toast.error(res.error || "Could not save the branding.");
+  }
+
   async function saveLimit(which: PaywallLimit, enabled: boolean, limit: number): Promise<boolean> {
     setBusy(true);
     const res = await callApi({ action: "saveSettings", which, enabled, limit });
@@ -223,9 +236,21 @@ export default function PricingAdminClient({ initialPlans, initialSettings, load
           <CardTitle className="text-base">What a free account gets</CardTitle>
         </CardHeader>
         <CardContent className="divide-y">
-          {LIMIT_ROWS.map((row) => (
+          {LIMIT_ROWS.filter((row) => !row.appliesToAll).map((row) => (
             <LimitRow key={row.which} row={row} settings={settings} busy={busy} onSave={saveLimit} />
           ))}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base">Downloads</CardTitle>
+        </CardHeader>
+        <CardContent className="divide-y">
+          {LIMIT_ROWS.filter((row) => row.appliesToAll).map((row) => (
+            <LimitRow key={row.which} row={row} settings={settings} busy={busy} onSave={saveLimit} />
+          ))}
+          <BrandingSwitches settings={settings} busy={busy} onSave={saveBranding} />
         </CardContent>
       </Card>
 
@@ -404,6 +429,8 @@ type LimitRowSpec = {
   since?: keyof PaywallSettings;
   suggested: number;
   checkbox: string;
+  /** Limits everyone, pass holders and staff too (shown in the Downloads card). */
+  appliesToAll?: true;
 };
 
 const LIMIT_ROWS: LimitRowSpec[] = [
@@ -464,6 +491,7 @@ const LIMIT_ROWS: LimitRowSpec[] = [
     field: "mockPapersPerDay",
     suggested: 5,
     checkbox: "Limit how many different past papers ANY account (pass holders and staff) can download each day; a paper's answer key is free",
+    appliesToAll: true,
   },
 ];
 
@@ -526,7 +554,65 @@ function LimitRow({
           ? "Off: unlimited for everyone, and the site quotes no number."
           : since
             ? `On since ${new Date(since).toLocaleDateString("en-IN", { dateStyle: "medium" })}: ones started before then do not count. Changing the number keeps that date; switching off and on again resets it.`
-            : `On: ${current} ${row.unit}. Pass holders and staff are never limited.`}
+            : row.appliesToAll
+              ? `On: ${current} ${row.unit}, for every account, pass holders and staff included.`
+              : `On: ${current} ${row.unit}. Pass holders and staff are never limited.`}
+      </p>
+    </form>
+  );
+}
+
+/**
+ * The three download-branding switches (migration 0138). They only remove
+ * pieces from a branded (pass or free) download; staff downloads are never
+ * branded whatever they say.
+ */
+const BRANDING_SWITCHES: { key: keyof BrandingParts; label: string }[] = [
+  { key: "watermark", label: "Watermark: a light diagonal “PYQ Vault” behind every page" },
+  { key: "siteUrl", label: "Site address: “www.pyqvault.com” in every page footer (page numbers always print)" },
+  { key: "nameLine", label: "Name line: “PYQ Vault” above the paper title (PDF only)" },
+];
+
+function BrandingSwitches({
+  settings,
+  busy,
+  onSave,
+}: {
+  settings: PaywallSettings;
+  busy: boolean;
+  onSave: (parts: BrandingParts) => Promise<void>;
+}) {
+  const [parts, setParts] = useState<BrandingParts>({
+    watermark: settings.brandWatermark,
+    siteUrl: settings.brandSiteUrl,
+    nameLine: settings.brandNameLine,
+  });
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        void onSave(parts);
+      }}
+      className="space-y-3 py-4 first:pt-0 last:pb-0"
+    >
+      <p className="text-sm font-medium">Branding on student downloads</p>
+      {BRANDING_SWITCHES.map(({ key, label }) => (
+        <label key={key} className="flex items-center gap-2 text-sm">
+          <input
+            type="checkbox"
+            checked={parts[key]}
+            onChange={(e) => setParts({ ...parts, [key]: e.target.checked })}
+            className="h-4 w-4 rounded border-input focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          />
+          {label}
+        </label>
+      ))}
+      <Button type="submit" disabled={busy}>
+        {busy && <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden />}
+        Save
+      </Button>
+      <p className="text-xs text-muted-foreground">
+        Applies to Premium Pass and free downloads from the next file on. Institute staff downloads are never branded.
       </p>
     </form>
   );
