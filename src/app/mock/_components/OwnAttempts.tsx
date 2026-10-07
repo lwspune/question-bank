@@ -25,9 +25,20 @@ import { fetchOwnAttempts } from "./ownAttemptsClient";
  * HTML. State starts empty, which is also what the server renders, so there is
  * no hydration mismatch and the anon copy stays byte-identical.
  */
-const OwnAttemptsContext = createContext<Map<string, MockAttemptSummary>>(
-  new Map()
-);
+type OwnAttempts = {
+  summaries: Map<string, MockAttemptSummary>;
+  /** True once a signed-in student's attempts have been read. Stays false for
+   *  a visitor who is signed out, which an empty map alone cannot tell apart
+   *  from a student who has never sat a mock. */
+  loaded: boolean;
+};
+
+const OwnAttemptsContext = createContext<OwnAttempts>({ summaries: new Map(), loaded: false });
+
+/** This page's attempt summaries, for components that do more than a badge. */
+export function useOwnAttempts(): OwnAttempts {
+  return useContext(OwnAttemptsContext);
+}
 
 export function OwnAttemptsProvider({
   children,
@@ -35,9 +46,7 @@ export function OwnAttemptsProvider({
   children: React.ReactNode;
 }) {
   const { signedIn, loading } = useSignedIn();
-  const [summaries, setSummaries] = useState<Map<string, MockAttemptSummary>>(
-    new Map()
-  );
+  const [value, setValue] = useState<OwnAttempts>({ summaries: new Map(), loaded: false });
 
   useEffect(() => {
     if (loading || !signedIn) return;
@@ -46,7 +55,7 @@ export function OwnAttemptsProvider({
       // `now` is read once, here, rather than inside the fold: a live attempt
       // is one whose timer has not run out, and that is a property of when the
       // page was loaded, not of when React happened to re-render.
-      if (active) setSummaries(summarizeOwnAttempts(rows, Date.now()));
+      if (active) setValue({ summaries: summarizeOwnAttempts(rows, Date.now()), loaded: true });
     });
     return () => {
       active = false;
@@ -54,7 +63,7 @@ export function OwnAttemptsProvider({
   }, [loading, signedIn]);
 
   return (
-    <OwnAttemptsContext.Provider value={summaries}>
+    <OwnAttemptsContext.Provider value={value}>
       {children}
     </OwnAttemptsContext.Provider>
   );
@@ -69,7 +78,7 @@ export function OwnAttemptsProvider({
  * on a surface that exists to be indexed.
  */
 export function MockAttemptBadge({ mockId }: { mockId: string }) {
-  const summaries = useContext(OwnAttemptsContext);
+  const { summaries } = useContext(OwnAttemptsContext);
   const badge = attemptBadge(summaries.get(mockId));
   if (!badge) return null;
 

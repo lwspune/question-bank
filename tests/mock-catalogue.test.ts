@@ -170,6 +170,19 @@ describe("groupMocksForType — past papers", () => {
     expect(groups[1].items.map((m) => m.slug)).toEqual(["a", "c"]);
   });
 
+  it("puts the later sitting of a year first when the month is known", () => {
+    // NDA sits twice a year (Apr, Sep). The exam mocks page shows the newest
+    // five and offers "the newest paper you have not sat", so 2026 (II) must
+    // come before 2026 (I). Rows without a month keep their order.
+    const groups = groupMocksForType("past-papers", [
+      mock({ slug: "i-maths", pyqYear: 2026, pyqMonth: "Apr" }),
+      mock({ slug: "i-gat", pyqYear: 2026, pyqMonth: "Apr" }),
+      mock({ slug: "ii-maths", pyqYear: 2026, pyqMonth: "Sep" }),
+      mock({ slug: "ii-gat", pyqYear: 2026, pyqMonth: "Sep" }),
+    ]);
+    expect(groups[0].items.map((m) => m.slug)).toEqual(["ii-maths", "ii-gat", "i-maths", "i-gat"]);
+  });
+
   it("surfaces an undated past paper instead of hiding it", () => {
     // A DB CHECK makes this impossible, so if one ever appears it is a defect
     // and the catalogue's job is to make it visible — not to drop the row, and
