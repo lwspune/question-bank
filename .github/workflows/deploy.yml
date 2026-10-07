@@ -122,10 +122,12 @@ jobs:
             exit 1
           fi
 
+      # --archive=tgz: the output is ~24,000 files and Vercel refuses an upload of
+      # more than 15,000 loose ones (2026-10-07); one archive goes up instead.
       # Not piped: GitHub's default shell does not fail a pipeline, so `| tee`
       # would report a failed deploy as a success. The URL is the CLI's stdout.
       - name: Deploy the prebuilt output
         run: |
-          url=$(npx --yes "$VERCEL_CLI" deploy --prebuilt --prod ${{ inputs.target == 'staged' && '--skip-domain' || '' }} --token=${{ secrets.VERCEL_TOKEN }})
+          url=$(npx --yes "$VERCEL_CLI" deploy --prebuilt --archive=tgz --prod ${{ inputs.target == 'staged' && '--skip-domain' || '' }} --token=${{ secrets.VERCEL_TOKEN }})
           echo "$url"
           echo "Deployed ${{ inputs.target }}: $url" >> "$GITHUB_STEP_SUMMARY"
