@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { fitTitle } from "@/lib/seo/title";
-import Link from "next/link";
-import { ArrowRight, Atom, BookOpen, FlaskConical, Globe, Landmark, Languages, Leaf, Newspaper, Scale, TrendingUp } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import { buildGuideSideNav } from "@/lib/guide/guidesNav";
 import { getSubjectGuides } from "@/lib/guide/guideCatalog";
+import GuideHubList from "@/app/guide/_components/GuideHubList";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 
 export const metadata: Metadata = {
@@ -36,80 +35,12 @@ export default function NdaGuideIndex() {
         <div>
           <GuideHero
             eyebrow="NDA Guides"
-            title="Strategy guides for NDA Maths, English, Physics, Chemistry, Biology, Geography, History, Polity, Economics and Current Affairs"
-            subtitle="One guide per NDA subject, ten in all, each built from that subject's own past papers rather than from the syllabus. Pick the one you're preparing."
+            title="NDA strategy guides"
+            subtitle="One guide per NDA subject, ten in all, each built from that subject's own past papers since 2017."
           />
         </div>
 
-        <ul className="mt-8 grid gap-5 sm:grid-cols-2">
-          {GUIDES.map((g) => {
-            const Icon = g.href.includes("english")
-              ? Languages
-              : g.href.includes("physics")
-                ? Atom
-                : g.href.includes("chemistry")
-                  ? FlaskConical
-                  : g.href.includes("biology")
-                    ? Leaf
-                    : g.href.includes("geography")
-                      ? Globe
-                      : g.href.includes("history")
-                        ? Landmark
-                        : g.href.includes("polity")
-                          ? Scale
-                          : g.href.includes("economics")
-                            ? TrendingUp
-                            : g.href.includes("current-affairs")
-                              ? Newspaper
-                              : BookOpen;
-            return (
-              <li key={g.href}>
-                <Link
-                  href={g.href}
-                  className="group flex h-full flex-col rounded-lg border bg-card p-6 transition-colors hover:border-primary/40 hover:bg-accent"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg icon-tile">
-                      <Icon className="h-5 w-5" aria-hidden />
-                    </span>
-                    <div className="min-w-0">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-primary">
-                        {g.exam}
-                      </p>
-                      <h2 className="text-lg font-semibold tracking-tight">
-                        {g.title}
-                      </h2>
-                    </div>
-                  </div>
-                  <p className="mt-4 font-serif text-sm leading-relaxed text-muted-foreground">
-                    {g.blurb}
-                  </p>
-                  <div className="mt-4 flex flex-wrap items-center gap-2 text-xs">
-                    <span className="inline-flex items-center rounded-full border bg-background px-2 py-0.5 font-medium tabular-nums">
-                      {g.qCount.toLocaleString("en-IN")} questions
-                    </span>
-                    <span className="text-muted-foreground">{g.yearWindow}</span>
-                  </div>
-                  <ul className="mt-4 space-y-1.5 font-serif text-sm text-muted-foreground">
-                    {g.highlights.map((h) => (
-                      <li key={h} className="flex gap-2">
-                        <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-primary/60" />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-primary">
-                    Open the guide
-                    <ArrowRight
-                      className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-                      aria-hidden
-                    />
-                  </span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <GuideHubList guides={GUIDES} examDisplay="NDA" restTitle="Paper II · General Ability" />
 
         <section className="mt-12 rounded-lg border bg-muted/30 p-5">
           <h2 className="text-base font-semibold tracking-tight">
