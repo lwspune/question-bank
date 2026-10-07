@@ -822,7 +822,8 @@ export type ActiveTab =
   | "mock"
   | "books"
   | "blog"
-  | "about";
+  | "about"
+  | "fix";
 
 /**
  * Maps a pathname to the primary-nav tab that owns it. Returns null for
@@ -853,6 +854,9 @@ export function getActiveTab(pathname: string): ActiveTab | null {
   // question the page exists to answer, and a Footer link alone was where
   // nobody looked.
   if (matchesSegment(path, "/about")) return "about";
+  // Fix — /drill. Its tab is drawn only for graduate students (in Board's
+  // slot, see lib/nav/fifthTab); for everyone else the route lights nothing.
+  if (matchesSegment(path, "/drill")) return "fix";
   return null;
 }
 
