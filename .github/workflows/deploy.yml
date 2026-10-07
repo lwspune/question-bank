@@ -60,12 +60,15 @@ jobs:
           cache: npm
       - run: npm ci
 
-      # Next's build cache (compiled modules), kept between runs as Vercel does.
+      # Compiled modules only (.next/cache/webpack), never the whole .next/cache:
+      # its fetch-cache holds data the build read from the database, some of it
+      # with the service key, and in a public repo a pull request's workflow can
+      # read this repo's Actions caches.
       - uses: actions/cache@v4
         with:
-          path: .next/cache
-          key: nextcache-${{ hashFiles('package-lock.json') }}-${{ github.sha }}
-          restore-keys: nextcache-${{ hashFiles('package-lock.json') }}-
+          path: .next/cache/webpack
+          key: nextwebpack-${{ hashFiles('package-lock.json') }}-${{ github.sha }}
+          restore-keys: nextwebpack-${{ hashFiles('package-lock.json') }}-
 
       - name: Pull Vercel project settings and environment
         run: npx --yes "$VERCEL_CLI" pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
@@ -102,6 +105,20 @@ jobs:
         run: |
           if grep -rlF "[SENSITIVE]" .vercel/output; then
             echo "::error::[SENSITIVE] found in the built output (files above). Not deploying."
+            exit 1
+          fi
+
+      # The service key must never be IN the output: the server reads it from
+      # its environment at runtime. Checked by value on every deploy, so "it is
+      # not baked in" is a fact of this build, not an assumption. Prints file
+      # names only.
+      - name: No service key in the built site
+        env:
+          SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          if [ -z "$SERVICE_KEY" ]; then echo "::error::SUPABASE_SERVICE_ROLE_KEY secret missing"; exit 1; fi
+          if grep -rlF -- "$SERVICE_KEY" .vercel/output; then
+            echo "::error::The service key's value is in the built output (files above). Not deploying."
             exit 1
           fi
 
