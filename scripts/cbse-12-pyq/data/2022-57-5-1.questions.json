@@ -1,0 +1,128 @@
+{
+  "paper": "57/5/1",
+  "year": 2022,
+  "pattern": "term2_bio",
+  "_transcription": "PAGE MAP: the booklet is 16 rendered pages (idx 0-15 = printed folios 1-16), every one accounted for. idx 0 = bilingual cover (Series AABB5/5, SET No. 1, Q.P. Code 57/5/1, BIOLOGY (Theory), 2 hours, 35 marks, 15 printed pages, 13 questions). ENGLISH = the EVEN indices 2, 4, 6, 8, 10, 12, 14 (folios 3-15). HINDI = the ODD indices 1, 3, 5, 7, 9, 11, 13. The tops of all seven odd indices open in Hindi (idx 1 Hindi instructions and Q1-3, idx 3 Hindi Q4, idx 5 Hindi Q6, idx 7 Hindi Section B / Q7, idx 9 Hindi Q10(b), idx 11 Hindi Section C / Q13(a), idx 13 Hindi Q13(b)), so no English overflow onto an odd page and no parity inversion. idx 14 is English (Q13(b) in full); idx 15 (folio 16) is blank apart from a rule and the footer, checked at full size. The paper is born-digital and its text layer was diffed against the vision read: the two agree on every English line, but the text layer carries none of the figure labels (the S.T.P. boxes, the graph axes, the pie chart, the pBR322 map, the bar graph), so all of those were read off the page. Decimals: the paper prints ORDINARY full stops ('2.5 mg/kg', byte 0x2E in the text layer), so they are left as printed; the scheme prints '1·15' with a raised dot, which is the scheme's own typography. Structure as printed: Section A Q1-6 @2, Section B Q7-12 @3, Section C Q13 case-based @5 = 35. Instruction (iv) says internal choices exist but gives no count; the roster was built from the scheme's bare ORs and each confirmed against a printed OR on the paper: Q3, Q6, Q10 and Q13 (four alternatives). The '//' inside the scheme's Q9 answer is an alternative FORM of the answer (a PCR diagram), not an internal choice. Q13(a) is a case study with three sub-parts, one row each, carrying the scheme's split 1/2/2. Its OR, Q13(b), replaces the WHOLE case study with a DIFFERENT case study (an RNAi passage with its own bar graph and sub-parts (i)-(iii), scheme split 1/1/3), so it is ONE row Q13b, alternative to Q13ai, with its own passage in context and its own setId (CS2), the shape of 2022 57/2/1 Q13b. That RNAi passage is a RE-AUTHORED version of 57/2/1's (different wording, sub-parts and graph legend), so it was transcribed fresh and will not dedup. Q4's two boxed flow diagrams (municipal sewage through two treatment boxes to a river) are carried as text lines joined by arrows per SCIENCE_ADDENDUM 7; the drawn building and river carry no data. Quotes straight as printed; scientific names plain (Parthenium and Cynomolgus print bold, Meloidogyne incognitia bold italic). Typos kept as printed: Q3(a) 'cocain', Q10(b)(ii) 'Extinction of species across taxa are not random.', Q13(a) passage 'Cloning of genes, play' and 'one such engineered vectors', Q13(b) passage 'An experiment was carried to study', Q13(b)(i) 'brings an effect', Q13(b)(iii) 'incognitia' (NCERT: Meloidogyne incognita). Two questions ask the student to draw (Q10(a)(i) the species-area graph, Q13(a)(iii) the EcoRI fragments), so two _drawFigure. No question examines content the rationalised NCERT book removed, so no _outOfSyllabus.",
+  "questions": [
+    {
+      "ref": "Q1", "questionNumber": "1", "section": "A", "marks": 2, "format": "subjective",
+      "chapter": "Human Health and Disease", "subtopic": "Common Diseases in Humans", "difficulty": "EASY",
+      "stem": "Ringworm is one of the most common infectious fungal disease in humans. Name any two genera of fungi which cause ringworm and state any of its two symptoms."
+    },
+    {
+      "ref": "Q2", "questionNumber": "2", "section": "A", "marks": 2, "format": "subjective",
+      "chapter": "Microbes in Human Welfare", "subtopic": "Microbes in Production of Biogas", "difficulty": "MODERATE",
+      "stem": "Can we use slurry of human excreta instead of cowdung slurry to produce biogas in a typical biogas plant? Support your answer giving reasons.",
+      "_flag": "The scheme expects 'No' and accepts 'in human excreta Methanogens or Methanobacteria are absent' as the reason. That reason is too strong: methanogens (e.g. Methanobrevibacter smithii) do live in the human gut, and biogas plants fed with human excreta exist. The board's answer rests on the NCERT point that cattle dung is rich in methanogens. The solution gives the expected answer and brackets the over-strong reason."
+    },
+    {
+      "ref": "Q3a", "questionNumber": "3 (a)", "section": "A", "marks": 2, "format": "subjective",
+      "chapter": "Human Health and Disease", "subtopic": "Drugs and Alcohol Abuse", "difficulty": "EASY",
+      "stem": "State the mode of action of cocain on human body. Write the scientific name of the source plant it is obtained from."
+    },
+    {
+      "ref": "Q3b", "questionNumber": "3 (b)", "section": "A", "marks": 2, "format": "subjective",
+      "chapter": "Human Health and Disease", "subtopic": "Drugs and Alcohol Abuse", "difficulty": "EASY",
+      "_alternativeTo": "Q3a",
+      "stem": "Enumerate four most common warning signs of drug and alcohol abuse amongst the youth."
+    },
+    {
+      "ref": "Q4", "questionNumber": "4", "section": "A", "marks": 2, "format": "subjective",
+      "chapter": "Microbes in Human Welfare", "subtopic": "Microbes in Sewage Treatment", "difficulty": "MODERATE",
+      "stem": "Study the given diagram of Sewage Treatment Plant (S.T.P.) and answer the questions that follow :\nS.T.P. (Sewage Treatment Plant) (A): Municipal Sewage \\(\\rightarrow\\) (W) BIOLOGICAL TREATMENT \\(\\rightarrow\\) (X) SEDIMENTATION AND FILTRATION \\(\\rightarrow\\) River\nS.T.P. (Sewage Treatment Plant) (B): Municipal Sewage \\(\\rightarrow\\) (Y) SEQUENTIAL FILTRATION \\(\\rightarrow\\) (Z) BIOLOGICAL TREATMENT \\(\\rightarrow\\) River\n(a) Which one of the two 'S.T.P.' (A) or (B) will be more effective in treating the human excreta in the municipal waste?\n(b) Write the steps followed in carrying the treatment of the sewage in step (Z), once the BOD of sewage is reduced significantly till it is passed on to the \"anaerobic sludge digesters\".",
+      "_figure": "DECORATIVE: two flow diagrams, each a drawn building labelled Municipal Sewage feeding two boxes in sequence and then a drawn river; every box label, its letter (W, X, Y, Z) and the order of the boxes are carried as text in the stem, so the drawing adds nothing. Page idx 4."
+    },
+    {
+      "ref": "Q5", "questionNumber": "5", "section": "A", "marks": 2, "format": "subjective",
+      "chapter": "Organisms and Populations", "subtopic": "Population Attributes", "difficulty": "EASY",
+      "stem": "Write the best method to measure the population density of a single Banyan tree in comparison to 20 Parthenium weeds in a forest by an ecologist. Explain and justify your answer."
+    },
+    {
+      "ref": "Q6a", "questionNumber": "6 (a)", "section": "A", "marks": 2, "format": "subjective",
+      "chapter": "Organisms and Populations", "subtopic": "Population Interactions", "difficulty": "EASY",
+      "stem": "(i) Write the observations made at the end of Connell's field experiment on barnacles on the rocky sea coasts of Scotland.\n(ii) Name any two categories of organisms that in general are adversely affected by competition."
+    },
+    {
+      "ref": "Q6b", "questionNumber": "6 (b)", "section": "A", "marks": 2, "format": "subjective",
+      "chapter": "Biodiversity and Conservation", "subtopic": "Species Numbers and Patterns of Biodiversity", "difficulty": "MODERATE",
+      "_alternativeTo": "Q6a",
+      "stem": "The graphs (X) and (Y) given below depict the diurnal variations in the solar radiations in the month of June (Summer) and in December (Winters) :\n(i) Which of the two graphs depicts tropical region and temperate regions respectively ?\n(ii) Which of the two regions (X) or (Y) will show high biological diversity and why?",
+      "_figure": "REQUIRED: four small graphs side by side, each of Solar radiation (y, arrow upward) against Time of the day (x, ticks 1 hr., 12, 24 hr.), each with one hump-shaped curve peaking at 12; the first two are captioned June 22 and Dec. 22 under the label (X), the last two June 22 and Dec. 22 under the label (Y). How tall each hump is, and so how much each region's radiation changes between June and December, is what part (i) asks the student to read, so it is withheld here. Page idx 6.",
+      "_cbseVoided": "Note: Since graphs shown are not conclusive enough for drawing any interpretation, so one mark to be given to students, if attempted.",
+      "_flag": "The void covers part (i) only (1 of the 2 marks); part (ii) is marked normally."
+    },
+    {
+      "ref": "Q7", "questionNumber": "7", "section": "B", "marks": 3, "format": "subjective",
+      "chapter": "Human Health and Disease", "subtopic": "AIDS", "difficulty": "EASY",
+      "stem": "'An HIV patient normally doesn't die of 'AIDS', but death is caused due to many other infections.' Do you agree with the statement ? Give explanatory reasons in support of your answer."
+    },
+    {
+      "ref": "Q8", "questionNumber": "8", "section": "B", "marks": 3, "format": "subjective",
+      "chapter": "Human Health and Disease", "subtopic": "Immunity", "difficulty": "EASY",
+      "stem": "(a) Why do doctors have to carry many tests for selecting a person to be a suitable donor for someone who is going for an organ transplant and not take the organ from just anybody ? Explain giving reason.\n(b) Name the drug a patient who has undergone a successful organ transplant, has to take all his/her life."
+    },
+    {
+      "ref": "Q9", "questionNumber": "9", "section": "B", "marks": 3, "format": "subjective",
+      "chapter": "Biotechnology: Principles and Processes", "subtopic": "Isolation, Cutting and Amplification of DNA", "difficulty": "EASY",
+      "stem": "A cell free method of amplifying DNA first developed in the mid 1980's revolutionized the field of biotechnology. Name the method and explain the basic steps of the technique involved."
+    },
+    {
+      "ref": "Q10a", "questionNumber": "10 (a)", "section": "B", "marks": 3, "format": "subjective",
+      "chapter": "Biodiversity and Conservation", "subtopic": "Species Numbers and Patterns of Biodiversity", "difficulty": "MODERATE",
+      "stem": "Given below is an equation describing the Species-Area relationship between species richness and area for a wide variety of taxa as angiosperm plants, birds, bats etc.\n\\(S = CA^{Z}\\)\n(i) Give a graphical representation of the given equation showing Species-Area relationship.\n(ii) What does 'S' represent in the given equation ?\n(iii) What is the value of 'Z' (regression coefficient) for frugivorous birds and mammals in the tropical forests of different continents ?",
+      "_drawFigure": "the species-area graph: species richness (S) on the y-axis against area (A) on the x-axis, a curve rising steeply and then levelling off (a rectangular hyperbola) labelled S = CA^Z; the log-log form, a straight line labelled log S = log C + Z log A, may also be shown."
+    },
+    {
+      "ref": "Q10b", "questionNumber": "10 (b)", "section": "B", "marks": 3, "format": "subjective",
+      "chapter": "Biodiversity and Conservation", "subtopic": "Loss of Biodiversity", "difficulty": "MODERATE",
+      "_alternativeTo": "Q10a",
+      "stem": "Given below is a 'pie chart' representing the global biodiversity : proportionate number of species of major taxa.\n(i) Identify (X) and (Y) in the given 'pie chart'.\n(ii) \"Extinction of species across taxa are not random.\" Which group amongst the vertebrates is more vulnerable to extinction.\n(iii) Give one example each of recent extinctions of species in Russia, Mauritius and Australia.",
+      "_figure": "REQUIRED: a pie chart headed Vertebrates with five shaded slices, one labelled Mammals, three labelled X, Y and Z, and one unlabelled. Which slice is largest and which is small, and so which taxon each letter stands for, is decided by the drawing, so the slice sizes and positions are withheld here. Page idx 10."
+    },
+    {
+      "ref": "Q11", "questionNumber": "11", "section": "B", "marks": 3, "format": "subjective",
+      "chapter": "Biotechnology and its Applications", "subtopic": "Biotechnological Applications in Medicine", "difficulty": "MODERATE",
+      "stem": "(a) How does a gene therapy involving direct modification of the cells, in order to achieve a therapeutic goal is used in the treatment of ADA deficiency ? Explain.\n(b) A host cell must be made competent, before it is able to receive an rDNA. Justify.",
+      "_flag": "Part (b) (1 of the 3 marks) is on making the host competent, which is Biotechnology: Principles and Processes / Cloning Vectors and Competent Host; the row is filed on the 2-mark gene-therapy part (a)."
+    },
+    {
+      "ref": "Q12", "questionNumber": "12", "section": "B", "marks": 3, "format": "subjective",
+      "chapter": "Biodiversity and Conservation", "subtopic": "Biodiversity Conservation", "difficulty": "EASY",
+      "stem": "(a) Enlist two criteria that are used to identify a region for maximum protection as 'Biodiversity hotspots'.\n(b) Name any two \"hotspot\" regions in our country."
+    },
+    {
+      "ref": "Q13ai", "questionNumber": "13 (a) (i)", "section": "C", "marks": 1, "format": "subjective",
+      "chapter": "Biotechnology: Principles and Processes", "subtopic": "Cloning Vectors and Competent Host", "difficulty": "EASY",
+      "setId": "2022-57-5-1-CS1",
+      "context": "Cloning of genes, play a very significant role in genetic engineering, helping the transfer of desirable foreign genes into different hosts. The scientists, to make this process easier and effective are creating engineered vectors in such a way that they help easy linking of foreign DNA and selection of recombinants from non recombinants. 'pBR322' is one such engineered vectors developed by scientists. A diagram of an engineered vector pBR322 is given below :",
+      "stem": "Name the host for this cloning vector.",
+      "_figure": "ILLUSTRATIVE: the case study's circular map of pBR322, attached so the passage's 'diagram ... given below' is not left dangling; this sub-part is answerable without it. Page idx 12."
+    },
+    {
+      "ref": "Q13aii", "questionNumber": "13 (a) (ii)", "section": "C", "marks": 2, "format": "subjective",
+      "chapter": "Biotechnology: Principles and Processes", "subtopic": "Cloning Vectors and Competent Host", "difficulty": "MODERATE",
+      "setId": "2022-57-5-1-CS1",
+      "context": "Cloning of genes, play a very significant role in genetic engineering, helping the transfer of desirable foreign genes into different hosts. The scientists, to make this process easier and effective are creating engineered vectors in such a way that they help easy linking of foreign DNA and selection of recombinants from non recombinants. 'pBR322' is one such engineered vectors developed by scientists. A diagram of an engineered vector pBR322 is given below :",
+      "stem": "Identify 'Rop' and 'Ori' in the diagram from 'U', 'V', 'W', 'X', 'Y' and 'Z'. Write their functions.",
+      "_figure": "REQUIRED: a circular map labelled pBR322 in the centre, the ring divided into shaded segments, with printed labels Cla I and Hind III (top), Pvu I and Pst I (upper left), tet^R inside the ring (upper right) and Sal I (right), and six quoted letters 'U', 'V', 'W' (segments inside the ring) and 'X', 'Y', 'Z' (sites marked by leader lines outside it). Which letter marks which segment or site, and so which is rop and which is ori, is decided by the drawing and is withheld here. Page idx 12."
+    },
+    {
+      "ref": "Q13aiii", "questionNumber": "13 (a) (iii)", "section": "C", "marks": 2, "format": "subjective",
+      "chapter": "Biotechnology: Principles and Processes", "subtopic": "Restriction Enzymes", "difficulty": "MODERATE",
+      "setId": "2022-57-5-1-CS1",
+      "context": "Cloning of genes, play a very significant role in genetic engineering, helping the transfer of desirable foreign genes into different hosts. The scientists, to make this process easier and effective are creating engineered vectors in such a way that they help easy linking of foreign DNA and selection of recombinants from non recombinants. 'pBR322' is one such engineered vectors developed by scientists. A diagram of an engineered vector pBR322 is given below :",
+      "stem": "Draw the fragments that will be formed by the action of 'Z' (marked in the diagram) on the specific site of the DNA segment given below :\n5' --- GTACGAATTCCTGA---3'\n3'---CATGCTTAAGGACT---5'",
+      "_figure": "REQUIRED: the case study's pBR322 map, where the letter 'Z' is defined: a leader line from 'Z' to a restriction site on the ring. Which enzyme's site 'Z' marks decides where the given segment is cut, so its position on the ring is withheld here. Page idx 12.",
+      "_drawFigure": "the two double-stranded fragments left when EcoRI cuts the given segment between G and A of GAATTC on each strand: 5'---GTACG 3' over 3'---CATGCTTAA 5', and 5' AATTCCTGA---3' over 3' GGACT---5', with the single-stranded AATT overhangs (sticky ends) shown and the 5' and 3' ends labelled."
+    },
+    {
+      "ref": "Q13b", "questionNumber": "13 (b)", "section": "C", "marks": 5, "format": "subjective",
+      "chapter": "Biotechnology and its Applications", "subtopic": "Biotechnological Applications in Agriculture", "difficulty": "MODERATE",
+      "_alternativeTo": "Q13ai",
+      "setId": "2022-57-5-1-CS2",
+      "context": "RNA interference (RNAi) holds great potential as a therapeutic agent for the treatment of human diseases and as biocontrol agents in controlling pests in the field of agriculture. An experiment was carried to study the use of 'RNAi' for the potential treatment of disorders of cholesterol metabolism. Some people possess genetic mutations with elevated levels of ApoB gene which predisposes them to coronary artery diseases.\n\nLowering the amount of ApoB can reduce the number of lipoproteins and lower the blood cholesterol.\n\nTracy Zimmerman and her colleagues used RNAi in 2006 to reduce the level of ApoB in non human primates Cynomolgus monkeys.\n\nOne group of monkeys were given RNAi treatment (small interfering RNAs, SiRNAs) (doses 1 mg/kg SiRNAs), second group of monkeys were given RNAi treatment (doses 2.5 mg/kg SiRNAs) and third group of monkeys were injected with saline.\n\nThe results of the study are depicted in the graph below :",
+      "stem": "(i) How does the treatment with 2.5 mg/kg brings an effect on cholesterol metabolism when compared from 24 hours and 144 hours.\n(ii) Write any two natural sources from where dsRNA molecule could be obtained for silencing the specific mRNA.\n(iii) How is RNAi used in controlling the infection on the roots of tobacco plants by the nematode Meloidogyne incognitia.",
+      "_figure": "REQUIRED: a bar graph of Relative serum cholesterol (% predose) (y, 0 to 120 in steps of 20) against Time (hours) at 24, 48, 144 and 264 (x), with three bars at each time keyed Saline - X (diagonal hatching), 1 mg/kg - Y (dotted outline) and 2.5 mg/kg - Z (solid grey). The bar heights, and so how the 2.5 mg/kg bar changes between 24 and 144 hours, are what part (i) asks the student to read, so they are withheld here. Page idx 14."
+    }
+  ]
+}

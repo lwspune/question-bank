@@ -691,3 +691,78 @@ see §3's `REQUIRED` guard, which exists precisely because two genuinely
 different questions can carry a byte-identical hash when the discriminator is in
 the drawing. Those must be adjudicated in `data/hash-collisions.json` rather
 than deduped on sight.
+
+---
+
+## 7. BIOLOGY (code 044, papers `57/s/n`) — measured 2026-10-07
+
+Everything above still applies. This section is what Biology does differently,
+measured on the 72-paper archive and on the pilot paper (2024 57/1/1, 44 rows).
+Per §0: each line says what it was measured on.
+
+**Inventory.** 72 regular papers: 2022 15, **2023 only 9** (CBSE set three
+series that year: 57/1, 57/3, 57/5), 2024 15, 2025 18, 2026 15. Every one has an
+English marking scheme; none is merged. `papers.ts --subject=biology` declares
+four files by name (`excludedSources` in `config.ts`): the three SCANNED twins
+of 2024 57/5/1-3 (same questions as the born-digital copies, not byte-identical)
+and one 2026 Hindi scheme whose Devanagari filename arrives garbled.
+
+**Patterns.** 2023-2026 are ALL `full70` (2023 included, unlike Physics and
+Chemistry). 2022 is `term2_bio`: **13** questions, Q1-6 at 2 marks, Q7-12 at 3,
+Q13 a 5-mark written case study. No MCQs in 2022.
+
+**The key.** Q1-12 MCQ and Q13-16 assertion-reason, keyed in the scheme's text
+as `(C) / Maize`. 2024 schemes print **no "SECTION A" heading**; `keys.ts` now
+reads that block under the "MARKING SCHEME" header (keys.ts: 43 of 57 non-2022
+papers machine-read on first run). Still confirm the 16 letters on the scheme
+IMAGE: the pilot's two reads agreed 16 of 16.
+
+**Text layer.** Biology papers carry few symbols, so a born-digital paper's text
+layer is a usable DRAFT, but it drops table cells, labels beside figures, en
+dashes, beta, raised dots and whole lines. Check every row on the page.
+2022 and 2025 papers are pure scans.
+
+**Typography — fixed, so sibling sets hash the same:**
+- **Quotes STRAIGHT** (`'A'`, `'T-DNA'`), whatever the paper prints. The
+  committed Physics and Chemistry rows mix curly and straight; Biology follows
+  the 564 Biology textbook rows on the same chapters.
+- **Scientific names plain text** (Agrobacterium tumefaciens), no italics, in
+  stems and solutions: the textbook rows are plain, and a stem's bytes are hashed.
+- Subscripts and genetics as in `scripts/ncert/BIOLOGY_TRANSCRIPTION_BRIEF.md`:
+  `\(\text{F}_2\)`, `\(\times\)`, alleles `\(\text{X}^{\text{c}}\)`. Raised dots
+  as §1: `\(2{\cdot}4\)`. A printed en dash stays as printed.
+- Tables (match-the-columns, identify A-F) are GFM pipe tables in the stem.
+- A flow diagram made only of boxed text is carried as text lines joined by
+  `\(\downarrow\)`, not as a figure.
+
+**Rows.** Same shape as Chemistry: one row per question (sub-parts (i)/(ii)
+inside the stem), every OR alternative its own row, case-study sub-parts one row
+each with the passage in `context`. The pilot found an OR in all three Section-E
+questions although instruction (viii) names only Sections B, C and D: build the
+roster from the scheme's bare ORs (§5b), not from the instruction.
+
+**Figures are common and they ARE the question.** The pilot had five drawings:
+a polynucleotide schematic, Lamarck's giraffes, a biomass pyramid, a bar graph
+and a replica-plating diagram. Withhold what the drawing decides (which labels
+the dotted line joins; which pyramid level is wider) per §4. Attach the case
+study's figure to EVERY sibling (REQUIRED where it decides the answer,
+ILLUSTRATIVE elsewhere). Two of five default crops were wrong and were fixed
+with `rect` picks in `data/figure-picks.json`: a level label printed just
+outside the raster, and a scanned raster that carries the stem's last line.
+**Look at every crop.**
+
+**Solutions.**
+- End every MCQ solution by naming the option WITH its letter, as
+  SOLUTION_BRIEF §4 says: `So the answer is option (C) Maize.`; for
+  assertion-reason, `So the Assertion is true while the Reason is false, which is
+  option (C).` Then `prescreen-letters.ts` has a letter to check (the pilot:
+  16 of 16 agree). **Measured: the committed Physics and Chemistry solutions
+  conclude no letter, so the screen reads "(none)" on every one of their MCQs**
+  (2024 56/1/1: 16 of 16; 2025 55/1/1: 26 of 26) and has checked nothing there.
+- Biology answer style follows the textbook brief: point-wise, key terms in
+  **bold**, the marking scheme's value points all present.
+- A scheme slip that changes meaning gets a bracket (pilot Q20(b): the scheme
+  says eradication of pests is "not only possible", NCERT says "impossible").
+- An unconditional award (pilot Q30(b), "Award 2 marks to each student") is
+  `_cbseVoided`, and the solution says so in one opening line, then still
+  teaches the point.
