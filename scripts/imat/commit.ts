@@ -36,7 +36,7 @@ async function main() {
   const args = process.argv.slice(2);
   const year = Number(args.find((a) => !a.startsWith("--")));
   const apply = args.includes("--apply");
-  if (!(YEARS as readonly number[]).includes(year)) throw new Error(`year must be one of ${YEARS.join(", ")}`);
+  if (!YEARS.includes(year)) throw new Error(`year must be one of ${YEARS.join(", ")}`);
 
   const { sourceFile, questions } = loadPaper(year);
   const errors = validatePaper(year, questions);

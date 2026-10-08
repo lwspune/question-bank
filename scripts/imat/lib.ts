@@ -40,7 +40,16 @@ export const MUR_SHAPE: readonly ShapeBlock[] = [
 ];
 
 /** Confirmed shapes. A Cambridge year is added once read off its paper. */
+/** Cambridge 2014-2022 (60 q): General Knowledge and Logical Reasoning 22 · Biology 18 · Chemistry 12 · Physics and Mathematics 8. */
+const CAMBRIDGE_60: readonly ShapeBlock[] = [
+  { sections: ["reading", "logic"], count: 22 },
+  { sections: ["biology"], count: 18 },
+  { sections: ["chemistry"], count: 12 },
+  { sections: ["physmath"], count: 8 },
+];
+
 export const PAPER_SHAPES: Record<number, readonly ShapeBlock[]> = {
+  2016: CAMBRIDGE_60,
   2023: MUR_SHAPE,
   2024: MUR_SHAPE,
   2025: MUR_SHAPE,

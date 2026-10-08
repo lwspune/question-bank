@@ -13,7 +13,7 @@
 import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import katex from "katex";
-import { buildRow, validatePaper, type ImatQuestion } from "./lib";
+import { PAPER_SHAPES, buildRow, validatePaper, type ImatQuestion } from "./lib";
 
 // Inline \( ... \) and display \[ ... \] zones, as the site renders them.
 const ZONE = new RegExp(String.raw`\\\((.+?)\\\)|\\\[(.+?)\\\]`, "gs");
@@ -36,7 +36,8 @@ export function mathErrors(q: ImatQuestion): string[] {
   return out;
 }
 
-export const YEARS = [2023, 2024, 2025, 2026] as const;
+/** Every year whose shape is confirmed (lib.ts PAPER_SHAPES). */
+export const YEARS: readonly number[] = Object.keys(PAPER_SHAPES).map(Number).sort((a, b) => a - b);
 
 export function loadPaper(year: number): { sourceFile: string; questions: ImatQuestion[] } {
   const file = join(__dirname, "data", `${year}.questions.json`);
