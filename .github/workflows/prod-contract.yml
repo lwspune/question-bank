@@ -63,3 +63,9 @@ jobs:
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: npm run notes:lint
+      # The live homepage and /browse must never say the bank holds 0
+      # questions (2026-10-08: a failed load was cached as zeros for 9+ hours
+      # while every build and test passed). Two GETs, no secrets.
+      - name: Live pages show real question counts
+        if: ${{ !cancelled() }}
+        run: npm run smoke:live-counts
