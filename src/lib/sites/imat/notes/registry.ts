@@ -68,6 +68,11 @@ import {
   IMAT_CHE_ORG_NOTES,
   IMAT_CHE_ORG_SLUGS,
 } from "./chemistry/organic-chemistry";
+import {
+  IMAT_BIO_HAP_CHAPTER,
+  IMAT_BIO_HAP_NOTES,
+  IMAT_BIO_HAP_SLUGS,
+} from "./biology/human-anatomy-physiology";
 
 export type ImatNotesSubject = {
   /** URL segment, e.g. "imat-biology". */
@@ -127,6 +132,7 @@ export const IMAT_NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   entry("imat-biology", "cell-division-reproduction", IMAT_BIO_CDR_CHAPTER, IMAT_BIO_CDR_NOTES, IMAT_BIO_CDR_SLUGS),
   entry("imat-biology", "evolution-ecology", IMAT_BIO_EVO_CHAPTER, IMAT_BIO_EVO_NOTES, IMAT_BIO_EVO_SLUGS),
   entry("imat-biology", "microorganisms-biotechnology", IMAT_BIO_MBT_CHAPTER, IMAT_BIO_MBT_NOTES, IMAT_BIO_MBT_SLUGS),
+  entry("imat-biology", "human-anatomy-physiology", IMAT_BIO_HAP_CHAPTER, IMAT_BIO_HAP_NOTES, IMAT_BIO_HAP_SLUGS),
   // Chemistry
   entry("imat-chemistry", "organic-chemistry", IMAT_CHE_ORG_CHAPTER, IMAT_CHE_ORG_NOTES, IMAT_CHE_ORG_SLUGS),
   // Physics
