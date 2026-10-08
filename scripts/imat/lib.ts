@@ -100,11 +100,13 @@ export const PAPER_SHAPES: Record<number, readonly ShapeBlock[]> = {
 export type KeyMode = "printed-a" | "printed-key";
 
 /**
- * 2021 and 2022 were set by Cambridge, but the only copies we hold (from one
- * prep provider, watermarked) are laid out the ministry's way: the correct
- * answer is option A in every question. Neither prints a key or says so, so
- * this rests on solving each of their 60 questions (every one came out A,
- * in both years), recorded in data/<year>.questions.json.
+ * 2021 and 2022 were set by Cambridge, but the papers were published by the
+ * ministry (MUR) the way it publishes its own: the correct answer is option A
+ * in every question ("La risposta giusta è sempre la A"). Our copies are that
+ * publication with a prep provider's watermark added; question for question
+ * they match an unmodified copy (testbuddy.it). They print no key line, so
+ * the convention was also confirmed by solving all 120 questions: every one
+ * came out A.
  */
 const PRINTED_A_YEARS: ReadonlySet<number> = new Set([2021, 2022]);
 

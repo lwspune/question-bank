@@ -24,10 +24,12 @@ only, never published**: `commit.ts` writes them PRIVATE with `publish_blocked`
 set (migration 0141), and the database refuses PUBLIC while it is set.
 - 2011-2020: the printed answer key on the last page (`printed-key`, options in
   printed order, `answer` per question).
-- **2021 and 2022**: the copies we hold come from a prep provider (watermarked)
-  that prints every answer as option A and has no key. Every question was
-  solved and every one came out A, so they are `printed-a` (`PRINTED_A_YEARS`
-  in `lib.ts`). 2022 Q10 is flawed as printed (true minimum 18, not an option).
+- **2021 and 2022**: published by the ministry with the answer at option A in
+  every question (its convention: "la risposta giusta è sempre la A"), so they
+  are `printed-a` (`PRINTED_A_YEARS` in `lib.ts`). Our copies carry a prep
+  provider's watermark but match an unmodified copy (testbuddy.it) question for
+  question; all 120 were also solved and every one came out A. 2022 Q10 is
+  flawed as printed (true minimum 18, not an option).
 - Shapes differ by year (`PAPER_SHAPES` in `lib.ts`): 2011 and 2012 have 80
   questions, 2013 and 2014 their own splits, 2015-2021 22/18/12/8, 2022
   20/15/15/10. A first block mixing general knowledge and logic is split per
