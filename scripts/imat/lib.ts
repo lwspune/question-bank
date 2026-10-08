@@ -49,6 +49,13 @@ const CAMBRIDGE_60: readonly ShapeBlock[] = [
 ];
 
 export const PAPER_SHAPES: Record<number, readonly ShapeBlock[]> = {
+  // 2014 alone: 23 logic + 4 general knowledge, 15 biology, 10 chemistry, 8 physics and maths.
+  2014: [
+    { sections: ["reading", "logic"], count: 27 },
+    { sections: ["biology"], count: 15 },
+    { sections: ["chemistry"], count: 10 },
+    { sections: ["physmath"], count: 8 },
+  ],
   2015: CAMBRIDGE_60,
   2016: CAMBRIDGE_60,
   2017: CAMBRIDGE_60,
