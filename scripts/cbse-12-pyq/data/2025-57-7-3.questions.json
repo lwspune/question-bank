@@ -1,0 +1,316 @@
+{
+  "paper": "57/7/3",
+  "year": 2025,
+  "pattern": "full70",
+  "_transcription": "Every row read by vision at full size; the question paper carries a born-digital text layer (23 pages, English prose intact but it drops subscripts, primes and every Hindi glyph), used only as a draft. ENGLISH PAGES = the EVEN 0-based indices 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22 (printed folios 3-23). idx 0 is the bilingual cover (Series Y7XWZ, SET-3, Q.P. Code 57/7/3, BIOLOGY (Theory), 3 hours, 70 marks, 23 printed pages); idx 1 is the Hindi instructions; every ODD index 3-21 opens with a Hindi block (checked on the contact sheet and against the text layer, which carries no English word on any odd page beyond the token ELISA on idx 3), so no English overflow and no parity inversion; idx 22 is the English-only last page (Q31(b), Q32, Q33). This set is 23 pages where its siblings 57/7/1 and 57/7/2 are 27. Question numbers run 1-33 unbroken. Instruction (viii) names internal choice in Sections B, D and E with no count. Alternatives built from the scheme's eight bare ORs, each confirmed against a printed OR on the page: Q17, Q20, Q21 (Section B), Q29 (c)(i)/(c)(ii), Q30 (c)(i)/(c)(ii) (Section D), Q31, Q32, Q33 (Section E); Q18, Q19 and Section C carry none. 8 alternatives, 45 rows. Primary marks: A16 + B10 + C21 + D8 + E15 = 70. Section-A key read on the scheme IMAGE (ms idx 2) and again from the scheme's text layer (PyMuPDF): BBDBABACABDDAAAC, 16 of 16 agree (Q1's key prints an arrow over the strand beside (B)). No void, dual-key or grace note anywhere in the scheme (every page read; the text layer's award wording sits only in the general instructions on ms idx 0-1). The paper prints RAISED decimal dots (Q5 2·4%, 8·1%; Q18 1·5 mya). Quotes straight, scientific names plain text, primes as straight apostrophes, per the Biology rules. FOLLOWER of 57/7/1 (opener) and 57/7/2: 31 of the 45 rows are the opener's questions reshuffled (both case studies keep the opener's numbers Q29/Q30; Section E's Q31/Q33 are the opener's Q33/Q31), confirmed on this paper's pages and copied byte for byte from 2025-57-7-1.questions.json; none matched only 57/7/2. 14 rows are new to this set: Q1, Q4, Q7, Q8, Q10, Q14, Q17a, Q17b, Q20a, Q20b, Q22, Q24, Q32a, Q32b. Q32(b)(i): the rendered page clips 'human' to 'h' at the right margin; the text layer carries 'human' (see that row's flag).",
+  "questions": [
+    {
+      "ref": "Q1", "questionNumber": "1", "section": "A", "marks": 1, "format": "mcq",
+      "chapter": "Molecular Basis of Inheritance", "subtopic": "Genetic Code", "difficulty": "MODERATE",
+      "stem": "The RNA triplet UAG acts as a stop codon which terminates the synthesis of a polypeptide. Below is given a strand of DNA which codes for four amino acids.\nIn which position will an insertion of a thymine nucleotide result in the termination of translation ?\nDNA strand :\n3'TCCACCCGATGC5'",
+      "options": [{"label": "A", "text": "3'T\\(\\downarrow\\)CCACCCGATGC5'"}, {"label": "B", "text": "3'TCCA\\(\\downarrow\\)CCCGATGC5'"}, {"label": "C", "text": "3'TCCACCC\\(\\downarrow\\)GATGC5'"}, {"label": "D", "text": "3'TCCACCCGA\\(\\downarrow\\)TGC5'"}],
+      "answer": "B",
+      "_figure": "REQUIRED:all four options are drawn as the same strand 3'TCCACCCGATGC5' with a downward arrow printed above it marking an insertion point; the option texts give each arrow's position as a lossless reading of the drawing (after the 1st, 4th, 7th and 9th base respectively). The arrows sit between the printed lines, each just above the strand of the option it belongs to. Page idx 2."
+    },
+    {
+      "ref": "Q2", "questionNumber": "2", "section": "A", "marks": 1, "format": "mcq",
+      "chapter": "Principles of Inheritance and Variation", "subtopic": "Sex Determination", "difficulty": "EASY",
+      "stem": "Which of the following conditions correctly describes the manner of determining the sex in the given options ?",
+      "options": [{"label": "A", "text": "Homozygous sex chromosomes (ZZ) determine female sex in birds."}, {"label": "B", "text": "XO type of chromosomes determine male sex in grasshoppers."}, {"label": "C", "text": "XO condition in humans determines female sex."}, {"label": "D", "text": "Homozygous sex chromosomes (XX) produce male in Drosophila."}],
+      "answer": "B"
+    },
+    {
+      "ref": "Q3", "questionNumber": "3", "section": "A", "marks": 1, "format": "mcq",
+      "chapter": "Biotechnology and its Applications", "subtopic": "Biotechnological Applications in Agriculture", "difficulty": "MODERATE",
+      "stem": "Which one of the following is not the product of transgenic experiments ?",
+      "options": [{"label": "A", "text": "Pest-resistant crop variety"}, {"label": "B", "text": "High nutritional value in grains"}, {"label": "C", "text": "Drought-resistant crops"}, {"label": "D", "text": "Production of insulin by rDNA technique"}],
+      "answer": "D",
+      "_flag": "The key (D) rests on reading 'transgenic experiments' as genetically modified crops: insulin made by recombinant E. coli is itself a product of genetic modification, so the distinction is a fine one. The other three options are NCERT's listed advantages of GM plants. Key kept as printed."
+    },
+    {
+      "ref": "Q4", "questionNumber": "4", "section": "A", "marks": 1, "format": "mcq",
+      "chapter": "Human Reproduction", "subtopic": "Fertilisation and Implantation", "difficulty": "EASY",
+      "stem": "Penetration of the sperm in the ovum is followed by :",
+      "options": [{"label": "A", "text": "Formation of first polar body"}, {"label": "B", "text": "Completion of Meiosis II"}, {"label": "C", "text": "First Meiosis"}, {"label": "D", "text": "Dissolution of zona pellucida"}],
+      "answer": "B"
+    },
+    {
+      "ref": "Q5", "questionNumber": "5", "section": "A", "marks": 1, "format": "mcq",
+      "chapter": "Biodiversity and Conservation", "subtopic": "Species Numbers and Patterns of Biodiversity", "difficulty": "EASY",
+      "stem": "India has only \\(2{\\cdot}4\\)% of the world's land area but its share of the global species diversity is :",
+      "options": [{"label": "A", "text": "\\(8{\\cdot}1\\)%"}, {"label": "B", "text": "\\(12{\\cdot}9\\)%"}, {"label": "C", "text": "\\(7{\\cdot}3\\)%"}, {"label": "D", "text": "\\(5{\\cdot}1\\)%"}],
+      "answer": "A"
+    },
+    {
+      "ref": "Q6", "questionNumber": "6", "section": "A", "marks": 1, "format": "mcq",
+      "chapter": "Biotechnology and its Applications", "subtopic": "Biotechnological Applications in Medicine", "difficulty": "MODERATE",
+      "stem": "Out of the following, select the correct match :",
+      "options": [{"label": "A", "text": "Transgenic cow milk – Human beta-lactalbumin protein"}, {"label": "B", "text": "ELISA – Antigen antibody interaction"}, {"label": "C", "text": "Corn Borer – Cry II Ab gene"}, {"label": "D", "text": "Cotton plant – Meloidegyne Incognitia"}],
+      "answer": "B",
+      "_flag": "Option (D) prints the nematode's name 'Meloidegyne Incognitia' (for Meloidogyne incognita). A distractor, transcribed as printed."
+    },
+    {
+      "ref": "Q7", "questionNumber": "7", "section": "A", "marks": 1, "format": "mcq",
+      "chapter": "Evolution", "subtopic": "Hardy-Weinberg Principle", "difficulty": "MODERATE",
+      "stem": "In a certain population, the frequency of three genotypes is as follows :\n| Genotypes : | PP | Pp | pp |\n|---|---|---|---|\n| Frequency : | 22% | 62% | 16% |\nChoose the option that shows the frequency of P and p alleles correctly :\nP, p",
+      "options": [{"label": "A", "text": "53%, 47%"}, {"label": "B", "text": "47%, 53%"}, {"label": "C", "text": "40%, 46%"}, {"label": "D", "text": "22%, 16%"}],
+      "answer": "A",
+      "_flag": "The genotype frequencies are printed as two aligned rows (not ruled) and carried as a pipe table; the options are printed under two column headings P and p, carried as the stem's last line, and each option joins its two values with a comma."
+    },
+    {
+      "ref": "Q8", "questionNumber": "8", "section": "A", "marks": 1, "format": "mcq",
+      "chapter": "Human Health and Disease", "subtopic": "Drugs and Alcohol Abuse", "difficulty": "MODERATE",
+      "stem": "Study the items of columns I and II where drugs and their effects are given and match them correctly.\n| Column-I | Column-II |\n|---|---|\n| a. Heroin | i. Affects cardiovascular system |\n| b. Marijuana | ii. Slows down body functions |\n| c. Cocaine | iii. Painkiller |\n| d. Morphine | iv. Interferes with transport of dopamine |\nChoose the correct answer from the options given below :",
+      "options": [{"label": "A", "text": "a-iv, b-iii, c-ii, d-i"}, {"label": "B", "text": "a-iii, b-iv, c-i, d-ii"}, {"label": "C", "text": "a-ii, b-i, c-iv, d-iii"}, {"label": "D", "text": "a-i, b-ii, c-iii, d-iv"}],
+      "answer": "C"
+    },
+    {
+      "ref": "Q9", "questionNumber": "9", "section": "A", "marks": 1, "format": "mcq",
+      "chapter": "Sexual Reproduction in Flowering Plants", "subtopic": "Pistil, Megasporangium and Embryo Sac", "difficulty": "EASY",
+      "stem": "Choose the option that correctly describes the gynoecium of Michelia :",
+      "options": [{"label": "A", "text": "Multicarpellary, Apocarpous"}, {"label": "B", "text": "Bicarpellary, Apocarpous"}, {"label": "C", "text": "Multicarpellary, Syncarpous"}, {"label": "D", "text": "Bicarpellary, Syncarpous"}],
+      "answer": "A"
+    },
+    {
+      "ref": "Q10", "questionNumber": "10", "section": "A", "marks": 1, "format": "mcq",
+      "chapter": "Ecosystem", "subtopic": "Energy Flow", "difficulty": "EASY",
+      "stem": "Read the passage given below and answer the question.\nFood chains 'P' and 'Q' form an interconnection. 'P' initiates with wheat grass whose population supports a few grasshoppers, frogs and snakes. 'Q' starts with dead decaying leaves of wheat grass which are eaten by earthworms and then food chain is continued with frog of food chain 'P'. Identify the types of food chains 'P' and 'Q' :\nFood chain-'P', Food chain-'Q'",
+      "options": [{"label": "A", "text": "Detritus, Grazing"}, {"label": "B", "text": "Grazing, Detritus"}, {"label": "C", "text": "Detritus, Detritus"}, {"label": "D", "text": "Grazing, Grazing"}],
+      "answer": "B",
+      "_flag": "The options are printed as rows of a three-column table (Options | Food chain-'P' | Food chain-'Q'); the column headings are carried as the stem's last line and each option joins its row's cells with a comma."
+    },
+    {
+      "ref": "Q11", "questionNumber": "11", "section": "A", "marks": 1, "format": "mcq",
+      "chapter": "Biotechnology: Principles and Processes", "subtopic": "Isolation, Cutting and Amplification of DNA", "difficulty": "EASY",
+      "stem": "Identify the incorrect statement regarding PCR.",
+      "options": [{"label": "A", "text": "Two sets of primers are required during polymerisation."}, {"label": "B", "text": "The process of replication is repeated multiple times to produce one billion copies."}, {"label": "C", "text": "Thermostable DNA polymerase is used for extension of primers."}, {"label": "D", "text": "Annealing is required to separate both the strands of template DNA."}],
+      "answer": "D"
+    },
+    {
+      "ref": "Q12", "questionNumber": "12", "section": "A", "marks": 1, "format": "mcq",
+      "chapter": "Human Health and Disease", "subtopic": "Drugs and Alcohol Abuse", "difficulty": "EASY",
+      "stem": "The following information is about drugs and tobacco. Select the correct statement from the options given below.",
+      "options": [{"label": "A", "text": "Cocaine is given to patients after surgery as it stimulates recovery."}, {"label": "B", "text": "Chewing tobacco lowers blood pressure and heart rate."}, {"label": "C", "text": "Barbiturates when given to criminals makes them tell the truth."}, {"label": "D", "text": "Morphine is often given to persons who have undergone surgery as a painkiller."}],
+      "answer": "D"
+    },
+    {
+      "ref": "Q13", "questionNumber": "13", "section": "A", "marks": 1, "format": "mcq",
+      "chapter": "Principles of Inheritance and Variation", "subtopic": "Genetic Disorders", "difficulty": "EASY",
+      "context": "For Questions number 13 to 16, two statements are given – one labelled as Assertion (A) and the other labelled as Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "Assertion (A) : A male individual always inherits haemophilia from his mother.\nReason (R) : The gene for haemophilia lies on X-chromosome.",
+      "options": [{"label": "A", "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."}, {"label": "B", "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."}, {"label": "C", "text": "Assertion (A) is true, but Reason (R) is false."}, {"label": "D", "text": "Assertion (A) is false, but Reason (R) is true."}],
+      "answer": "A"
+    },
+    {
+      "ref": "Q14", "questionNumber": "14", "section": "A", "marks": 1, "format": "mcq",
+      "chapter": "Biotechnology and its Applications", "subtopic": "Biotechnological Applications in Medicine", "difficulty": "EASY",
+      "context": "For Questions number 13 to 16, two statements are given – one labelled as Assertion (A) and the other labelled as Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "Assertion (A) : Biotechnology produces transgenic microorganisms that function as microfactories for proteins.\nReason (R) : Transgenic microorganisms can be developed to produce proteins of human use, like insulin.",
+      "options": [{"label": "A", "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."}, {"label": "B", "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."}, {"label": "C", "text": "Assertion (A) is true, but Reason (R) is false."}, {"label": "D", "text": "Assertion (A) is false, but Reason (R) is true."}],
+      "answer": "A"
+    },
+    {
+      "ref": "Q15", "questionNumber": "15", "section": "A", "marks": 1, "format": "mcq",
+      "chapter": "Biotechnology: Principles and Processes", "subtopic": "Principles of Biotechnology", "difficulty": "EASY",
+      "context": "For Questions number 13 to 16, two statements are given – one labelled as Assertion (A) and the other labelled as Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "Assertion (A) : A piece of DNA inserted into an alien organism generally does not replicate, if not inserted into a chromosome.\nReason (R) : Chromosomes have specific sequences called 'ori' region, where DNA replication is initiated.",
+      "options": [{"label": "A", "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."}, {"label": "B", "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."}, {"label": "C", "text": "Assertion (A) is true, but Reason (R) is false."}, {"label": "D", "text": "Assertion (A) is false, but Reason (R) is true."}],
+      "answer": "A"
+    },
+    {
+      "ref": "Q16", "questionNumber": "16", "section": "A", "marks": 1, "format": "mcq",
+      "chapter": "Microbes in Human Welfare", "subtopic": "Microbes in Household Products", "difficulty": "EASY",
+      "context": "For Questions number 13 to 16, two statements are given – one labelled as Assertion (A) and the other labelled as Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below.",
+      "stem": "Assertion (A) : Swiss cheese is characterized by large holes due to \\(\\text{CO}_2\\) production.\nReason (R) : It is ripened by growing a specific fungi.",
+      "options": [{"label": "A", "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."}, {"label": "B", "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."}, {"label": "C", "text": "Assertion (A) is true, but Reason (R) is false."}, {"label": "D", "text": "Assertion (A) is false, but Reason (R) is true."}],
+      "answer": "C"
+    },
+    {
+      "ref": "Q17a", "questionNumber": "17 (a)", "section": "B", "marks": 2, "format": "subjective",
+      "chapter": "Biotechnology: Principles and Processes", "subtopic": "Isolation, Cutting and Amplification of DNA", "difficulty": "EASY",
+      "stem": "How is DNA isolated in purified form from a bacterial cell ?"
+    },
+    {
+      "ref": "Q17b", "questionNumber": "17 (b)", "section": "B", "marks": 2, "format": "subjective",
+      "chapter": "Biotechnology and its Applications", "subtopic": "Biotechnological Applications in Medicine", "difficulty": "EASY",
+      "_alternativeTo": "Q17a",
+      "stem": "Explain how human functional insulin was produced by using recombinant DNA (rDNA) technology."
+    },
+    {
+      "ref": "Q18", "questionNumber": "18", "section": "B", "marks": 2, "format": "subjective",
+      "chapter": "Evolution", "subtopic": "Origin and Evolution of Man", "difficulty": "EASY",
+      "stem": "A few stages and their respective time period in the evolutionary history of human beings are mentioned in the flowchart given below :\n15 mya – Primates walking like gorillas and chimpanzees existed. (a)\n\\(\\downarrow\\)\n3 – 4 mya – Man-like primates walked in Eastern Africa. Fossils of their bones were discovered. (b)\n\\(\\downarrow\\)\n2 mya – This ancestor lived in the East African grasslands and ate fruits. (c)\n\\(\\downarrow\\)\n\\(1{\\cdot}5\\) mya – This hominid had a brain size of 900 cc and probably ate meat. (d)\nBased on the above information, answer the following questions :\n(a) Name one primate about 15 mya.\n(b) Name one place where fossils of primates were discovered in Eastern Africa.\n(c) Name the ancestor that lived in the East African grasslands about 2 mya.\n(d) Name the hominid that was found around \\(1{\\cdot}5\\) mya."
+    },
+    {
+      "ref": "Q19", "questionNumber": "19", "section": "B", "marks": 2, "format": "subjective",
+      "chapter": "Principles of Inheritance and Variation", "subtopic": "Genetic Disorders", "difficulty": "EASY",
+      "stem": "A karyotype of a human suffering from a certain disorder is given below :\n(a) Identify the disorder.\n(b) Write the symptoms of the disorder.\n(c) Give reason for such a disorder.",
+      "_figure": "REQUIRED:a banded human karyotype: the autosomes arranged in numbered pairs 1 to 22 in four rows, and the sex chromosomes drawn at the end of the last row with labels under them. The number and kind of sex chromosomes IS the answer to (a), so it is withheld here. Page idx 14."
+    },
+    {
+      "ref": "Q20a", "questionNumber": "20 (a)", "section": "B", "marks": 2, "format": "subjective",
+      "chapter": "Microbes in Human Welfare", "subtopic": "Microbes as Biofertilisers", "difficulty": "EASY",
+      "stem": "Ravi lives in a village where he suggested to the local farmers to introduce a fungus as biofertilizer into their crop fields. State the benefits provided by the fungus to the crop."
+    },
+    {
+      "ref": "Q20b", "questionNumber": "20 (b)", "section": "B", "marks": 2, "format": "subjective",
+      "chapter": "Human Health and Disease", "subtopic": "Immunity", "difficulty": "EASY",
+      "_alternativeTo": "Q20a",
+      "stem": "(i) How do secondary lymphoid organs provide immunity ?\n(ii) Highlight the role of spleen as an organ that provides immunity."
+    },
+    {
+      "ref": "Q21a", "questionNumber": "21 (a)", "section": "B", "marks": 2, "format": "subjective",
+      "chapter": "Human Reproduction", "subtopic": "Parturition and Lactation", "difficulty": "EASY",
+      "stem": "\"A fully developed foetus initiates its delivery from the mother's womb.\" Explain."
+    },
+    {
+      "ref": "Q21b", "questionNumber": "21 (b)", "section": "B", "marks": 2, "format": "subjective",
+      "chapter": "Human Reproduction", "subtopic": "Gametogenesis", "difficulty": "MODERATE",
+      "_alternativeTo": "Q21a",
+      "stem": "Give reasons for the following :\n(i) Why can a woman generally not conceive a child after 50 years of age ?\n(ii) Polar bodies are formed during oogenesis and not during spermatogenesis.",
+      "_flag": "Part (i) (1 of the 2 marks) is menopause, under Menstrual Cycle; the row is filed on Gametogenesis for part (ii)."
+    },
+    {
+      "ref": "Q22", "questionNumber": "22", "section": "C", "marks": 3, "format": "subjective",
+      "chapter": "Biotechnology and its Applications", "subtopic": "Biotechnological Applications in Medicine", "difficulty": "MODERATE",
+      "stem": "Gene therapy can be used to treat an ADA deficient patient. Explain.\nIs it a permanent cure ? How can ADA be cured permanently ?"
+    },
+    {
+      "ref": "Q23", "questionNumber": "23", "section": "C", "marks": 3, "format": "subjective",
+      "chapter": "Ecosystem", "subtopic": "Energy Flow", "difficulty": "MODERATE",
+      "stem": "Name the type of food chains responsible for the flow of larger fraction of energy in an aquatic ecosystem and a terrestrial ecosystem, respectively. Mention any two differences between the two food chains."
+    },
+    {
+      "ref": "Q24", "questionNumber": "24", "section": "C", "marks": 3, "format": "subjective",
+      "chapter": "Molecular Basis of Inheritance", "subtopic": "Transcription", "difficulty": "MODERATE",
+      "stem": "Construct and label a transcription unit from which the RNA segment given below has been transcribed. Write the complete name of the enzyme that transcribed this RNA.\n5' AUG CAU GCA UGC 3'\nRNA molecule",
+      "_figure": "ILLUSTRATIVE:a horizontal line labelled 5' at its left end and 3' at its right end, captioned 'RNA molecule', with four groups of three short vertical ticks standing on it, the groups lettered AUG, CAU, GCA and UGC from left to right. The whole sequence is carried in the stem, so the row is answerable from text. Page idx 16.",
+      "_drawFigure": "a transcription unit for the RNA 5' AUGCAUGCAUGC 3': the coding strand 5' ATGCATGCATGC 3' paired with the template strand 3' TACGTACGTACG 5', both polarities marked, the promoter at the upstream end (5' end of the coding strand) and the terminator at the downstream end (3' end of the coding strand), coding strand and template strand labelled."
+    },
+    {
+      "ref": "Q25", "questionNumber": "25", "section": "C", "marks": 3, "format": "subjective",
+      "chapter": "Reproductive Health", "subtopic": "Population Explosion and Birth Control", "difficulty": "MODERATE",
+      "stem": "A village health worker was taking a session with women. She tells them that one has to be careful while using oral pills as a method of birth control. Wrong usage can actually promote conception.\n(a) Analyse the above statement and compare the merits and demerits of using oral pills and surgical methods of birth control.\n(b) Village women are confused as to how a thin metallic copper loop can provide protection against pregnancy. Explain the mode of action of IUDs. Give two points."
+    },
+    {
+      "ref": "Q26", "questionNumber": "26", "section": "C", "marks": 3, "format": "subjective",
+      "chapter": "Evolution", "subtopic": "Adaptive Radiation", "difficulty": "MODERATE",
+      "stem": "(a) \"The process of evolution of different species in a given geographical area starts from a point and literally radiates to other geographical areas.\" Explain it with an example.\n(b) Cite an example where more than one adaptive radiation has occurred in an isolated geographical area. Name the type of evolution your example depicts."
+    },
+    {
+      "ref": "Q27", "questionNumber": "27", "section": "C", "marks": 3, "format": "subjective",
+      "chapter": "Biotechnology and its Applications", "subtopic": "Transgenic Animals", "difficulty": "EASY",
+      "stem": "(a) Why are transgenic animals so called ?\n(b) With the help of an example each, explain the role of transgenic animals in the following :\n(i) Vaccine safety\n(ii) Biological products"
+    },
+    {
+      "ref": "Q28", "questionNumber": "28", "section": "C", "marks": 3, "format": "subjective",
+      "chapter": "Human Health and Disease", "subtopic": "Common Diseases in Humans", "difficulty": "EASY",
+      "stem": "A person is suffering from high grade fever. Which symptoms will help to identify if he/she is suffering from Typhoid, Pneumonia or Malaria ?"
+    },
+    {
+      "ref": "Q29a", "questionNumber": "29 (a)", "section": "D", "marks": 1, "format": "subjective",
+      "chapter": "Microbes in Human Welfare", "subtopic": "Microbes in Sewage Treatment", "difficulty": "EASY",
+      "setId": "2025-57-7-3-CS1",
+      "context": "Study the figure given below and answer the questions that follow.",
+      "stem": "Identify the figure and state its importance.",
+      "_figure": "REQUIRED:a labelled flow diagram of two tanks joined by arrows: an inflow arrow entering a first tank that holds bubbles and has a row of upward arrows at its base, an arrow to a second, funnel-bottomed tank with an outflow arrow, and from the funnel's foot a line that splits into a return loop back to the inflow and a waste outlet. Every part carries a printed label; the labels and the layout ARE what (a) asks the student to identify, so the labels are withheld here. Page idx 18."
+    },
+    {
+      "ref": "Q29b", "questionNumber": "29 (b)", "section": "D", "marks": 2, "format": "subjective",
+      "chapter": "Microbes in Human Welfare", "subtopic": "Microbes in Sewage Treatment", "difficulty": "EASY",
+      "setId": "2025-57-7-3-CS1",
+      "context": "Study the figure given below and answer the questions that follow.",
+      "stem": "Why is air diffused into the aerator tank ? Explain.",
+      "_figure": "ILLUSTRATIVE:the case study's flow diagram: Influent (From Primary Clarifier) enters an Aerator Tank fitted with Air Diffusers at its base, which leads to a Settling Tank/Secondary Clarifier giving Effluent; Activated sludge from its base splits into Return Activated Sludge (RAS), looped back to the influent, and Waste Activated Sludge (WAS). The stem names the aerator tank, so the row is answerable from text. Page idx 18."
+    },
+    {
+      "ref": "Q29ca", "questionNumber": "29 (c) (i)", "section": "D", "marks": 1, "format": "subjective",
+      "chapter": "Microbes in Human Welfare", "subtopic": "Microbes in Sewage Treatment", "difficulty": "EASY",
+      "setId": "2025-57-7-3-CS1",
+      "context": "Study the figure given below and answer the questions that follow.",
+      "stem": "What changes take place in the settling tank ?",
+      "_figure": "ILLUSTRATIVE:the case study's flow diagram: Influent (From Primary Clarifier) enters an Aerator Tank fitted with Air Diffusers at its base, which leads to a Settling Tank/Secondary Clarifier giving Effluent; Activated sludge from its base splits into Return Activated Sludge (RAS), looped back to the influent, and Waste Activated Sludge (WAS). The stem names the settling tank, so the row is answerable from text. Page idx 18."
+    },
+    {
+      "ref": "Q29cb", "questionNumber": "29 (c) (ii)", "section": "D", "marks": 1, "format": "subjective",
+      "chapter": "Microbes in Human Welfare", "subtopic": "Microbes in Sewage Treatment", "difficulty": "EASY",
+      "setId": "2025-57-7-3-CS1",
+      "_alternativeTo": "Q29ca",
+      "context": "Study the figure given below and answer the questions that follow.",
+      "stem": "How is BOD related to organic matter present in the water ?",
+      "_figure": "ILLUSTRATIVE:the case study's flow diagram: Influent (From Primary Clarifier) enters an Aerator Tank fitted with Air Diffusers at its base, which leads to a Settling Tank/Secondary Clarifier giving Effluent; Activated sludge from its base splits into Return Activated Sludge (RAS), looped back to the influent, and Waste Activated Sludge (WAS). The question needs nothing from the drawing. Page idx 18."
+    },
+    {
+      "ref": "Q30a", "questionNumber": "30 (a)", "section": "D", "marks": 1, "format": "subjective",
+      "chapter": "Sexual Reproduction in Flowering Plants", "subtopic": "Pollination", "difficulty": "EASY",
+      "setId": "2025-57-7-3-CS2",
+      "context": "The following question is based on pollination. Study the figures carefully and answer the questions that follow.",
+      "stem": "Give the scientific terms for the processes taking place in Figures A and B respectively.",
+      "_figure": "REQUIRED:two coloured drawings. Figure A: two open flowers with stamens and a pistil, with a dashed arc and the label 'Pollens' showing pollen passing between them. Figure B: a single flower cut open to show its ovary with ovules, stamens and stigma, with a curved red arrow. Whether Figure A's two flowers sit on one plant or two, and where Figure B's arrow starts and ends, ARE the answer, so they are withheld here. Page idx 20."
+    },
+    {
+      "ref": "Q30b", "questionNumber": "30 (b)", "section": "D", "marks": 2, "format": "subjective",
+      "chapter": "Sexual Reproduction in Flowering Plants", "subtopic": "Pollination", "difficulty": "EASY",
+      "setId": "2025-57-7-3-CS2",
+      "context": "The following question is based on pollination. Study the figures carefully and answer the questions that follow.",
+      "stem": "Mention two conditions necessary for the process occurring in Figure B.",
+      "_figure": "REQUIRED:two coloured drawings. Figure A: two open flowers with stamens and a pistil, with a dashed arc and the label 'Pollens' showing pollen passing between them. Figure B: a single flower cut open to show its ovary with ovules, stamens and stigma, with a curved red arrow. Which process Figure B shows is defined only by the drawing (where its arrow starts and ends), so it is withheld here. Page idx 20."
+    },
+    {
+      "ref": "Q30ca", "questionNumber": "30 (c) (i)", "section": "D", "marks": 1, "format": "subjective",
+      "chapter": "Sexual Reproduction in Flowering Plants", "subtopic": "Pollination", "difficulty": "EASY",
+      "setId": "2025-57-7-3-CS2",
+      "context": "The following question is based on pollination. Study the figures carefully and answer the questions that follow.",
+      "stem": "State one advantage and one disadvantage of the process occurring in Figure B.",
+      "_figure": "REQUIRED:two coloured drawings. Figure A: two open flowers with stamens and a pistil, with a dashed arc and the label 'Pollens' showing pollen passing between them. Figure B: a single flower cut open to show its ovary with ovules, stamens and stigma, with a curved red arrow. Which process Figure B shows is defined only by the drawing (where its arrow starts and ends), so it is withheld here. Page idx 20."
+    },
+    {
+      "ref": "Q30cb", "questionNumber": "30 (c) (ii)", "section": "D", "marks": 1, "format": "subjective",
+      "chapter": "Sexual Reproduction in Flowering Plants", "subtopic": "Pollination", "difficulty": "MODERATE",
+      "setId": "2025-57-7-3-CS2",
+      "_alternativeTo": "Q30ca",
+      "context": "The following question is based on pollination. Study the figures carefully and answer the questions that follow.",
+      "stem": "Name one plant where, in some flowers only, the process in Figure B takes place and give the reason responsible for it.",
+      "_figure": "REQUIRED:two coloured drawings. Figure A: two open flowers with stamens and a pistil, with a dashed arc and the label 'Pollens' showing pollen passing between them. Figure B: a single flower cut open to show its ovary with ovules, stamens and stigma, with a curved red arrow. Which process Figure B shows is defined only by the drawing (where its arrow starts and ends), so it is withheld here. Page idx 20."
+    },
+    {
+      "ref": "Q31a", "questionNumber": "31 (a)", "section": "E", "marks": 5, "format": "subjective",
+      "chapter": "Biodiversity and Conservation", "subtopic": "Loss of Biodiversity", "difficulty": "MODERATE",
+      "stem": "(i) How does alien species invasion cause a decline in biodiversity ? Explain.\nHow have the following contributed to biodiversity loss ?\nI. Nile Perch\nII. Lantana and Eichhornia\nIII. Clarias gariepinus\n(ii) Why have certain regions been declared as biodiversity hotspots by environmentalists of the world ? Name any two such regions in India.",
+      "_flag": "Part (ii) (2 of the 5 marks) is biodiversity hotspots, under Biodiversity Conservation; the row is filed on Loss of Biodiversity for part (i)."
+    },
+    {
+      "ref": "Q31b", "questionNumber": "31 (b)", "section": "E", "marks": 5, "format": "subjective",
+      "chapter": "Organisms and Populations", "subtopic": "Population Growth", "difficulty": "HARD",
+      "_alternativeTo": "Q31a",
+      "stem": "(i) Write an equation for Verhulst-Pearl Logistic Growth Curve where :\nN = Population density at time 't'\nr = Intrinsic rate of natural increase\n(ii) Draw a graph for a population whose population density has reached carrying capacity.\n(iii) Draw a growth curve where resources are non-limiting to growth of population.\n(iv) Which growth curve is considered more realistic and why ? Explain.",
+      "_drawFigure": "(ii) the logistic (sigmoid, S-shaped) growth curve: population density (N) on the y-axis against time (t) on the x-axis, a curve with a lag phase, a steep rise and then levelling off at an upper asymptote marked as the carrying capacity (K); (iii) the exponential (J-shaped) growth curve on the same axes, rising slowly and then ever more steeply with no upper limit."
+    },
+    {
+      "ref": "Q32a", "questionNumber": "32 (a)", "section": "E", "marks": 5, "format": "subjective",
+      "chapter": "Sexual Reproduction in Flowering Plants", "subtopic": "Pollination", "difficulty": "HARD",
+      "stem": "What is meant by 'right' and 'wrong' type of pollen when pollen lands on the stigma. A two-celled right type pollen has landed on the stigma. Explain the events taking place till fertilization in angiosperms. Why is pollen pistil interaction said to be dynamic ?",
+      "_flag": "The events up to fertilisation (3 of the 5 marks, ending in syngamy and triple fusion) reach into Double Fertilisation; the row is filed on Pollination, where NCERT teaches pollen-pistil interaction, compatible and incompatible pollen and pollen-tube growth. The stem's first sentence ends in a full stop where a question mark is meant; transcribed as printed."
+    },
+    {
+      "ref": "Q32b", "questionNumber": "32 (b)", "section": "E", "marks": 5, "format": "subjective",
+      "chapter": "Human Reproduction", "subtopic": "Gametogenesis", "difficulty": "MODERATE",
+      "_alternativeTo": "Q32a",
+      "stem": "(i) Give the schematic representation of oogenesis in human female indicating chromosome number at each step.\n(ii) In which part of the female reproductive system do the following events take place ?\nI. Formation of corpus luteum\nII. Maturation of tertiary follicle\nIII. Fertilisation\nIV. Implantation",
+      "_flag": "Part (i): the rendered page clips the word to 'h' at the right margin ('oogenesis in h' / 'female indicating ...'); the PDF's text layer carries 'human', which is transcribed. Part (ii) (2 of the 5 marks: ovary, ovary, ampullary region, endometrium) spans The Female Reproductive System and Fertilisation and Implantation; the row is filed on Gametogenesis for part (i).",
+      "_drawFigure": "(i) a schematic of oogenesis in the human female with the chromosome number per cell at each step: oogonia (46) by mitosis and differentiation in fetal life to the primary oocyte (46); the first meiotic division, completed before ovulation, giving the secondary oocyte (23) and the first polar body; the second meiotic division giving the ovum (23) and the second polar body; the life phases (fetal life, birth, childhood, puberty, adult reproductive life) marked alongside."
+    },
+    {
+      "ref": "Q33a", "questionNumber": "33 (a)", "section": "E", "marks": 5, "format": "subjective",
+      "chapter": "Molecular Basis of Inheritance", "subtopic": "The Search for Genetic Material", "difficulty": "MODERATE",
+      "stem": "Write the features a molecule should have to act as a genetic material. In the light of the above features, evaluate and justify the suitability of the molecule that is preferred as an ideal genetic material."
+    },
+    {
+      "ref": "Q33b", "questionNumber": "33 (b)", "section": "E", "marks": 5, "format": "subjective",
+      "chapter": "Principles of Inheritance and Variation", "subtopic": "Inheritance of One Gene", "difficulty": "MODERATE",
+      "_alternativeTo": "Q33a",
+      "stem": "Differentiate between the following :\n(i) Polygenic Inheritance and Pleiotropy\n(ii) Dominance, Codominance and Incomplete dominance",
+      "_flag": "Part (i) (2 of the 5 marks) is under Polygenic Inheritance and Pleiotropy; the row is filed on Inheritance of One Gene for part (ii) (3 marks)."
+    }
+  ]
+}

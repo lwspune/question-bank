@@ -233,3 +233,21 @@ describe("pyqNote — the 2022 clause states THIS subject's paper", () => {
     expect(pyqNote(SUBJECTS.biology, 2024, "57/1/1")).not.toMatch(/Term-II/);
   });
 });
+
+describe("Biology chapters: the one dropped topic has an [Outdated] home", () => {
+  // The rationalised NCERT removed "Organism and its Environment" (adaptations,
+  // responses to abiotic factors). Five 2022 rows examine it; like Chemistry's
+  // Surface Chemistry they need a chapter the validator accepts, or a re-commit
+  // of those papers fails, or worse, files them onto a live subtopic.
+  it("accepts the [Outdated] chapter after the 13 live ones", () => {
+    const ch = SUBJECTS.biology.chapters as readonly string[];
+    expect(ch).toContain("Organism and its Environment [Outdated]");
+    expect(ch.indexOf("Organism and its Environment [Outdated]")).toBe(13);
+  });
+
+  it("keeps tissue culture on the live Ch.10, not an [Outdated] chapter", () => {
+    const ch = SUBJECTS.biology.chapters as readonly string[];
+    expect(ch.filter((c) => c.includes("[Outdated]"))).toHaveLength(1);
+    expect(ch).toContain("Biotechnology and its Applications");
+  });
+});

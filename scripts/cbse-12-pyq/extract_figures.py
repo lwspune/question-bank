@@ -62,6 +62,39 @@ def source_root(code):
     return os.path.join(SOURCE_BASE, subject)
 
 
+# Papers whose figures MuPDF renders as black tiled noise. Their images are
+# 8-bit /Indexed over an ICC profile with a full 768-byte palette, valid on
+# paper, yet every renderer path here misreads them (2024 Biology 57/4/1-3, all
+# three sets; the same file family elsewhere renders fine). Decoding each index
+# through its own palette by hand gives the true figure, so these docs have their
+# indexed images replaced IN MEMORY before any page is rendered. The source PDF
+# is never written. Named, not detected: a detector would also "repair" papers
+# that render correctly today.
+REPAIR_INDEXED = {"2024-57-4-1", "2024-57-4-2", "2024-57-4-3"}
+
+
+def repair_indexed(doc):
+    """Replace every /Indexed image in `doc` with its palette-decoded RGB."""
+    done = set()
+    for page in doc:
+        for img in page.get_images(full=True):
+            x = img[0]
+            if x in done:
+                continue
+            done.add(x)
+            obj = doc.xref_object(x, compressed=True)
+            m = re.search(r"/Indexed \d+ 0 R \d+ (\d+) 0 R", obj)
+            if not m:
+                continue
+            w = int(re.search(r"/Width (\d+)", obj).group(1))
+            h = int(re.search(r"/Height (\d+)", obj).group(1))
+            im = Image.frombytes("P", (w, h), doc.xref_stream(x)[: w * h])
+            im.putpalette(list(doc.xref_stream(int(m.group(1)))[:768]))
+            buf = io.BytesIO()
+            im.convert("RGB").save(buf, "PNG")
+            page.replace_image(x, stream=buf.getvalue())
+
+
 REPRINT_MAX = 8      # measured: worst genuine reprint 8, known collision 42
 COLLISION_SURE = 20  # above this it is certainly a different figure
 
@@ -185,7 +218,7 @@ def shrink(png, cap=MAX_BYTES):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--crop", action="store_true", help="write the crops")
-    ap.add_argument("--only", help="restrict to one hash prefix")
+    ap.add_argument("--only", help="restrict to hash prefixes: one, a comma list, or @file (one per line)")
     args = ap.parse_args()
 
     path = os.path.join(DATA, "figure-groups.json")
@@ -193,7 +226,11 @@ def main():
         sys.exit("run: npx tsx scripts/cbse-12-pyq/figure-groups.ts --write")
     groups = json.load(open(path, encoding="utf-8"))
     if args.only:
-        groups = [g for g in groups if g["hash"].startswith(args.only)]
+        if args.only.startswith("@"):
+            prefixes = tuple(open(args.only[1:], encoding="utf-8").read().split())
+        else:
+            prefixes = tuple(p for p in args.only.split(",") if p)
+        groups = [g for g in groups if g["hash"].startswith(prefixes)]
 
     if args.crop:
         os.makedirs(OUT, exist_ok=True)
@@ -210,6 +247,8 @@ def main():
             year, code = pid.split("-", 1)
             pdf = find_pdf(year, code)
             docs[pid] = fitz.open(pdf) if pdf else None
+            if docs[pid] is not None and pid in REPAIR_INDEXED:
+                repair_indexed(docs[pid])
         return docs[pid]
 
     ms_docs = {}

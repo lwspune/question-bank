@@ -54,10 +54,15 @@ async function main() {
   // the whole-run gate then blocks a change it has no quarrel with. Selecting a
   // prefix drops the others from the PLAN and from the PROBLEM list together --
   // so anything wrong INSIDE the selection still refuses the whole run.
+  // A comma list or @file (one prefix per line) selects several groups at once,
+  // matching extract_figures.py --only.
   const onlyArg = process.argv.find((a) => a.startsWith("--only="));
   const only = onlyArg?.slice("--only=".length).trim().toLowerCase();
   if (onlyArg && !only) throw new Error("--only= needs a hash prefix, e.g. --only=a3e40b79");
-  const manifest = only ? all.filter((e) => e.hash.toLowerCase().startsWith(only)) : all;
+  const prefixes = !only ? [] : only.startsWith("@")
+    ? readFileSync(onlyArg!.slice("--only=@".length).trim(), "utf8").split(/\s+/).filter(Boolean).map((p) => p.toLowerCase())
+    : only.split(",").filter(Boolean);
+  const manifest = only ? all.filter((e) => prefixes.some((p) => e.hash.toLowerCase().startsWith(p))) : all;
   if (only && !manifest.length) {
     throw new Error(`--only=${only} matched none of the ${all.length} manifest entries`);
   }

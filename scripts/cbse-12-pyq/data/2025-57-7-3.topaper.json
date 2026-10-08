@@ -1,0 +1,281 @@
+{
+ "paper": "57/7/3",
+ "year": 2025,
+ "paperId": "2025-57-7-3",
+ "markingScheme": "out/2025-57-7-3/ms/p00.png … p10.png",
+ "rows": [
+  {
+   "hash": "0de097cb8d21ed7d3a657659d10d564e6ff07a0f3fcf8df413c0245dc5ba541f",
+   "ref": "Q1",
+   "questionNumber": "1",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Molecular Basis of Inheritance",
+   "subtopic": "Genetic Code",
+   "stem": "The RNA triplet UAG acts as a stop codon which terminates the synthesis of a polypeptide. Below is given a strand of DNA which codes for four amino acids.\nIn which position will an insertion of a thymine nucleotide result in the termination of translation ?\nDNA strand :\n3'TCCACCCGATGC5'",
+   "options": [
+    {
+     "label": "A",
+     "text": "3'T\\(\\downarrow\\)CCACCCGATGC5'"
+    },
+    {
+     "label": "B",
+     "text": "3'TCCA\\(\\downarrow\\)CCCGATGC5'"
+    },
+    {
+     "label": "C",
+     "text": "3'TCCACCC\\(\\downarrow\\)GATGC5'"
+    },
+    {
+     "label": "D",
+     "text": "3'TCCACCCGA\\(\\downarrow\\)TGC5'"
+    }
+   ],
+   "answer": "B",
+   "figureNote": "REQUIRED:all four options are drawn as the same strand 3'TCCACCCGATGC5' with a downward arrow printed above it marking an insertion point; the option texts give each arrow's position as a lossless reading of the drawing (after the 1st, 4th, 7th and 9th base respectively). The arrows sit between the printed lines, each just above the strand of the option it belongs to. Page idx 2.",
+   "imageAttached": false,
+   "solution": "A strand written 3' to 5' is read as the **template strand**: the mRNA is built complementary to it and runs 5' to 3'. So 3'TCCACCCGATGC5' gives the mRNA 5' AGG UGG GCU ACG 3', four codons for four amino acids (arginine, tryptophan, alanine, threonine), with no stop codon.\n\nInserting a thymine in the template inserts an adenine in the mRNA at the same point, which shifts the reading frame from there on (a **frameshift insertion**). Check each position:\n\n- After the 1st base: template 3'TTCCACCCGATGC5' gives mRNA AAG GUG GGC UAC G, no stop codon.\n- After the 4th base: template 3'TCCATCCCGATGC5' gives mRNA AGG **UAG** GGC UAC G. The second codon becomes **UAG**, a stop codon, so translation terminates after the first amino acid.\n- After the 7th base: template 3'TCCACCCTGATGC5' gives mRNA AGG UGG GAC UAC G, no stop codon.\n- After the 9th base: template 3'TCCACCCGATTGC5' gives mRNA AGG UGG GCU AAC G, no stop codon.\n\nSo the answer is option (B) 3'TCCA\\(\\downarrow\\)CCCGATGC5'."
+  },
+  {
+   "hash": "bef0cb266af41ac3f43d484982d024c610868819278c76e6ca8764f9e10e956e",
+   "ref": "Q4",
+   "questionNumber": "4",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Human Reproduction",
+   "subtopic": "Fertilisation and Implantation",
+   "stem": "Penetration of the sperm in the ovum is followed by :",
+   "options": [
+    {
+     "label": "A",
+     "text": "Formation of first polar body"
+    },
+    {
+     "label": "B",
+     "text": "Completion of Meiosis II"
+    },
+    {
+     "label": "C",
+     "text": "First Meiosis"
+    },
+    {
+     "label": "D",
+     "text": "Dissolution of zona pellucida"
+    }
+   ],
+   "answer": "B",
+   "solution": "During fertilisation the sperm comes in contact with the zona pellucida of the ovum and induces changes in the membrane that block the entry of additional sperms. The secondary oocyte released at ovulation is arrested in meiosis II, and the **entry of the sperm induces the completion of the second meiotic division**. This division is also unequal: it forms the **ovum (ootid)** and a small **second polar body**. The haploid nucleus of the sperm then fuses with that of the ovum to form the diploid zygote.\n\nThe first polar body is formed earlier, when meiosis I is completed before ovulation, and the zona pellucida is not dissolved at this stage. So the answer is option (B) Completion of Meiosis II."
+  },
+  {
+   "hash": "5cd74e43f02de14030cebde514679b7b01bf5a056977ef4ef1399a0512c3e8a6",
+   "ref": "Q7",
+   "questionNumber": "7",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Evolution",
+   "subtopic": "Hardy-Weinberg Principle",
+   "stem": "In a certain population, the frequency of three genotypes is as follows :\n| Genotypes : | PP | Pp | pp |\n|---|---|---|---|\n| Frequency : | 22% | 62% | 16% |\nChoose the option that shows the frequency of P and p alleles correctly :\nP, p",
+   "options": [
+    {
+     "label": "A",
+     "text": "53%, 47%"
+    },
+    {
+     "label": "B",
+     "text": "47%, 53%"
+    },
+    {
+     "label": "C",
+     "text": "40%, 46%"
+    },
+    {
+     "label": "D",
+     "text": "22%, 16%"
+    }
+   ],
+   "answer": "A",
+   "solution": "Allele frequencies are found by counting alleles. Every PP individual carries two P alleles, every pp individual two p alleles, and every Pp individual one of each, so half the heterozygote frequency goes to each allele:\n\n- frequency of P = frequency of PP + \\(\\frac{1}{2}\\) frequency of Pp = 22% + 31% = **53%**\n- frequency of p = frequency of pp + \\(\\frac{1}{2}\\) frequency of Pp = 16% + 31% = **47%**\n\nAs a check, 53% + 47% = 100%. (These genotype frequencies are not the Hardy-Weinberg proportions for these allele frequencies, since \\(0{\\cdot}53^2\\) is about 28%, not 22%; allele frequencies are found by counting whether or not the population is in equilibrium.) So the answer is option (A) 53%, 47%."
+  },
+  {
+   "hash": "c49ef530316b61dadd1f05c2d48a8bcca6a0549ff998bfdf1030eac089e36073",
+   "ref": "Q8",
+   "questionNumber": "8",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Human Health and Disease",
+   "subtopic": "Drugs and Alcohol Abuse",
+   "stem": "Study the items of columns I and II where drugs and their effects are given and match them correctly.\n| Column-I | Column-II |\n|---|---|\n| a. Heroin | i. Affects cardiovascular system |\n| b. Marijuana | ii. Slows down body functions |\n| c. Cocaine | iii. Painkiller |\n| d. Morphine | iv. Interferes with transport of dopamine |\nChoose the correct answer from the options given below :",
+   "options": [
+    {
+     "label": "A",
+     "text": "a-iv, b-iii, c-ii, d-i"
+    },
+    {
+     "label": "B",
+     "text": "a-iii, b-iv, c-i, d-ii"
+    },
+    {
+     "label": "C",
+     "text": "a-ii, b-i, c-iv, d-iii"
+    },
+    {
+     "label": "D",
+     "text": "a-i, b-ii, c-iii, d-iv"
+    }
+   ],
+   "answer": "C",
+   "solution": "- **Heroin** (smack, diacetylmorphine) is a **depressant** and **slows down body functions**: a-ii.\n- **Marijuana** and the other cannabinoids are known for their effects on the **cardiovascular system** of the body: b-i.\n- **Cocaine** (coke, crack) **interferes with the transport of the neurotransmitter dopamine**, and produces euphoria and increased energy: c-iv.\n- **Morphine** is a very effective sedative and **painkiller**, useful for patients who have undergone surgery: d-iii.\n\nSo the answer is option (C) a-ii, b-i, c-iv, d-iii."
+  },
+  {
+   "hash": "4c82e7b96070542b1123c50a748a0eb5f890b3917278b26d6c750a919048aca1",
+   "ref": "Q10",
+   "questionNumber": "10",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Ecosystem",
+   "subtopic": "Energy Flow",
+   "stem": "Read the passage given below and answer the question.\nFood chains 'P' and 'Q' form an interconnection. 'P' initiates with wheat grass whose population supports a few grasshoppers, frogs and snakes. 'Q' starts with dead decaying leaves of wheat grass which are eaten by earthworms and then food chain is continued with frog of food chain 'P'. Identify the types of food chains 'P' and 'Q' :\nFood chain-'P', Food chain-'Q'",
+   "options": [
+    {
+     "label": "A",
+     "text": "Detritus, Grazing"
+    },
+    {
+     "label": "B",
+     "text": "Grazing, Detritus"
+    },
+    {
+     "label": "C",
+     "text": "Detritus, Detritus"
+    },
+    {
+     "label": "D",
+     "text": "Grazing, Grazing"
+    }
+   ],
+   "answer": "B",
+   "solution": "- Food chain 'P' begins with a **living producer**, the wheat grass, which is eaten by herbivores (grasshoppers) and then by carnivores (frogs, then snakes). A food chain that starts with producers is a **grazing food chain (GFC)**.\n- Food chain 'Q' begins with **dead, decaying leaves (detritus)**, eaten by detritivores (earthworms). A food chain that starts with dead organic matter is a **detritus food chain (DFC)**.\n\nThe two are linked because the frog of the grazing chain also eats the earthworms of the detritus chain, which is how food chains interconnect into a food web. So the answer is option (B) Grazing, Detritus."
+  },
+  {
+   "hash": "4a8f2b6fb8c919fd2733d1ad87bb0f40cd96dba112e9f38d901875915e6913b7",
+   "ref": "Q14",
+   "questionNumber": "14",
+   "marks": 1,
+   "format": "mcq",
+   "chapter": "Biotechnology and its Applications",
+   "subtopic": "Biotechnological Applications in Medicine",
+   "stem": "Assertion (A) : Biotechnology produces transgenic microorganisms that function as microfactories for proteins.\nReason (R) : Transgenic microorganisms can be developed to produce proteins of human use, like insulin.",
+   "context": "For Questions number 13 to 16, two statements are given – one labelled as Assertion (A) and the other labelled as Reason (R). Select the correct answer to these questions from the codes (A), (B), (C) and (D) as given below.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Both Assertion (A) and Reason (R) are true and Reason (R) is the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "B",
+     "text": "Both Assertion (A) and Reason (R) are true, but Reason (R) is not the correct explanation of the Assertion (A)."
+    },
+    {
+     "label": "C",
+     "text": "Assertion (A) is true, but Reason (R) is false."
+    },
+    {
+     "label": "D",
+     "text": "Assertion (A) is false, but Reason (R) is true."
+    }
+   ],
+   "answer": "A",
+   "solution": "- **The Assertion is true.** Using recombinant DNA technology, a gene for a desired protein can be transferred into a microorganism such as E. coli. The transgenic microbe multiplies and makes the protein in large amounts, so it works as a **microfactory** for that protein; it is grown in bioreactors and the product is extracted and purified.\n- **The Reason is true.** Transgenic bacteria are used to make proteins of human use, for example **human insulin** (the A and B chains made in E. coli) and other therapeutic proteins.\n- **The Reason explains the Assertion**: microorganisms are called microfactories precisely because they can be engineered to produce such human proteins.\n\nSo both the Assertion and the Reason are true and the Reason is the correct explanation of the Assertion, which is option (A)."
+  },
+  {
+   "hash": "0a620ad648ebc34dc0b28e36cf31ec8fe56de95d01ab1fa4997db78d90a6d94b",
+   "ref": "Q17a",
+   "questionNumber": "17 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Biotechnology: Principles and Processes",
+   "subtopic": "Isolation, Cutting and Amplification of DNA",
+   "stem": "How is DNA isolated in purified form from a bacterial cell ?",
+   "solution": "DNA is enclosed within the cell membrane along with other macromolecules (RNA, proteins, polysaccharides and lipids), so it must be released and then separated from them:\n\n- The bacterial cell is broken open by **digesting the cell envelope with the enzyme lysozyme**, which releases the DNA along with the other macromolecules.\n- **RNA is removed by treatment with ribonuclease** and **proteins by treatment with protease**.\n- Other molecules (such as lipids and polysaccharides) are removed by appropriate treatments.\n- The purified DNA is finally **precipitated out by adding chilled ethanol**. It appears as a collection of fine threads in the suspension, which can be spooled out."
+  },
+  {
+   "hash": "137be8f8611773d9deaea7a25c6a93076941c6e6b94f3dc4b58d1a783f5405b2",
+   "ref": "Q17b",
+   "questionNumber": "17 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Biotechnology and its Applications",
+   "subtopic": "Biotechnological Applications in Medicine",
+   "stem": "Explain how human functional insulin was produced by using recombinant DNA (rDNA) technology.",
+   "solution": "Human insulin is made of two short polypeptide chains, **chain A and chain B**, linked together by **disulphide bridges**. In the body it is made as a prohormone (proinsulin) with an extra C peptide that is removed during maturation.\n\n- In 1983 Eli Lilly, an American company, **prepared two DNA sequences corresponding to the A and B chains** of human insulin.\n- These DNA sequences were **introduced into plasmids of E. coli** to produce the insulin chains.\n- **Chains A and B were produced separately** in the bacteria.\n- They were extracted and **combined by creating disulphide bonds** to form human insulin.\n\nBecause the two chains were made separately, there was no C peptide to remove, and the product is identical to the insulin made in the human body."
+  },
+  {
+   "hash": "cfc1317d008ea490abbd1c9600ea7c48141eeeafca8e9c2162befb91f20afb88",
+   "ref": "Q20a",
+   "questionNumber": "20 (a)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Microbes in Human Welfare",
+   "subtopic": "Microbes as Biofertilisers",
+   "stem": "Ravi lives in a village where he suggested to the local farmers to introduce a fungus as biofertilizer into their crop fields. State the benefits provided by the fungus to the crop.",
+   "solution": "The fungus Ravi suggested would form **mycorrhiza**, a symbiotic association between a fungus and the roots of higher plants. Many members of the genus **Glomus** form mycorrhiza. The benefits to the crop are:\n\n- The fungal symbiont **absorbs phosphorus from the soil and passes it to the plant**.\n- The plants show **resistance to root-borne pathogens**.\n- The plants become **tolerant to salinity and drought**.\n- There is an **overall increase in plant growth and development**."
+  },
+  {
+   "hash": "229a14bda951e685bf553dbe385b13353fe22e289846b8c8ddf9889b4d98e010",
+   "ref": "Q20b",
+   "questionNumber": "20 (b)",
+   "marks": 2,
+   "format": "subjective",
+   "chapter": "Human Health and Disease",
+   "subtopic": "Immunity",
+   "stem": "(i) How do secondary lymphoid organs provide immunity ?\n(ii) Highlight the role of spleen as an organ that provides immunity.",
+   "solution": "(i) The **secondary lymphoid organs** (spleen, lymph nodes, tonsils, Peyer's patches of the small intestine, appendix and the mucosa-associated lymphoid tissue) receive the lymphocytes that have matured in the primary lymphoid organs. They **provide the sites for interaction of lymphocytes with the antigen**, after which the lymphocytes **proliferate to become effector cells**.\n\n(ii) The **spleen** is a large, bean-shaped secondary lymphoid organ.\n- It mainly contains **lymphocytes and phagocytes**.\n- It acts as a **filter of the blood by trapping blood-borne microorganisms**, so antigens in the blood are met and destroyed there.\n- It also has a large reservoir of erythrocytes."
+  },
+  {
+   "hash": "47a5b8fa9b396261168e9fa9e0efc0f3311f801440ffb85e5cabd5174dfceca1",
+   "ref": "Q22",
+   "questionNumber": "22",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Biotechnology and its Applications",
+   "subtopic": "Biotechnological Applications in Medicine",
+   "stem": "Gene therapy can be used to treat an ADA deficient patient. Explain.\nIs it a permanent cure ? How can ADA be cured permanently ?",
+   "solution": "**ADA (adenosine deaminase) deficiency** is caused by the deletion of the gene for ADA, an enzyme crucial for the immune system to function. In some children it is treated by **gene therapy**:\n\n- **Lymphocytes from the blood of the patient are grown in a culture** outside the body.\n- A **functional ADA cDNA** is introduced into these lymphocytes, using a retroviral vector.\n- The genetically engineered lymphocytes are then **returned to the patient**.\n\n**It is not a permanent cure.** The engineered lymphocytes are not immortal, so the patient needs periodic infusion of such genetically engineered lymphocytes.\n\n**Permanent cure**: if the gene isolated from marrow cells producing ADA is **introduced into cells at early embryonic stages**, it could be a permanent cure. [CBSE marking scheme: the scheme says the gene is introduced \"into lymphocytes at early embryonic stage\"; an early embryo has no lymphocytes yet, and NCERT says the gene is introduced \"into cells at early embryonic stages\".]"
+  },
+  {
+   "hash": "8fc5b7ffdd3473d7079cb2fa3cecd68156fb8588f37cf5ba2b4b5bb0554b5dfb",
+   "ref": "Q24",
+   "questionNumber": "24",
+   "marks": 3,
+   "format": "subjective",
+   "chapter": "Molecular Basis of Inheritance",
+   "subtopic": "Transcription",
+   "stem": "Construct and label a transcription unit from which the RNA segment given below has been transcribed. Write the complete name of the enzyme that transcribed this RNA.\n5' AUG CAU GCA UGC 3'\nRNA molecule",
+   "figureNote": "ILLUSTRATIVE:a horizontal line labelled 5' at its left end and 3' at its right end, captioned 'RNA molecule', with four groups of three short vertical ticks standing on it, the groups lettered AUG, CAU, GCA and UGC from left to right. The whole sequence is carried in the stem, so the row is answerable from text. Page idx 16.",
+   "imageAttached": false,
+   "solution": "The RNA is complementary to the template strand and has the same sequence as the coding strand, with uracil in place of thymine. So for the RNA 5' AUGCAUGCAUGC 3':\n\n- **Coding strand**: 5' ATGCATGCATGC 3'\n- **Template strand**: 3' TACGTACGTACG 5'\n\nThe labelled transcription unit is drawn as the two paired strands with these sequences, both polarities marked:\n\n- the **promoter** at the **upstream** end, towards the 5' end of the coding strand (the 3' end of the template strand), where RNA polymerase binds;\n- the **structural gene**, the stretch between them that is transcribed;\n- the **terminator** at the **downstream** end, towards the 3' end of the coding strand, where transcription stops.\n\nThe template strand, with polarity 3' to 5', is the one transcribed, since RNA is made in the 5' to 3' direction.\n\nThe enzyme that transcribed this RNA is **DNA-dependent RNA polymerase**."
+  },
+  {
+   "hash": "e82b2017fdc3d3014883f63269d23932c7daed48a1f4773acc2f00862acf3bf3",
+   "ref": "Q32a",
+   "questionNumber": "32 (a)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Sexual Reproduction in Flowering Plants",
+   "subtopic": "Pollination",
+   "stem": "What is meant by 'right' and 'wrong' type of pollen when pollen lands on the stigma. A two-celled right type pollen has landed on the stigma. Explain the events taking place till fertilization in angiosperms. Why is pollen pistil interaction said to be dynamic ?",
+   "solution": "**'Right' and 'wrong' pollen.** The pistil can recognise the pollen that lands on its stigma. Pollen of the right type is **compatible** pollen (of the same species), which the pistil accepts; pollen of the wrong type is **incompatible** pollen (of another species, or of the same plant in a self-incompatible species), which the pistil rejects by preventing its germination on the stigma or the growth of the pollen tube in the style.\n\n**Events till fertilisation after a compatible two-celled pollen grain lands on the stigma:**\n\n- The pollen grain **germinates on the stigma to produce a pollen tube through one of the germ pores**, and the contents of the pollen grain move into the tube.\n- The two-celled pollen has a vegetative cell and a generative cell; the **generative cell divides to form the two male gametes** during the growth of the pollen tube in the stigma.\n- The pollen tube grows through the tissues of the stigma and style and reaches the ovary.\n- It **enters the ovule through the micropyle** and then **enters one of the synergids through the filiform apparatus**, which guides the entry of the tube.\n- The pollen tube **releases the two male gametes** into the cytoplasm of the synergid.\n- One male gamete (n) fuses with the egg cell (n) to form the diploid **zygote (2n)**: this is **syngamy**.\n- The other male gamete fuses with the two polar nuclei in the central cell to form the triploid **primary endosperm nucleus (3n)**: this is **triple fusion**.\n\nSince two fusions, syngamy and triple fusion, take place in the embryo sac, the event is called **double fertilisation**.\n\n**Why pollen-pistil interaction is dynamic**: it involves **pollen recognition followed by promotion or inhibition of the pollen**, that is, of its germination and pollen-tube growth. It is a continuous dialogue mediated by chemical components of the pollen interacting with those of the pistil, all the events from pollen deposition on the stigma until the pollen tube enters the ovule."
+  },
+  {
+   "hash": "276e017d0618070048c508dcc17434b2d1ac8e40a9d48cc708ece1387567013e",
+   "ref": "Q32b",
+   "questionNumber": "32 (b)",
+   "marks": 5,
+   "format": "subjective",
+   "chapter": "Human Reproduction",
+   "subtopic": "Gametogenesis",
+   "stem": "(i) Give the schematic representation of oogenesis in human female indicating chromosome number at each step.\n(ii) In which part of the female reproductive system do the following events take place ?\nI. Formation of corpus luteum\nII. Maturation of tertiary follicle\nIII. Fertilisation\nIV. Implantation",
+   "solution": "(i) Oogenesis is the formation of a mature female gamete. The schematic representation, with the chromosome number per cell, runs:\n\n- **Oogonia (46)**: the gamete mother cells formed within each fetal ovary during **fetal life**; they divide by **mitosis** and differentiate.\n- **Primary oocyte (46)**: formed in fetal life; it enters prophase of the first meiotic division and gets temporarily arrested at that stage, through birth and childhood, until puberty.\n- **First meiotic division** (completed prior to ovulation, in the tertiary follicle): an unequal division giving a large haploid **secondary oocyte (23)** and a tiny **first polar body (23)**.\n- **Second meiotic division** (completed only when a sperm enters, during adult reproductive life): the secondary oocyte gives the **ovum (23)** and the **second polar body (23)**.\n\nThe diagram shows this as a vertical flow, oogonia to primary oocyte to secondary oocyte to ovum, with the polar bodies branching off, the chromosome number (46, 46, 23, 23) marked at each step and the life phases marked alongside.\n\n(ii)\n- I. **Formation of corpus luteum**: in the **ovary**, where the ruptured Graafian follicle transforms into the corpus luteum after ovulation.\n- II. **Maturation of tertiary follicle**: in the **ovary**, where the tertiary follicle matures into the Graafian follicle.\n- III. **Fertilisation**: in the **ampullary region of the fallopian tube (oviduct)**.\n- IV. **Implantation**: in the **endometrium of the uterus**, where the blastocyst becomes embedded."
+  }
+ ]
+}

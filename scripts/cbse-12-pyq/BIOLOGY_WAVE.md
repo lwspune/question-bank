@@ -81,8 +81,17 @@ the file changed, read it again and re-apply.
 - **`_outOfSyllabus` (mostly 2022):** a question on content the rationalised
   NCERT book REMOVED (e.g. organism adaptations, found on 2022 57/2/1 Q5) is
   filed on the closest live subtopic with `"_outOfSyllabus": "<the removed
-  topic>"`, and listed in your report. Never invent a subtopic; the treatment
-  is decided centrally once all of them are known.
+  topic>"`, and listed in your report. Never invent a subtopic. DECIDED
+  2026-10-08: organism adaptations / responses to abiotic factors are filed on
+  chapter `Organism and its Environment [Outdated]`, subtopic `Responses to
+  Abiotic Factors and Adaptations` (the Chemistry `Surface Chemistry
+  [Outdated]` precedent; never edit the stem). NOT out of syllabus:
+  plant tissue culture, micropropagation, somaclones, meristem culture,
+  somatic hybridisation and the pomato. The old "Strategies for Enhancement
+  in Food Production" chapter was dropped, but these moved into Ch.10
+  Biotechnology and its Applications (lebo110 p1-2, Reprint 2026-27); file
+  them on Biotechnological Applications in Agriculture with no
+  `_outOfSyllabus`.
 - A scheme defect gets a `[CBSE marking scheme: ...]` bracket; an unconditional
   award gets `_cbseVoided` and one opening line in the solution.
 - No em dash in anything you write (solutions, notes). Copied paper text keeps
