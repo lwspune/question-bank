@@ -188,6 +188,16 @@ import {
   IMAT_REA_ENG_NOTES,
   IMAT_REA_ENG_SLUGS,
 } from "./reading/english-language-grammar";
+import {
+  IMAT_LOG_DED_CHAPTER,
+  IMAT_LOG_DED_NOTES,
+  IMAT_LOG_DED_SLUGS,
+} from "./logic/deductive-logic";
+import {
+  IMAT_LOG_SPA_CHAPTER,
+  IMAT_LOG_SPA_NOTES,
+  IMAT_LOG_SPA_SLUGS,
+} from "./logic/spatial-sequence-reasoning";
 
 export type ImatNotesSubject = {
   /** URL segment, e.g. "imat-biology". */
@@ -274,6 +284,8 @@ export const IMAT_NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   entry("imat-logic", "critical-thinking", IMAT_LOG_CRT_CHAPTER, IMAT_LOG_CRT_NOTES, IMAT_LOG_CRT_SLUGS),
   entry("imat-logic", "numerical-reasoning", IMAT_LOG_NUR_CHAPTER, IMAT_LOG_NUR_NOTES, IMAT_LOG_NUR_SLUGS),
   entry("imat-logic", "data-interpretation", IMAT_LOG_DAT_CHAPTER, IMAT_LOG_DAT_NOTES, IMAT_LOG_DAT_SLUGS),
+  entry("imat-logic", "deductive-logic", IMAT_LOG_DED_CHAPTER, IMAT_LOG_DED_NOTES, IMAT_LOG_DED_SLUGS),
+  entry("imat-logic", "spatial-sequence-reasoning", IMAT_LOG_SPA_CHAPTER, IMAT_LOG_SPA_NOTES, IMAT_LOG_SPA_SLUGS),
   // Reading
   entry("imat-reading", "reading-comprehension", IMAT_REA_RDC_CHAPTER, IMAT_REA_RDC_NOTES, IMAT_REA_RDC_SLUGS),
   entry("imat-reading", "english-language-grammar", IMAT_REA_ENG_CHAPTER, IMAT_REA_ENG_NOTES, IMAT_REA_ENG_SLUGS),
