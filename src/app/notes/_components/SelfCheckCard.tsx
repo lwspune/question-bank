@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronDown, ClipboardCheck, Lightbulb } from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
+import BlockText from "@/components/math/BlockText";
 import type { AuthoredExample } from "@/app/notes/_types";
 
 type Props = {
@@ -27,7 +28,7 @@ export default function SelfCheckCard({ example }: Props) {
       </p>
 
       <div className="mt-3 font-serif text-base leading-relaxed text-foreground">
-        <KatexRenderer text={example.prompt} />
+        <BlockText text={example.prompt} />
       </div>
 
       {example.options && example.options.length > 0 && (
@@ -57,7 +58,7 @@ export default function SelfCheckCard({ example }: Props) {
           <ol className="list-decimal space-y-2 pl-6 font-serif text-sm text-muted-foreground">
             {example.steps.map((step, i) => (
               <li key={i} className="leading-relaxed">
-                <KatexRenderer text={step} />
+                <BlockText text={step} />
               </li>
             ))}
           </ol>

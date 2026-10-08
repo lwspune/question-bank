@@ -8,6 +8,7 @@
 import katex from "katex";
 import type { ChapterNote, SubtopicNote } from "@/app/notes/_types";
 import { enumeratedItems } from "@/lib/notes/introAudit";
+import { parseTableBlocks } from "@/components/math/parseTableBlocks";
 
 export type ChapterUnderCheck = {
   chapterSlug: string;
@@ -17,6 +18,12 @@ export type ChapterUnderCheck = {
 };
 
 export type BankCounts = { total: number; recent: number };
+
+/**
+ * Fields the notes render through BlockText, so a GFM pipe-table there draws
+ * as a table. Everywhere else it would print as raw pipes.
+ */
+const TABLE_FIELDS = /\.(authoredExample|selfCheckExample)\.(prompt|steps\[\d+\])$|\.practiceSet\[\d+\]\.prompt$/;
 
 /** Every string in a value, with a path for the message. */
 export function collectStrings(value: unknown, path: string, out: { path: string; s: string }[] = []) {
@@ -100,6 +107,8 @@ export function checkImatChapter(c: ChapterUnderCheck, bank: BankCounts | undefi
       }
       if ((s.match(/\\\(/g) ?? []).length !== (s.match(/\\\)/g) ?? []).length)
         problems.push(`${path}: unbalanced \\( \\)`);
+      if (!TABLE_FIELDS.test(path) && parseTableBlocks(s).some((b) => b.kind === "table"))
+        problems.push(`${path}: a pipe-table here prints as raw text (tables go only in example prompts and steps)`);
     }
 
     for (const k of note.concepts) {
