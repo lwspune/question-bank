@@ -248,6 +248,10 @@ export const CHAPTERS_BIOLOGY = [
   "Organisms and Populations",
   "Ecosystem",
   "Biodiversity and Conservation",
+  // Dropped by the rationalised NCERT (adaptations, responses to abiotic
+  // factors); five 2022 rows examine it. Tissue culture is NOT here: the
+  // current book teaches it in Biotechnology and its Applications.
+  "Organism and its Environment [Outdated]",
 ] as const;
 
 /**
