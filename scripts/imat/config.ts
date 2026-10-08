@@ -25,3 +25,16 @@ export function figurePath(year: number, n: number): string {
  * is answered (NICHE_SITES_SPEC.md D1). The commit writes this at insert.
  */
 export const VISIBILITY = "PRIVATE" as const;
+
+/**
+ * Papers held for INTERNAL use only (owner, 2026-10-08): 2011-2022 were set by
+ * Cambridge (UCLES), whose policy refuses permission to publish them. Their
+ * rows carry this reason in `publish_blocked`, and the database then refuses
+ * to make them PUBLIC (migration 0141). The ministry's papers (2023+) are not
+ * blocked; they wait only on D1.
+ */
+export function publishBlockFor(year: number): string | undefined {
+  return year <= 2022
+    ? `IMAT ${year} was set by Cambridge (UCLES); internal use only, never to be published.`
+    : undefined;
+}

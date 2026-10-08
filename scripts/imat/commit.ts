@@ -11,6 +11,9 @@
  * question is never public, not even for a moment, until the niche site and
  * the copyright question (NICHE_SITES_SPEC.md D1) are both settled.
  *
+ * A Cambridge-set paper (2011-2022) is also written with `publish_blocked`
+ * (config.ts publishBlockFor), so the database refuses ever to publish it.
+ *
  * Refuses to write while any question lacks a chapter, any figure file is
  * missing, or the paper fails check.ts. Rollback is by source_file: every row
  * carries the paper's filename.
@@ -20,7 +23,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { commitStaged } from "../../src/lib/upload/commit";
 import { uploadImage } from "../../src/lib/storage/images";
-import { CREATED_BY, EXAM_NAME, ORG_ID, VISIBILITY, figurePath } from "./config";
+import { CREATED_BY, EXAM_NAME, ORG_ID, VISIBILITY, figurePath, publishBlockFor } from "./config";
 import { buildRow, validatePaper } from "./lib";
 import { YEARS, loadPaper, mathErrors } from "./check";
 
@@ -110,6 +113,7 @@ async function main() {
     uploadJobId: jobId,
     pyqYear: year,
     visibility: VISIBILITY,
+    publishBlocked: publishBlockFor(year),
   });
   console.log(`commit: inserted=${result.inserted} skipped=${result.skipped} failed=${result.failed}`);
   for (const e of result.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
