@@ -30,6 +30,19 @@ export default function SelfCheckCard({ example }: Props) {
         <KatexRenderer text={example.prompt} />
       </div>
 
+      {example.options && example.options.length > 0 && (
+        <ol className="mt-3 space-y-1.5 font-serif text-base leading-relaxed text-foreground">
+          {example.options.map((option, i) => (
+            <li key={i} className="flex gap-2">
+              <span className="shrink-0 font-sans text-sm font-semibold text-sky-700 dark:text-sky-300">
+                ({String.fromCharCode(65 + i)})
+              </span>
+              <KatexRenderer text={option} />
+            </li>
+          ))}
+        </ol>
+      )}
+
       {!showSolution ? (
         <button
           type="button"
