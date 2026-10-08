@@ -5,6 +5,7 @@ import {
   validatePaper,
   keyModeFor,
   MUR_SHAPE,
+  PAPER_SHAPES,
   type ImatQuestion,
   type ShapeBlock,
 } from "../scripts/imat/lib";
@@ -172,14 +173,23 @@ describe("validatePaper", () => {
     wrong[0] = { ...wrong[0], section: "biology" };
     expect(validatePaper(2016, wrong, shape).join(" ")).toMatch(/Q1/);
   });
+
+  it("knows 2022's own shape: 20 general knowledge and logic, 15 biology, 15 chemistry, 10 physics and maths", () => {
+    expect(PAPER_SHAPES[2022].map((b) => b.count)).toEqual([20, 15, 15, 10]);
+    expect(validatePaper(2022, paper(PAPER_SHAPES[2022]))).toEqual([]);
+  });
 });
 
 describe("keyModeFor", () => {
   it("is printed-A for the ministry's papers and the printed key for Cambridge's", () => {
     expect(keyModeFor(2023)).toBe("printed-a");
     expect(keyModeFor(2026)).toBe("printed-a");
-    expect(keyModeFor(2022)).toBe("printed-key");
+    expect(keyModeFor(2021)).toBe("printed-key");
     expect(keyModeFor(2011)).toBe("printed-key");
+  });
+
+  it("treats 2022 as printed-A: its copy puts the answer at A, confirmed question by question", () => {
+    expect(keyModeFor(2022)).toBe("printed-a");
   });
 });
 
