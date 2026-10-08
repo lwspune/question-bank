@@ -57,7 +57,15 @@ def trim_edges(page, box):
     return box
 
 
-def figure_box(page, top, bottom, words, with_labels):
+def watermarks(doc):
+    """Images on more than half the pages: a provider's watermark or logo (2022's
+    copy carries one on every page). Never part of a figure."""
+    from collections import Counter
+    seen = Counter(x[0] for p in doc for x in {im[0]: im for im in p.get_images(full=True)}.values())
+    return {x for x, n in seen.items() if n > doc.page_count / 2}
+
+
+def figure_box(page, top, bottom, words, with_labels, skip=frozenset()):
     box = None
     for d in page.get_drawings():
         r = d["rect"]
@@ -66,6 +74,8 @@ def figure_box(page, top, bottom, words, with_labels):
         if r.y1 > top and r.y0 < bottom:
             box = r if box is None else box | r
     for img in page.get_images(full=True):
+        if img[0] in skip:
+            continue
         for r in page.get_image_rects(img[0]):
             if r.y1 > top and r.y0 < bottom and r.height > 10:
                 box = r if box is None else box | r
@@ -88,6 +98,11 @@ def main(year, force):
     data = json.load(open(os.path.join(HERE, "data", f"{year}.questions.json"), encoding="utf-8"))
     doc = fitz.open(os.path.join(SOURCE_DIR, data["sourceFile"]))
     os.makedirs(FIGURE_DIR, exist_ok=True)
+    marks = watermarks(doc)
+    # Measure every crop BEFORE blanking the watermark: blanking gives the
+    # image a new xref, so the watermark would no longer be skipped by number
+    # and its area would be pulled into the crop.
+    jobs = []
     for q in data["questions"]:
         fig = q.get("figure")
         if not fig:
@@ -99,13 +114,21 @@ def main(year, force):
         page = doc[fig["page"] - 1]
         top, bottom, words = question_area(page, q["n"])
         picture_options = all(re.fullmatch(r"\w+ [A-E]", o) for o in q["options"])
-        box = figure_box(page, top, bottom, words, picture_options)
+        box = figure_box(page, top, bottom, words, picture_options, marks)
         if box is None:
             print(f"Q{q['n']}: NO graphics found on page {fig['page']}; crop it by hand")
             continue
-        box = trim_edges(page, (box + (-4, -4, 4, 4)) & page.rect)
-        page.get_pixmap(dpi=200, clip=box).save(out)
-        print(f"Q{q['n']}: {out}  {[round(v) for v in box]}")
+        jobs.append((q["n"], fig["page"] - 1, trim_edges(page, (box + (-4, -4, 4, 4)) & page.rect), out))
+    if marks:
+        # Blank the watermark in this in-memory copy before rendering any crop.
+        for page in doc:
+            for x in marks:
+                if any(im[0] == x for im in page.get_images(full=True)):
+                    page.delete_image(x)
+        print(f"blanked watermark image(s) {sorted(marks)} (in memory only)")
+    for n, pno, box, out in jobs:
+        doc[pno].get_pixmap(dpi=200, clip=box).save(out)
+        print(f"Q{n}: {out}  {[round(v) for v in box]}")
 
 
 if __name__ == "__main__":

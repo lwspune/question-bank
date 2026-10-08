@@ -31,7 +31,7 @@ HEADINGS = (
     "General Knowledge and Logical Reasoning", "General Knowledge", "Logical Reasoning",
     "Thinking Skills", "Biology", "Chemistry", "Physics and Mathematics",
 )
-FOOTER = re.compile(r"^(©\s*UCLES.*|Page \d+ / \d+|\d{2}[A-Z]{2}\d{5}|IMAT \d{4}.*|[0-9A-Z]{9}|BLANK PAGE|ADMISSION TEST FOR THE DEGREE COURSE.*|Academic Year \d{4}/\d{4})$")
+FOOTER = re.compile(r"^(©\s*UCLES.*|Page \d+ / \d+|\d{2}[A-Z]{2}\d{5}|IMAT \d{4}.*|[0-9A-Z]{9}|BLANK PAGE|©\s*Cambridge University Press.*|Page \d+/\d+|ADMISSION TEST FOR THE DEGREE COURSE.*|Academic Year \d{4}/\d{4})$")
 
 
 def page_lines(page):
@@ -82,9 +82,11 @@ def join(lines):
 def main(pdf, year, out):
     doc = fitz.open(pdf)
     questions = []
-    # The last page is the key. Page 1 is a cover in most years, but 2014 starts its
+    # The last page is the key (2022 has none, so its last page holds Q60). Page 1 is a cover in most years, but 2014 starts its
     # first question there; a cover simply has no margin numbers, so reading it is harmless.
-    for pno in range(0, doc.page_count - 1):
+    last = doc.page_count - 1
+    has_key = re.search(r"answer key", doc[last].get_text(), re.I) is not None
+    for pno in range(0, last if has_key else doc.page_count):
         page = doc[pno]
         lines = [l for l in page_lines(page) if not FOOTER.match(l[4]) and l[4] not in HEADINGS]
         starts = [l for l in lines if re.fullmatch(r"\d{1,2}", l[4]) and l[0] < 70]
