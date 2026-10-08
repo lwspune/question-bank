@@ -168,6 +168,16 @@ import {
   IMAT_CHE_RDX_NOTES,
   IMAT_CHE_RDX_SLUGS,
 } from "./chemistry/redox";
+import {
+  IMAT_LOG_NUR_CHAPTER,
+  IMAT_LOG_NUR_NOTES,
+  IMAT_LOG_NUR_SLUGS,
+} from "./logic/numerical-reasoning";
+import {
+  IMAT_LOG_DAT_CHAPTER,
+  IMAT_LOG_DAT_NOTES,
+  IMAT_LOG_DAT_SLUGS,
+} from "./logic/data-interpretation";
 
 export type ImatNotesSubject = {
   /** URL segment, e.g. "imat-biology". */
@@ -252,6 +262,8 @@ export const IMAT_NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   entry("imat-physics", "dynamics-work-energy", IMAT_PHY_DYN_CHAPTER, IMAT_PHY_DYN_NOTES, IMAT_PHY_DYN_SLUGS),
   // Logic
   entry("imat-logic", "critical-thinking", IMAT_LOG_CRT_CHAPTER, IMAT_LOG_CRT_NOTES, IMAT_LOG_CRT_SLUGS),
+  entry("imat-logic", "numerical-reasoning", IMAT_LOG_NUR_CHAPTER, IMAT_LOG_NUR_NOTES, IMAT_LOG_NUR_SLUGS),
+  entry("imat-logic", "data-interpretation", IMAT_LOG_DAT_CHAPTER, IMAT_LOG_DAT_NOTES, IMAT_LOG_DAT_SLUGS),
 ];
 
 export function getImatSubject(subjectRoute: string): ImatNotesSubject | undefined {
