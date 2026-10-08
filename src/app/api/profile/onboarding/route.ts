@@ -12,8 +12,9 @@ import { z } from "zod";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { validateOnboardingSubmission, primaryExam } from "@/lib/profile/onboarding";
-import { saveOnboarding, persistAcquisition } from "@/lib/profile/service";
+import { saveOnboarding, persistAcquisition, saveSignupCountry } from "@/lib/profile/service";
 import { readAcquisitionCookie } from "@/lib/acquisition/cookie";
+import { readCountry } from "@/lib/acquisition/country";
 
 const BodySchema = z.object({
   targetExams: z.array(z.string()).max(20).optional().default([]),
@@ -52,6 +53,15 @@ export async function POST(request: NextRequest) {
       if (acq) await persistAcquisition(db, user.id, acq);
     } catch (e) {
       console.error("acquisition persist", e instanceof Error ? e.message : e);
+    }
+    // Country (0142): the backstop for an email signup, which reaches /welcome
+    // without passing the OAuth callback. Needs the full auth user for the
+    // new-account check; same never-fail rule as the channel.
+    try {
+      const { data } = await db.auth.getUser();
+      if (data.user) await saveSignupCountry(db, data.user, readCountry(request.headers));
+    } catch (e) {
+      console.error("signup country persist", e instanceof Error ? e.message : e);
     }
 
     return NextResponse.json({ ok: true, primaryExam: primaryExam(clean.targetExams) });

@@ -6,6 +6,7 @@ import { stampOrderNotes } from "@/lib/billing/plans";
 import { getActivePlan } from "@/lib/billing/plansQuery";
 import { logActivity } from "@/lib/activity/service";
 import { checkoutGate, paywallEvent } from "@/lib/activity/clientEvents";
+import { readCountry, withCountry } from "@/lib/acquisition/country";
 
 export const maxDuration = 30;
 
@@ -42,7 +43,11 @@ export async function POST(request: NextRequest) {
     console.error("razorpay createOrder failed:", result.error);
     return NextResponse.json({ error: "Could not start checkout" }, { status: 502 });
   }
-  await logActivity(db, user.id, paywallEvent("checkout_opened", checkoutGate(body?.gate), plan.id));
+  await logActivity(
+    db,
+    user.id,
+    withCountry(paywallEvent("checkout_opened", checkoutGate(body?.gate), plan.id), readCountry(request.headers))
+  );
 
   return NextResponse.json({
     orderId: result.orderId,

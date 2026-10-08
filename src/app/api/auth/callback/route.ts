@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { getOnboardingState, saveFirstTouch } from "@/lib/profile/service";
+import { getOnboardingState, saveFirstTouch, saveSignupCountry } from "@/lib/profile/service";
+import { readCountry } from "@/lib/acquisition/country";
 import { needsOnboarding } from "@/lib/profile/onboarding";
 import { safeNextPath, signedInHome, type OrgRole } from "@/lib/auth/redirect";
 
@@ -40,6 +41,12 @@ export async function GET(request: NextRequest) {
             await saveFirstTouch(supabase, data.user, request.cookies.get("qb_acq")?.value);
           } catch (e) {
             console.error("acquisition save at sign-in", e instanceof Error ? e.message : e);
+          }
+          // Country the account was created from (0142); not tied to the cookie.
+          try {
+            await saveSignupCountry(supabase, data.user, readCountry(request.headers));
+          } catch (e) {
+            console.error("signup country save at sign-in", e instanceof Error ? e.message : e);
           }
           // Route a student who hasn't done the one-time intent capture through
           // /welcome first, then on to where they were headed. /welcome

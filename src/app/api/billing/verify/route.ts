@@ -6,6 +6,7 @@ import { grantRazorpayEntitlement } from "@/lib/billing/grant";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { logActivity } from "@/lib/activity/service";
 import { paywallEvent } from "@/lib/activity/clientEvents";
+import { readCountry, withCountry } from "@/lib/acquisition/country";
 
 export const maxDuration = 30;
 
@@ -38,6 +39,7 @@ export async function POST(request: NextRequest) {
   if (!body?.razorpay_order_id || !body.razorpay_payment_id || !body.razorpay_signature) {
     return NextResponse.json({ error: "Missing payment fields" }, { status: 400 });
   }
+  const verifyFailed = withCountry(paywallEvent("verify_failed", "pricing"), readCountry(request.headers));
 
   const valid = verifyPaymentSignature(
     body.razorpay_order_id,
@@ -46,7 +48,7 @@ export async function POST(request: NextRequest) {
     secret
   );
   if (!valid) {
-    await logActivity(createSupabaseServerClient(), user.id, paywallEvent("verify_failed", "pricing"));
+    await logActivity(createSupabaseServerClient(), user.id, verifyFailed);
     return NextResponse.json({ error: "Payment verification failed" }, { status: 400 });
   }
 
@@ -69,7 +71,7 @@ export async function POST(request: NextRequest) {
   }
   if (!decided.ok) {
     console.error("verify: order refused", decided.reason);
-    await logActivity(createSupabaseServerClient(), user.id, paywallEvent("verify_failed", "pricing"));
+    await logActivity(createSupabaseServerClient(), user.id, verifyFailed);
     return NextResponse.json({ error: "Payment verification failed" }, { status: 400 });
   }
   const result = await grantRazorpayEntitlement({
