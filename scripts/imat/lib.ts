@@ -51,6 +51,7 @@ const CAMBRIDGE_60: readonly ShapeBlock[] = [
 export const PAPER_SHAPES: Record<number, readonly ShapeBlock[]> = {
   2015: CAMBRIDGE_60,
   2016: CAMBRIDGE_60,
+  2017: CAMBRIDGE_60,
   2023: MUR_SHAPE,
   2024: MUR_SHAPE,
   2025: MUR_SHAPE,
