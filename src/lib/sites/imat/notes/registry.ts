@@ -23,6 +23,51 @@ import {
   IMAT_PHY_FLUIDS_NOTES,
   IMAT_PHY_FLUIDS_SLUGS,
 } from "./physics/fluids";
+import {
+  IMAT_BIO_CSM_CHAPTER,
+  IMAT_BIO_CSM_NOTES,
+  IMAT_BIO_CSM_SLUGS,
+} from "./biology/cell-structure-membranes";
+import {
+  IMAT_BIO_BMO_CHAPTER,
+  IMAT_BIO_BMO_NOTES,
+  IMAT_BIO_BMO_SLUGS,
+} from "./biology/biomolecules-enzymes";
+import {
+  IMAT_BIO_BEM_CHAPTER,
+  IMAT_BIO_BEM_NOTES,
+  IMAT_BIO_BEM_SLUGS,
+} from "./biology/bioenergetics-metabolism";
+import {
+  IMAT_BIO_MOL_CHAPTER,
+  IMAT_BIO_MOL_NOTES,
+  IMAT_BIO_MOL_SLUGS,
+} from "./biology/molecular-biology";
+import {
+  IMAT_BIO_GEN_CHAPTER,
+  IMAT_BIO_GEN_NOTES,
+  IMAT_BIO_GEN_SLUGS,
+} from "./biology/genetics";
+import {
+  IMAT_BIO_CDR_CHAPTER,
+  IMAT_BIO_CDR_NOTES,
+  IMAT_BIO_CDR_SLUGS,
+} from "./biology/cell-division-reproduction";
+import {
+  IMAT_BIO_EVO_CHAPTER,
+  IMAT_BIO_EVO_NOTES,
+  IMAT_BIO_EVO_SLUGS,
+} from "./biology/evolution-ecology";
+import {
+  IMAT_BIO_MBT_CHAPTER,
+  IMAT_BIO_MBT_NOTES,
+  IMAT_BIO_MBT_SLUGS,
+} from "./biology/microorganisms-biotechnology";
+import {
+  IMAT_CHE_ORG_CHAPTER,
+  IMAT_CHE_ORG_NOTES,
+  IMAT_CHE_ORG_SLUGS,
+} from "./chemistry/organic-chemistry";
 
 export type ImatNotesSubject = {
   /** URL segment, e.g. "imat-biology". */
@@ -73,6 +118,17 @@ function entry(
 }
 
 export const IMAT_NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
+  // Biology
+  entry("imat-biology", "cell-structure-membranes", IMAT_BIO_CSM_CHAPTER, IMAT_BIO_CSM_NOTES, IMAT_BIO_CSM_SLUGS),
+  entry("imat-biology", "biomolecules-enzymes", IMAT_BIO_BMO_CHAPTER, IMAT_BIO_BMO_NOTES, IMAT_BIO_BMO_SLUGS),
+  entry("imat-biology", "bioenergetics-metabolism", IMAT_BIO_BEM_CHAPTER, IMAT_BIO_BEM_NOTES, IMAT_BIO_BEM_SLUGS),
+  entry("imat-biology", "molecular-biology", IMAT_BIO_MOL_CHAPTER, IMAT_BIO_MOL_NOTES, IMAT_BIO_MOL_SLUGS),
+  entry("imat-biology", "genetics", IMAT_BIO_GEN_CHAPTER, IMAT_BIO_GEN_NOTES, IMAT_BIO_GEN_SLUGS),
+  entry("imat-biology", "cell-division-reproduction", IMAT_BIO_CDR_CHAPTER, IMAT_BIO_CDR_NOTES, IMAT_BIO_CDR_SLUGS),
+  entry("imat-biology", "evolution-ecology", IMAT_BIO_EVO_CHAPTER, IMAT_BIO_EVO_NOTES, IMAT_BIO_EVO_SLUGS),
+  entry("imat-biology", "microorganisms-biotechnology", IMAT_BIO_MBT_CHAPTER, IMAT_BIO_MBT_NOTES, IMAT_BIO_MBT_SLUGS),
+  // Chemistry
+  entry("imat-chemistry", "organic-chemistry", IMAT_CHE_ORG_CHAPTER, IMAT_CHE_ORG_NOTES, IMAT_CHE_ORG_SLUGS),
   // Physics
   entry("imat-physics", "fluids", IMAT_PHY_FLUIDS_CHAPTER, IMAT_PHY_FLUIDS_NOTES, IMAT_PHY_FLUIDS_SLUGS),
 ];
