@@ -1,0 +1,23 @@
+-- 0140_option_label_e.sql
+--
+-- A fifth option label, 'E' (2026-10-08).
+--
+-- WHY. IMAT (the Italian ministry's medicine-in-English admission test) prints
+-- five options per question, A to E, and is the first exam here that does.
+-- `option_label` has allowed A-D since 0001, so a five-option question could
+-- not be stored at all: the options insert failed with
+-- `invalid input value for enum option_label: "E"`. See NICHE_SITES_SPEC.md,
+-- step C2 (content first, niche-site domain later).
+--
+-- SCOPE. Only the label type. Two other A-D checks stay as they are until
+-- IMAT mocks are built (spec P1.5): mock_attempt_answers.selected_label
+-- (0044) and question_item_stats.key_at_measurement (0095). Nothing can write
+-- an 'E' there before then, because no five-option question is in a mock.
+--
+-- SAFE. ADD VALUE only appends to the type: every existing row, index and
+-- policy is untouched, and code that only knows A-D keeps working. It cannot
+-- be used inside the same transaction that adds it, which nothing here does.
+-- Not reversible in place (Postgres cannot drop an enum value), which is
+-- acceptable: an unused 'E' is harmless.
+
+ALTER TYPE public.option_label ADD VALUE IF NOT EXISTS 'E';

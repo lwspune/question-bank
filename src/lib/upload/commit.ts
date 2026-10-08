@@ -1,6 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { literalNewlineFields } from "./textGuard";
-import type { ParsedRowPayload, OptionLabel } from "./validate";
+import type { ParsedRowPayload, StoredOptionLabel } from "./validate";
 import { makeTaxonomyResolver } from "./taxonomy";
 
 export type CommitInput = {
@@ -236,7 +236,7 @@ export async function commitStaged(
 
   const optionRows: {
     question_id: string;
-    label: OptionLabel;
+    label: StoredOptionLabel;
     text: string;
     is_correct: boolean;
   }[] = [];
