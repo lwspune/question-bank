@@ -83,6 +83,26 @@ import {
   IMAT_PHY_MAG_NOTES,
   IMAT_PHY_MAG_SLUGS,
 } from "./physics/magnetism";
+import {
+  IMAT_PHY_HTH_CHAPTER,
+  IMAT_PHY_HTH_NOTES,
+  IMAT_PHY_HTH_SLUGS,
+} from "./physics/heat-thermodynamics";
+import {
+  IMAT_PHY_OSW_CHAPTER,
+  IMAT_PHY_OSW_NOTES,
+  IMAT_PHY_OSW_SLUGS,
+} from "./physics/oscillations-waves";
+import {
+  IMAT_PHY_OPT_CHAPTER,
+  IMAT_PHY_OPT_NOTES,
+  IMAT_PHY_OPT_SLUGS,
+} from "./physics/optics";
+import {
+  IMAT_LOG_CRT_CHAPTER,
+  IMAT_LOG_CRT_NOTES,
+  IMAT_LOG_CRT_SLUGS,
+} from "./logic/critical-thinking";
 
 export type ImatNotesSubject = {
   /** URL segment, e.g. "imat-biology". */
@@ -149,6 +169,11 @@ export const IMAT_NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   entry("imat-physics", "fluids", IMAT_PHY_FLUIDS_CHAPTER, IMAT_PHY_FLUIDS_NOTES, IMAT_PHY_FLUIDS_SLUGS),
   entry("imat-physics", "electricity", IMAT_PHY_ELE_CHAPTER, IMAT_PHY_ELE_NOTES, IMAT_PHY_ELE_SLUGS),
   entry("imat-physics", "magnetism", IMAT_PHY_MAG_CHAPTER, IMAT_PHY_MAG_NOTES, IMAT_PHY_MAG_SLUGS),
+  entry("imat-physics", "heat-thermodynamics", IMAT_PHY_HTH_CHAPTER, IMAT_PHY_HTH_NOTES, IMAT_PHY_HTH_SLUGS),
+  entry("imat-physics", "oscillations-waves", IMAT_PHY_OSW_CHAPTER, IMAT_PHY_OSW_NOTES, IMAT_PHY_OSW_SLUGS),
+  entry("imat-physics", "optics", IMAT_PHY_OPT_CHAPTER, IMAT_PHY_OPT_NOTES, IMAT_PHY_OPT_SLUGS),
+  // Logic
+  entry("imat-logic", "critical-thinking", IMAT_LOG_CRT_CHAPTER, IMAT_LOG_CRT_NOTES, IMAT_LOG_CRT_SLUGS),
 ];
 
 export function getImatSubject(subjectRoute: string): ImatNotesSubject | undefined {
