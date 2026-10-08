@@ -36,6 +36,7 @@ import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { concludedLetter } from "../practice/audit-keys";
+import { statedOption } from "./statedOption";
 import { ORG_ID, EXAM_ID_CBSE_12 } from "./config";
 
 type Row = { ref: string; format?: string; questionNumber?: string; solution?: string | null };
@@ -62,7 +63,7 @@ async function main() {
   );
 
   const { data, error } = await client.from("questions")
-    .select("question_number, options(label, is_correct)")
+    .select("question_number, options(label, text, is_correct)")
     .eq("org_id", ORG_ID).eq("exam_id", EXAM_ID_CBSE_12).eq("question_kind", "pyq")
     .eq("source_file", `cbse-12-pyq-${paperId}`);
   if (error) throw new Error(error.message);
@@ -70,9 +71,11 @@ async function main() {
   // The bank is the source of the key — never the authored file, which is the
   // thing under test.
   const keyOf = new Map<string, string | null>();
-  for (const q of (data ?? []) as never as { question_number: string; options: { label: string; is_correct: boolean }[] }[]) {
+  const optionsOf = new Map<string, { label: string; text: string }[]>();
+  for (const q of (data ?? []) as never as { question_number: string; options: { label: string; text: string; is_correct: boolean }[] }[]) {
     const correct = (q.options ?? []).filter((o) => o.is_correct).map((o) => o.label);
     keyOf.set(q.question_number, correct.length === 1 ? correct[0] : null);
+    optionsOf.set(q.question_number, q.options ?? []);
   }
 
   const mcqs = rows.filter((r) => r.format === "mcq");
@@ -82,11 +85,16 @@ async function main() {
   for (const r of mcqs) {
     if (!r.solution) { unsolved++; continue; }
     const key = keyOf.get(r.questionNumber ?? "") ?? null;
-    const got = concludedLetter(r.solution);
+    // A named letter first; failing that, the answer stated in words (two
+    // measured-clean rules, statedOption.ts). "(none)" means neither could read
+    // it, which is still reported: an unread row has not been checked.
+    const letter = concludedLetter(r.solution);
+    const got = letter ?? statedOption(r.solution, optionsOf.get(r.questionNumber ?? "") ?? []);
     if (got === key) continue;
     flagged++;
     const want = key === null ? "(voided / not exactly one keyed)" : key;
-    console.log(`  !! ${r.ref}: solution concludes ${got ?? "(none)"} | bank keys ${want}`);
+    const how = got && !letter ? " (read from the words)" : "";
+    console.log(`  !! ${r.ref}: solution concludes ${got ?? "(none)"}${how} | bank keys ${want}`);
   }
 
   console.log(`\n${paperId}: screened ${mcqs.length} mcq row(s)${unsolved ? `, ${unsolved} not yet authored` : ""}`);

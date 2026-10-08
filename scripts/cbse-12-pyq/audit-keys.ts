@@ -30,7 +30,8 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { auditRow } from "../practice/audit-keys";
+import { auditRow, concludedLetter } from "../practice/audit-keys";
+import { statedOption } from "./statedOption";
 import { contentHash } from "../../src/lib/upload/hash";
 import { DATA, ORG_ID, EXAM_ID_CBSE_12 } from "./config";
 
@@ -110,8 +111,25 @@ async function main() {
   const flags: string[] = [];
   const expected: string[] = [];
   let noSolution = 0;
+  // How many solutions this probe could actually READ. auditRow only sees an
+  // option LETTER; most shipped CBSE solutions state the answer in words, so
+  // the words are read too (statedOption, two measured-clean rules) where no
+  // letter is named. An unread row is not a pass, so the count is printed.
+  let byLetter = 0, byText = 0, unread = 0;
   for (const r of rows) {
     if (!r.solution) noSolution++;
+    const correct = r.options.filter((o) => o.is_correct).map((o) => o.label);
+    if (r.solution && correct.length === 1) {
+      if (concludedLetter(r.solution)) byLetter++;
+      else {
+        const said = statedOption(r.solution, r.options);
+        if (!said) unread++;
+        else {
+          byText++;
+          if (said !== correct[0]) flags.push(`${r.source_file} Q${r.question_number}: SOLN_TEXT≠KEY(${said}≠${correct[0]})`);
+        }
+      }
+    }
     const f = auditRow(r.options, r.solution);
     if (!f) continue;
     // Only the KEYLESS verdict is excused, and only on a row that asserted it.
@@ -125,6 +143,7 @@ async function main() {
 
   console.log(`Scanned ${rows.length} pyq MCQ(s)${filter ? ` (source ~ "${filter}")` : ""}`);
   console.log(`  without a solution (auditRow cannot judge these): ${noSolution}`);
+  console.log(`  answer read from: a named letter ${byLetter} | the words ${byText} | UNREAD ${unread} (key not checked by this probe)`);
   if (expected.length) {
     console.log(`  ${expected.length} EXPECTED keyless row(s) — CBSE printed no correct option, asserted at transcription:`);
     for (const e of expected) console.log(`    ${e}`);
