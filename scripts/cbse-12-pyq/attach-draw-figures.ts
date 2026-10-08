@@ -35,7 +35,10 @@ type Q = { ref: string; questionNumber: string; format: "mcq" | "subjective"; st
 // (e.g. NCERT draws the pollen grain only up to the 2-celled stage, so it cannot
 // answer "draw a THREE-celled male gametophyte"). Such a row keeps its text
 // description and is neither cropped nor counted as missing.
-type Entry = { ref: string; fig?: string; book?: string; page?: number; bbox?: number[]; mask?: number[][]; note?: string; none?: string };
+// `ms` instead of `book`: where NCERT has no fitting figure, the CBSE marking
+// scheme's own drawing of the expected answer (a path under the PYQ source
+// folder; crop_draw_figures.py reads it the same way).
+type Entry = { ref: string; fig?: string; book?: string; ms?: string; page?: number; bbox?: number[]; mask?: number[][]; note?: string; none?: string };
 
 const refHash = new Map<string, string>(); // "2023-57-1-1:Q29da" -> content_hash
 function workList(): Map<string, { refs: string[]; note: string }> {
@@ -74,7 +77,7 @@ async function main() {
   console.log(`work list: ${work.size} distinct draw-a-diagram question(s); manifest: ${manifest.length} entry(s)`);
   for (const [h, g] of work) {
     const e = byHash.get(h);
-    const what = !e ? "-> NO FIGURE CHOSEN" : e.none ? `-> none (${e.none})` : `-> ${e.fig} (${e.book} p${e.page})`;
+    const what = !e ? "-> NO FIGURE CHOSEN" : e.none ? `-> none (${e.none})` : `-> ${e.fig} (${e.book ?? e.ms} p${e.page})`;
     console.log(`  ${h.slice(0, 8)} ${what}  ${g.refs.join(", ")}`);
     if (!e) console.log(`      draws: ${g.note}`);
   }
