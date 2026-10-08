@@ -40,7 +40,7 @@ export const MUR_SHAPE: readonly ShapeBlock[] = [
 ];
 
 /** Confirmed shapes. A Cambridge year is added once read off its paper. */
-/** Cambridge 2015-2020 (60 q): General Knowledge and Logical Reasoning 22 · Biology 18 · Chemistry 12 · Physics and Mathematics 8. */
+/** Cambridge 2015-2021 (60 q): General Knowledge and Logical Reasoning 22 · Biology 18 · Chemistry 12 · Physics and Mathematics 8. */
 const CAMBRIDGE_60: readonly ShapeBlock[] = [
   { sections: ["reading", "logic"], count: 22 },
   { sections: ["biology"], count: 18 },
@@ -62,6 +62,7 @@ export const PAPER_SHAPES: Record<number, readonly ShapeBlock[]> = {
   2018: CAMBRIDGE_60,
   2019: CAMBRIDGE_60,
   2020: CAMBRIDGE_60,
+  2021: CAMBRIDGE_60,
   // 2022: 10 logic + 10 general knowledge, 15 biology, 15 chemistry, 10 physics and maths.
   2022: [
     { sections: ["reading", "logic"], count: 20 },
@@ -78,12 +79,13 @@ export const PAPER_SHAPES: Record<number, readonly ShapeBlock[]> = {
 export type KeyMode = "printed-a" | "printed-key";
 
 /**
- * 2022 was set by Cambridge, but the only copy we hold is laid out the
- * ministry's way: the correct answer is option A in every question. It
- * prints no key and does not say so, so this rests on solving each of its
- * 60 questions (every one came out A), recorded in data/2022.questions.json.
+ * 2021 and 2022 were set by Cambridge, but the only copies we hold (from one
+ * prep provider, watermarked) are laid out the ministry's way: the correct
+ * answer is option A in every question. Neither prints a key or says so, so
+ * this rests on solving each of their 60 questions (every one came out A,
+ * in both years), recorded in data/<year>.questions.json.
  */
-const PRINTED_A_YEARS: ReadonlySet<number> = new Set([2022]);
+const PRINTED_A_YEARS: ReadonlySet<number> = new Set([2021, 2022]);
 
 export function keyModeFor(year: number): KeyMode {
   return year >= 2023 || PRINTED_A_YEARS.has(year) ? "printed-a" : "printed-key";

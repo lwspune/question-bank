@@ -184,12 +184,17 @@ describe("keyModeFor", () => {
   it("is printed-A for the ministry's papers and the printed key for Cambridge's", () => {
     expect(keyModeFor(2023)).toBe("printed-a");
     expect(keyModeFor(2026)).toBe("printed-a");
-    expect(keyModeFor(2021)).toBe("printed-key");
+    expect(keyModeFor(2020)).toBe("printed-key");
     expect(keyModeFor(2011)).toBe("printed-key");
   });
 
-  it("treats 2022 as printed-A: its copy puts the answer at A, confirmed question by question", () => {
+  it("treats 2021 and 2022 as printed-A: their copies put the answer at A, confirmed question by question", () => {
+    expect(keyModeFor(2021)).toBe("printed-a");
     expect(keyModeFor(2022)).toBe("printed-a");
+  });
+
+  it("knows 2021's shape is the usual Cambridge 22/18/12/8", () => {
+    expect(PAPER_SHAPES[2021].map((b) => b.count)).toEqual([22, 18, 12, 8]);
   });
 });
 
