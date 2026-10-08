@@ -39,7 +39,7 @@ async function main() {
   if (!(YEARS as readonly number[]).includes(year)) throw new Error(`year must be one of ${YEARS.join(", ")}`);
 
   const { sourceFile, questions } = loadPaper(year);
-  const errors = validatePaper(questions);
+  const errors = validatePaper(year, questions);
   const rows = [];
   for (const q of questions) {
     errors.push(...mathErrors(q));

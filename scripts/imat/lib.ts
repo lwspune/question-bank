@@ -1,10 +1,13 @@
 /**
  * IMAT pipeline, pure core (spec tests/imat-lib.test.ts).
  *
- * THE KEY. The ministry (MUR) prints the correct answer as option A in every
- * question: the 2023 paper says so on its last page, and 2025 and 2026
- * highlight A in all 60 questions. So the transcription keeps the options in
- * PRINTED order, A first, and this module marks A correct and then shuffles.
+ * TWO KEY MODES (keyModeFor).
+ * - "printed-a", the ministry's papers (2023+): the correct answer is printed
+ *   as option A in every question (each paper says so). The transcription
+ *   keeps PRINTED order, A first; this module marks A correct and shuffles.
+ * - "printed-key", Cambridge's papers (2011-2022): the answer key is printed
+ *   at the back, the answers are spread across A-E already, and the printed
+ *   order is kept. Each question carries its keyed letter in `answer`.
  *
  * THE SHUFFLE IS FROZEN. `shuffleOrder` decides which letter each printed
  * option is shown under, and `content_hash` includes the answer letter. If the
@@ -19,14 +22,36 @@ import type { ParsedRowPayload, StoredOptionLabel } from "../../src/lib/upload/v
 
 export type ImatSection = "reading" | "logic" | "biology" | "chemistry" | "physmath";
 
-/** Questions per section, the same in 2023, 2024, 2025 and 2026 (60 in all). */
-export const SECTION_COUNTS: Record<ImatSection, number> = {
-  reading: 4,
-  logic: 5,
-  biology: 23,
-  chemistry: 15,
-  physmath: 13,
+/**
+ * A paper's shape: its blocks in printed order, each with the sections its
+ * questions may be filed under and how many questions it holds. Cambridge's
+ * first block ("General Knowledge and Logical Reasoning") is split by
+ * question into reading or logic, as "Physics and Mathematics" is by subject.
+ */
+export type ShapeBlock = { sections: readonly ImatSection[]; count: number };
+
+/** The ministry's shape, the same in 2023, 2024, 2025 and 2026 (60 in all). */
+export const MUR_SHAPE: readonly ShapeBlock[] = [
+  { sections: ["reading"], count: 4 },
+  { sections: ["logic"], count: 5 },
+  { sections: ["biology"], count: 23 },
+  { sections: ["chemistry"], count: 15 },
+  { sections: ["physmath"], count: 13 },
+];
+
+/** Confirmed shapes. A Cambridge year is added once read off its paper. */
+export const PAPER_SHAPES: Record<number, readonly ShapeBlock[]> = {
+  2023: MUR_SHAPE,
+  2024: MUR_SHAPE,
+  2025: MUR_SHAPE,
+  2026: MUR_SHAPE,
 };
+
+export type KeyMode = "printed-a" | "printed-key";
+
+export function keyModeFor(year: number): KeyMode {
+  return year >= 2023 ? "printed-a" : "printed-key";
+}
 
 /** The section headings as printed on the paper. */
 export const SECTION_TITLES: Record<ImatSection, string> = {
@@ -54,7 +79,7 @@ export const SUBJECTS: readonly string[] = [
   "Mathematics",
 ];
 
-/** One question as transcribed: options in PRINTED order, so options[0] is correct. */
+/** One question as transcribed, options in PRINTED order (on a ministry paper, options[0] is correct). */
 export type ImatQuestion = {
   n: number;
   section: ImatSection;
@@ -70,7 +95,11 @@ export type ImatQuestion = {
   /** Free-text provenance note for a person reading the data. Not stored. */
   note?: string;
   /** The question needs a figure attached from this page of the paper. */
-  figure?: { page: number; note: string };
+  figure?: { page: number; note: string; file?: string };
+  /** Cambridge papers only: the printed key's letter. */
+  answer?: StoredOptionLabel;
+  /** The options are pictures: text stays empty, one image per option. */
+  optionImages?: boolean;
 };
 
 const LABELS: readonly StoredOptionLabel[] = ["A", "B", "C", "D", "E"];
@@ -113,23 +142,35 @@ export function buildRow(year: number, q: ImatQuestion): ParsedRowPayload {
   if (q.options.length !== 5) {
     throw new Error(`${where}: IMAT questions have five options, got ${q.options.length}`);
   }
-  const printed = q.options.map((o) => o.trim());
-  if (printed.some((o) => o.length === 0)) throw new Error(`${where}: an empty option`);
-  if (printed.slice(1).includes(printed[0])) {
-    throw new Error(`${where}: the correct option is duplicated, so the key would be ambiguous`);
+  const mode = keyModeFor(year);
+  if (mode === "printed-a" && q.answer) {
+    throw new Error(`${where}: a ministry paper's key is printed A; remove the answer field`);
   }
-  if (new Set(printed).size !== printed.length && !q.duplicateOptionsAsPrinted) {
-    throw new Error(`${where}: duplicate options`);
+  if (mode === "printed-key" && !q.answer) {
+    throw new Error(`${where}: a Cambridge question needs its printed key in the answer field`);
+  }
+  const correctIndex = mode === "printed-a" ? 0 : LABELS.indexOf(q.answer!);
+  const printed = q.options.map((o) => o.trim());
+  if (q.optionImages) {
+    if (printed.some((o) => o.length > 0)) throw new Error(`${where}: picture options keep empty text`);
+  } else {
+    if (printed.some((o) => o.length === 0)) throw new Error(`${where}: an empty option`);
+    if (printed.some((o, i) => i !== correctIndex && o === printed[correctIndex])) {
+      throw new Error(`${where}: the correct option is duplicated, so the key would be ambiguous`);
+    }
+    if (new Set(printed).size !== printed.length && !q.duplicateOptionsAsPrinted) {
+      throw new Error(`${where}: duplicate options`);
+    }
   }
   refuseLiteralNewline(`${where} text`, q.text);
   refuseLiteralNewline(`${where} context`, q.context);
   printed.forEach((o, i) => refuseLiteralNewline(`${where} option ${i + 1}`, o));
 
-  const order = shuffleOrder(seedFor(year, q.n));
+  const order = mode === "printed-a" ? shuffleOrder(seedFor(year, q.n)) : [0, 1, 2, 3, 4];
   const options = order.map((printedIndex, k) => ({
     label: LABELS[k],
     text: printed[printedIndex],
-    isCorrect: printedIndex === 0,
+    isCorrect: printedIndex === correctIndex,
   }));
   const answer = options.find((o) => o.isCorrect)!.label;
   const text = q.text.trim();
@@ -149,10 +190,19 @@ export function buildRow(year: number, q: ImatQuestion): ParsedRowPayload {
   };
 }
 
-/** Whole-paper checks: numbers 1..60 once each, and the official section shape. */
-export function validatePaper(questions: readonly ImatQuestion[]): string[] {
+/**
+ * Whole-paper checks: numbers 1..N once each, and every question inside the
+ * block its number falls in, filed under one of that block's sections.
+ * `shape` defaults to the year's confirmed shape; a year without one is refused.
+ */
+export function validatePaper(
+  year: number,
+  questions: readonly ImatQuestion[],
+  shape: readonly ShapeBlock[] | undefined = PAPER_SHAPES[year]
+): string[] {
+  if (!shape) return [`${year}: no confirmed shape; read it off the paper and add it to PAPER_SHAPES`];
   const errors: string[] = [];
-  const total = Object.values(SECTION_COUNTS).reduce((a, b) => a + b, 0);
+  const total = shape.reduce((a, b) => a + b.count, 0);
   const seen = new Map<number, number>();
   for (const q of questions) seen.set(q.n, (seen.get(q.n) ?? 0) + 1);
   for (let n = 1; n <= total; n++) {
@@ -163,9 +213,17 @@ export function validatePaper(questions: readonly ImatQuestion[]): string[] {
   for (const n of seen.keys()) {
     if (n < 1 || n > total) errors.push(`question ${n} is outside 1..${total}`);
   }
-  for (const [section, want] of Object.entries(SECTION_COUNTS)) {
-    const got = questions.filter((q) => q.section === section).length;
-    if (got !== want) errors.push(`section ${section}: ${got} questions, the paper has ${want}`);
+  for (const q of questions) {
+    let start = 1;
+    for (const block of shape) {
+      if (q.n >= start && q.n < start + block.count) {
+        if (!block.sections.includes(q.section)) {
+          errors.push(`Q${q.n}: filed as ${q.section}, but its block holds ${block.sections.join("/")}`);
+        }
+        break;
+      }
+      start += block.count;
+    }
   }
   return errors;
 }

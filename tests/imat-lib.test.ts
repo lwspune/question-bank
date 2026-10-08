@@ -3,8 +3,10 @@ import {
   shuffleOrder,
   buildRow,
   validatePaper,
-  SECTION_COUNTS,
+  keyModeFor,
+  MUR_SHAPE,
   type ImatQuestion,
+  type ShapeBlock,
 } from "../scripts/imat/lib";
 import { contentHash } from "@/lib/upload/hash";
 
@@ -126,35 +128,84 @@ describe("buildRow", () => {
 });
 
 describe("validatePaper", () => {
-  function paper(): ImatQuestion[] {
+  function paper(shape: readonly ShapeBlock[]): ImatQuestion[] {
     const out: ImatQuestion[] = [];
     let n = 1;
-    for (const [section, count] of Object.entries(SECTION_COUNTS)) {
-      for (let i = 0; i < count; i++) {
-        out.push(
-          q(n, {
-            section: section as ImatQuestion["section"],
-            subject: section === "physmath" ? "Physics" : undefined,
-          })
-        );
+    for (const block of shape) {
+      for (let i = 0; i < block.count; i++) {
+        const section = block.sections[i % block.sections.length];
+        out.push(q(n, { section, subject: section === "physmath" ? "Physics" : undefined }));
         n++;
       }
     }
     return out;
   }
 
-  it("accepts a full 60-question paper in the official section shape", () => {
-    expect(validatePaper(paper())).toEqual([]);
+  it("accepts a full ministry paper in the official 4/5/23/15/13 shape", () => {
+    expect(validatePaper(2024, paper(MUR_SHAPE))).toEqual([]);
   });
 
   it("reports a missing question number", () => {
-    const p = paper().filter((x) => x.n !== 31);
-    expect(validatePaper(p).join(" ")).toMatch(/31/);
+    const p = paper(MUR_SHAPE).filter((x) => x.n !== 31);
+    expect(validatePaper(2024, p).join(" ")).toMatch(/31/);
   });
 
-  it("reports a section whose count is off", () => {
-    const p = paper();
-    p[10] = { ...p[10], section: "chemistry" }; // a Biology question filed as Chemistry
-    expect(validatePaper(p).join(" ")).toMatch(/biology/i);
+  it("reports a question filed in the wrong block", () => {
+    const p = paper(MUR_SHAPE);
+    p[10] = { ...p[10], section: "chemistry" }; // Q11 sits in the Biology block
+    expect(validatePaper(2024, p).join(" ")).toMatch(/Q11/);
+  });
+
+  it("refuses a year whose shape has not been confirmed", () => {
+    expect(validatePaper(1999, paper(MUR_SHAPE)).join(" ")).toMatch(/no confirmed shape/);
+  });
+
+  it("takes a Cambridge shape whose first block mixes reading and logic", () => {
+    const shape: ShapeBlock[] = [
+      { sections: ["reading", "logic"], count: 22 },
+      { sections: ["biology"], count: 18 },
+      { sections: ["chemistry"], count: 12 },
+      { sections: ["physmath"], count: 8 },
+    ];
+    expect(validatePaper(2016, paper(shape), shape)).toEqual([]);
+    const wrong = paper(shape);
+    wrong[0] = { ...wrong[0], section: "biology" };
+    expect(validatePaper(2016, wrong, shape).join(" ")).toMatch(/Q1/);
+  });
+});
+
+describe("keyModeFor", () => {
+  it("is printed-A for the ministry's papers and the printed key for Cambridge's", () => {
+    expect(keyModeFor(2023)).toBe("printed-a");
+    expect(keyModeFor(2026)).toBe("printed-a");
+    expect(keyModeFor(2022)).toBe("printed-key");
+    expect(keyModeFor(2011)).toBe("printed-key");
+  });
+});
+
+describe("buildRow, Cambridge papers (printed key, printed order)", () => {
+  it("marks the keyed option correct and keeps the printed order", () => {
+    const row = buildRow(2016, q(12, { answer: "C" }));
+    expect(row.options.map((o) => o.text)).toEqual(q(12).options);
+    expect(row.options.filter((o) => o.isCorrect).map((o) => o.label)).toEqual(["C"]);
+    expect(row.contentHash).toBe(contentHash(row.text, row.options.map((o) => o.text), "C"));
+  });
+
+  it("refuses a Cambridge question without its key", () => {
+    expect(() => buildRow(2016, q(12))).toThrow(/key/);
+  });
+
+  it("refuses a key on a ministry question, where printed A is the key", () => {
+    expect(() => buildRow(2024, q(12, { answer: "C" }))).toThrow(/printed A/);
+  });
+
+  it("accepts picture options: empty text, one image per option", () => {
+    const row = buildRow(2011, q(6, { options: ["", "", "", "", ""], optionImages: true, answer: "D" }));
+    expect(row.options.map((o) => o.text)).toEqual(["", "", "", "", ""]);
+    expect(row.options.filter((o) => o.isCorrect).map((o) => o.label)).toEqual(["D"]);
+  });
+
+  it("still refuses an empty option on a question without picture options", () => {
+    expect(() => buildRow(2011, q(6, { options: ["a", "", "c", "d", "e"], answer: "A" }))).toThrow(/empty/);
   });
 });

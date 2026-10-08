@@ -50,7 +50,7 @@ function main() {
   let failed = false;
   for (const year of years) {
     const { questions } = loadPaper(year);
-    const errors = validatePaper(questions);
+    const errors = validatePaper(year, questions);
     const letters: Record<string, number> = { A: 0, B: 0, C: 0, D: 0, E: 0 };
     for (const q of questions) {
       errors.push(...mathErrors(q));
