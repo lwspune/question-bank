@@ -103,6 +103,61 @@ import {
   IMAT_LOG_CRT_NOTES,
   IMAT_LOG_CRT_SLUGS,
 } from "./logic/critical-thinking";
+import {
+  IMAT_CHE_ATS_CHAPTER,
+  IMAT_CHE_ATS_NOTES,
+  IMAT_CHE_ATS_SLUGS,
+} from "./chemistry/atomic-structure";
+import {
+  IMAT_CHE_PTB_CHAPTER,
+  IMAT_CHE_PTB_NOTES,
+  IMAT_CHE_PTB_SLUGS,
+} from "./chemistry/periodic-table";
+import {
+  IMAT_CHE_BND_CHAPTER,
+  IMAT_CHE_BND_NOTES,
+  IMAT_CHE_BND_SLUGS,
+} from "./chemistry/chemical-bonding";
+import {
+  IMAT_CHE_INO_CHAPTER,
+  IMAT_CHE_INO_NOTES,
+  IMAT_CHE_INO_SLUGS,
+} from "./chemistry/inorganic-nomenclature";
+import {
+  IMAT_CHE_STO_CHAPTER,
+  IMAT_CHE_STO_NOTES,
+  IMAT_CHE_STO_SLUGS,
+} from "./chemistry/stoichiometry-reactions";
+import {
+  IMAT_CHE_SOL_CHAPTER,
+  IMAT_CHE_SOL_NOTES,
+  IMAT_CHE_SOL_SLUGS,
+} from "./chemistry/solutions-concentration";
+import {
+  IMAT_PHY_MU_CHAPTER,
+  IMAT_PHY_MU_NOTES,
+  IMAT_PHY_MU_SLUGS,
+} from "./physics/measurement-units";
+import {
+  IMAT_PHY_KIN_CHAPTER,
+  IMAT_PHY_KIN_NOTES,
+  IMAT_PHY_KIN_SLUGS,
+} from "./physics/kinematics";
+import {
+  IMAT_PHY_DYN_CHAPTER,
+  IMAT_PHY_DYN_NOTES,
+  IMAT_PHY_DYN_SLUGS,
+} from "./physics/dynamics-work-energy";
+import {
+  IMAT_CHE_GAS_CHAPTER,
+  IMAT_CHE_GAS_NOTES,
+  IMAT_CHE_GAS_SLUGS,
+} from "./chemistry/states-of-matter-gas-laws";
+import {
+  IMAT_CHE_EQK_CHAPTER,
+  IMAT_CHE_EQK_NOTES,
+  IMAT_CHE_EQK_SLUGS,
+} from "./chemistry/equilibrium-kinetics-energetics";
 
 export type ImatNotesSubject = {
   /** URL segment, e.g. "imat-biology". */
@@ -165,6 +220,14 @@ export const IMAT_NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   entry("imat-biology", "human-anatomy-physiology", IMAT_BIO_HAP_CHAPTER, IMAT_BIO_HAP_NOTES, IMAT_BIO_HAP_SLUGS),
   // Chemistry
   entry("imat-chemistry", "organic-chemistry", IMAT_CHE_ORG_CHAPTER, IMAT_CHE_ORG_NOTES, IMAT_CHE_ORG_SLUGS),
+  entry("imat-chemistry", "atomic-structure", IMAT_CHE_ATS_CHAPTER, IMAT_CHE_ATS_NOTES, IMAT_CHE_ATS_SLUGS),
+  entry("imat-chemistry", "periodic-table", IMAT_CHE_PTB_CHAPTER, IMAT_CHE_PTB_NOTES, IMAT_CHE_PTB_SLUGS),
+  entry("imat-chemistry", "chemical-bonding", IMAT_CHE_BND_CHAPTER, IMAT_CHE_BND_NOTES, IMAT_CHE_BND_SLUGS),
+  entry("imat-chemistry", "inorganic-nomenclature", IMAT_CHE_INO_CHAPTER, IMAT_CHE_INO_NOTES, IMAT_CHE_INO_SLUGS),
+  entry("imat-chemistry", "stoichiometry-reactions", IMAT_CHE_STO_CHAPTER, IMAT_CHE_STO_NOTES, IMAT_CHE_STO_SLUGS),
+  entry("imat-chemistry", "solutions-concentration", IMAT_CHE_SOL_CHAPTER, IMAT_CHE_SOL_NOTES, IMAT_CHE_SOL_SLUGS),
+  entry("imat-chemistry", "states-of-matter-gas-laws", IMAT_CHE_GAS_CHAPTER, IMAT_CHE_GAS_NOTES, IMAT_CHE_GAS_SLUGS),
+  entry("imat-chemistry", "equilibrium-kinetics-energetics", IMAT_CHE_EQK_CHAPTER, IMAT_CHE_EQK_NOTES, IMAT_CHE_EQK_SLUGS),
   // Physics
   entry("imat-physics", "fluids", IMAT_PHY_FLUIDS_CHAPTER, IMAT_PHY_FLUIDS_NOTES, IMAT_PHY_FLUIDS_SLUGS),
   entry("imat-physics", "electricity", IMAT_PHY_ELE_CHAPTER, IMAT_PHY_ELE_NOTES, IMAT_PHY_ELE_SLUGS),
@@ -172,6 +235,9 @@ export const IMAT_NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   entry("imat-physics", "heat-thermodynamics", IMAT_PHY_HTH_CHAPTER, IMAT_PHY_HTH_NOTES, IMAT_PHY_HTH_SLUGS),
   entry("imat-physics", "oscillations-waves", IMAT_PHY_OSW_CHAPTER, IMAT_PHY_OSW_NOTES, IMAT_PHY_OSW_SLUGS),
   entry("imat-physics", "optics", IMAT_PHY_OPT_CHAPTER, IMAT_PHY_OPT_NOTES, IMAT_PHY_OPT_SLUGS),
+  entry("imat-physics", "measurement-units", IMAT_PHY_MU_CHAPTER, IMAT_PHY_MU_NOTES, IMAT_PHY_MU_SLUGS),
+  entry("imat-physics", "kinematics", IMAT_PHY_KIN_CHAPTER, IMAT_PHY_KIN_NOTES, IMAT_PHY_KIN_SLUGS),
+  entry("imat-physics", "dynamics-work-energy", IMAT_PHY_DYN_CHAPTER, IMAT_PHY_DYN_NOTES, IMAT_PHY_DYN_SLUGS),
   // Logic
   entry("imat-logic", "critical-thinking", IMAT_LOG_CRT_CHAPTER, IMAT_LOG_CRT_NOTES, IMAT_LOG_CRT_SLUGS),
 ];
