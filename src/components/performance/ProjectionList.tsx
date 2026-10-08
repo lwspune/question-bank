@@ -64,65 +64,68 @@ export default function ProjectionList({
   };
 
   return (
-    <div className="rounded-lg border bg-card">
-      <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b p-4">
-        <span className="text-sm text-muted-foreground">Projected</span>
-        <div className="flex items-center gap-3">
-          {projection.subtopicRows.length > 0 && (
-            <div className="flex items-center gap-1" role="group" aria-label="Breakdown grain">
-              <GrainButton active={grain === "chapter"} onClick={() => switchTo("chapter")}>
-                Chapters
-              </GrainButton>
-              <GrainButton active={grain === "subtopic"} onClick={() => switchTo("subtopic")}>
-                Subtopics
-              </GrainButton>
-            </div>
-          )}
-          <span className="text-2xl font-semibold tabular-nums">
-            {projection.total}
-            <span className="text-sm font-normal text-muted-foreground"> / {projection.ceiling}</span>
-          </span>
+    <div className="rounded-2xl border bg-card">
+      {/* The total lives in the page's band now (2026-10-08); this card is the
+          breakdown, so its header carries only the grain switch. */}
+      {projection.subtopicRows.length > 0 && (
+        <div className="px-4 pb-1 pt-4">
+          <div className="inline-flex rounded-full bg-muted p-0.5" role="group" aria-label="Breakdown grain">
+            <GrainButton active={grain === "chapter"} onClick={() => switchTo("chapter")}>
+              Chapters
+            </GrainButton>
+            <GrainButton active={grain === "subtopic"} onClick={() => switchTo("subtopic")}>
+              Topics
+            </GrainButton>
+          </div>
         </div>
-      </div>
+      )}
       <ul className="divide-y">
-        {p.rows.map((r) => (
-          <li
-            key={grain === "chapter" ? r.chapter : `${r.chapter}||${(r as ProjectionSubtopicRow).subtopic}`}
-            className="flex flex-wrap items-center gap-x-3 gap-y-1 p-3"
-          >
-            <span className="min-w-0 flex-1">
-              <span className="block truncate text-sm">
-                <TopicLink
-                  links={links}
-                  chapter={r.chapter}
-                  subtopic={grain === "subtopic" ? (r as ProjectionSubtopicRow).subtopic : undefined}
-                />
-              </span>
-              <span className="block truncate text-xs text-muted-foreground">
-                {grain === "subtopic" && r.chapter}
-                {/* An untested row is the largest gap there is, so it says so
-                    rather than reading as a score of zero. */}
-                {!r.tested && (grain === "subtopic" ? " · never tested" : "never tested")}
-                {r.tested && r.thin && (
-                  <>
-                    {grain === "subtopic" && " · "}
-                    {/* REACHED, not judged: since 2026-09-15 a blank counts in
-                        full toward this accuracy, because a blank earns zero
-                        marks. `judged` is still what `thin` gates on — an
-                        untouched blank is evidence about marks, not ability. */}
-                    {r.accuracy}% of {r.reached} · thin
-                  </>
-                )}
-              </span>
-            </span>
-            <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
-              {r.projected.toFixed(1)} of {r.marksAtStake.toFixed(1)} marks
-            </span>
-            <span className="shrink-0 text-sm font-semibold tabular-nums text-brand-accent">
-              +{r.gap.toFixed(1)}
-            </span>
-          </li>
-        ))}
+        {p.rows.map((r) => {
+          const share = r.marksAtStake > 0 ? Math.min(1, r.projected / r.marksAtStake) : 0;
+          return (
+            <li
+              key={grain === "chapter" ? r.chapter : `${r.chapter}||${(r as ProjectionSubtopicRow).subtopic}`}
+              className="px-4 py-3"
+            >
+              <div className="flex items-baseline justify-between gap-3">
+                <span className="min-w-0 font-medium">
+                  <TopicLink
+                    links={links}
+                    chapter={r.chapter}
+                    subtopic={grain === "subtopic" ? (r as ProjectionSubtopicRow).subtopic : undefined}
+                  />
+                </span>
+                <span className="shrink-0 text-sm font-bold tabular-nums text-brand-accent">+{r.gap.toFixed(1)}</span>
+              </div>
+              <div className="mt-2 flex items-center gap-3">
+                <span className="block h-2 flex-1 overflow-hidden rounded-full bg-muted" aria-hidden>
+                  <span className="block h-full rounded-full bg-brand" style={{ width: `${Math.round(share * 100)}%` }} />
+                </span>
+                <span className="shrink-0 text-xs tabular-nums text-muted-foreground">
+                  {r.projected.toFixed(1)} of {r.marksAtStake.toFixed(1)} marks
+                </span>
+              </div>
+              {(grain === "subtopic" || !r.tested || r.thin) && (
+                <p className="mt-1 text-xs text-muted-foreground">
+                  {grain === "subtopic" && r.chapter}
+                  {/* An untested row is the largest gap there is, so it says so
+                      rather than reading as a score of zero. */}
+                  {!r.tested && (grain === "subtopic" ? " · not tested yet" : "not tested yet")}
+                  {r.tested && r.thin && (
+                    <>
+                      {grain === "subtopic" && " · "}
+                      {/* REACHED, not judged: since 2026-09-15 a blank counts in
+                          full toward this accuracy, because a blank earns zero
+                          marks. `judged` is still what `thin` gates on: an
+                          untouched blank is evidence about marks, not ability. */}
+                      {r.accuracy}% of {r.reached}, too few to call
+                    </>
+                  )}
+                </p>
+              )}
+            </li>
+          );
+        })}
       </ul>
       <Pager
         page={p.page}
@@ -130,7 +133,8 @@ export default function ProjectionList({
         from={p.from}
         to={p.to}
         total={p.total}
-        noun={grain === "chapter" ? "chapters" : "subtopics"}
+        noun={grain === "chapter" ? "chapters" : "topics"}
+        order="biggest gain first"
         onPage={setPage}
       />
     </div>
@@ -152,9 +156,9 @@ function GrainButton({
       onClick={onClick}
       aria-pressed={active}
       className={cn(
-        "rounded-full border px-2.5 py-0.5 text-xs font-medium transition-colors",
+        "rounded-full px-3 py-1 text-xs font-medium transition-colors",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-        active ? "border-brand-accent bg-brand text-brand-foreground" : "hover:bg-accent"
+        active ? "bg-card text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
       )}
     >
       {children}

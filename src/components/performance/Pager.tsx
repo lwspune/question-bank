@@ -25,6 +25,7 @@ export default function Pager({
   to,
   total,
   noun,
+  order = "worst first",
   onPage,
 }: {
   page: number;
@@ -34,6 +35,8 @@ export default function Pager({
   total: number;
   /** Plural noun for the count line, e.g. "subtopics". */
   noun: string;
+  /** How the list is ranked, read after the count. */
+  order?: string;
   onPage: (next: number) => void;
 }) {
   if (pageCount <= 1) return null;
@@ -42,7 +45,7 @@ export default function Pager({
     <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-t p-3">
       <p className="text-xs text-muted-foreground" aria-live="polite">
         Showing <span className="font-medium text-foreground">{from}–{to}</span> of {total}{" "}
-        {noun}, worst first
+        {noun}, {order}
       </p>
       <div className="flex items-center gap-1">
         <PageButton

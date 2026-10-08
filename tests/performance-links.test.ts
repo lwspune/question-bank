@@ -64,6 +64,13 @@ describe("openLabel", () => {
     // lying, it lies silently.
     expect(openLabel(OPEN_LIMIT + 17)).toBe(`Open ${OPEN_LIMIT} of ${OPEN_LIMIT + 17}`);
   });
+
+  // The redesigned page's buttons say what they are for (2026-10-08) and obey
+  // the same cap, so "Practise 20" can never open a different number.
+  it("takes the button's verb, under the same cap", () => {
+    expect(openLabel(20, "Practise")).toBe("Practise 20");
+    expect(openLabel(OPEN_LIMIT + 3, "Try")).toBe(`Try ${OPEN_LIMIT} of ${OPEN_LIMIT + 3}`);
+  });
 });
 
 describe("taxonomyKey", () => {

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { pageOf, PERF_PAGE_SIZE } from "@/lib/paging";
 import { browseExtrasHref, openLabel } from "@/lib/performance/links";
@@ -39,44 +38,40 @@ export default function AuditList({
   const p = pageOf(rows, page, PERF_PAGE_SIZE);
 
   return (
-    <div className="rounded-lg border bg-card">
+    <div className="rounded-2xl border bg-card">
       <ul className="divide-y">
         {p.rows.map((r) => {
           // The exact questions, not a filter that approximates them — `extras`
           // takes question ids directly.
           const ids = kind === "wrong" ? r.wrongQuestionIds : r.seenBlankQuestionIds;
           const href = browseExtrasHref(ids);
+          const count = kind === "wrong" ? `${r.wrong} wrong` : `${r.seenBlank} skipped`;
           return (
-            <li
-              key={`${r.chapter}-${r.subtopic}`}
-              className="flex flex-wrap items-center gap-x-3 gap-y-1 p-3"
-            >
-              <span className="min-w-0 flex-1">
-                <span className="block truncate text-sm font-medium">{r.subtopic}</span>
-                <span className="block truncate text-xs text-muted-foreground">{r.chapter}</span>
-              </span>
-              <span
-                className={cn(
-                  "shrink-0 rounded-full px-2 py-0.5 text-xs font-semibold tabular-nums",
-                  kind === "wrong"
-                    ? "bg-red-500/10 text-red-600 dark:text-red-400"
-                    : "bg-amber-500/10 text-amber-600 dark:text-amber-400"
-                )}
-              >
-                {kind === "wrong" ? `${r.wrong} wrong` : `${r.seenBlank} skipped`}
+            <li key={`${r.chapter}-${r.subtopic}`} className="flex items-center justify-between gap-3 p-4">
+              <span className="min-w-0">
+                <span className="block text-sm font-medium">{r.subtopic}</span>
+                <span className="block text-xs text-muted-foreground">
+                  {r.chapter} ·{" "}
+                  <span className={kind === "wrong" ? "text-red-600 dark:text-red-400" : "text-amber-700 dark:text-amber-400"}>
+                    {count}
+                  </span>
+                </span>
               </span>
               {href && (
                 <Link
                   prefetch={false}
                   href={href}
-                  // "Open 6" is meaningless to anyone arriving by link list.
-                  aria-label={`Open the ${kind === "wrong" ? "wrong" : "skipped"} questions in ${r.subtopic}`}
-                  className="inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  // "Practise 6" is meaningless to anyone arriving by link list.
+                  aria-label={`${kind === "wrong" ? "Practise the wrong" : "Try the skipped"} questions in ${r.subtopic}`}
+                  className={cn(
+                    "inline-flex shrink-0 items-center rounded-xl px-3 py-2 text-xs font-semibold transition-colors",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                    kind === "wrong" ? "bg-brand text-brand-foreground hover:bg-brand/90" : "border hover:bg-accent"
+                  )}
                 >
-                  <ExternalLink className="h-3.5 w-3.5" aria-hidden />
                   {/* Reads the CAP, not the raw count: the label has to describe
                       what the href will actually open. */}
-                  {openLabel(ids.length)}
+                  {openLabel(ids.length, kind === "wrong" ? "Practise" : "Try")}
                 </Link>
               )}
             </li>
@@ -89,7 +84,7 @@ export default function AuditList({
         from={p.from}
         to={p.to}
         total={p.total}
-        noun="subtopics"
+        noun="topics"
         onPage={setPage}
       />
     </div>

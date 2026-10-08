@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { pageOf, PERF_PAGE_SIZE } from "@/lib/paging";
 import { browseExtrasHref } from "@/lib/performance/links";
 import type { ChapterRow, SubtopicRow, Trend } from "@/lib/performance/compute";
+import { trendLabel } from "@/lib/performance/highlights";
 import Pager from "./Pager";
 
 /**
@@ -58,11 +59,12 @@ function barTone(score: number): string {
 
 function TrendChip({ trend }: { trend: Trend }) {
   const Icon = TREND_ICON[trend];
-  if (!Icon || trend === "unknown") return null;
+  const label = trendLabel(trend);
+  if (!Icon || !label) return null;
   return (
     <span className={cn("inline-flex items-center gap-1 text-xs", TREND_STYLE[trend])}>
       <Icon className="h-3.5 w-3.5" aria-hidden />
-      {trend}
+      {label}
     </span>
   );
 }
@@ -77,7 +79,7 @@ function Score({ row }: { row: SubtopicRow | ChapterRow }) {
     <span className={cn("text-xs tabular-nums", row.thin && "text-muted-foreground")}>
       <span className="font-semibold">{row.accuracy}%</span>
       <span className="text-muted-foreground"> of {row.judged}</span>
-      {row.thin && <span className="text-muted-foreground"> · thin</span>}
+      {row.thin && <span className="text-muted-foreground"> · too few to call</span>}
     </span>
   );
 }
@@ -89,14 +91,14 @@ export default function ChapterAccordion({ chapters }: { chapters: ChapterRow[] 
 
   if (chapters.length === 0) {
     return (
-      <p className="rounded-lg border border-dashed p-8 text-center text-sm text-muted-foreground">
+      <p className="rounded-2xl border border-dashed p-8 text-center text-sm text-muted-foreground">
         No chapter data for this subject yet.
       </p>
     );
   }
 
   return (
-    <div className="rounded-lg border bg-card">
+    <div className="rounded-2xl border bg-card">
       <ul className="divide-y">
         {p.rows.map((c) => {
           const isOpen = Boolean(open[c.chapter]);
@@ -110,40 +112,44 @@ export default function ChapterAccordion({ chapters }: { chapters: ChapterRow[] 
                 type="button"
                 onClick={() => setOpen((o) => ({ ...o, [c.chapter]: !o[c.chapter] }))}
                 aria-expanded={isOpen}
-                className="flex w-full items-center gap-3 p-3 text-left transition-colors hover:bg-accent/40 focus-visible:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                className="flex w-full items-start gap-3 p-4 text-left transition-colors hover:bg-accent/40 focus-visible:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
               >
                 <ChevronRight
                   className={cn(
-                    "h-4 w-4 shrink-0 text-muted-foreground transition-transform",
+                    "mt-0.5 h-4 w-4 shrink-0 text-muted-foreground transition-transform",
                     isOpen && "rotate-90"
                   )}
                   aria-hidden
                 />
+                {/* Two lines, so a long chapter name is never cut off on a
+                    phone: name and score, then the bar and the trend. */}
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-sm font-medium">{c.chapter}</span>
-                  <span className="mt-0.5 block text-xs text-muted-foreground">
-                    {c.subtopics.length} subtopic{c.subtopics.length === 1 ? "" : "s"}
-                    {c.neverReached > 0 && ` · ${c.neverReached} never reached`}
+                  <span className="flex items-baseline justify-between gap-3">
+                    <span className="min-w-0 font-medium">{c.chapter}</span>
+                    <span className="shrink-0 text-right">
+                      <Score row={c} />
+                    </span>
                   </span>
-                </span>
-                <span className="hidden w-40 shrink-0 sm:block" aria-hidden>
-                  <span className="block h-2 overflow-hidden rounded-full bg-muted">
-                    <span
-                      className={cn("block h-full rounded-full", barTone(c.weightedScore))}
-                      style={{ width: `${Math.max(2, Math.round(c.weightedScore * 100))}%` }}
-                    />
-                  </span>
-                </span>
-                <span className="shrink-0 text-right">
-                  <Score row={c} />
-                  <span className="mt-0.5 block">
-                    <TrendChip trend={c.trend} />
+                  <span className="mt-2 flex items-center gap-3">
+                    <span className="block h-2 flex-1 overflow-hidden rounded-full bg-muted" aria-hidden>
+                      <span
+                        className={cn("block h-full rounded-full", barTone(c.weightedScore))}
+                        style={{ width: `${Math.max(2, Math.round(c.weightedScore * 100))}%` }}
+                      />
+                    </span>
+                    <span className="w-24 shrink-0 text-right">
+                      <TrendChip trend={c.trend} />
+                    </span>
                   </span>
                 </span>
               </button>
 
               {isOpen && (
-                <ul className="space-y-1 border-t bg-muted/30 px-3 py-2 pl-10">
+                <ul className="space-y-1 border-t bg-muted/30 px-4 py-2 pl-11">
+                  <li className="py-1 text-xs text-muted-foreground">
+                    {c.subtopics.length} topic{c.subtopics.length === 1 ? "" : "s"}
+                    {c.neverReached > 0 && ` · ${c.neverReached} not reached`}
+                  </li>
                   {worthShowing.length === 0 ? (
                     <li className="py-2 text-xs text-muted-foreground">
                       Nothing answered in this chapter yet.
