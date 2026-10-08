@@ -78,7 +78,7 @@ export function checkImatChapter(c: ChapterUnderCheck, bank: BankCounts | undefi
 
   // Dashes anywhere.
   for (const { path, s } of collectStrings({ chapter, notes }, at))
-    if (DASH.test(s)) problems.push(`${path}: em/en dash or " -- " in prose`);
+    if (DASH.test(s)) problems.push(`${path}: em dash, en dash or spaced double hyphen in prose`);
 
   const letters: string[] = [];
   let traps = 0;
