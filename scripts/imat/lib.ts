@@ -65,6 +65,12 @@ export type ImatQuestion = {
   context?: string;
   text: string;
   options: string[];
+  /** The paper itself repeats a distractor (2025 Q51); kept as printed, by name. */
+  duplicateOptionsAsPrinted?: boolean;
+  /** Free-text provenance note for a person reading the data. Not stored. */
+  note?: string;
+  /** The question needs a figure attached from this page of the paper. */
+  figure?: { page: number; note: string };
 };
 
 const LABELS: readonly StoredOptionLabel[] = ["A", "B", "C", "D", "E"];
@@ -109,7 +115,12 @@ export function buildRow(year: number, q: ImatQuestion): ParsedRowPayload {
   }
   const printed = q.options.map((o) => o.trim());
   if (printed.some((o) => o.length === 0)) throw new Error(`${where}: an empty option`);
-  if (new Set(printed).size !== printed.length) throw new Error(`${where}: duplicate options`);
+  if (printed.slice(1).includes(printed[0])) {
+    throw new Error(`${where}: the correct option is duplicated, so the key would be ambiguous`);
+  }
+  if (new Set(printed).size !== printed.length && !q.duplicateOptionsAsPrinted) {
+    throw new Error(`${where}: duplicate options`);
+  }
   refuseLiteralNewline(`${where} text`, q.text);
   refuseLiteralNewline(`${where} context`, q.context);
   printed.forEach((o, i) => refuseLiteralNewline(`${where} option ${i + 1}`, o));

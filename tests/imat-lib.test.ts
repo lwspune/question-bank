@@ -100,6 +100,22 @@ describe("buildRow", () => {
     expect(() => buildRow(2024, q(1, { options: ["a", "b", "a", "d", "e"] }))).toThrow(/duplicate/);
   });
 
+  it("allows a duplicated distractor only when the question is marked as printed", () => {
+    // 2025 Q51 prints options B and E identically. Kept as printed, by name.
+    const opts = ["right", "same", "other", "third", "same"];
+    expect(() => buildRow(2025, q(51, { options: opts }))).toThrow(/duplicate/);
+    const row = buildRow(2025, q(51, { options: opts, duplicateOptionsAsPrinted: true }));
+    expect(row.options).toHaveLength(5);
+    expect(row.options.filter((o) => o.isCorrect).map((o) => o.text)).toEqual(["right"]);
+  });
+
+  it("never allows the correct option to be duplicated", () => {
+    const opts = ["right", "b", "c", "right", "e"];
+    expect(() =>
+      buildRow(2025, q(51, { options: opts, duplicateOptionsAsPrinted: true }))
+    ).toThrow(/correct option/);
+  });
+
   it("refuses a Physics-and-Maths question with no subject", () => {
     expect(() => buildRow(2024, q(50, { section: "physmath" }))).toThrow(/Physics or Mathematics/);
   });
