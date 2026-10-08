@@ -49,6 +49,13 @@ const CAMBRIDGE_60: readonly ShapeBlock[] = [
 ];
 
 export const PAPER_SHAPES: Record<number, readonly ShapeBlock[]> = {
+  // 2012: 80 questions; Thinking Skills (no general knowledge) 40, biology 18, chemistry 11, physics and maths 11.
+  2012: [
+    { sections: ["logic"], count: 40 },
+    { sections: ["biology"], count: 18 },
+    { sections: ["chemistry"], count: 11 },
+    { sections: ["physmath"], count: 11 },
+  ],
   // 2013: 30 thinking skills and general knowledge, 14 biology, 8 chemistry, 8 physics and maths.
   2013: [
     { sections: ["reading", "logic"], count: 30 },

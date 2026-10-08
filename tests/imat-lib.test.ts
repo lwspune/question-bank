@@ -197,6 +197,11 @@ describe("keyModeFor", () => {
     expect(PAPER_SHAPES[2021].map((b) => b.count)).toEqual([22, 18, 12, 8]);
   });
 
+  it("knows 2012's own shape: 80 questions, 40 thinking skills, 18 biology, 11 chemistry, 11 physics and maths", () => {
+    expect(PAPER_SHAPES[2012].map((b) => b.count)).toEqual([40, 18, 11, 11]);
+    expect(PAPER_SHAPES[2012][0].sections).toEqual(["logic"]);
+  });
+
   it("knows 2013's own shape: 30 thinking skills and general knowledge, 14 biology, 8 chemistry, 8 physics and maths", () => {
     expect(PAPER_SHAPES[2013].map((b) => b.count)).toEqual([30, 14, 8, 8]);
     expect(keyModeFor(2013)).toBe("printed-key");
