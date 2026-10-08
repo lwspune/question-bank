@@ -390,6 +390,10 @@ const EXAMS: Record<string, ExamPlan> = {
       { bankSubject: "Physics", code: "physics", paper: CBSE_12_CHAPTER_MCQ_PAPER, sectionKey: "physics", weights: NONE, chapterOrder: NCERT_12_PHYSICS },
       { bankSubject: "Chemistry", code: "chemistry", paper: CBSE_12_CHAPTER_MCQ_PAPER, sectionKey: "chemistry", weights: NONE, chapterOrder: NCERT_12_CHEMISTRY },
       { bankSubject: "Mathematics", code: "maths", paper: CBSE_12_CHAPTER_MCQ_PAPER, sectionKey: "mathematics", weights: NONE },
+      // Added 2026-10-08 with the Biology board papers. The bank's order_index
+      // is already NCERT book order here. The [Outdated] chapter holds content
+      // the rationalised book dropped, so it gets no test.
+      { bankSubject: "Biology", code: "biology", paper: CBSE_12_CHAPTER_MCQ_PAPER, sectionKey: "biology", weights: NONE, retired: new Set(["Organism and its Environment [Outdated]"]) },
     ],
   },
   "mh-hsc-12": {
