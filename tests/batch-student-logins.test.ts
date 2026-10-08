@@ -7,7 +7,10 @@
  *    works, nothing else does) and gets an ordinary batch invite instead;
  *  - staff who cannot see the batch create nothing at all.
  *
- * Passwords are proven by signing in, not by the absence of an error.
+ * A NEW login is proven by signing in with it: that is the feature. An
+ * EXISTING account left alone is proven by reading it (accountUpdatedAt): its
+ * `updated_at` must not move, which no sign-in can show and no rate limit can
+ * break (2026-10-08; see tests/test-sign-in-timeouts.test.ts).
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
@@ -15,7 +18,7 @@ import { randomUUID } from "node:crypto";
 import { createBranch } from "@/lib/branches/admin";
 import { createBatch } from "@/lib/batches/admin";
 import { createStudentLogins } from "@/lib/batches/studentLoginsAdmin";
-import { mustSignIn, signInWorks } from "./helpers/fixture";
+import { SIGN_IN_TEST_TIMEOUT_MS, accountUpdatedAt, mustSignIn, signInWorks } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -145,6 +148,7 @@ describe.skipIf(!HAS_ENV)("createStudentLogins", () => {
   });
 
   it("creates working logins, puts them on the roster, invites the existing one", async () => {
+    const existingBefore = await accountUpdatedAt(admin, existingId);
     const res = await createStudentLogins({
       client: adminClient,
       batchId,
@@ -179,8 +183,7 @@ describe.skipIf(!HAS_ENV)("createStudentLogins", () => {
     expect(aUser.user?.email_confirmed_at).toBeTruthy();
 
     // The existing account: untouched, not enrolled, holds a pending invite.
-    expect(await canSignIn(EXISTING_EMAIL, "attacker-pw-999")).toBe(false);
-    expect(await canSignIn(EXISTING_EMAIL, PASSWORD)).toBe(true);
+    expect(await accountUpdatedAt(admin, existingId)).toBe(existingBefore);
     expect(await enrolled(existingId)).toBe(false);
     const { data: invite } = await admin
       .from("batch_invites")
@@ -189,9 +192,11 @@ describe.skipIf(!HAS_ENV)("createStudentLogins", () => {
       .eq("email", EXISTING_EMAIL)
       .maybeSingle<{ status: string }>();
     expect(invite?.status).toBe("pending");
-  });
+  }, SIGN_IN_TEST_TIMEOUT_MS);
 
   it("a repeat run creates nothing new: those students are already in the batch", async () => {
+    const aId = (await userIdOf(NEW_A))!;
+    const aBefore = await accountUpdatedAt(admin, aId);
     const res = await createStudentLogins({
       client: adminClient,
       batchId,
@@ -202,6 +207,7 @@ describe.skipIf(!HAS_ENV)("createStudentLogins", () => {
     if (res.kind !== "ok") return;
     expect(res.created).toEqual([]);
     expect(res.alreadyInBatch).toEqual([NEW_A]);
-    expect(await canSignIn(NEW_A, "anita-chosen-pw")).toBe(true);
+    // Anita's account, password included, is left exactly as it was.
+    expect(await accountUpdatedAt(admin, aId)).toBe(aBefore);
   });
 });

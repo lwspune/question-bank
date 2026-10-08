@@ -13,14 +13,20 @@
  * staff often sign up as students before onboarding) via linkExistingAccount,
  * which adds the membership and leaves the password alone.
  *
- * The checks sign in with the ORIGINAL password: "the password is unchanged" is
- * only proven by a sign-in that still works, not by the absence of an error.
+ * "Unchanged" is proven by reading the account, not by signing in
+ * (2026-10-08): the account's `updated_at` must be exactly what it was before,
+ * which moves on a password write and on any other write (accountUpdatedAt).
+ * The tests used to sign in with the old and new passwords; in a full run that
+ * tripped Supabase's sign-in rate limit, the wait outran the test timeout, and
+ * the retry failed on "already_member", naming nothing near the cause. Each
+ * test also clears what an earlier attempt left, so a retry reports the real
+ * error.
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { createMember } from "@/lib/members/admin";
-import { signInWorks } from "./helpers/fixture";
+import { accountUpdatedAt } from "./helpers/fixture";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -28,6 +34,7 @@ const HAS_ENV =
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 const ORIGINAL_PW = "student-own-pw-1234";
+// Never written by the code under test; the "unchanged" checks prove it.
 const ATTACKER_PW = "admin-chosen-pw-5678";
 const RUN_ID = randomUUID().slice(0, 8);
 const STUDENT_EMAIL = `mc-student-${RUN_ID}@test.local`;
@@ -40,14 +47,11 @@ describe.skipIf(!HAS_ENV)("createMember never takes over an existing account", (
   let orgId: string;
   let otherOrgId: string;
   const userIds: string[] = [];
+  /** Each fixture account's `updated_at` before any test ran. */
+  const before = new Map<string, string>();
 
-  async function canSignIn(email: string, password: string): Promise<boolean> {
-    const c = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      { auth: { persistSession: false } }
-    );
-    return signInWorks(email, c, { email, password });
+  async function untouched(userId: string): Promise<boolean> {
+    return (await accountUpdatedAt(admin, userId)) === before.get(userId);
   }
 
   async function membershipOf(userId: string) {
@@ -94,6 +98,7 @@ describe.skipIf(!HAS_ENV)("createMember never takes over an existing account", (
     await admin
       .from("org_members")
       .insert({ user_id: otherUserId, org_id: otherOrgId, role: "TEACHER" });
+    for (const id of userIds) before.set(id, await accountUpdatedAt(admin, id));
   });
 
   afterAll(async () => {
@@ -107,6 +112,11 @@ describe.skipIf(!HAS_ENV)("createMember never takes over an existing account", (
   });
 
   it("creates a brand-new account and its membership", async () => {
+    // A retry must start clean: an earlier attempt may have created it.
+    const { data: listed } = await admin.auth.admin.listUsers({ perPage: 1000 });
+    const leftover = (listed?.users ?? []).find((u) => u.email === NEW_EMAIL);
+    if (leftover) await admin.auth.admin.deleteUser(leftover.id);
+
     const res = await createMember(orgId, {
       email: NEW_EMAIL,
       password: ORIGINAL_PW,
@@ -117,7 +127,9 @@ describe.skipIf(!HAS_ENV)("createMember never takes over an existing account", (
     if (res.kind !== "ok") return;
     expect(res.linked).toBe(false);
     expect((await membershipOf(res.userId))?.org_id).toBe(orgId);
-    expect(await canSignIn(NEW_EMAIL, ORIGINAL_PW)).toBe(true);
+    const { data: made } = await admin.auth.admin.getUserById(res.userId);
+    expect(made.user?.email).toBe(NEW_EMAIL);
+    expect(made.user?.email_confirmed_at).toBeTruthy();
   });
 
   it("org-admin path REFUSES an existing student account and changes nothing", async () => {
@@ -131,11 +143,13 @@ describe.skipIf(!HAS_ENV)("createMember never takes over an existing account", (
 
     const studentId = userIds[0];
     expect(await membershipOf(studentId)).toBeNull();
-    expect(await canSignIn(STUDENT_EMAIL, ATTACKER_PW)).toBe(false);
-    expect(await canSignIn(STUDENT_EMAIL, ORIGINAL_PW)).toBe(true);
+    expect(await untouched(studentId)).toBe(true);
   });
 
   it("superadmin link adds the membership and LEAVES THE PASSWORD ALONE", async () => {
+    // A retry must start clean: an earlier attempt may have linked it already.
+    await admin.from("org_members").delete().eq("org_id", orgId).eq("user_id", userIds[1]);
+
     const res = await createMember(
       orgId,
       { email: STAFF_EMAIL, password: ATTACKER_PW, name: "Linked", role: "ADMIN" },
@@ -146,8 +160,7 @@ describe.skipIf(!HAS_ENV)("createMember never takes over an existing account", (
     expect(res.linked).toBe(true);
     expect(res.userId).toBe(userIds[1]);
     expect((await membershipOf(res.userId))?.role).toBe("ADMIN");
-    expect(await canSignIn(STAFF_EMAIL, ATTACKER_PW)).toBe(false);
-    expect(await canSignIn(STAFF_EMAIL, ORIGINAL_PW)).toBe(true);
+    expect(await untouched(res.userId)).toBe(true);
   });
 
   it("a member of ANOTHER org is refused on both paths", async () => {
@@ -159,6 +172,6 @@ describe.skipIf(!HAS_ENV)("createMember never takes over an existing account", (
       );
       expect(res.kind).toBe("email_taken_other_org");
     }
-    expect(await canSignIn(OTHER_ORG_EMAIL, ORIGINAL_PW)).toBe(true);
+    expect(await untouched(userIds[2])).toBe(true);
   });
 });
