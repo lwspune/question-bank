@@ -42,6 +42,21 @@ def question_area(page, n):
     return top, bottom, words
 
 
+def trim_edges(page, box):
+    """A line the top or bottom edge cuts through (the stem's last line just
+    above a figure) is trimmed off rather than shown half-cut."""
+    for b in page.get_text("dict")["blocks"]:
+        for line in b.get("lines", []):
+            r = fitz.Rect(line["bbox"])
+            if r.x1 < box.x0 or r.x0 > box.x1:
+                continue
+            if r.y0 < box.y0 < r.y1:
+                box.y0 = r.y1 + 0.5
+            if r.y0 < box.y1 < r.y1:
+                box.y1 = r.y0 - 0.5
+    return box
+
+
 def figure_box(page, top, bottom, words, with_labels):
     box = None
     for d in page.get_drawings():
@@ -88,7 +103,7 @@ def main(year, force):
         if box is None:
             print(f"Q{q['n']}: NO graphics found on page {fig['page']}; crop it by hand")
             continue
-        box = (box + (-4, -4, 4, 4)) & page.rect
+        box = trim_edges(page, (box + (-4, -4, 4, 4)) & page.rect)
         page.get_pixmap(dpi=200, clip=box).save(out)
         print(f"Q{q['n']}: {out}  {[round(v) for v in box]}")
 

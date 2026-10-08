@@ -69,6 +69,12 @@ def wrap_scripts(text, section):
             return tok
         m = re.match(r"^([(\[]*)(.*?)([.,;:?)\]]*)$", tok)
         lead, core, trail = m.group(1), m.group(2), m.group(3)
+        # Keep a bracket inside the maths when its partner is inside too:
+        # "(NH_{4})_{2}" must not become "(" + "\(NH_4)_2\)".
+        while lead and core.count(")") + core.count("]") > core.count("(") + core.count("["):
+            core, lead = lead[-1] + core, lead[:-1]
+        while trail and core.count("(") + core.count("[") > core.count(")") + core.count("]"):
+            core, trail = core + trail[0], trail[1:]
         if section in CHEM_LIKE:
             # H_{2}O -> \(\text{H}_{2}\text{O}\)
             parts = re.split(r"([_^]\{[^}]*\})", core)
