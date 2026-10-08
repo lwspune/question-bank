@@ -35,6 +35,11 @@ HEADINGS = (
 FOOTER = re.compile(r"^(©\s*UCLES.*|Page \d+ / \d+|\d{2}[A-Z]{2}\d{5}|IMAT \d{4}.*|[0-9A-Z]{9}|BLANK PAGE|©\s*Cambridge University Press.*|Page \d+/\d+|ADMISSION TEST FOR THE DEGREE COURSE.*|Academic Year \d{4}/\d{4})$")
 
 
+# Years whose option letters sit on the MIDDLE line of a multi-line option
+# rather than its first line.
+CENTRED_LABEL_YEARS = {2011}
+
+
 def page_lines(page, dec=None):
     """[(x0, y0, x1, y1, text, block_no)] for every text line on the page, in reading order."""
     out = []
@@ -91,6 +96,7 @@ def join(lines):
 def main(pdf, year, out):
     doc = fitz.open(pdf)
     dec = decoder_for(year)
+    centred = int(year) in CENTRED_LABEL_YEARS
     questions = []
     # The last page is the key (2022 has none, so its last page holds Q60). Page 1 is a cover in most years, but 2014 starts its
     # first question there; a cover simply has no margin numbers, so reading it is harmless.
@@ -98,20 +104,40 @@ def main(pdf, year, out):
     has_key = re.search(r"answer key", (dec or (lambda s: s))(doc[last].get_text()), re.I) is not None
     for pno in range(0, last if has_key else doc.page_count):
         page = doc[pno]
-        lines = [l for l in page_lines(page, dec) if not FOOTER.match(l[4]) and l[4] not in HEADINGS]
+        lines = [l for l in page_lines(page, dec) if not FOOTER.match(l[4]) and l[4] not in HEADINGS
+                 # a bare page number in the footer zone (2011 prints no "Page N / M")
+                 and not (l[1] > page.rect.y1 - 60 and re.fullmatch(r"\d{1,2}", l[4]))]
+        # 2011 sets a two-digit question number on the same line as the stem's
+        # first words ("10 Two security guards..."): split it off.
+        split = []
+        for l in lines:
+            m = re.fullmatch(r"(\d{1,2}) +(\S.*)", l[4])
+            if m and l[0] < 70:
+                split += [(l[0], l[1], l[0] + 12, l[3], m.group(1), l[5]), (78, l[1], l[2], l[3], m.group(2), l[5])]
+            else:
+                split.append(l)
+        lines = split
         starts = [l for l in lines if re.fullmatch(r"\d{1,2}", l[4]) and l[0] < 70]
         labels = [l for l in lines if re.fullmatch(r"[A-E]", l[4]) and 70 <= l[0] < 120]
         for i, s in enumerate(starts):
             top, bottom = s[1] - 1, starts[i + 1][1] - 1 if i + 1 < len(starts) else page.rect.y1
             mine = [l for l in lines if top <= l[1] < bottom and l is not s and l not in labels]
             labs = sorted((l for l in labels if top <= l[1] < bottom), key=lambda l: l[1])
-            first_label_y = labs[0][1] - 1 if labs else bottom
-            stem = [l for l in mine if l[1] < first_label_y]
-            opts = []
+            bounds = []
             for k, lab in enumerate(labs[:5]):
-                lo = lab[1] - 2
-                hi = labs[k + 1][1] - 2 if k + 1 < len(labs) else bottom
-                opts.append(join([l for l in mine if lo <= l[1] < hi and l[0] > lab[2] + 2]))
+                if centred:
+                    # The letter sits on the middle line of a multi-line option,
+                    # so an option runs from half-way up to the previous letter.
+                    gap = (labs[1][1] - lab[1]) if len(labs) > 1 else 4
+                    lo = (labs[k - 1][1] + lab[1]) / 2 if k else lab[1] - gap / 2
+                    hi = (lab[1] + labs[k + 1][1]) / 2 if k + 1 < len(labs) else bottom
+                else:
+                    lo = lab[1] - 2
+                    hi = labs[k + 1][1] - 2 if k + 1 < len(labs) else bottom
+                bounds.append((lo, hi, lab))
+            first_label_y = bounds[0][0] + (0 if centred else 1) if labs else bottom
+            stem = [l for l in mine if l[1] < first_label_y]
+            opts = [join([l for l in mine if lo <= l[1] < hi and l[0] > lab[2] + 2]) for lo, hi, lab in bounds]
             flags = []
             if len(labs) != 5:
                 flags.append(f"labels={''.join(l[4] for l in labs)}")
