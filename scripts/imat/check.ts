@@ -25,7 +25,7 @@ export function mathErrors(q: ImatQuestion): string[] {
     for (const m of s.matchAll(ZONE)) {
       const tex = m[1] ?? m[2];
       try {
-        katex.renderToString(tex, { throwOnError: true, displayMode: m[2] !== undefined });
+        katex.renderToString(tex, { throwOnError: true, strict: "error", displayMode: m[2] !== undefined });
       } catch (e) {
         out.push(`Q${q.n}: KaTeX refuses "${tex.slice(0, 60)}": ${(e as Error).message.slice(0, 80)}`);
       }
