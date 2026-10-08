@@ -154,3 +154,40 @@ export async function signInWorks(
     throw err;
   }
 }
+
+/**
+ * The timeout for a test that signs in INSIDE its body (2026-10-08): long
+ * enough for `mustSignIn` to wait out every rate limit it allows (5 × 65 s),
+ * the same 6 minutes setup hooks get. Without it a rate-limit wait is cut off
+ * at the 30 s `testTimeout`, the test is retried, and a test that is not safe
+ * to repeat fails on the retry's error instead of the real one.
+ * tests/test-sign-in-timeouts.test.ts holds every such test to it.
+ */
+export const SIGN_IN_TEST_TIMEOUT_MS = 360_000;
+
+type AdminUserClient = {
+  auth: {
+    admin: {
+      getUserById(id: string): PromiseLike<{
+        data: { user: { updated_at?: string } | null };
+        error: { message: string } | null;
+      }>;
+    };
+  };
+};
+
+/**
+ * When the account was last written, read through the admin API. Proving an
+ * account was NOT changed (a password not overwritten) by comparing this
+ * before and after needs no sign-in, so no sign-in rate limit. It is stricter
+ * than signing in with the old password: measured on the test project
+ * 2026-10-08, it holds still when nothing is written and moves on a password
+ * write and on any other write.
+ */
+export async function accountUpdatedAt(admin: AdminUserClient, userId: string): Promise<string> {
+  const { data, error } = await admin.auth.admin.getUserById(userId);
+  if (error || !data.user?.updated_at) {
+    throw new Error(`accountUpdatedAt ${userId}: ${error?.message ?? "no user"}`);
+  }
+  return data.user.updated_at;
+}

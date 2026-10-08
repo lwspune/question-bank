@@ -41,6 +41,8 @@ const ORG_NAME = `BatchInvite Org ${RUN_ID}`;
 describe.skipIf(!HAS_ENV)("batch invite flow (migration 0084)", () => {
   let admin: SupabaseClient;
   let adminClient: SupabaseClient;
+  /** Sam, signed in during setup: the outsider who must not be able to invite. */
+  let samClient: SupabaseClient;
   let orgId: string;
   let adminId: string, samId: string, malId: string;
   let batchId: string;
@@ -74,6 +76,10 @@ describe.skipIf(!HAS_ENV)("batch invite flow (migration 0084)", () => {
 
     adminClient = createClient(url, anon, { auth: { persistSession: false } });
     await mustSignIn(ADMIN_EMAIL, adminClient, { email: ADMIN_EMAIL, password: PASSWORD });
+    // Signed in HERE, not in the test that uses it: setup gets 6 minutes to
+    // wait out a sign-in rate limit, a test 30 s (tests/test-sign-in-timeouts).
+    samClient = createClient(url, anon, { auth: { persistSession: false } });
+    await mustSignIn(SAM_EMAIL, samClient, { email: SAM_EMAIL, password: PASSWORD });
 
     const branchId = await createBranch(adminClient, {
       orgId,
@@ -283,14 +289,8 @@ describe.skipIf(!HAS_ENV)("batch invite flow (migration 0084)", () => {
   });
 
   it("a batch the caller cannot see cannot be invited to", async () => {
-    const outsider = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      { auth: { persistSession: false } }
-    );
-    await mustSignIn(SAM_EMAIL, outsider, { email: SAM_EMAIL, password: PASSWORD });
     const res = await inviteToBatch({
-      client: outsider,
+      client: samClient,
       batchId,
       invitedBy: samId,
       raw: "someone@example.com",
