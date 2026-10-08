@@ -52,7 +52,7 @@ set (migration 0141), and the database refuses PUBLIC while it is set.
 4. `npx tsx scripts/imat/check.ts [year]`: the commit's own checks plus a KaTeX
    (strict) render of every formula. Must report 0 errors.
 5. `python scripts/imat/crop_figures.py <year>` crops each `figure` to
-   `C:\Vilas\LWS_Pune\IMATigures\<year>_q<n>.png`. **Look at every crop**: where
+   `C:\Vilas\LWS_Pune\IMAT\figures\<year>_q<n>.png`. **Look at every crop**: where
    options or a table are drawn too, the crop takes them in and is redone by
    hand (existing files are kept unless `--force`). A provider's logo is
    blanked where it is a separate image; 2021's is flattened into its figures.
