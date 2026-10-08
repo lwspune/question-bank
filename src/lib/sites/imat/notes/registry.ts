@@ -233,6 +233,21 @@ import {
   IMAT_MAT_EQI_NOTES,
   IMAT_MAT_EQI_SLUGS,
 } from "./maths/equations-inequalities";
+import {
+  IMAT_REA_HIS_CHAPTER,
+  IMAT_REA_HIS_NOTES,
+  IMAT_REA_HIS_SLUGS,
+} from "./reading/history";
+import {
+  IMAT_REA_LIT_CHAPTER,
+  IMAT_REA_LIT_NOTES,
+  IMAT_REA_LIT_SLUGS,
+} from "./reading/literature-philosophy";
+import {
+  IMAT_REA_PES_CHAPTER,
+  IMAT_REA_PES_NOTES,
+  IMAT_REA_PES_SLUGS,
+} from "./reading/politics-economics-society";
 
 export type ImatNotesSubject = {
   /** URL segment, e.g. "imat-biology". */
@@ -332,6 +347,9 @@ export const IMAT_NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   // Reading
   entry("imat-reading", "reading-comprehension", IMAT_REA_RDC_CHAPTER, IMAT_REA_RDC_NOTES, IMAT_REA_RDC_SLUGS),
   entry("imat-reading", "english-language-grammar", IMAT_REA_ENG_CHAPTER, IMAT_REA_ENG_NOTES, IMAT_REA_ENG_SLUGS),
+  entry("imat-reading", "history", IMAT_REA_HIS_CHAPTER, IMAT_REA_HIS_NOTES, IMAT_REA_HIS_SLUGS),
+  entry("imat-reading", "literature-philosophy", IMAT_REA_LIT_CHAPTER, IMAT_REA_LIT_NOTES, IMAT_REA_LIT_SLUGS),
+  entry("imat-reading", "politics-economics-society", IMAT_REA_PES_CHAPTER, IMAT_REA_PES_NOTES, IMAT_REA_PES_SLUGS),
 ];
 
 export function getImatSubject(subjectRoute: string): ImatNotesSubject | undefined {
