@@ -42,6 +42,7 @@ Used to take JEE Mains Maths from 11 to 27 noted chapters in one session. One ch
 - **Specs are written with the Write tool, never a heredoc** (heredocs eat backslashes), as `String.raw` TS.
 - **A replacement whose target text already appears in the stem is reported as done by the fix tool** — widen the `from`.
 - **Papers whose JSON `notes` say BLIND-derived have no source key**: the stored key came from our own solver and deserves no deference.
+- **Stage each reviewed chapter folder by name, never its parent folder,** while other agents are still writing. On IMAT (2026-10-09) `git add <subject>/` swept two half-written chapters into a commit; it had to be reset and redone.
 - **Draft prompts must name the plain-text fields** (title, oneLineDefinition, whyItMatters, concept.name — no LaTeX, no `**`), ban `\iff`, forbid reusing the featured PYQ's numbers in the worked example/self-check, and give the chapter intro's required first-sentence shape (a bank fact, not a list of the pages).
 
 **Recurring findings worth checking in any booklet-sourced chapter:** letters printed for digits apply as one mapping per row (a→1, b→2, c→3 — if `f'(a)` is f'(1), then `g(c)` is g(3)); a key can be the NEXT question's answer (8 Apr 2024 Q177/Q178 were shifted by one); a quadratic in eˣ keyed with the product of all roots, non-real ones included; determinant keys that skip dividing by |A|; stems whose missing domain (x ≥ 0) makes the region unbounded — keep the key, say so, never feature it.
