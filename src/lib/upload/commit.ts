@@ -1,6 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { literalNewlineFields } from "./textGuard";
-import type { ParsedRowPayload, OptionLabel } from "./validate";
+import type { ParsedRowPayload, StoredOptionLabel } from "./validate";
 import { makeTaxonomyResolver } from "./taxonomy";
 
 export type CommitInput = {
@@ -13,6 +13,19 @@ export type CommitInput = {
   pyqYear?: number | null;
   pyqMonth?: string | null;
   pyqNote?: string | null;
+  /**
+   * Visibility written AT INSERT. Omitted = the column default (PUBLIC since
+   * migration 0022), exactly as before. A pipeline that must never be public
+   * passes "PRIVATE" here rather than flipping the rows after the insert,
+   * which leaves them public for a moment (NICHE_SITES_SPEC.md, IMAT).
+   */
+  visibility?: "PUBLIC" | "PRIVATE";
+  /**
+   * Why these rows may never be published (migration 0141). The database then
+   * refuses visibility = PUBLIC on them, so pass visibility "PRIVATE" too: a
+   * blocked row that lands on the PUBLIC default is rejected.
+   */
+  publishBlocked?: string;
 };
 
 export type CommitResult = {
@@ -36,6 +49,8 @@ export async function commitStaged(
     pyqYear,
     pyqMonth,
     pyqNote,
+    visibility,
+    publishBlocked,
   } = input;
   const result: CommitResult = { inserted: 0, skipped: 0, failed: 0, errors: [] };
   if (rows.length === 0) return result;
@@ -129,6 +144,8 @@ export async function commitStaged(
     /** Officially cancelled: the notice shown; the row then has no correct option (0119). */
     cancelled_note: string | null;
     created_by: string;
+    visibility?: "PUBLIC" | "PRIVATE";
+    publish_blocked?: string;
   };
 
   const stagedInserts: { row: ParsedRowPayload; q: QuestionInsert }[] = [];
@@ -199,6 +216,8 @@ export async function commitStaged(
           pyq_note: pyqNote ?? null,
           cancelled_note: row.cancelledNote ?? null,
           created_by: createdBy,
+          ...(visibility ? { visibility } : {}),
+          ...(publishBlocked ? { publish_blocked: publishBlocked } : {}),
         },
       });
     } catch (err) {
@@ -236,7 +255,7 @@ export async function commitStaged(
 
   const optionRows: {
     question_id: string;
-    label: OptionLabel;
+    label: StoredOptionLabel;
     text: string;
     is_correct: boolean;
   }[] = [];

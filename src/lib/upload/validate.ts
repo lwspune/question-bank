@@ -25,7 +25,11 @@ export type RawRow = {
 };
 
 export type Difficulty = "EASY" | "MODERATE" | "HARD";
+/** The four labels the Excel template (validateRow below) produces. */
 export type OptionLabel = "A" | "B" | "C" | "D";
+/** Every label the bank stores. "E" since migration 0140: IMAT prints five
+ *  options. Only script pipelines emit an E; the Excel template never does. */
+export type StoredOptionLabel = OptionLabel | "E";
 
 export type ParsedRowPayload = {
   sourceRow: number;
@@ -45,7 +49,7 @@ export type ParsedRowPayload = {
   questionFormat?: "mcq" | "subjective" | "numeric";
   /** The single correct value for a 'numeric' (NAT) question; ignored otherwise. */
   numericAnswer?: number;
-  options: { label: OptionLabel; text: string; isCorrect: boolean }[];
+  options: { label: StoredOptionLabel; text: string; isCorrect: boolean }[];
   contentHash: string;
   /** Set only for an officially cancelled question — every option is then incorrect. */
   cancelledNote?: string;
