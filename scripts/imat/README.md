@@ -26,9 +26,13 @@ set (migration 0141), and the database refuses PUBLIC while it is set.
   printed order, `answer` per question).
 - **2021 and 2022**: published by the ministry with the answer at option A in
   every question (its convention: "la risposta giusta è sempre la A"), so they
-  are `printed-a` (`PRINTED_A_YEARS` in `lib.ts`). Our copies carry a prep
-  provider's watermark but match an unmodified copy (testbuddy.it) question for
-  question; all 120 were also solved and every one came out A. 2022 Q10 is
+  are `printed-a` (`PRINTED_A_YEARS` in `lib.ts`). `IMAT_2021.pdf` and
+  `IMAT_2022.pdf` carry a prep provider's watermark; the
+  `IMAT-<year>-Past-Paper-PDF-A-Form.pdf` copies do not, and match them (and an
+  unmodified copy on testbuddy.it) question for question. 2021's figures are
+  cropped from its A-Form copy (its `sourceFile`), since its watermark is
+  flattened into the artwork; 2022's watermark is a separate image the cropper
+  removes. All 120 were also solved and every one came out A. 2022 Q10 is
   flawed as printed (true minimum 18, not an option).
 - Shapes differ by year (`PAPER_SHAPES` in `lib.ts`): 2011 and 2012 have 80
   questions, 2013 and 2014 their own splits, 2015-2021 22/18/12/8, 2022
