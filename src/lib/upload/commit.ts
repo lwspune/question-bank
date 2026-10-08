@@ -13,6 +13,13 @@ export type CommitInput = {
   pyqYear?: number | null;
   pyqMonth?: string | null;
   pyqNote?: string | null;
+  /**
+   * Visibility written AT INSERT. Omitted = the column default (PUBLIC since
+   * migration 0022), exactly as before. A pipeline that must never be public
+   * passes "PRIVATE" here rather than flipping the rows after the insert,
+   * which leaves them public for a moment (NICHE_SITES_SPEC.md, IMAT).
+   */
+  visibility?: "PUBLIC" | "PRIVATE";
 };
 
 export type CommitResult = {
@@ -36,6 +43,7 @@ export async function commitStaged(
     pyqYear,
     pyqMonth,
     pyqNote,
+    visibility,
   } = input;
   const result: CommitResult = { inserted: 0, skipped: 0, failed: 0, errors: [] };
   if (rows.length === 0) return result;
@@ -129,6 +137,7 @@ export async function commitStaged(
     /** Officially cancelled: the notice shown; the row then has no correct option (0119). */
     cancelled_note: string | null;
     created_by: string;
+    visibility?: "PUBLIC" | "PRIVATE";
   };
 
   const stagedInserts: { row: ParsedRowPayload; q: QuestionInsert }[] = [];
@@ -199,6 +208,7 @@ export async function commitStaged(
           pyq_note: pyqNote ?? null,
           cancelled_note: row.cancelledNote ?? null,
           created_by: createdBy,
+          ...(visibility ? { visibility } : {}),
         },
       });
     } catch (err) {
