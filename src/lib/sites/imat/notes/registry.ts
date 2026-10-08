@@ -218,6 +218,21 @@ import {
   IMAT_MAT_PST_NOTES,
   IMAT_MAT_PST_SLUGS,
 } from "./maths/probability-statistics";
+import {
+  IMAT_MAT_NPL_CHAPTER,
+  IMAT_MAT_NPL_NOTES,
+  IMAT_MAT_NPL_SLUGS,
+} from "./maths/numbers-powers-logarithms";
+import {
+  IMAT_MAT_SLG_CHAPTER,
+  IMAT_MAT_SLG_NOTES,
+  IMAT_MAT_SLG_SLUGS,
+} from "./maths/sets-logic";
+import {
+  IMAT_MAT_EQI_CHAPTER,
+  IMAT_MAT_EQI_NOTES,
+  IMAT_MAT_EQI_SLUGS,
+} from "./maths/equations-inequalities";
 
 export type ImatNotesSubject = {
   /** URL segment, e.g. "imat-biology". */
@@ -305,6 +320,9 @@ export const IMAT_NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   entry("imat-maths", "trigonometry", IMAT_MAT_TRG_CHAPTER, IMAT_MAT_TRG_NOTES, IMAT_MAT_TRG_SLUGS),
   entry("imat-maths", "geometry", IMAT_MAT_GEO_CHAPTER, IMAT_MAT_GEO_NOTES, IMAT_MAT_GEO_SLUGS),
   entry("imat-maths", "probability-statistics", IMAT_MAT_PST_CHAPTER, IMAT_MAT_PST_NOTES, IMAT_MAT_PST_SLUGS),
+  entry("imat-maths", "numbers-powers-logarithms", IMAT_MAT_NPL_CHAPTER, IMAT_MAT_NPL_NOTES, IMAT_MAT_NPL_SLUGS),
+  entry("imat-maths", "sets-logic", IMAT_MAT_SLG_CHAPTER, IMAT_MAT_SLG_NOTES, IMAT_MAT_SLG_SLUGS),
+  entry("imat-maths", "equations-inequalities", IMAT_MAT_EQI_CHAPTER, IMAT_MAT_EQI_NOTES, IMAT_MAT_EQI_SLUGS),
   // Logic
   entry("imat-logic", "critical-thinking", IMAT_LOG_CRT_CHAPTER, IMAT_LOG_CRT_NOTES, IMAT_LOG_CRT_SLUGS),
   entry("imat-logic", "numerical-reasoning", IMAT_LOG_NUR_CHAPTER, IMAT_LOG_NUR_NOTES, IMAT_LOG_NUR_SLUGS),
