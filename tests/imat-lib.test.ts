@@ -196,6 +196,11 @@ describe("keyModeFor", () => {
   it("knows 2021's shape is the usual Cambridge 22/18/12/8", () => {
     expect(PAPER_SHAPES[2021].map((b) => b.count)).toEqual([22, 18, 12, 8]);
   });
+
+  it("knows 2013's own shape: 30 thinking skills and general knowledge, 14 biology, 8 chemistry, 8 physics and maths", () => {
+    expect(PAPER_SHAPES[2013].map((b) => b.count)).toEqual([30, 14, 8, 8]);
+    expect(keyModeFor(2013)).toBe("printed-key");
+  });
 });
 
 describe("buildRow, Cambridge papers (printed key, printed order)", () => {
