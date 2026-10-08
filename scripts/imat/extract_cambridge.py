@@ -26,6 +26,7 @@ import fitz  # PyMuPDF
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from extract import line_text  # noqa: E402  the ministry extractor's sub/superscript rule
+from glyphs import decoder_for  # noqa: E402  2021's text layer holds glyph numbers
 
 HEADINGS = (
     "General Knowledge and Logical Reasoning", "General Knowledge", "Logical Reasoning",
@@ -34,11 +35,19 @@ HEADINGS = (
 FOOTER = re.compile(r"^(©\s*UCLES.*|Page \d+ / \d+|\d{2}[A-Z]{2}\d{5}|IMAT \d{4}.*|[0-9A-Z]{9}|BLANK PAGE|©\s*Cambridge University Press.*|Page \d+/\d+|ADMISSION TEST FOR THE DEGREE COURSE.*|Academic Year \d{4}/\d{4})$")
 
 
-def page_lines(page):
+def page_lines(page, dec=None):
     """[(x0, y0, x1, y1, text, block_no)] for every text line on the page, in reading order."""
     out = []
-    for b in page.get_text("dict")["blocks"]:
+    # An encoded page (glyphs.py) codes its own spaces as a glyph, and a space
+    # PyMuPDF inserts between spans would decode as "=", so none is inserted.
+    flags = None if dec is None else fitz.TEXTFLAGS_DICT | fitz.TEXT_INHIBIT_SPACES
+    dec = dec or (lambda s: s)
+    for b in page.get_text("dict", flags=flags)["blocks"]:
         for line in b.get("lines", []):
+            # Invisible text (alpha 0) is a copy laid over 2021's watermark logo, not the paper.
+            line["spans"] = [s for s in line["spans"] if s.get("alpha", 255) != 0]
+            for span in line["spans"]:
+                span["text"] = dec(span["text"])
             # Sub/superscripts kept as _{..}/^{..}; wrapped as LaTeX once the section is known.
             t = line_text(line).replace(" ", " ").strip()
             if t:
@@ -81,14 +90,15 @@ def join(lines):
 
 def main(pdf, year, out):
     doc = fitz.open(pdf)
+    dec = decoder_for(year)
     questions = []
     # The last page is the key (2022 has none, so its last page holds Q60). Page 1 is a cover in most years, but 2014 starts its
     # first question there; a cover simply has no margin numbers, so reading it is harmless.
     last = doc.page_count - 1
-    has_key = re.search(r"answer key", doc[last].get_text(), re.I) is not None
+    has_key = re.search(r"answer key", (dec or (lambda s: s))(doc[last].get_text()), re.I) is not None
     for pno in range(0, last if has_key else doc.page_count):
         page = doc[pno]
-        lines = [l for l in page_lines(page) if not FOOTER.match(l[4]) and l[4] not in HEADINGS]
+        lines = [l for l in page_lines(page, dec) if not FOOTER.match(l[4]) and l[4] not in HEADINGS]
         starts = [l for l in lines if re.fullmatch(r"\d{1,2}", l[4]) and l[0] < 70]
         labels = [l for l in lines if re.fullmatch(r"[A-E]", l[4]) and 70 <= l[0] < 120]
         for i, s in enumerate(starts):
