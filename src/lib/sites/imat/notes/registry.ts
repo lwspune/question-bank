@@ -198,6 +198,26 @@ import {
   IMAT_LOG_SPA_NOTES,
   IMAT_LOG_SPA_SLUGS,
 } from "./logic/spatial-sequence-reasoning";
+import {
+  IMAT_MAT_FUN_CHAPTER,
+  IMAT_MAT_FUN_NOTES,
+  IMAT_MAT_FUN_SLUGS,
+} from "./maths/functions";
+import {
+  IMAT_MAT_TRG_CHAPTER,
+  IMAT_MAT_TRG_NOTES,
+  IMAT_MAT_TRG_SLUGS,
+} from "./maths/trigonometry";
+import {
+  IMAT_MAT_GEO_CHAPTER,
+  IMAT_MAT_GEO_NOTES,
+  IMAT_MAT_GEO_SLUGS,
+} from "./maths/geometry";
+import {
+  IMAT_MAT_PST_CHAPTER,
+  IMAT_MAT_PST_NOTES,
+  IMAT_MAT_PST_SLUGS,
+} from "./maths/probability-statistics";
 
 export type ImatNotesSubject = {
   /** URL segment, e.g. "imat-biology". */
@@ -280,6 +300,11 @@ export const IMAT_NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   entry("imat-physics", "measurement-units", IMAT_PHY_MU_CHAPTER, IMAT_PHY_MU_NOTES, IMAT_PHY_MU_SLUGS),
   entry("imat-physics", "kinematics", IMAT_PHY_KIN_CHAPTER, IMAT_PHY_KIN_NOTES, IMAT_PHY_KIN_SLUGS),
   entry("imat-physics", "dynamics-work-energy", IMAT_PHY_DYN_CHAPTER, IMAT_PHY_DYN_NOTES, IMAT_PHY_DYN_SLUGS),
+  // Maths
+  entry("imat-maths", "functions", IMAT_MAT_FUN_CHAPTER, IMAT_MAT_FUN_NOTES, IMAT_MAT_FUN_SLUGS),
+  entry("imat-maths", "trigonometry", IMAT_MAT_TRG_CHAPTER, IMAT_MAT_TRG_NOTES, IMAT_MAT_TRG_SLUGS),
+  entry("imat-maths", "geometry", IMAT_MAT_GEO_CHAPTER, IMAT_MAT_GEO_NOTES, IMAT_MAT_GEO_SLUGS),
+  entry("imat-maths", "probability-statistics", IMAT_MAT_PST_CHAPTER, IMAT_MAT_PST_NOTES, IMAT_MAT_PST_SLUGS),
   // Logic
   entry("imat-logic", "critical-thinking", IMAT_LOG_CRT_CHAPTER, IMAT_LOG_CRT_NOTES, IMAT_LOG_CRT_SLUGS),
   entry("imat-logic", "numerical-reasoning", IMAT_LOG_NUR_CHAPTER, IMAT_LOG_NUR_NOTES, IMAT_LOG_NUR_SLUGS),
