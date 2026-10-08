@@ -47,6 +47,7 @@ SUBJECTS = {
     "maths": ("Mathematics", "65"),
     "physics": ("Physics", "55"),
     "chemistry": ("Chemistry", "56"),
+    "biology": ("Biology", "57"),
 }
 SOURCE_BASE = r"C:\tmp\PYQPs\CBSE\XII"
 OUT = os.path.join(os.path.dirname(__file__), "out")
@@ -56,7 +57,15 @@ DPI = 165
 # A marking scheme whose filename advertises several papers — "55-1-1,2,3" or
 # "55_1-(1 & 2 & 3)". Physics ships these in EVERY year 2022-2025, and rendering
 # one whole would hand the transcriber three papers' keys stacked together.
-MERGED_MS = re.compile(r"\d[\s_\-]*\(?\s*[1-9](?:\s*[,.&]\s*[1-9])+")
+#
+# Anchored on the subject's PAPER PREFIX, as config.ts's codesInMsFilename is.
+# Unanchored, any digit run counted: Biology 2026's "044_57.3.3_Eng_Revised.pdf"
+# and the date in "..._updated 16.04.2026.pdf" both read as set lists, and three
+# single-paper schemes were refused. Measured over every real scheme filename
+# 2026-10-07: the anchored rule flags the same 32 Physics files (and 0 Maths, 0
+# Chemistry) as the unanchored one did.
+def merged_ms(prefix):
+    return re.compile(prefix + r"[\s_\-]*[1-9][\s_\-]*\(?\s*[1-9](?:\s*[,.&]\s*[1-9])+")
 
 
 def load_index(subject):
@@ -126,7 +135,7 @@ def contact_sheet(pdf, path):
 def main():
     if len(sys.argv) < 3:
         print(
-            "usage: prep.py <year> <code> [--subject=maths|physics|chemistry] "
+            "usage: prep.py <year> <code> [--subject=maths|physics|chemistry|biology] "
             "[--against c1,c2] [--ms-pages from:to] [--qp-only]",
             file=sys.stderr,
         )
@@ -172,7 +181,7 @@ def main():
     # Belt and braces: if the filename still advertises several papers and we
     # have NO range, refuse. Rendering it whole hands the transcriber three
     # papers' Section-A keys stacked together with nothing to signal it.
-    if ms and not qp_only and ms_pages is None and MERGED_MS.search(os.path.basename(ms)):
+    if ms and not qp_only and ms_pages is None and merged_ms(SUBJECTS[subject][1]).search(os.path.basename(ms)):
         print(
             f"  REFUSING: {os.path.basename(ms)} is a MERGED marking scheme carrying several\n"
             f"  papers, and the index carries no page range for {code}. Re-emit the index\n"

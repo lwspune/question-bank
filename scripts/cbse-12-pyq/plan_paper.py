@@ -224,8 +224,8 @@ def main():
     for a in sys.argv:
         if a.startswith("--subject="):
             subject = a.split("=", 1)[1].strip()
-    if subject not in ("maths", "physics", "chemistry"):
-        print(f"unknown --subject={subject!r}; expected maths, physics or chemistry", file=sys.stderr)
+    if subject not in ("maths", "physics", "chemistry", "biology"):
+        print(f"unknown --subject={subject!r}; expected maths, physics, chemistry or biology", file=sys.stderr)
         sys.exit(2)
     index = load_index(subject)
 

@@ -50,7 +50,7 @@ SOURCE_BASE = r"C:\tmp\PYQPs\CBSE\XII"
 # group is a question and questions do not know about subjects. 55/56/65 are
 # the same three digits rearranged, so this mirrors prep.py's SUBJECTS registry
 # rather than guessing from the filename.
-SUBJECT_BY_PREFIX = {"55": "Physics", "56": "Chemistry", "65": "Mathematics"}
+SUBJECT_BY_PREFIX = {"55": "Physics", "56": "Chemistry", "57": "Biology", "65": "Mathematics"}
 
 
 def source_root(code):
