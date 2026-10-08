@@ -73,6 +73,16 @@ import {
   IMAT_BIO_HAP_NOTES,
   IMAT_BIO_HAP_SLUGS,
 } from "./biology/human-anatomy-physiology";
+import {
+  IMAT_PHY_ELE_CHAPTER,
+  IMAT_PHY_ELE_NOTES,
+  IMAT_PHY_ELE_SLUGS,
+} from "./physics/electricity";
+import {
+  IMAT_PHY_MAG_CHAPTER,
+  IMAT_PHY_MAG_NOTES,
+  IMAT_PHY_MAG_SLUGS,
+} from "./physics/magnetism";
 
 export type ImatNotesSubject = {
   /** URL segment, e.g. "imat-biology". */
@@ -137,6 +147,8 @@ export const IMAT_NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   entry("imat-chemistry", "organic-chemistry", IMAT_CHE_ORG_CHAPTER, IMAT_CHE_ORG_NOTES, IMAT_CHE_ORG_SLUGS),
   // Physics
   entry("imat-physics", "fluids", IMAT_PHY_FLUIDS_CHAPTER, IMAT_PHY_FLUIDS_NOTES, IMAT_PHY_FLUIDS_SLUGS),
+  entry("imat-physics", "electricity", IMAT_PHY_ELE_CHAPTER, IMAT_PHY_ELE_NOTES, IMAT_PHY_ELE_SLUGS),
+  entry("imat-physics", "magnetism", IMAT_PHY_MAG_CHAPTER, IMAT_PHY_MAG_NOTES, IMAT_PHY_MAG_SLUGS),
 ];
 
 export function getImatSubject(subjectRoute: string): ImatNotesSubject | undefined {
