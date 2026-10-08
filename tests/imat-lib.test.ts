@@ -197,6 +197,11 @@ describe("keyModeFor", () => {
     expect(PAPER_SHAPES[2021].map((b) => b.count)).toEqual([22, 18, 12, 8]);
   });
 
+  it("knows 2011's shape: 80 questions, 40 general knowledge and logic, 18 biology, 11 chemistry, 11 physics and maths", () => {
+    expect(PAPER_SHAPES[2011].map((b) => b.count)).toEqual([40, 18, 11, 11]);
+    expect(PAPER_SHAPES[2011][0].sections).toEqual(["reading", "logic"]);
+  });
+
   it("knows 2012's own shape: 80 questions, 40 thinking skills, 18 biology, 11 chemistry, 11 physics and maths", () => {
     expect(PAPER_SHAPES[2012].map((b) => b.count)).toEqual([40, 18, 11, 11]);
     expect(PAPER_SHAPES[2012][0].sections).toEqual(["logic"]);
