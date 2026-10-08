@@ -260,3 +260,31 @@ export async function saveFirstTouch(
   if (!acq) return;
   await persistAcquisition(db, user.id, acq);
 }
+
+/**
+ * Save the country an account was created from (migration 0142), from the
+ * same sign-in paths as saveFirstTouch but NOT tied to its cookie: an account
+ * with no channel still gets a country. `country` comes from `readCountry`.
+ *
+ * New accounts only, for the same reason as the channel: a returning student
+ * signing in from somewhere else did not create the account there. Write-once
+ * in the query. Best-effort by contract: never fail a sign-in over it.
+ */
+export async function saveSignupCountry(
+  db: SupabaseClient,
+  user: { id: string; created_at?: string | null; last_sign_in_at?: string | null },
+  country: string | null
+): Promise<void> {
+  if (!country || !isNewAccount(user.created_at, user.last_sign_in_at)) return;
+  const { error: rowError } = await db
+    .from("student_profiles")
+    .upsert({ user_id: user.id }, { onConflict: "user_id", ignoreDuplicates: true });
+  if (rowError) throw new Error(rowError.message);
+
+  const { error } = await db
+    .from("student_profiles")
+    .update({ signup_country: country })
+    .eq("user_id", user.id)
+    .is("signup_country", null);
+  if (error) throw new Error(error.message);
+}

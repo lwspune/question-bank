@@ -5,6 +5,7 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { logActivity, logActivityOnce } from "@/lib/activity/service";
 import { parseClientEvent } from "@/lib/activity/clientEvents";
+import { readCountry, withCountry } from "@/lib/acquisition/country";
 
 const LIMIT_PER_HOUR = 120;
 const HOUR_MS = 60 * 60 * 1000;
@@ -40,9 +41,13 @@ export async function POST(request: NextRequest) {
   const parsed = parseClientEvent(raw, user.id, new Date());
   if (!parsed.ok) return NextResponse.json({ error: parsed.error }, { status: 400 });
 
+  // Country on paywall events only, stamped here so the browser cannot set it.
+  const event =
+    parsed.value.kind === "paywall_event" ? withCountry(parsed.value, readCountry(request.headers)) : parsed.value;
+
   const db = createSupabaseServerClient();
-  if (parsed.value.dedupeKey) await logActivityOnce(db, user.id, parsed.value);
-  else await logActivity(db, user.id, parsed.value);
+  if (event.dedupeKey) await logActivityOnce(db, user.id, event);
+  else await logActivity(db, user.id, event);
 
   return new NextResponse(null, { status: 204 });
 }
