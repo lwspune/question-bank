@@ -178,6 +178,16 @@ import {
   IMAT_LOG_DAT_NOTES,
   IMAT_LOG_DAT_SLUGS,
 } from "./logic/data-interpretation";
+import {
+  IMAT_REA_RDC_CHAPTER,
+  IMAT_REA_RDC_NOTES,
+  IMAT_REA_RDC_SLUGS,
+} from "./reading/reading-comprehension";
+import {
+  IMAT_REA_ENG_CHAPTER,
+  IMAT_REA_ENG_NOTES,
+  IMAT_REA_ENG_SLUGS,
+} from "./reading/english-language-grammar";
 
 export type ImatNotesSubject = {
   /** URL segment, e.g. "imat-biology". */
@@ -264,6 +274,9 @@ export const IMAT_NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   entry("imat-logic", "critical-thinking", IMAT_LOG_CRT_CHAPTER, IMAT_LOG_CRT_NOTES, IMAT_LOG_CRT_SLUGS),
   entry("imat-logic", "numerical-reasoning", IMAT_LOG_NUR_CHAPTER, IMAT_LOG_NUR_NOTES, IMAT_LOG_NUR_SLUGS),
   entry("imat-logic", "data-interpretation", IMAT_LOG_DAT_CHAPTER, IMAT_LOG_DAT_NOTES, IMAT_LOG_DAT_SLUGS),
+  // Reading
+  entry("imat-reading", "reading-comprehension", IMAT_REA_RDC_CHAPTER, IMAT_REA_RDC_NOTES, IMAT_REA_RDC_SLUGS),
+  entry("imat-reading", "english-language-grammar", IMAT_REA_ENG_CHAPTER, IMAT_REA_ENG_NOTES, IMAT_REA_ENG_SLUGS),
 ];
 
 export function getImatSubject(subjectRoute: string): ImatNotesSubject | undefined {
