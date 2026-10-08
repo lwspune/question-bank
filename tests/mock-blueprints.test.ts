@@ -323,7 +323,8 @@ describe("board chapter-test papers", () => {
 
   it("names every subject exactly as the bank spells it", () => {
     const subjects = (bp: (typeof BOARD)[number]) => bp.sections.flatMap((s) => s.subjects);
-    expect(subjects(CBSE_12_CHAPTER_MCQ_PAPER)).toEqual(["Physics", "Chemistry", "Mathematics"]);
+    // Biology joined 2026-10-08, when its 72 board papers went PUBLIC.
+    expect(subjects(CBSE_12_CHAPTER_MCQ_PAPER)).toEqual(["Physics", "Chemistry", "Mathematics", "Biology"]);
     expect(subjects(MH_HSC_12_CHAPTER_MCQ_PAPER)).toEqual(["Physics", "Chemistry", "Mathematics"]);
     expect(subjects(MH_SSC_10_CHAPTER_MCQ_PAPER)).toEqual([
       "Algebra",
