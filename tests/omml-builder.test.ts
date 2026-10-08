@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   latexToOmml,
   ommlNestingError,
+  ommlStrayText,
   sanitizeOmmlForXml,
   textWithMathToOmmlSegments,
 } from "@/lib/export/ommlBuilder";
@@ -254,6 +255,62 @@ describe("ommlNestingError", () => {
 
   it("detects an unclosed element", () => {
     expect(ommlNestingError("<m:acc><m:e>a</m:e>")).toContain("unclosed");
+  });
+});
+
+// Text that sits directly in an OMML element instead of inside <m:t> is not a
+// run, so Word drops it without a warning. Balanced tags alone cannot see it.
+describe("ommlStrayText", () => {
+  it("detects text outside a <m:t> run", () => {
+    expect(ommlStrayText("<m:e><m:r><m:t>2</m:t></m:r>x</m:e>")).toBe(
+      'stray text "x" inside <m:e>'
+    );
+  });
+
+  it("accepts whitespace between tags and text inside m:t / w:t", () => {
+    expect(
+      ommlStrayText("<m:e>\n  <m:r><w:rPr><w:t>a</w:t></w:rPr><m:t> x </m:t></m:r>\n</m:e>")
+    ).toBeNull();
+  });
+
+  it("ignores text in non-OMML elements", () => {
+    expect(ommlStrayText("<a><c>x</c></a>")).toBeNull();
+  });
+});
+
+// mml2omml 0.5.0 joins consecutive tokens into one run by appending to "the
+// last child of the parent's last element". After a big operator with limits
+// that element is the <m:nary>, so the second token onwards lands as bare text
+// inside its <m:e> and Word silently drops it: `\int_0^4 2x\,dx` printed as
+// `∫ 2 dx`. Real bank content (MH HSC 12 board papers, 2025-2026).
+describe("latexToOmml — n-ary body keeps every token", () => {
+  const naryBody = (omml: string) => {
+    const e = omml.match(/<m:nary>[\s\S]*<m:e>([\s\S]*?)<\/m:e>\s*<\/m:nary>/);
+    expect(e).not.toBeNull();
+    return [...e![1].matchAll(/<m:t(?:\s[^>]*)?>([\s\S]*?)<\/m:t>/g)]
+      .map((m) => m[1])
+      .join("");
+  };
+
+  const CASES: [string, string][] = [
+    [String.raw`\int_{-1}^{1} |x| \, dx`, "|x|"],
+    [String.raw`\int_{0}^{4} 2x \, dx`, "2x"],
+    [String.raw`\sum_{i=1}^{n} 2i`, "2i"],
+  ];
+
+  for (const [latex, body] of CASES) {
+    it(`keeps "${body}" as the body of ${latex}`, () => {
+      const omml = latexToOmml(latex);
+      expect(omml).not.toBeNull();
+      expect(ommlStrayText(omml!)).toBeNull();
+      expect(naryBody(omml!)).toBe(body);
+    });
+  }
+
+  it("leaves a single-token body as it was", () => {
+    const omml = latexToOmml(String.raw`\int_{0}^{4} x \, dx`);
+    expect(omml).not.toBeNull();
+    expect(naryBody(omml!)).toBe("x");
   });
 });
 

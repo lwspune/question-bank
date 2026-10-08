@@ -42,7 +42,7 @@ export function convertLatexToOmml(
 ): OmmlResult {
   const built = latexToOmmlUnchecked(latex, displayMode);
   if (built === null) return { ok: false, reason: "unconvertible" };
-  const detail = ommlNestingError(built);
+  const detail = ommlNestingError(built) ?? ommlStrayText(built);
   return detail ? { ok: false, reason: "malformed", detail } : { ok: true, omml: built };
 }
 
@@ -75,7 +75,8 @@ function latexToOmmlUnchecked(
       return null;
     }
     // The well-formedness guard lives in convertLatexToOmml, the sole caller.
-    return wrapAccents(wrapMatrixDelimiters(sanitizeOmmlForXml(omml)));
+    // mergeStrayRunText runs first so the text it moves into <m:t> is escaped.
+    return wrapAccents(wrapMatrixDelimiters(sanitizeOmmlForXml(mergeStrayRunText(omml))));
   } catch {
     return null;
   }
@@ -94,6 +95,21 @@ export function sanitizeOmmlForXml(omml: string): string {
   return omml.replace(
     /<m:t(\s[^>]*)?>([\s\S]*?)<\/m:t>/g,
     (_, attrs, content) => `<m:t${attrs ?? ""}>${escapeXmlText(content)}</m:t>`
+  );
+}
+
+// mml2omml (0.5.0) joins consecutive tokens (mi/mn/mo) into ONE run by
+// appending each later token's text to "the last child of the parent's last
+// element", assuming that element is the run it just wrote. After a big
+// operator with limits (\int_0^4, \sum_{i=1}^n) that element is the <m:nary>,
+// so the text lands loose inside its <m:e>, right after the first token's run:
+// `<m:e><m:r><m:t>2</m:t></m:r>x</m:e>`. Word drops loose text silently, so
+// `\int_0^4 2x\,dx` printed as `∫₀⁴ 2 dx`. Put the text where the library meant
+// it to go: into that preceding run, exactly as it does for `{2x}`. Whitespace
+// between tags is left alone. Pure.
+export function mergeStrayRunText(omml: string): string {
+  return omml.replace(/<\/m:t><\/m:r>([^<]+)/g, (whole, text: string) =>
+    text.trim() ? `${text}</m:t></m:r>` : whole
   );
 }
 
@@ -303,6 +319,34 @@ export function ommlNestingError(xml: string): string | null {
     }
   }
   return stack.length ? `unclosed <${stack.join(">, <")}>` : null;
+}
+
+/**
+ * Finds text sitting directly in an OMML element instead of inside `<m:t>`.
+ * The XML is balanced, so Word opens the file, but the text is not in a run and
+ * Word drops it without a warning: a question that prints `∫₀⁴ 2 dx` for
+ * `∫₀⁴ 2x dx`. ommlNestingError cannot see this, so the two run side by side in
+ * convertLatexToOmml. Only `m:` parents are checked; whitespace is ignored.
+ * Returns a description of the first stray text, or null. Pure.
+ */
+export function ommlStrayText(xml: string): string | null {
+  const stack: string[] = [];
+  const tag = /<(\/?)([A-Za-z_][\w:.-]*)([^>]*?)(\/?)>/g;
+  let m: RegExpExecArray | null;
+  let textStart = 0;
+  while ((m = tag.exec(xml))) {
+    const text = xml.slice(textStart, m.index).trim();
+    textStart = tag.lastIndex;
+    const parent = stack[stack.length - 1];
+    if (text && parent?.startsWith("m:") && parent !== "m:t") {
+      return `stray text "${text}" inside <${parent}>`;
+    }
+    const [, closing, name, attrs, selfClosing] = m;
+    if (selfClosing === "/" || attrs.endsWith("/")) continue;
+    if (closing === "/") stack.pop();
+    else stack.push(name);
+  }
+  return null;
 }
 
 function escapeXmlText(s: string): string {
