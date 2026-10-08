@@ -34,6 +34,7 @@
  */
 import { NOTES_CHAPTERS } from "../src/lib/notes/chapters";
 import { collectArcConcepts, findArcBreaks, type ArcFinding } from "../src/lib/notes/arcOrder";
+import { IMAT_NOTES_CHAPTERS } from "../src/lib/sites/imat/notes/registry";
 
 const args = process.argv.slice(2);
 /**
@@ -52,6 +53,8 @@ const includeSameSubtopic = args.includes("--all");
  * NOTATION class (12 corpus-wide) and this is opt-in for a chapter review.
  */
 const includeTerms = args.includes("--terms");
+/** `--imat` reads the IMAT site's own registry instead of PYQ Vault's. */
+const CHAPTERS = args.includes("--imat") ? IMAT_NOTES_CHAPTERS : NOTES_CHAPTERS;
 const [routeFilter, chapterFilter] = args.filter((a) => !a.startsWith("--"));
 
 type Row = { chapter: string; finding: ArcFinding };
@@ -60,7 +63,7 @@ const rows: Row[] = [];
 let chaptersScanned = 0;
 let conceptsScanned = 0;
 
-for (const c of NOTES_CHAPTERS) {
+for (const c of CHAPTERS) {
   if (routeFilter && c.subjectRoute !== routeFilter) continue;
   if (chapterFilter && c.chapterSlug !== chapterFilter) continue;
   chaptersScanned += 1;
