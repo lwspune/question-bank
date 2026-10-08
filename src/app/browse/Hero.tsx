@@ -1,10 +1,13 @@
 export default function Hero({
   totalPublicQuestions,
 }: {
-  totalPublicQuestions: number;
+  /** null = the count failed to load; the stat is left out, never shown as 0. */
+  totalPublicQuestions: number | null;
 }) {
   const stats = [
-    { value: totalPublicQuestions.toLocaleString("en-IN"), label: "public questions" },
+    ...(totalPublicQuestions === null
+      ? []
+      : [{ value: totalPublicQuestions.toLocaleString("en-IN"), label: "public questions" }]),
     { value: "Free", label: "to browse, forever" },
   ];
 

@@ -46,7 +46,7 @@ import {
   mixedFormatExamIds,
   shouldShowFormatFilter,
 } from "@/lib/questions/formatMix";
-import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
+import { getExamCatalogForRender } from "@/lib/exam/allExamStats";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { QuestionLangSwitch } from "@/components/i18n/BilingualText";
 import { hasMarathi } from "@/lib/i18n/bilingual";
@@ -341,7 +341,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
       <AppHeader />
       <main className="mx-auto max-w-7xl px-4 pb-28 pt-8 sm:px-6 sm:pb-32">
         {!filtered && (
-          <Hero totalPublicQuestions={totalCount} />
+          <Hero totalPublicQuestions={landing ? landing.totalPublicQuestions : totalCount} />
         )}
 
         {/* Compact on purpose (2026-10-05): on a phone this block was ~205 px,
@@ -521,8 +521,8 @@ function EmptyState({ filtered }: { filtered: boolean }) {
  * No question query, and no cache this page is the sole owner of.
  */
 async function loadLandingPanel() {
-  const [catalog, examIds, landings, defaultViewCounts] = await Promise.all([
-    getCachedExamCatalog(),
+  const [{ catalog, countsKnown }, examIds, landings, defaultViewCounts] = await Promise.all([
+    getExamCatalogForRender(),
     getExamIdMap(),
     listChapterLandings(),
     getDefaultViewCountsByExam(),
@@ -532,7 +532,9 @@ async function loadLandingPanel() {
     // the homepage prints — the two pages must not disagree about bank size.
     // The PILL counts are deliberately a different, narrower basis: each is
     // what its own destination will show. See buildExamStarters.
-    totalPublicQuestions: catalog.totalPublicQuestions,
+    // null when the catalog failed to load: the hero leaves the number out
+    // rather than print 0 (2026-10-08).
+    totalPublicQuestions: countsKnown ? catalog.totalPublicQuestions : null,
     exams: buildExamStarters(catalog, examIds, defaultViewCounts),
     chapters: pickStarterChapters(landings, { perExam: 2, total: 8 }),
     chapterDirectoryCount: landings.length,
