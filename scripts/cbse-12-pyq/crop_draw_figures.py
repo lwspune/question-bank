@@ -2,8 +2,10 @@
 
     python scripts/cbse-12-pyq/crop_draw_figures.py
 
-Each entry names a PDF in the NCERT Class 12 Biology folder, a 0-based page and
-a bbox in page FRACTIONS (and optionally `mask`, page-fraction rects to paint
+Each entry names a PDF in the NCERT Class 12 Biology folder (`book`) or, where
+no book figure fits, a CBSE marking scheme under the PYQ source folder (`ms`,
+a path relative to it: the official answer key draws the expected diagram), a
+0-based page and a bbox in page FRACTIONS (and optionally `mask`, page-fraction rects to paint
 white first). The crop is rendered at 3x and written to
 out/draw-figures/<ref>.png, then attach-draw-figures.ts uploads it.
 
@@ -22,6 +24,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
 OUT = os.path.join(HERE, "out", "draw-figures")
 BOOKS = r"C:\Vilas\LWS_Pune\NDA_Subjects_Content\Subjects\NCERT\Books\12th\Biology"
+MARKING_SCHEMES = r"C:\tmp\PYQPs\CBSE\XII\Biology"
 ZOOM = 3.0
 QUANTIZE_OVER = 900_000
 
@@ -32,7 +35,7 @@ def main():
     for e in manifest:
         if e.get("none"):
             continue  # a recorded decision that no book figure fits
-        doc = fitz.open(os.path.join(BOOKS, e["book"]))
+        doc = fitz.open(os.path.join(MARKING_SCHEMES, e["ms"]) if e.get("ms") else os.path.join(BOOKS, e["book"]))
         page = doc[e["page"]]
         w, h = page.rect.width, page.rect.height
         x0, y0, x1, y1 = e["bbox"]
