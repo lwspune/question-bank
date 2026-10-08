@@ -44,6 +44,7 @@ import {
   hasPattern,
   splitMergedMs,
   codesInMsFilename,
+  viRe,
   type PatternName,
   type MsBlock,
 } from "./lib";
@@ -98,14 +99,35 @@ const sha = (p: string) => createHash("sha256").update(readFileSync(p)).digest("
  */
 export function isViName(path: string, anchors: string[]): boolean {
   const base = path.replace(/^.*[\\/]/, "");
-  return anchors.some((a) => new RegExp(`${a}[\\s_\\-(]*B`, "i").test(base));
+  // The SAME rule parsePaperCode uses, so the two can never disagree about
+  // whether a file is a VI paper or an unreadable one.
+  return anchors.some((a) => viRe(a).test(base));
 }
 
 export function isHindi(path: string): boolean {
   const p = path.replace(/\\/g, "/");
   if (/\/[^/]*hindi[^/]*\//i.test(p)) return true;
   const base = p.replace(/^.*\//, "");
-  return /[_-]H[_\s-]*\.pdf$/i.test(base) || /_H_+\.pdf$/i.test(base);
+  if (/[_-]H[_\s-]*\.pdf$/i.test(base) || /_H_+\.pdf$/i.test(base)) return true;
+  // Biology names Hindi files in the FILENAME, in every spelling: "57-1-1
+  // hindi.pdf", "XII_044_MS_57_5_1HINDI.pdf", "hindi 57.3.1_Revised.pdf",
+  // "XII_044_Biology_MS 57-1-1 (H).pdf". No English name carries either.
+  return /hindi/i.test(base) || /\(H\)/.test(base);
+}
+
+/**
+ * The reason a file is dropped BY NAME, or null. For files no filename rule can
+ * classify: a scanned twin that is not byte-identical, a Hindi file whose
+ * Devanagari name arrives garbled. Matched on the exact basename within the
+ * year and kind, so it can never reach a file it was not written for.
+ */
+export function declaredExclusion(path: string, subject: SubjectSpec): string | null {
+  const p = path.replace(/\\/g, "/");
+  const base = p.replace(/^.*\//, "");
+  for (const x of subject.excludedSources ?? []) {
+    if (x.file === base && p.includes(`/${x.year}/${x.kind}/`)) return x.reason;
+  }
+  return null;
 }
 
 export type Discovery = {
@@ -113,6 +135,8 @@ export type Discovery = {
   problems: string[];
   excludedVi: number;
   excludedHindi: number;
+  /** Files dropped by name (SubjectSpec.excludedSources), with why. */
+  excludedDeclared: { file: string; reason: string }[];
   /** PDFs on disk that were neither ingested nor deliberately excluded. */
   unaccounted: string[];
   mergedMs: { file: string; blocks: MsBlock[] }[];
@@ -151,6 +175,12 @@ export function discover(subject: SubjectSpec, opts: { readMerged?: boolean } = 
   const mergedMs: { file: string; blocks: MsBlock[] }[] = [];
   let excludedVi = 0;
   let excludedHindi = 0;
+  const excludedDeclared: { file: string; reason: string }[] = [];
+  const declared = (f: string): boolean => {
+    const reason = declaredExclusion(f, subject);
+    if (reason) excludedDeclared.push({ file: f, reason });
+    return reason !== null;
+  };
   const prefix = subject.paperPrefix;
   // Physics 2026 names its marking schemes off the SUBJECT code (XII-2-042-1-1.pdf)
   // rather than the paper code, so the subject code is a fallback anchor.
@@ -162,6 +192,7 @@ export function discover(subject: SubjectSpec, opts: { readMerged?: boolean } = 
     // ── marking schemes first, keyed by code, so a paper can be paired to one ──
     const msByCode = new Map<string, { file: string; pages: { from: number; to: number } | null }>();
     for (const f of walk(join(subject.sourceRoot, String(year), "ms"))) {
+      if (declared(f)) continue;
       if (isHindi(f)) {
         excludedHindi++;
         continue;
@@ -218,6 +249,7 @@ export function discover(subject: SubjectSpec, opts: { readMerged?: boolean } = 
     const byHash = new Map<string, string>(); // file hash → first path seen
     const byCode = new Map<string, string>(); // paper code → first path seen
     for (const f of walk(join(subject.sourceRoot, String(year), "qp"))) {
+      if (declared(f)) continue;
       if (isHindi(f)) {
         excludedHindi++;
         continue;
@@ -263,7 +295,7 @@ export function discover(subject: SubjectSpec, opts: { readMerged?: boolean } = 
       if (!byCode.has(code)) problems.push(`${year}: marking scheme ${code} has NO question paper`);
     }
   }
-  return { papers, problems, excludedVi, excludedHindi, unaccounted, mergedMs };
+  return { papers, problems, excludedVi, excludedHindi, excludedDeclared, unaccounted, mergedMs };
 }
 
 function report(subject: SubjectSpec, readMerged: boolean): number {
@@ -284,8 +316,10 @@ function report(subject: SubjectSpec, readMerged: boolean): number {
   const unmeasured = new Set(d.papers.filter((p) => !p.pattern).map((p) => p.year));
   console.log(
     `\ntotal papers: ${d.papers.length} | with marking scheme: ${d.papers.length - noMs}` +
-      ` | VI excluded: ${d.excludedVi} | Hindi excluded: ${d.excludedHindi}`
+      ` | VI excluded: ${d.excludedVi} | Hindi excluded: ${d.excludedHindi}` +
+      ` | excluded by name: ${d.excludedDeclared.length}`
   );
+  for (const x of d.excludedDeclared) console.log(`  - ${x.file.replace(/^.*[\\/]/, "")}: ${x.reason}`);
   if (d.mergedMs.length) {
     console.log(`merged marking schemes split: ${d.mergedMs.length}`);
     for (const m of d.mergedMs) {

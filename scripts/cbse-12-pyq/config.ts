@@ -91,7 +91,7 @@ export { ORG_ID, CREATED_BY } from "../practice/config";
 export { EXAM_ID_CBSE_12 } from "../ncert/config";
 import { CHAPTERS as NCERT_CHAPTERS, EXAM_ID_CBSE_12 as CBSE12 } from "../ncert/config";
 
-import type { SubjectKey } from "./lib";
+import { PAPER_PATTERNS, patternForYear, totalMarks, type SubjectKey } from "./lib";
 export type { SubjectKey };
 
 /** Where the official ZIPs are unpacked: <SOURCE_ROOT>/<year>/{qp,ms}/… */
@@ -222,7 +222,42 @@ export const CHAPTERS_CHEMISTRY = [
 ] as const;
 
 /**
- * Everything that differs between the three subjects, in ONE place.
+ * The 13 live cbse-12 BIOLOGY chapters, verbatim from the DB 2026-10-07
+ * (240 practice rows from the NCERT ingest, 0 pyq).
+ *
+ * Measured 2026-10-07 across all 73 English marking schemes, word-boundary
+ * matched: the three chapters NCERT dropped (Reproduction in Organisms,
+ * Strategies for Enhancement in Food Production, Environmental Issues) barely
+ * register. The hits are "deforestation" and "inbreeding", which the live
+ * Biodiversity and Sexual Reproduction chapters still teach, plus three
+ * "biomagnification" in 2025. So no "[Outdated]" chapter is declared up front;
+ * a question that truly has no home is decided when it is met, the Chemistry
+ * rule, never filed onto an adjacent chapter.
+ */
+export const CHAPTERS_BIOLOGY = [
+  "Sexual Reproduction in Flowering Plants",
+  "Human Reproduction",
+  "Reproductive Health",
+  "Principles of Inheritance and Variation",
+  "Molecular Basis of Inheritance",
+  "Evolution",
+  "Human Health and Disease",
+  "Microbes in Human Welfare",
+  "Biotechnology: Principles and Processes",
+  "Biotechnology and its Applications",
+  "Organisms and Populations",
+  "Ecosystem",
+  "Biodiversity and Conservation",
+] as const;
+
+/**
+ * A source file no filename rule can classify, dropped BY NAME with its reason.
+ * `year` scopes it, because CBSE reuses names across years.
+ */
+export type ExcludedSource = { year: number; kind: "qp" | "ms"; file: string; reason: string };
+
+/**
+ * Everything that differs between the subjects, in ONE place.
  *
  * Parameterised rather than forked: the NCERT Class-11 precedent is explicit
  * that a fork means applying every future fix twice, and this repo already has
@@ -238,7 +273,13 @@ export type SubjectSpec = {
   paperPrefix: string;
   sourceRoot: string;
   chapters: readonly string[];
+  /** Files dropped by name; see ExcludedSource. */
+  excludedSources?: readonly ExcludedSource[];
 };
+
+const BIO_2024_SCAN =
+  "a SCANNED copy of a paper the archive also ships born-digital (same questions, read 2026-10-07); " +
+  "not byte-identical, so the hash dedup cannot collapse the pair";
 
 export const SUBJECTS: Record<SubjectKey, SubjectSpec> = {
   maths: {
@@ -264,6 +305,25 @@ export const SUBJECTS: Record<SubjectKey, SubjectSpec> = {
     paperPrefix: "56",
     sourceRoot: join(SOURCE_BASE, "Chemistry"),
     chapters: CHAPTERS_CHEMISTRY,
+  },
+  biology: {
+    key: "biology",
+    subjectName: "Biology",
+    cbseCode: "044",
+    paperPrefix: "57",
+    sourceRoot: join(SOURCE_BASE, "Biology"),
+    chapters: CHAPTERS_BIOLOGY,
+    excludedSources: [
+      { year: 2024, kind: "qp", file: "57_5_1_BIOLOGY.pdf", reason: BIO_2024_SCAN },
+      { year: 2024, kind: "qp", file: "57_5_2_BIOLOGY.pdf", reason: BIO_2024_SCAN },
+      { year: 2024, kind: "qp", file: "57_5_3_BIOLOGY.pdf", reason: BIO_2024_SCAN },
+      {
+        year: 2026,
+        kind: "ms",
+        file: "044 57_3_3 Óñ¦Óñ+Óñ¿ÓÑìÓñªÓÑÇ -1.PDF",
+        reason: "the HINDI scheme for 57/3/3; its Devanagari name arrives garbled, so no Hindi rule can read it",
+      },
+    ],
   },
 };
 
@@ -318,10 +378,16 @@ export function subjectFromArg(arg: string | undefined): SubjectSpec {
  */
 export function pyqNote(subject: SubjectSpec, year: number, code: string): string {
   const base = `CBSE Class 12 ${subject.subjectName} (${subject.cbseCode}) board examination ${year}, question paper ${code}.`;
-  const term2 =
-    year === 2022
-      ? ` This is the COVID-era Term-II paper (12 questions, 35 marks), covering part of the syllabus only, and it predates NCERT's rationalisation — some questions examine content the current syllabus no longer includes.`
-      : "";
+  // The size is read off the subject's MEASURED pattern, not written here: it
+  // used to be a literal "(12 questions, 35 marks)", true of Physics and
+  // Chemistry and false of Biology's 13-question paper (and Maths' 14 / 40).
+  let term2 = "";
+  if (year === 2022) {
+    const pattern = patternForYear(subject.key, year);
+    const bands = PAPER_PATTERNS[pattern];
+    const questions = bands[bands.length - 1].to;
+    term2 = ` This is the COVID-era Term-II paper (${questions} questions, ${totalMarks(pattern)} marks), covering part of the syllabus only, and it predates NCERT's rationalisation — some questions examine content the current syllabus no longer includes.`;
+  }
   return `${base}${term2} Official CBSE question paper; answer cross-checked against CBSE's published marking scheme for the same paper code.`;
 }
 

@@ -78,6 +78,7 @@ describe("paper patterns", () => {
       "full70_phy_2023",
       "full80",
       "term2",
+      "term2_bio",
       "term2_sci",
     ]);
   });

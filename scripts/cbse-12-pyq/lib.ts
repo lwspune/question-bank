@@ -23,6 +23,7 @@ export type PaperCode = { series: string; set: string };
  *   maths     041 → papers printed "65/s/n"
  *   physics   042 → papers printed "55/s/n"
  *   chemistry 043 → papers printed "56/s/n"
+ *   biology   044 → papers printed "57/s/n"
  *
  * ⚠ 55, 56 and 65 are the SAME THREE DIGITS rearranged, and every Chemistry
  * filename also carries the subject code 043. That makes cross-subject
@@ -33,7 +34,7 @@ export type PaperCode = { series: string; set: string };
  * made the typechecker enumerate all 12 call sites instead of leaving silent
  * defaults behind.
  */
-export type SubjectKey = "maths" | "physics" | "chemistry";
+export type SubjectKey = "maths" | "physics" | "chemistry" | "biology";
 
 /**
  * CBSE's own filenames are inconsistent across the five years, so this is
@@ -64,13 +65,20 @@ function assertPrefix(prefix: string): void {
   }
 }
 
-const codeRe = (prefix: string) => new RegExp(`${prefix}[\\s_\\-(]*([1-9])[\\s_\\-)]*([1-9])`);
-// The visually-impaired marker, in every spelling the four archives use:
+// A DOT separates too: Biology 2026 ships "044_57.3.3_Eng_Revised.pdf". Without
+// it the "57" anchor misses that name and the "044" fallback reads "044_57" as
+// series 5 / set 7, a paper that does not exist, with no error anywhere.
+const codeRe = (prefix: string) => new RegExp(`${prefix}[\\s_\\-(.]*([1-9])[\\s_\\-).]*([1-9])`);
+// The visually-impaired marker, in every spelling the five archives use:
 //   55(B)_Physics …      Physics 2026 question paper
 //   Marking Scheme 55-B  Physics 2023 marking scheme
 //   …MS_56_B.pdf         Chemistry 2025
 //   …MS_56_Blind.pdf     Chemistry 2022  (spelled out)
-const viRe = (prefix: string) => new RegExp(`${prefix}[\\s_\\-(]*B`, "i");
+//   57B_Biology …        Biology 2024
+// The B must stand ALONE or spell "Blind": a bare `B` prefix match reads the
+// subject-code anchor in "XII_044_Biology_MS 57-1-1.pdf" as "044 B" and drops
+// every 2025 Biology marking scheme as a visually-impaired paper.
+export const viRe = (prefix: string) => new RegExp(`${prefix}[\\s_\\-(]*B(?:lind)?(?![a-z])`, "i");
 
 /**
  * Read the paper code from a source filename.
@@ -260,6 +268,24 @@ export const PAPER_PATTERNS: Record<string, Band[]> = {
     //  this question carries 5 marks."
     { from: 12, to: 12, section: "C", marks: 5, kind: "case_study" },
   ],
+
+  /**
+   * term2_bio — the 2022 COVID Term-II paper for BIOLOGY, which is NOT
+   * term2_sci: 13 questions where Physics and Chemistry sat 12. Measured off
+   * 2022 57/5/1's printed instructions:
+   *   "This question paper contains 13 questions ... Section-A has 6 questions
+   *    of 2 marks each. Section-B has 6 questions of 3 marks each; and
+   *    Section-C has a case-based question of 5 marks."
+   * The marking scheme keys Q13 as written sub-parts (i)-(iv) with an OR, so
+   * there are no MCQs anywhere in 2022 Biology.
+   * 12 + 18 + 5 = 35, the same total as term2_sci, so a marks check cannot
+   * tell them apart.
+   */
+  term2_bio: [
+    { from: 1, to: 6, section: "A", marks: 2, kind: "subjective" },
+    { from: 7, to: 12, section: "B", marks: 3, kind: "subjective" },
+    { from: 13, to: 13, section: "C", marks: 5, kind: "case_study" },
+  ],
 };
 
 export type PatternName = keyof typeof PAPER_PATTERNS & string;
@@ -300,6 +326,18 @@ const YEAR_PATTERN: Record<SubjectKey, Record<number, PatternName>> = {
   chemistry: {
     2022: "term2_sci",
     2023: "full70_chem_2023",
+    2024: "full70",
+    2025: "full70",
+    2026: "full70",
+  },
+  // Read 2026-10-07: 2023 57/1/1, 2024 57/1/1 and 2026 57/1/1 from their text
+  // layers, 2022 57/5/1 from its text layer (57/1/1 that year is a scan), and
+  // 2025 57/1/1 by VISION (a scan; its Hindi instructions page prints the same
+  // five bands). Biology 2023 is ALREADY the 33-question paper that Physics and
+  // Chemistry only reached in 2024.
+  biology: {
+    2022: "term2_bio",
+    2023: "full70",
     2024: "full70",
     2025: "full70",
     2026: "full70",
@@ -489,8 +527,27 @@ function parseSectionAKeyStrictly(
     a = m;
     break;
   }
-  if (!a) return { anchored: false, key: [] };
-  const rest = text.slice(a.index + a[0].length);
+  let start: number;
+  if (a) start = a.index + a[0].length;
+  else {
+    // A HEADLESS Section A. Biology 2024's marking schemes print no "SECTION A"
+    // at all: the 1..16 key opens straight under the "MARKING SCHEME ...
+    // [ Paper Code: 57/1/1]" header. Anchor on the LAST uppercase "MARKING
+    // SCHEME" before Section B (page 1's "Marking Scheme Strictly Confidential"
+    // is mixed case), so the numbered General Instructions above it are never
+    // read as entries.
+    //
+    // Only when the caller says how many answers to expect: that count is what
+    // separates "this paper has no MCQs" (a Term-II paper must stay `[]`) from
+    // "its heading is missing", and the ascending and count checks below still
+    // fail closed on a block that is not the key.
+    if (!expected) return { anchored: false, key: [] };
+    const bAt = SECTION_B_START.exec(text)?.index ?? text.length;
+    const header = text.lastIndexOf("MARKING SCHEME", bAt);
+    if (header === -1) return { anchored: false, key: [] };
+    start = header + "MARKING SCHEME".length;
+  }
+  const rest = text.slice(start);
   const b = SECTION_B_START.exec(rest);
   const block = b ? rest.slice(0, b.index) : rest;
 
@@ -701,6 +758,10 @@ export function codesInMsFilename(path: string, anchors: string | string[]): str
   const base = path.replace(/^.*[\\/]/, "");
   for (const a of list) if (viRe(a).test(base)) return [];
 
+  // Each anchor is tried COMPLETELY (merged, then single) before the next one.
+  // Trying the merged rule on every anchor first let a FALLBACK anchor outrank
+  // the real paper code: Biology 2026's "044_57.3.3_Eng_Revised.pdf" read on
+  // "044" as a merged "5 / 7,3,3", when "57" reads it correctly as 57/3/3.
   for (const a of list) {
     // series, then two or more set digits separated by , . or & (any spacing).
     const m = new RegExp(`${a}[\\s_\\-]*([1-9])[\\s_\\-]*\\(?\\s*([1-9](?:\\s*[,.&]\\s*[1-9])+)`).exec(base);
@@ -711,9 +772,10 @@ export function codesInMsFilename(path: string, anchors: string | string[]): str
         .filter(Boolean);
       return sets.map((set) => `${label}/${m[1]}/${set}`);
     }
+    const c = parsePaperCode(base, [a]);
+    if (c) return [`${label}/${c.series}/${c.set}`];
   }
-  const c = parsePaperCode(base, list);
-  return c ? [`${label}/${c.series}/${c.set}`] : [];
+  return [];
 }
 
 export function splitMergedMs(pages: MergedMsPage[], expectedCodes: string[]): MsBlock[] {
