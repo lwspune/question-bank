@@ -20,6 +20,12 @@ export type CommitInput = {
    * which leaves them public for a moment (NICHE_SITES_SPEC.md, IMAT).
    */
   visibility?: "PUBLIC" | "PRIVATE";
+  /**
+   * Why these rows may never be published (migration 0141). The database then
+   * refuses visibility = PUBLIC on them, so pass visibility "PRIVATE" too: a
+   * blocked row that lands on the PUBLIC default is rejected.
+   */
+  publishBlocked?: string;
 };
 
 export type CommitResult = {
@@ -44,6 +50,7 @@ export async function commitStaged(
     pyqMonth,
     pyqNote,
     visibility,
+    publishBlocked,
   } = input;
   const result: CommitResult = { inserted: 0, skipped: 0, failed: 0, errors: [] };
   if (rows.length === 0) return result;
@@ -138,6 +145,7 @@ export async function commitStaged(
     cancelled_note: string | null;
     created_by: string;
     visibility?: "PUBLIC" | "PRIVATE";
+    publish_blocked?: string;
   };
 
   const stagedInserts: { row: ParsedRowPayload; q: QuestionInsert }[] = [];
@@ -209,6 +217,7 @@ export async function commitStaged(
           cancelled_note: row.cancelledNote ?? null,
           created_by: createdBy,
           ...(visibility ? { visibility } : {}),
+          ...(publishBlocked ? { publish_blocked: publishBlocked } : {}),
         },
       });
     } catch (err) {
