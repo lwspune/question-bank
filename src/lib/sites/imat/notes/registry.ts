@@ -158,6 +158,16 @@ import {
   IMAT_CHE_EQK_NOTES,
   IMAT_CHE_EQK_SLUGS,
 } from "./chemistry/equilibrium-kinetics-energetics";
+import {
+  IMAT_CHE_ABP_CHAPTER,
+  IMAT_CHE_ABP_NOTES,
+  IMAT_CHE_ABP_SLUGS,
+} from "./chemistry/acids-bases-ph";
+import {
+  IMAT_CHE_RDX_CHAPTER,
+  IMAT_CHE_RDX_NOTES,
+  IMAT_CHE_RDX_SLUGS,
+} from "./chemistry/redox";
 
 export type ImatNotesSubject = {
   /** URL segment, e.g. "imat-biology". */
@@ -228,6 +238,8 @@ export const IMAT_NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   entry("imat-chemistry", "solutions-concentration", IMAT_CHE_SOL_CHAPTER, IMAT_CHE_SOL_NOTES, IMAT_CHE_SOL_SLUGS),
   entry("imat-chemistry", "states-of-matter-gas-laws", IMAT_CHE_GAS_CHAPTER, IMAT_CHE_GAS_NOTES, IMAT_CHE_GAS_SLUGS),
   entry("imat-chemistry", "equilibrium-kinetics-energetics", IMAT_CHE_EQK_CHAPTER, IMAT_CHE_EQK_NOTES, IMAT_CHE_EQK_SLUGS),
+  entry("imat-chemistry", "acids-bases-ph", IMAT_CHE_ABP_CHAPTER, IMAT_CHE_ABP_NOTES, IMAT_CHE_ABP_SLUGS),
+  entry("imat-chemistry", "redox", IMAT_CHE_RDX_CHAPTER, IMAT_CHE_RDX_NOTES, IMAT_CHE_RDX_SLUGS),
   // Physics
   entry("imat-physics", "fluids", IMAT_PHY_FLUIDS_CHAPTER, IMAT_PHY_FLUIDS_NOTES, IMAT_PHY_FLUIDS_SLUGS),
   entry("imat-physics", "electricity", IMAT_PHY_ELE_CHAPTER, IMAT_PHY_ELE_NOTES, IMAT_PHY_ELE_SLUGS),
