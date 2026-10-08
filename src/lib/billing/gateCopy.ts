@@ -19,3 +19,11 @@ export function gateTitle(count: number, passLabel: string): string {
 export function gatePriceLine(cta: { price: string; length: string }): string {
   return `${cta.price} · ${cta.length}`;
 }
+
+/** The pass's perks with the download one first, for the download boxes, where
+ *  downloading is what the student came for (2026-10-07). The rest keep the
+ *  order set at /dashboard/pricing. Spec: tests/free-paper.test.ts. */
+export function downloadPerksFirst(perks: readonly string[]): string[] {
+  const isDownload = (p: string) => /download/i.test(p);
+  return [...perks.filter(isDownload), ...perks.filter((p) => !isDownload(p))];
+}

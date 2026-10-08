@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notesExamTitle } from "@/lib/notes/titles";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, BookOpen, NotebookPen } from "lucide-react";
+import { ArrowRight, NotebookPen } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
@@ -10,7 +10,15 @@ import {
   getNotesExamGroup,
   getNotesExamGroups,
   notesExamSlugs,
+  type NotesExamGroup,
 } from "@/lib/notes/notesNav";
+import { createSupabaseAnonClient } from "@/lib/supabase/server";
+import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
+import { getNotesChaptersForSubject } from "@/lib/notes/chapters";
+import { loadChapterPyqCounts } from "@/lib/notes/chapterCounts";
+import { buildHubSubject, chapterKey, type HubSubject } from "@/lib/notes/examHub";
+import NotesHubChapters from "@/app/notes/_components/NotesHubChapters";
+import ContinueReadingCard from "@/app/notes/_components/ContinueReadingCard";
 
 export const revalidate = 86400;
 
@@ -23,23 +31,20 @@ export function generateStaticParams(): Params[] {
 /**
  * The intro for one exam hub.
  *
- * Shared by the page and its metadata so the two cannot drift, and written to
- * answer a DIFFERENT question from the two levels around it: /notes says what
- * these notes are, this says what is covered for this exam, and the subject
- * landing says how to use them. Until 2026-09-16 all three rendered the same
- * sentence with a name swapped, which a reader meets twice in two clicks.
+ * Shared by the page and its metadata so the two cannot drift. Short since
+ * 2026-10-07: the chapters now sit right below it, so the intro only has to
+ * say what is covered. It answers a DIFFERENT question from the two levels
+ * around it: /notes says what these notes are, the subject landing says how to
+ * use them.
  *
- * Counts are pluralised because four live pages sit at 1 (JEE Mains and CDS
- * have one subject and one chapter each), and "1 subjects" on a real page is
- * the most machine-written thing a template can do.
+ * Counts are pluralised because some live pages sit at 1, and "1 subjects" on
+ * a real page is the most machine-written thing a template can do.
  */
 function examIntro(examName: string, subjects: number, chapters: number): string {
   const s = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : "s"}`;
   return (
-    `${examName} notes cover ${s(subjects, "subject")} and ${s(chapters, "chapter")} ` +
-    "so far. Each chapter breaks into subtopics, and every subtopic ends with a drill " +
-    "of the past-year questions on it, so you can check you have actually learnt it " +
-    "rather than just read it."
+    `${examName} notes cover ${s(subjects, "subject")} and ${s(chapters, "chapter")}. ` +
+    "Every subtopic ends with the past questions on it."
   );
 }
 
@@ -57,7 +62,43 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   };
 }
 
-export default function NotesExamHub({ params }: { params: Params }) {
+/**
+ * Every chapter of every subject, with its live past-question count. Counted
+ * in Postgres per subject (the subject landing's loader); a failed count reads
+ * as 0, and a subject whose counts all fail lists its chapters in book order.
+ */
+async function loadHubSubjects(group: NotesExamGroup): Promise<HubSubject[]> {
+  const supabase = createSupabaseAnonClient();
+  return Promise.all(
+    group.subjects.map(async (s) => {
+      const regs = getNotesChaptersForSubject(s.subjectRoute);
+      const first = regs[0];
+      const taxonomy = await getNotesTaxonomy(supabase, first.examName, first.subjectName);
+      const ids = new Map(regs.map((r) => [r.chapterSlug, taxonomy.chapters.get(r.chapter.chapterName)?.id]));
+      const counts = await loadChapterPyqCounts(supabase, {
+        examId: taxonomy.examId,
+        subjectId: taxonomy.subjectId,
+        chapterIds: [...ids.values()].filter((id): id is string => Boolean(id)),
+      });
+      return buildHubSubject(
+        s.subjectRoute,
+        s.subjectDisplay,
+        group.displayName,
+        regs.map((r) => {
+          const id = ids.get(r.chapterSlug);
+          return {
+            slug: r.chapterSlug,
+            name: r.chapter.chapterName,
+            subtopicCount: Object.keys(r.notes).length,
+            count: id ? counts.get(id) ?? 0 : 0,
+          };
+        })
+      );
+    })
+  );
+}
+
+export default async function NotesExamHub({ params }: { params: Params }) {
   const group = getNotesExamGroup(params.examSlug);
   if (!group) notFound();
 
@@ -69,8 +110,17 @@ export default function NotesExamHub({ params }: { params: Params }) {
     })),
   ];
 
-  const title = `${group.examName} — Teaching Notes`;
+  const title = `${group.examName} notes`;
   const intro = examIntro(group.examName, group.subjects.length, chapterTotal(group));
+  const subjects = group.subjects.length > 0 ? await loadHubSubjects(group) : [];
+
+  // What the Continue card needs, for THIS exam's chapters only.
+  const totals: Record<string, number> = {};
+  const subjectLabels: Record<string, string> = {};
+  for (const s of subjects) {
+    subjectLabels[s.subjectRoute] = s.subjectDisplay;
+    for (const c of s.chapters) totals[chapterKey(s.subjectRoute, c.slug)] = c.subtopicCount;
+  }
 
   return (
     <GuideShell
@@ -87,12 +137,12 @@ export default function NotesExamHub({ params }: { params: Params }) {
 
       <GuideHero eyebrow={`${group.displayName} · Teaching notes`} title={title} subtitle={intro} />
 
-      {group.subjects.length === 0 ? (
+      {subjects.length === 0 ? (
         <section className="mt-6 rounded-lg border bg-card p-8 text-center">
           <NotebookPen className="mx-auto h-6 w-6 text-muted-foreground" aria-hidden />
           <p className="mt-3 font-serif text-muted-foreground">
             {group.examName} teaching notes are coming soon. In the meantime, the full{" "}
-            {group.examName} question bank is live — browse and build papers now.
+            {group.examName} question bank is live: browse and build papers now.
           </p>
           <Link
             href="/browse"
@@ -103,34 +153,10 @@ export default function NotesExamHub({ params }: { params: Params }) {
           </Link>
         </section>
       ) : (
-        <section className="mt-2 grid gap-4 sm:mt-4">
-          <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-            <BookOpen className="h-4 w-4 text-brand-accent" aria-hidden />
-            Subjects
-          </p>
-          <ul className="space-y-3">
-            {group.subjects.map((s) => (
-              <li key={s.subjectRoute}>
-                <Link
-                  href={`/notes/${s.subjectRoute}`}
-                  className="group block rounded-lg border bg-card p-5 transition-colors hover:border-brand/40 hover:bg-brand/5"
-                >
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <h3 className="text-lg font-semibold tracking-tight">{s.subjectDisplay}</h3>
-                    <span className="rounded-md bg-brand/10 px-2 py-0.5 text-xs font-medium text-brand-accent tabular-nums">
-                      {s.chapterCount} {s.chapterCount === 1 ? "chapter" : "chapters"} ·{" "}
-                      {s.subtopicCount} subtopics
-                    </span>
-                  </div>
-                  <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-brand-accent opacity-80 group-hover:opacity-100">
-                    Open {s.subjectDisplay} notes
-                    <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-                  </p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <>
+          <ContinueReadingCard totals={totals} subjectLabels={subjectLabels} />
+          <NotesHubChapters examSlug={group.slug} subjects={subjects} />
+        </>
       )}
     </GuideShell>
   );

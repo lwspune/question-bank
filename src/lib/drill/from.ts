@@ -25,6 +25,7 @@ export const DRILL_FROM = [
   "email", // the due-nudge email
   "push", // the due-nudge notification
   "again", // "Another five" at the end of a drill
+  "nav", // the Fix tab graduates get in place of Board (lib/nav/fifthTab)
 ] as const;
 
 export type DrillFrom = (typeof DRILL_FROM)[number];

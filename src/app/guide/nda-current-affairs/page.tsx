@@ -27,6 +27,7 @@ import {
   type RecurringTheme,
   type OccasionalTheme,
 } from "./_data/nda-current-affairs";
+import Breadcrumbs from "@/components/nav/Breadcrumbs";
 
 export const revalidate = 86400;
 
@@ -71,33 +72,13 @@ export default async function NdaCurrentAffairsLanding() {
           description="A 191-question shape analysis of NDA Current Affairs across every paper 2017–2026. 90% of CA questions reference events within 12 months of their paper, so this guide is built around stable question shapes — nine anchor themes with prep checklists, seventeen recurring themes, and five occasional themes. Drill the bank for shape, harvest the facts externally."
         />
 
-        <nav aria-label="Breadcrumb" className="text-xs text-muted-foreground">
-          <ol className="flex flex-wrap items-center gap-1.5">
-            <li>
-              <a href="/" className="hover:text-foreground">
-                Home
-              </a>
-            </li>
-            <li className="flex items-center gap-1.5">
-              <span aria-hidden>›</span>
-              <a href="/guide" className="hover:text-foreground">
-                Guides
-              </a>
-            </li>
-            <li className="flex items-center gap-1.5">
-              <span aria-hidden>›</span>
-              <a href="/guide/nda" className="hover:text-foreground">
-                NDA
-              </a>
-            </li>
-            <li className="flex items-center gap-1.5">
-              <span aria-hidden>›</span>
-              <span className="font-medium text-foreground">
-                NDA Current Affairs
-              </span>
-            </li>
-          </ol>
-        </nav>
+        <Breadcrumbs
+          items={[
+            { href: "/guide", label: "Guides" },
+            { href: "/guide/nda", label: "NDA" },
+            { label: "NDA Current Affairs" },
+          ]}
+        />
 
         <div className="mt-6 sm:mt-8">
           <GuideHero

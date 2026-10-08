@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpen, Compass, Library, NotebookPen, Timer } from "lucide-react";
+import { BookOpen, Compass, Library, NotebookPen, Target, Timer } from "lucide-react";
 import { getActiveTab } from "@/lib/exam/examContext";
 import {
   isMobileTabActive,
@@ -10,6 +10,7 @@ import {
   type MobileTabId,
 } from "@/lib/nav/mobileTabs";
 import type { ExamNav } from "@/lib/exam/examNav";
+import type { FifthTab } from "@/lib/nav/fifthTab";
 
 /**
  * The phone navigation — five labelled tabs pinned to the bottom of the
@@ -40,12 +41,13 @@ const ICONS: Record<MobileTabId, typeof BookOpen> = {
   notes: NotebookPen,
   mock: Timer,
   board: Library,
+  fix: Target,
 };
 
-export default function MobileTabBar({ nav }: { nav: ExamNav }) {
+export default function MobileTabBar({ nav, fifth }: { nav: ExamNav; fifth: FifthTab }) {
   const pathname = usePathname() ?? "/";
   const active = getActiveTab(pathname);
-  const tabs = resolveMobileTabs(nav);
+  const tabs = resolveMobileTabs(nav, fifth);
 
   return (
     <nav
@@ -63,6 +65,8 @@ export default function MobileTabBar({ nav }: { nav: ExamNav }) {
           <Link
             key={id}
             href={href}
+            // /drill is built fresh per student: never preload it from every page.
+            prefetch={id === "fix" ? false : undefined}
             aria-current={isActive ? "page" : undefined}
             className={
               // 56px tall — comfortably past the 44px minimum touch target,

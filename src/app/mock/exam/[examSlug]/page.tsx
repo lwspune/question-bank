@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 import { fitTitle } from "@/lib/seo/title";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Download, History, Scissors, ScrollText, Target } from "lucide-react";
+import { ArrowRight, Download, History } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
-import { getPublishedMocks } from "@/lib/mocks/query";
+import { getPublishedMocks, type MockListItem } from "@/lib/mocks/query";
+import { hubRows, shortMockTitle } from "@/lib/mocks/hub";
+import { OwnAttemptsProvider } from "@/app/mock/_components/OwnAttempts";
+import NextMockCard from "@/app/mock/_components/NextMockCard";
+import MockHubTabs, { type HubMockRow, type HubMockTab } from "@/app/mock/_components/MockHubTabs";
 import {
   buildMockExamCards,
   getMockExam,
@@ -23,8 +27,6 @@ import {
   mockDownloadHref,
   mockTypeHref,
   splitMockTypeCards,
-  type MockTypeCard,
-  type MockTypeSlug,
 } from "@/lib/mocks/catalogue";
 
 // Nested under /mock/exam/ (not /mock/[slug], which is the instructions page).
@@ -52,27 +54,6 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
     description: `Sit ${exam.examName} mock tests online: real past papers served whole, plus full-length practice papers built to the exam blueprint. Official marking, live timer, instant scoring. Free, from PYQ Vault.`,
     alternates: { canonical: `/mock/exam/${exam.slug}` },
   };
-}
-
-const TYPE_ICON: Record<MockTypeSlug, typeof ScrollText> = {
-  "past-papers": ScrollText,
-  practice: Target,
-  sectional: Scissors,
-};
-
-/** "36 papers · 2017–2026" — every part derived from the rows, never typed. */
-function metaLine(card: MockTypeCard): string {
-  if (card.count === 0) return "Coming soon";
-  const parts = [`${card.count} ${card.count === 1 ? "test" : "tests"}`];
-  if (card.firstYear > 0) {
-    parts.push(
-      card.firstYear === card.lastYear
-        ? `${card.firstYear}`
-        : `${card.firstYear}–${card.lastYear}`
-    );
-  }
-  if (card.paperCount > 1) parts.push(`${card.paperCount} papers`);
-  return parts.join(" · ");
 }
 
 /**
@@ -180,6 +161,21 @@ export default async function MockExamTypePicker({ params }: { params: Params })
   // Only an exam with past papers has any to download.
   const hasPastPapers = open.some((c) => c.slug === "past-papers" && c.count > 0);
 
+  // The hub lists each type's newest few; "Show all" goes to the type's page.
+  const examMocks = all.filter((m) => m.examName === exam.examName);
+  const toRow = (m: MockListItem): HubMockRow => ({
+    id: m.id,
+    slug: m.slug,
+    title: shortMockTitle(m.title, exam.examName),
+    meta: `${m.totalQuestions} questions · ${Math.round(m.durationSecs / 60)} min`,
+  });
+  const tabs: HubMockTab[] = open.map((card) => {
+    const { items, total } = hubRows(card.slug, examMocks);
+    return { slug: card.slug, label: card.label, total, href: mockTypeHref(exam.slug, card.slug), rows: items.map(toRow) };
+  });
+  const rowById: Record<string, HubMockRow> = Object.fromEntries(examMocks.map((m) => [m.id, toRow(m)]));
+  const pastIds = hubRows("past-papers", examMocks, Infinity).items.map((m) => m.id);
+
   return (
     <GuideShell
       guideTitle="Mock Tests"
@@ -206,7 +202,7 @@ export default async function MockExamTypePicker({ params }: { params: Params })
           {hasPastPapers && (
             <Link
               href={mockDownloadHref(exam.slug)}
-              className="inline-flex items-center gap-1.5 rounded-md border px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="inline-flex items-center gap-1.5 rounded-md bg-brand px-3 py-2 text-sm font-medium text-brand-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <Download className="h-4 w-4" aria-hidden />
               Download past papers
@@ -215,50 +211,10 @@ export default async function MockExamTypePicker({ params }: { params: Params })
         </div>
       </GuideHero>
 
-      <ul className="mt-8 grid gap-5 sm:grid-cols-2">
-        {open.map((card) => {
-          const Icon = TYPE_ICON[card.slug];
-          const body = (
-            <>
-              <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg icon-tile">
-                  <Icon className="h-5 w-5" aria-hidden />
-                </span>
-                <div>
-                  <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                    {card.tagline}
-                  </p>
-                  <h2 className="text-lg font-semibold leading-tight">{card.label}</h2>
-                </div>
-              </div>
-
-              <p className="mt-4 flex-1 text-sm text-muted-foreground">{card.blurb}</p>
-
-              <p className="mt-4 text-xs font-medium text-muted-foreground tabular-nums">
-                {metaLine(card)}
-              </p>
-            </>
-          );
-
-          return (
-            <li key={card.slug}>
-              <Link
-                href={mockTypeHref(exam.slug, card.slug)}
-                className="group flex h-full flex-col rounded-lg border bg-card p-6 transition-colors hover:border-primary/40 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              >
-                {body}
-                <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-brand-accent">
-                  Open {card.label.toLowerCase()}
-                  <ArrowRight
-                    className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
-                    aria-hidden
-                  />
-                </span>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <OwnAttemptsProvider>
+        <NextMockCard pastIds={pastIds} mocks={rowById} />
+        <MockHubTabs examSlug={exam.slug} tabs={tabs} />
+      </OwnAttemptsProvider>
       {soonLine && <p className="mt-4 text-sm text-muted-foreground">{soonLine}</p>}
     </GuideShell>
   );

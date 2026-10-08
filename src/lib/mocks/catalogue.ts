@@ -204,6 +204,13 @@ function paperLabel(m: MockListItem): string {
   return bp?.paperLabel ?? m.paperCode;
 }
 
+const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+
+/** 1-12 for a month name or abbreviation ("Sep", "September"), 0 when unknown. */
+function monthRank(month: string | null | undefined): number {
+  return month ? MONTHS.indexOf(month.slice(0, 3).toLowerCase()) + 1 : 0;
+}
+
 /** Collect into insertion-ordered groups keyed by `key(item)`. */
 function collect(
   items: MockListItem[],
@@ -241,6 +248,10 @@ export function groupMocksForType(
       (m) => (typeof m.pyqYear === "number" ? String(m.pyqYear) : "undated"),
       (m) => (typeof m.pyqYear === "number" ? String(m.pyqYear) : "Undated")
     );
+    // Within a year, the later sitting first where the month is recorded (NDA
+    // sits in Apr and Sep). Rows with no month keep their order: the sort is
+    // stable and an unknown month ranks as 0 alongside them.
+    for (const g of groups) g.items.sort((a, b) => monthRank(b.pyqMonth) - monthRank(a.pyqMonth));
     // Newest sitting first; an undated row (a DB CHECK makes it impossible)
     // sorts last so it reads as the anomaly it is rather than leading the page.
     return groups.sort((a, b) => {

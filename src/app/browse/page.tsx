@@ -4,7 +4,8 @@ import { Inbox } from "lucide-react";
 import type { Metadata } from "next";
 import { getPageIdentity } from "@/lib/auth";
 import { sessionHasScope } from "@/lib/entitlements/session";
-import { sessionFreeDownloadLeft } from "@/lib/export/freeDownloadSession";
+import { sessionPaperFree } from "@/lib/export/freeDownloadSession";
+import { paperKey } from "@/lib/export/freePaper";
 import { DOWNLOAD_PASS_SCOPE } from "@/lib/export/access";
 import { passCta, passForScope } from "@/lib/billing/plans";
 import { listActivePlansCached } from "@/lib/billing/plansQuery";
@@ -105,10 +106,6 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   // account with no org. Only a signed-in non-staff viewer needs the lookup.
   const hasDownloadPass =
     isSignedIn && !isStaff ? await sessionHasScope(DOWNLOAD_PASS_SCOPE) : false;
-  // The one free download (2026-10-04): looked up only for an account the
-  // pass would otherwise be offered to.
-  const freeDownloadLeft =
-    isSignedIn && !isStaff && !hasDownloadPass ? await sessionFreeDownloadLeft() : false;
 
   const rawParams = paramsFromSearch(searchParams);
   let filters = parseFilters(rawParams);
@@ -148,6 +145,16 @@ export default async function BrowsePage({ searchParams }: PageProps) {
       if (examId) filters = { ...filters, examId, kind: "practice" };
     }
   }
+
+  // The one free PAPER (0131, one paper since 0139): free when unused, or when
+  // it was spent on these same filters, so the Answer Key of a paper taken free
+  // stays free. Keyed on the FINAL filters (the cookie branch above can change
+  // them) and looked up only for an account the pass would otherwise be
+  // offered to. Started here, awaited with the plans, so it adds no round trip.
+  const freePromise =
+    isSignedIn && !isStaff && !hasDownloadPass
+      ? sessionPaperFree(paperKey({ filters: filters as unknown as Record<string, unknown> }))
+      : null;
 
   // Facet RPC args — context-aware: chapter facets reflect all OTHER active
   // filters (so the chapter list shrinks as the user narrows difficulty/year),
@@ -266,6 +273,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   const downloadPass = plansPromise
     ? passCta(passForScope(await plansPromise, DOWNLOAD_PASS_SCOPE))
     : null;
+  const freeDownloadLeft = freePromise ? await freePromise : false;
 
   // Pooled student performance, for the same 25 ids. STAFF ONLY — skipped
   // outright for anon and students, so the hot path and the cached landing

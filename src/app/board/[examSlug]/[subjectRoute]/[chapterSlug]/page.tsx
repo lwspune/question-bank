@@ -1,8 +1,7 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import type { Metadata } from "next";
-import { ChevronRight, Home } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
+import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import Footer from "@/components/Footer";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { BOARD_EXAMS, getExamBySlug } from "@/lib/exam/examContext";
@@ -133,17 +132,14 @@ export default async function BoardChapterPage({ params }: { params: Params }) {
     <>
       <AppHeader />
       <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
-        <nav aria-label="Breadcrumb" className="mb-4 flex flex-wrap items-center gap-1 text-xs text-muted-foreground">
-          <Link href="/board" className="inline-flex items-center gap-1 hover:text-foreground">
-            <Home className="h-3 w-3" aria-hidden /> Board
-          </Link>
-          <ChevronRight className="h-3 w-3" aria-hidden />
-          <Link href={`/board/${params.examSlug}`} className="hover:text-foreground">
-            {data.displayName}
-          </Link>
-          <ChevronRight className="h-3 w-3" aria-hidden />
-          <span className="text-foreground">{chapter.chapterName}</span>
-        </nav>
+        <Breadcrumbs
+          className="mb-4"
+          items={[
+            { href: "/board", label: "Board" },
+            { href: `/board/${params.examSlug}`, label: data.displayName },
+            { label: chapter.chapterName },
+          ]}
+        />
 
         <header className="mb-8">
           <p className="text-xs font-medium uppercase tracking-wide text-brand-accent">

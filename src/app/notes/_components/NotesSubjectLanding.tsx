@@ -11,6 +11,7 @@ import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
 import { getNotesChaptersForSubject } from "@/lib/notes/chapters";
 import { chapterCardBlurb } from "@/lib/notes/cardBlurb";
 import { loadChapterPyqCounts } from "@/lib/notes/chapterCounts";
+import { notesExamCrumbs } from "@/lib/notes/breadcrumbs";
 
 /**
  * Subject-level notes index (e.g. /notes/nda-biology) — lists every shipped
@@ -99,7 +100,7 @@ export default async function NotesSubjectLanding({
     <GuideShell
       guideTitle={`${first.subjectDisplay} Notes`}
       sideNav={sideNav}
-      breadcrumbs={[{ href: "/notes", label: "Notes" }, { label: first.subjectDisplay }]}
+      breadcrumbs={[...notesExamCrumbs(first.examName), { label: first.subjectDisplay }]}
     >
       <GuideJsonLd
         type="CollectionPage"

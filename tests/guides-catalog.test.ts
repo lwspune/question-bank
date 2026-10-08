@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
-import { GUIDE_CATALOG, getSubjectGuides, hasSubjectGuide } from "@/lib/guide/guideCatalog";
+import { GUIDE_CATALOG, getSubjectGuides, hasSubjectGuide, soleGuideHrefs } from "@/lib/guide/guideCatalog";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 
 /**
@@ -53,5 +53,22 @@ describe("hasSubjectGuide — the notes pages' strategy chip", () => {
       const onDisk = existsSync(join(process.cwd(), "src/app/guide", r, "page.tsx"));
       expect(hasSubjectGuide(r), r).toBe(onDisk);
     }
+  });
+});
+
+describe("soleGuideHrefs — exams whose hub would hold a single card", () => {
+  it("maps exactly the exams with one subject guide to that guide", () => {
+    const expected = Object.fromEntries(
+      Object.entries(GUIDE_CATALOG)
+        .filter(([, cards]) => cards?.length === 1)
+        .map(([slug, cards]) => [slug, cards![0].href])
+    );
+    expect(soleGuideHrefs()).toEqual(expected);
+  });
+
+  it("names CDS (Maths is its only guide today) and not a multi-guide exam", () => {
+    const sole = soleGuideHrefs();
+    expect(sole.cds).toBe("/guide/cds-maths");
+    expect(sole.nda).toBeUndefined();
   });
 });

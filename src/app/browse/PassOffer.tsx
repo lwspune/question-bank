@@ -11,7 +11,7 @@ import GoogleSignInButton from "@/components/GoogleSignInButton";
 import { googleButtonAvailable, renderGoogleButton } from "@/components/auth/useGoogleOneTap";
 import { useCheckout, type CheckoutOutcome, type CheckoutSurface } from "@/components/billing/useCheckout";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
-import { gatePriceLine } from "@/lib/billing/gateCopy";
+import { downloadPerksFirst, gatePriceLine } from "@/lib/billing/gateCopy";
 import type { PassCta } from "@/lib/billing/plans";
 
 /**
@@ -56,6 +56,8 @@ export default function PassOffer({
    */
   onSignedIn?: () => void;
 }) {
+  // Both boxes that render this are download gates: lead with downloads.
+  const perks = downloadPerksFirst(pass.perks);
   const router = useRouter();
 
   const onDone = useCallback(
@@ -84,9 +86,9 @@ export default function PassOffer({
     <>
       <div className="min-h-0 flex-1 space-y-4 overflow-y-auto px-6 py-4 text-sm">
         {freeAfterSignIn && <p className="font-medium">For unlimited downloads, get {pass.label}:</p>}
-        {pass.perks.length > 0 && (
+        {perks.length > 0 && (
           <ul className="space-y-2">
-            {pass.perks.map((perk) => (
+            {perks.map((perk) => (
               <li key={perk} className="flex items-start gap-2">
                 <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
                 <span>{perk}</span>

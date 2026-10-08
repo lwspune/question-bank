@@ -16,6 +16,7 @@ import { type ExamSlug } from "@/lib/exam/examContext";
 import { resolveHomeHref } from "@/lib/header-session";
 import { useViewerSession } from "@/lib/viewer/useViewerSession";
 import { usePulse } from "@/lib/viewer/usePulse";
+import { fifthTabFor } from "@/lib/nav/fifthTab";
 
 /**
  * The whole per-visitor half of the site header, resolved in the BROWSER.
@@ -37,10 +38,13 @@ import { usePulse } from "@/lib/viewer/usePulse";
 export default function HeaderBar({
   examIds,
   notesExamSlugs,
+  soleGuides,
 }: {
   examIds: ExamIdMap;
   /** Exams with shipped notes — public, identical for everyone, from AppHeader. */
   notesExamSlugs: ExamSlug[];
+  /** Exam → its only subject guide, from AppHeader (same reasoning). */
+  soleGuides: Partial<Record<ExamSlug, string>>;
 }) {
   // Start at null (= no exam chosen) so the server HTML and the first client
   // render agree (no hydration mismatch); the cookie is applied immediately
@@ -67,7 +71,10 @@ export default function HeaderBar({
   // every width without adding chrome.
   const pulse = usePulse(!!session);
 
-  const nav = resolveExamNav(examSlug, examIds, notesExamSlugs);
+  const nav = resolveExamNav(examSlug, examIds, notesExamSlugs, soleGuides);
+  // Board, or Fix for a graduate student. Board until the session arrives, so
+  // the cached HTML is the same for everyone (see lib/nav/fifthTab).
+  const fifth = fifthTabFor(session);
 
   return (
     <>
@@ -94,6 +101,7 @@ export default function HeaderBar({
             notesHref={nav.notesHref}
             mockHref={nav.mockHref}
             boardHref={nav.boardHref}
+            fifth={fifth}
             showPapers={!!session?.isStaff}
             showBooks={!!session?.isSuperadmin}
           />
@@ -138,7 +146,7 @@ export default function HeaderBar({
 
       {/* Phone navigation. Rendered here so both navs share one resolution of
           the exam cookie and the session — see MobileTabBar. */}
-      <MobileTabBar nav={nav} />
+      <MobileTabBar nav={nav} fifth={fifth} />
     </>
   );
 }

@@ -45,6 +45,7 @@ import ChapterShareCard from "@/components/ChapterShareCard";
 import VHello from "@/components/chat/VHello";
 import NextStepCard from "@/components/question/NextStepCard";
 import { pickHello, nextStepLinks, CARD_AFTER, type HelloInput } from "@/lib/growth/secondPage";
+import Breadcrumbs from "@/components/nav/Breadcrumbs";
 
 const SITE_URL = "https://www.pyqvault.com";
 
@@ -222,23 +223,13 @@ export default async function ChapterQuestionsPage({ params }: Params) {
     <>
       <AppHeader />
       <main className="mx-auto w-full max-w-5xl p-8">
-        <nav aria-label="Breadcrumb" className="text-sm text-muted-foreground">
-          <ol className="flex flex-wrap items-center gap-1.5">
-            <li>
-              <Link href="/questions" className="hover:underline">
-                Questions
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li>
-              <Link href={examHomeHref(landing.examSlug)} className="hover:underline">
-                {landing.examName}
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li>{landing.subjectName}</li>
-          </ol>
-        </nav>
+        <Breadcrumbs
+          items={[
+            { href: "/questions", label: "Questions" },
+            { href: examHomeHref(landing.examSlug), label: landing.examName },
+            { label: landing.subjectName },
+          ]}
+        />
 
         <h1 className="mt-3 text-3xl font-semibold tracking-tight">
           {landing.chapterName}

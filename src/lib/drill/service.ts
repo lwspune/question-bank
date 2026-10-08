@@ -67,17 +67,24 @@ async function readDrillAllowanceInput(
   userId: string,
   now: Date
 ): Promise<DrillAllowanceInput> {
-  const limits = await getPremiumLimits(db);
+  // Both reads at once: the server is a long way from the database, so a read
+  // that waits for another costs a full round trip. Today's answers are read
+  // even when no limit applies; a small own-row read is cheaper than the wait.
+  const [limits, today] = await Promise.all([
+    getPremiumLimits(db),
+    loadDrillAnsweredToday(db, userId, istDayStartIso(now)).then(
+      (rows) => ({ ok: true as const, rows }),
+      (e: unknown) => ({ ok: false as const, e })
+    ),
+  ]);
   if (!limits || limits.hasPass || limits.drillPerDay === null) {
     return { limit: null, hasPass: limits?.hasPass ?? false, answeredToday: [] };
   }
-  try {
-    const answeredToday = await loadDrillAnsweredToday(db, userId, istDayStartIso(now));
-    return { limit: limits.drillPerDay, hasPass: false, answeredToday };
-  } catch (e) {
-    console.error("drill allowance read failed", e);
+  if (!today.ok) {
+    console.error("drill allowance read failed", today.e);
     return { limit: null, hasPass: false, answeredToday: [] };
   }
+  return { limit: limits.drillPerDay, hasPass: false, answeredToday: today.rows };
 }
 
 export async function getOwnDrill(
@@ -155,6 +162,9 @@ export async function getOwnDrill(
 /** The free daily allowance is used up; the route answers 402. */
 export type DrillLimitReached = { limitReached: true; limit: number };
 
+/** The rate limit refused the answer; the route answers 429. Nothing was written. */
+export type DrillRateLimited = { rateLimited: true };
+
 export type AnswerOutcome = DrillVerdict & {
   recorded: boolean;
   /** What this answer did to the question (lib/drill/progress). */
@@ -191,23 +201,39 @@ export async function getOwnLadder(
  * for.
  */
 export async function recordDrillAnswer(
+  userId: string,
   questionId: string,
-  chosenLabel: string
-): Promise<AnswerOutcome | DrillLimitReached | null> {
+  chosenLabel: string,
+  opts: { allowed?: Promise<boolean> } = {}
+): Promise<AnswerOutcome | DrillLimitReached | DrillRateLimited | null> {
   const db = createSupabaseServerClient();
-  const {
-    data: { user },
-  } = await db.auth.getUser();
-  if (!user) return null;
+  const now = new Date();
 
-  // Today's free allowance, checked BEFORE grading: the key is first sent to
-  // the browser in this answer's reply, so refusing here is a real limit.
-  const allowanceInput = await readDrillAllowanceInput(db, user.id, new Date());
+  // ROUND 1, every read that needs no other read, at once (2026-10-07). The
+  // server runs in Washington and the database in Mumbai, so each read that
+  // waits for another costs a full round trip: measured that night at ~650 ms,
+  // with eight of them in a row, so a tap took ~5 s to show its verdict.
+  // `allowed` is the route's rate-limit check, started before this was called:
+  // it is awaited here, with the reads, and nothing is written until it says yes.
+  // "Missed before?" matters only for a right answer, but a wrong one waiting
+  // for it would cost a round, so it is asked every time. Its failure is held
+  // until it is needed, so it can never break a wrong answer.
+  const [allowed, allowanceInput, verdict, priorWrong] = await Promise.all([
+    opts.allowed ?? Promise.resolve(true),
+    // Today's free allowance, checked BEFORE the verdict leaves the server:
+    // the key first reaches the browser in this answer's reply, so refusing
+    // here is a real limit.
+    readDrillAllowanceInput(db, userId, now),
+    gradeDrillAnswer(db, questionId, chosenLabel),
+    hasPriorWrong(db, userId, questionId).then(
+      (yes) => ({ ok: true as const, yes }),
+      (e: unknown) => ({ ok: false as const, e })
+    ),
+  ]);
+  if (!allowed) return { rateLimited: true };
   if (!canAnswerDrillQuestion(allowanceInput, questionId)) {
     return { limitReached: true, limit: allowanceInput.limit ?? 0 };
   }
-
-  const verdict = await gradeDrillAnswer(db, questionId, chosenLabel);
   if (!verdict) return null;
 
   // A correct answer is a RECOVERY only if they had got it wrong before — that
@@ -216,39 +242,55 @@ export async function recordDrillAnswer(
   // right is plain practice: recorded as `question_practiced` so it joins the
   // seen set and never returns as new, without pretending to be a recovery.
   // A wrong answer enters the ladder either way.
-  const kind = !verdict.correct
-    ? "answer_wrong"
-    : (await hasPriorWrong(db, user.id, questionId))
-      ? "answer_correct"
-      : "question_practiced";
-  await logActivity(db, user.id, {
+  let kind: "answer_wrong" | "answer_correct" | "question_practiced" = "answer_wrong";
+  if (verdict.correct) {
+    if (!priorWrong.ok) throw priorWrong.e;
+    kind = priorWrong.yes ? "answer_correct" : "question_practiced";
+  }
+
+  // ROUND 2, the write.
+  await logActivity(db, userId, {
     kind,
     refId: questionId,
     refKind: "question",
     metadata: { surface: DRILL_SURFACE, chose: chosenLabel.toUpperCase(), ...(kind === "question_practiced" ? { correct: true } : {}) },
   });
 
-  // What the answer did, read back from the log the write just joined. If that
-  // write was lost the read still sees the miss, so the student is told
-  // "right" rather than "fixed" — the same safe direction as the rule.
-  const now = new Date();
-  let progress: AnswerProgress = verdict.correct ? "right" : "wrong";
-  let fixedTotal: number | null = null;
-  if (kind === "answer_correct") {
-    try {
-      const events = await loadQuestionEvents(db, user.id, questionId);
-      progress = answerProgress({ correct: true, stateAfter: questionState(events, now) });
-      if (progress === "fixed") fixedTotal = fixedCount(await loadDrillEvents(db, user.id), now);
-    } catch (e) {
-      console.error("drill progress read failed", e);
-    }
-  }
-  const [milestone, tiers] = await Promise.all([
-    awardAnsweredMilestone(db, user.id),
+  // ROUND 3, everything that reads the log after the write, at once. The
+  // milestone counts THIS answer, so it cannot move before the write.
+  const [readBack, milestone, tiers] = await Promise.all([
+    readProgress(db, userId, questionId, kind, verdict.correct, now),
+    awardAnsweredMilestone(db, userId),
     verdict.correct ? crowdTiers([questionId]) : Promise.resolve(new Map<string, CrowdTier>()),
   ]);
 
-  return { ...verdict, recorded: true, progress, fixedTotal, milestone, crowd: tiers.get(questionId) ?? null };
+  return { ...verdict, recorded: true, ...readBack, milestone, crowd: tiers.get(questionId) ?? null };
+}
+
+/**
+ * What the answer did, read back from the log the write just joined. If that
+ * write was lost the read still sees the miss, so the student is told "right"
+ * rather than "fixed" — the same safe direction as the rule.
+ */
+async function readProgress(
+  db: ReturnType<typeof createSupabaseServerClient>,
+  userId: string,
+  questionId: string,
+  kind: "answer_wrong" | "answer_correct" | "question_practiced",
+  correct: boolean,
+  now: Date
+): Promise<{ progress: AnswerProgress; fixedTotal: number | null }> {
+  let progress: AnswerProgress = correct ? "right" : "wrong";
+  let fixedTotal: number | null = null;
+  if (kind !== "answer_correct") return { progress, fixedTotal };
+  try {
+    const events = await loadQuestionEvents(db, userId, questionId);
+    progress = answerProgress({ correct: true, stateAfter: questionState(events, now) });
+    if (progress === "fixed") fixedTotal = fixedCount(await loadDrillEvents(db, userId), now);
+  } catch (e) {
+    console.error("drill progress read failed", e);
+  }
+  return { progress, fixedTotal };
 }
 
 /**

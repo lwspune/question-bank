@@ -118,7 +118,7 @@ describe("resolveExportAccess", () => {
       expect(r.allowed).toBe(false);
       if (!r.allowed) {
         expect(r.status).toBe(403);
-        expect(r.message).toMatch(/free download/i);
+        expect(r.message).toMatch(/free paper/i);
         expect(r.message).toMatch(/Premium Pass/);
       }
     });

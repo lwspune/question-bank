@@ -266,10 +266,10 @@ export default function DownloadDialog({
               </>
             ) : downloadPass ? (
               !isSignedIn
-                ? "Your first download is free."
+                ? "Your first paper is free: the Question Paper and its Answer Key."
                 : wantPass
                 ? `${downloadPass.label} includes:`
-                : `You've used your free download. ${downloadPass.label} includes:`
+                : `You've had your free paper. ${downloadPass.label} includes:`
             ) : (
               "Downloading question papers needs a pass."
             )}
@@ -311,14 +311,11 @@ export default function DownloadDialog({
           {onFree && downloadPass && (
             <div className="space-y-2 rounded-md border border-brand-accent/30 bg-brand-accent/5 p-3 text-sm">
               <p>
-                <strong>This download is free:</strong> one file, the Question Paper or the Answer Key.
+                <strong>Your first paper is free:</strong> the Question Paper and its Answer Key, both files.
               </p>
               <p className="text-muted-foreground">
-                For unlimited downloads, get {downloadPass.label}: {gatePriceLine(downloadPass)}.
+                After that, every paper with its key comes with {downloadPass.label}: {gatePriceLine(downloadPass)}.
               </p>
-              <Button type="button" variant="outline" size="sm" onClick={() => setWantPass(true)}>
-                Get {downloadPass.label}
-              </Button>
             </div>
           )}
           {cartAvailable && (
