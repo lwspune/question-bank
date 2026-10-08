@@ -46,8 +46,8 @@ export function browseExtrasHref(ids: readonly string[]): string | null {
 }
 
 /** The button's text, which must describe what the href will actually open. */
-export function openLabel(total: number): string {
-  return total > OPEN_LIMIT ? `Open ${OPEN_LIMIT} of ${total}` : `Open ${total}`;
+export function openLabel(total: number, verb = "Open"): string {
+  return total > OPEN_LIMIT ? `${verb} ${OPEN_LIMIT} of ${total}` : `${verb} ${total}`;
 }
 
 /**

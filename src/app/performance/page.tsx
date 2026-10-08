@@ -96,25 +96,16 @@ export default async function OwnPerformancePage({ searchParams }: { searchParam
   return (
     <>
       <AppHeader />
-      <main className="mx-auto max-w-5xl space-y-6 px-6 py-8">
-        <div className="flex flex-wrap items-end justify-between gap-3">
-          <div>
+      <main className="mx-auto max-w-5xl space-y-8 px-4 py-6 sm:px-6 sm:py-8">
+        {/* With a marked paper, the band inside PerformanceBody carries the
+            page title and this link. Without one there is no band, so the
+            plain header stays. */}
+        {built.summary.graded === 0 && (
+          <div className="flex flex-wrap items-end justify-between gap-3">
             <h1 className="text-2xl font-bold tracking-tight">Your performance</h1>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Everything your timed papers say about where your marks are.
-            </p>
+            {allPapers("border hover:bg-accent")}
           </div>
-          <Link
-            // Not prefetched: /mock/attempts is a per-user server render, and a
-            // link in the viewport would run it whether or not it is tapped.
-            prefetch={false}
-            href="/mock/attempts"
-            className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            All your papers
-            <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-          </Link>
-        </div>
+        )}
 
         <PerformanceBody
           perf={perf}
@@ -125,9 +116,26 @@ export default async function OwnPerformancePage({ searchParams }: { searchParam
           projectionLocked={projectionLocked}
           projectionNote={projectionNote}
           starter={starter}
+          headerAction={allPapers("bg-white/10 text-white ring-1 ring-white/25 hover:bg-white/20")}
         />
       </main>
     </>
+  );
+}
+
+/** The "All your papers" link, styled for the band or for the plain header. */
+function allPapers(tone: string) {
+  return (
+    <Link
+      // Not prefetched: /mock/attempts is a per-user server render, and a
+      // link in the viewport would run it whether or not it is tapped.
+      prefetch={false}
+      href="/mock/attempts"
+      className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${tone}`}
+    >
+      All your papers
+      <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+    </Link>
   );
 }
 
