@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Dumbbell, Eye } from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
+import BlockText from "@/components/math/BlockText";
 import type { PracticeProblem } from "@/app/notes/_types";
 
 type Props = {
@@ -52,7 +53,7 @@ export default function PracticeSet({ problems }: Props) {
                   {i + 1}.
                 </span>
                 <div className="flex-1 font-serif text-sm text-foreground">
-                  <KatexRenderer text={p.prompt} />
+                  <BlockText text={p.prompt} />
                 </div>
                 {!isRevealed && (
                   <button

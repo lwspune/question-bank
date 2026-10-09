@@ -20,6 +20,10 @@
  *      beside the k, 2026-10-05). Write \(\hat{k}\) or words instead.
  */
 import { NOTES_CHAPTERS } from "../src/lib/notes/chapters";
+import { IMAT_NOTES_CHAPTERS } from "../src/lib/sites/imat/notes/registry";
+
+/** `--imat` audits the IMAT site's own registry instead of PYQ Vault's. */
+const CHAPTERS = process.argv.includes("--imat") ? IMAT_NOTES_CHAPTERS : NOTES_CHAPTERS;
 import { findCombiningMarks } from "./lib/combiningMarks";
 
 type Hit = { where: string; detail: string };
@@ -92,7 +96,7 @@ function inventoryUnicode(where: string, s: string | undefined) {
   }
 }
 
-for (const chapter of NOTES_CHAPTERS) {
+for (const chapter of CHAPTERS) {
   // Chapter-level plain-text fields. `intro` + `title` feed GuideHero,
   // the subject-landing cards, JSON-LD, and <meta description> — none of
   // which interpret Markdown, so `**bold**` / `\(...\)` leak literally.

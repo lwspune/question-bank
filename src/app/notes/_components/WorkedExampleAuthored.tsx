@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import KatexRenderer from "@/components/math/KatexRenderer";
+import BlockText from "@/components/math/BlockText";
 import { ChevronDown, Lightbulb, NotebookPen } from "lucide-react";
 import type { AuthoredExample } from "@/app/notes/_types";
 
@@ -49,7 +50,7 @@ export default function WorkedExampleAuthored({ example, presentMode }: Props) {
           (presentMode ? "text-2xl sm:text-3xl" : "text-base")
         }
       >
-        <KatexRenderer text={example.prompt} />
+        <BlockText text={example.prompt} />
       </div>
 
       {!showSolution ? (
@@ -72,7 +73,7 @@ export default function WorkedExampleAuthored({ example, presentMode }: Props) {
           >
             {example.steps.map((step, i) => (
               <li key={i} className="leading-relaxed">
-                <KatexRenderer text={step} />
+                <BlockText text={step} />
               </li>
             ))}
           </ol>

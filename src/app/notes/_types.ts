@@ -29,6 +29,12 @@ export type AuthoredExample = {
   steps: string[];
   /** Final answer, displayed prominently below the steps. KaTeX-aware. */
   answer: string;
+  /**
+   * Optional answer choices, shown under the prompt as (A), (B), ... in this
+   * order. Set when a self-check is written as an exam item (IMAT notes: five
+   * options, `answer` starting "(C)" etc.). Absent, the card is unchanged.
+   */
+  options?: string[];
 };
 
 /**

@@ -379,6 +379,14 @@ function QuickActions({
           description="Daily snapshots: disk spill, capacity against the plan caps, and the busiest queries this window."
         />
       )}
+      {isSuperadmin && (
+        <ActionCard
+          href="/dashboard/imat-notes"
+          icon={<BookOpen className="h-5 w-5" aria-hidden />}
+          title="IMAT notes (preview)"
+          description="Teaching notes for the future IMAT site, by subject. Staff only; never shown on PYQ Vault."
+        />
+      )}
       <ActionCard
         href="/dashboard/papers"
         icon={<FileText className="h-5 w-5" aria-hidden />}

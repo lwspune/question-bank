@@ -683,6 +683,11 @@ type Props = {
   backHref?: string;
   /** Human label for the back pill, e.g. "Vectors notes". */
   backLabel?: string;
+  /**
+   * False hides the "report a problem" button. The IMAT preview sets it: the
+   * report API only knows PYQ Vault's subtopic slugs. Default true.
+   */
+  showReport?: boolean;
 };
 
 /**
@@ -701,6 +706,7 @@ export default function ConceptUnitCard({
   drillQuestionIds,
   backHref,
   backLabel,
+  showReport = true,
 }: Props) {
   const practiceParts: string[] = [];
   if (concept.selfCheckExample) practiceParts.push("self-check");
@@ -837,11 +843,13 @@ export default function ConceptUnitCard({
           /browse filtered to exactly these UUIDs, sourced at request time from
           question_concept_tags via loadResolvedDrills. */}
       <div className="mt-6 flex flex-wrap items-center justify-between gap-2 border-t pt-4">
-        <ReportConceptDialog
-          subtopicSlug={subtopicSlug}
-          conceptSlug={concept.slug}
-          conceptName={concept.name}
-        />
+        {showReport && (
+          <ReportConceptDialog
+            subtopicSlug={subtopicSlug}
+            conceptSlug={concept.slug}
+            conceptName={concept.name}
+          />
+        )}
         {drillQuestionIds.length > 0 && (
           <Link
             href={buildBrowseUrl({

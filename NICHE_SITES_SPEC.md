@@ -26,6 +26,7 @@ Nothing done in the content-first step is redone.
 | C1 | Find the official MUR papers 2023+ and check each has an official key. A paper without an official key is not ingested. |
 | C2 | Branch `feat/imat-five-options`: migration 0140 adds `'E'` to `option_label`; the commit path takes `StoredOptionLabel` (A-E) while the Excel template's `OptionLabel` stays A-D. The one PYQ Vault surface that lists every DB exam, the `/browse` exam dropdown (`listExams`), drops exams named in `lib/sites/nicheExams.ts` (IMAT). It is a NAMED list, not "not in `EXAM_REGISTRY`", because /browse deliberately keeps an exam ingested before anyone registered it (FilterBar). The mock and item-stats parts of A-E wait for P1.5. |
 | C3 | `scripts/imat/` pipeline (P2.1-P2.4 below); rows land **PRIVATE**; standing audits. |
+| C4 | **Done 2026-10-09:** teaching notes for every IMAT chapter (46 chapters, 671 concepts) in `src/lib/sites/imat/notes/`, registered only in its own `IMAT_NOTES_CHAPTERS`, so PYQ Vault never lists them. Every worked example and five-option self-check is original (the past papers are evidence only), so the notes do not wait on D1. Readable today at the superadmin-only `/dashboard/imat-notes`. The owner approved (2026-10-09) showing them on the IMAT site: `/notes` is now on the P3 page list below. |
 
 While C1-C3 are the only steps done: IMAT is NOT in `EXAM_REGISTRY`, has no
 mocks, and every row is PRIVATE, so PYQ Vault shows nothing of it. Every
@@ -39,7 +40,7 @@ PUBLIC only when the niche site (P3) and D1 are both done.
 imatvault.vercel.app/mock      ──rewrite──▶  /s/imat/mock        (niche page tree)
 www.pyqvault.com/mock          ──────────▶  /mock               (unchanged)
 www.pyqvault.com/s/imat/...    ──────────▶  404                 (blocked)
-imatvault.vercel.app/notes     ──rewrite──▶  /s/imat/notes  ──▶  404 (no such page)
+imatvault.vercel.app/drill     ──rewrite──▶  /s/imat/drill  ──▶  404 (no such page)
 ```
 
 - **One route tree per niche site family:** `src/app/(niche)/s/[site]/...`. It
@@ -220,6 +221,7 @@ later phase can add solutions.
 |---|---|
 | `/` | What IMAT is, what the site offers, start a mock. |
 | `/browse` | The bank filtered to IMAT, reusing the question list and card. |
+| `/notes`, `/notes/[subject]/[chapter]`, `/notes/[subject]/[chapter]/[page]` | The IMAT notes (`IMAT_NOTES_CHAPTERS`), drawn with the shared `ConceptUnitCard` as the `/dashboard/imat-notes` preview already does: no featured past question, no drill, no report button. A subject index, a chapter landing with its page cards, and one page per subtopic with previous/next links. Indexable only when the site is (`indexable`). Approved by the owner 2026-10-09. |
 | `/mock`, `/mock/[slug]`, runner, result | Reusing the existing runner and result components. P3 starts with an audit of those components for hard-coded PYQ Vault links (`/drill`, `/pricing`, `/me`, AppHeader) and makes them take links from the site. |
 | `/login` | Google button only. |
 | `/robots.txt`, `/sitemap.xml` | Disallow-all + noindex while `indexable: false`. |
