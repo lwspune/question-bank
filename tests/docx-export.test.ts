@@ -352,6 +352,18 @@ describe("groupBySubtopic — section headings", () => {
     }
   });
 
+  it("can head every question, even when two in a row share a heading (homework)", async () => {
+    const sectionOf = new Map([
+      ["a", "Same heading"],
+      ["b", "Same heading"],
+      ["c", "Other heading"],
+    ]);
+    const xml = await readDocXml(
+      await buildQuestionPaper({ title: "T", questions: ordered, sectionOf, headingEveryQuestion: true })
+    );
+    expect(xml.match(/Same heading/g)?.length).toBe(2);
+  });
+
   it('falls back to "Other" for a null subtopic', async () => {
     const buf = await buildQuestionPaper({
       title: "T",

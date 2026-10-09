@@ -40,10 +40,13 @@ function canonical(v: unknown): unknown {
  */
 export function paperKey(req: {
   mockSlug?: string | null;
+  /** One day of a homework plan: each day is its own paper. */
+  homework?: { slug: string; day: number } | null;
   questionIds?: readonly string[] | null;
   filters?: Record<string, unknown> | null;
 }): string | null {
   if (req.mockSlug) return `mock:${req.mockSlug.trim()}`;
+  if (req.homework) return `homework:${req.homework.slug}:${req.homework.day}`;
   if (req.questionIds && req.questionIds.length > 0) {
     return `ids:${sha([...new Set(req.questionIds)].sort().join(","))}`;
   }

@@ -3,6 +3,7 @@ import { getPageIdentity } from "@/lib/auth";
 import { sessionHasScope } from "@/lib/entitlements/session";
 import { sessionPaperFree } from "@/lib/export/freeDownloadSession";
 import { paperKey } from "@/lib/export/freePaper";
+import { parseHomeworkTarget } from "@/lib/homework/dayExport";
 import { DOWNLOAD_PASS_SCOPE } from "@/lib/export/access";
 import { passCta, passForScope, type PassCta } from "@/lib/billing/plans";
 import { listActivePlansCached } from "@/lib/billing/plansQuery";
@@ -27,8 +28,11 @@ const ANON: Omit<ExportViewerAccess, "pass"> = {
 export async function GET(request: NextRequest) {
   // The paper the box is for (a past paper's slug), so a paper already taken
   // free still reads as free: its other file is part of the same free paper.
+  // Or one homework day, as "<plan-slug>:<day>".
   const slug = request.nextUrl.searchParams.get("mockSlug");
-  const freeKey = paperKey({ mockSlug: slug && /^[a-z0-9-]{1,120}$/.test(slug) ? slug : null });
+  const [hwSlug, hwDay] = (request.nextUrl.searchParams.get("homework") ?? "").split(":");
+  const homework = parseHomeworkTarget({ slug: hwSlug, day: Number(hwDay) });
+  const freeKey = paperKey({ mockSlug: slug && /^[a-z0-9-]{1,120}$/.test(slug) ? slug : null, homework });
   let viewer = ANON;
   try {
     const { isSignedIn, isStaff } = await getPageIdentity();

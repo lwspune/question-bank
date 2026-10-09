@@ -30,11 +30,15 @@ export type ExportEvent = {
   questionCount: number;
   /**
    * 'cart' = explicit question ids; 'filters' = a filtered slice of the bank;
-   * 'mock' = a published past paper, downloaded whole (migration 0136).
+   * 'mock' = a published past paper, downloaded whole (migration 0136);
+   * 'homework' = one day of a published homework plan (migration 0143).
    */
-  mode: "cart" | "filters" | "mock";
+  mode: "cart" | "filters" | "mock" | "homework";
   /** The past paper, on a 'mock' export only. Public, so naming it is safe. */
   mockId?: string;
+  /** The plan and day, on a 'homework' export only. Public, so naming them is safe. */
+  homeworkPlanId?: string;
+  homeworkDay?: number;
   isStaff: boolean;
 };
 
@@ -48,6 +52,9 @@ export async function recordExportEvent(ev: ExportEvent): Promise<void> {
       question_count: Math.max(0, Math.floor(ev.questionCount)),
       mode: ev.mode,
       ...(ev.mockId ? { mock_id: ev.mockId } : {}),
+      ...(ev.homeworkPlanId
+        ? { homework_plan_id: ev.homeworkPlanId, homework_day: ev.homeworkDay ?? null }
+        : {}),
       is_staff: ev.isStaff,
     });
     if (error) console.error("recordExportEvent", error.message);

@@ -195,6 +195,19 @@ describe("buildPaperHtml", () => {
     expect(key).toContain(">Chemistry<");
   });
 
+  it("can head every question, even when two in a row share a heading (homework)", () => {
+    const qs = [q({ id: "p1" }), q({ id: "p2" }), q({ id: "c1" })];
+    const sectionOf = new Map([
+      ["p1", "Optics | asked 3 times"],
+      ["p2", "Optics | asked 3 times"],
+      ["c1", "Atoms | asked once"],
+    ]);
+    expect(buildPaperHtml({ ...base, questions: qs, sectionOf }).match(/class="subtopic"/g)).toHaveLength(2);
+    expect(
+      buildPaperHtml({ ...base, questions: qs, sectionOf, headingEveryQuestion: true }).match(/class="subtopic"/g)
+    ).toHaveLength(3);
+  });
+
   it("brands a pass paper and leaves an unbranded one clean", () => {
     expect(buildPaperHtml({ ...base, questions: [q()], branded: true })).toContain('class="watermark"');
     expect(buildPaperHtml({ ...base, questions: [q()], branded: false })).not.toContain(
