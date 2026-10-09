@@ -8,7 +8,9 @@ import type { ChatInteractionRow } from "./interactions";
 
 export type RecordChatInteraction =
   | { eventType: "launcher_open"; questionId?: null; userId: string | null }
-  | { eventType: "faq_click"; questionId: string; userId: string | null };
+  | { eventType: "faq_click"; questionId: string; userId: string | null }
+  /** Migration 0145: the text a student typed, already masked (maskPersonal). */
+  | { eventType: "typed_question"; message: string; userId: string | null };
 
 /** Best effort: a lost telemetry row must never fail the request that carries it. */
 export async function recordChatInteraction(
@@ -19,6 +21,7 @@ export async function recordChatInteraction(
     const { error } = await db.from("chat_interactions").insert({
       event_type: input.eventType,
       question_id: input.eventType === "faq_click" ? input.questionId : null,
+      message: input.eventType === "typed_question" ? input.message : null,
       user_id: input.userId,
     });
     if (error) console.error("recordChatInteraction:", error.message);
