@@ -29,6 +29,13 @@ describe("paperKey", () => {
     expect(a?.startsWith("filters:")).toBe(true);
   });
 
+  it("names a board past paper by its exam and slug (2026-10-09)", () => {
+    expect(paperKey({ boardPaper: { exam: "cbse-12", slug: "2025-55-1-2" } })).toBe("board:cbse-12:2025-55-1-2");
+    expect(paperKey({ boardPaper: { exam: "cbse-12", slug: "2025-55-1-3" } })).not.toBe(
+      paperKey({ boardPaper: { exam: "cbse-12", slug: "2025-55-1-2" } })
+    );
+  });
+
   it("returns null when the request names no paper", () => {
     expect(paperKey({})).toBeNull();
   });

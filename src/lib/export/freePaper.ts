@@ -42,11 +42,14 @@ export function paperKey(req: {
   mockSlug?: string | null;
   /** One day of a homework plan: each day is its own paper. */
   homework?: { slug: string; day: number } | null;
+  /** A board past paper (/question-papers): each set is its own paper. */
+  boardPaper?: { exam: string; slug: string } | null;
   questionIds?: readonly string[] | null;
   filters?: Record<string, unknown> | null;
 }): string | null {
   if (req.mockSlug) return `mock:${req.mockSlug.trim()}`;
   if (req.homework) return `homework:${req.homework.slug}:${req.homework.day}`;
+  if (req.boardPaper) return `board:${req.boardPaper.exam}:${req.boardPaper.slug}`;
   if (req.questionIds && req.questionIds.length > 0) {
     return `ids:${sha([...new Set(req.questionIds)].sort().join(","))}`;
   }

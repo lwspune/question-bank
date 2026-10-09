@@ -204,3 +204,47 @@ export async function getPaperGroup(
     return { ...toListing(r), sections: r.sections ?? [], items: assemblePaper(mine, questions) };
   });
 }
+
+/**
+ * One published paper as a download needs it: its title, sections and items
+ * (no questions; the route fetches those with the download's own client).
+ * Null when the exam or paper is unknown or unpublished.
+ */
+export async function getBoardPaperForExport(
+  client: SupabaseClient,
+  examName: string,
+  slug: string
+): Promise<{ id: string; title: string; sections: { key: string; title: string; note: string }[]; items: PaperItemRow[] } | null> {
+  const { data: exam, error: examErr } = await client.from("exams").select("id").eq("name", examName).maybeSingle();
+  if (examErr) throw new Error(`board paper exam: ${examErr.message}`);
+  if (!exam) return null;
+  const { data: paper, error } = await client
+    .from("board_papers")
+    .select("id, title, sections")
+    .eq("exam_id", exam.id)
+    .eq("slug", slug)
+    .eq("published", true)
+    .maybeSingle();
+  if (error) throw new Error(`board paper: ${error.message}`);
+  if (!paper) return null;
+  const { data: items, error: itemErr } = await client
+    .from("board_paper_items")
+    .select("position, printed_number, section, marks, alternative_to, case_key, question_id")
+    .eq("paper_id", paper.id)
+    .order("position");
+  if (itemErr) throw new Error(`board paper items: ${itemErr.message}`);
+  return {
+    id: paper.id as string,
+    title: paper.title as string,
+    sections: (paper.sections ?? []) as { key: string; title: string; note: string }[],
+    items: ((items ?? []) as Omit<RawItem, "paper_id">[]).map((i) => ({
+      position: i.position,
+      printedNumber: i.printed_number,
+      section: i.section,
+      marks: Number(i.marks),
+      alternativeTo: i.alternative_to,
+      caseKey: i.case_key,
+      questionId: i.question_id,
+    })),
+  };
+}
