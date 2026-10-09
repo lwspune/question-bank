@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
-import { resolveExportAccess, DOWNLOAD_PASS_SCOPE, type ExportKind } from "@/lib/export/access";
+import { chooseFormat, resolveExportAccess, DOWNLOAD_PASS_SCOPE, type ExportKind } from "@/lib/export/access";
 import { userHasAccess } from "@/lib/entitlements/query";
 import { recordExportEvent } from "@/lib/export/log";
 import { readPaywallSettings } from "@/lib/billing/admin";
@@ -38,6 +38,8 @@ import { DOCX_CONTENT_TYPE, PDF_CONTENT_TYPE, XLSX_CONTENT_TYPE } from "@/lib/ex
 import { buildPaperFile } from "@/lib/export/paperFile";
 import { getMockBySlug } from "@/lib/mocks/query";
 import { mockPaperExport } from "@/lib/mocks/paperExport";
+import { homeworkDayExport, parseHomeworkTarget } from "@/lib/homework/dayExport";
+import { getPlanDay } from "@/lib/homework/query";
 import { buildTagRows, tagRowsToAoa } from "@/lib/export/tagsSheet";
 import { getResourceTagsForQuestions } from "@/lib/links/getResourceTagsForQuestions";
 import { downloadImage } from "@/lib/storage/images";
@@ -73,6 +75,8 @@ type ExportOptions = {
    * older client exports exactly as before.
    */
   lang?: string;
+  /** "pdf" | "docx": institute staff may choose; ignored for everyone else. */
+  format?: string;
 };
 
 // Filter-mode, cart-mode, or a past paper by slug (2026-10-07); exactly one.
@@ -82,6 +86,8 @@ type Body = {
   questionIds?: string[];
   /** A published past paper, downloaded whole as its paper or key. */
   mockSlug?: unknown;
+  /** One day of a published homework plan: { slug, day } (2026-10-09). */
+  homework?: unknown;
   options?: ExportOptions;
 };
 
@@ -166,7 +172,25 @@ export async function POST(request: NextRequest) {
     const options = body.options;
     const isCartMode = Array.isArray(body.questionIds);
     const isMockMode = body.mockSlug !== undefined;
-    if (isMockMode) {
+    const isHomeworkMode = body.homework !== undefined;
+    const homework = isHomeworkMode ? parseHomeworkTarget(body.homework) : null;
+    if (isHomeworkMode) {
+      if (!homework) {
+        return NextResponse.json({ error: "homework must name a plan and a day" }, { status: 400 });
+      }
+      if (body.filters || isCartMode || isMockMode) {
+        return NextResponse.json(
+          { error: "Send a homework day, a past paper, filters or questionIds, not more than one" },
+          { status: 400 }
+        );
+      }
+      if (kind !== "paper" && kind !== "key") {
+        return NextResponse.json(
+          { error: "A homework day downloads as its question paper or answer key" },
+          { status: 400 }
+        );
+      }
+    } else if (isMockMode) {
       if (typeof body.mockSlug !== "string" || !body.mockSlug.trim()) {
         return NextResponse.json({ error: "mockSlug must name a past paper" }, { status: 400 });
       }
@@ -207,8 +231,10 @@ export async function POST(request: NextRequest) {
     // its Answer Key does not meet the pass offer.
     const freeKey = paperKey({
       mockSlug: isMockMode ? String(body.mockSlug).trim() : null,
+      homework,
       questionIds: isCartMode ? body.questionIds : null,
-      filters: !isMockMode && !isCartMode ? (body.filters as Record<string, unknown> | undefined) : null,
+      filters:
+        !isMockMode && !isHomeworkMode && !isCartMode ? (body.filters as Record<string, unknown> | undefined) : null,
     });
     const freeDownloadLeft =
       user && !isStaff && !hasDownloadPass && (kind === "paper" || kind === "key")
@@ -228,7 +254,32 @@ export async function POST(request: NextRequest) {
     let mockId: string | undefined;
     let mockTitle: string | undefined;
     let sectionOf: Map<string, string> | undefined;
-    if (isMockMode) {
+    let homeworkPlanId: string | undefined;
+    if (homework) {
+      const found = await getPlanDay(createSupabaseAnonClient(), homework.slug, homework.day);
+      if (!found) {
+        return NextResponse.json({ error: "That homework plan is not available." }, { status: 404 });
+      }
+      const day = homeworkDayExport(found.title, homework.day, found.items);
+      if (!day.ok) {
+        return NextResponse.json({ error: day.reason }, { status: 404 });
+      }
+      questions = await queryQuestionsByIds(supabase, day.questionIds);
+      // A day with a question missing would print the wrong numbers against
+      // the page, so it is refused rather than served short.
+      if (questions.length !== day.questionIds.length) {
+        console.error(
+          `export: homework ${homework.slug} day ${homework.day} resolved ${questions.length} of ${day.questionIds.length} questions`
+        );
+        return NextResponse.json(
+          { error: "This day can't be downloaded right now. Please try again later." },
+          { status: 409 }
+        );
+      }
+      homeworkPlanId = found.planId;
+      mockTitle = day.title;
+      sectionOf = day.sectionOf;
+    } else if (isMockMode) {
       const mock = await getMockBySlug(createSupabaseAnonClient(), String(body.mockSlug).trim());
       if (!mock) {
         return NextResponse.json({ error: "That paper is not available." }, { status: 404 });
@@ -425,7 +476,8 @@ export async function POST(request: NextRequest) {
 
     // If the PDF fails to print, the Word file is served instead (buildPaperFile),
     // so a student gets a file rather than a 500, and the failure is logged.
-    const built = await buildPaperFile(access.format ?? "docx", {
+    const format = chooseFormat({ granted: access.format ?? "docx", isStaff, requested: options.format });
+    const built = await buildPaperFile(format, {
       buildPdf: async () => {
         const images = await imageDataUris(createSupabaseAdminClient(), kind, questions);
         const common = {
@@ -506,8 +558,10 @@ export async function POST(request: NextRequest) {
       orgId: member?.orgId ?? null,
       kind,
       questionCount: questions.length,
-      mode: isMockMode ? "mock" : isCartMode ? "cart" : "filters",
+      mode: homework ? "homework" : isMockMode ? "mock" : isCartMode ? "cart" : "filters",
       mockId,
+      homeworkPlanId,
+      homeworkDay: homework?.day,
       isStaff,
     });
     return new NextResponse(fileBuf as unknown as ArrayBuffer, {
