@@ -51,3 +51,29 @@ export function validateSignup(input: SignupInput): SignupValidation {
   }
   return { ok: true };
 }
+
+/** The parts of a Supabase AuthError that signInErrorMessage reads. */
+export type SignInError = { code?: string; status?: number; message?: string };
+
+/**
+ * What /login shows when a password sign-in fails.
+ *
+ * Supabase's own text ("Invalid login credentials") gives a student nothing to
+ * do next: on 2026-10-08, 4 people failed 33 times and none got in, one of
+ * them 25 times in 3 minutes. 92% of accounts sign in with Google, so a wrong
+ * password most often means the wrong sign-in method, and the message says so.
+ * Anything unrecognised passes through unchanged rather than being hidden.
+ */
+export function signInErrorMessage(error: SignInError): string {
+  const message = error.message ?? "";
+  if (error.code === "invalid_credentials" || /invalid login credentials/i.test(message)) {
+    return "That email and password don't match. If you signed up with Google, use Continue with Google above.";
+  }
+  if (error.code === "email_not_confirmed" || /email not confirmed/i.test(message)) {
+    return "Please confirm your email first. Check your inbox for the link we sent when you signed up.";
+  }
+  if (error.status === 429 || /rate limit/i.test(message)) {
+    return "Too many tries. Wait a minute and try again, or use Continue with Google above.";
+  }
+  return message || "Could not sign in. Please try again.";
+}

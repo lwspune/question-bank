@@ -7,6 +7,7 @@ import { describe, it, expect } from "vitest";
 import {
   isValidEmail,
   isValidPassword,
+  signInErrorMessage,
   validateSignup,
   MIN_PASSWORD_LENGTH,
 } from "@/lib/auth/credentials";
@@ -106,5 +107,50 @@ describe("auth/credentials validators", () => {
       expect(r.ok).toBe(false);
       if (!r.ok) expect(r.message.length).toBeGreaterThan(0);
     });
+  });
+});
+
+describe("signInErrorMessage — what /login says when a password sign-in fails", () => {
+  // 2026-10-08: 33 password sign-ins failed and none succeeded, from 4 people,
+  // one of whom tried 25 times in 3 minutes. They saw Supabase's raw
+  // "Invalid login credentials". 92% of accounts sign in with Google, so the
+  // message points there.
+  it("turns a wrong email or password into a hint to use Google", () => {
+    const m = signInErrorMessage({ code: "invalid_credentials", message: "Invalid login credentials" });
+    expect(m).toContain("don't match");
+    expect(m).toContain("Continue with Google");
+    expect(m).not.toContain("Invalid login credentials");
+  });
+
+  it("recognises the wrong-password case by message when no code is sent", () => {
+    expect(signInErrorMessage({ message: "Invalid login credentials" })).toContain("Continue with Google");
+  });
+
+  it("tells an unconfirmed account to use the email we sent", () => {
+    const m = signInErrorMessage({ code: "email_not_confirmed", message: "Email not confirmed" });
+    expect(m).toMatch(/confirm/i);
+    expect(m).toMatch(/inbox/i);
+  });
+
+  it("asks a rate-limited visitor to wait, and still offers Google", () => {
+    const m = signInErrorMessage({ status: 429, message: "Request rate limit reached" });
+    expect(m).toMatch(/wait/i);
+    expect(m).toContain("Continue with Google");
+  });
+
+  it("passes any other error through unchanged, so nothing is hidden", () => {
+    expect(signInErrorMessage({ message: "Database error querying schema" })).toBe(
+      "Database error querying schema"
+    );
+  });
+
+  it("never returns an empty message", () => {
+    expect(signInErrorMessage({}).length).toBeGreaterThan(0);
+  });
+
+  it("uses no em dashes (visible text rule)", () => {
+    for (const e of [{ code: "invalid_credentials" }, { code: "email_not_confirmed" }, { status: 429 }, {}]) {
+      expect(signInErrorMessage(e)).not.toMatch(/—| – | -- /);
+    }
   });
 });
