@@ -126,16 +126,28 @@ export type ExamCatalogCachePayload = {
  * payloads), plus the slug→UUID map for the bank-href fallback.
  *
  * Client-injectable so it can be driven against a test project.
+ *
+ * THROWS on any failed read, never returns a 0 for it. `unstable_cache` keeps
+ * whatever this returns for a day but never keeps a throw, so a failure must
+ * throw to be retried. On 2026-10-08 one failed load, read as `count ?? 0`,
+ * put "0 past-year questions" and "Coming soon" on every homepage card and
+ * "0 public questions" on /browse until the entry expired.
  */
 export async function loadExamCatalogPayload(
   client: SupabaseClient
 ): Promise<ExamCatalogCachePayload> {
   // Resolve every exam's UUID by name in one round-trip.
-  const { data: examRows } = await client
+  const { data: examRows, error: examsError } = await client
     .from("exams")
     .select("id, name");
+  // Anon can always read the exam list, so an empty one is a failure too.
+  if (examsError || !examRows || examRows.length === 0) {
+    throw new Error(
+      `exam catalog: exams read failed (${examsError?.message ?? "no rows"})`
+    );
+  }
   const idByName = new Map<string, string>(
-    (examRows ?? []).map((r) => [r.name as string, r.id as string])
+    examRows.map((r) => [r.name as string, r.id as string])
   );
 
   const ids: [string, string][] = [];
@@ -147,13 +159,18 @@ export async function loadExamCatalogPayload(
   // Two exact head-counts per exam, one per kind, so every surface can say
   // which it shows (UX_REVIEW_TRIAGE.md A1). Head counts: no row payload.
   const headCount = async (examId: string, kind: "pyq" | "practice") => {
-    const { count } = await client
+    const { count, error } = await client
       .from("questions")
       .select("id", { count: "exact", head: true })
       .eq("exam_id", examId)
       .eq("visibility", "PUBLIC")
       .eq("question_kind", kind);
-    return count ?? 0;
+    if (error || count === null || count === undefined) {
+      throw new Error(
+        `exam catalog: ${kind} count failed for exam ${examId} (${error?.message ?? "no count"})`
+      );
+    }
+    return count;
   };
   const counts: [string, KindCounts][] = await Promise.all(
     EXAM_REGISTRY.map(async (exam): Promise<[string, KindCounts]> => {
@@ -187,7 +204,9 @@ const loadCachedExamCatalogPayload = unstable_cache(
     loadExamCatalogPayload(createSupabaseAnonClient()),
   // v2 (2026-10-02): counts became {pyq, practice}. A new key, because an entry
   // cached in the old number shape would deserialize as a number here.
-  ["exam-catalog-payload-v2"],
+  // v3 (2026-10-09): drops the all-zero entry cached on 2026-10-08, before
+  // loadExamCatalogPayload learned to throw on a failed read.
+  ["exam-catalog-payload-v3"],
   { revalidate: 86400 }
 );
 
@@ -206,4 +225,33 @@ export async function getCachedExamCatalog(): Promise<ExamCatalog> {
     new Map(ids),
     new Set(getNotesExamGroups().map((g) => g.slug))
   );
+}
+
+/**
+ * The catalog for a page rendered on every request (the homepage, the bare
+ * /browse), which has no older copy to fall back on. A failed load returns the
+ * registry with NO counts and `countsKnown: false`, so the page can leave the
+ * numbers out. Printing 0 would tell a visitor the bank is empty.
+ *
+ * Cached pages (/about, /exams/*, /llms.txt) call getCachedExamCatalog and let
+ * the throw through: a failed refresh then keeps the last good copy, and a
+ * failed build stops a deploy rather than shipping zeros.
+ */
+export async function getExamCatalogForRender(): Promise<{
+  catalog: ExamCatalog;
+  countsKnown: boolean;
+}> {
+  try {
+    return { catalog: await getCachedExamCatalog(), countsKnown: true };
+  } catch (err) {
+    console.error("[exam catalog] load failed; rendering without counts", err);
+    return {
+      catalog: shapeExamCatalog(
+        new Map(),
+        new Map(),
+        new Set(getNotesExamGroups().map((g) => g.slug))
+      ),
+      countsKnown: false,
+    };
+  }
 }

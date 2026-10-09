@@ -23,7 +23,7 @@ import Footer from "@/components/Footer";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { signedInHome } from "@/lib/auth/redirect";
-import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
+import { getExamCatalogForRender } from "@/lib/exam/allExamStats";
 import { countSummary } from "@/lib/exam/questionCounts";
 import { examCardAnchor, homeExamChips } from "@/lib/exam/homeChips";
 import HomeExamChips from "@/components/home/HomeExamChips";
@@ -198,7 +198,8 @@ export default async function Home() {
 
   // Cached (24h) — the two session reads above make this route dynamic, so
   // without the cache these 12 head-counts would run on every anonymous hit.
-  const catalog = await getCachedExamCatalog();
+  // A failed load leaves the numbers out rather than printing 0 (2026-10-08).
+  const { catalog, countsKnown } = await getExamCatalogForRender();
   // Group the six (board, class) exams into two family cards. Presentation
   // only: every class link keeps the exact href it had before, and the hero's
   // exam COUNT below still reports 13 — we do have 13 corpora.
@@ -240,12 +241,16 @@ export default async function Home() {
                 Practise every past-year question free, then drill the chapters that cost you marks.
               </p>
               <ul className="mt-5 flex flex-wrap gap-2 text-xs font-semibold" aria-label="What is in the bank">
-                <li className="rounded-full border border-white/25 bg-white/10 px-3 py-1 tabular-nums">
-                  <span className="text-cyan-200">{catalog.totals.pyq.toLocaleString("en-IN")}</span> past-year questions
-                </li>
-                <li className="rounded-full border border-white/25 bg-white/10 px-3 py-1 tabular-nums">
-                  <span className="text-cyan-200">{catalog.totals.practice.toLocaleString("en-IN")}</span> textbook and practice
-                </li>
+                {countsKnown && (
+                  <>
+                    <li className="rounded-full border border-white/25 bg-white/10 px-3 py-1 tabular-nums">
+                      <span className="text-cyan-200">{catalog.totals.pyq.toLocaleString("en-IN")}</span> past-year questions
+                    </li>
+                    <li className="rounded-full border border-white/25 bg-white/10 px-3 py-1 tabular-nums">
+                      <span className="text-cyan-200">{catalog.totals.practice.toLocaleString("en-IN")}</span> textbook and practice
+                    </li>
+                  </>
+                )}
                 <li className="rounded-full border border-white/25 bg-white/10 px-3 py-1 tabular-nums">
                   <span className="text-cyan-200">{catalog.exams.length}</span> exams · free to browse
                 </li>
@@ -334,9 +339,11 @@ export default async function Home() {
                           <p className="truncate text-sm font-semibold tracking-tight">
                             {node.label}
                           </p>
-                          <p className="text-xs tabular-nums text-muted-foreground">
-                            {familySummary ?? "Coming soon"}
-                          </p>
+                          {countsKnown && (
+                            <p className="text-xs tabular-nums text-muted-foreground">
+                              {familySummary ?? "Coming soon"}
+                            </p>
+                          )}
                         </div>
                       </div>
                       <p className="mt-1 font-serif text-sm leading-relaxed text-muted-foreground">
@@ -395,7 +402,7 @@ export default async function Home() {
                           {exam.displayName}
                         </p>
                         <p className="text-xs tabular-nums text-muted-foreground">
-                          {countSummary(exam.counts) ?? "Coming soon"}
+                          {countsKnown && (countSummary(exam.counts) ?? "Coming soon")}
                           {tag && (
                             <span className="ml-1.5 rounded-full border px-1.5 py-0.5 text-[10px] uppercase tracking-wide">
                               {tag}
