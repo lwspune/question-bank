@@ -15,18 +15,41 @@ import { istDayKey } from "@/lib/email/dueNudge";
 
 export type MockPaperDecision = { allowed: true } | { allowed: false; limit: number };
 
+/**
+ * One paper against the day's limit. Whole past papers (mock_paper_downloads)
+ * and board papers (board_paper_downloads, migration 0146) share ONE limit, so
+ * `otherPapersToday` is how many papers of the other kind went today.
+ */
+export function decidePaperDownload(input: {
+  /** paywall_settings.mock_papers_per_day; null = off. */
+  limit: number | null;
+  /** Papers of this kind downloaded today (IST), repeats allowed. */
+  todaysIds: readonly string[];
+  paperId: string;
+  otherPapersToday: number;
+}): MockPaperDecision {
+  const { limit, todaysIds, paperId, otherPapersToday } = input;
+  if (limit === null) return { allowed: true };
+  const today = new Set(todaysIds);
+  if (today.has(paperId)) return { allowed: true };
+  return today.size + otherPapersToday < limit ? { allowed: true } : { allowed: false, limit };
+}
+
 export function decideMockPaperDownload(input: {
   /** paywall_settings.mock_papers_per_day; null = off. */
   limit: number | null;
   /** Papers this account downloaded today (IST), repeats allowed. */
   todaysMockIds: readonly string[];
   mockId: string;
+  /** Board papers downloaded today; they count toward the same limit. */
+  todaysBoardPaperIds?: readonly string[];
 }): MockPaperDecision {
-  const { limit, todaysMockIds, mockId } = input;
-  if (limit === null) return { allowed: true };
-  const today = new Set(todaysMockIds);
-  if (today.has(mockId)) return { allowed: true };
-  return today.size < limit ? { allowed: true } : { allowed: false, limit };
+  return decidePaperDownload({
+    limit: input.limit,
+    todaysIds: input.todaysMockIds,
+    paperId: input.mockId,
+    otherPapersToday: new Set(input.todaysBoardPaperIds ?? []).size,
+  });
 }
 
 export function mockPaperLimitMessage(limit: number): string {
@@ -43,22 +66,22 @@ export async function readTodaysMockPapers(
   admin: SupabaseClient,
   userId: string,
   now: Date = new Date()
-): Promise<{ limit: number | null; todaysMockIds: string[] }> {
-  const [settings, rows] = await Promise.all([
+): Promise<{ limit: number | null; todaysMockIds: string[]; todaysBoardPaperIds: string[] }> {
+  const day = istDayKey(now);
+  const [settings, rows, boardRows] = await Promise.all([
     admin.from("paywall_settings").select("mock_papers_per_day").single(),
-    admin
-      .from("mock_paper_downloads")
-      .select("mock_id")
-      .eq("user_id", userId)
-      .eq("ist_day", istDayKey(now)),
+    admin.from("mock_paper_downloads").select("mock_id").eq("user_id", userId).eq("ist_day", day),
+    admin.from("board_paper_downloads").select("board_paper_id").eq("user_id", userId).eq("ist_day", day),
   ]);
-  if (settings.error || rows.error) {
-    console.error("mock_paper_downloads read failed:", (settings.error ?? rows.error)!.message);
-    return { limit: null, todaysMockIds: [] };
+  const failed = settings.error ?? rows.error ?? boardRows.error;
+  if (failed) {
+    console.error("paper downloads read failed:", failed.message);
+    return { limit: null, todaysMockIds: [], todaysBoardPaperIds: [] };
   }
   return {
     limit: (settings.data?.mock_papers_per_day as number | null) ?? null,
     todaysMockIds: (rows.data ?? []).map((r) => r.mock_id as string),
+    todaysBoardPaperIds: (boardRows.data ?? []).map((r) => r.board_paper_id as string),
   };
 }
 
@@ -83,5 +106,26 @@ export async function claimMockPaperDownload(
     return { kind: "limit", limit: Number.isFinite(n) ? n : 0 };
   }
   console.error("mock_paper_downloads claim failed:", error.message);
+  return { kind: "error", message: error.message };
+}
+
+/** The same claim for a board paper (migration 0146); the trigger counts both kinds. */
+export async function claimBoardPaperDownload(
+  admin: SupabaseClient,
+  userId: string,
+  boardPaperId: string
+): Promise<MockPaperClaim> {
+  const { error } = await admin
+    .from("board_paper_downloads")
+    .upsert(
+      { user_id: userId, board_paper_id: boardPaperId },
+      { onConflict: "user_id,ist_day,board_paper_id", ignoreDuplicates: true }
+    );
+  if (!error) return { kind: "ok" };
+  if (error.code === "PT429") {
+    const n = Number(/(\d+)/.exec(error.message)?.[1]);
+    return { kind: "limit", limit: Number.isFinite(n) ? n : 0 };
+  }
+  console.error("board_paper_downloads claim failed:", error.message);
   return { kind: "error", message: error.message };
 }

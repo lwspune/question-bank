@@ -45,6 +45,8 @@ import { BOARD_EXAMS, EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { examHomeHref } from "@/lib/exam/examHome";
 import { TRENDS_REPORTS, reportUpdatedIso } from "@/lib/guide/trendsReports";
 import { listBoardChapters } from "@/lib/board/query";
+import { getPublishedPapers } from "@/lib/questionPapers/query";
+import { paperSitemapPaths } from "@/lib/questionPapers/listing";
 import {
   buildBoardSitemapEntries,
   type BoardSitemapChapter,
@@ -98,6 +100,26 @@ async function homeworkEntries(buildDate: Date): Promise<MetadataRoute.Sitemap> 
       })),
     ];
   } catch {
+    return [];
+  }
+}
+
+/**
+ * /question-papers (migration 0146): the index, each board, subject and paper
+ * group. Guarded like the homework entries; empty until a paper is published.
+ */
+async function questionPaperEntries(buildDate: Date): Promise<MetadataRoute.Sitemap> {
+  try {
+    const papers = await getPublishedPapers();
+    const slugOf = (examName: string) => EXAM_REGISTRY.find((e) => e.examName === examName)?.slug ?? null;
+    return paperSitemapPaths(papers, slugOf, (p) => p.examName).map((path) => ({
+      url: `${SITE_URL}${path}`,
+      lastModified: buildDate,
+      changeFrequency: "monthly" as const,
+      priority: path.split("/").length > 4 ? 0.6 : 0.7,
+    }));
+  } catch (err) {
+    console.warn(`[sitemap/question-papers] entries omitted: ${(err as Error).message}`);
     return [];
   }
 }
@@ -614,6 +636,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const mockUrlEntries = await mockEntries(buildDate);
   const boardUrlEntries = await boardEntries(buildDate);
   const homeworkUrlEntries = await homeworkEntries(buildDate);
+  const questionPaperUrlEntries = await questionPaperEntries(buildDate);
 
   // Per-chapter question landing pages — the cacheable, indexable face of the
   // bank. Until these existed the sitemap offered Google exactly ONE URL
@@ -719,6 +742,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...mockUrlEntries,
     ...boardUrlEntries,
     ...homeworkUrlEntries,
+    ...questionPaperUrlEntries,
     ...formulaEntries,
     ...blogEntries,
     {

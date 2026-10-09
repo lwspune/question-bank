@@ -42,14 +42,22 @@ export default function PaperDownload({
   paperTitle,
   bilingual = false,
   variant = "button",
+  boardPaper,
 }: {
   slug: string;
   paperTitle: string;
+  /**
+   * A board past paper set (/question-papers, 2026-10-09) instead of a mock:
+   * `slug` is then the paper's slug, and the download names the exam too.
+   */
+  boardPaper?: { exam: string };
   /** The exam prints Marathi + English (MPSC): offer a print language. */
   bilingual?: boolean;
   /** "button": full width, under Start test. "row": compact, in a list. */
   variant?: "button" | "row";
 }) {
+  // A plain value, so the access check below re-runs only when it changes.
+  const boardExam = boardPaper?.exam ?? null;
   const [open, setOpen] = useState(false);
   const [access, setAccess] = useState<ExportViewerAccess | null>(null);
   const [loadFailed, setLoadFailed] = useState(false);
@@ -63,13 +71,16 @@ export default function PaperDownload({
   const loadAccess = useCallback(async () => {
     setLoadFailed(false);
     try {
-      const res = await fetch(`/api/export/access?mockSlug=${encodeURIComponent(slug)}`, { cache: "no-store" });
+      const query = boardExam
+        ? `board=${encodeURIComponent(`${boardExam}:${slug}`)}`
+        : `mockSlug=${encodeURIComponent(slug)}`;
+      const res = await fetch(`/api/export/access?${query}`, { cache: "no-store" });
       if (!res.ok) throw new Error(String(res.status));
       setAccess((await res.json()) as ExportViewerAccess);
     } catch {
       setLoadFailed(true);
     }
-  }, [slug]);
+  }, [slug, boardExam]);
 
   useEffect(() => {
     if (!open) return;
@@ -114,7 +125,7 @@ export default function PaperDownload({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           kind,
-          mockSlug: slug,
+          ...(boardExam ? { boardPaper: { exam: boardExam, slug } } : { mockSlug: slug }),
           options: { includeSolutions: true, ...(bilingual ? { lang } : {}) },
         }),
       });

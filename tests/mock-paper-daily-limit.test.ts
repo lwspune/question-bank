@@ -9,7 +9,7 @@
  * costs nothing.
  */
 import { describe, it, expect } from "vitest";
-import { decideMockPaperDownload, mockPaperLimitMessage } from "@/lib/export/mockPaperLimit";
+import { decideMockPaperDownload, decidePaperDownload, mockPaperLimitMessage } from "@/lib/export/mockPaperLimit";
 
 const M = (n: number) => `mock-${n}`;
 
@@ -63,5 +63,40 @@ describe("mockPaperLimitMessage", () => {
     expect(mockPaperLimitMessage(1)).toBe(
       "You've downloaded 1 paper today. You can download more tomorrow."
     );
+  });
+});
+
+// Board papers (migration 0146) count toward the SAME daily limit: "5 different
+// papers a day" is about papers, whichever page they come from.
+describe("decidePaperDownload — mock and board papers share one limit", () => {
+  const B = (n: number) => `board-${n}`;
+
+  it("counts the other kind of paper toward the limit", () => {
+    expect(decidePaperDownload({ limit: 2, todaysIds: [B(1)], paperId: B(2), otherPapersToday: 1 })).toEqual({
+      allowed: false,
+      limit: 2,
+    });
+    expect(decidePaperDownload({ limit: 3, todaysIds: [B(1)], paperId: B(2), otherPapersToday: 1 })).toEqual({
+      allowed: true,
+    });
+  });
+
+  it("still allows a paper already downloaded today, whatever else was", () => {
+    expect(decidePaperDownload({ limit: 2, todaysIds: [B(1)], paperId: B(1), otherPapersToday: 5 })).toEqual({
+      allowed: true,
+    });
+  });
+
+  it("keeps the mock rule's behaviour when no board paper was downloaded", () => {
+    expect(decideMockPaperDownload({ limit: 2, todaysMockIds: [M(1), M(2)], mockId: M(3) })).toEqual({
+      allowed: false,
+      limit: 2,
+    });
+  });
+
+  it("counts board papers against a mock download", () => {
+    expect(
+      decideMockPaperDownload({ limit: 2, todaysMockIds: [M(1)], mockId: M(2), todaysBoardPaperIds: [B(1)] })
+    ).toEqual({ allowed: false, limit: 2 });
   });
 });

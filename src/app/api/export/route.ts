@@ -10,8 +10,10 @@ import type { BrandingParts } from "@/lib/export/branding";
 import { claimFreeDownload, isPaperFree } from "@/lib/export/freeDownload";
 import { paperKey } from "@/lib/export/freePaper";
 import {
+  claimBoardPaperDownload,
   claimMockPaperDownload,
   decideMockPaperDownload,
+  decidePaperDownload,
   mockPaperLimitMessage,
   readTodaysMockPapers,
 } from "@/lib/export/mockPaperLimit";
@@ -40,6 +42,10 @@ import { getMockBySlug } from "@/lib/mocks/query";
 import { mockPaperExport } from "@/lib/mocks/paperExport";
 import { homeworkDayExport, homeworkQuestions, parseHomeworkTarget } from "@/lib/homework/dayExport";
 import { getPlanDay } from "@/lib/homework/query";
+import { boardPaperExport, parseBoardPaperTarget } from "@/lib/questionPapers/exportPlan";
+import { getBoardPaperForExport } from "@/lib/questionPapers/query";
+import { getExamBySlug } from "@/lib/exam/examContext";
+import type { PrintedLabel } from "@/lib/export/printedLabel";
 import { buildTagRows, tagRowsToAoa } from "@/lib/export/tagsSheet";
 import { getResourceTagsForQuestions } from "@/lib/links/getResourceTagsForQuestions";
 import { downloadImage } from "@/lib/storage/images";
@@ -88,6 +94,8 @@ type Body = {
   mockSlug?: unknown;
   /** One day of a published homework plan: { slug, day } (2026-10-09). */
   homework?: unknown;
+  /** One published board past paper set: { exam, slug } (2026-10-09). */
+  boardPaper?: unknown;
   options?: ExportOptions;
 };
 
@@ -174,7 +182,25 @@ export async function POST(request: NextRequest) {
     const isMockMode = body.mockSlug !== undefined;
     const isHomeworkMode = body.homework !== undefined;
     const homework = isHomeworkMode ? parseHomeworkTarget(body.homework) : null;
-    if (isHomeworkMode) {
+    const isBoardPaperMode = body.boardPaper !== undefined;
+    const boardPaper = isBoardPaperMode ? parseBoardPaperTarget(body.boardPaper) : null;
+    if (isBoardPaperMode) {
+      if (!boardPaper) {
+        return NextResponse.json({ error: "boardPaper must name an exam and a paper" }, { status: 400 });
+      }
+      if (body.filters || isCartMode || isMockMode || isHomeworkMode) {
+        return NextResponse.json(
+          { error: "Send a board paper, a homework day, a past paper, filters or questionIds, not more than one" },
+          { status: 400 }
+        );
+      }
+      if (kind !== "paper" && kind !== "key") {
+        return NextResponse.json(
+          { error: "A board paper downloads as its question paper or answer key" },
+          { status: 400 }
+        );
+      }
+    } else if (isHomeworkMode) {
       if (!homework) {
         return NextResponse.json({ error: "homework must name a plan and a day" }, { status: 400 });
       }
@@ -232,9 +258,12 @@ export async function POST(request: NextRequest) {
     const freeKey = paperKey({
       mockSlug: isMockMode ? String(body.mockSlug).trim() : null,
       homework,
+      boardPaper,
       questionIds: isCartMode ? body.questionIds : null,
       filters:
-        !isMockMode && !isHomeworkMode && !isCartMode ? (body.filters as Record<string, unknown> | undefined) : null,
+        !isMockMode && !isHomeworkMode && !isBoardPaperMode && !isCartMode
+          ? (body.filters as Record<string, unknown> | undefined)
+          : null,
     });
     const freeDownloadLeft =
       user && !isStaff && !hasDownloadPass && (kind === "paper" || kind === "key")
@@ -255,7 +284,55 @@ export async function POST(request: NextRequest) {
     let mockTitle: string | undefined;
     let sectionOf: Map<string, string> | undefined;
     let homeworkPlanId: string | undefined;
-    if (homework) {
+    // A board past paper: its own numbers, marks and OR (lib/export/printedLabel).
+    let boardPaperId: string | undefined;
+    let printedOf: Map<string, PrintedLabel> | undefined;
+    if (boardPaper) {
+      const exam = getExamBySlug(boardPaper.exam);
+      const found = exam?.boardExam
+        ? await getBoardPaperForExport(createSupabaseAnonClient(), exam.examName, boardPaper.slug)
+        : null;
+      if (!found) {
+        return NextResponse.json({ error: "That paper is not available." }, { status: 404 });
+      }
+      const ids = found.items.map((it) => it.questionId);
+      const rows = await queryQuestionsByIds(supabase, ids);
+      // A paper with a question missing would print wrong numbers against the
+      // printed paper, so it is refused rather than served short.
+      if (rows.length !== new Set(ids).size) {
+        console.error(`export: board paper ${boardPaper.slug} resolved ${rows.length} of ${ids.length} questions`);
+        return NextResponse.json(
+          { error: "This paper can't be downloaded right now. Please try again later." },
+          { status: 409 }
+        );
+      }
+      const plan = boardPaperExport(found, found.items, new Map(rows.map((q) => [q.id, q.context])));
+      if (!plan.ok) {
+        return NextResponse.json({ error: plan.reason }, { status: 409 });
+      }
+      const byId = new Map(rows.map((q) => [q.id, q]));
+      // Printed order, and the paper's own grouping: a case study, or a run of
+      // shared directions, prints its passage once.
+      questions = plan.questionIds.map((id) => ({ ...byId.get(id)!, setId: plan.setOf.get(id) ?? null }));
+      boardPaperId = found.id;
+      mockTitle = plan.title;
+      sectionOf = plan.sectionOf;
+      printedOf = plan.printedOf;
+      // The daily paper limit (0137, board papers since 0146), checked before
+      // the file is built so a refusal costs no PDF. The trigger is the real limit.
+      if (user) {
+        const today = await readTodaysMockPapers(createSupabaseAdminClient(), user.id);
+        const decision = decidePaperDownload({
+          limit: today.limit,
+          todaysIds: today.todaysBoardPaperIds,
+          paperId: found.id,
+          otherPapersToday: new Set(today.todaysMockIds).size,
+        });
+        if (!decision.allowed) {
+          return NextResponse.json({ error: mockPaperLimitMessage(decision.limit) }, { status: 429 });
+        }
+      }
+    } else if (homework) {
       const found = await getPlanDay(createSupabaseAnonClient(), homework.slug, homework.day);
       if (!found) {
         return NextResponse.json({ error: "That homework plan is not available." }, { status: 404 });
@@ -487,6 +564,7 @@ export async function POST(request: NextRequest) {
           images,
           groupBySubtopic,
           sectionOf,
+          printedOf,
           headingEveryQuestion: !!homework,
           branded: access.branded,
           brandingParts: brandParts,
@@ -506,6 +584,7 @@ export async function POST(request: NextRequest) {
               imageBytes: await fetchImageBytes(questions),
               groupBySubtopic,
               sectionOf,
+              printedOf,
               headingEveryQuestion: !!homework,
               includeSourceTag,
               branded: access.branded,
@@ -517,6 +596,7 @@ export async function POST(request: NextRequest) {
               includeSolutions,
               groupBySubtopic,
               sectionOf,
+              printedOf,
               branded: access.branded,
           brandingParts: brandParts,
             }),
@@ -533,6 +613,19 @@ export async function POST(request: NextRequest) {
     // serving an unrecorded paper.
     if (isMockMode && mockId && user) {
       const claim = await claimMockPaperDownload(createSupabaseAdminClient(), user.id, mockId);
+      if (claim.kind === "limit") {
+        return NextResponse.json({ error: mockPaperLimitMessage(claim.limit) }, { status: 429 });
+      }
+      if (claim.kind === "error") {
+        return NextResponse.json(
+          { error: "This paper can't be downloaded right now. Please try again later." },
+          { status: 503 }
+        );
+      }
+    }
+
+    if (boardPaperId && user) {
+      const claim = await claimBoardPaperDownload(createSupabaseAdminClient(), user.id, boardPaperId);
       if (claim.kind === "limit") {
         return NextResponse.json({ error: mockPaperLimitMessage(claim.limit) }, { status: 429 });
       }
@@ -561,10 +654,11 @@ export async function POST(request: NextRequest) {
       orgId: member?.orgId ?? null,
       kind,
       questionCount: questions.length,
-      mode: homework ? "homework" : isMockMode ? "mock" : isCartMode ? "cart" : "filters",
+      mode: boardPaper ? "board_paper" : homework ? "homework" : isMockMode ? "mock" : isCartMode ? "cart" : "filters",
       mockId,
       homeworkPlanId,
       homeworkDay: homework?.day,
+      boardPaperId,
       isStaff,
     });
     return new NextResponse(fileBuf as unknown as ArrayBuffer, {

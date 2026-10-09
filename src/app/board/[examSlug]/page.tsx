@@ -5,7 +5,8 @@ import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import Footer from "@/components/Footer";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { BOARD_EXAMS, getExamBySlug } from "@/lib/exam/examContext";
-import { listBoardChapters } from "@/lib/board/query";
+import { listBoardChapters, slugify } from "@/lib/board/query";
+import { getPublishedPapers } from "@/lib/questionPapers/query";
 import type { BoardHubChapterRef } from "@/lib/board/hub";
 import BoardHubTabs, { type BoardHubSubject } from "@/app/board/_components/BoardHubTabs";
 import BoardContinueCard from "@/app/board/_components/BoardContinueCard";
@@ -39,9 +40,23 @@ export default async function BoardExamHub({ params }: { params: Params }) {
 
   const client = createSupabaseAnonClient();
   const subjects = await listBoardChapters(client, exam.examName);
+  // Whole past papers per subject (/question-papers). A failed read only loses
+  // the links: the chapters are the page.
+  const papers = await getPublishedPapers().catch((err) => {
+    console.error("board hub: past papers unavailable", err);
+    return [];
+  });
+  const paperCount = (subjectName: string) =>
+    papers.filter((p) => p.examName === exam.examName && p.subjectName === subjectName).length;
   const hubSubjects: BoardHubSubject[] = subjects.map((s) => ({
     subjectRoute: s.subjectRoute,
     subjectName: s.subjectName,
+    ...(paperCount(s.subjectName) > 0 && {
+      papers: {
+        href: `/question-papers/${params.examSlug}/${slugify(s.subjectName)}`,
+        count: paperCount(s.subjectName),
+      },
+    }),
     chapters: s.chapters.map((c) => ({
       chapterSlug: c.chapterSlug,
       name: c.name,

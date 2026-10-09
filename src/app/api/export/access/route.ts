@@ -4,6 +4,7 @@ import { sessionHasScope } from "@/lib/entitlements/session";
 import { sessionPaperFree } from "@/lib/export/freeDownloadSession";
 import { paperKey } from "@/lib/export/freePaper";
 import { parseHomeworkTarget } from "@/lib/homework/dayExport";
+import { parseBoardPaperTarget } from "@/lib/questionPapers/exportPlan";
 import { DOWNLOAD_PASS_SCOPE } from "@/lib/export/access";
 import { passCta, passForScope, type PassCta } from "@/lib/billing/plans";
 import { listActivePlansCached } from "@/lib/billing/plansQuery";
@@ -32,7 +33,14 @@ export async function GET(request: NextRequest) {
   const slug = request.nextUrl.searchParams.get("mockSlug");
   const [hwSlug, hwDay] = (request.nextUrl.searchParams.get("homework") ?? "").split(":");
   const homework = parseHomeworkTarget({ slug: hwSlug, day: Number(hwDay) });
-  const freeKey = paperKey({ mockSlug: slug && /^[a-z0-9-]{1,120}$/.test(slug) ? slug : null, homework });
+  // Or one board past paper set, as "<exam-slug>:<paper-slug>" (2026-10-09).
+  const [bExam, bSlug] = (request.nextUrl.searchParams.get("board") ?? "").split(":");
+  const boardPaper = parseBoardPaperTarget({ exam: bExam, slug: bSlug });
+  const freeKey = paperKey({
+    mockSlug: slug && /^[a-z0-9-]{1,120}$/.test(slug) ? slug : null,
+    homework,
+    boardPaper,
+  });
   let viewer = ANON;
   try {
     const { isSignedIn, isStaff } = await getPageIdentity();

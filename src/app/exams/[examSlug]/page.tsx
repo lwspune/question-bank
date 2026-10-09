@@ -14,15 +14,9 @@
  */
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getPublishedPapers } from "@/lib/questionPapers/query";
 import { notFound, redirect } from "next/navigation";
-import {
-  ArrowRight,
-  BookOpen,
-  ClipboardCheck,
-  Compass,
-  Library,
-  NotebookPen,
-} from "lucide-react";
+import { ArrowRight, BookOpen, ClipboardCheck, Compass, FileText, Library, NotebookPen } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -98,7 +92,21 @@ export default async function ExamHomePage({ params }: Params) {
   const description = examHomeDescription(model);
   const kind = model.practiceOnly ? "practice questions" : "past-year questions";
 
+  // Whole board past papers (/question-papers). A failed read only drops the
+  // link; the rest of the page does not depend on it.
+  const papers = await getPublishedPapers().catch((err) => {
+    console.error("exam home: past papers unavailable", err);
+    return [];
+  });
+  const exam = getExamBySlug(model.slug);
+  const hasPapers = !!exam && papers.some((p) => p.examName === exam.examName);
+
   const quickLinks = [
+    hasPapers && {
+      href: `/question-papers/${model.slug}`,
+      label: "Whole past question papers, with marks and answers",
+      Icon: FileText,
+    },
     model.links.mocks && {
       href: model.links.mocks,
       label: `Sit ${withArticle(model.displayName)} paper as a timed mock`,
