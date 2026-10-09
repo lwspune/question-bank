@@ -92,7 +92,7 @@ export function buildPlanOrder(input: PlanInput): PlanItem[] {
     const pick = open.find((id) => !avoid.has(id)) ?? open[0];
     if (pick === undefined) continue;
     const list = chrono(g);
-    const star = list.some((s) => s.endsWith("*")) ? " (* = numbers changed that year)" : "";
+    const star = list.some((s) => s.endsWith("*")) ? " (* = numbers or wording changed that year)" : "";
     order.push({ questionId: pick, part: 1, note: `Asked ${list.length} times: ${list.join(", ")}${star}` });
     used.add(pick);
   }

@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { homeworkDayExport, parseHomeworkTarget } from "@/lib/homework/dayExport";
+import { homeworkDayExport, homeworkQuestions, parseHomeworkTarget } from "@/lib/homework/dayExport";
+import { ASSERTION_REASON_INSTRUCTION } from "@/lib/mocks/instructionContext";
+import type { QuestionRow } from "@/lib/questions/query";
 import { chooseFormat } from "@/lib/export/access";
 import { paperKey } from "@/lib/export/freePaper";
 
@@ -47,6 +49,26 @@ describe("homeworkDayExport", () => {
 
   it("refuses a day with a gap, which would print wrong question numbers", () => {
     expect(homeworkDayExport("Plan", 1, [item(1, "a"), item(3, "c")]).ok).toBe(false);
+  });
+});
+
+describe("homeworkQuestions", () => {
+  const row = (id: string, context: string | null) => ({ id, context, setId: null }) as unknown as QuestionRow;
+
+  it("puts a case study's parts in one set, so the passage prints once", () => {
+    const out = homeworkQuestions([row("p1", "A passage"), row("p2", "A passage"), row("x", null)], new Map([["p1", "s"], ["p2", "s"]]));
+    expect(out.map((q) => q.setId)).toEqual(["s", "s", null]);
+  });
+
+  it("replaces a paper's Assertion-Reason directions, which name that paper's question numbers", () => {
+    const ar = "For Questions number 13 to 16, two statements are given, one labelled as Assertion (A) and the other labelled as Reason (R).";
+    const [q] = homeworkQuestions([row("a", ar)], new Map());
+    expect(q.context).toBe(ASSERTION_REASON_INSTRUCTION);
+  });
+
+  it("keeps a real passage", () => {
+    const passage = "Electrochemistry is the study of the relationship between chemical energy and electrical energy. ".repeat(3);
+    expect(homeworkQuestions([row("a", passage)], new Map())[0].context).toBe(passage);
   });
 });
 

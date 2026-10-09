@@ -29,7 +29,7 @@ describe("buildPlanOrder", () => {
     const items = buildPlanOrder(input());
     expect(items.slice(0, 2).map((i) => [i.questionId, i.part])).toEqual([["a3", 1], ["b2", 1]]);
     expect(items[0].note).toBe("Asked 3 times: Mar 2015, Mar 2017, Mar 2018");
-    expect(items[1].note).toBe("Asked 2 times: Mar 2016, Mar 2018* (* = numbers changed that year)");
+    expect(items[1].note).toBe("Asked 2 times: Mar 2016, Mar 2018* (* = numbers or wording changed that year)");
   });
 
   it("never prints another wording of a question already printed", () => {

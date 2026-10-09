@@ -6,6 +6,8 @@
  * `sectionOf` heading whenever it changes, so every question gets its own.
  * Spec: tests/homework-day-export.test.ts.
  */
+import type { QuestionRow } from "@/lib/questions/query";
+import { chapterTestContext } from "@/lib/mocks/instructionContext";
 
 /** One bank row of a day. A case study's parts share a position, numbered by `sub`. */
 export type HomeworkDayItem = { position: number; sub: number; questionId: string; chapter: string; note: string };
@@ -54,4 +56,19 @@ export function parseHomeworkTarget(raw: unknown): { slug: string; day: number }
   if (typeof slug !== "string" || slug.length > 80 || !SLUG_RE.test(slug)) return null;
   if (typeof day !== "number" || !Number.isInteger(day) || day < 1 || day > 10_000) return null;
   return { slug, day };
+}
+
+/**
+ * A day's loaded questions, ready to print. A case study's parts share one set
+ * key, so both builders print the passage once; and a paper's Assertion-Reason
+ * directions ("For Questions number 13 to 16 ...") name that paper's numbers,
+ * which are wrong on a homework sheet, so they become the general sentence
+ * chapter tests already use (lib/mocks/instructionContext).
+ */
+export function homeworkQuestions(questions: QuestionRow[], setOf: ReadonlyMap<string, string>): QuestionRow[] {
+  return questions.map((q) => ({
+    ...q,
+    ...(setOf.has(q.id) ? { setId: setOf.get(q.id)! } : {}),
+    context: chapterTestContext(q.context, "sectional"),
+  }));
 }

@@ -67,6 +67,8 @@ Then run the validator and fix every error it reports:
 ## Rules
 
 - Use only ids from your chapter file. Never invent one.
+- Other reviewers run at the same time and share your scratch space. Name any helper file after
+  your chapter (never `ids.txt` or similar), and take ids only from your own evidence file.
 - Write ONLY your output file(s). Do not edit any other file, do not run git, do not touch the database.
 - When done, reply with: per chapter, the number of repeat groups and type groups, the three
   largest repeat groups (label + years), and anything you were unsure about.

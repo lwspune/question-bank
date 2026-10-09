@@ -38,7 +38,7 @@ import { DOCX_CONTENT_TYPE, PDF_CONTENT_TYPE, XLSX_CONTENT_TYPE } from "@/lib/ex
 import { buildPaperFile } from "@/lib/export/paperFile";
 import { getMockBySlug } from "@/lib/mocks/query";
 import { mockPaperExport } from "@/lib/mocks/paperExport";
-import { homeworkDayExport, parseHomeworkTarget } from "@/lib/homework/dayExport";
+import { homeworkDayExport, homeworkQuestions, parseHomeworkTarget } from "@/lib/homework/dayExport";
 import { getPlanDay } from "@/lib/homework/query";
 import { buildTagRows, tagRowsToAoa } from "@/lib/export/tagsSheet";
 import { getResourceTagsForQuestions } from "@/lib/links/getResourceTagsForQuestions";
@@ -276,8 +276,7 @@ export async function POST(request: NextRequest) {
           { status: 409 }
         );
       }
-      // A case study's parts share a set key, so the passage prints once.
-      questions = questions.map((q) => (day.setOf.has(q.id) ? { ...q, setId: day.setOf.get(q.id)! } : q));
+      questions = homeworkQuestions(questions, day.setOf);
       homeworkPlanId = found.planId;
       mockTitle = day.title;
       sectionOf = day.sectionOf;
