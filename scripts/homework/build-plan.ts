@@ -35,6 +35,8 @@ type PlanFile = {
   perDay: number;
   sittings: string[];
   questions: { id: string; sitting: string; rows?: string[] }[];
+  /** Rows left out on purpose (a chapter off the syllabus); see assemble.ts. */
+  excluded?: string[];
   groups: PlanGroup[];
 };
 
@@ -104,7 +106,7 @@ async function main() {
     else if (r.exam_id !== exam.id || r.subject_id !== subject.id) problems.push(`${id}: another exam or subject`);
     else if (!r.chapter?.name) problems.push(`${id}: no chapter`);
   }
-  const inFile = new Set(fileIds);
+  const inFile = new Set([...fileIds, ...(plan.excluded ?? [])]);
   const unseen = (await publicPyqIds(client, exam.id, subject.id)).filter((id) => !inFile.has(id));
   for (const id of unseen) problems.push(`${id}: PUBLIC past-year question the file has not reviewed`);
   if (problems.length) {
