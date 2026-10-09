@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { groupLabel, subjectListing, assemblePaper, type PaperListing } from "@/lib/questionPapers/listing";
+import { groupLabel, subjectListing, assemblePaper, paperSitemapPaths, type PaperListing } from "@/lib/questionPapers/listing";
 import type { BoardQuestion } from "@/lib/board/query";
 
 const paper = (over: Partial<PaperListing>): PaperListing => ({
@@ -86,5 +86,35 @@ describe("assemblePaper — a paper's items with their questions", () => {
 
   it("returns null when a question is no longer available, rather than a short paper", () => {
     expect(assemblePaper(items, [q("x"), q("y")])).toBeNull();
+  });
+});
+
+describe("paperSitemapPaths — every /question-papers page a crawler should find", () => {
+  it("lists the index, each exam, each subject and each group once", () => {
+    const paths = paperSitemapPaths(
+      [
+        paper({ id: "a", slug: "2025-55-1-1", groupSlug: "2025-55-1" }),
+        paper({ id: "b", slug: "2025-55-1-2", groupSlug: "2025-55-1", setNumber: 2 }),
+        paper({ id: "c", slug: "2025-56-1-1", groupSlug: "2025-56-1", subjectName: "Chemistry" }),
+      ],
+      (name) => (name === "CBSE Class 12" ? "cbse-12" : null),
+      () => "CBSE Class 12"
+    );
+    expect(paths).toEqual([
+      "/question-papers",
+      "/question-papers/cbse-12",
+      "/question-papers/cbse-12/chemistry",
+      "/question-papers/cbse-12/chemistry/2025-56-1",
+      "/question-papers/cbse-12/physics",
+      "/question-papers/cbse-12/physics/2025-55-1",
+    ]);
+  });
+
+  it("is empty when nothing is published", () => {
+    expect(paperSitemapPaths([], () => "x", () => "x")).toEqual([]);
+  });
+
+  it("skips a paper whose exam has no page", () => {
+    expect(paperSitemapPaths([paper({})], () => null, () => "Nowhere")).toEqual([]);
   });
 });

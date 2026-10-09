@@ -3,7 +3,7 @@
  * (migration 0146). PURE: the loaders are in ./query.ts.
  * Spec: tests/question-papers-listing.test.ts.
  */
-import type { BoardQuestion } from "@/lib/board/query";
+import { slugify, type BoardQuestion } from "@/lib/board/query";
 
 /** One published paper as the list pages see it (no items). */
 export type PaperListing = {
@@ -106,4 +106,27 @@ export function assemblePaper(items: PaperItemRow[], questions: BoardQuestion[])
     });
   }
   return out;
+}
+
+/**
+ * Every /question-papers page for the sitemap: the index, each exam, each
+ * subject and each paper group, sorted. Empty when nothing is published, so
+ * the sitemap never advertises a page that only says "being prepared".
+ */
+export function paperSitemapPaths<T extends PaperListing>(
+  papers: T[],
+  examSlugOf: (examName: string) => string | null,
+  examNameOf: (p: T) => string
+): string[] {
+  const paths = new Set<string>();
+  for (const p of papers) {
+    const exam = examSlugOf(examNameOf(p));
+    if (!exam) continue;
+    const subject = `/question-papers/${exam}/${slugify(p.subjectName)}`;
+    paths.add("/question-papers");
+    paths.add(`/question-papers/${exam}`);
+    paths.add(subject);
+    paths.add(`${subject}/${p.groupSlug}`);
+  }
+  return [...paths].sort();
 }
