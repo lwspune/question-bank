@@ -44,6 +44,8 @@ export type PaperHtmlInput = {
    * When given, the headings are the paper's sections, not subtopics.
    */
   sectionOf?: ReadonlyMap<string, string>;
+  /** Head every question (or set), not only on a change; see the docx builder's note. */
+  headingEveryQuestion?: boolean;
   includeSourceTag?: boolean;
   /** PYQ Vault watermark on every page (the footer is drawn by the printer). */
   branded?: boolean;
@@ -274,8 +276,9 @@ function questionHtml(q: QuestionRow, n: number, input: PaperHtmlInput, showCont
 
 export function buildPaperHtml(input: PaperHtmlInput): string {
   const groups = groupBySet(input.questions);
+  const labels = groups.map((g) => groupHeadingLabel(g, input.sectionOf));
   const headings = wantsHeadings(input)
-    ? headingsOnChange(groups.map((g) => groupHeadingLabel(g, input.sectionOf)))
+    ? input.headingEveryQuestion ? labels : headingsOnChange(labels)
     : [];
   const parts: string[] = [];
   let n = 1;

@@ -203,6 +203,12 @@ export type QuestionPaperInput = {
    * When given, the headings are the paper's sections, not subtopics.
    */
   sectionOf?: ReadonlyMap<string, string>;
+  /**
+   * Print the heading above EVERY question (or set), not only when it changes.
+   * A homework day heads each question with how often it was asked, and two
+   * different questions in a row can carry the same words (2026-10-09).
+   */
+  headingEveryQuestion?: boolean;
   /** PYQ Vault watermark + footer on every page — pass downloads only (see resolveExportAccess). */
   branded?: boolean;
   /** The owner's per-piece switches (lib/export/branding); a piece left out is on. */
@@ -263,8 +269,9 @@ export async function buildQuestionPaper(
   // set stays under one heading; the label comes from the group's first
   // question (set siblings are co-located on one subtopic by invariant).
   const groups = groupBySet(input.questions);
+  const labels = groups.map((g) => groupHeadingLabel(g, input.sectionOf));
   const headings = input.groupBySubtopic || input.sectionOf
-    ? headingsOnChange(groups.map((g) => groupHeadingLabel(g, input.sectionOf)))
+    ? input.headingEveryQuestion ? labels : headingsOnChange(labels)
     : [];
 
   const includeSourceTag = !!input.includeSourceTag;
