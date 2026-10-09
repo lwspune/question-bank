@@ -82,6 +82,26 @@ function withContentDates(
   }));
 }
 
+/** /homework and each published homework plan (DB). Guarded like the quizzes. */
+async function homeworkEntries(buildDate: Date): Promise<MetadataRoute.Sitemap> {
+  try {
+    const db = createSupabaseAdminClient();
+    const { data } = await db.from("homework_plans").select("slug, updated_at").eq("published", true);
+    if (!data || data.length === 0) return [];
+    return [
+      { url: `${SITE_URL}/homework`, lastModified: buildDate, changeFrequency: "weekly" as const, priority: 0.7 },
+      ...data.map((p) => ({
+        url: `${SITE_URL}/homework/${p.slug}`,
+        lastModified: p.updated_at ? new Date(p.updated_at as string) : buildDate,
+        changeFrequency: "weekly" as const,
+        priority: 0.7,
+      })),
+    ];
+  } catch {
+    return [];
+  }
+}
+
 /** Published public quizzes (DB). Guarded so a missing-env build still produces
  *  the static sitemap rather than failing. */
 async function publicQuizEntries(buildDate: Date): Promise<MetadataRoute.Sitemap> {
@@ -593,6 +613,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const quizEntries = await publicQuizEntries(buildDate);
   const mockUrlEntries = await mockEntries(buildDate);
   const boardUrlEntries = await boardEntries(buildDate);
+  const homeworkUrlEntries = await homeworkEntries(buildDate);
 
   // Per-chapter question landing pages — the cacheable, indexable face of the
   // bank. Until these existed the sitemap offered Google exactly ONE URL
@@ -697,6 +718,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...quizEntries,
     ...mockUrlEntries,
     ...boardUrlEntries,
+    ...homeworkUrlEntries,
     ...formulaEntries,
     ...blogEntries,
     {
