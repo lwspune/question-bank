@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import GoogleAuthButton from "@/components/auth/GoogleAuthButton";
 import { safeNextPath, signedInHome } from "@/lib/auth/redirect";
+import { signInErrorMessage } from "@/lib/auth/credentials";
 import { cn } from "@/lib/utils";
 import { readOwnRole } from "@/components/auth/useGoogleOneTap";
 
@@ -52,7 +53,7 @@ function LoginSection() {
     });
 
     if (signInError) {
-      setError(signInError.message);
+      setError(signInErrorMessage(signInError));
       setSubmitting(false);
       return;
     }
