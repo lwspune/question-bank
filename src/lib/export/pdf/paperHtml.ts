@@ -32,6 +32,7 @@ import { headingLabel, headingsOnChange } from "../subtopicHeadings";
 import { stripPassageCountPhrase } from "../stripPassageCount";
 import { formatSourceTag } from "../sourceTag";
 import { WATERMARK_PNG_BASE64 } from "../watermark.generated";
+import { marksTag, type PrintedLabel } from "../printedLabel";
 
 export type PaperHtmlInput = {
   title: string;
@@ -46,6 +47,11 @@ export type PaperHtmlInput = {
   sectionOf?: ReadonlyMap<string, string>;
   /** Head every question (or set), not only on a change; see the docx builder's note. */
   headingEveryQuestion?: boolean;
+  /**
+   * A board past paper (/question-papers): question id → its printed number,
+   * marks and "OR". Absent, questions are numbered 1, 2, 3 as always.
+   */
+  printedOf?: ReadonlyMap<string, PrintedLabel>;
   includeSourceTag?: boolean;
   /** PYQ Vault watermark on every page (the footer is drawn by the printer). */
   branded?: boolean;
@@ -173,6 +179,9 @@ h1 { font-size: 17pt; line-height: 1.25; margin: 2pt 0 3pt; color: #0F1D4A; font
 .subtopic { font-size: 11pt; font-weight: 600; color: #0F1D4A; border-bottom: .75pt solid #D6DCEA;
   padding-bottom: 2pt; margin: 16pt 0 9pt; break-after: avoid; }
 .q { display: grid; grid-template-columns: 2.2em 1fr; align-items: baseline; margin: 0 0 13pt; break-inside: avoid; }
+.q.pq { grid-template-columns: max-content 1fr; column-gap: .45em; }
+.mk { font-weight: 600; color: #374151; white-space: nowrap; }
+.or { text-align: center; font-weight: 700; letter-spacing: .2em; color: #4B5563; margin: -4pt 0 9pt; break-after: avoid; }
 .qn { font-weight: 700; color: #0F1D4A; }
 .qb { min-width: 0; }
 .p + .p { margin-top: 3pt; }
@@ -257,15 +266,24 @@ function figure(path: string | null | undefined, images: Map<string, string> | u
   return src ? `<img class="fig" src="${src}" alt="">` : "";
 }
 
+/** The number a question prints: its own on a board paper, else its position. */
+function numberOf(q: QuestionRow, n: number, printedOf: PaperHtmlInput["printedOf"]): string {
+  return printedOf?.get(q.id)?.number ?? String(n);
+}
+
 function questionHtml(q: QuestionRow, n: number, input: PaperHtmlInput, showContext: boolean): string {
   const tag = input.includeSourceTag ? formatSourceTag(q) : null;
-  const tail = tag ? ` <span class="src">${esc(tag)}</span>` : "";
+  const printed = input.printedOf?.get(q.id);
+  const tail =
+    (tag ? ` <span class="src">${esc(tag)}</span>` : "") +
+    (printed ? ` <span class="mk">${esc(marksTag(printed.marks))}</span>` : "");
   const ctx =
     showContext && q.context
       ? `<div class="ctx"><span class="label">Context: </span>${blocksHtml(q.context)}</div>`
       : "";
   return (
-    `<section class="q"><div class="qn">${n}.</div><div class="qb">` +
+    (printed?.orBefore ? `<div class="or">OR</div>` : "") +
+    `<section class="q${printed ? " pq" : ""}"><div class="qn">${esc(numberOf(q, n, input.printedOf))}.</div><div class="qb">` +
     blocksHtml(q.text, tail) +
     figure(q.imageUrl, input.images) +
     ctx +
@@ -289,11 +307,11 @@ export function buildPaperHtml(input: PaperHtmlInput): string {
       parts.push(questionHtml(q, n++, input, true));
       return;
     }
-    const first = n;
-    const last = n + group.questions.length - 1;
+    const first = numberOf(group.questions[0], n, input.printedOf);
+    const last = numberOf(group.questions[group.questions.length - 1], n + group.questions.length - 1, input.printedOf);
     if (group.passage) {
       parts.push(
-        `<div class="passage"><span class="label">Common context for questions ${first}-${last}: </span>` +
+        `<div class="passage"><span class="label">Common context for questions ${esc(first)}-${esc(last)}: </span>` +
           `${blocksHtml(stripPassageCountPhrase(group.passage))}</div>`
       );
     }
@@ -316,7 +334,7 @@ export function buildKeyHtml(input: KeyHtmlInput): string {
   const qs = input.questions;
   const grid =
     `<div class="keygrid">` +
-    qs.map((q, i) => `<div class="kc"><span class="kn">${i + 1}</span><span class="ka">${esc(answerOf(q))}</span></div>`).join("") +
+    qs.map((q, i) => `<div class="kc"><span class="kn">${esc(numberOf(q, i + 1, input.printedOf))}</span><span class="ka">${esc(answerOf(q))}</span></div>`).join("") +
     `</div>`;
 
   // Model answers and cancellation notices print whatever the setting:
@@ -340,7 +358,8 @@ export function buildKeyHtml(input: KeyHtmlInput): string {
       body = `<div class="ans">Answer: ${esc(answerOf(q))}</div>` + (q.solution ? blocksHtml(q.solution) : "");
     }
     if (input.includeSolutions) body += figure(q.solutionImageUrl, input.images);
-    return `${heading}<section class="q sol"><div class="qn">${n}.</div><div class="qb">${body}</div></section>`;
+    const pq = input.printedOf?.has(q.id) ? " pq" : "";
+    return `${heading}<section class="q sol${pq}"><div class="qn">${esc(numberOf(q, n, input.printedOf))}.</div><div class="qb">${body}</div></section>`;
   });
 
   const detailTitle = input.includeSolutions ? "Solutions" : "Model answers and notes";

@@ -32,6 +32,7 @@ import { headingLabel, headingsOnChange } from "./subtopicHeadings";
 import { stripPassageCountPhrase } from "./stripPassageCount";
 import { formatSourceTag } from "./sourceTag";
 import { WATERMARK_PNG_BASE64, WATERMARK_PX } from "./watermark.generated";
+import { marksTag, type PrintedLabel } from "./printedLabel";
 
 const MARGIN = 720; // 0.5" in twips
 const COL_SPACE = 720;
@@ -209,6 +210,11 @@ export type QuestionPaperInput = {
    * different questions in a row can carry the same words (2026-10-09).
    */
   headingEveryQuestion?: boolean;
+  /**
+   * A board past paper (/question-papers): question id → its printed number,
+   * marks and "OR". Absent, Word numbers the questions 1, 2, 3 as always.
+   */
+  printedOf?: ReadonlyMap<string, PrintedLabel>;
   /** PYQ Vault watermark + footer on every page — pass downloads only (see resolveExportAccess). */
   branded?: boolean;
   /** The owner's per-piece switches (lib/export/branding); a piece left out is on. */
@@ -228,11 +234,34 @@ export type AnswerKeyInput = {
    * When given, the headings are the paper's sections, not subtopics.
    */
   sectionOf?: ReadonlyMap<string, string>;
+  /** A board past paper's own numbers (see QuestionPaperInput.printedOf). */
+  printedOf?: ReadonlyMap<string, PrintedLabel>;
   /** PYQ Vault watermark + footer on every page — pass downloads only (see resolveExportAccess). */
   branded?: boolean;
   /** The owner's per-piece switches (lib/export/branding); a piece left out is on. */
   brandingParts?: Partial<BrandingParts>;
 };
+
+/**
+ * How a question is numbered: Word's own list numbering (1, 2, 3), or, on a
+ * board past paper, its printed number as text ("18 (b). ").
+ */
+function numberLead(printed: PrintedLabel | undefined): {
+  props: { numbering?: { reference: string; level: number } };
+  runs: TextRun[];
+} {
+  if (!printed) return { props: { numbering: { reference: NUM_REF, level: 0 } }, runs: [] };
+  return { props: {}, runs: [new TextRun({ text: `${printed.number}. `, bold: true })] };
+}
+
+/** The centred "OR" between the two halves of a board paper's choice. */
+function orParagraph(): Paragraph {
+  return new Paragraph({
+    alignment: AlignmentType.CENTER,
+    spacing: { after: 80 },
+    children: [new TextRun({ text: "OR", bold: true })],
+  });
+}
 
 
 // Maximum render boxes (px). Images smaller than the cap render at their
@@ -275,6 +304,8 @@ export async function buildQuestionPaper(
     : [];
 
   const includeSourceTag = !!input.includeSourceTag;
+  const printed = (q: QuestionRow) => input.printedOf?.get(q.id);
+  const orFor = (q: QuestionRow) => (printed(q)?.orBefore ? [orParagraph()] : []);
   let position = 1;
   for (let gi = 0; gi < groups.length; gi++) {
     const group = groups[gi];
@@ -283,12 +314,14 @@ export async function buildQuestionPaper(
     }
     if (group.kind === "single") {
       children.push(
+        ...orFor(group.question),
         ...questionParagraphs(
           group.question,
           builder,
           input.imageBytes,
           /* skipContextParagraph */ false,
-          includeSourceTag
+          includeSourceTag,
+          printed(group.question)
         )
       );
       children.push(blank());
@@ -297,29 +330,33 @@ export async function buildQuestionPaper(
     }
     if (group.questions.length === 1) {
       children.push(
+        ...orFor(group.questions[0]),
         ...questionParagraphs(
           group.questions[0],
           builder,
           input.imageBytes,
           /* skipContextParagraph */ false,
-          includeSourceTag
+          includeSourceTag,
+          printed(group.questions[0])
         )
       );
       children.push(blank());
       position += 1;
       continue;
     }
-    const firstQ = position;
-    const lastQ = position + group.questions.length - 1;
+    const firstQ = printed(group.questions[0])?.number ?? position;
+    const lastQ = printed(group.questions[group.questions.length - 1])?.number ?? position + group.questions.length - 1;
     children.push(...passageBanner(group.passage, firstQ, lastQ, builder));
     for (const q of group.questions) {
       children.push(
+        ...orFor(q),
         ...questionParagraphs(
           q,
           builder,
           input.imageBytes,
           /* skipContextParagraph */ true,
-          includeSourceTag
+          includeSourceTag,
+          printed(q)
         )
       );
       children.push(blank());
@@ -362,18 +399,20 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
     if (keyHeadings[i]) {
       children.push(subtopicHeading(keyHeadings[i]!));
     }
+    const lead = numberLead(input.printedOf?.get(q.id));
     if (q.questionFormat === "subjective") {
       // Subjective questions have no A/B/C/D letter — the "answer" is the model
       // answer itself. Print it inline (or a pending note); never `(?)`.
       if (q.solution) {
         children.push(
-          ...solutionBlocks("Model answer: ", q.solution, builder, { numbered: true })
+          ...solutionBlocks("Model answer: ", q.solution, builder, { numbered: true, lead })
         );
       } else {
         children.push(
           new Paragraph({
-            numbering: { reference: NUM_REF, level: 0 },
+            ...lead.props,
             children: [
+              ...lead.runs,
               new TextRun({
                 text: "(subjective — model answer pending)",
                 italics: true,
@@ -395,8 +434,9 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
       // print, and `(?)` would read as our omission. Say what happened.
       children.push(
         new Paragraph({
-          numbering: { reference: NUM_REF, level: 0 },
+          ...lead.props,
           children: [
+            ...lead.runs,
             new TextRun({ text: "Cancelled. ", italics: true, bold: true }),
             new TextRun({ text: q.cancelledNote, italics: true }),
           ],
@@ -410,8 +450,9 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
       // NAT: no A/B/C/D letter — the answer is the exact numerical value.
       children.push(
         new Paragraph({
-          numbering: { reference: NUM_REF, level: 0 },
+          ...lead.props,
           children: [
+            ...lead.runs,
             new TextRun({ text: "Answer: ", italics: true, bold: true }),
             new TextRun({ text: q.numericAnswer != null ? String(q.numericAnswer) : "(pending)" }),
           ],
@@ -433,8 +474,9 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
     const correct = q.options.find((o) => o.isCorrect);
     children.push(
       new Paragraph({
-        numbering: { reference: NUM_REF, level: 0 },
+        ...lead.props,
         children: [
+          ...lead.runs,
           new TextRun({
             text: `(${correct?.label?.toLowerCase() ?? "?"})`,
             bold: true,
@@ -494,9 +536,14 @@ function questionParagraphs(
   builder: Builder,
   imageBytes: Map<string, Buffer> | undefined,
   skipContextParagraph: boolean,
-  includeSourceTag: boolean
+  includeSourceTag: boolean,
+  printed?: PrintedLabel
 ): (Paragraph | Table)[] {
   const out: (Paragraph | Table)[] = [];
+  // Word's list numbering, or a board paper's printed number as text.
+  const lead = numberLead(printed);
+  // A board paper's marks ride on the end of the stem, like the source tag.
+  const marksRuns = printed ? [new TextRun({ text: ` ${marksTag(printed.marks)}`, bold: true })] : [];
 
   // Source citation — `[JEE Mains 2016]` — rides on the END of the stem, before
   // the options, per the coaching-book convention. null when the flag is off or
@@ -521,12 +568,14 @@ function questionParagraphs(
       const withTag = sourceTag !== null && i === lastTextBlock;
       out.push(
         new Paragraph({
-          ...(numbered ? {} : { numbering: { reference: NUM_REF, level: 0 } }),
+          ...(numbered ? {} : lead.props),
           children: [
+            ...(numbered ? [] : lead.runs),
             ...mathRuns(b.text, builder),
             ...(withTag
               ? [new TextRun({ text: ` ${sourceTag}`, italics: true })]
               : []),
+            ...(i === lastTextBlock ? marksRuns : []),
           ],
         })
       );
@@ -534,14 +583,17 @@ function questionParagraphs(
       numbered = true;
     } else {
       if (!numbered) {
-        out.push(new Paragraph({ numbering: { reference: NUM_REF, level: 0 }, children: [] }));
+        out.push(new Paragraph({ ...lead.props, children: [...lead.runs] }));
         numbered = true;
       }
       out.push(docxTable(b, builder));
     }
   }
   if (!numbered) {
-    out.push(new Paragraph({ numbering: { reference: NUM_REF, level: 0 }, children: [] }));
+    out.push(new Paragraph({ ...lead.props, children: [...lead.runs, ...marksRuns] }));
+  } else if (lastTextBlock === -1 && marksRuns.length) {
+    // A stem that is only a table: the marks get their own line under it.
+    out.push(new Paragraph({ indent: { left: 0 }, children: marksRuns }));
   }
   if (sourceTag !== null && !tagPrinted) {
     out.push(
@@ -635,9 +687,10 @@ function solutionBlocks(
   label: string,
   solution: string,
   builder: Builder,
-  opts: { numbered?: boolean; indent?: number } = {}
+  opts: { numbered?: boolean; indent?: number; lead?: ReturnType<typeof numberLead> } = {}
 ): (Paragraph | Table)[] {
   const out: (Paragraph | Table)[] = [];
+  const lead = opts.lead ?? numberLead(undefined);
   const labelRun = () => new TextRun({ text: label, italics: true, bold: true });
   const paraProps = () => ({
     ...(opts.indent ? { indent: { left: opts.indent } } : {}),
@@ -647,20 +700,20 @@ function solutionBlocks(
   let labelled = false;
   for (const b of blocks) {
     const first = !labelled;
-    const numbering =
-      first && opts.numbered ? { numbering: { reference: NUM_REF, level: 0 } } : {};
+    const numbering = first && opts.numbered ? lead.props : {};
+    const leadRuns = first && opts.numbered ? lead.runs : [];
     if (b.kind === "text") {
       out.push(
         new Paragraph({
           ...numbering,
           ...paraProps(),
-          children: [...(first ? [labelRun()] : []), ...mathRuns(b.text, builder)],
+          children: [...leadRuns, ...(first ? [labelRun()] : []), ...mathRuns(b.text, builder)],
         })
       );
       labelled = true;
     } else {
       if (first) {
-        out.push(new Paragraph({ ...numbering, ...paraProps(), children: [labelRun()] }));
+        out.push(new Paragraph({ ...numbering, ...paraProps(), children: [...leadRuns, labelRun()] }));
         labelled = true;
       }
       out.push(docxTable(b, builder));
@@ -671,9 +724,9 @@ function solutionBlocks(
     // the numbering (subjective) isn't dropped.
     out.push(
       new Paragraph({
-        ...(opts.numbered ? { numbering: { reference: NUM_REF, level: 0 } } : {}),
+        ...(opts.numbered ? lead.props : {}),
         ...paraProps(),
-        children: [labelRun()],
+        children: [...(opts.numbered ? lead.runs : []), labelRun()],
       })
     );
   }
@@ -822,8 +875,8 @@ function blank(): Paragraph {
  */
 function passageBanner(
   passage: string,
-  firstQ: number,
-  lastQ: number,
+  firstQ: number | string,
+  lastQ: number | string,
   builder: Builder
 ): (Paragraph | Table)[] {
   if (!passage) return [];
