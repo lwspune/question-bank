@@ -325,9 +325,9 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-10
 
-- **2026-10-09 (second) — Daily homework: `/homework`, five board questions a day as Word or PDF; MH HSC 12 Maths first (migration 0143, `npm run homework:build`).**
-  - **The order is stored** (`homework_plan_items`): it comes from a hand-read repeat review (66 asked again, 67 recurring types), which no query reproduces. A score alone flagged 1,262 pairs, mostly vector-notation noise.
-  - **The DB enforces it:** one question per plan, at most `per_day` a day, PUBLIC questions of the plan's exam and subject only; `question_id` RESTRICT, so a delete-and-recommit repair stops instead of shortening a day.
+- **2026-10-09 (second) — Daily homework: `/homework`, five board questions a day as Word or PDF: MH HSC 12 Maths, CBSE 12 Physics + Chemistry (migrations 0143-0144, `npm run homework:build`).**
+  - **The order is stored** (`homework_plan_items`): it comes from a hand-read repeat review (HSC by hand; CBSE by one agent per chapter + `REVIEW_BRIEF.md`, then read back), which no query reproduces. CBSE counts YEARS (owner); a case study is ONE slot (`sub` = part, 0144).
+  - **The DB enforces it:** one question per plan, at most `per_day` slots a day, PUBLIC questions of the plan's exam and subject only; `question_id` RESTRICT, so a delete-and-recommit repair stops instead of shortening a day.
   - **A download is a fourth `/api/export` shape** (`homework: {slug, day}`): same gate and free paper. Staff may take the PDF as well as Word.
   - **Found on the way:** 608 question and 82 solution pictures stored as full URLs were dropped from every Word/PDF/slide export; `storagePathOf` fixes it. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-10-09 — IMAT notes: all 46 chapters (671 concepts) in their own registry, `src/lib/sites/imat/notes/` (preview: superadmin `/dashboard/imat-notes`).**
