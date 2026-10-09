@@ -84,3 +84,17 @@ export function resolveExportAccess(input: {
       : "Question paper and answer key downloads come with the Premium Pass.",
   };
 }
+
+/**
+ * The format a paper is served in. Institute staff may ask for the PDF as well
+ * as their Word file (the daily homework page offers both, 2026-10-09);
+ * everyone else gets what the gate granted, whatever the request says.
+ */
+export function chooseFormat(input: {
+  granted: PaperFormat;
+  isStaff: boolean;
+  requested: unknown;
+}): PaperFormat {
+  if (input.isStaff && (input.requested === "pdf" || input.requested === "docx")) return input.requested;
+  return input.granted;
+}
