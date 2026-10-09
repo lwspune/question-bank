@@ -2,13 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown, FileText } from "lucide-react";
 import { HUB_BOARD_CHAPTERS } from "@/lib/board/hub";
 
 export type BoardHubSubject = {
   subjectRoute: string;
   subjectName: string;
   chapters: { chapterSlug: string; name: string; count: number; href: string }[];
+  /** This subject's whole past papers (/question-papers), when any are published. */
+  papers?: { href: string; count: number };
 };
 
 /**
@@ -102,6 +104,21 @@ export default function BoardHubTabs({ examSlug, subjects }: { examSlug: string;
             aria-labelledby={multi ? `board-tab-${s.subjectRoute}` : undefined}
             hidden={i !== active}
           >
+            {s.papers && (
+              <Link
+                href={s.papers.href}
+                className="mb-3 flex items-center gap-3 rounded-lg border bg-card px-4 py-3 transition-colors hover:bg-brand/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                <FileText className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+                <span className="min-w-0 flex-1">
+                  <span className="block text-[15px] font-medium">{s.subjectName} past papers</span>
+                  <span className="block text-xs text-muted-foreground tabular-nums">
+                    {s.papers.count} whole papers with marks and answers
+                  </span>
+                </span>
+                <ArrowRight className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+              </Link>
+            )}
             <ul className="divide-y rounded-lg border bg-card">
               {s.chapters.map((c, j) => (
                 <li key={c.chapterSlug} className={!open && j >= HUB_BOARD_CHAPTERS ? "hidden" : undefined}>
