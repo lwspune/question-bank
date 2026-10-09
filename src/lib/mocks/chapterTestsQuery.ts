@@ -21,6 +21,7 @@
  */
 import { unstable_cache } from "next/cache";
 import { singleFlight } from "@/lib/cache/singleFlight";
+import { buildFailureMemoMs } from "@/lib/cache/buildPhase";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import {
@@ -88,7 +89,11 @@ export async function listChapterTests(): Promise<Map<string, ChapterTest>> {
   try {
     // Shared while in progress: every notes and /questions page asks at once
     // during a build, before the cache has filled (see lib/cache/singleFlight).
-    return new Map(await singleFlight("mock-chapter-tests", listChapterTestEntries));
+    return new Map(
+      await singleFlight("mock-chapter-tests", listChapterTestEntries, {
+        rememberFailureMs: buildFailureMemoMs(),
+      })
+    );
   } catch (e) {
     console.error("listChapterTests", e instanceof Error ? e.message : e);
     return new Map();
