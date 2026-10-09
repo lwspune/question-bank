@@ -64,6 +64,8 @@ export type PaperManifest = {
   setNumber: number | null;
   paperCode: string | null;
   year: number;
+  /** The month a Maharashtra paper was sat ("June"); null for CBSE. */
+  sitting: string | null;
   title: string;
   totalMarks: number;
   durationMinutes: number;
@@ -176,6 +178,7 @@ export function cbseManifest(
       setNumber: Number(code[2]),
       paperCode: src.paper,
       year: src.year,
+      sitting: null,
       title: `CBSE Class 12 ${opts.subjectName} ${src.year} (${src.paper})`,
       totalMarks: totals.marks,
       durationMinutes: totals.minutes,

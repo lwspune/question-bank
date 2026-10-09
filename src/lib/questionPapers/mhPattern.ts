@@ -27,7 +27,16 @@
 import type { ManifestResult, PaperItem, PaperSection, SourceQuestion } from "./manifest";
 
 export type PatternBlock =
-  | { ref: string; each?: number; marks?: number[]; attempt?: number; or?: boolean; section?: string }
+  | {
+      ref: string;
+      each?: number;
+      marks?: number[];
+      attempt?: number;
+      or?: boolean;
+      /** Every item is its own question, however deep (older SSC Science Q.1 (A)). */
+      leaf?: boolean;
+      section?: string;
+    }
   | { from: number; to: number; each: number; attempt?: number; section?: string };
 
 export type MarksPattern = {
@@ -48,8 +57,13 @@ export type MhPaperMeta = {
   paperCode: string | null;
 };
 
-/** "Q. 31(ii)" → ["31", "ii"]; "Q1(A)(i)" → ["1", "A", "i"]; null if unreadable. */
+/**
+ * "Q. 31(ii)" → ["31", "ii"]; "Q1(A)(i)" → ["1", "A", "i"]; "Q.1.i" (HSC
+ * Chemistry's transcription) → ["1", "i"]; null if unreadable.
+ */
 export function parseRef(ref: string): string[] | null {
+  const dotted = /^Q\.?\s*(\d+)((?:\.[A-Za-z0-9]+)+)$/.exec(ref.trim());
+  if (dotted) return [dotted[1], ...dotted[2].split(".").filter(Boolean)];
   const m = /^Q\.?\s*(\d+)\.?\s*((?:\(\s*[A-Za-z0-9]+\s*\)\s*)*)$/.exec(ref.trim());
   if (!m) return null;
   const subs = [...m[2].matchAll(/\(\s*([A-Za-z0-9]+)\s*\)/g)].map((x) => x[1]);
@@ -78,7 +92,8 @@ function match(tokens: string[], blocks: PatternBlock[]): Matched | null {
       if (prefix.some((t, i) => t !== tokens[i])) return;
       if (prefix.length > bestLen) {
         bestLen = prefix.length;
-        best = { block: b, blockIndex, unit: tokens.slice(0, Math.min(tokens.length, prefix.length + 1)).join("|") };
+        const depth = b.leaf ? tokens.length : Math.min(tokens.length, prefix.length + 1);
+        best = { block: b, blockIndex, unit: tokens.slice(0, depth).join("|") };
       }
     } else {
       const n = Number(tokens[0]);
@@ -219,6 +234,7 @@ export function mhManifest(
       setNumber: null,
       paperCode: src.paperCode,
       year: src.year,
+      sitting: src.sitting,
       title: src.title,
       totalMarks: pattern.maxMarks,
       durationMinutes: pattern.minutes,

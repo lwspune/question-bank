@@ -23,6 +23,9 @@ describe("parseRef / printedNumber — the board's own question numbers", () => 
     expect(parseRef("Q. 3")).toEqual(["3"]);
     expect(parseRef("Q6(A)")).toEqual(["6", "A"]);
     expect(parseRef("nonsense")).toBeNull();
+    // HSC Chemistry's transcription dots the parts instead of bracketing them.
+    expect(parseRef("Q.1.i")).toEqual(["1", "i"]);
+    expect(parseRef("Q.2.viii")).toEqual(["2", "viii"]);
   });
   it("prints them as the paper does", () => {
     expect(printedNumber(["31", "ii"])).toBe("31 (ii)");
@@ -168,5 +171,21 @@ describe("mhManifest — refuses a paper rather than guess", () => {
   it("when a reference cannot be read", () => {
     const bad = mhManifest({ ...META, questions: [...SSC_QS, q("Question 4")] }, SSC, fp);
     expect(bad.ok).toBe(false);
+  });
+});
+
+describe("mhManifest — a block whose every item is its own question", () => {
+  // Older SSC Science: Q.1 (A) holds sub-groups, (1) fill in, (2) true/false,
+  // each item worth one mark, not parts of one question.
+  const pattern: MarksPattern = { maxMarks: 3, minutes: 120, blocks: [{ ref: "Q1(A)", each: 1, leaf: true }] };
+  const r = mhManifest({ ...META, questions: [q("Q1(A)(1)(i)"), q("Q1(A)(1)(ii)"), q("Q1(A)(2)")] }, pattern, fp);
+
+  it("gives every item its marks", () => {
+    if (!r.ok) throw new Error(r.reason);
+    expect(r.manifest.items.map((i) => [i.printedNumber, i.marks, i.partOf])).toEqual([
+      ["1 (A) (1) (i)", 1, null],
+      ["1 (A) (1) (ii)", 1, null],
+      ["1 (A) (2)", 1, null],
+    ]);
   });
 });
