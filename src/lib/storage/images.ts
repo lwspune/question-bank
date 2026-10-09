@@ -1,6 +1,6 @@
 import { randomUUID } from "node:crypto";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { BUCKET, publicImageUrl } from "./imageUrl";
+import { BUCKET, publicImageUrl, storagePathOf } from "./imageUrl";
 
 export { BUCKET, publicImageUrl };
 export const MAX_SIZE_BYTES = 1024 * 1024;
@@ -80,7 +80,9 @@ export async function downloadImage(
   client: SupabaseClient,
   path: string
 ): Promise<Buffer> {
-  const { data, error } = await client.storage.from(BUCKET).download(path);
+  const stored = storagePathOf(path);
+  if (stored === null) throw new Error(`storage download failed: not a ${BUCKET} picture`);
+  const { data, error } = await client.storage.from(BUCKET).download(stored);
   if (error || !data) {
     throw new Error(`storage download failed: ${error?.message ?? "no data"}`);
   }
