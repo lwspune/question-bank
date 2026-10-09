@@ -42,7 +42,16 @@ async function main() {
         const marks = s.items.reduce((n, it) => (it.isAlternative || it.marks === null ? n : n + it.marks), 0);
         if (marks !== s.totalMarks) problems.push(`${s.slug}: marks ${marks}, printed ${s.totalMarks}`);
       }
-      const noPassage = s.items.filter((it) => it.caseKey && !it.question.context);
+      // A case study's later items must carry its passage. The FIRST may be the
+      // task itself (MH Geography Q.6 (A): "prepare a line graph", with its
+      // questions below quoting it as their passage).
+      const seenCase = new Set<string>();
+      const noPassage = s.items.filter((it) => {
+        if (!it.caseKey) return false;
+        const first = !seenCase.has(it.caseKey);
+        seenCase.add(it.caseKey);
+        return !first && !it.question.context;
+      });
       if (noPassage.length) problems.push(`${s.slug}: ${noPassage.length} case-study part(s) without a passage`);
       const blank = s.items.filter((it) => !it.question.text.trim());
       if (blank.length) problems.push(`${s.slug}: ${blank.length} blank question(s)`);
