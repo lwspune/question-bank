@@ -125,6 +125,25 @@ describe.skipIf(!HAS_ENV)("homework plans", () => {
     expect(error?.message).toMatch(/not a PUBLIC question of this plan/);
   });
 
+  it("holds a case study's parts in one slot without counting them against the day (0144)", async () => {
+    const part = (sub: number, q: Q) => ({ ...item(1, 1, q), sub });
+    const { data, error } = await replace([part(1, qs[0]), part(2, qs[1]), part(3, qs[2])]);
+    expect(error).toBeNull();
+    expect(data).toBe(3);
+    const { data: rows } = await admin
+      .from("homework_plan_items")
+      .select("position, sub")
+      .eq("plan_id", planId)
+      .order("sub");
+    expect(rows).toEqual([
+      { position: 1, sub: 1 },
+      { position: 1, sub: 2 },
+      { position: 1, sub: 3 },
+    ]);
+    // Back to the three single questions the next tests expect.
+    await replace([item(1, 1, qs[0]), item(1, 2, qs[1]), item(2, 1, qs[2])]);
+  });
+
   it("leaves the plan as it was when a replace is refused", async () => {
     const { data } = await admin.from("homework_plan_items").select("question_id").eq("plan_id", planId);
     expect((data ?? []).length).toBe(3);

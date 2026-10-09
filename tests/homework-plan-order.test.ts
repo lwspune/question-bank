@@ -88,6 +88,20 @@ describe("buildPlanOrder", () => {
     expect(chapters).toEqual(["Matrices", "Vectors", "Matrices", "Vectors", "Matrices"]);
   });
 
+  it("carries a case study's parts in one slot, the lead first", () => {
+    const qs = [{ id: "cs", sitting: "Mar 2016", chapter: "Optics", rows: ["cs", "cs2", "cs3"] }, q("x", "Mar 2015", "Optics")];
+    const items = buildPlanOrder({ perDay: 5, sittings: SITTINGS, questions: qs, groups: [] });
+    expect(items.map((i) => [i.questionId, i.rows, i.position])).toEqual([
+      ["cs", ["cs", "cs2", "cs3"], 1],
+      ["x", ["x"], 2],
+    ]);
+  });
+
+  it("refuses a slot whose parts do not start with the slot's own id", () => {
+    const qs = [{ id: "cs", sitting: "Mar 2016", chapter: "Optics", rows: ["cs2", "cs"] }];
+    expect(() => buildPlanOrder({ perDay: 5, sittings: SITTINGS, questions: qs, groups: [] })).toThrow(/must start with cs/);
+  });
+
   it("refuses a group naming a question or sitting it does not know", () => {
     const badQ = input();
     badQ.groups[0].questionIds.push("zz");

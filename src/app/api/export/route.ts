@@ -276,6 +276,8 @@ export async function POST(request: NextRequest) {
           { status: 409 }
         );
       }
+      // A case study's parts share a set key, so the passage prints once.
+      questions = questions.map((q) => (day.setOf.has(q.id) ? { ...q, setId: day.setOf.get(q.id)! } : q));
       homeworkPlanId = found.planId;
       mockTitle = day.title;
       sectionOf = day.sectionOf;

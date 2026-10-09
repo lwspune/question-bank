@@ -7,24 +7,41 @@
  * Spec: tests/homework-day-export.test.ts.
  */
 
-export type HomeworkDayItem = { position: number; questionId: string; chapter: string; note: string };
+/** One bank row of a day. A case study's parts share a position, numbered by `sub`. */
+export type HomeworkDayItem = { position: number; sub: number; questionId: string; chapter: string; note: string };
 
 export type HomeworkDayExport =
-  | { ok: true; title: string; questionIds: string[]; sectionOf: Map<string, string> }
+  | {
+      ok: true;
+      title: string;
+      questionIds: string[];
+      sectionOf: Map<string, string>;
+      /** A case study's parts -> one set key, so both builders print the passage once. */
+      setOf: Map<string, string>;
+    }
   | { ok: false; reason: string };
 
 export function homeworkDayExport(planTitle: string, day: number, items: HomeworkDayItem[]): HomeworkDayExport {
   if (items.length === 0) return { ok: false, reason: "That day is not in this plan." };
-  const ordered = [...items].sort((a, b) => a.position - b.position);
-  // A gap would print the wrong question numbers against the page.
-  if (ordered.some((it, i) => it.position !== i + 1)) {
-    return { ok: false, reason: "This day can't be downloaded right now. Please try again later." };
+  const ordered = [...items].sort((a, b) => a.position - b.position || a.sub - b.sub);
+  // A gap in the slots or in a slot's parts would print the wrong numbers.
+  const slots = new Map<number, HomeworkDayItem[]>();
+  for (const it of ordered) slots.set(it.position, [...(slots.get(it.position) ?? []), it]);
+  const positions = [...slots.keys()];
+  const broken =
+    positions.some((p, i) => p !== i + 1) ||
+    [...slots.values()].some((parts) => parts.some((it, i) => it.sub !== i + 1));
+  if (broken) return { ok: false, reason: "This day can't be downloaded right now. Please try again later." };
+  const setOf = new Map<string, string>();
+  for (const [p, parts] of slots) {
+    if (parts.length > 1) for (const it of parts) setOf.set(it.questionId, `homework-${day}-${p}`);
   }
   return {
     ok: true,
     title: `Daily Homework #${day}: ${planTitle}`,
     questionIds: ordered.map((it) => it.questionId),
     sectionOf: new Map(ordered.map((it) => [it.questionId, `${it.chapter} | ${it.note}`])),
+    setOf,
   };
 }
 

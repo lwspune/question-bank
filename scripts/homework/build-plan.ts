@@ -5,7 +5,8 @@
  *   npx tsx scripts/homework/build-plan.ts scripts/homework/data/mh-hsc-12-maths.json --apply    # write
  *   ... --apply --publish     also make the plan public (the page lists published plans only)
  *
- * The data file names every question of the subject and the groups a reviewer
+ * The data file names every question of the subject (a case study as ONE entry
+ * whose `rows` list its parts, the entry's own id first) and the groups a reviewer
  * found: "repeat" = the same question asked in more than one paper, "type" =
  * the same kind of question with new numbers (see src/lib/homework/plan.ts for
  * the order they produce). Chapters are read from the bank, never the file.
@@ -33,7 +34,7 @@ type PlanFile = {
   summary: string;
   perDay: number;
   sittings: string[];
-  questions: { id: string; sitting: string }[];
+  questions: { id: string; sitting: string; rows?: string[] }[];
   groups: PlanGroup[];
 };
 
@@ -92,7 +93,8 @@ async function main() {
   if (!subject) throw new Error(`no subject ${plan.subjectName} in ${plan.examName}`);
 
   // Reconcile the file against the bank, both ways.
-  const fileIds = plan.questions.map((q) => q.id);
+  const fileIds = plan.questions.flatMap((q) => q.rows ?? [q.id]);
+  if (new Set(fileIds).size !== fileIds.length) throw new Error("a bank row is listed twice in the file");
   const bank = await loadBank(client, fileIds);
   const problems: string[] = [];
   for (const id of fileIds) {
@@ -119,7 +121,8 @@ async function main() {
   const days = items.reduce((m, i) => Math.max(m, i.day), 0);
   const parts = [1, 2, 3].map((p) => items.filter((i) => i.part === p).length);
   console.log(`${plan.slug}: ${items.length} questions over ${days} days (asked again ${parts[0]}, types ${parts[1]}, asked once ${parts[2]})`);
-  console.log(`covers ${fileIds.length} of ${fileIds.length} bank questions (the rest are other wordings of a printed repeat)`);
+  const printedRows = items.reduce((n, i) => n + i.rows.length, 0);
+  console.log(`prints ${printedRows} of the ${fileIds.length} bank rows; the rest are other wordings of a printed repeat`);
   for (const i of items.filter((x) => x.day === 1)) {
     console.log(`  day 1 #${i.position}: ${bank.get(i.questionId)!.chapter!.name} | ${i.note}`);
   }
@@ -145,7 +148,9 @@ async function main() {
     .select("id, published")
     .single();
   if (upErr || !saved) throw new Error(`plan: ${upErr?.message}`);
-  const { data: written, error } = await client.rpc("homework_replace_items", { p_plan_id: saved.id, p_items: items });
+  // One database row per part; a plain question is part 1 of its slot.
+  const rows = items.flatMap((i) => i.rows.map((questionId, k) => ({ ...i, questionId, sub: k + 1 })));
+  const { data: written, error } = await client.rpc("homework_replace_items", { p_plan_id: saved.id, p_items: rows });
   if (error) throw new Error(`items: ${error.message}`);
   console.log(`wrote ${written} items; plan is ${saved.published ? "PUBLISHED" : "not published (add --publish)"}`);
 }

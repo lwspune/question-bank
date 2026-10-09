@@ -3,8 +3,9 @@ import { homeworkDayExport, parseHomeworkTarget } from "@/lib/homework/dayExport
 import { chooseFormat } from "@/lib/export/access";
 import { paperKey } from "@/lib/export/freePaper";
 
-const item = (position: number, questionId: string, chapter = "Vectors") => ({
+const item = (position: number, questionId: string, chapter = "Vectors", sub = 1) => ({
   position,
+  sub,
   questionId,
   chapter,
   note: `Asked ${position + 1} times: Mar 2016`,
@@ -21,7 +22,23 @@ describe("homeworkDayExport", () => {
         ["q1", "Vectors | Asked 2 times: Mar 2016"],
         ["q2", "Matrices | Asked 3 times: Mar 2016"],
       ]),
+      setOf: new Map(),
     });
+  });
+
+  it("keeps a case study's parts together in order, under one set so its passage prints once", () => {
+    const out = homeworkDayExport("Plan", 2, [
+      item(2, "p2", "Optics", 2),
+      item(1, "a"),
+      item(2, "p1", "Optics", 1),
+      item(3, "b"),
+    ]);
+    expect(out.ok && out.questionIds).toEqual(["a", "p1", "p2", "b"]);
+    expect(out.ok && out.setOf).toEqual(new Map([["p1", "homework-2-2"], ["p2", "homework-2-2"]]));
+  });
+
+  it("refuses a slot whose parts have a gap", () => {
+    expect(homeworkDayExport("Plan", 1, [item(1, "p1", "Optics", 1), item(1, "p3", "Optics", 3)]).ok).toBe(false);
   });
 
   it("refuses a day with no questions", () => {

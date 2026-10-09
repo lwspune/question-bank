@@ -89,15 +89,21 @@ export default async function HomeworkPlanPage({ params }: { params: Params }) {
                     <HomeworkDownload planSlug={plan.slug} day={d.day} planTitle={plan.title} />
                   </div>
                   <ol className="mt-3 space-y-1.5 text-sm">
-                    {d.items.map((it) => (
-                      <li key={it.position} className="flex gap-2">
-                        <span className="w-4 shrink-0 text-muted-foreground tabular-nums">{it.position}.</span>
-                        <span className="min-w-0">
-                          {it.chapter}
-                          <span className="ml-1.5 text-xs text-muted-foreground">{shortNote(it.note)}</span>
-                        </span>
-                      </li>
-                    ))}
+                    {d.items
+                      .filter((it) => it.sub === 1)
+                      .map((it) => {
+                        const parts = d.items.filter((x) => x.position === it.position).length;
+                        return (
+                          <li key={it.position} className="flex gap-2">
+                            <span className="w-4 shrink-0 text-muted-foreground tabular-nums">{it.position}.</span>
+                            <span className="min-w-0">
+                              {it.chapter}
+                              {parts > 1 && <span className="text-muted-foreground"> (case study, {parts} parts)</span>}
+                              <span className="ml-1.5 text-xs text-muted-foreground">{shortNote(it.note)}</span>
+                            </span>
+                          </li>
+                        );
+                      })}
                   </ol>
                 </li>
               ))}

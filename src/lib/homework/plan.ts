@@ -19,7 +19,11 @@
  * Spec: tests/homework-plan-order.test.ts.
  */
 
-export type PlanQuestion = { id: string; sitting: string; chapter: string };
+/**
+ * One slot of a day. A case study is one slot holding its parts: `rows` lists
+ * every part in order, the slot's own id first. A plain question has no rows.
+ */
+export type PlanQuestion = { id: string; sitting: string; chapter: string; rows?: string[] };
 
 export type PlanGroup = {
   tier: "repeat" | "type";
@@ -47,6 +51,8 @@ export type PlanItem = {
   part: 1 | 2 | 3;
   /** Printed above the question. */
   note: string;
+  /** Every bank row in the slot, in order: the question, or a case study's parts. */
+  rows: string[];
 };
 
 const bare = (s: string) => s.replace(/\*$/, "");
@@ -56,6 +62,7 @@ export function buildPlanOrder(input: PlanInput): PlanItem[] {
   const byId = new Map(input.questions.map((x) => [x.id, x]));
   for (const x of input.questions) {
     if (!sittingRank.has(x.sitting)) throw new Error(`unknown sitting ${x.sitting} on question ${x.id}`);
+    if (x.rows && x.rows[0] !== x.id) throw new Error(`the parts of ${x.id} must start with ${x.id}`);
   }
   for (const g of input.groups) {
     for (const s of g.sittings) if (!sittingRank.has(bare(s))) throw new Error(`unknown sitting ${s} in "${g.label}"`);
@@ -76,7 +83,7 @@ export function buildPlanOrder(input: PlanInput): PlanItem[] {
   for (const g of types) for (const id of g.questionIds) if (!typeOf.has(id)) typeOf.set(id, g);
 
   const used = new Set<string>();
-  const order: Omit<PlanItem, "day" | "position">[] = [];
+  const order: Omit<PlanItem, "day" | "position" | "rows">[] = [];
 
   // Part 1
   for (const g of repeats) {
@@ -128,5 +135,10 @@ export function buildPlanOrder(input: PlanInput): PlanItem[] {
     });
   }
 
-  return order.map((o, n) => ({ ...o, day: Math.floor(n / input.perDay) + 1, position: (n % input.perDay) + 1 }));
+  return order.map((o, n) => ({
+    ...o,
+    rows: byId.get(o.questionId)!.rows ?? [o.questionId],
+    day: Math.floor(n / input.perDay) + 1,
+    position: (n % input.perDay) + 1,
+  }));
 }

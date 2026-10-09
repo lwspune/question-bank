@@ -37,6 +37,7 @@ type PlanRow = {
 type ItemRow = {
   day: number;
   position: number;
+  sub: number;
   part: 1 | 2 | 3;
   note: string;
   question_id: string;
@@ -51,17 +52,17 @@ async function loadItems(client: SupabaseClient, planId: string, day?: number): 
   for (let from = 0; ; from += PAGE) {
     let q = client
       .from("homework_plan_items")
-      .select("day, position, part, note, question_id, question:questions(chapter:chapters(name))")
+      .select("day, position, sub, part, note, question_id, question:questions(chapter:chapters(name))")
       .eq("plan_id", planId);
     if (day !== undefined) q = q.eq("day", day);
-    const { data, error } = await q.order("day").order("position").range(from, from + PAGE - 1);
+    const { data, error } = await q.order("day").order("position").order("sub").range(from, from + PAGE - 1);
     if (error) throw new Error(`homework items: ${error.message}`);
     out.push(...((data ?? []) as unknown as ItemRow[]));
     if (!data || data.length < PAGE) return out;
   }
 }
 
-function toSummary(p: PlanRow, items: { day: number }[]): HomeworkPlanSummary {
+function toSummary(p: PlanRow, items: { day: number; sub: number }[]): HomeworkPlanSummary {
   return {
     id: p.id,
     slug: p.slug,
@@ -71,7 +72,8 @@ function toSummary(p: PlanRow, items: { day: number }[]): HomeworkPlanSummary {
     examName: p.exam?.name ?? "",
     subjectName: p.subject?.name ?? "",
     days: items.reduce((m, it) => Math.max(m, it.day), 0),
-    questions: items.length,
+    // A case study is one question however many parts it has.
+    questions: items.filter((it) => it.sub === 1).length,
   };
 }
 
@@ -81,6 +83,7 @@ function toDays(items: ItemRow[]): HomeworkDay[] {
     const d = days.get(it.day) ?? { day: it.day, items: [] };
     d.items.push({
       position: it.position,
+      sub: it.sub,
       questionId: it.question_id,
       chapter: it.question?.chapter?.name ?? "",
       note: it.note,
