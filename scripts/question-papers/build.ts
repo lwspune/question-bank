@@ -15,6 +15,12 @@
  *
  * Idempotent: board_paper_replace upserts the paper and replaces its items in
  * one transaction, so a re-run after a question repair re-points the paper.
+ *
+ * WHEN IT SHOWS. The site reads the published list through a one-day cache
+ * (getPublishedPapers), so a paper published here appears on /question-papers,
+ * the Board hub and the sitemap within a day, or at the next deploy. A paper
+ * page reached directly shows its new contents once its own day-long copy
+ * expires. Check the data straight away with `npm run papers:smoke`.
  */
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
