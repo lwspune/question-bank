@@ -24,7 +24,7 @@ export default function PrivacyPage() {
   return (
     <LegalPage
       title="Privacy Policy"
-      updated="26 September 2026"
+      updated="9 October 2026"
       intro={
         <>
           PYQ Vault is run by Vilas Shinde, in Pune. This policy explains what we collect and
@@ -55,7 +55,9 @@ export default function PrivacyPage() {
           </>,
           <>
             <strong>Messages.</strong> What you send us through the contact form, a question
-            report or a request for teacher access.
+            report or a request for teacher access, and questions you type to V, our help
+            assistant. We hide any phone number or email you type there, and keep the rest to
+            improve V.
           </>,
         ]}
       />

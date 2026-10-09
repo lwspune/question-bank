@@ -8,7 +8,9 @@ import type { ChatInteractionRow } from "./interactions";
 
 export type RecordChatInteraction =
   | { eventType: "launcher_open"; questionId?: null; userId: string | null }
-  | { eventType: "faq_click"; questionId: string; userId: string | null };
+  | { eventType: "faq_click"; questionId: string; userId: string | null }
+  /** Migration 0145: the text a student typed, already masked (maskPersonal). */
+  | { eventType: "typed_question"; message: string; userId: string | null };
 
 /** Best effort: a lost telemetry row must never fail the request that carries it. */
 export async function recordChatInteraction(
@@ -19,6 +21,7 @@ export async function recordChatInteraction(
     const { error } = await db.from("chat_interactions").insert({
       event_type: input.eventType,
       question_id: input.eventType === "faq_click" ? input.questionId : null,
+      message: input.eventType === "typed_question" ? input.message : null,
       user_id: input.userId,
     });
     if (error) console.error("recordChatInteraction:", error.message);
@@ -37,7 +40,7 @@ export async function listChatInteractions(limit = 5000): Promise<ChatInteractio
     const to = Math.min(from + PAGE, limit) - 1;
     const { data, error } = await db
       .from("chat_interactions")
-      .select("event_type, question_id, created_at")
+      .select("event_type, question_id, created_at, message, user_id")
       .order("created_at", { ascending: false })
       .range(from, to);
     if (error) throw new Error(`list chat interactions failed: ${error.message}`);
@@ -47,6 +50,8 @@ export async function listChatInteractions(limit = 5000): Promise<ChatInteractio
         eventType: r.event_type as ChatInteractionRow["eventType"],
         questionId: (r.question_id as string | null) ?? null,
         createdAt: r.created_at as string,
+        message: (r.message as string | null) ?? null,
+        signedIn: r.user_id != null,
       });
     }
     if (rows.length < to - from + 1) break;
