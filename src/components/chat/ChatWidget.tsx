@@ -2,10 +2,11 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { usePathname } from "next/navigation";
-import { X } from "lucide-react";
+import { SendHorizontal, X } from "lucide-react";
 import { toast } from "sonner";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { PREDEFINED_QUESTIONS, type ChatFaqId } from "@/lib/chat/faq";
+import { CHAT_MESSAGE_MAX } from "@/lib/chat/validate";
 import { vPlacement } from "@/lib/chat/placement";
 import { launcherHiddenAfterScroll } from "@/lib/chat/launcherScroll";
 import { useCart } from "@/lib/cart/CartProvider";
@@ -33,7 +34,7 @@ type ChatTurn = { role: "user" | "assistant"; text: string; avatar?: VAvatar };
 const GREETING: ChatTurn = {
   role: "assistant",
   avatar: "laugh",
-  text: "Hi, I'm V. Pick a question below and I'll answer it.",
+  text: "Hi, I'm V. Pick a question below, or type your own.",
 };
 
 /**
@@ -41,16 +42,17 @@ const GREETING: ChatTurn = {
  * (same audience as ThemeToggle). Stateless per page load — no history is
  * persisted.
  *
- * PHASE 2 — predefined questions only, no free-text input, no LLM call.
- * See the "V, phase 2" plan: this validates whether V gets used at all
- * before spending on an Anthropic API key. The full LLM path
- * (/api/chat, src/lib/chat/anthropic.ts) is left in place, untouched and
- * dormant — re-enabling it later is a UI change here, not a rebuild.
+ * PHASE 2 — predefined questions, plus (2026-10-09) a typing box whose
+ * questions are STORED, not answered: POST /api/chat/typed replies with the
+ * owner's fixed line. That measures what students ask before paying for a
+ * model. The full LLM path (/api/chat, src/lib/chat/anthropic.ts) is left in
+ * place, untouched and dormant; re-enabling it is a UI change here.
  */
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [turns, setTurns] = useState<ChatTurn[]>([GREETING]);
   const [sending, setSending] = useState(false);
+  const [draft, setDraft] = useState("");
   // Phones only: tuck the launcher away while the student scrolls down a page
   // and bring it back on any scroll up (UX_ACTION_PLAN.md A7). It used to sit
   // over card content on every page. Never while the chat is open.
@@ -135,6 +137,35 @@ export default function ChatWidget() {
     }
   }
 
+  async function askTyped() {
+    const text = draft.trim();
+    if (sending || !text) return;
+    setTurns((t) => [...t, { role: "user", text }]);
+    setDraft("");
+    setSending(true);
+    try {
+      const res = await fetch("/api/chat/typed", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; reply?: string; error?: string };
+      if (!res.ok || !data.ok || !data.reply) {
+        const errorText = data.error || "V couldn't take that question. Please try again.";
+        setTurns((t) => [...t, { role: "assistant", avatar: "idle", text: errorText }]);
+        toast.error(errorText);
+        return;
+      }
+      setTurns((t) => [...t, { role: "assistant", avatar: "laugh", text: data.reply as string }]);
+    } catch {
+      const errorText = "V is unavailable right now. Please try again.";
+      setTurns((t) => [...t, { role: "assistant", avatar: "idle", text: errorText }]);
+      toast.error(errorText);
+    } finally {
+      setSending(false);
+    }
+  }
+
   if (placement.hidden) return null;
 
   // Vertical position lives in globals.css (.chat-launcher-offset): clear of
@@ -148,7 +179,7 @@ export default function ChatWidget() {
           role="dialog"
           aria-modal="true"
           aria-label="Chat with V"
-          className="mb-3 flex h-[28rem] w-[22rem] max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-lg border border-input bg-background shadow-xl"
+          className="mb-3 flex h-[31rem] max-h-[calc(100dvh-7rem)] w-[22rem] max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-lg border border-input bg-background shadow-xl"
           onKeyDown={(e) => {
             if (e.key === "Escape") close();
           }}
@@ -217,6 +248,37 @@ export default function ChatWidget() {
               className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-background to-transparent"
             />
           </div>
+
+          <form
+            className="border-t border-input px-3 pb-2 pt-2"
+            onSubmit={(e) => {
+              e.preventDefault();
+              void askTyped();
+            }}
+          >
+            <div className="flex items-center gap-2">
+              <input
+                type="text"
+                value={draft}
+                onChange={(e) => setDraft(e.target.value)}
+                maxLength={CHAT_MESSAGE_MAX}
+                placeholder="Type your question"
+                aria-label="Type your question for V"
+                className="h-9 min-w-0 flex-1 rounded-md border border-input bg-background px-3 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              />
+              <button
+                type="submit"
+                disabled={sending || !draft.trim()}
+                aria-label="Send question"
+                className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-brand text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+              >
+                <SendHorizontal className="h-4 w-4" aria-hidden />
+              </button>
+            </div>
+            <p className="mt-1.5 text-[11px] leading-snug text-muted-foreground">
+              Typed questions are saved to improve V. Please don&apos;t share your phone number or email.
+            </p>
+          </form>
         </div>
       )}
 

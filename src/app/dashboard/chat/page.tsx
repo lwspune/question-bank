@@ -22,8 +22,8 @@ export default async function ChatUsagePage() {
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">V usage</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            How often visitors open V and which questions they ask. Counts are a floor — a
-            blocked or dropped request leaves no row.
+            How often visitors open V, which questions they tap and what they type. Counts are
+            a floor: a blocked or dropped request leaves no row.
           </p>
         </header>
 
@@ -31,6 +31,7 @@ export default async function ChatUsagePage() {
           <StatCard kind="numeric" value={summary.totalOpens} label="Times opened" />
           <StatCard kind="numeric" value={summary.totalClicks} label="Questions asked" />
           <StatCard kind="text" value={askRate} label="Questions per open" />
+          <StatCard kind="numeric" value={summary.totalTyped} label="Typed questions" />
         </div>
 
         <section className="rounded-lg border">
@@ -56,6 +57,26 @@ export default async function ChatUsagePage() {
                 ))}
               </tbody>
             </table>
+          )}
+        </section>
+
+        <section className="rounded-lg border">
+          <h2 className="border-b px-4 py-3 text-sm font-semibold">Typed questions, newest first</h2>
+          {summary.typed.length === 0 ? (
+            <p className="px-4 py-6 text-sm text-muted-foreground">Nobody has typed a question yet.</p>
+          ) : (
+            <ul>
+              {summary.typed.map((q, i) => (
+                <li key={i} className="border-t px-4 py-2 text-sm first:border-t-0">
+                  <p className="whitespace-pre-wrap break-words">{q.text}</p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">
+                    {new Date(q.createdAt).toLocaleString("en-IN", { timeZone: "Asia/Kolkata", dateStyle: "medium", timeStyle: "short" })}
+                    {" · "}
+                    {q.signedIn ? "signed in" : "not signed in"}
+                  </p>
+                </li>
+              ))}
+            </ul>
           )}
         </section>
       </main>

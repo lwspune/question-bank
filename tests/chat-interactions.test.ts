@@ -47,3 +47,27 @@ describe("summarizeChatInteractions", () => {
     expect(s.byQuestion).toEqual([]);
   });
 });
+
+describe("summarizeChatInteractions: typed questions (migration 0145)", () => {
+  const typed = (message: string, createdAt: string, signedIn: boolean): ChatInteractionRow => ({
+    eventType: "typed_question",
+    questionId: null,
+    createdAt,
+    message,
+    signedIn,
+  });
+
+  it("lists typed questions apart from button taps, in the order given (newest first)", () => {
+    const s = summarizeChatInteractions([
+      typed("when is the result", "2026-10-09T10:00:00Z", true),
+      row("faq_click", "exams"),
+      typed("is neet 2027 syllabus same", "2026-10-08T10:00:00Z", false),
+    ]);
+    expect(s.totalClicks).toBe(1);
+    expect(s.totalTyped).toBe(2);
+    expect(s.typed).toEqual([
+      { text: "when is the result", createdAt: "2026-10-09T10:00:00Z", signedIn: true },
+      { text: "is neet 2027 syllabus same", createdAt: "2026-10-08T10:00:00Z", signedIn: false },
+    ]);
+  });
+});
