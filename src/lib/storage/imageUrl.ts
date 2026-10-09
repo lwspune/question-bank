@@ -6,7 +6,13 @@
 export const BUCKET = "question-images";
 
 export function publicImageUrl(supabaseUrl: string, path: string): string {
-  return `${supabaseUrl.replace(/\/$/, "")}/storage/v1/object/public/${BUCKET}/${path}`;
+  // Some ingests stored the full public URL rather than the bucket path (608
+  // question and 82 solution pictures, 2026-10-09). Prefixing those again made
+  // a doubled, broken link on every page. Take our path back out of it; an
+  // address outside our bucket is left as it is.
+  const bucketPath = storagePathOf(path);
+  if (bucketPath === null) return path;
+  return `${supabaseUrl.replace(/\/$/, "")}/storage/v1/object/public/${BUCKET}/${bucketPath}`;
 }
 
 const PUBLIC_PREFIX = `/storage/v1/object/public/${BUCKET}/`;
