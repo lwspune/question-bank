@@ -7,10 +7,10 @@
  * build.
  *
  * A FULL build prerenders every subtopic. It is full when:
- *  - `NOTES_FULL_PRERENDER=1`: the pre-push hook sets it when the push changes
- *    notes, using the same diff rule as notes:lint
- *    (scripts/lib/needsNotesLint.ts), so a broken notes page still fails
- *    before the push;
+ *  - `NOTES_FULL_PRERENDER=1`: set by hand for a local build that must prove
+ *    every notes page (the pre-push hook set it until 2026-10-09, when the
+ *    hook stopped building: that full local build is what took the
+ *    production database down that day);
  *  - `VERCEL` is set: the live site keeps every page prebuilt. A page built on
  *    first visit costs that visitor ~2-2.6 s, and Vercel drops those copies on
  *    every deploy, so Google would nearly always be the slow first visitor.

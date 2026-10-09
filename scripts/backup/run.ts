@@ -56,9 +56,9 @@ const MIN_DUMP_BYTES = 1_000_000;
  * Schemas Supabase manages for us. Taken verbatim from `supabase db dump
  * --dry-run`, which is the authoritative list of what their own tooling omits.
  *
- * THE POLARITY IS THE DESIGN, as in scripts/lib/needsBuild.ts: this is a list
- * of things to SKIP, so a schema nobody thought of is backed up rather than
- * silently dropped. An allowlist would rot the first time someone adds one.
+ * THE POLARITY IS THE DESIGN: this is a list of things to SKIP, so a schema
+ * nobody thought of is backed up rather than silently dropped. An allowlist
+ * would rot the first time someone adds one.
  */
 const EXCLUDED_SCHEMAS = [
   "information_schema",

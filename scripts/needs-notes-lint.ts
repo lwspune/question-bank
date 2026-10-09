@@ -4,7 +4,8 @@
  * Shared by the pre-push hook and CI so both use ONE rule (the pure core in
  * scripts/lib/needsNotesLint.ts, spec'd in tests/needs-notes-lint.test.ts and
  * pinned to the lint's real import graph by
- * tests/notes-lint-import-roots.test.ts). Same shape as scripts/needs-build.ts.
+ * tests/notes-lint-import-roots.test.ts). The hook's only diff rule since the
+ * build rule retired with the hook's build on 2026-10-09.
  *
  *   npx tsx scripts/needs-notes-lint.ts <baseRef> <headRef>
  *
