@@ -131,3 +131,27 @@ describe("a board paper prints its own numbers, marks and OR, in both formats", 
     expect(html).not.toMatch(/\nOR\n/);
   });
 });
+
+describe("a question in parts prints its marks once, in both formats (0147)", () => {
+  const parts = [
+    { ...base, id: "p1", text: "Derive the expression.", solution: "Model one.", options: [], questionFormat: "subjective" as const },
+    { ...base, id: "p2", text: "Calculate the value.", solution: "Model two.", options: [], questionFormat: "subjective" as const },
+  ];
+  const printed = new Map<string, PrintedLabel>([
+    ["p1", { number: "31 (i)", marks: 4, orBefore: false }],
+    ["p2", { number: "31 (ii)", marks: null, orBefore: false }],
+  ]);
+  const input = { title: "x", questions: parts, printedOf: printed, sectionOf: new Map([["p1", "Section D"], ["p2", "Section D"]]) };
+
+  it("Word", async () => {
+    const { text } = await docxText(await buildQuestionPaper(input));
+    inOrder(text, ["31 (i).", "Derive the expression.", "[4]", "31 (ii).", "Calculate the value."]);
+    expect(text.split("31 (ii).")[1]).not.toContain("[");
+  });
+
+  it("PDF", () => {
+    const text = htmlText(buildPaperHtml({ ...input, head: "" }));
+    inOrder(text, ["31 (i).", "Derive the expression.", "[4]", "31 (ii).", "Calculate the value."]);
+    expect(text.split("31 (ii).")[1]).not.toContain("[");
+  });
+});

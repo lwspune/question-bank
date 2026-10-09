@@ -32,10 +32,17 @@ async function load(params: Params) {
     (p) => p.examName === exam.examName && p.groupSlug === params.paperSlug && slugify(p.subjectName) === params.subjectSlug
   );
   if (!listed) return null;
-  const sets = await getPaperGroup(createSupabaseAnonClient(), listed.examId, params.paperSlug);
+  const sets = await getPaperGroup(createSupabaseAnonClient(), listed.examId, params.paperSlug, {
+    subjectId: listed.subjectId,
+  });
   if (sets.length === 0) return null;
   const first = sets[0];
-  const name = `${exam.displayName} ${first.subjectName} ${first.year} question paper (${groupLabel(first)})`;
+  // A CBSE group is named by its code; a Maharashtra paper by its own title,
+  // which names every subject it covers ("History and Political Science").
+  const name =
+    first.setNumber === null
+      ? `${first.title} question paper`
+      : `${exam.displayName} ${first.subjectName} ${first.year} question paper (${groupLabel(first)})`;
   return { exam, sets, first, name };
 }
 

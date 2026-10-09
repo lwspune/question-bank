@@ -543,7 +543,8 @@ function questionParagraphs(
   // Word's list numbering, or a board paper's printed number as text.
   const lead = numberLead(printed);
   // A board paper's marks ride on the end of the stem, like the source tag.
-  const marksRuns = printed ? [new TextRun({ text: ` ${marksTag(printed.marks)}`, bold: true })] : [];
+  const marksRuns =
+    printed && printed.marks !== null ? [new TextRun({ text: ` ${marksTag(printed.marks)}`, bold: true })] : [];
 
   // Source citation — `[JEE Mains 2016]` — rides on the END of the stem, before
   // the options, per the coaching-book convention. null when the flag is off or

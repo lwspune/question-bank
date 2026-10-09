@@ -43,9 +43,12 @@ export type PaperItem = {
   /** As printed on the paper: "18 (b)", "29 (iv) (a)". */
   printedNumber: string;
   section: string;
-  marks: number;
+  /** Null on a part of a question (`partOf`): the question carries its marks. */
+  marks: number | null;
   /** The position this "OR" alternative replaces; null for an ordinary question. */
   alternativeTo: number | null;
+  /** The question this item is a part of (Maharashtra papers, 0147); null otherwise. */
+  partOf: number | null;
   /** Shared by a case study's parts, so its passage prints once. */
   caseKey: string | null;
   contentHash: string;
@@ -57,9 +60,12 @@ export type PaperManifest = {
   slug: string;
   /** A CBSE set group ("2025-55-1"): one page shows its three sets. */
   groupSlug: string;
-  setNumber: number;
-  paperCode: string;
+  /** A CBSE set (1-3); null on a paper printed in one version (Maharashtra). */
+  setNumber: number | null;
+  paperCode: string | null;
   year: number;
+  /** The month a Maharashtra paper was sat ("June"); null for CBSE. */
+  sitting: string | null;
   title: string;
   totalMarks: number;
   durationMinutes: number;
@@ -91,7 +97,7 @@ export const CBSE_12_PATTERNS: PatternTotals = {
  * so only the question it replaces counts.
  */
 export function marksTotal(items: Pick<PaperItem, "marks" | "alternativeTo">[]): number {
-  return items.reduce((sum, it) => (it.alternativeTo === null ? sum + it.marks : sum), 0);
+  return items.reduce((sum, it) => (it.alternativeTo === null && it.marks !== null ? sum + it.marks : sum), 0);
 }
 
 function fingerprint(q: SourceQuestion): string {
@@ -108,7 +114,7 @@ function sectionsOf(items: PaperItem[]): PaperSection[] {
       order.push(it.section);
       marks.set(it.section, new Set());
     }
-    if (it.alternativeTo === null) marks.get(it.section)!.add(it.marks);
+    if (it.alternativeTo === null && it.marks !== null) marks.get(it.section)!.add(it.marks);
   }
   return order.map((key) => {
     const set = marks.get(key)!;
@@ -153,6 +159,7 @@ export function cbseManifest(
       section: q.section,
       marks: q.marks,
       alternativeTo,
+      partOf: null,
       caseKey: q.setId ?? null,
       contentHash: fingerprint(q),
     });
@@ -171,6 +178,7 @@ export function cbseManifest(
       setNumber: Number(code[2]),
       paperCode: src.paper,
       year: src.year,
+      sitting: null,
       title: `CBSE Class 12 ${opts.subjectName} ${src.year} (${src.paper})`,
       totalMarks: totals.marks,
       durationMinutes: totals.minutes,

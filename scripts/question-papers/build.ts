@@ -1,17 +1,25 @@
 /**
  * Build /question-papers from the board pipelines' transcriptions (2026-10-09).
  *
- *   npm run papers:build                      # DRY RUN: what would be written, what is refused
- *   npm run papers:build -- --apply           # write the papers, unpublished
- *   npm run papers:build -- --apply --publish # write and publish
- *   npm run papers:build -- --only=2025-55-1  # one CBSE group (or one paper slug)
+ *   npm run papers:build                         # DRY RUN: what would be written, what is refused
+ *   npm run papers:build -- --apply              # write the papers, unpublished
+ *   npm run papers:build -- --apply --publish    # write and publish
+ *   npm run papers:build -- --exam=mh-ssc-10     # one board (cbse-12 · mh-hsc-12 · mh-ssc-10)
+ *   npm run papers:build -- --only=2025-55-1     # one group (or one paper slug)
  *
- * Phase 1 is CBSE Class 12: every transcription in scripts/cbse-12-pyq/data.
- * Each paper becomes one board_papers row and its printed items (migration
- * 0146), each naming its bank question by the fingerprint the CBSE commit used
- * (src/lib/questionPapers/manifest.ts). A paper is REFUSED, never written short,
- * when its marks do not add up to its printed total or any of its questions is
- * not a PUBLIC question of its exam and subject.
+ * Sources, one per pipeline:
+ *   - CBSE Class 12: every transcription in scripts/cbse-12-pyq/data; marks are
+ *     on each question (src/lib/questionPapers/manifest.ts).
+ *   - MH HSC Class 12: the board-paper lane (scripts/mh-hsc-12-pyq/paper) and
+ *     Geography (scripts/mh-hsc-12-geo-pyq); MH SSC Class 10 (scripts/mh-ssc-10).
+ *     No marks are transcribed, so each paper takes its family's printed marks
+ *     pattern (./mhPatterns.ts, applied by src/lib/questionPapers/mhPattern.ts).
+ *     Each question's fingerprint comes from the lane's OWN buildPaperRecords,
+ *     the function its commit used, so it cannot drift from the bank.
+ *
+ * A paper is REFUSED, never written short: marks that do not reach the printed
+ * maximum, a question outside its pattern, or a question that is not a PUBLIC
+ * question of its exam in one of the paper's own subjects.
  *
  * Idempotent: board_paper_replace upserts the paper and replaces its items in
  * one transaction, so a re-run after a question repair re-points the paper.
@@ -24,22 +32,184 @@
  */
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
-import { readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { cbseManifest, type PaperManifest, type SourcePaper } from "../../src/lib/questionPapers/manifest";
+import { cbseManifest, type PaperManifest, type SourcePaper, type SourceQuestion } from "../../src/lib/questionPapers/manifest";
+import { mhManifest, type MarksPattern } from "../../src/lib/questionPapers/mhPattern";
+import { slugify } from "../../src/lib/board/query";
+import { MH_PATTERNS, sscPatternFor } from "./mhPatterns";
+import * as hscPaper from "../mh-hsc-12-pyq/paper/config";
+import { catalogFor as hscCatalogFor } from "../mh-hsc-12-pyq/paper/catalog";
+import * as hscGeo from "../mh-hsc-12-geo-pyq/config";
+import { buildPaperRecords as geoRecords } from "../mh-hsc-12-geo-pyq/lib";
+import * as ssc from "../mh-ssc-10/config";
+import { buildPaperRecords as sscRecords } from "../mh-ssc-10/lib";
 
 const CBSE_DIR = join(process.cwd(), "scripts/cbse-12-pyq/data");
-const CBSE_EXAM = "CBSE Class 12";
 /** CBSE's paper-code prefix → the bank's subject name (scripts/cbse-12-pyq/config.ts). */
 const CBSE_SUBJECTS: Record<string, string> = { "55": "Physics", "56": "Chemistry", "57": "Biology", "65": "Mathematics" };
+
+const EXAMS: Record<string, string> = {
+  "cbse-12": "CBSE Class 12",
+  "mh-hsc-12": "Maharashtra HSC Class 12",
+  "mh-ssc-10": "Maharashtra State Board Class 10",
+};
 
 const args = process.argv.slice(2);
 const APPLY = args.includes("--apply");
 const PUBLISH = args.includes("--publish");
 const ONLY = args.find((a) => a.startsWith("--only="))?.slice("--only=".length) ?? null;
+const EXAM = args.find((a) => a.startsWith("--exam="))?.slice("--exam=".length) ?? null;
+if (EXAM && !EXAMS[EXAM]) throw new Error(`--exam must be one of ${Object.keys(EXAMS).join(", ")}`);
 
-type Built = { manifest: PaperManifest; subjectName: string; questionIds: string[] };
+/** One paper ready to resolve: its exam, its subject, every subject its questions may be in. */
+type Candidate = { exam: string; subjectName: string; subjects: string[]; manifest: PaperManifest };
+type Built = Candidate & { questionIds: string[] };
+
+const refused: string[] = [];
+
+/** A transcription file holds an array, or `{ questions: [...] }`. */
+function readQuestions(path: string): SourceQuestion[] {
+  const d = JSON.parse(readFileSync(path, "utf8"));
+  return (Array.isArray(d) ? d : d.questions) as SourceQuestion[];
+}
+
+/** Fingerprints by question, from the lane's own record builder (the commit's). */
+function fingerprintsBy(questions: SourceQuestion[], rows: { contentHash: string }[], id: string) {
+  if (rows.length !== questions.length) throw new Error(`${id}: ${rows.length} records for ${questions.length} questions`);
+  const byQ = new Map(questions.map((q, i) => [q, rows[i].contentHash]));
+  return (q: SourceQuestion) => byQ.get(q)!;
+}
+
+/** A Maharashtra transcription calls a case study's set `setLabel`. */
+function withSetId(questions: SourceQuestion[]): SourceQuestion[] {
+  return questions.map((q) => {
+    const label = (q as SourceQuestion & { setLabel?: string | null }).setLabel;
+    return label && !q.setId ? Object.assign(q, { setId: label }) : q;
+  });
+}
+
+function mh(
+  exam: string,
+  id: string,
+  subjectName: string,
+  subjects: string[],
+  meta: Parameters<typeof mhManifest>[0],
+  pattern: MarksPattern,
+  fingerprint: (q: SourceQuestion) => string
+): Candidate | null {
+  const r = mhManifest(meta, pattern, fingerprint);
+  if (!r.ok) {
+    refused.push(`${id}: ${r.reason}`);
+    return null;
+  }
+  return { exam, subjectName, subjects, manifest: r.manifest };
+}
+
+function cbseSources(): Candidate[] {
+  const out: Candidate[] = [];
+  for (const file of readdirSync(CBSE_DIR).filter((f) => /^\d{4}-\d+-\d+-\d+\.questions\.json$/.test(f)).sort()) {
+    const src = JSON.parse(readFileSync(join(CBSE_DIR, file), "utf8")) as SourcePaper;
+    const subjectName = CBSE_SUBJECTS[src.paper.split("/")[0]];
+    if (!subjectName) {
+      refused.push(`${file}: no subject for paper code ${src.paper}`);
+      continue;
+    }
+    const r = cbseManifest(src, { subjectName });
+    if (!r.ok) refused.push(r.reason);
+    else out.push({ exam: "cbse-12", subjectName, subjects: [subjectName], manifest: r.manifest });
+  }
+  return out;
+}
+
+function hscSources(): Candidate[] {
+  const out: Candidate[] = [];
+  for (const paper of Object.values(hscPaper.PAPERS)) {
+    const path = hscPaper.questionsJsonPath(paper.id);
+    if (!existsSync(path)) continue; // a reconcile-only sitting with no transcription of its own
+    const questions = withSetId(readQuestions(path));
+    const { rows } = sscRecords(hscCatalogFor(paper.subject), questions as never);
+    const month = paper.month.toLowerCase();
+    const c = mh(
+      "mh-hsc-12",
+      paper.id,
+      paper.subject,
+      [paper.subject],
+      {
+        slug: `${slugify(paper.subject)}-${paper.year}-${month}`,
+        groupSlug: `${paper.year}-${month}`,
+        title: `Maharashtra HSC Class 12 ${paper.subject} ${paper.month} ${paper.year}`,
+        year: paper.year,
+        sitting: paper.month,
+        paperCode: paper.paperCode && paper.paperCode !== "n/a" ? paper.paperCode : null,
+        questions,
+      },
+      paper.subject === "Mathematics" ? MH_PATTERNS.hscMaths : MH_PATTERNS.hscPhysChem,
+      fingerprintsBy(questions, rows, paper.id)
+    );
+    if (c) out.push(c);
+  }
+  for (const paper of Object.values(hscGeo.PAPERS)) {
+    const questions = withSetId(readQuestions(hscGeo.questionsJsonPath(paper.id)));
+    const { rows } = geoRecords(hscGeo.GEOGRAPHY_CATALOG, questions as never);
+    const month = paper.month.toLowerCase();
+    const c = mh(
+      "mh-hsc-12",
+      paper.id,
+      "Geography",
+      ["Geography"],
+      {
+        slug: `geography-${paper.year}-${month}`,
+        groupSlug: `${paper.year}-${month}`,
+        title: `Maharashtra HSC Class 12 Geography ${paper.month} ${paper.year}`,
+        year: paper.year,
+        sitting: paper.month,
+        paperCode: null,
+        questions,
+      },
+      MH_PATTERNS.hscGeography,
+      fingerprintsBy(questions, rows, paper.id)
+    );
+    if (c) out.push(c);
+  }
+  return out;
+}
+
+function sscSources(): Candidate[] {
+  const out: Candidate[] = [];
+  for (const paper of Object.values(ssc.PAPERS)) {
+    const path = ssc.questionsJsonPath(paper.id);
+    if (!existsSync(path)) continue;
+    const name = sscPatternFor(paper.id);
+    if (!name) {
+      refused.push(`${paper.id}: no marks pattern for this paper family`);
+      continue;
+    }
+    const questions = withSetId(readQuestions(path));
+    const subjects = paper.subjects ?? [paper.subjectName];
+    const { rows } = sscRecords(ssc.paperCatalogs(paper), questions as never);
+    const c = mh(
+      "mh-ssc-10",
+      paper.id,
+      paper.subjectName,
+      subjects,
+      {
+        slug: `${slugify(paper.subjectName)}-${paper.year}`,
+        groupSlug: String(paper.year),
+        title: `Maharashtra SSC Class 10 ${subjects.join(" and ")} ${paper.month} ${paper.year}`,
+        year: paper.year,
+        sitting: paper.month,
+        paperCode: paper.paperCode ?? null,
+        questions,
+      },
+      MH_PATTERNS[name],
+      fingerprintsBy(questions, rows, paper.id)
+    );
+    if (c) out.push(c);
+  }
+  return out;
+}
 
 async function idsByHash(admin: SupabaseClient, examId: string, hashes: string[]): Promise<Map<string, { id: string; subjectId: string }>> {
   const out = new Map<string, { id: string; subjectId: string }>();
@@ -62,51 +232,52 @@ async function main() {
   const admin = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
     auth: { persistSession: false },
   });
-  const { data: exam, error: examErr } = await admin.from("exams").select("id").eq("name", CBSE_EXAM).single();
-  if (examErr || !exam) throw new Error(`exam "${CBSE_EXAM}" not found`);
-  const { data: subjects, error: subjErr } = await admin.from("subjects").select("id, name").eq("exam_id", exam.id);
-  if (subjErr) throw new Error(`subjects: ${subjErr.message}`);
-  const subjectId = new Map((subjects ?? []).map((s) => [s.name as string, s.id as string]));
+  const wanted = (exam: string) => !EXAM || EXAM === exam;
+  const candidates = [
+    ...(wanted("cbse-12") ? cbseSources() : []),
+    ...(wanted("mh-hsc-12") ? hscSources() : []),
+    ...(wanted("mh-ssc-10") ? sscSources() : []),
+  ].filter((c) => !ONLY || c.manifest.slug === ONLY || c.manifest.groupSlug === ONLY);
 
-  const refused: string[] = [];
-  const manifests: { manifest: PaperManifest; subjectName: string }[] = [];
-  for (const file of readdirSync(CBSE_DIR).filter((f) => /^\d{4}-\d+-\d+-\d+\.questions\.json$/.test(f)).sort()) {
-    const src = JSON.parse(readFileSync(join(CBSE_DIR, file), "utf8")) as SourcePaper;
-    const subjectName = CBSE_SUBJECTS[src.paper.split("/")[0]];
-    if (!subjectName || !subjectId.has(subjectName)) {
-      refused.push(`${file}: no subject for paper code ${src.paper}`);
-      continue;
-    }
-    const r = cbseManifest(src, { subjectName });
-    if (!r.ok) {
-      refused.push(r.reason);
-      continue;
-    }
-    if (ONLY && r.manifest.slug !== ONLY && r.manifest.groupSlug !== ONLY) continue;
-    manifests.push({ manifest: r.manifest, subjectName });
-  }
-
-  const found = await idsByHash(
-    admin,
-    exam.id as string,
-    manifests.flatMap((m) => m.manifest.items.map((i) => i.contentHash))
-  );
   const built: Built[] = [];
-  for (const { manifest, subjectName } of manifests) {
-    const want = subjectId.get(subjectName)!;
-    const missing = manifest.items.filter((i) => found.get(i.contentHash)?.subjectId !== want);
-    if (missing.length) {
-      refused.push(`${manifest.slug}: ${missing.length} question(s) not PUBLIC in ${subjectName} (${missing.map((m) => m.printedNumber).join(", ")})`);
-      continue;
+  const examIds = new Map<string, string>();
+  const subjectIds = new Map<string, Map<string, string>>();
+  for (const exam of new Set(candidates.map((c) => c.exam))) {
+    const { data: e, error } = await admin.from("exams").select("id").eq("name", EXAMS[exam]).single();
+    if (error || !e) throw new Error(`exam "${EXAMS[exam]}" not found`);
+    examIds.set(exam, e.id as string);
+    const { data: subs, error: subErr } = await admin.from("subjects").select("id, name").eq("exam_id", e.id);
+    if (subErr) throw new Error(`subjects: ${subErr.message}`);
+    subjectIds.set(exam, new Map((subs ?? []).map((s) => [s.name as string, s.id as string])));
+  }
+  for (const exam of examIds.keys()) {
+    const mine = candidates.filter((c) => c.exam === exam);
+    const found = await idsByHash(admin, examIds.get(exam)!, mine.flatMap((c) => c.manifest.items.map((i) => i.contentHash)));
+    const subs = subjectIds.get(exam)!;
+    for (const c of mine) {
+      const allowed = new Set(c.subjects.map((s) => subs.get(s)).filter((x): x is string => !!x));
+      if (!subs.has(c.subjectName)) {
+        refused.push(`${c.manifest.slug}: no subject "${c.subjectName}" in ${EXAMS[exam]}`);
+        continue;
+      }
+      const missing = c.manifest.items.filter((i) => !allowed.has(found.get(i.contentHash)?.subjectId ?? ""));
+      if (missing.length) {
+        refused.push(
+          `${c.manifest.slug}: ${missing.length} question(s) not PUBLIC in ${c.subjects.join("/")} (${missing.map((m) => m.printedNumber).slice(0, 8).join(", ")})`
+        );
+        continue;
+      }
+      built.push({ ...c, questionIds: c.manifest.items.map((i) => found.get(i.contentHash)!.id) });
     }
-    built.push({ manifest, subjectName, questionIds: manifest.items.map((i) => found.get(i.contentHash)!.id) });
   }
 
-  const groups = new Set(built.map((b) => b.manifest.groupSlug));
-  const bySubject = new Map<string, number>();
-  for (const b of built) bySubject.set(b.subjectName, (bySubject.get(b.subjectName) ?? 0) + 1);
-  console.log(`${CBSE_EXAM}: ${built.length} paper(s) in ${groups.size} group(s) ready`);
-  for (const [s, n] of [...bySubject].sort()) console.log(`  ${s}: ${n}`);
+  for (const exam of examIds.keys()) {
+    const mine = built.filter((b) => b.exam === exam);
+    const bySubject = new Map<string, number>();
+    for (const b of mine) bySubject.set(b.subjectName, (bySubject.get(b.subjectName) ?? 0) + 1);
+    console.log(`${EXAMS[exam]}: ${mine.length} paper(s) in ${new Set(mine.map((b) => b.manifest.groupSlug + b.subjectName)).size} page(s) ready`);
+    for (const [s, n] of [...bySubject].sort()) console.log(`  ${s}: ${n}`);
+  }
   if (refused.length) {
     console.log(`\nrefused ${refused.length}:`);
     for (const r of refused) console.log(`  ${r}`);
@@ -121,13 +292,13 @@ async function main() {
     const m = b.manifest;
     const { data, error } = await admin.rpc("board_paper_replace", {
       p_paper: {
-        examId: exam.id,
-        subjectId: subjectId.get(b.subjectName),
+        examId: examIds.get(b.exam),
+        subjectId: subjectIds.get(b.exam)!.get(b.subjectName),
         slug: m.slug,
         groupSlug: m.groupSlug,
         setNumber: m.setNumber,
         year: m.year,
-        sitting: null,
+        sitting: m.sitting,
         paperCode: m.paperCode,
         title: m.title,
         totalMarks: m.totalMarks,
@@ -141,6 +312,7 @@ async function main() {
         section: it.section,
         marks: it.marks,
         alternativeTo: it.alternativeTo,
+        partOf: it.partOf,
         caseKey: it.caseKey,
         questionId: b.questionIds[i],
       })),

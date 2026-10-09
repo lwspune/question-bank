@@ -100,8 +100,9 @@ type RawItem = {
   position: number;
   printed_number: string;
   section: string;
-  marks: number;
+  marks: number | null;
   alternative_to: number | null;
+  part_of: number | null;
   case_key: string | null;
   question_id: string;
 };
@@ -160,13 +161,22 @@ export async function getPaperGroup(
   client: SupabaseClient,
   examId: string,
   groupSlug: string,
-  { publishedOnly = true }: { publishedOnly?: boolean } = {}
+  {
+    publishedOnly = true,
+    subjectId,
+  }: {
+    publishedOnly?: boolean;
+    /** A Maharashtra group slug ("2026-june") is shared by every subject sat
+     *  that month, so a page names its subject; a CBSE group carries it. */
+    subjectId?: string;
+  } = {}
 ): Promise<PaperView[]> {
   let query = client
     .from("board_papers")
     .select(`${PAPER_COLUMNS}, sections`)
     .eq("exam_id", examId)
     .eq("group_slug", groupSlug);
+  if (subjectId) query = query.eq("subject_id", subjectId);
   if (publishedOnly) query = query.eq("published", true);
   const { data: papers, error } = await query.order("set_number");
   if (error) throw new Error(`board paper group: ${error.message}`);
@@ -175,7 +185,7 @@ export async function getPaperGroup(
 
   const { data: items, error: itemErr } = await client
     .from("board_paper_items")
-    .select("paper_id, position, printed_number, section, marks, alternative_to, case_key, question_id")
+    .select("paper_id, position, printed_number, section, marks, alternative_to, part_of, case_key, question_id")
     .in(
       "paper_id",
       rows.map((r) => r.id)
@@ -196,8 +206,9 @@ export async function getPaperGroup(
         position: i.position,
         printedNumber: i.printed_number,
         section: i.section,
-        marks: Number(i.marks),
+        marks: i.marks === null ? null : Number(i.marks),
         alternativeTo: i.alternative_to,
+        partOf: i.part_of,
         caseKey: i.case_key,
         questionId: i.question_id,
       }));
@@ -229,7 +240,7 @@ export async function getBoardPaperForExport(
   if (!paper) return null;
   const { data: items, error: itemErr } = await client
     .from("board_paper_items")
-    .select("position, printed_number, section, marks, alternative_to, case_key, question_id")
+    .select("position, printed_number, section, marks, alternative_to, part_of, case_key, question_id")
     .eq("paper_id", paper.id)
     .order("position");
   if (itemErr) throw new Error(`board paper items: ${itemErr.message}`);
@@ -241,8 +252,9 @@ export async function getBoardPaperForExport(
       position: i.position,
       printedNumber: i.printed_number,
       section: i.section,
-      marks: Number(i.marks),
+      marks: i.marks === null ? null : Number(i.marks),
       alternativeTo: i.alternative_to,
+      partOf: i.part_of,
       caseKey: i.case_key,
       questionId: i.question_id,
     })),

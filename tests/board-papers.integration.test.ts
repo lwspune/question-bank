@@ -1,5 +1,5 @@
 /**
- * Board papers (migration 0146): the rules the DATABASE enforces.
+ * Board papers (migrations 0146 + 0147): the rules the DATABASE enforces.
  *
  * The builder checks the same things, but the page and the download are
  * public, so a paper must not be able to hold a private question or an "OR"
@@ -29,6 +29,10 @@ describe.skipIf(!HAS_ENV)("board papers (migration 0146)", () => {
   let qs: Q[] = [];
   let other: Q | null = null;
   let privateQ: string | null = null;
+  // 0147: a question of ANOTHER subject in the SAME exam (the SSC History and
+  // Political Science paper spans two bank subjects). Made here, removed after.
+  let sameExamOtherSubject: Q | null = null;
+  let madeSubjectId: string | null = null;
   const slug = `test-${RUN_ID}`;
   let paperId = "";
   let secondPaperId = "";
@@ -74,7 +78,7 @@ describe.skipIf(!HAS_ENV)("board papers (migration 0146)", () => {
     if (!first) throw new Error("no PUBLIC question in the test project");
     qs = rows.filter((r) => r.exam_id === first.exam_id && r.subject_id === first.subject_id).slice(0, 3);
     if (qs.length < 3) throw new Error("need 3 PUBLIC questions of one exam and subject in the test project");
-    other = rows.find((r) => r.subject_id !== first.subject_id) ?? null;
+    other = rows.find((r) => r.exam_id !== first.exam_id) ?? null;
     // A PRIVATE question of the SAME exam and subject, so only its visibility can
     // be the reason it is refused. The test project holds none, so make one: a
     // copy of a public row with a fresh fingerprint, deleted in afterAll.
@@ -91,6 +95,26 @@ describe.skipIf(!HAS_ENV)("board papers (migration 0146)", () => {
       .single();
     if (privErr) throw new Error(`private question fixture: ${privErr.message}`);
     privateQ = priv!.id as string;
+
+    const { data: subs } = await admin.from("subjects").select("id").eq("exam_id", first.exam_id).neq("id", first.subject_id).limit(1);
+    let otherSubject = (subs?.[0]?.id as string | undefined) ?? null;
+    if (!otherSubject) {
+      const { data: made, error: madeErr } = await admin
+        .from("subjects")
+        .insert({ exam_id: first.exam_id, name: `Board paper test subject ${RUN_ID}` })
+        .select("id")
+        .single();
+      if (madeErr) throw new Error(`subject fixture: ${madeErr.message}`);
+      madeSubjectId = made!.id as string;
+      otherSubject = madeSubjectId;
+    }
+    const { data: moved, error: movedErr } = await admin
+      .from("questions")
+      .insert({ ...copy, subject_id: otherSubject, content_hash: `board-paper-test-subj-${RUN_ID}` })
+      .select("id, exam_id, subject_id")
+      .single();
+    if (movedErr) throw new Error(`other-subject question fixture: ${movedErr.message}`);
+    sameExamOtherSubject = moved as Q;
 
     const email = `boardpaper-${RUN_ID}@test.local`;
     const { data } = await admin.auth.admin.createUser({ email, password: PASSWORD, email_confirm: true });
@@ -132,6 +156,8 @@ describe.skipIf(!HAS_ENV)("board papers (migration 0146)", () => {
     await admin.from("board_papers").delete().like("slug", `test-${RUN_ID}%`);
     if (mockId) await admin.from("mock_tests").delete().eq("id", mockId);
     if (privateQ) await admin.from("questions").delete().eq("id", privateQ);
+    if (sameExamOtherSubject) await admin.from("questions").delete().eq("id", sameExamOtherSubject.id);
+    if (madeSubjectId) await admin.from("subjects").delete().eq("id", madeSubjectId);
   });
 
   it("writes a paper and its items in one call", async () => {
@@ -169,10 +195,36 @@ describe.skipIf(!HAS_ENV)("board papers (migration 0146)", () => {
     expect(items).toHaveLength(2);
   });
 
-  it("refuses a question from another subject", async () => {
-    expect(other, "the test project needs a PUBLIC question of a second subject").not.toBeNull();
+  it("refuses a question from another exam", async () => {
+    expect(other, "the test project needs a PUBLIC question of a second exam").not.toBeNull();
     const { error } = await replace(paper(), [item(1, other!)]);
     expect(error?.message).toMatch(/not a PUBLIC question of this paper/);
+  });
+
+  it("accepts a question of another subject in the same exam (0147)", async () => {
+    const { error } = await replace(paper(), [item(1, qs[0]), item(2, sameExamOtherSubject!)]);
+    expect(error).toBeNull();
+  });
+
+  it("stores a question in parts: marks on the question, none on its parts (0147)", async () => {
+    const { error } = await replace(paper(), [
+      item(1, qs[0], { marks: 4 }),
+      item(2, qs[1], { marks: null, partOf: 1, printedNumber: "1 (ii)" }),
+    ]);
+    expect(error).toBeNull();
+    const { data } = await admin.from("board_paper_items").select("position, marks, part_of").eq("paper_id", paperId).order("position");
+    expect(data).toEqual([
+      { position: 1, marks: 4, part_of: null },
+      { position: 2, marks: null, part_of: 1 },
+    ]);
+  });
+
+  it("refuses a part with marks, a question without, and a part pointing forward (0147)", async () => {
+    expect((await replace(paper(), [item(1, qs[0]), item(2, qs[1], { partOf: 1 })])).error).not.toBeNull();
+    expect((await replace(paper(), [item(1, qs[0], { marks: null })])).error).not.toBeNull();
+    expect(
+      (await replace(paper(), [item(1, qs[0], { marks: null, partOf: 2 }), item(2, qs[1])])).error
+    ).not.toBeNull();
   });
 
   it("refuses a private question", async () => {
