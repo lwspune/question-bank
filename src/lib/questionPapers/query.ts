@@ -151,19 +151,24 @@ async function loadQuestions(client: SupabaseClient, ids: string[]): Promise<Boa
   return out;
 }
 
-/** One page: a paper group's published sets, each with its items. */
+/**
+ * One page: a paper group's published sets, each with its items.
+ * `publishedOnly: false` is for the smoke script (service role) only; for a
+ * visitor's client RLS hides unpublished papers whatever this says.
+ */
 export async function getPaperGroup(
   client: SupabaseClient,
   examId: string,
-  groupSlug: string
+  groupSlug: string,
+  { publishedOnly = true }: { publishedOnly?: boolean } = {}
 ): Promise<PaperView[]> {
-  const { data: papers, error } = await client
+  let query = client
     .from("board_papers")
     .select(`${PAPER_COLUMNS}, sections`)
-    .eq("published", true)
     .eq("exam_id", examId)
-    .eq("group_slug", groupSlug)
-    .order("set_number");
+    .eq("group_slug", groupSlug);
+  if (publishedOnly) query = query.eq("published", true);
+  const { data: papers, error } = await query.order("set_number");
   if (error) throw new Error(`board paper group: ${error.message}`);
   const rows = (papers ?? []) as unknown as RawPaper[];
   if (rows.length === 0) return [];
