@@ -276,7 +276,7 @@ function questionHtml(q: QuestionRow, n: number, input: PaperHtmlInput, showCont
   const printed = input.printedOf?.get(q.id);
   const tail =
     (tag ? ` <span class="src">${esc(tag)}</span>` : "") +
-    (printed ? ` <span class="mk">${esc(marksTag(printed.marks))}</span>` : "");
+    (printed && printed.marks !== null ? ` <span class="mk">${esc(marksTag(printed.marks))}</span>` : "");
   const ctx =
     showContext && q.context
       ? `<div class="ctx"><span class="label">Context: </span>${blocksHtml(q.context)}</div>`

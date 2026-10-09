@@ -118,3 +118,19 @@ describe("paperSitemapPaths — every /question-papers page a crawler should fin
     expect(paperSitemapPaths([paper({})], () => null, () => "Nowhere")).toEqual([]);
   });
 });
+
+describe("assemblePaper — a question in parts (Maharashtra, 0147)", () => {
+  it("carries the marks on the question and none on its parts", () => {
+    const r = assemblePaper(
+      [
+        { position: 1, printedNumber: "31 (i)", section: "D", marks: 4, alternativeTo: null, partOf: null, caseKey: null, questionId: "x" },
+        { position: 2, printedNumber: "31 (ii)", section: "D", marks: null, alternativeTo: null, partOf: 1, caseKey: null, questionId: "y" },
+      ],
+      [q("x"), q("y")]
+    )!;
+    expect(r.map((i) => [i.question.questionNumber, i.marks, i.isPart])).toEqual([
+      ["Q.31 (i)", 4, false],
+      ["Q.31 (ii)", null, true],
+    ]);
+  });
+});

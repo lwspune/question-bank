@@ -105,3 +105,19 @@ describe("parseBoardPaperTarget — the request body's board paper", () => {
     expect(parseBoardPaperTarget({ exam: "cbse-12", slug: "a".repeat(81) })).toBeNull();
   });
 });
+
+describe("boardPaperExport — a question in parts (Maharashtra, 0147)", () => {
+  it("prints the marks once, on the question, and none on its parts", () => {
+    const r = boardPaperExport(
+      { title: "Physics June 2026", sections: [{ key: "D", title: "Section D", note: "4 marks each" }] },
+      [
+        item(1, "a", { printedNumber: "31 (i)", section: "D", marks: 4 }),
+        item(2, "b", { printedNumber: "31 (ii)", section: "D", marks: null, partOf: 1 }),
+      ],
+      new Map([["a", null], ["b", null]])
+    );
+    if (!r.ok) throw new Error(r.reason);
+    expect(r.printedOf.get("a")).toEqual({ number: "31 (i)", marks: 4, orBefore: false });
+    expect(r.printedOf.get("b")).toEqual({ number: "31 (ii)", marks: null, orBefore: false });
+  });
+});

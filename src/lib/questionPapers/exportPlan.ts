@@ -41,6 +41,7 @@ export function boardPaperExport(
   const printedOf = new Map<string, PrintedLabel>();
   for (const it of ordered) {
     sectionOf.set(it.questionId, section.get(it.section) ?? `Section ${it.section}`);
+    // A part (0147) carries no marks: its question prints them once.
     printedOf.set(it.questionId, { number: it.printedNumber, marks: it.marks, orBefore: it.alternativeTo !== null });
   }
 

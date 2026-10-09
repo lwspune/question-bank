@@ -66,8 +66,11 @@ export type PaperItemRow = {
   position: number;
   printedNumber: string;
   section: string;
-  marks: number;
+  /** Null on a part of a question (0147). */
+  marks: number | null;
   alternativeTo: number | null;
+  /** The question this item is a part of (0147). */
+  partOf?: number | null;
   caseKey: string | null;
   questionId: string;
 };
@@ -75,7 +78,10 @@ export type PaperItemRow = {
 export type PaperViewItem = {
   position: number;
   section: string;
-  marks: number;
+  /** Null on a part: the question above carries the marks. */
+  marks: number | null;
+  /** A part of the question above (0147). */
+  isPart: boolean;
   /** An "OR" alternative: the page prints "OR" before it. */
   isAlternative: boolean;
   caseKey: string | null;
@@ -100,6 +106,7 @@ export function assemblePaper(items: PaperItemRow[], questions: BoardQuestion[])
       position: it.position,
       section: it.section,
       marks: it.marks,
+      isPart: (it.partOf ?? null) !== null,
       isAlternative: it.alternativeTo !== null,
       caseKey: it.caseKey,
       question: { ...q, questionNumber: `Q.${it.printedNumber}` },

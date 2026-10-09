@@ -190,7 +190,8 @@ function PaperSections({
                       onToggleReveal={() => onToggleReveal(q.id)}
                       pick={picks.get(q.id) ?? null}
                       onPick={(label) => onPick(q.id, label)}
-                      marks={it.marks}
+                      // A part's marks are its question's, shown once above.
+                      marks={it.marks ?? undefined}
                     />
                   </li>
                 );
