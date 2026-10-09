@@ -22,6 +22,7 @@ import type { BoardQuestion } from "@/lib/board/query";
 import type { PaperViewItem } from "@/lib/questionPapers/listing";
 import BoardQuestionItem from "@/app/board/BoardQuestionItem";
 import { useBoardReveal } from "@/app/board/useBoardReveal";
+import PaperDownload from "@/app/mock/_components/PaperDownload";
 
 export type PaperSet = {
   slug: string;
@@ -36,11 +37,14 @@ export type PaperSet = {
 export default function PaperReader({
   sets,
   examName,
+  examSlug,
   supabaseUrl,
 }: {
   sets: PaperSet[];
   /** The DB exams.name, for the free-answer meter. */
   examName: string;
+  /** The exam's URL slug ("cbse-12"): a download names its paper by it. */
+  examSlug: string;
   supabaseUrl: string;
 }) {
   const [active, setActive] = useState(0);
@@ -97,6 +101,9 @@ export default function PaperReader({
           ) : (
             // One registry per set: classroom projection walks one paper, not into the next.
             <PresentRegistry>
+              <div className="mb-6">
+                <PaperDownload slug={s.slug} paperTitle={s.title} boardPaper={{ exam: examSlug }} />
+              </div>
               <PaperSections
                 set={s}
                 items={s.items}

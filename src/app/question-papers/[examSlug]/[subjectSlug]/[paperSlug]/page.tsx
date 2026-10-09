@@ -91,6 +91,7 @@ export default async function PaperPage({ params }: { params: Params }) {
 
         <PaperReader
           examName={exam.examName}
+          examSlug={params.examSlug}
           supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
           sets={sets.map((s) => ({
             slug: s.slug,
