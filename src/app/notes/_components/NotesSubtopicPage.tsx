@@ -13,6 +13,7 @@ import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supa
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { resolvePublicQuizForChapter } from "@/lib/quiz/publicQuiz";
 import { singleFlight } from "@/lib/cache/singleFlight";
+import { buildFailureMemoMs } from "@/lib/cache/buildPhase";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { userHasAccess } from "@/lib/entitlements/query";
 import { isNotesGated, splitPreview } from "@/lib/notes/access";
@@ -122,7 +123,9 @@ export default async function NotesSubtopicPage({
   let publicQuiz = null;
   try {
     // Shared while in progress: a chapter's subtopic pages build at once and
-    // all ask for the same quiz (lib/cache/singleFlight).
+    // all ask for the same quiz (lib/cache/singleFlight). In a build a failure
+    // is remembered too, so a slow database is asked once per window, not
+    // once per page.
     publicQuiz = await singleFlight(
       `notes-public-quiz:${chapter.subjectRoute}/${chapter.chapterSlug}`,
       () =>
@@ -130,7 +133,8 @@ export default async function NotesSubtopicPage({
           createSupabaseAdminClient(),
           chapter.subjectRoute,
           chapter.chapterSlug
-        )
+        ),
+      { rememberFailureMs: buildFailureMemoMs() }
     );
   } catch {
     publicQuiz = null;

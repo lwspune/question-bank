@@ -13,7 +13,7 @@
  * It holds a load only WHILE it is in progress. Once it settles the entry is
  * gone, so it never serves anything staler than the cache underneath it.
  */
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { singleFlight } from "@/lib/cache/singleFlight";
 
 function deferred<T>() {
@@ -70,5 +70,79 @@ describe("singleFlight", () => {
     };
     await expect(singleFlight("t:sync", boom)).rejects.toThrow("sync boom");
     await expect(singleFlight("t:sync", async () => "ok")).resolves.toBe("ok");
+  });
+
+  /**
+   * The failure memo (2026-10-09). Sharing only the IN-PROGRESS load left a
+   * hole that took production down: when the database slowed past the
+   * statement timeout, every shared load FAILED, the entry was dropped, and
+   * the next page re-ran it — `mock_tests` was fetched 503 times in two
+   * minutes (0-7 on a healthy day). A remembered failure turns that into one
+   * attempt per window per process. It is opt-in by the caller (the build
+   * passes it; live renders pass nothing and keep the old behaviour).
+   */
+  describe("failure memo", () => {
+    it("re-serves a failure to later callers inside the window without loading again", async () => {
+      vi.useFakeTimers();
+      try {
+        let loads = 0;
+        const load = async () => {
+          loads++;
+          throw new Error("statement timeout");
+        };
+        await expect(singleFlight("t:memo", load, { rememberFailureMs: 15_000 })).rejects.toThrow(
+          "statement timeout"
+        );
+        vi.advanceTimersByTime(5_000);
+        await expect(singleFlight("t:memo", load, { rememberFailureMs: 15_000 })).rejects.toThrow(
+          "statement timeout"
+        );
+        expect(loads).toBe(1);
+      } finally {
+        vi.useRealTimers();
+      }
+    });
+
+    it("loads again once the window has passed", async () => {
+      vi.useFakeTimers();
+      try {
+        let loads = 0;
+        const load = async () => {
+          loads++;
+          if (loads === 1) throw new Error("statement timeout");
+          return "ok";
+        };
+        await expect(singleFlight("t:memo2", load, { rememberFailureMs: 15_000 })).rejects.toThrow();
+        vi.advanceTimersByTime(15_001);
+        await expect(singleFlight("t:memo2", load, { rememberFailureMs: 15_000 })).resolves.toBe("ok");
+        expect(loads).toBe(2);
+      } finally {
+        vi.useRealTimers();
+      }
+    });
+
+    it("remembers nothing by default, so a live render retries as before", async () => {
+      let loads = 0;
+      const load = async () => {
+        loads++;
+        if (loads === 1) throw new Error("blip");
+        return "ok";
+      };
+      await expect(singleFlight("t:memo3", load)).rejects.toThrow("blip");
+      await expect(singleFlight("t:memo3", load)).resolves.toBe("ok");
+    });
+
+    it("never remembers a success: the cache underneath owns freshness", async () => {
+      vi.useFakeTimers();
+      try {
+        let loads = 0;
+        await singleFlight("t:memo4", async () => ++loads, { rememberFailureMs: 15_000 });
+        await expect(
+          singleFlight("t:memo4", async () => ++loads, { rememberFailureMs: 15_000 })
+        ).resolves.toBe(2);
+      } finally {
+        vi.useRealTimers();
+      }
+    });
   });
 });

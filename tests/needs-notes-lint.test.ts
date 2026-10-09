@@ -7,8 +7,9 @@
  * modules, the lint itself, or the schema it reads. Every other push paid for
  * it and could not have failed it.
  *
- * POLARITY — the OPPOSITE of needsBuild, and the difference matters. needsBuild
- * is an allowlist of SKIPS (an unrecognised path builds). Almost every push
+ * POLARITY — the OPPOSITE of the hook's old build rule (retired 2026-10-09
+ * with the build itself), and the difference matters. That rule was an
+ * allowlist of SKIPS (an unrecognised path built). Almost every push
  * touches src/ somewhere, so a skip-allowlist here would fire on nearly all of
  * them and buy nothing. This is therefore an allowlist of RUNS: named roots
  * that notes:lint actually reads. That polarity CAN rot — notes-lint.ts grows
@@ -46,7 +47,7 @@ describe("needsNotesLint", () => {
       ["CLAUDE.md", "docs"],
       ["tests/browse-query.test.ts", "tests"],
       ["scripts/jee/commit.ts", "an ingestion pipeline"],
-      ["scripts/lib/needsBuild.ts", "another gate helper"],
+      ["scripts/disk-preflight.ts", "another gate helper"],
       ["generated-papers/omml-sweep.md", "build output"],
     ])("%s → skips (%s)", (path) => {
       expect(needsNotesLint([path])).toBe(false);

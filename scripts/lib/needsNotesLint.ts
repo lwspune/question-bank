@@ -10,9 +10,10 @@
  * ingestion, not by push — is drift, and no commit-diff rule can see it.
  * That class belongs to the daily schedule beside test:prod-contract.)
  *
- * THE POLARITY IS THE OPPOSITE OF needsBuild, deliberately. needsBuild is an
- * allowlist of SKIPS: an unrecognised path builds, so it can only ever be too
- * cautious. That works because most pushes are wholly inert to the compiler.
+ * THE POLARITY IS THE OPPOSITE OF THE OLD BUILD RULE, deliberately. That rule
+ * (scripts/lib/needsBuild.ts, retired 2026-10-09 with the hook's build) was an
+ * allowlist of SKIPS: an unrecognised path built, so it could only ever be too
+ * cautious. That worked because most pushes are wholly inert to the compiler.
  * Here the reverse is true — nearly every push touches src/ somewhere — so a
  * skip-allowlist would fire on almost all of them and buy nothing. This is
  * therefore an allowlist of RUNS: the roots notes:lint actually reads.

@@ -1,5 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { singleFlight } from "@/lib/cache/singleFlight";
+import { buildFailureMemoMs } from "@/lib/cache/buildPhase";
 import {
   resolveTaxonomy,
   type ResolvedTaxonomy,
@@ -32,8 +33,11 @@ export async function getNotesTaxonomy(
 
   // Shared while in progress: a build renders a subject's notes pages at
   // once, and each one missed until the first resolve landed in the cache.
-  const fresh = await singleFlight(`notes-taxonomy:${key}`, () =>
-    resolveTaxonomy(client, examName, subjectName)
+  // In a build a failure is remembered too (lib/cache/buildPhase).
+  const fresh = await singleFlight(
+    `notes-taxonomy:${key}`,
+    () => resolveTaxonomy(client, examName, subjectName),
+    { rememberFailureMs: buildFailureMemoMs() }
   );
   cache.set(key, fresh);
   return fresh;

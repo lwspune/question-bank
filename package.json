@@ -79,7 +79,6 @@
     "prepush:quick:nonotes": "npm run gate:static && npm run test",
     "prepush": "npm run disk:preflight && npm run prepush:quick && npm run build",
     "prepush:nonotes": "npm run disk:preflight && npm run prepush:quick:nonotes && npm run build",
-    "needs-build": "tsx scripts/needs-build.ts",
     "disk:preflight": "tsx scripts/disk-preflight.ts",
     "needs-notes-lint": "tsx scripts/needs-notes-lint.ts",
     "prepare": "git config core.hooksPath .githooks 2>/dev/null || true",

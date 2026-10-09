@@ -138,8 +138,8 @@ export function boardFromFamilyKey(value: string): string {
  *    nobody has added to EXAM_REGISTRY yet — stays a flat top-level entry.
  *    Driving the list off the registry instead would make a newly-ingested
  *    exam silently VANISH from every picker until someone edits TypeScript.
- *    Same polarity as needsBuild's allowlist-of-skips: the unknown case must
- *    degrade to the safe, visible behaviour.
+ *    An allowlist of skips, like the backup's schema list: the unknown case
+ *    must degrade to the safe, visible behaviour.
  *
  * 2. A FAMILY OF ONE DEGRADES TO FLAT. A one-option Class dropdown is noise,
  *    and this is reachable today rather than hypothetical: the landing pills

@@ -74,7 +74,7 @@ describe("groupExamFamilies", () => {
   // FAIL OPEN. An exam present in the DB but not yet in EXAM_REGISTRY must keep
   // appearing as a top-level entry. Driving the list off the registry instead
   // would make a newly-ingested exam VANISH from the picker until someone edits
-  // TS - the wrong polarity (cf. needsBuild's allowlist-of-skips).
+  // TS - the wrong polarity (an allowlist of skips is the safe one).
   it("leaves an unregistered item flat rather than dropping it", () => {
     const nodes = groupExamFamilies(items("nda", "brand-new-exam"), bySlug);
     expect(describeNodes(nodes)).toEqual(["flat:nda", "flat:brand-new-exam"]);

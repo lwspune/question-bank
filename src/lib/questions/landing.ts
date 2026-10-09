@@ -21,6 +21,7 @@
  */
 import { unstable_cache } from "next/cache";
 import { singleFlight } from "@/lib/cache/singleFlight";
+import { buildFailureMemoMs } from "@/lib/cache/buildPhase";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { EXAM_REGISTRY, isPracticeOnlyExam } from "@/lib/exam/examContext";
 import { slugifyName, dedupeBySlug, findBySlug } from "@/lib/questions/slugs";
@@ -226,7 +227,9 @@ const loadChapterLandings = unstable_cache(
 );
 
 export function listChapterLandings(): Promise<ChapterLanding[]> {
-  return singleFlight("questions-landing", loadChapterLandings);
+  return singleFlight("questions-landing", loadChapterLandings, {
+    rememberFailureMs: buildFailureMemoMs(),
+  });
 }
 
 /**
