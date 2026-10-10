@@ -28,6 +28,10 @@ import { listMyAssignments } from "@/lib/assignments/service";
 import type { StudentAssignmentView } from "@/lib/assignments/core";
 import { CalendarClock, Check, GraduationCap } from "lucide-react";
 import StageNudge from "./StageNudge";
+import ResultCheckCard from "./ResultCheckCard";
+import { loadPendingResultChecks, loadSuggestedName } from "@/lib/results/service";
+import { checkQuestion } from "@/lib/results/check";
+import { mockCatalogueHref } from "@/lib/exam/examLinks";
 import QuestionCard from "../browse/QuestionCard";
 import { getQuestionOfDayId } from "@/lib/daily/service";
 import { queryQuestionsByIds, type QuestionRow } from "@/lib/questions/query";
@@ -99,6 +103,13 @@ export default async function MePage() {
   const now = new Date();
   const showStageNudge = needsStageNudge({ stage, now });
   const daily = await loadQuestionOfDay(db, user.id, targets, examIds, now);
+  // "Did you clear it?" after a result is announced (migration 0149). Best
+  // effort: a failed read costs the card, never the dashboard.
+  const [resultCheck] = await loadPendingResultChecks(user.id, targets, istDayKey(now)).catch((e) => {
+    console.error("result checks read failed", e instanceof Error ? e.message : e);
+    return [];
+  });
+  const suggestedName = resultCheck ? await loadSuggestedName(user.id).catch(() => "") : "";
 
   return (
     <>
@@ -109,6 +120,16 @@ export default async function MePage() {
           <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{greetingFor(istHour(now))}</h1>
           {examLinks.length > 0 ? <YourExams links={examLinks} /> : <NoTargetCard />}
         </header>
+
+        {resultCheck && (
+          <ResultCheckCard
+            announcementId={resultCheck.id}
+            question={checkQuestion(resultCheck)}
+            sitting={resultCheck.sitting}
+            suggestedName={suggestedName}
+            practiseHref={mockCatalogueHref(resultCheck.examSlug)}
+          />
+        )}
 
         {showStageNudge && stage && (
           <StageNudge stageLabel={STAGE_LABELS[stage]} year={now.getFullYear()} />

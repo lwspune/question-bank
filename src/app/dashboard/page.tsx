@@ -26,6 +26,7 @@ import {
   Upload,
   Users,
   Target,
+  Trophy,
 } from "lucide-react";
 import { getSessionMember, getSessionUser, getSessionSuperadmin } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -305,6 +306,14 @@ function QuickActions({
           icon={<IndianRupee className="h-5 w-5" aria-hidden />}
           title="Pricing"
           description="The passes on sale (price, length, copy) and the free-mock limit. No deploy needed."
+        />
+      )}
+      {isSuperadmin && (
+        <ActionCard
+          href="/dashboard/results"
+          icon={<Trophy className="h-5 w-5" aria-hidden />}
+          title="Student results"
+          description="Who cleared which exam, and the names waiting to go on /results."
         />
       )}
       {isSuperadmin && (

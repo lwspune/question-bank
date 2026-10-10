@@ -762,6 +762,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     },
     {
+      // Students' published results (migration 0149).
+      url: `${SITE_URL}/results`,
+      lastModified: buildDate,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    {
       url: `${SITE_URL}/privacy`,
       lastModified: buildDate,
       changeFrequency: "yearly",

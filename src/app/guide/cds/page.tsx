@@ -5,6 +5,7 @@ import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { buildGuideSideNav } from "@/lib/guide/guidesNav";
 import { getSubjectGuides } from "@/lib/guide/guideCatalog";
 import GuideHubList from "@/app/guide/_components/GuideHubList";
+import ResultsStrip from "@/components/results/ResultsStrip";
 
 export const revalidate = 86400;
 
@@ -41,6 +42,8 @@ export default function CdsGuideIndex() {
         title="Strategy guides for CDS"
         subtitle={PAGE_INTRO}
       />
+
+      <ResultsStrip examSlugs={["cds"]} className="mb-6" />
 
       <GuideHubList guides={GUIDES} examDisplay="CDS" restTitle="Other subjects" />
     </GuideShell>

@@ -28,6 +28,7 @@ import { countSummary } from "@/lib/exam/questionCounts";
 import { examCardAnchor, homeExamChips } from "@/lib/exam/homeChips";
 import HomeExamChips from "@/components/home/HomeExamChips";
 import HowItWorks from "@/components/HowItWorks";
+import ResultsStrip from "@/components/results/ResultsStrip";
 import { loopFor } from "@/lib/education/howItWorks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { getExamBySlug } from "@/lib/exam/examContext";
@@ -289,6 +290,9 @@ export default async function Home() {
 
         {/* A8: pick an exam without scrolling past every card. */}
         <HomeExamChips chips={homeExamChips(examNodes)} />
+
+        {/* Our students' newest published result (migration 0149). */}
+        <ResultsStrip className="mb-12" />
 
         {/* A9: the loop /start teaches, rendered from the same object so it
             cannot describe a loop the app does not have. /start had one

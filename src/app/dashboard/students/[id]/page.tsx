@@ -25,6 +25,10 @@ import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
 import StudentTabs from "./StudentTabs";
 import PremiumControl from "./PremiumControl";
+import ResultControl from "./ResultControl";
+import { listAnnouncementOptions, listStudentResults, type AnnouncementOption, type StudentResultRow } from "@/lib/results/admin";
+import { suggestDisplayName } from "@/lib/results/check";
+import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import AttemptsList from "@/app/mock/_components/AttemptsList";
 import { cn } from "@/lib/utils";
 import { getSessionSuperadmin } from "@/lib/auth";
@@ -60,6 +64,16 @@ export default async function StudentDetailPage({ params }: { params: Params }) 
   const { profile, premium, capture, engagement, attempts, summary, activity, activityTotal } = detail;
   const now = new Date();
   const exams = examLabels(capture.targetExams);
+  // "Mark result" (migration 0149). Best effort: a failed read costs the
+  // section's list, never the page.
+  const [resultOptions, studentResults] = await Promise.all([
+    listAnnouncementOptions().catch((): AnnouncementOption[] => []),
+    listStudentResults(params.id).catch((): StudentResultRow[] => []),
+  ]);
+  const chosen = new Set<string>(capture.targetExams ?? []);
+  const examChoices = EXAM_REGISTRY.filter((e) => !e.noPublicContent)
+    .map((e) => ({ slug: e.slug, name: e.displayName }))
+    .sort((a, b) => Number(chosen.has(b.slug)) - Number(chosen.has(a.slug)));
 
   return (
     <>
@@ -96,6 +110,16 @@ export default async function StudentDetailPage({ params }: { params: Params }) 
           {profile.email.includes("@") && (
             <PremiumControl email={profile.email} name={profile.name} grants={premium.grants} />
           )}
+        </Section>
+
+        <Section title="Exam results">
+          <ResultControl
+            userId={params.id}
+            suggestedName={suggestDisplayName({ full_name: profile.name })}
+            options={resultOptions}
+            exams={examChoices}
+            results={studentResults}
+          />
         </Section>
 
         {/* Profile — what the student told us. Every field shows, dash when unanswered:
