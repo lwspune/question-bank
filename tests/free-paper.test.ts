@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { paperKey, freeForPaper } from "@/lib/export/freePaper";
-import { downloadPerksFirst } from "@/lib/billing/gateCopy";
+import { downloadPerksFirst, freeFirstPassLine } from "@/lib/billing/gateCopy";
 
 /**
  * The free download is ONE PAPER (2026-10-07): the Question Paper and its
@@ -77,5 +77,13 @@ describe("downloadPerksFirst", () => {
 
   it("leaves a list with no download perk unchanged", () => {
     expect(downloadPerksFirst(["A", "B"])).toEqual(["A", "B"]);
+  });
+});
+
+describe("freeFirstPassLine — the pass, mentioned once, to a visitor not yet signed in", () => {
+  it("says the free paper comes first and what the pass costs after it", () => {
+    expect(freeFirstPassLine({ label: "Premium Pass", price: "₹99", length: "6 months" })).toBe(
+      "After your free paper, more papers come with Premium Pass (₹99 for 6 months)."
+    );
   });
 });

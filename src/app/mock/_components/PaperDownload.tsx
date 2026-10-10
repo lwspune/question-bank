@@ -195,7 +195,7 @@ export default function PaperDownload({
                 ? `${paperTitle}. ${isWord ? "Word files" : "PDF files"}: the question paper, and its answer key with solutions.`
                 : pass
                   ? !signedIn
-                    ? "Your first paper is free: the question paper and its answer key."
+                    ? paperTitle
                     : wantPass
                       ? `${pass.label} includes:`
                       : `You've had your free paper. ${pass.label} includes:`

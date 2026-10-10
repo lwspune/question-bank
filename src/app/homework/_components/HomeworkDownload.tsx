@@ -162,7 +162,7 @@ export default function HomeworkDownload({
                 ? `${planTitle}: the day's questions, without answers.`
                 : pass
                   ? !signedIn
-                    ? "Your first download is free."
+                    ? planTitle
                     : wantPass
                       ? `${pass.label} includes:`
                       : `You've had your free download. ${pass.label} includes:`

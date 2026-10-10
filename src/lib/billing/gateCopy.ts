@@ -20,6 +20,15 @@ export function gatePriceLine(cta: { price: string; length: string }): string {
   return `${cta.price} · ${cta.length}`;
 }
 
+/** The one line about the pass a SIGNED-OUT visitor sees in a download box
+ *  (2026-10-10). Clarity: of the signed-out visitors who opened the box, none
+ *  tapped sign-in, and the box led with the ₹99 pass and six selling points
+ *  while the free paper sat in small print at the bottom. Now the free paper
+ *  leads and the pass is this sentence. */
+export function freeFirstPassLine(cta: { label: string; price: string; length: string }): string {
+  return `After your free paper, more papers come with ${cta.label} (${cta.price} for ${cta.length}).`;
+}
+
 /** The pass's perks with the download one first, for the download boxes, where
  *  downloading is what the student came for (2026-10-07). The rest keep the
  *  order set at /dashboard/pricing. Spec: tests/free-paper.test.ts. */
