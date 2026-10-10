@@ -32,9 +32,10 @@ export type ExportEvent = {
    * 'cart' = explicit question ids; 'filters' = a filtered slice of the bank;
    * 'mock' = a published past paper, downloaded whole (migration 0136);
    * 'homework' = one day of a published homework plan (migration 0143);
-   * 'board_paper' = a published board past paper, whole (migration 0146).
+   * 'board_paper' = a published board past paper, whole (migration 0146);
+   * 'formula' = one /notes chapter's formula sheet (migration 0150).
    */
-  mode: "cart" | "filters" | "mock" | "homework" | "board_paper";
+  mode: "cart" | "filters" | "mock" | "homework" | "board_paper" | "formula";
   /** The past paper, on a 'mock' export only. Public, so naming it is safe. */
   mockId?: string;
   /** The plan and day, on a 'homework' export only. Public, so naming them is safe. */
@@ -42,6 +43,8 @@ export type ExportEvent = {
   homeworkDay?: number;
   /** The board paper, on a 'board_paper' export only. Public, so naming it is safe. */
   boardPaperId?: string;
+  /** "<subjectRoute>/<chapterSlug>", on a 'formula' export only. Editorial content, so naming it is safe. */
+  formulaSheet?: string;
   isStaff: boolean;
 };
 
@@ -59,6 +62,7 @@ export async function recordExportEvent(ev: ExportEvent): Promise<void> {
         ? { homework_plan_id: ev.homeworkPlanId, homework_day: ev.homeworkDay ?? null }
         : {}),
       ...(ev.boardPaperId ? { board_paper_id: ev.boardPaperId } : {}),
+      ...(ev.formulaSheet ? { formula_sheet: ev.formulaSheet } : {}),
       is_staff: ev.isStaff,
     });
     if (error) console.error("recordExportEvent", error.message);

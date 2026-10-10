@@ -22,7 +22,7 @@ const anon = { isSignedIn: false, isStaff: false };
 const student = { isSignedIn: true, isStaff: false };
 const staff = { isSignedIn: true, isStaff: true };
 
-const KINDS: ExportKind[] = ["paper", "key", "tags", "ppt"];
+const KINDS: ExportKind[] = ["paper", "key", "tags", "ppt", "formula"];
 
 describe("resolveExportAccess", () => {
   for (const kind of KINDS) {
@@ -161,6 +161,69 @@ describe("resolveExportAccess", () => {
     it.each(["tags", "ppt"] as ExportKind[])("%s carries no paper format", (kind) => {
       const r = resolveExportAccess({ kind, ...staff });
       expect(r.allowed && r.format).toBeUndefined();
+    });
+  });
+
+  // The chapter formula sheet (2026-10-10): the pass rule of the paper and key,
+  // plus ONE free sheet per account (owner), apart from the one free paper.
+  // Only ever a PDF: there is no Word version, so staff get the PDF too, clean.
+  describe("formula sheet", () => {
+    const passHolder = { isSignedIn: true, isStaff: false, hasDownloadPass: true };
+    it("a pass holder gets a branded PDF", () => {
+      expect(resolveExportAccess({ kind: "formula", ...passHolder })).toEqual({
+        allowed: true,
+        branded: true,
+        format: "pdf",
+      });
+    });
+    it("institute staff get the PDF unbranded", () => {
+      expect(resolveExportAccess({ kind: "formula", ...staff })).toEqual({ allowed: true, branded: false, format: "pdf" });
+    });
+    it("a fresh account gets one free sheet, branded, marked free", () => {
+      expect(resolveExportAccess({ kind: "formula", ...student, freeDownloadLeft: true })).toEqual({
+        allowed: true,
+        branded: true,
+        format: "pdf",
+        free: true,
+      });
+    });
+    it("the free sheet is not spent by a pass holder or staff", () => {
+      expect(resolveExportAccess({ kind: "formula", ...passHolder, freeDownloadLeft: true })).toEqual({
+        allowed: true,
+        branded: true,
+        format: "pdf",
+      });
+      expect(resolveExportAccess({ kind: "formula", ...staff, freeDownloadLeft: true })).toEqual({
+        allowed: true,
+        branded: false,
+        format: "pdf",
+      });
+    });
+    it("once used, says so and points at the pass, naming the sheet not the paper", () => {
+      const r = resolveExportAccess({ kind: "formula", ...student, freeDownloadLeft: false });
+      expect(r.allowed).toBe(false);
+      if (!r.allowed) {
+        expect(r.status).toBe(403);
+        expect(r.message).toMatch(/free formula sheet/i);
+        expect(r.message).toMatch(/Premium Pass/);
+        expect(r.message).not.toMatch(/free paper/i);
+      }
+    });
+    it("a student without the lookup is told the pass unlocks formula sheets", () => {
+      const r = resolveExportAccess({ kind: "formula", ...student });
+      expect(r.allowed).toBe(false);
+      if (!r.allowed) {
+        expect(r.message).toMatch(/formula sheet/i);
+        expect(r.message).toMatch(/Premium Pass/);
+        expect(r.message).not.toMatch(/staff/i);
+      }
+    });
+    it("the free PAPER does not open a sheet, and the free SHEET does not open a paper", () => {
+      // The caller passes the lookup for the kind it asks about; the gate is
+      // per kind, so a paper lookup is never handed to a sheet request. Pinned
+      // by the two route tests; here: a sheet request with no lookup is refused.
+      expect(resolveExportAccess({ kind: "formula", ...student }).allowed).toBe(false);
+      expect(resolveExportAccess({ kind: "paper", ...student }).allowed).toBe(false);
     });
   });
 });
