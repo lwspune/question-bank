@@ -8,10 +8,12 @@
  * registered without a body builds clean and 404s on first request.
  */
 import type { ComponentType } from "react";
+import MhtCet2027DatesPost from "./mht-cet-2027-december-attempt-moved-after-boards/content";
 import NdaTwo2026GatAnalysis from "./nda-2-2026-gat-paper-analysis/content";
 import NdaTwo2026MathsAnalysis from "./nda-2-2026-maths-paper-analysis/content";
 
 export const POST_CONTENTS: Record<string, ComponentType> = {
+  "mht-cet-2027-december-attempt-moved-after-boards": MhtCet2027DatesPost,
   "nda-2-2026-gat-paper-analysis": NdaTwo2026GatAnalysis,
   "nda-2-2026-maths-paper-analysis": NdaTwo2026MathsAnalysis,
 };

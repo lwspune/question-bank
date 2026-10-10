@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CalendarDays, Clock } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
-import { BlogPostingJsonLd } from "../_components/BlogJsonLd";
+import { BlogFaqJsonLd, BlogPostingJsonLd } from "../_components/BlogJsonLd";
 import { POST_CONTENTS } from "../_posts/contents";
 import { BLOG_SLUGS, listPosts, postBySlug } from "@/lib/blog/posts";
 import { formatPostDate } from "@/lib/blog/format";
@@ -55,6 +55,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       breadcrumbs={[{ href: "/blog", label: "Blog" }, { label: post.title }]}
     >
       <BlogPostingJsonLd post={post} />
+      <BlogFaqJsonLd post={post} />
 
       <header className="mb-10 sm:mb-12">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
@@ -76,6 +77,22 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       </header>
 
       <Body />
+
+      {post.faq && post.faq.length > 0 && (
+        <section aria-labelledby="faq-heading" className="mt-14">
+          <h2 id="faq-heading" className="text-2xl font-bold tracking-tight sm:text-3xl">
+            Questions people ask
+          </h2>
+          <dl className="mt-6 space-y-6">
+            {post.faq.map((f) => (
+              <div key={f.q}>
+                <dt className="font-semibold">{f.q}</dt>
+                <dd className="mt-1.5 font-serif text-base leading-relaxed text-muted-foreground sm:text-lg">{f.a}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      )}
 
       <div className="mt-16 border-t pt-6">
         <Link
