@@ -13,6 +13,7 @@
  */
 import { INSTRUMENT_CHANGED_SINCE, MIN_LIFT_N } from "@/lib/pmf/snapshot";
 import type { OnboardingArm } from "@/lib/education/howItWorks";
+import { countryName } from "@/lib/acquisition/country";
 import {
   CHAPTER_TESTS_ANSWERED_KEEP,
   CHAPTER_TESTS_MIN_SITTINGS,
@@ -133,6 +134,44 @@ export function viewFunnelWeek(row: SignupWeek): SignupWeekView {
     ...row,
     signalRate: row.signups > 0 ? pct(row.signalled, row.signups) : null,
     returnRate: row.matured >= MIN_LIFT_N ? pct(row.returned7, row.matured) : null,
+  };
+}
+
+/* ── Signups by country ─────────────────────────────────────────────────── */
+
+/** get_signup_countries (migration 0151): students since COUNTRY_RECORDED_SINCE. */
+export type SignupCountries = {
+  countries: { country: string; n: number }[];
+  /** Students made since then with no country recorded. */
+  unrecorded: number;
+};
+
+export type SignupCountryRow = { country: string; name: string; n: number; sharePct: number };
+
+export type SignupCountriesView = {
+  /** Every student since recording began, with or without a country. */
+  total: number;
+  rows: SignupCountryRow[];
+  unrecorded: number;
+  unrecordedPct: number | null;
+};
+
+/**
+ * Largest first, ties by name so the order is stable. Shares are of EVERY
+ * signup since recording began, so a recorder that stops working shows up as
+ * a growing "not recorded" share rather than a quietly smaller table.
+ */
+export function viewSignupCountries(raw: SignupCountries): SignupCountriesView {
+  const recorded = raw.countries.reduce((sum, c) => sum + c.n, 0);
+  const total = recorded + raw.unrecorded;
+  const rows = raw.countries
+    .map((c) => ({ country: c.country, name: countryName(c.country), n: c.n, sharePct: pct(c.n, total) }))
+    .sort((a, b) => b.n - a.n || a.name.localeCompare(b.name));
+  return {
+    total,
+    rows,
+    unrecorded: raw.unrecorded,
+    unrecordedPct: total > 0 ? pct(raw.unrecorded, total) : null,
   };
 }
 

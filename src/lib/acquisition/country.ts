@@ -21,3 +21,28 @@ export function withCountry(event: ActivityEvent, country: string | null): Activ
   if (!country) return event;
   return { ...event, metadata: { ...event.metadata, country } };
 }
+
+/**
+ * When the deploy that started recording country went live (migration 0142).
+ * It landed between 15:40 and 16:00 UTC on 9 Oct 2026; accounts made before
+ * it have no country, so /dashboard/growth counts from here and never reports
+ * them as "not recorded".
+ */
+export const COUNTRY_RECORDED_SINCE = "2026-10-09T16:00:00Z";
+
+const REGION_NAMES = new Intl.DisplayNames(["en"], { type: "region" });
+
+/**
+ * The English name for a two-letter code, or the code itself when Intl does
+ * not know it. Intl answers an unassigned code with the code ("XX") or with
+ * "Unknown Region" ("ZZ"); both come back as the code, never a made-up name.
+ */
+export function countryName(code: string): string {
+  let name: string | undefined;
+  try {
+    name = REGION_NAMES.of(code);
+  } catch {
+    return code;
+  }
+  return !name || name === code || name === "Unknown Region" ? code : name;
+}

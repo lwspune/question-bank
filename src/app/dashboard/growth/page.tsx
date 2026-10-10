@@ -30,6 +30,7 @@ import {
   todayIst,
   viewFunnelWeek,
   viewNorthStar,
+  viewSignupCountries,
   type ArmCounts,
   type Verdict,
   type VerdictStatus,
@@ -226,6 +227,7 @@ export default async function GrowthPage() {
   const north = viewNorthStar(raw.weeks, today);
   const maxTwoPlus = Math.max(1, ...north.weeks.map((w) => w.twoPlus));
   const funnel = raw.signupWeeks.slice(-6).map(viewFunnelWeek).reverse();
+  const countries = viewSignupCountries(raw.signupCountries);
   const running = EXPERIMENTS.filter((e) => e.status === "running");
   const decided = EXPERIMENTS.filter((e) => e.status === "decided");
 
@@ -534,6 +536,57 @@ export default async function GrowthPage() {
           <p className="text-xs text-muted-foreground">
             &ldquo;Came back&rdquo; is counted only over students who have had all 7 days (the &ldquo;of&rdquo;
             number), so the newest week fills in as it ages.
+          </p>
+        </section>
+
+        {/* ── Signups by country ─────────────────────────────────────────── */}
+        <section className="space-y-3 rounded-lg border p-5">
+          <div>
+            <h2 className="text-sm font-semibold">Signups by country</h2>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Where each account was created from, since recording began on 9 Oct at 21:30 IST:{" "}
+              <span className="font-medium text-foreground tabular-nums">{countries.total}</span> signups.
+            </p>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[20rem] text-sm">
+              <thead>
+                <tr className="border-b text-left text-xs text-muted-foreground">
+                  <th scope="col" className="py-1.5 pr-3 font-medium">Country</th>
+                  <th scope="col" className="py-1.5 pr-3 text-right font-medium">Signups</th>
+                  <th scope="col" className="py-1.5 text-right font-medium">Share</th>
+                </tr>
+              </thead>
+              <tbody>
+                {countries.rows.map((r) => (
+                  <tr key={r.country} className="border-b">
+                    <th scope="row" className="py-1.5 pr-3 text-left font-normal">
+                      {r.name === r.country ? r.country : `${r.name} (${r.country})`}
+                    </th>
+                    <td className="py-1.5 pr-3 text-right tabular-nums">{r.n}</td>
+                    <td className="py-1.5 text-right tabular-nums">{r.sharePct}%</td>
+                  </tr>
+                ))}
+                <tr>
+                  <th scope="row" className="py-1.5 pr-3 text-left font-normal text-muted-foreground">
+                    Not recorded
+                  </th>
+                  <td
+                    className={`py-1.5 pr-3 text-right tabular-nums ${
+                      countries.unrecorded > 0 ? "text-amber-700 dark:text-amber-400" : ""
+                    }`}
+                  >
+                    {countries.unrecorded}
+                  </td>
+                  <td className="py-1.5 text-right tabular-nums">{pctOrDash(countries.unrecordedPct)}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            &ldquo;Not recorded&rdquo; should stay near 0. Logins that staff create for a batch land there,
+            since the country is saved only at a new account&rsquo;s own first sign-in; anything else there means
+            the recording has stopped working. Accounts made before 9 Oct have no country and are not counted.
           </p>
         </section>
 

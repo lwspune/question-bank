@@ -64,6 +64,15 @@ async function main() {
   for (const w of raw.signupWeeks.slice(-6).map(s.viewFunnelWeek)) {
     console.log(`  ${w.weekStart}  signups ${w.signups}  did something ${w.signalRate ?? "—"}%  back ≤7d ${w.returnRate ?? "—"}% (of ${w.matured})  paid ${w.paid}`);
   }
+  for (const c of raw.signupCountries.countries) {
+    assert(/^[A-Z]{2}$/.test(c.country), `signup country ${JSON.stringify(c.country)} is not a two-letter code`);
+    assert(c.n > 0, `signup country ${c.country}: count ${c.n}`);
+  }
+  assert(raw.signupCountries.unrecorded >= 0, "signup countries: negative unrecorded");
+  const countries = s.viewSignupCountries(raw.signupCountries);
+  console.log(`signups by country since recording began (${countries.total}):`);
+  for (const r of countries.rows) console.log(`  ${r.country}  ${r.name}  ${r.n} (${r.sharePct}%)`);
+  console.log(`  not recorded  ${countries.unrecorded} (${countries.unrecordedPct ?? "—"}%)`);
   // The hand-read experiments have no query: print the readings the page lists.
   const handRead = (liveSince: string, metrics: (keyof typeof READINGS)[]) =>
     `judged by hand on ${checkOn(liveSince)} | ` +

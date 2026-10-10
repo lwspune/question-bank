@@ -6,6 +6,7 @@ import {
   examLabels,
   activityLabel,
   relativeTime,
+  countryLabel,
   DASH,
 } from "@/lib/students/profileView";
 import { ACTIVITY_KINDS } from "@/lib/activity/events";
@@ -106,5 +107,20 @@ describe("relativeTime", () => {
   });
   it("renders a dash for an unparseable timestamp", () => {
     expect(relativeTime("not-a-date", now)).toBe(DASH);
+  });
+});
+
+describe("countryLabel", () => {
+  it("renders the country name with its code", () => {
+    expect(countryLabel("IN")).toBe("India (IN)");
+  });
+  // Accounts made before 9 Oct 2026 have no country: absence is a dash.
+  it("renders a dash when no country was recorded", () => {
+    expect(countryLabel(null)).toBe(DASH);
+    expect(countryLabel(undefined)).toBe(DASH);
+  });
+  // A code Intl cannot name shows as itself, never as "Unknown".
+  it("falls back to the raw code when the country is unknown", () => {
+    expect(countryLabel("XX")).toBe("XX");
   });
 });

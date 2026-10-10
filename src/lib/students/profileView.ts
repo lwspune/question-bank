@@ -16,6 +16,7 @@ import { STAGE_LABELS, isStage } from "@/lib/profile/onboarding";
 import { MEDIUM_LABELS, STREAM_LABELS, isMedium, isStream } from "@/lib/profile/fields";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { ACTIVITY_KINDS, type ActivityKind } from "@/lib/activity/events";
+import { countryName } from "@/lib/acquisition/country";
 
 /** The single em-dash used for "we don't have this", shared so it can't drift. */
 export const DASH = "—";
@@ -33,6 +34,17 @@ export function mediumLabel(medium: string | null | undefined): string {
 export function streamLabel(stream: string | null | undefined): string {
   if (!stream) return DASH;
   return isStream(stream) ? STREAM_LABELS[stream] : stream;
+}
+
+/**
+ * The country the account was created from (migration 0142), as "India (IN)".
+ * Accounts made before 9 Oct 2026 have none, so a dash is the normal answer
+ * for them. A code Intl cannot name shows as itself.
+ */
+export function countryLabel(code: string | null | undefined): string {
+  if (!code) return DASH;
+  const name = countryName(code);
+  return name === code ? code : `${name} (${code})`;
 }
 
 /**

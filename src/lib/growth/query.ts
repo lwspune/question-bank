@@ -12,8 +12,9 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { hasPaperMocks } from "@/lib/education/howItWorks";
 import { CHAPTER_SHARE_CAMPAIGN } from "@/lib/share/chapterShare";
+import { COUNTRY_RECORDED_SINCE } from "@/lib/acquisition/country";
 import { CHAPTER_TESTS_EXAM, EXPERIMENTS, NORTH_STAR_KINDS } from "./registry";
-import type { ArmCounts, ChapterTestWeek, EmailDay, NorthStarWeek, SignupWeek } from "./snapshot";
+import type { ArmCounts, ChapterTestWeek, EmailDay, NorthStarWeek, SignupCountries, SignupWeek } from "./snapshot";
 
 export type GrowthSnapshotRaw = {
   weeks: NorthStarWeek[];
@@ -22,6 +23,8 @@ export type GrowthSnapshotRaw = {
   chapterShare: { signups: number; signalled: number };
   chapterTests: ChapterTestWeek[];
   emailDays: EmailDay[];
+  /** get_signup_countries (0151), since COUNTRY_RECORDED_SINCE. */
+  signupCountries: SignupCountries;
 };
 
 export const GROWTH_WEEKS = 12;
@@ -53,9 +56,14 @@ export async function fetchGrowthSnapshot(
   db: SupabaseClient,
   weeks = GROWTH_WEEKS
 ): Promise<GrowthSnapshotRaw> {
-  const { data, error } = await db.rpc("get_growth_snapshot", growthParams(weeks));
-  if (error) throw new Error(`fetchGrowthSnapshot: ${error.message}`);
-  const raw = (data ?? {}) as Partial<GrowthSnapshotRaw>;
+  const [snap, countries] = await Promise.all([
+    db.rpc("get_growth_snapshot", growthParams(weeks)),
+    db.rpc("get_signup_countries", { p_since: COUNTRY_RECORDED_SINCE }),
+  ]);
+  if (snap.error) throw new Error(`fetchGrowthSnapshot: ${snap.error.message}`);
+  if (countries.error) throw new Error(`fetchGrowthSnapshot (countries): ${countries.error.message}`);
+  const raw = (snap.data ?? {}) as Partial<GrowthSnapshotRaw>;
+  const c = (countries.data ?? {}) as Partial<SignupCountries>;
   // Defaults so a field the DB has not started emitting cannot crash the render.
   return {
     weeks: raw.weeks ?? [],
@@ -64,5 +72,6 @@ export async function fetchGrowthSnapshot(
     chapterShare: raw.chapterShare ?? { signups: 0, signalled: 0 },
     chapterTests: raw.chapterTests ?? [],
     emailDays: raw.emailDays ?? [],
+    signupCountries: { countries: c.countries ?? [], unrecorded: c.unrecorded ?? 0 },
   };
 }
