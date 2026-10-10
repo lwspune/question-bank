@@ -103,3 +103,10 @@ export function checkQuestion(a: Pick<OpenAnnouncement, "sitting" | "stage">): s
       return `Did you make the ${a.sitting} final merit list?`;
   }
 }
+
+/** How many students gave each answer: the review page's counts. */
+export function tallyOutcomes(outcomes: readonly string[]): Record<ResultOutcome, number> {
+  const out = Object.fromEntries(RESULT_OUTCOMES.map((o) => [o, 0])) as Record<ResultOutcome, number>;
+  for (const o of outcomes) if (o in out) out[o as ResultOutcome]++;
+  return out;
+}

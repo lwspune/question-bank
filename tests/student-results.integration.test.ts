@@ -6,6 +6,7 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { loadPendingResultChecks, saveResultAnswer } from "@/lib/results/service";
+import { listResultsForReview, reviewResult } from "@/lib/results/admin";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -130,5 +131,24 @@ describe.skipIf(!HAS_ENV)("student results (migration 0149)", () => {
   it("refuses an answer outside the announcement's window", async () => {
     const r = await saveResultAnswer(users[5], { announcementId, outcome: "not_cleared", showPublicly: false, displayName: null }, "2026-11-15");
     expect(r).toBe("closed");
+  });
+
+  it("lists a waiting name for review, then publishes it to the public", async () => {
+    const mine = (await listResultsForReview()).find((a) => a.id === announcementId)!;
+    const waiting = mine.waiting.find((n) => n.name === "Meera Iyer")!;
+    expect(waiting.source).toBe("self");
+    expect(mine.counts.cleared).toBeGreaterThanOrEqual(2);
+    await reviewResult(waiting.id, "publish");
+    const { data } = await anon.from("student_results").select("display_name").eq("announcement_id", announcementId);
+    expect((data ?? []).map((r) => r.display_name)).toContain("Meera Iyer");
+  });
+
+  it("declining takes a name off the waiting list and off the page", async () => {
+    const mine = (await listResultsForReview()).find((a) => a.id === announcementId)!;
+    const meera = mine.published.find((n) => n.name === "Meera Iyer")!;
+    await reviewResult(meera.id, "decline");
+    const after = (await listResultsForReview()).find((a) => a.id === announcementId)!;
+    expect(after.waiting.map((n) => n.name)).not.toContain("Meera Iyer");
+    expect(after.published.map((n) => n.name)).not.toContain("Meera Iyer");
   });
 });

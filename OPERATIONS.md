@@ -68,6 +68,17 @@ Every push to `main` is built by `.github/workflows/deploy.yml` on GitHub's free
 - **A staged test without going live:** Actions → Run workflow → `staged` builds with the production settings and uploads with `--skip-domain`; open the URL from the run summary (Vercel login required), then Vercel → Deployments → Promote, or leave it. Google sign-in fails on that `vercel.app` URL (`origin_mismatch`, an unregistered origin); test with email sign-in there.
 - **Guards before every deploy:** no `[SENSITIVE]` and no service-key value anywhere in the built output. Only `.next/cache/webpack` is cached: in a public repo a pull request can read Actions caches.
 
+### Student results (migration 0149, 2026-10-10)
+
+When an exam's result is announced, add it so students who chose that exam are asked on /me "Did you clear it?":
+
+```sh
+npm run results:announce -- --exam=nda --sitting="NDA 2 2026" --stage=ssb            # dry run: prints the window and how many students will be asked
+npm run results:announce -- --exam=nda --sitting="NDA 2 2026" --stage=ssb --apply    # saves it; the card shows from the announcement date
+```
+
+`--stage` is `written`, `ssb` or `final`; `--announced=YYYY-MM-DD` (default today, IST); `--ask-days=21` (1 to 90). Answers and names waiting to be shown are at **/dashboard/results** (superadmin): Publish puts a name on /results, the homepage and exam-page strips at once; Take down and Decline remove it. Nothing publishes itself. A shown name may not carry a digit, `_` or `@` (a DB CHECK), so an account handle cannot go up by mistake. Names a coach already has consent for are added as `source='staff'` rows by SQL, with `published = true`.
+
 ### When to upgrade tiers
 
 - **Vercel Pro (since 2026-09-20)** bills a $20 seat plus metered usage (~$1-2 a day in early October; the breakdown is in CLAUDE.md's Production line). Read Settings → Billing weekly: the meters that move are function invocations + Active CPU (a prefetch or caching regression shows up here first), ISR writes, deployment storage and **builds, which are billed on every machine type** ($0.0035 per CPU minute = build minutes × vCPUs; ~$0.35 a push on Enhanced, measured 2026-10-06; Usage → Build CPU Minutes shows the machine each day used). Observability Plus was switched off 2026-10-06; if "Observability Events" reappears on the bill, it was switched back on. Going back to Hobby is ruled out: it is non-commercial only and its hard caps (Active CPU 4 h/month, ISR writes 200k/month) are below a few days of our usage.

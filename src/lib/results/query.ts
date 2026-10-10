@@ -11,6 +11,8 @@ import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getExamByName } from "@/lib/exam/examContext";
 import type { PublicResult, ResultStage } from "./summary";
 
+export const RESULTS_CACHE_TAG = "student-results";
+
 type Raw = {
   display_name: string | null;
   result_announcements: {
@@ -41,9 +43,9 @@ export async function listPublishedResults(client: SupabaseClient): Promise<Publ
 
 const cachedResults = unstable_cache(
   () => listPublishedResults(createSupabaseAnonClient()),
-  // Bump to show a newly published name at once (the cache outlives a deploy).
+  // The review page clears the tag on every publish, so a name shows at once.
   ["student-results-v1"],
-  { revalidate: 86400 }
+  { revalidate: 86400, tags: [RESULTS_CACHE_TAG] }
 );
 
 /** The published list, cached for a day and shared by every page that shows it. */

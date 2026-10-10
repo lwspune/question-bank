@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import type { ExamSlug } from "@/lib/exam/examContext";
 import {
   checkQuestion,
+  tallyOutcomes,
   pendingChecks,
   suggestDisplayName,
   validateResultAnswer,
@@ -111,5 +112,16 @@ describe("checkQuestion: the card's question, per stage", () => {
     expect(checkQuestion(ann("a", "nda"))).toBe("Did you clear the NDA 2 2026 written exam?");
     expect(checkQuestion(ann("a", "nda", { stage: "ssb" }))).toBe("Were you recommended at the NDA 2 2026 SSB?");
     expect(checkQuestion(ann("a", "nda", { stage: "final" }))).toBe("Did you make the NDA 2 2026 final merit list?");
+  });
+});
+
+describe("tallyOutcomes: the review page's answer counts", () => {
+  it("counts each answer, with zeros for the ones nobody gave", () => {
+    expect(tallyOutcomes(["cleared", "cleared", "not_cleared", "dismissed"])).toEqual({
+      cleared: 2,
+      not_cleared: 1,
+      did_not_appear: 0,
+      dismissed: 1,
+    });
   });
 });
