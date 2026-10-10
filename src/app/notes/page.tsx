@@ -8,6 +8,7 @@ import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import YourNotesStrip from "./_components/YourNotesStrip";
 import ExamFeedList from "@/components/exam/ExamFeedList";
+import ExamGapNotice from "@/components/exam/ExamGapNotice";
 
 export const revalidate = 86400;
 
@@ -49,6 +50,8 @@ export default function NotesIndex() {
 
       {/* Signed-in only (client island) — keeps this index page ISR-static. */}
       <YourNotesStrip />
+
+      <ExamGapNotice what="notes" covered={groups.map((g) => g.slug)} />
 
       <ExamFeedList
         as="div"

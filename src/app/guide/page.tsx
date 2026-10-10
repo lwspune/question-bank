@@ -6,6 +6,7 @@ import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import ExamFeedList from "@/components/exam/ExamFeedList";
+import ExamGapNotice from "@/components/exam/ExamGapNotice";
 import { getGuideExamGroups, buildGuideSideNav } from "@/lib/guide/guidesNav";
 import { TRENDS_REPORTS } from "@/lib/guide/trendsReports";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
@@ -113,6 +114,10 @@ export default async function GuideIndex() {
         title="Strategy guides, built by counting the papers"
         subtitle={PAGE_LEDE}
       />
+
+      <div className="mt-8">
+        <ExamGapNotice what="strategy guides" covered={exams.map((e) => e.slug)} />
+      </div>
 
       <ExamFeedList
         className="mt-8 grid gap-5 sm:grid-cols-2"
