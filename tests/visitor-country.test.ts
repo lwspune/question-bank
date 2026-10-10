@@ -9,7 +9,7 @@
  * server, so a browser can never supply its own.
  */
 import { describe, it, expect } from "vitest";
-import { readCountry, withCountry } from "@/lib/acquisition/country";
+import { COUNTRY_RECORDED_SINCE, countryName, readCountry, withCountry } from "@/lib/acquisition/country";
 import { paywallEvent } from "@/lib/activity/clientEvents";
 
 const headers = (v?: string) => new Headers(v === undefined ? {} : { "x-vercel-ip-country": v });
@@ -51,5 +51,29 @@ describe("withCountry", () => {
     const before = paywallEvent("checkout_opened", "teacher");
     withCountry(before, "IN");
     expect(before.metadata).toEqual({ step: "checkout_opened", gate: "teacher" });
+  });
+});
+
+describe("countryName", () => {
+  it("names a country from its two-letter code", () => {
+    expect(countryName("IN")).toBe("India");
+    expect(countryName("AE")).toBe("United Arab Emirates");
+  });
+
+  // Intl answers an unassigned code with the code itself ("XX") or with
+  // "Unknown Region" ("ZZ"). Both mean "we do not know this one", and the
+  // dashboard should show the raw code rather than a made-up name.
+  it("returns the code itself for a code Intl does not know", () => {
+    expect(countryName("XX")).toBe("XX");
+    expect(countryName("ZZ")).toBe("ZZ");
+  });
+});
+
+describe("COUNTRY_RECORDED_SINCE", () => {
+  // The deploy that started recording landed between 15:40 and 16:00 UTC on
+  // 9 Oct; accounts made before it have no country and must not be counted
+  // as "not recorded" on /dashboard/growth.
+  it("is the moment recording went live, as an ISO timestamp", () => {
+    expect(new Date(COUNTRY_RECORDED_SINCE).toISOString()).toBe("2026-10-09T16:00:00.000Z");
   });
 });

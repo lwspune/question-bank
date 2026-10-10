@@ -14,6 +14,7 @@ import {
   indexingView,
   onboardingVerdict,
   viewFunnelWeek,
+  viewSignupCountries,
   viewNorthStar,
   type ArmCounts,
 } from "@/lib/growth/snapshot";
@@ -266,5 +267,53 @@ describe("chapterTestsVerdict", () => {
       LIVE_CT
     );
     expect(v.status).toBe("kill");
+  });
+});
+
+describe("viewSignupCountries", () => {
+  it("lists countries largest first, each with its share of every signup since recording began", () => {
+    const v = viewSignupCountries({
+      countries: [
+        { country: "AE", n: 1 },
+        { country: "IN", n: 37 },
+        { country: "NP", n: 2 },
+      ],
+      unrecorded: 0,
+    });
+    expect(v.total).toBe(40);
+    expect(v.rows.map((r) => [r.country, r.name, r.n, r.sharePct])).toEqual([
+      ["IN", "India", 37, 93],
+      ["NP", "Nepal", 2, 5],
+      ["AE", "United Arab Emirates", 1, 3],
+    ]);
+  });
+
+  // Ties sort by name so the table does not reshuffle between loads.
+  it("breaks a tie by country name", () => {
+    const v = viewSignupCountries({
+      countries: [
+        { country: "US", n: 1 },
+        { country: "AE", n: 1 },
+      ],
+      unrecorded: 0,
+    });
+    expect(v.rows.map((r) => r.country)).toEqual(["AE", "US"]);
+  });
+
+  // Accounts that arrived with no country count in the total, so a broken
+  // recorder shows up as a growing "not recorded" share, not a smaller table.
+  it("counts accounts with no country in the total and gives them a share", () => {
+    const v = viewSignupCountries({ countries: [{ country: "IN", n: 3 }], unrecorded: 1 });
+    expect(v.total).toBe(4);
+    expect(v.rows[0].sharePct).toBe(75);
+    expect(v.unrecorded).toBe(1);
+    expect(v.unrecordedPct).toBe(25);
+  });
+
+  it("has no shares when nobody has signed up yet", () => {
+    const v = viewSignupCountries({ countries: [], unrecorded: 0 });
+    expect(v.total).toBe(0);
+    expect(v.rows).toEqual([]);
+    expect(v.unrecordedPct).toBeNull();
   });
 });

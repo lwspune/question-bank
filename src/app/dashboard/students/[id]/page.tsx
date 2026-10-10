@@ -19,6 +19,7 @@ import {
   Clock,
   Activity,
   Compass,
+  Globe,
 } from "lucide-react";
 import { describeSource } from "@/lib/pmf/acquisition";
 import AppHeader from "@/components/AppHeader";
@@ -42,6 +43,7 @@ import {
   examLabels,
   activityLabel,
   relativeTime,
+  countryLabel,
   DASH,
 } from "@/lib/students/profileView";
 
@@ -98,6 +100,7 @@ export default async function StudentDetailPage({ params }: { params: Params }) 
                 createdAt: profile.createdAt,
               })}
             />
+            <Field icon={Globe} label="Country" value={countryLabel(capture.signupCountry)} />
             <Field icon={Clock} label="Last sign-in" value={relativeTime(profile.lastSignInAt, now)} />
             <Field
               icon={Gem}

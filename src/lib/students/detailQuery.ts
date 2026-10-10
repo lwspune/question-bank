@@ -71,6 +71,8 @@ export type StudentCapture = {
   acqMedium: string | null;
   acqCampaign: string | null;
   acqLanding: string | null;
+  /** Country the account was created from (0142), recorded from 2026-10-09 on. */
+  signupCountry: string | null;
   /** False when the student has no student_profiles row at all (4 of 316). */
   hasProfile: boolean;
 };
@@ -137,6 +139,7 @@ const EMPTY_CAPTURE: StudentCapture = {
   acqMedium: null,
   acqCampaign: null,
   acqLanding: null,
+  signupCountry: null,
   hasProfile: false,
 };
 
@@ -172,6 +175,7 @@ type ProfileRowShape = {
   acq_medium: string | null;
   acq_campaign: string | null;
   acq_landing: string | null;
+  signup_country: string | null;
 };
 
 export async function fetchStudentDetail(
@@ -197,7 +201,7 @@ export async function fetchStudentDetail(
       db
         .from("student_profiles")
         .select(
-          "mobile, consent, target_exams, stage, medium, academic_stream, city, goal, whatsapp_opt_in, whatsapp_prompted_at, email_opt_out, onboarded_at, acq_source, acq_medium, acq_campaign, acq_landing"
+          "mobile, consent, target_exams, stage, medium, academic_stream, city, goal, whatsapp_opt_in, whatsapp_prompted_at, email_opt_out, onboarded_at, acq_source, acq_medium, acq_campaign, acq_landing, signup_country"
         )
         .eq("user_id", userId)
         .maybeSingle(),
@@ -242,6 +246,7 @@ export async function fetchStudentDetail(
         acqMedium: p.acq_medium,
         acqCampaign: p.acq_campaign,
         acqLanding: p.acq_landing,
+        signupCountry: p.signup_country,
         hasProfile: true,
       }
     : EMPTY_CAPTURE;
