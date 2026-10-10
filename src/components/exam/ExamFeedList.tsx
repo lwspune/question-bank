@@ -3,11 +3,11 @@
 import { Fragment, type ReactNode } from "react";
 import FeedSections from "@/components/exam/FeedSections";
 import type { ExamSlug } from "@/lib/exam/examContext";
-import { splitByFeed } from "@/lib/exam/examFeed";
+import { feedLayout, splitByFeed } from "@/lib/exam/examFeed";
 import { useExamFeed } from "@/lib/viewer/useExamFeed";
 
 /**
- * "Your exams" first, the rest collapsed under "Other exams (N)" — for the
+ * "Your exams" first, the rest collapsed under "Browse other exams (N)", for the
  * cached index pages /mock, /notes, /guide and /board (EXAM_TIER_SPEC.md §4.3).
  *
  * The server page still renders every card; it hands them here ALREADY
@@ -62,16 +62,14 @@ export default function ExamFeedList({
       ? { primary: items, other: [] as FeedListItem[] }
       : splitByFeed(items, (i) => i.slugs, feed);
 
-  // Nothing to put first, or nothing to put away: keep today's list.
-  if (feed.tier === null || primary.length === 0 || other.length === 0) {
-    return renderGroup(items);
-  }
+  const layout = feedLayout(feed.tier, primary.length, other.length);
+  if (layout === "plain") return renderGroup(items);
 
   return (
     <FeedSections
       eyebrow="Your exams"
-      primary={renderGroup(primary, "!mt-3")}
-      otherLabel={`Other exams (${other.length})`}
+      primary={layout === "split" ? renderGroup(primary, "!mt-3") : null}
+      otherLabel={`Browse other exams (${other.length})`}
       other={renderGroup(other, "!mt-4")}
     />
   );

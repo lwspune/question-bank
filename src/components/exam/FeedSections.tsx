@@ -11,6 +11,8 @@ import { ChevronDown } from "lucide-react";
  * BoardFeedList (/board) so the two cannot drift.
  *
  * `other` null = nothing to fold: the button is not rendered at all.
+ * `primary` null = none of the viewer's exams is on this page: no eyebrow, just
+ * the link and the fold (the page's no-content notice sits above).
  */
 export default function FeedSections({
   eyebrow,
@@ -19,7 +21,7 @@ export default function FeedSections({
   other,
 }: {
   eyebrow: string;
-  primary: ReactNode;
+  primary: ReactNode | null;
   otherLabel: string;
   other: ReactNode | null;
 }) {
@@ -29,7 +31,11 @@ export default function FeedSections({
   return (
     <div>
       <div className="mt-8 flex flex-wrap items-baseline justify-between gap-2">
-        <p className="text-xs font-semibold uppercase tracking-wide text-brand-accent">{eyebrow}</p>
+        {primary !== null ? (
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-accent">{eyebrow}</p>
+        ) : (
+          <span aria-hidden />
+        )}
         <Link
           href="/account"
           prefetch={false}
@@ -40,7 +46,7 @@ export default function FeedSections({
       </div>
       {primary}
       {other !== null && (
-        <div className="mt-8 border-t pt-4">
+        <div className={primary !== null ? "mt-8 border-t pt-4" : "mt-3 border-t pt-4"}>
           <button
             type="button"
             aria-expanded={open}
