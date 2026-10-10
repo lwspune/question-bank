@@ -12,7 +12,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowRight, BookOpen, ClipboardCheck, Compass } from "lucide-react";
+import { ArrowRight, BookOpen, ChevronDown, ClipboardCheck, Compass } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -239,12 +239,21 @@ export default async function ChapterQuestionsPage({ params }: Params) {
           {landing.chapterName}
         </h1>
         <p className="mt-2 text-muted-foreground">{landingLead(landing)}</p>
+        {/* Folded (owner, 2026-10-10): on a phone these lines pushed the first
+            question below the fold. <details> keeps them in the HTML, so the
+            facts search engines and ChatGPT quote are still on the page. */}
         {headerLines.length > 0 && (
-          <ul className="mt-2 space-y-0.5 text-sm text-muted-foreground">
-            {headerLines.map((line) => (
-              <li key={line}>{line}</li>
-            ))}
-          </ul>
+          <details className="group mt-2 text-sm text-muted-foreground">
+            <summary className="inline-flex cursor-pointer list-none items-center gap-1 rounded font-medium hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden">
+              About this chapter
+              <ChevronDown className="h-3.5 w-3.5 transition-transform group-open:rotate-180" aria-hidden />
+            </summary>
+            <ul className="mt-1.5 space-y-0.5">
+              {headerLines.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </details>
         )}
 
         <div className="mt-5 flex flex-wrap gap-2">
