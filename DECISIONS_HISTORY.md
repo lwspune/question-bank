@@ -29,6 +29,8 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 **Judgement call.** Chem 2025 Q.1(viii) ("the highest acidic compound"): keyed (a) 3-hydroxybenzoic acid on measured pKa (4.08 against benzoic acid's 4.20), with a textbook note that the chapter's rule (-OH lowers acidity) gives (c). The live row had keyed (c) and was hidden.
 
+**CBSE 2025 Maths 65/5/2 and 65/5/3 (same day).** Refused since Phase 1 with marks 25 and 55: their transcriptions hold only the questions 65/5/1 does not print (11 and 28 of 38), by design, because the rest are word-for-word repeats already in the bank. The papers print the repeats in a different order, so the full order was read off the printed English pages and checked option by option (every repeat keeps 65/5/1's option order, so it fingerprints to 65/5/1's row). `withLeaderQuestions` (TDD) fills each missing printed number from the leader, renumbering ref and OR link; it throws on a number both transcribed and mapped, a map entry naming no leader question, or a gap. The order maps are data in `scripts/question-papers/cbseFollowers.ts`; the lane's transcriptions are unchanged. All 378 stored papers now assemble whole.
+
 **Also found.** `npm run db:backup` uses the direct database host, which is IPv6-only and unreachable from this network, so it failed here and the weekly scheduled backup may be failing too; the session pooler works.
 
 **2026-10-10 (second) — Maharashtra HSC 12 and SSC 10 papers on `/question-papers` (migration 0147; branch `feat/question-papers-mh`).**
