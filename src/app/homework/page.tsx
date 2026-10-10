@@ -54,7 +54,7 @@ export default async function HomeworkIndex() {
                   <p className="font-semibold leading-snug group-hover:text-brand-accent">{p.title}</p>
                   <p className="mt-1 inline-flex items-center gap-1.5 text-xs text-muted-foreground">
                     <CalendarDays className="h-3.5 w-3.5" aria-hidden />
-                    {p.days} days · {p.questions.toLocaleString("en-IN")} questions · {p.perDay} a day
+                    {p.questions.toLocaleString("en-IN")} questions · {p.perDay} a day
                   </p>
                 </div>
                 <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />

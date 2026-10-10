@@ -6,6 +6,10 @@ import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPlanBySlug, listPublishedPlans } from "@/lib/homework/query";
 import { sectionsOf, shortNote } from "@/lib/homework/display";
 import HomeworkDownload from "../_components/HomeworkDownload";
+import Link from "next/link";
+import { Eye } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { dayHref } from "@/lib/homework/links";
 
 // Plans change only when the plan builder runs; a day is plenty.
 export const revalidate = 86400;
@@ -25,7 +29,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   if (!plan) return {};
   return {
     title: `${plan.title} Daily Homework from Board Papers`,
-    description: `${plan.days} days of ${plan.examName} ${plan.subjectName} board questions, ${plan.perDay} a day, as a file to hand out. The questions the board asked again come first.`,
+    description: `${plan.examName} ${plan.subjectName} board questions, ${plan.perDay} a day, as a file to hand out. The questions the board asked again come first.`,
     alternates: { canonical: `/homework/${plan.slug}` },
   };
 }
@@ -64,7 +68,7 @@ export default async function HomeworkPlanPage({ params }: { params: Params }) {
       breadcrumbs={[{ href: "/homework", label: "Daily Homework" }, { label: plan.title }]}
     >
       <GuideHero
-        eyebrow={`Daily homework · ${plan.days} days`}
+        eyebrow={`Daily homework · ${plan.perDay} questions a day`}
         title={`${plan.title} daily homework`}
         subtitle={plan.summary}
       />
@@ -85,8 +89,22 @@ export default async function HomeworkPlanPage({ params }: { params: Params }) {
               {s.days.map((d) => (
                 <li key={d.day} className="rounded-lg border bg-card p-4">
                   <div className="flex items-center justify-between gap-3">
-                    <h3 className="font-semibold">Day {d.day}</h3>
-                    <HomeworkDownload planSlug={plan.slug} day={d.day} planTitle={plan.title} />
+                    <h3 className="font-semibold">
+                      <Link href={dayHref(plan.slug, d.day)} prefetch={false} className="hover:underline">
+                        Day {d.day}
+                      </Link>
+                    </h3>
+                    <div className="flex items-center gap-2">
+                      {/* prefetch off: a plan page holds up to 262 days, and each
+                          day page renders on first visit from the database. */}
+                      <Button asChild variant="outline" size="sm">
+                        <Link href={dayHref(plan.slug, d.day)} prefetch={false} aria-label={`Open day ${d.day} questions`}>
+                          <Eye className="h-4 w-4" aria-hidden />
+                          Open
+                        </Link>
+                      </Button>
+                      <HomeworkDownload planSlug={plan.slug} day={d.day} planTitle={plan.title} />
+                    </div>
                   </div>
                   <ol className="mt-3 space-y-1.5 text-sm">
                     {d.items

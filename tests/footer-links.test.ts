@@ -39,7 +39,7 @@ describe("footerLinks", () => {
     expect(groups.map((g) => g.title)).toEqual(["Explore", "Guides", "Notes", "About"]);
   });
 
-  it.each(["/browse", "/questions", "/mock", "/board", "/formula"])(
+  it.each(["/browse", "/questions", "/mock", "/board", "/homework", "/formula"])(
     "Explore carries the content surface %s",
     (href) => {
       expect(byTitle("Explore").links.map((l) => l.href)).toContain(href);

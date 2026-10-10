@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowRight, ChevronDown, FileText } from "lucide-react";
+import { ArrowRight, CalendarDays, ChevronDown, FileText } from "lucide-react";
 import { HUB_BOARD_CHAPTERS } from "@/lib/board/hub";
 
 export type BoardHubSubject = {
@@ -11,6 +11,8 @@ export type BoardHubSubject = {
   chapters: { chapterSlug: string; name: string; count: number; href: string }[];
   /** This subject's whole past papers (/question-papers), when any are published. */
   papers?: { href: string; count: number };
+  /** This subject's daily homework plan (/homework), when one is published. */
+  homework?: { href: string; perDay: number };
 };
 
 /**
@@ -104,20 +106,27 @@ export default function BoardHubTabs({ examSlug, subjects }: { examSlug: string;
             aria-labelledby={multi ? `board-tab-${s.subjectRoute}` : undefined}
             hidden={i !== active}
           >
-            {s.papers && (
-              <Link
-                href={s.papers.href}
-                className="mb-3 flex items-center gap-3 rounded-lg border bg-card px-4 py-3 transition-colors hover:bg-brand/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              >
-                <FileText className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
-                <span className="min-w-0 flex-1">
-                  <span className="block text-[15px] font-medium">{s.subjectName} past papers</span>
-                  <span className="block text-xs text-muted-foreground tabular-nums">
-                    {s.papers.count} whole papers with marks and answers
-                  </span>
-                </span>
-                <ArrowRight className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
-              </Link>
+            {(s.papers || s.homework) && (
+              // Side by side from sm up when both exist; stacked on a phone,
+              // where two cards at 390px would wrap each title to three lines.
+              <div className={`mb-3 grid gap-3 ${s.papers && s.homework ? "sm:grid-cols-2" : ""}`}>
+                {s.papers && (
+                  <HubCard
+                    href={s.papers.href}
+                    Icon={FileText}
+                    title={`${s.subjectName} past papers`}
+                    detail={`${s.papers.count} whole papers with marks and answers`}
+                  />
+                )}
+                {s.homework && (
+                  <HubCard
+                    href={s.homework.href}
+                    Icon={CalendarDays}
+                    title={`${s.subjectName} daily homework`}
+                    detail={`${s.homework.perDay} board questions a day, repeats first`}
+                  />
+                )}
+              </div>
             )}
             <ul className="divide-y rounded-lg border bg-card">
               {s.chapters.map((c, j) => (
@@ -152,5 +161,31 @@ export default function BoardHubTabs({ examSlug, subjects }: { examSlug: string;
         );
       })}
     </section>
+  );
+}
+
+function HubCard({
+  href,
+  Icon,
+  title,
+  detail,
+}: {
+  href: string;
+  Icon: typeof FileText;
+  title: string;
+  detail: string;
+}) {
+  return (
+    <Link
+      href={href}
+      className="flex items-center gap-3 rounded-lg border bg-card px-4 py-3 transition-colors hover:bg-brand/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+    >
+      <Icon className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+      <span className="min-w-0 flex-1">
+        <span className="block text-[15px] font-medium">{title}</span>
+        <span className="block text-xs text-muted-foreground tabular-nums">{detail}</span>
+      </span>
+      <ArrowRight className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+    </Link>
   );
 }
