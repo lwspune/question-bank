@@ -266,7 +266,7 @@ export default function DownloadDialog({
               </>
             ) : downloadPass ? (
               !isSignedIn
-                ? "Your first paper is free: the Question Paper and its Answer Key."
+                ? "The Question Paper and its Answer Key."
                 : wantPass
                 ? `${downloadPass.label} includes:`
                 : `You've had your free paper. ${downloadPass.label} includes:`

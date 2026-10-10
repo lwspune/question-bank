@@ -85,23 +85,31 @@ export default function PassOffer({
   return (
     <>
       <div className="min-h-0 flex-1 space-y-4 overflow-y-auto px-6 py-4 text-sm">
-        {freeAfterSignIn && <p className="font-medium">For unlimited downloads, get {pass.label}:</p>}
-        {perks.length > 0 && (
-          <ul className="space-y-2">
-            {perks.map((perk) => (
-              <li key={perk} className="flex items-start gap-2">
-                <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
-                <span>{perk}</span>
-              </li>
-            ))}
-          </ul>
+        {freeAfterSignIn ? (
+          // Signed out: one line, nothing to sell. With the pass's list and
+          // price first, no signed-out visitor who opened the box tapped sign-in
+          // (Clarity, 7-9 Oct 2026); the owner asked for the plainest message.
+          <p className="text-base font-medium text-foreground">Sign in to download.</p>
+        ) : (
+          <>
+            {perks.length > 0 && (
+              <ul className="space-y-2">
+                {perks.map((perk) => (
+                  <li key={perk} className="flex items-start gap-2">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+                    <span>{perk}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <p>
+              <span className="text-lg font-semibold tracking-tight">{gatePriceLine(pass)}</span>
+              <span className="block text-xs text-muted-foreground">
+                One-time payment, no auto-renewal. Pay by UPI, card or netbanking.
+              </span>
+            </p>
+          </>
         )}
-        <p>
-          <span className="text-lg font-semibold tracking-tight">{gatePriceLine(pass)}</span>
-          <span className="block text-xs text-muted-foreground">
-            One-time payment, no auto-renewal. Pay by UPI, card or netbanking.
-          </span>
-        </p>
       </div>
 
       <DialogFooter className="shrink-0 flex-col gap-2 border-t bg-background px-6 py-4">
@@ -162,9 +170,9 @@ function SignInStep({
 
   return (
     <div className="w-full space-y-2">
-      <p className="text-center text-xs text-muted-foreground">
-        {freeAfterSignIn ? "Sign in to get your free download." : "Sign in, then pay. It takes a minute."}
-      </p>
+      {!freeAfterSignIn && (
+        <p className="text-center text-xs text-muted-foreground">Sign in, then pay. It takes a minute.</p>
+      )}
       {signingIn ? (
         <Button variant="brand" className="w-full" disabled>
           <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
