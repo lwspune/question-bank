@@ -49,3 +49,8 @@ export function questionsLandingTitle(p: {
 export function boardChapterTitle(p: { chapterName: string; examDisplay: string; subjectName: string }): string {
   return chapterTitle(p.chapterName, p.examDisplay, p.subjectName, ["Textbook Solutions", "Solutions"]);
 }
+
+/** /formula/<exam>/<subject>/<chapter> (2026-10-10): the chapter-wise formula pages. */
+export function formulaChapterTitle(p: { chapterName: string; examDisplay: string; subjectName: string }): string {
+  return chapterTitle(p.chapterName, p.examDisplay, p.subjectName, ["Formulas and Traps", "Formulas"]);
+}

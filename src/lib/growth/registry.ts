@@ -87,6 +87,16 @@ export const PREMIUM_LIMITS_MIN_SALES = 3;
 /** "performance-starter": keep the offer if this share of empty-page viewers start a test within a day. */
 export const STARTER_KEEP_PCT = 15;
 
+/**
+ * "formula-pages": keep building on the chapter formula pages (PYQ counts per
+ * formula next) if Google indexes at least this many of them by the check
+ * date. A provisional bar: about a fifth of the ~220 pages, against a site
+ * where 39 of ~1,650 pages were indexed on 2026-09-21.
+ */
+export const FORMULA_PAGES_INDEXED_KEEP = 40;
+/** ...and at least this many signups first landed on a /formula page. */
+export const FORMULA_PAGES_SIGNUPS_KEEP = 5;
+
 /** The ISO date `EXPERIMENT_WINDOW_DAYS` after `liveSince`. */
 export function checkOn(liveSince: string): string {
   const d = new Date(`${liveSince}T00:00:00Z`);
@@ -104,7 +114,8 @@ export type Readout =
   | "box-buy"
   | "resource-chips"
   | "premium-limits"
-  | "performance-starter";
+  | "performance-starter"
+  | "formula-pages";
 
 export type Experiment = {
   id: string;
@@ -246,6 +257,18 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "performance-starter",
     status: "running",
   },
+  {
+    id: "formula-pages",
+    title: "Chapter formula pages",
+    change:
+      "About 220 static pages at /formula/<exam>/<subject>/<chapter>: each notes chapter's formulas with their symbol legends, reference tables and traps with explanations, grouped by subtopic, with the formula sheet PDF box. Linked from each notes chapter page and the /formula index.",
+    why: "Students ask for formulas to keep, and formula lists are a common search and a quotable answer for ChatGPT, which already sends about half of signups to chapter pages. Built from the notes data alone, so they cost no database load.",
+    metric: "Indexed /formula/ pages (Search Console, read by hand); signups whose first page was a /formula/ page (student_profiles.acq_landing)",
+    rule: `Keep building on them (PYQ counts per formula next) if ${FORMULA_PAGES_INDEXED_KEEP}+ are indexed and ${FORMULA_PAGES_SIGNUPS_KEEP}+ signups first landed on one by the check date; otherwise leave them as they are and build nothing more on them.`,
+    liveSince: "2026-10-10",
+    readout: "formula-pages",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };
@@ -291,7 +314,9 @@ export type ReadingMetric =
   | "box-sales-per-100"
   | "chip-tap-rate"
   | "limit-sales"
-  | "starter-start-rate";
+  | "starter-start-rate"
+  | "formula-indexed"
+  | "formula-signups";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -325,6 +350,16 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
     label: "Empty performance page: started a test within a day (%)",
     source:
       "user_activity: surface_viewed 'performance' rows by students with no graded attempt that day, then mock_started by the same student within 24 hours",
+    entries: [],
+  },
+  "formula-indexed": {
+    label: "Indexed /formula/ pages",
+    source: "Search Console → Pages → Indexed, filtered to URLs containing /formula/",
+    entries: [],
+  },
+  "formula-signups": {
+    label: "Signups whose first page was a /formula/ page",
+    source: "student_profiles where acq_landing starts with /formula/ and created_at >= the live date",
     entries: [],
   },
   "box-sales-per-100": {

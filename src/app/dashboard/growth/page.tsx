@@ -15,6 +15,8 @@ import {
   PREMIUM_LIMITS_MIN_SALES,
   STARTER_KEEP_PCT,
   CHIPS_KEEP_PCT,
+  FORMULA_PAGES_INDEXED_KEEP,
+  FORMULA_PAGES_SIGNUPS_KEEP,
   checkOn,
   type Experiment,
 } from "@/lib/growth/registry";
@@ -286,6 +288,17 @@ export default async function GrowthPage() {
               open an empty performance page start a test within a day. Below that, try a different offer first.
             </p>
             <ReadingsList metric="starter-start-rate" />
+          </div>
+        );
+      case "formula-pages":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince))}: keep building on them if {FORMULA_PAGES_INDEXED_KEEP}+
+              pages are indexed and {FORMULA_PAGES_SIGNUPS_KEEP}+ signups first landed on one.
+            </p>
+            <ReadingsList metric="formula-indexed" />
+            <ReadingsList metric="formula-signups" />
           </div>
         );
       case "premium-limits":

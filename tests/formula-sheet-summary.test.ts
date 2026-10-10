@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { formulaSheetSummaryLine } from "@/lib/notes/formulaSheetSummary";
+import { formulaCountsLine, formulaSheetSummaryLine } from "@/lib/notes/formulaSheetSummary";
 
 const s = (formulas: number, references: number, traps: number) => ({
   formulas: Array(formulas).fill({}),
@@ -17,5 +17,12 @@ describe("formulaSheetSummaryLine", () => {
   });
   it("is empty for nothing", () => {
     expect(formulaSheetSummaryLine([])).toBe("");
+  });
+});
+
+describe("formulaCountsLine", () => {
+  it("says the same thing from counts", () => {
+    expect(formulaCountsLine({ formulas: 10, tables: 2, traps: 14 })).toBe("10 formulas · 2 tables · 14 traps");
+    expect(formulaCountsLine({ formulas: 0, tables: 1, traps: 0 })).toBe("1 table");
   });
 });

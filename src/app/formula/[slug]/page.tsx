@@ -33,13 +33,21 @@ import {
   type FormulaKind,
 } from "@/lib/formula";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
+import FormulaExamHub, { formulaExamHubMetadata } from "../_components/FormulaExamHub";
+import { formulaExamGroup, formulaExamSlugs } from "@/lib/formula/chapterPages";
 
 const SITE_URL = "https://www.pyqvault.com";
 
 export const revalidate = 86400;
 
+/**
+ * Identity pages, plus the exam hubs (/formula/nda ...). The hubs are here
+ * because the chapter formula pages live one folder down, and Next pre-builds
+ * those for the [slug] values THIS function returns (2026-10-10). No exam slug
+ * is an identity slug: tests/formula-chapter-pages.test.ts.
+ */
 export function generateStaticParams() {
-  return allFormulaSlugs().map((slug) => ({ slug }));
+  return [...allFormulaSlugs(), ...formulaExamSlugs()].map((slug) => ({ slug }));
 }
 
 type Params = { params: { slug: string } };
@@ -51,6 +59,8 @@ const KIND_LABEL: Record<FormulaKind, string> = {
 };
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const hub = formulaExamGroup(params.slug);
+  if (hub) return formulaExamHubMetadata(hub);
   const entry = formulaBySlug(params.slug);
   if (!entry) return { title: "Not found" };
   const { topic, chapter } = entry;
@@ -89,6 +99,8 @@ function Stat({ value, label }: { value: string; label: string }) {
 }
 
 export default async function FormulaPage({ params }: Params) {
+  const hub = formulaExamGroup(params.slug);
+  if (hub) return <FormulaExamHub group={hub} />;
   const entry = formulaBySlug(params.slug);
   if (!entry) notFound();
   const { topic, chapter } = entry;

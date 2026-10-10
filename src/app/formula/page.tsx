@@ -1,10 +1,13 @@
 /**
- * Index of the formula axis — every identity a chapter's solutions use, with
- * how many questions use each.
+ * /formula: two lists.
  *
- * Ordered by question count rather than by teaching order, because the point of
- * this page is weight: it tells a student which identities the chapter actually
- * leans on, which the notes' pedagogical ordering deliberately does not.
+ * 1. Chapter formula sheets (2026-10-10): every /notes chapter with enough
+ *    formulas, by exam and subject, each linking to /formula/<exam>/<subject>/
+ *    <chapter>. Built from the notes registry, so a new chapter appears here
+ *    the day it ships.
+ * 2. The identity axis: every identity a chapter's solutions use, with how many
+ *    questions use each, ordered by question count rather than teaching order,
+ *    because the point is weight: which identities the chapter leans on.
  */
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -14,6 +17,8 @@ import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import { FORMULA_CHAPTERS, topicsByWeight, type FormulaKind } from "@/lib/formula";
+import { groupFormulaPagesForIndex, listFormulaChapterPages } from "@/lib/formula/chapterPages";
+import FormulaChapterList from "./_components/FormulaChapterList";
 
 const SITE_URL = "https://www.pyqvault.com";
 
@@ -21,9 +26,16 @@ export const revalidate = 86400;
 
 const total = FORMULA_CHAPTERS.reduce((n, c) => n + c.topics.length, 0);
 
+const chapterPages = listFormulaChapterPages();
+const groups = groupFormulaPagesForIndex(chapterPages);
+const examList = (() => {
+  const names = groups.map((g) => g.examDisplay);
+  return names.length > 1 ? `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}` : names[0];
+})();
+
 export const metadata: Metadata = {
-  title: { absolute: fitTitle(`Formula index — ${total} identities, each with the questions that use it`) },
-  description: `Every formula, property and technique the Matrices & Determinants solutions in the bank actually use, each with the full set of past-year and practice questions whose solution invokes it. Free to browse.`,
+  title: { absolute: fitTitle(`Formula sheets by chapter: ${groups.map((g) => g.examDisplay).join(", ")}`) },
+  description: `Every chapter's formulas, reference tables and common traps for ${examList}, one page per chapter. Plus every question whose solution uses a Matrices & Determinants identity. Free to read.`,
   alternates: { canonical: `${SITE_URL}/formula` },
 };
 
@@ -46,11 +58,32 @@ export default function FormulaIndexPage() {
       <main className="mx-auto w-full max-w-5xl p-8">
         <p className="inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-brand-accent">
           <Sigma className="h-3.5 w-3.5" aria-hidden />
-          Formula index
+          Formulas
         </p>
-        <h1 className="mt-1 text-3xl font-semibold tracking-tight">
+        <h1 className="mt-1 text-3xl font-semibold tracking-tight">Formula sheets by chapter</h1>
+        <p className="mt-3 max-w-3xl text-muted-foreground">
+          {chapterPages.length} chapters across {examList}, each with its formulas, reference tables and
+          common traps on one page.
+        </p>
+
+        <div className="mt-8 space-y-10">
+          {groups.map((g) => (
+            <section key={g.examSlug} aria-labelledby={`exam-${g.examSlug}`}>
+              <h2 id={`exam-${g.examSlug}`} className="text-xl font-semibold tracking-tight">
+                <Link href={`/formula/${g.examSlug}`} className="hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                  {g.examDisplay}
+                </Link>
+              </h2>
+              <div className="mt-4">
+                <FormulaChapterList group={g} />
+              </div>
+            </section>
+          ))}
+        </div>
+
+        <h2 className="mt-16 text-2xl font-semibold tracking-tight">
           Questions by the identity their solution uses
-        </h1>
+        </h2>
         <p className="mt-3 max-w-3xl text-muted-foreground">
           A different way into the same bank. Instead of filtering by chapter,
           pick the formula you want to drill and get every question whose
@@ -63,9 +96,9 @@ export default function FormulaIndexPage() {
           const covered = new Set(topics.flatMap((t) => t.questionIds)).size;
           return (
             <section key={chapter.chapterSlug} className="mt-10">
-              <h2 className="text-xl font-semibold tracking-tight">
+              <h3 className="text-xl font-semibold tracking-tight">
                 {chapter.chapterName}
-              </h2>
+              </h3>
               <p className="mt-1 text-sm text-muted-foreground">
                 {topics.length} identities across {covered} questions, read and
                 tagged one by one.

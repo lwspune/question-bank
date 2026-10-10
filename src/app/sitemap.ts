@@ -41,6 +41,7 @@ import {
 } from "@/lib/mocks/sitemapEntries";
 import type { MockScope, MockSource } from "@/lib/mocks/query";
 import { FORMULA_CHAPTERS, topicsByWeight } from "@/lib/formula";
+import { formulaChapterHref, formulaExamSlugs, listFormulaChapterPages } from "@/lib/formula/chapterPages";
 import { BOARD_EXAMS, EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { examHomeHref } from "@/lib/exam/examHome";
 import { TRENDS_REPORTS, reportUpdatedIso } from "@/lib/guide/trendsReports";
@@ -697,6 +698,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.6,
       }))
     ),
+    // Chapter formula pages (2026-10-10) and their exam hubs. A chapter page
+    // is the notes chapter's formulas, so it carries that chapter's date.
+    ...formulaExamSlugs().map((slug) => ({
+      url: `${SITE_URL}/formula/${slug}`,
+      lastModified: buildDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+    ...listFormulaChapterPages().map((p) => ({
+      url: `${SITE_URL}${formulaChapterHref(p)}`,
+      lastModified: contentDateFor(p.notesHref, contentDates, buildDate),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
   ];
 
   const blogEntries: MetadataRoute.Sitemap = [

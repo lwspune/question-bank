@@ -24,6 +24,7 @@ export type LlmsExam = {
 const HUBS: readonly [path: string, title: string, blurb: string][] = [
   ["/questions", "Question bank by chapter", "every chapter page: past-year questions with answers, worked solutions, years covered, difficulty split and most-asked subtopics"],
   ["/notes", "Chapter notes", "self-sufficient teaching notes per chapter — concepts, worked past-year examples, self-checks and practice"],
+  ["/formula", "Formula sheets by chapter", "every chapter's formulas with symbol legends, reference tables and common traps, grouped by subtopic"],
   ["/guide", "Strategy guides", "per-subject guides built by counting the papers: chapter weightage, playbooks, traps"],
   ["/guide/reports", "Trend reports", "year-by-year analyses of each exam's papers, dated, with the sitting each runs through"],
   ["/mock", "Timed mocks", "real past papers served whole as timed, auto-graded tests"],
