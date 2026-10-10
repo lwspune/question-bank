@@ -166,16 +166,16 @@ export default function MhtCet2027DatesPost() {
       </P>
 
       <div className="mt-6 overflow-x-auto">
-        <table className="w-full min-w-[24rem] border-collapse text-sm">
+        <table className="w-full border-collapse text-sm">
           <caption className="sr-only">
             MHT-CET questions per paper by Balbharati book, {WINDOW.fromYear} to {WINDOW.toYear}
           </caption>
           <thead>
             <tr className="border-b text-left">
-              <th scope="col" className="py-2 pr-4 font-semibold">Subject</th>
-              <th scope="col" className="py-2 pr-4 text-right font-semibold">Std XII chapters</th>
-              <th scope="col" className="py-2 pr-4 text-right font-semibold">Both books</th>
-              <th scope="col" className="py-2 text-right font-semibold">Std XI chapters</th>
+              <th scope="col" className="py-2 pr-3 font-semibold">Subject</th>
+              <th scope="col" className="py-2 pr-3 text-right font-semibold">Std XII</th>
+              <th scope="col" className="py-2 pr-3 text-right font-semibold">Both</th>
+              <th scope="col" className="py-2 text-right font-semibold">Std XI</th>
             </tr>
           </thead>
           <tbody>
@@ -184,16 +184,16 @@ export default function MhtCet2027DatesPost() {
                 <th scope="row" className="py-2 pr-4 text-left font-normal">
                   {SUBJECT_LABEL[s]}
                 </th>
-                <td className="py-2 pr-4 text-right tabular-nums">{perPaper(s, "XII")}</td>
-                <td className="py-2 pr-4 text-right tabular-nums">{perPaper(s, "both")}</td>
-                <td className="py-2 text-right tabular-nums font-semibold">{perPaper(s, "XI")}</td>
+                <td className="py-2 pr-4 text-right tabular-nums">{perPaper(s, "XII").toFixed(1)}</td>
+                <td className="py-2 pr-4 text-right tabular-nums">{perPaper(s, "both").toFixed(1)}</td>
+                <td className="py-2 text-right tabular-nums font-semibold">{perPaper(s, "XI").toFixed(1)}</td>
               </tr>
             ))}
           </tbody>
         </table>
         <p className="mt-2 text-xs text-muted-foreground">
-          Average questions per paper, out of 50 per subject. Mathematics questions carry 2 marks,
-          Physics and Chemistry 1, for 200 marks in all.
+          Average questions per paper, out of 50 per subject, by the book a chapter comes from.
+          Mathematics questions carry 2 marks, Physics and Chemistry 1, for 200 marks in all.
         </p>
       </div>
 
