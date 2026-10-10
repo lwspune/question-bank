@@ -28,6 +28,7 @@ import {
   mockTypeHref,
   splitMockTypeCards,
 } from "@/lib/mocks/catalogue";
+import ResultsStrip from "@/components/results/ResultsStrip";
 
 // Nested under /mock/exam/ (not /mock/[slug], which is the instructions page).
 export const revalidate = 3600;
@@ -110,6 +111,8 @@ async function MockFamilyPage({ family }: { family: MockFamilyNav }) {
           My attempts
         </Link>
       </GuideHero>
+
+      <ResultsStrip examSlugs={family.stages.flatMap((g) => g.members.map((m) => m.slug))} className="mb-6" />
 
       {family.stages.map((group) => (
         <section key={group.stage ?? "all"} className="mt-8">
@@ -210,6 +213,8 @@ export default async function MockExamTypePicker({ params }: { params: Params })
           )}
         </div>
       </GuideHero>
+
+      <ResultsStrip examSlugs={[exam.slug]} className="mb-6" />
 
       <OwnAttemptsProvider>
         <NextMockCard pastIds={pastIds} mocks={rowById} />

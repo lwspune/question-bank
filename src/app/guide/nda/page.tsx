@@ -6,6 +6,7 @@ import { buildGuideSideNav } from "@/lib/guide/guidesNav";
 import { getSubjectGuides } from "@/lib/guide/guideCatalog";
 import GuideHubList from "@/app/guide/_components/GuideHubList";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
+import ResultsStrip from "@/components/results/ResultsStrip";
 
 export const metadata: Metadata = {
   title: { absolute: fitTitle("NDA Strategy Guides for All 10 Subjects") },
@@ -39,6 +40,8 @@ export default function NdaGuideIndex() {
             subtitle="One guide per NDA subject, ten in all, each built from that subject's own past papers since 2017."
           />
         </div>
+
+        <ResultsStrip examSlugs={["nda"]} className="mb-6" />
 
         <GuideHubList guides={GUIDES} examDisplay="NDA" restTitle="Paper II · General Ability" />
 

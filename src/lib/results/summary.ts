@@ -73,3 +73,23 @@ export function initialsOf(name: string): string {
   const last = parts.length > 1 ? parts[parts.length - 1][0] : "";
   return (first + last).toUpperCase();
 }
+
+/**
+ * Every page that shows a result of this exam, for a publish to refresh at
+ * once: /results, the homepage and /pricing (newest result of any exam), and
+ * the exam's own hubs. A path that has no page (an exam with no guides) costs
+ * nothing to revalidate.
+ */
+export function resultPagePaths(examSlug: string, mockFamilySlug: string | null): string[] {
+  const paths = [
+    "/results",
+    "/",
+    "/pricing",
+    `/${examSlug}`,
+    `/mock/exam/${examSlug}`,
+    `/notes/${examSlug}`,
+    `/guide/${examSlug}`,
+  ];
+  if (mockFamilySlug) paths.push(`/mock/exam/${mockFamilySlug}`);
+  return [...new Set(paths)];
+}

@@ -138,7 +138,7 @@ describe.skipIf(!HAS_ENV)("student results (migration 0149)", () => {
     const waiting = mine.waiting.find((n) => n.name === "Meera Iyer")!;
     expect(waiting.source).toBe("self");
     expect(mine.counts.cleared).toBeGreaterThanOrEqual(2);
-    await reviewResult(waiting.id, "publish");
+    expect(await reviewResult(waiting.id, "publish")).toBe("nda");
     const { data } = await anon.from("student_results").select("display_name").eq("announcement_id", announcementId);
     expect((data ?? []).map((r) => r.display_name)).toContain("Meera Iyer");
   });

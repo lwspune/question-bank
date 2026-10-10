@@ -19,6 +19,7 @@ import { loadChapterPyqCounts } from "@/lib/notes/chapterCounts";
 import { buildHubSubject, chapterKey, type HubSubject } from "@/lib/notes/examHub";
 import NotesHubChapters from "@/app/notes/_components/NotesHubChapters";
 import ContinueReadingCard from "@/app/notes/_components/ContinueReadingCard";
+import ResultsStrip from "@/components/results/ResultsStrip";
 
 export const revalidate = 86400;
 
@@ -136,6 +137,8 @@ export default async function NotesExamHub({ params }: { params: Params }) {
       />
 
       <GuideHero eyebrow={`${group.displayName} · Teaching notes`} title={title} subtitle={intro} />
+
+      <ResultsStrip examSlugs={[group.slug]} className="mb-6" />
 
       {subjects.length === 0 ? (
         <section className="mt-6 rounded-lg border bg-card p-8 text-center">

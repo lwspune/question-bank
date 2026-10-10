@@ -5,13 +5,14 @@ import { groupResults, resultHeadline } from "@/lib/results/summary";
 
 /**
  * One line linking to /results: "6 PYQ Vault students cleared the NDA 2 2026
- * written exam". The newest published result, of one exam when `examSlug` is
- * given. Renders nothing when there is none, or when the read fails: a broken
- * strip must never break the page it sits on.
+ * written exam". The newest published result, of the given exams when
+ * `examSlugs` is set (an exam's own pages show only its own results).
+ * Renders nothing when there is none, or when the read fails: a broken strip
+ * must never break the page it sits on.
  */
-export default async function ResultsStrip({ examSlug, className = "" }: { examSlug?: string; className?: string }) {
+export default async function ResultsStrip({ examSlugs, className = "" }: { examSlugs?: readonly string[]; className?: string }) {
   const results = await getPublishedResults().catch(() => []);
-  const group = groupResults(examSlug ? results.filter((r) => r.examSlug === examSlug) : results)[0];
+  const group = groupResults(examSlugs ? results.filter((r) => examSlugs.includes(r.examSlug)) : results)[0];
   if (!group) return null;
 
   return (

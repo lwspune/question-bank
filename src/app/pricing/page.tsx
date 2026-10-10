@@ -12,6 +12,7 @@ import PricingClient from "./PricingClient";
 import { afterPurchasePath, pricingHref } from "@/lib/billing/checkoutReturn";
 import { logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
+import ResultsStrip from "@/components/results/ResultsStrip";
 
 export const dynamic = "force-dynamic";
 
@@ -66,6 +67,8 @@ export default async function PricingPage({
               : `Your first ${freeMocks} mock tests are free too.`}
           </p>
         </header>
+
+        <ResultsStrip className="mt-6" />
 
         {plans.length === 0 ? (
           <p className="mt-8 text-center text-sm text-muted-foreground">

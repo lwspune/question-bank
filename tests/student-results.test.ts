@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { groupResults, initialsOf, resultHeadline, type PublicResult } from "@/lib/results/summary";
+import { groupResults, initialsOf, resultHeadline, resultPagePaths, type PublicResult } from "@/lib/results/summary";
 
 const r = (name: string, over: Partial<PublicResult> = {}): PublicResult => ({
   examSlug: "nda",
@@ -61,5 +61,23 @@ describe("initialsOf: the circle on a name card", () => {
   });
   it("takes one letter for one name, upper-cased", () => {
     expect(initialsOf("arnav")).toBe("A");
+  });
+});
+
+describe("resultPagePaths: the pages a publish refreshes", () => {
+  it("covers the shared pages and that exam's own hubs", () => {
+    const paths = resultPagePaths("nda", null);
+    expect(paths).toEqual(
+      expect.arrayContaining(["/results", "/", "/pricing", "/nda", "/mock/exam/nda", "/notes/nda", "/guide/nda"])
+    );
+  });
+
+  it("adds the exam family's mock page when there is one", () => {
+    expect(resultPagePaths("mpsc-group-b-c", "mpsc")).toContain("/mock/exam/mpsc");
+  });
+
+  it("never lists a path twice", () => {
+    const p = resultPagePaths("nda", null);
+    expect(new Set(p).size).toBe(p.length);
   });
 });

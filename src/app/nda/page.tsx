@@ -137,7 +137,7 @@ export default async function NdaHomePage() {
           />
         </div>
 
-        <ResultsStrip examSlug="nda" className="mb-6" />
+        <ResultsStrip examSlugs={["nda"]} className="mb-6" />
 
         {/* Live stats + primary CTA */}
         <section className="mb-12 rounded-xl border bg-card p-5 shadow-sm sm:p-6">

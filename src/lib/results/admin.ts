@@ -6,6 +6,7 @@
  */
 import "server-only";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { getExamByName } from "@/lib/exam/examContext";
 import { tallyOutcomes, type ResultOutcome } from "./check";
 import { STAGE_LABEL, type ResultStage } from "./summary";
 
@@ -79,8 +80,9 @@ export async function listResultsForReview(): Promise<ReviewAnnouncement[]> {
  * publish: show the name. unpublish: take it down, keeping the student's
  * consent (it can go back up). decline: take it down and drop the request,
  * so it leaves the waiting list; the answer itself is kept for the counts.
+ * Returns the exam's slug, so the caller can refresh that exam's pages.
  */
-export async function reviewResult(id: string, action: "publish" | "unpublish" | "decline"): Promise<void> {
+export async function reviewResult(id: string, action: "publish" | "unpublish" | "decline"): Promise<string | null> {
   const db = createSupabaseAdminClient();
   const patch =
     action === "publish"
@@ -88,6 +90,14 @@ export async function reviewResult(id: string, action: "publish" | "unpublish" |
       : action === "unpublish"
         ? { published: false }
         : { published: false, show_publicly: false };
-  const { error } = await db.from("student_results").update({ ...patch, updated_at: new Date().toISOString() }).eq("id", id);
+  const { data, error } = await db
+    .from("student_results")
+    .update({ ...patch, updated_at: new Date().toISOString() })
+    .eq("id", id)
+    .select("result_announcements(exams(name))")
+    .single();
   if (error) throw new Error(`student results review: ${error.message}`);
+  const name = (data as unknown as { result_announcements: { exams: { name: string } | null } | null })
+    .result_announcements?.exams?.name;
+  return getExamByName(name)?.slug ?? null;
 }
