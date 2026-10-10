@@ -6,6 +6,22 @@ Pending features, data-model changes, and content work for Question Bank. Mirror
 
 ---
 
+## UX triage: what is left (2026-10-10)
+
+The 2026-10-02 UX review ([UX_REVIEW.md](UX_REVIEW.md) → [UX_REVIEW_TRIAGE.md](UX_REVIEW_TRIAGE.md) → [UX_ACTION_PLAN.md](UX_ACTION_PLAN.md)) mostly shipped between 10-02 and 10-05. Still open:
+
+**Build (agreed in the plan, not done):**
+- **A11, resume card on `/mock` and `/mock/exam/[slug]`.** Only `/me` (`TodayCard`) offers to resume an open mock. The plan: the pulse returns `resume` from one cheap query and a client island renders "Resume {title}, N min left", so the cached mock pages stay cached.
+- **U9, theme toggle into the menu below `sm`.** Still in the header at every width ([HeaderBar.tsx](src/components/header/HeaderBar.tsx)). Desktop keeps it.
+- **A6 probe, `npm run layout:overflow`** (headless Edge at 390 px, reports pages wider than the screen). Lower priority since `overflow-x: clip` on html/body stops pages panning; it would still catch an element clipped off-screen.
+
+**Readings:**
+- **M1, `/browse` dead clicks in Clarity, 2026-10-03 to 10-09:** due now. If still high, watch 5 recordings.
+- **Y1 bank verdicts, 2026-10-16:** the bank wrong rate (mocks run about 30%). At 70%+ wrong, students tap an option just to see the answer; the fix is a "Show answer" button that records nothing. Also drill completions by bank-only students.
+- **A4 `/me` hero clicks by branch, 2026-10-16.**
+- **M3, MHT-CET chapter tests, 2026-10-29:** also decides Y2 (a short first unit on the homepage).
+- **Undated:** M2 (board-page recordings, then maybe restyle second-level rows), M4 (V chip use at `/dashboard/chat`), M5 (was the desktop Fix tab, ENGAGEMENT_SPEC A2, dropped on purpose?).
+
 ## MPSC chapter tests: two pools left out (2026-10-06)
 
 The 68 MPSC chapter tests (`scripts/mocks/data/mpsc-*-sectional.json`) skip two things, both data fixes rather than builder work:
