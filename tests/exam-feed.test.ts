@@ -12,6 +12,7 @@ import {
   ANON_FEED,
   anonFeedFor,
   resolveExamFeed,
+  feedLayout,
   resolveStudentTier,
   splitByFeed,
   type ExamFeed,
@@ -86,17 +87,32 @@ describe("resolveExamFeed", () => {
     expect(feed.tier).toBeNull();
   });
 
-  it("puts targets first in stored order, then the tier in registry order", () => {
+  // Owner, 2026-10-10: "Your exams" is the exams the student CHOSE, nothing
+  // more. Filling it with the rest of their tier put CDS under "Your exams" for
+  // an MPSC student (both graduate).
+  it("puts only the chosen exams first, in stored order", () => {
     const feed = resolveExamFeed({ stage: "class-12", targetExams: ["jee-mains", "nda"] }, REG);
     expect(feed.tier).toBe("senior");
-    expect(feed.primary).toEqual(["jee-mains", "nda", "mht-cet"]);
-    expect(feed.other).toEqual(["cds", "cbse-10", "neet", "mh-sb-9"]);
+    expect(feed.primary).toEqual(["jee-mains", "nda"]);
+    expect(feed.other).toEqual(["mht-cet", "cds", "cbse-10", "neet", "mh-sb-9"]);
+  });
+
+  it("does not add a same-tier exam the student did not choose", () => {
+    const feed = resolveExamFeed({ stage: null, targetExams: ["neet"] }, REG);
+    expect(feed.tier).toBe("graduate");
+    expect(feed.primary).toEqual(["neet"]);
+    expect(feed.other).toContain("cds");
   });
 
   it("keeps an out-of-tier target in primary, not other (the CDS+NDA case)", () => {
     const feed = resolveExamFeed({ stage: "class-12", targetExams: ["nda", "cds"] }, REG);
-    expect(feed.primary).toEqual(["nda", "cds", "mht-cet", "jee-mains"]);
+    expect(feed.primary).toEqual(["nda", "cds"]);
     expect(feed.other).not.toContain("cds");
+  });
+
+  it("falls back to the stage's tier for a student who chose no exam", () => {
+    const feed = resolveExamFeed({ stage: "class-12", targetExams: [] }, REG);
+    expect(feed.primary).toEqual(["nda", "mht-cet", "jee-mains"]);
   });
 
   it("never lists a noPublicContent exam, even as a target", () => {
@@ -172,5 +188,25 @@ describe("splitByFeed", () => {
     const { primary, other } = splitByFeed(cards, (c) => c.slug, feed);
     expect(primary.map((c) => c.id)).toEqual(["jee", "cbse"]);
     expect(other.map((c) => c.id)).toEqual(["mh"]);
+  });
+});
+
+describe("feedLayout", () => {
+  it("is the plain list for anyone we know nothing about", () => {
+    expect(feedLayout(null, 0, 5)).toBe("plain");
+    expect(feedLayout(null, 5, 0)).toBe("plain");
+  });
+
+  it("splits when the student has cards on both sides", () => {
+    expect(feedLayout("senior", 2, 6)).toBe("split");
+  });
+
+  it("is the plain list when there is nothing to fold away", () => {
+    expect(feedLayout("senior", 4, 0)).toBe("plain");
+  });
+
+  it("folds everything when none of the student's exams is on the page", () => {
+    // The MPSC student on /notes: no notes for MPSC, so no "Your exams" at all.
+    expect(feedLayout("graduate", 0, 7)).toBe("folded");
   });
 });

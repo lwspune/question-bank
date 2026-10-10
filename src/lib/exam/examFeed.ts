@@ -28,8 +28,9 @@ export type FeedInput = {
 export type ExamFeed = {
   /** null = nothing known; show everything in registry order. */
   tier: ExamTier | null;
-  /** Shown first: target exams in their stored order, then the rest of the
-   *  tier in registry order. Never contains a noPublicContent exam. */
+  /** Shown first: the exams the student chose, in their stored order. Only a
+   *  student who chose none gets their stage's tier here instead. Never
+   *  contains a noPublicContent exam. */
   primary: ExamSlug[];
   /** Collapsed under "Other exams". Registry order. Never noPublicContent. */
   other: ExamSlug[];
@@ -90,9 +91,15 @@ export function resolveExamFeed(input: FeedInput, entries: readonly ExamEntry[])
     primary.push(slug);
   };
 
+  // Owner, 2026-10-10: "Your exams" means the exams the student chose. Filling
+  // it with the rest of their tier put CDS under "Your exams" for an MPSC
+  // student (both graduate). The tier now fills it only for a student who
+  // stated a stage and chose no exam.
   for (const slug of input.targetExams) add(slug);
-  for (const e of publicEntries) {
-    if (tier === null || e.tier === tier) add(e.slug);
+  if (primary.length === 0) {
+    for (const e of publicEntries) {
+      if (tier === null || e.tier === tier) add(e.slug);
+    }
   }
 
   const other = publicEntries.map((e) => e.slug).filter((s) => !seen.has(s));
@@ -133,4 +140,21 @@ export function splitByFeed<T>(
 
   ranked.sort((a, b) => a.rank - b.rank);
   return { primary: [...ranked.map((r) => r.item), ...unknown], other };
+}
+
+/**
+ * How an index page lays out its cards for this viewer:
+ *   plain  - the list as it is (anon, nothing known, or nothing to fold away);
+ *   split  - "Your exams" first, the rest folded under "Browse other exams";
+ *   folded - none of the student's exams is on this page, so there is no
+ *            "Your exams" and everything sits folded (the page's no-content
+ *            notice says what their exam does have).
+ */
+export function feedLayout(
+  tier: ExamTier | null,
+  primaryCount: number,
+  otherCount: number
+): "plain" | "split" | "folded" {
+  if (tier === null || otherCount === 0) return "plain";
+  return primaryCount === 0 ? "folded" : "split";
 }

@@ -10,7 +10,9 @@ import FeedSections from "@/components/exam/FeedSections";
 /**
  * The /board index list. A signed-in student who chose a board class sees their
  * board first with that class marked "Your class", and the other board folded
- * under "Other boards (N)". Everyone else sees the plain list.
+ * under "Browse other boards (N)". A student whose chosen exams include no board
+ * class sees every board folded (the page's notice says what their exam has);
+ * a student who chose nothing sees the plain list.
  *
  * The page is cached and reads no identity, so the first render is always the
  * plain list (hydration matches the server HTML) and the personal view appears
@@ -21,14 +23,24 @@ export default function BoardFeedList({ groups }: { groups: BoardIndexGroup[] })
   const { session } = useViewerSession();
   const split = session ? splitBoardIndex(groups, session.targetExams) : null;
 
-  if (!split) return <GroupList groups={groups} yours={NONE} />;
+  if (!split) {
+    if (!session || session.targetExams.length === 0) return <GroupList groups={groups} yours={NONE} />;
+    return (
+      <FeedSections
+        eyebrow="Your board"
+        primary={null}
+        otherLabel={`Browse other boards (${groups.length})`}
+        other={<GroupList groups={groups} yours={NONE} className="!mt-4" />}
+      />
+    );
+  }
 
   const yours = new Set(split.yourClasses);
   return (
     <FeedSections
       eyebrow="Your board"
       primary={<GroupList groups={split.mine} yours={yours} className="!mt-3" />}
-      otherLabel={`Other boards (${split.other.length})`}
+      otherLabel={`Browse other boards (${split.other.length})`}
       other={split.other.length > 0 ? <GroupList groups={split.other} yours={NONE} className="!mt-4" /> : null}
     />
   );
