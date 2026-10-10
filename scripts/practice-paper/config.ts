@@ -5908,6 +5908,32 @@ export const PAPERS: Record<string, PaperSpec> = {
     section: { key: "lws11-cet-chem-basic-30", label: "Basic Concepts of Chemistry" },
     bankAdd: true,
   },
+
+  // --- NDA Physics — Motion in 1D, 25 Q -------------------------------------
+  // LWS "11th Physics Examination — Motion in 1D". Born-digital PDF with a clean text
+  // layer; no printed key, so every answer is DERIVED (single pass, owner-reviewed).
+  // Filed under NDA Kinematics and Motion like the other LWS 11th Physics tests.
+  // Dedup vs the 58-row chapter + an NDA-Physics keyword sweep: 24 new, 1 dup
+  // (Q23 = bcdd695e, the 2v1v2/(v1+v2) average speed with the same option set).
+  // Q12's exact answer is ~1204 m; keyed 1200 m (C), the nearest printed value.
+  // Q23 prints "returns to Y"; corrected to X. FOUR FIGURES (Q4, Q10, Q14, Q16) are
+  // attached after commit by attach-lws11-motion-1d-figures.ts — Q4, Q14 and Q16 are
+  // unanswerable without theirs (Q4's 40 deg is measured from the VELOCITY axis).
+  "lws11-motion-1d": {
+    slug: "lws11-motion-1d",
+    title: "NDA Physics — Motion in 1D (25 Q)",
+    recordsFile: "lws11-motion-1d.records.json",
+    outName: "Tags_LWS11_Motion_in_1D",
+    sourceFile: "LWS_11th__Physics_Motion_in_1D.pdf",
+    subjectName: "Physics",
+    chapterName: "Kinematics and Motion",
+    subtopics: ["Equations of Motion and Graphs", "Projectile and Vertical Motion", "Vectors and Position"],
+    pyqNote:
+      "NDA Physics practice — LWS Pune 11th-batch test, chapter 'Motion in 1D' (25 Q). Source prints no answer key; answers DERIVED and owner-reviewed. Q4, Q14 and Q16 depend on a graph.",
+    examName: "NDA",
+    section: { key: "lws11-motion-1d", label: "Motion in 1D" },
+    bankAdd: true,
+  },
 };
 
 export function requirePaper(slug: string | undefined): PaperSpec {
