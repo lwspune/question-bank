@@ -7,6 +7,8 @@ import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { BOARD_EXAMS, getExamBySlug } from "@/lib/exam/examContext";
 import { listBoardChapters, slugify } from "@/lib/board/query";
 import { getPublishedPapers } from "@/lib/questionPapers/query";
+import { getPlanLinks } from "@/lib/homework/query";
+import { subjectHomework } from "@/lib/homework/links";
 import type { BoardHubChapterRef } from "@/lib/board/hub";
 import BoardHubTabs, { type BoardHubSubject } from "@/app/board/_components/BoardHubTabs";
 import BoardContinueCard from "@/app/board/_components/BoardContinueCard";
@@ -46,6 +48,11 @@ export default async function BoardExamHub({ params }: { params: Params }) {
     console.error("board hub: past papers unavailable", err);
     return [];
   });
+  // Daily homework plans (/homework). A failed read only loses the cards.
+  const plans = await getPlanLinks().catch((err) => {
+    console.error("board hub: homework plans unavailable", err);
+    return [];
+  });
   const paperCount = (subjectName: string) =>
     papers.filter((p) => p.examName === exam.examName && p.subjectName === subjectName).length;
   const hubSubjects: BoardHubSubject[] = subjects.map((s) => ({
@@ -56,6 +63,9 @@ export default async function BoardExamHub({ params }: { params: Params }) {
         href: `/question-papers/${params.examSlug}/${slugify(s.subjectName)}`,
         count: paperCount(s.subjectName),
       },
+    }),
+    ...(subjectHomework(plans, exam.examName, s.subjectName) && {
+      homework: subjectHomework(plans, exam.examName, s.subjectName)!,
     }),
     chapters: s.chapters.map((c) => ({
       chapterSlug: c.chapterSlug,

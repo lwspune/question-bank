@@ -123,7 +123,8 @@ type RawQuestion = {
   options: { label: string; text: string; is_correct: boolean; image_url: string | null }[] | null;
 };
 
-async function loadQuestions(client: SupabaseClient, ids: string[]): Promise<BoardQuestion[]> {
+/** Board questions by id, each with its options. Also read by a homework day page. */
+export async function loadBoardQuestions(client: SupabaseClient, ids: string[]): Promise<BoardQuestion[]> {
   const out: BoardQuestion[] = [];
   const unique = [...new Set(ids)];
   // .in() puts the list in the URL: chunk it.
@@ -197,7 +198,7 @@ export async function getPaperGroup(
     .range(0, 999);
   if (itemErr) throw new Error(`board paper items: ${itemErr.message}`);
   const allItems = (items ?? []) as RawItem[];
-  const questions = await loadQuestions(
+  const questions = await loadBoardQuestions(
     client,
     allItems.map((i) => i.question_id)
   );

@@ -50,6 +50,7 @@ export function footerLinks(): FooterGroup[] {
         { href: "/questions", label: "Questions by chapter" },
         { href: "/mock", label: "Mock tests" },
         { href: "/board", label: "Board textbook reader" },
+        { href: "/homework", label: "Daily homework" },
         { href: "/formula", label: "Questions by formula" },
       ],
     },

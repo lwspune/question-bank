@@ -15,8 +15,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getPublishedPapers } from "@/lib/questionPapers/query";
+import { getPlanLinks } from "@/lib/homework/query";
+import { examHomeworkHref } from "@/lib/homework/links";
 import { notFound, redirect } from "next/navigation";
-import { ArrowRight, BookOpen, ClipboardCheck, Compass, FileText, Library, NotebookPen } from "lucide-react";
+import { ArrowRight, BookOpen, CalendarDays, ClipboardCheck, Compass, FileText, Library, NotebookPen } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -100,12 +102,23 @@ export default async function ExamHomePage({ params }: Params) {
   });
   const exam = getExamBySlug(model.slug);
   const hasPapers = !!exam && papers.some((p) => p.examName === exam.examName);
+  // Daily homework (/homework): the plan, or the list when the exam has several.
+  const plans = await getPlanLinks().catch((err) => {
+    console.error("exam home: homework plans unavailable", err);
+    return [];
+  });
+  const homeworkHref = exam ? examHomeworkHref(plans, exam.examName) : null;
 
   const quickLinks = [
     hasPapers && {
       href: `/question-papers/${model.slug}`,
       label: "Whole past question papers, with marks and answers",
       Icon: FileText,
+    },
+    homeworkHref && {
+      href: homeworkHref,
+      label: "Daily homework: 5 board questions a day",
+      Icon: CalendarDays,
     },
     model.links.mocks && {
       href: model.links.mocks,
