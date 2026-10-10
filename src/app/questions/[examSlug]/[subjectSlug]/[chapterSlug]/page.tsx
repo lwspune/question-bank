@@ -18,6 +18,8 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import QuestionList from "@/app/browse/QuestionList";
 import { getQuestionResources } from "@/lib/links/questionResources";
+import { getPaperLinksForQuestions } from "@/lib/questions/paperLinks";
+import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { questionsLandingTitle } from "@/lib/seo/pageTitles";
 import {
@@ -179,6 +181,8 @@ export default async function ChapterQuestionsPage({ params }: Params) {
     loadLandingSubtopics(landing),
     listChapterTests(),
   ]);
+  // Each question's source pill opens the paper it came from.
+  const paperLinks = await getPaperLinksForQuestions(createSupabaseAnonClient(), questions.rows);
 
   // The quotable header: every line is a fact the bank can back, and a line
   // the bank cannot back is null and simply not rendered.
@@ -290,6 +294,7 @@ export default async function ChapterQuestionsPage({ params }: Params) {
               supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
               includeExam={false}
               breadcrumbFixed={{ subject: true, chapter: true }}
+              paperLinks={paperLinks}
               insert={{
                 afterQuestions: CARD_AFTER,
                 node: <NextStepCard links={nextStepLinks(secondPage)} />,
