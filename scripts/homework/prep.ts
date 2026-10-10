@@ -1,17 +1,20 @@
-// Prepare a CBSE 12 subject for the repeat review: slots (a question, or a case
+// Prepare a board subject for the repeat review: slots (a question, or a case
 // study's parts together), one evidence file per chapter, and a slots.json.
-//   npx tsx scripts/homework/prep-cbse.ts <Subject> generated-papers/homework/cbse-12-<subject>
-// Then reviewers follow scripts/homework/REVIEW_BRIEF.md, and scripts/homework/assemble.ts builds the plan file.
+//   npx tsx scripts/homework/prep.ts [--exam="Maharashtra HSC Class 12"] <Subject> generated-papers/homework/<slug>
+// The exam defaults to CBSE Class 12, whose sittings are YEARS; a Maharashtra
+// paper is its own sitting ("Feb 2024", "Jul 2024"), labelled by mhSittingLabel.
+// Then the review follows scripts/homework/REVIEW_BRIEF.md, and scripts/homework/assemble.ts builds the plan file.
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { isInstructionOnlyContext } from "@/lib/mocks/instructionContext";
+import { compareSittings, mhSittingLabel } from "@/lib/homework/sittings";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
 type Row = {
   id: string; question_number: string | null; text: string; context: string | null; question_format: string;
-  pyq_year: number; source_file: string | null; pyq_note: string | null; image_url: string | null;
+  pyq_year: number; pyq_month: string | null; source_file: string | null; pyq_note: string | null; image_url: string | null;
   chapter: { name: string } | null; subtopic: { name: string } | null;
   options: { label: string; text: string }[];
 };
@@ -22,14 +25,17 @@ const qnum = (s: string | null) => {
 };
 
 async function main() {
-  const [subject, out] = process.argv.slice(2);
+  const [subject, out] = process.argv.slice(2).filter((a) => !a.startsWith("--"));
+  const examName = process.argv.find((a) => a.startsWith("--exam="))?.slice("--exam=".length) ?? "CBSE Class 12";
+  const isMh = examName.startsWith("Maharashtra");
+  const sittingOf = (r: Row) => (isMh ? mhSittingLabel(r.pyq_year, r.pyq_month) : String(r.pyq_year));
   const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
-  const { data: ex } = await c.from("exams").select("id").eq("name", "CBSE Class 12").single();
+  const { data: ex } = await c.from("exams").select("id").eq("name", examName).single();
   const { data: sub } = await c.from("subjects").select("id").eq("exam_id", ex!.id).eq("name", subject).single();
   const rows: Row[] = [];
   for (let from = 0; ; from += 1000) {
     const { data, error } = await c.from("questions")
-      .select("id,question_number,text,context,question_format,pyq_year,source_file,pyq_note,image_url,chapter:chapters(name),subtopic:subtopics(name),options(label,text)")
+      .select("id,question_number,text,context,question_format,pyq_year,pyq_month,source_file,pyq_note,image_url,chapter:chapters(name),subtopic:subtopics(name),options(label,text)")
       .eq("exam_id", ex!.id).eq("subject_id", sub!.id).eq("question_kind", "pyq").eq("visibility", "PUBLIC")
       .order("id").range(from, from + 999);
     if (error) throw error;
@@ -44,12 +50,13 @@ async function main() {
     const key = passage ? `cs|${r.source_file}|${r.context!.trim()}` : `q|${r.id}`;
     (slots.get(key) ?? slots.set(key, []).get(key)!).push(r);
   }
-  const paperOf = (r: Row) => /question paper ([\d/A-Z-]+)/.exec(r.pyq_note ?? "")?.[1] ?? r.source_file ?? "?";
+  const paperOf = (r: Row) =>
+    isMh ? sittingOf(r) : /question paper ([\d/A-Z-]+)/.exec(r.pyq_note ?? "")?.[1] ?? r.source_file ?? "?";
   const slotList = [...slots.values()].map((rs) => {
     rs.sort((a, b) => qnum(a.question_number) - qnum(b.question_number) || (a.question_number ?? "").localeCompare(b.question_number ?? ""));
     const lead = rs[0];
     return {
-      id: lead.id, rows: rs.map((r) => r.id), year: String(lead.pyq_year), paper: paperOf(lead),
+      id: lead.id, rows: rs.map((r) => r.id), year: sittingOf(lead), paper: paperOf(lead),
       qno: lead.question_number ?? "", chapter: lead.chapter?.name ?? "(none)", subtopic: lead.subtopic?.name ?? "",
       caseStudy: rs.length > 1 || !!(lead.context && !isInstructionOnlyContext(lead.context)), rs,
     };
@@ -60,7 +67,7 @@ async function main() {
   for (const s of slotList) (byChapter.get(s.chapter) ?? byChapter.set(s.chapter, []).get(s.chapter)!).push(s);
   const index: { chapter: string; file: string; slots: number }[] = [];
   for (const [ch, list] of [...byChapter.entries()].sort()) {
-    list.sort((a, b) => a.subtopic.localeCompare(b.subtopic) || a.year.localeCompare(b.year));
+    list.sort((a, b) => a.subtopic.localeCompare(b.subtopic) || compareSittings(a.year, b.year));
     const file = ch.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") + ".md";
     let md = `# ${subject} | ${ch} | ${list.length} items\n\n`;
     for (const s of list) {

@@ -10,7 +10,7 @@
  * stands (e.g. its printed content was a drawing the bank does not hold). The
  * reason is kept in the file's `excludedQuestions`.
  *
- * <reviewDir> holds what scripts/homework/prep-cbse.ts wrote (slots.json: every
+ * <reviewDir> holds what scripts/homework/prep.ts wrote (slots.json: every
  * question, a case study as one slot with its parts) and the reviewers' output
  * in out/<chapter>.json (see scripts/homework/REVIEW_BRIEF.md). Sittings are
  * YEARS (owner, 2026-10-09: CBSE counts repeats across years, since the bank
@@ -23,6 +23,7 @@
  */
 import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { compareSittings } from "@/lib/homework/sittings";
 
 type Slot = { id: string; rows: string[]; year: string; chapter: string };
 type Review = {
@@ -60,7 +61,9 @@ function main() {
   const slots = allSlots.filter((s) => !dropped(s));
   const excluded = allSlots.filter(dropped).flatMap((s) => s.rows);
   const byId = new Map(slots.map((s) => [s.id, s]));
-  const sittings = [...new Set(slots.map((s) => s.year))].sort();
+  // Date order: a Maharashtra sitting is a paper ("Feb 2024"), which sorts wrong as text.
+  const sittings = [...new Set(slots.map((s) => s.year))].sort(compareSittings);
+  const isPapers = sittings.some((s) => /^[A-Z]/.test(s));
   const errors: string[] = [];
   const inRepeat = new Map<string, string>();
   const inType = new Map<string, string>();
@@ -87,7 +90,7 @@ function main() {
         years.set(s.year, (years.get(s.year) ?? true) && m.changed);
       }
       if (years.size < 2) errors.push(`${f} "${g.label}": spans ${years.size} year(s)`);
-      const list = [...years.keys()].sort().map((y) => (years.get(y) ? `${y}*` : y));
+      const list = [...years.keys()].sort(compareSittings).map((y) => (years.get(y) ? `${y}*` : y));
       groups.push({ tier: "repeat", label: g.label, sittings: list, questionIds: ids });
     }
     for (const g of r.types) {
@@ -100,7 +103,7 @@ function main() {
         years.add(s.year);
       }
       if (years.size < 2) errors.push(`${f} type "${g.label}": spans ${years.size} year(s)`);
-      groups.push({ tier: "type", label: g.label, sittings: [...years].sort(), questionIds: g.members });
+      groups.push({ tier: "type", label: g.label, sittings: [...years].sort(compareSittings), questionIds: g.members });
     }
   }
   if (errors.length) {
@@ -113,9 +116,11 @@ function main() {
     examName,
     subjectName,
     title,
-    summary: `${examName} ${subjectName} board questions, ${sittings[0]} to ${sittings[sittings.length - 1]}, five a day. Questions the board asked again in another year come first, highest count first, then the question types it keeps asking, then every other question. A case study counts as one question.`,
+    summary: isPapers
+      ? `${examName} ${subjectName} board questions, ${sittings[0].slice(-4)} to ${sittings[sittings.length - 1].slice(-4)}, five a day. Questions the board asked again come first, highest count first, then the question types it keeps asking, then every other question.`
+      : `${examName} ${subjectName} board questions, ${sittings[0]} to ${sittings[sittings.length - 1]}, five a day. Questions the board asked again in another year come first, highest count first, then the question types it keeps asking, then every other question. A case study counts as one question.`,
     perDay: 5,
-    note: "Repeats are counted across years: the bank keeps one row for a question that several sets of one year shared. Groups were found by a chapter-by-chapter reading (scripts/homework/REVIEW_BRIEF.md) and checked.",
+    note: arg("note") ?? "Repeats are counted across years: the bank keeps one row for a question that several sets of one year shared. Groups were found by a chapter-by-chapter reading (scripts/homework/REVIEW_BRIEF.md) and checked.",
     sittings,
     ...(excluded.length
       ? {
