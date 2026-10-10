@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   if (!plan) return {};
   return {
     title: `${plan.title} Daily Homework from Board Papers`,
-    description: `${plan.days} days of ${plan.examName} ${plan.subjectName} board questions, ${plan.perDay} a day, as a file to hand out. The questions the board asked again come first.`,
+    description: `${plan.examName} ${plan.subjectName} board questions, ${plan.perDay} a day, as a file to hand out. The questions the board asked again come first.`,
     alternates: { canonical: `/homework/${plan.slug}` },
   };
 }
@@ -68,7 +68,7 @@ export default async function HomeworkPlanPage({ params }: { params: Params }) {
       breadcrumbs={[{ href: "/homework", label: "Daily Homework" }, { label: plan.title }]}
     >
       <GuideHero
-        eyebrow={`Daily homework · ${plan.days} days`}
+        eyebrow={`Daily homework · ${plan.perDay} questions a day`}
         title={`${plan.title} daily homework`}
         subtitle={plan.summary}
       />
