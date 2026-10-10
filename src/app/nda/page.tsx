@@ -26,6 +26,7 @@ import { getExamHomeStats } from "@/lib/exam/examHomeStats";
 import { resolveBankHref } from "@/lib/exam/examContext";
 import { mockCatalogueHref } from "@/lib/exam/examLinks";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
+import ResultsStrip from "@/components/results/ResultsStrip";
 
 export const revalidate = 86400;
 
@@ -135,6 +136,8 @@ export default async function NdaHomePage() {
             subtitle="Every NDA past paper since 2017, sorted by chapter. Free."
           />
         </div>
+
+        <ResultsStrip examSlug="nda" className="mb-6" />
 
         {/* Live stats + primary CTA */}
         <section className="mb-12 rounded-xl border bg-card p-5 shadow-sm sm:p-6">
