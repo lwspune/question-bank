@@ -6,7 +6,8 @@ const [evidencePath, outPath] = process.argv.slice(2);
 const evidence = readFileSync(evidencePath, "utf8");
 const header = /^# [^|]+\| (.+?) \| \d+ items/m.exec(evidence);
 const yearOf = new Map();
-for (const m of evidence.matchAll(/^### ([0-9a-f-]{36}) \| (\d{4}) \|/gm)) yearOf.set(m[1], m[2]);
+// A sitting: a CBSE year ("2024") or a Maharashtra paper ("Feb 2024").
+for (const m of evidence.matchAll(/^### ([0-9a-f-]{36}) \| (\d{4}|[A-Z][a-z]{2} \d{4}) \|/gm)) yearOf.set(m[1], m[2]);
 
 const errors = [];
 let out;
