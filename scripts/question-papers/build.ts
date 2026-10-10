@@ -35,7 +35,8 @@ config({ path: ".env.local", override: true });
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { cbseManifest, type PaperManifest, type SourcePaper, type SourceQuestion } from "../../src/lib/questionPapers/manifest";
+import { cbseManifest, withLeaderQuestions, type PaperManifest, type SourcePaper, type SourceQuestion } from "../../src/lib/questionPapers/manifest";
+import { CBSE_FOLLOWERS } from "./cbseFollowers";
 import { mhManifest, type MarksPattern } from "../../src/lib/questionPapers/mhPattern";
 import { slugify } from "../../src/lib/board/query";
 import { MH_PATTERNS, sscPatternFor } from "./mhPatterns";
@@ -123,7 +124,11 @@ function mh(
 function cbseSources(): Candidate[] {
   const out: Candidate[] = [];
   for (const file of readdirSync(CBSE_DIR).filter((f) => /^\d{4}-\d+-\d+-\d+\.questions\.json$/.test(f)).sort()) {
-    const src = JSON.parse(readFileSync(join(CBSE_DIR, file), "utf8")) as SourcePaper;
+    const read = (f: string) => JSON.parse(readFileSync(join(CBSE_DIR, f), "utf8")) as SourcePaper;
+    const id = file.replace(/\.questions\.json$/, "");
+    const follower = CBSE_FOLLOWERS[id];
+    // A follower transcription holds only its own questions; the leader supplies the rest.
+    const src = follower ? withLeaderQuestions(read(file), read(`${follower.leader}.questions.json`), follower.map) : read(file);
     const subjectName = CBSE_SUBJECTS[src.paper.split("/")[0]];
     if (!subjectName) {
       refused.push(`${file}: no subject for paper code ${src.paper}`);

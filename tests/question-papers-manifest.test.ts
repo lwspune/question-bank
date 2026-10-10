@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { cbseManifest, marksTotal, type SourceQuestion } from "@/lib/questionPapers/manifest";
+import { cbseManifest, marksTotal, withLeaderQuestions, type SourceQuestion, type SourcePaper } from "@/lib/questionPapers/manifest";
 import { contentHash, subjectiveContentHash } from "@/lib/upload/hash";
 
 const opts = [
@@ -127,5 +127,52 @@ describe("marksTotal — what a student can score", () => {
     const r = cbseManifest(PAPER, { subjectName: "Physics", totals: TOTALS });
     if (!r.ok) throw new Error(r.reason);
     expect(marksTotal(r.manifest.items)).toBe(10);
+  });
+});
+
+describe("withLeaderQuestions — a follower set that transcribed only its own questions", () => {
+  const q = (n: string, extra: Partial<SourceQuestion> = {}): SourceQuestion => ({
+    ref: `Q${n.replace(/[\s()]/g, "")}`,
+    questionNumber: n,
+    section: "B",
+    marks: 2,
+    format: "subjective",
+    stem: `stem of leader ${n}`,
+    ...extra,
+  });
+  const leader: SourcePaper = {
+    paper: "65/5/1",
+    year: 2025,
+    pattern: "full80",
+    questions: [q("1"), q("2"), q("3 (a)"), q("3 (b)", { _alternativeTo: "Q3a" })],
+  };
+  const follower: SourcePaper = {
+    paper: "65/5/2",
+    year: 2025,
+    pattern: "full80",
+    questions: [q("2", { stem: "the follower's own question" })],
+  };
+
+  it("fills each missing printed number from the leader, renumbered, in printed order", () => {
+    const out = withLeaderQuestions(follower, leader, { "1": "3", "3": "1" });
+    expect(out.questions.map((x) => [x.questionNumber, x.ref, x.stem, x._alternativeTo ?? null])).toEqual([
+      ["1 (a)", "Q1a", "stem of leader 3 (a)", null],
+      ["1 (b)", "Q1b", "stem of leader 3 (b)", "Q1a"],
+      ["2", "Q2", "the follower's own question", null],
+      ["3", "Q3", "stem of leader 1", null],
+    ]);
+    expect(out.paper).toBe("65/5/2");
+  });
+
+  it("refuses a printed number that is both transcribed and mapped", () => {
+    expect(() => withLeaderQuestions(follower, leader, { "2": "1" })).toThrow(/2/);
+  });
+
+  it("refuses a map pointing at a leader question that does not exist", () => {
+    expect(() => withLeaderQuestions(follower, leader, { "1": "9" })).toThrow(/9/);
+  });
+
+  it("refuses a gap: every printed number up to the last must be accounted for", () => {
+    expect(() => withLeaderQuestions(follower, leader, { "3": "1" })).toThrow(/1/);
   });
 });
