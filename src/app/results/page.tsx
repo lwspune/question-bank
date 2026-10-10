@@ -31,7 +31,6 @@ export default async function ResultsPage() {
         <GuideHero
           eyebrow="Results"
           title="Our students' results"
-          subtitle="PYQ Vault students who cleared their exams. Every name is shown with the student's permission."
         />
 
         {groups.length === 0 ? (
