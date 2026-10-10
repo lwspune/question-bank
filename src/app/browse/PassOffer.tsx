@@ -42,8 +42,8 @@ export default function PassOffer({
   freeAfterSignIn?: boolean;
   /** This page with its filters: the fallback sign-in comes back here. */
   returnTo?: string;
-  /** "mock" = a past paper's box on /mock pages (2026-10-07); "homework" = a day's box on /homework (2026-10-09). */
-  mode: "filters" | "cart" | "mock" | "homework";
+  /** "mock" = a past paper's box on /mock pages (2026-10-07); "homework" = a day's box on /homework (2026-10-09); "formula" = a chapter's formula-sheet box on /notes (2026-10-10). */
+  mode: "filters" | "cart" | "mock" | "homework" | "formula";
   /** Which box the checkout started from, for the checkout events. */
   surface?: CheckoutSurface;
   onCancel: () => void;

@@ -33,6 +33,8 @@ import { FORMULA_CHAPTERS } from "@/lib/formula";
 import ChapterRevisionSheet from "./ChapterRevisionSheet";
 import { notesBreadcrumbs } from "@/lib/notes/breadcrumbs";
 import NotesHandoutLink from "./NotesHandoutLink";
+import FormulaSheetDownload from "./FormulaSheetDownload";
+import { formulaSheetSummaryLine } from "@/lib/notes/formulaSheetSummary";
 import { printHandoutHref } from "@/lib/notes/printDoc";
 import ConceptWeightTable from "./ConceptWeightTable";
 import { listChapterLandings, landingHref } from "@/lib/questions/landing";
@@ -213,16 +215,28 @@ export default async function NotesChapterLanding({ chapter }: Props) {
         collapsibleSubtitle
       />
 
-      {/* Printable handout — the whole chapter as one A4 PDF for teachers to
-          hand out. Client-gated on sign-in so this landing stays ISR-static. */}
+      {/* Two files. The printable handout: the whole chapter as one A4 PDF for
+          teachers to hand out, client-gated on sign-in so this landing stays
+          ISR-static. The formula sheet (2026-10-10): the revision sheet below
+          as one branded A4 PDF, the pass rule of the paper downloads plus one
+          free sheet per account; its box asks the server who is looking. */}
       <div className="mb-6">
-        <NotesHandoutLink
-          href={printHandoutHref(chapter.subjectRoute, chapter.chapterSlug)}
-          chapterName={meta.chapterName}
-        />
+        <div className="flex flex-wrap items-center gap-2">
+          <NotesHandoutLink
+            href={printHandoutHref(chapter.subjectRoute, chapter.chapterSlug)}
+            chapterName={meta.chapterName}
+          />
+          <FormulaSheetDownload
+            subjectRoute={chapter.subjectRoute}
+            chapterSlug={chapter.chapterSlug}
+            chapterName={meta.chapterName}
+            summary={formulaSheetSummaryLine(revisionGroups.map((g) => g.summary))}
+          />
+        </div>
         <p className="mt-1.5 text-xs text-muted-foreground">
-          Every subtopic, worked example, formula and trap in one printable
-          document — answers shown, ready to share.
+          The handout has every subtopic, worked example, formula and trap with
+          answers shown. The formula sheet is the chapter&apos;s formulas and traps
+          alone, on one page.
         </p>
       </div>
 

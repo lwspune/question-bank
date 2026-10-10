@@ -1,7 +1,8 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getPageIdentity } from "@/lib/auth";
 import { sessionHasScope } from "@/lib/entitlements/session";
-import { sessionPaperFree } from "@/lib/export/freeDownloadSession";
+import { sessionFormulaSheetFree, sessionPaperFree } from "@/lib/export/freeDownloadSession";
+import { formulaSheetKey, parseFormulaSheetTarget } from "@/lib/export/formulaSheet";
 import { paperKey } from "@/lib/export/freePaper";
 import { parseHomeworkTarget } from "@/lib/homework/dayExport";
 import { parseBoardPaperTarget } from "@/lib/questionPapers/exportPlan";
@@ -41,6 +42,10 @@ export async function GET(request: NextRequest) {
     homework,
     boardPaper,
   });
+  // Or one chapter's formula sheet, as "<subjectRoute>/<chapterSlug>" (2026-10-10):
+  // then `freeDownloadLeft` answers for the free SHEET, which is its own file,
+  // apart from the free paper.
+  const sheet = parseFormulaSheetTarget(request.nextUrl.searchParams.get("formula") ?? undefined);
   let viewer = ANON;
   try {
     const { isSignedIn, isStaff } = await getPageIdentity();
@@ -50,7 +55,10 @@ export async function GET(request: NextRequest) {
         signedIn: true,
         isStaff,
         hasDownloadPass,
-        freeDownloadLeft: !isStaff && !hasDownloadPass && (await sessionPaperFree(freeKey)),
+        freeDownloadLeft:
+          !isStaff &&
+          !hasDownloadPass &&
+          (sheet ? await sessionFormulaSheetFree(formulaSheetKey(sheet)) : await sessionPaperFree(freeKey)),
       };
     }
   } catch {
