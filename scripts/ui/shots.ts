@@ -22,21 +22,29 @@
  * never --window-size; and every run gets a fresh profile, because /browse's
  * anonymous reveal budget lives in browser storage and would carry over.
  *
- * What it cannot show: screens behind a sign-in or a click. Say so when
- * handing the sheet over.
+ * What it cannot show: screens behind a click, and a REAL student's data.
+ * `--as-student=<exam,...>` renders the signed-in view of a cached page (the
+ * header and any island that reads /api/me/header) for a stand-in student;
+ * pages that read the student's own rows still render anonymously. Say so
+ * when handing the sheet over.
  */
 import { spawn, type ChildProcess } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
-import { parseShotArgs, planCaptures, sheetHtml, VIEWPORTS, type Capture } from "./lib";
+import { parseShotArgs, planCaptures, sheetHtml, stubHeaderSession, VIEWPORTS, type Capture } from "./lib";
 
 const EDGE = process.env.EDGE ?? "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
 const PHONE_UA =
   "Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Mobile Safari/537.36";
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-type Cdp = { send: (method: string, params?: object) => Promise<Record<string, unknown>>; close: () => void };
+type Cdp = {
+  send: (method: string, params?: object) => Promise<Record<string, unknown>>;
+  /** Browser-initiated events (no id), e.g. Fetch.requestPaused. */
+  on: (method: string, fn: (params: Record<string, unknown>) => void) => void;
+  close: () => void;
+};
 
 async function launch(profile: string): Promise<{ proc: ChildProcess; cdp: Cdp }> {
   if (!existsSync(EDGE)) throw new Error(`Edge not found at ${EDGE}; set EDGE to its path`);
@@ -64,13 +72,17 @@ async function launch(profile: string): Promise<{ proc: ChildProcess; cdp: Cdp }
   await new Promise((r, j) => { ws.addEventListener("open", r); ws.addEventListener("error", j); });
   let id = 0;
   const pending = new Map<number, (m: Record<string, unknown>) => void>();
+  const listeners = new Map<string, ((p: Record<string, unknown>) => void)[]>();
   ws.addEventListener("message", (e) => {
     const m = JSON.parse(String(e.data));
     if (m.id && pending.has(m.id)) { pending.get(m.id)!(m); pending.delete(m.id); }
+    else if (m.method) for (const fn of listeners.get(m.method) ?? []) fn(m.params ?? {});
   });
+  const on = (method: string, fn: (p: Record<string, unknown>) => void) =>
+    void listeners.set(method, [...(listeners.get(method) ?? []), fn]);
   const send = (method: string, params: object = {}) =>
     new Promise<Record<string, unknown>>((r) => { const n = ++id; pending.set(n, r); ws.send(JSON.stringify({ id: n, method, params })); });
-  return { proc, cdp: { send, close: () => ws.close() } };
+  return { proc, cdp: { send, on, close: () => ws.close() } };
 }
 
 async function evaluate(cdp: Cdp, expression: string): Promise<unknown> {
@@ -102,6 +114,29 @@ async function capture(cdp: Cdp, c: Capture, waitMs: number, fullPage: boolean, 
   writeFileSync(join(dir, c.file), Buffer.from(shot.result.data, "base64"));
 }
 
+/**
+ * `--as-student`: give each site a stand-in Supabase auth cookie (the client's
+ * cheap "might be signed in" check) and answer /api/me/header in the browser
+ * with a plain student who chose `exams`. Nothing reaches a server as that
+ * student: the one identity request never leaves the browser, and the stand-in
+ * cookie fails any server-side check, which then treats the page as anonymous.
+ */
+async function actAsStudent(cdp: Cdp, exams: string[], origins: string[]) {
+  for (const url of origins) {
+    await cdp.send("Network.setCookie", { name: "sb-stub-auth-token", value: "stub", url, path: "/" });
+  }
+  const body = Buffer.from(JSON.stringify(stubHeaderSession(exams))).toString("base64");
+  cdp.on("Fetch.requestPaused", (p) => {
+    void cdp.send("Fetch.fulfillRequest", {
+      requestId: p.requestId,
+      responseCode: 200,
+      responseHeaders: [{ name: "content-type", value: "application/json" }],
+      body,
+    });
+  });
+  await cdp.send("Fetch.enable", { patterns: [{ urlPattern: "*/api/me/header*" }] });
+}
+
 async function main() {
   const args = parseShotArgs(process.argv.slice(2));
   const stamp = new Date().toISOString().replace(/[:T]/g, "-").slice(0, 19);
@@ -111,6 +146,7 @@ async function main() {
   const profile = mkdtempSync(join(tmpdir(), "ui-shots-"));
   const { proc, cdp } = await launch(profile);
   try {
+    if (args.asStudent) await actAsStudent(cdp, args.asStudent, Object.values(args.targets));
     for (const c of plan) {
       if (args.phase !== "both" && c.target !== args.phase) continue;
       process.stdout.write(`${c.target.padEnd(6)} ${c.viewport.padEnd(7)} ${c.theme.padEnd(5)} ${c.url} ... `);
