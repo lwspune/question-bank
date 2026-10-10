@@ -26,7 +26,7 @@ describe("buildLlmsTxt", () => {
   });
 
   it("lists every section hub as an absolute link with a one-line description", () => {
-    for (const path of ["/questions", "/notes", "/guide", "/guide/reports", "/mock", "/board", "/about"]) {
+    for (const path of ["/questions", "/notes", "/formula", "/guide", "/guide/reports", "/mock", "/board", "/about"]) {
       expect(text).toContain(`](https://www.pyqvault.com${path})`);
     }
   });

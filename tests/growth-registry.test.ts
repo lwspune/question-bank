@@ -66,6 +66,7 @@ describe("EXPERIMENTS", () => {
       "chapter-share",
       "chapter-tests",
       "email-cap",
+      "formula-pages",
       "indexing",
       "onboarding-arms",
       "performance-starter",

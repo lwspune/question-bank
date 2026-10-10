@@ -30,6 +30,7 @@ import { loadSubtopicPyqCounts } from "@/lib/notes/subtopicCounts";
 import { chapterCardBlurb } from "@/lib/notes/cardBlurb";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import { FORMULA_CHAPTERS } from "@/lib/formula";
+import { formulaChapterHref, formulaPageForNotesChapter } from "@/lib/formula/chapterPages";
 import ChapterRevisionSheet from "./ChapterRevisionSheet";
 import { notesBreadcrumbs } from "@/lib/notes/breadcrumbs";
 import NotesHandoutLink from "./NotesHandoutLink";
@@ -76,6 +77,8 @@ export default async function NotesChapterLanding({ chapter }: Props) {
   const hasFormulaIndex = FORMULA_CHAPTERS.some(
     (c) => c.chapterSlug === chapter.chapterSlug
   );
+  // The chapter's formula page (2026-10-10), when it clears the thin-page floor.
+  const formulaPage = formulaPageForNotesChapter(chapter.subjectRoute, chapter.chapterSlug);
   // Was `/${examName.toLowerCase()}`, which only ever resolved for NDA —
   // "/mht-cet" and "/jee mains" were dead links on every other exam's notes.
   const examHomeHref = examHomeHrefFor(getExamByName(chapter.examName)?.slug ?? "nda");
@@ -281,6 +284,19 @@ export default async function NotesChapterLanding({ chapter }: Props) {
             aria-hidden
           />
         </Link>
+        {formulaPage && (
+          <Link
+            href={formulaChapterHref(formulaPage)}
+            className="group inline-flex items-center gap-1.5 rounded-full border border-input bg-background px-3 py-1 font-medium text-muted-foreground transition-colors hover:border-brand/40 hover:bg-brand/5 hover:text-brand-accent"
+          >
+            <Sigma className="h-3.5 w-3.5" aria-hidden />
+            <span>All formulas on one page</span>
+            <ArrowUpRight
+              className="h-3 w-3 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              aria-hidden
+            />
+          </Link>
+        )}
         {hasFormulaIndex && (
           <Link
             href="/formula"

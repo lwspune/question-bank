@@ -117,6 +117,9 @@ async function main() {
       case "performance-starter":
         line = handRead(e.liveSince, ["starter-start-rate"]);
         break;
+      case "formula-pages":
+        line = handRead(e.liveSince, ["formula-indexed", "formula-signups"]);
+        break;
       default: {
         // A new readout must be added here; this fails the typecheck until it is.
         const unhandled: never = e.readout;

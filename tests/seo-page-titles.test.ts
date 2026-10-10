@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { TITLE_MAX } from "@/lib/seo/title";
-import { questionsLandingTitle, boardChapterTitle } from "@/lib/seo/pageTitles";
+import { questionsLandingTitle, boardChapterTitle, formulaChapterTitle } from "@/lib/seo/pageTitles";
 
 describe("questionsLandingTitle", () => {
   it("names the exam by its short name, the subject and PYQs", () => {
@@ -81,5 +81,33 @@ describe("boardChapterTitle", () => {
     });
     expect(t.length).toBeLessThanOrEqual(TITLE_MAX);
     expect(t).toContain("CBSE Class 12");
+  });
+});
+
+/** /formula/<exam>/<subject>/<chapter> (2026-10-10): the chapter-wise formula pages. */
+describe("formulaChapterTitle", () => {
+  it("names the chapter, exam, subject and says formulas", () => {
+    const t = formulaChapterTitle({ chapterName: "Trigonometric Identities", examDisplay: "NDA", subjectName: "Mathematics" });
+    expect(t.startsWith("Trigonometric Identities")).toBe(true);
+    expect(t).toContain("NDA");
+    expect(t).toMatch(/Formulas/);
+    expect(t.length).toBeLessThanOrEqual(TITLE_MAX);
+  });
+
+  it("keeps the whole chapter name for the longest notes chapters", () => {
+    for (const [chapterName, examDisplay, subjectName] of [
+      ["Electromagnetic Induction and Alternating Current", "JEE Mains", "Physics"],
+      ["Mechanical Properties of Fluids", "MHT-CET", "Physics"],
+      ["Alcohols, Phenols and Ethers", "MHT-CET", "Chemistry"],
+    ]) {
+      const t = formulaChapterTitle({ chapterName, examDisplay, subjectName });
+      expect(t.length).toBeLessThanOrEqual(TITLE_MAX);
+      expect(t.startsWith(chapterName)).toBe(true);
+    }
+  });
+
+  it("differs from the same chapter's /questions title", () => {
+    const args = { chapterName: "Statistics", examDisplay: "NDA", subjectName: "Mathematics" };
+    expect(formulaChapterTitle(args)).not.toBe(questionsLandingTitle({ ...args, practiceOnly: false }));
   });
 });
