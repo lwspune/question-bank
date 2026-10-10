@@ -217,3 +217,39 @@ explicit sign-off before any row is touched.
 
 Note `content_hash` covers the stem, so correcting a stem is **delete +
 re-commit**, not an edit — which is exactly why the gate exists.
+
+### Reconciling in place (2026-10-10, signed off by the owner)
+
+The six Physics and Chemistry reconcile sittings were corrected WITHOUT delete +
+re-commit: a shipped row keeps its id (drills, saves, chapter tests, activity and
+item statistics all point at it) and gets the printed text, the printed number and
+a fingerprint recomputed by `buildPaperRecords`, so a later commit of the same
+transcription dedupes onto it.
+
+```sh
+npx tsx scripts/mh-hsc-12-pyq/paper/render.ts <id>            # page images to check against
+npx tsx scripts/mh-hsc-12-pyq/paper/reconcile-dump.ts <id>    # bank beside transcription -> out/<id>/reconcile.md
+npx tsx scripts/mh-hsc-12-pyq/paper/reconcile-apply.ts <id>   # report; refuses anything unreviewed
+#   review against the page, fix the TRANSCRIPTION where the bank was right,
+#   record decisions in data/reconcile/<id>.json, re-run until it is clean
+npx tsx scripts/mh-hsc-12-pyq/paper/reconcile-apply.ts <id> --apply
+npx tsx scripts/mh-hsc-12-pyq/paper/commit.ts <id> --allow-reconcile --only-missing --apply
+npx tsx scripts/mh-hsc-12-pyq/paper/flip-public.ts <id> --only-missing --apply
+```
+
+`reconcileCore.ts` (tested in `tests/mh-hsc-12-reconcile.test.ts`) pairs rows and
+classifies each pair: same, typesetting only, or a CONTENT/KEY difference, which
+is refused until `checked` records what the page shows. Decisions:
+`manual` (a pairing), `checked`, `solution: "paper"` (the row changed shape, so
+its old solution no longer fits), `publish` (a row held PRIVATE because it was
+broken, now mended), `hide` (a fragment duplicating a question another row now
+carries whole: made PRIVATE, never deleted), `resolve` / `keep` (a row left as it
+is because, corrected, it would copy another sitting's row; `resolve` builds the
+paper from it, `keep` lets the paper find the identical row by fingerprint).
+Every write is backed up to `backups/` and conditional on the row still holding
+the fingerprint that was read.
+
+Where the compilation split a printed item more finely than this lane does (its
+`Q.4.a` / `Q.4.b` rows), the TRANSCRIPTION follows the live rows rather than
+retiring them; `splitRows` grew accordingly and the commit census
+(`knownMissingRefs`) gained only the parts no row held.

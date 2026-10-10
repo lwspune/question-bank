@@ -33,7 +33,7 @@
 import { config } from "dotenv";
 config({ path: ".env.local", override: true });
 import { existsSync, readdirSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { cbseManifest, type PaperManifest, type SourcePaper, type SourceQuestion } from "../../src/lib/questionPapers/manifest";
 import { mhManifest, type MarksPattern } from "../../src/lib/questionPapers/mhPattern";
@@ -80,6 +80,19 @@ function fingerprintsBy(questions: SourceQuestion[], rows: { contentHash: string
   if (rows.length !== questions.length) throw new Error(`${id}: ${rows.length} records for ${questions.length} questions`);
   const byQ = new Map(questions.map((q, i) => [q, rows[i].contentHash]));
   return (q: SourceQuestion) => byQ.get(q)!;
+}
+
+/**
+ * A reconciled HSC sitting's reviewed `resolve` map (data/reconcile/<id>.json):
+ * refs whose own row was deliberately left as it is, because corrected it would
+ * copy another sitting's row word for word. Such a ref resolves to its OWN
+ * sitting's row by id ("row:<id>"), not by fingerprint, which would find the
+ * other sitting's copy. The row is still checked: PUBLIC, this exam, an
+ * allowed subject.
+ */
+function resolvedRows(paperId: string): Record<string, string> {
+  const path = join(dirname(hscPaper.questionsJsonPath(paperId)), "reconcile", `${paperId}.json`);
+  return existsSync(path) ? ((JSON.parse(readFileSync(path, "utf8")) as { resolve?: Record<string, string> }).resolve ?? {}) : {};
 }
 
 /** A Maharashtra transcription calls a case study's set `setLabel`. */
@@ -131,6 +144,8 @@ function hscSources(): Candidate[] {
     const questions = withSetId(readQuestions(path));
     const { rows } = sscRecords(hscCatalogFor(paper.subject), questions as never);
     const month = paper.month.toLowerCase();
+    const resolve = resolvedRows(paper.id);
+    const byHash = fingerprintsBy(questions, rows, paper.id);
     const c = mh(
       "mh-hsc-12",
       paper.id,
@@ -146,7 +161,7 @@ function hscSources(): Candidate[] {
         questions,
       },
       paper.subject === "Mathematics" ? MH_PATTERNS.hscMaths : MH_PATTERNS.hscPhysChem,
-      fingerprintsBy(questions, rows, paper.id)
+      (q) => (resolve[q.ref] ? `row:${resolve[q.ref]}` : byHash(q))
     );
     if (c) out.push(c);
   }
@@ -213,7 +228,20 @@ function sscSources(): Candidate[] {
 
 async function idsByHash(admin: SupabaseClient, examId: string, hashes: string[]): Promise<Map<string, { id: string; subjectId: string }>> {
   const out = new Map<string, { id: string; subjectId: string }>();
-  const unique = [...new Set(hashes)];
+  // "row:<id>" is a reviewed resolve (see resolvedRows): look the row up by id,
+  // under the same PUBLIC + exam rules as a fingerprint.
+  const rowIds = [...new Set(hashes.filter((h) => h.startsWith("row:")).map((h) => h.slice(4)))];
+  for (let i = 0; i < rowIds.length; i += 150) {
+    const { data, error } = await admin
+      .from("questions")
+      .select("id, subject_id")
+      .eq("exam_id", examId)
+      .eq("visibility", "PUBLIC")
+      .in("id", rowIds.slice(i, i + 150));
+    if (error) throw new Error(`question lookup: ${error.message}`);
+    for (const r of data ?? []) out.set(`row:${r.id}`, { id: r.id as string, subjectId: r.subject_id as string });
+  }
+  const unique = [...new Set(hashes.filter((h) => !h.startsWith("row:")))];
   // .in() puts the list in the URL: chunk at ~150, whatever the result size.
   for (let i = 0; i < unique.length; i += 150) {
     const { data, error } = await admin
