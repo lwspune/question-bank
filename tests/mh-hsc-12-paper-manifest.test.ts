@@ -234,13 +234,13 @@ describe("reconciliation bookkeeping", () => {
       // papers set MIXED-BAG items whose parts are drawn from different
       // chapters (Feb-2026 Q.27 is isotonic solutions + molecularity + Hess),
       // and the rule -- split only across CHAPTERS -- fires on 19 of 47 items.
-      "chem-feb-2024:9",
-      "chem-feb-2025:7",
+      "chem-feb-2024:13",
+      "chem-feb-2025:13",
       "chem-feb-2026:20",
       "chem-jul-2024:7",
       "chem-jul-2025:5",
       "chem-jun-2026:7",
-      "chem-mar-2023:10",
+      "chem-mar-2023:14",
       "phy-feb-2023:3",
       "phy-feb-2024:1",
       "phy-jun-2026:1",
@@ -306,10 +306,13 @@ describe("figure manifest", () => {
     // OPTIONS-ARE-THE-FIGURE shape, where the stem reads complete but the four
     // choices are drawings.
     //
-    // Deliberately NOT listed: chem-feb-2025 and chem-feb-2024, whose drawn
-    // items are already in the bank from the compilation WITH images attached.
-    // Claiming them here would send the attach pass at shipped rows.
+    // chem-feb-2024 is deliberately NOT listed: its drawn item is already in the
+    // bank from the compilation WITH an image attached. chem-feb-2025 was left
+    // out on the same belief until the 2026-10-10 reconcile pass found its image
+    // shows ONE of the four drawn options (benzoic acid), so the verified crop
+    // of all four replaces it.
     expect(withFigures).toEqual([
+      "chem-feb-2025",
       "chem-feb-2026",
       "chem-jul-2024",
       "chem-jul-2025",

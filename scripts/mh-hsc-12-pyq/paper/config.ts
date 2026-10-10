@@ -140,7 +140,11 @@ export type Paper = {
    *  candidate in ROADMAP.md. Recording the disagreement here lets
    *  reconcile-diff find the rows without either lying about the sitting or
    *  silently returning zero matches, which is what a bare month filter would
-   *  have done. */
+   *  have done.
+   *
+   *  The 2026-10-10 reconcile pass (reconcile-apply.ts, with sign-off) DID
+   *  re-file those rows to the cover month, so no paper declares this today. It
+   *  stays for the next compilation that files a sitting under another month. */
   bankMonth?: string;
 };
 
@@ -505,32 +509,41 @@ export const PAPERS: Record<string, Paper> = Object.fromEntries(
     // means the compilation splits multi-part items more finely than the print
     // numbers them. So these are diff-and-review, not add-the-missing.
     //
-    // `bankMonth` on the 2024 and 2025 entries is the compilation's own
-    // (incorrect) label — see the field docblock.
-    chemistryPaper("chem-feb-2025", "Chem Mar 2025.pdf", 2025, "February", "J-302", "reconcile", [], {
+    // All three were reconciled in place on 2026-10-10 (reconcile-apply.ts;
+    // reviewed decisions in data/reconcile/): every shipped row now carries the
+    // printed text and the cover month, and the missing parts were added.
+    chemistryPaper("chem-feb-2025", "Chem Mar 2025.pdf", 2025, "February", "J-302", "reconcile", ["Q.1.viii"], {
       bankRows: 52,
-      bankMonth: "March",
-      splitRows: 7,
+      // 7 by this lane's rule (split only across chapters), +6 since the
+      // 2026-10-10 reconcile pass: the compilation's rows split Q.4, Q.14, Q.19,
+      // Q.21, Q.23 and Q.31 into their printed (a)/(b) parts, and those rows are
+      // live, so the transcription follows them rather than retiring them.
+      splitRows: 13,
       // Measured 2026-09-24 at the PRINTED-ITEM level, not the row level: the
       // compilation covers 43 of the 47 printed items with its 52 rows, because
       // it splits some items and omits others. These six it never captured.
-      knownMissingRefs: ["Q.2.iii", "Q.2.iv", "Q.2.viii", "Q. 13", "Q. 16", "Q. 20"],
+      knownMissingRefs: ["Q.2.iii", "Q.2.iv", "Q.2.viii", "Q. 13", "Q. 16", "Q. 20", "Q. 7(i)", "Q. 27(i)", "Q. 28(ii)", "Q. 30(i)"],
     }),
     chemistryPaper("chem-feb-2024", "Chem Mar 2024.pdf", 2024, "February", "J-852", "reconcile", [], {
       bankRows: 50,
-      bankMonth: "March",
-      splitRows: 9,
+      // 9 by this lane's rule, +4 since the 2026-10-10 reconcile pass: the
+      // compilation's live rows split Q.10 (two chapters), Q.16 (a)(b)(c) and
+      // Q.27's three conversions, so the transcription follows them.
+      splitRows: 13,
       // 43 of 47 printed items covered by its 50 rows; these five are absent.
-      knownMissingRefs: ["Q.2.viii", "Q. 9", "Q. 14", "Q. 25", "Q. 26"],
+      knownMissingRefs: ["Q.2.viii", "Q. 9", "Q. 14", "Q. 25", "Q. 26", "Q. 16(iii)", "Q. 28(ii)", "Q. 28(iii)", "Q. 29(i)", "Q. 30(i)", "Q. 30(ii)"],
     }),
     // The one file with no board cover at all. Its own header reads "Board
     // Question Paper: March 2023", and the compilation also files 2023 as
     // March, so the two agree here and no bankMonth override is needed.
     chemistryPaper("chem-mar-2023", "Chem_2023.pdf", 2023, "March", "n/a", "reconcile", ["Q.1.vi"], {
       bankRows: 51,
-      splitRows: 10,
+      // 10 by this lane's rule, +4 since the 2026-10-10 reconcile pass: the
+      // compilation's live rows split Q.7, Q.12, Q.15 and Q.16's conversions, so
+      // the transcription follows them.
+      splitRows: 14,
       // 41 of 47 printed items covered by its 51 rows; these six are absent.
-      knownMissingRefs: ["Q.1.vi", "Q.2.iv", "Q. 6", "Q. 8", "Q. 17", "Q. 20"],
+      knownMissingRefs: ["Q.1.vi", "Q.2.iv", "Q. 6", "Q. 8", "Q. 17", "Q. 20", "Q. 16(ii)", "Q. 22", "Q. 27(ii)", "Q. 28(ii)", "Q. 29(i)"],
       thirdParty: {
         reason:
           "a collegedunia.com reproduction — its logo is footed on every page, the SAME publisher as the Physics 2023 file. 4 typeset pages against the board's 7-8, headed \"Maharashtra HSC BOARD QUESTION PAPER 2023\" with no seat-number box, no subject-code box and no cover date, so render.ts has no printed cover to verify. It also re-typesets the paper: options are labelled (A)-(D) where every board print uses (a)-(d). A disagreement with the bank is a flag for a human, never a verdict",
