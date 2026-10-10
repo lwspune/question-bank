@@ -23,6 +23,9 @@ type Props = {
    * fetch it for anyone else. Absent for most questions by design.
    */
   itemStats?: Map<string, ItemStatAggregate>;
+  /** question id -> the full past paper it came from (lib/questions/paperLinks);
+   *  that question's source pill opens it. */
+  paperLinks?: Map<string, string>;
   /** Surface the exam name in each card's breadcrumb. Pass true when no exam filter is set. */
   includeExam: boolean;
   /** Levels every card on this page shares (the chapter on a chapter page, the
@@ -67,6 +70,7 @@ export default function QuestionListView({
   breadcrumbFixed,
   resourcesById,
   itemStats,
+  paperLinks,
   insert,
 }: Props) {
   const groups = groupBySet(questions);
@@ -106,6 +110,7 @@ export default function QuestionListView({
             breadcrumbFixed={breadcrumbFixed}
             resources={resourcesById?.[group.question.id]}
             itemStats={itemStats?.get(group.question.id)}
+            paperHref={paperLinks?.get(group.question.id)}
           />
         </li>
       );
@@ -130,6 +135,7 @@ export default function QuestionListView({
                   breadcrumbFixed={breadcrumbFixed}
                   resources={resourcesById?.[q.id]}
                   itemStats={itemStats?.get(q.id)}
+                  paperHref={paperLinks?.get(q.id)}
                 />
               </li>
             ))}

@@ -77,6 +77,7 @@ export default function QuestionCard({
   itemStats,
   surface = "bank",
   defaultExpanded = false,
+  paperHref,
 }: {
   question: QuestionRow;
   index: number;
@@ -112,6 +113,9 @@ export default function QuestionCard({
   /** Open on first render: a lone card (the question of the day) has no list
    *  to scan, so a collapsed preview is just one more tap. */
   defaultExpanded?: boolean;
+  /** The full past paper this question came from (lib/questions/paperLinks).
+   *  Set, the source pill opens it; unset, the pill is plain text. */
+  paperHref?: string;
 }) {
   const [expanded, setExpanded] = useState(defaultExpanded);
   const [showSolution, setShowSolution] = useState(false);
@@ -258,6 +262,51 @@ export default function QuestionCard({
       ? showSolution ? "Hide model answer" : "Show model answer"
       : showSolution ? "Hide solution" : "Show solution";
   const hasToggle = isNumeric || Boolean(question.solution);
+  const pillClass = cn(
+    "inline-flex max-w-full items-center rounded-full px-2 py-0.5 text-xs font-semibold sm:px-2.5",
+    tag.kind === "pyq" ? "bg-brand-accent/10 text-brand-accent" : "bg-muted text-muted-foreground"
+  );
+  const headerInner = (
+    <>
+      <span className="flex min-w-0 flex-1 flex-wrap items-center gap-1.5">
+        {paperHref ? (
+          <Link
+            href={paperHref}
+            prefetch={false}
+            onClick={(e) => e.stopPropagation()}
+            aria-label={`Open the full paper: ${tag.label}`}
+            className={cn(pillClass, "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2")}
+          >
+            <span className="truncate">{tag.label}</span>
+          </Link>
+        ) : (
+          <span className={pillClass}>
+            <span className="truncate">{tag.label}</span>
+          </span>
+        )}
+        <span className={cn("inline-flex shrink-0 items-center rounded-full px-2 py-0.5 text-xs font-semibold sm:px-2.5", DIFFICULTY_PILL[question.difficulty])}>
+          {DIFFICULTY_LABEL[question.difficulty]}
+        </span>
+        <ItemStatChip agg={itemStats} />
+        {question.imageUrl && (
+          <span className="inline-flex shrink-0 items-center text-muted-foreground">
+            <ImageIcon className="h-3.5 w-3.5" aria-hidden />
+            <span className="sr-only">Has image</span>
+          </span>
+        )}
+      </span>
+      {/* Hidden on phones: there the tag pills need the width (the
+          difficulty pill was wrapping to a line of its own), and the
+          question text below is itself the open/close control. */}
+      <ChevronDown
+        className={cn(
+          "hidden h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 sm:block",
+          expanded && "rotate-180"
+        )}
+        aria-hidden
+      />
+    </>
+  );
 
   return (
     <div
@@ -273,44 +322,26 @@ export default function QuestionCard({
           never shows a number that could pass for a paper's. */}
       <div className="p-3 sm:p-4">
         <div className="flex items-start gap-2">
-          <button
-            type="button"
-            onClick={toggleExpanded}
-            aria-expanded={expanded}
-            aria-label={expanded ? "Collapse question" : "Expand question"}
-            className="flex min-w-0 flex-1 items-center gap-2 rounded py-0.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          >
-            <span className="flex min-w-0 flex-1 flex-wrap items-center gap-1.5">
-              <span
-                className={cn(
-                  "inline-flex max-w-full items-center rounded-full px-2 py-0.5 text-xs font-semibold sm:px-2.5",
-                  tag.kind === "pyq" ? "bg-brand-accent/10 text-brand-accent" : "bg-muted text-muted-foreground"
-                )}
-              >
-                <span className="truncate">{tag.label}</span>
-              </span>
-              <span className={cn("inline-flex shrink-0 items-center rounded-full px-2 py-0.5 text-xs font-semibold sm:px-2.5", DIFFICULTY_PILL[question.difficulty])}>
-                {DIFFICULTY_LABEL[question.difficulty]}
-              </span>
-              <ItemStatChip agg={itemStats} />
-              {question.imageUrl && (
-                <span className="inline-flex shrink-0 items-center text-muted-foreground">
-                  <ImageIcon className="h-3.5 w-3.5" aria-hidden />
-                  <span className="sr-only">Has image</span>
-                </span>
-              )}
-            </span>
-            {/* Hidden on phones: there the tag pills need the width (the
-                difficulty pill was wrapping to a line of its own), and the
-                question text below is itself the open/close control. */}
-            <ChevronDown
-              className={cn(
-                "hidden h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 sm:block",
-                expanded && "rotate-180"
-              )}
-              aria-hidden
-            />
-          </button>
+          {/* With a paper to open, the source pill is a link (2026-10-10), and a
+              link cannot sit inside a button, so this row becomes a plain tap
+              area with the same look. Keyboard and screen-reader users toggle
+              through the question text below, the same control with the same
+              label. */}
+          {paperHref ? (
+            <div onClick={toggleExpanded} className="flex min-w-0 flex-1 cursor-pointer items-center gap-2 rounded py-0.5 text-left">
+              {headerInner}
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={toggleExpanded}
+              aria-expanded={expanded}
+              aria-label={expanded ? "Collapse question" : "Expand question"}
+              className="flex min-w-0 flex-1 items-center gap-2 rounded py-0.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
+              {headerInner}
+            </button>
+          )}
           <PresentButton question={presentable} order={index} />
           <BookmarkButton questionId={question.id} />
           {!hideCart && (

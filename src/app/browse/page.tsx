@@ -58,6 +58,7 @@ import FilterBar from "./FilterBar";
 import MobileFilters from "./MobileFilters";
 import QuestionList from "./QuestionList";
 import { getItemStatsForQuestions } from "@/lib/itemStats/query";
+import { fetchPapersOfQuestions, paperLinkMap, yearsOf } from "@/lib/questions/paperLinks";
 import Pagination from "./Pagination";
 import DownloadDialog from "./DownloadDialog";
 import CartPill from "./CartPill";
@@ -186,8 +187,11 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   // Failures degrade to the chapter-level chips, as before.
   let tagsPromise: Promise<Awaited<ReturnType<typeof getResourceTagsForQuestions>>> =
     Promise.resolve(new Map());
+  // The same ids find the paper each question came from, for its source pill.
+  let papersPromise: ReturnType<typeof fetchPapersOfQuestions> = Promise.resolve([]);
   const startTagLookup = (ids: string[]) => {
     tagsPromise = getResourceTagsForQuestions(supabase, ids).catch(() => new Map());
+    papersPromise = fetchPapersOfQuestions(supabase, ids);
   };
 
   // Taxonomy (exams/subjects/chapters/subtopics) is cached — it's identical for
@@ -269,6 +273,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   // Never started on the landing branch or an empty page (no ids to tag, and
   // `.in("id", [])` is a PostgREST 400), so it stays an empty Map there.
   const resourceTags = await tagsPromise;
+  const paperLinks = paperLinkMap(await papersPromise, yearsOf(questionsResult.rows));
 
   const downloadPass = plansPromise
     ? passCta(passForScope(await plansPromise, DOWNLOAD_PASS_SCOPE))
@@ -456,6 +461,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
                 }}
                 resourceTags={resourceTags}
                 itemStats={itemStats}
+                paperLinks={paperLinks}
               />
             )}
 
