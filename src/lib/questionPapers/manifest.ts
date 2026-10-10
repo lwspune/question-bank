@@ -187,3 +187,55 @@ export function cbseManifest(
     },
   };
 }
+
+/** The printed question a number belongs to: "23 (b)" and "36 (iii) (a)" are 23 and 36. */
+const topOf = (questionNumber: string) => questionNumber.trim().split(/\s|\(/)[0];
+
+/**
+ * A FOLLOWER set whose transcription holds only its own questions, made whole
+ * from its leader set.
+ *
+ * Some CBSE follower transcriptions (2025 Maths 65/5/2 and 65/5/3) wrote only
+ * the questions the leader set does not print, because the rest are the same
+ * questions word for word and already in the bank. The papers print them in a
+ * different order, so `map` (follower printed number -> leader printed number,
+ * read off the printed paper) says where each one sits. A borrowed question
+ * keeps the leader's text and marks, so it fingerprints to the leader's row,
+ * and takes the follower's number, ref and OR link.
+ *
+ * Throws rather than guess: a number both transcribed and mapped, a map entry
+ * naming no leader question, or a printed number accounted for by neither.
+ */
+export function withLeaderQuestions(follower: SourcePaper, leader: SourcePaper, map: Record<string, string>): SourcePaper {
+  const own = new Map<string, SourceQuestion[]>();
+  for (const q of follower.questions) own.set(topOf(q.questionNumber), [...(own.get(topOf(q.questionNumber)) ?? []), q]);
+  const lead = new Map<string, SourceQuestion[]>();
+  for (const q of leader.questions) lead.set(topOf(q.questionNumber), [...(lead.get(topOf(q.questionNumber)) ?? []), q]);
+
+  for (const [n, m] of Object.entries(map)) {
+    if (own.has(n)) throw new Error(`${follower.paper} Q${n} is transcribed and also mapped to the leader's Q${m}`);
+    if (!lead.has(m)) throw new Error(`${follower.paper} Q${n} maps to the leader's Q${m}, which ${leader.paper} does not print`);
+  }
+
+  const last = Math.max(...[...own.keys(), ...Object.keys(map)].map(Number));
+  const out: SourceQuestion[] = [];
+  for (let k = 1; k <= last; k++) {
+    const n = String(k);
+    if (own.has(n)) {
+      out.push(...own.get(n)!);
+      continue;
+    }
+    const m = map[n];
+    if (!m) throw new Error(`${follower.paper} Q${n} is neither transcribed nor mapped to the leader`);
+    const renumber = (s: string) => s.replace(new RegExp(`^(Q?)${m}(?=\b|[a-z( ]|$)`), `$1${n}`);
+    for (const q of lead.get(m)!) {
+      out.push({
+        ...q,
+        questionNumber: renumber(q.questionNumber),
+        ref: renumber(q.ref),
+        _alternativeTo: q._alternativeTo ? renumber(q._alternativeTo) : q._alternativeTo,
+      });
+    }
+  }
+  return { ...follower, questions: out };
+}
