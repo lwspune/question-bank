@@ -83,7 +83,7 @@ const cachedPublishedPapers = unstable_cache(
   // Bump this key when a publish must show at once. The cache outlives a
   // deploy, and each page route can hold its own copy of an old list: on
   // 2026-10-09 the exam page listed Maharashtra while its subject pages 404'd.
-  ["board-papers-list-v3"],
+  ["board-papers-list-v4"],
   { revalidate: 86400 }
 );
 
