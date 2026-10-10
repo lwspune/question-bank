@@ -327,7 +327,7 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-10
 
-- **2026-10-10 (fourth) — Students' exam results: `/results`, a strip on `/` and `/nda`, and a "Did you clear it?" card on /me after every announced result (migration 0149; `npm run results:announce`; review at `/dashboard/results`).**
+- **2026-10-10 (fourth) — Students' exam results: `/results`, a strip on `/` and `/nda`, and a "Did you clear it?" card on /me after every announced result (migration 0149; `npm run results:announce`; review at `/dashboard/results`; one-step Mark result on a student's page).**
   - **Nothing publishes itself:** a student's yes is a request, stored unpublished via `/api/results/answer` (students hold no grant on the table); a superadmin publishes it.
   - **A handle cannot go up:** a shown name may not carry a digit, `_` or `@` (DB CHECK); three of the first nine NDA names wait for a real name for that reason.
   - **Not a leaderboard:** names alphabetical, no marks; the public reads names only, never whose account (column grants). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).

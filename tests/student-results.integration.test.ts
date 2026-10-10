@@ -6,7 +6,7 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { loadPendingResultChecks, saveResultAnswer } from "@/lib/results/service";
-import { listResultsForReview, reviewResult } from "@/lib/results/admin";
+import { listResultsForReview, listStudentResults, markStudentResult, reviewResult } from "@/lib/results/admin";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -49,7 +49,7 @@ describe.skipIf(!HAS_ENV)("student results (migration 0149)", () => {
     const { getExamByName } = await import("@/lib/exam/examContext");
     examSlug = getExamByName(ex!.name as string)?.slug ?? "";
     announcementId = a!.id as string;
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 8; i++) {
       const { data } = await admin.auth.admin.createUser({ email: `results-${RUN_ID}-${i}@test.local`, email_confirm: true });
       users.push(data.user!.id);
     }
@@ -57,6 +57,7 @@ describe.skipIf(!HAS_ENV)("student results (migration 0149)", () => {
 
   afterAll(async () => {
     if (announcementId) await admin.from("result_announcements").delete().eq("id", announcementId);
+    await admin.from("result_announcements").delete().eq("sitting", `Test new ${RUN_ID}`);
     for (const id of users) await admin.auth.admin.deleteUser(id);
   });
 
@@ -150,5 +151,27 @@ describe.skipIf(!HAS_ENV)("student results (migration 0149)", () => {
     const after = (await listResultsForReview()).find((a) => a.id === announcementId)!;
     expect(after.waiting.map((n) => n.name)).not.toContain("Meera Iyer");
     expect(after.published.map((n) => n.name)).not.toContain("Meera Iyer");
+  });
+
+  // "Mark result" on a student's dashboard page: one step, published, staff.
+  it("marks a student on an existing result, published at once", async () => {
+    expect(
+      await markStudentResult({ userId: users[6], target: { kind: "existing", id: announcementId }, displayName: "Ravi Kumar" }, DAY)
+    ).toBe("nda");
+    const { data } = await anon.from("student_results").select("display_name").eq("announcement_id", announcementId);
+    expect((data ?? []).map((r) => r.display_name)).toContain("Ravi Kumar");
+    const mine = await listStudentResults(users[6]);
+    expect(mine).toMatchObject([{ name: "Ravi Kumar", published: true, source: "staff", outcome: "cleared" }]);
+  });
+
+  it("creates a new result once, and a second mark reuses it without moving its window", async () => {
+    const target = { kind: "new" as const, examSlug: "nda" as const, sitting: `Test new ${RUN_ID}`, stage: "ssb" as const };
+    await markStudentResult({ userId: users[6], target, displayName: "Ravi Kumar" }, "2026-10-10");
+    await markStudentResult({ userId: users[7], target, displayName: "Sana Shaikh" }, "2026-10-20");
+    const { data } = await admin.from("result_announcements").select("id, announced_on, ask_until").eq("sitting", `Test new ${RUN_ID}`);
+    expect(data).toHaveLength(1);
+    expect(data![0]).toMatchObject({ announced_on: "2026-10-10", ask_until: "2026-10-31" });
+    const { count } = await admin.from("student_results").select("id", { count: "exact", head: true }).eq("announcement_id", data![0].id).eq("published", true);
+    expect(count).toBe(2);
   });
 });
