@@ -11,7 +11,7 @@ import GoogleSignInButton from "@/components/GoogleSignInButton";
 import { googleButtonAvailable, renderGoogleButton } from "@/components/auth/useGoogleOneTap";
 import { useCheckout, type CheckoutOutcome, type CheckoutSurface } from "@/components/billing/useCheckout";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
-import { downloadPerksFirst, freeFirstPassLine, gatePriceLine } from "@/lib/billing/gateCopy";
+import { downloadPerksFirst, gatePriceLine } from "@/lib/billing/gateCopy";
 import type { PassCta } from "@/lib/billing/plans";
 
 /**
@@ -86,16 +86,10 @@ export default function PassOffer({
     <>
       <div className="min-h-0 flex-1 space-y-4 overflow-y-auto px-6 py-4 text-sm">
         {freeAfterSignIn ? (
-          // Signed out: the free paper leads and the pass is one sentence. With
-          // the pass's list and price first, no signed-out visitor who opened
-          // the box tapped sign-in (Clarity, 7-9 Oct 2026).
-          <div className="space-y-2">
-            <p className="text-base font-medium text-foreground">
-              Sign in and this paper and its answer key are yours, free.
-            </p>
-            <p className="text-muted-foreground">No payment, no card. One tap with Google.</p>
-            <p className="pt-1 text-xs text-muted-foreground">{freeFirstPassLine(pass)}</p>
-          </div>
+          // Signed out: one line, nothing to sell. With the pass's list and
+          // price first, no signed-out visitor who opened the box tapped sign-in
+          // (Clarity, 7-9 Oct 2026); the owner asked for the plainest message.
+          <p className="text-base font-medium text-foreground">Sign in to download.</p>
         ) : (
           <>
             {perks.length > 0 && (
