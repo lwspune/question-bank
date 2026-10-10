@@ -35,6 +35,10 @@ export type ShotArgs = {
   /** "before" / "after" capture one side only (a local-only change: shoot
    *  before, edit, shoot after into the same --out); "both" does both. */
   phase: "before" | "after" | "both";
+  /** `--as-student=<exam,...>`: the browser answers /api/me/header as a plain
+   *  student who chose these exams, so a signed-in view can be captured on
+   *  both sides without signing in. Null = anonymous, as before. */
+  asStudent: string[] | null;
 };
 
 /** "/guide/nda?x=1" → "guide-nda"; "/" → "home". */
@@ -120,6 +124,29 @@ export function parseShotArgs(argv: string[]): ShotArgs {
     out: value("out") ?? null,
     title: value("title") ?? "Before / after",
     phase,
+    asStudent: asStudentArg(value("as-student")),
+  };
+}
+
+function asStudentArg(raw: string | undefined): string[] | null {
+  if (raw === undefined) return null;
+  const exams = raw.split(",").map((s) => s.trim()).filter(Boolean);
+  if (!exams.length) throw new Error("--as-student= needs at least one exam slug");
+  return exams;
+}
+
+/** The /api/me/header body for `--as-student`: a self-serve student, never staff. */
+export function stubHeaderSession(exams: string[]) {
+  return {
+    session: {
+      email: "student@example.invalid",
+      role: null,
+      orgName: null,
+      isStaff: false,
+      isSuperadmin: false,
+      stage: null,
+      targetExams: exams,
+    },
   };
 }
 

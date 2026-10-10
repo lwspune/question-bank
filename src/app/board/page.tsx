@@ -3,6 +3,7 @@ import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { boardIndexGroups } from "@/lib/board/examIndex";
 import BoardFeedList from "./BoardFeedList";
+import ExamGapNotice from "@/components/exam/ExamGapNotice";
 
 export const metadata: Metadata = {
   title: "Board textbook solutions",
@@ -30,6 +31,10 @@ export default function BoardIndex() {
           </p>
         </header>
 
+        <ExamGapNotice
+          what="textbook solutions"
+          covered={groups.flatMap((g) => (g.kind === "family" ? g.classes.map((c) => c.slug) : [g.card.slug]))}
+        />
         <BoardFeedList groups={groups} />
       </main>
       <Footer />

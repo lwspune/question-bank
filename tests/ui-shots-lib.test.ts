@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { pageSlug, planCaptures, parseShotArgs, sheetHtml, VIEWPORTS } from "../scripts/ui/lib";
+import { pageSlug, planCaptures, parseShotArgs, sheetHtml, stubHeaderSession, VIEWPORTS } from "../scripts/ui/lib";
 
 /**
  * `npm run ui:shots` (2026-10-04): the before/after screenshot sheet every
@@ -121,5 +121,30 @@ describe("sheetHtml", () => {
 
   it("escapes the title and labels", () => {
     expect(sheetHtml(plan, { title: "<b>x</b>" })).not.toContain("<b>x</b>");
+  });
+});
+
+describe("--as-student: a signed-in view without signing in", () => {
+  it("is off unless asked for", () => {
+    expect(parseShotArgs(["--pages=/notes"]).asStudent).toBeNull();
+  });
+  it("reads the student's chosen exams", () => {
+    expect(parseShotArgs(["--pages=/notes", "--as-student=mpsc-group-b-c,cds"]).asStudent).toEqual(["mpsc-group-b-c", "cds"]);
+  });
+  it("refuses an empty list rather than shooting an anonymous page labelled as a student's", () => {
+    expect(() => parseShotArgs(["--pages=/notes", "--as-student="])).toThrow(/as-student/);
+  });
+  it("answers /api/me/header as a plain student, never staff", () => {
+    expect(stubHeaderSession(["mpsc-group-b-c"])).toEqual({
+      session: {
+        email: "student@example.invalid",
+        role: null,
+        orgName: null,
+        isStaff: false,
+        isSuperadmin: false,
+        stage: null,
+        targetExams: ["mpsc-group-b-c"],
+      },
+    });
   });
 });
