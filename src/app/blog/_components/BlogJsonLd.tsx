@@ -8,6 +8,7 @@
  * dates are required arguments here.
  */
 import { listPosts, type BlogPost } from "@/lib/blog/posts";
+import { faqPageJsonLd } from "@/lib/blog/faq";
 
 const SITE_URL = "https://www.pyqvault.com";
 const PUBLISHER_NAME = "PYQ Vault";
@@ -47,6 +48,12 @@ export function BlogPostingJsonLd({ post }: { post: BlogPost }) {
     publisher,
     isPartOf: { "@type": "Blog", name: `${PUBLISHER_NAME} Blog`, url: `${SITE_URL}/blog` },
   });
+}
+
+/** A post's FAQ as FAQPage markup; nothing when the post has none. */
+export function BlogFaqJsonLd({ post }: { post: BlogPost }) {
+  const payload = faqPageJsonLd(post.faq, `${SITE_URL}/blog/${post.slug}`);
+  return payload ? render(payload) : null;
 }
 
 /** The index, as a Blog carrying its posts in order. */
