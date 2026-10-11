@@ -1,5 +1,229 @@
 [
   {
+    "id": "twin-2022-Q4",
+    "twinOf": "2022 Q4",
+    "section": "logic",
+    "chapter": "Deductive Logic",
+    "text": "To vote in the national election, a citizen must be on the electoral register. Marco is not on the electoral register, so Marco cannot vote in the national election.\nWhich one of the following uses the same pattern of reasoning?",
+    "options": [
+      "A plant needs light to photosynthesise. The plant in the cupboard gets no light, so it cannot photosynthesise.",
+      "Anyone who trains every day gets fitter. Sara has got fitter, so she must have trained every day.",
+      "Exercise improves health, and health matters to everyone, so everyone should exercise.",
+      "A ticket is needed to board the train. Luca has a ticket, so Luca will board the train.",
+      "Libraries lend books, but they also lend films, so libraries are not only for readers."
+    ],
+    "answer": "A",
+    "solution": "The argument has the form: B is NECESSARY for A; X lacks B; so X is not A. The plant follows it exactly: light is necessary for photosynthesis, the plant lacks light, so no photosynthesis. The ticket option treats a necessary condition as if it were enough, and the Sara option reasons backwards from the result to its cause."
+  },
+  {
+    "id": "twin-2022-Q6",
+    "twinOf": "2022 Q6",
+    "section": "logic",
+    "chapter": "Numerical Reasoning",
+    "text": "Five boxes of tiles weigh 4 kg, 5 kg, 11 kg, 12 kg and 15 kg. Each box holds tiles of one colour only: red, white or blue.\nThe red tiles together weigh three times as much as the white tiles together, and exactly one box holds blue tiles.\nHow heavy is the box of blue tiles?",
+    "options": [
+      "15 kg",
+      "11 kg",
+      "12 kg",
+      "4 kg",
+      "5 kg"
+    ],
+    "answer": "B",
+    "solution": "The boxes total 47 kg. Without the blue box, red + white = 4 x white, so (47 - blue) must divide by 4. Only 11 and 15 work. If blue is 15, white would be 32/4 = 8 kg, and no boxes add up to 8. If blue is 11, white is 36/4 = 9 kg = 4 + 5, and red is 12 + 15 = 27 kg, three times 9. So blue is 11 kg."
+  },
+  {
+    "id": "twin-2022-Q7",
+    "twinOf": "2022 Q7",
+    "section": "logic",
+    "chapter": "Numerical Reasoning",
+    "text": "Seven friends exchange birthday cards. Each friend sends cards to the same number of the others. No two friends send cards to each other: if Ana sends one to Ben, Ben does not send one to Ana.\nWhat is the largest number of cards that each friend could send?",
+    "options": [
+      "6",
+      "2",
+      "3",
+      "4",
+      "7"
+    ],
+    "answer": "C",
+    "solution": "Seven people form 7 x 6 / 2 = 21 pairs, and each pair can carry at most one card (one direction only). If each friend sends k cards, there are 7k cards in all, so 7k is at most 21 and k is at most 3. Three is achievable: put the friends in a circle and let each send to the next three clockwise."
+  },
+  {
+    "id": "twin-2022-Q8",
+    "twinOf": "2022 Q8",
+    "section": "logic",
+    "chapter": "Data Interpretation",
+    "text": "I need a mobile phone plan with at least 10 GB of data and at least 300 minutes of calls a month, on a contract no longer than 12 months. I want the lowest total cost for the first 12 months.\n\n| plan | price per month (€) | data per month | minutes per month | contract length | one-off setup fee (€) |\n|---|---|---|---|---|---|\n| Plan P | 12 | 8 GB | unlimited | 12 months | 0 |\n| Plan Q | 15 | 15 GB | 500 | 24 months | 0 |\n| Plan R | 14 | 10 GB | 300 | 12 months | 30 |\n| Plan S | 16 | 20 GB | unlimited | 12 months | 0 |\n| Plan T | 13 | 12 GB | 250 | 12 months | 0 |\n\nWhich plan should I choose?",
+    "options": [
+      "Plan P",
+      "Plan Q",
+      "Plan R",
+      "Plan S",
+      "Plan T"
+    ],
+    "answer": "D",
+    "solution": "Rule out what fails a requirement: P has too little data, Q's contract is too long, T has too few minutes. That leaves R at 12 x 14 + 30 = €198 and S at 12 x 16 = €192. S is cheaper over the year, even though its monthly price is higher, because R's setup fee outweighs the €2 a month saving."
+  },
+  {
+    "id": "twin-2022-Q11",
+    "twinOf": "2022 Q11",
+    "section": "reading",
+    "chapter": "Politics, Economics and Society",
+    "text": "Which young activist addressed the United Nations Climate Action Summit in New York in September 2019, telling world leaders \"How dare you\"?",
+    "options": [
+      "Vanessa Nakate",
+      "Jane Goodall",
+      "Al Gore",
+      "Wangari Maathai",
+      "Greta Thunberg"
+    ],
+    "answer": "E",
+    "solution": "Greta Thunberg, the Swedish climate activist, then 16, gave the \"How dare you\" speech at the 2019 UN Climate Action Summit. Vanessa Nakate is a Ugandan climate activist, Jane Goodall a primatologist, Al Gore a former US vice-president known for climate campaigning, and Wangari Maathai, a Kenyan Nobel Peace laureate, died in 2011."
+  },
+  {
+    "id": "twin-2022-Q12",
+    "twinOf": "2022 Q12",
+    "section": "reading",
+    "chapter": "Literature and Philosophy",
+    "text": "Which dish is NOT correctly matched with its country of origin?",
+    "options": [
+      "paella: Mexico",
+      "sushi: Japan",
+      "goulash: Hungary",
+      "moussaka: Greece",
+      "pierogi: Poland"
+    ],
+    "answer": "A",
+    "solution": "Paella comes from Valencia in Spain, not Mexico. The others are correctly paired: sushi with Japan, goulash with Hungary, moussaka with Greece (and the wider eastern Mediterranean), and pierogi (filled dumplings) with Poland."
+  },
+  {
+    "id": "twin-2022-Q13",
+    "twinOf": "2022 Q13",
+    "section": "reading",
+    "chapter": "Literature and Philosophy",
+    "text": "Which one of the following novels won the Pulitzer Prize for Fiction in 1961?",
+    "options": [
+      "The Grapes of Wrath by John Steinbeck",
+      "To Kill a Mockingbird by Harper Lee",
+      "Of Mice and Men by John Steinbeck",
+      "Gone with the Wind by Margaret Mitchell",
+      "Beloved by Toni Morrison"
+    ],
+    "answer": "B",
+    "solution": "Harper Lee's To Kill a Mockingbird, published in 1960, won the 1961 Pulitzer Prize for Fiction. The Grapes of Wrath won in 1940, Gone with the Wind in 1937 and Beloved in 1988; Of Mice and Men is a novella that did not win."
+  },
+  {
+    "id": "twin-2022-Q14",
+    "twinOf": "2022 Q14",
+    "section": "reading",
+    "chapter": "English Language and Grammar",
+    "text": "Which of the following European languages is NOT a Romance language?",
+    "options": [
+      "Romanian",
+      "Portuguese",
+      "Albanian",
+      "Catalan",
+      "Italian"
+    ],
+    "answer": "C",
+    "solution": "Romance languages descend from Latin: Romanian, Portuguese, Catalan and Italian (with Spanish and French) all do. Albanian forms its own separate branch of the Indo-European family; it took many words from Latin but did not develop from it."
+  },
+  {
+    "id": "twin-2022-Q15",
+    "twinOf": "2022 Q15",
+    "section": "reading",
+    "chapter": "Literature and Philosophy",
+    "text": "Which philosopher is most closely associated with existentialism and the claim that \"existence precedes essence\"?",
+    "options": [
+      "John Locke",
+      "David Hume",
+      "Thomas Aquinas",
+      "Jean-Paul Sartre",
+      "Gottlob Frege"
+    ],
+    "answer": "D",
+    "solution": "Jean-Paul Sartre, the 20th-century French philosopher, made \"existence precedes essence\" the motto of existentialism: people exist first and define themselves by their choices. Locke and Hume were British empiricists, Aquinas a medieval theologian, and Frege a founder of modern logic and analytic philosophy."
+  },
+  {
+    "id": "twin-2022-Q16",
+    "twinOf": "2022 Q16",
+    "section": "reading",
+    "chapter": "History",
+    "text": "Which of these modern countries was never part of the Ottoman Empire?",
+    "options": [
+      "Greece",
+      "Bulgaria",
+      "Egypt",
+      "Serbia",
+      "Morocco"
+    ],
+    "answer": "E",
+    "solution": "Morocco stayed independent of the Ottomans; it is the exception in North Africa, where Egypt, Libya, Tunisia and Algeria all came under Ottoman rule. Greece, Bulgaria and Serbia were ruled by the Ottomans for centuries before gaining independence in the 19th century."
+  },
+  {
+    "id": "twin-2022-Q17",
+    "twinOf": "2022 Q17",
+    "section": "reading",
+    "chapter": "History",
+    "text": "Which scientist discovered penicillin in 1928?",
+    "options": [
+      "Alexander Fleming",
+      "Louis Pasteur",
+      "Robert Koch",
+      "Edward Jenner",
+      "Joseph Lister"
+    ],
+    "answer": "A",
+    "solution": "Alexander Fleming noticed in 1928 that a Penicillium mould killed the bacteria around it. Pasteur and Koch founded germ theory in the 19th century, Jenner developed smallpox vaccination in 1796, and Lister introduced antiseptic surgery."
+  },
+  {
+    "id": "twin-2022-Q18",
+    "twinOf": "2022 Q18",
+    "section": "reading",
+    "chapter": "Politics, Economics and Society",
+    "text": "Which of these countries names Islam as the religion of the state in its constitution?",
+    "options": [
+      "Turkey",
+      "Egypt",
+      "Indonesia",
+      "Albania",
+      "Bosnia and Herzegovina"
+    ],
+    "answer": "B",
+    "solution": "Egypt's constitution states that Islam is the religion of the state. Turkey's constitution defines it as a secular republic; Indonesia recognises several religions but has no state religion; Albania and Bosnia and Herzegovina, though home to many Muslims, are secular states."
+  },
+  {
+    "id": "twin-2022-Q19",
+    "twinOf": "2022 Q19",
+    "section": "reading",
+    "chapter": "Politics, Economics and Society",
+    "text": "Who succeeded Mario Draghi as President of the European Central Bank in November 2019?",
+    "options": [
+      "Ursula von der Leyen",
+      "Jean-Claude Trichet",
+      "Christine Lagarde",
+      "Charles Michel",
+      "Angela Merkel"
+    ],
+    "answer": "C",
+    "solution": "Christine Lagarde, formerly head of the International Monetary Fund, took over the ECB from Mario Draghi on 1 November 2019. Jean-Claude Trichet was Draghi's predecessor; von der Leyen became President of the European Commission and Charles Michel President of the European Council in December 2019."
+  },
+  {
+    "id": "twin-2022-Q20",
+    "twinOf": "2022 Q20",
+    "section": "reading",
+    "chapter": "Politics, Economics and Society",
+    "text": "In which country did a woman first become prime minister, in 1960?",
+    "options": [
+      "India",
+      "Israel",
+      "United Kingdom",
+      "Sri Lanka",
+      "Pakistan"
+    ],
+    "answer": "D",
+    "solution": "Sirimavo Bandaranaike became prime minister of Ceylon, now Sri Lanka, in 1960: the world's first woman to lead a government as prime minister. Indira Gandhi (India) followed in 1966, Golda Meir (Israel) in 1969, Margaret Thatcher (UK) in 1979 and Benazir Bhutto (Pakistan) in 1988."
+  },
+  {
     "id": "twin-2022-Q23",
     "twinOf": "2022 Q23",
     "section": "biology",
