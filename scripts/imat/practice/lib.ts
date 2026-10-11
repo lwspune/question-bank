@@ -42,6 +42,13 @@ export type ImatTwin = {
   options: string[];
   answer: "A" | "B" | "C" | "D" | "E";
   solution: string;
+  /**
+   * The twin's own figure, a PNG in scripts/imat/practice/figures/. "drawn":
+   * we drew it (its SVG source sits beside it). "openstax": taken from an
+   * OpenStax textbook under CC BY 4.0, whose licence requires the credit,
+   * printed under the question by buildTwinRow.
+   */
+  figure?: { file: string; origin: "drawn" | "openstax"; credit?: string };
 };
 
 export type CriticalThinkingKind =
@@ -81,8 +88,12 @@ const OUT_OF_SYLLABUS_CHAPTERS = new Set(["Optics"]);
 
 export type TwinScope = { inScope: true } | { inScope: false; reason: string };
 
+/**
+ * Figure questions are in scope (owner, 2026-10-11): a twin draws its own
+ * figure, takes one from OpenStax, or is written so it needs none. Until then
+ * they were held back with reason "figure".
+ */
 export function twinScope(q: ImatQuestion): TwinScope {
-  if (q.figure || q.optionImages) return { inScope: false, reason: "figure" };
   if (OUT_OF_SYLLABUS_CHAPTERS.has(q.chapter)) return { inScope: false, reason: "not in the syllabus" };
   if (q.chapter === "Critical Thinking") {
     const kind = criticalThinkingKind(q.text);
@@ -108,7 +119,11 @@ function mathProblems(s: string): string[] {
 }
 
 /** Problems with a batch of twins; an empty list means it passes. */
-export function checkTwins(twins: readonly ImatTwin[], sources: ReadonlyMap<string, ImatQuestion>): string[] {
+export function checkTwins(
+  twins: readonly ImatTwin[],
+  sources: ReadonlyMap<string, ImatQuestion>,
+  opts: { figureExists?: (file: string) => boolean } = {}
+): string[] {
   const problems: string[] = [];
   const seen = new Set<string>();
   for (const t of twins) {
@@ -132,6 +147,10 @@ export function checkTwins(twins: readonly ImatTwin[], sources: ReadonlyMap<stri
     if (!["A", "B", "C", "D", "E"].includes(t.answer)) problems.push(`${at}: answer must be A-E`);
     if (!t.text.trim()) problems.push(`${at}: empty stem`);
     if (!t.solution.trim()) problems.push(`${at}: no solution`);
+    if (t.figure) {
+      if (opts.figureExists && !opts.figureExists(t.figure.file)) problems.push(`${at}: figure file missing (${t.figure.file})`);
+      if (t.figure.origin === "openstax" && !t.figure.credit?.trim()) problems.push(`${at}: an OpenStax figure needs its CC BY credit`);
+    }
     for (const [field, s] of [["context", t.context ?? ""], ["text", t.text], ["solution", t.solution], ...t.options.map((o, i) => [`option ${i + 1}`, o])]) {
       for (const p of mathProblems(s)) problems.push(`${at} ${field}: KaTeX: ${p}`);
       if (DASH.test(s)) problems.push(`${at} ${field}: em dash, en dash or spaced double hyphen`);
@@ -151,7 +170,10 @@ export function buildTwinRow(t: ImatTwin, sourceRow: number): ParsedRowPayload {
     if (value && normalizeNewlines(value) !== value) throw new Error(`${t.id} ${field}: literal backslash-n; fix the twin file`);
   }
   const options = t.options.map((text, i) => ({ label: LABELS[i], text: text.trim(), isCorrect: LABELS[i] === t.answer }));
-  const text = t.text.trim();
+  const credit = t.figure?.credit?.trim();
+  const text = credit ? `${t.text.trim()}
+
+*Figure: ${credit}.*` : t.text.trim();
   return {
     sourceRow,
     subjectName: t.section === "physmath" ? t.subject! : SUBJECT_OF_SECTION[t.section],

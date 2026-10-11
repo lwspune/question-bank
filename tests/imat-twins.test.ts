@@ -56,12 +56,14 @@ describe("twinScope", () => {
     expect(twinScope(q({})).inScope).toBe(true);
   });
 
-  it("holds figure questions for a later pass", () => {
-    expect(twinScope(q({ figure: { page: 3, note: "graph" } }))).toEqual({ inScope: false, reason: "figure" });
+  it("twins figure questions too (owner, 2026-10-11): a twin draws or sources its own figure", () => {
+    expect(twinScope(q({ figure: { page: 3, note: "graph" } })).inScope).toBe(true);
+    expect(twinScope(q({ optionImages: true })).inScope).toBe(true);
   });
 
-  it("drops optics, which is neither in the syllabus nor asked by the ministry", () => {
+  it("drops optics, which is neither in the syllabus nor asked by the ministry, figure or not", () => {
     expect(twinScope(q({ section: "physmath", subject: "Physics", chapter: "Optics" })).inScope).toBe(false);
+    expect(twinScope(q({ section: "physmath", subject: "Physics", chapter: "Optics", figure: { page: 1, note: "" } })).inScope).toBe(false);
   });
 
   it("twins the critical-thinking kinds the syllabus or the ministry covers, and only those", () => {
@@ -94,8 +96,8 @@ describe("checkTwins", () => {
 
   it("needs a source that exists and is in scope", () => {
     expect(checkTwins([twin({ twinOf: "2022 Q8", id: "twin-2022-Q8" })], sources).join()).toMatch(/no such past question/);
-    const fig = new Map([["2022 Q7", q({ n: 7, figure: { page: 1, note: "" } })]]);
-    expect(checkTwins([twin()], fig).join()).toMatch(/out of scope \(figure\)/);
+    const optics = new Map([["2022 Q7", q({ n: 7, section: "physmath", subject: "Physics", chapter: "Optics" })]]);
+    expect(checkTwins([twin({ section: "physmath", subject: "Physics", chapter: "Optics" })], optics).join()).toMatch(/out of scope/);
   });
 
   it("keeps the source's section and chapter, and an id that names it", () => {
@@ -151,5 +153,43 @@ describe("buildTwinRow", () => {
 
   it("refuses a literal backslash-n, which would never render as a line break", () => {
     expect(() => buildTwinRow({ ...twin, text: "Line one\\n 2 apples" }, 1)).toThrow(/backslash-n/);
+  });
+});
+
+describe("twin figures", () => {
+  const sources = new Map([["2022 Q7", q({ n: 7, figure: { page: 1, note: "diagram" } })]]);
+  const base: ImatTwin = {
+    id: "twin-2022-Q7",
+    twinOf: "2022 Q7",
+    section: "biology",
+    chapter: "Cell Structure and Membranes",
+    text: "The figure shows a cell. Which labelled structure makes ATP?",
+    options: ["P", "Q", "R", "S", "T"],
+    answer: "B",
+    solution: "Q is a mitochondrion.",
+  };
+  const exists = (files: string[]) => (f: string) => files.includes(f);
+
+  it("accepts a drawn figure whose file exists", () => {
+    const t = { ...base, figure: { file: "twin-2022-Q7.png", origin: "drawn" as const } };
+    expect(checkTwins([t], sources, { figureExists: exists(["twin-2022-Q7.png"]) })).toEqual([]);
+  });
+
+  it("refuses a figure whose file is missing", () => {
+    const t = { ...base, figure: { file: "twin-2022-Q7.png", origin: "drawn" as const } };
+    expect(checkTwins([t], sources, { figureExists: exists([]) }).join()).toMatch(/figure file missing/);
+  });
+
+  it("refuses an OpenStax figure without the credit its licence requires", () => {
+    const t = { ...base, figure: { file: "twin-2022-Q7.png", origin: "openstax" as const } };
+    expect(checkTwins([t], sources, { figureExists: exists(["twin-2022-Q7.png"]) }).join()).toMatch(/credit/);
+  });
+
+  it("prints the credit under the question, where the figure is shown", () => {
+    const credit = "OpenStax Biology 2e, Figure 4.8, CC BY 4.0";
+    const row = buildTwinRow({ ...base, figure: { file: "twin-2022-Q7.png", origin: "openstax", credit } }, 1);
+    expect(row.text).toBe(`${base.text}
+
+*Figure: ${credit}.*`);
   });
 });

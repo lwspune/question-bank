@@ -18,10 +18,12 @@
  * Rollback is by source_file, "imat-twins-<year>.json".
  */
 import { createClient } from "@supabase/supabase-js";
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { commitStaged } from "../../../src/lib/upload/commit";
+import { uploadImage } from "../../../src/lib/storage/images";
 import { CREATED_BY, EXAM_NAME, ORG_ID } from "../config";
-import { CAMBRIDGE_YEARS, checkAllTwins, loadTwinFile } from "./check";
+import { CAMBRIDGE_YEARS, FIGURES, checkAllTwins, loadTwinFile } from "./check";
 import { buildTwinRow } from "./lib";
 
 export const twinSourceFile = (year: number) => `imat-twins-${year}.json`;
@@ -48,9 +50,13 @@ async function main() {
 
   const plan = years.map((year) => {
     const twins = loadTwinFile(year);
-    return { year, sourceFile: twinSourceFile(year), rows: twins.map((t, i) => buildTwinRow(t, i + 1)) };
+    const rows = twins.map((t, i) => buildTwinRow(t, i + 1));
+    // Figures are matched to rows by content hash, never by position, so adding
+    // twins to a year file later cannot attach an image to the wrong question.
+    const figures = twins.flatMap((t, i) => (t.figure ? [{ id: t.id, hash: rows[i].contentHash, file: t.figure.file }] : []));
+    return { year, sourceFile: twinSourceFile(year), rows, figures };
   });
-  for (const p of plan) console.log(`  ${p.sourceFile}: ${p.rows.length} twin(s)`);
+  for (const p of plan) console.log(`  ${p.sourceFile}: ${p.rows.length} twin(s), ${p.figures.length} with a figure`);
   console.log(`total: ${plan.reduce((n, p) => n + p.rows.length, 0)} twin(s)`);
   if (!apply) {
     console.log("\n[dry run] pass --apply to write. Nothing inserted.");
@@ -64,7 +70,7 @@ async function main() {
   if (!exam) throw new Error(`exam "${EXAM_NAME}" not found`);
   const examId = exam.id as string;
 
-  for (const { sourceFile, rows } of plan) {
+  for (const { sourceFile, rows, figures } of plan) {
     const { data: existingJob } = await client
       .from("upload_jobs")
       .select("id")
@@ -95,6 +101,26 @@ async function main() {
     });
     console.log(`${sourceFile}: inserted=${result.inserted} skipped=${result.skipped} failed=${result.failed}`);
     for (const e of result.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
+
+    for (const f of figures) {
+      const { data: q, error } = await client
+        .from("questions")
+        .select("id, image_url")
+        .eq("exam_id", examId)
+        .eq("org_id", ORG_ID)
+        .eq("content_hash", f.hash)
+        .maybeSingle();
+      if (error) throw new Error(`${f.id} lookup: ${error.message}`);
+      if (!q) {
+        console.log(`  ${f.id}: no stored row, figure not attached`);
+        continue;
+      }
+      if (q.image_url) continue;
+      const path = await uploadImage(client, ORG_ID, readFileSync(join(FIGURES, f.file)), "image/png");
+      const { error: uErr } = await client.from("questions").update({ image_url: path }).eq("id", q.id);
+      if (uErr) throw new Error(`${f.id} set image_url: ${uErr.message}`);
+      console.log(`  ${f.id}: figure attached ${path}`);
+    }
 
     const count = async (extra: (q: ReturnType<typeof base>) => ReturnType<typeof base>) => (await extra(base())).count ?? 0;
     const base = () =>

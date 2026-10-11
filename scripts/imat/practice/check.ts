@@ -19,6 +19,7 @@ import { checkTwins, twinScope, type ImatTwin } from "./lib";
 
 const DATA = join(__dirname, "..", "data");
 const TWINS = join(__dirname, "twins");
+export const FIGURES = join(__dirname, "figures");
 export const CAMBRIDGE_YEARS = Array.from({ length: 12 }, (_, i) => 2011 + i);
 
 export function loadTwinFile(year: number): ImatTwin[] {
@@ -40,7 +41,7 @@ export function checkAllTwins() {
     for (const q of qs) sources.set(`${year} Q${q.n}`, q);
   }
   const twins = CAMBRIDGE_YEARS.flatMap(loadTwinFile);
-  const problems = checkTwins(twins, sources);
+  const problems = checkTwins(twins, sources, { figureExists: (f) => existsSync(join(FIGURES, f)) });
   const idx = buildOriginalityIndex(loadPastQuestions());
   const findings = twins.flatMap((t) => checkOriginality(idx, t));
   const open = unreviewed(findings, twins, loadReviews());
@@ -53,22 +54,29 @@ function main() {
   const { twins, byYear, problems } = checkAllTwins();
 
   const done = new Set(twins.map((t) => t.twinOf));
-  console.log("year  in-scope  twinned  figure-held  out-of-syllabus");
-  const total = { scope: 0, done: 0, fig: 0, out: 0 };
+  // "figure source" = in-scope questions whose source carries a figure (the
+  // later pass); "figure left" = those of them not yet twinned.
+  console.log("year  in-scope  twinned  figure-source  figure-left  out-of-syllabus");
+  const total = { scope: 0, done: 0, fig: 0, left: 0, out: 0 };
   for (const year of CAMBRIDGE_YEARS) {
-    let scope = 0, twinned = 0, fig = 0, out = 0;
+    let scope = 0, twinned = 0, fig = 0, left = 0, out = 0;
     for (const q of byYear.get(year)!) {
       const s = twinScope(q);
+      const isFig = !!(q.figure || q.optionImages);
       if (s.inScope) {
         scope++;
-        if (done.has(`${year} Q${q.n}`)) twinned++;
-      } else if (s.reason === "figure") fig++;
-      else out++;
+        const has = done.has(`${year} Q${q.n}`);
+        if (has) twinned++;
+        if (isFig) {
+          fig++;
+          if (!has) left++;
+        }
+      } else out++;
     }
-    Object.assign(total, { scope: total.scope + scope, done: total.done + twinned, fig: total.fig + fig, out: total.out + out });
-    console.log(`${year}  ${String(scope).padStart(8)}  ${String(twinned).padStart(7)}  ${String(fig).padStart(11)}  ${String(out).padStart(15)}`);
+    Object.assign(total, { scope: total.scope + scope, done: total.done + twinned, fig: total.fig + fig, left: total.left + left, out: total.out + out });
+    console.log(`${year}  ${String(scope).padStart(8)}  ${String(twinned).padStart(7)}  ${String(fig).padStart(13)}  ${String(left).padStart(11)}  ${String(out).padStart(15)}`);
   }
-  console.log(`all   ${String(total.scope).padStart(8)}  ${String(total.done).padStart(7)}  ${String(total.fig).padStart(11)}  ${String(total.out).padStart(15)}`);
+  console.log(`all   ${String(total.scope).padStart(8)}  ${String(total.done).padStart(7)}  ${String(total.fig).padStart(13)}  ${String(total.left).padStart(11)}  ${String(total.out).padStart(15)}`);
 
   const letters = twins.reduce<Record<string, number>>((m, t) => ({ ...m, [t.answer]: (m[t.answer] ?? 0) + 1 }), {});
   console.log(`\nanswer letters: ${JSON.stringify(letters)}`);
