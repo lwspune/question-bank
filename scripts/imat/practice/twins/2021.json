@@ -64,6 +64,26 @@
     "solution": "Balloons are not recycled, so they are out (3 packs for £6.00 is the trap). For 30 invitations: stars need 5 packs = £7.50; flowers need 4 packs (32) = £7.60; animals need 3 packs (36) = £9.60; rockets need 2 packs = £8.20. The cheapest is £7.50."
   },
   {
+    "id": "twin-2021-Q9",
+    "twinOf": "2021 Q9",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "A 24-hour digital clock hangs on the wall behind my desk, and I can see it only in a mirror in front of me. The top display in the figure is what the mirror shows now.\nExactly 45 minutes later, which of the displays 1 to 5 does the mirror show?",
+    "options": [
+      "2",
+      "5",
+      "4",
+      "3",
+      "1"
+    ],
+    "answer": "D",
+    "solution": "A mirror swaps left and right: it reverses the order of the four digits and turns each digit into its mirror image. Undoing that, the clock itself shows 15:20 (a mirrored 5 looks like a 2, a mirrored 2 like a 5, and the 1 has its bars on the wrong side). 45 minutes later the clock shows 16:05, and its mirror image is display 3: the digits in the order 5, 0, 6, 1, each one reversed. Display 4 (06:06) comes from reading the mirror image as if it were the time, 05:21, and adding 45 minutes. Display 1 is 16:05 not mirrored, display 5 reverses each digit but keeps their order, and display 2 is the mirror image of 14:35, which is 45 minutes earlier.",
+    "figure": {
+      "file": "twin-2021-Q9.png",
+      "origin": "drawn"
+    }
+  },
+  {
     "id": "twin-2021-Q10",
     "twinOf": "2021 Q10",
     "section": "logic",
@@ -288,6 +308,22 @@
     "solution": "Bacteria are prokaryotes. Most have a cell wall (made of peptidoglycan), and all have ribosomes, smaller (70S) than those of eukaryotes. They have no membrane-bound organelles, so no mitochondria: respiration happens on the cell membrane. So 1 and 2 only."
   },
   {
+    "id": "twin-2021-Q24",
+    "twinOf": "2021 Q24",
+    "section": "biology",
+    "chapter": "Cell Division and Reproduction",
+    "text": "Which of the following is produced by mitosis?",
+    "options": [
+      "a new liver cell replacing a damaged one",
+      "a sperm cell in the testis",
+      "two bacteria formed when one bacterium divides",
+      "a new mitochondrion formed inside a muscle cell",
+      "a new virus particle released from an infected cell"
+    ],
+    "answer": "A",
+    "solution": "Mitosis divides a eukaryotic nucleus into two genetically identical nuclei, and the body uses it for growth and repair, such as replacing liver cells. Sperm are made by meiosis, which halves the chromosome number. Bacteria have no nucleus and divide by binary fission. Mitochondria multiply by their own fission, and virus particles are assembled inside the host cell; neither involves mitosis."
+  },
+  {
     "id": "twin-2021-Q25",
     "twinOf": "2021 Q25",
     "section": "biology",
@@ -318,6 +354,22 @@
     ],
     "answer": "C",
     "solution": "A phospholipid has a hydrophilic phosphate head and two hydrophobic fatty acid tails. In water they form a bilayer with the heads facing the watery inside and outside of the cell and the tails hidden in the middle. Ions cross through channel and carrier proteins, because the hydrophobic core blocks them; phospholipids are made on the smooth ER."
+  },
+  {
+    "id": "twin-2021-Q27",
+    "twinOf": "2021 Q27",
+    "section": "biology",
+    "chapter": "Cell Structure and Membranes",
+    "text": "Which row correctly matches a cell organelle with its function?\n\n| | organelle | function |\n|---|---|---|\n| row 1 | smooth endoplasmic reticulum | joins amino acids into proteins |\n| row 2 | lysosome | packages proteins into vesicles for secretion |\n| row 3 | nucleolus | stores water and ions for the cell |\n| row 4 | centriole | carries out aerobic respiration |\n| row 5 | rough endoplasmic reticulum | carries ribosomes that make proteins for export |",
+    "options": [
+      "row 3",
+      "row 1",
+      "row 4",
+      "row 2",
+      "row 5"
+    ],
+    "answer": "E",
+    "solution": "Rough endoplasmic reticulum is studded with ribosomes, and the proteins they make enter it to be exported or built into membranes. Each other row gives the function of a different organelle: row 1 describes ribosomes (smooth ER makes lipids), row 2 the Golgi apparatus (lysosomes hold digestive enzymes), row 3 a vacuole (the nucleolus makes ribosomal subunits) and row 4 the mitochondrion (centrioles organise the spindle in cell division)."
   },
   {
     "id": "twin-2021-Q28",
@@ -384,6 +436,46 @@
     "solution": "Three pairs means 6 chromosomes. Mitosis makes two cells genetically identical to the parent, so each division keeps 6 chromosomes per cell. Two rounds give 4 cells, each with 6. Halving to 3 happens only in meiosis."
   },
   {
+    "id": "twin-2021-Q32",
+    "twinOf": "2021 Q32",
+    "section": "biology",
+    "chapter": "Molecular Biology and Gene Expression",
+    "text": "One strand of a section of DNA is used as the template for transcription. Its base sequence is\nTACCTGAGCTTCACGTCT\nWhich pie chart shows the proportions of the bases in the mRNA transcribed from it?",
+    "options": [
+      "1",
+      "5",
+      "4",
+      "2",
+      "3"
+    ],
+    "answer": "C",
+    "solution": "The mRNA pairs with the template: A opposite T, U opposite A, G opposite C and C opposite G. The template holds 6 T, 3 A, 6 C and 3 G, so the mRNA holds 6 A, 3 U, 6 G and 3 C: a third each of A and G and a sixth each of U and C, which is chart 4. Chart 1 is the other DNA strand (it contains T, which RNA does not). Chart 5 is the template itself, and chart 2 copies the template with U for T instead of pairing with it. Chart 3 assumes equal shares, but base pairing fixes the ratios between two strands, not within one.",
+    "figure": {
+      "file": "twin-2021-Q32.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2021-Q33",
+    "twinOf": "2021 Q33",
+    "section": "biology",
+    "chapter": "Genetics and Inheritance",
+    "text": "A condition is caused by one allele of a gene on an autosome. The figure shows five families, each with two parents and three children.\nWhich family could show the inheritance only if the allele causing the condition is dominant, and not if it is recessive?",
+    "options": [
+      "2",
+      "4",
+      "1",
+      "5",
+      "3"
+    ],
+    "answer": "B",
+    "solution": "In family 4 both parents have the condition but their son does not. If the allele were recessive, both parents would be homozygous recessive and every child would have the condition. If it is dominant, two heterozygous parents can have a child without it (one in four on average). Family 3 is the reverse case: unaffected parents with an affected daughter is possible only if the allele is recessive. Families 1, 2 and 5 fit either model: one affected and one unaffected parent can have children of both kinds whichever allele is dominant, and two affected parents can have only affected children under both.",
+    "figure": {
+      "file": "twin-2021-Q33.png",
+      "origin": "drawn"
+    }
+  },
+  {
     "id": "twin-2021-Q34",
     "twinOf": "2021 Q34",
     "section": "biology",
@@ -432,6 +524,42 @@
     "solution": "The left ventricle pumps into the aorta and round the whole body, which is why its wall is the thickest. The pulmonary artery carries deoxygenated blood to the lungs. The sinoatrial node, the pacemaker, is in the wall of the right atrium. The atria contract first and the ventricles a fraction of a second later."
   },
   {
+    "id": "twin-2021-Q37",
+    "twinOf": "2021 Q37",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "The graph shows the concentration of one type of antibody in a person's blood after two exposures to the same antigen.\nWhich of the following statements is/are correct?\n1 The second response is faster and larger because memory cells were formed after the first exposure.\n2 After the first response, the antibody concentration stayed at its highest level until the second exposure.\n3 The graph could show a vaccination followed later by a booster dose.",
+    "options": [
+      "1 only",
+      "2 and 3 only",
+      "1, 2 and 3",
+      "1 and 3 only",
+      "3 only"
+    ],
+    "answer": "D",
+    "solution": "1 is correct: the first exposure leaves memory B cells, so the second response starts sooner and makes far more antibody. 2 is wrong: the curve falls back almost to zero between the two exposures; antibodies are broken down, and it is the memory cells, not the antibodies, that last. 3 is correct: a vaccine causes the small primary response and the memory cells, and a booster triggers the larger secondary response.",
+    "figure": {
+      "file": "twin-2021-Q37.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2021-Q38",
+    "twinOf": "2021 Q38",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "Which statement about the human eye is correct?",
+    "options": [
+      "The blind spot is where the cones are most densely packed.",
+      "To focus on a near object, the ciliary muscles relax and the lens becomes thinner.",
+      "The optic nerve carries impulses from the brain to the retina.",
+      "The iris controls how much the lens refracts light.",
+      "Rods work in dim light but cannot tell colours apart."
+    ],
+    "answer": "E",
+    "solution": "Rods are very sensitive and work in dim light, but there is only one kind, so they give no colour information; colour comes from the three kinds of cone. The blind spot has no receptors at all, because the optic nerve leaves the eye there; cones are densest at the fovea. For near vision the ciliary muscles contract, the suspensory ligaments slacken and the lens becomes fatter. The optic nerve carries impulses from the retina to the brain. The iris controls how much light enters, through the size of the pupil."
+  },
+  {
     "id": "twin-2021-Q39",
     "twinOf": "2021 Q39",
     "section": "biology",
@@ -446,6 +574,26 @@
     ],
     "answer": "A",
     "solution": "Group AB plasma carries neither anti-A nor anti-B antibodies, so nothing in the patient's blood will attack red cells carrying A or B antigens. AB is the universal recipient and can receive red cells of any ABO group. Group O is the universal donor, the opposite case."
+  },
+  {
+    "id": "twin-2021-Q40",
+    "twinOf": "2021 Q40",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "The diagram sorts features of two hormones, insulin and glucagon: X is a feature of insulin only, Y of both hormones and Z of glucagon only.\nWhich row is correct for X, Y and Z?\n\n| | X | Y | Z |\n|---|---|---|---|\n| row 1 | lowers blood glucose | made by the adrenal glands | raises blood glucose |\n| row 2 | lowers blood glucose | made by cells in the islets of the pancreas | stimulates the liver to break down glycogen |\n| row 3 | stimulates the liver to break down glycogen | made by cells in the islets of the pancreas | lowers blood glucose |\n| row 4 | increases glucose uptake by muscle cells | a steroid hormone | raises blood glucose |\n| row 5 | lowers blood glucose | made by cells in the islets of the pancreas | increases glucose uptake by muscle cells |",
+    "options": [
+      "row 2",
+      "row 1",
+      "row 3",
+      "row 4",
+      "row 5"
+    ],
+    "answer": "A",
+    "solution": "Insulin lowers blood glucose (X); glucagon raises it, chiefly by making the liver break glycogen down to glucose (Z); both are made in the islets of Langerhans in the pancreas (Y). Row 1 puts them in the adrenal glands, which make adrenaline. Row 3 swaps the two hormones. Row 4 calls them steroids, but both are proteins. Row 5 gives glucagon an effect of insulin.",
+    "figure": {
+      "file": "twin-2021-Q40.png",
+      "origin": "drawn"
+    }
   },
   {
     "id": "twin-2021-Q41",
@@ -496,6 +644,22 @@
     "solution": "1: a dissolved solute lowers the freezing point (and raises the boiling point). 2: water boils when its vapour pressure equals the air pressure; on a mountain the air pressure is lower, so that happens at a lower temperature. 3: lower temperature means lower average kinetic energy, so the molecules slow down. So 1 and 2 only."
   },
   {
+    "id": "twin-2021-Q44",
+    "twinOf": "2021 Q44",
+    "section": "chemistry",
+    "chapter": "Organic Chemistry",
+    "text": "Which of the following are structural isomers of pentane, \\(\\mathrm{C_5H_{12}}\\)?\n1 \\(\\mathrm{CH_3CH(CH_3)CH_2CH_3}\\)\n2 cyclopentane, a ring of five \\(\\mathrm{CH_2}\\) groups\n3 \\(\\mathrm{C(CH_3)_4}\\)",
+    "options": [
+      "1 only",
+      "2 and 3 only",
+      "1 and 3 only",
+      "1, 2 and 3",
+      "3 only"
+    ],
+    "answer": "C",
+    "solution": "Structural isomers have the same molecular formula with the atoms joined differently. 1 (2-methylbutane) and 3 (2,2-dimethylpropane) both have five carbons and twelve hydrogens, so both are isomers of pentane. Cyclopentane has five carbons but only ten hydrogens: closing the ring removes two hydrogens, so its formula is \\(\\mathrm{C_5H_{10}}\\) and it is not an isomer of pentane, however similar the carbon skeleton looks."
+  },
+  {
     "id": "twin-2021-Q45",
     "twinOf": "2021 Q45",
     "section": "chemistry",
@@ -512,6 +676,22 @@
     "solution": "The first ionisation energy is the energy to remove one electron from each atom in one mole of gaseous atoms, forming one mole of gaseous 1+ ions. It starts from Na(g), not the solid, and is defined per mole of atoms, so the 2Na equation is twice the value. Adding an electron is electron affinity."
   },
   {
+    "id": "twin-2021-Q46",
+    "twinOf": "2021 Q46",
+    "section": "chemistry",
+    "chapter": "Organic Chemistry",
+    "text": "Here is a structural formula:\n\\[\\mathrm{CH_3{-}CO{-}CH_2{-}CH(NH_2){-}COO{-}CH_2CH_3}\\]\nWhich of these groups can be found in it?\n1 ester\n2 ketone\n3 amine\n4 ether\n5 amide\n6 alkene",
+    "options": [
+      "2, 3 and 6 only",
+      "1, 2 and 3 only",
+      "1, 3 and 5 only",
+      "2, 4 and 5 only",
+      "3, 4 and 6 only"
+    ],
+    "answer": "B",
+    "solution": "The CO between two carbons on the left is a ketone. The \\(\\mathrm{NH_2}\\) on the fourth carbon is an amine. The COO joined to an ethyl group is an ester. It is not an amide, because the nitrogen is not attached to the C=O carbon, and the ester's oxygen is not an ether, because it belongs to the COO group. Every carbon-carbon bond is single, so there is no alkene. Mistaking the \\(\\mathrm{CH(NH_2)}\\) next to the COO for an amide gives the third option."
+  },
+  {
     "id": "twin-2021-Q47",
     "twinOf": "2021 Q47",
     "section": "chemistry",
@@ -526,6 +706,22 @@
     ],
     "answer": "A",
     "solution": "Each \\(\\mathrm{H_2SO_4}\\) gives two \\(\\mathrm{H^+}\\), so Q has \\([\\mathrm{H^+}] = 0.020\\) mol/L, the same as P (1 correct). Moles: P has 0.200 x 0.020 = 0.0040 mol, Q has 0.100 x 0.020 = 0.0020 mol (2 correct). pH = \\(-\\log(0.020) \\approx 1.7\\), not 2 (3 wrong)."
+  },
+  {
+    "id": "twin-2021-Q48",
+    "twinOf": "2021 Q48",
+    "section": "chemistry",
+    "chapter": "Chemical Bonding",
+    "text": "In the solid state, phosphorus(V) chloride exists as the ions \\(\\mathrm{PCl_4^+}\\) and \\(\\mathrm{PCl_6^-}\\).\nWhich row gives the shapes of the two ions?\n\n| | \\(\\mathrm{PCl_4^+}\\) | \\(\\mathrm{PCl_6^-}\\) |\n|---|---|---|\n| row 1 | square planar | octahedral |\n| row 2 | tetrahedral | trigonal bipyramidal |\n| row 3 | trigonal pyramidal | octahedral |\n| row 4 | square planar | trigonal bipyramidal |\n| row 5 | tetrahedral | octahedral |",
+    "options": [
+      "row 1",
+      "row 2",
+      "row 3",
+      "row 4",
+      "row 5"
+    ],
+    "answer": "E",
+    "solution": "Phosphorus has five outer electrons. In \\(\\mathrm{PCl_4^+}\\) it has lost one, leaving four, all used in four P-Cl bonds: four bonding pairs and no lone pair, so tetrahedral. In \\(\\mathrm{PCl_6^-}\\) it has gained one, giving six, all used in six bonds: six bonding pairs, so octahedral. Trigonal bipyramidal (row 2) is the shape of the neutral \\(\\mathrm{PCl_5}\\) molecule, with five pairs. Square planar needs four bonding pairs plus two lone pairs, and trigonal pyramidal three bonding pairs plus one lone pair."
   },
   {
     "id": "twin-2021-Q49",
@@ -624,6 +820,48 @@
     ],
     "answer": "B",
     "solution": "The left side is \\(x - \\tfrac{1}{3} - \\tfrac{x}{2} - \\tfrac{3}{2} = \\tfrac{x}{2} - \\tfrac{11}{6}\\). So \\(\\tfrac{x}{2} - \\tfrac{11}{6} > x - 4\\), giving \\(-\\tfrac{x}{2} > -\\tfrac{13}{6}\\). Multiplying by \\(-2\\) reverses the sign: \\(x < \\tfrac{13}{3}\\)."
+  },
+  {
+    "id": "twin-2021-Q55",
+    "twinOf": "2021 Q55",
+    "section": "physmath",
+    "subject": "Mathematics",
+    "chapter": "Geometry",
+    "text": "In triangle ABC the angle at C is \\(90^\\circ\\). A line from D, on side AC, to E, on side CB, runs parallel to AB.\nAD = 2 cm, DC = 2 cm and CE = 3 cm.\nWhat is the perimeter of ABED, in cm?",
+    "options": [
+      "\\(5 + 2\\sqrt{13}\\)",
+      "\\(10 + 2\\sqrt{13}\\)",
+      "\\(4 + 3\\sqrt{13}\\)",
+      "\\(5 + 3\\sqrt{13}\\)",
+      "\\(7 + 3\\sqrt{13}\\)"
+    ],
+    "answer": "D",
+    "solution": "By Pythagoras in triangle DCE, \\(DE = \\sqrt{2^2 + 3^2} = \\sqrt{13}\\). Because DE is parallel to AB, triangle DCE is similar to triangle ACB with scale factor \\(AC/DC = 4/2 = 2\\). So \\(AB = 2\\sqrt{13}\\) and \\(CB = 6\\), which makes \\(EB = 3\\). Perimeter \\(= AD + AB + BE + ED = 2 + 2\\sqrt{13} + 3 + \\sqrt{13} = 5 + 3\\sqrt{13}\\). The first option forgets to scale AB, the second is the perimeter of the whole triangle, and the third takes EB to be 2.",
+    "figure": {
+      "file": "twin-2021-Q55.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2021-Q56",
+    "twinOf": "2021 Q56",
+    "section": "physmath",
+    "subject": "Mathematics",
+    "chapter": "Trigonometry",
+    "text": "Triangle KLM has a right angle at L, and triangle KMN has a right angle at M.\nThe area of triangle KLM is \\(16\\ \\text{cm}^2\\), \\(\\tan(\\angle KML) = \\tfrac{1}{2}\\) and MN = 10 cm.\nWhat is \\(\\cos(\\angle MKN)\\)?",
+    "options": [
+      "\\(\\dfrac{\\sqrt{5}}{3}\\)",
+      "\\(\\dfrac{2\\sqrt{5}}{5}\\)",
+      "\\(\\dfrac{2}{3}\\)",
+      "\\(\\dfrac{\\sqrt{5}}{2}\\)",
+      "\\(\\dfrac{1}{3}\\)"
+    ],
+    "answer": "C",
+    "solution": "\\(\\tan(\\angle KML) = KL/LM = 1/2\\), so \\(LM = 2\\,KL\\), and the area is \\(\\tfrac{1}{2} \\cdot KL \\cdot LM = KL^2 = 16\\). So \\(KL = 4\\), \\(LM = 8\\) and \\(KM = \\sqrt{80} = 4\\sqrt{5}\\). In triangle KMN, \\(KN = \\sqrt{80 + 100} = 6\\sqrt{5}\\), so \\(\\cos(\\angle MKN) = KM/KN = 4\\sqrt{5}/(6\\sqrt{5}) = 2/3\\). The first option is \\(\\sin(\\angle MKN)\\), the fourth is \\(\\tan(\\angle MKN)\\), and the second is \\(\\cos(\\angle KML)\\) from the other triangle.",
+    "figure": {
+      "file": "twin-2021-Q56.png",
+      "origin": "drawn"
+    }
   },
   {
     "id": "twin-2021-Q57",
