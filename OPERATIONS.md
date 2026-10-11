@@ -79,6 +79,16 @@ npm run results:announce -- --exam=nda --sitting="NDA 2 2026" --stage=ssb --appl
 
 `--stage` is `written`, `ssb` or `final`; `--announced=YYYY-MM-DD` (default today, IST); `--ask-days=21` (1 to 90). Answers and names waiting to be shown are at **/dashboard/results** (superadmin): Publish puts a name on /results, the homepage and exam-page strips at once; Take down and Decline remove it. Nothing publishes itself. A shown name may not carry a digit, `_` or `@` (a DB CHECK), so an account handle cannot go up by mistake. **When you already know a student cleared and have their consent:** open them in Registered Students (/dashboard/students → the student) → **Exam results → Mark result**: pick the result (or **+ New result**: exam, sitting, stage), check the name, tick consent, Publish. It is live at once on /results, the homepage, Pricing and that exam's mocks, notes and guides pages; **Take down** is on the same page. A new result made there also starts the three-week "Did you clear it?" card for that exam's students, the same as `results:announce`.
 
+### Checked answer sheets (migration 0153, 2026-10-11)
+
+Students upload a board paper they wrote on paper from its `/question-papers` page; they are promised a report within 48 hours. Free, one sheet per student per IST day.
+
+- **Knowing something is waiting:** an email to every superadmin at 18:00 IST when a sheet or a grade question is waiting (`.github/workflows/grading-queue.yml`, needs the `RESEND_API_KEY` + `EMAIL_FROM` secrets the other email jobs use), the **Answer sheets** card on `/dashboard` (with the count) and `/dashboard/answer-sheets`.
+- **Grading:** `npm run grading:pull`, then one fresh Claude session per sheet: "Grade grading-inbox/<id> by scripts/grading/GRADING.md". `npm run grading:commit -- <id> --dry` until it passes, then without `--dry` (saves, emails the student). Unreadable or wrong paper: `npm run grading:commit -- <id> --reject="what to fix"` (frees the student's day, emails them).
+- **A student questions a grade:** listed in `grading-inbox/questions.md`; the routine is in GRADING.md.
+- **Weekly:** `npm run grading:purge -- --apply` deletes scans 30 days after checking (the promise made at upload) and abandoned uploads. Grades stay.
+- `grading-inbox/` holds students' scans: gitignored, never copied elsewhere.
+
 ### When to upgrade tiers
 
 - **Vercel Pro (since 2026-09-20)** bills a $20 seat plus metered usage (~$1-2 a day in early October; the breakdown is in CLAUDE.md's Production line). Read Settings → Billing weekly: the meters that move are function invocations + Active CPU (a prefetch or caching regression shows up here first), ISR writes, deployment storage and **builds, which are billed on every machine type** ($0.0035 per CPU minute = build minutes × vCPUs; ~$0.35 a push on Enhanced, measured 2026-10-06; Usage → Build CPU Minutes shows the machine each day used). Observability Plus was switched off 2026-10-06; if "Observability Events" reappears on the bill, it was switched back on. Going back to Hobby is ruled out: it is non-commercial only and its hard caps (Active CPU 4 h/month, ISR writes 200k/month) are below a few days of our usage.

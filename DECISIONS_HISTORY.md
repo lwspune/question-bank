@@ -15,6 +15,24 @@ This file holds the archived batches of Decisions log entries from CLAUDE.md:
 
 11. **The six oldest 2026-09-15 digests EVICTED from CLAUDE.md on 2026-09-18** under the CEILING rule (2026-09-15 plain, second, third, fourth, fifth, sixth) — the active Decisions log had reached 97% of its 35.2 KB hard limit and the Class-10 completion entry would have tripped it. All six were **verified present in the `### 2026-09-01 to 2026-09-16` section below before removal**, freeing 9.1 KB (97% → 70%). The 2026-09-15 seventh/eighth/ninth digests were KEPT, the ninth because it opens the NCERT Class-10 lane that the new entry closes.
 
+**2026-10-11 — Checked answer sheets: a student writes a board past paper from `/question-papers` on paper, uploads photos or a PDF, and gets marks for every question with what earned them and what was missing, within 48 hours. Free while the rules are shaped, one sheet a day (migration 0153; `scripts/grading/`).**
+
+WHY HAND-GRADED, IN CHAT. Demand is unproven (3 paid passes, board downloads one day old), so the first version is concierge: the owner and Claude grade each sheet in a fresh session against `scripts/grading/GRADING.md`, which collects every learning so later sheets are graded like earlier ones. Grading through the API was weighed (repeatable, measures cost per paper, close to the automated version) and deferred by the owner; the cost per paper must be measured on a few real sheets through the API before a price is set. Estimate on 2026-10-11 pricing: Opus 5.5 with the batch discount, about Rs 40-60 a 25-page sheet.
+
+WHY THE GRADE COPIES THE QUESTION. `board_paper_replace` deletes and re-inserts a paper's items on every rebuild (0146), so `answer_grades` cannot reference an item row. It stores the printed number and the maximum it was graded against, which makes `awarded <= max_marks` a CHECK on the row itself, in halves.
+
+THE DATABASE OWNS THE TOTAL. `answer_grade_commit` sums the scored rows itself, refuses a total above the paper's maximum and flips the sheet to graded in one transaction; it accepts a graded sheet again for a regrade. The checker (`lib/answerSheets/grade.ts`) runs first and names every problem at once: a missing question, a stale max, both sides of an OR scored, feedback missing where marks were given or lost, nothing scored (that is a rejection). Its template starts with EMPTY outcomes, which it refuses, so an unread question cannot pass as "not attempted". "Attempt any N" is not parsed per section (the paper prints it only as a note); the total-within-maximum rule catches a grade that counted too many.
+
+UPLOADS. A 25-page PDF is far over Vercel's 4.5 MB body limit, so the start route issues one signed upload link per file into `answer-sheets/<user>/<submission>/NN.ext`; the bucket is private with NO storage policies and repeats the 20 MB and JPG/PNG/WEBP/PDF limits, so a link cannot store anything else (tested: a text/plain upload through a valid link is refused, and a student cannot list their own scans). Submit lists the folder and queues the sheet only when every promised file is there. One unfinished upload per student; starting again discards it.
+
+ONE A DAY, AND A REJECTION FREES IT. A partial unique index on (user, IST day) WHERE status IN (submitted, graded). A rejected sheet (unreadable, wrong paper, blank) is outside it, so the student can resend the same day; the rejection email says so.
+
+HOW THE OWNER KNOWS. `.github/workflows/grading-queue.yml` at 18:00 IST emails every superadmin when anything is waiting, naming the oldest wait and anything past 36 hours (the promise is 48); `/dashboard/answer-sheets` and a dashboard card with the count. Not an email per upload: the Resend quota (100/day) is shared with auth mail.
+
+PRIVACY. An answer sheet tied to an account is personal data in the same way mock attempts are, so this adds no new kind of risk; a consent tick at upload, `/privacy` names the AI-assisted checking (Anthropic), and `grading:purge` deletes scans 30 days after checking (grades stay). The local `grading-inbox/` is gitignored and purged with them.
+
+TWO RULES ARE OURS AND PROVISIONAL (GRADING.md ledger): half a mark for a missing unit, and "first N in the order written" for an over-attempted "attempt any N". Confirm with a board examiner before charging.
+
 **2026-10-10 (sixth) — Chapter formula pages: 222 static pages at `/formula/<exam>/<subject>/<chapter>`, one per /notes chapter with enough formulas, plus four exam hubs at `/formula/<exam>`; for search and ChatGPT, built from the notes registry alone.**
 
 Why: the owner asked for exam, subject and chapter-wise formula pages "like /questions", purely for SEO and GEO. ChatGPT is the top signup source and lands on chapter pages; "what is the formula for X" is a quotable page shape. Google had indexed 39 of ~1,650 pages (2026-09-21), so the pages are only worth adding if they are strongly linked and add no build load.

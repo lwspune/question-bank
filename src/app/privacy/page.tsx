@@ -24,7 +24,7 @@ export default function PrivacyPage() {
   return (
     <LegalPage
       title="Privacy Policy"
-      updated="9 October 2026"
+      updated="11 October 2026"
       intro={
         <>
           PYQ Vault is run by Vilas Shinde, in Pune. This policy explains what we collect and
@@ -43,6 +43,12 @@ export default function PrivacyPage() {
           <>
             <strong>Your practice.</strong> Your mock-test answers and scores, questions you
             save, and what you practise, so we can show your progress and weak areas.
+          </>,
+          <>
+            <strong>Answer sheets.</strong> If you send a board paper for checking: the photos or
+            PDF of your answers, and the marks and feedback we give. We check them with the help
+            of an AI tool. The photos are deleted 30 days after checking; the marks and feedback
+            stay on your account.
           </>,
           <>
             <strong>Payments.</strong> If you buy premium, we keep a record of the purchase:
@@ -72,7 +78,7 @@ export default function PrivacyPage() {
       <LegalH2>Why we collect it</LegalH2>
       <LegalList
         items={[
-          "To run your account, grade your mocks and show your progress.",
+          "To run your account, grade your mocks and answer sheets, and show your progress.",
           "To give you premium access after you pay, and to handle refunds.",
           "To email you about your account: mock reports, practice reminders and how-to guides. Every such email has an unsubscribe link.",
           <>
@@ -89,7 +95,7 @@ export default function PrivacyPage() {
         Your information is stored securely and is accessible only to authorised PYQ Vault
         staff. We do <strong>not</strong> sell your data. We use a
         few trusted providers to run the site — hosting and database (Vercel, Supabase), email
-        delivery (Resend) and payments (Razorpay) — and they process data only to provide that
+        delivery (Resend), payments (Razorpay) and AI-assisted checking of answer sheets (Anthropic) — and they process data only to provide that
         service. We keep your information only as long as it is needed for the purposes above.
       </LegalP>
 

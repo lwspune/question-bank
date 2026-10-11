@@ -23,6 +23,7 @@ import type { PaperViewItem } from "@/lib/questionPapers/listing";
 import BoardQuestionItem from "@/app/board/BoardQuestionItem";
 import { useBoardReveal } from "@/app/board/useBoardReveal";
 import PaperDownload from "@/app/mock/_components/PaperDownload";
+import AnswerSheetUpload from "./AnswerSheetUpload";
 
 export type PaperSet = {
   slug: string;
@@ -101,8 +102,9 @@ export default function PaperReader({
           ) : (
             // One registry per set: classroom projection walks one paper, not into the next.
             <PresentRegistry>
-              <div className="mb-6">
+              <div className="mb-6 space-y-3">
                 <PaperDownload slug={s.slug} paperTitle={s.title} boardPaper={{ exam: examSlug }} />
+                <AnswerSheetUpload examSlug={examSlug} paperSlug={s.slug} paperTitle={s.title} />
               </div>
               <PaperSections
                 set={s}
