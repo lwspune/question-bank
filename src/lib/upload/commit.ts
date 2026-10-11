@@ -26,6 +26,13 @@ export type CommitInput = {
    * blocked row that lands on the PUBLIC default is rejected.
    */
   publishBlocked?: string;
+  /**
+   * question_kind written AT INSERT. Omitted = the column default ('pyq',
+   * migration 0036). A pipeline of our own practice questions passes
+   * "practice" here rather than flipping the rows afterwards, so they never
+   * count as past questions, not even for a moment.
+   */
+  questionKind?: "pyq" | "practice";
 };
 
 export type CommitResult = {
@@ -51,6 +58,7 @@ export async function commitStaged(
     pyqNote,
     visibility,
     publishBlocked,
+    questionKind,
   } = input;
   const result: CommitResult = { inserted: 0, skipped: 0, failed: 0, errors: [] };
   if (rows.length === 0) return result;
@@ -146,6 +154,7 @@ export async function commitStaged(
     created_by: string;
     visibility?: "PUBLIC" | "PRIVATE";
     publish_blocked?: string;
+    question_kind?: "pyq" | "practice";
   };
 
   const stagedInserts: { row: ParsedRowPayload; q: QuestionInsert }[] = [];
@@ -218,6 +227,7 @@ export async function commitStaged(
           created_by: createdBy,
           ...(visibility ? { visibility } : {}),
           ...(publishBlocked ? { publish_blocked: publishBlocked } : {}),
+          ...(questionKind ? { question_kind: questionKind } : {}),
         },
       });
     } catch (err) {

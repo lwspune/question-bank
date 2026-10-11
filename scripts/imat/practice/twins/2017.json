@@ -1,0 +1,886 @@
+[
+  {
+    "id": "twin-2017-Q1",
+    "twinOf": "2017 Q1",
+    "section": "logic",
+    "chapter": "Numerical Reasoning",
+    "text": "A jar holds red, blue and white marbles, with equal numbers of each colour. The jar is passed round three friends in turn:\nAna always takes 2 red marbles.\nBen always takes one marble of each colour.\nCara always takes 3 white marbles.\nAfter the jar has gone round 4 times, exactly half of the marbles left in it are blue.\nHow many marbles were in the jar at the start?",
+    "options": [
+      "48",
+      "60",
+      "72",
+      "96",
+      "36"
+    ],
+    "answer": "C",
+    "solution": "Say there were n of each colour. Four rounds remove 4 x (2 + 1) = 12 red, 4 x 1 = 4 blue and 4 x (1 + 3) = 16 white, leaving 3n - 32 marbles, of which n - 4 are blue. Half blue means 2(n - 4) = 3n - 32, so n = 24 and the jar held 72. Check: 12 red, 20 blue and 8 white remain, and 20 is half of 40."
+  },
+  {
+    "id": "twin-2017-Q2",
+    "twinOf": "2017 Q2",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "The figure shows the cross-section of a long metal bar; the cross-section is the same along the whole length. Views 1 to 5 each show the whole length of the bar seen from one side, at right angles to its length, with a line wherever an edge of the bar can be seen. Hidden edges are not drawn.\nWhich view is NOT possible?",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "5",
+      "3"
+    ],
+    "answer": "E",
+    "solution": "From above, the top is one flat face with no edges in it: view 5. From below, the short left leg stops one unit higher than the bottom bar, giving one line one unit from an edge: view 2. From the right you look into both slots and see faces at three different depths: view 1. From the left you look into the lower slot only: view 4, with the bar turned end to end. View 3 has a line four units from one edge of a six-unit side, which can only be the end of the middle bar; from below it is hidden behind the bottom bar and from above behind the top bar, so it is never seen.",
+    "figure": {
+      "file": "twin-2017-Q2.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2017-Q3",
+    "twinOf": "2017 Q3",
+    "section": "logic",
+    "chapter": "Data Interpretation",
+    "text": "A company based in Rome has offices in New York, Dubai, Tokyo and Lagos. Office staff work from 9:00 to 17:00 local time and read their emails as soon as they are at work, but not outside working hours. On the day in question, when it is 12:00 in Rome the local times are:\n\n| city | local time |\n|---|---|\n| New York | 06:00 |\n| Dubai | 15:00 |\n| Tokyo | 20:00 |\n| Lagos | 12:00 |\n\nAt 18:00 Rome time the director emails all four offices. What is the longest possible time between the first and the last office reading the email?",
+    "options": [
+      "7 hours",
+      "9 hours",
+      "13 hours",
+      "15 hours",
+      "24 hours"
+    ],
+    "answer": "D",
+    "solution": "At 18:00 in Rome it is 12:00 in New York (open, so read at once), 21:00 in Dubai, 02:00 next day in Tokyo and 18:00 in Lagos (all closed). Next openings, in Rome time: Tokyo at 9:00 local = 01:00, Dubai at 9:00 local = 06:00, Lagos at 9:00 local = 09:00. From 18:00 to 09:00 next day is 15 hours."
+  },
+  {
+    "id": "twin-2017-Q4",
+    "twinOf": "2017 Q4",
+    "section": "logic",
+    "chapter": "Numerical Reasoning",
+    "text": "A courier charges for each parcel according to its weight:\n\n| weight of parcel | charge |\n|---|---|\n| up to 1 kg | €4.00 |\n| up to 2 kg | €5.00 |\n| up to 3 kg | €7.50 |\n| up to 5 kg | €9.00 |\n| over 5 kg | €15.00 |\n\nI need to send 7 kg of books, and I can split them into parcels of any whole number of kilograms.\nWhat is the lowest total charge?",
+    "options": [
+      "€15.00",
+      "€16.50",
+      "€17.50",
+      "€12.00",
+      "€14.00"
+    ],
+    "answer": "E",
+    "solution": "Compare splits of 7 kg. One parcel: €15.00. 5 + 2: €9.00 + €5.00 = €14.00. 4 + 3: €9.00 + €7.50 = €16.50. 3 + 2 + 2: €17.50. Using more small parcels only adds charges. The cheapest is a 5 kg parcel and a 2 kg parcel: €14.00."
+  },
+  {
+    "id": "twin-2017-Q5",
+    "twinOf": "2017 Q5",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "The door of a rectangular study is in the middle of one of its shorter walls. Standing in the doorway and looking in, you see a bookcase along the whole of the wall on your left, a desk in the far right-hand corner, and an armchair in the near right-hand corner, next to the door.\nWhich plan shows the study?",
+    "options": [
+      "2",
+      "1",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": "A",
+    "solution": "Turn each plan so that you stand at its door looking in. In plan 2 the door is at the top of the page; looking down into the room, your left is the right-hand side of the page, where the bookcase is, the far right-hand corner is the bottom left of the page, where the desk is, and the chair is beside the door on your right. Plans 1, 4 and 5 put the bookcase on your right. Plan 3 is right about the bookcase and the desk but puts the chair in the far left-hand corner.",
+    "figure": {
+      "file": "twin-2017-Q5.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2017-Q6",
+    "twinOf": "2017 Q6",
+    "section": "logic",
+    "chapter": "Numerical Reasoning",
+    "text": "Matchsticks are laid out to make a grid of squares, each side one matchstick long. A single row of three squares needs 10 matchsticks.\nHow many matchsticks are needed for a grid of 8 rows with 12 squares in each row?",
+    "options": [
+      "192",
+      "234",
+      "212",
+      "384",
+      "232"
+    ],
+    "answer": "C",
+    "solution": "Count the two directions separately. Horizontal matchsticks lie on 9 lines (one more than the rows), each 12 long: 108. Vertical matchsticks lie on 13 lines (one more than the squares in a row), each 8 long: 104. Total 212. Four per square (384) ignores that neighbouring squares share sides; two per square (192) forgets the extra line along two of the edges; 232 adds the whole perimeter on top of two per square, counting two edges twice."
+  },
+  {
+    "id": "twin-2017-Q7",
+    "twinOf": "2017 Q7",
+    "section": "logic",
+    "chapter": "Critical Thinking",
+    "text": "Hand-sanitising gel has become a familiar sight in offices and shops, and it kills most bacteria on the skin within seconds. But it does not remove dirt, and it works poorly on hands that are greasy or visibly soiled. Some viruses that cause stomach illness also survive it. Washing with soap and water, on the other hand, physically lifts dirt and germs off the skin and rinses them away.\nWhich one of the following is a conclusion that can be drawn from the above passage?",
+    "options": [
+      "Hand gel cannot always take the place of washing with soap and water.",
+      "Hand gel is useless against bacteria.",
+      "Soap kills more bacteria than any hand gel does.",
+      "People wash their hands less often than they used to.",
+      "Shops should stop providing hand gel."
+    ],
+    "answer": "A",
+    "solution": "The passage lists situations where gel falls short (dirt, greasy hands, some viruses) and explains how soap and water deal with them, so gel cannot always replace washing. It says gel kills most bacteria (not that it is useless), makes no comparison of killing power, gives no evidence about how often people wash, and recommends nothing to shops."
+  },
+  {
+    "id": "twin-2017-Q8",
+    "twinOf": "2017 Q8",
+    "section": "logic",
+    "chapter": "Critical Thinking",
+    "text": "Single-use plastic bags do well-known harm: they litter streets and seas and take centuries to break down. Many shops have switched to paper bags. Yet making a paper bag uses more energy and water than making a plastic one, and a cotton shopping bag must be used more than a hundred times before its total environmental cost falls below that of a single plastic bag.\nWhich one of the following is a conclusion that can be drawn from the above passage?",
+    "options": [
+      "Plastic bags are the best choice for the environment.",
+      "Switching from plastic bags to other kinds of bag would not, on its own, remove the environmental cost of carrying shopping.",
+      "Cotton shopping bags should be banned.",
+      "Shops switched to paper bags to save money.",
+      "Litter from plastic bags is not a serious problem."
+    ],
+    "answer": "B",
+    "solution": "The passage shows that the alternatives have environmental costs of their own, so simply switching bag type does not solve the problem. It does not say plastic is best (it lists plastic's harms), does not call for a ban on cotton bags, gives no reason for the shops' switch, and calls plastic litter harmful."
+  },
+  {
+    "id": "twin-2017-Q9",
+    "twinOf": "2017 Q9",
+    "section": "logic",
+    "chapter": "Data Interpretation",
+    "text": "Lena cycles 8 km from home in one hour, rests for 15 minutes, then cycles the next 4 km to a village in 15 minutes. She stays in the village for half an hour, then walks 6 km further along the same road, at 4 km/h, to a lake. She stays at the lake for half an hour and is then driven straight home, which takes 30 minutes.\nWhich graph shows her distance from home against time? (The marks on the time axis are 30 minutes apart.)",
+    "options": [
+      "3",
+      "1",
+      "2",
+      "4",
+      "5"
+    ],
+    "answer": "A",
+    "solution": "The walk of 6 km at 4 km/h takes 90 minutes (three marks), so it is the gentlest slope, and the drive home of 18 km in 30 minutes (one mark) is the steepest. Graph 3 has every stage: one hour of cycling, a 15-minute rest, a steeper 15 minutes of cycling, half an hour flat, three marks of walking, half an hour flat, then one mark back to zero. Graph 1 makes the drive home take an hour, graph 2 has the walk done in 30 minutes, graph 4 leaves out the stop in the village, and graph 5 returns home in no time at all.",
+    "figure": {
+      "file": "twin-2017-Q9.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2017-Q11",
+    "twinOf": "2017 Q11",
+    "section": "logic",
+    "chapter": "Critical Thinking",
+    "text": "The city council will soon vote on whether to ban wood-burning stoves in homes. Stove makers argue that modern stoves are cleaner than critics claim: they burn wood more completely and give off far less smoke than older stoves. So allowing modern stoves will not harm the city's air quality.\nWhich one of the following, if true, most weakens the above argument?",
+    "options": [
+      "Modern stoves are more efficient than open fires.",
+      "Wood is cheaper than gas in the city.",
+      "Even modern stoves give off more fine particles in the city than all its traffic combined.",
+      "Most households with stoves use them only occasionally.",
+      "A grant scheme helps people replace old stoves with modern ones."
+    ],
+    "answer": "C",
+    "solution": "The conclusion is that modern stoves do not harm air quality. If they still release more fine particles than all the city's traffic, they plainly do harm it, however much cleaner they are than old stoves. Efficiency, the price of wood and grants do not touch the claim, and occasional use, if anything, supports it."
+  },
+  {
+    "id": "twin-2017-Q13",
+    "twinOf": "2017 Q13",
+    "section": "logic",
+    "chapter": "Numerical Reasoning",
+    "text": "A cyclist rides along a straight road while a camera drone films her. The drone flies 60 m in front of her, turns, and flies back until it is level with her again; by then she has ridden 20 m. It repeats this pattern for the whole ride.\nShe covers 600 m in 10 minutes. What is the average speed of the drone over the ride?",
+    "options": [
+      "12 km/h",
+      "3.6 km/h",
+      "15 km/h",
+      "18 km/h",
+      "30 km/h"
+    ],
+    "answer": "D",
+    "solution": "In each cycle the drone flies 60 m out and then back to the rider, who is now 20 m further on, so 40 m back: 100 m while she rides 20 m. The drone travels 5 times as far as the rider: 5 x 600 m = 3 km in 10 minutes, which is 18 km/h. The rider herself averages 3.6 km/h."
+  },
+  {
+    "id": "twin-2017-Q14",
+    "twinOf": "2017 Q14",
+    "section": "logic",
+    "chapter": "Critical Thinking",
+    "text": "Television cookery programmes have become hugely popular over the past ten years, and the number of cookery courses and qualifications has grown with them. But the number of jobs for chefs has not grown, and the work itself has not changed. So people who take these courses will face fierce competition for hard, badly paid work in kitchens.\nWhich one of the following, if true, would most weaken the above argument?",
+    "options": [
+      "Each year there are far more cookery graduates than vacancies for chefs.",
+      "Kitchen work involves long hours and weekend shifts.",
+      "New kitchen equipment means restaurants need fewer cooks.",
+      "The number of cookery courses has doubled in ten years.",
+      "Many cookery graduates go on to work in food writing, product development and teaching."
+    ],
+    "answer": "E",
+    "solution": "The argument assumes that people who take these courses will all compete for kitchen jobs. If many go into other careers, the competition for chef jobs is lighter than claimed. The other options support the argument: more graduates than jobs, hard work, fewer cooks needed, and more courses."
+  },
+  {
+    "id": "twin-2017-Q15",
+    "twinOf": "2017 Q15",
+    "section": "logic",
+    "chapter": "Data Interpretation",
+    "text": "The table shows the calories burned in one hour of each activity by people of two weights.\n\n| activity (1 hour) | 60 kg person | 80 kg person |\n|---|---|---|\n| cycling slowly | 240 | 320 |\n| cycling fast | 480 | 640 |\n| swimming | 420 | 560 |\n| yoga | 150 | 200 |\n\nFive friends exercise as follows:\n\n| friend | weight | exercise |\n|---|---|---|\n| Cris | 80 kg | swims for 30 minutes, then cycles slowly for 30 minutes |\n| Ali | 80 kg | cycles fast for 30 minutes, then does yoga for 30 minutes |\n| Bea | 60 kg | swims for 40 minutes, then cycles slowly for 20 minutes |\n| Dina | 60 kg | cycles fast for 45 minutes |\n| Eli | 80 kg | does yoga for 60 minutes, then cycles slowly for 15 minutes |\n\nWho burns the most calories?",
+    "options": [
+      "Cris",
+      "Ali",
+      "Bea",
+      "Dina",
+      "Eli"
+    ],
+    "answer": "A",
+    "solution": "Scale each hourly figure by the time: Cris 560/2 + 320/2 = 280 + 160 = 440; Ali 640/2 + 200/2 = 320 + 100 = 420; Bea 420 x 2/3 + 240/3 = 280 + 80 = 360; Dina 480 x 3/4 = 360; Eli 200 + 320/4 = 280. Cris burns the most."
+  },
+  {
+    "id": "twin-2017-Q20",
+    "twinOf": "2017 Q20",
+    "section": "logic",
+    "chapter": "Data Interpretation",
+    "text": "Starting from Centrale at 9:00, a tourist plans to visit two towns, P and Q, staying a minimum of three hours in each, in any order, before going home to Centrale.\n\n| train | departs | arrives |\n|---|---|---|\n| Centrale to P | 9:10 | 9:40 |\n| Centrale to Q | 9:15 | 10:00 |\n| P to Q | 12:20 / 12:45 / 13:20 | 12:50 / 13:15 / 13:50 |\n| Q to P | 13:00 / 13:30 / 14:00 | 13:30 / 14:00 / 14:30 |\n| P to Centrale | 16:30 / 17:00 / 17:45 | 17:00 / 17:30 / 18:15 |\n| Q to Centrale | 15:50 / 16:20 / 16:55 | 16:40 / 17:10 / 17:45 |\n\nWhen is the earliest possible arrival back at Centrale?",
+    "options": [
+      "17:10",
+      "17:00",
+      "17:30",
+      "16:40",
+      "17:45"
+    ],
+    "answer": "B",
+    "solution": "P first: arrive 9:40, so the earliest train on is 12:45 (after 12:40), reaching Q at 13:15; leave Q after 16:15, on the 16:20, back at 17:10. Q first: arrive 10:00, take the 13:00 to P (exactly 3 hours), reaching 13:30; leave P at 16:30 (exactly 3 hours), back at 17:00. The earliest is 17:00. The 16:40 arrival needs the 15:50 from Q, which no plan reaches with 3 hours in each town."
+  },
+  {
+    "id": "twin-2017-Q21",
+    "twinOf": "2017 Q21",
+    "section": "reading",
+    "chapter": "Politics, Economics and Society",
+    "text": "Who argued, in 1798, that population tends to grow faster than the food supply, so that it is held back by famine, disease and war unless births are reduced?",
+    "options": [
+      "John Stuart Mill",
+      "Charles Darwin",
+      "Thomas Malthus",
+      "Jean-Jacques Rousseau",
+      "John Maynard Keynes"
+    ],
+    "answer": "C",
+    "solution": "Thomas Malthus set out this idea in An Essay on the Principle of Population: population grows geometrically, food supply only arithmetically. Darwin later said that reading Malthus helped him think of natural selection. Mill was a liberal philosopher, Rousseau wrote The Social Contract, and Keynes was a 20th-century economist."
+  },
+  {
+    "id": "twin-2017-Q22",
+    "twinOf": "2017 Q22",
+    "section": "reading",
+    "chapter": "History",
+    "text": "Which theory did Charles Darwin set out in On the Origin of Species, published in 1859?",
+    "options": [
+      "the inheritance of acquired characteristics",
+      "the laws of heredity",
+      "spontaneous generation",
+      "evolution by natural selection",
+      "continental drift"
+    ],
+    "answer": "D",
+    "solution": "Darwin argued that individuals with useful variations survive and reproduce more, so species change over generations: evolution by natural selection. The inheritance of acquired characteristics was Lamarck's idea, the laws of heredity Mendel's (1866), and continental drift Wegener's (1912); Pasteur disproved spontaneous generation."
+  },
+  {
+    "id": "twin-2017-Q23",
+    "twinOf": "2017 Q23",
+    "section": "biology",
+    "chapter": "Cell Division and Reproduction",
+    "text": "Which of these happen during meiosis I but NOT during mitosis?\n1 homologous chromosomes pair up\n2 crossing over\n3 spindle fibres form",
+    "options": [
+      "1 only",
+      "2 and 3 only",
+      "1 and 2 only",
+      "1, 2 and 3",
+      "3 only"
+    ],
+    "answer": "C",
+    "solution": "Only in meiosis I do homologous chromosomes come together in pairs, and crossing over happens between the paired chromosomes. A spindle forms in every nuclear division, mitosis included. So 1 and 2 only."
+  },
+  {
+    "id": "twin-2017-Q24",
+    "twinOf": "2017 Q24",
+    "section": "biology",
+    "chapter": "Microorganisms and Biotechnology",
+    "text": "Which parts of a bacterial cell contain phosphodiester bonds?\n1 a plasmid\n2 the ribosomes\n3 the flagellum",
+    "options": [
+      "1 only",
+      "2 and 3 only",
+      "1, 2 and 3",
+      "1 and 2 only",
+      "3 only"
+    ],
+    "answer": "D",
+    "solution": "Phosphodiester bonds link the nucleotides of nucleic acids. A plasmid is a small loop of DNA, and ribosomes are built of ribosomal RNA with protein. The flagellum is made of protein (flagellin), held together by peptide bonds. So 1 and 2 only."
+  },
+  {
+    "id": "twin-2017-Q25",
+    "twinOf": "2017 Q25",
+    "section": "biology",
+    "chapter": "Cell Division and Reproduction",
+    "text": "These cells form in turn during sperm production in a healthy human testis:\n1 spermatogonia\n2 primary spermatocytes\n3 secondary spermatocytes\n4 spermatids\nWhich of them are haploid?",
+    "options": [
+      "4 only",
+      "1 and 2 only",
+      "2, 3 and 4 only",
+      "1, 2, 3 and 4",
+      "3 and 4 only"
+    ],
+    "answer": "E",
+    "solution": "Spermatogonia divide by mitosis and stay diploid; a primary spermatocyte is still diploid, about to enter meiosis. Meiosis I halves the chromosome number, so secondary spermatocytes are haploid, and so are the spermatids made by meiosis II. So 3 and 4 only."
+  },
+  {
+    "id": "twin-2017-Q26",
+    "twinOf": "2017 Q26",
+    "section": "biology",
+    "chapter": "Biomolecules and Enzymes",
+    "text": "Which of the following statements is/are true of every enzyme?\n1 It lowers the activation energy of the reaction it catalyses.\n2 It is unchanged at the end of the reaction.\n3 It works best at pH 7.\n4 It speeds up only reactions that break molecules down.",
+    "options": [
+      "1 and 2 only",
+      "1 only",
+      "2, 3 and 4 only",
+      "1, 2 and 3 only",
+      "3 and 4 only"
+    ],
+    "answer": "A",
+    "solution": "Every catalyst provides a route with a lower activation energy and is left unchanged, so it can be used again (1 and 2). Optimum pH varies: pepsin works near pH 2 and arginase near pH 10 (3 wrong). Enzymes also build molecules, such as DNA polymerase (4 wrong)."
+  },
+  {
+    "id": "twin-2017-Q27",
+    "twinOf": "2017 Q27",
+    "section": "biology",
+    "chapter": "Molecular Biology and Gene Expression",
+    "text": "Which statement about the nucleic acids in a human cell is correct?",
+    "options": [
+      "mRNA is double-stranded.",
+      "Each tRNA molecule has an anticodon that pairs with a codon on mRNA.",
+      "DNA contains the base uracil.",
+      "rRNA is translated into protein.",
+      "Each codon on mRNA is made of two bases."
+    ],
+    "answer": "B",
+    "solution": "During translation each tRNA's three-base anticodon pairs with the matching codon on the mRNA. mRNA is single-stranded, uracil is found in RNA (DNA has thymine), rRNA is part of the ribosome and is never translated, and a codon has three bases."
+  },
+  {
+    "id": "twin-2017-Q28",
+    "twinOf": "2017 Q28",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "Which of the following statements is/are correct in a healthy human?\n1 While breathing out, the pressure in the alveoli is higher than the pressure of the air outside.\n2 When the ventricles relax after contracting, the semilunar valves close because the pressure in the arteries is now higher than in the ventricles.\n3 While breathing in, the diaphragm relaxes and moves upwards.",
+    "options": [
+      "1 only",
+      "3 only",
+      "1 and 2 only",
+      "2 and 3 only",
+      "1, 2 and 3"
+    ],
+    "answer": "C",
+    "solution": "Air flows from high to low pressure, so during expiration the alveolar pressure must exceed atmospheric pressure (1). Valves close when the pressure behind them becomes higher than the pressure in front: arterial pressure above ventricular pressure shuts the semilunar valves (2). During inspiration the diaphragm CONTRACTS and flattens (3 wrong). 1 and 2."
+  },
+  {
+    "id": "twin-2017-Q29",
+    "twinOf": "2017 Q29",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "An adult's thyroid gland becomes underactive, so less thyroxine is released.\nWhich of the following could result?\n1 weight gain\n2 feeling cold more easily\n3 a faster resting heart rate",
+    "options": [
+      "3 only",
+      "1 and 3 only",
+      "1, 2 and 3",
+      "1 and 2 only",
+      "2 only"
+    ],
+    "answer": "D",
+    "solution": "Thyroxine sets the basal metabolic rate. With less of it, cells respire less: less heat is made, so the person feels cold, and less energy is used, so weight tends to rise. The heart rate tends to slow, not quicken; a fast heart rate is a sign of too MUCH thyroxine. 1 and 2 only."
+  },
+  {
+    "id": "twin-2017-Q30",
+    "twinOf": "2017 Q30",
+    "section": "biology",
+    "chapter": "Cell Structure and Membranes",
+    "text": "Which of these parts of a plant leaf cell contain nucleic acid?\n1 the nucleus\n2 a chloroplast\n3 a ribosome\n4 the cell wall",
+    "options": [
+      "1 only",
+      "1 and 2 only",
+      "1, 2, 3 and 4",
+      "2 and 4 only",
+      "1, 2 and 3 only"
+    ],
+    "answer": "E",
+    "solution": "The nucleus holds the chromosomes' DNA. Chloroplasts (like mitochondria) have their own circular DNA and ribosomes. Ribosomes are made of rRNA and protein. The cell wall is mainly cellulose and contains no nucleic acid. So 1, 2 and 3."
+  },
+  {
+    "id": "twin-2017-Q31",
+    "twinOf": "2017 Q31",
+    "section": "biology",
+    "chapter": "Cell Structure and Membranes",
+    "text": "Cells P and Q lie next to each other. The concentration of glucose is 10 arbitrary units (a.u.) in P and 3 a.u. in Q. The concentration of urea is 5 a.u. in both.\nWhich of the following statements about net movement between P and Q could be correct?\n1 Glucose moves from P to Q by facilitated diffusion.\n2 Glucose moves from Q to P by facilitated diffusion.\n3 Urea molecules move both ways, with no net movement.",
+    "options": [
+      "1 and 3 only",
+      "2 only",
+      "1 only",
+      "1, 2 and 3",
+      "2 and 3 only"
+    ],
+    "answer": "A",
+    "solution": "Facilitated diffusion is passive, so it can only carry glucose DOWN its gradient, from P (10) to Q (3): 1 could be right, 2 cannot (moving glucose into P would need active transport). With urea equal in both cells, molecules still cross both ways but at equal rates, so there is no net movement (3). 1 and 3 only."
+  },
+  {
+    "id": "twin-2017-Q32",
+    "twinOf": "2017 Q32",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "After a head injury, a patient struggles to keep their balance and to coordinate precise movements, although their muscles are strong.\nWhich part of the brain is most likely to be damaged?",
+    "options": [
+      "cerebrum",
+      "cerebellum",
+      "medulla",
+      "hypothalamus",
+      "pituitary gland"
+    ],
+    "answer": "B",
+    "solution": "The cerebellum coordinates movement, posture and balance, so damage there causes clumsy, unsteady movement even with full strength. The cerebrum handles conscious thought, memory and voluntary action; the medulla controls breathing and heart rate; the hypothalamus regulates temperature and water balance; the pituitary is a gland."
+  },
+  {
+    "id": "twin-2017-Q33",
+    "twinOf": "2017 Q33",
+    "section": "biology",
+    "chapter": "Cell Structure and Membranes",
+    "text": "Four students each named a feature of a plant leaf cell and a feature of an animal liver cell.\n\n| student | plant leaf cell | animal liver cell |\n|---|---|---|\n| 1 | cellulose cell wall | centrioles present |\n| 2 | chloroplasts present | cell wall present |\n| 3 | large permanent vacuole | glycogen granules |\n| 4 | no mitochondria | ribosomes present |\n\nWhich students were right about BOTH cells?",
+    "options": [
+      "1 and 2",
+      "2 and 4",
+      "1 and 3",
+      "all four",
+      "3 and 4"
+    ],
+    "answer": "C",
+    "solution": "Student 1: plant cells have cellulose walls and animal cells have centrioles. Student 3: plant cells have a large permanent vacuole and liver cells store glycogen. Student 2 is wrong because animal cells have no cell wall; student 4 is wrong because plant cells do have mitochondria. Students 1 and 3."
+  },
+  {
+    "id": "twin-2017-Q34",
+    "twinOf": "2017 Q34",
+    "section": "biology",
+    "chapter": "Molecular Biology and Gene Expression",
+    "text": "The coding strand of a short stretch of a gene reads:\nATG CCA GTT\nWhich of the following statements is/are correct?\n1 This stretch is held to its complementary strand by 22 hydrogen bonds.\n2 There are 9 phosphodiester bonds within this stretch of the coding strand.\n3 The mRNA transcribed from this stretch contains 3 uracil bases.",
+    "options": [
+      "1 only",
+      "2 and 3 only",
+      "1, 2 and 3",
+      "1 and 3 only",
+      "3 only"
+    ],
+    "answer": "D",
+    "solution": "The bases are A, T, G, C, C, A, G, T, T: 4 G or C (3 hydrogen bonds each, 12) and 5 A or T (2 each, 10), so 22 (1). Nine nucleotides in a row are joined by 8 phosphodiester bonds, not 9 (2 wrong). The mRNA has the coding sequence with U for T, AUG CCA GUU, which has 3 uracils (3). So 1 and 3."
+  },
+  {
+    "id": "twin-2017-Q35",
+    "twinOf": "2017 Q35",
+    "section": "biology",
+    "chapter": "Genetics and Inheritance",
+    "text": "Phenylketonuria is caused by a recessive allele on an autosome. Two parents who do not have the condition have a child who does.\nWhat is the probability that their next child is a girl who carries the allele but does not have the condition?",
+    "options": [
+      "\\(\\tfrac{1}{2}\\)",
+      "\\(\\tfrac{3}{8}\\)",
+      "\\(\\tfrac{1}{8}\\)",
+      "\\(\\tfrac{3}{4}\\)",
+      "\\(\\tfrac{1}{4}\\)"
+    ],
+    "answer": "E",
+    "solution": "An affected child means both parents are carriers, Pp x Pp. A child is a carrier (Pp) with probability 2/4 = 1/2, and a girl with probability 1/2. The two are independent, so 1/2 x 1/2 = 1/4."
+  },
+  {
+    "id": "twin-2017-Q36",
+    "twinOf": "2017 Q36",
+    "section": "biology",
+    "chapter": "Bioenergetics and Metabolism",
+    "text": "Which of the following are made directly in BOTH glycolysis and the Krebs cycle?\n1 ATP (or GTP, its equivalent)\n2 carbon dioxide\n3 reduced NAD",
+    "options": [
+      "1 and 3 only",
+      "2 only",
+      "1, 2 and 3",
+      "3 only",
+      "2 and 3 only"
+    ],
+    "answer": "A",
+    "solution": "Glycolysis makes ATP by substrate-level phosphorylation and reduces \\(\\mathrm{NAD^+}\\), but releases no carbon dioxide: glucose's six carbons all end up in two pyruvates. The Krebs cycle makes ATP or GTP, reduced NAD (and FAD) and releases carbon dioxide. Common to both: 1 and 3."
+  },
+  {
+    "id": "twin-2017-Q37",
+    "twinOf": "2017 Q37",
+    "section": "biology",
+    "chapter": "Biomolecules and Enzymes",
+    "text": "Lysozyme, an enzyme in tears, is a single polypeptide chain folded into a compact globular shape.\nWhich levels of protein structure does a lysozyme molecule have?",
+    "options": [
+      "only primary and secondary",
+      "only primary, secondary and tertiary",
+      "primary, secondary, tertiary and quaternary",
+      "only primary and quaternary",
+      "only tertiary"
+    ],
+    "answer": "B",
+    "solution": "Any polypeptide has a primary structure (its sequence); lysozyme has helices and sheets (secondary) folded into one 3-D shape (tertiary). Quaternary structure needs two or more chains fitted together, and lysozyme has only one."
+  },
+  {
+    "id": "twin-2017-Q38",
+    "twinOf": "2017 Q38",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "Which of the following happen during an action potential in the axon of a healthy neuron?\n1 Sodium ions diffuse into the axon through voltage-gated channels.\n2 Potassium ions diffuse out of the axon through voltage-gated channels.\n3 The sodium-potassium pump moves three sodium ions in and two potassium ions out.",
+    "options": [
+      "1 only",
+      "2 and 3 only",
+      "1 and 2 only",
+      "1, 2 and 3",
+      "3 only"
+    ],
+    "answer": "C",
+    "solution": "Depolarisation is sodium ions rushing in through voltage-gated sodium channels; repolarisation is potassium ions flowing out through voltage-gated potassium channels. The pump works the other way round from statement 3: it moves three sodium ions OUT and two potassium ions IN, restoring the resting gradients. 1 and 2 only."
+  },
+  {
+    "id": "twin-2017-Q39",
+    "twinOf": "2017 Q39",
+    "section": "biology",
+    "chapter": "Bioenergetics and Metabolism",
+    "text": "Which is a correct outline of the aerobic respiration of glucose in a human cell?",
+    "options": [
+      "Glucose is split into pyruvate inside mitochondria, and oxygen collects the carbon released by the Krebs cycle.",
+      "Light energy splits glucose into carbon dioxide and water.",
+      "Carbon dioxide is fixed onto an acceptor and reduced with hydrogen from NADH.",
+      "Glucose is split into pyruvate in the cytoplasm; in the mitochondria pyruvate is broken down, releasing carbon dioxide, and hydrogen carried by NADH is passed finally to oxygen, forming water.",
+      "Oxygen combines directly with glucose in the cytoplasm to form carbon dioxide."
+    ],
+    "answer": "D",
+    "solution": "Glycolysis runs in the cytoplasm; the link reaction and Krebs cycle in the matrix strip off carbon as carbon dioxide and load hydrogen onto NAD; the electron transport chain passes it to oxygen, the final acceptor, which becomes water. Oxygen never collects carbon, and fixing carbon dioxide is photosynthesis."
+  },
+  {
+    "id": "twin-2017-Q40",
+    "twinOf": "2017 Q40",
+    "section": "biology",
+    "chapter": "Microorganisms and Biotechnology",
+    "text": "Which of the following are examples of genetic modification using recombinant DNA?\n1 putting the human insulin gene into bacteria\n2 selective breeding of cows for a high milk yield\n3 putting a bacterial gene for insect resistance into maize",
+    "options": [
+      "1 only",
+      "2 only",
+      "1, 2 and 3",
+      "2 and 3 only",
+      "1 and 3 only"
+    ],
+    "answer": "E",
+    "solution": "Recombinant DNA means moving a gene from one organism into the DNA of another, often of a different species: 1 and 3. Selective breeding chooses which animals mate over many generations; it changes allele frequencies but inserts no foreign DNA."
+  },
+  {
+    "id": "twin-2017-Q41",
+    "twinOf": "2017 Q41",
+    "section": "chemistry",
+    "chapter": "Solutions and Concentration",
+    "text": "Which option correctly names the type of mixture and the best way to separate the stated component?",
+    "options": [
+      "sand from a mixture of sand and sea water: heterogeneous; filtration",
+      "ethanol from an ethanol-water mixture: heterogeneous; filtration",
+      "iron filings from a mixture of iron and sulfur powders: homogeneous; distillation",
+      "the dyes in black ink: heterogeneous; evaporation",
+      "oxygen from liquid air: homogeneous; filtration"
+    ],
+    "answer": "A",
+    "solution": "Sand does not dissolve, so sand in sea water is heterogeneous and the sand is held back by a filter. Ethanol and water mix completely (homogeneous) and are separated by fractional distillation; iron and sulfur powders are a heterogeneous mixture best separated with a magnet; ink dyes are separated by chromatography; liquid air is fractionally distilled."
+  },
+  {
+    "id": "twin-2017-Q42",
+    "twinOf": "2017 Q42",
+    "section": "chemistry",
+    "chapter": "Atomic Structure",
+    "text": "How many electrons are in p orbitals in the sulfide ion, \\({}^{32}_{16}\\mathrm{S}^{2-}\\), in its ground state?",
+    "options": [
+      "10",
+      "12",
+      "6",
+      "8",
+      "16"
+    ],
+    "answer": "B",
+    "solution": "The ion has 16 + 2 = 18 electrons: \\(1s^2 2s^2 2p^6 3s^2 3p^6\\). The p electrons are \\(2p^6\\) and \\(3p^6\\), so 12. The neutral atom, \\(3p^4\\), would have 10."
+  },
+  {
+    "id": "twin-2017-Q43",
+    "twinOf": "2017 Q43",
+    "section": "chemistry",
+    "chapter": "Redox Reactions",
+    "text": "In which reaction is the underlined species acting as a reducing agent?",
+    "options": [
+      "\\(\\underline{\\mathrm{Cl_2}} + \\mathrm{2NaI \\rightarrow 2NaCl + I_2}\\)",
+      "\\(\\underline{\\mathrm{H_2SO_4}} + \\mathrm{2KOH \\rightarrow K_2SO_4 + 2H_2O}\\)",
+      "\\(\\underline{\\mathrm{C}} + \\mathrm{2PbO \\rightarrow CO_2 + 2Pb}\\)",
+      "\\(\\mathrm{2Fe} + \\underline{\\mathrm{3Cl_2}} \\rightarrow \\mathrm{2FeCl_3}\\)",
+      "\\(\\underline{\\mathrm{CuO}} + \\mathrm{H_2 \\rightarrow Cu + H_2O}\\)"
+    ],
+    "answer": "C",
+    "solution": "A reducing agent is itself oxidised. Carbon goes from 0 to +4 in \\(\\mathrm{CO_2}\\) while lead goes from +2 to 0, so carbon reduces lead oxide. Chlorine (twice) and copper oxide are reduced, so they are oxidising agents, and the sulfuric acid reaction is neutralisation, with no change in oxidation states."
+  },
+  {
+    "id": "twin-2017-Q44",
+    "twinOf": "2017 Q44",
+    "section": "chemistry",
+    "chapter": "Acids, Bases and pH",
+    "text": "10 mL of 0.10 mol/L hydrochloric acid is diluted with water to a total volume of 1.0 L.\nWhat is the pH of the diluted solution?",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "3",
+      "11"
+    ],
+    "answer": "D",
+    "solution": "Moles of HCl = 0.010 L x 0.10 mol/L = 0.0010 mol, now in 1.0 L, so \\([\\mathrm{H^+}] = 10^{-3}\\) mol/L and pH = 3. Diluting a hundredfold raises the pH of a strong acid by 2 units, from 1 to 3."
+  },
+  {
+    "id": "twin-2017-Q45",
+    "twinOf": "2017 Q45",
+    "section": "chemistry",
+    "chapter": "Stoichiometry and Reactions",
+    "text": "Which sample contains the greatest number of molecules?\n[At room temperature and pressure 1 mol of any gas occupies 24 L. Relative atomic masses: H = 1; C = 12; N = 14; O = 16]",
+    "options": [
+      "12 L of methane gas at room temperature and pressure",
+      "32 g of oxygen gas",
+      "36 g of water",
+      "1.5 mol of ammonia",
+      "6.0 g of hydrogen gas"
+    ],
+    "answer": "E",
+    "solution": "Compare moles. Methane: 12/24 = 0.5 mol. Oxygen: 32/32 = 1.0 mol. Water: 36/18 = 2.0 mol. Ammonia: 1.5 mol. Hydrogen: 6.0/2 = 3.0 mol, the most. Hydrogen's small molar mass means a few grams is a lot of molecules."
+  },
+  {
+    "id": "twin-2017-Q46",
+    "twinOf": "2017 Q46",
+    "section": "chemistry",
+    "chapter": "Stoichiometry and Reactions",
+    "text": "80 \\(\\mathrm{cm^3}\\) of carbon monoxide is mixed with 60 \\(\\mathrm{cm^3}\\) of oxygen and they react completely:\n\\(\\mathrm{2CO(g) + O_2(g) \\rightarrow 2CO_2(g)}\\)\nWhat is the total volume of gas afterwards, measured at the original temperature and pressure?",
+    "options": [
+      "100 \\(\\mathrm{cm^3}\\)",
+      "80 \\(\\mathrm{cm^3}\\)",
+      "140 \\(\\mathrm{cm^3}\\)",
+      "120 \\(\\mathrm{cm^3}\\)",
+      "60 \\(\\mathrm{cm^3}\\)"
+    ],
+    "answer": "A",
+    "solution": "Gas volumes react in the ratio of the equation. 80 cm3 of CO needs only 40 cm3 of oxygen, so 20 cm3 of oxygen is left over, and 80 cm3 of \\(\\mathrm{CO_2}\\) forms. Total: 80 + 20 = 100 cm3. 80 forgets the leftover oxygen."
+  },
+  {
+    "id": "twin-2017-Q47",
+    "twinOf": "2017 Q47",
+    "section": "chemistry",
+    "chapter": "Organic Chemistry",
+    "text": "Which compound is a structural isomer of pentan-2-one?",
+    "options": [
+      "pentan-2-ol",
+      "pentanal",
+      "butanone",
+      "pentanoic acid",
+      "2-methylbutane"
+    ],
+    "answer": "B",
+    "solution": "Pentan-2-one is \\(\\mathrm{C_5H_{10}O}\\). Pentanal is also \\(\\mathrm{C_5H_{10}O}\\), with the carbonyl at the end of the chain: an isomer. Pentan-2-ol is \\(\\mathrm{C_5H_{12}O}\\), butanone \\(\\mathrm{C_4H_8O}\\), pentanoic acid \\(\\mathrm{C_5H_{10}O_2}\\) and 2-methylbutane \\(\\mathrm{C_5H_{12}}\\)."
+  },
+  {
+    "id": "twin-2017-Q48",
+    "twinOf": "2017 Q48",
+    "section": "chemistry",
+    "chapter": "Solutions and Concentration",
+    "text": "Which of these particles are present in molten sodium chloride?\n1 molecules\n2 ions\n3 single neutral atoms",
+    "options": [
+      "1 only",
+      "1 and 2 only",
+      "2 only",
+      "1, 2 and 3",
+      "3 only"
+    ],
+    "answer": "C",
+    "solution": "Sodium chloride is ionic. Melting frees the \\(\\mathrm{Na^+}\\) and \\(\\mathrm{Cl^-}\\) ions to move (which is why the melt conducts) but does not turn them into molecules or atoms. With no water present there are no water molecules either. 2 only."
+  },
+  {
+    "id": "twin-2017-Q49",
+    "twinOf": "2017 Q49",
+    "section": "chemistry",
+    "chapter": "Solutions and Concentration",
+    "text": "Calcium hydroxide is unusual: it becomes LESS soluble in water as the temperature rises. A saturated solution of calcium hydroxide at 20 °C, with no solid in it, is warmed to 60 °C in a closed flask.\nWhich of the following statements is/are correct?\n1 Solid calcium hydroxide appears.\n2 The concentration of dissolved calcium hydroxide falls.\n3 The mass of water in the flask changes.",
+    "options": [
+      "1 only",
+      "3 only",
+      "1, 2 and 3",
+      "1 and 2 only",
+      "2 and 3 only"
+    ],
+    "answer": "D",
+    "solution": "At 60 °C the water can hold less than it already holds, so the excess comes out as a solid (1) and what stays dissolved is at the lower, 60 °C saturation level (2). The flask is closed, so no water escapes (3 wrong). 1 and 2 only."
+  },
+  {
+    "id": "twin-2017-Q50",
+    "twinOf": "2017 Q50",
+    "section": "chemistry",
+    "chapter": "Periodic Table",
+    "text": "Element Y is a yellow-green gas at room temperature. Its hydride, HY, dissolves in water to give a strong acid. Y displaces bromine from potassium bromide solution.\nWhat is Y?",
+    "options": [
+      "fluorine",
+      "sulfur",
+      "bromine",
+      "nitrogen",
+      "chlorine"
+    ],
+    "answer": "E",
+    "solution": "A yellow-green gas that oxidises bromide to bromine is a halogen above bromine. Fluorine is a pale yellow gas, but HF is a WEAK acid; HCl is a strong acid. So Y is chlorine. Bromine is a red-brown liquid and cannot displace itself."
+  },
+  {
+    "id": "twin-2017-Q51",
+    "twinOf": "2017 Q51",
+    "section": "chemistry",
+    "chapter": "Chemical Bonding",
+    "text": "Consider one water molecule, \\(\\mathrm{H_2O}\\). How many shared electron pairs and how many unshared pairs surround the oxygen atom, and roughly what is the H-O-H angle?\n[Atomic numbers: H = 1; O = 8]",
+    "options": [
+      "2 shared, 2 unshared, about 104.5°",
+      "2 shared, none unshared, 180°",
+      "4 shared, none unshared, 109.5°",
+      "2 shared, 1 unshared, 120°",
+      "3 shared, 1 unshared, about 107°"
+    ],
+    "answer": "A",
+    "solution": "Oxygen has six outer electrons: two pair with hydrogen (2 bp) and four form two lone pairs. Four electron pairs point roughly tetrahedrally, but lone pairs repel more strongly than bonding pairs and squeeze the H-O-H angle from 109.5° to about 104.5°: a bent molecule."
+  },
+  {
+    "id": "twin-2017-Q52",
+    "twinOf": "2017 Q52",
+    "section": "chemistry",
+    "chapter": "Atomic Structure",
+    "text": "Which statement about these four particles is correct?\n\\[{}^{40}_{20}\\mathrm{Ca}^{2+} \\qquad {}^{39}_{19}\\mathrm{K} \\qquad {}^{35}_{17}\\mathrm{Cl}^{-} \\qquad {}^{40}_{18}\\mathrm{Ar}\\]",
+    "options": [
+      "The calcium ion and the argon atom have the same number of neutrons.",
+      "The calcium ion and the chloride ion have the same number of electrons.",
+      "The potassium atom and the argon atom have the same number of protons.",
+      "The chloride ion has more neutrons than the potassium atom.",
+      "The argon atom has more electrons than the chloride ion."
+    ],
+    "answer": "B",
+    "solution": "Electrons: \\(\\mathrm{Ca^{2+}}\\) 18, K 19, \\(\\mathrm{Cl^-}\\) 18, Ar 18, so calcium ion and chloride ion match. Neutrons: Ca 20, K 20, Cl 18, Ar 22, so calcium and argon differ and chlorine has fewer than potassium. Protons follow the atomic numbers, 19 and 18 for K and Ar."
+  },
+  {
+    "id": "twin-2017-Q53",
+    "twinOf": "2017 Q53",
+    "section": "physmath",
+    "subject": "Physics",
+    "chapter": "Kinematics",
+    "text": "A hiker walks 7.0 km north, then 5.0 km east, then 2.0 km south and finally 7.0 km east, on flat ground.\nHow far is the hiker from the starting point?",
+    "options": [
+      "21 km",
+      "17 km",
+      "13 km",
+      "7.0 km",
+      "12 km"
+    ],
+    "answer": "C",
+    "solution": "Net northward: 7.0 - 2.0 = 5.0 km. Net eastward: 5.0 + 7.0 = 12 km. These are at right angles, so the displacement is \\(\\sqrt{5^2 + 12^2} = 13\\) km. 21 km is the total distance walked, not the distance from the start."
+  },
+  {
+    "id": "twin-2017-Q54",
+    "twinOf": "2017 Q54",
+    "section": "physmath",
+    "subject": "Physics",
+    "chapter": "Electricity",
+    "text": "A 12 V supply is connected across a 4.0 Ω resistor.\nAt what rate does the resistor transfer energy as heat?",
+    "options": [
+      "3.0 W",
+      "48 W",
+      "144 W",
+      "36 W",
+      "0.33 W"
+    ],
+    "answer": "D",
+    "solution": "\\(P = V^2/R = 144/4.0 = 36\\) W (or \\(I = 3.0\\) A and \\(P = VI = 36\\) W). 48 W comes from \\(V \\times R\\), which is not a formula for power, and 3.0 is the current."
+  },
+  {
+    "id": "twin-2017-Q55",
+    "twinOf": "2017 Q55",
+    "section": "physmath",
+    "subject": "Mathematics",
+    "chapter": "Probability and Statistics",
+    "text": "Find an expression for the mean of \\(2x\\), \\(\\dfrac{x}{2}\\) and \\(x - 5\\).",
+    "options": [
+      "\\(\\dfrac{7x - 5}{6}\\)",
+      "\\(\\dfrac{7x - 10}{3}\\)",
+      "\\(\\dfrac{7x - 10}{2}\\)",
+      "\\(7x - 10\\)",
+      "\\(\\dfrac{7x - 10}{6}\\)"
+    ],
+    "answer": "E",
+    "solution": "Sum: \\(2x + \\dfrac{x}{2} + x - 5 = \\dfrac{7x}{2} - 5 = \\dfrac{7x - 10}{2}\\). Divide by 3 for the mean: \\(\\dfrac{7x - 10}{6}\\). Stopping at the sum gives \\(\\dfrac{7x-10}{2}\\)."
+  },
+  {
+    "id": "twin-2017-Q56",
+    "twinOf": "2017 Q56",
+    "section": "physmath",
+    "subject": "Mathematics",
+    "chapter": "Geometry",
+    "text": "What is the gradient of the line through (-2, 5) and (4, 2)?",
+    "options": [
+      "\\(-\\dfrac{1}{2}\\)",
+      "-2",
+      "\\(\\dfrac{1}{2}\\)",
+      "\\(-\\dfrac{3}{2}\\)",
+      "2"
+    ],
+    "answer": "A",
+    "solution": "Gradient = change in y / change in x = \\((2 - 5)/(4 - (-2)) = -3/6 = -\\tfrac{1}{2}\\). Putting the x change on top gives -2; losing the minus sign on -2 when subtracting gives a denominator of 2 and \\(-\\tfrac{3}{2}\\)."
+  },
+  {
+    "id": "twin-2017-Q57",
+    "twinOf": "2017 Q57",
+    "section": "physmath",
+    "subject": "Mathematics",
+    "chapter": "Numbers, Powers and Logarithms",
+    "text": "Let \\(\\log_{10} 5 = a\\), \\(\\log_{10} 3 = b\\) and \\(\\log_{10} 2 = c\\).\nWrite \\(\\log_{10} 22.5\\) in terms of \\(a\\), \\(b\\) and \\(c\\).",
+    "options": [
+      "\\(a + b - c\\)",
+      "\\(a + 2b - c\\)",
+      "\\(2ab - c\\)",
+      "\\(\\dfrac{a + 2b}{c}\\)",
+      "\\(a + b^2 - c\\)"
+    ],
+    "answer": "B",
+    "solution": "\\(22.5 = \\dfrac{45}{2} = \\dfrac{5 \\times 3^2}{2}\\). Logs turn multiplication into addition, division into subtraction and powers into multiples: \\(\\log 5 + 2\\log 3 - \\log 2 = a + 2b - c\\). \\(b^2\\) is the slip: \\(\\log 9 = 2\\log 3\\), not \\((\\log 3)^2\\)."
+  },
+  {
+    "id": "twin-2017-Q58",
+    "twinOf": "2017 Q58",
+    "section": "physmath",
+    "subject": "Physics",
+    "chapter": "Fluids",
+    "text": "A solid cylinder of height \\(h\\) and density \\(\\rho\\) floats upright in water of density \\(\\sigma\\), where \\(\\rho < \\sigma\\).\nHow deep is the bottom of the cylinder below the water surface?",
+    "options": [
+      "\\(\\dfrac{\\sigma h}{\\rho}\\)",
+      "\\(h\\)",
+      "\\(\\dfrac{\\rho h}{\\sigma}\\)",
+      "\\(\\dfrac{(\\sigma - \\rho)h}{\\sigma}\\)",
+      "\\(\\rho \\sigma h\\)"
+    ],
+    "answer": "C",
+    "solution": "A floating body's weight equals the upthrust. With base area \\(A\\) and depth \\(d\\): \\(\\rho A h g = \\sigma A d g\\), so \\(d = \\dfrac{\\rho h}{\\sigma}\\), less than \\(h\\) because \\(\\rho < \\sigma\\). \\(\\dfrac{(\\sigma-\\rho)h}{\\sigma}\\) is the height ABOVE the water."
+  },
+  {
+    "id": "twin-2017-Q59",
+    "twinOf": "2017 Q59",
+    "section": "physmath",
+    "subject": "Physics",
+    "chapter": "Heat and Thermodynamics",
+    "text": "A gas in a cylinder is compressed so quickly that no heat can enter or leave it. 200 J of work is done on the gas.\nWhich describes this change?",
+    "options": [
+      "isothermal; the internal energy is unchanged",
+      "isobaric; the internal energy falls by 200 J",
+      "isochoric; no work is done",
+      "adiabatic; the internal energy rises by 200 J",
+      "adiabatic; the internal energy falls by 200 J"
+    ],
+    "answer": "D",
+    "solution": "No heat transfer is the definition of an adiabatic change. By the first law, \\(\\Delta U = Q + W = 0 + 200\\) J: all the work done ON the gas stays in it, so its internal energy, and its temperature, rise. That is why a bicycle pump gets warm."
+  },
+  {
+    "id": "twin-2017-Q60",
+    "twinOf": "2017 Q60",
+    "section": "physmath",
+    "subject": "Mathematics",
+    "chapter": "Probability and Statistics",
+    "text": "How many different arrangements are there of the six letters of the word BANANA?",
+    "options": [
+      "720",
+      "120",
+      "36",
+      "20",
+      "60"
+    ],
+    "answer": "E",
+    "solution": "Six letters give \\(6! = 720\\) orders, but swapping the three As or the two Ns gives the same word, so divide by \\(3! \\times 2! = 12\\): \\(720/12 = 60\\)."
+  }
+]

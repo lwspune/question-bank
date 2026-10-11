@@ -155,7 +155,7 @@ export const IMAT_PHY_DYN_NEWTON_NOTE: SubtopicNote = {
       practiceSet: [
         { prompt: "A resultant force of 4.0 N acts on a 0.50 kg ball. What is its acceleration?", answer: "\\(8.0\\ \\text{m/s}^2\\)", method: "\\(a = F/m\\)" },
         { prompt: "A 2.0 kg object speeds up from 3.0 m/s to 9.0 m/s in 2.0 s. What resultant force acts?", answer: "6.0 N", method: "\\(a = 3.0\\ \\text{m/s}^2\\), \\(F = ma\\)" },
-        { prompt: "A constant resultant force acts along a cart's motion. What happens to its acceleration and its velocity?", answer: "Acceleration stays constant; velocity increases", method: "\\(a = F/m\\) is fixed" },
+        { prompt: "A trolley starts from rest and a constant resultant force acts on it. What shape is its velocity-time graph?", answer: "A straight line sloping upwards from the origin", method: "\\(a = F/m\\) is constant, and the slope of a velocity-time graph is the acceleration" },
       ],
       traps: [
         {

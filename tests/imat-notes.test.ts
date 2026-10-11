@@ -19,7 +19,8 @@ import { join, relative } from "node:path";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { IMAT_NOTES_CHAPTERS, IMAT_NOTES_SUBJECTS } from "@/lib/sites/imat/notes/registry";
 import { checkImatChapter } from "@/lib/sites/imat/notes/checks";
-import { loadBankChapters } from "../scripts/imat/notes/bank";
+import { buildOriginalityIndex, checkOriginality, notesCandidates, unreviewed } from "@/lib/sites/imat/originality";
+import { loadBankChapters, loadPastQuestions, loadReviews } from "../scripts/imat/notes/bank";
 
 const ROOT = process.cwd();
 const BANK = loadBankChapters(join(ROOT, "scripts", "imat", "data"));
@@ -125,5 +126,20 @@ describe("checkImatChapter", () => {
     const out = checkImatChapter({ ...base, notes }, bank()).join("\n");
     expect(out).toMatch(/intuition/);
     expect(out).toMatch(/dash/);
+  });
+});
+
+describe("IMAT notes are our own", () => {
+  // Every worked example, self-check and practice rep against all 1,000 past
+  // questions (src/lib/sites/imat/originality.ts). A finding passes only once a
+  // person has cleared it for that exact wording in
+  // scripts/imat/originality-reviews.json; `npx tsx scripts/imat/originality.ts`
+  // prints the open ones with the key to record.
+  it("no question has an unreviewed originality finding", () => {
+    const idx = buildOriginalityIndex(loadPastQuestions(join(ROOT, "scripts", "imat", "data")));
+    const candidates = IMAT_NOTES_CHAPTERS.flatMap((c) => notesCandidates(c.chapterSlug, c.notes));
+    const findings = candidates.flatMap((c) => checkOriginality(idx, c));
+    const open = unreviewed(findings, candidates, loadReviews(join(ROOT, "scripts", "imat", "originality-reviews.json")));
+    expect(open.map((f) => `${f.candidateId} ~ ${f.sourceId}: ${f.kind}`)).toEqual([]);
   });
 });

@@ -1,0 +1,934 @@
+[
+  {
+    "id": "twin-2021-Q4",
+    "twinOf": "2021 Q4",
+    "section": "logic",
+    "chapter": "Deductive Logic",
+    "text": "Every member of the swimming club may use the town pool free of charge on Sundays. You are not a member of the club, so you cannot count on free entry to the pool on Sunday.\nWhich one of the following most closely parallels this reasoning?",
+    "options": [
+      "Every airline pilot must pass a medical examination. You failed yours, so you cannot become a pilot.",
+      "All the students who passed the exam received a certificate. You received a certificate, so you passed.",
+      "Club members get free entry on Sundays. You are a member, so your entry this Sunday is free.",
+      "The only way into the final is to win the semi-final. Your team lost its semi-final, so it cannot play in the final.",
+      "Everyone who buys a season ticket gets free parking at the stadium. You have no season ticket, so you are not guaranteed free parking."
+    ],
+    "answer": "E",
+    "solution": "The argument has the form: everyone in group G gets benefit B; you are not in G; so B is not GUARANTEED for you. The season-ticket option matches, including the careful conclusion (not guaranteed, rather than refused). The pilot and semi-final options are about a requirement that, if missing, rules something out completely; the certificate option reasons backwards; the third applies the rule to a member."
+  },
+  {
+    "id": "twin-2021-Q6",
+    "twinOf": "2021 Q6",
+    "section": "logic",
+    "chapter": "Numerical Reasoning",
+    "text": "In a survey, 15% of the students named biology as their favourite subject, 25% named chemistry and 35% named physics. Another 9 students liked all three equally, and the remaining 21 students liked none of them.\nHow many students took part in the survey?",
+    "options": [
+      "120",
+      "30",
+      "75",
+      "90",
+      "200"
+    ],
+    "answer": "A",
+    "solution": "15% + 25% + 35% = 75% chose one subject, so the other 25% is made up of the 9 + 21 = 30 remaining students. If 25% is 30 students, the whole survey is 4 x 30 = 120."
+  },
+  {
+    "id": "twin-2021-Q7",
+    "twinOf": "2021 Q7",
+    "section": "logic",
+    "chapter": "Numerical Reasoning",
+    "text": "Five red beads and fifteen white beads are threaded in some order on a closed loop of string. The beads are arranged so that as few white beads as possible have no red bead touching them.\nHow many white beads have no red bead touching them?",
+    "options": [
+      "3",
+      "5",
+      "10",
+      "7",
+      "0"
+    ],
+    "answer": "B",
+    "solution": "Each red bead touches two neighbours, so at most 5 x 2 = 10 white beads can touch a red one, and that needs at least two white beads between every pair of red beads, so no white bead touches two reds. Then 10 white beads touch a red and 15 - 10 = 5 do not. It cannot be fewer, because 10 is the most places next to a red bead."
+  },
+  {
+    "id": "twin-2021-Q8",
+    "twinOf": "2021 Q8",
+    "section": "logic",
+    "chapter": "Data Interpretation",
+    "text": "Laura needs 30 party invitations, all of one design. She will only buy invitations printed on recycled paper.\n\n| design | invitations per pack | recycled paper | price per pack |\n|---|---|---|---|\n| stars | 6 | yes | £1.50 |\n| balloons | 10 | no | £2.00 |\n| flowers | 8 | yes | £1.90 |\n| animals | 12 | yes | £3.20 |\n| rockets | 15 | yes | £4.10 |\n\nWhat is the least she can spend?",
+    "options": [
+      "£6.00",
+      "£7.60",
+      "£7.50",
+      "£8.20",
+      "£9.60"
+    ],
+    "answer": "C",
+    "solution": "Balloons are not recycled, so they are out (3 packs for £6.00 is the trap). For 30 invitations: stars need 5 packs = £7.50; flowers need 4 packs (32) = £7.60; animals need 3 packs (36) = £9.60; rockets need 2 packs = £8.20. The cheapest is £7.50."
+  },
+  {
+    "id": "twin-2021-Q9",
+    "twinOf": "2021 Q9",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "A 24-hour digital clock hangs on the wall behind my desk, and I can see it only in a mirror in front of me. The top display in the figure is what the mirror shows now.\nExactly 45 minutes later, which of the displays 1 to 5 does the mirror show?",
+    "options": [
+      "2",
+      "5",
+      "4",
+      "3",
+      "1"
+    ],
+    "answer": "D",
+    "solution": "A mirror swaps left and right: it reverses the order of the four digits and turns each digit into its mirror image. Undoing that, the clock itself shows 15:20 (a mirrored 5 looks like a 2, a mirrored 2 like a 5, and the 1 has its bars on the wrong side). 45 minutes later the clock shows 16:05, and its mirror image is display 3: the digits in the order 5, 0, 6, 1, each one reversed. Display 4 (06:06) comes from reading the mirror image as if it were the time, 05:21, and adding 45 minutes. Display 1 is 16:05 not mirrored, display 5 reverses each digit but keeps their order, and display 2 is the mirror image of 14:35, which is 45 minutes earlier.",
+    "figure": {
+      "file": "twin-2021-Q9.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2021-Q10",
+    "twinOf": "2021 Q10",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "A greengrocer paints a word in capital letters on a glass door, one letter under another down the door. She wants it to read correctly from inside the shop as well as from outside.\nWhich word would work?",
+    "options": [
+      "LEMON",
+      "BANANA",
+      "CHERRY",
+      "TOMATO",
+      "GRAPE"
+    ],
+    "answer": "D",
+    "solution": "Seen from behind, each letter is mirrored left to right. Written vertically, the order of the letters stays the same, so the word works only if every letter is symmetrical about a vertical line. T, O, M and A all are. LEMON fails on L, E and N; BANANA on B and N; CHERRY on C, E and R; GRAPE on G, R, P and E."
+  },
+  {
+    "id": "twin-2021-Q11",
+    "twinOf": "2021 Q11",
+    "section": "reading",
+    "chapter": "Literature and Philosophy",
+    "text": "Which pair of scholar and field of study is NOT correct?",
+    "options": [
+      "Charles Darwin: biology",
+      "Antoine Lavoisier: chemistry",
+      "Sigmund Freud: psychoanalysis",
+      "Adam Smith: economics",
+      "Johannes Kepler: medicine"
+    ],
+    "answer": "E",
+    "solution": "Johannes Kepler was an astronomer and mathematician, known for the laws of planetary motion, not a physician. Darwin developed evolution by natural selection, Lavoisier founded modern chemistry, Freud founded psychoanalysis, and Adam Smith's The Wealth of Nations founded modern economics."
+  },
+  {
+    "id": "twin-2021-Q12",
+    "twinOf": "2021 Q12",
+    "section": "reading",
+    "chapter": "Literature and Philosophy",
+    "text": "Who wrote the novel The Name of the Rose, a murder mystery set in a medieval monastery?",
+    "options": [
+      "Umberto Eco",
+      "Italo Calvino",
+      "Alessandro Manzoni",
+      "Primo Levi",
+      "Elsa Morante"
+    ],
+    "answer": "A",
+    "solution": "Umberto Eco, the semiotician from Alessandria, published The Name of the Rose in 1980. Calvino wrote If on a Winter's Night a Traveller, Manzoni The Betrothed, Primo Levi If This Is a Man, and Elsa Morante History."
+  },
+  {
+    "id": "twin-2021-Q13",
+    "twinOf": "2021 Q13",
+    "section": "reading",
+    "chapter": "Politics, Economics and Society",
+    "text": "In UNESCO, the United Nations agency, what does the letter S stand for?",
+    "options": [
+      "Social",
+      "Scientific",
+      "Security",
+      "Sustainable",
+      "Sanitary"
+    ],
+    "answer": "B",
+    "solution": "UNESCO is the United Nations Educational, Scientific and Cultural Organization. It works through education, science and culture, and keeps the list of World Heritage Sites."
+  },
+  {
+    "id": "twin-2021-Q14",
+    "twinOf": "2021 Q14",
+    "section": "reading",
+    "chapter": "Literature and Philosophy",
+    "text": "Which museum is correctly paired with its city?",
+    "options": [
+      "the Prado: Barcelona",
+      "the Hermitage: Moscow",
+      "the Uffizi: Florence",
+      "the Rijksmuseum: Brussels",
+      "the Louvre: Lyon"
+    ],
+    "answer": "C",
+    "solution": "The Uffizi Gallery is in Florence. The Prado is in Madrid, the Hermitage in Saint Petersburg, the Rijksmuseum in Amsterdam and the Louvre in Paris."
+  },
+  {
+    "id": "twin-2021-Q15",
+    "twinOf": "2021 Q15",
+    "section": "reading",
+    "chapter": "History",
+    "text": "Magna Carta, agreed by King John of England in 1215, is best known for",
+    "options": [
+      "uniting the kingdoms of England and Scotland.",
+      "creating the House of Commons.",
+      "ending the Hundred Years' War.",
+      "limiting the power of the king and protecting certain rights of his subjects.",
+      "founding the Church of England."
+    ],
+    "answer": "D",
+    "solution": "Magna Carta placed the king under the law, for example protecting free men from imprisonment without lawful judgement; it became a symbol of limited government. England and Scotland united in 1707, the Hundred Years' War ended in 1453, and Henry VIII broke with Rome in the 1530s."
+  },
+  {
+    "id": "twin-2021-Q16",
+    "twinOf": "2021 Q16",
+    "section": "reading",
+    "chapter": "Politics, Economics and Society",
+    "text": "Which institution of the European Union has the main right to propose new EU laws?",
+    "options": [
+      "the European Parliament",
+      "the European Council",
+      "the Court of Justice of the European Union",
+      "the European Central Bank",
+      "the European Commission"
+    ],
+    "answer": "E",
+    "solution": "The European Commission proposes legislation (the right of initiative); the European Parliament and the Council of the EU then amend and adopt it. The European Council of heads of government sets overall direction but does not legislate, the Court interprets EU law, and the ECB runs monetary policy."
+  },
+  {
+    "id": "twin-2021-Q17",
+    "twinOf": "2021 Q17",
+    "section": "reading",
+    "chapter": "Literature and Philosophy",
+    "text": "Which director made the films La Dolce Vita and 8½?",
+    "options": [
+      "Federico Fellini",
+      "Roberto Rossellini",
+      "Vittorio De Sica",
+      "Michelangelo Antonioni",
+      "Pier Paolo Pasolini"
+    ],
+    "answer": "A",
+    "solution": "Federico Fellini directed La Dolce Vita (1960) and 8½ (1963). Rossellini made Rome, Open City; De Sica made Bicycle Thieves; Antonioni made L'Avventura; Pasolini made The Gospel According to St Matthew."
+  },
+  {
+    "id": "twin-2021-Q18",
+    "twinOf": "2021 Q18",
+    "section": "reading",
+    "chapter": "History",
+    "text": "Which pair of scientist and discovery is NOT correct?",
+    "options": [
+      "Gregor Mendel: the laws of inheritance",
+      "Galileo Galilei: the structure of DNA",
+      "Michael Faraday: electromagnetic induction",
+      "Ernest Rutherford: the atomic nucleus",
+      "Edward Jenner: vaccination against smallpox"
+    ],
+    "answer": "B",
+    "solution": "The double helix of DNA was described by Watson and Crick in 1953, using Rosalind Franklin's X-ray images; Galileo, three centuries earlier, studied motion and observed the moons of Jupiter. The other pairs are correct."
+  },
+  {
+    "id": "twin-2021-Q19",
+    "twinOf": "2021 Q19",
+    "section": "reading",
+    "chapter": "History",
+    "text": "Which treaty, signed in 1992, created the European Union and set the path towards the euro?",
+    "options": [
+      "Paris",
+      "Rome",
+      "Maastricht",
+      "Lisbon",
+      "Westphalia"
+    ],
+    "answer": "C",
+    "solution": "The Treaty of Maastricht (1992, in force 1993) created the European Union and planned economic and monetary union. Paris (1951) founded the Coal and Steel Community, Rome (1957) the European Economic Community, Lisbon (2007) reformed the EU, and Westphalia (1648) ended the Thirty Years' War."
+  },
+  {
+    "id": "twin-2021-Q20",
+    "twinOf": "2021 Q20",
+    "section": "reading",
+    "chapter": "Politics, Economics and Society",
+    "text": "Which international organisation lends to member countries facing a balance-of-payments crisis and monitors the stability of the world economy?",
+    "options": [
+      "WTO",
+      "UNICEF",
+      "OECD",
+      "IMF",
+      "WHO"
+    ],
+    "answer": "D",
+    "solution": "The International Monetary Fund (IMF), founded at Bretton Woods in 1944, gives short-term loans to countries that cannot pay their international bills and watches over the global financial system. The WTO handles trade rules, UNICEF children's welfare, the OECD economic policy research, and the WHO health."
+  },
+  {
+    "id": "twin-2021-Q21",
+    "twinOf": "2021 Q21",
+    "section": "reading",
+    "chapter": "Literature and Philosophy",
+    "text": "Which pair of Italian author and work is NOT correct?",
+    "options": [
+      "Dante Alighieri: The Divine Comedy",
+      "Giovanni Boccaccio: The Decameron",
+      "Alessandro Manzoni: The Betrothed",
+      "Niccolò Machiavelli: The Prince",
+      "Giacomo Leopardi: The Leopard"
+    ],
+    "answer": "E",
+    "solution": "The Leopard (Il Gattopardo) was written by Giuseppe Tomasi di Lampedusa and published in 1958; Giacomo Leopardi was a 19th-century poet, best known for the Canti. The other four pairs are correct."
+  },
+  {
+    "id": "twin-2021-Q22",
+    "twinOf": "2021 Q22",
+    "section": "reading",
+    "chapter": "Politics, Economics and Society",
+    "text": "What does the principle of the \"separation of powers\" mean?",
+    "options": [
+      "dividing the legislative, executive and judicial functions of the state between separate bodies",
+      "dividing a country into regions, each with its own parliament",
+      "keeping religion and the state apart",
+      "dividing parliament into two chambers with equal powers",
+      "requiring an election for every public office"
+    ],
+    "answer": "A",
+    "solution": "Associated with Montesquieu, the separation of powers gives law-making to parliament, government to the executive and judgement to independent courts, so that no single body holds all power. Regional parliaments are devolution or federalism, church and state apart is secularism, and two equal chambers is perfect bicameralism."
+  },
+  {
+    "id": "twin-2021-Q23",
+    "twinOf": "2021 Q23",
+    "section": "biology",
+    "chapter": "Microorganisms and Biotechnology",
+    "text": "Which of the following structures is/are present in a typical bacterial cell?\n1 a cell wall\n2 ribosomes\n3 mitochondria",
+    "options": [
+      "1 and 2 only",
+      "1 only",
+      "2 and 3 only",
+      "1, 2 and 3",
+      "3 only"
+    ],
+    "answer": "A",
+    "solution": "Bacteria are prokaryotes. Most have a cell wall (made of peptidoglycan), and all have ribosomes, smaller (70S) than those of eukaryotes. They have no membrane-bound organelles, so no mitochondria: respiration happens on the cell membrane. So 1 and 2 only."
+  },
+  {
+    "id": "twin-2021-Q24",
+    "twinOf": "2021 Q24",
+    "section": "biology",
+    "chapter": "Cell Division and Reproduction",
+    "text": "Which of the following is produced by mitosis?",
+    "options": [
+      "a new liver cell replacing a damaged one",
+      "a sperm cell in the testis",
+      "two bacteria formed when one bacterium divides",
+      "a new mitochondrion formed inside a muscle cell",
+      "a new virus particle released from an infected cell"
+    ],
+    "answer": "A",
+    "solution": "Mitosis divides a eukaryotic nucleus into two genetically identical nuclei, and the body uses it for growth and repair, such as replacing liver cells. Sperm are made by meiosis, which halves the chromosome number. Bacteria have no nucleus and divide by binary fission. Mitochondria multiply by their own fission, and virus particles are assembled inside the host cell; neither involves mitosis."
+  },
+  {
+    "id": "twin-2021-Q25",
+    "twinOf": "2021 Q25",
+    "section": "biology",
+    "chapter": "Biomolecules and Enzymes",
+    "text": "Two molecules of glucose and one molecule of fructose, each \\(\\mathrm{C_6H_{12}O_6}\\), are joined by condensation reactions to form a trisaccharide.\nWhat is the molecular formula of the trisaccharide?",
+    "options": [
+      "\\(\\mathrm{C_{18}H_{36}O_{18}}\\)",
+      "\\(\\mathrm{C_{18}H_{32}O_{16}}\\)",
+      "\\(\\mathrm{C_{18}H_{34}O_{17}}\\)",
+      "\\(\\mathrm{C_{18}H_{30}O_{15}}\\)",
+      "\\(\\mathrm{C_{18}H_{32}O_{18}}\\)"
+    ],
+    "answer": "B",
+    "solution": "Joining three monosaccharides makes two glycosidic bonds, and each condensation removes one water. Three \\(\\mathrm{C_6H_{12}O_6}\\) make \\(\\mathrm{C_{18}H_{36}O_{18}}\\); taking away \\(\\mathrm{2H_2O}\\) leaves \\(\\mathrm{C_{18}H_{32}O_{16}}\\)."
+  },
+  {
+    "id": "twin-2021-Q26",
+    "twinOf": "2021 Q26",
+    "section": "biology",
+    "chapter": "Cell Structure and Membranes",
+    "text": "Which of the following is correct for the phospholipids in a cell membrane?",
+    "options": [
+      "They are the main route by which ions cross the membrane.",
+      "Their hydrophilic heads face the inside of the bilayer.",
+      "Their hydrophobic fatty acid tails face the inside of the bilayer, away from water.",
+      "They are joined to one another by peptide bonds.",
+      "They are made in the nucleus."
+    ],
+    "answer": "C",
+    "solution": "A phospholipid has a hydrophilic phosphate head and two hydrophobic fatty acid tails. In water they form a bilayer with the heads facing the watery inside and outside of the cell and the tails hidden in the middle. Ions cross through channel and carrier proteins, because the hydrophobic core blocks them; phospholipids are made on the smooth ER."
+  },
+  {
+    "id": "twin-2021-Q27",
+    "twinOf": "2021 Q27",
+    "section": "biology",
+    "chapter": "Cell Structure and Membranes",
+    "text": "Which row correctly matches a cell organelle with its function?\n\n| | organelle | function |\n|---|---|---|\n| row 1 | smooth endoplasmic reticulum | joins amino acids into proteins |\n| row 2 | lysosome | packages proteins into vesicles for secretion |\n| row 3 | nucleolus | stores water and ions for the cell |\n| row 4 | centriole | carries out aerobic respiration |\n| row 5 | rough endoplasmic reticulum | carries ribosomes that make proteins for export |",
+    "options": [
+      "row 3",
+      "row 1",
+      "row 4",
+      "row 2",
+      "row 5"
+    ],
+    "answer": "E",
+    "solution": "Rough endoplasmic reticulum is studded with ribosomes, and the proteins they make enter it to be exported or built into membranes. Each other row gives the function of a different organelle: row 1 describes ribosomes (smooth ER makes lipids), row 2 the Golgi apparatus (lysosomes hold digestive enzymes), row 3 a vacuole (the nucleolus makes ribosomal subunits) and row 4 the mitochondrion (centrioles organise the spindle in cell division)."
+  },
+  {
+    "id": "twin-2021-Q28",
+    "twinOf": "2021 Q28",
+    "section": "biology",
+    "chapter": "Biomolecules and Enzymes",
+    "text": "Which of the following contain(s) enzymes?\n1 saliva\n2 lysosomes\n3 the stroma of chloroplasts",
+    "options": [
+      "1 only",
+      "2 only",
+      "1 and 2 only",
+      "1, 2 and 3",
+      "2 and 3 only"
+    ],
+    "answer": "D",
+    "solution": "Saliva contains amylase. Lysosomes are bags of hydrolytic enzymes that digest worn-out organelles and engulfed material. The stroma holds the enzymes of the Calvin cycle, including rubisco. All three."
+  },
+  {
+    "id": "twin-2021-Q29",
+    "twinOf": "2021 Q29",
+    "section": "biology",
+    "chapter": "Bioenergetics and Metabolism",
+    "text": "Which of the following processes involves a redox reaction?",
+    "options": [
+      "hydrolysis of ATP to ADP and phosphate",
+      "formation of a peptide bond between two amino acids",
+      "osmosis of water into a root hair cell",
+      "pairing of adenine with thymine",
+      "conversion of pyruvate to lactate during fermentation"
+    ],
+    "answer": "E",
+    "solution": "In lactic acid fermentation NADH gives its hydrogen to pyruvate: pyruvate is reduced to lactate and NADH is oxidised back to \\(\\mathrm{NAD^+}\\). Hydrolysis and condensation (peptide bond) involve no change in oxidation state, osmosis is the movement of water, and base pairing uses hydrogen bonds."
+  },
+  {
+    "id": "twin-2021-Q30",
+    "twinOf": "2021 Q30",
+    "section": "biology",
+    "chapter": "Genetics and Inheritance",
+    "text": "In humans, a person with at least one Y chromosome normally develops as male, whatever the number of X chromosomes.\nUsing this information, which of the following statements is/are correct?\n1 A person with the sex chromosomes XXY normally develops as male.\n2 A person with one X chromosome and no Y chromosome normally develops as male.\n3 An XXY zygote could result from a normal egg being fertilised by a sperm that carries both an X and a Y chromosome.",
+    "options": [
+      "1 and 3 only",
+      "1 only",
+      "2 only",
+      "2 and 3 only",
+      "1, 2 and 3"
+    ],
+    "answer": "A",
+    "solution": "1: XXY has a Y, so male (Klinefelter syndrome). 2: XO has no Y, so female (Turner syndrome). 3: if X and Y fail to separate in meiosis I, a sperm can carry both; with the egg's X this gives XXY. So 1 and 3 only."
+  },
+  {
+    "id": "twin-2021-Q31",
+    "twinOf": "2021 Q31",
+    "section": "biology",
+    "chapter": "Cell Division and Reproduction",
+    "text": "A cell containing three pairs of homologous chromosomes divides by mitosis, and then each daughter cell divides by mitosis again.\nWhich row shows the number of cells produced and the number of chromosomes in each?\n\n| | number of cells produced | chromosomes in each cell |\n|---|---|---|\n| row 1 | 2 | 3 |\n| row 2 | 4 | 6 |\n| row 3 | 4 | 3 |\n| row 4 | 4 | 12 |\n| row 5 | 2 | 6 |",
+    "options": [
+      "row 1",
+      "row 2",
+      "row 3",
+      "row 4",
+      "row 5"
+    ],
+    "answer": "B",
+    "solution": "Three pairs means 6 chromosomes. Mitosis makes two cells genetically identical to the parent, so each division keeps 6 chromosomes per cell. Two rounds give 4 cells, each with 6. Halving to 3 happens only in meiosis."
+  },
+  {
+    "id": "twin-2021-Q32",
+    "twinOf": "2021 Q32",
+    "section": "biology",
+    "chapter": "Molecular Biology and Gene Expression",
+    "text": "One strand of a section of DNA is used as the template for transcription. Its base sequence is\nTACCTGAGCTTCACGTCT\nWhich pie chart shows the proportions of the bases in the mRNA transcribed from it?",
+    "options": [
+      "1",
+      "5",
+      "4",
+      "2",
+      "3"
+    ],
+    "answer": "C",
+    "solution": "The mRNA pairs with the template: A opposite T, U opposite A, G opposite C and C opposite G. The template holds 6 T, 3 A, 6 C and 3 G, so the mRNA holds 6 A, 3 U, 6 G and 3 C: a third each of A and G and a sixth each of U and C, which is chart 4. Chart 1 is the other DNA strand (it contains T, which RNA does not). Chart 5 is the template itself, and chart 2 copies the template with U for T instead of pairing with it. Chart 3 assumes equal shares, but base pairing fixes the ratios between two strands, not within one.",
+    "figure": {
+      "file": "twin-2021-Q32.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2021-Q33",
+    "twinOf": "2021 Q33",
+    "section": "biology",
+    "chapter": "Genetics and Inheritance",
+    "text": "A condition is caused by one allele of a gene on an autosome. The figure shows five families, each with two parents and three children.\nWhich family could show the inheritance only if the allele causing the condition is dominant, and not if it is recessive?",
+    "options": [
+      "2",
+      "4",
+      "1",
+      "5",
+      "3"
+    ],
+    "answer": "B",
+    "solution": "In family 4 both parents have the condition but their son does not. If the allele were recessive, both parents would be homozygous recessive and every child would have the condition. If it is dominant, two heterozygous parents can have a child without it (one in four on average). Family 3 is the reverse case: unaffected parents with an affected daughter is possible only if the allele is recessive. Families 1, 2 and 5 fit either model: one affected and one unaffected parent can have children of both kinds whichever allele is dominant, and two affected parents can have only affected children under both.",
+    "figure": {
+      "file": "twin-2021-Q33.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2021-Q34",
+    "twinOf": "2021 Q34",
+    "section": "biology",
+    "chapter": "Bioenergetics and Metabolism",
+    "text": "While the electron transport chain of a mitochondrion is working, where is the concentration of protons (hydrogen ions) highest?",
+    "options": [
+      "in the matrix",
+      "on the mitochondrial ribosomes",
+      "in the intermembrane space",
+      "in the circular mitochondrial DNA",
+      "inside the ATP synthase enzyme"
+    ],
+    "answer": "C",
+    "solution": "The electron transport chain uses the energy of electrons to pump protons from the matrix across the inner membrane into the intermembrane space. That builds the gradient that drives the protons back through ATP synthase. So the intermembrane space has the highest concentration and the matrix the lowest."
+  },
+  {
+    "id": "twin-2021-Q35",
+    "twinOf": "2021 Q35",
+    "section": "biology",
+    "chapter": "Evolution and Ecology",
+    "text": "Which row could be correct for stabilising selection?\n\n| | the most common phenotype is favoured | the range of phenotypes becomes narrower | the mean value of the trait shifts |\n|---|---|---|---|\n| row 1 | ✓ | x | ✓ |\n| row 2 | x | ✓ | ✓ |\n| row 3 | x | x | ✓ |\n| row 4 | ✓ | ✓ | x |\n| row 5 | ✓ | ✓ | ✓ |\n\nKey: ✓ yes, x no",
+    "options": [
+      "row 1",
+      "row 2",
+      "row 3",
+      "row 4",
+      "row 5"
+    ],
+    "answer": "D",
+    "solution": "Stabilising selection removes the extremes and favours the middle, most common phenotype. The spread of phenotypes narrows but the mean stays where it is. A shifting mean is the mark of directional selection. Row 4."
+  },
+  {
+    "id": "twin-2021-Q36",
+    "twinOf": "2021 Q36",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "Which one of the following statements about the healthy human heart is correct?",
+    "options": [
+      "The right ventricle has a thicker muscular wall than the left ventricle.",
+      "The pulmonary artery carries oxygenated blood.",
+      "The sinoatrial node is in the wall of the left ventricle.",
+      "The atria and the ventricles contract at the same moment.",
+      "Blood leaving the left ventricle enters the aorta."
+    ],
+    "answer": "E",
+    "solution": "The left ventricle pumps into the aorta and round the whole body, which is why its wall is the thickest. The pulmonary artery carries deoxygenated blood to the lungs. The sinoatrial node, the pacemaker, is in the wall of the right atrium. The atria contract first and the ventricles a fraction of a second later."
+  },
+  {
+    "id": "twin-2021-Q37",
+    "twinOf": "2021 Q37",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "The graph shows the concentration of one type of antibody in a person's blood after two exposures to the same antigen.\nWhich of the following statements is/are correct?\n1 The second response is faster and larger because memory cells were formed after the first exposure.\n2 After the first response, the antibody concentration stayed at its highest level until the second exposure.\n3 The graph could show a vaccination followed later by a booster dose.",
+    "options": [
+      "1 only",
+      "2 and 3 only",
+      "1, 2 and 3",
+      "1 and 3 only",
+      "3 only"
+    ],
+    "answer": "D",
+    "solution": "1 is correct: the first exposure leaves memory B cells, so the second response starts sooner and makes far more antibody. 2 is wrong: the curve falls back almost to zero between the two exposures; antibodies are broken down, and it is the memory cells, not the antibodies, that last. 3 is correct: a vaccine causes the small primary response and the memory cells, and a booster triggers the larger secondary response.",
+    "figure": {
+      "file": "twin-2021-Q37.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2021-Q38",
+    "twinOf": "2021 Q38",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "Which statement about the human eye is correct?",
+    "options": [
+      "The blind spot is where the cones are most densely packed.",
+      "To focus on a near object, the ciliary muscles relax and the lens becomes thinner.",
+      "The optic nerve carries impulses from the brain to the retina.",
+      "The iris controls how much the lens refracts light.",
+      "Rods work in dim light but cannot tell colours apart."
+    ],
+    "answer": "E",
+    "solution": "Rods are very sensitive and work in dim light, but there is only one kind, so they give no colour information; colour comes from the three kinds of cone. The blind spot has no receptors at all, because the optic nerve leaves the eye there; cones are densest at the fovea. For near vision the ciliary muscles contract, the suspensory ligaments slacken and the lens becomes fatter. The optic nerve carries impulses from the retina to the brain. The iris controls how much light enters, through the size of the pupil."
+  },
+  {
+    "id": "twin-2021-Q39",
+    "twinOf": "2021 Q39",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "A patient with blood group AB (Rhesus factor ignored) needs a transfusion of red blood cells.\nRed cells of which ABO blood group(s) can the patient safely receive?",
+    "options": [
+      "A, B, AB or O",
+      "AB only",
+      "O only",
+      "A or B only",
+      "AB or O only"
+    ],
+    "answer": "A",
+    "solution": "Group AB plasma carries neither anti-A nor anti-B antibodies, so nothing in the patient's blood will attack red cells carrying A or B antigens. AB is the universal recipient and can receive red cells of any ABO group. Group O is the universal donor, the opposite case."
+  },
+  {
+    "id": "twin-2021-Q40",
+    "twinOf": "2021 Q40",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "The diagram sorts features of two hormones, insulin and glucagon: X is a feature of insulin only, Y of both hormones and Z of glucagon only.\nWhich row is correct for X, Y and Z?\n\n| | X | Y | Z |\n|---|---|---|---|\n| row 1 | lowers blood glucose | made by the adrenal glands | raises blood glucose |\n| row 2 | lowers blood glucose | made by cells in the islets of the pancreas | stimulates the liver to break down glycogen |\n| row 3 | stimulates the liver to break down glycogen | made by cells in the islets of the pancreas | lowers blood glucose |\n| row 4 | increases glucose uptake by muscle cells | a steroid hormone | raises blood glucose |\n| row 5 | lowers blood glucose | made by cells in the islets of the pancreas | increases glucose uptake by muscle cells |",
+    "options": [
+      "row 2",
+      "row 1",
+      "row 3",
+      "row 4",
+      "row 5"
+    ],
+    "answer": "A",
+    "solution": "Insulin lowers blood glucose (X); glucagon raises it, chiefly by making the liver break glycogen down to glucose (Z); both are made in the islets of Langerhans in the pancreas (Y). Row 1 puts them in the adrenal glands, which make adrenaline. Row 3 swaps the two hormones. Row 4 calls them steroids, but both are proteins. Row 5 gives glucagon an effect of insulin.",
+    "figure": {
+      "file": "twin-2021-Q40.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2021-Q41",
+    "twinOf": "2021 Q41",
+    "section": "chemistry",
+    "chapter": "Periodic Table",
+    "text": "As Group I of the Periodic Table (Li to Cs) is descended, which of the following properties of the elements INCREASE?\n1 atomic radius\n2 reactivity with water\n3 melting point",
+    "options": [
+      "1 only",
+      "1 and 2 only",
+      "2 and 3 only",
+      "1, 2 and 3",
+      "3 only"
+    ],
+    "answer": "B",
+    "solution": "Each step down adds a shell, so the atoms get bigger (1). The outer electron is further from the nucleus and better shielded, so it is lost more easily and reactivity with water rises (2). Metallic bonding weakens as the atoms grow, so melting points fall, from about 180 °C for lithium to 28 °C for caesium. So 1 and 2 only."
+  },
+  {
+    "id": "twin-2021-Q42",
+    "twinOf": "2021 Q42",
+    "section": "chemistry",
+    "chapter": "Atomic Structure",
+    "text": "Atoms of element Q have 20 neutrons and a mass number of 40. Q forms ions by losing two electrons.\nWhich is the ground-state electron arrangement of a Q ion?",
+    "options": [
+      "\\(1s^{2}2s^{2}2p^{6}3s^{2}3p^{6}4s^{2}\\)",
+      "\\(1s^{2}2s^{2}2p^{6}3s^{2}3p^{4}\\)",
+      "\\(1s^{2}2s^{2}2p^{6}3s^{2}3p^{6}\\)",
+      "\\(1s^{2}2s^{2}2p^{6}3s^{2}3p^{6}4s^{2}4p^{2}\\)",
+      "\\(1s^{2}2s^{2}2p^{6}\\)"
+    ],
+    "answer": "C",
+    "solution": "Protons = 40 - 20 = 20, so the element is calcium. The atom has 20 electrons, \\(1s^{2}2s^{2}2p^{6}3s^{2}3p^{6}4s^{2}\\); the \\(\\mathrm{Ca^{2+}}\\) ion loses the two 4s electrons, leaving 18: \\(1s^{2}2s^{2}2p^{6}3s^{2}3p^{6}\\), the argon arrangement."
+  },
+  {
+    "id": "twin-2021-Q43",
+    "twinOf": "2021 Q43",
+    "section": "chemistry",
+    "chapter": "States of Matter and Gas Laws",
+    "text": "Which of the following statements is/are correct?\n1 Dissolving sugar in water lowers the temperature at which the water freezes.\n2 Water boils at a lower temperature at the top of a high mountain than at sea level.\n3 Cooling a gas from 50 °C to 20 °C increases the average speed of its molecules.",
+    "options": [
+      "1 only",
+      "3 only",
+      "2 and 3 only",
+      "1 and 2 only",
+      "1, 2 and 3"
+    ],
+    "answer": "D",
+    "solution": "1: a dissolved solute lowers the freezing point (and raises the boiling point). 2: water boils when its vapour pressure equals the air pressure; on a mountain the air pressure is lower, so that happens at a lower temperature. 3: lower temperature means lower average kinetic energy, so the molecules slow down. So 1 and 2 only."
+  },
+  {
+    "id": "twin-2021-Q44",
+    "twinOf": "2021 Q44",
+    "section": "chemistry",
+    "chapter": "Organic Chemistry",
+    "text": "Which of the following are structural isomers of pentane, \\(\\mathrm{C_5H_{12}}\\)?\n1 \\(\\mathrm{CH_3CH(CH_3)CH_2CH_3}\\)\n2 cyclopentane, a ring of five \\(\\mathrm{CH_2}\\) groups\n3 \\(\\mathrm{C(CH_3)_4}\\)",
+    "options": [
+      "1 only",
+      "2 and 3 only",
+      "1 and 3 only",
+      "1, 2 and 3",
+      "3 only"
+    ],
+    "answer": "C",
+    "solution": "Structural isomers have the same molecular formula with the atoms joined differently. 1 (2-methylbutane) and 3 (2,2-dimethylpropane) both have five carbons and twelve hydrogens, so both are isomers of pentane. Cyclopentane has five carbons but only ten hydrogens: closing the ring removes two hydrogens, so its formula is \\(\\mathrm{C_5H_{10}}\\) and it is not an isomer of pentane, however similar the carbon skeleton looks."
+  },
+  {
+    "id": "twin-2021-Q45",
+    "twinOf": "2021 Q45",
+    "section": "chemistry",
+    "chapter": "Periodic Table",
+    "text": "Which of the following equations represents the first ionisation energy of sodium?",
+    "options": [
+      "\\(\\mathrm{Na(s) \\rightarrow Na^{+}(g) + e^{-}}\\)",
+      "\\(\\mathrm{Na(g) + e^{-} \\rightarrow Na^{-}(g)}\\)",
+      "\\(\\mathrm{Na^{+}(g) + e^{-} \\rightarrow Na(g)}\\)",
+      "\\(\\mathrm{2Na(g) \\rightarrow 2Na^{+}(g) + 2e^{-}}\\)",
+      "\\(\\mathrm{Na(g) \\rightarrow Na^{+}(g) + e^{-}}\\)"
+    ],
+    "answer": "E",
+    "solution": "The first ionisation energy is the energy to remove one electron from each atom in one mole of gaseous atoms, forming one mole of gaseous 1+ ions. It starts from Na(g), not the solid, and is defined per mole of atoms, so the 2Na equation is twice the value. Adding an electron is electron affinity."
+  },
+  {
+    "id": "twin-2021-Q46",
+    "twinOf": "2021 Q46",
+    "section": "chemistry",
+    "chapter": "Organic Chemistry",
+    "text": "Here is a structural formula:\n\\[\\mathrm{CH_3{-}CO{-}CH_2{-}CH(NH_2){-}COO{-}CH_2CH_3}\\]\nWhich of these groups can be found in it?\n1 ester\n2 ketone\n3 amine\n4 ether\n5 amide\n6 alkene",
+    "options": [
+      "2, 3 and 6 only",
+      "1, 2 and 3 only",
+      "1, 3 and 5 only",
+      "2, 4 and 5 only",
+      "3, 4 and 6 only"
+    ],
+    "answer": "B",
+    "solution": "The CO between two carbons on the left is a ketone. The \\(\\mathrm{NH_2}\\) on the fourth carbon is an amine. The COO joined to an ethyl group is an ester. It is not an amide, because the nitrogen is not attached to the C=O carbon, and the ester's oxygen is not an ether, because it belongs to the COO group. Every carbon-carbon bond is single, so there is no alkene. Mistaking the \\(\\mathrm{CH(NH_2)}\\) next to the COO for an amide gives the third option."
+  },
+  {
+    "id": "twin-2021-Q47",
+    "twinOf": "2021 Q47",
+    "section": "chemistry",
+    "chapter": "Acids, Bases and pH",
+    "text": "Solution P: 200 mL of hydrochloric acid, concentration 0.020 mol/L.\nSolution Q: 100 mL of sulfuric acid, concentration 0.010 mol/L.\nTreat both acids as fully dissociated. Which of the following statements is/are correct?\n1 P and Q have the same hydrogen ion concentration.\n2 P contains more moles of hydrogen ions than Q.\n3 Both solutions have a pH of exactly 2 at 25 °C.",
+    "options": [
+      "1 and 2 only",
+      "1 only",
+      "3 only",
+      "2 and 3 only",
+      "1, 2 and 3"
+    ],
+    "answer": "A",
+    "solution": "Each \\(\\mathrm{H_2SO_4}\\) gives two \\(\\mathrm{H^+}\\), so Q has \\([\\mathrm{H^+}] = 0.020\\) mol/L, the same as P (1 correct). Moles: P has 0.200 x 0.020 = 0.0040 mol, Q has 0.100 x 0.020 = 0.0020 mol (2 correct). pH = \\(-\\log(0.020) \\approx 1.7\\), not 2 (3 wrong)."
+  },
+  {
+    "id": "twin-2021-Q48",
+    "twinOf": "2021 Q48",
+    "section": "chemistry",
+    "chapter": "Chemical Bonding",
+    "text": "In the solid state, phosphorus(V) chloride exists as the ions \\(\\mathrm{PCl_4^+}\\) and \\(\\mathrm{PCl_6^-}\\).\nWhich row gives the shapes of the two ions?\n\n| | \\(\\mathrm{PCl_4^+}\\) | \\(\\mathrm{PCl_6^-}\\) |\n|---|---|---|\n| row 1 | square planar | octahedral |\n| row 2 | tetrahedral | trigonal bipyramidal |\n| row 3 | trigonal pyramidal | octahedral |\n| row 4 | square planar | trigonal bipyramidal |\n| row 5 | tetrahedral | octahedral |",
+    "options": [
+      "row 1",
+      "row 2",
+      "row 3",
+      "row 4",
+      "row 5"
+    ],
+    "answer": "E",
+    "solution": "Phosphorus has five outer electrons. In \\(\\mathrm{PCl_4^+}\\) it has lost one, leaving four, all used in four P-Cl bonds: four bonding pairs and no lone pair, so tetrahedral. In \\(\\mathrm{PCl_6^-}\\) it has gained one, giving six, all used in six bonds: six bonding pairs, so octahedral. Trigonal bipyramidal (row 2) is the shape of the neutral \\(\\mathrm{PCl_5}\\) molecule, with five pairs. Square planar needs four bonding pairs plus two lone pairs, and trigonal pyramidal three bonding pairs plus one lone pair."
+  },
+  {
+    "id": "twin-2021-Q49",
+    "twinOf": "2021 Q49",
+    "section": "chemistry",
+    "chapter": "Chemical Bonding",
+    "text": "These compounds have similar molar masses. Which of them has the highest boiling point?",
+    "options": [
+      "propane, \\(\\mathrm{CH_3CH_2CH_3}\\)",
+      "propan-1-ol, \\(\\mathrm{CH_3CH_2CH_2OH}\\)",
+      "methoxyethane, \\(\\mathrm{CH_3OCH_2CH_3}\\)",
+      "propanal, \\(\\mathrm{CH_3CH_2CHO}\\)",
+      "chloroethane, \\(\\mathrm{CH_3CH_2Cl}\\)"
+    ],
+    "answer": "B",
+    "solution": "Only propan-1-ol has an O-H group, so only its molecules hydrogen-bond to each other; that is the strongest intermolecular force here, and it boils at about 97 °C. Propanal and methoxyethane are polar but have no O-H (about 48 °C and 7 °C), chloroethane about 12 °C, and non-polar propane about -42 °C."
+  },
+  {
+    "id": "twin-2021-Q50",
+    "twinOf": "2021 Q50",
+    "section": "chemistry",
+    "chapter": "Solutions and Concentration",
+    "text": "A solution contains 5.0 g of glucose in 250 mL. 10 mL of it is diluted with water to exactly 100 mL in a volumetric flask, and the flask is shaken. Then 20 mL of the diluted solution is transferred to a beaker.\nWhat is the concentration of glucose in the beaker, in g \\(\\mathrm{L^{-1}}\\)?",
+    "options": [
+      "20 g \\(\\mathrm{L^{-1}}\\)",
+      "0.40 g \\(\\mathrm{L^{-1}}\\)",
+      "2.0 g \\(\\mathrm{L^{-1}}\\)",
+      "0.20 g \\(\\mathrm{L^{-1}}\\)",
+      "4.0 g \\(\\mathrm{L^{-1}}\\)"
+    ],
+    "answer": "C",
+    "solution": "Start: 5.0 g in 0.250 L = 20 g/L. Diluting 10 mL to 100 mL divides the concentration by 10: 2.0 g/L. Pouring out 20 mL changes the amount taken, not the concentration, so the beaker holds 2.0 g/L."
+  },
+  {
+    "id": "twin-2021-Q51",
+    "twinOf": "2021 Q51",
+    "section": "chemistry",
+    "chapter": "Redox Reactions",
+    "text": "A compound has the formula \\(\\mathrm{Ca}_m\\mathrm{X}_2\\mathrm{O}_n\\), where calcium has its usual oxidation state of +2 and oxygen of -2.\nWhich expression gives the oxidation state of element X?",
+    "options": [
+      "\\(n + m\\)",
+      "\\(2n - m\\)",
+      "\\(m - n\\)",
+      "\\(n - m\\)",
+      "\\(2n - 2m\\)"
+    ],
+    "answer": "D",
+    "solution": "A neutral compound's oxidation states add up to zero: \\(2m + 2x - 2n = 0\\), so \\(2x = 2n - 2m\\) and \\(x = n - m\\). (Check with calcium sulfate written as \\(\\mathrm{Ca_2S_2O_8}\\): \\(m = 2\\), \\(n = 8\\) gives +6 for S.)"
+  },
+  {
+    "id": "twin-2021-Q52",
+    "twinOf": "2021 Q52",
+    "section": "chemistry",
+    "chapter": "Stoichiometry and Reactions",
+    "text": "A sample of an oxide of copper contains 2.54 g of copper combined with 0.32 g of oxygen.\nWhich formula fits this compound?\n[Relative atomic masses: Cu = 63.5; O = 16]",
+    "options": [
+      "\\(\\mathrm{CuO}\\)",
+      "\\(\\mathrm{CuO_2}\\)",
+      "\\(\\mathrm{Cu_3O_2}\\)",
+      "\\(\\mathrm{Cu_2O_3}\\)",
+      "\\(\\mathrm{Cu_2O}\\)"
+    ],
+    "answer": "E",
+    "solution": "Moles of Cu = 2.54/63.5 = 0.040; moles of O = 0.32/16 = 0.020. The ratio Cu : O is 2 : 1, so the formula is \\(\\mathrm{Cu_2O}\\), copper(I) oxide."
+  },
+  {
+    "id": "twin-2021-Q53",
+    "twinOf": "2021 Q53",
+    "section": "physmath",
+    "subject": "Mathematics",
+    "chapter": "Equations and Inequalities",
+    "text": "Which one of the following is a simplification of\n\\[\\frac{x^2 - 9}{x^2 + x - 6}\\]",
+    "options": [
+      "\\(\\dfrac{x-3}{x-2}\\)",
+      "\\(\\dfrac{x+3}{x-2}\\)",
+      "\\(\\dfrac{x-3}{x+2}\\)",
+      "\\(\\dfrac{3}{2}\\)",
+      "\\(\\dfrac{x-9}{x-6}\\)"
+    ],
+    "answer": "A",
+    "solution": "Factorise both: \\(x^2 - 9 = (x-3)(x+3)\\) and \\(x^2 + x - 6 = (x+3)(x-2)\\). Cancelling \\(x + 3\\) leaves \\(\\dfrac{x-3}{x-2}\\). Cancelling the \\(x^2\\) terms, as in the last option, is not allowed: only common factors cancel."
+  },
+  {
+    "id": "twin-2021-Q54",
+    "twinOf": "2021 Q54",
+    "section": "physmath",
+    "subject": "Mathematics",
+    "chapter": "Equations and Inequalities",
+    "text": "Solve the inequality\n\\[\\tfrac{1}{3}(3x - 1) - \\tfrac{1}{4}(2x + 6) > x - 4\\]",
+    "options": [
+      "\\(x > \\dfrac{13}{3}\\)",
+      "\\(x < \\dfrac{13}{3}\\)",
+      "\\(x < \\dfrac{13}{6}\\)",
+      "\\(x > \\dfrac{11}{6}\\)",
+      "\\(x < -\\dfrac{13}{3}\\)"
+    ],
+    "answer": "B",
+    "solution": "The left side is \\(x - \\tfrac{1}{3} - \\tfrac{x}{2} - \\tfrac{3}{2} = \\tfrac{x}{2} - \\tfrac{11}{6}\\). So \\(\\tfrac{x}{2} - \\tfrac{11}{6} > x - 4\\), giving \\(-\\tfrac{x}{2} > -\\tfrac{13}{6}\\). Multiplying by \\(-2\\) reverses the sign: \\(x < \\tfrac{13}{3}\\)."
+  },
+  {
+    "id": "twin-2021-Q55",
+    "twinOf": "2021 Q55",
+    "section": "physmath",
+    "subject": "Mathematics",
+    "chapter": "Geometry",
+    "text": "In triangle ABC the angle at C is \\(90^\\circ\\). A line from D, on side AC, to E, on side CB, runs parallel to AB.\nAD = 2 cm, DC = 2 cm and CE = 3 cm.\nWhat is the perimeter of ABED, in cm?",
+    "options": [
+      "\\(5 + 2\\sqrt{13}\\)",
+      "\\(10 + 2\\sqrt{13}\\)",
+      "\\(4 + 3\\sqrt{13}\\)",
+      "\\(5 + 3\\sqrt{13}\\)",
+      "\\(7 + 3\\sqrt{13}\\)"
+    ],
+    "answer": "D",
+    "solution": "By Pythagoras in triangle DCE, \\(DE = \\sqrt{2^2 + 3^2} = \\sqrt{13}\\). Because DE is parallel to AB, triangle DCE is similar to triangle ACB with scale factor \\(AC/DC = 4/2 = 2\\). So \\(AB = 2\\sqrt{13}\\) and \\(CB = 6\\), which makes \\(EB = 3\\). Perimeter \\(= AD + AB + BE + ED = 2 + 2\\sqrt{13} + 3 + \\sqrt{13} = 5 + 3\\sqrt{13}\\). The first option forgets to scale AB, the second is the perimeter of the whole triangle, and the third takes EB to be 2.",
+    "figure": {
+      "file": "twin-2021-Q55.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2021-Q56",
+    "twinOf": "2021 Q56",
+    "section": "physmath",
+    "subject": "Mathematics",
+    "chapter": "Trigonometry",
+    "text": "Triangle KLM has a right angle at L, and triangle KMN has a right angle at M.\nThe area of triangle KLM is \\(16\\ \\text{cm}^2\\), \\(\\tan(\\angle KML) = \\tfrac{1}{2}\\) and MN = 10 cm.\nWhat is \\(\\cos(\\angle MKN)\\)?",
+    "options": [
+      "\\(\\dfrac{\\sqrt{5}}{3}\\)",
+      "\\(\\dfrac{2\\sqrt{5}}{5}\\)",
+      "\\(\\dfrac{2}{3}\\)",
+      "\\(\\dfrac{\\sqrt{5}}{2}\\)",
+      "\\(\\dfrac{1}{3}\\)"
+    ],
+    "answer": "C",
+    "solution": "\\(\\tan(\\angle KML) = KL/LM = 1/2\\), so \\(LM = 2\\,KL\\), and the area is \\(\\tfrac{1}{2} \\cdot KL \\cdot LM = KL^2 = 16\\). So \\(KL = 4\\), \\(LM = 8\\) and \\(KM = \\sqrt{80} = 4\\sqrt{5}\\). In triangle KMN, \\(KN = \\sqrt{80 + 100} = 6\\sqrt{5}\\), so \\(\\cos(\\angle MKN) = KM/KN = 4\\sqrt{5}/(6\\sqrt{5}) = 2/3\\). The first option is \\(\\sin(\\angle MKN)\\), the fourth is \\(\\tan(\\angle MKN)\\), and the second is \\(\\cos(\\angle KML)\\) from the other triangle.",
+    "figure": {
+      "file": "twin-2021-Q56.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2021-Q57",
+    "twinOf": "2021 Q57",
+    "section": "physmath",
+    "subject": "Physics",
+    "chapter": "Kinematics",
+    "text": "A child sits 1.5 m from the centre of a playground roundabout that turns at a constant angular velocity of 2.0 rad/s.\nWhich row gives the child's speed and the magnitude of their acceleration?\n\n| | speed (m/s) | acceleration (\\(\\text{m/s}^{2}\\)) |\n|---|---|---|\n| row 1 | 3.0 | 0 |\n| row 2 | 1.5 | 6.0 |\n| row 3 | 3.0 | 6.0 |\n| row 4 | 0.75 | 3.0 |\n| row 5 | 6.0 | 12 |",
+    "options": [
+      "row 1",
+      "row 2",
+      "row 3",
+      "row 4",
+      "row 5"
+    ],
+    "answer": "C",
+    "solution": "\\(v = \\omega r = 2.0 \\times 1.5 = 3.0\\) m/s. The speed is constant but the direction keeps changing, so there is a centripetal acceleration \\(a = \\omega^2 r = 4.0 \\times 1.5 = 6.0\\ \\text{m/s}^2\\) (or \\(v^2/r = 9.0/1.5\\)). Row 3."
+  },
+  {
+    "id": "twin-2021-Q58",
+    "twinOf": "2021 Q58",
+    "section": "physmath",
+    "subject": "Physics",
+    "chapter": "Fluids",
+    "text": "Point P is 2.0 m below the surface of a still swimming pool and point Q is 4.0 m below the surface.\nWhich of the following statements is/are correct?\n1 The pressure at Q is greater than the pressure at P.\n2 The pressure at Q is 20 kPa greater than the pressure at P.\n3 The pressure at Q is twice the pressure at P.\n[Density of water = 1000 kg \\(\\mathrm{m^{-3}}\\); take \\(g = 10\\ \\text{m s}^{-2}\\); atmospheric pressure = 100 kPa.]",
+    "options": [
+      "1 only",
+      "1, 2 and 3",
+      "3 only",
+      "1 and 2 only",
+      "2 and 3 only"
+    ],
+    "answer": "D",
+    "solution": "Pressure grows with depth by \\(\\rho g h\\). The extra 2.0 m adds 1000 x 10 x 2.0 = 20 000 Pa = 20 kPa (1 and 2 correct). But the total includes the air above: P is at 100 + 20 = 120 kPa and Q at 100 + 40 = 140 kPa, not twice (3 wrong)."
+  },
+  {
+    "id": "twin-2021-Q59",
+    "twinOf": "2021 Q59",
+    "section": "physmath",
+    "subject": "Physics",
+    "chapter": "Heat and Thermodynamics",
+    "text": "A kettle with a 2.0 kW heating element contains 0.80 kg of water at 20 °C.\nHow long does it take to bring the water to 100 °C?\n[Specific heat capacity of water = 4200 J/(kg °C); assume no energy is lost.]",
+    "options": [
+      "168 s",
+      "67 s",
+      "2.2 s",
+      "269 s",
+      "134 s"
+    ],
+    "answer": "E",
+    "solution": "Energy needed: \\(Q = mc\\Delta T = 0.80 \\times 4200 \\times 80 = 268\\,800\\) J. Time = energy / power = 268 800 / 2000 = 134 s (about 2.2 minutes)."
+  },
+  {
+    "id": "twin-2021-Q60",
+    "twinOf": "2021 Q60",
+    "section": "physmath",
+    "subject": "Physics",
+    "chapter": "Measurement and Units",
+    "text": "Which product or ratio of quantities has the unit of the watt (W)?\n[Treat every quantity as a magnitude.]",
+    "options": [
+      "force × velocity",
+      "mass × acceleration × time",
+      "current × resistance",
+      "energy × time",
+      "voltage ÷ current"
+    ],
+    "answer": "A",
+    "solution": "A watt is a joule per second. Force x velocity = (force x distance) / time = work / time, which is power. Mass x acceleration x time is momentum (N s); current x resistance is voltage; energy x time is J s; voltage / current is resistance."
+  }
+]

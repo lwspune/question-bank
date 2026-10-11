@@ -7,6 +7,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { subjectOf, type ImatQuestion } from "../lib";
+import type { OriginalityReview, OriginalitySource } from "../../../src/lib/sites/imat/originality";
 
 export type BankChapter = { subject: string; total: number; recent: number };
 
@@ -28,4 +29,27 @@ export function loadBankChapters(dataDir = join(__dirname, "..", "data")): Map<s
     }
   }
   return out;
+}
+
+/**
+ * Every transcribed past question, 2011-2026, as originality sources: the
+ * stem with its shared context (a Reading passage), and its options. The
+ * ministry years are included too: our questions must be our own whatever
+ * the copyright position of the paper they resemble.
+ */
+export function loadPastQuestions(dataDir = join(__dirname, "..", "data")): OriginalitySource[] {
+  const out: OriginalitySource[] = [];
+  for (let year = FIRST_YEAR; year <= LAST_YEAR; year++) {
+    const paper = JSON.parse(readFileSync(join(dataDir, `${year}.questions.json`), "utf8")) as {
+      questions: ImatQuestion[];
+    };
+    for (const q of paper.questions)
+      out.push({ id: `${year} Q${q.n}`, text: [q.context, q.text].filter(Boolean).join("\n"), options: q.options });
+  }
+  return out;
+}
+
+/** Findings a person has cleared (see scripts/imat/originality.ts). */
+export function loadReviews(file = join(__dirname, "..", "originality-reviews.json")): OriginalityReview[] {
+  return JSON.parse(readFileSync(file, "utf8")) as OriginalityReview[];
 }

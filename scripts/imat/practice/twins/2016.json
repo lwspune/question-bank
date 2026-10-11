@@ -1,0 +1,879 @@
+[
+  {
+    "id": "twin-2016-Q1",
+    "twinOf": "2016 Q1",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "A café floor is covered in square tiles, and the lines on some of them join up to spell two words.\nHow many tiles show exactly the pattern on the right, the same way round?",
+    "options": [
+      "4",
+      "5",
+      "3",
+      "8",
+      "6"
+    ],
+    "answer": "B",
+    "solution": "The pattern is a corner joining the top edge of the tile to its right edge: the bottom-left corner of a letter drawn with straight strokes. There is one in the C, one in the E, one in each L and one in the U, so 5. The H and the T have no such corner. 8 counts every corner tile whichever way round it is: the C and the E also have top-left corners and the U has a bottom-right one.",
+    "figure": {
+      "file": "twin-2016-Q1.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2016-Q2",
+    "twinOf": "2016 Q2",
+    "section": "logic",
+    "chapter": "Numerical Reasoning",
+    "text": "A workshop must finish seven repair jobs within 10 hours. The jobs take 9, 7, 5, 4, 3, 2 and 2 hours. Each job is done from start to finish by one mechanic, each mechanic works on one job at a time, and any mechanic can do any job.\nWhat is the smallest number of mechanics needed?",
+    "options": [
+      "3",
+      "5",
+      "7",
+      "2",
+      "4"
+    ],
+    "answer": "E",
+    "solution": "The jobs total 9 + 7 + 5 + 4 + 3 + 2 + 2 = 32 hours. Three mechanics can give at most 30 hours in the time, so at least 4 are needed. Four is enough: 9 | 7 + 3 | 5 + 4 | 2 + 2, all within 10 hours."
+  },
+  {
+    "id": "twin-2016-Q3",
+    "twinOf": "2016 Q3",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "A tin is a regular hexagonal prism. Each of its six identical sides is painted either red or blue; the top and the bottom are not painted. Two tins count as the same if one can be turned round, or turned upside down, to look exactly like the other.\nWhat is the greatest number of tins that all look different?",
+    "options": [
+      "14",
+      "7",
+      "13",
+      "64",
+      "12"
+    ],
+    "answer": "C",
+    "solution": "Count by the number of red sides. 0 or 6 red: 1 way each. 1 or 5 red: 1 way each. 2 red (or 2 blue): the two can be next to each other, one apart or opposite: 3 ways each. 3 red: all together, two together and one apart, or alternating, and the 'two together and one apart' pattern looks the same from both sides once the tin can be turned upside down: 3 ways. Total 1 + 1 + 1 + 1 + 3 + 3 + 3 = 13. 64 ignores turning altogether, 7 counts only how many sides are red, and 14 forgets that turning upside down reverses the order of the sides, making two patterns of three reds the same."
+  },
+  {
+    "id": "twin-2016-Q4",
+    "twinOf": "2016 Q4",
+    "section": "logic",
+    "chapter": "Numerical Reasoning",
+    "text": "A downhill race has two rounds. In round 2, the competitors set off in the reverse order of their placings after round 1, so the person in last place goes first. Anyone disqualified in round 1 does not take part in round 2.\nLuisa was the 5th competitor to set off in round 1. After round 1 she was in 9th place, so 12 rivals went before her in round 2. Two competitors were disqualified in round 1.\nHow many competitors entered the race?",
+    "options": [
+      "23",
+      "21",
+      "25",
+      "30",
+      "19"
+    ],
+    "answer": "A",
+    "solution": "In round 2 everyone placed below Luisa goes before her. She was 9th and 12 went before her, so 9 + 12 = 21 competitors finished round 1. Adding the 2 disqualified gives 23 entrants. Her starting position in round 1 does not matter."
+  },
+  {
+    "id": "twin-2016-Q5",
+    "twinOf": "2016 Q5",
+    "section": "logic",
+    "chapter": "Critical Thinking",
+    "text": "Chicks hatched in an incubator, which have never seen another bird, begin pecking at small seeds within a few hours of hatching. At first they miss the seed about a quarter of the time, but by their third day they rarely miss.\nWhich one of the following can be drawn as a conclusion from the above passage?",
+    "options": [
+      "Chicks learn to peck by watching their mother.",
+      "The urge to peck is inborn, and pecking accuracy improves with practice.",
+      "Pecking accuracy is fully developed at hatching.",
+      "Chicks raised by hens peck more accurately than incubator chicks.",
+      "Chicks prefer seeds to every other food."
+    ],
+    "answer": "B",
+    "solution": "The chicks peck within hours with no bird to copy, so the behaviour cannot have been learned from others: it is inborn. Their misses fall from about a quarter to almost none in three days, so accuracy improves with experience. Nothing is said about hen-raised chicks or about other foods."
+  },
+  {
+    "id": "twin-2016-Q6",
+    "twinOf": "2016 Q6",
+    "section": "logic",
+    "chapter": "Numerical Reasoning",
+    "text": "A ferry terminal opens at 6:30. Its small ferry needs 15 minutes to board passengers and then 45 minutes to cross the lake and come back. Its large ferry needs 30 minutes to board and then an hour and a half to cross and come back. The large ferry begins boarding at 6:45.\nBoth ferries must have finished all their trips by 12:00. If the small ferry is to make as many trips as possible, how much later than the large ferry can it begin boarding?",
+    "options": [
+      "at the same time",
+      "half an hour later",
+      "a quarter of an hour later",
+      "ten minutes later",
+      "three quarters of an hour later"
+    ],
+    "answer": "C",
+    "solution": "One small-ferry trip, boarding plus crossing and back, takes exactly 1 hour. From 6:30 to 12:00 is 5½ hours, so at most 5 trips fit, needing 5 hours: it must begin boarding by 7:00. That is a quarter of an hour after the large ferry, whose own timetable does not limit the small one."
+  },
+  {
+    "id": "twin-2016-Q7",
+    "twinOf": "2016 Q7",
+    "section": "logic",
+    "chapter": "Data Interpretation",
+    "text": "A pizzeria lists the ingredients of its doughs in relation to the flour: each figure is kilograms of that ingredient per 100 kg of flour.\n\n| dough | water | salt | oil | yeast |\n|---|---|---|---|---|\n| pizza | 62 | 2 | 3 | 1 |\n| rye bread | 70 | 2 | none | 1 |\n| sweet bun | 50 | 1 | 15 | 2 |\n| flatbread | 55 | 1.5 | 5 | none |\n\nToday the cook uses 40 kg of flour to make pizza dough. What is the total weight of the dough?",
+    "options": [
+      "27.2 kg",
+      "68.0 kg",
+      "40.0 kg",
+      "67.2 kg",
+      "64.8 kg"
+    ],
+    "answer": "D",
+    "solution": "The other ingredients add 62 + 2 + 3 + 1 = 68% of the flour's weight: 0.68 x 40 = 27.2 kg. The dough is the flour plus these: 40 + 27.2 = 67.2 kg. 27.2 kg forgets the flour, and 64.8 kg counts only the water."
+  },
+  {
+    "id": "twin-2016-Q8",
+    "twinOf": "2016 Q8",
+    "section": "logic",
+    "chapter": "Data Interpretation",
+    "text": "I want a breakfast cereal with at least 8 g of fibre and no more than 10 g of sugar per serving, at the lowest price per box.\n\n| cereal | price per box (€) | fibre per serving (g) | sugar per serving (g) |\n|---|---|---|---|\n| oat crunch | 3.20 | 9 | 12 |\n| bran flakes | 2.80 | 10 | 9 |\n| muesli | 3.50 | 8 | 7 |\n| corn flakes | 2.10 | 2 | 8 |\n| granola | 3.90 | 7 | 15 |\n| wheat bites | 2.95 | 8 | 10 |\n\nHow much will I pay for a box?",
+    "options": [
+      "€2.10",
+      "€2.95",
+      "€3.20",
+      "€3.50",
+      "€2.80"
+    ],
+    "answer": "E",
+    "solution": "Check both limits. Oat crunch and granola have too much sugar, and corn flakes and granola too little fibre. That leaves bran flakes (€2.80), muesli (€3.50) and wheat bites (€2.95, exactly on both limits, which is allowed). The cheapest is bran flakes at €2.80."
+  },
+  {
+    "id": "twin-2016-Q10",
+    "twinOf": "2016 Q10",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "Six square tiles are laid out to give the top pattern.\nWhich of the patterns 1 to 5 uses exactly the same six tiles? Tiles may be moved and turned round.",
+    "options": [
+      "1",
+      "3",
+      "4",
+      "2",
+      "5"
+    ],
+    "answer": "D",
+    "solution": "List the tiles first: two with a quarter-circle in a corner, two with a half-circle on one edge (the full circle in the top pattern is two of these side by side), one with a diagonal and one with a small black triangle in a corner. Pattern 2 has exactly these six, each turned round. Pattern 1 has two triangles and no diagonal, pattern 3 three half-circles and only one quarter-circle, pattern 4 two diagonals and only one half-circle, and pattern 5 a straight bar, which is not one of the tiles.",
+    "figure": {
+      "file": "twin-2016-Q10.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2016-Q13",
+    "twinOf": "2016 Q13",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "Take a square of paper. Bring its left edge across to meet its right edge and crease; then bring the top edge down to meet the bottom edge and crease again. Cut away three pieces through every layer, as the figure shows, and open the sheet out.\nWhich of 1 to 5 shows the opened sheet?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "1"
+    ],
+    "answer": "E",
+    "solution": "Unfold one fold at a time; each cut is reflected in each fold line. The half-circle on the left fold becomes a hole on the vertical centre line, and unfolding the top fold doubles it: two holes, one above the other, on the vertical centre line. The notch on the bottom edge appears on the bottom edge twice (left and right of centre) and then on the top edge twice. The cut corner is a corner of the original sheet, so all four corners are cut. That is pattern 1. Pattern 2 puts the holes on the wrong fold line, pattern 3 the notches on the wrong edges, pattern 4 cuts only two corners, and pattern 5 is what one single layer would show.",
+    "figure": {
+      "file": "twin-2016-Q13.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2016-Q15",
+    "twinOf": "2016 Q15",
+    "section": "logic",
+    "chapter": "Critical Thinking",
+    "text": "Some conservationists have long argued that there is no proof that grey squirrels spread the squirrelpox virus, which kills red squirrels, and so culling grey squirrels cannot be justified. But DNA testing has now shown that the same virus passes from grey squirrels to red ones. This completely undermines the case of those who oppose culling. To save red squirrels from dying out, grey squirrels should be culled.\nWhich one of the following, if true, would most weaken this argument?",
+    "options": [
+      "Red squirrel numbers are falling mainly because the conifer forests they depend on are being cut down.",
+      "Opponents of culling want to protect grey squirrels whatever harm they do.",
+      "It is too difficult to vaccinate wild red squirrels against the virus.",
+      "Culling grey squirrels would be unpopular with many people.",
+      "Scientists do not all agree on how quickly the virus spreads."
+    ],
+    "answer": "A",
+    "solution": "The argument assumes that culling grey squirrels is the way to save the red ones. If red squirrels are disappearing mainly because their forests are being lost, culling would not save them, which undercuts the conclusion. Opponents' motives and public opinion do not touch the reasoning, the difficulty of vaccination supports culling, and disagreement about speed does not deny the link."
+  },
+  {
+    "id": "twin-2016-Q16",
+    "twinOf": "2016 Q16",
+    "section": "logic",
+    "chapter": "Data Interpretation",
+    "text": "Clocks in a company's reception show the local time in five of its offices. In January they read:\n\n| office | time |\n|---|---|\n| Rome | 14:00 |\n| London | 13:00 |\n| New York | 08:00 |\n| Sydney | 00:00 (next day) |\n| Tokyo | 22:00 |\n\nIn spring, clocks in Rome, London and New York are put forward one hour, clocks in Sydney are put back one hour, and Tokyo never changes its clocks.\nOnce all these changes have been made, how many hours is Sydney ahead of London?",
+    "options": [
+      "11",
+      "9",
+      "10",
+      "12",
+      "8"
+    ],
+    "answer": "B",
+    "solution": "In January Sydney (00:00 next day) is 11 hours ahead of London (13:00). In spring London moves forward one hour and Sydney back one hour, so the gap shrinks by 2 hours: 9 hours. Applying only one of the two changes gives 10."
+  },
+  {
+    "id": "twin-2016-Q19",
+    "twinOf": "2016 Q19",
+    "section": "logic",
+    "chapter": "Critical Thinking",
+    "text": "New cars are sold with fuel-consumption figures measured in laboratory tests that ordinary drivers almost never achieve. Some manufacturers have now begun to quote figures from real road tests as well. This should be welcomed: it shows that the laboratory figures mislead buyers about what a car will cost to run.\nWhich one of the following, if true, would most strengthen this argument?",
+    "options": [
+      "Some manufacturers quote road-test figures only to attract media attention.",
+      "Laboratory tests are cheaper to carry out than road tests.",
+      "Surveys show that drivers' real fuel use is on average 30% higher than the laboratory figures.",
+      "Few buyers read the fuel-consumption figures before choosing a car.",
+      "Road-test results vary with the weather and the driver."
+    ],
+    "answer": "C",
+    "solution": "The argument claims laboratory figures mislead buyers. Evidence that real fuel use is far higher than the laboratory figures supports that directly. A publicity motive and few buyers reading the figures weaken it, cost is irrelevant, and variable road tests suggest road figures are less reliable."
+  },
+  {
+    "id": "twin-2016-Q21",
+    "twinOf": "2016 Q21",
+    "section": "reading",
+    "chapter": "Politics, Economics and Society",
+    "text": "Which of these countries was NOT one of the six founding members of the European Economic Community in 1957?",
+    "options": [
+      "Italy",
+      "Belgium",
+      "Luxembourg",
+      "the United Kingdom",
+      "the Netherlands"
+    ],
+    "answer": "D",
+    "solution": "The Treaty of Rome was signed by Belgium, France, West Germany, Italy, Luxembourg and the Netherlands. The United Kingdom joined later, in 1973, together with Ireland and Denmark."
+  },
+  {
+    "id": "twin-2016-Q22",
+    "twinOf": "2016 Q22",
+    "section": "reading",
+    "chapter": "History",
+    "text": "Which Roman city was buried under volcanic ash when Mount Vesuvius erupted in AD 79?",
+    "options": [
+      "Ostia",
+      "Paestum",
+      "Ravenna",
+      "Aquileia",
+      "Pompeii"
+    ],
+    "answer": "E",
+    "solution": "The eruption of AD 79 buried Pompeii (and nearby Herculaneum and Stabiae), preserving a whole Roman town; Pliny the Younger described it in letters. Ostia was Rome's port, Paestum is known for its Greek temples, Ravenna became capital of the Western Roman Empire, and Aquileia was a great city in the north-east."
+  },
+  {
+    "id": "twin-2016-Q23",
+    "twinOf": "2016 Q23",
+    "section": "biology",
+    "chapter": "Cell Structure and Membranes",
+    "text": "Which structure in an animal cell is bounded by a single membrane and contains hydrolytic enzymes?",
+    "options": [
+      "lysosome",
+      "mitochondrion",
+      "ribosome",
+      "nucleolus",
+      "centriole"
+    ],
+    "answer": "A",
+    "solution": "Lysosomes are small sacs, each with one membrane, filled with digestive (hydrolytic) enzymes that break down worn-out organelles and engulfed material. Mitochondria have a double membrane; ribosomes, the nucleolus and centrioles have no membrane of their own."
+  },
+  {
+    "id": "twin-2016-Q24",
+    "twinOf": "2016 Q24",
+    "section": "biology",
+    "chapter": "Genetics and Inheritance",
+    "text": "A cell is heterozygous for two genes that lie on the same chromosome. One chromosome of the pair carries alleles A and B; its homologue carries a and b.\nIf there is no crossing over and no mutation, which combinations of these alleles can a gamete made by meiosis carry?",
+    "options": [
+      "AB, Ab, aB or ab",
+      "AB or ab only",
+      "Ab or aB only",
+      "AaBb",
+      "A, a, B or b only"
+    ],
+    "answer": "B",
+    "solution": "Linked genes travel together on their chromosome. Meiosis puts one chromosome of each pair into each gamete, so a gamete gets either the A-B chromosome or the a-b one. Ab and aB need crossing over between the genes. A gamete is haploid, so it has one allele of each gene, never AaBb or a single allele."
+  },
+  {
+    "id": "twin-2016-Q25",
+    "twinOf": "2016 Q25",
+    "section": "biology",
+    "chapter": "Molecular Biology and Gene Expression",
+    "text": "Where do transcription and translation take place in a eukaryotic cell?\n\n| | transcription | translation |\n|---|---|---|\n| row 1 | cytoplasm | nucleus |\n| row 2 | nucleus | nucleus |\n| row 3 | nucleus | ribosomes in the cytoplasm |\n| row 4 | ribosomes | nucleus |\n| row 5 | Golgi apparatus | ribosomes in the cytoplasm |",
+    "options": [
+      "row 1",
+      "row 2",
+      "row 3",
+      "row 4",
+      "row 5"
+    ],
+    "answer": "C",
+    "solution": "DNA stays in the nucleus, so mRNA is transcribed there. The mRNA leaves through the nuclear pores and is translated on ribosomes in the cytoplasm (free or on the rough ER). Row 3. In prokaryotes, with no nucleus, both happen in the cytoplasm."
+  },
+  {
+    "id": "twin-2016-Q26",
+    "twinOf": "2016 Q26",
+    "section": "biology",
+    "chapter": "Molecular Biology and Gene Expression",
+    "text": "Which row shows the features found in BOTH mRNA and DNA?\n\n| | ribose | thymine | phosphate groups | cytosine |\n|---|---|---|---|---|\n| row 1 | ✓ | ✓ | ✓ | ✓ |\n| row 2 | x | ✓ | ✓ | x |\n| row 3 | ✓ | x | ✓ | ✓ |\n| row 4 | x | x | ✓ | ✓ |\n| row 5 | x | x | x | ✓ |\n\nKey: ✓ found in both, x not found in both",
+    "options": [
+      "row 1",
+      "row 2",
+      "row 3",
+      "row 4",
+      "row 5"
+    ],
+    "answer": "D",
+    "solution": "Both are chains of nucleotides joined through phosphate groups, and both use cytosine (with adenine and guanine). The differences: mRNA has ribose and uracil, DNA has deoxyribose and thymine. So ribose and thymine are each in only one of them. Row 4."
+  },
+  {
+    "id": "twin-2016-Q27",
+    "twinOf": "2016 Q27",
+    "section": "biology",
+    "chapter": "Evolution and Ecology",
+    "text": "Which of the following increase genetic variation within a population?\n1 mutation\n2 sexual reproduction, through meiosis and random fertilisation\n3 directional selection",
+    "options": [
+      "1 only",
+      "3 only",
+      "1, 2 and 3",
+      "2 and 3 only",
+      "1 and 2 only"
+    ],
+    "answer": "E",
+    "solution": "Mutation is the only source of new alleles, and meiosis plus random fertilisation make new combinations of existing alleles. Selection does the opposite: by favouring one phenotype it removes alleles and narrows the variation. So 1 and 2 only."
+  },
+  {
+    "id": "twin-2016-Q28",
+    "twinOf": "2016 Q28",
+    "section": "biology",
+    "chapter": "Microorganisms and Biotechnology",
+    "text": "These steps are used to make human insulin in bacteria:\nP: put the recombinant plasmids into bacteria\nQ: obtain the human insulin gene\nR: cut a plasmid with the same restriction enzyme used on the gene\nS: join the gene into the plasmid with DNA ligase\nT: grow the bacteria that took up the plasmid in a fermenter\nWhich order is correct?",
+    "options": [
+      "Q → R → S → P → T",
+      "R → S → Q → P → T",
+      "Q → S → R → P → T",
+      "Q → R → P → S → T",
+      "P → Q → R → S → T"
+    ],
+    "answer": "A",
+    "solution": "First get the gene (Q) and open the plasmid with the matching restriction enzyme (R), so both have the same sticky ends. Ligase then seals the gene in (S); only then can the recombinant plasmid be put into bacteria (P), which are selected and grown in bulk (T). Ligase cannot join a plasmid that has not been cut, and bacteria cannot take up a plasmid that does not exist yet."
+  },
+  {
+    "id": "twin-2016-Q29",
+    "twinOf": "2016 Q29",
+    "section": "biology",
+    "chapter": "Cell Structure and Membranes",
+    "text": "Which sequence lists these from SMALLEST to LARGEST?",
+    "options": [
+      "a bacterium → a virus → a human liver cell",
+      "a virus → a bacterium → a human liver cell",
+      "a human liver cell → a bacterium → a virus",
+      "a virus → a human liver cell → a bacterium",
+      "a bacterium → a human liver cell → a virus"
+    ],
+    "answer": "B",
+    "solution": "Typical sizes: a virus about 0.02-0.3 micrometres, a bacterium about 1-5 micrometres, a liver cell about 20-30 micrometres. Each step is roughly ten times larger."
+  },
+  {
+    "id": "twin-2016-Q30",
+    "twinOf": "2016 Q30",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "Which organ makes insulin, and which organ stores much of the excess glucose that insulin helps remove from the blood, as glycogen?",
+    "options": [
+      "the liver makes it; the pancreas stores glycogen",
+      "the pancreas makes it; the pancreas stores glycogen",
+      "the pancreas makes it; the liver stores glycogen",
+      "the adrenal glands make it; the liver stores glycogen",
+      "the liver makes it; the muscles store glycogen"
+    ],
+    "answer": "C",
+    "solution": "Insulin is made by the beta cells of the islets of Langerhans in the pancreas. It makes liver (and muscle) cells take up glucose and convert it to glycogen, which the liver stores and releases again when glucose falls. The pancreas makes the hormone but stores no glycogen to speak of."
+  },
+  {
+    "id": "twin-2016-Q31",
+    "twinOf": "2016 Q31",
+    "section": "biology",
+    "chapter": "Microorganisms and Biotechnology",
+    "text": "A plasmid has been cut open at one site by a single restriction enzyme, leaving single-stranded ends that can pair with each other again. The unpaired bases at one end are, in order, C G A T T. The unpaired bases at the other end are numbered 1 to 5, base 1 pairing with the first of these, base 2 with the second, and so on.\nWhat are bases 1 to 5?",
+    "options": [
+      "G C U A A",
+      "G C T A A",
+      "C G A T T",
+      "A A T C G",
+      "T T A G C"
+    ],
+    "answer": "B",
+    "solution": "The two sticky ends pair base by base, with the DNA rule: cytosine with guanine, adenine with thymine. Opposite C G A T T are G C T A A. The first option uses uracil, which is found in RNA, not in a plasmid's DNA. Copying the same bases (C G A T T) would give no pairs at all, and the last two options reverse the order."
+  },
+  {
+    "id": "twin-2016-Q32",
+    "twinOf": "2016 Q32",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "The figure shows a section through the human brain with six structures numbered.\nWhich numbered structure controls body temperature and secretes hormones that regulate the pituitary gland?",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "5",
+      "6"
+    ],
+    "answer": "C",
+    "solution": "Structure 4 is the hypothalamus. It holds the body's thermostat and makes releasing hormones that control the pituitary gland (2), which hangs just below it and is the tempting answer: the pituitary releases hormones but takes its orders from the hypothalamus. Structure 1 is the thalamus, which relays sensory signals to the cortex; 5 is the amygdala (emotion, especially fear) and 6 the hippocampus (forming memories).",
+    "figure": {
+      "file": "twin-2016-Q32.png",
+      "origin": "openstax",
+      "credit": "adapted from OpenStax Biology 2e, Figure 35.24, CC BY 4.0"
+    }
+  },
+  {
+    "id": "twin-2016-Q33",
+    "twinOf": "2016 Q33",
+    "section": "biology",
+    "chapter": "Biomolecules and Enzymes",
+    "text": "When a dipeptide is hydrolysed into its two amino acids, which bond is broken?",
+    "options": [
+      "the C=O double bond of the peptide group",
+      "a bond between a central carbon atom and its side chain",
+      "the N-H bond of the peptide group",
+      "the bond between the carbon of one C=O group and the nitrogen of the next amino acid",
+      "the bond between a central carbon atom and the carboxyl carbon at the free end"
+    ],
+    "answer": "D",
+    "solution": "A peptide bond forms by condensation between the carboxyl group of one amino acid and the amino group of the next: it is the C-N bond joining the carbonyl carbon to the nitrogen. Hydrolysis adds water across exactly that bond, giving back a COOH group and an NH2 group. The C=O and N-H bonds stay intact, and breaking a side chain or the free carboxyl group would destroy an amino acid rather than separate two."
+  },
+  {
+    "id": "twin-2016-Q34",
+    "twinOf": "2016 Q34",
+    "section": "biology",
+    "chapter": "Bioenergetics and Metabolism",
+    "text": "Which of the following are enzymes?\n1 ATP synthase\n2 NAD\n3 ATP",
+    "options": [
+      "1 and 2 only",
+      "2 and 3 only",
+      "1, 2 and 3",
+      "1 only",
+      "none of them"
+    ],
+    "answer": "D",
+    "solution": "ATP synthase is a protein that catalyses the formation of ATP, so it is an enzyme (the -ase ending is the clue). NAD is a coenzyme: it carries hydrogen between enzymes but is not a catalyst. ATP is the energy-carrying molecule the enzyme makes. 1 only."
+  },
+  {
+    "id": "twin-2016-Q35",
+    "twinOf": "2016 Q35",
+    "section": "biology",
+    "chapter": "Cell Division and Reproduction",
+    "text": "A human cell with 46 chromosomes undergoes meiosis.\nWhich of the following statements is/are correct?\n1 At the end of meiosis I, each cell has 23 chromosomes, each made of two chromatids.\n2 Each of the four cells produced has 23 chromosomes.\n3 The four cells produced contain 92 chromosomes between them.",
+    "options": [
+      "1 only",
+      "1 and 2 only",
+      "2 and 3 only",
+      "3 only",
+      "1, 2 and 3"
+    ],
+    "answer": "E",
+    "solution": "Meiosis I separates the homologous pairs, so each cell has 23 chromosomes, still double (two chromatids each) (1). Meiosis II separates the chromatids, giving four cells of 23 single chromosomes (2). Four times 23 is 92, double the original 46, because the DNA was copied once before two divisions (3). All three."
+  },
+  {
+    "id": "twin-2016-Q36",
+    "twinOf": "2016 Q36",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "The graph shows the potential difference across the membrane of a neurone during one action potential, divided into phases 1 to 5.\nIn which phase is the potential falling because potassium ions are diffusing out of the neurone?",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "5",
+      "3"
+    ],
+    "answer": "E",
+    "solution": "Phase 3 is repolarisation: after the peak the sodium channels close and voltage-gated potassium channels open, so \\(\\mathrm{K^+}\\) diffuses out and the inside becomes negative again, overshooting below the resting value. Phase 2 is the rise, caused by \\(\\mathrm{Na^+}\\) diffusing in. In phase 4 the potential is already climbing back from the overshoot to rest, and phases 1 and 5 are the resting potential.",
+    "figure": {
+      "file": "twin-2016-Q36.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2016-Q37",
+    "twinOf": "2016 Q37",
+    "section": "biology",
+    "chapter": "Genetics and Inheritance",
+    "text": "Two genes assort independently, and each shows complete dominance.\nHow many more phenotypes appear among the offspring of AaBb x AaBb than among the offspring of AaBb x AAbb?",
+    "options": [
+      "2",
+      "0",
+      "4",
+      "1",
+      "3"
+    ],
+    "answer": "A",
+    "solution": "AaBb x AaBb: each gene gives both the dominant and the recessive phenotype, so 2 x 2 = 4 phenotypes. AaBb x AAbb: every child gets an A, so all show the dominant A phenotype, while Bb x bb still gives both B phenotypes: 1 x 2 = 2. The difference is 2."
+  },
+  {
+    "id": "twin-2016-Q38",
+    "twinOf": "2016 Q38",
+    "section": "biology",
+    "chapter": "Bioenergetics and Metabolism",
+    "text": "Which option gives the site of the Krebs cycle (S), the main hydrogen carrier that the cycle reduces (H), and where that carrier takes its hydrogen next (D)?",
+    "options": [
+      "S: cytoplasm; H: NAD; D: ATP synthase",
+      "S: mitochondrial matrix; H: NAD; D: the electron transport chain",
+      "S: mitochondrial matrix; H: NADP; D: the Calvin cycle",
+      "S: inner mitochondrial membrane; H: FAD; D: glycolysis",
+      "S: stroma; H: NADP; D: the electron transport chain"
+    ],
+    "answer": "B",
+    "solution": "The Krebs cycle runs in the mitochondrial matrix and loads hydrogen mainly onto NAD (plus some FAD). Reduced NAD passes its electrons to the electron transport chain on the inner membrane. NADP is the carrier of photosynthesis, which runs in the chloroplast stroma and thylakoids."
+  },
+  {
+    "id": "twin-2016-Q39",
+    "twinOf": "2016 Q39",
+    "section": "biology",
+    "chapter": "Cell Division and Reproduction",
+    "text": "The stages of meiosis I are: prophase I → stage two → anaphase I → stage four.\nWhich row shows what happens in stage two and in stage four?\n\n| | stage two | stage four |\n|---|---|---|\n| row 1 | single chromosomes line up at the equator | sister chromatids reach the poles |\n| row 2 | crossing over takes place | the spindle forms |\n| row 3 | homologous pairs line up at the equator | a nucleus forms at each pole with half the chromosome number |\n| row 4 | DNA replicates | the cytoplasm divides |\n| row 5 | chromatids separate | homologous chromosomes pair up |",
+    "options": [
+      "row 1",
+      "row 2",
+      "row 3",
+      "row 4",
+      "row 5"
+    ],
+    "answer": "C",
+    "solution": "Stage two is metaphase I, where homologous chromosomes line up in PAIRS on the equator; stage four is telophase I, when nuclei re-form with half the number of chromosomes (each still of two chromatids). Single chromosomes lining up and chromatids separating belong to meiosis II; crossing over is in prophase I and DNA replicates before meiosis starts."
+  },
+  {
+    "id": "twin-2016-Q40",
+    "twinOf": "2016 Q40",
+    "section": "biology",
+    "chapter": "Cell Structure and Membranes",
+    "text": "In which of these structures are lipids made or modified?\n1 smooth endoplasmic reticulum\n2 Golgi apparatus\n3 ribosome",
+    "options": [
+      "1 only",
+      "2 and 3 only",
+      "1, 2 and 3",
+      "1 and 2 only",
+      "3 only"
+    ],
+    "answer": "D",
+    "solution": "The smooth ER makes lipids, including phospholipids and steroids. The Golgi apparatus modifies and packages them, for example adding carbohydrate to make glycolipids. Ribosomes make proteins only. So 1 and 2 only."
+  },
+  {
+    "id": "twin-2016-Q41",
+    "twinOf": "2016 Q41",
+    "section": "chemistry",
+    "chapter": "Acids, Bases and pH",
+    "text": "Which of the following salts give an ACIDIC solution when dissolved in water?\n1 \\(\\mathrm{NH_4Cl}\\)\n2 \\(\\mathrm{KNO_3}\\)\n3 \\(\\mathrm{CH_3COONa}\\)",
+    "options": [
+      "1 and 3 only",
+      "2 only",
+      "1, 2 and 3",
+      "2 and 3 only",
+      "1 only"
+    ],
+    "answer": "E",
+    "solution": "Ammonium chloride comes from a weak base and a strong acid: \\(\\mathrm{NH_4^+}\\) gives up a proton to water, so the solution is acidic. Potassium nitrate (strong base, strong acid) is neutral. Sodium ethanoate (strong base, weak acid) is alkaline, because ethanoate takes a proton from water. 1 only."
+  },
+  {
+    "id": "twin-2016-Q42",
+    "twinOf": "2016 Q42",
+    "section": "chemistry",
+    "chapter": "Stoichiometry and Reactions",
+    "text": "Barium nitrate solution and sodium carbonate solution are mixed, and a white precipitate of barium carbonate forms; sodium nitrate stays dissolved.\nWhich is the ionic equation for the reaction?",
+    "options": [
+      "\\(\\mathrm{Ba^{2+}(aq) + CO_3^{2-}(aq) \\rightarrow BaCO_3(s)}\\)",
+      "\\(\\mathrm{Ba^{+}(aq) + CO_3^{-}(aq) \\rightarrow BaCO_3(s)}\\)",
+      "\\(\\mathrm{Ba^{2+}(aq) + 2CO_3^{2-}(aq) \\rightarrow Ba(CO_3)_2(s)}\\)",
+      "\\(\\mathrm{2Ba^{+}(aq) + CO_3^{2-}(aq) \\rightarrow Ba_2CO_3(s)}\\)",
+      "\\(\\mathrm{Na^{+}(aq) + NO_3^{-}(aq) \\rightarrow NaNO_3(s)}\\)"
+    ],
+    "answer": "A",
+    "solution": "Barium is in Group 2, so it forms \\(\\mathrm{Ba^{2+}}\\); carbonate is \\(\\mathrm{CO_3^{2-}}\\). One of each balances the charges in \\(\\mathrm{BaCO_3}\\). Sodium and nitrate are spectators that stay in solution, so they do not appear."
+  },
+  {
+    "id": "twin-2016-Q43",
+    "twinOf": "2016 Q43",
+    "section": "chemistry",
+    "chapter": "Organic Chemistry",
+    "text": "A molecule has the structural formula \\(\\mathrm{HOCH_2CH_2CH{=}CHCOOH}\\).\nWhich of these functional groups does it contain?\n1 alkene\n2 alcohol\n3 carboxylic acid\n4 ester",
+    "options": [
+      "1 and 3 only",
+      "1, 2 and 3 only",
+      "2, 3 and 4 only",
+      "1, 3 and 4 only",
+      "2 and 4 only"
+    ],
+    "answer": "B",
+    "solution": "Reading along: \\(\\mathrm{HO{-}CH_2}\\) is a primary alcohol, \\(\\mathrm{CH{=}CH}\\) is an alkene, and \\(\\mathrm{COOH}\\) is a carboxylic acid. An ester needs a C(=O)-O-C link between two carbon groups, which this molecule does not have. 1, 2 and 3."
+  },
+  {
+    "id": "twin-2016-Q44",
+    "twinOf": "2016 Q44",
+    "section": "chemistry",
+    "chapter": "Atomic Structure",
+    "text": "Which three of these particles have the same electron arrangement?\n1 Ar\n2 \\(\\mathrm{K^+}\\)\n3 Ne\n4 \\(\\mathrm{Na^+}\\)\n5 \\(\\mathrm{Cl^-}\\)\n[Atomic numbers: Ne = 10; Na = 11; Cl = 17; Ar = 18; K = 19]",
+    "options": [
+      "1, 3 and 4 only",
+      "2, 3 and 5 only",
+      "1, 2 and 5 only",
+      "3, 4 and 5 only",
+      "1, 2 and 4 only"
+    ],
+    "answer": "C",
+    "solution": "Count electrons: Ar 18, \\(\\mathrm{K^+}\\) 19 - 1 = 18, Ne 10, \\(\\mathrm{Na^+}\\) 11 - 1 = 10, \\(\\mathrm{Cl^-}\\) 17 + 1 = 18. The three with 18 (the argon arrangement) are 1, 2 and 5; Ne and \\(\\mathrm{Na^+}\\) form a separate pair with 10."
+  },
+  {
+    "id": "twin-2016-Q45",
+    "twinOf": "2016 Q45",
+    "section": "chemistry",
+    "chapter": "Equilibrium, Kinetics and Energetics",
+    "text": "Dinitrogen tetroxide and nitrogen dioxide reach equilibrium in a closed container:\n\\[\\mathrm{N_2O_4(g) \\rightleftharpoons 2NO_2(g)} \\qquad \\Delta H = +58\\ \\text{kJ mol}^{-1}\\]\nWhich of the following would increase the amount of \\(\\mathrm{NO_2}\\) at equilibrium?\n1 raising the temperature\n2 increasing the pressure by compressing the mixture\n3 adding more \\(\\mathrm{N_2O_4}\\)\n4 adding a catalyst",
+    "options": [
+      "1 only",
+      "2 and 4 only",
+      "1, 2 and 3 only",
+      "1 and 3 only",
+      "4 only"
+    ],
+    "answer": "D",
+    "solution": "The forward reaction is endothermic, so heating shifts the equilibrium right (1). Compressing favours the side with fewer gas molecules, the left, so it reduces \\(\\mathrm{NO_2}\\) (2 wrong). Adding reactant pushes the equilibrium right (3). A catalyst speeds up both directions equally and does not move the position (4 wrong). 1 and 3."
+  },
+  {
+    "id": "twin-2016-Q46",
+    "twinOf": "2016 Q46",
+    "section": "chemistry",
+    "chapter": "Chemical Bonding",
+    "text": "Butane (\\(\\mathrm{C_4H_{10}}\\), \\(M_r\\) 58), propanone (\\(\\mathrm{CH_3COCH_3}\\), \\(M_r\\) 58) and propan-1-ol (\\(\\mathrm{CH_3CH_2CH_2OH}\\), \\(M_r\\) 60) are slowly warmed together from -50 °C at constant pressure.\nIn which order do they boil?",
+    "options": [
+      "propanone, butane, propan-1-ol",
+      "propan-1-ol, propanone, butane",
+      "butane, propan-1-ol, propanone",
+      "propanone, propan-1-ol, butane",
+      "butane, propanone, propan-1-ol"
+    ],
+    "answer": "E",
+    "solution": "With similar molar masses, the intermolecular forces decide. Butane is non-polar (London forces only) and boils first, at about -1 °C. Propanone is polar, adding dipole-dipole forces: about 56 °C. Propan-1-ol hydrogen-bonds through its O-H and boils last, at about 97 °C."
+  },
+  {
+    "id": "twin-2016-Q47",
+    "twinOf": "2016 Q47",
+    "section": "chemistry",
+    "chapter": "Solutions and Concentration",
+    "text": "A solution of potassium hydroxide has a concentration of 0.25 mol/L.\nWhat is its concentration in g/L?\n[Relative atomic masses: H = 1; O = 16; K = 39]",
+    "options": [
+      "14",
+      "224",
+      "0.0045",
+      "56",
+      "1.4"
+    ],
+    "answer": "A",
+    "solution": "\\(M_r\\) of KOH = 39 + 16 + 1 = 56. Grams per litre = moles per litre x molar mass = 0.25 x 56 = 14 g/L. 224 comes from dividing 56 by 0.25 instead of multiplying."
+  },
+  {
+    "id": "twin-2016-Q48",
+    "twinOf": "2016 Q48",
+    "section": "chemistry",
+    "chapter": "Acids, Bases and pH",
+    "text": "Barium hydroxide, \\(\\mathrm{Ba(OH)_2}\\), dissociates completely in water. What is the pH at 25 °C of a 0.050 mol/L solution?\n[At 25 °C, \\(K_w = [\\mathrm{H^+}][\\mathrm{OH^-}] = 10^{-14}\\ \\mathrm{mol^2\\,L^{-2}}\\)]",
+    "options": [
+      "12",
+      "13",
+      "1.3",
+      "11",
+      "14"
+    ],
+    "answer": "B",
+    "solution": "Each formula unit releases two hydroxide ions, so \\([\\mathrm{OH^-}] = 2 \\times 0.050 = 0.10\\) mol/L. Then \\([\\mathrm{H^+}] = 10^{-14}/10^{-1} = 10^{-13}\\) mol/L and pH = 13. Forgetting the factor of 2 gives about 12.7, nearest 12; 1.3 is the pOH of the undoubled value."
+  },
+  {
+    "id": "twin-2016-Q49",
+    "twinOf": "2016 Q49",
+    "section": "chemistry",
+    "chapter": "Organic Chemistry",
+    "text": "How many different structural isomers have the molecular formula \\(\\mathrm{C_3H_6Cl_2}\\)?",
+    "options": [
+      "3",
+      "5",
+      "4",
+      "6",
+      "2"
+    ],
+    "answer": "C",
+    "solution": "Three carbons can only form a straight chain, so the isomers differ in where the two chlorines sit: both on an end carbon (1,1-), both on the middle carbon (2,2-), one on an end and one in the middle (1,2-), or one on each end (1,3-). That is 4; 3,3- is the same as 1,1- counted from the other end."
+  },
+  {
+    "id": "twin-2016-Q50",
+    "twinOf": "2016 Q50",
+    "section": "chemistry",
+    "chapter": "Atomic Structure",
+    "text": "How many protons (p), neutrons (n) and electrons (e) are in the ion \\({}^{56}_{26}\\mathrm{Fe}^{2+}\\)?",
+    "options": [
+      "p = 26, n = 30, e = 26",
+      "p = 30, n = 26, e = 24",
+      "p = 26, n = 56, e = 24",
+      "p = 26, n = 30, e = 24",
+      "p = 28, n = 28, e = 24"
+    ],
+    "answer": "D",
+    "solution": "The atomic number gives the protons: 26. Neutrons = mass number - protons = 56 - 26 = 30. A 2+ ion has lost two electrons: 26 - 2 = 24. The charge never changes the protons or neutrons."
+  },
+  {
+    "id": "twin-2016-Q51",
+    "twinOf": "2016 Q51",
+    "section": "chemistry",
+    "chapter": "Chemical Bonding",
+    "text": "Which of the following molecules have bond angles of 120°?\n[Atomic numbers: H = 1; B = 5; C = 6; F = 9]\n1 \\(\\mathrm{BF_3}\\)\n2 \\(\\mathrm{C_2H_4}\\) (ethene)\n3 \\(\\mathrm{CH_4}\\)",
+    "options": [
+      "1 only",
+      "3 only",
+      "1, 2 and 3",
+      "2 and 3 only",
+      "1 and 2 only"
+    ],
+    "answer": "E",
+    "solution": "Three electron regions around a central atom spread out flat at 120°. Boron in \\(\\mathrm{BF_3}\\) has three bonds and no lone pair; each carbon in ethene has two single bonds and one double bond (three regions). Methane has four regions, giving 109.5°. 1 and 2 only."
+  },
+  {
+    "id": "twin-2016-Q52",
+    "twinOf": "2016 Q52",
+    "section": "chemistry",
+    "chapter": "Redox Reactions",
+    "text": "Here are five chromium species:\n1 \\(\\mathrm{CrO_4^{2-}}\\)\n2 \\(\\mathrm{Cr^{3+}}\\)\n3 \\(\\mathrm{Cr_2O_7^{2-}}\\)\n4 \\(\\mathrm{CrO_2}\\)\n5 \\(\\mathrm{Cr^{2+}}\\)\nWhich two have chromium in the same oxidation state?",
+    "options": [
+      "1 and 3",
+      "2 and 5",
+      "2 and 4",
+      "3 and 4",
+      "1 and 4"
+    ],
+    "answer": "A",
+    "solution": "With O = -2: chromate \\(\\mathrm{CrO_4^{2-}}\\): Cr - 8 = -2, so +6. Dichromate \\(\\mathrm{Cr_2O_7^{2-}}\\): 2Cr - 14 = -2, so +6 each. \\(\\mathrm{CrO_2}\\) is +4, and the simple ions are +3 and +2. Chromate and dichromate match."
+  },
+  {
+    "id": "twin-2016-Q53",
+    "twinOf": "2016 Q53",
+    "section": "physmath",
+    "subject": "Mathematics",
+    "chapter": "Geometry",
+    "text": "The two shorter sides of a right-angled triangle are in the ratio 1 : 3, and the triangle covers 24 cm².\nHow long is its longest side?",
+    "options": [
+      "\\(8\\sqrt{2}\\) cm",
+      "\\(4\\sqrt{10}\\) cm",
+      "\\(2\\sqrt{10}\\) cm",
+      "12 cm",
+      "\\(4\\sqrt{5}\\) cm"
+    ],
+    "answer": "B",
+    "solution": "Let the shorter sides be \\(a\\) and \\(3a\\). Area \\(= \\tfrac{1}{2} \\times a \\times 3a = \\tfrac{3}{2}a^2 = 24\\), so \\(a^2 = 16\\) and \\(a = 4\\): the sides are 4 and 12. Hypotenuse \\(= \\sqrt{16 + 144} = \\sqrt{160} = 4\\sqrt{10}\\) cm."
+  },
+  {
+    "id": "twin-2016-Q54",
+    "twinOf": "2016 Q54",
+    "section": "physmath",
+    "subject": "Physics",
+    "chapter": "Dynamics, Work and Energy",
+    "text": "Which physical quantity has the unit newton second (N s)?",
+    "options": [
+      "power",
+      "work",
+      "momentum",
+      "force",
+      "pressure"
+    ],
+    "answer": "C",
+    "solution": "Force x time is impulse, which equals the change in momentum, so N s is a unit of momentum (the same as kg m/s, since 1 N = 1 kg m/s²). Work is N m (joules), power J/s (watts), pressure N/m² (pascals)."
+  },
+  {
+    "id": "twin-2016-Q55",
+    "twinOf": "2016 Q55",
+    "section": "physmath",
+    "subject": "Mathematics",
+    "chapter": "Numbers, Powers and Logarithms",
+    "text": "Simplify\n\\[\\frac{3}{x^2 - 4} - \\frac{1}{x + 2}\\]\n[where \\(x \\ne \\pm 2\\)]",
+    "options": [
+      "\\(-\\dfrac{1}{x-2}\\)",
+      "\\(\\dfrac{2}{x-2}\\)",
+      "\\(\\dfrac{1 - x}{x^2 - 4}\\)",
+      "\\(\\dfrac{5 - x}{x^2 - 4}\\)",
+      "\\(\\dfrac{5 - x}{(x+2)^2}\\)"
+    ],
+    "answer": "D",
+    "solution": "\\(x^2 - 4 = (x-2)(x+2)\\) is the common denominator. Rewrite the second fraction as \\(\\dfrac{x-2}{(x-2)(x+2)}\\) and subtract: \\(\\dfrac{3 - (x - 2)}{x^2 - 4} = \\dfrac{5 - x}{x^2 - 4}\\). Forgetting to subtract the whole of \\(x - 2\\) gives \\(1 - x\\) on top."
+  },
+  {
+    "id": "twin-2016-Q56",
+    "twinOf": "2016 Q56",
+    "section": "physmath",
+    "subject": "Mathematics",
+    "chapter": "Geometry",
+    "text": "The line \\(\\dfrac{x}{6} + \\dfrac{y}{8} = 1\\) cuts the x-axis at P and the y-axis at Q. A circle has PQ as a diameter.\nWhat is the radius of the circle?",
+    "options": [
+      "10",
+      "7",
+      "14",
+      "4",
+      "5"
+    ],
+    "answer": "E",
+    "solution": "Setting \\(y = 0\\) gives P = (6, 0) and setting \\(x = 0\\) gives Q = (0, 8). PQ \\(= \\sqrt{6^2 + 8^2} = 10\\) is the diameter, so the radius is 5, and the centre is the midpoint (3, 4)."
+  },
+  {
+    "id": "twin-2016-Q57",
+    "twinOf": "2016 Q57",
+    "section": "physmath",
+    "subject": "Physics",
+    "chapter": "Electricity",
+    "text": "A student has four 8.0 Ω resistors and may connect one or more of them in any arrangement. None is short-circuited.\nWhat are the largest and the smallest resistances the student can make?",
+    "options": [
+      "largest 32 Ω; smallest 2.0 Ω",
+      "largest 32 Ω; smallest 8.0 Ω",
+      "largest 8.0 Ω; smallest 2.0 Ω",
+      "largest 24 Ω; smallest 2.7 Ω",
+      "largest 32 Ω; smallest 0.50 Ω"
+    ],
+    "answer": "A",
+    "solution": "All four in series give the most: 4 x 8.0 = 32 Ω. All four in parallel give the least: 8.0/4 = 2.0 Ω. Using fewer resistors can only give values in between."
+  },
+  {
+    "id": "twin-2016-Q58",
+    "twinOf": "2016 Q58",
+    "section": "physmath",
+    "subject": "Physics",
+    "chapter": "Dynamics, Work and Energy",
+    "text": "A light plank 8.0 m long lies across two trestles, one under each end. A 400 N bag is placed 2.0 m from the left end and a 600 N bag 1.0 m from the right end.\nHow hard does each trestle push up on the plank?",
+    "options": [
+      "left 375 N, right 625 N",
+      "left 625 N, right 375 N",
+      "left 400 N, right 600 N",
+      "left 500 N, right 500 N",
+      "left 175 N, right 825 N"
+    ],
+    "answer": "A",
+    "solution": "Take moments about the left trestle: the right trestle's force \\(R\\) times 8.0 m balances the loads' moments, \\(8.0R = 400 \\times 2.0 + 600 \\times 7.0 = 5000\\), so \\(R = 625\\) N. The two trestles carry 1000 N together, so the left one pushes with 375 N. The right trestle carries more because the heavier load is nearer to it. Swapping them is the commonest slip; the last option measures the 400 N load's distance from the wrong end."
+  },
+  {
+    "id": "twin-2016-Q59",
+    "twinOf": "2016 Q59",
+    "section": "physmath",
+    "subject": "Physics",
+    "chapter": "Dynamics, Work and Energy",
+    "text": "A stone is thrown horizontally from the top of a cliff. Ignore air resistance.\nWhich of the following statements is/are correct while it falls?\n1 Its horizontal velocity stays constant.\n2 Its acceleration is constant and points straight down.\n3 Its kinetic energy stays constant.",
+    "options": [
+      "1 only",
+      "1 and 2 only",
+      "2 and 3 only",
+      "3 only",
+      "1, 2 and 3"
+    ],
+    "answer": "B",
+    "solution": "The only force is the stone's weight, which is vertical and constant. So there is no horizontal force (1 is right) and the acceleration is g downwards throughout (2). Gravity does work on the stone as it falls, so its vertical speed and kinetic energy increase (3 wrong). 1 and 2 only."
+  },
+  {
+    "id": "twin-2016-Q60",
+    "twinOf": "2016 Q60",
+    "section": "physmath",
+    "subject": "Mathematics",
+    "chapter": "Numbers, Powers and Logarithms",
+    "text": "\\(p = 2 \\times 10^{a}\\) and \\(q = 8 \\times 10^{b}\\), where \\(a\\) and \\(b\\) are integers.\nWhat is \\(\\dfrac{p}{q}\\) in standard form?",
+    "options": [
+      "\\(4 \\times 10^{a-b}\\)",
+      "\\(2.5 \\times 10^{a-b+1}\\)",
+      "\\(2.5 \\times 10^{a-b-1}\\)",
+      "\\(0.25 \\times 10^{a/b}\\)",
+      "\\(2.5 \\times 10^{a/b-1}\\)"
+    ],
+    "answer": "C",
+    "solution": "\\(\\dfrac{p}{q} = \\dfrac{2}{8} \\times 10^{a-b} = 0.25 \\times 10^{a-b}\\). Standard form needs a number from 1 to 10 in front, and \\(0.25 = 2.5 \\times 10^{-1}\\), so it is \\(2.5 \\times 10^{a-b-1}\\). Dividing powers subtracts the indices; it never divides them."
+  }
+]
