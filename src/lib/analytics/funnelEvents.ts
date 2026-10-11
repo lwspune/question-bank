@@ -138,6 +138,13 @@ export const FUNNEL_EVENTS = [
    * shown partner: the page's own surface_viewed row is the scale.
    */
   "performance_starter_click",
+  /**
+   * The Congratulate button on a results strip was tapped (2026-10-11): it
+   * bursts confetti and V says well done, nothing is stored. Once per result
+   * per browser; props: exam (slug), stage. No shown partner: the pages' views
+   * are its scale. Decides whether a public count (option B) is worth building.
+   */
+  "results_congratulate_click",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];
