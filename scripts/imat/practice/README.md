@@ -15,7 +15,7 @@ In the bank the twins are PRIVATE practice questions (question_kind
 'practice', written at insert), each with its solution, under source_file
 `imat-twins-<year>.json` (roll back by that). Not publish_blocked: they are
 ours. The Cambridge source is never written to the database. All 577 were
-loaded on 2026-10-11.
+loaded on 2026-10-11; figure twins follow (below).
 
 ## Writing a twin
 
@@ -62,4 +62,44 @@ A finding from the originality check that you are sure is not a copy (a
 standard formula, the topic's own name) can be cleared with a reason in
 `scripts/imat/originality-reviews.json`; prefer rewording.
 
-Figure questions are held for a later pass (`twinScope` reason "figure").
+## Figure questions
+
+A figure question is in scope like any other (owner, 2026-10-11). Its twin
+takes one of three routes:
+
+1. **No picture.** If the skill survives as text or a table (a U-tube's
+   contents, a kidney's filtration factors), write it that way.
+2. **Drawn.** Charts, grids, pedigrees, geometry: draw an SVG in `figures/`,
+   named `twin-<year>-Q<n>.svg`, with explicit `width` and `height`, and run
+   `npx tsx scripts/imat/practice/render-figures.ts`. Generate the drawing by
+   script from the same numbers the solution uses, and **look at every PNG**
+   before writing the stem. Set `figure: { file, origin: "drawn" }`.
+3. **OpenStax (biology).** OpenStax Biology 2e is CC BY 4.0. Keep the source
+   image in `figures/` (`openstax-biology-2e-fig-<n>.png`) and reference it by
+   bare name from the twin's SVG (the renderer resolves it there); number or
+   crop it as the question needs. Set `origin: "openstax"` and a `credit`
+   ("adapted from OpenStax Biology 2e, Figure 5.2, CC BY 4.0"); the loader
+   prints it under the stem.
+
+Name the graphs or diagrams 1 to 5, not A to E: "Graph A ... Graph E" as
+options are the source's options word for word.
+
+## Writing the files: never through a shell string
+
+A shell or `node -e` string eats one backslash, so `\(\mathrm{CH_4}\)` lands
+as `(mathrm{CH_4})` and `\theta` as a TAB plus "heta". With the delimiters
+gone, KaTeX never sees the math, so on 2026-10-11 eleven loaded twins were
+broken and every check passed. checkTwins now refuses control characters and
+LaTeX outside math. Write twins with the Write tool, or with a script file
+using `String.raw`.
+
+## Correcting a twin already in the bank
+
+Never re-commit an edited twin: the new hash inserts a second row beside the
+faulty one. Copy the twin as loaded into a JSON array first, edit the year
+file, then:
+
+```sh
+npx tsx scripts/imat/practice/correct.ts <before.json>          # dry run
+npx tsx scripts/imat/practice/correct.ts <before.json> --apply  # rewrite the rows in place, same ids
+```

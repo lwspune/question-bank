@@ -27,6 +27,15 @@ export function svgSize(svg: string): { width: number; height: number } {
   return { width: Math.ceil(Number(w)), height: Math.ceil(Number(h)) };
 }
 
+/**
+ * A drawing may embed a licensed source image (an OpenStax figure kept beside
+ * it in figures/) by its bare file name; the page is written to a temp folder,
+ * so relative links resolve against figures/ through <base>.
+ */
+export function figuresBase(dir = FIGURES): string {
+  return `file:///${dir.replace(/\\/g, "/").replace(/\/?$/, "/")}`;
+}
+
 function render(svgFile: string, pngFile: string) {
   const svg = readFileSync(svgFile, "utf8");
   const { width, height } = svgSize(svg);
@@ -34,7 +43,7 @@ function render(svgFile: string, pngFile: string) {
   const html = join(dir, "figure.html");
   writeFileSync(
     html,
-    `<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;padding:0;background:#fff}svg{display:block}</style></head><body>${svg}</body></html>`
+    `<!doctype html><html><head><meta charset="utf-8"><base href="${figuresBase()}"><style>html,body{margin:0;padding:0;background:#fff}svg{display:block}</style></head><body>${svg}</body></html>`
   );
   execFileSync(
     EDGE,

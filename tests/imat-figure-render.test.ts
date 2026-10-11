@@ -4,7 +4,7 @@
  * exactly or the PNG gets white margins or a cropped edge.
  */
 import { describe, it, expect } from "vitest";
-import { svgSize } from "../scripts/imat/practice/render-figures";
+import { figuresBase, svgSize } from "../scripts/imat/practice/render-figures";
 
 describe("svgSize", () => {
   it("reads integer width and height from the root element", () => {
@@ -17,5 +17,12 @@ describe("svgSize", () => {
 
   it("refuses a drawing without an explicit size", () => {
     expect(() => svgSize('<svg viewBox="0 0 10 10"></svg>')).toThrow(/width and height/);
+  });
+});
+
+describe("figuresBase", () => {
+  it("turns a Windows folder into a file URL ending in a slash, so a bare image name resolves inside it", () => {
+    expect(figuresBase(String.raw`C:\repo\figures`)).toBe("file:///C:/repo/figures/");
+    expect(figuresBase(String.raw`C:\repo\figures\ `.trim())).toBe("file:///C:/repo/figures/");
   });
 });

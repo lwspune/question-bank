@@ -64,6 +64,46 @@
     "solution": "Rule out what fails a requirement: P has too little data, Q's contract is too long, T has too few minutes. That leaves R at 12 x 14 + 30 = €198 and S at 12 x 16 = €192. S is cheaper over the year, even though its monthly price is higher, because R's setup fee outweighs the €2 a month saving."
   },
   {
+    "id": "twin-2022-Q9",
+    "twinOf": "2022 Q9",
+    "section": "logic",
+    "chapter": "Data Interpretation",
+    "text": "A city council counted the bicycles parked at three railway stations on one weekday morning, first in 2010 and again in 2020.\n\n| station | 2010 | 2020 |\n|---|---|---|\n| North | 2 400 | 3 600 |\n| Central | 5 000 | 12 500 |\n| South | 1 800 | 3 600 |\n\nWhich graph shows the percentage increase in parked bicycles at each station between the two counts?",
+    "options": [
+      "4",
+      "1",
+      "3",
+      "5",
+      "2"
+    ],
+    "answer": "C",
+    "solution": "Percentage increase = rise divided by the 2010 count. North: 1 200 / 2 400 = 50%. Central: 7 500 / 5 000 = 150%. South: 1 800 / 1 800 = 100%. Only graph 3 shows 50, 150 and 100. Graph 1 plots each 2020 count as a percentage of the 2010 count (150, 250, 200), which is the new size, not the increase. Graph 4 divides the rise by the 2020 count (33, 60, 50). Graphs 2 and 5 have the right heights on the wrong stations.",
+    "figure": {
+      "file": "twin-2022-Q9.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2022-Q10",
+    "twinOf": "2022 Q10",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "Wardens want to put up camera towers so that every land square of a nature reserve, shown in the grid, is watched. The shaded squares are a lake: no tower can stand there, and the lake itself need not be watched.\nA tower on a land square watches that square and the eight squares around it (see the example).\nWhat is the smallest number of towers needed to watch every land square?",
+    "options": [
+      "9",
+      "6",
+      "14",
+      "8",
+      "7"
+    ],
+    "answer": "D",
+    "solution": "Number the rows 1 to 8 from the top and the columns 1 to 9 from the left. A tower only watches squares within one row and one column of itself, so two squares it watches never differ by 3 or more in row or in column. The eight land squares (1,3), (1,6), (3,9), (4,1), (4,6), (6,9), (7,2) and (7,5) each differ from every other by at least 3 in row or column, so each needs its own tower: at least 8. Eight is enough, for example towers at (2,2), (2,5), (3,8), (4,6), (5,2), (6,8), (7,3) and (7,6). The tempting 7 comes from dividing the 55 land squares by 9, which assumes no tower's view is wasted on the sea, the lake or overlaps.",
+    "figure": {
+      "file": "twin-2022-Q10.png",
+      "origin": "drawn"
+    }
+  },
+  {
     "id": "twin-2022-Q11",
     "twinOf": "2022 Q11",
     "section": "reading",
@@ -224,6 +264,46 @@
     "solution": "Sirimavo Bandaranaike became prime minister of Ceylon, now Sri Lanka, in 1960: the world's first woman to lead a government as prime minister. Indira Gandhi (India) followed in 1966, Golda Meir (Israel) in 1969, Margaret Thatcher (UK) in 1979 and Benazir Bhutto (Pakistan) in 1988."
   },
   {
+    "id": "twin-2022-Q21",
+    "twinOf": "2022 Q21",
+    "section": "biology",
+    "chapter": "Molecular Biology and Gene Expression",
+    "text": "The diagram shows five base pairs, numbered 1 to 5, in a short section of double-stranded DNA. Each dashed line stands for one hydrogen bond.\nWhich base pair is drawn incorrectly?",
+    "options": [
+      "2",
+      "4",
+      "1",
+      "3",
+      "5"
+    ],
+    "answer": "E",
+    "solution": "Adenine pairs with thymine through two hydrogen bonds; cytosine pairs with guanine through three. Pairs 1 and 3 (A with T, two bonds) and pairs 2 and 4 (C with G, three bonds) are correct. Pair 5 matches the right bases, C with G, but shows only two bonds, so it is wrong. Checking only which base sits opposite which misses the error, because every pair here has the correct partner.",
+    "figure": {
+      "file": "twin-2022-Q21.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2022-Q22",
+    "twinOf": "2022 Q22",
+    "section": "biology",
+    "chapter": "Biomolecules and Enzymes",
+    "text": "Two enzymes, R and S, were tested in two experiments.\nIn the first, the reaction rate was recorded over a range of temperatures, with R held at pH 2 and S at pH 8, the pH at which each works fastest.\nIn the second, the rate was recorded over a range of pH values, with R held at 37 °C and S at 60 °C, the temperature at which each works fastest.\nWhich graph could show the results of one of these experiments?",
+    "options": [
+      "1",
+      "3",
+      "4",
+      "2",
+      "5"
+    ],
+    "answer": "A",
+    "solution": "Graph 1 has pH on the horizontal axis with R peaking at pH 2 and S at pH 8: the pH investigation, correct. Graph 2 swaps the two enzymes. Graph 3 puts the pH optima (2 and 8) on a temperature axis. Graph 4 is a temperature graph with the optima the wrong way round: R should peak at 37 °C and S at 60 °C. Graph 5 gives both enzymes the same optimum temperature, which the data rule out.",
+    "figure": {
+      "file": "twin-2022-Q22.png",
+      "origin": "drawn"
+    }
+  },
+  {
     "id": "twin-2022-Q23",
     "twinOf": "2022 Q23",
     "section": "biology",
@@ -238,6 +318,22 @@
     ],
     "answer": "A",
     "solution": "DNA contains the bases A, T, C and G, so thymine is present. Its sugar is deoxyribose, not ribose (ribose is in RNA). The two strands are held together by hydrogen bonds between paired bases. Peptide bonds join amino acids in proteins and are not found in DNA. So 1 and 3 only."
+  },
+  {
+    "id": "twin-2022-Q24",
+    "twinOf": "2022 Q24",
+    "section": "biology",
+    "chapter": "Cell Structure and Membranes",
+    "text": "A U-tube is divided into two sides by a membrane that lets water, urea, glucose and fructose pass freely. At the start the two sides hold:\nSide X: urea 0.5 mol/L, glucose 1.5 mol/L, fructose 1.0 mol/L.\nSide Y: urea 1.5 mol/L, glucose 0.5 mol/L, fructose 1.0 mol/L.\nWhat happens in the first few seconds?",
+    "options": [
+      "Urea moves overall from side X to side Y.",
+      "Glucose moves overall from side X to side Y.",
+      "Fructose moves overall from side Y to side X.",
+      "The liquid level rises on side Y and falls on side X.",
+      "No solute moves overall, because the total concentration is the same on both sides."
+    ],
+    "answer": "B",
+    "solution": "Each solute diffuses down its own concentration gradient, whatever the others do. Glucose is 1.5 mol/L on X and 0.5 mol/L on Y, so it moves overall from X to Y. Urea moves the other way, from Y to X. Fructose is equal on both sides, so it has no net movement. Both sides total 3.0 mol/L and every solute can cross, so there is no osmotic change in level. The last option is the trap: equal totals do not stop each solute from following its own gradient."
   },
   {
     "id": "twin-2022-Q25",
@@ -288,6 +384,27 @@
     "solution": "Statement 1 is correct. Statement 2 is wrong twice: the Krebs cycle runs in the mitochondrial matrix, and it releases carbon dioxide; oxygen is used, not released, at the end of the electron transport chain. Statement 3 is correct: oxidative phosphorylation makes far more ATP than glycolysis and the Krebs cycle together. So 1 and 3 only."
   },
   {
+    "id": "twin-2022-Q28",
+    "twinOf": "2022 Q28",
+    "section": "biology",
+    "chapter": "Cell Division and Reproduction",
+    "text": "The figure shows five animal cells, numbered 1 to 5, each at a different stage of mitosis.\nIn which cell are the chromosomes lined up across the middle of the cell, just before the sister chromatids separate?",
+    "options": [
+      "5",
+      "1",
+      "2",
+      "4",
+      "3"
+    ],
+    "answer": "C",
+    "solution": "Cell 2 is in metaphase: the chromosomes sit in a single line across the equator, each attached to spindle fibres from both poles. Cell 5 is the tempting one: its chromosomes are attached to the spindle but still scattered, which is prometaphase. Cell 1 is anaphase (the chromatids are already moving apart), cell 4 is prophase (the chromosomes are condensing and the spindle is forming) and cell 3 is telophase (two new nuclei and a furrow dividing the cell).",
+    "figure": {
+      "file": "twin-2022-Q28.png",
+      "origin": "openstax",
+      "credit": "adapted from OpenStax Biology 2e, Figure 10.6, CC BY 4.0"
+    }
+  },
+  {
     "id": "twin-2022-Q29",
     "twinOf": "2022 Q29",
     "section": "biology",
@@ -304,6 +421,47 @@
     "solution": "Her father gave her his only X, which carries the allele, so she is a carrier: \\(X^BX^b\\). The man is \\(X^BY\\). Sons get Y from him and either X from her: 50% colour-blind (1 correct). Daughters get his \\(X^B\\) and either X from her: 50% carriers (2 correct), and none can be colour-blind, so 3 is wrong."
   },
   {
+    "id": "twin-2022-Q30",
+    "twinOf": "2022 Q30",
+    "section": "biology",
+    "chapter": "Genetics and Inheritance",
+    "text": "The pedigree shows a family in which some members have a condition caused by a recessive allele of a gene on an autosome. Shaded symbols are affected people; squares are males and circles are females.\nWhich of the following statements is/are correct?\n1 J and K are both heterozygous.\n2 The chance that the next child of P and her partner is affected is 1 in 4.\n3 Q is heterozygous.",
+    "options": [
+      "1 only",
+      "2 and 3 only",
+      "1, 2 and 3",
+      "1 and 3 only",
+      "3 only"
+    ],
+    "answer": "D",
+    "solution": "1 is correct: J and K are unaffected but have an affected son, so each must carry the recessive allele. 2 is wrong: P is unaffected but has an affected daughter, so P is heterozygous, and her partner is affected, so homozygous recessive. Each of their children has a 1 in 2 chance of being affected; 1 in 4 would apply only if both parents were heterozygous. 3 is correct: Q's father is affected and can pass on only the recessive allele, and Q is unaffected, so Q is heterozygous.",
+    "figure": {
+      "file": "twin-2022-Q30.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2022-Q31",
+    "twinOf": "2022 Q31",
+    "section": "biology",
+    "chapter": "Cell Structure and Membranes",
+    "text": "The figure shows part of a cell surface membrane, with seven of its parts numbered.\nWhich numbered part lies within the hydrophobic core of the bilayer and keeps the fluidity of the membrane steady as the temperature changes?",
+    "options": [
+      "1",
+      "7",
+      "2",
+      "4",
+      "5"
+    ],
+    "answer": "E",
+    "solution": "5 is cholesterol. Its small molecules sit between the fatty-acid tails of the phospholipids and stop the membrane from becoming too fluid when warm or too rigid when cold. 1 is a glycolipid, a lipid carrying a carbohydrate chain on the outer surface. 7 is an integral protein: it does cross the hydrophobic core, which makes it the tempting wrong answer, but it carries substances or signals rather than buffering fluidity. 2 is a peripheral protein on the inner surface, and 4 marks the phospholipid bilayer as a whole.",
+    "figure": {
+      "file": "twin-2022-Q31.png",
+      "origin": "openstax",
+      "credit": "adapted from OpenStax Biology 2e, Figure 5.2, CC BY 4.0"
+    }
+  },
+  {
     "id": "twin-2022-Q32",
     "twinOf": "2022 Q32",
     "section": "biology",
@@ -318,6 +476,22 @@
     ],
     "answer": "A",
     "solution": "While the ventricles push blood out, the atrioventricular valves are shut (stopping backflow into the atria) and the semilunar valves are open (letting blood into the aorta and pulmonary artery), so the ventricles empty. Row 3 is the brief moment before ejection, when both sets are shut; row 2 is ventricular filling. Row 1."
+  },
+  {
+    "id": "twin-2022-Q33",
+    "twinOf": "2022 Q33",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "In the kidney, filtrate forms as blood passes through the glomerulus into the capsule.\nWhich of the following would increase the volume of filtrate formed each minute?\n1 Widening (dilation) of the afferent arteriole that brings blood to the glomerulus\n2 A fall in the concentration of proteins in the blood plasma\n3 Narrowing (constriction) of the afferent arteriole",
+    "options": [
+      "1 and 2 only",
+      "1 only",
+      "2 and 3 only",
+      "3 only",
+      "1, 2 and 3"
+    ],
+    "answer": "A",
+    "solution": "Filtration is driven by blood pressure in the glomerular capillaries and opposed by the osmotic pull of plasma proteins (and by the pressure in the capsule). 1 increases filtrate: a wider afferent arteriole lets in more blood and raises glomerular pressure. 2 increases filtrate: fewer plasma proteins means a weaker osmotic pull holding water in the blood. 3 does the opposite of 1 and lowers glomerular pressure, so less filtrate forms. Choosing 1 only forgets that the proteins' osmotic pull opposes filtration."
   },
   {
     "id": "twin-2022-Q34",
@@ -398,6 +572,22 @@
     ],
     "answer": "A",
     "solution": "Ethanol hydrogen-bonds with water, so they mix in all proportions. Octane and heptane are both non-polar alkanes and mix. Cyclohexane is non-polar and cannot break into water's hydrogen-bonded network, so it floats as a separate layer. 2 only."
+  },
+  {
+    "id": "twin-2022-Q39",
+    "twinOf": "2022 Q39",
+    "section": "chemistry",
+    "chapter": "Organic Chemistry",
+    "text": "A fat (a triglyceride, in which three fatty-acid chains are joined to glycerol by ester links) is boiled with sodium hydroxide solution:\ntriglyceride + 3 NaOH \\(\\rightarrow\\) glycerol + 3 Z\nWhich of the following statements is/are correct?\n1 Z is the sodium salt of a long-chain carboxylic acid.\n2 The reaction needs an acid catalyst.\n3 The reaction breaks ester bonds.",
+    "options": [
+      "1 only",
+      "2 and 3 only",
+      "1 and 3 only",
+      "1, 2 and 3",
+      "3 only"
+    ],
+    "answer": "C",
+    "solution": "This is saponification. Hydroxide ions hydrolyse the three ester links (3 correct), giving glycerol and three carboxylate salts, sodium salts of fatty acids, which are soap (1 correct). Sodium hydroxide is used up in the reaction: it is a reactant, and no acid catalyst is needed (2 wrong). Acid-catalysed hydrolysis gives the free fatty acids instead of their salts, which is why 2 can look plausible."
   },
   {
     "id": "twin-2022-Q40",
@@ -532,7 +722,7 @@
     "twinOf": "2022 Q48",
     "section": "chemistry",
     "chapter": "Chemical Bonding",
-    "text": "Which row correctly describes a molecule of boron trifluoride, (mathrm{BF_3})?\n[Atomic numbers: B = 5; F = 9]\n\n| | molecular geometry | angle between two B-F bonds |\n|---|---|---|\n| row 1 | trigonal pyramidal | 107° |\n| row 2 | tetrahedral | 109.5° |\n| row 3 | T-shaped | 90° |\n| row 4 | trigonal planar | 109.5° |\n| row 5 | trigonal planar | 120° |",
+    "text": "Which row correctly describes a molecule of boron trifluoride, \\(\\mathrm{BF_3}\\)?\n[Atomic numbers: B = 5; F = 9]\n\n| | molecular geometry | angle between two B-F bonds |\n|---|---|---|\n| row 1 | trigonal pyramidal | 107° |\n| row 2 | tetrahedral | 109.5° |\n| row 3 | T-shaped | 90° |\n| row 4 | trigonal planar | 109.5° |\n| row 5 | trigonal planar | 120° |",
     "options": [
       "row 1",
       "row 2",
@@ -710,6 +900,27 @@
     ],
     "answer": "E",
     "solution": "By Fleming's left-hand rule (or \\(\\vec F = I\\vec L \\times \\vec B\\)): first finger down (field), second finger east (current), and the thumb points north. The force is at right angles to both the current and the field, so it cannot be up, down, east or west."
+  },
+  {
+    "id": "twin-2022-Q59",
+    "twinOf": "2022 Q59",
+    "section": "physmath",
+    "subject": "Mathematics",
+    "chapter": "Geometry",
+    "text": "Two circles are drawn around the same point O: an inner one enclosing \\(16\\pi\\ \\text{cm}^2\\), and an outer one reaching 2 cm further out in every direction.\nTwo lines from O, meeting at \\(\\theta^\\circ\\), cut off the shaded piece of the ring between the circles. That piece covers \\(2\\pi\\ \\text{cm}^2\\).\nFind \\(\\theta\\).",
+    "options": [
+      "20",
+      "36",
+      "45",
+      "180",
+      "72"
+    ],
+    "answer": "B",
+    "solution": "The small radius is 4 cm (\\(\\pi r^2 = 16\\pi\\)), so the large radius is 6 cm. The whole ring has area \\(\\pi(6^2 - 4^2) = 20\\pi\\). The shaded part is the fraction \\(\\theta/360\\) of the ring: \\(\\frac{\\theta}{360} \\times 20\\pi = 2\\pi\\), so \\(\\theta = 36\\). 20 uses a sector of the large circle alone and 45 a sector of the small circle alone; 180 takes the ring's area as \\(\\pi(6-4)^2\\); 72 halves the ring's area.",
+    "figure": {
+      "file": "twin-2022-Q59.png",
+      "origin": "drawn"
+    }
   },
   {
     "id": "twin-2022-Q60",
