@@ -16,6 +16,26 @@
     "solution": "The East stand took half of €120 000 = €60 000. At €25 a seat that is 2400 seats, and at 50 seats a row, 48 rows. (Check: North €30 000 / €40 = 750 seats = 15 rows; South €30 000 / €15 = 2000 seats = 40 rows.) 24 comes from using €60 000 as the whole income."
   },
   {
+    "id": "twin-2019-Q3",
+    "twinOf": "2019 Q3",
+    "section": "logic",
+    "chapter": "Numerical Reasoning",
+    "text": "The plan shows a garden. Everything except the patio and the pond is lawn, which will be reseeded at 40 g of seed per square metre. Seed is sold only in these packets:\n\n| packet | price |\n|---|---|\n| 2 kg | €22.00 |\n| 1 kg | €10.50 |\n| 500 g | €6.00 |\n| 250 g | €3.50 |\n| 100 g | €1.60 |\n\nWhat is the least it can cost to buy enough seed?",
+    "options": [
+      "€22.00",
+      "€21.30",
+      "€21.00",
+      "€22.60",
+      "€24.20"
+    ],
+    "answer": "C",
+    "solution": "Lawn area = 9 x 6 - (3 x 2) - (2 x 1.5) = 54 - 6 - 3 = 45 square metres, which needs 45 x 40 = 1 800 g of seed. The cheapest way to buy exactly 1.8 kg is 1 kg + 500 g + three 100 g packets = €21.30, but two 1 kg packets give more seed (2 kg) for only €21.00, and the single 2 kg packet costs €22.00. Leaving out the pond (2 040 g, €22.60) or both the pond and the patio (2 160 g, €24.20) gives the other options.",
+    "figure": {
+      "file": "twin-2019-Q3.png",
+      "origin": "drawn"
+    }
+  },
+  {
     "id": "twin-2019-Q4",
     "twinOf": "2019 Q4",
     "section": "logic",
@@ -62,6 +82,46 @@
     ],
     "answer": "C",
     "solution": "The outdoor group, compared with a control group, was less likely to become short-sighted, so extra time outdoors can reduce that risk. The passage gives no cause such as reading, says test scores were not lowered (not that they rose), says the worsening was the same in both groups, and recommends nothing."
+  },
+  {
+    "id": "twin-2019-Q8",
+    "twinOf": "2019 Q8",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "A parcel 50 cm long, 25 cm wide and 15 cm high is tied with string as shown. Two loops go round the parcel across its width and one loop goes round it along its length; each loop passes over the top, down both sides and under the bottom. The knot uses another 25 cm of string.\nHow much string is needed altogether?",
+    "options": [
+      "3.15 m",
+      "2.90 m",
+      "2.35 m",
+      "2.15 m",
+      "4.15 m"
+    ],
+    "answer": "A",
+    "solution": "A loop across the width goes over 25 cm of top, 25 cm of bottom and two 15 cm sides: 2 x (25 + 15) = 80 cm, and there are two of them, 160 cm. The loop along the length is 2 x (50 + 15) = 130 cm. With the 25 cm knot the total is 160 + 130 + 25 = 315 cm = 3.15 m. Forgetting the knot gives 2.90 m, counting only one width loop gives 2.35 m, and leaving out the string under the parcel gives 2.15 m.",
+    "figure": {
+      "file": "twin-2019-Q8.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2019-Q9",
+    "twinOf": "2019 Q9",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "Four of the five numbered pieces fit together, without gaps or overlaps, to make the pattern. A piece may be turned round on the page but not turned over.\nWhich piece is NOT used?",
+    "options": [
+      "4",
+      "1",
+      "5",
+      "3",
+      "2"
+    ],
+    "answer": "E",
+    "solution": "The black 2 x 2 block in the middle of the pattern can only be made by piece 5, so piece 5 sits in the centre. Piece 2 matches the colours in four places (along any side of the centre block), but every one of them overlaps the centre, so it cannot be used. The rest fits: piece 4 makes one edge of four squares (black, white, white, black), and pieces 1 and 3 wrap round the two remaining corners, each with its black square in a corner.",
+    "figure": {
+      "file": "twin-2019-Q9.png",
+      "origin": "drawn"
+    }
   },
   {
     "id": "twin-2019-Q11",
@@ -288,6 +348,26 @@
     "solution": "Neutrophils, like all white blood cells, are produced in the bone marrow. They are phagocytes: they engulf bacteria and digest them with enzymes from their lysosomes. Antibodies are released by plasma cells, which develop from B lymphocytes, not by neutrophils. Row 3."
   },
   {
+    "id": "twin-2019-Q25",
+    "twinOf": "2019 Q25",
+    "section": "biology",
+    "chapter": "Genetics and Inheritance",
+    "text": "A condition is caused by a recessive allele n of a gene on an autosome; the normal allele is N. The pedigree shows three generations of one family.\nHow many of these six people are NN, how many Nn and how many nn?\n\n| | NN | Nn | nn |\n|---|---|---|---|\n| row 1 | 2 | 0 | 4 |\n| row 2 | 0 | 2 | 4 |\n| row 3 | 0 | 4 | 2 |\n| row 4 | 4 | 2 | 0 |\n| row 5 | 0 | 3 | 3 |",
+    "options": [
+      "row 1",
+      "row 2",
+      "row 3",
+      "row 4",
+      "row 5"
+    ],
+    "answer": "B",
+    "solution": "Everyone with the condition must be nn: the two people in generation II and their two children, 4 in all. The grandparents in generation I do not have the condition but have an affected son, who received one n from each of them, so both are Nn: 2. Nobody can be NN. Row 1 makes the unaffected grandparents NN, which would have made an affected son impossible.",
+    "figure": {
+      "file": "twin-2019-Q25.png",
+      "origin": "drawn"
+    }
+  },
+  {
     "id": "twin-2019-Q26",
     "twinOf": "2019 Q26",
     "section": "biology",
@@ -302,6 +382,22 @@
     ],
     "answer": "D",
     "solution": "Metaphase is when the chromosomes sit on the equator of the spindle. The nuclear envelope re-forms in telophase and the cytoplasm divides in cytokinesis; DNA replicates earlier, in the S phase of interphase. Pairing of homologous chromosomes and crossing over happen only in meiosis."
+  },
+  {
+    "id": "twin-2019-Q27",
+    "twinOf": "2019 Q27",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "Which statement correctly describes a pathway of the parasympathetic nervous system?",
+    "options": [
+      "A single neurone runs from the spinal cord to the effector with no synapse on the way.",
+      "The first neurone in the pathway has its cell body in a dorsal root ganglion.",
+      "Its ganglia form a chain alongside the spinal cord in the chest and upper abdomen.",
+      "A neurone from the brain stem or the lowest part of the spinal cord synapses in a ganglion in or near the effector organ.",
+      "The neurone that reaches the effector releases noradrenaline."
+    ],
+    "answer": "D",
+    "solution": "Parasympathetic pathways leave the central nervous system from the brain stem (for example in the vagus nerve) or the sacral spinal cord, and their first neurone runs most of the way, synapsing in a ganglion in or beside the organ; a short second neurone then releases acetylcholine onto it. A single neurone with no synapse is a somatic motor neurone. Cell bodies in a dorsal root ganglion belong to sensory neurones. The chain of ganglia beside the thoracic and lumbar cord, and noradrenaline at the effector, belong to the sympathetic system."
   },
   {
     "id": "twin-2019-Q28",
@@ -414,6 +510,22 @@
     ],
     "answer": "A",
     "solution": "In the sliding filament model, myosin heads pull the actin filaments in towards the centre of each sarcomere. The filaments slide past each other but keep their own lengths; only the overlap increases, so each sarcomere shortens. 1 only."
+  },
+  {
+    "id": "twin-2019-Q35",
+    "twinOf": "2019 Q35",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "Which of the following liquids in a healthy person normally contain glucose?\n1 filtrate in the Bowman's capsule\n2 fluid entering the loop of Henle\n3 liquid in the collecting duct\n4 blood in the renal vein",
+    "options": [
+      "1 and 4 only",
+      "1 only",
+      "2 and 3 only",
+      "1, 2 and 4 only",
+      "none of them"
+    ],
+    "answer": "A",
+    "solution": "Glucose is small enough to be filtered from the glomerulus, so the filtrate in the capsule contains it (1). The proximal convoluted tubule then reabsorbs all of it, so fluid entering the loop of Henle (2) and the liquid in the collecting duct (3) contain none. The reabsorbed glucose goes back into the blood, so blood leaving the kidney in the renal vein still contains glucose (4). Choosing 1 only forgets that removing glucose from the filtrate returns it to the blood."
   },
   {
     "id": "twin-2019-Q36",
