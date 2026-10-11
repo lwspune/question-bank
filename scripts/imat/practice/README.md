@@ -1,0 +1,41 @@
+# IMAT twins
+
+One original practice question per in-scope Cambridge question (2011-2022).
+The Cambridge papers are private forever; the twin is what a student
+practises on. Scope rule, data shape and checks: `lib.ts`. Files:
+`twins/<year>.json`, one array per Cambridge year.
+
+```sh
+npx tsx scripts/imat/practice/check.ts   # checks every twin file + coverage table; exits 1 on a problem
+```
+
+## Writing a twin
+
+Keep from the source: section, chapter, the skill tested, the format
+(numbered statements, row table, single answer, calculation) and the
+difficulty. Change everything else.
+
+1. **Write the stem from a blank page, not by editing the source.** Editing
+   leaves the source's sentence frame behind ("X is in Group V of the Periodic
+   Table. What is the shape...", "What is the formula of this oxide? [Ar
+   values: ..."). On 2021 this happened on 7 of 26 twins and the originality
+   check caught every one; the fix is to not start from the source's words.
+2. **New situation, new numbers, new options.** A different organism, organ,
+   compound or object; numbers that lead to a different answer; distractors
+   built from real mistakes on THIS question (the forgotten factor of 2, the
+   pOH reported as pH), not the source's distractors.
+3. **Same answer value is a smell.** If your twin's correct answer equals the
+   source's (same electron configuration, same formula), change the case.
+4. **Spread the correct letter.** check.ts prints the running count; keep it
+   level across A-E.
+5. **Recompute every calculation by script** before committing, and check
+   any "which of these is/are correct" item statement by statement in the
+   solution.
+6. **Solutions explain the trap**, not just the answer: name what the most
+   tempting wrong option got wrong.
+
+A finding from the originality check that you are sure is not a copy (a
+standard formula, the topic's own name) can be cleared with a reason in
+`scripts/imat/originality-reviews.json`; prefer rewording.
+
+Figure questions are held for a later pass (`twinScope` reason "figure").
