@@ -1,5 +1,25 @@
 [
   {
+    "id": "twin-2016-Q1",
+    "twinOf": "2016 Q1",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "A café floor is covered in square tiles, and the lines on some of them join up to spell two words.\nHow many tiles show exactly the pattern on the right, the same way round?",
+    "options": [
+      "4",
+      "5",
+      "3",
+      "8",
+      "6"
+    ],
+    "answer": "B",
+    "solution": "The pattern is a corner joining the top edge of the tile to its right edge: the bottom-left corner of a letter drawn with straight strokes. There is one in the C, one in the E, one in each L and one in the U, so 5. The H and the T have no such corner. 8 counts every corner tile whichever way round it is: the C and the E also have top-left corners and the U has a bottom-right one.",
+    "figure": {
+      "file": "twin-2016-Q1.png",
+      "origin": "drawn"
+    }
+  },
+  {
     "id": "twin-2016-Q2",
     "twinOf": "2016 Q2",
     "section": "logic",
@@ -14,6 +34,22 @@
     ],
     "answer": "E",
     "solution": "The jobs total 9 + 7 + 5 + 4 + 3 + 2 + 2 = 32 hours. Three mechanics can give at most 30 hours in the time, so at least 4 are needed. Four is enough: 9 | 7 + 3 | 5 + 4 | 2 + 2, all within 10 hours."
+  },
+  {
+    "id": "twin-2016-Q3",
+    "twinOf": "2016 Q3",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "A tin is a regular hexagonal prism. Each of its six identical sides is painted either red or blue; the top and the bottom are not painted. Two tins count as the same if one can be turned round, or turned upside down, to look exactly like the other.\nWhat is the greatest number of tins that all look different?",
+    "options": [
+      "14",
+      "7",
+      "13",
+      "64",
+      "12"
+    ],
+    "answer": "C",
+    "solution": "Count by the number of red sides. 0 or 6 red: 1 way each. 1 or 5 red: 1 way each. 2 red (or 2 blue): the two can be next to each other, one apart or opposite: 3 ways each. 3 red: all together, two together and one apart, or alternating, and the 'two together and one apart' pattern looks the same from both sides once the tin can be turned upside down: 3 ways. Total 1 + 1 + 1 + 1 + 3 + 3 + 3 = 13. 64 ignores turning altogether, 7 counts only how many sides are red, and 14 forgets that turning upside down reverses the order of the sides, making two patterns of three reds the same."
   },
   {
     "id": "twin-2016-Q4",
@@ -94,6 +130,46 @@
     ],
     "answer": "E",
     "solution": "Check both limits. Oat crunch and granola have too much sugar, and corn flakes and granola too little fibre. That leaves bran flakes (€2.80), muesli (€3.50) and wheat bites (€2.95, exactly on both limits, which is allowed). The cheapest is bran flakes at €2.80."
+  },
+  {
+    "id": "twin-2016-Q10",
+    "twinOf": "2016 Q10",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "Six square tiles are laid out to give the top pattern.\nWhich of the patterns 1 to 5 uses exactly the same six tiles? Tiles may be moved and turned round.",
+    "options": [
+      "1",
+      "3",
+      "4",
+      "2",
+      "5"
+    ],
+    "answer": "D",
+    "solution": "List the tiles first: two with a quarter-circle in a corner, two with a half-circle on one edge (the full circle in the top pattern is two of these side by side), one with a diagonal and one with a small black triangle in a corner. Pattern 2 has exactly these six, each turned round. Pattern 1 has two triangles and no diagonal, pattern 3 three half-circles and only one quarter-circle, pattern 4 two diagonals and only one half-circle, and pattern 5 a straight bar, which is not one of the tiles.",
+    "figure": {
+      "file": "twin-2016-Q10.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2016-Q13",
+    "twinOf": "2016 Q13",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "Take a square of paper. Bring its left edge across to meet its right edge and crease; then bring the top edge down to meet the bottom edge and crease again. Cut away three pieces through every layer, as the figure shows, and open the sheet out.\nWhich of 1 to 5 shows the opened sheet?",
+    "options": [
+      "2",
+      "3",
+      "4",
+      "5",
+      "1"
+    ],
+    "answer": "E",
+    "solution": "Unfold one fold at a time; each cut is reflected in each fold line. The half-circle on the left fold becomes a hole on the vertical centre line, and unfolding the top fold doubles it: two holes, one above the other, on the vertical centre line. The notch on the bottom edge appears on the bottom edge twice (left and right of centre) and then on the top edge twice. The cut corner is a corner of the original sheet, so all four corners are cut. That is pattern 1. Pattern 2 puts the holes on the wrong fold line, pattern 3 the notches on the wrong edges, pattern 4 cuts only two corners, and pattern 5 is what one single layer would show.",
+    "figure": {
+      "file": "twin-2016-Q13.png",
+      "origin": "drawn"
+    }
   },
   {
     "id": "twin-2016-Q15",
@@ -304,6 +380,59 @@
     "solution": "Insulin is made by the beta cells of the islets of Langerhans in the pancreas. It makes liver (and muscle) cells take up glucose and convert it to glycogen, which the liver stores and releases again when glucose falls. The pancreas makes the hormone but stores no glycogen to speak of."
   },
   {
+    "id": "twin-2016-Q31",
+    "twinOf": "2016 Q31",
+    "section": "biology",
+    "chapter": "Microorganisms and Biotechnology",
+    "text": "A plasmid has been cut open at one site by a single restriction enzyme, leaving single-stranded ends that can pair with each other again. The unpaired bases at one end are, in order, C G A T T. The unpaired bases at the other end are numbered 1 to 5, base 1 pairing with the first of these, base 2 with the second, and so on.\nWhat are bases 1 to 5?",
+    "options": [
+      "G C U A A",
+      "G C T A A",
+      "C G A T T",
+      "A A T C G",
+      "T T A G C"
+    ],
+    "answer": "B",
+    "solution": "The two sticky ends pair base by base, with the DNA rule: cytosine with guanine, adenine with thymine. Opposite C G A T T are G C T A A. The first option uses uracil, which is found in RNA, not in a plasmid's DNA. Copying the same bases (C G A T T) would give no pairs at all, and the last two options reverse the order."
+  },
+  {
+    "id": "twin-2016-Q32",
+    "twinOf": "2016 Q32",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "The figure shows a section through the human brain with six structures numbered.\nWhich numbered structure controls body temperature and secretes hormones that regulate the pituitary gland?",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "5",
+      "6"
+    ],
+    "answer": "C",
+    "solution": "Structure 4 is the hypothalamus. It holds the body's thermostat and makes releasing hormones that control the pituitary gland (2), which hangs just below it and is the tempting answer: the pituitary releases hormones but takes its orders from the hypothalamus. Structure 1 is the thalamus, which relays sensory signals to the cortex; 5 is the amygdala (emotion, especially fear) and 6 the hippocampus (forming memories).",
+    "figure": {
+      "file": "twin-2016-Q32.png",
+      "origin": "openstax",
+      "credit": "adapted from OpenStax Biology 2e, Figure 35.24, CC BY 4.0"
+    }
+  },
+  {
+    "id": "twin-2016-Q33",
+    "twinOf": "2016 Q33",
+    "section": "biology",
+    "chapter": "Biomolecules and Enzymes",
+    "text": "When a dipeptide is hydrolysed into its two amino acids, which bond is broken?",
+    "options": [
+      "the C=O double bond of the peptide group",
+      "a bond between a central carbon atom and its side chain",
+      "the N-H bond of the peptide group",
+      "the bond between the carbon of one C=O group and the nitrogen of the next amino acid",
+      "the bond between a central carbon atom and the carboxyl carbon at the free end"
+    ],
+    "answer": "D",
+    "solution": "A peptide bond forms by condensation between the carboxyl group of one amino acid and the amino group of the next: it is the C-N bond joining the carbonyl carbon to the nitrogen. Hydrolysis adds water across exactly that bond, giving back a COOH group and an NH2 group. The C=O and N-H bonds stay intact, and breaking a side chain or the free carboxyl group would destroy an amino acid rather than separate two."
+  },
+  {
     "id": "twin-2016-Q34",
     "twinOf": "2016 Q34",
     "section": "biology",
@@ -334,6 +463,26 @@
     ],
     "answer": "E",
     "solution": "Meiosis I separates the homologous pairs, so each cell has 23 chromosomes, still double (two chromatids each) (1). Meiosis II separates the chromatids, giving four cells of 23 single chromosomes (2). Four times 23 is 92, double the original 46, because the DNA was copied once before two divisions (3). All three."
+  },
+  {
+    "id": "twin-2016-Q36",
+    "twinOf": "2016 Q36",
+    "section": "biology",
+    "chapter": "Human Anatomy and Physiology",
+    "text": "The graph shows the potential difference across the membrane of a neurone during one action potential, divided into phases 1 to 5.\nIn which phase is the potential falling because potassium ions are diffusing out of the neurone?",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "5",
+      "3"
+    ],
+    "answer": "E",
+    "solution": "Phase 3 is repolarisation: after the peak the sodium channels close and voltage-gated potassium channels open, so \\(\\mathrm{K^+}\\) diffuses out and the inside becomes negative again, overshooting below the resting value. Phase 2 is the rise, caused by \\(\\mathrm{Na^+}\\) diffusing in. In phase 4 the potential is already climbing back from the overshoot to rest, and phases 1 and 5 are the resting potential.",
+    "figure": {
+      "file": "twin-2016-Q36.png",
+      "origin": "drawn"
+    }
   },
   {
     "id": "twin-2016-Q37",
@@ -675,6 +824,23 @@
     ],
     "answer": "A",
     "solution": "All four in series give the most: 4 x 8.0 = 32 Ω. All four in parallel give the least: 8.0/4 = 2.0 Ω. Using fewer resistors can only give values in between."
+  },
+  {
+    "id": "twin-2016-Q58",
+    "twinOf": "2016 Q58",
+    "section": "physmath",
+    "subject": "Physics",
+    "chapter": "Dynamics, Work and Energy",
+    "text": "A light plank 8.0 m long lies across two trestles, one under each end. A 400 N bag is placed 2.0 m from the left end and a 600 N bag 1.0 m from the right end.\nHow hard does each trestle push up on the plank?",
+    "options": [
+      "left 375 N, right 625 N",
+      "left 625 N, right 375 N",
+      "left 400 N, right 600 N",
+      "left 500 N, right 500 N",
+      "left 175 N, right 825 N"
+    ],
+    "answer": "A",
+    "solution": "Take moments about the left trestle: the right trestle's force \\(R\\) times 8.0 m balances the loads' moments, \\(8.0R = 400 \\times 2.0 + 600 \\times 7.0 = 5000\\), so \\(R = 625\\) N. The two trestles carry 1000 N together, so the left one pushes with 375 N. The right trestle carries more because the heavier load is nearer to it. Swapping them is the commonest slip; the last option measures the 400 N load's distance from the wrong end."
   },
   {
     "id": "twin-2016-Q59",
