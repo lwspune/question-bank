@@ -4,6 +4,8 @@ import Footer from "@/components/Footer";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import { getPublishedResults } from "@/lib/results/query";
 import { STAGE_LABEL, groupResults, initialsOf } from "@/lib/results/summary";
+import { congratsKey } from "@/lib/results/congratulate";
+import CongratulateButton from "@/components/results/CongratulateButton";
 
 export const revalidate = 86400;
 
@@ -47,9 +49,12 @@ export default async function ResultsPage() {
                 >
                   {g.sitting}: {STAGE_LABEL[g.stage].toLowerCase()}
                 </h2>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  {g.names.length} {g.names.length === 1 ? "student" : "students"}, listed alphabetically.
-                </p>
+                <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-2">
+                  <p className="text-sm text-muted-foreground">
+                    {g.names.length} {g.names.length === 1 ? "student" : "students"}, listed alphabetically.
+                  </p>
+                  <CongratulateButton resultKey={congratsKey(g)} count={g.names.length} examSlug={g.examSlug} stage={g.stage} />
+                </div>
                 <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {g.names.map((name) => (
                     <li key={name} className="flex items-center gap-3 rounded-xl border bg-card p-4">
