@@ -50,16 +50,21 @@ export type CriticalThinkingKind =
   | "parallel"
   | "other";
 
-/** Order matters: "main conclusion" before the generic "conclusion". */
+/**
+ * Order matters: "main conclusion" before the generic "conclusion". Word
+ * boundaries matter too: an unbounded /follows?/ matched "Which one of the
+ * FOLLOWing", which nearly every question contains, so every unrecognised
+ * kind fell through as an in-scope conclusion question.
+ */
 const CT_KINDS: readonly [CriticalThinkingKind, RegExp][] = [
   ["main-conclusion", /main conclusion|best expresses/i],
-  ["parallel", /parallel|similar (in its )?reasoning|same (pattern|structure)/i],
+  ["parallel", /parallel|similar (in its )?reasoning|same (pattern|structure)|logical structure|matches the reasoning/i],
   ["assumption", /assum/i],
   ["flaw", /flaw/i],
   ["principle", /principle/i],
   ["strengthen", /strengthen/i],
   ["weaken", /weaken/i],
-  ["conclusion", /drawn|follows?|must be true|reliably|inferred|conclu/i],
+  ["conclusion", /\b(drawn|follows|must be true|reliably|inferred|conclu\w*)\b/i],
 ];
 
 export function criticalThinkingKind(text: string): CriticalThinkingKind {

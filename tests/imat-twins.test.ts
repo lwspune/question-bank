@@ -35,6 +35,16 @@ describe("criticalThinkingKind", () => {
     expect(criticalThinkingKind(text)).toBe(kind);
   });
 
+  it("does not read 'Which one of the following' as a conclusion question", () => {
+    expect(criticalThinkingKind("Which one of the following most closely matches the logical structure of the above argument?")).toBe("parallel");
+    expect(criticalThinkingKind("Which one of the following most closely matches the reasoning above?")).toBe("parallel");
+    expect(criticalThinkingKind("Which one of the following is the best statement of the issue?")).toBe("other");
+  });
+
+  it("still reads a genuine 'follows from' question as a conclusion", () => {
+    expect(criticalThinkingKind("Which one of the following follows from the passage?")).toBe("conclusion");
+  });
+
   it("reads 'main conclusion' before the generic 'conclusion'", () => {
     expect(criticalThinkingKind("Which is the main conclusion that can be drawn?")).toBe("main-conclusion");
   });
