@@ -8,6 +8,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { translationsFromRows, type Translation } from "@/lib/i18n/bilingual";
 import type { MockAnswerKey, OptionLabel } from "./answers";
+import { getExamByName } from "@/lib/exam/examContext";
 
 export type MockSnapshotQuestion = {
   position: number;
@@ -274,6 +275,14 @@ export type UserAttempt = {
    *  every type mixes, so the row has to say which this was. */
   source: MockSource;
   scope: MockScope;
+  /** The mock's exam and paper: together they are its SUBJECT on the history
+   *  views (lib/mocks/attemptHistory). The slug is resolved from the exam name
+   *  through EXAM_REGISTRY, since public.exams carries no slug. */
+  examSlug: string;
+  examName: string;
+  paperCode: string;
+  /** The paper's time, for "1 h 52 m of 2 h 30 m". */
+  durationSecs: number | null;
   status: "in_progress" | "submitted" | "expired";
   score: number | null;
   maxScore: number | null;
@@ -294,7 +303,7 @@ export async function getUserAttempts(
   let q = db
     .from("mock_attempts")
     .select(
-      "id, mock_id, status, score, max_score, correct_count, wrong_count, skipped_count, started_at, submitted_at, mock:mock_tests(slug, title, pyq_year, source, scope)"
+      "id, mock_id, status, score, max_score, correct_count, wrong_count, skipped_count, started_at, submitted_at, mock:mock_tests(slug, title, pyq_year, source, scope, paper_code, duration_secs, exam:exams(name))"
     )
     .eq("user_id", userId)
     .order("started_at", { ascending: false });
@@ -310,8 +319,13 @@ export async function getUserAttempts(
           pyq_year: number | null;
           source: MockSource | null;
           scope: MockScope | null;
+          paper_code: string | null;
+          duration_secs: number | null;
+          exam: { name: string } | { name: string }[] | null;
         }
       | null;
+    const exam = Array.isArray(mock?.exam) ? mock?.exam[0] : mock?.exam;
+    const examName = exam?.name ?? "";
     return {
       attemptId: row.id as string,
       mockSlug: mock?.slug ?? "",
@@ -319,6 +333,10 @@ export async function getUserAttempts(
       pyqYear: mock?.pyq_year ?? null,
       source: mock?.source ?? "pyq",
       scope: mock?.scope ?? "full",
+      examSlug: getExamByName(examName)?.slug ?? examName,
+      examName,
+      paperCode: mock?.paper_code ?? "",
+      durationSecs: mock?.duration_secs ?? null,
       status: row.status as UserAttempt["status"],
       score: row.score == null ? null : Number(row.score),
       maxScore: row.max_score == null ? null : Number(row.max_score),
