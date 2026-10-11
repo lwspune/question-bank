@@ -34,6 +34,22 @@ difficulty. Change everything else.
 6. **Solutions explain the trap**, not just the answer: name what the most
    tempting wrong option got wrong.
 
+## General knowledge twins: static facts only
+
+IMAT general knowledge is a fixed body of knowledge, not news. Of 67 Cambridge
+general-knowledge questions only one concerned the previous three years, and
+the ministry papers (2023-2026) ask classics, civics and economic concepts:
+characters and their books, De Bello Gallico, the President's role in a
+parliamentary system, the Hundred Years' War. The syllabus says the same
+("placing historical and cultural phenomena in time and space; major national
+and international institutions; law, economics and citizenship").
+
+So a general-knowledge twin tests settled knowledge in the ministry's style:
+classic literature and philosophy, history placed in time and space, how
+institutions work (EU, UN, parliamentary systems, courts), basic economics.
+Never a current officeholder or a recent event, even when the Cambridge source
+asked one; such a question also goes out of date.
+
 A finding from the originality check that you are sure is not a copy (a
 standard formula, the topic's own name) can be cleared with a reason in
 `scripts/imat/originality-reviews.json`; prefer rewording.
