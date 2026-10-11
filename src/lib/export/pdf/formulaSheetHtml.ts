@@ -108,11 +108,16 @@ body { margin: 0; font-family: "PV Serif", "PV Devanagari", "PV Math", "PV Sans"
 .brandline { font-size: 8pt; letter-spacing: .14em; text-transform: uppercase; color: #1D4ED8; font-weight: 600; }
 .eyebrow { font-size: 8pt; letter-spacing: .1em; text-transform: uppercase; color: #1D4ED8; font-weight: 600; text-align: right; }
 h1 { font-size: 15pt; line-height: 1.2; margin: 2pt 0 0; color: #0F1D4A; font-weight: 700; text-align: right; }
-.cols { column-count: 2; column-gap: 7mm; }
+.cols { column-count: 2; column-gap: 7mm; width: 186mm; }
+.cols + .full { margin-top: 9pt; }
 .block { border-left: 2.5pt solid var(--c); padding: 0 0 0 7pt; margin: 0 0 9pt; }
 .block h2 { font-size: 10.5pt; margin: 0 0 3pt; color: var(--c); break-after: avoid; }
 .f { margin: 0 0 5pt; break-inside: avoid; }
-.lbl { font-size: 8.5pt; font-weight: 700; color: #334155; }
+.full .f:has(> table.ref) { break-inside: auto; }
+.full .traps ul { column-count: 2; column-gap: 7mm; }
+.full .traps li { break-inside: avoid; }
+.ref tr { break-inside: avoid; }
+.lbl { font-size: 8.5pt; font-weight: 700; color: #334155; break-after: avoid; break-inside: avoid; }
 .math { font-size: 9.5pt; overflow: hidden; }
 .katex { font-size: 1.04em; }
 .katex-display { margin: 1.5pt 0; text-align: left; }
@@ -135,6 +140,73 @@ function footerCss(siteUrl: boolean): string {
     ` font-family: "PV Serif", serif; font-size: 7.5pt; color: #6B7280; } }`
   );
 }
+
+/**
+ * The page fits itself before it is printed (2026-10-12). A reference table
+ * cannot shrink below its widest cell that will not wrap, and a display
+ * formula cannot wrap at all, so in a column either one ran under the other
+ * column or was cut off by the formula box. Width depends on the fonts, so it
+ * is measured in the page, not guessed from the data.
+ *
+ * An item wider than its column is marked wide, and every section (subtopic)
+ * holding one is taken out of the two-column flow and laid out in one column
+ * across the page, where every table may break between rows (its header
+ * repeats) and the traps list takes two columns inside its box. An item still
+ * wider than the page is scaled down, never cut.
+ *
+ * Rejected on the way, each printed and looked at: `column-span` balanced the
+ * content before a spanner into two short columns (a heading split in half)
+ * and left a whole column empty across a page break; two columns INSIDE a
+ * full-width section left most of a page empty when a tall table that may not
+ * break in a column moved on; letting a column table break let the balancer
+ * split a four-row table three ways; marking a display formula that merely
+ * WRAPPED as wide added a page to 7 of the first 25 sheets measured, for lines
+ * that read fine (a wrap lands after a sign, so the continuation is plain).
+ *
+ * It runs on `load` after the fonts are ready, which is before the printer's
+ * own wait on `document.fonts.ready` resolves (callbacks run in the order they
+ * were added). Plain ES5 in a string, so no build step can rewrite it.
+ * Spec tests/formula-sheet-fit.test.ts runs this exact text; the real-browser
+ * check over every chapter is `npm run audit:formula-sheets`.
+ */
+export const FIT_SCRIPT = `function fitContent(f) { return f.querySelector("table.ref") || f.querySelector(".math"); }
+function fitNatural(f) { var c = fitContent(f); return c ? Math.max(c.offsetWidth, c.scrollWidth) : 0; }
+function markWide(items) {
+  var wide = [];
+  for (var i = 0; i < items.length; i++) if (fitNatural(items[i]) > items[i].clientWidth + 1) wide.push(items[i]);
+  for (var j = 0; j < wide.length; j++) wide[j].classList.add("wide");
+  return wide;
+}
+function shrinkWide(items) {
+  for (var i = 0; i < items.length; i++) {
+    var f = items[i], w = fitNatural(f);
+    if (w > f.clientWidth + 1) fitContent(f).style.zoom = String(Math.floor((f.clientWidth / w) * 1000) / 1000);
+  }
+}
+function regroup(root, main) {
+  var doc = root.ownerDocument || root, parent = main.parentNode, run = null;
+  var blocks = [].slice.call(main.children);
+  for (var i = 0; i < blocks.length; i++) {
+    var b = blocks[i];
+    if (b.querySelector(".f.wide")) {
+      run = null;
+      b.classList.add("full");
+      parent.insertBefore(b, main);
+    } else {
+      if (!run) { run = doc.createElement("div"); run.className = "cols"; parent.insertBefore(run, main); }
+      run.appendChild(b);
+    }
+  }
+  parent.removeChild(main);
+}
+function fitFormulaSheet(root) {
+  var main = root.querySelector("main.cols");
+  if (!main) return;
+  var wide = markWide(main.querySelectorAll(".f"));
+  if (wide.length === 0) return;
+  regroup(root, main);
+  shrinkWide(wide);
+}`;
 
 export function buildFormulaSheetHtml(input: {
   chapter: FormulaSheetChapter;
@@ -193,6 +265,8 @@ export function buildFormulaSheetHtml(input: {
     `${input.head}<style>${CSS}${footerCss(brand.siteUrl)}</style></head><body>${watermark}` +
     `<header class="masthead">${brandline}<div><div class="eyebrow">${esc(chapter.subjectDisplay)} · ${esc(chapterName)}</div>` +
     `<h1>Formula Sheet</h1></div></header>` +
-    `<main class="cols">${blocks.join("")}</main></body></html>`
+    `<main class="cols">${blocks.join("")}</main>` +
+    `<script>${FIT_SCRIPT}\naddEventListener("load", function () { document.body.offsetHeight;` +
+    ` document.fonts.ready.then(function () { fitFormulaSheet(document); }); });</script></body></html>`
   );
 }
