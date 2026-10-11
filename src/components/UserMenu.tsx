@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import * as Popover from "@radix-ui/react-popover";
-import { BookMarked, Bookmark, Building2, CreditCard, FileText, LayoutDashboard, Lightbulb, LogOut, MessageSquarePlus, PenLine, ShieldCheck, TrendingUp, User, Target } from "lucide-react";
+import { BookMarked, Bookmark, Building2, CreditCard, FileCheck2, FileText, LayoutDashboard, Lightbulb, LogOut, MessageSquarePlus, PenLine, ShieldCheck, TrendingUp, User, Target } from "lucide-react";
 import { toast } from "sonner";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { totalsLine, type Pulse } from "@/lib/pulse/cache";
@@ -214,6 +214,15 @@ export default function UserMenu({
           >
             <Bookmark className="h-4 w-4" aria-hidden />
             Saved questions
+          </Link>
+          <Link
+            // prefetch off: a per-user server render, like /performance above.
+            prefetch={false}
+            href="/me/answer-sheets"
+            className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
+          >
+            <FileCheck2 className="h-4 w-4" aria-hidden />
+            My answer sheets
           </Link>
           <Link
             href="/account"
