@@ -6,7 +6,7 @@
  *
  * Scope (owner, 2026-10-11): twin a Cambridge question only if its topic is in
  * the current syllabus (DM 1005/2026, Allegato A) or the ministry papers have
- * asked it. Figure questions wait for a later pass.
+ * asked it. Figure questions are in scope: a twin draws or sources its own figure.
  */
 import { describe, it, expect } from "vitest";
 import { buildTwinRow, checkTwins, criticalThinkingKind, twinScope, type ImatTwin } from "../scripts/imat/practice/lib";
@@ -115,6 +115,19 @@ describe("checkTwins", () => {
     expect(checkTwins([twin({ solution: "" })], sources).join()).toMatch(/solution/);
     expect(checkTwins([twin({ text: "Find \\(\\frac{1}{\\)" })], sources).join()).toMatch(/KaTeX/);
     expect(checkTwins([twin({ solution: "Chloroplasts — obviously." })], sources).join()).toMatch(/dash/);
+  });
+
+  it("refuses control characters: a shell that eats a backslash turns \\text into TAB + 'ext' and \\theta into TAB + 'heta'", () => {
+    expect(checkTwins([twin({ text: "Area (16pi \text{cm}^2)" })], sources).join()).toMatch(/control character/);
+    expect(checkTwins([twin({ solution: "Line one\r\nline two" })], sources).join()).toMatch(/control character/);
+    expect(checkTwins([twin({ text: "Line one\nline two" })], sources)).toEqual([]);
+  });
+
+  it("refuses LaTeX outside math: with the delimiters' backslashes gone too, KaTeX never sees it", () => {
+    expect(checkTwins([twin({ text: "Butane, (mathrm{C_4H_{10}}), burns." })], sources).join()).toMatch(/LaTeX outside math/);
+    expect(checkTwins([twin({ solution: "So (K_c) rises." })], sources).join()).toMatch(/LaTeX outside math/);
+    expect(checkTwins([twin({ options: ["(10^{22})", "b", "c", "d", "e"] })], sources).join()).toMatch(/LaTeX outside math/);
+    expect(checkTwins([twin({ text: String.raw`Butane, \(\mathrm{C_4H_{10}}\), burns; \(K_c\) rises.` })], sources)).toEqual([]);
   });
 });
 

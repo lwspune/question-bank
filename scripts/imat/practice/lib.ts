@@ -115,6 +115,11 @@ function mathProblems(s: string): string[] {
     }
   }
   if ((s.match(/\\\(/g) ?? []).length !== (s.match(/\\\)/g) ?? []).length) out.push("unbalanced \\( \\)");
+  // A lost backslash also takes the delimiters, so "(mathrm{CH_4})" is never a
+  // zone and KaTeX never sees it. Commands, braces and sub/superscripts have
+  // no business in plain prose.
+  const stray = s.replace(ZONE, " ").match(/\\[A-Za-z]+|\b(?:mathrm|tfrac|dfrac|frac|text|sqrt)\{|[_^]\{|\b[A-Za-z]_[A-Za-z0-9]|[A-Za-z0-9)]\^[0-9+-]/);
+  if (stray) out.push(`LaTeX outside math ("${stray[0]}")`);
   return out;
 }
 
@@ -154,6 +159,10 @@ export function checkTwins(
     for (const [field, s] of [["context", t.context ?? ""], ["text", t.text], ["solution", t.solution], ...t.options.map((o, i) => [`option ${i + 1}`, o])]) {
       for (const p of mathProblems(s)) problems.push(`${at} ${field}: KaTeX: ${p}`);
       if (DASH.test(s)) problems.push(`${at} ${field}: em dash, en dash or spaced double hyphen`);
+      // A shell or JSON escape that eats one backslash leaves a TAB where
+      // \text or \theta was, and the math delimiters vanish with it, so KaTeX
+      // sees nothing wrong. Only the line break is a legitimate control char.
+      if (/[\u0000-\u0009\u000B-\u001F]/.test(s)) problems.push(`${at} ${field}: control character (a lost backslash?)`);
     }
   }
   return problems;
