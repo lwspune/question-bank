@@ -7,7 +7,7 @@ import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supa
 import { loadEntitlements } from "@/lib/entitlements/query";
 import { hasActiveScope } from "@/lib/entitlements/access";
 import { formatRupees, planLengthLabel, type Plan } from "@/lib/billing/plans";
-import { listActivePlans, readFreeMockLimit } from "@/lib/billing/plansQuery";
+import { listActivePlans } from "@/lib/billing/plansQuery";
 import PricingClient from "./PricingClient";
 import { afterPurchasePath, pricingHref } from "@/lib/billing/checkoutReturn";
 import { logActivityOnce } from "@/lib/activity/service";
@@ -36,12 +36,7 @@ export default async function PricingPage({
   searchParams: { plan?: string; next?: string };
 }) {
   const anon = createSupabaseAnonClient();
-  const [member, user, plans, freeMocks] = await Promise.all([
-    getSessionMember(),
-    getSessionUser(),
-    listActivePlans(anon),
-    readFreeMockLimit(anon),
-  ]);
+  const [member, user, plans] = await Promise.all([getSessionMember(), getSessionUser(), listActivePlans(anon)]);
   const rows = user && !member ? await loadEntitlements(createSupabaseServerClient(), user.id) : [];
   if (user) {
     await logActivityOnce(createSupabaseServerClient(), user.id, surfaceViewedEvent(user.id, "pricing", new Date()));
@@ -60,11 +55,10 @@ export default async function PricingPage({
       <main className="mx-auto max-w-4xl px-6 py-12">
         <header className="hero-soft rounded-2xl px-5 py-8 text-center">
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Pricing</h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Browsing questions, guides and notes is free.{" "}
-            {freeMocks === null
-              ? "Mock tests are free too."
-              : `Your first ${freeMocks} mock tests are free too.`}
+          {/* The owner's own words (2026-10-11), kept in the first person on purpose. */}
+          <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
+            I wish I could keep all of PYQ Vault free. But maintaining and running the website costs money,
+            so I charge a small fee to keep it going. I hope you understand.
           </p>
         </header>
 
@@ -153,14 +147,6 @@ export default async function PricingPage({
               );
             })}
           </div>
-        )}
-
-        {plans.length > 0 && (
-          // The owner's own words (2026-10-11), kept in the first person on purpose.
-          <p className="mx-auto mt-8 max-w-md text-center font-serif text-sm leading-relaxed text-muted-foreground">
-            I wish I could keep all of PYQ Vault free. But maintaining and running the website costs money,
-            so I charge a small fee to keep it going. I hope you understand.
-          </p>
         )}
 
         <div className="mt-8 space-y-2 text-center text-xs text-muted-foreground">
