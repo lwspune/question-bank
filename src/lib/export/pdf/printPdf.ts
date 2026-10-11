@@ -29,7 +29,8 @@ const TIMEOUT_MS = 45_000;
 const OUTPUT_TAIL = 4000;
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-async function browser(): Promise<{ path: string; args: string[] }> {
+/** The Chromium that prints: also used by `npm run audit:formula-sheets` to measure. */
+export async function pdfBrowser(): Promise<{ path: string; args: string[] }> {
   if (process.env.PDF_BROWSER) return { path: process.env.PDF_BROWSER, args: ["--headless=new"] };
   if (process.platform === "linux") {
     const chromium = (await import("@sparticuz/chromium")).default;
@@ -129,7 +130,7 @@ async function printOnce(html: string): Promise<Buffer> {
   const profile = join(dir, "profile");
   const file = join(dir, "page.html");
   writeFileSync(file, html, "utf8");
-  const { path, args } = await browser();
+  const { path, args } = await pdfBrowser();
   const proc = spawn(
     path,
     printBrowserArgs(args, profile),
