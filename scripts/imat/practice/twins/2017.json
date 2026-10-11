@@ -16,6 +16,26 @@
     "solution": "Say there were n of each colour. Four rounds remove 4 x (2 + 1) = 12 red, 4 x 1 = 4 blue and 4 x (1 + 3) = 16 white, leaving 3n - 32 marbles, of which n - 4 are blue. Half blue means 2(n - 4) = 3n - 32, so n = 24 and the jar held 72. Check: 12 red, 20 blue and 8 white remain, and 20 is half of 40."
   },
   {
+    "id": "twin-2017-Q2",
+    "twinOf": "2017 Q2",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "The figure shows the cross-section of a long metal bar; the cross-section is the same along the whole length. Views 1 to 5 each show the whole length of the bar seen from one side, at right angles to its length, with a line wherever an edge of the bar can be seen. Hidden edges are not drawn.\nWhich view is NOT possible?",
+    "options": [
+      "1",
+      "2",
+      "4",
+      "5",
+      "3"
+    ],
+    "answer": "E",
+    "solution": "From above, the top is one flat face with no edges in it: view 5. From below, the short left leg stops one unit higher than the bottom bar, giving one line one unit from an edge: view 2. From the right you look into both slots and see faces at three different depths: view 1. From the left you look into the lower slot only: view 4, with the bar turned end to end. View 3 has a line four units from one edge of a six-unit side, which can only be the end of the middle bar; from below it is hidden behind the bottom bar and from above behind the top bar, so it is never seen.",
+    "figure": {
+      "file": "twin-2017-Q2.png",
+      "origin": "drawn"
+    }
+  },
+  {
     "id": "twin-2017-Q3",
     "twinOf": "2017 Q3",
     "section": "logic",
@@ -48,6 +68,42 @@
     "solution": "Compare splits of 7 kg. One parcel: €15.00. 5 + 2: €9.00 + €5.00 = €14.00. 4 + 3: €9.00 + €7.50 = €16.50. 3 + 2 + 2: €17.50. Using more small parcels only adds charges. The cheapest is a 5 kg parcel and a 2 kg parcel: €14.00."
   },
   {
+    "id": "twin-2017-Q5",
+    "twinOf": "2017 Q5",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "The door of a rectangular study is in the middle of one of its shorter walls. Standing in the doorway and looking in, you see a bookcase along the whole of the wall on your left, a desk in the far right-hand corner, and an armchair in the near right-hand corner, next to the door.\nWhich plan shows the study?",
+    "options": [
+      "2",
+      "1",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer": "A",
+    "solution": "Turn each plan so that you stand at its door looking in. In plan 2 the door is at the top of the page; looking down into the room, your left is the right-hand side of the page, where the bookcase is, the far right-hand corner is the bottom left of the page, where the desk is, and the chair is beside the door on your right. Plans 1, 4 and 5 put the bookcase on your right. Plan 3 is right about the bookcase and the desk but puts the chair in the far left-hand corner.",
+    "figure": {
+      "file": "twin-2017-Q5.png",
+      "origin": "drawn"
+    }
+  },
+  {
+    "id": "twin-2017-Q6",
+    "twinOf": "2017 Q6",
+    "section": "logic",
+    "chapter": "Numerical Reasoning",
+    "text": "Matchsticks are laid out to make a grid of squares, each side one matchstick long. A single row of three squares needs 10 matchsticks.\nHow many matchsticks are needed for a grid of 8 rows with 12 squares in each row?",
+    "options": [
+      "192",
+      "234",
+      "212",
+      "384",
+      "232"
+    ],
+    "answer": "C",
+    "solution": "Count the two directions separately. Horizontal matchsticks lie on 9 lines (one more than the rows), each 12 long: 108. Vertical matchsticks lie on 13 lines (one more than the squares in a row), each 8 long: 104. Total 212. Four per square (384) ignores that neighbouring squares share sides; two per square (192) forgets the extra line along two of the edges; 232 adds the whole perimeter on top of two per square, counting two edges twice."
+  },
+  {
     "id": "twin-2017-Q7",
     "twinOf": "2017 Q7",
     "section": "logic",
@@ -78,6 +134,26 @@
     ],
     "answer": "B",
     "solution": "The passage shows that the alternatives have environmental costs of their own, so simply switching bag type does not solve the problem. It does not say plastic is best (it lists plastic's harms), does not call for a ban on cotton bags, gives no reason for the shops' switch, and calls plastic litter harmful."
+  },
+  {
+    "id": "twin-2017-Q9",
+    "twinOf": "2017 Q9",
+    "section": "logic",
+    "chapter": "Data Interpretation",
+    "text": "Lena cycles 8 km from home in one hour, rests for 15 minutes, then cycles the next 4 km to a village in 15 minutes. She stays in the village for half an hour, then walks 6 km further along the same road, at 4 km/h, to a lake. She stays at the lake for half an hour and is then driven straight home, which takes 30 minutes.\nWhich graph shows her distance from home against time? (The marks on the time axis are 30 minutes apart.)",
+    "options": [
+      "3",
+      "1",
+      "2",
+      "4",
+      "5"
+    ],
+    "answer": "A",
+    "solution": "The walk of 6 km at 4 km/h takes 90 minutes (three marks), so it is the gentlest slope, and the drive home of 18 km in 30 minutes (one mark) is the steepest. Graph 3 has every stage: one hour of cycling, a 15-minute rest, a steeper 15 minutes of cycling, half an hour flat, three marks of walking, half an hour flat, then one mark back to zero. Graph 1 makes the drive home take an hour, graph 2 has the walk done in 30 minutes, graph 4 leaves out the stop in the village, and graph 5 returns home in no time at all.",
+    "figure": {
+      "file": "twin-2017-Q9.png",
+      "origin": "drawn"
+    }
   },
   {
     "id": "twin-2017-Q11",
