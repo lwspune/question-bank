@@ -1,5 +1,181 @@
 [
   {
+    "id": "twin-2016-Q2",
+    "twinOf": "2016 Q2",
+    "section": "logic",
+    "chapter": "Numerical Reasoning",
+    "text": "A workshop must finish seven repair jobs within 10 hours. The jobs take 9, 7, 5, 4, 3, 2 and 2 hours. Each job is done from start to finish by one mechanic, each mechanic works on one job at a time, and any mechanic can do any job.\nWhat is the smallest number of mechanics needed?",
+    "options": [
+      "3",
+      "5",
+      "7",
+      "2",
+      "4"
+    ],
+    "answer": "E",
+    "solution": "The jobs total 9 + 7 + 5 + 4 + 3 + 2 + 2 = 32 hours. Three mechanics can give at most 30 hours in the time, so at least 4 are needed. Four is enough: 9 | 7 + 3 | 5 + 4 | 2 + 2, all within 10 hours."
+  },
+  {
+    "id": "twin-2016-Q4",
+    "twinOf": "2016 Q4",
+    "section": "logic",
+    "chapter": "Numerical Reasoning",
+    "text": "A downhill race has two rounds. In round 2, the competitors set off in the reverse order of their placings after round 1, so the person in last place goes first. Anyone disqualified in round 1 does not take part in round 2.\nLuisa was the 5th competitor to set off in round 1. After round 1 she was in 9th place, so 12 rivals went before her in round 2. Two competitors were disqualified in round 1.\nHow many competitors entered the race?",
+    "options": [
+      "23",
+      "21",
+      "25",
+      "30",
+      "19"
+    ],
+    "answer": "A",
+    "solution": "In round 2 everyone placed below Luisa goes before her. She was 9th and 12 went before her, so 9 + 12 = 21 competitors finished round 1. Adding the 2 disqualified gives 23 entrants. Her starting position in round 1 does not matter."
+  },
+  {
+    "id": "twin-2016-Q5",
+    "twinOf": "2016 Q5",
+    "section": "logic",
+    "chapter": "Critical Thinking",
+    "text": "Chicks hatched in an incubator, which have never seen another bird, begin pecking at small seeds within a few hours of hatching. At first they miss the seed about a quarter of the time, but by their third day they rarely miss.\nWhich one of the following can be drawn as a conclusion from the above passage?",
+    "options": [
+      "Chicks learn to peck by watching their mother.",
+      "The urge to peck is inborn, and pecking accuracy improves with practice.",
+      "Pecking accuracy is fully developed at hatching.",
+      "Chicks raised by hens peck more accurately than incubator chicks.",
+      "Chicks prefer seeds to every other food."
+    ],
+    "answer": "B",
+    "solution": "The chicks peck within hours with no bird to copy, so the behaviour cannot have been learned from others: it is inborn. Their misses fall from about a quarter to almost none in three days, so accuracy improves with experience. Nothing is said about hen-raised chicks or about other foods."
+  },
+  {
+    "id": "twin-2016-Q6",
+    "twinOf": "2016 Q6",
+    "section": "logic",
+    "chapter": "Numerical Reasoning",
+    "text": "A ferry terminal opens at 6:30. Its small ferry needs 15 minutes to board passengers and then 45 minutes to cross the lake and come back. Its large ferry needs 30 minutes to board and then an hour and a half to cross and come back. The large ferry begins boarding at 6:45.\nBoth ferries must have finished all their trips by 12:00. If the small ferry is to make as many trips as possible, how much later than the large ferry can it begin boarding?",
+    "options": [
+      "at the same time",
+      "half an hour later",
+      "a quarter of an hour later",
+      "ten minutes later",
+      "three quarters of an hour later"
+    ],
+    "answer": "C",
+    "solution": "One small-ferry trip, boarding plus crossing and back, takes exactly 1 hour. From 6:30 to 12:00 is 5½ hours, so at most 5 trips fit, needing 5 hours: it must begin boarding by 7:00. That is a quarter of an hour after the large ferry, whose own timetable does not limit the small one."
+  },
+  {
+    "id": "twin-2016-Q7",
+    "twinOf": "2016 Q7",
+    "section": "logic",
+    "chapter": "Data Interpretation",
+    "text": "A pizzeria lists the ingredients of its doughs in relation to the flour: each figure is kilograms of that ingredient per 100 kg of flour.\n\n| dough | water | salt | oil | yeast |\n|---|---|---|---|---|\n| pizza | 62 | 2 | 3 | 1 |\n| rye bread | 70 | 2 | none | 1 |\n| sweet bun | 50 | 1 | 15 | 2 |\n| flatbread | 55 | 1.5 | 5 | none |\n\nToday the cook uses 40 kg of flour to make pizza dough. What is the total weight of the dough?",
+    "options": [
+      "27.2 kg",
+      "68.0 kg",
+      "40.0 kg",
+      "67.2 kg",
+      "64.8 kg"
+    ],
+    "answer": "D",
+    "solution": "The other ingredients add 62 + 2 + 3 + 1 = 68% of the flour's weight: 0.68 x 40 = 27.2 kg. The dough is the flour plus these: 40 + 27.2 = 67.2 kg. 27.2 kg forgets the flour, and 64.8 kg counts only the water."
+  },
+  {
+    "id": "twin-2016-Q8",
+    "twinOf": "2016 Q8",
+    "section": "logic",
+    "chapter": "Data Interpretation",
+    "text": "I want a breakfast cereal with at least 8 g of fibre and no more than 10 g of sugar per serving, at the lowest price per box.\n\n| cereal | price per box (€) | fibre per serving (g) | sugar per serving (g) |\n|---|---|---|---|\n| oat crunch | 3.20 | 9 | 12 |\n| bran flakes | 2.80 | 10 | 9 |\n| muesli | 3.50 | 8 | 7 |\n| corn flakes | 2.10 | 2 | 8 |\n| granola | 3.90 | 7 | 15 |\n| wheat bites | 2.95 | 8 | 10 |\n\nHow much will I pay for a box?",
+    "options": [
+      "€2.10",
+      "€2.95",
+      "€3.20",
+      "€3.50",
+      "€2.80"
+    ],
+    "answer": "E",
+    "solution": "Check both limits. Oat crunch and granola have too much sugar, and corn flakes and granola too little fibre. That leaves bran flakes (€2.80), muesli (€3.50) and wheat bites (€2.95, exactly on both limits, which is allowed). The cheapest is bran flakes at €2.80."
+  },
+  {
+    "id": "twin-2016-Q15",
+    "twinOf": "2016 Q15",
+    "section": "logic",
+    "chapter": "Critical Thinking",
+    "text": "Some conservationists have long argued that there is no proof that grey squirrels spread the squirrelpox virus, which kills red squirrels, and so culling grey squirrels cannot be justified. But DNA testing has now shown that the same virus passes from grey squirrels to red ones. This completely undermines the case of those who oppose culling. To save red squirrels from dying out, grey squirrels should be culled.\nWhich one of the following, if true, would most weaken this argument?",
+    "options": [
+      "Red squirrel numbers are falling mainly because the conifer forests they depend on are being cut down.",
+      "Opponents of culling want to protect grey squirrels whatever harm they do.",
+      "It is too difficult to vaccinate wild red squirrels against the virus.",
+      "Culling grey squirrels would be unpopular with many people.",
+      "Scientists do not all agree on how quickly the virus spreads."
+    ],
+    "answer": "A",
+    "solution": "The argument assumes that culling grey squirrels is the way to save the red ones. If red squirrels are disappearing mainly because their forests are being lost, culling would not save them, which undercuts the conclusion. Opponents' motives and public opinion do not touch the reasoning, the difficulty of vaccination supports culling, and disagreement about speed does not deny the link."
+  },
+  {
+    "id": "twin-2016-Q16",
+    "twinOf": "2016 Q16",
+    "section": "logic",
+    "chapter": "Data Interpretation",
+    "text": "Clocks in a company's reception show the local time in five of its offices. In January they read:\n\n| office | time |\n|---|---|\n| Rome | 14:00 |\n| London | 13:00 |\n| New York | 08:00 |\n| Sydney | 00:00 (next day) |\n| Tokyo | 22:00 |\n\nIn spring, clocks in Rome, London and New York are put forward one hour, clocks in Sydney are put back one hour, and Tokyo never changes its clocks.\nOnce all these changes have been made, how many hours is Sydney ahead of London?",
+    "options": [
+      "11",
+      "9",
+      "10",
+      "12",
+      "8"
+    ],
+    "answer": "B",
+    "solution": "In January Sydney (00:00 next day) is 11 hours ahead of London (13:00). In spring London moves forward one hour and Sydney back one hour, so the gap shrinks by 2 hours: 9 hours. Applying only one of the two changes gives 10."
+  },
+  {
+    "id": "twin-2016-Q19",
+    "twinOf": "2016 Q19",
+    "section": "logic",
+    "chapter": "Critical Thinking",
+    "text": "New cars are sold with fuel-consumption figures measured in laboratory tests that ordinary drivers almost never achieve. Some manufacturers have now begun to quote figures from real road tests as well. This should be welcomed: it shows that the laboratory figures mislead buyers about what a car will cost to run.\nWhich one of the following, if true, would most strengthen this argument?",
+    "options": [
+      "Some manufacturers quote road-test figures only to attract media attention.",
+      "Laboratory tests are cheaper to carry out than road tests.",
+      "Surveys show that drivers' real fuel use is on average 30% higher than the laboratory figures.",
+      "Few buyers read the fuel-consumption figures before choosing a car.",
+      "Road-test results vary with the weather and the driver."
+    ],
+    "answer": "C",
+    "solution": "The argument claims laboratory figures mislead buyers. Evidence that real fuel use is far higher than the laboratory figures supports that directly. A publicity motive and few buyers reading the figures weaken it, cost is irrelevant, and variable road tests suggest road figures are less reliable."
+  },
+  {
+    "id": "twin-2016-Q21",
+    "twinOf": "2016 Q21",
+    "section": "reading",
+    "chapter": "Politics, Economics and Society",
+    "text": "Which of these countries was NOT one of the six founding members of the European Economic Community in 1957?",
+    "options": [
+      "Italy",
+      "Belgium",
+      "Luxembourg",
+      "the United Kingdom",
+      "the Netherlands"
+    ],
+    "answer": "D",
+    "solution": "The Treaty of Rome was signed by Belgium, France, West Germany, Italy, Luxembourg and the Netherlands. The United Kingdom joined later, in 1973, together with Ireland and Denmark."
+  },
+  {
+    "id": "twin-2016-Q22",
+    "twinOf": "2016 Q22",
+    "section": "reading",
+    "chapter": "History",
+    "text": "Which Roman city was buried under volcanic ash when Mount Vesuvius erupted in AD 79?",
+    "options": [
+      "Ostia",
+      "Paestum",
+      "Ravenna",
+      "Aquileia",
+      "Pompeii"
+    ],
+    "answer": "E",
+    "solution": "The eruption of AD 79 buried Pompeii (and nearby Herculaneum and Stabiae), preserving a whole Roman town; Pliny the Younger described it in letters. Ostia was Rome's port, Paestum is known for its Greek temples, Ravenna became capital of the Western Roman Empire, and Aquileia was a great city in the north-east."
+  },
+  {
     "id": "twin-2016-Q23",
     "twinOf": "2016 Q23",
     "section": "biology",
