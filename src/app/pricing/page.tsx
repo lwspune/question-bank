@@ -19,7 +19,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "The Premium Pass: unlimited timed mock tests and Word question-paper + answer-key downloads, for students and teachers. Browsing stays free.",
+    "The Premium Pass: unlimited timed mock tests and PDF question-paper + answer-key downloads, for students and teachers. Browsing stays free.",
   // Indexable (a genuine landing surface), but it is reachable with `?plan=`
   // and `?next=`, so it declares its canonical.
   alternates: { canonical: "/pricing" },
@@ -153,6 +153,14 @@ export default async function PricingPage({
               );
             })}
           </div>
+        )}
+
+        {plans.length > 0 && (
+          // The owner's own words (2026-10-11), kept in the first person on purpose.
+          <p className="mx-auto mt-8 max-w-md text-center font-serif text-sm leading-relaxed text-muted-foreground">
+            I wish I could keep all of PYQ Vault free. But maintaining and running the website costs money,
+            so I charge a small fee to keep it going. I hope you understand.
+          </p>
         )}
 
         <div className="mt-8 space-y-2 text-center text-xs text-muted-foreground">
