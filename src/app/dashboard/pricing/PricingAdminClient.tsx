@@ -26,6 +26,7 @@ import {
   type PlanInput,
 } from "@/lib/billing/plans";
 import type { PaywallLimit, PaywallSettings } from "@/lib/billing/paywallSettings";
+import { PERK_PLACEHOLDERS } from "@/lib/billing/perkLimits";
 
 type Props = {
   initialPlans: Plan[];
@@ -368,11 +369,16 @@ export default function PricingAdminClient({ initialPlans, initialSettings, load
                 <Label htmlFor="plan-perks">Perks (one per line, up to 6)</Label>
                 <textarea
                   id="plan-perks"
+                  aria-describedby="plan-perks-hint"
                   value={draft.perks}
                   onChange={(e) => setDraft({ ...draft, perks: e.target.value })}
                   rows={4}
                   className={fieldClass}
                 />
+                <p id="plan-perks-hint" className="text-xs text-muted-foreground">
+                  Quote a free limit with a placeholder, filled in from the limits below:{" "}
+                  {PERK_PLACEHOLDERS.map((n) => `{${n}}`).join(" ")}. A perk whose limit is off is hidden.
+                </p>
               </div>
 
               <label className="flex items-center gap-2 text-sm">

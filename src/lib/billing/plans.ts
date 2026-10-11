@@ -15,6 +15,7 @@
  * plan, cannot reject a checkout that was open at the time.
  */
 import { SCOPE_ALL, SCOPE_MOCKS, SCOPE_TEACHER } from "@/lib/entitlements/access";
+import { PERK_PLACEHOLDERS, unknownPerkPlaceholders } from "./perkLimits";
 
 export const SELLABLE_SCOPES: readonly string[] = [SCOPE_MOCKS, SCOPE_TEACHER];
 
@@ -59,6 +60,14 @@ export function validatePlan(input: PlanInput): PlanValidation {
   if (!input.blurb.trim()) return { ok: false, field: "blurb", message: "Blurb is required." };
   if (input.perks.length > MAX_PERKS || input.perks.some((p) => !p.trim())) {
     return { ok: false, field: "perks", message: `Up to ${MAX_PERKS} perks, none blank.` };
+  }
+  const unknown = input.perks.flatMap(unknownPerkPlaceholders);
+  if (unknown.length > 0) {
+    return {
+      ok: false,
+      field: "perks",
+      message: `Unknown placeholder ${unknown.map((n) => `{${n}}`).join(", ")}. Use one of: ${PERK_PLACEHOLDERS.map((n) => `{${n}}`).join(", ")}.`,
+    };
   }
   if (!SLUG_RE.test(input.urlKey)) {
     return { ok: false, field: "urlKey", message: "URL key must be a slug, e.g. teacher." };

@@ -9,10 +9,13 @@
  *   4. free_mock_limit() is readable by anon and mirrors paywall_settings;
  *      savePaywallSettings applies nextPaywallSettings (counts_from moves
  *      only on switch-on).
+ *   5. free_limits() (migration 0152) gives anon every free limit a perk can
+ *      quote, and listActivePlans fills a perk's placeholders from it, hiding
+ *      the perk once its limit is switched off.
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { listActivePlans, readFreeMockLimit } from "@/lib/billing/plansQuery";
+import { listActivePlans, readFreeLimits, readFreeMockLimit } from "@/lib/billing/plansQuery";
 import {
   listAllPlans,
   upsertPlan,
@@ -38,7 +41,7 @@ describe.skipIf(!HAS_ENV)("public.plans", () => {
   let anon: SupabaseClient;
   let student: SupabaseClient;
   let studentId = "";
-  let originalSettings: { freeMockLimit: number | null; countsFrom: string | null };
+  let originalSettings: { freeMockLimit: number | null; countsFrom: string | null; freeRevealsPerDay: number | null };
 
   beforeAll(async () => {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -60,7 +63,11 @@ describe.skipIf(!HAS_ENV)("public.plans", () => {
     if (studentId) await admin.auth.admin.deleteUser(studentId);
     await admin
       .from("paywall_settings")
-      .update({ free_mock_limit: originalSettings.freeMockLimit, counts_from: originalSettings.countsFrom })
+      .update({
+        free_mock_limit: originalSettings.freeMockLimit,
+        counts_from: originalSettings.countsFrom,
+        free_reveals_per_day: originalSettings.freeRevealsPerDay,
+      })
       .eq("id", true);
   });
 
@@ -151,5 +158,38 @@ describe.skipIf(!HAS_ENV)("public.plans", () => {
 
     await savePaywallSettings({ enabled: false, limit: 5 });
     expect(await readFreeMockLimit(anon)).toBeNull();
+  });
+
+  it("free_limits() is anon-readable and listActivePlans fills a perk from it", async () => {
+    await savePaywallSettings({ which: "reveals", enabled: true, limit: 23 });
+    expect(await readFreeLimits(anon)).toMatchObject({ reveals: 23 });
+
+    const input = {
+      id: TEST_ID,
+      label: "Test Pass",
+      blurb: "For the test.",
+      perks: ["Unlimited answers (free: {reveals} a day)", "Plain perk"],
+      urlKey: TEST_ID,
+      amountPaise: 12300,
+      currency: "INR" as const,
+      durationDays: 30,
+      scope: SCOPE_MOCKS,
+      sortOrder: 99,
+      active: true,
+    };
+    expect(await upsertPlan(input)).toEqual({ kind: "ok" });
+    const filled = (await listActivePlans(anon)).find((p) => p.id === TEST_ID)!;
+    expect(filled.perks).toEqual(["Unlimited answers (free: 23 a day)", "Plain perk"]);
+
+    // The admin editor keeps the placeholder, so the next save does not freeze the number.
+    const raw = await listAllPlans();
+    expect(raw.kind === "ok" && raw.plans.find((p) => p.id === TEST_ID)?.perks[0]).toBe(
+      "Unlimited answers (free: {reveals} a day)"
+    );
+
+    await savePaywallSettings({ which: "reveals", enabled: false, limit: 23 });
+    expect(await readFreeLimits(anon)).toMatchObject({ reveals: null });
+    const off = (await listActivePlans(anon)).find((p) => p.id === TEST_ID)!;
+    expect(off.perks).toEqual(["Plain perk"]);
   });
 });

@@ -7,6 +7,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import type { Plan } from "./plans";
+import { PERK_PLACEHOLDERS, fillPerks, type FreeLimits } from "./perkLimits";
 
 export type PlanRow = {
   id: string;
@@ -41,21 +42,44 @@ export function rowToPlan(r: PlanRow): Plan {
   };
 }
 
-/** Active plans in display order. Empty on error (a page shows no passes rather than 500ing). */
+/**
+ * Active plans in display order, perks filled from the live free limits
+ * (lib/billing/perkLimits). Empty on error (a page shows no passes rather than
+ * 500ing). The admin editor reads raw rows through listAllPlans instead.
+ */
 export async function listActivePlans(client: SupabaseClient): Promise<Plan[]> {
-  const { data, error } = await client
-    .from("plans")
-    .select(PLAN_COLUMNS)
-    .eq("active", true)
-    .order("sort_order", { ascending: true });
+  const [{ data, error }, limits] = await Promise.all([
+    client.from("plans").select(PLAN_COLUMNS).eq("active", true).order("sort_order", { ascending: true }),
+    readFreeLimits(client),
+  ]);
   if (error) {
     console.error("listActivePlans:", error.message);
     return [];
   }
-  return ((data ?? []) as PlanRow[]).map(rowToPlan);
+  return ((data ?? []) as PlanRow[]).map((r) => withLiveLimits(rowToPlan(r), limits));
 }
 
-/** Cleared by /api/admin/plans on every price save, so a change shows at once. */
+function withLiveLimits(plan: Plan, limits: FreeLimits | null): Plan {
+  return { ...plan, perks: fillPerks(plan.perks, limits) };
+}
+
+/** The numbers a perk's placeholders stand for (migration 0152); null if unreadable. */
+export async function readFreeLimits(client: SupabaseClient): Promise<FreeLimits | null> {
+  const { data, error } = await client.rpc("free_limits");
+  if (error || !data || typeof data !== "object") {
+    if (error) console.error("free_limits:", error.message);
+    return null;
+  }
+  const row = data as Record<string, unknown>;
+  const limits = {} as FreeLimits;
+  for (const name of PERK_PLACEHOLDERS) {
+    const v = row[name];
+    limits[name] = typeof v === "number" ? v : null;
+  }
+  return limits;
+}
+
+/** Cleared by /api/admin/plans on every price OR limit save, so a change shows at once. */
 export const PLANS_CACHE_TAG = "plans";
 
 /**
@@ -70,15 +94,17 @@ export const PLANS_CACHE_TAG = "plans";
  */
 const listActivePlansRemembered = unstable_cache(
   async (): Promise<Plan[]> => {
-    const { data, error } = await createSupabaseAnonClient()
-      .from("plans")
-      .select(PLAN_COLUMNS)
-      .eq("active", true)
-      .order("sort_order", { ascending: true });
+    const anon = createSupabaseAnonClient();
+    const [{ data, error }, limits] = await Promise.all([
+      anon.from("plans").select(PLAN_COLUMNS).eq("active", true).order("sort_order", { ascending: true }),
+      readFreeLimits(anon),
+    ]);
     if (error) throw new Error(error.message);
-    return ((data ?? []) as PlanRow[]).map(rowToPlan);
+    // Unreadable limits would hide every perk quoting one; do not remember that.
+    if (!limits) throw new Error("free_limits unreadable");
+    return ((data ?? []) as PlanRow[]).map((r) => withLiveLimits(rowToPlan(r), limits));
   },
-  ["active-plans-v1"],
+  ["active-plans-v2"],
   { revalidate: 86400, tags: [PLANS_CACHE_TAG] }
 );
 
