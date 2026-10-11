@@ -256,6 +256,26 @@
     "solution": "Write the shares as 6k, 4k and 3k. Adding €8 to the smallest makes it equal to the middle one: 3k + 8 = 4k, so k = 8 and the shares were €48, €32 and €24, which is €104. With the extra €8 she gave €112 altogether. €104 forgets the extra €8."
   },
   {
+    "id": "twin-2012-Q25",
+    "twinOf": "2012 Q25",
+    "section": "logic",
+    "chapter": "Data Interpretation",
+    "text": "A single dose of a drug is swallowed. The drug passes from the gut into the blood, and the kidneys then remove it from the blood; once removed it does not come back. The three graphs show, over the same time, the amount of drug in the gut, the amount in the blood and the amount already eliminated.\nWhat do graphs 1, 2 and 3 show?",
+    "options": [
+      "1: in the gut; 2: in the blood; 3: eliminated",
+      "1: in the blood; 2: in the gut; 3: eliminated",
+      "1: eliminated; 2: in the blood; 3: in the gut",
+      "1: in the gut; 2: eliminated; 3: in the blood",
+      "1: eliminated; 2: in the gut; 3: in the blood"
+    ],
+    "answer": "E",
+    "solution": "All the drug starts in the gut, so the gut curve starts at its highest and only falls: graph 2. The blood starts with none, gains drug from the gut and loses it to the kidneys, so it rises to a peak and then falls: graph 3. The eliminated amount starts at zero and can only grow, slowly at first while little drug is in the blood: graph 1.",
+    "figure": {
+      "file": "twin-2012-Q25.png",
+      "origin": "drawn"
+    }
+  },
+  {
     "id": "twin-2012-Q27",
     "twinOf": "2012 Q27",
     "section": "logic",
@@ -416,6 +436,54 @@
     "solution": "The obvious objection is that dark shop fronts invite crime. Evidence that switching off has not increased break-ins answers it and supports the argument. A small share of energy use and efficient LEDs reduce the saving; owners' wishes and passers-by feeling safer are reasons against switching off."
   },
   {
+    "id": "twin-2012-Q37",
+    "twinOf": "2012 Q37",
+    "section": "logic",
+    "chapter": "Data Interpretation",
+    "text": "A 250 g bag of crackers carries this label.\n\n| | per 100 g | per cracker |\n|---|---|---|\n| energy | 480 kcal | 60 kcal |\n| sugars | 12 g | 1.5 g |\n| fat | 20 g | 2.5 g |\n| salt | 1.6 g | 0.20 g |\n\nHow many crackers are in a full bag?",
+    "options": [
+      "20",
+      "8",
+      "13",
+      "25",
+      "40"
+    ],
+    "answer": "A",
+    "solution": "Each cracker has an eighth of the energy in 100 g (60 out of 480 kcal), so a cracker weighs 100 / 8 = 12.5 g; the sugar, fat and salt figures agree. A 250 g bag holds 250 / 12.5 = 20 crackers. 8 is the number of crackers in 100 g, and 13 is the weight of one cracker rounded up."
+  },
+  {
+    "id": "twin-2012-Q40",
+    "twinOf": "2012 Q40",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "On Linden Road the houses are numbered from one end: 1, 2, 3 and so on up one side, then on back down the other side, so that the highest number is opposite number 1. Both sides have the same number of houses.\nHouse 6 is directly opposite house 27. How many houses are there on Linden Road?",
+    "options": [
+      "33",
+      "32",
+      "34",
+      "31",
+      "27"
+    ],
+    "answer": "B",
+    "solution": "With N houses, number 1 faces number N, 2 faces N - 1, and in general a pair of facing houses always adds up to N + 1. Here 6 + 27 = 33, so N + 1 = 33 and there are 32 houses. Check: 32 houses means 16 on each side, and the sixth house up one side faces the sixth from the far end on the other, number 32 - 5 = 27. 33 forgets to subtract 1."
+  },
+  {
+    "id": "twin-2012-Q41",
+    "twinOf": "2012 Q41",
+    "section": "biology",
+    "chapter": "Biomolecules and Enzymes",
+    "text": "In amylopectin, some glucose units are branch points: each is joined to the glucose before it in the chain and to two glucose units after it, one continuing the chain and one starting a branch.\nWhich carbon atoms of a branch-point glucose take part in glycosidic bonds?",
+    "options": [
+      "C1 and C4 only",
+      "C1 and C6 only",
+      "C1, C4 and C6",
+      "C4 and C6 only",
+      "C2, C3 and C6"
+    ],
+    "answer": "C",
+    "solution": "Along a chain, glucose units are joined by \\(\\alpha\\)-1,4 glycosidic bonds: the C1 of one unit bonds to the C4 of the next. A branch starts with an \\(\\alpha\\)-1,6 bond from C6 of the branch-point glucose. So the branch-point glucose uses C4 (bond from the unit before), C1 (bond to the next unit in the chain) and C6 (bond to the branch). C1 and C4 alone describe an ordinary unit in an unbranched chain such as amylose."
+  },
+  {
     "id": "twin-2012-Q42",
     "twinOf": "2012 Q42",
     "section": "biology",
@@ -462,6 +530,22 @@
     ],
     "answer": "D",
     "solution": "The hypothalamus is the body's thermostat and also senses the water potential of the blood, controlling ADH release from the pituitary. Insulin release needs no brain: the beta cells of the pancreas detect the glucose concentration themselves and respond directly. 1 and 2 only."
+  },
+  {
+    "id": "twin-2012-Q45",
+    "twinOf": "2012 Q45",
+    "section": "biology",
+    "chapter": "Cell Structure and Membranes",
+    "text": "Which of these components of a cell surface membrane have both a hydrophobic part and a hydrophilic part?\n1 phospholipids\n2 cholesterol\n3 proteins that span the whole membrane\n4 the carbohydrate chains of glycoproteins",
+    "options": [
+      "1 only",
+      "1 and 2 only",
+      "2 and 4 only",
+      "1, 2 and 3 only",
+      "1, 2, 3 and 4"
+    ],
+    "answer": "D",
+    "solution": "Phospholipids have hydrophilic phosphate heads and hydrophobic fatty-acid tails. Cholesterol is mostly a hydrophobic ring system but carries one polar OH group, which sits among the phospholipid heads. A protein that crosses the membrane has a hydrophobic band where it passes through the tails and hydrophilic parts on both surfaces. The carbohydrate chains are covered in OH groups and are hydrophilic throughout."
   },
   {
     "id": "twin-2012-Q46",
@@ -574,6 +658,22 @@
     ],
     "answer": "A",
     "solution": "Simple and facilitated diffusion are both passive: they go from high to low concentration, the second through channel or carrier proteins. Active transport uses carrier proteins and ATP to move substances AGAINST the gradient. 1 and 2 only."
+  },
+  {
+    "id": "twin-2012-Q53",
+    "twinOf": "2012 Q53",
+    "section": "biology",
+    "chapter": "Molecular Biology and Gene Expression",
+    "text": "Which of the following is a single nucleotide of DNA?",
+    "options": [
+      "a base pair held together by hydrogen bonds",
+      "a deoxyribose bonded to two phosphate groups",
+      "a phosphate group bonded to two bases",
+      "a ribose bonded to a base and to a phosphate group",
+      "a deoxyribose bonded to a base and to a phosphate group"
+    ],
+    "answer": "E",
+    "solution": "A nucleotide has three parts: a phosphate group, a pentose sugar and a nitrogenous base, with the base and the phosphate both attached to the sugar. In DNA the sugar is deoxyribose; ribose belongs to RNA nucleotides. A base pair joins two nucleotides on opposite strands, and in the backbone each sugar is linked to two phosphates only because neighbouring nucleotides are joined together."
   },
   {
     "id": "twin-2012-Q54",
@@ -768,6 +868,22 @@
     "solution": "Pulling an electron away from a nucleus always takes energy, so every ionisation energy is endothermic. The second electron leaves a 1+ ion that holds its remaining electrons more tightly, so the second ionisation energy is larger (about 1450 against 740 kJ/mol for magnesium)."
   },
   {
+    "id": "twin-2012-Q66",
+    "twinOf": "2012 Q66",
+    "section": "chemistry",
+    "chapter": "Chemical Bonding",
+    "text": "Two elements can be joined by sharing electrons. For which pair would you expect sharing rather than transfer of electrons?",
+    "options": [
+      "phosphorus and chlorine",
+      "sodium and fluorine",
+      "barium and chlorine",
+      "calcium and oxygen",
+      "potassium and iodine"
+    ],
+    "answer": "A",
+    "solution": "Covalent bonds form between non-metals, whose electronegativities are similar, so they share electrons rather than transfer them; phosphorus and chlorine form \\(\\mathrm{PCl_3}\\) and \\(\\mathrm{PCl_5}\\), molecular compounds. Every other pair joins a reactive metal from Group 1 or 2 with a reactive non-metal, a large difference in electronegativity that gives ionic compounds."
+  },
+  {
     "id": "twin-2012-Q67",
     "twinOf": "2012 Q67",
     "section": "chemistry",
@@ -884,6 +1000,23 @@
     "solution": "Heating is \\(I^2R\\), which is zero when R is zero, and with no resistance no voltage is needed to keep a steady current going. But any current produces a magnetic field, which is why superconducting coils are used for the strong magnets in MRI scanners."
   },
   {
+    "id": "twin-2012-Q74",
+    "twinOf": "2012 Q74",
+    "section": "physmath",
+    "subject": "Physics",
+    "chapter": "Electricity",
+    "text": "Three identical capacitors, each of capacitance \\(C\\), are connected in three ways:\n1 two of them in parallel, with that pair in series with the third;\n2 all three in parallel;\n3 all three in series.\nWhich order lists the arrangements by increasing total capacitance (smallest first)?",
+    "options": [
+      "1, 2, 3",
+      "3, 1, 2",
+      "2, 1, 3",
+      "3, 2, 1",
+      "1, 3, 2"
+    ],
+    "answer": "B",
+    "solution": "Capacitances in parallel add; in series their reciprocals add. All three in series: \\(1/C_{tot} = 3/C\\), so \\(C/3\\). Two in parallel make \\(2C\\), and in series with \\(C\\): \\(1/C_{tot} = 1/(2C) + 1/C = 3/(2C)\\), so \\(2C/3\\). All three in parallel: \\(3C\\). In increasing order: 3, 1, 2. The rules are the reverse of those for resistors, which is the usual trap."
+  },
+  {
     "id": "twin-2012-Q75",
     "twinOf": "2012 Q75",
     "section": "physmath",
@@ -933,6 +1066,23 @@
     ],
     "answer": "C",
     "solution": "At most, every musician also plays a sport: \\(\\tfrac{1}{2}\\). At least, the two groups overlap as little as possible, but together they make \\(\\tfrac{5}{4}\\) of a class, so at least \\(\\tfrac{3}{4} + \\tfrac{1}{2} - 1 = \\tfrac{1}{4}\\) must do both. \\(\\tfrac{3}{8}\\) is the value only if the two are independent."
+  },
+  {
+    "id": "twin-2012-Q78",
+    "twinOf": "2012 Q78",
+    "section": "physmath",
+    "subject": "Mathematics",
+    "chapter": "Geometry",
+    "text": "ABCDEF is a regular hexagon centred on the origin, lettered anticlockwise, with A on the positive y-axis. R turns the hexagon about the origin so that A lands where B was, B where C was, and so on. S reflects it in the y-axis.\nWhich sequence of R and S, carried out in the order listed, would NOT bring vertex D back to its starting position?",
+    "options": [
+      "S R S R",
+      "R S R",
+      "R S R S R S",
+      "R R S R R S",
+      "S R R S R R"
+    ],
+    "answer": "C",
+    "solution": "Number the positions 0 (top, where A starts) to 5 anticlockwise; D starts at 3. R moves a point one place anticlockwise (\\(p \\to p + 1\\)); S reflects it in the y-axis (\\(p \\to -p\\), mod 6), which fixes positions 0 and 3. R S R: 3, 4, 2, 3: back. S R S R: 3, 3, 4, 2, 3: back. R R S R R S: 3, 4, 5, 1, 2, 3, 3: back. S R R S R R: 3, 3, 4, 5, 1, 2, 3: back. R S R S R S: 3, 4, 2, 3, 3, 4, 2: D ends at position 2, so it has not returned."
   },
   {
     "id": "twin-2012-Q79",

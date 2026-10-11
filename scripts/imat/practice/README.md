@@ -14,8 +14,8 @@ npx tsx scripts/imat/practice/commit.ts all --apply  # write (back up first: npm
 In the bank the twins are PRIVATE practice questions (question_kind
 'practice', written at insert), each with its solution, under source_file
 `imat-twins-<year>.json` (roll back by that). Not publish_blocked: they are
-ours. The Cambridge source is never written to the database. All 577 were
-loaded on 2026-10-11; figure twins follow (below).
+ours. The Cambridge source is never written to the database. All 681 were
+loaded on 2026-10-11 (577 text twins, then the 104 figure twins).
 
 ## Writing a twin
 
