@@ -1,5 +1,277 @@
 [
   {
+    "id": "twin-2021-Q4",
+    "twinOf": "2021 Q4",
+    "section": "logic",
+    "chapter": "Deductive Logic",
+    "text": "Every member of the swimming club may use the town pool free of charge on Sundays. You are not a member of the club, so you cannot count on free entry to the pool on Sunday.\nWhich one of the following most closely parallels this reasoning?",
+    "options": [
+      "Every airline pilot must pass a medical examination. You failed yours, so you cannot become a pilot.",
+      "All the students who passed the exam received a certificate. You received a certificate, so you passed.",
+      "Club members get free entry on Sundays. You are a member, so your entry this Sunday is free.",
+      "The only way into the final is to win the semi-final. Your team lost its semi-final, so it cannot play in the final.",
+      "Everyone who buys a season ticket gets free parking at the stadium. You have no season ticket, so you are not guaranteed free parking."
+    ],
+    "answer": "E",
+    "solution": "The argument has the form: everyone in group G gets benefit B; you are not in G; so B is not GUARANTEED for you. The season-ticket option matches, including the careful conclusion (not guaranteed, rather than refused). The pilot and semi-final options are about a requirement that, if missing, rules something out completely; the certificate option reasons backwards; the third applies the rule to a member."
+  },
+  {
+    "id": "twin-2021-Q6",
+    "twinOf": "2021 Q6",
+    "section": "logic",
+    "chapter": "Numerical Reasoning",
+    "text": "In a survey, 15% of the students named biology as their favourite subject, 25% named chemistry and 35% named physics. Another 9 students liked all three equally, and the remaining 21 students liked none of them.\nHow many students took part in the survey?",
+    "options": [
+      "120",
+      "30",
+      "75",
+      "90",
+      "200"
+    ],
+    "answer": "A",
+    "solution": "15% + 25% + 35% = 75% chose one subject, so the other 25% is made up of the 9 + 21 = 30 remaining students. If 25% is 30 students, the whole survey is 4 x 30 = 120."
+  },
+  {
+    "id": "twin-2021-Q7",
+    "twinOf": "2021 Q7",
+    "section": "logic",
+    "chapter": "Numerical Reasoning",
+    "text": "Five red beads and fifteen white beads are threaded in some order on a closed loop of string. The beads are arranged so that as few white beads as possible have no red bead touching them.\nHow many white beads have no red bead touching them?",
+    "options": [
+      "3",
+      "5",
+      "10",
+      "7",
+      "0"
+    ],
+    "answer": "B",
+    "solution": "Each red bead touches two neighbours, so at most 5 x 2 = 10 white beads can touch a red one, and that needs at least two white beads between every pair of red beads, so no white bead touches two reds. Then 10 white beads touch a red and 15 - 10 = 5 do not. It cannot be fewer, because 10 is the most places next to a red bead."
+  },
+  {
+    "id": "twin-2021-Q8",
+    "twinOf": "2021 Q8",
+    "section": "logic",
+    "chapter": "Data Interpretation",
+    "text": "Laura needs 30 party invitations, all of one design. She will only buy invitations printed on recycled paper.\n\n| design | invitations per pack | recycled paper | price per pack |\n|---|---|---|---|\n| stars | 6 | yes | £1.50 |\n| balloons | 10 | no | £2.00 |\n| flowers | 8 | yes | £1.90 |\n| animals | 12 | yes | £3.20 |\n| rockets | 15 | yes | £4.10 |\n\nWhat is the least she can spend?",
+    "options": [
+      "£6.00",
+      "£7.60",
+      "£7.50",
+      "£8.20",
+      "£9.60"
+    ],
+    "answer": "C",
+    "solution": "Balloons are not recycled, so they are out (3 packs for £6.00 is the trap). For 30 invitations: stars need 5 packs = £7.50; flowers need 4 packs (32) = £7.60; animals need 3 packs (36) = £9.60; rockets need 2 packs = £8.20. The cheapest is £7.50."
+  },
+  {
+    "id": "twin-2021-Q10",
+    "twinOf": "2021 Q10",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "A greengrocer paints a word in capital letters on a glass door, one letter under another down the door. She wants it to read correctly from inside the shop as well as from outside.\nWhich word would work?",
+    "options": [
+      "LEMON",
+      "BANANA",
+      "CHERRY",
+      "TOMATO",
+      "GRAPE"
+    ],
+    "answer": "D",
+    "solution": "Seen from behind, each letter is mirrored left to right. Written vertically, the order of the letters stays the same, so the word works only if every letter is symmetrical about a vertical line. T, O, M and A all are. LEMON fails on L, E and N; BANANA on B and N; CHERRY on C, E and R; GRAPE on G, R, P and E."
+  },
+  {
+    "id": "twin-2021-Q11",
+    "twinOf": "2021 Q11",
+    "section": "reading",
+    "chapter": "Literature and Philosophy",
+    "text": "Which pair of scholar and field of study is NOT correct?",
+    "options": [
+      "Charles Darwin: biology",
+      "Antoine Lavoisier: chemistry",
+      "Sigmund Freud: psychoanalysis",
+      "Adam Smith: economics",
+      "Johannes Kepler: medicine"
+    ],
+    "answer": "E",
+    "solution": "Johannes Kepler was an astronomer and mathematician, known for the laws of planetary motion, not a physician. Darwin developed evolution by natural selection, Lavoisier founded modern chemistry, Freud founded psychoanalysis, and Adam Smith's The Wealth of Nations founded modern economics."
+  },
+  {
+    "id": "twin-2021-Q12",
+    "twinOf": "2021 Q12",
+    "section": "reading",
+    "chapter": "Literature and Philosophy",
+    "text": "Who wrote the novel The Name of the Rose, a murder mystery set in a medieval monastery?",
+    "options": [
+      "Umberto Eco",
+      "Italo Calvino",
+      "Alessandro Manzoni",
+      "Primo Levi",
+      "Elsa Morante"
+    ],
+    "answer": "A",
+    "solution": "Umberto Eco, the semiotician from Alessandria, published The Name of the Rose in 1980. Calvino wrote If on a Winter's Night a Traveller, Manzoni The Betrothed, Primo Levi If This Is a Man, and Elsa Morante History."
+  },
+  {
+    "id": "twin-2021-Q13",
+    "twinOf": "2021 Q13",
+    "section": "reading",
+    "chapter": "Politics, Economics and Society",
+    "text": "In UNESCO, the United Nations agency, what does the letter S stand for?",
+    "options": [
+      "Social",
+      "Scientific",
+      "Security",
+      "Sustainable",
+      "Sanitary"
+    ],
+    "answer": "B",
+    "solution": "UNESCO is the United Nations Educational, Scientific and Cultural Organization. It works through education, science and culture, and keeps the list of World Heritage Sites."
+  },
+  {
+    "id": "twin-2021-Q14",
+    "twinOf": "2021 Q14",
+    "section": "reading",
+    "chapter": "Literature and Philosophy",
+    "text": "Which museum is correctly paired with its city?",
+    "options": [
+      "the Prado: Barcelona",
+      "the Hermitage: Moscow",
+      "the Uffizi: Florence",
+      "the Rijksmuseum: Brussels",
+      "the Louvre: Lyon"
+    ],
+    "answer": "C",
+    "solution": "The Uffizi Gallery is in Florence. The Prado is in Madrid, the Hermitage in Saint Petersburg, the Rijksmuseum in Amsterdam and the Louvre in Paris."
+  },
+  {
+    "id": "twin-2021-Q15",
+    "twinOf": "2021 Q15",
+    "section": "reading",
+    "chapter": "History",
+    "text": "Magna Carta, agreed by King John of England in 1215, is best known for",
+    "options": [
+      "uniting the kingdoms of England and Scotland.",
+      "creating the House of Commons.",
+      "ending the Hundred Years' War.",
+      "limiting the power of the king and protecting certain rights of his subjects.",
+      "founding the Church of England."
+    ],
+    "answer": "D",
+    "solution": "Magna Carta placed the king under the law, for example protecting free men from imprisonment without lawful judgement; it became a symbol of limited government. England and Scotland united in 1707, the Hundred Years' War ended in 1453, and Henry VIII broke with Rome in the 1530s."
+  },
+  {
+    "id": "twin-2021-Q16",
+    "twinOf": "2021 Q16",
+    "section": "reading",
+    "chapter": "Politics, Economics and Society",
+    "text": "Which institution of the European Union has the main right to propose new EU laws?",
+    "options": [
+      "the European Parliament",
+      "the European Council",
+      "the Court of Justice of the European Union",
+      "the European Central Bank",
+      "the European Commission"
+    ],
+    "answer": "E",
+    "solution": "The European Commission proposes legislation (the right of initiative); the European Parliament and the Council of the EU then amend and adopt it. The European Council of heads of government sets overall direction but does not legislate, the Court interprets EU law, and the ECB runs monetary policy."
+  },
+  {
+    "id": "twin-2021-Q17",
+    "twinOf": "2021 Q17",
+    "section": "reading",
+    "chapter": "Literature and Philosophy",
+    "text": "Which director made the films La Dolce Vita and 8½?",
+    "options": [
+      "Federico Fellini",
+      "Roberto Rossellini",
+      "Vittorio De Sica",
+      "Michelangelo Antonioni",
+      "Pier Paolo Pasolini"
+    ],
+    "answer": "A",
+    "solution": "Federico Fellini directed La Dolce Vita (1960) and 8½ (1963). Rossellini made Rome, Open City; De Sica made Bicycle Thieves; Antonioni made L'Avventura; Pasolini made The Gospel According to St Matthew."
+  },
+  {
+    "id": "twin-2021-Q18",
+    "twinOf": "2021 Q18",
+    "section": "reading",
+    "chapter": "History",
+    "text": "Which pair of scientist and discovery is NOT correct?",
+    "options": [
+      "Gregor Mendel: the laws of inheritance",
+      "Galileo Galilei: the structure of DNA",
+      "Michael Faraday: electromagnetic induction",
+      "Ernest Rutherford: the atomic nucleus",
+      "Edward Jenner: vaccination against smallpox"
+    ],
+    "answer": "B",
+    "solution": "The double helix of DNA was described by Watson and Crick in 1953, using Rosalind Franklin's X-ray images; Galileo, three centuries earlier, studied motion and observed the moons of Jupiter. The other pairs are correct."
+  },
+  {
+    "id": "twin-2021-Q19",
+    "twinOf": "2021 Q19",
+    "section": "reading",
+    "chapter": "History",
+    "text": "Which treaty, signed in 1992, created the European Union and set the path towards the euro?",
+    "options": [
+      "Paris",
+      "Rome",
+      "Maastricht",
+      "Lisbon",
+      "Westphalia"
+    ],
+    "answer": "C",
+    "solution": "The Treaty of Maastricht (1992, in force 1993) created the European Union and planned economic and monetary union. Paris (1951) founded the Coal and Steel Community, Rome (1957) the European Economic Community, Lisbon (2007) reformed the EU, and Westphalia (1648) ended the Thirty Years' War."
+  },
+  {
+    "id": "twin-2021-Q20",
+    "twinOf": "2021 Q20",
+    "section": "reading",
+    "chapter": "Politics, Economics and Society",
+    "text": "Which international organisation lends to member countries facing a balance-of-payments crisis and monitors the stability of the world economy?",
+    "options": [
+      "WTO",
+      "UNICEF",
+      "OECD",
+      "IMF",
+      "WHO"
+    ],
+    "answer": "D",
+    "solution": "The International Monetary Fund (IMF), founded at Bretton Woods in 1944, gives short-term loans to countries that cannot pay their international bills and watches over the global financial system. The WTO handles trade rules, UNICEF children's welfare, the OECD economic policy research, and the WHO health."
+  },
+  {
+    "id": "twin-2021-Q21",
+    "twinOf": "2021 Q21",
+    "section": "reading",
+    "chapter": "Literature and Philosophy",
+    "text": "Which pair of Italian author and work is NOT correct?",
+    "options": [
+      "Dante Alighieri: The Divine Comedy",
+      "Giovanni Boccaccio: The Decameron",
+      "Alessandro Manzoni: The Betrothed",
+      "Niccolò Machiavelli: The Prince",
+      "Giacomo Leopardi: The Leopard"
+    ],
+    "answer": "E",
+    "solution": "The Leopard (Il Gattopardo) was written by Giuseppe Tomasi di Lampedusa and published in 1958; Giacomo Leopardi was a 19th-century poet, best known for the Canti. The other four pairs are correct."
+  },
+  {
+    "id": "twin-2021-Q22",
+    "twinOf": "2021 Q22",
+    "section": "reading",
+    "chapter": "Politics, Economics and Society",
+    "text": "What does the principle of the \"separation of powers\" mean?",
+    "options": [
+      "dividing the legislative, executive and judicial functions of the state between separate bodies",
+      "dividing a country into regions, each with its own parliament",
+      "keeping religion and the state apart",
+      "dividing parliament into two chambers with equal powers",
+      "requiring an election for every public office"
+    ],
+    "answer": "A",
+    "solution": "Associated with Montesquieu, the separation of powers gives law-making to parliament, government to the executive and judgement to independent courts, so that no single body holds all power. Regional parliaments are devolution or federalism, church and state apart is secularism, and two equal chambers is perfect bicameralism."
+  },
+  {
     "id": "twin-2021-Q23",
     "twinOf": "2021 Q23",
     "section": "biology",
