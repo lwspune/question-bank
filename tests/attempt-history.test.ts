@@ -15,6 +15,7 @@ import {
   previousComparable,
   subjectKey,
   subjectLabel,
+  sparkline,
   subjectOptions,
   trendFor,
 } from "@/lib/mocks/attemptHistory";
@@ -89,10 +90,10 @@ describe("previousComparable", () => {
     expect(previousComparable([now, old], now.attemptId)).toBeNull();
   });
 
-  it("reports a fall as a negative change, rounded to one decimal", () => {
+  it("reports a fall as a negative change, to two decimals like the marks", () => {
     const a = at({ score: 120 });
     const b = at({ score: 115.83 });
-    expect(previousComparable([b, a], b.attemptId)?.delta).toBe(-4.2);
+    expect(previousComparable([b, a], b.attemptId)?.delta).toBe(-4.17);
   });
 });
 
@@ -185,5 +186,19 @@ describe("the review filter", () => {
     expect(items.filter((i) => matchesReviewFilter(i, "left"))).toHaveLength(1);
     expect(items.filter((i) => matchesReviewFilter(i, "right"))).toHaveLength(2);
     expect(items.filter((i) => matchesReviewFilter(i, "all"))).toHaveLength(4);
+  });
+});
+
+describe("sparkline", () => {
+  it("spreads points across the width, highest score at the top", () => {
+    const pts = sparkline([10, 30, 20], 200, 60, 6);
+    expect(pts.map((p) => p.x)).toEqual([6, 100, 194]);
+    expect(pts[1].y).toBe(6);
+    expect(pts[0].y).toBe(54);
+    expect(pts[2].y).toBe(30);
+  });
+
+  it("draws a flat line through the middle when every score is equal", () => {
+    expect(sparkline([50, 50, 50], 200, 60, 6).map((p) => p.y)).toEqual([30, 30, 30]);
   });
 });

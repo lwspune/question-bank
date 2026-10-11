@@ -63,7 +63,8 @@ function countable(a: HistoryAttempt): boolean {
 }
 
 const byStartAsc = (a: HistoryAttempt, b: HistoryAttempt) => a.startedAt.localeCompare(b.startedAt);
-const round1 = (n: number) => Math.round(n * 10) / 10;
+/** Marks keep two decimals, as the paper prints them (NDA wrong = -0.83). */
+const round2 = (n: number) => Math.round(n * 100) / 100;
 
 /**
  * The finished full paper this attempt is compared with: the most recent one
@@ -89,7 +90,7 @@ export function previousComparable(
     .sort(byStartAsc);
   const prev = earlier[earlier.length - 1];
   if (!prev) return null;
-  return { attemptId: prev.attemptId, score: prev.score!, delta: round1(current.score! - prev.score!) };
+  return { attemptId: prev.attemptId, score: prev.score!, delta: round2(current.score! - prev.score!) };
 }
 
 /** Each subject the student has attempted, most attempts first, then by name. */
@@ -153,4 +154,20 @@ export function formatElapsed(startedAt: string, submittedAt: string | null, dur
   const secs = Math.max(0, (Date.parse(submittedAt) - Date.parse(startedAt)) / 1000);
   const used = Math.round(Math.min(secs, durationSecs) / 60);
   return `${hm(used)} of ${hm(Math.round(durationSecs / 60))}`;
+}
+
+/**
+ * Plot positions for a marks line in a width x height box with `pad` inside
+ * each edge: evenly spread left to right, the highest score at the top. Equal
+ * scores draw a flat line through the middle rather than dividing by zero.
+ */
+export function sparkline(scores: readonly number[], width: number, height: number, pad: number): { x: number; y: number }[] {
+  const lo = Math.min(...scores);
+  const hi = Math.max(...scores);
+  const span = hi - lo;
+  const step = scores.length > 1 ? (width - 2 * pad) / (scores.length - 1) : 0;
+  return scores.map((s, i) => ({
+    x: Math.round((pad + i * step) * 10) / 10,
+    y: span === 0 ? height / 2 : Math.round((pad + ((hi - s) / span) * (height - 2 * pad)) * 10) / 10,
+  }));
 }

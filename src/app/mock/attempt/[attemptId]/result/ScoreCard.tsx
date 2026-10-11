@@ -22,7 +22,8 @@ type Props = {
 };
 
 function fmt(n: number): string {
-  return Number.isInteger(n) ? String(n) : n.toFixed(1).replace(/\.0$/, "");
+  // Two decimals at most, trailing zeros dropped: 118.38, 96.7, 120.
+  return String(Math.round(n * 100) / 100);
 }
 
 /**
@@ -141,7 +142,7 @@ export default function ScoreCard(p: Props) {
         {headline.primaryAction === "fix" && (
           // What the button DOES, in one line, because a student who has never
           // seen a drill reads "Fix these mistakes" as "retake" (2026-09-24).
-          <p className="order-last basis-full text-xs text-muted-foreground sm:mt-1">
+          <p className="basis-full text-xs text-muted-foreground sm:order-last sm:mt-1">
             Five of the questions you missed, with solutions, about five minutes. One you get right
             goes quiet; one you miss comes back round.
           </p>

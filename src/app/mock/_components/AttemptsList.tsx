@@ -1,11 +1,13 @@
 import Link from "next/link";
-import { ChevronRight, Play } from "lucide-react";
+import { Check, ChevronRight, Minus, Play, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { UserAttempt } from "@/lib/mocks/query";
 
-const STATUS: Record<UserAttempt["status"], { label: string; style: string }> = {
-  submitted: { label: "Submitted", style: "text-emerald-700 dark:text-emerald-400" },
-  expired: { label: "Timed out", style: "text-amber-600 dark:text-amber-400" },
+/** Only the exceptions are labelled (2026-10-11): nearly every row was
+ *  "Submitted", which said nothing. A finished row shows its date alone. */
+const STATUS: Record<UserAttempt["status"], { label: string; style: string } | null> = {
+  submitted: null,
+  expired: { label: "Timed out", style: "text-amber-700 dark:text-amber-400" },
   in_progress: { label: "In progress", style: "text-brand-accent" },
 };
 
@@ -81,8 +83,13 @@ export default function AttemptsList({
                   </p>
                 )}
                 <p className={cn("text-xs", showMock ? "text-muted-foreground" : "font-medium")}>
-                  <span className={s.style}>{s.label}</span>
-                  <span className="text-muted-foreground"> · {fmtDate(a.startedAt)}</span>
+                  {s && (
+                    <>
+                      <span className={s.style}>{s.label}</span>
+                      <span className="text-muted-foreground"> · </span>
+                    </>
+                  )}
+                  <span className="text-muted-foreground">{fmtDate(a.startedAt)}</span>
                 </p>
               </div>
               {!live && a.score != null && (
@@ -92,8 +99,20 @@ export default function AttemptsList({
                     <span className="text-xs font-normal text-muted-foreground">/{a.maxScore}</span>
                   </div>
                   {a.correct != null && (
-                    <div className="text-[11px] text-muted-foreground tabular-nums">
-                      {a.correct}✓ {a.wrong}✗ {a.skipped}−
+                    <div className="mt-0.5 flex items-center justify-end gap-2 text-[11px] tabular-nums text-muted-foreground">
+                      <span className="sr-only">{`${a.correct} right, ${a.wrong} wrong, ${a.skipped} left`}</span>
+                      <span className="inline-flex items-center gap-0.5 text-emerald-700 dark:text-emerald-400" aria-hidden>
+                        <Check className="h-3 w-3" />
+                        {a.correct}
+                      </span>
+                      <span className="inline-flex items-center gap-0.5 text-red-700 dark:text-red-400" aria-hidden>
+                        <X className="h-3 w-3" />
+                        {a.wrong}
+                      </span>
+                      <span className="inline-flex items-center gap-0.5" aria-hidden>
+                        <Minus className="h-3 w-3" />
+                        {a.skipped}
+                      </span>
                     </div>
                   )}
                 </div>
