@@ -104,6 +104,8 @@ export function twinScope(q: ImatQuestion): TwinScope {
 
 const ZONE = /\\\(([\s\S]*?)\\\)|\\\[([\s\S]*?)\\\]/g;
 const DASH = /—|–| -- /;
+/** The question-images bucket's file_size_limit (storage.buckets). */
+export const FIGURE_MAX_BYTES = 1_048_576;
 
 function mathProblems(s: string): string[] {
   const out: string[] = [];
@@ -127,7 +129,7 @@ function mathProblems(s: string): string[] {
 export function checkTwins(
   twins: readonly ImatTwin[],
   sources: ReadonlyMap<string, ImatQuestion>,
-  opts: { figureExists?: (file: string) => boolean } = {}
+  opts: { figureExists?: (file: string) => boolean; figureBytes?: (file: string) => number } = {}
 ): string[] {
   const problems: string[] = [];
   const seen = new Set<string>();
@@ -154,6 +156,8 @@ export function checkTwins(
     if (!t.solution.trim()) problems.push(`${at}: no solution`);
     if (t.figure) {
       if (opts.figureExists && !opts.figureExists(t.figure.file)) problems.push(`${at}: figure file missing (${t.figure.file})`);
+      else if (opts.figureBytes && opts.figureBytes(t.figure.file) > FIGURE_MAX_BYTES)
+        problems.push(`${at}: figure over the image bucket's 1 MiB limit (${t.figure.file}); draw it smaller`);
       if (t.figure.origin === "openstax" && !t.figure.credit?.trim()) problems.push(`${at}: an OpenStax figure needs its CC BY credit`);
     }
     for (const [field, s] of [["context", t.context ?? ""], ["text", t.text], ["solution", t.solution], ...t.options.map((o, i) => [`option ${i + 1}`, o])]) {

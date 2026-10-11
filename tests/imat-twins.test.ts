@@ -193,6 +193,13 @@ describe("twin figures", () => {
     expect(checkTwins([t], sources, { figureExists: exists([]) }).join()).toMatch(/figure file missing/);
   });
 
+  it("refuses a figure over the image bucket's 1 MiB limit, before the load fails halfway", () => {
+    const t = { ...base, figure: { file: "twin-2022-Q7.png", origin: "drawn" as const } };
+    const opts = (bytes: number) => ({ figureExists: exists(["twin-2022-Q7.png"]), figureBytes: () => bytes });
+    expect(checkTwins([t], sources, opts(1_100_000)).join()).toMatch(/1 MiB/);
+    expect(checkTwins([t], sources, opts(1_048_576))).toEqual([]);
+  });
+
   it("refuses an OpenStax figure without the credit its licence requires", () => {
     const t = { ...base, figure: { file: "twin-2022-Q7.png", origin: "openstax" as const } };
     expect(checkTwins([t], sources, { figureExists: exists(["twin-2022-Q7.png"]) }).join()).toMatch(/credit/);

@@ -10,7 +10,7 @@
  * per year: in scope, twinned, held for figures, out of the syllabus.
  * Exits 1 on any problem or unreviewed originality finding. Read-only.
  */
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import type { ImatQuestion } from "../lib";
 import { buildOriginalityIndex, checkOriginality, unreviewed, wordingKey } from "../../../src/lib/sites/imat/originality";
@@ -41,7 +41,10 @@ export function checkAllTwins() {
     for (const q of qs) sources.set(`${year} Q${q.n}`, q);
   }
   const twins = CAMBRIDGE_YEARS.flatMap(loadTwinFile);
-  const problems = checkTwins(twins, sources, { figureExists: (f) => existsSync(join(FIGURES, f)) });
+  const problems = checkTwins(twins, sources, {
+    figureExists: (f) => existsSync(join(FIGURES, f)),
+    figureBytes: (f) => statSync(join(FIGURES, f)).size,
+  });
   const idx = buildOriginalityIndex(loadPastQuestions());
   const findings = twins.flatMap((t) => checkOriginality(idx, t));
   const open = unreviewed(findings, twins, loadReviews());
