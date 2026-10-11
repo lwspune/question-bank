@@ -19,6 +19,7 @@ import {
   ListChecks,
   MessageCircle,
   MessageSquareHeart,
+  PenLine,
   Search,
   Table2,
   Timer,
@@ -30,6 +31,7 @@ import {
 } from "lucide-react";
 import { getSessionMember, getSessionUser, getSessionSuperadmin } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import AppHeader from "@/components/AppHeader";
 import { cn } from "@/lib/utils";
 import {
@@ -61,7 +63,7 @@ export default async function DashboardPage() {
   if (!member) redirect(user ? "/me" : "/browse");
 
   const supabase = createSupabaseServerClient();
-  const [stats, recentUploads, openReportCount, openConceptReportCount] =
+  const [stats, recentUploads, openReportCount, openConceptReportCount, sheetsWaiting] =
     await Promise.all([
       getDashboardStats(supabase, member.orgId),
       member.role === "ADMIN"
@@ -82,6 +84,15 @@ export default async function DashboardPage() {
             .eq("org_id", member.orgId)
             .eq("status", "open")
             .then(({ count }) => count ?? 0)
+        : Promise.resolve(0),
+      // Answer sheets waiting to be graded (0153): every student's, so service
+      // role, so superadmin only. A failed read shows no badge, never an error.
+      superadmin
+        ? createSupabaseAdminClient()
+            .from("answer_submissions")
+            .select("id", { count: "exact", head: true })
+            .eq("status", "submitted")
+            .then(({ count }) => count ?? 0, () => 0)
         : Promise.resolve(0),
     ]);
 
@@ -110,6 +121,7 @@ export default async function DashboardPage() {
           isFresh={isFresh}
           openReportCount={openReportCount}
           openConceptReportCount={openConceptReportCount}
+          sheetsWaiting={sheetsWaiting}
         />
 
         {stats.unavailable && (
@@ -197,12 +209,14 @@ function QuickActions({
   isFresh,
   openReportCount,
   openConceptReportCount,
+  sheetsWaiting,
 }: {
   isAdmin: boolean;
   isSuperadmin: boolean;
   isFresh: boolean;
   openReportCount: number;
   openConceptReportCount: number;
+  sheetsWaiting: number;
 }) {
   return (
     <div
@@ -282,6 +296,19 @@ function QuickActions({
           icon={<Users className="h-5 w-5" aria-hidden />}
           title="Members"
           description="Add admins and teachers, reset passwords, manage roles."
+        />
+      )}
+      {isSuperadmin && (
+        <ActionCard
+          href="/dashboard/answer-sheets"
+          icon={<PenLine className="h-5 w-5" aria-hidden />}
+          title="Answer sheets"
+          description={
+            sheetsWaiting > 0
+              ? `${sheetsWaiting} answer sheet${sheetsWaiting === 1 ? "" : "s"} waiting to be checked.`
+              : "Board papers students sent for checking. Nothing waiting."
+          }
+          badge={sheetsWaiting > 0 ? String(sheetsWaiting) : undefined}
         />
       )}
       {isSuperadmin && (

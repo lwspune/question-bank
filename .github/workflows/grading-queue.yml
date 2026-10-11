@@ -1,0 +1,42 @@
+name: Answer sheets waiting
+
+# Email the grader (every superadmin) when answer sheets are waiting to be
+# checked, or a student has questioned a grade. Migration 0153.
+#
+# 12:30 UTC IS 18:00 IST: the evening grading session. Nothing waiting, no
+# email. Students were promised a report within 48 hours, so the email names
+# the oldest wait and anything past 36 hours.
+#
+# One email a day from the shared 100/day Resend quota (see welcome.yml for
+# the budget).
+#
+# --apply lives HERE and nowhere else, so `npm run grading:notify` by hand
+# stays a dry run.
+
+on:
+  schedule:
+    - cron: "30 12 * * *"
+  workflow_dispatch: # run on demand from the Actions tab
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # MUST match ci.yml and package.json engines (">=22").
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Email the grader
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+        run: npm run grading:notify -- --apply

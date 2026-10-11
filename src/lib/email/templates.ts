@@ -43,10 +43,10 @@ function ctaHref(path: string, clickToken: string | undefined): string {
  *  literals are exactly how that address drifted off-brand in the first place. */
 export const REPLY_TO = CONTACT_EMAIL;
 
-const BRAND = "PYQ Vault";
-const ACCENT = "#1d4ed8"; // the logo's royal blue — the brand fill (globals.css --brand)
-const INK = "#334155";
-const MUTED = "#64748b";
+export const BRAND = "PYQ Vault";
+export const ACCENT = "#1d4ed8"; // the logo's royal blue — the brand fill (globals.css --brand)
+export const INK = "#334155";
+export const MUTED = "#64748b";
 
 export type BuiltEmail = {
   subject: string;
@@ -77,7 +77,7 @@ export function formatDuration(secs: number): string {
 
 /** First name only — "Hi Asha" reads human; "Hi asha@gmail.com" doesn't.
  *  ~26% of students have no name, in which case we greet them without one. */
-function greetingName(name: string): string {
+export function greetingName(name: string): string {
   const first = name.trim().split(/\s+/)[0] ?? "";
   // displayName() falls back to the email / "(no name)" — neither is a name.
   if (!first || first.includes("@") || first.startsWith("(")) return "";
