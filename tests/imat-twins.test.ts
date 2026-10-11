@@ -9,7 +9,8 @@
  * asked it. Figure questions wait for a later pass.
  */
 import { describe, it, expect } from "vitest";
-import { checkTwins, criticalThinkingKind, twinScope, type ImatTwin } from "../scripts/imat/practice/lib";
+import { buildTwinRow, checkTwins, criticalThinkingKind, twinScope, type ImatTwin } from "../scripts/imat/practice/lib";
+import { contentHash } from "@/lib/upload/hash";
 import type { ImatQuestion } from "../scripts/imat/lib";
 
 const q = (over: Partial<ImatQuestion>): ImatQuestion => ({
@@ -112,5 +113,43 @@ describe("checkTwins", () => {
     expect(checkTwins([twin({ solution: "" })], sources).join()).toMatch(/solution/);
     expect(checkTwins([twin({ text: "Find \\(\\frac{1}{\\)" })], sources).join()).toMatch(/KaTeX/);
     expect(checkTwins([twin({ solution: "Chloroplasts — obviously." })], sources).join()).toMatch(/dash/);
+  });
+});
+
+describe("buildTwinRow", () => {
+  const twin: ImatTwin = {
+    id: "twin-2022-Q52",
+    twinOf: "2022 Q52",
+    section: "physmath",
+    subject: "Physics",
+    chapter: "Dynamics, Work and Energy",
+    text: "A 3.0 kg sledge slides to rest.\nWhat is the force?",
+    options: ["4.0 N", "1.0 N", "6.0 N", "2.0 N", "0.50 N"],
+    answer: "D",
+    solution: "Work done equals the kinetic energy lost.",
+  };
+
+  it("maps a twin onto a practice row: subject, chapter, options in order, the key, the solution", () => {
+    const row = buildTwinRow(twin, 7);
+    expect(row.subjectName).toBe("Physics");
+    expect(row.chapterName).toBe("Dynamics, Work and Energy");
+    expect(row.sourceRow).toBe(7);
+    expect(row.options.map((o) => o.label)).toEqual(["A", "B", "C", "D", "E"]);
+    expect(row.options.map((o) => o.text)).toEqual(twin.options);
+    expect(row.options.filter((o) => o.isCorrect).map((o) => o.label)).toEqual(["D"]);
+    expect(row.solution).toBe(twin.solution);
+    expect(row.contentHash).toBe(contentHash(twin.text, twin.options, "D"));
+  });
+
+  it("never carries the Cambridge source onto the row", () => {
+    expect(JSON.stringify(buildTwinRow(twin, 1))).not.toContain("2022 Q52");
+  });
+
+  it("uses the section's subject outside physics and maths", () => {
+    expect(buildTwinRow({ ...twin, section: "biology", subject: undefined, chapter: "Genetics and Inheritance" }, 1).subjectName).toBe("Biology");
+  });
+
+  it("refuses a literal backslash-n, which would never render as a line break", () => {
+    expect(() => buildTwinRow({ ...twin, text: "Line one\\n 2 apples" }, 1)).toThrow(/backslash-n/);
   });
 });

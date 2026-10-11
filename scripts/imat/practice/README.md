@@ -6,8 +6,16 @@ practises on. Scope rule, data shape and checks: `lib.ts`. Files:
 `twins/<year>.json`, one array per Cambridge year.
 
 ```sh
-npx tsx scripts/imat/practice/check.ts   # checks every twin file + coverage table; exits 1 on a problem
+npx tsx scripts/imat/practice/check.ts               # checks every twin file + coverage table; exits 1 on a problem
+npx tsx scripts/imat/practice/commit.ts all          # dry run of the database load
+npx tsx scripts/imat/practice/commit.ts all --apply  # write (back up first: npm run db:backup)
 ```
+
+In the bank the twins are PRIVATE practice questions (question_kind
+'practice', written at insert), each with its solution, under source_file
+`imat-twins-<year>.json` (roll back by that). Not publish_blocked: they are
+ours. The Cambridge source is never written to the database. All 577 were
+loaded on 2026-10-11.
 
 ## Writing a twin
 

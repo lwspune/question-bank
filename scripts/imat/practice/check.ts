@@ -19,9 +19,19 @@ import { checkTwins, twinScope, type ImatTwin } from "./lib";
 
 const DATA = join(__dirname, "..", "data");
 const TWINS = join(__dirname, "twins");
-const CAMBRIDGE_YEARS = Array.from({ length: 12 }, (_, i) => 2011 + i);
+export const CAMBRIDGE_YEARS = Array.from({ length: 12 }, (_, i) => 2011 + i);
 
-function main() {
+export function loadTwinFile(year: number): ImatTwin[] {
+  const file = join(TWINS, `${year}.json`);
+  return existsSync(file) ? (JSON.parse(readFileSync(file, "utf8")) as ImatTwin[]) : [];
+}
+
+/**
+ * Everything check.ts verifies, as data: every twin file against its sources
+ * (checkTwins) and against all 1,000 past questions (originality, minus the
+ * reviewed findings). The commit script refuses to write unless this is empty.
+ */
+export function checkAllTwins() {
   const sources = new Map<string, ImatQuestion>();
   const byYear = new Map<number, ImatQuestion[]>();
   for (const year of CAMBRIDGE_YEARS) {
@@ -29,19 +39,18 @@ function main() {
     byYear.set(year, qs);
     for (const q of qs) sources.set(`${year} Q${q.n}`, q);
   }
-
-  const twins: ImatTwin[] = [];
-  for (const year of CAMBRIDGE_YEARS) {
-    const file = join(TWINS, `${year}.json`);
-    if (existsSync(file)) twins.push(...(JSON.parse(readFileSync(file, "utf8")) as ImatTwin[]));
-  }
-
+  const twins = CAMBRIDGE_YEARS.flatMap(loadTwinFile);
   const problems = checkTwins(twins, sources);
   const idx = buildOriginalityIndex(loadPastQuestions());
   const findings = twins.flatMap((t) => checkOriginality(idx, t));
   const open = unreviewed(findings, twins, loadReviews());
   for (const f of open)
     problems.push(`${f.candidateId} (wording ${wordingKey(twins.find((t) => t.id === f.candidateId)!)}): ${f.kind} ~ ${f.sourceId}: ${f.detail}`);
+  return { twins, byYear, problems };
+}
+
+function main() {
+  const { twins, byYear, problems } = checkAllTwins();
 
   const done = new Set(twins.map((t) => t.twinOf));
   console.log("year  in-scope  twinned  figure-held  out-of-syllabus");
@@ -71,4 +80,4 @@ function main() {
   console.log(`\nPASS: ${twins.length} twins`);
 }
 
-main();
+if (require.main === module) main();

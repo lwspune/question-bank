@@ -21,7 +21,12 @@
  *   reasoning are argument analysis, neither listed nor asked. Out.
  */
 import katex from "katex";
-import type { ImatQuestion, ImatSection } from "../lib";
+import { SUBJECT_OF_SECTION, type ImatQuestion, type ImatSection } from "../lib";
+import { contentHash } from "../../../src/lib/upload/hash";
+import { normalizeNewlines } from "../../../src/lib/text/normalizeNewlines";
+import type { ParsedRowPayload, StoredOptionLabel } from "../../../src/lib/upload/validate";
+
+const LABELS: readonly StoredOptionLabel[] = ["A", "B", "C", "D", "E"];
 
 export type ImatTwin = {
   /** "twin-<year>-Q<n>", naming the source. */
@@ -133,4 +138,29 @@ export function checkTwins(twins: readonly ImatTwin[], sources: ReadonlyMap<stri
     }
   }
   return problems;
+}
+
+/**
+ * One twin -> the row commitStaged stores. Options keep the order written
+ * (the answer letters are balanced across the set, so no shuffle). The
+ * Cambridge source (`twinOf`) is deliberately NOT carried: it stays in the
+ * repo for coverage tracking and can never reach a published page.
+ */
+export function buildTwinRow(t: ImatTwin, sourceRow: number): ParsedRowPayload {
+  for (const [field, value] of [["text", t.text], ["context", t.context], ["solution", t.solution], ...t.options.map((o, i) => [`option ${i + 1}`, o])] as const) {
+    if (value && normalizeNewlines(value) !== value) throw new Error(`${t.id} ${field}: literal backslash-n; fix the twin file`);
+  }
+  const options = t.options.map((text, i) => ({ label: LABELS[i], text: text.trim(), isCorrect: LABELS[i] === t.answer }));
+  const text = t.text.trim();
+  return {
+    sourceRow,
+    subjectName: t.section === "physmath" ? t.subject! : SUBJECT_OF_SECTION[t.section],
+    chapterName: t.chapter,
+    context: t.context?.trim() || undefined,
+    text,
+    difficulty: "MODERATE",
+    solution: t.solution.trim(),
+    options,
+    contentHash: contentHash(text, options.map((o) => o.text), t.answer),
+  };
 }
