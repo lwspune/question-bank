@@ -82,19 +82,13 @@ export const IMAT_REA_HIS_ANCIENT_NOTE: SubtopicNote = {
         ],
       },
       selfCheckExample: {
-        prompt: "Which of the Seven Wonders of the Ancient World can still be visited today?",
-        options: [
-          "The Great Pyramid of Giza",
-          "The Colossus of Rhodes",
-          "The Colosseum in Rome",
-          "The Lighthouse of Alexandria",
-          "The Parthenon in Athens",
-        ],
+        prompt: "The Colossus of Rhodes, one of the Seven Wonders of the Ancient World, was a statue of which Greek god?",
+        options: ["Zeus", "Helios", "Apollo", "Poseidon", "Hermes"],
         steps: [
-          "Only the Great Pyramid survives; the Colossus and the Lighthouse were destroyed by earthquakes.",
-          "The Colosseum and the Parthenon still stand, but neither was ever one of the Seven Wonders.",
+          "The people of Rhodes built the Colossus around 280 BC to thank the sun god Helios, their patron, after surviving a siege.",
+          "Zeus is the trap: his statue at Olympia was a different Wonder. The Colossus fell in an earthquake about 54 years after it was finished.",
         ],
-        answer: "(A) The Great Pyramid of Giza",
+        answer: "(B) Helios",
       },
       practiceSet: [
         { prompt: "Which wonder stood in Babylon?", answer: "The Hanging Gardens" },
