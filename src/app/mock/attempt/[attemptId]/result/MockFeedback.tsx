@@ -92,33 +92,36 @@ export default function MockFeedback({
   }
 
   return (
-    <section className="mt-5 rounded-xl border bg-card p-5">
-      <div className="flex items-center gap-2">
-        <MessageSquare className="h-4 w-4 text-brand-accent" aria-hidden />
-        <h2 className="text-sm font-semibold">How was this mock?</h2>
-      </div>
-      <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="How the mock felt">
-        {RATINGS.map((r) => {
-          const selected = rating === r;
-          return (
-            <button
-              key={r}
-              type="button"
-              aria-pressed={selected}
-              disabled={ratingSaving}
-              onClick={() => pick(r)}
-              className={[
-                "rounded-full border px-4 py-2 text-sm font-medium transition-colors",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50",
-                selected
-                  ? "border-brand-accent bg-brand-accent/10 text-brand-accent"
-                  : "border-input bg-background text-foreground hover:bg-accent",
-              ].join(" ")}
-            >
-              {RATING_LABELS[r]}
-            </button>
-          );
-        })}
+    <section className="mt-4 rounded-xl border bg-card px-4 py-3">
+      {/* One line where it fits (2026-10-11): a question, not a section. */}
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+        <div className="flex items-center gap-2">
+          <MessageSquare className="h-4 w-4 text-brand-accent" aria-hidden />
+          <h2 className="text-sm font-semibold">How was this mock?</h2>
+        </div>
+        <div className="flex flex-wrap gap-2" role="group" aria-label="How the mock felt">
+          {RATINGS.map((r) => {
+            const selected = rating === r;
+            return (
+              <button
+                key={r}
+                type="button"
+                aria-pressed={selected}
+                disabled={ratingSaving}
+                onClick={() => pick(r)}
+                className={[
+                  "rounded-full border px-3 py-1.5 text-sm font-medium transition-colors",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50",
+                  selected
+                    ? "border-brand-accent bg-brand-accent/10 text-brand-accent"
+                    : "border-input bg-background text-foreground hover:bg-accent",
+                ].join(" ")}
+              >
+                {RATING_LABELS[r]}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {rating && (

@@ -1,13 +1,7 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { RotateCcw, Target, Timer } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
-import { Button } from "@/components/ui/button";
-import KatexRenderer from "@/components/math/KatexRenderer";
-import BlockText from "@/components/math/BlockText";
-import { cn } from "@/lib/utils";
-import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { logActivityOnce } from "@/lib/activity/service";
@@ -25,6 +19,10 @@ import ShareResult from "./ShareResult";
 import WhatsappOptIn from "./WhatsappOptIn";
 import PushOptIn from "@/components/push/PushOptIn";
 import Findings from "./Findings";
+import ScoreCard from "./ScoreCard";
+import ReviewFilterShell from "./ReviewFilterShell";
+import { getUserAttempts } from "@/lib/mocks/query";
+import { formatElapsed, previousComparable } from "@/lib/mocks/attemptHistory";
 import PulseRefresh from "./PulseRefresh";
 import CelebrateOnMount from "@/components/celebrate/CelebrateOnMount";
 import { awardAnsweredMilestone } from "@/lib/celebrate/service";
@@ -89,6 +87,22 @@ export default async function MockResultPage({ params }: { params: Params }) {
   // paper 27% answered, read as a verdict on the student. See ENGAGEMENT_SPEC.md.
   const headline = buildResultHeadline(summary);
   const fixHref = drillHref("result", params.attemptId);
+  // The student's own attempts (RLS own-row, a few dozen rows at most): the
+  // change since their last full paper in this subject, and the time taken.
+  // Best-effort like the findings: a failure costs the chips, not the result.
+  const history = await getUserAttempts(db, user.id).catch((e) => {
+    console.error("mock result history failed", e);
+    return [];
+  });
+  const self = history.find((a) => a.attemptId === params.attemptId);
+  const delta = previousComparable(history, params.attemptId)?.delta ?? null;
+  const elapsed = self?.durationSecs ? formatElapsed(self.startedAt, self.submittedAt, self.durationSecs) : null;
+  const sections = multiSection
+    ? mock.sections.flatMap((s) => {
+        const ss = summary.sectionScores[s.key];
+        return ss ? [{ key: s.key, label: s.label, score: ss.score, maxScore: ss.maxScore }] : [];
+      })
+    : [];
   // "N questions answered", celebrated at the trigger surface (2026-10-04).
   // Awarded only past the mobile gate, where the result is actually seen;
   // once per milestone by the table's dedupe key, so a refresh shows nothing.
@@ -107,103 +121,26 @@ export default async function MockResultPage({ params }: { params: Params }) {
         <PulseRefresh />
         <CelebrateOnMount message={milestone !== null ? milestoneMessage(milestone, "mock") : null} />
 
-        {/* Headline: accuracy on attempted, the unanswered count as its own
-            fact, marks as a secondary line. One card, one primary action. */}
-        <div className="mt-5 rounded-xl border bg-card p-6">
-          {headline.accuracyPct !== null ? (
-            <div className="text-4xl font-bold tabular-nums">
-              {headline.accuracyPct}%
-              <span className="ml-2 text-base font-normal text-muted-foreground">
-                right on what you attempted
-              </span>
-            </div>
-          ) : null}
-          <p className={headline.accuracyPct !== null ? "mt-2 text-sm" : "text-base font-medium"}>
-            {headline.lead}
-          </p>
-          {headline.detail && (
-            <p className="mt-1 text-sm text-muted-foreground">{headline.detail}</p>
-          )}
-          <p className="mt-3 text-sm tabular-nums text-muted-foreground" data-clarity-mask="true">
-            {summary.score} / {summary.maxScore} marks
-            {headline.attempted > 0 && (
-              <>
-                {" \u00b7 "}
-                {summary.correct} right, {summary.wrong} wrong
-              </>
-            )}
-          </p>
+        <ScoreCard
+          headline={headline}
+          score={summary.score}
+          maxScore={summary.maxScore}
+          correct={summary.correct}
+          wrong={summary.wrong}
+          skipped={summary.skipped}
+          sections={sections}
+          delta={delta}
+          elapsed={elapsed}
+          fixHref={fixHref}
+          mockSlug={mock.slug}
+        />
 
-          {multiSection && (
-            <div className="mt-4 grid gap-2 sm:grid-cols-2">
-              {mock.sections.map((s) => {
-                const ss = summary.sectionScores[s.key];
-                if (!ss) return null;
-                return (
-                  <div key={s.key} className="flex items-center justify-between rounded-lg border px-4 py-3 text-sm">
-                    <span className="font-medium">{s.label}</span>
-                    <span className="font-mono tabular-nums text-muted-foreground">
-                      {ss.score} / {ss.maxScore}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          )}
+        {/* Value before asks (2026-10-11): what to fix sits straight under the
+            score; the rating, Share and the notification ask follow it, and
+            all three stay above the review, which on a 150-question paper is
+            the bottom of the page and would bury them. */}
+        {report && <Findings report={report} attemptId={params.attemptId} />}
 
-          {/* The primary action follows the data: something to fix, so the
-              drill on THIS paper's mistakes; nothing wrong, so another mock;
-              nothing attempted, so try again. Retake is never the lead when
-              there is something to fix: 45% of students who sat one mock never
-              sat a second, and the old lead was the same 150 minutes again. */}
-          <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
-            {headline.primaryAction === "fix" && (
-              <Button asChild variant="brand" size="lg" className="h-12 rounded-xl text-base">
-                <Link href={fixHref} prefetch={false}>
-                  <Target className="h-5 w-5" aria-hidden />
-                  Fix these mistakes
-                </Link>
-              </Button>
-            )}
-            {headline.primaryAction === "fix" && (
-              // What the button DOES, in one line, because a student who has
-              // never seen a drill reads "Fix these mistakes" as "retake".
-              // Two students had ever finished a drill when this was added
-              // (2026-09-24); the same words are step 2 of /start.
-              <p className="order-last basis-full text-xs text-muted-foreground sm:mt-1">
-                Five of the questions you missed, with solutions, about five minutes. One you
-                get right goes quiet; one you miss comes back round.
-              </p>
-            )}
-            {headline.primaryAction === "another" && (
-              <Button asChild variant="brand" size="lg" className="h-12 rounded-xl text-base">
-                <Link href="/mock">
-                  <Timer className="h-5 w-5" aria-hidden />
-                  Take another mock
-                </Link>
-              </Button>
-            )}
-            {headline.primaryAction === "retake" ? (
-              <Button asChild variant="brand" size="lg" className="h-12 rounded-xl text-base">
-                <Link href={`/mock/${mock.slug}`}>
-                  <RotateCcw className="h-5 w-5" aria-hidden />
-                  Try again
-                </Link>
-              </Button>
-            ) : (
-              <Button asChild variant="outline" size="lg" className="h-12 rounded-xl text-base">
-                <Link href={`/mock/${mock.slug}`}>
-                  <RotateCcw className="h-4 w-4" aria-hidden />
-                  Retake
-                </Link>
-              </Button>
-            )}
-          </div>
-        </div>
-
-        {/* Phase 3 — capture at the high-intent moment. Directly under the
-            score, not below Share + Findings: on a phone those push it a
-            screen or more down, and a rating asked for there is rarely given. */}
         <MockFeedback
           attemptId={params.attemptId}
           initialRating={feedback?.rating ?? null}
@@ -211,8 +148,7 @@ export default async function MockResultPage({ params }: { params: Params }) {
         />
 
         {/* The distribution loop: a finished mock is the moment a student has
-            something worth passing on, and the paper they just sat is a thing
-            their study group can open. Offer only — never a gate, never
+            something worth passing on. Offer only, never a gate, never
             rewarded. See ShareResult + lib/mocks/share.ts. */}
         <ShareResult
           slug={mock.slug}
@@ -220,8 +156,6 @@ export default async function MockResultPage({ params }: { params: Params }) {
           score={summary.score}
           maxScore={summary.maxScore}
         />
-
-        {report && <Findings report={report} attemptId={params.attemptId} />}
 
         {/* One ask per screen: push first, the WhatsApp card as its fallback
             (PushOptIn renders it when this browser cannot push) or on a later
@@ -232,9 +166,10 @@ export default async function MockResultPage({ params }: { params: Params }) {
           ask.whatsapp && <WhatsappOptIn />
         )}
 
-        {/* Review */}
-        <h2 className="mt-8 text-lg font-semibold">Review: all {res.review!.items.length} questions</h2>
-        <AttemptReviewList items={res.review!.items} supabaseUrl={supabaseUrl} />
+        <h2 className="mt-8 text-lg font-semibold">Review your answers</h2>
+        <ReviewFilterShell items={res.review!.items.map((i) => ({ position: i.position, verdict: i.verdict }))}>
+          <AttemptReviewList items={res.review!.items} supabaseUrl={supabaseUrl} />
+        </ReviewFilterShell>
       </main>
     </>
   );

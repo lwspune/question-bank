@@ -257,3 +257,12 @@ a[data-nav-pending] {
 @media (min-width: 1280px) {
   html { font-size: 106.25%; }
 }
+
+/* The mock result's review filter (ReviewFilterShell): the server-rendered
+   cards carry data-verdict (1 right, -1 wrong, 0 left) and the filter hides
+   the rest, so switching filters never re-renders the maths. */
+[data-review-filter="wrong"] [data-verdict]:not([data-verdict="-1"]),
+[data-review-filter="left"] [data-verdict]:not([data-verdict="0"]),
+[data-review-filter="right"] [data-verdict]:not([data-verdict="1"]) {
+  display: none;
+}

@@ -66,7 +66,7 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
     /* The findings card at the top of the result page links to #q<n>, so each
        card is the anchor for its own question. Position, not question id: it
        is what the student saw on the paper and what the card names. */
-    <li id={`q${item.position}`} className={cn("scroll-mt-20 rounded-lg border border-l-4 bg-card p-4", border)}>
+    <li id={`q${item.position}`} data-verdict={item.verdict} className={cn("scroll-mt-20 rounded-lg border border-l-4 bg-card p-4", border)}>
       <div className="flex items-center justify-between gap-2">
         <span className="font-mono text-xs text-muted-foreground">Q{item.position}</span>
         <PresentButton
