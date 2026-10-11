@@ -128,6 +128,22 @@
     "solution": "Small box: €3.20 for 0.08 kg is €40 per kg. Large box: €4.50 for 0.125 kg is €36 per kg. The large box is €4.00 per kg cheaper. The difference in box prices (€1.30) says nothing about value, because the boxes hold different amounts."
   },
   {
+    "id": "twin-2013-Q13",
+    "twinOf": "2013 Q13",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "My alarm clock shows the time in 24-hour form on a seven-segment display. Turned upside down, the digits 0, 1, 2, 5 and 8 still look like the same digits, and 6 and 9 turn into each other.\nI picked the clock up upside down and read 15:20.\nWhat was the actual time?",
+    "options": [
+      "02:51",
+      "05:21",
+      "20:15",
+      "15:20",
+      "12:05"
+    ],
+    "answer": "A",
+    "solution": "Turning the display upside down reverses the order of the four digits and turns each digit over. Undo both: reversing 1, 5, 2, 0 gives 0, 2, 5, 1, and each of these digits looks the same upside down, so the clock showed 02:51. Reading 05:21 treats the display like a mirror image, in which 2 and 5 swap; 20:15 swaps the hours and minutes instead of reversing all four digits."
+  },
+  {
     "id": "twin-2013-Q14",
     "twinOf": "2013 Q14",
     "section": "logic",
@@ -288,6 +304,26 @@
     "solution": "The inside height is the outside height minus the lid and the base: 30 - 2 - 5 = 23 cm. The sides do not affect the height. 26 cm wrongly treats the base as 2 cm thick, and 25 cm forgets the lid."
   },
   {
+    "id": "twin-2013-Q28",
+    "twinOf": "2013 Q28",
+    "section": "logic",
+    "chapter": "Spatial and Sequence Reasoning",
+    "text": "A novelty clock has one fixed pointer, straight up, and two rings that turn behind it. Each ring has one big dot and eleven small ones, equally spaced. The outer ring shows hours and turns anticlockwise, one dot per hour; the inner ring shows minutes and turns clockwise, one dot per five minutes. At 12:00 both big dots are under the pointer.\nWhat time does the clock in the figure show?",
+    "options": [
+      "5:40",
+      "7:40",
+      "7:20",
+      "5:20",
+      "8:25"
+    ],
+    "answer": "B",
+    "solution": "The outer ring has turned anticlockwise, so count from its big dot clockwise round to the pointer: 7 dots, so 7 hours. The inner ring has turned clockwise, so count from its big dot anticlockwise round to the pointer: 8 dots, so 40 minutes. The time is 7:40. Reading the big dots as if they were hands on an ordinary clock gives 5:40; counting the inner ring the wrong way round gives 7:20.",
+    "figure": {
+      "file": "twin-2013-Q28.png",
+      "origin": "drawn"
+    }
+  },
+  {
     "id": "twin-2013-Q29",
     "twinOf": "2013 Q29",
     "section": "logic",
@@ -368,6 +404,22 @@
     "solution": "Glycolysis happens in the cytoplasm; only its product, pyruvate, enters the mitochondrion. Everything else is true: two membranes (the inner one folded into cristae), a small circular DNA, their own small ribosomes, and the Krebs cycle in the matrix."
   },
   {
+    "id": "twin-2013-Q35",
+    "twinOf": "2013 Q35",
+    "section": "biology",
+    "chapter": "Biomolecules and Enzymes",
+    "text": "A triglyceride is made by joining one molecule of glycerol to three fatty acids.\nHow many molecules of water are released when one triglyceride is formed?",
+    "options": [
+      "1",
+      "0",
+      "3",
+      "2",
+      "6"
+    ],
+    "answer": "C",
+    "solution": "Each fatty acid is joined to one of glycerol's three OH groups by a condensation reaction that forms an ester bond and releases one water molecule: the OH from the acid's COOH group and the H from glycerol's OH group. Three ester bonds release three water molecules. Breaking the triglyceride down again by hydrolysis uses the same three."
+  },
+  {
     "id": "twin-2013-Q36",
     "twinOf": "2013 Q36",
     "section": "biology",
@@ -382,6 +434,26 @@
     ],
     "answer": "B",
     "solution": "1: TGC pairs with ACG. 2: A-T pairs have 2 hydrogen bonds and G-C pairs 3. TGC has 2 + 3 + 3 = 8, but CAT has 3 + 2 + 2 = 7, so not all three have 8. 3: the mRNA is ACG-GUA-UCC, with 2 uracils. So 1 and 3 only."
+  },
+  {
+    "id": "twin-2013-Q37",
+    "twinOf": "2013 Q37",
+    "section": "biology",
+    "chapter": "Genetics and Inheritance",
+    "text": "In the family shown, only daughter 2 has a genetic condition; her parents, her brothers and her sister do not.\nWhich of the following could NOT explain why she has the condition?",
+    "options": [
+      "Both parents carry a recessive allele of the gene on an autosome.",
+      "A new mutation to a dominant allele arose in the egg or sperm that formed her.",
+      "Her mother carries a recessive allele on an autosome, and a new mutation of the same gene arose in her father's sperm.",
+      "She inherited a recessive allele on the X chromosome from each parent.",
+      "She inherited a recessive X-linked allele from her mother, and a new mutation of the same gene arose on the X chromosome in her father's sperm."
+    ],
+    "answer": "D",
+    "solution": "A father passes his only X chromosome to every daughter. If he carried a recessive X-linked allele he would show the condition himself, and he does not, so he cannot have passed one to her: D is impossible. E avoids this because the allele from the father arose by a new mutation in his sperm. Two carrier parents (A), a new dominant mutation (B) and one carrier parent plus a new mutation (C) are all possible.",
+    "figure": {
+      "file": "twin-2013-Q37.png",
+      "origin": "drawn"
+    }
   },
   {
     "id": "twin-2013-Q38",
@@ -560,6 +632,22 @@
     "solution": "Four shared electrons pull the carbons closer, so C=C is shorter than C-C (1). The double bond is a sigma bond along the axis plus a pi bond above and below it (2). Twisting would break the sideways pi overlap, so rotation is restricted, which is why alkenes can have cis-trans isomers (3). All three."
   },
   {
+    "id": "twin-2013-Q49",
+    "twinOf": "2013 Q49",
+    "section": "chemistry",
+    "chapter": "Periodic Table",
+    "text": "Rubidium and potassium are in Group 1, strontium and magnesium in Group 2, gallium in Group 13 and nitrogen in Group 15 of the Periodic Table.\nWhich formula is wrong?",
+    "options": [
+      "\\(\\mathrm{RbPO_4}\\)",
+      "\\(\\mathrm{SrCO_3}\\)",
+      "\\(\\mathrm{Ga_2(SO_4)_3}\\)",
+      "\\(\\mathrm{Mg_3N_2}\\)",
+      "\\(\\mathrm{KHCO_3}\\)"
+    ],
+    "answer": "A",
+    "solution": "Group 1 metals form 1+ ions, Group 2 form 2+, gallium (Group 13) forms 3+ and nitrogen forms the 3- nitride ion. Phosphate is \\(\\mathrm{PO_4^{3-}}\\), so it needs three \\(\\mathrm{Rb^+}\\): \\(\\mathrm{Rb_3PO_4}\\), and \\(\\mathrm{RbPO_4}\\) is wrong. The others balance: \\(\\mathrm{Sr^{2+}}\\) with \\(\\mathrm{CO_3^{2-}}\\), two \\(\\mathrm{Ga^{3+}}\\) with three \\(\\mathrm{SO_4^{2-}}\\), three \\(\\mathrm{Mg^{2+}}\\) with two \\(\\mathrm{N^{3-}}\\), and \\(\\mathrm{K^+}\\) with \\(\\mathrm{HCO_3^-}\\)."
+  },
+  {
     "id": "twin-2013-Q50",
     "twinOf": "2013 Q50",
     "section": "chemistry",
@@ -623,6 +711,40 @@
     ],
     "answer": "B",
     "solution": "Energy moves between kinetic and potential: the bob is highest (most potential energy) at the ends and lowest, and fastest, in the middle. At the ends it stops for an instant, but the restoring force, and so the acceleration, is at its LARGEST there; acceleration is zero at the centre. 1 and 3 only."
+  },
+  {
+    "id": "twin-2013-Q54",
+    "twinOf": "2013 Q54",
+    "section": "physmath",
+    "subject": "Physics",
+    "chapter": "Dynamics, Work and Energy",
+    "text": "A uniform plank 4.0 m long, weighing 120 N, hangs from a rope tied 1.5 m from end A. A 200 N load sits 0.50 m from end A.\nHow far from end B must a 100 N load be placed for the plank to hang level?",
+    "options": [
+      "2.9 m",
+      "1.1 m",
+      "0.5 m",
+      "1.4 m",
+      "2.1 m"
+    ],
+    "answer": "B",
+    "solution": "Take moments about the rope. On the A side, the 200 N load is 1.0 m away: 200 N m. On the B side, the plank's own weight acts at its centre, 2.0 m from A and so 0.5 m beyond the rope: 60 N m. The 100 N load must supply the remaining 140 N m, so it sits 1.4 m beyond the rope, 2.9 m from A, which is 1.1 m from B. Ignoring the plank's weight gives 0.5 m; 1.4 m is the distance from the rope and 2.9 m the distance from A."
+  },
+  {
+    "id": "twin-2013-Q55",
+    "twinOf": "2013 Q55",
+    "section": "physmath",
+    "subject": "Physics",
+    "chapter": "Magnetism",
+    "text": "In an AC generator a coil spins in a magnetic field, and a voltmeter connected across the coil shows an alternating potential difference.\nWhich of these changes would increase the peak potential difference?\n1 a stronger magnet\n2 a coil of larger area, with the same number of turns\n3 wire of higher resistance, with the same number of turns",
+    "options": [
+      "1 only",
+      "2 and 3 only",
+      "1 and 2 only",
+      "1, 2 and 3",
+      "3 only"
+    ],
+    "answer": "C",
+    "solution": "The induced potential difference depends on how fast the magnetic flux through the coil changes. A stronger field (1) and a larger area (2) both increase the flux the coil sweeps through each turn, so both increase the peak value. The resistance of the wire (3) does not change the flux or how fast it changes, so it does not change the induced potential difference read by a voltmeter that draws no current."
   },
   {
     "id": "twin-2013-Q56",
@@ -691,5 +813,26 @@
     ],
     "answer": "A",
     "solution": "\\(x^2 < 9\\) means \\(-3 < x < 3\\) (strict, so 3 is excluded). \\(3x \\geq 6\\) means \\(x \\geq 2\\) (2 included). Both together: \\(2 \\leq x < 3\\)."
+  },
+  {
+    "id": "twin-2013-Q60",
+    "twinOf": "2013 Q60",
+    "section": "physmath",
+    "subject": "Mathematics",
+    "chapter": "Geometry",
+    "text": "The diagram shows a square of side \\(2r\\). In each of its two bottom corners is a shaded quarter circle of radius \\(r\\).\nWhich expression gives the unshaded area?",
+    "options": [
+      "\\((4 - \\pi)r^2\\)",
+      "\\(\\left(2 - \\dfrac{\\pi}{2}\\right)r^2\\)",
+      "\\(4r^2 - \\dfrac{\\pi r}{2}\\)",
+      "\\(\\left(4 - \\dfrac{\\pi}{2}\\right)r^2\\)",
+      "\\(\\left(4 - \\dfrac{\\pi}{4}\\right)r^2\\)"
+    ],
+    "answer": "D",
+    "solution": "The square has area \\((2r)^2 = 4r^2\\). Each quarter circle has area \\(\\tfrac{1}{4}\\pi r^2\\), so the two together have \\(\\tfrac{1}{2}\\pi r^2\\). Unshaded area \\(= 4r^2 - \\tfrac{1}{2}\\pi r^2 = \\left(4 - \\tfrac{\\pi}{2}\\right)r^2\\). \\((4 - \\pi)r^2\\) subtracts two half circles, \\(\\left(2 - \\tfrac{\\pi}{2}\\right)r^2\\) takes the square's side as \\(r\\sqrt{2}\\), and \\(4r^2 - \\tfrac{\\pi r}{2}\\) mixes up area with length.",
+    "figure": {
+      "file": "twin-2013-Q60.png",
+      "origin": "drawn"
+    }
   }
 ]
