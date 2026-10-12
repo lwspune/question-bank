@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import { CheckCircle2, FileText, ImageIcon, Loader2, PenLine, Upload, X } from "lucide-react";
+import { Camera, CheckCircle2, FileText, ImageIcon, Loader2, PenLine, Upload, X } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,7 +15,14 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
-import { ACCEPT, ANSWER_SHEETS_BUCKET, MAX_FILES, validateStartRequest } from "@/lib/answerSheets/upload";
+import {
+  ACCEPT,
+  ANSWER_SHEETS_BUCKET,
+  CAMERA_ACCEPT,
+  MAX_FILES,
+  cameraPageName,
+  validateStartRequest,
+} from "@/lib/answerSheets/upload";
 
 type Status = { signedIn: boolean; submittedToday: boolean };
 
@@ -49,6 +56,9 @@ export default function AnswerSheetUpload({
   const [progress, setProgress] = useState<{ done: number; total: number } | null>(null);
   const [sent, setSent] = useState(false);
   const [here, setHere] = useState("/question-papers");
+  // "Take photo" only where there is a camera to open: on a computer the
+  // capture hint is ignored and it would be a second file picker.
+  const [canCamera, setCanCamera] = useState(false);
 
   const loadStatus = useCallback(async () => {
     setLoadFailed(false);
@@ -64,6 +74,7 @@ export default function AnswerSheetUpload({
   useEffect(() => {
     if (!open) return;
     setHere(window.location.pathname);
+    setCanCamera(window.matchMedia("(pointer: coarse)").matches);
     void loadStatus();
   }, [open, loadStatus]);
 
@@ -79,6 +90,20 @@ export default function AnswerSheetUpload({
   function addFiles(list: FileList | null) {
     if (!list) return;
     setFiles((prev) => [...prev, ...Array.from(list)].slice(0, MAX_FILES + 1));
+  }
+
+  // One page per camera tap, named by its place in the list (phones call every
+  // capture image.jpg).
+  function addCameraPhotos(list: FileList | null) {
+    if (!list) return;
+    setFiles((prev) =>
+      [
+        ...prev,
+        ...Array.from(list).map(
+          (f, i) => new File([f], cameraPageName(prev.length + i + 1, f.type), { type: f.type, lastModified: f.lastModified })
+        ),
+      ].slice(0, MAX_FILES + 1)
+    );
   }
 
   async function onSend() {
@@ -213,25 +238,48 @@ export default function AnswerSheetUpload({
                     </ul>
 
                     <div>
-                      <label
-                        htmlFor={`answer-files-${paperSlug}`}
-                        className="inline-flex cursor-pointer items-center gap-2 rounded-md border bg-background px-3 py-2 font-medium hover:bg-accent focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2"
-                      >
-                        <ImageIcon className="h-4 w-4" aria-hidden />
-                        {files.length === 0 ? "Choose photos or a PDF" : "Add more files"}
-                        <input
-                          id={`answer-files-${paperSlug}`}
-                          type="file"
-                          multiple
-                          accept={ACCEPT}
-                          className="sr-only"
-                          disabled={busy}
-                          onChange={(e) => {
-                            addFiles(e.target.files);
-                            e.target.value = "";
-                          }}
-                        />
-                      </label>
+                      <div className={canCamera ? "grid grid-cols-2 gap-2" : "flex"}>
+                        {canCamera && (
+                          <label
+                            htmlFor={`answer-camera-${paperSlug}`}
+                            className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border bg-background px-3 py-2 text-center font-medium hover:bg-accent focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2"
+                          >
+                            <Camera className="h-4 w-4 shrink-0" aria-hidden />
+                            {files.length === 0 ? "Take photo" : "Take next page"}
+                            <input
+                              id={`answer-camera-${paperSlug}`}
+                              type="file"
+                              accept={CAMERA_ACCEPT}
+                              capture="environment"
+                              className="sr-only"
+                              disabled={busy}
+                              onChange={(e) => {
+                                addCameraPhotos(e.target.files);
+                                e.target.value = "";
+                              }}
+                            />
+                          </label>
+                        )}
+                        <label
+                          htmlFor={`answer-files-${paperSlug}`}
+                          className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-md border bg-background px-3 py-2 text-center font-medium hover:bg-accent focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2"
+                        >
+                          <ImageIcon className="h-4 w-4 shrink-0" aria-hidden />
+                          {files.length === 0 ? "Choose photos or a PDF" : "Add more files"}
+                          <input
+                            id={`answer-files-${paperSlug}`}
+                            type="file"
+                            multiple
+                            accept={ACCEPT}
+                            className="sr-only"
+                            disabled={busy}
+                            onChange={(e) => {
+                              addFiles(e.target.files);
+                              e.target.value = "";
+                            }}
+                          />
+                        </label>
+                      </div>
                       {files.length > 0 && (
                         <ol className="mt-3 space-y-1.5" aria-label="Files to send, in page order">
                           {files.map((f, i) => (

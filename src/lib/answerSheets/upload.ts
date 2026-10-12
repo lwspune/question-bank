@@ -25,6 +25,20 @@ export const ALLOWED_TYPES: Record<string, string> = {
 /** The file input's `accept`, from the same list. */
 export const ACCEPT = Object.keys(ALLOWED_TYPES).join(",");
 
+/** "Take photo" (2026-10-12): the camera input asks for the photo types only. */
+export const CAMERA_ACCEPT = Object.keys(ALLOWED_TYPES)
+  .filter((t) => t.startsWith("image/"))
+  .join(",");
+
+/**
+ * A camera photo's name in the upload list. Phones name every capture
+ * image.jpg, so it is named by its page number instead: the list order is the
+ * page order the grader reads.
+ */
+export function cameraPageName(page: number, type: string): string {
+  return `Page ${page}.${ALLOWED_TYPES[type] ?? "jpg"}`;
+}
+
 export type StartRequest = {
   examSlug: string;
   paperSlug: string;
