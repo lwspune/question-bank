@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import SignInLink from "@/components/reveal/SignInLink";
 import { Flag, Mail } from "lucide-react";
 import { toast } from "sonner";
 import { CONTACT_EMAIL } from "@/lib/brand";
@@ -236,7 +236,7 @@ export default function ReportConceptDialog({
 
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
               <Button asChild size="sm">
-                <Link href="/login">Sign in</Link>
+                <SignInLink>Sign in</SignInLink>
               </Button>
               <Button asChild variant="outline" size="sm">
                 <a

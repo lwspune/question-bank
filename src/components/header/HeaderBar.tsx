@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import SignInLink from "@/components/reveal/SignInLink";
 import { Button } from "@/components/ui/button";
 import UserMenu from "@/components/UserMenu";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -137,7 +138,7 @@ export default function HeaderBar({
               </>
             ) : (
               <Button asChild variant="outline" size="sm">
-                <Link href="/login">Sign in</Link>
+                <SignInLink variant="header">Sign in</SignInLink>
               </Button>
             )}
           </div>

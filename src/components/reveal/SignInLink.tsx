@@ -3,9 +3,13 @@
 import { Suspense, type ComponentProps } from "react";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { signInHref } from "./signInHref";
+import { headerSignInHref, signInHref } from "./signInHref";
 
-type Props = Omit<ComponentProps<typeof Link>, "href">;
+type Props = Omit<ComponentProps<typeof Link>, "href"> & {
+  /** "header": the general Sign in, which lands on /me from the home page and
+   *  the sign-in pages. Default: always return to this exact page. */
+  variant?: "return" | "header";
+};
 
 /**
  * A link to sign in that returns the visitor to this exact page.
@@ -16,17 +20,19 @@ type Props = Omit<ComponentProps<typeof Link>, "href">;
  * lists to the browser as an empty shell. Here only the link waits: the
  * server renders it with the path alone, and the browser adds the query.
  */
-export default function SignInLink(props: Props) {
+export default function SignInLink({ variant = "return", ...props }: Props) {
   const pathname = usePathname();
+  const hrefFor = variant === "header" ? headerSignInHref : signInHref;
   return (
-    <Suspense fallback={<Link {...props} href={signInHref(pathname, "")} />}>
-      <WithQuery {...props} />
+    <Suspense fallback={<Link {...props} href={hrefFor(pathname, "")} />}>
+      <WithQuery {...props} variant={variant} />
     </Suspense>
   );
 }
 
-function WithQuery(props: Props) {
+function WithQuery({ variant, ...props }: Props) {
   const pathname = usePathname();
   const search = useSearchParams()?.toString() ?? "";
-  return <Link {...props} href={signInHref(pathname, search)} />;
+  const hrefFor = variant === "header" ? headerSignInHref : signInHref;
+  return <Link {...props} href={hrefFor(pathname, search)} />;
 }

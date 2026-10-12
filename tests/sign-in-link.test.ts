@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
-import { signInHref } from "@/components/reveal/signInHref";
+import { headerSignInHref, signInHref } from "@/components/reveal/signInHref";
 
 describe("signInHref", () => {
   it("returns the visitor to the exact page, query included", () => {
@@ -60,5 +60,56 @@ describe("useSearchParams stays behind its own Suspense boundary", () => {
   it("SignInLink wraps the call in Suspense with a path-only fallback", () => {
     const src = readFileSync(join(root, "src/components/reveal/SignInLink.tsx"), "utf8");
     expect(src).toMatch(/<Suspense fallback=/);
+  });
+});
+
+/**
+ * The header's Sign in (and the report dialogs') went to bare /login, so a
+ * student who signed in from a chapter landed on /me and had to find the
+ * chapter again (Clarity, 2026-10-12). From the home page and the sign-in
+ * pages themselves, /me is still the right landing.
+ */
+describe("headerSignInHref", () => {
+  it("returns the visitor to the page they were reading", () => {
+    expect(headerSignInHref("/questions/cbse-12/chemistry/biomolecules", "")).toBe(
+      "/login?next=%2Fquestions%2Fcbse-12%2Fchemistry%2Fbiomolecules",
+    );
+  });
+
+  it("keeps the /browse filters", () => {
+    expect(headerSignInHref("/browse", "examId=abc&kind=pyq")).toBe(
+      "/login?next=%2Fbrowse%3FexamId%3Dabc%26kind%3Dpyq",
+    );
+  });
+
+  it("sends the home page to plain /login, so sign-in lands on /me", () => {
+    expect(headerSignInHref("/", "")).toBe("/login");
+    expect(headerSignInHref("/", "utm_source=chatgpt.com")).toBe("/login");
+  });
+
+  it("never points back at a sign-in page", () => {
+    for (const p of ["/login", "/signup", "/welcome", "/login/", "/welcome"]) {
+      expect(headerSignInHref(p, "next=%2Fme")).toBe("/login");
+    }
+  });
+
+  it("falls back to plain /login when the path is unknown", () => {
+    expect(headerSignInHref(null, "")).toBe("/login");
+  });
+});
+
+describe("no sign-in link drops the visitor's place", () => {
+  const root = process.cwd();
+  const FILES = [
+    "src/components/header/HeaderBar.tsx",
+    "src/app/browse/ReportQuestionDialog.tsx",
+    "src/app/notes/_components/ReportConceptDialog.tsx",
+    "src/app/notes/_components/NotesPaywall.tsx",
+  ];
+
+  it.each(FILES)("%s links to sign-in through SignInLink, not bare /login", (f) => {
+    const src = readFileSync(join(root, f), "utf8");
+    expect(src).not.toMatch(/href=["{`]+\/login["}`]/);
+    expect(src).toMatch(/<SignInLink\b/);
   });
 });
