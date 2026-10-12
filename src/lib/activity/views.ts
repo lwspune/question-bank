@@ -24,6 +24,12 @@ export const SURFACES = [
   "pricing",
   "handout", // the notes print handout (2026-10-02); metadata.browser = "standard" | "inapp"
   "performance", // /performance, where the projected score lives (2026-10-05); never recorded before
+  // The /browse download box's download view, as a signed-in student meets it
+  // (2026-10-12): under the cap, or over it with the buttons greyed out. Lets
+  // the download-box signups who never download be told apart from those
+  // the 200-question cap stopped.
+  "download_box",
+  "download_box_over_cap",
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];
