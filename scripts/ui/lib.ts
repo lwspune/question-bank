@@ -39,6 +39,9 @@ export type ShotArgs = {
    *  student who chose these exams, so a signed-in view can be captured on
    *  both sides without signing in. Null = anonymous, as before. */
   asStudent: string[] | null;
+  /** `--click="<text>"`: tap the first visible button or link whose text starts
+   *  with this before the shot, so a dialog or sheet can be captured. */
+  click: string | null;
 };
 
 /** "/guide/nda?x=1" → "guide-nda"; "/" → "home". */
@@ -125,7 +128,26 @@ export function parseShotArgs(argv: string[]): ShotArgs {
     title: value("title") ?? "Before / after",
     phase,
     asStudent: asStudentArg(value("as-student")),
+    click: clickArg(value("click")),
   };
+}
+
+function clickArg(raw: string | undefined): string | null {
+  if (raw === undefined) return null;
+  if (!raw.trim()) throw new Error(`--click= needs the start of a button's text, e.g. --click="Download"`);
+  return raw;
+}
+
+/** The page script that taps the control `--click` names; resolves whether it found one. */
+export function clickScript(text: string): string {
+  return `(() => {
+  const want = ${JSON.stringify(text)};
+  const els = [...document.querySelectorAll("button, a, [role=button]")];
+  const el = els.find((e) => e.offsetParent !== null && (e.textContent || "").trim().startsWith(want));
+  if (!el) return false;
+  el.click();
+  return true;
+})()`;
 }
 
 function asStudentArg(raw: string | undefined): string[] | null {

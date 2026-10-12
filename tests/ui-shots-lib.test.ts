@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { pageSlug, planCaptures, parseShotArgs, sheetHtml, stubHeaderSession, VIEWPORTS } from "../scripts/ui/lib";
+import { clickScript, pageSlug, planCaptures, parseShotArgs, sheetHtml, stubHeaderSession, VIEWPORTS } from "../scripts/ui/lib";
 
 /**
  * `npm run ui:shots` (2026-10-04): the before/after screenshot sheet every
@@ -146,5 +146,31 @@ describe("--as-student: a signed-in view without signing in", () => {
         targetExams: ["mpsc-group-b-c"],
       },
     });
+  });
+});
+
+/**
+ * `--click="<text>"`: dialogs, sheets and popovers exist only after a tap, so
+ * a before/after sheet could never show them (2026-10-12: the download box).
+ * The capture taps the first visible button or link whose text starts with
+ * this, then waits for it to open.
+ */
+describe("--click", () => {
+  it("is off unless asked for", () => {
+    expect(parseShotArgs(["--pages=/browse"]).click).toBeNull();
+  });
+
+  it("carries the button text", () => {
+    expect(parseShotArgs(["--pages=/browse", "--click=Download"]).click).toBe("Download");
+  });
+
+  it("refuses an empty value", () => {
+    expect(() => parseShotArgs(["--pages=/browse", "--click="])).toThrow(/--click/);
+  });
+
+  it("builds a page script that embeds the text safely", () => {
+    const js = clickScript('Say "hi"');
+    expect(js).toContain(JSON.stringify('Say "hi"'));
+    expect(js).toMatch(/startsWith/);
   });
 });

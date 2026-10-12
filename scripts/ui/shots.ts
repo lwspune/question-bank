@@ -22,7 +22,8 @@
  * never --window-size; and every run gets a fresh profile, because /browse's
  * anonymous reveal budget lives in browser storage and would carry over.
  *
- * What it cannot show: screens behind a click, and a REAL student's data.
+ * What it cannot show: a REAL student's data. A screen behind ONE tap (a dialog,
+ * a sheet) can be shown with `--click="<button text>"`; deeper flows cannot.
  * `--as-student=<exam,...>` renders the signed-in view of a cached page (the
  * header and any island that reads /api/me/header) for a stand-in student;
  * pages that read the student's own rows still render anonymously. Say so
@@ -32,7 +33,7 @@ import { spawn, type ChildProcess } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
-import { parseShotArgs, planCaptures, sheetHtml, stubHeaderSession, VIEWPORTS, type Capture } from "./lib";
+import { clickScript, parseShotArgs, planCaptures, sheetHtml, stubHeaderSession, VIEWPORTS, type Capture } from "./lib";
 
 const EDGE = process.env.EDGE ?? "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
 const PHONE_UA =
@@ -92,7 +93,7 @@ async function evaluate(cdp: Cdp, expression: string): Promise<unknown> {
   return res.result?.result?.value;
 }
 
-async function capture(cdp: Cdp, c: Capture, waitMs: number, fullPage: boolean, dir: string) {
+async function capture(cdp: Cdp, c: Capture, waitMs: number, fullPage: boolean, dir: string, click: string | null) {
   const vp = VIEWPORTS[c.viewport];
   await cdp.send("Emulation.setDeviceMetricsOverride", { width: vp.width, height: vp.height, deviceScaleFactor: vp.scale, mobile: vp.mobile });
   await cdp.send("Emulation.setUserAgentOverride", { userAgent: vp.mobile ? PHONE_UA : "" });
@@ -104,6 +105,10 @@ async function capture(cdp: Cdp, c: Capture, waitMs: number, fullPage: boolean, 
   // preference cannot override the run.
   await evaluate(cdp, `(() => { const h = document.documentElement; h.classList.toggle('dark', ${c.theme === "dark"}); h.style.colorScheme = '${c.theme}'; })()`);
   await sleep(400);
+  if (click) {
+    if (!(await evaluate(cdp, clickScript(click)))) throw new Error(`--click: no visible button or link starting "${click}" on ${c.url}`);
+    await sleep(1500);
+  }
   let params: object = { format: "png" };
   if (fullPage) {
     const height = Math.min(6000, Number(await evaluate(cdp, "document.documentElement.scrollHeight")) || vp.height);
@@ -150,7 +155,7 @@ async function main() {
     for (const c of plan) {
       if (args.phase !== "both" && c.target !== args.phase) continue;
       process.stdout.write(`${c.target.padEnd(6)} ${c.viewport.padEnd(7)} ${c.theme.padEnd(5)} ${c.url} ... `);
-      await capture(cdp, c, args.waitMs, args.fullPage, dir);
+      await capture(cdp, c, args.waitMs, args.fullPage, dir, args.click);
       console.log("ok");
     }
     // The sheet needs both sides; a before-only run stops here.
