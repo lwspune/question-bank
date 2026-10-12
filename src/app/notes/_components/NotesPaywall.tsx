@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SignInLink from "@/components/reveal/SignInLink";
 import { Lock, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -51,7 +52,7 @@ export default function NotesPaywall({
                 <Link href="/signup">Sign up to unlock</Link>
               </Button>
               <Button asChild variant="outline">
-                <Link href="/login">Sign in</Link>
+                <SignInLink>Sign in</SignInLink>
               </Button>
             </>
           )}
