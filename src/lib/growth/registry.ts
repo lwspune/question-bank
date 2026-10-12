@@ -275,6 +275,12 @@ export type DecidedAgainst = { title: string; decision: string; on: string; why:
 
 export const DECIDED_AGAINST: readonly DecidedAgainst[] = [
   {
+    title: "Checking homework answer sheets",
+    decision: "Not yet; revisit when homework reaches about 20 students a week",
+    on: "2026-10-12",
+    why: "Homework had 1 download by 1 student since it launched on 9 Oct, and the cost of hand-checking a paper sheet is not measured yet (the first arrived on 12 Oct). Five questions a day also want feedback in minutes, which the model answers give, not in 48 hours. Tracked by the homework-demand insight.",
+  },
+  {
     title: "Brand line on institute papers",
     decision: "No; pass downloads are branded instead",
     on: "2026-10-01",
