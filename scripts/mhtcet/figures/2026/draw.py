@@ -106,6 +106,30 @@ def circuit(out, build, fontsize=15):
         d.save(out, dpi=170)
 
 
+def graph(out, build, size=(5.2, 3.6)):
+    """Draw a graph with matplotlib. `build(ax, np)` draws on the axes; mathtext labels."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    plt.rcParams.update({"font.size": 12, "mathtext.fontset": "dejavusans"})
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    fig, ax = plt.subplots(figsize=size)
+    build(ax, np)
+    fig.savefig(out, dpi=170, bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+
+
+def axes_through_origin(ax):
+    """Textbook axes: spines through the origin, no box, arrow-free plain lines."""
+    for s in ("top", "right"):
+        ax.spines[s].set_visible(False)
+    ax.spines["left"].set_position("zero")
+    ax.spines["bottom"].set_position("zero")
+
+
 def _write(out, data):
     os.makedirs(os.path.dirname(out), exist_ok=True)
     with open(out, "wb") as f:
