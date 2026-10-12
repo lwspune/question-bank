@@ -36,6 +36,7 @@ import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
 import { gatePriceLine, gateTitle, selectionTitle } from "@/lib/billing/gateCopy";
+import { downloadBoxStep, overCapCopy } from "@/lib/export/downloadBoxStep";
 import PassOffer from "./PassOffer";
 
 type Mode = "filters" | "cart";
@@ -126,16 +127,6 @@ export default function DownloadDialog({
     setHere(window.location.pathname + window.location.search);
   }, []);
 
-  // The download gate was seen — the denominator for pass clicks. The event
-  // names still say "teacher" (the gate's name until 2026-10-01) so the series
-  // stays continuous. `mode` splits the two populations that matter — a
-  // visitor who assembled a CART and then met the wall wanted a paper; one who
-  // opened it from FILTERS may only have been looking.
-  useEffect(() => {
-    if (!open || canDownload) return;
-    trackFunnelOnce("teacher_gate_shown", mode, { signedIn: isSignedIn, mode });
-    if (isSignedIn) sendActivityOnce(`teacher_gate:${mode}`, { kind: "paywall_event", step: "shown", gate: "teacher" });
-  }, [open, canDownload, mode, isSignedIn]);
   const [title, setTitle] = useState("PYQ Vault Export");
   const [includeSolutions, setIncludeSolutions] = useState(true);
   const [groupBySubtopic, setGroupBySubtopic] = useState(false);
@@ -153,6 +144,29 @@ export default function DownloadDialog({
   const activeCount = mode === "cart" ? cartCount : filterCount;
   const overCap = activeCount > 200;
   const busy = busyKind !== null;
+  // Which step the box shows. Over the cap, nobody is asked to sign in or pay
+  // for a paper that cannot be made (2026-10-12, lib/export/downloadBoxStep).
+  const step = downloadBoxStep({ canDownload, wantPass, count: activeCount, passOnSale: downloadPass !== null });
+  const overCapText = overCapCopy(mode, activeCount);
+
+  // The download gate was seen: the denominator for pass clicks, counted only
+  // when the offer is really shown. The event names still say "teacher" (the
+  // gate's name until 2026-10-01) so the series stays continuous. `mode` splits
+  // a visitor who assembled a CART (wanted a paper) from one who opened it from
+  // FILTERS (may only have been looking).
+  useEffect(() => {
+    if (!open || step !== "offer") return;
+    trackFunnelOnce("teacher_gate_shown", mode, { signedIn: isSignedIn, mode });
+    if (isSignedIn) sendActivityOnce(`teacher_gate:${mode}`, { kind: "paywall_event", step: "shown", gate: "teacher" });
+  }, [open, step, mode, isSignedIn]);
+
+  // What a signed-in student met in the download view: a paper they can take,
+  // or the cap's greyed-out buttons. Tells "left" apart from "was stopped".
+  useEffect(() => {
+    if (!open || !isSignedIn || step !== "download") return;
+    const surface = overCap ? "download_box_over_cap" : "download_box";
+    sendActivityOnce(surface, { kind: "surface_viewed", surface });
+  }, [open, isSignedIn, step, overCap]);
 
   async function onDownload(kind: Kind) {
     setBusyKind(kind);
@@ -242,7 +256,9 @@ export default function DownloadDialog({
       <DialogContent className="flex max-h-[90dvh] flex-col gap-0 p-0 sm:max-w-xl">
         <DialogHeader className="px-6 pt-6">
           <DialogTitle>
-            {showDownloadView
+            {step === "over_cap"
+              ? overCapText.title
+              : showDownloadView
               ? `Download ${activeCount} question${activeCount === 1 ? "" : "s"}`
               : downloadPass
               ? isSignedIn
@@ -251,7 +267,9 @@ export default function DownloadDialog({
               : "Download papers with the pass"}
           </DialogTitle>
           <DialogDescription>
-            {showDownloadView && paperFormat === "pdf" ? (
+            {step === "over_cap" ? (
+              overCapText.body
+            ) : showDownloadView && paperFormat === "pdf" ? (
               "PDF files: the Question Paper and the Answer Key, set in one column so they read well on a phone and print cleanly."
             ) : showDownloadView ? (
               <>
@@ -276,7 +294,13 @@ export default function DownloadDialog({
           </DialogDescription>
         </DialogHeader>
 
-        {!showDownloadView ? (
+        {step === "over_cap" ? (
+          <DialogFooter className="shrink-0 border-t bg-background px-6 py-4">
+            <Button variant="brand" className="w-full sm:w-auto" onClick={() => setOpen(false)}>
+              Got it
+            </Button>
+          </DialogFooter>
+        ) : !showDownloadView ? (
           downloadPass ? (
             <PassOffer
               pass={downloadPass}
