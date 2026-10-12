@@ -30,7 +30,9 @@ const MATH_ZONE = /\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]/g;
 export function wordsOf(s: string): string[] {
   const stripped = s
     .replace(/\\[A-Za-z]+/g, " ") // command names
-    .replace(/[_^]\{[^}]*\}|[_^]./g, " "); // sub/superscripts are glyph-drawn in the PDF
+    // keep sub/superscript CONTENT: a superscript word ("1/20^{th}") prints as text, and an
+    // extra word on the transcript side can never hide a word missing from it
+    .replace(/[_^]/g, " ");
   return (stripped.toLowerCase().match(/[a-z]+/g) ?? []).filter((w) => w.length >= 2);
 }
 

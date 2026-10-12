@@ -24,6 +24,10 @@ describe("wordsOf", () => {
   it("drops single letters (option labels, variables) as noise", () => {
     expect(wordsOf("(A) x and y")).toEqual(["and"]);
   });
+  it("keeps letters written as a superscript (1/20^{th} prints its 'th' as text)", () => {
+    expect(wordsOf("\\(1/20^{th}\\) of its value")).toEqual(["th", "of", "its", "value"]);
+  });
+
   it("does not leak LaTeX command names such as frac or times", () => {
     expect(wordsOf("\\(\\frac{1}{2} \\times 10^{6}\\,\\mathrm{ms^{-1}}\\)")).toEqual(["ms"]);
   });
