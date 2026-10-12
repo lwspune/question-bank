@@ -6,6 +6,15 @@ import StatCard from "@/app/dashboard/StatCard";
 import { getSessionSuperadmin } from "@/lib/auth";
 import { getGrowthSnapshot } from "@/lib/growth/adminStats";
 import {
+  INSIGHTS,
+  isDue,
+  latestVerdict,
+  nextCheckOn,
+  sortForReview,
+  type Insight,
+  type InsightVerdict,
+} from "@/lib/growth/insights";
+import {
   DECIDED_AGAINST,
   EXPERIMENTS,
   NORTH_STAR_KINDS,
@@ -106,6 +115,94 @@ function VerdictLine({ verdict }: { verdict: Verdict }) {
       <StatusBadge status={verdict.status} />
       <span className="text-muted-foreground">{verdict.reason}</span>
     </p>
+  );
+}
+
+const VERDICT_LABEL: Record<InsightVerdict, string> = {
+  holds: "Holds",
+  stronger: "Stronger",
+  weaker: "Weaker",
+  reversed: "Reversed",
+  mixed: "Mixed",
+};
+
+const VERDICT_STYLE: Record<InsightVerdict, string> = {
+  holds: GOOD,
+  stronger: GOOD,
+  weaker: WARN,
+  mixed: WARN,
+  reversed: BAD,
+};
+
+const INSIGHT_STATUS_LABEL: Record<Insight["status"], string> = {
+  open: "Watching",
+  confirmed: "Confirmed",
+  retired: "Retired",
+};
+
+function InsightCard({ insight, today }: { insight: Insight; today: string }) {
+  const verdict = latestVerdict(insight);
+  const due = isDue(insight, today);
+  const latest = insight.checks[insight.checks.length - 1];
+  const earlier = insight.checks.slice(0, -1).reverse();
+  return (
+    <article className="space-y-3 rounded-lg border p-5">
+      <header className="space-y-2">
+        <h3 className="font-semibold">{insight.title}</h3>
+        <p className="flex flex-wrap items-center gap-2 text-xs">
+          <span className={`rounded px-2 py-0.5 font-medium ${insight.status === "retired" ? NEUTRAL : GOOD}`}>
+            {INSIGHT_STATUS_LABEL[insight.status]}
+          </span>
+          <span className={`rounded px-2 py-0.5 font-medium ${NEUTRAL}`}>{insight.confidence} confidence</span>
+          {verdict && (
+            <span className={`rounded px-2 py-0.5 font-medium ${VERDICT_STYLE[verdict]}`}>
+              Last check: {VERDICT_LABEL[verdict]}
+            </span>
+          )}
+          {insight.status !== "retired" && (
+            <span className={`rounded px-2 py-0.5 font-medium ${due ? WARN : NEUTRAL}`}>
+              {due ? "Re-check due" : "Next check"} {fmtDate(nextCheckOn(insight))}
+            </span>
+          )}
+        </p>
+      </header>
+      <p className="text-sm">{insight.finding}</p>
+      <dl className="grid gap-1 text-xs text-muted-foreground sm:grid-cols-[7rem_1fr]">
+        <dt className="font-medium text-foreground">First seen</dt>
+        <dd>{fmtDate(insight.firstSeen)}</dd>
+        <dt className="font-medium text-foreground">Source</dt>
+        <dd>{insight.source}</dd>
+        {latest && (
+          <>
+            <dt className="font-medium text-foreground">Latest check</dt>
+            <dd>
+              {fmtDate(latest.on)}: {latest.numbers}
+            </dd>
+          </>
+        )}
+        {insight.actedOn && (
+          <>
+            <dt className="font-medium text-foreground">Acted on</dt>
+            <dd>{insight.actedOn}</dd>
+          </>
+        )}
+      </dl>
+      <details className="text-xs text-muted-foreground">
+        <summary className="cursor-pointer rounded font-medium text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+          How to re-check{earlier.length > 0 ? ` · ${earlier.length} earlier check${earlier.length === 1 ? "" : "s"}` : ""}
+        </summary>
+        <p className="mt-2">{insight.howToCheck}</p>
+        {earlier.length > 0 && (
+          <ul className="mt-2 space-y-1">
+            {earlier.map((c) => (
+              <li key={c.on + c.numbers}>
+                {fmtDate(c.on)} · {VERDICT_LABEL[c.verdict]}: {c.numbers}
+              </li>
+            ))}
+          </ul>
+        )}
+      </details>
+    </article>
   );
 }
 
@@ -230,6 +327,9 @@ export default async function GrowthPage() {
   const countries = viewSignupCountries(raw.signupCountries);
   const running = EXPERIMENTS.filter((e) => e.status === "running");
   const decided = EXPERIMENTS.filter((e) => e.status === "decided");
+  const insights = sortForReview(INSIGHTS, today);
+  const insightsDue = insights.filter((i) => isDue(i, today)).length;
+  const insightsWatched = insights.filter((i) => i.status !== "retired").length;
 
   function readout(e: Experiment) {
     switch (e.readout) {
@@ -588,6 +688,22 @@ export default async function GrowthPage() {
             since the country is saved only at a new account&rsquo;s own first sign-in; anything else there means
             the recording has stopped working. Accounts made before 9 Oct have no country and are not counted.
           </p>
+        </section>
+
+        {/* ── Insights ──────────────────────────────────────────────────── */}
+        <section className="space-y-4">
+          <div>
+            <h2 className="text-sm font-semibold">
+              Insights · {insightsWatched} watched · {insightsDue} due for a re-check
+            </h2>
+            <p className="mt-1 text-xs text-muted-foreground">
+              What we have learned about students, with the evidence and a way to measure it again. Due ones come
+              first. To add one or record a re-check, change lib/growth/insights.ts.
+            </p>
+          </div>
+          {insights.map((i) => (
+            <InsightCard key={i.id} insight={i} today={today} />
+          ))}
         </section>
 
         {/* ── Experiments ───────────────────────────────────────────────── */}
