@@ -215,6 +215,20 @@ export const INSIGHTS: readonly Insight[] = [
     status: "open",
   },
   {
+    id: "homework-demand",
+    title: "Homework downloads and answer-sheet checks are both near zero so far",
+    finding:
+      "By 12 Oct: homework (launched 9 Oct) had 1 download by 1 student; board past papers (launched 10 Oct) 17 downloads by 3 students; answer-sheet checking (launched 11 Oct) 1 sheet. Too early to tell demand from discovery.",
+    source: "export_events (mode homework; board_paper_id set; staff excluded) and answer_submissions, to 12 Oct",
+    confidence: "low",
+    firstSeen: "2026-10-12",
+    howToCheck:
+      "Database: export_events with mode = 'homework' and not is_staff, last 7 days, downloads and distinct students; the same for board_paper_id is not null; answer_submissions per week. Also note how long each checked sheet took (from the grading sessions), which is what decides whether checking can grow.",
+    checks: [],
+    status: "open",
+    actedOn: "12 Oct: decided not to add checking to homework until it reaches about 20 students a week (see Decided against).",
+  },
+  {
     id: "browse-slow-distance",
     title: "/browse is slow because each database call crosses from Washington to Mumbai",
     finding:
