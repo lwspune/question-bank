@@ -23,6 +23,41 @@
 > Runner for the figure gap: `scripts/figures/backfill-mhtcet.ts`. See
 > `[[mhtcet-source-docx-render]]`.
 
+## 2026 onward: the source is a typeset PDF (`PDF_SHIFTS` in `config.ts`)
+
+`PYQPs\2026\` holds one third-party PDF per shift (26 shifts, key on the last pages).
+Sections run **Chemistry 1-50, Maths 51-100, Physics 101-150**. The prose is a real text
+layer but every formula and number is drawn as vector paths, so each question is
+**transcribed by hand from a crop**, and the text layer is used only to check the
+transcription. Every figure carries the publisher's watermark, so **no source figure is
+ever uploaded**: each is redrawn from its content (RDKit structures from SMILES, schemdraw
+circuits, matplotlib graphs; `figures/2026/draw.py`), or written as LaTeX where the
+"figure" is really a formula or a reaction scheme.
+
+```sh
+python scripts/mhtcet/pdf-extract.py "<paper.pdf>" <shiftId>     # crops + key + text layer -> out/pdf/<id>/ (fails unless 150 + 150)
+npx tsx scripts/mhtcet/dump-taxonomy.ts                           # live chapters/subtopics -> out/taxonomy.json
+# author transcripts/<id>.txt (format: transcript.ts) — stem, options, chapter, subtopic,
+# difficulty, OUR answer, OUR solution. Solve BEFORE looking at the PDF key.
+python scripts/mhtcet/figures/2026/<id>/figures.py                # redraw -> qNNN.png / qNNN-A..D.png
+npx tsx scripts/mhtcet/build-pdf-shift.ts <id> --partial          # check as you go (writes nothing)
+npx tsx scripts/mhtcet/build-pdf-shift.ts <id>                    # -> out/<id>.records.json + shifts/<id>.json
+# then steps 6-9 below exactly as for a docx shift (commit, attach-images, validate-db, flip-public)
+```
+
+`build-pdf-shift.ts` refuses to write until: every chapter + subtopic exists live; every
+word of the PDF text layer appears in the transcription and no prose word is invented
+(`pdfSource.textLayerFidelity` — formulas are checked by the key, not by this); KaTeX,
+delimiters and raw-unicode are clean; every declared figure exists; a question printed
+with a figure declares one (or a `note:` says it became text); and every answer that
+differs from the PDF key carries a `note:`. The transcript is the source of record —
+commit it, the figures' `figures.py` and their PNGs.
+
+Pilot `2026-apr-15-s1` (2026-10-12): 150/150 committed PRIVATE, 0 key disagreements,
+2 figure questions (Q39 four RDKit structures, Q128 schemdraw circuit).
+
+## 2021-2025: LWS `.docx` papers
+
 Ingests LWS-typed reproductions of MHT-CET PCM shifts (born-digital OMML `.docx`,
 one file = all three subjects continuously numbered Physics 1-50 / Chemistry
 51-100 / Maths 101-150, plus a **separate `<paper>_AK.docx`** holding the answer
