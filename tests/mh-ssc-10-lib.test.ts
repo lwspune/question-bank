@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { buildPaperRecords, type PaperQuestion, type PaperCatalog } from "../scripts/mh-ssc-10/lib";
+import { buildPaperRecords, answerStyleIssues, type PaperQuestion, type PaperCatalog } from "../scripts/mh-ssc-10/lib";
 
 const CAT: PaperCatalog = {
   subjectName: "Algebra",
@@ -201,5 +201,41 @@ describe("buildPaperRecords — multi-subject paper", () => {
       ],
     );
     expect(rows.map((r) => r.sourceRow)).toEqual([1, 2, 3]);
+  });
+});
+
+describe("answerStyleIssues — the board-answer gate merge.ts applies", () => {
+  it("passes an MCQ that opens with its keyed option and names no other letter", () => {
+    const q = mcq({ solution: "**(A)** 1\n\nSubstitute \(x = 3\): \(9k - 21 + 12 = 0\), \(\therefore k = 1\)." });
+    expect(answerStyleIssues(q)).toEqual([]);
+  });
+
+  it("refuses an MCQ whose opening letter is not the stored answer", () => {
+    const q = mcq({ answer: "A", solution: "**(C)** 3\n\nworking" });
+    expect(answerStyleIssues(q).map((f) => f.reason).join(" ")).toMatch(/opens with \(C\).*answer is A/);
+  });
+
+  it("refuses an MCQ that does not open with its option at all", () => {
+    const q = mcq({ solution: "Substitute x = 3 to get k = 1. Correct option: A." });
+    expect(answerStyleIssues(q).some((f) => /must open/.test(f.reason))).toBe(true);
+  });
+
+  it("refuses an option letter named in the body of an MCQ answer", () => {
+    const q = mcq({ solution: "**(A)** 1\n\nk = 1, so option B is wrong and rules out option C." });
+    expect(answerStyleIssues(q).some((f) => /option LETTER/.test(f.reason))).toBe(true);
+  });
+
+  it("refuses an em dash in authored text but not in copied stem text", () => {
+    expect(answerStyleIssues(subj({ solution: "The first term is 1 — found by substitution." })).length).toBe(1);
+    expect(answerStyleIssues(subj({ stem: "Find t1 — the first term.", solution: "\(t_1 = 1\)." }))).toEqual([]);
+  });
+
+  it("refuses a marker-facing aside in a written answer", () => {
+    const q = subj({ solution: "It is worth noting that \(t_1 = 1\)." });
+    expect(answerStyleIssues(q).some((f) => /aside/.test(f.reason))).toBe(true);
+  });
+
+  it("refuses an empty model answer", () => {
+    expect(answerStyleIssues(subj({ solution: "  " })).some((f) => /empty/.test(f.reason))).toBe(true);
   });
 });

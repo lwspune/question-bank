@@ -12,6 +12,7 @@ import { contentHash, subjectiveContentHash } from "../../src/lib/upload/hash";
 import type { ParsedRowPayload, OptionLabel, Difficulty } from "../../src/lib/upload/validate";
 export { latexImbalances } from "../stateboard/lib";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
+import { probeBoardAnswer, isNumericalStem, type StyleFinding } from "../lib/boardAnswerStyle";
 
 const LABELS: OptionLabel[] = ["A", "B", "C", "D"];
 const DIFFICULTIES: Difficulty[] = ["EASY", "MODERATE", "HARD"];
@@ -188,4 +189,34 @@ export function buildPaperRecords(
   }
 
   return { rows, flags };
+}
+
+// ── Board-answer gate (merge.ts, papers with `answerStyle: "board"`) ──────────
+// The brief's "Model answers" section, as code: a rule that lives only in a
+// brief is one session away from being forgotten. Every ERROR here blocks the
+// merge; the shared probe holds the patterns other board lanes already learned.
+
+const EM_DASH = "\u2014";
+const MCQ_OPENER = /^\s*\*\*\(([A-D])\)\*\*/;
+
+/** Errors only: what the answer-style gate refuses. Warnings stay in the probe. */
+export function answerStyleIssues(q: PaperQuestion): StyleFinding[] {
+  const out: StyleFinding[] = [];
+  const sol = (q.solution ?? "").trim();
+  const err = (reason: string, quote = "") => out.push({ ref: q.ref, severity: "error", reason, quote });
+
+  if (!sol) {
+    err("empty model answer");
+    return out;
+  }
+  if (q.format === "mcq") {
+    const m = MCQ_OPENER.exec(sol);
+    if (!m) err("an MCQ answer must open with **(X)** and the option's text", sol.slice(0, 40));
+    else if (q.answer && m[1] !== q.answer) err(`opens with (${m[1]}) but the answer is ${q.answer}`, sol.slice(0, 40));
+  }
+  for (const f of probeBoardAnswer(q.ref, sol, { mcq: q.format === "mcq", numerical: isNumericalStem(q.stem) })) {
+    if (f.severity === "error") out.push(f);
+  }
+  if (sol.includes(EM_DASH)) err("em dash in authored text (use a full stop, colon, comma or brackets)", EM_DASH);
+  return out;
 }
