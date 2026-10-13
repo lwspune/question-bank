@@ -92,6 +92,60 @@ def molecule(smiles, out, size=(360, 300), up=None, condensed=True):
     _write(out, d.GetDrawingText())
 
 
+def _mol_image(smiles, up=None, size=(300, 260)):
+    """RDKit drawing of one molecule as a PIL image (same style as molecule())."""
+    import io
+    import tempfile
+
+    from PIL import Image
+
+    tmp = os.path.join(tempfile.gettempdir(), f"_mol_{abs(hash((smiles, up, size)))}.png")
+    molecule(smiles, tmp, size=size, up=up)
+    with open(tmp, "rb") as f:
+        return Image.open(io.BytesIO(f.read())).convert("RGB")
+
+
+def scheme(out, parts, height=2.6):
+    """A reaction scheme in one row. `parts` is a list of:
+      ("mol", smiles[, up])          a structure drawn by RDKit
+      ("arrow", above, below)        a reaction arrow with mathtext reagents ('' for none)
+      ("text", mathtext)             a label such as '[A]'
+    """
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    plt.rcParams.update({"mathtext.fontset": "dejavusans"})
+    widths = []
+    for p in parts:
+        widths.append(2.6 if p[0] == "mol" else 2.2 if p[0] == "arrow" else 0.9)
+    fig = plt.figure(figsize=(sum(widths), height))
+    x = 0.0
+    total = sum(widths)
+    for p, w in zip(parts, widths):
+        ax = fig.add_axes([x / total, 0, w / total, 1])
+        ax.axis("off")
+        if p[0] == "mol":
+            ax.imshow(_mol_image(p[1], p[2] if len(p) > 2 else None))
+        elif p[0] == "arrow":
+            ax.set_xlim(0, 1)
+            ax.set_ylim(0, 1)
+            ax.annotate("", xy=(0.95, 0.5), xytext=(0.05, 0.5), arrowprops=dict(arrowstyle="-|>", color="black", lw=1.6, mutation_scale=18))
+            if p[1]:
+                ax.text(0.5, 0.58, p[1], ha="center", va="bottom", fontsize=14)
+            if p[2]:
+                ax.text(0.5, 0.42, p[2], ha="center", va="top", fontsize=14)
+        else:
+            ax.set_xlim(0, 1)
+            ax.set_ylim(0, 1)
+            ax.text(0.5, 0.5, p[1], ha="center", va="center", fontsize=17)
+        x += w
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    fig.savefig(out, dpi=150, bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+
+
 def circuit(out, build, fontsize=15):
     """Draw a circuit with schemdraw. `build(d, elm)` adds the elements to drawing `d`
     (`elm` is schemdraw.elements). Labels use matplotlib mathtext: '$C_2 = 2C$'."""
