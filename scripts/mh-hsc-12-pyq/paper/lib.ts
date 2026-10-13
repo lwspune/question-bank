@@ -90,9 +90,31 @@ export const HSC_CHEMISTRY_CHAPTERS = [
   "Transition and Inner Transition Elements",
 ] as const;
 
+/** The 15 Biology chapters, seeded 2026-10-13 from the Balbharati Std XII
+ *  Biology textbook (data/biology-taxonomy.json, seed-biology.ts) before any
+ *  Biology board row existed. Book order. */
+export const HSC_BIOLOGY_CHAPTERS = [
+  "Reproduction in Lower and Higher Plants",
+  "Reproduction in Lower and Higher Animals",
+  "Inheritance and Variation",
+  "Molecular Basis of Inheritance",
+  "Origin and Evolution of Life",
+  "Plant Water Relation",
+  "Plant Growth and Mineral Nutrition",
+  "Respiration and Circulation",
+  "Control and Coordination",
+  "Human Health and Diseases",
+  "Enhancement of Food Production",
+  "Biotechnology",
+  "Organisms and Populations",
+  "Ecosystems and Energy Flow",
+  "Biodiversity, Conservation and Environmental Issues",
+] as const;
+
 export type HscMathsChapter = (typeof HSC_MATHS_CHAPTERS)[number];
 export type HscPhysicsChapter = (typeof HSC_PHYSICS_CHAPTERS)[number];
 export type HscChemistryChapter = (typeof HSC_CHEMISTRY_CHAPTERS)[number];
+export type HscBiologyChapter = (typeof HSC_BIOLOGY_CHAPTERS)[number];
 
 export type Section = "A" | "B" | "C" | "D";
 export type Placement = { section: Section; marks: number; format: "mcq" | "subjective" };
@@ -443,10 +465,33 @@ export const CHEMISTRY_GRAMMAR = buildGrammar({
   letterParts: true,
 });
 
+/** Biology (subject code 56) prints the Physics shape exactly: Q.1 10 MCQ 1m,
+ *  Q.2 8 VSA 1m, Q.3-14 2m (any 8), Q.15-26 3m (any 8), Q.27-31 4m (any 3), 98
+ *  printed marks against a Max of 70. No Biology board row existed before this
+ *  grammar, so there is no shipped ref spelling to match; it uses Physics'. */
+export const BIOLOGY_GRAMMAR = buildGrammar({
+  subject: "Biology",
+  label: "Biology",
+  chapters: HSC_BIOLOGY_CHAPTERS,
+  blocks: { 1: 10, 2: 8 },
+  blockPlacement: {
+    1: { section: "A", marks: 1, format: "mcq" },
+    2: { section: "A", marks: 1, format: "subjective" },
+  },
+  whole: { from: 3, to: 31 },
+  bands: [
+    { to: 14, section: "B", marks: 2 },
+    { to: 26, section: "C", marks: 3 },
+    { to: 31, section: "D", marks: 4 },
+  ],
+  renderSub: (parent, roman) => `Q. ${parent}(${roman})`,
+});
+
 const GRAMMARS: Record<string, Grammar> = {
   Mathematics: MATHS_GRAMMAR,
   Physics: PHYSICS_GRAMMAR,
   Chemistry: CHEMISTRY_GRAMMAR,
+  Biology: BIOLOGY_GRAMMAR,
 };
 
 export function grammarFor(subject: string): Grammar {

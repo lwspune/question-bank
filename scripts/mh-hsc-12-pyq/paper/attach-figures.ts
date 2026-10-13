@@ -135,6 +135,7 @@ async function planFor(
       Mathematics: "Maths",
       Physics: "Physics",
       Chemistry: "Chemistry",
+      Biology: "Biology",
     };
     const token = COMPILATION_TOKEN[paper.subject];
     if (!token) throw new Error(`no compilation source_file token for subject ${JSON.stringify(paper.subject)}`);

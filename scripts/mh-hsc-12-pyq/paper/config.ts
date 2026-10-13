@@ -44,7 +44,7 @@ export const SUBJECT_NAME = "Mathematics";
 export const CHEMISTRY_SOURCE_ROOT =
   "C:\\Vilas\\LWS_Pune\\NDA_Subjects_Content\\Subjects\\Chem\\State_Board\\Question_Papers";
 
-export type PaperSubject = "Mathematics" | "Physics" | "Chemistry";
+export type PaperSubject = "Mathematics" | "Physics" | "Chemistry" | "Biology";
 
 export type BankStatus =
   /** No rows for this sitting exist. Straight ingest. */
@@ -202,6 +202,39 @@ const physicsPaper = (
   sourceFile: `MH_HSC_12_Physics_PYQ__${year}_${month}.pdf`,
   note: `Maharashtra HSC Class 12 Board question paper — Physics (Subject code 54), ${month} ${year} sitting (paper code ${paperCode})`,
   bankStatus,
+  figureRefs,
+  ...extra,
+});
+
+/** Where the Biology prints live: the board's own born-digital English PDFs,
+ *  downloaded from mahahsscboard.in/en/questionPaper on 2026-10-13 and named by
+ *  the board's sitting label, NOT the cover. The cover decides: the "March 2026"
+ *  print is dated 2026 II 25, a February sitting. The board's "March 2025"
+ *  English link served the Marathi Economics paper (J-355) and its Biology
+ *  exists only in Marathi and Hindi, so that sitting is absent on purpose. */
+export const BIOLOGY_SOURCE_ROOT =
+  "C:\\Vilas\\LWS_Pune\\NDA_Subjects_Content\\Subjects\\Biology\\State_Board\\Question_Papers";
+
+/** Biology is subject code 56. The note template is long for the same reason as
+ *  Physics' (publicPyqNote and the 39-92 gap). */
+const biologyPaper = (
+  id: string,
+  file: string,
+  year: number,
+  month: string,
+  paperCode: string,
+  figureRefs: string[],
+  extra: Partial<Paper> = {},
+): Paper => ({
+  id,
+  subject: "Biology",
+  pdf: join(BIOLOGY_SOURCE_ROOT, file),
+  year,
+  month,
+  paperCode,
+  sourceFile: `MH_HSC_12_Biology_PYQ__${year}_${month}.pdf`,
+  note: `Maharashtra HSC Class 12 Board question paper — Biology (Subject code 56), ${month} ${year} sitting (paper code ${paperCode})`,
+  bankStatus: "new",
   figureRefs,
   ...extra,
 });
@@ -549,6 +582,15 @@ export const PAPERS: Record<string, Paper> = Object.fromEntries(
           "a collegedunia.com reproduction — its logo is footed on every page, the SAME publisher as the Physics 2023 file. 4 typeset pages against the board's 7-8, headed \"Maharashtra HSC BOARD QUESTION PAPER 2023\" with no seat-number box, no subject-code box and no cover date, so render.ts has no printed cover to verify. It also re-typesets the paper: options are labelled (A)-(D) where every board print uses (a)-(d). A disagreement with the bank is a flag for a human, never a verdict",
       },
     }),
+    // ── Biology (subject code 56): five English sittings from the board site ──
+    // Covers: 2024 III 06 J-885 · 2024 VII 29 J-197 · 2025 VII 05 J-410 ·
+    // 2026 II 25 J-189 · DATE 27/06/2026 J-297. figureRefs are set by
+    // crop-figures.ts detection, not by reading the stems.
+    biologyPaper("bio-mar-2024", "HSC_Biology_March_2024.pdf", 2024, "March", "J-885", ["Q. 1(x)", "Q. 9", "Q. 20", "Q. 31"]),
+    biologyPaper("bio-jul-2024", "HSC_Biology_July_2024.pdf", 2024, "July", "J-197", ["Q. 1(ix)", "Q. 29"]),
+    biologyPaper("bio-jul-2025", "HSC_Biology_July_2025.pdf", 2025, "July", "J-410", ["Q. 2(v)", "Q. 16"]),
+    biologyPaper("bio-feb-2026", "HSC_Biology_March_2026.pdf", 2026, "February", "J-189", []),
+    biologyPaper("bio-jun-2026", "HSC_Biology_June_2026.pdf", 2026, "June", "J-297", ["Q. 7", "Q. 28"]),
   ].map((p) => [p.id, p]),
 );
 
