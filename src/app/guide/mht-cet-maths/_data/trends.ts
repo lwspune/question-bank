@@ -1,8 +1,10 @@
 /**
  * Content for /guide/mht-cet-maths/trends.
  *
- * Bank window: 2,090 PUBLIC PYQ across 42 shifts, 2021-2025, 26 chapters —
- * measured after the 2026-09-28 label fix, so every column is one real sitting.
+ * Bank window: 3,388 PUBLIC PYQ across 68 shifts, 2021-2026, 26 chapters,
+ * re-measured 2026-10-13 after the 26 shifts of 2026 went public (their
+ * difficulty labels re-graded onto the 2021-2025 scale, so a 2026 %HARD
+ * compares with the years before it).
  *
  * -------------------------------------------------------------------------
  * THE ONE THING TO UNDERSTAND BEFORE READING ANY NUMBER ON THIS PAGE
@@ -10,55 +12,57 @@
  * MHT-CET is a multi-shift exam and the number of shifts per year is wildly
  * uneven:
  *
- *     2021 = 1 shift · 2022 = 1 · 2023 = 16 · 2024 = 11 · 2025 = 13
+ *     2021 = 1 shift · 2022 = 1 · 2023 = 16 · 2024 = 11 · 2025 = 13 · 2026 = 26
  *     (Maths questions: 2021 = 50 · 2022 = 48 · 2023 = 797 · 2024 = 549 ·
- *      2025 = 646)
+ *      2025 = 646 · 2026 = 1,298)
  *
- * So a RAW question count is meaningless across years. A chapter with 32
- * questions in 2023 and 26 in 2025 did not shrink — 32 over 16 shifts and 26
- * over 13 shifts are both exactly 2.0 questions a paper. The raw counts differ
- * by six and the chapter did not move at all. Every comparable figure on this
- * page is therefore a QUESTIONS-PER-PAPER RATE, and every field that holds a
- * raw count is named `...QCount` or `...qInWindow` so it can never be read as
- * a rate by mistake. Do not compare two raw counts from different windows.
+ * So a RAW question count is meaningless across years. A chapter with 26
+ * questions in 2025 and 52 in 2026 did not double: 26 over 13 shifts and 52
+ * over 26 shifts are both exactly 2.0 questions a paper. Every comparable
+ * figure on this page is therefore a QUESTIONS-PER-PAPER RATE, and every field
+ * that holds a raw count is named `...QCount` or `...qInWindow` so it can
+ * never be read as a rate by mistake. Do not compare two raw counts from
+ * different windows.
  *
- * THE MATRIX NOW EXISTS, AND IT LIVES IN `matrix.generated.ts` (2026-09-19)
+ * THE MATRIX LIVES IN `matrix.generated.ts` (2026-09-19)
  * -------------------------------------------------------------------------
  * This header used to say there was no per-chapter-per-year matrix for this
- * bank and that this file must not ship one, because "fabricating a 27 x 5
- * grid of plausible-looking counts would be the single most damaging thing
- * this page could do — every cell would read as measured". That refusal was
- * about FABRICATION, not about the grid, and it still stands: nothing here
- * may be estimated.
+ * bank and that this file must not ship one, because fabricating a grid of
+ * plausible-looking counts would be the single most damaging thing this page
+ * could do: every cell would read as measured. That refusal was about
+ * FABRICATION, not about the grid, and it still stands: nothing here may be
+ * estimated.
  *
- * What changed is that the grid is now DERIVED. `scripts/mhtcet/trends-matrix
- * .ts` reads the live bank and emits `matrix.generated.ts` — a
- * chapter x SHIFT matrix (26 x 42) plus its questions-per-paper summary. Every
- * cell is a GROUP BY, re-derivable with `npm run mhtcet:matrix`, and
- * `-- --check` fails the gate if the committed file drifts from the bank.
+ * What changed is that the grid is DERIVED. `scripts/mhtcet/trends-matrix.ts`
+ * reads the live bank and emits `matrix.generated.ts`, a chapter x SHIFT
+ * matrix (26 x 68) plus its questions-per-paper summary. Every cell is a
+ * GROUP BY, re-derivable with `npm run mhtcet:matrix`, and `-- --check` fails
+ * the gate if the committed file drifts from the bank.
  *
- * It also answers this file's central warning rather than contradicting it.
- * Raw counts genuinely do not compare across YEARS (16 shifts in 2023 against
- * 13 in 2025) — but per SHIFT they compare exactly, because every column is
- * one ~50-question paper. Per-shift is the grain that makes a raw count honest
+ * Per SHIFT a raw count compares exactly, because every column is one
+ * ~50-question paper. Per-shift is the grain that makes a raw count honest
  * here; the year view is published as a RATE for the same reason.
  *
  * WHAT IS IN DRIFT_ROWS, AND WHY IT IS STILL SHORT. These four are the
  * chapters whose movement is worth spelling out in prose. They are the
  * narrative; the matrix is the evidence. Keep them short and keep them
- * verified — do not grow this list to cover the grid.
+ * verified: do not grow this list to cover the grid. Every window in them is
+ * DISJOINT from the one it is compared with (2023-2024 against 2025-2026), so
+ * a rate change is the whole move, not a floor.
  *
- * THE HEADLINE: MHT-CET MOVED ITS SYLLABUS FOR 2025.
+ * THE HEADLINE: MHT-CET MOVED ITS SYLLABUS FOR 2025, AND 2026 KEPT IT.
  *   - Measures of Dispersion ran 1.0 q/paper across the 27 shifts of 2023-24,
- *     then scored ZERO across all 13 papers of 2025.
- *   - Conic Sections carried 2 questions in the whole bank before 2025, then
- *     15 in 2025 alone.
+ *     then scored ZERO across all 39 papers of 2025 and 2026.
+ *   - Conic Sections carried 2 questions in the 29 shifts before 2025, then
+ *     15 in the 13 shifts of 2025 and 27 in the 26 shifts of 2026: about one a
+ *     paper, both years.
  * A student prepping off 2023-24 papers therefore spends revision time on a
  * chapter that no longer appears, and walks into a chapter they have never
- * seen. That is the practical content of this page.
+ * seen. Two years in a row is a syllabus, not a blip. That is the practical
+ * content of this page.
  */
 
-export const YEARS = [2021, 2022, 2023, 2024, 2025] as const;
+export const YEARS = [2021, 2022, 2023, 2024, 2025, 2026] as const;
 
 /**
  * One measurement window for a chapter.
@@ -70,7 +74,7 @@ export const YEARS = [2021, 2022, 2023, 2024, 2025] as const;
  * than back-filling the other half.
  */
 export type DriftWindow = {
-  /** Human label for the window, e.g. "2023-2024" or "lifetime (2021-2025)". */
+  /** Human label for the window, e.g. "2023-2024" or "2025-2026". */
   label: string;
   /** Number of shifts (papers) inside this window. */
   shifts: number;
@@ -83,10 +87,9 @@ export type DriftWindow = {
 /**
  * A verified change in a chapter's weight between two windows.
  *
- * NOTE on the two "lifetime -> recent" rows below: the lifetime window
- * CONTAINS the recent window, so those comparisons UNDERSTATE the move — the
- * recent papers are already dragging the lifetime average toward themselves.
- * The direction is real; the size is a floor, not a ceiling.
+ * The windows below never overlap: an earlier window that CONTAINED the later
+ * one would understate the move, because the later papers would already be
+ * dragging the earlier average toward themselves.
  */
 export type DriftRow = {
   chapter: string;
@@ -106,42 +109,54 @@ export const DRIFT_ROWS: DriftRow[] = [
     lifetimeQCount: 30,
     pctHard: 10,
     from: { label: "2023-2024", shifts: 27, qInWindow: null, qPerPaper: 1.0 },
-    to: { label: "2025", shifts: 13, qInWindow: 0, qPerPaper: 0.0 },
+    to: { label: "2025-2026", shifts: 39, qInWindow: 0, qPerPaper: 0.0 },
     direction: "dropped",
     note:
-      "Off the paper. One question every paper for two years, then nothing across all 13 shifts of 2025. At 10% HARD it is the most attractive-looking dead chapter in the bank.",
+      "Off the paper. One question every paper for two years, then nothing across all 39 shifts of 2025 and 2026. At 10% HARD it is the most attractive-looking dead chapter in the bank.",
   },
   {
     chapter: "Conic Sections",
-    lifetimeQCount: 17,
-    pctHard: 35,
+    lifetimeQCount: 44,
+    pctHard: 27,
     from: { label: "before 2025", shifts: 29, qInWindow: 2, qPerPaper: null },
-    to: { label: "2025", shifts: 13, qInWindow: 15, qPerPaper: null },
+    to: { label: "2025-2026", shifts: 39, qInWindow: 42, qPerPaper: null },
     direction: "entered",
     note:
-      "Onto the paper. Two questions in the first 29 shifts of the bank, then 15 in the 13 shifts of 2025. 35% HARD, so it is not a free chapter either.",
+      "Onto the paper. Two questions in the first 29 shifts of the bank, then 42 in the 39 shifts of 2025 and 2026: 15 in 2025 and 27 in 2026, about one a paper both years. 27% HARD, so it is not a free chapter either, and it now ships a playbook.",
+  },
+  {
+    chapter: "Definite Integration",
+    lifetimeQCount: 132,
+    pctHard: 44,
+    from: { label: "2023-2024", shifts: 27, qInWindow: null, qPerPaper: 1.3 },
+    to: { label: "2025-2026", shifts: 39, qInWindow: null, qPerPaper: 2.36 },
+    direction: "up",
+    note:
+      "Close to double. 1.30 questions a paper across 2023-24, then 2.08 in 2025 and 2.50 in 2026. The growth is mostly on the evaluation page (standard forms, substitution, by parts), so the chapter now carries more plain integration than property tricks.",
   },
   {
     chapter: "Trigonometric Functions",
-    lifetimeQCount: 207,
-    pctHard: 38,
-    from: { label: "lifetime (2021-2025)", shifts: 42, qInWindow: null, qPerPaper: 4.93 },
-    to: { label: "recent (2024-2025)", shifts: 24, qInWindow: null, qPerPaper: 5.08 },
-    direction: "up",
+    lifetimeQCount: 312,
+    pctHard: 41,
+    from: { label: "2023-2024", shifts: 27, qInWindow: null, qPerPaper: 4.93 },
+    to: { label: "2025-2026", shifts: 39, qInWindow: null, qPerPaper: 4.46 },
+    direction: "down",
     note:
-      "A modest rise overall that hides two opposite moves inside the chapter: solution of triangle climbing, trigonometric equations falling. See the callout below.",
+      "Still a cornerstone, but lighter: 4.93 a paper across 2023-24, 4.46 across 2025-26. The fall hides two opposite moves inside the chapter: solution of triangle climbing, trigonometric equations and inverse trigonometry falling. See the callout below.",
   },
 ];
 
 /**
  * %HARD by year, SQL-derived over the whole Maths bank.
  *
- * READ THE `papers` COLUMN FIRST. 2021 and 2022 are ONE PAPER EACH — 50 and
- * 48 questions. A single paper's difficulty split is noise, not a data point,
+ * READ THE `papers` COLUMN FIRST. 2021 and 2022 are ONE PAPER EACH (50 and
+ * 48 questions). A single paper's difficulty split is noise, not a data point,
  * and those two years must NOT be read as the start of a trend line. The only
- * years with enough shifts to say anything are 2023 (16), 2024 (11) and
- * 2025 (13), and across those three the paper went 40% -> 46% -> 29%: it
- * hardened, then eased. It is not a ramp.
+ * years with enough shifts to say anything are 2023 (16), 2024 (11), 2025 (13)
+ * and 2026 (26), and across those four the paper went 40% -> 46% -> 29% -> 31%:
+ * it hardened into 2024, eased in 2025, and stayed eased in 2026. It is not a
+ * ramp. The 2026 labels were re-graded onto the 2021-2025 scale before this
+ * row was measured, so it compares with the others.
  */
 export type HardByYear = {
   year: number;
@@ -158,6 +173,7 @@ export const HARD_BY_YEAR: HardByYear[] = [
   { year: 2023, papers: 16, totalQ: 797, hardQ: 316, pctHard: 40 },
   { year: 2024, papers: 11, totalQ: 549, hardQ: 251, pctHard: 46 },
   { year: 2025, papers: 13, totalQ: 646, hardQ: 188, pctHard: 29 },
+  { year: 2026, papers: 26, totalQ: 1298, hardQ: 400, pctHard: 31 },
 ];
 
 export type DriftCallout = {
@@ -177,43 +193,43 @@ export type DriftCallout = {
 export const DRIFT_CALLOUTS: DriftCallout[] = [
   {
     icon: "down",
-    title: "Measures of Dispersion is dead — 1.0 q/paper for two years, then zero across all 13 papers of 2025",
+    title: "Measures of Dispersion is dead: 1.0 q/paper for two years, then zero across all 39 papers of 2025 and 2026",
     description:
-      "This is the most expensive mistake available in MHT-CET Maths prep, because the chapter is designed to look like the best deal on the paper: 30 questions lifetime at only 10% HARD, and one turns up in every 2023 and 2024 paper you practise. It ran 1.0 question per paper across the 27 shifts of 2023-24. Then it scored ZERO across all 13 shifts of 2025. Nothing about the chapter tells you this — you can only see it by dating your practice papers. Give it no revision time.",
+      "This is the most expensive mistake available in MHT-CET Maths prep, because the chapter is designed to look like the best deal on the paper: 30 questions lifetime at only 10% HARD, and one turns up in every 2023 and 2024 paper you practise. It ran 1.0 question per paper across the 27 shifts of 2023-24. Then it scored ZERO across all 13 shifts of 2025 and all 26 of 2026. One empty year could have been a blip; two is the syllabus. Nothing about the chapter tells you this: you can only see it by dating your practice papers. Give it no revision time.",
   },
   {
     icon: "up",
-    title: "Conic Sections entered — 2 questions before 2025, 15 in 2025 alone",
+    title: "Conic Sections entered: 2 questions before 2025, then about one a paper in 2025 and again in 2026",
     description:
-      "The other half of the same 2025 syllabus move. Conic Sections carried 2 questions across the first 29 shifts of the bank, which is why it does not ship as a playbook on lifetime weight. In the 13 shifts of 2025 it carried 15. A student prepping from 2023-24 papers has, in practical terms, never seen this chapter, and it is 35% HARD — this is not a chapter you can pick up in the hall. Drill it from 2025 papers specifically.",
+      "The other half of the same syllabus move, and 2026 confirmed it. Conic Sections carried 2 questions across the first 29 shifts of the bank. It then carried 15 in the 13 shifts of 2025 and 27 in the 26 shifts of 2026, which is 1.15 and 1.04 a paper. That is enough to clear the playbook line, so it now ships one. A student prepping from 2023-24 papers has, in practical terms, never seen this chapter, and it is 27% HARD: this is not a chapter you can pick up in the hall. Drill it from 2025 and 2026 papers, where 42 of its 44 questions sit.",
     drill: {
       chapter: "Conic Sections",
-      pyqYears: [2025],
-      qCount: 15,
-      label: "Drill the 15 Conic Sections questions from 2025",
+      pyqYears: [2025, 2026],
+      qCount: 42,
+      label: "Drill the 42 Conic Sections questions from 2025 and 2026",
     },
   },
   {
     icon: "spike",
-    title: "The paper is not getting steadily harder — 40% HARD (2023), 46% (2024), 29% (2025)",
+    title: "The paper is not getting steadily harder: 40% HARD (2023), 46% (2024), 29% (2025), 31% (2026)",
     description:
-      "Ignore 2021 and 2022 entirely: they are one paper each (50 and 48 questions), so their 20% and 31% are single-paper noise. Across the three years with real shift counts the paper hardened into 2024 and then eased in 2025. The planning consequence is that 2024 is the wrong year to calibrate against in either direction — it is the hardest year in the bank, so a student who only drills 2024 over-prepares for difficulty and under-prepares for the 2025 syllabus. Drill 2025 for scope and 2024 for depth.",
+      "Ignore 2021 and 2022 entirely: they are one paper each (50 and 48 questions), so their 20% and 31% are single-paper noise. Across the four years with real shift counts the paper hardened into 2024, eased in 2025, and stayed eased in 2026 across twice as many shifts. The planning consequence is that 2024 is the wrong year to calibrate against in either direction: it is the hardest year in the bank and it predates the syllabus move, so a student who only drills 2024 over-prepares for difficulty and under-prepares for scope. Drill 2025 and 2026 for scope and 2024 for depth.",
     drill: {
       chapter: "Vectors",
-      qCount: 214,
-      label: "Drill Vectors — the largest chapter in the bank and 56% HARD",
+      qCount: 334,
+      label: "Drill Vectors: the largest chapter in the bank and 50% HARD",
     },
   },
   {
     icon: "up",
-    title: "Inside Trigonometric Functions, solution of triangle is rising and equations are falling",
+    title: "Inside Trigonometric Functions, solution of triangle is rising while equations and inverse trigonometry fall",
     description:
-      "Std XII trigonometry is the second-largest chapter in the bank at 207 questions, and its weightage edged up from 4.93 questions per paper across the lifetime window to 5.08 across the 24 shifts of 2024-2025, the heaviest rate on the paper. The chapter total hides the real story. Solution of Triangle moved from 1.64 to 2.13 a paper, inverse trigonometry held (2.17 to 2.13), and trigonometric equations and general solutions fell from 1.12 to 0.83. Until 2026-09-26 the equations sat in a separate Std XI chapter, Trigonometry - I, which is why that chapter looked like it was softening. If your trigonometry hours are limited, solution of triangle is where they go first.",
+      "Std XII trigonometry is the second-largest chapter in the bank at 312 questions, and its weightage fell from 4.93 questions per paper across the 27 shifts of 2023-24 to 4.46 across the 39 shifts of 2025-26. The chapter total hides the real story. Solution of triangle rose from 1.26 to 1.85 a paper (2.62 in 2025, 1.46 in 2026), almost all of it on the half-angle, Napier and area page, which went from 0.22 to 0.82. Trigonometric equations fell from 1.33 to 0.85 and stayed there in both years, and inverse trigonometry fell from 2.33 to 1.77. If your trigonometry hours are limited, solution of triangle is where they go first.",
     drill: {
       chapter: "Trigonometric Functions",
-      subtopic: "Solution of Triangle — Sine, Cosine and Projection Rules",
-      qCount: 45,
-      label: "Drill the sine, cosine and projection rules (45 q, 40% HARD)",
+      subtopic: "Solution of Triangle — Half-Angle Formulas, Napier's Analogy and Area",
+      qCount: 38,
+      label: "Drill the half-angle, Napier and area page (38 q, 42% HARD)",
     },
   },
 ];

@@ -19,7 +19,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "MHT-CET Mathematics — Strategy Guide",
   description:
-    "How MHT-CET Maths actually works. A 2,090-question analysis of every shift from 2021 to 2025 — 50 questions in 90 minutes with no negative marking, seven chapters carrying 58% of the paper, 21 chapter playbooks, formulas, trends and traps.",
+    "How MHT-CET Maths actually works. A 3,388-question analysis of every shift from 2021 to 2026 — 50 questions in 90 minutes with no negative marking, seven chapters carrying 55% of the paper, 22 chapter playbooks, formulas, trends and traps.",
   alternates: { canonical: "/guide/mht-cet-maths" },
 };
 
@@ -66,7 +66,7 @@ export default async function MhtCetMathsLanding() {
       value: OVERVIEW.totalQ.toLocaleString("en-IN"),
       label: "Past-year questions",
     },
-    { value: String(OVERVIEW.papers), label: "Shifts (2021–2025)" },
+    { value: String(OVERVIEW.papers), label: "Shifts (2021–2026)" },
     { value: String(OVERVIEW.chapters), label: "Chapters" },
     { value: String(OVERVIEW.playbooks), label: "Playbooks" },
     { value: `${pct(difficulty.hard)}%`, label: "of the bank is HARD" },
@@ -92,12 +92,12 @@ export default async function MhtCetMathsLanding() {
         type="CollectionPage"
         path="/guide/mht-cet-maths"
         headline="MHT-CET Mathematics — Strategy Guide"
-        description="A 2,090-question analysis of every MHT-CET Mathematics shift from 2021 to 2025. No negative marking, 1.8 minutes a question, 21 chapter playbooks, formulas, trends and traps."
+        description="A 3,388-question analysis of every MHT-CET Mathematics shift from 2021 to 2026. No negative marking, 1.8 minutes a question, 22 chapter playbooks, formulas, trends and traps."
       />
       <GuideHero
         eyebrow="MHT-CET Mathematics Guide"
         title="How MHT-CET Maths actually works"
-        subtitle={`A ${OVERVIEW.totalQ.toLocaleString("en-IN")}-question analysis of every Mathematics shift from 2021 to 2025 — ${OVERVIEW.papers} papers in all. ${paper.questions} questions, ${paper.durationMinutes} minutes, and no negative marking, so the whole game is order and time rather than selection. We mapped the ${OVERVIEW.playbooks} chapter playbooks, the formulas, the year-on-year drift and the distractor traps.`}
+        subtitle={`A ${OVERVIEW.totalQ.toLocaleString("en-IN")}-question analysis of every Mathematics shift from 2021 to 2026 — ${OVERVIEW.papers} papers in all. ${paper.questions} questions, ${paper.durationMinutes} minutes, and no negative marking, so the whole game is order and time rather than selection. We mapped the ${OVERVIEW.playbooks} chapter playbooks, the formulas, the year-on-year drift and the distractor traps.`}
       >
         <StatBlock stats={stats} />
       </GuideHero>
@@ -212,10 +212,10 @@ export default async function MhtCetMathsLanding() {
       {/* THE HEADLINE FINDING */}
       <section className="mt-12">
         <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
-          Six chapters are {cornerstoneShare.toFixed(0)}% of the paper
+          Seven chapters are {cornerstoneShare.toFixed(0)}% of the paper
         </h2>
         <p className="mt-2 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground sm:text-base">
-          On recent shifts (2024–2025) the {cornerstones.length} cornerstone
+          On recent shifts (2025–2026) the {cornerstones.length} cornerstone
           chapters run to{" "}
           <strong className="font-semibold text-foreground">
             {cornerstoneQPerPaper.toFixed(1)} of the {paper.questions}{" "}
@@ -240,8 +240,9 @@ export default async function MhtCetMathsLanding() {
           ))}
         </ul>
         <p className="mt-3 text-xs text-muted-foreground">
-          Weightage here is the RECENT rate (2024–2025 shifts), not a lifetime
-          average — the two disagree, and the 2025 syllabus shift is why. See{" "}
+          Weightage here is the RECENT rate (2025–2026 shifts), not a lifetime
+          average — the two disagree, and the 2025 syllabus shift, which 2026
+          kept, is why. See{" "}
           <Link
             href="/guide/mht-cet-maths/trends"
             className="underline underline-offset-4 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -340,7 +341,7 @@ export default async function MhtCetMathsLanding() {
           </table>
         </div>
         <p className="mt-3 text-xs text-muted-foreground">
-          &ldquo;Q / paper&rdquo; is the rate on recent shifts (2024–2025);
+          &ldquo;Q / paper&rdquo; is the rate on recent shifts (2025–2026);
           &ldquo;Questions&rdquo; and &ldquo;Share&rdquo; are lifetime figures
           across all {OVERVIEW.papers} shifts. Where the two disagree, the rate
           is the one to plan on. {OVERVIEW.playbooks} of these{" "}

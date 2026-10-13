@@ -9,8 +9,8 @@
  * a backslash-LaTeX string would ship as literal markup.
  *
  * Editorial curation, not a syllabus dump: each entry carries a subtopic that
- * appears in the 2021-2025 bank. Many `notes` point at the ratio form, because
- * 279 questions across 22 chapters are ratio questions (see /traps).
+ * appears in the 2021-2026 bank. Many `notes` point at the ratio form, because
+ * 459 questions across 22 chapters are ratio questions (see /traps).
  */
 
 export type FormulaEntry = {
@@ -376,6 +376,25 @@ export const FORMULA_GROUPS: FormulaGroup[] = [
         name: "Uniform circular motion",
         formula: "a = v²/r = ω²r     v = ωr",
         legend: ["r = radius"],
+      },
+    ],
+  },
+  {
+    chapter: "Units and Measurement",
+    playbookSlug: "units-and-measurement",
+    formulas: [
+      {
+        id: "error-product",
+        name: "Errors through a product, quotient or power",
+        formula: "Q = aᵖbᵍ/cʳ     ΔQ/Q = p(Δa/a) + q(Δb/b) + r(Δc/c)",
+        legend: ["Δa/a = fractional error; ×100 for the percentage error"],
+        notes: "Every term adds, even for a divisor. A square root contributes half its error.",
+      },
+      {
+        id: "error-sum",
+        name: "Errors through a sum or difference",
+        formula: "Δ(A + B) = Δ(A − B) = ΔA + ΔB",
+        legend: ["ΔA, ΔB = absolute errors"],
       },
     ],
   },

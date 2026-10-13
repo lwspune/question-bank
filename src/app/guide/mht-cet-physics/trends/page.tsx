@@ -44,16 +44,31 @@ const TREND_RUN = TREND_YEARS.map((y) => `${y.year} at ${y.pctHard}%`).join(
   ", then "
 );
 
-/** The two most recent multi-shift years — scope first, then depth. */
-const LATEST_TREND_YEAR = TREND_YEARS[TREND_YEARS.length - 1];
-const PRIOR_TREND_YEAR = TREND_YEARS[TREND_YEARS.length - 2];
+/** Scope comes from the papers that carry the new weights (2025 onward);
+ *  depth from the harder 2023-24 papers before them. */
+const SCOPE_YEARS = TREND_YEARS.filter((y) => y.year >= 2025);
+const DEPTH_YEARS = TREND_YEARS.filter((y) => y.year < 2025);
+
+/** One drill window: its years, question total and %HARD, summed. */
+function windowOf(years: typeof TREND_YEARS) {
+  const totalQ = years.reduce((s, y) => s + y.totalQ, 0);
+  const hardQ = years.reduce((s, y) => s + y.hardQ, 0);
+  return {
+    label: `${years[0].year}-${String(years[years.length - 1].year).slice(2)}`,
+    years: years.map((y) => y.year),
+    totalQ,
+    pctHard: Math.round((hardQ / totalQ) * 100),
+  };
+}
+const SCOPE_WINDOW = SCOPE_YEARS.length > 0 ? windowOf(SCOPE_YEARS) : null;
+const DEPTH_WINDOW = DEPTH_YEARS.length > 0 ? windowOf(DEPTH_YEARS) : null;
 
 const ENTERED = DRIFT_ROWS.find((r) => r.direction === "entered");
 const HALVED = DRIFT_ROWS.filter((r) => r.direction === "down");
 
 export const metadata: Metadata = {
-  title: `MHT-CET Physics Trends — what 2025 moved (${YEARS[0]}–${YEARS[YEARS.length - 1]})`,
-  description: `What changed across ${TOTAL_PAPERS} MHT-CET papers and ${TOTAL_Q} past-year Physics questions. Gravitation and Ray Optics both halved in 2025; Units and Measurement went from no questions in 29 papers to 14 in 13. Paper counts differ by year, so every comparison here is a per-paper rate, not a raw count.`,
+  title: `MHT-CET Physics Trends: what 2025 moved and 2026 kept (${YEARS[0]}–${YEARS[YEARS.length - 1]})`,
+  description: `What changed across ${TOTAL_PAPERS} MHT-CET papers and ${TOTAL_Q} past-year Physics questions. Gravitation and Ray Optics halved in 2025 and stayed down in 2026; Units and Measurement went from no questions in 29 papers to 40 in the 39 since. Paper counts differ by year, so every comparison here is a per-paper rate, not a raw count.`,
   alternates: { canonical: "/guide/mht-cet-physics/trends" },
 };
 
@@ -129,13 +144,13 @@ export default async function Trends() {
       <GuideJsonLd
         type="Article"
         path="/guide/mht-cet-physics/trends"
-        headline={`MHT-CET Physics Trends — what 2025 moved (${YEARS[0]}–${YEARS[YEARS.length - 1]})`}
-        description={`What changed across ${TOTAL_PAPERS} MHT-CET papers and ${TOTAL_Q} past-year Physics questions. Gravitation and Ray Optics halved in 2025; Units and Measurement entered. Every comparison is a per-paper rate, because paper counts differ by year.`}
+        headline={`MHT-CET Physics Trends: what 2025 moved and 2026 kept (${YEARS[0]}–${YEARS[YEARS.length - 1]})`}
+        description={`What changed across ${TOTAL_PAPERS} MHT-CET papers and ${TOTAL_Q} past-year Physics questions. Gravitation and Ray Optics halved in 2025 and stayed down in 2026; Units and Measurement entered and held. Every comparison is a per-paper rate, because paper counts differ by year.`}
       />
       <GuideHero
         eyebrow="Trends"
         title={report.claim}
-        subtitle={`The 2025 papers weighted Physics differently, and the change is invisible unless you date your practice papers. Two chapters halved and one arrived. Everything below is measured across ${TOTAL_PAPERS} papers and ${TOTAL_Q} questions from ${YEARS[0]} to ${YEARS[YEARS.length - 1]}.`}
+        subtitle={`The 2025 papers weighted Physics differently, and the 26 papers of 2026 kept every change. It is invisible unless you date your practice papers: two chapters halved and one arrived. Everything below is measured across ${TOTAL_PAPERS} papers and ${TOTAL_Q} questions from ${YEARS[0]} to ${YEARS[YEARS.length - 1]}.`}
       >
         <StatBlock stats={stats} />
       </GuideHero>
@@ -166,7 +181,7 @@ export default async function Trends() {
       {/* The headline: what 2025 moved */}
       <section className="mt-14">
         <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
-          The headline: two chapters halved, one arrived
+          The headline: two chapters halved, one arrived, and 2026 kept all three
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
           This is the reason to read this page. Prep off 2023-24 papers alone
@@ -186,7 +201,7 @@ export default async function Trends() {
               <p className="mt-2 font-serif text-sm leading-relaxed text-foreground/90">
                 {rateLabel(row.from)} across {row.from.label} ({row.from.shifts}{" "}
                 papers), then {rateLabel(row.to)} across the {row.to.shifts}{" "}
-                papers of {row.to.label}. Still set every year — cut its hours,
+                papers of {row.to.label}. Still set every year: cut its hours,
                 not the chapter.
               </p>
             </div>
@@ -201,7 +216,7 @@ export default async function Trends() {
                 {ENTERED.from.qInWindow} questions across the{" "}
                 {ENTERED.from.shifts} papers {ENTERED.from.label}, then{" "}
                 {ENTERED.to.qInWindow} in the {ENTERED.to.shifts} papers of{" "}
-                {ENTERED.to.label}. It has never produced a HARD question — a
+                {ENTERED.to.label}. It has never produced a HARD question: a
                 cheap chapter, but only if you have seen it before the hall.
               </p>
             </div>
@@ -429,10 +444,10 @@ export default async function Trends() {
           <strong className="font-semibold text-foreground">
             The paper is not steadily hardening.
           </strong>{" "}
-          Across the years with real paper counts it ran {TREND_RUN} — it held
-          at about a fifth HARD, then eased. Calibrating on 2023-24 alone
-          over-prepares you for difficulty and under-prepares you for the 2025
-          chapter weights.
+          Across the years with real paper counts it ran {TREND_RUN}. It held
+          at about a fifth HARD, then eased in 2025, and the 26 papers of 2026
+          stayed eased. Calibrating on 2023-24 alone over-prepares you for
+          difficulty and under-prepares you for the 2025-26 chapter weights.
         </p>
       </section>
 
@@ -497,37 +512,37 @@ export default async function Trends() {
       {/* Recommendation */}
       <section className="mt-14 rounded-lg border-2 border-primary/40 bg-primary/5 p-6">
         <h2 className="text-lg font-semibold tracking-tight">
-          Recommendation: drill 2025 for scope, 2023-24 for depth
+          Recommendation: drill 2025-26 for scope, 2023-24 for depth
         </h2>
         <p className="mt-2 font-serif leading-relaxed text-muted-foreground">
-          The newest papers carry the weights you will actually sit —{" "}
+          The newest papers carry the weights you will actually sit (
           {ENTERED?.chapter ?? "the entering chapter"} in,{" "}
-          {HALVED.map((r) => r.chapter).join(" and ")} halved — so they set
+          {HALVED.map((r) => r.chapter).join(" and ")} halved), so they set
           your scope. The harder 2023-24 papers set your depth. Do both, in that
           order, and remember there is no negative marking in this paper: every
           question is worth attempting, so the only thing these trends change
           is what you practise and in what order, never whether you answer.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
-          {LATEST_TREND_YEAR && (
+          {SCOPE_WINDOW && (
             <BrowseLink
               examId={taxonomy.examId}
               subjectId={taxonomy.subjectId}
-              pyqYears={[LATEST_TREND_YEAR.year]}
+              pyqYears={SCOPE_WINDOW.years}
             >
-              Drill {LATEST_TREND_YEAR.year} ({LATEST_TREND_YEAR.totalQ} q ·{" "}
-              {LATEST_TREND_YEAR.pctHard}% HARD)
+              Drill {SCOPE_WINDOW.label} ({SCOPE_WINDOW.totalQ} q ·{" "}
+              {SCOPE_WINDOW.pctHard}% HARD)
             </BrowseLink>
           )}
-          {PRIOR_TREND_YEAR && (
+          {DEPTH_WINDOW && (
             <BrowseLink
               examId={taxonomy.examId}
               subjectId={taxonomy.subjectId}
-              pyqYears={[PRIOR_TREND_YEAR.year]}
+              pyqYears={DEPTH_WINDOW.years}
               variant="outline"
             >
-              Drill {PRIOR_TREND_YEAR.year} ({PRIOR_TREND_YEAR.totalQ} q ·{" "}
-              {PRIOR_TREND_YEAR.pctHard}% HARD)
+              Drill {DEPTH_WINDOW.label} ({DEPTH_WINDOW.totalQ} q ·{" "}
+              {DEPTH_WINDOW.pctHard}% HARD)
             </BrowseLink>
           )}
           <BrowseLink

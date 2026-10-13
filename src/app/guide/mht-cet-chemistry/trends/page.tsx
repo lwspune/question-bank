@@ -52,8 +52,8 @@ const FALLING = DRIFT_ROWS.filter((r) => r.direction === "down");
 const RISING = DRIFT_ROWS.filter((r) => r.direction === "up");
 
 export const metadata: Metadata = {
-  title: `MHT-CET Chemistry Trends — what 2025 moved (${YEARS[0]}–${YEARS[YEARS.length - 1]})`,
-  description: `What changed across ${TOTAL_PAPERS} MHT-CET papers and ${TOTAL_Q} past-year Chemistry questions. HARD stayed at 2-4% a year, but EASY fell from 56% to 42% in 2025; Structure of Atom halved while Some Basic Concepts, Groups 16-18 and Green Chemistry rose. Every comparison is a per-paper rate, not a raw count.`,
+  title: `MHT-CET Chemistry Trends: what 2025 and 2026 moved (${YEARS[0]}–${YEARS[YEARS.length - 1]})`,
+  description: `What changed across ${TOTAL_PAPERS} MHT-CET papers and ${TOTAL_Q} past-year Chemistry questions. HARD stayed at 2-4% a year; EASY fell from 56-60% to 42% in 2025 and came back to 63% in 2026. Structure of Atom halved and stayed down, while Groups 16-18, Green Chemistry and Basic Principles of Organic Chemistry rose. Every comparison is a per-paper rate, not a raw count.`,
   alternates: { canonical: "/guide/mht-cet-chemistry/trends" },
 };
 
@@ -129,13 +129,13 @@ export default async function Trends() {
       <GuideJsonLd
         type="Article"
         path="/guide/mht-cet-chemistry/trends"
-        headline={`MHT-CET Chemistry Trends — what 2025 moved (${YEARS[0]}–${YEARS[YEARS.length - 1]})`}
-        description={`What changed across ${TOTAL_PAPERS} MHT-CET papers and ${TOTAL_Q} past-year Chemistry questions. EASY fell to 42% in 2025; Structure of Atom halved; three chapters rose. Every comparison is a per-paper rate.`}
+        headline={`MHT-CET Chemistry Trends: what 2025 and 2026 moved (${YEARS[0]}–${YEARS[YEARS.length - 1]})`}
+        description={`What changed across ${TOTAL_PAPERS} MHT-CET papers and ${TOTAL_Q} past-year Chemistry questions. EASY fell to 42% in 2025 and came back in 2026; Structure of Atom halved and stayed down; three chapters rose. Every comparison is a per-paper rate.`}
       />
       <GuideHero
         eyebrow="Trends"
         title={report.claim}
-        subtitle={`The 2025 papers weighted Chemistry differently and made it less easy, and neither shows unless you date your practice papers. Everything below is measured across ${TOTAL_PAPERS} papers and ${TOTAL_Q} questions from ${YEARS[0]} to ${YEARS[YEARS.length - 1]}.`}
+        subtitle={`Since 2025 the papers have weighted Chemistry differently, and 2025 alone made it less easy; neither shows unless you date your practice papers. Everything below is measured across ${TOTAL_PAPERS} papers and ${TOTAL_Q} questions from ${YEARS[0]} to ${YEARS[YEARS.length - 1]}.`}
       >
         <StatBlock stats={stats} />
       </GuideHero>
@@ -166,11 +166,12 @@ export default async function Trends() {
       {/* The headline: what 2025 moved */}
       <section className="mt-14">
         <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
-          The headline: one chapter halved, three rose
+          The headline: two chapters halved, three rose
         </h2>
         <p className="mt-3 font-serif leading-relaxed text-muted-foreground">
           Prep off 2023-24 papers alone and you give Structure of Atom twice
           the hours it now earns, and too few to three chapters that grew.
+          The 26 papers of 2026 confirmed what the 13 of 2025 started.
         </p>
         <div className="mt-5 grid gap-4 sm:grid-cols-2">
           {[...FALLING, ...RISING].map((row) => {
@@ -438,8 +439,9 @@ export default async function Trends() {
           Across the years with real paper counts HARD ran {TREND_RUN}. The
           EASY column is where 2025 changed: 56% and 60% in 2023 and 2024, 42%
           in 2025, as one-glance recall questions gave way to MODERATE ones.
-          Time your mocks on 2025 papers — a 2023 paper makes Chemistry look
-          faster than it now is.
+          2026 went back to 63%, so 2025 was one slow year, not a new normal.
+          Time your mocks on 2025 papers anyway: a budget that fits the
+          slowest year fits every year.
         </p>
       </section>
 
@@ -504,13 +506,13 @@ export default async function Trends() {
       {/* Recommendation */}
       <section className="mt-14 rounded-lg border-2 border-primary/40 bg-primary/5 p-6">
         <h2 className="text-lg font-semibold tracking-tight">
-          Recommendation: drill 2025 for scope and pace
+          Recommendation: drill 2025-2026 for scope, 2025 for pace
         </h2>
         <p className="mt-2 font-serif leading-relaxed text-muted-foreground">
-          The newest papers carry the weights you will actually sit —{" "}
+          The newest papers carry the weights you will actually sit:{" "}
           {FALLING.map((r) => r.chapter).join(" and ")} down,{" "}
-          {RISING.map((r) => r.chapter).join(", ")} up — and the 2025 pace.
-          Use 2023-24 papers for volume. And remember there is no negative marking in this paper: every
+          {RISING.map((r) => r.chapter).join(", ")} up. The 2025 papers set
+          the pace to time yourself against. Use 2023-24 papers for volume. And remember there is no negative marking in this paper: every
           question is worth attempting, so the only thing these trends change
           is what you practise and in what order, never whether you answer.
         </p>

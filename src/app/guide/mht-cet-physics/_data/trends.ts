@@ -1,12 +1,12 @@
 /**
  * Content for /guide/mht-cet-physics/trends.
  *
- * Bank window: 2,098 PUBLIC PYQ across 42 papers, 2021-2025, 24 chapters.
+ * Bank window: 3,390 PUBLIC PYQ across 68 papers, 2021-2026, 24 chapters.
  *
- * MHT-CET runs uneven shift counts per year — 2021 = 1 · 2022 = 1 · 2023 = 16
- * · 2024 = 11 · 2025 = 13 papers — so a RAW count never compares across
- * years. Every comparable figure here is a QUESTIONS-PER-PAPER rate, and
- * every raw-count field is named `...QCount` or `qInWindow`.
+ * MHT-CET runs uneven shift counts per year (2021 = 1 · 2022 = 1 · 2023 = 16
+ * · 2024 = 11 · 2025 = 13 · 2026 = 26 papers), so a RAW count never compares
+ * across years. Every comparable figure here is a QUESTIONS-PER-PAPER rate,
+ * and every raw-count field is named `...QCount` or `qInWindow`.
  *
  * The grid behind these rows is `matrix.generated.ts`, derived from the live
  * bank by `npm run mhtcet:matrix -- --subject=Physics`. Its columns are PAPERS
@@ -14,13 +14,15 @@
  * it quotes is recomputed from the grid by
  * tests/mhtcet-physics-trends-reconcile.test.ts, so the two cannot drift.
  *
- * THE HEADLINE: 2025 MOVED FOUR CHAPTERS.
- *   - Gravitation and Ray Optics both HALVED.
- *   - Units and Measurement entered: none in 29 papers, 14 in 13.
- *   - Motion in a Plane rose by half, and Rotational Dynamics by a sixth.
+ * THE HEADLINE: 2025 MOVED THE PAPER, AND 2026 KEPT EVERY MOVE.
+ *   - Gravitation and Ray Optics both HALVED in 2025 and stayed down in 2026.
+ *   - Units and Measurement entered: none in 29 papers, 40 in the 39 since.
+ *   - Motion in a Plane nearly doubled; Thermal Properties rose both years.
+ *   - Rotational Dynamics' 2025 rise (2.89 to 3.38) did NOT hold: 2.92 in
+ *     2026, so it is no longer a drift row.
  */
 
-export const YEARS = [2021, 2022, 2023, 2024, 2025] as const;
+export const YEARS = [2021, 2022, 2023, 2024, 2025, 2026] as const;
 
 /** One measurement window. `qInWindow` is RAW; `qPerPaper` is comparable. */
 export type DriftWindow = {
@@ -33,7 +35,7 @@ export type DriftWindow = {
 
 export type DriftRow = {
   chapter: string;
-  /** Lifetime PUBLIC count. Context only — never a rate. */
+  /** Lifetime PUBLIC count. Context only, never a rate. */
   lifetimeQCount: number;
   pctHard: number;
   from: DriftWindow;
@@ -45,55 +47,57 @@ export type DriftRow = {
 export const DRIFT_ROWS: DriftRow[] = [
   {
     chapter: "Gravitation",
-    lifetimeQCount: 80,
-    pctHard: 23,
+    lifetimeQCount: 106,
+    pctHard: 25,
     from: { label: "2023-2024", shifts: 27, qInWindow: 61, qPerPaper: 2.26 },
-    to: { label: "2025", shifts: 13, qInWindow: 15, qPerPaper: 1.15 },
+    to: { label: "2025-2026", shifts: 39, qInWindow: 41, qPerPaper: 1.05 },
     direction: "down",
-    note: "Halved. A little over two questions a paper for two years, then about one across 2025. Still set in every year — trim its hours, keep variation of g.",
+    note: "Halved, and the second year confirms it. A little over two questions a paper for two years, then 1.15 across 2025 and exactly one on every 2026 paper. Still set on all 39 recent papers: trim its hours, keep variation of g.",
   },
   {
     chapter: "Optics (Ray)",
-    lifetimeQCount: 78,
-    pctHard: 29,
+    lifetimeQCount: 112,
+    pctHard: 25,
     from: { label: "2023-2024", shifts: 27, qInWindow: 59, qPerPaper: 2.19 },
-    to: { label: "2025", shifts: 13, qInWindow: 14, qPerPaper: 1.08 },
+    to: { label: "2025-2026", shifts: 39, qInWindow: 48, qPerPaper: 1.23 },
     direction: "down",
-    note: "Halved, the same way as Gravitation. At 29% HARD it was already one of the more expensive chapters per mark; it is now one of the least rewarding.",
+    note: "Halved in 2025 (1.08 a paper) and only partly back in 2026 (1.31). At 25% HARD it is one of the more expensive chapters per mark, and now one of the least rewarding.",
   },
   {
     chapter: "Units and Measurement",
-    lifetimeQCount: 14,
+    lifetimeQCount: 40,
     pctHard: 0,
     from: { label: "before 2025", shifts: 29, qInWindow: 0, qPerPaper: 0.0 },
-    to: { label: "2025", shifts: 13, qInWindow: 14, qPerPaper: 1.08 },
+    to: { label: "2025-2026", shifts: 39, qInWindow: 40, qPerPaper: 1.03 },
     direction: "entered",
-    note: "Onto the paper. Not a single question in the 29 papers before 2025, then 14 in the 13 papers of 2025 — and none of them HARD. Ten are error propagation.",
+    note: "Onto the paper, and staying. Not a single question in the 29 papers before 2025, then 14 in the 13 papers of 2025 and 26 in the 26 papers of 2026. None of the 40 is HARD, and most are error propagation.",
   },
   {
     chapter: "Motion in a Plane",
-    lifetimeQCount: 53,
+    lifetimeQCount: 109,
     pctHard: 6,
     from: { label: "2023-2024", shifts: 27, qInWindow: 27, qPerPaper: 1.0 },
-    to: { label: "2025", shifts: 13, qInWindow: 20, qPerPaper: 1.54 },
+    to: { label: "2025-2026", shifts: 39, qInWindow: 76, qPerPaper: 1.95 },
     direction: "up",
-    note: "Up by half, and it was already the cheapest mechanics chapter at 6% HARD.",
+    note: "Nearly doubled, and still climbing: 1.54 a paper in 2025, 2.15 in 2026. It was already the cheapest mechanics chapter at 6% HARD.",
   },
   {
-    chapter: "Rotational Dynamics",
-    lifetimeQCount: 128,
-    pctHard: 21,
-    from: { label: "2023-2024", shifts: 27, qInWindow: 78, qPerPaper: 2.89 },
-    to: { label: "2025", shifts: 13, qInWindow: 44, qPerPaper: 3.38 },
+    chapter: "Thermal Properties of Matter",
+    lifetimeQCount: 145,
+    pctHard: 14,
+    from: { label: "2023-2024", shifts: 27, qInWindow: 51, qPerPaper: 1.89 },
+    to: { label: "2025-2026", shifts: 39, qInWindow: 89, qPerPaper: 2.28 },
     direction: "up",
-    note: "Up a sixth, to the second-heaviest chapter on the 2025 paper after Electrostatics.",
+    note: "Up a fifth, and rising in both recent years: 2.15 a paper in 2025, 2.35 in 2026. Most of the gain is radiation, the chapter's biggest page.",
   },
 ];
 
 /**
  * %HARD by year over the whole Physics bank. 2021 and 2022 are ONE PAPER
- * each — single-paper noise, not the start of a trend. Across the three years
- * with real paper counts the difficulty held at about a fifth, then eased.
+ * each: single-paper noise, not the start of a trend. Across the four years
+ * with real paper counts the difficulty held at about a fifth, then eased to
+ * 14% in 2025 and stayed there in 2026. The 2026 labels were re-graded onto
+ * the 2021-2025 scale, so the 2026 row compares with the others.
  */
 export type HardByYear = {
   year: number;
@@ -109,6 +113,7 @@ export const HARD_BY_YEAR: HardByYear[] = [
   { year: 2023, papers: 16, totalQ: 798, hardQ: 160, pctHard: 20 },
   { year: 2024, papers: 11, totalQ: 550, hardQ: 114, pctHard: 21 },
   { year: 2025, papers: 13, totalQ: 650, hardQ: 88, pctHard: 14 },
+  { year: 2026, papers: 26, totalQ: 1292, hardQ: 184, pctHard: 14 },
 ];
 
 export type DriftCallout = {
@@ -127,43 +132,43 @@ export type DriftCallout = {
 export const DRIFT_CALLOUTS: DriftCallout[] = [
   {
     icon: "down",
-    title: "Gravitation and Ray Optics both halved in 2025",
+    title: "Gravitation and Ray Optics halved in 2025, and 2026 kept them there",
     description:
-      "Two chapters that ran above two questions a paper through 2023-24 fell to about one each across the 13 papers of 2025: Gravitation from 2.26 to 1.15, Ray Optics from 2.19 to 1.08. Neither is gone — both appeared in 2025 — so the move is to cut their prep hours, not to drop them. Gravitation keeps one page worth doing whatever else you cut: variation of g, 33 questions at 3% HARD.",
+      "Two chapters that ran above two questions a paper through 2023-24 fell to about one each in 2025, and the 26 papers of 2026 did not bring them back: Gravitation went 2.26, 1.15, 1.00; Ray Optics 2.19, 1.08, 1.31. Neither is gone (Gravitation was on every one of the 39 papers of 2025-26), so the move is to cut their prep hours, not to drop them. Gravitation keeps one page worth doing whatever else you cut: variation of g, 43 questions at 7% HARD.",
     drill: {
       chapter: "Gravitation",
       subtopic: "Variation of g with Depth, Altitude, Density, and Latitude",
-      qCount: 33,
-      label: "Drill variation of g (33 q, 3% HARD)",
+      qCount: 43,
+      label: "Drill variation of g (43 q, 7% HARD)",
     },
   },
   {
     icon: "up",
-    title: "Units and Measurement entered — none before 2025, 14 in 2025",
+    title: "Units and Measurement entered in 2025 and held in 2026",
     description:
-      "The chapter did not appear once in the 29 papers before 2025, and a student prepping only from 2023-24 papers has never seen it set. In 2025 it carried 14 questions across 13 papers, none of them HARD; ten are error propagation — how percentage errors add through a product, a quotient and a power. Half a day of prep for about a mark a paper.",
+      "The chapter did not appear once in the 29 papers before 2025, so a student prepping only from older papers has never seen it set. Then it carried 14 questions across the 13 papers of 2025 and 26 across the 26 papers of 2026, none of them HARD. Most are error propagation: how percentage errors add through a product, a quotient and a power. Half a day of prep for about a mark a paper.",
     drill: {
       chapter: "Units and Measurement",
-      pyqYears: [2025],
-      qCount: 14,
-      label: "Drill the 14 Units and Measurement questions from 2025",
+      pyqYears: [2025, 2026],
+      qCount: 40,
+      label: "Drill the 40 Units and Measurement questions from 2025-26",
     },
   },
   {
     icon: "spike",
-    title: "The paper eased in 2025 — 20% HARD (2023), 21% (2024), 14% (2025)",
+    title: "The paper eased in 2025 and stayed eased: 20% HARD (2023), 21% (2024), 14% (2025), 14% (2026)",
     description:
-      "Ignore 2021 and 2022: one paper each, so their 28% and 12% are single-paper noise. Across the three years with real paper counts, Physics held at about a fifth HARD and then eased in 2025. Drill 2025 papers for scope — they carry the new chapter weights — and 2023-24 for depth.",
+      "Ignore 2021 and 2022: one paper each, so their 28% and 12% are single-paper noise. Across the four years with real paper counts, Physics held at about a fifth HARD and then eased to 14%, and the 26 papers of 2026 held it there. Drill 2025-26 papers for scope, since they carry the new chapter weights, and 2023-24 for depth.",
   },
   {
     icon: "up",
-    title: "Mechanics is growing: Motion in a Plane up by half, Rotational Dynamics up a sixth",
+    title: "Motion in a Plane nearly doubled; Rotational Dynamics' 2025 rise did not hold",
     description:
-      "Motion in a Plane rose from 1.00 to 1.54 questions a paper, and it is the cheapest mechanics chapter at 6% HARD. Rotational Dynamics rose from 2.89 to 3.38, second only to Electrostatics on the 2025 paper. Both take the free-body and circular-motion methods of Laws of Motion, so the rise rewards getting that method secure.",
+      "Motion in a Plane went from 1.00 a paper in 2023-24 to 1.54 in 2025 and 2.15 in 2026, and it is the cheapest mechanics chapter at 6% HARD. Rotational Dynamics jumped to 3.38 in 2025 but fell back to 2.92 in 2026, about where it was in 2023-24 (2.89): a one-year bump, not a trend. Both take the free-body and circular-motion methods of Laws of Motion, so getting that method secure still pays.",
     drill: {
       chapter: "Motion in a Plane",
-      qCount: 53,
-      label: "Drill Motion in a Plane (53 q, 6% HARD)",
+      qCount: 109,
+      label: "Drill Motion in a Plane (109 q, 6% HARD)",
     },
   },
 ];

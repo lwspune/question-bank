@@ -21,7 +21,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "MHT-CET Physics Traps — Where the marks and the minutes go",
   description:
-    "The habits that cost marks in MHT-CET Physics: leaving a bubble blank on an exam with no negative marking, letting the shared Paper II clock drift, computing both sides of 279 ratio questions, the soap bubble's second surface, figures read from memory, Celsius where kelvin belongs, and prep hours still spent on the two chapters that halved in 2025.",
+    "The habits that cost marks in MHT-CET Physics: leaving a bubble blank on an exam with no negative marking, letting the shared Paper II clock drift, computing both sides of 459 ratio questions, the soap bubble's second surface, figures read from memory, Celsius where kelvin belongs, and prep hours still spent on the two chapters that halved in 2025 and stayed down in 2026.",
   alternates: { canonical: "/guide/mht-cet-physics/traps" },
 };
 

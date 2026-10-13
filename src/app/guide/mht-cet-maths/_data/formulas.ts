@@ -18,7 +18,12 @@
  * formula that replaces a calculus routine with one line of arithmetic.
  *
  * Editorial curation, not an exhaustive syllabus dump: each entry earns its
- * place by carrying a subtopic that appears in the 2021-2025 MHT-CET bank.
+ * place by carrying a subtopic that appears in the 2021-2026 MHT-CET bank.
+ *
+ * GROUP ORDER (re-sorted 2026-10-13): cornerstones, then quick-wins, then the
+ * long tail, each by its 2025-2026 questions per paper. Linear Programming,
+ * Limits, Permutations and Combinations, Trigonometry - II and Conic Sections
+ * have playbooks but no group here yet.
  */
 
 export type FormulaEntry = {
@@ -216,7 +221,7 @@ export const FORMULA_GROUPS: FormulaGroup[] = [
           "Cyclic rotation leaves it unchanged; swapping any two vectors flips the sign",
         ],
         notes:
-          "This is the bank's single densest vectors subtopic (68 q) and its hardest (74% HARD). The zero-determinant test is universal: it is concurrency of lines, collinearity of points, coplanarity of vectors and coplanarity of two 3-D lines, all the same computation.",
+          "This is the bank's largest vectors subtopic (100 q) and, at 63% HARD, one of its two hardest. The zero-determinant test is universal: it is concurrency of lines, collinearity of points, coplanarity of vectors and coplanarity of two 3-D lines, all the same computation.",
       },
       {
         id: "collinear-coplanar-conditions",
@@ -245,162 +250,181 @@ export const FORMULA_GROUPS: FormulaGroup[] = [
     ],
   },
   {
-    chapter: "Applications of Derivative",
-    playbookSlug: "applications-of-derivative",
+    chapter: "Trigonometric Functions",
+    playbookSlug: "trigonometric-functions",
     formulas: [
       {
-        id: "tangent-normal",
-        name: "Tangent and normal to a curve",
+        id: "general-solutions",
+        name: "General solutions of trigonometric equations",
         formula:
-          "slope of tangent  m = dy/dx at (x₁, y₁)\ntangent:  y − y₁ = m(x − x₁)\nnormal:   y − y₁ = (−1/m)(x − x₁)",
-        legend: [
-          "(x₁, y₁) = point of contact, which must lie ON the curve",
-          "m = value of the derivative AT that point, a number not a function",
-        ],
+          "sin θ = sin α  ⟹  θ = nπ + (−1)ⁿ·α\ncos θ = cos α  ⟹  θ = 2nπ ± α\ntan θ = tan α  ⟹  θ = nπ + α",
+        legend: ["n = any integer", "α = the principal solution"],
         notes:
-          "Two failure modes: leaving dy/dx as an expression instead of evaluating it, and a vertical tangent where dy/dx is undefined (there the tangent is x = x₁ and the normal is horizontal).",
+          "Three different patterns — the sine one alternates sign with n, the cosine one takes plus-or-minus, the tangent one neither. Squaring during the solve introduces extraneous roots; substitute back and discard.",
       },
       {
-        id: "rate-of-change",
-        name: "Rate of change and related rates",
-        formula: "dy/dt = (dy/dx) · (dx/dt)",
-        legend: [
-          "t = time (or whatever the independent variable is)",
-          "dx/dt = the rate you are GIVEN, dy/dt = the rate asked for",
-        ],
-        notes:
-          "This is the chain rule from Differentiation applied to time. Write the geometric relation first (V = (4/3)πr³, A = πr² …), then differentiate both sides with respect to t, then substitute — substituting the numeric value too early is the usual wreck.",
-      },
-      {
-        id: "increasing-decreasing",
-        name: "Increasing and decreasing test",
+        id: "compound-angles",
+        name: "Compound angle formulas",
         formula:
-          "f'(x) > 0 on an interval ⟹ f is increasing there\nf'(x) < 0 on an interval ⟹ f is decreasing there",
-        legend: ["f'(x) = first derivative", "Test applies on an INTERVAL, not at a point"],
+          "sin(A ± B) = sin A·cos B ± cos A·sin B\ncos(A ± B) = cos A·cos B ∓ sin A·sin B\ntan(A ± B) = (tan A ± tan B)/(1 ∓ tan A·tan B)",
+        legend: ["A, B = any two angles"],
         notes:
-          "Find the critical points, then test the SIGN of f' in each interval between them — do not test the value of f. Strictly-increasing versus non-decreasing matters when f' vanishes at isolated points.",
+          "Std XI identity, kept here because the equations and inverse-trigonometry pages of this chapter cannot be done without it (the identity drills themselves live in Trigonometry - II). The cosine and tangent formulas carry the OPPOSITE sign in the second half — cos(A+B) has a minus. That flip is where most sign errors in the chapter start.",
       },
       {
-        id: "second-derivative-test",
-        name: "Maxima and minima (second-derivative test)",
+        id: "multiple-angles",
+        name: "Multiple and half angle formulas",
         formula:
-          "f'(c) = 0 and f''(c) < 0 ⟹ local MAXIMUM at c\nf'(c) = 0 and f''(c) > 0 ⟹ local MINIMUM at c\nf''(c) = 0 ⟹ test fails, use the first-derivative sign change",
-        legend: [
-          "c = critical point where f'(c) = 0",
-          "f''(c) = second derivative evaluated at c",
-        ],
+          "sin 2A = 2 sin A·cos A = 2t/(1 + t²)\ncos 2A = cos²A − sin²A = 1 − 2sin²A = 2cos²A − 1 = (1 − t²)/(1 + t²)\ntan 2A = 2 tan A/(1 − tan²A) = 2t/(1 − t²)\nsin 3A = 3 sin A − 4 sin³A     cos 3A = 4 cos³A − 3 cos A",
+        legend: ["t = tan A (or tan(A/2) for the half-angle reading)"],
         notes:
-          "Sign convention is the trap: NEGATIVE second derivative gives the MAXIMUM. For an optimisation word problem also check the endpoints of the feasible domain — the absolute extremum is not always at a critical point.",
+          "Std XI identity, kept here because the equations and inverse-trigonometry pages of this chapter cannot be done without it (the identity drills themselves live in Trigonometry - II). The three cos 2A forms exist so you can choose the one that cancels what is already in the question. The t-forms are the same substitution used for rational trigonometric integrals in Indefinite Integration.",
       },
       {
-        id: "rolle-lmvt",
-        name: "Rolle's theorem and Lagrange's mean value theorem",
+        id: "sine-rule",
+        name: "Sine rule",
+        formula: "a/sin A = b/sin B = c/sin C = 2R",
+        legend: [
+          "a, b, c = sides opposite angles A, B, C",
+          "R = circumradius of the triangle",
+        ],
+        notes:
+          "Use it when you have a side and its OPPOSITE angle. The 2R tail is what links a triangle question to its circumcircle in one step.",
+      },
+      {
+        id: "cosine-rule",
+        name: "Cosine rule",
         formula:
-          "Rolle: f continuous on [a,b], differentiable on (a,b), f(a) = f(b) ⟹ ∃ c in (a,b) with f'(c) = 0\nLMVT: f continuous on [a,b], differentiable on (a,b) ⟹ ∃ c in (a,b) with f'(c) = (f(b) − f(a))/(b − a)",
-        legend: [
-          "[a, b] = closed interval (continuity)",
-          "(a, b) = open interval (differentiability)",
-          "c = the guaranteed interior point",
-        ],
+          "a² = b² + c² − 2bc·cos A     cos A = (b² + c² − a²)/(2bc)",
+        legend: ["Same side and angle labelling as the sine rule"],
         notes:
-          "Rolle is LMVT with f(a) = f(b). The exam more often tests whether the HYPOTHESES hold than the value of c — a modulus function on an interval containing its corner fails differentiability, so neither theorem applies.",
+          "Use it when you have three sides, or two sides and the INCLUDED angle — the case the sine rule cannot start. A negative cosine means the angle is obtuse, which is often the whole question.",
       },
       {
-        id: "approximation-differentials",
-        name: "Approximation using differentials",
-        formula: "f(x + Δx) ≈ f(x) + f'(x)·Δx     Δy ≈ (dy/dx)·Δx",
-        legend: [
-          "x = a nearby value at which f is easy to evaluate exactly",
-          "Δx = the small increment (signed)",
-        ],
-        notes:
-          "The bank's only 0% HARD subtopic in this chapter (11 q). Pick x to be the nearest perfect square, cube or standard angle, keep the sign of Δx, and work in RADIANS for trigonometric cases.",
-      },
-      {
-        id: "angle-between-curves",
-        name: "Angle between two curves and orthogonality",
+        id: "projection-rule",
+        name: "Projection rule",
         formula:
-          "tan θ = |(m₁ − m₂)/(1 + m₁m₂)|     orthogonal ⟺ m₁m₂ = −1",
+          "a = b·cos C + c·cos B     b = c·cos A + a·cos C     c = a·cos B + b·cos A",
+        legend: ["Each side is the sum of the projections of the other two"],
+        notes:
+          "The fastest route for identities that mix sides and cosines, because it is linear in the sides where the cosine rule is quadratic. This chapter's joint-largest subtopic (69 q) is these three rules together.",
+      },
+      {
+        id: "properties-of-triangle-i",
+        name: "Properties of a triangle — area and half-angle",
+        formula:
+          "area Δ = ½·ab·sin C = √(s(s−a)(s−b)(s−c)) = abc/(4R)\ns = (a + b + c)/2     r = Δ/s     R = abc/(4Δ)\ntan(A/2) = √[(s−b)(s−c) / (s(s−a))]",
         legend: [
-          "m₁, m₂ = the two tangent slopes at the point of intersection",
-          "θ = acute angle between the curves",
+          "a, b, c = side lengths, A, B, C = opposite angles",
+          "s = semi-perimeter, Δ = area",
+          "r = inradius, R = circumradius",
         ],
         notes:
-          "Identical formula to the angle between two straight lines — the curves only supply the slopes. Find the intersection point FIRST; the angle is defined there and nowhere else.",
+          "Heron's form needs no angle at all — reach for it when only the three sides are given, and it is the bridge from a triangle question to an inradius or circumradius question.",
+      },
+      {
+        id: "principal-values",
+        name: "Principal value branches",
+        formula:
+          "sin⁻¹x ∈ [−π/2, π/2]     cos⁻¹x ∈ [0, π]     tan⁻¹x ∈ (−π/2, π/2)\ncosec⁻¹x ∈ [−π/2, π/2] minus {0}     sec⁻¹x ∈ [0, π] minus {π/2}     cot⁻¹x ∈ (0, π)",
+        legend: ["Ranges, not domains — this is the OUTPUT interval"],
+        notes:
+          "Every inverse-trig answer must land in its principal branch. An answer of 7π/6 for a sin⁻¹ is wrong however correct the algebra was, and that is precisely what the extra options are for.",
+      },
+      {
+        id: "complementary-identities",
+        name: "Complementary and negative-argument identities",
+        formula:
+          "sin⁻¹x + cos⁻¹x = π/2     tan⁻¹x + cot⁻¹x = π/2     sec⁻¹x + cosec⁻¹x = π/2\nsin⁻¹(−x) = −sin⁻¹x     tan⁻¹(−x) = −tan⁻¹x\ncos⁻¹(−x) = π − cos⁻¹x     cot⁻¹(−x) = π − cot⁻¹x",
+        legend: ["x in the domain of the relevant function"],
+        notes:
+          "The negative-argument rule SPLITS: sin and tan are odd and just flip sign, cos and cot subtract from π. Treating all six the same is the classic error.",
+      },
+      {
+        id: "sum-formulas-inverse",
+        name: "Sum formulas with their conditions",
+        formula:
+          "tan⁻¹x + tan⁻¹y = tan⁻¹[(x + y)/(1 − xy)]           if xy < 1\n                 = π + tan⁻¹[(x + y)/(1 − xy)]       if x, y > 0 and xy > 1\n                 = −π + tan⁻¹[(x + y)/(1 − xy)]      if x, y < 0 and xy > 1\ntan⁻¹x − tan⁻¹y = tan⁻¹[(x − y)/(1 + xy)]           if xy > −1",
+        legend: ["x, y = real arguments"],
+        notes:
+          "PRECONDITION: the xy < 1 test decides whether a π correction is needed, and every wrong option in this question type is the uncorrected value. Check the product before you apply the formula, not after.",
+      },
+      {
+        id: "double-angle-inverse",
+        name: "Double-argument conversions",
+        formula:
+          "2 tan⁻¹x = sin⁻¹[2x/(1 + x²)] = cos⁻¹[(1 − x²)/(1 + x²)] = tan⁻¹[2x/(1 − x²)]\n2 sin⁻¹x = sin⁻¹[2x·√(1 − x²)]",
+        legend: ["Conditions: |x| ≤ 1 for the sine form, |x| < 1 for the tangent form"],
+        notes:
+          "Recognising 2x/(1+x²) or (1−x²)/(1+x²) inside an inverse function and substituting x = tan θ collapses most of these questions to one line. The same substitution is the shortcut in inverse-trig differentiation.",
       },
     ],
   },
   {
-    chapter: "Differential Equations",
-    playbookSlug: "differential-equations",
+    chapter: "Differentiation",
+    playbookSlug: "differentiation",
     formulas: [
       {
-        id: "order-degree",
-        name: "Order and degree",
+        id: "standard-derivatives",
+        name: "Standard derivatives",
         formula:
-          "order  = order of the highest derivative present\ndegree = power of that highest derivative, after clearing radicals and fractions",
-        legend: [
-          "Degree is defined only when the equation is polynomial in its derivatives",
-        ],
+          "d/dx(xⁿ) = n·xⁿ⁻¹     d/dx(eˣ) = eˣ     d/dx(aˣ) = aˣ·ln a     d/dx(ln x) = 1/x\nd/dx(sin x) = cos x     d/dx(cos x) = −sin x     d/dx(tan x) = sec²x\nd/dx(cot x) = −cosec²x     d/dx(sec x) = sec x·tan x     d/dx(cosec x) = −cosec x·cot x",
+        legend: ["n = any real constant", "a > 0, a ≠ 1"],
         notes:
-          "Degree is undefined if a derivative sits inside sin, log or an exponential. Clear the radicals BEFORE reading the degree — an unsimplified equation reads the wrong number.",
+          "Every co-function (cos, cot, cosec) carries a minus sign. That single pattern removes half the sign errors in the chapter.",
       },
       {
-        id: "variable-separable",
-        name: "Variable-separable equations",
-        formula: "f(y) dy = g(x) dx  ⟹  ∫f(y) dy = ∫g(x) dx + c",
-        legend: ["c = arbitrary constant of integration"],
-        notes:
-          "One constant, added once, on one side. If an initial condition is given, substitute it immediately to fix c rather than carrying it through the algebra.",
-      },
-      {
-        id: "homogeneous-substitution",
-        name: "Homogeneous equations (substitution)",
+        id: "product-quotient-chain",
+        name: "Product, quotient and chain rules",
         formula:
-          "dy/dx = F(y/x)   put y = vx,  dy/dx = v + x·(dv/dx)   ⟹ separable in v and x",
-        legend: [
-          "v = y/x, the new dependent variable",
-          "F = a function of the ratio y/x alone",
-        ],
+          "product:  (uv)' = u'v + uv'\nquotient: (u/v)' = (u'v − uv')/v²\nchain:    dy/dx = (dy/du)·(du/dx)",
+        legend: ["u, v = differentiable functions of x", "u = an intermediate function in the chain rule"],
         notes:
-          "The product-rule term x·(dv/dx) is the step people drop. If the equation is homogeneous in x instead, substitute x = vy. Homogeneous here means same total degree in every term, unrelated to the linear-algebra sense.",
+          "The quotient rule's numerator is NOT symmetric — the derivative of the top comes first. The chain rule is also the engine behind related rates in Applications of Derivative and behind implicit and parametric differentiation below.",
       },
       {
-        id: "linear-integrating-factor",
-        name: "Linear equations — integrating factor",
+        id: "inverse-trig-derivatives",
+        name: "Derivatives of inverse trigonometric functions",
         formula:
-          "dy/dx + P(x)·y = Q(x)     IF = e^(∫P dx)     y·(IF) = ∫Q·(IF) dx + c",
-        legend: [
-          "P, Q = functions of x only",
-          "IF = integrating factor",
-        ],
+          "d/dx(sin⁻¹x) = 1/√(1 − x²)      d/dx(cos⁻¹x) = −1/√(1 − x²)\nd/dx(tan⁻¹x) = 1/(1 + x²)        d/dx(cot⁻¹x) = −1/(1 + x²)\nd/dx(sec⁻¹x) = 1/(|x|√(x² − 1))  d/dx(cosec⁻¹x) = −1/(|x|√(x² − 1))",
+        legend: ["Domains: |x| < 1 for the first four, |x| > 1 for the last two"],
         notes:
-          "PRECONDITION: the equation must already be in dy/dx + Py = Q with the coefficient of dy/dx equal to 1. Divide through first — reading P off an unnormalised equation is the commonest error, and this is the chapter's hardest subtopic at 63% HARD. The mirror form dx/dy + Px = Q with IF = e^(∫P dy) is used just as often.",
+          "The bank's largest differentiation subtopic (59 q, 53% HARD). Almost every such question is easier after a SIMPLIFYING substitution — x = tan θ for 2x/(1+x²) or (1−x²)/(1+x²) shapes — rather than differentiating the printed expression directly.",
       },
       {
-        id: "growth-decay",
-        name: "Growth and decay",
-        formula: "dN/dt = k·N  ⟹  N = N₀ e^(kt)",
-        legend: [
-          "N₀ = amount at t = 0",
-          "k > 0 for growth, k < 0 for decay",
-          "half-life: N = N₀/2",
-        ],
-        notes:
-          "Two unknowns, N₀ and k, so you need two data points. Solve for k as a ratio (take logs of N₂/N₁) rather than evaluating exponentials numerically — the answers are usually left in terms of logs.",
-      },
-      {
-        id: "newton-cooling",
-        name: "Newton's law of cooling",
+        id: "implicit-differentiation",
+        name: "Implicit differentiation",
         formula:
-          "dθ/dt = −k(θ − θ₀)  ⟹  θ − θ₀ = (θ₁ − θ₀) e^(−kt)",
-        legend: [
-          "θ = temperature of the body at time t",
-          "θ₀ = ambient (surrounding) temperature, a constant",
-          "θ₁ = initial temperature of the body",
-        ],
+          "Differentiate every term with respect to x, treating y as a function of x, then solve for dy/dx.\nd/dx(y²) = 2y·(dy/dx)     d/dx(xy) = y + x·(dy/dx)",
+        legend: ["Used when the relation cannot be solved for y explicitly"],
         notes:
-          "It is the decay model applied to the EXCESS temperature θ − θ₀, not to θ. Only 5 q in the bank but 60% HARD — the difficulty is entirely in remembering to subtract the ambient temperature first.",
+          "Every y that gets differentiated drags a dy/dx factor with it. The xy term needs the product rule as well — dropping one of its two pieces is the classic slip.",
+      },
+      {
+        id: "logarithmic-differentiation",
+        name: "Logarithmic differentiation",
+        formula:
+          "y = [f(x)]^g(x)  ⟹  ln y = g(x)·ln f(x)  ⟹  (1/y)·(dy/dx) = derivative of the right side\ndy/dx = y · (that derivative)",
+        legend: ["f(x) > 0 for the log to exist"],
+        notes:
+          "Required when the exponent is itself a function of x — neither the power rule nor the exponential rule applies to xˣ. Also the fastest route for a long product or quotient of many factors. Remember to multiply back by y at the end.",
+      },
+      {
+        id: "parametric-differentiation",
+        name: "Parametric and higher-order derivatives",
+        formula:
+          "dy/dx = (dy/dt)/(dx/dt)\nd²y/dx² = [d/dt(dy/dx)] / (dx/dt)",
+        legend: ["t = the parameter", "dx/dt ≠ 0"],
+        notes:
+          "The second derivative is NOT (d²y/dt²)/(d²x/dt²). You must differentiate dy/dx with respect to t and then divide by dx/dt again — the single most-tested trap in this subtopic.",
+      },
+      {
+        id: "derivative-wrt-another",
+        name: "Derivative of one function with respect to another",
+        formula: "du/dv = (du/dx) / (dv/dx)",
+        legend: ["u, v = both functions of the same variable x"],
+        notes:
+          "Only 16 q in the bank but 63% HARD — the chapter's hardest subtopic. It is the parametric formula with x playing the role of the parameter. Simplify both functions with a substitution before differentiating; the ratio usually collapses to a constant.",
       },
     ],
   },
@@ -483,75 +507,217 @@ export const FORMULA_GROUPS: FormulaGroup[] = [
           "√(a² − x²) → x = a sin θ\n√(a² + x²) → x = a tan θ\n√(x² − a²) → x = a sec θ\nrational in sin x and cos x → t = tan(x/2), sin x = 2t/(1+t²), cos x = (1−t²)/(1+t²), dx = 2dt/(1+t²)",
         legend: ["θ, t = the new variable of integration"],
         notes:
-          "The half-angle substitution is the fallback for a/(b + c·sin x) type integrals, and it is the chapter's most expensive subtopic at 74% HARD. For a + b·cos²x forms, divide through by cos²x and try t = tan x instead — far shorter.",
+          "The half-angle substitution is the fallback for a/(b + c·sin x) type integrals, and it is the chapter's most expensive subtopic at 76% HARD. For a + b·cos²x forms, divide through by cos²x and try t = tan x instead — far shorter.",
       },
     ],
   },
   {
-    chapter: "Differentiation",
-    playbookSlug: "differentiation",
+    chapter: "Differential Equations",
+    playbookSlug: "differential-equations",
     formulas: [
       {
-        id: "standard-derivatives",
-        name: "Standard derivatives",
+        id: "order-degree",
+        name: "Order and degree",
         formula:
-          "d/dx(xⁿ) = n·xⁿ⁻¹     d/dx(eˣ) = eˣ     d/dx(aˣ) = aˣ·ln a     d/dx(ln x) = 1/x\nd/dx(sin x) = cos x     d/dx(cos x) = −sin x     d/dx(tan x) = sec²x\nd/dx(cot x) = −cosec²x     d/dx(sec x) = sec x·tan x     d/dx(cosec x) = −cosec x·cot x",
-        legend: ["n = any real constant", "a > 0, a ≠ 1"],
+          "order  = order of the highest derivative present\ndegree = power of that highest derivative, after clearing radicals and fractions",
+        legend: [
+          "Degree is defined only when the equation is polynomial in its derivatives",
+        ],
         notes:
-          "Every co-function (cos, cot, cosec) carries a minus sign. That single pattern removes half the sign errors in the chapter.",
+          "Degree is undefined if a derivative sits inside sin, log or an exponential. Clear the radicals BEFORE reading the degree — an unsimplified equation reads the wrong number.",
       },
       {
-        id: "product-quotient-chain",
-        name: "Product, quotient and chain rules",
-        formula:
-          "product:  (uv)' = u'v + uv'\nquotient: (u/v)' = (u'v − uv')/v²\nchain:    dy/dx = (dy/du)·(du/dx)",
-        legend: ["u, v = differentiable functions of x", "u = an intermediate function in the chain rule"],
+        id: "variable-separable",
+        name: "Variable-separable equations",
+        formula: "f(y) dy = g(x) dx  ⟹  ∫f(y) dy = ∫g(x) dx + c",
+        legend: ["c = arbitrary constant of integration"],
         notes:
-          "The quotient rule's numerator is NOT symmetric — the derivative of the top comes first. The chain rule is also the engine behind related rates in Applications of Derivative and behind implicit and parametric differentiation below.",
+          "One constant, added once, on one side. If an initial condition is given, substitute it immediately to fix c rather than carrying it through the algebra.",
       },
       {
-        id: "inverse-trig-derivatives",
-        name: "Derivatives of inverse trigonometric functions",
+        id: "homogeneous-substitution",
+        name: "Homogeneous equations (substitution)",
         formula:
-          "d/dx(sin⁻¹x) = 1/√(1 − x²)      d/dx(cos⁻¹x) = −1/√(1 − x²)\nd/dx(tan⁻¹x) = 1/(1 + x²)        d/dx(cot⁻¹x) = −1/(1 + x²)\nd/dx(sec⁻¹x) = 1/(|x|√(x² − 1))  d/dx(cosec⁻¹x) = −1/(|x|√(x² − 1))",
-        legend: ["Domains: |x| < 1 for the first four, |x| > 1 for the last two"],
+          "dy/dx = F(y/x)   put y = vx,  dy/dx = v + x·(dv/dx)   ⟹ separable in v and x",
+        legend: [
+          "v = y/x, the new dependent variable",
+          "F = a function of the ratio y/x alone",
+        ],
         notes:
-          "The bank's largest differentiation subtopic (38 q, 47% HARD). Almost every such question is easier after a SIMPLIFYING substitution — x = tan θ for 2x/(1+x²) or (1−x²)/(1+x²) shapes — rather than differentiating the printed expression directly.",
+          "The product-rule term x·(dv/dx) is the step people drop. If the equation is homogeneous in x instead, substitute x = vy. Homogeneous here means same total degree in every term, unrelated to the linear-algebra sense.",
       },
       {
-        id: "implicit-differentiation",
-        name: "Implicit differentiation",
+        id: "linear-integrating-factor",
+        name: "Linear equations — integrating factor",
         formula:
-          "Differentiate every term with respect to x, treating y as a function of x, then solve for dy/dx.\nd/dx(y²) = 2y·(dy/dx)     d/dx(xy) = y + x·(dy/dx)",
-        legend: ["Used when the relation cannot be solved for y explicitly"],
+          "dy/dx + P(x)·y = Q(x)     IF = e^(∫P dx)     y·(IF) = ∫Q·(IF) dx + c",
+        legend: [
+          "P, Q = functions of x only",
+          "IF = integrating factor",
+        ],
         notes:
-          "Every y that gets differentiated drags a dy/dx factor with it. The xy term needs the product rule as well — dropping one of its two pieces is the classic slip.",
+          "PRECONDITION: the equation must already be in dy/dx + Py = Q with the coefficient of dy/dx equal to 1. Divide through first — reading P off an unnormalised equation is the commonest error, and this is the chapter's hardest subtopic at 54% HARD. The mirror form dx/dy + Px = Q with IF = e^(∫P dy) is used just as often.",
       },
       {
-        id: "logarithmic-differentiation",
-        name: "Logarithmic differentiation",
-        formula:
-          "y = [f(x)]^g(x)  ⟹  ln y = g(x)·ln f(x)  ⟹  (1/y)·(dy/dx) = derivative of the right side\ndy/dx = y · (that derivative)",
-        legend: ["f(x) > 0 for the log to exist"],
+        id: "growth-decay",
+        name: "Growth and decay",
+        formula: "dN/dt = k·N  ⟹  N = N₀ e^(kt)",
+        legend: [
+          "N₀ = amount at t = 0",
+          "k > 0 for growth, k < 0 for decay",
+          "half-life: N = N₀/2",
+        ],
         notes:
-          "Required when the exponent is itself a function of x — neither the power rule nor the exponential rule applies to xˣ. Also the fastest route for a long product or quotient of many factors. Remember to multiply back by y at the end.",
+          "Two unknowns, N₀ and k, so you need two data points. Solve for k as a ratio (take logs of N₂/N₁) rather than evaluating exponentials numerically — the answers are usually left in terms of logs.",
       },
       {
-        id: "parametric-differentiation",
-        name: "Parametric and higher-order derivatives",
+        id: "newton-cooling",
+        name: "Newton's law of cooling",
         formula:
-          "dy/dx = (dy/dt)/(dx/dt)\nd²y/dx² = [d/dt(dy/dx)] / (dx/dt)",
-        legend: ["t = the parameter", "dx/dt ≠ 0"],
+          "dθ/dt = −k(θ − θ₀)  ⟹  θ − θ₀ = (θ₁ − θ₀) e^(−kt)",
+        legend: [
+          "θ = temperature of the body at time t",
+          "θ₀ = ambient (surrounding) temperature, a constant",
+          "θ₁ = initial temperature of the body",
+        ],
         notes:
-          "The second derivative is NOT (d²y/dt²)/(d²x/dt²). You must differentiate dy/dx with respect to t and then divide by dx/dt again — the single most-tested trap in this subtopic.",
+          "It is the decay model applied to the EXCESS temperature θ − θ₀, not to θ. Only 9 q in the bank but 44% HARD — the difficulty is entirely in remembering to subtract the ambient temperature first.",
+      },
+    ],
+  },
+  {
+    chapter: "Applications of Derivative",
+    playbookSlug: "applications-of-derivative",
+    formulas: [
+      {
+        id: "tangent-normal",
+        name: "Tangent and normal to a curve",
+        formula:
+          "slope of tangent  m = dy/dx at (x₁, y₁)\ntangent:  y − y₁ = m(x − x₁)\nnormal:   y − y₁ = (−1/m)(x − x₁)",
+        legend: [
+          "(x₁, y₁) = point of contact, which must lie ON the curve",
+          "m = value of the derivative AT that point, a number not a function",
+        ],
+        notes:
+          "Two failure modes: leaving dy/dx as an expression instead of evaluating it, and a vertical tangent where dy/dx is undefined (there the tangent is x = x₁ and the normal is horizontal).",
       },
       {
-        id: "derivative-wrt-another",
-        name: "Derivative of one function with respect to another",
-        formula: "du/dv = (du/dx) / (dv/dx)",
-        legend: ["u, v = both functions of the same variable x"],
+        id: "rate-of-change",
+        name: "Rate of change and related rates",
+        formula: "dy/dt = (dy/dx) · (dx/dt)",
+        legend: [
+          "t = time (or whatever the independent variable is)",
+          "dx/dt = the rate you are GIVEN, dy/dt = the rate asked for",
+        ],
         notes:
-          "Only 7 q in the bank but 71% HARD — the chapter's hardest subtopic. It is the parametric formula with x playing the role of the parameter. Simplify both functions with a substitution before differentiating; the ratio usually collapses to a constant.",
+          "This is the chain rule from Differentiation applied to time. Write the geometric relation first (V = (4/3)πr³, A = πr² …), then differentiate both sides with respect to t, then substitute — substituting the numeric value too early is the usual wreck.",
+      },
+      {
+        id: "increasing-decreasing",
+        name: "Increasing and decreasing test",
+        formula:
+          "f'(x) > 0 on an interval ⟹ f is increasing there\nf'(x) < 0 on an interval ⟹ f is decreasing there",
+        legend: ["f'(x) = first derivative", "Test applies on an INTERVAL, not at a point"],
+        notes:
+          "Find the critical points, then test the SIGN of f' in each interval between them — do not test the value of f. Strictly-increasing versus non-decreasing matters when f' vanishes at isolated points.",
+      },
+      {
+        id: "second-derivative-test",
+        name: "Maxima and minima (second-derivative test)",
+        formula:
+          "f'(c) = 0 and f''(c) < 0 ⟹ local MAXIMUM at c\nf'(c) = 0 and f''(c) > 0 ⟹ local MINIMUM at c\nf''(c) = 0 ⟹ test fails, use the first-derivative sign change",
+        legend: [
+          "c = critical point where f'(c) = 0",
+          "f''(c) = second derivative evaluated at c",
+        ],
+        notes:
+          "Sign convention is the trap: NEGATIVE second derivative gives the MAXIMUM. For an optimisation word problem also check the endpoints of the feasible domain — the absolute extremum is not always at a critical point.",
+      },
+      {
+        id: "rolle-lmvt",
+        name: "Rolle's theorem and Lagrange's mean value theorem",
+        formula:
+          "Rolle: f continuous on [a,b], differentiable on (a,b), f(a) = f(b) ⟹ ∃ c in (a,b) with f'(c) = 0\nLMVT: f continuous on [a,b], differentiable on (a,b) ⟹ ∃ c in (a,b) with f'(c) = (f(b) − f(a))/(b − a)",
+        legend: [
+          "[a, b] = closed interval (continuity)",
+          "(a, b) = open interval (differentiability)",
+          "c = the guaranteed interior point",
+        ],
+        notes:
+          "Rolle is LMVT with f(a) = f(b). The exam more often tests whether the HYPOTHESES hold than the value of c — a modulus function on an interval containing its corner fails differentiability, so neither theorem applies.",
+      },
+      {
+        id: "approximation-differentials",
+        name: "Approximation using differentials",
+        formula: "f(x + Δx) ≈ f(x) + f'(x)·Δx     Δy ≈ (dy/dx)·Δx",
+        legend: [
+          "x = a nearby value at which f is easy to evaluate exactly",
+          "Δx = the small increment (signed)",
+        ],
+        notes:
+          "The bank's only 0% HARD subtopic in this chapter (16 q). Pick x to be the nearest perfect square, cube or standard angle, keep the sign of Δx, and work in RADIANS for trigonometric cases.",
+      },
+      {
+        id: "angle-between-curves",
+        name: "Angle between two curves and orthogonality",
+        formula:
+          "tan θ = |(m₁ − m₂)/(1 + m₁m₂)|     orthogonal ⟺ m₁m₂ = −1",
+        legend: [
+          "m₁, m₂ = the two tangent slopes at the point of intersection",
+          "θ = acute angle between the curves",
+        ],
+        notes:
+          "Identical formula to the angle between two straight lines — the curves only supply the slopes. Find the intersection point FIRST; the angle is defined there and nowhere else.",
+      },
+    ],
+  },
+  {
+    chapter: "Mathematical Logic",
+    playbookSlug: "mathematical-logic",
+    formulas: [
+      {
+        id: "de-morgan-logic",
+        name: "De Morgan's laws and negation of an implication",
+        formula:
+          "~(p ∧ q) ≡ ~p ∨ ~q\n~(p ∨ q) ≡ ~p ∧ ~q\n~(p → q) ≡ p ∧ ~q\n~(p ↔ q) ≡ (p ∧ ~q) ∨ (q ∧ ~p)",
+        legend: [
+          "~ = negation, ∧ = and, ∨ = or",
+          "→ = implication, ↔ = biconditional",
+        ],
+        notes:
+          "Negating an implication produces an AND, never another implication — this is the single most-tested equivalence in the chapter and the distractors are always the plausible ~p → ~q.",
+      },
+      {
+        id: "implication-equivalences",
+        name: "Converse, inverse, contrapositive",
+        formula:
+          "statement:      p → q\nconverse:       q → p\ninverse:        ~p → ~q\ncontrapositive: ~q → ~p\np → q ≡ ~p ∨ q ≡ contrapositive",
+        legend: ["p = hypothesis (antecedent), q = conclusion (consequent)"],
+        notes:
+          "A statement is logically equivalent to its CONTRAPOSITIVE only. The converse and the inverse are equivalent to each other but not to the original — the paper tests exactly this pairing.",
+      },
+      {
+        id: "tautology-contradiction",
+        name: "Tautology, contradiction and quantifier negation",
+        formula:
+          "tautology    = last column of the truth table is all T\ncontradiction = last column is all F\ncontingency   = a mix\n~(∀x, p(x)) ≡ ∃x, ~p(x)     ~(∃x, p(x)) ≡ ∀x, ~p(x)",
+        legend: [
+          "∀ = for all, ∃ = there exists",
+          "T, F = truth values",
+        ],
+        notes:
+          "For two statement letters the table has 4 rows, for three it has 8. Negating a quantifier flips it as well as the predicate — dropping the flip is the standard error.",
+      },
+      {
+        id: "switch-circuits",
+        name: "Switching circuits",
+        formula:
+          "switches in SERIES   = conjunction  (p ∧ q)\nswitches in PARALLEL = disjunction  (p ∨ q)\nS' (complementary switch) = ~p\ncurrent flows ⟺ the corresponding statement is T",
+        legend: [
+          "p, q = the switch states (closed = T, open = F)",
+        ],
+        notes:
+          "Series is AND because BOTH switches must be closed; parallel is OR because EITHER suffices. Simplify with the distributive and absorption laws before drawing — the questions asking for the simplest equivalent circuit are entirely algebra.",
       },
     ],
   },
@@ -621,90 +787,6 @@ export const FORMULA_GROUPS: FormulaGroup[] = [
     ],
   },
   {
-    chapter: "Mathematical Logic",
-    playbookSlug: "mathematical-logic",
-    formulas: [
-      {
-        id: "de-morgan-logic",
-        name: "De Morgan's laws and negation of an implication",
-        formula:
-          "~(p ∧ q) ≡ ~p ∨ ~q\n~(p ∨ q) ≡ ~p ∧ ~q\n~(p → q) ≡ p ∧ ~q\n~(p ↔ q) ≡ (p ∧ ~q) ∨ (q ∧ ~p)",
-        legend: [
-          "~ = negation, ∧ = and, ∨ = or",
-          "→ = implication, ↔ = biconditional",
-        ],
-        notes:
-          "Negating an implication produces an AND, never another implication — this is the single most-tested equivalence in the chapter and the distractors are always the plausible ~p → ~q.",
-      },
-      {
-        id: "implication-equivalences",
-        name: "Converse, inverse, contrapositive",
-        formula:
-          "statement:      p → q\nconverse:       q → p\ninverse:        ~p → ~q\ncontrapositive: ~q → ~p\np → q ≡ ~p ∨ q ≡ contrapositive",
-        legend: ["p = hypothesis (antecedent), q = conclusion (consequent)"],
-        notes:
-          "A statement is logically equivalent to its CONTRAPOSITIVE only. The converse and the inverse are equivalent to each other but not to the original — the paper tests exactly this pairing.",
-      },
-      {
-        id: "tautology-contradiction",
-        name: "Tautology, contradiction and quantifier negation",
-        formula:
-          "tautology    = last column of the truth table is all T\ncontradiction = last column is all F\ncontingency   = a mix\n~(∀x, p(x)) ≡ ∃x, ~p(x)     ~(∃x, p(x)) ≡ ∀x, ~p(x)",
-        legend: [
-          "∀ = for all, ∃ = there exists",
-          "T, F = truth values",
-        ],
-        notes:
-          "For two statement letters the table has 4 rows, for three it has 8. Negating a quantifier flips it as well as the predicate — dropping the flip is the standard error.",
-      },
-      {
-        id: "switch-circuits",
-        name: "Switching circuits",
-        formula:
-          "switches in SERIES   = conjunction  (p ∧ q)\nswitches in PARALLEL = disjunction  (p ∨ q)\nS' (complementary switch) = ~p\ncurrent flows ⟺ the corresponding statement is T",
-        legend: [
-          "p, q = the switch states (closed = T, open = F)",
-        ],
-        notes:
-          "Series is AND because BOTH switches must be closed; parallel is OR because EITHER suffices. Simplify with the distributive and absorption laws before drawing — the questions asking for the simplest equivalent circuit are entirely algebra.",
-      },
-    ],
-  },
-  {
-    chapter: "Binomial Distribution",
-    playbookSlug: "binomial-distribution",
-    formulas: [
-      {
-        id: "binomial-pmf",
-        name: "Binomial probability mass function",
-        formula: "P(X = r) = ⁿCᵣ · pʳ · q^(n−r),   r = 0, 1, 2, …, n,   q = 1 − p",
-        legend: [
-          "n = number of independent trials (fixed in advance)",
-          "p = probability of success on ONE trial (same every trial)",
-          "r = number of successes",
-        ],
-        notes:
-          "The binomial setting needs all four: fixed n, two outcomes, constant p, independent trials. Drawing without replacement breaks constant p and is not binomial.",
-      },
-      {
-        id: "binomial-mean-variance",
-        name: "Mean, variance and standard deviation",
-        formula: "mean = np     variance = npq     SD = √(npq)",
-        legend: ["n = trials, p = success probability, q = 1 − p"],
-        notes:
-          "Since q < 1, the variance is ALWAYS less than the mean for a binomial — a printed variance exceeding the mean means the distribution is not binomial, and that is a whole question type. Given mean and variance, divide to get q, then p = 1 − q, then n = mean/p.",
-      },
-      {
-        id: "binomial-ratio",
-        name: "Successive-term ratio",
-        formula: "P(X = r+1)/P(X = r) = [(n − r)/(r + 1)]·(p/q)",
-        legend: ["Same symbols as the pmf"],
-        notes:
-          "Turns most-likely-value and parameter-estimation questions into one inequality instead of evaluating every term. Set the ratio greater than 1 to find where the probabilities stop rising.",
-      },
-    ],
-  },
-  {
     chapter: "Straight Line",
     playbookSlug: "straight-line",
     formulas: [
@@ -747,6 +829,40 @@ export const FORMULA_GROUPS: FormulaGroup[] = [
         legend: ["m:n = dividing ratio", "Rows of the determinant are (a, b, c) for each line"],
         notes:
           "Concurrency of three lines, collinearity of three points and coplanarity of three vectors are all the SAME vanishing 3x3 determinant. Recognising that saves you learning three tests.",
+      },
+    ],
+  },
+  {
+    chapter: "Binomial Distribution",
+    playbookSlug: "binomial-distribution",
+    formulas: [
+      {
+        id: "binomial-pmf",
+        name: "Binomial probability mass function",
+        formula: "P(X = r) = ⁿCᵣ · pʳ · q^(n−r),   r = 0, 1, 2, …, n,   q = 1 − p",
+        legend: [
+          "n = number of independent trials (fixed in advance)",
+          "p = probability of success on ONE trial (same every trial)",
+          "r = number of successes",
+        ],
+        notes:
+          "The binomial setting needs all four: fixed n, two outcomes, constant p, independent trials. Drawing without replacement breaks constant p and is not binomial.",
+      },
+      {
+        id: "binomial-mean-variance",
+        name: "Mean, variance and standard deviation",
+        formula: "mean = np     variance = npq     SD = √(npq)",
+        legend: ["n = trials, p = success probability, q = 1 − p"],
+        notes:
+          "Since q < 1, the variance is ALWAYS less than the mean for a binomial — a printed variance exceeding the mean means the distribution is not binomial, and that is a whole question type. Given mean and variance, divide to get q, then p = 1 − q, then n = mean/p.",
+      },
+      {
+        id: "binomial-ratio",
+        name: "Successive-term ratio",
+        formula: "P(X = r+1)/P(X = r) = [(n − r)/(r + 1)]·(p/q)",
+        legend: ["Same symbols as the pmf"],
+        notes:
+          "Turns most-likely-value and parameter-estimation questions into one inequality instead of evaluating every term. Set the ratio greater than 1 to find where the probabilities stop rising.",
       },
     ],
   },
@@ -794,189 +910,6 @@ export const FORMULA_GROUPS: FormulaGroup[] = [
     ],
   },
   {
-    chapter: "Applications of Definite Integral",
-    playbookSlug: "applications-of-definite-integral",
-    formulas: [
-      {
-        id: "area-under-curve",
-        name: "Area under a curve",
-        formula:
-          "about the x-axis:  A = ∫ from a to b of |y| dx\nabout the y-axis:  A = ∫ from c to d of |x| dy",
-        legend: [
-          "a, b = x-limits of the region",
-          "c, d = y-limits when integrating with respect to y",
-        ],
-        notes:
-          "The modulus matters: where the curve dips below the axis the integral is negative but the AREA is not. Split at each x-intercept and add the magnitudes. Sketch first — the limits usually come from the sketch, not the algebra.",
-      },
-      {
-        id: "area-between-curves",
-        name: "Area between two curves",
-        formula:
-          "A = ∫ from a to b of (y_upper − y_lower) dx\na and b are the x-coordinates of the intersection points",
-        legend: [
-          "y_upper = the curve on top over that interval",
-          "y_lower = the curve underneath",
-        ],
-        notes:
-          "Solve the two equations simultaneously FIRST to get the limits. If the curves cross inside the interval, upper and lower swap and you must split there. Integrating with respect to y is often shorter for a region bounded left-and-right.",
-      },
-    ],
-  },
-  {
-    chapter: "Trigonometric Functions",
-    playbookSlug: "trigonometric-functions",
-    formulas: [
-      {
-        id: "general-solutions",
-        name: "General solutions of trigonometric equations",
-        formula:
-          "sin θ = sin α  ⟹  θ = nπ + (−1)ⁿ·α\ncos θ = cos α  ⟹  θ = 2nπ ± α\ntan θ = tan α  ⟹  θ = nπ + α",
-        legend: ["n = any integer", "α = the principal solution"],
-        notes:
-          "Three different patterns — the sine one alternates sign with n, the cosine one takes plus-or-minus, the tangent one neither. Squaring during the solve introduces extraneous roots; substitute back and discard.",
-      },
-      {
-        id: "compound-angles",
-        name: "Compound angle formulas",
-        formula:
-          "sin(A ± B) = sin A·cos B ± cos A·sin B\ncos(A ± B) = cos A·cos B ∓ sin A·sin B\ntan(A ± B) = (tan A ± tan B)/(1 ∓ tan A·tan B)",
-        legend: ["A, B = any two angles"],
-        notes:
-          "Std XI identity, kept here because the equations and inverse-trigonometry pages of this chapter cannot be done without it (the identity drills themselves live in Trigonometry - II). The cosine and tangent formulas carry the OPPOSITE sign in the second half — cos(A+B) has a minus. That flip is where most sign errors in the chapter start.",
-      },
-      {
-        id: "multiple-angles",
-        name: "Multiple and half angle formulas",
-        formula:
-          "sin 2A = 2 sin A·cos A = 2t/(1 + t²)\ncos 2A = cos²A − sin²A = 1 − 2sin²A = 2cos²A − 1 = (1 − t²)/(1 + t²)\ntan 2A = 2 tan A/(1 − tan²A) = 2t/(1 − t²)\nsin 3A = 3 sin A − 4 sin³A     cos 3A = 4 cos³A − 3 cos A",
-        legend: ["t = tan A (or tan(A/2) for the half-angle reading)"],
-        notes:
-          "Std XI identity, kept here because the equations and inverse-trigonometry pages of this chapter cannot be done without it (the identity drills themselves live in Trigonometry - II). The three cos 2A forms exist so you can choose the one that cancels what is already in the question. The t-forms are the same substitution used for rational trigonometric integrals in Indefinite Integration.",
-      },
-      {
-        id: "sine-rule",
-        name: "Sine rule",
-        formula: "a/sin A = b/sin B = c/sin C = 2R",
-        legend: [
-          "a, b, c = sides opposite angles A, B, C",
-          "R = circumradius of the triangle",
-        ],
-        notes:
-          "Use it when you have a side and its OPPOSITE angle. The 2R tail is what links a triangle question to its circumcircle in one step.",
-      },
-      {
-        id: "cosine-rule",
-        name: "Cosine rule",
-        formula:
-          "a² = b² + c² − 2bc·cos A     cos A = (b² + c² − a²)/(2bc)",
-        legend: ["Same side and angle labelling as the sine rule"],
-        notes:
-          "Use it when you have three sides, or two sides and the INCLUDED angle — the case the sine rule cannot start. A negative cosine means the angle is obtuse, which is often the whole question.",
-      },
-      {
-        id: "projection-rule",
-        name: "Projection rule",
-        formula:
-          "a = b·cos C + c·cos B     b = c·cos A + a·cos C     c = a·cos B + b·cos A",
-        legend: ["Each side is the sum of the projections of the other two"],
-        notes:
-          "The fastest route for identities that mix sides and cosines, because it is linear in the sides where the cosine rule is quadratic. This chapter's largest subtopic (52 q) is these three rules together.",
-      },
-      {
-        id: "properties-of-triangle-i",
-        name: "Properties of a triangle — area and half-angle",
-        formula:
-          "area Δ = ½·ab·sin C = √(s(s−a)(s−b)(s−c)) = abc/(4R)\ns = (a + b + c)/2     r = Δ/s     R = abc/(4Δ)\ntan(A/2) = √[(s−b)(s−c) / (s(s−a))]",
-        legend: [
-          "a, b, c = side lengths, A, B, C = opposite angles",
-          "s = semi-perimeter, Δ = area",
-          "r = inradius, R = circumradius",
-        ],
-        notes:
-          "Heron's form needs no angle at all — reach for it when only the three sides are given, and it is the bridge from a triangle question to an inradius or circumradius question.",
-      },
-      {
-        id: "principal-values",
-        name: "Principal value branches",
-        formula:
-          "sin⁻¹x ∈ [−π/2, π/2]     cos⁻¹x ∈ [0, π]     tan⁻¹x ∈ (−π/2, π/2)\ncosec⁻¹x ∈ [−π/2, π/2] minus {0}     sec⁻¹x ∈ [0, π] minus {π/2}     cot⁻¹x ∈ (0, π)",
-        legend: ["Ranges, not domains — this is the OUTPUT interval"],
-        notes:
-          "Every inverse-trig answer must land in its principal branch. An answer of 7π/6 for a sin⁻¹ is wrong however correct the algebra was, and that is precisely what the extra options are for.",
-      },
-      {
-        id: "complementary-identities",
-        name: "Complementary and negative-argument identities",
-        formula:
-          "sin⁻¹x + cos⁻¹x = π/2     tan⁻¹x + cot⁻¹x = π/2     sec⁻¹x + cosec⁻¹x = π/2\nsin⁻¹(−x) = −sin⁻¹x     tan⁻¹(−x) = −tan⁻¹x\ncos⁻¹(−x) = π − cos⁻¹x     cot⁻¹(−x) = π − cot⁻¹x",
-        legend: ["x in the domain of the relevant function"],
-        notes:
-          "The negative-argument rule SPLITS: sin and tan are odd and just flip sign, cos and cot subtract from π. Treating all six the same is the classic error.",
-      },
-      {
-        id: "sum-formulas-inverse",
-        name: "Sum formulas with their conditions",
-        formula:
-          "tan⁻¹x + tan⁻¹y = tan⁻¹[(x + y)/(1 − xy)]           if xy < 1\n                 = π + tan⁻¹[(x + y)/(1 − xy)]       if x, y > 0 and xy > 1\n                 = −π + tan⁻¹[(x + y)/(1 − xy)]      if x, y < 0 and xy > 1\ntan⁻¹x − tan⁻¹y = tan⁻¹[(x − y)/(1 + xy)]           if xy > −1",
-        legend: ["x, y = real arguments"],
-        notes:
-          "PRECONDITION: the xy < 1 test decides whether a π correction is needed, and every wrong option in this question type is the uncorrected value. Check the product before you apply the formula, not after.",
-      },
-      {
-        id: "double-angle-inverse",
-        name: "Double-argument conversions",
-        formula:
-          "2 tan⁻¹x = sin⁻¹[2x/(1 + x²)] = cos⁻¹[(1 − x²)/(1 + x²)] = tan⁻¹[2x/(1 − x²)]\n2 sin⁻¹x = sin⁻¹[2x·√(1 − x²)]",
-        legend: ["Conditions: |x| ≤ 1 for the sine form, |x| < 1 for the tangent form"],
-        notes:
-          "Recognising 2x/(1+x²) or (1−x²)/(1+x²) inside an inverse function and substituting x = tan θ collapses most of these questions to one line. The same substitution is the shortcut in inverse-trig differentiation.",
-      },
-    ],
-  },
-  {
-    chapter: "Complex Numbers",
-    playbookSlug: "complex-numbers",
-    formulas: [
-      {
-        id: "modulus-conjugate",
-        name: "Modulus, conjugate and argument",
-        formula:
-          "z = x + iy     |z| = √(x² + y²)     z̄ = x − iy\nz·z̄ = |z|²     z⁻¹ = z̄/|z|²     arg z = tan⁻¹(y/x), adjusted for the quadrant",
-        legend: ["x = real part, y = imaginary part", "z̄ = conjugate of z"],
-        notes:
-          "The quadrant adjustment on the argument is the trap — tan⁻¹(y/x) alone cannot distinguish the first quadrant from the third. Always place the point before quoting the argument.",
-      },
-      {
-        id: "polar-euler",
-        name: "Polar and Euler form, De Moivre's theorem",
-        formula:
-          "z = r(cos θ + i sin θ) = r·e^(iθ),  r = |z|, θ = arg z\n(cos θ + i sin θ)ⁿ = cos nθ + i sin nθ\n|z₁z₂| = |z₁||z₂|     arg(z₁z₂) = arg z₁ + arg z₂",
-        legend: ["r = modulus", "θ = argument in radians", "n = integer"],
-        notes:
-          "Powers and roots are far cheaper in polar form than by binomial expansion — converting first is a time decision, not a stylistic one.",
-      },
-      {
-        id: "cube-roots-unity",
-        name: "Cube roots of unity",
-        formula:
-          "1, ω, ω²  with  ω = (−1 + i√3)/2\nω³ = 1     1 + ω + ω² = 0     ω̄ = ω²",
-        legend: ["ω = a non-real cube root of unity"],
-        notes:
-          "Reduce any exponent modulo 3 first (ω¹⁰⁰ = ω¹), then use 1 + ω + ω² = 0 to kill whole blocks. Almost every cube-roots question is one of those two moves.",
-      },
-      {
-        id: "locus-extremum",
-        name: "Locus and greatest/least modulus",
-        formula:
-          "|z − z₀| = r  is a circle, centre z₀, radius r\n|z − z₁| = |z − z₂|  is the perpendicular bisector of the segment joining z₁ and z₂\nfor z on |z − z₀| = r:  greatest |z| = |z₀| + r,  least |z| = |z₀| − r",
-        legend: ["z₀ = fixed centre", "r = radius"],
-        notes:
-          "The extremum needs NO calculus: the nearest and farthest points lie on the line through the origin and the centre. The identical move solves maximum perpendicular distance from a point on a circle in the Circle chapter. At 1.8 minutes a question, avoiding calculus is a time lever, not just elegance.",
-      },
-    ],
-  },
-  {
     chapter: "Determinants and Matrices",
     playbookSlug: "determinants-and-matrices",
     formulas: [
@@ -991,7 +924,7 @@ export const FORMULA_GROUPS: FormulaGroup[] = [
           "|A| = determinant of A",
         ],
         notes:
-          "The chapter's hardest subtopic (64% HARD) is built almost entirely on this one identity. It is the fastest route to adj(A) when A⁻¹ is already known: adj(A) = |A|·A⁻¹.",
+          "The chapter's hardest subtopic (56% HARD) is built almost entirely on this one identity. It is the fastest route to adj(A) when A⁻¹ is already known: adj(A) = |A|·A⁻¹.",
       },
       {
         id: "determinant-properties",
@@ -1026,53 +959,32 @@ export const FORMULA_GROUPS: FormulaGroup[] = [
     ],
   },
   {
-    chapter: "Circle",
-    playbookSlug: "circle",
+    chapter: "Applications of Definite Integral",
+    playbookSlug: "applications-of-definite-integral",
     formulas: [
       {
-        id: "circle-forms",
-        name: "Standard, general and diameter forms",
+        id: "area-under-curve",
+        name: "Area under a curve",
         formula:
-          "standard: (x − h)² + (y − k)² = r²,  centre (h, k), radius r\ngeneral:  x² + y² + 2gx + 2fy + c = 0,  centre (−g, −f), radius √(g² + f² − c)\ndiameter: (x − x₁)(x − x₂) + (y − y₁)(y − y₂) = 0",
+          "about the x-axis:  A = ∫ from a to b of |y| dx\nabout the y-axis:  A = ∫ from c to d of |x| dy",
         legend: [
-          "(h, k) = centre, r = radius",
-          "(x₁,y₁), (x₂,y₂) = the ends of a diameter",
+          "a, b = x-limits of the region",
+          "c, d = y-limits when integrating with respect to y",
         ],
         notes:
-          "In the general form the centre is MINUS the half-coefficients — the sign flip is the standard slip. If g² + f² − c is negative the equation represents no real circle, which is itself a question type. Concentric circles differ only in c.",
+          "The modulus matters: where the curve dips below the axis the integral is negative but the AREA is not. Split at each x-intercept and add the magnitudes. Sketch first — the limits usually come from the sketch, not the algebra.",
       },
       {
-        id: "tangent-conditions",
-        name: "Tangent condition and tangent length",
+        id: "area-between-curves",
+        name: "Area between two curves",
         formula:
-          "y = mx + c touches x² + y² = a²  ⟺  c² = a²(1 + m²)\ntangent at (x₁, y₁) on x² + y² = a²:  x·x₁ + y·y₁ = a²\nlength of tangent from (x₁, y₁) = √(x₁² + y₁² + 2gx₁ + 2fy₁ + c)",
+          "A = ∫ from a to b of (y_upper − y_lower) dx\na and b are the x-coordinates of the intersection points",
         legend: [
-          "a = radius of the circle centred at the origin",
-          "The tangent-length expression is S₁, the circle equation evaluated at the point",
+          "y_upper = the curve on top over that interval",
+          "y_lower = the curve underneath",
         ],
         notes:
-          "Every tangency question reduces to one idea: perpendicular distance from the centre to the line equals the radius. Derive rather than memorise if the circle is not centred at the origin. S₁ > 0 means the point is outside, = 0 on, < 0 inside.",
-      },
-      {
-        id: "two-circles",
-        name: "Relative position of two circles",
-        formula:
-          "touch externally:  d = r₁ + r₂\ntouch internally:  d = |r₁ − r₂|\nintersect at two points: |r₁ − r₂| < d < r₁ + r₂\northogonal: 2g₁g₂ + 2f₁f₂ = c₁ + c₂",
-        legend: [
-          "d = distance between the two centres",
-          "r₁, r₂ = the two radii",
-        ],
-        notes:
-          "The chapter's hardest subtopic (56% HARD) and it is entirely this comparison — compute d and both radii, then read off the case. Number of common tangents follows: 4 externally separate, 3 touching externally, 2 intersecting, 1 touching internally, 0 nested.",
-      },
-      {
-        id: "circle-extremum",
-        name: "Greatest and least distance from a point to a circle",
-        formula:
-          "for a point P outside:  maximum distance = d + r,  minimum distance = d − r",
-        legend: ["d = distance from P to the centre", "r = radius"],
-        notes:
-          "No calculus. Identical move to the greatest and least modulus of z on a circle in Complex Numbers — distance to centre plus-or-minus radius. Recognising the pair is worth real time on a 90-minute paper.",
+          "Solve the two equations simultaneously FIRST to get the limits. If the curves cross inside the interval, upper and lower swap and you must split there. Integrating with respect to y is often shorter for a region bounded left-and-right.",
       },
     ],
   },
@@ -1117,6 +1029,99 @@ export const FORMULA_GROUPS: FormulaGroup[] = [
         legend: ["Applies when the pair is parallel, i.e. h² = ab"],
         notes:
           "Only meaningful for a parallel pair; check h² = ab before applying it. For a pair meeting at a point the distance is zero by definition.",
+      },
+    ],
+  },
+  {
+    chapter: "Circle",
+    playbookSlug: "circle",
+    formulas: [
+      {
+        id: "circle-forms",
+        name: "Standard, general and diameter forms",
+        formula:
+          "standard: (x − h)² + (y − k)² = r²,  centre (h, k), radius r\ngeneral:  x² + y² + 2gx + 2fy + c = 0,  centre (−g, −f), radius √(g² + f² − c)\ndiameter: (x − x₁)(x − x₂) + (y − y₁)(y − y₂) = 0",
+        legend: [
+          "(h, k) = centre, r = radius",
+          "(x₁,y₁), (x₂,y₂) = the ends of a diameter",
+        ],
+        notes:
+          "In the general form the centre is MINUS the half-coefficients — the sign flip is the standard slip. If g² + f² − c is negative the equation represents no real circle, which is itself a question type. Concentric circles differ only in c.",
+      },
+      {
+        id: "tangent-conditions",
+        name: "Tangent condition and tangent length",
+        formula:
+          "y = mx + c touches x² + y² = a²  ⟺  c² = a²(1 + m²)\ntangent at (x₁, y₁) on x² + y² = a²:  x·x₁ + y·y₁ = a²\nlength of tangent from (x₁, y₁) = √(x₁² + y₁² + 2gx₁ + 2fy₁ + c)",
+        legend: [
+          "a = radius of the circle centred at the origin",
+          "The tangent-length expression is S₁, the circle equation evaluated at the point",
+        ],
+        notes:
+          "Every tangency question reduces to one idea: perpendicular distance from the centre to the line equals the radius. Derive rather than memorise if the circle is not centred at the origin. S₁ > 0 means the point is outside, = 0 on, < 0 inside.",
+      },
+      {
+        id: "two-circles",
+        name: "Relative position of two circles",
+        formula:
+          "touch externally:  d = r₁ + r₂\ntouch internally:  d = |r₁ − r₂|\nintersect at two points: |r₁ − r₂| < d < r₁ + r₂\northogonal: 2g₁g₂ + 2f₁f₂ = c₁ + c₂",
+        legend: [
+          "d = distance between the two centres",
+          "r₁, r₂ = the two radii",
+        ],
+        notes:
+          "The chapter's hardest subtopic (44% HARD) and it is entirely this comparison — compute d and both radii, then read off the case. Number of common tangents follows: 4 externally separate, 3 touching externally, 2 intersecting, 1 touching internally, 0 nested.",
+      },
+      {
+        id: "circle-extremum",
+        name: "Greatest and least distance from a point to a circle",
+        formula:
+          "for a point P outside:  maximum distance = d + r,  minimum distance = d − r",
+        legend: ["d = distance from P to the centre", "r = radius"],
+        notes:
+          "No calculus. Identical move to the greatest and least modulus of z on a circle in Complex Numbers — distance to centre plus-or-minus radius. Recognising the pair is worth real time on a 90-minute paper.",
+      },
+    ],
+  },
+  {
+    chapter: "Complex Numbers",
+    playbookSlug: "complex-numbers",
+    formulas: [
+      {
+        id: "modulus-conjugate",
+        name: "Modulus, conjugate and argument",
+        formula:
+          "z = x + iy     |z| = √(x² + y²)     z̄ = x − iy\nz·z̄ = |z|²     z⁻¹ = z̄/|z|²     arg z = tan⁻¹(y/x), adjusted for the quadrant",
+        legend: ["x = real part, y = imaginary part", "z̄ = conjugate of z"],
+        notes:
+          "The quadrant adjustment on the argument is the trap — tan⁻¹(y/x) alone cannot distinguish the first quadrant from the third. Always place the point before quoting the argument.",
+      },
+      {
+        id: "polar-euler",
+        name: "Polar and Euler form, De Moivre's theorem",
+        formula:
+          "z = r(cos θ + i sin θ) = r·e^(iθ),  r = |z|, θ = arg z\n(cos θ + i sin θ)ⁿ = cos nθ + i sin nθ\n|z₁z₂| = |z₁||z₂|     arg(z₁z₂) = arg z₁ + arg z₂",
+        legend: ["r = modulus", "θ = argument in radians", "n = integer"],
+        notes:
+          "Powers and roots are far cheaper in polar form than by binomial expansion — converting first is a time decision, not a stylistic one.",
+      },
+      {
+        id: "cube-roots-unity",
+        name: "Cube roots of unity",
+        formula:
+          "1, ω, ω²  with  ω = (−1 + i√3)/2\nω³ = 1     1 + ω + ω² = 0     ω̄ = ω²",
+        legend: ["ω = a non-real cube root of unity"],
+        notes:
+          "Reduce any exponent modulo 3 first (ω¹⁰⁰ = ω¹), then use 1 + ω + ω² = 0 to kill whole blocks. Almost every cube-roots question is one of those two moves.",
+      },
+      {
+        id: "locus-extremum",
+        name: "Locus and greatest/least modulus",
+        formula:
+          "|z − z₀| = r  is a circle, centre z₀, radius r\n|z − z₁| = |z − z₂|  is the perpendicular bisector of the segment joining z₁ and z₂\nfor z on |z − z₀| = r:  greatest |z| = |z₀| + r,  least |z| = |z₀| − r",
+        legend: ["z₀ = fixed centre", "r = radius"],
+        notes:
+          "The extremum needs NO calculus: the nearest and farthest points lie on the line through the origin and the centre. The identical move solves maximum perpendicular distance from a point on a circle in the Circle chapter. At 1.8 minutes a question, avoiding calculus is a time lever, not just elegance.",
       },
     ],
   },

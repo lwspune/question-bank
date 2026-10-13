@@ -2,8 +2,8 @@
  * Per-playbook deep dives for /guide/mht-cet-physics/playbooks/[slug].
  *
  * Authored in two part-files and merged here:
- *   - playbook-details-core.ts — the 6 cornerstone + 6 quick-win chapters
- *   - playbook-details-tail.ts — the 9 long-tail chapters
+ *   - playbook-details-core.ts: the 6 cornerstone + 7 quick-win chapters
+ *   - playbook-details-tail.ts: the 9 long-tail chapters
  *
  * Consumers import PLAYBOOK_DETAILS from here, never from a part-file.
  */

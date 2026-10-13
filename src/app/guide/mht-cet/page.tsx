@@ -10,13 +10,13 @@ import ResultsStrip from "@/components/results/ResultsStrip";
 export const revalidate = 86400;
 
 const PAGE_INTRO =
-  "Built from the live past-year question bank — every MHT-CET paper from 2021 to 2025, not a syllabus " +
+  "Built from the live past-year question bank — every MHT-CET paper from 2021 to 2026, not a syllabus " +
   "summary. Pick the subject you're preparing.";
 
 export const metadata: Metadata = {
   title: "MHT-CET Guides — Strategy for Maths, Physics and Chemistry",
   description:
-    "Evidence-led strategy guides for MHT-CET Mathematics, Physics and Chemistry, built from every past paper from 2021 to 2025. Every claim is measured against the live past-year question bank.",
+    "Evidence-led strategy guides for MHT-CET Mathematics, Physics and Chemistry, built from every past paper from 2021 to 2026. Every claim is measured against the live past-year question bank.",
   alternates: { canonical: "/guide/mht-cet" },
 };
 
@@ -36,7 +36,7 @@ export default function MhtCetGuideIndex() {
         type="CollectionPage"
         path="/guide/mht-cet"
         headline="MHT-CET Guides — Strategy for Maths, Physics and Chemistry"
-        description="Evidence-led strategy guides for MHT-CET Mathematics, Physics and Chemistry, built from every past paper from 2021 to 2025."
+        description="Evidence-led strategy guides for MHT-CET Mathematics, Physics and Chemistry, built from every past paper from 2021 to 2026."
       />
 
       <GuideHero

@@ -10,8 +10,8 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "biomolecules",
     trigger: "A sugar, its linkage or whether it reduces Fehling's; an amino acid or peptide; a DNA or RNA base; a vitamin or enzyme.",
     story: [
-      "88 q at 2.17 a paper, 2% HARD. Amino acids and proteins (27 q, never HARD): essential amino acids, the peptide bond, and protein structure levels. Carbohydrates (21 q) and glycosidic linkages (19 q): which sugars reduce Fehling's and Tollens', and which link joins which units.",
-      "Nucleic acids (16 q) are the bases — adenine, guanine, cytosine in both; thymine in DNA, uracil in RNA — and the sugar, deoxyribose or ribose.",
+      "150 q at 2.31 a paper, 1% HARD. Amino acids and proteins (46 q, never HARD): essential amino acids, the peptide bond, and protein structure levels. Carbohydrates (35 q) and glycosidic linkages (28 q): which sugars reduce Fehling's and Tollens', and which link joins which units.",
+      "Nucleic acids (25 q) are the bases — adenine, guanine, cytosine in both; thymine in DNA, uracil in RNA — and the sugar, deoxyribose or ribose.",
     ],
     subSkills: [
       { name: "Linkages", description: "Sucrose α1–β2 (non-reducing), maltose α1–4, lactose β1–4, cellulose β1–4, starch α1–4 with α1–6 branches." },
@@ -30,7 +30,7 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "coordination-compounds",
     trigger: "A complex ion — its ligands, oxidation state, coordination number, name, isomers, hybridisation or magnetism.",
     story: [
-      "88 q at 2.12 a paper, 2% HARD, and most of it is counting rather than memory. Ligands and denticity (33 q) is the largest page: en is bidentate, EDTA hexadentate, and ambidentate ligands (NO₂⁻, SCN⁻) bind through either atom.",
+      "140 q at 2.03 a paper, 2% HARD, and most of it is counting rather than memory. Bonding theories, EAN and magnetism (48 q) is the largest page, then ligands and denticity (39 q): en is bidentate, EDTA hexadentate, and ambidentate ligands (NO₂⁻, SCN⁻) bind through either atom.",
       "Oxidation state is the metal's charge after subtracting the ligands'. EAN = atomic number − oxidation state + 2 × coordination number. Magnetism counts unpaired electrons after the ligand has (or has not) forced pairing.",
     ],
     subSkills: [
@@ -51,8 +51,8 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "introduction-to-polymer-chemistry",
     trigger: "A polymer's monomers, its class, how it is made, or what it is used for.",
     story: [
-      "85 q at 2.04 a paper, and one HARD question in all of them. Two tables do nearly everything: monomers (29 q) and uses (25 q).",
-      "Classification (22 q) sorts the same polymers three ways — addition against condensation, homopolymer against copolymer, thermoplastic against thermosetting — so one polymer learned properly answers three kinds of question. Polymerisation methods (9 q) are free-radical, ionic and condensation mechanisms by name.",
+      "139 q at 2.08 a paper, and one HARD question in all of them. Two tables do nearly everything: monomers (49 q) and uses (37 q).",
+      "Classification (39 q) sorts the same polymers three ways — addition against condensation, homopolymer against copolymer, thermoplastic against thermosetting — so one polymer learned properly answers three kinds of question. Polymerisation methods (14 q) are free-radical, ionic and condensation mechanisms by name.",
     ],
     subSkills: [
       { name: "Monomers", description: "Nylon 6,6: hexamethylenediamine + adipic acid. Nylon 6: caprolactam. Buna-S: butadiene + styrene. Buna-N: butadiene + acrylonitrile. Terylene: ethylene glycol + terephthalic acid. Bakelite: phenol + formaldehyde." },
@@ -64,15 +64,15 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
       { name: "Buna-S against Buna-N", description: "S is styrene, N is acrylonitrile; both are copolymers with butadiene." },
     ],
     exampleQuestionIds: [],
-    relatedSlugs: ["biomolecules", "alkanes"],
+    relatedSlugs: ["biomolecules", "green-chemistry-and-nanochemistry"],
   },
 
   "transition-and-inner-transition-elements": {
     slug: "transition-and-inner-transition-elements",
     trigger: "A d- or f-block element's configuration, oxidation states, colour, magnetic moment, or a lanthanoid trend.",
     story: [
-      "76 q at 1.75 a paper, 4% HARD. Configurations carry the chapter — and chromium (3d⁵4s¹) and copper (3d¹⁰4s¹) break the filling pattern. Colour comes from unpaired d electrons, so Sc³⁺, Ti⁴⁺ and Zn²⁺ are colourless.",
-      "The spin-only formula μ = √(n(n + 2)) BM turns unpaired electrons into a moment (Mn²⁺, five unpaired, 5.92 BM). Lanthanoids (27 q): the lanthanoid contraction and +3 as the common oxidation state.",
+      "126 q at 1.87 a paper, 2% HARD. Configurations carry the chapter — and chromium (3d⁵4s¹) and copper (3d¹⁰4s¹) break the filling pattern. Colour comes from unpaired d electrons, so Sc³⁺, Ti⁴⁺ and Zn²⁺ are colourless.",
+      "The spin-only formula μ = √(n(n + 2)) BM turns unpaired electrons into a moment (Mn²⁺, five unpaired, 5.92 BM). Lanthanoids and actinoids (41 q, the largest page): the lanthanoid contraction and +3 as the common oxidation state.",
     ],
     subSkills: [
       { name: "Configurations", description: "3d filling with the Cr and Cu exceptions; ions lose 4s electrons first." },
@@ -92,8 +92,8 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "chemical-bonding",
     trigger: "A molecule's shape, hybridisation, bond order, dipole moment or bond type.",
     story: [
-      "64 q at 1.29 a paper, 3% HARD. VSEPR (20 q) is counting electron pairs: bond pairs plus lone pairs around the central atom give the geometry, lone pairs bend it — NH₃ pyramidal, H₂O bent, XeF₄ square planar.",
-      "Molecular orbital theory (13 q) is bond order = (bonding − antibonding)/2: O₂ has 2 and two unpaired electrons, so it is paramagnetic. Dipole moment (11 q) is zero for symmetric molecules — CO₂, BF₃, CH₄, CCl₄.",
+      "96 q at 1.28 a paper, 2% HARD. VSEPR (30 q) is counting electron pairs: bond pairs plus lone pairs around the central atom give the geometry, lone pairs bend it — NH₃ pyramidal, H₂O bent, XeF₄ square planar.",
+      "Molecular orbital theory (18 q) is bond order = (bonding − antibonding)/2: O₂ has 2 and two unpaired electrons, so it is paramagnetic. Dipole moment (18 q) is zero for symmetric molecules — CO₂, BF₃, CH₄, CCl₄.",
     ],
     subSkills: [
       { name: "VSEPR", description: "Steric number = bond pairs + lone pairs: 2 linear, 3 trigonal, 4 tetrahedral, 5 trigonal bipyramidal, 6 octahedral." },
@@ -112,8 +112,8 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "elements-of-group-16-17-and-18",
     trigger: "Oxygen, sulphur or ozone; a halogen, interhalogen or oxoacid; a noble gas compound — or a trend down a group.",
     story: [
-      "48 q at 1.29 a paper, 2% HARD — and rising, from 1.00 a paper in 2023-24 to 1.38 in 2025. Group 16 (24 q, never HARD): hydride trends (thermal stability falls and acidity rises from H₂O to H₂Te), allotropes of sulphur, ozone, and oleum.",
-      "Group 17 (21 q): oxidising power (F₂ strongest), the oxoacids and their oxidation states, and interhalogens. Group 18 (3 q): xenon fluorides and their shapes.",
+      "80 q at 1.28 a paper, 4% HARD, and up from 1.00 a paper in 2023-24 to 1.38 in 2025 and 1.23 in 2026. Group 16 (37 q, never HARD): hydride trends (thermal stability falls and acidity rises from H₂O to H₂Te), allotropes of sulphur, ozone, and oleum.",
+      "Group 17 (36 q, all three HARD): oxidising power (F₂ strongest), the oxoacids and their oxidation states, and interhalogens. Group 18 (7 q): xenon fluorides and their shapes.",
     ],
     subSkills: [
       { name: "Hydride trends", description: "H₂O → H₂Te: stability falls, acidity rises, boiling point lowest at H₂S (water is high from hydrogen bonding)." },
@@ -125,14 +125,14 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
       { name: "Oleum's formula", description: "Oleum is H₂S₂O₇ (pyrosulphuric acid), not H₂SO₄." },
     ],
     exampleQuestionIds: [],
-    relatedSlugs: ["elements-of-group-1-and-2", "redox-reactions"],
+    relatedSlugs: ["redox-reactions", "transition-and-inner-transition-elements"],
   },
 
   "redox-reactions": {
     slug: "redox-reactions",
     trigger: "An oxidation number to find, a species oxidised or reduced, or a redox equation to balance.",
     story: [
-      "44 q at 1.08 a paper, 2% HARD. Oxidation-number calculation is 26 of them: the sum over a species equals its charge, with O as −2 and H as +1 — except in peroxides (O −1) and metal hydrides (H −1).",
+      "73 q at 1.15 a paper, 1% HARD. Oxidation-number calculation is 44 of them: the sum over a species equals its charge, with O as −2 and H as +1 — except in peroxides (O −1) and metal hydrides (H −1).",
       "The rest reuses it: whichever element's oxidation number rises is oxidised, and it is the reducing agent. A reaction in which no oxidation number changes — CrO₄²⁻ ⇌ Cr₂O₇²⁻ — is not redox.",
     ],
     subSkills: [
@@ -152,8 +152,8 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "surface-chemistry",
     trigger: "Adsorption and its types, a colloid and its class, coagulation by an electrolyte, or a catalyst.",
     story: [
-      "39 q at 0.92 a paper, and never a HARD question. Colloids (21 q): lyophilic against lyophobic, the dispersed phase and medium, and the Hardy–Schulze rule — the ion with the charge OPPOSITE to the sol's coagulates it, more strongly the higher its charge.",
-      "Adsorption (12 q): physisorption (van der Waals, reversible, falls with temperature) against chemisorption (chemical bonds, specific), and the Freundlich isotherm.",
+      "68 q at 1.08 a paper, and never a HARD question. Colloids (41 q): lyophilic against lyophobic, the dispersed phase and medium, and the Hardy–Schulze rule — the ion with the charge OPPOSITE to the sol's coagulates it, more strongly the higher its charge.",
+      "Adsorption (18 q): physisorption (van der Waals, reversible, falls with temperature) against chemisorption (chemical bonds, specific), and the Freundlich isotherm.",
     ],
     subSkills: [
       { name: "Hardy–Schulze", description: "For a negative sol (As₂S₃): Al³⁺ > Ba²⁺ > Na⁺. For a positive sol (Fe(OH)₃): [Fe(CN)₆]⁴⁻ > SO₄²⁻ > Cl⁻." },
@@ -165,26 +165,27 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
       { name: "Physisorption and heat", description: "Physisorption decreases as temperature rises; chemisorption first increases." },
     ],
     exampleQuestionIds: [],
-    relatedSlugs: ["solutions", "elements-of-group-1-and-2"],
+    relatedSlugs: ["solutions", "green-chemistry-and-nanochemistry"],
   },
 
-  "elements-of-group-1-and-2": {
-    slug: "elements-of-group-1-and-2",
-    trigger: "An alkali or alkaline-earth metal's trend, an anomaly of lithium or beryllium, or an industrial process by name.",
+  "green-chemistry-and-nanochemistry": {
+    slug: "green-chemistry-and-nanochemistry",
+    trigger: "A principle of green chemistry, a percentage atom economy, a green solvent, or a nanostructure's dimension, synthesis or characterisation.",
     story: [
-      "37 q at 0.92 a paper, and never a HARD question. Trends down the groups (22 q): size and reactivity rise, ionisation enthalpy falls. Lithium and beryllium are the exceptions — small, highly polarising ions — which explains most of what is asked about them.",
-      "Industrial processes and minerals (15 q): the Solvay process for sodium carbonate, the chlor-alkali cell, and the ores of the group-2 metals.",
+      "63 q at 1.10 a paper, and never a HARD question. It has risen two years running: 0.67 a paper across 2023-24, 1.00 in 2025 and 1.15 in 2026, which is what made it a playbook. Green chemistry (36 q): the principles, percentage atom economy, and safer solvents such as water and supercritical CO₂.",
+      "Nanochemistry (27 q): nanostructures classified by dimension (the textbook lists quantum dots and nano-rings as zero-dimensional), the sol–gel route, and the instruments that characterise a nanomaterial.",
     ],
     subSkills: [
-      { name: "Trends", description: "Down a group: atomic size up, ionisation enthalpy down, reactivity up." },
-      { name: "Anomalies", description: "Li resembles Mg, Be resembles Al (diagonal relationship); both form covalent compounds." },
-      { name: "Processes", description: "Solvay (Na₂CO₃), Castner–Kellner (NaOH), and the uses of plaster of Paris and quicklime." },
+      { name: "Atom economy", description: "% atom economy = mass of the desired product ÷ total mass of all reactants × 100. Every reactant counts, including the one that ends in the by-product." },
+      { name: "The principles", description: "Prevent waste rather than treat it, maximise atom economy, use safer solvents, save energy, prefer renewable feedstocks and catalysts, design products to degrade." },
+      { name: "Nanostructures", description: "Classified by how many dimensions lie outside the nanoscale: quantum dots and nano-rings zero, nanotubes and nanowires one, thin films two." },
+      { name: "Sol–gel synthesis", description: "Precursor to sol to gel, then drying, then the final dehydration: the order of steps is what is asked." },
     ],
     traps: [
-      { name: "Solubility trends reverse", description: "Group-2 sulphates grow LESS soluble down the group, hydroxides MORE soluble." },
-      { name: "Lithium's carbonate", description: "Li₂CO₃ decomposes on heating, unlike the other alkali-metal carbonates — a diagonal-relationship effect." },
+      { name: "Leaving a reactant out of the sum", description: "For ethanol from chloroethane and KOH the denominator is 64.5 + 56 = 120.5, so the atom economy is 46 ÷ 120.5 = 38.2%. Dropping the KOH gives 71.3%, far too high." },
+      { name: "Nano-rings as one-dimensional", description: "A ring looks like a bent wire, but the textbook lists nano-rings with quantum dots as zero-dimensional." },
     ],
     exampleQuestionIds: [],
-    relatedSlugs: ["surface-chemistry", "elements-of-group-16-17-and-18"],
+    relatedSlugs: ["surface-chemistry", "introduction-to-polymer-chemistry"],
   },
 };

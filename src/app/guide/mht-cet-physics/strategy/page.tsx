@@ -34,7 +34,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: { absolute: fitTitle("MHT-CET Physics Strategy — Order and Time, Never Attempt-vs-Skip") },
   description:
-    "MHT-CET Physics is 50 questions sharing a 90-minute paper with Chemistry, with NO negative marking — so the strategy is how to split the clock and what order to answer in, never whether to attempt. Three strands with a drill posture, must-drill subtopics and study hours per chapter. Backed by 2,098 past-year questions across 42 papers.",
+    "MHT-CET Physics is 50 questions sharing a 90-minute paper with Chemistry, with NO negative marking — so the strategy is how to split the clock and what order to answer in, never whether to attempt. Three strands with a drill posture, must-drill subtopics and study hours per chapter. Backed by 3,390 past-year questions across 68 papers.",
   alternates: { canonical: "/guide/mht-cet-physics/strategy" },
 };
 
@@ -509,9 +509,9 @@ export default async function MhtCetPhysicsStrategy() {
           These sit under 0.9 questions a paper, so none of them ships a
           playbook — they are listed here so the {OVERVIEW.chapters}-chapter
           bank is accounted for rather than quietly truncated at{" "}
-          {OVERVIEW.playbooks}. Read the status column first: 2025 brought one of
-          them onto the paper, which matters more than the question
-          counts suggest.
+          {OVERVIEW.playbooks}. Units and Measurement used to sit here: the
+          2026 papers held it at a question a paper, so it crossed the line
+          and now has a playbook in the Quick-Win strand.
         </p>
         <div className="mt-4 overflow-x-auto rounded-md border">
           <table className="w-full text-sm">
@@ -581,15 +581,13 @@ export default async function MhtCetPhysicsStrategy() {
           />
           <span>
             <strong className="font-semibold text-foreground">
-              Units and Measurement is the one to add.
+              Magnetic Materials is the one worth an hour.
             </strong>{" "}
-            It was not set once in the 29 papers before 2025, so a student
-            prepping from 2023-24 papers has never met it — then it carried 14
-            questions in the 13 papers of 2025, none of them HARD. Its recent
-            rate of{" "}
-            {TAIL_CHAPTERS.find((t) => t.chapter === "Units and Measurement")?.qPerPaper}{" "}
-            averages in 2024, when it was absent; on 2025 alone it is about a
-            question a paper.
+            It sits under the line on volume alone: at{" "}
+            {TAIL_CHAPTERS.find((t) => t.chapter === "Magnetic Materials")?.qPerPaper}{" "}
+            a paper, most papers carry one, and only two of its 54 questions
+            have been HARD. Answer it on the opening sweep with the
+            quick-wins.
           </span>
         </p>
       </section>

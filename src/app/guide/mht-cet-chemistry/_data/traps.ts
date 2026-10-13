@@ -39,7 +39,7 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "calculate",
     affects: [],
     mechanic:
-      "About 25 Chemistry questions a paper are recall or reactions — answered in seconds — and about 21 need arithmetic. Working the paper in order spends the first minutes on calculations and reaches the easy names and structures with the clock already short.",
+      "About 25 Chemistry questions a paper are recall or reactions, answered in seconds, and about 20 need arithmetic. Working the paper in order spends the first minutes on calculations and reaches the easy names and structures with the clock already short.",
     fix: "First sweep: every recall and reaction question. Second sweep: the calculations. One mark each either way; the fast marks first.",
   },
   {
@@ -83,7 +83,7 @@ export const TRAP_SHAPES: TrapShape[] = [
     id: "carbon-count",
     title: "Losing or keeping a carbon",
     bucket: "reactions",
-    affects: ["amines", "alkanes", "aromatic-compounds"],
+    affects: ["amines", "halogen-derivatives"],
     mechanic:
       "Hofmann bromamide and decarboxylation remove one carbon; Wurtz doubles the chain; side-chain oxidation cuts any alkyl group down to –COOH. A product with the wrong carbon count is the planted option.",
     fix: "Count carbons before and after. Ask: does this reaction add, remove or keep them?",
@@ -114,7 +114,6 @@ export const TRAP_SHAPES: TrapShape[] = [
     affects: [
       "transition-and-inner-transition-elements",
       "elements-of-group-16-17-and-18",
-      "elements-of-group-1-and-2",
       "redox-reactions",
     ],
     mechanic:
@@ -127,7 +126,7 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "recall",
     affects: ["coordination-compounds"],
     mechanic:
-      "[Co(en)₃]³⁺ has three ligands and coordination number 6, because each en binds twice. Denticity is 33 questions of Coordination Compounds.",
+      "[Co(en)₃]³⁺ has three ligands and coordination number 6, because each en binds twice. Ligands and denticity is 39 questions of Coordination Compounds.",
     fix: "Coordination number = number of donor atoms bonded to the metal, not number of ligands.",
   },
   {

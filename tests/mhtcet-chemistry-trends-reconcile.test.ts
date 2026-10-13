@@ -24,6 +24,7 @@ import {
 const WINDOW_YEARS: Record<string, number[]> = {
   "2023-2024": [2023, 2024],
   "2025": [2025],
+  "2025-2026": [2025, 2026],
   "before 2025": [2021, 2022, 2023, 2024],
 };
 
@@ -113,7 +114,7 @@ describe("the Chemistry narrative reconciles against the grid", () => {
   it("still shows Structure of Atom halving and Modern Periodic Table falling", () => {
     for (const ch of ["Structure of Atom", "Modern Periodic Table"]) {
       const before = inYears(ch, [2023, 2024]) / columnsFor([2023, 2024]).length;
-      const after = inYears(ch, [2025]) / columnsFor([2025]).length;
+      const after = inYears(ch, [2025, 2026]) / columnsFor([2025, 2026]).length;
       expect(after, ch).toBeLessThan(before * 0.6);
     }
   });

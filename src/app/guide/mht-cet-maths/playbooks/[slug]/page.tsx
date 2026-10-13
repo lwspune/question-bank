@@ -59,7 +59,7 @@ export async function generateMetadata({
 export default async function PlaybookDetail({ params }: { params: Params }) {
   const playbook = PLAYBOOKS.find((p) => p.slug === params.slug);
   const detail = PLAYBOOK_DETAILS[params.slug];
-  // Every one of the 21 playbooks has a deep dive; a half-populated page would
+  // Every one of the 22 playbooks has a deep dive; a half-populated page would
   // be worse than a 404, so both must resolve.
   if (!playbook || !detail) notFound();
 
@@ -111,7 +111,7 @@ export default async function PlaybookDetail({ params }: { params: Params }) {
     { value: String(playbook.qCount), label: "Questions in the bank" },
     {
       value: playbook.qPerPaper.toFixed(2),
-      label: "q/paper (2024–25 shifts)",
+      label: "q/paper (2025–26 shifts)",
     },
     { value: `${playbook.pctHard}%`, label: "Tagged HARD" },
     {

@@ -18,9 +18,9 @@ import { TAIL_CHAPTERS, type TailStatus } from "../_data/strategy";
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "MHT-CET Chemistry Playbooks — 23 chapters, drilled",
+  title: "MHT-CET Chemistry Playbooks: 22 chapters, drilled",
   description:
-    "Twenty-three playbooks for MHT-CET Chemistry — one per chapter above 0.9 questions per paper, grouped Recall / Reactions / Calculate by how a question is answered. Each playbook: how the chapter is tested, the reactions and formulas it turns on, its traps, and a one-click drill link.",
+    "Twenty-two playbooks for MHT-CET Chemistry, one per chapter above 0.9 questions per paper on the 2025-2026 papers, grouped Recall / Reactions / Calculate by how a question is answered. Each playbook: how the chapter is tested, the reactions and formulas it turns on, its traps, and a one-click drill link.",
   alternates: { canonical: "/guide/mht-cet-chemistry/playbooks" },
 };
 
@@ -46,7 +46,7 @@ const STRAND_INFO: Record<
   reactions: {
     label: "Reactions — reagent to product",
     blurb:
-      "The organic reaction chapters. Recognise the reagent or the named reaction and the product follows; there is almost nothing to calculate. Learn every reaction in both directions — reagent to product, and product to reagent — because the paper asks both ways.",
+      "The organic chapters, and the principles they rest on. Recognise the reagent or the named reaction and the product follows; there is almost nothing to calculate. Learn every reaction in both directions — reagent to product, and product to reagent — because the paper asks both ways.",
   },
   calculate: {
     label: "Calculate — arithmetic, second sweep",
@@ -117,8 +117,8 @@ export default function PlaybooksIndex() {
       <GuideJsonLd
         type="CollectionPage"
         path="/guide/mht-cet-chemistry/playbooks"
-        headline="MHT-CET Chemistry Playbooks — 23 chapters, drilled"
-        description="Twenty-three playbooks for MHT-CET Chemistry — one per chapter above 0.9 questions per paper. Each: how the chapter is tested, its sub-skills, its traps, and a one-click drill link."
+        headline="MHT-CET Chemistry Playbooks: 22 chapters, drilled"
+        description="Twenty-two playbooks for MHT-CET Chemistry, one per chapter above 0.9 questions per paper on the 2025-2026 papers. Each: how the chapter is tested, its sub-skills, its traps, and a one-click drill link."
       />
       <GuideHero
         eyebrow="Playbooks"
@@ -140,15 +140,16 @@ export default function PlaybooksIndex() {
           lifetime — all {OVERVIEW.totalQ.toLocaleString("en-IN")} questions
           across {OVERVIEW.papers} papers and {OVERVIEW.yearsCovered} years.
           The <strong>q/paper rate</strong> is measured on recent papers only
-          (2024&ndash;2025), and that is the number the strands below are built
-          on.
+          (the 39 papers of 2025&ndash;2026), and that is the number the
+          strands below are built on.
         </p>
         <p className="mt-3 font-serif text-base leading-relaxed text-muted-foreground">
-          They disagree because the 2025 papers moved a few chapters.
-          Structure of Atom carries 70 questions lifetime and halved in 2025;
-          Green Chemistry carries 33 and rose to a question in every 2025
-          paper. A lifetime average hides both, which is why the catalog is
-          built on the recent rate.
+          They disagree because the 2025 and 2026 papers moved a few
+          chapters. Structure of Atom carries 99 questions lifetime but has
+          set about one a paper since 2025, half its old rate; Green
+          Chemistry carries 63 and has risen two years running, to 1.15 a
+          paper in 2026. A lifetime average hides both, which is why the
+          catalog is built on the recent rate.
         </p>
         <Link
           href="/guide/mht-cet-chemistry/trends"
@@ -179,7 +180,7 @@ export default function PlaybooksIndex() {
               {list.length} playbook{list.length === 1 ? "" : "s"} ·{" "}
               {strandQ.toLocaleString("en-IN")} questions lifetime ·{" "}
               {strandPerPaper.toFixed(1)} of {OVERVIEW.paper.questions} q/paper
-              on 2024&ndash;25 papers · {minHard}&ndash;{maxHard}% HARD
+              on 2025&ndash;26 papers · {minHard}&ndash;{maxHard}% HARD
             </p>
 
             <ul className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -234,10 +235,11 @@ export default function PlaybooksIndex() {
           line. The other {TAIL_CHAPTERS.length} are named below rather than
           quietly dropped &mdash; between them they are{" "}
           {tailQ.toLocaleString("en-IN")} of the{" "}
-          {OVERVIEW.totalQ.toLocaleString("en-IN")} questions in the bank, and
-          one of them — Basic Principles of Organic Chemistry, the hardest
-          chapter of any size — matters more than that share suggests. They are
-          covered in the tail block on the{" "}
+          {OVERVIEW.totalQ.toLocaleString("en-IN")} questions in the bank.
+          Three of them (Groups 1 and 2, Aromatic Compounds and Alkanes) had
+          playbooks on the 2024-25 rate and fell below the line on 2025-2026
+          papers; Basic Principles of Organic Chemistry and Green Chemistry
+          rose above it and replaced them. The tail is covered on the{" "}
           <Link
             href="/guide/mht-cet-chemistry/strategy"
             className="font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -262,7 +264,7 @@ export default function PlaybooksIndex() {
               </div>
               <p className="mt-1 text-xs tabular-nums text-muted-foreground">
                 {c.qCount} q lifetime · {c.qPerPaper.toFixed(2)}/paper on
-                2024&ndash;25 papers · {c.pctHard}% hard
+                2025&ndash;26 papers · {c.pctHard}% hard
               </p>
               <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
                 {c.note}

@@ -89,8 +89,8 @@ export default function MhtCetMathsOpenGraphImage() {
               lineHeight: 1.4,
             }}
           >
-            A 2,090-question analysis of 42 shifts from 2021 to 2025 — no
-            negative marking, 1.8 minutes a question, 21 chapter playbooks.
+            A 3,388-question analysis of 68 shifts from 2021 to 2026 — no
+            negative marking, 1.8 minutes a question, 22 chapter playbooks.
           </div>
         </div>
 

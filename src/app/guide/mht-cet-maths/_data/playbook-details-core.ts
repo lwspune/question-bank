@@ -1,13 +1,14 @@
 /**
- * Deep-dive content for the 11 CORNERSTONE + QUICK-WIN playbooks of
+ * Deep-dive content for the 12 CORNERSTONE + QUICK-WIN playbooks of
  * /guide/mht-cet-maths/playbooks/{slug}.
  *
  * Split from the long-tail file because the 22 chapter deep-dives are authored
  * in two part-files; both import PlaybookDetail from ./types so neither has to
  * import the module that merges them (that would be a cycle).
  *
- * Every statistic below comes from the shipped bank measurement: 2,090 PUBLIC
- * PYQs across 42 shifts, 2021-2025 (re-measured 2026-09-28, after the label fix). Chapter-level figures (q, q/paper, %HARD)
+ * Every statistic below comes from the shipped bank measurement: 3,388 PUBLIC
+ * PYQs across 68 shifts, 2021-2026 (re-measured 2026-10-13, after the 26 shifts
+ * of 2026 went public; q/paper is the 2025-2026 recent window). Chapter-level figures (q, q/paper, %HARD)
  * match playbooks.ts; subtopic figures are the per-subtopic q and %HARD from
  * the same measurement. Nothing here is estimated.
  *
@@ -25,46 +26,46 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "Anything stated in three coordinates: a line through two points, a plane through a normal, a distance, an angle, a foot of perpendicular, or two lines you are asked to test for intersection.",
     story: [
-      "191 q at 4.96 per paper makes this the second-heaviest chapter on recent MHT-CET papers, just behind Trigonometric Functions — roughly ten marks, every time. It is also 43% HARD, and the important structural fact is that the HARD does not concentrate. Seven subtopics, and the top two carry only 47% of the chapter's HARD between them. Compare that with Vectors, where two subtopics carry 76%. There is no cherry-pick available here: you own the whole chapter or you lose ten marks.",
-      "The cheapest corner is Line — Equation, Direction Cosines, and Vector Form: 28 q at 21% HARD, the lowest rate in the chapter and the foundation everything else stands on. The most expensive is Intersection, Coplanarity, and Skew Lines at 62% HARD, which is exactly where a student who learned formulas without learning the geometry falls over. Learn in that order, not in book order.",
-      "Almost every question in this chapter is one of two moves wearing different clothes: an ANGLE between two objects, or a DISTANCE from a point to an object. Perpendicularity is just angle 90 and parallelism is just angle 0 — the survey found the angle idea running through 87 q across 7 chapters and perpendicularity through 83 q across 7. Once you see that, the seven subtopics stop being seven separate syllabi.",
+      "304 q at 4.69 per paper makes this the heaviest chapter on recent MHT-CET papers, ahead of Vectors and Trigonometric Functions — roughly nine marks, every time. It is also 35% HARD, and the important structural fact is that the HARD does not concentrate. Seven subtopics, and the top two carry only 45% of the chapter's HARD between them. Compare that with Vectors, where two subtopics carry 70%. There is no cherry-pick available here: you own the whole chapter or you lose nine marks.",
+      "The cheapest large corner is Line — Equation, Direction Cosines, and Vector Form: 50 q at 18% HARD, and the foundation everything else stands on (only the 16-question tetrahedron page, at 13%, is cheaper). The most expensive are Foot of Perpendicular, Image, and Projection at 55% HARD and Intersection, Coplanarity, and Skew Lines at 50%, which is exactly where a student who learned formulas without learning the geometry falls over. Learn in that order, not in book order.",
+      "Almost every question in this chapter is one of two moves wearing different clothes: an ANGLE between two objects, or a DISTANCE from a point to an object. Perpendicularity is just angle 90 and parallelism is just angle 0 — the bank's stems name the angle between two objects 127 times across 8 chapters and perpendicularity 147 times across 8. Once you see that, the seven subtopics stop being seven separate syllabi.",
       "At 1.8 minutes a question you cannot afford to derive a standard result on the paper. The direction-ratio, normal-form, distance and coplanarity formulas have to be automatic, and the 3-D picture has to be sketchable in ten seconds.",
     ],
     subSkills: [
       {
         name: "Line — equation, direction cosines, and vector form",
         description:
-          "Write a line three ways (vector, symmetric, parametric) and move between them without thinking. Direction ratios are any proportional triple; direction cosines are the normalised ones, and their squares sum to 1. 28 q at 21% HARD — the cheapest block in the chapter and the one everything else assumes.",
+          "Write a line three ways (vector, symmetric, parametric) and move between them without thinking. Direction ratios are any proportional triple; direction cosines are the normalised ones, and their squares sum to 1. 50 q at 18% HARD — the cheapest large block in the chapter and the one everything else assumes.",
       },
       {
         name: "Plane — equation, normal, and construction",
         description:
-          "Build a plane from a normal and a point, from three points, or from a line plus a point. The normal vector IS the plane for exam purposes. 42 q at 33% HARD, the largest subtopic here.",
+          "Build a plane from a normal and a point, from three points, or from a line plus a point. The normal vector IS the plane for exam purposes. 66 q at 29% HARD, the largest subtopic here.",
       },
       {
         name: "Angles — line, plane, and direction conditions",
         description:
-          "Line-to-line uses the two direction vectors; plane-to-plane uses the two normals; line-to-plane uses direction against normal and then takes the complement — this is where the sine-versus-cosine slip lives. 29 q at 45% HARD.",
+          "Line-to-line uses the two direction vectors; plane-to-plane uses the two normals; line-to-plane uses direction against normal and then takes the complement — this is where the sine-versus-cosine slip lives. 48 q at 35% HARD.",
       },
       {
         name: "Distances in 3-D",
         description:
-          "Point to plane, point to line, and the shortest distance between two skew lines. Three different formulas with one shared shape: project a connecting vector onto the perpendicular direction, then take the modulus. 32 q at 41% HARD.",
+          "Point to plane, point to line, and the shortest distance between two skew lines. Three different formulas with one shared shape: project a connecting vector onto the perpendicular direction, then take the modulus. 52 q at 40% HARD.",
       },
       {
         name: "Foot of perpendicular, image, and projection",
         description:
-          "Drop a perpendicular by parametrising the line, imposing the perpendicularity condition, and solving for the parameter. The image is the foot doubled, not the foot. 15 q at 53% HARD.",
+          "Drop a perpendicular by parametrising the line, imposing the perpendicularity condition, and solving for the parameter. The image is the foot doubled, not the foot. 20 q at 55% HARD, the hardest cell in the chapter.",
       },
       {
         name: "Intersection, coplanarity, and skew lines",
         description:
-          "Two lines in space usually miss each other. Coplanarity is a vanishing 3x3 determinant built from the two directions and the joining vector — the same degeneracy test that appears as concurrency in 2-D and as scalar triple product zero in Vectors. 35 q at 60% HARD, the hardest cell in the chapter.",
+          "Two lines in space usually miss each other. Coplanarity is a vanishing 3x3 determinant built from the two directions and the joining vector — the same degeneracy test that appears as concurrency in 2-D and as scalar triple product zero in Vectors. 52 q at 50% HARD, the second-hardest cell in the chapter.",
       },
       {
         name: "Tetrahedron geometry — centroid, volume, and vertices",
         description:
-          "A small, closed block: centroid as the average of four vertices, volume as one sixth of a scalar triple product. 10 q at 20% HARD, so it is cheap once the triple product is already yours.",
+          "A small, closed block: centroid as the average of four vertices, volume as one sixth of a scalar triple product. 16 q at 13% HARD, so it is cheap once the triple product is already yours.",
       },
     ],
     traps: [
@@ -98,41 +99,41 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "Quantities with direction: a dot or cross product, an area, a volume, a coplanarity test, or a geometry statement (median, centroid, parallelogram) posed in position vectors.",
     story: [
-      "214 q makes Vectors the largest chapter in the bank and 55% HARD makes it the hardest of the seven cornerstones. Unlike Line and Plane, though, this chapter DOES cherry-pick, and that changes how you attack it. Scalar Triple Product (68 q, 74% HARD) and Cross Product (63 q, 63%) carry 76% of the chapter's HARD between them. Dot Product is 46 q at 26% HARD — a fifth of the chapter's volume at half the difficulty rate.",
+      "334 q makes Vectors the largest chapter in the bank and 50% HARD makes it the hardest of the seven cornerstones. Unlike Line and Plane, though, this chapter DOES cherry-pick, and that changes how you attack it. Scalar Triple Product (100 q, 63% HARD) and Cross Product (83 q, 64%) carry 70% of the chapter's HARD between them. Dot Product is 76 q at 28% HARD — nearly a quarter of the chapter's volume at about half the difficulty rate.",
       "So the order is not negotiable: secure Dot Product first. It is the cheapest large block, it is where perpendicularity lives, and it is the prerequisite for reading a cross-product question correctly. Then Cross Product, then the Scalar Triple Product last, when you have the machinery to see it as a determinant rather than a formula to memorise.",
-      "The triple product is worth singling out because it is the chapter's real workhorse idea. A vanishing 3x3 determinant is a universal degeneracy test that surfaces in five or six chapters — as coplanarity here, as coplanarity of lines in Line and Plane, as collinearity of points, and as concurrency of lines in 2-D. Learning it once in vector form pays four times.",
+      "The triple product is worth singling out because it is the chapter's real workhorse idea. A vanishing 3x3 determinant is a universal degeneracy test that surfaces in six chapters — as coplanarity here, as coplanarity of lines in Line and Plane, as collinearity of points, and as concurrency of lines in 2-D. Learning it once in vector form pays four times.",
       "MHT-CET has no negative marking, and Vectors is where that matters most. A perpendicularity claim can be checked by taking one dot product per option; a coplanarity claim can be checked by evaluating one determinant. When the clock is short, verifying the four options is often faster than solving the stem — and there is no cost to a wrong guess.",
     ],
     subSkills: [
       {
         name: "Magnitude, components, and unit vectors",
         description:
-          "Resolve into components, take a magnitude, and normalise. 10 q at 30% HARD — small, but every other subtopic assumes it and the normalisation step is where careless marks go.",
+          "Resolve into components, take a magnitude, and normalise. 18 q at 17% HARD — small, but every other subtopic assumes it and the normalisation step is where careless marks go.",
       },
       {
         name: "Dot product, angle, and perpendicularity",
         description:
-          "The scalar product gives an angle, a projection, and the perpendicularity test (dot product zero). 46 q at 26% HARD: the cheap third of the chapter and the block to bank first.",
+          "The scalar product gives an angle, a projection, and the perpendicularity test (dot product zero). 76 q at 28% HARD: the cheap quarter of the chapter and the block to bank first.",
       },
       {
         name: "Vector geometry — section formula, triangle, and parallelogram",
         description:
-          "Position vectors for midpoints, medians, centroids and diagonals. 13 q at 54% HARD. Mostly a translation skill: turn a geometry sentence into a vector equation, then the algebra is short.",
+          "Position vectors for midpoints, medians, centroids and diagonals. 32 q at 50% HARD. Mostly a translation skill: turn a geometry sentence into a vector equation, then the algebra is short.",
       },
       {
         name: "Cross product, angle, and area",
         description:
-          "The vector product gives a perpendicular direction, a sine, and an area. Triangle area is HALF the cross-product magnitude; parallelogram area is the whole of it. 63 q at 63% HARD.",
+          "The vector product gives a perpendicular direction, a sine, and an area. Triangle area is HALF the cross-product magnitude; parallelogram area is the whole of it. 83 q at 64% HARD, the densest HARD block in the chapter.",
       },
       {
         name: "Linear combinations, collinearity, and coplanarity",
         description:
-          "Express one vector in terms of others and read off dependence. Three points are collinear when two of their joining vectors are parallel. 14 q at 50% HARD, and it is the conceptual bridge into the triple product.",
+          "Express one vector in terms of others and read off dependence. Three points are collinear when two of their joining vectors are parallel. 25 q at 40% HARD, and it is the conceptual bridge into the triple product.",
       },
       {
         name: "Scalar triple product, coplanarity, and volume",
         description:
-          "One determinant answers three questions: the volume of a parallelepiped, one sixth of it for a tetrahedron, and coplanarity when it vanishes. 68 q at 74% HARD — the largest and hardest subtopic in the chapter, and the last one to learn.",
+          "One determinant answers three questions: the volume of a parallelepiped, one sixth of it for a tetrahedron, and coplanarity when it vanishes. 100 q at 63% HARD — the largest subtopic in the chapter, one of its two hardest, and the last one to learn.",
       },
     ],
     traps: [
@@ -166,21 +167,21 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A derivative used for something rather than computed: a maximum, a rate, a tangent slope, an interval of increase, an approximation, or a mean-value statement.",
     story: [
-      "174 q at 3.88 per paper and only 23% HARD. This is the cheapest cornerstone by some distance and, measured as marks per hour of preparation, the best chapter on the paper. Seven subtopics and not one of them is above 31% HARD — there is no expensive corner to be afraid of here, which is not true of any other cornerstone.",
-      "Approximations using Differentials is the extreme case: 11 q and 0% HARD across the whole bank. Angle Between Curves and Orthogonality is 8 q at 13%, and Rolle's Theorem and Mean Value Theorem is 18 q at 17%. That is 37 questions of nearly-free content sitting inside a cornerstone, which is an unusual thing to find and worth taking early.",
-      "The volume, though, sits in Maxima, Minima and Optimisation (42 q) and Rate of Change and Related Rates (40 q). Both are word problems, and the difficulty is almost never the calculus — it is setting up the right function or the right chain of dependencies before differentiating. Drill the setup, not the differentiation; the differentiation is Differentiation's job.",
+      "253 q at 3.23 per paper and only 20% HARD. This is the cheapest cornerstone by some distance and, measured as marks per hour of preparation, the best chapter on the paper. Seven subtopics and not one of them is above 31% HARD — there is no expensive corner to be afraid of here, which is not true of any other cornerstone.",
+      "Approximations using Differentials is the extreme case: 16 q and 0% HARD across the whole bank. Angle Between Curves and Orthogonality is 8 q at 13%, and Tangents, Normals, and the Slope of a Curve is 52 q at 17%. That is 76 questions of nearly-free content sitting inside a cornerstone, which is an unusual thing to find and worth taking early. The chapter is lighter than it was (4.48 a paper in 2023-24, 3.23 in 2025-26), but no chapter outside the cornerstones comes close to it.",
+      "The volume, though, sits in Rate of Change and Related Rates (56 q) and Maxima, Minima and Optimisation (53 q). Both are word problems, and the difficulty is almost never the calculus — it is setting up the right function or the right chain of dependencies before differentiating. Drill the setup, not the differentiation; the differentiation is Differentiation's job.",
       "One efficiency note that pays at 1.8 minutes a question: optimisation questions in this chapter frequently have a geometric shortcut, and the survey found the same shortcut in other chapters too. A maximum distance from a point to a circle is centre distance plus radius; no calculus is required. Recognising when the calculus can be skipped is a time lever, not a stylistic preference.",
     ],
     subSkills: [
       {
         name: "Approximations using differentials",
         description:
-          "A small change in x produces roughly the derivative times that change in y. 12 q at 0% HARD — the only subtopic in the subject that has never produced a HARD question apart from Linear Programming's objective function. Learn it in one sitting.",
+          "A small change in x produces roughly the derivative times that change in y. 16 q at 0% HARD — one of the few subtopics in the subject that has never produced a HARD question. Learn it in one sitting.",
       },
       {
         name: "Tangents, normals, and the slope of a curve",
         description:
-          "The derivative at a point is the tangent slope; the normal slope is its negative reciprocal. 31 q at 19% HARD. Everything later in the chapter reads slopes off this skill.",
+          "The derivative at a point is the tangent slope; the normal slope is its negative reciprocal. 52 q at 17% HARD. Everything later in the chapter reads slopes off this skill.",
       },
       {
         name: "Angle between curves and orthogonality",
@@ -190,22 +191,22 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
       {
         name: "Rate of change and related rates",
         description:
-          "Differentiate a geometric relation with respect to time and substitute the instantaneous values LAST. 37 q at 19% HARD, and the second-largest block in the chapter.",
+          "Differentiate a geometric relation with respect to time and substitute the instantaneous values LAST. 56 q at 16% HARD, and the largest block in the chapter.",
       },
       {
         name: "Increasing and decreasing functions",
         description:
-          "Sign of the first derivative on an interval. The work is solving an inequality cleanly and reporting the interval in the form the options use. 29 q at 31% HARD.",
+          "Sign of the first derivative on an interval. The work is solving an inequality cleanly and reporting the interval in the form the options use. 36 q at 31% HARD, the chapter's most expensive page.",
       },
       {
         name: "Maxima, minima, and optimisation",
         description:
-          "Build the objective, reduce it to one variable using the constraint, then differentiate. 39 q at 26% HARD, the largest subtopic. The reduction step is where the marks are won and lost.",
+          "Build the objective, reduce it to one variable using the constraint, then differentiate. 53 q at 21% HARD, the second-largest subtopic. The reduction step is where the marks are won and lost.",
       },
       {
         name: "Rolle's theorem and mean value theorem",
         description:
-          "Three hypotheses to check before any conclusion: continuity on the closed interval, differentiability on the open one, and for Rolle equal endpoint values. 18 q at 17% HARD, and mostly hypothesis-checking rather than computation.",
+          "Three hypotheses to check before any conclusion: continuity on the closed interval, differentiability on the open one, and for Rolle equal endpoint values. 32 q at 28% HARD, and mostly hypothesis-checking rather than computation.",
       },
     ],
     traps: [
@@ -239,9 +240,9 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A triangle labelled with sides a, b, c and angles A, B, C — or an expression built from arcsin, arccos or arctan.",
     story: [
-      "207 q, 5.08/paper, 38% HARD — the second-largest chapter in the bank, behind only Vectors. It is the Std XII trigonometry chapter, and the reason students under-prepare it is that the name is unfamiliar: the chapter they recognise from Std XI, Trigonometry - II, is 39 questions of identities, a fifth of this one.",
-      "The chapter edged up from 4.93 q/paper across the lifetime window to 5.08 across the 24 shifts of 2024-2025, the heaviest rate on the paper, and its three pages are moving differently. Solution of Triangle climbed from 1.64 to 2.13, inverse trigonometry held (2.17 to 2.13), and trigonometric equations fell from 1.12 to 0.83. The equations sat in a separate Std XI chapter until 2026-09-26, when the bank was re-carved to the Balbharati Std XII syllabus, which puts them here.",
-      "The three parts cost almost the same — equations 47 q at 36% HARD, solution of triangle 69 q at 39%, inverse trigonometry 91 q at 37% — so the chapter is drilled whole. The notes split it into six pages, and the difficulty is not even across them: inverse-trig identities (sums, substitution, telescoping) is 63% HARD, while inverse-trig values and inverse-trig equations are both under 25%. Bank those two before the identities.",
+      "312 q, 4.46/paper, 41% HARD — the second-largest chapter in the bank, behind only Vectors. It is the Std XII trigonometry chapter, and the reason students under-prepare it is that the name is unfamiliar: the chapter they recognise from Std XI, Trigonometry - II, is 61 questions of identities, a fifth of this one.",
+      "The chapter eased from 4.93 q/paper across the 27 shifts of 2023-24 to 4.46 across the 39 shifts of 2025-26, third on the paper behind Line and Plane and Vectors, and its three parts are moving differently. Solution of triangle climbed from 1.26 to 1.85 a paper, while inverse trigonometry fell from 2.33 to 1.77 and trigonometric equations from 1.33 to 0.85. The equations sat in a separate Std XI chapter until 2026-09-26, when the bank was re-carved to the Balbharati Std XII syllabus, which puts them here.",
+      "The three parts cost almost the same — equations 69 q at 42% HARD, solution of triangle 107 q at 40%, inverse trigonometry 136 q at 41% — so the chapter is drilled whole. The notes split it into six pages, and the difficulty is not even across them: inverse-trig identities (sums, substitution, telescoping) is 65% HARD, while inverse-trig values (24%) and inverse-trig equations (31%) sit well under it. Bank those two before the identities.",
       "Every part is a closed list. The triangle work is four rules and their area forms, and recognition is most of the skill — what you are given (three sides, two sides and the included angle, two angles and a side) decides which rule opens the question. The inverse work is almost entirely about staying inside the principal branch: the algebra is short, and the marks are lost by producing a technically valid value that lies outside the allowed range.",
     ],
     subSkills: [
@@ -312,41 +313,41 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "An equation containing a derivative — either to be classified (order, degree, formation) or to be solved, plus the growth, decay and cooling word problems that reduce to one.",
     story: [
-      "135 q at 3.38 per paper and 38% HARD. The structural fact that should shape your preparation is that the six subtopics split by SOLUTION METHOD — variable-separable, homogeneous, linear with an integrating factor — and that is exactly how the exam sets them. So the first move on any stem is not to solve, it is to CLASSIFY. Get the classification right and the solution is a standard procedure; get it wrong and you lose the whole 1.8 minutes.",
-      "Order, Degree, Formation of ODE, and Verification of Solutions is 31 q at 23% HARD and is nearly free. It asks for recognition, not integration: read the highest derivative, read its power, count the arbitrary constants. Take this block first — it is a quarter of the chapter's questions at two thirds of the chapter's difficulty rate.",
-      "Linear Differential Equations (Integrating Factor) is where the chapter gets expensive: 23 q at 61% HARD, the highest rate here. Newton's Law of Cooling is only 5 q but runs 60% HARD, so it is genuinely optional. The three mid-weight blocks — Growth and Decay (31 q, 26%), Variable-Separable (31 q, 35%) and Homogeneous and Reducible (14 q, 36%) — are where the reliable marks are.",
+      "216 q at 3.38 per paper and 33% HARD. The structural fact that should shape your preparation is that the six subtopics split by SOLUTION METHOD — variable-separable, homogeneous, linear with an integrating factor — and that is exactly how the exam sets them. So the first move on any stem is not to solve, it is to CLASSIFY. Get the classification right and the solution is a standard procedure; get it wrong and you lose the whole 1.8 minutes.",
+      "Order, Degree, Formation of ODE, and Verification of Solutions is 58 q at 21% HARD and is nearly free. It asks for recognition, not integration: read the highest derivative, read its power, count the arbitrary constants. Take this block first — it is a quarter of the chapter's questions at two thirds of the chapter's difficulty rate.",
+      "Linear Differential Equations (Integrating Factor) is where the chapter gets expensive: 39 q at 54% HARD, the highest rate here. Newton's Law of Cooling is only 9 q but runs 44% HARD, so it is genuinely optional. The three mid-weight blocks — Growth and Decay (38 q, 26%), Variable-Separable (47 q, 30%) and Homogeneous and Reducible (25 q, 44%) — are where the reliable marks are.",
       "Verification questions are the clearest place in the subject where no negative marking changes tactics. If the stem gives a differential equation and four candidate solutions, differentiating each candidate and substituting is mechanical and always terminates. Solving the equation from scratch may not.",
     ],
     subSkills: [
       {
         name: "Order, degree, formation, and verification",
         description:
-          "Order is the highest derivative present; degree is its power once the equation is made polynomial in derivatives. Forming an ODE from a family means differentiating as many times as there are arbitrary constants. 31 q at 23% HARD.",
+          "Order is the highest derivative present; degree is its power once the equation is made polynomial in derivatives. Forming an ODE from a family means differentiating as many times as there are arbitrary constants. 58 q at 21% HARD.",
       },
       {
         name: "Variable-separable equations",
         description:
-          "Get all the y with dy and all the x with dx, then integrate both sides and keep one arbitrary constant. 31 q at 35% HARD. The integration, not the separation, is usually the hard part — which is why Indefinite Integration comes first.",
+          "Get all the y with dy and all the x with dx, then integrate both sides and keep one arbitrary constant. 47 q at 30% HARD. The integration, not the separation, is usually the hard part — which is why Indefinite Integration comes first.",
       },
       {
         name: "Homogeneous and reducible equations",
         description:
-          "Recognise that every term has the same total degree, substitute y = vx, and the equation becomes separable. Reducible forms are a shift of origin away from homogeneous. 14 q at 36% HARD.",
+          "Recognise that every term has the same total degree, substitute y = vx, and the equation becomes separable. Reducible forms are a shift of origin away from homogeneous. 25 q at 44% HARD.",
       },
       {
         name: "Linear equations and the integrating factor",
         description:
-          "Put the equation in the standard first-order linear form, build the integrating factor, multiply through, and integrate. 23 q at 61% HARD — the hardest block in the chapter and the one to learn once the easier three are secure.",
+          "Put the equation in the standard first-order linear form, build the integrating factor, multiply through, and integrate. 39 q at 54% HARD — the hardest block in the chapter and the one to learn once the easier three are secure.",
       },
       {
         name: "Growth, decay, and continuous models",
         description:
-          "Word problems whose rate is proportional to the amount present. They all reduce to the same separable equation; the work is translating the sentence and fixing the constant from the given condition. 31 q at 26% HARD.",
+          "Word problems whose rate is proportional to the amount present. They all reduce to the same separable equation; the work is translating the sentence and fixing the constant from the given condition. 38 q at 26% HARD.",
       },
       {
         name: "Newton's law of cooling",
         description:
-          "A named special case of the same proportional-rate model, with the ambient temperature as an offset. 5 q at 60% HARD — low volume, high cost, so it is a reasonable thing to leave until everything else is done.",
+          "A named special case of the same proportional-rate model, with the ambient temperature as an offset. 9 q at 44% HARD — low volume, high cost, so it is a reasonable thing to leave until everything else is done.",
       },
     ],
     traps: [
@@ -380,41 +381,41 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "An antiderivative with no limits — and the immediate question of which of the four techniques (substitution, parts, partial fractions, trigonometric identity) the integrand is asking for.",
     story: [
-      "151 q at 3.42 per paper and 53% HARD. This is a cornerstone you can neither skip nor rush. It also contains the single hardest subtopic in the whole subject: Trigonometric Integrals - Rational and Substitution Forms, 34 q at 74% HARD. Nothing else in MHT-CET Maths runs that high.",
-      "There is a cheap corner, and it is small but real. Foundations and Standard Formulae (8 q, 13% HARD) plus Trigonometric Integrals - Powers and Identities (11 q, 18% HARD) come to 20 q at roughly a tenth the difficulty rate of the chapter as a whole. Take those two first: they are a fifth of a paper's integration marks for a fraction of the effort, and the standard-formula list is a prerequisite for everything else anyway.",
-      "The bulk is Integration by Substitution (49 q, 51% HARD), Rational Functions and Partial Fractions (24 q, 50%) and Integration by Parts (25 q, 52%). These are all recognition problems dressed as computation problems: the skill being tested is choosing the technique in the first fifteen seconds. A student who can classify an integrand quickly finishes this chapter comfortably; a student who tries substitution on everything runs out of clock.",
+      "249 q at 3.51 per paper and 48% HARD. This is a cornerstone you can neither skip nor rush. It also contains the single hardest subtopic in the whole subject: Trigonometric Integrals - Rational and Substitution Forms, 46 q at 76% HARD. Nothing else in MHT-CET Maths runs that high.",
+      "There is a cheap corner, and it is small but real. Foundations and Standard Formulae (20 q, 5% HARD) plus Trigonometric Integrals - Powers and Identities (19 q, 26% HARD) come to 39 q at about a third of the difficulty rate of the chapter as a whole. Take those two first: they are a fifth of a paper's integration marks for a fraction of the effort, and the standard-formula list is a prerequisite for everything else anyway.",
+      "The bulk is Integration by Substitution (83 q, 51% HARD), Rational Functions and Partial Fractions (37 q, 43%) and Integration by Parts (44 q, 48%). These are all recognition problems dressed as computation problems: the skill being tested is choosing the technique in the first fifteen seconds. A student who can classify an integrand quickly finishes this chapter comfortably; a student who tries substitution on everything runs out of clock.",
       "This chapter is the clearest example of the no-negative-marking lever in the subject. The answer is a closed-form expression, so differentiating a candidate option is a legitimate and often much faster route than integrating the stem. When two techniques both look plausible and the clock is tight, differentiate rather than integrate.",
     ],
     subSkills: [
       {
         name: "Foundations and standard formulae",
         description:
-          "The standard integral list, cold, including the inverse-trigonometric and logarithmic forms. 8 q at 13% HARD directly, and an unavoidable prerequisite for the other five subtopics.",
+          "The standard integral list, cold, including the inverse-trigonometric and logarithmic forms. 20 q at 5% HARD directly, and an unavoidable prerequisite for the other five subtopics.",
       },
       {
         name: "Trigonometric integrals — powers and identities",
         description:
-          "Reduce powers and products of sine and cosine using double-angle and product-to-sum identities before integrating. 11 q at 18% HARD — the second-cheapest block in the chapter.",
+          "Reduce powers and products of sine and cosine using double-angle and product-to-sum identities before integrating. 19 q at 26% HARD — the second-cheapest block in the chapter.",
       },
       {
         name: "Integration by substitution",
         description:
-          "Spot that part of the integrand is the derivative of another part, substitute, and change the differential with it. 49 q at 51% HARD: the largest block, and the technique the other techniques fall back on.",
+          "Spot that part of the integrand is the derivative of another part, substitute, and change the differential with it. 83 q at 51% HARD: the largest block, and the technique the other techniques fall back on.",
       },
       {
         name: "Rational functions and partial fractions",
         description:
-          "Factor the denominator, decompose, and integrate term by term. Repeated factors and irreducible quadratics each need their own decomposition shape. 24 q at 50% HARD.",
+          "Factor the denominator, decompose, and integrate term by term. Repeated factors and irreducible quadratics each need their own decomposition shape. 37 q at 43% HARD.",
       },
       {
         name: "Integration by parts",
         description:
-          "Choose which factor to differentiate and which to integrate, then apply the formula — and recognise the cases that return to the original integral and are solved by rearrangement. 25 q at 52% HARD.",
+          "Choose which factor to differentiate and which to integrate, then apply the formula — and recognise the cases that return to the original integral and are solved by rearrangement. 44 q at 48% HARD.",
       },
       {
         name: "Trigonometric integrals — rational and substitution forms",
         description:
-          "Integrands that are rational in sine and cosine, handled by the half-angle substitution or by splitting the numerator to match the denominator's derivative. 34 q at 74% HARD, the highest of any subtopic in the subject. Learn it last and expect it to cost real time.",
+          "Integrands that are rational in sine and cosine, handled by the half-angle substitution or by splitting the numerator to match the denominator's derivative. 46 q at 76% HARD, the highest of any subtopic in the subject. Learn it last and expect it to cost real time.",
       },
     ],
     traps: [
@@ -448,41 +449,41 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A derivative to be computed, where the shape of the function — implicit, parametric, logarithmic, inverse trigonometric — names the method before you start.",
     story: [
-      "135 q at 3.21 per paper and 47% HARD. The subtopics here are method-pure: each one drills exactly one technique, and the exam sets them the same way. That is good news, because it means the chapter is learnable in six discrete pieces rather than as one undifferentiated mass — but it also means the exam expects you to identify the method from the shape of the function within a few seconds.",
-      "Start with Foundations, Chain Rule and Differentiability (21 q, 33% HARD), which is the cheapest block and underlies all five others. Then Logarithmic Differentiation (23 q, 39%), which is a single trick applied consistently. Implicit Differentiation and Special Forms (28 q, 54%) and Parametric, Higher-Order Derivatives and Relations (18 q, 50%) come next. Inverse Functions and Inverse Trigonometric Differentiation is the biggest single block at 39 q and 49% HARD, and it deserves the most drilling time.",
-      "Derivative of One Function with Respect to Another deserves an explicit warning: 7 q at 71% HARD, the worst marks-per-minute cell in the chapter. That is fewer than one appearance in six papers, at the highest difficulty rate here. Learn it last, and if it turns up when the clock is short, mark an option and move on — MHT-CET has no negative marking, so an unanswered question and a wrong one cost exactly the same.",
-      "One overlap to plan around: inverse trigonometry is a whole page of Trigonometric Functions (94 q), and its differentiation lives here. The pre-simplification step — recognising a standard substitution that collapses a monstrous inverse-trig expression into something linear — is usually the entire question, and it is a trigonometry skill, not a calculus one.",
+      "237 q at 3.59 per paper and 47% HARD. The subtopics here are method-pure: each one drills exactly one technique, and the exam sets them the same way. That is good news, because it means the chapter is learnable in six discrete pieces rather than as one undifferentiated mass — but it also means the exam expects you to identify the method from the shape of the function within a few seconds.",
+      "Start with Foundations, Chain Rule and Differentiability (45 q, 31% HARD), which is the cheapest block and underlies all five others. Then Logarithmic Differentiation (32 q, 34%), which is a single trick applied consistently. Implicit Differentiation and Special Forms (43 q, 58%) and Parametric, Higher-Order Derivatives and Relations (42 q, 50%) come next. Inverse Functions and Inverse Trigonometric Differentiation is the biggest single block at 59 q and 53% HARD, and it deserves the most drilling time.",
+      "Derivative of One Function with Respect to Another deserves an explicit warning: 16 q at 63% HARD, the worst marks-per-minute cell in the chapter. That is about one appearance in four papers, at the highest difficulty rate here. Learn it last, and if it turns up when the clock is short, mark an option and move on — MHT-CET has no negative marking, so an unanswered question and a wrong one cost exactly the same.",
+      "One overlap to plan around: inverse trigonometry is three pages of Trigonometric Functions (136 q), and its differentiation lives here. The pre-simplification step — recognising a standard substitution that collapses a monstrous inverse-trig expression into something linear — is usually the entire question, and it is a trigonometry skill, not a calculus one.",
     ],
     subSkills: [
       {
         name: "Foundations, chain rule, and differentiability",
         description:
-          "Product, quotient and chain rules applied without hesitation, plus the definition-based questions about where a function is differentiable. 21 q at 33% HARD — the cheapest block and the base for everything else.",
+          "Product, quotient and chain rules applied without hesitation, plus the definition-based questions about where a function is differentiable. 45 q at 31% HARD — the cheapest block and the base for everything else.",
       },
       {
         name: "Logarithmic differentiation",
         description:
-          "Take logarithms first when the function is a product of many factors or has a variable in the exponent, then differentiate implicitly. 23 q at 39% HARD. One trick, applied the same way every time.",
+          "Take logarithms first when the function is a product of many factors or has a variable in the exponent, then differentiate implicitly. 32 q at 34% HARD. One trick, applied the same way every time.",
       },
       {
         name: "Implicit differentiation and special forms",
         description:
-          "Differentiate both sides with respect to x, attaching the derivative factor to every y term, then solve for it. 28 q at 54% HARD, the second-largest block.",
+          "Differentiate both sides with respect to x, attaching the derivative factor to every y term, then solve for it. 43 q at 58% HARD, the hardest of the large blocks.",
       },
       {
         name: "Parametric, higher-order derivatives, and relations",
         description:
-          "Divide the two parameter derivatives for the first derivative; for the second, differentiate that result with respect to the parameter and divide again. 18 q at 50% HARD, and the second-derivative step is where most of the difficulty sits.",
+          "Divide the two parameter derivatives for the first derivative; for the second, differentiate that result with respect to the parameter and divide again. 42 q at 50% HARD, and the second-derivative step is where most of the difficulty sits.",
       },
       {
         name: "Inverse functions and inverse trigonometric differentiation",
         description:
-          "Simplify the inverse-trigonometric expression with a substitution BEFORE differentiating. 38 q at 47% HARD — the largest single block in the chapter, and the simplification is usually the whole question.",
+          "Simplify the inverse-trigonometric expression with a substitution BEFORE differentiating. 59 q at 53% HARD — the largest single block in the chapter, and the simplification is usually the whole question.",
       },
       {
         name: "Derivative of one function with respect to another",
         description:
-          "Differentiate both functions with respect to the shared variable and take the ratio. 7 q at 71% HARD: the worst marks-per-minute cell in the chapter, so it goes last in the learning order.",
+          "Differentiate both functions with respect to the shared variable and take the ratio. 16 q at 63% HARD: the worst marks-per-minute cell in the chapter, so it goes last in the learning order.",
       },
     ],
     traps: [
@@ -518,8 +519,8 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A random variable with a probability table, an expectation or variance to compute, a conditional statement, or a plain counting probability.",
     story: [
-      "107 q at 2.67 per paper and 21% HARD. This is the highest-weight Quick-Win in the subject and it is worth stating the trade plainly: over five marks a paper at roughly a fifth of the HARD rate of the calculus cornerstones. On a 90-minute paper with no negative marking, that is the best exchange of preparation time for marks available outside Applications of Derivative.",
-      "The difficulty is genuinely concentrated in one place. Classical Probability, Addition Theorem and Odds is 20 q at 10% HARD. Discrete Random Variables, PMF and CDF is 31 q at 19%, and Expectation, Variance and Standard Deviation is 35 q at 20% — the largest block and still under a fifth HARD. Only Conditional Probability, Independence and Bayes' Theorem (24 q, 33%) has any real teeth, and even that is below the subject average of 38.2%.",
+      "159 q at 2.31 per paper and 18% HARD. This is the largest Quick-Win by lifetime count, second only to Mathematical Logic on recent papers, and it is worth stating the trade plainly: over four marks a paper at well under half the HARD rate of the calculus cornerstones. On a 90-minute paper with no negative marking, that is the best exchange of preparation time for marks available outside Applications of Derivative.",
+      "The difficulty is genuinely concentrated in one place. Classical Probability, Addition Theorem and Odds is 32 q at 13% HARD. Discrete Random Variables, PMF and CDF is 44 q at 14%, and Expectation, Variance and Standard Deviation is 46 q at 17% — the largest block and still under a fifth HARD. Only Conditional Probability, Independence and Bayes' Theorem (37 q, 27%) has any real teeth, and even that is below the subject average of 34.8%.",
       "Almost every question in the first three subtopics runs the same pipeline: build or read a probability table, check it sums to 1, then apply a formula to it. That check is not busywork — a large share of the medium-difficulty questions in this chapter ARE the check, presented as finding an unknown constant in the table.",
       "Two habits pay here. Write the distribution as an explicit table before doing anything, because it makes the sum-to-one check free. And when the options are numbers, remember that a probability outside the zero-to-one range is an immediate elimination, which at 1.8 minutes a question is a real lever.",
     ],
@@ -527,22 +528,22 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
       {
         name: "Classical probability, addition theorem, and odds",
         description:
-          "Favourable over total, the addition rule for unions, and converting between probability and odds. 20 q at 10% HARD — the cheapest block in the chapter and the place to start.",
+          "Favourable over total, the addition rule for unions, and converting between probability and odds. 32 q at 13% HARD — the cheapest block in the chapter and the place to start.",
       },
       {
         name: "Discrete random variables, PMF and CDF",
         description:
-          "Read or construct a probability mass function, enforce that it sums to 1, and move between the mass function and the cumulative function. 30 q at 17% HARD.",
+          "Read or construct a probability mass function, enforce that it sums to 1, and move between the mass function and the cumulative function. 44 q at 14% HARD.",
       },
       {
         name: "Expectation, variance, and standard deviation",
         description:
-          "Expectation as the probability-weighted sum, variance as the mean of squares minus the square of the mean, and the standard deviation as its root. 33 q at 21% HARD — the largest block, and almost entirely mechanical once the table is written.",
+          "Expectation as the probability-weighted sum, variance as the mean of squares minus the square of the mean, and the standard deviation as its root. 46 q at 17% HARD — the largest block, and almost entirely mechanical once the table is written.",
       },
       {
         name: "Conditional probability, independence, and Bayes' theorem",
         description:
-          "Conditioning restricts the sample space; independence means the conditioning changes nothing; Bayes reverses the direction of the conditioning. 24 q at 33% HARD, the only demanding block here.",
+          "Conditioning restricts the sample space; independence means the conditioning changes nothing; Bayes reverses the direction of the conditioning. 37 q at 27% HARD, the only demanding block here.",
       },
     ],
     traps: [
@@ -576,41 +577,41 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "Statements, connectives and quantifiers — or a switch circuit diagram, which is the same thing drawn differently.",
     story: [
-      "84 q at 1.96 per paper and 29% HARD. This is the one chapter in MHT-CET Maths with its own execution mode: around 70% of its stems ask which of the four statements is true, against roughly 0% everywhere else in the subject. Every other chapter hands you a problem to solve; this one hands you four claims to adjudicate. That difference is worth more than any formula on this page, because it changes what you do when you read the question.",
-      "The 31% HARD figure overstates the cost, and it is worth understanding why. The difficulty here is front-loaded into TWO techniques that answer between them almost every question in the chapter: build the truth table, and simplify with the algebra of statements. The table always terminates but is slow; the algebra is fast but needs the ten laws at your fingertips. Learn the table first and the algebra second — and note that the fast route is the one the harder subtopics assume. Once both are automatic, a HARD logic question and a MODERATE one take about the same amount of time. Compare that with Indefinite Integration, where every new integrand is a fresh recognition problem.",
-      "Switching Circuits is the chapter's smallest subtopic and by a wide margin its hardest — 10 q at 60% HARD, against 14% for Negation — and it intimidates students who have not been told the translation. It is two rules: switches in series are AND, switches in parallel are OR. After that a circuit is a logical expression and the same truth table answers it, which is why a subtopic that looks like the chapter's wall is actually its cheapest block of marks per hour spent.",
+      "151 q at 2.38 per paper and 23% HARD, the heaviest Quick-Win on recent papers. This is the one chapter in MHT-CET Maths with its own execution mode: 56% of its stems turn on a statement being true, false, a tautology or equivalent, against under 1% of stems everywhere else in the subject. Every other chapter hands you a problem to solve; this one hands you four claims to adjudicate. That difference is worth more than any formula on this page, because it changes what you do when you read the question.",
+      "The 23% HARD figure overstates the cost, and it is worth understanding why. The difficulty here is front-loaded into TWO techniques that answer between them almost every question in the chapter: build the truth table, and simplify with the algebra of statements. The table always terminates but is slow; the algebra is fast but needs the ten laws at your fingertips. Learn the table first and the algebra second — and note that the fast route is the one the harder subtopics assume. Once both are automatic, a HARD logic question and a MODERATE one take about the same amount of time. Compare that with Indefinite Integration, where every new integrand is a fresh recognition problem.",
+      "Switching Circuits is the chapter's smallest subtopic and by a wide margin its hardest — 17 q at 53% HARD, against 10% for Negation — and it intimidates students who have not been told the translation. It is two rules: switches in series are AND, switches in parallel are OR. After that a circuit is a logical expression and the same truth table answers it, which is why a subtopic that looks like the chapter's wall is actually its cheapest block of marks per hour spent.",
       "The tactic follows from the execution mode. With four claims and no negative marking, building the truth table and evaluating all four options is a complete method that always terminates — and a partially built table plus elimination still beats leaving the question blank, because a blank and a wrong answer cost the same nothing.",
     ],
     subSkills: [
       {
         name: "Statements, connectives and truth tables",
         description:
-          "Construct the table for any compound statement and read the truth value off it. 12 q at 33% HARD, and the technique that every other skill in this chapter runs on. Learn it first and learn it properly.",
+          "Construct the table for any compound statement and read the truth value off it. 20 q at 20% HARD, and the technique that every other skill in this chapter runs on. Learn it first and learn it properly.",
       },
       {
         name: "Finding truth values of component statements",
         description:
-          "The chapter's signature move, run backwards: you are told the pattern is FALSE and asked for p, q and r. 15 q at 20% HARD. A conditional is false in exactly one row, which forces the values rather than leaving you to search.",
+          "The chapter's signature move, run backwards: you are told the pattern is FALSE and asked for p, q and r. 31 q at 16% HARD. A conditional is false in exactly one row, which forces the values rather than leaving you to search.",
       },
       {
         name: "Negation of statements and quantifiers",
         description:
-          "Negate compound statements, conditionals, biconditionals and quantified statements. 14 q at 14% HARD — the cheapest block in the chapter, which is precisely why a mechanical slip here is so expensive.",
+          "Negate compound statements, conditionals, biconditionals and quantified statements. 21 q at 10% HARD — the cheapest block in the chapter, which is precisely why a mechanical slip here is so expensive.",
       },
       {
         name: "Converse, inverse, and contrapositive",
         description:
-          "Given a conditional, write its three relatives and know that only the contrapositive is logically equivalent to it. 17 q at 24% HARD — the chapter's largest block and pure pattern work.",
+          "Given a conditional, write its three relatives and know that only the contrapositive is logically equivalent to it. 28 q at 21% HARD, and pure pattern work.",
       },
       {
         name: "Logical equivalence and algebra of statements",
         description:
-          "Test two expressions for equivalence, simplify with the distributive and absorption laws, and classify a pattern as a tautology, contradiction or contingency from its final column. 16 q at 31% HARD.",
+          "Test two expressions for equivalence, simplify with the distributive and absorption laws, and classify a pattern as a tautology, contradiction or contingency from its final column. 34 q at 26% HARD, the chapter's largest block.",
       },
       {
         name: "Switching circuits",
         description:
-          "Translate a circuit into a logical expression — series is AND, parallel is OR — then simplify or test it exactly as you would any other statement. 10 q at 60% HARD, the densest HARD block here, and much cheaper than it looks once the translation is automatic.",
+          "Translate a circuit into a logical expression — series is AND, parallel is OR — then simplify or test it exactly as you would any other statement. 17 q at 53% HARD, the densest HARD block here, and much cheaper than it looks once the translation is automatic.",
       },
     ],
     traps: [
@@ -644,31 +645,31 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A fixed number of independent trials with two outcomes and a constant success probability — coins, defective items, targets hit, questions guessed.",
     story: [
-      "57 q at 1.29 per paper and 22% HARD. A small, closed chapter with four subtopics and genuinely no surprises: the whole thing is one probability model and the four questions you can ask about it. That combination — low volume but low variance in what is asked — makes it one of the most reliable banks of marks on the paper.",
-      "Mean, Variance and Standard Deviation of a Binomial Variable is 14 q at 14% HARD and is pure formula recall: the mean is the number of trials times the success probability, and the variance multiplies that by the failure probability. The Binomial Setting and Probability Mass Function is 10 q at 10% HARD. That is 25 questions of near-free content in a 60-question chapter.",
-      "The two remaining blocks are Computing Binomial Probabilities (19 q, 26% HARD) and Parameter Estimation and the Probability Ratio (14 q, 29%). The second is the one students meet least often in school: you are given the mean and the variance, or a ratio of two consecutive probabilities, and asked to recover the number of trials and the success probability. It is short algebra once you have seen it, and worth an explicit drill.",
+      "86 q at 1.10 per paper and 16% HARD. A small, closed chapter with four subtopics and genuinely no surprises: the whole thing is one probability model and the four questions you can ask about it. That combination — low volume but low variance in what is asked — makes it one of the most reliable banks of marks on the paper.",
+      "Mean, Variance and Standard Deviation of a Binomial Variable is 17 q at 12% HARD and is pure formula recall: the mean is the number of trials times the success probability, and the variance multiplies that by the failure probability. The Binomial Setting and Probability Mass Function is 11 q at 9% HARD. That is 28 questions of near-free content in an 86-question chapter.",
+      "The two remaining blocks are Computing Binomial Probabilities (38 q, 16% HARD) and Parameter Estimation and the Probability Ratio (20 q, 25%). The second is the one students meet least often in school: you are given the mean and the variance, or a ratio of two consecutive probabilities, and asked to recover the number of trials and the success probability. It is short algebra once you have seen it, and worth an explicit drill.",
       "Before any of that, check that the setting is actually binomial. Fixed number of trials, exactly two outcomes, independence between trials, and a success probability that does not change. Sampling without replacement fails the last two and the chapter's formulas do not apply.",
     ],
     subSkills: [
       {
         name: "The binomial setting and probability mass function",
         description:
-          "Verify the four conditions, then write the mass function with its combinatorial coefficient. 10 q at 10% HARD — the cheapest block and the gate for everything else.",
+          "Verify the four conditions, then write the mass function with its combinatorial coefficient. 11 q at 9% HARD — the cheapest block and the gate for everything else.",
       },
       {
         name: "Mean, variance, and standard deviation of a binomial variable",
         description:
-          "Mean is trials times success probability; variance multiplies by the failure probability; standard deviation is its root. 14 q at 14% HARD and pure recall — bank it in one sitting.",
+          "Mean is trials times success probability; variance multiplies by the failure probability; standard deviation is its root. 17 q at 12% HARD and pure recall — bank it in one sitting.",
       },
       {
         name: "Computing binomial probabilities",
         description:
-          "Exactly-k, at-least-k and at-most-k probabilities, using the complement whenever the direct sum is longer. 19 q at 26% HARD, the largest block in the chapter.",
+          "Exactly-k, at-least-k and at-most-k probabilities, using the complement whenever the direct sum is longer. 38 q at 16% HARD, the largest block in the chapter.",
       },
       {
         name: "Parameter estimation and the probability ratio",
         description:
-          "Recover the number of trials and the success probability from the mean and variance, or from the ratio of two consecutive terms. 14 q at 29% HARD, and short algebra once the setup is familiar.",
+          "Recover the number of trials and the success probability from the mean and variance, or from the ratio of two consecutive terms. 20 q at 25% HARD, and short algebra once the setup is familiar.",
       },
     ],
     traps: [
@@ -702,31 +703,31 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A set of linear inequalities plus something to maximise or minimise — or a feasible region to identify, classify, or read corners from.",
     story: [
-      "43 q at 1.00 per paper and 4% HARD. This is the lowest-HARD chapter in the subject by a wide margin: three of its four notes pages (/notes/mht-cet-maths/linear-programming) have NEVER produced a HARD question across the whole 44-shift bank, and the corner-point page alone is 16 q at 0%. Two marks that should take under a minute. Do this one first, every time you sit a paper.",
+      "69 q at 1.00 per paper and 3% HARD. This is the lowest-HARD chapter in the subject by a wide margin: three of its four notes pages (/notes/mht-cet-maths/linear-programming) have NEVER produced a HARD question across the whole 68-shift bank, and the corner-point page alone is 28 q at 0%. Two marks that should take under a minute. Do this one first, every time you sit a paper.",
       "The method does not vary. Translate the sentence into inequalities, plot the constraints, identify the feasible region, list its corner points, and evaluate the objective at each corner. The optimum of a linear objective over a convex polygon always sits at a corner, so there is nothing to search — you are comparing at most four or five numbers.",
-      "Reading constraints off a shaded region is 9 q at 22% HARD and carries the whole difficulty of the chapter — both HARD questions are figure stems with four or five boundary lines. They are answered by testing one point inside the shading against one line at a time, and by computing the sign at that point rather than trusting above/below when a coefficient is negative. Five minutes of deliberate practice, and the chapter is finished.",
+      "Reading constraints off a shaded region is 11 q at 18% HARD and carries the whole difficulty of the chapter — both HARD questions are figure stems with four or five boundary lines. They are answered by testing one point inside the shading against one line at a time, and by computing the sign at that point rather than trusting above/below when a coefficient is negative. Five minutes of deliberate practice, and the chapter is finished.",
       "Because the answers are numbers produced by arithmetic at corner points, this is a chapter where checking beats guessing even under time pressure — and with no negative marking there is never a reason to leave one of these blank. One 2024 figure stem carries an official key its own working contradicts (19.8 marked where the corner gives 19.5); the bank keeps the official letter with a note.",
     ],
     subSkills: [
       {
         name: "Feasible Region — Half-Plane Tests, Bounded, Unbounded and Empty",
         description:
-          "Draw each boundary from its intercepts, choose the side with a test point (never the origin on a line through it), intersect, and classify: bounded, unbounded, or empty — the empty case is proved by adding inequalities. 13 q at 0% HARD.",
+          "Draw each boundary from its intercepts, choose the side with a test point (never the origin on a line through it), intersect, and classify: bounded, unbounded, or empty — the empty case is proved by adding inequalities. 16 q at 0% HARD.",
       },
       {
         name: "Reading Constraints Off a Shaded Region",
         description:
-          "Write each boundary as x/a + y/b = 1 from its intercepts, then fix >= or <= with one interior point per line; eliminate options a line at a time. 9 q at 22% HARD — the only difficulty in the chapter.",
+          "Write each boundary as x/a + y/b = 1 from its intercepts, then fix >= or <= with one interior point per line; eliminate options a line at a time. 11 q at 18% HARD — the only difficulty in the chapter.",
       },
       {
         name: "Corner-Point Method — Maximum and Minimum of the Objective Function",
         description:
-          "Find the corners as intersections of constraint boundaries (solve the pair when neither is on an axis), evaluate the objective at each, and take the best. 14 q at 0% HARD — no question on this page has ever been rated HARD.",
+          "Find the corners as intersections of constraint boundaries (solve the pair when neither is on an axis), evaluate the objective at each, and take the best. 28 q at 0% HARD — no question on this page has ever been rated HARD.",
       },
       {
         name: "Formulation and Special Cases — Word Problems and Infinitely Many Optima",
         description:
-          "Turn at most, at least, and not more than into the correct inequality direction in one unit, keep x, y >= 0, and recognise the tie: an objective parallel to an edge gives infinitely many optimal points. 7 q at 0% HARD.",
+          "Turn at most, at least, and not more than into the correct inequality direction in one unit, keep x, y >= 0, and recognise the tie: an objective parallel to an edge gives infinitely many optimal points. 14 q at 0% HARD.",
       },
     ],
     traps: [
@@ -755,31 +756,31 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A line in the plane: a point dividing a segment, a distance from a point, three lines tested for concurrency, an angle between two lines, or a bisector.",
     story: [
-      "43 q at 0.96 per paper and 20% HARD. Four notes pages (/notes/mht-cet-maths/straight-line), all routine coordinate geometry, and the reason this sits in the Quick-Win strand rather than the long tail is not its size — it is that it shares its whole toolkit with Line and Plane, a cornerstone worth 4.96 questions a paper. Section formula, foot of perpendicular, distance from a point, angle between two objects: every one of these is the 2-D version of a move you already have to own.",
-      "Slope, Angle Between Lines and Rotation is 15 q at 33% HARD and holds every HARD question in the chapter: lines through a point at a given angle, a rotation about a point, the bisector at a vertex, a reflected slope — all the angle formula solved for the unknown slope. Forms, Intersections and Concurrency (13 q, 15%), Distance (9 q, 11%) and the Section Formula page (6 q, 0%) are cheap.",
-      "One idea in here pays well beyond this chapter. Concurrency of three lines is a vanishing 3x3 determinant, and the survey found that same determinant working as a universal degeneracy test across five or six chapters — as collinearity of three points, as coplanarity of lines in three dimensions, and as scalar triple product zero in Vectors. Learn the test once and recognise its four costumes.",
-      "The same is true of the angle condition. The survey counted the angle-between-two-objects idea across 87 q in 7 chapters and perpendicularity across 83 q in 7. Here it is the slope-product condition; in Vectors it is a dot product; in Pair of Straight Lines it is a coefficient sum. One idea, four dialects.",
+      "75 q at 1.13 per paper and 15% HARD. Four notes pages (/notes/mht-cet-maths/straight-line), all routine coordinate geometry, and the reason this sits in the Quick-Win strand rather than the long tail is not its size — it is that it shares its whole toolkit with Line and Plane, a cornerstone worth 4.69 questions a paper. Section formula, foot of perpendicular, distance from a point, angle between two objects: every one of these is the 2-D version of a move you already have to own.",
+      "Slope, Angle Between Lines and Rotation is 19 q at 26% HARD and holds five of the chapter's 11 HARD questions: lines through a point at a given angle, a rotation about a point, the bisector at a vertex, a reflected slope — all the angle formula solved for the unknown slope. Forms, Intersections and Concurrency (30 q, 13%), Distance (15 q, 7%) and the Section Formula page (11 q, 9%) are cheap.",
+      "One idea in here pays well beyond this chapter. Concurrency of three lines is a vanishing 3x3 determinant, and that same determinant works as a universal degeneracy test across six chapters — as collinearity of three points, as coplanarity of lines in three dimensions, and as scalar triple product zero in Vectors. Learn the test once and recognise its four costumes.",
+      "The same is true of the angle condition. The bank's stems name the angle between two objects 127 times across 8 chapters and perpendicularity 147 times across 8. Here it is the slope-product condition; in Vectors it is a dot product; in Pair of Straight Lines it is a coefficient sum. One idea, four dialects.",
     ],
     subSkills: [
       {
         name: "Slope, Angle Between Lines and Rotation",
         description:
-          "Slope from two points or from ax + by + c = 0, parallel and perpendicular conditions, tan θ = |(m1 − m2)/(1 + m1m2)|, the two lines through a point at a given angle, rotation about a point, and the bisector at a vertex. 15 q at 33% HARD — the whole difficulty of the chapter.",
+          "Slope from two points or from ax + by + c = 0, parallel and perpendicular conditions, tan θ = |(m1 − m2)/(1 + m1m2)|, the two lines through a point at a given angle, rotation about a point, and the bisector at a vertex. 19 q at 26% HARD — most of the difficulty in the chapter.",
       },
       {
         name: "Forms of a Line, Intersections and Concurrency",
         description:
-          "Intercept form with the triangle-area and 1/a² + 1/b² = 1/p² stems, normal form, point-slope for medians and parallels, the intersection point and a line through it, and the concurrency determinant. 13 q at 15% HARD.",
+          "Intercept form with the triangle-area and 1/a² + 1/b² = 1/p² stems, normal form, point-slope for medians and parallels, the intersection point and a line through it, and the concurrency determinant. 30 q at 13% HARD.",
       },
       {
         name: "Section Formula, Midpoints and Rectangles",
         description:
-          "Internal and external division, the ratio in which the origin divides a segment between parallel lines, rectangle centres and missing vertices, and the circumcentre. 6 q at 0% HARD.",
+          "Internal and external division, the ratio in which the origin divides a segment between parallel lines, rectangle centres and missing vertices, and the circumcentre. 11 q at 9% HARD.",
       },
       {
         name: "Distance — From a Point, Between Parallels, Along a Direction and the Foot of the Perpendicular",
         description:
-          "|ax0 + by0 + c|/√(a² + b²), the gap between parallels and the square it bounds, the foot of the perpendicular, and distance measured along a direction. 9 q at 11% HARD — directly transferable to Line and Plane.",
+          "|ax0 + by0 + c|/√(a² + b²), the gap between parallels and the square it bounds, the foot of the perpendicular, and distance measured along a direction. 15 q at 7% HARD — directly transferable to Line and Plane.",
       },
     ],
     traps: [

@@ -89,8 +89,8 @@ export default function MhtCetPhysicsOpenGraphImage() {
               lineHeight: 1.4,
             }}
           >
-            A 2,098-question analysis of 42 papers from 2021 to 2025 — no
-            negative marking, a clock shared with Chemistry, 21 chapter playbooks.
+            A 3,390-question analysis of 68 papers from 2021 to 2026: no
+            negative marking, a clock shared with Chemistry, 22 chapter playbooks.
           </div>
         </div>
 
