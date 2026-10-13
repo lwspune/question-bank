@@ -39,6 +39,12 @@ const SCRATCH_SUFFIXES = [
   // it, hence the doubled suffix. Distinct from `<sec>fig.json` fragments (e.g.
   // logic-12.miscfig.json), which ARE question fragments and must keep merging.
   ".imgfig.json",
+  // Biology (2026-10-13; figtext since Geography): the transcription brief's
+  // figure-need and figure-label files and the answer brief's drawing-task
+  // manifest. Before this a bare re-merge threw on every chapter carrying one.
+  ".figneed.json",
+  ".figtext.json",
+  ".diagram-answers.json",
 ];
 
 function isScratch(f: string): boolean {

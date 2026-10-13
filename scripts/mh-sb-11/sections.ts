@@ -24,6 +24,155 @@ import { join } from "node:path";
 import type { SectionSpec } from "./lib";
 
 export const SECTIONS: Record<string, SectionSpec[]> = {
+  // ── BIOLOGY, Std XI (Balbharati), all chapters ──────────────────────────
+  // The lane takes EXERCISES ONLY (owner, 2026-10-13), so each chapter is one
+  // group, "Exercise", with one block per printed question in book order. The
+  // label is the heading the book prints over that question ("Multiple choice
+  // questions", "Long answer questions"); a question printed with no heading of
+  // its own is labelled from its first words. Generated from the transcription,
+  // which read the headings off the page. A set question is matched by "Ex QN("
+  // and a flat one by "Ex QN"; longest prefix wins, so "Ex Q1" never takes
+  // "Ex Q10(...)".
+  "animal-tissue-11-bio": [
+    { group: "Exercise", label: "Q1. Choose correct option", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Answer the following quetions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Complete the following table", kind: "exercise", refPrefixes: ["Ex Q4"] },
+    { group: "Exercise", label: "Q5. Match the following and rewrite", kind: "exercise", refPrefixes: ["Ex Q5"] },
+  ],
+  "biomolecules-11-bio": [
+    { group: "Exercise", label: "Q1. Choose correct option", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Solve the following questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Solve the following questions", kind: "exercise", refPrefixes: ["Ex Q4("] },
+    { group: "Exercise", label: "Q5. Long answer questions", kind: "exercise", refPrefixes: ["Ex Q5("] },
+    { group: "Exercise", label: "Q6. If double stranded DNA has 14% C (cytosine) what is...", kind: "exercise", refPrefixes: ["Ex Q6"] },
+    { group: "Exercise", label: "Q7. Name", kind: "exercise", refPrefixes: ["Ex Q7("] },
+  ],
+  "cell-division-11-bio": [
+    { group: "Exercise", label: "Q1. Choose correct option", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Draw labelled digrams and write explanation -", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Match the following column-A with column-B and rewrite", kind: "exercise", refPrefixes: ["Ex Q4"] },
+    { group: "Exercise", label: "Q5. Is a given figure correct?", kind: "exercise", refPrefixes: ["Ex Q5"] },
+    { group: "Exercise", label: "Q6. If an onion has 16 chromosomes in its leaf cell, how...", kind: "exercise", refPrefixes: ["Ex Q6"] },
+    { group: "Exercise", label: "Q7. Identify the following phases of mitosis and label the...", kind: "exercise", refPrefixes: ["Ex Q7("] },
+  ],
+  "cell-structure-11-bio": [
+    { group: "Exercise", label: "Q1. Choose correct option", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Label the diagrams and write down the details of concept...", kind: "exercise", refPrefixes: ["Ex Q4("] },
+    { group: "Exercise", label: "Q5. Complete the flow chart", kind: "exercise", refPrefixes: ["Ex Q5"] },
+    { group: "Exercise", label: "Q6. Label the A, B, C, and D in above diagram and write the...", kind: "exercise", refPrefixes: ["Ex Q6"] },
+    { group: "Exercise", label: "Q7. Identify each cell structure or organelle from it's...", kind: "exercise", refPrefixes: ["Ex Q7("] },
+    { group: "Exercise", label: "Q8. Onion cells have no chloroplast", kind: "exercise", refPrefixes: ["Ex Q8"] },
+  ],
+  "cockroach-11-bio": [
+    { group: "Exercise", label: "Q1. Choose correct option", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Explain the following in short", kind: "exercise", refPrefixes: ["Ex Q4("] },
+  ],
+  "excretion-11-bio": [
+    { group: "Exercise", label: "Q1. Choose correct option", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Write the explanation in your word", kind: "exercise", refPrefixes: ["Ex Q4("] },
+    { group: "Exercise", label: "Q5. Complete the diagram / chart with correct labels /...", kind: "exercise", refPrefixes: ["Ex Q5("] },
+    { group: "Exercise", label: "Q6. Prove that mammalian urine contains urea", kind: "exercise", refPrefixes: ["Ex Q6"] },
+  ],
+  "human-nutrition-11-bio": [
+    { group: "Exercise", label: "Q1. Choose correct option", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Write down the explanation", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Write short note on", kind: "exercise", refPrefixes: ["Ex Q4("] },
+    { group: "Exercise", label: "Q5. Observe the diagram", kind: "exercise", refPrefixes: ["Ex Q5"] },
+    { group: "Exercise", label: "Q6. Find out pH maxima for salivary amylase, trypsin...", kind: "exercise", refPrefixes: ["Ex Q6"] },
+    { group: "Exercise", label: "Q7. Write the name of a protein deficiency disorder and...", kind: "exercise", refPrefixes: ["Ex Q7"] },
+    { group: "Exercise", label: "Q8. Observe the diagram given below label the A, B, C, D, E...", kind: "exercise", refPrefixes: ["Ex Q8"] },
+  ],
+  "kingdom-animalia-11-bio": [
+    { group: "Exercise", label: "Q1. Choose correct option", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Draw neat labelled diagram", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Match the following", kind: "exercise", refPrefixes: ["Ex Q4"] },
+    { group: "Exercise", label: "Q5. Identify the animals given in pictures and write...", kind: "exercise", refPrefixes: ["Ex Q5("] },
+    { group: "Exercise", label: "Q6. Observe and identify body symmetry of given animals", kind: "exercise", refPrefixes: ["Ex Q6"] },
+  ],
+  "kingdom-plantae-11-bio": [
+    { group: "Exercise", label: "Q1. Choose correct option", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. How you place the pea, jawar and fern at its proper...", kind: "exercise", refPrefixes: ["Ex Q2"] },
+    { group: "Exercise", label: "Q3. Complete the following table", kind: "exercise", refPrefixes: ["Ex Q3"] },
+    { group: "Exercise", label: "Q4. Differentiate between Dicotyledonae and Monocotyledonae...", kind: "exercise", refPrefixes: ["Ex Q4("] },
+    { group: "Exercise", label: "Q5. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q5("] },
+    { group: "Exercise", label: "Q6. Girth of a Maize plant does not increase over a period...", kind: "exercise", refPrefixes: ["Ex Q6"] },
+    { group: "Exercise", label: "Q7. Radha observed a plant in rainy season on the compound...", kind: "exercise", refPrefixes: ["Ex Q7"] },
+    { group: "Exercise", label: "Q8. Draw neat labelled diagrams", kind: "exercise", refPrefixes: ["Ex Q8("] },
+    { group: "Exercise", label: "Q9. Identify the plant groups on the basis of following features", kind: "exercise", refPrefixes: ["Ex Q9("] },
+    { group: "Exercise", label: "Q10. Observe the following diagram", kind: "exercise", refPrefixes: ["Ex Q10"] },
+  ],
+  "living-world-11-bio": [
+    { group: "Exercise", label: "Q1. Choose correct option", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Distinguish between botanical gardens, zoological park...", kind: "exercise", refPrefixes: ["Ex Q2"] },
+    { group: "Exercise", label: "Q3. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Write short notes on", kind: "exercise", refPrefixes: ["Ex Q4("] },
+    { group: "Exercise", label: "Q5. How can you, as an individual, prevent the loss of...", kind: "exercise", refPrefixes: ["Ex Q5"] },
+  ],
+  "morphology-11-bio": [
+    { group: "Exercise", label: "Q1. Choose correct option", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Write notes on", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Identify the following figures and write down the types...", kind: "exercise", refPrefixes: ["Ex Q4"] },
+    { group: "Exercise", label: "Q5. Students were on the excursion to a botanical garden...", kind: "exercise", refPrefixes: ["Ex Q5("] },
+    { group: "Exercise", label: "Q6. Match the following", kind: "exercise", refPrefixes: ["Ex Q6"] },
+    { group: "Exercise", label: "Q7. Observe the following figures and label the different parts", kind: "exercise", refPrefixes: ["Ex Q7"] },
+    { group: "Exercise", label: "Q8. Differentiate with diagramatic representation", kind: "exercise", refPrefixes: ["Ex Q8("] },
+  ],
+  "photosynthesis-11-bio": [
+    { group: "Exercise", label: "Q1. Choose correct option", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Correct the pathway and name it", kind: "exercise", refPrefixes: ["Ex Q3"] },
+    { group: "Exercise", label: "Q4. Is there something wrong in following schematic...", kind: "exercise", refPrefixes: ["Ex Q4"] },
+  ],
+  "plant-tissues-11-bio": [
+    { group: "Exercise", label: "Q1. Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Write short notes on the following points", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Differentiate", kind: "exercise", refPrefixes: ["Ex Q4("] },
+    { group: "Exercise", label: "Q5. Draw neat labelled diagrams", kind: "exercise", refPrefixes: ["Ex Q5("] },
+    { group: "Exercise", label: "Q6. Write the information related parts in the diagrams...", kind: "exercise", refPrefixes: ["Ex Q6"] },
+    { group: "Exercise", label: "Q7. Identify the following diagrams, label it and prepare a...", kind: "exercise", refPrefixes: ["Ex Q7("] },
+    { group: "Exercise", label: "Q8. Distinguish between Dicot and Monocot leaf on the basis...", kind: "exercise", refPrefixes: ["Ex Q8"] },
+  ],
+  "respiration-11-bio": [
+    { group: "Exercise", label: "Q1. Choose correct option", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Fill in the blanks with suitable words", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Compare", kind: "exercise", refPrefixes: ["Ex Q4("] },
+    { group: "Exercise", label: "Q5. Differentiate between", kind: "exercise", refPrefixes: ["Ex Q5("] },
+    { group: "Exercise", label: "Q6. Identify the cycle given below", kind: "exercise", refPrefixes: ["Ex Q6"] },
+  ],
+  "skeleton-movement-11-bio": [
+    { group: "Exercise", label: "Q1. Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Answer the following questions in detail", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Write short notes on following points", kind: "exercise", refPrefixes: ["Ex Q4("] },
+    { group: "Exercise", label: "Q5. Draw labelled diagrams", kind: "exercise", refPrefixes: ["Ex Q5("] },
+  ],
+  "systematics-11-bio": [
+    { group: "Exercise", label: "Q1. Choose correct option", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Answer the following", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Write short notes", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Complete tree diagram in detail", kind: "exercise", refPrefixes: ["Ex Q4"] },
+    { group: "Exercise", label: "Q5. Draw neat labelled diagrams", kind: "exercise", refPrefixes: ["Ex Q5("] },
+    { group: "Exercise", label: "Q6. Complete chart and explain in your words", kind: "exercise", refPrefixes: ["Ex Q6"] },
+    { group: "Exercise", label: "Q7. Identify the following diagrams, label them and write...", kind: "exercise", refPrefixes: ["Ex Q7("] },
+    { group: "Exercise", label: "Q8. The scientific name of sunflower is given below", kind: "exercise", refPrefixes: ["Ex Q8"] },
+    { group: "Exercise", label: "Q9. Match the following", kind: "exercise", refPrefixes: ["Ex Q9"] },
+    { group: "Exercise", label: "Q10. Complete the following", kind: "exercise", refPrefixes: ["Ex Q10("] },
+  ],
+
   // ── Ch.3 Trigonometry - II (Part 1) — verified against Ch_03_Trigonometry_02.pdf
   //    (24pp, 40 `Solution :` markers — the densest chapter of this book so far).
   //    ONE terminal Miscellaneous block, split (I) MCQ / (II) "Prove the following".

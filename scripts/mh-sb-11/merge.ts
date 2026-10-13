@@ -45,7 +45,7 @@ function main() {
       // bare re-merge threw for every chapter carrying one — the shape guard
       // failing CLOSED, which is correct, but it made re-merge impossible.
       // Reported independently by two ingest agents.
-      /\.(solutions|errata|topaper|mcq-blind|mcq-verify|review|xcheck|diagram-specs|solution-images|book-answers|solved-fixes|sections|fig)\.json$/;
+      /\.(solutions|errata|topaper|mcq-blind|mcq-verify|review|xcheck|diagram-specs|solution-images|book-answers|solved-fixes|sections|fig|figneed|figtext|diagram-answers)\.json$/;
     files = readdirSync(DATA)
       .filter((f) => f.startsWith(`${id}.`) && f.endsWith(".json") && f !== outName && !SCRATCH.test(f))
       .sort();
