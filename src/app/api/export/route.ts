@@ -5,6 +5,7 @@ import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { chooseFormat, resolveExportAccess, DOWNLOAD_PASS_SCOPE, type ExportKind } from "@/lib/export/access";
 import { userHasAccess } from "@/lib/entitlements/query";
 import { recordExportEvent } from "@/lib/export/log";
+import { exportTaxonomy } from "@/lib/export/exportTaxonomy";
 import { readPaywallSettings } from "@/lib/billing/admin";
 import type { BrandingParts } from "@/lib/export/branding";
 import { claimFreeDownload, isPaperFree } from "@/lib/export/freeDownload";
@@ -538,6 +539,7 @@ export async function POST(request: NextRequest) {
         kind,
         questionCount: questions.length,
         mode: isCartMode ? "cart" : "filters",
+        ...exportTaxonomy(questions),
         isStaff,
       });
       return new NextResponse(xlsxBuf as unknown as ArrayBuffer, {
@@ -567,6 +569,7 @@ export async function POST(request: NextRequest) {
         kind,
         questionCount: questions.length,
         mode: isCartMode ? "cart" : "filters",
+        ...exportTaxonomy(questions),
         isStaff,
       });
       return new NextResponse(pptxBuf as unknown as ArrayBuffer, {
@@ -719,6 +722,7 @@ export async function POST(request: NextRequest) {
       homeworkDay: homework?.day,
       chapterId: topChapterId,
       boardPaperId,
+      ...exportTaxonomy(questions),
       isStaff,
     });
     return new NextResponse(fileBuf as unknown as ArrayBuffer, {

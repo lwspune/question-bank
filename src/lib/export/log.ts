@@ -48,6 +48,9 @@ export type ExportEvent = {
   boardPaperId?: string;
   /** "<subjectRoute>/<chapterSlug>", on a 'formula' export only. Editorial content, so naming it is safe. */
   formulaSheet?: string;
+  /** The one exam and subject exported, null when mixed (migration 0155). Taxonomy, so naming them is safe. */
+  examId?: string | null;
+  subjectId?: string | null;
   isStaff: boolean;
 };
 
@@ -67,6 +70,7 @@ export async function recordExportEvent(ev: ExportEvent): Promise<void> {
       ...(ev.boardPaperId ? { board_paper_id: ev.boardPaperId } : {}),
       ...(ev.formulaSheet ? { formula_sheet: ev.formulaSheet } : {}),
       ...(ev.chapterId ? { chapter_id: ev.chapterId } : {}),
+      ...(ev.examId ? { exam_id: ev.examId, subject_id: ev.subjectId ?? null } : {}),
       is_staff: ev.isStaff,
     });
     if (error) console.error("recordExportEvent", error.message);
