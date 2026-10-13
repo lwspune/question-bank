@@ -274,8 +274,8 @@ export async function getPlanChapterTop(
 
 /**
  * A chapter's top PYQs from its subject's published plan, for the /board
- * chapter page. Null when the subject has no published plan (MH SSC 10, CBSE
- * Biology, HSC Geography today). Each subject has one plan; were there two, the
+ * chapter page. Null when the subject has no published plan (CBSE
+ * Biology and HSC Biology today). Each subject has one plan; were there two, the
  * first by slug is read, so the page is stable.
  */
 export async function getSubjectChapterTop(
