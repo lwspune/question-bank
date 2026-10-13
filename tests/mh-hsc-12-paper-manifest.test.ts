@@ -12,28 +12,29 @@ import { EXPECTED_REFS, normaliseRef, grammarFor } from "../scripts/mh-hsc-12-py
 const ALL = Object.values(PAPERS);
 const MATHS = papersFor("Mathematics");
 const PHYSICS = papersFor("Physics");
+const BIOLOGY = papersFor("Biology");
 
-describe("the manifest, across all three subjects", () => {
-  it("holds twenty papers with unique ids, source files and (subject, code) pairs", () => {
-    expect(ALL).toHaveLength(20);
-    expect(new Set(ALL.map((p) => p.id)).size).toBe(20);
+describe("the manifest, across all four subjects", () => {
+  it("holds twenty-five papers with unique ids, source files and (subject, code) pairs", () => {
+    expect(ALL).toHaveLength(25);
+    expect(new Set(ALL.map((p) => p.id)).size).toBe(25);
     // sourceFile is the dedup + rollback key — a collision would make one
     // sitting un-rollbackable without taking the other with it.
-    expect(new Set(ALL.map((p) => p.sourceFile)).size).toBe(20);
+    expect(new Set(ALL.map((p) => p.sourceFile)).size).toBe(25);
   });
 
   it("names a (subject, year, month) sitting at most once", () => {
     // Scoped by SUBJECT: Maths and Physics both sat in June 2026, and those are
     // two different papers, not a duplicate.
     const sittings = ALL.map((p) => `${p.subject}-${p.year}-${p.month}`);
-    expect(new Set(sittings).size).toBe(20);
+    expect(new Set(sittings).size).toBe(25);
   });
 
   it("keeps the printed code unique within a subject", () => {
     // The printed code is the INDEPENDENT check on (year, month): if two
     // sittings share a code, one of the covers was misread. The Feb-2023
     // reproduction has no code at all, so it is excluded rather than compared.
-    for (const group of [MATHS, PHYSICS]) {
+    for (const group of [MATHS, PHYSICS, BIOLOGY]) {
       const codes = group.map((p) => p.paperCode).filter((c) => c !== "n/a");
       expect(new Set(codes).size).toBe(codes.length);
     }
@@ -311,7 +312,13 @@ describe("figure manifest", () => {
     // out on the same belief until the 2026-10-10 reconcile pass found its image
     // shows ONE of the four drawn options (benzoic acid), so the verified crop
     // of all four replaces it.
+    // BIOLOGY (2026-10-13) adds labelled drawings and graphs on four of its five
+    // sittings; bio-feb-2026 prints none.
     expect(withFigures).toEqual([
+      "bio-jul-2024",
+      "bio-jul-2025",
+      "bio-jun-2026",
+      "bio-mar-2024",
       "chem-feb-2025",
       "chem-feb-2026",
       "chem-jul-2024",
