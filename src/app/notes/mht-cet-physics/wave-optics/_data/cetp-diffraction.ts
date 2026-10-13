@@ -6,7 +6,7 @@ export const DIFFRACTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Light through a single slit of width a spreads into a bright central band bounded by minima at a sin θ = ±λ, with fainter secondary maxima near a sin θ = (n + ½)λ; the same spreading limits how finely a microscope or an eye can resolve.",
   whyItMatters:
-    "34 PYQs, seven HARD. Three shapes: the minima and the width of the central maximum (and what happens when the slit or the wavelength changes), " +
+    "50 PYQs, nine HARD. Three shapes: the minima and the width of the central maximum (and what happens when the slit or the wavelength changes), " +
     "the secondary maxima — where they fall and when two wavelengths' maxima coincide — and the limit of resolution.",
   concepts: [
     {

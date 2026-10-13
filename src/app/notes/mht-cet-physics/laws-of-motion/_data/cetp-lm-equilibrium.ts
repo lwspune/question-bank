@@ -8,7 +8,7 @@ export const EQUILIBRIUM_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A body is in equilibrium when both the net force and the net torque on it are zero; the centre of mass of a set of particles is their mass-weighted average position, which for two particles lies on the line joining them, nearer the heavier.",
   whyItMatters:
-    "5 PYQs, one HARD: a metre scale balanced on a wedge, the reaction at one of two knife-edges, three weights held by strings over pulleys, and where the centre of mass of two particles lies and how it stays fixed. One card.",
+    "9 PYQs, one HARD. The first five are a metre scale balanced on a wedge, the reaction at one of two knife-edges, three weights held by strings over pulleys, and where the centre of mass of two particles lies and how it stays fixed. One card.",
   concepts: [
     {
       kind: "formula" as const,

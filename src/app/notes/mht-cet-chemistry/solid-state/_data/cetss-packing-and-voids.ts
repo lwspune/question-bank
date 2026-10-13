@@ -6,8 +6,8 @@ export const PACKING_AND_VOIDS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Packing efficiency is the fraction of the unit cell that the atoms actually fill — 52.4% simple cubic, 68% bcc, 74% fcc and hcp — and the rest is void; in close packing every atom brings one octahedral and two tetrahedral voids.",
   whyItMatters:
-    "27 PYQs, 4 of them HARD — the chapter's densest HARD cluster. Three question shapes: the occupied or void volume of a cell from its volume (multiply by 0.74, 0.68, 0.524 or their complements), the number of voids in a given number of moles (N and 2N), and the formula of a compound from which voids the cations fill. " +
-    "The HARD rows are the last shape and a lost-digit stem; the arithmetic is never hard.",
+    "49 PYQs, 6 of them HARD — the chapter's densest HARD cluster. Three question shapes: the occupied or void volume of a cell from its volume (multiply by 0.74, 0.68, 0.524 or their complements), the number of voids in a given number of moles (N and 2N), and the formula of a compound from which voids the cations fill. " +
+    "The HARD rows from 2021 to 2025 are the last shape and a lost-digit stem; the arithmetic is never hard.",
   concepts: [
     // 1 — packing efficiency values
     {

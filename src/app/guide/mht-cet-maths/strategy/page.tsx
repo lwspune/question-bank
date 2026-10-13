@@ -33,7 +33,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: { absolute: fitTitle("MHT-CET Maths Strategy — Order and Time, Never Attempt-vs-Skip") },
   description:
-    "MHT-CET Paper I is 50 Maths questions in 90 minutes with NO negative marking, so the strategic axis is order and time budget, never whether to attempt. Three strands — Cornerstone, Quick-Win, Long Tail — with a drill posture, must-drill subtopics and study hours per chapter, plus the five tail chapters and the 2025 syllabus move. Backed by 2,090 past-year questions across 42 shifts.",
+    "MHT-CET Paper I is 50 Maths questions in 90 minutes with NO negative marking, so the strategic axis is order and time budget, never whether to attempt. Three strands — Cornerstone, Quick-Win, Long Tail — with a drill posture, must-drill subtopics and study hours per chapter, plus the four tail chapters and the 2025 syllabus move that 2026 kept. Backed by 3,388 past-year questions across 68 shifts.",
   alternates: { canonical: "/guide/mht-cet-maths/strategy" },
 };
 
@@ -161,7 +161,7 @@ export default async function MhtCetMathsStrategy() {
         type="Article"
         path="/guide/mht-cet-maths/strategy"
         headline="MHT-CET Maths Strategy — Order and Time, Never Attempt-vs-Skip"
-        description="MHT-CET Paper I is 50 Maths questions in 90 minutes with no negative marking, so the strategic axis is order and time budget. Three strands with a drill posture, must-drill subtopics and study hours per chapter, plus the five tail chapters and the 2025 syllabus move."
+        description="MHT-CET Paper I is 50 Maths questions in 90 minutes with no negative marking, so the strategic axis is order and time budget. Three strands with a drill posture, must-drill subtopics and study hours per chapter, plus the four tail chapters and the 2025 syllabus move."
       />
       <GuideHero
         eyebrow="Strategy"
@@ -475,8 +475,8 @@ export default async function MhtCetMathsStrategy() {
           playbook — they are listed here so the {OVERVIEW.chapters}-chapter
           bank is accounted for rather than quietly truncated at{" "}
           {OVERVIEW.playbooks}. Read the status column first: the 2025 syllabus
-          moved in both directions, and it matters more than the question
-          counts suggest.
+          move, which 2026 kept, took one of them off the paper, and that
+          matters more than the question counts suggest.
         </p>
         <div className="mt-4 overflow-x-auto rounded-md border">
           <table className="w-full text-sm">
@@ -555,9 +555,10 @@ export default async function MhtCetMathsStrategy() {
             }
             % HARD it reads as guaranteed cheap marks and it appears in
             essentially every 2023-24 paper you will practise — then it scored
-            zero across all of 2025. Hours spent there buy nothing. Conic
-            Sections is its mirror image: it entered in 2025, and a student
-            prepping from 2023-24 papers has never seen it.
+            zero across all of 2025 and 2026. Hours spent there buy nothing.
+            Conic Sections is its mirror image: it entered in 2025, held at
+            about one a paper in 2026 and now ships a long-tail playbook, and a
+            student prepping from 2023-24 papers has never seen it.
           </span>
         </p>
       </section>

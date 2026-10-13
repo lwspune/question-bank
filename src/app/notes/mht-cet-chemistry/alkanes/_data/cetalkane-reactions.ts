@@ -8,7 +8,7 @@ export const REACTIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "In UV light a halogen substitutes an H on an alkane through free radicals; fluorine reacts most violently and iodine least, and bromine is so selective that it almost always replaces the H on the most substituted carbon.",
   whyItMatters:
-    "4 PYQs, all EASY: one reactivity order and three 'major product of bromination' questions. " +
+    "6 PYQs, all EASY; the first four are one reactivity order and three 'major product of bromination' questions. " +
     "One card.",
   concepts: [
     {

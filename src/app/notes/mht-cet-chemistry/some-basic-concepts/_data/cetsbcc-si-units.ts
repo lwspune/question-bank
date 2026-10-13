@@ -6,7 +6,7 @@ export const SI_UNITS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The measurement toolkit of chemistry: the seven SI base units and the derived units built from them, how a property behaves when you change the sample size (intensive vs extensive), and how an element's average atomic mass falls out of its isotopes' masses and abundances.",
   whyItMatters:
-    "Six PYQs here, all EASY and all pure recall or one-line computation — the reliable free marks of this chapter. " +
+    "Ten PYQs here, all EASY and all pure recall or one-line computation — the reliable free marks of this chapter. " +
     "They cluster three ways: name-the-unit (SI unit of viscosity, of rate of diffusion; the quantity measured in candela), classify-the-property (which pair is intensive), and one abundance calculation (find isotopic percentages from the average atomic mass of chlorine). " +
     "So the work is mostly memorising two short reference tables plus one mixing formula — the kind of subtopic where a student should never drop a mark.",
   concepts: [

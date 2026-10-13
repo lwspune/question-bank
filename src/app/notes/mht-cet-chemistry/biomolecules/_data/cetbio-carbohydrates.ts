@@ -6,7 +6,7 @@ export const CARBOHYDRATES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Carbohydrates are polyhydroxy aldehydes or ketones (or what hydrolyses to them), classed by the number of sugar units; glucose is an aldohexose with four chiral carbons that closes into a six-membered pyranose ring between C-1 and C-5, fructose a ketohexose that closes into a five-membered furanose ring, and the reactions of the open-chain form prove each part of the structure.",
   whyItMatters:
-    "21 PYQs, one HARD. Fourteen are classification and structure — laevulose, aldohexose, the anomeric carbon, which carbons close the ring, hemiacetal versus hemiketal, the specific rotations, how many OH groups ribose has, which named sugar is a di-, tri- or tetrasaccharide; seven are the structure-proving reactions — bromine water for the aldehyde, acetic anhydride for the five OH, HI for the straight chain, saccharic acid, sorbitol, and the acetylation mass gain that fixes the number of OH groups. " +
+    "35 PYQs, one HARD. Of the twenty-one set from 2021 to 2025, fourteen are classification and structure — laevulose, aldohexose, the anomeric carbon, which carbons close the ring, hemiacetal versus hemiketal, the specific rotations, how many OH groups ribose has, which named sugar is a di-, tri- or tetrasaccharide; seven are the structure-proving reactions — bromine water for the aldehyde, acetic anhydride for the five OH, HI for the straight chain, saccharic acid, sorbitol, and the acetylation mass gain that fixes the number of OH groups. " +
     "Two cards.",
   concepts: [
     // 1 — classification and structure

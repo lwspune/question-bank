@@ -12,9 +12,9 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A straight wire, a loop, an arc or a solenoid carrying current; a charge moving through a field; two parallel wires; or a moving-coil galvanometer.",
     story: [
-      "98 q at 2.42 a paper, 29% HARD. Magnetic Field of Current-Carrying Conductor is more than half the chapter (52 q, 33%), and much of it is a figure: two wires crossing, an arc joined to straight leads, a loop inside a loop. The fields must be added with their directions, and a field INTO the page and one OUT of it subtract.",
-      "The cheap page is Force on Moving Charge in Magnetic Field (12 q, 0% HARD): F = qvB sin θ, and a charge moving perpendicular to B goes round a circle of radius r = mv/qB. Force between parallel wires (14 q, 43%) is the expensive one — currents in the same direction attract.",
-      "The galvanometer page (20 q, 25%) connects to Current Electricity: the current sensitivity nBA/k, and a loop's magnetic moment m = NIA.",
+      "160 q at 2.44 a paper, 27% HARD. Magnetic Field of Current-Carrying Conductor is half the chapter (83 q, 28%), and much of it is a figure: two wires crossing, an arc joined to straight leads, a loop inside a loop. The fields must be added with their directions, and a field INTO the page and one OUT of it subtract.",
+      "The cheap page is Force on Moving Charge in Magnetic Field (22 q, 0% HARD): F = qvB sin θ, and a charge moving perpendicular to B goes round a circle of radius r = mv/qB. Force between parallel wires (21 q, 33%) is expensive: currents in the same direction attract.",
+      "The most expensive page is the galvanometer (34 q, 38%), and it connects to Current Electricity: the current sensitivity nBA/k, and a loop's magnetic moment m = NIA.",
     ],
     subSkills: [
       {
@@ -44,9 +44,9 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "thermal-properties-of-matter",
     trigger: "A hot body radiating, a black body and its peak wavelength, a body cooling, a rod or plate expanding, or heat flowing through a slab.",
     story: [
-      "84 q at 2.13 a paper, 17% HARD — and on this paper the chapter is mostly radiation: Radiation — Stefan, Wien, Newton's Law of Cooling, Black Body is 53 of the 84 questions at 23% HARD.",
+      "145 q at 2.28 a paper, 14% HARD, and rising: 1.89 a paper across 2023-24, 2.15 in 2025, 2.35 in 2026. On this paper the chapter is mostly radiation: Radiation — Stefan, Wien, Newton's Law of Cooling, Black Body is 93 of the 145 questions at 18% HARD.",
       "Almost every radiation question is a ratio. Stefan: P = σAeT⁴, so doubling the absolute temperature multiplies the power by 16. Wien: λ_max T = constant, so a hotter body peaks at a shorter wavelength. Newton's law of cooling: the rate of cooling is proportional to the excess temperature, used with the average temperature over an interval.",
-      "Thermal expansion (19 q, 11%) is β = 2α and γ = 3α. Conduction (8 q) and calorimetry (4 q) are small and have never produced a HARD question.",
+      "Thermal expansion (26 q, 12%) is β = 2α and γ = 3α. Conduction (18 q) and calorimetry (8 q) are small, with one HARD question between them.",
     ],
     subSkills: [
       { name: "Stefan–Boltzmann", description: "P = σAeT⁴ with T in kelvin. Net loss to surroundings ∝ T⁴ − T₀⁴." },
@@ -72,7 +72,7 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "dual-nature-of-radiation-and-matter",
     trigger: "Light falling on a metal — work function, threshold, stopping potential, photocurrent graphs — or the wavelength of a moving particle.",
     story: [
-      "82 q at 2.04 a paper, 32% HARD — the hardest chapter in the Physics bank. But it is also one of the narrowest: two equations carry all of it. Photoelectric Effect is 56 questions at 36% HARD; de Broglie Wavelength and Matter Waves is 26 at 23%.",
+      "131 q at 1.97 a paper, 31% HARD: the hardest chapter in the Physics bank. But it is also one of the narrowest: two equations carry all of it. Photoelectric Effect is 87 questions at 38% HARD; de Broglie Wavelength and Matter Waves is 44 at 16%.",
       "The photoelectric equation is hν = φ + ½mv²_max, and eV₀ = ½mv²_max. Below the threshold frequency nothing is emitted whatever the intensity; above it, intensity sets the NUMBER of electrons (the current) and frequency sets their energy (the stopping potential). The graph questions test exactly that split.",
       "de Broglie: λ = h/p = h/√(2mK) = h/√(2mqV). For an electron accelerated through V volts, λ ≈ 1.227/√V nm. Doubling the kinetic energy divides λ by √2.",
     ],
@@ -99,8 +99,8 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "current-electricity",
     trigger: "A network of resistors and cells, a potentiometer or meter bridge, or turning a galvanometer into an ammeter or voltmeter.",
     story: [
-      "82 q at 1.96 a paper, 24% HARD. Galvanometer, Ammeter, and Voltmeter Conversion (24 q, 17%) and Kirchhoff's Laws (19 q, 16%) are the cheap entry. An ammeter is a galvanometer with a small SHUNT in parallel; a voltmeter is one with a large resistance in series.",
-      "The bridges carry the HARD: Wheatstone Bridge and Meter Bridge is 17 questions at 35%, and Potentiometer 18 at 28%. A bridge is balanced only when P/Q = R/S; when it is, the galvanometer arm carries no current and can be removed. When it is not — and some that look balanced are not — current flows through that arm and the circuit must be solved with Kirchhoff.",
+      "134 q at 1.97 a paper, 21% HARD. Galvanometer, Ammeter, and Voltmeter Conversion (37 q, 14%) and Kirchhoff's Laws (26 q, 15%) are the cheap entry. An ammeter is a galvanometer with a small SHUNT in parallel; a voltmeter is one with a large resistance in series.",
+      "The bridges carry the HARD: Wheatstone Bridge and Meter Bridge is 31 questions at 35%, against 17% for the Potentiometer (36 q). A bridge is balanced only when P/Q = R/S; when it is, the galvanometer arm carries no current and can be removed. When it is not — and some that look balanced are not — current flows through that arm and the circuit must be solved with Kirchhoff.",
       "A potentiometer compares EMFs by balancing lengths: E₁/E₂ = l₁/l₂, and the internal resistance r = R(l₁ − l₂)/l₂.",
     ],
     subSkills: [
@@ -127,9 +127,9 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "structure-of-atoms-and-nuclei",
     trigger: "A Bohr orbit — radius, speed, energy — a spectral line of hydrogen, or a sample decaying with a half-life.",
     story: [
-      "85 q at 1.96 a paper, 22% HARD. Radioactive Decay and Half-Life is the cheap page (18 q, 6%): after n half-lives N = N₀/2ⁿ, and the mean life is 1.44 times the half-life.",
-      "The Bohr page (39 q, 28%) is scaling laws: r ∝ n²/Z, v ∝ Z/n, E ∝ −Z²/n². Almost every question is a ratio between two orbits or two atoms, and answering it from the proportion is faster and safer than computing each value.",
-      "The hydrogen spectrum (28 q, 25%) is 1/λ = RZ²(1/n₁² − 1/n₂²) with the right lower level: Lyman 1, Balmer 2, Paschen 3. The longest wavelength of a series is its FIRST line, the shortest its limit.",
+      "140 q at 2.05 a paper, 19% HARD. Radioactive Decay and Half-Life is the cheap page (34 q, 3%): after n half-lives N = N₀/2ⁿ, and the mean life is 1.44 times the half-life.",
+      "The Bohr page (67 q, 24%) is scaling laws: r ∝ n²/Z, v ∝ Z/n, E ∝ −Z²/n². Almost every question is a ratio between two orbits or two atoms, and answering it from the proportion is faster and safer than computing each value.",
+      "The hydrogen spectrum (39 q, 23%) is 1/λ = RZ²(1/n₁² − 1/n₂²) with the right lower level: Lyman 1, Balmer 2, Paschen 3. The longest wavelength of a series is its FIRST line, the shortest its limit.",
     ],
     subSkills: [
       { name: "Bohr scaling", description: "r ∝ n²/Z, v ∝ Z/n, E = −13.6Z²/n² eV. Kinetic energy = −E, potential energy = 2E." },
@@ -155,9 +155,9 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "thermodynamics",
     trigger: "Heat supplied and work done by a gas, an isothermal or adiabatic change, a p–V diagram, or a heat engine or refrigerator.",
     story: [
-      "84 q at 1.92 a paper, 21% HARD. First Law, Internal Energy, and Work-Heat Relations (37 q, 11%) is the cheap page: ΔQ = ΔU + ΔW, with ΔU = nC_vΔT whatever the process.",
-      "The HARD sits on Isothermal, Adiabatic, Isobaric, and Isochoric Processes (36 q, 31%): PV^γ = constant for an adiabatic change, work in an isothermal expansion nRT ln(V₂/V₁), and work as the area under a p–V curve — enclosed by a cycle, positive if the cycle runs clockwise.",
-      "Carnot Engine, Efficiency, and Refrigerator is small (11 q, 27%): η = 1 − T₂/T₁ with temperatures in kelvin, and the coefficient of performance of a refrigerator T₂/(T₁ − T₂).",
+      "136 q at 1.97 a paper, 21% HARD. First Law, Internal Energy, and Work-Heat Relations (53 q, 9%) is the cheap page: ΔQ = ΔU + ΔW, with ΔU = nC_vΔT whatever the process.",
+      "The HARD sits on Isothermal, Adiabatic, Isobaric, and Isochoric Processes (65 q, 31%): PV^γ = constant for an adiabatic change, work in an isothermal expansion nRT ln(V₂/V₁), and work as the area under a p–V curve — enclosed by a cycle, positive if the cycle runs clockwise.",
+      "Carnot Engine, Efficiency, and Refrigerator is small (18 q, 17%): η = 1 − T₂/T₁ with temperatures in kelvin, and the coefficient of performance of a refrigerator T₂/(T₁ − T₂).",
     ],
     subSkills: [
       { name: "First law", description: "ΔQ = ΔU + ΔW. ΔU depends only on ΔT: nC_vΔT." },
@@ -183,9 +183,9 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "gravitation",
     trigger: "g at a height or a depth, a satellite's orbit or period, escape velocity, or the energy to move a body away from Earth.",
     story: [
-      "80 q at 1.75 a paper, 23% HARD — and it HALVED in 2025: 2.26 a paper across the 27 papers of 2023-24, 1.15 across the 13 of 2025. It is still set every year, so cut its hours rather than the chapter.",
-      "Keep one page whatever else you cut: Variation of g with Depth, Altitude, Density, and Latitude is 33 questions at 3% HARD. g at height h is g(1 − 2h/R) for small h; at depth d it is g(1 − d/R); at the centre it is zero.",
-      "The HARD is in the energy pages: Gravitational PE, Escape Velocity, and Energy (19 q, 42%) and Satellites (21 q, 29%). Escape velocity √(2gR) is √2 times the orbital speed near the surface, and a satellite's total energy is half its potential energy.",
+      "106 q at 1.05 a paper, 25% HARD, and it HALVED in 2025: 2.26 a paper across the 27 papers of 2023-24, 1.15 across the 13 of 2025, then exactly one on every one of the 26 papers of 2026. It is still on every paper, so cut its hours rather than the chapter.",
+      "Keep one page whatever else you cut: Variation of g with Depth, Altitude, Density, and Latitude is 43 questions at 7% HARD. g at height h is g(1 − 2h/R) for small h; at depth d it is g(1 − d/R); at the centre it is zero.",
+      "The HARD is in the energy pages: Gravitational PE, Escape Velocity, and Energy (28 q, 50%) and Satellites (27 q, 22%). Escape velocity √(2gR) is √2 times the orbital speed near the surface, and a satellite's total energy is half its potential energy.",
     ],
     subSkills: [
       { name: "Variation of g", description: "Height: g(1 − 2h/R) for h ≪ R, g R²/(R + h)² in general. Depth: g(1 − d/R). g ∝ ρR at the surface." },
@@ -210,9 +210,9 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "ray-optics",
     trigger: "A lens or mirror with an object distance, a slab or a liquid and apparent depth, a prism and its deviation, or a microscope or telescope.",
     story: [
-      "78 q at 1.50 a paper, 29% HARD — and it HALVED in 2025: 2.19 a paper across 2023-24, 1.08 across 2025. Still live, but no longer worth two questions of prep.",
-      "Lenses (24 q, 25%) and Refraction, Apparent Depth, and Total Internal Reflection (26 q, 27%) are the core. 1/v − 1/u = 1/f with the sign convention; power P = 1/f in metres; lenses in contact add their powers. Apparent depth is real depth over μ, and TIR needs sin C = 1/μ.",
-      "The prism page (17 q) is the most expensive at 47% HARD: minimum deviation μ = sin((A + δ)/2)/sin(A/2), and a thin prism deviates by (μ − 1)A.",
+      "112 q at 1.23 a paper, 25% HARD, and it HALVED in 2025: 2.19 a paper across 2023-24, 1.08 across 2025, and only 1.31 across 2026. Still live, but no longer worth two questions of prep.",
+      "Lenses (34 q, 26%) and Refraction, Apparent Depth, and Total Internal Reflection (37 q, 19%) are the core. 1/v − 1/u = 1/f with the sign convention; power P = 1/f in metres; lenses in contact add their powers. Apparent depth is real depth over μ, and TIR needs sin C = 1/μ.",
+      "The prism page (25 q) is the most expensive at 40% HARD: minimum deviation μ = sin((A + δ)/2)/sin(A/2), and a thin prism deviates by (μ − 1)A.",
     ],
     subSkills: [
       { name: "Lens and mirror formulas", description: "Lens 1/v − 1/u = 1/f; mirror 1/v + 1/u = 1/f. Magnification v/u (lens) or −v/u (mirror)." },
@@ -238,7 +238,7 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "sound",
     trigger: "A source or observer moving, a pipe resonating, overtones, or two sources producing beats.",
     story: [
-      "47 q at 1.04 a paper, 21% HARD. Doppler Effect — Moving Source and Observer (19 q, 16%) and Pipes, Resonance, Overtones, and Beats (22 q, 27%) are nearly all of it.",
+      "70 q at 0.97 a paper, 20% HARD. Doppler Effect — Moving Source and Observer (24 q, 13%) and Pipes, Resonance, Overtones, and Beats (27 q, 33%) are most of it; Sound Wave Properties, Speed, and Intensity adds 19 at 11%.",
       "Doppler: f' = f (v ± v_o)/(v ∓ v_s), the upper signs for approach. The same speed moves the pitch more when the SOURCE moves than when the observer does — a comparison the paper sets directly.",
       "The pipes and beats are the same material as Superposition of Waves. Prepare the two chapters together and Sound costs little extra.",
     ],

@@ -18,9 +18,9 @@ import { TAIL_CHAPTERS, type TailStatus } from "../_data/strategy";
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "MHT-CET Physics Playbooks — 21 chapters, drilled",
+  title: "MHT-CET Physics Playbooks — 22 chapters, drilled",
   description:
-    "Twenty-one playbooks for MHT-CET Physics — one per chapter above 0.9 questions per paper, grouped Cornerstone / Quick-Win / Long Tail. Each playbook: how the chapter is tested, its sub-skills, its traps, whether it cherry-picks, and a one-click drill link.",
+    "Twenty-two playbooks for MHT-CET Physics, one per chapter above 0.9 questions per paper, grouped Cornerstone / Quick-Win / Long Tail. Each playbook: how the chapter is tested, its sub-skills, its traps, whether it cherry-picks, and a one-click drill link.",
   alternates: { canonical: "/guide/mht-cet-physics/playbooks" },
 };
 
@@ -117,8 +117,8 @@ export default function PlaybooksIndex() {
       <GuideJsonLd
         type="CollectionPage"
         path="/guide/mht-cet-physics/playbooks"
-        headline="MHT-CET Physics Playbooks — 21 chapters, drilled"
-        description="Twenty-one playbooks for MHT-CET Physics — one per chapter above 0.9 questions per paper. Each: how the chapter is tested, its sub-skills, its traps, and a one-click drill link."
+        headline="MHT-CET Physics Playbooks — 22 chapters, drilled"
+        description="Twenty-two playbooks for MHT-CET Physics, one per chapter above 0.9 questions per paper. Each: how the chapter is tested, its sub-skills, its traps, and a one-click drill link."
       />
       <GuideHero
         eyebrow="Playbooks"
@@ -140,15 +140,15 @@ export default function PlaybooksIndex() {
           lifetime — all {OVERVIEW.totalQ.toLocaleString("en-IN")} questions
           across {OVERVIEW.papers} papers and {OVERVIEW.yearsCovered} years.
           The <strong>q/paper rate</strong> is measured on recent papers only
-          (2024&ndash;2025), and that is the number the strands below are built
+          (2025&ndash;2026), and that is the number the strands below are built
           on.
         </p>
         <p className="mt-3 font-serif text-base leading-relaxed text-muted-foreground">
-          They disagree because the 2025 papers moved several chapters.
-          Gravitation and Ray Optics carry 80 and 78 questions lifetime and
-          halved in 2025; Units and Measurement carries 14 and was not set at
-          all before 2025. A lifetime average hides all three, which is why
-          tiering here ignores it.
+          They disagree because the 2025 papers moved several chapters and
+          the 2026 papers kept the moves. Gravitation and Ray Optics carry 106
+          and 112 questions lifetime and halved in 2025; Units and Measurement
+          carries 40 and was not set at all before 2025. A lifetime average
+          hides all three, which is why tiering here ignores it.
         </p>
         <Link
           href="/guide/mht-cet-physics/trends"
@@ -179,7 +179,7 @@ export default function PlaybooksIndex() {
               {list.length} playbook{list.length === 1 ? "" : "s"} ·{" "}
               {strandQ.toLocaleString("en-IN")} questions lifetime ·{" "}
               {strandPerPaper.toFixed(1)} of {OVERVIEW.paper.questions} q/paper
-              on 2024&ndash;25 papers · {minHard}&ndash;{maxHard}% HARD
+              on 2025&ndash;26 papers · {minHard}&ndash;{maxHard}% HARD
             </p>
 
             <ul className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -234,10 +234,10 @@ export default function PlaybooksIndex() {
           line. The other {TAIL_CHAPTERS.length} are named below rather than
           quietly dropped &mdash; between them they are{" "}
           {tailQ.toLocaleString("en-IN")} of the{" "}
-          {OVERVIEW.totalQ.toLocaleString("en-IN")} questions in the bank, and
-          one of them — Units and Measurement, new in 2025 — matters more than
-          that share suggests. They are
-          covered in the tail block on the{" "}
+          {OVERVIEW.totalQ.toLocaleString("en-IN")} questions in the bank.
+          Units and Measurement used to sit here too: the 2026 papers held it
+          at a question a paper, so it now has a playbook. They are covered in
+          the tail block on the{" "}
           <Link
             href="/guide/mht-cet-physics/strategy"
             className="font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -262,7 +262,7 @@ export default function PlaybooksIndex() {
               </div>
               <p className="mt-1 text-xs tabular-nums text-muted-foreground">
                 {c.qCount} q lifetime · {c.qPerPaper.toFixed(2)}/paper on
-                2024&ndash;25 papers · {c.pctHard}% hard
+                2025&ndash;26 papers · {c.pctHard}% hard
               </p>
               <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
                 {c.note}

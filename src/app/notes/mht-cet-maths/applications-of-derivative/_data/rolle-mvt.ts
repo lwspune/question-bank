@@ -6,7 +6,7 @@ export const ROLLE_MVT_NOTE: SubtopicNote = {
   oneLineDefinition:
     "If a function is smooth on an interval with equal endpoint values, its graph must level off somewhere (Rolle); more generally, some tangent must be parallel to the chord joining the endpoints (Lagrange). The whole subtopic is checking the three hypotheses, then solving f'(c) for the point c.",
   whyItMatters:
-    "One of the most reliably tested subtopics in MHT-CET calculus: 18 PYQs sit here (3 HARD, 12 MODERATE, 3 EASY). The paper recycles a small set of moves — verify Rolle and find c, count how many c work, apply LMVT and solve for c, or use 'Rolle holds' to back out unknown coefficients a and b. " +
+    "One of the most reliably tested subtopics in MHT-CET calculus: 32 PYQs sit here (9 HARD, 16 MODERATE, 7 EASY). The paper recycles a small set of moves — verify Rolle and find c, count how many c work, apply LMVT and solve for c, or use 'Rolle holds' to back out unknown coefficients a and b. " +
     "The recurring traps are always the same: rejecting a root of f'(c)=0 that falls outside the open interval, forgetting that MVT needs differentiability (not just continuity), and confusing Rolle's f(a)=f(b) requirement with LMVT's chord slope.",
   concepts: [
     // 1 — Rolle's theorem: the three hypotheses + conclusion (foundation, PYQ-anchored)

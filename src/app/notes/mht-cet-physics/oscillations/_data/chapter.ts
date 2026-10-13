@@ -4,7 +4,7 @@ export const MHTCET_OSCILLATIONS_CHAPTER: ChapterNote = {
   chapterName: "Oscillations",
   title: "Oscillations — MHT-CET Physics",
   intro:
-    "Oscillations has 110 past-year questions in the MHT-CET bank, about one in five HARD. " +
+    "Oscillations has 179 past-year questions in the MHT-CET bank, about one in five HARD. " +
     "Nearly all of it is one motion, simple harmonic motion, described three ways: as displacement, velocity and acceleration changing in time; as a spring or other system whose restoring force sets ω; and as energy passing between kinetic and potential. " +
     "The simple pendulum closes the chapter — its period, and what a lift, an orbit or a moving support does to g. Every PYQ is tagged.",
   cardBlurb:

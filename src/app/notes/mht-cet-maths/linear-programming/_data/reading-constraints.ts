@@ -6,7 +6,7 @@ export const READING_CONSTRAINTS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Given a shaded region, recover its inequalities: write each boundary line from its intercepts, then pick a point inside the shading and test it against each line to fix ≥ or ≤.",
   whyItMatters:
-    "9 PYQs at 22% HARD — the only page in the chapter with HARD questions, and both of them are here. The stems give a figure with three to five boundary lines and four option sets that differ only in the direction of one or two inequalities. " +
+    "11 PYQs at 18% HARD — the only page in the chapter with HARD questions, and both of them are here. The stems give a figure with three to five boundary lines and four option sets that differ only in the direction of one or two inequalities. " +
     "The method is the half-plane test run backwards: one interior point, tested against one line at a time, eliminates the wrong options without ever sketching.",
   concepts: [
     // 1 — line from intercepts

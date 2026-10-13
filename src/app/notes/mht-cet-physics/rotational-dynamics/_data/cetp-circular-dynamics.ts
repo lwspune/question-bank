@@ -6,7 +6,7 @@ export const CIRCULAR_DYNAMICS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Something must supply the centripetal force mv²/r — a string, a spring, friction, the normal reaction of a banked road or a funnel — and resolving that force into vertical and horizontal parts answers every question here.",
   whyItMatters:
-    "17 PYQs, three HARD. Three shapes: what the centripetal force is and how it scales, a force at an angle (banked road, conical pendulum, a bob hanging in a turning car), " +
+    "27 PYQs, four HARD. Three shapes: what the centripetal force is and how it scales, a force at an angle (banked road, conical pendulum, a bob hanging in a turning car), " +
     "and the vertical circle, where speed and tension change from top to bottom.",
   concepts: [
     {

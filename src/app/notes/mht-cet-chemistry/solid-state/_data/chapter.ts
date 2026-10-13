@@ -4,7 +4,7 @@ export const MHTCET_SOLID_STATE_CHAPTER: ChapterNote = {
   chapterName: "Solid State",
   title: "Solid State — MHT-CET Chemistry",
   intro:
-    "Solid State is the first chapter of the Class 12 Chemistry book and about three questions a paper in MHT-CET, with barely one in fifteen HARD. " +
+    "Solid State is the first chapter of the Class 12 Chemistry book and about three questions a paper in MHT-CET, with barely one in seventeen HARD. " +
     "Two thirds of it is arithmetic on four numbers: the particles per cubic unit cell (1, 2, 4), the edge–radius relations, the packing " +
     "efficiencies (52.4%, 68%, 74%) and the density formula that ties them to molar mass. The rest is recall: crystalline against amorphous, " +
     "the seven crystal systems and fourteen Bravais lattices, the void counts, the named point defects, dopants and magnetism. " +

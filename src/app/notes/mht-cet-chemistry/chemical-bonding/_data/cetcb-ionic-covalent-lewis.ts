@@ -6,7 +6,7 @@ export const IONIC_COVALENT_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Atoms bond to reach a stable octet — metals transfer electrons (ionic), non-metals share them (covalent), and one atom can donate both shared electrons (coordinate); Lewis dot structures track those electrons, Fajans' rules decide how covalent an 'ionic' bond really is, and formal charge checks which structure is right.",
   whyItMatters:
-    "The backbone of MHT-CET Chemical Bonding — about 13 PYQs, mostly EASY-to-MODERATE recall and one-line work. " +
+    "The backbone of MHT-CET Chemical Bonding — about 23 PYQs, mostly EASY-to-MODERATE recall and one-line work. " +
     "The bank tests it five ways: rank compounds by covalent (or ionic) character using Fajans' rules, spot the octet exception (incomplete, expanded or odd-electron), count the Lewis/resonance structures of an ion, count the electrons around a central atom, and compute a formal charge. " +
     "Learn Fajans' rules, the octet-exception families, and the formal-charge formula, and every one of these is a fast, sure mark.",
   concepts: [

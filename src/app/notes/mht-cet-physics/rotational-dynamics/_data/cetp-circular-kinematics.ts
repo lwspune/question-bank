@@ -6,7 +6,7 @@ export const CIRCULAR_KINEMATICS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Motion on a circle is described by an angle: angular velocity ω = 2πn links it to the linear speed v = ωr, and with a constant angular acceleration the angle obeys the same equations as distance in a straight line.",
   whyItMatters:
-    "17 PYQs, three HARD. Three shapes: comparing speeds or accelerations of bodies that share a period, the angle turned in a given second under constant angular acceleration, " +
+    "29 PYQs, three HARD. Three shapes: comparing speeds or accelerations of bodies that share a period, the angle turned in a given second under constant angular acceleration, " +
     "and the moment the tangential and centripetal accelerations become equal.",
   concepts: [
     {

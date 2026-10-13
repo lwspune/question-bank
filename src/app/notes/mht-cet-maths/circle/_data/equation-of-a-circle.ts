@@ -6,7 +6,7 @@ export const EQUATION_OF_A_CIRCLE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "(x − h)² + (y − k)² = r²; the general form x² + y² + 2gx + 2fy + c = 0 has centre (−g, −f) and radius √(g² + f² − c); the diameter form (x − x₁)(x − x₂) + (y − y₁)(y − y₂) = 0; and the parametric form x = h + r cos θ, y = k + r sin θ.",
   whyItMatters:
-    "12 PYQs at 33% HARD — the chapter's opening page and its largest. The diameter form is the workhorse: the diagonal of a rectangle (twice), the centres of two circles as the diameter's ends, and the 2023/2024 stem whose endpoints are the roots of two quadratics. " +
+    "22 PYQs at 23% HARD — the chapter's opening page and its largest. The diameter form is the workhorse: the diagonal of a rectangle (twice), the centres of two circles as the diameter's ends, and the 2023/2024 stem whose endpoints are the roots of two quadratics. " +
     "The parametric form and the centre-from-two-diameters stems are one line each; the two HARD algebraic ones — four points (m, 1/m) on a circle and a count of integral k for a bounded radius — are the general equation read as a polynomial.",
   concepts: [
     // 1 — centre-radius and general form

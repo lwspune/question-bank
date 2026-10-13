@@ -34,7 +34,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: { absolute: fitTitle("MHT-CET Chemistry Strategy — Fast Questions First, Never Attempt-vs-Skip") },
   description:
-    "MHT-CET Chemistry is 50 questions sharing a 90-minute paper with Physics, with NO negative marking and only 3% HARD — so the strategy is speed and order: answer on sight first, calculate second, and bank minutes for Physics. Three strands by how a question is answered, with must-drill subtopics and study hours per chapter. Backed by 2,074 past-year questions across 42 papers.",
+    "MHT-CET Chemistry is 50 questions sharing a 90-minute paper with Physics, with NO negative marking and only 3% HARD — so the strategy is speed and order: answer on sight first, calculate second, and bank minutes for Physics. Three strands by how a question is answered, with must-drill subtopics and study hours per chapter. Backed by 3,371 past-year questions across 68 papers.",
   alternates: { canonical: "/guide/mht-cet-chemistry/strategy" },
 };
 
@@ -107,7 +107,7 @@ export default async function MhtCetChemistryStrategy() {
   // Every number below is summed from the data modules, never hand-written.
   const strandHours = STRATEGY_STRANDS.map((s) => ({
     id: s.id,
-    label: s.label.split(" — ")[0],
+    label: s.label.split(": ")[0],
     qCount: s.qCount,
     pctOfBank: s.pctOfBank,
     chapters: s.chapters.length,
@@ -499,9 +499,10 @@ export default async function MhtCetChemistryStrategy() {
           These sit under 0.9 questions a paper, so none of them ships a
           playbook — they are listed here so the {OVERVIEW.chapters}-chapter
           bank is accounted for rather than quietly truncated at{" "}
-          {OVERVIEW.playbooks}. Read the status column first: 2025 brought one of
-          them onto the paper, which matters more than the question
-          counts suggest.
+          {OVERVIEW.playbooks}. Read the notes first: three of them (Groups 1
+          and 2, Aromatic Compounds and Alkanes) were playbooks on the
+          2024-25 rate and fell below the line on the 2025-2026 papers, so
+          they are still on the paper, just lighter.
         </p>
         <div className="mt-4 overflow-x-auto rounded-md border">
           <table className="w-full text-sm">
@@ -571,13 +572,15 @@ export default async function MhtCetChemistryStrategy() {
           />
           <span>
             <strong className="font-semibold text-foreground">
-              Basic Principles of Organic Chemistry is the one not to skip.
+              Groups 1 and 2 is the one not to skip.
             </strong>{" "}
             It is below the line at{" "}
-            {TAIL_CHAPTERS.find((t) => t.chapter === "Basic Principles of Organic Chemistry")?.qPerPaper}{" "}
-            a paper, but it is the hardest chapter of any size and every
-            Reactions chapter leans on it. Green Chemistry is the other to
-            watch: a question in every 2025 paper, and never HARD.
+            {TAIL_CHAPTERS.find((t) => t.chapter === "Elements of Group 1 and 2")?.qPerPaper}{" "}
+            a paper, but it has never produced a HARD question and an hour of
+            tables covers it. Aromatic Compounds and Alkanes left the
+            playbooks in 2026, yet between them they still set about 1.3
+            questions a paper on 2025-2026 papers: keep their named
+            reactions.
           </span>
         </p>
       </section>

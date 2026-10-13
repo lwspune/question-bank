@@ -8,7 +8,7 @@ export const ALLOYS_ORES_CATALYSTS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Transition metals mix readily into alloys because their atoms are similar in size, occur in nature as oxide, carbonate and sulphide ores, and act as catalysts because they can change oxidation state and adsorb reactants on their surfaces.",
   whyItMatters:
-    "7 PYQs, none HARD. Two name the alloy for a use (nichrome for gas turbine engines, stainless steel for the fuselage of ultra-high-speed aircraft), three name an ore (copper pyrites, chalcopyrite, calamine) and two a catalyst (V₂O₅ in the contact process, Co–Th in the Fischer–Tropsch synthesis). " +
+    "11 PYQs, none HARD. Of the seven set from 2021 to 2025, two name the alloy for a use (nichrome for gas turbine engines, stainless steel for the fuselage of ultra-high-speed aircraft), three name an ore (copper pyrites, chalcopyrite, calamine) and two a catalyst (V₂O₅ in the contact process, Co–Th in the Fischer–Tropsch synthesis). " +
     "One card.",
   concepts: [
     {

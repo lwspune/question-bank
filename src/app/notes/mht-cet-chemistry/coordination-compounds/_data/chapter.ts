@@ -4,7 +4,7 @@ export const MHTCET_COORDINATION_CHAPTER: ChapterNote = {
   chapterName: "Coordination Compounds",
   title: "Coordination Compounds — MHT-CET Chemistry",
   intro:
-    "Coordination Compounds is about two questions a paper in MHT-CET Chemistry and almost never HARD — two of its past-year questions in eighty-eight. " +
+    "Coordination Compounds is about two questions a paper in MHT-CET Chemistry and almost never HARD — three of its 140 past-year questions. " +
     "It is a chapter of counting and naming: how many donor atoms a ligand offers and what charge it carries, whether a complex is homoleptic or heteroleptic, cationic or anionic, " +
     "and the oxidation state and coordination number that turn a name into a formula. " +
     "Then come the four structural isomerisms and cis–trans, and the bonding arithmetic — hybridisation, unpaired electrons, EAN, and the stability orders. " +

@@ -6,9 +6,9 @@ export const SPECIAL_FUNCTIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The greatest-integer, modulus and sign functions carry built-in jumps — the question is where they land, whether another factor cancels them, and how many there are in a given interval.",
   whyItMatters:
-    "The smallest page in the chapter — 6 PYQs at 50% HARD — but a distinct question type with no coverage anywhere else: 'how many points of discontinuity' and 'discontinuous at which set'. " +
+    "The smallest page in the chapter — 10 PYQs at 40% HARD — but a distinct question type with no coverage anywhere else: 'how many points of discontinuity' and 'discontinuous at which set'. " +
     "It reuses the one-sided habit from the first page and the three-part test from the continuity pages; what is new is the counting, and the one case where a vanishing factor swallows a jump. " +
-    "One of the six carries an exam key that contradicts the mathematics, and knowing which is part of the preparation.",
+    "One of them carries an exam key that contradicts the mathematics, and knowing which is part of the preparation.",
   concepts: [
     // 1 — [x] at every integer, counting
     {

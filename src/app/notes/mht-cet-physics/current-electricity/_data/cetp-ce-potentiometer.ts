@@ -8,7 +8,7 @@ export const POTENTIOMETER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A steady current through a long uniform wire gives a constant potential drop per unit length, the potential gradient k; a cell connected against the wire balances at the length where kl equals its e.m.f., drawing no current, so the potentiometer measures e.m.f. directly and compares two cells by their balancing lengths.",
   whyItMatters:
-    "18 PYQs, 5 of them HARD. Ten are the potential gradient — finding it when a series resistance shares the driving cell's voltage, the e.m.f. a length balances, and what happens to the null point when the wire is made longer. " +
+    "36 PYQs, 6 of them HARD. Of the eighteen set from 2021 to 2025, ten are the potential gradient — finding it when a series resistance shares the driving cell's voltage, the e.m.f. a length balances, and what happens to the null point when the wire is made longer. " +
     "Eight compare cells: the ratio of two e.m.f.s from their sum and difference, and a cell's internal resistance from the balancing lengths with two different shunts. " +
     "Two cards.",
   concepts: [

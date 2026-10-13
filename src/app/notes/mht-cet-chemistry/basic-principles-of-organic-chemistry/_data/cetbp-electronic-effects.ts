@@ -6,7 +6,7 @@ export const ELECTRONIC_EFFECTS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Carbon is sp³ with four single bonds, sp² at a double bond and sp at a triple bond; substituents push or pull electrons by induction and resonance, which is what ranks carbocations tertiary > secondary > primary > methyl and sorts groups into donors and withdrawers.",
   whyItMatters:
-    "11 PYQs, 2 HARD. Four count sp³ or sp² carbons, atoms or moles from a formula (one is an empirical-formula derivation); three ask which group donates or withdraws electrons or which carbocation is least stable; three are named reagents — the Grignard reagent, its reaction with dry ice, the Clemmensen reduction. " +
+    "24 PYQs, 2 HARD. Of the eleven set from 2021 to 2025, four count sp³ or sp² carbons, atoms or moles from a formula (one is an empirical-formula derivation); three ask which group donates or withdraws electrons or which carbocation is least stable; three are named reagents — the Grignard reagent, its reaction with dry ice, the Clemmensen reduction. " +
     "Three cards.",
   concepts: [
     // 1 — hybridisation and counting

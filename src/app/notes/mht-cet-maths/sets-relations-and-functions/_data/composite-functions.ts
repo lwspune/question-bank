@@ -6,7 +6,7 @@ export const COMPOSITE_FUNCTIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "(f∘g)(x) = f(g(x)): apply the inner function first, then the outer — evaluate numerically from the inside out, recover f from a given f(g(x)) by matching shapes, and prove a functional identity by simplifying the argument.",
   whyItMatters:
-    "10 PYQs at 10% HARD. The stems are a chain like f(g(g(f(1)))) evaluated step by step, f(f(x)) = x used to fix a parameter, and the log identity f(2x/(1 + x²)) = 2f(x) with its cubic twin. " +
+    "21 PYQs at 10% HARD. The stems are a chain like f(g(g(f(1)))) evaluated step by step, f(f(x)) = x used to fix a parameter, and the log identity f(2x/(1 + x²)) = 2f(x) with its cubic twin. " +
     "One HARD question asks for g∘g∘f as a formula and is answered by composing in two steps rather than one. Nothing here is more than substitution done in the right order.",
   concepts: [
     // 1 — evaluate a chain

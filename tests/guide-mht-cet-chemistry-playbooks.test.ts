@@ -4,7 +4,7 @@
  *
  * What it locks, beyond the Maths suite:
  *   - every rate and count the chapter table, the playbooks and the tail
- *     quote is RECOMPUTED from matrix.generated.ts (2024-2025 columns), so an
+ *     quote is RECOMPUTED from matrix.generated.ts (2025-2026 columns), so an
  *     ingest that moves the grid fails here instead of leaving stale prose;
  *   - the strand and tail sums reconcile to the whole bank and the whole paper;
  *   - every slug cross-reference (details, related, traps, formulas) resolves;
@@ -35,8 +35,8 @@ const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-/** Recent-window rate (2024-2025 columns) for a chapter, from the grid. */
-const RECENT = SHIFT_PAPERS.flatMap((p, i) => (p.year >= 2024 ? [i] : []));
+/** Recent-window rate (2025-2026 columns) for a chapter, from the grid. */
+const RECENT = SHIFT_PAPERS.flatMap((p, i) => (p.year >= 2025 ? [i] : []));
 function gridRate(chapter: string): number {
   const row = CHAPTER_MATRIX.find((r) => r.chapter === chapter);
   if (!row) throw new Error(`no grid row for ${chapter}`);
@@ -78,9 +78,9 @@ describe("mht-cet-chemistry — static structure", () => {
 
   it("strand sizes match what the strategy page claims", () => {
     expect(playbooksInBucket("calculate")).toHaveLength(8);
-    expect(playbooksInBucket("reactions")).toHaveLength(6);
+    expect(playbooksInBucket("reactions")).toHaveLength(5);
     expect(playbooksInBucket("recall")).toHaveLength(9);
-    expect(PLAYBOOKS).toHaveLength(23);
+    expect(PLAYBOOKS).toHaveLength(22);
     for (const s of STRATEGY_STRANDS) {
       const names = s.chapters.map((c) => c.chapter).sort();
       expect(names, s.id).toEqual(playbooksInBucket(s.id).map((p) => p.chapter).sort());
@@ -93,7 +93,7 @@ describe("mht-cet-chemistry — static structure", () => {
     const rate = (b: "calculate" | "reactions" | "recall") =>
       playbooksInBucket(b).reduce((a, p) => a + p.qPerPaper, 0);
     expect(Math.round(rate("recall") + rate("reactions"))).toBe(25); // "about 25 answered on sight"
-    expect(Math.round(rate("calculate"))).toBe(21); // "the other 21"
+    expect(Math.round(rate("calculate"))).toBe(20); // "the other 20"
     // "3% HARD" on every page
     expect(Math.round((OVERVIEW.difficulty.hard / OVERVIEW.totalQ) * 100)).toBe(3);
   });
@@ -101,9 +101,9 @@ describe("mht-cet-chemistry — static structure", () => {
   it("strands are stated with the numbers they sum to", () => {
     const rate = (id: string) =>
       STRATEGY_STRANDS.find((s) => s.id === id)!.chapters.reduce((a, c) => a + (PLAYBOOKS.find((p) => p.chapter === c.chapter)!.qPerPaper), 0);
-    expect(rate("calculate").toFixed(1)).toBe("20.8");
-    expect(rate("reactions").toFixed(1)).toBe("11.3");
-    expect(rate("recall").toFixed(1)).toBe("13.6");
+    expect(rate("calculate").toFixed(1)).toBe("20.2");
+    expect(rate("reactions").toFixed(1)).toBe("11.2");
+    expect(rate("recall").toFixed(1)).toBe("14.2");
   });
 
   it("the 0.9 q/paper line holds both ways, and every playbook states the grid's numbers", () => {
@@ -130,7 +130,7 @@ describe("mht-cet-chemistry — static structure", () => {
     expect(CHAPTER_TABLE.reduce((a, r) => a + r.qCount, 0)).toBe(OVERVIEW.totalQ);
     const totalRate = CHAPTER_TABLE.reduce((a, r) => a + r.qPerPaper, 0);
     // Some recent papers are a question or two short in the bank, so the rates sum to the
-    // grid's own average paper size over 2024-25, not to a flat 50.
+    // grid's own average paper size over 2025-26, not to a flat 50.
     const recentMean = RECENT.reduce((a, i) => a + PAPER_TOTALS[i], 0) / RECENT.length;
     expect(Math.abs(totalRate - recentMean)).toBeLessThan(0.05);
     expect(recentMean).toBeGreaterThan(48);
@@ -246,15 +246,15 @@ describe.skipIf(!HAS_ENV)("mht-cet-chemistry — live taxonomy and bank", () => 
     }
     expect(rows).toHaveLength(OVERVIEW.totalQ);
     const hard = rows.filter((r) => r.difficulty === "HARD");
-    expect(hard.length, "bank HARD").toBe(OVERVIEW.difficulty.hard); // "67"
-    expect(hard.filter((r) => r.chapters?.name === "Electrochemistry").length, "Electrochemistry HARD").toBe(11);
+    expect(hard.length, "bank HARD").toBe(OVERVIEW.difficulty.hard); // "99"
+    expect(hard.filter((r) => r.chapters?.name === "Electrochemistry").length, "Electrochemistry HARD").toBe(13);
     expect(
       hard.filter((r) => r.subtopics?.name === "Galvanic Cells, EMF, Nernst Equation and Thermodynamics").length,
       "galvanic-page HARD"
     ).toBe(10);
     const kineticsFree = ["First-Order Kinetics, Rate Constant and Half-Life", "Rate Law, Order, Molecularity and Rate Expression", "Rate of Reaction, Stoichiometry and Average Rate"];
     const onThree = rows.filter((r) => r.chapters?.name === "Chemical Kinetics" && kineticsFree.includes(r.subtopics?.name ?? ""));
-    expect(onThree.length, "Kinetics' three HARD-free pages").toBe(103);
+    expect(onThree.length, "Kinetics' three HARD-free pages").toBe(167);
     expect(onThree.filter((r) => r.difficulty === "HARD")).toHaveLength(0);
   });
 });

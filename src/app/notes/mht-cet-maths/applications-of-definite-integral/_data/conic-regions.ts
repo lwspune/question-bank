@@ -6,7 +6,7 @@ export const CONIC_REGIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Circle, ellipse and hyperbola regions need one integral learnt cold — ∫√(a² − x²) dx — plus the sector and quarter-ellipse shortcuts that avoid integrating at all.",
   whyItMatters:
-    "9 PYQs at 44% HARD — the one page in this chapter where a formula must be memorised, because ∫√(a² − x²) dx cannot be improvised under time pressure. " +
+    "13 PYQs at 38% HARD — the one page in this chapter where a formula must be memorised, because ∫√(a² − x²) dx cannot be improvised under time pressure. " +
     "The recurring stems are a circle cut by a vertical line (the minor segment), the region between an ellipse's arc and its chord in the first quadrant, and a circle intersected with a parabola; the hyperbola's latus-rectum area appears once with a key that counts both branches. " +
     "Half of these are answered faster by geometry — a sector, a quarter-ellipse minus a triangle — than by any integral.",
   concepts: [

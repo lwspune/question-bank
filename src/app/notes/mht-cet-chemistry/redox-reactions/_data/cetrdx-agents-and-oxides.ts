@@ -8,7 +8,7 @@ export const AGENTS_AND_OXIDES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An oxidising agent takes electrons and is itself reduced; a reducing agent gives electrons and is itself oxidised; and an oxide is acidic, basic, amphoteric or neutral depending on the element it is made from.",
   whyItMatters:
-    "6 PYQs, none HARD. Four are about agents — the weakest reducing agent, which element tends to be reduced, what tin can reduce, the catalyst for KClO₃ — and two classify an oxide. " +
+    "11 PYQs, none HARD. Of the six set from 2021 to 2025, four are about agents — the weakest reducing agent, which element tends to be reduced, what tin can reduce, the catalyst for KClO₃ — and two classify an oxide. " +
     "Two cards, and the second is a table to learn.",
   concepts: [
     {

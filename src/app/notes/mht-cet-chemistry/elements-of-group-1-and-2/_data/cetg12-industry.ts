@@ -8,7 +8,7 @@ export const INDUSTRY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The chapter's applied facts: how pure hydrogen, water gas and hydrogen peroxide are made, what the Solvay process recycles and leaves behind, and which formula or metal pair a mineral or alloy stands for.",
   whyItMatters:
-    "15 PYQs, all EASY or MODERATE, and every one a named fact — hydrogen and H₂O₂ (6), the Solvay process and lime (3), minerals, alloys and uses (6). " +
+    "22 PYQs, all EASY or MODERATE, and every one a named fact. The fifteen set from 2021 to 2025 split into hydrogen and H₂O₂ (6), the Solvay process and lime (3), and minerals, alloys and uses (6). " +
     "Three tables to learn.",
   concepts: [
     {

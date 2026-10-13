@@ -54,9 +54,9 @@ type GuideCopy = {
    * corpus these guides are actually measured against.
    *
    * MHT-CET's count stays hand-written because it is SUBJECT-scoped (this card
-   * is all three subject guides: Maths 2,175 + Physics 2,098 + Chemistry
-   * 2,074 = 6,347 PYQs) and there is no subject-aware helper yet. Verified
-   * against the bank 2026-09-28.
+   * is all three subject guides: Maths 3,388 + Physics 3,390 + Chemistry
+   * 3,371 = 10,149 PYQs) and there is no subject-aware helper yet. Verified
+   * against the bank 2026-10-13, after the 2026 papers went PUBLIC.
    */
   meta: string;
   icon: typeof BookOpen;
@@ -74,7 +74,7 @@ const COPY: Record<string, GuideCopy> = {
     title: "MHT-CET — Maths, Physics and Chemistry",
     blurb:
       "There is no negative marking on either paper, so all three guides are built around order and time rather than what to skip — and Physics and Chemistry share one 90-minute paper.",
-    meta: "6,347 questions · 2021-2025",
+    meta: "10,149 questions · 2021-2026",
     icon: Sigma,
   },
   cds: {

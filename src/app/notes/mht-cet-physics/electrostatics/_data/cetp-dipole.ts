@@ -6,7 +6,7 @@ export const DIPOLE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Two equal and opposite charges a short distance apart form a dipole of moment p = q × 2a; far away its field falls as 1/r³, and in a uniform field it feels a torque but no net force.",
   whyItMatters:
-    "9 PYQs, none HARD. Two things are asked: how the field and potential fall off along the axis and the equator, and the torque or work when a dipole turns in a uniform field. " +
+    "16 PYQs, one HARD. Two things are asked: how the field and potential fall off along the axis and the equator, and the torque or work when a dipole turns in a uniform field. " +
     "Every work question is the same subtraction, pE(cos θ₁ − cos θ₂).",
   concepts: [
     // 1 — field and potential of a dipole

@@ -8,7 +8,7 @@ export const VECTORS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Vectors add by components or by the parallelogram law, R² = A² + B² + 2AB cos θ; the dot product A·B = AB cos θ is zero for perpendicular vectors, and the cross product has magnitude AB sin θ and points perpendicular to both.",
   whyItMatters:
-    "10 PYQs, 2 of them HARD. Five add vectors — a unit vector along a sum, three vectors that may or may not close a triangle, a sum perpendicular to a difference, a resultant that changes when one vector doubles. " +
+    "35 PYQs, 3 of them HARD, all from 2025 and 2026: the page entered the paper with the 2025 syllabus. Of the ten set in 2025, five add vectors — a unit vector along a sum, three vectors that may or may not close a triangle, a sum perpendicular to a difference, a resultant that changes when one vector doubles. " +
     "Five use products: the dot product from the cross product, perpendicularity, and the angle between a sum and a cross product. Two cards.",
   concepts: [
     {

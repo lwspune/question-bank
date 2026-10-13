@@ -6,7 +6,7 @@ export const PN_JUNCTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Where p and n meet, carriers diffuse across and leave a thin depletion layer of fixed ions whose field opposes further flow; forward bias shrinks that barrier and lets current through, reverse bias widens it and blocks current.",
   whyItMatters:
-    "14 PYQs, none HARD. Two things are asked: what forms the depletion layer and which way its field points, " +
+    "21 PYQs, none HARD. Two things are asked: what forms the depletion layer and which way its field points, " +
     "and what forward and reverse bias do to the barrier and the layer's width — including reading from a drawing whether a diode is forward or reverse biased.",
   concepts: [
     {

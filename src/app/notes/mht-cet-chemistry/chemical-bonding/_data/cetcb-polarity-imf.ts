@@ -6,7 +6,7 @@ export const POLARITY_IMF_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A polar bond has a dipole; whether the whole molecule is polar depends on shape — symmetric molecules cancel their bond dipoles to zero, bent and pyramidal ones don't. The resulting polarity fixes which intermolecular force acts and hence the boiling point.",
   whyItMatters:
-    "Eleven PYQs, and they cluster into three moves the bank repeats every year. " +
+    "Eighteen PYQs, and they cluster into three moves the bank repeats every year. " +
     "First: spot the molecule with zero (or highest, or lowest) dipole moment — always a symmetry judgement, never just 'does it have polar bonds'. " +
     "Second: name the intermolecular force between a given pair (dipole-induced dipole is the favourite). " +
     "Third: the hydrogen-bonding boiling-point question — which molecule can (or cannot) H-bond. Master symmetry, the IMF table and the N/O/F rule and the whole subtopic is yours.",

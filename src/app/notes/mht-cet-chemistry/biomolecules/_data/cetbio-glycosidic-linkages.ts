@@ -6,7 +6,7 @@ export const GLYCOSIDIC_LINKAGES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A glycosidic linkage is the C–O–C bridge formed when the anomeric OH of one sugar condenses with an OH of another: alpha-1,4 in maltose, amylose and the chains of amylopectin and glycogen, alpha-1,6 at their branch points, beta-1,4 in lactose and cellulose, and alpha-1,beta-2 between C-1 of glucose and C-2 of fructose in sucrose.",
   whyItMatters:
-    "19 PYQs, one HARD. Thirteen are the disaccharides and oligosaccharides — the linkage in maltose (asked four times) and lactose (three), which carbons of glucose and fructose join in sucrose (three), invert sugar, how many moles of glucose each gives on hydrolysis, and which sugars contain galactose; six are the polysaccharides — the linkages in cellulose, amylose and amylopectin, what animals store, and the false statement about cellulose in animal cells. " +
+    "28 PYQs, one HARD. Of the nineteen set from 2021 to 2025, thirteen are the disaccharides and oligosaccharides — the linkage in maltose (asked four times) and lactose (three), which carbons of glucose and fructose join in sucrose (three), invert sugar, how many moles of glucose each gives on hydrolysis, and which sugars contain galactose; six are the polysaccharides — the linkages in cellulose, amylose and amylopectin, what animals store, and the false statement about cellulose in animal cells. " +
     "Two cards.",
   concepts: [
     // 1 — disaccharides and oligosaccharides

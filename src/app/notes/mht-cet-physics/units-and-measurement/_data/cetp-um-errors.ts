@@ -6,7 +6,7 @@ export const ERRORS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A repeated measurement is reported as its mean ± its mean absolute error; absolute errors add in a sum or a difference, and percentage errors add in a product or a quotient, each multiplied by the power its quantity is raised to.",
   whyItMatters:
-    "14 PYQs, none HARD. Ten ask for the percentage error in a density, a pressure, a kinetic energy, g from a pendulum, or a general product of powers. " +
+    "40 PYQs, none HARD. Of the fourteen set in 2025, ten ask for the percentage error in a density, a pressure, a kinetic energy, g from a pendulum, or a general product of powers. " +
     "Four are a mean with its error, the error in a temperature rise, which errors are random, and the unit of L/R. Two cards.",
   concepts: [
     {

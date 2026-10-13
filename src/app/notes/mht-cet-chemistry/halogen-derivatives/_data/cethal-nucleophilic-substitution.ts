@@ -6,7 +6,7 @@ export const NUCLEOPHILIC_SUBSTITUTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A nucleophile replaces the halide either in two steps through a planar carbocation (SN1 — tertiary fastest, racemisation at a chiral carbon) or in one concerted backside attack (SN2 — methyl fastest, inversion); the nucleophile's attacking atom decides the product, KCN giving a nitrile and AgCN an isocyanide.",
   whyItMatters:
-    "12 PYQs, none HARD. Half ask a mechanism fact — which is NOT a feature of SN2 (a carbocation), which halide is fastest by SN1 or SN2, which substrate racemises; half ask a product — 2-bromobutane with aqueous NaOH, ethyl bromide with silver acetate or silver propanoate, the reagent for an alkyl nitrite or a nitrile. " +
+    "36 PYQs, none HARD, and now the largest page: 2026 alone added 24. Of the twelve set from 2021 to 2025, half ask a mechanism fact — which is NOT a feature of SN2 (a carbocation), which halide is fastest by SN1 or SN2, which substrate racemises; half ask a product — 2-bromobutane with aqueous NaOH, ethyl bromide with silver acetate or silver propanoate, the reagent for an alkyl nitrite or a nitrile. " +
     "Two cards.",
   concepts: [
     // 1 — SN1 vs SN2

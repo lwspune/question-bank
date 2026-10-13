@@ -6,7 +6,7 @@ export const OSMOTIC_PRESSURE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "π = CRT = nRT/V, the van't Hoff equation: osmotic pressure is proportional to molar concentration and temperature; solved for n it gives the molar mass, and equal π at equal T means isotonic.",
   whyItMatters:
-    "22 PYQs, none HARD. The van't Hoff equation solved for π, C, T or the molar mass (with R = 0.082 dm³ atm K⁻¹ mol⁻¹ and V in dm³), the isotonic pair of urea and sucrose solutions (three sittings), and rankings of electrolytes by i·m — the same ranking as the two previous pages. " +
+    "44 PYQs, none HARD, and now the chapter's largest page. The van't Hoff equation solved for π, C, T or the molar mass (with R = 0.082 dm³ atm K⁻¹ mol⁻¹ and V in dm³), the isotonic pair of urea and sucrose solutions (three sittings), and rankings of electrolytes by i·m — the same ranking as the two previous pages. " +
     "Units are the whole difficulty: litres for V, kelvin for T, and mass in grams over molar mass for n.",
   concepts: [
     // 1 — π = CRT

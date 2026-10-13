@@ -6,7 +6,7 @@ export const SWITCHING_CIRCUITS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A circuit of switches is a logical statement in disguise: switches in series are AND, switches in parallel are OR, and the lamp glowing is the statement being true.",
   whyItMatters:
-    "This is the smallest subtopic in the chapter at 12 PYQs and by a wide margin the hardest — 67% of them are HARD, against 14% for Negation — " +
+    "This is the smallest subtopic in the chapter at 17 PYQs and by a wide margin the hardest — 53% of them are HARD, against 10% for Negation — " +
     "so it is where the chapter's difficulty actually lives, and it is worth knowing that before you budget your time. " +
     "The good news is that nothing here is new. Once a circuit is translated into symbols, every question is answered by the algebra you already have, " +
     "and the whole subtopic rests on two rules that take a minute to learn.",

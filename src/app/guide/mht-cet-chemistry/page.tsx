@@ -19,7 +19,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "MHT-CET Chemistry — Strategy Guide",
   description:
-    "How MHT-CET Chemistry actually works. A 2,074-question analysis of every paper from 2021 to 2025 — 50 questions sharing 90 minutes with Physics, no negative marking, 3% HARD, three strands by how a question is answered, 23 chapter playbooks, a reactions-and-formulas reference, trends and traps.",
+    "How MHT-CET Chemistry actually works. A 3,371-question analysis of every paper from 2021 to 2026: 50 questions sharing 90 minutes with Physics, no negative marking, 3% HARD, three strands by how a question is answered, 22 chapter playbooks, a reactions-and-formulas reference, trends and traps.",
   alternates: { canonical: "/guide/mht-cet-chemistry" },
 };
 
@@ -63,7 +63,7 @@ export default async function MhtCetChemistryLanding() {
       value: OVERVIEW.totalQ.toLocaleString("en-IN"),
       label: "Past-year questions",
     },
-    { value: String(OVERVIEW.papers), label: "Papers (2021–2025)" },
+    { value: String(OVERVIEW.papers), label: "Papers (2021–2026)" },
     { value: String(OVERVIEW.chapters), label: "Chapters" },
     { value: String(OVERVIEW.playbooks), label: "Playbooks" },
     { value: `${pct(difficulty.hard)}%`, label: "of the bank is HARD" },
@@ -89,12 +89,12 @@ export default async function MhtCetChemistryLanding() {
         type="CollectionPage"
         path="/guide/mht-cet-chemistry"
         headline="MHT-CET Chemistry — Strategy Guide"
-        description="A 2,074-question analysis of every MHT-CET Chemistry paper from 2021 to 2025. No negative marking, a 90-minute paper shared with Physics, 23 chapter playbooks, a reactions-and-formulas reference, trends and traps."
+        description="A 3,371-question analysis of every MHT-CET Chemistry paper from 2021 to 2026. No negative marking, a 90-minute paper shared with Physics, 22 chapter playbooks, a reactions-and-formulas reference, trends and traps."
       />
       <GuideHero
         eyebrow="MHT-CET Chemistry Guide"
         title="How MHT-CET Chemistry actually works"
-        subtitle={`A ${OVERVIEW.totalQ.toLocaleString("en-IN")}-question analysis of every Chemistry paper from 2021 to 2025 — ${OVERVIEW.papers} papers in all. ${paper.questions} questions that share ${paper.durationMinutes} minutes with Physics, and no negative marking, so the whole game is order and time rather than selection. We mapped the ${OVERVIEW.playbooks} chapter playbooks, the formulas, the year-on-year drift and the distractor traps.`}
+        subtitle={`A ${OVERVIEW.totalQ.toLocaleString("en-IN")}-question analysis of every Chemistry paper from 2021 to 2026, ${OVERVIEW.papers} papers in all. ${paper.questions} questions that share ${paper.durationMinutes} minutes with Physics, and no negative marking, so the whole game is order and time rather than selection. We mapped the ${OVERVIEW.playbooks} chapter playbooks, the formulas, the year-on-year drift and the distractor traps.`}
       >
         <StatBlock stats={stats} />
       </GuideHero>
@@ -187,7 +187,7 @@ export default async function MhtCetChemistryLanding() {
               {paper.durationMinutes} minutes across {paper.paperQuestions}{" "}
               questions is {paper.minutesPerQuestion} minutes a question on
               average — but Chemistry is {pct(difficulty.hard)}% HARD and
-              Physics about 18%. A starting split of{" "}
+              Physics about 17%. A starting split of{" "}
               <strong className="font-semibold text-foreground">
                 {OVERVIEW.timeSplit.chemistryMinutes} minutes for Chemistry and{" "}
                 {OVERVIEW.timeSplit.physicsMinutes} for Physics
@@ -279,8 +279,9 @@ export default async function MhtCetChemistryLanding() {
           ))}
         </ul>
         <p className="mt-3 text-xs text-muted-foreground">
-          Weightage here is the RECENT rate (2024–2025 papers), not a lifetime
-          average — 2025 halved one chapter and raised three. See{" "}
+          Weightage here is the RECENT rate (the 39 papers of 2025–2026), not a
+          lifetime average: since 2025 one chapter has halved and stayed down,
+          and two have risen above the playbook line. See{" "}
           <Link
             href="/guide/mht-cet-chemistry/trends"
             className="underline underline-offset-4 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -301,8 +302,9 @@ export default async function MhtCetChemistryLanding() {
           All {OVERVIEW.chapters} chapters tested across the {OVERVIEW.papers}{" "}
           papers in the bank, sorted by questions per paper on recent papers —
           not by lifetime count, because that is the number worth planning
-          against. Two chapters carry a note: Structure of Atom halved in
-          2025, and Green Chemistry rose to a question a paper.
+          against. Four chapters carry a note: Structure of Atom halved in
+          2025 and stayed down, Green Chemistry rose two years running, and
+          Aldehydes and Basic Principles of Organic Chemistry rose in 2026.
         </p>
         <div className="mt-4 overflow-x-auto rounded-md border">
           <table className="w-full min-w-[860px] text-sm">
@@ -379,7 +381,7 @@ export default async function MhtCetChemistryLanding() {
           </table>
         </div>
         <p className="mt-3 text-xs text-muted-foreground">
-          &ldquo;Q / paper&rdquo; is the rate on recent papers (2024–2025);
+          &ldquo;Q / paper&rdquo; is the rate on recent papers (2025–2026);
           &ldquo;Questions&rdquo; and &ldquo;Share&rdquo; are lifetime figures
           across all {OVERVIEW.papers} papers. Where the two disagree, the rate
           is the one to plan on. {OVERVIEW.playbooks} of these{" "}

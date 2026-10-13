@@ -66,9 +66,9 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "cornerstone",
     affects: ["permutations-and-combinations"],
     mechanic:
-      "50 questions in 90 minutes is 1.8 minutes each, and all 50 pay 2 marks whether they took twenty seconds or seven minutes. Permutations and Combinations is the classic sinkhole: 42 q at 40% HARD, 1.00 a paper, and its Arrangements with Constraints page (10 q, 50% HARD) and Circular Arrangements (6 q, 83%) produce problems that feel tractable for minute after minute and then do not come out. Five minutes spent there is not five minutes — it is the Applications of Derivative questions you never reached, and that chapter runs 3.88 a paper at only 23% HARD.",
+      "50 questions in 90 minutes is 1.8 minutes each, and all 50 pay 2 marks whether they took twenty seconds or seven minutes. Permutations and Combinations is the classic sinkhole: 65 q at 34% HARD, 0.97 a paper, and its Selections with Conditions page and Circular Arrangements (9 q each, 56% HARD) produce problems that feel tractable for minute after minute and then do not come out. Five minutes spent there is not five minutes — it is the Applications of Derivative questions you never reached, and that chapter runs 3.23 a paper at only 20% HARD.",
     fix:
-      "Put a hard cap on any single question: if you have not seen the STRUCTURE within about three minutes, answer it and move. Not skip — answer, because a blank scores the same as a wrong guess. The chapters that punish a slow start (P&C, Limits at 56% HARD, Indefinite Integration at 51%) should be visited on the second pass, after the cheap marks are banked.",
+      "Put a hard cap on any single question: if you have not seen the STRUCTURE within about three minutes, answer it and move. Not skip — answer, because a blank scores the same as a wrong guess. The chapters that punish a slow start (P&C, Limits at 56% HARD, Indefinite Integration at 48%) should be visited on the second pass, after the cheap marks are banked.",
   },
   {
     id: "perpendicularity-dialects",
@@ -76,9 +76,9 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "cornerstone",
     affects: ["vectors", "line-and-plane", "straight-line", "pair-of-straight-lines", "circle"],
     mechanic:
-      "Perpendicularity is 92 question stems spread across 7 chapters, and it is written a different way in each one: m1*m2 = -1 for straight lines and conics, dot product = 0 for vectors, a + b = 0 for a pair of lines, and cross product of the direction vectors for line and plane. Students learn the dialect of whichever chapter they revised most recently and then fail to recognise the same condition when it turns up wearing another chapter's clothes. The words move too — perpendicular, normal to, at right angles, orthogonal, and cuts at 90 degrees are all the same instruction.",
+      "Perpendicularity is 147 question stems spread across 8 chapters, and it is written a different way in each one: m1*m2 = -1 for straight lines and conics, dot product = 0 for vectors, a + b = 0 for a pair of lines, and cross product of the direction vectors for line and plane. Students learn the dialect of whichever chapter they revised most recently and then fail to recognise the same condition when it turns up wearing another chapter's clothes. The words move too — perpendicular, normal to, at right angles, orthogonal, and cuts at 90 degrees are all the same instruction.",
     fix:
-      "Keep one card with all four forms on it and read it before every mock. When a question says perpendicular in any of its wordings, first ask what OBJECTS you are holding — two slopes, two vectors, a pair of lines, or a line and a plane — and write the matching form immediately, before touching the algebra. The same discipline covers parallelism (43 q across 5 chapters) and the parent idea, angle between two objects (87 q across 7 chapters): perpendicular is just angle 90, parallel is angle 0.",
+      "Keep one card with all four forms on it and read it before every mock. When a question says perpendicular in any of its wordings, first ask what OBJECTS you are holding — two slopes, two vectors, a pair of lines, or a line and a plane — and write the matching form immediately, before touching the algebra. The same discipline covers parallelism (named in 101 stems across 9 chapters) and the parent idea, the angle between two objects (127 stems across 8 chapters): perpendicular is just angle 90, parallel is angle 0.",
   },
   {
     id: "degeneracy-determinant",
@@ -86,9 +86,9 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "cornerstone",
     affects: ["vectors", "line-and-plane", "straight-line", "determinants-and-matrices"],
     mechanic:
-      "Four question types that look unrelated on the page are the same test wearing four names: three lines are concurrent, three points are collinear, two lines are coplanar, and the scalar triple product is zero. Every one of them is a 3x3 determinant set equal to zero. This shape carries roughly 19 to 30 questions across 5 or 6 chapters. Memorised as four separate recipes it becomes four chances to reach for the wrong one under time pressure; recognised as one idea it is a single reflex.",
+      "Four question types that look unrelated on the page are the same test wearing four names: three lines are concurrent, three points are collinear, two lines are coplanar, and the scalar triple product is zero. Every one of them is a 3x3 determinant set equal to zero. The words concurrent, collinear and coplanar alone name 64 question stems across 6 chapters. Memorised as four separate recipes it becomes four chances to reach for the wrong one under time pressure; recognised as one idea it is a single reflex.",
     fix:
-      "Treat the words concurrent, collinear, coplanar, and lie in one plane as a single instruction: build the 3x3 and set it to zero. This pays hardest in Vectors, where Scalar Triple Product, Coplanarity, and Volume is both the biggest subtopic (68 q) and the hardest (74% HARD) — the recognition is most of the work, and the arithmetic that follows is routine.",
+      "Treat the words concurrent, collinear, coplanar, and lie in one plane as a single instruction: build the 3x3 and set it to zero. This pays hardest in Vectors, where Scalar Triple Product, Coplanarity, and Volume is the biggest subtopic (100 q) and, at 63% HARD, one of its two hardest — the recognition is most of the work, and the arithmetic that follows is routine.",
   },
   {
     id: "vectors-wrong-entry-point",
@@ -96,9 +96,9 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "cornerstone",
     affects: ["vectors"],
     mechanic:
-      "Vectors is the largest chapter in the bank (214 q, 4.83 a paper) and the hardest cornerstone at 56% HARD, so it feels like the place to grind first. But its difficulty is concentrated, not spread: Scalar Triple Product is 68 q at 74% HARD and Cross Product is 63 q at 63%, while Dot Product, Angle, and Perpendicularity is 46 q at only 26%. Working the chapter in listed order means opening on the two most expensive subtopics in it and burning the hours where the return is worst.",
+      "Vectors is the largest chapter in the bank (334 q, 4.49 a paper) and the hardest cornerstone at 50% HARD, so it feels like the place to grind first. But its difficulty is concentrated, not spread: Scalar Triple Product is 100 q at 63% HARD and Cross Product is 83 q at 64%, while Dot Product, Angle, and Perpendicularity is 76 q at only 28%. Working the chapter in listed order means opening on the two most expensive subtopics in it and burning the hours where the return is worst.",
     fix:
-      "Secure Dot Product, Angle, and Perpendicularity (48 q, 25% HARD) and Magnitude, Components, and Unit Vectors (10 q, 30%) first, then come back for the triple product. Note that the sister cornerstone does NOT behave this way: Line and Plane spreads its HARD across seven subtopics, so there is no cheap half to take first — you own that chapter whole or you lose the marks. Check the shape of a chapter before deciding how to enter it.",
+      "Secure Dot Product, Angle, and Perpendicularity (76 q, 28% HARD) and Magnitude, Components, and Unit Vectors (18 q, 17%) first, then come back for the triple product. Note that the sister cornerstone does NOT behave this way: Line and Plane spreads its HARD across seven subtopics, so there is no cheap half to take first — you own that chapter whole or you lose the marks. Check the shape of a chapter before deciding how to enter it.",
   },
   {
     id: "integrate-before-classifying",
@@ -106,9 +106,9 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "cornerstone",
     affects: ["indefinite-integration", "definite-integration"],
     mechanic:
-      "Indefinite Integration is 151 q at 52% HARD and almost all of that difficulty is form recognition rather than algebra — Trigonometric Integrals - Rational and Substitution Forms alone runs 34 q at 74% HARD, the highest of any cornerstone subtopic. The trap is starting to integrate before deciding whether the integrand is asking for substitution, by parts, or partial fractions. Two minutes into the wrong method there is no cheap way back, and at 1.8 minutes a question you are already over budget.",
+      "Indefinite Integration is 249 q at 48% HARD and almost all of that difficulty is form recognition rather than algebra — Trigonometric Integrals - Rational and Substitution Forms alone runs 46 q at 76% HARD, the highest of any subtopic in the subject. The trap is starting to integrate before deciding whether the integrand is asking for substitution, by parts, or partial fractions. Two minutes into the wrong method there is no cheap way back, and at 1.8 minutes a question you are already over budget.",
     fix:
-      "Spend the first fifteen seconds classifying, not integrating: is there an inner function whose derivative is sitting outside (substitution), a product of two unlike species (by parts), or a rational function with a factorable denominator (partial fractions)? The easy end of this chapter is pure recognition too — Foundations and Standard Formulae is 8 q at 13% HARD and Trigonometric Integrals - Powers and Identities is 11 q at 18% — so the recognition drill and the cheap marks are the same drill.",
+      "Spend the first fifteen seconds classifying, not integrating: is there an inner function whose derivative is sitting outside (substitution), a product of two unlike species (by parts), or a rational function with a factorable denominator (partial fractions)? The easy end of this chapter is pure recognition too — Foundations and Standard Formulae is 20 q at 5% HARD and Trigonometric Integrals - Powers and Identities is 19 q at 26% — so the recognition drill and the cheap marks are the same drill.",
   },
   {
     id: "inverse-trig-substitution-missed",
@@ -116,9 +116,9 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "cornerstone",
     affects: ["differentiation", "trigonometric-functions"],
     mechanic:
-      "Differentiation is 135 q at 47% HARD and its largest subtopic, Inverse Functions & Inverse Trigonometric Differentiation, is 38 q at 47% HARD. Nearly all of that difficulty is one missed move. When an inverse trig function wraps a rational expression in x — forms like (1-x^2)/(1+x^2) or 2x/(1-x^2) — the expression is asking to be rewritten with a trig substitution before anything is differentiated. Differentiate it raw and you get an answer that is correct, unrecognisable, and matches none of the four options, which then costs you a second pass to discover you were right all along.",
+      "Differentiation is 237 q at 47% HARD and its largest subtopic, Inverse Functions & Inverse Trigonometric Differentiation, is 59 q at 53% HARD. Nearly all of that difficulty is one missed move. When an inverse trig function wraps a rational expression in x — forms like (1-x^2)/(1+x^2) or 2x/(1-x^2) — the expression is asking to be rewritten with a trig substitution before anything is differentiated. Differentiate it raw and you get an answer that is correct, unrecognisable, and matches none of the four options, which then costs you a second pass to discover you were right all along.",
     fix:
-      "When you see an inverse trig function wrapped around a rational expression in x, try the standard substitutions first (x = tan theta, x = sin theta, x = cos theta) and simplify the ARGUMENT before differentiating. While you are in this chapter, note Derivative of One Function with Respect to Another: only 7 q but 71% HARD, the highest in the chapter, and it is always just dy/dx divided by dz/dx.",
+      "When you see an inverse trig function wrapped around a rational expression in x, try the standard substitutions first (x = tan theta, x = sin theta, x = cos theta) and simplify the ARGUMENT before differentiating. While you are in this chapter, note Derivative of One Function with Respect to Another: only 16 q but 63% HARD, the highest in the chapter, and it is always just dy/dx divided by dz/dx.",
   },
 
   // -------- Quick-win — cheap marks lost to procedure, not to difficulty --------
@@ -128,9 +128,9 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "quickwin",
     affects: ["mathematical-logic"],
     mechanic:
-      "Mathematical Logic is 84 q at 1.96 a paper and only 29% HARD, which makes it one of the best marks-per-minute chapters on the paper. Negation of Statements and Quantifiers is its CHEAPEST subtopic — 14 q at 14% HARD — and that is exactly why this trap costs so much: the recurring error is mechanical rather than conceptual, negating p and q without turning the and into an or, or negating an implication as another implication instead of as a conjunction. These are marks lost to sloppiness on the easiest block in the chapter.",
+      "Mathematical Logic is 151 q at 2.38 a paper and only 23% HARD, which makes it one of the best marks-per-minute chapters on the paper. Negation of Statements and Quantifiers is its CHEAPEST subtopic — 21 q at 10% HARD — and that is exactly why this trap costs so much: the recurring error is mechanical rather than conceptual, negating p and q without turning the and into an or, or negating an implication as another implication instead of as a conjunction. These are marks lost to sloppiness on the easiest block in the chapter.",
     fix:
-      "Memorise three lines cold and nothing else in this chapter is hard: the negation of (p and q) is (not p or not q); the negation of (p or q) is (not p and not q); the negation of (p implies q) is (p and not q). For switch circuits, series is AND and parallel is OR. Those four facts plus a truth table cover the bulk of an 88-question chapter.",
+      "Memorise three lines cold and nothing else in this chapter is hard: the negation of (p and q) is (not p or not q); the negation of (p or q) is (not p and not q); the negation of (p implies q) is (p and not q). For switch circuits, series is AND and parallel is OR. Those four facts plus a truth table cover the bulk of a 151-question chapter.",
   },
   {
     id: "lpp-corner-point-shortcut",
@@ -138,7 +138,7 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "quickwin",
     affects: ["linear-programming"],
     mechanic:
-      "Linear Programming is the cheapest chapter that ships as a playbook: 45 q, 1.00 a paper, 4% HARD, and its corner-point page is 16 q at 0% HARD. There is essentially no mathematics available to get wrong, which is exactly why the losses here are procedural — reading an inequality on the wrong side of its line, forgetting the non-negativity constraints so the region is too big, or evaluating the objective at two corner points, seeing an improvement, and stopping there.",
+      "Linear Programming is the cheapest chapter that ships as a playbook: 69 q, 1.00 a paper, 3% HARD, and its corner-point page is 28 q at 0% HARD. There is essentially no mathematics available to get wrong, which is exactly why the losses here are procedural — reading an inequality on the wrong side of its line, forgetting the non-negativity constraints so the region is too big, or evaluating the objective at two corner points, seeing an improvement, and stopping there.",
     fix:
       "Draw the region, list EVERY corner point including the axis intercepts, evaluate the objective at all of them, and only then choose. There is no shortcut and none is needed: this chapter should close in well under 1.8 minutes a question, and the time it gives back is what pays for Vectors later in the paper.",
   },
@@ -148,9 +148,9 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "quickwin",
     affects: ["probability-distribution", "binomial-distribution"],
     mechanic:
-      "Probability Distribution (107 q, 2.67 a paper, 21% HARD) and Binomial Distribution (57 q, 1.29 a paper, 21% HARD) are the two cheapest large chapters in the bank, and the marks lost in them are lost to formula SELECTION rather than to reasoning. Variance for a general discrete variable is E(X^2) minus (E(X))^2; for a binomial it is npq; the standard deviation is the square root of whichever of those applies. Option sets in these chapters routinely include the variance where the standard deviation was asked, and np where npq was asked — both are answers to a question adjacent to the one on the page.",
+      "Probability Distribution (159 q, 2.31 a paper, 18% HARD) and Binomial Distribution (86 q, 1.10 a paper, 16% HARD) are the two cheapest large chapters in the bank, and the marks lost in them are lost to formula SELECTION rather than to reasoning. Variance for a general discrete variable is E(X^2) minus (E(X))^2; for a binomial it is npq; the standard deviation is the square root of whichever of those applies. Option sets in these chapters routinely include the variance where the standard deviation was asked, and np where npq was asked — both are answers to a question adjacent to the one on the page.",
     fix:
-      "Underline the quantity actually requested — mean, variance, or standard deviation — before computing anything. For a binomial, write n, p and q down first, then mean = np, variance = npq, standard deviation = the square root of npq. Expectation, Variance and Standard Deviation is the largest subtopic in Probability Distribution at 37 q and only 19% HARD, so getting the selection reflex right is worth real marks for very little study.",
+      "Underline the quantity actually requested — mean, variance, or standard deviation — before computing anything. For a binomial, write n, p and q down first, then mean = np, variance = npq, standard deviation = the square root of npq. Expectation, Variance and Standard Deviation is the largest subtopic in Probability Distribution at 46 q and only 17% HARD, so getting the selection reflex right is worth real marks for very little study.",
   },
 
   {
@@ -159,9 +159,9 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "cornerstone",
     affects: ["trigonometric-functions"],
     mechanic:
-      "Trigonometry on this paper is 245 questions across two chapters, and they are not weighted the way their names suggest. Trigonometric Functions — the Std XII chapter, holding trigonometric equations, inverse trigonometry and solution of triangle — is 207 of them. The chapter a student recognises from Std XI, Trigonometry - II, is 38. So the familiar name carries 16% of the trigonometry and the unfamiliar one carries 84%, at 5.08 questions a paper against 0.92.",
+      "Trigonometry on this paper is 373 questions across two chapters, and they are not weighted the way their names suggest. Trigonometric Functions — the Std XII chapter, holding trigonometric equations, inverse trigonometry and solution of triangle — is 312 of them. The chapter a student recognises from Std XI, Trigonometry - II, is 61. So the familiar name carries 16% of the trigonometry and the unfamiliar one carries 84%, at 4.46 questions a paper against 0.92.",
     fix:
-      "Plan trigonometry as one Std XII cornerstone first, then the Std XI identities it depends on. Trigonometric Functions is drilled whole — its three pages cost about the same, 36%, 37% and 41% HARD — and it outranks every long-tail chapter on the paper. Learn the compound, multiple-angle and factorisation identities well enough to use them inside equations and inverse-trig questions; Trigonometry - II's own 39 questions, at 49% HARD and 0.92 a paper, come after the cornerstones.",
+      "Plan trigonometry as one Std XII cornerstone first, then the Std XI identities it depends on. Trigonometric Functions is drilled whole — its three parts cost about the same, 40%, 41% and 42% HARD — and it outranks every long-tail chapter on the paper. Learn the compound, multiple-angle and factorisation identities well enough to use them inside equations and inverse-trig questions; Trigonometry - II's own 61 questions, at 48% HARD and 0.92 a paper, come after the cornerstones.",
   },
 
   // -------- Long tail — scope and technique traps --------
@@ -171,9 +171,9 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "longtail",
     affects: [],
     mechanic:
-      "Measures of Dispersion is the most attractive-looking dead chapter in the bank: 32 questions lifetime at only 9% HARD, so it reads as guaranteed cheap marks, and it appears in essentially every 2023 and 2024 paper a student practises — 1.0 question per paper across those 27 shifts. It then scored ZERO across all 13 shifts of 2025. The mirror image is Conic Sections, which carried 3 questions in the whole bank before 2025 and then 15 in 2025 alone, at 39% HARD.",
+      "Measures of Dispersion is the most attractive-looking dead chapter in the bank: 30 questions lifetime at only 10% HARD, so it reads as guaranteed cheap marks, and it appears in every 2023 and 2024 paper a student practises — 1.0 question per paper across those 27 shifts. It then scored ZERO across all 13 shifts of 2025 and all 26 of 2026. The mirror image is Conic Sections, which carried 2 questions in the whole bank before 2025 and then 42 across 2025 and 2026, about one a paper both years, at 27% HARD.",
     fix:
-      "Date every practice paper you sit and weight what you learn from it accordingly. Anything drilled from 2023-24 trains you on a chapter that no longer appears and never shows you one that now does. Give Measures of Dispersion no revision time, and put Conic Sections on the list — at 40% HARD it is not a chapter that can be picked up in the hall.",
+      "Date every practice paper you sit and weight what you learn from it accordingly. Anything drilled from 2023-24 trains you on a chapter that no longer appears and never shows you one that now does. Give Measures of Dispersion no revision time, and put Conic Sections on the list — at 27% HARD it is not free, and it is not a chapter that can be picked up in the hall.",
   },
   {
     id: "calculus-where-geometry-answers",
@@ -191,7 +191,7 @@ export const TRAP_SHAPES: TrapShape[] = [
     bucket: "longtail",
     affects: ["definite-integration"],
     mechanic:
-      "The property pages of Definite Integration — odd and even symmetry, King's property, modulus and greatest-integer splitting — are 43 of its 69 q at 42% HARD, and those questions are constructed so that the direct antiderivative is long, ugly, or not available at all. The intended route collapses the integral in one line. A student who starts integrating either runs out of time or, worse, produces a confident answer having integrated straight across a point where a modulus changes sign — which is wrong rather than merely slow.",
+      "The property pages of Definite Integration — odd and even symmetry, King's property, modulus and greatest-integer splitting — are 71 of its 132 q at 39% HARD, and those questions are constructed so that the direct antiderivative is long, ugly, or not available at all. The intended route collapses the integral in one line. A student who starts integrating either runs out of time or, worse, produces a confident answer having integrated straight across a point where a modulus changes sign — which is wrong rather than merely slow.",
     fix:
       "Run three checks before writing an antiderivative. Are the limits symmetric about zero, so an odd part vanishes and an even part doubles? Does replacing x by a+b-x reproduce the integrand, so King's property applies? Does the integrand contain a modulus or a floor that changes sign inside the limits, so the interval must be split at that point? One of the three usually turns the question into a single line.",
   },

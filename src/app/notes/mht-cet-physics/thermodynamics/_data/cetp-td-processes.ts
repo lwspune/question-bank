@@ -8,7 +8,7 @@ export const PROCESSES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Holding temperature, heat, pressure or volume fixed gives the isothermal, adiabatic, isobaric and isochoric processes; an adiabatic change of an ideal gas follows PV^γ = constant, equivalently TV^(γ−1) = constant, which is steeper on a P–V graph than an isothermal.",
   whyItMatters:
-    "36 PYQs, 11 of them HARD. Thirteen identify a process from a statement or a graph. Sixteen apply the adiabatic relations — the final pressure or temperature after a sudden compression, P against T, density against pressure. " +
+    "65 PYQs, 20 of them HARD. Of the thirty-six set from 2021 to 2025, thirteen identify a process from a statement or a graph. Sixteen apply the adiabatic relations — the final pressure or temperature after a sudden compression, P against T, density against pressure. " +
     "Seven chain two processes or compare them, including gases that obey PV² or VP² = constant. Three cards.",
   concepts: [
     {

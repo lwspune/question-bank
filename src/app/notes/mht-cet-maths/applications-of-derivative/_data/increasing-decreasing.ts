@@ -6,7 +6,7 @@ export const INCREASING_DECREASING_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The sign of the derivative decides where a function rises or falls: f prime greater than zero means increasing, f prime less than zero means decreasing. Find where f prime is zero, split the line, and sign-test each piece.",
   whyItMatters:
-    "This is the workhorse subtopic of the chapter — 29 PYQs sit directly here (9 HARD, 14 MODERATE, 6 EASY). The moves recur exactly: factor a cubic's f prime and read intervals, use a discriminant to prove f prime keeps one sign, take a rational or rational-trig quotient down to a constant-sign ad minus bc condition, or run a chain-rule sign analysis on a product with exp or log. " +
+    "This is the workhorse subtopic of the chapter — 36 PYQs sit directly here (11 HARD, 20 MODERATE, 5 EASY). The moves recur exactly: factor a cubic's f prime and read intervals, use a discriminant to prove f prime keeps one sign, take a rational or rational-trig quotient down to a constant-sign ad minus bc condition, or run a chain-rule sign analysis on a product with exp or log. " +
     "The recurring MHT-CET traps live here too: the decreasing case needs f prime LESS than zero (so a rational quotient decreasing forces ad minus bc less than zero, not greater), an interval option must be a SUBSET of the true monotonic set, and a strictly-increasing cubic needs its quadratic f prime to have negative discriminant.",
   concepts: [
     // 1 — foundation: the sign chart of f' (no pyqExampleId, lint-exempt)

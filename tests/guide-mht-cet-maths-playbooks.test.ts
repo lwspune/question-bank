@@ -79,12 +79,15 @@ describe("mht-cet-maths playbooks — static structure", () => {
   it("strand sizes match what the strategy page claims", () => {
     expect(playbooksInBucket("cornerstone")).toHaveLength(7);
     expect(playbooksInBucket("quickwin")).toHaveLength(5);
-    expect(playbooksInBucket("longtail")).toHaveLength(9);
-    expect(PLAYBOOKS).toHaveLength(21);
+    // 9 -> 10 and 21 -> 22 on 2026-10-13, when Conic Sections crossed the 0.9 line on the
+    // 2025-2026 recent window (0.67 -> 1.08) and shipped a long-tail playbook.
+    expect(playbooksInBucket("longtail")).toHaveLength(10);
+    expect(PLAYBOOKS).toHaveLength(22);
   });
 
   it("the cornerstone claim is arithmetic on the data, not prose", () => {
-    // "7 chapters carry ~58% of a 50-question paper" is the guide's headline (57% until the
+    // "7 chapters carry ~55% of a 50-question paper" is the guide's headline (58% on the 2024-2025
+    // window until 2026-10-13, when 2026 went public and the recent window became 2025-2026; 57% until the
     // 2026-09-28 label fix hid 85 copies of two papers and re-keyed the grid by paper; 56% until the
     // 2026-09-26 trigonometry carve moved 47 equation rows into Trigonometric Functions)
     // (55% until 2026-09-25, when three misfiled rows moved into Indefinite
@@ -94,9 +97,9 @@ describe("mht-cet-maths playbooks — static structure", () => {
       (sum, p) => sum + p.qPerPaper,
       0
     );
-    expect(cornerstoneQ).toBeGreaterThan(28);
-    expect(cornerstoneQ).toBeLessThan(29);
-    expect(Math.round((cornerstoneQ / 50) * 100)).toBe(58);
+    expect(cornerstoneQ).toBeGreaterThan(27);
+    expect(cornerstoneQ).toBeLessThan(28);
+    expect(Math.round((cornerstoneQ / 50) * 100)).toBe(55);
   });
 
   it("quick-win chapters really are the low-difficulty ones", () => {
@@ -111,8 +114,9 @@ describe("mht-cet-maths playbooks — static structure", () => {
   it("every chapter at or above the 0.9 q/paper line HAS a playbook, and states the grid's rate", () => {
     // The other direction of the rule below. Until 2026-09-26 only "no playbook below the line"
     // was asserted, so Trigonometry - II crossed the line (0.88 -> 0.92) with nothing to notice.
-    // The rate is recomputed from the generated matrix over 2024-2025, not read from prose.
-    const recent = SHIFT_PAPERS.flatMap((p, i) => (p.year >= 2024 ? [i] : []));
+    // The rate is recomputed from the generated matrix over the recent window, 2025-2026 since
+    // 2026-10-13 (2024-2025 before), not read from prose.
+    const recent = SHIFT_PAPERS.flatMap((p, i) => (p.year >= 2025 ? [i] : []));
     for (const row of CHAPTER_MATRIX) {
       const rate = recent.reduce((a, c) => a + row.counts[c], 0) / recent.length;
       const pb = PLAYBOOKS.find((p) => p.chapter === row.chapter);

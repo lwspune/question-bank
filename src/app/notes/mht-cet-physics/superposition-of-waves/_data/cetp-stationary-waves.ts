@@ -6,7 +6,7 @@ export const STATIONARY_WAVES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Two equal waves running opposite ways make a stationary wave, y = 2A sin kx cos ωt, with fixed nodes λ/2 apart; a string fixed at both ends fits a whole number of loops, so it vibrates only at n = (p/2L)√(T/μ).",
   whyItMatters:
-    "36 PYQs, seven HARD — the largest page in the chapter. Two shapes: the pattern itself (node and antinode spacing, counting nodes and loops, reading λ off a standing-wave equation), " +
+    "57 PYQs, eleven HARD — level with Progressive Waves as the largest page in the chapter. Two shapes: the pattern itself (node and antinode spacing, counting nodes and loops, reading λ off a standing-wave equation), " +
     "and the string's frequencies — how they scale with length, tension, radius and density, which harmonic two consecutive resonances are, and matching overtones of two wires.",
   concepts: [
     {

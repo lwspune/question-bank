@@ -6,7 +6,7 @@ export const TRANSISTORS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "In a transistor the emitter current splits into a small base current and a large collector current, I_E = I_B + I_C; the ratios α = I_C/I_E and β = I_C/I_B describe it, and in common-emitter mode it amplifies with a gain of β R_L/R_in and a 180° phase reversal.",
   whyItMatters:
-    "29 PYQs, none HARD — steady marks for anyone who keeps α and β apart. Three shapes: the current ratios and their identities, " +
+    "47 PYQs, none HARD — steady marks for anyone who keeps α and β apart. Three shapes: the current ratios and their identities, " +
     "the common-emitter amplifier's voltage and power gain and its phase, and how an n-p-n transistor differs from a p-n-p one.",
   concepts: [
     {

@@ -6,7 +6,7 @@ export const NOMENCLATURE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The oxidation state of the central metal is what is left after the ligand charges are subtracted from the sphere charge, its coordination number is the number of donor atoms bonded to it, only the ions outside the square bracket ionise in solution, and an IUPAC name lists the ligands alphabetically before the metal, gives the metal's oxidation state in Roman numerals and ends in -ate when the sphere is an anion.",
   whyItMatters:
-    "15 PYQs, none HARD. Eight are oxidation state and coordination number — Pt in [PtCl₆]²⁻, Fe in hexacyanoferrate, Cr in Cr(CO)₆, the coordination number of an octahedral complex, of cisplatin and of trioxalatoferrate, and one on Stock notation; two count the chloride that precipitates with silver nitrate; five turn a name into a formula or a formula into a name. " +
+    "23 PYQs, none HARD. Of the fifteen set from 2021 to 2025, eight are oxidation state and coordination number — Pt in [PtCl₆]²⁻, Fe in hexacyanoferrate, Cr in Cr(CO)₆, the coordination number of an octahedral complex, of cisplatin and of trioxalatoferrate, and one on Stock notation; two count the chloride that precipitates with silver nitrate; five turn a name into a formula or a formula into a name. " +
     "Three cards.",
   concepts: [
     // 1 — oxidation state and coordination number

@@ -6,7 +6,7 @@ export const CROSS_PRODUCT_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The vector product whose magnitude is the area of a parallelogram and whose direction is the right-hand-rule perpendicular — the engine behind areas, unit normals, angles, and a whole family of vector-equation problems.",
   whyItMatters:
-    "At 63 PYQs this is the chapter's biggest subtopic after the scalar triple product, and nearly as punishing — roughly 63% of these are rated HARD. " +
+    "At 83 PYQs this is the chapter's biggest subtopic after the scalar triple product, and just as punishing — roughly 64% of these are rated HARD. " +
     "Three themes dominate: AREA (triangle, parallelogram, from diagonals, or from a side-plus-diagonal), the PERPENDICULAR DIRECTION (unit normal, vector of a given magnitude perpendicular to two), and VECTOR EQUATIONS that mix a cross and a dot condition (solve for the unknown vector, find an unknown component, or expand a vector triple product with the BAC-CAB rule). " +
     "Master the determinant computation and the |a×b| = |a||b|sin θ relation first — every concept below is built on them.",
   concepts: [

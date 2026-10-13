@@ -8,7 +8,7 @@ export const DE_BROGLIE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Every moving particle has a wavelength λ = h/p; for a particle of kinetic energy E this is h/√(2mE), and for an electron accelerated from rest through V volts it is h/√(2meV), about 12.27/√V ångström.",
   whyItMatters:
-    "26 PYQs, 6 of them HARD. Thirteen use λ = h/p with energy — comparing a particle with a photon, changing the kinetic energy, a neutron's wavelength at two temperatures. " +
+    "44 PYQs, 7 of them HARD. Of the twenty-six set from 2021 to 2025, thirteen use λ = h/p with energy — comparing a particle with a photon, changing the kinetic energy, a neutron's wavelength at two temperatures. " +
     "Nine are electrons accelerated through a potential difference, and four fit the electron's wave round a Bohr orbit. Three cards.",
   concepts: [
     {

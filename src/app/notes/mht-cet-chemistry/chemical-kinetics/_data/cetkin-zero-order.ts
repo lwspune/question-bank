@@ -6,7 +6,7 @@ export const ZERO_ORDER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A zero-order reaction runs at a constant rate k regardless of concentration: [A]ₜ = [A]₀ − kt, k has the unit of a rate (mol dm⁻³ s⁻¹), and the half-life [A]₀/2k grows with the initial concentration.",
   whyItMatters:
-    "7 PYQs, none HARD — the shortest page in the chapter. Rate constant from a concentration drop over a time, percent unreacted after a time, the half-life formula and its proportionality to [A]₀, and the one statement question (rate independent of concentration). " +
+    "11 PYQs, none HARD — one of the shortest pages in the chapter. Rate constant from a concentration drop over a time, percent unreacted after a time, the half-life formula and its proportionality to [A]₀, and the one statement question (rate independent of concentration). " +
     "It is worth five minutes because the contrast with first order — half-life dependent on [A]₀ here, independent there — is a favourite comparison stem.",
   concepts: [
     // 1 — integrated law and k

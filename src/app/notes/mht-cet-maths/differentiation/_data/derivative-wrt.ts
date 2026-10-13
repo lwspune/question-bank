@@ -7,7 +7,7 @@ export const DERIVATIVE_WRT_NOTE: SubtopicNote = {
     "To find how u changes with respect to v (not x), differentiate both with respect to x and divide: du/dv equals (du/dx) over (dv/dx).",
   whyItMatters:
     "This is a compact, formulaic technique that turns up almost every year as a quick scoring question — and it is pure mechanics once you see the trick. " +
-    "5 PYQs sit directly here, 3 HARD and 2 MODERATE: most pair two composite functions and ask for their rate of change at a point, " +
+    "16 PYQs sit directly here, 10 HARD and 6 MODERATE: most pair two composite functions and ask for their rate of change at a point, " +
     "and the harder ones supply f' and g' at specific values so you must apply the chain rule to numerator and denominator separately. " +
     "Master the single formula below and these become easy marks.",
   concepts: [

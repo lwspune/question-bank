@@ -8,7 +8,7 @@ export const MOTIONAL_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A straight conductor of length l moving at speed v across a field B has an e.m.f. Blv between its ends; if it closes a circuit, the current it drives feels a force that opposes the motion, and a rod or disc spinning about one end sweeps out area and develops ½Bωl².",
   whyItMatters:
-    "19 PYQs, 4 HARD. Six are Blv itself — an aircraft's wings, a boat's mast, a wire falling from a height, a pendulum's bob; seven are the force and power that follow — the heat produced when a loop is pulled through a field, the work to pull it out, the speed at which a falling loop or rod stops accelerating; six are rotation — a rod about one end, a metal disc, a bicycle wheel, and a coil spinning in a field. " +
+    "27 PYQs, 6 HARD. Of the nineteen set from 2021 to 2025, six are Blv itself — an aircraft's wings, a boat's mast, a wire falling from a height, a pendulum's bob; seven are the force and power that follow — the heat produced when a loop is pulled through a field, the work to pull it out, the speed at which a falling loop or rod stops accelerating; six are rotation — a rod about one end, a metal disc, a bicycle wheel, and a coil spinning in a field. " +
     "Three cards.",
   concepts: [
     {

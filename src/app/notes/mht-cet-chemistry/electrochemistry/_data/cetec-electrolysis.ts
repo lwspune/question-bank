@@ -6,7 +6,7 @@ export const ELECTROLYSIS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "In an electrolytic cell an external current forces a non-spontaneous reaction; the mass deposited or gas evolved is proportional to the charge passed, one faraday (96500 C) per mole of electrons, so W = ItM/(nF).",
   whyItMatters:
-    "20 PYQs, none HARD — the most formula-bound page in the chapter. Nearly every row is W = ItM/nF solved for a mass, a charge in faradays or coulombs, a time or a current; the trap is always n (2 for Cu, Mg, Ca, Cl₂; 3 for Al; 5 for MnO₄⁻; 6 for Cr₂O₇²⁻). " +
+    "35 PYQs, one HARD — the most formula-bound page in the chapter. Nearly every row is W = ItM/nF solved for a mass, a charge in faradays or coulombs, a time or a current; the trap is always n (2 for Cu, Mg, Ca, Cl₂; 3 for Al; 5 for MnO₄⁻; 6 for Cr₂O₇²⁻). " +
     "Three recall rows on what molten and aqueous NaCl give at each electrode.",
   concepts: [
     // 1 — electrolysis products

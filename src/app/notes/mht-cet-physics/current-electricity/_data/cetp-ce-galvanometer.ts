@@ -8,7 +8,7 @@ export const GALVANOMETER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A galvanometer of resistance G gives full-scale deflection at a small current I_g; a small shunt S in parallel lets it measure a larger current I as an ammeter, with I_g G = (I − I_g)S, and a large resistance in series lets it read a voltage V as a voltmeter, with V = I_g(G + R).",
   whyItMatters:
-    "24 PYQs, 4 of them HARD — the largest page in the chapter. Twelve are the ammeter: the shunt that passes a given fraction of the current, the resistance of the finished ammeter, a second shunt compared with the first, and the series resistance that keeps the main current unchanged. " +
+    "37 PYQs, 5 of them HARD — the largest page in the chapter. Of the twenty-four set from 2021 to 2025, twelve are the ammeter: the shunt that passes a given fraction of the current, the resistance of the finished ammeter, a second shunt compared with the first, and the series resistance that keeps the main current unchanged. " +
     "Twelve are the voltmeter: the series resistance for a new range, extending an existing voltmeter, and the resistance of the galvanometer from two ranges. " +
     "Two cards.",
   concepts: [

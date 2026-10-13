@@ -8,7 +8,7 @@ export const EXCESS_PRESSURE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A curved liquid surface pushes harder on its concave side: the pressure inside a drop exceeds the outside by 2T/r and inside a soap bubble by 4T/r, and the same curvature, in the meniscus of a narrow tube, lifts liquid to a height h = 2T cos θ/(rρg).",
   whyItMatters:
-    "38 PYQs, none HARD — nearly all one-formula ratios. Seventeen are excess pressure: bubbles with inside pressures of 1.01 and 1.02 atm, the ratio of volumes or masses when one excess pressure is three or four times another, two bubbles merging under isothermal conditions; twenty-one are capillary rise — how the height and the raised mass change with the radius, the liquid, the angle of contact, g on the moon or down a mine, a tube tilted or pushed down. " +
+    "63 PYQs, three HARD — nearly all one-formula ratios. Of the thirty-eight set from 2021 to 2025, seventeen are excess pressure: bubbles with inside pressures of 1.01 and 1.02 atm, the ratio of volumes or masses when one excess pressure is three or four times another, two bubbles merging under isothermal conditions; twenty-one are capillary rise — how the height and the raised mass change with the radius, the liquid, the angle of contact, g on the moon or down a mine, a tube tilted or pushed down. " +
     "Two cards.",
   concepts: [
     {

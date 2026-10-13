@@ -6,7 +6,7 @@ export const SETS_RELATIONS_AND_FUNCTION_TYPES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The definitions the chapter runs on: counting with sets and Cartesian products, whether a function is one-one and onto, and reading an equation in [x] as an interval.",
   whyItMatters:
-    "10 PYQs, none HARD — the vocabulary page, and the one with the most repeated stem in the chapter: [x]² − 5[x] + 6 = 0 has been set in three sittings with the same four options every time. " +
+    "13 PYQs, none HARD — the vocabulary page, and the one with the most repeated stem in the chapter: [x]² − 5[x] + 6 = 0 has been set in three sittings with the same four options every time. " +
     "The rest are a subsets-of-A×B count, a double-counting argument, two trig sets that turn out equal, a one-one/onto verdict on a linear-fractional function, and an identity in f(x + 1) − f(x). " +
     "None needs more than the definition, applied once.",
   concepts: [

@@ -6,7 +6,7 @@ export const FEASIBLE_REGION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Each linear inequality keeps one side of its boundary line; the feasible region is the intersection of those half-planes, and it can be a bounded polygon, an unbounded region, or nothing at all.",
   whyItMatters:
-    "13 PYQs, none HARD — the chapter's opening move and its largest page. Half the stems hand you four figures and ask which one is the solution set; the rest ask whether a region is bounded, unbounded or empty, or for its vertices. " +
+    "16 PYQs, none HARD — the chapter's opening move. Half the stems hand you four figures and ask which one is the solution set; the rest ask whether a region is bounded, unbounded or empty, or for its vertices. " +
     "Every one is settled by a test point per line, and the empty-region stem has a two-line algebraic proof that beats any sketch.",
   concepts: [
     // 1 — half-plane test

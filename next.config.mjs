@@ -128,6 +128,16 @@ const nextConfig = {
         destination: "/questions/mht-cet/maths/trigonometric-functions",
         permanent: true,
       },
+      // 2026-10-13: with the 2026 papers in, the guides' recent window moved to
+      // 2025-2026 and three Chemistry chapters fell below the 0.9 q/paper line,
+      // so their playbook pages are gone (the chapters stay browsable). No other
+      // page holds their content, so the old URLs land on the playbooks index,
+      // which lists every chapter including the tail.
+      ...["aromatic-compounds", "alkanes", "elements-of-group-1-and-2"].map((slug) => ({
+        source: `/guide/mht-cet-chemistry/playbooks/${slug}`,
+        destination: "/guide/mht-cet-chemistry/playbooks",
+        permanent: true,
+      })),
     ];
   },
 };

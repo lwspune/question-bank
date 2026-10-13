@@ -6,7 +6,7 @@ export const AC_BASICS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An alternating current follows I = I₀ sin(ωt + φ); its peak is I₀, and its r.m.s. value I₀/√2 is the steady current that would heat a resistor equally.",
   whyItMatters:
-    "7 PYQs, one HARD. Two things are asked: when a sinusoid first reaches its peak, half its peak or zero, " +
+    "14 PYQs, one HARD. Two things are asked: when a sinusoid first reaches its peak, half its peak or zero, " +
     "and converting between peak and r.m.s. values — what an a.c. ammeter or voltmeter reads.",
   concepts: [
     {

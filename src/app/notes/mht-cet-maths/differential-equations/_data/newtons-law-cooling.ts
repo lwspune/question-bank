@@ -6,7 +6,7 @@ export const NEWTONS_COOLING_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A hot body cools at a rate proportional to how much hotter it is than its surroundings. This single named model turns every cooling question into: subtract the surrounding temperature, then track how that difference decays.",
   whyItMatters:
-    "A compact, high-yield model — 5 PYQs sit here (3 HARD, 2 MODERATE) and MHT-CET repeats it almost verbatim year on year (2023, 2024, 2025). Every question is the same shape: cooling data over one interval fixes the rate, and you predict the temperature (or the time) over a second interval. " +
+    "A compact, high-yield model — 9 PYQs sit here (4 HARD, 4 MODERATE, 1 EASY) and MHT-CET repeats it almost verbatim year on year (every year from 2023 to 2026). Every question is the same shape: cooling data over one interval fixes the rate, and you predict the temperature (or the time) over a second interval. " +
     "The traps are always the same three: forgetting to subtract the surrounding temperature before taking logs, mishandling the minus sign, and missing the clean (ratio) shortcut when the time-steps are equal.",
   concepts: [
     // 1 — the cooling model (foundation, PYQ-less formula variant → lint-exempt)

@@ -8,7 +8,7 @@ export const KINEMATICS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Under constant acceleration v = u + at, s = ut + ½at² and v² = u² + 2as; when the acceleration changes, velocity is the slope of the position–time graph, acceleration the slope of the velocity–time graph, and each area under a graph gives the change in the quantity above it.",
   whyItMatters:
-    "19 PYQs, none HARD. Ten use the equations of motion — braking distances, free fall from a tower, a ball thrown up from a bridge, the distance in the nth second, average speed. " +
+    "27 PYQs, none HARD. Of the nineteen set from 2021 to 2025, ten use the equations of motion — braking distances, free fall from a tower, a ball thrown up from a bridge, the distance in the nth second, average speed. " +
     "Nine read a graph or differentiate a position: speed from x(t) and y(t), when acceleration is zero, distance and displacement from a velocity graph. Two cards.",
   concepts: [
     {

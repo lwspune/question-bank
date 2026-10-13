@@ -4,7 +4,7 @@ export const MHTCET_TRIG_FUNCTIONS_CHAPTER: ChapterNote = {
   chapterName: "Trigonometric Functions",
   title: "Trigonometric Functions — MHT-CET Maths",
   intro:
-    "Trigonometric Functions is the Std XII trigonometry chapter and the second-largest in MHT-CET Maths, at close to five questions a paper. " +
+    "Trigonometric Functions is the Std XII trigonometry chapter and the second-largest in MHT-CET Maths, at about four and a half questions a paper. " +
     "It has three parts, in the book's order: trigonometric equations, solution of a triangle, and inverse trigonometric functions. " +
     "The three cost about the same, so the chapter is prepared whole. The identities of Std XI are used throughout rather than taught again. " +
     "Every PYQ is tagged, so each page ends in the exact questions it was built from.",

@@ -6,7 +6,7 @@ export const AXIS_THEOREMS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Two theorems carry a known moment of inertia to a new axis: shift it parallel by d and add Md²; for a flat body, the axis perpendicular to the plane has the sum of the two in-plane ones.",
   whyItMatters:
-    "25 PYQs, twelve HARD — the HARDEST page in the chapter. Two in three of the HARD ones are a composite body (seven discs, a square of rods, spheres on a rod, a disc with a hole) " +
+    "41 PYQs, eighteen HARD — the HARDEST page in the chapter. Two in three of the HARD ones from 2021 to 2025 are a composite body (seven discs, a square of rods, spheres on a rod, a disc with a hole) " +
     "added up piece by piece with the parallel-axis theorem. Two further questions ask where a centre of mass lies.",
   concepts: [
     {

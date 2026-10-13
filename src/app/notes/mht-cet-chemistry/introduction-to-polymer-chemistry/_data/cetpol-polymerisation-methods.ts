@@ -6,7 +6,7 @@ export const POLYMERISATION_METHODS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Addition (chain-growth) polymerisation joins C=C monomers with nothing lost, usually through a free radical from a peroxide initiator; condensation (step-growth) joins two functional groups with loss of a small molecule such as water; ring-opening polymerisation unrolls a cyclic monomer — caprolactam to nylon 6 — with nothing lost and no C=C.",
   whyItMatters:
-    "9 PYQs, none HARD. Six ask which listed polymer is made by which method — Teflon and PAN by addition (Teflon from C₂F₄; PAN needs a peroxide initiator), nylon 6,6 and dacron by condensation, nylon 6 by ring-opening (three times, once from drawn structures); three are the 'NOT addition' and monomer-pair forms of the same question. " +
+    "14 PYQs, none HARD. Of the nine set from 2021 to 2025, six ask which listed polymer is made by which method — Teflon and PAN by addition (Teflon from C₂F₄; PAN needs a peroxide initiator), nylon 6,6 and dacron by condensation, nylon 6 by ring-opening (three times, once from drawn structures); three are the 'NOT addition' and monomer-pair forms of the same question. " +
     "One card.",
   concepts: [
     {

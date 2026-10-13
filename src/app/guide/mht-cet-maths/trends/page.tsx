@@ -44,16 +44,26 @@ const TREND_RUN = TREND_YEARS.map((y) => `${y.year} at ${y.pctHard}%`).join(
   ", then "
 );
 
-/** The two most recent multi-shift years — scope first, then depth. */
-const LATEST_TREND_YEAR = TREND_YEARS[TREND_YEARS.length - 1];
-const PRIOR_TREND_YEAR = TREND_YEARS[TREND_YEARS.length - 2];
+/**
+ * Scope comes from the years since the 2025 syllabus move; depth from the
+ * hardest multi-shift year. Both are read off HARD_BY_YEAR, never typed in.
+ */
+const SCOPE_YEARS = TREND_YEARS.filter((y) => y.year >= 2025);
+const SCOPE_Q = SCOPE_YEARS.reduce((s, y) => s + y.totalQ, 0);
+const SCOPE_PCT_HARD = Math.round(
+  (SCOPE_YEARS.reduce((s, y) => s + y.hardQ, 0) / SCOPE_Q) * 100
+);
+const SCOPE_LABEL = SCOPE_YEARS.map((y) => y.year).join("–");
+const HARDEST_TREND_YEAR = TREND_YEARS.reduce((a, b) =>
+  b.pctHard > a.pctHard ? b : a
+);
 
 const DROPPED = DRIFT_ROWS.find((r) => r.direction === "dropped");
 const ENTERED = DRIFT_ROWS.find((r) => r.direction === "entered");
 
 export const metadata: Metadata = {
   title: `MHT-CET Maths Trends — the 2025 syllabus moved (${YEARS[0]}–${YEARS[YEARS.length - 1]})`,
-  description: `What changed across ${TOTAL_PAPERS} MHT-CET shifts and ${TOTAL_Q} past-year Maths questions. Measures of Dispersion ran 1.0 question a paper for two years and then scored zero across all 13 papers of 2025; Conic Sections went from 3 questions in the whole bank to 15 in 2025 alone. Shift counts differ wildly by year, so every comparison here is a per-paper rate, not a raw count.`,
+  description: `What changed across ${TOTAL_PAPERS} MHT-CET shifts and ${TOTAL_Q} past-year Maths questions. Measures of Dispersion ran 1.0 question a paper for two years and then scored zero across all 39 papers of 2025 and 2026; Conic Sections went from 2 questions in the whole bank before 2025 to about one a paper in both 2025 and 2026. Shift counts differ wildly by year, so every comparison here is a per-paper rate, not a raw count.`,
   alternates: { canonical: "/guide/mht-cet-maths/trends" },
 };
 
@@ -130,12 +140,12 @@ export default async function Trends() {
         type="Article"
         path="/guide/mht-cet-maths/trends"
         headline={`MHT-CET Maths Trends — the 2025 syllabus moved (${YEARS[0]}–${YEARS[YEARS.length - 1]})`}
-        description={`What changed across ${TOTAL_PAPERS} MHT-CET shifts and ${TOTAL_Q} past-year Maths questions. Measures of Dispersion dropped to zero in 2025; Conic Sections entered. Every comparison is a per-paper rate, because shift counts differ wildly by year.`}
+        description={`What changed across ${TOTAL_PAPERS} MHT-CET shifts and ${TOTAL_Q} past-year Maths questions. Measures of Dispersion dropped to zero in 2025 and stayed there in 2026; Conic Sections entered and held. Every comparison is a per-paper rate, because shift counts differ wildly by year.`}
       />
       <GuideHero
         eyebrow="Trends"
         title={report.claim}
-        subtitle={`MHT-CET moved its syllabus for 2025 and the move is invisible unless you date your practice papers. One chapter left the paper entirely and another arrived. Everything below is measured across ${TOTAL_PAPERS} shifts and ${TOTAL_Q} questions from ${YEARS[0]} to ${YEARS[YEARS.length - 1]}.`}
+        subtitle={`MHT-CET moved its syllabus for 2025, 2026 kept the move, and it is invisible unless you date your practice papers. One chapter left the paper entirely and another arrived. Everything below is measured across ${TOTAL_PAPERS} shifts and ${TOTAL_Q} questions from ${YEARS[0]} to ${YEARS[YEARS.length - 1]}.`}
       >
         <StatBlock stats={stats} />
       </GuideHero>
@@ -153,8 +163,8 @@ export default async function Trends() {
             (y) => `${y.year} = ${y.papers} ${y.papers === 1 ? "shift" : "shifts"}`
           ).join(", ")}
           . A raw question count therefore means nothing across years: a
-          chapter can carry more questions in a 17-shift year than in a
-          14-shift year while sitting at exactly the same weight per paper.
+          chapter can carry more questions in a 26-shift year than in a
+          13-shift year while sitting at exactly the same weight per paper.
           Every comparable figure below is a{" "}
           <strong className="font-semibold text-foreground">
             questions-per-paper rate
@@ -280,10 +290,8 @@ export default async function Trends() {
         </ul>
         <p className="mt-4 font-serif text-sm leading-relaxed text-muted-foreground">
           Where a window shows a dash, only a raw count was verified for it and
-          no rate is claimed. Note also that a lifetime window{" "}
-          <em>contains</em> the recent window it is compared against, so those
-          two rows understate the move — the direction is real, the size is a
-          floor.
+          no rate is claimed. The two windows in each row never overlap, so a
+          change in rate is the whole move, not a floor under it.
         </p>
       </section>
 
@@ -433,7 +441,8 @@ export default async function Trends() {
             The paper is not steadily hardening.
           </strong>{" "}
           Across the years with real shift counts it ran {TREND_RUN} — it
-          hardened into the middle of the run and then eased. That matters for
+          hardened into {HARDEST_TREND_YEAR.year}, eased, and has stayed eased
+          since. That matters for
           planning: the hardest year is the wrong year to calibrate against on
           its own, because it over-prepares you for difficulty and
           under-prepares you for the current syllabus.
@@ -501,8 +510,8 @@ export default async function Trends() {
       {/* Recommendation */}
       <section className="mt-14 rounded-lg border-2 border-primary/40 bg-primary/5 p-6">
         <h2 className="text-lg font-semibold tracking-tight">
-          Recommendation: drill {ENTERED?.to.label ?? "the newest year"} for
-          scope, the hardest year for depth
+          Recommendation: drill {SCOPE_LABEL} for scope, the hardest year for
+          depth
         </h2>
         <p className="mt-2 font-serif leading-relaxed text-muted-foreground">
           The newest papers carry the syllabus you will actually sit —{" "}
@@ -514,27 +523,25 @@ export default async function Trends() {
           is what you practise and in what order, never whether you answer.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
-          {LATEST_TREND_YEAR && (
+          {SCOPE_YEARS.length > 0 && (
             <BrowseLink
               examId={taxonomy.examId}
               subjectId={taxonomy.subjectId}
-              pyqYears={[LATEST_TREND_YEAR.year]}
+              pyqYears={SCOPE_YEARS.map((y) => y.year)}
             >
-              Drill {LATEST_TREND_YEAR.year} ({LATEST_TREND_YEAR.totalQ} q ·{" "}
-              {LATEST_TREND_YEAR.pctHard}% HARD)
+              Drill {SCOPE_LABEL} ({SCOPE_Q.toLocaleString("en-IN")} q ·{" "}
+              {SCOPE_PCT_HARD}% HARD)
             </BrowseLink>
           )}
-          {PRIOR_TREND_YEAR && (
-            <BrowseLink
-              examId={taxonomy.examId}
-              subjectId={taxonomy.subjectId}
-              pyqYears={[PRIOR_TREND_YEAR.year]}
-              variant="outline"
-            >
-              Drill {PRIOR_TREND_YEAR.year} ({PRIOR_TREND_YEAR.totalQ} q ·{" "}
-              {PRIOR_TREND_YEAR.pctHard}% HARD)
-            </BrowseLink>
-          )}
+          <BrowseLink
+            examId={taxonomy.examId}
+            subjectId={taxonomy.subjectId}
+            pyqYears={[HARDEST_TREND_YEAR.year]}
+            variant="outline"
+          >
+            Drill {HARDEST_TREND_YEAR.year} ({HARDEST_TREND_YEAR.totalQ} q ·{" "}
+            {HARDEST_TREND_YEAR.pctHard}% HARD)
+          </BrowseLink>
           <BrowseLink
             examId={taxonomy.examId}
             subjectId={taxonomy.subjectId}

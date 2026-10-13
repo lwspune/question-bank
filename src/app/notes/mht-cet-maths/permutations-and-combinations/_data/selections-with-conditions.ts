@@ -6,7 +6,7 @@ export const SELECTIONS_WITH_CONDITIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Choose a committee or a question set under a condition: list the cases for 'at least' and 'at most' and add the products of nCr terms, or subtract the forbidden selections from the unrestricted total.",
   whyItMatters:
-    "7 PYQs at 43% HARD. These are committee and question-paper stems — a team with at most one boy, at least two from each section, two members who refuse to serve together — and the same linguistic-club question was set in two 2024 shifts. " +
+    "9 PYQs at 56% HARD. These are committee and question-paper stems — a team with at most one boy, at least two from each section, two members who refuse to serve together — and the same linguistic-club question was set in two 2024 shifts. " +
     "There is one method, listing cases, and one shortcut, the complement; the HARD ones just have more cases, or a leader to choose after the team.",
   concepts: [
     // 1 — at least / at most by cases

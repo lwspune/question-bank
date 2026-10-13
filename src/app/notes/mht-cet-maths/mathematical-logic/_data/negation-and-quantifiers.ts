@@ -6,7 +6,7 @@ export const NEGATION_QUANTIFIERS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Negating a compound statement means pushing the not inwards: and becomes or, or becomes and, a conditional becomes a conjunction, and a quantifier flips.",
   whyItMatters:
-    "This is the cheapest block in the chapter — 14 PYQs at just 14% HARD, well under the chapter's 31% — and that is precisely why it is worth drilling to reflex. " +
+    "This is the cheapest block in the chapter — 21 PYQs at just 10% HARD, well under the chapter's 23% — and that is precisely why it is worth drilling to reflex. " +
     "Nothing here is conceptually hard; every mark lost is lost mechanically, by forgetting to flip a connective or by negating an implication as another implication. " +
     "Three rewrites cover almost the whole subtopic, and the paper tests them year after year in the same four shapes.",
   concepts: [

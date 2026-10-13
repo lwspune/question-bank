@@ -8,7 +8,7 @@ export const STRUCTURE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An aromatic compound has a planar, cyclic, fully conjugated ring with 4n + 2 π electrons; it may be benzenoid (built on a benzene ring) or non-benzenoid (tropone), carbocyclic or heterocyclic (pyrrole, furan, thiophene).",
   whyItMatters:
-    "8 PYQs, mostly EASY. Five ask you to classify — which compound is non-benzenoid, which ring holds nitrogen, which drawing is a haloarene, what a drawn salt is called; three ask where a natural aromatic compound comes from. " +
+    "12 PYQs, mostly EASY. Of the eight set from 2021 to 2025, five ask you to classify — which compound is non-benzenoid, which ring holds nitrogen, which drawing is a haloarene, what a drawn salt is called; three ask where a natural aromatic compound comes from. " +
     "Two cards.",
   concepts: [
     {

@@ -6,7 +6,7 @@ export const SUPERPOSITION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Two waves of the same frequency add into one of the same frequency whose amplitude depends on their phase difference: R² = a₁² + a₂² + 2a₁a₂cos φ — largest when in step, smallest when opposite.",
   whyItMatters:
-    "8 PYQs, one HARD. Two shapes: the resultant amplitude for a given phase difference (or the phase difference for a given amplitude), " +
+    "13 PYQs, one HARD. Two shapes: the resultant amplitude for a given phase difference (or the phase difference for a given amplitude), " +
     "and the resultant intensity, with the extra care needed when one wave is written as a sine and the other as a cosine.",
   concepts: [
     {

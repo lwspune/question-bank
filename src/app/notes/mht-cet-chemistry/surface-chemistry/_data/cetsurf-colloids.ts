@@ -8,7 +8,7 @@ export const COLLOIDS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A colloid is one substance dispersed through another in particles bigger than molecules but too small to settle; it is classified by the phases involved and by how the particles form, and a charged sol is coagulated by ions of the opposite charge — the higher their charge, the faster.",
   whyItMatters:
-    "21 PYQs — the largest page in the chapter — and none HARD. Five name the phases (milk, fog, cheese, gels, emulsions), five classify multimolecular, macromolecular and associated colloids, four are about lyophilic sols and which sols are positive, five apply the Hardy–Schulze rule, and two are processes. " +
+    "41 PYQs — the largest page in the chapter — and none HARD. Of the twenty-one set from 2021 to 2025, five name the phases (milk, fog, cheese, gels, emulsions), five classify multimolecular, macromolecular and associated colloids, four are about lyophilic sols and which sols are positive, five apply the Hardy–Schulze rule, and two are processes. " +
     "Five cards, all recall.",
   concepts: [
     {

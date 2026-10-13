@@ -4,7 +4,7 @@ export const MHTCET_ALKANES_CHAPTER: ChapterNote = {
   chapterName: "Alkanes",
   title: "Alkanes — MHT-CET Chemistry",
   intro:
-    "Alkanes in MHT-CET Chemistry has no HARD question in thirty-five, and most of its MODERATE ones are the same two reactions asked in different words. " +
+    "Alkanes in MHT-CET Chemistry has no HARD question among its 49 past-year questions, and most of its MODERATE ones are the same two reactions asked in different words. " +
     "Learn the series formula and the isomer counts, the Wurtz pairings, what a Grignard reagent does with any active hydrogen, and why bromine picks the tertiary H. " +
     "Every PYQ is tagged.",
   cardBlurb:

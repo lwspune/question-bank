@@ -6,7 +6,7 @@ export const INVERSE_IDENTITIES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Sums of inverse trigonometric values collapse through four tools: complementary pairs that add to π/2, the arctan addition formula, a substitution that turns an algebraic argument into a single angle, and a telescoping split of each term into a difference.",
   whyItMatters:
-    "30 PYQs, 63% of them HARD — the hardest page of the chapter. Fourteen are the addition formula (three-term sums, 2 tan⁻¹ forms, and the identity a + b + c = abc when three arctangents sum to π), eight are substitution simplifications, four telescope and four use a complementary pair. " +
+    "51 PYQs, 65% of them HARD — the hardest page of the chapter. Of the thirty set from 2021 to 2025, fourteen were the addition formula (three-term sums, 2 tan⁻¹ forms, and the identity a + b + c = abc when three arctangents sum to π), eight were substitution simplifications, four telescoped and four used a complementary pair. " +
     "Each tool has one signal in the stem, and seeing it first is the whole difficulty.",
   concepts: [
     // 1 — complementary pairs

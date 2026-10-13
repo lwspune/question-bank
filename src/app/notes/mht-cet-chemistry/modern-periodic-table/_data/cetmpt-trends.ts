@@ -8,7 +8,7 @@ export const TRENDS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Across a period the nuclear charge grows and the shell stays the same, so atoms shrink and hold their electrons harder; down a group a new shell is added, so atoms grow and hold them less — every trend in the chapter follows from those two facts.",
   whyItMatters:
-    "10 PYQs, two MODERATE. Six rank ionisation enthalpy, electron gain enthalpy or electronegativity; four rank atomic or ionic radius or name a diagonal pair. " +
+    "16 PYQs, two MODERATE. Of the ten set from 2021 to 2025, six rank ionisation enthalpy, electron gain enthalpy or electronegativity; four rank atomic or ionic radius or name a diagonal pair. " +
     "Two cards.",
   concepts: [
     {

@@ -8,7 +8,7 @@ export const NEWTON_LAW_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Every two masses attract with a force Gm₁m₂/r² along the line joining them; outside a uniform sphere or shell the field is as if all the mass sat at the centre, inside a shell it is zero, and inside a solid sphere it grows in proportion to the distance from the centre.",
   whyItMatters:
-    "7 PYQs, 3 of them HARD: the field inside and outside a uniform sphere, a sphere inside a shell, three masses at the corners of a triangle, a ring's pull on a mass at its centre, and how the force between two touching spheres scales with size. One card.",
+    "8 PYQs, 4 of them HARD. The first seven are the field inside and outside a uniform sphere, a sphere inside a shell, three masses at the corners of a triangle, a ring's pull on a mass at its centre, and how the force between two touching spheres scales with size. One card.",
   concepts: [
     {
       kind: "formula" as const,

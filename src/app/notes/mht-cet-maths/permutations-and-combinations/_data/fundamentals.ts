@@ -6,7 +6,7 @@ export const FUNDAMENTALS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Multiply the choices of successive stages; nPr counts ordered selections and nCr unordered ones — and the identities nCr + nCr−1 = n+1Cr and nCr = nCn−r settle the equation-style stems.",
   whyItMatters:
-    "8 PYQs, none HARD — the cheapest page in the chapter and the one the other four assume. " +
+    "12 PYQs, one HARD — the cheapest page in the chapter and the one the other four assume. " +
     "The recurring stems are a two-stage arrangement written as a product of nPr terms, a ratio of two binomial coefficients set equal to a number, a Pascal-rule inequality, and the domain of a function defined through nPr. " +
     "Each is answered by one identity; the work is choosing which.",
   concepts: [

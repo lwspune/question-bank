@@ -4,7 +4,7 @@ export const MHTCET_BIOMOLECULES_CHAPTER: ChapterNote = {
   chapterName: "Biomolecules",
   title: "Biomolecules — MHT-CET Chemistry",
   intro:
-    "Biomolecules is about two questions a paper in MHT-CET Chemistry and almost never HARD — two of its past-year questions in eighty-eight. " +
+    "Biomolecules is about two questions a paper in MHT-CET Chemistry and almost never HARD — two of its 150 past-year questions. " +
     "It is a chapter of named facts with a small amount of counting: which sugar is which and what its ring is, the reactions that prove glucose's structure, " +
     "the glycosidic linkage in every disaccharide and polysaccharide, the twenty amino acids by class and code, protein shape, " +
     "and the numbering of the purine and pyrimidine bases, the sugar and the phosphate in a nucleotide. " +

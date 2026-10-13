@@ -6,7 +6,7 @@ export const KINGS_PROPERTY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Replacing x by a + b − x leaves a definite integral unchanged — and adding the two forms cancels the awkward part, turning an unintegrable-looking expression into a constant times the interval.",
   whyItMatters:
-    "17 PYQs at 47% HARD, the largest page in the chapter and the highest-leverage recognition in MHT-CET calculus: eleven of the seventeen are answered by writing the reflected integral, adding, and dividing by two. " +
+    "28 PYQs at 50% HARD, the largest property page in the chapter and the highest-leverage recognition in MHT-CET calculus: in the 2021–2025 papers, eleven of the seventeen were answered by writing the reflected integral, adding, and dividing by two. " +
     "Five distinct families recur — f/(f + g) over an interval, x·f(sin x) over 0 to π, integrands with 1/(1 + eˣ), functional equations like f(x) = f(1 − x), and an inverse-trig identity applied before the reflection — and each has a one-line closed form worth knowing. " +
     "The tell is always the same: the interval's endpoints add to something that makes the reflected integrand look like the original.",
   concepts: [

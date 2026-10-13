@@ -17,10 +17,8 @@ import { basename, join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { commitStaged } from "../../src/lib/upload/commit";
 import { contentHash } from "../../src/lib/upload/hash";
-import { normalizeMathFunctions } from "../jee/lib";
-import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import type { ParsedRowPayload } from "../../src/lib/upload/validate";
-import { cleanupArtifacts } from "./lib";
+import { commitText } from "./lib";
 import { ORG_ID, EXAM_ID, CREATED_BY, loadShift, recordsPath, mediaDir, requireShiftId, type ShiftData } from "./config";
 
 type Rec = {
@@ -64,7 +62,7 @@ function buildRows(shiftId: string, shift: ShiftData): ParsedRowPayload[] {
 
     // Upgrade bare trig/log function names to upright macros inside math zones
     // (pandoc leaves `sin`/`cos`/`tan`/`log` bare -> italic in KaTeX). Idempotent.
-    const norm = (s: string) => cleanupArtifacts(normalizeMathFunctions(normalizeNewlines(s)));
+    const norm = commitText;
 
     const text = norm(q.stemOverride ?? rec.stem);
     if (!text.trim()) throw new Error(`Q${num}: empty stem — add a stemOverride`);

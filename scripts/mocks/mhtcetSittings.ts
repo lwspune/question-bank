@@ -31,7 +31,7 @@
  * a hold whose paper now reconstructs, so closing a corpus hole surfaces as a
  * prompt to delete the line rather than as silence.
  */
-import { SHIFTS } from "../mhtcet/config";
+import { PDF_SHIFTS, SHIFTS } from "../mhtcet/config";
 import {
   deriveMhtCetSittingIdentities,
   type MhtCetSittingIdentity,
@@ -45,6 +45,16 @@ export type MhtCetSitting = MhtCetSittingIdentity & { hold?: MhtCetHold };
 /** Reconstruction shortfalls, keyed by sitting. Mock-only — a book prints what
  *  the bank holds and has no notion of a paper being short. */
 const HOLDS: Record<string, MhtCetHold> = {
+  "2026-may-12-s1": { maths: "49/50 — 1 question withheld PRIVATE (flawed)" },
+  "2026-apr-20-s1": { phyChem: "99/100 — 1 question withheld PRIVATE (flawed)" },
+  "2026-apr-19-s2": { phyChem: "99/100 — 1 question withheld PRIVATE (flawed)" },
+  "2026-apr-18-s2": { phyChem: "98/100 — 2 questions withheld PRIVATE (flawed)" },
+  "2026-apr-18-s1": { maths: "49/50 — 1 question withheld PRIVATE (flawed)" },
+  "2026-apr-16-s2": { phyChem: "99/100 — 1 question withheld PRIVATE (flawed)" },
+  "2026-apr-13-s2": { phyChem: "99/100 — 1 question withheld PRIVATE (flawed)" },
+  "2026-apr-13-s1": { phyChem: "98/100 — 2 questions withheld PRIVATE (flawed)" },
+  "2026-apr-11-s2": { phyChem: "98/100 — 1 question withheld PRIVATE (flawed), 1 absent from the bank (Q34, absorbed by dedup into 2025 19 April Shift II)" },
+  "2026-apr-11-s1": { phyChem: "99/100 — 1 question withheld PRIVATE (flawed)" },
   "2025-apr-25-s1": { maths: "49/50 — 1 question withheld PRIVATE (flawed)", phyChem: "99/100 — 1 question absent from the bank" },
   "2025-apr-22-s2": { phyChem: "98/100 — 2 questions absent from the bank" },
   "2025-apr-20-s2": { maths: "48/50 — 2 questions withheld PRIVATE (flawed)" },
@@ -72,7 +82,7 @@ const withHold = (s: MhtCetSittingIdentity): MhtCetSitting =>
  * search finds no config for them, so their labels can only be hand-written.
  */
 export const MHT_CET_SITTINGS: MhtCetSitting[] = deriveMhtCetSittingIdentities()
-  .filter((s) => !(s.key in SHIFTS))
+  .filter((s) => !(s.key in SHIFTS) && !(s.key in PDF_SHIFTS))
   .map(withHold);
 
 /**
@@ -88,7 +98,8 @@ export function deriveMhtCetSittings(): MhtCetSitting[] {
   const all = deriveMhtCetSittingIdentities();
   const byKey = new Map(all.map((s) => [s.key, s]));
 
-  for (const [key, shift] of Object.entries(SHIFTS)) {
+  // The 2026 PDF shifts carry the same contract as the April-2025 docx shifts.
+  for (const [key, shift] of [...Object.entries(SHIFTS), ...Object.entries(PDF_SHIFTS)]) {
     const s = byKey.get(key);
     if (!s) {
       throw new Error(

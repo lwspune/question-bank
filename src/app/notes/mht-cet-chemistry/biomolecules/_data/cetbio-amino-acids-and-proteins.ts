@@ -6,7 +6,7 @@ export const AMINO_ACIDS_AND_PROTEINS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Alpha-amino acids carry an amino group and a carboxyl group on the same carbon and differ in the side chain R, which sets the class (acidic, basic, neutral) and the three- and one-letter code; they join through peptide (amide) bonds — n residues, n minus 1 bonds — into fibrous or globular proteins whose alpha-helix has 3.6 residues per turn.",
   whyItMatters:
-    "27 PYQs, none HARD. Seventeen are the amino acids themselves — pick the acidic, basic, neutral or essential one from three-letter codes (asked nine times), the one-letter symbol, the side chain of serine or alanine, sulphur in methionine, the heterocyclic ring of histidine, the achiral glycine, the zwitterion; ten are peptides and proteins — how many bonds link n amino acids, glycylalanine, myosin as the fibrous one among globular proteins (asked six times), 3.6 residues per turn, pepsin. " +
+    "46 PYQs, none HARD. Of the twenty-seven set from 2021 to 2025, seventeen are the amino acids themselves — pick the acidic, basic, neutral or essential one from three-letter codes (asked nine times), the one-letter symbol, the side chain of serine or alanine, sulphur in methionine, the heterocyclic ring of histidine, the achiral glycine, the zwitterion; ten are peptides and proteins — how many bonds link n amino acids, glycylalanine, myosin as the fibrous one among globular proteins (asked six times), 3.6 residues per turn, pepsin. " +
     "Two cards.",
   concepts: [
     // 1 — the twenty amino acids

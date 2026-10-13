@@ -1,9 +1,9 @@
 /**
- * Deep-dive content for the 6 CORNERSTONE + 6 QUICK-WIN playbooks of
+ * Deep-dive content for the 6 CORNERSTONE + 7 QUICK-WIN playbooks of
  * /guide/mht-cet-physics/playbooks/{slug}.
  *
- * Every statistic comes from the bank measurement of 2026-09-28: 2,098 PUBLIC
- * PYQs across 42 papers, 2021-2025. Chapter figures (q, q/paper, %HARD) match
+ * Every statistic comes from the bank measurement of 2026-10-13: 3,390 PUBLIC
+ * PYQs across 68 papers, 2021-2026. Chapter figures (q, q/paper, %HARD) match
  * playbooks.ts; subtopic figures are the per-subtopic q and %HARD from the
  * same measurement. Physics statements are the textbook laws the notes teach.
  *
@@ -20,15 +20,15 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "Charges, a field or a potential, a capacitor with or without a slab between its plates, or a closed surface and the flux through it.",
     story: [
-      "166 q at 3.83 a paper makes this the heaviest chapter on the Physics paper — close to four marks every sitting. It is 22% HARD, but the HARD is not everywhere. Gauss's Law and Electric Flux (20 q) and the Electric Dipole page (9 q) have never produced a HARD question between them. Dielectrics in Capacitors (23 q, 39%) and Coulomb's Law and Electric Field (27 q, 30%) carry most of it.",
-      "The biggest page is Electric Potential and Potential Energy, 43 questions at 21%. Potential is a scalar, which is the whole reason it is easier than field: add the potentials of several charges as plain numbers, with their signs. Field questions need vector addition, and that is where the Coulomb page gets expensive.",
-      "The capacitor half of the chapter (67 questions over three pages) turns on one question each time: what is held constant? A capacitor still connected to the battery keeps its V; one disconnected keeps its Q. Every change in C — a slab inserted, plates moved apart — then moves Q, V and the energy in opposite directions in the two cases.",
+      "270 q at 3.95 a paper makes this the heaviest chapter on the Physics paper: close to four marks every sitting. It is 18% HARD, but the HARD is not everywhere. Gauss's Law and Electric Flux (30 q) and the Electric Dipole page (16 q) have produced one HARD question each. Dielectrics in Capacitors (40 q, 25%), Coulomb's Law and Electric Field (44 q, 23%) and Energy Stored in a Capacitor (30 q, 23%) carry most of it.",
+      "The biggest page is Electric Potential and Potential Energy, 68 questions at 18%. Potential is a scalar, which is the whole reason it is easier than field: add the potentials of several charges as plain numbers, with their signs. Field questions need vector addition, and that is where the Coulomb page gets expensive.",
+      "The capacitor half of the chapter (112 questions over three pages) turns on one question each time: what is held constant? A capacitor still connected to the battery keeps its V; one disconnected keeps its Q. Every change in C — a slab inserted, plates moved apart — then moves Q, V and the energy in opposite directions in the two cases.",
     ],
     subSkills: [
       {
         name: "Flux and Gauss's law",
         description:
-          "Flux through a closed surface is q_enclosed/ε₀, whatever its shape; a charge at the centre of a cube sends a sixth of that through each face. 20 questions and no HARD one.",
+          "Flux through a closed surface is q_enclosed/ε₀, whatever its shape; a charge at the centre of a cube sends a sixth of that through each face. 30 questions and one HARD one.",
       },
       {
         name: "Potential and potential energy",
@@ -72,9 +72,9 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A moment of inertia, a body rolling down a slope, a spinning body changing shape, or anything moving in a circle — banked roads, conical pendulums, vertical circles.",
     story: [
-      "128 q at 3.13 a paper, and rising: 2.89 a paper across 2023-24, then 3.38 across 2025. It is 21% HARD, and nearly half of that HARD sits on one page — Parallel and Perpendicular Axis Theorems, 25 questions at 48%.",
-      "The cheap pages are the conservation laws. Angular Momentum, Torque, and Conservation is 22 questions at 5% HARD: a skater pulls in her arms, I falls, ω rises so that Iω stays fixed. Rotational Kinetic Energy and Rolling Motion is 24 questions at 8%, and one ratio — K²/R² — decides which body reaches the bottom of a slope first.",
-      "Two circular-motion pages sit here too (34 questions together, 18% HARD each): the kinematics of angular speed and the dynamics of banking, the conical pendulum and the vertical circle. They share one idea with Laws of Motion — a free-body diagram with the centripetal force as the net inward force.",
+      "204 q at 3.08 a paper. It jumped from 2.89 a paper across 2023-24 to 3.38 in 2025, then settled at 2.92 in 2026. It is 20% HARD, and nearly half of that HARD sits on one page: Parallel and Perpendicular Axis Theorems, 41 questions at 44%.",
+      "The cheap pages are the conservation laws. Angular Momentum, Torque, and Conservation is 38 questions at 8% HARD: a skater pulls in her arms, I falls, ω rises so that Iω stays fixed. Rotational Kinetic Energy and Rolling Motion is 37 questions at 11%, and one ratio, K²/R², decides which body reaches the bottom of a slope first.",
+      "Two circular-motion pages sit here too (56 questions together, 10% and 15% HARD): the kinematics of angular speed and the dynamics of banking, the conical pendulum and the vertical circle. They share one idea with Laws of Motion — a free-body diagram with the centripetal force as the net inward force.",
     ],
     subSkills: [
       {
@@ -122,9 +122,9 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A wave equation y = A sin(ωt − kx), a string fixed at both ends, a pipe open or closed, two sources a few hertz apart, or a sonometer wire.",
     story: [
-      "123 q at 3.00 a paper, 20% HARD. The cheapest page is reading a wave equation: Progressive Wave, Wave Equation, and Velocity is 34 questions at 9% HARD, and every one comes down to picking ω and k out of the equation and using v = ω/k.",
-      "Stationary Waves and Vibrating Strings is the biggest page (36 q, 19%): nodes, antinodes, and the harmonics of a string, fₙ = nv/2L with v = √(T/μ). Pipes follow the same logic with one twist — a closed pipe has only odd harmonics.",
-      "The expensive page is Beats and Sonometer, 22 questions at 41% HARD: a tuning fork and a wire or a pipe a few hertz apart, and the question is which way the beat frequency moves when the wire is loaded or the fork waxed. Sound repeats pipes, beats and Doppler almost exactly, so prepare the two chapters together.",
+      "205 q at 3.05 a paper, 21% HARD. The cheapest big page is reading a wave equation: Progressive Wave, Wave Equation, and Velocity is 57 questions at 9% HARD, and every one comes down to picking ω and k out of the equation and using v = ω/k.",
+      "Stationary Waves and Vibrating Strings is as big (57 q, 19%): nodes, antinodes, and the harmonics of a string, fₙ = nv/2L with v = √(T/μ). Pipes follow the same logic with one twist — a closed pipe has only odd harmonics.",
+      "The expensive pages are Pipes, Resonance Tube, and Doppler Effect (43 q, 37% HARD) and Beats and Sonometer (35 q, 29%): a tuning fork and a wire or a pipe a few hertz apart, and the question is which way the beat frequency moves when the wire is loaded or the fork waxed. Sound repeats pipes, beats and Doppler almost exactly, so prepare the two chapters together.",
     ],
     subSkills: [
       {
@@ -165,9 +165,9 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A drop or a bubble, a liquid in a capillary tube, a sphere falling through oil, or water flowing through a pipe of changing width.",
     story: [
-      "124 q at 2.96 a paper, 19% HARD — and two thirds of the chapter is surface tension. Surface Tension and Surface Energy (42 q, 29%) and Excess Pressure and Capillary Rise (38 q, 0%) together are 80 questions.",
-      "The capillary page has never produced a HARD question. It is two formulas: h = 2T cos θ / rρg, and excess pressure 2T/r in a drop or 4T/r in a soap bubble (two surfaces). The surface-energy page is where the HARD sits — work to blow a bubble, energy released when drops merge — and the bubble's two surfaces are the usual slip.",
-      "The flow pages are smaller: viscosity and terminal velocity (21 q, 19%) and Bernoulli with continuity (17 q, 18%). Pressure, Buoyancy, and Archimedes is 6 questions at 83% HARD and 0.13 a paper — last in the prep queue.",
+      "201 q at 2.95 a paper, 18% HARD, and nearly two thirds of the chapter is surface tension. Surface Tension and Surface Energy (66 q, 32%) and Excess Pressure and Capillary Rise (63 q, 5%) together are 129 questions.",
+      "The capillary page has produced only three HARD questions in 63. It is two formulas: h = 2T cos θ / rρg, and excess pressure 2T/r in a drop or 4T/r in a soap bubble (two surfaces). The surface-energy page is where the HARD sits — work to blow a bubble, energy released when drops merge — and the bubble's two surfaces are the usual slip.",
+      "The flow pages are smaller: viscosity and terminal velocity (33 q, 12%) and Bernoulli with continuity (25 q, 16%). Pressure, Buoyancy, and Archimedes is 14 questions at 36% HARD and 0.26 a paper: last in the prep queue.",
     ],
     subSkills: [
       {
@@ -208,9 +208,9 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "Two slits and a fringe pattern, a single slit and its central maximum, two sources of stated intensities, or light through a polariser.",
     story: [
-      "117 q at 2.96 a paper, 19% HARD — and the HARD is spread evenly. Young's Double Slit (39 q), Single Slit Diffraction and Resolving Power (34 q) and Interference Intensity (29 q) are each 21% HARD. This is the one cornerstone that does not cherry-pick: own all three pages, or plan to lose three marks a paper.",
+      "188 q at 2.79 a paper, 16% HARD, and the HARD is spread evenly. Young's Double Slit (68 q, 16%), Single Slit Diffraction and Resolving Power (50 q, 18%) and Interference Intensity (43 q, 16%) cost about the same. This is the one cornerstone that does not cherry-pick: own all three pages, because there is no cheap half to fall back on.",
       "Young's double slit is fringe width β = λD/d and what moves it: β ∝ λ and D, ∝ 1/d, and immersing the apparatus in a liquid divides it by μ. A thin film over one slit shifts the whole pattern by (μ − 1)tD/d without changing β.",
-      "Intensity questions use I = I₁ + I₂ + 2√(I₁I₂) cos φ. With two equal sources the maximum is 4I and the minimum 0; with unequal ones, the ratio I_max/I_min = ((√I₁ + √I₂)/(√I₁ − √I₂))². Polarisation (10 q, 10% HARD) is the quick page: Malus I = I₀ cos²θ and Brewster tan θ = μ.",
+      "Intensity questions use I = I₁ + I₂ + 2√(I₁I₂) cos φ. With two equal sources the maximum is 4I and the minimum 0; with unequal ones, the ratio I_max/I_min = ((√I₁ + √I₂)/(√I₁ − √I₂))². Polarisation (19 q, 16% HARD) is two formulas: Malus I = I₀ cos²θ and Brewster tan θ = μ.",
     ],
     subSkills: [
       { name: "Fringe width and its levers", description: "β = λD/d. In a liquid, β becomes β/μ. A film shifts the pattern by (μ − 1)tD/d." },
@@ -244,9 +244,9 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "x = A sin(ωt + φ), a mass on a spring or springs, a pendulum (in a lift, on the Moon, or with a changed length), or energy shared between KE and PE.",
     story: [
-      "110 q at 2.63 a paper, 19% HARD. SHM Kinematics is the biggest page (44 q, 16%): v = ω√(A² − x²), a = −ω²x, and reading phase from the equation. SHM Energy is the cheapest (17 q, 12%): KE and PE trade places, and at x = A/√2 they are equal.",
-      "The HARD sits on Spring-Mass and Other SHM Systems (25 q, 28%): springs in series and parallel, a spring cut into pieces, a block between two springs. Stiffness adds in parallel and adds as reciprocals in series — the opposite of resistors — and a spring cut to 1/n of its length is n times stiffer.",
-      "The simple pendulum page (24 q, 21%) is T = 2π√(l/g) with an effective g: in a lift accelerating up, g + a; in free fall, zero, so the pendulum does not oscillate at all.",
+      "179 q at 2.69 a paper, 19% HARD. SHM Kinematics is the biggest page (66 q, 17%): v = ω√(A² − x²), a = −ω²x, and reading phase from the equation. SHM Energy is the cheapest (33 q, 9%): KE and PE trade places, and at x = A/√2 they are equal.",
+      "The HARD sits on Spring-Mass and Other SHM Systems (43 q, 26%): springs in series and parallel, a spring cut into pieces, a block between two springs. Stiffness adds in parallel and adds as reciprocals in series — the opposite of resistors — and a spring cut to 1/n of its length is n times stiffer.",
+      "The simple pendulum page (37 q, 24%) is T = 2π√(l/g) with an effective g: in a lift accelerating up, g + a; in free fall, zero, so the pendulum does not oscillate at all.",
     ],
     subSkills: [
       { name: "SHM kinematics", description: "v = ω√(A² − x²), a_max = ω²A, v_max = ωA. Read ω and φ straight from the equation." },
@@ -280,9 +280,9 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A logic-gate circuit or truth table, a diode or rectifier arrangement, a transistor's α, β or gain, doping, or a Zener, LED or photodiode.",
     story: [
-      "129 q at 3.08 a paper and 3% HARD — the best return on the whole Physics paper. Four of its six pages (band theory, p-n junction, special diodes, transistors) have never produced a HARD question. Most of it is recall and reading, not computation: only about a quarter of its answers are numbers, the lowest share of any Physics chapter.",
-      "Logic Gates and Boolean Algebra is the biggest page, 36 questions at 8%. Many are a figure: two or three gates chained, and the question asks for the output or for which single gate the chain is equivalent to. Trace it: write the truth table for every input combination, gate by gate. A NAND with both inputs tied together is a NOT, so a NAND followed by that NOT is an AND.",
-      "Transistors (29 q, 0% HARD) are α = I_C/I_E, β = I_C/I_B, β = α/(1 − α), and voltage gain = β × R_out/R_in. Diodes are forward bias (p to +) and reverse bias; a Zener works in reverse breakdown, a photodiode in reverse bias, an LED in forward bias.",
+      "206 q at 3.00 a paper and 3% HARD: the best return on the whole Physics paper. Four of its six pages (band theory, p-n junction, special diodes, transistors) have never produced a HARD question. Most of it is recall and reading, not computation: a smaller share of its answers are numbers than in any other Physics chapter.",
+      "Logic Gates and Boolean Algebra is the biggest page, 56 questions at 11%, and it holds six of the chapter's seven HARD questions. Many are a figure: two or three gates chained, and the question asks for the output or for which single gate the chain is equivalent to. Trace it: write the truth table for every input combination, gate by gate. A NAND with both inputs tied together is a NOT, so a NAND followed by that NOT is an AND.",
+      "Transistors (47 q, 0% HARD) are α = I_C/I_E, β = I_C/I_B, β = α/(1 − α), and voltage gain = β × R_out/R_in. Diodes are forward bias (p to +) and reverse bias; a Zener works in reverse breakdown, a photodiode in reverse bias, an LED in forward bias.",
     ],
     subSkills: [
       { name: "Doping and band theory", description: "Pentavalent doping gives n-type (electron majority), trivalent gives p-type. Band gap separates conductor, semiconductor, insulator." },
@@ -316,9 +316,9 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "An alternating voltage with an R, L or C, a series LCR circuit and its impedance, resonance, the power factor, or a transformer.",
     story: [
-      "129 q at 3.00 a paper, 12% HARD. The cheap half is single elements: Reactance (23 q, 0% HARD) is X_L = ωL and X_C = 1/ωC, and Power in AC Circuit (25 q, 4%) is P = V_rms I_rms cos φ with cos φ = R/Z.",
-      "Series LCR — Impedance, Phase and Phasors (33 q) and Resonance (32 q) are each about 15% HARD, and one right-angled triangle does both: Z = √(R² + (X_L − X_C)²), tan φ = (X_L − X_C)/R. At resonance X_L = X_C, so Z = R, the current is largest, and ω₀ = 1/√(LC).",
-      "LC Oscillations, Transformer, and AC Generator is small (9 q) and 33% HARD. Transformer questions are the ratio V_s/V_p = N_s/N_p = I_p/I_s.",
+      "208 q at 3.05 a paper, 10% HARD. The cheap half is single elements: Reactance (41 q, 2% HARD) is X_L = ωL and X_C = 1/ωC, and Power in AC Circuit (38 q, 3%) is P = V_rms I_rms cos φ with cos φ = R/Z.",
+      "Series LCR — Impedance, Phase and Phasors (46 q, 15%) and Resonance (50 q, 12%) are the core, and one right-angled triangle does both: Z = √(R² + (X_L − X_C)²), tan φ = (X_L − X_C)/R. At resonance X_L = X_C, so Z = R, the current is largest, and ω₀ = 1/√(LC).",
+      "LC Oscillations, Transformer, and AC Generator is small (19 q) and the most expensive page at 21% HARD. Transformer questions are the ratio V_s/V_p = N_s/N_p = I_p/I_s.",
     ],
     subSkills: [
       { name: "RMS and peak", description: "V_rms = V₀/√2 for a sine wave. Meters read RMS." },
@@ -347,9 +347,9 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "A changing flux through a coil, a rod moving across a field, a rotating coil or rod, self or mutual inductance, or energy stored in an inductor.",
     story: [
-      "119 q at 2.92 a paper, 9% HARD — the second-best return on the paper after Semiconductor Devices. Faraday's and Lenz's Laws (22 q) have never produced a HARD question: e = −N dΦ/dt, and the charge that flows is ΔΦ/R, independent of how fast the flux changed.",
-      "The biggest page is Self-Inductance, Energy Stored, and LR Circuit (43 q, 9%): e = −L dI/dt, U = ½LI², and the LR growth curve I = I₀(1 − e^(−t/τ)) with τ = L/R. Mutual inductance and the transformer (35 q, 9%) is the same law between two coils.",
-      "Motional EMF and Rotating Conductors (19 q, 21%) is the one expensive page: e = Blv for a sliding rod, e = ½Bωl² for a rod rotating about one end, and e₀ = NBAω for a rotating coil. Using the rotating-coil formula for a coil that only translates is the classic slip.",
+      "190 q at 2.74 a paper, 9% HARD: among the cheapest heavyweights on the paper, after Semiconductor Devices. Faraday's and Lenz's Laws (40 q) have never produced a HARD question: e = −N dΦ/dt, and the charge that flows is ΔΦ/R, independent of how fast the flux changed.",
+      "The biggest page is Self-Inductance, Energy Stored, and LR Circuit (67 q, 12%): e = −L dI/dt, U = ½LI², and the LR growth curve I = I₀(1 − e^(−t/τ)) with τ = L/R. Mutual inductance and the transformer (56 q, 7%) is the same law between two coils.",
+      "Motional EMF and Rotating Conductors (27 q, 22%) is the one expensive page: e = Blv for a sliding rod, e = ½Bωl² for a rod rotating about one end, and e₀ = NBAω for a rotating coil. Using the rotating-coil formula for a coil that only translates is the classic slip.",
     ],
     subSkills: [
       { name: "Faraday and Lenz", description: "e = −N dΦ/dt. Charge through the circuit = NΔΦ/R. The induced current opposes the change." },
@@ -376,8 +376,8 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "The RMS speed of gas molecules at a temperature, the average KE, degrees of freedom and specific heats, or an ideal-gas law.",
     story: [
-      "80 q at 1.96 a paper, 14% HARD. Gas Laws and Ideal Gas Equation (19 q) has never produced a HARD question. Average KE, Equipartition, and Specific Heats (25 q, 12%) is degrees of freedom: 3 for a monatomic gas, 5 for a diatomic, giving γ = 5/3 and 7/5.",
-      "Kinetic Theory — Pressure, RMS Speed, and Temperature is the biggest page (36 q, 22%), and nearly every question is one proportionality: v_rms = √(3RT/M), so v_rms ∝ √(T/M). Double the absolute temperature and the speed rises by √2; compare hydrogen with oxygen at the same temperature and the ratio is √16 = 4. These are ratio questions, answered by setting up the proportion rather than by computing either speed.",
+      "121 q at 1.69 a paper, 11% HARD. Gas Laws and Ideal Gas Equation (30 q) has never produced a HARD question. Average KE, Equipartition, and Specific Heats (43 q, 12%) is degrees of freedom: 3 for a monatomic gas, 5 for a diatomic, giving γ = 5/3 and 7/5.",
+      "Kinetic Theory — Pressure, RMS Speed, and Temperature is the biggest page (48 q, 17%), and nearly every question is one proportionality: v_rms = √(3RT/M), so v_rms ∝ √(T/M). Double the absolute temperature and the speed rises by √2; compare hydrogen with oxygen at the same temperature and the ratio is √16 = 4. These are ratio questions, answered by setting up the proportion rather than by computing either speed.",
     ],
     subSkills: [
       { name: "Ideal-gas law", description: "PV = nRT. Keep T in kelvin." },
@@ -403,9 +403,9 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     trigger:
       "Equations of motion, free fall, a velocity-time graph, two bodies moving towards each other, a projectile, or uniform circular motion.",
     story: [
-      "53 q at 1.33 a paper, 6% HARD — and rising: 1.00 a paper across 2023-24, 1.54 across 2025. Kinematics, relative motion and uniform circular motion (37 questions together) have never produced a HARD question.",
-      "The kinematics page (19 q) is the three equations of motion and reading graphs: the slope of an x–t graph is velocity, the slope of v–t is acceleration, and the area under v–t is displacement. Relative motion is subtracting velocities. Circular motion is a = v²/r = ω²r.",
-      "Projectiles are only 6 questions but the most likely to be HARD: range R = u² sin 2θ / g is the same for θ and 90° − θ, and the maximum height is u² sin²θ / 2g. Read whether an angle is measured above or below the horizontal before starting.",
+      "109 q at 1.95 a paper, 6% HARD, and nearly doubled: 1.00 a paper across 2023-24, 1.54 across 2025, 2.15 across 2026. Six HARD questions in 109, and the kinematics page (27 q) has never produced one.",
+      "The kinematics page is the three equations of motion and reading graphs: the slope of an x–t graph is velocity, the slope of v–t is acceleration, and the area under v–t is displacement. Relative motion is subtracting velocities. Circular motion is a = v²/r = ω²r.",
+      "Vector Operations and Components is now the biggest page (35 q, 9%): resolving a vector, adding two at an angle, and the dot and cross products. Projectiles (18 q, 6%) need one habit: range R = u² sin 2θ / g is the same for θ and 90° − θ, and the maximum height is u² sin²θ / 2g. Read whether an angle is measured above or below the horizontal before starting.",
     ],
     subSkills: [
       { name: "Equations of motion", description: "v = u + at, s = ut + ½at², v² = u² + 2as. Distance in the nth second = u + a(n − ½)." },
@@ -428,12 +428,53 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     relatedSlugs: ["laws-of-motion", "rotational-dynamics"],
   },
 
+  "units-and-measurement": {
+    slug: "units-and-measurement",
+    trigger:
+      "Measured values with their errors (a ± b, or a percentage), a quantity built from them by a formula, a least count, or the SI unit of a combination.",
+    story: [
+      "40 q at 1.03 a paper and 0% HARD. It was not set once in the 29 papers before 2025, then carried 14 questions in the 13 papers of 2025 and 26 in the 26 papers of 2026. A student prepping only from older papers has never met it.",
+      "35 of the 40 are about measurement error, and most of those are one rule: for Q = aᵖbᵍ/cʳ, the percentage error in Q is p(Δa/a) + q(Δb/b) + r(Δc/c), every term added, whatever the sign of the power. Density from mass and length, kinetic energy from mass and speed, g from a pendulum: the same three lines each time.",
+      "The rest is a sum or a difference (absolute errors add), a least count, a mean with its mean absolute error, and a unit or a dimension. None of it has been HARD; the marks are lost to the two slips below, not to difficulty.",
+    ],
+    subSkills: [
+      {
+        name: "Errors through a product, quotient or power",
+        description:
+          "Relative errors add, each multiplied by its power: for Q = aᵖbᵍ/cʳ, ΔQ/Q = pΔa/a + qΔb/b + rΔc/c. A square root contributes half its error.",
+      },
+      {
+        name: "Errors through a sum or difference",
+        description: "Absolute errors add: Δ(A ± B) = ΔA + ΔB. A difference of two close values has a large percentage error.",
+      },
+      {
+        name: "Least count and the mean",
+        description:
+          "The error in one reading is the least count of the instrument. For repeated readings, take the mean and the mean absolute error.",
+      },
+      { name: "Units and dimensions", description: "Reduce a combination to base SI units or compare dimensions: L/R is a time, PV is an energy." },
+    ],
+    traps: [
+      {
+        name: "Subtracting the error of a divisor",
+        description:
+          "In a quotient the percentage errors still ADD. Density = m/l³ with 2% error in m and 1% in l carries 2 + 3 × 1 = 5%, not 2 − 3.",
+      },
+      {
+        name: "Forgetting the power",
+        description: "A length cubed carries three times its percentage error, and a square root half. A sphere's volume with 2% error in r has 6%.",
+      },
+    ],
+    exampleQuestionIds: [],
+    relatedSlugs: ["oscillations", "current-electricity"],
+  },
+
   "laws-of-motion": {
     slug: "laws-of-motion",
     trigger: "Blocks connected by strings, a lift accelerating, a force on a body for a short time, or two bodies colliding.",
     story: [
-      "47 q at 1.04 a paper, 11% HARD. Impulse, Momentum, and Collisions is the cheap page (17 q, 6%): impulse = change of momentum, momentum is conserved in every collision, and kinetic energy only in an elastic one.",
-      "Newton's Laws — Force, Tension, Lift, and Connected Blocks (25 q, 12%) is one method: draw each body alone, mark every force on it, write F = ma for each, and solve together. A person in a lift accelerating upward reads m(g + a) on a scale.",
+      "71 q at 0.97 a paper, 13% HARD. Impulse, Momentum, and Collisions is the cheap page (30 q, 10%): impulse = change of momentum, momentum is conserved in every collision, and kinetic energy only in an elastic one.",
+      "Newton's Laws — Force, Tension, Lift, and Connected Blocks (32 q, 16%) is one method: draw each body alone, mark every force on it, write F = ma for each, and solve together. A person in a lift accelerating upward reads m(g + a) on a scale.",
       "The same method runs through Rotational Dynamics (banked roads, the vertical circle) and Oscillations (a block on springs), so the hours here pay in two cornerstone chapters.",
     ],
     subSkills: [

@@ -8,7 +8,7 @@ export const PHOTOELECTRIC_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Light ejects electrons from a metal one photon at a time: each photon of energy hν gives one electron at most hν − φ of kinetic energy, so the frequency decides whether emission happens and how fast the electrons leave, while the intensity only decides how many leave.",
   whyItMatters:
-    "56 PYQs, 20 of them HARD. Fifteen test what intensity and frequency each control. Eighteen apply Einstein's equation to one situation — a speed, a stopping potential, a threshold wavelength. " +
+    "87 PYQs, 33 of them HARD. Of the fifty-six set from 2021 to 2025, fifteen test what intensity and frequency each control. Eighteen apply Einstein's equation to one situation — a speed, a stopping potential, a threshold wavelength. " +
     "Fifteen, most of the HARD ones, give two readings at two wavelengths or frequencies and ask for the work function or the threshold; eight read a photocurrent or stopping-potential graph. " +
     "Four cards.",
   concepts: [

@@ -8,7 +8,7 @@ export const RELATIVE_MOTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Two moving bodies are handled by watching one from the other — their relative velocity is the difference of their velocities — or by writing each position as a function of time and asking when the positions, or the velocities, are equal.",
   whyItMatters:
-    "7 PYQs, none HARD: two trains crossing, two cars whose velocities become equal, a uniformly accelerating body catching a steady one, and a runner who must cut across to meet another running at right angles. One card.",
+    "11 PYQs, one HARD. The first seven are two trains crossing, two cars whose velocities become equal, a uniformly accelerating body catching a steady one, and a runner who must cut across to meet another running at right angles. One card.",
   concepts: [
     {
       kind: "formula" as const,

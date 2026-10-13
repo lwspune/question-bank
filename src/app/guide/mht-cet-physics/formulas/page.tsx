@@ -91,7 +91,7 @@ export default function FormulasPage() {
                 Read the &lsquo;Note&rsquo; row:
               </strong>{" "}
               several of them give the RATIO form of a law — v_rms ∝ √(T/M),
-              P ∝ T⁴, h ∝ 1/r. About 280 questions across the bank are ratio
+              P ∝ T⁴, h ∝ 1/r. About 460 questions across the bank are ratio
               questions, and the proportion answers them in a line, because the
               binding constraint on this paper is the clock, not the syllabus.
             </span>

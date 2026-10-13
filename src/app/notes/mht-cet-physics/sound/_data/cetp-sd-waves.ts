@@ -8,7 +8,7 @@ export const WAVES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Sound is a mechanical wave that needs a medium, travels at v = fλ, carries energy proportional to the square of its amplitude times the square of its frequency, and is measured in decibels, where every 10 dB is ten times the intensity.",
   whyItMatters:
-    "6 PYQs, one HARD: the distance a sound travels in a number of vibrations, how many times more intense one decibel level is than another, the amplitude that keeps energy equal at a lower frequency, the speed of sound in a gas mixture, and which statements and instruments fit. One card.",
+    "19 PYQs, two HARD, thirteen of them from 2026. The first six are the distance a sound travels in a number of vibrations, how many times more intense one decibel level is than another, the amplitude that keeps energy equal at a lower frequency, the speed of sound in a gas mixture, and which statements and instruments fit. One card.",
   concepts: [
     {
       kind: "formula" as const,

@@ -8,7 +8,7 @@ export const TRANSFORMATIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The reactions that do not substitute the ring: strong oxidants cut any alkyl side chain down to –COOH, chromyl chloride stops at –CHO, benzene adds Cl₂ or ozone under forcing conditions, and a diazonium salt or a Grignard reagent carries the ring into a new compound.",
   whyItMatters:
-    "15 PYQs; the chapter's one HARD question is here. Eight are side-chain oxidation — KMnO₄, dilute HNO₃, chromyl chloride, CrO₃ on phenol; three are addition — ozonolysis to glyoxal and BHC; four are the other transformations — diazotisation, removing the diazo group, Wurtz–Fittig, a Grignard on a nitrile. " +
+    "19 PYQs; the chapter's one HARD question is here. Of the fifteen set from 2021 to 2025, eight are side-chain oxidation — KMnO₄, dilute HNO₃, chromyl chloride, CrO₃ on phenol; three are addition — ozonolysis to glyoxal and BHC; four are the other transformations — diazotisation, removing the diazo group, Wurtz–Fittig, a Grignard on a nitrile. " +
     "Three cards.",
   concepts: [
     {

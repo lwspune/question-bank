@@ -4,7 +4,7 @@ export const MHTCET_ATOMS_CHAPTER: ChapterNote = {
   chapterName: "Structure of Atoms and Nuclei",
   title: "Structure of Atoms and Nuclei — MHT-CET Physics",
   intro:
-    "Structure of Atoms and Nuclei has 85 past-year questions in the MHT-CET bank, about one in five HARD. " +
+    "Structure of Atoms and Nuclei has 140 past-year questions in the MHT-CET bank, about one in five HARD. " +
     "Almost all of them are ratios. Bohr's model says how the radius, speed and energy of an orbit scale with n, and the Rydberg formula turns two energy levels into a spectral line, so most questions are answered by writing two cases and dividing. " +
     "The nuclear half is shorter: the decay law, counting alpha and beta particles, and the binding energy. Every PYQ is tagged.",
   cardBlurb:

@@ -8,7 +8,7 @@ export const EAS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Benzene keeps its aromatic ring by substituting rather than adding: an electrophile (Cl⁺, NO₂⁺, R⁺, RCO⁺, HCO⁺) replaces a ring H, and a group already on the ring decides whether the new one goes ortho/para or meta.",
   whyItMatters:
-    "12 PYQs, none HARD. Seven are about direction — which group is ortho/para directing, which starting compound gives a stated o/p pair, how much para product forms; five are about the reactions and their reagents — Gattermann–Koch, iodination, hexachlorobenzene. " +
+    "20 PYQs, none HARD. Of the twelve set from 2021 to 2025, seven are about direction — which group is ortho/para directing, which starting compound gives a stated o/p pair, how much para product forms; five are about the reactions and their reagents — Gattermann–Koch, iodination, hexachlorobenzene. " +
     "Two cards.",
   concepts: [
     {

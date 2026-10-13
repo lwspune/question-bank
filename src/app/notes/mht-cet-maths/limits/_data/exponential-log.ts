@@ -6,7 +6,7 @@ export const EXPONENTIAL_LOG_LIMITS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Three standard limits — (aˣ − 1)/x → log a, log(1 + x)/x → 1 and (1 + x)^(1/x) → e — plus the algebra that reduces a stem to them.",
   whyItMatters:
-    "11 PYQs at 64% HARD, and the single most productive page for marks per formula: five of the eleven are one factorisation or one substitution away from (aˣ − 1)/x. " +
+    "21 PYQs at 71% HARD, the hardest page in the chapter by rate and still the most productive for marks per formula: in the 2021–2025 papers, five of the eleven were one factorisation or one substitution away from (aˣ − 1)/x. " +
     "The 1 to the power infinity form appears both here and, more often, wearing a continuity costume on the next page — learn e to the power of the limit of (f − 1)g once and it answers both. " +
     "In the CET bank and textbook log means the natural logarithm; a base is written only when it is not e.",
   concepts: [

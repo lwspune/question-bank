@@ -8,7 +8,7 @@ export const DOPPLER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A listener hears f(v ± v_o)/(v ∓ v_s): approach raises the pitch and recession lowers it, the observer's speed adds to or subtracts from the numerator and the source's from the denominator, so the same speed shifts the pitch more when the source moves.",
   whyItMatters:
-    "19 PYQs, 3 of them HARD. Fourteen apply the formula once — observer or source moving, the ratio of approaching and receding pitches, the speed that halves or triples the pitch. " +
+    "24 PYQs, 3 of them HARD. Of the nineteen set from 2021 to 2025, fourteen apply the formula once — observer or source moving, the ratio of approaching and receding pitches, the speed that halves or triples the pitch. " +
     "Five combine two steps: a whistle heard before and after it passes, a siren echoed from a wall back to the driver, a car accelerating away from a siren. Two cards.",
   concepts: [
     {

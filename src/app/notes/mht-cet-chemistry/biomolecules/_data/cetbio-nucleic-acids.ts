@@ -6,7 +6,7 @@ export const NUCLEIC_ACIDS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A nucleotide is a pentose sugar (ribose in RNA, 2-deoxyribose in DNA) carrying a nitrogen base at C-1 prime and a phosphate at C-5 prime; the bases are purines (adenine, guanine — nitrogens at 1, 3, 7, 9, joined through N-9) and pyrimidines (cytosine, thymine, uracil — nitrogens at 1 and 3, joined through N-1), and nucleotides link by 3 prime to 5 prime phosphodiester bonds into strands that pair A with T and G with C in the right-handed Watson–Crick double helix.",
   whyItMatters:
-    "16 PYQs, none HARD. Fourteen are the nucleotide and its bases — which base is a purine, which has the most nitrogens or none of the amino group, the atom counts of cytosine, thymine and uracil, the ring positions of N in purine and pyrimidine, which N bonds the sugar, which sugar carbon lacks oxygen in DNA, how many OH a ribonucleoside has, where the phosphate sits in AMP; two are the Watson–Crick model and the phosphodiester backbone. " +
+    "25 PYQs, none HARD. Of the sixteen set from 2021 to 2025, fourteen are the nucleotide and its bases — which base is a purine, which has the most nitrogens or none of the amino group, the atom counts of cytosine, thymine and uracil, the ring positions of N in purine and pyrimidine, which N bonds the sugar, which sugar carbon lacks oxygen in DNA, how many OH a ribonucleoside has, where the phosphate sits in AMP; two are the Watson–Crick model and the phosphodiester backbone. " +
     "Two cards.",
   concepts: [
     // 1 — nucleotides and bases

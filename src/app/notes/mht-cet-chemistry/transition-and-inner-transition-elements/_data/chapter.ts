@@ -4,7 +4,7 @@ export const MHTCET_TRANSITION_CHAPTER: ChapterNote = {
   chapterName: "Transition and Inner Transition Elements",
   title: "Transition and Inner Transition Elements — MHT-CET Chemistry",
   intro:
-    "Transition and Inner Transition Elements is about two questions a paper in MHT-CET Chemistry and rarely HARD — three of its past-year questions in seventy-five. " +
+    "Transition and Inner Transition Elements is about two questions a paper in MHT-CET Chemistry and rarely HARD — three of its 126 past-year questions. " +
     "Almost every question is one count: how many d or f electrons an atom or ion has once the right electrons are removed. " +
     "That count decides which elements are transition elements, which ions are coloured, the spin-only magnetic moment, and the half-filled and filled shells behind the odd oxidation states. " +
     "The rest is recall — alloys, ores and catalysts — and the lanthanoid contraction. " +

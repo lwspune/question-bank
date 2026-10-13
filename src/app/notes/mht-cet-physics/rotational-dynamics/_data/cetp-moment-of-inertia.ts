@@ -6,7 +6,7 @@ export const MOMENT_OF_INERTIA_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Moment of inertia I = Σmr² measures how hard a body is to spin up — it depends on the mass AND on how far that mass sits from the axis; the radius of gyration k is the single distance at which all the mass would give the same I.",
   whyItMatters:
-    "23 PYQs, six HARD — all six rebuild a body (melt it, recast it, bend a rod into a ring) or scale one made of the same material, and ask for the new I. " +
+    "32 PYQs, nine HARD; the six from 2021 to 2025 all rebuild a body (melt it, recast it, bend a rod into a ring) or scale one made of the same material, and ask for the new I. " +
     "The rest compare standard bodies of the same mass, or ask for a radius of gyration. Know the six standard results cold and every question is a ratio.",
   concepts: [
     {

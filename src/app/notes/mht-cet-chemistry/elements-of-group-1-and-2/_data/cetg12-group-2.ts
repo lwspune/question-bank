@@ -8,7 +8,7 @@ export const GROUP_2_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The alkaline earth metals Be, Mg, Ca, Sr, Ba and Ra form +2 ions; beryllium, much smaller than the rest, behaves unlike its group — it does not react with water, its oxide is amphoteric, and it resembles aluminium diagonally.",
   whyItMatters:
-    "11 PYQs, one MODERATE. Seven are about beryllium's odd behaviour — the diagonal relationship, water, amphoteric BeO, the soluble fluoride; four are the other metals — magnesium burning in air, quicklime, the ammonia solution, and naming a group-2 metal. " +
+    "17 PYQs, four MODERATE. Of the eleven set from 2021 to 2025, seven are about beryllium's odd behaviour — the diagonal relationship, water, amphoteric BeO, the soluble fluoride; four are the other metals — magnesium burning in air, quicklime, the ammonia solution, and naming a group-2 metal. " +
     "Two cards.",
   concepts: [
     {

@@ -6,7 +6,7 @@ export const SUBATOMIC_PARTICLES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An atom is built from protons, neutrons and electrons; the atomic number counts the protons and the mass number counts the nucleons, and from those two numbers the whole family of iso-terms (isotopes, isobars, isotones, isoelectronic) is just a matter of asking which count is being held fixed.",
   whyItMatters:
-    "About 14 PYQs, all EASY and almost all pure recall or a one-line electron count — the guaranteed free marks of this chapter. " +
+    "About 21 PYQs, all EASY and almost all pure recall or a one-line electron count — the guaranteed free marks of this chapter. " +
     "They split three ways: the definitions of the four iso-words (isotopes, isobars, isotones, isoelectronic), the recurring 'identify the isoelectronic pair / the odd one out' electron-count, and one weighted-average-mass calculation for chlorine. " +
     "Master the two defining numbers and how to count electrons in an ion, and every question here is a single step.",
   concepts: [

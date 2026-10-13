@@ -6,7 +6,7 @@ export const ROLLING_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A spinning body stores ½Iω²; a rolling one stores that plus ½mv², tied together by v = Rω, so the factor 1 + k²/R² decides how fast each shape rolls, how far it climbs and how its energy splits.",
   whyItMatters:
-    "24 PYQs, two HARD. Three shapes: rotational kinetic energy and what a swinging or falling rod turns it into, the split of a rolling body's energy between translation and rotation, " +
+    "37 PYQs, four HARD. Three shapes: rotational kinetic energy and what a swinging or falling rod turns it into, the split of a rolling body's energy between translation and rotation, " +
     "and the race down an incline — acceleration, speed at the bottom, distance up a ramp. One number, k²/R², carries all three.",
   concepts: [
     {

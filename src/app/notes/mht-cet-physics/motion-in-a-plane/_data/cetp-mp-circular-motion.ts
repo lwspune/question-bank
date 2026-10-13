@@ -8,7 +8,7 @@ export const CIRCULAR_MOTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A body going round a circle at constant speed v has constant kinetic energy but a velocity that keeps turning, so it accelerates toward the centre at v²/r = ω²r; a banked track or a vertical loop supplies that centripetal force from gravity.",
   whyItMatters:
-    "11 PYQs, none HARD: what stays constant, the change in momentum over half a circle, the average acceleration over half a turn, the acceleration from a frequency, the tangential speed from revolutions, banking of a railway track, and the least speed at the top of a vertical circle. One card.",
+    "18 PYQs, one HARD. The first eleven are what stays constant, the change in momentum over half a circle, the average acceleration over half a turn, the acceleration from a frequency, the tangential speed from revolutions, banking of a railway track, and the least speed at the top of a vertical circle. One card.",
   concepts: [
     {
       kind: "formula" as const,

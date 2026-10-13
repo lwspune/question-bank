@@ -6,7 +6,7 @@ export const AC_POWER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Only the resistor takes power in an a.c. circuit: the average power is V_rms I_rms cos φ, where the power factor cos φ = R/Z — zero for a pure inductor or capacitor, one at resonance.",
   whyItMatters:
-    "25 PYQs, one HARD. Three shapes: the average power from given equations or components, the power factor and how it changes when the frequency changes or a component is added, " +
+    "38 PYQs, one HARD. Three shapes: the average power from given equations or components, the power factor and how it changes when the frequency changes or a component is added, " +
     "and the wattless current of a purely reactive circuit.",
   concepts: [
     {

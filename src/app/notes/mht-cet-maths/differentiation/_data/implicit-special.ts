@@ -6,7 +6,7 @@ export const IMPLICIT_SPECIAL_NOTE: SubtopicNote = {
   oneLineDefinition:
     "When y is tangled up with x in one equation, differentiate the whole equation as it stands — treating y as a hidden function of x — and then solve for dy/dx.",
   whyItMatters:
-    "This is the broadest subtopic in the chapter — 25 PYQs (12 HARD, 12 MODERATE, 1 EASY) — and the paper's reliable source of non-routine relations. " +
+    "This is the broadest subtopic in the chapter — 43 PYQs (25 HARD, 17 MODERATE, 1 EASY) — and the paper's reliable source of non-routine relations. " +
     "Beyond the core implicit method, MHT-CET keeps recycling a handful of signature shapes: the log(x+y)=2xy family, exponential relations you must log first, tan y written as a rational in x, " +
     "'prove this relation' problems, self-referential infinite expressions, and functional equations. Recognise the shape and the method follows.",
   concepts: [

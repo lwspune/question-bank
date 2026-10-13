@@ -6,7 +6,7 @@ export const INVERSE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A⁻¹ = adj(A)/|A| — for a 2 × 2 that is swap-the-diagonal, negate-the-off-diagonal, divide by the determinant — and (AB)⁻¹ = B⁻¹A⁻¹ handles anything built from products.",
   whyItMatters:
-    "15 PYQs at 33% HARD — the chapter's steady marks. A plain 2 × 2 inverse is set most years, and the HARD variants only add one step before it: compute A² − 5A or A + B first, or notice that a matrix with tan x or cot(θ/2) entries has a trigonometric determinant and an adjoint equal to its transpose. " +
+    "44 PYQs at 25% HARD — the chapter's steady marks, and now its largest page: 2026 alone added 29. A plain 2 × 2 inverse is set most years, and the HARD variants only add one step before it: compute A² − 5A or A + B first, or notice that a matrix with tan x or cot(θ/2) entries has a trigonometric determinant and an adjoint equal to its transpose. " +
     "The two-matrix stems — (AB)⁻¹ given, find B⁻¹ — and the unknown-entries stems are the same fact, AA⁻¹ = I, read in two directions.",
   concepts: [
     // 1 — 2x2 inverse

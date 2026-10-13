@@ -4,8 +4,8 @@ export const MHTCET_TRIG2_CHAPTER: ChapterNote = {
   chapterName: "Trigonometry - II",
   title: "Trigonometry - II — MHT-CET Maths",
   intro:
-    "Trigonometry - II is the Std XI identity chapter: 38 past-year questions in the MHT-CET bank, 18 of them HARD. " +
-    "It comes in three parts, in the book's order — compound angles, multiple and half angles, and the sum-to-product formulas. The first part is quick; the other two hold 17 of the 19 HARD questions, most of them evaluations at a standard angle. " +
+    "Trigonometry - II is the Std XI identity chapter: 61 past-year questions in the MHT-CET bank, 29 of them HARD. " +
+    "It comes in three parts, in the book's order — compound angles, multiple and half angles, and the sum-to-product formulas. The first part is quick; the other two hold 22 of the 29 HARD questions, most of them evaluations at a standard angle. " +
     "The Std XII chapter, Trigonometric Functions, uses all of it. Every PYQ is tagged.",
   cardBlurb:
     "Compound angles, double, triple and half angles, and sums to products — the Std XI identities, with the standard values at 18°, 36° and π/8 that most HARD questions reduce to.",

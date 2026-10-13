@@ -6,7 +6,7 @@ export const LIPIDS_AND_ENZYMES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Fats and oils are triglycerides — triesters of glycerol with three fatty acids, hydrolysed by three water molecules and saponified to soap, the sodium or potassium salt of a higher fatty acid; the common fatty acids are counted by carbons and double bonds (linolenic 18:3), enzymes are globular protein catalysts named for their substrate and site, and haemoglobin is the biological coordination compound.",
   whyItMatters:
-    "5 PYQs, none HARD — a short page. Two ask the number of C=C bonds in linolenic acid (three), one the water needed to hydrolyse n mol of triglyceride (3n), one what a soap is (K or Na salt of a higher fatty acid), one the enzymes in saliva; haemoglobin as a coordination compound sits here too. " +
+    "16 PYQs, none HARD — a short page, though 2026 alone added eleven. Of the five set from 2021 to 2025, two ask the number of C=C bonds in linolenic acid (three), one the water needed to hydrolyse n mol of triglyceride (3n), one what a soap is (K or Na salt of a higher fatty acid), one the enzymes in saliva; haemoglobin as a coordination compound sits here too. " +
     "One card.",
   concepts: [
     {

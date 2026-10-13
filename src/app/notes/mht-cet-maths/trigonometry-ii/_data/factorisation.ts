@@ -6,8 +6,8 @@ export const FACTORISATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Turning a sum of two sines or cosines into a product, and a product into a sum — the moves behind ratio conditions, expressions that collapse to 1, and identities under α + β + γ = π.",
   whyItMatters:
-    "12 PYQs, seven HARD. Seven turn a sum into a product: a ratio condition through componendo and dividendo, sin(A + B) from sin A + sin B and cos A + cos B, an expression in 20° that collapses to 1 or 4. " +
-    "Five go the other way: cos²48° − sin²12° (set twice in 2024), cos(log x), and a triangle identity. Two cards.",
+    "14 PYQs, nine HARD. Of the twelve set from 2021 to 2025, seven turned a sum into a product: a ratio condition through componendo and dividendo, sin(A + B) from sin A + sin B and cos A + cos B, an expression in 20° that collapses to 1 or 4. " +
+    "Five went the other way: cos²48° − sin²12° (set twice in 2024), cos(log x), and a triangle identity. Two cards.",
   concepts: [
     {
       kind: "formula" as const,

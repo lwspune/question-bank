@@ -6,7 +6,7 @@ export const CONVERSE_INVERSE_CONTRAPOSITIVE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Every conditional has three relatives — swap the parts for the converse, negate both for the inverse, do both for the contrapositive — and only the contrapositive is equivalent to the original.",
   whyItMatters:
-    "This is the chapter's largest subtopic at 17 PYQs and a moderate 24% HARD, and it is almost pure pattern work once the three forms are automatic. " +
+    "This is one of the chapter's larger subtopics at 28 PYQs and a moderate 21% HARD, and it is almost pure pattern work once the three forms are automatic. " +
     "The paper tests it in two registers: half the questions hand you a symbolic pattern, half hand you an English sentence about triangles, judges or integers. " +
     "The HARD ones stack the operations — the negation of the contrapositive, or the contrapositive of the inverse — which is only bookkeeping if you apply one rule at a time.",
   concepts: [

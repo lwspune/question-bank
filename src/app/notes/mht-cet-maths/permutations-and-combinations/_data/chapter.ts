@@ -4,7 +4,7 @@ export const MHTCET_PNC_CHAPTER: ChapterNote = {
   chapterName: "Permutations and Combinations",
   title: "Permutations and Combinations — MHT-CET Maths",
   intro:
-    "Permutations and Combinations is one question a paper and the classic time sink of MHT-CET Maths. Two of every five of its past-year questions are HARD, " +
+    "Permutations and Combinations is one question a paper and the classic time sink of MHT-CET Maths. One in three of its past-year questions is HARD, " +
     "not because the counting is deep but because one misread constraint — adjacent or not, at least or at most, round table or row — changes the answer, and " +
     "the wrong answer is always on the list. The chapter has almost no formulas; it is a small set of moves. Fix the constrained items first, glue a together-group " +
     "into one block, subtract the forbidden case from the total, list the cases for at least and at most, and seat the unrestricted people before placing the " +

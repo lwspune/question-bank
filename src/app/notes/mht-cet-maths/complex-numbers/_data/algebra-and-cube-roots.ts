@@ -6,9 +6,9 @@ export const ALGEBRA_AND_CUBE_ROOTS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Everything algebraic about z = x + iy: reduce powers of i modulo 4, multiply by the conjugate to clear a denominator, equate real and imaginary parts, and reduce powers of ω modulo 3.",
   whyItMatters:
-    "15 PYQs at 47% HARD — the chapter's largest and hardest page, though the difficulty is bookkeeping rather than ideas. " +
+    "30 PYQs at 30% HARD — the chapter's largest and hardest page, though the difficulty is bookkeeping rather than ideas. " +
     "The recurring stems are a polynomial evaluated at a complex x (answered by its minimal quadratic, never by substitution), a cube of a binomial, an equation solved for z by equating parts, and a determinant or power built on the cube roots of unity. " +
-    "Two of the fifteen carry stems the bank had garbled — a cube read as a division, an argument's denominator misprinted — both now repaired against the papers.",
+    "Two of them carry stems the bank had garbled — a cube read as a division, an argument's denominator misprinted — both now repaired against the papers.",
   concepts: [
     // 1 — powers of i, standard form
     {

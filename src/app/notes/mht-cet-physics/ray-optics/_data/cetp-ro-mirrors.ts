@@ -8,7 +8,7 @@ export const MIRRORS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A spherical mirror of focal length f = R/2 forms an image where 1/v + 1/u = 1/f, with magnification −v/u; a plane mirror gives an erect image of the same size, and two plane mirrors at an angle θ give 360°/θ − 1 images.",
   whyItMatters:
-    "5 PYQs, one HARD: the object distance for a real image n times larger, the speed of an object read from its image's motion in a convex mirror, the number of images between two mirrors, a plane mirror's magnification, and a half-covered mirror. One card.",
+    "6 PYQs, one HARD. The first five are the object distance for a real image n times larger, the speed of an object read from its image's motion in a convex mirror, the number of images between two mirrors, a plane mirror's magnification, and a half-covered mirror. One card.",
   concepts: [
     {
       kind: "formula" as const,

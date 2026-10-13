@@ -8,7 +8,7 @@ export const ADSORPTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Adsorption is the gathering of a substance on the surface of another; it is exothermic, falls as temperature rises, and grows with pressure and with how easily the gas liquefies.",
   whyItMatters:
-    "12 PYQs, none HARD. Four separate adsorption from absorption, sorption and desorption; six ask which gas adsorbs most, whether a case is physisorption, or how temperature acts; two are the Freundlich equation. " +
+    "18 PYQs, none HARD. Of the twelve set from 2021 to 2025, four separate adsorption from absorption, sorption and desorption; six ask which gas adsorbs most, whether a case is physisorption, or how temperature acts; two are the Freundlich equation. " +
     "Three cards.",
   concepts: [
     {

@@ -8,7 +8,7 @@ export const REACTIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An alkyne is made by removing two HX from a dihalide, lengthened by alkylating its acetylide, and reduced to a cis-alkene over Lindlar's catalyst; a cyanide adds one carbon to an alkyl halide in the same spirit.",
   whyItMatters:
-    "7 PYQs, all but one MODERATE. Three are elimination and acetylide sequences, two are Lindlar's catalyst, and two are the KCN-then-reduce route to an amine. " +
+    "10 PYQs, six of them MODERATE. Of the seven set from 2021 to 2025, three are elimination and acetylide sequences, two are Lindlar's catalyst, and two are the KCN-then-reduce route to an amine. " +
     "Three cards.",
   concepts: [
     {

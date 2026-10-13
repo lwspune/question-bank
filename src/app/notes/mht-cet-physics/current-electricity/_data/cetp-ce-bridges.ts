@@ -8,7 +8,7 @@ export const BRIDGES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A Wheatstone bridge of four resistances P, Q, R and S is balanced, with no current in the galvanometer, when P/Q = R/S; the metre bridge is the same bridge with R and S replaced by the two lengths of a uniform wire, so an unknown resistance is read as X/R = l/(100 − l).",
   whyItMatters:
-    "17 PYQs, 6 of them HARD. Nine are the Wheatstone bridge, mostly from a figure: the balancing condition with a parallel pair in one arm, the current drawn from a battery once a balanced middle arm is dropped, the direction of current through an unbalanced galvanometer, and how to rebalance a disturbed bridge. " +
+    "31 PYQs, 11 of them HARD. Of the seventeen set from 2021 to 2025, nine are the Wheatstone bridge, mostly from a figure: the balancing condition with a parallel pair in one arm, the current drawn from a battery once a balanced middle arm is dropped, the direction of current through an unbalanced galvanometer, and how to rebalance a disturbed bridge. " +
     "Eight are the metre bridge — the null point after the resistances are swapped, doubled or shunted, and why a thicker wire changes nothing. " +
     "Two cards.",
   concepts: [

@@ -19,7 +19,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "MHT-CET Physics — Strategy Guide",
   description:
-    "How MHT-CET Physics actually works. A 2,098-question analysis of every paper from 2021 to 2025 — 50 questions sharing 90 minutes with Chemistry, no negative marking, six quick-win chapters at 14% HARD or less, 21 chapter playbooks, formulas, trends and traps.",
+    "How MHT-CET Physics actually works. A 3,390-question analysis of every paper from 2021 to 2026: 50 questions sharing 90 minutes with Chemistry, no negative marking, seven quick-win chapters at 13% HARD or less, 22 chapter playbooks, formulas, trends and traps.",
   alternates: { canonical: "/guide/mht-cet-physics" },
 };
 
@@ -68,7 +68,7 @@ export default async function MhtCetPhysicsLanding() {
       value: OVERVIEW.totalQ.toLocaleString("en-IN"),
       label: "Past-year questions",
     },
-    { value: String(OVERVIEW.papers), label: "Papers (2021–2025)" },
+    { value: String(OVERVIEW.papers), label: "Papers (2021–2026)" },
     { value: String(OVERVIEW.chapters), label: "Chapters" },
     { value: String(OVERVIEW.playbooks), label: "Playbooks" },
     { value: `${pct(difficulty.hard)}%`, label: "of the bank is HARD" },
@@ -94,12 +94,12 @@ export default async function MhtCetPhysicsLanding() {
         type="CollectionPage"
         path="/guide/mht-cet-physics"
         headline="MHT-CET Physics — Strategy Guide"
-        description="A 2,098-question analysis of every MHT-CET Physics paper from 2021 to 2025. No negative marking, a 90-minute paper shared with Chemistry, 21 chapter playbooks, formulas, trends and traps."
+        description="A 3,390-question analysis of every MHT-CET Physics paper from 2021 to 2026. No negative marking, a 90-minute paper shared with Chemistry, 22 chapter playbooks, formulas, trends and traps."
       />
       <GuideHero
         eyebrow="MHT-CET Physics Guide"
         title="How MHT-CET Physics actually works"
-        subtitle={`A ${OVERVIEW.totalQ.toLocaleString("en-IN")}-question analysis of every Physics paper from 2021 to 2025 — ${OVERVIEW.papers} papers in all. ${paper.questions} questions that share ${paper.durationMinutes} minutes with Chemistry, and no negative marking, so the whole game is order and time rather than selection. We mapped the ${OVERVIEW.playbooks} chapter playbooks, the formulas, the year-on-year drift and the distractor traps.`}
+        subtitle={`A ${OVERVIEW.totalQ.toLocaleString("en-IN")}-question analysis of every Physics paper from 2021 to 2026: ${OVERVIEW.papers} papers in all. ${paper.questions} questions that share ${paper.durationMinutes} minutes with Chemistry, and no negative marking, so the whole game is order and time rather than selection. We mapped the ${OVERVIEW.playbooks} chapter playbooks, the formulas, the year-on-year drift and the distractor traps.`}
       >
         <StatBlock stats={stats} />
       </GuideHero>
@@ -231,7 +231,7 @@ export default async function MhtCetPhysicsLanding() {
           questions a paper at {quickwinMaxHard}% HARD or less
         </h2>
         <p className="mt-2 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground sm:text-base">
-          On recent papers (2024–2025) the {quickwins.length} quick-win
+          On recent papers (2025–2026) the {quickwins.length} quick-win
           chapters run to{" "}
           <strong className="font-semibold text-foreground">
             {quickwinQPerPaper.toFixed(1)} of the {paper.questions} Physics
@@ -267,8 +267,8 @@ export default async function MhtCetPhysicsLanding() {
             {cornerstoneQPerPaper.toFixed(1)} of the {paper.questions}{" "}
             questions
           </strong>{" "}
-          at about a fifth HARD each. They are not the easy chapters; they are
-          the ones you cannot afford to be slow in — and all but one hides a
+          at 16% to 21% HARD each. They are not the easy chapters; they are
+          the ones you cannot afford to be slow in, and all but one hides a
           cheap page to enter by.
         </p>
         <ul className="mt-4 grid gap-2 sm:grid-cols-2">
@@ -287,8 +287,9 @@ export default async function MhtCetPhysicsLanding() {
           ))}
         </ul>
         <p className="mt-3 text-xs text-muted-foreground">
-          Weightage here is the RECENT rate (2024–2025 papers), not a lifetime
-          average — 2025 halved two chapters and brought in a third. See{" "}
+          Weightage here is the RECENT rate (2025–2026 papers), not a lifetime
+          average: 2025 halved two chapters and brought in a third, and 2026
+          kept all three moves. See{" "}
           <Link
             href="/guide/mht-cet-physics/trends"
             className="underline underline-offset-4 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -309,8 +310,10 @@ export default async function MhtCetPhysicsLanding() {
           All {OVERVIEW.chapters} chapters tested across the {OVERVIEW.papers}{" "}
           papers in the bank, sorted by questions per paper on recent papers —
           not by lifetime count, because that is the number worth planning
-          against. Units and Measurement carries a status — it entered in 2025
-          — and Gravitation and Ray Optics carry a note: both halved.
+          against. Units and Measurement carries a status: it entered in 2025
+          and held in 2026. Gravitation and Ray Optics carry a note because
+          both halved, Motion in a Plane and Thermal Properties of Matter
+          because both rose.
         </p>
         <div className="mt-4 overflow-x-auto rounded-md border">
           <table className="w-full min-w-[860px] text-sm">
@@ -387,7 +390,7 @@ export default async function MhtCetPhysicsLanding() {
           </table>
         </div>
         <p className="mt-3 text-xs text-muted-foreground">
-          &ldquo;Q / paper&rdquo; is the rate on recent papers (2024–2025);
+          &ldquo;Q / paper&rdquo; is the rate on recent papers (2025–2026);
           &ldquo;Questions&rdquo; and &ldquo;Share&rdquo; are lifetime figures
           across all {OVERVIEW.papers} papers. Where the two disagree, the rate
           is the one to plan on. {OVERVIEW.playbooks} of these{" "}

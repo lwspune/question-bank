@@ -8,7 +8,7 @@ export const GROUP_16_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The chalcogens O, S, Se, Te and Po (ns² np⁴) grow larger, denser, less reactive and easier to ionise down the group; their hydrides H₂E become less stable but more acidic; oxygen forms O₂ and the less stable, strongly oxidising O₃; and sulphur has the most allotropes and gives SO₂, sulphuric acid and oleum.",
   whyItMatters:
-    "24 PYQs, none HARD. Eight are family and trends — which group is the chalcogens, which element does not belong (astatine, twice), ionisation enthalpy, density, reactivity and atomic size; six are hydrides and oxygen against sulphur — thermal stability, acidity, hybridisation, the colourless odourless hydride; four are oxygen and ozone — O₂ against O₃, the O–O bond length, ozone's properties and what depletes the layer; six are sulphur — allotropes, the S–S–S angle, SO₂ manufacture, oleum, disulphuric acid, baryte and galena. " +
+    "37 PYQs, none HARD. Of the twenty-four set from 2021 to 2025, eight are family and trends — which group is the chalcogens, which element does not belong (astatine, twice), ionisation enthalpy, density, reactivity and atomic size; six are hydrides and oxygen against sulphur — thermal stability, acidity, hybridisation, the colourless odourless hydride; four are oxygen and ozone — O₂ against O₃, the O–O bond length, ozone's properties and what depletes the layer; six are sulphur — allotropes, the S–S–S angle, SO₂ manufacture, oleum, disulphuric acid, baryte and galena. " +
     "Four cards.",
   concepts: [
     // 1 — family and trends

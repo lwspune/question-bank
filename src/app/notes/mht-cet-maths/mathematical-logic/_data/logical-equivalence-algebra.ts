@@ -6,7 +6,7 @@ export const LOGICAL_EQUIVALENCE_ALGEBRA_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A short list of named laws lets you reach the answer to an equivalence question by algebra instead of by building the whole truth table.",
   whyItMatters:
-    "16 PYQs sit here at 31% HARD, and this is the subtopic that decides how long the rest of the chapter takes you. " +
+    "34 PYQs sit here at 26% HARD, and this is the subtopic that decides how long the rest of the chapter takes you. " +
     "You already know what equivalence MEANS — the first block defined it as two matching last columns. What is new here is the shortcut: " +
     "an eight-row table always works but is slow and error-prone, while three lines of algebra reach the same verdict. " +
     "The table is the method that always terminates; the algebra is the method that is fast. Build the table when the pattern is small, when the algebra stalls, " +

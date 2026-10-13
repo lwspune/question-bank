@@ -8,7 +8,7 @@ export const POSITION_AND_CONFIGURATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Transition elements are the d-block elements that have a partly filled d subshell in the atom or in a common ion; they sit in groups 3 to 12 as four series of ten, their ions lose the outer s electrons before any d electrons, and the half-filled and filled d subshells explain the odd configurations of chromium and copper and the high ionisation enthalpy of zinc.",
   whyItMatters:
-    "18 PYQs, 1 HARD. Seven place the elements — the series of Co and Mo, the groups and period of Sc to Zn, ten elements a series, the last element of the 5d series, and which element (Hg) is not a transition element; six count d electrons in an atom or ion — Ti²⁺, Ti³⁺, Co²⁺, Cr with six unpaired electrons, the half-filled Mn and Cr; five are general properties — the soft metal, the highest and lowest first ionisation enthalpy, and one HARD ionisation order. " +
+    "28 PYQs, 1 HARD. Of the eighteen set from 2021 to 2025, seven place the elements — the series of Co and Mo, the groups and period of Sc to Zn, ten elements a series, the last element of the 5d series, and which element (Hg) is not a transition element; six count d electrons in an atom or ion — Ti²⁺, Ti³⁺, Co²⁺, Cr with six unpaired electrons, the half-filled Mn and Cr; five are general properties — the soft metal, the highest and lowest first ionisation enthalpy, and one HARD ionisation order. " +
     "Three cards.",
   concepts: [
     // 1 — position and series

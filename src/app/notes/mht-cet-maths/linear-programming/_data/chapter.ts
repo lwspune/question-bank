@@ -4,7 +4,7 @@ export const MHTCET_LPP_CHAPTER: ChapterNote = {
   chapterName: "Linear Programming",
   title: "Linear Programming — MHT-CET Maths",
   intro:
-    "Linear Programming is the cheapest chapter in MHT-CET Maths and one question a paper: barely one in twenty of its past-year questions is HARD, and the " +
+    "Linear Programming is the cheapest chapter in MHT-CET Maths and one question a paper: barely one in thirty of its past-year questions is HARD, and the " +
     "method never changes. Draw each boundary line, pick the correct side with a test point, take the intersection, list the corner points, and evaluate the " +
     "objective at each corner — the optimum of a linear function over a polygon always sits at a corner, so there is nothing to search. The pages below " +
     "follow that order. The only place difficulty appears is the figure questions, where a shaded region is given and the constraints must be read off it; " +

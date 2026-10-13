@@ -8,7 +8,7 @@ export const PRESSURE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Pressure in a liquid rises by ρgh with depth, so a gas bubble grows as it rises (Boyle's law at constant temperature), and a body in a liquid feels an upthrust equal to the weight of liquid it displaces — which can decelerate a light body that falls in until it stops and floats back up.",
   whyItMatters:
-    "6 PYQs, five of them HARD — a small page with the chapter's hardest questions. Two are a bubble rising from a lake bed whose radius or diameter doubles, one the pressure rise at the centre of a spinning drum, one the force on the bottom of a vessel holding a suspended body, and two how deep a light body sinks when dropped into a denser liquid. " +
+    "14 PYQs, five of them HARD — a small page with the chapter's hardest questions. Of the six set from 2021 to 2025, two are a bubble rising from a lake bed whose radius or diameter doubles, one the pressure rise at the centre of a spinning drum, one the force on the bottom of a vessel holding a suspended body, and two how deep a light body sinks when dropped into a denser liquid. " +
     "Two cards.",
   concepts: [
     {

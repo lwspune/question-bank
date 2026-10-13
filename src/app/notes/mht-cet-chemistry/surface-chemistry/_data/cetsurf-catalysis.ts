@@ -8,7 +8,7 @@ export const CATALYSIS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A catalyst changes the rate of a reaction without being used up; it may share the reactants' phase or not, can be helped by a promoter or opposed by an inhibitor, and works best when finely divided — which is why nanomaterials make good catalysts.",
   whyItMatters:
-    "6 PYQs, none HARD. Three name a catalyst's role or type — K₂O in the Haber process, glycerol with H₂O₂, nickel in hydrogenation; three are about nanomaterials — TiO₂ in photocatalysis, what SEM measures, and nano properties. " +
+    "9 PYQs, none HARD. Of the six set from 2021 to 2025, three name a catalyst's role or type — K₂O in the Haber process, glycerol with H₂O₂, nickel in hydrogenation; three are about nanomaterials — TiO₂ in photocatalysis, what SEM measures, and nano properties. " +
     "Two cards.",
   concepts: [
     {

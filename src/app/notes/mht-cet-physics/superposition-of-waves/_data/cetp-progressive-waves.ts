@@ -6,7 +6,7 @@ export const PROGRESSIVE_WAVES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A progressive wave y = A sin(ωt − kx) carries a disturbance at v = ω/k = fλ; two points Δx apart differ in phase by 2πΔx/λ, and each particle oscillates with a top speed Aω that is quite separate from the wave's speed.",
   whyItMatters:
-    "34 PYQs, three HARD. Three shapes: reading ω, k, λ, v and the direction off a wave equation (and the speed on a string, √(T/μ)), converting between phase and path difference, " +
+    "57 PYQs, five HARD. Three shapes: reading ω, k, λ, v and the direction off a wave equation (and the speed on a string, √(T/μ)), converting between phase and path difference, " +
     "and comparing the particles' maximum velocity with the wave velocity.",
   concepts: [
     {

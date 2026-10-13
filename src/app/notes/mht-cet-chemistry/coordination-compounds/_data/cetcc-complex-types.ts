@@ -6,7 +6,7 @@ export const COMPLEX_TYPES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A complex is homoleptic when all its ligands are the same kind and heteroleptic when they differ; its coordination sphere is cationic, anionic or neutral according to the sum of the metal's oxidation state and the ligand charges, and a salt may pair a complex cation with simple anions, a complex anion with simple cations, or a complex cation with a complex anion.",
   whyItMatters:
-    "13 PYQs, none HARD. Five ask homoleptic or heteroleptic from a list of names or formulas; eight ask the charge type — the neutral complex (triamminetrinitrocobalt(III), diamminedichloroplatinum(II)), the cationic one, the anionic one, the compound with a complex anion, and the one with both complex cation and anion. " +
+    "17 PYQs, none HARD. Of the thirteen set from 2021 to 2025, five ask homoleptic or heteroleptic from a list of names or formulas; eight ask the charge type — the neutral complex (triamminetrinitrocobalt(III), diamminedichloroplatinum(II)), the cationic one, the anionic one, the compound with a complex anion, and the one with both complex cation and anion. " +
     "One card.",
   concepts: [
     {

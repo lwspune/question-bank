@@ -6,7 +6,7 @@ export const SPRINGS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A spring stretched by x pulls back with kx and stores ½kx²; its constant grows as it is cut shorter, springs in series add their extensions, and energy conservation links a falling body to the compression it produces.",
   whyItMatters:
-    "6 PYQs, one HARD. Four are springs — the energy for a larger stretch, the constant of a cut piece, two springs in a chain, and a ball dropped onto a platform on a spring. " +
+    "10 PYQs, two HARD. Of the six set from 2021 to 2025, four are springs — the energy for a larger stretch, the constant of a cut piece, two springs in a chain, and a ball dropped onto a platform on a spring. " +
     "Two follow an impact: a ball's speed after it rebounds, and the rise in temperature of a bullet that stops in a wall. Two cards.",
   concepts: [
     {

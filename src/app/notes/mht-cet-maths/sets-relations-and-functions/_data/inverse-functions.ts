@@ -6,7 +6,7 @@ export const INVERSE_FUNCTIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Swap the roles: set y = f(x), solve for x in terms of y, and rename — a linear-fractional (ax + b)/(cx + d) inverts to (dx − b)/(−cx + a); for an increasing f, f(x) = f⁻¹(x) reduces to f(x) = x.",
   whyItMatters:
-    "7 PYQs at 14% HARD. Four are 'find f⁻¹' for a linear-fractional, a quadratic-type or a composite function, two use the self-inverse condition f∘f = x, and one solves f(x) = f⁻¹(x). " +
+    "9 PYQs at 11% HARD. Of the seven set from 2021 to 2025, four were 'find f⁻¹' for a linear-fractional, a quadratic-type or a composite function, two used the self-inverse condition f∘f = x, and one solved f(x) = f⁻¹(x). " +
     "The HARD one adds two inverses and solves a quadratic. The method never changes; the checks that matter are the branch of a square root and the domain the inverse must land in.",
   concepts: [
     // 1 — linear fractional inverse

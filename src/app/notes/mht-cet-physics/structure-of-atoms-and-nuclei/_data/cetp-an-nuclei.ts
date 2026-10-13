@@ -8,7 +8,7 @@ export const NUCLEI_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A radioactive sample loses a fixed fraction of its nuclei per unit time, N = N₀e^(−λt), so it halves every T½ = ln 2/λ; each alpha decay removes 4 from the mass number and 2 from the atomic number, each beta-minus adds 1 to the atomic number, and a nucleus's binding energy is its mass defect times c².",
   whyItMatters:
-    "18 PYQs, one HARD. Eleven are the decay law — the fraction left after some half-lives, a decay constant from two activities, the time for two samples to reach a given ratio, and activity as λN. " +
+    "34 PYQs, one HARD. Of the eighteen set from 2021 to 2025, eleven are the decay law — the fraction left after some half-lives, a decay constant from two activities, the time for two samples to reach a given ratio, and activity as λN. " +
     "Five count the alpha and beta particles between two nuclei or name the particle a decay emits, and two are binding energy and fission. " +
     "Three cards.",
   concepts: [

@@ -4,7 +4,7 @@
  *
  * What it locks, beyond the Maths suite:
  *   - every rate and count the chapter table, the playbooks and the tail
- *     quote is RECOMPUTED from matrix.generated.ts (2024-2025 columns), so an
+ *     quote is RECOMPUTED from matrix.generated.ts (2025-2026 columns), so an
  *     ingest that moves the grid fails here instead of leaving stale prose;
  *   - the strand and tail sums reconcile to the whole bank and the whole paper;
  *   - every slug cross-reference (details, related, traps, formulas) resolves;
@@ -26,7 +26,11 @@ import { PLAYBOOK_DETAILS } from "@/app/guide/mht-cet-physics/_data/playbook-det
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
 import { STRATEGY_STRANDS, TAIL_CHAPTERS } from "@/app/guide/mht-cet-physics/_data/strategy";
 import { DRIFT_ROWS, DRIFT_CALLOUTS } from "@/app/guide/mht-cet-physics/_data/trends";
-import { CHAPTER_MATRIX, SHIFT_PAPERS } from "@/app/guide/mht-cet-physics/_data/matrix.generated";
+import {
+  CHAPTER_MATRIX,
+  PAPER_TOTALS,
+  SHIFT_PAPERS,
+} from "@/app/guide/mht-cet-physics/_data/matrix.generated";
 import { TRAP_SHAPES } from "@/app/guide/mht-cet-physics/_data/traps";
 import { FORMULA_GROUPS } from "@/app/guide/mht-cet-physics/_data/formulas";
 import { CHAPTER_TABLE, OVERVIEW } from "@/app/guide/mht-cet-physics/_data/mht-cet-physics";
@@ -35,8 +39,11 @@ const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-/** Recent-window rate (2024-2025 columns) for a chapter, from the grid. */
-const RECENT = SHIFT_PAPERS.flatMap((p, i) => (p.year >= 2024 ? [i] : []));
+/** Recent-window rate (2025-2026 columns) for a chapter, from the grid. */
+const RECENT = SHIFT_PAPERS.flatMap((p, i) => (p.year >= 2025 ? [i] : []));
+/** Public questions per recent paper. Below 50 when a flawed printed question
+ *  is held PRIVATE (2026 is 8 short), so it is measured, not assumed. */
+const RECENT_PAPER_SIZE = RECENT.reduce((a, c) => a + PAPER_TOTALS[c], 0) / RECENT.length;
 function gridRate(chapter: string): number {
   const row = CHAPTER_MATRIX.find((r) => r.chapter === chapter);
   if (!row) throw new Error(`no grid row for ${chapter}`);
@@ -74,9 +81,9 @@ describe("mht-cet-physics — static structure", () => {
 
   it("strand sizes match what the strategy page claims", () => {
     expect(playbooksInBucket("cornerstone")).toHaveLength(6);
-    expect(playbooksInBucket("quickwin")).toHaveLength(6);
+    expect(playbooksInBucket("quickwin")).toHaveLength(7);
     expect(playbooksInBucket("longtail")).toHaveLength(9);
-    expect(PLAYBOOKS).toHaveLength(21);
+    expect(PLAYBOOKS).toHaveLength(22);
     for (const s of STRATEGY_STRANDS) {
       const names = s.chapters.map((c) => c.chapter).sort();
       expect(names, s.id).toEqual(playbooksInBucket(s.id).map((p) => p.chapter).sort());
@@ -88,8 +95,8 @@ describe("mht-cet-physics — static structure", () => {
   it("the headline claims are arithmetic on the data", () => {
     const qw = playbooksInBucket("quickwin");
     const qwRate = qw.reduce((a, p) => a + p.qPerPaper, 0);
-    expect(Math.round(qwRate)).toBe(13); // "13 questions a paper"
-    expect(Math.max(...qw.map((p) => p.pctHard))).toBe(14); // "14% HARD or less"
+    expect(Math.round(qwRate)).toBe(14); // "14 questions a paper"
+    expect(Math.max(...qw.map((p) => p.pctHard))).toBe(13); // "13% HARD or less"
     const cs = playbooksInBucket("cornerstone").reduce((a, p) => a + p.qPerPaper, 0);
     expect(Math.round((cs / OVERVIEW.paper.questions) * 100)).toBe(37); // "37% of the Physics half"
   });
@@ -122,7 +129,7 @@ describe("mht-cet-physics — static structure", () => {
     }
     expect(CHAPTER_TABLE.reduce((a, r) => a + r.qCount, 0)).toBe(OVERVIEW.totalQ);
     const totalRate = CHAPTER_TABLE.reduce((a, r) => a + r.qPerPaper, 0);
-    expect(Math.abs(totalRate - OVERVIEW.paper.questions)).toBeLessThan(0.2);
+    expect(Math.abs(totalRate - RECENT_PAPER_SIZE)).toBeLessThan(0.2);
     // sorted by recent weightage
     const rates = CHAPTER_TABLE.map((r) => r.qPerPaper);
     expect(rates).toEqual([...rates].sort((a, b) => b - a));

@@ -4,7 +4,7 @@ export const MHTCET_ALKYNES_CHAPTER: ChapterNote = {
   chapterName: "Alkynes",
   title: "Alkynes — MHT-CET Chemistry",
   intro:
-    "Alkynes is one of the smallest chapters in MHT-CET Chemistry, eleven past-year questions, but nine of them are MODERATE. " +
+    "Alkynes is one of the smallest chapters in MHT-CET Chemistry, 15 past-year questions, and nine of them are MODERATE. " +
     "They test four things: where the halogen sits in a haloalkyne, how a triple bond is made and extended, which catalyst stops at the cis-alkene, and the cyanide route that adds a carbon. " +
     "Every PYQ is tagged.",
   cardBlurb:

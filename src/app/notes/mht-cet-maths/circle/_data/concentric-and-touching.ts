@@ -6,7 +6,7 @@ export const CONCENTRIC_AND_TOUCHING_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A concentric circle keeps −g and −f and changes only c; a circle touches a line when its radius equals the distance from the centre to that line, and it touches the X-axis when r = |k|.",
   whyItMatters:
-    "6 PYQs at 17% HARD — the chapter's smallest page and its most repetitive. Concentric with a given circle and double its area (twice), concentric and passing through the centre of another circle, concentric and touching the X-axis, centre given and touching a line, and the point of contact of a circle with a line. " +
+    "10 PYQs at 30% HARD — one of the chapter's smallest pages and its most repetitive. Concentric with a given circle and double its area (twice), concentric and passing through the centre of another circle, concentric and touching the X-axis, centre given and touching a line, and the point of contact of a circle with a line. " +
     "Every one is 'keep the centre, find r' or 'r is a distance'.",
   concepts: [
     // 1 — concentric circles

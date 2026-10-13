@@ -6,7 +6,7 @@ export const ENTROPY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Entropy measures disorder; a spontaneous process raises the entropy of the universe, ΔS_total = ΔS_sys + ΔS_surr > 0, where the surroundings' share is −ΔH_sys/T.",
   whyItMatters:
-    "9 PYQs, none HARD. Two shapes: pick the reaction whose entropy falls (gas moles decrease, or gas becomes liquid) or rises (solid dissolves, gas made), and compute ΔS_surr = −ΔH/T or ΔS_total with the units matched — ΔH in kJ, ΔS in J K⁻¹. " +
+    "13 PYQs, none HARD. Two shapes: pick the reaction whose entropy falls (gas moles decrease, or gas becomes liquid) or rises (solid dissolves, gas made), and compute ΔS_surr = −ΔH/T or ΔS_total with the units matched — ΔH in kJ, ΔS in J K⁻¹. " +
     "One conversion and one sign.",
   concepts: [
     // 1 — sign of ΔS

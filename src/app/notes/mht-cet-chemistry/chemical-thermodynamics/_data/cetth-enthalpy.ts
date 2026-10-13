@@ -6,7 +6,7 @@ export const ENTHALPY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Enthalpy H = U + PV is the heat of a process at constant pressure; for a reaction with a change in gas moles, ΔH = ΔU + Δn_g RT, so ΔH and ΔU differ only when gases are made or consumed.",
   whyItMatters:
-    "18 PYQs, 2 HARD. Half are ΔH − ΔU = Δn_g RT — read the equation, count gas moles, multiply — including the reverse move from ΔU to ΔH with R = 8.314. The rest are an enthalpy of vaporisation from grams and kilojoules, and recall: freezing is minus fusion, melting is endothermic, ΔH of an isothermal ideal-gas step is zero.",
+    "23 PYQs, 2 HARD. Half are ΔH − ΔU = Δn_g RT — read the equation, count gas moles, multiply — including the reverse move from ΔU to ΔH with R = 8.314. The rest are an enthalpy of vaporisation from grams and kilojoules, and recall: freezing is minus fusion, melting is endothermic, ΔH of an isothermal ideal-gas step is zero.",
   concepts: [
     // 1 — enthalpy and phase changes
     {

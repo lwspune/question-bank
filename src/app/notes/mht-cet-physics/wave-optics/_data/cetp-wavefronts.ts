@@ -6,7 +6,7 @@ export const WAVEFRONTS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A wavefront is a surface of equal phase, always perpendicular to the rays; Huygens' principle builds each new wavefront from secondary wavelets; and only coherent sources — same frequency, fixed phase difference — give a steady interference pattern.",
   whyItMatters:
-    "5 PYQs, none HARD — a short page of recall. What a wavefront is and what happens to it at a boundary, what the wave theory explains that the corpuscle theory does not, and why two different colours cannot interfere.",
+    "8 PYQs, none HARD — a short page of recall. What a wavefront is and what happens to it at a boundary, what the wave theory explains that the corpuscle theory does not, and why two different colours cannot interfere.",
   concepts: [
     {
       kind: "formula" as const,

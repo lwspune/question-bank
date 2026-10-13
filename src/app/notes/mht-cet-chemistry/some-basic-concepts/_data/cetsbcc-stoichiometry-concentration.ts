@@ -6,8 +6,8 @@ export const STOICHIOMETRY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A balanced equation is a recipe in moles: convert the given mass or gas volume to moles, scale by the coefficient ratio, and convert to the target — then read solution strength (H2O2 volume strength, % by mass) off the same mole bridge.",
   whyItMatters:
-    "Seven PYQs, and the workhorse is one skill: mass-or-volume to moles, scale by the balanced-equation ratio, convert to what is asked. The KClO3 to O2, Mg + HCl and burning-carbon mass problems (four of the seven) are all this one move. " +
-    "Two questions test gas reactions where the volumes are already in the coefficient ratio (CH4 combustion, N2 + 3H2), which brings in limiting-reagent thinking. One HARD question turns H2O2 volume strength into % by mass — a two-formula chain that CET repeats almost every year.",
+    "Twelve PYQs, and the workhorse is one skill: mass-or-volume to moles, scale by the balanced-equation ratio, convert to what is asked. The KClO3 to O2, Mg + HCl and burning-carbon mass problems (four of the first seven) are all this one move. " +
+    "Two of those seven test gas reactions where the volumes are already in the coefficient ratio (CH4 combustion, N2 + 3H2), which brings in limiting-reagent thinking. One HARD question turns H2O2 volume strength into % by mass — a two-formula chain that CET repeats almost every year.",
   concepts: [
     // mole ratios from a balanced equation — the workhorse
     {

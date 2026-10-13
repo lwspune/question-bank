@@ -8,7 +8,7 @@ export const LENSES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A thin lens forms an image where 1/v − 1/u = 1/f with magnification v/u; its focal length comes from its surfaces through the lensmaker's equation 1/f = (μ − 1)(1/R₁ − 1/R₂); and lenses in contact add their powers P = 1/f in dioptres.",
   whyItMatters:
-    "24 PYQs, 6 of them HARD. Nine use the lens formula — object and image distances for a given magnification, the least object–image distance, an air bubble in water. " +
+    "34 PYQs, 9 of them HARD. Of the twenty-four set from 2021 to 2025, nine use the lens formula — object and image distances for a given magnification, the least object–image distance, an air bubble in water. " +
     "Fifteen use the lensmaker's equation and powers: a lens immersed in a liquid, cut or ground flat, lenses in contact or apart, and a plano-convex lens fitted into a plano-concave one. Two cards.",
   concepts: [
     {

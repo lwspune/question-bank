@@ -8,7 +8,7 @@ export const PENDULUM_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A simple pendulum of length L swings with T = 2π√(L/g), independent of its mass and (for small swings) its amplitude; in a lift, on an accelerating support or in orbit, g is replaced by the effective gravity, and energy conservation gives the bob's speed and the string's tension along the swing.",
   whyItMatters:
-    "24 PYQs, 5 HARD. Ten are the period and length — ratios of lengths and frequencies, a length change of 20%, a pendulum of length L₁ − L₂, a bob that leaks water, a mass hung from two strings; eight are effective g — lifts accelerating up or down, a support moving as y = kt², a pendulum in orbit, and a sonometer wire at the poles and the equator; six are speed and tension — the speed at 60°, the maximum tension, the angle where the maximum tension is four times the minimum. " +
+    "37 PYQs, 9 HARD. Of the twenty-four set from 2021 to 2025, ten are the period and length — ratios of lengths and frequencies, a length change of 20%, a pendulum of length L₁ − L₂, a bob that leaks water, a mass hung from two strings; eight are effective g — lifts accelerating up or down, a support moving as y = kt², a pendulum in orbit, and a sonometer wire at the poles and the equator; six are speed and tension — the speed at 60°, the maximum tension, the angle where the maximum tension is four times the minimum. " +
     "Three cards.",
   concepts: [
     {

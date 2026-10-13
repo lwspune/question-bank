@@ -6,8 +6,8 @@ export const DOMAIN_AND_RANGE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Domain: intersect the conditions each piece imposes (log argument > 0, even root ≥ 0, denominator ≠ 0, inverse-sine argument in [−1, 1]). Range: solve y = f(x) for x and ask which y allow a real solution.",
   whyItMatters:
-    "11 PYQs at 27% HARD — the largest page in the chapter and the most repeated: the domain of 2ˣ + 2ʸ = 2 has been set FOUR times with identical options. " +
-    "The three HARD ones are a log of a rational function, a sin⁻¹ of a rational function, and a rational-function range whose end-points decide the answer. " +
+    "23 PYQs at 22% HARD — the largest page in the chapter and the most repeated: the domain of 2ˣ + 2ʸ = 2 has been set FOUR times with identical options. " +
+    "Three of the HARD ones are a log of a rational function, a sin⁻¹ of a rational function, and a rational-function range whose end-points decide the answer. " +
     "Every question is answered by the same two routines below; the marks are lost on the bracket at the boundary.",
   concepts: [
     // 1 — domain from conditions

@@ -41,14 +41,14 @@ import {
  *
  * Keyed on the exact `DriftWindow.label` strings in trends.ts. The shift-count
  * assertion below is what proves a mapping is right: if "before 2025" were
- * mis-mapped, its papers would not come to the 31 the narrative claims.
+ * mis-mapped, its papers would not come to the 29 the narrative claims.
+ * (2026-10-13: the 2025-only, "lifetime (2021-2025)" and "recent (2024-2025)"
+ * windows were replaced by "2025-2026" when the 26 shifts of 2026 went public.)
  */
 const WINDOW_YEARS: Record<string, number[]> = {
   "2023-2024": [2023, 2024],
-  "2025": [2025],
+  "2025-2026": [2025, 2026],
   "before 2025": [2021, 2022, 2023, 2024],
-  "lifetime (2021-2025)": [2021, 2022, 2023, 2024, 2025],
-  "recent (2024-2025)": [2024, 2025],
 };
 
 /** Column indices of the grid belonging to the given years. */
@@ -207,11 +207,11 @@ describe("the hand-authored narrative reconciles against the grid", () => {
 
   it("still shows Measures of Dispersion leaving the paper", () => {
     // The page's headline, asserted against the grid rather than the prose.
-    // If an ingest ever puts this chapter back on a 2025 paper, the callout
-    // saying "give it no revision time" becomes wrong and must be rewritten.
+    // If an ingest ever puts this chapter back on a 2025 or 2026 paper, the
+    // callout saying "give it no revision time" becomes wrong and must be rewritten.
     const row = chapterRow("Measures of Dispersion");
-    const in2025 = columnsFor([2025]).reduce((a, c) => a + row.counts[c], 0);
-    expect(in2025).toBe(0);
+    const in2526 = columnsFor([2025, 2026]).reduce((a, c) => a + row.counts[c], 0);
+    expect(in2526).toBe(0);
     const in2324 = columnsFor([2023, 2024]).reduce((a, c) => a + row.counts[c], 0);
     expect(in2324).toBeGreaterThan(0);
   });
@@ -222,9 +222,9 @@ describe("the hand-authored narrative reconciles against the grid", () => {
       (a, c) => a + row.counts[c],
       0
     );
-    const in2025 = columnsFor([2025]).reduce((a, c) => a + row.counts[c], 0);
+    const in2526 = columnsFor([2025, 2026]).reduce((a, c) => a + row.counts[c], 0);
     // The claim is a step change, not merely "more" — at these shift counts
-    // (31 before, 14 in 2025) anything less would not carry the callout.
-    expect(in2025 / 14).toBeGreaterThan((before / 31) * 5);
+    // (29 before, 39 in 2025-2026) anything less would not carry the callout.
+    expect(in2526 / 39).toBeGreaterThan((before / 29) * 5);
   });
 });

@@ -6,7 +6,7 @@ export const ISOMERISM_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Coordination isomers share a formula but differ either in which atoms are bonded to the metal — structural isomers: ionisation, solvate, linkage and coordination — or only in how the same ligands are arranged in space — stereoisomers: geometric (cis and trans) and optical.",
   whyItMatters:
-    "6 PYQs, none HARD. Five are structural: name the isomerism of a given pair (ionisation for the sulphato/bromo pair, solvate for the chromium hydrates, asked twice) or pick the ligand that can form linkage isomers (nitro, SCN⁻). One asks which complex is of the MA₂BC type that shows cis and trans forms. " +
+    "13 PYQs, none HARD. Of the six set from 2021 to 2025, five are structural: name the isomerism of a given pair (ionisation for the sulphato/bromo pair, solvate for the chromium hydrates, asked twice) or pick the ligand that can form linkage isomers (nitro, SCN⁻). One asks which complex is of the MA₂BC type that shows cis and trans forms. " +
     "Two cards.",
   concepts: [
     // 1 — structural isomerism

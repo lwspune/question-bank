@@ -6,7 +6,7 @@ export const INTERFERENCE_INTENSITY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Two coherent waves of equal intensity I₀ combine to 4I₀cos²(φ/2), where the phase difference is φ = 2π × (path difference)/λ; with unequal intensities the maxima and minima are (√I₁ ± √I₂)², so the dark fringes are no longer dark.",
   whyItMatters:
-    "29 PYQs, six HARD. Two shapes: the intensity at a point with a given path or phase difference (and which fringe sits there), " +
+    "43 PYQs, seven HARD. Two shapes: the intensity at a point with a given path or phase difference (and which fringe sits there), " +
     "and the maximum-to-minimum ratio when the two sources are unequal — including light reflected from the two faces of a glass plate.",
   concepts: [
     {

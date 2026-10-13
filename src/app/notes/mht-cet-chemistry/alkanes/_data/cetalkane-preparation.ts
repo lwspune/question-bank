@@ -8,7 +8,7 @@ export const PREPARATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Alkanes are made by joining two alkyl halides with sodium (Wurtz), by giving a Grignard reagent a proton from water, an alcohol or ammonia, by heating a sodium carboxylate with soda-lime, and by hydrogenating CO over nickel.",
   whyItMatters:
-    "17 PYQs, the chapter's heaviest page and most of its MODERATE rows. Eight are Wurtz — which product cannot form from a mixed pair, mole counts, the Fittig variant; seven are Grignard reagents meeting an active hydrogen; two are decarboxylation and CO + H₂. " +
+    "28 PYQs, the chapter's heaviest page and most of its MODERATE rows. Of the seventeen set from 2021 to 2025, eight are Wurtz — which product cannot form from a mixed pair, mole counts, the Fittig variant; seven are Grignard reagents meeting an active hydrogen; two are decarboxylation and CO + H₂. " +
     "Three cards.",
   concepts: [
     {

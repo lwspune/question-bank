@@ -4,7 +4,7 @@ export const MHTCET_GREEN_CHAPTER: ChapterNote = {
   chapterName: "Green Chemistry and Nanochemistry",
   title: "Green Chemistry and Nanochemistry — MHT-CET Chemistry",
   intro:
-    "Green Chemistry and Nanochemistry is the most recall-heavy chapter in MHT-CET Chemistry: none of its thirty-three past-year questions is HARD, and only the atom-economy sums need any working. " +
+    "Green Chemistry and Nanochemistry is the most recall-heavy chapter in MHT-CET Chemistry: none of its 63 past-year questions is HARD, and only the atom-economy sums need any working. " +
     "The rest is two short lists to know by heart — the principles of green chemistry, and how nanostructures are classified, made and measured. " +
     "Every PYQ is tagged.",
   cardBlurb:

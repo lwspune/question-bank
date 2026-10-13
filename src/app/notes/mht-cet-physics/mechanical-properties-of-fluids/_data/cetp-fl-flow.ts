@@ -8,7 +8,7 @@ export const FLOW_NOTE: SubtopicNote = {
   oneLineDefinition:
     "In steady streamline flow the volume passing any section per second is the same, so the fluid speeds up where the pipe narrows (Av constant); Bernoulli's theorem then says the pressure falls where the speed rises, and Torricelli's theorem gives the speed of a jet from a hole at depth h as √(2gh).",
   whyItMatters:
-    "17 PYQs, 3 HARD. Six are continuity — speed in a narrower pipe, a nozzle, a sprinkler, how fast a tank empties; seven are Bernoulli — the pressure at the narrow part, the lift on a roof in a wind, the flow rate from a pressure difference, the speed of water from an opened valve; four are Torricelli — jets from holes at different depths, the time to drain, and the recoil of a tank with holes on opposite sides. " +
+    "25 PYQs, 4 HARD. Of the seventeen set from 2021 to 2025, six are continuity — speed in a narrower pipe, a nozzle, a sprinkler, how fast a tank empties; seven are Bernoulli — the pressure at the narrow part, the lift on a roof in a wind, the flow rate from a pressure difference, the speed of water from an opened valve; four are Torricelli — jets from holes at different depths, the time to drain, and the recoil of a tank with holes on opposite sides. " +
     "Three cards.",
   concepts: [
     {

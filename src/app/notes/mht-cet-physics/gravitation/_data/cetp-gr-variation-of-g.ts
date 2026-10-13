@@ -8,7 +8,7 @@ export const VARIATION_OF_G_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Above the surface g falls as the inverse square of the distance from the centre, below it g falls linearly to zero at the centre; a planet's surface g is proportional to its radius times its density; and the earth's spin reduces the effective g everywhere except the poles, most at the equator.",
   whyItMatters:
-    "33 PYQs, one HARD — the largest page in the chapter, but mostly direct. Twenty-two put a body or a pendulum at a height or a depth: its weight, its period, the height where g falls to a fraction. " +
+    "43 PYQs, three HARD — the largest page in the chapter, but mostly direct. Of the thirty-three set from 2021 to 2025, twenty-two put a body or a pendulum at a height or a depth: its weight, its period, the height where g falls to a fraction. " +
     "Eight compare planets by radius and density, and three ask what the earth's spin does at the equator or a latitude. Three cards.",
   concepts: [
     {

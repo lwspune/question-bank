@@ -6,7 +6,7 @@ export const APPROXIMATIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Near an easy point, a smooth curve is almost its tangent line — so f(a + h) is roughly f(a) plus the tangent's rise h·f'(a). This one formula estimates roots, powers, trig values, logs, exponentials, and polynomial values.",
   whyItMatters:
-    "This subtopic is a reliable easy-to-moderate scorer on MHT-CET: 12 PYQs sit here (11 MODERATE, 1 EASY), and every one is the SAME single-line move — pick a nearby exact point, add the tangent correction. " +
+    "This subtopic is a reliable easy-to-moderate scorer on MHT-CET: 16 PYQs sit here (12 MODERATE, 4 EASY), and every one is the SAME single-line move — pick a nearby exact point, add the tangent correction. " +
     "The recurring traps are all mechanical: choosing an anchor whose value you cannot compute exactly, getting the sign of h wrong, and — the biggest one — using degrees instead of radians for a trig derivative. Master the formula once and the whole subtopic collapses into arithmetic.",
   concepts: [
     // 1 — dy = f'(x) dx and the linear-approximation formula (foundation, no PYQ, lint-exempt)

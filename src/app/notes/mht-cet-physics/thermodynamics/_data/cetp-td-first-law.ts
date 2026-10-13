@@ -8,7 +8,7 @@ export const FIRST_LAW_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Heat Q given to a gas is shared between the rise in its internal energy ΔU and the work W it does on its surroundings, Q = ΔU + W; internal energy depends only on the state, so ΔU is the same along any path and zero round a cycle.",
   whyItMatters:
-    "37 PYQs, 4 of them HARD. Seventeen apply the first law directly — signs, cycles, work read from a graph, a moving container brought to rest. " +
+    "53 PYQs, 5 of them HARD. Of the thirty-seven set from 2021 to 2025, seventeen apply the first law directly — signs, cycles, work read from a graph, a moving container brought to rest. " +
     "Seventeen ask how heat splits at constant pressure between internal energy and work, and three find the work done in an adiabatic change. Three cards.",
   concepts: [
     {

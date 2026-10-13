@@ -8,7 +8,7 @@ export const POSITION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An element's period is the highest shell number in its configuration, its block is the subshell that receives the last electron, and its group follows from how many electrons sit in the outer s, p and (n−1)d subshells.",
   whyItMatters:
-    "8 PYQs, all but one EASY. Four name an element from its group and period or give the position of one, four go from a configuration to a group or block. " +
+    "10 PYQs, all but one EASY. Of the eight set from 2021 to 2025, four name an element from its group and period or give the position of one, four go from a configuration to a group or block. " +
     "Two cards.",
   concepts: [
     {

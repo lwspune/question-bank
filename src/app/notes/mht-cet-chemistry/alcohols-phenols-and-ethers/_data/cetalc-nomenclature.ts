@@ -6,7 +6,7 @@ export const NOMENCLATURE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Alcohols are named three ways — carbinol (the C–OH carbon is 'carbinol', its groups are prefixes), common (tert-butyl alcohol) and IUPAC (-ol with the lowest locant); phenols have six common names to memorise against their benzene-diol/triol IUPAC names; ethers are alkoxyalkanes.",
   whyItMatters:
-    "34 PYQs, 1 HARD — the largest page in the chapter and the most reliable mark. Thirteen are the named phenols in either direction (catechol ↔ benzene-1,2-diol and the rest), fourteen are an IUPAC name read off a drawn cyclopentanol, cyclobutane ether or alkenol, five are carbinol names, two are isomer pairs. " +
+    "42 PYQs, 3 HARD — the largest page in the chapter and the most reliable mark. Of the thirty-four set from 2021 to 2025, thirteen are the named phenols in either direction (catechol ↔ benzene-1,2-diol and the rest), fourteen are an IUPAC name read off a drawn cyclopentanol, cyclobutane ether or alkenol, five are carbinol names, two are isomer pairs. " +
     "One table, one naming routine.",
   concepts: [
     // 1 — carbinol names

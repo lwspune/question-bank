@@ -140,15 +140,17 @@ export default function PlaybooksIndex() {
           lifetime — all {OVERVIEW.totalQ.toLocaleString("en-IN")} questions
           across {OVERVIEW.papers} shifts and {OVERVIEW.yearsCovered} years.
           The <strong>q/paper rate</strong> is measured on recent shifts only
-          (2024&ndash;2025), and that is the number the strands below are built
+          (2025&ndash;2026), and that is the number the strands below are built
           on.
         </p>
         <p className="mt-3 font-serif text-base leading-relaxed text-muted-foreground">
-          They disagree because MHT-CET moved its syllabus for 2025. A chapter
-          can hold a large lifetime pile and be worth nothing on the paper you
-          are about to sit, or hold almost nothing and be worth several marks —
-          the two chapters at the foot of this page are exactly those cases. A
-          lifetime average hides both, which is why tiering here ignores it.
+          They disagree because MHT-CET moved its syllabus for 2025, and 2026
+          kept the move. A chapter can hold a large lifetime pile and be worth
+          nothing on the paper you are about to sit, or hold almost nothing and
+          be worth a question a paper — Measures of Dispersion, at the foot of
+          this page, and Conic Sections, in the long tail, are exactly those
+          cases. A lifetime average hides both, which is why tiering here
+          ignores it.
         </p>
         <Link
           href="/guide/mht-cet-maths/trends"
@@ -179,7 +181,7 @@ export default function PlaybooksIndex() {
               {list.length} playbook{list.length === 1 ? "" : "s"} ·{" "}
               {strandQ.toLocaleString("en-IN")} questions lifetime ·{" "}
               {strandPerPaper.toFixed(1)} of {OVERVIEW.paper.questions} q/paper
-              on 2024&ndash;25 shifts · {minHard}&ndash;{maxHard}% HARD
+              on 2025&ndash;26 shifts · {minHard}&ndash;{maxHard}% HARD
             </p>
 
             <ul className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -261,7 +263,7 @@ export default function PlaybooksIndex() {
               </div>
               <p className="mt-1 text-xs tabular-nums text-muted-foreground">
                 {c.qCount} q lifetime · {c.qPerPaper.toFixed(2)}/paper on
-                2024&ndash;25 shifts · {c.pctHard}% hard
+                2025&ndash;26 shifts · {c.pctHard}% hard
               </p>
               <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground">
                 {c.note}

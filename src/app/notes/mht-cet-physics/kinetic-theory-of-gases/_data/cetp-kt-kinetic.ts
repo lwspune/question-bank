@@ -8,7 +8,7 @@ export const KINETIC_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Molecules striking the walls give a pressure P = ⅓ρ⟨v²⟩, which is two thirds of the kinetic energy per unit volume; since that energy is fixed by temperature, the r.m.s. speed is √(3RT/M), rising as √T and falling as 1/√M.",
   whyItMatters:
-    "36 PYQs, 8 of them HARD. Thirteen are about pressure itself — the assumptions of kinetic theory, pressure as two thirds of the kinetic energy density, the number of molecules from their energy, the mean free path. " +
+    "48 PYQs, 8 of them HARD. Of the thirty-six set from 2021 to 2025, thirteen are about pressure itself — the assumptions of kinetic theory, pressure as two thirds of the kinetic energy density, the number of molecules from their energy, the mean free path. " +
     "Twenty scale the r.m.s. speed with temperature or molar mass, and include the speed of sound. Three chain it with an adiabatic expansion. Three cards.",
   concepts: [
     {

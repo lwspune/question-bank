@@ -8,7 +8,7 @@ export const MAGNETISATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Inside a material the field is B = μ₀(H + M), where H is set by the currents and M, the magnetisation, is the material's own dipole moment per unit volume; M = χH defines the susceptibility, so B = μ₀(1 + χ)H and the relative permeability is μᵣ = 1 + χ.",
   whyItMatters:
-    "13 PYQs, none HARD. Nine connect B, H, M, χ and μ — the relative permeability from a susceptibility, the absolute permeability, the percentage rise in a toroid's field when it is filled. " +
+    "26 PYQs, one HARD. Of the thirteen set from 2021 to 2025, nine connect B, H, M, χ and μ — the relative permeability from a susceptibility, the absolute permeability, the percentage rise in a toroid's field when it is filled. " +
     "Four compute a magnetisation from a moment and a volume or from a solenoid's current. Two cards.",
   concepts: [
     {

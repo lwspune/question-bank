@@ -8,7 +8,7 @@ export const SPRINGS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A mass m on a spring of constant k oscillates with T = 2π√(m/k), whether the spring is horizontal or vertical; springs combine like capacitors (parallel constants add, series reciprocals add), cutting a spring raises its constant, and any system with a restoring force proportional to displacement — a floating block, a liquid in a U-tube, a magnetic needle — has a period of the same form.",
   whyItMatters:
-    "25 PYQs, 7 HARD. Twelve are one spring and a changing mass — the period with 4m, the mass that stretches T to 5T/4, the static stretch from the period, a smaller mass dropped on at the mean position; eight are springs combined or cut — two in parallel under a disc, springs in series and parallel on both sides of a block, a spring cut in two, and a stretched spring whirled in a circle; five are other oscillators — a ball in a bowl, a floating block, a liquid column, a magnetic needle. " +
+    "43 PYQs, 11 HARD. Of the twenty-five set from 2021 to 2025, twelve are one spring and a changing mass — the period with 4m, the mass that stretches T to 5T/4, the static stretch from the period, a smaller mass dropped on at the mean position; eight are springs combined or cut — two in parallel under a disc, springs in series and parallel on both sides of a block, a spring cut in two, and a stretched spring whirled in a circle; five are other oscillators — a ball in a bowl, a floating block, a liquid column, a magnetic needle. " +
     "Three cards.",
   concepts: [
     {

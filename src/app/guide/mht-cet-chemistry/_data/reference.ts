@@ -138,19 +138,12 @@ export const FORMULA_GROUPS: ReferenceGroup[] = [
     ],
   },
   {
-    chapter: "Aromatic Compounds",
-    playbookSlug: "aromatic-compounds",
+    chapter: "Basic Principles of Organic Chemistry",
+    playbookSlug: "basic-principles-of-organic-chemistry",
     formulas: [
-      { id: "huckel", name: "Aromaticity", formula: "planar · cyclic · conjugated · (4n + 2) π electrons", legend: [] },
-      { id: "directors", name: "Directing groups", formula: "o/p: –OH –NH₂ –R –X     m: –NO₂ –CN –CHO –COOH", legend: [] },
-    ],
-  },
-  {
-    chapter: "Alkanes",
-    playbookSlug: "alkanes",
-    formulas: [
-      { id: "decarboxylation", name: "Decarboxylation", formula: "RCOONa + NaOH (CaO, Δ) → R–H + Na₂CO₃", legend: ["one carbon fewer"] },
-      { id: "grignard", name: "Grignard to alkane", formula: "RMgX + H₂O → R–H", legend: [] },
+      { id: "priority", name: "Functional-group priority (suffix)", formula: "acid > anhydride > ester > acid halide > amide > nitrile > aldehyde > ketone > alcohol > amine", legend: ["the highest-ranked group takes the suffix"] },
+      { id: "carbocation", name: "Carbocation stability", formula: "benzylic, allylic > 3° > 2° > 1° > CH₃⁺", legend: ["+I alkyl groups and resonance stabilise the charge"] },
+      { id: "effects", name: "Electronic effects", formula: "+I: alkyl     −I: –NO₂ –CN –X     +R: –OH –OR –NH₂     −R: –NO₂ –CHO –COOH", legend: [] },
     ],
   },
   // Recall
@@ -190,6 +183,14 @@ export const FORMULA_GROUPS: ReferenceGroup[] = [
     formulas: [
       { id: "bond-order", name: "Bond order", formula: "bond order = (bonding − antibonding electrons) / 2     N₂ 3 · O₂ 2 · O₂⁻ 1.5 · O₂²⁻ 1", legend: [] },
       { id: "vsepr", name: "VSEPR", formula: "steric number 2 linear · 3 trigonal planar · 4 tetrahedral · 5 trigonal bipyramidal · 6 octahedral", legend: ["lone pairs bend the shape"] },
+    ],
+  },
+  {
+    chapter: "Green Chemistry and Nanochemistry",
+    playbookSlug: "green-chemistry-and-nanochemistry",
+    formulas: [
+      { id: "atom-economy", name: "Percentage atom economy", formula: "% atom economy = (mass of desired product / total mass of all reactants) × 100", legend: ["every reactant counts"] },
+      { id: "nano-dimensions", name: "Nanostructures by dimension", formula: "0-D: quantum dots, nano-rings     1-D: nanotubes, nanowires     2-D: thin films", legend: ["dimensions outside the nanoscale"] },
     ],
   },
   {

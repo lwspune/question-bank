@@ -8,7 +8,7 @@ export const CLASSIFICATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Diamagnets have a small negative susceptibility that does not depend on temperature, paramagnets a small positive one that falls as 1/T (Curie's law), and ferromagnets a huge one that disappears above the Curie temperature; only ferromagnets show hysteresis, and soft ferromagnets are used for shielding and electromagnets.",
   whyItMatters:
-    "10 PYQs, none HARD. Four classify materials — the sign of χ, a χ–T graph, Curie's law, and a ferromagnet above its Curie temperature. " +
+    "14 PYQs, none HARD. Of the ten set from 2021 to 2025, four classify materials — the sign of χ, a χ–T graph, Curie's law, and a ferromagnet above its Curie temperature. " +
     "Six are the hysteresis loop and its uses: retentivity and coercivity on a B–H curve, material for electromagnets, and what surrounds an instrument to shield it. Two cards.",
   concepts: [
     {

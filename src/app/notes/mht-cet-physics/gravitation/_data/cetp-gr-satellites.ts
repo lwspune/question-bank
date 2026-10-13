@@ -8,7 +8,7 @@ export const SATELLITES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A satellite in a circular orbit of radius r has gravity as its centripetal force, so its speed is √(GM/r), its period grows as r^(3/2) (Kepler's third law, T² ∝ r³), and its total energy −GMm/2r is half its potential energy.",
   whyItMatters:
-    "21 PYQs, 6 of them HARD. Seventeen scale the orbital speed or period with the radius — two satellites compared, a geostationary orbit, a satellite skimming a planet of given density, a force law other than inverse square, a comet's aphelion. " +
+    "27 PYQs, 6 of them HARD. Of the twenty-one set from 2021 to 2025, seventeen scale the orbital speed or period with the radius — two satellites compared, a geostationary orbit, a satellite skimming a planet of given density, a force law other than inverse square, a comet's aphelion. " +
     "Four are a satellite's energy: total energy, the energy to launch it, and ratios. Two cards.",
   concepts: [
     {
