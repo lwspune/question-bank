@@ -92,6 +92,14 @@ Two MHT-CET ingest files are not the papers their labels say. **Both were verifi
 
 **The 12 May 2024 S2 ingest doubled its escapes.** 28 PUBLIC rows stored `\\\frac` (three backslashes) outside any matrix/array — all from this one paper, which is why its twins in the copy file rendered and it did not. The 24 Maths rows were fixed in the label pass and the last 3 Chemistry + 1 Physics rows the same day; the bank now has none. Scan: a run of 2+ backslashes before a letter in a field with no `\begin{` (inside an environment `\\` is a legitimate row break).
 
+## MHT-CET 2026 (PDF-sourced, 26 shifts, PUBLIC 2026-10-13)
+
+**Source and pipeline.** `C:\Vilas\LWS_Pune\MHT-CET\PYQPs\2026\`: one third-party (ExamGOAL) typeset PDF per shift, 13 days x Morning/Evening, Chemistry 1-50, Maths 51-100, Physics 101-150. Formulas are vector paths, so every question was **transcribed by hand from a crop** into `scripts/mhtcet/transcripts/<id>.txt` (the source of record), checked against the PDF's text layer, solved before the key was read, and every figure **redrawn** (RDKit, schemdraw, matplotlib; `scripts/mhtcet/figures/2026/`), since each printed figure carries the publisher's watermark. Runbook: `scripts/mhtcet/README.md`.
+
+**Outcome.** 3,900 rows committed, all 26 shifts PUBLIC; **6 flawed rows stay PRIVATE** (cut off, no correct option or two): 18 Apr S1 Q62, 18 Apr S2 Q102 + Q110, 19 Apr S2 Q50, 20 Apr S1 Q127, 12 May S1 Q99, alongside the earlier 11 Apr S1 Q125, 11 Apr S2 Q121, 13 Apr S1 Q35 + Q136, 13 Apr S2 Q137, 16 Apr S2 Q145. Our answers agree with the PDF key everywhere else (four disagreements, all in April shifts, carry a `note:`). 11 Apr S2 Q34 was absorbed by content_hash dedup into its 2025 19 Apr S2 twin. **42 of 52 papers ship as mocks** (`scripts/mocks/mhtcetSittings.ts` holds the other 10).
+
+**Two traps.** (1) *The first labels were on a different scale*: Maths HARD 11% against 29-46% for 2021-2025, Physics 2% against 14-21%. Every 2026 question was re-graded against 2023-2025 samples of its own chapter (Chemistry 62/35/3, Maths 20/50/30, Physics 38/47/14 against 53/44/3, 10/52/38, 31/51/18, EASY/MODERATE/HARD); `build-pdf-shift` now refuses a subject more than 20 points off `difficulty-baseline.json`. (2) *commit.ts's function-name upgrade reaches prose inside math*: `\text{during expansion}` became `\exp ansion` (19 May S2 Q116); the checker now renders `commitText()`.
+
 ## MPSC Group B & C Prelims (`mpsc-group-b-c`, added 2026-09-26)
 
 **14 papers, 1,400 questions, all PUBLIC since 2026-09-26** — every General Ability Test prelim 2017-2024: Group B 2017-2022 + 2024, Group C 2017-2019 + 2021, 2022, 2024, and the joint Group B & C 2023. Source: one scanned PDF ("Group B & C Pre Papers 2017 to 2024"), Set A booklets, each followed by MPSC's FINAL key. Pipeline + per-paper status: `scripts/mpsc/README.md`. The narrative: the 2026-09-26 Decisions entry.
