@@ -9,6 +9,7 @@ the next figure pipeline (foundation / cds / mhtcet / jee) imports it instead of
   `python scripts/lib/figures/snapcrop.py <pdf> <page1> <col0> <col1> <top> <bottom> <answerY>`
   (prints `{bbox,warnings,ok}`); `--selftest` runs synthetic checks. Takes any PDF path — no
   pipeline coupling.
+- **`crop-answer-figures.ts` + `answerFigures.ts` + `crop_answer_figs.py`** (2026-10-14) — the book’s OWN figure as a draw-a-diagram question’s ANSWER image (`solution_image_url`), for the state-board lanes: `<lane> <chapterId> [--write]` reads `data/<id>.diagram-answers.json` (`page` + `bbox`, optional `part`, optional `mask` boxes painted in the panel’s sampled colour), stacks a question’s parts top to bottom in ONE image, and writes the manifest `attach-solution-image.ts` uploads. Direct boxes, not snapCrop: answer figures are coloured art, the class `INK` cannot see (below). `contact_sheet.py` only reads `*fig.json`, so review answer boxes by writing them into a scratch `--dir` as a `*.fig.json`.
 - **`verify.ts`** — pure TS helpers (`validateAnchors`, `figureFlags`, `bboxHeight`,
   `blockedFigureQuestions`, `mergeVerify`, types). Tested in `tests/figures-verify.test.ts`.
 
