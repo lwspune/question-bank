@@ -9,13 +9,14 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { recordExportEvent } from "@/lib/export/log";
+import { getPlanChapterTop } from "@/lib/homework/query";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
   !!process.env.SUPABASE_SERVICE_ROLE_KEY &&
   !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-type Q = { id: string; exam_id: string; subject_id: string };
+type Q = { id: string; exam_id: string; subject_id: string; chapter_id: string };
 
 describe.skipIf(!HAS_ENV)("homework plans", () => {
   let admin: SupabaseClient;
@@ -44,7 +45,7 @@ describe.skipIf(!HAS_ENV)("homework plans", () => {
     });
     const { data: seed } = await admin
       .from("questions")
-      .select("id, exam_id, subject_id")
+      .select("id, exam_id, subject_id, chapter_id")
       .eq("visibility", "PUBLIC")
       .limit(200);
     const rows = (seed ?? []) as Q[];
@@ -170,5 +171,50 @@ describe.skipIf(!HAS_ENV)("homework plans", () => {
       .from("export_events")
       .insert({ kind: "paper", question_count: 1, mode: "cart", homework_plan_id: planId });
     expect(error).not.toBeNull();
+  });
+  it("reads one chapter's questions in plan order, for its top PYQs", async () => {
+    const chapterId = qs[0].chapter_id;
+    const plan = [item(1, 1, qs[0]), item(1, 2, qs[1]), item(2, 1, qs[2])];
+    const expected = plan.filter((it) => qs.find((q) => q.id === it.questionId)!.chapter_id === chapterId);
+    const top = await getPlanChapterTop(anon, slug, chapterId);
+    expect(top?.planId).toBe(planId);
+    expect(top?.planTitle).toBe("Homework fixture");
+    expect(top?.chapterName.length).toBeGreaterThan(0);
+    expect(top?.items.map((it) => it.questionId)).toEqual(expected.map((it) => it.questionId));
+    expect(top?.items.map((it) => it.position)).toEqual(expected.map((_, i) => i + 1));
+  });
+
+  it("reads nothing for a chapter the plan does not hold or a plan that does not exist", async () => {
+    const elsewhere = other?.chapter_id ?? randomUUID();
+    expect((await getPlanChapterTop(anon, slug, elsewhere))?.items ?? []).toEqual([]);
+    expect(await getPlanChapterTop(anon, `${slug}-missing`, qs[0].chapter_id)).toBeNull();
+  });
+
+  it("logs a top PYQs download with its plan and chapter, and a chapter only on such a row (0154)", async () => {
+    await recordExportEvent({
+      userId: null,
+      orgId: null,
+      kind: "key",
+      questionCount: 10,
+      mode: "top_pyqs",
+      homeworkPlanId: planId,
+      chapterId: qs[0].chapter_id,
+      isStaff: false,
+    });
+    const { data } = await admin
+      .from("export_events")
+      .select("mode, homework_day, chapter_id, question_count")
+      .eq("homework_plan_id", planId)
+      .eq("mode", "top_pyqs");
+    expect(data).toEqual([{ mode: "top_pyqs", homework_day: null, chapter_id: qs[0].chapter_id, question_count: 10 }]);
+
+    const onCart = await admin
+      .from("export_events")
+      .insert({ kind: "paper", question_count: 0, mode: "cart", chapter_id: qs[0].chapter_id });
+    expect(onCart.error).not.toBeNull();
+    const withDay = await admin
+      .from("export_events")
+      .insert({ kind: "paper", question_count: 0, mode: "top_pyqs", homework_plan_id: planId, homework_day: 1 });
+    expect(withDay.error).not.toBeNull();
   });
 });

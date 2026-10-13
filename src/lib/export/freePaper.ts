@@ -44,12 +44,15 @@ export function paperKey(req: {
   homework?: { slug: string; day: number } | null;
   /** A board past paper (/question-papers): each set is its own paper. */
   boardPaper?: { exam: string; slug: string } | null;
+  /** One chapter's top PYQs from a homework plan (2026-10-13). */
+  topPyqs?: { plan: string; chapter: string } | null;
   questionIds?: readonly string[] | null;
   filters?: Record<string, unknown> | null;
 }): string | null {
   if (req.mockSlug) return `mock:${req.mockSlug.trim()}`;
   if (req.homework) return `homework:${req.homework.slug}:${req.homework.day}`;
   if (req.boardPaper) return `board:${req.boardPaper.exam}:${req.boardPaper.slug}`;
+  if (req.topPyqs) return `top:${req.topPyqs.plan}:${req.topPyqs.chapter}`;
   if (req.questionIds && req.questionIds.length > 0) {
     return `ids:${sha([...new Set(req.questionIds)].sort().join(","))}`;
   }

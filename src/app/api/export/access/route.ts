@@ -5,6 +5,7 @@ import { sessionFormulaSheetFree, sessionPaperFree } from "@/lib/export/freeDown
 import { formulaSheetKey, parseFormulaSheetTarget } from "@/lib/export/formulaSheet";
 import { paperKey } from "@/lib/export/freePaper";
 import { parseHomeworkTarget } from "@/lib/homework/dayExport";
+import { parseTopPyqsTarget } from "@/lib/homework/topPyqs";
 import { parseBoardPaperTarget } from "@/lib/questionPapers/exportPlan";
 import { DOWNLOAD_PASS_SCOPE } from "@/lib/export/access";
 import { passCta, passForScope, type PassCta } from "@/lib/billing/plans";
@@ -37,10 +38,14 @@ export async function GET(request: NextRequest) {
   // Or one board past paper set, as "<exam-slug>:<paper-slug>" (2026-10-09).
   const [bExam, bSlug] = (request.nextUrl.searchParams.get("board") ?? "").split(":");
   const boardPaper = parseBoardPaperTarget({ exam: bExam, slug: bSlug });
+  // Or one /board chapter's top PYQs, as "<plan-slug>:<chapter-id>" (2026-10-13).
+  const [tPlan, tChapter] = (request.nextUrl.searchParams.get("top") ?? "").split(":");
+  const topPyqs = parseTopPyqsTarget({ plan: tPlan, chapter: tChapter });
   const freeKey = paperKey({
     mockSlug: slug && /^[a-z0-9-]{1,120}$/.test(slug) ? slug : null,
     homework,
     boardPaper,
+    topPyqs,
   });
   // Or one chapter's formula sheet, as "<subjectRoute>/<chapterSlug>" (2026-10-10):
   // then `freeDownloadLeft` answers for the free SHEET, which is its own file,

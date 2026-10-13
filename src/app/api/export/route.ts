@@ -41,7 +41,8 @@ import { buildPaperFile } from "@/lib/export/paperFile";
 import { getMockBySlug } from "@/lib/mocks/query";
 import { mockPaperExport } from "@/lib/mocks/paperExport";
 import { homeworkDayExport, homeworkQuestions, parseHomeworkTarget } from "@/lib/homework/dayExport";
-import { getPlanDay } from "@/lib/homework/query";
+import { getPlanChapterTop, getPlanDay } from "@/lib/homework/query";
+import { parseTopPyqsTarget, topPyqsExport } from "@/lib/homework/topPyqs";
 import { boardPaperExport, parseBoardPaperTarget } from "@/lib/questionPapers/exportPlan";
 import { getBoardPaperForExport } from "@/lib/questionPapers/query";
 import { getExamBySlug } from "@/lib/exam/examContext";
@@ -96,6 +97,8 @@ type Body = {
   homework?: unknown;
   /** One published board past paper set: { exam, slug } (2026-10-09). */
   boardPaper?: unknown;
+  /** One /board chapter's top PYQs from a published homework plan: { plan, chapter } (2026-10-13). */
+  topPyqs?: unknown;
   options?: ExportOptions;
 };
 
@@ -184,7 +187,25 @@ export async function POST(request: NextRequest) {
     const homework = isHomeworkMode ? parseHomeworkTarget(body.homework) : null;
     const isBoardPaperMode = body.boardPaper !== undefined;
     const boardPaper = isBoardPaperMode ? parseBoardPaperTarget(body.boardPaper) : null;
-    if (isBoardPaperMode) {
+    const isTopMode = body.topPyqs !== undefined;
+    const topPyqs = isTopMode ? parseTopPyqsTarget(body.topPyqs) : null;
+    if (isTopMode) {
+      if (!topPyqs) {
+        return NextResponse.json({ error: "topPyqs must name a plan and a chapter" }, { status: 400 });
+      }
+      if (body.filters || isCartMode || isMockMode || isHomeworkMode || isBoardPaperMode) {
+        return NextResponse.json(
+          { error: "Send a chapter's top PYQs, a board paper, a homework day, a past paper, filters or questionIds, not more than one" },
+          { status: 400 }
+        );
+      }
+      if (kind !== "paper" && kind !== "key") {
+        return NextResponse.json(
+          { error: "A chapter's top PYQs download as a question paper or answer key" },
+          { status: 400 }
+        );
+      }
+    } else if (isBoardPaperMode) {
       if (!boardPaper) {
         return NextResponse.json({ error: "boardPaper must name an exam and a paper" }, { status: 400 });
       }
@@ -259,9 +280,10 @@ export async function POST(request: NextRequest) {
       mockSlug: isMockMode ? String(body.mockSlug).trim() : null,
       homework,
       boardPaper,
+      topPyqs,
       questionIds: isCartMode ? body.questionIds : null,
       filters:
-        !isMockMode && !isHomeworkMode && !isBoardPaperMode && !isCartMode
+        !isMockMode && !isHomeworkMode && !isBoardPaperMode && !isTopMode && !isCartMode
           ? (body.filters as Record<string, unknown> | undefined)
           : null,
     });
@@ -284,6 +306,7 @@ export async function POST(request: NextRequest) {
     let mockTitle: string | undefined;
     let sectionOf: Map<string, string> | undefined;
     let homeworkPlanId: string | undefined;
+    let topChapterId: string | undefined;
     // A board past paper: its own numbers, marks and OR (lib/export/printedLabel).
     let boardPaperId: string | undefined;
     let printedOf: Map<string, PrintedLabel> | undefined;
@@ -332,6 +355,32 @@ export async function POST(request: NextRequest) {
           return NextResponse.json({ error: mockPaperLimitMessage(decision.limit) }, { status: 429 });
         }
       }
+    } else if (topPyqs) {
+      const found = await getPlanChapterTop(createSupabaseAnonClient(), topPyqs.plan, topPyqs.chapter);
+      if (!found) {
+        return NextResponse.json({ error: "That homework plan is not available." }, { status: 404 });
+      }
+      const top = topPyqsExport(found.chapterName, found.planTitle, found.items);
+      if (!top.ok) {
+        return NextResponse.json({ error: top.reason }, { status: 404 });
+      }
+      questions = await queryQuestionsByIds(supabase, top.questionIds);
+      // A list with a question missing would print the wrong numbers against
+      // the page, so it is refused rather than served short.
+      if (questions.length !== top.questionIds.length) {
+        console.error(
+          `export: top pyqs ${topPyqs.plan} ${topPyqs.chapter} resolved ${questions.length} of ${top.questionIds.length} questions`
+        );
+        return NextResponse.json(
+          { error: "These questions can't be downloaded right now. Please try again later." },
+          { status: 409 }
+        );
+      }
+      questions = homeworkQuestions(questions, top.setOf);
+      homeworkPlanId = found.planId;
+      topChapterId = topPyqs.chapter;
+      mockTitle = top.title;
+      sectionOf = top.sectionOf;
     } else if (homework) {
       const found = await getPlanDay(createSupabaseAnonClient(), homework.slug, homework.day);
       if (!found) {
@@ -565,7 +614,7 @@ export async function POST(request: NextRequest) {
           groupBySubtopic,
           sectionOf,
           printedOf,
-          headingEveryQuestion: !!homework,
+          headingEveryQuestion: !!homework || !!topPyqs,
           branded: access.branded,
           brandingParts: brandParts,
           head: pdfHead(),
@@ -585,7 +634,7 @@ export async function POST(request: NextRequest) {
               groupBySubtopic,
               sectionOf,
               printedOf,
-              headingEveryQuestion: !!homework,
+              headingEveryQuestion: !!homework || !!topPyqs,
               includeSourceTag,
               branded: access.branded,
           brandingParts: brandParts,
@@ -654,10 +703,21 @@ export async function POST(request: NextRequest) {
       orgId: member?.orgId ?? null,
       kind,
       questionCount: questions.length,
-      mode: boardPaper ? "board_paper" : homework ? "homework" : isMockMode ? "mock" : isCartMode ? "cart" : "filters",
+      mode: topPyqs
+        ? "top_pyqs"
+        : boardPaper
+          ? "board_paper"
+          : homework
+            ? "homework"
+            : isMockMode
+              ? "mock"
+              : isCartMode
+                ? "cart"
+                : "filters",
       mockId,
       homeworkPlanId,
       homeworkDay: homework?.day,
+      chapterId: topChapterId,
       boardPaperId,
       isStaff,
     });

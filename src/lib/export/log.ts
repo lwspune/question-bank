@@ -33,14 +33,17 @@ export type ExportEvent = {
    * 'mock' = a published past paper, downloaded whole (migration 0136);
    * 'homework' = one day of a published homework plan (migration 0143);
    * 'board_paper' = a published board past paper, whole (migration 0146);
-   * 'formula' = one /notes chapter's formula sheet (migration 0150).
+   * 'formula' = one /notes chapter's formula sheet (migration 0150);
+   * 'top_pyqs' = one /board chapter's top PYQs from a homework plan (migration 0154).
    */
-  mode: "cart" | "filters" | "mock" | "homework" | "board_paper" | "formula";
+  mode: "cart" | "filters" | "mock" | "homework" | "board_paper" | "formula" | "top_pyqs";
   /** The past paper, on a 'mock' export only. Public, so naming it is safe. */
   mockId?: string;
-  /** The plan and day, on a 'homework' export only. Public, so naming them is safe. */
+  /** The plan, on a 'homework' or 'top_pyqs' export; the day on 'homework' only. Public, so naming them is safe. */
   homeworkPlanId?: string;
   homeworkDay?: number;
+  /** The chapter, on a 'top_pyqs' export only. Taxonomy, so naming it is safe. */
+  chapterId?: string;
   /** The board paper, on a 'board_paper' export only. Public, so naming it is safe. */
   boardPaperId?: string;
   /** "<subjectRoute>/<chapterSlug>", on a 'formula' export only. Editorial content, so naming it is safe. */
@@ -63,6 +66,7 @@ export async function recordExportEvent(ev: ExportEvent): Promise<void> {
         : {}),
       ...(ev.boardPaperId ? { board_paper_id: ev.boardPaperId } : {}),
       ...(ev.formulaSheet ? { formula_sheet: ev.formulaSheet } : {}),
+      ...(ev.chapterId ? { chapter_id: ev.chapterId } : {}),
       is_staff: ev.isStaff,
     });
     if (error) console.error("recordExportEvent", error.message);
