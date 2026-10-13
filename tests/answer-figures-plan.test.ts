@@ -65,4 +65,17 @@ describe("planAnswerFigures", () => {
     expect(dup.errors[0]).toMatch(/Q.*part "a" twice/);
     expect(mixed.errors[0]).toMatch(/R.*mixes/);
   });
+
+  it("carries a part's masks (page clutter to paint white) through to its crop job", () => {
+    const mask: [number, number, number, number] = [0.1, 0.2, 0.3, 0.25];
+    const plan = planAnswerFigures([{ ref: "Q", figure: "F", page: 1, bbox: box, mask: [mask] }]);
+    expect(plan.errors).toEqual([]);
+    expect(plan.jobs[0].parts[0]).toEqual({ page: 1, bbox: box, mask: [mask] });
+  });
+
+  it("refuses a mask that is not a box inside the page", () => {
+    const plan = planAnswerFigures([{ ref: "Q", figure: "F", page: 1, bbox: box, mask: [[0.5, 0.2, 0.3, 0.4]] }]);
+    expect(plan.errors[0]).toMatch(/Q.*mask/);
+    expect(plan.jobs).toEqual([]);
+  });
 });

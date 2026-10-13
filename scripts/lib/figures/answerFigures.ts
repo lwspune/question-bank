@@ -8,7 +8,8 @@
  * letter on each, and its parts become ONE image, stacked top to bottom in part
  * order (never side by side: a phone scales that down past reading). An entry
  * whose `figure` is null records that the book has no figure fit to be the
- * answer; that part is skipped, not counted missing.
+ * answer; that part is skipped, not counted missing. A part may carry `mask`, page
+ * boxes painted white before the crop, for neighbouring text no rectangle avoids.
  */
 
 export type Bbox = [number, number, number, number];
@@ -19,9 +20,10 @@ export type DiagramAnswer = {
   figure: string | null;
   page?: number | null;
   bbox?: Bbox;
+  mask?: Bbox[];
 };
 
-export type AnswerFigureJob = { ref: string; parts: { page: number; bbox: Bbox }[] };
+export type AnswerFigureJob = { ref: string; parts: { page: number; bbox: Bbox; mask?: Bbox[] }[] };
 
 export type AnswerFigurePlan = { jobs: AnswerFigureJob[]; none: string[]; errors: string[] };
 
@@ -70,7 +72,12 @@ export function planAnswerFigures(entries: DiagramAnswer[]): AnswerFigurePlan {
         bad = true;
         continue;
       }
-      parts.push({ page: e.page, bbox: e.bbox });
+      if (e.mask !== undefined && !(Array.isArray(e.mask) && e.mask.every(bboxOk))) {
+        errors.push(`${label}: mask ${JSON.stringify(e.mask)} is not a list of boxes inside the page`);
+        bad = true;
+        continue;
+      }
+      parts.push(e.mask ? { page: e.page, bbox: e.bbox, mask: e.mask } : { page: e.page, bbox: e.bbox });
     }
     if (!bad && parts.length) jobs.push({ ref, parts });
   }
