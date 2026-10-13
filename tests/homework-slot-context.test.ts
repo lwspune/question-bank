@@ -48,6 +48,30 @@ describe("isHomeworkPassage", () => {
     ).toBe(true);
   });
 
+  /** The MH SSC Class 10 papers store their section instruction on every
+   *  question of the section; read as passages, they glued a determinant, a
+   *  probability and a quadratic from three chapters into one homework item. */
+  it("is false for the MH SSC section instructions", () => {
+    for (const c of [
+      "Solve the following subquestions (any four):",
+      "Solve the following questions (Any two):",
+      "Complete the activity as per given instructions (any two) :",
+      "Do as directed (any one) :",
+      "Attempt any five of the following.",
+      "Attempt any five of the following questions.",
+      "Mark the following in the outline map of Brazil. Write the names and give index (any four)",
+      "Rewrite the following statements by selecting the proper options.",
+      "Identify the odd factor out :",
+    ]) {
+      expect(isHomeworkPassage(c), c).toBe(false);
+    }
+  });
+
+  it("keeps a shared stem that only opens like an instruction", () => {
+    expect(isHomeworkPassage("Attempt any one of the following. In the extraction of aluminium:")).toBe(true);
+    expect(isHomeworkPassage("Observe the map of India and answer the following questions (any four).")).toBe(true);
+  });
+
   it("does not take a passage for an instruction because its opening words match", () => {
     expect(
       isHomeworkPassage(
