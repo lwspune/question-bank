@@ -770,7 +770,7 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
   },
   {
     surface: "Paper download / export",
-    via: "export_events (migration 0104)",
+    via: "export_events (migration 0104; the exam and subject exported since 0155)",
     kinds: [],
     tracked: "full",
     lost: "",
