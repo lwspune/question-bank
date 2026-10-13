@@ -25,7 +25,7 @@ const HSC_SECTIONS = (d: number) => [
 ];
 
 export const MH_PATTERNS = {
-  /** HSC Physics and Chemistry: 10 MCQs, 8 one-markers, then any 8 + any 8 + any 3. */
+  /** HSC Physics, Chemistry and Biology: 10 MCQs, 8 one-markers, then any 8 + any 8 + any 3. */
   hscPhysChem: {
     maxMarks: 70,
     minutes: 180,

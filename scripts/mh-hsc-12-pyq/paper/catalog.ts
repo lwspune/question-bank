@@ -425,11 +425,213 @@ export const HSC_CHEMISTRY_CATALOG: PaperCatalog = {
     },
 };
 
+export const HSC_BIOLOGY_CATALOG: PaperCatalog = {
+    subjectName: "Biology",
+    chapters: {
+        "Biodiversity, Conservation and Environmental Issues": [
+            "Biodiversity: Current Scenario",
+            "Biological Diversity Act 2002",
+            "Conservation of Biodiversity",
+            "Deforestation",
+            "Environmental Issues",
+            "Greenhouse Effect and Global Warming",
+            "Levels of Biodiversity",
+            "Loss of Biodiversity",
+            "Mission Harit Maharashtra",
+            "Ozone Depletion",
+            "Patterns of Biodiversity"
+        ],
+        "Biotechnology": [
+            "Applications of Biotechnology",
+            "Bioethics",
+            "Biopatent and Biopiracy",
+            "Biotechnology",
+            "Effects of Biotechnology on Human Health",
+            "Effects of Biotechnology on the Environment",
+            "Methodology for rDNA Technology",
+            "Principles and Processes of Biotechnology"
+        ],
+        "Control and Coordination": [
+            "Disorders of Nervous System",
+            "Endocrine System",
+            "Human Nervous System",
+            "Nervous System in Hydra",
+            "Nervous System in Planaria",
+            "Neural Tissue",
+            "Sensory Receptors",
+            "Synapse",
+            "Transmission of Nerve Impulse"
+        ],
+        "Ecosystems and Energy Flow": [
+            "Ecological Pyramids",
+            "Ecological Succession",
+            "Ecosystem",
+            "Ecosystem Services",
+            "Energy Flow",
+            "Nutrient Cycles"
+        ],
+        "Enhancement of Food Production": [
+            "Animal Husbandry",
+            "Biofortification",
+            "Improvement in Food Production",
+            "Microbes as Biocontrol Agents",
+            "Microbes as Biofertilizers",
+            "Microbes in Energy Generation",
+            "Microbes in Human Welfare",
+            "Microbes in Sewage Treatment",
+            "Plant Breeding",
+            "Role of Microbes in Industrial Production",
+            "Single Cell Protein",
+            "Tissue Culture"
+        ],
+        "Human Health and Diseases": [
+            "Addiction",
+            "Adolescence",
+            "Common Human Diseases",
+            "Drug Abuse",
+            "Immunity",
+            "Structure of Antibody"
+        ],
+        "Inheritance and Variation": [
+            "Autosomal Inheritance",
+            "Back Cross and Test Cross",
+            "Chromosomal Theory of Inheritance",
+            "Chromosomes",
+            "Chromosomes and Mechanism of Inheritance",
+            "Deviations from Mendel's Findings",
+            "Genetic Disorders",
+            "Genetic Terminology",
+            "Linkage and Crossing Over",
+            "Mendel's Laws of Inheritance",
+            "Sex Determination",
+            "Sex Linked Inheritance"
+        ],
+        "Molecular Basis of Inheritance": [
+            "DNA Fingerprinting",
+            "DNA Packaging",
+            "DNA Replication",
+            "Genomics",
+            "Human Genome Project",
+            "Operon Concept",
+            "Protein Synthesis",
+            "Regulation of Gene Expression",
+            "The Discovery of DNA",
+            "The Genetic Material is DNA"
+        ],
+        "Organisms and Populations": [
+            "Adaptation",
+            "Major Abiotic Factors",
+            "Organisms and the Environment",
+            "Population",
+            "Population Interactions"
+        ],
+        "Origin and Evolution of Life": [
+            "Adaptive Radiation",
+            "Chemical Evolution of Life",
+            "Darwinism",
+            "Evidences of Organic Evolution",
+            "Geological Time Scale",
+            "Hardy-Weinberg Principle",
+            "Human Evolution",
+            "Mechanism of Organic Evolution",
+            "Modern Synthetic Theory of Evolution",
+            "Mutation Theory",
+            "Organic Evolution",
+            "Origin of Life",
+            "Speciation"
+        ],
+        "Plant Growth and Mineral Nutrition": [
+            "Conditions for Growth",
+            "Development",
+            "Differentiation, De-differentiation and Re-differentiation",
+            "Growth Curve",
+            "Growth Hormones",
+            "Growth Rate and Types of Growth",
+            "Mineral Nutrition",
+            "Nitrogen Cycle",
+            "Phases of Growth",
+            "Photoperiodism",
+            "Plant Growth",
+            "Plasticity",
+            "Vernalization"
+        ],
+        "Plant Water Relation": [
+            "Absorption of Water by Roots from Soil",
+            "Mechanism of Absorption of Water",
+            "Path of Water Across the Root",
+            "Plasmolysis",
+            "Properties of Water",
+            "Structure of Stomatal Apparatus",
+            "Translocation of Water",
+            "Transpiration",
+            "Transport of Food",
+            "Transport of Mineral Ions",
+            "Water Absorbing Organ",
+            "Water Available to Roots for Absorption",
+            "Water Potential"
+        ],
+        "Reproduction in Lower and Higher Animals": [
+            "Asexual Reproduction in Animals",
+            "Birth Control",
+            "Embryonic Development",
+            "Fertilization",
+            "Gametogenesis",
+            "Infertility",
+            "Lactation",
+            "Menstrual Cycle",
+            "Parturition",
+            "Placenta",
+            "Pregnancy",
+            "Reproductive Health",
+            "Sexual Reproduction in Animals",
+            "Sexually Transmitted Diseases"
+        ],
+        "Reproduction in Lower and Higher Plants": [
+            "Apomixis",
+            "Asexual Reproduction",
+            "Development of Embryo",
+            "Development of Endosperm",
+            "Double Fertilization",
+            "Megasporogenesis",
+            "Microsporogenesis",
+            "Outbreeding Devices",
+            "Parthenocarpy",
+            "Pollen-Pistil Interaction",
+            "Pollination",
+            "Polyembryony",
+            "Seed and Fruit Development",
+            "Sexual Reproduction",
+            "Structure of Anatropous Ovule"
+        ],
+        "Respiration and Circulation": [
+            "Blood Pressure",
+            "Blood Vessels",
+            "Circulation in Animals",
+            "Circulatory System in Human",
+            "Common Disorders of Respiratory System",
+            "Electrocardiogram",
+            "Heart",
+            "Human Respiratory System",
+            "Lymphatic System",
+            "Mechanism of Respiration",
+            "Modified Respiratory Movements",
+            "Organs of Respiratory Exchange",
+            "Platelets",
+            "Red Blood Corpuscles",
+            "Regulation of Breathing",
+            "Transportation in Living Organisms",
+            "White Blood Corpuscles",
+            "Working Mechanism of Human Heart"
+        ]
+    },
+};
+
 /** Routed by subject, mirroring `grammarFor` in ./lib.ts. */
 export const CATALOGS: Record<string, PaperCatalog> = {
     "Mathematics": HSC_MATHS_CATALOG,
     "Physics": HSC_PHYSICS_CATALOG,
     "Chemistry": HSC_CHEMISTRY_CATALOG,
+    "Biology": HSC_BIOLOGY_CATALOG,
 };
 
 export function catalogFor(subject: string): PaperCatalog {

@@ -120,6 +120,41 @@ student to **construct** one, there is no printed figure — do not set the flag
 
 A LaTeX backslash is `\\` in JSON. Free-response objects carry no `options` key.
 
+## Biology papers (`bio-*`, subject code 56; added 2026-10-13)
+
+Everything above applies EXCEPT the Maths-specific parts (shape, ref spelling,
+chapter list, figure genre). For Biology:
+
+- **Shape** (the Physics shape, 47 items, 98 printed marks against a Max of 70):
+  `Q. 1(i)`–`Q. 1(x)` MCQ 1 mark · `Q. 2(i)`–`Q. 2(viii)` very short answer,
+  subjective, 1 mark · `Q. 3`–`Q. 14` 2 marks (any 8) · `Q. 15`–`Q. 26` 3 marks
+  (any 8) · `Q. 27`–`Q. 31` 4 marks (any 3). **Ref spelling `Q. 1(iv)`, `Q. 27`.**
+- **Sources:** the five PDFs are the board's own born-digital English prints, and
+  the text layer is nearly lossless here (0-2% of lines lost anything). Take
+  wording from `text.md`; take every diagram, table, chemical or genetic notation
+  (`\(2n\)`, `\(X^cX\)`, crosses, ratios) from the PNG.
+- **Chapters:** exactly one of the 15 Biology chapters in `catalog.ts`
+  (`HSC_BIOLOGY_CATALOG`), spelled exactly, with a subtopic from that chapter's
+  list. These are the Balbharati textbook's chapters and numbered sections; the
+  book is dumped at `out/_books/12th_Biology_SB.txt` (`######## CHAPTER nn`
+  headers) if you need to place a question.
+- **Split only across chapters.** Section D (and some B/C) items have parts.
+  Keep a question as ONE row with its `(a)`/`(b)`/`(i)`/`(ii)` parts inside the
+  stem, unless its parts belong to DIFFERENT chapters; then give each part its
+  own row, refs `Q. 27(i)`, `Q. 27(ii)`, in printed order, and list every split
+  in your report (the manifest records the count).
+- **Figures:** a question that PRINTS a diagram, graph, chart or picture it
+  depends on gets `"hasFigure": true`, including an MCQ whose stem or options
+  are a figure. "Draw a neat labelled diagram of ..." prints nothing: no flag.
+  The manifest's `figureRefs` is EMPTY until your report fills it, so
+  `verify.ts` will list `hasFigure set, but the manifest lists no figure`
+  lines. **Those lines alone are expected; every OTHER verify error is yours to
+  fix.** Name each flagged ref, its page and what the figure shows.
+- **A diagram whose parts are labelled A, B, C** is described in the stem only as
+  far as the print does in words ("Observe the diagram and label A and B");
+  never write the answer into the stem.
+- **No `answer`, no `solution`** (as above). Both come later from separate lanes.
+
 ## Before you finish
 
 Run the structural gate and fix everything it reports:

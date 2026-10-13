@@ -180,7 +180,7 @@ describe("grammarFor — the routing key", () => {
   });
 
   it("throws on an unknown subject rather than defaulting", () => {
-    expect(() => grammarFor("Biology")).toThrow(/no board-paper grammar/);
+    expect(() => grammarFor("Economics")).toThrow(/no board-paper grammar/);
   });
 });
 
