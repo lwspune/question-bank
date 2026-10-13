@@ -412,6 +412,9 @@ const EXAMS: Record<string, ExamPlan> = {
       { bankSubject: "Physics", code: "physics", paper: MH_HSC_12_CHAPTER_MCQ_PAPER, sectionKey: "physics", weights: NONE, chapterOrder: BALBHARATI_12_PHYSICS },
       { bankSubject: "Chemistry", code: "chemistry", paper: MH_HSC_12_CHAPTER_MCQ_PAPER, sectionKey: "chemistry", weights: NONE, chapterOrder: BALBHARATI_12_CHEMISTRY },
       { bankSubject: "Mathematics", code: "maths", paper: MH_HSC_12_CHAPTER_MCQ_PAPER, sectionKey: "mathematics", weights: NONE },
+      // Biology joined 2026-10-14 with its Balbharati textbook MCQs; its chapters were
+      // seeded in book order, so order_index needs no list.
+      { bankSubject: "Biology", code: "biology", paper: MH_HSC_12_CHAPTER_MCQ_PAPER, sectionKey: "biology", weights: NONE },
     ],
   },
   "mh-ssc-10": {
