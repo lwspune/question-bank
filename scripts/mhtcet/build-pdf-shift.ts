@@ -28,6 +28,7 @@ import { renderCorruption } from "../lib/render-lint";
 import { PDF_SHIFTS, recordsPath, shiftDataPath, requireShiftId, type ShiftData, type ShiftQuestion } from "./config";
 import { commitText, type Subject } from "./lib";
 import { subjectForNumberInOrder, textLayerFidelity } from "./pdfSource";
+import { difficultyDrift, difficultyMix, type Baseline, type Difficulty } from "./difficultyDrift";
 import { parseTranscript, type TranscriptQuestion } from "./transcript";
 
 type Meta = { subjectOrder: Subject[]; key: Record<string, "A" | "B" | "C" | "D">; textLayer: Record<string, string>; figures: Record<string, number> };
@@ -139,6 +140,21 @@ function main() {
       ...(q.figure === "options" || q.figure === "stem+options" ? { optionFigures: true } : {}),
       ...(q.flawed ? { flawed: true } : {}),
     };
+  }
+
+  // Difficulty must be graded on the bank's scale, not the transcriber's (difficultyDrift.ts).
+  // Checked per subject once it is substantially transcribed, so a partial file does not trip it.
+  const baseline: Record<string, Baseline> = JSON.parse(readFileSync(join(here, "difficulty-baseline.json"), "utf8"));
+  const bySubject = new Map<string, Difficulty[]>();
+  for (const q of transcript) {
+    const s = subjectForNumberInOrder(q.number, meta.subjectOrder);
+    bySubject.set(s, [...(bySubject.get(s) ?? []), q.difficulty]);
+  }
+  for (const [s, labels] of bySubject) {
+    if (labels.length < 45 || !baseline[s]) continue;
+    for (const d of difficultyDrift(difficultyMix(labels), baseline[s])) {
+      problems.push(`${s} difficulty off the bank's scale: ${d} (re-grade against the 2023-2025 calibration samples)`);
+    }
   }
 
   const nums = transcript.map((q) => q.number);

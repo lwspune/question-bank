@@ -53,6 +53,26 @@ with a figure declares one (or a `note:` says it became text); and every answer 
 differs from the PDF key carries a `note:`. The transcript is the source of record —
 commit it, the figures' `figures.py` and their PNGs.
 
+It also checks **the text commit.ts will store, not the transcript** (`lib.commitText`):
+the function-name upgrade reaches prose inside math, so `\text{during expansion}` became
+`\exp ansion` (19 May S2 Q116). Keep prose outside `\( \)`.
+
+**Difficulty must be graded on the bank's scale.** The first 2026 labels ran far easier
+than 2021-2025 (Maths HARD 11% against 29-46%) and every one had to be re-graded. So
+`build-pdf-shift` refuses a subject whose EASY or HARD share sits more than 20 points from
+`difficulty-baseline.json` (2023-2025 mix, written by `difficulty-baseline.ts`; pure core
+`difficultyDrift.ts`). Grade each question against 2023-2025 samples of its own chapter. A
+label changed after commit reaches the bank only through `sync-difficulty.ts <id> --apply`,
+because commit.ts skips a row that already exists.
+
+**Before flipping a new year PUBLIC, forecast what goes stale.** The three guides and the
+MHT-CET `/notes` intros quote bank counts in hand-written prose, so the flip moves numbers
+nothing re-derives. Run the read-only checks first and plan the refresh with the flip:
+`npx vitest run --config vitest.prod-contract.config.ts tests/guide-mht-cet-*.test.ts
+tests/notes-intro-counts.test.ts`, then `npm run mhtcet:matrix` (x3) and the
+`tests/mhtcet-*trends-reconcile.test.ts` suites after it. The 2026 flip found 3 guides and
+41 notes counts stale only after the fact.
+
 Pilot `2026-apr-15-s1` (2026-10-12): 150/150 committed PRIVATE, 0 key disagreements,
 2 figure questions (Q39 four RDKit structures, Q128 schemdraw circuit).
 
