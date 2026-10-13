@@ -681,7 +681,7 @@ export const CBSE_12_CHAPTER_MCQ_PAPER = boardPaper(
 
 export const MH_HSC_12_CHAPTER_MCQ_PAPER = boardPaper(
   "Maharashtra HSC Class 12", "mh-hsc-12", "chapter-mcq", "Chapter MCQs", STEM_SECS,
-  [["physics", "Physics"], ["chemistry", "Chemistry"], ["mathematics", "Mathematics"]]
+  [["physics", "Physics"], ["chemistry", "Chemistry"], ["mathematics", "Mathematics"], ["biology", "Biology"]]
 );
 
 export const MH_SSC_10_CHAPTER_MCQ_PAPER = boardPaper(
