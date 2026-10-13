@@ -17,6 +17,123 @@ import { join } from "node:path";
 import type { SectionSpec } from "./lib";
 
 export const SECTIONS: Record<string, SectionSpec[]> = {
+  // ── BIOLOGY, Std XII (Balbharati), all chapters ──────────────────────────
+  // The lane takes EXERCISES ONLY (owner, 2026-10-13), so each chapter is one
+  // group, "Exercise", with one block per printed question in book order. The
+  // label is the heading the book prints over that question ("Multiple choice
+  // questions", "Long answer questions"); a question printed with no heading of
+  // its own is labelled from its first words. Generated from the transcription,
+  // which read the headings off the page. A set question is matched by "Ex QN("
+  // and a flat one by "Ex QN"; longest prefix wins, so "Ex Q1" never takes
+  // "Ex Q10(...)".
+  "biodiversity-12-bio": [
+    { group: "Exercise", label: "Q1. Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Very short answer type questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Short answer type questions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Long answer type questions", kind: "exercise", refPrefixes: ["Ex Q4("] },
+  ],
+  "biotechnology-12-bio": [
+    { group: "Exercise", label: "Q1. Choose the correct option", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Very short answer type questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Short answer type questions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Long answer type questions", kind: "exercise", refPrefixes: ["Ex Q4("] },
+  ],
+  "control-coordination-12-bio": [
+    { group: "Exercise", label: "Q1. Multiple choice questions", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Very very short answer questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Match the organism with the type of nervous system found...", kind: "exercise", refPrefixes: ["Ex Q3"] },
+    { group: "Exercise", label: "Q4. Very short answer questions", kind: "exercise", refPrefixes: ["Ex Q4("] },
+    { group: "Exercise", label: "Q5. Short answer questions", kind: "exercise", refPrefixes: ["Ex Q5("] },
+    { group: "Exercise", label: "Q6. Answer the following", kind: "exercise", refPrefixes: ["Ex Q6("] },
+    { group: "Exercise", label: "Q7. Long answer questions", kind: "exercise", refPrefixes: ["Ex Q7("] },
+  ],
+  "ecosystems-12-bio": [
+    { group: "Exercise", label: "Q1. Multiple choice questions", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Very short answer question", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Short answer questions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Long answer questions", kind: "exercise", refPrefixes: ["Ex Q4("] },
+  ],
+  "evolution-12-bio": [
+    { group: "Exercise", label: "Q1. Multiple choice questions", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Very short answer question", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Short answer question", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Match the following", kind: "exercise", refPrefixes: ["Ex Q4"] },
+    { group: "Exercise", label: "Q5. Long answer questions", kind: "exercise", refPrefixes: ["Ex Q5("] },
+    { group: "Exercise", label: "Q6. Complete the chart", kind: "exercise", refPrefixes: ["Ex Q6"] },
+  ],
+  "food-production-12-bio": [
+    { group: "Exercise", label: "Q1. Multiple Choice Questions", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Very Short Answer Questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Short Answer Questions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Long Answer Questions", kind: "exercise", refPrefixes: ["Ex Q4("] },
+  ],
+  "human-health-12-bio": [
+    { group: "Exercise", label: "Q1. Multiple Choice Questions", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Very Short Answer Questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Short Answer Questions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Short Answer Questions", kind: "exercise", refPrefixes: ["Ex Q4("] },
+    { group: "Exercise", label: "Q5. Match the following", kind: "exercise", refPrefixes: ["Ex Q5"] },
+    { group: "Exercise", label: "Q6. Long Answer Questions", kind: "exercise", refPrefixes: ["Ex Q6("] },
+  ],
+  "inheritance-12-bio": [
+    { group: "Exercise", label: "Q1. Multiple choice questions", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Very Short Answer Questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Short Answer Questions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Match the column-I with column-II and re-write the...", kind: "exercise", refPrefixes: ["Ex Q4"] },
+    { group: "Exercise", label: "Q5. Long answer type questions", kind: "exercise", refPrefixes: ["Ex Q5("] },
+  ],
+  "molecular-inheritance-12-bio": [
+    { group: "Exercise", label: "Q1. Multiple Choice Questions", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Very Short Answer Questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Short Answer Questions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Short Answer Questions", kind: "exercise", refPrefixes: ["Ex Q4("] },
+    { group: "Exercise", label: "Q5. Long Answer Questions", kind: "exercise", refPrefixes: ["Ex Q5("] },
+  ],
+  "organisms-populations-12-bio": [
+    { group: "Exercise", label: "Q1. Multiple choice questions", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Very short answer questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Short answer questions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Long answer questions", kind: "exercise", refPrefixes: ["Ex Q4("] },
+  ],
+  "plant-growth-12-bio": [
+    { group: "Exercise", label: "Q1. Multiple choice questions", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Very Short Answer Questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Short Answer Questions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Long Answer Questions", kind: "exercise", refPrefixes: ["Ex Q4("] },
+  ],
+  "plant-water-12-bio": [
+    { group: "Exercise", label: "Q1. Multiple Choice Questions", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Very short answer questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Long answer questions", kind: "exercise", refPrefixes: ["Ex Q4("] },
+  ],
+  "repro-animals-12-bio": [
+    { group: "Exercise", label: "Q1. Multiple choice questions", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Answer in one sentence", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Fill in the blanks", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Short answer questions", kind: "exercise", refPrefixes: ["Ex Q4("] },
+    { group: "Exercise", label: "Q5. Answer the following questions", kind: "exercise", refPrefixes: ["Ex Q5("] },
+    { group: "Exercise", label: "Q6. Long answer questions", kind: "exercise", refPrefixes: ["Ex Q6("] },
+  ],
+  "repro-plants-12-bio": [
+    { group: "Exercise", label: "Q1. Multiple choice questions", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Very short answer type questions", kind: "exercise", refPrefixes: ["Ex Q2("] },
+    { group: "Exercise", label: "Q3. Short Answer Questions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Long Answer Questions", kind: "exercise", refPrefixes: ["Ex Q4("] },
+    { group: "Exercise", label: "Q5. Fill in the blanks", kind: "exercise", refPrefixes: ["Ex Q5"] },
+    { group: "Exercise", label: "Q6. Label the parts of seed", kind: "exercise", refPrefixes: ["Ex Q6"] },
+    { group: "Exercise", label: "Q7. Match the column", kind: "exercise", refPrefixes: ["Ex Q7"] },
+  ],
+  "respiration-circulation-12-bio": [
+    { group: "Exercise", label: "Q1. Choose the correct alternatives from those given below...", kind: "exercise", refPrefixes: ["Ex Q1("] },
+    { group: "Exercise", label: "Q2. Match the Respiratory surface to the organism in which...", kind: "exercise", refPrefixes: ["Ex Q2"] },
+    { group: "Exercise", label: "Q3. Very short answer questions", kind: "exercise", refPrefixes: ["Ex Q3("] },
+    { group: "Exercise", label: "Q4. Short answer questions", kind: "exercise", refPrefixes: ["Ex Q4("] },
+    { group: "Exercise", label: "Q5. Give scientific reason", kind: "exercise", refPrefixes: ["Ex Q5("] },
+    { group: "Exercise", label: "Q6. Distinguish between", kind: "exercise", refPrefixes: ["Ex Q6("] },
+    { group: "Exercise", label: "Q7. Long answer questions", kind: "exercise", refPrefixes: ["Ex Q7("] },
+  ],
+
   // ── GEOGRAPHY, Ch.7 Region and Regional Development ────────────────────────
   // The simplest outline in this file, because the book itself is simple: a
   // Geography chapter has NO numbered sections, NO solved examples and exactly
