@@ -20,7 +20,7 @@ import {
   mhtCetMockSlug,
   mhtCetMockTitle,
 } from "../scripts/mocks/mhtcetSittings";
-import { SHIFTS } from "../scripts/mhtcet/config";
+import { PDF_SHIFTS, SHIFTS } from "../scripts/mhtcet/config";
 import {
   MHT_CET_MATHS_PAPER,
   MHT_CET_PHY_CHEM_PAPER,
@@ -30,16 +30,17 @@ describe("MHT-CET sitting registry", () => {
   const sittings = deriveMhtCetSittings();
 
   /**
-   * 45 source_file labels in the bank, but only 42 real sittings: three papers
-   * were uploaded twice and each pair is now ONE merged sitting.
+   * 71 source_file labels in the bank, but only 68 real sittings: three papers
+   * were uploaded twice and each pair is now ONE merged sitting. 26 of the 68 are
+   * the 2026 PDF shifts (2026-10-13).
    */
-  it("covers all 42 real sittings", () => {
-    expect(sittings).toHaveLength(42);
+  it("covers all 68 real sittings", () => {
+    expect(sittings).toHaveLength(68);
   });
 
   it("has a unique key and a unique source file for every sitting", () => {
-    expect(new Set(sittings.map((s) => s.key)).size).toBe(42);
-    expect(new Set(sittings.map((s) => s.sourceFile)).size).toBe(42);
+    expect(new Set(sittings.map((s) => s.key)).size).toBe(68);
+    expect(new Set(sittings.map((s) => s.sourceFile)).size).toBe(68);
   });
 
   /**
@@ -47,12 +48,12 @@ describe("MHT-CET sitting registry", () => {
    * ship the same paper twice, once whole and once as the fragment it was split
    * into, and the fragment would fail its hard count with no clue why.
    */
-  it("claims all 45 bank labels exactly once, across primaries and merges", () => {
+  it("claims all 71 bank labels exactly once, across primaries and merges", () => {
     const claimed = sittings.flatMap((s) =>
       s.mergeWith ? [s.sourceFile, s.mergeWith] : [s.sourceFile]
     );
-    expect(claimed).toHaveLength(45);
-    expect(new Set(claimed).size).toBe(45);
+    expect(claimed).toHaveLength(71);
+    expect(new Set(claimed).size).toBe(71);
   });
 
   it("merges exactly the three double-uploaded papers", () => {
@@ -71,13 +72,13 @@ describe("MHT-CET sitting registry", () => {
    * upsert overwrites the other (same slugToUuid id) and a real paper vanishes
    * with no error. Checked across BOTH papers at once, since they share a stem.
    */
-  it("derives 84 distinct slugs across the two papers", () => {
+  it("derives 136 distinct slugs across the two papers", () => {
     const slugs = sittings.flatMap((s) => [
       mhtCetMockSlug(s.key, MHT_CET_MATHS_PAPER.code),
       mhtCetMockSlug(s.key, MHT_CET_PHY_CHEM_PAPER.code),
     ]);
-    expect(slugs).toHaveLength(84);
-    expect(new Set(slugs).size).toBe(84);
+    expect(slugs).toHaveLength(136);
+    expect(new Set(slugs).size).toBe(136);
   });
 
   it("emits slugs that are URL-safe and exam-prefixed", () => {
@@ -106,8 +107,21 @@ describe("MHT-CET sitting registry", () => {
     }
   });
 
+  /** The same drift guard for the 26 PDF-sourced 2026 shifts. */
+  it("agrees with the 2026 PDF shifts in scripts/mhtcet/config.ts", () => {
+    const pdfKeys = Object.keys(PDF_SHIFTS);
+    expect(pdfKeys).toHaveLength(26);
+    for (const key of pdfKeys) {
+      const s = sittings.find((x) => x.key === key);
+      expect(s, `sitting ${key} missing`).toBeDefined();
+      expect(s!.sourceFile).toBe(PDF_SHIFTS[key].sourceFile);
+      expect(s!.year).toBe(PDF_SHIFTS[key].pyqYear);
+      expect(s!.label).toBe(PDF_SHIFTS[key].pyqNote);
+    }
+  });
+
   it("keeps every hand-written sitting out of the derived set", () => {
-    const configKeys = new Set(Object.keys(SHIFTS));
+    const configKeys = new Set([...Object.keys(SHIFTS), ...Object.keys(PDF_SHIFTS)]);
     const handWritten = MHT_CET_SITTINGS.filter((s) => !configKeys.has(s.key));
     expect(handWritten).toHaveLength(29);
     // A hand-written entry duplicating a config source file would produce two
@@ -124,16 +138,16 @@ describe("MHT-CET sitting registry", () => {
 
   /**
    * The user's call: ship only papers that reconstruct at their TRUE length.
-   * 30 of the 90 are short — 10 because a flawed question is deliberately
-   * withheld PRIVATE (irrecoverable), 20 because rows are absent from the bank
-   * (closable by a future ingest) — so 60 ship.
+   * 2021-2025: 20 of 84 held. 2026: 10 of 52 held, 9 for a flawed question kept
+   * PRIVATE and one (11 Apr S2 Q34) also absent, absorbed by content_hash dedup
+   * into its 2025 twin. So 106 of 136 ship.
    */
-  it("holds exactly 20 papers, leaving 64 to ship", () => {
+  it("holds exactly 30 papers, leaving 106 to ship", () => {
     const heldMaths = sittings.filter((s) => s.hold?.maths).length;
     const heldPhyChem = sittings.filter((s) => s.hold?.phyChem).length;
-    expect(heldMaths).toBe(8);
-    expect(heldPhyChem).toBe(12);
-    expect(84 - heldMaths - heldPhyChem).toBe(64);
+    expect(heldMaths).toBe(10);
+    expect(heldPhyChem).toBe(20);
+    expect(136 - heldMaths - heldPhyChem).toBe(106);
   });
 
   /** A hold with no stated reason is indistinguishable from a mistake. */
