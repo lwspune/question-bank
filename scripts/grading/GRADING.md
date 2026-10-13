@@ -102,8 +102,18 @@ These follow how board examiners mark. Where a rule is ours, it says so.
 ## Rejecting a sheet
 
 `npm run grading:commit -- <id> --reject="…"`. Reject when a third or more is
-unreadable, the sheet is for another paper, it is blank, or it is not answers
-(textbook photos, the printed paper). The reason must tell the student what to
+unreadable, it is blank, or it is not answers (textbook photos, the printed
+paper).
+
+**A sheet written for a different test is graded, not rejected** (owner,
+2026-10-12). Grade it against the paper the student chose: anything that matches
+a question by content (rule 11) is scored, the rest `not_attempted`. At least one
+row must be `scored` (0 allowed). Open `wentWell` with a note that the pages
+answer a different test, so they could not earn marks on this paper. Then use
+`wentWell` and `nextSteps` to give feedback on the answers actually written, and
+end by pointing to the question papers page. This overrides the two-sentence limit
+for those two fields. A graded sheet uses up the student's day; only a rejection
+gives it back. The reason must tell the student what to
 do: "Pages 3 to 6 are too dark to read. Retake them in daylight, flat, one page
 per photo." A rejection frees the student's day, so they can send it again.
 
@@ -130,5 +140,9 @@ about one sheet.
 
 Newest first. One line each: date, rule or learning, and why.
 
+- 2026-10-12: A sheet for a different test (often a student's own school or
+  coaching test) gets a report, not a rejection: the student still sees feedback
+  on what they wrote. Owner's call. Students may upload such a sheet within
+  minutes of signing up, which suggests they want their own tests checked.
 - 2026-10-11: Rules 6 (units) and 9 (attempt any N) are provisional, ours, not
   confirmed board practice. Confirm with a board examiner before charging.
