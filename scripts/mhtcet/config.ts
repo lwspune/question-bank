@@ -103,6 +103,48 @@ export const SHIFTS: Record<string, { sourceFile: string; pyqYear: number; pyqMo
   },
 };
 
+/**
+ * 2026 onward: the source is a typeset PDF per shift (one file, key on the last pages),
+ * not an LWS .docx + _AK.docx pair. Sections run Chemistry 1-50, Maths 51-100,
+ * Physics 101-150 (pdf-extract.py reads the order off the cover and fails on anything
+ * else). Flow: pdf-extract.py -> transcripts/<id>.txt (hand-authored) -> build-pdf-shift.ts
+ * -> commit.ts / attach-images.ts / validate-db.ts / flip-public.ts as for a docx shift.
+ *
+ * Kept OUT of SHIFTS on purpose: SHIFTS must agree with the mock sitting registry
+ * (scripts/mocks/mhtcetSittings.ts throws otherwise), and these sittings join that
+ * registry only when their mocks are built.
+ */
+const PDF_DIR_2026 = "C:/Vilas/LWS_Pune/MHT-CET/PYQPs/2026";
+const MONTH_ABBR: Record<string, string> = { April: "Apr", May: "May" };
+const ORDINAL = (d: number) => `${d}${d === 11 || d === 12 || d === 13 ? "th" : (["th", "st", "nd", "rd"][d % 10] ?? "th")}`;
+
+export type PdfShift = { sourceFile: string; pyqYear: number; pyqMonth: string; pyqNote: string; pdf: string };
+
+/** [day, month] of every 2026 sitting day; each had a Morning (Shift I) and an Evening (Shift II) paper. */
+const DAYS_2026: [number, "April" | "May"][] = [
+  [11, "April"], [13, "April"], [15, "April"], [16, "April"], [17, "April"], [18, "April"], [19, "April"], [20, "April"],
+  [12, "May"], [13, "May"], [14, "May"], [15, "May"], [19, "May"],
+];
+
+export const PDF_SHIFTS: Record<string, PdfShift> = Object.fromEntries(
+  DAYS_2026.flatMap(([day, month]) =>
+    ([["Morning", 1, "I"], ["Evening", 2, "II"]] as const).map(([session, s, roman]) => {
+      const dd = String(day).padStart(2, "0");
+      const m = MONTH_ABBR[month];
+      return [
+        `2026-${m.toLowerCase()}-${dd}-s${s}`,
+        {
+          sourceFile: `MHT_CET_2026_${m}_${dd}_S${s}.pdf`,
+          pyqYear: 2026,
+          pyqMonth: month,
+          pyqNote: `${day} ${month} Shift ${roman}`,
+          pdf: `${PDF_DIR_2026}/MHT CET 2026 ${ORDINAL(day)} ${month} ${session} Shift Question Paper with Answer Key.pdf`,
+        },
+      ];
+    })
+  )
+);
+
 const OUT = join(__dirname, "out");
 const SHIFTS_DIR = join(__dirname, "shifts");
 
