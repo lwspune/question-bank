@@ -9,6 +9,9 @@ import { cn } from "@/lib/utils";
 import { boardPyqPaperStats } from "@/lib/board/papers";
 import BoardQuestionItem, { type RevealLock } from "./BoardQuestionItem";
 import { useBoardReveal } from "./useBoardReveal";
+import type { HomeworkSlot } from "@/lib/homework/dayView";
+import HomeworkSlotList from "@/app/homework/_components/HomeworkSlotList";
+import PaperDownload from "@/app/mock/_components/PaperDownload";
 import {
   defaultOpenGroups,
   type BoardBlock,
@@ -18,6 +21,20 @@ import {
   type BoardSectionGroup,
   type SectionKind,
 } from "@/lib/board/query";
+
+/**
+ * A chapter's Top 10 PYQs (2026-10-13): the first ten questions of the chapter
+ * in its subject's homework plan, which is the ranking (lib/homework/topPyqs.ts).
+ */
+export type BoardTopPyqs = {
+  planSlug: string;
+  chapterId: string;
+  /** "Top 10 PYQs: <chapter> (<plan>)", the download's title too. */
+  title: string;
+  slots: HomeworkSlot<BoardQuestion>[];
+};
+
+type Panel = "textbook" | "pyqs" | "top";
 
 const KIND_TAG: Record<SectionKind, string> = {
   solved_example: "Worked",
@@ -48,6 +65,7 @@ export default function BoardReader({
   supabaseUrl,
   chapterName,
   examName,
+  top = null,
 }: {
   groups: BoardSectionGroup[];
   /** The chapter's board past-year questions, newest sitting first. Empty only
@@ -62,10 +80,12 @@ export default function BoardReader({
   /** The DB `exams.name` — attributes a reveal-wall hit to its exam, in the
    *  same vocabulary /browse uses, so the two surfaces stay comparable. */
   examName: string;
+  /** The chapter's Top 10 PYQs, or null when its subject has no homework plan. */
+  top?: BoardTopPyqs | null;
 }) {
-  // Which corpus is on screen. Opens on the textbook — /board is the book
+  // Which panel is on screen. Opens on the textbook — /board is the book
   // reader and the URL names a chapter of it.
-  const [showPyqs, setShowPyqs] = useState(false);
+  const [panel, setPanel] = useState<Panel>("textbook");
   // Which sections open on load. Decided HERE rather than inside GroupSection
   // because it depends on a group's SIBLINGS: a lone group has no outline to
   // reveal, so folding it would only cost a click. See defaultOpenGroups.
@@ -75,8 +95,9 @@ export default function BoardReader({
     const m = new Map<string, BoardQuestion>();
     for (const g of groups) for (const b of g.blocks) for (const q of b.questions) m.set(q.id, q);
     for (const s of pyqSittings) for (const q of s.questions) m.set(q.id, q);
+    for (const s of top?.slots ?? []) for (const q of s.questions) m.set(q.id, q);
     return m;
-  }, [groups, pyqSittings]);
+  }, [groups, pyqSittings, top]);
   // Reveal state for the whole reader (single source of truth), so per-question
   // toggles stay consistent as sections collapse and expand. Everything starts
   // hidden, including worked examples (attempt-first).
@@ -96,8 +117,9 @@ export default function BoardReader({
           sectionCount={groups.length}
           pyqTotal={pyqTotal}
           pyqSittings={pyqSittings}
-          showPyqs={showPyqs}
-          onSelect={setShowPyqs}
+          topCount={top?.slots.length ?? 0}
+          panel={panel}
+          onSelect={setPanel}
         />
       )}
 
@@ -109,7 +131,7 @@ export default function BoardReader({
           out of the textbook and into the board PYQs — two different corpora,
           and half of them behind a hidden tab. */}
       <PresentRegistry>
-        <div className="space-y-8" id="board-textbook" hidden={showPyqs}>
+        <div className="space-y-8" id="board-textbook" hidden={panel !== "textbook"}>
           {groups.map((group, i) => (
             <GroupSection
               key={group.group}
@@ -130,7 +152,7 @@ export default function BoardReader({
 
       {pyqTotal > 0 && (
         <PresentRegistry>
-          <div className="space-y-6" id="board-pyqs" hidden={!showPyqs}>
+          <div className="space-y-6" id="board-pyqs" hidden={panel !== "pyqs"}>
             <RecurrenceStrip
               sittings={pyqSittings}
               examName={examName}
@@ -157,13 +179,49 @@ export default function BoardReader({
           </div>
         </PresentRegistry>
       )}
+
+      {top && pyqTotal > 0 && (
+        <PresentRegistry>
+          <div className="space-y-6" id="board-top" hidden={panel !== "top"}>
+            <section className="space-y-3 rounded-lg border border-brand-accent/30 bg-brand-accent/5 p-4">
+              <div>
+                <h2 className="text-sm font-semibold text-brand-accent">
+                  The {top.slots.length} board questions to practise first
+                </h2>
+                <p className="mt-0.5 text-xs text-muted-foreground">
+                  The questions the board asked again come first, most asked first. Each one says how often and
+                  when.
+                </p>
+              </div>
+              <PaperDownload
+                slug={`top-pyqs-${top.planSlug}`}
+                paperTitle={top.title}
+                topPyqs={{ plan: top.planSlug, chapterId: top.chapterId }}
+              />
+            </section>
+            <HomeworkSlotList
+              slots={top.slots}
+              supabaseUrl={supabaseUrl}
+              showChapter={false}
+              idPrefix="top"
+              revealed={revealed}
+              blocked={blocked}
+              lock={lock}
+              onToggleReveal={toggleOne}
+              picks={picks}
+              onPick={pickOne}
+            />
+          </div>
+        </PresentRegistry>
+      )}
     </div>
   );
 }
 
 /**
  * Textbook / Board PYQs. Two peers, not a primary and an appendix — on MH SSC
- * 10 the board questions outnumber the textbook in 38 of 68 chapters.
+ * 10 the board questions outnumber the textbook in 38 of 68 chapters. A third
+ * tab, Top 10 PYQs, appears where the subject has a published homework plan.
  *
  * Selection is REACT STATE, deliberately not a search param: useSearchParams
  * bails a static prerender out to client rendering, and these pages are cached.
@@ -174,15 +232,18 @@ function SourceTabs({
   sectionCount,
   pyqTotal,
   pyqSittings,
-  showPyqs,
+  topCount,
+  panel,
   onSelect,
 }: {
   textbookTotal: number;
   sectionCount: number;
   pyqTotal: number;
   pyqSittings: BoardPyqSitting[];
-  showPyqs: boolean;
-  onSelect: (showPyqs: boolean) => void;
+  /** Questions in the Top PYQs tab; 0 = no tab. */
+  topCount: number;
+  panel: Panel;
+  onSelect: (panel: Panel) => void;
 }) {
   const years = pyqSittings.map((s) => s.year);
   const first = Math.min(...years);
@@ -202,28 +263,42 @@ function SourceTabs({
     <div className="flex flex-wrap gap-2">
       <button
         type="button"
-        aria-pressed={!showPyqs}
+        aria-pressed={panel === "textbook"}
         aria-controls="board-textbook"
-        onClick={() => onSelect(false)}
-        className={tab(!showPyqs)}
+        onClick={() => onSelect("textbook")}
+        className={tab(panel === "textbook")}
       >
-        <span className={cn("text-sm font-semibold", !showPyqs && "text-brand-accent")}>Textbook</span>
+        <span className={cn("text-sm font-semibold", panel === "textbook" && "text-brand-accent")}>Textbook</span>
         <span className="text-xs text-muted-foreground">
           {textbookTotal} questions · {sectionCount} book sections
         </span>
       </button>
       <button
         type="button"
-        aria-pressed={showPyqs}
+        aria-pressed={panel === "pyqs"}
         aria-controls="board-pyqs"
-        onClick={() => onSelect(true)}
-        className={tab(showPyqs)}
+        onClick={() => onSelect("pyqs")}
+        className={tab(panel === "pyqs")}
       >
-        <span className={cn("text-sm font-semibold", showPyqs && "text-brand-accent")}>Board PYQs</span>
+        <span className={cn("text-sm font-semibold", panel === "pyqs" && "text-brand-accent")}>Board PYQs</span>
         <span className="text-xs text-muted-foreground">
           {pyqTotal} questions · {span}
         </span>
       </button>
+      {topCount > 0 && (
+        <button
+          type="button"
+          aria-pressed={panel === "top"}
+          aria-controls="board-top"
+          onClick={() => onSelect("top")}
+          className={tab(panel === "top")}
+        >
+          <span className={cn("text-sm font-semibold", panel === "top" && "text-brand-accent")}>
+            Top {topCount} PYQs
+          </span>
+          <span className="text-xs text-muted-foreground">Most asked first · download</span>
+        </button>
+      )}
     </div>
   );
 }

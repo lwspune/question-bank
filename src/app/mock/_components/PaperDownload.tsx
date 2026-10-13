@@ -43,6 +43,7 @@ export default function PaperDownload({
   bilingual = false,
   variant = "button",
   boardPaper,
+  topPyqs,
 }: {
   slug: string;
   paperTitle: string;
@@ -51,6 +52,11 @@ export default function PaperDownload({
    * `slug` is then the paper's slug, and the download names the exam too.
    */
   boardPaper?: { exam: string };
+  /**
+   * A /board chapter's top PYQs (2026-10-13) instead of a mock: the plan and the
+   * chapter name the paper, and `slug` only names the file.
+   */
+  topPyqs?: { plan: string; chapterId: string };
   /** The exam prints Marathi + English (MPSC): offer a print language. */
   bilingual?: boolean;
   /** "button": full width, under Start test. "row": compact, in a list. */
@@ -58,6 +64,9 @@ export default function PaperDownload({
 }) {
   // A plain value, so the access check below re-runs only when it changes.
   const boardExam = boardPaper?.exam ?? null;
+  const topTarget = topPyqs ? `${topPyqs.plan}:${topPyqs.chapterId}` : null;
+  // Which funnel the box reports to: a Top 10 comes from a homework plan.
+  const funnelMode = topTarget ? "homework" : "mock";
   const [open, setOpen] = useState(false);
   const [access, setAccess] = useState<ExportViewerAccess | null>(null);
   const [loadFailed, setLoadFailed] = useState(false);
@@ -71,16 +80,18 @@ export default function PaperDownload({
   const loadAccess = useCallback(async () => {
     setLoadFailed(false);
     try {
-      const query = boardExam
-        ? `board=${encodeURIComponent(`${boardExam}:${slug}`)}`
-        : `mockSlug=${encodeURIComponent(slug)}`;
+      const query = topTarget
+        ? `top=${encodeURIComponent(topTarget)}`
+        : boardExam
+          ? `board=${encodeURIComponent(`${boardExam}:${slug}`)}`
+          : `mockSlug=${encodeURIComponent(slug)}`;
       const res = await fetch(`/api/export/access?${query}`, { cache: "no-store" });
       if (!res.ok) throw new Error(String(res.status));
       setAccess((await res.json()) as ExportViewerAccess);
     } catch {
       setLoadFailed(true);
     }
-  }, [slug, boardExam]);
+  }, [slug, boardExam, topTarget]);
 
   useEffect(() => {
     if (!open) return;
@@ -107,9 +118,9 @@ export default function PaperDownload({
   // The download gate was seen: the denominator for pass sales from this box.
   useEffect(() => {
     if (!open || !access || canDownload) return;
-    trackFunnelOnce("teacher_gate_shown", "mock", { signedIn, mode: "mock" });
-    if (signedIn) sendActivityOnce("teacher_gate:mock", { kind: "paywall_event", step: "shown", gate: "teacher" });
-  }, [open, access, canDownload, signedIn]);
+    trackFunnelOnce("teacher_gate_shown", funnelMode, { signedIn, mode: funnelMode });
+    if (signedIn) sendActivityOnce(`teacher_gate:${funnelMode}`, { kind: "paywall_event", step: "shown", gate: "teacher" });
+  }, [open, access, canDownload, signedIn, funnelMode]);
 
   const onBought = useCallback(() => {
     setJustBought(true);
@@ -125,7 +136,11 @@ export default function PaperDownload({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           kind,
-          ...(boardExam ? { boardPaper: { exam: boardExam, slug } } : { mockSlug: slug }),
+          ...(topPyqs
+            ? { topPyqs: { plan: topPyqs.plan, chapter: topPyqs.chapterId } }
+            : boardExam
+              ? { boardPaper: { exam: boardExam, slug } }
+              : { mockSlug: slug }),
           options: { includeSolutions: true, ...(bilingual ? { lang } : {}) },
         }),
       });
@@ -271,7 +286,7 @@ export default function PaperDownload({
             isSignedIn={signedIn}
             freeAfterSignIn={!signedIn}
             returnTo={here}
-            mode="mock"
+            mode={funnelMode}
             surface="paper_download"
             onCancel={() => setOpen(false)}
             onBought={onBought}

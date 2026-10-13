@@ -11,6 +11,7 @@ import { buildFailureMemoMs } from "@/lib/cache/buildPhase";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import type { HomeworkDayItem } from "./dayExport";
 import type { HomeworkPlanLink } from "./links";
+import { TOP_PYQS, pickTopSlots, topSlotKeys, type PlanChapterRow } from "./topPyqs";
 
 export type HomeworkPlanSummary = {
   id: string;
@@ -189,4 +190,106 @@ export async function getPlanDayPage(client: SupabaseClient, slug: string, day: 
     },
     items: dayItems,
   };
+}
+
+export type PlanChapterTop = {
+  planId: string;
+  planSlug: string;
+  planTitle: string;
+  /** Empty when the plan holds no question of the chapter. */
+  chapterName: string;
+  /** The chapter's top PYQs, numbered 1..n (lib/homework/topPyqs.ts). */
+  items: HomeworkDayItem[];
+};
+
+type PlanRef = { id: string; slug: string; title: string };
+
+type ChapterItemRow = {
+  day: number;
+  position: number;
+  sub: number;
+  note: string;
+  question_id: string;
+  question: { chapter: { name: string } | null } | null;
+};
+
+/**
+ * Two reads. First the slots the chapter owns: the first part of each slot
+ * whose question is filed under the chapter, in plan order, cut at ten. Then
+ * every part of those slots, since a case study can file a later part under
+ * another chapter (lib/homework/topPyqs.ts topSlotKeys).
+ */
+async function loadChapterTop(client: SupabaseClient, plan: PlanRef, chapterId: string): Promise<PlanChapterTop> {
+  const owned = await client
+    .from("homework_plan_items")
+    .select("day, position, sub, note, question_id, question:questions!inner(chapter_id, chapter:chapters(name))")
+    .eq("plan_id", plan.id)
+    .eq("sub", 1)
+    .eq("question.chapter_id", chapterId)
+    .order("day")
+    .order("position")
+    .limit(TOP_PYQS);
+  if (owned.error) throw new Error(`homework top pyqs ${plan.slug}: ${owned.error.message}`);
+  const firsts = (owned.data ?? []) as unknown as ChapterItemRow[];
+  const chapterName = firsts[0]?.question?.chapter?.name ?? "";
+  const toRow = (r: Omit<ChapterItemRow, "question">): PlanChapterRow => ({
+    day: r.day,
+    position: r.position,
+    sub: r.sub,
+    questionId: r.question_id,
+    chapter: chapterName,
+    note: r.note,
+  });
+  const keys = topSlotKeys(firsts.map(toRow));
+  const base = { planId: plan.id, planSlug: plan.slug, planTitle: plan.title, chapterName };
+  if (keys.length === 0) return { ...base, items: [] };
+
+  const wanted = new Set(keys.map((k) => `${k.day}:${k.position}`));
+  const all = await client
+    .from("homework_plan_items")
+    .select("day, position, sub, note, question_id")
+    .eq("plan_id", plan.id)
+    .in("day", [...new Set(keys.map((k) => k.day))])
+    .order("day")
+    .order("position")
+    .order("sub");
+  if (all.error) throw new Error(`homework top pyqs ${plan.slug} parts: ${all.error.message}`);
+  const parts = ((all.data ?? []) as unknown as Omit<ChapterItemRow, "question">[])
+    .filter((r) => wanted.has(`${r.day}:${r.position}`))
+    .map(toRow);
+  return { ...base, items: pickTopSlots(parts, keys.length) };
+}
+
+/** A chapter's top PYQs from a published plan named by slug, for the download route. Null for an unknown plan. */
+export async function getPlanChapterTop(
+  client: SupabaseClient,
+  slug: string,
+  chapterId: string
+): Promise<PlanChapterTop | null> {
+  const { data, error } = await client.from("homework_plans").select("id, slug, title").eq("slug", slug).maybeSingle();
+  if (error) throw new Error(`homework plan ${slug}: ${error.message}`);
+  if (!data) return null;
+  return loadChapterTop(client, data as PlanRef, chapterId);
+}
+
+/**
+ * A chapter's top PYQs from its subject's published plan, for the /board
+ * chapter page. Null when the subject has no published plan (MH SSC 10, CBSE
+ * Biology, HSC Geography today). Each subject has one plan; were there two, the
+ * first by slug is read, so the page is stable.
+ */
+export async function getSubjectChapterTop(
+  client: SupabaseClient,
+  opts: { examId: string; subjectId: string; chapterId: string }
+): Promise<PlanChapterTop | null> {
+  const { data, error } = await client
+    .from("homework_plans")
+    .select("id, slug, title")
+    .eq("exam_id", opts.examId)
+    .eq("subject_id", opts.subjectId)
+    .order("slug")
+    .limit(1);
+  if (error) throw new Error(`homework plan for subject: ${error.message}`);
+  const plan = (data ?? [])[0] as PlanRef | undefined;
+  return plan ? loadChapterTop(client, plan, opts.chapterId) : null;
 }

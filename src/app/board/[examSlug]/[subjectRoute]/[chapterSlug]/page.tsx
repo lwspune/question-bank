@@ -16,7 +16,11 @@ import {
   type BoardPaperCount,
   type BoardPyqSitting,
 } from "@/lib/board/query";
-import BoardReader from "@/app/board/BoardReader";
+import BoardReader, { type BoardTopPyqs } from "@/app/board/BoardReader";
+import { getSubjectChapterTop } from "@/lib/homework/query";
+import { homeworkDayView } from "@/lib/homework/dayView";
+import { topPyqsTitle } from "@/lib/homework/topPyqs";
+import { loadBoardQuestions } from "@/lib/questionPapers/query";
 
 type Params = { examSlug: string; subjectRoute: string; chapterSlug: string };
 
@@ -60,7 +64,39 @@ type Loaded = {
   /** Papers the SUBJECT sat per year — the recurrence strip's divisor. Loaded
    *  here because it is a per-subject fact the chapter's own rows cannot see. */
   paperCounts: BoardPaperCount[];
+  /** The chapter's Top 10 PYQs, or null when its subject has no published homework plan. */
+  top: BoardTopPyqs | null;
 };
+
+/**
+ * The chapter's Top 10 PYQs from its subject's homework plan (2026-10-13).
+ * A failed read drops the tab, never the page: the textbook and the board
+ * questions are the page, the Top 10 is a view of the second.
+ */
+async function loadTop(
+  client: ReturnType<typeof createSupabaseAnonClient>,
+  ids: { examId: string; subjectId: string; chapterId: string }
+): Promise<BoardTopPyqs | null> {
+  try {
+    const top = await getSubjectChapterTop(client, ids);
+    if (!top || top.items.length === 0) return null;
+    const questions = await loadBoardQuestions(client, top.items.map((it) => it.questionId));
+    const view = homeworkDayView(top.items, questions);
+    if (!view.ok) {
+      console.error("board top pyqs: questions unavailable", top.planSlug, ids.chapterId, view.missing);
+      return null;
+    }
+    return {
+      planSlug: top.planSlug,
+      chapterId: ids.chapterId,
+      title: topPyqsTitle(view.slots.length, top.chapterName, top.planTitle),
+      slots: view.slots,
+    };
+  } catch (err) {
+    console.error("board top pyqs: read failed", ids.chapterId, err);
+    return null;
+  }
+}
 
 async function load(params: Params): Promise<Loaded | null> {
   const exam = getExamBySlug(params.examSlug);
@@ -69,7 +105,7 @@ async function load(params: Params): Promise<Loaded | null> {
   const resolved = await resolveBoardChapter(client, exam.examName, params.subjectRoute, params.chapterSlug);
   if (!resolved) return null;
 
-  const [chapter, pyqSittings, paperCounts] = await Promise.all([
+  const [chapter, pyqSittings, paperCounts, top] = await Promise.all([
     getBoardChapter(client, {
       examId: resolved.examId,
       chapterId: resolved.chapterId,
@@ -83,6 +119,7 @@ async function load(params: Params): Promise<Loaded | null> {
       subjectId: resolved.subjectId,
       examName: exam.examName,
     }),
+    loadTop(client, { examId: resolved.examId, subjectId: resolved.subjectId, chapterId: resolved.chapterId }),
   ]);
 
   // TEXTBOOK presence still decides whether this page exists — /board is the
@@ -97,6 +134,7 @@ async function load(params: Params): Promise<Loaded | null> {
     chapter,
     pyqSittings,
     paperCounts,
+    top,
   };
 }
 
@@ -157,6 +195,7 @@ export default async function BoardChapterPage({ params }: { params: Params }) {
           groups={chapter.groups}
           pyqSittings={data.pyqSittings}
           paperCounts={data.paperCounts}
+          top={data.top}
           supabaseUrl={supabaseUrl}
           chapterName={chapter.chapterName}
           examName={data.examName}
