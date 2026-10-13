@@ -14,6 +14,8 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { validateOnboardingSubmission, primaryExam } from "@/lib/profile/onboarding";
 import { saveOnboarding, persistAcquisition, saveSignupCountry } from "@/lib/profile/service";
 import { readAcquisitionCookie } from "@/lib/acquisition/cookie";
+import { acquisitionForAccount } from "@/lib/acquisition/source";
+import { isNewAccount } from "@/lib/auth/oneTap";
 import { readCountry } from "@/lib/acquisition/country";
 
 const BodySchema = z.object({
@@ -48,18 +50,27 @@ export async function POST(request: NextRequest) {
     // is the earliest point at which a profile row exists to hang it on. The
     // write is write-once at the query level, and its failure must never cost a
     // student their onboarding — hence the inner catch.
+    // A direct record is saved only for a new account (acquisitionForAccount),
+    // so the full auth user is needed for the new-account check.
+    let authUser: { id: string; created_at?: string | null; last_sign_in_at?: string | null } | null = null;
     try {
-      const acq = readAcquisitionCookie(request.cookies.get("qb_acq")?.value ?? null);
+      authUser = (await db.auth.getUser()).data.user;
+    } catch (e) {
+      console.error("onboarding auth user read", e instanceof Error ? e.message : e);
+    }
+    try {
+      const acq = acquisitionForAccount(
+        readAcquisitionCookie(request.cookies.get("qb_acq")?.value ?? null),
+        isNewAccount(authUser?.created_at, authUser?.last_sign_in_at)
+      );
       if (acq) await persistAcquisition(db, user.id, acq);
     } catch (e) {
       console.error("acquisition persist", e instanceof Error ? e.message : e);
     }
     // Country (0142): the backstop for an email signup, which reaches /welcome
-    // without passing the OAuth callback. Needs the full auth user for the
-    // new-account check; same never-fail rule as the channel.
+    // without passing the OAuth callback. Same never-fail rule as the channel.
     try {
-      const { data } = await db.auth.getUser();
-      if (data.user) await saveSignupCountry(db, data.user, readCountry(request.headers));
+      if (authUser) await saveSignupCountry(db, authUser, readCountry(request.headers));
     } catch (e) {
       console.error("signup country persist", e instanceof Error ? e.message : e);
     }

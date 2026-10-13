@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   parseAcquisition,
   isFirstTouchWorthStoring,
+  acquisitionForAccount,
   ACQ_MAX_LEN,
 } from "@/lib/acquisition/source";
 
@@ -175,19 +176,58 @@ describe("parseAcquisition — normalisation and hostile input", () => {
   });
 });
 
-describe("isFirstTouchWorthStoring — first touch wins, and direct never overwrites", () => {
+describe("isFirstTouchWorthStoring — first NAMED touch wins; a direct visit only holds the landing page", () => {
   it("stores when nothing has been captured yet", () => {
     expect(isFirstTouchWorthStoring({ existing: null, incoming: { source: "google", medium: "organic" } })).toBe(true);
   });
 
-  it("does NOT overwrite an existing first touch", () => {
+  it("does NOT overwrite an existing named first touch", () => {
     const existing = { source: "google", medium: "organic" };
     expect(isFirstTouchWorthStoring({ existing, incoming: { source: "instagram", medium: "social" } })).toBe(false);
   });
 
-  it("refuses to store a bare direct hit as the first touch", () => {
-    // Otherwise the first internal page load of a session overwrites nothing
-    // with "direct" and every campaign click is attributed to nobody.
-    expect(isFirstTouchWorthStoring({ existing: null, incoming: { source: "direct", medium: "direct" } })).toBe(false);
+  it("stores a direct visit when nothing is captured, so its landing page is kept", () => {
+    // 2026-10-13: half of signups had no channel AND no landing page, so we
+    // could not even say where they came in. Internal page moves return null
+    // from parseAcquisition, so a direct record cannot come from one.
+    expect(isFirstTouchWorthStoring({ existing: null, incoming: { source: "direct", medium: "direct" } })).toBe(true);
+  });
+
+  it("lets a later named channel replace a stored direct visit", () => {
+    const existing = { source: "direct", medium: "direct" };
+    expect(isFirstTouchWorthStoring({ existing, incoming: { source: "chatgpt.com", medium: "campaign" } })).toBe(true);
+  });
+
+  it("never lets a direct visit replace anything, not even another direct one", () => {
+    expect(
+      isFirstTouchWorthStoring({ existing: { source: "google", medium: "organic" }, incoming: { source: "direct", medium: "direct" } })
+    ).toBe(false);
+    expect(
+      isFirstTouchWorthStoring({ existing: { source: "direct", medium: "direct" }, incoming: { source: "direct", medium: "direct" } })
+    ).toBe(false);
+  });
+});
+
+describe("acquisitionForAccount — a direct record is saved only for a new account", () => {
+  const direct = { source: "direct", medium: "direct", campaign: null, landing: "/browse", referrerHost: null };
+  const google = { source: "google", medium: "organic", campaign: null, landing: "/", referrerHost: "google.com" };
+
+  it("keeps a direct record for a new account", () => {
+    expect(acquisitionForAccount(direct, true)).toEqual(direct);
+  });
+
+  it("drops a direct record for an old account, which stays 'never learned'", () => {
+    // An account made before this change, onboarding today from a browser with
+    // no cookie, did not arrive direct: we just never learned how it arrived.
+    expect(acquisitionForAccount(direct, false)).toBeNull();
+  });
+
+  it("keeps a named channel either way, as before", () => {
+    expect(acquisitionForAccount(google, true)).toEqual(google);
+    expect(acquisitionForAccount(google, false)).toEqual(google);
+  });
+
+  it("passes null through", () => {
+    expect(acquisitionForAccount(null, true)).toBeNull();
   });
 });

@@ -243,4 +243,34 @@ export const INSIGHTS: readonly Insight[] = [
     status: "open",
     actedOn: "Logged in SUGGESTIONS.md on 12 Oct: run /browse in bom1 (about $3 a month). Deferred by the owner.",
   },
+  {
+    id: "gulf-students-cannot-pay",
+    title: "Gulf students reach the pass offer, but a card issued abroad cannot pay",
+    finding:
+      "Since signup country was recorded (9 Oct): 3 of 199 signups abroad (Qatar, UAE, Saudi Arabia), all Class 12 on NEET, JEE or CBSE 12. The Qatar student answered about 45 questions in an hour, met the daily answer wall and left without opening checkout. Razorpay's international cards were not switched on (checked 13 Oct), so a Gulf-issued card could not have paid. The daily limit resets at midnight IST, 21:30 to 22:30 in the Gulf.",
+    source: "student_profiles.signup_country; user_activity paywall_event (metadata.country); Razorpay dashboard; 9 to 13 Oct",
+    confidence: "low",
+    firstSeen: "2026-10-13",
+    howToCheck:
+      "Database: signups by signup_country (not IN); for those, paywall_event rows by metadata.step (shown, checkout_opened) and razorpay entitlements. Razorpay dashboard: international cards on, and payments with a non-Indian card.",
+    checks: [],
+    status: "open",
+    actedOn:
+      "13 Oct: owner to request international cards on Razorpay. Not built: a local-currency hint on /pricing or 'resets at midnight IST' wording; only if more Gulf students meet the wall.",
+  },
+  {
+    id: "no-referrer-signups",
+    title: "Signups with no referrer grew from a fifth to over half, with no landing page to say where they came in",
+    finding:
+      "ChatGPT (about 10 a day) and Google (2 or 3) stayed steady; from 9 Oct almost all growth was signups with no channel (16 to 32 a day, 52% to 13 Oct; 20 to 25% in September). 44 of 130 since 9 Oct came through the download box. A visit with no referrer and no tag was not stored at all, so these rows had no landing page either. Clarity, 10 to 12 Oct: 681 of about 880 sessions had no referrer.",
+    source: "student_profiles.acq_*; auth.users signup_source; Clarity channel report; 14 Sep to 13 Oct",
+    confidence: "medium",
+    firstSeen: "2026-10-13",
+    howToCheck:
+      "Database, signups since 13 Oct: count by acq_source (null, direct, chatgpt.com, google), then group the direct ones by acq_landing. A landing on /question-papers, /formula or /results points at what is being shared or bookmarked.",
+    checks: [],
+    status: "open",
+    actedOn:
+      "13 Oct: a direct visit is now stored with its landing page and replaced by the first named channel. /dashboard/pmf shows it as 'Direct (no referrer, from 13 Oct)'.",
+  },
 ];

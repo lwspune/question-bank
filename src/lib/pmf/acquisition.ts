@@ -9,7 +9,9 @@
  *
  * The rules are the page's rules:
  *  · "No referrer recorded" (after tracking began) and "before tracking" are
- *    two separate buckets, and neither is folded into "direct".
+ *    two separate buckets, and neither is folded into "direct". A direct
+ *    visit has been stored as itself only since 2026-10-13, so before that
+ *    date "No referrer recorded" includes the direct arrivals.
  *  · Rates are withheld below MIN_SEGMENT_N students; counts always show.
  *  · Downstream columns are counts of students who DID something (a learning
  *    signal, a finished mock, a payment) — not page views.
@@ -40,6 +42,7 @@ export function channelOf(r: Pick<AcqRow, "source" | "medium" | "campaign" | "be
   if (r.campaign === SHARE_CAMPAIGN) return { key: "shared-result", label: "Shared mock result" };
   const source = (r.source ?? "").toLowerCase();
   if (!source) return { key: "none", label: "No referrer recorded" };
+  if (r.medium === "direct") return { key: "direct", label: "Direct (no referrer, from 13 Oct)" };
   if (source.includes("chatgpt")) return { key: "chatgpt", label: "ChatGPT" };
   if (AI_ASSISTANTS.some((a) => source.includes(a))) return { key: "other-ai", label: "Other AI assistants" };
   if (source === "google") return { key: "google", label: "Google" };

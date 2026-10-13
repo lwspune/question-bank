@@ -47,6 +47,14 @@ describe("channelOf", () => {
     expect(channelOf(row({})).label).toBe("No referrer recorded");
     expect(channelOf(row({ beforeTracking: true })).label).toBe("Before 17 Sep (never recorded)");
   });
+
+  it("gives a recorded direct visit its own bucket, apart from 'nothing recorded' and from tagged links", () => {
+    // Stored from 2026-10-13: a visit with no referrer and no tag, kept for its
+    // landing page. Without its own branch it fell through to "Tagged links".
+    const c = channelOf(row({ source: "direct", medium: "direct" }));
+    expect(c.key).toBe("direct");
+    expect(c.label).toBe("Direct (no referrer, from 13 Oct)");
+  });
 });
 
 describe("summariseChannels", () => {
