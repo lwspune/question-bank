@@ -76,6 +76,8 @@ async function main() {
       const fig = s.rs.some((r) => r.image_url) ? " | [has a figure you cannot see]" : "";
       md += `### ${s.id} | ${s.year} | paper ${s.paper} Q.${s.qno} | ${s.subtopic}${s.caseStudy ? " | CASE STUDY" : ""}${fig}\n`;
       if (s.caseStudy && s.rs[0].context) md += `Passage: ${s.rs[0].context.replace(/\s+/g, " ").trim()}\n`;
+      // An instruction decides what is asked ("Differentiate between" vs "Write short notes on").
+      else if (s.rs[0].context?.trim()) md += `Instruction: ${s.rs[0].context.replace(/\s+/g, " ").trim()}\n`;
       for (const r of s.rs) {
         md += `${s.rs.length > 1 ? `Part ${r.question_number}: ` : ""}${r.text.replace(/\s+/g, " ").trim()}\n`;
         for (const o of [...r.options].sort((a, b) => a.label.localeCompare(b.label))) md += `  (${o.label}) ${o.text.replace(/\s+/g, " ").trim()}\n`;

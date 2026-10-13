@@ -13,7 +13,8 @@ for (const f of readdirSync(join(dir, "evidence"))) {
     const [head, ...body] = block.split("\n");
     const [id, year] = head.split(" | ");
     // Stems only: options (and the Assertion-Reason boilerplate in them) make unrelated items look alike.
-    const stem = body.filter((l) => !/^\s+\([A-D]\)/.test(l)).join(" ");
+    // So is a section instruction ("Give geographical reasons (Any FOUR) :"), shared by a whole section.
+    const stem = body.filter((l) => !/^\s+\([A-D]\)/.test(l) && !/^Instruction: /.test(l)).join(" ");
     const text = stem.replace(/\*\*/g, "").replace(/Assertion \(A\)\s*:|Reason \([AR]\)\s*:/g, " ");
     items.push({ id, year, chapter, text: text.replace(/\s+/g, " ").trim() });
   }
