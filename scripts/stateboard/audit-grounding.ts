@@ -106,7 +106,7 @@ async function main() {
       ? Object.keys(CHAPTERS)
       : arg
         ? [arg]
-        : Object.keys(CHAPTERS).filter((k) => CHAPTERS[k].subjectName === "Geography");
+        : Object.keys(CHAPTERS).filter((k) => ["Geography", "Biology"].includes(CHAPTERS[k].subjectName));
   if (!ids.length) {
     console.log("no chapters selected. Pass a chapterId, or --all.");
     return;
