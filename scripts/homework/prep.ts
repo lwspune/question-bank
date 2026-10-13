@@ -7,7 +7,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { isInstructionOnlyContext } from "@/lib/mocks/instructionContext";
+import { isHomeworkPassage } from "@/lib/homework/slotContext";
 import { compareSittings, mhSittingLabel } from "@/lib/homework/sittings";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -43,10 +43,12 @@ async function main() {
     if (data.length < 1000) break;
   }
 
-  // A case study = rows of one paper sharing a real passage (not an instruction).
+  // A case study = rows of one paper sharing a real passage (not an instruction,
+  // including a board section instruction such as Geography's "Give geographical
+  // reasons (Any FOUR) :", see lib/homework/slotContext.ts).
   const slots = new Map<string, Row[]>();
   for (const r of rows) {
-    const passage = r.context && r.context.trim() && !isInstructionOnlyContext(r.context);
+    const passage = isHomeworkPassage(r.context);
     const key = passage ? `cs|${r.source_file}|${r.context!.trim()}` : `q|${r.id}`;
     (slots.get(key) ?? slots.set(key, []).get(key)!).push(r);
   }
@@ -58,7 +60,7 @@ async function main() {
     return {
       id: lead.id, rows: rs.map((r) => r.id), year: sittingOf(lead), paper: paperOf(lead),
       qno: lead.question_number ?? "", chapter: lead.chapter?.name ?? "(none)", subtopic: lead.subtopic?.name ?? "",
-      caseStudy: rs.length > 1 || !!(lead.context && !isInstructionOnlyContext(lead.context)), rs,
+      caseStudy: rs.length > 1 || isHomeworkPassage(lead.context), rs,
     };
   });
 
