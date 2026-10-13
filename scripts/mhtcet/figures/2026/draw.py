@@ -39,6 +39,7 @@ CONDENSED = rdAbbreviations.ParseAbbreviations(
             "CH2OH *[CH2][OH] CH<sub>2</sub>OH HOH<sub>2</sub>C",
             "COCH3 *C(=O)[CH3] COCH<sub>3</sub> H<sub>3</sub>COC",
             "OCH3 *O[CH3] OCH<sub>3</sub> H<sub>3</sub>CO",
+            "C2H5 *[CH2][CH3] C<sub>2</sub>H<sub>5</sub> H<sub>5</sub>C<sub>2</sub>",
         ]
     )
 )
@@ -144,6 +145,57 @@ def scheme(out, parts, height=2.6):
     os.makedirs(os.path.dirname(out), exist_ok=True)
     fig.savefig(out, dpi=150, bbox_inches="tight", facecolor="white")
     plt.close(fig)
+
+
+def molecules_row(out, items, height=3.4):
+    """Several structures side by side, each with a caption below: items = [(smiles, up, caption)]."""
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    fig, axes = plt.subplots(1, len(items), figsize=(3.2 * len(items), height))
+    for ax, (smiles, up, caption) in zip(axes, items):
+        ax.imshow(_mol_image(smiles, up, size=(420, 380)))
+        ax.set_title(caption, y=-0.12, fontsize=15)
+        ax.axis("off")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    fig.savefig(out, dpi=150, bbox_inches="tight", facecolor="white")
+    plt.close(fig)
+
+
+def switch_network(out, branches, gap=1.6):
+    """A switching circuit: `branches` are drawn in parallel, top to bottom, each a list of
+    switch labels in series (mathtext, e.g. "$S_1'$"); a battery and a lamp L close the loop
+    along the bottom."""
+
+    def build(d, elm):
+        n = max(len(b) for b in branches)
+        width = 2.6 * n
+        ys = [-gap * i for i in range(len(branches))]
+        for y, br in zip(ys, branches):
+            x = 0.0
+            step = width / len(br)
+            for lab in br:
+                sw = d.add(elm.Switch().at((x + (step - 1.6) / 2, y)).right(1.6).label(lab, loc="bottom"))
+                d += elm.Line().at((x, y)).to(sw.start)
+                d += elm.Line().at(sw.end).to((x + step, y))
+                x += step
+        if len(branches) > 1:
+            d += elm.Line().at((0, ys[0])).to((0, ys[-1]))
+            d += elm.Line().at((width, ys[0])).to((width, ys[-1]))
+        bottom = ys[-1] - gap
+        d += elm.Line().at((0, ys[-1])).to((-0.9, ys[-1]))
+        d += elm.Line().at((-0.9, ys[-1])).to((-0.9, bottom))
+        d += elm.Line().at((width, ys[-1])).to((width + 0.9, ys[-1]))
+        d += elm.Line().at((width + 0.9, ys[-1])).to((width + 0.9, bottom))
+        bat = d.add(elm.Battery().at((-0.9, bottom)).right(1.6))
+        lamp = d.add(elm.Source().at((width + 0.9 - 1.6, bottom)).right(1.6))
+        d += elm.Label().at(lamp.center).label("$L$", loc="center", ofst=0)
+        d += elm.Line().at(bat.end).to(lamp.start)
+        d += elm.Line().at(lamp.end).to((width + 0.9, bottom))
+
+    circuit(out, build)
 
 
 def circuit(out, build, fontsize=15):
