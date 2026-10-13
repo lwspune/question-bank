@@ -10,9 +10,8 @@
  *  · FIRST TOUCH WINS. A student may arrive from Google, leave, and come back
  *    via WhatsApp. The channel that earned the account is the first one, so a
  *    stored value is never overwritten (isFirstTouchWorthStoring).
- *  · DIRECT IS NOT A FIRST TOUCH. Storing "direct" on the first load would let
- *    an ordinary internal page view claim credit for a campaign click that
- *    happened seconds earlier, so a bare direct hit is deliberately not stored.
+ *  · DIRECT ONLY HOLDS THE PLACE. A direct arrival is stored for its landing
+ *    page, and the first named channel replaces it (isFirstTouchWorthStoring).
  *  · PATH ONLY. The landing page is stored without its query string: a search
  *    query a student typed can contain their own name, and this row is not the
  *    place for it.
@@ -170,15 +169,33 @@ export function parseAcquisition(input: {
 }
 
 /**
- * Should this arrival be written as the account's first touch? Only when we have
- * nothing yet AND the arrival actually names a channel — see the "direct is not
- * a first touch" rule above.
+ * Should this arrival be written as the first touch? The first NAMED channel
+ * wins and is never replaced. A direct arrival (no referrer, no tag) is kept
+ * only as a placeholder that holds its landing page: it is stored when nothing
+ * is, and a later named channel replaces it.
+ *
+ * Until 2026-10-13 a direct arrival was not stored at all, for fear that an
+ * internal page load would overwrite a campaign click. It cannot: an internal
+ * move returns null from parseAcquisition, never a direct record. Not storing
+ * it cost the landing page of half of all signups, the only clue to where
+ * they came from.
  */
 export function isFirstTouchWorthStoring(input: {
   existing: { source: string; medium: string } | null;
   incoming: { source: string; medium: string };
 }): boolean {
-  if (input.existing) return false;
-  if (input.incoming.medium === "direct") return false;
-  return true;
+  if (input.incoming.medium === "direct") return input.existing === null;
+  return input.existing === null || input.existing.medium === "direct";
+}
+
+/**
+ * The record to save on an account, or null. A named channel is saved as
+ * always. A direct record is saved only for a NEW account: an account made
+ * before 2026-10-13 that finishes onboarding today, from a browser with no
+ * cookie, did not arrive direct; we just never learned how it arrived.
+ */
+export function acquisitionForAccount<T extends { medium: string }>(acq: T | null, isNewAccount: boolean): T | null {
+  if (!acq) return null;
+  if (acq.medium === "direct" && !isNewAccount) return null;
+  return acq;
 }
