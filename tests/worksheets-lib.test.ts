@@ -122,6 +122,11 @@ const CTX = {
 };
 
 describe("buildWorksheetRows", () => {
+  it("files a question under its own subtopic when it carries one (AFCAT: one file, many subtopics)", () => {
+    const { rows } = buildWorksheetRows(CTX, [q(), q({ row: 3, stem: "Other stem", subtopic: "Trigonometric Equations" })], {});
+    expect(rows.map((r) => r.subtopicName)).toEqual(["Fundamental Trigonometric Identities", "Trigonometric Equations"]);
+  });
+
   it("builds a commit-ready row with stable provenance ids", () => {
     const { rows, flags } = buildWorksheetRows(CTX, [q()], {});
     expect(flags).toEqual([]);

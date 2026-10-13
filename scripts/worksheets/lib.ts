@@ -32,6 +32,9 @@ export type WorksheetQuestion = {
   answer: string; // source letter, normalised uppercase (may be invalid — overrides can rescue)
   difficulty: string; // source vocabulary; validated in buildWorksheetRows
   solution: string;
+  /** Per-question subtopic. Worksheets never set it (file = subtopic, from the
+   *  build context); AFCAT does, because one quiz spans several subtopics. */
+  subtopic?: string;
 };
 
 export type ParseSheetResult = { questions: WorksheetQuestion[]; errors: string[] };
@@ -375,7 +378,7 @@ export function buildWorksheetRows(
       questionNumber: id,
       subjectName: ctx.subjectName ?? "Mathematics",
       chapterName: ctx.chapterName,
-      subtopicName: ctx.subtopicName,
+      subtopicName: q.subtopic ?? ctx.subtopicName,
       text: stem,
       difficulty,
       solution,
