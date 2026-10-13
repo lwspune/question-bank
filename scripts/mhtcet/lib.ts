@@ -2,7 +2,8 @@
 // Reuses the JEE extractor's battle-tested LaTeX cleaners + option/AK parsers
 // (identical pandoc-OMML output shape); only the subject split (50/50/50, vs JEE's
 // 30/30/30) and the section-header segmentation differ.
-import { cleanText, parseOptionsFromText } from "../jee/lib";
+import { cleanText, normalizeMathFunctions, parseOptionsFromText } from "../jee/lib";
+import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 
 export type Subject = "Physics" | "Chemistry" | "Maths";
 
@@ -53,6 +54,16 @@ export function cleanupArtifacts(s: string): string {
     .replace(/\\\\(?=[)\]])/g, "\\") // stray hard-break before a math close: `\right.\\)` -> `\right.\)`
     .replace(/\\+\s*$/, "") // trailing backslash run at field end: `... is\\` -> `... is`
     .trimEnd();
+}
+
+/**
+ * The text commit.ts stores for a stem, option or solution (and hashes, for a stem and
+ * options). build-pdf-shift checks THIS form, not the transcript, because the function-
+ * name upgrade also reaches prose inside math: `\text{during expansion}` becomes
+ * `\exp ansion`, which breaks KaTeX. Prose belongs outside `\( \)`.
+ */
+export function commitText(s: string): string {
+  return cleanupArtifacts(normalizeMathFunctions(normalizeNewlines(s)));
 }
 
 const Q_START = /^(\d+)\.(\s|$)/; // `$` so a number alone on its line (stem after an image) still anchors

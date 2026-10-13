@@ -26,7 +26,7 @@ import katex from "katex";
 import { parseLatex } from "../../src/components/math/parseLatex";
 import { renderCorruption } from "../lib/render-lint";
 import { PDF_SHIFTS, recordsPath, shiftDataPath, requireShiftId, type ShiftData, type ShiftQuestion } from "./config";
-import type { Subject } from "./lib";
+import { commitText, type Subject } from "./lib";
 import { subjectForNumberInOrder, textLayerFidelity } from "./pdfSource";
 import { parseTranscript, type TranscriptQuestion } from "./transcript";
 
@@ -49,7 +49,8 @@ function katexErr(text: string): string | null {
 
 function textProblems(where: string, val: string, isStem: boolean): string[] {
   const out: string[] = [];
-  const err = katexErr(val);
+  // render what commit.ts will STORE: its function-name upgrade can break prose in math
+  const err = katexErr(commitText(val));
   if (err) out.push(`${where} KaTeX: ${err}`);
   const cnt = (re: RegExp) => (val.match(re) || []).length;
   if (cnt(/\\\(/g) !== cnt(/\\\)/g) || cnt(/\\\[/g) !== cnt(/\\\]/g)) out.push(`${where} unbalanced delimiters`);
