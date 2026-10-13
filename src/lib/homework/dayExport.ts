@@ -25,26 +25,39 @@ export type HomeworkDayExport =
 
 export function homeworkDayExport(planTitle: string, day: number, items: HomeworkDayItem[]): HomeworkDayExport {
   if (items.length === 0) return { ok: false, reason: "That day is not in this plan." };
+  const slots = orderedSlots(items, (p) => `homework-${day}-${p}`);
+  if (!slots) return { ok: false, reason: "This day can't be downloaded right now. Please try again later." };
+  return {
+    ok: true,
+    title: `Daily Homework #${day}: ${planTitle}`,
+    questionIds: slots.ordered.map((it) => it.questionId),
+    sectionOf: new Map(slots.ordered.map((it) => [it.questionId, `${it.chapter} | ${it.note}`])),
+    setOf: slots.setOf,
+  };
+}
+
+/**
+ * Items in print order, and a set key for every part of a case study, or null
+ * when a slot or a slot's parts have a gap (which would print the wrong
+ * numbers). Shared by a homework day and a chapter's top PYQs (topPyqs.ts).
+ */
+export function orderedSlots(
+  items: readonly HomeworkDayItem[],
+  setKey: (position: number) => string
+): { ordered: HomeworkDayItem[]; setOf: Map<string, string> } | null {
   const ordered = [...items].sort((a, b) => a.position - b.position || a.sub - b.sub);
-  // A gap in the slots or in a slot's parts would print the wrong numbers.
   const slots = new Map<number, HomeworkDayItem[]>();
   for (const it of ordered) slots.set(it.position, [...(slots.get(it.position) ?? []), it]);
   const positions = [...slots.keys()];
   const broken =
     positions.some((p, i) => p !== i + 1) ||
     [...slots.values()].some((parts) => parts.some((it, i) => it.sub !== i + 1));
-  if (broken) return { ok: false, reason: "This day can't be downloaded right now. Please try again later." };
+  if (broken) return null;
   const setOf = new Map<string, string>();
   for (const [p, parts] of slots) {
-    if (parts.length > 1) for (const it of parts) setOf.set(it.questionId, `homework-${day}-${p}`);
+    if (parts.length > 1) for (const it of parts) setOf.set(it.questionId, setKey(p));
   }
-  return {
-    ok: true,
-    title: `Daily Homework #${day}: ${planTitle}`,
-    questionIds: ordered.map((it) => it.questionId),
-    sectionOf: new Map(ordered.map((it) => [it.questionId, `${it.chapter} | ${it.note}`])),
-    setOf,
-  };
+  return { ordered, setOf };
 }
 
 const SLUG_RE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
