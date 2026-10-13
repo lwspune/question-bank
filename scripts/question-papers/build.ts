@@ -39,7 +39,7 @@ import { cbseManifest, withLeaderQuestions, type PaperManifest, type SourcePaper
 import { CBSE_FOLLOWERS } from "./cbseFollowers";
 import { mhManifest, type MarksPattern } from "../../src/lib/questionPapers/mhPattern";
 import { slugify } from "../../src/lib/board/query";
-import { MH_PATTERNS, sscPatternFor } from "./mhPatterns";
+import { MH_PATTERNS, sscPatternFor, sscSittingSlugs } from "./mhPatterns";
 import * as hscPaper from "../mh-hsc-12-pyq/paper/config";
 import { catalogFor as hscCatalogFor } from "../mh-hsc-12-pyq/paper/catalog";
 import * as hscGeo from "../mh-hsc-12-geo-pyq/config";
@@ -215,8 +215,7 @@ function sscSources(): Candidate[] {
       paper.subjectName,
       subjects,
       {
-        slug: `${slugify(paper.subjectName)}-${paper.year}`,
-        groupSlug: String(paper.year),
+        ...sscSittingSlugs(slugify(paper.subjectName), paper.id, paper.year),
         title: `Maharashtra SSC Class 10 ${subjects.join(" and ")} ${paper.month} ${paper.year}`,
         year: paper.year,
         sitting: paper.month,

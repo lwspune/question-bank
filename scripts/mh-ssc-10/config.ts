@@ -514,6 +514,11 @@ export type Paper = {
   pdf: string; // absolute path to the scanned paper PDF
   sourceFile: string; // questions.source_file + upload_jobs.filename (dedup/rollback key)
   note: string; // questions.pyq_note
+  /** "board": merge.ts refuses a model answer that breaks the brief's "Model
+   *  answers" format (lib.ts answerStyleIssues). Set on every paper authored
+   *  after that format was written down (the supplementary sittings); the March
+   *  papers predate it and would fail on style alone, so they are not gated. */
+  answerStyle?: "board";
 };
 
 // After the 2026-07-21 canonical rename, every source PDF is named exactly
@@ -566,20 +571,32 @@ const MONTH_OVERRIDE: Record<string, string> = {
   "hist-2022": "April",
 };
 
-function mkPaper(subjectName: string, year: number, paperCode?: string): Paper {
-  const sourceFile = `MH_SSC_10_${FILE_SUBJECT[subjectName]}_${year}.pdf`;
+// The board's SUPPLEMENTARY sitting (July; June from 2026) sets a fresh paper for
+// every subject in the same year as the March one, so a supplementary paper's id
+// and source file carry the sitting: `alg-2024-jul`, `MH_SSC_10_Algebra_2024_July.pdf`.
+// Without it they would collide with the March paper's, and the source file is
+// the dedup and rollback key. Its printed N-code is a per-subject code the board
+// reuses across supplementary sittings (Algebra is N 384 in July 2024 AND June
+// 2026), so it is provenance, never an identity.
+type Sitting = "July" | "June";
+const SITTING_SUFFIX: Record<Sitting, string> = { July: "jul", June: "jun" };
+
+function mkPaper(subjectName: string, year: number, paperCode?: string, sitting?: Sitting): Paper {
+  const sourceFile = `MH_SSC_10_${FILE_SUBJECT[subjectName]}_${year}${sitting ? `_${sitting}` : ""}.pdf`;
   const subjects = MULTI_SUBJECT[subjectName];
-  const id = `${ID_PREFIX[subjectName]}-${year}`;
+  const id = `${ID_PREFIX[subjectName]}-${year}${sitting ? `-${SITTING_SUFFIX[sitting]}` : ""}`;
+  const month = sitting ?? MONTH_OVERRIDE[id] ?? "March";
   return {
     id,
     subjectName,
     ...(subjects ? { subjects } : {}),
     year,
-    month: MONTH_OVERRIDE[id] ?? "March",
+    month,
     ...(paperCode ? { paperCode } : {}),
     pdf: src(sourceFile),
     sourceFile,
-    note: `Maharashtra State Board Class 10 (SSC) — ${PAPER_LABEL[subjectName]}, March ${year} board paper`,
+    note: `Maharashtra State Board Class 10 (SSC) — ${PAPER_LABEL[subjectName]}, ${sitting ?? "March"} ${year} board paper`,
+    ...(sitting ? { answerStyle: "board" as const } : {}),
   };
 }
 
@@ -633,12 +650,42 @@ const PAPER_SPECS: Array<[string, number, string?]> = [
   ["History", 2024, "N 661"], ["History", 2025, "N 861"], ["History", 2026, "N 961"],
 ];
 
-export const PAPERS: Record<string, Paper> = Object.fromEntries(
-  PAPER_SPECS.map(([subjectName, year, paperCode]) => {
-    const paper = mkPaper(subjectName, year, paperCode);
-    return [paper.id, paper];
-  }),
+// SUPPLEMENTARY sittings, from the board's own site (mahahsscboard.in/en/questionPaper,
+// 2026-10-13), which publishes born-digital English (E) PDFs with a text layer.
+// Codes and dates are from each printed cover: July 2024 and July 2025 papers
+// carry `<year> VII <day>`; the June 2026 papers print `DATE : 22/06/2026` and on.
+const SUPPLEMENTARY_CODES: Record<string, string> = {
+  Algebra: "N 384", Geometry: "N 397",
+  "Science and Technology I": "N 405", "Science and Technology II": "N 418",
+  History: "N 426", Geography: "N 434",
+};
+const SUPPLEMENTARY_CODES_2025: Record<string, string> = {
+  Algebra: "N 684", Geometry: "N 697",
+  "Science and Technology I": "N 705", "Science and Technology II": "N 718",
+  History: "N 726", Geography: "N 734",
+};
+const SUPPLEMENTARY_SPECS: Array<[string, number, string, Sitting]> = Object.keys(SUPPLEMENTARY_CODES).flatMap(
+  (s): Array<[string, number, string, Sitting]> => [
+    [s, 2024, SUPPLEMENTARY_CODES[s], "July"],
+    [s, 2025, SUPPLEMENTARY_CODES_2025[s], "July"],
+    [s, 2026, SUPPLEMENTARY_CODES[s], "June"],
+  ],
 );
+
+export const PAPERS: Record<string, Paper> = Object.fromEntries(
+  [
+    ...PAPER_SPECS.map(([subjectName, year, paperCode]) => mkPaper(subjectName, year, paperCode)),
+    ...SUPPLEMENTARY_SPECS.map(([subjectName, year, paperCode, sitting]) =>
+      mkPaper(subjectName, year, paperCode, sitting),
+    ),
+  ].map((paper) => [paper.id, paper]),
+);
+
+// The board's own born-digital copy of a MARCH paper (mahahsscboard.in, 2024-2026
+// only), kept beside the scans for the official cross-check. Same file name as
+// the scan, in a subfolder, so the bank's source files are never confused with it.
+export const OFFICIAL_DIR = join(SOURCE_ROOT, "_board_site_march");
+export const officialPdf = (paper: Paper) => join(OFFICIAL_DIR, paper.sourceFile);
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
 

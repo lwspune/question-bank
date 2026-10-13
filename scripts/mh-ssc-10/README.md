@@ -43,6 +43,35 @@ The two `...2026 (1).pdf` files are actually the **March 2025** papers (verified
 the printed cover: Algebra `N 819 / 2025 III 05`, Geometry `N 832 / 2025 III 07`).
 `config.ts` maps them to `alg-2025` / `geo-2025`. Never trust the filename.
 
+## Supplementary sittings and the board's own copies (2026-10-13)
+
+The board publishes born-digital English PDFs at mahahsscboard.in/en/questionPaper
+(a SvelteKit app; the list is its `/en/questionPaper/__data.json`, URLs on
+`state-board-strapi-upload.blr1.digitaloceanspaces.com`). For SSC it has March
+2024-2026 **and the supplementary sittings July 2024, July 2025, June 2026**.
+
+- **Supplementary papers are ids `<subject>-<year>-jul|jun`** (`config.ts`
+  `SUPPLEMENTARY_SPECS`), source files `MH_SSC_10_<Subject>_<year>_July|June.pdf`.
+  They share subject and year with the March paper, so the sitting is in the id,
+  the source file (the dedup key) and the `/question-papers` slug and group
+  (`sscSittingSlugs`). The printed N-code is reused across supplementary
+  sittings (Algebra is N 384 in July 2024 AND June 2026): provenance, not identity.
+- **Text layer for words, PNG for maths.** Prose and numbering survive; minus
+  signs and fractions do not (`-1/7` arrives as `1/7`).
+- **Answer format is gated.** Papers with `answerStyle: "board"` (every
+  supplementary paper) fail `merge.ts` on any `answerStyleIssues` error: an MCQ
+  opens `**(X)** <option text>`, no other option letter, no em dash, no
+  marker-facing aside. The format is in TRANSCRIPTION_BRIEF.md "Model answers".
+- **Blind MCQ lane:** `dump-mcq-blind.ts <ids>` writes stems and options with
+  the keys withheld; a FRESH agent writes `data/<id>.blind.json`;
+  `compare-blind.ts <ids>` reports AGREE/DISAGREE/MISSING. 98/98 agreed on the
+  supplementary papers.
+- **Official cross-check of the March papers:** `render.ts <id> --official` and
+  `dump-text.ts <id> --official` read the board's copy from
+  `PYQPs/_board_site_march/`; agents follow OFFICIAL_CROSSCHECK_BRIEF.md and write
+  `data/<id>.official.json`. First run: 562/572 rows matched; the fixes are in
+  `apply-official-fixes.ts`. The board's sci2-2024 copy is missing its last page.
+
 ## Pipeline
 
 ```sh

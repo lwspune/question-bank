@@ -207,9 +207,23 @@ export const MH_PATTERNS = {
 
 export type PatternName = keyof typeof MH_PATTERNS;
 
-/** The pattern for an SSC paper, by its data id ("alg-2016", "sci2-2024"). */
+// A supplementary-sitting id carries its sitting ("alg-2024-jul"); see
+// scripts/mh-ssc-10/config.ts. It prints the same scheme as that year's March paper.
+const SSC_ID = /^([a-z0-9]+)-(\d{4})(?:-(jul|jun))?$/;
+const SITTING_WORD: Record<string, string> = { jul: "july", jun: "june" };
+
+/** The slug and group of an SSC paper. A supplementary paper shares its subject
+ *  and year with the March paper, so it gets its own of both ("2024-july"); the
+ *  listing then shows it as a second group in that year, labelled by its sitting. */
+export function sscSittingSlugs(subjectSlug: string, id: string, year: number): { slug: string; groupSlug: string } {
+  const sitting = SSC_ID.exec(id)?.[3];
+  const suffix = sitting ? `-${SITTING_WORD[sitting]}` : "";
+  return { slug: `${subjectSlug}-${year}${suffix}`, groupSlug: `${year}${suffix}` };
+}
+
+/** The pattern for an SSC paper, by its data id ("alg-2016", "sci2-2024", "alg-2024-jul"). */
 export function sscPatternFor(id: string): PatternName | null {
-  const m = /^([a-z0-9]+)-(\d{4})$/.exec(id);
+  const m = SSC_ID.exec(id);
   if (!m) return null;
   const [, subj, y] = m;
   const year = Number(y);

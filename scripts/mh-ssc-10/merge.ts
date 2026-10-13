@@ -12,11 +12,11 @@
 import { readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { DATA, questionsJsonPath, requirePaper } from "./config";
-import type { PaperQuestion } from "./lib";
+import { answerStyleIssues, type PaperQuestion } from "./lib";
 
 function main() {
   const id = process.argv[2];
-  requirePaper(id);
+  const paper = requirePaper(id);
   const explicit = process.argv.slice(3);
 
   const outName = `${id}.questions.json`;
@@ -47,6 +47,16 @@ function main() {
       all.push(q);
     }
     console.log(`  ${f.padEnd(28)} ${frag.length} questions`);
+  }
+
+  // The brief's "Model answers" format, enforced for papers authored under it.
+  // Refuse rather than write: a merged file is what commit.ts ships.
+  if (paper.answerStyle === "board") {
+    const issues = all.flatMap(answerStyleIssues);
+    if (issues.length) {
+      for (const f of issues) console.error(`  ${f.ref}: ${f.reason}${f.quote ? `  [${f.quote}]` : ""}`);
+      throw new Error(`${issues.length} model answer(s) break the board-answer format; nothing written`);
+    }
   }
 
   writeFileSync(questionsJsonPath(id), JSON.stringify(all, null, 2), "utf8");

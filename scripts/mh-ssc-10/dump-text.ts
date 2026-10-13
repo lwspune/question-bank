@@ -14,12 +14,15 @@
 import { mkdirSync, writeFileSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
-import { OUT, requirePaper } from "./config";
+import { OUT, officialPdf, requirePaper } from "./config";
 
 function main() {
   const id = process.argv[2];
   const paper = requirePaper(id);
-  const dir = join(OUT, id);
+  // --official reads the board's born-digital March copy into out/<id>/official/.
+  const official = process.argv.includes("--official");
+  const dir = official ? join(OUT, id, "official") : join(OUT, id);
+  const pdf = official ? officialPdf(paper) : paper.pdf;
   mkdirSync(dir, { recursive: true });
 
   // Python writes the file itself in UTF-8 — piping through stdout dies on
@@ -36,9 +39,9 @@ for p in range(len(d)):
 d.close()
 open(target, "w", encoding="utf-8").write("".join(out))
 `;
-  const pyFile = join(OUT, `_text_${id}.py`);
+  const pyFile = join(OUT, `_text_${id}${official ? "_official" : ""}.py`);
   writeFileSync(pyFile, py);
-  const res = spawnSync("python", [pyFile, paper.pdf, target], { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
+  const res = spawnSync("python", [pyFile, pdf, target], { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
   if (res.status !== 0) throw new Error(`text dump failed: ${res.stderr}`);
 
   const chars = readFileSync(target, "utf8").replace(/=====[^\n]*=====/g, "").trim().length;

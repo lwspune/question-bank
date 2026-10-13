@@ -10,11 +10,14 @@
 import { mkdirSync, writeFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
-import { OUT, requirePaper } from "./config";
+import { OUT, officialPdf, requirePaper } from "./config";
 
-function render(id: string) {
+// --official renders the board's born-digital copy of a March paper into
+// out/<id>/official/ (config.ts officialPdf), for the official cross-check.
+function render(id: string, official: boolean) {
   const paper = requirePaper(id);
-  const dir = join(OUT, id);
+  const dir = official ? join(OUT, id, "official") : join(OUT, id);
+  const pdf = official ? officialPdf(paper) : paper.pdf;
   rmSync(dir, { recursive: true, force: true });
   mkdirSync(dir, { recursive: true });
 
@@ -30,9 +33,9 @@ for p in range(n):
 d.close(); print("rendered", n, "pages")
 `;
   mkdirSync(OUT, { recursive: true });
-  const pyFile = join(OUT, `_render_${id}.py`);
+  const pyFile = join(OUT, `_render_${id}${official ? "_official" : ""}.py`);
   writeFileSync(pyFile, py);
-  const res = spawnSync("python", [pyFile, paper.pdf, dir], { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
+  const res = spawnSync("python", [pyFile, pdf, dir], { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
   if (res.status !== 0) throw new Error(`render failed: ${res.stderr}`);
   console.log(res.stdout.trim());
   console.log(`PNGs in ${dir}`);
@@ -40,7 +43,7 @@ d.close(); print("rendered", n, "pages")
 
 const id = process.argv[2];
 if (!id) {
-  console.error("usage: tsx scripts/mh-ssc-10/render.ts <paperId>");
+  console.error("usage: tsx scripts/mh-ssc-10/render.ts <paperId> [--official]");
   process.exit(1);
 }
-render(id);
+render(id, process.argv.includes("--official"));

@@ -1,9 +1,37 @@
 # MH-SSC-10 board-paper VISION transcription brief
 
-You transcribe ONE scanned Maharashtra SSC (Class 10) board question paper into a
+You transcribe ONE Maharashtra SSC (Class 10) board question paper into a
 JSON array of `PaperQuestion` objects. The rendered pages are PNGs at
 `scripts/mh-ssc-10/out/<paperId>/p-NN.png` (one per PDF page, high-DPI). Read
-**every** page. The source is a scan — read carefully; there is NO text layer.
+**every** page. Most March papers are scans with NO text layer; the
+supplementary papers are not (next section).
+
+## Supplementary papers (`<id>-jul`, `<id>-jun`): text layer for words, image for maths
+
+The July 2024, July 2025 and June 2026 papers come from the board's own site as
+born-digital PDFs, dumped to `out/<paperId>/text.md`. Use it, but know what it
+loses:
+
+- **Prose, numbering and marks survive intact.** Take question wording from the
+  text layer, not from reading the image, which is slower and worse.
+- **Maths does NOT survive.** Measured on `alg-2024-jul` Q1(A)(i): option (D)
+  `-1/7` arrives as `1/7` (the minus is gone) and every fraction is split across
+  lines. Read EVERY formula, number with a sign, fraction, power, root, chemical
+  formula and equation from the PNG, never from `text.md`.
+- **Figures, tables and boxed activities** come from the PNG.
+- The June 2026 papers use a denser 4-6 page layout with "Page No. 2/4" headers
+  and "End of Page 2" footers. These are page furniture, not question text.
+
+**Structure: copy the shipped March paper of the same subject.** Read
+`data/<subject>-<year>.questions.json` (e.g. `sci1-2026.questions.json` for
+`sci1-2026-jun`) before you start, and use the same `ref` scheme, `setLabel`
+habits and row granularity: one row per printed sub-question `(i)`, with its
+`(a)/(b)` parts inside that one row. The `/question-papers` builder sums the
+printed marks over these refs, so a different granularity is refused there.
+
+**The chapter/subtopic lists below are a snapshot.** `config.ts` `CATALOG` is the
+authority (several subtopics were renamed to the textbook's own headings on
+2026-08-02), and `commit.ts` validates chapters against it. Read it.
 
 ## Output
 
@@ -55,9 +83,9 @@ instruction in `context`, give each sub-item its own row, and set the same
    derived `answer`. Everything else is `format:"subjective"` (no options; a
    model answer in `solution`).
 6. **Answers** — this paper has NO answer key. SOLVE each MCQ and put the correct
-   letter in `answer`. AUTHOR a concise, correct model answer for each subjective
-   question in `solution` (the actual steps/result, not a hint). Set
-   `reviewFlag:true` on every row.
+   letter in `answer`. AUTHOR a model answer for each subjective question in
+   `solution`, in the format of **Model answers** below. Set `reviewFlag:true` on
+   every row.
 7. **chapter** is HARD-validated against the catalog — use an EXACT string.
    **subtopic**: use a catalog subtopic when one fits; otherwise your best
    concise concept name (off-catalog is allowed, just flagged).
@@ -66,6 +94,50 @@ instruction in `context`, give each sub-item its own row, and set the same
    and attaches the image.)
 9. Do NOT invent questions or options. If a glyph is genuinely unreadable, make
    your best faithful reading and note the uncertainty in `figureNote`/context.
+
+## Model answers (2026-10-13; every paper from the supplementary sittings on)
+
+A solution is read by a Class 10 student preparing for this exam, so it is **the
+answer they would write to score the marks**: state the principle, show every
+step, close on the result. It is not a note to the marker and not a comment on
+the question. `merge.ts` runs `scripts/lib/boardAnswerStyle.ts` over every
+solution and refuses the paper on an error, so these are checked, not advice.
+
+- **One voice.** Never write "also acceptable", "worth noting", "an aside",
+  "note the question asks", "by the standard result", "it can be shown that".
+  Each was written by a real authoring pass and caught in review.
+- **MCQ: open with `**(B)** <the option's text>`**, the letter matching `answer`,
+  then the working. Name NO other option by its letter anywhere: call a
+  distractor by its value ("the value 7 is \(D_x/D_y\) inverted, not \(x\)").
+  `audit:keys` reads the LAST letter a solution names as its conclusion, so a
+  closing "(option D is wrong because…)" reports a correct key as wrong. For the
+  same reason do not write "Hence B …" when B is a point, a matrix or a set.
+- **Maths** inside `\( … \)`, no Unicode maths symbols anywhere (write
+  `\(\pi\)`, `\(\sqrt{3}\)`, `\(\le\)`, `\(\times\)`, `\(^\circ\)`). Put
+  `\therefore` before the concluding step of a calculation, close a numerical
+  with a check (substitute back, or bound it), and leave surds exact
+  (`\(6\sqrt{3}\)`, not 10.39).
+- **Science numericals** carry units on every quantity and in the result.
+- **Activities, concept maps, timelines, tables to complete:** answer with the
+  FILLED structure, as a GFM pipe-table (the `|---|` separator row is
+  mandatory, or the site prints raw pipes) or a labelled list.
+- **Length follows the marks and the instruction.** 1 mark: a line or two.
+  "Give scientific reasons" / "give reasons": state the actual reason, 2-4
+  sentences. "Explain" / "answer in brief" (3 marks): 4-6 sentences or the
+  full working. 5 marks: the complete answer.
+- **True/false with reason:** begin `True.` or `False.`, then the reason.
+- **Ground recall answers in the Balbharati textbook.** The four books are
+  dumped, with `===== PDF PAGE n =====` markers, at
+  `scripts/mh-ssc-10/out/_books/10th_{Hist,Geog,Sci_Part1,Sci_Part2}_SB.txt`.
+  Search the chapter for the topic and write the answer the chapter supports.
+  Do NOT add a name, date, figure or example the book does not give. **Where
+  the board's wording and the textbook disagree, the textbook wins**: board
+  questions are often lifted from the chapter's own exercises, and on
+  Historiography the textbook settled a question two board papers had keyed
+  differently.
+- **No em dashes** in anything you write (phone keyboards have none, so they
+  read as machine-written). Use a full stop, colon, comma or brackets. Text you
+  COPY from the paper keeps its own punctuation.
 
 ## Algebra catalog (chapter → subtopics)
 

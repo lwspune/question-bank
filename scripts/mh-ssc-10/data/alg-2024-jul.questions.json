@@ -1,0 +1,402 @@
+[
+  {
+    "ref": "Q1(A)(i)",
+    "format": "mcq",
+    "chapter": "Linear Equations in Two Variables",
+    "subtopic": "Determinant Method (Cramer's Rule)",
+    "difficulty": "EASY",
+    "stem": "For simultaneous equations in variables \\(x\\) and \\(y\\), \\(D_x = 49\\), \\(D_y = -63\\), \\(D = 7\\), then what is the value of \\(x\\)?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(7\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(-7\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(\\dfrac{1}{7}\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(-\\dfrac{1}{7}\\)"
+      }
+    ],
+    "answer": "A",
+    "solution": "**(A)** \\(7\\)\nBy Cramer's rule, \\(x = \\dfrac{D_x}{D}\\).\n\\(\\therefore x = \\dfrac{49}{7} = 7\\).\nThe value \\(\\dfrac{1}{7}\\) is the ratio taken upside down (\\(\\dfrac{D}{D_x}\\)), and \\(-7\\) carries the sign of \\(D_y\\), which belongs to \\(y\\), not \\(x\\).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q1(A)(ii)",
+    "format": "mcq",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Roots of a Quadratic Equation",
+    "difficulty": "EASY",
+    "stem": "Which equation from the following is a quadratic equation?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{5}{x} - 3 = x^2\\)"
+      },
+      {
+        "label": "B",
+        "text": "\\(x(x + 5) = 2\\)"
+      },
+      {
+        "label": "C",
+        "text": "\\(n - 1 = 2n\\)"
+      },
+      {
+        "label": "D",
+        "text": "\\(\\dfrac{1}{x^2}(x + 2) = x\\)"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)** \\(x(x + 5) = 2\\)\nA quadratic equation has the form \\(ax^2 + bx + c = 0\\) with \\(a \\ne 0\\), the highest power of the variable being 2.\n\\(x(x + 5) = 2 \\Rightarrow x^2 + 5x - 2 = 0\\), which is of degree 2.\n\\(\\therefore\\) it is a quadratic equation.\nThe equation \\(\\dfrac{5}{x} - 3 = x^2\\) becomes \\(x^3 + 3x - 5 = 0\\) (degree 3), \\(n - 1 = 2n\\) is linear, and \\(\\dfrac{1}{x^2}(x + 2) = x\\) becomes \\(x^3 - x - 2 = 0\\) (degree 3).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q1(A)(iii)",
+    "format": "mcq",
+    "chapter": "Arithmetic Progression",
+    "subtopic": "nth Term of an A.P.",
+    "difficulty": "EASY",
+    "stem": "The sequence \\(-10, -6, -2, 2, \\ldots\\)",
+    "options": [
+      {
+        "label": "A",
+        "text": "is an A.P., Reason \\(d = -16\\)"
+      },
+      {
+        "label": "B",
+        "text": "is an A.P., Reason \\(d = 4\\)"
+      },
+      {
+        "label": "C",
+        "text": "is an A.P., Reason \\(d = -4\\)"
+      },
+      {
+        "label": "D",
+        "text": "is not an A.P."
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)** is an A.P., Reason \\(d = 4\\)\n\\(t_2 - t_1 = -6 - (-10) = 4\\), \\(t_3 - t_2 = -2 - (-6) = 4\\), \\(t_4 - t_3 = 2 - (-2) = 4\\).\nThe difference between consecutive terms is constant.\n\\(\\therefore\\) the sequence is an A.P. with \\(d = 4\\).\nThe value \\(d = -4\\) is \\(t_1 - t_2\\), the difference taken in the wrong order.",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q1(A)(iv)",
+    "format": "mcq",
+    "chapter": "Probability",
+    "subtopic": "Probability of an Event",
+    "difficulty": "EASY",
+    "stem": "Which number from the following cannot represent probability?",
+    "options": [
+      {
+        "label": "A",
+        "text": "\\(\\dfrac{2}{3}\\)"
+      },
+      {
+        "label": "B",
+        "text": "1.5"
+      },
+      {
+        "label": "C",
+        "text": "15%"
+      },
+      {
+        "label": "D",
+        "text": "0.7"
+      }
+    ],
+    "answer": "B",
+    "solution": "**(B)** 1.5\nThe probability of any event lies between 0 and 1: \\(0 \\le P(A) \\le 1\\).\n\\(1.5 > 1\\), so it cannot be a probability.\nThe numbers \\(\\dfrac{2}{3}\\), 15% (that is 0.15) and 0.7 all lie between 0 and 1.",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q1(B)(i)",
+    "format": "subjective",
+    "chapter": "Linear Equations in Two Variables",
+    "subtopic": "Determinant Method (Cramer's Rule)",
+    "difficulty": "EASY",
+    "stem": "Find the value of the following determinant: \\(\\begin{vmatrix} 5 & -2 \\\\ -3 & 1 \\end{vmatrix}\\)",
+    "solution": "\\(\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix} = ad - bc\\).\n\\(\\begin{vmatrix} 5 & -2 \\\\ -3 & 1 \\end{vmatrix} = (5)(1) - (-2)(-3) = 5 - 6\\)\n\\(\\therefore\\) the value of the determinant is \\(-1\\).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q1(B)(ii)",
+    "format": "subjective",
+    "chapter": "Arithmetic Progression",
+    "subtopic": "nth Term of an A.P.",
+    "difficulty": "EASY",
+    "stem": "Find the first term and common difference for the following A.P.: \\(5, 1, -3, -7, \\ldots\\)",
+    "solution": "First term \\(a = t_1 = 5\\).\nCommon difference \\(d = t_2 - t_1 = 1 - 5 = -4\\). Check: \\(t_3 - t_2 = -3 - 1 = -4\\).\n\\(\\therefore a = 5\\) and \\(d = -4\\).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q1(B)(iii)",
+    "format": "subjective",
+    "chapter": "Financial Planning",
+    "subtopic": "Shares — Face Value, Market Value, Brokerage",
+    "difficulty": "EASY",
+    "stem": "Face value of a share is Rs. 100 and premium is Rs. 65, then what is market value of that share?",
+    "solution": "When a share is at a premium, MV = FV + premium.\n\\(\\therefore \\text{MV} = 100 + 65 = 165\\).\nThe market value of the share is Rs. 165.",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q1(B)(iv)",
+    "format": "subjective",
+    "chapter": "Probability",
+    "subtopic": "Sample Space and Events",
+    "difficulty": "EASY",
+    "stem": "Write sample space if one die is thrown.",
+    "solution": "When one die is thrown, any one of the numbers 1 to 6 can appear on the upper face.\n\\(S = \\{1, 2, 3, 4, 5, 6\\}\\), so \\(n(S) = 6\\).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q2(A)(i)",
+    "format": "subjective",
+    "chapter": "Linear Equations in Two Variables",
+    "subtopic": "Graph of Linear Equations",
+    "difficulty": "EASY",
+    "stem": "Complete the following table for drawing the graph of the equation \\(x + 2y = 4\\):\n\n| \\(x\\) | \\(-2\\) | \\(0\\) | ? |\n|---|---|---|---|\n| \\(y\\) | ? | \\(2\\) | \\(1\\) |\n| \\((x, y)\\) | ? | \\((0, 2)\\) | ? |",
+    "solution": "Put \\(x = -2\\) in \\(x + 2y = 4\\): \\(-2 + 2y = 4 \\Rightarrow 2y = 6 \\Rightarrow y = 3\\).\nPut \\(y = 1\\): \\(x + 2(1) = 4 \\Rightarrow x = 2\\).\n\n| \\(x\\) | \\(-2\\) | \\(0\\) | \\(2\\) |\n|---|---|---|---|\n| \\(y\\) | \\(3\\) | \\(2\\) | \\(1\\) |\n| \\((x, y)\\) | \\((-2, 3)\\) | \\((0, 2)\\) | \\((2, 1)\\) |",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q2(A)(ii)",
+    "format": "subjective",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Nature of Roots (Discriminant)",
+    "difficulty": "EASY",
+    "stem": "Complete the activity to determine the nature of roots of the quadratic equation \\(m^2 + 2m + 9 = 0\\).",
+    "solution": "\\(m^2 + 2m + 9 = 0\\)\nComparing with \\(am^2 + bm + c = 0\\): \\(a = 1\\), \\(b = 2\\), \\(c = 9\\).\n\\(b^2 - 4ac = 2^2 - 4 \\times 1 \\times 9 = 4 - 36\\)\n\\(\\therefore b^2 - 4ac = -32\\)\n\\(\\therefore b^2 - 4ac < 0\\)\n\\(\\therefore\\) the roots of the quadratic equation are not real.",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q2(A)(iii)",
+    "format": "subjective",
+    "chapter": "Financial Planning",
+    "subtopic": "Shares — Face Value, Market Value, Brokerage",
+    "difficulty": "EASY",
+    "stem": "Smita has invested Rs. 12,000 and purchased shares of FV Rs. 10 at a premium of Rs. 2. Complete the activity to find the number of shares she purchased.",
+    "solution": "FV = Rs. 10, Premium = Rs. 2\n\\(\\therefore \\text{MV} = \\text{FV} + \\text{Premium} = 10 + 2 = \\) Rs. 12\n\\(\\therefore \\text{Number of shares} = \\dfrac{\\text{Total investment}}{\\text{MV}} = \\dfrac{12000}{12} = 1000\\)\nSmita purchased 1000 shares. Check: \\(1000 \\times 12 = 12000\\).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q2(B)(i)",
+    "format": "subjective",
+    "chapter": "Linear Equations in Two Variables",
+    "subtopic": "Methods of Solving Linear Equations",
+    "difficulty": "EASY",
+    "stem": "Solve the following simultaneous equations: \\(x + y = 5\\); \\(x - y = 3\\)",
+    "solution": "\\(x + y = 5\\) ... (1)\n\\(x - y = 3\\) ... (2)\nAdding (1) and (2): \\(2x = 8 \\Rightarrow x = 4\\).\nSubstituting \\(x = 4\\) in (1): \\(4 + y = 5 \\Rightarrow y = 1\\).\n\\(\\therefore x = 4\\) and \\(y = 1\\).\nCheck: \\(4 - 1 = 3\\), which satisfies (2).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q2(B)(ii)",
+    "format": "subjective",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Roots of a Quadratic Equation",
+    "difficulty": "EASY",
+    "stem": "Find \\(k\\) if \\(x = 3\\) is a root of quadratic equation \\(kx^2 - 10x + 3 = 0\\).",
+    "solution": "Since \\(x = 3\\) is a root, it satisfies the equation.\n\\(k(3)^2 - 10(3) + 3 = 0 \\Rightarrow 9k - 30 + 3 = 0 \\Rightarrow 9k - 27 = 0\\)\n\\(\\therefore 9k = 27 \\Rightarrow k = 3\\).\nCheck: \\(3(9) - 30 + 3 = 27 - 27 = 0\\).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q2(B)(iii)",
+    "format": "subjective",
+    "chapter": "Arithmetic Progression",
+    "subtopic": "nth Term of an A.P.",
+    "difficulty": "EASY",
+    "stem": "Find the 19th term of the following A.P.: 7, 13, 19, 25, ...",
+    "solution": "Here \\(a = 7\\) and \\(d = 13 - 7 = 6\\).\n\\(t_n = a + (n - 1)d\\)\n\\(t_{19} = 7 + (19 - 1)(6) = 7 + 18 \\times 6 = 7 + 108\\)\n\\(\\therefore t_{19} = 115\\).\nThe 19th term of the A.P. is 115.",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q2(B)(iv)",
+    "format": "subjective",
+    "chapter": "Financial Planning",
+    "subtopic": "Goods and Services Tax (GST)",
+    "difficulty": "EASY",
+    "stem": "The taxable value of a wrist watch belt is Rs. 586. Rate of GST is 18%, then what is the price of the belt for the customer?",
+    "solution": "GST \\(= 18\\%\\) of taxable value \\(= \\dfrac{18}{100} \\times 586 = \\dfrac{10548}{100} = 105.48\\), i.e. Rs. 105.48.\nPrice for the customer = taxable value + GST.\n\\(\\therefore\\) price \\(= 586 + 105.48 = 691.48\\).\nThe price of the belt for the customer is Rs. 691.48. Check: \\(586 \\times 1.18 = 691.48\\).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q2(B)(v)",
+    "format": "subjective",
+    "chapter": "Statistics",
+    "subtopic": "Pictorial Representation of Statistical Data",
+    "difficulty": "MODERATE",
+    "stem": "The annual investments of a family are shown in the following pie diagram. Answer the following questions based on it.\n(a) If the investment in the shares is Rs. 2,000, find the total investment.\n(b) How much amount is invested in the Post?",
+    "solution": "In the pie diagram, shares have a central angle of \\(60^\\circ\\) and Post has \\(30^\\circ\\). The whole circle of \\(360^\\circ\\) stands for the total investment.\n(a) Central angle \\(= \\dfrac{\\text{investment in the item}}{\\text{total investment}} \\times 360^\\circ\\).\n\\(60 = \\dfrac{2000}{\\text{total}} \\times 360\\)\n\\(\\therefore\\) total investment \\(= \\dfrac{2000 \\times 360}{60} = 12000\\), i.e. Rs. 12,000.\n(b) Investment in the Post \\(= \\dfrac{30}{360} \\times 12000 = 1000\\), i.e. Rs. 1,000.\nCheck: the angle for Post is half that for shares, and Rs. 1,000 is half of Rs. 2,000.",
+    "reviewFlag": true,
+    "hasFigure": true,
+    "figureNote": "Pie diagram of a family's annual investments with central angles: Immovable Property 120°, Shares 60°, Post 30°, Deposit in Bank 90°, Mutual Fund 60°; p-05"
+  },
+  {
+    "ref": "Q3(A)(i)",
+    "format": "subjective",
+    "chapter": "Financial Planning",
+    "subtopic": "Shares — Face Value, Market Value, Brokerage",
+    "difficulty": "EASY",
+    "stem": "A share is sold for the market value of Rs. 1,000. Brokerage is paid at the rate of 0.1%. Complete the activity to find the amount received after sale.",
+    "solution": "Brokerage = MV \\(\\times\\) rate of brokerage\n\\(= 1000 \\times \\dfrac{0.1}{100}\\)\n\\(= 10 \\times 0.1\\)\n\\(= 1\\), i.e. Rs. 1\nAmount received after sale = MV \\(-\\) brokerage\n\\(= 1000 - 1\\)\n\\(\\therefore\\) amount received after sale \\(=\\) Rs. 999.",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q3(A)(ii)",
+    "format": "subjective",
+    "chapter": "Probability",
+    "subtopic": "Probability of an Event",
+    "difficulty": "EASY",
+    "stem": "The numbers 2, 4, 6, 8, 10, 12 are on the surface of one die. If this die is rolled once, then complete the activity to find the probability of getting a number on the upper face which is a perfect square.",
+    "solution": "\\(S = \\{2, 4, 6, 8, 10, 12\\}\\)\n\\(n(S) = 6\\)\nCondition for event B: getting a perfect square on the upper surface of that die. Of these numbers only \\(4 = 2^2\\) is a perfect square.\n\\(\\therefore B = \\{4\\}\\), \\(\\therefore n(B) = 1\\)\n\\(P(B) = \\dfrac{n(B)}{n(S)} = \\dfrac{1}{6}\\)\n\\(\\therefore P(B) = \\dfrac{1}{6}\\).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q3(B)(i)",
+    "format": "subjective",
+    "chapter": "Linear Equations in Two Variables",
+    "subtopic": "Determinant Method (Cramer's Rule)",
+    "difficulty": "MODERATE",
+    "stem": "Solve the following simultaneous equations by Cramer's method: \\(4m - 2n = -4\\); \\(4m + 3n = 16\\).",
+    "solution": "\\(D = \\begin{vmatrix} 4 & -2 \\\\ 4 & 3 \\end{vmatrix} = (4)(3) - (-2)(4) = 12 + 8 = 20\\)\n\\(D_m = \\begin{vmatrix} -4 & -2 \\\\ 16 & 3 \\end{vmatrix} = (-4)(3) - (-2)(16) = -12 + 32 = 20\\)\n\\(D_n = \\begin{vmatrix} 4 & -4 \\\\ 4 & 16 \\end{vmatrix} = (4)(16) - (-4)(4) = 64 + 16 = 80\\)\nBy Cramer's rule, \\(m = \\dfrac{D_m}{D} = \\dfrac{20}{20} = 1\\) and \\(n = \\dfrac{D_n}{D} = \\dfrac{80}{20} = 4\\).\n\\(\\therefore m = 1\\), \\(n = 4\\).\nCheck: \\(4(1) - 2(4) = -4\\) and \\(4(1) + 3(4) = 16\\).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q3(B)(ii)",
+    "format": "subjective",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Solving by Formula and Completing the Square",
+    "difficulty": "MODERATE",
+    "stem": "Solve the following quadratic equation by formula method: \\(y^2 + \\dfrac{1}{3}y = 2\\)",
+    "solution": "Multiplying both sides by 3: \\(3y^2 + y = 6 \\Rightarrow 3y^2 + y - 6 = 0\\).\nComparing with \\(ay^2 + by + c = 0\\): \\(a = 3\\), \\(b = 1\\), \\(c = -6\\).\n\\(b^2 - 4ac = 1^2 - 4(3)(-6) = 1 + 72 = 73\\)\n\\(y = \\dfrac{-b \\pm \\sqrt{b^2 - 4ac}}{2a} = \\dfrac{-1 \\pm \\sqrt{73}}{2 \\times 3}\\)\n\\(\\therefore y = \\dfrac{-1 + \\sqrt{73}}{6}\\) or \\(y = \\dfrac{-1 - \\sqrt{73}}{6}\\).\nCheck: the sum of the roots is \\(\\dfrac{-2}{6} = -\\dfrac{1}{3} = -\\dfrac{b}{a}\\).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q3(B)(iii)",
+    "format": "subjective",
+    "chapter": "Probability",
+    "subtopic": "Sample Space and Events",
+    "difficulty": "MODERATE",
+    "stem": "Two dice are rolled. Write the sample space S and number of sample points \\(n(S)\\). Also write the events in the set form and number of sample points in the event according to the given condition.\n(a) Condition for event A: Sum of the digits on upper face is a multiple of 5.\n(b) Condition for event B: Sum of the digits on upper face is 25.",
+    "solution": "S = {(1, 1), (1, 2), (1, 3), (1, 4), (1, 5), (1, 6),\n(2, 1), (2, 2), (2, 3), (2, 4), (2, 5), (2, 6),\n(3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 6),\n(4, 1), (4, 2), (4, 3), (4, 4), (4, 5), (4, 6),\n(5, 1), (5, 2), (5, 3), (5, 4), (5, 5), (5, 6),\n(6, 1), (6, 2), (6, 3), (6, 4), (6, 5), (6, 6)}\n\\(\\therefore n(S) = 36\\)\n(a) The sum on two dice lies from 2 to 12, so a multiple of 5 means a sum of 5 or 10.\nA = {(1, 4), (2, 3), (3, 2), (4, 1), (4, 6), (5, 5), (6, 4)}\n\\(\\therefore n(A) = 7\\)\n(b) The greatest possible sum on two dice is \\(6 + 6 = 12\\), so a sum of 25 is impossible.\n\\(\\therefore B = \\{\\ \\}\\) (the empty set) and \\(n(B) = 0\\).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q3(B)(iv)",
+    "format": "subjective",
+    "chapter": "Statistics",
+    "subtopic": "Mean, Median and Mode of Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "In the following table, the toll (in Rs.) paid from 6 am to 6 pm by drivers and the number of vehicles is shown. Find the mean of the toll by 'assumed mean' method.\n\n| Toll (Rs.) | No. of Vehicles |\n|---|---|\n| 300–400 | 80 |\n| 400–500 | 110 |\n| 500–600 | 120 |\n| 600–700 | 70 |\n| 700–800 | 40 |",
+    "solution": "Take the assumed mean \\(A = 550\\) and \\(d_i = x_i - A\\), where \\(x_i\\) is the class mark.\n\n| Class | Class mark \\(x_i\\) | \\(d_i = x_i - 550\\) | Frequency \\(f_i\\) | \\(f_i d_i\\) |\n|---|---|---|---|---|\n| 300–400 | 350 | \\(-200\\) | 80 | \\(-16000\\) |\n| 400–500 | 450 | \\(-100\\) | 110 | \\(-11000\\) |\n| 500–600 | 550 | 0 | 120 | 0 |\n| 600–700 | 650 | 100 | 70 | 7000 |\n| 700–800 | 750 | 200 | 40 | 8000 |\n| Total | | | \\(\\sum f_i = 420\\) | \\(\\sum f_i d_i = -12000\\) |\n\n\\(\\bar{d} = \\dfrac{\\sum f_i d_i}{\\sum f_i} = \\dfrac{-12000}{420} = -28.57\\) (approximately)\n\\(\\bar{x} = A + \\bar{d} = 550 - 28.57\\)\n\\(\\therefore \\bar{x} = 521.43\\) (approximately)\nThe mean toll is Rs. 521.43 (approximately). Check: it lies in the class 500–600, which holds the largest frequency.",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q4(i)",
+    "format": "subjective",
+    "chapter": "Quadratic Equations",
+    "subtopic": "Word Problems and Applications",
+    "difficulty": "HARD",
+    "stem": "Manisha wants to distribute 540 bananas among some students. If 30 students were more, each would get 3 bananas less. Find the number of students.",
+    "solution": "Let the number of students be \\(x\\). Each student gets \\(\\dfrac{540}{x}\\) bananas.\nWith \\(x + 30\\) students, each would get \\(\\dfrac{540}{x + 30}\\) bananas.\n\\(\\dfrac{540}{x} - \\dfrac{540}{x + 30} = 3\\)\n\\(540(x + 30) - 540x = 3x(x + 30)\\)\n\\(16200 = 3x^2 + 90x\\)\n\\(x^2 + 30x - 5400 = 0\\)\n\\(x^2 + 90x - 60x - 5400 = 0 \\Rightarrow x(x + 90) - 60(x + 90) = 0 \\Rightarrow (x + 90)(x - 60) = 0\\)\n\\(x = -90\\) or \\(x = 60\\). The number of students cannot be negative.\n\\(\\therefore x = 60\\).\nThe number of students is 60. Check: \\(\\dfrac{540}{60} = 9\\), \\(\\dfrac{540}{90} = 6\\), and \\(9 - 6 = 3\\).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q4(ii)",
+    "format": "subjective",
+    "chapter": "Arithmetic Progression",
+    "subtopic": "Word Problems and Applications",
+    "difficulty": "MODERATE",
+    "stem": "₹ 2,000 is invested at 10 percent simple interest. Check at the end of every year whether the interest amount is in A.P. or not. If this is an A.P., then find the interest amount after 10 years.",
+    "solution": "Simple interest for one year \\(= \\dfrac{P \\times R \\times N}{100} = \\dfrac{2000 \\times 10 \\times 1}{100} = 200\\).\nInterest at the end of the 1st year = Rs. 200\nInterest at the end of the 2nd year \\(= \\dfrac{2000 \\times 10 \\times 2}{100} = \\) Rs. 400\nInterest at the end of the 3rd year \\(= \\dfrac{2000 \\times 10 \\times 3}{100} = \\) Rs. 600\nThe sequence 200, 400, 600, ... has a constant difference \\(400 - 200 = 600 - 400 = 200\\), so it is an A.P. with \\(a = 200\\) and \\(d = 200\\).\n\\(t_{10} = a + (10 - 1)d = 200 + 9 \\times 200 = 200 + 1800\\)\n\\(\\therefore t_{10} = 2000\\).\nThe interest amount after 10 years is Rs. 2,000. Check: \\(\\dfrac{2000 \\times 10 \\times 10}{100} = 2000\\).",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q4(iii)",
+    "format": "subjective",
+    "chapter": "Statistics",
+    "subtopic": "Mean, Median and Mode of Grouped Data",
+    "difficulty": "MODERATE",
+    "stem": "In one group of students; 10% students got 0 to 20 marks; 20% students got 20 to 40 marks; 35% students got 40 to 60 marks; 20% students got 60 to 80 marks and remaining 30 students got 80 to 100 marks, then:\n(a) Prepare a grouped frequency distribution table.\n(b) Find the mode of the marks scored.",
+    "solution": "The given percentages total \\(10 + 20 + 35 + 20 = 85\\%\\), so the remaining 30 students form \\(15\\%\\) of the group.\nTotal number of students \\(= \\dfrac{30 \\times 100}{15} = 200\\).\n(a)\n\n| Marks | Number of students |\n|---|---|\n| 0–20 | \\(10\\%\\) of 200 = 20 |\n| 20–40 | \\(20\\%\\) of 200 = 40 |\n| 40–60 | \\(35\\%\\) of 200 = 70 |\n| 60–80 | \\(20\\%\\) of 200 = 40 |\n| 80–100 | 30 |\n| Total | 200 |\n\n(b) The highest frequency is 70, so the modal class is 40–60.\n\\(L = 40\\), \\(f_1 = 70\\), \\(f_0 = 40\\), \\(f_2 = 40\\), \\(h = 20\\).\n\\(\\text{Mode} = L + \\left[\\dfrac{f_1 - f_0}{2f_1 - f_0 - f_2}\\right] \\times h = 40 + \\left[\\dfrac{70 - 40}{140 - 40 - 40}\\right] \\times 20 = 40 + \\dfrac{30}{60} \\times 20 = 40 + 10\\)\n\\(\\therefore\\) Mode \\(= 50\\).\nThe mode of the marks scored is 50 marks. Check: it lies inside the modal class 40–60.",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q5(i)",
+    "format": "subjective",
+    "chapter": "Statistics",
+    "subtopic": "Pictorial Representation of Statistical Data",
+    "difficulty": "MODERATE",
+    "stem": "Draw histogram of the following data:\n\n| Students I.Q. | Number of Students |\n|---|---|\n| 60–80 | 4 |\n| 80–100 | 12 |\n| 100–120 | 16 |\n| 120–140 | 8 |",
+    "solution": "The classes are continuous and of equal width 20, so the bars are drawn touching each other.\nScale: on the X-axis, 1 cm = 20 I.Q. points; on the Y-axis, 1 cm = 2 students.\nTake the I.Q. on the X-axis, starting at 60 (show a kink on the X-axis between 0 and 60), and the number of students on the Y-axis.\nDraw adjacent rectangles on the class intervals with heights equal to the frequencies:\n\n| Class (I.Q.) | Height of rectangle (students) |\n|---|---|\n| 60–80 | 4 |\n| 80–100 | 12 |\n| 100–120 | 16 |\n| 120–140 | 8 |\n\nThe tallest rectangle stands on 100–120 and the shortest on 60–80.",
+    "reviewFlag": true,
+    "hasFigure": false,
+    "figureNote": ""
+  },
+  {
+    "ref": "Q5(ii)",
+    "format": "subjective",
+    "chapter": "Linear Equations in Two Variables",
+    "subtopic": "Word Problems and Applications",
+    "difficulty": "MODERATE",
+    "stem": "Using information given in the following figure, find the length and breadth of this rectangle in cm.",
+    "solution": "Opposite sides of a rectangle are equal.\nTop = bottom: \\(5m + n = 2m + 3n + 5 \\Rightarrow 3m - 2n = 5\\) ... (1)\nLeft = right: \\(m + n - 3 = 3m - 2n + 7 \\Rightarrow -2m + 3n = 10 \\Rightarrow 2m - 3n = -10\\) ... (2)\nMultiply (1) by 3: \\(9m - 6n = 15\\) ... (3)\nMultiply (2) by 2: \\(4m - 6n = -20\\) ... (4)\nSubtract (4) from (3): \\(5m = 35 \\Rightarrow m = 7\\).\nPut \\(m = 7\\) in (1): \\(21 - 2n = 5 \\Rightarrow 2n = 16 \\Rightarrow n = 8\\).\nLength \\(= 5m + n = 35 + 8 = 43\\) (check: \\(2m + 3n + 5 = 14 + 24 + 5 = 43\\)).\nBreadth \\(= m + n - 3 = 7 + 8 - 3 = 12\\) (check: \\(3m - 2n + 7 = 21 - 16 + 7 = 12\\)).\n\\(\\therefore\\) the length of the rectangle is 43 cm and the breadth is 12 cm.",
+    "reviewFlag": true,
+    "hasFigure": true,
+    "figureNote": "Rectangle with right-angle marks at all four corners; side labels: top 5m + n, bottom 2m + 3n + 5, left m + n - 3, right 3m - 2n + 7; p-10"
+  }
+]
