@@ -32,6 +32,16 @@ describe("wordsOf", () => {
     expect(wordsOf("\\(\\frac{1}{2} \\times 10^{6}\\,\\mathrm{ms^{-1}}\\)")).toEqual(["ms"]);
   });
 
+  it("also yields an underlined letter joined to the letters after it, the way the layer prints \\underline{K}O_2 as 'KO'", () => {
+    expect(wordsOf("\\(\\mathrm{\\underline{K}O_2}\\) and \\(\\mathrm{H_2\\underline{S}O_4}\\)")).toEqual(
+      expect.arrayContaining(["ko", "so"]),
+    );
+  });
+
+  it("does not join a braced letter to a following brace group (\\dfrac{d}{dx} stays d, dx)", () => {
+    expect(wordsOf("\\(\\dfrac{d}{dx}\\)")).not.toContain("ddx");
+  });
+
   it("also yields a letter joined to its letter subscript, the way the text layer prints Q_v as 'Qv'", () => {
     expect(wordsOf("\\(\\mathrm{Q_p = \\Delta U + P_{ext}\\Delta V}\\)")).toEqual(expect.arrayContaining(["qp", "pext"]));
   });

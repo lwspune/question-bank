@@ -36,7 +36,9 @@ export function wordsOf(s: string): string[] {
   // the text layer runs a letter subscript into its symbol (Q_v prints as "Qv", P_{ext} as
   // "Pext"), so offer the joined form too
   const joined = [...noCommands.matchAll(/([A-Za-z]+)[_^]\{?([A-Za-z]+)\}?/g)].map((m) => (m[1] + m[2]).toLowerCase());
-  return [...words, ...joined];
+  // and a braced letter (an \underline{K}) into the letters right after it: "KO"
+  const braced = [...noCommands.matchAll(/\{([A-Za-z])\}([A-Za-z]+)/g)].map((m) => (m[1] + m[2]).toLowerCase());
+  return [...words, ...joined, ...braced];
 }
 
 function countMap(words: string[]): Map<string, number> {
