@@ -6,7 +6,7 @@ export const DETERMINANTS_AND_ADJOINT_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Cofactors build both the determinant and the adjoint — and three identities, A·adj(A) = |A|I, |adj A| = |A|ⁿ⁻¹ and |kA| = kⁿ|A|, answer most of what MHT-CET asks about them.",
   whyItMatters:
-    "15 PYQs at 67% HARD — the hardest page in the chapter and, at the same time, its most learnable, because the HARD questions are recalled identities in disguise rather than long computations. " +
+    "27 PYQs at 56% HARD — the hardest page in the chapter and, at the same time, its most learnable, because the HARD questions are recalled identities in disguise rather than long computations. " +
     "'Find α given adj A and |A|' has been set three times, 'A·adj A = AAᵀ, find a and b' four times in three sittings, and the cofactor expansion appears both as a matrix of cofactors and as a single element of the adjoint. " +
     "Learn the three identities as facts; the page then costs about a minute a question.",
   concepts: [

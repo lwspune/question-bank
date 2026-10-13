@@ -8,7 +8,7 @@ export const REFRACTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Light entering a denser medium slows to c/μ and bends toward the normal, sin i = μ sin r; an object under a medium appears raised to its real depth divided by μ; and light going from denser to rarer is totally reflected once its angle of incidence exceeds the critical angle sin⁻¹(1/μ).",
   whyItMatters:
-    "26 PYQs, 7 of them HARD — the largest page in the chapter. Eight apply Snell's law — the index from a speed, the deviation on entering a slab, the angle when reflected and refracted rays are perpendicular. " +
+    "37 PYQs, 7 of them HARD — the largest page in the chapter. Of the twenty-six set from 2021 to 2025, eight apply Snell's law — the index from a speed, the deviation on entering a slab, the angle when reflected and refracted rays are perpendicular. " +
     "Nine are apparent depth through one or several layers, a bubble in a cube or a slab on an ink mark; nine are total internal reflection. Three cards.",
   concepts: [
     {

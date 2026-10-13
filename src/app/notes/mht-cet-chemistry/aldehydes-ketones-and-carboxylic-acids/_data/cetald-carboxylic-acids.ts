@@ -6,7 +6,7 @@ export const CARBOXYLIC_ACIDS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Carboxylic acids boil highest of all comparable compounds because they hydrogen-bond as dimers; they are made from Grignard reagents and CO₂ or by oxidative cleavage, converted to acid chlorides by PCl₅ or SOCl₂, and their derivatives — chlorides, anhydrides, esters — hydrolyse back to the acid.",
   whyItMatters:
-    "21 PYQs, none HARD. Nine are properties and preparation — the boiling-point orders (acid > alcohol > amine; formic lowest, valeric highest of the C1–C5 acids), Grignard + dry ice giving the acid with one extra carbon, cyclohexene to adipic acid; twelve are the derivatives — acid chloride or anhydride plus water, PCl₅ by its by-products, ester hydrolysis then acidification, aspirin from salicylic acid, paracetamol's amide link, diborane reducing COOH. " +
+    "43 PYQs, none HARD. Of the twenty-one set from 2021 to 2025, nine are properties and preparation — the boiling-point orders (acid > alcohol > amine; formic lowest, valeric highest of the C1–C5 acids), Grignard + dry ice giving the acid with one extra carbon, cyclohexene to adipic acid; twelve are the derivatives — acid chloride or anhydride plus water, PCl₅ by its by-products, ester hydrolysis then acidification, aspirin from salicylic acid, paracetamol's amide link, diborane reducing COOH. " +
     "Two cards.",
   concepts: [
     // 1 — properties and preparation

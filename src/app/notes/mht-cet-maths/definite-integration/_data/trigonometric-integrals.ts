@@ -6,7 +6,7 @@ export const TRIGONOMETRIC_DEFINITE_INTEGRALS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Definite integrals of trigonometric expressions reduce to four moves — divide by a power of cos x and put tan x = t, use a half-angle identity, spot a derivative pair, or rewrite sin x ± cos x — with the limits converted alongside.",
   whyItMatters:
-    "11 PYQs at 73% HARD — the most expensive page in the chapter, and the one where the difficulty is technique rather than recognition. " +
+    "16 PYQs at 69% HARD — the most expensive page in the chapter, and the one where the difficulty is technique rather than recognition. " +
     "The same integral with tan⁵x and cot⁵x was set in two sittings a fortnight apart, and the sec-and-cosec fractional-power integral in two more; the limits are always π/6, π/4 or π/3, so tan x = t lands on 1/√3, 1 or √3. " +
     "Two printed keys on this page are wrong or garbled in the paper itself; the bank carries the corrected form and the honest note.",
   concepts: [

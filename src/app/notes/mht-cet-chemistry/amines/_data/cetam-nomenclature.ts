@@ -6,7 +6,7 @@ export const NOMENCLATURE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An amine is primary, secondary or tertiary by how many carbon groups sit on the nitrogen (not on the carbon), simple or mixed by whether those groups match, aliphatic or aromatic by whether one is an aryl ring; IUPAC names use -amine on the longest chain with N-prefixes for the other groups.",
   whyItMatters:
-    "19 PYQs, none HARD. Twelve are classification — which named or drawn compound is primary, secondary, tertiary, an aromatic mixed 3° amine, or a molecular formula (cyclohexylamine C₆H₁₃N, p-toluidine C₇H₉N); seven are IUPAC names (allylamine, ethylmethylisopropylamine, a drawn pentenamine, sulphanilic acid) and the C₄H₁₁N isomer counts. " +
+    "28 PYQs, none HARD. Of the nineteen set from 2021 to 2025, twelve are classification — which named or drawn compound is primary, secondary, tertiary, an aromatic mixed 3° amine, or a molecular formula (cyclohexylamine C₆H₁₃N, p-toluidine C₇H₉N); seven are IUPAC names (allylamine, ethylmethylisopropylamine, a drawn pentenamine, sulphanilic acid) and the C₄H₁₁N isomer counts. " +
     "Two cards.",
   concepts: [
     // 1 — classes and formulas

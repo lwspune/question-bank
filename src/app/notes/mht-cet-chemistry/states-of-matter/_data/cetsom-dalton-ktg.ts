@@ -6,7 +6,7 @@ export const DALTON_KTG_NOTE: SubtopicNote = {
   oneLineDefinition:
     "In a gas mixture each component pushes independently, so its partial pressure is just its share of the moles times the total pressure; the kinetic theory explains this, gives the speed of the molecules, and shows why real gases stray from ideal behaviour.",
   whyItMatters:
-    "Thirteen PYQs, and more than half are a single trick: partial pressure is proportional to moles, so equal masses of two gases do NOT share pressure equally. " +
+    "Twenty-three PYQs. Of the thirteen set from 2021 to 2025, more than half are a single trick: partial pressure is proportional to moles, so equal masses of two gases do NOT share pressure equally. " +
     "The rest split between one root-mean-square-velocity ratio, the compressibility factor Z as the measure of non-ideality, and one recall question on liquefaction. " +
     "Master 'moles first, never grams' and you have the whole subtopic — the arithmetic is easy once the mole fractions are right.",
   concepts: [

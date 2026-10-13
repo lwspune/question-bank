@@ -6,7 +6,7 @@ export const VSEPR_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Count the electron pairs around the central atom — bond pairs plus lone pairs — and they spread out to keep as far apart as possible; the arrangement of the bond pairs is the molecule's shape, and lone pairs push the bonds closer to distort the ideal angles.",
   whyItMatters:
-    "The single biggest subtopic of this chapter — 20 PYQs, and the most reliable shape-questions in MHT-CET Chemistry. " +
+    "The single biggest subtopic of this chapter — 30 PYQs, and the most reliable shape-questions in MHT-CET Chemistry. " +
     "They cluster four ways: count the lone pairs on the central atom (most, fewest, equal pair, or zero), name the shape of a given molecule or AXnEm type, recall a specific bond angle, and spot which molecule keeps its regular (undistorted) geometry. " +
     "Every one of them reduces to the same two-step drill: count bond pairs and lone pairs, then read the shape off the master table — so with one table memorised a student should never drop a mark here.",
   concepts: [

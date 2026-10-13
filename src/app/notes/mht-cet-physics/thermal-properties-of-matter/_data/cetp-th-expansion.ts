@@ -8,7 +8,7 @@ export const EXPANSION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A solid grows in every dimension when heated: its length by αLΔT, its area by 2αAΔT and its volume by 3αVΔT, where α is the coefficient of linear expansion; the Celsius, Fahrenheit and Kelvin scales are linear relabellings of one another.",
   whyItMatters:
-    "19 PYQs, 2 of them HARD. Two convert between temperature scales. Eleven are linear expansion — the gap left between rails, a rod's α from its growth, and the favourite: two rods whose difference in length stays the same at every temperature. " +
+    "26 PYQs, 3 of them HARD. Of the nineteen set from 2021 to 2025, two convert between temperature scales. Eleven are linear expansion — the gap left between rails, a rod's α from its growth, and the favourite: two rods whose difference in length stays the same at every temperature. " +
     "Six are area and volume expansion, including a thermometer's mercury column. Three cards.",
   concepts: [
     {

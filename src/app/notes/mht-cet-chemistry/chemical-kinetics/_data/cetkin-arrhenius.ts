@@ -6,7 +6,7 @@ export const ARRHENIUS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "k = A e^(−Ea/RT): log k against 1/T is a line of slope −Ea/2.303R and intercept log A; between two temperatures log(k₂/k₁) = (Ea/2.303R)(T₂ − T₁)/(T₁T₂); only temperature (and a catalyst) changes k.",
   whyItMatters:
-    "8 PYQs at 38% HARD — the chapter's only HARD questions, all three from 2025 and all the two-temperature form: Ea from a doubled rate constant between 27 °C and 37 °C, Ea from two k values, and a half-life carried from 400 K to 300 K. " +
+    "18 PYQs at 33% HARD — the chapter's only HARD questions, all six from 2025 and 2026; the three from 2025 are all the two-temperature form: Ea from a doubled rate constant between 27 °C and 37 °C, Ea from two k values, and a half-life carried from 400 K to 300 K. " +
     "The rest are the slope and intercept of the Arrhenius plot, 'k rises only with temperature', and one collision-theory statement. Two formulas, both in base-10 logs.",
   concepts: [
     // 1 — Arrhenius equation and plot

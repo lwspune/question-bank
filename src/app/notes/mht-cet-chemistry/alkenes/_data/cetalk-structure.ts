@@ -8,7 +8,7 @@ export const ALKENE_STRUCTURE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An alkene is named from the longest chain that contains its C=C, numbered to give the double bond the lowest locant; its stability grows with the number of alkyl groups on the double-bonded carbons.",
   whyItMatters:
-    "13 PYQs, none HARD. Five are IUPAC names of a drawn alkene, four are isomers, sp³ counts and the alkadiene, and four put substituted alkenes in stability order. " +
+    "15 PYQs, none HARD. Of the thirteen set from 2021 to 2025, five are IUPAC names of a drawn alkene, four are isomers, sp³ counts and the alkadiene, and four put substituted alkenes in stability order. " +
     "Three cards.",
   concepts: [
     {

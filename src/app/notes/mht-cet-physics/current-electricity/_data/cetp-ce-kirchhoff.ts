@@ -8,7 +8,7 @@ export const KIRCHHOFF_NOTE: SubtopicNote = {
   oneLineDefinition:
     "At any junction the current flowing in equals the current flowing out (Kirchhoff's first law, conservation of charge), and round any closed loop the e.m.f.s add up to the voltage drops (the second law, conservation of energy); between them they solve any network of cells and resistors.",
   whyItMatters:
-    "19 PYQs, 3 HARD, nearly all read from a circuit diagram. Eight are the junction law — the missing current at a point where several wires meet, and which conservation law each rule rests on; eleven are the loop law — the current in a loop with opposing cells, the potential difference between two points along a branch, two cells sharing a resistor, and the value of R that stops the current in a galvanometer. " +
+    "26 PYQs, 4 HARD, nearly all read from a circuit diagram. Of the nineteen set from 2021 to 2025, eight are the junction law — the missing current at a point where several wires meet, and which conservation law each rule rests on; eleven are the loop law — the current in a loop with opposing cells, the potential difference between two points along a branch, two cells sharing a resistor, and the value of R that stops the current in a galvanometer. " +
     "Two cards.",
   concepts: [
     {

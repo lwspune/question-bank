@@ -8,7 +8,7 @@ export const CALORIMETRY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "When hot and cold bodies share heat in isolation, the heat one loses equals the heat the other gains, Q = mcΔT for a temperature change and Q = mL for a change of state; a body's heat capacity mc is the heat that raises it by one degree.",
   whyItMatters:
-    "4 PYQs, none HARD: the definition of thermal capacity, a metal's heat capacity from the water it warms, the temperature rise of a bullet that stops in a wall, and ice mixed with warm water. One card.",
+    "8 PYQs, none HARD. The first four are the definition of thermal capacity, a metal's heat capacity from the water it warms, the temperature rise of a bullet that stops in a wall, and ice mixed with warm water. One card.",
   concepts: [
     {
       kind: "formula" as const,

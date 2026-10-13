@@ -6,7 +6,7 @@ export const SECTION_FORMULA_GEOMETRY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Using the section formula (internal and external), the centroid and median identities, the triangle-centre formulas (incentre, orthocentre), and parallelogram relations to locate points and ratios from position vectors.",
   whyItMatters:
-    "This is the bread-and-butter geometry strand of MHT-CET Vectors — about a dozen PYQs across the years, roughly half of them HARD. " +
+    "This is the bread-and-butter geometry strand of MHT-CET Vectors — 32 PYQs across the years, half of them HARD. " +
     "The two engines are the section formula (a point dividing a segment in a given ratio) and the centroid as the average of vertex position vectors; from those, medians, cevian-intersection ratios, the incentre, and parallelogram classification all follow. " +
     "Get the internal-vs-external sign right and decide which point is weighted m versus n, and most of these resolve to a few lines of vector algebra.",
   concepts: [

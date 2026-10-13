@@ -8,7 +8,7 @@ export const PRISM_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A prism of angle A refracts a ray twice, with r₁ + r₂ = A and deviation δ = i + e − A; the deviation is least when the ray passes symmetrically, μ = sin((A + δₘ)/2)/sin(A/2), and a thin prism deviates every ray by (μ − 1)A, different for each colour.",
   whyItMatters:
-    "17 PYQs, 8 of them HARD. Thirteen are deviation: minimum deviation, a thin prism in air and in water, a ray grazing the second face, a silvered face that sends the ray back, two rays through a double prism. " +
+    "25 PYQs, 10 of them HARD. Of the seventeen set from 2021 to 2025, thirteen are deviation: minimum deviation, a thin prism in air and in water, a ray grazing the second face, a silvered face that sends the ray back, two rays through a double prism. " +
     "Four are dispersion — dispersive powers of two prisms, an achromatic doublet, the rainbow. Two cards.",
   concepts: [
     {

@@ -6,7 +6,7 @@ export const ODD_EVEN_SYMMETRY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Over limits symmetric about 0, an odd integrand integrates to 0 and an even one to twice the half — so the first thing to do with limits −a to a is test f(−x), before any antiderivative.",
   whyItMatters:
-    "11 PYQs at 55% HARD, and the fastest marks in the chapter when the test is applied first: five of the eleven are answered by writing f(−x) = −f(x) and nothing else. " +
+    "18 PYQs at 50% HARD, and the fastest marks in the chapter when the test is applied first: in the 2021–2025 papers, five of the eleven were answered by writing f(−x) = −f(x) and nothing else. " +
     "The HARD ones hide the symmetry — a polynomial that becomes odd only after the variable is shifted, a log term that is odd while the rest is even, or a substitution x → 1/x that plays the role of x → −x. " +
     "One recurring stem is a trap in the other direction: an even integrand whose integral does not exist at all, keyed to a formal value the exam accepts.",
   concepts: [

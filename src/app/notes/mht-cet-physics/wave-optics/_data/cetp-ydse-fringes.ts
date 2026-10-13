@@ -6,7 +6,7 @@ export const YDSE_FRINGES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "In Young's experiment the bright fringes sit at y = nλD/d and the dark ones halfway between, so the fringe width is β = λD/d; a thin sheet over one slit shifts the whole pattern towards that slit by (μ − 1)tD/d.",
   whyItMatters:
-    "39 PYQs, eight HARD — the largest page in the chapter. Three shapes: how the fringe width responds to λ, D, d or a medium, where a given bright or dark fringe lies (and when fringes of two wavelengths coincide, or a dark fringe falls opposite a slit), " +
+    "68 PYQs, eleven HARD — the largest page in the chapter. Three shapes: how the fringe width responds to λ, D, d or a medium, where a given bright or dark fringe lies (and when fringes of two wavelengths coincide, or a dark fringe falls opposite a slit), " +
     "and the shift a transparent sheet causes.",
   concepts: [
     {

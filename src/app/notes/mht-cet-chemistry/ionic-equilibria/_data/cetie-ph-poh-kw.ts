@@ -6,7 +6,7 @@ export const PH_POH_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Water self-ionises so that the product of its hydrogen- and hydroxide-ion concentrations is fixed; pH and pOH are the logarithmic measures of those concentrations, and together they add up to 14 at 25 degrees C.",
   whyItMatters:
-    "This is one of the most reliable scoring blocks in MHT-CET Chemistry — around two dozen PYQs, almost all one- or two-step plug-ins. Nearly every question reduces to the same routine: find the ion concentration, take a negative log, and use pH + pOH = 14. The recurring traps are a strong acid or base that furnishes more than one ion per formula unit (dibasic, diacidic), a weak acid or base where you must first multiply by the degree of dissociation, and the special case of an extremely dilute strong acid where the pH creeps back toward 7. " +
+    "This is one of the most reliable scoring blocks in MHT-CET Chemistry — around forty PYQs, almost all one- or two-step plug-ins. Nearly every question reduces to the same routine: find the ion concentration, take a negative log, and use pH + pOH = 14. The recurring traps are a strong acid or base that furnishes more than one ion per formula unit (dibasic, diacidic), a weak acid or base where you must first multiply by the degree of dissociation, and the special case of an extremely dilute strong acid where the pH creeps back toward 7. " +
     "Learn the four formulas cold — Kw, pH, pOH, and pH + pOH = 14 — and you can attempt every question here on sight.",
   concepts: [
     // Concept 1 — Ionic product of water (Kw)

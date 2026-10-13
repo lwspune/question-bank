@@ -6,7 +6,7 @@ export const MECHANISM_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A complex reaction is a sequence of elementary steps; the slowest step sets the rate and its molecularity writes the rate law; a species made in one step and consumed in a later one is an intermediate and never appears in the overall equation.",
   whyItMatters:
-    "7 PYQs, none HARD — a recall page. Which step decides the rate (the slowest), which species is the intermediate in a two-step mechanism (set three times with the ClO⁻ and SO₂/NO pairs), which of four reactions is elementary, the rate law from a slow step, and one catalyst name (Fe–Cr for the water-gas shift). " +
+    "9 PYQs, none HARD — a recall page. Which step decides the rate (the slowest), which species is the intermediate in a two-step mechanism (set three times with the ClO⁻ and SO₂/NO pairs), which of four reactions is elementary, the rate law from a slow step, and one catalyst name (Fe–Cr for the water-gas shift). " +
     "Ten minutes covers it.",
   concepts: [
     // 1 — RDS and rate law from mechanism

@@ -6,7 +6,7 @@ export const BONDING_AND_STABILITY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Valence bond theory reads a complex's geometry and hybridisation from the metal's d-electron count and the ligand's field strength — a strong-field ligand pairs the d electrons and gives an inner-orbital, low-spin complex — the unpaired electrons left over fix the spin-only magnetic moment, the effective atomic number counts the electrons around the metal after the ligands donate, and the stability of complexes with one ligand follows the metal's charge and the Irving–Williams order.",
   whyItMatters:
-    "21 PYQs, none HARD. Six are hybridisation and geometry — dsp² square planar [Ni(CN)₄]²⁻, asked four times, and d²sp³ [Co(NH₃)₆]³⁺, twice; five are unpaired electrons and the magnetic moment — zero in [Co(NH₃)₆]³⁺, four in [CoF₆]³⁻, 1.73 BM for one electron; five compute an EAN; five are stability orders. " +
+    "48 PYQs, one HARD, and now the chapter's largest page. Of the twenty-one set from 2021 to 2025, six are hybridisation and geometry — dsp² square planar [Ni(CN)₄]²⁻, asked four times, and d²sp³ [Co(NH₃)₆]³⁺, twice; five are unpaired electrons and the magnetic moment — zero in [Co(NH₃)₆]³⁺, four in [CoF₆]³⁻, 1.73 BM for one electron; five compute an EAN; five are stability orders. " +
     "Four cards.",
   concepts: [
     // 1 — hybridisation and geometry

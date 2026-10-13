@@ -6,7 +6,7 @@ export const PHENOLS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Phenol is made industrially from cumene (air oxidation, then acid) and from chlorobenzene (Dow); its ring is so activated by OH that bromine water gives 2,4,6-tribromophenol and mixed acid gives picric acid, while the phenoxide gives salicylic acid with CO₂ (Kolbe) and salicylaldehyde with chloroform (Reimer–Tiemann).",
   whyItMatters:
-    "27 PYQs, 2 HARD. Eight are ring substitution — the reagent for picric acid (mixed acid), dilute HNO₃ giving the o/p mixture, bromine water giving the tribromo product; eleven are named reactions and reagents — Kolbe's substrate and product, Reimer–Tiemann's reagent, CrO₃ to p-benzoquinone, zinc dust to benzene, H₂/Ni to cyclohexanol, an acid chloride in pyridine; five are the cumene and Dow preparations; three are natural phenols — gallic acid, eugenol, the phloroglucinol drawing. " +
+    "38 PYQs, 2 HARD. Of the twenty-seven set from 2021 to 2025, eight are ring substitution — the reagent for picric acid (mixed acid), dilute HNO₃ giving the o/p mixture, bromine water giving the tribromo product; eleven are named reactions and reagents — Kolbe's substrate and product, Reimer–Tiemann's reagent, CrO₃ to p-benzoquinone, zinc dust to benzene, H₂/Ni to cyclohexanol, an acid chloride in pyridine; five are the cumene and Dow preparations; three are natural phenols — gallic acid, eugenol, the phloroglucinol drawing. " +
     "Four cards.",
   concepts: [
     // 1 — preparation

@@ -6,7 +6,7 @@ export const ANGULAR_MOMENTUM_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Torque τ = r × F is the turning effect of a force and changes angular momentum L = Iω; with no external torque L stays fixed, so a body that pulls its mass in spins faster.",
   whyItMatters:
-    "22 PYQs, only one HARD — a page of steady marks. Three shapes: a torque from a force or from a change in spin, " +
+    "38 PYQs, only three HARD — a page of steady marks. Three shapes: a torque from a force or from a change in spin, " +
     "the links between L, ω, I and kinetic energy, and a second disc or ring dropped onto a spinning one (or a skater folding their arms), where L is conserved and kinetic energy is not.",
   concepts: [
     {

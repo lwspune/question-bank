@@ -8,7 +8,7 @@ export const INSTRUMENTS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A compound microscope magnifies by (v₀/u₀)(D/fₑ) with a short-focus objective near the object, a telescope in normal adjustment by f₀/fₑ with a tube f₀ + fₑ long, and a telescope's large objective aperture is for resolving fine detail.",
   whyItMatters:
-    "6 PYQs, one HARD: the objective's object distance from a microscope's length and magnification, a telescope's eyepiece from its length, why a telescope needs a large aperture, what a microscope objective looks like, and how a simple magnifier changes from blue light to red. One card.",
+    "10 PYQs, one HARD. The first six are the objective's object distance from a microscope's length and magnification, a telescope's eyepiece from its length, why a telescope needs a large aperture, what a microscope objective looks like, and how a simple magnifier changes from blue light to red. One card.",
   concepts: [
     {
       kind: "formula" as const,

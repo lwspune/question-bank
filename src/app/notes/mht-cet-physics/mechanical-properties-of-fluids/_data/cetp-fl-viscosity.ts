@@ -8,7 +8,7 @@ export const VISCOSITY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Viscosity is the internal friction between layers of a moving fluid, acting along the layers; a sphere falling through a fluid feels the drag 6πηrv of Stokes' law, and stops accelerating when drag plus upthrust equals its weight — the terminal velocity, which grows as the square of the radius.",
   whyItMatters:
-    "21 PYQs, 4 HARD. Seventeen are terminal velocity — drops of the same size merging into one, spheres of different radius or density in the same liquid, the viscous force at terminal speed, a ball rising at constant speed, and the height from which a ball must fall to enter water already at its terminal speed; four are about layers — the direction of the viscous force, flow speed rising with height in a river, Reynolds number and critical velocity. " +
+    "33 PYQs, 4 HARD. Of the twenty-one set from 2021 to 2025, seventeen are terminal velocity — drops of the same size merging into one, spheres of different radius or density in the same liquid, the viscous force at terminal speed, a ball rising at constant speed, and the height from which a ball must fall to enter water already at its terminal speed; four are about layers — the direction of the viscous force, flow speed rising with height in a river, Reynolds number and critical velocity. " +
     "Two cards.",
   concepts: [
     {

@@ -6,7 +6,7 @@ export const BINOMIAL_SETTING_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Fix n independent trials, each a success (p) or failure (q = 1 − p); then X = number of successes follows B(n, p), and P(X = r) = ⁿCᵣ pʳ qⁿ⁻ʳ — the single formula every question in this subtopic runs on.",
   whyItMatters:
-    "This is the foundation of the whole chapter: 10 PYQs sit here (5 EASY, 4 MODERATE, 1 HARD). Every later idea (mean np, variance npq, at-least/at-most tails) is built on top of this one PMF. " +
+    "This is the foundation of the whole chapter: 11 PYQs sit here (6 EASY, 4 MODERATE, 1 HARD). Every later idea (mean np, variance npq, at-least/at-most tails) is built on top of this one PMF. " +
     "The recurring skills are three: reading n, p and q correctly from the wording (with-replacement draws, 'success = …'), evaluating a single P(X = r), and writing out the full P(X = 0…n) distribution table for a small experiment.",
   concepts: [
     // 0 — foundation: the Bernoulli-trial setting (no PYQ, lint-exempt)

@@ -8,7 +8,7 @@ export const MOMENT_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A current loop behaves like a small magnet of moment m = NIA, feeling a torque m × B in a field; for a fixed length of wire the torque is largest when the loop is a circle, an orbiting electron is a tiny loop whose moment is e/(2m) times its angular momentum, and a galvanometer becomes an ammeter when a small shunt takes most of the current.",
   whyItMatters:
-    "20 PYQs, 5 HARD. Seventeen are the magnetic moment — its value from the field at the centre and the area (the HARD ones), how it changes when a coil is rewound, the torque on a square and a circle made from the same wire, a solenoid's moment from its flux, and an orbiting electron's moment; three are shunts — the shunt for a given fraction of the current, and an ammeter against a milliammeter. " +
+    "34 PYQs, 13 HARD. Of the twenty set from 2021 to 2025, seventeen are the magnetic moment — its value from the field at the centre and the area (the HARD ones), how it changes when a coil is rewound, the torque on a square and a circle made from the same wire, a solenoid's moment from its flux, and an orbiting electron's moment; three are shunts — the shunt for a given fraction of the current, and an ammeter against a milliammeter. " +
     "Two cards.",
   concepts: [
     {

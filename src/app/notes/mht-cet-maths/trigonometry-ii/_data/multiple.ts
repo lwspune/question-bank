@@ -6,8 +6,8 @@ export const MULTIPLE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The formulas for 2A, 3A and A/2, the sign of a half angle read from its own quadrant, and the standard values at π/8, 18° and 36° that most of the HARD questions reduce to.",
   whyItMatters:
-    "13 PYQs, nine HARD — the hardest page in the chapter. Eight use the double- and half-angle formulas: tan(π/8), a half angle with its sign, sin(x/4) from sec x + tan x, cos 2θ from three sines in H.P. " +
-    "Five are evaluations at π/8, 10° or 20°, done with the triple-angle formulas and angle pairing. Two cards.",
+    "20 PYQs, 13 HARD — the hardest page in the chapter. Of the thirteen set from 2021 to 2025, eight used the double- and half-angle formulas: tan(π/8), a half angle with its sign, sin(x/4) from sec x + tan x, cos 2θ from three sines in H.P. " +
+    "Five were evaluations at π/8, 10° or 20°, done with the triple-angle formulas and angle pairing. Two cards.",
   concepts: [
     {
       kind: "formula" as const,

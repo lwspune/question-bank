@@ -8,7 +8,7 @@ export const KINEMATICS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "In simple harmonic motion the acceleration is proportional to the displacement and directed towards the mean position, a = −ω²x; so x = A sin(ωt + α), the speed at displacement x is ω√(A² − x²), the extremes are ωA and ω²A, and the phase ωt + α says where in the cycle the particle is.",
   whyItMatters:
-    "44 PYQs, 7 HARD — the largest page in the chapter. Twenty-four use the velocity–displacement relation — the speed at a given x, the displacement at a given speed, the period, frequency or amplitude from two positions, and the distance between two positions (the HARD ones); thirteen are phase and time — the time to reach a point, the distance covered in successive seconds, the phase difference between two motions; seven are forces — a platform that must not lose its load, two restoring forces acting together, damping. " +
+    "66 PYQs, 11 HARD — the largest page in the chapter. Of the forty-four set from 2021 to 2025, twenty-four use the velocity–displacement relation — the speed at a given x, the displacement at a given speed, the period, frequency or amplitude from two positions, and the distance between two positions (the HARD ones); thirteen are phase and time — the time to reach a point, the distance covered in successive seconds, the phase difference between two motions; seven are forces — a platform that must not lose its load, two restoring forces acting together, damping. " +
     "Three cards.",
   concepts: [
     {

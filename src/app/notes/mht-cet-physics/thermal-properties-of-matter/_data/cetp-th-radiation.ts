@@ -8,7 +8,7 @@ export const RADIATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A hot body radiates power P = eσAT⁴ (Stefan's law), its spectrum peaks at λ_m = b/T (Wien's law), and a body a little warmer than its surroundings cools at a rate proportional to its excess temperature (Newton's law of cooling); a black body absorbs everything and has e = 1.",
   whyItMatters:
-    "53 PYQs, 12 of them HARD — two thirds of the chapter. Ten split incident heat into absorbed, reflected and transmitted parts or ask about black bodies. Twenty-two use Stefan's law, eleven combine it with Wien's law to compare bodies whose spectra peak at different wavelengths, and ten are Newton's law of cooling. " +
+    "93 PYQs, 17 of them HARD — nearly two thirds of the chapter. Of the fifty-three set from 2021 to 2025, ten split incident heat into absorbed, reflected and transmitted parts or ask about black bodies. Twenty-two use Stefan's law, eleven combine it with Wien's law to compare bodies whose spectra peak at different wavelengths, and ten are Newton's law of cooling. " +
     "Four cards.",
   concepts: [
     {

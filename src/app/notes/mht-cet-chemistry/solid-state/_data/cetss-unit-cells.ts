@@ -6,7 +6,7 @@ export const UNIT_CELLS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The three cubic unit cells hold 1, 2 and 4 particles, and in each the atoms touch along one line — the edge, the body diagonal or the face diagonal — which fixes the edge length in terms of the atomic radius.",
   whyItMatters:
-    "30 PYQs, none HARD — the most-asked calculation in the chapter. Nearly every one is 'given r find a' or 'given a find r' for a named cell, with the answer wanted in cm; the rest count particles per cell or coordination numbers. " +
+    "42 PYQs, none HARD — one of the most-asked calculations in the chapter. Nearly every one is 'given r find a' or 'given a find r' for a named cell, with the answer wanted in cm; the rest count particles per cell or coordination numbers. " +
     "Three relations and one unit conversion (1 pm = 10⁻¹⁰ cm) cover the page.",
   concepts: [
     // 1 — particles per cell and coordination number

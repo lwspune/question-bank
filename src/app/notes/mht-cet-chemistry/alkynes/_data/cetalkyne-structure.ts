@@ -8,7 +8,7 @@ export const STRUCTURE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An alkyne has a C≡C triple bond whose two carbons are sp hybridised; a haloalkyne has its halogen on one of those triple-bond carbons.",
   whyItMatters:
-    "3 PYQs. Two ask which structure is a haloalkyne, set twice in 2024; one counts sp² carbons in a diyne. " +
+    "5 PYQs. Of the first three, two ask which structure is a haloalkyne, set twice in 2024; one counts sp² carbons in a diyne. " +
     "One card.",
   concepts: [
     {

@@ -8,7 +8,7 @@ export const SELF_INDUCTANCE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A coil's own current links flux through it, Nφ = LI; the constant L is its self-inductance, it opposes any change in that current with an e.m.f. L dI/dt, it is set by the coil's geometry (for a solenoid μ₀N²A/l), and it stores energy ½LI² in its magnetic field.",
   whyItMatters:
-    "43 PYQs, 4 HARD — the largest page in the chapter. Fourteen are the definition — L from flux and current, the slope of a φ–I graph (asked six times), the unit, e = L dI/dt, and a voltage across an inductor in a circuit; seventeen are how a solenoid's L depends on turns, length, area and core, including the length of wire needed to make one; twelve are energy ½LI² and inductors in series and parallel. " +
+    "67 PYQs, 8 HARD — the largest page in the chapter. Of the forty-three set from 2021 to 2025, fourteen are the definition — L from flux and current, the slope of a φ–I graph (asked six times), the unit, e = L dI/dt, and a voltage across an inductor in a circuit; seventeen are how a solenoid's L depends on turns, length, area and core, including the length of wire needed to make one; twelve are energy ½LI² and inductors in series and parallel. " +
     "Three cards.",
   concepts: [
     {

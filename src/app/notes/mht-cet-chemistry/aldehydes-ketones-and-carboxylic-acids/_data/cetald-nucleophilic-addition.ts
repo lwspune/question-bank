@@ -6,7 +6,7 @@ export const NUCLEOPHILIC_ADDITION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The carbonyl carbon is electrophilic, so nucleophiles add to it — HCN gives a cyanohydrin, an alcohol a hemiacetal, ammonia derivatives the oximes, hydrazones and semicarbazones — and two carbonyls with α-hydrogens combine in the aldol reaction, while those without α-hydrogen disproportionate in the Cannizzaro reaction.",
   whyItMatters:
-    "15 PYQs, none HARD. Three ask the reagent for a semicarbazone (semicarbazide, three times), one for a cyanohydrin (HCN), one which drawing is a hemiacetal; nine are aldol and Cannizzaro — propanone to mesityl oxide, ethanal to but-2-enal, methanal plus benzaldehyde giving methanoic acid and benzyl alcohol, and what type of reaction each is. " +
+    "31 PYQs, one HARD. Of the fifteen set from 2021 to 2025, three ask the reagent for a semicarbazone (semicarbazide, three times), one for a cyanohydrin (HCN), one which drawing is a hemiacetal; nine are aldol and Cannizzaro — propanone to mesityl oxide, ethanal to but-2-enal, methanal plus benzaldehyde giving methanoic acid and benzyl alcohol, and what type of reaction each is. " +
     "Two cards.",
   concepts: [
     // 1 — addition derivatives

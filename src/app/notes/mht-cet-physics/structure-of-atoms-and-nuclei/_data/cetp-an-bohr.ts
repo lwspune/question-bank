@@ -8,7 +8,7 @@ export const BOHR_NOTE: SubtopicNote = {
   oneLineDefinition:
     "In Bohr's model the electron's angular momentum is a whole number of h/2π, which fixes each orbit: the radius grows as n², the speed falls as 1/n, and the energy is −13.6 Z²/n² eV, so every other orbital quantity is a power of n.",
   whyItMatters:
-    "39 PYQs, 11 of them HARD — the largest page in the chapter. Twenty-two ask how an orbit property scales with n: radius, speed, period, acceleration, the field at the nucleus, the de Broglie wavelength. " +
+    "67 PYQs, 16 of them HARD — the largest page in the chapter. Of the thirty-nine set from 2021 to 2025, twenty-two ask how an orbit property scales with n: radius, speed, period, acceleration, the field at the nucleus, the de Broglie wavelength. " +
     "Twelve are the energy levels and the photon between two of them, and five apply the quantum condition outside the atom — to a rotating molecule and to a charge circling in a magnetic field. " +
     "Three cards.",
   concepts: [

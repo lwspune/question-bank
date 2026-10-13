@@ -6,7 +6,7 @@ export const DISTANCE_TO_A_CIRCLE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The least and greatest distances from an external point to a circle are d − r and d + r (d = distance to the centre); a line cuts the circle when its distance from the centre is less than r; and the area a chord cuts off is a sector minus a triangle.",
   whyItMatters:
-    "5 PYQs, none HARD. Greatest and least distance from a point to a circle (twice, once continued to the far end of the diameter), the maximum distance from a point of the circle to a line, a count of integer m for which a line cuts the circle, and the median of an equilateral triangle inscribed in a circle. " +
+    "9 PYQs, none HARD. Greatest and least distance from a point to a circle (twice, once continued to the far end of the diameter), the maximum distance from a point of the circle to a line, a count of integer m for which a line cuts the circle, and the median of an equilateral triangle inscribed in a circle. " +
     "The first three are the Complex Numbers 'greatest and least modulus' move in coordinate dress.",
   concepts: [
     // 1 — greatest and least distance

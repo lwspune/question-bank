@@ -4,7 +4,7 @@ export const MHTCET_LIMITS_CHAPTER: ChapterNote = {
   chapterName: "Limits",
   title: "Limits and Continuity — MHT-CET Maths",
   intro:
-    "Limits is the hardest chapter in MHT-CET Maths by rate — well over half its past-year questions are HARD — and unlike most chapters it has no cheap half: " +
+    "Limits is the hardest chapter in MHT-CET Maths by rate — more than half its past-year questions are HARD — and unlike most chapters it has no cheap half: " +
     "the pure limits and the continuity problems sit at the same difficulty, and about two questions a paper come from here. " +
     "The work is recognition before computation. Almost every stem is one of a short list of standard forms in disguise, and the mark is won in the first " +
     "fifteen seconds by naming the form — factor, rationalise, a trigonometric or exponential standard limit, a 1 to the power infinity — and then executing a " +

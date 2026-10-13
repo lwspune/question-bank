@@ -4,7 +4,8 @@ export const MHTCET_GRAV_CHAPTER: ChapterNote = {
   chapterName: "Gravitation",
   title: "Gravitation — MHT-CET Physics",
   intro:
-    "Gravitation has 80 past-year questions in the MHT-CET bank, about one in five HARD. " +
+    "Gravitation has 106 past-year questions in the MHT-CET bank, about one in four HARD. " +
+    "It ran at more than two questions a paper in 2023 and 2024 and has held at about one a paper in 2025 and 2026. " +
     "Newton's inverse-square law is the start; almost everything else is how g changes — with height, with depth, with a planet's density, with the earth's spin — and what that means for energy: how fast a body must go to escape, and how a satellite's speed, period and energy depend on its orbit. " +
     "Most HARD questions are energy conservation between two distances from the centre. Every PYQ is tagged.",
   cardBlurb:

@@ -8,7 +8,7 @@ export const SURFACE_TENSION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Surface tension is the force per unit length along a liquid surface, and equally the energy stored per unit area of surface; so stretching a film or a bubble costs T times the new area (both faces of a film), splitting a drop into many costs energy because the total surface grows, and merging drops releases it.",
   whyItMatters:
-    "42 PYQs, 12 HARD — the largest page in the chapter. Nineteen are drops splitting or merging (the work done, the final surface energy, the energy released and even the speed it gives the big drop); ten are work on films and bubbles, including the heated soap solution; six are forces along a line of contact — a coin, a paper disc with a hole, a drop leaving a tube, two plates squeezing a drop; seven are molecular and temperature facts. " +
+    "66 PYQs, 21 HARD — the largest page in the chapter. Of the forty-two set from 2021 to 2025, nineteen are drops splitting or merging (the work done, the final surface energy, the energy released and even the speed it gives the big drop); ten are work on films and bubbles, including the heated soap solution; six are forces along a line of contact — a coin, a paper disc with a hole, a drop leaving a tube, two plates squeezing a drop; seven are molecular and temperature facts. " +
     "Four cards.",
   concepts: [
     {

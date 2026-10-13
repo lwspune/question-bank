@@ -6,7 +6,7 @@ export const PREPARATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Aldehydes come from acid chlorides (Rosenmund, H₂/Pd–BaSO₄), from nitriles (Stephen, SnCl₂/HCl; or DIBAL-H) and from toluene (Etard, CrO₂Cl₂); ketones come from acid chlorides with dialkylcadmium, from nitriles with a Grignard reagent, and Grignard reagents themselves come from R–X and magnesium in dry ether.",
   whyItMatters:
-    "30 PYQs, 2 HARD — the largest page in the chapter and pure name-to-reagent recall. Fourteen are the three aldehyde routes (Rosenmund's reagent, Stephen's product from benzonitrile or isopropyl cyanide, DIBAL-H keeping a C=C); twelve are the Grignard and cadmium routes (dimethylcadmium + acetyl chloride → propanone appears five times; benzonitrile + PhMgBr → benzophenone; which carbonyl gives a 2° alcohol); four are Etard and two reaction-figure rows. " +
+    "45 PYQs, 2 HARD — the largest page in the chapter and pure name-to-reagent recall. Of the thirty set from 2021 to 2025, fourteen are the three aldehyde routes (Rosenmund's reagent, Stephen's product from benzonitrile or isopropyl cyanide, DIBAL-H keeping a C=C); twelve are the Grignard and cadmium routes (dimethylcadmium + acetyl chloride → propanone appears five times; benzonitrile + PhMgBr → benzophenone; which carbonyl gives a 2° alcohol); four are Etard and two reaction-figure rows. " +
     "Three cards.",
   concepts: [
     // 1 — aldehyde routes

@@ -6,7 +6,7 @@ export const DEFECTS_AND_PROPERTIES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Real crystals carry point defects — missing ions (Schottky), displaced ions (Frenkel), foreign atoms in place of or between the host atoms — and their electrical and magnetic behaviour follows from the band gap and from unpaired electrons.",
   whyItMatters:
-    "15 PYQs, all EASY or MODERATE, all recall. Name the defect from its description or from an alloy (brass, stainless steel), pick the dopant that makes Si or Ge n-type or p-type, spot the ferromagnetic substance in a list, read a conductor off a band-gap table. " +
+    "26 PYQs, all EASY or MODERATE, all recall. Name the defect from its description or from an alloy (brass, stainless steel), pick the dopant that makes Si or Ge n-type or p-type, spot the ferromagnetic substance in a list, read a conductor off a band-gap table. " +
     "Three short tables cover the lot.",
   concepts: [
     // 1 — point defects

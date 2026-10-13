@@ -8,8 +8,8 @@ export const OXIDATION_NUMBER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The oxidation number of an atom is the charge it would carry if every bond were fully ionic; it is found from a few fixed values and the rule that the numbers in a species add up to its charge.",
   whyItMatters:
-    "26 PYQs, the heart of the chapter, and only one HARD — the tetrathionate structure. " +
-    "Fifteen ask for one atom's number in a compound or ion, five need the structure (a peroxide oxygen, an S–S chain, an average value), and six ask how the number changes across a reaction. " +
+    "44 PYQs, the heart of the chapter, and only one HARD — the tetrathionate structure. " +
+    "Of the twenty-six set from 2021 to 2025, fifteen ask for one atom's number in a compound or ion, five need the structure (a peroxide oxygen, an S–S chain, an average value), and six ask how the number changes across a reaction. " +
     "Three cards.",
   concepts: [
     {

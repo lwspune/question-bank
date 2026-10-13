@@ -6,7 +6,7 @@ export const VAPOUR_PRESSURE_RAOULT_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Each volatile component contributes its pure vapour pressure times its mole fraction; a non-volatile solute lowers the solvent's vapour pressure by the solute's mole fraction — the relative lowering (P° − P)/P° = x₂.",
   whyItMatters:
-    "23 PYQs, one HARD. Two-thirds are the relative lowering of vapour pressure — from the two pressures, from moles, or in the dilute form W₂M₁/(M₂W₁) to recover a molar mass — and the rest are Raoult's law for two volatile liquids solved for a mole fraction or a pure vapour pressure, plus the recall of which mixtures are ideal, positive-deviation or negative-deviation. " +
+    "33 PYQs, one HARD. Two-thirds are the relative lowering of vapour pressure — from the two pressures, from moles, or in the dilute form W₂M₁/(M₂W₁) to recover a molar mass — and the rest are Raoult's law for two volatile liquids solved for a mole fraction or a pure vapour pressure, plus the recall of which mixtures are ideal, positive-deviation or negative-deviation. " +
     "The only real trap is dividing by the wrong pressure.",
   concepts: [
     // 1 — two volatile liquids

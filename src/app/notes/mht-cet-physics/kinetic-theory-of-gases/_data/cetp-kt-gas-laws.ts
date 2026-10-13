@@ -8,7 +8,7 @@ export const GAS_LAWS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "For a fixed amount of an ideal gas PV/T stays constant, which contains Boyle's law (PV constant at fixed T), Charles's law (V ∝ T at fixed P) and Gay-Lussac's law (P ∝ T at fixed V); written for n moles it is PV = nRT, or PV = NkT for N molecules.",
   whyItMatters:
-    "19 PYQs, none HARD. Eleven apply one gas law — the percentage change in pressure for a percentage change in volume, a tyre warming up, a balloon rising. " +
+    "30 PYQs, none HARD. Of the nineteen set from 2021 to 2025, eleven apply one gas law — the percentage change in pressure for a percentage change in volume, a tyre warming up, a balloon rising. " +
     "Eight use PV = nRT or PV = NkT to compare the number of molecules in two jars, find a density or molecular mass, or count the moles that leak out. Two cards.",
   concepts: [
     {

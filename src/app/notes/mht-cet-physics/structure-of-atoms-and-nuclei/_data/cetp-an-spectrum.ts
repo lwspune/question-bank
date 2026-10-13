@@ -8,7 +8,7 @@ export const SPECTRUM_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Every line of the hydrogen spectrum is a jump down to a fixed lower level, with 1/λ = RZ²(1/n_f² − 1/n_i²); the lower level names the series — Lyman, Balmer, Paschen, Brackett — and within a series the first line is the longest wavelength and the series limit the shortest.",
   whyItMatters:
-    "28 PYQs, 7 of them HARD. Sixteen are about the series themselves: which one is visible, the frequency or wave number of a series limit, and relations between limits and first lines. " +
+    "39 PYQs, 9 of them HARD. Of the twenty-eight set from 2021 to 2025, sixteen are about the series themselves: which one is visible, the frequency or wave number of a series limit, and relations between limits and first lines. " +
     "Twelve ask for the ratio of two named lines, sometimes in a hydrogen-like ion, or for the level a photon came from. " +
     "Two cards.",
   concepts: [

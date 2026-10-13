@@ -5,7 +5,7 @@ export const LINE_AND_PLANE_CHAPTER: ChapterNote = {
   title: "Line and Plane — MHT-CET Mathematics",
   intro:
     "Line and Plane is the largest 3-D Geometry chapter in MHT-CET Maths and " +
-    "one of its hardest — nearly half the questions are HARD. Almost everything " +
+    "about a third of its questions are HARD. Almost everything " +
     "reduces to two engines: writing a line or plane in the right form, and " +
     "taking a DOT or CROSS product of direction vectors and normals. This " +
     "chapter builds in teaching order: first how to write a LINE (direction " +

@@ -8,7 +8,7 @@ export const QUANTUM_MODEL_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The electron is both a wave and a particle: de Broglie gives its wavelength, Heisenberg says you can never pin down its position and momentum together, and four quantum numbers act as the electron's address — naming its shell, subshell, orbital and spin.",
   whyItMatters:
-    "Thirteen PYQs, and the bank tests four reliable patterns: a one-line recall of Heisenberg's principle, a plug-in of de Broglie's formula, a quantum-number-to-orbital label (n=3, l=2 gives 3d), and the (n+l) rule for orbital energy order. " +
+    "Twenty PYQs, and the bank tests four reliable patterns: a one-line recall of Heisenberg's principle, a plug-in of de Broglie's formula, a quantum-number-to-orbital label (n=3, l=2 gives 3d), and the (n+l) rule for orbital energy order. " +
     "Every question is a direct application — no derivations. Learn the four formulas and the l-to-shape mapping and the whole subtopic is arithmetic.",
   concepts: [
     // 1. de Broglie wavelength (FORMULA)

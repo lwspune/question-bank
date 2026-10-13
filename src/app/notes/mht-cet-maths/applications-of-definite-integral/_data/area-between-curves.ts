@@ -6,7 +6,7 @@ export const AREA_BETWEEN_CURVES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The area between two curves is ∫(upper − lower) dx between their intersection points — so the intersections are found first, the top curve is decided over each stretch, and only then is anything integrated.",
   whyItMatters:
-    "21 PYQs at 38% HARD — the heart of the chapter, and the page where the difficulty is entirely in the setup. " +
+    "36 PYQs at 31% HARD — the heart of the chapter, and the page where the difficulty is entirely in the setup. " +
     "A parabola against a line is set every year; two parabolas through the origin, a parabola against |x|, and a region described by inequalities are the HARD variants, and each is wrong at the intersection step far more often than at the integral. " +
     "Horizontal strips turn three of these from a two-piece integral into one piece, which is the single most useful habit on this page.",
   concepts: [

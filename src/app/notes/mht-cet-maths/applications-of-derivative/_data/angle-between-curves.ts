@@ -7,7 +7,7 @@ export const ANGLE_BETWEEN_CURVES_NOTE: SubtopicNote = {
     "The angle between two curves is the angle between their tangents at the point where they meet. Find both slopes at the intersection, feed them into the tan formula, and read off the angle — or set the slope product to minus one for a right-angle (orthogonal) intersection.",
   whyItMatters:
     "This is one of MHT-CET Maths' most reliable Applications-of-Derivative pockets: 8 PYQs sit here (1 HARD, 7 MODERATE), and every one reduces to the same two-step drill — get m1 and m2 at the meeting point, then plug into tanθ = |(m1−m2)/(1+m1m2)|. " +
-    "The orthogonality variant (solve a parameter so m1m2 = −1) recurs almost every year with the y²=6x, 9x²+by²=16 family, and the parallel-tangent trick for the shortest line-to-curve distance rides on the exact same slope-matching idea.",
+    "The orthogonality variant (solve a parameter so m1m2 = −1) recurred every year from 2023 to 2025 with the y²=6x, 9x²+by²=16 family, and the parallel-tangent trick for the shortest line-to-curve distance rides on the exact same slope-matching idea.",
   concepts: [
     // 1 — FOUNDATION: slopes of both curves at the intersection point (no PYQ, lint-exempt)
     {

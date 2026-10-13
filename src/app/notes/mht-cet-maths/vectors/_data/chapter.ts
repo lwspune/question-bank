@@ -4,9 +4,9 @@ export const VECTORS_CHAPTER: ChapterNote = {
   chapterName: "Vectors",
   title: "Vectors — MHT-CET Mathematics",
   intro:
-    "Vectors is 214 past-year questions in the MHT-CET Maths bank across 2021–2025, " +
-    "one of its heaviest scorers and also its hardest single chapter: nearly six in " +
-    "ten are HARD. A vector carries both magnitude AND direction — an arrow, not a " +
+    "Vectors is 334 past-year questions in the MHT-CET Maths bank across 2021–2026, " +
+    "its heaviest scorer and one of its hardest chapters: half of them are " +
+    "HARD. A vector carries both magnitude AND direction — an arrow, not a " +
     "number. This chapter builds " +
     "from the fundamentals — magnitude, components, unit vectors, the section " +
     "formula — to the four products that do the real work: the DOT product " +

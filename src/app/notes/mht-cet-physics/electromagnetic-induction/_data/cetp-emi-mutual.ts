@@ -8,7 +8,7 @@ export const MUTUAL_NOTE: SubtopicNote = {
   oneLineDefinition:
     "When the current in one coil changes, the flux it sends through a neighbouring coil changes and induces an e.m.f. there; the constant M linking the two (Nφ₂ = MI₁, e₂ = M dI₁/dt) is their mutual inductance, it is at most √(L₁L₂), and the transformer and the a.c. generator are both built on it.",
   whyItMatters:
-    "35 PYQs, 3 HARD. Twenty are mutual inductance — M from an e.m.f. and a rate of change, the flux one coil sends through another, the peak e.m.f. when the current is I₀ sin ωt, the time for a current change, and M for two concentric coplanar rings (asked seven times); three are the coefficient of coupling; twelve are transformers and generators — turns, voltage and current ratios, power lost, laminated cores, flux against e.m.f. in a rotating coil, and displacement current. " +
+    "56 PYQs, 4 HARD. Of the thirty-five set from 2021 to 2025, twenty are mutual inductance — M from an e.m.f. and a rate of change, the flux one coil sends through another, the peak e.m.f. when the current is I₀ sin ωt, the time for a current change, and M for two concentric coplanar rings (asked seven times); three are the coefficient of coupling; twelve are transformers and generators — turns, voltage and current ratios, power lost, laminated cores, flux against e.m.f. in a rotating coil, and displacement current. " +
     "Three cards.",
   concepts: [
     {

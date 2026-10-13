@@ -6,7 +6,7 @@ export const REACTANCE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An inductor opposes a.c. with reactance X_L = ωL, which grows with frequency; a capacitor with X_C = 1/ωC, which shrinks with it — and in each the current is a quarter-cycle out of step with the voltage.",
   whyItMatters:
-    "23 PYQs, none HARD — reliable marks. Three shapes: how a reactance changes when the frequency, L or C changes, the current and its phase in a circuit of one element, " +
+    "41 PYQs, one HARD — reliable marks. Three shapes: how a reactance changes when the frequency, L or C changes, the current and its phase in a circuit of one element, " +
     "and a bulb in series with a coil or capacitor that brightens or dims.",
   concepts: [
     {

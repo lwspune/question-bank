@@ -8,7 +8,7 @@ export const NANO_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A nanomaterial has at least one dimension between 1 and 100 nm; it is classed by how many of its dimensions lie OUTSIDE that range, made by the sol–gel route, and identified with UV-visible, FTIR, XRD, SEM and TEM.",
   whyItMatters:
-    "14 PYQs, mostly EASY. Seven classify a nanostructure by dimension or place something on the size scale, six ask which technique or step does what, and one asks about silver nanoparticles. " +
+    "27 PYQs, mostly EASY. Of the fourteen set from 2021 to 2025, seven classify a nanostructure by dimension or place something on the size scale, six ask which technique or step does what, and one asks about silver nanoparticles. " +
     "Two cards.",
   concepts: [
     {

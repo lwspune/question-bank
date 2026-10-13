@@ -8,7 +8,7 @@ export const ENERGY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The total energy of SHM, ½mω²A² (= ½kA²), stays fixed while it passes back and forth between potential energy ½kx² and kinetic energy ½k(A² − x²); so the split at any point depends only on x/A, and the total grows as the square of both the amplitude and the frequency.",
   whyItMatters:
-    "17 PYQs, 2 HARD. Thirteen are the split between kinetic and potential energy — the ratio at half the amplitude, at T/6 or T/12 after the mean position, where they are equal, where one is 8 times the other, and the potential energy at x + y from its values at x and y (the HARD pair); four are the total energy — of a pendulum at its extreme, when its length is changed, and of two sources of different frequency. " +
+    "33 PYQs, 3 HARD. Of the seventeen set from 2021 to 2025, thirteen are the split between kinetic and potential energy — the ratio at half the amplitude, at T/6 or T/12 after the mean position, where they are equal, where one is 8 times the other, and the potential energy at x + y from its values at x and y (the HARD pair); four are the total energy — of a pendulum at its extreme, when its length is changed, and of two sources of different frequency. " +
     "Two cards.",
   concepts: [
     {

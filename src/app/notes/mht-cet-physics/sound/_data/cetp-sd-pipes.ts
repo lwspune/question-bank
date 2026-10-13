@@ -8,7 +8,7 @@ export const PIPES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A pipe open at both ends vibrates at every multiple of v/2L, a pipe closed at one end only at the odd multiples of v/4L; a resonance tube picks out the lengths λ/4, 3λ/4, 5λ/4…, and two close frequencies heard together beat at their difference.",
   whyItMatters:
-    "22 PYQs, 6 of them HARD. Fourteen compare pipes — fundamental and overtones of open and closed pipes, overtones matched between two pipes, end corrections, the harmonic a pipe picks out. " +
+    "27 PYQs, 9 of them HARD. Of the twenty-two set from 2021 to 2025, fourteen compare pipes — fundamental and overtones of open and closed pipes, overtones matched between two pipes, end corrections, the harmonic a pipe picks out. " +
     "Eight are resonance tubes, strings and beats: water poured into a tube, a string resonating with a pipe, sets of tuning forks, and a wire's tension changed without changing the beats. Two cards.",
   concepts: [
     {

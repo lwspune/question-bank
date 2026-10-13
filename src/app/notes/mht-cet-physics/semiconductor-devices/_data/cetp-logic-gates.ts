@@ -6,7 +6,7 @@ export const LOGIC_GATES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A logic gate turns 0s and 1s into a 0 or 1 by a fixed rule — AND, OR, NOT, and the inverted NAND and NOR; a circuit of gates is read by writing each gate's output in turn and simplifying with De Morgan's laws.",
   whyItMatters:
-    "36 PYQs, three HARD — the largest page in the chapter, and most questions are a circuit drawn in a figure. Three shapes: " +
+    "56 PYQs, six HARD — the largest page in the chapter, and most questions are a circuit drawn in a figure. Three shapes: " +
     "naming a gate from part of its truth table, finding which single gate a combination is equivalent to, and the output or Boolean expression of a circuit for given inputs.",
   concepts: [
     {

@@ -8,7 +8,7 @@ export const DIPOLE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A magnet's dipole moment is its pole strength times its length (or magnetisation times volume); in a field B it feels a torque MB sin θ, stores energy −MB cos θ and oscillates with period 2π√(I/MB); an orbiting electron has a moment proportional to its angular momentum, e/2m times L.",
   whyItMatters:
-    "10 PYQs, one HARD. Seven are about magnets: the moment of a rod or a bent rod, a magnet cut into pieces, work to turn a magnet, the period of oscillation, and the torque to hold a coil in a solenoid. " +
+    "14 PYQs, one HARD. Of the ten set from 2021 to 2025, seven are about magnets: the moment of a rod or a bent rod, a magnet cut into pieces, work to turn a magnet, the period of oscillation, and the torque to hold a coil in a solenoid. " +
     "Three are the electron's orbital moment — the gyromagnetic ratio and the Bohr magneton. Two cards.",
   concepts: [
     {

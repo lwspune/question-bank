@@ -6,7 +6,7 @@ export const RESONANCE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "At the frequency where X_L = X_C, a series LCR circuit behaves as a pure resistor: impedance is least (Z = R), current is greatest and in phase with the voltage, and f₀ = 1/2π√(LC).",
   whyItMatters:
-    "32 PYQs, five HARD. Three shapes: the resonant frequency and what changes it (only L and C — never R), what happens at resonance (Z least, current greatest, zero phase), " +
+    "50 PYQs, six HARD. Three shapes: the resonant frequency and what changes it (only L and C — never R), what happens at resonance (Z least, current greatest, zero phase), " +
     "and the large voltages across L and C at resonance, measured by the quality factor.",
   concepts: [
     {

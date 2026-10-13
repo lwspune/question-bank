@@ -6,7 +6,7 @@ export const BOHR_MODEL_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Bohr fixed the electron into definite circular orbits of quantized angular momentum, giving exact formulas for the radius, energy and velocity of the electron in any orbit of a single-electron (hydrogen-like) species.",
   whyItMatters:
-    "This is the biggest, most computation-heavy subtopic in MHT-CET Structure of Atom — 18 PYQs, mostly one-step plug-ins into three formulas (radius, energy, angular momentum) plus a couple of pure-recall model questions. The recurring pattern is a hydrogen-like ion (He+, Li2+, Be3+, B4+) where you must scale by Z, and the recurring trap is treating a two-electron species like Li+ as hydrogen-like. " +
+    "This is the biggest, most computation-heavy subtopic in MHT-CET Structure of Atom — 22 PYQs, mostly one-step plug-ins into three formulas (radius, energy, angular momentum) plus a couple of pure-recall model questions. The recurring pattern is a hydrogen-like ion (He+, Li2+, Be3+, B4+) where you must scale by Z, and the recurring trap is treating a two-electron species like Li+ as hydrogen-like. " +
     "Memorise the four numbers 0.529 Angstrom, 13.6 eV, 2.18e-18 J and 2.18e6 m/s together with their n^2 / Z^2 / 1/n scalings and every question here becomes a gift.",
   concepts: [
     // 0 — Rutherford's nuclear model and its drawbacks (motivates Bohr) — State Board 4.4

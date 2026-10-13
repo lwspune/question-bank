@@ -6,7 +6,7 @@ export const KSP_NOTE: SubtopicNote = {
   oneLineDefinition:
     "For a sparingly soluble salt, the solubility product Ksp is the product of the molar concentrations of its ions, each raised to the power of its coefficient; it links directly to the salt's solubility S through a fixed stoichiometry factor.",
   whyItMatters:
-    "This is the single biggest subtopic in MHT-CET Ionic Equilibria (30 PYQs) and almost every question is one of two mechanical steps: get S from Ksp, or get Ksp from S. The whole battle is picking the right relation for the salt type — S squared for AB, 4S cubed for AB2 or A2B, and 108S to the fifth for A2B3. " +
+    "This is the single biggest subtopic in MHT-CET Ionic Equilibria (46 PYQs) and almost every question is one of two mechanical steps: get S from Ksp, or get Ksp from S. The whole battle is picking the right relation for the salt type — S squared for AB, 4S cubed for AB2 or A2B, and 108S to the fifth for A2B3. " +
     "Learn the stoichiometry factors cold, remember to take the correct root (square, cube, or fifth), and this becomes a guaranteed-scoring block.",
   concepts: [
     // Concept 1 — Ksp definition and the general ionic expression

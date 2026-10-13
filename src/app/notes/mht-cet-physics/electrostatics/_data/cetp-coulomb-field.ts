@@ -6,7 +6,7 @@ export const COULOMB_FIELD_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Two point charges push or pull along the line joining them with F = kq₁q₂/r², weakened K times in a medium; the electric field is that force per unit positive charge, and fields from several charges add as vectors.",
   whyItMatters:
-    "27 PYQs, eight of them HARD, and every HARD one adds the fields or forces of two or more charges. Four shapes repeat: a force ratio after the charges or the distance change, the point on a line where the field or force vanishes, " +
+    "44 PYQs, ten of them HARD; every HARD one from 2021 to 2025 adds the fields or forces of two or more charges. Four shapes repeat: a force ratio after the charges or the distance change, the point on a line where the field or force vanishes, " +
     "a symmetric arrangement (square, triangle, hexagon) where most charges cancel, and a charge accelerated or held still by a field.",
   concepts: [
     // 1 — Coulomb's law and ratio changes

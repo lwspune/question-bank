@@ -6,7 +6,7 @@ export const FORMULATION_AND_SPECIAL_CASES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Turn a word problem into variables, an objective and inequalities in consistent units; and recognise the tie — when two adjacent corners give the same optimum, every point of the edge between them is optimal.",
   whyItMatters:
-    "7 PYQs, none HARD. Two are formulation stems (a machine-time problem and a minimum-cost alloy), and five ask what the solution set of an optimisation LOOKS like — and the answer, every time, has been 'infinitely many points', because the objective was parallel to an edge of the region. " +
+    "14 PYQs, none HARD. Of the seven set from 2021 to 2025, two were formulation stems (a machine-time problem and a minimum-cost alloy), and five asked what the solution set of an optimisation LOOKS like — and the answer, every time, has been 'infinitely many points', because the objective was parallel to an edge of the region. " +
     "That pattern has been set in 2023 (twice) and 2025 (three times); it is the one thing on this page worth memorising.",
   concepts: [
     // 1 — formulation

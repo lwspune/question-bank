@@ -6,7 +6,7 @@ export const BEATS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Two sounds of slightly different frequency drift in and out of step, so their loudness swells and fades |f₁ − f₂| times a second; with a sonometer, whose frequency goes as 1/length, beats pin down a tuning fork's frequency.",
   whyItMatters:
-    "22 PYQs, nine HARD — the densest-HARD page in the chapter, all of them sonometer or pipe puzzles. Two shapes: beat frequency and its timing (maxima, minima, loudness ratio), " +
+    "35 PYQs, ten HARD — the second-densest HARD page in the chapter after pipes and Doppler; the nine from 2021 to 2025 are all sonometer or pipe puzzles. Two shapes: beat frequency and its timing (maxima, minima, loudness ratio), " +
     "and a fork compared with a sonometer at two lengths — solving two equations with f × l constant.",
   concepts: [
     {

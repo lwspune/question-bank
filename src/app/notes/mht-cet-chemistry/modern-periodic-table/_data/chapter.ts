@@ -4,7 +4,7 @@ export const MHTCET_MPT_CHAPTER: ChapterNote = {
   chapterName: "Modern Periodic Table",
   title: "Modern Periodic Table — MHT-CET Chemistry",
   intro:
-    "The Modern Periodic Table is a small chapter in MHT-CET Chemistry: eighteen past-year questions, sixteen of them EASY. " +
+    "The Modern Periodic Table is a small chapter in MHT-CET Chemistry: 26 past-year questions, 23 of them EASY. " +
     "It asks you to place an element from its configuration and to rank elements by size, ionisation enthalpy, electron gain enthalpy or electronegativity. " +
     "Every PYQ is tagged.",
   cardBlurb:

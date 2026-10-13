@@ -6,7 +6,7 @@ export const ISOMERISM_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Isomers share a molecular formula: structural isomers differ in connectivity (chain, position, functional group, metamerism), stereoisomers in arrangement — and a carbon with four different groups makes a molecule chiral, giving a pair of non-superimposable mirror-image enantiomers.",
   whyItMatters:
-    "9 PYQs, 1 HARD. Three ask which statement about enantiomers is false (the planted one says they are superimposable), one names the Fischer projection from a drawing, three ask which molecule is chiral or how many chiral carbons it has, and two ask for the kind of structural isomerism a pair shows. " +
+    "23 PYQs, 3 HARD. Of the nine set from 2021 to 2025, three ask which statement about enantiomers is false (the planted one says they are superimposable), one names the Fischer projection from a drawing, three ask which molecule is chiral or how many chiral carbons it has, and two ask for the kind of structural isomerism a pair shows. " +
     "Learn to spot the carbon with four different groups and the page is done.",
   concepts: [
     // 1 — structural isomerism

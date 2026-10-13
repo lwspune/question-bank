@@ -8,7 +8,7 @@ export const COLOUR_AND_MAGNETISM_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A transition metal ion is coloured when it has unpaired d electrons that can be promoted from one d level to another by visible light, so d⁰ and d¹⁰ ions are colourless; the same unpaired electrons make it paramagnetic, with a spin-only moment of √(n(n+2)) Bohr magnetons, and iron, cobalt and nickel are also ferromagnetic.",
   whyItMatters:
-    "18 PYQs, none HARD. Four ask which ion is coloured or colourless (Sc³⁺, Zn²⁺ and Cu⁺ are the colourless ones); fourteen are magnetism — the spin-only value for Cu²⁺ (1.73 BM, twice), Zn²⁺ (0) and Cr²⁺ (4.90 BM), the ion with the highest or lowest moment, the ion with none, the pair with equal unpaired electrons, the formula itself, and the metal that is not ferromagnetic. " +
+    "35 PYQs, none HARD. Of the eighteen set from 2021 to 2025, four ask which ion is coloured or colourless (Sc³⁺, Zn²⁺ and Cu⁺ are the colourless ones); fourteen are magnetism — the spin-only value for Cu²⁺ (1.73 BM, twice), Zn²⁺ (0) and Cr²⁺ (4.90 BM), the ion with the highest or lowest moment, the ion with none, the pair with equal unpaired electrons, the formula itself, and the metal that is not ferromagnetic. " +
     "Two cards.",
   concepts: [
     // 1 — colour

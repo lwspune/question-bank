@@ -6,7 +6,7 @@ export const CLASSIFICATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Polymers are classed four ways — by source (natural, semisynthetic, synthetic), by chain structure (linear, branched, cross-linked), by the number of monomer kinds (homopolymer, copolymer) and by the strength of the intermolecular forces (elastomer, fibre, thermoplastic, thermosetting) — and the same polymer answers a different question under each.",
   whyItMatters:
-    "22 PYQs, none HARD. Eleven are the force-based classes — pick the thermosetting one (urea-formaldehyde, bakelite), the thermoplastic (polythene, polyvinyls), the fibre (polyesters, nylon 6,6) or the elastomer (Buna-S, neoprene) from a mixed list, asked in one wording or another almost every sitting; eleven are the other three axes — copolymer or homopolymer (five times), linear or branched, semisynthetic, biodegradable, and the source of linen. " +
+    "39 PYQs, none HARD. Of the twenty-two set from 2021 to 2025, eleven are the force-based classes — pick the thermosetting one (urea-formaldehyde, bakelite), the thermoplastic (polythene, polyvinyls), the fibre (polyesters, nylon 6,6) or the elastomer (Buna-S, neoprene) from a mixed list, asked in one wording or another almost every sitting; eleven are the other three axes — copolymer or homopolymer (five times), linear or branched, semisynthetic, biodegradable, and the source of linen. " +
     "Two cards.",
   concepts: [
     // 1 — source, structure, monomer count

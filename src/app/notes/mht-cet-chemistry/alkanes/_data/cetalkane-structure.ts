@@ -8,7 +8,7 @@ export const STRUCTURE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Alkanes are saturated hydrocarbons CₙH₂ₙ₊₂; each member differs from the next by CH₂ (14 g/mol), the number of structural isomers grows with n, and boiling point rises with chain length and falls with branching.",
   whyItMatters:
-    "14 PYQs, three MODERATE. Seven count isomers or carbon types, four are homologous-series arithmetic, and three are boiling points and uses. " +
+    "15 PYQs, three MODERATE. Of the fourteen set from 2021 to 2025, seven count isomers or carbon types, four are homologous-series arithmetic, and three are boiling points and uses. " +
     "Three cards.",
   concepts: [
     {

@@ -6,7 +6,7 @@ export const TRIANGLE_HALF_ANGLE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "With s the semi-perimeter, the half-angle formulas express sin, cos and tan of A/2 through s and the sides; Napier's analogy links the difference of two angles to the difference of their sides; and Heron's formula gives the area from the sides alone.",
   whyItMatters:
-    "24 PYQs. Eleven are half-angle products and sums (tan A/2 · tan C/2, cot B/2 · cot C/2, the sum of cotangents), five are Napier's analogy, five put tan of two half-angles of a right triangle as the roots of a quadratic, and three are area. " +
+    "38 PYQs. Of the twenty-four set from 2021 to 2025, eleven were half-angle products and sums (tan A/2 · tan C/2, cot B/2 · cot C/2, the sum of cotangents), five were Napier's analogy, five put tan of two half-angles of a right triangle as the roots of a quadratic, and three were area. " +
     "Almost every one is solved by two memorised results, so this is the fastest page of the chapter once they are in hand.",
   concepts: [
     // 1 — half-angle formulas in s

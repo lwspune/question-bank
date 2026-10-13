@@ -8,7 +8,7 @@ export const GROUP_17_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The halogens F, Cl, Br, I and the radioactive At (ns² np⁵) change from gases to a liquid to a solid down the group, form less stable hydrogen halides as the atom grows, and give oxoacids HOX, HXO₂, HXO₃ and HXO₄ whose strength rises with the oxidation state; two different halogens combine as interhalogens XX′ₙ with n always odd.",
   whyItMatters:
-    "21 PYQs, 1 HARD. Seven are halogen properties — the ns² np⁵ configuration, bromine the liquid, fluorine's false statement, ionic character of metal halides, the least stable hydride, boiling points of HX, and chlorine with hot NaOH; six are oxoacids — the strongest, its oxygen count and bonds, the halous acid, fluorine's only oxoacid, and the halogen with most oxoacids; eight are interhalogens — thermal stability (the HARD order), physical state at 25 °C (three times), shape of BrF₅, the oxidation state of iodine in I₂Cl₆, and the false statement about n. " +
+    "36 PYQs, 3 HARD. Of the twenty-one set from 2021 to 2025, seven are halogen properties — the ns² np⁵ configuration, bromine the liquid, fluorine's false statement, ionic character of metal halides, the least stable hydride, boiling points of HX, and chlorine with hot NaOH; six are oxoacids — the strongest, its oxygen count and bonds, the halous acid, fluorine's only oxoacid, and the halogen with most oxoacids; eight are interhalogens — thermal stability (the HARD order), physical state at 25 °C (three times), shape of BrF₅, the oxidation state of iodine in I₂Cl₆, and the false statement about n. " +
     "Three cards.",
   concepts: [
     // 1 — halogen properties

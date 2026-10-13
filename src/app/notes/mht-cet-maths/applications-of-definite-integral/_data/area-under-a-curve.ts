@@ -6,7 +6,7 @@ export const AREA_UNDER_A_CURVE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The area between y = f(x) and the x-axis from a to b is ∫|f(x)| dx — sketch, find where the curve meets the axis, and integrate each piece with a positive sign.",
   whyItMatters:
-    "14 PYQs at 14% HARD — the cheapest page in the whole MHT-CET Maths long tail, and the one where a sketch is the entire method. " +
+    "29 PYQs at 10% HARD — the cheapest page in the whole MHT-CET Maths long tail, and the one where a sketch is the entire method. " +
     "The recurring stems are a parabola cut off by the axis, a modulus or a cubic that crosses the axis (so the signed integral and the area differ), and a curve given as x in terms of y that wants a horizontal strip. " +
     "Two stems hide the curve behind a derivative or two unknown coefficients, and one asks for the vertical line that halves an area — all of them are one integral once the setup is written.",
   concepts: [

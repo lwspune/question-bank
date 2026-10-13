@@ -6,7 +6,7 @@ export const ETHERS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Ethers R–O–R' are made by the Williamson synthesis — a sodium alkoxide displacing a halide by SN2, so the halide must be primary or methyl and never aryl — and are cleaved by hot HI at the alkyl–oxygen bond, an aryl alkyl ether giving the phenol plus the alkyl iodide; cold concentrated H₂SO₄ merely protonates them to oxonium salts.",
   whyItMatters:
-    "13 PYQs, none HARD. Five are Williamson — which method makes ethers, which halide will NOT work (chlorobenzene), what methyl bromide gives with sodium tert-butoxide; eight are reactions — ethers in cold concentrated H₂SO₄ (oxonium salts, three times), anisole or ethoxybenzene with HI or dilute acid (phenol plus the alkyl fragment), anisole with bromine in acetic acid (para), and which heterocycle lacks oxygen. " +
+    "29 PYQs, one HARD. Of the thirteen set from 2021 to 2025, five are Williamson — which method makes ethers, which halide will NOT work (chlorobenzene), what methyl bromide gives with sodium tert-butoxide; eight are reactions — ethers in cold concentrated H₂SO₄ (oxonium salts, three times), anisole or ethoxybenzene with HI or dilute acid (phenol plus the alkyl fragment), anisole with bromine in acetic acid (para), and which heterocycle lacks oxygen. " +
     "Two cards.",
   concepts: [
     // 1 — Williamson

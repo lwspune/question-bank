@@ -6,7 +6,7 @@ export const INVERSE_VALUES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Each inverse trigonometric function returns one angle from a fixed principal range, so evaluating an expression means placing every inverse value in its own range and then converting between ratios with a right triangle.",
   whyItMatters:
-    "32 PYQs, and the page where inverse trigonometry is won or lost: 15 test the principal ranges directly (a value, a sum of values, a domain, an inequality), and 17 ask for a trigonometric ratio of an inverse value or of a sum of two. " +
+    "46 PYQs, and the page where inverse trigonometry is won or lost: of the thirty-two set from 2021 to 2025, 15 tested the principal ranges directly (a value, a sum of values, a domain, an inequality), and 17 asked for a trigonometric ratio of an inverse value or of a sum of two. " +
     "Nothing here is long; the marks go to the student who knows that sin⁻¹(sin 2π/3) is not 2π/3.",
   concepts: [
     // 1 — principal ranges

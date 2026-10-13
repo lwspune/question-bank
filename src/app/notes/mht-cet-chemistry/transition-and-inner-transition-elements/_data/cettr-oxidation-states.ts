@@ -8,7 +8,7 @@ export const OXIDATION_STATES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Transition elements show several oxidation states because their (n−1)d and ns electrons are close in energy and can be lost in steps; the range is widest in the middle of the 3d series, at manganese (+2 to +7), narrowest at the ends — scandium +3 (and +2), zinc only +2 — and the highest state in the whole block is +8, reached by osmium in the 5d series.",
   whyItMatters:
-    "6 PYQs, none HARD. Two ask which 3d element shows the most oxidation states (Mn), one which shows the fewest (Zn), one Scandium's states, one the highest state in the third series (+8), and one the Stock notation of MnO₂. " +
+    "11 PYQs, none HARD. Of the six set from 2021 to 2025, two ask which 3d element shows the most oxidation states (Mn), one which shows the fewest (Zn), one Scandium's states, one the highest state in the third series (+8), and one the Stock notation of MnO₂. " +
     "One card.",
   concepts: [
     {

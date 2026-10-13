@@ -6,7 +6,7 @@ export const SPECIAL_DIODES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A Zener diode holds a fixed voltage in reverse breakdown and so regulates; an LED emits light in forward bias; a photodiode senses light in reverse bias; and a solar cell turns light into electrical energy with no bias at all.",
   whyItMatters:
-    "14 PYQs, none HARD. Two shapes: the Zener regulator — current through the Zener, or the series resistor its power rating allows — " +
+    "24 PYQs, none HARD. Two shapes: the Zener regulator — current through the Zener, or the series resistor its power rating allows — " +
     "and matching each device to its bias and its job.",
   concepts: [
     {

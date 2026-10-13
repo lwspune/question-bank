@@ -8,7 +8,7 @@ export const PROJECTILE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A projectile moves steadily at u cos θ horizontally while its vertical motion is free fall starting at u sin θ; that gives time of flight 2u sin θ/g, greatest height u²sin²θ/2g and range u²sin 2θ/g on level ground.",
   whyItMatters:
-    "6 PYQs, one HARD: time of flight, the angle at which height equals range, the kinetic energy and the radius of curvature at the top, the height reached in terms of two times, and a ball thrown from a tower. One card.",
+    "18 PYQs, one HARD, twelve of them from 2026. The first six are time of flight, the angle at which height equals range, the kinetic energy and the radius of curvature at the top, the height reached in terms of two times, and a ball thrown from a tower. One card.",
   concepts: [
     {
       kind: "formula" as const,

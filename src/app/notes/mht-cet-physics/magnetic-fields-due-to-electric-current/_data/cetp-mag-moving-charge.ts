@@ -8,7 +8,7 @@ export const MOVING_CHARGE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A charge q moving with velocity v through a magnetic field B feels F = q(v × B), perpendicular to both, so it does no work and only bends the path; moving across a uniform field the charge goes round a circle of radius mv/(qB), and adding an electric field gives the full Lorentz force qE + q(v × B).",
   whyItMatters:
-    "12 PYQs, none HARD. Five are the force itself — its size from a cross product, the work it does (zero), a charge moving along the field lines, the full Lorentz force, what a cyclotron accelerates; seven are circular motion — the radius when the speed, field or kinetic energy changes, the radius after acceleration through a voltage, the mass from a semicircle, and an electron and a proton of equal momentum. " +
+    "22 PYQs, none HARD. Of the twelve set from 2021 to 2025, five are the force itself — its size from a cross product, the work it does (zero), a charge moving along the field lines, the full Lorentz force, what a cyclotron accelerates; seven are circular motion — the radius when the speed, field or kinetic energy changes, the radius after acceleration through a voltage, the mass from a semicircle, and an electron and a proton of equal momentum. " +
     "Two cards.",
   concepts: [
     {

@@ -6,7 +6,7 @@ export const LCR_IMPEDANCE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "In a series circuit the resistor's voltage and the reactances' voltages are 90° apart, so they add like the sides of a right triangle: Z = √(R² + (X_L − X_C)²), and tan φ = (X_L − X_C)/R gives the phase.",
   whyItMatters:
-    "33 PYQs, five HARD. Three shapes: an impedance and a current (including the coil that draws one current on d.c. and less on a.c.), " +
+    "46 PYQs, seven HARD. Three shapes: an impedance and a current (including the coil that draws one current on d.c. and less on a.c.), " +
     "a phase angle — or a component found from a given phase — and the voltages across R, L and C adding as phasors, never as numbers.",
   concepts: [
     {

@@ -4,7 +4,7 @@ export const MHTCET_EMI_CHAPTER: ChapterNote = {
   chapterName: "Electromagnetic Induction",
   title: "Electromagnetic Induction — MHT-CET Physics",
   intro:
-    "Electromagnetic Induction has 119 past-year questions in the MHT-CET bank, and only 11 of them are HARD. " +
+    "Electromagnetic Induction has 190 past-year questions in the MHT-CET bank, and only 18 of them are HARD. " +
     "It starts from one idea — a changing magnetic flux drives an e.m.f., in the direction that opposes the change — and applies it to a rod moving through a field, a coil whose own current is changing, and a pair of coils that share flux. " +
     "Self-inductance is the biggest page: how L depends on turns, length and area, the energy an inductor stores, and inductors in series and parallel. Every PYQ is tagged.",
   cardBlurb:

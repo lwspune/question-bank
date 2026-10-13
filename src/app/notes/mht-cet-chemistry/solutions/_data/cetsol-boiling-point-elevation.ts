@@ -6,7 +6,7 @@ export const BOILING_POINT_ELEVATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A non-volatile solute raises the boiling point by ΔTb = Kb · m (times i for an electrolyte); rearranged, M₂ = 1000 Kb W₂/(ΔTb W₁) gives the solute's molar mass.",
   whyItMatters:
-    "28 PYQs, two HARD — the chapter's second-largest page and the purest formula drill on it. Molality from ΔTb and Kb (eleven sittings), Kb from a boiling point, moles or solvent mass from the same equation, the molar-mass rearrangement, and the ranking of electrolyte solutions by i·m (five sittings). " +
+    "43 PYQs, two HARD — the chapter's second-largest page and the purest formula drill on it. Molality from ΔTb and Kb (eleven sittings), Kb from a boiling point, moles or solvent mass from the same equation, the molar-mass rearrangement, and the ranking of electrolyte solutions by i·m (five sittings). " +
     "Two things cost marks: the solvent mass must be in kilograms, and a stem that gives the boiling POINT needs ΔTb subtracted first.",
   concepts: [
     // 1 — ΔTb = Kb m

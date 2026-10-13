@@ -6,7 +6,7 @@ export const MOLE_INTERCONVERSIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A mole is a fixed count of particles (6.022 × 10^23 of them); molar mass, molar volume (22.4 dm^3 at STP) and Avogadro's number are the three bridges that turn grams, litres and particle-counts into moles and back.",
   whyItMatters:
-    "This is the single most-tested subtopic of the chapter — 31 PYQs, and every one of them is a walk along the same small conversion map: mass to moles to volume to particle-count. Most are one-step EASY plug-ins (mass of 0.25 mol water, volume of 3 mol NH3 at STP, moles in 8.8 × 10^-2 kg of CO2); the MODERATE ones only chain two steps or add a per-molecule multiplier (electrons in 1.6 g of methane, ratio of molecules from a mass ratio, vapour density to volume). " +
+    "This is the single most-tested subtopic of the chapter — 50 PYQs, and every one of them is a walk along the same small conversion map: mass to moles to volume to particle-count. Most are one-step EASY plug-ins (mass of 0.25 mol water, volume of 3 mol NH3 at STP, moles in 8.8 × 10^-2 kg of CO2); the MODERATE ones only chain two steps or add a per-molecule multiplier (electrons in 1.6 g of methane, ratio of molecules from a mass ratio, vapour density to volume). " +
     "Learn n = m/M, n = V/22.4 and N = n·NA cold — and watch the kg-to-g and dm^3-to-m^3 unit traps — and you can attempt every question here on sight.",
   concepts: [
     // FOUNDATION — the mole, Avogadro's number, mass/volume of ONE particle

@@ -6,7 +6,7 @@ export const ELECTRONIC_CONFIG_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Three rules govern how electrons fill orbitals — Aufbau (lowest energy first), Pauli (no two electrons share all four quantum numbers), and Hund (singly fill degenerate orbitals before pairing) — and from a ground-state configuration you can read off the number of unpaired electrons.",
   whyItMatters:
-    "Six PYQs, and they split cleanly two ways. Half are pure name-the-rule recall — quote the Pauli exclusion principle or Hund's rule verbatim from its statement, worth an easy mark every year. " +
+    "Ten PYQs, and the first six split cleanly two ways. Half are pure name-the-rule recall — quote the Pauli exclusion principle or Hund's rule verbatim from its statement, worth an easy mark every year. " +
     "The other half ask you to write a ground-state configuration and count unpaired electrons (nitrogen, copper, zinc), which is where the Cr/Cu half-filled/fully-filled anomaly and Hund's rule earn their keep. " +
     "Learn the three rules by name and by statement, learn to build configurations, and this whole subtopic is reliable marks.",
   concepts: [

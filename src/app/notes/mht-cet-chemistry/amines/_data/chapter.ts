@@ -4,7 +4,7 @@ export const MHTCET_AMINES_CHAPTER: ChapterNote = {
   chapterName: "Amines",
   title: "Amines — MHT-CET Chemistry",
   intro:
-    "Amines is about two questions a paper in MHT-CET Chemistry and rarely HARD — three of its past-year questions in eighty-three. " +
+    "Amines is about two questions a paper in MHT-CET Chemistry and rarely HARD — six of its 134 past-year questions. " +
     "It is a chapter of orders and named reactions: the aqueous basicity order that makes the secondary amine strongest and aniline weakest, " +
     "the reductions that make amines (Mendius, LiAlH₄, Sn/HCl), the two Hofmann reactions that are always confused, " +
     "the tests that sort primary from secondary from tertiary, and the diazonium salt with its replacement reactions and azo coupling. " +

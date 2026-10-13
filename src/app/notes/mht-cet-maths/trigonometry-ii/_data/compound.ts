@@ -6,8 +6,8 @@ export const COMPOUND_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The sine, cosine and tangent of A + B and A − B, the maximum of a sin x + b cos x, and what a fixed sum such as A + B = 45° or A + B + C = π does to the tangent formula.",
   whyItMatters:
-    "13 PYQs, two HARD. Seven use the compound-angle formulas directly — a ratio from a given tangent, cot(A − B) from two differences, a maximum, an angle rewritten as α − π/4. " +
-    "Six fix a sum of angles and rearrange tan(A + B): tan 3A − tan 2A − tan A, A + B = 225°, the half angles of a triangle. Two cards.",
+    "27 PYQs, seven HARD. Of the thirteen set from 2021 to 2025, seven used the compound-angle formulas directly — a ratio from a given tangent, cot(A − B) from two differences, a maximum, an angle rewritten as α − π/4. " +
+    "Six fixed a sum of angles and rearranged tan(A + B): tan 3A − tan 2A − tan A, A + B = 225°, the half angles of a triangle. Two cards.",
   concepts: [
     {
       kind: "formula" as const,

@@ -8,7 +8,7 @@ export const NEWTON_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The net force on a body equals its mass times its acceleration, measured in a frame that is not itself accelerating; applied body by body it gives the reading in a lift, the push between blocks, the tension in a pulley string, and — with v²/r as the acceleration — the forces in circular motion.",
   whyItMatters:
-    "25 PYQs, 3 of them HARD. Twelve apply F = ma to lifts, blocks in contact, pulleys and ropes, and ask which frames are inertial. " +
+    "32 PYQs, 5 of them HARD. Of the twenty-five set from 2021 to 2025, twelve apply F = ma to lifts, blocks in contact, pulleys and ropes, and ask which frames are inertial. " +
     "Nine combine force with work, power or circular motion — power from a time-varying force, a conical pendulum, the string's tension at the bottom of a swing. Four are braking and penetration problems. Three cards.",
   concepts: [
     {

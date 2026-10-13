@@ -6,7 +6,7 @@ export const GAUSS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The total electric flux out of any closed surface equals the charge inside divided by ε₀ — whatever the surface's size or shape — and for symmetric charge the same law gives the field in one line.",
   whyItMatters:
-    "20 PYQs, none HARD: this is the chapter's most reliable marks. Two in three ask only 'what is the flux?', and the answer never depends on the surface's size. " +
+    "30 PYQs, only one HARD: this is the chapter's most reliable marks. Two in three ask only 'what is the flux?', and the answer never depends on the surface's size. " +
     "The rest ask for the field of a symmetric body — sphere, sheet, cylinder, or the surface of a conductor.",
   concepts: [
     // 1 — flux and Gauss's law

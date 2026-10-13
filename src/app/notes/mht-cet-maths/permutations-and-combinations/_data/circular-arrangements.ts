@@ -6,7 +6,7 @@ export const CIRCULAR_ARRANGEMENTS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "n distinct people around a round table sit in (n − 1)! ways because rotations are the same seating — and every row move (block, gap, complement) carries over with that one change.",
   whyItMatters:
-    "6 PYQs at 83% HARD — the densest HARD page in the chapter, and all six are 2023–2025. " +
+    "9 PYQs at 56% HARD — level with Selections as the densest HARD page in the chapter, and all nine are from 2023 onwards. " +
     "The stems are a special pair or trio that must not sit together, girls kept apart around a table, two tables of different sizes, alternating genders with a couple kept together, and a hat-colouring of a five-seat circle. " +
     "Each is a row problem with (n − 1)! in place of n!, plus the gap method, which is where most of the marks are lost.",
   concepts: [

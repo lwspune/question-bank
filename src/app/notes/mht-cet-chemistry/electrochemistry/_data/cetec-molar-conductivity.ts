@@ -6,7 +6,7 @@ export const MOLAR_CONDUCTIVITY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Molar conductivity Λ = 1000κ/c is the conductivity of one mole of electrolyte; it rises on dilution to a limit Λ₀ that Kohlrausch's law builds from the ions, and the ratio Λ/Λ₀ is the degree of dissociation of a weak electrolyte.",
   whyItMatters:
-    "24 PYQs, none HARD. Half are the conversion between κ and Λ in either direction (the 1000 is where marks are lost), a quarter are Kohlrausch — add and subtract Λ₀ values, or count ions with their coefficients — and the rest are α = Λ/Λ₀ as a fraction or a percentage. " +
+    "44 PYQs, one HARD. Half are the conversion between κ and Λ in either direction (the 1000 is where marks are lost), a quarter are Kohlrausch — add and subtract Λ₀ values, or count ions with their coefficients — and the rest are α = Λ/Λ₀ as a fraction or a percentage. " +
     "Two formulas and one factor of 1000.",
   concepts: [
     // 1 — molar conductivity and conductivity

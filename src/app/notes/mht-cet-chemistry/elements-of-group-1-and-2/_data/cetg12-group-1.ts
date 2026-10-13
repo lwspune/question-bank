@@ -8,7 +8,7 @@ export const GROUP_1_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The alkali metals Li, Na, K, Rb and Cs have one valence electron, form +1 ions with a noble-gas configuration, are the most electropositive elements, and become softer, lower-melting and more reactive down the group.",
   whyItMatters:
-    "11 PYQs, all EASY. Six test the group's properties — which statement is false, which metal tarnishes, what +1 ions are like; five test oxides, carbonate decomposition, the blue solution in ammonia, and caesium's use. " +
+    "20 PYQs, all but two EASY. Of the eleven set from 2021 to 2025, six test the group's properties — which statement is false, which metal tarnishes, what +1 ions are like; five test oxides, carbonate decomposition, the blue solution in ammonia, and caesium's use. " +
     "Two cards.",
   concepts: [
     {

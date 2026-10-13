@@ -6,7 +6,7 @@ export const ORDER_DEGREE_FORMATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The order is the highest derivative present; the degree is the power of that highest derivative once the equation is made polynomial in its derivatives; n independent arbitrary constants force an order-n differential equation, which you build by differentiating and eliminating the constants — or verify by substituting a proposed solution back.",
   whyItMatters:
-    "This is the entire MHT-CET differential-equations subtopic and it is a mark-bank: 31 PYQs sit here, spanning EASY definitional order/degree right up to HARD elimination of circle and parabola families. Two mechanical skills carry almost every question — read order/degree only AFTER clearing radicals and fractional powers, and form a family's equation by differentiating once per independent constant and eliminating. " +
+    "This is the entire MHT-CET differential-equations subtopic and it is a mark-bank: 58 PYQs sit here, spanning EASY definitional order/degree right up to HARD elimination of circle and parabola families. Two mechanical skills carry almost every question — read order/degree only AFTER clearing radicals and fractional powers, and form a family's equation by differentiating once per independent constant and eliminating. " +
     "The recurring traps are exactly three: the degree is undefined when a derivative sits inside a log/trig, redundant constants (like C₃e^{x+C₄}) must be collapsed before you count the order, and only INDEPENDENT constants count.",
   concepts: [
     // 1 — DE terminology (foundation, no PYQ — formula-variant, lint-exempt)

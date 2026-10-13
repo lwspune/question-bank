@@ -6,7 +6,7 @@ export const BAND_THEORY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Solids are sorted by the gap between their valence and conduction bands; a semiconductor's small gap lets heat free a few electrons, and doping with a pentavalent or trivalent impurity adds electrons (n-type) or holes (p-type) by the million.",
   whyItMatters:
-    "18 PYQs, none HARD. Two things are asked: how the bands look in a conductor, an insulator and a semiconductor (and what temperature does to a semiconductor's resistance), " +
+    "34 PYQs, none HARD. Two things are asked: how the bands look in a conductor, an insulator and a semiconductor (and what temperature does to a semiconductor's resistance), " +
     "and which impurity makes which type — with the carrier counts that follow.",
   concepts: [
     {

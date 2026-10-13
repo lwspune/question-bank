@@ -6,7 +6,7 @@ export const REACTIONS_OF_ALCOHOLS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An alcohol reacts by breaking its O–H bond (esterification, acidity) or its C–O bond (HX, PX₃, dehydration); tertiary alcohols react fastest with HX and Lucas reagent through a carbocation, dehydration follows Saytzeff with hydride shifts, and Grignard reagents build alcohols from carbonyls.",
   whyItMatters:
-    "14 PYQs, 2 HARD. Five are Lucas reagent and the HX reactivity order (tertiary first), plus which reaction breaks C–O; five are dehydration — hot Cu on a tertiary alcohol, the Saytzeff alkene from 2-methylhexan-3-ol with a hydride shift, the two-step propan-1-ol → propene → propan-2-ol; four are the Grignard back-calculation, which alcohol methanal cannot give, and acidity (p-nitrophenol strongest). " +
+    "31 PYQs, 3 HARD. Of the fourteen set from 2021 to 2025, five are Lucas reagent and the HX reactivity order (tertiary first), plus which reaction breaks C–O; five are dehydration — hot Cu on a tertiary alcohol, the Saytzeff alkene from 2-methylhexan-3-ol with a hydride shift, the two-step propan-1-ol → propene → propan-2-ol; four are the Grignard back-calculation, which alcohol methanal cannot give, and acidity (p-nitrophenol strongest). " +
     "Three cards.",
   concepts: [
     // 1 — Lucas and HX

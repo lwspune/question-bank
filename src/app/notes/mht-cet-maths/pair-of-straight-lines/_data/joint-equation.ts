@@ -6,8 +6,8 @@ export const JOINT_EQUATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Multiply two linear equations to get the joint equation; factorise a joint equation to get the two lines back — and with a third line, the three lines bound a triangle whose vertices, centroid and circumcentre follow from the intersections.",
   whyItMatters:
-    "12 PYQs at 17% HARD — the cheapest page in the chapter. Lines through the origin at 30° to the Y-axis (set twice), lines through a point parallel to the axis bisectors, the median-and-altitude pair from a vertex, two normal-form lines multiplied, and — the 2025 favourite — a factorable pair plus a third line forming a right triangle whose circumcentre or circumradius is asked. " +
-    "The two HARD ones factorise a pair and then do triangle geometry; nothing here is beyond expanding a product.",
+    "17 PYQs at 18% HARD — the cheapest page in the chapter. Lines through the origin at 30° to the Y-axis (set twice), lines through a point parallel to the axis bisectors, the median-and-altitude pair from a vertex, two normal-form lines multiplied, and — the 2025 favourite — a factorable pair plus a third line forming a right triangle whose circumcentre or circumradius is asked. " +
+    "Two of the three HARD ones factorise a pair and then do triangle geometry; nothing here is beyond expanding a product.",
   concepts: [
     // 1 — product of two lines
     {

@@ -8,7 +8,7 @@ export const FARADAY_LENZ_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Magnetic flux is B·A; whenever the flux through a circuit changes, an e.m.f. equal to the rate of change of flux linkage is induced (Faraday), in the direction that opposes the change (Lenz), and the charge that flows depends only on the total change in flux and the resistance, not on how fast it happened.",
   whyItMatters:
-    "22 PYQs, none HARD. Fifteen are Faraday's law with numbers — flux given as a function of time, a coil pulled out of a field, a field cut to a quarter, the charge that flows; seven are Lenz's law — a magnet falling through a ring, a cut ring or a pipe, the direction of the current in a ring falling towards a wire, and why Lenz's law is energy conservation. " +
+    "40 PYQs, none HARD. Of the twenty-two set from 2021 to 2025, fifteen are Faraday's law with numbers — flux given as a function of time, a coil pulled out of a field, a field cut to a quarter, the charge that flows; seven are Lenz's law — a magnet falling through a ring, a cut ring or a pipe, the direction of the current in a ring falling towards a wire, and why Lenz's law is energy conservation. " +
     "Two cards.",
   concepts: [
     {

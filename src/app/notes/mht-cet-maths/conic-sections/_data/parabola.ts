@@ -6,8 +6,8 @@ export const PARABOLA_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The four standard parabolas, their focus, directrix and latus rectum, a shifted parabola found by completing the square, and the tangent y = mx + a/m with what it does for pairs of tangents and common tangents.",
   whyItMatters:
-    "7 PYQs, two HARD. Two read a parabola's parts — a directrix after completing the square, the triangle on the latus rectum. " +
-    "Five are tangents: the condition c = a/m, a tangent parallel to a line, the angle between the two tangents from a point, a common tangent to two parabolas, and the angle at which two parabolas cross. Two cards.",
+    "18 PYQs, five HARD. Of the first seven, two read a parabola's parts — a directrix after completing the square, the triangle on the latus rectum. " +
+    "Five were tangents: the condition c = a/m, a tangent parallel to a line, the angle between the two tangents from a point, a common tangent to two parabolas, and the angle at which two parabolas cross. Two cards.",
   concepts: [
     {
       kind: "formula" as const,

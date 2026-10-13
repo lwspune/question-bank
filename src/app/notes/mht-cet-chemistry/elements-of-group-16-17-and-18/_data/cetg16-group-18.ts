@@ -8,7 +8,7 @@ export const GROUP_18_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The noble gases He, Ne, Ar, Kr, Xe and Rn have filled valence shells and few compounds, but xenon combines with fluorine and oxygen, and the shape of each xenon compound follows from its bond pairs and lone pairs exactly as for an interhalogen.",
   whyItMatters:
-    "3 PYQs, none HARD. Two are xenon shapes — the compound with one lone pair on Xe, and the one shaped like ClF₅ (XeOF₄ both times); one is a use — helium in MRI. " +
+    "7 PYQs, none HARD, all from 2025 and 2026. Of the first three, two are xenon shapes — the compound with one lone pair on Xe, and the one shaped like ClF₅ (XeOF₄ both times); one is a use — helium in MRI. " +
     "One card.",
   concepts: [
     {

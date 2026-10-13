@@ -8,7 +8,7 @@ export const BALANCING_REDOX_NOTE: SubtopicNote = {
   oneLineDefinition:
     "In a redox reaction one element's oxidation number rises and another's falls; the electrons lost by the first must equal the electrons gained by the second, and that equality fixes the coefficients.",
   whyItMatters:
-    "12 PYQs, none HARD. Six ask which element is oxidised or reduced, or whether a reaction is redox at all; six ask for electrons transferred or a missing coefficient. " +
+    "18 PYQs, none HARD. Of the twelve set from 2021 to 2025, six ask which element is oxidised or reduced, or whether a reaction is redox at all; six ask for electrons transferred or a missing coefficient. " +
     "Two cards, both built on the oxidation numbers of the page before.",
   concepts: [
     {

@@ -6,7 +6,7 @@ export const EXISTENCE_AND_INFINITY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A limit is where a function is heading, not where it is — so it can fail to exist when the two sides disagree, and it can be asked as x runs off to infinity.",
   whyItMatters:
-    "This is the foundation block: 9 PYQs at 44% HARD, the gentlest page of the chapter, but every later page assumes it. " +
+    "This is the foundation block: 17 PYQs at 35% HARD, the gentlest page of the chapter, but every later page assumes it. " +
     "Two question types recur almost verbatim across sittings — a modulus or greatest-integer expression near 0 where the left and right sides must be compared, " +
     "and a ratio at infinity that is settled by the leading powers alone. Learn the one-sided habit here, because the continuity pages use it on every question.",
   concepts: [

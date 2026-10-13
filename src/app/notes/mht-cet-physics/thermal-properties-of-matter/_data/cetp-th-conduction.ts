@@ -8,7 +8,7 @@ export const CONDUCTION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Heat flows along a rod at the rate Q/t = KAΔT/L, which is the temperature difference divided by the thermal resistance L/KA; slabs in series add their resistances and rods side by side add their conductances, exactly like electrical resistors.",
   whyItMatters:
-    "8 PYQs, none HARD: K from the flow rate, a rod's thermal resistance, a composite slab of two materials, two rods joined end to end and then side by side, and what happens when every dimension of a rod doubles. One asks which everyday heating is convection. One card.",
+    "18 PYQs, one HARD. The first eight are K from the flow rate, a rod's thermal resistance, a composite slab of two materials, two rods joined end to end and then side by side, and what happens when every dimension of a rod doubles. One asks which everyday heating is convection. One card.",
   concepts: [
     {
       kind: "formula" as const,

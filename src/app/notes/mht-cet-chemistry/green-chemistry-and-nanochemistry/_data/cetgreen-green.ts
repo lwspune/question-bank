@@ -8,7 +8,7 @@ export const GREEN_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Green chemistry designs processes that make less waste: its twelve principles favour prevention over clean-up, high atom economy, renewable feedstocks, fewer derivatives and safer solvents such as water and supercritical CO₂.",
   whyItMatters:
-    "19 PYQs, mostly EASY. Eight name or misstate a principle, six are atom-economy arithmetic, and five pick a green solvent or a plant source. " +
+    "36 PYQs, mostly EASY. Of the nineteen set from 2021 to 2025, eight name or misstate a principle, six are atom-economy arithmetic, and five pick a green solvent or a plant source. " +
     "Three cards; the only one with a calculation is atom economy.",
   concepts: [
     {

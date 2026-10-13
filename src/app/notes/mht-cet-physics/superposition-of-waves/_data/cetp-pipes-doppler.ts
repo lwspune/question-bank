@@ -6,7 +6,7 @@ export const PIPES_DOPPLER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An open pipe has antinodes at both ends and sounds every harmonic of v/2L; a closed pipe has a node at the closed end and sounds only the odd harmonics of v/4L; end corrections lengthen the air column, and a moving source or listener shifts the frequency heard.",
   whyItMatters:
-    "23 PYQs, five HARD. Three shapes: the frequencies and overtones of open and closed pipes (including a pipe dipped in water, which becomes closed), end corrections and the resonance tube, " +
+    "43 PYQs, sixteen HARD: now the densest-HARD page in the chapter. Three shapes: the frequencies and overtones of open and closed pipes (including a pipe dipped in water, which becomes closed), end corrections and the resonance tube, " +
     "and the Doppler formula.",
   concepts: [
     {

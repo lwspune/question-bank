@@ -6,7 +6,7 @@ export const LC_TRANSFORMER_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A charged capacitor discharging through an inductor swaps its energy back and forth at ω = 1/√(LC); a transformer steps voltage by the turns ratio; and a coil turning in a field generates e₀ = NABω.",
   whyItMatters:
-    "9 PYQs, three HARD. Three separate ideas share this page: the energy swap of an LC circuit (its peak current and the quarter-period timing), " +
+    "19 PYQs, four HARD. Three separate ideas share this page: the energy swap of an LC circuit (its peak current and the quarter-period timing), " +
     "the transformer's turns and efficiency, and the peak e.m.f. and power of a rotating coil.",
   concepts: [
     {

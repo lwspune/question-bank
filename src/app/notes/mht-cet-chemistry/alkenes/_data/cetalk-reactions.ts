@@ -8,7 +8,7 @@ export const ALKENE_REACTIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An alkene adds reagents across its double bond — HX with Markovnikov's rule, HBr with peroxide the other way round, water through hydroboration the other way too — and is oxidised by KMnO₄ to a diol (cold, dilute, alkaline) or cleaved to acids (hot, acidic), or cleaved by ozone to aldehydes and ketones.",
   whyItMatters:
-    "19 PYQs — half the chapter — none HARD. Seven are additions and their direction, nine are KMnO₄ (and one Wacker) oxidations, three are ozonolysis. " +
+    "30 PYQs — more than half the chapter — none HARD. Of the nineteen set from 2021 to 2025, seven are additions and their direction, nine are KMnO₄ (and one Wacker) oxidations, three are ozonolysis. " +
     "Three cards; the conditions decide the product every time.",
   concepts: [
     {

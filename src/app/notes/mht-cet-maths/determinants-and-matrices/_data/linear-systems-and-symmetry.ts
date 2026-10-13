@@ -6,7 +6,7 @@ export const LINEAR_SYSTEMS_AND_SYMMETRY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "AX = B is solved by elimination or by X = A⁻¹B; a homogeneous system has non-trivial solutions exactly when |A| = 0; and any square matrix splits uniquely into a symmetric plus a skew-symmetric part.",
   whyItMatters:
-    "8 PYQs at 38% HARD. The 3 × 3 system AX = B has been set every year — always with small integer solutions, so elimination beats the inverse — and the answer is usually a combination like 2a − 3b + 4c or x² + y² + z², so the solving must be complete. " +
+    "14 PYQs at 29% HARD. The 3 × 3 system AX = B has been set every year — always with small integer solutions, so elimination beats the inverse — and the answer is usually a combination like 2a − 3b + 4c or x² + y² + z², so the solving must be complete. " +
     "The HARD ones are the classification questions: a homogeneous system with a parameter (non-trivial solutions need a vanishing determinant) and a skew-symmetric coefficient matrix, which is singular whenever its order is odd.",
   concepts: [
     // 1 — solve AX = B

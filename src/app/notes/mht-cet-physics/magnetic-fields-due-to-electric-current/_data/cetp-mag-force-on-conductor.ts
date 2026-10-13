@@ -8,7 +8,7 @@ export const FORCE_ON_CONDUCTOR_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A wire of length L carrying current I in a field B feels F = I(L × B); two long parallel wires each sit in the other's field, so they attract when their currents run the same way and repel when opposite, with a force per unit length μ₀I₁I₂/(2πd).",
   whyItMatters:
-    "14 PYQs, 6 HARD. Three are the force on a single conductor — a wire in a field given as a vector, one side of a triangular loop, and the net force on a square coil beside a long wire; eleven are parallel wires — how the force changes with currents and distance, attraction or repulsion, three wires side by side, a wire floating above another, and the currents from the fields at the midpoint. " +
+    "21 PYQs, 7 HARD. Of the fourteen set from 2021 to 2025, three are the force on a single conductor — a wire in a field given as a vector, one side of a triangular loop, and the net force on a square coil beside a long wire; eleven are parallel wires — how the force changes with currents and distance, attraction or repulsion, three wires side by side, a wire floating above another, and the currents from the fields at the midpoint. " +
     "Two cards.",
   concepts: [
     {

@@ -6,7 +6,7 @@ export const BATTERIES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A primary cell (dry cell, mercury cell) is used once; a secondary cell (lead accumulator, nickel–cadmium) is recharged by running its reaction backwards as an electrolysis; a fuel cell is fed its reactants continuously.",
   whyItMatters:
-    "9 PYQs, none HARD — one short recall page. The paper asks what happens at the positive electrode of a dry cell (MnO₂ reduced to Mn₂O₃), what is consumed or produced when a lead accumulator discharges or recharges, and which statement about the H₂–O₂ fuel cell is wrong. " +
+    "16 PYQs, none HARD — one short recall page. The paper asks what happens at the positive electrode of a dry cell (MnO₂ reduced to Mn₂O₃), what is consumed or produced when a lead accumulator discharges or recharges, and which statement about the H₂–O₂ fuel cell is wrong. " +
     "Know the four half-reactions and the page is done.",
   concepts: [
     // 1 — dry cell and lead accumulator

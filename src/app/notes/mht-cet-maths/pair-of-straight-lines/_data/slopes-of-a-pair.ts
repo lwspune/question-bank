@@ -6,7 +6,7 @@ export const SLOPES_OF_A_PAIR_NOTE: SubtopicNote = {
   oneLineDefinition:
     "For ax² + 2hxy + by² = 0 the slopes satisfy m₁ + m₂ = −2h/b and m₁m₂ = a/b; any relation between the slopes (a ratio, a reciprocal, a common line) becomes an equation in a, h, b.",
   whyItMatters:
-    "10 PYQs at 50% HARD — the algebraic heart of the chapter. 'One slope is k times the other' has been set with k = 2, 3, 4 and the ratio 2 : 3; 'the slopes are reciprocals' once; 'a common line between two pairs' once; and the general identity (m₁ + m₂)²/(m₁m₂) = 4h²/(ab) twice, disguised as 16h² = 25ab and 4ab = 3h². " +
+    "16 PYQs at 56% HARD — the algebraic heart of the chapter and its densest HARD page. 'One slope is k times the other' has been set with k = 2, 3, 4 and the ratio 2 : 3; 'the slopes are reciprocals' once; 'a common line between two pairs' once; and the general identity (m₁ + m₂)²/(m₁m₂) = 4h²/(ab) twice, disguised as 16h² = 25ab and 4ab = 3h². " +
     "The HARD ones are the same identity with a parameter to eliminate; the trap is forgetting that b, not a, divides the coefficients.",
   concepts: [
     // 1 — sum and product

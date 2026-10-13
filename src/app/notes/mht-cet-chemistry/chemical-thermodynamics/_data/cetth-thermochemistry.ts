@@ -6,7 +6,7 @@ export const THERMOCHEMISTRY_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The enthalpy of a reaction is products minus reactants in enthalpies of formation (elements count zero), is independent of the route (Hess's law), and can be estimated from bond enthalpies as bonds broken minus bonds formed.",
   whyItMatters:
-    "21 PYQs, 1 HARD. Two thirds are ΔrH° = ΣΔfH°(products) − ΣΔfH°(reactants) for a combustion, or the per-mole scaling of a formation enthalpy (the equation makes 2 mol, the answer wants 1). The rest: bond enthalpies, Hess's law as a statement, and the enthalpy of solution as lattice plus hydration.",
+    "42 PYQs, 1 HARD. Two thirds are ΔrH° = ΣΔfH°(products) − ΣΔfH°(reactants) for a combustion, or the per-mole scaling of a formation enthalpy (the equation makes 2 mol, the answer wants 1). The rest: bond enthalpies, Hess's law as a statement, and the enthalpy of solution as lattice plus hydration.",
   concepts: [
     // 1 — formation and reaction enthalpy
     {

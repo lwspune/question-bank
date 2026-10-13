@@ -6,7 +6,7 @@ export const POLARISATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A polaroid passes only the component of light along its axis: unpolarised light is halved, and polarised light is cut to I cos²θ; light reflected at Brewster's angle, tan θ = μ, is fully polarised.",
   whyItMatters:
-    "10 PYQs, one HARD. Two shapes: intensity through a chain of polaroids — halve once, then multiply a cos² for every angle between neighbours — " +
+    "19 PYQs, three HARD. Two shapes: intensity through a chain of polaroids — halve once, then multiply a cos² for every angle between neighbours — " +
     "and Brewster's angle, tied to the refractive index and to the speed of light in the medium.",
   concepts: [
     {

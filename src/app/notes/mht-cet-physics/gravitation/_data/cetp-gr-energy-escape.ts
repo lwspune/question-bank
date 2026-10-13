@@ -8,7 +8,7 @@ export const ENERGY_ESCAPE_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A mass m at distance r from the centre of a mass M has potential energy −GMm/r; conserving kinetic plus potential energy between two distances gives a falling body's speed, a projected body's greatest height, and the escape velocity √(2GM/R) at which it never returns.",
   whyItMatters:
-    "19 PYQs, 8 of them HARD — the most HARD questions in the chapter. Nine use potential energy between two distances: the speed a body gains falling from far away, the energy to raise a satellite, a satellite's energy ratios. " +
+    "28 PYQs, 14 of them HARD — the most HARD questions in the chapter. Of the nineteen set from 2021 to 2025, nine use potential energy between two distances: the speed a body gains falling from far away, the energy to raise a satellite, a satellite's energy ratios. " +
     "Ten are escape velocity and the height reached below it, including escape from a point between the earth and the moon. Two cards.",
   concepts: [
     {

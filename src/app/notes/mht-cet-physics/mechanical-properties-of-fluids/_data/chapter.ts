@@ -4,7 +4,7 @@ export const MHTCET_FLUIDS_CHAPTER: ChapterNote = {
   chapterName: "Mechanical Properties of Fluids",
   title: "Mechanical Properties of Fluids — MHT-CET Physics",
   intro:
-    "Mechanical Properties of Fluids has 124 past-year questions in the MHT-CET bank, about one in five HARD. " +
+    "Mechanical Properties of Fluids has 201 past-year questions in the MHT-CET bank, about one in five HARD. " +
     "Two thirds of them are surface tension: the energy of a film or a drop, what happens when drops split or merge, the excess pressure inside a bubble, and capillary rise. " +
     "The rest is fluids in motion — viscosity and terminal velocity, then continuity, Bernoulli and Torricelli — after a short page on pressure with depth and buoyancy. Every PYQ is tagged.",
   cardBlurb:

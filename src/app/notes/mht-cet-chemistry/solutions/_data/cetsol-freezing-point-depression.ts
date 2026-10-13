@@ -6,7 +6,7 @@ export const FREEZING_POINT_DEPRESSION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A non-volatile solute lowers the freezing point by ΔTf = Kf · m (times i for an electrolyte); the molar-mass form is M₂ = 1000 Kf W₂/(ΔTf W₁), with Kf = 1.86 K kg mol⁻¹ for water.",
   whyItMatters:
-    "16 PYQs, none HARD — the boiling-point page with a different constant, and the exam sets it the same way: molality from ΔTf (often given as a freezing point of −0.36 °C or −0.95 °C), Kf from a measured depression, molar mass from masses, and a ranking of electrolytes by i·m. " +
+    "22 PYQs, none HARD — the boiling-point page with a different constant, and the exam sets it the same way: molality from ΔTf (often given as a freezing point of −0.36 °C or −0.95 °C), Kf from a measured depression, molar mass from masses, and a ranking of electrolytes by i·m. " +
     "The one new habit is reading a negative Celsius freezing point as a positive ΔTf.",
   concepts: [
     // 1 — ΔTf = Kf m

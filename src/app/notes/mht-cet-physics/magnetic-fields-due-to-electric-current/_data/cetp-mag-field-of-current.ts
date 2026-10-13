@@ -8,7 +8,7 @@ export const FIELD_OF_CURRENT_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Every piece of current makes a field by the Biot–Savart law; added up, a long straight wire gives μ₀I/(2πd) in circles around it, a circular coil gives μ₀NI/(2R) at its centre, an arc gives the same times its fraction of a circle, a half-infinite wire gives half the long-wire value, and a long solenoid or a toroid gives μ₀nI inside.",
   whyItMatters:
-    "52 PYQs, 17 HARD — the largest page in the chapter and where most of its HARD questions sit. Twelve are straight wires — two parallel wires at a midpoint or at a point where their fields are perpendicular, inside and outside a thick wire, and where a wire cancels a loop; twenty are circular coils — the field at the centre and on the axis, coils in perpendicular planes, a wire rewound into more turns, and charges going round a circle; thirteen are arcs and bent wires read from a figure; seven are solenoids, toroids and displacement current. " +
+    "83 PYQs, 23 HARD — the largest page in the chapter and where most of its HARD questions sit. Of the fifty-two set from 2021 to 2025, twelve are straight wires — two parallel wires at a midpoint or at a point where their fields are perpendicular, inside and outside a thick wire, and where a wire cancels a loop; twenty are circular coils — the field at the centre and on the axis, coils in perpendicular planes, a wire rewound into more turns, and charges going round a circle; thirteen are arcs and bent wires read from a figure; seven are solenoids, toroids and displacement current. " +
     "Four cards.",
   concepts: [
     {

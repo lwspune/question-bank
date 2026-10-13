@@ -8,7 +8,7 @@ export const EQUIPARTITION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "At temperature T every molecule has average translational kinetic energy (3/2)kT whatever its mass, and each degree of freedom carries ½kT; counting f degrees of freedom gives C_v = (f/2)R, C_p = C_v + R and γ = 1 + 2/f.",
   whyItMatters:
-    "25 PYQs, 3 of them HARD. Ten use the average kinetic energy — it depends only on absolute temperature, and a container brought suddenly to rest turns its motion into heat. " +
+    "43 PYQs, 5 of them HARD. Of the twenty-five set from 2021 to 2025, ten use the average kinetic energy — it depends only on absolute temperature, and a container brought suddenly to rest turns its motion into heat. " +
     "Fifteen count degrees of freedom to get C_v, C_p and γ, including a mixture of three gases and the same heat given at constant pressure and at constant volume. Two cards.",
   concepts: [
     {

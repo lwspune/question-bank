@@ -8,7 +8,7 @@ export const CARNOT_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A Carnot engine runs between a hot source at T₁ and a cold sink at T₂ through two isothermal and two adiabatic steps, and its efficiency 1 − T₂/T₁ is the most any engine between those temperatures can reach; run backwards it is a refrigerator with coefficient of performance T₂/(T₁ − T₂).",
   whyItMatters:
-    "11 PYQs, 3 of them HARD. The favourite gives the efficiency before and after the sink is lowered by some kelvins and asks for both temperatures. " +
+    "18 PYQs, 3 of them HARD. The favourite gives the efficiency before and after the sink is lowered by some kelvins and asks for both temperatures. " +
     "Others ask for the work from a given heat, the source temperature for a higher efficiency, a refrigerator's room temperature, the link between efficiency and COP, and the order of the cycle's steps. One card.",
   concepts: [
     {

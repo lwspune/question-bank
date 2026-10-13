@@ -8,7 +8,7 @@ export const MOMENTUM_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Impulse — force times time, or the area under a force–time graph — equals the change in momentum; with no external force the total momentum of a system is conserved, and in a collision the coefficient of restitution e compares the speed of separation to the speed of approach.",
   whyItMatters:
-    "17 PYQs, one HARD. Eight are impulse and momentum rates — a force–time graph, a conveyor belt, a machine gun, balls rebounding from a surface, momentum against kinetic energy. " +
+    "30 PYQs, 3 HARD. Of the seventeen set from 2021 to 2025, eight are impulse and momentum rates — a force–time graph, a conveyor belt, a machine gun, balls rebounding from a surface, momentum against kinetic energy. " +
     "Nine are collisions: the speeds after a head-on collision, bodies that stick, the height of a rebound, and the mass ratio for a given slowing. Two cards.",
   concepts: [
     {

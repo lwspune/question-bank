@@ -6,7 +6,7 @@ export const SECTION_FORMULA_AND_RECTANGLES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The point dividing AB in m : n is ((mx₂ + nx₁)/(m + n), (my₂ + ny₁)/(m + n)); the midpoint is the 1 : 1 case, and it is the centre of any rectangle's diagonal and the circumcentre of a right triangle.",
   whyItMatters:
-    "6 PYQs, none HARD — the smallest page in the chapter and the cheapest. A ratio on a segment, the centre of a rectangle given by its side lines, the two missing vertices of a rectangle from one diagonal and the line they lie on (set in 2024 and 2025), a circumcentre, and the ratio in which the origin divides a segment between two parallel lines. " +
+    "11 PYQs, one HARD — the smallest page in the chapter and one of the cheapest. A ratio on a segment, the centre of a rectangle given by its side lines, the two missing vertices of a rectangle from one diagonal and the line they lie on (set in 2024 and 2025), a circumcentre, and the ratio in which the origin divides a segment between two parallel lines. " +
     "Each is one formula and one substitution.",
   concepts: [
     // 1 — section formula

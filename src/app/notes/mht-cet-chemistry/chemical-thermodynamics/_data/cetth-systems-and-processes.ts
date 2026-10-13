@@ -6,7 +6,7 @@ export const SYSTEMS_AND_PROCESSES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A system is the part of the universe under study; its properties are intensive (independent of amount) or extensive, and state functions (fixed by the state) or path functions (heat, work); a process is named by what it holds constant.",
   whyItMatters:
-    "12 PYQs, all EASY — pure recall. The paper asks which property is intensive or extensive, which is a path function, what an isolated system is, which process keeps volume constant, and what is true or false of an isothermal or reversible process. " +
+    "22 PYQs, all EASY — pure recall. The paper asks which property is intensive or extensive, which is a path function, what an isolated system is, which process keeps volume constant, and what is true or false of an isothermal or reversible process. " +
     "Two short tables and five process definitions cover it.",
   concepts: [
     // 1 — systems and properties

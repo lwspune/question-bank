@@ -6,7 +6,7 @@ export const LAWS_COMBINATION_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Five named laws fix the ratios in which elements combine (conservation of mass, definite and multiple proportions, reciprocal proportions and combining volumes, Avogadro's law), while percentage composition converts a formula into the mass fraction of each element.",
   whyItMatters:
-    "Seven PYQs, split two ways. Four of them test the law of multiple proportions as a recognition task — pick the pair of compounds that does (or does not) demonstrate it — and the single give-away is whether the two compounds share the SAME two elements. The remaining three are one name-the-law question (definite proportions) and two short calculations (percentage of an element by mass, percent atom economy). So this subtopic is one recall table plus two one-line formulas — all EASY-to-MODERATE and heavily recall-driven.",
+    "Eight PYQs; the first seven split two ways. Four of them test the law of multiple proportions as a recognition task — pick the pair of compounds that does (or does not) demonstrate it — and the single give-away is whether the two compounds share the SAME two elements. The remaining three are one name-the-law question (definite proportions) and two short calculations (percentage of an element by mass, percent atom economy). So this subtopic is one recall table plus two one-line formulas — all EASY-to-MODERATE and heavily recall-driven.",
   concepts: [
     // reference table — the five named laws
     {

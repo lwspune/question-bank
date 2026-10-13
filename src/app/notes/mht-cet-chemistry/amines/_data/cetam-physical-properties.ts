@@ -6,7 +6,7 @@ export const PHYSICAL_PROPERTIES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Primary and secondary amines hydrogen-bond through N–H, tertiary amines cannot; so boiling points run primary > secondary > tertiary among isomers, amines sit below alcohols and far below carboxylic acids, and water solubility runs alcohol > amine > alkane.",
   whyItMatters:
-    "8 PYQs, none HARD — one page, one idea. Two ask which C₄H₁₁N isomer boils highest (n-butylamine), two ask which compound has no intermolecular hydrogen bonding (trimethylamine), two ask the amine < alcohol < acid boiling-point order, two ask solubility (alcohol > amine > alkane; CH₄ least). " +
+    "10 PYQs, none HARD — one page, one idea. Of the eight set from 2021 to 2025, two ask which C₄H₁₁N isomer boils highest (n-butylamine), two ask which compound has no intermolecular hydrogen bonding (trimethylamine), two ask the amine < alcohol < acid boiling-point order, two ask solubility (alcohol > amine > alkane; CH₄ least). " +
     "One card.",
   concepts: [
     {

@@ -6,7 +6,7 @@ export const INTERSECTION_COPLANARITY_SKEW_NOTE: SubtopicNote = {
   oneLineDefinition:
     "When do two 3-D lines meet, lie in one plane, or fly past each other? The single tool is the scalar-triple-product determinant of the joining vector and the two direction vectors — zero means coplanar (they intersect or are parallel), non-zero means skew, and dividing by the cross-product magnitude gives the shortest distance.",
   whyItMatters:
-    "This is the HARDEST subtopic in the chapter — about two-thirds of its PYQs are HARD — and the most repeated single stem across the whole Line and Plane chapter is 'these two lines intersect (are coplanar), find k'. " +
+    "This is one of the two hardest subtopics in the chapter — half of its 52 PYQs are HARD — and the most repeated single stem across the whole Line and Plane chapter is 'these two lines intersect (are coplanar), find k'. " +
     "That stem hides a signature trap: the coplanarity determinant is QUADRATIC in the unknown, so it has TWO answers (the bank's correct option lists both, e.g. k = 1, 2 or k = 0, -3) and a single-value distractor is the planted wrong answer. " +
     "Master one determinant — the scalar triple product [joining vector, direction-1, direction-2] = 0 — and you own coplanarity, the intersect-find-k template, four-point coplanarity, and (divided by the cross-product magnitude) the shortest distance between skew lines. The shortest-distance questions reverse the same machinery: 'SD given, find the parameter' is again quadratic.",
   concepts: [

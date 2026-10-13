@@ -6,7 +6,7 @@ export const TRIG_EQUATIONS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A trigonometric equation is solved by reducing it to one ratio equal to one value, writing the general solution from three fixed patterns, and then keeping only the roots the stated interval and the original equation allow.",
   whyItMatters:
-    "47 PYQs, 36% HARD. The paper asks the same five things in rotation: a general or principal solution, a quadratic in one ratio with a root to reject, a cos x + b sin x = c, an equation solved by factorising a sum of sines, and a range argument that shows an equation has no solution or counts its roots. " +
+    "69 PYQs, 42% HARD. The paper asks the same five things in rotation: a general or principal solution, a quadratic in one ratio with a root to reject, a cos x + b sin x = c, an equation solved by factorising a sum of sines, and a range argument that shows an equation has no solution or counts its roots. " +
     "The marks are lost in the last step — keeping a root where the original equation is undefined, or counting over the wrong interval — so every concept here ends with a check.",
   concepts: [
     // 1 — the three general-solution patterns
