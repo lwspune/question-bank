@@ -31,6 +31,10 @@ describe("wordsOf", () => {
   it("does not leak LaTeX command names such as frac or times", () => {
     expect(wordsOf("\\(\\frac{1}{2} \\times 10^{6}\\,\\mathrm{ms^{-1}}\\)")).toEqual(["ms"]);
   });
+
+  it("also yields a letter joined to its letter subscript, the way the text layer prints Q_v as 'Qv'", () => {
+    expect(wordsOf("\\(\\mathrm{Q_p = \\Delta U + P_{ext}\\Delta V}\\)")).toEqual(expect.arrayContaining(["qp", "pext"]));
+  });
 });
 
 describe("textLayerFidelity", () => {
@@ -57,6 +61,11 @@ describe("textLayerFidelity", () => {
   it("names a PROSE word the transcription added that the PDF does not have", () => {
     const t = "What is the approximate total mass of the precipitate formed when mL of solution of AgNO is mixed";
     expect(textLayerFidelity(t, layer).extra).toEqual(["total"]);
+  });
+
+  it("matches a subscripted symbol the layer runs together (Q_v -> 'Qv', P_{ext} -> 'Pext')", () => {
+    const t = "\\(\\mathrm{\\Delta U = Q_v}\\) or \\(\\mathrm{Q_p = \\Delta U + P_{ext}\\Delta V}\\)";
+    expect(textLayerFidelity(t, "U Qv or Qp U Pext V").missing).toEqual([]);
   });
 
   it("does not report words inside math as extra (the layer omits most math)", () => {

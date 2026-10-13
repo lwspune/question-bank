@@ -28,12 +28,15 @@ const MATH_ZONE = /\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]/g;
  * letters (variables, option labels) are noise on both sides and are dropped.
  */
 export function wordsOf(s: string): string[] {
-  const stripped = s
-    .replace(/\\[A-Za-z]+/g, " ") // command names
-    // keep sub/superscript CONTENT: a superscript word ("1/20^{th}") prints as text, and an
-    // extra word on the transcript side can never hide a word missing from it
-    .replace(/[_^]/g, " ");
-  return (stripped.toLowerCase().match(/[a-z]+/g) ?? []).filter((w) => w.length >= 2);
+  const noCommands = s.replace(/\\[A-Za-z]+/g, " "); // command names
+  // keep sub/superscript CONTENT: a superscript word ("1/20^{th}") prints as text, and an
+  // extra word on the transcript side can never hide a word missing from it
+  const stripped = noCommands.replace(/[_^]/g, " ");
+  const words = (stripped.toLowerCase().match(/[a-z]+/g) ?? []).filter((w) => w.length >= 2);
+  // the text layer runs a letter subscript into its symbol (Q_v prints as "Qv", P_{ext} as
+  // "Pext"), so offer the joined form too
+  const joined = [...noCommands.matchAll(/([A-Za-z]+)[_^]\{?([A-Za-z]+)\}?/g)].map((m) => (m[1] + m[2]).toLowerCase());
+  return [...words, ...joined];
 }
 
 function countMap(words: string[]): Map<string, number> {
