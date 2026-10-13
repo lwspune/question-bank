@@ -2095,6 +2095,7 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Zoological Parks",
       "Biodiversity Parks",
       "Taxonomic Keys",
+      "Conservation of Biodiversity",
     ],
   },
   "systematics-11-bio": {
