@@ -271,6 +271,11 @@ export const CHAPTERS: Record<string, Chapter> = {
         answerKey: "13. Probability\\Quiz\\Probability_30Q_ak.docx",
         note: "AFCAT practice — LWS Pune quiz, Probability. Source key AI-written; every key blind re-derived.",
       },
+      // The *_old.xls siblings are earlier versions of these four sheets; not used.
+      { key: "cp-cards", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Cards", path: "10. Probability\\1)Cards.xlsx", subtopic: "Playing Cards", note: "AFCAT practice — Cadetprep AFCAT sheet, Probability. Every key blind re-derived." },
+      { key: "cp-coins", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Coins", path: "10. Probability\\2)Coins.xlsx", subtopic: "Coin Tosses", note: "AFCAT practice — Cadetprep AFCAT sheet, Probability. Every key blind re-derived." },
+      { key: "cp-dice", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Dice", path: "10. Probability\\3)Dice .xlsx", subtopic: "Dice", note: "AFCAT practice — Cadetprep AFCAT sheet, Probability. Every key blind re-derived." },
+      { key: "cp-balls", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Balls", path: "10. Probability\\4)Ball.xlsx", subtopic: "Drawing from a Bag", note: "AFCAT practice — Cadetprep AFCAT sheet, Probability. Every key blind re-derived." },
     ],
   },
   "profit-and-loss": {

@@ -1,0 +1,579 @@
+{
+  "path": "10. Probability\\2)Coins.xlsx",
+  "group": "D",
+  "transcribed": "read from the Cadetprep Excel sheet by extract-cadetprep.ts (sheet row = n); key and solution are the source's, kept as evidence",
+  "questions": [
+    {
+      "n": 2,
+      "stem": "What is the probability of getting a head when a fair coin is tossed once?",
+      "options": [
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{3}{4}\\)",
+        "\\(1\\)"
+      ],
+      "key": "B",
+      "keySolution": "When a fair coin is tossed, there are \\(2\\) equally likely outcomes: Head (H) and Tail (T).\r\nProbability of getting a head = \\(\\frac{\\text{Number of favorable outcomes}}{\\text{Total number of outcomes}} = \\frac{1}{2}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 3,
+      "stem": "Two fair coins are tossed simultaneously. What is the probability of getting exactly one head?",
+      "options": [
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{3}{4}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{1}{3}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Sample space when two coins are tossed: {HH, HT, TH, TT}\r\nTotal outcomes = \\(4\\)\r\nFavorable outcomes for exactly one head: {HT, TH}\r\nNumber of favorable outcomes = \\(2\\)\r\nProbability = \\(\\frac{2}{4} = \\frac{1}{2}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 4,
+      "stem": "What is the probability of getting at least one head when two fair coins are tossed?",
+      "options": [
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{2}{3}\\)",
+        "\\(\\frac{3}{4}\\)",
+        "\\(\\frac{1}{4}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Sample space: {HH, HT, TH, TT}\r\nAt least one head means one or more heads\r\nFavorable outcomes: {HH, HT, TH}\r\nProbability = \\(\\frac{3}{4}\\)\r\nAlternatively, P(at least one head) = \\(1 - P(\\text{no heads}) = 1 - \\frac{1}{4} = \\frac{3}{4}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 5,
+      "stem": "Three fair coins are tossed. What is the probability of getting exactly two heads?",
+      "options": [
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{5}{8}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total outcomes when three coins are tossed = \\(2^3 = 8\\)\r\nFavorable outcomes for exactly two heads: {HHT, HTH, THH}\r\nNumber of favorable outcomes = \\(3\\)\r\nProbability = \\(\\frac{3}{8}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 6,
+      "stem": "What is the probability of getting all tails when four fair coins are tossed?",
+      "options": [
+        "\\(\\frac{1}{8}\\)",
+        "\\(\\frac{1}{16}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{1}{32}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Total outcomes when four coins are tossed = \\(2^4 = 16\\)\r\nFavorable outcome for all tails: {TTTT}\r\nNumber of favorable outcomes = \\(1\\)\r\nProbability = \\(\\frac{1}{16}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 7,
+      "stem": "Five fair coins are tossed. What is the probability of getting at least four heads?",
+      "options": [
+        "\\(\\frac{6}{32}\\)",
+        "\\(\\frac{1}{8}\\)",
+        "\\(\\frac{5}{32}\\)",
+        "\\(\\frac{3}{16}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Total outcomes = \\(2^5 = 32\\)\r\nAt least four heads means exactly four heads OR exactly five heads\r\nWays to get exactly four heads = \\(\\binom{5}{4} = 5\\)\r\nWays to get exactly five heads = \\(\\binom{5}{5} = 1\\)\r\nTotal favorable outcomes = \\(5 + 1 = 6\\)\r\nProbability = \\(\\frac{6}{32} = \\frac{3}{16}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 8,
+      "stem": "A coin is tossed three times. What is the probability that the first toss is a head given that at least one head appears?",
+      "options": [
+        "\\(\\frac{3}{7}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{4}{7}\\)",
+        "\\(\\frac{2}{3}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Let A = first toss is head, B = at least one head appears\r\nSample space: {HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}\r\nEvent B: {HHH, HHT, HTH, HTT, THH, THT, TTH} - \\(7\\) outcomes\r\nEvent A∩B: {HHH, HHT, HTH, HTT} - \\(4\\) outcomes\r\nP(A|B) = \\(\\frac{P(A ∩ B)}{P(B)} = \\frac{4/8}{7/8} = \\frac{4}{7}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 9,
+      "stem": "Two coins are tossed. What is the probability of getting at most one head?",
+      "options": [
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{3}{4}\\)",
+        "\\(1\\)"
+      ],
+      "key": "C",
+      "keySolution": "Sample space: {HH, HT, TH, TT}\r\nAt most one head means zero heads OR one head\r\nFavorable outcomes: {HT, TH, TT}\r\nNumber of favorable outcomes = \\(3\\)\r\nProbability = \\(\\frac{3}{4}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 10,
+      "stem": "What is the probability of getting exactly \\(3\\) heads when \\(5\\) fair coins are tossed?",
+      "options": [
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{10}{32}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{5}{16}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Total outcomes = \\(2^5 = 32\\)\r\nNumber of ways to get exactly \\(3\\) heads from \\(5\\) coins = \\(\\binom{5}{3} = \\frac{5!}{3!2!} = 10\\)\r\nProbability = \\(\\frac{10}{32} = \\frac{5}{16}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 11,
+      "stem": "Four coins are tossed simultaneously. What is the probability of getting exactly one tail?",
+      "options": [
+        "\\(\\frac{1}{16}\\)",
+        "\\(\\frac{1}{8}\\)",
+        "\\(\\frac{3}{16}\\)",
+        "\\(\\frac{1}{4}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Total outcomes = \\(2^4 = 16\\)\r\nExactly one tail means exactly three heads\r\nNumber of ways = \\(\\binom{4}{1} = 4\\) (or \\(\\binom{4}{3} = 4\\))\r\nProbability = \\(\\frac{4}{16} = \\frac{1}{4}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 12,
+      "stem": "A fair coin is tossed \\(4\\) times. What is the probability that heads and tails appear alternately?",
+      "options": [
+        "\\(\\frac{1}{8}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{3}{16}\\)",
+        "\\(\\frac{1}{16}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total outcomes = \\(2^4 = 16\\)\r\nAlternating patterns: HTHТ and THTH\r\nNumber of favorable outcomes = \\(2\\)\r\nProbability = \\(\\frac{2}{16} = \\frac{1}{8}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 13,
+      "stem": "Three fair coins are tossed. What is the probability of getting at most two heads?",
+      "options": [
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{3}{4}\\)",
+        "\\(\\frac{5}{8}\\)",
+        "\\(\\frac{7}{8}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Total outcomes = \\(2^3 = 8\\)\r\nAt most two heads means not getting three heads\r\nP(at most two heads) = \\(1 - P(\\text{three heads}) = 1 - \\frac{1}{8} = \\frac{7}{8}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 14,
+      "stem": "What is the probability of getting an odd number of heads when three fair coins are tossed?",
+      "options": [
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{5}{8}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Sample space: {HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}\r\nOdd number of heads: \\(1\\) head or \\(3\\) heads\r\nOutcomes with \\(1\\) head: {HTT, THT, TTH} - \\(3\\) outcomes\r\nOutcomes with \\(3\\) heads: {HHH} - \\(1\\) outcome\r\nTotal favorable outcomes = \\(3 + 1 = 4\\)\r\nProbability = \\(\\frac{4}{8} = \\frac{1}{2}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 15,
+      "stem": "Two fair coins are tossed. What is the probability that both coins show the same face?",
+      "options": [
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{2}{3}\\)",
+        "\\(\\frac{3}{4}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Sample space: {HH, HT, TH, TT}\r\nSame face outcomes: {HH, TT}\r\nNumber of favorable outcomes = \\(2\\)\r\nProbability = \\(\\frac{2}{4} = \\frac{1}{2}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 16,
+      "stem": "Five fair coins are tossed. What is the probability of getting exactly two heads?",
+      "options": [
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{10}{32}\\)",
+        "\\(\\frac{5}{16}\\)",
+        "\\(\\frac{3}{8}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total outcomes = \\(2^5 = 32\\)\r\nNumber of ways to choose \\(2\\) positions for heads out of \\(5\\) = \\(\\binom{5}{2} = \\frac{5!}{2!3!} = 10\\)\r\nProbability = \\(\\frac{10}{32} = \\frac{5}{16}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 17,
+      "stem": "A fair coin is tossed until a head appears. What is the probability that exactly \\(3\\) tosses are needed?",
+      "options": [
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{1}{8}\\)",
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{3}\\)"
+      ],
+      "key": "B",
+      "keySolution": "For exactly \\(3\\) tosses to be needed, the sequence must be TTH\r\nP(T) = \\(\\frac{1}{2}\\), P(H) = \\(\\frac{1}{2}\\)\r\nP(TTH) = \\(\\frac{1}{2} \\times \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{8}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 18,
+      "stem": "Four coins are tossed. What is the probability of getting at least \\(2\\) heads?",
+      "options": [
+        "\\(\\frac{7}{8}\\)",
+        "\\(\\frac{5}{8}\\)",
+        "\\(\\frac{3}{4}\\)",
+        "\\(\\frac{11}{16}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Total outcomes = \\(2^4 = 16\\)\r\nAt least \\(2\\) heads = \\(1 - P(0 \\text{ heads}) - P(1 \\text{ head})\\)\r\nP(0 heads) = \\(\\frac{\\binom{4}{0}}{16} = \\frac{1}{16}\\)\r\nP(1 head) = \\(\\frac{\\binom{4}{1}}{16} = \\frac{4}{16}\\)\r\nP(at least 2 heads) = \\(1 - \\frac{1}{16} - \\frac{4}{16} = \\frac{11}{16}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 19,
+      "stem": "Three fair coins are tossed. What is the probability that at least two consecutive coins show heads?",
+      "options": [
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{5}{8}\\)",
+        "\\(\\frac{3}{4}\\)",
+        "\\(\\frac{1}{2}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Sample space: {HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}\r\nOutcomes without consecutive heads: {HTH, HTT, THT, TTH} = \\(4\\) outcomes\r\nOutcomes with at least two consecutive heads = \\(8-4 = 4\\)\r\nProbability = \\(\\frac{4}{8} = \\frac{1}{2}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 20,
+      "stem": "What is the probability of getting exactly one head in the first three tosses when a fair coin is tossed five times?",
+      "options": [
+        "\\(\\frac{3}{16}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{5}{16}\\)",
+        "\\(\\frac{3}{8}\\)"
+      ],
+      "key": "D",
+      "keySolution": "We need exactly one head in the first three tosses\r\nThe last two tosses can be anything\r\nProbability of exactly one head in first three tosses = \\(\\binom{3}{1} \\times (\\frac{1}{2})^3 = 3 \\times \\frac{1}{8} = \\frac{3}{8}\\)\r\nThe last two tosses don't affect this probability",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 21,
+      "stem": "Two fair coins are tossed \\(3\\) times. What is the probability of getting at least one head in each toss?",
+      "options": [
+        "\\(\\frac{27}{64}\\)",
+        "\\(\\frac{37}{64}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{9}{16}\\)"
+      ],
+      "key": "A",
+      "keySolution": "P(at least one head when two coins are tossed) = \\(1 - P(\\text{both tails}) = 1 - \\frac{1}{4} = \\frac{3}{4}\\)\r\nFor this to happen in each of the \\(3\\) tosses:\r\nP(at least one head in each toss) = \\((\\frac{3}{4})^3 = \\frac{27}{64}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 22,
+      "stem": "A fair coin is tossed \\(4\\) times. What is the probability that the number of heads is even?",
+      "options": [
+        "\\(\\frac{9}{16}\\)",
+        "\\(\\frac{7}{16}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{5}{8}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Even number of heads: \\(0, 2, 4\\) heads\r\nP(0 heads) = \\(\\binom{4}{0}(\\frac{1}{2})^4 = 1 \\times \\frac{1}{16} = \\frac{1}{16}\\)\r\nP(2 heads) = \\(\\binom{4}{2}(\\frac{1}{2})^4 = 6 \\times \\frac{1}{16} = \\frac{6}{16}\\)\r\nP(4 heads) = \\(\\binom{4}{4}(\\frac{1}{2})^4 = 1 \\times \\frac{1}{16} = \\frac{1}{16}\\)\r\nTotal = \\(\\frac{1+6+1}{16} = \\frac{8}{16} = \\frac{1}{2}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 23,
+      "stem": "What is the probability of getting more heads than tails when \\(5\\) fair coins are tossed?",
+      "options": [
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{16}{32}\\)",
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{5}{8}\\)"
+      ],
+      "key": "A",
+      "keySolution": "More heads than tails means at least \\(3\\) heads (since we have \\(5\\) coins)\r\nP(3 heads) = \\(\\binom{5}{3}(\\frac{1}{2})^5 = 10 \\times \\frac{1}{32} = \\frac{10}{32}\\)\r\nP(4 heads) = \\(\\binom{5}{4}(\\frac{1}{2})^5 = 5 \\times \\frac{1}{32} = \\frac{5}{32}\\)\r\nP(5 heads) = \\(\\binom{5}{5}(\\frac{1}{2})^5 = 1 \\times \\frac{1}{32} = \\frac{1}{32}\\)\r\nTotal = \\(\\frac{10+5+1}{32} = \\frac{16}{32} = \\frac{1}{2}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 24,
+      "stem": "Three coins are tossed. What is the probability that the first coin shows head given that exactly two heads appear?",
+      "options": [
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{2}{3}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{3}{4}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Let A = first coin shows head, B = exactly two heads appear\r\nOutcomes with exactly two heads: {HHT, HTH, THH}\r\nOutcomes where first coin is head AND exactly two heads: {HHT, HTH}\r\nP(A|B) = \\(\\frac{\\text{Number of outcomes in } A ∩ B}{\\text{Number of outcomes in } B} = \\frac{2}{3}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 25,
+      "stem": "Four fair coins are tossed. What is the probability of getting the same number of heads and tails?",
+      "options": [
+        "\\(\\frac{6}{16}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{5}{16}\\)",
+        "\\(\\frac{3}{8}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Same number of heads and tails means \\(2\\) heads and \\(2\\) tails\r\nTotal outcomes = \\(2^4 = 16\\)\r\nNumber of ways to get exactly \\(2\\) heads = \\(\\binom{4}{2} = 6\\)\r\nProbability = \\(\\frac{6}{16} = \\frac{3}{8}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 26,
+      "stem": "What is the probability that when \\(5\\) coins are tossed, the first \\(3\\) coins show heads?",
+      "options": [
+        "\\(\\frac{1}{8}\\)",
+        "\\(\\frac{1}{16}\\)",
+        "\\(\\frac{1}{32}\\)",
+        "\\(\\frac{3}{32}\\)"
+      ],
+      "key": "A",
+      "keySolution": "The first \\(3\\) coins must show heads, the last \\(2\\) can show anything\r\nP(first three are heads) = \\((\\frac{1}{2})^3 = \\frac{1}{8}\\)\r\nThe last two coins don't affect this probability",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 27,
+      "stem": "Two fair coins are tossed twice. What is the probability of getting at least one head in each pair of tosses?",
+      "options": [
+        "\\(\\frac{9}{16}\\)",
+        "\\(\\frac{3}{4}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{5}{8}\\)"
+      ],
+      "key": "A",
+      "keySolution": "P(at least one head when two coins are tossed) = \\(\\frac{3}{4}\\)\r\nFor this to happen in both pairs of tosses:\r\nP(at least one head in each pair) = \\((\\frac{3}{4})^2 = \\frac{9}{16}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 28,
+      "stem": "A coin is tossed \\(3\\) times. What is the probability that heads appears for the first time on the third toss?",
+      "options": [
+        "\\(\\frac{1}{8}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{1}{6}\\)"
+      ],
+      "key": "A",
+      "keySolution": "For heads to appear for the first time on the third toss, the sequence must be TTH\r\nP(TTH) = P(T) × P(T) × P(H) = \\(\\frac{1}{2} \\times \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{8}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 29,
+      "stem": "Five fair coins are tossed. What is the probability that at least one tail appears?",
+      "options": [
+        "\\(\\frac{7}{8}\\)",
+        "\\(\\frac{15}{16}\\)",
+        "\\(\\frac{31}{32}\\)",
+        "\\(\\frac{1}{2}\\)"
+      ],
+      "key": "C",
+      "keySolution": "P(at least one tail) = \\(1 - P(\\text{no tails}) = 1 - P(\\text{all heads})\\)\r\nP(all heads) = \\((\\frac{1}{2})^5 = \\frac{1}{32}\\)\r\nP(at least one tail) = \\(1 - \\frac{1}{32} = \\frac{31}{32}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 30,
+      "stem": "What is the probability of getting exactly \\(2\\) heads when \\(4\\) fair coins are tossed?",
+      "options": [
+        "\\(\\frac{6}{16}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{1}{2}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total outcomes = \\(2^4 = 16\\)\r\nNumber of ways to choose \\(2\\) positions for heads out of \\(4\\) = \\(\\binom{4}{2} = \\frac{4!}{2!2!} = 6\\)\r\nProbability = \\(\\frac{6}{16} = \\frac{3}{8}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 31,
+      "stem": "Three coins are tossed. What is the probability that no two consecutive coins show the same face?",
+      "options": [
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{1}{8}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Sample space: {HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}\r\nNo two consecutive coins show same face: alternating pattern\r\nFavorable outcomes: {HTH, THT}\r\nNumber of favorable outcomes = \\(2\\)\r\nProbability = \\(\\frac{2}{8} = \\frac{1}{4}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 32,
+      "stem": "A fair coin is tossed \\(5\\) times. What is the probability that tails appears exactly twice?",
+      "options": [
+        "\\(\\frac{5}{16}\\)",
+        "\\(\\frac{10}{32}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{3}{8}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total outcomes = \\(2^5 = 32\\)\r\nExactly \\(2\\) tails means exactly \\(3\\) heads\r\nNumber of ways = \\(\\binom{5}{2} = \\frac{5!}{2!3!} = 10\\)\r\nProbability = \\(\\frac{10}{32} = \\frac{5}{16}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 33,
+      "stem": "What is the probability of getting at least \\(3\\) heads when \\(4\\) fair coins are tossed?",
+      "options": [
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{5}{16}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Total outcomes = \\(2^4 = 16\\)\r\nAt least \\(3\\) heads means exactly \\(3\\) heads OR exactly \\(4\\) heads\r\nP(exactly 3 heads) = \\(\\frac{\\binom{4}{3}}{16} = \\frac{4}{16}\\)\r\nP(exactly 4 heads) = \\(\\frac{\\binom{4}{4}}{16} = \\frac{1}{16}\\)\r\nP(at least 3 heads) = \\(\\frac{4+1}{16} = \\frac{5}{16}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 34,
+      "stem": "A coin is biased such that P(Head) = \\(\\frac{1}{3}\\). If the coin is tossed twice, what is the probability of getting exactly one head?",
+      "options": [
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{2}{9}\\)",
+        "\\(\\frac{4}{9}\\)",
+        "\\(\\frac{5}{9}\\)"
+      ],
+      "key": "C",
+      "keySolution": "P(Head) = \\(\\frac{1}{3}\\), P(Tail) = \\(1 - \\frac{1}{3} = \\frac{2}{3}\\)\r\nExactly one head can occur as: HT or TH\r\nP(HT) = \\(\\frac{1}{3} \\times \\frac{2}{3} = \\frac{2}{9}\\)\r\nP(TH) = \\(\\frac{2}{3} \\times \\frac{1}{3} = \\frac{2}{9}\\)\r\nP(exactly one head) = \\(\\frac{2}{9} + \\frac{2}{9} = \\frac{4}{9}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 35,
+      "stem": "Three fair coins are tossed simultaneously. What is the probability of getting more than one head?",
+      "options": [
+        "\\(\\frac{3}{4}\\)",
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{5}{8}\\)",
+        "\\(\\frac{1}{2}\\)"
+      ],
+      "key": "D",
+      "keySolution": "More than one head means \\(2\\) heads or \\(3\\) heads\r\nP(exactly 2 heads) = \\(\\frac{\\binom{3}{2}}{8} = \\frac{3}{8}\\)\r\nP(exactly 3 heads) = \\(\\frac{\\binom{3}{3}}{8} = \\frac{1}{8}\\)\r\nP(more than one head) = \\(\\frac{3}{8} + \\frac{1}{8} = \\frac{4}{8} = \\frac{1}{2}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 36,
+      "stem": "Four coins are tossed. What is the probability that at least \\(3\\) coins show the same face?",
+      "options": [
+        "\\(\\frac{5}{8}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{5}{16}\\)"
+      ],
+      "key": "A",
+      "keySolution": "At least \\(3\\) same means: exactly \\(3\\) heads + exactly \\(3\\) tails + all \\(4\\) heads + all \\(4\\) tails\r\nP(exactly 3 heads) = \\(\\frac{\\binom{4}{3}}{16} = \\frac{4}{16}\\)\r\nP(exactly 3 tails) = \\(\\frac{\\binom{4}{1}}{16} = \\frac{4}{16}\\)\r\nP(all 4 heads) = \\(\\frac{1}{16}\\)\r\nP(all 4 tails) = \\(\\frac{1}{16}\\)\r\nTotal = \\(\\frac{4+4+1+1}{16} = \\frac{10}{16} = \\frac{5}{8}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 37,
+      "stem": "What is the probability that when \\(5\\) fair coins are tossed, the number of heads is greater than the number of tails by exactly \\(1\\)?",
+      "options": [
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{10}{32}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{5}{16}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Let H = number of heads, T = number of tails\r\nWe need H - T = 1 and H + T = 5\r\nSolving: H = 3, T = 2\r\nSo we need exactly \\(3\\) heads\r\nP(exactly 3 heads) = \\(\\frac{\\binom{5}{3}}{2^5} = \\frac{10}{32} = \\frac{5}{16}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 38,
+      "stem": "A fair coin is tossed \\(n\\) times. If the probability of getting at least one head is \\(\\frac{7}{8}\\), find \\(n\\).",
+      "options": [
+        "\\(2\\)",
+        "\\(3\\)",
+        "\\(4\\)",
+        "\\(5\\)"
+      ],
+      "key": "B",
+      "keySolution": "P(at least one head) = \\(1 - P(\\text{all tails}) = 1 - (\\frac{1}{2})^n\\)\r\nGiven: \\(1 - (\\frac{1}{2})^n = \\frac{7}{8}\\)\r\n\\((\\frac{1}{2})^n = 1 - \\frac{7}{8} = \\frac{1}{8}\\)\r\n\\((\\frac{1}{2})^n = \\frac{1}{8} = (\\frac{1}{2})^3\\)\r\nTherefore, \\(n = 3\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 39,
+      "stem": "Three fair coins are tossed. What is the probability that the third coin shows head given that at least two heads appear?",
+      "options": [
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{3}{4}\\)",
+        "\\(\\frac{2}{3}\\)",
+        "\\(\\frac{1}{4}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Let A = third coin shows head, B = at least two heads appear\r\nOutcomes with at least two heads: {HHH, HHT, HTH, THH}\r\nOutcomes where third coin is head AND at least two heads: {HHH, HTH, THH}\r\nP(A|B) = \\(\\frac{\\text{Number of outcomes in } A ∩ B}{\\text{Number of outcomes in } B} = \\frac{3}{4}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 40,
+      "stem": "What is the probability of getting at least \\(2\\) tails when \\(4\\) coins are tossed?",
+      "options": [
+        "\\(\\frac{13}{16}\\)",
+        "\\(\\frac{5}{8}\\)",
+        "\\(\\frac{3}{4}\\)",
+        "\\(\\frac{11}{16}\\)"
+      ],
+      "key": "D",
+      "keySolution": "At least \\(2\\) tails = \\(1 - P(0 \\text{ tails}) - P(1 \\text{ tail})\\)\r\nP(0 tails) = P(4 heads) = \\(\\frac{\\binom{4}{0}}{16} = \\frac{1}{16}\\)\r\nP(1 tail) = P(3 heads) = \\(\\frac{\\binom{4}{1}}{16} = \\frac{4}{16}\\)\r\nP(at least 2 tails) = \\(1 - \\frac{1}{16} - \\frac{4}{16} = 1 - \\frac{5}{16} = \\frac{11}{16}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 41,
+      "stem": "Five coins are tossed. What is the probability that the number of heads and tails differ by at most \\(1\\)?",
+      "options": [
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{5}{8}\\)",
+        "\\(\\frac{5}{16}\\)",
+        "\\(\\frac{10}{32}\\)"
+      ],
+      "key": "B",
+      "keySolution": "We need |H - T| ≤ 1 where H + T = 5\r\nCase 1: H - T = 1, so H = 3, T = 2\r\nCase 2: H - T = -1, so H = 2, T = 3\r\nP(exactly 3 heads) = \\(\\frac{\\binom{5}{3}}{32} = \\frac{10}{32}\\)\r\nP(exactly 2 heads) = \\(\\frac{\\binom{5}{2}}{32} = \\frac{10}{32}\\)\r\nTotal probability = \\(\\frac{10}{32} + \\frac{10}{32} = \\frac{20}{32} = \\frac{5}{8}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 42,
+      "stem": "A fair coin is tossed repeatedly until two consecutive heads appear. What is the probability that exactly \\(4\\) tosses are needed?",
+      "options": [
+        "\\(\\frac{1}{16}\\)",
+        "\\(\\frac{1}{8}\\)",
+        "\\(\\frac{3}{16}\\)",
+        "\\(\\frac{1}{4}\\)"
+      ],
+      "key": "B",
+      "keySolution": "For exactly 4 tosses, valid sequences: TTHH, HTHH\r\nP(TTHH) = \\((\\frac{1}{2})^4 = \\frac{1}{16}\\)\r\nP(HTHH) = \\((\\frac{1}{2})^4 = \\frac{1}{16}\\)\r\nTotal probability = \\(\\frac{1}{16} + \\frac{1}{16} = \\frac{2}{16} = \\frac{1}{8}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 43,
+      "stem": "A fair coin is tossed \\(3\\) times. What is the probability that the number of heads in the first two tosses equals the number of heads in all three tosses?",
+      "options": [
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{5}{8}\\)"
+      ],
+      "key": "A",
+      "keySolution": "For the number of heads in first two tosses to equal total heads in all three tosses, the third toss must be a tail\r\nP(third toss is tail) = \\(\\frac{1}{2}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 44,
+      "stem": "Four fair coins are tossed. Find the probability that exactly two coins show heads and these two heads are on adjacent coins.",
+      "options": [
+        "\\(\\frac{3}{16}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{5}{16}\\)",
+        "\\(\\frac{1}{8}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Adjacent pairs possible: positions (1,2), (2,3), (3,4)\r\nFor each pair, pattern is HH in those positions, TT in other positions\r\nNumber of favorable outcomes = 3\r\nTotal outcomes = \\(2^4 = 16\\)\r\nProbability = \\(\\frac{3}{16}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 45,
+      "stem": "What is the probability of getting exactly \\(4\\) heads when \\(5\\) fair coins are tossed?",
+      "options": [
+        "\\(\\frac{5}{32}\\)",
+        "\\(\\frac{1}{8}\\)",
+        "\\(\\frac{3}{16}\\)",
+        "\\(\\frac{10}{32}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total outcomes = \\(2^5 = 32\\)\r\nNumber of ways to choose 4 positions for heads out of 5 = \\(\\binom{5}{4} = 5\\)\r\nProbability = \\(\\frac{5}{32}\\)",
+      "difficulty": "Easy"
+    }
+  ]
+}

@@ -1,19 +1,505 @@
 {
-  "01-3": { "options": { "A": "1/13" }, "reason": "TWIN: A '1/2' equalled the keyed D '26/52'. Key stands (blind pass 1/2). A replaced with 1/13, the chance of one particular rank, distinct from B 1/4 and C 3/13." },
-  "01-5": { "options": { "A": "7/10" }, "reason": "TWIN: A and B both printed 5/10. Key stands (B; blind pass 5/10). A replaced with 7/10, the answer to 'not blue'." },
-  "01-7": { "options": { "B": "16/52" }, "reason": "TWIN: B and C both printed 8/52. Key stands (C; blind pass 8/52). B replaced with 16/52, counting kings and queens twice." },
-  "01-11": { "options": { "A": "6/10 × 6/10" }, "reason": "TWIN: A '6/10 x 5/9' = 1/3 equalled the keyed B 15/45, so both were correct. Key stands (blind pass 15/45). A replaced with 6/10 x 6/10, the with-replacement mistake." },
-  "01-16": { "options": { "A": "1/36", "B": "12/36" }, "reason": "TWIN: A 1/6, B 6/36 and the keyed C 1/6 were all equal. Key stands (blind pass 1/6). A replaced with 1/36 (one particular doublet), B with 12/36 (each doublet counted twice)." },
-  "01-17": { "options": { "A": "5/15" }, "reason": "TWIN: A '5/20' equalled the keyed C '1/4'. Key stands (blind pass 5/20). A replaced with 5/15, the mistake of leaving the blue balls out of the total." },
-  "01-19": { "options": { "B": "4/36" }, "reason": "TWIN: B '3/36' equalled the keyed C '1/12'. Key stands (blind pass 3/36). B replaced with 4/36, counting (5,5) twice." },
-  "01-20": { "options": { "B": "2/3" }, "reason": "TWIN: B and C both printed 1/3. Key stands (C; blind pass 5/15). B replaced with 2/3, the probability of a man." },
-  "01-21": { "options": { "C": "39/52" }, "reason": "TWIN: C '1/2' equalled the keyed B '26/52'. Key stands (blind pass 26/52). C replaced with 39/52, distinct from A 13/52 and D 4/52." },
-  "01-23": { "options": { "A": "1/12" }, "reason": "TWIN: A and B both printed 1/4. Key stands (B; blind pass 3/12). A replaced with 1/12, one ball out of twelve." },
-  "01-24": { "options": { "A": "0.12" }, "reason": "TWIN: A and B both printed 0.42. Key stands (B; blind pass 0.42). A replaced with 0.12, the probability that neither happens." },
-  "01-25": { "options": { "A": "6/25" }, "reason": "TWIN: A '5/25' equalled the keyed C '1/5'. Key stands (blind pass 5/25). A replaced with 6/25, distinct from B 4/25 (leaving out 1) and D 3/25." },
-  "01-26": { "options": { "A": "10/15" }, "reason": "TWIN: A '5/15' equalled the keyed B '1/3'. Key stands (blind pass 5/15). A replaced with 10/15, the answer to 'green or red'." },
+  "01-3": {
+    "options": {
+      "A": "1/13"
+    },
+    "reason": "TWIN: A '1/2' equalled the keyed D '26/52'. Key stands (blind pass 1/2). A replaced with 1/13, the chance of one particular rank, distinct from B 1/4 and C 3/13."
+  },
+  "01-5": {
+    "options": {
+      "A": "7/10"
+    },
+    "reason": "TWIN: A and B both printed 5/10. Key stands (B; blind pass 5/10). A replaced with 7/10, the answer to 'not blue'."
+  },
+  "01-7": {
+    "options": {
+      "B": "16/52"
+    },
+    "reason": "TWIN: B and C both printed 8/52. Key stands (C; blind pass 8/52). B replaced with 16/52, counting kings and queens twice."
+  },
+  "01-11": {
+    "options": {
+      "A": "6/10 × 6/10"
+    },
+    "reason": "TWIN: A '6/10 x 5/9' = 1/3 equalled the keyed B 15/45, so both were correct. Key stands (blind pass 15/45). A replaced with 6/10 x 6/10, the with-replacement mistake."
+  },
+  "01-16": {
+    "options": {
+      "A": "1/36",
+      "B": "12/36"
+    },
+    "reason": "TWIN: A 1/6, B 6/36 and the keyed C 1/6 were all equal. Key stands (blind pass 1/6). A replaced with 1/36 (one particular doublet), B with 12/36 (each doublet counted twice)."
+  },
+  "01-17": {
+    "options": {
+      "A": "5/15"
+    },
+    "reason": "TWIN: A '5/20' equalled the keyed C '1/4'. Key stands (blind pass 5/20). A replaced with 5/15, the mistake of leaving the blue balls out of the total."
+  },
+  "01-19": {
+    "options": {
+      "B": "4/36"
+    },
+    "reason": "TWIN: B '3/36' equalled the keyed C '1/12'. Key stands (blind pass 3/36). B replaced with 4/36, counting (5,5) twice."
+  },
+  "01-20": {
+    "options": {
+      "B": "2/3"
+    },
+    "reason": "TWIN: B and C both printed 1/3. Key stands (C; blind pass 5/15). B replaced with 2/3, the probability of a man."
+  },
+  "01-21": {
+    "options": {
+      "C": "39/52"
+    },
+    "reason": "TWIN: C '1/2' equalled the keyed B '26/52'. Key stands (blind pass 26/52). C replaced with 39/52, distinct from A 13/52 and D 4/52."
+  },
+  "01-23": {
+    "options": {
+      "A": "1/12"
+    },
+    "reason": "TWIN: A and B both printed 1/4. Key stands (B; blind pass 3/12). A replaced with 1/12, one ball out of twelve."
+  },
+  "01-24": {
+    "options": {
+      "A": "0.12"
+    },
+    "reason": "TWIN: A and B both printed 0.42. Key stands (B; blind pass 0.42). A replaced with 0.12, the probability that neither happens."
+  },
+  "01-25": {
+    "options": {
+      "A": "6/25"
+    },
+    "reason": "TWIN: A '5/25' equalled the keyed C '1/5'. Key stands (blind pass 5/25). A replaced with 6/25, distinct from B 4/25 (leaving out 1) and D 3/25."
+  },
+  "01-26": {
+    "options": {
+      "A": "10/15"
+    },
+    "reason": "TWIN: A '5/15' equalled the keyed B '1/3'. Key stands (blind pass 5/15). A replaced with 10/15, the answer to 'green or red'."
+  },
   "01-28": {
     "stem": "The four aces are removed from a standard deck of cards. From the remaining 48 cards, what is the probability of drawing a heart?",
     "reason": "Source stem read 'a deck of cards has all cards except aces removed', which leaves only the four aces and contradicts '48 cards'. Reworded to the evident meaning. Key C stands (12/48 = 1/4), confirmed by blind pass."
+  },
+  "02-6": {
+    "exclude": true,
+    "reason": "No option is right: P(at least one diamond) = 1 - (39 x 38)/(52 x 51) = 15/34. The key B (25/51) comes from the source simplifying 1482/2652 wrongly (it is 19/34)."
+  },
+  "02-11": {
+    "exclude": true,
+    "reason": "No option is right: odd values A, 3, 5, 7, 9, J, K are 7 ranks, 28/52 = 7/13. The source lists seven and then counts six (key 6/13)."
+  },
+  "02-31": {
+    "exclude": true,
+    "reason": "Repeat: the same question as 02-9 (a club or an even-numbered card) in the same sheet."
+  },
+  "02-40": {
+    "exclude": true,
+    "reason": "Repeat: the same question as 02-5 (a heart, given it is red) in the same sheet."
+  },
+  "02-2": {
+    "options": {
+      "D": "\\(\\frac{21}{52}\\)",
+      "B": "\\(\\frac{25}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-3": {
+    "options": {
+      "A": "\\(\\frac{32}{221}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-4": {
+    "options": {
+      "D": "\\(\\frac{12}{850}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-5": {
+    "options": {
+      "C": "\\(\\frac{14}{26}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-7": {
+    "options": {
+      "B": "\\(\\frac{5}{52}\\)",
+      "C": "\\(\\frac{3}{26}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-8": {
+    "options": {
+      "B": "\\(\\frac{23}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-9": {
+    "options": {
+      "A": "\\(\\frac{27}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-10": {
+    "options": {
+      "A": "\\(\\frac{21}{52}\\)",
+      "B": "\\(\\frac{25}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-12": {
+    "options": {
+      "B": "\\(\\frac{4}{51}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-14": {
+    "options": {
+      "B": "\\(\\frac{17}{52}\\)",
+      "D": "\\(\\frac{9}{26}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-15": {
+    "options": {
+      "A": "\\(\\frac{3}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-16": {
+    "options": {
+      "B": "\\(\\frac{5}{12}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-17": {
+    "options": {
+      "B": "\\(\\frac{4}{51}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-19": {
+    "options": {
+      "C": "\\(\\frac{41}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-20": {
+    "options": {
+      "B": "\\(\\frac{18}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-21": {
+    "options": {
+      "B": "\\(\\frac{13}{51}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-22": {
+    "options": {
+      "B": "\\(\\frac{17}{52}\\)",
+      "D": "\\(\\frac{13}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-23": {
+    "options": {
+      "B": "\\(\\frac{18}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-24": {
+    "options": {
+      "B": "\\(\\frac{3}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-25": {
+    "options": {
+      "A": "\\(\\frac{27}{52}\\)",
+      "B": "\\(\\frac{25}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-26": {
+    "options": {
+      "B": "\\(\\frac{7}{52}\\)"
+    },
+    "answer": "A",
+    "reason": "Options equal in value; the answer moves to its simplest form (A) and each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-27": {
+    "options": {
+      "B": "\\(\\frac{11}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-28": {
+    "options": {
+      "B": "\\(\\frac{5}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-29": {
+    "options": {
+      "A": "\\(\\frac{14}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-34": {
+    "options": {
+      "B": "\\(\\frac{37}{52}\\)",
+      "D": "\\(\\frac{33}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-35": {
+    "options": {
+      "D": "\\(\\frac{9}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-36": {
+    "options": {
+      "B": "\\(\\frac{3}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-37": {
+    "options": {
+      "A": "\\(\\frac{11}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-39": {
+    "options": {
+      "A": "\\(\\frac{3}{4}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-41": {
+    "options": {
+      "C": "\\(\\frac{5}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-42": {
+    "options": {
+      "B": "\\(\\frac{40}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-43": {
+    "options": {
+      "C": "\\(\\frac{11}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-44": {
+    "options": {
+      "A": "\\(\\frac{7}{52}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "02-13": {
+    "answer": "A",
+    "options": {
+      "B": "\\(\\frac{39}{208}\\)",
+      "C": "\\(\\frac{12 \\times 39}{52 \\times 51}\\)"
+    },
+    "reason": "Options A (13/68), B (39/204) and C (13 x 39 / 52 x 51) were one value; the answer is A in simplest form and B and C are replaced with near misses. The keyed value is unchanged."
+  },
+  "03-19": {
+    "answer": "A",
+    "reason": "Key D (1/2) is wrong: the source lists the outcomes with no two heads in a row as HTH, HTT, THT, TTH and misses TTT, so 3 of 8 outcomes (HHH, HHT, THH) have two consecutive heads: 3/8."
+  },
+  "03-30": {
+    "exclude": true,
+    "reason": "Repeat: the same event as 03-25 (two heads with four coins) in the same sheet."
+  },
+  "03-32": {
+    "exclude": true,
+    "reason": "Repeat: 03-16 with tails for heads (exactly two of five), the same calculation in the same sheet."
+  },
+  "04-29": {
+    "exclude": true,
+    "reason": "Repeat: the same question as 04-8 (all different numbers on three dice) in the same sheet."
+  },
+  "04-30": {
+    "exclude": true,
+    "reason": "Repeat: the same question as 04-6 (both throws the same number) in the same sheet."
+  },
+  "03-7": {
+    "options": {
+      "A": "\\(\\frac{7}{32}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "03-10": {
+    "options": {
+      "B": "\\(\\frac{11}{32}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "03-16": {
+    "options": {
+      "B": "\\(\\frac{11}{32}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "03-23": {
+    "options": {
+      "B": "\\(\\frac{17}{32}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "03-25": {
+    "options": {
+      "A": "\\(\\frac{7}{16}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "03-37": {
+    "options": {
+      "B": "\\(\\frac{11}{32}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "03-41": {
+    "options": {
+      "D": "\\(\\frac{11}{32}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "04-17": {
+    "options": {
+      "B": "\\(\\frac{16}{216}\\)"
+    },
+    "answer": "A",
+    "reason": "Options equal in value; the answer moves to its simplest form (A) and each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "04-36": {
+    "options": {
+      "D": "\\(\\frac{76}{216}\\)"
+    },
+    "answer": "B",
+    "reason": "Options equal in value; the answer moves to its simplest form (B) and each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "05-4": {
+    "options": {
+      "D": "\\(\\frac{22}{66}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "05-7": {
+    "options": {
+      "A": "\\(\\frac{57}{210}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "05-13": {
+    "options": {
+      "C": "\\(\\frac{43}{99}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "05-14": {
+    "options": {
+      "B": "\\(\\frac{28}{84}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "05-18": {
+    "options": {
+      "C": "\\(\\frac{34}{45}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "05-19": {
+    "options": {
+      "A": "\\(\\frac{526}{1728}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "05-20": {
+    "options": {
+      "B": "\\(\\frac{25}{153}\\)",
+      "C": "\\(\\frac{49}{306}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "05-21": {
+    "options": {
+      "D": "\\(\\frac{21}{210}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "05-25": {
+    "options": {
+      "C": "\\(\\frac{11}{15}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "05-28": {
+    "options": {
+      "A": "\\(\\frac{13}{45}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "05-29": {
+    "options": {
+      "A": "\\(\\frac{176}{495}\\)"
+    },
+    "answer": "C",
+    "reason": "Options equal in value; the answer moves to its simplest form (C) and each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "05-30": {
+    "options": {
+      "C": "\\(\\frac{33}{132}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "05-31": {
+    "options": {
+      "A": "\\(\\frac{121}{455}\\)",
+      "B": "\\(\\frac{61}{455}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "05-33": {
+    "options": {
+      "B": "\\(\\frac{61}{182}\\)",
+      "C": "\\(\\frac{121}{364}\\)"
+    },
+    "answer": "D",
+    "reason": "Options equal in value; the answer moves to its simplest form (D) and each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "05-35": {
+    "options": {
+      "A": "\\(\\frac{7}{78}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "05-36": {
+    "options": {
+      "D": "\\(\\frac{57}{91}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "05-42": {
+    "options": {
+      "A": "\\(\\frac{13}{66}\\)",
+      "B": "\\(\\frac{7}{33}\\)"
+    },
+    "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "05-23": {
+    "options": {
+      "B": "\\(\\frac{1}{165}\\)"
+    },
+    "reason": "Option B printed 4/165 again as 1/41.25; replaced with a wrong value (1/165). The key is unchanged."
   }
 }
