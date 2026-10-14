@@ -1,0 +1,592 @@
+{
+  "path": "10. Probability\\4)Ball.xlsx",
+  "group": "D",
+  "transcribed": "read from the Cadetprep Excel sheet by extract-cadetprep.ts (sheet row = n); key and solution are the source's, kept as evidence",
+  "questions": [
+    {
+      "n": 2,
+      "stem": "A bag contains \\(5\\) red balls and \\(3\\) blue balls. What is the probability of drawing a red ball?",
+      "options": [
+        "\\(\\frac{5}{8}\\)",
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{5}{3}\\)",
+        "\\(\\frac{3}{5}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total balls = \\(5 + 3 = 8\\)\r\nNumber of red balls = \\(5\\)\r\nProbability of drawing a red ball = \\(\\frac{5}{8}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 3,
+      "stem": "A box has \\(4\\) green balls, \\(6\\) yellow balls, and \\(2\\) white balls. If one ball is drawn randomly, what is the probability that it is not green?",
+      "options": [
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{2}{3}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{3}{4}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Total balls = \\(4 + 6 + 2 = 12\\)\r\nNon-green balls = \\(6 + 2 = 8\\)\r\nProbability of not drawing green = \\(\\frac{8}{12} = \\frac{2}{3}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 4,
+      "stem": "A bag contains \\(7\\) black balls and \\(5\\) red balls. Two balls are drawn without replacement. What is the probability that both are black?",
+      "options": [
+        "\\(\\frac{7}{33}\\)",
+        "\\(\\frac{5}{22}\\)",
+        "\\(\\frac{7}{22}\\)",
+        "\\(\\frac{21}{66}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total balls = \\(7 + 5 = 12\\)\r\nProbability of first black ball = \\(\\frac{7}{12}\\)\r\nProbability of second black ball = \\(\\frac{6}{11}\\)\r\nProbability of both black = \\(\\frac{7}{12} \\times \\frac{6}{11} = \\frac{42}{132} = \\frac{7}{22}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 5,
+      "stem": "From a bag containing \\(3\\) red, \\(4\\) blue, and \\(5\\) green balls, what is the probability of drawing a blue or green ball?",
+      "options": [
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{2}{3}\\)",
+        "\\(\\frac{3}{4}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Total balls = \\(3 + 4 + 5 = 12\\)\r\nBlue or green balls = \\(4 + 5 = 9\\)\r\nProbability = \\(\\frac{9}{12} = \\frac{3}{4}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 6,
+      "stem": "A bag contains \\(6\\) white and \\(4\\) black balls. If \\(3\\) balls are drawn with replacement, what is the probability that all are white?",
+      "options": [
+        "\\(\\frac{64}{125}\\)",
+        "\\(\\frac{27}{125}\\)",
+        "\\(\\frac{8}{125}\\)",
+        "\\(\\frac{36}{125}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Total balls = \\(6 + 4 = 10\\)\r\nProbability of white ball = \\(\\frac{6}{10} = \\frac{3}{5}\\)\r\nWith replacement, probability of all \\(3\\) white = \\(\\left(\\frac{3}{5}\\right)^3 = \\frac{27}{125}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 7,
+      "stem": "In a bag with \\(8\\) red balls and \\(7\\) blue balls, what is the probability that the first ball drawn is red and the second is blue (without replacement)?",
+      "options": [
+        "\\(\\frac{56}{210}\\)",
+        "\\(\\frac{8}{15}\\)",
+        "\\(\\frac{4}{15}\\)",
+        "\\(\\frac{7}{15}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total balls = \\(8 + 7 = 15\\)\r\nProbability of first red = \\(\\frac{8}{15}\\)\r\nProbability of second blue = \\(\\frac{7}{14} = \\frac{1}{2}\\)\r\nRequired probability = \\(\\frac{8}{15} \\times \\frac{7}{14} = \\frac{56}{210} = \\frac{4}{15}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 8,
+      "stem": "A box contains \\(5\\) red, \\(3\\) green, and \\(2\\) yellow balls. If two balls are drawn without replacement, what is the probability that they are of different colors?",
+      "options": [
+        "\\(\\frac{29}{45}\\)",
+        "\\(\\frac{14}{45}\\)",
+        "\\(\\frac{31}{45}\\)",
+        "\\(\\frac{16}{45}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total balls = \\(10\\), Total ways = \\(\\binom{10}{2} = 45\\)\r\nSame color pairs: RR = \\(\\binom{5}{2} = 10\\), GG = \\(\\binom{3}{2} = 3\\), YY = \\(\\binom{2}{2} = 1\\)\r\nSame color = \\(10 + 3 + 1 = 14\\)\r\nDifferent colors = \\(45 - 14 = 31\\)\r\nProbability = \\(\\frac{31}{45}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 9,
+      "stem": "From \\(12\\) balls containing \\(4\\) red, \\(4\\) blue, and \\(4\\) green balls, what is the probability of selecting \\(3\\) balls such that all are of the same color?",
+      "options": [
+        "\\(\\frac{6}{55}\\)",
+        "\\(\\frac{3}{55}\\)",
+        "\\(\\frac{9}{55}\\)",
+        "\\(\\frac{12}{55}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Total ways = \\(\\binom{12}{3} = 220\\)\r\nWays to select \\(3\\) red = \\(\\binom{4}{3} = 4\\)\r\nWays to select \\(3\\) blue = \\(\\binom{4}{3} = 4\\)\r\nWays to select \\(3\\) green = \\(\\binom{4}{3} = 4\\)\r\nFavorable outcomes = \\(4 + 4 + 4 = 12\\)\r\nProbability = \\(\\frac{12}{220} = \\frac{3}{55}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 10,
+      "stem": "A bag has \\(10\\) balls: \\(4\\) red, \\(3\\) blue, and \\(3\\) green. If one ball is removed and then another is drawn, what is the probability that the second ball is red given that the first was blue?",
+      "options": [
+        "\\(\\frac{4}{9}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{2}{9}\\)",
+        "\\(\\frac{4}{10}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Given first ball is blue, remaining balls = \\(9\\)\r\nRemaining red balls = \\(4\\)\r\nProbability of second ball being red = \\(\\frac{4}{9}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 11,
+      "stem": "In a bag containing \\(5\\) white and \\(7\\) black balls, what is the probability of drawing at least one white ball in \\(2\\) draws without replacement?",
+      "options": [
+        "\\(\\frac{7}{22}\\)",
+        "\\(\\frac{15}{22}\\)",
+        "\\(\\frac{5}{12}\\)",
+        "\\(\\frac{9}{22}\\)"
+      ],
+      "key": "B",
+      "keySolution": "P(at least one white) = \\(1\\) - P(no white)\r\nP(no white) = P(both black) = \\(\\frac{7}{12} \\times \\frac{6}{11} = \\frac{42}{132} = \\frac{7}{22}\\)\r\nP(at least one white) = \\(1 - \\frac{7}{22} = \\frac{15}{22}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 12,
+      "stem": "From a bag with \\(4\\) red, \\(5\\) blue, and \\(3\\) yellow balls, what is the probability of drawing \\(2\\) balls of the same color?",
+      "options": [
+        "\\(\\frac{2}{3}\\)",
+        "\\(\\frac{47}{66}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{19}{66}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Total ways = \\(\\binom{12}{2} = 66\\)\r\nSame color: \\(\\binom{4}{2} + \\binom{5}{2} + \\binom{3}{2} = 6 + 10 + 3 = 19\\)\r\nProbability = \\(\\frac{19}{66}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 13,
+      "stem": "A box has \\(7\\) red balls and \\(5\\) blue balls. If \\(4\\) balls are selected randomly, what is the probability that exactly \\(2\\) are red?",
+      "options": [
+        "\\(\\frac{21}{99}\\)",
+        "\\(\\frac{210}{495}\\)",
+        "\\(\\frac{42}{99}\\)",
+        "\\(\\frac{35}{99}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Total ways = \\(\\binom{12}{4} = 495\\)\r\nWays to select \\(2\\) red from \\(7\\) = \\(\\binom{7}{2} = 21\\)\r\nWays to select \\(2\\) blue from \\(5\\) = \\(\\binom{5}{2} = 10\\)\r\nFavorable outcomes = \\(21 \\times 10 = 210\\)\r\nProbability = \\(\\frac{210}{495}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 14,
+      "stem": "In a bag with \\(9\\) balls (\\(3\\) red, \\(3\\) blue, \\(3\\) green), what is the probability that in drawing \\(3\\) balls, each is of a different color?",
+      "options": [
+        "\\(\\frac{9}{84}\\)",
+        "\\(\\frac{27}{84}\\)",
+        "\\(\\frac{27}{28}\\)",
+        "\\(\\frac{9}{28}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Total ways = \\(\\binom{9}{3} = 84\\)\r\nWays to select \\(1\\) from each color = \\(3 \\times 3 \\times 3 = 27\\)\r\nProbability = \\(\\frac{27}{84} = \\frac{9}{28}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 15,
+      "stem": "From \\(15\\) balls (\\(5\\) red, \\(5\\) blue, \\(5\\) green), if \\(5\\) balls are selected, what is the probability that no two balls are of the same color?",
+      "options": [
+        "\\(0\\)",
+        "\\(\\frac{1}{3003}\\)",
+        "\\(\\frac{125}{3003}\\)",
+        "\\(\\frac{25}{1001}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Since we have only \\(3\\) colors and need \\(5\\) balls with no two of same color, this is impossible by pigeonhole principle.\r\nProbability = \\(0\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 16,
+      "stem": "A bag has \\(12\\) balls: \\(4\\) red, \\(4\\) white, and \\(4\\) blue. What is the probability of drawing \\(3\\) balls such that exactly \\(2\\) are of the same color?",
+      "options": [
+        "\\(\\frac{144}{220}\\)",
+        "\\(\\frac{108}{220}\\)",
+        "\\(\\frac{64}{220}\\)",
+        "\\(\\frac{48}{220}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total ways = \\(\\binom{12}{3} = 220\\)\r\nCase 1: \\(2\\) red, \\(1\\) other = \\(\\binom{4}{2} \\times \\binom{8}{1} = 6 \\times 8 = 48\\)\r\nCase 2: \\(2\\) white, \\(1\\) other = \\(\\binom{4}{2} \\times \\binom{8}{1} = 6 \\times 8 = 48\\)\r\nCase 3: \\(2\\) blue, \\(1\\) other = \\(\\binom{4}{2} \\times \\binom{8}{1} = 6 \\times 8 = 48\\)\r\nTotal = \\(48 + 48 + 48 = 144\\)\r\nProbability = \\(\\frac{144}{220}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 17,
+      "stem": "In a box with \\(6\\) red and \\(4\\) green balls, what is the probability that in \\(3\\) draws without replacement, the first two are red and the third is green?",
+      "options": [
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{12}\\)",
+        "\\(\\frac{1}{30}\\)",
+        "\\(\\frac{1}{15}\\)"
+      ],
+      "key": "A",
+      "keySolution": "P(1st red) = \\(\\frac{6}{10}\\)\r\nP(2nd red) = \\(\\frac{5}{9}\\)\r\nP(3rd green) = \\(\\frac{4}{8} = \\frac{1}{2}\\)\r\nRequired probability = \\(\\frac{6}{10} \\times \\frac{5}{9} \\times \\frac{1}{2} = \\frac{30}{180} = \\frac{1}{6}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 18,
+      "stem": "A bag contains \\(10\\) balls of which \\(4\\) are red, \\(3\\) are blue, and \\(3\\) are yellow. If \\(2\\) balls are drawn at random, what is the probability that both are of different colors?",
+      "options": [
+        "\\(\\frac{33}{45}\\)",
+        "\\(\\frac{12}{45}\\)",
+        "\\(\\frac{33}{45}\\)",
+        "\\(\\frac{18}{45}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total ways = \\(\\binom{10}{2} = 45\\)\r\nSame color pairs:\r\nRed pairs = \\(\\binom{4}{2} = 6\\)\r\nBlue pairs = \\(\\binom{3}{2} = 3\\)\r\nYellow pairs = \\(\\binom{3}{2} = 3\\)\r\nSame color = \\(6 + 3 + 3 = 12\\)\r\nDifferent colors = \\(45 - 12 = 33\\)\r\nProbability = \\(\\frac{33}{45}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 19,
+      "stem": "From a bag containing \\(7\\) white balls and \\(5\\) red balls, if \\(3\\) balls are drawn with replacement, what is the probability that exactly one is white?",
+      "options": [
+        "\\(\\frac{525}{1728}\\)",
+        "\\(\\frac{175}{576}\\)",
+        "\\(\\frac{25}{144}\\)",
+        "\\(\\frac{125}{576}\\)"
+      ],
+      "key": "B",
+      "keySolution": "P(white) = \\(\\frac{7}{12}\\), P(red) = \\(\\frac{5}{12}\\)\r\nFor exactly \\(1\\) white in \\(3\\) draws:\r\nP = \\(\\binom{3}{1} \\times \\left(\\frac{7}{12}\\right)^1 \\times \\left(\\frac{5}{12}\\right)^2\\)\r\nP = \\(3 \\times \\frac{7}{12} \\times \\frac{25}{144} = \\frac{525}{1728} = \\frac{175}{576}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 20,
+      "stem": "A box has \\(8\\) red, \\(6\\) blue, and \\(4\\) green balls. What is the probability of drawing a red ball on the first draw and a blue ball on the second draw (without replacement)?",
+      "options": [
+        "\\(\\frac{16}{153}\\)",
+        "\\(\\frac{24}{153}\\)",
+        "\\(\\frac{48}{306}\\)",
+        "\\(\\frac{8}{51}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Total balls = \\(8 + 6 + 4 = 18\\)\r\nP(first red) = \\(\\frac{8}{18} = \\frac{4}{9}\\)\r\nP(second blue | first red) = \\(\\frac{6}{17}\\)\r\nRequired probability = \\(\\frac{4}{9} \\times \\frac{6}{17} = \\frac{24}{153} = \\frac{8}{51}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 21,
+      "stem": "In a bag with equal numbers of red, blue, and green balls (\\(5\\) each), what is the probability that in drawing \\(2\\) balls without replacement, both are red?",
+      "options": [
+        "\\(\\frac{1}{21}\\)",
+        "\\(\\frac{2}{21}\\)",
+        "\\(\\frac{4}{21}\\)",
+        "\\(\\frac{20}{210}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Total balls = \\(15\\), Red balls = \\(5\\)\r\nP(first red) = \\(\\frac{5}{15} = \\frac{1}{3}\\)\r\nP(second red | first red) = \\(\\frac{4}{14} = \\frac{2}{7}\\)\r\nP(both red) = \\(\\frac{1}{3} \\times \\frac{2}{7} = \\frac{2}{21}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 22,
+      "stem": "A bag contains \\(6\\) black balls and \\(9\\) white balls. If \\(4\\) balls are drawn without replacement, what is the probability that exactly \\(2\\) are black?",
+      "options": [
+        "\\(\\frac{540}{1365}\\)",
+        "\\(\\frac{360}{1365}\\)",
+        "\\(\\frac{126}{455}\\)",
+        "\\(\\frac{270}{1365}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total ways = \\(\\binom{15}{4} = 1365\\)\r\nWays to select \\(2\\) black from \\(6\\) = \\(\\binom{6}{2} = 15\\)\r\nWays to select \\(2\\) white from \\(9\\) = \\(\\binom{9}{2} = 36\\)\r\nFavorable outcomes = \\(15 \\times 36 = 540\\)\r\nProbability = \\(\\frac{540}{1365}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 23,
+      "stem": "From a collection of \\(11\\) balls (\\(4\\) red, \\(4\\) blue, \\(3\\) green), what is the probability of selecting \\(3\\) balls such that all are blue?",
+      "options": [
+        "\\(\\frac{8}{165}\\)",
+        "\\(\\frac{1}{41.25}\\)",
+        "\\(\\frac{4}{165}\\)",
+        "\\(\\frac{12}{165}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total ways = \\(\\binom{11}{3} = 165\\)\r\nWays to select \\(3\\) blue from \\(4\\) = \\(\\binom{4}{3} = 4\\)\r\nProbability = \\(\\frac{4}{165}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 24,
+      "stem": "A bag has \\(5\\) red balls, \\(6\\) blue balls, and \\(4\\) yellow balls. What is the probability of drawing \\(2\\) balls of the same color?",
+      "options": [
+        "\\(\\frac{74}{105}\\)",
+        "\\(\\frac{41}{105}\\)",
+        "\\(\\frac{31}{105}\\)",
+        "\\(\\frac{64}{105}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total ways = \\(\\binom{15}{2} = 105\\)\r\nSame color ways:\r\nRed: \\(\\binom{5}{2} = 10\\)\r\nBlue: \\(\\binom{6}{2} = 15\\)\r\nYellow: \\(\\binom{4}{2} = 6\\)\r\nTotal same color = \\(10 + 15 + 6 = 31\\)\r\nProbability = \\(\\frac{31}{105}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 25,
+      "stem": "A bag contains \\(4\\) white, \\(5\\) black, and \\(6\\) red balls. If one ball is drawn randomly, what is the probability that it is either white or red?",
+      "options": [
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{2}{3}\\)",
+        "\\(\\frac{10}{15}\\)",
+        "\\(\\frac{9}{15}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Total balls = \\(4 + 5 + 6 = 15\\)\r\nWhite or red balls = \\(4 + 6 = 10\\)\r\nProbability = \\(\\frac{10}{15} = \\frac{2}{3}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 26,
+      "stem": "From \\(16\\) balls (\\(6\\) red, \\(5\\) blue, \\(5\\) green), what is the probability that in selecting \\(3\\) balls, at least \\(2\\) are red?",
+      "options": [
+        "\\(\\frac{165}{560}\\)",
+        "\\(\\frac{120}{560}\\)",
+        "\\(\\frac{170}{560}\\)",
+        "\\(\\frac{275}{560}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total ways = \\(\\binom{16}{3} = 560\\)\r\nAt least \\(2\\) red = exactly \\(2\\) red + exactly \\(3\\) red\r\nExactly \\(2\\) red: \\(\\binom{6}{2} \\times \\binom{10}{1} = 15 \\times 10 = 150\\)\r\nExactly \\(3\\) red: \\(\\binom{6}{3} \\times \\binom{10}{0} = 20 \\times 1 = 20\\)\r\nFavorable = \\(150 + 20 = 170\\)\r\nProbability = \\(\\frac{170}{560}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 27,
+      "stem": "A bag has \\(7\\) green and \\(8\\) yellow balls. If \\(3\\) balls are drawn with replacement, what is the probability that all \\(3\\) are green?",
+      "options": [
+        "\\(\\frac{729}{3375}\\)",
+        "\\(\\frac{512}{3375}\\)",
+        "\\(\\frac{216}{3375}\\)",
+        "\\(\\frac{343}{3375}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Total balls = \\(7 + 8 = 15\\)\r\nP(green) = \\(\\frac{7}{15}\\)\r\nWith replacement, P(all \\(3\\) green) = \\(\\left(\\frac{7}{15}\\right)^3 = \\frac{343}{3375}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 28,
+      "stem": "In a bag containing \\(10\\) balls of \\(3\\) different colors (\\(4\\) red, \\(3\\) blue, \\(3\\) green), what is the probability of drawing \\(2\\) balls such that one is red and the other is blue?",
+      "options": [
+        "\\(\\frac{12}{45}\\)",
+        "\\(\\frac{24}{45}\\)",
+        "\\(\\frac{8}{45}\\)",
+        "\\(\\frac{4}{15}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Total ways = \\(\\binom{10}{2} = 45\\)\r\nWays to select \\(1\\) red and \\(1\\) blue = \\(\\binom{4}{1} \\times \\binom{3}{1} = 4 \\times 3 = 12\\)\r\nProbability = \\(\\frac{12}{45} = \\frac{4}{15}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 29,
+      "stem": "A box contains \\(12\\) balls: \\(5\\) red, \\(4\\) white, and \\(3\\) blue. What is the probability that in drawing \\(4\\) balls without replacement, exactly \\(1\\) is red?",
+      "options": [
+        "\\(\\frac{175}{495}\\)",
+        "\\(\\frac{210}{495}\\)",
+        "\\(\\frac{35}{99}\\)",
+        "\\(\\frac{140}{495}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total ways = \\(\\binom{12}{4} = 495\\)\r\nWays to select exactly \\(1\\) red:\r\n\\(\\binom{5}{1} \\times \\binom{7}{3} = 5 \\times 35 = 175\\)\r\nProbability = \\(\\frac{175}{495}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 30,
+      "stem": "From a bag with \\(8\\) red balls and \\(4\\) green balls, if \\(2\\) balls are drawn without replacement, what is the probability that the first is red and the second is green?",
+      "options": [
+        "\\(\\frac{4}{33}\\)",
+        "\\(\\frac{8}{33}\\)",
+        "\\(\\frac{32}{132}\\)",
+        "\\(\\frac{1}{3}\\)"
+      ],
+      "key": "B",
+      "keySolution": "P(first red) = \\(\\frac{8}{12} = \\frac{2}{3}\\)\r\nP(second green | first red) = \\(\\frac{4}{11}\\)\r\nRequired probability = \\(\\frac{2}{3} \\times \\frac{4}{11} = \\frac{8}{33}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 31,
+      "stem": "A bag contains \\(6\\) blue balls, \\(5\\) red balls, and \\(4\\) green balls. What is the probability of drawing \\(3\\) balls such that no two are of the same color?",
+      "options": [
+        "\\(\\frac{120}{455}\\)",
+        "\\(\\frac{60}{455}\\)",
+        "\\(\\frac{24}{91}\\)",
+        "\\(\\frac{12}{91}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total ways = \\(\\binom{15}{3} = 455\\)\r\nWays to select \\(1\\) from each color = \\(6 \\times 5 \\times 4 = 120\\)\r\nProbability = \\(\\frac{120}{455} = \\frac{24}{91}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 32,
+      "stem": "In a bag with \\(9\\) balls (\\(5\\) black, \\(4\\) white), what is the probability that in \\(2\\) draws with replacement, both balls are black?",
+      "options": [
+        "\\(\\frac{16}{81}\\)",
+        "\\(\\frac{25}{81}\\)",
+        "\\(\\frac{20}{81}\\)",
+        "\\(\\frac{10}{81}\\)"
+      ],
+      "key": "B",
+      "keySolution": "P(black) = \\(\\frac{5}{9}\\)\r\nWith replacement, P(both black) = \\(\\left(\\frac{5}{9}\\right)^2 = \\frac{25}{81}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 33,
+      "stem": "A box has \\(14\\) balls: \\(6\\) red, \\(4\\) blue, and \\(4\\) yellow. If \\(3\\) balls are selected, what is the probability that exactly \\(2\\) are red?",
+      "options": [
+        "\\(\\frac{15}{91}\\)",
+        "\\(\\frac{60}{182}\\)",
+        "\\(\\frac{120}{364}\\)",
+        "\\(\\frac{30}{91}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total ways = \\(\\binom{14}{3} = 364\\)\r\nWays to select exactly \\(2\\) red:\r\n\\(\\binom{6}{2} \\times \\binom{8}{1} = 15 \\times 8 = 120\\)\r\nProbability = \\(\\frac{120}{364}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 34,
+      "stem": "A bag contains \\(7\\) white and \\(5\\) black balls. What is the probability of drawing \\(4\\) balls such that at least \\(3\\) are white?",
+      "options": [
+        "\\(\\frac{280}{495}\\)",
+        "\\(\\frac{245}{495}\\)",
+        "\\(\\frac{210}{495}\\)",
+        "\\(\\frac{315}{495}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total ways = \\(\\binom{12}{4} = 495\\)\r\nAt least \\(3\\) white = exactly \\(3\\) white + exactly \\(4\\) white\r\nExactly \\(3\\) white: \\(\\binom{7}{3} \\times \\binom{5}{1} = 35 \\times 5 = 175\\)\r\nExactly \\(4\\) white: \\(\\binom{7}{4} \\times \\binom{5}{0} = 35 \\times 1 = 35\\)\r\nFavorable = \\(175 + 35 = 210\\)\r\nProbability = \\(\\frac{210}{495}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 35,
+      "stem": "In a collection of \\(13\\) balls (\\(5\\) red, \\(4\\) blue, \\(4\\) green), what is the probability that \\(2\\) randomly selected balls are both blue?",
+      "options": [
+        "\\(\\frac{6}{78}\\)",
+        "\\(\\frac{1}{13}\\)",
+        "\\(\\frac{2}{39}\\)",
+        "\\(\\frac{4}{39}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Total ways = \\(\\binom{13}{2} = 78\\)\r\nWays to select \\(2\\) blue from \\(4\\) = \\(\\binom{4}{2} = 6\\)\r\nProbability = \\(\\frac{6}{78} = \\frac{1}{13}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 36,
+      "stem": "A bag has \\(8\\) yellow balls and \\(7\\) purple balls. If \\(3\\) balls are drawn without replacement, what is the probability that exactly \\(1\\) is yellow?",
+      "options": [
+        "\\(\\frac{168}{455}\\)",
+        "\\(\\frac{280}{455}\\)",
+        "\\(\\frac{35}{91}\\)",
+        "\\(\\frac{56}{91}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total ways = \\(\\binom{15}{3} = 455\\)\r\nWays to select exactly \\(1\\) yellow:\r\n\\(\\binom{8}{1} \\times \\binom{7}{2} = 8 \\times 21 = 168\\)\r\nProbability = \\(\\frac{168}{455}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 37,
+      "stem": "From a bag containing \\(9\\) red and \\(6\\) blue balls, what is the probability of drawing \\(2\\) balls with replacement such that one is red and one is blue?",
+      "options": [
+        "\\(\\frac{54}{225}\\)",
+        "\\(\\frac{108}{225}\\)",
+        "\\(\\frac{72}{225}\\)",
+        "\\(\\frac{36}{225}\\)"
+      ],
+      "key": "B",
+      "keySolution": "P(red) = \\(\\frac{9}{15} = \\frac{3}{5}\\), P(blue) = \\(\\frac{6}{15} = \\frac{2}{5}\\)\r\nP(one red, one blue) = P(RB) + P(BR)\r\nP(RB) = \\(\\frac{3}{5} \\times \\frac{2}{5} = \\frac{6}{25}\\)\r\nP(BR) = \\(\\frac{2}{5} \\times \\frac{3}{5} = \\frac{6}{25}\\)\r\nTotal = \\(\\frac{6}{25} + \\frac{6}{25} = \\frac{12}{25} = \\frac{108}{225}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 38,
+      "stem": "A box contains \\(11\\) balls: \\(4\\) orange, \\(4\\) pink, and \\(3\\) violet. What is the probability of selecting \\(4\\) balls such that all are orange?",
+      "options": [
+        "\\(\\frac{1}{330}\\)",
+        "\\(\\frac{4}{330}\\)",
+        "\\(\\frac{6}{330}\\)",
+        "\\(\\frac{24}{330}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total ways = \\(\\binom{11}{4} = 330\\)\r\nWays to select \\(4\\) orange from \\(4\\) = \\(\\binom{4}{4} = 1\\)\r\nProbability = \\(\\frac{1}{330}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 39,
+      "stem": "In a bag with \\(16\\) balls (\\(8\\) red, \\(4\\) blue, \\(4\\) green), what is the probability of drawing \\(2\\) balls of different colors?",
+      "options": [
+        "\\(\\frac{88}{120}\\)",
+        "\\(\\frac{32}{120}\\)",
+        "\\(\\frac{80}{120}\\)",
+        "\\(\\frac{56}{120}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total ways = \\(\\binom{16}{2} = 120\\)\r\nSame color pairs:\r\nRed: \\(\\binom{8}{2} = 28\\)\r\nBlue: \\(\\binom{4}{2} = 6\\)\r\nGreen: \\(\\binom{4}{2} = 6\\)\r\nSame color = \\(28 + 6 + 6 = 40\\)\r\nDifferent colors = \\(120 - 40 = 80\\)\r\nProbability = \\(\\frac{80}{120}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 40,
+      "stem": "A bag contains \\(10\\) balls: \\(3\\) red, \\(3\\) blue, \\(2\\) green, and \\(2\\) yellow. What is the probability of drawing \\(3\\) balls such that all are different colors?",
+      "options": [
+        "\\(\\frac{42}{120}\\)",
+        "\\(\\frac{36}{120}\\)",
+        "\\(\\frac{54}{120}\\)",
+        "\\(\\frac{60}{120}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Total ways = \\(\\binom{10}{3} = 120\\)\r\nTo select \\(3\\) different colors from \\(4\\) colors: \\(\\binom{4}{3} = 4\\) ways\r\nFor each selection of \\(3\\) colors:\r\nRBG: \\(3 \\times 3 \\times 2 = 18\\)\r\nRBY: \\(3 \\times 3 \\times 2 = 18\\)\r\nRGY: \\(3 \\times 2 \\times 2 = 12\\)\r\nBGY: \\(3 \\times 2 \\times 2 = 12\\)\r\nTotal = \\(18 + 18 + 12 + 12 = 60\\)\r\nProbability = \\(\\frac{60}{120}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 41,
+      "stem": "From \\(20\\) balls (\\(8\\) red, \\(6\\) blue, \\(6\\) green), if \\(5\\) balls are selected, what is the probability that exactly \\(3\\) are red?",
+      "options": [
+        "\\(\\frac{3696}{15504}\\)",
+        "\\(\\frac{4620}{15504}\\)",
+        "\\(\\frac{2772}{15504}\\)",
+        "\\(\\frac{1848}{15504}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total ways = \\(\\binom{20}{5} = 15504\\)\r\nWays to select exactly \\(3\\) red:\r\n\\(\\binom{8}{3} \\times \\binom{12}{2} = 56 \\times 66 = 3696\\)\r\nProbability = \\(\\frac{3696}{15504}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 42,
+      "stem": "A bag has \\(12\\) balls of \\(4\\) different colors (\\(3\\) each). What is the probability that in selecting \\(2\\) balls, both are of the same color?",
+      "options": [
+        "\\(\\frac{12}{66}\\)",
+        "\\(\\frac{6}{33}\\)",
+        "\\(\\frac{2}{11}\\)",
+        "\\(\\frac{4}{33}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total ways = \\(\\binom{12}{2} = 66\\)\r\nSame color pairs from each color = \\(\\binom{3}{2} = 3\\)\r\nTotal same color = \\(4 \\times 3 = 12\\)\r\nProbability = \\(\\frac{12}{66} = \\frac{2}{11}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 43,
+      "stem": "In a collection of \\(17\\) balls (\\(7\\) red, \\(5\\) blue, \\(5\\) green), what is the probability of selecting \\(4\\) balls such that exactly \\(2\\) are red and \\(1\\) is blue?",
+      "options": [
+        "\\(\\frac{1050}{2380}\\)",
+        "\\(\\frac{525}{2380}\\)",
+        "\\(\\frac{315}{2380}\\)",
+        "\\(\\frac{210}{2380}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Total ways = \\(\\binom{17}{4} = 2380\\)\r\nWays to select \\(2\\) red, \\(1\\) blue, \\(1\\) green:\r\n\\(\\binom{7}{2} \\times \\binom{5}{1} \\times \\binom{5}{1} = 21 \\times 5 \\times 5 = 525\\)\r\nProbability = \\(\\frac{525}{2380}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 44,
+      "stem": "A bag contains \\(14\\) balls: \\(5\\) black, \\(5\\) white, and \\(4\\) gray. If \\(3\\) balls are drawn with replacement, what is the probability that all are black?",
+      "options": [
+        "\\(\\frac{343}{2744}\\)",
+        "\\(\\frac{64}{2744}\\)",
+        "\\(\\frac{216}{2744}\\)",
+        "\\(\\frac{125}{2744}\\)"
+      ],
+      "key": "D",
+      "keySolution": "P(black) = \\(\\frac{5}{14}\\)\r\nWith replacement, P(all \\(3\\) black) = \\(\\left(\\frac{5}{14}\\right)^3 = \\frac{125}{2744}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 45,
+      "stem": "From \\(15\\) balls containing \\(6\\) red, \\(5\\) blue, and \\(4\\) yellow, what is the probability of drawing \\(3\\) balls such that at least \\(1\\) is red?",
+      "options": [
+        "\\(\\frac{371}{455}\\)",
+        "\\(\\frac{84}{455}\\)",
+        "\\(\\frac{285}{455}\\)",
+        "\\(\\frac{170}{455}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total ways = \\(\\binom{15}{3} = 455\\)\r\nP(at least \\(1\\) red) = \\(1\\) - P(no red)\r\nP(no red) = \\(\\binom{9}{3} = 84\\)\r\nP(at least \\(1\\) red) = \\(\\frac{455 - 84}{455} = \\frac{371}{455}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 46,
+      "stem": "In a bag with \\(13\\) balls (\\(4\\) red, \\(4\\) blue, \\(3\\) green, \\(2\\) yellow), what is the probability of drawing \\(2\\) balls of the same color?",
+      "options": [
+        "\\(\\frac{16}{78}\\)",
+        "\\(\\frac{62}{78}\\)",
+        "\\(\\frac{49}{78}\\)",
+        "\\(\\frac{29}{78}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total ways = \\(\\binom{13}{2} = 78\\)\r\nSame color pairs:\r\nRed: \\(\\binom{4}{2} = 6\\)\r\nBlue: \\(\\binom{4}{2} = 6\\)\r\nGreen: \\(\\binom{3}{2} = 3\\)\r\nYellow: \\(\\binom{2}{2} = 1\\)\r\nTotal same color = \\(6 + 6 + 3 + 1 = 16\\)\r\nProbability = \\(\\frac{16}{78}\\)",
+      "difficulty": "Medium"
+    }
+  ]
+}

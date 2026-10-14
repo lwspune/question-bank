@@ -1,0 +1,2052 @@
+[
+  {
+    "id": "01-1",
+    "derived": "C",
+    "value": "4/16 = 1/4",
+    "confidence": "high",
+    "note": "checked: C(4,3) = 4 of 16 outcomes",
+    "subtopic": "Coin Tosses",
+    "difficulty": "EASY",
+    "solution": "Four tosses give \\(2^4 = 16\\) equally likely outcomes. Exactly 3 heads can happen in \\(\\binom{4}{3} = 4\\) ways, so the probability is \\(\\frac{4}{16} = \\frac{1}{4}\\)."
+  },
+  {
+    "id": "01-2",
+    "derived": "A",
+    "value": "2/6 = 1/3",
+    "confidence": "high",
+    "note": "checked: 5 and 6",
+    "subtopic": "Dice",
+    "difficulty": "EASY",
+    "solution": "Only 5 and 6 are greater than 4, which is 2 of the 6 faces. The probability is \\(\\frac{2}{6} = \\frac{1}{3}\\)."
+  },
+  {
+    "id": "01-3",
+    "derived": "A",
+    "value": "26/52 = 1/2",
+    "confidence": "high",
+    "note": "TWIN: A=D (1/2 and 26/52 are equal)",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "A deck has 26 red cards (hearts and diamonds) out of 52. The probability is \\(\\frac{26}{52} = \\frac{1}{2}\\)."
+  },
+  {
+    "id": "01-4",
+    "derived": "B",
+    "value": "6/36 = 1/6",
+    "confidence": "high",
+    "note": "checked: (1,6) (2,5) (3,4) (4,3) (5,2) (6,1)",
+    "subtopic": "Dice",
+    "difficulty": "EASY",
+    "solution": "Of the 36 outcomes, 6 give a sum of 7: (1,6), (2,5), (3,4), (4,3), (5,2) and (6,1). The probability is \\(\\frac{6}{36} = \\frac{1}{6}\\)."
+  },
+  {
+    "id": "01-5",
+    "derived": "A",
+    "value": "5/10 = 1/2",
+    "confidence": "high",
+    "note": "TWIN: A=B (both print 5/10)",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "EASY",
+    "solution": "There are 10 balls and \\(3 + 2 = 5\\) of them are not red. The probability is \\(\\frac{5}{10} = \\frac{1}{2}\\)."
+  },
+  {
+    "id": "01-6",
+    "derived": "C",
+    "value": "3/4",
+    "confidence": "high",
+    "note": "checked: 1 - P(TT) = 1 - 1/4",
+    "subtopic": "Coin Tosses",
+    "difficulty": "EASY",
+    "solution": "The only way to get no head is TT, with probability \\(\\frac{1}{4}\\). So at least one head has probability \\(1 - \\frac{1}{4} = \\frac{3}{4}\\)."
+  },
+  {
+    "id": "01-7",
+    "derived": "B",
+    "value": "8/52 = 2/13",
+    "confidence": "high",
+    "note": "TWIN: B=C (both print 8/52)",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "There are 4 kings and 4 queens, 8 cards in all, and none is both. The probability is \\(\\frac{8}{52} = \\frac{2}{13}\\)."
+  },
+  {
+    "id": "01-8",
+    "derived": "A",
+    "value": "2/10 = 1/5",
+    "confidence": "high",
+    "note": "checked: 2 winners of 10",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "EASY",
+    "solution": "Two of the 10 tickets win, so the probability is \\(\\frac{2}{10} = \\frac{1}{5}\\)."
+  },
+  {
+    "id": "01-9",
+    "derived": "B",
+    "value": "(4/52)(3/51) = 1/221",
+    "confidence": "high",
+    "note": "checked: 12/2652 = 1/221",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "The first card is an ace with probability \\(\\frac{4}{52}\\), and then the second with probability \\(\\frac{3}{51}\\). Both are aces with probability \\(\\frac{4}{52} \\times \\frac{3}{51} = \\frac{1}{221}\\)."
+  },
+  {
+    "id": "01-10",
+    "derived": "C",
+    "value": "4/8 = 1/2",
+    "confidence": "high",
+    "note": "checked: 2, 4, 6, 8",
+    "subtopic": "Numbers and Spinners",
+    "difficulty": "EASY",
+    "solution": "Four of the 8 sections (2, 4, 6, 8) are even. The probability is \\(\\frac{4}{8} = \\frac{1}{2}\\)."
+  },
+  {
+    "id": "01-11",
+    "derived": "B",
+    "value": "C(6,2)/C(10,2) = 15/45 = 1/3",
+    "confidence": "high",
+    "note": "TWIN: A=B (6/10 x 5/9 = 30/90 = 1/3 = 15/45); both are correct expressions",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Two white balls can be chosen in \\(\\binom{6}{2} = 15\\) ways out of \\(\\binom{10}{2} = 45\\) pairs. The probability is \\(\\frac{15}{45} = \\frac{1}{3}\\)."
+  },
+  {
+    "id": "01-12",
+    "derived": "C",
+    "value": "2/6 = 1/3",
+    "confidence": "high",
+    "note": "checked: 3 and 6",
+    "subtopic": "Dice",
+    "difficulty": "EASY",
+    "solution": "Only 3 and 6 are divisible by 3, which is 2 of the 6 faces. The probability is \\(\\frac{2}{6} = \\frac{1}{3}\\)."
+  },
+  {
+    "id": "01-13",
+    "derived": "B",
+    "value": "3/8",
+    "confidence": "high",
+    "note": "checked: TTH, THT, HTT",
+    "subtopic": "Coin Tosses",
+    "difficulty": "EASY",
+    "solution": "Three coins give 8 outcomes, and exactly two tails occurs in 3 of them: TTH, THT and HTT. The probability is \\(\\frac{3}{8}\\)."
+  },
+  {
+    "id": "01-14",
+    "derived": "A",
+    "value": "13/52 = 1/4",
+    "confidence": "high",
+    "note": "checked: 13 hearts",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "There are 13 hearts in 52 cards. The probability is \\(\\frac{13}{52} = \\frac{1}{4}\\)."
+  },
+  {
+    "id": "01-15",
+    "derived": "B",
+    "value": "4/20 = 1/5",
+    "confidence": "high",
+    "note": "checked: 5, 10, 15, 20",
+    "subtopic": "Numbers and Spinners",
+    "difficulty": "EASY",
+    "solution": "The multiples of 5 from 1 to 20 are 5, 10, 15 and 20, four numbers. The probability is \\(\\frac{4}{20} = \\frac{1}{5}\\)."
+  },
+  {
+    "id": "01-16",
+    "derived": "A",
+    "value": "6/36 = 1/6",
+    "confidence": "high",
+    "note": "TWIN: A=B=C (1/6, 6/36, 1/6 all equal)",
+    "subtopic": "Dice",
+    "difficulty": "EASY",
+    "solution": "There are 6 doublets, (1,1) to (6,6), among the 36 outcomes. The probability is \\(\\frac{6}{36} = \\frac{1}{6}\\)."
+  },
+  {
+    "id": "01-17",
+    "derived": "A",
+    "value": "5/20 = 1/4",
+    "confidence": "high",
+    "note": "TWIN: A=C (5/20 and 1/4 are equal)",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "EASY",
+    "solution": "The box holds \\(8 + 5 + 7 = 20\\) balls, 5 of them blue. The probability is \\(\\frac{5}{20} = \\frac{1}{4}\\)."
+  },
+  {
+    "id": "01-18",
+    "derived": "B",
+    "value": "0.9",
+    "confidence": "high",
+    "note": "checked: mutually exclusive, so add",
+    "subtopic": "Probability Rules",
+    "difficulty": "EASY",
+    "solution": "Mutually exclusive events cannot happen together, so their probabilities add: \\(P(A \\cup B) = 0.4 + 0.5 = 0.9\\)."
+  },
+  {
+    "id": "01-19",
+    "derived": "B",
+    "value": "3/36 = 1/12",
+    "confidence": "high",
+    "note": "TWIN: B=C (3/36 and 1/12 are equal)",
+    "subtopic": "Dice",
+    "difficulty": "EASY",
+    "solution": "A sum of 10 comes from (4,6), (5,5) and (6,4), 3 of the 36 outcomes. The probability is \\(\\frac{3}{36} = \\frac{1}{12}\\)."
+  },
+  {
+    "id": "01-20",
+    "derived": "B",
+    "value": "5/15 = 1/3",
+    "confidence": "high",
+    "note": "TWIN: B=C (both print 1/3)",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "EASY",
+    "solution": "Five of the 15 people are women. The probability is \\(\\frac{5}{15} = \\frac{1}{3}\\)."
+  },
+  {
+    "id": "01-21",
+    "derived": "B",
+    "value": "26/52 = 1/2",
+    "confidence": "high",
+    "note": "TWIN: B=C (26/52 and 1/2 are equal)",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "A deck has 26 black cards (spades and clubs) out of 52. The probability is \\(\\frac{26}{52} = \\frac{1}{2}\\)."
+  },
+  {
+    "id": "01-22",
+    "derived": "C",
+    "value": "6/32 = 3/16",
+    "confidence": "high",
+    "note": "checked: 5 ways for 4 heads + 1 way for 5",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "Five tosses give 32 outcomes. Exactly 4 heads happens in \\(\\binom{5}{4} = 5\\) ways and 5 heads in 1 way, so at least 4 heads has probability \\(\\frac{6}{32} = \\frac{3}{16}\\)."
+  },
+  {
+    "id": "01-23",
+    "derived": "A",
+    "value": "3/12 = 1/4",
+    "confidence": "high",
+    "note": "TWIN: A=B (both print 1/4)",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "EASY",
+    "solution": "Three of the 12 balls are red. The probability is \\(\\frac{3}{12} = \\frac{1}{4}\\)."
+  },
+  {
+    "id": "01-24",
+    "derived": "A",
+    "value": "0.42",
+    "confidence": "high",
+    "note": "TWIN: A=B (both print 0.42)",
+    "subtopic": "Probability Rules",
+    "difficulty": "EASY",
+    "solution": "For independent events the probabilities multiply: \\(P(A \\cap B) = 0.6 \\times 0.7 = 0.42\\)."
+  },
+  {
+    "id": "01-25",
+    "derived": "A",
+    "value": "5/25 = 1/5",
+    "confidence": "high",
+    "note": "TWIN: A=C (5/25 and 1/5 are equal)",
+    "subtopic": "Numbers and Spinners",
+    "difficulty": "EASY",
+    "solution": "The perfect squares from 1 to 25 are 1, 4, 9, 16 and 25, five numbers. The probability is \\(\\frac{5}{25} = \\frac{1}{5}\\)."
+  },
+  {
+    "id": "01-26",
+    "derived": "A",
+    "value": "5/15 = 1/3",
+    "confidence": "high",
+    "note": "TWIN: A=B (5/15 and 1/3 are equal)",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "EASY",
+    "solution": "Neither green nor red means yellow: 5 of the \\(4 + 5 + 6 = 15\\) marbles. The probability is \\(\\frac{5}{15} = \\frac{1}{3}\\)."
+  },
+  {
+    "id": "01-27",
+    "derived": "C",
+    "value": "4/36 = 1/9",
+    "confidence": "high",
+    "note": "checked: (2,6) (6,2) (3,4) (4,3)",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "A product of 12 comes from (2,6), (6,2), (3,4) and (4,3), 4 of the 36 outcomes. The probability is \\(\\frac{4}{36} = \\frac{1}{9}\\)."
+  },
+  {
+    "id": "01-28",
+    "derived": "C",
+    "value": "12/48 = 1/4",
+    "confidence": "high",
+    "note": "Stem garbled: 'all cards except aces removed' leaves only the aces; read as 'the four aces removed', which matches '48 cards'.",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Removing the 4 aces takes out the ace of hearts too, leaving 12 hearts among 48 cards. The probability is \\(\\frac{12}{48} = \\frac{1}{4}\\)."
+  },
+  {
+    "id": "01-29",
+    "derived": "C",
+    "value": "0.75",
+    "confidence": "high",
+    "note": "checked: 1 - 0.25",
+    "subtopic": "Probability Rules",
+    "difficulty": "EASY",
+    "solution": "An event either happens or does not, so the two probabilities add to 1. The probability that it happens is \\(1 - 0.25 = 0.75\\)."
+  },
+  {
+    "id": "01-30",
+    "derived": "B",
+    "value": "4/9",
+    "confidence": "high",
+    "note": "checked: 2, 3, 5, 7",
+    "subtopic": "Numbers and Spinners",
+    "difficulty": "EASY",
+    "solution": "The set has 9 numbers, and 2, 3, 5 and 7 are prime. The probability is \\(\\frac{4}{9}\\)."
+  },
+  {
+    "id": "02-2",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: Cards greater than 8: 9, 10, J, Q, K, A\r\nStep 2: Number of such cards per suit = \\(6\\)\r\nStep 3: Total such cards = \\(6 \\times 4 = 24\\)\r\nStep 4: Probability = \\(\\frac{24}{52} = \\frac{6}{13}\\)"
+  },
+  {
+    "id": "02-3",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: Use complement: P(at least 1 Ace) = 1 - P(no Ace)\r\nStep 2: P(no Ace) = \\(\\frac{48}{52} \\times \\frac{47}{51}\\)\r\nStep 3: P(no Ace) = \\(\\frac{48 \\times 47}{52 \\times 51} = \\frac{2256}{2652} = \\frac{188}{221}\\)\r\nStep 4: P(at least 1 Ace) = \\(1 - \\frac{188}{221} = \\frac{33}{221}\\)"
+  },
+  {
+    "id": "02-4",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "HARD",
+    "solution": "Step 1: First spade probability = \\(\\frac{13}{52}\\)\r\nStep 2: Second spade probability = \\(\\frac{12}{51}\\)\r\nStep 3: Third spade probability = \\(\\frac{11}{50}\\)\r\nStep 4: Combined = \\(\\frac{13}{52} \\times \\frac{12}{51} \\times \\frac{11}{50} = \\frac{1716}{132600} = \\frac{11}{850}\\)"
+  },
+  {
+    "id": "02-5",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: This is conditional probability P(Heart|Red)\r\nStep 2: Red cards = \\(26\\) (13 hearts + 13 diamonds)\r\nStep 3: Hearts among red cards = \\(13\\)\r\nStep 4: P(Heart|Red) = \\(\\frac{13}{26} = \\frac{1}{2}\\)"
+  },
+  {
+    "id": "02-6",
+    "derived": "X",
+    "value": "",
+    "confidence": "high",
+    "note": "excluded by override",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Excluded from the bank: see the override."
+  },
+  {
+    "id": "02-7",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: Black Aces = \\(2\\) (Clubs and Spades)\r\nStep 2: Red Kings = \\(2\\) (Hearts and Diamonds)\r\nStep 3: These are mutually exclusive\r\nStep 4: Total favorable = \\(2 + 2 = 4\\)\r\nStep 5: Probability = \\(\\frac{4}{52} = \\frac{1}{13}\\)"
+  },
+  {
+    "id": "02-8",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: Court cards = \\(12\\)\r\nStep 2: Hearts = \\(13\\)\r\nStep 3: Heart court cards = \\(3\\) (overlap)\r\nStep 4: By inclusion-exclusion: \\(12 + 13 - 3 = 22\\)\r\nStep 5: Probability = \\(\\frac{22}{52} = \\frac{11}{26}\\)"
+  },
+  {
+    "id": "02-9",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "HARD",
+    "solution": "Step 1: Clubs = \\(13\\)\r\nStep 2: Even cards (2,4,6,8,10) = \\(5 \\times 4 = 20\\)\r\nStep 3: Even clubs = \\(5\\)\r\nStep 4: By inclusion-exclusion: \\(13 + 20 - 5 = 28\\)\r\nStep 5: Probability = \\(\\frac{28}{52} = \\frac{7}{13}\\)"
+  },
+  {
+    "id": "02-10",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "Step 1: Cards with values 4,5,6,7,8,9\r\nStep 2: Number of such cards per suit = \\(6\\)\r\nStep 3: Total such cards = \\(6 \\times 4 = 24\\)\r\nStep 4: Probability = \\(\\frac{24}{52} = \\frac{6}{13}\\)"
+  },
+  {
+    "id": "02-11",
+    "derived": "X",
+    "value": "",
+    "confidence": "high",
+    "note": "excluded by override",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Excluded from the bank: see the override."
+  },
+  {
+    "id": "02-12",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: Probability of first heart = \\(\\frac{13}{52}\\)\r\nStep 2: Probability of second heart = \\(\\frac{12}{51}\\)\r\nStep 3: Combined probability = \\(\\frac{13}{52} \\times \\frac{12}{51} = \\frac{1}{4} \\times \\frac{12}{51} = \\frac{1}{17}\\)"
+  },
+  {
+    "id": "02-13",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: Probability of first club = \\(\\frac{13}{52}\\)\r\nStep 2: After removing 1 club, remaining non-clubs = \\(39\\)\r\nStep 3: Probability of second non-club = \\(\\frac{39}{51}\\)\r\nStep 4: Combined = \\(\\frac{13}{52} \\times \\frac{39}{51} = \\frac{13 \\times 39}{52 \\times 51}\\)"
+  },
+  {
+    "id": "02-14",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "Step 1: Prime-numbered cards: 2, 3, 5, 7\r\nStep 2: Number per suit = \\(4\\)\r\nStep 3: Total prime cards = \\(4 \\times 4 = 16\\)\r\nStep 4: Probability = \\(\\frac{16}{52} = \\frac{4}{13}\\)"
+  },
+  {
+    "id": "02-15",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "Step 1: Ace of Spades = \\(1\\)\r\nStep 2: Any King = \\(4\\)\r\nStep 3: These are mutually exclusive events\r\nStep 4: Total favorable = \\(1 + 4 = 5\\)\r\nStep 5: Probability = \\(\\frac{5}{52}\\)"
+  },
+  {
+    "id": "02-16",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: This is conditional probability P(Queen|Face card)\r\nStep 2: Total face cards = \\(12\\)\r\nStep 3: Queens among face cards = \\(4\\)\r\nStep 4: P(Queen|Face card) = \\(\\frac{4}{12} = \\frac{1}{3}\\)"
+  },
+  {
+    "id": "02-17",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: After first card, 3 cards of same rank remain out of 51\r\nStep 2: This applies regardless of first card's rank\r\nStep 3: Probability = \\(\\frac{3}{51} = \\frac{1}{17}\\)"
+  },
+  {
+    "id": "02-18",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: Probability of first black card = \\(\\frac{26}{52} = \\frac{1}{2}\\)\r\nStep 2: Since replacement, probability of second black card = \\(\\frac{1}{2}\\)\r\nStep 3: Combined probability = \\(\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)"
+  },
+  {
+    "id": "02-19",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "Step 1: Total cards = \\(52\\)\r\nStep 2: Face cards = \\(12\\)\r\nStep 3: Non-face cards = \\(52 - 12 = 40\\)\r\nStep 4: Probability = \\(\\frac{40}{52} = \\frac{10}{13}\\)"
+  },
+  {
+    "id": "02-20",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: Number of 7s = \\(4\\)\r\nStep 2: Number of spades = \\(13\\)\r\nStep 3: 7 of spades = \\(1\\) (counted in both)\r\nStep 4: By inclusion-exclusion: \\(4 + 13 - 1 = 16\\)\r\nStep 5: Probability = \\(\\frac{16}{52} = \\frac{4}{13}\\)"
+  },
+  {
+    "id": "02-21",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "HARD",
+    "solution": "Step 1: After first card, 12 cards of same suit remain out of 51\r\nStep 2: This applies regardless of first card's suit\r\nStep 3: Probability = \\(\\frac{12}{51} = \\frac{4}{17}\\)"
+  },
+  {
+    "id": "02-22",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "Step 1: Cards less than 5: Ace(1), 2, 3, 4\r\nStep 2: Number of such cards per suit = \\(4\\)\r\nStep 3: Total such cards = \\(4 \\times 4 = 16\\)\r\nStep 4: Probability = \\(\\frac{16}{52} = \\frac{4}{13}\\)"
+  },
+  {
+    "id": "02-23",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: Number of 10s = \\(4\\)\r\nStep 2: Number of diamonds = \\(13\\)\r\nStep 3: 10 of diamonds = \\(1\\) (counted in both)\r\nStep 4: By inclusion-exclusion: \\(4 + 13 - 1 = 16\\)\r\nStep 5: Probability = \\(\\frac{16}{52} = \\frac{4}{13}\\)"
+  },
+  {
+    "id": "02-24",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "Step 1: Queen of Hearts = \\(1\\) card\r\nStep 2: Queen of Spades = \\(1\\) card\r\nStep 3: Total favorable = \\(2\\) cards\r\nStep 4: Probability = \\(\\frac{2}{52} = \\frac{1}{26}\\)"
+  },
+  {
+    "id": "02-25",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: Cards A through 6 per suit = \\(6\\) cards\r\nStep 2: Total such cards = \\(6 \\times 4 = 24\\)\r\nStep 3: Probability = \\(\\frac{24}{52} = \\frac{6}{13}\\)"
+  },
+  {
+    "id": "02-26",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "Step 1: Red face cards = face cards in hearts + face cards in diamonds\r\nStep 2: Hearts face cards = \\(3\\), Diamonds face cards = \\(3\\)\r\nStep 3: Total red face cards = \\(3 + 3 = 6\\)\r\nStep 4: Probability = \\(\\frac{6}{52} = \\frac{3}{26}\\)"
+  },
+  {
+    "id": "02-27",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: Multiples of 3 in range 2-10: 3, 6, 9\r\nStep 2: Number of such cards per suit = \\(3\\)\r\nStep 3: Total such cards = \\(3 \\times 4 = 12\\)\r\nStep 4: Probability = \\(\\frac{12}{52} = \\frac{3}{13}\\)"
+  },
+  {
+    "id": "02-28",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "Step 1: Die shows 6, so we need cards with value 6\r\nStep 2: Number of 6s in deck = \\(4\\)\r\nStep 3: Probability = \\(\\frac{4}{52} = \\frac{1}{13}\\)"
+  },
+  {
+    "id": "02-29",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: First heart probability = \\(\\frac{13}{52} = \\frac{1}{4}\\)\r\nStep 2: Second heart probability = \\(\\frac{12}{51}\\)\r\nStep 3: Combined probability = \\(\\frac{1}{4} \\times \\frac{12}{51} = \\frac{12}{204} = \\frac{1}{17}\\)"
+  },
+  {
+    "id": "02-30",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "Step 1: Any number doubled is always even\r\nStep 2: \\(2 \\times \\text{any number} = \\text{even number}\\)\r\nStep 3: This applies to all cards regardless of value\r\nStep 4: Probability = \\(\\frac{52}{52} = 1\\)"
+  },
+  {
+    "id": "02-31",
+    "derived": "X",
+    "value": "",
+    "confidence": "high",
+    "note": "excluded by override",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Excluded from the bank: see the override."
+  },
+  {
+    "id": "02-32",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: Probability of red card = \\(\\frac{26}{52} = \\frac{1}{2}\\)\r\nStep 2: With replacement, each draw is independent\r\nStep 3: Probability of three red = \\(\\left(\\frac{1}{2}\\right)^3 = \\frac{1}{8}\\)"
+  },
+  {
+    "id": "02-33",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: Probability of Ace = \\(\\frac{4}{52} = \\frac{1}{13}\\)\r\nStep 2: Probability of King (with replacement) = \\(\\frac{4}{52} = \\frac{1}{13}\\)\r\nStep 3: Combined probability = \\(\\frac{1}{13} \\times \\frac{1}{13} = \\frac{1}{169}\\)"
+  },
+  {
+    "id": "02-34",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "Step 1: Numbered cards per suit = \\(9\\) (2,3,4,5,6,7,8,9,10)\r\nStep 2: Total numbered cards = \\(9 \\times 4 = 36\\)\r\nStep 3: Probability = \\(\\frac{36}{52} = \\frac{9}{13}\\)"
+  },
+  {
+    "id": "02-35",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: Number of Aces = \\(4\\)\r\nStep 2: Number of Kings = \\(4\\)\r\nStep 3: Total favorable outcomes = \\(4 + 4 = 8\\)\r\nStep 4: Probability = \\(\\frac{8}{52} = \\frac{2}{13}\\)"
+  },
+  {
+    "id": "02-36",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "Step 1: Jack of Hearts = \\(1\\)\r\nStep 2: Any Queen = \\(4\\)\r\nStep 3: These are mutually exclusive\r\nStep 4: Total favorable = \\(1 + 4 = 5\\)\r\nStep 5: Probability = \\(\\frac{5}{52}\\)"
+  },
+  {
+    "id": "02-37",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "Step 1: Total spades = \\(13\\)\r\nStep 2: Spade face cards = \\(3\\) (Jack, Queen, King of spades)\r\nStep 3: Non-face spades = \\(13 - 3 = 10\\)\r\nStep 4: Probability = \\(\\frac{10}{52} = \\frac{5}{26}\\)"
+  },
+  {
+    "id": "02-38",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "Step 1: Total cards = \\(52\\)\r\nStep 2: Red cards (Hearts + Diamonds) = \\(26\\)\r\nStep 3: Probability = \\(\\frac{26}{52} = \\frac{1}{2}\\)"
+  },
+  {
+    "id": "02-39",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: P(black) = \\(\\frac{1}{2}\\), P(red) = \\(\\frac{1}{2}\\)\r\nStep 2: Exactly one black = (Black,Red) OR (Red,Black)\r\nStep 3: P(B,R) = \\(\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)\r\nStep 4: P(R,B) = \\(\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)\r\nStep 5: Total = \\(\\frac{1}{4} + \\frac{1}{4} = \\frac{1}{2}\\)"
+  },
+  {
+    "id": "02-40",
+    "derived": "X",
+    "value": "",
+    "confidence": "high",
+    "note": "excluded by override",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Excluded from the bank: see the override."
+  },
+  {
+    "id": "02-41",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "Step 1: Total number of cards = \\(52\\)\r\nStep 2: Number of Kings in a deck = \\(4\\)\r\nStep 3: Probability = \\(\\frac{4}{52} = \\frac{1}{13}\\)"
+  },
+  {
+    "id": "02-42",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: Diamonds = \\(13\\)\r\nStep 2: Black cards = \\(26\\)\r\nStep 3: These events are mutually exclusive\r\nStep 4: Total favorable = \\(13 + 26 = 39\\)\r\nStep 5: Probability = \\(\\frac{39}{52} = \\frac{3}{4}\\)"
+  },
+  {
+    "id": "02-43",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "EASY",
+    "solution": "Step 1: Face cards per suit = \\(3\\) (Jack, Queen, King)\r\nStep 2: Total face cards = \\(3 \\times 4 = 12\\)\r\nStep 3: Probability = \\(\\frac{12}{52} = \\frac{3}{13}\\)"
+  },
+  {
+    "id": "02-44",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Playing Cards",
+    "difficulty": "MODERATE",
+    "solution": "Step 1: Picture cards = Jack, Queen, King\r\nStep 2: Red picture cards = \\(3\\) from hearts + \\(3\\) from diamonds = \\(6\\)\r\nStep 3: Probability = \\(\\frac{6}{52} = \\frac{3}{26}\\)"
+  },
+  {
+    "id": "03-2",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "EASY",
+    "solution": "When a fair coin is tossed, there are \\(2\\) equally likely outcomes: Head (H) and Tail (T).\r\nProbability of getting a head = \\(\\frac{\\text{Number of favorable outcomes}}{\\text{Total number of outcomes}} = \\frac{1}{2}\\)"
+  },
+  {
+    "id": "03-3",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "EASY",
+    "solution": "Sample space when two coins are tossed: {HH, HT, TH, TT}\r\nTotal outcomes = \\(4\\)\r\nFavorable outcomes for exactly one head: {HT, TH}\r\nNumber of favorable outcomes = \\(2\\)\r\nProbability = \\(\\frac{2}{4} = \\frac{1}{2}\\)"
+  },
+  {
+    "id": "03-4",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "EASY",
+    "solution": "Sample space: {HH, HT, TH, TT}\r\nAt least one head means one or more heads\r\nFavorable outcomes: {HH, HT, TH}\r\nProbability = \\(\\frac{3}{4}\\)\r\nAlternatively, P(at least one head) = \\(1 - P(\\text{no heads}) = 1 - \\frac{1}{4} = \\frac{3}{4}\\)"
+  },
+  {
+    "id": "03-5",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "Total outcomes when three coins are tossed = \\(2^3 = 8\\)\r\nFavorable outcomes for exactly two heads: {HHT, HTH, THH}\r\nNumber of favorable outcomes = \\(3\\)\r\nProbability = \\(\\frac{3}{8}\\)"
+  },
+  {
+    "id": "03-6",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "EASY",
+    "solution": "Total outcomes when four coins are tossed = \\(2^4 = 16\\)\r\nFavorable outcome for all tails: {TTTT}\r\nNumber of favorable outcomes = \\(1\\)\r\nProbability = \\(\\frac{1}{16}\\)"
+  },
+  {
+    "id": "03-7",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "Total outcomes = \\(2^5 = 32\\)\r\nAt least four heads means exactly four heads OR exactly five heads\r\nWays to get exactly four heads = \\(\\binom{5}{4} = 5\\)\r\nWays to get exactly five heads = \\(\\binom{5}{5} = 1\\)\r\nTotal favorable outcomes = \\(5 + 1 = 6\\)\r\nProbability = \\(\\frac{6}{32} = \\frac{3}{16}\\)"
+  },
+  {
+    "id": "03-8",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "HARD",
+    "solution": "Let A = first toss is head, B = at least one head appears\r\nSample space: {HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}\r\nEvent B: {HHH, HHT, HTH, HTT, THH, THT, TTH} - \\(7\\) outcomes\r\nEvent A∩B: {HHH, HHT, HTH, HTT} - \\(4\\) outcomes\r\nP(A|B) = \\(\\frac{P(A ∩ B)}{P(B)} = \\frac{4/8}{7/8} = \\frac{4}{7}\\)"
+  },
+  {
+    "id": "03-9",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "EASY",
+    "solution": "Sample space: {HH, HT, TH, TT}\r\nAt most one head means zero heads OR one head\r\nFavorable outcomes: {HT, TH, TT}\r\nNumber of favorable outcomes = \\(3\\)\r\nProbability = \\(\\frac{3}{4}\\)"
+  },
+  {
+    "id": "03-10",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "Total outcomes = \\(2^5 = 32\\)\r\nNumber of ways to get exactly \\(3\\) heads from \\(5\\) coins = \\(\\binom{5}{3} = \\frac{5!}{3!2!} = 10\\)\r\nProbability = \\(\\frac{10}{32} = \\frac{5}{16}\\)"
+  },
+  {
+    "id": "03-11",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "Total outcomes = \\(2^4 = 16\\)\r\nExactly one tail means exactly three heads\r\nNumber of ways = \\(\\binom{4}{1} = 4\\) (or \\(\\binom{4}{3} = 4\\))\r\nProbability = \\(\\frac{4}{16} = \\frac{1}{4}\\)"
+  },
+  {
+    "id": "03-12",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "Total outcomes = \\(2^4 = 16\\)\r\nAlternating patterns: HTHТ and THTH\r\nNumber of favorable outcomes = \\(2\\)\r\nProbability = \\(\\frac{2}{16} = \\frac{1}{8}\\)"
+  },
+  {
+    "id": "03-13",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "EASY",
+    "solution": "Total outcomes = \\(2^3 = 8\\)\r\nAt most two heads means not getting three heads\r\nP(at most two heads) = \\(1 - P(\\text{three heads}) = 1 - \\frac{1}{8} = \\frac{7}{8}\\)"
+  },
+  {
+    "id": "03-14",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "Sample space: {HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}\r\nOdd number of heads: \\(1\\) head or \\(3\\) heads\r\nOutcomes with \\(1\\) head: {HTT, THT, TTH} - \\(3\\) outcomes\r\nOutcomes with \\(3\\) heads: {HHH} - \\(1\\) outcome\r\nTotal favorable outcomes = \\(3 + 1 = 4\\)\r\nProbability = \\(\\frac{4}{8} = \\frac{1}{2}\\)"
+  },
+  {
+    "id": "03-15",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "EASY",
+    "solution": "Sample space: {HH, HT, TH, TT}\r\nSame face outcomes: {HH, TT}\r\nNumber of favorable outcomes = \\(2\\)\r\nProbability = \\(\\frac{2}{4} = \\frac{1}{2}\\)"
+  },
+  {
+    "id": "03-16",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "Total outcomes = \\(2^5 = 32\\)\r\nNumber of ways to choose \\(2\\) positions for heads out of \\(5\\) = \\(\\binom{5}{2} = \\frac{5!}{2!3!} = 10\\)\r\nProbability = \\(\\frac{10}{32} = \\frac{5}{16}\\)"
+  },
+  {
+    "id": "03-17",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "HARD",
+    "solution": "For exactly \\(3\\) tosses to be needed, the sequence must be TTH\r\nP(T) = \\(\\frac{1}{2}\\), P(H) = \\(\\frac{1}{2}\\)\r\nP(TTH) = \\(\\frac{1}{2} \\times \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{8}\\)"
+  },
+  {
+    "id": "03-18",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "Total outcomes = \\(2^4 = 16\\)\r\nAt least \\(2\\) heads = \\(1 - P(0 \\text{ heads}) - P(1 \\text{ head})\\)\r\nP(0 heads) = \\(\\frac{\\binom{4}{0}}{16} = \\frac{1}{16}\\)\r\nP(1 head) = \\(\\frac{\\binom{4}{1}}{16} = \\frac{4}{16}\\)\r\nP(at least 2 heads) = \\(1 - \\frac{1}{16} - \\frac{4}{16} = \\frac{11}{16}\\)"
+  },
+  {
+    "id": "03-19",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "solution authored",
+    "subtopic": "Coin Tosses",
+    "difficulty": "HARD",
+    "solution": "Of the 8 outcomes, those with no two heads in a row are HTH, HTT, THT, TTH and TTT (5). The other 3 (HHH, HHT, THH) have two consecutive heads, so the probability is \\(\\frac{3}{8}\\)."
+  },
+  {
+    "id": "03-20",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "HARD",
+    "solution": "We need exactly one head in the first three tosses\r\nThe last two tosses can be anything\r\nProbability of exactly one head in first three tosses = \\(\\binom{3}{1} \\times (\\frac{1}{2})^3 = 3 \\times \\frac{1}{8} = \\frac{3}{8}\\)\r\nThe last two tosses don't affect this probability"
+  },
+  {
+    "id": "03-21",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "P(at least one head when two coins are tossed) = \\(1 - P(\\text{both tails}) = 1 - \\frac{1}{4} = \\frac{3}{4}\\)\r\nFor this to happen in each of the \\(3\\) tosses:\r\nP(at least one head in each toss) = \\((\\frac{3}{4})^3 = \\frac{27}{64}\\)"
+  },
+  {
+    "id": "03-22",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "Even number of heads: \\(0, 2, 4\\) heads\r\nP(0 heads) = \\(\\binom{4}{0}(\\frac{1}{2})^4 = 1 \\times \\frac{1}{16} = \\frac{1}{16}\\)\r\nP(2 heads) = \\(\\binom{4}{2}(\\frac{1}{2})^4 = 6 \\times \\frac{1}{16} = \\frac{6}{16}\\)\r\nP(4 heads) = \\(\\binom{4}{4}(\\frac{1}{2})^4 = 1 \\times \\frac{1}{16} = \\frac{1}{16}\\)\r\nTotal = \\(\\frac{1+6+1}{16} = \\frac{8}{16} = \\frac{1}{2}\\)"
+  },
+  {
+    "id": "03-23",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "More heads than tails means at least \\(3\\) heads (since we have \\(5\\) coins)\r\nP(3 heads) = \\(\\binom{5}{3}(\\frac{1}{2})^5 = 10 \\times \\frac{1}{32} = \\frac{10}{32}\\)\r\nP(4 heads) = \\(\\binom{5}{4}(\\frac{1}{2})^5 = 5 \\times \\frac{1}{32} = \\frac{5}{32}\\)\r\nP(5 heads) = \\(\\binom{5}{5}(\\frac{1}{2})^5 = 1 \\times \\frac{1}{32} = \\frac{1}{32}\\)\r\nTotal = \\(\\frac{10+5+1}{32} = \\frac{16}{32} = \\frac{1}{2}\\)"
+  },
+  {
+    "id": "03-24",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "HARD",
+    "solution": "Let A = first coin shows head, B = exactly two heads appear\r\nOutcomes with exactly two heads: {HHT, HTH, THH}\r\nOutcomes where first coin is head AND exactly two heads: {HHT, HTH}\r\nP(A|B) = \\(\\frac{\\text{Number of outcomes in } A ∩ B}{\\text{Number of outcomes in } B} = \\frac{2}{3}\\)"
+  },
+  {
+    "id": "03-25",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "EASY",
+    "solution": "Same number of heads and tails means \\(2\\) heads and \\(2\\) tails\r\nTotal outcomes = \\(2^4 = 16\\)\r\nNumber of ways to get exactly \\(2\\) heads = \\(\\binom{4}{2} = 6\\)\r\nProbability = \\(\\frac{6}{16} = \\frac{3}{8}\\)"
+  },
+  {
+    "id": "03-26",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "EASY",
+    "solution": "The first \\(3\\) coins must show heads, the last \\(2\\) can show anything\r\nP(first three are heads) = \\((\\frac{1}{2})^3 = \\frac{1}{8}\\)\r\nThe last two coins don't affect this probability"
+  },
+  {
+    "id": "03-27",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "P(at least one head when two coins are tossed) = \\(\\frac{3}{4}\\)\r\nFor this to happen in both pairs of tosses:\r\nP(at least one head in each pair) = \\((\\frac{3}{4})^2 = \\frac{9}{16}\\)"
+  },
+  {
+    "id": "03-28",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "For heads to appear for the first time on the third toss, the sequence must be TTH\r\nP(TTH) = P(T) × P(T) × P(H) = \\(\\frac{1}{2} \\times \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{8}\\)"
+  },
+  {
+    "id": "03-29",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "EASY",
+    "solution": "P(at least one tail) = \\(1 - P(\\text{no tails}) = 1 - P(\\text{all heads})\\)\r\nP(all heads) = \\((\\frac{1}{2})^5 = \\frac{1}{32}\\)\r\nP(at least one tail) = \\(1 - \\frac{1}{32} = \\frac{31}{32}\\)"
+  },
+  {
+    "id": "03-30",
+    "derived": "X",
+    "value": "",
+    "confidence": "high",
+    "note": "excluded by override",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "Excluded from the bank: see the override."
+  },
+  {
+    "id": "03-31",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "HARD",
+    "solution": "Sample space: {HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}\r\nNo two consecutive coins show same face: alternating pattern\r\nFavorable outcomes: {HTH, THT}\r\nNumber of favorable outcomes = \\(2\\)\r\nProbability = \\(\\frac{2}{8} = \\frac{1}{4}\\)"
+  },
+  {
+    "id": "03-32",
+    "derived": "X",
+    "value": "",
+    "confidence": "high",
+    "note": "excluded by override",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "Excluded from the bank: see the override."
+  },
+  {
+    "id": "03-33",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "Total outcomes = \\(2^4 = 16\\)\r\nAt least \\(3\\) heads means exactly \\(3\\) heads OR exactly \\(4\\) heads\r\nP(exactly 3 heads) = \\(\\frac{\\binom{4}{3}}{16} = \\frac{4}{16}\\)\r\nP(exactly 4 heads) = \\(\\frac{\\binom{4}{4}}{16} = \\frac{1}{16}\\)\r\nP(at least 3 heads) = \\(\\frac{4+1}{16} = \\frac{5}{16}\\)"
+  },
+  {
+    "id": "03-34",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "P(Head) = \\(\\frac{1}{3}\\), P(Tail) = \\(1 - \\frac{1}{3} = \\frac{2}{3}\\)\r\nExactly one head can occur as: HT or TH\r\nP(HT) = \\(\\frac{1}{3} \\times \\frac{2}{3} = \\frac{2}{9}\\)\r\nP(TH) = \\(\\frac{2}{3} \\times \\frac{1}{3} = \\frac{2}{9}\\)\r\nP(exactly one head) = \\(\\frac{2}{9} + \\frac{2}{9} = \\frac{4}{9}\\)"
+  },
+  {
+    "id": "03-35",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "EASY",
+    "solution": "More than one head means \\(2\\) heads or \\(3\\) heads\r\nP(exactly 2 heads) = \\(\\frac{\\binom{3}{2}}{8} = \\frac{3}{8}\\)\r\nP(exactly 3 heads) = \\(\\frac{\\binom{3}{3}}{8} = \\frac{1}{8}\\)\r\nP(more than one head) = \\(\\frac{3}{8} + \\frac{1}{8} = \\frac{4}{8} = \\frac{1}{2}\\)"
+  },
+  {
+    "id": "03-36",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "HARD",
+    "solution": "At least \\(3\\) same means: exactly \\(3\\) heads + exactly \\(3\\) tails + all \\(4\\) heads + all \\(4\\) tails\r\nP(exactly 3 heads) = \\(\\frac{\\binom{4}{3}}{16} = \\frac{4}{16}\\)\r\nP(exactly 3 tails) = \\(\\frac{\\binom{4}{1}}{16} = \\frac{4}{16}\\)\r\nP(all 4 heads) = \\(\\frac{1}{16}\\)\r\nP(all 4 tails) = \\(\\frac{1}{16}\\)\r\nTotal = \\(\\frac{4+4+1+1}{16} = \\frac{10}{16} = \\frac{5}{8}\\)"
+  },
+  {
+    "id": "03-37",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "Let H = number of heads, T = number of tails\r\nWe need H - T = 1 and H + T = 5\r\nSolving: H = 3, T = 2\r\nSo we need exactly \\(3\\) heads\r\nP(exactly 3 heads) = \\(\\frac{\\binom{5}{3}}{2^5} = \\frac{10}{32} = \\frac{5}{16}\\)"
+  },
+  {
+    "id": "03-38",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "P(at least one head) = \\(1 - P(\\text{all tails}) = 1 - (\\frac{1}{2})^n\\)\r\nGiven: \\(1 - (\\frac{1}{2})^n = \\frac{7}{8}\\)\r\n\\((\\frac{1}{2})^n = 1 - \\frac{7}{8} = \\frac{1}{8}\\)\r\n\\((\\frac{1}{2})^n = \\frac{1}{8} = (\\frac{1}{2})^3\\)\r\nTherefore, \\(n = 3\\)"
+  },
+  {
+    "id": "03-39",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "HARD",
+    "solution": "Let A = third coin shows head, B = at least two heads appear\r\nOutcomes with at least two heads: {HHH, HHT, HTH, THH}\r\nOutcomes where third coin is head AND at least two heads: {HHH, HTH, THH}\r\nP(A|B) = \\(\\frac{\\text{Number of outcomes in } A ∩ B}{\\text{Number of outcomes in } B} = \\frac{3}{4}\\)"
+  },
+  {
+    "id": "03-40",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "At least \\(2\\) tails = \\(1 - P(0 \\text{ tails}) - P(1 \\text{ tail})\\)\r\nP(0 tails) = P(4 heads) = \\(\\frac{\\binom{4}{0}}{16} = \\frac{1}{16}\\)\r\nP(1 tail) = P(3 heads) = \\(\\frac{\\binom{4}{1}}{16} = \\frac{4}{16}\\)\r\nP(at least 2 tails) = \\(1 - \\frac{1}{16} - \\frac{4}{16} = 1 - \\frac{5}{16} = \\frac{11}{16}\\)"
+  },
+  {
+    "id": "03-41",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "We need |H - T| ≤ 1 where H + T = 5\r\nCase 1: H - T = 1, so H = 3, T = 2\r\nCase 2: H - T = -1, so H = 2, T = 3\r\nP(exactly 3 heads) = \\(\\frac{\\binom{5}{3}}{32} = \\frac{10}{32}\\)\r\nP(exactly 2 heads) = \\(\\frac{\\binom{5}{2}}{32} = \\frac{10}{32}\\)\r\nTotal probability = \\(\\frac{10}{32} + \\frac{10}{32} = \\frac{20}{32} = \\frac{5}{8}\\)"
+  },
+  {
+    "id": "03-42",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "HARD",
+    "solution": "For exactly 4 tosses, valid sequences: TTHH, HTHH\r\nP(TTHH) = \\((\\frac{1}{2})^4 = \\frac{1}{16}\\)\r\nP(HTHH) = \\((\\frac{1}{2})^4 = \\frac{1}{16}\\)\r\nTotal probability = \\(\\frac{1}{16} + \\frac{1}{16} = \\frac{2}{16} = \\frac{1}{8}\\)"
+  },
+  {
+    "id": "03-43",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "MODERATE",
+    "solution": "For the number of heads in first two tosses to equal total heads in all three tosses, the third toss must be a tail\r\nP(third toss is tail) = \\(\\frac{1}{2}\\)"
+  },
+  {
+    "id": "03-44",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "HARD",
+    "solution": "Adjacent pairs possible: positions (1,2), (2,3), (3,4)\r\nFor each pair, pattern is HH in those positions, TT in other positions\r\nNumber of favorable outcomes = 3\r\nTotal outcomes = \\(2^4 = 16\\)\r\nProbability = \\(\\frac{3}{16}\\)"
+  },
+  {
+    "id": "03-45",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Coin Tosses",
+    "difficulty": "EASY",
+    "solution": "Total outcomes = \\(2^5 = 32\\)\r\nNumber of ways to choose 4 positions for heads out of 5 = \\(\\binom{5}{4} = 5\\)\r\nProbability = \\(\\frac{5}{32}\\)"
+  },
+  {
+    "id": "04-2",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "EASY",
+    "solution": "A fair die has \\(6\\) equally likely outcomes: \\(\\{1, 2, 3, 4, 5, 6\\}\\)\r\nFavorable outcome for getting \\(4\\) = \\(1\\)\r\nProbability = \\(\\frac{\\text{Favorable outcomes}}{\\text{Total outcomes}} = \\frac{1}{6}\\)"
+  },
+  {
+    "id": "04-3",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Total outcomes when two dice are thrown = \\(6 \\times 6 = 36\\)\r\nFavorable outcomes for sum \\(7\\): \\((1,6), (2,5), (3,4), (4,3), (5,2), (6,1)\\) = \\(6\\) outcomes\r\nProbability = \\(\\frac{6}{36} = \\frac{1}{6}\\)"
+  },
+  {
+    "id": "04-4",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "EASY",
+    "solution": "Even numbers on a die: \\(\\{2, 4, 6\\}\\) = \\(3\\) outcomes\r\nTotal outcomes = \\(6\\)\r\nProbability = \\(\\frac{3}{6} = \\frac{1}{2}\\)"
+  },
+  {
+    "id": "04-5",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "EASY",
+    "solution": "Prime numbers on a die: \\(\\{2, 3, 5\\}\\) = \\(3\\) outcomes\r\nTotal outcomes = \\(6\\)\r\nProbability = \\(\\frac{3}{6} = \\frac{1}{2}\\)"
+  },
+  {
+    "id": "04-6",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Favorable outcomes for same numbers: \\((1,1), (2,2), (3,3), (4,4), (5,5), (6,6)\\) = \\(6\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{6}{36} = \\frac{1}{6}\\)"
+  },
+  {
+    "id": "04-7",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Favorable outcomes for sum \\(8\\): \\((2,6), (3,5), (4,4), (5,3), (6,2)\\) = \\(5\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{5}{36}\\)"
+  },
+  {
+    "id": "04-8",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "HARD",
+    "solution": "Total outcomes with three dice = \\(6^3 = 216\\)\r\nFirst die: \\(6\\) choices, Second die: \\(5\\) choices, Third die: \\(4\\) choices\r\nFavorable outcomes = \\(6 \\times 5 \\times 4 = 120\\)\r\nProbability = \\(\\frac{120}{216} = \\frac{5}{9}\\)"
+  },
+  {
+    "id": "04-9",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Using complementary probability:\r\nP(at least one 6) = 1 - P(no 6)\r\nP(no 6 on first die) = \\(\\frac{5}{6}\\), P(no 6 on second die) = \\(\\frac{5}{6}\\)\r\nP(no 6 on both) = \\(\\frac{5}{6} \\times \\frac{5}{6} = \\frac{25}{36}\\)\r\nP(at least one 6) = \\(1 - \\frac{25}{36} = \\frac{11}{36}\\)"
+  },
+  {
+    "id": "04-10",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Pairs giving product \\(12\\): \\((2,6), (3,4), (4,3), (6,2)\\) = \\(4\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{4}{36} = \\frac{1}{9}\\)"
+  },
+  {
+    "id": "04-11",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "EASY",
+    "solution": "Numbers less than \\(3\\): \\(\\{1, 2\\}\\) = \\(2\\) outcomes\r\nTotal outcomes = \\(6\\)\r\nProbability = \\(\\frac{2}{6} = \\frac{1}{3}\\)"
+  },
+  {
+    "id": "04-12",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Pairs with difference \\(3\\): \\((1,4), (2,5), (3,6), (4,1), (5,2), (6,3)\\) = \\(6\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{6}{36} = \\frac{1}{6}\\)"
+  },
+  {
+    "id": "04-13",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Favorable outcomes for sum \\(5\\): \\((1,4), (2,3), (3,2), (4,1)\\) = \\(4\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{4}{36} = \\frac{1}{9}\\)"
+  },
+  {
+    "id": "04-14",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "EASY",
+    "solution": "Sum \\(18\\) is possible only with \\((6,6,6)\\) = \\(1\\) outcome\r\nTotal outcomes with three dice = \\(6^3 = 216\\)\r\nProbability = \\(\\frac{1}{216}\\)"
+  },
+  {
+    "id": "04-15",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "P(at least one odd) = 1 - P(both even)\r\nP(even on one die) = \\(\\frac{3}{6} = \\frac{1}{2}\\)\r\nP(both even) = \\(\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)\r\nP(at least one odd) = \\(1 - \\frac{1}{4} = \\frac{3}{4}\\)"
+  },
+  {
+    "id": "04-16",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Sums that are multiples of \\(3\\): \\(3, 6, 9, 12\\)\r\nSum \\(3\\): \\((1,2), (2,1)\\) = \\(2\\) outcomes\r\nSum \\(6\\): \\((1,5), (2,4), (3,3), (4,2), (5,1)\\) = \\(5\\) outcomes\r\nSum \\(9\\): \\((3,6), (4,5), (5,4), (6,3)\\) = \\(4\\) outcomes\r\nSum \\(12\\): \\((6,6)\\) = \\(1\\) outcome\r\nTotal favorable = \\(12\\), Probability = \\(\\frac{12}{36} = \\frac{1}{3}\\)"
+  },
+  {
+    "id": "04-17",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "HARD",
+    "solution": "Choose \\(2\\) dice out of \\(3\\) to show \\(6\\): \\(\\binom{3}{2} = 3\\) ways\r\nProbability of getting \\(6\\) on chosen dice: \\(\\left(\\frac{1}{6}\\right)^2\\)\r\nProbability of not getting \\(6\\) on remaining die: \\(\\frac{5}{6}\\)\r\nTotal probability = \\(3 \\times \\frac{1}{36} \\times \\frac{5}{6} = \\frac{15}{216}\\)"
+  },
+  {
+    "id": "04-18",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "EASY",
+    "solution": "Numbers greater than \\(4\\): \\(\\{5, 6\\}\\) = \\(2\\) outcomes\r\nTotal outcomes = \\(6\\)\r\nProbability = \\(\\frac{2}{6} = \\frac{1}{3}\\)"
+  },
+  {
+    "id": "04-19",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "P(no \\(1\\) on first die) = \\(\\frac{5}{6}\\)\r\nP(no \\(1\\) on second die) = \\(\\frac{5}{6}\\)\r\nP(no \\(1\\) on both dice) = \\(\\frac{5}{6} \\times \\frac{5}{6} = \\frac{25}{36}\\)"
+  },
+  {
+    "id": "04-20",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Sum less than \\(5\\) means sum = \\(2, 3,\\) or \\(4\\)\r\nSum \\(2\\): \\((1,1)\\) = \\(1\\) outcome\r\nSum \\(3\\): \\((1,2), (2,1)\\) = \\(2\\) outcomes\r\nSum \\(4\\): \\((1,3), (2,2), (3,1)\\) = \\(3\\) outcomes\r\nTotal favorable = \\(6\\), Probability = \\(\\frac{6}{36} = \\frac{1}{6}\\)"
+  },
+  {
+    "id": "04-21",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Odd numbers on a die: \\(\\{1, 3, 5\\}\\) = \\(3\\) outcomes\r\nP(odd on first die) = \\(\\frac{3}{6} = \\frac{1}{2}\\)\r\nP(odd on second die) = \\(\\frac{3}{6} = \\frac{1}{2}\\)\r\nP(both odd) = \\(\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)"
+  },
+  {
+    "id": "04-22",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "HARD",
+    "solution": "P(at least one \\(1\\)) = 1 - P(no \\(1\\) on any die)\r\nP(no \\(1\\) on one die) = \\(\\frac{5}{6}\\)\r\nP(no \\(1\\) on all three dice) = \\(\\left(\\frac{5}{6}\\right)^3 = \\frac{125}{216}\\)\r\nP(at least one \\(1\\)) = \\(1 - \\frac{125}{216} = \\frac{91}{216}\\)"
+  },
+  {
+    "id": "04-23",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "EASY",
+    "solution": "Perfect squares on a die: \\(\\{1, 4\\}\\) (since \\(1 = 1^2\\) and \\(4 = 2^2\\)) = \\(2\\) outcomes\r\nTotal outcomes = \\(6\\)\r\nProbability = \\(\\frac{2}{6} = \\frac{1}{3}\\)"
+  },
+  {
+    "id": "04-24",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Product is even if at least one die shows even number\r\nP(product even) = 1 - P(product odd)\r\nProduct is odd only when both dice show odd numbers\r\nP(odd on one die) = \\(\\frac{3}{6} = \\frac{1}{2}\\)\r\nP(both odd) = \\(\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)\r\nP(product even) = \\(1 - \\frac{1}{4} = \\frac{3}{4}\\)"
+  },
+  {
+    "id": "04-25",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Sums divisible by \\(4\\): \\(4, 8, 12\\)\r\nSum \\(4\\): \\((1,3), (2,2), (3,1)\\) = \\(3\\) outcomes\r\nSum \\(8\\): \\((2,6), (3,5), (4,4), (5,3), (6,2)\\) = \\(5\\) outcomes\r\nSum \\(12\\): \\((6,6)\\) = \\(1\\) outcome\r\nTotal favorable = \\(9\\), Probability = \\(\\frac{9}{36} = \\frac{1}{4}\\)"
+  },
+  {
+    "id": "04-26",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Exactly one \\(5\\) means first die shows \\(5\\) and second doesn't, OR first doesn't show \\(5\\) and second does\r\nP(5 on first, not 5 on second) = \\(\\frac{1}{6} \\times \\frac{5}{6} = \\frac{5}{36}\\)\r\nP(not 5 on first, 5 on second) = \\(\\frac{5}{6} \\times \\frac{1}{6} = \\frac{5}{36}\\)\r\nTotal probability = \\(\\frac{5}{36} + \\frac{5}{36} = \\frac{10}{36} = \\frac{5}{18}\\)"
+  },
+  {
+    "id": "04-27",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Favorable outcomes for sum \\(6\\): \\((1,5), (2,4), (3,3), (4,2), (5,1)\\) = \\(5\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{5}{36}\\)"
+  },
+  {
+    "id": "04-28",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "HARD",
+    "solution": "Outcomes with sum \\(10\\): \\((4,6), (5,5), (6,4)\\) = \\(3\\) outcomes\r\nOutcomes with sum \\(10\\) and first die showing \\(6\\): \\((6,4)\\) = \\(1\\) outcome\r\nConditional probability = \\(\\frac{1}{3}\\)"
+  },
+  {
+    "id": "04-29",
+    "derived": "X",
+    "value": "",
+    "confidence": "high",
+    "note": "excluded by override",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Excluded from the bank: see the override."
+  },
+  {
+    "id": "04-30",
+    "derived": "X",
+    "value": "",
+    "confidence": "high",
+    "note": "excluded by override",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Excluded from the bank: see the override."
+  },
+  {
+    "id": "04-31",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Sum greater than \\(8\\) means sum = \\(9, 10, 11,\\) or \\(12\\)\r\nSum \\(9\\): \\(4\\) outcomes, Sum \\(10\\): \\(3\\) outcomes\r\nSum \\(11\\): \\(2\\) outcomes, Sum \\(12\\): \\(1\\) outcome\r\nTotal favorable = \\(10\\), Probability = \\(\\frac{10}{36} = \\frac{5}{18}\\)"
+  },
+  {
+    "id": "04-32",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Even numbers on a die: \\(\\{2, 4, 6\\}\\) = \\(3\\) numbers\r\nP(even on one die) = \\(\\frac{3}{6} = \\frac{1}{2}\\)\r\nP(all three dice show even) = \\(\\left(\\frac{1}{2}\\right)^3 = \\frac{1}{8}\\)"
+  },
+  {
+    "id": "04-33",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Favorable outcomes for sum \\(9\\): \\((3,6), (4,5), (5,4), (6,3)\\) = \\(4\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{4}{36} = \\frac{1}{9}\\)"
+  },
+  {
+    "id": "04-34",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "P(at least one 2) = 1 - P(no 2 on either die)\r\nP(no 2 on one die) = \\(\\frac{5}{6}\\)\r\nP(no 2 on both dice) = \\(\\frac{5}{6} \\times \\frac{5}{6} = \\frac{25}{36}\\)\r\nP(at least one 2) = \\(1 - \\frac{25}{36} = \\frac{11}{36}\\)"
+  },
+  {
+    "id": "04-35",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Pairs giving product \\(6\\): \\((1,6), (2,3), (3,2), (6,1)\\) = \\(4\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{4}{36} = \\frac{1}{9}\\)"
+  },
+  {
+    "id": "04-36",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "HARD",
+    "solution": "Choose \\(1\\) die from \\(3\\) to show \\(1\\): \\(\\binom{3}{1} = 3\\) ways\r\nP(chosen die shows 1) = \\(\\frac{1}{6}\\)\r\nP(other two dice don't show 1) = \\(\\left(\\frac{5}{6}\\right)^2 = \\frac{25}{36}\\)\r\nTotal probability = \\(3 \\times \\frac{1}{6} \\times \\frac{25}{36} = \\frac{75}{216}\\)"
+  },
+  {
+    "id": "04-37",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "EASY",
+    "solution": "Multiples of \\(3\\) on a die: \\(\\{3, 6\\}\\) = \\(2\\) outcomes\r\nTotal outcomes = \\(6\\)\r\nProbability = \\(\\frac{2}{6} = \\frac{1}{3}\\)"
+  },
+  {
+    "id": "04-38",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "All three dice must show \\(6\\): \\((6,6,6)\\) = \\(1\\) outcome\r\nTotal outcomes = \\(6^3 = 216\\)\r\nProbability = \\(\\frac{1}{216}\\)"
+  },
+  {
+    "id": "04-39",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "P(first die odd) = \\(\\frac{3}{6} = \\frac{1}{2}\\)\r\nP(second die even) = \\(\\frac{3}{6} = \\frac{1}{2}\\)\r\nP(first odd AND second even) = \\(\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)"
+  },
+  {
+    "id": "04-40",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "EASY",
+    "solution": "Sum ≤ \\(3\\) means sum = \\(2\\) or \\(3\\)\r\nSum \\(2\\): \\((1,1)\\) = \\(1\\) outcome\r\nSum \\(3\\): \\((1,2), (2,1)\\) = \\(2\\) outcomes\r\nTotal favorable = \\(3\\), Probability = \\(\\frac{3}{36} = \\frac{1}{12}\\)"
+  },
+  {
+    "id": "04-41",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "EASY",
+    "solution": "Sum \\(3\\) is possible only with \\((1,1,1)\\) = \\(1\\) outcome\r\nTotal outcomes = \\(6^3 = 216\\)\r\nProbability = \\(\\frac{1}{216}\\)"
+  },
+  {
+    "id": "04-42",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Pairs with absolute difference \\(2\\): \\((1,3), (2,4), (3,1), (3,5), (4,2), (4,6), (5,3), (6,4)\\) = \\(8\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{8}{36} = \\frac{2}{9}\\)"
+  },
+  {
+    "id": "04-43",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "P(no 6 on one die) = \\(\\frac{5}{6}\\)\r\nP(no 6 on all three dice) = \\(\\left(\\frac{5}{6}\\right)^3 = \\frac{125}{216}\\)"
+  },
+  {
+    "id": "04-44",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Dice",
+    "difficulty": "MODERATE",
+    "solution": "Numbers less than \\(4\\): \\(\\{1, 2, 3\\}\\) = \\(3\\) numbers\r\nP(< 4 on one die) = \\(\\frac{3}{6} = \\frac{1}{2}\\)\r\nP(both dice < 4) = \\(\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)"
+  },
+  {
+    "id": "05-2",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "EASY",
+    "solution": "Total balls = \\(5 + 3 = 8\\)\r\nNumber of red balls = \\(5\\)\r\nProbability of drawing a red ball = \\(\\frac{5}{8}\\)"
+  },
+  {
+    "id": "05-3",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "EASY",
+    "solution": "Total balls = \\(4 + 6 + 2 = 12\\)\r\nNon-green balls = \\(6 + 2 = 8\\)\r\nProbability of not drawing green = \\(\\frac{8}{12} = \\frac{2}{3}\\)"
+  },
+  {
+    "id": "05-4",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Total balls = \\(7 + 5 = 12\\)\r\nProbability of first black ball = \\(\\frac{7}{12}\\)\r\nProbability of second black ball = \\(\\frac{6}{11}\\)\r\nProbability of both black = \\(\\frac{7}{12} \\times \\frac{6}{11} = \\frac{42}{132} = \\frac{7}{22}\\)"
+  },
+  {
+    "id": "05-5",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "EASY",
+    "solution": "Total balls = \\(3 + 4 + 5 = 12\\)\r\nBlue or green balls = \\(4 + 5 = 9\\)\r\nProbability = \\(\\frac{9}{12} = \\frac{3}{4}\\)"
+  },
+  {
+    "id": "05-6",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Total balls = \\(6 + 4 = 10\\)\r\nProbability of white ball = \\(\\frac{6}{10} = \\frac{3}{5}\\)\r\nWith replacement, probability of all \\(3\\) white = \\(\\left(\\frac{3}{5}\\right)^3 = \\frac{27}{125}\\)"
+  },
+  {
+    "id": "05-7",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Total balls = \\(8 + 7 = 15\\)\r\nProbability of first red = \\(\\frac{8}{15}\\)\r\nProbability of second blue = \\(\\frac{7}{14} = \\frac{1}{2}\\)\r\nRequired probability = \\(\\frac{8}{15} \\times \\frac{7}{14} = \\frac{56}{210} = \\frac{4}{15}\\)"
+  },
+  {
+    "id": "05-8",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "HARD",
+    "solution": "Total balls = \\(10\\), Total ways = \\(\\binom{10}{2} = 45\\)\r\nSame color pairs: RR = \\(\\binom{5}{2} = 10\\), GG = \\(\\binom{3}{2} = 3\\), YY = \\(\\binom{2}{2} = 1\\)\r\nSame color = \\(10 + 3 + 1 = 14\\)\r\nDifferent colors = \\(45 - 14 = 31\\)\r\nProbability = \\(\\frac{31}{45}\\)"
+  },
+  {
+    "id": "05-9",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "HARD",
+    "solution": "Total ways = \\(\\binom{12}{3} = 220\\)\r\nWays to select \\(3\\) red = \\(\\binom{4}{3} = 4\\)\r\nWays to select \\(3\\) blue = \\(\\binom{4}{3} = 4\\)\r\nWays to select \\(3\\) green = \\(\\binom{4}{3} = 4\\)\r\nFavorable outcomes = \\(4 + 4 + 4 = 12\\)\r\nProbability = \\(\\frac{12}{220} = \\frac{3}{55}\\)"
+  },
+  {
+    "id": "05-10",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Given first ball is blue, remaining balls = \\(9\\)\r\nRemaining red balls = \\(4\\)\r\nProbability of second ball being red = \\(\\frac{4}{9}\\)"
+  },
+  {
+    "id": "05-11",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "P(at least one white) = \\(1\\) - P(no white)\r\nP(no white) = P(both black) = \\(\\frac{7}{12} \\times \\frac{6}{11} = \\frac{42}{132} = \\frac{7}{22}\\)\r\nP(at least one white) = \\(1 - \\frac{7}{22} = \\frac{15}{22}\\)"
+  },
+  {
+    "id": "05-12",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Total ways = \\(\\binom{12}{2} = 66\\)\r\nSame color: \\(\\binom{4}{2} + \\binom{5}{2} + \\binom{3}{2} = 6 + 10 + 3 = 19\\)\r\nProbability = \\(\\frac{19}{66}\\)"
+  },
+  {
+    "id": "05-13",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "HARD",
+    "solution": "Total ways = \\(\\binom{12}{4} = 495\\)\r\nWays to select \\(2\\) red from \\(7\\) = \\(\\binom{7}{2} = 21\\)\r\nWays to select \\(2\\) blue from \\(5\\) = \\(\\binom{5}{2} = 10\\)\r\nFavorable outcomes = \\(21 \\times 10 = 210\\)\r\nProbability = \\(\\frac{210}{495}\\)"
+  },
+  {
+    "id": "05-14",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Total ways = \\(\\binom{9}{3} = 84\\)\r\nWays to select \\(1\\) from each color = \\(3 \\times 3 \\times 3 = 27\\)\r\nProbability = \\(\\frac{27}{84} = \\frac{9}{28}\\)"
+  },
+  {
+    "id": "05-15",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "HARD",
+    "solution": "Since we have only \\(3\\) colors and need \\(5\\) balls with no two of same color, this is impossible by pigeonhole principle.\r\nProbability = \\(0\\)"
+  },
+  {
+    "id": "05-16",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "HARD",
+    "solution": "Total ways = \\(\\binom{12}{3} = 220\\)\r\nCase 1: \\(2\\) red, \\(1\\) other = \\(\\binom{4}{2} \\times \\binom{8}{1} = 6 \\times 8 = 48\\)\r\nCase 2: \\(2\\) white, \\(1\\) other = \\(\\binom{4}{2} \\times \\binom{8}{1} = 6 \\times 8 = 48\\)\r\nCase 3: \\(2\\) blue, \\(1\\) other = \\(\\binom{4}{2} \\times \\binom{8}{1} = 6 \\times 8 = 48\\)\r\nTotal = \\(48 + 48 + 48 = 144\\)\r\nProbability = \\(\\frac{144}{220}\\)"
+  },
+  {
+    "id": "05-17",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "P(1st red) = \\(\\frac{6}{10}\\)\r\nP(2nd red) = \\(\\frac{5}{9}\\)\r\nP(3rd green) = \\(\\frac{4}{8} = \\frac{1}{2}\\)\r\nRequired probability = \\(\\frac{6}{10} \\times \\frac{5}{9} \\times \\frac{1}{2} = \\frac{30}{180} = \\frac{1}{6}\\)"
+  },
+  {
+    "id": "05-18",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Total ways = \\(\\binom{10}{2} = 45\\)\r\nSame color pairs:\r\nRed pairs = \\(\\binom{4}{2} = 6\\)\r\nBlue pairs = \\(\\binom{3}{2} = 3\\)\r\nYellow pairs = \\(\\binom{3}{2} = 3\\)\r\nSame color = \\(6 + 3 + 3 = 12\\)\r\nDifferent colors = \\(45 - 12 = 33\\)\r\nProbability = \\(\\frac{33}{45}\\)"
+  },
+  {
+    "id": "05-19",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "P(white) = \\(\\frac{7}{12}\\), P(red) = \\(\\frac{5}{12}\\)\r\nFor exactly \\(1\\) white in \\(3\\) draws:\r\nP = \\(\\binom{3}{1} \\times \\left(\\frac{7}{12}\\right)^1 \\times \\left(\\frac{5}{12}\\right)^2\\)\r\nP = \\(3 \\times \\frac{7}{12} \\times \\frac{25}{144} = \\frac{525}{1728} = \\frac{175}{576}\\)"
+  },
+  {
+    "id": "05-20",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "EASY",
+    "solution": "Total balls = \\(8 + 6 + 4 = 18\\)\r\nP(first red) = \\(\\frac{8}{18} = \\frac{4}{9}\\)\r\nP(second blue | first red) = \\(\\frac{6}{17}\\)\r\nRequired probability = \\(\\frac{4}{9} \\times \\frac{6}{17} = \\frac{24}{153} = \\frac{8}{51}\\)"
+  },
+  {
+    "id": "05-21",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "EASY",
+    "solution": "Total balls = \\(15\\), Red balls = \\(5\\)\r\nP(first red) = \\(\\frac{5}{15} = \\frac{1}{3}\\)\r\nP(second red | first red) = \\(\\frac{4}{14} = \\frac{2}{7}\\)\r\nP(both red) = \\(\\frac{1}{3} \\times \\frac{2}{7} = \\frac{2}{21}\\)"
+  },
+  {
+    "id": "05-22",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "HARD",
+    "solution": "Total ways = \\(\\binom{15}{4} = 1365\\)\r\nWays to select \\(2\\) black from \\(6\\) = \\(\\binom{6}{2} = 15\\)\r\nWays to select \\(2\\) white from \\(9\\) = \\(\\binom{9}{2} = 36\\)\r\nFavorable outcomes = \\(15 \\times 36 = 540\\)\r\nProbability = \\(\\frac{540}{1365}\\)"
+  },
+  {
+    "id": "05-23",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Total ways = \\(\\binom{11}{3} = 165\\)\r\nWays to select \\(3\\) blue from \\(4\\) = \\(\\binom{4}{3} = 4\\)\r\nProbability = \\(\\frac{4}{165}\\)"
+  },
+  {
+    "id": "05-24",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Total ways = \\(\\binom{15}{2} = 105\\)\r\nSame color ways:\r\nRed: \\(\\binom{5}{2} = 10\\)\r\nBlue: \\(\\binom{6}{2} = 15\\)\r\nYellow: \\(\\binom{4}{2} = 6\\)\r\nTotal same color = \\(10 + 15 + 6 = 31\\)\r\nProbability = \\(\\frac{31}{105}\\)"
+  },
+  {
+    "id": "05-25",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "EASY",
+    "solution": "Total balls = \\(4 + 5 + 6 = 15\\)\r\nWhite or red balls = \\(4 + 6 = 10\\)\r\nProbability = \\(\\frac{10}{15} = \\frac{2}{3}\\)"
+  },
+  {
+    "id": "05-26",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "HARD",
+    "solution": "Total ways = \\(\\binom{16}{3} = 560\\)\r\nAt least \\(2\\) red = exactly \\(2\\) red + exactly \\(3\\) red\r\nExactly \\(2\\) red: \\(\\binom{6}{2} \\times \\binom{10}{1} = 15 \\times 10 = 150\\)\r\nExactly \\(3\\) red: \\(\\binom{6}{3} \\times \\binom{10}{0} = 20 \\times 1 = 20\\)\r\nFavorable = \\(150 + 20 = 170\\)\r\nProbability = \\(\\frac{170}{560}\\)"
+  },
+  {
+    "id": "05-27",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "EASY",
+    "solution": "Total balls = \\(7 + 8 = 15\\)\r\nP(green) = \\(\\frac{7}{15}\\)\r\nWith replacement, P(all \\(3\\) green) = \\(\\left(\\frac{7}{15}\\right)^3 = \\frac{343}{3375}\\)"
+  },
+  {
+    "id": "05-28",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Total ways = \\(\\binom{10}{2} = 45\\)\r\nWays to select \\(1\\) red and \\(1\\) blue = \\(\\binom{4}{1} \\times \\binom{3}{1} = 4 \\times 3 = 12\\)\r\nProbability = \\(\\frac{12}{45} = \\frac{4}{15}\\)"
+  },
+  {
+    "id": "05-29",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "HARD",
+    "solution": "Total ways = \\(\\binom{12}{4} = 495\\)\r\nWays to select exactly \\(1\\) red:\r\n\\(\\binom{5}{1} \\times \\binom{7}{3} = 5 \\times 35 = 175\\)\r\nProbability = \\(\\frac{175}{495}\\)"
+  },
+  {
+    "id": "05-30",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "EASY",
+    "solution": "P(first red) = \\(\\frac{8}{12} = \\frac{2}{3}\\)\r\nP(second green | first red) = \\(\\frac{4}{11}\\)\r\nRequired probability = \\(\\frac{2}{3} \\times \\frac{4}{11} = \\frac{8}{33}\\)"
+  },
+  {
+    "id": "05-31",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Total ways = \\(\\binom{15}{3} = 455\\)\r\nWays to select \\(1\\) from each color = \\(6 \\times 5 \\times 4 = 120\\)\r\nProbability = \\(\\frac{120}{455} = \\frac{24}{91}\\)"
+  },
+  {
+    "id": "05-32",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "EASY",
+    "solution": "P(black) = \\(\\frac{5}{9}\\)\r\nWith replacement, P(both black) = \\(\\left(\\frac{5}{9}\\right)^2 = \\frac{25}{81}\\)"
+  },
+  {
+    "id": "05-33",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind picked the key's equal-valued twin; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Total ways = \\(\\binom{14}{3} = 364\\)\r\nWays to select exactly \\(2\\) red:\r\n\\(\\binom{6}{2} \\times \\binom{8}{1} = 15 \\times 8 = 120\\)\r\nProbability = \\(\\frac{120}{364}\\)"
+  },
+  {
+    "id": "05-34",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "HARD",
+    "solution": "Total ways = \\(\\binom{12}{4} = 495\\)\r\nAt least \\(3\\) white = exactly \\(3\\) white + exactly \\(4\\) white\r\nExactly \\(3\\) white: \\(\\binom{7}{3} \\times \\binom{5}{1} = 35 \\times 5 = 175\\)\r\nExactly \\(4\\) white: \\(\\binom{7}{4} \\times \\binom{5}{0} = 35 \\times 1 = 35\\)\r\nFavorable = \\(175 + 35 = 210\\)\r\nProbability = \\(\\frac{210}{495}\\)"
+  },
+  {
+    "id": "05-35",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "EASY",
+    "solution": "Total ways = \\(\\binom{13}{2} = 78\\)\r\nWays to select \\(2\\) blue from \\(4\\) = \\(\\binom{4}{2} = 6\\)\r\nProbability = \\(\\frac{6}{78} = \\frac{1}{13}\\)"
+  },
+  {
+    "id": "05-36",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Total ways = \\(\\binom{15}{3} = 455\\)\r\nWays to select exactly \\(1\\) yellow:\r\n\\(\\binom{8}{1} \\times \\binom{7}{2} = 8 \\times 21 = 168\\)\r\nProbability = \\(\\frac{168}{455}\\)"
+  },
+  {
+    "id": "05-37",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "P(red) = \\(\\frac{9}{15} = \\frac{3}{5}\\), P(blue) = \\(\\frac{6}{15} = \\frac{2}{5}\\)\r\nP(one red, one blue) = P(RB) + P(BR)\r\nP(RB) = \\(\\frac{3}{5} \\times \\frac{2}{5} = \\frac{6}{25}\\)\r\nP(BR) = \\(\\frac{2}{5} \\times \\frac{3}{5} = \\frac{6}{25}\\)\r\nTotal = \\(\\frac{6}{25} + \\frac{6}{25} = \\frac{12}{25} = \\frac{108}{225}\\)"
+  },
+  {
+    "id": "05-38",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Total ways = \\(\\binom{11}{4} = 330\\)\r\nWays to select \\(4\\) orange from \\(4\\) = \\(\\binom{4}{4} = 1\\)\r\nProbability = \\(\\frac{1}{330}\\)"
+  },
+  {
+    "id": "05-39",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Total ways = \\(\\binom{16}{2} = 120\\)\r\nSame color pairs:\r\nRed: \\(\\binom{8}{2} = 28\\)\r\nBlue: \\(\\binom{4}{2} = 6\\)\r\nGreen: \\(\\binom{4}{2} = 6\\)\r\nSame color = \\(28 + 6 + 6 = 40\\)\r\nDifferent colors = \\(120 - 40 = 80\\)\r\nProbability = \\(\\frac{80}{120}\\)"
+  },
+  {
+    "id": "05-40",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "HARD",
+    "solution": "Total ways = \\(\\binom{10}{3} = 120\\)\r\nTo select \\(3\\) different colors from \\(4\\) colors: \\(\\binom{4}{3} = 4\\) ways\r\nFor each selection of \\(3\\) colors:\r\nRBG: \\(3 \\times 3 \\times 2 = 18\\)\r\nRBY: \\(3 \\times 3 \\times 2 = 18\\)\r\nRGY: \\(3 \\times 2 \\times 2 = 12\\)\r\nBGY: \\(3 \\times 2 \\times 2 = 12\\)\r\nTotal = \\(18 + 18 + 12 + 12 = 60\\)\r\nProbability = \\(\\frac{60}{120}\\)"
+  },
+  {
+    "id": "05-41",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "HARD",
+    "solution": "Total ways = \\(\\binom{20}{5} = 15504\\)\r\nWays to select exactly \\(3\\) red:\r\n\\(\\binom{8}{3} \\times \\binom{12}{2} = 56 \\times 66 = 3696\\)\r\nProbability = \\(\\frac{3696}{15504}\\)"
+  },
+  {
+    "id": "05-42",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Total ways = \\(\\binom{12}{2} = 66\\)\r\nSame color pairs from each color = \\(\\binom{3}{2} = 3\\)\r\nTotal same color = \\(4 \\times 3 = 12\\)\r\nProbability = \\(\\frac{12}{66} = \\frac{2}{11}\\)"
+  },
+  {
+    "id": "05-43",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "HARD",
+    "solution": "Total ways = \\(\\binom{17}{4} = 2380\\)\r\nWays to select \\(2\\) red, \\(1\\) blue, \\(1\\) green:\r\n\\(\\binom{7}{2} \\times \\binom{5}{1} \\times \\binom{5}{1} = 21 \\times 5 \\times 5 = 525\\)\r\nProbability = \\(\\frac{525}{2380}\\)"
+  },
+  {
+    "id": "05-44",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "EASY",
+    "solution": "P(black) = \\(\\frac{5}{14}\\)\r\nWith replacement, P(all \\(3\\) black) = \\(\\left(\\frac{5}{14}\\right)^3 = \\frac{125}{2744}\\)"
+  },
+  {
+    "id": "05-45",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Total ways = \\(\\binom{15}{3} = 455\\)\r\nP(at least \\(1\\) red) = \\(1\\) - P(no red)\r\nP(no red) = \\(\\binom{9}{3} = 84\\)\r\nP(at least \\(1\\) red) = \\(\\frac{455 - 84}{455} = \\frac{371}{455}\\)"
+  },
+  {
+    "id": "05-46",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Drawing from a Bag",
+    "difficulty": "MODERATE",
+    "solution": "Total ways = \\(\\binom{13}{2} = 78\\)\r\nSame color pairs:\r\nRed: \\(\\binom{4}{2} = 6\\)\r\nBlue: \\(\\binom{4}{2} = 6\\)\r\nGreen: \\(\\binom{3}{2} = 3\\)\r\nYellow: \\(\\binom{2}{2} = 1\\)\r\nTotal same color = \\(6 + 6 + 3 + 1 = 16\\)\r\nProbability = \\(\\frac{16}{78}\\)"
+  }
+]

@@ -1,0 +1,423 @@
+{
+  "path": "04. Profit&Loss\\10)Installment-based-Selling.xls",
+  "group": "D",
+  "transcribed": "read from the Cadetprep Excel sheet by extract-cadetprep.ts (sheet row = n); key and solution are the source's, kept as evidence",
+  "questions": [
+    {
+      "n": 2,
+      "stem": "A shopkeeper sells an article for \\(3\\) equal installments of Rs. \\(2000\\) each. If the rate of interest is \\(10\\%\\) per annum, what is the cash price of the article?",
+      "options": [
+        "Rs. \\(4973\\)",
+        "Rs. \\(5000\\)",
+        "Rs. \\(5500\\)",
+        "Rs. \\(5250\\)"
+      ],
+      "key": "A",
+      "keySolution": "Cash price = Present value of all installments\nPV = \\(2000/(1.1) + 2000/(1.1)^2 + 2000/(1.1)^3\\)\nPV = \\(1818.18 + 1652.89 + 1502.63\\)\nPV = Rs. \\(4973.70 ≈ Rs. 4973\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 3,
+      "stem": "A refrigerator costs Rs. \\(18000\\). It is sold for Rs. \\(4000\\) down and the balance in \\(10\\) equal monthly installments at \\(12\\%\\) per annum simple interest. Find each installment.",
+      "options": [
+        "Rs. \\(1540\\)",
+        "Rs. \\(1680\\)",
+        "Rs. \\(1620\\)",
+        "Rs. \\(1580\\)"
+      ],
+      "key": "A",
+      "keySolution": "Balance amount = \\(18000 - 4000 = Rs. 14000\\)\nTime = \\(10\\) months = \\(10/12\\) years\nSimple Interest = \\(14000 × 12 × (10/12) / 100 = Rs. 1400\\)\nTotal amount to be paid in installments = \\(14000 + 1400 = Rs. 15400\\)\nEach installment = \\(15400 / 10 = Rs. 1540\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 4,
+      "stem": "A washing machine is available for Rs. \\(12000\\) cash or Rs. \\(2000\\) down and \\(12\\) monthly installments of Rs. \\(950\\) each. What is the rate of interest charged?",
+      "options": [
+        "\\(15\\%\\)",
+        "\\(18\\%\\)",
+        "\\(20\\%\\)",
+        "\\(14\\%\\)"
+      ],
+      "key": "D",
+      "keySolution": "Total installment price = \\(2000 + 12 × 950 = Rs. 13400\\)\nExtra amount = \\(13400 - 12000 = Rs. 1400\\)\nPrincipal for installments = \\(12000 - 2000 = Rs. 10000\\)\nTime = \\(12\\) months = \\(1\\) year\nRate = \\((1400 × 100) / (10000 × 1) = 14\\%\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 5,
+      "stem": "If an article is sold for \\(3\\) equal annual installments of Rs. \\(1000\\) each at \\(10\\%\\) compound interest, what is the cash price?",
+      "options": [
+        "Rs. \\(2486.85\\)",
+        "Rs. \\(2500\\)",
+        "Rs. \\(2400\\)",
+        "Rs. \\(2450\\)"
+      ],
+      "key": "A",
+      "keySolution": "Present value of installments:\nPV = \\(1000/(1.1)^1 + 1000/(1.1)^2 + 1000/(1.1)^3\\)\nPV = \\(909.09 + 826.45 + 751.31\\)\nPV = Rs. \\(2486.85\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 6,
+      "stem": "A laptop is sold for Rs. \\(8000\\) down and \\(8\\) monthly installments of Rs. \\(2500\\) each. If the cash price is Rs. \\(25000\\), find the rate of simple interest.",
+      "options": [
+        "\\(15\\%\\)",
+        "\\(18\\%\\)",
+        "\\(26.47\\%\\)",
+        "\\(21.18\\%\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total installment price = \\(8000 + 8 × 2500 = Rs. 28000\\)\nExtra amount = \\(28000 - 25000 = Rs. 3000\\)\nPrincipal for installments = \\(25000 - 8000 = Rs. 17000\\)\nTime = \\(8\\) months = \\(2/3\\) years\nRate = \\((3000 × 100) / (17000 × 2/3) = 26.47\\%\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 7,
+      "stem": "A car is available for Rs. \\(200000\\) cash or Rs. \\(50000\\) down and \\(36\\) equal monthly installments. If the interest rate is \\(12\\%\\) per annum, find each installment.",
+      "options": [
+        "Rs. \\(4985\\)",
+        "Rs. \\(5200\\)",
+        "Rs. \\(4875\\)",
+        "Rs. \\(5100\\)"
+      ],
+      "key": "A",
+      "keySolution": "Balance amount = \\(200000 - 50000 = Rs. 150000\\)\nTime = \\(36\\) months = \\(3\\) years\nUsing EMI formula:\nEMI = \\(P × r × (1+r)^n / ((1+r)^n - 1)\\)\nWhere r = \\(0.01\\) (monthly), n = \\(36\\)\nEMI = Rs. \\(4985\\) approximately",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 8,
+      "stem": "A furniture set costs Rs. \\(24000\\) cash or Rs. \\(6000\\) down and \\(15\\) monthly installments of Rs. \\(1400\\) each. What is the effective rate of interest?",
+      "options": [
+        "\\(16\\%\\)",
+        "\\(18\\%\\)",
+        "\\(20\\%\\)",
+        "\\(13.33\\%\\)"
+      ],
+      "key": "D",
+      "keySolution": "Total installment price = \\(6000 + 15 × 1400 = Rs. 27000\\)\nExtra amount = \\(27000 - 24000 = Rs. 3000\\)\nPrincipal for installments = \\(24000 - 6000 = Rs. 18000\\)\nTime = \\(15\\) months = \\(1.25\\) years\nRate = \\((3000 × 100) / (18000 × 1.25) = 13.33\\%\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 9,
+      "stem": "A mobile phone is sold for Rs. \\(1500\\) down and \\(10\\) monthly installments of Rs. \\(800\\) each. If the cash price is Rs. \\(8500\\), what is the simple interest rate per annum?",
+      "options": [
+        "\\(18\\%\\)",
+        "\\(20\\%\\)",
+        "\\(17.14\\%\\)",
+        "\\(24\\%\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total installment price = \\(1500 + 10 × 800 = Rs. 9500\\)\nExtra amount = \\(9500 - 8500 = Rs. 1000\\)\nPrincipal for installments = \\(8500 - 1500 = Rs. 7000\\)\nTime = \\(10\\) months = \\(10/12\\) years\nRate = \\((1000 × 100) / (7000 × 10/12) = 17.14\\%\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 10,
+      "stem": "An air conditioner costs Rs. \\(30000\\). It is sold for \\(20\\%\\) down payment and the rest in \\(18\\) equal monthly installments at \\(15\\%\\) per annum simple interest. Find each installment.",
+      "options": [
+        "Rs. \\(1633\\)",
+        "Rs. \\(1600\\)",
+        "Rs. \\(1550\\)",
+        "Rs. \\(1650\\)"
+      ],
+      "key": "A",
+      "keySolution": "Down payment = \\(30000 × 20/100 = Rs. 6000\\)\nBalance = \\(30000 - 6000 = Rs. 24000\\)\nTime = \\(18\\) months = \\(1.5\\) years\nSimple Interest = \\(24000 × 15 × 1.5 / 100 = Rs. 5400\\)\nTotal amount = \\(24000 + 5400 = Rs. 29400\\)\nEach installment = \\(29400 / 18 = Rs. 1633.33\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 11,
+      "stem": "A machine is sold for Rs. \\(5000\\) down and \\(5\\) equal annual installments of Rs. \\(2000\\) each. If the cash price is Rs. \\(12000\\), what is the compound interest rate?",
+      "options": [
+        "\\(12\\%\\)",
+        "\\(15\\%\\)",
+        "\\(18\\%\\)",
+        "\\(20\\%\\)"
+      ],
+      "key": "B",
+      "keySolution": "Present value of installments should equal \\(12000 - 5000 = Rs. 7000\\)\nLet rate = r\n\\(7000 = 2000/(1+r) + 2000/(1+r)^2 + ... + 2000/(1+r)^5\\)\nUsing trial and error or financial calculator\nAt r = \\(15\\%\\), PV = Rs. \\(6710\\) approximately\nClosest rate = \\(15\\%\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 12,
+      "stem": "A bike is available for Rs. \\(45000\\) cash or Rs. \\(15000\\) down and \\(24\\) monthly installments of Rs. \\(1500\\) each. What is the additional amount paid in installment scheme?",
+      "options": [
+        "Rs. \\(6000\\)",
+        "Rs. \\(5000\\)",
+        "Rs. \\(4000\\)",
+        "Rs. \\(7000\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total installment price = \\(15000 + 24 × 1500 = Rs. 51000\\)\nCash price = Rs. \\(45000\\)\nAdditional amount = \\(51000 - 45000 = Rs. 6000\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 13,
+      "stem": "An article is sold for Rs. \\(2000\\) down and \\(6\\) half-yearly installments of Rs. \\(1000\\) each at \\(20\\%\\) per annum compound interest. Find the cash price.",
+      "options": [
+        "Rs. \\(6355\\)",
+        "Rs. \\(6500\\)",
+        "Rs. \\(6300\\)",
+        "Rs. \\(6600\\)"
+      ],
+      "key": "A",
+      "keySolution": "Half-yearly rate = \\(20/2 = 10\\%\\)\nPresent value of installments:\nPV = \\(1000/(1.1) + 1000/(1.1)^2 + ... + 1000/(1.1)^6\\)\nUsing formula for present value of annuity:\nPV = \\(1000 × [(1 - (1.1)^{-6})/0.1] = Rs. 4355\\)\nCash price = \\(2000 + 4355 = Rs. 6355\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 14,
+      "stem": "A washing machine costs Rs. \\(16000\\) cash or Rs. \\(4000\\) down and \\(8\\) quarterly installments of Rs. \\(1800\\) each. What is the rate of simple interest per annum?",
+      "options": [
+        "\\(15\\%\\)",
+        "\\(18\\%\\)",
+        "\\(10\\%\\)",
+        "\\(12\\%\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total installment price = \\(4000 + 8 × 1800 = Rs. 18400\\)\nExtra amount = \\(18400 - 16000 = Rs. 2400\\)\nPrincipal for installments = \\(16000 - 4000 = Rs. 12000\\)\nTime = \\(8\\) quarters = \\(2\\) years\nRate = \\((2400 × 100) / (12000 × 2) = 10\\%\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 15,
+      "stem": "A computer is available for Rs. \\(35000\\) cash. Alternatively, it can be purchased for Rs. \\(10000\\) down and \\(20\\) monthly installments of Rs. \\(1500\\) each. What is the extra amount paid in the installment scheme?",
+      "options": [
+        "Rs. \\(5000\\)",
+        "Rs. \\(4000\\)",
+        "Rs. \\(6000\\)",
+        "Rs. \\(3000\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total installment price = \\(10000 + 20 × 1500 = Rs. 40000\\)\nCash price = Rs. \\(35000\\)\nExtra amount = \\(40000 - 35000 = Rs. 5000\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 16,
+      "stem": "A refrigerator is sold for \\(3\\) equal annual installments of Rs. \\(8000\\) each. If the compound interest rate is \\(12\\%\\) per annum, what would be the cash price?",
+      "options": [
+        "Rs. \\(19215\\)",
+        "Rs. \\(20000\\)",
+        "Rs. \\(18500\\)",
+        "Rs. \\(19500\\)"
+      ],
+      "key": "A",
+      "keySolution": "Present value of installments:\nPV = \\(8000/(1.12) + 8000/(1.12)^2 + 8000/(1.12)^3\\)\nPV = \\(7142.86 + 6377.55 + 5694.24\\)\nPV = Rs. \\(19214.65\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 17,
+      "stem": "An article costs Rs. \\(12000\\) cash. It is sold for Rs. \\(2000\\) down and the balance in \\(10\\) equal monthly installments at \\(24\\%\\) per annum simple interest. Find the amount of each installment.",
+      "options": [
+        "Rs. \\(1200\\)",
+        "Rs. \\(1180\\)",
+        "Rs. \\(1160\\)",
+        "Rs. \\(1220\\)"
+      ],
+      "key": "A",
+      "keySolution": "Balance amount = \\(12000 - 2000 = Rs. 10000\\)\nTime = \\(10\\) months = \\(10/12\\) years\nSimple Interest = \\(10000 × 24 × (10/12) / 100 = Rs. 2000\\)\nTotal amount in installments = \\(10000 + 2000 = Rs. 12000\\)\nEach installment = \\(12000 / 10 = Rs. 1200\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 18,
+      "stem": "A motorbike is sold for Rs. \\(8000\\) down payment and \\(18\\) monthly installments of Rs. \\(2000\\) each. If the cash price is Rs. \\(40000\\), what is the rate of simple interest charged per annum?",
+      "options": [
+        "\\(16\\%\\)",
+        "\\(8.33\\%\\)",
+        "\\(15\\%\\)",
+        "\\(18\\%\\)"
+      ],
+      "key": "B",
+      "keySolution": "Total installment price = \\(8000 + 18 × 2000 = Rs. 44000\\)\nExtra amount = \\(44000 - 40000 = Rs. 4000\\)\nPrincipal for installments = \\(40000 - 8000 = Rs. 32000\\)\nTime = \\(18\\) months = \\(1.5\\) years\nRate = \\((4000 × 100) / (32000 × 1.5) = 8.33\\%\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 19,
+      "stem": "A furniture set is available for Rs. \\(20000\\) cash or \\(25\\%\\) down and \\(15\\) equal monthly installments at \\(20\\%\\) per annum simple interest. What is each installment?",
+      "options": [
+        "Rs. \\(1250\\)",
+        "Rs. \\(1200\\)",
+        "Rs. \\(1300\\)",
+        "Rs. \\(1150\\)"
+      ],
+      "key": "A",
+      "keySolution": "Down payment = \\(20000 × 25/100 = Rs. 5000\\)\nBalance = \\(20000 - 5000 = Rs. 15000\\)\nTime = \\(15\\) months = \\(1.25\\) years\nSimple Interest = \\(15000 × 20 × 1.25 / 100 = Rs. 3750\\)\nTotal amount = \\(15000 + 3750 = Rs. 18750\\)\nEach installment = \\(18750 / 15 = Rs. 1250\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 20,
+      "stem": "A laptop is sold for \\(4\\) equal quarterly installments of Rs. \\(12000\\) each at \\(20\\%\\) per annum compound interest. What is the present value?",
+      "options": [
+        "Rs. \\(42551\\)",
+        "Rs. \\(42000\\)",
+        "Rs. \\(40500\\)",
+        "Rs. \\(41000\\)"
+      ],
+      "key": "A",
+      "keySolution": "Quarterly rate = \\(20/4 = 5\\%\\)\nPresent value = \\(12000/(1.05) + 12000/(1.05)^2 + 12000/(1.05)^3 + 12000/(1.05)^4\\)\nPV = \\(11428.57 + 10884.35 + 10366.05 + 9872.43\\)\nPV = Rs. \\(42551.40\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 21,
+      "stem": "An air cooler costs Rs. \\(8000\\) cash or Rs. \\(1000\\) down and \\(7\\) monthly installments of Rs. \\(1200\\) each. What is the rate of simple interest per annum?",
+      "options": [
+        "\\(30\\%\\)",
+        "\\(24\\%\\)",
+        "\\(34.29\\%\\)",
+        "\\(28\\%\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total installment price = \\(1000 + 7 × 1200 = Rs. 9400\\)\nExtra amount = \\(9400 - 8000 = Rs. 1400\\)\nPrincipal for installments = \\(8000 - 1000 = Rs. 7000\\)\nTime = \\(7\\) months = \\(7/12\\) years\nRate = \\((1400 × 100) / (7000 × 7/12) = 34.29\\%\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 22,
+      "stem": "A machine is sold for Rs. \\(10000\\) down and \\(5\\) equal annual installments of Rs. \\(5000\\) each. If the cash price is Rs. \\(30000\\), what is the compound interest rate?",
+      "options": [
+        "\\(15\\%\\)",
+        "\\(18\\%\\)",
+        "\\(20\\%\\)",
+        "\\(12\\%\\)"
+      ],
+      "key": "D",
+      "keySolution": "Present value of installments = \\(30000 - 10000 = Rs. 20000\\)\nWe need: \\(20000 = 5000/(1+r) + 5000/(1+r)^2 + ... + 5000/(1+r)^5\\)\nUsing trial method or financial calculator:\nAt r = \\(12\\%\\): PV ≈ Rs. \\(18024\\)\nAt r = \\(10\\%\\): PV ≈ Rs. \\(18954\\)\nClosest rate = \\(12\\%\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 23,
+      "stem": "A smartphone costs Rs. \\(25000\\) cash. It can be bought for Rs. \\(5000\\) down and \\(24\\) monthly installments. If the interest rate is \\(18\\%\\) per annum, find each installment amount.",
+      "options": [
+        "Rs. \\(985\\)",
+        "Rs. \\(1133\\)",
+        "Rs. \\(950\\)",
+        "Rs. \\(1100\\)"
+      ],
+      "key": "B",
+      "keySolution": "Balance amount = \\(25000 - 5000 = Rs. 20000\\)\nTime = \\(24\\) months = \\(2\\) years\nSimple Interest = \\(20000 × 18 × 2 / 100 = Rs. 7200\\)\nTotal amount = \\(20000 + 7200 = Rs. 27200\\)\nEach installment = \\(27200 / 24 = Rs. 1133.33\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 24,
+      "stem": "An item is available for Rs. \\(18000\\) cash or Rs. \\(3000\\) down and \\(20\\) monthly installments of Rs. \\(900\\) each. What percentage extra is paid in the installment plan?",
+      "options": [
+        "\\(16.67\\%\\)",
+        "\\(15\\%\\)",
+        "\\(18\\%\\)",
+        "\\(20\\%\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total installment price = \\(3000 + 20 × 900 = Rs. 21000\\)\nExtra amount = \\(21000 - 18000 = Rs. 3000\\)\nPercentage extra = \\((3000 / 18000) × 100 = 16.67\\%\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 25,
+      "stem": "A home theater system costs Rs. \\(50000\\) cash or \\(30\\%\\) down and \\(30\\) monthly installments of Rs. \\(1500\\) each. What is the effective rate of interest per annum?",
+      "options": [
+        "\\(12\\%\\)",
+        "\\(11.43\\%\\)",
+        "\\(16\\%\\)",
+        "\\(18\\%\\)"
+      ],
+      "key": "B",
+      "keySolution": "Down payment = \\(50000 × 30/100 = Rs. 15000\\)\nTotal installment price = \\(15000 + 30 × 1500 = Rs. 60000\\)\nExtra amount = \\(60000 - 50000 = Rs. 10000\\)\nPrincipal for installments = \\(50000 - 15000 = Rs. 35000\\)\nTime = \\(30\\) months = \\(2.5\\) years\nEffective rate = \\((10000 × 100) / (35000 × 2.5) = 11.43\\%\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 26,
+      "stem": "A dining table is sold for \\(2\\) equal annual installments of Rs. \\(6000\\) each at \\(25\\%\\) compound interest. What is the cash price?",
+      "options": [
+        "Rs. \\(8640\\)",
+        "Rs. \\(9500\\)",
+        "Rs. \\(9200\\)",
+        "Rs. \\(9600\\)"
+      ],
+      "key": "A",
+      "keySolution": "Present value = \\(6000/(1.25) + 6000/(1.25)^2\\)\nPV = \\(4800 + 3840 = Rs. 8640\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 27,
+      "stem": "A microwave oven costs Rs. \\(22000\\) cash. It is sold for Rs. \\(4000\\) down and \\(9\\) monthly installments of Rs. \\(2400\\) each. What is the simple interest rate per annum?",
+      "options": [
+        "\\(26.67\\%\\)",
+        "\\(24\\%\\)",
+        "\\(28\\%\\)",
+        "\\(30\\%\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total installment price = \\(4000 + 9 × 2400 = Rs. 25600\\)\nExtra amount = \\(25600 - 22000 = Rs. 3600\\)\nPrincipal for installments = \\(22000 - 4000 = Rs. 18000\\)\nTime = \\(9\\) months = \\(0.75\\) years\nRate = \\((3600 × 100) / (18000 × 0.75) = 26.67\\%\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 28,
+      "stem": "A sofa set is available for Rs. \\(28000\\) cash or Rs. \\(8000\\) down and \\(16\\) monthly installments of Rs. \\(1500\\) each. What is the additional interest paid?",
+      "options": [
+        "Rs. \\(4000\\)",
+        "Rs. \\(3500\\)",
+        "Rs. \\(4500\\)",
+        "Rs. \\(5000\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total installment price = \\(8000 + 16 × 1500 = Rs. 32000\\)\nCash price = Rs. \\(28000\\)\nAdditional interest = \\(32000 - 28000 = Rs. 4000\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 29,
+      "stem": "A refrigerator costs Rs. \\(32000\\) cash or \\(25\\%\\) down and \\(20\\) monthly installments of Rs. \\(1400\\) each. What is the rate of simple interest per annum?",
+      "options": [
+        "\\(12\\%\\)",
+        "\\(15\\%\\)",
+        "\\(10\\%\\)",
+        "\\(18\\%\\)"
+      ],
+      "key": "C",
+      "keySolution": "Down payment = \\(32000 × 25/100 = Rs. 8000\\)\nTotal installment price = \\(8000 + 20 × 1400 = Rs. 36000\\)\nExtra amount = \\(36000 - 32000 = Rs. 4000\\)\nPrincipal for installments = \\(32000 - 8000 = Rs. 24000\\)\nTime = \\(20\\) months = \\(5/3\\) years\nRate = \\((4000 × 100) / (24000 × 5/3) = 10\\%\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 30,
+      "stem": "A tablet is sold for \\(3\\) equal annual installments of Rs. \\(4000\\) each at \\(15\\%\\) compound interest. If the buyer wants to pay cash, how much should he pay?",
+      "options": [
+        "Rs. \\(9132\\)",
+        "Rs. \\(9000\\)",
+        "Rs. \\(9300\\)",
+        "Rs. \\(9500\\)"
+      ],
+      "key": "A",
+      "keySolution": "Present value = \\(4000/(1.15) + 4000/(1.15)^2 + 4000/(1.15)^3\\)\nPV = \\(3478.26 + 3024.14 + 2629.69\\)\nPV = Rs. \\(9132.09\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 31,
+      "stem": "A music system costs Rs. \\(15000\\) cash. It can be purchased for Rs. \\(3000\\) down and \\(8\\) monthly installments of Rs. \\(1700\\) each. What is the effective annual interest rate?",
+      "options": [
+        "\\(24\\%\\)",
+        "\\(20\\%\\)",
+        "\\(27\\%\\)",
+        "\\(33\\%\\)"
+      ],
+      "key": "B",
+      "keySolution": "Total installment price = \\(3000 + 8 × 1700 = Rs. 16600\\)\nExtra amount = \\(16600 - 15000 = Rs. 1600\\)\nPrincipal for installments = \\(15000 - 3000 = Rs. 12000\\)\nTime = \\(8\\) months = \\(2/3\\) years\nRate = \\((1600 × 100) / (12000 × 2/3) = 20\\%\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 32,
+      "stem": "A mixer grinder costs Rs. \\(8000\\) cash. It is available for Rs. \\(1500\\) down and \\(6\\) monthly installments of Rs. \\(1200\\) each. What is the simple interest rate per annum?",
+      "options": [
+        "\\(21.54\\%\\)",
+        "\\(28\\%\\)",
+        "\\(32\\%\\)",
+        "\\(35\\%\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total installment price = \\(1500 + 6 × 1200 = Rs. 8700\\)\nExtra amount = \\(8700 - 8000 = Rs. 700\\)\nPrincipal for installments = \\(8000 - 1500 = Rs. 6500\\)\nTime = \\(6\\) months = \\(0.5\\) years\nRate = \\((700 × 100) / (6500 × 0.5) = 21.54\\%\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 33,
+      "stem": "A generator is available for Rs. \\(60000\\) cash or Rs. \\(20000\\) down and \\(24\\) monthly installments of Rs. \\(2000\\) each. What is the total extra amount paid in installments?",
+      "options": [
+        "Rs. \\(8000\\)",
+        "Rs. \\(6000\\)",
+        "Rs. \\(10000\\)",
+        "Rs. \\(7000\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total installment price = \\(20000 + 24 × 2000 = Rs. 68000\\)\nCash price = Rs. \\(60000\\)\nExtra amount = \\(68000 - 60000 = Rs. 8000\\)",
+      "difficulty": "Easy"
+    }
+  ]
+}

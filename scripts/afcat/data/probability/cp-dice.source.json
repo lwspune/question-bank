@@ -1,0 +1,566 @@
+{
+  "path": "10. Probability\\3)Dice .xlsx",
+  "group": "D",
+  "transcribed": "read from the Cadetprep Excel sheet by extract-cadetprep.ts (sheet row = n); key and solution are the source's, kept as evidence",
+  "questions": [
+    {
+      "n": 2,
+      "stem": "What is the probability of getting a \\(4\\) when a fair die is thrown once?",
+      "options": [
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{1}{6}\\)"
+      ],
+      "key": "D",
+      "keySolution": "A fair die has \\(6\\) equally likely outcomes: \\(\\{1, 2, 3, 4, 5, 6\\}\\)\r\nFavorable outcome for getting \\(4\\) = \\(1\\)\r\nProbability = \\(\\frac{\\text{Favorable outcomes}}{\\text{Total outcomes}} = \\frac{1}{6}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 3,
+      "stem": "When two dice are thrown simultaneously, what is the probability of getting a sum of \\(7\\)?",
+      "options": [
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{9}\\)",
+        "\\(\\frac{1}{12}\\)",
+        "\\(\\frac{5}{36}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total outcomes when two dice are thrown = \\(6 \\times 6 = 36\\)\r\nFavorable outcomes for sum \\(7\\): \\((1,6), (2,5), (3,4), (4,3), (5,2), (6,1)\\) = \\(6\\) outcomes\r\nProbability = \\(\\frac{6}{36} = \\frac{1}{6}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 4,
+      "stem": "What is the probability of getting an even number on a single throw of a die?",
+      "options": [
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{2}{3}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{1}{6}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Even numbers on a die: \\(\\{2, 4, 6\\}\\) = \\(3\\) outcomes\r\nTotal outcomes = \\(6\\)\r\nProbability = \\(\\frac{3}{6} = \\frac{1}{2}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 5,
+      "stem": "What is the probability of getting a prime number when a die is thrown?",
+      "options": [
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{2}{3}\\)",
+        "\\(\\frac{1}{2}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Prime numbers on a die: \\(\\{2, 3, 5\\}\\) = \\(3\\) outcomes\r\nTotal outcomes = \\(6\\)\r\nProbability = \\(\\frac{3}{6} = \\frac{1}{2}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 6,
+      "stem": "When two dice are thrown, what is the probability that both dice show the same number?",
+      "options": [
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{1}{12}\\)",
+        "\\(\\frac{1}{9}\\)",
+        "\\(\\frac{1}{6}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Favorable outcomes for same numbers: \\((1,1), (2,2), (3,3), (4,4), (5,5), (6,6)\\) = \\(6\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{6}{36} = \\frac{1}{6}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 7,
+      "stem": "What is the probability of getting a sum of \\(8\\) when two dice are rolled?",
+      "options": [
+        "\\(\\frac{7}{36}\\)",
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{9}\\)",
+        "\\(\\frac{5}{36}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Favorable outcomes for sum \\(8\\): \\((2,6), (3,5), (4,4), (5,3), (6,2)\\) = \\(5\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{5}{36}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 8,
+      "stem": "When three dice are thrown, what is the probability that all three dice show different numbers?",
+      "options": [
+        "\\(\\frac{5}{9}\\)",
+        "\\(\\frac{4}{9}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{2}{3}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total outcomes with three dice = \\(6^3 = 216\\)\r\nFirst die: \\(6\\) choices, Second die: \\(5\\) choices, Third die: \\(4\\) choices\r\nFavorable outcomes = \\(6 \\times 5 \\times 4 = 120\\)\r\nProbability = \\(\\frac{120}{216} = \\frac{5}{9}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 9,
+      "stem": "What is the probability of getting at least one \\(6\\) when two dice are thrown?",
+      "options": [
+        "\\(\\frac{11}{36}\\)",
+        "\\(\\frac{25}{36}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{5}{18}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Using complementary probability:\r\nP(at least one 6) = 1 - P(no 6)\r\nP(no 6 on first die) = \\(\\frac{5}{6}\\), P(no 6 on second die) = \\(\\frac{5}{6}\\)\r\nP(no 6 on both) = \\(\\frac{5}{6} \\times \\frac{5}{6} = \\frac{25}{36}\\)\r\nP(at least one 6) = \\(1 - \\frac{25}{36} = \\frac{11}{36}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 10,
+      "stem": "When a die is thrown twice, what is the probability that the product of the two numbers is \\(12\\)?",
+      "options": [
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{12}\\)",
+        "\\(\\frac{1}{18}\\)",
+        "\\(\\frac{1}{9}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Pairs giving product \\(12\\): \\((2,6), (3,4), (4,3), (6,2)\\) = \\(4\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{4}{36} = \\frac{1}{9}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 11,
+      "stem": "What is the probability of getting a number less than \\(3\\) on a single die throw?",
+      "options": [
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{2}{3}\\)",
+        "\\(\\frac{1}{6}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Numbers less than \\(3\\): \\(\\{1, 2\\}\\) = \\(2\\) outcomes\r\nTotal outcomes = \\(6\\)\r\nProbability = \\(\\frac{2}{6} = \\frac{1}{3}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 12,
+      "stem": "When two dice are rolled, what is the probability that the difference of the numbers is \\(3\\)?",
+      "options": [
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{9}\\)",
+        "\\(\\frac{1}{12}\\)",
+        "\\(\\frac{1}{18}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Pairs with difference \\(3\\): \\((1,4), (2,5), (3,6), (4,1), (5,2), (6,3)\\) = \\(6\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{6}{36} = \\frac{1}{6}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 13,
+      "stem": "What is the probability of getting a sum of \\(5\\) when two dice are thrown?",
+      "options": [
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{9}\\)",
+        "\\(\\frac{1}{12}\\)",
+        "\\(\\frac{1}{18}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Favorable outcomes for sum \\(5\\): \\((1,4), (2,3), (3,2), (4,1)\\) = \\(4\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{4}{36} = \\frac{1}{9}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 14,
+      "stem": "When three dice are thrown simultaneously, what is the probability of getting a sum of \\(18\\)?",
+      "options": [
+        "\\(\\frac{1}{36}\\)",
+        "\\(\\frac{1}{108}\\)",
+        "\\(\\frac{1}{72}\\)",
+        "\\(\\frac{1}{216}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Sum \\(18\\) is possible only with \\((6,6,6)\\) = \\(1\\) outcome\r\nTotal outcomes with three dice = \\(6^3 = 216\\)\r\nProbability = \\(\\frac{1}{216}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 15,
+      "stem": "What is the probability of getting at least one odd number when two dice are thrown?",
+      "options": [
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{3}{4}\\)",
+        "\\(\\frac{2}{3}\\)"
+      ],
+      "key": "C",
+      "keySolution": "P(at least one odd) = 1 - P(both even)\r\nP(even on one die) = \\(\\frac{3}{6} = \\frac{1}{2}\\)\r\nP(both even) = \\(\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)\r\nP(at least one odd) = \\(1 - \\frac{1}{4} = \\frac{3}{4}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 16,
+      "stem": "When two dice are rolled, what is the probability that the sum is a multiple of \\(3\\)?",
+      "options": [
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{2}{3}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Sums that are multiples of \\(3\\): \\(3, 6, 9, 12\\)\r\nSum \\(3\\): \\((1,2), (2,1)\\) = \\(2\\) outcomes\r\nSum \\(6\\): \\((1,5), (2,4), (3,3), (4,2), (5,1)\\) = \\(5\\) outcomes\r\nSum \\(9\\): \\((3,6), (4,5), (5,4), (6,3)\\) = \\(4\\) outcomes\r\nSum \\(12\\): \\((6,6)\\) = \\(1\\) outcome\r\nTotal favorable = \\(12\\), Probability = \\(\\frac{12}{36} = \\frac{1}{3}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 17,
+      "stem": "What is the probability of getting exactly two \\(6\\)s when three dice are thrown?",
+      "options": [
+        "\\(\\frac{5}{72}\\)",
+        "\\(\\frac{15}{216}\\)",
+        "\\(\\frac{1}{12}\\)",
+        "\\(\\frac{25}{216}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Choose \\(2\\) dice out of \\(3\\) to show \\(6\\): \\(\\binom{3}{2} = 3\\) ways\r\nProbability of getting \\(6\\) on chosen dice: \\(\\left(\\frac{1}{6}\\right)^2\\)\r\nProbability of not getting \\(6\\) on remaining die: \\(\\frac{5}{6}\\)\r\nTotal probability = \\(3 \\times \\frac{1}{36} \\times \\frac{5}{6} = \\frac{15}{216}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 18,
+      "stem": "When a die is thrown, what is the probability of getting a number greater than \\(4\\)?",
+      "options": [
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{2}{3}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Numbers greater than \\(4\\): \\(\\{5, 6\\}\\) = \\(2\\) outcomes\r\nTotal outcomes = \\(6\\)\r\nProbability = \\(\\frac{2}{6} = \\frac{1}{3}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 19,
+      "stem": "What is the probability that when two dice are thrown, neither die shows \\(1\\)?",
+      "options": [
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{5}{9}\\)",
+        "\\(\\frac{25}{36}\\)",
+        "\\(\\frac{11}{36}\\)"
+      ],
+      "key": "C",
+      "keySolution": "P(no \\(1\\) on first die) = \\(\\frac{5}{6}\\)\r\nP(no \\(1\\) on second die) = \\(\\frac{5}{6}\\)\r\nP(no \\(1\\) on both dice) = \\(\\frac{5}{6} \\times \\frac{5}{6} = \\frac{25}{36}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 20,
+      "stem": "When two dice are rolled, what is the probability that the sum is less than \\(5\\)?",
+      "options": [
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{9}\\)",
+        "\\(\\frac{1}{12}\\)",
+        "\\(\\frac{5}{36}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Sum less than \\(5\\) means sum = \\(2, 3,\\) or \\(4\\)\r\nSum \\(2\\): \\((1,1)\\) = \\(1\\) outcome\r\nSum \\(3\\): \\((1,2), (2,1)\\) = \\(2\\) outcomes\r\nSum \\(4\\): \\((1,3), (2,2), (3,1)\\) = \\(3\\) outcomes\r\nTotal favorable = \\(6\\), Probability = \\(\\frac{6}{36} = \\frac{1}{6}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 21,
+      "stem": "When two dice are thrown, what is the probability that both dice show odd numbers?",
+      "options": [
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{1}{6}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Odd numbers on a die: \\(\\{1, 3, 5\\}\\) = \\(3\\) outcomes\r\nP(odd on first die) = \\(\\frac{3}{6} = \\frac{1}{2}\\)\r\nP(odd on second die) = \\(\\frac{3}{6} = \\frac{1}{2}\\)\r\nP(both odd) = \\(\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 22,
+      "stem": "What is the probability of getting at least one \\(1\\) when three dice are thrown?",
+      "options": [
+        "\\(\\frac{5}{8}\\)",
+        "\\(\\frac{125}{216}\\)",
+        "\\(\\frac{91}{216}\\)",
+        "\\(\\frac{3}{8}\\)"
+      ],
+      "key": "C",
+      "keySolution": "P(at least one \\(1\\)) = 1 - P(no \\(1\\) on any die)\r\nP(no \\(1\\) on one die) = \\(\\frac{5}{6}\\)\r\nP(no \\(1\\) on all three dice) = \\(\\left(\\frac{5}{6}\\right)^3 = \\frac{125}{216}\\)\r\nP(at least one \\(1\\)) = \\(1 - \\frac{125}{216} = \\frac{91}{216}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 23,
+      "stem": "When a single die is thrown, what is the probability of getting a perfect square?",
+      "options": [
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{2}{3}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Perfect squares on a die: \\(\\{1, 4\\}\\) (since \\(1 = 1^2\\) and \\(4 = 2^2\\)) = \\(2\\) outcomes\r\nTotal outcomes = \\(6\\)\r\nProbability = \\(\\frac{2}{6} = \\frac{1}{3}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 24,
+      "stem": "What is the probability that when two dice are rolled, the product is even?",
+      "options": [
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{2}{3}\\)",
+        "\\(\\frac{3}{4}\\)",
+        "\\(\\frac{5}{6}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Product is even if at least one die shows even number\r\nP(product even) = 1 - P(product odd)\r\nProduct is odd only when both dice show odd numbers\r\nP(odd on one die) = \\(\\frac{3}{6} = \\frac{1}{2}\\)\r\nP(both odd) = \\(\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)\r\nP(product even) = \\(1 - \\frac{1}{4} = \\frac{3}{4}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 25,
+      "stem": "When two dice are thrown, what is the probability of getting a sum that is divisible by \\(4\\)?",
+      "options": [
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{5}{18}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{1}{4}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Sums divisible by \\(4\\): \\(4, 8, 12\\)\r\nSum \\(4\\): \\((1,3), (2,2), (3,1)\\) = \\(3\\) outcomes\r\nSum \\(8\\): \\((2,6), (3,5), (4,4), (5,3), (6,2)\\) = \\(5\\) outcomes\r\nSum \\(12\\): \\((6,6)\\) = \\(1\\) outcome\r\nTotal favorable = \\(9\\), Probability = \\(\\frac{9}{36} = \\frac{1}{4}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 26,
+      "stem": "What is the probability of getting exactly one \\(5\\) when two dice are rolled?",
+      "options": [
+        "\\(\\frac{2}{9}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{5}{18}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Exactly one \\(5\\) means first die shows \\(5\\) and second doesn't, OR first doesn't show \\(5\\) and second does\r\nP(5 on first, not 5 on second) = \\(\\frac{1}{6} \\times \\frac{5}{6} = \\frac{5}{36}\\)\r\nP(not 5 on first, 5 on second) = \\(\\frac{5}{6} \\times \\frac{1}{6} = \\frac{5}{36}\\)\r\nTotal probability = \\(\\frac{5}{36} + \\frac{5}{36} = \\frac{10}{36} = \\frac{5}{18}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 27,
+      "stem": "What is the probability of getting a sum of \\(6\\) when two dice are rolled?",
+      "options": [
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{7}{36}\\)",
+        "\\(\\frac{1}{9}\\)",
+        "\\(\\frac{5}{36}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Favorable outcomes for sum \\(6\\): \\((1,5), (2,4), (3,3), (4,2), (5,1)\\) = \\(5\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{5}{36}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 28,
+      "stem": "When two dice are thrown, what is the probability that the first die shows \\(6\\) given that the sum is \\(10\\)?",
+      "options": [
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{2}{3}\\)",
+        "\\(\\frac{1}{6}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Outcomes with sum \\(10\\): \\((4,6), (5,5), (6,4)\\) = \\(3\\) outcomes\r\nOutcomes with sum \\(10\\) and first die showing \\(6\\): \\((6,4)\\) = \\(1\\) outcome\r\nConditional probability = \\(\\frac{1}{3}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 29,
+      "stem": "What is the probability of getting all different numbers when three dice are thrown?",
+      "options": [
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{4}{9}\\)",
+        "\\(\\frac{5}{9}\\)",
+        "\\(\\frac{2}{3}\\)"
+      ],
+      "key": "C",
+      "keySolution": "First die: \\(6\\) choices\r\nSecond die: \\(5\\) choices (different from first)\r\nThird die: \\(4\\) choices (different from first two)\r\nFavorable outcomes = \\(6 \\times 5 \\times 4 = 120\\)\r\nTotal outcomes = \\(216\\)\r\nProbability = \\(\\frac{120}{216} = \\frac{5}{9}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 30,
+      "stem": "When a die is rolled twice, what is the probability that both throws result in the same number?",
+      "options": [
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{9}\\)",
+        "\\(\\frac{1}{12}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Same number on both throws: \\((1,1), (2,2), (3,3), (4,4), (5,5), (6,6)\\) = \\(6\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{6}{36} = \\frac{1}{6}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 31,
+      "stem": "What is the probability of getting a sum greater than \\(8\\) when two dice are rolled?",
+      "options": [
+        "\\(\\frac{5}{18}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{7}{18}\\)",
+        "\\(\\frac{2}{9}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Sum greater than \\(8\\) means sum = \\(9, 10, 11,\\) or \\(12\\)\r\nSum \\(9\\): \\(4\\) outcomes, Sum \\(10\\): \\(3\\) outcomes\r\nSum \\(11\\): \\(2\\) outcomes, Sum \\(12\\): \\(1\\) outcome\r\nTotal favorable = \\(10\\), Probability = \\(\\frac{10}{36} = \\frac{5}{18}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 32,
+      "stem": "When three dice are thrown, what is the probability that all three dice show even numbers?",
+      "options": [
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{1}{8}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Even numbers on a die: \\(\\{2, 4, 6\\}\\) = \\(3\\) numbers\r\nP(even on one die) = \\(\\frac{3}{6} = \\frac{1}{2}\\)\r\nP(all three dice show even) = \\(\\left(\\frac{1}{2}\\right)^3 = \\frac{1}{8}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 33,
+      "stem": "What is the probability of getting a sum of \\(9\\) when two dice are thrown?",
+      "options": [
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{9}\\)",
+        "\\(\\frac{1}{12}\\)",
+        "\\(\\frac{5}{36}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Favorable outcomes for sum \\(9\\): \\((3,6), (4,5), (5,4), (6,3)\\) = \\(4\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{4}{36} = \\frac{1}{9}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 34,
+      "stem": "When two dice are rolled, what is the probability that at least one die shows \\(2\\)?",
+      "options": [
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{25}{36}\\)",
+        "\\(\\frac{11}{36}\\)",
+        "\\(\\frac{5}{18}\\)"
+      ],
+      "key": "C",
+      "keySolution": "P(at least one 2) = 1 - P(no 2 on either die)\r\nP(no 2 on one die) = \\(\\frac{5}{6}\\)\r\nP(no 2 on both dice) = \\(\\frac{5}{6} \\times \\frac{5}{6} = \\frac{25}{36}\\)\r\nP(at least one 2) = \\(1 - \\frac{25}{36} = \\frac{11}{36}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 35,
+      "stem": "What is the probability of getting a product of \\(6\\) when two dice are rolled?",
+      "options": [
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{12}\\)",
+        "\\(\\frac{1}{18}\\)",
+        "\\(\\frac{1}{9}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Pairs giving product \\(6\\): \\((1,6), (2,3), (3,2), (6,1)\\) = \\(4\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{4}{36} = \\frac{1}{9}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 36,
+      "stem": "When three dice are thrown simultaneously, what is the probability that exactly one die shows \\(1\\)?",
+      "options": [
+        "\\(\\frac{15}{72}\\)",
+        "\\(\\frac{25}{72}\\)",
+        "\\(\\frac{5}{18}\\)",
+        "\\(\\frac{75}{216}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Choose \\(1\\) die from \\(3\\) to show \\(1\\): \\(\\binom{3}{1} = 3\\) ways\r\nP(chosen die shows 1) = \\(\\frac{1}{6}\\)\r\nP(other two dice don't show 1) = \\(\\left(\\frac{5}{6}\\right)^2 = \\frac{25}{36}\\)\r\nTotal probability = \\(3 \\times \\frac{1}{6} \\times \\frac{25}{36} = \\frac{75}{216}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 37,
+      "stem": "What is the probability of getting a number that is a multiple of \\(3\\) when a single die is thrown?",
+      "options": [
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{2}{3}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Multiples of \\(3\\) on a die: \\(\\{3, 6\\}\\) = \\(2\\) outcomes\r\nTotal outcomes = \\(6\\)\r\nProbability = \\(\\frac{2}{6} = \\frac{1}{3}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 38,
+      "stem": "What is the probability of getting exactly three \\(6\\)s when three dice are thrown?",
+      "options": [
+        "\\(\\frac{1}{216}\\)",
+        "\\(\\frac{1}{108}\\)",
+        "\\(\\frac{1}{72}\\)",
+        "\\(\\frac{1}{36}\\)"
+      ],
+      "key": "A",
+      "keySolution": "All three dice must show \\(6\\): \\((6,6,6)\\) = \\(1\\) outcome\r\nTotal outcomes = \\(6^3 = 216\\)\r\nProbability = \\(\\frac{1}{216}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 39,
+      "stem": "When two dice are thrown, what is the probability that the first die shows an odd number and the second die shows an even number?",
+      "options": [
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{1}{6}\\)"
+      ],
+      "key": "C",
+      "keySolution": "P(first die odd) = \\(\\frac{3}{6} = \\frac{1}{2}\\)\r\nP(second die even) = \\(\\frac{3}{6} = \\frac{1}{2}\\)\r\nP(first odd AND second even) = \\(\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 40,
+      "stem": "What is the probability of getting a sum less than or equal to \\(3\\) when two dice are rolled?",
+      "options": [
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{9}\\)",
+        "\\(\\frac{1}{12}\\)",
+        "\\(\\frac{1}{18}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Sum ≤ \\(3\\) means sum = \\(2\\) or \\(3\\)\r\nSum \\(2\\): \\((1,1)\\) = \\(1\\) outcome\r\nSum \\(3\\): \\((1,2), (2,1)\\) = \\(2\\) outcomes\r\nTotal favorable = \\(3\\), Probability = \\(\\frac{3}{36} = \\frac{1}{12}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 41,
+      "stem": "When three dice are thrown, what is the probability that the sum is \\(3\\)?",
+      "options": [
+        "\\(\\frac{1}{36}\\)",
+        "\\(\\frac{1}{108}\\)",
+        "\\(\\frac{1}{72}\\)",
+        "\\(\\frac{1}{216}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Sum \\(3\\) is possible only with \\((1,1,1)\\) = \\(1\\) outcome\r\nTotal outcomes = \\(6^3 = 216\\)\r\nProbability = \\(\\frac{1}{216}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 42,
+      "stem": "When two dice are thrown, what is the probability that the absolute difference between the numbers is \\(2\\)?",
+      "options": [
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{2}{9}\\)",
+        "\\(\\frac{1}{9}\\)",
+        "\\(\\frac{1}{4}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Pairs with absolute difference \\(2\\): \\((1,3), (2,4), (3,1), (3,5), (4,2), (4,6), (5,3), (6,4)\\) = \\(8\\) outcomes\r\nTotal outcomes = \\(36\\)\r\nProbability = \\(\\frac{8}{36} = \\frac{2}{9}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 43,
+      "stem": "What is the probability of getting no \\(6\\)s when three dice are thrown?",
+      "options": [
+        "\\(\\frac{125}{216}\\)",
+        "\\(\\frac{25}{72}\\)",
+        "\\(\\frac{5}{18}\\)",
+        "\\(\\frac{91}{216}\\)"
+      ],
+      "key": "A",
+      "keySolution": "P(no 6 on one die) = \\(\\frac{5}{6}\\)\r\nP(no 6 on all three dice) = \\(\\left(\\frac{5}{6}\\right)^3 = \\frac{125}{216}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 44,
+      "stem": "When two dice are rolled, what is the probability that both dice show numbers less than \\(4\\)?",
+      "options": [
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{1}{9}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Numbers less than \\(4\\): \\(\\{1, 2, 3\\}\\) = \\(3\\) numbers\r\nP(< 4 on one die) = \\(\\frac{3}{6} = \\frac{1}{2}\\)\r\nP(both dice < 4) = \\(\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)",
+      "difficulty": "Medium"
+    }
+  ]
+}

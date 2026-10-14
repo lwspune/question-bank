@@ -1,0 +1,566 @@
+{
+  "path": "10. Probability\\1)Cards.xlsx",
+  "group": "D",
+  "transcribed": "read from the Cadetprep Excel sheet by extract-cadetprep.ts (sheet row = n); key and solution are the source's, kept as evidence",
+  "questions": [
+    {
+      "n": 2,
+      "stem": "From a standard deck, what is the probability of drawing a card greater than \\(8\\) (considering Jack=\\(11\\), Queen=\\(12\\), King=\\(13\\), Ace=\\(14\\))?",
+      "options": [
+        "\\(\\frac{5}{13}\\)",
+        "\\(\\frac{24}{52}\\)",
+        "\\(\\frac{6}{13}\\)",
+        "\\(\\frac{20}{52}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Step 1: Cards greater than 8: 9, 10, J, Q, K, A\r\nStep 2: Number of such cards per suit = \\(6\\)\r\nStep 3: Total such cards = \\(6 \\times 4 = 24\\)\r\nStep 4: Probability = \\(\\frac{24}{52} = \\frac{6}{13}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 3,
+      "stem": "From two cards drawn without replacement, what is the probability that at least one is an Ace?",
+      "options": [
+        "\\(\\frac{33}{221}\\)",
+        "\\(\\frac{8}{52}\\)",
+        "\\(\\frac{33}{221}\\)",
+        "\\(\\frac{1}{13}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Step 1: Use complement: P(at least 1 Ace) = 1 - P(no Ace)\r\nStep 2: P(no Ace) = \\(\\frac{48}{52} \\times \\frac{47}{51}\\)\r\nStep 3: P(no Ace) = \\(\\frac{48 \\times 47}{52 \\times 51} = \\frac{2256}{2652} = \\frac{188}{221}\\)\r\nStep 4: P(at least 1 Ace) = \\(1 - \\frac{188}{221} = \\frac{33}{221}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 4,
+      "stem": "Three cards are drawn without replacement. What is the probability that all three are spades?",
+      "options": [
+        "\\(\\frac{11}{850}\\)",
+        "\\(\\frac{1}{52}\\)",
+        "\\(\\frac{13}{204}\\)",
+        "\\(\\frac{11}{850}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: First spade probability = \\(\\frac{13}{52}\\)\r\nStep 2: Second spade probability = \\(\\frac{12}{51}\\)\r\nStep 3: Third spade probability = \\(\\frac{11}{50}\\)\r\nStep 4: Combined = \\(\\frac{13}{52} \\times \\frac{12}{51} \\times \\frac{11}{50} = \\frac{1716}{132600} = \\frac{11}{850}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 5,
+      "stem": "A card is drawn from a deck. Given that it is a red card, what is the probability that it is a heart?",
+      "options": [
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{13}{26}\\)",
+        "\\(\\frac{1}{3}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: This is conditional probability P(Heart|Red)\r\nStep 2: Red cards = \\(26\\) (13 hearts + 13 diamonds)\r\nStep 3: Hearts among red cards = \\(13\\)\r\nStep 4: P(Heart|Red) = \\(\\frac{13}{26} = \\frac{1}{2}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 6,
+      "stem": "Two cards are drawn without replacement. What is the probability that at least one is a diamond?",
+      "options": [
+        "\\(\\frac{25}{102}\\)",
+        "\\(\\frac{25}{51}\\)",
+        "\\(\\frac{39}{102}\\)",
+        "\\(\\frac{1}{2}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Use complementary probability\r\nStep 2: P(no diamond) = \\(\\frac{39}{52} \\times \\frac{38}{51}\\)\r\nStep 3: P(no diamond) = \\(\\frac{39 \\times 38}{52 \\times 51} = \\frac{1482}{2652} = \\frac{26}{51}\\)\r\nStep 4: P(at least one diamond) = \\(1 - \\frac{26}{51} = \\frac{25}{51}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 7,
+      "stem": "What is the probability of drawing a black Ace or a red King?",
+      "options": [
+        "\\(\\frac{1}{26}\\)",
+        "\\(\\frac{4}{52}\\)",
+        "\\(\\frac{2}{26}\\)",
+        "\\(\\frac{1}{13}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Step 1: Black Aces = \\(2\\) (Clubs and Spades)\r\nStep 2: Red Kings = \\(2\\) (Hearts and Diamonds)\r\nStep 3: These are mutually exclusive\r\nStep 4: Total favorable = \\(2 + 2 = 4\\)\r\nStep 5: Probability = \\(\\frac{4}{52} = \\frac{1}{13}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 8,
+      "stem": "A card is selected. What is the probability it is a court card (Jack, Queen, King) or a heart?",
+      "options": [
+        "\\(\\frac{5}{13}\\)",
+        "\\(\\frac{22}{52}\\)",
+        "\\(\\frac{25}{52}\\)",
+        "\\(\\frac{11}{26}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Step 1: Court cards = \\(12\\)\r\nStep 2: Hearts = \\(13\\)\r\nStep 3: Heart court cards = \\(3\\) (overlap)\r\nStep 4: By inclusion-exclusion: \\(12 + 13 - 3 = 22\\)\r\nStep 5: Probability = \\(\\frac{22}{52} = \\frac{11}{26}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 9,
+      "stem": "A card is drawn from a well-shuffled deck. What is the probability that it is either a club or an even-numbered card?",
+      "options": [
+        "\\(\\frac{28}{52}\\)",
+        "\\(\\frac{7}{13}\\)",
+        "\\(\\frac{29}{52}\\)",
+        "\\(\\frac{15}{26}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Clubs = \\(13\\)\r\nStep 2: Even cards (2,4,6,8,10) = \\(5 \\times 4 = 20\\)\r\nStep 3: Even clubs = \\(5\\)\r\nStep 4: By inclusion-exclusion: \\(13 + 20 - 5 = 28\\)\r\nStep 5: Probability = \\(\\frac{28}{52} = \\frac{7}{13}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 10,
+      "stem": "What is the probability that a card drawn from a deck has value between \\(4\\) and \\(9\\) inclusive?",
+      "options": [
+        "\\(\\frac{20}{52}\\)",
+        "\\(\\frac{24}{52}\\)",
+        "\\(\\frac{5}{13}\\)",
+        "\\(\\frac{6}{13}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Step 1: Cards with values 4,5,6,7,8,9\r\nStep 2: Number of such cards per suit = \\(6\\)\r\nStep 3: Total such cards = \\(6 \\times 4 = 24\\)\r\nStep 4: Probability = \\(\\frac{24}{52} = \\frac{6}{13}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 11,
+      "stem": "What is the probability of drawing a card with an odd value (considering Ace=\\(1\\), Jack=\\(11\\), King=\\(13\\))?",
+      "options": [
+        "\\(\\frac{5}{13}\\)",
+        "\\(\\frac{6}{13}\\)",
+        "\\(\\frac{20}{52}\\)",
+        "\\(\\frac{24}{52}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Odd valued cards: A(1), 3, 5, 7, 9, J(11), K(13)\r\nStep 2: Queen has even value \\(12\\)\r\nStep 3: Odd cards per suit = \\(6\\)\r\nStep 4: Total odd cards = \\(6 \\times 4 = 24\\)\r\nStep 5: Probability = \\(\\frac{24}{52} = \\frac{6}{13}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 12,
+      "stem": "Two cards are drawn from a deck without replacement. What is the probability that both are hearts?",
+      "options": [
+        "\\(\\frac{1}{17}\\)",
+        "\\(\\frac{3}{51}\\)",
+        "\\(\\frac{12}{51}\\)",
+        "\\(\\frac{1}{16}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Probability of first heart = \\(\\frac{13}{52}\\)\r\nStep 2: Probability of second heart = \\(\\frac{12}{51}\\)\r\nStep 3: Combined probability = \\(\\frac{13}{52} \\times \\frac{12}{51} = \\frac{1}{4} \\times \\frac{12}{51} = \\frac{1}{17}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 13,
+      "stem": "Two cards are drawn without replacement. What is the probability that the first is a club and the second is not a club?",
+      "options": [
+        "\\(\\frac{13}{68}\\)",
+        "\\(\\frac{39}{204}\\)",
+        "\\(\\frac{13 \\times 39}{52 \\times 51}\\)",
+        "\\(\\frac{1}{4}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Step 1: Probability of first club = \\(\\frac{13}{52}\\)\r\nStep 2: After removing 1 club, remaining non-clubs = \\(39\\)\r\nStep 3: Probability of second non-club = \\(\\frac{39}{51}\\)\r\nStep 4: Combined = \\(\\frac{13}{52} \\times \\frac{39}{51} = \\frac{13 \\times 39}{52 \\times 51}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 14,
+      "stem": "What is the probability of drawing a prime-numbered card (\\(2, 3, 5, 7\\)) from a standard deck?",
+      "options": [
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{16}{52}\\)",
+        "\\(\\frac{4}{13}\\)",
+        "\\(\\frac{8}{26}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Step 1: Prime-numbered cards: 2, 3, 5, 7\r\nStep 2: Number per suit = \\(4\\)\r\nStep 3: Total prime cards = \\(4 \\times 4 = 16\\)\r\nStep 4: Probability = \\(\\frac{16}{52} = \\frac{4}{13}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 15,
+      "stem": "What is the probability that a randomly selected card is either an Ace of Spades or any King?",
+      "options": [
+        "\\(\\frac{4}{52}\\)",
+        "\\(\\frac{1}{52}\\)",
+        "\\(\\frac{5}{52}\\)",
+        "\\(\\frac{1}{13}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Step 1: Ace of Spades = \\(1\\)\r\nStep 2: Any King = \\(4\\)\r\nStep 3: These are mutually exclusive events\r\nStep 4: Total favorable = \\(1 + 4 = 5\\)\r\nStep 5: Probability = \\(\\frac{5}{52}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 16,
+      "stem": "A card is drawn. Given it's a face card, what is the probability it's a Queen?",
+      "options": [
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{4}{12}\\)",
+        "\\(\\frac{1}{3}\\)",
+        "\\(\\frac{4}{52}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Step 1: This is conditional probability P(Queen|Face card)\r\nStep 2: Total face cards = \\(12\\)\r\nStep 3: Queens among face cards = \\(4\\)\r\nStep 4: P(Queen|Face card) = \\(\\frac{4}{12} = \\frac{1}{3}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 17,
+      "stem": "Two cards are drawn without replacement. What is the probability that they form a pair (same rank)?",
+      "options": [
+        "\\(\\frac{12}{663}\\)",
+        "\\(\\frac{3}{51}\\)",
+        "\\(\\frac{4}{52}\\)",
+        "\\(\\frac{1}{17}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Step 1: After first card, 3 cards of same rank remain out of 51\r\nStep 2: This applies regardless of first card's rank\r\nStep 3: Probability = \\(\\frac{3}{51} = \\frac{1}{17}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 18,
+      "stem": "A card is drawn and replaced, then another card is drawn. What is the probability that both cards are black?",
+      "options": [
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{1}{8}\\)",
+        "\\(\\frac{3}{4}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Probability of first black card = \\(\\frac{26}{52} = \\frac{1}{2}\\)\r\nStep 2: Since replacement, probability of second black card = \\(\\frac{1}{2}\\)\r\nStep 3: Combined probability = \\(\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 19,
+      "stem": "What is the probability of drawing a card that is not a face card?",
+      "options": [
+        "\\(\\frac{10}{13}\\)",
+        "\\(\\frac{9}{13}\\)",
+        "\\(\\frac{40}{52}\\)",
+        "\\(\\frac{3}{4}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Total cards = \\(52\\)\r\nStep 2: Face cards = \\(12\\)\r\nStep 3: Non-face cards = \\(52 - 12 = 40\\)\r\nStep 4: Probability = \\(\\frac{40}{52} = \\frac{10}{13}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 20,
+      "stem": "A card is selected randomly. What is the probability it is a \\(7\\) or a spade?",
+      "options": [
+        "\\(\\frac{15}{52}\\)",
+        "\\(\\frac{16}{52}\\)",
+        "\\(\\frac{4}{13}\\)",
+        "\\(\\frac{17}{52}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Step 1: Number of 7s = \\(4\\)\r\nStep 2: Number of spades = \\(13\\)\r\nStep 3: 7 of spades = \\(1\\) (counted in both)\r\nStep 4: By inclusion-exclusion: \\(4 + 13 - 1 = 16\\)\r\nStep 5: Probability = \\(\\frac{16}{52} = \\frac{4}{13}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 21,
+      "stem": "A card is drawn and not replaced. A second card is drawn. What is the probability that both cards are of the same suit?",
+      "options": [
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{12}{51}\\)",
+        "\\(\\frac{4}{17}\\)",
+        "\\(\\frac{4 \\times 12}{52 \\times 51}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Step 1: After first card, 12 cards of same suit remain out of 51\r\nStep 2: This applies regardless of first card's suit\r\nStep 3: Probability = \\(\\frac{12}{51} = \\frac{4}{17}\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 22,
+      "stem": "What is the probability of drawing a card with value less than \\(5\\) (considering Ace as \\(1\\))?",
+      "options": [
+        "\\(\\frac{4}{13}\\)",
+        "\\(\\frac{16}{52}\\)",
+        "\\(\\frac{3}{13}\\)",
+        "\\(\\frac{12}{52}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Cards less than 5: Ace(1), 2, 3, 4\r\nStep 2: Number of such cards per suit = \\(4\\)\r\nStep 3: Total such cards = \\(4 \\times 4 = 16\\)\r\nStep 4: Probability = \\(\\frac{16}{52} = \\frac{4}{13}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 23,
+      "stem": "What is the probability that a randomly drawn card is a \\(10\\) or a diamond?",
+      "options": [
+        "\\(\\frac{15}{52}\\)",
+        "\\(\\frac{16}{52}\\)",
+        "\\(\\frac{4}{13}\\)",
+        "\\(\\frac{17}{52}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Step 1: Number of 10s = \\(4\\)\r\nStep 2: Number of diamonds = \\(13\\)\r\nStep 3: 10 of diamonds = \\(1\\) (counted in both)\r\nStep 4: By inclusion-exclusion: \\(4 + 13 - 1 = 16\\)\r\nStep 5: Probability = \\(\\frac{16}{52} = \\frac{4}{13}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 24,
+      "stem": "What is the probability that a randomly drawn card is a Queen of Hearts or Queen of Spades?",
+      "options": [
+        "\\(\\frac{1}{52}\\)",
+        "\\(\\frac{2}{52}\\)",
+        "\\(\\frac{1}{26}\\)",
+        "\\(\\frac{1}{13}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Step 1: Queen of Hearts = \\(1\\) card\r\nStep 2: Queen of Spades = \\(1\\) card\r\nStep 3: Total favorable = \\(2\\) cards\r\nStep 4: Probability = \\(\\frac{2}{52} = \\frac{1}{26}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 25,
+      "stem": "What is the probability of drawing a card from the first half of the deck (cards \\(A\\) through \\(6\\) in each suit)?",
+      "options": [
+        "\\(\\frac{26}{52}\\)",
+        "\\(\\frac{24}{52}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{6}{13}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Step 1: Cards A through 6 per suit = \\(6\\) cards\r\nStep 2: Total such cards = \\(6 \\times 4 = 24\\)\r\nStep 3: Probability = \\(\\frac{24}{52} = \\frac{6}{13}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 26,
+      "stem": "What is the probability of drawing a card that is both red and a face card?",
+      "options": [
+        "\\(\\frac{3}{26}\\)",
+        "\\(\\frac{6}{52}\\)",
+        "\\(\\frac{1}{8}\\)",
+        "\\(\\frac{3}{13}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Red face cards = face cards in hearts + face cards in diamonds\r\nStep 2: Hearts face cards = \\(3\\), Diamonds face cards = \\(3\\)\r\nStep 3: Total red face cards = \\(3 + 3 = 6\\)\r\nStep 4: Probability = \\(\\frac{6}{52} = \\frac{3}{26}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 27,
+      "stem": "What is the probability that a card drawn is a multiple of \\(3\\) (considering only number cards \\(2-10\\))?",
+      "options": [
+        "\\(\\frac{4}{13}\\)",
+        "\\(\\frac{12}{52}\\)",
+        "\\(\\frac{3}{13}\\)",
+        "\\(\\frac{1}{4}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Step 1: Multiples of 3 in range 2-10: 3, 6, 9\r\nStep 2: Number of such cards per suit = \\(3\\)\r\nStep 3: Total such cards = \\(3 \\times 4 = 12\\)\r\nStep 4: Probability = \\(\\frac{12}{52} = \\frac{3}{13}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 28,
+      "stem": "A card is drawn randomly. What is the probability it has the same value as a die showing \\(6\\)?",
+      "options": [
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{4}{52}\\)",
+        "\\(\\frac{6}{52}\\)",
+        "\\(\\frac{1}{13}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Step 1: Die shows 6, so we need cards with value 6\r\nStep 2: Number of 6s in deck = \\(4\\)\r\nStep 3: Probability = \\(\\frac{4}{52} = \\frac{1}{13}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 29,
+      "stem": "What is the probability of drawing two consecutive hearts when two cards are drawn without replacement?",
+      "options": [
+        "\\(\\frac{13}{52}\\)",
+        "\\(\\frac{12}{51}\\)",
+        "\\(\\frac{1}{17}\\)",
+        "\\(\\frac{1}{4}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Step 1: First heart probability = \\(\\frac{13}{52} = \\frac{1}{4}\\)\r\nStep 2: Second heart probability = \\(\\frac{12}{51}\\)\r\nStep 3: Combined probability = \\(\\frac{1}{4} \\times \\frac{12}{51} = \\frac{12}{204} = \\frac{1}{17}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 30,
+      "stem": "What is the probability of selecting a card that when its number is doubled, gives an even result?",
+      "options": [
+        "\\(0\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{3}{4}\\)",
+        "\\(1\\)"
+      ],
+      "key": "D",
+      "keySolution": "Step 1: Any number doubled is always even\r\nStep 2: \\(2 \\times \\text{any number} = \\text{even number}\\)\r\nStep 3: This applies to all cards regardless of value\r\nStep 4: Probability = \\(\\frac{52}{52} = 1\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 31,
+      "stem": "What is the probability that a randomly drawn card is either an even-numbered card or a club?",
+      "options": [
+        "\\(\\frac{4}{13}\\)",
+        "\\(\\frac{7}{13}\\)",
+        "\\(\\frac{25}{52}\\)",
+        "\\(\\frac{33}{52}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Even cards (2,4,6,8,10) = \\(5 \\times 4 = 20\\)\r\nStep 2: Clubs = \\(13\\)\r\nStep 3: Even clubs = \\(5\\)\r\nStep 4: By inclusion-exclusion: \\(20 + 13 - 5 = 28\\)\r\nStep 5: Probability = \\(\\frac{28}{52} = \\frac{7}{13}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 32,
+      "stem": "Three cards are drawn with replacement. What is the probability that all three are red?",
+      "options": [
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{1}{8}\\)",
+        "\\(\\frac{1}{2}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Step 1: Probability of red card = \\(\\frac{26}{52} = \\frac{1}{2}\\)\r\nStep 2: With replacement, each draw is independent\r\nStep 3: Probability of three red = \\(\\left(\\frac{1}{2}\\right)^3 = \\frac{1}{8}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 33,
+      "stem": "Two cards are drawn with replacement. What is the probability that the first is an Ace and the second is a King?",
+      "options": [
+        "\\(\\frac{4}{169}\\)",
+        "\\(\\frac{1}{169}\\)",
+        "\\(\\frac{8}{169}\\)",
+        "\\(\\frac{1}{13}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Probability of Ace = \\(\\frac{4}{52} = \\frac{1}{13}\\)\r\nStep 2: Probability of King (with replacement) = \\(\\frac{4}{52} = \\frac{1}{13}\\)\r\nStep 3: Combined probability = \\(\\frac{1}{13} \\times \\frac{1}{13} = \\frac{1}{169}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 34,
+      "stem": "What is the probability of drawing a numbered card (\\(2\\) to \\(10\\)) from a standard deck?",
+      "options": [
+        "\\(\\frac{9}{13}\\)",
+        "\\(\\frac{36}{52}\\)",
+        "\\(\\frac{8}{13}\\)",
+        "\\(\\frac{32}{52}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Numbered cards per suit = \\(9\\) (2,3,4,5,6,7,8,9,10)\r\nStep 2: Total numbered cards = \\(9 \\times 4 = 36\\)\r\nStep 3: Probability = \\(\\frac{36}{52} = \\frac{9}{13}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 35,
+      "stem": "What is the probability of drawing an Ace or a King from a standard deck?",
+      "options": [
+        "\\(\\frac{1}{13}\\)",
+        "\\(\\frac{1}{6}\\)",
+        "\\(\\frac{2}{13}\\)",
+        "\\(\\frac{8}{52}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Step 1: Number of Aces = \\(4\\)\r\nStep 2: Number of Kings = \\(4\\)\r\nStep 3: Total favorable outcomes = \\(4 + 4 = 8\\)\r\nStep 4: Probability = \\(\\frac{8}{52} = \\frac{2}{13}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 36,
+      "stem": "What is the probability of drawing a Jack of Hearts or any Queen?",
+      "options": [
+        "\\(\\frac{1}{13}\\)",
+        "\\(\\frac{4}{52}\\)",
+        "\\(\\frac{1}{52}\\)",
+        "\\(\\frac{5}{52}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Step 1: Jack of Hearts = \\(1\\)\r\nStep 2: Any Queen = \\(4\\)\r\nStep 3: These are mutually exclusive\r\nStep 4: Total favorable = \\(1 + 4 = 5\\)\r\nStep 5: Probability = \\(\\frac{5}{52}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 37,
+      "stem": "What is the probability of drawing a card that is a spade but not a face card?",
+      "options": [
+        "\\(\\frac{10}{52}\\)",
+        "\\(\\frac{5}{26}\\)",
+        "\\(\\frac{13}{52}\\)",
+        "\\(\\frac{3}{52}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Total spades = \\(13\\)\r\nStep 2: Spade face cards = \\(3\\) (Jack, Queen, King of spades)\r\nStep 3: Non-face spades = \\(13 - 3 = 10\\)\r\nStep 4: Probability = \\(\\frac{10}{52} = \\frac{5}{26}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 38,
+      "stem": "A card is drawn from a deck of \\(52\\) cards. What is the probability that it is a red card?",
+      "options": [
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{3}{4}\\)",
+        "\\(\\frac{2}{3}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Total cards = \\(52\\)\r\nStep 2: Red cards (Hearts + Diamonds) = \\(26\\)\r\nStep 3: Probability = \\(\\frac{26}{52} = \\frac{1}{2}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 39,
+      "stem": "Two cards are drawn with replacement. What is the probability that exactly one is black?",
+      "options": [
+        "\\(\\frac{2}{4}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{3}{8}\\)",
+        "\\(\\frac{1}{2}\\)"
+      ],
+      "key": "D",
+      "keySolution": "Step 1: P(black) = \\(\\frac{1}{2}\\), P(red) = \\(\\frac{1}{2}\\)\r\nStep 2: Exactly one black = (Black,Red) OR (Red,Black)\r\nStep 3: P(B,R) = \\(\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)\r\nStep 4: P(R,B) = \\(\\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\)\r\nStep 5: Total = \\(\\frac{1}{4} + \\frac{1}{4} = \\frac{1}{2}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 40,
+      "stem": "A card is drawn from a deck. What is the probability that it is a heart given that it is red?",
+      "options": [
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{13}{52}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{13}{26}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Step 1: This is P(Heart|Red)\r\nStep 2: Red cards = \\(26\\) (13 hearts + 13 diamonds)\r\nStep 3: Hearts among red = \\(13\\)\r\nStep 4: P(Heart|Red) = \\(\\frac{13}{26} = \\frac{1}{2}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 41,
+      "stem": "What is the probability of drawing a King from a standard deck of \\(52\\) cards?",
+      "options": [
+        "\\(\\frac{1}{13}\\)",
+        "\\(\\frac{1}{12}\\)",
+        "\\(\\frac{4}{52}\\)",
+        "\\(\\frac{1}{4}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Total number of cards = \\(52\\)\r\nStep 2: Number of Kings in a deck = \\(4\\)\r\nStep 3: Probability = \\(\\frac{4}{52} = \\frac{1}{13}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 42,
+      "stem": "What is the probability of drawing either a diamond or a black card?",
+      "options": [
+        "\\(\\frac{3}{4}\\)",
+        "\\(\\frac{39}{52}\\)",
+        "\\(\\frac{1}{2}\\)",
+        "\\(\\frac{2}{3}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Diamonds = \\(13\\)\r\nStep 2: Black cards = \\(26\\)\r\nStep 3: These events are mutually exclusive\r\nStep 4: Total favorable = \\(13 + 26 = 39\\)\r\nStep 5: Probability = \\(\\frac{39}{52} = \\frac{3}{4}\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 43,
+      "stem": "What is the probability of drawing a face card (Jack, Queen, King) from a standard deck?",
+      "options": [
+        "\\(\\frac{3}{13}\\)",
+        "\\(\\frac{1}{4}\\)",
+        "\\(\\frac{12}{52}\\)",
+        "\\(\\frac{3}{52}\\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Face cards per suit = \\(3\\) (Jack, Queen, King)\r\nStep 2: Total face cards = \\(3 \\times 4 = 12\\)\r\nStep 3: Probability = \\(\\frac{12}{52} = \\frac{3}{13}\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 44,
+      "stem": "What is the probability that a card drawn is a picture card (Jack, Queen, King) and is red?",
+      "options": [
+        "\\(\\frac{6}{52}\\)",
+        "\\(\\frac{3}{26}\\)",
+        "\\(\\frac{1}{8}\\)",
+        "\\(\\frac{6}{26}\\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Picture cards = Jack, Queen, King\r\nStep 2: Red picture cards = \\(3\\) from hearts + \\(3\\) from diamonds = \\(6\\)\r\nStep 3: Probability = \\(\\frac{6}{52} = \\frac{3}{26}\\)",
+      "difficulty": "Medium"
+    }
+  ]
+}

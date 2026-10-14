@@ -1,0 +1,423 @@
+{
+  "path": "13. Probability\\Quiz\\Probability_30Q.docx",
+  "group": "A",
+  "questions": [
+    {
+      "n": 1,
+      "stem": "A coin is tossed 4 times. What is the probability of getting exactly 3 heads?",
+      "options": [
+        "1/16",
+        "3/8",
+        "1/4",
+        "5/16"
+      ],
+      "key": "C",
+      "keyValue": "1/4",
+      "keySolution": "Topic: Binomial Probability - Coin Tossing\nA coin is tossed 4 times. Find P(exactly 3 heads)\nSolution: - Total possible outcomes = 2⁴ = 16 - Favorable outcomes (exactly 3H, 1T) = C(4,3) = 4 - Ways: HHHT, HHTH, HTHH, THHH\nP(3H) = 4/16 = 1/4"
+    },
+    {
+      "n": 2,
+      "stem": "A die is rolled once. What is the probability of getting a number greater than 4?",
+      "options": [
+        "1/3",
+        "1/4",
+        "1/6",
+        "1/2"
+      ],
+      "key": "A",
+      "keyValue": "1/3",
+      "keySolution": "Topic: Basic Probability - Single Die Roll\nA die is rolled once. Find P(number > 4)\nSolution: - Total possible outcomes = 6 - Favorable outcomes (5, 6) = 2 - Numbers > 4: {5, 6}\nP(>4) = 2/6 = 1/3"
+    },
+    {
+      "n": 3,
+      "stem": "From a deck of 52 cards, what is the probability of drawing a red card?",
+      "options": [
+        "1/2",
+        "1/4",
+        "3/13",
+        "26/52"
+      ],
+      "key": "D",
+      "keyValue": "26/52",
+      "keySolution": "Topic: Card Probability - Red Cards\nFrom a deck of 52 cards, find P(red card)\nSolution: - Total cards = 52 - Red cards = 26 (13 hearts + 13 diamonds)\nP(Red) = 26/52 = 1/2 or 26/52"
+    },
+    {
+      "n": 4,
+      "stem": "Two dice are rolled simultaneously. What is the probability that the sum is 7?",
+      "options": [
+        "5/36",
+        "1/6",
+        "1/12",
+        "7/36"
+      ],
+      "key": "B",
+      "keyValue": "1/6",
+      "keySolution": "Topic: Two Dice Probability - Sum of 7\nTwo dice rolled. Find P(sum = 7)\nSolution: - Total outcomes = 6 × 6 = 36 - Favorable outcomes (sum = 7): (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) = 6 ways\nP(sum=7) = 6/36 = 1/6"
+    },
+    {
+      "n": 5,
+      "stem": "A bag contains 5 red balls, 3 blue balls, and 2 green balls. If one ball is drawn at random, what is the probability that it is not red?",
+      "options": [
+        "5/10",
+        "5/10",
+        "3/10",
+        "2/10"
+      ],
+      "key": "B",
+      "keyValue": "5/10",
+      "keySolution": "Topic: Probability of Complementary Events\nBag: 5 red, 3 blue, 2 green. Find P(not red)\nSolution: - Total balls = 5 + 3 + 2 = 10 - Non-red balls = 3 + 2 = 5\nP(not red) = 5/10 = 1/2",
+      "flags": [
+        "duplicate option text"
+      ]
+    },
+    {
+      "n": 6,
+      "stem": "A coin is tossed twice. What is the probability of getting at least one head?",
+      "options": [
+        "1/2",
+        "1/4",
+        "3/4",
+        "1/3"
+      ],
+      "key": "C",
+      "keyValue": "3/4",
+      "keySolution": "Topic: At Least One Event - Coin Tossing\nCoin tossed twice. Find P(at least one head)\nSolution: - Total outcomes = 4: HH, HT, TH, TT - Favorable (at least 1H) = HH, HT, TH = 3 outcomes - OR: P(at least 1H) = 1 - P(no heads) = 1 - 1/4 = 3/4\nP(at least 1H) = 3/4"
+    },
+    {
+      "n": 7,
+      "stem": "From a standard deck of cards, what is the probability of drawing a king or a queen?",
+      "options": [
+        "4/52",
+        "8/52",
+        "8/52",
+        "12/52"
+      ],
+      "key": "C",
+      "keyValue": "8/52",
+      "keySolution": "Topic: Card Probability - Kings or Queens\nFind P(King or Queen)\nSolution: - Total cards = 52 - Kings = 4, Queens = 4 - Kings or Queens = 4 + 4 = 8\nP(K or Q) = 8/52 = 2/13",
+      "flags": [
+        "duplicate option text"
+      ]
+    },
+    {
+      "n": 8,
+      "stem": "In a lottery, there are 10 tickets out of which 2 are winning tickets. What is the probability that a randomly selected ticket is a winning ticket?",
+      "options": [
+        "1/5",
+        "2/9",
+        "1/10",
+        "3/10"
+      ],
+      "key": "A",
+      "keyValue": "2/10",
+      "keySolution": "Topic: Basic Probability - Winning Tickets\n10 tickets total, 2 winning. Find P(winning ticket)\nSolution: - Total tickets = 10 - Winning tickets = 2\nP(winning) = 2/10 = 1/5",
+      "flags": [
+        "key letter A is \"1/5\" but the key states \"2/10\""
+      ]
+    },
+    {
+      "n": 9,
+      "stem": "Two cards are drawn from a deck without replacement. What is the probability that both are aces?",
+      "options": [
+        "4/52",
+        "1/221",
+        "2/52",
+        "4/51"
+      ],
+      "key": "B",
+      "keyValue": "1/221",
+      "keySolution": "Topic: Probability Without Replacement - Both Aces\nTwo cards drawn without replacement. Find P(both aces)\nSolution: - Total aces = 4 - P(1st ace) = 4/52 - P(2nd ace | 1st ace drawn) = 3/51\nP(both aces) = (4/52) × (3/51) = 12/2652 = 1/221"
+    },
+    {
+      "n": 10,
+      "stem": "A spinner has 8 equal sections numbered 1 to 8. What is the probability of spinning an even number?",
+      "options": [
+        "1/8",
+        "3/8",
+        "1/2",
+        "5/8"
+      ],
+      "key": "C",
+      "keyValue": "1/2",
+      "keySolution": "Topic: Spinner Probability - Even Numbers\nSpinner with 8 sections (1-8). Find P(even number)\nSolution: - Total sections = 8 - Even numbers = {2, 4, 6, 8} = 4\nP(even) = 4/8 = 1/2"
+    },
+    {
+      "n": 11,
+      "stem": "A bag has 6 white balls and 4 black balls. Two balls are drawn simultaneously. What is the probability that both balls are white?",
+      "options": [
+        "6/10 × 5/9",
+        "15/45",
+        "6/10 + 5/10",
+        "4/45"
+      ],
+      "key": "B",
+      "keyValue": "15/45",
+      "keySolution": "Topic: Probability Without Replacement - Both White\n6 white, 4 black balls. Two drawn simultaneously. Find P(both white)\nSolution: - Total balls = 10 - Ways to select 2 white = C(6,2) = 15 - Total ways to select 2 balls = C(10,2) = 45\nP(both white) = 15/45 = 1/3"
+    },
+    {
+      "n": 12,
+      "stem": "What is the probability of getting a number divisible by 3 when a die is rolled?",
+      "options": [
+        "1/2",
+        "1/6",
+        "1/3",
+        "2/3"
+      ],
+      "key": "C",
+      "keyValue": "1/3",
+      "keySolution": "Topic: Die Probability - Divisible by 3\nDie rolled. Find P(number divisible by 3)\nSolution: - Total outcomes = 6 - Numbers divisible by 3 = {3, 6} = 2\nP(÷3) = 2/6 = 1/3"
+    },
+    {
+      "n": 13,
+      "stem": "Three coins are tossed together. What is the probability of getting exactly two tails?",
+      "options": [
+        "1/8",
+        "3/8",
+        "2/8",
+        "4/8"
+      ],
+      "key": "B",
+      "keyValue": "3/8",
+      "keySolution": "Topic: Coin Tossing - Exactly 2 Tails\nThree coins tossed. Find P(exactly 2 tails)\nSolution: - Total outcomes = 2³ = 8 - Favorable (exactly 2T): HTT, THT, TTH = 3 outcomes - Using combination: C(3,2) = 3\nP(2T) = 3/8 = 3/8"
+    },
+    {
+      "n": 14,
+      "stem": "From a deck of 52 cards, a card is drawn. What is the probability of getting a heart?",
+      "options": [
+        "1/4",
+        "14/52",
+        "1/2",
+        "4/52"
+      ],
+      "key": "A",
+      "keyValue": "13/52",
+      "keySolution": "Topic: Card Probability - Heart Card\nCard drawn from deck. Find P(heart)\nSolution: - Total cards = 52 - Hearts = 13\nP(heart) = 13/52 = 1/4",
+      "flags": [
+        "key letter A is \"1/4\" but the key states \"13/52\""
+      ]
+    },
+    {
+      "n": 15,
+      "stem": "A bag contains balls numbered from 1 to 20. If a ball is drawn at random, what is the probability that the number is a multiple of 5?",
+      "options": [
+        "1/20",
+        "1/5",
+        "3/20",
+        "1/4"
+      ],
+      "key": "B",
+      "keyValue": "1/5",
+      "keySolution": "Topic: Number Selection - Multiples\nBall drawn from 1-20. Find P(multiple of 5)\nSolution: - Total numbers = 20 - Multiples of 5 = {5, 10, 15, 20} = 4\nP(multiple of 5) = 4/20 = 1/5"
+    },
+    {
+      "n": 16,
+      "stem": "Two dice are thrown. What is the probability of getting a doublet (same number on both dice)?",
+      "options": [
+        "1/6",
+        "6/36",
+        "1/6",
+        "1/12"
+      ],
+      "key": "C",
+      "keyValue": "1/6",
+      "keySolution": "Topic: Two Dice - Doublets\nTwo dice thrown. Find P(same number on both)\nSolution: - Total outcomes = 36 - Doublets = {(1,1), (2,2), (3,3), (4,4), (5,5), (6,6)} = 6\nP(doublet) = 6/36 = 1/6",
+      "flags": [
+        "duplicate option text"
+      ]
+    },
+    {
+      "n": 17,
+      "stem": "A box contains 8 red, 5 blue, and 7 green balls. What is the probability of drawing a blue ball?",
+      "options": [
+        "5/20",
+        "5/8",
+        "1/4",
+        "7/20"
+      ],
+      "key": "C",
+      "keyValue": "1/4",
+      "keySolution": "Topic: Ball Drawing - Blue Ball\nBox: 8 red, 5 blue, 7 green. Find P(blue)\nSolution: - Total balls = 8 + 5 + 7 = 20 - Blue balls = 5\nP(blue) = 5/20 = 1/4"
+    },
+    {
+      "n": 18,
+      "stem": "If P(A) = 0.4 and P(B) = 0.5, and A and B are mutually exclusive, what is P(A or B)?",
+      "options": [
+        "0.2",
+        "0.9",
+        "0.8",
+        "0.7"
+      ],
+      "key": "B",
+      "keyValue": "0.9",
+      "keySolution": "Topic: Mutually Exclusive Events\nP(A) = 0.4, P(B) = 0.5, mutually exclusive. Find P(A or B)\nSolution: - For mutually exclusive events: P(A ∪ B) = P(A) + P(B)\nP(A or B) = 0.4 + 0.5 = 0.9"
+    },
+    {
+      "n": 19,
+      "stem": "A die is rolled twice. What is the probability of getting a sum of 10?",
+      "options": [
+        "2/36",
+        "3/36",
+        "1/12",
+        "5/36"
+      ],
+      "key": "C",
+      "keyValue": "1/12",
+      "keySolution": "Topic: Two Dice - Sum of 10\nDie rolled twice. Find P(sum = 10)\nSolution: - Total outcomes = 36 - Favorable (sum = 10): (4,6), (5,5), (6,4) = 3 ways\nP(sum=10) = 3/36 = 1/12"
+    },
+    {
+      "n": 20,
+      "stem": "From a group of 10 men and 5 women, a person is selected at random. What is the probability that the selected person is a woman?",
+      "options": [
+        "1/2",
+        "1/3",
+        "1/3",
+        "2/5"
+      ],
+      "key": "C",
+      "keyValue": "1/3",
+      "keySolution": "Topic: Selection from Group\n10 men, 5 women. Find P(woman selected)\nSolution: - Total people = 10 + 5 = 15 - Women = 5\nP(woman) = 5/15 = 1/3",
+      "flags": [
+        "duplicate option text"
+      ]
+    },
+    {
+      "n": 21,
+      "stem": "A card is drawn from a standard deck. What is the probability of drawing a black card?",
+      "options": [
+        "13/52",
+        "26/52",
+        "1/2",
+        "4/52"
+      ],
+      "key": "B",
+      "keyValue": "26/52",
+      "keySolution": "Topic: Card Probability - Black Card\nCard drawn from deck. Find P(black card)\nSolution: - Total cards = 52 - Black cards = 26 (13 clubs + 13 spades)\nP(black) = 26/52 = 1/2"
+    },
+    {
+      "n": 22,
+      "stem": "If a coin is tossed 5 times, what is the probability of getting at least 4 heads?",
+      "options": [
+        "5/32",
+        "1/32",
+        "3/16",
+        "7/32"
+      ],
+      "key": "C",
+      "keyValue": "3/32 (Note: Should be 6/32 or 3/16)",
+      "keySolution": "Topic: Binomial Probability - At Least 4 Heads\nCoin tossed 5 times. Find P(at least 4 heads)\nSolution: - P(at least 4H) = P(4H) + P(5H) - P(4H) = C(5,4) × (1/2)⁵ = 5/32 - P(5H) = C(5,5) × (1/2)⁵ = 1/32 - Total = 5/32 + 1/32 = 6/32 = 3/16\nAlternate: 6/32 = 3/16",
+      "flags": [
+        "key letter C is \"3/16\" but the key states \"3/32 (Note: Should be 6/32 or 3/16)\""
+      ]
+    },
+    {
+      "n": 23,
+      "stem": "A bag contains 12 balls of which some are red and some are white. If 3 balls are red, what is the probability of drawing a red ball?",
+      "options": [
+        "1/4",
+        "1/4",
+        "1/2",
+        "1/3"
+      ],
+      "key": "B",
+      "keyValue": "1/4",
+      "keySolution": "Topic: Basic Probability - Red Ball\n12 balls, 3 are red. Find P(red ball)\nSolution: - Total balls = 12 - Red balls = 3\nP(red) = 3/12 = 1/4",
+      "flags": [
+        "duplicate option text"
+      ]
+    },
+    {
+      "n": 24,
+      "stem": "Two events A and B have probabilities P(A) = 0.6 and P(B) = 0.7. If they are independent, what is P(A and B)?",
+      "options": [
+        "0.42",
+        "0.42",
+        "0.13",
+        "0.9"
+      ],
+      "key": "B",
+      "keyValue": "0.42",
+      "keySolution": "Topic: Independent Events\nP(A) = 0.6, P(B) = 0.7, independent. Find P(A and B)\nSolution: - For independent events: P(A ∩ B) = P(A) × P(B)\nP(A and B) = 0.6 × 0.7 = 0.42",
+      "flags": [
+        "duplicate option text"
+      ]
+    },
+    {
+      "n": 25,
+      "stem": "A number is selected at random from the numbers 1 to 25. What is the probability that it is a perfect square?",
+      "options": [
+        "5/25",
+        "4/25",
+        "1/5",
+        "3/25"
+      ],
+      "key": "C",
+      "keyValue": "1/5",
+      "keySolution": "Topic: Number Selection - Perfect Squares\nNumber selected from 1-25. Find P(perfect square)\nSolution: - Total numbers = 25 - Perfect squares = {1, 4, 9, 16, 25} = 5\nP(perfect square) = 5/25 = 1/5"
+    },
+    {
+      "n": 26,
+      "stem": "A bag has 4 green, 5 yellow, and 6 red marbles. If a marble is drawn at random, what is the probability that it is neither green nor red?",
+      "options": [
+        "5/15",
+        "1/3",
+        "4/15",
+        "6/15"
+      ],
+      "key": "B",
+      "keyValue": "1/3",
+      "keySolution": "Topic: Marble Drawing - Neither Green nor Red\n4 green, 5 yellow, 6 red. Find P(neither green nor red)\nSolution: - Total marbles = 4 + 5 + 6 = 15 - Neither green nor red = yellow = 5\nP(yellow) = 5/15 = 1/3"
+    },
+    {
+      "n": 27,
+      "stem": "If two dice are rolled, what is the probability that the product of numbers is 12?",
+      "options": [
+        "1/36",
+        "2/36",
+        "1/9",
+        "5/36"
+      ],
+      "key": "C",
+      "keyValue": "1/9",
+      "keySolution": "Topic: Two Dice - Product of 12\nTwo dice rolled. Find P(product = 12)\nSolution: - Total outcomes = 36 - Product = 12: (2,6), (3,4), (4,3), (6,2) = 4 ways\nP(product=12) = 4/36 = 1/9"
+    },
+    {
+      "n": 28,
+      "stem": "A deck of cards has all cards except aces removed. From the remaining 48 cards, what is the probability of drawing a heart?",
+      "options": [
+        "13/48",
+        "15/48",
+        "1/4",
+        "11/48"
+      ],
+      "key": "C",
+      "keyValue": "1/4",
+      "keySolution": "Topic: Card Probability - Modified Deck\n48 cards (aces removed). Find P(heart)\nSolution: - Total cards = 52 - 4 = 48 - Hearts remaining = 13 - 1 = 12\nP(heart) = 12/48 = 1/4"
+    },
+    {
+      "n": 29,
+      "stem": "If the probability that an event will NOT happen is 0.25, what is the probability that it WILL happen?",
+      "options": [
+        "0.25",
+        "0.5",
+        "0.75",
+        "1"
+      ],
+      "key": "C",
+      "keyValue": "0.75",
+      "keySolution": "Topic: Complementary Probability\nP(event doesn’t happen) = 0.25. Find P(event happens)\nSolution: - P(event) = 1 - P(not event) - P(event) = 1 - 0.25 = 0.75"
+    },
+    {
+      "n": 30,
+      "stem": "A number is chosen at random from the set {2, 3, 4, 5, 6, 7, 8, 9, 10}. What is the probability that it is prime?",
+      "options": [
+        "3/9",
+        "4/9",
+        "5/9",
+        "2/9"
+      ],
+      "key": "B",
+      "keyValue": "4/9",
+      "keySolution": "Topic: Number Selection - Prime Numbers\nNumber chosen from {2, 3, 4, 5, 6, 7, 8, 9, 10}. Find P(prime)\nSolution: - Total numbers = 9 - Prime numbers = {2, 3, 5, 7} = 4\nP(prime) = 4/9 = 4/9\nSUBTOPICS COVERED\n1.  Basic Probability - Questions 2, 8, 10, 12, 14, 15, 20, 23, 25, 30\n2.  Coin Tossing - Questions 1, 6, 13, 22\n3.  Dice Rolling (Single/Double) - Questions 2, 4, 12, 16, 19, 27\n4.  Card Probability - Questions 3, 7, 14, 21, 28\n5.  Ball/Marble Drawing - Questions 5, 11, 17, 26\n6.  Without Replacement - Questions 9, 11\n7.  Mutually Exclusive Events - Question 18\n8.  Independent Events - Question 24\n9.  Complementary Events - Questions 5, 6, 29\n10. At Least One Event - Questions 6, 22\n11. Group Selection - Question 20\n12. Multiple Conditions - Questions 4, 9, 19, 27\nANSWER DISTRIBUTION\nAnswer   Count   Distribution\n-------- ------- --------------\nA        4       13.3%\nB        13      43.3%\nC        10      33.3%\nD        3       10%\nTotal Questions: 30 Difficulty Level: Easy to Moderate Time: Approximately 45-60 minutes\nAll questions are based on AFCAT exam patterns from last 10 years (2015-2025)."
+    }
+  ]
+}
