@@ -24,6 +24,7 @@ import {
 import { askV } from "@/lib/chat/anthropic";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { listActivePlans } from "@/lib/billing/plansQuery";
+import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
 
 export const maxDuration = 15;
 
@@ -32,13 +33,15 @@ const ASK_LIMIT = 15; // per IP per hour — generous for a real visitor, caps a
 
 type Body = { message?: string };
 
-function toExamFact(e: (typeof EXAM_REGISTRY)[number]): ChatExamFact {
+function toExamFact(e: (typeof EXAM_REGISTRY)[number], pyqBySlug: Map<string, number> | null): ChatExamFact {
   return {
     displayName: e.displayName,
     tier: e.tier,
     hasMocks: e.hasMocks === true,
     boardExam: e.boardExam === true,
     practiceOnly: e.practiceOnly === true,
+    // null = the count could not be read: claim nothing about past-year papers.
+    hasPastYearQuestions: pyqBySlug ? (pyqBySlug.get(e.slug) ?? 0) > 0 : undefined,
     noPublicContent: e.noPublicContent === true,
   };
 }
@@ -72,16 +75,22 @@ export async function POST(request: NextRequest) {
     }
 
     const anon = createSupabaseAnonClient();
-    const [plans, bankCount] = await Promise.all([
+    const [plans, bankCount, pyqBySlug] = await Promise.all([
       listActivePlans(anon),
       anon
         .from("questions")
         .select("*", { count: "exact", head: true })
         .eq("visibility", "PUBLIC"),
+      getCachedExamCatalog()
+        .then((c) => new Map(c.exams.map((e) => [e.slug, e.counts.pyq] as const)))
+        .catch((err) => {
+          console.error("chat: exam catalogue unavailable", err);
+          return null;
+        }),
     ]);
 
     const systemPrompt = buildSystemPrompt({
-      exams: buildExamFacts(EXAM_REGISTRY.map(toExamFact)),
+      exams: buildExamFacts(EXAM_REGISTRY.map((e) => toExamFact(e, pyqBySlug))),
       plans: buildPlanFacts(plans),
       bankTotal: bankCount.count ?? 0,
       nav: NAV_FACTS,

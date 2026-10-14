@@ -32,6 +32,18 @@ export function countSummary(c: KindCounts): string | null {
   return parts.length > 0 ? `${parts.join(" · ")} questions` : null;
 }
 
+/**
+ * What an exam HAS, said in full. A practice-only exam opens on its practice
+ * questions, but it can still hold past-year ones (CBSE Class 10 since
+ * 2026-10-15, whose flag stays so its Social Science pages keep their
+ * textbook landings); then both are named, never the practice count alone.
+ */
+export function examKindPhrase(c: KindCounts, practiceOnly: boolean): string {
+  if (!practiceOnly) return `${fmt(c.pyq)} past-year questions`;
+  if (c.pyq > 0) return `${fmt(c.pyq)} past-year and ${fmt(c.practice)} practice questions`;
+  return `${fmt(c.practice)} practice questions`;
+}
+
 /** What a "filter the bank" button may claim: only the kind the bank opens on. */
 export function defaultViewLabel(c: KindCounts, practiceOnly: boolean): string {
   const n = defaultViewCount(c, practiceOnly);

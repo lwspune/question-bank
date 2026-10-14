@@ -24,6 +24,7 @@ export async function GET() {
       // The count the line LABELS ("past-year questions", or practice for a
       // practice-only exam) — never the every-kind total (UX_REVIEW_TRIAGE.md A1).
       totalPublicQuestions: defaultViewCount(e.counts, e.practiceOnly),
+      pastYearQuestions: e.practiceOnly ? e.counts.pyq : undefined,
       practiceOnly: e.practiceOnly,
       noPublicContent: noPublic.has(e.slug),
     })),

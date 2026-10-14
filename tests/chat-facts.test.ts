@@ -41,6 +41,19 @@ describe("buildExamFacts", () => {
     expect(line).toMatch(/practice/i);
   });
 
+  it("says no past-year papers only when the exam really has none", () => {
+    const facts = buildExamFacts([
+      { displayName: "Foundation Course", tier: "school", hasMocks: false, boardExam: false, practiceOnly: true, hasPastYearQuestions: false, noPublicContent: false },
+      { displayName: "CBSE Class 10", tier: "school", hasMocks: true, boardExam: true, practiceOnly: true, hasPastYearQuestions: true, noPublicContent: false },
+      { displayName: "Unknown", tier: "school", hasMocks: false, boardExam: false, practiceOnly: true, noPublicContent: false },
+    ]);
+    expect(facts[0]).toContain("no past-year papers");
+    expect(facts[1]).toContain("past-year board papers and textbook practice questions");
+    expect(facts[1]).not.toContain("no past-year");
+    // A failed count read must not produce the claim either way.
+    expect(facts[2]).not.toContain("past-year");
+  });
+
   it("EXCLUDES an exam with no public content — it must never be recommended", () => {
     const facts = buildExamFacts(exams);
     expect(facts.some((f) => f.includes("Not Yet Live"))).toBe(false);
