@@ -665,6 +665,21 @@ export function liftCurrencyOutOfMath(text: string): string {
   return text.replace(/\\\(\s*Rs\.\s*/g, "Rs. \\(");
 }
 
+/** A backslash before a digit: no LaTeX command starts with one, so it is a lost `\(` or `\)`. */
+const BARE_MATH = /\\[0-9]/;
+
+/**
+ * One Cadetprep sheet (Time & Work, M1D1-M2D2) lost the brackets of every
+ * delimiter: `\18\` for `\(18\)`, `\\frac{1}{3}\` for `\(\frac{1}{3}\)`.
+ * Restores the two shapes its stems and options use; anything else is left
+ * for the solution contract (BARE_MATH) to refuse.
+ */
+export function repairBareMath(text: string): string {
+  return text
+    .replace(/\\\\(frac\{[^{}]*\}\{[^{}]*\})\\(?![a-zA-Z])/g, "\\(\\$1\\)")
+    .replace(/\\([0-9][0-9.,]*)\\(?![a-zA-Z])/g, "\\($1\\)");
+}
+
 /** Why a source solution cannot be published as it stands, or null if it can. */
 export function sourceSolutionProblem(solution: string): string | null {
   const s = solution ?? "";
@@ -675,6 +690,7 @@ export function sourceSolutionProblem(solution: string): string | null {
   // (or kept a letter "as per distribution"): the key was picked, not derived.
   if (SOURCE_HEDGE.test(s)) return "settles for the closest option";
   if (BROKEN_UNIT.test(s)) return "broken unit (\\/)";
+  if (BARE_MATH.test(s)) return "bare math delimiters (\\20\\ for \\(20\\))";
   if (s.includes("—")) return "em dash";
   if (CONTROL_CHAR.test(s)) return "control character";
   return null;
