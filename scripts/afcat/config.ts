@@ -255,6 +255,13 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "BOAT ERRORLESS.pdf",
         note: "AFCAT practice — Errorless sheet, Speed, Time and Distance. Key letters only; every key blind re-derived.",
       },
+      {
+        key: "errorless-2",
+        group: "B",
+        label: "Speed, Distance and Time Errorless sheet (second)",
+        path: "07. Speed, Time and Distance\\SPEED,DISTANCE AND TIME err.pdf",
+        note: "AFCAT practice — Errorless sheet (second), Speed, Time and Distance. Key letters only; every key blind re-derived.",
+      },
     ],
   },
   average: {
