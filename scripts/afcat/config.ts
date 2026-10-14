@@ -342,6 +342,20 @@ export const CHAPTERS: Record<string, Chapter> = {
       },
     ],
   },
+  statistics: {
+    id: "statistics",
+    chapterName: "Statistics",
+    subtopics: ["Data and Classification", "Graphs and Diagrams", "Mean", "Median and Mode", "Standard Deviation"],
+    files: [
+      {
+        key: "book",
+        group: "C",
+        label: "CDS Pathfinder: Statistics (practice exercise)",
+        path: "18. Statistics (Mean, Mode, Median)\\28_Statistics.pdf",
+        note: "AFCAT practice — CDS Pathfinder (book chapter), Statistics. Every key blind re-derived.",
+      },
+    ],
+  },
   average: {
     id: "average",
     chapterName: "Average",
