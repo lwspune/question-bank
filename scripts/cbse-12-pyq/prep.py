@@ -234,7 +234,7 @@ def main():
     if against:
         os.system(
             f'python "{os.path.join(os.path.dirname(__file__), "plan_paper.py")}" '
-            f'{year} {code} --against {against} > "{plan_path}" 2>&1'
+            f'{year} {code} --against {against} --subject={subject} > "{plan_path}" 2>&1'
         )
     else:
         with open(plan_path, "w") as fh:
