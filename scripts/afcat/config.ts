@@ -237,6 +237,7 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Partnership",
       "Variation and Work",
       "Mixtures and Coins",
+      "Income, Expenditure and Savings",
     ],
     files: [
       {
@@ -248,6 +249,14 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "03. Ratio\\R&P_Quiz.docx",
         answerKey: "embedded",
         note: "AFCAT practice — LWS Pune quiz, Ratio and Proportion. Source key AI-written; every key blind re-derived.",
+      },
+      {
+        key: "errorless",
+        group: "B",
+        label: "Ratio Errorless sheet (4 types)",
+        path: "03. Ratio\\Ratio Errorless_AFCAT_HW.pdf",
+        textFixes: [{ find: "a)₹320", replace: "a) ₹320", reason: "Section 1 Q12: no space after the option marker, which the parser does not accept." }],
+        note: "AFCAT practice — Errorless sheet, Ratio. Key letters only; every key blind re-derived.",
       },
     ],
   },
