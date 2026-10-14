@@ -328,6 +328,20 @@ export const CHAPTERS: Record<string, Chapter> = {
       },
     ],
   },
+  "heights-and-distances": {
+    id: "heights-and-distances",
+    chapterName: "Heights and Distances",
+    subtopics: ["Angle of Elevation", "Angle of Depression", "Moving Objects and Speed"],
+    files: [
+      {
+        key: "book",
+        group: "C",
+        label: "CDS Pathfinder: Height and Distance (practice exercise)",
+        path: "19. Height_and_Distance\\21_Height_&_Distance.pdf",
+        note: "AFCAT practice — CDS Pathfinder (book chapter), Heights and Distances. Every key blind re-derived.",
+      },
+    ],
+  },
   average: {
     id: "average",
     chapterName: "Average",
