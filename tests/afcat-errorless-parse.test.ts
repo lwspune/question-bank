@@ -99,6 +99,11 @@ describe("splitTypeSections", () => {
     ]);
   });
 
+  it("accepts 'Type:' as well as 'Type-' (second Speed-Time-Distance sheet)", () => {
+    const out = splitTypeSections(["Type-Race based Questions", "1. Q?", "Type: Average Speed", "1. R?"]);
+    expect(out.map((s) => s.title)).toEqual(["Race based Questions", "Average Speed"]);
+  });
+
   it("drops a count in the title like '(20 Question)'", () => {
     expect(splitTypeSections(["Type-Some people left the Work(20 Question)", "1. Q?"])[0].title).toBe("Some people left the Work");
   });

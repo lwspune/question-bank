@@ -1,7 +1,10 @@
 // Extract a chapter's Group B ("Errorless" PDF) files into committed
 // transcriptions: data/<chapter>/<key>.source.json.
 //
-//   npx tsx scripts/afcat/extract-errorless.ts <chapterId>
+//   npx tsx scripts/afcat/extract-errorless.ts <chapterId> [--files=key1,key2]
+//
+// Pass --files when the chapter already has a committed sheet: re-extracting
+// it rewrites its source file WITHOUT the keys read-keys.ts filled in.
 //
 // pdf-words.py dumps each page's words with positions; errorlessPage reads the
 // two columns and sets every ANSWERS box aside; splitTypeSections cuts the sheet
@@ -15,12 +18,14 @@ import { execFileSync } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { requireChapter, SOURCE_ROOT, DATA } from "./config";
+import { filesArg } from "./read";
 import { applyTextFixes, reorderQuestionBlocks, errorlessPage, splitTypeSections, parseQuizQuestions, equalValueOptions, type PdfPage, type SourceFile, type SourceRecord } from "./lib";
 
 const chapter = requireChapter(process.argv[2]);
 mkdirSync(join(DATA, chapter.id), { recursive: true });
 
-for (const file of chapter.files.filter((f) => f.group === "B")) {
+const only = filesArg();
+for (const file of chapter.files.filter((f) => f.group === "B" && (!only || only.includes(f.key)))) {
   const json = execFileSync("python", [join(__dirname, "pdf-words.py"), join(SOURCE_ROOT, file.path)], { encoding: "utf8", maxBuffer: 64 << 20 });
   const pages = (JSON.parse(json) as { pages: PdfPage[] }).pages;
   const lines: string[] = [];

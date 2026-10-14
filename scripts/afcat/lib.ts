@@ -417,7 +417,7 @@ export function errorlessPage(page: PdfPage, footerY = 725): { lines: string[]; 
 export function splitTypeSections(lines: string[]): { title: string; lines: string[] }[] {
   const out: { title: string; lines: string[]; inTitle: boolean }[] = [];
   for (const l of lines) {
-    const m = l.match(/^Type\s*-\s*(.*)$/i);
+    const m = l.match(/^Type\s*[-:]\s*(.*)$/i);
     if (m) {
       out.push({ title: m[1], lines: [], inTitle: true });
       continue;
