@@ -35,7 +35,7 @@ import sys
 import warnings
 
 import fitz
-from PIL import Image
+from PIL import Image, ImageDraw
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from regions import merge, big  # noqa: E402
@@ -173,6 +173,20 @@ def crop(page, rect, dpi=DPI, pad=PAD, pad_top=None):
     clip = clip & page.rect          # never ask for pixels outside the page
     pix = page.get_pixmap(dpi=dpi, clip=clip)
     return pix.tobytes("png")
+
+
+def paint_mask(png, rect, boxes):
+    """White out page-point boxes on an EXACT crop of `rect` (no padding)."""
+    im = Image.open(io.BytesIO(png)).convert("RGB")
+    sx = im.width / (rect[2] - rect[0])
+    sy = im.height / (rect[3] - rect[1])
+    d = ImageDraw.Draw(im)
+    for b in boxes:
+        d.rectangle([(b[0] - rect[0]) * sx, (b[1] - rect[1]) * sy,
+                     (b[2] - rect[0]) * sx, (b[3] - rect[1]) * sy], fill="white")
+    buf = io.BytesIO()
+    im.save(buf, "PNG", optimize=True)
+    return buf.getvalue()
 
 
 def shrink(png, cap=MAX_BYTES):
@@ -398,11 +412,24 @@ def main():
             top = pick.get("padTop")
             if top:
                 rect = (rect[0], max(0.0, rect[1] - top), rect[2], rect[3])
+            # A `mask` whites out stem text that sits INSIDE the drawing's bounds
+            # and cannot be cut by any rectangle. 2024 30/1/3 Q35 forced it: the
+            # last words of the stem ("circle", "then :") print beside the circle,
+            # directly above the "A" label the question turns on. Boxes are in
+            # page points, so the crop must be exact (band) or the pixel offsets
+            # would not match.
+            mask = pick.get("mask")
+            if mask and (stacked or not band or top):
+                problems.append(f"{g['hash'][:8]}: mask needs an exact crop (band, no padTop, not stack)")
+                continue
             if stacked:
                 png, note = shrink(stacked)
             else:
-                png, note = shrink(crop(page, rect, pad=0.0 if band else PAD,
-                                        pad_top=0.0 if top else None))
+                raw = crop(page, rect, pad=0.0 if band else PAD,
+                           pad_top=0.0 if top else None)
+                if mask:
+                    raw = paint_mask(raw, rect, mask)
+                png, note = shrink(raw)
             entry = {"hash": g["hash"], "from": label, "page": pageno,
                      "rect": [round(v, 1) for v in rect], "bytes": len(png),
                      "file": f"{g['hash'][:12]}.png", "members": len(g["members"]),
