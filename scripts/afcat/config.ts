@@ -359,7 +359,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   "decimal-and-fractions": {
     id: "decimal-and-fractions",
     chapterName: "Decimal and Fractions",
-    subtopics: ["Fractions", "Decimals", "Simplification", "Squares, Cubes and Roots"],
+    subtopics: ["Fractions", "Decimals", "Simplification", "Squares, Cubes and Roots", "Decimal and Fraction Conversion", "Comparing and Ordering", "Decimals and Percentages"],
     files: [
       {
         // A chapter of the published book "Conquer the Sky AFCAT"; transcribed
@@ -370,6 +370,11 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "01. Decimal and Fractions\\Decimal and Fractions_AFCAT.pdf",
         note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Decimal and Fractions. Every key blind re-derived.",
       },
+      { key: "cp-basics", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Decimal Fractions Basics", path: "00. Decimal_Fractions\\01. Decimal Fractions Basics.xlsx", subtopic: "Decimals", note: "AFCAT practice — Cadetprep AFCAT sheet, Decimal and Fractions. Every key blind re-derived." },
+      { key: "cp-conversion", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Conversion of Decimal Fractions", path: "00. Decimal_Fractions\\02. Conversion of Decimal Fractions.xlsx", subtopic: "Decimal and Fraction Conversion", note: "AFCAT practice — Cadetprep AFCAT sheet, Decimal and Fractions. Every key blind re-derived." },
+      { key: "cp-operations", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Operations on Decimal Fractions", path: "00. Decimal_Fractions\\03. Operations on Decimal Fractions.xlsx", subtopic: "Decimals", note: "AFCAT practice — Cadetprep AFCAT sheet, Decimal and Fractions. Every key blind re-derived." },
+      { key: "cp-comparing", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Comparing and Ordering", path: "00. Decimal_Fractions\\04. Comparing and Ordering.xlsx", subtopic: "Comparing and Ordering", note: "AFCAT practice — Cadetprep AFCAT sheet, Decimal and Fractions. Every key blind re-derived." },
+      { key: "cp-percent", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Decimals and Percentages", path: "00. Decimal_Fractions\\05. Decimal and Percentages.xlsx", subtopic: "Decimals and Percentages", note: "AFCAT practice — Cadetprep AFCAT sheet, Decimal and Fractions. Every key blind re-derived." },
     ],
   },
   "lcm-and-hcf": {
