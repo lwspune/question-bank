@@ -275,12 +275,13 @@ export default function QuestionCard({
             prefetch={false}
             onClick={(e) => e.stopPropagation()}
             aria-label={`Open the full paper: ${tag.label}`}
+            title={tag.detail}
             className={cn(pillClass, "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2")}
           >
             <span className="truncate">{tag.label}</span>
           </Link>
         ) : (
-          <span className={pillClass}>
+          <span className={pillClass} title={tag.detail}>
             <span className="truncate">{tag.label}</span>
           </span>
         )}

@@ -37,8 +37,13 @@
  * is 33 chars while "CDS (I) 2017 — Elementary Mathematics" (pyq) is 37. The
  * two axes are needed together.
  *
+ * A KNOWN BOARD SHAPE publishes its sitting label instead (2026-10-14): the
+ * CBSE set code, the Maharashtra board month, the UPSC paper. See
+ * `sittingLabel` below; a note matching none of its rules is unaffected.
+ *
  * Superadmins bypass this entirely and read the raw column — see
- * `includeRawProvenance` on `queryQuestionsByIds`.
+ * `includeRawProvenance` on `queryQuestionsByIds`. (The card TAG still shows
+ * them the short label; sourceTag passes the full note as hover text.)
  */
 
 /** The `question_kind` enum (migration 0036). */
@@ -86,7 +91,47 @@ export function publicPyqNote(
   // Measured AFTER the strip: the CDS General Knowledge notes are 237 chars
   // raw and ~32 once the disclosure comes off, so measuring first would drop
   // all 2,280 of their sitting labels.
+  // A note with a known sitting label publishes the label whatever its
+  // length, so a short UPSC note ("… 2017 - CSAT Paper II") reads like the
+  // long ones beside it instead of repeating the exam and year.
+  const label = sittingLabel(cleaned);
+  if (label) return label;
   if (cleaned.length > MAX_PUBLIC_PYQ_NOTE_LEN) return null;
 
   return cleaned;
+}
+
+/**
+ * The short sitting label inside a long board-paper note, or `null` when the
+ * note names no single sitting.
+ *
+ * WHY (2026-10-14). The board corpora write a provenance SENTENCE into
+ * `pyq_note`, so the length cap redacted their sitting along with the
+ * narrative: a student could not tell CBSE set 31/1/1 from 31/5/1, or the
+ * March 2024 SSC paper from July 2024's, and a superadmin's card tag ran to
+ * 200 characters. Each corpus puts its sitting in a fixed, generated place,
+ * so the label is read from there and the rest of the note stays private.
+ * A note matching none of these is narrative with no single sitting (a
+ * chapterwise compilation, an Allen reprint) and gets nothing.
+ *
+ * Only ever called on a `pyq` note: publicPyqNote checks the kind first, and
+ * a practice note never reaches here.
+ */
+const SITTING_LABEL_RULES: RegExp[] = [
+  // CBSE Class 10 / 12: "… board examination 2024, question paper 31/5/1. …"
+  /board examination \d{4}, question paper (\d+\/\d+\/\d+)\./,
+  // MH HSC 12 papers: "… (Subject code 56), June 2026 sitting (paper code J-297)"
+  /^Maharashtra HSC Class 12 Board question paper .*, ([A-Z][a-z]+) \d{4} sitting/,
+  // MH SSC 10 papers: "… Geometry (Mathematics Part II), March 2019 board paper"
+  /^Maharashtra State Board Class 10 \(SSC\) .*, ([A-Z][a-z]+) \d{4} board paper$/,
+  // UPSC: "UPSC CSE (Prelims) 2017 - General Studies Paper I[. Answer verified …]"
+  /^UPSC CSE \(Prelims\) \d{4} - ([^.]+?)(?:\.|$)/,
+];
+
+export function sittingLabel(note: string): string | null {
+  for (const rule of SITTING_LABEL_RULES) {
+    const m = note.match(rule);
+    if (m) return m[1].trim();
+  }
+  return null;
 }
