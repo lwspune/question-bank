@@ -20,6 +20,13 @@ describe("parseErrorlessKey", () => {
     ]);
   });
 
+  it("reads several 'n. x)' entries on one line with no values (SI sheet, section 2)", () => {
+    const k = parseErrorlessKey(["1. c) 2. a) 3. d)", "10. b) 11. a)"]);
+    expect([...k.keys()]).toEqual([1, 2, 3, 10, 11]);
+    expect(k.get(2)).toEqual({ letter: "A", value: "" });
+    expect(k.get(11)).toEqual({ letter: "A", value: "" });
+  });
+
   it("returns an empty map for a picture key (no lines)", () => {
     expect(parseErrorlessKey([]).size).toBe(0);
   });

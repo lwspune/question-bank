@@ -434,15 +434,21 @@ export function splitTypeSections(lines: string[]): { title: string; lines: stri
 }
 
 /**
- * An Errorless section's key, from the lines under its ANSWERS heading. Two
- * layouts occur: a list ("1. c) 15 liters", letter + the value it stands for)
- * and a grid ("Q1 - c, Q2 - a,"). A line matching neither is an error: a
+ * An Errorless section's key, from the lines under its ANSWERS heading. Three
+ * layouts occur: a list ("1. c) 15 liters", letter + the value it stands for),
+ * several letters to a line ("1. c) 2. a) 3. d)")
+ * and a grid ("Q1 - c, Q2 - a,"). A line matching none of them is an error: a
  * skipped line would leave a question without its key.
  */
 export function parseErrorlessKey(lines: string[]): Map<number, { letter: string; value: string }> {
   const out = new Map<number, { letter: string; value: string }>();
   for (const raw of lines) {
     const l = raw.trim();
+    // several "n. x)" entries on one line, letters only
+    if (/^(?:\d{1,2}\s*\.\s*\(?[a-dA-D]\)\s*){2,}$/.test(l)) {
+      for (const m of l.matchAll(/(\d{1,2})\s*\.\s*\(?([a-dA-D])\)/g)) out.set(Number(m[1]), { letter: m[2].toUpperCase(), value: "" });
+      continue;
+    }
     const list = l.match(/^(\d{1,2})\s*[.)]\s*\(?([a-dA-D])\)\s*(.*)$/);
     if (list) {
       out.set(Number(list[1]), { letter: list[2].toUpperCase(), value: list[3].trim() });

@@ -4,7 +4,9 @@
 // and stated value on every question, flagging a key whose value is not the
 // text of the option its letter points at.
 //
-//   npx tsx scripts/afcat/read-keys.ts <chapterId>
+//   npx tsx scripts/afcat/read-keys.ts <chapterId> [--files=key1,key2]
+//
+// Pass --files when another sheet in the chapter has not had its blind pass yet.
 //
 // A section whose key is a picture has no key lines: transcribe it into the
 // keytext file by hand (as "n. x) value" lines) and run this again.
@@ -12,10 +14,12 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { requireChapter, DATA } from "./config";
 import { parseErrorlessKey, keyValueMatches, type SourceFile } from "./lib";
+import { filesArg } from "./read";
 
 const chapter = requireChapter(process.argv[2]);
 
-for (const file of chapter.files.filter((f) => f.group === "B")) {
+const only = filesArg();
+for (const file of chapter.files.filter((f) => f.group === "B" && (!only || only.includes(f.key)))) {
   const srcPath = join(DATA, chapter.id, `${file.key}.source.json`);
   const keyPath = join(DATA, chapter.id, `${file.key}.keytext.json`);
   if (!existsSync(srcPath) || !existsSync(keyPath)) {
