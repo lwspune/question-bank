@@ -454,6 +454,13 @@ export const CHAPTERS: Record<string, Chapter> = {
         textFixes: [{ find: "a)₹320", replace: "a) ₹320", reason: "Section 1 Q12: no space after the option marker, which the parser does not accept." }],
         note: "AFCAT practice — Errorless sheet, Ratio. Key letters only; every key blind re-derived.",
       },
+      {
+        key: "pathfinder",
+        group: "C",
+        label: "CDS Pathfinder: Ratio and Proportion (practice exercise)",
+        path: "03. Ratio\\12_Ratio_&_Proportions_CDS.pdf",
+        note: "AFCAT practice — CDS Pathfinder (book chapter), Ratio and Proportion. Every key blind re-derived.",
+      },
     ],
   },
 };
