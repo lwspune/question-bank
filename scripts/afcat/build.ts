@@ -10,13 +10,16 @@
 // Gate: a row whose source key disagrees with the blind verdict — or that has
 // no key, or that the agent marked X — cannot be built until an override has
 // settled it (`answer`, `exclude`, or a `reason` confirming the key). An
-// unadjudicated dispute is a build error, not a flag.
+// unadjudicated dispute is a build error, not a flag. So is a row whose options
+// include two of equal value ("1/2" beside "26/52"): the commonest defect in the
+// LWS quizzes, 13 of 30 Probability rows and 8 of 50 Ratio rows.
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { buildWorksheetRows, type Flag, type ShufflePlan, type WorksheetQuestion } from "../worksheets/lib";
 import type { ParsedRowPayload } from "../../src/lib/upload/validate";
 import { DATA, SUBJECT_NAME, type Chapter, type FileEntry } from "./config";
 import { loadChapter, qid } from "./read";
+import { equalValueOptions } from "./lib";
 import type { AfcatOverride, Pass1Verdict } from "./overrides";
 
 export type FileRows = { file: FileEntry; rows: ParsedRowPayload[]; flags: Flag[]; excluded: string[] };
@@ -75,6 +78,11 @@ export function buildChapter(chapter: Chapter, opts: { shuffles?: ShufflePlan; o
       overrides,
       opts.shuffles ?? {}
     );
+    for (const row of res.rows) {
+      for (const letters of equalValueOptions(row.options.map((o) => o.text))) {
+        blockers.push(`${row.questionNumber}: options ${letters.join("=")} are equal in value — repair one with an override`);
+      }
+    }
     out.push({ file, ...res });
   }
 

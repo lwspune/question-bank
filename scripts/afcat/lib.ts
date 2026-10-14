@@ -282,3 +282,79 @@ export function keyValueMatches(keyValue: string, optionText: string): boolean {
   const o = words(optionText);
   return !!k && !!o && (k.includes(o) || o.includes(k));
 }
+
+const UNIT_SUFFIX = /\s*(?:liters?|litres?|days?|kg|km\/hr|km\/h|m\/s|mph|km|m|cm|g|sec|seconds|hours?|hrs?|years?|minutes|mins?)\.?$/;
+const DIRECTION_SUFFIX = /\s*(increase|decrease|profit|loss|gain)$/;
+const gcd = (a: number, b: number): number => (b ? gcd(b, a % b) : a);
+
+/** One number: an integer, decimal, fraction, or mixed number ("27 7/9"). */
+function plainNumber(t: string): number | null {
+  let m = t.match(/^(\d+(?:\.\d+)?)$/);
+  if (m) return Number(m[1]);
+  m = t.match(/^(\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)$/);
+  if (m) return Number(m[1]) / Number(m[2]);
+  m = t.match(/^(\d+)\s+(\d+)\s*\/\s*(\d+)$/);
+  if (m) return Number(m[1]) + Number(m[2]) / Number(m[3]);
+  return null;
+}
+
+/** A sum of products of plain numbers ("6/10 × 5/9", "6/10 + 5/10"), or null. */
+function numericValue(t: string): number | null {
+  let total = 0;
+  for (const term of t.split("+")) {
+    let product = 1;
+    for (const factor of term.split(/[×*]/)) {
+      const v = plainNumber(factor.trim());
+      if (v === null) return null;
+      product *= v;
+    }
+    total += product;
+  }
+  return total;
+}
+
+/**
+ * What an option's text is worth, as a comparable key. Currency, thousands
+ * commas and a trailing unit are dropped; a percent sign and a direction word
+ * ("increase", "loss") are KEPT, because "2% increase" and "2% decrease" are
+ * different answers. Ratios reduce by their common factor and stay apart from
+ * fractions. Anything else compares as its lowercased text.
+ */
+function optionValueKey(text: string): string {
+  let t = text.trim().toLowerCase().replace(/rs\.?|₹/g, "").replace(/(\d),(?=\d)/g, "$1").trim();
+  t = t.replace(UNIT_SUFFIX, "").trim();
+  let direction = "";
+  const d = t.match(DIRECTION_SUFFIX);
+  if (d && /\d/.test(t)) {
+    direction = d[1];
+    t = t.slice(0, d.index).trim();
+  }
+  let percent = "";
+  if (t.endsWith("%")) {
+    percent = "%";
+    t = t.slice(0, -1).trim();
+  }
+  if (/^\d+(?:\s*:\s*\d+)+$/.test(t)) {
+    const parts = t.split(":").map((p) => Number(p.trim()));
+    const g = parts.reduce(gcd);
+    return `ratio ${parts.map((p) => p / g).join(":")}${percent} ${direction}`;
+  }
+  const v = numericValue(t);
+  if (v !== null) return `num ${Math.round(v * 1e9) / 1e9}${percent} ${direction}`;
+  return `text ${text.trim().toLowerCase().replace(/\s+/g, " ")}`;
+}
+
+/**
+ * Groups of option letters whose texts are EQUAL IN VALUE ("1/2" and "26/52",
+ * "2:5" and "6:15", the same text printed twice). Such a row is defective
+ * whichever letter is keyed: two right answers when the key is one of them,
+ * or two distractors a student can rule out together. Empty = clean.
+ */
+export function equalValueOptions(optionTexts: string[]): string[][] {
+  const byValue = new Map<string, string[]>();
+  optionTexts.forEach((text, i) => {
+    const k = optionValueKey(text);
+    byValue.set(k, [...(byValue.get(k) ?? []), "ABCD"[i]]);
+  });
+  return [...byValue.values()].filter((letters) => letters.length > 1);
+}
