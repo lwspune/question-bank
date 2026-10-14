@@ -1,0 +1,122 @@
+[
+  {
+    "id": "01-102",
+    "derived": "B",
+    "value": "27",
+    "confidence": "high",
+    "note": "key seen before solving; checked: 6m + 2 = 164",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "MODERATE",
+    "solution": "The \\(m\\)th term is \\(S_m - S_{m-1} = 3(2m - 1) + 5 = 6m + 2\\). Setting \\(6m + 2 = 164\\) gives \\(m = 27\\)."
+  },
+  {
+    "id": "01-103",
+    "derived": "A",
+    "value": "sqrt(pq)",
+    "confidence": "high",
+    "note": "key seen before solving; checked: product of the terms",
+    "subtopic": "Geometric Progression",
+    "difficulty": "MODERATE",
+    "solution": "The terms \\(ar^{m+n-1} = p\\) and \\(ar^{m-n-1} = q\\) multiply to \\(a^2 r^{2m-2} = pq\\). So the \\(m\\)th term \\(ar^{m-1}\\) is \\(\\sqrt{pq}\\)."
+  },
+  {
+    "id": "01-104",
+    "derived": "C",
+    "value": "n + 2^-n - 1",
+    "confidence": "high",
+    "note": "key seen before solving; checked: n - (1 - 2^-n)",
+    "subtopic": "Special Series",
+    "difficulty": "MODERATE",
+    "solution": "Each term is \\(1 - \\frac{1}{2^k}\\), so the sum is \\(n - \\left(\\frac{1}{2} + \\frac{1}{4} + \\cdots + \\frac{1}{2^n}\\right) = n - (1 - 2^{-n}) = n + 2^{-n} - 1\\)."
+  },
+  {
+    "id": "01-105",
+    "derived": "C",
+    "value": "mn",
+    "confidence": "high",
+    "note": "checked: middle term is the average",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "EASY",
+    "solution": "In an AP with an odd number of terms, the middle term is the average of all the terms. So the sum is \\(n\\) times the middle term, \\(mn\\)."
+  },
+  {
+    "id": "01-107",
+    "derived": "C",
+    "value": "2a^2/3 n(n-1)(2n-1)",
+    "confidence": "high",
+    "note": "checked: T_k = 2a(k-1)",
+    "subtopic": "Special Series",
+    "difficulty": "HARD",
+    "solution": "The \\(k\\)th term is \\(S_k - S_{k-1} = a[k(k-1) - (k-1)(k-2)] = 2a(k-1)\\). The sum of squares is \\(4a^2 \\sum_{k=1}^{n} (k-1)^2 = 4a^2 \\cdot \\frac{(n-1)n(2n-1)}{6} = \\frac{2a^2}{3} n(n-1)(2n-1)\\)."
+  },
+  {
+    "id": "01-108",
+    "derived": "B",
+    "value": "S[1 - (1 - a/S)^n]",
+    "confidence": "high",
+    "note": "checked: r = 1 - a/S",
+    "subtopic": "Geometric Progression",
+    "difficulty": "MODERATE",
+    "solution": "From \\(S = \\frac{a}{1 - r}\\), \\(r = 1 - \\frac{a}{S}\\). Then \\(S_n = \\frac{a(1 - r^n)}{1 - r} = S\\left[1 - \\left(1 - \\frac{a}{S}\\right)^n\\right]\\)."
+  },
+  {
+    "id": "01-109",
+    "derived": "A",
+    "value": "a = b = c",
+    "confidence": "high",
+    "note": "checked: b^2 = ac with 2b = a + c",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "HARD",
+    "solution": "From \\(2\\tan^{-1} b = \\tan^{-1} a + \\tan^{-1} c\\), \\(\\frac{2b}{1 - b^2} = \\frac{a + c}{1 - ac}\\), and with \\(a + c = 2b\\) this gives \\(b^2 = ac\\). Then \\((a + c)^2 = 4ac\\), so \\((a - c)^2 = 0\\) and \\(a = b = c\\)."
+  },
+  {
+    "id": "01-110",
+    "derived": "C",
+    "value": "HP",
+    "confidence": "high",
+    "note": "checked with a = 1, b = 1.5, c = 3",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "HARD",
+    "solution": "Rearranging, \\(\\frac{1}{b - a} - \\frac{1}{c} = \\frac{1}{a} - \\frac{1}{b - c}\\), which simplifies to \\(ab + bc = 2ac\\), that is \\(b = \\frac{2ac}{a + c}\\). So \\(a, b, c\\) are in HP."
+  },
+  {
+    "id": "01-111",
+    "derived": "A",
+    "value": "1, 9",
+    "confidence": "high",
+    "note": "checked: a + b = 10, ab = 9",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "HARD",
+    "solution": "With \\(x, y, z\\) the three arithmetic means, \\(x + y + z = \\frac{3(a + b)}{2} = 15\\), so \\(a + b = 10\\). With them harmonic, \\(\\frac{1}{x} + \\frac{1}{y} + \\frac{1}{z} = \\frac{3}{2}\\left(\\frac{1}{a} + \\frac{1}{b}\\right) = \\frac{5}{3}\\), so \\(\\frac{a + b}{ab} = \\frac{10}{9}\\) and \\(ab = 9\\). So \\(a\\) and \\(b\\) are 1 and 9."
+  },
+  {
+    "id": "01-112",
+    "derived": "B",
+    "value": "1",
+    "confidence": "high",
+    "note": "checked: reciprocals form an AP",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "MODERATE",
+    "solution": "The reciprocals form an AP with \\(m\\)th term \\(\\frac{1}{n}\\) and \\(n\\)th term \\(\\frac{1}{m}\\). That gives first term and common difference both \\(\\frac{1}{mn}\\), so the \\(mn\\)th reciprocal is 1 and the \\(mn\\)th term of the HP is 1."
+  },
+  {
+    "id": "01-113",
+    "derived": "A",
+    "value": "-13.5",
+    "confidence": "high",
+    "note": "checked: a = -4 gives -4, -6, -9",
+    "subtopic": "Geometric Progression",
+    "difficulty": "MODERATE",
+    "solution": "From \\((2a + 2)^2 = a(3a + 3)\\), \\(4(a + 1)^2 = 3a(a + 1)\\); \\(a = -1\\) gives zero terms, so \\(4(a + 1) = 3a\\) and \\(a = -4\\). The GP is \\(-4, -6, -9\\) with ratio \\(\\frac{3}{2}\\), so the fourth term is \\(-13.5\\)."
+  },
+  {
+    "id": "01-114",
+    "derived": "B",
+    "value": "Only III",
+    "confidence": "high",
+    "note": "checked: pairs sum to -(2k-1) - 2k",
+    "subtopic": "Special Series",
+    "difficulty": "HARD",
+    "solution": "Pair the terms: \\((1^2 - 2^2) + (3^2 - 4^2) + \\cdots = -(1 + 2) - (3 + 4) - \\cdots = -(1 + 2 + \\cdots + n) = -\\frac{n(n + 1)}{2}\\). Only statement III is correct."
+  }
+]

@@ -294,6 +294,23 @@ export const CHAPTERS: Record<string, Chapter> = {
       },
     ],
   },
+  "sequence-and-series": {
+    id: "sequence-and-series",
+    chapterName: "Sequence and Series",
+    subtopics: ["Arithmetic Progression", "Geometric Progression", "Harmonic Progression and Means", "Special Series"],
+    files: [
+      {
+        // CDS Pathfinder chapter; the same file sits in 14. Number_System and
+        // 17. Number Series. Practice exercise only: its "Previous Years
+        // Questions" are CDS papers, left out (owner, 2026-10-14).
+        key: "book",
+        group: "C",
+        label: "CDS Pathfinder: Sequence and Series (practice exercise)",
+        path: "14. Number_System\\02_Sequence_and_Series.pdf",
+        note: "AFCAT practice — CDS Pathfinder (book chapter), Sequence and Series. Every key blind re-derived.",
+      },
+    ],
+  },
   average: {
     id: "average",
     chapterName: "Average",

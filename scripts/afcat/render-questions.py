@@ -38,7 +38,11 @@ for pno, page in enumerate(doc, start=1):
             dest = os.path.join(out, f"p{pno}-{side}.png")
             page.get_pixmap(dpi=dpi, clip=fitz.Rect(x0, 0, x1, cut - 3)).save(dest)
             print(dest)
-        if heads and side == "R":
-            stop = True  # the key starts here; nothing after this page is questions
-        if heads and side == "L" and cut < H * 0.25:
+        if heads:
+            # Reading order is left column, right column, next page: everything
+            # after an answer heading is key, so render nothing further. (CDS
+            # Pathfinder puts ANSWERS mid-way down a LEFT column.) A question
+            # printed beside the key in the right column is caught by checking
+            # the key's own numbering against the transcript.
             stop = True
+            break
