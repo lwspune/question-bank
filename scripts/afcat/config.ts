@@ -409,6 +409,9 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Highest and Lowest Scores",
       "Correcting an Error",
       "Average of First or Last N Numbers",
+      "Combined and Group Averages",
+      "Replacing a Member",
+      "Ages",
     ],
     files: [
       {
@@ -417,6 +420,13 @@ export const CHAPTERS: Record<string, Chapter> = {
         label: "Average Errorless sheet",
         path: "05. Average\\04. AVERAGE ERR.pdf",
         note: "AFCAT practice — Errorless sheet, Average. Key letters only; every key blind re-derived.",
+      },
+      {
+        key: "book",
+        group: "C",
+        label: "Conquer the Sky AFCAT: Averages (model practice + AFCAT past years)",
+        path: "05. Average\\Averages_AFCAT.pdf",
+        note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Average. Every key blind re-derived.",
       },
     ],
   },
