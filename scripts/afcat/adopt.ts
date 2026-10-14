@@ -49,7 +49,7 @@ for (const file of chapter.files.filter((f) => only.includes(f.key))) {
       continue;
     }
     if (ov?.reason && /key stands/i.test(ov.reason) && blind[id]) blind[id] = [q.key ?? "X", ...blind[id].slice(1)] as [string, string];
-    records.push({ id, key: q.key ?? "X", keySolution: q.keySolution ?? "", difficulty: q.difficulty ?? "Medium" });
+    records.push({ id, key: q.key ?? "X", keySolution: q.keySolution ?? "", difficulty: q.difficulty ?? "Medium", options: q.options });
   }
   for (const id of excluded) delete blind[id];
   const { derived, todo } = adoptVerdicts({ blind, records, authored, subtopic: file.subtopic });

@@ -79,6 +79,25 @@ describe("adoptVerdicts", () => {
     ]);
   });
 
+  it("counts a blind pick of the key's equal-valued twin as agreement (4/52 vs 1/13)", () => {
+    const r = adoptVerdicts({
+      ...base,
+      blind: { "02-7": ["B", "1/13"] },
+      records: [{ ...rec("02-7", "D", "Probability \\(= \\frac{4}{52} = \\frac{1}{13}\\)."), options: ["\\(\\frac{1}{26}\\)", "\\(\\frac{4}{52}\\)", "\\(\\frac{2}{26}\\)", "\\(\\frac{1}{13}\\)"] }],
+    });
+    expect(r.todo).toEqual([]);
+    expect(r.derived[0]).toMatchObject({ derived: "D", note: expect.stringMatching(/equal-valued/) });
+  });
+
+  it("still disputes a blind pick of a different value", () => {
+    const r = adoptVerdicts({
+      ...base,
+      blind: { "02-7": ["A", "1/26"] },
+      records: [{ ...rec("02-7", "D", "s"), options: ["\\(\\frac{1}{26}\\)", "\\(\\frac{4}{52}\\)", "\\(\\frac{2}{26}\\)", "\\(\\frac{1}{13}\\)"] }],
+    });
+    expect(r.todo).toEqual([{ id: "02-7", reason: "dispute: blind A vs key D" }]);
+  });
+
   it("takes a per-row subtopic from the blind verdict's third field", () => {
     const r = adoptVerdicts({ ...base, blind: { "01-2": ["B", "2:1", "Combining Ratios"] }, records: [rec("01-2", "B", "Ratio is \\(2:1\\).")] });
     expect(r.derived[0].subtopic).toBe("Combining Ratios");

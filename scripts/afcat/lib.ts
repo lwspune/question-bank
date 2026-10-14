@@ -672,7 +672,7 @@ export function sourceSolutionProblem(solution: string): string | null {
   return null;
 }
 
-export type CadetprepRecord = { id: string; key: string; keySolution: string; difficulty: string };
+export type CadetprepRecord = { id: string; key: string; keySolution: string; difficulty: string; options?: string[] };
 export type AuthoredSolution = { solution: string; subtopic?: string; difficulty?: "EASY" | "MODERATE" | "HARD"; note?: string };
 
 /**
@@ -711,7 +711,10 @@ export function adoptVerdicts(input: {
       derived.push({ id: r.id, derived: letter, value, confidence: "high", note: a.note ?? "solution authored", subtopic: a.subtopic ?? subtopic, difficulty, solution: a.solution });
       continue;
     }
-    if (letter !== r.key) {
+    // A blind pick of the key's equal-valued twin (4/52 where the key is 1/13)
+    // agrees on the value; fix-equal-values repairs the twin afterwards.
+    const twin = letter !== r.key && !!r.options && equalValueOptions(r.options).some((g) => g.includes(letter) && g.includes(r.key));
+    if (letter !== r.key && !twin) {
       todo.push({ id: r.id, reason: `dispute: blind ${letter} vs key ${r.key}` });
       continue;
     }
@@ -720,7 +723,101 @@ export function adoptVerdicts(input: {
       todo.push({ id: r.id, reason: `source solution unusable: ${problem}` });
       continue;
     }
-    derived.push({ id: r.id, derived: letter, value, confidence: "high", note: "blind agrees with key; source solution adopted", subtopic, difficulty, solution: r.keySolution.trim() });
+    const note = twin ? "blind picked the key's equal-valued twin; source solution adopted" : "blind agrees with key; source solution adopted";
+    derived.push({ id: r.id, derived: r.key, value, confidence: "high", note, subtopic, difficulty, solution: r.keySolution.trim() });
   }
   return { derived, todo };
+}
+
+// ---------------------------------------------------------------------------
+// Proposing repairs for options equal in value (the Cadetprep sheets print the
+// answer twice on most rows, 6/13 beside 24/52). The keyed value stays; if an
+// unsimplified copy is keyed while its simplest form is also printed, the
+// answer moves to the simplest form. Every other duplicate becomes a near miss
+// of the same shape, checked to differ from all four options. A duplicate it
+// cannot reshape returns null: that row is the adjudicator's.
+
+type Shape = { kind: "frac"; a: number; b: number } | { kind: "ratio"; parts: number[] } | { kind: "num"; v: number; dp: number };
+
+function shapeOf(text: string): Shape | null {
+  const t = text.trim();
+  let m = t.match(/^\\\(\s*\\[dt]?frac\{\s*(-?\d+)\s*\}\{\s*(-?\d+)\s*\}\s*\\\)$/) ?? t.match(/^(-?\d+)\s*\/\s*(\d+)$/);
+  if (m) return { kind: "frac", a: Number(m[1]), b: Number(m[2]) };
+  m = t.match(/^\\\(\s*(\d+(?:\s*:\s*\d+)+)\s*\\\)$/) ?? t.match(/^(\d+(?:\s*:\s*\d+)+)$/);
+  if (m) return { kind: "ratio", parts: m[1].split(":").map((p) => Number(p.trim())) };
+  m = t.match(/^\\\(\s*(-?\d+(?:\.\d+)?)\s*\\\)$/) ?? t.match(/^(-?\d+(?:\.\d+)?)$/);
+  if (m) return { kind: "num", v: Number(m[1]), dp: (m[1].split(".")[1] ?? "").length };
+  return null;
+}
+
+function renderShape(s: Shape, latex: boolean): string {
+  const body = s.kind === "frac" ? `\\frac{${s.a}}{${s.b}}` : s.kind === "ratio" ? s.parts.join(":") : s.v.toFixed(s.dp);
+  if (!latex) return s.kind === "frac" ? `${s.a}/${s.b}` : body;
+  return `\\(${body}\\)`;
+}
+
+function nearMisses(s: Shape): Shape[] {
+  const steps = [1, -1, 2, -2, 3, -3];
+  if (s.kind === "frac") {
+    const proper = Math.abs(s.a) < s.b; // a probability-like fraction stays below 1
+    return [...steps.map((d) => ({ ...s, a: s.a + d })), ...steps.map((d) => ({ ...s, b: s.b + d }))].filter(
+      (c) => c.a !== 0 && c.b > 0 && Math.sign(c.a) === Math.sign(s.a || 1) && (!proper || Math.abs(c.a) < c.b)
+    );
+  }
+  if (s.kind === "ratio") {
+    const out: Shape[] = [];
+    for (let i = 0; i < s.parts.length; i++) for (const d of steps) {
+      const parts = [...s.parts];
+      parts[i] += d;
+      if (parts[i] > 0) out.push({ kind: "ratio", parts });
+    }
+    return out;
+  }
+  const unit = 10 ** -s.dp;
+  return steps.map((d) => ({ ...s, v: Math.round((s.v + d * unit) * 10 ** s.dp) / 10 ** s.dp })).filter((c) => (s.v > 0 ? c.v > 0 : true));
+}
+
+const isLowestTerms = (text: string): boolean => {
+  const s = shapeOf(text);
+  if (!s) return false;
+  if (s.kind === "frac") return gcd(Math.abs(s.a), s.b) === 1 && s.b !== 1;
+  if (s.kind === "ratio") return s.parts.reduce(gcd) === 1;
+  return true;
+};
+
+export function proposeEqualValueRepair(
+  options: string[],
+  key: string
+): { options: Partial<Record<"A" | "B" | "C" | "D", string>>; answer?: "A" | "B" | "C" | "D" } | null {
+  const groups = equalValueOptions(options);
+  if (!groups.length) return null;
+  const current = [...options];
+  const out: { options: Partial<Record<"A" | "B" | "C" | "D", string>>; answer?: "A" | "B" | "C" | "D" } = { options: {} };
+  for (const group of groups) {
+    let keeper = group.find((l) => isLowestTerms(options["ABCD".indexOf(l)])) ?? group[0];
+    if (group.includes(key)) {
+      keeper = isLowestTerms(options["ABCD".indexOf(key)]) ? key : group.find((l) => isLowestTerms(options["ABCD".indexOf(l)])) ?? key;
+      if (keeper !== key) out.answer = keeper as "A";
+    }
+    for (const letter of group) {
+      if (letter === keeper) continue;
+      const i = "ABCD".indexOf(letter);
+      const shape = shapeOf(options[i]);
+      if (!shape) return null;
+      const latex = options[i].trim().startsWith("\\(");
+      let placed = false;
+      for (const c of nearMisses(shape)) {
+        const cand = renderShape(c, latex);
+        const trial = current.map((o, j) => (j === i ? cand : o));
+        if (!equalValueOptions(trial).some((g) => g.includes(letter))) {
+          current[i] = cand;
+          out.options[letter as "A"] = cand;
+          placed = true;
+          break;
+        }
+      }
+      if (!placed) return null;
+    }
+  }
+  return equalValueOptions(current).length ? null : out;
 }
