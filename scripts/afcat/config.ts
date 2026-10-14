@@ -236,6 +236,14 @@ export const CHAPTERS: Record<string, Chapter> = {
         answerKey: "embedded",
         note: "AFCAT practice — LWS Pune quiz, Speed, Time and Distance. Source key AI-written; every key blind re-derived.",
       },
+      {
+        // Named "BOAT" but its two sections are races and late/early arrival.
+        key: "errorless",
+        group: "B",
+        label: "Speed, Time and Distance Errorless sheet (races, late and early)",
+        path: "BOAT ERRORLESS.pdf",
+        note: "AFCAT practice — Errorless sheet, Speed, Time and Distance. Key letters only; every key blind re-derived.",
+      },
     ],
   },
   clock: {
