@@ -1,8 +1,11 @@
 # AFCAT practice ingestion
 
 Exam **AFCAT** (`08e1b680-4711-4164-abd4-ae27543cd221`), subject **Numerical
-Ability**. Every row is `question_kind='practice'`, written PRIVATE at insert
-and made PUBLIC only after review. Source:
+Ability**. Rows are `question_kind='practice'`, except the AFCAT past-year
+questions printed in a Group C book chapter, which go in as `pyq` with their
+year and sitting (owner's call, 2026-10-14; `pyq_note` says they come from a
+compilation, not the paper). Everything is written PRIVATE at insert and made
+PUBLIC only after review. Source:
 `C:\Vilas\LWS_Pune\AFCAT_CDS\Subject_Content\Maths\Class_Notes\02. Arithmetic_Maths`.
 
 ## The three source groups
@@ -95,6 +98,50 @@ rest are excluded with a reason that names what the stem actually gives. Record
 the blind verdicts to `out/<chapter>/blind-NN.json` BEFORE reading the key, as
 evidence the pass was blind.
 
+## Group C: book chapters
+
+Single-chapter PDFs of two books: **Conquer the Sky AFCAT** (model practice,
+then AFCAT past years by sitting, then an Answers grid and Hints) and **CDS
+Pathfinder** (theory, a Practice Exercise, CDS previous years, then a blank
+ANSWERS grid and Hints and Solutions). Whole-book PDFs are not taken (owner,
+2026-10-14). A `_HW` file is usually some pages of the full chapter: compare
+the page text first and use the full chapter (it has the hints); use the `_HW`
+file only when it is the folder's only copy.
+
+1. **Render only the question region:** `python scripts/afcat/render-questions.py
+   <pdf> out/<x>/q --start=MODEL` (Conquer the Sky) or `--start=PRACTICE
+   --also-stop=PREVIOUS` (Pathfinder: its CDS previous years stay out). It renders
+   column by column, stops at the first Answers/Hints heading, and, when it stops
+   in the left column, renders any questions sitting above the right column's own
+   heading as `p<N>-R-top.png`. **Never render a whole book page to read a
+   question the tool missed**: the answer grid shares the page (it happened on
+   Conquer the Sky Ratio, 2026-10-14; recorded in its blind file).
+2. **Transcribe** to `data/<chapter>/<key>.source.json` (ids section x 100 +
+   printed number; past-year rows carry `pyq: {year, sitting}`; a question with
+   no sitting heading of its own follows the one above it in print order, noted in
+   `transcribed`). Tables as pipe tables; a directions passage is inlined into each
+   stem it governs. A figure is `figure: {page, bbox, pad?}` in PDF points: find
+   the box with `figure-boxes.py <pdf> <page>`, or by hand from the column image
+   (150 dpi, so points = pixels x 0.48 plus the column's x offset) when hatching
+   merges figures; check every crop with `attach-figures.ts <chapter>
+   --crop-only` before committing.
+3. **Repeats:** search the chapter's other files (and the other book) for the
+   same question; a practice repeat is excluded with the id it repeats. An AFCAT
+   past-year question is kept even when a practice copy exists (the practice copy
+   goes; identical stem and options would collide on `content_hash`).
+4. **Blind pass**, written to `out/<chapter>/blind-NN.json` before the key.
+5. **Key:** Conquer the Sky's grid, or Pathfinder's Hints items, read from the
+   text layer after the blind file exists. Check the key's question count per
+   section against the transcript: a mismatch is a missed question. Save it as
+   `<key>.keytext.json`, write the letters into the transcript, adjudicate, then
+   steps 3-10 of the per-chapter loop.
+6. **Figures:** after the commit, `npx tsx scripts/afcat/attach-figures.ts
+   <chapter> --apply` uploads each crop to `question-images` and sets `image_url`.
+
+The books' keys are good but not clean: across the chapters below, ~1 in 20
+needed a decision (wrong key, no option right, a stem that cannot give one
+answer, two options the same).
+
 ## Chapter status
 
 | Chapter | Files | Rows | Disputes | Status |
@@ -117,7 +164,32 @@ evidence the pass was blind.
 | Average (new chapter) | B: "AVERAGE ERR" sheet | 48 of 160 | 112 excluded (impossible consecutive-number stems, an underdetermined section, newborns of negative age); 7 key errors | committed PRIVATE 2026-10-14, awaiting review |
 | Speed, Time and Distance | B: second Errorless ("err") sheet | 62 of 115 | 53 excluded (a chasing section ~30x off in units, unreachable values); 7 key errors | committed PRIVATE 2026-10-14, awaiting review |
 
-Not ingested from the folder: `01. Decimal and Fractions\Decimal and Fractions_AFCAT_Quiz.pdf` is two pages
-of a published AFCAT book (with AFCAT past-year questions), so it waits with the books; CDS past-paper
-files (`*CDS_PYQs*`, `RP_PYQs_HW`) are excluded by rule; practice/homework/classwork sheets are not yet
-classified (LWS-made or another institute's).
+Group C (book chapters; practice + AFCAT past-year questions):
+
+| Chapter | File | Practice | AFCAT PYQs | Out (reason in overrides) | Status |
+|---|---|---|---|---|---|
+| Decimal and Fractions | Conquer the Sky | 35 | 13 | see overrides | committed PRIVATE 2026-10-14 |
+| LCM and HCF | Conquer the Sky | 32 | 4 | see overrides | committed PRIVATE 2026-10-14 |
+| Sequence and Series | CDS Pathfinder | 12 | 0 | see overrides | committed PRIVATE 2026-10-14 |
+| Squares, Cubes and Roots | CDS Pathfinder | 28 | 0 | 3 repeats of Decimal + 1 | committed PRIVATE 2026-10-14 |
+| Heights and Distances | CDS Pathfinder | 25 | 0 | 0 | committed PRIVATE 2026-10-14 |
+| Statistics (new) | CDS Pathfinder | 55 (2 pie charts) | 0 | 3 (two defensible answers); Q29 stem, Q37 key corrected | committed PRIVATE 2026-10-14 |
+| Area and Perimeter (new) | CDS Pathfinder | 45 (9 figures) | 0 | 1 (no option right) | committed PRIVATE 2026-10-14 |
+| Surface Area and Volume (new) | CDS Pathfinder | 77 | 0 | 2 (no option right); Q40 stem corrected | committed PRIVATE 2026-10-14 |
+| Ratio and Proportion | CDS Pathfinder | 50 | 0 | 0 | committed PRIVATE 2026-10-14 |
+| Percentage | CDS Pathfinder | 32 | 0 | 4 (2 repeats, duplicate options, ambiguous) | committed PRIVATE 2026-10-14 |
+| Ratio and Proportion | Conquer the Sky | 26 | 12 | 5; Q20 key, Q25 stem corrected. **Not blind** (answer grid seen first) | committed PRIVATE 2026-10-14 |
+| Percentage | Conquer the Sky | 28 | 14 | 4 repeats; PYQ 13-14 seen with their key | committed PRIVATE 2026-10-14 |
+| Average | Conquer the Sky | 24 | 13 | 1 (duplicate options) | committed PRIVATE 2026-10-14 |
+| Profit and Loss | Conquer the Sky | 39 | 13 | 4 (2 no option right, 1 underdetermined, 1 repeat) | committed PRIVATE 2026-10-14 |
+| Speed, Time and Distance | Conquer the Sky (`_HW`, only copy) | 34 | 24 | 2 (contradicts key, no time given) | committed PRIVATE 2026-10-14 |
+| Simple and Compound Interest | Conquer the Sky | 35 | 14 | 0 | committed PRIVATE 2026-10-14 |
+| Clock | Conquer the Sky (Clock part only) | 5 | 0 | 1; Calendar Q7-15 and its Calendar PYQs not taken (AFCAT Reasoning) | committed PRIVATE 2026-10-14 |
+| Mixture and Alligation | Conquer the Sky (`_HW`, only copy) | 13 | 8 | 0 | committed PRIVATE 2026-10-14 |
+| Time and Work | Conquer the Sky | 30 | 18 | 2 repeats (one of a kept PYQ) | committed PRIVATE 2026-10-14 |
+
+Not ingested from the folder: CDS past-paper files (`*CDS_PYQs*`, `RP_PYQs_HW`) and every Pathfinder
+"previous years" section are excluded by rule; whole-book PDFs are not taken; `_HW` copies of a full
+chapter are skipped; practice/homework/classwork sheets (`* Practice*.pdf`, `TWP 1.pdf`, `Avg2/3`,
+`Probability-2_Classwork.pdf` and similar) are not yet classified (LWS-made or another institute's);
+the Errorless Percentage and Probability sheets are offered but not yet done.
