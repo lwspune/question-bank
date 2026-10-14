@@ -330,6 +330,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // chapters have PYQs, or once a landing page can fall back to textbook
     // questions per chapter.
     practiceOnly: true,
+    hasMocks: true, // 27 chapter tests (Maths 14, Science 13) published 2026-10-15
     boardExam: true, // NCERT textbook content → gets the /board reader + the "Board" nav tab
     board: "CBSE",
     std: 10,
