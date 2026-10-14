@@ -33,6 +33,11 @@ describe("parseErrorlessKey", () => {
     expect(k.get(3)).toEqual({ letter: "B", value: "" });
   });
 
+  it("reads a letters-only run that wraps mid-entry across lines (Average sheet, section 6)", () => {
+    const k = parseErrorlessKey(["1. b) 2. c) 3.", "a) 4. d) 5.", "c)"]);
+    expect([...k.entries()].map(([n, v]) => `${n}${v.letter}`)).toEqual(["1B", "2C", "3A", "4D", "5C"]);
+  });
+
   it("returns an empty map for a picture key (no lines)", () => {
     expect(parseErrorlessKey([]).size).toBe(0);
   });

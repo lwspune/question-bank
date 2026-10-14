@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { errorlessPage, splitTypeSections, fixLigatures, type PdfPage, type PdfWord } from "../scripts/afcat/lib";
+import { errorlessPage, splitTypeSections, reorderQuestionBlocks, fixLigatures, type PdfPage, type PdfWord } from "../scripts/afcat/lib";
 
 // Geometry taken from the real Errorless sheets (612 x 792 pt, two columns split
 // at the midline, page number at y ~730, an ANSWERS heading at the foot of the
@@ -58,6 +58,27 @@ describe("errorlessPage", () => {
     const p = page(line(65, 90, "Type-DiƯerent EƯiciency ﬁnd ﬂow"));
     expect(errorlessPage(p).lines).toEqual(["Type-Different Efficiency find flow"]);
     expect(fixLigatures("eƯort")).toBe("effort");
+  });
+});
+
+describe("reorderQuestionBlocks", () => {
+  // Average sheet, section 5: page 9 prints 1-8 then 15-18, page 10 prints 9-14 then 19-20.
+  it("sorts question blocks into number order when they are a clean 1..N", () => {
+    const lines = ["1. Q one", "a) 1 b) 2 c) 3 d) 4", "3. Q three", "a) 1 b) 2 c) 3 d) 4", "2. Q two", "spills over", "a) 1 b) 2 c) 3 d) 4"];
+    expect(reorderQuestionBlocks(lines)).toEqual([
+      "1. Q one", "a) 1 b) 2 c) 3 d) 4", "2. Q two", "spills over", "a) 1 b) 2 c) 3 d) 4", "3. Q three", "a) 1 b) 2 c) 3 d) 4",
+    ]);
+  });
+
+  it("leaves the lines alone when the numbers are not a clean 1..N (a gap or a repeat)", () => {
+    const gap = ["1. A", "3. B"];
+    const repeat = ["1. A", "2. B", "2. C"];
+    expect(reorderQuestionBlocks(gap)).toEqual(gap);
+    expect(reorderQuestionBlocks(repeat)).toEqual(repeat);
+  });
+
+  it("keeps lines before the first question in front", () => {
+    expect(reorderQuestionBlocks(["intro", "2. B", "1. A"])).toEqual(["intro", "1. A", "2. B"]);
   });
 });
 

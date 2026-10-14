@@ -442,6 +442,13 @@ export function splitTypeSections(lines: string[]): { title: string; lines: stri
  */
 export function parseErrorlessKey(lines: string[]): Map<number, { letter: string; value: string }> {
   const out = new Map<number, { letter: string; value: string }>();
+  // A letters-only grid can wrap mid-entry ("10." ends one line, "c)" starts the
+  // next), so first try the whole block as one run.
+  const joined = lines.map((l) => l.trim()).join(" ");
+  if (lines.length > 1 && /^(?:(?:Q\.?\s*)?\d{1,2}\s*\.?\s*\(?[a-dA-D]\)\s*){2,}$/.test(joined)) {
+    for (const m of joined.matchAll(/(?:Q\.?\s*)?(\d{1,2})\s*\.?\s*\(?([a-dA-D])\)/g)) out.set(Number(m[1]), { letter: m[2].toUpperCase(), value: "" });
+    return out;
+  }
   for (const raw of lines) {
     const l = raw.trim();
     // several "n. x)" or "Q.n x)" entries on one line, letters only
@@ -498,4 +505,25 @@ export function applyTextFixes(text: string, fixes: { find: string; replace: str
     out = out.replace(f.find, f.replace);
   }
   return out;
+}
+
+/**
+ * Put a section's question blocks into number order. Some Errorless sheets run
+ * a section's left column on into the next page before its right column, so
+ * the text arrives as 1-8, 15-18, 9-14, 19-20. Reordered ONLY when the leading
+ * numbers are exactly 1..N, each once: anything else is returned untouched, so
+ * the parser's gap and sequence checks still see it.
+ */
+export function reorderQuestionBlocks(lines: string[]): string[] {
+  const pre: string[] = [];
+  const blocks: { n: number; lines: string[] }[] = [];
+  for (const l of lines) {
+    const m = l.match(/^(\d{1,3})\.\s/);
+    if (m) blocks.push({ n: Number(m[1]), lines: [l] });
+    else if (blocks.length) blocks[blocks.length - 1].lines.push(l);
+    else pre.push(l);
+  }
+  const nums = blocks.map((b) => b.n).sort((a, b) => a - b);
+  if (!nums.every((n, i) => n === i + 1)) return lines;
+  return [...pre, ...[...blocks].sort((a, b) => a.n - b.n).flatMap((b) => b.lines)];
 }
