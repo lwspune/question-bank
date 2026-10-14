@@ -119,6 +119,13 @@ export const CHAPTERS: Record<string, Chapter> = {
         answerKey: "11. Mixture and Alligations\\Quiz\\Mixture_and_Alligations_30Q_ak.docx",
         note: "AFCAT practice — LWS Pune quiz, Mixture and Alligation. Source key AI-written; every key blind re-derived.",
       },
+      {
+        key: "errorless",
+        group: "B",
+        label: "Mixture and Alligation Errorless sheet (3 types)",
+        path: "11. Mixture and Alligations\\Mixture & Alligation Errorless.pdf",
+        note: "AFCAT practice — Errorless sheet, Mixture and Alligation. Key letters only; every key blind re-derived.",
+      },
     ],
   },
   "simple-and-compound-interest": {
