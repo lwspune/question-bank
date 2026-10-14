@@ -116,6 +116,13 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "04. Percentage\\Percentages_Practice_Questions_CDS.pdf",
         note: "AFCAT practice — CDS Pathfinder (book chapter), Percentage. Every key blind re-derived.",
       },
+      {
+        key: "book",
+        group: "C",
+        label: "Conquer the Sky AFCAT: Percentage (model practice + AFCAT past years)",
+        path: "04. Percentage\\Percentages_AFCAT.pdf",
+        note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Percentage. Every key blind re-derived.",
+      },
     ],
   },
   "mixture-and-alligation": {
