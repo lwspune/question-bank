@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import {
+import { examKindPhrase,
   countSummary,
   defaultViewCount,
   defaultViewLabel,
@@ -38,6 +38,18 @@ describe("countSummary — a per-exam line that cannot be misread", () => {
 
   it("uses Indian digit grouping", () => {
     expect(countSummary({ pyq: 146993, practice: 0 })).toBe("1,46,993 past-year questions");
+  });
+});
+
+describe("examKindPhrase — what an exam HAS, said in full", () => {
+  it("is the past-year count for an exam with PYQs", () => {
+    expect(examKindPhrase({ pyq: 5130, practice: 8894 }, false)).toBe("5,130 past-year questions");
+  });
+  it("is the practice count for a practice-only exam with no PYQs", () => {
+    expect(examKindPhrase({ pyq: 0, practice: 1416 }, true)).toBe("1,416 practice questions");
+  });
+  it("names both when a practice-only exam has PYQs too (CBSE Class 10 since 2026-10-15)", () => {
+    expect(examKindPhrase({ pyq: 3415, practice: 1416 }, true)).toBe("3,415 past-year and 1,416 practice questions");
   });
 });
 

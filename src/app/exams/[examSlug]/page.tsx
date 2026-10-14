@@ -66,6 +66,7 @@ async function loadModel(slug: string): Promise<ExamHomeModel | null> {
     // exam) and the bank button lands on — never the every-kind total, which
     // this page used to call "past-year questions" (UX_REVIEW_TRIAGE.md A1).
     totalPublicQuestions: item ? defaultViewCount(item.counts, item.practiceOnly) : 0,
+    pastYearQuestions: item?.practiceOnly ? item.counts.pyq : 0,
     hasShippedNotes: (notes?.subjects.length ?? 0) > 0,
   });
 }
@@ -74,7 +75,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const model = await loadModel(params.examSlug);
   if (!model) return { title: "Exam not found" };
   const title = fitTitle(
-    `${model.displayName} ${model.practiceOnly ? "Practice Questions" : "Past Year Questions"} — Papers, Mocks, Notes`
+    `${model.displayName} ${!model.practiceOnly ? "Past Year Questions" : model.pastYearQuestions > 0 ? "Past Year and Practice Questions" : "Practice Questions"} — Papers, Mocks, Notes`
   );
   const description = examHomeDescription(model);
   return {

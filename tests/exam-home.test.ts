@@ -108,7 +108,7 @@ describe("buildExamHome", () => {
     });
     expect(m.links.notes).toBeNull();
     expect(m.links.board).toBe("/board/cbse-10");
-    expect(m.links.mocks).toBeNull();
+    expect(m.links.mocks).toBe("/mock/exam/cbse-10"); // 27 chapter tests, 2026-10-15
     expect(m.links.bank).toBe("/browse");
     expect(m.years).toBeNull();
     expect(m.practiceOnly).toBe(true);
@@ -134,7 +134,18 @@ describe("examHomeDescription", () => {
       hasShippedNotes: false,
     });
     expect(examHomeDescription(m)).toBe(
-      "CBSE Class 10 on PYQ Vault: 1,008 practice questions, with answers and worked solutions and a textbook-solutions reader. Free to browse."
+      "CBSE Class 10 on PYQ Vault: 1,008 practice questions, with answers and worked solutions, timed mocks of real papers, and a textbook-solutions reader. Free to browse."
     );
+  });
+
+  it("names the past-year questions too when a practice-only exam has them", () => {
+    const m = buildExamHome(cbse10, [], {
+      examId: null,
+      totalPublicQuestions: 1416,
+      pastYearQuestions: 3415,
+      hasShippedNotes: false,
+    });
+    expect(m.pastYearQuestions).toBe(3415);
+    expect(examHomeDescription(m)).toMatch(/^CBSE Class 10 on PYQ Vault: 3,415 past-year and 1,416 practice questions, /);
   });
 });

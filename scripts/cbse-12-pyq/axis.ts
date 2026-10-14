@@ -37,7 +37,7 @@
  */
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { SUBJECTS, subjectFromArg, EXAM_ID_CBSE_12, declaredSubtopics, type SubjectSpec } from "./config";
+import { SUBJECTS, subjectFromArg, declaredSubtopics, type SubjectSpec } from "./config";
 
 type Row = { name: string; chapters: { name: string } };
 
@@ -49,7 +49,7 @@ async function axisFor(subject: SubjectSpec): Promise<Map<string, string[]>> {
   const { data, error } = await client
     .from("subtopics")
     .select("name, chapters!inner(name, subjects!inner(name, exam_id))")
-    .eq("chapters.subjects.exam_id", EXAM_ID_CBSE_12)
+    .eq("chapters.subjects.exam_id", subject.examId)
     .eq("chapters.subjects.name", subject.subjectName);
   if (error) throw new Error(`subtopic load failed: ${error.message}`);
 

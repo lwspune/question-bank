@@ -44,9 +44,12 @@ import {
   hasPattern,
   splitMergedMs,
   codesInMsFilename,
+  codesInPageText,
+  blockStartCodes,
   viRe,
   type PatternName,
   type MsBlock,
+  type MergedMsPage,
 } from "./lib";
 
 export type Paper = {
@@ -130,6 +133,30 @@ export function declaredExclusion(path: string, subject: SubjectSpec): string | 
   return null;
 }
 
+/** The declared page blocks for a marking-scheme file (SubjectSpec.msBlockOverrides), or null. */
+export function msBlockOverride(path: string, subject: SubjectSpec): MsBlock[] | null {
+  const p = path.replace(/\\/g, "/");
+  const base = p.replace(/^.*\//, "");
+  for (const x of subject.msBlockOverrides ?? []) {
+    if (x.file === base && p.includes(`/${x.year}/ms/`)) return x.blocks.map((b) => ({ ...b }));
+  }
+  return null;
+}
+
+/**
+ * The reason a file belongs to ANOTHER paper in the same archive, or null:
+ * its name carries one of the subject's excludedPrefixes, as a paper code or
+ * as a VI code. Checked before any parse, so "430-1-1_Mathematics Basic.pdf"
+ * is a Basic paper and never an unreadable Standard one.
+ */
+export function excludedByPrefix(path: string, subject: SubjectSpec): string | null {
+  const base = path.replace(/^.*[\\/]/, "");
+  for (const x of subject.excludedPrefixes ?? []) {
+    if (parsePaperCode(base, [x.prefix]) || viRe(x.prefix).test(base)) return x.reason;
+  }
+  return null;
+}
+
 export type Discovery = {
   papers: Paper[];
   problems: string[];
@@ -137,6 +164,8 @@ export type Discovery = {
   excludedHindi: number;
   /** Files dropped by name (SubjectSpec.excludedSources), with why. */
   excludedDeclared: { file: string; reason: string }[];
+  /** Files of another paper in the same archive (SubjectSpec.excludedPrefixes). */
+  excludedOther: { file: string; reason: string }[];
   /** PDFs on disk that were neither ingested nor deliberately excluded. */
   unaccounted: string[];
   mergedMs: { file: string; blocks: MsBlock[] }[];
@@ -148,24 +177,27 @@ export type Discovery = {
  * Kept behind a lazy require so `discover()` has no hard dependency on a PDF
  * library for the (common) case of ordinary single-paper marking schemes.
  */
-function msPagesOf(file: string, prefix: string): { codes: string[]; firstLine: string; index: number }[] {
+function msPagesOf(file: string, prefix: string): MergedMsPage[] {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const { execFileSync } = require("node:child_process") as typeof import("node:child_process");
+  // Python returns each page's text; the codes are read in TS by the tested
+  // codesInPageText, so the two halves cannot disagree about what a code is.
   const script = `
-import fitz, json, re, sys
-d = fitz.open(sys.argv[1]); pre = sys.argv[2]
-out = []
-for i, pg in enumerate(d):
-    t = pg.get_text()
-    first = next((l.strip() for l in t.split("\\n") if l.strip()), "")
-    out.append({"index": i, "codes": sorted(set(re.findall(pre + r"/\\d/\\d", t))), "firstLine": first})
-print(json.dumps(out))
+import fitz, json, sys
+d = fitz.open(sys.argv[1])
+print(json.dumps([pg.get_text() for pg in d]))
 `;
-  const raw = execFileSync("python", ["-c", script, file, prefix], {
+  const raw = execFileSync("python", ["-c", script, file], {
     encoding: "utf-8",
-    maxBuffer: 64 * 1024 * 1024,
+    maxBuffer: 256 * 1024 * 1024,
   });
-  return JSON.parse(raw);
+  // MuPDF writes diagnostics to stdout ahead of our JSON; ours is the last line.
+  const texts = JSON.parse(raw.trimEnd().split(/\r?\n/).pop() ?? "[]") as string[];
+  return texts.map((t, index) => ({
+    index,
+    codes: codesInPageText(t, prefix),
+    firstLine: t.split("\n").map((l) => l.trim()).find(Boolean) ?? "",
+  }));
 }
 
 export function discover(subject: SubjectSpec, opts: { readMerged?: boolean } = {}): Discovery {
@@ -176,15 +208,18 @@ export function discover(subject: SubjectSpec, opts: { readMerged?: boolean } = 
   let excludedVi = 0;
   let excludedHindi = 0;
   const excludedDeclared: { file: string; reason: string }[] = [];
+  const excludedOther: { file: string; reason: string }[] = [];
   const declared = (f: string): boolean => {
     const reason = declaredExclusion(f, subject);
     if (reason) excludedDeclared.push({ file: f, reason });
-    return reason !== null;
+    const other = reason ? null : excludedByPrefix(f, subject);
+    if (other) excludedOther.push({ file: f, reason: other });
+    return reason !== null || other !== null;
   };
   const prefix = subject.paperPrefix;
   // Physics 2026 names its marking schemes off the SUBJECT code (XII-2-042-1-1.pdf)
-  // rather than the paper code, so the subject code is a fallback anchor.
-  const anchors = [subject.paperPrefix, subject.cbseCode];
+  // rather than the paper code, so Class 12 falls back to it; Class 10 does not.
+  const anchors = subject.codeAnchors;
 
   for (const year of YEARS) {
     const pattern = hasPattern(subject.key, year) ? patternForYear(subject.key, year) : null;
@@ -198,6 +233,43 @@ export function discover(subject: SubjectSpec, opts: { readMerged?: boolean } = 
         continue;
       }
       const advertised = codesInMsFilename(f, anchors);
+
+      // Paired by what the PAGES say; the name is only cross-checked.
+      if (subject.msSplitByContent && !isViName(f, anchors)) {
+        if (!opts.readMerged) {
+          problems.push(`${year}: series marking scheme not read (re-run with --read-merged): ${f}`);
+          continue;
+        }
+        try {
+          const override = msBlockOverride(f, subject);
+          const pages = override ? [] : msPagesOf(f, prefix);
+          const blocks = override ?? splitMergedMs(pages, blockStartCodes(pages));
+          const found = blocks.map((b) => b.code);
+          for (const c of advertised) {
+            if (!found.includes(c)) {
+              problems.push(`${year}: ${f} is named for ${c} but its pages hold ${found.join(", ") || "no code"}`);
+            }
+          }
+          mergedMs.push({ file: f, blocks });
+          for (const b of blocks) {
+            if (b.shortBy) {
+              problems.push(
+                `${year}: marking scheme ${b.code} is INCOMPLETE — its running header states ` +
+                  `${b.shortBy} more page(s) than the file contains: ${f}`
+              );
+            }
+            if (msByCode.has(b.code)) {
+              problems.push(`${year}: marking scheme ${b.code} found in two files — ${msByCode.get(b.code)!.file} and ${f}`);
+              continue;
+            }
+            msByCode.set(b.code, { file: f, pages: { from: b.from, to: b.to } });
+          }
+        } catch (e) {
+          problems.push(`${year}: could not split marking scheme ${f} — ${(e as Error).message}`);
+        }
+        continue;
+      }
+
       if (advertised.length === 0) {
         if (isViName(f, anchors)) {
           excludedVi++;
@@ -286,7 +358,7 @@ export function discover(subject: SubjectSpec, opts: { readMerged?: boolean } = 
         qp: f,
         ms: ms?.file ?? null,
         msPages: ms?.pages ?? null,
-        sourceFile: sourceFile(year, code),
+        sourceFile: sourceFile(subject, year, code),
       });
     }
 
@@ -295,7 +367,7 @@ export function discover(subject: SubjectSpec, opts: { readMerged?: boolean } = 
       if (!byCode.has(code)) problems.push(`${year}: marking scheme ${code} has NO question paper`);
     }
   }
-  return { papers, problems, excludedVi, excludedHindi, excludedDeclared, unaccounted, mergedMs };
+  return { papers, problems, excludedVi, excludedHindi, excludedDeclared, excludedOther, unaccounted, mergedMs };
 }
 
 function report(subject: SubjectSpec, readMerged: boolean): number {
@@ -317,9 +389,12 @@ function report(subject: SubjectSpec, readMerged: boolean): number {
   console.log(
     `\ntotal papers: ${d.papers.length} | with marking scheme: ${d.papers.length - noMs}` +
       ` | VI excluded: ${d.excludedVi} | Hindi excluded: ${d.excludedHindi}` +
-      ` | excluded by name: ${d.excludedDeclared.length}`
+      ` | excluded by name: ${d.excludedDeclared.length} | other papers: ${d.excludedOther.length}`
   );
   for (const x of d.excludedDeclared) console.log(`  - ${x.file.replace(/^.*[\\/]/, "")}: ${x.reason}`);
+  const otherReasons = new Map<string, number>();
+  for (const x of d.excludedOther) otherReasons.set(x.reason, (otherReasons.get(x.reason) ?? 0) + 1);
+  for (const [r, n] of otherReasons) console.log(`  - ${n} × ${r}`);
   if (d.mergedMs.length) {
     console.log(`merged marking schemes split: ${d.mergedMs.length}`);
     for (const m of d.mergedMs) {

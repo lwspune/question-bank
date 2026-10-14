@@ -12,6 +12,9 @@ export type ChatExamFact = {
   hasMocks: boolean;
   boardExam: boolean;
   practiceOnly: boolean;
+  /** Live: does the exam hold PUBLIC past-year questions? Absent when the count
+   *  could not be read, and then nothing is claimed either way. */
+  hasPastYearQuestions?: boolean;
   /** Exam is ingested-but-private — must never be surfaced or recommended. */
   noPublicContent: boolean;
 };
@@ -37,7 +40,12 @@ export function buildExamFacts(exams: readonly ChatExamFact[]): string[] {
     .map((e) => {
       const bits = [TIER_PROSE[e.tier]];
       if (e.boardExam) bits.push("a board exam with a textbook reader at /board");
-      if (e.practiceOnly) bits.push("practice questions only, no past-year papers");
+      if (e.practiceOnly) {
+        // CBSE Class 10 keeps the flag (its default view) but has board PYQs.
+        if (e.hasPastYearQuestions === true) bits.push("past-year board papers and textbook practice questions");
+        else if (e.hasPastYearQuestions === false) bits.push("practice questions only, no past-year papers");
+        else bits.push("practice questions");
+      }
       if (e.hasMocks) bits.push("has timed mock tests at /mock");
       return `${e.displayName} — ${bits.join("; ")}.`;
     });

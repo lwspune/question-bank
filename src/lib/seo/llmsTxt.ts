@@ -9,6 +9,7 @@
  * tests/llms-txt.test.ts; the route handler is src/app/llms.txt/route.ts.
  */
 import { examHomeHref } from "@/lib/exam/examHome";
+import { examKindPhrase } from "@/lib/exam/questionCounts";
 
 const SITE_URL = "https://www.pyqvault.com";
 
@@ -17,6 +18,8 @@ export type LlmsExam = {
   displayName: string;
   examName: string;
   totalPublicQuestions: number;
+  /** A practice-only exam's past-year count, named beside its practice count when non-zero. */
+  pastYearQuestions?: number;
   practiceOnly: boolean;
   noPublicContent: boolean;
 };
@@ -59,8 +62,10 @@ export function buildLlmsTxt(input: {
   lines.push("## Exams");
   lines.push("");
   for (const e of exams) {
-    const kind = e.practiceOnly ? "practice questions" : "past-year questions";
-    lines.push(`- [${e.displayName}](${SITE_URL}${examHomeHref(e.slug)}): ${fmt(e.totalPublicQuestions)} ${kind}`);
+    const counts = e.practiceOnly
+      ? { pyq: e.pastYearQuestions ?? 0, practice: e.totalPublicQuestions }
+      : { pyq: e.totalPublicQuestions, practice: 0 };
+    lines.push(`- [${e.displayName}](${SITE_URL}${examHomeHref(e.slug)}): ${examKindPhrase(counts, e.practiceOnly)}`);
   }
   lines.push("");
   lines.push("## Optional");

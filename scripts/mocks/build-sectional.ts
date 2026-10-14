@@ -9,7 +9,7 @@
  *   npx tsx scripts/mocks/build-sectional.ts --exam=nda --only=<slug>
  *
  * `--exam` is one of mht-cet (the default, so the original runbook still
- * works), nda, cds, jee-mains, cbse-12, mh-hsc-12, mh-ssc-10, and the MPSC
+ * works), nda, cds, jee-mains, cbse-10, cbse-12, mh-hsc-12, mh-ssc-10, and the MPSC
  * exams by slug (mpsc-group-b-c, mpsc-state-services-prelims, mpsc-aso-mains,
  * mpsc-sti-mains, mpsc-psi-mains, mpsc-state-services-mains,
  * mpsc-group-b-combined-mains).
@@ -54,6 +54,7 @@ import {
   CDS_ENGLISH_PAPER,
   CDS_GK_PAPER,
   CDS_MATHS_PAPER,
+  CBSE_10_CHAPTER_MCQ_PAPER,
   CBSE_12_CHAPTER_MCQ_PAPER,
   JEE_MAINS_PAPER,
   MH_HSC_12_CHAPTER_MCQ_PAPER,
@@ -164,6 +165,39 @@ const retiredOf = (t: { chapter: string; recentPerPaper: number }[]) =>
   new Set(t.filter((x) => x.recentPerPaper < RECENT_FLOOR).map((x) => x.chapter));
 const dataFile = (slug: string) => join(__dirname, "data", `${slug}-sectional.json`);
 
+/** NCERT Class 10 Mathematics, in book order (the PDF file numbers 01-14). */
+const NCERT_10_MATHS = [
+  "Real Numbers",
+  "Polynomials",
+  "Pair of Linear Equations in Two Variables",
+  "Quadratic Equations",
+  "Arithmetic Progressions",
+  "Triangles",
+  "Coordinate Geometry",
+  "Introduction to Trigonometry",
+  "Some Applications of Trigonometry",
+  "Circles",
+  "Areas Related to Circles",
+  "Surface Areas and Volumes",
+  "Statistics",
+  "Probability",
+];
+/** NCERT Class 10 Science, in book order (the PDF file numbers 01-13). */
+const NCERT_10_SCIENCE = [
+  "Chemical Reactions and Equations",
+  "Acids, Bases and Salts",
+  "Metals and Non-metals",
+  "Carbon and its Compounds",
+  "Life Processes",
+  "Control and Coordination",
+  "How do Organisms Reproduce?",
+  "Heredity",
+  "Light — Reflection and Refraction",
+  "The Human Eye and the Colourful World",
+  "Electricity",
+  "Magnetic Effects of Electric Current",
+  "Our Environment",
+];
 /** NCERT Class 12 Physics, Parts 1 and 2 (Part 2 restarts at 01: Ray Optics is chapter 9). */
 const NCERT_12_PHYSICS = [
   "Electric Charges and Fields",
@@ -376,6 +410,24 @@ const EXAMS: Record<string, ExamPlan> = {
 
   // Board chapter tests (2026-10-05): textbook and board MCQs together, a
   // 10-question floor (owner: a 10-question test is big enough), book order.
+  // Board PYQs (Maths Standard + Science) went PUBLIC 2026-10-15. Social Science
+  // has no board PYQs in the bank, so it is left out; the [Outdated] chapters
+  // hold content the rationalised book dropped.
+  "cbse-10": {
+    examName: "CBSE Class 10",
+    examSlug: "cbse-10",
+    kinds: ["pyq", "practice"],
+    looseInstructions: true,
+    bookOrder: true,
+    dataFile: dataFile("cbse-10"),
+    minPool: 10,
+    unratedAsModerate: true,
+    numericShare: 0,
+    subjects: [
+      { bankSubject: "Mathematics", code: "maths", paper: CBSE_10_CHAPTER_MCQ_PAPER, sectionKey: "mathematics", weights: NONE, chapterOrder: NCERT_10_MATHS, retired: new Set(["Constructions [Outdated]"]) },
+      { bankSubject: "Science", code: "science", paper: CBSE_10_CHAPTER_MCQ_PAPER, sectionKey: "science", weights: NONE, chapterOrder: NCERT_10_SCIENCE, retired: new Set(["Periodic Classification of Elements [Outdated]"]) },
+    ],
+  },
   "cbse-12": {
     examName: "CBSE Class 12",
     examSlug: "cbse-12",

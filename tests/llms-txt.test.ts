@@ -37,6 +37,14 @@ describe("buildLlmsTxt", () => {
     expect(text).toContain("- [CBSE Class 10](https://www.pyqvault.com/exams/cbse-10): 1,008 practice questions");
   });
 
+  it("names past-year questions too for a practice-only exam that has them", () => {
+    const t = buildLlmsTxt({
+      exams: [{ slug: "cbse-10", displayName: "CBSE Class 10", examName: "CBSE Class 10", totalPublicQuestions: 1416, pastYearQuestions: 3415, practiceOnly: true, noPublicContent: false }],
+      totalPublicQuestions: 4831,
+    });
+    expect(t).toContain("- [CBSE Class 10](https://www.pyqvault.com/exams/cbse-10): 3,415 past-year and 1,416 practice questions");
+  });
+
   it("leaves out an exam with no public content or no questions yet", () => {
     expect(text).not.toContain("ISC");
     expect(text).not.toContain("/exams/neet");

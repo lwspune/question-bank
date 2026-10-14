@@ -11,6 +11,7 @@
  */
 import { resolveBankHref, type ExamEntry } from "./examContext";
 import { landingHref, type ChapterLanding } from "@/lib/questions/landing";
+import { examKindPhrase } from "./questionCounts";
 
 /** NDA keeps its richer hand-built home; every other exam lives under /exams. */
 export function examHomeHref(slug: string): string {
@@ -33,6 +34,9 @@ export type ExamHomeModel = {
    *  practice for a practice-only exam. NOT the every-kind total, which the
    *  description once called "past-year questions" (UX_REVIEW_TRIAGE.md A1). */
   totalQuestions: number;
+  /** A practice-only exam's PUBLIC past-year questions (CBSE Class 10 since
+   *  2026-10-15), named beside the practice count; 0 for every other exam. */
+  pastYearQuestions: number;
   /** Chapters with a landing page (≥15 PUBLIC questions). */
   chapterCount: number;
   /** Rolled up from the chapter profiles; null for practice-only or unknown. */
@@ -50,7 +54,7 @@ export type ExamHomeModel = {
 export function buildExamHome(
   entry: ExamEntry,
   landings: readonly ChapterLanding[],
-  opts: { examId: string | null; totalPublicQuestions: number; hasShippedNotes: boolean }
+  opts: { examId: string | null; totalPublicQuestions: number; pastYearQuestions?: number; hasShippedNotes: boolean }
 ): ExamHomeModel {
   const mine = landings.filter((l) => l.examSlug === entry.slug);
 
@@ -86,6 +90,7 @@ export function buildExamHome(
     examName: entry.examName,
     practiceOnly: entry.practiceOnly === true,
     totalQuestions: opts.totalPublicQuestions,
+    pastYearQuestions: entry.practiceOnly ? (opts.pastYearQuestions ?? 0) : 0,
     chapterCount: mine.length,
     years,
     subjects,
@@ -101,8 +106,9 @@ export function buildExamHome(
 
 /** The one-sentence description: what the page states first, and its <meta>. */
 export function examHomeDescription(m: ExamHomeModel): string {
-  const n = m.totalQuestions.toLocaleString("en-IN");
-  const kind = m.practiceOnly ? "practice questions" : "past-year questions";
+  const counts = m.practiceOnly
+    ? { pyq: m.pastYearQuestions, practice: m.totalQuestions }
+    : { pyq: m.totalQuestions, practice: 0 };
   const span = m.years ? ` from ${m.years.min} to ${m.years.max}` : "";
   const shape =
     m.subjects.length > 0 && m.chapterCount > 0
@@ -118,5 +124,5 @@ export function examHomeDescription(m: ExamHomeModel): string {
       : extras.length === 1
         ? ` and ${extras[0]}`
         : `, ${extras.slice(0, -1).join(", ")}, and ${extras[extras.length - 1]}`;
-  return `${m.displayName} on PYQ Vault: ${n} ${kind}${span}${shape}, with answers and worked solutions${tail}. Free to browse.`;
+  return `${m.displayName} on PYQ Vault: ${examKindPhrase(counts, m.practiceOnly)}${span}${shape}, with answers and worked solutions${tail}. Free to browse.`;
 }

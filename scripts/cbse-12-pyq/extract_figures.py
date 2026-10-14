@@ -35,7 +35,7 @@ import sys
 import warnings
 
 import fitz
-from PIL import Image
+from PIL import Image, ImageDraw
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from regions import merge, big  # noqa: E402
@@ -43,56 +43,34 @@ from regions import merge, big  # noqa: E402
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
 OUT = os.path.join(HERE, "out", "figures")
-SOURCE_BASE = r"C:\tmp\PYQPs\CBSE\XII"
-
-# Which subject a paper belongs to is carried by its CODE, not by a flag: one
-# run's group list spans all three subjects at once, because a content_hash
-# group is a question and questions do not know about subjects. 55/56/65 are
-# the same three digits rearranged, so this mirrors prep.py's SUBJECTS registry
-# rather than guessing from the filename.
-SUBJECT_BY_PREFIX = {"55": "Physics", "56": "Chemistry", "57": "Biology", "65": "Mathematics"}
+_INDEX = None
 
 
-def source_root(code):
-    """...\\XII\\<Subject> for a paper code like "55-4-1"."""
-    prefix = str(code).split("-")[0].strip()
-    subject = SUBJECT_BY_PREFIX.get(prefix)
-    if subject is None:
-        return None
-    return os.path.join(SOURCE_BASE, subject)
+def paper_index():
+    """{paperId: row} across every data/_papers.<subject>.json (papers.ts --emit-index).
+
+    One run's group list spans every subject and both classes, because a
+    content_hash group is a question and questions do not know about subjects.
+    So paths come from the TS discovery's index, the tested matcher, and never
+    from a filename search here. That search matched a code as a SUBSTRING, and
+    Class 10 broke it: "30-1-1" is inside "430-1-1_Mathematics Basic.pdf", and
+    the 2026 Standard folder ships both, so the crop could have been taken from
+    a Basic paper (prep.py's load_index retired the same second matcher).
+    """
+    global _INDEX
+    if _INDEX is None:
+        _INDEX = {}
+        for fn in sorted(os.listdir(DATA)):
+            if fn.startswith("_papers.") and fn.endswith(".json"):
+                with open(os.path.join(DATA, fn), encoding="utf-8") as fh:
+                    for row in json.load(fh):
+                        _INDEX[row["paperId"]] = row
+    return _INDEX
 
 
-# Papers whose figures MuPDF renders as black tiled noise. Their images are
-# 8-bit /Indexed over an ICC profile with a full 768-byte palette, valid on
-# paper, yet every renderer path here misreads them (2024 Biology 57/4/1-3, all
-# three sets; the same file family elsewhere renders fine). Decoding each index
-# through its own palette by hand gives the true figure, so these docs have their
-# indexed images replaced IN MEMORY before any page is rendered. The source PDF
-# is never written. Named, not detected: a detector would also "repair" papers
-# that render correctly today.
-REPAIR_INDEXED = {"2024-57-4-1", "2024-57-4-2", "2024-57-4-3"}
-
-
-def repair_indexed(doc):
-    """Replace every /Indexed image in `doc` with its palette-decoded RGB."""
-    done = set()
-    for page in doc:
-        for img in page.get_images(full=True):
-            x = img[0]
-            if x in done:
-                continue
-            done.add(x)
-            obj = doc.xref_object(x, compressed=True)
-            m = re.search(r"/Indexed \d+ 0 R \d+ (\d+) 0 R", obj)
-            if not m:
-                continue
-            w = int(re.search(r"/Width (\d+)", obj).group(1))
-            h = int(re.search(r"/Height (\d+)", obj).group(1))
-            im = Image.frombytes("P", (w, h), doc.xref_stream(x)[: w * h])
-            im.putpalette(list(doc.xref_stream(int(m.group(1)))[:768]))
-            buf = io.BytesIO()
-            im.convert("RGB").save(buf, "PNG")
-            page.replace_image(x, stream=buf.getvalue())
+# Papers whose /Indexed images MuPDF misrenders, and their in-memory repair,
+# live in indexed_repair.py so prep.py's transcription pages get the same fix.
+from indexed_repair import REPAIR_INDEXED, repair_indexed  # noqa: E402
 
 
 REPRINT_MAX = 8      # measured: worst genuine reprint 8, known collision 42
@@ -124,16 +102,16 @@ def hamming(a, b):
 
 
 def find_pdf(year, code, kind="qp"):
-    base = source_root(code)
-    if base is None:
-        return None
-    root = os.path.join(base, str(year), kind)
-    want = code.replace("/", "-")
-    for dirpath, _, files in os.walk(root):
-        for fn in files:
-            if fn.lower().endswith(".pdf") and want in re.sub(r"[_\s]", "-", fn):
-                return os.path.join(dirpath, fn)
-    return None
+    """The paper's question-paper or marking-scheme path, from the index; None if absent."""
+    row = paper_index().get(f"{year}-{code.replace('/', '-')}")
+    return row.get(kind) if row else None
+
+
+def ms_page_range(year, code):
+    """The (from, to) 0-based inclusive pages of this paper's block in a shared scheme, or None."""
+    row = paper_index().get(f"{year}-{code.replace('/', '-')}")
+    pages = row.get("msPages") if row else None
+    return (pages["from"], pages["to"]) if pages else None
 
 
 # The marking scheme lays each question out as a table row: a number in a narrow
@@ -195,6 +173,20 @@ def crop(page, rect, dpi=DPI, pad=PAD, pad_top=None):
     clip = clip & page.rect          # never ask for pixels outside the page
     pix = page.get_pixmap(dpi=dpi, clip=clip)
     return pix.tobytes("png")
+
+
+def paint_mask(png, rect, boxes):
+    """White out page-point boxes on an EXACT crop of `rect` (no padding)."""
+    im = Image.open(io.BytesIO(png)).convert("RGB")
+    sx = im.width / (rect[2] - rect[0])
+    sy = im.height / (rect[3] - rect[1])
+    d = ImageDraw.Draw(im)
+    for b in boxes:
+        d.rectangle([(b[0] - rect[0]) * sx, (b[1] - rect[1]) * sy,
+                     (b[2] - rect[0]) * sx, (b[3] - rect[1]) * sy], fill="white")
+    buf = io.BytesIO()
+    im.save(buf, "PNG", optimize=True)
+    return buf.getvalue()
 
 
 def shrink(png, cap=MAX_BYTES):
@@ -259,7 +251,14 @@ def main():
             pdf = find_pdf(year, code, kind="ms")
             ms_docs[pid] = (fitz.open(pdf), None) if pdf else (None, None)
             if ms_docs[pid][0] is not None:
-                ms_docs[pid] = (ms_docs[pid][0], ms_figures_by_question(ms_docs[pid][0]))
+                index = ms_figures_by_question(ms_docs[pid][0])
+                # A shared scheme (Class 10 Science, Class 12 Physics) holds
+                # several sets, and each numbers its questions from 1, so keep
+                # only the hits inside THIS paper's block.
+                rng = ms_page_range(year, code)
+                if rng:
+                    index = {q: [h for h in hits if rng[0] <= h[0] <= rng[1]] for q, hits in index.items()}
+                ms_docs[pid] = (ms_docs[pid][0], index)
         return ms_docs[pid]
 
     for g in groups:
@@ -273,12 +272,27 @@ def main():
                 if doc is None:
                     problems.append(f"{g['hash'][:8]}: no marking scheme for {pick['pid']}")
                     continue
-                hits = index.get(pick["q"], [])
+                # A scheme whose question label is not detected (2024 30/5/1 files
+                # Q35's figure under Q32) can name the page and a rect in points
+                # outright, like a qp rect pick, instead of looking up "q".
+                if pick.get("mode") == "rect" and isinstance(pick.get("page"), int):
+                    r = pick.get("rect")
+                    if (not isinstance(r, (list, tuple)) or len(r) != 4 or pick["page"] >= len(doc)
+                            or not (r[0] < r[2] and r[1] < r[3])):
+                        problems.append(f"{g['hash'][:8]}: ms rect pick needs a valid page and rect [x0,y0,x1,y1]")
+                        continue
+                    page, pageno = doc[pick["page"]], pick["page"]
+                    rect = tuple(float(v) for v in r)
+                    label = f"{pick['pid']}:ms rect"
+                    hits = [(pageno, rect)]
+                else:
+                    hits = index.get(pick["q"], [])
                 if len(hits) != 1:
                     problems.append(f"{g['hash'][:8]}: scheme {pick['pid']} has {len(hits)} figures for Q{pick['q']}, need exactly 1")
                     continue
-                pageno, rect = hits[0]
-                page, label = doc[pageno], f"{pick['pid']}:ms Q{pick['q']}"
+                if pick.get("mode") != "rect":
+                    pageno, rect = hits[0]
+                    page, label = doc[pageno], f"{pick['pid']}:ms Q{pick['q']}"
             else:
                 doc = open_doc(pick["pid"])
                 if doc is None or pick["page"] >= len(doc):
@@ -286,6 +300,7 @@ def main():
                     continue
                 page, pageno = doc[pick["page"]], pick["page"]
                 mode = pick.get("mode")
+                stacked = None
                 # A SCANNED paper has no separable figures to index. Its whole
                 # page is one raster -- 2022-55-5-1 is 1654x2338 per page with
                 # ZERO text characters -- so page_regions() returns exactly one
@@ -347,6 +362,33 @@ def main():
                     rect = (min(r[0] for r in rs), min(r[1] for r in rs),
                             max(r[2] for r in rs), max(r[3] for r in rs))
                     label = f"{pick['pid']}:picked"
+                elif mode == "stack":
+                    # One question can depend on two drawings with its own prose
+                    # printed between them. 2025 31/2/1 Q36(a): the circuit for
+                    # part (i) and the field-and-electron drawing for part (iii).
+                    # A single rect around both would carry the parts' text into
+                    # the image, so each rect is cropped exactly (no pad) and the
+                    # crops are stacked top to bottom, in the order listed.
+                    rs = pick.get("rects")
+                    if (not isinstance(rs, list) or len(rs) < 2 or not all(
+                            isinstance(r, (list, tuple)) and len(r) == 4 and r[0] < r[2] and r[1] < r[3]
+                            for r in rs)):
+                        problems.append(f"{g['hash'][:8]}: stack pick needs rects [[x0,y0,x1,y1], ...] (two or more)")
+                        continue
+                    ims = [Image.open(io.BytesIO(crop(page, r, pad=0.0))).convert("RGB") for r in rs]
+                    gap = 24
+                    canvas = Image.new("RGB", (max(im.width for im in ims),
+                                               sum(im.height for im in ims) + gap * (len(ims) - 1)), "white")
+                    y = 0
+                    for im in ims:
+                        canvas.paste(im, (0, y))
+                        y += im.height + gap
+                    buf = io.BytesIO()
+                    canvas.save(buf, "PNG", optimize=True)
+                    stacked = buf.getvalue()
+                    rect = (min(r[0] for r in rs), min(r[1] for r in rs),
+                            max(r[2] for r in rs), max(r[3] for r in rs))
+                    label = f"{pick['pid']}:stack"
                 else:
                     problems.append(f"{g['hash'][:8]}: unknown pick mode {mode!r}")
                     continue
@@ -370,8 +412,24 @@ def main():
             top = pick.get("padTop")
             if top:
                 rect = (rect[0], max(0.0, rect[1] - top), rect[2], rect[3])
-            png, note = shrink(crop(page, rect, pad=0.0 if band else PAD,
-                                    pad_top=0.0 if top else None))
+            # A `mask` whites out stem text that sits INSIDE the drawing's bounds
+            # and cannot be cut by any rectangle. 2024 30/1/3 Q35 forced it: the
+            # last words of the stem ("circle", "then :") print beside the circle,
+            # directly above the "A" label the question turns on. Boxes are in
+            # page points, so the crop must be exact (band) or the pixel offsets
+            # would not match.
+            mask = pick.get("mask")
+            if mask and (stacked or not band or top):
+                problems.append(f"{g['hash'][:8]}: mask needs an exact crop (band, no padTop, not stack)")
+                continue
+            if stacked:
+                png, note = shrink(stacked)
+            else:
+                raw = crop(page, rect, pad=0.0 if band else PAD,
+                           pad_top=0.0 if top else None)
+                if mask:
+                    raw = paint_mask(raw, rect, mask)
+                png, note = shrink(raw)
             entry = {"hash": g["hash"], "from": label, "page": pageno,
                      "rect": [round(v, 1) for v in rect], "bytes": len(png),
                      "file": f"{g['hash'][:12]}.png", "members": len(g["members"]),

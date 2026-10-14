@@ -1,7 +1,7 @@
 /**
  * OMML export probe for the CBSE Class-12 board PYQ corpus.
  *
- *   npx tsx scripts/cbse-12-pyq/audit-omml.ts
+ *   npx tsx scripts/cbse-12-pyq/audit-omml.ts --class=12
  *
  * WHY A LOCAL COPY. The shared `npm run audit:omml` selects a WIDE row shape
  * (text + context + solution + every option) filtered by `ilike source_file`
@@ -22,7 +22,7 @@
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { findOmmlFailures } from "../../src/lib/export/ommlAudit";
-import { ORG_ID, EXAM_ID_CBSE_12 } from "./config";
+import { ORG_ID, classFromArgs } from "./config";
 
 type Row = {
   id: string; question_number: string; source_file: string;
@@ -31,6 +31,7 @@ type Row = {
 };
 
 async function main() {
+  const scope = classFromArgs(process.argv);
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
   const client = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -42,7 +43,7 @@ async function main() {
   for (let from = 0; ; from += 500) {
     const { data, error } = await client.from("questions")
       .select("id, question_number, source_file, text, context, solution, options(label, text)")
-      .eq("org_id", ORG_ID).eq("exam_id", EXAM_ID_CBSE_12).eq("question_kind", "pyq")
+      .eq("org_id", ORG_ID).eq("exam_id", scope.examId).eq("question_kind", "pyq")
       .order("id").range(from, from + 499);
     if (error) throw new Error(error.message);
     rows.push(...(data as never as Row[]));

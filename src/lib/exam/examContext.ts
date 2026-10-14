@@ -320,10 +320,17 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // textbook questions to board PYQs. Measure the landing-page impact before
     // dropping it (scripts/cbse-12-pyq/flip-impact.ts is the precedent).
     //
-    // Until then the NCERT textbook corpus is the whole bank, so /browse must
-    // default to the Practice toggle — without the flag the default view is an
-    // empty PYQ list.
+    // The board PYQs (Maths Standard + Science, 2022-2026, 3,415 rows) went
+    // PUBLIC on 2026-10-15 and the flag was KEPT on the owner's call: measured
+    // that day, dropping it would remove 5 live Social Science landing pages
+    // (Development, Sectors of the Indian Economy, Money and Credit,
+    // Globalisation and the Indian Economy, Consumer Rights), which have
+    // textbook questions but no board PYQs. The PYQs are reached through the
+    // /browse PYQ toggle and the chapter tests meanwhile. Revisit once those
+    // chapters have PYQs, or once a landing page can fall back to textbook
+    // questions per chapter.
     practiceOnly: true,
+    hasMocks: true, // 27 chapter tests (Maths 14, Science 13) published 2026-10-15
     boardExam: true, // NCERT textbook content → gets the /board reader + the "Board" nav tab
     board: "CBSE",
     std: 10,

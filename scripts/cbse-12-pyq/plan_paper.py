@@ -220,12 +220,18 @@ def main():
         if a == "--against" and i + 1 < len(sys.argv):
             against = [c.strip() for c in sys.argv[i + 1].split(",") if c.strip()]
 
-    subject = "maths"
+    # The subject comes from the paper code, exactly as prep.py derives it. This
+    # used to default to "maths" and accept only the four Class 12 subjects, so
+    # the first Class 10 sibling (2025 30/1/2, 2026-10-14) planned against the
+    # Class 12 Maths index and found no scheme.
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from prep import SUBJECTS, subject_for_code
+    subject = subject_for_code(code)
     for a in sys.argv:
         if a.startswith("--subject="):
-            subject = a.split("=", 1)[1].strip()
-    if subject not in ("maths", "physics", "chemistry", "biology"):
-        print(f"unknown --subject={subject!r}; expected maths, physics, chemistry or biology", file=sys.stderr)
+            subject = a.split("=", 1)[1].strip().lower()
+    if subject not in SUBJECTS:
+        print(f"unknown --subject={subject!r}; expected one of {', '.join(SUBJECTS)}", file=sys.stderr)
         sys.exit(2)
     index = load_index(subject)
 

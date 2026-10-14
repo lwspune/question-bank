@@ -1,8 +1,8 @@
 /**
  * Per-paper solution coverage across the whole CBSE board-PYQ corpus.
  *
- *   npx tsx scripts/cbse-12-pyq/solution-status.ts
- *   npx tsx scripts/cbse-12-pyq/solution-status.ts --todo    # only papers with work left
+ *   npx tsx scripts/cbse-12-pyq/solution-status.ts --class=12
+ *   npx tsx scripts/cbse-12-pyq/solution-status.ts --class=12 --todo    # only papers with work left
  *
  * A row is COMMITTED under whichever series won the dedup race, so this counts
  * by `source_file` — i.e. "rows this paper OWNS", not "questions this paper
@@ -14,9 +14,10 @@
  */
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { ORG_ID, EXAM_ID_CBSE_12 } from "./config";
+import { ORG_ID, classFromArgs } from "./config";
 
 async function main() {
+  const scope = classFromArgs(process.argv);
   const todoOnly = process.argv.includes("--todo");
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
   const client = createClient(
@@ -30,7 +31,7 @@ async function main() {
   const rows: { source_file: string; solution: string | null }[] = [];
   for (let from = 0; ; from += 500) {
     const { data, error } = await client.from("questions").select("source_file, solution")
-      .eq("org_id", ORG_ID).eq("exam_id", EXAM_ID_CBSE_12).eq("question_kind", "pyq")
+      .eq("org_id", ORG_ID).eq("exam_id", scope.examId).eq("question_kind", "pyq")
       .order("source_file").range(from, from + 499);
     if (error) throw new Error(error.message);
     rows.push(...(data as never as typeof rows));
@@ -39,7 +40,7 @@ async function main() {
 
   const byPaper = new Map<string, { own: number; solved: number }>();
   for (const r of rows) {
-    const k = r.source_file.replace(/^cbse-12-pyq-/, "");
+    const k = r.source_file.replace(scope.sourcePrefix, "");
     if (!byPaper.has(k)) byPaper.set(k, { own: 0, solved: 0 });
     const e = byPaper.get(k)!;
     e.own++;

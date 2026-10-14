@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { cbseManifest, marksTotal, withLeaderQuestions, type SourceQuestion, type SourcePaper } from "@/lib/questionPapers/manifest";
+import { cbseManifest, CBSE_10_PATTERNS, marksTotal, withLeaderQuestions, type SourceQuestion, type SourcePaper } from "@/lib/questionPapers/manifest";
 import { contentHash, subjectiveContentHash } from "@/lib/upload/hash";
 
 const opts = [
@@ -119,6 +119,25 @@ describe("cbseManifest — one transcribed CBSE paper as a printable paper", () 
       questions: PAPER.questions.map((q) => (q.ref === "Q3b" ? { ...q, _alternativeTo: "Q9" } : q)),
     };
     expect(cbseManifest(broken, { subjectName: "Physics", totals: TOTALS }).ok).toBe(false);
+  });
+});
+
+describe("cbseManifest — a CBSE Class 10 paper", () => {
+  it("titles a Class 10 paper as Class 10", () => {
+    const r = cbseManifest({ ...PAPER, paper: "31/2/2" }, { subjectName: "Science", totals: TOTALS, className: "CBSE Class 10" });
+    if (!r.ok) throw new Error(r.reason);
+    expect(r.manifest.title).toBe("CBSE Class 10 Science 2025 (31/2/2)");
+    expect(r.manifest.slug).toBe("2025-31-2-2");
+  });
+
+  it("knows every Class 10 pattern the transcriptions name, with the printed totals", () => {
+    // 2022 is the Term 2 paper (40 marks, two hours); from 2023 every paper is
+    // 80 marks in three hours, including both 2026 Science layouts.
+    expect(CBSE_10_PATTERNS.term2_m10).toEqual({ marks: 40, minutes: 120 });
+    expect(CBSE_10_PATTERNS.term2_s10).toEqual({ marks: 40, minutes: 120 });
+    for (const p of ["full80", "sci80", "sci80_2026", "sci80_2026_cs16"]) {
+      expect(CBSE_10_PATTERNS[p]).toEqual({ marks: 80, minutes: 180 });
+    }
   });
 });
 

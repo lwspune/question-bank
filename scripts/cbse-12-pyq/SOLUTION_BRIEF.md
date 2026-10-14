@@ -165,13 +165,15 @@ inconsistency, so a careful student who spots it is not left doubting themselves
 > onto 96 more rows — a 46-row precedent about to overwrite a convention set
 > across 1,766.
 >
-> **You do not lose the exam signal by writing one voice.** 84 of the Maths rows
-> (4.8%) mention the marking scheme INLINE, at the point where it carries
-> information — e.g. a solution that ends *"The direction must be stated: the
-> marking scheme deducts half a mark if it is left out."* That is the mark
-> signal delivered where a student needs it, inside the physics. A header block
-> is not more informative, only more scaffolded. **Mention the scheme inline when
-> it tells the student something; never as a structural heading.**
+> **Mention the scheme inline only when it says something about the ANSWER:** an
+> alternative it accepts ("the marking scheme also accepts 2.67 m"), a defect it
+> acknowledges (no option correct, mark to all), or its own error (the bracket).
+> **Never its mark rules** (owner, 2026-10-15): no "the marking scheme deducts
+> half a mark if the arrows are missing", no "one mark for the diagram and half a
+> mark for labelling". Keep the instruction and drop the rule: *"Draw arrows on
+> the rays."* `check-sidecar.py` fails a block that carries one. (84 Class-12
+> Maths rows written before this decision still do; they are a backfill
+> candidate in SUGGESTIONS.md, not a precedent.)
 
 - **Prose, not a bare chain.** One sentence of orientation beats three lines of
   unexplained algebra.
