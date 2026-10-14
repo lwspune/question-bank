@@ -13,7 +13,7 @@ import * as XLSX from "xlsx";
 import { parseSheet } from "../worksheets/lib";
 import { requireChapter, DATA, sourcePathOf } from "./config";
 import { filesArg } from "./read";
-import { BROKEN_UNIT, type SourceFile, type SourceRecord } from "./lib";
+import { BROKEN_UNIT, liftCurrencyOutOfMath, type SourceFile, type SourceRecord } from "./lib";
 
 const chapter = requireChapter(process.argv[2]);
 const only = filesArg();
@@ -28,10 +28,10 @@ for (const file of chapter.files) {
   if (errors.length) throw new Error(`${file.key}: ${errors.join("; ")}`);
   const records: SourceRecord[] = questions.map((q) => ({
     n: q.row,
-    stem: q.stem,
-    options: q.options,
+    stem: liftCurrencyOutOfMath(q.stem),
+    options: q.options.map(liftCurrencyOutOfMath),
     key: /^[A-D]$/.test(q.answer) ? q.answer : null,
-    keySolution: q.solution,
+    keySolution: liftCurrencyOutOfMath(q.solution),
     difficulty: q.difficulty,
   }));
   const bad = records.filter((r) => !r.key).map((r) => r.n);

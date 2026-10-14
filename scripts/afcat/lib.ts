@@ -652,10 +652,18 @@ export function commitGroups<R extends { questionNumber?: string }>(
 
 const SOURCE_SELF_TALK = /\b(wait|let me (re)?(calculate|consider|check|verify)|looking at the options|doesn'?t match|does not match|recheck)\b/i;
 
-const SOURCE_HEDGE = /\b(closest|nearest (option|simple|given|answer)|as per (the )?(option|distribution)|option pattern|distribution requirement)\b/i;
+const SOURCE_HEDGE = /\b(closest|nearest (option|simple|given|answer)|(as per|according to) (the )?(option|distribution)|option pattern|distribution requirement)\b/i;
 
 /** `\/` (a LaTeX italic correction) where the sheet lost "₹ ... per": renders as a bare number. */
 export const BROKEN_UNIT = /\\\//;
+
+/**
+ * One Cadetprep sheet writes the currency inside the math zone, `\(Rs. 900\)`,
+ * which renders "Rs." as italic letters with no space. Move it out in front.
+ */
+export function liftCurrencyOutOfMath(text: string): string {
+  return text.replace(/\\\(\s*Rs\.\s*/g, "Rs. \\(");
+}
 
 /** Why a source solution cannot be published as it stands, or null if it can. */
 export function sourceSolutionProblem(solution: string): string | null {
