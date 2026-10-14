@@ -14,10 +14,21 @@ import { loadChapter, qid } from "./read";
 const chapter = requireChapter(process.argv[2]);
 const shuffles = readJson<ShufflePlan>(join(DATA, `${chapter.id}.shuffles.json`), {});
 const overrides = loadOverrides(chapter);
-const flagsById = new Map<string, string[]>();
-for (const { fileIndex, records } of loadChapter(chapter)) for (const r of records) if (r.flags) flagsById.set(qid(fileIndex, r.n), r.flags);
-
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const flagsById = new Map<string, string[]>();
+const excluded: string[] = []; // rows an override drops: listed so the reviewer sees them too
+for (const { fileIndex, records } of loadChapter(chapter)) {
+  for (const r of records) {
+    const id = qid(fileIndex, r.n);
+    if (r.flags) flagsById.set(id, r.flags);
+    const ov = overrides[id];
+    if (ov?.exclude) {
+      const opts = r.options.map((o, i) => `<b>${"ABCD"[i]}</b> ${esc(o)}`).join(" · ");
+      excluded.push(`<div class="q ex"><div class="meta"><code>${id}</code> · NOT SHIPPED</div><span class="b ov">${esc(ov.reason)}</span><p class="stem">${esc(r.stem)}</p><p>${opts}</p></div>`);
+    }
+  }
+}
+
 const cards: string[] = [];
 let n = 0;
 for (const f of buildChapter(chapter, { shuffles })) {
@@ -49,10 +60,11 @@ const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta n
 .q{background:#fff;border:1px solid #d8deea;border-radius:8px;padding:12px 16px;margin:12px 0}.meta{font-size:13px;color:#4a5578}
 .stem{font-family:Georgia,serif}ol{list-style:none;padding:0}li{padding:4px 8px;border-radius:4px;font-family:Georgia,serif}
 li.ok{background:#dcfce7;outline:1px solid #16a34a}.sol{font-size:14px;background:#f1f5ff;padding:8px;border-radius:4px}
-.b{display:inline-block;font-size:12px;border-radius:4px;padding:1px 6px;margin:4px 4px 0 0}.ov{background:#fef3c7}.sh{background:#e0e7ff}.fl{background:#fee2e2}</style>
+.b{display:inline-block;font-size:12px;border-radius:4px;padding:1px 6px;margin:4px 4px 0 0}.ov{background:#fef3c7}.sh{background:#e0e7ff}.fl{background:#fee2e2}.ex{opacity:.75;border-style:dashed}</style>
 </head><body><h1>AFCAT: ${esc(chapter.chapterName)} (${n} questions, PRIVATE)</h1>
 <p>Green = the key that ships. Badges: amber = adjudicated override, blue = options reordered to balance the key letters, red = what extraction found in the SOURCE key (context only).</p>
-${cards.join("\n")}</body></html>`;
+${cards.join("\n")}
+${excluded.length ? `<h2>Excluded (${excluded.length}): not in the database</h2>\n${excluded.join("\n")}` : ""}</body></html>`;
 
 mkdirSync(OUT, { recursive: true });
 const dest = join(OUT, `${chapter.id}.preview.html`);
