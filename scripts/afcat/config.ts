@@ -238,6 +238,20 @@ export const CHAPTERS: Record<string, Chapter> = {
       },
     ],
   },
+  clock: {
+    id: "clock",
+    chapterName: "Clock",
+    subtopics: ["Angle Between the Hands", "Faulty Clocks", "Gain and Loss of Time", "Angle Covered by the Hands"],
+    files: [
+      {
+        key: "errorless",
+        group: "B",
+        label: "Clock Errorless sheet (4 types)",
+        path: "02. CLOCK ERRORLESS.pdf",
+        note: "AFCAT practice — Errorless sheet, Clock. Key letters only; every key blind re-derived.",
+      },
+    ],
+  },
   "ratio-and-proportion": {
     id: "ratio-and-proportion",
     chapterName: "Ratio and Proportion",
