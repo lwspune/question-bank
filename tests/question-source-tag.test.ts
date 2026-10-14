@@ -33,6 +33,32 @@ describe("sourceTag: past papers", () => {
       .toBe("Maharashtra HSC Class 12 · 2019 · Q.3 (ii)");
   });
 
+  // 2026-10-14. A superadmin reads the RAW pyq_note, and the board notes are
+  // 100-400 characters of provenance, so the tag ran off the card. The tag now
+  // shows the same short sitting label a student sees, and keeps the full note
+  // as `detail` for a hover.
+  it("shows a board paper's sitting label, never its whole provenance note", () => {
+    const note =
+      "CBSE Class 10 Science (086) board examination 2024, question paper 31/5/1. " +
+      "Official CBSE question paper; answer cross-checked against CBSE's published " +
+      "marking scheme for the same paper code.";
+    expect(sourceTag({ ...base, exam: { name: "CBSE Class 10" }, pyqYear: 2024, pyqNote: note, questionNumber: "1" }))
+      .toEqual({ kind: "pyq", label: "CBSE Class 10 · 2024 · 31/5/1 · Q1", detail: note });
+  });
+
+  it("drops a long note that names no sitting, keeping it as detail", () => {
+    const note =
+      "Maharashtra HSC Class 12 Board PYQ — Vectors (chapterwise compilation, March " +
+      "2015-2025; no 2021, exams cancelled)";
+    expect(sourceTag({ ...base, exam: { name: "Maharashtra HSC Class 12" }, pyqYear: 2019, pyqNote: note, questionNumber: "4" }))
+      .toEqual({ kind: "pyq", label: "Maharashtra HSC Class 12 · 2019 · Q4", detail: note });
+  });
+
+  it("adds no detail when the note is already short (what a student is sent)", () => {
+    expect(sourceTag({ ...base, exam: { name: "CBSE Class 10" }, pyqYear: 2024, pyqNote: "31/5/1", questionNumber: "1" }))
+      .toEqual({ kind: "pyq", label: "CBSE Class 10 · 2024 · 31/5/1 · Q1" });
+  });
+
   it("drops whatever is missing rather than printing a gap", () => {
     expect(sourceTag({ ...base, exam: { name: "CDS" }, pyqYear: 2024 }).label).toBe("CDS · 2024");
   });

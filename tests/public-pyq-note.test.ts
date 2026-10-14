@@ -33,6 +33,7 @@ import { describe, it, expect } from "vitest";
 import {
   MAX_PUBLIC_PYQ_NOTE_LEN,
   publicPyqNote,
+  sittingLabel,
 } from "@/lib/questions/publicPyqNote";
 
 describe("publicPyqNote", () => {
@@ -118,11 +119,6 @@ describe("publicPyqNote", () => {
     // rather than an identifier, so the kind axis cannot catch them.
     it.each([
       [
-        "CBSE Class 12 Mathematics (041) board examination 2022, question paper 65/1/1. " +
-          "Official CBSE question paper; answer cross-checked against CBSE's published " +
-          "marking scheme for the same paper code.",
-      ],
-      [
         "Maharashtra HSC Class 12 Board PYQ — Rotational Dynamics (chapterwise " +
           "compilation, March 2016-February 2025; no 2021, exams cancelled)",
       ],
@@ -134,6 +130,82 @@ describe("publicPyqNote", () => {
     ])("drops narrative over the cap", (note) => {
       expect(note.length).toBeGreaterThan(MAX_PUBLIC_PYQ_NOTE_LEN);
       expect(publicPyqNote(note, "pyq")).toBeNull();
+    });
+  });
+
+  describe("pyq questions — a long board note publishes its sitting label", () => {
+    // 2026-10-14. These notes are narrative, but each names its sitting in a
+    // fixed place: the CBSE set code, the Maharashtra board month, the UPSC
+    // paper. A student needs that label to tell one sitting from another
+    // (March and July 2024 SSC, sets 31/1/1 and 31/5/1), and none of it names
+    // a source. So the label publishes, and the narrative around it does not.
+    it.each([
+      [
+        "CBSE Class 10 Science (086) board examination 2024, question paper 31/5/1. " +
+          "Official CBSE question paper; answer cross-checked against CBSE's published " +
+          "marking scheme for the same paper code.",
+        "31/5/1",
+      ],
+      [
+        "CBSE Class 12 Chemistry (043) board examination 2022, question paper 56/4/3. " +
+          "This is the COVID-era Term-II paper (12 questions, 35 marks), covering part of " +
+          "the syllabus only, and it predates NCERT's rationalisation — some questions " +
+          "examine content the current syllabus no longer includes. Official CBSE question " +
+          "paper; answer cross-checked against CBSE's published marking scheme for the same " +
+          "paper code.",
+        "56/4/3",
+      ],
+      [
+        "Maharashtra HSC Class 12 Board question paper — Biology (Subject code 56), " +
+          "June 2026 sitting (paper code J-297)",
+        "June",
+      ],
+      [
+        "Maharashtra State Board Class 10 (SSC) — Geometry (Mathematics Part II), " +
+          "March 2019 board paper",
+        "March",
+      ],
+      [
+        "Maharashtra State Board Class 10 (SSC) — Social Sciences Paper I — History and " +
+          "Political Science, June 2026 board paper",
+        "June",
+      ],
+      ["UPSC CSE (Prelims) 2017 - General Studies Paper I", "General Studies Paper I"],
+      [
+        "UPSC CSE (Prelims) 2026 - CSAT Paper II. Answer verified against UPSC's " +
+          "PROVISIONAL answer key (released 2026-05-27, objection window closed " +
+          "2026-05-31), NOT the final post-cycle key used for every other year in this " +
+          "corpus. Supersede when the final key is published.",
+        "CSAT Paper II",
+      ],
+    ])("%j -> %j", (note, label) => {
+      expect(note.length).toBeGreaterThan(MAX_PUBLIC_PYQ_NOTE_LEN);
+      expect(publicPyqNote(note, "pyq")).toBe(label);
+      expect(sittingLabel(note)).toBe(label);
+    });
+
+    it("labels a short UPSC note the same way as the long ones beside it", () => {
+      const note = "UPSC CSE (Prelims) 2017 - CSAT Paper II";
+      expect(note.length).toBeLessThanOrEqual(MAX_PUBLIC_PYQ_NOTE_LEN);
+      expect(publicPyqNote(note, "pyq")).toBe("CSAT Paper II");
+    });
+
+    it("never publishes a label from a practice note", () => {
+      expect(
+        publicPyqNote(
+          "CBSE Class 10 Science (086) board examination 2024, question paper 31/5/1. Official CBSE question paper.",
+          "practice"
+        )
+      ).toBeNull();
+    });
+
+    it("has no label for a narrative that names no sitting", () => {
+      expect(
+        sittingLabel(
+          "Maharashtra HSC Class 12 Board PYQ — Rotational Dynamics (chapterwise " +
+            "compilation, March 2016-February 2025; no 2021, exams cancelled)"
+        )
+      ).toBeNull();
     });
 
     it("measures the cap AFTER the bracket strip, not before", () => {
