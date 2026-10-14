@@ -468,6 +468,14 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "03. Ratio\\12_Ratio_&_Proportions_CDS.pdf",
         note: "AFCAT practice — CDS Pathfinder (book chapter), Ratio and Proportion. Every key blind re-derived.",
       },
+      {
+        // Ratio_and_Proportion_AFCAT_HW.pdf is pages 2-4 of this file.
+        key: "book",
+        group: "C",
+        label: "Conquer the Sky AFCAT: Ratio and Proportion (model practice + AFCAT past years)",
+        path: "03. Ratio\\Ratio_and_Proportion_AFCAT.pdf",
+        note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Ratio and Proportion. Every key re-derived.",
+      },
     ],
   },
 };
