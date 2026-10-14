@@ -456,7 +456,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   clock: {
     id: "clock",
     chapterName: "Clock",
-    subtopics: ["Angle Between the Hands", "Faulty Clocks", "Gain and Loss of Time", "Angle Covered by the Hands"],
+    subtopics: ["Angle Between the Hands", "Faulty Clocks", "Gain and Loss of Time", "Angle Covered by the Hands", "Time Reasoning"],
     files: [
       {
         key: "errorless",
@@ -464,6 +464,17 @@ export const CHAPTERS: Record<string, Chapter> = {
         label: "Clock Errorless sheet (4 types)",
         path: "02. CLOCK ERRORLESS.pdf",
         note: "AFCAT practice — Errorless sheet, Clock. Key letters only; every key blind re-derived.",
+      },
+      {
+        // Clock_HW.pdf is pages 2-3 of this file. Its Calendar questions (Q7-15) and
+        // all its AFCAT past-year questions (Calendar, Reasoning section) are not taken:
+        // AFCAT asks Calendar under Reasoning, and this bank's AFCAT subject is
+        // Numerical Ability.
+        key: "book",
+        group: "C",
+        label: "Conquer the Sky AFCAT: Clock (model practice, Clock part only)",
+        path: "10. Clock\\Arihant_Clock.pdf",
+        note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Clock. Every key blind re-derived.",
       },
     ],
   },
