@@ -11,27 +11,17 @@
 import { execFileSync } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { requireChapter, SOURCE_ROOT, DATA, type FileEntry } from "./config";
-import { parseQuizQuestions, parseQuizKey, keyValueMatches, type SourceFile, type SourceRecord, type QuizKeyEntry } from "./lib";
+import { requireChapter, SOURCE_ROOT, DATA } from "./config";
+import { applyTextFixes, parseQuizQuestions, parseQuizKey, keyValueMatches, type SourceFile, type SourceRecord, type QuizKeyEntry } from "./lib";
 
 const docxText = (rel: string) =>
   execFileSync("pandoc", [join(SOURCE_ROOT, rel), "-t", "plain", "--wrap=none"], { encoding: "utf8", maxBuffer: 64 << 20 });
-
-function applyFixes(text: string, file: FileEntry): string {
-  let out = text;
-  for (const f of file.textFixes ?? []) {
-    const hits = out.split(f.find).length - 1;
-    if (hits !== 1) throw new Error(`${file.key}: text fix "${f.find}" matched ${hits} times (want exactly 1)`);
-    out = out.replace(f.find, f.replace);
-  }
-  return out;
-}
 
 const chapter = requireChapter(process.argv[2]);
 mkdirSync(join(DATA, chapter.id), { recursive: true });
 
 for (const file of chapter.files.filter((f) => f.group === "A")) {
-  const { questions, errors, keyText } = parseQuizQuestions(applyFixes(docxText(file.path), file));
+  const { questions, errors, keyText } = parseQuizQuestions(applyTextFixes(docxText(file.path), file.textFixes ?? [], file.key));
 
   let key = new Map<number, QuizKeyEntry>();
   if (file.answerKey === "embedded") key = parseQuizKey(keyText);

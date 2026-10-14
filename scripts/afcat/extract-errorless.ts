@@ -15,7 +15,7 @@ import { execFileSync } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { requireChapter, SOURCE_ROOT, DATA } from "./config";
-import { errorlessPage, splitTypeSections, parseQuizQuestions, equalValueOptions, type PdfPage, type SourceFile, type SourceRecord } from "./lib";
+import { applyTextFixes, errorlessPage, splitTypeSections, parseQuizQuestions, equalValueOptions, type PdfPage, type SourceFile, type SourceRecord } from "./lib";
 
 const chapter = requireChapter(process.argv[2]);
 mkdirSync(join(DATA, chapter.id), { recursive: true });
@@ -30,7 +30,8 @@ for (const file of chapter.files.filter((f) => f.group === "B")) {
     lines.push(...r.lines);
     keyBlocks.push(...r.keyBlocks);
   }
-  const sections = splitTypeSections(lines);
+  const fixed = applyTextFixes(lines.join("\n"), file.textFixes ?? [], file.key).split("\n");
+  const sections = splitTypeSections(fixed);
   const problems: string[] = [];
   if (keyBlocks.length !== sections.length) problems.push(`${sections.length} sections but ${keyBlocks.length} ANSWERS boxes`);
 

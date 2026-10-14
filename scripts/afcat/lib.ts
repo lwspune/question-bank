@@ -479,3 +479,17 @@ export function planChapterShuffles(
   }
   return out;
 }
+
+/**
+ * Apply a file's recorded source repairs (config `textFixes`). Each `find` must
+ * match exactly once, so a fix cannot silently stop applying or hit twice.
+ */
+export function applyTextFixes(text: string, fixes: { find: string; replace: string }[], label: string): string {
+  let out = text;
+  for (const f of fixes) {
+    const hits = out.split(f.find).length - 1;
+    if (hits !== 1) throw new Error(`${label}: text fix "${f.find}" matched ${hits} times (want exactly 1)`);
+    out = out.replace(f.find, f.replace);
+  }
+  return out;
+}
