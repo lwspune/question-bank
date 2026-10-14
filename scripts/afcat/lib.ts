@@ -7,7 +7,7 @@
 // line, two to a line, or one to a line — and their answer keys in four more.
 // One tolerant parser covers them all, because a per-file parser would be
 // eight parsers that each only one file ever exercises.
-import { planShuffles } from "../worksheets/lib";
+import { normalizeDifficulty, planShuffles } from "../worksheets/lib";
 
 /**
  * One question as committed to data/<chapter>/<file>.source.json — the
@@ -22,6 +22,7 @@ export type SourceRecord = {
   key: string | null; // the source's answer letter, if it prints one
   keyValue?: string; // what the source's key says in words beside the letter
   keySolution?: string; // the source's worked solution, if any
+  difficulty?: string; // Group D: the sheet's own difficulty label (Easy / Medium / Hard)
   flags?: string[]; // extraction findings for the adjudicator
   section?: string; // Group B/C: the heading the question sits under
   pyq?: PyqSitting; // Group C: an AFCAT past-year question (ingested as question_kind pyq)
@@ -568,4 +569,77 @@ export function commitGroups<R extends { questionNumber?: string }>(
     ...(practice.length ? [{ kind: "practice" as const, rows: practice }] : []),
     ...[...bySitting.values()].map((s) => ({ kind: "pyq" as const, year: s.p.year, note: pyqNoteOf(s.p), rows: s.rows })),
   ];
+}
+
+// ---------------------------------------------------------------------------
+// Group D: Cadetprep AFCAT Excel sheets. They carry a worked solution per row,
+// AI-written like the NDA worksheets'. Where the blind pass agrees with the
+// key, that solution is published as it stands, provided it meets the same
+// contract an authored solution does; every other row needs one written by
+// hand (data/... authored file) before the chapter can build.
+
+const SOURCE_SELF_TALK = /\b(wait|let me (re)?(calculate|consider|check|verify)|looking at the options|doesn'?t match|does not match|recheck)\b/i;
+
+/** Why a source solution cannot be published as it stands, or null if it can. */
+export function sourceSolutionProblem(solution: string): string | null {
+  const s = solution ?? "";
+  if (!s.trim()) return "empty";
+  if (LETTER_REF.some((re) => re.test(s))) return "names an option letter";
+  if (SOURCE_SELF_TALK.test(s)) return "self-talk";
+  if (s.includes("—")) return "em dash";
+  if (CONTROL_CHAR.test(s)) return "control character";
+  return null;
+}
+
+export type CadetprepRecord = { id: string; key: string; keySolution: string; difficulty: string };
+export type AuthoredSolution = { solution: string; subtopic?: string; difficulty?: "EASY" | "MODERATE" | "HARD"; note?: string };
+
+/**
+ * Turn blind verdicts into pass-1 verdicts for a Cadetprep file. A row is
+ * adopted when the blind letter equals the key and the source solution passes
+ * `sourceSolutionProblem`; an authored solution always wins. Everything else is
+ * returned as a to-do with its reason, and the caller refuses to write until
+ * the list is empty. A disputed key still needs its override: this only
+ * supplies the published fields.
+ */
+export function adoptVerdicts(input: {
+  blind: Record<string, [string, string] | [string, string, string]>;
+  records: CadetprepRecord[];
+  authored: Record<string, AuthoredSolution>;
+  subtopic: string;
+}): {
+  derived: { id: string; derived: string; value: string; confidence: "high"; note: string; subtopic: string; difficulty: "EASY" | "MODERATE" | "HARD"; solution: string }[];
+  todo: { id: string; reason: string }[];
+} {
+  const ids = new Set(input.records.map((r) => r.id));
+  const stray = Object.keys(input.blind).filter((id) => !id.startsWith("_") && !ids.has(id));
+  if (stray.length) throw new Error(`blind verdicts for rows not in the file: ${stray.join(", ")}`);
+  const derived: ReturnType<typeof adoptVerdicts>["derived"] = [];
+  const todo: { id: string; reason: string }[] = [];
+  for (const r of input.records) {
+    const b = input.blind[r.id];
+    if (!b) {
+      todo.push({ id: r.id, reason: "no blind verdict" });
+      continue;
+    }
+    const [letter, value, rowSubtopic] = b;
+    const subtopic = rowSubtopic ?? input.subtopic;
+    const a = input.authored[r.id];
+    const difficulty = a?.difficulty ?? normalizeDifficulty(r.difficulty);
+    if (a) {
+      derived.push({ id: r.id, derived: letter, value, confidence: "high", note: a.note ?? "solution authored", subtopic: a.subtopic ?? subtopic, difficulty, solution: a.solution });
+      continue;
+    }
+    if (letter !== r.key) {
+      todo.push({ id: r.id, reason: `dispute: blind ${letter} vs key ${r.key}` });
+      continue;
+    }
+    const problem = sourceSolutionProblem(r.keySolution);
+    if (problem) {
+      todo.push({ id: r.id, reason: `source solution unusable: ${problem}` });
+      continue;
+    }
+    derived.push({ id: r.id, derived: letter, value, confidence: "high", note: "blind agrees with key; source solution adopted", subtopic, difficulty, solution: r.keySolution.trim() });
+  }
+  return { derived, todo };
 }
