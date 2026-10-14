@@ -40,9 +40,10 @@ import { ORG_ID, classFromArgs } from "./config";
  */
 export { referencesFigure, optionsDeferToFigure } from "../lib/figureRefs";
 import { referencesFigure, optionsDeferToFigure } from "../lib/figureRefs";
+import { loadVerdicts, splitByVerdict } from "../lib/figures/verdicts";
 
 type Row = {
-  question_number: string; source_file: string; text: string | null;
+  id: string; question_number: string; source_file: string; text: string | null;
   context: string | null; image_url: string | null; solution_image_url: string | null;
   options: { text: string | null }[] | null;
 };
@@ -59,7 +60,7 @@ async function main() {
   const rows: Row[] = [];
   for (let from = 0; ; from += 500) {
     const { data, error } = await client.from("questions")
-      .select("question_number, source_file, text, context, image_url, solution_image_url, options(text)")
+      .select("id, question_number, source_file, text, context, image_url, solution_image_url, options(text)")
       .eq("org_id", ORG_ID).eq("exam_id", scope.examId).eq("question_kind", "pyq")
       .order("source_file").order("question_number").range(from, from + 499);
     if (error) throw new Error(error.message);
@@ -69,7 +70,7 @@ async function main() {
 
   if (!rows.length) { console.log("\n⚠  NOTHING SCANNED — not a clean result."); process.exit(1); }
 
-  const missing: string[] = [];
+  const missingRows: { id: string; line: string }[] = [];
   const orphan: string[] = [];
   const drawnOptions: string[] = [];
   let withImage = 0;
@@ -78,14 +79,24 @@ async function main() {
     if (has) withImage++;
     const refs = referencesFigure(r.text, r.context);
     const ref = `${r.source_file.replace(scope.sourcePrefix, "")} Q${r.question_number}`;
-    if (refs && !has) missing.push(`${ref}: ${(r.text ?? "").replace(/\s+/g, " ").slice(0, 110)}`);
+    if (refs && !has) missingRows.push({ id: r.id, line: `${ref}: ${(r.text ?? "").replace(/\s+/g, " ").slice(0, 110)}` });
     if (!refs && has) orphan.push(ref);
     if (optionsDeferToFigure(r.options) && !has) drawnOptions.push(ref);
   }
 
+  // A hit a person has already read and ruled "no figure needed" (triage/*.json,
+  // contract in scripts/lib/figures/TRIAGE_BRIEF.md) is not re-reported as
+  // unanswerable; it is counted below so it stays visible.
+  const { open, reviewed } = splitByVerdict(missingRows, loadVerdicts());
+  const missing = open.map((m) => m.line);
+
   console.log(`scanned ${rows.length} pyq row(s) | ${withImage} carry an image`);
   console.log(`\nREFERENCES-NO-IMAGE (unanswerable if real): ${missing.length}`);
   for (const m of missing) console.log(`  ${m}`);
+  if (reviewed.length) {
+    console.log(`  (+ ${reviewed.length} more already read and ruled no figure needed, in scripts/lib/figures/triage/:)`);
+    for (const r of reviewed) console.log(`    ${r.verdict}: ${r.line.slice(0, 70)}`);
+  }
   console.log(`\nIMAGE-NO-REFERENCE (check the attach was not mis-keyed): ${orphan.length}`);
   for (const o of orphan) console.log(`  ${o}`);
   console.log(`\nDRAWN-OPTIONS-NO-IMAGE (the options ARE the figure): ${drawnOptions.length}`);
