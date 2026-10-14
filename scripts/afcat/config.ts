@@ -18,6 +18,12 @@ export const EXAM_NAME = "AFCAT"; // resolved to its id at run time: the row is 
 export const SUBJECT_NAME = "Numerical Ability"; // AFCAT's own name for the section
 
 export const SOURCE_ROOT = "C:\\Vilas\\LWS_Pune\\AFCAT_CDS\\Subject_Content\\Maths\\Class_Notes\\02. Arithmetic_Maths";
+export const CADETPREP_ROOT = "C:\\Vilas\\LWS_Pune\\Cadetprep\\AFCAT\\Maths"; // Group D
+
+/** The file on disk, whichever root it lives under. */
+export function sourcePathOf(file: { path: string; root?: "cadetprep" }): string {
+  return join(file.root === "cadetprep" ? CADETPREP_ROOT : SOURCE_ROOT, file.path);
+}
 
 export const OUT = join(__dirname, "out"); // gitignored: packets, agent output
 export const DATA = join(__dirname, "data"); // committed: transcriptions, verdicts, overrides
@@ -29,8 +35,11 @@ export const DATA = join(__dirname, "data"); // committed: transcriptions, verdi
  * B: "Errorless" sheets (.pdf, clean text layer) — key letters only, no solutions.
  * C: published books and other institutes' sheets (.pdf) — transcribed from
  *    page images because stacked fractions break the text layer.
+ * D: Cadetprep AFCAT Excel sheets (CADETPREP_ROOT) — the LMS-export template
+ *    the NDA worksheets use; one file is one subtopic, each row has an
+ *    AI-written key and worked solution.
  */
-export type Group = "A" | "B" | "C";
+export type Group = "A" | "B" | "C" | "D";
 
 /** A literal repair to the source TEXT before parsing, kept here so it is reviewable. */
 export type TextFix = { find: string; replace: string; reason: string };
@@ -39,7 +48,10 @@ export type FileEntry = {
   key: string; // names data/<chapter>/<key>.source.json
   group: Group;
   label: string; // what the file is, for reports
-  path: string; // relative to SOURCE_ROOT
+  path: string; // relative to SOURCE_ROOT (CADETPREP_ROOT when root is "cadetprep")
+  root?: "cadetprep";
+  /** Group D: the subtopic every row of the file carries (one file, one subtopic). */
+  subtopic?: string;
   /** Group A: where the answer key is. A path (a separate _AK.docx), "embedded"
    *  (printed after an ANSWER KEY heading in the quiz), or "inline" ("Answer: X)"
    *  after each question). */
@@ -508,6 +520,7 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Variation and Work",
       "Mixtures and Coins",
       "Income, Expenditure and Savings",
+      "Ratio Basics and Simplification",
     ],
     files: [
       {
@@ -542,6 +555,33 @@ export const CHAPTERS: Record<string, Chapter> = {
         label: "Conquer the Sky AFCAT: Ratio and Proportion (model practice + AFCAT past years)",
         path: "03. Ratio\\Ratio_and_Proportion_AFCAT.pdf",
         note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Ratio and Proportion. Every key re-derived.",
+      },
+      {
+        key: "cp-basics",
+        group: "D",
+        root: "cadetprep",
+        label: "Cadetprep AFCAT: Ratio Basics",
+        path: "01. Ratio and Proportion\\01. Basics.xlsx",
+        subtopic: "Ratio Basics and Simplification",
+        note: "AFCAT practice — Cadetprep AFCAT sheet, Ratio and Proportion. Every key blind re-derived.",
+      },
+      {
+        key: "cp-proportion",
+        group: "D",
+        root: "cadetprep",
+        label: "Cadetprep AFCAT: Proportion Fundamentals",
+        path: "01. Ratio and Proportion\\02. Proportion Fundamentals.xlsx",
+        subtopic: "Proportionals",
+        note: "AFCAT practice — Cadetprep AFCAT sheet, Ratio and Proportion. Every key blind re-derived.",
+      },
+      {
+        key: "cp-compound",
+        group: "D",
+        root: "cadetprep",
+        label: "Cadetprep AFCAT: Compound Ratios",
+        path: "01. Ratio and Proportion\\03. Compound Ratios.xlsx",
+        subtopic: "Combining Ratios",
+        note: "AFCAT practice — Cadetprep AFCAT sheet, Ratio and Proportion. Every key blind re-derived.",
       },
     ],
   },
