@@ -87,6 +87,14 @@ export const CHAPTERS: Record<string, Chapter> = {
         ],
         note: "AFCAT practice — Errorless sheet, Time and Work. Key letters only (four keys are pictures); every key blind re-derived.",
       },
+      {
+        // Work_and_Time_HW.pdf is pages 2-4 of this file.
+        key: "book",
+        group: "C",
+        label: "Conquer the Sky AFCAT: Time and Work (model practice + AFCAT past years)",
+        path: "12. Time and Work\\Work_and_Time_Arihant.pdf",
+        note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Time and Work. Every key blind re-derived.",
+      },
     ],
   },
   percentage: {
