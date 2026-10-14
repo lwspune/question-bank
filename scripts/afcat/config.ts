@@ -356,6 +356,20 @@ export const CHAPTERS: Record<string, Chapter> = {
       },
     ],
   },
+  "area-and-perimeter": {
+    id: "area-and-perimeter",
+    chapterName: "Area and Perimeter",
+    subtopics: ["Triangles and Quadrilaterals", "Circles and Sectors", "Combined Figures", "Change in Dimensions"],
+    files: [
+      {
+        key: "book",
+        group: "C",
+        label: "CDS Pathfinder: Area and Perimeter of Plane Figures (practice exercise)",
+        path: "20. Mensuration\\26_Area_&_Perimeter_of_Plane_Figure.pdf",
+        note: "AFCAT practice — CDS Pathfinder (book chapter), Area and Perimeter. Every key blind re-derived.",
+      },
+    ],
+  },
   average: {
     id: "average",
     chapterName: "Average",

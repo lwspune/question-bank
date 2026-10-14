@@ -2,6 +2,7 @@
 //
 //   npx tsx scripts/afcat/attach-figures.ts <chapterId>            # dry run: crops + plan
 //   npx tsx scripts/afcat/attach-figures.ts <chapterId> --apply
+//   npx tsx scripts/afcat/attach-figures.ts <chapterId> --crop-only  # crops, no build, no DB: check boxes before the commit
 //
 // A Group C transcript records a question's figure as {page, bbox} (find the
 // box with figure-boxes.py). This crops that box from the source PDF
@@ -28,8 +29,9 @@ const BUCKET = "question-images";
 async function main() {
   const chapter = requireChapter(process.argv[2]);
   const apply = process.argv.includes("--apply");
+  const cropOnly = process.argv.includes("--crop-only");
   const shuffles = readJson<ShufflePlan>(join(DATA, `${chapter.id}.shuffles.json`), {});
-  const excluded = new Set(buildChapter(chapter, { shuffles }).flatMap((f) => f.excluded));
+  const excluded = new Set(cropOnly ? [] : buildChapter(chapter, { shuffles }).flatMap((f) => f.excluded));
 
   const dir = join(OUT, chapter.id, "figures");
   mkdirSync(dir, { recursive: true });
@@ -58,6 +60,7 @@ async function main() {
   const jobsPath = join(dir, "jobs.json");
   writeFileSync(jobsPath, JSON.stringify(jobs.map(({ pdf, page, bbox, pad, out }) => ({ pdf, page, bbox, pad, out })), null, 2));
   console.log(execFileSync("python", [join(__dirname, "crop-figures.py"), jobsPath], { encoding: "utf8" }));
+  if (cropOnly) return console.log(`crops in ${dir}`);
 
   const client = adminClient();
   const examId = await afcatExamId(client);

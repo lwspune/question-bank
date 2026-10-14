@@ -15,7 +15,10 @@ pdf, pno = sys.argv[1], int(sys.argv[2])
 min_side = float(next((a[6:] for a in sys.argv[3:] if a.startswith("--min=")), 40))
 page = fitz.open(pdf)[pno - 1]
 rects = [fitz.Rect(d["rect"]) for d in page.get_drawings()]
-rects += [fitz.Rect(info["bbox"]) for info in page.get_image_info() if fitz.Rect(info["bbox"]).width < page.rect.width * 0.9]
+rects += [fitz.Rect(info["bbox"]) for info in page.get_image_info()]
+# Page furniture (header and footer bands, column rules) spans the page and
+# would chain every figure into one box: a figure sits inside one column.
+rects = [r for r in rects if r.width < page.rect.width * 0.45 and r.height < page.rect.height * 0.5]
 
 clusters: list[fitz.Rect] = []
 for r in rects:
