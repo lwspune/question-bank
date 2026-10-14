@@ -48,9 +48,25 @@ SUBJECTS = {
     "physics": ("Physics", "55"),
     "chemistry": ("Chemistry", "56"),
     "biology": ("Biology", "57"),
+    # Class 10 (2026-10-14): Mathematics Standard 30/s/n, Science 31/s/n.
+    "maths10": ("Mathematics_Standard", "30"),
+    "science10": ("Science", "31"),
 }
-SOURCE_BASE = r"C:\tmp\PYQPs\CBSE\XII"
 OUT = os.path.join(os.path.dirname(__file__), "out")
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from indexed_repair import REPAIR_INDEXED, repair_indexed  # noqa: E402
+
+
+def subject_for_code(code):
+    """The subject a paper code belongs to, from its prefix ("30-1-1" -> maths10).
+
+    Derived, like config.ts's subjectForPaperId, rather than defaulted: the old
+    default of "maths" would send a Class 10 code to the Class 12 index.
+    """
+    prefix = re.split(r"[-/]", code, maxsplit=1)[0]
+    found = [k for k, (_, p) in SUBJECTS.items() if p == prefix]
+    return found[0] if len(found) == 1 else None
 DATA = os.path.join(os.path.dirname(__file__), "data")
 DPI = 165
 
@@ -103,10 +119,16 @@ def load_index(subject):
     return {r["paperId"]: r for r in rows}
 
 
-def render(pdf, dest, pages=None):
-    """pages is an inclusive (from, to) 0-based range, or None for the whole file."""
+def render(pdf, dest, pages=None, repair=False):
+    """pages is an inclusive (from, to) 0-based range, or None for the whole file.
+
+    repair: decode /Indexed images by hand first (see indexed_repair.py), for
+    the named papers MuPDF otherwise draws with black bars over the text.
+    """
     os.makedirs(dest, exist_ok=True)
     doc = fitz.open(pdf)
+    if repair:
+        repair_indexed(doc)
     lo, hi = (0, len(doc) - 1) if pages is None else pages
     hi = min(hi, len(doc) - 1)
     for i in range(lo, hi + 1):
@@ -114,8 +136,10 @@ def render(pdf, dest, pages=None):
     return hi - lo + 1
 
 
-def contact_sheet(pdf, path):
+def contact_sheet(pdf, path, repair=False):
     doc = fitz.open(pdf)
+    if repair:
+        repair_indexed(doc)
     thumbs = []
     for page in doc:
         pm = page.get_pixmap(dpi=40)
@@ -142,7 +166,7 @@ def main():
         sys.exit(2)
     year, code = sys.argv[1], sys.argv[2]
     against = ""
-    subject = "maths"
+    subject = subject_for_code(code)
     ms_pages = None
     qp_only = False
     for i, a in enumerate(sys.argv):
@@ -199,12 +223,12 @@ def main():
         print(f"  WARN no marking scheme for {year} {code}", file=sys.stderr)
 
     dest = os.path.join(OUT, paper_id)
-    n_qp = render(qp, dest)
+    n_qp = render(qp, dest, repair=paper_id in REPAIR_INDEXED)
     # --qp-only: the FIGURE track crops from the question paper's own pages and
     # never opens the scheme, and a scheme render is roughly half the footprint
     # of a paper. Disk is the binding constraint on that track, not time.
     n_ms = render(ms, os.path.join(dest, "ms"), ms_pages) if (ms and not qp_only) else 0
-    contact_sheet(qp, os.path.join(dest, "contact.png"))
+    contact_sheet(qp, os.path.join(dest, "contact.png"), repair=paper_id in REPAIR_INDEXED)
 
     plan_path = os.path.join(dest, "plan.txt")
     if against:
