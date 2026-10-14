@@ -311,6 +311,23 @@ export const CHAPTERS: Record<string, Chapter> = {
       },
     ],
   },
+  "squares-and-roots": {
+    id: "squares-and-roots",
+    chapterName: "Squares, Cubes and Roots",
+    subtopics: ["Squares and Square Roots", "Cubes and Cube Roots", "Surds and Indices"],
+    files: [
+      {
+        // CDS Pathfinder chapter; practice exercise only (its CDS past-year
+        // section is left out). The _HW file in the same folder is a copy of
+        // these exercise pages.
+        key: "book",
+        group: "C",
+        label: "CDS Pathfinder: Square Roots and Cube Roots (practice exercise)",
+        path: "16. Square_Square_Roots_Cube_Cube_Roots\\05_Square_roots_cube_roots.pdf",
+        note: "AFCAT practice — CDS Pathfinder (book chapter), Squares, Cubes and Roots. Every key blind re-derived.",
+      },
+    ],
+  },
   average: {
     id: "average",
     chapterName: "Average",
