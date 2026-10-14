@@ -444,9 +444,9 @@ export function parseErrorlessKey(lines: string[]): Map<number, { letter: string
   const out = new Map<number, { letter: string; value: string }>();
   for (const raw of lines) {
     const l = raw.trim();
-    // several "n. x)" entries on one line, letters only
-    if (/^(?:\d{1,2}\s*\.\s*\(?[a-dA-D]\)\s*){2,}$/.test(l)) {
-      for (const m of l.matchAll(/(\d{1,2})\s*\.\s*\(?([a-dA-D])\)/g)) out.set(Number(m[1]), { letter: m[2].toUpperCase(), value: "" });
+    // several "n. x)" or "Q.n x)" entries on one line, letters only
+    if (/^(?:(?:Q\.?\s*)?\d{1,2}\s*\.?\s*\(?[a-dA-D]\)\s*){2,}$/.test(l)) {
+      for (const m of l.matchAll(/(?:Q\.?\s*)?(\d{1,2})\s*\.?\s*\(?([a-dA-D])\)/g)) out.set(Number(m[1]), { letter: m[2].toUpperCase(), value: "" });
       continue;
     }
     const list = l.match(/^(\d{1,2})\s*[.)]\s*\(?([a-dA-D])\)\s*(.*)$/);

@@ -27,6 +27,12 @@ describe("parseErrorlessKey", () => {
     expect(k.get(11)).toEqual({ letter: "A", value: "" });
   });
 
+  it("reads 'Q.n x)' entries several to a line (Speed-Time-Distance sheet)", () => {
+    const k = parseErrorlessKey(["Q.1 c) Q.2 a) Q.3 b)", "Q.19 b) Q.20 c)"]);
+    expect([...k.keys()]).toEqual([1, 2, 3, 19, 20]);
+    expect(k.get(3)).toEqual({ letter: "B", value: "" });
+  });
+
   it("returns an empty map for a picture key (no lines)", () => {
     expect(parseErrorlessKey([]).size).toBe(0);
   });
