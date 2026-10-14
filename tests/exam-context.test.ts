@@ -65,6 +65,14 @@ describe("EXAM_REGISTRY", () => {
     }
   });
 
+  it("registers AFCAT as a graduate exam that has past-year questions (not practice-only)", () => {
+    const afcat = getExamBySlug("afcat");
+    expect(afcat?.examName).toBe("AFCAT");
+    expect(afcat?.tier).toBe("graduate");
+    expect(afcat?.practiceOnly).not.toBe(true);
+    expect(afcat?.noPublicContent).not.toBe(true);
+  });
+
   it("default exam slug is one of the registered slugs", () => {
     const slugs = EXAM_REGISTRY.map((e) => e.slug);
     expect(slugs).toContain(DEFAULT_EXAM_SLUG);
@@ -398,6 +406,7 @@ describe("exam tiers", () => {
       "mpsc-aso-mains",
       "mpsc-psi-mains",
       "upsc-cse",
+      "afcat",
     ],
   };
 

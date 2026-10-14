@@ -37,7 +37,8 @@ export type ExamSlug =
   | "mpsc-sti-mains"
   | "mpsc-aso-mains"
   | "mpsc-psi-mains"
-  | "upsc-cse";
+  | "upsc-cse"
+  | "afcat";
 
 /**
  * School boards the bank carries content for. NOT every exam has one — a
@@ -700,6 +701,19 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     guidesPath: null,
     notesPath: null,
     hasMocks: true, // 19 mocks (GS I + CSAT) published 2026-09-26; 2021 CSAT held (dual key)
+  },
+  {
+    slug: "afcat",
+    // Air Force Common Admission Test — a graduation-level exam.
+    tier: "graduate",
+    displayName: "AFCAT",
+    examName: "AFCAT", // must match the `exams` DB row exactly
+    // PUBLIC 2026-10-14: Numerical Ability only, mostly practice (LWS quizzes,
+    // Errorless and Cadetprep sheets, book chapters; every key re-derived) plus
+    // the AFCAT past-year questions printed in Conquer the Sky. NOT practiceOnly:
+    // those PYQs are real. scripts/afcat/.
+    guidesPath: null,
+    notesPath: null,
   },
 ] as const;
 
