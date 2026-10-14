@@ -319,6 +319,78 @@ function numericValue(t: string): number | null {
 }
 
 /**
+ * Option markup to plain arithmetic: drop the math delimiters, \frac{a}{b} to
+ * (a)/(b), \times and \cdot to ×, \% to %, \text{..} to its words, spacing
+ * commands and braces away. Anything it does not know stays as it was, so an
+ * expression it cannot read compares as text and is never merged by mistake.
+ */
+function latexToPlain(text: string): string {
+  let t = text.replace(/\\\(|\\\)|\$/g, "");
+  let prev = "";
+  while (prev !== t) {
+    prev = t;
+    t = t.replace(/\\[dt]?frac\{([^{}]*)\}\{([^{}]*)\}/g, "($1)/($2)");
+  }
+  t = t
+    .replace(/\\text\{([^{}]*)\}/g, "$1")
+    .replace(/\\(?:times|cdot)/g, "×")
+    .replace(/\\%/g, "%")
+    .replace(/\\[,;: ]|\\!/g, "")
+    .replace(/[{}]/g, "");
+  return t.replace(/\s+/g, " ").trim();
+}
+
+/**
+ * Value of a plain arithmetic expression (digits, . + - × * / and brackets),
+ * by recursive descent; null for anything else. No eval.
+ */
+function arithmeticValue(s: string): number | null {
+  if (!/^[\d\s.+\-×*/()]+$/.test(s) || !/\d/.test(s)) return null;
+  const src = s.replace(/\s+/g, "");
+  let i = 0;
+  const expr = (): number | null => {
+    let v = term();
+    while (v !== null && (src[i] === "+" || src[i] === "-")) {
+      const op = src[i++];
+      const r = term();
+      if (r === null) return null;
+      v = op === "+" ? v + r : v - r;
+    }
+    return v;
+  };
+  const term = (): number | null => {
+    let v = factor();
+    while (v !== null && (src[i] === "×" || src[i] === "*" || src[i] === "/")) {
+      const op = src[i++];
+      const r = factor();
+      if (r === null || (op === "/" && r === 0)) return null;
+      v = op === "/" ? v / r : v * r;
+    }
+    return v;
+  };
+  const factor = (): number | null => {
+    if (src[i] === "-") {
+      i++;
+      const v = factor();
+      return v === null ? null : -v;
+    }
+    if (src[i] === "(") {
+      i++;
+      const v = expr();
+      if (src[i] !== ")") return null;
+      i++;
+      return v;
+    }
+    const m = src.slice(i).match(/^\d+(?:\.\d+)?/);
+    if (!m) return null;
+    i += m[0].length;
+    return Number(m[0]);
+  };
+  const v = expr();
+  return v !== null && i === src.length ? v : null;
+}
+
+/**
  * What an option's text is worth, as a comparable key. Currency, thousands
  * commas and a trailing unit are dropped; a percent sign and a direction word
  * ("increase", "loss") are KEPT, because "2% increase" and "2% decrease" are
@@ -326,7 +398,7 @@ function numericValue(t: string): number | null {
  * fractions. Anything else compares as its lowercased text.
  */
 function optionValueKey(text: string): string {
-  let t = text.trim().toLowerCase().replace(/rs\.?|₹/g, "").replace(/(\d),(?=\d)/g, "$1").trim();
+  let t = latexToPlain(text).trim().toLowerCase().replace(/rs\.?|₹/g, "").replace(/(\d),(?=\d)/g, "$1").trim();
   t = t.replace(UNIT_SUFFIX, "").trim();
   let direction = "";
   const d = t.match(DIRECTION_SUFFIX);
@@ -344,7 +416,7 @@ function optionValueKey(text: string): string {
     const g = parts.reduce(gcd);
     return `ratio ${parts.map((p) => p / g).join(":")}${percent} ${direction}`;
   }
-  const v = numericValue(t);
+  const v = numericValue(t) ?? arithmeticValue(t);
   if (v !== null) return `num ${Math.round(v * 1e9) / 1e9}${percent} ${direction}`;
   return `text ${text.trim().toLowerCase().replace(/\s+/g, " ")}`;
 }

@@ -50,6 +50,30 @@ describe("equalValueOptions", () => {
     expect(equalValueOptions(["23 2/9 m", "27 m", "27 7/9 m", "250/9 m"])).toEqual([["C", "D"]]);
   });
 
+  // Cadetprep sheets and the book transcripts typeset every option in LaTeX
+  // (2026-10-14: the Cards sheet printed 6/13 beside 24/52 on most rows, and
+  // the check saw none of them because it compared the raw markup).
+  it("reads LaTeX fractions, ratios, percents and decimals", () => {
+    expect(equalValueOptions(["\\(\\frac{5}{13}\\)", "\\(\\frac{24}{52}\\)", "\\(\\frac{6}{13}\\)", "\\(\\frac{20}{52}\\)"])).toEqual([["A", "D"], ["B", "C"]]);
+    expect(equalValueOptions(["\\(3:2\\)", "\\(2:3\\)", "\\(12:8\\)", "\\(6:4\\)"])).toEqual([["A", "C", "D"]]);
+    expect(equalValueOptions(["\\(0.05\\)", "\\(0.5\\)", "\\(0.2\\)", "\\(0.05\\)"])).toEqual([["A", "D"]]);
+    expect(equalValueOptions(["\\(40\\%\\)", "\\(25\\%\\)", "\\(50\\%\\)", "\\(40\\)%"])).toEqual([["A", "D"]]);
+  });
+
+  it("reads a LaTeX product and a negative fraction", () => {
+    expect(equalValueOptions(["\\(\\frac{13}{68}\\)", "\\(\\frac{39}{204}\\)", "\\(\\frac{13 \\times 39}{52 \\times 51}\\)", "\\(\\frac{1}{4}\\)"])).toEqual([["A", "B", "C"]]);
+    expect(equalValueOptions(["\\(\\frac{193}{-95}\\)", "\\(\\frac{95}{193}\\)", "\\(\\frac{193}{95}\\)", "\\(\\frac{-193}{95}\\)"])).toEqual([["A", "D"]]);
+  });
+
+  it("keeps rupee amounts and units apart from bare numbers only by value", () => {
+    expect(equalValueOptions(["\\(₹300\\)", "\\(₹320\\)", "₹ 300", "\\(₹400\\)"])).toEqual([["A", "C"]]);
+    expect(equalValueOptions(["\\(20\\) liters", "\\(15\\) liters", "\\(10\\) liters", "\\(5\\) liters"])).toEqual([]);
+  });
+
+  it("does not equate different LaTeX expressions it cannot evaluate", () => {
+    expect(equalValueOptions(["\\(\\sqrt{a^2-b^2}\\)", "\\(\\sqrt{a^2+b^2}\\)", "\\(a\\)", "\\(b\\)"])).toEqual([]);
+  });
+
   it("passes a clean set", () => {
     expect(equalValueOptions(["40 liters", "45 liters", "55 liters", "60 liters"])).toEqual([]);
   });
