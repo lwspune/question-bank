@@ -4,21 +4,289 @@
     "reason": "Source key C (Rs. 23,200) is wrong: 20,000 x 7% x 2 = 2,800, amount Rs. 22,800. 23,200 would need 8%. Blind pass and recomputation agree on A."
   },
   "01-22": {
-    "options": { "C": "Rs. 13,891.50" },
+    "options": {
+      "C": "Rs. 13,891.50"
+    },
     "answer": "C",
     "reason": "No option was right: 12,000 x 1.05^3 = 12,000 x 1.157625 = 13,891.50 (the key's own working shows 1.157625). Option C printed 13,891.25; repaired to the true value, key letter kept."
   },
   "01-25": {
-    "options": { "A": "Rs. 370.80", "B": "Rs. 360", "C": "Rs. 376.53" },
+    "options": {
+      "A": "Rs. 370.80",
+      "B": "Rs. 360",
+      "C": "Rs. 376.53"
+    },
     "answer": "A",
     "reason": "No option was right: 3,000 x (1.06^2 - 1) = Rs. 370.80; the key states 372.96 beside letter A = 371. A repaired to 370.80. B (was 372) and C (was 372.96) replaced, since 371/372 sat within a rupee of the answer: B = Rs. 360 is simple interest (annual compounding), C = Rs. 376.53 is quarterly compounding. D Rs. 373 kept."
   },
   "01-17": {
-    "options": { "B": "4.88%" },
+    "options": {
+      "B": "4.88%"
+    },
     "reason": "Source printed 4.87% for sqrt(1.1) - 1 = 4.8809%, which rounds to 4.88%. Key B unchanged, confirmed by blind pass."
   },
   "01-24": {
     "stem": "If the simple interest on a certain sum for 3 years at 7% per annum is Rs. 2,100, then the sum is:",
     "reason": "Source stem read 'If the rate of simple interest ... is Rs. 2,100, then the amount is', which garbles rate and interest and uses 'amount' for the principal. Reworded; the arithmetic is unchanged. Key C stands, confirmed by blind pass."
+  },
+  "02-106": {
+    "exclude": true,
+    "reason": "The stem as printed gives 13/3 times, which no option carries; the key gives A (4 times). The sheet set its answers first and printed the stems with numbers that do not reach them."
+  },
+  "02-110": {
+    "exclude": true,
+    "reason": "The stem as printed gives 112/3 years, which no option carries; the key gives B (32 years). The sheet set its answers first and printed the stems with numbers that do not reach them."
+  },
+  "02-112": {
+    "exclude": true,
+    "reason": "The stem as printed gives 28/3 times, which no option carries; the key gives D (12 times). The sheet set its answers first and printed the stems with numbers that do not reach them."
+  },
+  "02-119": {
+    "exclude": true,
+    "reason": "The stem as printed gives 114 years, which no option carries; the key gives C (108 years). The sheet set its answers first and printed the stems with numbers that do not reach them."
+  },
+  "02-216": {
+    "exclude": true,
+    "reason": "Word-for-word repeat of 02-215, which ships."
+  },
+  "02-220": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 2520, which no option carries; the key gives A (Rs. 2100). The sheet set its answers first and printed the stems with numbers that do not reach them."
+  },
+  "02-303": {
+    "exclude": true,
+    "reason": "The stem as printed gives 3.75%, which no option carries; the key gives A (3%). The sheet set its answers first and printed the stems with numbers that do not reach them."
+  },
+  "02-308": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 14,230.77, which no option carries; the key gives C (Rs. 14,000). The sheet set its answers first and printed the stems with numbers that do not reach them."
+  },
+  "02-311": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 7,627.12, which no option carries; the key gives B (Rs. 7500). The sheet set its answers first and printed the stems with numbers that do not reach them."
+  },
+  "02-313": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 3600, which no option carries; the key gives B (Rs. 3500). The sheet set its answers first and printed the stems with numbers that do not reach them."
+  },
+  "02-316": {
+    "exclude": true,
+    "reason": "The stem as printed gives 8.33%, which no option carries; the key gives C (8%). The sheet set its answers first and printed the stems with numbers that do not reach them."
+  },
+  "02-318": {
+    "exclude": true,
+    "reason": "The stem as printed gives 8.33%, which no option carries; the key gives B (8%). The sheet set its answers first and printed the stems with numbers that do not reach them."
+  },
+  "02-319": {
+    "exclude": true,
+    "reason": "The stem as printed gives 6.67%, which no option carries; the key gives B (6%). The sheet set its answers first and printed the stems with numbers that do not reach them."
+  },
+  "02-320": {
+    "exclude": true,
+    "reason": "The stem as printed gives 6.25 years, which no option carries; the key gives A (5 years). The sheet set its answers first and printed the stems with numbers that do not reach them."
+  },
+  "02-401": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 1060.90, which no option carries; the key gives A (Rs. 1060). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-402": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 4686.64, which no option carries; the key gives B (Rs. 4800). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-403": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 5512.50, which no option carries; the key gives B (Rs. 5200). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-404": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 8835.89, which no option carries; the key gives A (Rs. 8800). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-405": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 11236, which no option carries; the key gives A (Rs. 11200). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-406": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 16897.39, which no option carries; the key gives D (Rs. 17,500). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-407": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 7591.91, which no option carries; the key gives D (Rs. 7600). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-408": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 13245.75, which no option carries; the key gives B (Rs. 12600). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-409": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 5627.54, which no option carries; the key gives A (Rs. 5636). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-410": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 19023.63, which no option carries; the key gives A (Rs. 19000). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-411": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 28688.08, which no option carries; the key gives C (Rs. 30000). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-412": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 9286.04, which no option carries; the key gives B (Rs. 9300). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-413": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 11255.09, which no option carries; the key gives B (Rs. 11300). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-414": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 5627.54, which no option carries; the key gives A (Rs. 5600). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-415": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 11387.87, which no option carries; the key gives B (Rs. 11300). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-416": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 14620.83, which no option carries; the key gives B (Rs. 13200). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-417": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 5632.46, which no option carries; the key gives A (Rs. 5700). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-418": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 3479.08, which no option carries; the key gives A (Rs. 3500). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-419": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 9834.04, which no option carries; the key gives A (Rs. 9800). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-420": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 12198.90, which no option carries; the key gives B (Rs. 12500). Every option in this section is a round hundred, and the keyed one is not the compound amount (in several rows not even the nearest)."
+  },
+  "02-113": {
+    "answer": "C",
+    "reason": "Source key D (20%) is wrong: a sum that doubles in 6 years earns 100% in 6 years, so the rate is 100/6 = 16.67%, option C. Blind pass agrees."
+  },
+  "03-104": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 1967.21, which no option carries; the key gives A (₹2,000)."
+  },
+  "03-106": {
+    "exclude": true,
+    "reason": "Two options are the same right answer (A and C both print Rs 36); the key gives A (₹36)."
+  },
+  "03-110": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 24.32, which no option carries; the key gives C (₹10.24)."
+  },
+  "03-112": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 93, which no option carries; the key gives B (₹36)."
+  },
+  "03-114": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 137.25, which no option carries; the key gives B (₹60.75)."
+  },
+  "03-115": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 275.40, which no option carries; the key gives C (₹57.80)."
+  },
+  "03-118": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 178.20, which no option carries; the key gives B (₹198)."
+  },
+  "03-119": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 451.29, which no option carries; the key gives C (₹168)."
+  },
+  "03-120": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 98.56, which no option carries; the key gives C (₹42)."
+  },
+  "03-208": {
+    "exclude": true,
+    "reason": "The stem as printed gives 16 years, which no option carries; the key gives A (18 years)."
+  },
+  "03-212": {
+    "exclude": true,
+    "reason": "The stem never says compound interest (only the section heading does, which a student does not see), and read as simple interest it has a different answer (CI gives 12 (A), SI gives 24 (C)); the key gives A (12 years)."
+  },
+  "03-213": {
+    "exclude": true,
+    "reason": "The stem never says compound interest (only the section heading does, which a student does not see), and read as simple interest it has a different answer (CI gives 16 (A), SI gives 48); the key gives A (16 years)."
+  },
+  "03-216": {
+    "exclude": true,
+    "reason": "The stem never says compound interest (only the section heading does, which a student does not see), and read as simple interest it has a different answer (CI gives 20 (A), SI gives 124); the key gives A (20 years)."
+  },
+  "03-219": {
+    "exclude": true,
+    "reason": "The stem never says compound interest (only the section heading does, which a student does not see), and read as simple interest it has a different answer (CI gives 30 (A), SI gives 180); the key gives A (30 years)."
+  },
+  "03-301": {
+    "exclude": true,
+    "reason": "Options B and C are the same wrong value (both Rs 2200), so a student can rule out both together; the key gives A (₹2100)."
+  },
+  "03-305": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 1910.16, which no option carries; the key gives A (₹1910.40)."
+  },
+  "03-309": {
+    "exclude": true,
+    "reason": "Underdetermined: the question asks for a difference in rupees but never gives the sum; the key gives C (₹3000)."
+  },
+  "03-310": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 7209.78, which no option carries; the key gives B (₹7166.40)."
+  },
+  "03-311": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 88.13, which no option carries; the key gives A (₹55.20)."
+  },
+  "03-313": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 83.40 (rate 11.48%), which no option carries; the key gives C (₹80)."
+  },
+  "03-314": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 299.76, which no option carries; the key gives A (₹300)."
+  },
+  "03-316": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 24.32, which no option carries; the key gives C (₹32.60)."
+  },
+  "03-317": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 719.19, which no option carries; the key gives A (₹720)."
+  },
+  "03-319": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 76.80, which no option carries; the key gives C (₹76)."
+  },
+  "03-320": {
+    "exclude": true,
+    "reason": "The stem as printed gives Rs 1087.79, which no option carries; the key gives C (₹1038)."
+  },
+  "03-109": {
+    "answer": "C",
+    "reason": "Source key is wrong: 12,000 at 5% for 3 years: CI 1,891.50, SI 1,800, difference Rs 91.50, option C (key B Rs 90). Blind pass and exact recomputation agree."
+  },
+  "03-116": {
+    "answer": "B",
+    "reason": "Source key is wrong: 50,000 at 10% for 3 years: CI 16,550, SI 15,000, difference Rs 1,550, option B (key C Rs 1,605). Blind pass and exact recomputation agree."
+  },
+  "03-312": {
+    "answer": "B",
+    "reason": "Source key is wrong: 5,000 at 10% for 3 years: CI 1,655, SI 1,500, difference Rs 155, option B (key C Rs 165). Blind pass and exact recomputation agree."
+  },
+  "03-315": {
+    "answer": "A",
+    "reason": "Source key is wrong: 6,000 at 10% for 3 years: CI 1,986, SI 1,800, difference Rs 186, option A (key C Rs 206). Blind pass and exact recomputation agree."
+  },
+  "03-318": {
+    "answer": "A",
+    "reason": "Source key is wrong: 4,000 at 10% for 2 years: difference P(r/100)^2 = 4,000 x 0.01 = Rs 40, option A (key C Rs 60). Blind pass and exact recomputation agree."
   }
 }

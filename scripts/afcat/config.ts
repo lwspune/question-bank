@@ -147,6 +147,20 @@ export const CHAPTERS: Record<string, Chapter> = {
         answerKey: "08. Simple Interest\\Quiz\\SI_CI_Quiz_30Q_v2_ak.docx",
         note: "AFCAT practice — LWS Pune quiz, Simple and Compound Interest. Source key AI-written; every key blind re-derived.",
       },
+      {
+        key: "si-errorless",
+        group: "B",
+        label: "Simple Interest Errorless sheet (4 types)",
+        path: "08. Simple Interest\\SI Errorless.pdf",
+        note: "AFCAT practice — Errorless sheet, Simple Interest. Key letters only; every key blind re-derived.",
+      },
+      {
+        key: "ci-errorless",
+        group: "B",
+        label: "Compound Interest Errorless sheet (3 types)",
+        path: "09. Compound Interest\\CI Final Errorless.pdf",
+        note: "AFCAT practice — Errorless sheet, Compound Interest. Key letters only; every key blind re-derived.",
+      },
     ],
   },
   probability: {
