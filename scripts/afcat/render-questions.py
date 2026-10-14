@@ -8,8 +8,12 @@
 #   python scripts/afcat/render-questions.py <pdf> <outdir> [--dpi=150]
 #          [--start=PRACTICE] [--also-stop=PREVIOUS]
 #
-# --start: render nothing before the first block whose text contains this word
-#   (CDS Pathfinder: skip the theory and worked examples).
+# --start: render nothing before the first word containing this text, on
+#   either column; on that page both columns start at its height (CDS
+#   Pathfinder: skip the theory; Conquer the Sky: --start=MODEL).
+#
+# NEVER render a whole book page to read a question this tool missed: the key
+# grid often shares the page. Fix the start/stop instead.
 # --also-stop: an extra stop word (CDS Pathfinder: "PREVIOUS", its CDS
 #   past-year section, which the owner left out).
 #
@@ -38,16 +42,23 @@ for pno, page in enumerate(doc, start=1):
     W, H = page.rect.width, page.rect.height
     mid = W / 2
     words = page.get_text("words")
+    # The start heading is searched across the WHOLE page and applies to both
+    # columns from its height down: a banner such as Conquer the Sky's
+    # "AFCAT | MODEL PRACTICE QUESTIONS" spans the page with "MODEL" in the
+    # right half while Q1-4 sit in the left column under it. A per-column
+    # search skipped them, and rendering the full page to read them showed the
+    # answer grid (2026-10-14).
+    page_top = 0.0
+    if not started:
+        hits = [w for w in words if start_word in w[4]]
+        if not hits:
+            continue
+        started = True
+        page_top = min(h[1] for h in hits) - 3
+        print(f"p{pno}: start heading at y={page_top:.0f}, both columns")
     for side, x0, x1 in (("L", 0, mid), ("R", mid, W)):
         col = [w for w in words if x0 <= w[0] < x1]
-        top = 0.0
-        if not started:
-            hits = [w for w in col if start_word in w[4]]
-            if not hits:
-                continue
-            started = True
-            top = min(h[1] for h in hits) - 3
-            print(f"p{pno}-{side}: start heading at y={top:.0f}")
+        top = page_top
         heads = [w for w in col if HEAD.match(w[4]) or (also_stop and also_stop in w[4] and w[1] > top + 5)]
         cut = min([h[1] for h in heads] or [H])
         if heads:
