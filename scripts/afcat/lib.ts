@@ -22,6 +22,7 @@ export type SourceRecord = {
   keyValue?: string; // what the source's key says in words beside the letter
   keySolution?: string; // the source's worked solution, if any
   flags?: string[]; // extraction findings for the adjudicator
+  section?: string; // Group B: the "Type-" heading the question sits under
 };
 
 export type SourceFile = { path: string; group: string; questions: SourceRecord[] };
@@ -357,4 +358,76 @@ export function equalValueOptions(optionTexts: string[]): string[][] {
     byValue.set(k, [...(byValue.get(k) ?? []), "ABCD"[i]]);
   });
   return [...byValue.values()].filter((letters) => letters.length > 1);
+}
+
+// ---------------------------------------------------------------------------
+// Group B: the "Errorless" PDF sheets. pdf-words.py dumps each page's words
+// with their positions; these turn that into question lines and key blocks.
+
+/** [x0, y0, x1, y1, text], PDF points from the top-left. */
+export type PdfWord = [number, number, number, number, string];
+export type PdfPage = { width: number; height: number; words: PdfWord[]; images?: number[][] };
+
+/** The sheets' font maps ligatures to odd code points: "ff" comes out as U+01AF. */
+export const fixLigatures = (s: string) => s.replace(/Ư/g, "ff").replace(/ﬁ/g, "fi").replace(/ﬂ/g, "fl");
+
+function toLines(words: PdfWord[]): string[] {
+  const lines: { y: number; words: PdfWord[] }[] = [];
+  for (const w of [...words].sort((a, b) => a[1] - b[1] || a[0] - b[0])) {
+    const l = lines.find((x) => Math.abs(x.y - w[1]) < 3);
+    if (l) l.words.push(w);
+    else lines.push({ y: w[1], words: [w] });
+  }
+  return lines.map((l) => fixLigatures(l.words.sort((a, b) => a[0] - b[0]).map((w) => w[4]).join(" ")));
+}
+
+/**
+ * One Errorless page in reading order: the left column top to bottom, then the
+ * right. Everything below an ANSWERS heading in that heading's column is the
+ * section's key and goes to `keyBlocks` (one block per heading, empty when the
+ * key is a picture), never to `lines`, so question text cannot carry a key and
+ * the blind pass never sees one. The page number in the footer band is dropped.
+ */
+export function errorlessPage(page: PdfPage, footerY = 725): { lines: string[]; keyBlocks: string[][] } {
+  const mid = page.width / 2;
+  const words = page.words.filter((w) => w[1] < footerY);
+  const heads = words.filter((w) => /^ANSWERS?$/i.test(w[4]));
+  const inKey = new Set<PdfWord>();
+  const keyBlocks: string[][] = [];
+  for (const h of heads) {
+    const left = h[0] < mid;
+    const block = words.filter((w) => w !== h && (w[0] < mid) === left && w[1] > h[1] + 2);
+    block.forEach((w) => inKey.add(w));
+    inKey.add(h);
+    keyBlocks.push(toLines(block));
+  }
+  const rest = words.filter((w) => !inKey.has(w));
+  return {
+    lines: [...toLines(rest.filter((w) => w[0] < mid)), ...toLines(rest.filter((w) => w[0] >= mid))],
+    keyBlocks,
+  };
+}
+
+/**
+ * Split an Errorless sheet's lines at its "Type-" headings. A heading can wrap,
+ * so the title runs until question 1. Text before the first heading is an
+ * error, not something to drop silently.
+ */
+export function splitTypeSections(lines: string[]): { title: string; lines: string[] }[] {
+  const out: { title: string; lines: string[]; inTitle: boolean }[] = [];
+  for (const l of lines) {
+    const m = l.match(/^Type\s*-\s*(.*)$/i);
+    if (m) {
+      out.push({ title: m[1], lines: [], inTitle: true });
+      continue;
+    }
+    const cur = out[out.length - 1];
+    if (!cur) throw new Error(`text before the first Type- heading: "${l}"`);
+    if (cur.inTitle && !/^\d+\.\s/.test(l)) cur.title += ` ${l}`;
+    else {
+      cur.inTitle = false;
+      cur.lines.push(l);
+    }
+  }
+  return out.map(({ title, lines }) => ({ title: title.replace(/\(\s*\d+\s*questions?\s*\)/i, "").replace(/\s+/g, " ").trim(), lines }));
 }
