@@ -10,7 +10,7 @@ and made PUBLIC only after review. Source:
 | Group | What | Text | Key | Extraction |
 |---|---|---|---|---|
 | A | LWS quizzes (`Quiz/*.docx` + `_AK`) | clean (pandoc) | AI-written, letters mostly right, stated values often wrong (Mixtures: 13 of 30 disagree with their own options) | `extract-quiz.ts` |
-| B | "Errorless" sheets (`*ERRORLESS*.pdf`) | clean text layer | letters only, no solutions | not built yet |
+| B | "Errorless" sheets (`*ERRORLESS*.pdf`) | clean text layer, two columns | letters (sometimes with values) in an ANSWERS box per section; four are pictures | `extract-errorless.ts`, then `read-keys.ts` after pass 1 |
 | C | Published books, other institutes' sheets | stacked fractions break the text layer | book key + solutions | page images, transcribed |
 
 **Questions a source tags as a CDS past-year question (e.g. "2015 II") are NOT
@@ -39,6 +39,13 @@ Group B has none, and Group C's text layer garbles them.
    Its report prints the key's flags, so when the main session will run pass 1,
    send it to a file and read only the first line (`> out/<chapter>-extract.log`)
    until pass 1 is written.
+   Group B: `npx tsx scripts/afcat/extract-errorless.ts <chapter>` (PyMuPDF via
+   `pdf-words.py`). Numbering restarts per "Type-" section, so an id is
+   section x 100 + printed number (`02-312`: file 02, section 3, Q12). The key
+   goes to `<key>.keytext.json` and is never printed. After pass 1:
+   `npx tsx scripts/afcat/read-keys.ts <chapter> --files=<key>`. A picture key
+   leaves an empty block: crop the box from the page, transcribe it into the
+   keytext file as `n. x) value` lines, and mark the block `transcribed`.
 3. **Blind packets:** `npx tsx scripts/afcat/dump-verify.ts <chapter> [--files=..] [--size=25]`.
    Stem + options only. No key, no source solution, no extraction flags.
 4. **Pass 1:** one agent per packet, working to `AGENT_BRIEF.md` (PASS 1).
@@ -81,6 +88,13 @@ A solution-only fix after commit does not reach the database through
 `commit.ts` (`content_hash` excludes the solution); anything touching stem,
 options or key changes the hash. Correct shipped rows in place, keeping the id.
 
+**Errorless sheets: keep only sound questions** (owner's call, 2026-10-14). Their
+answers were set first and many stems printed with numbers that do not reach
+them: 250 of 521 failed. A row ships only when stem, options and key agree; the
+rest are excluded with a reason that names what the stem actually gives. Record
+the blind verdicts to `out/<chapter>/blind-NN.json` BEFORE reading the key, as
+evidence the pass was blind.
+
 ## Chapter status
 
 | Chapter | Files | Rows | Disputes | Status |
@@ -93,3 +107,10 @@ options or key changes the hash. Correct shipped rows in place, keeping the id.
 | Profit and Loss | A: LWS quiz (v1) | 48 (2 excluded: no exact answer, self-contradictory) | 4 of 50: 1 wrong key, 1 no right option | committed PRIVATE 2026-10-14, awaiting review |
 | Speed, Time and Distance | A: LWS quiz | 49 (1 excluded: repeat) | 1 of 50: Q7 ambiguous, reworded | committed PRIVATE 2026-10-14, awaiting review |
 | Ratio and Proportion | A: LWS test | 49 (1 excluded: needs rewriting) | 11 of 50: 1 wrong key, 8 with no right option, 2 twins (8 twin rows repaired) | committed PRIVATE 2026-10-14, awaiting review |
+| Mixture and Alligation | B: Errorless | 16 of 60 | 29 broken stems, 15 repeats | committed PRIVATE 2026-10-14, awaiting review |
+| Ratio and Proportion | B: Errorless | 42 of 80 | 38 broken (no whole answer, underdetermined); 2 key errors adjudicated | committed PRIVATE 2026-10-14, awaiting review |
+| Simple and Compound Interest | B: SI Errorless | 47 of 81 | 34 excluded (incl. a whole section of round-hundred CI amounts); 1 key error | committed PRIVATE 2026-10-14, awaiting review |
+| Simple and Compound Interest | B: CI Errorless | 35 of 60 | 25 excluded (stems omitting "compound", duplicate options); 5 key errors | committed PRIVATE 2026-10-14, awaiting review |
+| Clock (new chapter) | B: Errorless | 59 of 80 | 21 excluded (false premises, contradictions); 1 key error | committed PRIVATE 2026-10-14, awaiting review |
+| Speed, Time and Distance | B: "BOAT" Errorless | 9 of 40 | the early/late section is ill-posed (20); 11 broken boat stems | committed PRIVATE 2026-10-14, awaiting review |
+| Time and Work | B: Errorless | 63 of 120 | 57 excluded (rounded totals, unreachable schedules, underdetermined); 1 key error; 4 picture keys transcribed | committed PRIVATE 2026-10-14, awaiting review |
