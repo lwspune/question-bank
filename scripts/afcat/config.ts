@@ -235,6 +235,13 @@ export const CHAPTERS: Record<string, Chapter> = {
         ],
         note: "AFCAT practice — LWS Pune quiz, Profit and Loss. Source key AI-written; every key blind re-derived.",
       },
+      {
+        key: "book",
+        group: "C",
+        label: "Conquer the Sky AFCAT: Profit and Loss (model practice + AFCAT past years)",
+        path: "06. Profit and Loss\\Profit_n_Loss.pdf",
+        note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Profit and Loss. Every key blind re-derived.",
+      },
     ],
   },
   "speed-time-and-distance": {
