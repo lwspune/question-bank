@@ -151,6 +151,14 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "11. Mixture and Alligations\\Mixture & Alligation Errorless.pdf",
         note: "AFCAT practice — Errorless sheet, Mixture and Alligation. Key letters only; every key blind re-derived.",
       },
+      {
+        // The only copy of this Conquer the Sky chapter in the folder is the _HW file.
+        key: "book",
+        group: "C",
+        label: "Conquer the Sky AFCAT: Mixture and Alligation (model practice + AFCAT past years)",
+        path: "11. Mixture and Alligations\\AFCAT_Mixture and Alligations_HW.pdf",
+        note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Mixture and Alligation. Every key blind re-derived.",
+      },
     ],
   },
   "simple-and-compound-interest": {
