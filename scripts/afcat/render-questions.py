@@ -71,4 +71,17 @@ for pno, page in enumerate(doc, start=1):
             # Everything after a stop heading in reading order is key (or the
             # left-out section): render nothing further.
             stop = True
+            if side == "L":
+                # But a question can sit at the top of the right column above
+                # that column's own stop heading (Conquer the Sky Percentage
+                # p3: past-year Q13-14). Name the numbers only, never the text,
+                # so they can be cropped without seeing the key.
+                rcol = [w for w in words if w[0] >= mid]
+                rheads = [w for w in rcol if HEAD.match(w[4])]
+                rcut = min([h[1] for h in rheads] or [H])
+                nums = [w[4] for w in rcol if w[1] < rcut and re.fullmatch(r"\d{1,2}\.", w[4])]
+                if nums:
+                    dest = os.path.join(out, f"p{pno}-R-top.png")
+                    page.get_pixmap(dpi=dpi, clip=fitz.Rect(mid, page_top, W, rcut - 3)).save(dest)
+                    print(f"WARNING p{pno}-R: question numbers {' '.join(nums)} sit above y={rcut:.0f}, after the stop; rendered {dest}")
             break
