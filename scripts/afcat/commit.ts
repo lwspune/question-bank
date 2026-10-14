@@ -47,10 +47,36 @@ async function main() {
     throw new Error("refusing: fix LaTeX via overrides first");
   }
   console.log("\nLaTeX delimiters balanced.");
-  if (!apply) return console.log("[dry run] pass --apply to write.");
 
   const client = adminClient();
   const examId = await afcatExamId(client);
+
+  // A row already committed under the same question id but a different
+  // content_hash would be INSERTED AGAIN (dedup is on the hash), duplicating a
+  // live question. That happens when a committed row's options are reordered
+  // (the hash includes the answer letter) or its stem/options are repaired.
+  // Checked for every file before anything is written, and in the dry run too.
+  // Correct such a row in place, keeping its id.
+  const drift: string[] = [];
+  for (const f of built) {
+    const { data, error } = await client
+      .from("questions")
+      .select("question_number, content_hash")
+      .eq("exam_id", examId)
+      .eq("source_file", sourceFileOf(chapter, f.file));
+    if (error) throw new Error(`committed-row check failed: ${error.message}`);
+    const live = new Map((data ?? []).map((q) => [q.question_number as string, q.content_hash as string]));
+    for (const r of f.rows) {
+      const h = live.get(r.questionNumber!);
+      if (h && h !== r.contentHash) drift.push(r.questionNumber!);
+    }
+  }
+  if (drift.length) {
+    throw new Error(`refusing: ${drift.length} row(s) already committed with different content (${drift.join(", ")}). A re-commit would duplicate them; correct them in place instead.`);
+  }
+  console.log("No committed row would change its content.");
+  if (!apply) return console.log("[dry run] pass --apply to write.");
+
   for (const f of built) {
     const sourceFile = sourceFileOf(chapter, f.file);
     const { data: existing } = await client.from("upload_jobs").select("id").eq("org_id", ORG_ID).eq("filename", sourceFile).limit(1).maybeSingle();

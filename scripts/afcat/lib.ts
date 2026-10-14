@@ -7,6 +7,7 @@
 // line, two to a line, or one to a line — and their answer keys in four more.
 // One tolerant parser covers them all, because a per-file parser would be
 // eight parsers that each only one file ever exercises.
+import { planShuffles } from "../worksheets/lib";
 
 /**
  * One question as committed to data/<chapter>/<file>.source.json — the
@@ -430,4 +431,51 @@ export function splitTypeSections(lines: string[]): { title: string; lines: stri
     }
   }
   return out.map(({ title, lines }) => ({ title: title.replace(/\(\s*\d+\s*questions?\s*\)/i, "").replace(/\s+/g, " ").trim(), lines }));
+}
+
+/**
+ * An Errorless section's key, from the lines under its ANSWERS heading. Two
+ * layouts occur: a list ("1. c) 15 liters", letter + the value it stands for)
+ * and a grid ("Q1 - c, Q2 - a,"). A line matching neither is an error: a
+ * skipped line would leave a question without its key.
+ */
+export function parseErrorlessKey(lines: string[]): Map<number, { letter: string; value: string }> {
+  const out = new Map<number, { letter: string; value: string }>();
+  for (const raw of lines) {
+    const l = raw.trim();
+    const list = l.match(/^(\d{1,2})\s*[.)]\s*\(?([a-dA-D])\)\s*(.*)$/);
+    if (list) {
+      out.set(Number(list[1]), { letter: list[2].toUpperCase(), value: list[3].trim() });
+      continue;
+    }
+    const grid = [...l.matchAll(/Q\s*(\d{1,2})\s*[-–:]\s*\(?([a-dA-D])\)?/g)];
+    if (grid.length && l.replace(/Q\s*\d{1,2}\s*[-–:]\s*\(?[a-dA-D]\)?\s*,?/g, "").trim() === "") {
+      for (const g of grid) out.set(Number(g[1]), { letter: g[2].toUpperCase(), value: "" });
+      continue;
+    }
+    throw new Error(`cannot read key line: "${l}"`);
+  }
+  return out;
+}
+
+/**
+ * The chapter's answer-letter rebalance when some files are already in the
+ * database. content_hash includes the answer letter, so a committed row must
+ * never move: its existing plan entry is kept and it is ineligible, but it still
+ * counts towards the balance. New rows are planned from their unshuffled
+ * answers, so the caller builds frozen rows WITH their existing entries and new
+ * rows without.
+ */
+export function planChapterShuffles(
+  rows: { id: string; answer: string; eligible: boolean; frozen: boolean }[],
+  existing: Record<string, string>
+): Record<string, string> {
+  const plan = planShuffles(rows.map((r) => ({ id: r.id, answer: r.answer, eligible: r.eligible && !r.frozen })));
+  const out: Record<string, string> = {};
+  for (const r of rows) {
+    if (r.frozen) {
+      if (existing[r.id]) out[r.id] = existing[r.id];
+    } else if (plan[r.id]) out[r.id] = plan[r.id];
+  }
+  return out;
 }
