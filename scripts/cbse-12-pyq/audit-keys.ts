@@ -1,8 +1,8 @@
 /**
  * Structural answer-key probe for the CBSE Class-12 board PYQ MCQs.
  *
- *   npx tsx scripts/cbse-12-pyq/audit-keys.ts              # all 659 pyq MCQs
- *   npx tsx scripts/cbse-12-pyq/audit-keys.ts 2023         # source_file substring
+ *   npx tsx scripts/cbse-12-pyq/audit-keys.ts --class=12              # all 659 pyq MCQs
+ *   npx tsx scripts/cbse-12-pyq/audit-keys.ts --class=12 2023         # source_file substring
  *
  * WHY THIS EXISTS. The repo has two copies of this probe and NEITHER can see
  * these rows: `npm run audit:keys` scopes to `question_kind='practice'` and these
@@ -33,7 +33,7 @@ import { createClient } from "@supabase/supabase-js";
 import { auditRow, concludedLetter } from "../practice/audit-keys";
 import { statedOption } from "./statedOption";
 import { contentHash } from "../../src/lib/upload/hash";
-import { DATA, ORG_ID, EXAM_ID_CBSE_12 } from "./config";
+import { DATA, ORG_ID, classFromArgs } from "./config";
 
 type Opt = { label: string; text: string; is_correct: boolean };
 
@@ -64,7 +64,8 @@ function assertedKeyless(): Set<string> {
 }
 
 async function main() {
-  const filter = process.argv[2];
+  const scope = classFromArgs(process.argv);
+  const filter = process.argv.slice(2).find((a) => !a.startsWith("--"));
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
   const client = createClient(
@@ -79,7 +80,7 @@ async function main() {
   for (let from = 0; ; from += 500) {
     let q = client.from("questions")
       .select("id, question_number, source_file, solution, content_hash, options:options(label, text, is_correct)")
-      .eq("org_id", ORG_ID).eq("exam_id", EXAM_ID_CBSE_12)
+      .eq("org_id", ORG_ID).eq("exam_id", scope.examId)
       .eq("question_kind", "pyq").eq("question_format", "mcq")
       .order("source_file").order("question_number").range(from, from + 499);
     if (filter) q = q.ilike("source_file", `%${filter}%`);

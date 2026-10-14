@@ -1,7 +1,7 @@
 /**
  * Does every question that TALKS about a figure actually carry one?
  *
- *   npx tsx scripts/cbse-12-pyq/audit-figures.ts
+ *   npx tsx scripts/cbse-12-pyq/audit-figures.ts --class=12
  *
  * WHY NO EXISTING GATE CATCHES THIS. `validate.ts` checks the transcription
  * files, `board:lint` checks section structure, `audit-keys` checks option
@@ -23,7 +23,7 @@
  */
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { ORG_ID, EXAM_ID_CBSE_12 } from "./config";
+import { ORG_ID, classFromArgs } from "./config";
 
 /**
  * THE RULE NOW LIVES IN scripts/lib/figureRefs.ts, shared with the bank-wide
@@ -48,6 +48,7 @@ type Row = {
 };
 
 async function main() {
+  const scope = classFromArgs(process.argv);
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
   const client = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -59,7 +60,7 @@ async function main() {
   for (let from = 0; ; from += 500) {
     const { data, error } = await client.from("questions")
       .select("question_number, source_file, text, context, image_url, solution_image_url, options(text)")
-      .eq("org_id", ORG_ID).eq("exam_id", EXAM_ID_CBSE_12).eq("question_kind", "pyq")
+      .eq("org_id", ORG_ID).eq("exam_id", scope.examId).eq("question_kind", "pyq")
       .order("source_file").order("question_number").range(from, from + 499);
     if (error) throw new Error(error.message);
     rows.push(...(data as never as Row[]));
@@ -76,7 +77,7 @@ async function main() {
     const has = !!r.image_url;
     if (has) withImage++;
     const refs = referencesFigure(r.text, r.context);
-    const ref = `${r.source_file.replace(/^cbse-12-pyq-/, "")} Q${r.question_number}`;
+    const ref = `${r.source_file.replace(scope.sourcePrefix, "")} Q${r.question_number}`;
     if (refs && !has) missing.push(`${ref}: ${(r.text ?? "").replace(/\s+/g, " ").slice(0, 110)}`);
     if (!refs && has) orphan.push(ref);
     if (optionsDeferToFigure(r.options) && !has) drawnOptions.push(ref);

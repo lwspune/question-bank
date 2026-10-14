@@ -28,7 +28,7 @@ import { commitStaged } from "../../src/lib/upload/commit";
 import { contentHash, subjectiveContentHash } from "../../src/lib/upload/hash";
 import type { ParsedRowPayload, OptionLabel } from "../../src/lib/upload/validate";
 import {
-  DATA, ORG_ID, CREATED_BY, EXAM_ID_CBSE_12, subjectForPaperId, pyqNote, sourceFile,
+  DATA, ORG_ID, CREATED_BY, subjectForPaperId, pyqNote, sourceFile,
   type SubjectSpec,
 } from "./config";
 
@@ -124,7 +124,7 @@ async function main() {
 
   const paper = JSON.parse(readFileSync(join(DATA, `${id}.questions.json`), "utf8")) as Paper;
   const rows = buildRows(paper, SUBJECT);
-  const src = sourceFile(paper.year, paper.paper);
+  const src = sourceFile(SUBJECT, paper.year, paper.paper);
 
   console.log(`${SUBJECT.subjectName} ${paper.paper} (${paper.year}) — ${rows.length} rows`);
   console.log(`  source_file : ${src}`);
@@ -156,7 +156,7 @@ async function main() {
       .from("questions")
       .select("content_hash, source_file, question_number")
       .eq("org_id", ORG_ID)
-      .eq("exam_id", EXAM_ID_CBSE_12)
+      .eq("exam_id", SUBJECT.examId)
       .in("content_hash", figureRows.map((f) => f.hash));
     if (cErr) throw new Error(`figure-collision pre-flight failed: ${cErr.message}`);
     // Adjudicated collisions: "same" lets the row dedup normally, "distinct"
@@ -214,7 +214,7 @@ async function main() {
 
   const res = await commitStaged(client, {
     orgId: ORG_ID,
-    examId: EXAM_ID_CBSE_12,
+    examId: SUBJECT.examId,
     filename: src,
     createdBy: CREATED_BY,
     rows,
@@ -263,7 +263,7 @@ async function main() {
       .from("questions")
       .select("id")
       .eq("org_id", ORG_ID)
-      .eq("exam_id", EXAM_ID_CBSE_12)
+      .eq("exam_id", SUBJECT.examId)
       .eq("source_file", src)
       .in("content_hash", hashes.slice(i, i + 100));
     if (sErr) throw new Error(`id lookup failed: ${sErr.message}`);
@@ -289,7 +289,7 @@ async function main() {
         .from("questions")
         .select("id, content_hash, source_file, question_number, question_kind")
         .eq("org_id", ORG_ID)
-        .eq("exam_id", EXAM_ID_CBSE_12)
+        .eq("exam_id", SUBJECT.examId)
         .in("content_hash", hashes.slice(i, i + 100));
       for (const d of data ?? []) {
         if (mine.has(d.id as string)) continue;

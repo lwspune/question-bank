@@ -34,7 +34,7 @@ export type PaperCode = { series: string; set: string };
  * made the typechecker enumerate all 12 call sites instead of leaving silent
  * defaults behind.
  */
-export type SubjectKey = "maths" | "physics" | "chemistry" | "biology";
+export type SubjectKey = "maths" | "physics" | "chemistry" | "biology" | "maths10" | "science10";
 
 /**
  * CBSE's own filenames are inconsistent across the five years, so this is
@@ -68,7 +68,12 @@ function assertPrefix(prefix: string): void {
 // A DOT separates too: Biology 2026 ships "044_57.3.3_Eng_Revised.pdf". Without
 // it the "57" anchor misses that name and the "044" fallback reads "044_57" as
 // series 5 / set 7, a paper that does not exist, with no error anywhere.
-const codeRe = (prefix: string) => new RegExp(`${prefix}[\\s_\\-(.]*([1-9])[\\s_\\-).]*([1-9])`);
+//
+// The anchor may not follow a DIGIT. Class 10 Maths Standard is "30" and Maths
+// Basic is "430", and the 2026 Standard ZIP ships every Basic paper beside the
+// Standard ones: without the guard "430-1-1_Mathematics Basic.pdf" reads as
+// Standard paper 30/1/1, a real code, so nothing downstream would notice.
+const codeRe = (prefix: string) => new RegExp(`(?<!\\d)${prefix}[\\s_\\-(.]*([1-9])[\\s_\\-).]*([1-9])`);
 // The visually-impaired marker, in every spelling the five archives use:
 //   55(B)_Physics …      Physics 2026 question paper
 //   Marking Scheme 55-B  Physics 2023 marking scheme
@@ -78,7 +83,7 @@ const codeRe = (prefix: string) => new RegExp(`${prefix}[\\s_\\-(.]*([1-9])[\\s_
 // The B must stand ALONE or spell "Blind": a bare `B` prefix match reads the
 // subject-code anchor in "XII_044_Biology_MS 57-1-1.pdf" as "044 B" and drops
 // every 2025 Biology marking scheme as a visually-impaired paper.
-export const viRe = (prefix: string) => new RegExp(`${prefix}[\\s_\\-(]*B(?:lind)?(?![a-z])`, "i");
+export const viRe = (prefix: string) => new RegExp(`(?<!\\d)${prefix}[\\s_\\-(]*B(?:lind)?(?![a-z])`, "i");
 
 /**
  * Read the paper code from a source filename.
@@ -286,6 +291,90 @@ export const PAPER_PATTERNS: Record<string, Band[]> = {
     { from: 7, to: 12, section: "B", marks: 3, kind: "subjective" },
     { from: 13, to: 13, section: "C", marks: 5, kind: "case_study" },
   ],
+
+  // ── CLASS 10 (measured 2026-10-14) ─────────────────────────────────────────
+  // Class 10 Maths 2023-2026 is `full80` above, read off 2023 30/1/1, 2024
+  // 30/2/1, 2025 30/1/1 and 2026 30/2/1: the same 38 questions and the same
+  // bands as Class 12 Maths.
+
+  /**
+   * term2_m10 — Class 10 Maths Standard 2022, the COVID Term-II paper. Read
+   * off 30/1/1 (a scan):
+   *   "This question paper contains 14 questions ... Section C comprises of 4
+   *    questions (Q.no. 11 to 14) of 4 marks each ... It also contains two
+   *    case study based questions."
+   * The marking scheme labels Q14 "Case Study—2", so Q13 is the first.
+   * NOT Class 12's `term2` (one case study, at Q14 only).
+   * 12 + 12 + 16 = 40.
+   */
+  term2_m10: [
+    { from: 1, to: 6, section: "A", marks: 2, kind: "subjective" },
+    { from: 7, to: 10, section: "B", marks: 3, kind: "subjective" },
+    { from: 11, to: 12, section: "C", marks: 4, kind: "subjective" },
+    { from: 13, to: 14, section: "C", marks: 4, kind: "case_study" },
+  ],
+
+  /**
+   * term2_s10 — Class 10 Science 2022. Read off 31/1/1's text layer:
+   *   "This question paper comprises 15 questions ... Section A Questions No.
+   *    1 to 7 ... 2 marks. Section B Questions No. 8 to 13 ... 3 marks.
+   *    Section C Questions No. 14 and 15 are case-based questions. Each
+   *    question carries 4 marks."
+   * No MCQs. 14 + 18 + 8 = 40.
+   */
+  term2_s10: [
+    { from: 1, to: 7, section: "A", marks: 2, kind: "subjective" },
+    { from: 8, to: 13, section: "B", marks: 3, kind: "subjective" },
+    { from: 14, to: 15, section: "C", marks: 4, kind: "case_study" },
+  ],
+
+  /**
+   * sci80 — Class 10 Science 2023-2025: 39 questions / 80 marks. Read off
+   * 2023 and 2024 31/1/1 (scans) and 2025 31/1/1 (text layer), all alike:
+   *   "Section A – Questions No. 1 to 20 are Multiple Choice Questions ...
+   *    Section E – Questions No. 37 to 39 are of 3 source-based/case-based
+   *    units of assessment carrying 4 marks each with sub-parts."
+   * The instructions call all twenty MCQs; the last few are assertion-reason
+   * (Q17-20 in 2025), which every downstream step treats like an MCQ.
+   * 20 + 12 + 21 + 15 + 12 = 80.
+   */
+  sci80: [
+    { from: 1, to: 20, section: "A", marks: 1, kind: "mcq" },
+    { from: 21, to: 26, section: "B", marks: 2, kind: "subjective" },
+    { from: 27, to: 33, section: "C", marks: 3, kind: "subjective" },
+    { from: 34, to: 36, section: "D", marks: 5, kind: "subjective" },
+    { from: 37, to: 39, section: "E", marks: 4, kind: "case_study" },
+  ],
+
+  /**
+   * sci80_2026 — Class 10 Science 2026, a NEW paper: still 39 questions / 80
+   * marks, but sectioned by DISCIPLINE with marks printed per question.
+   * 31/1/1's instructions:
+   *   "Section A : Biology (30 Marks) Section B : Chemistry (25 Marks)
+   *    Section C : Physics (25 Marks)"
+   * Per-question marks read off the 31/1/1 marking scheme's Total column.
+   * Measured on ONE set: validate.ts compares every transcribed question's
+   * marks with this table, which is what checks the other sets.
+   * Biology 9 + 6 + 6 + 4 + 5 = 30; Chemistry 8 + 2 + 6 + 4 + 5 = 25;
+   * Physics 3 + 4 + 9 + 4 + 5 = 25.
+   */
+  sci80_2026: [
+    { from: 1, to: 9, section: "A", marks: 1, kind: "mcq" },
+    { from: 10, to: 12, section: "A", marks: 2, kind: "subjective" },
+    { from: 13, to: 14, section: "A", marks: 3, kind: "subjective" },
+    { from: 15, to: 15, section: "A", marks: 4, kind: "case_study" },
+    { from: 16, to: 16, section: "A", marks: 5, kind: "subjective" },
+    { from: 17, to: 24, section: "B", marks: 1, kind: "mcq" },
+    { from: 25, to: 25, section: "B", marks: 2, kind: "subjective" },
+    { from: 26, to: 27, section: "B", marks: 3, kind: "subjective" },
+    { from: 28, to: 28, section: "B", marks: 4, kind: "case_study" },
+    { from: 29, to: 29, section: "B", marks: 5, kind: "subjective" },
+    { from: 30, to: 32, section: "C", marks: 1, kind: "mcq" },
+    { from: 33, to: 34, section: "C", marks: 2, kind: "subjective" },
+    { from: 35, to: 37, section: "C", marks: 3, kind: "subjective" },
+    { from: 38, to: 38, section: "C", marks: 4, kind: "case_study" },
+    { from: 39, to: 39, section: "C", marks: 5, kind: "subjective" },
+  ],
 };
 
 export type PatternName = keyof typeof PAPER_PATTERNS & string;
@@ -341,6 +430,21 @@ const YEAR_PATTERN: Record<SubjectKey, Record<number, PatternName>> = {
     2024: "full70",
     2025: "full70",
     2026: "full70",
+  },
+  // Class 10, read 2026-10-14; see each pattern's comment for the paper read.
+  maths10: {
+    2022: "term2_m10",
+    2023: "full80",
+    2024: "full80",
+    2025: "full80",
+    2026: "full80",
+  },
+  science10: {
+    2022: "term2_s10",
+    2023: "sci80",
+    2024: "sci80",
+    2025: "sci80",
+    2026: "sci80_2026",
   },
 };
 
@@ -764,7 +868,7 @@ export function codesInMsFilename(path: string, anchors: string | string[]): str
   // "044" as a merged "5 / 7,3,3", when "57" reads it correctly as 57/3/3.
   for (const a of list) {
     // series, then two or more set digits separated by , . or & (any spacing).
-    const m = new RegExp(`${a}[\\s_\\-]*([1-9])[\\s_\\-]*\\(?\\s*([1-9](?:\\s*[,.&]\\s*[1-9])+)`).exec(base);
+    const m = new RegExp(`(?<!\\d)${a}[\\s_\\-]*([1-9])[\\s_\\-]*\\(?\\s*([1-9](?:\\s*[,.&]\\s*[1-9])+)`).exec(base);
     if (m) {
       const sets = m[2]
         .split(/[,.&]/)
@@ -776,6 +880,58 @@ export function codesInMsFilename(path: string, anchors: string | string[]): str
     if (c) return [`${label}/${c.series}/${c.set}`];
   }
   return [];
+}
+
+/**
+ * Every paper code printed in a marking-scheme page's text, in order, labelled
+ * the way CBSE prints it on the paper ("31/4/1").
+ *
+ * The running headers spell the code three ways, all real (Class 10 Science):
+ *   "X_51_086_31/1/1_Science # Page-1"   slashes
+ *   "PAGE 1 {31-4-1}"                    hyphens (2026 series 4)
+ *   "PAGE1 (SET 31/5/1)"                 after a word
+ * Matching slashes only (the old rule) loses the hyphen form.
+ *
+ * Like codeRe, the prefix may not follow a digit ("430/1/1" is not "30/1/1"),
+ * and a VI code ("31/B/5", "31B") has no set digit, so it yields nothing.
+ */
+export function codesInPageText(text: string, prefix: string): string[] {
+  assertPrefix(prefix);
+  const re = new RegExp(`(?<!\\d)${prefix}\\s*[/\\-]\\s*([1-9])\\s*[/\\-]\\s*([1-9])(?!\\d)`, "g");
+  const out: string[] = [];
+  for (const m of text.matchAll(re)) {
+    const code = `${prefix}/${m[1]}/${m[2]}`;
+    if (!out.includes(code)) out.push(code);
+  }
+  return out;
+}
+
+/**
+ * The papers a marking-scheme file holds, read off its OWN pages: the code on
+ * every page where the internal page number resets to 1.
+ *
+ * For files whose NAME cannot be trusted to say. Class 10 Science ships one
+ * scheme per SERIES, named "Science(MS) Set 1.pdf", "science (English) set no.
+ * 1.pdf" or "X_086_Set-3 (31.3.1 to 31.3.5)" (sic: the series has three sets).
+ * Every one is born-digital and prints its set's code on each block's first
+ * page (measured 2026-10-14 across all 2022-2026 English schemes).
+ *
+ * The count check splitMergedMs makes against these codes is not independent
+ * of them; the independent check is pairing in discover(): a block lost here
+ * leaves its question paper with NO marking scheme, which is reported.
+ * A set claimed by two block starts is refused outright.
+ */
+export function blockStartCodes(pages: MergedMsPage[]): string[] {
+  const codes: string[] = [];
+  for (const p of pages) {
+    if (p.codes.length === 0 || parseInternalPage(p.firstLine)?.page !== 1) continue;
+    const code = p.codes[0];
+    if (codes.includes(code)) {
+      throw new Error(`marking scheme: ${code} starts a block twice (page ${p.index}). Refusing.`);
+    }
+    codes.push(code);
+  }
+  return codes;
 }
 
 export function splitMergedMs(pages: MergedMsPage[], expectedCodes: string[]): MsBlock[] {

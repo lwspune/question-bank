@@ -37,7 +37,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { concludedLetter } from "../practice/audit-keys";
 import { statedOption } from "./statedOption";
-import { ORG_ID, EXAM_ID_CBSE_12 } from "./config";
+import { ORG_ID, classOfPaperId } from "./config";
 
 type Row = { ref: string; format?: string; questionNumber?: string; solution?: string | null };
 
@@ -62,10 +62,11 @@ async function main() {
     { auth: { persistSession: false } }
   );
 
+  const scope = classOfPaperId(paperId);
   const { data, error } = await client.from("questions")
     .select("question_number, options(label, text, is_correct)")
-    .eq("org_id", ORG_ID).eq("exam_id", EXAM_ID_CBSE_12).eq("question_kind", "pyq")
-    .eq("source_file", `cbse-12-pyq-${paperId}`);
+    .eq("org_id", ORG_ID).eq("exam_id", scope.examId).eq("question_kind", "pyq")
+    .eq("source_file", `${scope.sourcePrefix}${paperId}`);
   if (error) throw new Error(error.message);
 
   // The bank is the source of the key — never the authored file, which is the

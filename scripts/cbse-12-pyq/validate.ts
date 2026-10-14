@@ -28,7 +28,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { DATA, EXAM_ID_CBSE_12, subjectForPaperId, declaredSubtopics } from "./config";
+import { DATA, subjectForPaperId, declaredSubtopics } from "./config";
 import { sectionForQuestion, type PatternName } from "./lib";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 
@@ -102,7 +102,7 @@ async function main() {
   const { data: rows, error } = await client
     .from("subtopics")
     .select("name, chapters!inner(name, subjects!inner(name, exam_id))")
-    .eq("chapters.subjects.exam_id", EXAM_ID_CBSE_12)
+    .eq("chapters.subjects.exam_id", SUBJECT.examId)
     .eq("chapters.subjects.name", SUBJECT.subjectName);
   if (error) throw new Error(`subtopic load failed: ${error.message}`);
   const axis = new Map<string, Set<string>>();

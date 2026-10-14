@@ -26,7 +26,7 @@
 import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { DATA, OUT, ORG_ID, EXAM_ID_CBSE_12 } from "./config";
+import { DATA, OUT, ORG_ID, classOfPaperId } from "./config";
 
 const BUCKET = "question-images";
 const MAX_BYTES = 1_000_000;
@@ -93,7 +93,7 @@ async function main() {
       .from("questions")
       .select("id, question_number, source_file, image_url")
       .eq("org_id", ORG_ID)
-      .eq("exam_id", EXAM_ID_CBSE_12)
+      .eq("exam_id", classOfPaperId(e.from.split(":")[0]).examId)
       .eq("content_hash", e.hash);
     if (error) throw new Error(`${e.hash.slice(0, 8)}: ${error.message}`);
 
@@ -110,7 +110,7 @@ async function main() {
     }
     plan.push({
       e, bytes, questionId: data[0].id, qn: data[0].question_number,
-      key: `cbse-12-pyq/${e.hash.slice(0, 12)}.png`,
+      key: `cbse-${classOfPaperId(e.from.split(":")[0]).classLabel}-pyq/${e.hash.slice(0, 12)}.png`,
     });
   }
 

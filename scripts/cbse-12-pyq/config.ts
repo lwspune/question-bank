@@ -88,14 +88,23 @@ export { ORG_ID, CREATED_BY } from "../practice/config";
 // ~10 scripts is a cross-exam-write hazard: a single missed call site silently
 // scopes a Class-11 write to Class 12 and no gate sees it. Reintroducing the
 // ambiguous name here would undo that.
-export { EXAM_ID_CBSE_12 } from "../ncert/config";
-import { CHAPTERS as NCERT_CHAPTERS, EXAM_ID_CBSE_12 as CBSE12 } from "../ncert/config";
+//
+// CLASS 10 (2026-10-14) runs through this same pipeline, on the cbse-10 exam:
+// every class-specific value (exam, source folder, source_file prefix, code
+// anchors) lives on its SubjectSpec, so a script reads the exam off the
+// paper's subject (subjectForPaperId) or off a required --class
+// (classFromArgs), never off an ambient constant. The exam ids are exported
+// for tests only; the three historical Class-12 fix scripts import theirs
+// from ../ncert/config by name.
+export { EXAM_ID_CBSE_12, EXAM_ID_CBSE_10 } from "../ncert/config";
+import { CHAPTERS as NCERT_CHAPTERS, EXAM_ID_CBSE_12 as CBSE12, EXAM_ID_CBSE_10 as CBSE10 } from "../ncert/config";
 
 import { PAPER_PATTERNS, patternForYear, totalMarks, type SubjectKey } from "./lib";
 export type { SubjectKey };
 
 /** Where the official ZIPs are unpacked: <SOURCE_ROOT>/<year>/{qp,ms}/… */
 const SOURCE_BASE = "C:\\tmp\\PYQPs\\CBSE\\XII";
+const SOURCE_BASE_10 = "C:\\tmp\\PYQPs\\CBSE\\X";
 
 export const OUT = join(__dirname, "out"); // gitignored: rendered PNGs + hash dumps
 export const DATA = join(__dirname, "data"); // committed: transcription source of truth
@@ -255,6 +264,62 @@ export const CHAPTERS_BIOLOGY = [
 ] as const;
 
 /**
+ * The 14 live cbse-10 MATHEMATICS chapters, verbatim from the DB 2026-10-14
+ * (587 NCERT textbook rows, 0 pyq), in their order_index order.
+ *
+ * The 2022 Term-II papers examine CONSTRUCTIONS, which the rationalised NCERT
+ * book dropped: "construct" appears 12 times across that year's 12 English
+ * schemes, word-boundary matched. Filed on an "[Outdated]" chapter, the Class
+ * 12 Chemistry rule (never onto an adjacent live chapter). Later years' hits
+ * on "construct" were not checked one by one; decide each when met.
+ */
+export const CHAPTERS_MATHS_10 = [
+  "Real Numbers",
+  "Triangles",
+  "Statistics",
+  "Surface Areas and Volumes",
+  "Probability",
+  "Polynomials",
+  "Pair of Linear Equations in Two Variables",
+  "Quadratic Equations",
+  "Arithmetic Progressions",
+  "Coordinate Geometry",
+  "Introduction to Trigonometry",
+  "Some Applications of Trigonometry",
+  "Circles",
+  "Areas Related to Circles",
+  "Constructions [Outdated]",
+] as const;
+
+/**
+ * The 13 live cbse-10 SCIENCE chapters, verbatim from the DB 2026-10-14 (421
+ * NCERT rows, 0 pyq). ⚠ "Light — Reflection and Refraction" carries a real em
+ * dash; a hyphen would fork the chapter on commit.
+ *
+ * Measured 2026-10-14 across the English schemes, word-boundary matched: the
+ * 2022 Term-II papers examine PERIODIC CLASSIFICATION (periodic 7, Döbereiner
+ * 4, Newlands 3, Mendeleev 2), a chapter the current book dropped. 2023 shows
+ * "biogas" 3 and "sustainable" 6 (Sources of Energy / Sustainable Management,
+ * also dropped); not declared up front, decided per question when met.
+ */
+export const CHAPTERS_SCIENCE_10 = [
+  "Chemical Reactions and Equations",
+  "Electricity",
+  "Heredity",
+  "Our Environment",
+  "The Human Eye and the Colourful World",
+  "Magnetic Effects of Electric Current",
+  "Acids, Bases and Salts",
+  "Metals and Non-metals",
+  "Carbon and its Compounds",
+  "Life Processes",
+  "Control and Coordination",
+  "How do Organisms Reproduce?",
+  "Light — Reflection and Refraction",
+  "Periodic Classification of Elements [Outdated]",
+] as const;
+
+/**
  * A source file no filename rule can classify, dropped BY NAME with its reason.
  * `year` scopes it, because CBSE reuses names across years.
  */
@@ -267,54 +332,163 @@ export type ExcludedSource = { year: number; kind: "qp" | "ms"; file: string; re
  * that a fork means applying every future fix twice, and this repo already has
  * a live instance of that drift.
  */
+/**
+ * A file belonging to ANOTHER paper that ships in the same archive, recognised
+ * by its own paper prefix: Maths Basic (430) inside the 2026 Standard ZIP, the
+ * Punjabi (40/41) and Urdu (46/47) versions beside the English papers. Counted
+ * as excluded with this reason, never as unaccounted and never parsed.
+ */
+export type ExcludedPrefix = { prefix: string; reason: string };
+
 export type SubjectSpec = {
   key: SubjectKey;
+  /** 10 or 12: names the source_file prefix and the pyq_note. */
+  classLabel: 10 | 12;
+  /** The exam row every write for this subject is scoped to. */
+  examId: string;
   /** The DB `subjects.name` row. Must already exist — the NCERT ingest made it. */
   subjectName: string;
+  /** What CBSE calls the paper, when it is not the subject name ("Mathematics Standard"). */
+  paperLabel?: string;
   /** CBSE's internal subject code, as printed in marking-scheme headers. */
   cbseCode: string;
   /** The paper-code prefix CBSE prints on the paper: "65/5/1", "55/1/1", "56/7/3". */
   paperPrefix: string;
+  /**
+   * Anchors tried in order when reading a code off a FILENAME. Class 12 falls
+   * back to the subject code (Physics 2026 names its schemes "XII-2-042-1-1");
+   * Class 10 must NOT: "X_086_31_2_MS…" read on "086" is paper 31/3/1.
+   */
+  codeAnchors: string[];
   sourceRoot: string;
   chapters: readonly string[];
   /** Files dropped by name; see ExcludedSource. */
   excludedSources?: readonly ExcludedSource[];
+  /** Other papers in the same archive; see ExcludedPrefix. */
+  excludedPrefixes?: readonly ExcludedPrefix[];
+  /**
+   * Pair marking schemes to papers by the codes printed on their PAGES, not
+   * their names. Class 10 Science ships one scheme per series under names
+   * like "science (English) set no. 1.pdf"; see blockStartCodes in ./lib.
+   */
+  msSplitByContent?: boolean;
+  /** Schemes whose own page numbering is broken, split by hand; see MsBlockOverride. */
+  msBlockOverrides?: readonly MsBlockOverride[];
+};
+
+/**
+ * The page blocks of ONE marking-scheme file, declared because the file's own
+ * running header cannot be trusted to find them. Matched by exact basename
+ * within the year, like ExcludedSource, so it can never reach another file.
+ * `from`/`to` are 0-based and inclusive, as splitMergedMs returns them.
+ */
+export type MsBlockOverride = {
+  year: number;
+  file: string;
+  blocks: readonly { code: string; from: number; to: number }[];
+  reason: string;
 };
 
 const BIO_2024_SCAN =
   "a SCANNED copy of a paper the archive also ships born-digital (same questions, read 2026-10-07); " +
   "not byte-identical, so the hash dedup cannot collapse the pair";
 
+const VI_SCHEME = "the visually-impaired paper's scheme; its name carries no code a VI rule can read";
+
 export const SUBJECTS: Record<SubjectKey, SubjectSpec> = {
   maths: {
     key: "maths",
+    classLabel: 12,
+    examId: CBSE12,
     subjectName: SUBJECT_NAME_MATHS,
     cbseCode: "041",
     paperPrefix: "65",
+    codeAnchors: ["65", "041"],
     sourceRoot: join(SOURCE_BASE, "Mathematics"),
     chapters: CHAPTERS_MATHS,
   },
   physics: {
     key: "physics",
+    classLabel: 12,
+    examId: CBSE12,
     subjectName: "Physics",
     cbseCode: "042",
     paperPrefix: "55",
+    codeAnchors: ["55", "042"],
     sourceRoot: join(SOURCE_BASE, "Physics"),
     chapters: CHAPTERS_PHYSICS,
   },
   chemistry: {
     key: "chemistry",
+    classLabel: 12,
+    examId: CBSE12,
     subjectName: "Chemistry",
     cbseCode: "043",
     paperPrefix: "56",
+    codeAnchors: ["56", "043"],
     sourceRoot: join(SOURCE_BASE, "Chemistry"),
     chapters: CHAPTERS_CHEMISTRY,
   },
+  maths10: {
+    key: "maths10",
+    classLabel: 10,
+    examId: CBSE10,
+    subjectName: "Mathematics",
+    paperLabel: "Mathematics Standard",
+    cbseCode: "041",
+    paperPrefix: "30",
+    codeAnchors: ["30"],
+    sourceRoot: join(SOURCE_BASE_10, "Mathematics_Standard"),
+    chapters: CHAPTERS_MATHS_10,
+    excludedPrefixes: [
+      { prefix: "430", reason: "a Mathematics Basic (241) paper, a separate subject; the 2026 Standard ZIP ships both" },
+      { prefix: "40", reason: "the Punjabi version of an English paper" },
+      { prefix: "46", reason: "the Urdu version of an English paper" },
+    ],
+  },
+  science10: {
+    key: "science10",
+    classLabel: 10,
+    examId: CBSE10,
+    subjectName: "Science",
+    cbseCode: "086",
+    paperPrefix: "31",
+    codeAnchors: ["31"],
+    sourceRoot: join(SOURCE_BASE_10, "Science"),
+    chapters: CHAPTERS_SCIENCE_10,
+    msSplitByContent: true,
+    excludedPrefixes: [
+      { prefix: "41", reason: "the Punjabi version of an English paper" },
+      { prefix: "47", reason: "the Urdu version of an English paper" },
+    ],
+    msBlockOverrides: [
+      {
+        year: 2026,
+        file: "Revised MS X_086_31.4 ALL ENGLISH.pdf",
+        // Read 2026-10-14: every page prints its own code, and they change at
+        // pages 12 and 24.
+        blocks: [
+          { code: "31/4/1", from: 0, to: 11 },
+          { code: "31/4/2", from: 12, to: 23 },
+          { code: "31/4/3", from: 24, to: 35 },
+        ],
+        reason: 'every page of the 31/4/3 block is headed "PAGE 1", so the page-number signal fires twelve times',
+      },
+    ],
+    excludedSources: [
+      { year: 2022, kind: "ms", file: "X_086_31_3_B_5_MS (For VI) unsigned.pdf", reason: VI_SCHEME },
+      { year: 2024, kind: "ms", file: "science (Blind Engl.).pdf", reason: VI_SCHEME },
+      { year: 2026, kind: "ms", file: "X_086_31.B (Blind) in ENGLISH.pdf", reason: VI_SCHEME },
+    ],
+  },
   biology: {
     key: "biology",
+    classLabel: 12,
+    examId: CBSE12,
     subjectName: "Biology",
     cbseCode: "044",
     paperPrefix: "57",
+    codeAnchors: ["57", "044"],
     sourceRoot: join(SOURCE_BASE, "Biology"),
     chapters: CHAPTERS_BIOLOGY,
     excludedSources: [
@@ -345,7 +519,7 @@ export const SUBJECTS: Record<SubjectKey, SubjectSpec> = {
  */
 export function subjectForPaperId(id: string, override?: string): SubjectSpec {
   if (override) return subjectFromArg(override);
-  const prefix = /^\d{4}-(\d{2})-/.exec(id)?.[1];
+  const prefix = /^\d{4}-(\d{2,3})-/.exec(id)?.[1];
   const found = Object.values(SUBJECTS).find((s) => s.paperPrefix === prefix);
   if (!found) {
     throw new Error(
@@ -381,7 +555,7 @@ export function subjectFromArg(arg: string | undefined): SubjectSpec {
  * true of every row on it.
  */
 export function pyqNote(subject: SubjectSpec, year: number, code: string): string {
-  const base = `CBSE Class 12 ${subject.subjectName} (${subject.cbseCode}) board examination ${year}, question paper ${code}.`;
+  const base = `CBSE Class ${subject.classLabel} ${subject.paperLabel ?? subject.subjectName} (${subject.cbseCode}) board examination ${year}, question paper ${code}.`;
   // The size is read off the subject's MEASURED pattern, not written here: it
   // used to be a literal "(12 questions, 35 marks)", true of Physics and
   // Chemistry and false of Biology's 13-question paper (and Maths' 14 / 40).
@@ -395,9 +569,35 @@ export function pyqNote(subject: SubjectSpec, year: number, code: string): strin
   return `${base}${term2} Official CBSE question paper; answer cross-checked against CBSE's published marking scheme for the same paper code.`;
 }
 
-/** questions.source_file / upload_jobs.filename — the dedup + rollback key. */
-export function sourceFile(year: number, code: string): string {
-  return `cbse-12-pyq-${year}-${code.replace(/\//g, "-")}`;
+/** A whole class's corpus, for scripts that scan every paper rather than one. */
+export type ClassScope = { classLabel: 10 | 12; examId: string; sourcePrefix: string };
+
+/**
+ * Read the REQUIRED --class=10|12 of a corpus-wide script. No default: a
+ * Class-12 default would quietly scan Class 12 for a Class 10 audit and report
+ * a clean bill of health on the wrong corpus.
+ */
+export function classFromArgs(argv: string[]): ClassScope {
+  const raw = argv.find((a) => a.startsWith("--class="))?.split("=")[1];
+  if (raw !== "10" && raw !== "12") {
+    throw new Error(`pass --class=10 or --class=12 (got ${JSON.stringify(raw ?? null)}); there is no default`);
+  }
+  const classLabel = Number(raw) as 10 | 12;
+  return { classLabel, examId: classLabel === 10 ? CBSE10 : CBSE12, sourcePrefix: `cbse-${classLabel}-pyq-` };
+}
+
+/** The class scope a single paper id belongs to ("2025-30-1-1" -> Class 10). */
+export function classOfPaperId(id: string): ClassScope {
+  const s = subjectForPaperId(id);
+  return { classLabel: s.classLabel, examId: s.examId, sourcePrefix: `cbse-${s.classLabel}-pyq-` };
+}
+
+/**
+ * questions.source_file / upload_jobs.filename — the dedup + rollback key.
+ * Class-prefixed, so a Class 10 paper can never share a key with a Class 12 one.
+ */
+export function sourceFile(subject: SubjectSpec, year: number, code: string): string {
+  return `cbse-${subject.classLabel}-pyq-${year}-${code.replace(/\//g, "-")}`;
 }
 
 /**
@@ -423,7 +623,7 @@ export function sourceFile(year: number, code: string): string {
 export function declaredSubtopics(subject: SubjectSpec): Map<string, string[]> {
   const out = new Map<string, string[]>();
   for (const ch of Object.values(NCERT_CHAPTERS)) {
-    if (ch.examId !== CBSE12) continue;
+    if (ch.examId !== subject.examId) continue;
     if (ch.subjectName !== subject.subjectName) continue;
     const prior = out.get(ch.chapterName) ?? [];
     out.set(ch.chapterName, [...new Set([...prior, ...ch.subtopics])]);

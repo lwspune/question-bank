@@ -33,7 +33,7 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { DATA, ORG_ID, EXAM_ID_CBSE_12 } from "./config";
+import { DATA, ORG_ID, classOfPaperId } from "./config";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 
 type Row = { hash: string; ref: string; questionNumber: string; solution?: string };
@@ -97,7 +97,7 @@ async function main() {
     const byHash = new Map<string, string[]>();
     for (let i = 0; i < hashes.length; i += 100) {
       const { data, error } = await client.from("questions").select("id, content_hash")
-        .eq("org_id", ORG_ID).eq("exam_id", EXAM_ID_CBSE_12).eq("question_kind", "pyq")
+        .eq("org_id", ORG_ID).eq("exam_id", classOfPaperId(doc.paperId).examId).eq("question_kind", "pyq")
         .in("content_hash", hashes.slice(i, i + 100));
       if (error) throw new Error(error.message);
       for (const d of data!) {

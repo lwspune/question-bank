@@ -1,8 +1,8 @@
 /**
  * Flip the ship-ready CBSE board-PYQ rows to PUBLIC.
  *
- *   npx tsx scripts/cbse-12-pyq/flip-public.ts             # dry run — counts + reasons
- *   npx tsx scripts/cbse-12-pyq/flip-public.ts --apply     # write
+ *   npx tsx scripts/cbse-12-pyq/flip-public.ts --class=12   # dry run — counts + reasons
+ *   npx tsx scripts/cbse-12-pyq/flip-public.ts --class=12 --apply   # write
  *   npx tsx scripts/cbse-12-pyq/flip-public.ts --paper 2026-65-1-1 [--apply]
  *
  * SCOPING IS THE FIRST THING THIS GETS RIGHT, because this exam is the only one
@@ -39,7 +39,7 @@ import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { contentHash } from "../../src/lib/upload/hash";
-import { DATA, ORG_ID, EXAM_ID_CBSE_12 } from "./config";
+import { DATA, ORG_ID, classFromArgs, classOfPaperId } from "./config";
 
 type Row = {
   id: string; question_number: string; source_file: string; visibility: string;
@@ -76,6 +76,8 @@ async function main() {
   const apply = process.argv.includes("--apply");
   const pi = process.argv.indexOf("--paper");
   const paper = pi >= 0 ? process.argv[pi + 1] : null;
+  // One paper carries its own class; a whole-corpus run must say which.
+  const scope = paper ? classOfPaperId(paper) : classFromArgs(process.argv);
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
   const client = createClient(
@@ -88,10 +90,10 @@ async function main() {
   for (let from = 0; ; from += 500) {
     let q = client.from("questions")
       .select("id, question_number, source_file, visibility, question_format, solution, content_hash, options(label, is_correct)")
-      .eq("org_id", ORG_ID).eq("exam_id", EXAM_ID_CBSE_12)
+      .eq("org_id", ORG_ID).eq("exam_id", scope.examId)
       .eq("question_kind", "pyq")           // <- never the textbook corpus
       .order("source_file").order("question_number").range(from, from + 499);
-    if (paper) q = q.eq("source_file", `cbse-12-pyq-${paper}`);
+    if (paper) q = q.eq("source_file", `${scope.sourcePrefix}${paper}`);
     const { data, error } = await q;
     if (error) throw new Error(error.message);
     rows.push(...(data as never as Row[]));
@@ -110,7 +112,7 @@ async function main() {
     const why = holdReason(r, keyless.has(r.content_hash));
     if (why) {
       if (!held.has(why)) held.set(why, []);
-      held.get(why)!.push(`${r.source_file.replace(/^cbse-12-pyq-/, "")} Q${r.question_number}`);
+      held.get(why)!.push(`${r.source_file.replace(scope.sourcePrefix, "")} Q${r.question_number}`);
     } else if (r.visibility !== "PUBLIC") ship.push(r);
   }
 

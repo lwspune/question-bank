@@ -25,7 +25,7 @@ import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { contentHash, subjectiveContentHash } from "../../src/lib/upload/hash";
-import { DATA, OUT, ORG_ID, EXAM_ID_CBSE_12 } from "./config";
+import { DATA, OUT, ORG_ID, classOfPaperId } from "./config";
 
 const BUCKET = "question-images";
 const MAX_BYTES = 1_000_000;
@@ -98,12 +98,12 @@ async function main() {
     if (bytes.length > MAX_BYTES) { problems.push(`${e.ref}: ${bytes.length} bytes, over the cap`); continue; }
     const { data, error } = await client.from("questions")
       .select("id, question_number, solution_image_url")
-      .eq("org_id", ORG_ID).eq("exam_id", EXAM_ID_CBSE_12).eq("content_hash", hash);
+      .eq("org_id", ORG_ID).eq("exam_id", classOfPaperId(e.ref.split(":")[0]).examId).eq("content_hash", hash);
     if (error) throw new Error(error.message);
     if (!data?.length) { problems.push(`${e.ref}: no committed row`); continue; }
     if (data.length > 1) { problems.push(`${e.ref}: ${data.length} rows share this hash — refusing`); continue; }
     if (data[0].solution_image_url && !force) continue; // already attached
-    plan.push({ e, bytes, id: data[0].id, qn: data[0].question_number, key: `cbse-12-pyq/sol-${hash.slice(0, 12)}.png` });
+    plan.push({ e, bytes, id: data[0].id, qn: data[0].question_number, key: `cbse-${classOfPaperId(e.ref.split(":")[0]).classLabel}-pyq/sol-${hash.slice(0, 12)}.png` });
   }
   console.log(`\nattachable now: ${plan.length}`);
   for (const p of plan) console.log(`  ${p.e.ref}  ${String(p.bytes.length).padStart(7)} B  Q${p.qn}  ${p.e.fig}`);

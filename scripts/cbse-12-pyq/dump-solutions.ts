@@ -40,7 +40,7 @@ import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { contentHash, subjectiveContentHash } from "../../src/lib/upload/hash";
-import { DATA, OUT, ORG_ID, EXAM_ID_CBSE_12 } from "./config";
+import { DATA, OUT, ORG_ID, classOfPaperId } from "./config";
 
 type Q = {
   ref: string; questionNumber: string; section: string; marks: number;
@@ -77,7 +77,7 @@ async function main() {
   for (let i = 0; i < hashes.length; i += 100) {
     const { data, error } = await client.from("questions")
       .select("id, content_hash, solution, question_kind, image_url")
-      .eq("org_id", ORG_ID).eq("exam_id", EXAM_ID_CBSE_12)
+      .eq("org_id", ORG_ID).eq("exam_id", classOfPaperId(id).examId)
       .in("content_hash", hashes.slice(i, i + 100));
     if (error) throw new Error(error.message);
     for (const r of data!) {
