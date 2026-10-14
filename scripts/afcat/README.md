@@ -5,7 +5,9 @@ Ability**. Rows are `question_kind='practice'`, except the AFCAT past-year
 questions printed in a Group C book chapter, which go in as `pyq` with their
 year and sitting (owner's call, 2026-10-14; `pyq_note` says they come from a
 compilation, not the paper). Everything is written PRIVATE at insert and made
-PUBLIC only after review. Source:
+PUBLIC only after review. **All 2,866 rows went PUBLIC on 2026-10-14** (owner:
+"flip to public all ingested"; 133 pyq + 2,733 practice), via `flip-public.ts`
+per chapter; AFCAT is in `EXAM_REGISTRY` (graduate, not practiceOnly). Source:
 `C:\Vilas\LWS_Pune\AFCAT_CDS\Subject_Content\Maths\Class_Notes\02. Arithmetic_Maths`.
 
 ## The three source groups
@@ -142,51 +144,85 @@ The books' keys are good but not clean: across the chapters below, ~1 in 20
 needed a decision (wrong key, no option right, a stem that cannot give one
 answer, two options the same).
 
+## Group D: Cadetprep Excel sheets
+
+`C:\Vilas\LWS_Pune\Cadetprep\AFCAT\Maths`, one LMS-export `.xls(x)` per
+question type, registered with `root: "cadetprep"` and a per-file `subtopic`.
+These sheets are AI-written and weaker than every other group: keys forced to a
+letter against the sheet's own working ("closest option", "as per the
+distribution"), rows with no right option, near-miss figures, and many repeats
+of one calculation. Kept rates ran from ~90% (Simple Interest) to ~60% (Time
+and Work).
+
+1. `extract-cadetprep.ts <ch> --files=...` writes `<key>.source.json` (id =
+   file index + sheet row). It lifts `Rs.`/`₹` out of math zones and restores a
+   sheet that lost its `\( \)` brackets (`repairBareMath`).
+2. `dump-verify.ts` + `show-packet.py`, then a blind pass written to
+   `out/<ch>/blind-NN.json` as `{id: [letter, value, subtopic?]}` (X = no
+   option right). Use exact-fraction calculator scripts for long working.
+3. `adopt.ts <ch> --files=...` agrees blind with key: agreeing rows adopt the
+   source solution if it passes `sourceSolutionProblem` (no letter names,
+   self-talk, hedging, em dash, broken unit, bare delimiters); every dispute
+   and refused solution is listed.
+4. Overrides (`data/<ch>.overrides.json`): correct the key where the sheet's
+   own working supports it; reprint an option only for a clear near miss;
+   repair a stem when one number makes the key exact (with an explicit
+   `answer`); otherwise exclude with a reason. Authored solutions go in
+   `data/<ch>/<key>.authored.json`.
+5. `fix-equal-values.ts` for duplicate-valued options, then `merge-derived.ts`,
+   `plan-shuffles.ts --write`, `commit.ts` (dry run, then `--apply`).
+
+Done: Ratio 119, Mixture 74, Decimal 191, Probability 167, Simple Interest 146,
+Compound Interest 223, Time and Work 179, Profit and Loss 298 (1,397). Not yet
+ingested: Speed-Time-Distance, Percentages, Averages, Clock, Mensuration,
+Exponents/Surds, Squares/Roots, Number System, Number Series, Height and
+Distance (~2,440 rows).
+
 ## Chapter status
 
 | Chapter | Files | Rows | Disputes | Status |
 |---|---|---|---|---|
-| Time and Work | A: LWS quiz | 50 | 0 of 50 (3 source keys state a wrong value beside the right letter) | committed PRIVATE 2026-10-14, awaiting review |
-| Percentage | A: LWS quiz | 44 (6 excluded: repeats) | 1 of 50: Q31 no option right (net change is a decrease; all options were increases) | committed PRIVATE 2026-10-14, awaiting review |
-| Mixture and Alligation | A: LWS quiz | 30 | 8 of 30: 6 with no right option, 1 ambiguous, 1 missing a quantity; the key also states a wrong value on 13 | committed PRIVATE 2026-10-14, awaiting review |
-| Simple and Compound Interest | A: LWS quiz (v2) | 30 | 3 of 30: 1 wrong key, 2 with no right option | committed PRIVATE 2026-10-14, awaiting review |
-| Probability | A: LWS quiz | 30 | 11 of 30, all twins (13 twin rows repaired); every key right in value | committed PRIVATE 2026-10-14, awaiting review |
-| Profit and Loss | A: LWS quiz (v1) | 48 (2 excluded: no exact answer, self-contradictory) | 4 of 50: 1 wrong key, 1 no right option | committed PRIVATE 2026-10-14, awaiting review |
-| Speed, Time and Distance | A: LWS quiz | 49 (1 excluded: repeat) | 1 of 50: Q7 ambiguous, reworded | committed PRIVATE 2026-10-14, awaiting review |
-| Ratio and Proportion | A: LWS test | 49 (1 excluded: needs rewriting) | 11 of 50: 1 wrong key, 8 with no right option, 2 twins (8 twin rows repaired) | committed PRIVATE 2026-10-14, awaiting review |
-| Mixture and Alligation | B: Errorless | 16 of 60 | 29 broken stems, 15 repeats | committed PRIVATE 2026-10-14, awaiting review |
-| Ratio and Proportion | B: Errorless | 42 of 80 | 38 broken (no whole answer, underdetermined); 2 key errors adjudicated | committed PRIVATE 2026-10-14, awaiting review |
-| Simple and Compound Interest | B: SI Errorless | 47 of 81 | 34 excluded (incl. a whole section of round-hundred CI amounts); 1 key error | committed PRIVATE 2026-10-14, awaiting review |
-| Simple and Compound Interest | B: CI Errorless | 35 of 60 | 25 excluded (stems omitting "compound", duplicate options); 5 key errors | committed PRIVATE 2026-10-14, awaiting review |
-| Clock (new chapter) | B: Errorless | 59 of 80 | 21 excluded (false premises, contradictions); 1 key error | committed PRIVATE 2026-10-14, awaiting review |
-| Speed, Time and Distance | B: "BOAT" Errorless | 9 of 40 | the early/late section is ill-posed (20); 11 broken boat stems | committed PRIVATE 2026-10-14, awaiting review |
-| Time and Work | B: Errorless | 63 of 120 | 57 excluded (rounded totals, unreachable schedules, underdetermined); 1 key error; 4 picture keys transcribed | committed PRIVATE 2026-10-14, awaiting review |
-| Average (new chapter) | B: "AVERAGE ERR" sheet | 48 of 160 | 112 excluded (impossible consecutive-number stems, an underdetermined section, newborns of negative age); 7 key errors | committed PRIVATE 2026-10-14, awaiting review |
-| Speed, Time and Distance | B: second Errorless ("err") sheet | 62 of 115 | 53 excluded (a chasing section ~30x off in units, unreachable values); 7 key errors | committed PRIVATE 2026-10-14, awaiting review |
+| Time and Work | A: LWS quiz | 50 | 0 of 50 (3 source keys state a wrong value beside the right letter) | PUBLIC 2026-10-14 |
+| Percentage | A: LWS quiz | 44 (6 excluded: repeats) | 1 of 50: Q31 no option right (net change is a decrease; all options were increases) | PUBLIC 2026-10-14 |
+| Mixture and Alligation | A: LWS quiz | 30 | 8 of 30: 6 with no right option, 1 ambiguous, 1 missing a quantity; the key also states a wrong value on 13 | PUBLIC 2026-10-14 |
+| Simple and Compound Interest | A: LWS quiz (v2) | 30 | 3 of 30: 1 wrong key, 2 with no right option | PUBLIC 2026-10-14 |
+| Probability | A: LWS quiz | 30 | 11 of 30, all twins (13 twin rows repaired); every key right in value | PUBLIC 2026-10-14 |
+| Profit and Loss | A: LWS quiz (v1) | 48 (2 excluded: no exact answer, self-contradictory) | 4 of 50: 1 wrong key, 1 no right option | PUBLIC 2026-10-14 |
+| Speed, Time and Distance | A: LWS quiz | 49 (1 excluded: repeat) | 1 of 50: Q7 ambiguous, reworded | PUBLIC 2026-10-14 |
+| Ratio and Proportion | A: LWS test | 49 (1 excluded: needs rewriting) | 11 of 50: 1 wrong key, 8 with no right option, 2 twins (8 twin rows repaired) | PUBLIC 2026-10-14 |
+| Mixture and Alligation | B: Errorless | 16 of 60 | 29 broken stems, 15 repeats | PUBLIC 2026-10-14 |
+| Ratio and Proportion | B: Errorless | 42 of 80 | 38 broken (no whole answer, underdetermined); 2 key errors adjudicated | PUBLIC 2026-10-14 |
+| Simple and Compound Interest | B: SI Errorless | 47 of 81 | 34 excluded (incl. a whole section of round-hundred CI amounts); 1 key error | PUBLIC 2026-10-14 |
+| Simple and Compound Interest | B: CI Errorless | 35 of 60 | 25 excluded (stems omitting "compound", duplicate options); 5 key errors | PUBLIC 2026-10-14 |
+| Clock (new chapter) | B: Errorless | 59 of 80 | 21 excluded (false premises, contradictions); 1 key error | PUBLIC 2026-10-14 |
+| Speed, Time and Distance | B: "BOAT" Errorless | 9 of 40 | the early/late section is ill-posed (20); 11 broken boat stems | PUBLIC 2026-10-14 |
+| Time and Work | B: Errorless | 63 of 120 | 57 excluded (rounded totals, unreachable schedules, underdetermined); 1 key error; 4 picture keys transcribed | PUBLIC 2026-10-14 |
+| Average (new chapter) | B: "AVERAGE ERR" sheet | 48 of 160 | 112 excluded (impossible consecutive-number stems, an underdetermined section, newborns of negative age); 7 key errors | PUBLIC 2026-10-14 |
+| Speed, Time and Distance | B: second Errorless ("err") sheet | 62 of 115 | 53 excluded (a chasing section ~30x off in units, unreachable values); 7 key errors | PUBLIC 2026-10-14 |
 
 Group C (book chapters; practice + AFCAT past-year questions):
 
 | Chapter | File | Practice | AFCAT PYQs | Out (reason in overrides) | Status |
 |---|---|---|---|---|---|
-| Decimal and Fractions | Conquer the Sky | 35 | 13 | see overrides | committed PRIVATE 2026-10-14 |
-| LCM and HCF | Conquer the Sky | 32 | 4 | see overrides | committed PRIVATE 2026-10-14 |
-| Sequence and Series | CDS Pathfinder | 12 | 0 | see overrides | committed PRIVATE 2026-10-14 |
-| Squares, Cubes and Roots | CDS Pathfinder | 28 | 0 | 3 repeats of Decimal + 1 | committed PRIVATE 2026-10-14 |
-| Heights and Distances | CDS Pathfinder | 25 | 0 | 0 | committed PRIVATE 2026-10-14 |
-| Statistics (new) | CDS Pathfinder | 55 (2 pie charts) | 0 | 3 (two defensible answers); Q29 stem, Q37 key corrected | committed PRIVATE 2026-10-14 |
-| Area and Perimeter (new) | CDS Pathfinder | 45 (9 figures) | 0 | 1 (no option right) | committed PRIVATE 2026-10-14 |
-| Surface Area and Volume (new) | CDS Pathfinder | 77 | 0 | 2 (no option right); Q40 stem corrected | committed PRIVATE 2026-10-14 |
-| Ratio and Proportion | CDS Pathfinder | 50 | 0 | 0 | committed PRIVATE 2026-10-14 |
-| Percentage | CDS Pathfinder | 32 | 0 | 4 (2 repeats, duplicate options, ambiguous) | committed PRIVATE 2026-10-14 |
-| Ratio and Proportion | Conquer the Sky | 26 | 12 | 5; Q20 key, Q25 stem corrected. **Not blind** (answer grid seen first) | committed PRIVATE 2026-10-14 |
-| Percentage | Conquer the Sky | 28 | 14 | 4 repeats; PYQ 13-14 seen with their key | committed PRIVATE 2026-10-14 |
-| Average | Conquer the Sky | 24 | 13 | 1 (duplicate options) | committed PRIVATE 2026-10-14 |
-| Profit and Loss | Conquer the Sky | 39 | 13 | 4 (2 no option right, 1 underdetermined, 1 repeat) | committed PRIVATE 2026-10-14 |
-| Speed, Time and Distance | Conquer the Sky (`_HW`, only copy) | 34 | 24 | 2 (contradicts key, no time given) | committed PRIVATE 2026-10-14 |
-| Simple and Compound Interest | Conquer the Sky | 35 | 14 | 0 | committed PRIVATE 2026-10-14 |
-| Clock | Conquer the Sky (Clock part only) | 5 | 0 | 1; Calendar Q7-15 and its Calendar PYQs not taken (AFCAT Reasoning) | committed PRIVATE 2026-10-14 |
-| Mixture and Alligation | Conquer the Sky (`_HW`, only copy) | 13 | 8 | 0 | committed PRIVATE 2026-10-14 |
-| Time and Work | Conquer the Sky | 30 | 18 | 2 repeats (one of a kept PYQ) | committed PRIVATE 2026-10-14 |
+| Decimal and Fractions | Conquer the Sky | 35 | 13 | see overrides | PUBLIC 2026-10-14 |
+| LCM and HCF | Conquer the Sky | 32 | 4 | see overrides | PUBLIC 2026-10-14 |
+| Sequence and Series | CDS Pathfinder | 12 | 0 | see overrides | PUBLIC 2026-10-14 |
+| Squares, Cubes and Roots | CDS Pathfinder | 28 | 0 | 3 repeats of Decimal + 1 | PUBLIC 2026-10-14 |
+| Heights and Distances | CDS Pathfinder | 25 | 0 | 0 | PUBLIC 2026-10-14 |
+| Statistics (new) | CDS Pathfinder | 55 (2 pie charts) | 0 | 3 (two defensible answers); Q29 stem, Q37 key corrected | PUBLIC 2026-10-14 |
+| Area and Perimeter (new) | CDS Pathfinder | 45 (9 figures) | 0 | 1 (no option right) | PUBLIC 2026-10-14 |
+| Surface Area and Volume (new) | CDS Pathfinder | 77 | 0 | 2 (no option right); Q40 stem corrected | PUBLIC 2026-10-14 |
+| Ratio and Proportion | CDS Pathfinder | 50 | 0 | 0 | PUBLIC 2026-10-14 |
+| Percentage | CDS Pathfinder | 32 | 0 | 4 (2 repeats, duplicate options, ambiguous) | PUBLIC 2026-10-14 |
+| Ratio and Proportion | Conquer the Sky | 26 | 12 | 5; Q20 key, Q25 stem corrected. **Not blind** (answer grid seen first) | PUBLIC 2026-10-14 |
+| Percentage | Conquer the Sky | 28 | 14 | 4 repeats; PYQ 13-14 seen with their key | PUBLIC 2026-10-14 |
+| Average | Conquer the Sky | 24 | 13 | 1 (duplicate options) | PUBLIC 2026-10-14 |
+| Profit and Loss | Conquer the Sky | 39 | 13 | 4 (2 no option right, 1 underdetermined, 1 repeat) | PUBLIC 2026-10-14 |
+| Speed, Time and Distance | Conquer the Sky (`_HW`, only copy) | 34 | 24 | 2 (contradicts key, no time given) | PUBLIC 2026-10-14 |
+| Simple and Compound Interest | Conquer the Sky | 35 | 14 | 0 | PUBLIC 2026-10-14 |
+| Clock | Conquer the Sky (Clock part only) | 5 | 0 | 1; Calendar Q7-15 and its Calendar PYQs not taken (AFCAT Reasoning) | PUBLIC 2026-10-14 |
+| Mixture and Alligation | Conquer the Sky (`_HW`, only copy) | 13 | 8 | 0 | PUBLIC 2026-10-14 |
+| Time and Work | Conquer the Sky | 30 | 18 | 2 repeats (one of a kept PYQ) | PUBLIC 2026-10-14 |
 
 Not ingested from the folder: CDS past-paper files (`*CDS_PYQs*`, `RP_PYQs_HW`) and every Pathfinder
 "previous years" section are excluded by rule; whole-book PDFs are not taken; `_HW` copies of a full
