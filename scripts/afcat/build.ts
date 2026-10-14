@@ -79,6 +79,7 @@ export function buildChapter(chapter: Chapter, opts: { shuffles?: ShufflePlan; o
       opts.shuffles ?? {}
     );
     for (const row of res.rows) {
+      if (overrides[row.questionNumber!]?.equalValuesIntended) continue;
       for (const letters of equalValueOptions(row.options.map((o) => o.text))) {
         blockers.push(`${row.questionNumber}: options ${letters.join("=")} are equal in value — repair one with an override`);
       }
