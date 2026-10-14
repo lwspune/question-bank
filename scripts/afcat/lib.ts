@@ -658,11 +658,12 @@ const SOURCE_HEDGE = /\b(closest|nearest (option|simple|given|answer)|(as per|ac
 export const BROKEN_UNIT = /\\\//;
 
 /**
- * One Cadetprep sheet writes the currency inside the math zone, `\(Rs. 900\)`,
- * which renders "Rs." as italic letters with no space. Move it out in front.
+ * Some Cadetprep sheets write the currency inside the math zone: `\(Rs. 900\)`
+ * renders "Rs." as italic letters with no space, and `\(₹240\)` makes KaTeX
+ * warn (no font metrics for ₹ in math). Move it out in front.
  */
 export function liftCurrencyOutOfMath(text: string): string {
-  return text.replace(/\\\(\s*Rs\.\s*/g, "Rs. \\(");
+  return text.replace(/\\\(\s*Rs\.\s*/g, "Rs. \\(").replace(/\\\(\s*₹\s*/g, "₹\\(");
 }
 
 /** A backslash before a digit: no LaTeX command starts with one, so it is a lost `\(` or `\)`. */
