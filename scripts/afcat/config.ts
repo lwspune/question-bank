@@ -257,6 +257,28 @@ export const CHAPTERS: Record<string, Chapter> = {
       },
     ],
   },
+  average: {
+    id: "average",
+    chapterName: "Average",
+    subtopics: [
+      "Consecutive Numbers",
+      "Largest and Smallest Numbers",
+      "Members Joining or Leaving",
+      "Cricket Scores",
+      "Highest and Lowest Scores",
+      "Correcting an Error",
+      "Average of First or Last N Numbers",
+    ],
+    files: [
+      {
+        key: "errorless",
+        group: "B",
+        label: "Average Errorless sheet",
+        path: "05. Average\\04. AVERAGE ERR.pdf",
+        note: "AFCAT practice — Errorless sheet, Average. Key letters only; every key blind re-derived.",
+      },
+    ],
+  },
   clock: {
     id: "clock",
     chapterName: "Clock",
