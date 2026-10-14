@@ -109,6 +109,13 @@ export const CHAPTERS: Record<string, Chapter> = {
         answerKey: "04. Percentage\\Quiz\\Percentage_Quiz_AK.docx",
         note: "AFCAT practice — LWS Pune quiz, Percentage. Source key AI-written; every key blind re-derived.",
       },
+      {
+        key: "pathfinder",
+        group: "C",
+        label: "CDS Pathfinder: Percentage (practice exercise)",
+        path: "04. Percentage\\Percentages_Practice_Questions_CDS.pdf",
+        note: "AFCAT practice — CDS Pathfinder (book chapter), Percentage. Every key blind re-derived.",
+      },
     ],
   },
   "mixture-and-alligation": {
