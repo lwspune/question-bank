@@ -15,6 +15,8 @@
  * printed instruction, never an invented one.
  */
 
+import { referencesFigure } from "../lib/figureRefs";
+
 export type PaperCode = { series: string; set: string };
 
 /**
@@ -1003,4 +1005,31 @@ export function splitMergedMs(pages: MergedMsPage[], expectedCodes: string[]): M
   });
 
   return blocks;
+}
+
+/**
+ * The parts of a case study that lack the figure a sibling carries.
+ *
+ * A case study prints one drawing above a shared passage ("as shown below"), and
+ * each part commits as its own row with that passage as context. A part with no
+ * figure is read on /browse beside a passage pointing at a picture that is not
+ * there. Transcribers put the note on part (i) and stopped: 20 parts across six
+ * papers on 2026-10-14. DECORATIVE notes do not count (every number is in the
+ * text, so nothing is lost), and a question outside a set is never a sibling.
+ *
+ * Only a part whose PASSAGE points at a picture is named, read by the bank-wide
+ * `referencesFigure` rule rather than a second regex. Without that condition it
+ * named 296 parts over every paper, mostly Class 12 case studies whose drawing
+ * belongs to one part's own stem: there the other parts lose nothing.
+ */
+export function caseStudyFigureGaps(
+  rows: { ref: string; setId?: string; context?: string; _figure?: string }[]
+): string[] {
+  const needs = new Set<string>();
+  for (const r of rows) {
+    if (r.setId && r._figure && !/^DECORATIVE\b/.test(r._figure.trim())) needs.add(r.setId);
+  }
+  return rows
+    .filter((r) => r.setId && needs.has(r.setId) && !r._figure && referencesFigure(null, r.context ?? null))
+    .map((r) => r.ref);
 }

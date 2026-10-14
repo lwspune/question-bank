@@ -29,7 +29,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { DATA, subjectForPaperId, declaredSubtopics } from "./config";
-import { sectionForQuestion, type PatternName } from "./lib";
+import { sectionForQuestion, caseStudyFigureGaps, type PatternName } from "./lib";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 
 /** Does ANY chapter of this subject carry this subtopic? */
@@ -52,6 +52,7 @@ type Q = {
   options?: { label: string; text: string }[];
   answer?: string;
   setId?: string;
+  _figure?: string;
   _noCorrectOption?: boolean;
 };
 type Paper = { paper: string; year: number; pattern: PatternName; questions: Q[] };
@@ -241,6 +242,12 @@ async function main() {
         note(q.ref, `${field}: control character (TAB or other — the heredoc-corruption signature)`);
       }
     }
+  }
+
+  // A case study's drawing goes on every part: each part commits as its own row
+  // under the shared passage, so a part without it points at nothing.
+  for (const ref of caseStudyFigureGaps(paper.questions)) {
+    note(ref, "case-study part has no _figure while a sibling in its set carries one");
   }
 
   const mcq = paper.questions.filter((q) => q.format === "mcq").length;

@@ -10,6 +10,7 @@ import {
   blockStartCodes,
   parseInternalPage,
   splitMergedMs,
+  caseStudyFigureGaps,
   type MergedMsPage,
 } from "../scripts/cbse-12-pyq/lib";
 import {
@@ -394,5 +395,52 @@ describe("Hindi and VI schemes no filename rule catches", () => {
     ["C:/x/Science/2026/ms/086_SCIENCE/X_086_31.B (Blind) in ENGLISH.pdf"],
   ])("drops the VI scheme %s by name", (path) => {
     expect(declaredExclusion(path, S10)).toMatch(/visually/i);
+  });
+});
+
+describe("caseStudyFigureGaps: a case study's drawing goes on every part that points at it", () => {
+  // 2026-10-14: 20 case-study parts across six papers carried no figure while
+  // part (i) did, so a student reading part (ii) on its own met "as shown in
+  // the figure" with nothing under it. audit-figures caught them only after
+  // commit; this catches them at validate.
+  //
+  // Only when the SHARED PASSAGE points at the picture. Run over every paper
+  // with the sibling rule alone it named 296 parts, mostly Class 12 case
+  // studies where the drawing belongs to one part's own stem: the passage
+  // never mentions it, so the other parts lose nothing without it.
+  const shown = "A bucket is placed 5 m from the first potato, as shown in the figure :";
+  const plain = "A student performs an experiment with three concave mirrors.";
+  const part = (ref: string, setId: string | undefined, context: string, figure?: string) =>
+    ({ ref, setId, context, _figure: figure });
+
+  it("names the parts whose passage points at the figure part (i) carries", () => {
+    const rows = [
+      part("Q36i", "P-CS1", shown, "ILLUSTRATIVE - the bucket and the potatoes"),
+      part("Q36ii", "P-CS1", shown),
+      part("Q36iiia", "P-CS1", shown),
+      part("Q37i", "P-CS2", shown, "REQUIRED - the kolam"),
+      part("Q37ii", "P-CS2", shown, "REQUIRED - the same drawing as Q37 (i)"),
+    ];
+    expect(caseStudyFigureGaps(rows)).toEqual(["Q36ii", "Q36iiia"]);
+  });
+
+  it("leaves parts alone when the passage never mentions a picture", () => {
+    // The figure belongs to part (i)'s own stem, not to the passage.
+    const rows = [part("Q29i", "P-CS1", plain, "REQUIRED - a ray diagram"), part("Q29ii", "P-CS1", plain)];
+    expect(caseStudyFigureGaps(rows)).toEqual([]);
+  });
+
+  it("leaves a set alone when its only figure is DECORATIVE", () => {
+    // Every number is in the passage, so a missing picture loses nothing.
+    const rows = [part("Q36i", "P-CS1", shown, "DECORATIVE - a golf ball"), part("Q36ii", "P-CS1", shown)];
+    expect(caseStudyFigureGaps(rows)).toEqual([]);
+  });
+
+  it("leaves a set with no figure at all alone, and ignores questions outside a set", () => {
+    const rows = [
+      part("Q39a", "P-CS3", shown), part("Q39b", "P-CS3", shown),
+      part("Q12", undefined, shown, "REQUIRED - a triangle"), part("Q13", undefined, shown),
+    ];
+    expect(caseStudyFigureGaps(rows)).toEqual([]);
   });
 });
