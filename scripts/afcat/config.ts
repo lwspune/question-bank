@@ -370,6 +370,20 @@ export const CHAPTERS: Record<string, Chapter> = {
       },
     ],
   },
+  "surface-area-and-volume": {
+    id: "surface-area-and-volume",
+    chapterName: "Surface Area and Volume",
+    subtopics: ["Cube and Cuboid", "Cylinder", "Cone and Frustum", "Sphere and Hemisphere", "Combined Solids and Recasting"],
+    files: [
+      {
+        key: "book",
+        group: "C",
+        label: "CDS Pathfinder: Surface Area and Volume of Solids (practice exercise)",
+        path: "20. Mensuration\\27_Surface_Area_&_Volume_of_Solids.pdf",
+        note: "AFCAT practice — CDS Pathfinder (book chapter), Surface Area and Volume. Every key blind re-derived.",
+      },
+    ],
+  },
   average: {
     id: "average",
     chapterName: "Average",
