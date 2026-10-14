@@ -20,6 +20,18 @@ describe("sourceSolutionProblem", () => {
   it("rejects self-talk", () => {
     expect(sourceSolutionProblem("This gives 24. Wait, recheck: it is 25.")).toMatch(/self-talk/);
   });
+  it("rejects a solution that settles for the closest option (the key was picked, not computed)", () => {
+    expect(sourceSolutionProblem("Ratio = 32:8 = 4:1 (closest given is 17:3).")).toMatch(/closest/);
+    expect(sourceSolutionProblem("113:67, about 59:41 (nearest simple ratio).")).toMatch(/closest/);
+    expect(sourceSolutionProblem("The ratio is 1:1; as per distribution requirement, keep the key.")).toMatch(/closest/);
+    expect(sourceSolutionProblem("Cheap : dear = 4:3 as per option pattern.")).toMatch(/closest/);
+  });
+  it("does not flag 'approximately' in an honest rounding", () => {
+    expect(sourceSolutionProblem("\\(\\pi r^2 = 154\\), using \\(\\pi = \\frac{22}{7}\\).")).toBeNull();
+  });
+  it("rejects a broken unit (a stray LaTeX italic correction where the rupee sign was)", () => {
+    expect(sourceSolutionProblem("Cost per kg = \\( 27.6 \\/kg \\).")).toMatch(/broken unit/);
+  });
   it("rejects an em dash and a control character", () => {
     expect(sourceSolutionProblem("Net change — none.")).toMatch(/em dash/);
     expect(sourceSolutionProblem("Ratio \x0crac{1}{2}")).toMatch(/control/);

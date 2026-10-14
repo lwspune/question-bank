@@ -580,12 +580,21 @@ export function commitGroups<R extends { questionNumber?: string }>(
 
 const SOURCE_SELF_TALK = /\b(wait|let me (re)?(calculate|consider|check|verify)|looking at the options|doesn'?t match|does not match|recheck)\b/i;
 
+const SOURCE_HEDGE = /\b(closest|nearest (option|simple|given|answer)|as per (the )?(option|distribution)|option pattern|distribution requirement)\b/i;
+
+/** `\/` (a LaTeX italic correction) where the sheet lost "₹ ... per": renders as a bare number. */
+export const BROKEN_UNIT = /\\\//;
+
 /** Why a source solution cannot be published as it stands, or null if it can. */
 export function sourceSolutionProblem(solution: string): string | null {
   const s = solution ?? "";
   if (!s.trim()) return "empty";
   if (LETTER_REF.some((re) => re.test(s))) return "names an option letter";
   if (SOURCE_SELF_TALK.test(s)) return "self-talk";
+  // A generator that computed one value and then keyed "the closest option"
+  // (or kept a letter "as per distribution"): the key was picked, not derived.
+  if (SOURCE_HEDGE.test(s)) return "settles for the closest option";
+  if (BROKEN_UNIT.test(s)) return "broken unit (\\/)";
   if (s.includes("—")) return "em dash";
   if (CONTROL_CHAR.test(s)) return "control character";
   return null;

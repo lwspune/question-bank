@@ -13,7 +13,7 @@ import * as XLSX from "xlsx";
 import { parseSheet } from "../worksheets/lib";
 import { requireChapter, DATA, sourcePathOf } from "./config";
 import { filesArg } from "./read";
-import type { SourceFile, SourceRecord } from "./lib";
+import { BROKEN_UNIT, type SourceFile, type SourceRecord } from "./lib";
 
 const chapter = requireChapter(process.argv[2]);
 const only = filesArg();
@@ -36,6 +36,8 @@ for (const file of chapter.files) {
   }));
   const bad = records.filter((r) => !r.key).map((r) => r.n);
   const blankOpt = records.filter((r) => r.options.some((o) => !o.trim())).map((r) => r.n);
+  // A stem or option with a broken unit needs a stem/options override before it can ship.
+  const brokenUnit = records.filter((r) => [r.stem, ...r.options].some((t) => BROKEN_UNIT.test(t))).map((r) => r.n);
   const src: SourceFile & { transcribed: string } = {
     path: file.path,
     group: "D",
@@ -43,5 +45,5 @@ for (const file of chapter.files) {
     questions: records,
   };
   writeFileSync(join(DATA, chapter.id, `${file.key}.source.json`), JSON.stringify(src, null, 2) + "\n");
-  console.log(`${file.key}: ${records.length} rows${bad.length ? `, no valid key on rows ${bad.join(", ")}` : ""}${blankOpt.length ? `, blank option on rows ${blankOpt.join(", ")}` : ""}`);
+  console.log(`${file.key}: ${records.length} rows${bad.length ? `, no valid key on rows ${bad.join(", ")}` : ""}${blankOpt.length ? `, blank option on rows ${blankOpt.join(", ")}` : ""}${brokenUnit.length ? `, broken unit (\/) on rows ${brokenUnit.join(", ")}` : ""}`);
 }
