@@ -43,23 +43,29 @@ from regions import merge, big  # noqa: E402
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
 OUT = os.path.join(HERE, "out", "figures")
-SOURCE_BASE = r"C:\tmp\PYQPs\CBSE\XII"
-
-# Which subject a paper belongs to is carried by its CODE, not by a flag: one
-# run's group list spans all three subjects at once, because a content_hash
-# group is a question and questions do not know about subjects. 55/56/65 are
-# the same three digits rearranged, so this mirrors prep.py's SUBJECTS registry
-# rather than guessing from the filename.
-SUBJECT_BY_PREFIX = {"55": "Physics", "56": "Chemistry", "57": "Biology", "65": "Mathematics"}
+_INDEX = None
 
 
-def source_root(code):
-    """...\\XII\\<Subject> for a paper code like "55-4-1"."""
-    prefix = str(code).split("-")[0].strip()
-    subject = SUBJECT_BY_PREFIX.get(prefix)
-    if subject is None:
-        return None
-    return os.path.join(SOURCE_BASE, subject)
+def paper_index():
+    """{paperId: row} across every data/_papers.<subject>.json (papers.ts --emit-index).
+
+    One run's group list spans every subject and both classes, because a
+    content_hash group is a question and questions do not know about subjects.
+    So paths come from the TS discovery's index, the tested matcher, and never
+    from a filename search here. That search matched a code as a SUBSTRING, and
+    Class 10 broke it: "30-1-1" is inside "430-1-1_Mathematics Basic.pdf", and
+    the 2026 Standard folder ships both, so the crop could have been taken from
+    a Basic paper (prep.py's load_index retired the same second matcher).
+    """
+    global _INDEX
+    if _INDEX is None:
+        _INDEX = {}
+        for fn in sorted(os.listdir(DATA)):
+            if fn.startswith("_papers.") and fn.endswith(".json"):
+                with open(os.path.join(DATA, fn), encoding="utf-8") as fh:
+                    for row in json.load(fh):
+                        _INDEX[row["paperId"]] = row
+    return _INDEX
 
 
 # Papers whose /Indexed images MuPDF misrenders, and their in-memory repair,
@@ -96,16 +102,16 @@ def hamming(a, b):
 
 
 def find_pdf(year, code, kind="qp"):
-    base = source_root(code)
-    if base is None:
-        return None
-    root = os.path.join(base, str(year), kind)
-    want = code.replace("/", "-")
-    for dirpath, _, files in os.walk(root):
-        for fn in files:
-            if fn.lower().endswith(".pdf") and want in re.sub(r"[_\s]", "-", fn):
-                return os.path.join(dirpath, fn)
-    return None
+    """The paper's question-paper or marking-scheme path, from the index; None if absent."""
+    row = paper_index().get(f"{year}-{code.replace('/', '-')}")
+    return row.get(kind) if row else None
+
+
+def ms_page_range(year, code):
+    """The (from, to) 0-based inclusive pages of this paper's block in a shared scheme, or None."""
+    row = paper_index().get(f"{year}-{code.replace('/', '-')}")
+    pages = row.get("msPages") if row else None
+    return (pages["from"], pages["to"]) if pages else None
 
 
 # The marking scheme lays each question out as a table row: a number in a narrow
@@ -231,7 +237,14 @@ def main():
             pdf = find_pdf(year, code, kind="ms")
             ms_docs[pid] = (fitz.open(pdf), None) if pdf else (None, None)
             if ms_docs[pid][0] is not None:
-                ms_docs[pid] = (ms_docs[pid][0], ms_figures_by_question(ms_docs[pid][0]))
+                index = ms_figures_by_question(ms_docs[pid][0])
+                # A shared scheme (Class 10 Science, Class 12 Physics) holds
+                # several sets, and each numbers its questions from 1, so keep
+                # only the hits inside THIS paper's block.
+                rng = ms_page_range(year, code)
+                if rng:
+                    index = {q: [h for h in hits if rng[0] <= h[0] <= rng[1]] for q, hits in index.items()}
+                ms_docs[pid] = (ms_docs[pid][0], index)
         return ms_docs[pid]
 
     for g in groups:
