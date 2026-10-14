@@ -1,0 +1,21 @@
+{
+  "01-31": {
+    "options": { "A": "2% decrease", "B": "2% increase" },
+    "answer": "A",
+    "reason": "Source key A '2% increase' is wrong: 1.40 x 0.70 = 0.98, a 2% DECREASE (the key's own working reaches 98). No option was right, so option A is repaired to the true value; the blind pass returned X with this value. B (was 5% increase) becomes '2% increase', the trap being tested, so the lone 'decrease' does not give the answer away."
+  },
+  "01-8": {
+    "options": { "A": "16.67%" },
+    "reason": "Source printed 16.66%, a truncation of 16 2/3% = 16.666...%; rounded to 16.67% so a student who rounds finds their answer. Key A unchanged, confirmed by blind pass."
+  },
+  "01-20": {
+    "options": { "B": "16.67%" },
+    "reason": "Source printed 16.66%, a truncation of 16 2/3% = 16.666...%; rounded to 16.67%. Key B unchanged, confirmed by blind pass."
+  },
+  "01-13": { "exclude": true, "reason": "Near-duplicate of 01-9: the same +10% then -10% net-effect sum with the same four answers." },
+  "01-29": { "exclude": true, "reason": "Near-duplicate of 01-9: the same +10% then -10% net-effect sum with the same four answers." },
+  "01-32": { "exclude": true, "reason": "Near-duplicate of 01-9: the same +10% then -10% net-effect sum with the same four answers." },
+  "01-17": { "exclude": true, "reason": "Near-duplicate of 01-3: the same +20% then -20% net-effect sum." },
+  "01-25": { "exclude": true, "reason": "Near-duplicate of 01-19: 'A is 25% more than B, how much is B less than A', same options." },
+  "01-33": { "exclude": true, "reason": "Near-duplicate of 01-8: 'one is 20% more than the other, how much is the second less', same options." }
+}

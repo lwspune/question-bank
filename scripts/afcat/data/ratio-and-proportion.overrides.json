@@ -1,0 +1,53 @@
+{
+  "01-47": {
+    "answer": "B",
+    "reason": "Source key D (x - y)^2/(x + y) is wrong: the third proportional is (x - y)^2/(x^2 - y^2) = (x - y)/(x + y). Blind pass agrees on B."
+  },
+  "01-23": {
+    "stem": "A bag contains coins of ₹1, ₹2, and ₹5 in the ratio 3:4:5. If the total value is ₹216, how many ₹5 coins are there?",
+    "answer": "C",
+    "reason": "As printed (₹210) there was no answer: one set of 3, 4, 5 coins is worth ₹36 and 210 is not a multiple of 36. Total changed to ₹216 (6 sets), which makes the keyed 30 coins exactly right. Key C stands."
+  },
+  "01-24": {
+    "options": { "B": "7:2" },
+    "answer": "B",
+    "reason": "No option was right: 4(3x + 2y) = 5(2x + 3y) gives 2x = 7y, x:y = 7:2. The keyed B '1:2' gives 7:8, not 5:4. Option B repaired to 7:2, key letter kept."
+  },
+  "01-26": {
+    "stem": "Two numbers are in the ratio 3:5. If each number is decreased by 5, they are in the ratio 1:2. The original numbers are:",
+    "answer": "A",
+    "reason": "As printed ('ratio 2:3') there was no positive solution (k = -5) and no option worked. With the new ratio 1:2, the keyed 15, 25 becomes 10:20 = 1:2 and no other option fits. Key A stands."
+  },
+  "01-34": {
+    "options": { "A": "₹15,750" },
+    "answer": "A",
+    "reason": "No option was right: A's capital-months 4x6 + 2x6 = 36 vs B's 5x12 = 60, so A gets 36/96 of 42,000 = ₹15,750 (the key said ₹14,000). Option A repaired to the true value; ₹12,000 stays as the 'withdrew everything' trap."
+  },
+  "01-37": {
+    "stem": "60 liters of a mixture contains milk and water in the ratio 7:3. How much water must be added to make the ratio 3:2?",
+    "answer": "B",
+    "reason": "As printed (40 litres) the answer was 20/3 = 6.67 litres, not an option. With 60 litres (milk 42, water 18) the water must reach 28, so add 10 litres, the keyed value. Key B stands."
+  },
+  "01-40": {
+    "options": { "D": "32" },
+    "answer": "D",
+    "reason": "No option was right: (2k + 16)/(5k + 16) = 1/2 gives k = 16, so the smaller number is 32 (the key gave 16, which is k). D (was 20) repaired to 32; 16 stays as the 'answered k' trap."
+  },
+  "01-46": {
+    "options": { "C": "19:26" },
+    "answer": "C",
+    "reason": "No option was right: milk 2/5 + 4/9 = 38/45, water 3/5 + 5/9 = 52/45, ratio 19:26 (the key said 28:37). Option C repaired to the true value, key letter kept."
+  },
+  "01-48": {
+    "exclude": true,
+    "reason": "No answer among the options: a = 3k, b = 4k, 18k = 66 gives 3a + 4b = 275/3 = 91.67 (the key said 90). Making it work needs both the stem and an option rewritten."
+  },
+  "01-10": { "options": { "B": "256:625" }, "reason": "TWIN: B '8:10' equalled the keyed A '4:5'. Key stands (blind pass 4:5). B replaced with 256:625, squaring instead of taking the root." },
+  "01-11": { "options": { "C": "5:14:15" }, "reason": "TWIN: C '70:98:105' equalled the keyed B '10:14:15'. Key stands (blind pass 10:14:15). C replaced with 5:14:15, joining the ratios without rescaling." },
+  "01-18": { "options": { "C": "25:64" }, "reason": "TWIN: C '1/5 : 1/8' equalled the keyed A '8:5'. Key stands (blind pass 8:5). C replaced with 25:64, the duplicate ratio." },
+  "01-19": { "options": { "C": "3:5" }, "answer": "B", "reason": "TWIN: B '2:5' and C '6:15' were equal, and the two copies of the source key disagree on which letter (older (b), newer (c)), both right in value. Key moved to B so the answer is the reduced form, and C replaced with 3:5 (the given a:b)." },
+  "01-21": { "options": { "A": "8:15" }, "reason": "TWIN: A '16:35' equalled the keyed B '48:105'. Key stands (blind pass 48:105). A replaced with 8:15, compounding only the first two ratios." },
+  "01-38": { "options": { "D": "24:35" }, "reason": "TWIN: D '48:105' equalled the keyed A '16:35'. Key stands (blind pass 16:35). D replaced with 24:35, distinct from B 8:15 and C 12:35." },
+  "01-49": { "options": { "D": "1:1" }, "reason": "TWIN among distractors: B '4:5' and D '12:15' were equal (both the 'ratio of days' mistake), so a student could rule both out together. D replaced with 1:1 (equal shares). Key stands (C 5:4, blind pass 5:4)." },
+  "01-41": { "options": { "D": "6:4:3" }, "reason": "TWIN: D '240:200:180' equalled the keyed B '12:10:9'. Key stands (blind pass 12:10:9). D replaced with 6:4:3, the ratio of the times alone." }
+}

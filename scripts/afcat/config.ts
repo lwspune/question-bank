@@ -78,6 +78,172 @@ export const CHAPTERS: Record<string, Chapter> = {
       },
     ],
   },
+  percentage: {
+    id: "percentage",
+    chapterName: "Percentage",
+    subtopics: [
+      "Basic Percentage Calculations",
+      "Successive Percentage Change",
+      "Comparing Two Quantities",
+      "Income, Expenditure and Savings",
+      "Price and Consumption",
+      "Marks, Groups and Other Applications",
+    ],
+    files: [
+      {
+        key: "lws-quiz",
+        group: "A",
+        label: "LWS Percentage quiz (50 Q)",
+        path: "04. Percentage\\Quiz\\Percentage_Quiz.docx",
+        answerKey: "04. Percentage\\Quiz\\Percentage_Quiz_AK.docx",
+        note: "AFCAT practice — LWS Pune quiz, Percentage. Source key AI-written; every key blind re-derived.",
+      },
+    ],
+  },
+  "mixture-and-alligation": {
+    id: "mixture-and-alligation",
+    chapterName: "Mixture and Alligation",
+    subtopics: [
+      "Mean Price and Mean Concentration",
+      "Rule of Alligation",
+      "Adding to a Mixture",
+      "Removal and Replacement",
+      "Profit and Loss on Mixtures",
+    ],
+    files: [
+      {
+        key: "lws-quiz",
+        group: "A",
+        label: "LWS Mixture and Alligation quiz (30 Q)",
+        path: "11. Mixture and Alligations\\Quiz\\Mixture_and_Alligations_30Q.docx",
+        answerKey: "11. Mixture and Alligations\\Quiz\\Mixture_and_Alligations_30Q_ak.docx",
+        note: "AFCAT practice — LWS Pune quiz, Mixture and Alligation. Source key AI-written; every key blind re-derived.",
+      },
+    ],
+  },
+  "simple-and-compound-interest": {
+    id: "simple-and-compound-interest",
+    chapterName: "Simple and Compound Interest",
+    subtopics: [
+      "Simple Interest: Interest and Amount",
+      "Simple Interest: Finding Principal, Rate or Time",
+      "Compound Interest: Annual",
+      "Compounding Half-Yearly or Quarterly",
+      "Difference Between CI and SI",
+    ],
+    files: [
+      {
+        key: "lws-quiz",
+        group: "A",
+        label: "LWS Simple and Compound Interest quiz (30 Q, v2)",
+        path: "08. Simple Interest\\Quiz\\SI_CI_Quiz_30Q_v2.docx",
+        answerKey: "08. Simple Interest\\Quiz\\SI_CI_Quiz_30Q_v2_ak.docx",
+        note: "AFCAT practice — LWS Pune quiz, Simple and Compound Interest. Source key AI-written; every key blind re-derived.",
+      },
+    ],
+  },
+  probability: {
+    id: "probability",
+    chapterName: "Probability",
+    subtopics: [
+      "Coin Tosses",
+      "Dice",
+      "Playing Cards",
+      "Drawing from a Bag",
+      "Numbers and Spinners",
+      "Probability Rules",
+    ],
+    files: [
+      {
+        key: "lws-quiz",
+        group: "A",
+        label: "LWS Probability quiz (30 Q)",
+        path: "13. Probability\\Quiz\\Probability_30Q.docx",
+        answerKey: "13. Probability\\Quiz\\Probability_30Q_ak.docx",
+        note: "AFCAT practice — LWS Pune quiz, Probability. Source key AI-written; every key blind re-derived.",
+      },
+    ],
+  },
+  "profit-and-loss": {
+    id: "profit-and-loss",
+    chapterName: "Profit and Loss",
+    subtopics: [
+      "Profit and Loss Percentage",
+      "Discount and Successive Discounts",
+      "Marked Price with Discount and Profit",
+      "Finding Cost Price from Conditions",
+      "Combined Transactions",
+      "Rates, Weights and Special Cases",
+    ],
+    files: [
+      {
+        // document (9).docx in the same folder is an earlier draft of this quiz
+        // with answers inline; v1 + its _ak table is the finished pair.
+        key: "lws-quiz",
+        group: "A",
+        label: "LWS Profit and Loss quiz (50 Q, v1)",
+        path: "06. Profit and Loss\\Quiz\\Profti_and_Loss_Quiz_v1.docx",
+        answerKey: "06. Profit and Loss\\Quiz\\Profti_and_Loss_Quiz_v1_ak.docx",
+        textFixes: [
+          { find: "(b) 2.2 kg", replace: "(c) 2.2 kg", reason: "Q22 printed the label (b) twice; the third option is (c)." },
+        ],
+        note: "AFCAT practice — LWS Pune quiz, Profit and Loss. Source key AI-written; every key blind re-derived.",
+      },
+    ],
+  },
+  "speed-time-and-distance": {
+    id: "speed-time-and-distance",
+    chapterName: "Speed, Time and Distance",
+    subtopics: [
+      "Speed, Distance and Unit Conversion",
+      "Average Speed",
+      "Trains",
+      "Boats and Streams",
+      "Relative Speed and Meeting",
+      "Late, Early and Changed Speed",
+      "Races",
+      "Journeys in Parts",
+    ],
+    files: [
+      {
+        // SDT_Quiz_v2.docx is the same 50 questions re-laid-out without a key
+        // (text identical, checked 2026-10-14); SDT_Quiz_Soln.docx has no text.
+        key: "lws-quiz",
+        group: "A",
+        label: "LWS Speed, Time and Distance quiz (50 Q)",
+        path: "07. Speed, Time and Distance\\Quiz\\SDT_Quiz.docx",
+        answerKey: "embedded",
+        note: "AFCAT practice — LWS Pune quiz, Speed, Time and Distance. Source key AI-written; every key blind re-derived.",
+      },
+    ],
+  },
+  "ratio-and-proportion": {
+    id: "ratio-and-proportion",
+    chapterName: "Ratio and Proportion",
+    subtopics: [
+      "Dividing in a Given Ratio",
+      "Duplicate, Triplicate and Other Ratios",
+      "Combining Ratios",
+      "Proportionals",
+      "Algebraic Ratio Expressions",
+      "Change in Ratio and Ages",
+      "Partnership",
+      "Variation and Work",
+      "Mixtures and Coins",
+    ],
+    files: [
+      {
+        // Quiz\R&P_cds_afcat.docx (2025-11-06) carries the same 50 questions;
+        // its key differs on one line. This copy (2025-11-12) is the newer.
+        key: "lws-quiz",
+        group: "A",
+        label: "LWS Ratio and Proportion test (50 Q)",
+        path: "03. Ratio\\R&P_Quiz.docx",
+        answerKey: "embedded",
+        note: "AFCAT practice — LWS Pune quiz, Ratio and Proportion. Source key AI-written; every key blind re-derived.",
+      },
+    ],
+  },
 };
 
 export function requireChapter(id: string | undefined): Chapter {

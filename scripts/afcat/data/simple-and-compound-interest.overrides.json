@@ -1,0 +1,24 @@
+{
+  "01-18": {
+    "answer": "A",
+    "reason": "Source key C (Rs. 23,200) is wrong: 20,000 x 7% x 2 = 2,800, amount Rs. 22,800. 23,200 would need 8%. Blind pass and recomputation agree on A."
+  },
+  "01-22": {
+    "options": { "C": "Rs. 13,891.50" },
+    "answer": "C",
+    "reason": "No option was right: 12,000 x 1.05^3 = 12,000 x 1.157625 = 13,891.50 (the key's own working shows 1.157625). Option C printed 13,891.25; repaired to the true value, key letter kept."
+  },
+  "01-25": {
+    "options": { "A": "Rs. 370.80", "B": "Rs. 360", "C": "Rs. 376.53" },
+    "answer": "A",
+    "reason": "No option was right: 3,000 x (1.06^2 - 1) = Rs. 370.80; the key states 372.96 beside letter A = 371. A repaired to 370.80. B (was 372) and C (was 372.96) replaced, since 371/372 sat within a rupee of the answer: B = Rs. 360 is simple interest (annual compounding), C = Rs. 376.53 is quarterly compounding. D Rs. 373 kept."
+  },
+  "01-17": {
+    "options": { "B": "4.88%" },
+    "reason": "Source printed 4.87% for sqrt(1.1) - 1 = 4.8809%, which rounds to 4.88%. Key B unchanged, confirmed by blind pass."
+  },
+  "01-24": {
+    "stem": "If the simple interest on a certain sum for 3 years at 7% per annum is Rs. 2,100, then the sum is:",
+    "reason": "Source stem read 'If the rate of simple interest ... is Rs. 2,100, then the amount is', which garbles rate and interest and uses 'amount' for the principal. Reworded; the arithmetic is unchanged. Key C stands, confirmed by blind pass."
+  }
+}
