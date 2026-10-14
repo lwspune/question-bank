@@ -87,16 +87,26 @@ is the student's job, not a figure.
 `figures.json` or `figure-groups.json`.** Those are shared files, and the maintainer does
 figures for every paper in one place.
 
-## 8. Who does what (owner's split, 2026-10-14)
+## 8. Who does what (owner's split, 2026-10-14, revised the same day)
 
 **Transcription agents** write `data/<id>.questions.json` and make
 `npx tsx scripts/cbse-12-pyq/validate.ts <id>` print `validation clean.` Then they stop.
 
-**The maintainer** does everything after: `commit.ts --apply` (PRIVATE rows),
-`dump-solutions.ts`, every solution (one author across the corpus, because these are
-board answers and must read consistently), the figures, and git. Solutions follow
-SOLUTION_BRIEF.md: one voice, read the scheme as IMAGES, check every number, bracket a
-genuine scheme error. Four scheme errors turned up in the first four papers, so check.
+**Solution agents** (owner approved, after the first 13 papers were written by the
+maintainer) draft ONE file, the sidecar `data/_sol_<id>.txt` (`===<ref>===` blocks, one per
+topaper row), copying the house style of the maintainer's sidecars, and run
+`python -P scripts/cbse-12-pyq/check-sidecar.py <id>` until it prints `sidecar clean.`
+It checks ref coverage both ways, unicode maths, em dashes, `\(` `\)` balance, that an
+MCQ's last "option (X)" is the key, that no lowercase "(b)" follows it (an option text
+that is itself "(a) and (b)" fools the key probe), and "Hence <letter>".
+
+**The maintainer** does everything else: `commit.ts --apply` (PRIVATE rows),
+`dump-solutions.ts`, reads every draft (closest on proofs, case studies and any bracketed
+scheme error), then `merge-solutions.py`, `apply-solutions.ts --apply`, `audit-keys.ts`,
+the figures and git. Solutions follow SOLUTION_BRIEF.md: one voice, read the scheme as
+IMAGES, check every number, bracket a genuine scheme error. 12 scheme errors turned up in
+the first 22 papers, so check. To redo an applied paper: `reset-solutions.py` on its
+topaper, then merge and apply again (merge only fills blank rows).
 
 ## 9. Transcription agents: do not
 
