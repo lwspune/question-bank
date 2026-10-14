@@ -258,12 +258,27 @@ def main():
                 if doc is None:
                     problems.append(f"{g['hash'][:8]}: no marking scheme for {pick['pid']}")
                     continue
-                hits = index.get(pick["q"], [])
+                # A scheme whose question label is not detected (2024 30/5/1 files
+                # Q35's figure under Q32) can name the page and a rect in points
+                # outright, like a qp rect pick, instead of looking up "q".
+                if pick.get("mode") == "rect" and isinstance(pick.get("page"), int):
+                    r = pick.get("rect")
+                    if (not isinstance(r, (list, tuple)) or len(r) != 4 or pick["page"] >= len(doc)
+                            or not (r[0] < r[2] and r[1] < r[3])):
+                        problems.append(f"{g['hash'][:8]}: ms rect pick needs a valid page and rect [x0,y0,x1,y1]")
+                        continue
+                    page, pageno = doc[pick["page"]], pick["page"]
+                    rect = tuple(float(v) for v in r)
+                    label = f"{pick['pid']}:ms rect"
+                    hits = [(pageno, rect)]
+                else:
+                    hits = index.get(pick["q"], [])
                 if len(hits) != 1:
                     problems.append(f"{g['hash'][:8]}: scheme {pick['pid']} has {len(hits)} figures for Q{pick['q']}, need exactly 1")
                     continue
-                pageno, rect = hits[0]
-                page, label = doc[pageno], f"{pick['pid']}:ms Q{pick['q']}"
+                if pick.get("mode") != "rect":
+                    pageno, rect = hits[0]
+                    page, label = doc[pageno], f"{pick['pid']}:ms Q{pick['q']}"
             else:
                 doc = open_doc(pick["pid"])
                 if doc is None or pick["page"] >= len(doc):
