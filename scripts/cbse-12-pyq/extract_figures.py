@@ -286,6 +286,7 @@ def main():
                     continue
                 page, pageno = doc[pick["page"]], pick["page"]
                 mode = pick.get("mode")
+                stacked = None
                 # A SCANNED paper has no separable figures to index. Its whole
                 # page is one raster -- 2022-55-5-1 is 1654x2338 per page with
                 # ZERO text characters -- so page_regions() returns exactly one
@@ -347,6 +348,33 @@ def main():
                     rect = (min(r[0] for r in rs), min(r[1] for r in rs),
                             max(r[2] for r in rs), max(r[3] for r in rs))
                     label = f"{pick['pid']}:picked"
+                elif mode == "stack":
+                    # One question can depend on two drawings with its own prose
+                    # printed between them. 2025 31/2/1 Q36(a): the circuit for
+                    # part (i) and the field-and-electron drawing for part (iii).
+                    # A single rect around both would carry the parts' text into
+                    # the image, so each rect is cropped exactly (no pad) and the
+                    # crops are stacked top to bottom, in the order listed.
+                    rs = pick.get("rects")
+                    if (not isinstance(rs, list) or len(rs) < 2 or not all(
+                            isinstance(r, (list, tuple)) and len(r) == 4 and r[0] < r[2] and r[1] < r[3]
+                            for r in rs)):
+                        problems.append(f"{g['hash'][:8]}: stack pick needs rects [[x0,y0,x1,y1], ...] (two or more)")
+                        continue
+                    ims = [Image.open(io.BytesIO(crop(page, r, pad=0.0))).convert("RGB") for r in rs]
+                    gap = 24
+                    canvas = Image.new("RGB", (max(im.width for im in ims),
+                                               sum(im.height for im in ims) + gap * (len(ims) - 1)), "white")
+                    y = 0
+                    for im in ims:
+                        canvas.paste(im, (0, y))
+                        y += im.height + gap
+                    buf = io.BytesIO()
+                    canvas.save(buf, "PNG", optimize=True)
+                    stacked = buf.getvalue()
+                    rect = (min(r[0] for r in rs), min(r[1] for r in rs),
+                            max(r[2] for r in rs), max(r[3] for r in rs))
+                    label = f"{pick['pid']}:stack"
                 else:
                     problems.append(f"{g['hash'][:8]}: unknown pick mode {mode!r}")
                     continue
@@ -370,8 +398,11 @@ def main():
             top = pick.get("padTop")
             if top:
                 rect = (rect[0], max(0.0, rect[1] - top), rect[2], rect[3])
-            png, note = shrink(crop(page, rect, pad=0.0 if band else PAD,
-                                    pad_top=0.0 if top else None))
+            if stacked:
+                png, note = shrink(stacked)
+            else:
+                png, note = shrink(crop(page, rect, pad=0.0 if band else PAD,
+                                        pad_top=0.0 if top else None))
             entry = {"hash": g["hash"], "from": label, "page": pageno,
                      "rect": [round(v, 1) for v in rect], "bytes": len(png),
                      "file": f"{g['hash'][:12]}.png", "members": len(g["members"]),
