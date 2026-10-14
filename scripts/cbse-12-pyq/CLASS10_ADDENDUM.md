@@ -49,6 +49,15 @@ only in 2022: `Constructions [Outdated]` (Maths) and
 home: file it on the closest subtopic and add a `_flag` naming the gap. Never invent a
 name.
 
+Neither `[Outdated]` chapter has an NCERT subtopic list, so the 2022 openers fixed these
+names (old NCERT section titles). Use them EXACTLY; a new spelling forks the subtopic:
+- `Constructions [Outdated]`: `Division of a Line Segment`, `Construction of Tangents to a Circle`.
+- `Periodic Classification of Elements [Outdated]`: `Early Attempts at the Classification of Elements`
+  (Dobereiner, Newlands), `Mendeleev's Periodic Table`, `The Modern Periodic Table`.
+
+Electromagnetic induction and the electric motor (2022 Science) have no live subtopic: file
+them on the nearest Magnetic Effects subtopic with a `_flag`, as the openers did.
+
 Seen so far, and how they were filed: Pythagoras, Heron's formula, triangle area and
 plain perimeter have no Class 10 subtopic (filed on the closest, flagged).
 
@@ -57,7 +66,10 @@ plain perimeter have no Class 10 subtopic (filed on the closest, flagged).
 - Maths case studies: refs `Q36i`, `Q36ii`, `Q36iiia`, `Q36iiib` (or `Q36iia`/`Q36iib`
   when the OR sits in part (ii)); follow the paper's printed labels.
 - Science case studies print (a), (b), (c)(i) OR (c)(ii): refs `Q37a`, `Q37b`, `Q37ci`,
-  `Q37cii` (alternative to `Q37ci`). Science long answers often have parts (i), (ii),
+  `Q37cii` (alternative to `Q37ci`). Use `ci`/`cii` for the OR in part (c) even when the
+  paper prints the alternative unlabelled (2022 does), never `ca`/`cb`.
+- 2022 Science marking schemes are one file per SET despite the shared-looking filename;
+  check the footer code (`X_.._086_31/s/n`). Science long answers often have parts (i), (ii),
   (iii) inside one question: keep them in ONE row, parts on separate lines.
 - Count the OR alternatives against instruction (viii) when it prints counts. Science
   2025 printed none: walk the marking scheme for a bare `OR` and confirm each on the paper.
