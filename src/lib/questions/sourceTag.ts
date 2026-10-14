@@ -7,10 +7,15 @@
  * question carries no number: "17" inside its set used to print as "[Q17]",
  * which reads as question 17 of a real paper.
  */
-import type { PublicQuestionKind } from "./publicPyqNote";
+import { publicPyqNote, type PublicQuestionKind } from "./publicPyqNote";
 
 export type SourceKind = "pyq" | "textbook" | "practice";
-export type SourceTag = { kind: SourceKind; label: string };
+/**
+ * `detail` is the full pyq_note when the label shows less of it. Only a
+ * superadmin's card is ever handed a raw note, so only they get one; it
+ * becomes the tag's hover text.
+ */
+export type SourceTag = { kind: SourceKind; label: string; detail?: string };
 
 export type SourceTagInput = {
   questionKind?: PublicQuestionKind;
@@ -42,7 +47,12 @@ export function sourceTag(q: SourceTagInput): SourceTag {
   const isNda = q.exam.name === "NDA";
   if (isNda && q.pyqMonth && q.pyqYear !== null) parts.push(`${q.pyqMonth} ${q.pyqYear}`);
   else if (q.pyqYear !== null) parts.push(String(q.pyqYear));
-  if (!isNda && q.pyqNote) parts.push(q.pyqNote);
+  // The same short form a student is sent (publicPyqNote is idempotent on it),
+  // so a superadmin's raw 200-character board note never fills the tag.
+  const note = isNda ? null : publicPyqNote(q.pyqNote, "pyq");
+  if (note) parts.push(note);
   if (ref) parts.push(/^\d+$/.test(ref) ? `Q${ref}` : ref);
-  return { kind: "pyq", label: parts.join(" · ") };
+  const raw = q.pyqNote?.trim();
+  const detail = !isNda && raw && raw !== note ? raw : undefined;
+  return detail ? { kind: "pyq", label: parts.join(" · "), detail } : { kind: "pyq", label: parts.join(" · ") };
 }
