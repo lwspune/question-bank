@@ -311,6 +311,7 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Finding Cost Price from Conditions",
       "Combined Transactions",
       "Rates, Weights and Special Cases",
+      "Partnership and Profit Sharing",
     ],
     files: [
       {
@@ -333,6 +334,16 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "06. Profit and Loss\\Profit_n_Loss.pdf",
         note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Profit and Loss. Every key blind re-derived.",
       },
+      { key: "cp-two", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Two Articles", path: "04. Profit&Loss\\1)Two-things.xls", subtopic: "Combined Transactions", note: "AFCAT practice — Cadetprep AFCAT sheet, Profit and Loss. Every key blind re-derived." },
+      { key: "cp-respective", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Respective Profit and Loss", path: "04. Profit&Loss\\2) Respective-Profit&loss.xls", subtopic: "Profit and Loss Percentage", note: "AFCAT practice — Cadetprep AFCAT sheet, Profit and Loss. Every key blind re-derived." },
+      { key: "cp-qtyprice", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Different Quantity and Price", path: "04. Profit&Loss\\3)Different-Quantity&Price.xls", subtopic: "Rates, Weights and Special Cases", note: "AFCAT practice — Cadetprep AFCAT sheet, Profit and Loss. Every key blind re-derived." },
+      { key: "cp-dishonest", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Dishonest Seller", path: "04. Profit&Loss\\4)Dishonest-Seller.xls", subtopic: "Rates, Weights and Special Cases", note: "AFCAT practice — Cadetprep AFCAT sheet, Profit and Loss. Every key blind re-derived." },
+      { key: "cp-oldnew", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Old and New Price", path: "04. Profit&Loss\\5)Old&New-Price.xls", subtopic: "Finding Cost Price from Conditions", note: "AFCAT practice — Cadetprep AFCAT sheet, Profit and Loss. Every key blind re-derived." },
+      { key: "cp-equal", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Profit Equality", path: "04. Profit&Loss\\6)Profit-Equality.xls", subtopic: "Finding Cost Price from Conditions", note: "AFCAT practice — Cadetprep AFCAT sheet, Profit and Loss. Every key blind re-derived." },
+      { key: "cp-cpsp", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: CP and SP Equality", path: "04. Profit&Loss\\7)CP-Sp-Equality.xls", subtopic: "Profit and Loss Percentage", note: "AFCAT practice — Cadetprep AFCAT sheet, Profit and Loss. Every key blind re-derived." },
+      { key: "cp-partner", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Partnership and Profit Sharing", path: "04. Profit&Loss\\8)Partnership&Profit-Sharing.xls", subtopic: "Partnership and Profit Sharing", note: "AFCAT practice — Cadetprep AFCAT sheet, Profit and Loss. Every key blind re-derived." },
+      { key: "cp-mixed", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Mixed Commodities", path: "04. Profit&Loss\\9)Mixed-Commodities.xls", subtopic: "Combined Transactions", note: "AFCAT practice — Cadetprep AFCAT sheet, Profit and Loss. Every key blind re-derived." },
+      { key: "cp-instal", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Instalment Selling", path: "04. Profit&Loss\\10)Installment-based-Selling.xls", subtopic: "Rates, Weights and Special Cases", note: "AFCAT practice — Cadetprep AFCAT sheet, Profit and Loss. Every key blind re-derived." },
     ],
   },
   "speed-time-and-distance": {
