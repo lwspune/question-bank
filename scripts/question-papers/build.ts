@@ -4,12 +4,13 @@
  *   npm run papers:build                         # DRY RUN: what would be written, what is refused
  *   npm run papers:build -- --apply              # write the papers, unpublished
  *   npm run papers:build -- --apply --publish    # write and publish
- *   npm run papers:build -- --exam=mh-ssc-10     # one board (cbse-12 · mh-hsc-12 · mh-ssc-10)
+ *   npm run papers:build -- --exam=mh-ssc-10     # one board (cbse-10 · cbse-12 · mh-hsc-12 · mh-ssc-10)
  *   npm run papers:build -- --only=2025-55-1     # one group (or one paper slug)
  *
  * Sources, one per pipeline:
- *   - CBSE Class 12: every transcription in scripts/cbse-12-pyq/data; marks are
- *     on each question (src/lib/questionPapers/manifest.ts).
+ *   - CBSE Class 12 and Class 10: every transcription in scripts/cbse-12-pyq/data
+ *     (Class 10 is paper codes 30 and 31); marks are on each question
+ *     (src/lib/questionPapers/manifest.ts).
  *   - MH HSC Class 12: the board-paper lane (scripts/mh-hsc-12-pyq/paper) and
  *     Geography (scripts/mh-hsc-12-geo-pyq); MH SSC Class 10 (scripts/mh-ssc-10).
  *     No marks are transcribed, so each paper takes its family's printed marks
@@ -35,7 +36,7 @@ config({ path: ".env.local", override: true });
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { cbseManifest, withLeaderQuestions, type PaperManifest, type SourcePaper, type SourceQuestion } from "../../src/lib/questionPapers/manifest";
+import { CBSE_10_PATTERNS, cbseManifest, withLeaderQuestions, type PaperManifest, type SourcePaper, type SourceQuestion } from "../../src/lib/questionPapers/manifest";
 import { CBSE_FOLLOWERS } from "./cbseFollowers";
 import { mhManifest, type MarksPattern } from "../../src/lib/questionPapers/mhPattern";
 import { slugify } from "../../src/lib/board/query";
@@ -48,10 +49,18 @@ import * as ssc from "../mh-ssc-10/config";
 import { buildPaperRecords as sscRecords } from "../mh-ssc-10/lib";
 
 const CBSE_DIR = join(process.cwd(), "scripts/cbse-12-pyq/data");
-/** CBSE's paper-code prefix → the bank's subject name (scripts/cbse-12-pyq/config.ts). */
-const CBSE_SUBJECTS: Record<string, string> = { "55": "Physics", "56": "Chemistry", "57": "Biology", "65": "Mathematics" };
+/** CBSE's paper-code prefix → the exam and the bank's subject name (scripts/cbse-12-pyq/config.ts). */
+const CBSE_SUBJECTS: Record<string, { exam: "cbse-12" | "cbse-10"; subject: string }> = {
+  "55": { exam: "cbse-12", subject: "Physics" },
+  "56": { exam: "cbse-12", subject: "Chemistry" },
+  "57": { exam: "cbse-12", subject: "Biology" },
+  "65": { exam: "cbse-12", subject: "Mathematics" },
+  "30": { exam: "cbse-10", subject: "Mathematics" },
+  "31": { exam: "cbse-10", subject: "Science" },
+};
 
 const EXAMS: Record<string, string> = {
+  "cbse-10": "CBSE Class 10",
   "cbse-12": "CBSE Class 12",
   "mh-hsc-12": "Maharashtra HSC Class 12",
   "mh-ssc-10": "Maharashtra State Board Class 10",
@@ -129,14 +138,19 @@ function cbseSources(): Candidate[] {
     const follower = CBSE_FOLLOWERS[id];
     // A follower transcription holds only its own questions; the leader supplies the rest.
     const src = follower ? withLeaderQuestions(read(file), read(`${follower.leader}.questions.json`), follower.map) : read(file);
-    const subjectName = CBSE_SUBJECTS[src.paper.split("/")[0]];
-    if (!subjectName) {
+    const known = CBSE_SUBJECTS[src.paper.split("/")[0]];
+    if (!known) {
       refused.push(`${file}: no subject for paper code ${src.paper}`);
       continue;
     }
-    const r = cbseManifest(src, { subjectName });
+    const { exam, subject: subjectName } = known;
+    if (EXAM && EXAM !== exam) continue;
+    const r = cbseManifest(
+      src,
+      exam === "cbse-10" ? { subjectName, totals: CBSE_10_PATTERNS, className: "CBSE Class 10" } : { subjectName }
+    );
     if (!r.ok) refused.push(r.reason);
-    else out.push({ exam: "cbse-12", subjectName, subjects: [subjectName], manifest: r.manifest });
+    else out.push({ exam, subjectName, subjects: [subjectName], manifest: r.manifest });
   }
   return out;
 }
@@ -266,7 +280,7 @@ async function main() {
   });
   const wanted = (exam: string) => !EXAM || EXAM === exam;
   const candidates = [
-    ...(wanted("cbse-12") ? cbseSources() : []),
+    ...(wanted("cbse-12") || wanted("cbse-10") ? cbseSources() : []),
     ...(wanted("mh-hsc-12") ? hscSources() : []),
     ...(wanted("mh-ssc-10") ? sscSources() : []),
   ].filter((c) => !ONLY || c.manifest.slug === ONLY || c.manifest.groupSlug === ONLY);

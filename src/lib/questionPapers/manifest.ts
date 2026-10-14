@@ -93,6 +93,21 @@ export const CBSE_12_PATTERNS: PatternTotals = {
 };
 
 /**
+ * CBSE Class 10's patterns (scripts/cbse-12-pyq/lib.ts). 2022 is the Term 2
+ * paper, 40 marks in two hours; from 2023 every paper is 80 marks in three
+ * hours. 2026 Science is set out by discipline, and one set (31/2/2) swaps its
+ * Q15 and Q16, so it names its own layout; the totals are the same.
+ */
+export const CBSE_10_PATTERNS: PatternTotals = {
+  term2_m10: { marks: 40, minutes: 120 },
+  term2_s10: { marks: 40, minutes: 120 },
+  full80: { marks: 80, minutes: 180 },
+  sci80: { marks: 80, minutes: 180 },
+  sci80_2026: { marks: 80, minutes: 180 },
+  sci80_2026_cs16: { marks: 80, minutes: 180 },
+};
+
+/**
  * What a student can score: an "OR" alternative is a choice, not more marks,
  * so only the question it replaces counts.
  */
@@ -129,7 +144,7 @@ function sectionsOf(items: PaperItem[]): PaperSection[] {
 
 export function cbseManifest(
   src: SourcePaper,
-  opts: { subjectName: string; totals?: PatternTotals }
+  opts: { subjectName: string; totals?: PatternTotals; className?: string }
 ): ManifestResult {
   const totals = (opts.totals ?? CBSE_12_PATTERNS)[src.pattern];
   if (!totals) return { ok: false, reason: `${src.paper} ${src.year}: unknown pattern "${src.pattern}"` };
@@ -179,7 +194,7 @@ export function cbseManifest(
       paperCode: src.paper,
       year: src.year,
       sitting: null,
-      title: `CBSE Class 12 ${opts.subjectName} ${src.year} (${src.paper})`,
+      title: `${opts.className ?? "CBSE Class 12"} ${opts.subjectName} ${src.year} (${src.paper})`,
       totalMarks: totals.marks,
       durationMinutes: totals.minutes,
       sections: sectionsOf(items),
