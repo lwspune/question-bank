@@ -86,6 +86,8 @@ for ref, text in sol.items():
         i += 1
     if depth:
         problems.append(ref + ": unclosed \\(")
+    if re.search(r"half a mark|loses half|marking scheme (?:deducts|awards full marks for|gives (?:one|only|a|half|the) mark|gives marks for)", text, re.I):
+        problems.append(ref + ": quotes a marking-scheme mark rule; keep the instruction, drop the rule (SOLUTION_BRIEF)")
     if re.search(r"Hence[,\s]*\(?[A-D]\)?(?![a-z])", text):
         problems.append(ref + ": 'Hence <capital A-D>' reads as an option letter; use 'So'")
 
