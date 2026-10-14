@@ -280,6 +280,20 @@ export const CHAPTERS: Record<string, Chapter> = {
       },
     ],
   },
+  "lcm-and-hcf": {
+    id: "lcm-and-hcf",
+    chapterName: "LCM and HCF",
+    subtopics: ["HCF", "LCM", "HCF and LCM Together"],
+    files: [
+      {
+        key: "book",
+        group: "C",
+        label: "Conquer the Sky AFCAT: HCF and LCM (model practice + AFCAT past years)",
+        path: "02. LCM and HCF\\HCF and LCM.pdf",
+        note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), LCM and HCF. Every key blind re-derived.",
+      },
+    ],
+  },
   average: {
     id: "average",
     chapterName: "Average",

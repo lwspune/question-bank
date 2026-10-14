@@ -16,7 +16,8 @@ import sys
 
 import fitz  # PyMuPDF
 
-HEAD = re.compile(r"^(ANSWERS?|Answers?|HINTS?|Hints?|SOLUTIONS?|Solutions?|EXPLANATIONS?)$")
+# Not "Solution": worked examples in the theory pages are labelled with it.
+HEAD = re.compile(r"^(ANSWERS|Answers|HINTS|Hints|SOLUTIONS|EXPLANATIONS)$")
 pdf, out = sys.argv[1], sys.argv[2]
 dpi = int(next((a[6:] for a in sys.argv[3:] if a.startswith("--dpi=")), 150))
 os.makedirs(out, exist_ok=True)
