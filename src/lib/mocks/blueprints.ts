@@ -674,6 +674,13 @@ function boardPaper(
   };
 }
 
+// Class 10 board PYQs (Maths Standard + Science) went PUBLIC 2026-10-15. Social
+// Science has textbook MCQs but no board PYQs in the bank, so it gets no tests.
+export const CBSE_10_CHAPTER_MCQ_PAPER = boardPaper(
+  "CBSE Class 10", "cbse-10", "chapter-mcq", "Chapter MCQs", STEM_SECS,
+  [["mathematics", "Mathematics"], ["science", "Science"]]
+);
+
 export const CBSE_12_CHAPTER_MCQ_PAPER = boardPaper(
   "CBSE Class 12", "cbse-12", "chapter-mcq", "Chapter MCQs", STEM_SECS,
   [["physics", "Physics"], ["chemistry", "Chemistry"], ["mathematics", "Mathematics"], ["biology", "Biology"]]
@@ -729,6 +736,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   MPSC_SSP_GS1_PAPER,
   UPSC_GS1_PAPER,
   UPSC_CSAT_PAPER,
+  CBSE_10_CHAPTER_MCQ_PAPER,
   CBSE_12_CHAPTER_MCQ_PAPER,
   MH_HSC_12_CHAPTER_MCQ_PAPER,
   MH_SSC_10_CHAPTER_MCQ_PAPER,

@@ -10,6 +10,7 @@ import {
   CDS_GK_PAPER,
   CDS_MATHS_PAPER,
   JEE_MAINS_PAPER,
+  CBSE_10_CHAPTER_MCQ_PAPER,
   CBSE_12_CHAPTER_MCQ_PAPER,
   MH_HSC_12_CHAPTER_MCQ_PAPER,
   MH_SSC_10_CHAPTER_MCQ_PAPER,
@@ -275,6 +276,7 @@ describe("getBlueprint covers every exported blueprint", () => {
     MHT_CET_MATHS_PAPER,
     MHT_CET_PHY_CHEM_PAPER,
     JEE_MAINS_PAPER,
+    CBSE_10_CHAPTER_MCQ_PAPER,
     CBSE_12_CHAPTER_MCQ_PAPER,
     MH_HSC_12_CHAPTER_MCQ_PAPER,
     MH_SSC_10_CHAPTER_MCQ_PAPER,
@@ -301,6 +303,7 @@ describe("getBlueprint covers every exported blueprint", () => {
  */
 describe("board chapter-test papers", () => {
   const BOARD = [
+    CBSE_10_CHAPTER_MCQ_PAPER,
     CBSE_12_CHAPTER_MCQ_PAPER,
     MH_HSC_12_CHAPTER_MCQ_PAPER,
     MH_SSC_10_CHAPTER_MCQ_PAPER,
@@ -315,7 +318,7 @@ describe("board chapter-test papers", () => {
   );
 
   it("maths and science papers run 90 seconds a question, humanities 60", () => {
-    for (const bp of [CBSE_12_CHAPTER_MCQ_PAPER, MH_HSC_12_CHAPTER_MCQ_PAPER, MH_SSC_10_CHAPTER_MCQ_PAPER]) {
+    for (const bp of [CBSE_10_CHAPTER_MCQ_PAPER, CBSE_12_CHAPTER_MCQ_PAPER, MH_HSC_12_CHAPTER_MCQ_PAPER, MH_SSC_10_CHAPTER_MCQ_PAPER]) {
       expect(bp.durationSecs / totalQuestions(bp)).toBe(90);
     }
     expect(MH_SSC_10_HUMANITIES_MCQ_PAPER.durationSecs / totalQuestions(MH_SSC_10_HUMANITIES_MCQ_PAPER)).toBe(60);
