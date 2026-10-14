@@ -114,3 +114,10 @@ evidence the pass was blind.
 | Clock (new chapter) | B: Errorless | 59 of 80 | 21 excluded (false premises, contradictions); 1 key error | committed PRIVATE 2026-10-14, awaiting review |
 | Speed, Time and Distance | B: "BOAT" Errorless | 9 of 40 | the early/late section is ill-posed (20); 11 broken boat stems | committed PRIVATE 2026-10-14, awaiting review |
 | Time and Work | B: Errorless | 63 of 120 | 57 excluded (rounded totals, unreachable schedules, underdetermined); 1 key error; 4 picture keys transcribed | committed PRIVATE 2026-10-14, awaiting review |
+| Average (new chapter) | B: "AVERAGE ERR" sheet | 48 of 160 | 112 excluded (impossible consecutive-number stems, an underdetermined section, newborns of negative age); 7 key errors | committed PRIVATE 2026-10-14, awaiting review |
+| Speed, Time and Distance | B: second Errorless ("err") sheet | 62 of 115 | 53 excluded (a chasing section ~30x off in units, unreachable values); 7 key errors | committed PRIVATE 2026-10-14, awaiting review |
+
+Not ingested from the folder: `01. Decimal and Fractions\Decimal and Fractions_AFCAT_Quiz.pdf` is two pages
+of a published AFCAT book (with AFCAT past-year questions), so it waits with the books; CDS past-paper
+files (`*CDS_PYQs*`, `RP_PYQs_HW`) are excluded by rule; practice/homework/classwork sheets are not yet
+classified (LWS-made or another institute's).
