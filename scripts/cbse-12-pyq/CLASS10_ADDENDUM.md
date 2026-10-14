@@ -94,7 +94,10 @@ Every `_figure` opens with `REQUIRED`, `ILLUSTRATIVE` or `DECORATIVE` (nothing e
 read) and ends `Page idx N`. A decorative photo beside a real diagram: flag the diagram.
 A case-study figure goes on every sibling that needs it: when the shared passage says the
 drawing is "shown", every part carries the `_figure`, not just part (i). `validate.ts` now
-fails a part that misses it (20 parts did on 2026-10-14). "Draw a diagram" in a question
+fails a part that misses it (20 parts did on 2026-10-14). When ONE row needs TWO drawings
+on DIFFERENT pages, name both page indices in the `_figure` note: a single crop holds one
+page, so the maintainer stacks the two (`"mode": "stack"` in figure-picks.json), ideally from
+a sibling set that prints both on one page. "Draw a diagram" in a question
 is the student's job, not a figure.
 
 **Do not run `extract_figures.py`, `attach-images.ts` or edit `figure-picks.json`,
