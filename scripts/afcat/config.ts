@@ -283,6 +283,14 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "07. Speed, Time and Distance\\SPEED,DISTANCE AND TIME err.pdf",
         note: "AFCAT practice — Errorless sheet (second), Speed, Time and Distance. Key letters only; every key blind re-derived.",
       },
+      {
+        // The only copy of this Conquer the Sky chapter in the folder is the _HW file.
+        key: "book",
+        group: "C",
+        label: "Conquer the Sky AFCAT: Speed, Time and Distance (model practice + AFCAT past years)",
+        path: "07. Speed, Time and Distance\\SDT_AFCAT_HW.pdf",
+        note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Speed, Time and Distance. Every key blind re-derived.",
+      },
     ],
   },
   "decimal-and-fractions": {
