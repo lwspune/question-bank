@@ -186,6 +186,14 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "09. Compound Interest\\CI Final Errorless.pdf",
         note: "AFCAT practice — Errorless sheet, Compound Interest. Key letters only; every key blind re-derived.",
       },
+      {
+        // SI_CI_HW.pdf is pages 3-5 of this file.
+        key: "book",
+        group: "C",
+        label: "Conquer the Sky AFCAT: Simple and Compound Interest (model practice + AFCAT past years)",
+        path: "08. Simple Interest\\SI_CI_Arihant.pdf",
+        note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Simple and Compound Interest. Every key blind re-derived.",
+      },
     ],
   },
   probability: {
