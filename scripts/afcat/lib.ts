@@ -25,7 +25,7 @@ export type SourceRecord = {
   flags?: string[]; // extraction findings for the adjudicator
   section?: string; // Group B/C: the heading the question sits under
   pyq?: PyqSitting; // Group C: an AFCAT past-year question (ingested as question_kind pyq)
-  figure?: { page: number; bbox: [number, number, number, number] }; // Group C: the book figure to crop (PDF points)
+  figure?: { page: number; bbox: [number, number, number, number]; pad?: number }; // Group C: the book figure to crop (PDF points; pad defaults to 6)
 };
 
 export type SourceFile = { path: string; group: string; questions: SourceRecord[] };

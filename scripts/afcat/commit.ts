@@ -113,6 +113,8 @@ async function main() {
       });
       console.log(`\n${sourceFile} [${g.kind === "pyq" ? g.note!.replace(/\s*\[.*$/, "") : "practice"}]: inserted=${res.inserted} skipped=${res.skipped} failed=${res.failed}`);
       for (const e of res.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
+      inserted += res.inserted;
+      skipped += res.skipped;
     }
 
     const { error: cErr, count } = await client
