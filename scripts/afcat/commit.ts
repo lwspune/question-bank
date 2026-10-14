@@ -14,7 +14,8 @@ import { findLatexImbalance } from "../practice/lib";
 import { letterDistribution, type ShufflePlan } from "../worksheets/lib";
 import { requireChapter, ORG_ID, CREATED_BY, DATA, sourceFileOf } from "./config";
 import { buildChapter, readJson } from "./build";
-import { filesArg } from "./read";
+import { filesArg, loadChapter, qid } from "./read";
+import { commitGroups, type SourceRecord } from "./lib";
 import { adminClient, afcatExamId } from "./db";
 
 async function main() {
@@ -23,6 +24,8 @@ async function main() {
   const shuffles = readJson<ShufflePlan>(join(DATA, `${chapter.id}.shuffles.json`), {});
   const built = buildChapter(chapter, { shuffles, only: filesArg() });
 
+  const recordsById = new Map<string, SourceRecord>();
+  for (const { fileIndex, records } of loadChapter(chapter, filesArg())) for (const r of records) recordsById.set(qid(fileIndex, r.n), r);
   const all = built.flatMap((f) => f.rows);
   const dist = letterDistribution(all.map((r) => ({ id: r.questionNumber!, answer: r.options.find((o) => o.isCorrect)!.label, eligible: true })));
   console.log(`${chapter.chapterName}: ${all.length} rows, ${Object.keys(shuffles).length} rebalance shuffles`);
@@ -90,21 +93,27 @@ async function main() {
       if (error) throw new Error(`upload_jobs insert failed: ${error.message}`);
       jobId = job.id;
     }
-    const res = await commitStaged(client, {
-      orgId: ORG_ID,
-      examId,
-      filename: sourceFile,
-      createdBy: CREATED_BY,
-      rows: f.rows,
-      uploadJobId: jobId!,
-      pyqYear: null,
-      pyqNote: f.file.note,
-      // Written AT INSERT, so a row is never public or counted as a past question.
-      visibility: "PRIVATE",
-      questionKind: "practice",
-    });
-    console.log(`\n${sourceFile}: inserted=${res.inserted} skipped=${res.skipped} failed=${res.failed}`);
-    for (const e of res.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
+    // Practice rows in one call; a Group C file's AFCAT past-year questions in
+    // one call per sitting (commitStaged sets kind, year and note per call).
+    let inserted = 0;
+    let skipped = 0;
+    for (const g of commitGroups(f.rows, recordsById)) {
+      const res = await commitStaged(client, {
+        orgId: ORG_ID,
+        examId,
+        filename: sourceFile,
+        createdBy: CREATED_BY,
+        rows: g.rows,
+        uploadJobId: jobId!,
+        pyqYear: g.kind === "pyq" ? g.year! : null,
+        pyqNote: g.kind === "pyq" ? g.note! : f.file.note,
+        // Written AT INSERT: never public before review, and kind is right from the start.
+        visibility: "PRIVATE",
+        questionKind: g.kind,
+      });
+      console.log(`\n${sourceFile} [${g.kind === "pyq" ? g.note!.replace(/\s*\[.*$/, "") : "practice"}]: inserted=${res.inserted} skipped=${res.skipped} failed=${res.failed}`);
+      for (const e of res.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
+    }
 
     const { error: cErr, count } = await client
       .from("questions")
@@ -114,7 +123,7 @@ async function main() {
     if (cErr) throw new Error(`count failed: ${cErr.message}`);
     await client
       .from("upload_jobs")
-      .update({ status: "COMPLETED", total_rows: count ?? 0, inserted: res.inserted, skipped: res.skipped, finished_at: new Date().toISOString() })
+      .update({ status: "COMPLETED", total_rows: count ?? 0, inserted, skipped, finished_at: new Date().toISOString() })
       .eq("id", jobId!);
     console.log(`  ${count} rows under ${sourceFile}, linked to job ${jobId}`);
   }

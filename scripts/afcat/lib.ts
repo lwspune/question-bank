@@ -23,7 +23,9 @@ export type SourceRecord = {
   keyValue?: string; // what the source's key says in words beside the letter
   keySolution?: string; // the source's worked solution, if any
   flags?: string[]; // extraction findings for the adjudicator
-  section?: string; // Group B: the "Type-" heading the question sits under
+  section?: string; // Group B/C: the heading the question sits under
+  pyq?: PyqSitting; // Group C: an AFCAT past-year question (ingested as question_kind pyq)
+  figure?: { page: number; bbox: [number, number, number, number] }; // Group C: the book figure to crop (PDF points)
 };
 
 export type SourceFile = { path: string; group: string; questions: SourceRecord[] };
@@ -526,4 +528,44 @@ export function reorderQuestionBlocks(lines: string[]): string[] {
   const nums = blocks.map((b) => b.n).sort((a, b) => a - b);
   if (!nums.every((n, i) => n === i + 1)) return lines;
   return [...pre, ...[...blocks].sort((a, b) => a.n - b.n).flatMap((b) => b.lines)];
+}
+
+/** An AFCAT sitting a past-year question was set in (Group C books print it as "2019 II"). */
+export type PyqSitting = { year: number; sitting: "I" | "II" };
+
+/**
+ * questions.pyq_note for an AFCAT past-year question, in the bank's convention
+ * ("CDS (I) 2018 — Elementary Mathematics"). The bracket says where it came
+ * from; publicPyqNote strips it before display, so only the sitting shows.
+ */
+export function pyqNoteOf(p: PyqSitting): string {
+  return `AFCAT (${p.sitting}) ${p.year} — Numerical Ability [from a published compilation (Conquer the Sky AFCAT), not the original paper; the answer was derived by a blind pass and checked against the book's key]`;
+}
+
+/**
+ * Split a file's built rows into commit groups: every practice row together,
+ * then one group per AFCAT sitting (commitStaged sets question_kind, pyq_year
+ * and pyq_note per call). Row order is kept within each group. A row with no
+ * source record is an error: guessing its kind would mislabel a past question.
+ */
+export function commitGroups<R extends { questionNumber?: string }>(
+  rows: R[],
+  records: Map<string, { pyq?: PyqSitting }>
+): { kind: "practice" | "pyq"; year?: number; note?: string; rows: R[] }[] {
+  const practice: R[] = [];
+  const bySitting = new Map<string, { p: PyqSitting; rows: R[] }>();
+  for (const r of rows) {
+    const rec = records.get(r.questionNumber ?? "");
+    if (!rec) throw new Error(`${r.questionNumber}: no source record`);
+    if (!rec.pyq) practice.push(r);
+    else {
+      const k = `${rec.pyq.year}-${rec.pyq.sitting}`;
+      if (!bySitting.has(k)) bySitting.set(k, { p: rec.pyq, rows: [] });
+      bySitting.get(k)!.rows.push(r);
+    }
+  }
+  return [
+    ...(practice.length ? [{ kind: "practice" as const, rows: practice }] : []),
+    ...[...bySitting.values()].map((s) => ({ kind: "pyq" as const, year: s.p.year, note: pyqNoteOf(s.p), rows: s.rows })),
+  ];
 }

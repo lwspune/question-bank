@@ -19,7 +19,7 @@ import { filesArg } from "./read";
 const chapter = requireChapter(process.argv[2]);
 
 const only = filesArg();
-for (const file of chapter.files.filter((f) => f.group === "B" && (!only || only.includes(f.key)))) {
+for (const file of chapter.files.filter((f) => (f.group === "B" || f.group === "C") && (!only || only.includes(f.key)))) {
   const srcPath = join(DATA, chapter.id, `${file.key}.source.json`);
   const keyPath = join(DATA, chapter.id, `${file.key}.keytext.json`);
   if (!existsSync(srcPath) || !existsSync(keyPath)) {

@@ -14,7 +14,8 @@ import { join } from "node:path";
 import { isShuffleEligible, letterDistribution, type ShufflePlan } from "../worksheets/lib";
 import { requireChapter, DATA, sourceFileOf, fileIndexOf } from "./config";
 import { buildChapter, readJson } from "./build";
-import { planChapterShuffles } from "./lib";
+import { planChapterShuffles, type SourceRecord } from "./lib";
+import { loadChapter, qid } from "./read";
 import { adminClient, afcatExamId } from "./db";
 
 async function main() {
@@ -37,11 +38,15 @@ async function main() {
   const isFrozen = (id: string) => frozenFiles.has(Number(id.split("-")[0]));
   const frozenPlan: ShufflePlan = Object.fromEntries(Object.entries(existing).filter(([id]) => isFrozen(id)));
 
+  // A past-year question keeps the option order its paper printed: students check
+  // their answer letter against the paper.
+  const pyqIds = new Set<string>();
+  for (const { fileIndex, records } of loadChapter(chapter)) for (const r of records as SourceRecord[]) if (r.pyq) pyqIds.add(qid(fileIndex, r.n));
   const rows = buildChapter(chapter, { shuffles: frozenPlan }).flatMap((f) =>
     f.rows.map((r) => ({
       id: r.questionNumber!,
       answer: r.options.find((o) => o.isCorrect)!.label,
-      eligible: isShuffleEligible(r.options.map((o) => o.text), r.solution ?? ""),
+      eligible: isShuffleEligible(r.options.map((o) => o.text), r.solution ?? "") && !pyqIds.has(r.questionNumber!),
       frozen: isFrozen(r.questionNumber!),
     }))
   );
