@@ -176,6 +176,24 @@ describe("paper patterns, read off each year's printed General Instructions", ()
     expect(sectionForQuestion(39, "sci80_2026")).toEqual({ section: "C", marks: 5, kind: "subjective" });
   });
 
+  it("Science 2026 31/2/2 swaps Q15 and Q16: the case study is Q16, the long answer Q15", () => {
+    // 31/2/2 (2026) prints Q15 as the 5-mark long answer (2+2+1) and Q16 as the
+    // case study (1/1/2), the reverse of every opener; its marking scheme agrees.
+    // A paper names this variant in its own header; the year still maps to sci80_2026.
+    const bands = PAPER_PATTERNS.sci80_2026_cs16;
+    expect(totalMarks("sci80_2026_cs16")).toBe(80);
+    const marksIn = (s: string) =>
+      bands.filter((b) => b.section === s).reduce((n, b) => n + (b.to - b.from + 1) * b.marks, 0);
+    expect([marksIn("A"), marksIn("B"), marksIn("C")]).toEqual([30, 25, 25]);
+    expect(sectionForQuestion(15, "sci80_2026_cs16")).toEqual({ section: "A", marks: 5, kind: "subjective" });
+    expect(sectionForQuestion(16, "sci80_2026_cs16")).toEqual({ section: "A", marks: 4, kind: "case_study" });
+    // Everything else is the opener's table, so the MCQ positions (keys.ts) do not move.
+    for (let q = 1; q <= 39; q++) {
+      if (q === 15 || q === 16) continue;
+      expect(sectionForQuestion(q, "sci80_2026_cs16")).toEqual(sectionForQuestion(q, "sci80_2026"));
+    }
+  });
+
   it("refuses an unmeasured year", () => {
     expect(() => patternForYear("maths10", 2021)).toThrow(/not measured/i);
   });

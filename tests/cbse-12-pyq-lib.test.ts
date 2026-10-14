@@ -79,6 +79,7 @@ describe("paper patterns", () => {
       "full80",
       "sci80",
       "sci80_2026",
+      "sci80_2026_cs16",
       "term2",
       "term2_bio",
       "term2_m10",

@@ -377,6 +377,31 @@ export const PAPER_PATTERNS: Record<string, Band[]> = {
     { from: 38, to: 38, section: "C", marks: 4, kind: "case_study" },
     { from: 39, to: 39, section: "C", marks: 5, kind: "subjective" },
   ],
+
+  /**
+   * sci80_2026_cs16 — the 2026 Science table with Q15 and Q16 swapped. Read off
+   * 31/2/2 (2026): Q15 is the 5-mark long answer (2+2+1), Q16 the case study
+   * (1/1/2), and its marking scheme totals agree. Every other band is the
+   * opener's, so MCQ positions do not move. Not a YEAR pattern: a paper that
+   * prints this layout names it in its own questions.json header.
+   */
+  sci80_2026_cs16: [
+    { from: 1, to: 9, section: "A", marks: 1, kind: "mcq" },
+    { from: 10, to: 12, section: "A", marks: 2, kind: "subjective" },
+    { from: 13, to: 14, section: "A", marks: 3, kind: "subjective" },
+    { from: 15, to: 15, section: "A", marks: 5, kind: "subjective" },
+    { from: 16, to: 16, section: "A", marks: 4, kind: "case_study" },
+    { from: 17, to: 24, section: "B", marks: 1, kind: "mcq" },
+    { from: 25, to: 25, section: "B", marks: 2, kind: "subjective" },
+    { from: 26, to: 27, section: "B", marks: 3, kind: "subjective" },
+    { from: 28, to: 28, section: "B", marks: 4, kind: "case_study" },
+    { from: 29, to: 29, section: "B", marks: 5, kind: "subjective" },
+    { from: 30, to: 32, section: "C", marks: 1, kind: "mcq" },
+    { from: 33, to: 34, section: "C", marks: 2, kind: "subjective" },
+    { from: 35, to: 37, section: "C", marks: 3, kind: "subjective" },
+    { from: 38, to: 38, section: "C", marks: 4, kind: "case_study" },
+    { from: 39, to: 39, section: "C", marks: 5, kind: "subjective" },
+  ],
 };
 
 export type PatternName = keyof typeof PAPER_PATTERNS & string;
