@@ -1,0 +1,657 @@
+{
+  "path": "07. Compound Interest\\7)Advanced-Formulae.xls",
+  "group": "D",
+  "transcribed": "read from the Cadetprep Excel sheet by extract-cadetprep.ts (sheet row = n); key and solution are the source's, kept as evidence",
+  "questions": [
+    {
+      "n": 2,
+      "stem": "A sum of money becomes Rs. \\(15,000\\) in \\(2\\) years and Rs. \\(18,000\\) in \\(3\\) years when invested at compound interest. What is the principal amount?",
+      "options": [
+        "Rs. \\(10,416.67\\)",
+        "Rs. \\(12,500\\)",
+        "Rs. \\(11,250\\)",
+        "Rs. \\(13,000\\)"
+      ],
+      "key": "A",
+      "keySolution": "Let principal be \\(P\\) and rate be \\(R\\)%.\nGiven \\(\\frac{18000}{15000}=1.2\\Rightarrow 1+\\frac{R}{100}=1.2\\Rightarrow R=20\\)%.\n\\(P\\times(1.2)^2=15000\\Rightarrow P=\\frac{15000}{1.44}=Rs.\\,10,416.67\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 3,
+      "stem": "The difference between compound interest and simple interest on a sum for \\(3\\) years at \\(10\\)% per annum is Rs. \\(310\\). Find the principal.",
+      "options": [
+        "Rs. \\(8,000\\)",
+        "Rs. \\(10,000\\)",
+        "Rs. \\(12,000\\)",
+        "Rs. \\(15,000\\)"
+      ],
+      "key": "B",
+      "keySolution": "For \\(3\\) years, \\(CI-SI=P\\times\\frac{R^2(300+R)}{100^3}\\).\nPut \\(R=10\\), difference \\(=310\\).\n\\(310=P\\times\\frac{10^2\\times310}{1000000}\\Rightarrow P=Rs.\\,10,000\\).",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 4,
+      "stem": "A sum invested at \\(12\\)% per annum compound interest, compounded half-yearly, amounts to Rs. \\(2,544\\) in \\(1\\) year. What is the principal?",
+      "options": [
+        "Rs. \\(2,000\\)",
+        "Rs. \\(2,250\\)",
+        "Rs. \\(2,100\\)",
+        "Rs. \\(2,400\\)"
+      ],
+      "key": "C",
+      "keySolution": "Half-year rate \\(=\\frac{12}{2}=6\\)% ; periods \\(=2\\).\n\\(2544=P(1+0.06)^2=P\\times1.1236\\Rightarrow P=\\frac{2544}{1.1236}=Rs.\\,2,100\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 5,
+      "stem": "What is the effective annual rate of interest if the nominal rate is \\(8\\)% compounded quarterly?",
+      "options": [
+        "\\(8.24\\)%",
+        "\\(8.32\\)%",
+        "\\(8.16\\)%",
+        "\\(8.40\\)%"
+      ],
+      "key": "A",
+      "keySolution": "Effective rate \\(=(1+0.08/4)^4-1=(1.02)^4-1=0.082432\\Rightarrow8.24\\)%.",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 6,
+      "stem": "A sum of Rs. \\(8,000\\) is invested for \\(2\\) years at \\(15\\)% per annum. Interest is compounded annually for the first year and half-yearly for the second year. Find the amount.",
+      "options": [
+        "Rs. \\(10,582\\)",
+        "Rs. \\(10,640\\)",
+        "Rs. \\(10,672\\)",
+        "Rs. \\(10,890\\)"
+      ],
+      "key": "C",
+      "keySolution": "After \\(1\\) year: \\(8000\\times1.15=9200\\).\nSecond year (half-yearly): rate per half-year \\(=7.5\\)% ; \\(A=9200(1+0.075)^2=9200\\times1.155625=Rs.\\,10,671.75\\approx10,672\\).",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 7,
+      "stem": "The compound interest on Rs. \\(5,000\\) for \\(2\\) years at \\(12\\)% per annum is _____ .",
+      "options": [
+        "Rs. \\(1,272\\)",
+        "Rs. \\(1,200\\)",
+        "Rs. \\(1,350\\)",
+        "Rs. \\(1,440\\)"
+      ],
+      "key": "A",
+      "keySolution": "\\(CI=5000[(1+0.12)^2-1]=5000(1.2544-1)=Rs.\\,1,272\\).",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 8,
+      "stem": "A person borrows Rs. \\(20,000\\) at \\(8\\)% compound interest and agrees to repay in \\(3\\) equal annual instalments. What is each instalment?",
+      "options": [
+        "Rs. \\(7,500\\)",
+        "Rs. \\(7,746\\)",
+        "Rs. \\(7,692\\)",
+        "Rs. \\(8,000\\)"
+      ],
+      "key": "C",
+      "keySolution": "Present value of instalments: \\(20000=\\frac{x}{1.08}+\\frac{x}{1.08^2}+\\frac{x}{1.08^3}=x\\times2.577\\Rightarrow x=\\frac{20000}{2.577}=Rs.\\,7,692\\).",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 9,
+      "stem": "The population of a town is \\(50,000\\). It increases annually by \\(5\\)%. What will be the population after \\(3\\) years?",
+      "options": [
+        "\\(57,500\\)",
+        "\\(57,881\\)",
+        "\\(58,000\\)",
+        "\\(59,250\\)"
+      ],
+      "key": "B",
+      "keySolution": "\\(P=50000(1.05)^3=50000\\times1.157625=57,881\\).",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 10,
+      "stem": "A machine depreciates at \\(10\\)% per annum. Its present value is Rs. \\(1,00,000\\). What will be its value after \\(2\\) years?",
+      "options": [
+        "Rs. \\(80,000\\)",
+        "Rs. \\(81,000\\)",
+        "Rs. \\(82,000\\)",
+        "Rs. \\(85,000\\)"
+      ],
+      "key": "B",
+      "keySolution": "Value \\(=100000(1-0.10)^2=100000\\times0.81=Rs.\\,81,000\\).",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 11,
+      "stem": "If Rs. \\(6,000\\) amounts to Rs. \\(6,615\\) in \\(2\\) years compounded annually, what is the rate of interest?",
+      "options": [
+        "\\(4\\)%",
+        "\\(5\\)%",
+        "\\(6\\)%",
+        "\\(7\\)%"
+      ],
+      "key": "B",
+      "keySolution": "\\((1+R/100)^2=6615/6000=1.1025\\Rightarrow1+R/100=1.05\\Rightarrow R=5\\)% .",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 12,
+      "stem": "The compound interest on a certain sum for \\(2\\) years at \\(15\\)% per annum is Rs. \\(1,935\\). What is the simple interest on the same sum for the same period at the same rate?",
+      "options": [
+        "Rs. \\(1,800\\)",
+        "Rs. \\(1,750\\)",
+        "Rs. \\(1,850\\)",
+        "Rs. \\(1,900\\)"
+      ],
+      "key": "A",
+      "keySolution": "Let \\(P\\) be principal.\n\\(P[(1.15)^2-1]=1935\\Rightarrow P=\\frac{1935}{0.3225}=6000\\).\nSimple interest \\(=\\frac{6000\\times15\\times2}{100}=Rs.\\,1,800\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 13,
+      "stem": "What principal will amount to Rs. \\(4,320\\) in \\(2\\) years at \\(8\\)% per annum compound interest?",
+      "options": [
+        "Rs. \\(3,500\\)",
+        "Rs. \\(3,600\\)",
+        "Rs. \\(3,700\\)",
+        "Rs. \\(3,750\\)"
+      ],
+      "key": "D",
+      "keySolution": "\\(P=\\frac{4320}{(1.08)^2}=\\frac{4320}{1.1664}=Rs.\\,3,750\\).",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 14,
+      "stem": "A sum of money doubles itself in \\(10\\) years at compound interest. In how many years will it become \\(8\\) times?",
+      "options": [
+        "\\(25\\) years",
+        "\\(30\\) years",
+        "\\(35\\) years",
+        "\\(40\\) years"
+      ],
+      "key": "B",
+      "keySolution": "If \\(2=P(1+R)^ {10}/P\\Rightarrow(1+R)^{10}=2\\).\n\\(8=2^3=(1+R)^{t}\\Rightarrow t=3\\times10=30\\) years.",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 15,
+      "stem": "The difference between compound interest and simple interest on Rs. \\(10,000\\) for \\(2\\) years is Rs. \\(25\\). Find the rate of interest.",
+      "options": [
+        "\\(4\\)%",
+        "\\(5\\)%",
+        "\\(6\\)%",
+        "\\(2.5\\)%"
+      ],
+      "key": "B",
+      "keySolution": "Difference \\(=P(R/100)^2\\).\n\\(25=10000\\times(R/100)^2\\Rightarrow R=5\\)%.",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 16,
+      "stem": "A sum of Rs. \\(12,000\\) is invested at \\(20\\)% per annum compound interest. What is the difference between interest of \\(3^{\\text{rd}}\\) and \\(2^{\\text{nd}}\\) year?",
+      "options": [
+        "Rs. \\(576\\)",
+        "Rs. \\(2,880\\)",
+        "Rs. \\(3,456\\)",
+        "Rs. \\(3,000\\)"
+      ],
+      "key": "A",
+      "keySolution": "Interest 2nd year: \\(14400\\times0.20=Rs.\\,2,880\\).\nInterest 3rd year: \\(17280\\times0.20=Rs.\\,3,456\\).\nDifference \\(=3456-2880=Rs.\\,576\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 17,
+      "stem": "At what rate percent per annum will Rs. \\(2,000\\) amount to Rs. \\(2,420\\) in \\(2\\) years compounded annually?",
+      "options": [
+        "\\(9\\)%",
+        "\\(10\\)%",
+        "\\(11\\)%",
+        "\\(12\\)%"
+      ],
+      "key": "B",
+      "keySolution": "\\((1+R/100)^2=2420/2000=1.21\\Rightarrow1+R/100=1.1\\Rightarrow R=10\\)%.",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 18,
+      "stem": "The compound interest on Rs. \\(16,000\\) for \\(9\\) months at \\(20\\)% per annum, compounded quarterly, is:",
+      "options": [
+        "Rs. \\(2,522\\)",
+        "Rs. \\(2,400\\)",
+        "Rs. \\(2,662\\)",
+        "Rs. \\(2,560\\)"
+      ],
+      "key": "A",
+      "keySolution": "Periods \\(=3\\); rate/period \\(=5\\)%.\n\\(A=16000(1.05)^3=Rs.\\,18,522\\Rightarrow CI=2522\\).",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 19,
+      "stem": "A person invests Rs. \\(5,000\\) at \\(12\\)% compound interest for \\(2\\) years, interest being compounded half-yearly. Find the compound interest.",
+      "options": [
+        "Rs. \\(1,236\\)",
+        "Rs. \\(1,270\\)",
+        "Rs. \\(1,300\\)",
+        "Rs. \\(1,312\\)"
+      ],
+      "key": "D",
+      "keySolution": "Half-year rate \\(=6\\)% ; periods \\(=4\\).\n\\(A=5000(1.06)^4=Rs.\\,6,312.38\\Rightarrow CI\\approx1,312\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 20,
+      "stem": "If the compound interest on a sum for \\(2\\) years at \\(8\\)% per annum is Rs. \\(1,664\\), what is the principal?",
+      "options": [
+        "Rs. \\(9,000\\)",
+        "Rs. \\(9,500\\)",
+        "Rs. \\(10,000\\)",
+        "Rs. \\(10,500\\)"
+      ],
+      "key": "C",
+      "keySolution": "Let \\(P\\). \\(CI=P[(1.08)^2-1]=0.1664P=1664\\Rightarrow P=Rs.\\,10,000\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 21,
+      "stem": "A sum trebles itself in \\(6\\) years at compound interest. In how many years will it become \\(9\\) times?",
+      "options": [
+        "\\(10\\) years",
+        "\\(12\\) years",
+        "\\(15\\) years",
+        "\\(18\\) years"
+      ],
+      "key": "B",
+      "keySolution": "\\(3=P(1+R)^6/P\\Rightarrow(1+R)^6=3\\).\n\\(9=3^2=(1+R)^t\\Rightarrow t=2\\times6=12\\) years.",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 22,
+      "stem": "What principal will amount to Rs. \\(6,690\\) in \\(3\\) years at \\(8\\)% per annum compound interest?",
+      "options": [
+        "Rs. \\(5,000\\)",
+        "Rs. \\(5,250\\)",
+        "Rs. \\(5,312.50\\)",
+        "Rs. \\(5,500\\)"
+      ],
+      "key": "C",
+      "keySolution": "\\(P=\\frac{6690}{(1.08)^3}=\\frac{6690}{1.259712}=Rs.\\,5,312.50\\).",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 23,
+      "stem": "The rate of compound interest at which Rs. \\(8,000\\) amounts to Rs. \\(8,820\\) in \\(2\\) years is:",
+      "options": [
+        "\\(4\\)%",
+        "\\(5\\)%",
+        "\\(6\\)%",
+        "\\(7\\)%"
+      ],
+      "key": "B",
+      "keySolution": "\\((1+R/100)^2=8820/8000=1.1025\\Rightarrow1+R/100=1.05\\Rightarrow R=5\\)% .",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 24,
+      "stem": "A sum amounts to Rs. \\(2,662\\) in \\(3\\) years and Rs. \\(2,420\\) in \\(2\\) years at compound interest. Find the rate of interest.",
+      "options": [
+        "\\(8\\)%",
+        "\\(9\\)%",
+        "\\(10\\)%",
+        "\\(12\\)%"
+      ],
+      "key": "C",
+      "keySolution": "Rate \\(=\\frac{2662-2420}{2420}\\times100=10\\)% .",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 25,
+      "stem": "If Rs. \\(7,500\\) amounts to Rs. \\(9,075\\) in \\(2\\) years at compound interest, what is the rate percent per annum?",
+      "options": [
+        "\\(9\\)%",
+        "\\(10\\)%",
+        "\\(11\\)%",
+        "\\(12\\)%"
+      ],
+      "key": "B",
+      "keySolution": "\\((1+R/100)^2=9075/7500=1.21\\Rightarrow1+R/100=1.1\\Rightarrow R=10\\)% .",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 26,
+      "stem": "The present worth of Rs. \\(1,728\\) due \\(2\\) years hence at \\(8\\)% per annum compound interest is closest to:",
+      "options": [
+        "Rs. \\(1,500\\)",
+        "Rs. \\(1,440\\)",
+        "Rs. \\(1,480\\)",
+        "Rs. \\(1,600\\)"
+      ],
+      "key": "A",
+      "keySolution": "PV=\\(\\frac{1728}{(1.08)^2}=\\frac{1728}{1.1664}=Rs.\\,1,481.48\\approx1,500\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 27,
+      "stem": "A sum of Rs. \\(4,000\\) becomes Rs. \\(5,292\\) in \\(3\\) years at compound interest. What is the rate of interest?",
+      "options": [
+        "\\(9\\)%",
+        "\\(10\\)%",
+        "\\(11\\)%",
+        "\\(12\\)%"
+      ],
+      "key": "B",
+      "keySolution": "\\((1+R/100)^3=5292/4000=1.323\\Rightarrow1+R/100=1.1\\Rightarrow R=10\\)%.",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 28,
+      "stem": "The compound interest earned on Rs. \\(12,000\\) in \\(3\\) years at \\(10\\)% per annum is:",
+      "options": [
+        "Rs. \\(3,600\\)",
+        "Rs. \\(3,850\\)",
+        "Rs. \\(3,950\\)",
+        "Rs. \\(3,972\\)"
+      ],
+      "key": "D",
+      "keySolution": "CI=\\(12000[(1.1)^3-1]=12000(0.331)=Rs.\\,3,972\\).",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 29,
+      "stem": "At what rate percent compound interest per annum will Rs. \\(6,250\\) amount to Rs. \\(7,290\\) in \\(2\\) years?",
+      "options": [
+        "\\(7\\)%",
+        "\\(8\\)%",
+        "\\(9\\)%",
+        "\\(10\\)%"
+      ],
+      "key": "B",
+      "keySolution": "\\((1+R/100)^2=7290/6250=1.1664\\Rightarrow1+R/100=1.08\\Rightarrow R=8\\)%.",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 30,
+      "stem": "A sum of money amounts to Rs. \\(800\\) in \\(3\\) years and Rs. \\(840\\) in \\(4\\) years at compound interest. Find the rate of interest.",
+      "options": [
+        "\\(4\\)%",
+        "\\(5\\)%",
+        "\\(6\\)%",
+        "\\(8\\)%"
+      ],
+      "key": "B",
+      "keySolution": "Rate \\(=\\frac{840-800}{800}\\times100=5\\)% .",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 31,
+      "stem": "The compound interest on Rs. \\(18,000\\) at \\(10\\)% per annum for \\(2\\) years \\(6\\) months (compounded annually) is closest to:",
+      "options": [
+        "Rs. \\(4,635\\)",
+        "Rs. \\(4,725\\)",
+        "Rs. \\(4,869\\)",
+        "Rs. \\(4,960\\)"
+      ],
+      "key": "C",
+      "keySolution": "After \\(2\\) years: \\(A=18000(1.1)^2=21780\\).\nFor next \\(0.5\\) year: \\(A=21780(1+0.10\\times0.5)=22869\\).\nCI=22869-18000\\approx Rs.\\,4,869\\).",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 32,
+      "stem": "Find the difference between compound interest and simple interest on Rs. \\(8,000\\) for \\(3\\) years at \\(5\\)% per annum.",
+      "options": [
+        "Rs. \\(55\\)",
+        "Rs. \\(60\\)",
+        "Rs. \\(61\\)",
+        "Rs. \\(65\\)"
+      ],
+      "key": "C",
+      "keySolution": "Difference=\\(P\\times\\frac{R^2(300+R)}{100^3}=8000\\times\\frac{25\\times305}{1000000}=Rs.\\,61\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 33,
+      "stem": "A person deposits Rs. \\(25,000\\) in a bank paying \\(12\\)% compound interest per annum, compounded half-yearly. What will be the amount after \\(18\\) months?",
+      "options": [
+        "Rs. \\(29,630\\)",
+        "Rs. \\(29,775\\)",
+        "Rs. \\(29,816\\)",
+        "Rs. \\(30,000\\)"
+      ],
+      "key": "B",
+      "keySolution": "Half-year rate \\(=6\\)%; periods \\(=3\\).\n\\(A=25000(1.06)^3=25000\\times1.191016\\approx Rs.\\,29,775\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 34,
+      "stem": "The compound interest on Rs. \\(1,200\\) for \\(2\\) years is Rs. \\(252\\). What is the rate of interest per annum?",
+      "options": [
+        "\\(9\\)%",
+        "\\(10\\)%",
+        "\\(11\\)%",
+        "\\(12\\)%"
+      ],
+      "key": "B",
+      "keySolution": "\\((1+R/100)^2-1=\\frac{252}{1200}=0.21\\Rightarrow(1+R/100)^2=1.21\\Rightarrow R=10\\)%.",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 35,
+      "stem": "A sum amounts to Rs. \\(1,331\\) in \\(3\\) years at \\(10\\)% compound interest. Find the principal.",
+      "options": [
+        "Rs. \\(900\\)",
+        "Rs. \\(950\\)",
+        "Rs. \\(1,000\\)",
+        "Rs. \\(1,100\\)"
+      ],
+      "key": "C",
+      "keySolution": "Principal=\\(\\frac{1331}{(1.1)^3}=\\frac{1331}{1.331}=Rs.\\,1,000\\).",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 36,
+      "stem": "If the compound interest on a sum for \\(3\\) years at \\(10\\)% per annum is Rs. \\(3,972\\), find the simple interest on the same sum at the same rate for the same period.",
+      "options": [
+        "Rs. \\(3,500\\)",
+        "Rs. \\(3,600\\)",
+        "Rs. \\(3,750\\)",
+        "Rs. \\(3,800\\)"
+      ],
+      "key": "B",
+      "keySolution": "Let \\(P\\).\n\\(P[(1.1)^3-1]=3972\\Rightarrow P=\\frac{3972}{0.331}=12000\\).\n\\(SI=\\frac{12000\\times10\\times3}{100}=Rs.\\,3,600\\).",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 37,
+      "stem": "A sum of Rs. \\(15,000\\) is lent at \\(20\\)% compound interest. What is the difference between interest of \\(3^{\\text{rd}}\\) year and \\(1^{\\text{st}}\\) year?",
+      "options": [
+        "Rs. \\(1,320\\)",
+        "Rs. \\(3,600\\)",
+        "Rs. \\(4,320\\)",
+        "Rs. \\(5,040\\)"
+      ],
+      "key": "A",
+      "keySolution": "Interest 1st year: \\(15000\\times0.20=3000\\).\nInterest 3rd year: \\(21600\\times0.20=4320\\).\nDifference \\(=4320-3000=Rs.\\,1,320\\).",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 38,
+      "stem": "What will Rs. \\(3,000\\) amount to in \\(2\\) years at \\(12\\)% per annum compound interest?",
+      "options": [
+        "Rs. \\(3,763.20\\)",
+        "Rs. \\(3,800\\)",
+        "Rs. \\(3,850\\)",
+        "Rs. \\(3,900\\)"
+      ],
+      "key": "A",
+      "keySolution": "\\(A=3000(1.12)^2=3000\\times1.2544=Rs.\\,3,763.20\\).",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 39,
+      "stem": "The compound interest on Rs. \\(20,000\\) for \\(2\\) years at \\(10\\)% per annum is _____ .",
+      "options": [
+        "Rs. \\(4,000\\)",
+        "Rs. \\(4,100\\)",
+        "Rs. \\(4,200\\)",
+        "Rs. \\(4,300\\)"
+      ],
+      "key": "C",
+      "keySolution": "CI=\\(20000[(1.1)^2-1]=20000(0.21)=Rs.\\,4,200\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 40,
+      "stem": "At what rate percent will Rs. \\(4,000\\) amount to Rs. \\(4,410\\) in \\(2\\) years at compound interest?",
+      "options": [
+        "\\(4\\)%",
+        "\\(5\\)%",
+        "\\(6\\)%",
+        "\\(7\\)%"
+      ],
+      "key": "B",
+      "keySolution": "\\((1+R/100)^2=4410/4000=1.1025\\Rightarrow R=5\\)%.",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 41,
+      "stem": "A sum of money becomes Rs. \\(13,310\\) after \\(3\\) years and Rs. \\(14,641\\) after \\(4\\) years on compound interest. Find the principal.",
+      "options": [
+        "Rs. \\(8,000\\)",
+        "Rs. \\(9,000\\)",
+        "Rs. \\(10,000\\)",
+        "Rs. \\(11,000\\)"
+      ],
+      "key": "C",
+      "keySolution": "Rate \\(=\\frac{14641-13310}{13310}\\times100=10\\)%.\n\\(P(1.1)^3=13310\\Rightarrow P=\\frac{13310}{1.331}=Rs.\\,10,000\\).",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 42,
+      "stem": "If Rs. \\(6,000\\) amounts to Rs. \\(7,260\\) in \\(2\\) years at compound interest, what will Rs. \\(9,000\\) amount to in \\(3\\) years at the same rate?",
+      "options": [
+        "Rs. \\(11,979\\)",
+        "Rs. \\(12,000\\)",
+        "Rs. \\(12,167\\)",
+        "Rs. \\(12,250\\)"
+      ],
+      "key": "A",
+      "keySolution": "Rate from first data: \\((1+R/100)^2=7260/6000=1.21\\Rightarrow R=10\\)%.\nAmount for \\(9000\\) in \\(3\\) years: \\(9000(1.1)^3=9000\\times1.331=Rs.\\,11,979\\).",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 43,
+      "stem": "The compound interest on a sum for \\(2\\) years is Rs. \\(832\\) and the simple interest for the same period is Rs. \\(800\\). Find the principal.",
+      "options": [
+        "Rs. \\(5,000\\)",
+        "Rs. \\(10,000\\)",
+        "Rs. \\(12,000\\)",
+        "Rs. \\(15,000\\)"
+      ],
+      "key": "A",
+      "keySolution": "Let \\(P\\), rate \\(R\\)%.  Difference \\(CI-SI=P(R/100)^2=32\\).  Also \\(SI=\\frac{PR\\times2}{100}=800\\Rightarrow PR=40000\\).\n\\(P(\\frac{R}{100})=400\\) and \\(P(\\frac{R}{100})^2=32\\Rightarrow400\\times\\frac{R}{100}=32\\Rightarrow\\frac{R}{100}=0.08\\Rightarrow R=8\\)%.\n\\(P=\\frac{400}{0.08}=Rs.\\,5,000\\).",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 44,
+      "stem": "A sum lent for \\(2\\) years at \\(20\\)% compound interest would earn Rs. \\(482\\) more if interest is compounded half-yearly instead of annually. Find the sum.",
+      "options": [
+        "Rs. \\(18,000\\)",
+        "Rs. \\(20,000\\)",
+        "Rs. \\(22,000\\)",
+        "Rs. \\(25,000\\)"
+      ],
+      "key": "B",
+      "keySolution": "Annual amount factor \\(=1.2^2=1.44\\).\nHalf-yearly factor \\(=(1.1)^4=1.4641\\).\nDifference \\(=0.0241P=482\\Rightarrow P=\\frac{482}{0.0241}=Rs.\\,20,000\\).",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 45,
+      "stem": "In how many years will Rs. \\(2,000\\) amount to Rs. \\(2,662\\) at \\(10\\)% compound interest?",
+      "options": [
+        "\\(2\\) years",
+        "\\(3\\) years",
+        "\\(4\\) years",
+        "\\(5\\) years"
+      ],
+      "key": "B",
+      "keySolution": "\\((1.1)^t=2662/2000=1.331=(1.1)^3\\Rightarrow t=3\\) years.",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 46,
+      "stem": "A sum of Rs. \\(10,000\\) is invested at \\(8\\)% compound interest per annum. What will be the amount after \\(1.5\\) years if interest is compounded half-yearly?",
+      "options": [
+        "Rs. \\(11,248\\)",
+        "Rs. \\(11,260\\)",
+        "Rs. \\(11,274\\)",
+        "Rs. \\(11,300\\)"
+      ],
+      "key": "A",
+      "keySolution": "Half-year rate \\(=4\\)%; periods \\(=3\\).\n\\(A=10000(1.04)^3=10000\\times1.124864\\approx Rs.\\,11,248\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 47,
+      "stem": "The difference between compound interest and simple interest on Rs. \\(15,000\\) for \\(2\\) years at \\(8\\)% per annum is:",
+      "options": [
+        "Rs. \\(90\\)",
+        "Rs. \\(96\\)",
+        "Rs. \\(100\\)",
+        "Rs. \\(120\\)"
+      ],
+      "key": "B",
+      "keySolution": "Difference=\\(15000\\times(0.08)^2=15000\\times0.0064=Rs.\\,96\\).",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 48,
+      "stem": "A certain sum amounts to Rs. \\(5,832\\) in \\(2\\) years and Rs. \\(6,298.56\\) in \\(3\\) years at compound interest. Find the rate of interest.",
+      "options": [
+        "\\(6\\)%",
+        "\\(7\\)%",
+        "\\(8\\)%",
+        "\\(9\\)%"
+      ],
+      "key": "C",
+      "keySolution": "Rate \\(=\\frac{6298.56-5832}{5832}\\times100=8\\)% .",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 49,
+      "stem": "A sum becomes Rs. \\(8,000\\) after \\(1\\) year at \\(10\\)% compound interest and Rs. \\(9,200\\) after the next year at a new rate. What is the new rate for the second year?",
+      "options": [
+        "\\(12\\)%",
+        "\\(13\\)%",
+        "\\(15\\)%",
+        "\\(17\\)%"
+      ],
+      "key": "C",
+      "keySolution": "Amount after first year \\(=8000\\).  Second-year factor \\(=\\frac{9200}{8000}=1.15\\Rightarrow R=15\\)%.",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 50,
+      "stem": "What is the effective annual rate corresponding to a nominal rate of \\(7.5\\)% compounded monthly?",
+      "options": [
+        "\\(7.76\\)%",
+        "\\(7.80\\)%",
+        "\\(7.83\\)%",
+        "\\(7.90\\)%"
+      ],
+      "key": "A",
+      "keySolution": "Effective rate \\(=(1+0.075/12)^{12}-1\\approx1.0776-1=7.76\\)% .",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 51,
+      "stem": "What is the present value of Rs. \\(1,00,000\\) due in \\(3\\) years if money is worth \\(10\\)% compounded quarterly?",
+      "options": [
+        "Rs. \\(70,000\\)",
+        "Rs. \\(72,800\\)",
+        "Rs. \\(74,400\\)",
+        "Rs. \\(76,200\\)"
+      ],
+      "key": "C",
+      "keySolution": "Quarterly factor \\(=1+0.10/4=1.025\\); periods \\(=12\\).\nPV=\\(\\frac{100000}{1.025^{12}}\\approx\\frac{100000}{1.3449}=Rs.\\,74,400\\).",
+      "difficulty": "Hard"
+    }
+  ]
+}

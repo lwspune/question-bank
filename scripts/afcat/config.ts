@@ -217,6 +217,7 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Compound Interest: Annual",
       "Compounding Half-Yearly or Quarterly",
       "Difference Between CI and SI",
+      "Instalments",
     ],
     files: [
       {
@@ -254,6 +255,13 @@ export const CHAPTERS: Record<string, Chapter> = {
       { key: "cp-si-amounts", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Sum and Amounts (SI)", path: "06. Simple Interest\\3)Sum-Amounts.xls", subtopic: "Simple Interest: Interest and Amount", note: "AFCAT practice — Cadetprep AFCAT sheet, Simple Interest. Every key blind re-derived." },
       { key: "cp-si-levels", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Rates at Different Levels (SI)", path: "06. Simple Interest\\4)Rates-At-Different-levels.xls", subtopic: "Simple Interest: Interest and Amount", note: "AFCAT practice — Cadetprep AFCAT sheet, Simple Interest. Every key blind re-derived." },
       { key: "cp-si-time", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Time Period Variations (SI)", path: "06. Simple Interest\\5)Time-period-Variations.xls", subtopic: "Simple Interest: Finding Principal, Rate or Time", note: "AFCAT practice — Cadetprep AFCAT sheet, Simple Interest. Every key blind re-derived." },
+      { key: "cp-ci-diff", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Difference of SI and CI", path: "07. Compound Interest\\1)Difference-SI&CI.xls", subtopic: "Difference Between CI and SI", note: "AFCAT practice — Cadetprep AFCAT sheet, Compound Interest. Every key blind re-derived." },
+      { key: "cp-ci-ntimes", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Sum Becomes N Times (CI)", path: "07. Compound Interest\\2)Sum-becomes-N-Times.xls", subtopic: "Compound Interest: Annual", note: "AFCAT practice — Cadetprep AFCAT sheet, Compound Interest. Every key blind re-derived." },
+      { key: "cp-ci-change", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Change in Interest (CI)", path: "07. Compound Interest\\3)Change-in-Interest.xls", subtopic: "Compound Interest: Annual", note: "AFCAT practice — Cadetprep AFCAT sheet, Compound Interest. Every key blind re-derived." },
+      { key: "cp-ci-instal", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Instalments (CI)", path: "07. Compound Interest\\4)Installment-based-CI.xls", subtopic: "Instalments", note: "AFCAT practice — Cadetprep AFCAT sheet, Compound Interest. Every key blind re-derived." },
+      { key: "cp-ci-multi", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Multiple Investments (CI)", path: "07. Compound Interest\\5)Multiple-Investments.xls", subtopic: "Compound Interest: Annual", note: "AFCAT practice — Cadetprep AFCAT sheet, Compound Interest. Every key blind re-derived." },
+      { key: "cp-ci-rate", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Rate Conversion (CI)", path: "07. Compound Interest\\6)Rate-Conversion.xls", subtopic: "Compounding Half-Yearly or Quarterly", note: "AFCAT practice — Cadetprep AFCAT sheet, Compound Interest. Every key blind re-derived." },
+      { key: "cp-ci-adv", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Advanced Formulae (CI)", path: "07. Compound Interest\\7)Advanced-Formulae.xls", subtopic: "Compound Interest: Annual", note: "AFCAT practice — Cadetprep AFCAT sheet, Compound Interest. Every key blind re-derived." },
     ],
   },
   probability: {
