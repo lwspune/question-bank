@@ -264,6 +264,22 @@ export const CHAPTERS: Record<string, Chapter> = {
       },
     ],
   },
+  "decimal-and-fractions": {
+    id: "decimal-and-fractions",
+    chapterName: "Decimal and Fractions",
+    subtopics: ["Fractions", "Decimals", "Simplification", "Squares, Cubes and Roots"],
+    files: [
+      {
+        // A chapter of the published book "Conquer the Sky AFCAT"; transcribed
+        // from page images (stacked fractions break the text layer).
+        key: "book",
+        group: "C",
+        label: "Conquer the Sky AFCAT: Decimal and Fractions (model practice + AFCAT past years)",
+        path: "01. Decimal and Fractions\\Decimal and Fractions_AFCAT.pdf",
+        note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Decimal and Fractions. Every key blind re-derived.",
+      },
+    ],
+  },
   average: {
     id: "average",
     chapterName: "Average",
