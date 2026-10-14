@@ -249,6 +249,11 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "08. Simple Interest\\SI_CI_Arihant.pdf",
         note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Simple and Compound Interest. Every key blind re-derived.",
       },
+      { key: "cp-si-ntimes", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Sum N Times in Years (SI)", path: "06. Simple Interest\\1)Sum-Ntimes-InYears.xls", subtopic: "Simple Interest: Finding Principal, Rate or Time", note: "AFCAT practice — Cadetprep AFCAT sheet, Simple Interest. Every key blind re-derived." },
+      { key: "cp-si-diff", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Difference of Rate, Time, Interest (SI)", path: "06. Simple Interest\\2)Differenceof-Rate-Time-Interest.xls", subtopic: "Simple Interest: Finding Principal, Rate or Time", note: "AFCAT practice — Cadetprep AFCAT sheet, Simple Interest. Every key blind re-derived." },
+      { key: "cp-si-amounts", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Sum and Amounts (SI)", path: "06. Simple Interest\\3)Sum-Amounts.xls", subtopic: "Simple Interest: Interest and Amount", note: "AFCAT practice — Cadetprep AFCAT sheet, Simple Interest. Every key blind re-derived." },
+      { key: "cp-si-levels", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Rates at Different Levels (SI)", path: "06. Simple Interest\\4)Rates-At-Different-levels.xls", subtopic: "Simple Interest: Interest and Amount", note: "AFCAT practice — Cadetprep AFCAT sheet, Simple Interest. Every key blind re-derived." },
+      { key: "cp-si-time", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Time Period Variations (SI)", path: "06. Simple Interest\\5)Time-period-Variations.xls", subtopic: "Simple Interest: Finding Principal, Rate or Time", note: "AFCAT practice — Cadetprep AFCAT sheet, Simple Interest. Every key blind re-derived." },
     ],
   },
   probability: {
