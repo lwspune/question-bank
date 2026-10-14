@@ -66,6 +66,7 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Man-Days and Group Work",
       "Wages and Share of Work",
       "Pipes and Cisterns",
+      "Working on Alternate Days",
     ],
     files: [
       {
@@ -75,6 +76,16 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "12. Time and Work\\Quiz\\Time and Work_Quiz.docx",
         answerKey: "12. Time and Work\\Quiz\\Time and Work_Quiz_AK.docx",
         note: "AFCAT practice — LWS Pune quiz, Time and Work. Source key AI-written; every key blind re-derived.",
+      },
+      {
+        key: "errorless",
+        group: "B",
+        label: "Time and Work Errorless sheet (6 types)",
+        path: "12. Time and Work\\01. TIME & WORK ERRORLESS.pdf",
+        textFixes: [
+          { find: "A can finish a work in 36 days, and B can", replace: "11. A can finish a work in 36 days, and B can", reason: "Section 3: question 11 is printed without its number." },
+        ],
+        note: "AFCAT practice — Errorless sheet, Time and Work. Key letters only (four keys are pictures); every key blind re-derived.",
       },
     ],
   },
