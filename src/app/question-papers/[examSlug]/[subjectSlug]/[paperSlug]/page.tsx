@@ -6,7 +6,7 @@ import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { slugify } from "@/lib/board/query";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
-import { getPaperGroup, getPublishedPapers } from "@/lib/questionPapers/query";
+import { getPaperGroup, getPublishedPapersFor, type PaperListingWithExam } from "@/lib/questionPapers/query";
 import { groupLabel } from "@/lib/questionPapers/listing";
 import { paperOfferFacts, paperOfferLead } from "@/lib/billing/passOfferLead";
 import PaperReader from "@/app/question-papers/_components/PaperReader";
@@ -29,10 +29,10 @@ async function load(params: Params) {
   if (!exam?.boardExam) return null;
   // The exam id comes from the published list itself, not the shared exam-id
   // map, whose failed read is cached as a blank (SUGGESTIONS.md backfill ledger).
-  const published = await getPublishedPapers();
-  const listed = published.find(
-    (p) => p.examName === exam.examName && p.groupSlug === params.paperSlug && slugify(p.subjectName) === params.subjectSlug
-  );
+  const isThisPaper = (p: PaperListingWithExam) =>
+    p.examName === exam.examName && p.groupSlug === params.paperSlug && slugify(p.subjectName) === params.subjectSlug;
+  const published = await getPublishedPapersFor(isThisPaper);
+  const listed = published.find(isThisPaper);
   if (!listed) return null;
   const sets = await getPaperGroup(createSupabaseAnonClient(), listed.examId, params.paperSlug, {
     subjectId: listed.subjectId,
