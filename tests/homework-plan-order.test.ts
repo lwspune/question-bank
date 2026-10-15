@@ -88,6 +88,24 @@ describe("buildPlanOrder", () => {
     expect(chapters).toEqual(["Matrices", "Vectors", "Matrices", "Vectors", "Matrices"]);
   });
 
+  it("places each question once when two types in different chapters share a label", () => {
+    const items = buildPlanOrder(
+      input({
+        questions: [
+          q("x1", "Mar 2015", "Linear"), q("x2", "Mar 2016", "Linear"), q("x3", "Mar 2017", "Linear"),
+          q("y1", "Mar 2015", "Quadratic"), q("y2", "Mar 2016", "Quadratic"), q("y3", "Mar 2018", "Quadratic"),
+        ],
+        groups: [
+          { tier: "type", label: "Digits", sittings: ["Mar 2015", "Mar 2016", "Mar 2017"], questionIds: ["x1", "x2", "x3"] },
+          { tier: "type", label: "Digits", sittings: ["Mar 2015", "Mar 2016", "Mar 2018"], questionIds: ["y1", "y2", "y3"] },
+        ],
+      })
+    );
+    const ids = items.map((i) => i.questionId);
+    expect(new Set(ids).size).toBe(ids.length);
+    expect([...ids].sort()).toEqual(["x1", "x2", "x3", "y1", "y2", "y3"]);
+  });
+
   it("carries a case study's parts in one slot, the lead first", () => {
     const qs = [{ id: "cs", sitting: "Mar 2016", chapter: "Optics", rows: ["cs", "cs2", "cs3"] }, q("x", "Mar 2015", "Optics")];
     const items = buildPlanOrder({ perDay: 5, sittings: SITTINGS, questions: qs, groups: [] });

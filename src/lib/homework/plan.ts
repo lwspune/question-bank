@@ -112,17 +112,14 @@ export function buildPlanOrder(input: PlanInput): PlanItem[] {
 
   // Part 3
   const rest = input.questions.map((x) => x.id).filter((id) => !used.has(id));
-  const roundRobin = (keys: string[], keyOf: (id: string) => string, ids: string[]) => {
+  const roundRobin = <K,>(keys: K[], keyOf: (id: string) => K, ids: string[]) => {
     const queues = keys.map((k) => latestFirst(ids.filter((id) => keyOf(id) === k)));
     const out: string[] = [];
     while (queues.some((qu) => qu.length)) for (const qu of queues) if (qu.length) out.push(qu.shift()!);
     return out;
   };
-  const typed = roundRobin(
-    types.map((g) => g.label),
-    (id) => typeOf.get(id)?.label ?? "",
-    rest.filter((id) => typeOf.has(id))
-  );
+  // Keyed by the group, not its label: two chapters can name a type alike.
+  const typed = roundRobin(types, (id) => typeOf.get(id), rest.filter((id) => typeOf.has(id)));
   const untypedIds = rest.filter((id) => !typeOf.has(id));
   const chapters = [...new Set(untypedIds.map((id) => byId.get(id)!.chapter))].sort();
   const untyped = roundRobin(chapters, (id) => byId.get(id)!.chapter, untypedIds);
