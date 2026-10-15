@@ -353,7 +353,15 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "google-indexed": {
     label: "Google indexed pages",
     source: "Search Console → Pages → Indexed",
-    entries: [{ on: "2026-09-21", value: 39, note: "Coverage export of 2026-09-27; 1,552 discovered, not indexed" }],
+    entries: [
+      { on: "2026-09-21", value: 39, note: "Coverage export of 2026-09-27; 1,552 discovered, not indexed" },
+      { on: "2026-09-22", value: 84, note: "Peak, from the chart in the 2026-10-12 export" },
+      {
+        on: "2026-10-09",
+        value: 74,
+        note: "Export of 2026-10-12; fell 84 to 74 on 2026-10-05, flat since. 57 of the 74 are NDA notes and guide pages, 7 are /questions pages",
+      },
+    ],
   },
   "share-taps": {
     label: "Chapter share taps",
