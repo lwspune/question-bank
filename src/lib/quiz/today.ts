@@ -102,3 +102,20 @@ export function dailyQuizPath(publicSlug: string, src: DailyQuizSource): string 
 export function dailyQuizUrl(publicSlug: string, src: DailyQuizSource): string {
   return SITE_URL + dailyQuizPath(publicSlug, src);
 }
+
+/** Every place's tagged link at once, so the publisher can store the DM and Telegram links with a Story. */
+export function dailyQuizLinks(publicSlug: string): Record<DailyQuizSource, string> {
+  return Object.fromEntries(DAILY_QUIZ_SOURCES.map((s) => [s, dailyQuizUrl(publicSlug, s)])) as Record<DailyQuizSource, string>;
+}
+
+/**
+ * `YYYY-MM-DD` → midday IST that day (well inside the IST day, whatever the clock), or null for
+ * anything that isn't a real calendar date. Lets the publisher plan next week's Stories.
+ */
+export function parseIstDate(raw: string): Date | null {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(raw)) return null;
+  const d = new Date(`${raw}T12:00:00+05:30`);
+  if (Number.isNaN(d.getTime())) return null;
+  // new Date rolls 2026-02-30 over to 2 March; a real date survives the round trip.
+  return new Date(d.getTime() + IST_OFFSET_MS).toISOString().slice(0, 10) === raw ? d : null;
+}
