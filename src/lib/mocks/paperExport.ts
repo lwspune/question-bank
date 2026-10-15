@@ -7,13 +7,17 @@ import type { MockRow } from "./query";
  *
  * Only a whole past paper qualifies. A chapter test or a practice paper is not
  * a paper anyone sat, and selling it as "the 6 April paper" would be false.
+ * The one exception is a student's own practice test (scope 'custom', V's
+ * builder): it downloads under its own title ("NDA Physics practice test:
+ * Sound"), which says what it is.
  */
 export type MockPaperExport =
   | { ok: true; title: string; questionIds: string[]; sectionOf: Map<string, string> }
   | { ok: false; reason: string };
 
 export function mockPaperExport(mock: MockRow): MockPaperExport {
-  if (mock.source !== "pyq" || mock.scope !== "full") {
+  const pastPaper = mock.source === "pyq" && mock.scope === "full";
+  if (!pastPaper && mock.scope !== "custom") {
     return { ok: false, reason: "Only a whole past paper can be downloaded." };
   }
   const label = new Map(mock.sections.map((s) => [s.key, s.label]));

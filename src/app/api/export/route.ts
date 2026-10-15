@@ -39,7 +39,7 @@ import { imageDataUris } from "@/lib/export/pdf/images";
 import { PPTX_CONTENT_TYPE } from "@/lib/export/pptxParts";
 import { DOCX_CONTENT_TYPE, PDF_CONTENT_TYPE, XLSX_CONTENT_TYPE } from "@/lib/export/fileType";
 import { buildPaperFile } from "@/lib/export/paperFile";
-import { getMockBySlug } from "@/lib/mocks/query";
+import { getTakeableMockBySlug } from "@/lib/mocks/query";
 import { mockPaperExport } from "@/lib/mocks/paperExport";
 import { homeworkDayExport, homeworkQuestions, parseHomeworkTarget } from "@/lib/homework/dayExport";
 import { getPlanChapterTop, getPlanDay } from "@/lib/homework/query";
@@ -408,7 +408,10 @@ export async function POST(request: NextRequest) {
       mockTitle = day.title;
       sectionOf = day.sectionOf;
     } else if (isMockMode) {
-      const mock = await getMockBySlug(createSupabaseAnonClient(), String(body.mockSlug).trim());
+      // A past paper, or the student's own practice test (migration 0156).
+      // `supabase` carries the caller's JWT, and RLS shows a practice test to
+      // its owner alone, so another student's slug finds nothing.
+      const mock = await getTakeableMockBySlug(supabase, String(body.mockSlug).trim());
       if (!mock) {
         return NextResponse.json({ error: "That paper is not available." }, { status: 404 });
       }

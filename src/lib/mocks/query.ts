@@ -24,8 +24,12 @@ export type MockSection = { key: string; label: string; count: number };
 
 /** Where a mock's question set came from (migration 0088). */
 export type MockSource = "pyq" | "practice";
-/** How much of the exam a mock covers (migration 0088). */
-export type MockScope = "full" | "sectional";
+/**
+ * How much of the exam a mock covers (migration 0088). `custom` is a practice
+ * test V built for one student (migration 0156): status 'personal', read only
+ * by its owner, never in any list.
+ */
+export type MockScope = "full" | "sectional" | "custom";
 
 export type MockRow = {
   id: string;
@@ -151,6 +155,42 @@ export async function getMockCardBySlug(db: SupabaseClient, slug: string): Promi
     .maybeSingle();
   if (error) throw new Error(`getMockCardBySlug: ${error.message}`);
   return data ? mapMockListItem(data as Record<string, unknown>) : null;
+}
+
+/**
+ * The statuses a student can SIT: every published test, plus their own
+ * practice tests (status 'personal', migration 0156).
+ *
+ * Only safe with a client that carries the student's JWT, or the service role
+ * on a path that already checked ownership (an attempt row's own mock). RLS
+ * shows a 'personal' row to its owner alone, which is what keeps one student's
+ * test from another; these loaders do not filter by owner themselves. Every
+ * catalogue, listing and public page keeps the published-only loaders above.
+ */
+const TAKEABLE_STATUSES = ["published", "personal"];
+
+/** A test a student can sit, by slug. See TAKEABLE_STATUSES for the client rule. */
+export async function getTakeableMockBySlug(db: SupabaseClient, slug: string): Promise<MockRow | null> {
+  const { data, error } = await db
+    .from("mock_tests")
+    .select(MOCK_SELECT)
+    .eq("slug", slug)
+    .in("status", TAKEABLE_STATUSES)
+    .maybeSingle();
+  if (error) throw new Error(`getTakeableMockBySlug: ${error.message}`);
+  return data ? mapMock(data as Record<string, unknown>) : null;
+}
+
+/** A test a student can sit, by id. See TAKEABLE_STATUSES for the client rule. */
+export async function getTakeableMockById(db: SupabaseClient, id: string): Promise<MockRow | null> {
+  const { data, error } = await db
+    .from("mock_tests")
+    .select(MOCK_SELECT)
+    .eq("id", id)
+    .in("status", TAKEABLE_STATUSES)
+    .maybeSingle();
+  if (error) throw new Error(`getTakeableMockById: ${error.message}`);
+  return data ? mapMock(data as Record<string, unknown>) : null;
 }
 
 /** One published mock by id (for mid-attempt loads). Null when absent. */

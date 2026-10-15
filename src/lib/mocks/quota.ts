@@ -3,7 +3,8 @@
  * trigger (migrations 0120 + 0134) is the real gate; this only decides what the
  * page shows, so it follows the trigger's rules: limit off, a pass, or a retake
  * means open. A chapter test (scope 'sectional') is counted against its OWN
- * limit, never against the full mocks (owner, 2026-10-05).
+ * limit, never against the full mocks (owner, 2026-10-05). A practice test
+ * (scope 'custom', migration 0156) has a third: so many a day, by India date.
  */
 import type { MockScope } from "./query";
 
@@ -14,10 +15,13 @@ export type MockQuota = {
   hasPass: boolean;
   chapterLimit: number | null;
   chapterUsed: number;
+  /** Free practice tests a day (0156). Absent from a quota read before 0156. */
+  practiceLimit?: number | null;
+  practiceUsed?: number;
 };
 
 /** What the free count is counting, for the copy. */
-export type TestUnit = "mock" | "chapter_test";
+export type TestUnit = "mock" | "chapter_test" | "practice_test";
 
 export type MockStartState =
   | { kind: "open" }
@@ -30,11 +34,14 @@ export function mockStartState(
   scope: MockScope = "full"
 ): MockStartState {
   if (!quota || quota.hasPass || startedThisMockBefore) return { kind: "open" };
-  const chapter = scope === "sectional";
-  const limit = chapter ? quota.chapterLimit : quota.limit;
+  const [limit, used, unit]: [number | null | undefined, number, TestUnit] =
+    scope === "custom"
+      ? [quota.practiceLimit, quota.practiceUsed ?? 0, "practice_test"]
+      : scope === "sectional"
+        ? [quota.chapterLimit, quota.chapterUsed, "chapter_test"]
+        : [quota.limit, quota.used, "mock"];
   if (limit === null || limit === undefined) return { kind: "open" };
-  const unit: TestUnit = chapter ? "chapter_test" : "mock";
-  const left = limit - (chapter ? quota.chapterUsed : quota.used);
+  const left = limit - used;
   return left > 0 ? { kind: "free", left, limit, unit } : { kind: "locked", limit, unit };
 }
 

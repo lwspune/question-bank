@@ -21,7 +21,7 @@ export type PerfAttempt = {
   paperCode: string;
   pyqYear: number | null;
   source: "pyq" | "practice";
-  scope: "full" | "sectional";
+  scope: "full" | "sectional" | "custom";
   sections: { key: string; label: string; count: number }[];
   totalQuestions: number;
   totalMarks: number;

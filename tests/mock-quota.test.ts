@@ -85,3 +85,40 @@ describe("mockStartState: chapter tests have their own limit", () => {
     });
   });
 });
+
+describe("mockStartState: practice tests have a daily limit (migration 0156)", () => {
+  const pq = (practiceUsed: number, practiceLimit: number | null = 1): MockQuota => ({
+    limit: 3,
+    used: 3,
+    hasPass: false,
+    chapterLimit: 5,
+    chapterUsed: 5,
+    practiceLimit,
+    practiceUsed,
+  });
+
+  it("has today's one free test while the mock and chapter-test limits are used up", () => {
+    expect(mockStartState(pq(0), false, "custom")).toEqual({
+      kind: "free",
+      left: 1,
+      limit: 1,
+      unit: "practice_test",
+    });
+  });
+  it("locks a second test the same day", () => {
+    expect(mockStartState(pq(1), false, "custom")).toEqual({
+      kind: "locked",
+      limit: 1,
+      unit: "practice_test",
+    });
+  });
+  it("is open when the daily limit is off, for a pass holder, and for a retake", () => {
+    expect(mockStartState(pq(9, null), false, "custom")).toEqual({ kind: "open" });
+    expect(mockStartState({ ...pq(1), hasPass: true }, false, "custom")).toEqual({ kind: "open" });
+    expect(mockStartState(pq(1), true, "custom")).toEqual({ kind: "open" });
+  });
+  it("is open when a quota predates the practice fields", () => {
+    const { practiceLimit: _l, practiceUsed: _u, ...old } = pq(1);
+    expect(mockStartState(old, false, "custom")).toEqual({ kind: "open" });
+  });
+});

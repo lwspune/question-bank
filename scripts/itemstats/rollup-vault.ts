@@ -71,10 +71,14 @@ async function main() {
   );
 
   // ---- 1. Submitted attempts, deduped to the FIRST per (user, mock) ----------
+  // A student's own practice test (scope 'custom', migration 0156) is left
+  // out: V picked its questions for that one student, leaning easier or
+  // harder on request, so its answers are not a sample of the exam's cohort.
   const attempts = (await pageAll((f, t) =>
     db
       .from("mock_attempts")
-      .select("id, user_id, mock_id, started_at, score")
+      .select("id, user_id, mock_id, started_at, score, mock:mock_tests!inner(scope)")
+      .neq("mock.scope", "custom")
       .not("submitted_at", "is", null)
       .order("started_at", { ascending: true })
       .range(f, t)
