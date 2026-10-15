@@ -71,3 +71,24 @@ describe("summarizeChatInteractions: typed questions (migration 0145)", () => {
     ]);
   });
 });
+
+describe("summarizeChatInteractions: the practice-test builder (migration 0157)", () => {
+  it("counts each builder step apart from FAQ taps, in funnel order", () => {
+    const s = summarizeChatInteractions([
+      row("builder_step", "open"),
+      row("builder_step", "open"),
+      row("builder_step", "built"),
+      row("builder_step", "start"),
+      row("faq_click", "exams"),
+      row("builder_step", "download"),
+    ]);
+    expect(s.totalClicks).toBe(1);
+    expect(s.builder).toEqual([
+      { step: "open", label: "Opened the builder", count: 2 },
+      { step: "sign_in", label: "Asked to sign in", count: 0 },
+      { step: "built", label: "Built a test", count: 1 },
+      { step: "start", label: "Started it online", count: 1 },
+      { step: "download", label: "Downloaded it", count: 1 },
+    ]);
+  });
+});
