@@ -1,5 +1,5 @@
 /**
- * Pure validation for the "V" FAQ chatbot's POST /api/chat body. Mirrors
+ * Pure validation for a question typed to V (POST /api/chat/typed). Mirrors
  * src/lib/contact/validate.ts in shape so the two never drift on style.
  */
 export type ChatMessageInput = { message?: string };

@@ -66,9 +66,43 @@ describe("summarizeChatInteractions: typed questions (migration 0145)", () => {
     expect(s.totalClicks).toBe(1);
     expect(s.totalTyped).toBe(2);
     expect(s.typed).toEqual([
-      { text: "when is the result", createdAt: "2026-10-09T10:00:00Z", signedIn: true },
-      { text: "is neet 2027 syllabus same", createdAt: "2026-10-08T10:00:00Z", signedIn: false },
+      { text: "when is the result", createdAt: "2026-10-09T10:00:00Z", signedIn: true, reply: null, replySource: null },
+      { text: "is neet 2027 syllabus same", createdAt: "2026-10-08T10:00:00Z", signedIn: false, reply: null, replySource: null },
     ]);
+  });
+});
+
+describe("summarizeChatInteractions: V's replies (migration 0158)", () => {
+  const answered = (
+    source: "ai" | "fallback",
+    tokensIn: number | null,
+    tokensOut: number | null
+  ): ChatInteractionRow => ({
+    eventType: "typed_question",
+    questionId: null,
+    createdAt: "2026-10-15T10:00:00Z",
+    message: "atoms cbse",
+    signedIn: false,
+    reply: source === "ai" ? "Atoms: /questions/cbse-12/physics/atoms" : "Thanks",
+    replySource: source,
+    tokensIn,
+    tokensOut,
+  });
+
+  it("shows what V replied and where the reply came from", () => {
+    const s = summarizeChatInteractions([answered("ai", 1000, 50)]);
+    expect(s.typed[0]).toMatchObject({ reply: "Atoms: /questions/cbse-12/physics/atoms", replySource: "ai" });
+  });
+
+  it("counts AI answers and prices their tokens at Haiku 5.5 rates", () => {
+    const s = summarizeChatInteractions([
+      answered("ai", 1_000_000, 0),
+      answered("ai", 0, 1_000_000),
+      answered("fallback", null, null),
+    ]);
+    expect(s.aiAnswers).toBe(2);
+    // $0.10 per million in + $0.50 per million out.
+    expect(s.aiCostUsd).toBeCloseTo(0.6, 6);
   });
 });
 

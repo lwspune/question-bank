@@ -61,9 +61,10 @@ export default function PrivacyPage() {
           </>,
           <>
             <strong>Messages.</strong> What you send us through the contact form, a question
-            report or a request for teacher access, and questions you type to V, our help
-            assistant. We hide any phone number or email you type there, and keep the rest to
-            improve V.
+            report or a request for teacher access, and your chats with V, our help assistant:
+            what you type, V&rsquo;s replies, the page you asked from and any thumbs up or down
+            you give. We hide any phone number or email you type there, and keep the rest to
+            improve V, including to train it to answer better.
           </>,
         ]}
       />
@@ -95,7 +96,7 @@ export default function PrivacyPage() {
         Your information is stored securely and is accessible only to authorised PYQ Vault
         staff. We do <strong>not</strong> sell your data. We use a
         few trusted providers to run the site — hosting and database (Vercel, Supabase), email
-        delivery (Resend), payments (Razorpay) and AI-assisted checking of answer sheets (Anthropic) — and they process data only to provide that
+        delivery (Resend), payments (Razorpay) and AI for checking answer sheets and for answering questions you type to V, our site helper (Anthropic; email addresses and phone numbers are removed first) — and they process data only to provide that
         service. We keep your information only as long as it is needed for the purposes above.
       </LegalP>
 

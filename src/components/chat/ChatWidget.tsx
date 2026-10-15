@@ -1,14 +1,26 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ListChecks, SendHorizontal, X } from "lucide-react";
+import { ListChecks, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, X } from "lucide-react";
 import { toast } from "sonner";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { PREDEFINED_QUESTIONS, type ChatFaqId } from "@/lib/chat/faq";
 import { CHAT_MESSAGE_MAX } from "@/lib/chat/validate";
 import { vPlacement } from "@/lib/chat/placement";
 import { launcherHiddenAfterScroll } from "@/lib/chat/launcherScroll";
+import { splitReplyLinks } from "@/lib/chat/replyLinks";
+import type { HistoryTurn } from "@/lib/chat/conversation";
+import {
+  LOCAL_CHAT_KEY,
+  newConversationId,
+  parseStoredChat,
+  preferNewer,
+  readStoredChat,
+  writeStoredChat,
+} from "@/lib/chat/localChat";
+import { celebrate } from "@/components/celebrate/celebrate";
 import { useCart } from "@/lib/cart/CartProvider";
 import VSays from "./VSays";
 import PracticeBuilder, { PENDING_BUILD_KEY, logBuilderStep } from "./PracticeBuilder";
@@ -31,7 +43,46 @@ function VFace({ avatar, className }: { avatar: VAvatar; className?: string }) {
   );
 }
 
-type ChatTurn = { role: "user" | "assistant"; text: string; avatar?: VAvatar };
+/**
+ * One message in the window. An assistant turn may carry `links` (the paths
+ * the server allows as links, lib/chat/replyLinks) and, for an AI reply, its
+ * row `id`, `source` and the student's `feedback`. `transient` turns (errors)
+ * are shown but never kept.
+ */
+type ChatTurn = HistoryTurn & { avatar?: VAvatar; transient?: boolean };
+
+/** What the device keeps of a turn: no face, no errors. */
+function keepable(turns: readonly ChatTurn[]): HistoryTurn[] {
+  return turns
+    .filter((t) => !t.transient)
+    .map((t) => {
+      const { avatar: _avatar, transient: _transient, ...rest } = t;
+      return rest as HistoryTurn;
+    });
+}
+
+/** V's reply with its allowed paths as links; everything else stays text. */
+function ReplyText({ text, links, onNavigate }: { text: string; links?: string[]; onNavigate?: () => void }) {
+  if (!links || links.length === 0) return <>{text}</>;
+  return (
+    <>
+      {splitReplyLinks(text, links).map((seg, i) =>
+        seg.kind === "text" ? (
+          <span key={i}>{seg.text}</span>
+        ) : (
+          <Link
+            key={i}
+            href={seg.href}
+            onClick={onNavigate}
+            className="break-all font-medium text-brand-accent underline underline-offset-2 hover:no-underline focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            {seg.href}
+          </Link>
+        )
+      )}
+    </>
+  );
+}
 
 const GREETING: ChatTurn = {
   role: "assistant",
@@ -41,14 +92,22 @@ const GREETING: ChatTurn = {
 
 /**
  * Floating FAQ-chatbot launcher, visible to anon + authed visitors alike
- * (same audience as ThemeToggle). Stateless per page load — no history is
- * persisted.
+ * (same audience as ThemeToggle).
  *
- * PHASE 2 — predefined questions, plus (2026-10-09) a typing box whose
- * questions are STORED, not answered: POST /api/chat/typed replies with the
- * owner's fixed line. That measures what students ask before paying for a
- * model. The full LLM path (/api/chat, src/lib/chat/anthropic.ts) is left in
- * place, untouched and dormant; re-enabling it is a UI change here.
+ * CONVERSATIONS (2026-10-15, migration 0159): the window keeps one conversation
+ * id and its messages on the device (lib/chat/localChat: 30 messages, gone
+ * after 7 quiet days) and sends the id and the page with every request, so the
+ * server stores whole conversations and V remembers the last exchanges. On the
+ * first open, a signed-in student's newer conversation from another device
+ * replaces the device's copy. A reply that lands while the window is closed
+ * raises a badge on the launcher and V says so in its bubble. AI replies take
+ * a thumbs up or down; "Clear chat" starts a new conversation (the old one
+ * stays stored).
+ *
+ * PHASE 2 — predefined questions, plus (2026-10-09) a typing box. Since
+ * 2026-10-15 POST /api/chat/typed answers typed questions with AI when
+ * /dashboard/chat switches it on (the owner's fixed line otherwise), and a
+ * reply's site paths come back as `links` the window renders as links.
  *
  * BUILDER (2026-10-15): "Build a practice test" turns the window into V's
  * step-by-step test builder (PracticeBuilder). The window grows while it is
@@ -60,7 +119,10 @@ export default function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState<"chat" | "builder">("chat");
   const [resume, setResume] = useState<BuilderAnswers | undefined>(undefined);
-  const [turns, setTurns] = useState<ChatTurn[]>([GREETING]);
+  // The greeting is drawn before these and never stored.
+  const [turns, setTurns] = useState<ChatTurn[]>([]);
+  const [conversationId, setConversationId] = useState<string | null>(null);
+  const [unread, setUnread] = useState(0);
   const [sending, setSending] = useState(false);
   const [draft, setDraft] = useState("");
   // Phones only: tuck the launcher away while the student scrolls down a page
@@ -108,10 +170,39 @@ export default function ChatWidget() {
     }
   }, []);
 
+  // This device's conversation, read after mount (storage does not exist on the server).
+  const storageReadyRef = useRef(false);
+  const lastAtRef = useRef(0);
+  useEffect(() => {
+    const stored = readStoredChat();
+    if (stored) {
+      setConversationId(stored.conversationId);
+      setTurns(stored.turns);
+      setUnread(stored.unread);
+      lastAtRef.current = stored.lastAt;
+    } else {
+      setConversationId(newConversationId());
+      lastAtRef.current = Date.now();
+    }
+    storageReadyRef.current = true;
+  }, []);
+  useEffect(() => {
+    if (!storageReadyRef.current || !conversationId) return;
+    writeStoredChat({ v: 1, conversationId, lastAt: lastAtRef.current, unread, turns: keepable(turns) });
+  }, [turns, unread, conversationId]);
+
+  // Read by replies that land after an await: was the window open then?
+  const openRef = useRef(open);
+  useEffect(() => {
+    openRef.current = open;
+    if (open) setUnread(0);
+  }, [open]);
+
   const listRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const launcherRef = useRef<HTMLButtonElement>(null);
   const openRecordedRef = useRef(false);
+  const accountCheckedRef = useRef(false);
   const pathname = usePathname() ?? "/";
   const cart = useCart();
   const placement = vPlacement(pathname, cart);
@@ -140,21 +231,95 @@ export default function ChatWidget() {
     if (!openRecordedRef.current) {
       openRecordedRef.current = true;
       trackFunnelOnce("chat_launcher_click", "session");
-      void fetch("/api/chat/open", { method: "POST" }).catch(() => {});
+      void fetch("/api/chat/open", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ conversationId, pagePath: pathname }),
+      }).catch(() => {});
     }
+    void loadAccountConversation();
     setOpen(true);
+  }
+
+  /** Once per page load: a signed-in student's newer conversation from another device. */
+  async function loadAccountConversation() {
+    if (accountCheckedRef.current) return;
+    accountCheckedRef.current = true;
+    try {
+      const res = await fetch("/api/chat/history");
+      const data = (await res.json().catch(() => ({}))) as { conversation?: unknown };
+      if (!res.ok || !data.conversation) return;
+      const account = parseStoredChat(JSON.stringify({ v: 1, unread: 0, ...(data.conversation as object) }));
+      const device =
+        conversationId && turns.length > 0
+          ? { v: 1 as const, conversationId, lastAt: lastAtRef.current, unread: 0, turns: keepable(turns) }
+          : null;
+      if (account && preferNewer(device, account) === account) {
+        lastAtRef.current = account.lastAt;
+        setConversationId(account.conversationId);
+        setTurns(account.turns);
+      }
+    } catch {
+      // Signed out or offline: the device's copy stands.
+    }
+  }
+
+  /** A message from the student or V. A reply that lands with the window shut is announced. */
+  function addTurn(turn: ChatTurn) {
+    if (!turn.transient) lastAtRef.current = Date.now();
+    setTurns((t) => [...t, turn]);
+    if (turn.role === "assistant" && !turn.transient && !openRef.current) {
+      setUnread((u) => u + 1);
+      setTucked(false); // a phone scrolled down had tucked the launcher away
+      celebrate("I've replied. Tap me to read.", "talk");
+    }
+  }
+
+  function clearChat() {
+    try {
+      localStorage.removeItem(LOCAL_CHAT_KEY);
+    } catch {
+      // Storage blocked: the fresh id below is enough.
+    }
+    lastAtRef.current = Date.now();
+    setConversationId(newConversationId());
+    setTurns([]);
+    setUnread(0);
+    toast.success("Chat cleared");
+  }
+
+  async function giveFeedback(index: number, value: 1 | -1) {
+    const turn = turns[index];
+    if (!turn || turn.role !== "assistant" || !turn.id || !conversationId) return;
+    const previous = turn.feedback === 1 || turn.feedback === -1 ? turn.feedback : null;
+    const next = previous === value ? null : value;
+    const setAt = (feedback: 1 | -1 | null) =>
+      setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, feedback } : t)));
+    setAt(next);
+    try {
+      const res = await fetch("/api/chat/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: turn.id, conversationId, value: next }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      toast.success(next === null ? "Feedback removed" : "Thanks, that helps V get better");
+    } catch {
+      setAt(previous);
+      toast.error("Couldn't save that. Please try again.");
+    }
   }
 
   async function ask(id: ChatFaqId, label: string) {
     if (sending) return;
-    setTurns((t) => [...t, { role: "user", text: label }]);
+    addTurn({ role: "user", text: label });
     trackFunnel("chat_faq_click", { questionId: id });
     setSending(true);
     try {
       const res = await fetch("/api/chat/faq", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ questionId: id }),
+        body: JSON.stringify({ questionId: id, conversationId, pagePath: pathname }),
       });
       const data = (await res.json().catch(() => ({}))) as {
         ok?: boolean;
@@ -163,14 +328,14 @@ export default function ChatWidget() {
       };
       if (!res.ok || !data.ok || !data.reply) {
         const errorText = data.error || "V couldn't answer that. Please try again.";
-        setTurns((t) => [...t, { role: "assistant", avatar: "idle", text: errorText }]);
+        addTurn({ role: "assistant", avatar: "idle", text: errorText, transient: true });
         toast.error(errorText);
         return;
       }
-      setTurns((t) => [...t, { role: "assistant", avatar: "idle", text: data.reply as string }]);
+      addTurn({ role: "assistant", avatar: "idle", text: data.reply as string });
     } catch {
       const errorText = "V is unavailable right now. Please try again.";
-      setTurns((t) => [...t, { role: "assistant", avatar: "idle", text: errorText }]);
+      addTurn({ role: "assistant", avatar: "idle", text: errorText, transient: true });
       toast.error(errorText);
     } finally {
       setSending(false);
@@ -180,26 +345,38 @@ export default function ChatWidget() {
   async function askTyped() {
     const text = draft.trim();
     if (sending || !text) return;
-    setTurns((t) => [...t, { role: "user", text }]);
+    addTurn({ role: "user", text });
     setDraft("");
     setSending(true);
     try {
       const res = await fetch("/api/chat/typed", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text }),
+        body: JSON.stringify({ message: text, conversationId, pagePath: pathname }),
       });
-      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; reply?: string; error?: string };
+      const data = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        reply?: string;
+        links?: string[];
+        id?: string | null;
+        source?: "ai" | "fallback";
+        error?: string;
+      };
       if (!res.ok || !data.ok || !data.reply) {
         const errorText = data.error || "V couldn't take that question. Please try again.";
-        setTurns((t) => [...t, { role: "assistant", avatar: "idle", text: errorText }]);
+        addTurn({ role: "assistant", avatar: "idle", text: errorText, transient: true });
         toast.error(errorText);
         return;
       }
-      setTurns((t) => [...t, { role: "assistant", avatar: "laugh", text: data.reply as string }]);
+      const links = Array.isArray(data.links) ? data.links.filter((l): l is string => typeof l === "string") : [];
+      addTurn(
+        data.source === "ai" && data.id
+          ? { role: "assistant", avatar: "laugh", text: data.reply as string, links, id: data.id, source: "ai", feedback: null }
+          : { role: "assistant", avatar: "laugh", text: data.reply as string, links }
+      );
     } catch {
       const errorText = "V is unavailable right now. Please try again.";
-      setTurns((t) => [...t, { role: "assistant", avatar: "idle", text: errorText }]);
+      addTurn({ role: "assistant", avatar: "idle", text: errorText, transient: true });
       toast.error(errorText);
     } finally {
       setSending(false);
@@ -238,14 +415,28 @@ export default function ChatWidget() {
                 {building ? "Build a practice test" : "Ask V"}
               </span>
             </div>
-            <button
-              type="button"
-              onClick={close}
-              aria-label="Close chat"
-              className="inline-flex h-7 w-7 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            >
-              <X className="h-4 w-4" aria-hidden />
-            </button>
+            <div className="flex items-center gap-1">
+              {!building && turns.length > 0 && (
+                <button
+                  type="button"
+                  onClick={clearChat}
+                  disabled={sending}
+                  aria-label="Clear chat and start a new one"
+                  title="Clear chat"
+                  className="inline-flex h-7 w-7 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                >
+                  <RotateCcw className="h-4 w-4" aria-hidden />
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={close}
+                aria-label="Close chat"
+                className="inline-flex h-7 w-7 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                <X className="h-4 w-4" aria-hidden />
+              </button>
+            </div>
           </div>
 
           {building ? (
@@ -253,23 +444,57 @@ export default function ChatWidget() {
           ) : (
           <>
           <div ref={listRef} className="flex-1 space-y-3 overflow-y-auto px-4 py-3">
-            {turns.map((t, i) =>
-              t.role === "user" ? (
-                <div
-                  key={i}
-                  className="ml-auto max-w-[85%] rounded-lg bg-brand px-3 py-2 text-sm text-brand-foreground"
-                >
-                  {t.text}
-                </div>
-              ) : (
-                <div key={i} className="flex max-w-[90%] items-end gap-1.5">
-                  <VFace avatar={t.avatar ?? "idle"} className="h-6 w-6 shrink-0 object-contain" />
-                  <div className="rounded-lg bg-muted px-3 py-2 text-sm text-foreground">
+            {[GREETING, ...turns].map((t, n) => {
+              // n - 1 indexes `turns`; the greeting is never stored.
+              const i = n - 1;
+              if (t.role === "user") {
+                return (
+                  <div
+                    key={n}
+                    className="ml-auto max-w-[85%] whitespace-pre-wrap break-words rounded-lg bg-brand px-3 py-2 text-sm text-brand-foreground"
+                  >
                     {t.text}
                   </div>
+                );
+              }
+              const rateable = t.source === "ai" && !!t.id;
+              return (
+                <div key={n} className="max-w-[90%]">
+                  <div className="flex items-end gap-1.5">
+                    <VFace avatar={t.avatar ?? "idle"} className="h-6 w-6 shrink-0 object-contain" />
+                    <div className="whitespace-pre-wrap break-words rounded-lg bg-muted px-3 py-2 text-sm text-foreground">
+                      <ReplyText text={t.text} links={t.links} onNavigate={close} />
+                    </div>
+                  </div>
+                  {rateable && (
+                    <div className="ml-8 mt-1 flex gap-1">
+                      <button
+                        type="button"
+                        onClick={() => void giveFeedback(i, 1)}
+                        aria-label="This reply was helpful"
+                        aria-pressed={t.feedback === 1}
+                        className={`inline-flex h-7 w-7 items-center justify-center rounded-full transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                          t.feedback === 1 ? "text-brand-accent" : "text-muted-foreground"
+                        }`}
+                      >
+                        <ThumbsUp className="h-3.5 w-3.5" aria-hidden fill={t.feedback === 1 ? "currentColor" : "none"} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => void giveFeedback(i, -1)}
+                        aria-label="This reply was not helpful"
+                        aria-pressed={t.feedback === -1}
+                        className={`inline-flex h-7 w-7 items-center justify-center rounded-full transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                          t.feedback === -1 ? "text-brand-accent" : "text-muted-foreground"
+                        }`}
+                      >
+                        <ThumbsDown className="h-3.5 w-3.5" aria-hidden fill={t.feedback === -1 ? "currentColor" : "none"} />
+                      </button>
+                    </div>
+                  )}
                 </div>
-              )
-            )}
+              );
+            })}
             {sending && (
               <div className="flex max-w-[90%] items-end gap-1.5">
                 <VFace avatar="think" className="h-6 w-6 shrink-0 object-contain" />
@@ -338,7 +563,7 @@ export default function ChatWidget() {
               </button>
             </div>
             <p className="mt-1.5 text-[11px] leading-snug text-muted-foreground">
-              Typed questions are saved to improve V. Please don&apos;t share your phone number or email.
+              Chats are saved to help improve V. Please don&apos;t share your phone number or email.
             </p>
           </form>
           </>
@@ -353,11 +578,17 @@ export default function ChatWidget() {
         ref={launcherRef}
         type="button"
         onClick={() => (open ? close() : openChat())}
-        aria-label={open ? "Close chat with V" : "Chat with V"}
+        aria-label={
+          open
+            ? "Close chat with V"
+            : unread > 0
+              ? `Chat with V, ${unread} new ${unread === 1 ? "reply" : "replies"}`
+              : "Chat with V"
+        }
         aria-expanded={open}
         title="Chat with V"
         tabIndex={tucked ? -1 : undefined}
-        className={`ml-auto ${open && building ? "hidden sm:flex" : "flex"} h-11 w-11 items-center justify-center rounded-full bg-background shadow-lg transition-[transform,opacity] duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none sm:h-14 sm:w-14 ${
+        className={`relative ml-auto ${open && building ? "hidden sm:flex" : "flex"} h-11 w-11 items-center justify-center rounded-full bg-background shadow-lg transition-[transform,opacity] duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none sm:h-14 sm:w-14 ${
           tucked ? "pointer-events-none translate-y-[160%] opacity-0" : ""
         }`}
       >
@@ -365,6 +596,14 @@ export default function ChatWidget() {
           <X className="h-5 w-5 text-foreground" aria-hidden />
         ) : (
           <VFace avatar="idle" className="h-9 w-9 object-contain sm:h-12 sm:w-12" />
+        )}
+        {!open && unread > 0 && (
+          <span
+            aria-hidden
+            className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-brand px-1 text-[11px] font-semibold leading-none text-brand-foreground ring-2 ring-background"
+          >
+            {unread > 9 ? "9+" : unread}
+          </span>
         )}
       </button>
     </div>
