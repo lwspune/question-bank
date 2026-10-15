@@ -158,6 +158,9 @@ async function publicQuizEntries(buildDate: Date): Promise<MetadataRoute.Sitemap
  * fetches/day on pages that cannot rank. They stay reachable through
  * /mock/exam/<exam>/<type>; they are simply no longer advertised.
  *
+ * Each PAST PAPER's reading page, /mock/<slug>/paper (2026-10-15), IS listed:
+ * it prints every question, so it carries the content the start page lacks.
+ *
  * The rows are still READ, because they are what dates the hubs - see
  * buildMockSitemapEntries, which is where that rule is pinned by tests. The
  * query is unfiltered, so a newly built exam enters the sitemap with no change

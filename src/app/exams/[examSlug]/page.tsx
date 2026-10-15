@@ -15,10 +15,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getPublishedPapers } from "@/lib/questionPapers/query";
+import { getPublishedMocks } from "@/lib/mocks/query";
+import { pastPaperHubLink } from "@/lib/mocks/paperPage";
+import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPlanLinks } from "@/lib/homework/query";
 import { examHomeworkHref } from "@/lib/homework/links";
 import { notFound, redirect } from "next/navigation";
-import { ArrowRight, BookOpen, CalendarDays, ClipboardCheck, Compass, FileText, Library, NotebookPen } from "lucide-react";
+import { ArrowRight, BookOpen, CalendarDays, ClipboardCheck, Compass, Files, FileText, Library, NotebookPen } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -75,7 +78,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const model = await loadModel(params.examSlug);
   if (!model) return { title: "Exam not found" };
   const title = fitTitle(
-    `${model.displayName} ${!model.practiceOnly ? "Past Year Questions" : model.pastYearQuestions > 0 ? "Past Year and Practice Questions" : "Practice Questions"} — Papers, Mocks, Notes`
+    `${model.displayName} ${!model.practiceOnly ? "Previous Year Questions" : model.pastYearQuestions > 0 ? "Previous Year and Practice Questions" : "Practice Questions"}: Papers, Mocks, Notes`
   );
   const description = examHomeDescription(model);
   return {
@@ -109,12 +112,24 @@ export default async function ExamHomePage({ params }: Params) {
     return [];
   });
   const homeworkHref = exam ? examHomeworkHref(plans, exam.examName) : null;
+  // Whole entrance past papers, free to read (/mock/<slug>/paper, 2026-10-15).
+  // A failed read only drops the link, like the two above.
+  const mocks = await getPublishedMocks(createSupabaseAnonClient()).catch((err) => {
+    console.error("exam home: past papers (mocks) unavailable", err);
+    return [];
+  });
+  const pastPapers = exam ? pastPaperHubLink(model.slug, exam.examName, mocks) : null;
 
   const quickLinks = [
     hasPapers && {
       href: `/question-papers/${model.slug}`,
       label: "Whole past question papers, with marks and answers",
       Icon: FileText,
+    },
+    pastPapers && {
+      href: pastPapers.href,
+      label: pastPapers.label,
+      Icon: Files,
     },
     homeworkHref && {
       href: homeworkHref,

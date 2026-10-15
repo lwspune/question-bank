@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Clock, FileText, Trophy, CheckCircle2, XCircle, MinusCircle, LogIn, Info } from "lucide-react";
+import { BookOpen, Clock, FileText, Trophy, CheckCircle2, XCircle, MinusCircle, LogIn, Info } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { Button } from "@/components/ui/button";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
@@ -22,6 +22,7 @@ import { getExamByName } from "@/lib/exam/examContext";
 import ShareMock from "./ShareMock";
 import AttemptsList from "../_components/AttemptsList";
 import PaperDownload from "../_components/PaperDownload";
+import { paperPageHref } from "@/lib/mocks/paperPage";
 import { listMyAssignments } from "@/lib/assignments/service";
 
 type Params = { slug: string };
@@ -176,7 +177,14 @@ export default async function MockInstructions({ params }: { params: Params }) {
             </div>
           )}
           {isPastPaper && (
-            <div className="mt-3">
+            <div className="mt-3 space-y-3">
+              <Link
+                href={paperPageHref(mock.slug)}
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-accent underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+              >
+                <BookOpen className="h-4 w-4" aria-hidden />
+                Read the whole paper with answers, free
+              </Link>
               <PaperDownload slug={mock.slug} paperTitle={mock.title} bilingual={bilingual} />
             </div>
           )}

@@ -12,6 +12,10 @@
  * They are NOT unreachable: /mock/exam/<exam>/<type> still links every one.
  * This stops advertising them for crawl, nothing more.
  *
+ * THE PAPERS CAME BACK A DIFFERENT WAY (2026-10-15): each past paper now has a
+ * reading page, /mock/<slug>/paper, that prints every question. Those ARE
+ * listed; the start pages still are not.
+ *
  * The hubs stay because they are the pages a person would actually search for
  * ("NDA previous year papers") and they carry real, differing content.
  *
@@ -34,6 +38,7 @@ import {
   type MockTypeSlug,
 } from "@/lib/mocks/catalogue";
 import type { MockExamNav } from "@/lib/mocks/mocksNav";
+import { paperPageHref } from "@/lib/mocks/paperPage";
 import type { MockScope, MockSource } from "@/lib/mocks/query";
 
 /** One published mock, as the sitemap loader reads it. */
@@ -80,6 +85,7 @@ export function buildMockSitemapEntries(
   /** "<exam NAME>|<type>" -> newest ISO among that pair's mocks. */
   const byExamType = new Map<string, string | null>();
   let newestAll: string | null = null;
+  const paperEntries: MockSitemapEntry[] = [];
 
   for (const m of rows) {
     // A row with no exam or no timestamp dates nothing. It is skipped rather
@@ -96,6 +102,13 @@ export function buildMockSitemapEntries(
     byExam.set(m.examName, newerIso(byExam.get(m.examName) ?? null, m.updatedAt));
     byExamType.set(key, newerIso(byExamType.get(key) ?? null, m.updatedAt));
     newestAll = newerIso(newestAll, m.updatedAt);
+
+    // A past paper's READING page (2026-10-15) prints the whole paper, so unlike
+    // the thin /mock/<slug> start page it is worth advertising. Dated by its
+    // own row: it shows that paper and nothing else.
+    if (type === "past-papers") {
+      paperEntries.push({ path: paperPageHref(m.slug), iso: m.updatedAt, changeFrequency: "monthly", priority: 0.6 });
+    }
   }
 
   const examEntries: MockSitemapEntry[] = exams.map((e) => ({
@@ -137,5 +150,6 @@ export function buildMockSitemapEntries(
     ...examEntries,
     ...typeEntries,
     ...downloadEntries,
+    ...paperEntries,
   ];
 }

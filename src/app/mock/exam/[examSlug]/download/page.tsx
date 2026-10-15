@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { fitTitle } from "@/lib/seo/title";
+import { cache } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FileText, History } from "lucide-react";
@@ -10,6 +10,7 @@ import { getPublishedMocks } from "@/lib/mocks/query";
 import { getMockExam, getMockExams, mockFamilyOf, mockSideNav } from "@/lib/mocks/mocksNav";
 import { groupMocksForType, mocksOfType, mockDownloadHref } from "@/lib/mocks/catalogue";
 import { getExamByName } from "@/lib/exam/examContext";
+import { downloadPageTitle, paperPageHref, paperYearRange } from "@/lib/mocks/paperPage";
 import PaperDownload from "../../../_components/PaperDownload";
 
 // Same refresh as the /mock lists beside it.
@@ -22,16 +23,25 @@ export function generateStaticParams(): Params[] {
   return getMockExams().map((e) => ({ examSlug: e.slug as string }));
 }
 
-export function generateMetadata({ params }: { params: Params }): Metadata {
+/** One read per request, shared by the metadata and the page. */
+const pastPapersOf = cache(async (examName: string) => {
+  const all = await getPublishedMocks(createSupabaseAnonClient());
+  return mocksOfType(
+    all.filter((m) => m.examName === examName),
+    "past-papers"
+  );
+});
+
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const exam = getMockExam(params.examSlug);
   if (!exam) return {};
+  // The words students search (2026-10-15): "previous year question papers",
+  // with the years we actually hold.
+  const range = paperYearRange(await pastPapersOf(exam.examName));
+  const solved = getExamByName(exam.examName)?.pastPaperSolutions === true;
   return {
-    title: {
-      absolute: fitTitle(`${exam.examName} Previous Year Papers PDF`, [
-        { text: "with answer keys", optional: true },
-      ]),
-    },
-    description: `Download ${exam.examName} previous year question papers as PDFs: each paper exactly as it was set, with an answer key and solutions. Your first paper and its key are free, from PYQ Vault.`,
+    title: { absolute: downloadPageTitle(exam.examName, range, solved) },
+    description: `${exam.examName} previous year question papers${range ? ` from ${range}` : ""}, each exactly as it was set. Every paper is free to read online ${solved ? "with answers and worked solutions" : "with answers"}, or sit it as a timed mock. Your first PDF paper and answer key are free to download.`,
     alternates: { canonical: mockDownloadHref(exam.slug) },
   };
 }
@@ -46,14 +56,12 @@ export default async function MockDownloadList({ params }: { params: Params }) {
   const exam = getMockExam(params.examSlug);
   if (!exam) notFound();
 
-  const all = await getPublishedMocks(createSupabaseAnonClient());
-  const papers = mocksOfType(
-    all.filter((m) => m.examName === exam.examName),
-    "past-papers"
-  );
+  const papers = await pastPapersOf(exam.examName);
+  const range = paperYearRange(papers);
   const groups = groupMocksForType("past-papers", papers);
   const parent = mockFamilyOf(exam.slug);
   const bilingual = getExamByName(exam.examName)?.bilingual === true;
+  const solved = getExamByName(exam.examName)?.pastPaperSolutions === true;
 
   return (
     <GuideShell
@@ -63,13 +71,13 @@ export default async function MockDownloadList({ params }: { params: Params }) {
         { href: "/mock", label: "Mocks" },
         ...(parent ? [{ href: `/mock/exam/${parent.slug}`, label: parent.name }] : []),
         { href: `/mock/exam/${exam.slug}`, label: exam.displayName },
-        { label: "Download past papers" },
+        { label: "Past papers" },
       ]}
     >
       <GuideHero
         eyebrow={`${exam.displayName} · Past papers`}
-        title={`Download ${exam.examName} past papers`}
-        subtitle="Each paper exactly as it was set, in the printed order, as a PDF. Its answer key with solutions is a second file. Your first paper and its key are free."
+        title={`${exam.examName} previous year question papers`}
+        subtitle={`Every paper exactly as it was set${range ? `, ${range}` : ""}. Read any paper free online ${solved ? "with answers and worked solutions" : "with answers"}, sit it as a timed mock, or download it as a PDF. Your first PDF paper and its answer key are free.`}
       >
         <Link
           href="/mock/attempts"
@@ -100,14 +108,21 @@ export default async function MockDownloadList({ params }: { params: Params }) {
                   >
                     <div className="min-w-0">
                       <Link
-                        href={`/mock/${m.slug}`}
+                        href={paperPageHref(m.slug)}
                         className="font-semibold leading-snug hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                       >
                         {m.title}
                       </Link>
-                      <p className="mt-1 inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                      <p className="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-xs text-muted-foreground">
                         <FileText className="h-3.5 w-3.5" aria-hidden />
-                        {m.totalQuestions} questions
+                        {m.totalQuestions} questions ·
+                        <Link
+                          href={`/mock/${m.slug}`}
+                          className="text-brand-accent underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+                          aria-label={`Sit ${m.title} as a timed mock`}
+                        >
+                          Sit as a timed mock
+                        </Link>
                       </p>
                     </div>
                     <div className="shrink-0">

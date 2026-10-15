@@ -7,6 +7,7 @@ import {
   Timer,
   BookOpen,
   Compass,
+  Files,
   FlaskConical,
   Globe,
   Landmark,
@@ -25,6 +26,7 @@ import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getExamHomeStats } from "@/lib/exam/examHomeStats";
 import { resolveBankHref } from "@/lib/exam/examContext";
 import { mockCatalogueHref } from "@/lib/exam/examLinks";
+import { mockDownloadHref } from "@/lib/mocks/catalogue";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import ResultsStrip from "@/components/results/ResultsStrip";
 
@@ -171,6 +173,13 @@ export default async function NdaHomePage() {
             >
               <BookOpen className="h-4 w-4" aria-hidden />
               All ten guides
+            </Link>
+            <Link
+              href={mockDownloadHref("nda")}
+              className="inline-flex items-center gap-2 rounded-md border border-input bg-background px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            >
+              <Files className="h-4 w-4" aria-hidden />
+              Previous year question papers
             </Link>
           </div>
         </section>
