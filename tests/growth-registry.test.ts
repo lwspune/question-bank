@@ -72,6 +72,7 @@ describe("EXPERIMENTS", () => {
       "onboarding-arms",
       "paper-pages",
       "performance-starter",
+      "practice-tests",
       "premium-limits",
       "resource-chips",
       "second-page",
