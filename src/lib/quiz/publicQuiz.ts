@@ -11,6 +11,7 @@
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { DEFAULT_MARKING, type GradedQuestion, type Marking } from "./grade";
+import type { RotationQuiz } from "./today";
 
 export type PublicOptions = { A: string; B: string; C: string; D: string };
 export type PublicQuestion = { q: number; stem: string; options: PublicOptions };
@@ -150,6 +151,21 @@ export async function resolvePublicQuizForChapter(
     title: quiz.title as string,
     questionCount: count ?? 0,
   };
+}
+
+/** Every published public quiz, for the daily rotation (lib/quiz/today.ts). */
+export async function listRotationQuizzes(db: SupabaseClient): Promise<RotationQuiz[]> {
+  const { data, error } = await db
+    .from("quizzes")
+    .select("public_slug, title, chapter")
+    .not("public_slug", "is", null)
+    .limit(1000);
+  if (error) throw new Error(`listRotationQuizzes failed: ${error.message}`);
+  return (data ?? []).map((q) => ({
+    publicSlug: q.public_slug as string,
+    title: q.title as string,
+    chapter: (q.chapter as string) ?? null,
+  }));
 }
 
 export type RecordLeadInput = {
