@@ -32,11 +32,11 @@ import ResultsStrip from "@/components/results/ResultsStrip";
 
 export const revalidate = 86400;
 
-const PAGE_TITLE = "NDA Preparation — Past Papers, Strategy Guides, Teaching Notes";
+const PAGE_TITLE = "NDA Preparation: Past Papers, Strategy Guides, Free Notes";
 const PAGE_DESCRIPTION =
-  "Everything you need to prepare for the NDA in one place. Browse 4,800+ past-year " +
+  "Everything you need to prepare for the NDA in one place. Browse 5,000+ past-year " +
   "questions, read evidence-led strategy guides for nine subjects, and study " +
-  "concept-by-concept teaching notes. Free, no sign-up.";
+  "free chapter-wise notes, each chapter also a PDF. Free, no sign-up.";
 
 export const metadata: Metadata = {
   title: { absolute: fitTitle(PAGE_TITLE) },
@@ -231,11 +231,11 @@ export default async function NdaHomePage() {
           </ul>
         </section>
 
-        {/* Teaching Notes preview */}
+        {/* Notes preview */}
         <section className="mb-12">
           <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
             <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
-              Teaching notes
+              Free chapter notes
             </h2>
             <Link
               href="/notes/nda-maths"

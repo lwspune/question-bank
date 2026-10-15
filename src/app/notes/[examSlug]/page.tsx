@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notesExamTitle } from "@/lib/notes/titles";
+import { notesExamDescription, notesExamTitle } from "@/lib/notes/titles";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, NotebookPen } from "lucide-react";
@@ -58,7 +58,7 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   if (!group) return {};
   return {
     title: { absolute: notesExamTitle(group.examName) },
-    description: examIntro(group.examName, group.subjects.length, chapterTotal(group)),
+    description: notesExamDescription(group.examName, group.subjects.length, chapterTotal(group)),
     alternates: { canonical: `/notes/${group.slug}` },
   };
 }
@@ -136,7 +136,7 @@ export default async function NotesExamHub({ params }: { params: Params }) {
         description={intro}
       />
 
-      <GuideHero eyebrow={`${group.displayName} · Teaching notes`} title={title} subtitle={intro} />
+      <GuideHero eyebrow={`${group.displayName} · Free chapter-wise notes`} title={title} subtitle={intro} />
 
       <ResultsStrip examSlugs={[group.slug]} className="mb-6" />
 
@@ -144,7 +144,7 @@ export default async function NotesExamHub({ params }: { params: Params }) {
         <section className="mt-6 rounded-lg border bg-card p-8 text-center">
           <NotebookPen className="mx-auto h-6 w-6 text-muted-foreground" aria-hidden />
           <p className="mt-3 font-serif text-muted-foreground">
-            {group.examName} teaching notes are coming soon. In the meantime, the full{" "}
+            {group.examName} notes are coming soon. In the meantime, the full{" "}
             {group.examName} question bank is live: browse and build papers now.
           </p>
           <Link
