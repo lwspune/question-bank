@@ -327,4 +327,58 @@ export const INSIGHTS: readonly Insight[] = [
     checks: [],
     status: "open",
   },
+  {
+    id: "notes-pdf-collectors",
+    title: "Students collect notes as PDFs, one chapter after another",
+    finding:
+      "Clarity, 14 Oct (250 recordings, 15:30 to 24:00 IST): 9 sessions opened a notes handout or tapped Download as PDF. One went through 14 MHT-CET Physics chapters in about 6 minutes: 4 to 8 s on each chapter page, then about 20 s on its print page, then back to the hub. That one session is most of the 68 quick-backs Clarity counted on /notes/mht-cet that day. Two students signed in through \"Sign in to download as PDF\" first. Next to notes-little-used: notes may be read later, from the file, not on the site.",
+    source: "Clarity dashboard (quick-backs by page) and recordings, 14 Oct",
+    confidence: "low",
+    firstSeen: "2026-10-15",
+    howToCheck:
+      "Clarity recordings (ask first): sessions with a /notes/print/ page, and the most distinct print pages in one session. Database: surface_viewed rows with metadata.surface = 'handout' (one per page load and no chapter recorded, so a floor).",
+    checks: [],
+    status: "open",
+  },
+  {
+    id: "handout-freezes-phones",
+    title: "On a budget phone, a maths-heavy notes handout freezes the page before the PDF opens",
+    finding:
+      "Clarity, 14 Oct: a student signed in to download notes, saved Measures of Dispersion, then tapped Download as PDF on MHT-CET Indefinite Integration 7 times over three visits; the handout never appeared and each time the next page recorded was a fresh load of the Google landing page. Emulating a budget Android phone (CPU 6x slower) on the live site, the in-app tap to that handout took 76 s to finish drawing with one 52 s freeze (1,493 equations, 158k elements); Measures of Dispersion took 26 s with a 12 s freeze; a fast laptop takes 3 s. Each equation is a client component the phone draws again although the server already drew it. 71 of 266 chapters carry at least Measures of Dispersion's math, 16 at least Indefinite Integration's.",
+    source: "Clarity recordings 14 Oct; headless Edge with CPU throttling against www.pyqvault.com, 15 Oct; math counted in each chapter's _data",
+    confidence: "medium",
+    firstSeen: "2026-10-15",
+    howToCheck:
+      "Re-run the throttled-phone timing (CDP Emulation.setCPUThrottlingRate 6, in-app push to /notes/print/mht-cet-maths/indefinite-integration) and read the longest task. Clarity recordings (ask first): sessions that tap Download as PDF with no /notes/print/ page after it.",
+    checks: [],
+    status: "open",
+  },
+  {
+    id: "past-papers-sat-whole",
+    title: "Students work through whole board past papers and read the model answers",
+    finding:
+      "Clarity, 14 Oct, four days after /question-papers opened: 20 of 250 sessions (8%) used it, with 40 taps on Show model answer. One student spent about 2.5 hours on three MH HSC Physics papers (23 to 49 minutes on each); another went through four MH HSC Maths papers, opening the answers.",
+    source: "Clarity recordings, 14 Oct",
+    confidence: "low",
+    firstSeen: "2026-10-15",
+    howToCheck:
+      "Clarity recordings (ask first): share of sessions touching /question-papers, Show model answer taps, and the longest time on one paper page. Database: answer_sheets uploads per day, the step after sitting a paper on paper.",
+    checks: [],
+    status: "open",
+  },
+  {
+    id: "paper-download-taps-few-downloads",
+    title: "Few taps on a past paper's download button become downloads",
+    finding:
+      "Clarity, 14 Oct: 14 taps on \"Download paper and answer\" across 20 /question-papers sessions in half a day, while board_paper_downloads recorded 2 for the whole day. In the sessions traced, the box ended in a dismissed prompt (\"Not now\", or \"Maybe later\" on the mobile-number ask). A baseline for the specific pass offer, live from 15 Oct.",
+    source: "Clarity recordings and board_paper_downloads, 14 Oct",
+    confidence: "low",
+    firstSeen: "2026-10-15",
+    recheckDays: 7,
+    howToCheck:
+      "Clarity recordings (ask first): taps on \"Download paper and answer\" and what each session did next. Database, the same day: board_paper_downloads rows, and paywall_event rows whose metadata.box is board_paper.",
+    checks: [],
+    status: "open",
+    experimentId: "specific-offer",
+  },
 ];
