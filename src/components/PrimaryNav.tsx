@@ -118,7 +118,9 @@ export default function PrimaryNav({
               // That is what MobileTabBar exists to fix.
               "group inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 " +
               (isActive
-                ? "bg-brand-accent/10 text-brand-accent"
+                ? // A solid fill, not the old 10% tint: students could not
+                  // tell which tab they were on (owner, 2026-10-15).
+                  "bg-brand text-brand-foreground shadow-sm"
                 : "text-muted-foreground hover:bg-accent hover:text-foreground")
             }
           >
