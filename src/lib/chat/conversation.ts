@@ -4,6 +4,7 @@
  *   modelHistory  V's memory: the last exchanges, sent with a new question
  *   historyTurns  the chat window, rebuilt for a signed-in student's device
  *   groupConversations / conversationJsonl  the dashboard and the export
+ *   unreadFollowups  late answers (0160) the student has not opened yet
  *
  * Pure. Spec: tests/chat-conversation.test.ts.
  */
@@ -11,17 +12,19 @@ import { PREDEFINED_QUESTIONS } from "./faq";
 
 export type ConversationRow = {
   id: string;
-  eventType: "launcher_open" | "faq_click" | "typed_question" | "builder_step";
+  eventType: "launcher_open" | "faq_click" | "typed_question" | "builder_step" | "v_followup";
   questionId: string | null;
   createdAt: string;
   message: string | null;
   reply: string | null;
-  replySource: "ai" | "fallback" | "template" | null;
+  replySource: "ai" | "fallback" | "template" | "followup" | null;
   replyLinks: string[] | null;
   feedback: number | null;
   conversationId: string | null;
   pagePath: string | null;
   signedIn: boolean;
+  /** A late answer's first opening (0160); null = unread. */
+  seenAt?: string | null;
 };
 
 const PAGE_PATH_RE = /^\/[A-Za-z0-9/_.~-]*$/;
@@ -47,9 +50,10 @@ export function isConversationId(v: unknown): v is string {
 
 const FAQ_LABELS = new Map<string, string>(PREDEFINED_QUESTIONS.map((q) => [q.id, q.label]));
 
-/** What the student asked in this row: typed text, or the button they tapped. */
+/** What the student asked in this row: typed text, the button they tapped, or
+ *  the questions a late answer (0160) answers. */
 function questionOf(r: ConversationRow): string | null {
-  if (r.eventType === "typed_question") return r.message;
+  if (r.eventType === "typed_question" || r.eventType === "v_followup") return r.message;
   if (r.eventType === "faq_click" && r.questionId) return FAQ_LABELS.get(r.questionId) ?? r.questionId;
   return null;
 }
@@ -79,7 +83,7 @@ export type HistoryTurn =
       text: string;
       id?: string;
       links?: string[];
-      source?: "ai" | "fallback" | "template";
+      source?: "ai" | "fallback" | "template" | "followup";
       feedback?: number | null;
     };
 
@@ -96,6 +100,8 @@ export function historyTurns(rows: readonly ConversationRow[]): HistoryTurn[] {
         source: "ai",
         feedback: r.feedback,
       });
+    } else if (r.replySource === "followup") {
+      turns.push({ role: "assistant", text: r.reply!, links: r.replyLinks ?? [], source: "followup" });
     } else {
       turns.push({ role: "assistant", text: r.reply! });
     }
@@ -106,7 +112,7 @@ export function historyTurns(rows: readonly ConversationRow[]): HistoryTurn[] {
 export type ConversationTurn = {
   question: string;
   reply: string;
-  source: "ai" | "fallback" | "template" | null;
+  source: "ai" | "fallback" | "template" | "followup" | null;
   feedback: number | null;
   page: string | null;
   at: string;
@@ -166,4 +172,9 @@ export function conversationJsonl(c: Conversation): string {
       },
     ]),
   });
+}
+
+/** Late answers (0160) in these rows that the student has not opened yet. */
+export function unreadFollowups(rows: readonly ConversationRow[]): number {
+  return rows.filter((r) => r.eventType === "v_followup" && !r.seenAt).length;
 }

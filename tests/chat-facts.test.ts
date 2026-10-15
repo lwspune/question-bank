@@ -1,4 +1,7 @@
 import { describe, it, expect } from "vitest";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import { pathsInReply } from "@/lib/chat/replyLinks";
 import {
   buildExamFacts,
   buildPlanFacts,
@@ -134,6 +137,14 @@ describe("NAV_FACTS", () => {
       expect(all).toContain(path);
     }
     expect(all).toContain("Build a practice test");
+  });
+
+  it("names only pages that exist, since V links them (an /exams index never did)", () => {
+    const paths = pathsInReply(NAV_FACTS.join(" "));
+    expect(paths.length).toBeGreaterThan(5);
+    for (const path of paths) {
+      expect(existsSync(join(process.cwd(), "src/app", path, "page.tsx")), path).toBe(true);
+    }
   });
 
   it("uses no em dashes, since V copies the style it is shown", () => {

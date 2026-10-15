@@ -25,6 +25,9 @@ export default async function ChatUsagePage() {
   const conversations = groupConversations(conversationRows);
   const helpful = conversationRows.filter((r) => r.feedback === 1).length;
   const notHelpful = conversationRows.filter((r) => r.feedback === -1).length;
+  // Migration 0160: late answers written, and how many students have opened theirs.
+  const lateAnswers = conversationRows.filter((r) => r.eventType === "v_followup");
+  const lateRead = lateAnswers.filter((r) => r.seenAt).length;
   const askRate =
     summary.totalOpens > 0 ? `${Math.round((summary.totalClicks / summary.totalOpens) * 100)}%` : "—";
 
@@ -51,6 +54,7 @@ export default async function ChatUsagePage() {
           <StatCard kind="numeric" value={conversations.length} label="Conversations" />
           <StatCard kind="numeric" value={helpful} label="Replies marked helpful" />
           <StatCard kind="numeric" value={notHelpful} label="Replies marked not helpful" />
+          <StatCard kind="text" value={`${lateRead} of ${lateAnswers.length}`} label="Late answers read" />
         </div>
 
         <section className="rounded-lg border">
@@ -87,7 +91,7 @@ export default async function ChatUsagePage() {
                           </p>
                           <p className="mt-0.5 whitespace-pre-wrap break-words border-l-2 border-input pl-2 text-muted-foreground">
                             <span className="font-medium text-foreground">
-                              {t.source === "ai" ? "V (AI): " : t.source === "template" ? "V (button): " : "V (fixed reply): "}
+                              {t.source === "ai" ? "V (AI): " : t.source === "template" ? "V (button): " : t.source === "followup" ? "V (late answer): " : "V (fixed reply): "}
                             </span>
                             {t.reply}
                             {t.feedback === 1 && <span className="ml-1 text-xs font-medium text-foreground">[helpful]</span>}

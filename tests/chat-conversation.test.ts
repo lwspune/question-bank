@@ -10,6 +10,7 @@ import {
   historyTurns,
   groupConversations,
   conversationJsonl,
+  unreadFollowups,
   type ConversationRow,
 } from "@/lib/chat/conversation";
 
@@ -108,6 +109,43 @@ describe("modelHistory", () => {
   it("sorts by time whatever order the rows arrive in", () => {
     const rows = [typed("2026-10-15T10:02:00Z", "b", "B"), typed("2026-10-15T10:01:00Z", "a", "A")];
     expect(modelHistory(rows).map((m) => m.content)).toEqual(["a", "A", "b", "B"]);
+  });
+});
+
+describe("late answers (migration 0160)", () => {
+  function followup(at: string, seenAt: string | null): ConversationRow {
+    return {
+      ...typed(at, "NEET PYQ\nGive me othet chapter of phy", "Sorry for the wait! Try /browse."),
+      eventType: "v_followup",
+      replySource: "followup",
+      replyLinks: ["/browse"],
+      seenAt,
+      signedIn: true,
+    };
+  }
+
+  it("opens as the student's questions, then V's answer with its links", () => {
+    expect(historyTurns([followup("2026-10-15T12:00:00Z", null)])).toEqual([
+      { role: "user", text: "NEET PYQ\nGive me othet chapter of phy" },
+      { role: "assistant", text: "Sorry for the wait! Try /browse.", links: ["/browse"], source: "followup" },
+    ]);
+  });
+
+  it("is part of V's memory, so a reply to it makes sense", () => {
+    expect(modelHistory([followup("2026-10-15T12:00:00Z", null)])).toEqual([
+      { role: "user", content: "NEET PYQ\nGive me othet chapter of phy" },
+      { role: "assistant", content: "Sorry for the wait! Try /browse." },
+    ]);
+  });
+
+  it("counts the late answers the student has not opened yet", () => {
+    expect(
+      unreadFollowups([
+        followup("2026-10-15T12:00:00Z", null),
+        followup("2026-10-15T12:01:00Z", "2026-10-16T09:00:00Z"),
+        typed("2026-10-15T12:02:00Z", "hi", "Hi!"),
+      ])
+    ).toBe(1);
   });
 });
 

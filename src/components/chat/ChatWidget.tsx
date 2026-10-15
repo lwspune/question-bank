@@ -21,6 +21,37 @@ import {
   writeStoredChat,
 } from "@/lib/chat/localChat";
 import { celebrate } from "@/components/celebrate/celebrate";
+import { fetchViewerSession } from "@/lib/viewer/useViewerSession";
+
+/** How often a signed-in visitor's page loads may ask for a late answer (0160). */
+const ACCOUNT_CHECK_EVERY_MS = 30 * 60 * 1000;
+const ACCOUNT_CHECKED_KEY = "v-chat-account-checked";
+
+function accountCheckDue(): boolean {
+  try {
+    const last = Number(localStorage.getItem(ACCOUNT_CHECKED_KEY) ?? 0);
+    return !(Date.now() - last < ACCOUNT_CHECK_EVERY_MS);
+  } catch {
+    return true;
+  }
+}
+
+/** The student has the late answer in front of them: mark it read (0160). */
+function markSeen(conversationId: string): void {
+  void fetch("/api/chat/seen", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ conversationId }),
+  }).catch(() => {});
+}
+
+function noteAccountChecked(): void {
+  try {
+    localStorage.setItem(ACCOUNT_CHECKED_KEY, String(Date.now()));
+  } catch {
+    // Storage blocked: the next page load just checks again.
+  }
+}
 import { useCart } from "@/lib/cart/CartProvider";
 import VSays from "./VSays";
 import PracticeBuilder, { PENDING_BUILD_KEY, logBuilderStep } from "./PracticeBuilder";
@@ -103,6 +134,13 @@ const GREETING: ChatTurn = {
  * raises a badge on the launcher and V says so in its bubble. AI replies take
  * a thumbs up or down; "Clear chat" starts a new conversation (the old one
  * stays stored).
+ *
+ * LATE ANSWERS (migration 0160): V answers questions it could not answer at
+ * the time. A signed-in visitor's page load asks /api/chat/history (at most
+ * every 30 minutes; signed-out visitors never ask, fetchViewerSession costs
+ * them nothing). An unread late answer is adopted even over a newer chat on
+ * this device, raises the badge and V's bubble, and is marked read when the
+ * window opens.
  *
  * PHASE 2 — predefined questions, plus (2026-10-09) a typing box. Since
  * 2026-10-15 POST /api/chat/typed answers typed questions with AI when
@@ -193,10 +231,38 @@ export default function ChatWidget() {
 
   // Read by replies that land after an await: was the window open then?
   const openRef = useRef(open);
+  // A late answer's conversation, to mark read once the window opens.
+  const pendingSeenRef = useRef<string | null>(null);
   useEffect(() => {
     openRef.current = open;
-    if (open) setUnread(0);
+    if (!open) return;
+    setUnread(0);
+    const seen = pendingSeenRef.current;
+    if (seen) {
+      pendingSeenRef.current = null;
+      markSeen(seen);
+    }
   }, [open]);
+
+  // Current values for code that resumes after an await.
+  const conversationIdRef = useRef<string | null>(null);
+  const turnsRef = useRef<ChatTurn[]>([]);
+  useEffect(() => {
+    conversationIdRef.current = conversationId;
+    turnsRef.current = turns;
+  }, [conversationId, turns]);
+
+  // Signed in: look for a late answer once this page load (throttled).
+  useEffect(() => {
+    let active = true;
+    void fetchViewerSession().then((session) => {
+      if (active && session && accountCheckDue()) void loadAccountConversation();
+    });
+    return () => {
+      active = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- once per mount, after storage is read
+  }, []);
 
   const listRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
@@ -247,17 +313,32 @@ export default function ChatWidget() {
     accountCheckedRef.current = true;
     try {
       const res = await fetch("/api/chat/history");
+      noteAccountChecked();
       const data = (await res.json().catch(() => ({}))) as { conversation?: unknown };
       if (!res.ok || !data.conversation) return;
       const account = parseStoredChat(JSON.stringify({ v: 1, unread: 0, ...(data.conversation as object) }));
+      if (!account) return;
+      // Refs, not state: this resolves after an await, possibly after the student typed.
+      const currentId = conversationIdRef.current;
+      const current = turnsRef.current;
       const device =
-        conversationId && turns.length > 0
-          ? { v: 1 as const, conversationId, lastAt: lastAtRef.current, unread: 0, turns: keepable(turns) }
+        currentId && current.length > 0
+          ? { v: 1 as const, conversationId: currentId, lastAt: lastAtRef.current, unread: 0, turns: keepable(current) }
           : null;
-      if (account && preferNewer(device, account) === account) {
-        lastAtRef.current = account.lastAt;
-        setConversationId(account.conversationId);
-        setTurns(account.turns);
+      const lateAnswer = account.unread > 0;
+      // An unread late answer is shown even over a newer chat here, or it would never be read.
+      if (!lateAnswer && preferNewer(device, account) !== account) return;
+      lastAtRef.current = Math.max(account.lastAt, lastAtRef.current);
+      setConversationId(account.conversationId);
+      setTurns(account.turns);
+      if (!lateAnswer) return;
+      if (openRef.current) {
+        markSeen(account.conversationId);
+      } else {
+        pendingSeenRef.current = account.conversationId;
+        setUnread(account.unread);
+        setTucked(false);
+        celebrate("Sorry for the wait! I've answered your earlier question. Tap me to read.", "talk");
       }
     } catch {
       // Signed out or offline: the device's copy stands.

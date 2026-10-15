@@ -107,7 +107,7 @@ export async function listChatInteractions(limit = 5000): Promise<ChatInteractio
 }
 
 const CONVERSATION_COLUMNS =
-  "id, event_type, question_id, created_at, message, reply, reply_source, reply_links, feedback, conversation_id, page_path, user_id";
+  "id, event_type, question_id, created_at, message, reply, reply_source, reply_links, feedback, conversation_id, page_path, user_id, seen_at";
 
 type RawConversationRow = {
   id: string;
@@ -122,6 +122,7 @@ type RawConversationRow = {
   conversation_id: string | null;
   page_path: string | null;
   user_id: string | null;
+  seen_at: string | null;
 };
 
 function toConversationRow(r: RawConversationRow): ConversationRow & { userId: string | null } {
@@ -138,6 +139,7 @@ function toConversationRow(r: RawConversationRow): ConversationRow & { userId: s
     conversationId: r.conversation_id,
     pagePath: r.page_path,
     signedIn: r.user_id != null,
+    seenAt: r.seen_at,
     userId: r.user_id,
   };
 }
@@ -228,7 +230,7 @@ export async function listConversationRows(limit = 10000): Promise<ConversationR
       .from("chat_interactions")
       .select(CONVERSATION_COLUMNS)
       .not("conversation_id", "is", null)
-      .in("event_type", ["typed_question", "faq_click"])
+      .in("event_type", ["typed_question", "faq_click", "v_followup"])
       .order("created_at", { ascending: false })
       .range(from, to);
     if (error) throw new Error(`list conversation rows failed: ${error.message}`);
@@ -237,4 +239,48 @@ export async function listConversationRows(limit = 10000): Promise<ConversationR
     if (rows.length < to - from + 1) break;
   }
   return out;
+}
+
+/**
+ * The student opened V with a late answer (0160) waiting: mark it read. Only
+ * their own, only once (the first opening is the one worth knowing).
+ */
+export async function markFollowupsSeen(
+  db: SupabaseClient,
+  input: { userId: string; conversationId: string }
+): Promise<number> {
+  const { data, error } = await db
+    .from("chat_interactions")
+    .update({ seen_at: new Date().toISOString() })
+    .eq("user_id", input.userId)
+    .eq("conversation_id", input.conversationId)
+    .eq("event_type", "v_followup")
+    .is("seen_at", null)
+    .select("id");
+  if (error) {
+    console.error("markFollowupsSeen:", error.message);
+    return 0;
+  }
+  return (data ?? []).length;
+}
+
+/** The conversation holding a student's newest UNREAD late answer (0160), if any. */
+export async function readUnreadFollowupConversation(
+  db: SupabaseClient,
+  userId: string
+): Promise<(ConversationRow & { userId: string | null })[]> {
+  const { data, error } = await db
+    .from("chat_interactions")
+    .select("conversation_id")
+    .eq("user_id", userId)
+    .eq("event_type", "v_followup")
+    .is("seen_at", null)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  if (error || !data?.conversation_id) {
+    if (error) console.error("readUnreadFollowupConversation:", error.message);
+    return [];
+  }
+  return readConversation(db, data.conversation_id as string);
 }

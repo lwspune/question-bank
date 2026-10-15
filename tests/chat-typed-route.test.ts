@@ -216,6 +216,20 @@ it("keeps the conversation: stores its id and page, returns the row id, and give
     expect(await (await GET()).json()).toEqual({ ok: true, conversation: null });
   });
 
+  it("marks a late answer read only for a signed-in student (0160)", async () => {
+    const { POST: SEEN } = await import("@/app/api/chat/seen/route");
+    const seen = (body: unknown) =>
+      SEEN(
+        new NextRequest("http://localhost:3000/api/chat/seen", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        })
+      );
+    expect((await seen({ conversationId: "x" })).status).toBe(400);
+    expect((await seen({ conversationId: randomUUID() })).status).toBe(401);
+  });
+
   it("stores a button's answer in the conversation (0159)", async () => {
     const { POST: FAQ } = await import("@/app/api/chat/faq/route");
     const conversationId = randomUUID();

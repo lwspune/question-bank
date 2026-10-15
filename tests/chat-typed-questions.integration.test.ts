@@ -106,6 +106,27 @@ describe.skipIf(!HAS_ENV)("chat_interactions: typed questions", () => {
     expect(badPage.error).not.toBeNull();
   });
 
+  it("takes a late answer only with its conversation, its question and a 'followup' reply (0160)", async () => {
+    const base = { event_type: "v_followup", message: `${tag} late`, reply: "Sorry for the wait!" };
+    const noConversation = await admin.from("chat_interactions").insert({ ...base, reply_source: "followup" });
+    const wrongSource = await admin
+      .from("chat_interactions")
+      .insert({ ...base, reply_source: "ai", conversation_id: crypto.randomUUID() });
+    const ok = await admin
+      .from("chat_interactions")
+      .insert({ ...base, reply_source: "followup", conversation_id: crypto.randomUUID() });
+    expect(noConversation.error).not.toBeNull();
+    expect(wrongSource.error).not.toBeNull();
+    expect(ok.error).toBeNull();
+  });
+
+  it("keeps 'seen' for late answers only (0160)", async () => {
+    const { error } = await admin
+      .from("chat_interactions")
+      .insert({ event_type: "launcher_open", seen_at: new Date().toISOString() });
+    expect(error).not.toBeNull();
+  });
+
   it("hides V's settings from the public (0158)", async () => {
     const { data } = await anon.from("chat_settings").select("ai_enabled");
     expect(data ?? []).toEqual([]);

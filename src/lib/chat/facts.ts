@@ -85,14 +85,13 @@ export function buildFreeFacts(limits: FreeLimits | null): string[] {
  *  one for a handful of static pointers would be over-engineering. Every path
  *  here may be linked in a reply (lib/chat/replyLinks.ts). */
 export const NAV_FACTS: readonly string[] = [
-  "/browse: filter and preview the question bank by exam, chapter, subtopic, difficulty and year (free, no account needed).",
-  "/exams: every exam we cover.",
+  "/browse: filter and preview the question bank by exam, chapter, subtopic, difficulty and year (free, no account needed); its exam picker lists every exam we cover.",
   "/mock: real past papers as timed, auto-graded online tests.",
   "/question-papers: whole board past papers (CBSE Class 12, Maharashtra HSC and SSC) with marks and answers.",
   "/board: textbook solutions for board exams, chapter by chapter, plus each chapter's Top 10 most-repeated PYQs.",
   "/notes: teaching notes per chapter, free to read.",
   "/guide: exam strategy guides (which chapters to prioritise, how to spend your time).",
-  "/drill: practise the questions you got wrong.",
+  "/drill: practise the questions you got wrong (needs a free account).",
   "Build a practice test: a button in this chat window; V builds a test from the chapters, length and difficulty the student picks.",
   "/signup: create a free account (Google or email).",
   "/pricing: the Premium Pass and how to buy it.",
