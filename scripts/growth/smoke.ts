@@ -135,6 +135,9 @@ async function main() {
       case "paper-pages":
         line = handRead(e.liveSince, ["paper-signups", "paper-chatgpt-named"]);
         break;
+      case "notes-titles":
+        line = handRead(e.liveSince, ["notes-signups", "notes-chatgpt-named"]);
+        break;
       default: {
         // A new readout must be added here; this fails the typecheck until it is.
         const unhandled: never = e.readout;

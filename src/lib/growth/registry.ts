@@ -106,6 +106,17 @@ export const PAPER_PAGES_SIGNUPS_KEEP = 10;
 export const PAPER_PAGES_CHATGPT_KEEP = 2;
 
 /**
+ * "notes-titles": keep the student wording on the notes titles if signups
+ * whose first page was a /notes page reach this share of all signups in the
+ * window. A SHARE, not a count: the four weeks before already held 20 of 511
+ * (3.9%), so a count of 20 would pass with no effect, and total signups were
+ * growing fast enough to lift any count on their own.
+ */
+export const NOTES_TITLES_SHARE_KEEP_PCT = 6;
+/** ...or ChatGPT names us in at least this many of the five notes prompts (asked by hand). */
+export const NOTES_TITLES_CHATGPT_KEEP = 2;
+
+/**
  * "specific-offer": keep the per-page lead on the board-paper and homework
  * boxes if at least this share of students shown the offer there open
  * checkout. Provisional, set by Claude: about twice /browse's rate before the
@@ -133,7 +144,8 @@ export type Readout =
   | "performance-starter"
   | "formula-pages"
   | "specific-offer"
-  | "paper-pages";
+  | "paper-pages"
+  | "notes-titles";
 
 export type Experiment = {
   id: string;
@@ -313,6 +325,19 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "paper-pages",
     status: "running",
   },
+  {
+    id: "notes-titles",
+    title: "Notes titled the way students ask",
+    change:
+      "Every notes hub and chapter title says \"Notes\", \"Free\" and \"PDF\" (\"NDA Maths Notes: Free Chapter-wise PDF\", \"Probability: NDA Maths Notes (Free PDF)\") instead of \"Teaching Notes\", and every description leads with \"Free chapter-wise ... notes\". About 300 pages, one file (lib/notes/titles.ts).",
+    why: "Asked \"where can I get NDA maths notes\", ChatGPT answered \"free NDA Maths notes PDF chapter-wise\" and named The Cavalier, EduRev and Oswaal. We have exactly that, every chapter with a free PDF handout, but our titles said \"Teaching Notes\" and never free, chapter-wise or PDF.",
+    metric:
+      "Share of signups whose first page was a /notes page (student_profiles.acq_landing; 3.9% in the four weeks before); how many of the five notes prompts name us in ChatGPT (asked by hand)",
+    rule: `Keep the wording if ${NOTES_TITLES_SHARE_KEEP_PCT}%+ of signups first land on a notes page, or ChatGPT names us in ${NOTES_TITLES_CHATGPT_KEEP}+ of the five prompts, by the check date; otherwise look again at what the winning pages say.`,
+    liveSince: "2026-10-15",
+    readout: "notes-titles",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };
@@ -369,7 +394,9 @@ export type ReadingMetric =
   | "formula-signups"
   | "specific-offer-checkout"
   | "paper-signups"
-  | "paper-chatgpt-named";
+  | "paper-chatgpt-named"
+  | "notes-signups"
+  | "notes-chatgpt-named";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -427,6 +454,17 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
     label: "Signups whose first page was a past paper page or list",
     source: "student_profiles where acq_landing matches /mock/%/paper or /mock/exam/%/download and created_at >= the live date",
     entries: [],
+  },
+  "notes-signups": {
+    label: "Share of signups whose first page was a notes page (%)",
+    source: "student_profiles (staff excluded) where acq_landing starts with /notes, over all signups, created_at >= the live date",
+    entries: [{ on: "2026-10-15", value: 3.9, note: "Baseline: 20 of 511 signups in the four weeks before the change" }],
+  },
+  "notes-chatgpt-named": {
+    label: "ChatGPT notes prompts (of 5) that name PYQ Vault",
+    source:
+      "Ask ChatGPT, logged out: where can I get NDA maths notes; MHT CET chemistry notes pdf free; JEE Mains physics chapter wise notes free; CDS maths notes pdf; NDA physics notes free",
+    entries: [{ on: "2026-10-15", value: 0, note: "Owner's screenshot of the first prompt: The Cavalier, EduRev, Oswaal" }],
   },
   "paper-chatgpt-named": {
     label: "ChatGPT paper prompts (of 5) that name PYQ Vault",

@@ -27,6 +27,8 @@ import {
   FORMULA_PAGES_INDEXED_KEEP,
   FORMULA_PAGES_SIGNUPS_KEEP,
   PAPER_PAGES_CHATGPT_KEEP,
+  NOTES_TITLES_CHATGPT_KEEP,
+  NOTES_TITLES_SHARE_KEEP_PCT,
   PAPER_PAGES_SIGNUPS_KEEP,
   SPECIFIC_OFFER_CHECKOUT_PCT,
   checkOn,
@@ -404,6 +406,17 @@ export default async function GrowthPage() {
               read from the same rows.
             </p>
             <ReadingsList metric="specific-offer-checkout" />
+          </div>
+        );
+      case "notes-titles":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince))}: keep the wording if {NOTES_TITLES_SHARE_KEEP_PCT}%+ of
+              signups first landed on a notes page (3.9% before), or ChatGPT names us in {NOTES_TITLES_CHATGPT_KEEP}+ of the five prompts.
+            </p>
+            <ReadingsList metric="notes-signups" />
+            <ReadingsList metric="notes-chatgpt-named" />
           </div>
         );
       case "paper-pages":
