@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notesChapterTitle } from "@/lib/notes/titles";
+import { notesChapterDescription, notesChapterTitle } from "@/lib/notes/titles";
 import { chapterStart, mockCta } from "@/lib/notes/keepGoing";
 import { getExamByName, getExamBySlug } from "@/lib/exam/examContext";
 import { examHomeHref as examHomeHrefFor } from "@/lib/exam/examHome";
@@ -58,8 +58,9 @@ export function buildChapterMetadata(c: NotesChapterRegistration): Metadata {
     title: { absolute: notesChapterTitle(c) },
     // The SHORT line, not `intro`. The full intro averages 171 words (~1,100
     // chars) against Google's ~155-char truncation, so it shipped cut mid-word
-    // on all 84 chapter pages.
-    description: chapterCardBlurb(c.chapter),
+    // on all 84 chapter pages. Led by "Free <subject> notes on <chapter>, with
+    // a PDF" (2026-10-15), the words a student searches.
+    description: notesChapterDescription(c),
     alternates: { canonical: routeBase(c) },
   };
 }
@@ -212,7 +213,7 @@ export default async function NotesChapterLanding({ chapter }: Props) {
           is 15-18 phone lines before the reader reaches a single link. CSS
           only — the whole intro stays in the prerendered HTML. */}
       <GuideHero
-        eyebrow={`${chapter.subjectDisplay} · Teaching notes`}
+        eyebrow={`${chapter.subjectDisplay} · Free notes`}
         title={meta.title}
         subtitle={meta.intro}
         collapsibleSubtitle

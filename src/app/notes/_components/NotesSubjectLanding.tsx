@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notesSubjectTitle } from "@/lib/notes/titles";
+import { notesSubjectDescription, notesSubjectTitle } from "@/lib/notes/titles";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, BookOpen } from "lucide-react";
@@ -25,7 +25,7 @@ function subjectMeta(subjectRoute: string) {
   const chapters = getNotesChaptersForSubject(subjectRoute);
   const first = chapters[0];
   if (!first) return null;
-  const title = `${first.subjectDisplay} — Teaching Notes`;
+  const title = `${first.subjectDisplay} Notes`;
   // Says how to USE these notes. The /notes hub says what they are and the exam
   // hub says what is covered, so all three levels answer different questions —
   // before 2026-09-16 they rendered one sentence with the name swapped.
@@ -47,7 +47,7 @@ export function buildSubjectMetadata(subjectRoute: string): Metadata {
   if (!meta) return {};
   return {
     title: { absolute: notesSubjectTitle(meta.first.subjectDisplay) },
-    description: meta.intro,
+    description: notesSubjectDescription(meta.first.subjectDisplay, meta.chapters.length),
     alternates: { canonical: `/notes/${subjectRoute}` },
   };
 }
@@ -109,7 +109,7 @@ export default async function NotesSubjectLanding({
         description={intro}
       />
 
-      <GuideHero eyebrow={`${first.subjectDisplay} · Teaching notes`} title={title} subtitle={intro} />
+      <GuideHero eyebrow={`${first.subjectDisplay} · Free chapter-wise notes`} title={title} subtitle={intro} />
 
       <section className="mt-2 grid gap-4 sm:mt-4">
         <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-muted-foreground">

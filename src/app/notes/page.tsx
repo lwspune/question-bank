@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { NOTES_INDEX_TITLE } from "@/lib/notes/titles";
+import { NOTES_INDEX_DESCRIPTION, NOTES_INDEX_TITLE } from "@/lib/notes/titles";
 import Link from "next/link";
 import { ArrowRight, BookOpen } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
@@ -12,20 +12,16 @@ import ExamGapNotice from "@/components/exam/ExamGapNotice";
 
 export const revalidate = 86400;
 
-const PAGE_TITLE = "Teaching Notes";
-const PAGE_INTRO =
-  "Notes written one subtopic at a time, for teaching off a board and for studying alone. " +
-  "Each page explains the idea, gives you the formula, works through a real past-year " +
-  "question, and names the mistakes that keep costing marks. Pick an exam to start.";
-
+const PAGE_TITLE = "Chapter Notes";
 // On-page line, kept short (2026-10-04: walls of intro text were half of why
-// the site felt unfinished). PAGE_INTRO stays the meta/JSON-LD description.
+// the site felt unfinished). NOTES_INDEX_DESCRIPTION is the meta/JSON-LD
+// description, in the words students search (2026-10-15).
 const PAGE_LEDE =
   "One subtopic at a time: the idea, the formula, a real past-year question and the mistakes that cost marks.";
 
 export const metadata: Metadata = {
   title: { absolute: NOTES_INDEX_TITLE },
-  description: PAGE_INTRO,
+  description: NOTES_INDEX_DESCRIPTION,
   alternates: { canonical: "/notes" },
 };
 
@@ -38,15 +34,15 @@ export default function NotesIndex() {
   ];
 
   return (
-    <GuideShell guideTitle="Teaching Notes" sideNav={sideNav} breadcrumbs={[{ label: "Notes" }]}>
+    <GuideShell guideTitle="Notes" sideNav={sideNav} breadcrumbs={[{ label: "Notes" }]}>
       <GuideJsonLd
         type="CollectionPage"
         path="/notes"
         headline={PAGE_TITLE}
-        description={PAGE_INTRO}
+        description={NOTES_INDEX_DESCRIPTION}
       />
 
-      <GuideHero eyebrow="Teaching notes" title={PAGE_TITLE} subtitle={PAGE_LEDE} />
+      <GuideHero eyebrow="Free chapter-wise notes" title={PAGE_TITLE} subtitle={PAGE_LEDE} />
 
       {/* Signed-in only (client island) — keeps this index page ISR-static. */}
       <YourNotesStrip />
