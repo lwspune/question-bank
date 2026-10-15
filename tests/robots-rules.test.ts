@@ -8,7 +8,7 @@
  *
  * The precedence is the whole risk. `Allow: /` matches every URL on the site, so
  * every Disallow only works because it is longer and therefore more specific.
- * Adding `Disallow: /browse?*` alongside `Allow: /browse` is exactly the shape
+ * Adding `Disallow: /browse?` alongside `Allow: /browse` is exactly the shape
  * that could silently take the site's most-visited page offline for Google if
  * the precedence went the other way.
  *
@@ -58,6 +58,19 @@ describe("blocked surfaces", () => {
     expect(can("/browse?page=2")).toBe(false);
   });
 
+  // Not every crawler reads `*` (2026-10-15: Meta's crawler made 545 of its
+  // ~1,000 requests to /browse under `Disallow: /browse?*`). A crawler that
+  // matches rules as plain prefixes, as the original standard does, must be
+  // kept out of the filter space too, and must still reach bare /browse.
+  it("blocks the /browse filter space for a crawler that reads rules as plain prefixes", () => {
+    const plain = (path: string) => robotsAllows({ allow, disallow }, path, { wildcards: false });
+    expect(plain("/browse?examId=abc")).toBe(false);
+    expect(plain("/browse?examId=abc&chapterIds=def&difficulty=HARD")).toBe(false);
+    expect(plain("/browse")).toBe(true);
+    expect(plain("/questions/nda/mathematics/vectors")).toBe(true);
+    expect(plain("/dashboard")).toBe(false);
+  });
+
   it("still blocks the private surfaces", () => {
     expect(can("/dashboard")).toBe(false);
     expect(can("/dashboard/questions/xyz/edit")).toBe(false);
@@ -92,6 +105,13 @@ describe("robotsAllows precedence", () => {
     expect(robotsAllows({ allow: [], disallow: ["/q?*"] }, "/q?x=1")).toBe(false);
     // No query string ⇒ the literal `?` can't match ⇒ not blocked.
     expect(robotsAllows({ allow: [], disallow: ["/q?*"] }, "/q")).toBe(true);
+  });
+
+  it("reads * and $ as literal characters when wildcards are off", () => {
+    const off = { wildcards: false } as const;
+    expect(robotsAllows({ allow: [], disallow: ["/q?*"] }, "/q?x=1", off)).toBe(true);
+    expect(robotsAllows({ allow: [], disallow: ["/q?"] }, "/q?x=1", off)).toBe(false);
+    expect(robotsAllows({ allow: [], disallow: ["/q?"] }, "/q", off)).toBe(true);
   });
 
   it("honours the $ end-anchor", () => {

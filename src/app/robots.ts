@@ -15,7 +15,7 @@ const PUBLIC_ALLOW = [
   "/quiz",
   "/privacy",
 ];
-const PUBLIC_DISALLOW = ["/dashboard", "/upload", "/api", "/browse?*"];
+const PUBLIC_DISALLOW = ["/dashboard", "/upload", "/api", "/browse?"];
 
 /**
  * OpenAI's SEARCH crawler and its live-fetch agent, named explicitly
@@ -50,9 +50,12 @@ export default function robots(): MetadataRoute.Robots {
         // the existing /dashboard rule covers it. Leaving the blanket rule in
         // place would have hidden ~250 of the site's most indexable pages.
         //
-        // `/browse?*` blocks the FILTER SPACE only — bare /browse stays allowed
+        // `/browse?` blocks the FILTER SPACE only — bare /browse stays allowed
         // (the literal `?` can't match a query-less URL, and `tests/robots-rules.test.ts`
-        // asserts that by behaviour, not by inspection). A filter UI generates a
+        // asserts that by behaviour, not by inspection). It is a plain prefix,
+        // not `/browse?*` (its form until 2026-10-15): not every crawler reads
+        // `*`, and Meta's made 545 of its ~1,000 requests to /browse under the
+        // wildcard form. A prefix means the same to every crawler. A filter UI generates a
         // combinatorial explosion of URLs that crawlers happily walk; /browse
         // already self-canonicalises to the bare page, so none of them were ever
         // going to be indexed — but each fetch is a full uncached server render,
