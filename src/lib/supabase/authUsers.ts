@@ -4,6 +4,7 @@
  * paged copy rather than two.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { displayName } from "@/lib/students/derive";
 
 export type AuthUserLite = {
   id: string;
@@ -38,4 +39,19 @@ export async function listAllAuthUsers(admin: SupabaseClient): Promise<AuthUserL
     if (batch.length < 1000) break;
   }
   return out;
+}
+
+/**
+ * Display names (the Google name, else the email) for these accounts. Moved
+ * here from lib/feedback/adminStats.ts on 2026-10-15 when /dashboard/chat
+ * needed the same lookup. An id with no account is left out of the map.
+ */
+export async function namesForUsers(admin: SupabaseClient, ids: Iterable<string>): Promise<Map<string, string>> {
+  const wanted = new Set(ids);
+  const names = new Map<string, string>();
+  if (wanted.size === 0) return names;
+  for (const u of await listAllAuthUsers(admin)) {
+    if (wanted.has(u.id)) names.set(u.id, displayName(u.user_metadata, u.email));
+  }
+  return names;
 }

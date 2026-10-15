@@ -9,10 +9,8 @@
  * only one mock at a time, so the Feedback page read as empty.
  */
 import "server-only";
-import type { SupabaseClient } from "@supabase/supabase-js";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { listAllAuthUsers } from "@/lib/supabase/authUsers";
-import { displayName } from "@/lib/students/derive";
+import { namesForUsers } from "@/lib/supabase/authUsers";
 import { summarizeMockRatings, type MockRatingRow, type MockRatingsSummary } from "@/lib/mocks/feedback";
 import { computeNps, type NpsRollup } from "./nps";
 
@@ -65,15 +63,6 @@ async function readAll<T>(
   return rows;
 }
 
-async function namesFor(db: SupabaseClient, ids: Set<string>): Promise<Map<string, string>> {
-  const names = new Map<string, string>();
-  if (ids.size === 0) return names;
-  for (const u of await listAllAuthUsers(db)) {
-    if (ids.has(u.id)) names.set(u.id, displayName(u.user_metadata, u.email));
-  }
-  return names;
-}
-
 /** NPS rollup + comments, suggestions, and the cross-mock rating rollup. */
 export async function getFeedbackOverview(): Promise<FeedbackOverview> {
   const db = createSupabaseAdminClient();
@@ -95,7 +84,7 @@ export async function getFeedbackOverview(): Promise<FeedbackOverview> {
     ),
   ]);
 
-  const names = await namesFor(db, new Set([...rows, ...ratingRows].map((r) => r.user_id)));
+  const names = await namesForUsers(db, new Set([...rows, ...ratingRows].map((r) => r.user_id)));
   const who = (id: string) => names.get(id) ?? "(unknown)";
 
   const npsRows = rows.filter((r) => r.kind === "nps" && r.score != null);
