@@ -21,6 +21,7 @@ import {
   MessageSquareHeart,
   PenLine,
   Search,
+  Swords,
   Table2,
   Timer,
   TrendingUp,
@@ -405,6 +406,14 @@ function QuickActions({
           icon={<FlaskConical className="h-5 w-5" aria-hidden />}
           title="Growth"
           description="The North Star, signups by week, and each growth experiment against its own decision rule."
+        />
+      )}
+      {isSuperadmin && (
+        <ActionCard
+          href="/dashboard/competitors"
+          icon={<Swords className="h-5 w-5" aria-hidden />}
+          title="Competitors"
+          description="What rival apps and sites offer, where we stand on each feature, and the gaps worth closing."
         />
       )}
       {isSuperadmin && (
