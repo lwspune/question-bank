@@ -73,6 +73,7 @@ describe("EXPERIMENTS", () => {
       "premium-limits",
       "resource-chips",
       "second-page",
+      "specific-offer",
     ]);
   });
 });

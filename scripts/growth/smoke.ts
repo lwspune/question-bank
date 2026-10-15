@@ -129,6 +129,9 @@ async function main() {
       case "formula-pages":
         line = handRead(e.liveSince, ["formula-indexed", "formula-signups"]);
         break;
+      case "specific-offer":
+        line = handRead(e.liveSince, ["specific-offer-checkout"]);
+        break;
       default: {
         // A new readout must be added here; this fails the typecheck until it is.
         const unhandled: never = e.readout;

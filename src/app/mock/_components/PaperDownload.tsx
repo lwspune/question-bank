@@ -24,6 +24,8 @@ import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
 import { gatePriceLine } from "@/lib/billing/gateCopy";
 import type { ExportViewerAccess } from "@/lib/export/viewerAccess";
+import type { PassOfferLead } from "@/lib/billing/passOfferLead";
+import type { DownloadBox } from "@/lib/activity/clientEvents";
 import PassOffer from "@/app/browse/PassOffer";
 import { cn } from "@/lib/utils";
 
@@ -44,6 +46,7 @@ export default function PaperDownload({
   variant = "button",
   boardPaper,
   topPyqs,
+  offer = null,
 }: {
   slug: string;
   paperTitle: string;
@@ -61,12 +64,15 @@ export default function PaperDownload({
   bilingual?: boolean;
   /** "button": full width, under Start test. "row": compact, in a list. */
   variant?: "button" | "row";
+  /** What a board paper's student is missing, led with in the pass offer (2026-10-14). */
+  offer?: PassOfferLead | null;
 }) {
   // A plain value, so the access check below re-runs only when it changes.
   const boardExam = boardPaper?.exam ?? null;
   const topTarget = topPyqs ? `${topPyqs.plan}:${topPyqs.chapterId}` : null;
   // Which funnel the box reports to: a Top 10 comes from a homework plan.
   const funnelMode = topTarget ? "homework" : "mock";
+  const box: DownloadBox = topTarget ? "top_pyqs" : boardExam ? "board_paper" : "mock";
   const [open, setOpen] = useState(false);
   const [access, setAccess] = useState<ExportViewerAccess | null>(null);
   const [loadFailed, setLoadFailed] = useState(false);
@@ -119,8 +125,8 @@ export default function PaperDownload({
   useEffect(() => {
     if (!open || !access || canDownload) return;
     trackFunnelOnce("teacher_gate_shown", funnelMode, { signedIn, mode: funnelMode });
-    if (signedIn) sendActivityOnce(`teacher_gate:${funnelMode}`, { kind: "paywall_event", step: "shown", gate: "teacher" });
-  }, [open, access, canDownload, signedIn, funnelMode]);
+    if (signedIn) sendActivityOnce(`teacher_gate:${box}`, { kind: "paywall_event", step: "shown", gate: "teacher", box });
+  }, [open, access, canDownload, signedIn, funnelMode, box]);
 
   const onBought = useCallback(() => {
     setJustBought(true);
@@ -202,7 +208,13 @@ export default function PaperDownload({
       </DialogTrigger>
       <DialogContent className="flex max-h-[90dvh] flex-col gap-0 p-0 sm:max-w-lg">
         <DialogHeader className="px-6 pt-6">
-          <DialogTitle>{showDownloadView || !access ? "Download this paper" : "Download past papers"}</DialogTitle>
+          <DialogTitle>
+            {showDownloadView || !access
+              ? "Download this paper"
+              : offer && signedIn && pass
+                ? offer.title
+                : "Download past papers"}
+          </DialogTitle>
           <DialogDescription>
             {!access
               ? paperTitle
@@ -212,8 +224,12 @@ export default function PaperDownload({
                   ? !signedIn
                     ? paperTitle
                     : wantPass
-                      ? `${pass.label} includes:`
-                      : `You've had your free paper. ${pass.label} includes:`
+                      ? offer
+                        ? `With ${pass.label}:`
+                        : `${pass.label} includes:`
+                      : offer
+                        ? `You've had your free paper. With ${pass.label}:`
+                        : `You've had your free paper. ${pass.label} includes:`
                   : "Downloading past papers needs a pass."}
           </DialogDescription>
         </DialogHeader>
@@ -288,6 +304,8 @@ export default function PaperDownload({
             returnTo={here}
             mode={funnelMode}
             surface="paper_download"
+            box={box}
+            lead={offer}
             onCancel={() => setOpen(false)}
             onBought={onBought}
             onSignedIn={loadAccess}

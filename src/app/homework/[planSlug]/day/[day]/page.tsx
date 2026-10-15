@@ -6,7 +6,8 @@ import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
-import { getPlanDayPage } from "@/lib/homework/query";
+import { getPlanDayPage, getPlanLinks } from "@/lib/homework/query";
+import { homeworkOfferFacts, homeworkOfferLead } from "@/lib/billing/passOfferLead";
 import { adjacentDays, homeworkDayView } from "@/lib/homework/dayView";
 import { dayHref, parseDayParam, planHref } from "@/lib/homework/links";
 import { loadBoardQuestions } from "@/lib/questionPapers/query";
@@ -59,6 +60,11 @@ export default async function HomeworkDayPage({ params }: { params: Params }) {
   if (!data) notFound();
   const { day, plan, slots } = data;
   const { prev, next } = adjacentDays(day, plan.days);
+  // The pass offer's lead (2026-10-14). Read here, not in load(), so metadata
+  // does not pay for it; a failed read keeps the generic offer, never a 500.
+  const links = await getPlanLinks().catch(() => []);
+  const own = links.find((l) => l.slug === plan.slug);
+  const offer = own ? homeworkOfferLead(homeworkOfferFacts({ ...plan, perDay: own.perDay }, links)) : null;
   const parts = slots.reduce((n, s) => n + s.questions.length, 0);
 
   return (
@@ -83,7 +89,7 @@ export default async function HomeworkDayPage({ params }: { params: Params }) {
               open its answer.
             </p>
           </div>
-          <HomeworkDownload planSlug={plan.slug} day={day} planTitle={plan.title} />
+          <HomeworkDownload planSlug={plan.slug} day={day} planTitle={plan.title} offer={offer} />
         </header>
 
         <HomeworkDayReader

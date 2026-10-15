@@ -26,6 +26,7 @@ import {
   CHIPS_KEEP_PCT,
   FORMULA_PAGES_INDEXED_KEEP,
   FORMULA_PAGES_SIGNUPS_KEEP,
+  SPECIFIC_OFFER_CHECKOUT_PCT,
   checkOn,
   type Experiment,
 } from "@/lib/growth/registry";
@@ -390,6 +391,17 @@ export default async function GrowthPage() {
               open an empty performance page start a test within a day. Below that, try a different offer first.
             </p>
             <ReadingsList metric="starter-start-rate" />
+          </div>
+        );
+      case "specific-offer":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince))}: keep the lead if {SPECIFIC_OFFER_CHECKOUT_PCT}%+ of
+              students shown the offer on a board paper or homework open checkout. Compare with /browse&apos;s rate,
+              read from the same rows.
+            </p>
+            <ReadingsList metric="specific-offer-checkout" />
           </div>
         );
       case "formula-pages":

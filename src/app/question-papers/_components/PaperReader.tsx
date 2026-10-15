@@ -23,6 +23,7 @@ import type { PaperViewItem } from "@/lib/questionPapers/listing";
 import BoardQuestionItem from "@/app/board/BoardQuestionItem";
 import { useBoardReveal } from "@/app/board/useBoardReveal";
 import PaperDownload from "@/app/mock/_components/PaperDownload";
+import type { PassOfferLead } from "@/lib/billing/passOfferLead";
 import AnswerSheetUpload from "./AnswerSheetUpload";
 
 export type PaperSet = {
@@ -40,6 +41,7 @@ export default function PaperReader({
   examName,
   examSlug,
   supabaseUrl,
+  offer = null,
 }: {
   sets: PaperSet[];
   /** The DB exams.name, for the free-answer meter. */
@@ -47,6 +49,8 @@ export default function PaperReader({
   /** The exam's URL slug ("cbse-12"): a download names its paper by it. */
   examSlug: string;
   supabaseUrl: string;
+  /** What the subject's student is missing, for the pass offer (2026-10-14). */
+  offer?: PassOfferLead | null;
 }) {
   const [active, setActive] = useState(0);
   const byId = useMemo(() => {
@@ -103,7 +107,7 @@ export default function PaperReader({
             // One registry per set: classroom projection walks one paper, not into the next.
             <PresentRegistry>
               <div className="mb-6 space-y-3">
-                <PaperDownload slug={s.slug} paperTitle={s.title} boardPaper={{ exam: examSlug }} />
+                <PaperDownload slug={s.slug} paperTitle={s.title} boardPaper={{ exam: examSlug }} offer={offer} />
                 <AnswerSheetUpload examSlug={examSlug} paperSlug={s.slug} paperTitle={s.title} />
               </div>
               <PaperSections

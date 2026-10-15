@@ -22,6 +22,7 @@ import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
 import { gatePriceLine } from "@/lib/billing/gateCopy";
 import type { ExportViewerAccess } from "@/lib/export/viewerAccess";
+import type { PassOfferLead } from "@/lib/billing/passOfferLead";
 import PassOffer from "@/app/browse/PassOffer";
 import { cn } from "@/lib/utils";
 
@@ -38,10 +39,13 @@ export default function HomeworkDownload({
   planSlug,
   day,
   planTitle,
+  offer = null,
 }: {
   planSlug: string;
   day: number;
   planTitle: string;
+  /** What the student is missing, led with in the pass offer (2026-10-14). */
+  offer?: PassOfferLead | null;
 }) {
   const [open, setOpen] = useState(false);
   const [access, setAccess] = useState<ExportViewerAccess | null>(null);
@@ -91,7 +95,8 @@ export default function HomeworkDownload({
   useEffect(() => {
     if (!open || !access || canDownload) return;
     trackFunnelOnce("teacher_gate_shown", "homework", { signedIn, mode: "homework" });
-    if (signedIn) sendActivityOnce("teacher_gate:homework", { kind: "paywall_event", step: "shown", gate: "teacher" });
+    if (signedIn)
+      sendActivityOnce("teacher_gate:homework", { kind: "paywall_event", step: "shown", gate: "teacher", box: "homework" });
   }, [open, access, canDownload, signedIn]);
 
   const onBought = useCallback(() => {
@@ -154,7 +159,13 @@ export default function HomeworkDownload({
       </DialogTrigger>
       <DialogContent className="flex max-h-[90dvh] flex-col gap-0 p-0 sm:max-w-lg">
         <DialogHeader className="px-6 pt-6">
-          <DialogTitle>{showDownloadView || !access ? `Download ${dayTitle}` : "Download homework"}</DialogTitle>
+          <DialogTitle>
+            {showDownloadView || !access
+              ? `Download ${dayTitle}`
+              : offer && signedIn && pass
+                ? offer.title
+                : "Download homework"}
+          </DialogTitle>
           <DialogDescription>
             {!access
               ? planTitle
@@ -164,8 +175,12 @@ export default function HomeworkDownload({
                   ? !signedIn
                     ? planTitle
                     : wantPass
-                      ? `${pass.label} includes:`
-                      : `You've had your free download. ${pass.label} includes:`
+                      ? offer
+                        ? `With ${pass.label}:`
+                        : `${pass.label} includes:`
+                      : offer
+                        ? `You've had your free download. With ${pass.label}:`
+                        : `You've had your free download. ${pass.label} includes:`
                   : "Downloading homework needs a pass."}
           </DialogDescription>
         </DialogHeader>
@@ -238,6 +253,8 @@ export default function HomeworkDownload({
             returnTo={here}
             mode="homework"
             surface="paper_download"
+            box="homework"
+            lead={offer}
             onCancel={() => setOpen(false)}
             onBought={onBought}
             onSignedIn={loadAccess}

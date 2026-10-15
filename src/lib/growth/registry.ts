@@ -97,6 +97,14 @@ export const FORMULA_PAGES_INDEXED_KEEP = 40;
 /** ...and at least this many signups first landed on a /formula page. */
 export const FORMULA_PAGES_SIGNUPS_KEEP = 5;
 
+/**
+ * "specific-offer": keep the per-page lead on the board-paper and homework
+ * boxes if at least this share of students shown the offer there open
+ * checkout. Provisional, set by Claude: about twice /browse's rate before the
+ * change (2 of 21), well under the tiny pre-change sample on these boxes (3 of 5).
+ */
+export const SPECIFIC_OFFER_CHECKOUT_PCT = 20;
+
 /** The ISO date `EXPERIMENT_WINDOW_DAYS` after `liveSince`. */
 export function checkOn(liveSince: string): string {
   const d = new Date(`${liveSince}T00:00:00Z`);
@@ -115,7 +123,8 @@ export type Readout =
   | "resource-chips"
   | "premium-limits"
   | "performance-starter"
-  | "formula-pages";
+  | "formula-pages"
+  | "specific-offer";
 
 export type Experiment = {
   id: string;
@@ -269,6 +278,19 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "formula-pages",
     status: "running",
   },
+  {
+    id: "specific-offer",
+    title: "Name what the student is missing on past papers and homework",
+    change:
+      "Once the free paper is spent, the pass offer on a board past paper or a homework plan leads with that page's own numbers (\"All 7 Physics past papers, 2023 to 2026\", \"All 81 days of Mathematics homework\") above a shorter list of the rest of the pass. /browse, mocks and formula sheets keep the generic list. Every paywall row now says which download box it came from.",
+    why: "From 8 to 14 Oct every recent sale came from these two boxes (free board papers 12, then 2 paid; homework 3, then 1), none from /browse (61 free papers, 0 paid), because there the need repeats: next year's paper, tomorrow's homework. Yet they showed the same six generic perks, and one student tapped that list as if it were buttons, then left.",
+    metric:
+      "Students who open checkout ÷ students shown the offer, on the board_paper and homework boxes (user_activity paywall_event, metadata.box), beside /browse's; passes sold whose checkout_opened names one of those boxes",
+    rule: `Keep it if ${SPECIFIC_OFFER_CHECKOUT_PCT}%+ of students shown the offer on these boxes open checkout by the check date; if it holds, try the same lead on mocks. Below that, go back to the generic list.`,
+    liveSince: "2026-10-15",
+    readout: "specific-offer",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };
@@ -322,7 +344,8 @@ export type ReadingMetric =
   | "limit-sales"
   | "starter-start-rate"
   | "formula-indexed"
-  | "formula-signups";
+  | "formula-signups"
+  | "specific-offer-checkout";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -383,5 +406,17 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
     label: "Question-card chip tap rate (%)",
     source: "Vercel → Analytics → Events → resource_chips_click ÷ resource_chips_shown",
     entries: [],
+  },
+  "specific-offer-checkout": {
+    label: "Board paper + homework offer: opened checkout (%)",
+    source:
+      "user_activity paywall_event: distinct students with step 'checkout_opened' ÷ step 'shown', where metadata.box is board_paper or homework",
+    entries: [
+      {
+        on: "2026-10-14",
+        value: 60,
+        note: "Baseline before the change, inferred from each student's free paper (no box was recorded yet): 3 of 5. /browse: 2 of 21",
+      },
+    ],
   },
 };

@@ -94,7 +94,8 @@ export default function FormulaSheetDownload({
   useEffect(() => {
     if (!open || !access || canDownload) return;
     trackFunnelOnce("teacher_gate_shown", "formula", { signedIn, mode: "formula" });
-    if (signedIn) sendActivityOnce("teacher_gate:formula", { kind: "paywall_event", step: "shown", gate: "teacher" });
+    if (signedIn)
+      sendActivityOnce("teacher_gate:formula", { kind: "paywall_event", step: "shown", gate: "teacher", box: "formula" });
   }, [open, access, canDownload, signedIn]);
 
   const onBought = useCallback(() => {
@@ -230,6 +231,7 @@ export default function FormulaSheetDownload({
             returnTo={here}
             mode="formula"
             surface="formula_sheet"
+            box="formula"
             onCancel={() => setOpen(false)}
             onBought={onBought}
             onSignedIn={loadAccess}
