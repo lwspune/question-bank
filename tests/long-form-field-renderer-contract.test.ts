@@ -57,7 +57,9 @@ function tsxUnder(dir: string, out: string[] = []): string[] {
  * A single-depth brace match is enough: the prop is always a bare identifier
  * or a member chain at these call sites, never an inline arrow function.
  */
-const USAGE_RE = /<KatexRenderer\b[^>]*?\btext=\{([^{}]*)\}/g;
+// StaticKatexRenderer (the server-drawn twin, 2026-10-16) has the same blind
+// spot for tables, so it is held to the same rule.
+const USAGE_RE = /<(?:Static)?KatexRenderer\b[^>]*?\btext=\{([^{}]*)\}/g;
 
 /** The trailing identifier of a member chain: `example.solution` → `solution`. */
 function lastIdentifier(expr: string): string {
@@ -104,7 +106,7 @@ describe("long-form fields render through BlockText, never KatexRenderer", () =>
  */
 describe("solutions render with the solution prop (left-aligned display math)", () => {
   const files = tsxUnder(ROOT);
-  const TAG_RE = /<BlockText\b[^>]*?\btext=\{([^{}]*(?:\([^()]*\))?[^{}]*)\}[^>]*?\/?>/g;
+  const TAG_RE = /<(?:Static)?BlockText\b[^>]*?\btext=\{([^{}]*(?:\([^()]*\))?[^{}]*)\}[^>]*?\/?>/g;
   const solutionTags: { file: string; tag: string }[] = [];
   for (const file of files) {
     const src = readFileSync(file, "utf8");
