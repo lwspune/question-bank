@@ -185,6 +185,19 @@ describe("groupConversations", () => {
     expect(g[1].startedAt).toBe("2026-10-15T10:00:00Z");
   });
 
+  it("carries the account the conversation belongs to, null when never signed in", () => {
+    const UID = "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee";
+    const other = "11111111-2222-4333-8444-555555555555";
+    const g = groupConversations([
+      // Started signed out, then signed in: still that student's conversation.
+      typed("2026-10-15T10:01:00Z", "second", "S", { signedIn: true, userId: UID }),
+      typed("2026-10-15T10:00:00Z", "first", "F", { userId: null }),
+      typed("2026-10-15T09:00:00Z", "anon", "A", { conversationId: other }),
+    ]);
+    expect(g.find((c) => c.conversationId === CID)?.userId).toBe(UID);
+    expect(g.find((c) => c.conversationId === other)?.userId).toBeNull();
+  });
+
   it("leaves out conversations with nothing asked (a bare open)", () => {
     const open: ConversationRow = { ...faq("2026-10-15T09:00:00Z", "x", "x"), eventType: "launcher_open", questionId: null, reply: null, replySource: null };
     expect(groupConversations([open])).toEqual([]);
@@ -193,11 +206,17 @@ describe("groupConversations", () => {
 
 describe("conversationJsonl", () => {
   it("writes one JSON line per conversation with no account id", () => {
-    const [conv] = groupConversations([typed("2026-10-15T10:00:00Z", "atoms", "Atoms: /questions/cbse-12/physics/atoms", { feedback: -1 })]);
+    const [conv] = groupConversations([
+      typed("2026-10-15T10:00:00Z", "atoms", "Atoms: /questions/cbse-12/physics/atoms", {
+        feedback: -1,
+        signedIn: true,
+        userId: "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee",
+      }),
+    ]);
     const line = JSON.parse(conversationJsonl(conv));
     expect(line).toEqual({
       conversation_id: CID,
-      signed_in: false,
+      signed_in: true,
       started_at: "2026-10-15T10:00:00Z",
       messages: [
         { role: "user", content: "atoms", at: "2026-10-15T10:00:00Z", page: "/browse" },

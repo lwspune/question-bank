@@ -12,6 +12,8 @@ export type ChatInteractionRow = {
   /** A typed question's (masked) text, migration 0145. */
   message?: string | null;
   signedIn?: boolean;
+  /** The account that typed it; null when signed out. Dashboard only. */
+  userId?: string | null;
   /** What V replied and where from; token use on AI replies (migration 0158). */
   reply?: string | null;
   replySource?: "ai" | "fallback" | null;
@@ -33,6 +35,7 @@ export type ChatInteractionSummary = {
     text: string;
     createdAt: string;
     signedIn: boolean;
+    userId: string | null;
     reply: string | null;
     replySource: "ai" | "fallback" | null;
   }[];
@@ -69,6 +72,7 @@ export function summarizeChatInteractions(rows: readonly ChatInteractionRow[]): 
           text: r.message,
           createdAt: r.createdAt,
           signedIn: r.signedIn === true,
+          userId: r.userId ?? null,
           reply: r.reply ?? null,
           replySource: r.replySource ?? null,
         });

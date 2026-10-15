@@ -95,6 +95,7 @@ export async function listChatInteractions(limit = 5000): Promise<ChatInteractio
         createdAt: r.created_at as string,
         message: (r.message as string | null) ?? null,
         signedIn: r.user_id != null,
+        userId: (r.user_id as string | null) ?? null,
         reply: (r.reply as string | null) ?? null,
         replySource: (r.reply_source as "ai" | "fallback" | null) ?? null,
         tokensIn: (r.tokens_in as number | null) ?? null,
