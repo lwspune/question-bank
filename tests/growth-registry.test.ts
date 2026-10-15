@@ -69,6 +69,7 @@ describe("EXPERIMENTS", () => {
       "formula-pages",
       "indexing",
       "onboarding-arms",
+      "paper-pages",
       "performance-starter",
       "premium-limits",
       "resource-chips",

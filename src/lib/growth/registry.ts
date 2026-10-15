@@ -98,6 +98,14 @@ export const FORMULA_PAGES_INDEXED_KEEP = 40;
 export const FORMULA_PAGES_SIGNUPS_KEEP = 5;
 
 /**
+ * "paper-pages": keep building on the past paper reading pages if this many
+ * signups first land on one (or on a past-paper list) by the check date...
+ */
+export const PAPER_PAGES_SIGNUPS_KEEP = 10;
+/** ...or ChatGPT names us in at least this many of the five paper prompts (asked by hand). */
+export const PAPER_PAGES_CHATGPT_KEEP = 2;
+
+/**
  * "specific-offer": keep the per-page lead on the board-paper and homework
  * boxes if at least this share of students shown the offer there open
  * checkout. Provisional, set by Claude: about twice /browse's rate before the
@@ -124,7 +132,8 @@ export type Readout =
   | "premium-limits"
   | "performance-starter"
   | "formula-pages"
-  | "specific-offer";
+  | "specific-offer"
+  | "paper-pages";
 
 export type Experiment = {
   id: string;
@@ -291,6 +300,19 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "specific-offer",
     status: "running",
   },
+  {
+    id: "paper-pages",
+    title: "Past papers you can read",
+    change:
+      "Each of the ~300 past papers gets a reading page at /mock/<slug>/paper: every question in the order it was set, answers behind a tap and the free-answer meter. The past-paper lists are titled \"Previous Year Question Papers with Solutions\" (or \"with Answers\" where an exam has none), and exam homes link them.",
+    why: "Asked \"best free website for MHT CET previous year questions\", ChatGPT named AglaSem, ConceptFirst and SelfStudys, which all show their papers. Our paper pages were a title and a start button, left out of the sitemap for being thin.",
+    metric:
+      "Signups whose first page was a /mock/<slug>/paper page or a past-paper list (student_profiles.acq_landing); how many of the five paper prompts name us in ChatGPT (asked by hand)",
+    rule: `Keep building on them if ${PAPER_PAGES_SIGNUPS_KEEP}+ signups first land on one, or ChatGPT names us in ${PAPER_PAGES_CHATGPT_KEEP}+ of the five prompts, by the check date; otherwise leave them as they are.`,
+    liveSince: "2026-10-15",
+    readout: "paper-pages",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };
@@ -345,7 +367,9 @@ export type ReadingMetric =
   | "starter-start-rate"
   | "formula-indexed"
   | "formula-signups"
-  | "specific-offer-checkout";
+  | "specific-offer-checkout"
+  | "paper-signups"
+  | "paper-chatgpt-named";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -398,6 +422,17 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
     label: "Signups whose first page was a /formula/ page",
     source: "student_profiles where acq_landing starts with /formula/ and created_at >= the live date",
     entries: [],
+  },
+  "paper-signups": {
+    label: "Signups whose first page was a past paper page or list",
+    source: "student_profiles where acq_landing matches /mock/%/paper or /mock/exam/%/download and created_at >= the live date",
+    entries: [],
+  },
+  "paper-chatgpt-named": {
+    label: "ChatGPT paper prompts (of 5) that name PYQ Vault",
+    source:
+      "Ask ChatGPT, logged out: best free website for MHT CET previous year questions; MHT CET previous year question papers with solutions; JEE Main previous year papers with solutions free; NDA previous year question papers with answers; NEET previous year question papers free",
+    entries: [{ on: "2026-10-15", value: 0, note: "Owner's screenshot of the first prompt: AglaSem, ConceptFirst, SelfStudys" }],
   },
   "box-sales-per-100": {
     label: "Passes sold per 100 download-gate visitors",

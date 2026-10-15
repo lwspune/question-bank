@@ -26,6 +26,8 @@ import {
   CHIPS_KEEP_PCT,
   FORMULA_PAGES_INDEXED_KEEP,
   FORMULA_PAGES_SIGNUPS_KEEP,
+  PAPER_PAGES_CHATGPT_KEEP,
+  PAPER_PAGES_SIGNUPS_KEEP,
   SPECIFIC_OFFER_CHECKOUT_PCT,
   checkOn,
   type Experiment,
@@ -402,6 +404,18 @@ export default async function GrowthPage() {
               read from the same rows.
             </p>
             <ReadingsList metric="specific-offer-checkout" />
+          </div>
+        );
+      case "paper-pages":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince))}: keep building on them if {PAPER_PAGES_SIGNUPS_KEEP}+
+              signups first landed on a past paper page or list, or ChatGPT names us in {PAPER_PAGES_CHATGPT_KEEP}+ of the
+              five prompts.
+            </p>
+            <ReadingsList metric="paper-signups" />
+            <ReadingsList metric="paper-chatgpt-named" />
           </div>
         );
       case "formula-pages":
