@@ -26,7 +26,7 @@ export function paperPageHref(slug: string): string {
 
 /** The stored title with its dashes turned into commas: no em dashes in visible text. */
 export function plainPaperTitle(title: string): string {
-  return title.replace(/\s+[—–]\s+/g, ", ").trim();
+  return title.replace(/\s+[\u2014\u2013]\s+/g, ", ").trim();
 }
 
 /** The first candidate that fits a search result, longest first. */
