@@ -273,4 +273,58 @@ export const INSIGHTS: readonly Insight[] = [
     actedOn:
       "13 Oct: a direct visit is now stored with its landing page and replaced by the first named channel. /dashboard/pmf shows it as 'Direct (no referrer, from 13 Oct)'.",
   },
+  {
+    id: "heavy-users-leave-at-the-exam",
+    title: "Our heaviest users were an exam-week cohort, and they left the week they sat the exam",
+    finding:
+      "All time to 15 Oct, the top 10% of students (57, each 149+ answers) gave 68% of all answers; 44 of them were NDA mock-takers and 93% of their answers came from mocks. NDA mocks per week climbed 51, 86, 116, then 254 in the week to 13 Sep (NDA 2), then 26, then 1 to 3. None of the 44 sat a mock after 22 Sep, and only 9 of the 31 students with 5+ NDA mocks did anything at all after 16 Sep. The NDA result card (10 Oct) brought 5 of those 31 back.",
+    source: "mock_attempts joined to mock_tests and exams; user_activity; student_results; staff and superadmins excluded; July to 15 Oct",
+    confidence: "high",
+    firstSeen: "2026-10-15",
+    recheckDays: 60,
+    howToCheck:
+      "Database, staff excluded: NDA mock_attempts per IST week, and per student the date of their last NDA mock. Before NDA 1 2027 (April): does the weekly count climb the same way, and do September's 5+-mock students come back for it (any user_activity in the 6 weeks before the exam)?",
+    checks: [],
+    status: "open",
+  },
+  {
+    id: "heavy-users-wait-out-the-wall",
+    title: "Heavy users who meet the daily answer limit come back tomorrow instead of paying",
+    finding:
+      "Top 10% of the last 28 days (39 students, 68+ answers each, 48% of all answers): 19 met a paywall. 13 met the daily answer limit; 11 of them practised again on a later day and none opened checkout. Across all 39, 3 ever opened checkout and 1 paid. They study in bursts: about 5 active days over 10, 60 to 70 answers on their best day. 44% used drill and 44% saved a question (14% and 16% for students with 10 to 67 answers); 8% used notes.",
+    source: "user_activity (question_practiced, paywall_event by metadata.gate and step, drill_completed, question_bookmarked) and mock_attempts; entitlements; 28 days to 15 Oct",
+    confidence: "medium",
+    firstSeen: "2026-10-15",
+    howToCheck:
+      "Database, staff excluded, last 28 days: rank students by answers (question_practiced rows plus correct and wrong counts of finished mock_attempts) and take the top 10%. For them: share with a paywall_event shown, split by metadata.gate; of those who met 'reveals', how many practised on a later IST day and how many have a checkout_opened row; razorpay entitlements.",
+    checks: [],
+    status: "open",
+  },
+  {
+    id: "day-one-bank-beats-mock",
+    title: "A first-day mock brings volume, not return; first-day bank practice and saving bring return",
+    finding:
+      "Signups 16 Sep to 7 Oct (213, after the NDA exam so its leavers do not skew it), share active on 3+ days: all 16%; first 24 hours a mock 14% (43); 10+ bank answers and no mock 28% (57); 1 to 9 bank answers 16%; nothing 6% (62); saved a question 36% (22); answered in the book reader 35% (31). The wider window from 10 Sep gave the same order. One mock is about 100 answers, so a mock taker counts as heavy by volume while coming back no more often than average. These are correlations: students who save may simply be more motivated.",
+    source: "student_profiles.created_at; user_activity in the first 24 hours and active IST days since; signups 16 Sep to 7 Oct, read 15 Oct",
+    confidence: "medium",
+    firstSeen: "2026-10-15",
+    howToCheck:
+      "Database, staff excluded: signups 8 to 35 days old. Bucket by their first 24 hours (any mock_submitted; else question_practiced 10+, 1 to 9, none; separately any question_bookmarked; any question_practiced with metadata.surface = 'board'), then the share with question_practiced, mock_submitted or drill_completed on 3+ distinct IST days.",
+    checks: [],
+    status: "open",
+  },
+  {
+    id: "staff-marked-clearers-mocked-more",
+    title: "NDA students marked as cleared had sat more mocks than those who said they did not clear",
+    finding:
+      "NDA 2 2026 written result: the 10 marked cleared (all by staff) averaged 8.1 NDA mocks and 26% average score, 8 of 10 had taken one. The 18 who said they did not clear averaged 2.2 mocks and 7%, and only 9 had taken one. Small and selected: staff marked only students they knew had cleared, so this says nothing yet about whether mocks help.",
+    source: "student_results joined to NDA mock_attempts, 15 Oct",
+    confidence: "low",
+    firstSeen: "2026-10-15",
+    recheckDays: 30,
+    howToCheck:
+      "Database: student_results by source and outcome, each with that student's NDA mock count and average score/max_score. Worth re-reading only once 20+ students have answered for themselves (source = 'self') on both sides.",
+    checks: [],
+    status: "open",
+  },
 ];
