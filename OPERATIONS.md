@@ -98,6 +98,7 @@ Questions typed to V get an answer from Claude Haiku 5.5 when switched on; other
 - **Before changing V's rules** (`src/lib/chat/facts.ts`): run `npx tsx scripts/chat/replay-typed.ts` and read `generated-papers/v-replay.md`, every past typed question answered by the new rules, nothing stored. It costs about a twentieth of a cent per question.
 - **A wrong or odd answer:** read it at `/dashboard/chat`, fix the rule or the fact, replay, ship. Switching the AI off is instant and needs no deploy.
 - **Conversations (migration 0159):** every chat is kept whole (conversation id, page, V's reply, thumbs). Read them under "Conversations" on `/dashboard/chat`; the thumbs-down ones are where to start. `npm run chat:export` writes them all as JSONL to `generated-papers/v-conversations.jsonl` (`-- --ai` for those with an AI reply); it carries no account id, and the folder is gitignored, so never commit an export.
+- **Late answers (migration 0160):** to answer questions V could not answer at the time (signed-in students only), write the answers into `scripts/chat/followups/<date>.json` (question texts + reply, never account ids), run `npx tsx scripts/chat/followups.ts --file=<it>` (dry run: matches each answer to its student and checks every link answers 200), then add `--apply`. Re-running adds nothing. The student sees a badge on V the next time they are on the site signed in; "Late answers read" on `/dashboard/chat` shows who has.
 
 ### When to upgrade tiers
 

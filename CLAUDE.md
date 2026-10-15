@@ -332,10 +332,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-10
 
-- **2026-10-15 (fourth) — V answers typed questions with AI and keeps whole conversations (migrations 0158-0159).** Haiku 5.5, low effort, the site's facts plus a `find_chapters` tool; off until switched on at `/dashboard/chat`, which also sets messages per person an hour and AI answers a day.
-  - **Why:** 27 of the first 34 real typed asks were for things the site has; one "I wanna buy premium" left with no link. A path in a reply is a link only if V was given it.
-  - **Memory comes from the table** (conversation id, last 2 exchanges, the asker's own), never the device. Chats are kept for analysis and training (`npm run chat:export`, JSONL, no account id).
-  - **SQL trap:** `x in (...)` on NULL is unknown and a CHECK that is unknown passes; spell out `is not null`. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
+- **2026-10-15 (fourth) — V answers typed questions with AI, keeps whole conversations, and delivers late answers (0158-0160).** Haiku 5.5 on the site's facts + a `find_chapters` tool; OFF until switched on at `/dashboard/chat` (also messages per person an hour, AI answers a day).
+  - **Why:** 27 of the first 34 real asks were for things the site has. A reply path is a link only if V was given it; V's page list is pinned to real routes by a test.
+  - **Memory comes from the table**, never the device. Chats kept for training (`npm run chat:export`). Signed-in students got late answers (`scripts/chat/followups.ts`), shown with a badge.
+  - **SQL traps:** `x in (...)` on NULL passes a CHECK; and `user_id` is ON DELETE SET NULL, so requiring it would block account deletion. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-10-15 (third) — V builds a practice test: "Build a practice test" in V asks exam, subject, up to 5 chapters (or most-asked), length, difficulty, skip-answered, then the student starts it (one free a day) or downloads it (migrations 0156-0157).**
   - **In `mock_tests`, not its own table:** status `personal` + scope `custom` + `owner_id` together; every list reads `published`, so it is hidden everywhere by construction. RLS shows it to its owner alone; sit it via `getTakeable*` only with the student's own client.
   - **The daily limit is a trigger branch** (retake free, pass unlimited), shipped ON at 1; edited at `/dashboard/pricing`.
