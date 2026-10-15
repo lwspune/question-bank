@@ -82,5 +82,18 @@ describe.skipIf(!HAS_ENV)("daily quiz link", () => {
 
     const go = await goQuizGET(req("/go/quiz"));
     expect(new URL(go.headers.get("location")!).pathname).toBe(`/quiz/${body.data.publicSlug}`);
+    expect(body.data.links.telegram).toContain(`/quiz/${body.data.publicSlug}?utm_source=telegram`);
+  });
+
+  it("/api/quiz/today?date= picks that day's quiz (for planning a week of Stories)", async () => {
+    const res = await todayGET(req("/api/quiz/today?date=2026-10-19"));
+    expect(res.status).toBe(200);
+    expect((await res.json()).data.publicSlug).toEqual(expect.any(String));
+  });
+
+  it("/api/quiz/today refuses a bad date", async () => {
+    const res = await todayGET(req("/api/quiz/today?date=2026-02-30"));
+    expect(res.status).toBe(400);
+    expect(await res.json()).toEqual({ ok: false, error: { code: "invalid_date", message: expect.any(String) } });
   });
 });

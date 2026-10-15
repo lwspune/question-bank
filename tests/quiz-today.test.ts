@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
   DAILY_QUIZ_CAMPAIGN,
+  DAILY_QUIZ_SOURCES,
+  dailyQuizLinks,
+  parseIstDate,
   dailyQuizPath,
   dailyQuizUrl,
   istDay,
@@ -154,5 +157,26 @@ describe("dailyQuizPath / dailyQuizUrl", () => {
 
   it("escapes the slug", () => {
     expect(dailyQuizPath("a b/c", "dm").startsWith("/quiz/a%20b%2Fc?")).toBe(true);
+  });
+});
+
+describe("dailyQuizLinks", () => {
+  it("has one tagged link per place the quiz is posted", () => {
+    const links = dailyQuizLinks("s-1");
+    expect(Object.keys(links).sort()).toEqual([...DAILY_QUIZ_SOURCES].sort());
+    for (const src of DAILY_QUIZ_SOURCES) expect(links[src]).toBe(dailyQuizUrl("s-1", src));
+  });
+});
+
+describe("parseIstDate", () => {
+  it("reads YYYY-MM-DD as midday IST that day", () => {
+    const d = parseIstDate("2026-10-19")!;
+    expect(istDay(d)).toBe(istDay(new Date("2026-10-19T12:00:00+05:30")));
+  });
+
+  it("refuses anything that isn't a real calendar date", () => {
+    for (const bad of ["2026-13-01", "2026-02-30", "19-10-2026", "2026-10-19T00:00", "tomorrow", ""]) {
+      expect(parseIstDate(bad)).toBeNull();
+    }
   });
 });
