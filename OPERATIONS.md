@@ -89,6 +89,16 @@ Students upload a board paper they wrote on paper from its `/question-papers` pa
 - **Weekly:** `npm run grading:purge -- --apply` deletes scans 30 days after checking (the promise made at upload) and abandoned uploads. Grades stay.
 - `grading-inbox/` holds students' scans: gitignored, never copied elsewhere.
 
+### V's AI answers (migration 0158, 2026-10-15)
+
+Questions typed to V get an answer from Claude Haiku 5.5 when switched on; otherwise the fixed "Let me get back to your question later" reply.
+
+- **Key:** `ANTHROPIC_API_KEY` in Vercel (Production; runtime only, the build never reads it) and in `.env.local` for the replay script. It must be a key scoped to a WORKSPACE (a user key without one is refused: "must include the anthropic-workspace-id header"), and the Console account needs credit: with none, every call fails and V quietly gives the fixed reply. Set a monthly spend limit on the workspace in the Console.
+- **Switch, limits, cost:** `/dashboard/chat` (superadmin). The AI switch, messages per person per hour (account when signed in, connection when not) and AI answers per day for the whole site (resets at midnight IST; past it, the fixed reply). The same page lists every typed question with V's reply, the AI answer count and the cost at list price.
+- **Before changing V's rules** (`src/lib/chat/facts.ts`): run `npx tsx scripts/chat/replay-typed.ts` and read `generated-papers/v-replay.md`, every past typed question answered by the new rules, nothing stored. It costs about a twentieth of a cent per question.
+- **A wrong or odd answer:** read it at `/dashboard/chat`, fix the rule or the fact, replay, ship. Switching the AI off is instant and needs no deploy.
+- **Conversations (migration 0159):** every chat is kept whole (conversation id, page, V's reply, thumbs). Read them under "Conversations" on `/dashboard/chat`; the thumbs-down ones are where to start. `npm run chat:export` writes them all as JSONL to `generated-papers/v-conversations.jsonl` (`-- --ai` for those with an AI reply); it carries no account id, and the folder is gitignored, so never commit an export.
+
 ### When to upgrade tiers
 
 - **Vercel Pro (since 2026-09-20)** bills a $20 seat plus metered usage (~$1-2 a day in early October; the breakdown is in CLAUDE.md's Production line). Read Settings → Billing weekly: the meters that move are function invocations + Active CPU (a prefetch or caching regression shows up here first), ISR writes, deployment storage and **builds, which are billed on every machine type** ($0.0035 per CPU minute = build minutes × vCPUs; ~$0.35 a push on Enhanced, measured 2026-10-06; Usage → Build CPU Minutes shows the machine each day used). Observability Plus was switched off 2026-10-06; if "Observability Events" reappears on the bill, it was switched back on. Going back to Hobby is ruled out: it is non-commercial only and its hard caps (Active CPU 4 h/month, ISR writes 200k/month) are below a few days of our usage.
