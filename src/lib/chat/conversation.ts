@@ -23,6 +23,8 @@ export type ConversationRow = {
   conversationId: string | null;
   pagePath: string | null;
   signedIn: boolean;
+  /** The account that wrote the row; null when signed out. Dashboard only. */
+  userId?: string | null;
   /** A late answer's first opening (0160); null = unread. */
   seenAt?: string | null;
 };
@@ -122,6 +124,8 @@ export type Conversation = {
   conversationId: string;
   startedAt: string;
   signedIn: boolean;
+  /** The student's account, for the dashboard's name. Never exported. */
+  userId: string | null;
   turns: ConversationTurn[];
 };
 
@@ -142,6 +146,7 @@ export function groupConversations(rows: readonly ConversationRow[]): Conversati
       conversationId,
       startedAt: ex[0].createdAt,
       signedIn: list.some((r) => r.signedIn),
+      userId: list.find((r) => r.userId)?.userId ?? null,
       turns: ex.map((r) => ({
         question: questionOf(r)!,
         reply: r.reply!,

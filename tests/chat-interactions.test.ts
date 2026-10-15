@@ -49,25 +49,26 @@ describe("summarizeChatInteractions", () => {
 });
 
 describe("summarizeChatInteractions: typed questions (migration 0145)", () => {
-  const typed = (message: string, createdAt: string, signedIn: boolean): ChatInteractionRow => ({
+  const typed = (message: string, createdAt: string, signedIn: boolean, userId: string | null = null): ChatInteractionRow => ({
     eventType: "typed_question",
     questionId: null,
     createdAt,
     message,
     signedIn,
+    userId,
   });
 
   it("lists typed questions apart from button taps, in the order given (newest first)", () => {
     const s = summarizeChatInteractions([
-      typed("when is the result", "2026-10-09T10:00:00Z", true),
+      typed("when is the result", "2026-10-09T10:00:00Z", true, "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee"),
       row("faq_click", "exams"),
       typed("is neet 2027 syllabus same", "2026-10-08T10:00:00Z", false),
     ]);
     expect(s.totalClicks).toBe(1);
     expect(s.totalTyped).toBe(2);
     expect(s.typed).toEqual([
-      { text: "when is the result", createdAt: "2026-10-09T10:00:00Z", signedIn: true, reply: null, replySource: null },
-      { text: "is neet 2027 syllabus same", createdAt: "2026-10-08T10:00:00Z", signedIn: false, reply: null, replySource: null },
+      { text: "when is the result", createdAt: "2026-10-09T10:00:00Z", signedIn: true, userId: "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee", reply: null, replySource: null },
+      { text: "is neet 2027 syllabus same", createdAt: "2026-10-08T10:00:00Z", signedIn: false, userId: null, reply: null, replySource: null },
     ]);
   });
 });

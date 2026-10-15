@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSessionSuperadmin } from "@/lib/auth";
 import AppHeader from "@/components/AppHeader";
@@ -7,6 +8,7 @@ import { groupConversations } from "@/lib/chat/conversation";
 import { summarizeChatInteractions } from "@/lib/chat/interactions";
 import { readChatSettings } from "@/lib/chat/settingsAdmin";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { namesForUsers } from "@/lib/supabase/authUsers";
 import ChatSettingsForm from "./ChatSettingsForm";
 
 export const dynamic = "force-dynamic";
@@ -23,6 +25,14 @@ export default async function ChatUsagePage() {
   const summary = summarizeChatInteractions(rows);
   // Migration 0159: whole conversations, newest first; the page shows the latest 100.
   const conversations = groupConversations(conversationRows);
+  const shownConversations = conversations.slice(0, 100);
+  // Who is chatting: the student's name, linked to their page. Superadmin only.
+  const names = await namesForUsers(
+    createSupabaseAdminClient(),
+    [...shownConversations.map((c) => c.userId), ...summary.typed.map((q) => q.userId)].filter(
+      (id): id is string => id !== null
+    )
+  );
   const helpful = conversationRows.filter((r) => r.feedback === 1).length;
   const notHelpful = conversationRows.filter((r) => r.feedback === -1).length;
   // Migration 0160: late answers written, and how many students have opened theirs.
@@ -68,7 +78,7 @@ export default async function ChatUsagePage() {
             <p className="px-4 py-6 text-sm text-muted-foreground">No conversations kept yet.</p>
           ) : (
             <ul>
-              {conversations.slice(0, 100).map((c) => (
+              {shownConversations.map((c) => (
                 <li key={c.conversationId} className="border-t first:border-t-0">
                   <details className="group px-4 py-2">
                     <summary className="cursor-pointer list-none rounded-sm text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
@@ -78,7 +88,7 @@ export default async function ChatUsagePage() {
                         {" · "}
                         {c.turns.length} {c.turns.length === 1 ? "question" : "questions"}
                         {" · "}
-                        {c.signedIn ? "signed in" : "not signed in"}
+                        <Who userId={c.userId} signedIn={c.signedIn} names={names} />
                       </span>
                     </summary>
                     <ol className="mt-2 space-y-2">
@@ -175,7 +185,7 @@ export default async function ChatUsagePage() {
                   <p className="mt-0.5 text-xs text-muted-foreground">
                     {new Date(q.createdAt).toLocaleString("en-IN", { timeZone: "Asia/Kolkata", dateStyle: "medium", timeStyle: "short" })}
                     {" · "}
-                    {q.signedIn ? "signed in" : "not signed in"}
+                    <Who userId={q.userId} signedIn={q.signedIn} names={names} />
                   </p>
                 </li>
               ))}
@@ -184,5 +194,18 @@ export default async function ChatUsagePage() {
         </section>
       </main>
     </>
+  );
+}
+
+/** The student's name linked to their page; "not signed in" when there is no account. */
+function Who({ userId, signedIn, names }: { userId: string | null; signedIn: boolean; names: Map<string, string> }) {
+  if (!userId) return <>{signedIn ? "signed in" : "not signed in"}</>;
+  return (
+    <Link
+      href={`/dashboard/students/${userId}`}
+      className="rounded-sm font-medium text-foreground underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+    >
+      {names.get(userId) ?? "signed in (account deleted)"}
+    </Link>
   );
 }
