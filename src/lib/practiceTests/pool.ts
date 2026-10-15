@@ -68,8 +68,9 @@ export function toCandidate(r: PoolRow, exam: PracticeExam): PoolItem | null {
 }
 
 /**
- * The pool, chapter by chapter in book order. A chapter with nothing usable is
- * left out, so V never offers a chapter it cannot build from.
+ * The pool, chapter by chapter: textbook order for a board, most-asked first
+ * for a competitive exam (PracticeExam.bookOrder). A chapter with nothing
+ * usable is left out, so V never offers a chapter it cannot build from.
  */
 export function buildPool(
   chapters: readonly { id: string; name: string; orderIndex: number }[],
@@ -86,13 +87,17 @@ export function buildPool(
     if (item) c.items.push(item);
     byChapter.set(r.chapterId, c);
   }
-  return {
-    chapters: [...chapters]
-      .sort((a, b) => a.orderIndex - b.orderIndex || a.name.localeCompare(b.name))
-      .flatMap((ch) => {
-        const c = byChapter.get(ch.id);
-        if (!c || c.items.length === 0) return [];
-        return [{ id: ch.id, name: ch.name, available: c.items.length, recentPyq: c.recentPyq, items: c.items }];
-      }),
-  };
+  const out: (PoolChapter & { orderIndex: number })[] = chapters.flatMap((ch) => {
+    const c = byChapter.get(ch.id);
+    if (!c || c.items.length === 0) return [];
+    return [
+      { id: ch.id, name: ch.name, available: c.items.length, recentPyq: c.recentPyq, items: c.items, orderIndex: ch.orderIndex },
+    ];
+  });
+  out.sort((a, b) =>
+    exam.bookOrder
+      ? a.orderIndex - b.orderIndex || a.name.localeCompare(b.name)
+      : b.recentPyq - a.recentPyq || a.name.localeCompare(b.name)
+  );
+  return { chapters: out.map(({ orderIndex: _order, ...c }) => c) };
 }

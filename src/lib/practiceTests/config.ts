@@ -59,6 +59,12 @@ export type PracticeExam = {
   unratedAsModerate: boolean;
   /** Share of a test given to numeric questions (JEE prints 5 of 25). */
   numericShare: number;
+  /**
+   * List chapters in textbook order (a board student reads along the book).
+   * Otherwise most-asked first: a competitive exam's chapter order_index is
+   * ingestion order, which means nothing to a student.
+   */
+  bookOrder: boolean;
   subjects: readonly PracticeSubject[];
 };
 
@@ -80,12 +86,13 @@ const oneSectionSubjects = (paper: MockPaperBlueprint): PracticeSubject[] =>
     .filter((s) => s !== "Current Affairs")
     .map((s) => subject(slugOf(s), s, paper, paper.sections[0].key));
 
-const COMPETITIVE = { kinds: ["pyq"] as const, looseInstructions: false, numericShare: 0 };
+const COMPETITIVE = { kinds: ["pyq"] as const, looseInstructions: false, numericShare: 0, bookOrder: false };
 const BOARD = {
   kinds: ["pyq", "practice"] as const,
   looseInstructions: true,
   unratedAsModerate: true,
   numericShare: 0,
+  bookOrder: true,
 };
 
 export const PRACTICE_EXAMS: readonly PracticeExam[] = [

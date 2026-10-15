@@ -203,6 +203,13 @@ describe("PRACTICE_EXAMS", () => {
     }
   });
 
+  it("lists boards in textbook order and competitive exams most-asked first", () => {
+    expect(getPracticeExam("cbse-12")!.bookOrder).toBe(true);
+    expect(getPracticeExam("mh-ssc-10")!.bookOrder).toBe(true);
+    expect(getPracticeExam("mht-cet")!.bookOrder).toBe(false);
+    expect(getPracticeExam("nda")!.bookOrder).toBe(false);
+  });
+
   it("leaves out English and Current Affairs, which a loose test cannot serve", () => {
     for (const exam of PRACTICE_EXAMS) {
       for (const s of exam.subjects) {

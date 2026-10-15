@@ -121,7 +121,10 @@ const cachedPool = unstable_cache(
     if (!exam || !subject) return null;
     return readSubjectPool(createSupabaseAnonClient(), exam, subject, new Date());
   },
-  ["practice-test-pool"],
+  // The cached value is the BUILT pool, and the cache outlives a deploy, so a
+  // change to the pool's rules or shape (./pool.ts) must bump this version or
+  // students get yesterday's pool for up to a day.
+  ["practice-test-pool", "v2"],
   { revalidate: 86400 }
 );
 

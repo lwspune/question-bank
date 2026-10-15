@@ -52,7 +52,7 @@ export function parseBuildRequest(
     return { ok: false, error: `Pick between 1 and ${MAX_CHAPTERS} chapters.` };
   }
   if (typeof b.length !== "number" || !(PRACTICE_LENGTHS as readonly number[]).includes(b.length)) {
-    return { ok: false, error: `A test has ${PRACTICE_LENGTHS.join(", ")} questions.` };
+    return { ok: false, error: "A test has 10, 20 or 30 questions." };
   }
   if (typeof b.difficulty !== "string" || !DIFFICULTIES.includes(b.difficulty as PracticeDifficulty)) {
     return { ok: false, error: "Pick Mixed, Easier or Harder." };

@@ -76,7 +76,32 @@ describe("buildPool", () => {
     { id: "c3", name: "Empty", orderIndex: 3 },
   ];
 
-  it("summarises each chapter in book order: questions available and recent past-year questions", () => {
+  it("lists a board's chapters in textbook order", () => {
+    const pool = buildPool(
+      chapters,
+      [row({ id: "a", chapterId: "c1", pyqYear: 2025 }), row({ id: "b", chapterId: "c2", pyqYear: 2010 })],
+      cbse12,
+      2026
+    );
+    expect(pool.chapters.map((c) => c.id)).toEqual(["c2", "c1"]);
+  });
+
+  it("lists a competitive exam's chapters most-asked first, then by name", () => {
+    const pool = buildPool(
+      [...chapters, { id: "c4", name: "Atoms", orderIndex: 4 }],
+      [
+        row({ id: "a", chapterId: "c2", pyqYear: 2025 }),
+        row({ id: "b", chapterId: "c1", pyqYear: 2025 }),
+        row({ id: "c", chapterId: "c1", pyqYear: 2024 }),
+        row({ id: "d", chapterId: "c4", pyqYear: 2025 }),
+      ],
+      nda,
+      2026
+    );
+    expect(pool.chapters.map((c) => c.id)).toEqual(["c1", "c4", "c2"]);
+  });
+
+  it("summarises each chapter: questions available and recent past-year questions", () => {
     const pool = buildPool(
       chapters,
       [
@@ -89,8 +114,8 @@ describe("buildPool", () => {
       2026
     );
     expect(pool.chapters.map((c) => [c.id, c.available, c.recentPyq])).toEqual([
-      ["c2", 1, 0],
       ["c1", 2, 2],
+      ["c2", 1, 0],
     ]);
   });
 
