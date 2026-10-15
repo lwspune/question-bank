@@ -61,7 +61,7 @@ describe("buildMockSitemapEntries", () => {
     expect(leaves).toEqual([]);
   });
 
-  it("emits the index, one page per exam, and one page per non-empty type", () => {
+  it("emits the index, one page per exam, one page per non-empty type, and each past paper's reading page", () => {
     expect(paths().sort()).toEqual(
       [
         "/mock",
@@ -72,8 +72,23 @@ describe("buildMockSitemapEntries", () => {
         "/mock/exam/nda/past-papers",
         "/mock/exam/nda/download",
         "/mock/exam/nda/practice",
+        "/mock/nda-2017-apr-maths/paper",
+        "/mock/nda-2018-apr-maths/paper",
+        "/mock/cds-2019-gk/paper",
       ].sort()
     );
+  });
+
+  it("gives a reading page to past papers only, dated from that paper alone", () => {
+    // 2026-10-15: /mock/<slug>/paper prints the whole paper, so unlike the thin
+    // /mock/<slug> it carries content worth crawling. A practice paper or a
+    // chapter test is not a paper anyone sat, so it gets none.
+    expect(byPath("/mock/nda-2017-apr-maths/paper")?.iso).toBe("2026-03-01T00:00:00.000Z");
+    expect(paths()).not.toContain("/mock/nda-practice-1/paper");
+    const sectional = [row({ slug: "nda-ch-1", scope: "sectional" })];
+    expect(paths(sectional)).not.toContain("/mock/nda-ch-1/paper");
+    const messy = [row({ slug: "orphan", examName: null }), row({ slug: "undated", updatedAt: null })];
+    expect(paths(messy).filter((p) => p.endsWith("/paper"))).toEqual([]);
   });
 
   it("advertises an exam's download page only where it has past papers, dated from them", () => {
