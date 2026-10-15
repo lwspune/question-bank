@@ -491,6 +491,14 @@ const LIMIT_ROWS: LimitRowSpec[] = [
     checkbox: "Free for a number of days after the student reveals it, then Premium Pass only",
   },
   {
+    which: "practiceTests",
+    label: "Practice tests a day",
+    unit: "tests a day",
+    field: "freePracticeTestsPerDay",
+    suggested: 1,
+    checkbox: "Limit how many practice tests V builds that a free account can start each day (a retake is free)",
+  },
+  {
     which: "paperDownloads",
     label: "Past-paper downloads",
     unit: "papers a day",

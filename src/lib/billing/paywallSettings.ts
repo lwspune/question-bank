@@ -27,13 +27,24 @@ export type PaywallSettings = {
   projectionTrialDays: number | null;
   /** Different whole past papers ANY account may download per IST day (0137). */
   mockPapersPerDay: number | null;
+  /** Practice tests V builds that a free account may START per IST day (0156). */
+  freePracticeTestsPerDay: number | null;
   /** Download branding switches (0138); they only remove pieces, never add them. */
   brandWatermark: boolean;
   brandSiteUrl: boolean;
   brandNameLine: boolean;
 };
 
-export const PAYWALL_LIMITS = ["mocks", "chapterTests", "drill", "reveals", "saves", "projection", "paperDownloads"] as const;
+export const PAYWALL_LIMITS = [
+  "mocks",
+  "chapterTests",
+  "drill",
+  "reveals",
+  "saves",
+  "projection",
+  "paperDownloads",
+  "practiceTests",
+] as const;
 export type PaywallLimit = (typeof PAYWALL_LIMITS)[number];
 
 const LIMIT_SET: ReadonlySet<string> = new Set(PAYWALL_LIMITS);
@@ -54,6 +65,7 @@ export const EMPTY_PAYWALL_SETTINGS: PaywallSettings = {
   freeSaveLimit: null,
   projectionTrialDays: null,
   mockPapersPerDay: null,
+  freePracticeTestsPerDay: null,
   brandWatermark: true,
   brandSiteUrl: true,
   brandNameLine: true,
@@ -68,6 +80,7 @@ const FIELDS: Record<PaywallLimit, { value: keyof PaywallSettings; since?: keyof
   saves: { value: "freeSaveLimit" },
   projection: { value: "projectionTrialDays" },
   paperDownloads: { value: "mockPapersPerDay" },
+  practiceTests: { value: "freePracticeTestsPerDay" },
 };
 
 export function nextPaywallSettings(

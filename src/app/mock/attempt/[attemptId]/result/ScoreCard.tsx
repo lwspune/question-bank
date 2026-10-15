@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Clock, RotateCcw, Target, Timer, TrendingDown, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { ResultHeadline } from "@/lib/mocks/resultHeadline";
+import RetakePractice from "./RetakePractice";
 
 type Section = { key: string; label: string; score: number; maxScore: number };
 
@@ -19,6 +20,11 @@ type Props = {
   elapsed: string | null;
   fixHref: string;
   mockSlug: string;
+  /**
+   * A student's own practice test (V's builder, 2026-10-15) has no public
+   * page, so Retake starts it again from here instead of linking to one.
+   */
+  practice?: boolean;
 };
 
 function fmt(n: number): string {
@@ -155,7 +161,9 @@ export default function ScoreCard(p: Props) {
             </Link>
           </Button>
         )}
-        {headline.primaryAction === "retake" ? (
+        {p.practice ? (
+          <RetakePractice slug={p.mockSlug} primary={headline.primaryAction === "retake"} />
+        ) : headline.primaryAction === "retake" ? (
           <Button asChild variant="brand" size="lg" className="h-12 rounded-xl text-base">
             <Link href={`/mock/${p.mockSlug}`}>
               <RotateCcw className="h-5 w-5" aria-hidden />

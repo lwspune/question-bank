@@ -25,6 +25,7 @@ function fmtDate(iso: string): string {
  * thing and should not look identical.
  */
 function typeLabel(a: UserAttempt): string | null {
+  if (a.scope === "custom") return "Your test";
   if (a.scope === "sectional") return "Sectional";
   return a.source === "practice" ? "Practice" : null; // past paper = the default, unlabelled
 }

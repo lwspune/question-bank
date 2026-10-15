@@ -9,12 +9,13 @@ import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Translation } from "@/lib/i18n/bilingual";
 import {
-  getMockBySlug,
-  getMockById,
+  getTakeableMockBySlug,
+  getTakeableMockById,
   loadMockQuestionViews,
   loadReviewQuestions,
   loadAnswerKey,
   type MockQuestionView,
+  type MockScope,
   type ReviewOption,
 } from "./query";
 import { gradeMock, remainingSecs, type MockGradeQuestion } from "./attempt";
@@ -49,7 +50,7 @@ export async function startOrResumeAttempt(
   userId: string,
   slug: string
 ): Promise<{ attemptId: string; expiresAt: string; resumed: boolean }> {
-  const mock = await getMockBySlug(db, slug);
+  const mock = await getTakeableMockBySlug(db, slug);
   if (!mock) throw new MockError(404, "Mock test not found");
 
   const { data: live } = await db
@@ -79,7 +80,12 @@ export async function startOrResumeAttempt(
 
   // The free-mock limit (migration 0120's trigger) refused a NEW mock.
   if (error?.code === FREE_MOCK_LIMIT_CODE) {
-    throw new MockError(402, "You've used your free mock tests. Get the Premium Pass to keep going.");
+    throw new MockError(
+      402,
+      mock.scope === "custom"
+        ? "You've used today's free practice test. Come back tomorrow, or get the Premium Pass for unlimited tests."
+        : "You've used your free mock tests. Get the Premium Pass to keep going."
+    );
   }
 
   // Lost a race with a concurrent start (partial unique index) → resume theirs.
@@ -218,7 +224,7 @@ export async function regradeAttempt(
   mock: { slug: string; title: string };
 }> {
   const attempt = await loadAttemptRow(db, userId, attemptId);
-  const mock = await getMockById(db, attempt.mock_id);
+  const mock = await getTakeableMockById(db, attempt.mock_id);
   if (!mock) throw new MockError(404, "Mock test not found");
 
   const ids = mock.questions.map((q) => q.questionId);
@@ -282,7 +288,7 @@ export async function submitAttempt(
   if (attempt.status !== "in_progress") {
     return readAttemptSummary(db, userId, attemptId);
   }
-  const mock = await getMockById(db, attempt.mock_id);
+  const mock = await getTakeableMockById(db, attempt.mock_id);
   if (!mock) throw new MockError(404, "Mock test not found");
 
   const ids = mock.questions.map((q) => q.questionId);
@@ -530,7 +536,13 @@ export type ReviewItem = {
 
 export type AttemptReview = {
   summary: AttemptSummary;
-  mock: { slug: string; title: string; sections: { key: string; label: string; count: number }[] };
+  mock: {
+    slug: string;
+    title: string;
+    sections: { key: string; label: string; count: number }[];
+    /** 'custom' = a student's own practice test: no public page to link to. */
+    scope: MockScope;
+  };
   items: ReviewItem[];
 };
 
@@ -541,7 +553,7 @@ export async function getAttemptReview(
   attemptId: string
 ): Promise<{ status: "in_progress" | "submitted" | "expired"; slug: string; review: AttemptReview | null }> {
   const attempt = await loadAttemptRow(db, userId, attemptId);
-  const mock = await getMockById(db, attempt.mock_id);
+  const mock = await getTakeableMockById(db, attempt.mock_id);
   if (!mock) throw new MockError(404, "Mock test not found");
   if (attempt.status === "in_progress") return { status: "in_progress", slug: mock.slug, review: null };
 
@@ -605,7 +617,7 @@ export async function getAttemptReview(
     slug: mock.slug,
     review: {
       summary,
-      mock: { slug: mock.slug, title: mock.title, sections: mock.sections },
+      mock: { slug: mock.slug, title: mock.title, sections: mock.sections, scope: mock.scope },
       items,
     },
   };
@@ -634,7 +646,7 @@ export async function getRunnerState(
   attemptId: string
 ): Promise<RunnerState> {
   const attempt = await loadAttemptRow(db, userId, attemptId);
-  const mock = await getMockById(db, attempt.mock_id);
+  const mock = await getTakeableMockById(db, attempt.mock_id);
   if (!mock) throw new MockError(404, "Mock test not found");
   const [views, answers] = await Promise.all([
     loadMockQuestionViews(db, mock.questions),

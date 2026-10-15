@@ -2,7 +2,9 @@
  * A published past paper as a download (2026-10-07): the exact questions of one
  * sitting, in printed order, headed by the paper's own sections. Only whole
  * past papers qualify; a chapter test or a practice paper is not a paper anyone
- * sat, so it is refused.
+ * sat, so it is refused. A student's own practice test (scope 'custom', V's
+ * builder, 2026-10-15) downloads too: its title says what it is, so it cannot
+ * pass for a real sitting.
  */
 import { describe, it, expect } from "vitest";
 import { mockPaperExport } from "@/lib/mocks/paperExport";
@@ -66,5 +68,14 @@ describe("mockPaperExport", () => {
 
   it("refuses a practice paper", () => {
     expect(mockPaperExport(mock({ source: "practice" })).ok).toBe(false);
+  });
+
+  it("downloads a student's own practice test, under its own title, from either source", () => {
+    for (const source of ["pyq", "practice"] as const) {
+      const out = mockPaperExport(
+        mock({ scope: "custom", source, pyqYear: null, title: "NDA Physics practice test: Sound" })
+      );
+      expect(out.ok && out.title).toBe("NDA Physics practice test: Sound");
+    }
   });
 });

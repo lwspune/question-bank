@@ -161,6 +161,10 @@ describe("chapterTestContext", () => {
     expect(chapterTestContext(ctx, "sectional")).toBe(ASSERTION_REASON_INSTRUCTION);
   });
 
+  it.each(ASSERTION_REASON)("a student's practice test does the same for %s", (ctx) => {
+    expect(chapterTestContext(ctx, "custom")).toBe(ASSERTION_REASON_INSTRUCTION);
+  });
+
   it("the standard instruction names no question numbers and no option letters", () => {
     expect(ASSERTION_REASON_INSTRUCTION).not.toMatch(/\d/);
     // "(A)" is the Assertion's own label; (B) to (D) can only come from a codes list.

@@ -17,6 +17,8 @@
  * Pure. Spec: tests/mock-instruction-context.test.ts.
  */
 
+import type { MockScope } from "./query";
+
 /** Longer than any instruction in the bank, shorter than any passage. */
 const MAX_INSTRUCTION_LENGTH = 160;
 
@@ -75,9 +77,11 @@ export const ASSERTION_REASON_INSTRUCTION =
  */
 export function chapterTestContext(
   context: string | null,
-  scope: "full" | "sectional"
+  scope: MockScope
 ): string | null {
-  if (scope === "sectional" && isAssertionReasonInstruction(context)) {
+  // Any test that lifts questions out of their paper: a chapter test, or a
+  // student's practice test (scope 'custom', 2026-10-15).
+  if (scope !== "full" && isAssertionReasonInstruction(context)) {
     return ASSERTION_REASON_INSTRUCTION;
   }
   return context;

@@ -14,6 +14,8 @@
  *   - my_mock_quota() reports the same numbers the trigger uses
  *   - a chapter test (scope 'sectional') counts against its OWN limit
  *     (free_chapter_test_limit, migration 0134), never against the mocks
+ *   - my_mock_quota() also reports the practice-test day (migration 0156;
+ *     its own rules are in practice-tests.integration.test.ts)
  *
  * The settings row is global, so this suite restores it in afterAll. Other
  * suites start at most one mock per user, so the limit cannot trip them.
@@ -138,7 +140,7 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
 
     const { data: prev, error: readErr } = await admin
       .from("paywall_settings")
-      .select("free_mock_limit, counts_from, free_chapter_test_limit, chapter_tests_counts_from")
+      .select("free_mock_limit, counts_from, free_chapter_test_limit, chapter_tests_counts_from, free_practice_tests_per_day")
       .single();
     expect(readErr).toBeNull();
     saved = prev;
@@ -149,6 +151,7 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
         counts_from: countsFrom,
         free_chapter_test_limit: 1,
         chapter_tests_counts_from: countsFrom,
+        free_practice_tests_per_day: 1,
       })
       .eq("id", true);
     expect(setErr).toBeNull();
@@ -174,7 +177,15 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
   it("reports the student's quota: 3 of 3 used, no pass", async () => {
     const { data, error } = await clients.student.rpc("my_mock_quota");
     expect(error).toBeNull();
-    expect(data).toEqual({ limit: 3, used: 3, hasPass: false, chapterLimit: 1, chapterUsed: 0 });
+    expect(data).toEqual({
+      limit: 3,
+      used: 3,
+      hasPass: false,
+      chapterLimit: 1,
+      chapterUsed: 0,
+      practiceLimit: 1,
+      practiceUsed: 0,
+    });
   });
 
   it("lets a student with no free mocks left still start a chapter test, then refuses the next", async () => {
@@ -182,7 +193,15 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
     const { error } = await startChapter("student", 1);
     expect(error?.code).toBe("PT402");
     const { data } = await clients.student.rpc("my_mock_quota");
-    expect(data).toEqual({ limit: 3, used: 3, hasPass: false, chapterLimit: 1, chapterUsed: 1 });
+    expect(data).toEqual({
+      limit: 3,
+      used: 3,
+      hasPass: false,
+      chapterLimit: 1,
+      chapterUsed: 1,
+      practiceLimit: 1,
+      practiceUsed: 0,
+    });
   });
 
   it("does not count chapter tests against the mock limit", async () => {

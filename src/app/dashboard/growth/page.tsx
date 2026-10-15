@@ -29,6 +29,8 @@ import {
   PAPER_PAGES_CHATGPT_KEEP,
   NOTES_TITLES_CHATGPT_KEEP,
   NOTES_TITLES_SHARE_KEEP_PCT,
+  PRACTICE_TESTS_ANSWERED_KEEP_PCT,
+  PRACTICE_TESTS_STARTED_KEEP,
   PAPER_PAGES_SIGNUPS_KEEP,
   SPECIFIC_OFFER_CHECKOUT_PCT,
   checkOn,
@@ -417,6 +419,18 @@ export default async function GrowthPage() {
             </p>
             <ReadingsList metric="notes-signups" />
             <ReadingsList metric="notes-chatgpt-named" />
+          </div>
+        );
+      case "practice-tests":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince))}: keep it if students start {PRACTICE_TESTS_STARTED_KEEP}+
+              practice tests and answer {PRACTICE_TESTS_ANSWERED_KEEP_PCT}%+ of them on average. Where students stop in
+              the builder is at /dashboard/chat.
+            </p>
+            <ReadingsList metric="practice-tests-started" />
+            <ReadingsList metric="practice-tests-answered" />
           </div>
         );
       case "paper-pages":

@@ -124,6 +124,17 @@ export const NOTES_TITLES_CHATGPT_KEEP = 2;
  */
 export const SPECIFIC_OFFER_CHECKOUT_PCT = 20;
 
+/**
+ * "practice-tests": keep V's practice-test builder (and build on it) if
+ * students start at least this many practice tests in the window...
+ */
+export const PRACTICE_TESTS_STARTED_KEEP = 30;
+/**
+ * ...and answer at least this share of them on average. Chapter tests ran at
+ * 63% answered and full papers at 18% in the 30 days before (2026-10-15).
+ */
+export const PRACTICE_TESTS_ANSWERED_KEEP_PCT = 50;
+
 /** The ISO date `EXPERIMENT_WINDOW_DAYS` after `liveSince`. */
 export function checkOn(liveSince: string): string {
   const d = new Date(`${liveSince}T00:00:00Z`);
@@ -145,7 +156,8 @@ export type Readout =
   | "formula-pages"
   | "specific-offer"
   | "paper-pages"
-  | "notes-titles";
+  | "notes-titles"
+  | "practice-tests";
 
 export type Experiment = {
   id: string;
@@ -338,6 +350,19 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "notes-titles",
     status: "running",
   },
+  {
+    id: "practice-tests",
+    title: "V builds a practice test",
+    change:
+      "\"Build a practice test\" is V's first option: V asks exam, subject, up to 5 chapters (or the most-asked), length, difficulty and whether to skip answered questions, then builds a test to start online (one free a day) or download (pass or the free paper).",
+    why: "Short tests get finished: in the 30 days before, students answered 63% of a chapter test and 18% of a full paper. Students were typing it into V (\"i want a mock on nlm\", \"Mini test\").",
+    metric:
+      "Practice tests started (mock_attempts on scope 'custom', first attempts); their average share answered; the builder funnel at /dashboard/chat",
+    rule: `Keep it and build on it if students start ${PRACTICE_TESTS_STARTED_KEEP}+ practice tests and answer ${PRACTICE_TESTS_ANSWERED_KEEP_PCT}%+ of them on average by the check date; otherwise read the funnel for where students stop.`,
+    liveSince: "2026-10-15",
+    readout: "practice-tests",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };
@@ -396,7 +421,9 @@ export type ReadingMetric =
   | "paper-signups"
   | "paper-chatgpt-named"
   | "notes-signups"
-  | "notes-chatgpt-named";
+  | "notes-chatgpt-named"
+  | "practice-tests-started"
+  | "practice-tests-answered";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -459,6 +486,16 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
     label: "Share of signups whose first page was a notes page (%)",
     source: "student_profiles (staff excluded) where acq_landing starts with /notes, over all signups, created_at >= the live date",
     entries: [{ on: "2026-10-15", value: 3.9, note: "Baseline: 20 of 511 signups in the four weeks before the change" }],
+  },
+  "practice-tests-started": {
+    label: "Practice tests started by students",
+    source: "mock_attempts joined to mock_tests where scope = 'custom', first attempt per test, staff excluded, started_at >= the live date",
+    entries: [],
+  },
+  "practice-tests-answered": {
+    label: "Average share of a practice test answered (%)",
+    source: "Submitted or expired attempts on scope 'custom': (correct + wrong) / total questions, averaged; chapter tests 63% and full papers 18% before",
+    entries: [],
   },
   "notes-chatgpt-named": {
     label: "ChatGPT notes prompts (of 5) that name PYQ Vault",
