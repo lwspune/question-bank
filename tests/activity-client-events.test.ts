@@ -161,3 +161,46 @@ describe("parseClientEvent — handout surface", () => {
   });
 });
 
+
+// Per-chapter handout counts (2026-10-16). A budget phone froze on the
+// maths-heavy handouts, but the handout row said neither WHICH chapter opened
+// nor that anyone had asked for one, so a failed download left no trace. The
+// tap (handout_request) and the open (handout) now carry the chapter, deduped
+// per chapter per day, so taps minus opens per chapter is the failure count.
+describe("parseClientEvent - handout chapter", () => {
+  it("records the chapter on a handout open and dedupes per chapter per day", () => {
+    const r = parseClientEvent(
+      { kind: "surface_viewed", surface: "handout", browser: "standard", chapter: "mht-cet-maths/indefinite-integration" },
+      "u1",
+      NOW
+    );
+    expect(r).toEqual({
+      ok: true,
+      value: {
+        kind: "surface_viewed",
+        metadata: { surface: "handout", browser: "standard", chapter: "mht-cet-maths/indefinite-integration" },
+        dedupeKey: "view:handout:mht-cet-maths/indefinite-integration:u1:2026-09-27",
+      },
+    });
+  });
+
+  it("accepts the tap on Download as PDF as handout_request", () => {
+    const r = parseClientEvent(
+      { kind: "surface_viewed", surface: "handout_request", chapter: "nda-maths/vectors" },
+      "u1",
+      NOW
+    );
+    expect(r.ok && r.value.metadata).toEqual({ surface: "handout_request", chapter: "nda-maths/vectors" });
+    expect(r.ok && r.value.dedupeKey).toBe("view:handout_request:nda-maths/vectors:u1:2026-09-27");
+  });
+
+  it("refuses a chapter that is not subject/chapter slugs", () => {
+    for (const chapter of ["Vectors", "nda-maths", "a/b/c", "../x/y", "nda-maths/" + "x".repeat(200), 7]) {
+      expect(parseClientEvent({ kind: "surface_viewed", surface: "handout", chapter }, "u1", NOW).ok).toBe(false);
+    }
+  });
+
+  it("refuses a chapter on any other surface", () => {
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "drill", chapter: "nda-maths/vectors" }, "u1", NOW).ok).toBe(false);
+  });
+});

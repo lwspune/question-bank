@@ -229,6 +229,7 @@ export default async function NotesChapterLanding({ chapter }: Props) {
           <NotesHandoutLink
             href={printHandoutHref(chapter.subjectRoute, chapter.chapterSlug)}
             chapterName={meta.chapterName}
+            chapter={`${chapter.subjectRoute}/${chapter.chapterSlug}`}
           />
           <FormulaSheetDownload
             subjectRoute={chapter.subjectRoute}

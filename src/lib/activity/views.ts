@@ -22,7 +22,10 @@ export const SURFACES = [
   "result",
   "mock_start",
   "pricing",
-  "handout", // the notes print handout (2026-10-02); metadata.browser = "standard" | "inapp"
+  "handout", // the notes print handout (2026-10-02); metadata.browser = "standard" | "inapp"; metadata.chapter since 2026-10-16
+  // A tap on a chapter's "Download as PDF" (2026-10-16), with metadata.chapter.
+  // Beside the handout opens it counts the downloads that never arrived.
+  "handout_request",
   "performance", // /performance, where the projected score lives (2026-10-05); never recorded before
   // The /browse download box's download view, as a signed-in student meets it
   // (2026-10-12): under the cap, or over it with the buttons greyed out. Lets

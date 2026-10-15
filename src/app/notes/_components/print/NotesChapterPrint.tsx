@@ -276,7 +276,7 @@ export default async function NotesChapterPrint({ chapter }: Props) {
           </span>
           <PrintButton />
         </div>
-        <HandoutAutoPrint />
+        <HandoutAutoPrint chapter={`${chapter.subjectRoute}/${chapter.chapterSlug}`} />
 
         <header className="pcover">
           <p className="brand">PYQ Vault · {chapter.subjectDisplay} notes</p>
