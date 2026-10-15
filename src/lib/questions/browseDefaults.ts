@@ -4,7 +4,7 @@
  *
  * The app is PYQ-first: the global `/browse` default is `kind: "pyq"` across all
  * exams. But a PRACTICE-ONLY exam (Foundation Course, Maharashtra State Board —
- * no PYQ corpus) would then show an empty/irrelevant PYQ list. The header "Bank"
+ * no PYQ corpus) would then show an empty/irrelevant PYQ list. The header "PYQs"
  * tab already emits `/browse?examId=<uuid>` (which the page's URL-examId override
  * handles), but a typed or bookmarked bare `/browse` carries no `examId` — so the
  * practice default never fired for those entry paths. This closes that gap, and

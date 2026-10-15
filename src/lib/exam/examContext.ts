@@ -3,7 +3,7 @@
  *
  * The cookie-backed exam picker stores a stable slug (e.g. `"nda"`). UUIDs are
  * resolved at render time against the `exams` table by `loadActiveExam` so the
- * Bank tab can emit `/browse?examId=<uuid>` without hard-coding ids in TS.
+ * PYQs tab can emit `/browse?examId=<uuid>` without hard-coding ids in TS.
  *
  * Exams that don't have a `/guide` subtree yet fall back to the `/guide`
  * index. Notes route to a per-exam hub (`/notes/<slug>`) that lists every
@@ -758,7 +758,7 @@ export function isPracticeOnlyExam(examName: string | null | undefined): boolean
 }
 
 /**
- * Bank tab href. When the user has picked an exam, the link applies the
+ * PYQs tab href. When the user has picked an exam, the link applies the
  * `examId` filter directly. Without an exam UUID, links to the bare bank.
  */
 export function resolveBankHref(examUuid: string | null | undefined): string {

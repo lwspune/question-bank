@@ -64,7 +64,7 @@ export const MAX_MOBILE_TABS = 5;
  */
 export function resolveMobileTabs(nav: ExamNav, fifth: FifthTab = "board"): MobileTab[] {
   return [
-    { id: "bank", label: "Bank", href: nav.bankHref },
+    { id: "bank", label: "PYQs", href: nav.bankHref },
     { id: "guides", label: "Guides", href: nav.guidesHref },
     { id: "notes", label: "Notes", href: nav.notesHref },
     { id: "mock", label: "Mocks", href: nav.mockHref },

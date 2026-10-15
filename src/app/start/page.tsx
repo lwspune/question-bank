@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 const TABS = [
   {
     Icon: Compass,
-    label: "Bank",
+    label: "PYQs",
     href: "/browse",
     line: "Every past-year question, filtered by exam, chapter and year. Tap a question to attempt it, then reveal the answer.",
   },

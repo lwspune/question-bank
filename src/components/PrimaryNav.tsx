@@ -47,7 +47,7 @@ export default function PrimaryNav({
   const active = getActiveTab(pathname);
 
   const tabs: Tab[] = [
-    { id: "bank", label: "Bank", href: bankHref, Icon: Compass },
+    { id: "bank", label: "PYQs", href: bankHref, Icon: Compass },
     { id: "guides", label: "Guides", href: guidesHref, Icon: BookOpen },
     { id: "notes", label: "Notes", href: notesHref, Icon: NotebookPen },
     // Mocks — always visible, like Board. It used to be gated on the active

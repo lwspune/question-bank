@@ -75,7 +75,7 @@ describe("mobile tab bar — shape", () => {
     for (const tab of tabs) {
       expect(tab.label.trim()).not.toBe("");
     }
-    expect(tabs.map((t) => t.label)).toEqual(["Bank", "Guides", "Notes", "Mocks", "Board"]);
+    expect(tabs.map((t) => t.label)).toEqual(["PYQs", "Guides", "Notes", "Mocks", "Board"]);
   });
 
   it("exports its id list in the same order it renders", () => {

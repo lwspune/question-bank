@@ -130,7 +130,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   // exam, so the practice-only default above can't fire even when the user's
   // active-exam cookie is a practice-only exam. Consult the cookie and, ONLY for
   // a practice-only exam, scope to it + default to Practice — mirroring what the
-  // header "Bank" tab does. A PYQ-first cookie leaves bare /browse untouched.
+  // header "PYQs" tab does. A PYQ-first cookie leaves bare /browse untouched.
   else if (!filters.examId && !rawParams.has("kind")) {
     const raw = cookies().get("qb_exam")?.value;
     const entry = isExamSlug(raw) ? getExamBySlug(raw) : null;
