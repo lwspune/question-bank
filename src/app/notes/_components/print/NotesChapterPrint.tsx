@@ -1,6 +1,4 @@
-import KatexRenderer from "@/components/math/KatexRenderer";
-import RichText from "@/components/math/RichText";
-import BlockText from "@/components/math/BlockText";
+import { StaticBlockText, StaticKatexRenderer, StaticRichText } from "@/components/math/StaticMath";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { loadWorkedExamples, type WorkedExample } from "@/lib/guide/loadWorkedExamples";
 import { deriveSummary } from "@/lib/notes/deriveSummary";
@@ -47,18 +45,18 @@ function ExampleBlock({
     <div className={`pbox pbox--${variant}`}>
       <h4>{heading}</h4>
       <div className="pbody">
-        <KatexRenderer text={example.prompt} />
+        <StaticKatexRenderer text={example.prompt} />
       </div>
       <ol className="psteps">
         {example.steps.map((s, i) => (
           <li key={i}>
-            <KatexRenderer text={s} />
+            <StaticKatexRenderer text={s} />
           </li>
         ))}
       </ol>
       <div className="pans">
         <b>Answer</b>
-        <KatexRenderer text={example.answer} />
+        <StaticKatexRenderer text={example.answer} />
       </div>
     </div>
   );
@@ -87,25 +85,25 @@ function ConceptBlock({
       <div>
         <p className="plabel">Intuition</p>
         <div className="pbody">
-          <KatexRenderer text={concept.intuition} />
+          <StaticKatexRenderer text={concept.intuition} />
         </div>
       </div>
 
       <div className="pblock">
         <p className="plabel">Definition</p>
-        <RichText text={concept.definition} className="pbody" />
+        <StaticRichText text={concept.definition} className="pbody" />
       </div>
 
       {concept.kind === "formula" && concept.formula && (
         <div className="pbox pbox--formula">
           <p className="flabel">{concept.formula.label}</p>
-          <KatexRenderer text={`\\[${concept.formula.latex}\\]`} />
+          <StaticKatexRenderer text={`\\[${concept.formula.latex}\\]`} />
           {concept.formula.symbols && concept.formula.symbols.length > 0 && (
             <ul className="psyms">
               {concept.formula.symbols.map((s, i) => (
                 <li key={i}>
-                  <KatexRenderer text={legendSymbolText(s.symbol)} /> ={" "}
-                  <KatexRenderer text={s.meaning} />
+                  <StaticKatexRenderer text={legendSymbolText(s.symbol)} /> ={" "}
+                  <StaticKatexRenderer text={s.meaning} />
                 </li>
               ))}
             </ul>
@@ -138,7 +136,7 @@ function ConceptBlock({
                 <tr key={i}>
                   {r.cells.map((cell, j) => (
                     <td key={j}>
-                      <KatexRenderer text={cell} />
+                      <StaticKatexRenderer text={cell} />
                     </td>
                   ))}
                 </tr>
@@ -147,7 +145,7 @@ function ConceptBlock({
           </table>
           {concept.table.caption && (
             <p className="plabel" style={{ marginTop: "1.5mm" }}>
-              <KatexRenderer text={concept.table.caption} />
+              <StaticKatexRenderer text={concept.table.caption} />
             </p>
           )}
         </div>
@@ -169,15 +167,15 @@ function ConceptBlock({
               <li key={i}>
                 <span className="n">{i + 1}.</span>
                 <span className="q">
-                  <KatexRenderer text={p.prompt} />
+                  <StaticKatexRenderer text={p.prompt} />
                 </span>
                 <span className="a">
                   <b>Ans</b>
-                  <KatexRenderer text={p.answer} />
+                  <StaticKatexRenderer text={p.answer} />
                 </span>
                 {p.method && (
                   <span className="m">
-                    <KatexRenderer text={p.method} />
+                    <StaticKatexRenderer text={p.method} />
                   </span>
                 )}
               </li>
@@ -192,17 +190,17 @@ function ConceptBlock({
           {pyq.provenance && <p className="ppyq-meta">{pyq.provenance}</p>}
           {pyq.context && (
             <div className="ppyq-ctx">
-              <BlockText text={pyq.context} />
+              <StaticBlockText text={pyq.context} />
             </div>
           )}
           <div className="ppyq-stem">
-            <BlockText text={pyq.text} />
+            <StaticBlockText text={pyq.text} />
           </div>
           {pyq.options.length > 0 && (
             <ol className="popts">
               {pyq.options.map((o) => (
                 <li key={o.label} className={o.isCorrect ? "ok" : undefined}>
-                  ({o.label.toLowerCase()}) <KatexRenderer text={o.text} />
+                  ({o.label.toLowerCase()}) <StaticKatexRenderer text={o.text} />
                   {o.isCorrect ? " ✓" : ""}
                 </li>
               ))}
@@ -210,7 +208,7 @@ function ConceptBlock({
           )}
           {pyq.solution && (
             <div className="psoln">
-              <BlockText text={pyq.solution} solution />
+              <StaticBlockText text={pyq.solution} solution />
             </div>
           )}
         </div>
@@ -222,10 +220,10 @@ function ConceptBlock({
           {concept.traps.map((t, i) => (
             <div className="ptrap" key={i}>
               <b>
-                <KatexRenderer text={t.title} />
+                <StaticKatexRenderer text={t.title} />
               </b>
               <span>
-                <KatexRenderer text={t.body} />
+                <StaticKatexRenderer text={t.body} />
               </span>
             </div>
           ))}
@@ -278,7 +276,7 @@ export default async function NotesChapterPrint({ chapter }: Props) {
           </span>
           <PrintButton />
         </div>
-        <HandoutAutoPrint />
+        <HandoutAutoPrint chapter={`${chapter.subjectRoute}/${chapter.chapterSlug}`} />
 
         <header className="pcover">
           <p className="brand">PYQ Vault · {chapter.subjectDisplay} notes</p>
@@ -360,7 +358,7 @@ export default async function NotesChapterPrint({ chapter }: Props) {
                         <div className="frow" key={`${f.slug}-${f.label}`}>
                           <span className="fl">{f.label}</span>
                           <span>
-                            <KatexRenderer text={`\\(${f.latex}\\)`} />
+                            <StaticKatexRenderer text={`\\(${f.latex}\\)`} />
                           </span>
                         </div>
                       ))}
@@ -380,7 +378,7 @@ export default async function NotesChapterPrint({ chapter }: Props) {
                       <ul>
                         {s.summary.traps.map((t, i) => (
                           <li key={i}>
-                            <KatexRenderer text={t.title} />
+                            <StaticKatexRenderer text={t.title} />
                           </li>
                         ))}
                       </ul>

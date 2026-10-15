@@ -3,6 +3,9 @@ import path from "node:path";
 import { PROD_CONTRACT_FILES } from "./tests/prodContractFiles";
 
 export default defineConfig({
+  // The JSX transform Next uses, so a test can render a component with
+  // react-dom/server (tests/static-math.test.ts) without importing React.
+  esbuild: { jsx: "automatic" },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),

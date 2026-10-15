@@ -16,7 +16,13 @@ const ENDPOINT = "/api/activity/event";
 const sent = new Set<string>();
 
 type ClientEvent =
-  | { kind: "surface_viewed"; surface: Surface; browser?: (typeof VIEW_BROWSERS)[number] }
+  | {
+      kind: "surface_viewed";
+      surface: Surface;
+      browser?: (typeof VIEW_BROWSERS)[number];
+      /** "subjectRoute/chapterSlug", handout surfaces only. */
+      chapter?: string;
+    }
   | {
       kind: "paywall_event";
       step: "shown" | "checkout_dismissed";

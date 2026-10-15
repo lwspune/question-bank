@@ -3,11 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Download, ExternalLink, LogIn } from "lucide-react";
+import { Download, ExternalLink, Loader2, LogIn } from "lucide-react";
 import { practiceGateState } from "@/lib/notes/access";
 import { useSignedIn } from "@/components/auth/useSignedIn";
 import { useIsInAppBrowser } from "@/components/browser/useIsInAppBrowser";
 import { handoutDownloadHref } from "@/lib/notes/handoutDownload";
+import { sendActivity } from "@/lib/activity/clientBeacon";
 
 /**
  * "Download as PDF" affordance on a /notes chapter landing.
@@ -21,19 +22,29 @@ import { handoutDownloadHref } from "@/lib/notes/handoutDownload";
  *
  * While auth resolves we render a neutral skeleton rather than either state,
  * so a signed-in teacher never sees a flash of the sign-in prompt.
+ *
+ * A tap records a handout_request with the chapter and says "Preparing your
+ * PDF…" until the handout replaces the page (2026-10-16): on a budget phone a
+ * maths-heavy handout took long enough that a silent button read as broken,
+ * and a student tapped it seven times. Requests beside handout opens, per
+ * chapter, count the downloads that never arrived.
  */
 export default function NotesHandoutLink({
   href,
   chapterName,
+  chapter,
 }: {
   href: string;
   chapterName: string;
+  /** "subjectRoute/chapterSlug", recorded with the tap. */
+  chapter: string;
 }) {
   const { signedIn, loading } = useSignedIn();
   const state = practiceGateState({ signedIn, loading });
   const pathname = usePathname();
   const inApp = useIsInAppBrowser();
   const [showTip, setShowTip] = useState(false);
+  const [preparing, setPreparing] = useState(false);
 
   if (state === "loading") {
     return <div aria-hidden className="h-9 w-44 animate-pulse rounded-md bg-muted" />;
@@ -83,11 +94,24 @@ export default function NotesHandoutLink({
     <Link
       href={handoutDownloadHref(href)}
       prefetch={false}
-      aria-label={`Download the ${chapterName} notes as a printable PDF`}
+      onClick={() => {
+        if (!preparing) sendActivity({ kind: "surface_viewed", surface: "handout_request", chapter });
+        setPreparing(true);
+      }}
+      aria-busy={preparing}
+      aria-label={
+        preparing
+          ? `Preparing the ${chapterName} notes PDF`
+          : `Download the ${chapterName} notes as a printable PDF`
+      }
       className="inline-flex items-center gap-2 rounded-md bg-brand px-3 py-2 text-sm font-medium text-brand-foreground hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
-      <Download className="h-4 w-4" aria-hidden />
-      Download as PDF
+      {preparing ? (
+        <Loader2 className="h-4 w-4 animate-spin motion-reduce:animate-none" aria-hidden />
+      ) : (
+        <Download className="h-4 w-4" aria-hidden />
+      )}
+      {preparing ? "Preparing your PDF…" : "Download as PDF"}
     </Link>
   );
 }

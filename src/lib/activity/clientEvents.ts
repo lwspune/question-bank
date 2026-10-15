@@ -20,6 +20,14 @@ import { isSurface, viewDedupeKey } from "./views";
 export const VIEW_BROWSERS = ["standard", "inapp"] as const;
 const BROWSER_SET: ReadonlySet<string> = new Set(VIEW_BROWSERS);
 
+/**
+ * The notes chapter a handout tap or open names, as "subjectRoute/chapterSlug"
+ * (2026-10-16). A budget phone froze on the maths-heavy handouts and nothing
+ * recorded which chapter failed: per chapter, taps minus opens now says.
+ */
+const CHAPTER_SURFACES: ReadonlySet<string> = new Set(["handout", "handout_request"]);
+const CHAPTER_RE = /^[a-z0-9-]{1,60}\/[a-z0-9-]{1,100}$/;
+
 /** Where a paywall met the student. The last five are the 0134 limits
  *  (2026-10-05): chapter tests, the drill, daily answers, saves, the
  *  projected score. */
@@ -106,14 +114,18 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
     if (raw.browser !== undefined && (typeof raw.browser !== "string" || !BROWSER_SET.has(raw.browser))) {
       return { ok: false, error: "Unknown browser." };
     }
-    return {
-      ok: true,
-      value: {
-        kind: "surface_viewed",
-        metadata: raw.browser ? { surface: raw.surface, browser: raw.browser } : { surface: raw.surface },
-        dedupeKey: viewDedupeKey(userId, raw.surface, now),
-      },
-    };
+    const chapter = raw.chapter;
+    if (chapter !== undefined) {
+      if (!CHAPTER_SURFACES.has(raw.surface)) return { ok: false, error: "No chapter on this surface." };
+      if (typeof chapter !== "string" || !CHAPTER_RE.test(chapter)) return { ok: false, error: "Invalid chapter." };
+    }
+    const metadata: Record<string, string> = { surface: raw.surface };
+    if (raw.browser) metadata.browser = raw.browser;
+    if (chapter) metadata.chapter = chapter;
+    const dedupeKey = chapter
+      ? `view:${raw.surface}:${chapter}:${userId}:${istDayKey(now)}`
+      : viewDedupeKey(userId, raw.surface, now);
+    return { ok: true, value: { kind: "surface_viewed", metadata, dedupeKey } };
   }
 
   if (raw.kind === "paywall_event") {
