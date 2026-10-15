@@ -157,7 +157,8 @@ export default function DownloadDialog({
   useEffect(() => {
     if (!open || step !== "offer") return;
     trackFunnelOnce("teacher_gate_shown", mode, { signedIn: isSignedIn, mode });
-    if (isSignedIn) sendActivityOnce(`teacher_gate:${mode}`, { kind: "paywall_event", step: "shown", gate: "teacher" });
+    if (isSignedIn)
+      sendActivityOnce(`teacher_gate:${mode}`, { kind: "paywall_event", step: "shown", gate: "teacher", box: "browse" });
   }, [open, step, mode, isSignedIn]);
 
   // What a signed-in student met in the download view: a paper they can take,
@@ -308,6 +309,7 @@ export default function DownloadDialog({
               freeAfterSignIn={!isSignedIn}
               returnTo={here}
               mode={mode}
+              box="browse"
               onCancel={() => setOpen(false)}
               onBought={() => setJustBought(true)}
             />

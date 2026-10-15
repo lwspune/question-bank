@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { sendActivity } from "@/lib/activity/clientBeacon";
+import type { DownloadBox } from "@/lib/activity/clientEvents";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
 
 /** Minimal shape of the Razorpay Checkout global we use. */
@@ -80,10 +81,13 @@ export type CheckoutOutcome = "paid" | "pending";
 export function useCheckout({
   planId,
   surface,
+  box,
   onDone,
 }: {
   planId: string;
   surface: CheckoutSurface;
+  /** Which download box the checkout started from, for the paywall_event rows. */
+  box?: DownloadBox;
   onDone: (outcome: CheckoutOutcome) => void;
 }): { start: () => Promise<void>; busy: boolean } {
   const [busy, setBusy] = useState(false);
@@ -116,7 +120,7 @@ export function useCheckout({
       const orderRes = await fetch("/api/billing/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ planId, gate: GATE[surface] }),
+        body: JSON.stringify({ planId, gate: GATE[surface], box }),
       });
       const order = (await orderRes.json()) as {
         orderId?: string;
@@ -170,7 +174,7 @@ export function useCheckout({
           ondismiss: () => {
             setBusy(false);
             trackFunnel("checkout_dismissed", { surface });
-            sendActivity({ kind: "paywall_event", step: "checkout_dismissed", gate: GATE[surface], planId });
+            sendActivity({ kind: "paywall_event", step: "checkout_dismissed", gate: GATE[surface], planId, box });
           },
         },
       });

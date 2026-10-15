@@ -38,6 +38,20 @@ export type PaywallGate = (typeof PAYWALL_GATES)[number];
 export const PAYWALL_STEPS = ["shown", "checkout_opened", "checkout_dismissed", "verify_failed"] as const;
 export type PaywallStep = (typeof PAYWALL_STEPS)[number];
 
+/**
+ * Which download box met the student (2026-10-14). The "teacher" gate is one
+ * gate on several boxes, so without this the offer's pages could not be told
+ * apart (the free paper's `set_key` was the only clue).
+ */
+export const DOWNLOAD_BOXES = ["browse", "mock", "board_paper", "homework", "top_pyqs", "formula"] as const;
+export type DownloadBox = (typeof DOWNLOAD_BOXES)[number];
+const BOX_SET: ReadonlySet<string> = new Set(DOWNLOAD_BOXES);
+
+/** The box an order request names, or undefined for anything unknown. */
+export function checkoutBox(v: unknown): DownloadBox | undefined {
+  return typeof v === "string" && BOX_SET.has(v) ? (v as DownloadBox) : undefined;
+}
+
 /** Steps a client may report. The other two are written by the billing routes. */
 const CLIENT_STEPS: ReadonlySet<string> = new Set<PaywallStep>(["shown", "checkout_dismissed"]);
 const GATE_SET: ReadonlySet<string> = new Set(PAYWALL_GATES);
@@ -64,15 +78,18 @@ export function paywallEvent(
   step: PaywallStep,
   gate: PaywallGate,
   planId?: string,
-  dedupe?: { userId: string; now: Date }
+  dedupe?: { userId: string; now: Date },
+  box?: DownloadBox
 ): ActivityEvent {
-  const event: ActivityEvent = { kind: "paywall_event", metadata: { step, gate } };
+  const event: ActivityEvent = { kind: "paywall_event", metadata: box ? { step, gate, box } : { step, gate } };
   if (planId) {
     event.refId = planId;
     event.refKind = "plan";
   }
   if (step === "shown" && dedupe) {
-    event.dedupeKey = `paywall:shown:${gate}:${dedupe.userId}:${istDayKey(dedupe.now)}`;
+    // One impression per box per day when the box is named, so a student who
+    // met the gate on /browse first is still counted on a past paper.
+    event.dedupeKey = `paywall:shown:${gate}:${box ? `${box}:` : ""}${dedupe.userId}:${istDayKey(dedupe.now)}`;
   }
   return event;
 }
@@ -113,9 +130,11 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
       }
       planId = raw.planId;
     }
+    const box = checkoutBox(raw.box);
+    if (raw.box !== undefined && !box) return { ok: false, error: "Unknown download box." };
     return {
       ok: true,
-      value: paywallEvent(raw.step as PaywallStep, raw.gate as PaywallGate, planId, { userId, now }),
+      value: paywallEvent(raw.step as PaywallStep, raw.gate as PaywallGate, planId, { userId, now }, box),
     };
   }
 

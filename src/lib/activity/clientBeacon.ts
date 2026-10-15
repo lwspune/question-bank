@@ -10,14 +10,20 @@
  * the same one twice from one page instance.
  */
 import type { Surface } from "./views";
-import type { PaywallGate, VIEW_BROWSERS } from "./clientEvents";
+import type { DownloadBox, PaywallGate, VIEW_BROWSERS } from "./clientEvents";
 
 const ENDPOINT = "/api/activity/event";
 const sent = new Set<string>();
 
 type ClientEvent =
   | { kind: "surface_viewed"; surface: Surface; browser?: (typeof VIEW_BROWSERS)[number] }
-  | { kind: "paywall_event"; step: "shown" | "checkout_dismissed"; gate: PaywallGate; planId?: string };
+  | {
+      kind: "paywall_event";
+      step: "shown" | "checkout_dismissed";
+      gate: PaywallGate;
+      planId?: string;
+      box?: DownloadBox;
+    };
 
 export function sendActivity(event: ClientEvent): void {
   try {

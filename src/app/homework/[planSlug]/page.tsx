@@ -5,6 +5,7 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPlanBySlug, listPublishedPlans } from "@/lib/homework/query";
 import { sectionsOf, shortNote } from "@/lib/homework/display";
+import { homeworkOfferFacts, homeworkOfferLead } from "@/lib/billing/passOfferLead";
 import HomeworkDownload from "../_components/HomeworkDownload";
 import Link from "next/link";
 import { Eye } from "lucide-react";
@@ -56,6 +57,7 @@ export default async function HomeworkPlanPage({ params }: { params: Params }) {
   const [plan, plans] = await Promise.all([getPlanBySlug(client, params.planSlug), listPublishedPlans(client)]);
   if (!plan) notFound();
   const sections = sectionsOf(plan.dayList);
+  const offer = homeworkOfferLead(homeworkOfferFacts(plan, plans));
 
   return (
     <GuideShell
@@ -103,7 +105,7 @@ export default async function HomeworkPlanPage({ params }: { params: Params }) {
                           Open
                         </Link>
                       </Button>
-                      <HomeworkDownload planSlug={plan.slug} day={d.day} planTitle={plan.title} />
+                      <HomeworkDownload planSlug={plan.slug} day={d.day} planTitle={plan.title} offer={offer} />
                     </div>
                   </div>
                   <ol className="mt-3 space-y-1.5 text-sm">

@@ -5,7 +5,7 @@
  * because those carry meaning the server alone can vouch for.
  */
 import { describe, it, expect } from "vitest";
-import { parseClientEvent, paywallEvent, checkoutGate } from "@/lib/activity/clientEvents";
+import { parseClientEvent, paywallEvent, checkoutGate, checkoutBox } from "@/lib/activity/clientEvents";
 
 const NOW = new Date("2026-09-27T03:00:00Z");
 
@@ -73,6 +73,50 @@ describe("paywallEvent (server builder)", () => {
     expect(paywallEvent("shown", "mock_limit", undefined, { userId: "u1", now: NOW }).dedupeKey).toBe(
       "paywall:shown:mock_limit:u1:2026-09-27"
     );
+  });
+});
+
+// Which download box met the student (2026-10-14). The "teacher" gate is one
+// gate on five boxes, and an impression was deduped per gate per day, so a
+// student who met it on /browse first was never counted on a past paper. With
+// a box, the dedupe key carries it: one impression per box per day.
+describe("paywall events — the download box", () => {
+  it("records the box on an impression and dedupes per box per day", () => {
+    const r = parseClientEvent({ kind: "paywall_event", step: "shown", gate: "teacher", box: "board_paper" }, "u1", NOW);
+    expect(r.ok && r.value).toEqual({
+      kind: "paywall_event",
+      metadata: { step: "shown", gate: "teacher", box: "board_paper" },
+      dedupeKey: "paywall:shown:teacher:board_paper:u1:2026-09-27",
+    });
+  });
+
+  it("records the box on a dismissal", () => {
+    const r = parseClientEvent(
+      { kind: "paywall_event", step: "checkout_dismissed", gate: "teacher", planId: "mock-pass-6m", box: "homework" },
+      "u1",
+      NOW
+    );
+    expect(r.ok && r.value).toMatchObject({ metadata: { step: "checkout_dismissed", gate: "teacher", box: "homework" } });
+  });
+
+  it("refuses a box outside the closed list", () => {
+    expect(parseClientEvent({ kind: "paywall_event", step: "shown", gate: "teacher", box: "vip" }, "u1", NOW).ok).toBe(
+      false
+    );
+  });
+
+  it("puts the box on the server's checkout_opened", () => {
+    expect(paywallEvent("checkout_opened", "teacher", "mock-pass-6m", undefined, "board_paper").metadata).toEqual({
+      step: "checkout_opened",
+      gate: "teacher",
+      box: "board_paper",
+    });
+  });
+
+  it("reads the box from an order request, ignoring anything unknown", () => {
+    expect(checkoutBox("homework")).toBe("homework");
+    expect(checkoutBox("vip")).toBeUndefined();
+    expect(checkoutBox(undefined)).toBeUndefined();
   });
 });
 

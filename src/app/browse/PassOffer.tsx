@@ -12,7 +12,9 @@ import { googleButtonAvailable, renderGoogleButton } from "@/components/auth/use
 import { useCheckout, type CheckoutOutcome, type CheckoutSurface } from "@/components/billing/useCheckout";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { downloadPerksFirst, gatePriceLine } from "@/lib/billing/gateCopy";
+import { alsoIncludedPerks, type PassOfferLead } from "@/lib/billing/passOfferLead";
 import type { PassCta } from "@/lib/billing/plans";
+import type { DownloadBox } from "@/lib/activity/clientEvents";
 
 /**
  * The download box's offer to a visitor without the pass, sold IN PLACE
@@ -32,6 +34,8 @@ export default function PassOffer({
   returnTo,
   mode,
   surface = "download_box",
+  box,
+  lead,
   onCancel,
   onBought,
   onSignedIn,
@@ -46,6 +50,13 @@ export default function PassOffer({
   mode: "filters" | "cart" | "mock" | "homework" | "formula";
   /** Which box the checkout started from, for the checkout events. */
   surface?: CheckoutSurface;
+  /** Which download box this is, for the paywall_event rows (2026-10-14). */
+  box: DownloadBox;
+  /**
+   * What this page's student is missing, above the rest of the pass (board
+   * past papers and homework, 2026-10-14). Without it, the full perk list.
+   */
+  lead?: PassOfferLead | null;
   onCancel: () => void;
   /** Payment cleared: the parent shows its download view with a "pass active" line. */
   onBought: () => void;
@@ -56,8 +67,9 @@ export default function PassOffer({
    */
   onSignedIn?: () => void;
 }) {
-  // Both boxes that render this are download gates: lead with downloads.
-  const perks = downloadPerksFirst(pass.perks);
+  // Every box that renders this is a download gate: lead with downloads. With
+  // a lead, the lead says what downloading gets you and the rest follow it.
+  const perks = lead ? alsoIncludedPerks(pass.perks) : downloadPerksFirst(pass.perks);
   const router = useRouter();
 
   const onDone = useCallback(
@@ -71,7 +83,7 @@ export default function PassOffer({
     },
     [onBought, router]
   );
-  const { start, busy } = useCheckout({ planId: pass.planId, surface, onDone });
+  const { start, busy } = useCheckout({ planId: pass.planId, surface, box, onDone });
   // Stable, so Google's button is drawn once rather than on every render.
   const refresh = useCallback(() => (onSignedIn ? onSignedIn() : router.refresh()), [onSignedIn, router]);
 
@@ -92,6 +104,13 @@ export default function PassOffer({
           <p className="text-base font-medium text-foreground">Sign in to download.</p>
         ) : (
           <>
+            {lead && (
+              <div className="space-y-1 rounded-md border border-brand-accent/30 bg-brand-accent/5 p-3">
+                <p className="font-semibold text-foreground">{lead.lead}</p>
+                <p className="text-muted-foreground">{lead.body}</p>
+              </div>
+            )}
+            {lead && perks.length > 0 && <p className="font-medium text-foreground">Also included:</p>}
             {perks.length > 0 && (
               <ul className="space-y-2">
                 {perks.map((perk) => (

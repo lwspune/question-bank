@@ -8,6 +8,7 @@ import { slugify } from "@/lib/board/query";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPaperGroup, getPublishedPapers } from "@/lib/questionPapers/query";
 import { groupLabel } from "@/lib/questionPapers/listing";
+import { paperOfferFacts, paperOfferLead } from "@/lib/billing/passOfferLead";
 import PaperReader from "@/app/question-papers/_components/PaperReader";
 
 type Params = { examSlug: string; subjectSlug: string; paperSlug: string };
@@ -28,7 +29,8 @@ async function load(params: Params) {
   if (!exam?.boardExam) return null;
   // The exam id comes from the published list itself, not the shared exam-id
   // map, whose failed read is cached as a blank (SUGGESTIONS.md backfill ledger).
-  const listed = (await getPublishedPapers()).find(
+  const published = await getPublishedPapers();
+  const listed = published.find(
     (p) => p.examName === exam.examName && p.groupSlug === params.paperSlug && slugify(p.subjectName) === params.subjectSlug
   );
   if (!listed) return null;
@@ -43,7 +45,10 @@ async function load(params: Params) {
     first.setNumber === null
       ? `${first.title} question paper`
       : `${exam.displayName} ${first.subjectName} ${first.year} question paper (${groupLabel(first)})`;
-  return { exam, sets, first, name };
+  // The pass offer's lead (2026-10-14), from the list already in hand.
+  const facts = paperOfferFacts(published, listed.examId, listed.subjectId);
+  const offer = facts ? paperOfferLead(facts) : null;
+  return { exam, sets, first, name, offer };
 }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
@@ -68,7 +73,7 @@ function hours(minutes: number): string {
 export default async function PaperPage({ params }: { params: Params }) {
   const data = await load(params);
   if (!data) notFound();
-  const { exam, sets, first, name } = data;
+  const { exam, sets, first, name, offer } = data;
 
   return (
     <>
@@ -99,6 +104,7 @@ export default async function PaperPage({ params }: { params: Params }) {
         <PaperReader
           examName={exam.examName}
           examSlug={params.examSlug}
+          offer={offer}
           supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
           sets={sets.map((s) => ({
             slug: s.slug,
