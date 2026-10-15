@@ -133,6 +133,7 @@ export default async function MockResultPage({ params }: { params: Params }) {
           elapsed={elapsed}
           fixHref={fixHref}
           mockSlug={mock.slug}
+          practice={mock.scope === "custom"}
         />
 
         {/* Value before asks (2026-10-11): what to fix sits straight under the
@@ -150,12 +151,15 @@ export default async function MockResultPage({ params }: { params: Params }) {
         {/* The distribution loop: a finished mock is the moment a student has
             something worth passing on. Offer only, never a gate, never
             rewarded. See ShareResult + lib/mocks/share.ts. */}
-        <ShareResult
-          slug={mock.slug}
-          title={mock.title}
-          score={summary.score}
-          maxScore={summary.maxScore}
-        />
+        {/* A practice test is the student's own: its link opens for nobody else. */}
+        {mock.scope !== "custom" && (
+          <ShareResult
+            slug={mock.slug}
+            title={mock.title}
+            score={summary.score}
+            maxScore={summary.maxScore}
+          />
+        )}
 
         {/* One ask per screen: push first, the WhatsApp card as its fallback
             (PushOptIn renders it when this browser cannot push) or on a later

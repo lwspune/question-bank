@@ -88,7 +88,7 @@ describe("summarizeChatInteractions: the practice-test builder (migration 0157)"
       { step: "sign_in", label: "Asked to sign in", count: 0 },
       { step: "built", label: "Built a test", count: 1 },
       { step: "start", label: "Started it online", count: 1 },
-      { step: "download", label: "Downloaded it", count: 1 },
+      { step: "download", label: "Opened the download", count: 1 },
     ]);
   });
 });

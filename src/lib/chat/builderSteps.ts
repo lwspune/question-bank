@@ -8,7 +8,7 @@ export const BUILDER_STEP_LABELS = [
   { step: "sign_in", label: "Asked to sign in" },
   { step: "built", label: "Built a test" },
   { step: "start", label: "Started it online" },
-  { step: "download", label: "Downloaded it" },
+  { step: "download", label: "Opened the download" },
 ] as const;
 
 export type BuilderStepId = (typeof BUILDER_STEP_LABELS)[number]["step"];

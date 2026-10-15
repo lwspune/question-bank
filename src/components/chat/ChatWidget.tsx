@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { usePathname } from "next/navigation";
-import { SendHorizontal, X } from "lucide-react";
+import { ListChecks, SendHorizontal, X } from "lucide-react";
 import { toast } from "sonner";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { PREDEFINED_QUESTIONS, type ChatFaqId } from "@/lib/chat/faq";
@@ -11,6 +11,8 @@ import { vPlacement } from "@/lib/chat/placement";
 import { launcherHiddenAfterScroll } from "@/lib/chat/launcherScroll";
 import { useCart } from "@/lib/cart/CartProvider";
 import VSays from "./VSays";
+import PracticeBuilder, { PENDING_BUILD_KEY, logBuilderStep } from "./PracticeBuilder";
+import type { BuilderAnswers } from "@/lib/practiceTests/builder";
 
 type VAvatar = "idle" | "laugh" | "think" | "talk";
 
@@ -47,9 +49,17 @@ const GREETING: ChatTurn = {
  * owner's fixed line. That measures what students ask before paying for a
  * model. The full LLM path (/api/chat, src/lib/chat/anthropic.ts) is left in
  * place, untouched and dormant; re-enabling it is a UI change here.
+ *
+ * BUILDER (2026-10-15): "Build a practice test" turns the window into V's
+ * step-by-step test builder (PracticeBuilder). The window grows while it is
+ * open: full screen on a phone, a larger panel from `sm` up. A signed-out
+ * student's answers wait in sessionStorage through sign-in, and V reopens on
+ * the builder when they come back.
  */
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
+  const [mode, setMode] = useState<"chat" | "builder">("chat");
+  const [resume, setResume] = useState<BuilderAnswers | undefined>(undefined);
   const [turns, setTurns] = useState<ChatTurn[]>([GREETING]);
   const [sending, setSending] = useState(false);
   const [draft, setDraft] = useState("");
@@ -79,7 +89,27 @@ export default function ChatWidget() {
       cancelAnimationFrame(frame);
     };
   }, [open]);
+  // Back from sign-in with a test half built: reopen V on the builder.
+  useEffect(() => {
+    let pending: BuilderAnswers | null = null;
+    try {
+      const raw = sessionStorage.getItem(PENDING_BUILD_KEY);
+      if (raw) {
+        sessionStorage.removeItem(PENDING_BUILD_KEY);
+        pending = JSON.parse(raw) as BuilderAnswers;
+      }
+    } catch {
+      pending = null;
+    }
+    if (pending) {
+      setResume(pending);
+      setMode("builder");
+      setOpen(true);
+    }
+  }, []);
+
   const listRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const launcherRef = useRef<HTMLButtonElement>(null);
   const openRecordedRef = useRef(false);
   const pathname = usePathname() ?? "/";
@@ -92,8 +122,18 @@ export default function ChatWidget() {
 
   function close() {
     setOpen(false);
+    setMode("chat");
+    setResume(undefined);
     launcherRef.current?.focus();
   }
+
+  function openBuilder() {
+    logBuilderStep("open");
+    setResume(undefined);
+    setMode("builder");
+  }
+
+  const building = mode === "builder";
 
   function openChat() {
     // Once per mount, so reopening the panel doesn't inflate /dashboard/chat's open count.
@@ -176,18 +216,27 @@ export default function ChatWidget() {
     <div className="chat-launcher-offset fixed right-4 z-50 print:hidden" style={lift}>
       {open && (
         <div
+          ref={panelRef}
           role="dialog"
           aria-modal="true"
-          aria-label="Chat with V"
-          className="mb-3 flex h-[31rem] max-h-[calc(100dvh-7rem)] w-[22rem] max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-lg border border-input bg-background shadow-xl"
+          aria-label={building ? "Build a practice test with V" : "Chat with V"}
+          className={
+            building
+              ? "fixed inset-0 flex h-[100dvh] w-full flex-col overflow-hidden bg-background sm:static sm:mb-3 sm:h-[40rem] sm:max-h-[calc(100dvh-7rem)] sm:w-[30rem] sm:max-w-[calc(100vw-2rem)] sm:rounded-lg sm:border sm:border-input sm:shadow-xl"
+              : "mb-3 flex h-[31rem] max-h-[calc(100dvh-7rem)] w-[22rem] max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-lg border border-input bg-background shadow-xl"
+          }
           onKeyDown={(e) => {
-            if (e.key === "Escape") close();
+            // The download box is a portal: its keys bubble here through React,
+            // and its own Escape must not close V too.
+            if (e.key === "Escape" && panelRef.current?.contains(e.target as Node)) close();
           }}
         >
           <div className="flex items-center justify-between border-b border-input px-4 py-3">
             <div className="flex items-center gap-2">
               <VFace avatar="talk" className="h-7 w-7 object-contain" />
-              <span className="font-sans text-sm font-semibold">Ask V</span>
+              <span className="font-sans text-sm font-semibold">
+                {building ? "Build a practice test" : "Ask V"}
+              </span>
             </div>
             <button
               type="button"
@@ -199,6 +248,10 @@ export default function ChatWidget() {
             </button>
           </div>
 
+          {building ? (
+            <PracticeBuilder initial={resume} onExit={() => setMode("chat")} onClose={close} />
+          ) : (
+          <>
           <div ref={listRef} className="flex-1 space-y-3 overflow-y-auto px-4 py-3">
             {turns.map((t, i) =>
               t.role === "user" ? (
@@ -229,6 +282,15 @@ export default function ChatWidget() {
 
           <div className="relative border-t border-input">
             <div className="flex gap-1.5 overflow-x-auto p-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              <button
+                type="button"
+                onClick={openBuilder}
+                disabled={sending}
+                className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-brand px-3 py-1.5 text-xs font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+              >
+                <ListChecks className="h-3.5 w-3.5" aria-hidden />
+                Build a practice test
+              </button>
               {PREDEFINED_QUESTIONS.map((q) => (
                 <button
                   key={q.id}
@@ -279,6 +341,8 @@ export default function ChatWidget() {
               Typed questions are saved to improve V. Please don&apos;t share your phone number or email.
             </p>
           </form>
+          </>
+          )}
         </div>
       )}
 
@@ -293,7 +357,7 @@ export default function ChatWidget() {
         aria-expanded={open}
         title="Chat with V"
         tabIndex={tucked ? -1 : undefined}
-        className={`ml-auto flex h-11 w-11 items-center justify-center rounded-full bg-background shadow-lg transition-[transform,opacity] duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none sm:h-14 sm:w-14 ${
+        className={`ml-auto ${open && building ? "hidden sm:flex" : "flex"} h-11 w-11 items-center justify-center rounded-full bg-background shadow-lg transition-[transform,opacity] duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none sm:h-14 sm:w-14 ${
           tucked ? "pointer-events-none translate-y-[160%] opacity-0" : ""
         }`}
       >

@@ -15,6 +15,7 @@ import {
   loadReviewQuestions,
   loadAnswerKey,
   type MockQuestionView,
+  type MockScope,
   type ReviewOption,
 } from "./query";
 import { gradeMock, remainingSecs, type MockGradeQuestion } from "./attempt";
@@ -535,7 +536,13 @@ export type ReviewItem = {
 
 export type AttemptReview = {
   summary: AttemptSummary;
-  mock: { slug: string; title: string; sections: { key: string; label: string; count: number }[] };
+  mock: {
+    slug: string;
+    title: string;
+    sections: { key: string; label: string; count: number }[];
+    /** 'custom' = a student's own practice test: no public page to link to. */
+    scope: MockScope;
+  };
   items: ReviewItem[];
 };
 
@@ -610,7 +617,7 @@ export async function getAttemptReview(
     slug: mock.slug,
     review: {
       summary,
-      mock: { slug: mock.slug, title: mock.title, sections: mock.sections },
+      mock: { slug: mock.slug, title: mock.title, sections: mock.sections, scope: mock.scope },
       items,
     },
   };
