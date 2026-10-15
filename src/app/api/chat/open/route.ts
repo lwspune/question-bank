@@ -9,6 +9,7 @@ import { checkAndIncrement } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/http";
 import { getSessionUser } from "@/lib/auth";
 import { recordChatInteraction } from "@/lib/chat/interactionsAdmin";
+import { cleanPagePath, isConversationId } from "@/lib/chat/conversation";
 
 export const maxDuration = 10;
 
@@ -30,8 +31,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const user = await getSessionUser();
-    await recordChatInteraction(admin, { eventType: "launcher_open", userId: user?.id ?? null });
+    const user = await getSessionUser().catch(() => null);
+    // Migration 0159: which conversation was opened, from which page. Optional.
+    const body = (await request.json().catch(() => null)) as { conversationId?: unknown; pagePath?: unknown } | null;
+    await recordChatInteraction(admin, {
+      eventType: "launcher_open",
+      userId: user?.id ?? null,
+      conversationId: isConversationId(body?.conversationId) ? body.conversationId : null,
+      pagePath: cleanPagePath(body?.pagePath),
+    });
 
     return NextResponse.json({ ok: true }, { status: 200 });
   } catch (err) {

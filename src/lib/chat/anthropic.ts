@@ -1,16 +1,22 @@
 /**
- * Transport for the "V" FAQ chatbot. Raw fetch, no SDK — one REST endpoint
- * doesn't justify @anthropic-ai/sdk under CLAUDE.md's dependency rule ("prefer
- * native APIs; every new dependency must be justified by a clear capability
- * gap"). Mirrors src/lib/email/resend.ts: key read from process.env at CALL
- * time (never module scope), never throws, returns a result type instead.
+ * Transport for V's AI answers. Raw fetch, no SDK: one endpoint and one small
+ * tool loop don't justify @anthropic-ai/sdk under CLAUDE.md's dependency rule
+ * ("prefer native APIs; every new dependency must be justified by a clear
+ * capability gap"). Mirrors src/lib/email/resend.ts: key read from process.env
+ * at CALL time (never module scope), never throws, returns a result type.
  *
- * NOT marked "server-only" for the same reason as resend.ts — belongs to
- * route handlers only, by convention, not by import restriction.
+ * NOT marked "server-only" for the same reason as resend.ts: belongs to route
+ * handlers only, by convention, not by import restriction.
+ *
+ * 2026-10-15: Haiku 5.5 at low effort (chat does well at low; $0.10/$0.50 per
+ * million tokens), plus V's tools, run here for at most MAX_TOOL_ROUNDS.
+ * Spec: tests/chat-ask-v.test.ts.
  */
 const ENDPOINT = "https://api.anthropic.com/v1/messages";
-const MODEL = "claude-haiku-4-5";
-const MAX_TOKENS = 400;
+export const V_MODEL = "claude-haiku-5-5";
+// Room for the reply plus Haiku 5.5's adaptive thinking, which counts against it.
+const MAX_TOKENS = 2000;
+const MAX_TOOL_ROUNDS = 3;
 
 export function chatEnv(): { apiKey: string } {
   const apiKey = process.env.ANTHROPIC_API_KEY;
@@ -18,11 +24,43 @@ export function chatEnv(): { apiKey: string } {
   return { apiKey };
 }
 
-export type AskVResult = { ok: true; reply: string } | { ok: false; error: string };
+export type VTool = {
+  name: string;
+  description: string;
+  input_schema: Record<string, unknown>;
+  /** Returns the text the model reads back. */
+  run: (input: unknown) => Promise<string>;
+};
 
-/** One turn: a fixed system prompt (the assembled facts) + the user's message.
- *  No history — V is stateless by design (see the chatbot plan). */
-export async function askV(systemPrompt: string, userMessage: string): Promise<AskVResult> {
+export type AskVResult =
+  | { ok: true; reply: string; tokensIn: number; tokensOut: number }
+  | { ok: false; error: string };
+
+type ContentBlock =
+  | { type: "text"; text?: string }
+  | { type: "tool_use"; id: string; name: string; input: unknown }
+  | { type: string; [k: string]: unknown };
+
+type ApiResponse = {
+  stop_reason?: string;
+  content?: ContentBlock[];
+  usage?: { input_tokens?: number; output_tokens?: number };
+};
+
+type Message = { role: "user" | "assistant"; content: unknown };
+
+/**
+ * One answer. The system prompt carries every fact;  carries the
+ * conversation so far (read from the database by the route, never the device).
+ * The model may call a tool; its result goes back and the model answers.
+ */
+export async function askV(input: {
+  system: string;
+  message: string;
+  tools: readonly VTool[];
+  /** Earlier exchanges of this conversation, oldest first (lib/chat/conversation modelHistory). */
+  history?: readonly { role: "user" | "assistant"; content: string }[];
+}): Promise<AskVResult> {
   let apiKey: string;
   try {
     ({ apiKey } = chatEnv());
@@ -30,38 +68,71 @@ export async function askV(systemPrompt: string, userMessage: string): Promise<A
     return { ok: false, error: (e as Error).message };
   }
 
+  const toolDefs = input.tools.map(({ name, description, input_schema }) => ({ name, description, input_schema }));
+  const messages: Message[] = [...(input.history ?? []), { role: "user", content: input.message }];
+  let tokensIn = 0;
+  let tokensOut = 0;
+
   try {
-    const res = await fetch(ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": apiKey,
-        "anthropic-version": "2023-06-01",
-      },
-      body: JSON.stringify({
-        model: MODEL,
-        max_tokens: MAX_TOKENS,
-        system: systemPrompt,
-        messages: [{ role: "user", content: userMessage }],
-      }),
-    });
+    for (let round = 0; round <= MAX_TOOL_ROUNDS; round++) {
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": apiKey,
+          "anthropic-version": "2023-06-01",
+        },
+        body: JSON.stringify({
+          model: V_MODEL,
+          max_tokens: MAX_TOKENS,
+          output_config: { effort: "low" },
+          system: input.system,
+          tools: toolDefs,
+          messages,
+        }),
+      });
 
-    if (!res.ok) {
-      const body = await res.text().catch(() => "");
-      return { ok: false, error: `Anthropic API ${res.status}: ${body.slice(0, 300)}` };
+      if (!res.ok) {
+        const body = await res.text().catch(() => "");
+        return { ok: false, error: `Anthropic API ${res.status}: ${body.slice(0, 300)}` };
+      }
+
+      const data = (await res.json()) as ApiResponse;
+      tokensIn += data.usage?.input_tokens ?? 0;
+      tokensOut += data.usage?.output_tokens ?? 0;
+      const content = data.content ?? [];
+
+      if (data.stop_reason === "tool_use") {
+        if (round === MAX_TOOL_ROUNDS) break;
+        const calls = content.filter(
+          (b): b is { type: "tool_use"; id: string; name: string; input: unknown } => b.type === "tool_use"
+        );
+        const results = await Promise.all(
+          calls.map(async (call) => {
+            const tool = input.tools.find((t) => t.name === call.name);
+            if (!tool) return { type: "tool_result", tool_use_id: call.id, content: "Unknown tool", is_error: true };
+            try {
+              return { type: "tool_result", tool_use_id: call.id, content: await tool.run(call.input) };
+            } catch (e) {
+              return { type: "tool_result", tool_use_id: call.id, content: (e as Error).message, is_error: true };
+            }
+          })
+        );
+        messages.push({ role: "assistant", content }, { role: "user", content: results });
+        continue;
+      }
+
+      if (data.stop_reason === "refusal") return { ok: false, error: "model refused" };
+
+      const reply = content
+        .filter((b): b is { type: "text"; text: string } => b.type === "text" && typeof b.text === "string")
+        .map((b) => b.text)
+        .join("")
+        .trim();
+      if (!reply) return { ok: false, error: `no text (stop_reason ${data.stop_reason ?? "none"})` };
+      return { ok: true, reply, tokensIn, tokensOut };
     }
-
-    const data = (await res.json()) as {
-      content?: { type: string; text?: string }[];
-    };
-    const reply = data.content
-      ?.filter((block) => block.type === "text" && block.text)
-      .map((block) => block.text)
-      .join("")
-      .trim();
-
-    if (!reply) return { ok: false, error: "Anthropic API returned no text content" };
-    return { ok: true, reply };
+    return { ok: false, error: `still calling tools after ${MAX_TOOL_ROUNDS} rounds` };
   } catch (e) {
     return { ok: false, error: (e as Error).message };
   }

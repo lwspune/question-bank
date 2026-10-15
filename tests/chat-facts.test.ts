@@ -1,12 +1,18 @@
 import { describe, it, expect } from "vitest";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+import { pathsInReply } from "@/lib/chat/replyLinks";
 import {
   buildExamFacts,
   buildPlanFacts,
+  buildFreeFacts,
   NAV_FACTS,
   buildSystemPrompt,
   type ChatExamFact,
   type ChatPlanFact,
 } from "@/lib/chat/facts";
+
+const EM_DASH = String.fromCharCode(0x2014);
 
 describe("buildExamFacts", () => {
   const exams: ChatExamFact[] = [
@@ -90,6 +96,32 @@ describe("buildPlanFacts", () => {
   it("returns an empty list when nothing is on sale", () => {
     expect(buildPlanFacts([])).toEqual([]);
   });
+
+  it("carries the pass's own perks, so V quotes what /pricing says", () => {
+    const facts = buildPlanFacts([
+      { label: "Premium Pass", amountPaise: 9900, durationDays: 182, scope: "mocks", perks: ["Unlimited mocks", "PDF downloads"] },
+    ]);
+    expect(facts[0]).toContain("Unlimited mocks");
+    expect(facts[0]).toContain("PDF downloads");
+  });
+});
+
+describe("buildFreeFacts", () => {
+  it("states each free limit that is on", () => {
+    const facts = buildFreeFacts({ reveals: 30, drill: 15, saves: 100, mocks: 3, chapterTests: 5, projectionDays: 7, papersPerDay: 1 });
+    expect(facts.some((f) => f.includes("30") && /answer/i.test(f))).toBe(true);
+    expect(facts.some((f) => f.includes("3") && /mock/i.test(f))).toBe(true);
+  });
+
+  it("calls a limit that is off unlimited, never a number", () => {
+    const facts = buildFreeFacts({ reveals: null, drill: null, saves: null, mocks: null, chapterTests: null, projectionDays: null, papersPerDay: null });
+    expect(facts.join(" ")).not.toMatch(/\bnull\b/);
+    expect(facts.some((f) => /mock/i.test(f) && /unlimited|no limit/i.test(f))).toBe(true);
+  });
+
+  it("claims nothing when the limits could not be read", () => {
+    expect(buildFreeFacts(null)).toEqual([]);
+  });
 });
 
 describe("NAV_FACTS", () => {
@@ -98,11 +130,31 @@ describe("NAV_FACTS", () => {
     expect(NAV_FACTS.some((f) => f.includes("/browse"))).toBe(true);
     expect(NAV_FACTS.some((f) => f.includes("/mock"))).toBe(true);
   });
+
+  it("names the pages students asked V for", () => {
+    const all = NAV_FACTS.join(" ");
+    for (const path of ["/pricing", "/question-papers", "/board", "/guide", "/notes", "/signup"]) {
+      expect(all).toContain(path);
+    }
+    expect(all).toContain("Build a practice test");
+  });
+
+  it("names only pages that exist, since V links them (an /exams index never did)", () => {
+    const paths = pathsInReply(NAV_FACTS.join(" "));
+    expect(paths.length).toBeGreaterThan(5);
+    for (const path of paths) {
+      expect(existsSync(join(process.cwd(), "src/app", path, "page.tsx")), path).toBe(true);
+    }
+  });
+
+  it("uses no em dashes, since V copies the style it is shown", () => {
+    expect(NAV_FACTS.join(" ")).not.toContain(EM_DASH);
+  });
 });
 
 describe("buildSystemPrompt", () => {
   const base = {
-    exams: ["NDA — senior stage, has mocks."],
+    exams: ["NDA: senior stage, has mocks."],
     plans: ["Teacher Pass: ₹499 for 1 year (unlocks teacher)."],
     bankTotal: 78774,
     nav: NAV_FACTS,
@@ -110,7 +162,7 @@ describe("buildSystemPrompt", () => {
 
   it("carries every fact category into the prompt", () => {
     const p = buildSystemPrompt(base);
-    expect(p).toContain("NDA — senior stage, has mocks.");
+    expect(p).toContain("NDA: senior stage, has mocks.");
     expect(p).toContain("Teacher Pass: ₹499 for 1 year (unlocks teacher).");
     expect(p).toContain("78774");
     expect(p).toContain("/browse");
@@ -128,6 +180,40 @@ describe("buildSystemPrompt", () => {
   it("instructs the model to refuse explaining a specific PYQ", () => {
     const p = buildSystemPrompt(base).toLowerCase();
     expect(p).toContain("explain");
+  });
+
+  it("tells V to use the chapter search and to link only pages it was given", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).toContain("find_chapters");
+    expect(p.toLowerCase()).toMatch(/never (make up|invent)/);
+  });
+
+  it("covers what students actually typed: tests, future papers, buying, language", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).toContain("Build a practice test");
+    expect(p).toMatch(/2027|future paper|upcoming paper/i);
+    expect(p).toContain("/pricing");
+    expect(p).toMatch(/Hindi|Hinglish/);
+  });
+
+  it("states the free limits when given", () => {
+    const p = buildSystemPrompt({ ...base, free: ["Answers: 30 a day free when signed in."] });
+    expect(p).toContain("Answers: 30 a day free when signed in.");
+  });
+
+  it("tells V the page the student is on, when known", () => {
+    expect(buildSystemPrompt({ ...base, page: "/questions/cbse-12/physics/atoms" })).toContain(
+      "The student is on the page /questions/cbse-12/physics/atoms"
+    );
+    expect(buildSystemPrompt(base)).not.toContain("The student is on the page");
+  });
+
+  it("tells V it can see the earlier messages of this chat", () => {
+    expect(buildSystemPrompt(base).toLowerCase()).toContain("earlier messages");
+  });
+
+  it("has no em dashes of its own", () => {
+    expect(buildSystemPrompt(base)).not.toContain(EM_DASH);
   });
 
   it("degrades gracefully with an empty plans list", () => {

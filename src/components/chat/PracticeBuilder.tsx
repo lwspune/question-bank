@@ -21,6 +21,7 @@ import {
 import { practiceLengths, type PracticeDifficulty } from "@/lib/practiceTests/pick";
 import type { MockStartState } from "@/lib/mocks/quota";
 import type { BuilderStepId } from "@/lib/chat/builderSteps";
+import { readStoredChat } from "@/lib/chat/localChat";
 
 type ExamOption = { slug: string; name: string };
 type SubjectOption = { key: string; label: string };
@@ -58,7 +59,8 @@ export function logBuilderStep(step: Exclude<BuilderStepId, "built">) {
   void fetch("/api/chat/builder", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ step }),
+    // Migration 0159: the step joins the conversation the chat window keeps.
+    body: JSON.stringify({ step, conversationId: readStoredChat()?.conversationId ?? null }),
   }).catch(() => {});
 }
 

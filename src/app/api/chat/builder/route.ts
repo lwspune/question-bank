@@ -11,6 +11,7 @@ import { getClientIp } from "@/lib/http";
 import { getSessionUser } from "@/lib/auth";
 import { recordChatInteraction } from "@/lib/chat/interactionsAdmin";
 import { isBuilderStep } from "@/lib/chat/builderSteps";
+import { isConversationId } from "@/lib/chat/conversation";
 
 export const maxDuration = 10;
 
@@ -31,7 +32,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const body = (await request.json().catch(() => null)) as { step?: unknown } | null;
+    const body = (await request.json().catch(() => null)) as { step?: unknown; conversationId?: unknown } | null;
     const step = body?.step;
     // "built" is the build route's to record, never the browser's.
     if (!isBuilderStep(step) || step === "built") {
@@ -44,7 +45,12 @@ export async function POST(request: NextRequest) {
     } catch {
       userId = null;
     }
-    await recordChatInteraction(admin, { eventType: "builder_step", step, userId });
+    await recordChatInteraction(admin, {
+      eventType: "builder_step",
+      step,
+      userId,
+      conversationId: isConversationId(body?.conversationId) ? body.conversationId : null,
+    });
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("chat/builder route error", err);

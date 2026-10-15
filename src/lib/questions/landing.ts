@@ -102,129 +102,130 @@ type ProfileRow = {
  * table ran ~9 times per healthy build and ~58 times when the database was
  * slow (2026-10-06), two thirds of that build's requests.
  */
-const loadChapterLandings = unstable_cache(
-  async (): Promise<ChapterLanding[]> => {
-    const db = createSupabaseAnonClient();
+/** The routing table, uncached: for scripts outside Next (no incremental cache). Pages use listChapterLandings. */
+export async function readChapterLandingsUncached(): Promise<ChapterLanding[]> {
+  const db = createSupabaseAnonClient();
 
-    const { data: examRows } = await db.from("exams").select("id, name");
-    const examsByName = new Map((examRows ?? []).map((e) => [e.name, e.id]));
+  const { data: examRows } = await db.from("exams").select("id, name");
+  const examsByName = new Map((examRows ?? []).map((e) => [e.name, e.id]));
 
-    const landings: ChapterLanding[] = [];
+  const landings: ChapterLanding[] = [];
 
-    for (const exam of EXAM_REGISTRY) {
-      const examId = examsByName.get(exam.examName);
-      if (!examId) continue; // Registered in code but not yet seeded in the DB.
+  for (const exam of EXAM_REGISTRY) {
+    const examId = examsByName.get(exam.examName);
+    if (!examId) continue; // Registered in code but not yet seeded in the DB.
 
-      const practiceOnly = isPracticeOnlyExam(exam.examName);
-      const kind = practiceOnly ? "practice" : "pyq";
+    const practiceOnly = isPracticeOnlyExam(exam.examName);
+    const kind = practiceOnly ? "practice" : "pyq";
 
-      const { data: subjects } = await db
-        .from("subjects")
-        .select("id, name")
-        .eq("exam_id", examId)
-        .order("name");
+    const { data: subjects } = await db
+      .from("subjects")
+      .select("id, name")
+      .eq("exam_id", examId)
+      .order("name");
 
-      for (const subject of dedupeBySlug(subjects ?? [])) {
-        const [{ data: chapters }, { data: facets }, lastAddedRes, profileRes] =
-          await Promise.all([
-            db
-              .from("chapters")
-              .select("id, name")
-              .eq("subject_id", subject.id)
-              .order("name"),
-            db.rpc("get_chapter_facets", {
-              p_exam_id: examId,
-              p_subject_id: subject.id,
-              p_difficulties: null,
-              p_pyq_years: null,
-              p_q: null,
-              p_kind: kind,
-            }),
-            // Newest PUBLIC question per chapter → the sitemap's <lastmod>
-            // (migration 0073). Subject-scoped so it rides questions_filter_idx;
-            // the bank-wide version this replaced took 5.4s and was intermittently
-            // cancelled by the statement timeout. Rides along in this Promise.all,
-            // so it costs no extra round-trip.
-            db.rpc("get_chapter_last_added", {
-              p_subject_id: subject.id,
-              p_kind: kind,
-            }),
-            // Years / papers / difficulty split per chapter (migration 0126) —
-            // the quotable header. Same subject scope, same Promise.all, so it
-            // rides questions_filter_idx and costs no extra round-trip.
-            db.rpc("get_chapter_profile", {
-              p_subject_id: subject.id,
-              p_kind: kind,
-            }),
-          ]);
+    for (const subject of dedupeBySlug(subjects ?? [])) {
+      const [{ data: chapters }, { data: facets }, lastAddedRes, profileRes] =
+        await Promise.all([
+          db
+            .from("chapters")
+            .select("id, name")
+            .eq("subject_id", subject.id)
+            .order("name"),
+          db.rpc("get_chapter_facets", {
+            p_exam_id: examId,
+            p_subject_id: subject.id,
+            p_difficulties: null,
+            p_pyq_years: null,
+            p_q: null,
+            p_kind: kind,
+          }),
+          // Newest PUBLIC question per chapter → the sitemap's <lastmod>
+          // (migration 0073). Subject-scoped so it rides questions_filter_idx;
+          // the bank-wide version this replaced took 5.4s and was intermittently
+          // cancelled by the statement timeout. Rides along in this Promise.all,
+          // so it costs no extra round-trip.
+          db.rpc("get_chapter_last_added", {
+            p_subject_id: subject.id,
+            p_kind: kind,
+          }),
+          // Years / papers / difficulty split per chapter (migration 0126) —
+          // the quotable header. Same subject scope, same Promise.all, so it
+          // rides questions_filter_idx and costs no extra round-trip.
+          db.rpc("get_chapter_profile", {
+            p_subject_id: subject.id,
+            p_kind: kind,
+          }),
+        ]);
 
-        // Surfaced, not swallowed: a silent `{ data }` destructure is exactly how
-        // the 5.4s timeout above went unnoticed — every affected page just
-        // quietly fell back to the build date, recreating the bug being fixed.
-        // The dates are best-effort (never fail a sitemap over one), but a
-        // failure must at least be visible in the logs.
-        if (lastAddedRes.error) {
-          console.warn(
-            `[landing] last-added lookup failed for ${subject.name}: ${lastAddedRes.error.message}`
-          );
-        }
-
-        if (profileRes.error) {
-          console.warn(
-            `[landing] profile lookup failed for ${subject.name}: ${profileRes.error.message}`
-          );
-        }
-
-        const counts = new Map(
-          ((facets ?? []) as FacetRow[]).map((f) => [f.chapter_id, f.q_count])
+      // Surfaced, not swallowed: a silent `{ data }` destructure is exactly how
+      // the 5.4s timeout above went unnoticed — every affected page just
+      // quietly fell back to the build date, recreating the bug being fixed.
+      // The dates are best-effort (never fail a sitemap over one), but a
+      // failure must at least be visible in the logs.
+      if (lastAddedRes.error) {
+        console.warn(
+          `[landing] last-added lookup failed for ${subject.name}: ${lastAddedRes.error.message}`
         );
-        const profileByChapter = new Map<string, ChapterProfile>(
-          ((profileRes.data ?? []) as ProfileRow[]).map((r) => [
-            r.chapter_id,
-            {
-              minYear: r.min_year,
-              maxYear: r.max_year,
-              sittings: r.sittings,
-              easy: r.easy_count,
-              moderate: r.moderate_count,
-              hard: r.hard_count,
-            },
-          ])
-        );
-        const lastAddedByChapter = new Map(
-          ((lastAddedRes.data ?? []) as LastAddedRow[]).map((r) => [
-            r.chapter_id,
-            r.last_added,
-          ])
-        );
+      }
 
-        for (const chapter of dedupeBySlug(chapters ?? [])) {
-          const questionCount = counts.get(chapter.id) ?? 0;
-          if (questionCount < MIN_QUESTIONS_FOR_LANDING) continue;
-          landings.push({
-            examSlug: exam.slug,
-            subjectSlug: slugifyName(subject.name),
-            chapterSlug: slugifyName(chapter.name),
-            examName: exam.examName,
-            subjectName: subject.name,
-            chapterName: chapter.name,
-            examId,
-            subjectId: subject.id,
-            chapterId: chapter.id,
-            questionCount,
-            practiceOnly,
-            lastAdded: lastAddedByChapter.get(chapter.id) ?? null,
-            profile: profileByChapter.get(chapter.id) ?? null,
-          });
-        }
+      if (profileRes.error) {
+        console.warn(
+          `[landing] profile lookup failed for ${subject.name}: ${profileRes.error.message}`
+        );
+      }
+
+      const counts = new Map(
+        ((facets ?? []) as FacetRow[]).map((f) => [f.chapter_id, f.q_count])
+      );
+      const profileByChapter = new Map<string, ChapterProfile>(
+        ((profileRes.data ?? []) as ProfileRow[]).map((r) => [
+          r.chapter_id,
+          {
+            minYear: r.min_year,
+            maxYear: r.max_year,
+            sittings: r.sittings,
+            easy: r.easy_count,
+            moderate: r.moderate_count,
+            hard: r.hard_count,
+          },
+        ])
+      );
+      const lastAddedByChapter = new Map(
+        ((lastAddedRes.data ?? []) as LastAddedRow[]).map((r) => [
+          r.chapter_id,
+          r.last_added,
+        ])
+      );
+
+      for (const chapter of dedupeBySlug(chapters ?? [])) {
+        const questionCount = counts.get(chapter.id) ?? 0;
+        if (questionCount < MIN_QUESTIONS_FOR_LANDING) continue;
+        landings.push({
+          examSlug: exam.slug,
+          subjectSlug: slugifyName(subject.name),
+          chapterSlug: slugifyName(chapter.name),
+          examName: exam.examName,
+          subjectName: subject.name,
+          chapterName: chapter.name,
+          examId,
+          subjectId: subject.id,
+          chapterId: chapter.id,
+          questionCount,
+          practiceOnly,
+          lastAdded: lastAddedByChapter.get(chapter.id) ?? null,
+          profile: profileByChapter.get(chapter.id) ?? null,
+        });
       }
     }
+  }
 
-    return landings;
-  },
-  ["questions-landing", "chapter-index"],
-  { revalidate: LANDING_TTL_SECONDS }
-);
+  return landings;
+}
+
+const loadChapterLandings = unstable_cache(readChapterLandingsUncached, ["questions-landing", "chapter-index"], {
+  revalidate: LANDING_TTL_SECONDS,
+});
 
 export function listChapterLandings(): Promise<ChapterLanding[]> {
   return singleFlight("questions-landing", loadChapterLandings, {

@@ -12,7 +12,16 @@ export type ChatInteractionRow = {
   /** A typed question's (masked) text, migration 0145. */
   message?: string | null;
   signedIn?: boolean;
+  /** What V replied and where from; token use on AI replies (migration 0158). */
+  reply?: string | null;
+  replySource?: "ai" | "fallback" | null;
+  tokensIn?: number | null;
+  tokensOut?: number | null;
 };
+
+/** Claude Haiku 5.5 list prices, USD per token (lib/chat/anthropic.ts V_MODEL). */
+const USD_PER_INPUT_TOKEN = 0.1 / 1_000_000;
+const USD_PER_OUTPUT_TOKEN = 0.5 / 1_000_000;
 
 export type ChatInteractionSummary = {
   totalOpens: number;
@@ -20,7 +29,16 @@ export type ChatInteractionSummary = {
   byQuestion: { id: string; label: string; count: number }[];
   totalTyped: number;
   /** Typed questions in the order given (the loader returns newest first). */
-  typed: { text: string; createdAt: string; signedIn: boolean }[];
+  typed: {
+    text: string;
+    createdAt: string;
+    signedIn: boolean;
+    reply: string | null;
+    replySource: "ai" | "fallback" | null;
+  }[];
+  /** Typed questions V answered with AI, and their cost at list price. */
+  aiAnswers: number;
+  aiCostUsd: number;
   /** The practice-test builder's funnel (migration 0157), every step listed. */
   builder: { step: string; label: string; count: number }[];
 };
@@ -33,6 +51,8 @@ export function summarizeChatInteractions(rows: readonly ChatInteractionRow[]): 
   const counts = new Map<string, number>();
   const typed: ChatInteractionSummary["typed"] = [];
   const builderCounts = new Map<string, number>();
+  let aiAnswers = 0;
+  let aiCostUsd = 0;
 
   for (const r of rows) {
     if (r.eventType === "launcher_open") {
@@ -44,7 +64,19 @@ export function summarizeChatInteractions(rows: readonly ChatInteractionRow[]): 
       continue;
     }
     if (r.eventType === "typed_question") {
-      if (r.message) typed.push({ text: r.message, createdAt: r.createdAt, signedIn: r.signedIn === true });
+      if (r.message) {
+        typed.push({
+          text: r.message,
+          createdAt: r.createdAt,
+          signedIn: r.signedIn === true,
+          reply: r.reply ?? null,
+          replySource: r.replySource ?? null,
+        });
+      }
+      if (r.replySource === "ai") {
+        aiAnswers++;
+        aiCostUsd += (r.tokensIn ?? 0) * USD_PER_INPUT_TOKEN + (r.tokensOut ?? 0) * USD_PER_OUTPUT_TOKEN;
+      }
       continue;
     }
     totalClicks++;
@@ -58,5 +90,5 @@ export function summarizeChatInteractions(rows: readonly ChatInteractionRow[]): 
 
   const builder = BUILDER_STEP_LABELS.map(({ step, label }) => ({ step, label, count: builderCounts.get(step) ?? 0 }));
 
-  return { totalOpens, totalClicks, byQuestion, totalTyped: typed.length, typed, builder };
+  return { totalOpens, totalClicks, byQuestion, totalTyped: typed.length, typed, builder, aiAnswers, aiCostUsd };
 }

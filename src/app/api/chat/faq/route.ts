@@ -1,9 +1,9 @@
 /**
  * POST /api/chat/faq — V's phase-2 predefined-question path. No LLM call,
  * no ANTHROPIC_API_KEY: a chip id in, a templated answer out, built from the
- * same live facts (EXAM_REGISTRY, plans, bank count) the dormant /api/chat
- * (LLM) route already reads. See the "V, phase 2" plan for why this exists
- * alongside the untouched LLM path rather than replacing it.
+ * same live facts (EXAM_REGISTRY, plans, bank count) V's AI answers read
+ * (lib/chat/context.ts). A button's answer stays templated: it costs nothing
+ * and cannot drift.
  */
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -16,13 +16,14 @@ import { listActivePlans } from "@/lib/billing/plansQuery";
 import type { ChatExamFact } from "@/lib/chat/facts";
 import { getSessionUser } from "@/lib/auth";
 import { recordChatInteraction } from "@/lib/chat/interactionsAdmin";
+import { cleanPagePath, isConversationId } from "@/lib/chat/conversation";
 
 export const maxDuration = 10;
 
 const HOUR_MS = 60 * 60 * 1000;
 const ASK_LIMIT = 30; // per IP per hour — a cheap DB read, generous cap is just hygiene
 
-type Body = { questionId?: string };
+type Body = { questionId?: string; conversationId?: unknown; pagePath?: unknown };
 
 function toExamFact(e: (typeof EXAM_REGISTRY)[number]): ChatExamFact {
   return {
@@ -69,7 +70,8 @@ export async function POST(request: NextRequest) {
         .from("questions")
         .select("*", { count: "exact", head: true })
         .eq("visibility", "PUBLIC"),
-      getSessionUser(),
+      // Outside a request scope (route tests) the session read throws: signed out.
+      getSessionUser().catch(() => null),
     ]);
 
     const reply = buildFaqAnswer(questionId, {
@@ -82,6 +84,9 @@ export async function POST(request: NextRequest) {
       eventType: "faq_click",
       questionId,
       userId: user?.id ?? null,
+      replyText: reply,
+      conversationId: isConversationId(raw.conversationId) ? raw.conversationId : null,
+      pagePath: cleanPagePath(raw.pagePath),
     });
 
     return NextResponse.json({ ok: true, reply }, { status: 200 });
