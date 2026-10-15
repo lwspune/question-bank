@@ -71,13 +71,29 @@ export default function MobileTabBar({ nav, fifth }: { nav: ExamNav; fifth: Fift
             className={
               // 56px tall — comfortably past the 44px minimum touch target,
               // and at 360px each tab gets 72px of width.
-              "flex h-14 flex-col items-center justify-center gap-0.5 text-[10px] font-medium leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring " +
+              "relative flex h-14 flex-col items-center justify-center gap-0.5 text-[10px] leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring " +
               (isActive
-                ? "text-brand-accent"
-                : "text-muted-foreground active:bg-accent")
+                ? "font-bold text-brand-accent"
+                : "font-medium text-muted-foreground active:bg-accent")
             }
           >
-            <Icon className="h-5 w-5 shrink-0" aria-hidden />
+            {/* The selected tab carries three marks, not just a colour: a bar
+                on the top edge, a pill behind the icon and a bold label.
+                Colour alone was too hard to read (owner, 2026-10-15). */}
+            {isActive && (
+              <span
+                aria-hidden
+                className="absolute inset-x-3 top-0 h-[3px] rounded-b-full bg-brand-accent"
+              />
+            )}
+            <span
+              className={
+                "flex h-7 w-12 items-center justify-center rounded-full " +
+                (isActive ? "bg-brand-accent/15" : "")
+              }
+            >
+              <Icon className="h-5 w-5 shrink-0" aria-hidden />
+            </span>
             <span>{label}</span>
           </Link>
         );

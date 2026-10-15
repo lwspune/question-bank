@@ -1,7 +1,7 @@
 /**
  * slug → exam UUID, cached and shared by every visitor.
  *
- * The header's Bank tab needs `/browse?examId=<uuid>`, which is the one piece of
+ * The header's PYQs tab needs `/browse?examId=<uuid>`, which is the one piece of
  * nav that can't be derived from the registry alone. Resolving it on the server
  * per-request is fine ONLY because this map is identical for everyone — no
  * cookie, no session — so it can be cached and embedded in a page that is served
@@ -31,7 +31,7 @@ export const getExamIdMap = unstable_cache(
       }
     } catch {
       // A DB blip must not break the header on every page. Every slug resolves
-      // to null, so the Bank tab falls back to a bare /browse — degraded, not
+      // to null, so the PYQs tab falls back to a bare /browse — degraded, not
       // broken. Same posture loadActiveExamContext() took.
     }
     return map;
