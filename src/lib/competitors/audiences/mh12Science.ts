@@ -457,8 +457,38 @@ export const MH_12_SCIENCE: Audience = {
         books: no,
       },
     },
+    {
+      id: "comparison-pages",
+      group: "access",
+      name: "Honest 'us vs them' and 'best site for X' pages",
+      ours: "missing",
+      oursNote: "Idea from sortmyprep (watch list), which publishes these for its market",
+      marks: {
+        mathongo: unknown,
+        pw: unknown,
+        shaalaa: unknown,
+        careers360: { mark: "partial", evidence: C360_QA, note: "community 'best app' threads, not its own pages" },
+        examside: unknown,
+        books: no,
+      },
+    },
   ],
   ideas: [
+    {
+      id: "comparison-pages",
+      title: "Honest comparison pages: 'PYQ Vault vs MARKS', 'best free MHT-CET PYQ site'",
+      featureIds: ["comparison-pages"],
+      demand: 3,
+      fit: 4,
+      cost: 2,
+      why: "ChatGPT sends us about half our signups and answers exactly these questions from pages like these. sortmyprep publishes them for its market; none of the six here do.",
+      demandEvidence: [
+        "sortmyprep: 'vs Save My Exams', 'vs Papa Cambridge' and 'best IGCSE website' posts.",
+        "Careers360 'best app for MHT-CET PYQ' threads rank for this search.",
+      ],
+      next: "Owner's call first: naming rivals on our site is a brand decision. If yes, plan 2 or 3 pages and track them as a growth experiment.",
+      status: "proposed",
+    },
     {
       id: "surface-important-chapters",
       title: "Point students to what we already have: 'Which chapters matter most?'",
@@ -515,6 +545,7 @@ export const MH_12_SCIENCE: Audience = {
       demandEvidence: [
         "Students typed to V (2026-10-15): 'explain in detail', a question number, a maths expression to solve.",
         "PW: 24/7 doubt engine and AI tutor.",
+        "sortmyprep (watch list) builds its product around an AI tutor for a stuck step.",
       ],
       next: "Read /dashboard/chat as planned, then decide on the API key.",
       status: "proposed",

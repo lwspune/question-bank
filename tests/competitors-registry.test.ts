@@ -3,10 +3,12 @@ import {
   ideaScore,
   rankIdeas,
   validateAudience,
+  validateWatchList,
   type Audience,
   type Idea,
+  type WatchItem,
 } from "@/lib/competitors/model";
-import { AUDIENCES } from "@/lib/competitors";
+import { AUDIENCES, WATCH_LIST } from "@/lib/competitors";
 
 /**
  * The competitor analysis (2026-10-15): competitors, a feature checklist,
@@ -148,6 +150,42 @@ describe("validateAudience", () => {
     const a = base();
     a.features[0].marks.c1 = { mark: "yes", evidence: "rival.example/f" };
     expect(validateAudience(a).join("\n")).toMatch(/https/);
+  });
+});
+
+describe("validateWatchList", () => {
+  const item = (over: Partial<WatchItem> = {}): WatchItem => ({
+    id: "w",
+    name: "Elsewhere",
+    url: "https://elsewhere.example",
+    covers: "Other exams",
+    whyNotCompared: "Not our students.",
+    lessons: ["Something to borrow."],
+    checkedOn: "2026-10-15",
+    ...over,
+  });
+
+  it("passes a well-formed list", () => {
+    expect(validateWatchList([item()])).toEqual([]);
+  });
+
+  it("needs https, at least one lesson, an ISO date and unique ids", () => {
+    const problems = validateWatchList([
+      item({ url: "elsewhere.example" }),
+      item({ id: "x", lessons: [] }),
+      item({ id: "y", checkedOn: "today" }),
+      item({ id: "y" }),
+    ]).join("\n");
+    expect(problems).toMatch(/w.*https/);
+    expect(problems).toMatch(/x.*lesson/);
+    expect(problems).toMatch(/y.*checkedOn/);
+    expect(problems).toMatch(/duplicate.*y/);
+  });
+
+  it("keeps the real list valid, and apart from every audience's compared competitors", () => {
+    expect(validateWatchList(WATCH_LIST)).toEqual([]);
+    const compared = new Set(AUDIENCES.flatMap((a) => a.competitors.map((c) => c.id)));
+    for (const w of WATCH_LIST) expect(compared.has(w.id)).toBe(false);
   });
 });
 

@@ -100,6 +100,23 @@ export type Audience = {
   toCheckByHand: string[];
 };
 
+/**
+ * A product outside every audience we compare (other exams, other countries)
+ * with something worth borrowing. Kept out of the feature table on purpose: a
+ * column of "no"s for exams it never covered would say nothing.
+ */
+export type WatchItem = {
+  id: string;
+  name: string;
+  url: string;
+  /** What it covers, in a few words. */
+  covers: string;
+  whyNotCompared: string;
+  /** What we could borrow, a sentence each. */
+  lessons: string[];
+  checkedOn: string;
+};
+
 export function ideaScore(i: Idea): number {
   return (i.demand * i.fit) / i.cost;
 }
@@ -180,5 +197,17 @@ export function validateAudience(a: Audience): string[] {
     if (i.demandEvidence.length === 0) problems.push(`idea ${i.id}: no demand evidence`);
   }
 
+  return problems;
+}
+
+/** Every rule the watch list breaks, one line each. Empty = valid. */
+export function validateWatchList(items: WatchItem[]): string[] {
+  const problems: string[] = [];
+  for (const id of duplicates(items.map((w) => w.id))) problems.push(`watch list: duplicate id ${id}`);
+  for (const w of items) {
+    if (!w.url.startsWith("https://")) problems.push(`watch ${w.id}: url must be https`);
+    if (w.lessons.length === 0) problems.push(`watch ${w.id}: needs at least one lesson`);
+    if (!ISO_DATE.test(w.checkedOn)) problems.push(`watch ${w.id}: checkedOn "${w.checkedOn}" is not YYYY-MM-DD`);
+  }
   return problems;
 }

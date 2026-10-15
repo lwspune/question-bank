@@ -2,8 +2,9 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import AppHeader from "@/components/AppHeader";
 import { getSessionSuperadmin } from "@/lib/auth";
-import { AUDIENCES } from "@/lib/competitors";
+import { AUDIENCES, WATCH_LIST } from "@/lib/competitors";
 import AudienceView, { linkClass } from "./AudienceView";
+import WatchListView from "./WatchListView";
 
 /**
  * /dashboard/competitors: the competitor analysis, one audience at a time.
@@ -58,6 +59,7 @@ export default async function CompetitorsPage({ searchParams }: { searchParams: 
         )}
 
         <AudienceView a={current} />
+        <WatchListView items={WATCH_LIST} />
       </main>
     </>
   );
