@@ -10,6 +10,7 @@ import { buildFailureMemoMs } from "@/lib/cache/buildPhase";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import type { BoardQuestion } from "@/lib/board/query";
 import { assemblePaper, type PaperItemRow, type PaperListing, type PaperViewItem } from "./listing";
+import { listWithFreshOnMiss } from "./freshOnMiss";
 
 const PAPER_COLUMNS =
   "id, exam_id, subject_id, slug, group_slug, set_number, year, sitting, paper_code, title, total_marks, duration_minutes, exams(name), subjects(name)";
@@ -90,6 +91,16 @@ const cachedPublishedPapers = unstable_cache(
 /** The published list, cached for a day and shared by every list page. */
 export function getPublishedPapers(): Promise<PaperListingWithExam[]> {
   return singleFlight("board-papers-list", cachedPublishedPapers, { rememberFailureMs: buildFailureMemoMs() });
+}
+
+/**
+ * The published list for a page that 404s without its papers: re-read from the
+ * database once when the cached copy has none (see freshOnMiss).
+ */
+export function getPublishedPapersFor(
+  wanted: (p: PaperListingWithExam) => boolean
+): Promise<PaperListingWithExam[]> {
+  return listWithFreshOnMiss(getPublishedPapers, () => listPublishedPapers(createSupabaseAnonClient()), wanted);
 }
 
 export type PaperView = PaperListingWithExam & {

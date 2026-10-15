@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { slugify } from "@/lib/board/query";
-import { getPublishedPapers } from "@/lib/questionPapers/query";
+import { getPublishedPapersFor, type PaperListingWithExam } from "@/lib/questionPapers/query";
 import { subjectListing } from "@/lib/questionPapers/listing";
 
 type Params = { examSlug: string; subjectSlug: string };
@@ -22,9 +22,9 @@ export function generateStaticParams(): Params[] {
 async function load(params: Params) {
   const exam = getExamBySlug(params.examSlug);
   if (!exam?.boardExam) return null;
-  const papers = (await getPublishedPapers()).filter(
-    (p) => p.examName === exam.examName && slugify(p.subjectName) === params.subjectSlug
-  );
+  const mine = (p: PaperListingWithExam) =>
+    p.examName === exam.examName && slugify(p.subjectName) === params.subjectSlug;
+  const papers = (await getPublishedPapersFor(mine)).filter(mine);
   if (papers.length === 0) return null;
   return { exam, subjectName: papers[0].subjectName, years: subjectListing(papers), count: papers.length };
 }
