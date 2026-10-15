@@ -132,6 +132,16 @@ export type ExamEntry = {
    */
   bilingual?: boolean;
   /**
+   * The exam's PAST PAPERS (published `pyq` + `full` mocks) carry worked
+   * solutions, not just answers: nine in ten questions or more. Decides whether
+   * its past-paper list (/mock/exam/<slug>/download) is titled "with Solutions"
+   * or "with Answers" (2026-10-15). Declared rather than counted per request
+   * because counting means reading every question on every paper;
+   * tests/past-paper-solutions-registry.test.ts re-measures it daily in BOTH
+   * directions. Absent means "answers": a new exam under-claims until checked.
+   */
+  pastPaperSolutions?: boolean;
+  /**
    * This exam has NO PUBLIC questions — it is ingested-but-private, or not yet
    * ingested at all. It is kept in the registry (so its routes, flags and
    * grouping are declared in one place and the launch is a one-line edit), but
@@ -233,6 +243,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     guidesPath: "/guide/nda",
     notesPath: "/notes/nda", // exam hub: lists Maths + Physics + Biology notes
     hasMocks: true, // 18 NDA Maths Paper I mocks published at /mock
+    pastPaperSolutions: true,
   },
   {
     slug: "mht-cet",
@@ -242,6 +253,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     guidesPath: "/guide/mht-cet", // hub: MHT-CET Maths + Physics (Template C) + Chemistry (execution-mode strands)
     notesPath: "/notes/mht-cet", // exam hub: MHT-CET Maths notes
     hasMocks: true, // 60 mocks: Paper I (Maths) + Paper II (Phy & Chem) per sitting
+    pastPaperSolutions: true,
   },
   {
     slug: "jee-mains",
@@ -250,6 +262,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "JEE Mains", // must match the `exams` DB row exactly
     mixedFormats: true, // Section-B NAT: 2,900 numeric alongside 7,593 MCQ
     hasMocks: true, // 24 Paper 1 mocks (2025+2026 shifts) published at /mock
+    pastPaperSolutions: true,
     guidesPath: "/guide/jee-mains", // hub: JEE Mains Maths (Template C, tiers on recent weight, 2026-09-30)
     notesPath: "/notes/jee-mains", // exam hub: "coming soon" until JEE notes ship
   },
@@ -261,6 +274,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     guidesPath: "/guide/cds", // hub: CDS Maths (Template C, 2026-09-29)
     notesPath: "/notes/cds", // exam hub: live since 2026-09-15 (Mathematics — Number System)
     hasMocks: true, // CDS English mocks (2017-I … 2026-I) published at /mock
+    pastPaperSolutions: true,
   },
   {
     slug: "foundation-course",
@@ -280,6 +294,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/neet", // exam hub: "coming soon" until NEET notes ship
     hasMocks: true, // 8 NEET (UG) mocks (2021-2026 + 2 Re-NEET) published at /mock
+    pastPaperSolutions: true,
   },
   {
     slug: "mh-hsc-12",
@@ -708,6 +723,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     guidesPath: null,
     notesPath: null,
     hasMocks: true, // 19 mocks (GS I + CSAT) published 2026-09-26; 2021 CSAT held (dual key)
+    pastPaperSolutions: true,
   },
   {
     slug: "afcat",
