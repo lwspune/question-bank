@@ -39,9 +39,10 @@ export type ShotArgs = {
    *  student who chose these exams, so a signed-in view can be captured on
    *  both sides without signing in. Null = anonymous, as before. */
   asStudent: string[] | null;
-  /** `--click="<text>"`: tap the first visible button or link whose text starts
-   *  with this before the shot, so a dialog or sheet can be captured. */
-  click: string | null;
+  /** `--click="<text>"`: tap the first visible button or link whose text (or
+   *  aria-label) starts with this before the shot, so a dialog or sheet can be
+   *  captured. `A >> B` taps A, waits, then taps B. */
+  click: string[] | null;
 };
 
 /** "/guide/nda?x=1" → "guide-nda"; "/" → "home". */
@@ -132,18 +133,28 @@ export function parseShotArgs(argv: string[]): ShotArgs {
   };
 }
 
-function clickArg(raw: string | undefined): string | null {
+function clickArg(raw: string | undefined): string[] | null {
   if (raw === undefined) return null;
-  if (!raw.trim()) throw new Error(`--click= needs the start of a button's text, e.g. --click="Download"`);
-  return raw;
+  const taps = raw.split(">>").map((t) => t.trim());
+  if (taps.some((t) => !t)) {
+    throw new Error(`--click= needs the start of each button's text, e.g. --click="Download" or --click="Chat with V >> Build a practice test"`);
+  }
+  return taps;
 }
 
 /** The page script that taps the control `--click` names; resolves whether it found one. */
 export function clickScript(text: string): string {
   return `(() => {
   const want = ${JSON.stringify(text)};
-  const els = [...document.querySelectorAll("button, a, [role=button]")];
-  const el = els.find((e) => e.offsetParent !== null && (e.textContent || "").trim().startsWith(want));
+  // An open dialog first: a page often repeats a dialog's button text (the
+  // homepage lists the same exams V's builder offers).
+  const dialogs = [...document.querySelectorAll('[role="dialog"]')];
+  const scope = dialogs.length ? dialogs[dialogs.length - 1] : document;
+  const pick = (root) => [...root.querySelectorAll("button, a, [role=button]")];
+  const els = [...pick(scope), ...(scope === document ? [] : pick(document))];
+  // Visible text first, then aria-label, which is all an icon-only button has.
+  const el = els.find((e) => e.offsetParent !== null && (e.textContent || "").trim().startsWith(want))
+    || els.find((e) => e.offsetParent !== null && (e.getAttribute("aria-label") || "").startsWith(want));
   if (!el) return false;
   el.click();
   return true;

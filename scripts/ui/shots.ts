@@ -23,7 +23,8 @@
  * anonymous reveal budget lives in browser storage and would carry over.
  *
  * What it cannot show: a REAL student's data. A screen behind ONE tap (a dialog,
- * a sheet) can be shown with `--click="<button text>"`; deeper flows cannot.
+ * a sheet) can be shown with `--click="<button text>"`, and a few taps deep with
+ * `--click="A >> B"` (each matched by its text or its aria-label).
  * `--as-student=<exam,...>` renders the signed-in view of a cached page (the
  * header and any island that reads /api/me/header) for a stand-in student;
  * pages that read the student's own rows still render anonymously. Say so
@@ -93,7 +94,7 @@ async function evaluate(cdp: Cdp, expression: string): Promise<unknown> {
   return res.result?.result?.value;
 }
 
-async function capture(cdp: Cdp, c: Capture, waitMs: number, fullPage: boolean, dir: string, click: string | null) {
+async function capture(cdp: Cdp, c: Capture, waitMs: number, fullPage: boolean, dir: string, click: string[] | null) {
   const vp = VIEWPORTS[c.viewport];
   await cdp.send("Emulation.setDeviceMetricsOverride", { width: vp.width, height: vp.height, deviceScaleFactor: vp.scale, mobile: vp.mobile });
   await cdp.send("Emulation.setUserAgentOverride", { userAgent: vp.mobile ? PHONE_UA : "" });
@@ -105,8 +106,8 @@ async function capture(cdp: Cdp, c: Capture, waitMs: number, fullPage: boolean, 
   // preference cannot override the run.
   await evaluate(cdp, `(() => { const h = document.documentElement; h.classList.toggle('dark', ${c.theme === "dark"}); h.style.colorScheme = '${c.theme}'; })()`);
   await sleep(400);
-  if (click) {
-    if (!(await evaluate(cdp, clickScript(click)))) throw new Error(`--click: no visible button or link starting "${click}" on ${c.url}`);
+  for (const tap of click ?? []) {
+    if (!(await evaluate(cdp, clickScript(tap)))) throw new Error(`--click: no visible button or link starting "${tap}" on ${c.url}`);
     await sleep(1500);
   }
   let params: object = { format: "png" };

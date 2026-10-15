@@ -161,16 +161,36 @@ describe("--click", () => {
   });
 
   it("carries the button text", () => {
-    expect(parseShotArgs(["--pages=/browse", "--click=Download"]).click).toBe("Download");
+    expect(parseShotArgs(["--pages=/browse", "--click=Download"]).click).toEqual(["Download"]);
   });
 
   it("refuses an empty value", () => {
     expect(() => parseShotArgs(["--pages=/browse", "--click="])).toThrow(/--click/);
   });
 
+  // V's builder (2026-10-15) sits two taps deep, behind an icon-only launcher.
+  it("takes a chain of taps separated by >>", () => {
+    expect(parseShotArgs(["--pages=/", "--click=Chat with V >> Build a practice test"]).click).toEqual([
+      "Chat with V",
+      "Build a practice test",
+    ]);
+  });
+
+  it("refuses a chain with an empty tap", () => {
+    expect(() => parseShotArgs(["--pages=/", "--click=Chat with V>>"])).toThrow(/--click/);
+  });
+
   it("builds a page script that embeds the text safely", () => {
     const js = clickScript('Say "hi"');
     expect(js).toContain(JSON.stringify('Say "hi"'));
     expect(js).toMatch(/startsWith/);
+  });
+
+  it("looks inside an open dialog first, so a tap there cannot hit the page behind it", () => {
+    expect(clickScript("MHT-CET")).toContain('[role="dialog"]');
+  });
+
+  it("also finds an icon-only button by its aria-label", () => {
+    expect(clickScript("Chat with V")).toContain("aria-label");
   });
 });
