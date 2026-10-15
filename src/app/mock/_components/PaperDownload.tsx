@@ -62,8 +62,12 @@ export default function PaperDownload({
   topPyqs?: { plan: string; chapterId: string };
   /** The exam prints Marathi + English (MPSC): offer a print language. */
   bilingual?: boolean;
-  /** "button": full width, under Start test. "row": compact, in a list. */
-  variant?: "button" | "row";
+  /**
+   * "button": full width, under Start test. "row": compact, in a list.
+   * "inline": beside another button (the past paper page, 2026-10-15): full
+   * width on a phone, where the two stack, its own width from `sm` up.
+   */
+  variant?: "button" | "row" | "inline";
   /** What a board paper's student is missing, led with in the pass offer (2026-10-14). */
   offer?: PassOfferLead | null;
 }) {
@@ -198,6 +202,11 @@ export default function PaperDownload({
           <Button variant="brand" size="sm" aria-label={`Download ${paperTitle}`}>
             <Download className="h-4 w-4" aria-hidden />
             Download
+          </Button>
+        ) : variant === "inline" ? (
+          <Button variant="brandOutline" className="w-full sm:w-auto">
+            <Download className="h-4 w-4" aria-hidden />
+            Download paper and answer key
           </Button>
         ) : (
           <Button variant="brandOutline" size="lg" className="w-full">

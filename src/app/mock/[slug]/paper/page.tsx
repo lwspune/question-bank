@@ -111,14 +111,14 @@ export default async function MockPaperPage({ params }: { params: Params }) {
               soon.
             </p>
           )}
-          <div className="mt-4 flex flex-wrap items-start gap-3">
-            <Button asChild variant="brand">
+          <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Button asChild variant="brand" className="w-full sm:w-auto">
               <Link href={`/mock/${mock.slug}`}>
                 <ClipboardCheck className="h-4 w-4" aria-hidden />
                 Sit it as a timed mock
               </Link>
             </Button>
-            <PaperDownload slug={mock.slug} paperTitle={mock.title} bilingual={bilingual} />
+            <PaperDownload slug={mock.slug} paperTitle={mock.title} bilingual={bilingual} variant="inline" />
           </div>
         </header>
 
