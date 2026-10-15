@@ -35,6 +35,28 @@ export default async function ChatUsagePage() {
         </div>
 
         <section className="rounded-lg border">
+          <h2 className="border-b px-4 py-3 text-sm font-semibold">Practice-test builder</h2>
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="text-left text-xs text-muted-foreground">
+                <th scope="col" className="px-4 py-2 font-medium">Step</th>
+                <th scope="col" className="px-4 py-2 text-right font-medium">Times</th>
+              </tr>
+            </thead>
+            <tbody>
+              {summary.builder.map((s) => (
+                <tr key={s.step} className="border-t">
+                  <td className="px-4 py-2">{s.label}</td>
+                  <td className="px-4 py-2 text-right font-mono tabular-nums">
+                    {s.count.toLocaleString("en-IN")}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+
+        <section className="rounded-lg border">
           <h2 className="border-b px-4 py-3 text-sm font-semibold">Questions by clicks</h2>
           {summary.byQuestion.length === 0 ? (
             <p className="px-4 py-6 text-sm text-muted-foreground">No questions asked yet.</p>
