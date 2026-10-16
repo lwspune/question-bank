@@ -5,8 +5,8 @@ subjects: Reasoning, Quantitative Aptitude, English, and General Awareness split
 subjects CDS General Knowledge uses (History, Geography, Polity, Economics, Physics, Chemistry,
 Biology, Current Affairs; owner, 2026-10-16).
 
-**Status (2026-10-16): Tier I, 18 September 2025, all three shifts: 300 questions committed
-PRIVATE. Nothing is PUBLIC.** Not in `EXAM_REGISTRY`, no mocks yet.
+**Status (2026-10-16): Tier I, 18 and 19 September 2025, all six shifts: 600 questions
+committed PRIVATE. Nothing is PUBLIC.** Not in `EXAM_REGISTRY`, no mocks yet.
 
 ## The source, and why it is the only one
 
@@ -71,6 +71,15 @@ so a draft stays a blind derivation. The main session concatenates the parts int
 the key) and settles each disagreement as above. A passage set is checked pixel-identical
 across its questions before `context_from` is trusted.
 
+The agent rules live in [DRAFTING_BRIEF.md](DRAFTING_BRIEF.md), so a prompt only names the slice (shift, PART,
+range, output path, and the passage set). Measured on 19 Sep: 12 parts, about 2 to 3.5 minutes
+each, 5 running at once.
+
+**Find passage sets by comparing pixel ROWS from the top, not a fraction of each image's height.**
+Two copies of one passage can differ in height (the question line below it differs), and a
+"top 60%" slice then compares different lengths: 19 Sep S3 Q91 looked different from Q92-95 that
+way, though its first 536 rows are identical.
+
 `python -P` (not `-I`): PyMuPDF lives in user site-packages, and `-P` still keeps the script
 and working directories off the import path.
 
@@ -100,6 +109,9 @@ On review:
 | 18 Sep S1 | 98/100 | Q6, Q7 (judgement) | none | Q48 (asks the 2024 winner; the options fit 2023), Q88 (no true homonym of "fief") |
 | 18 Sep S2 | 98/100 | Q36 (fact, our guess) | Q87 (error is in part 1, key says 2) | none |
 | 18 Sep S3 (agents) | 97/100 | Q50, Q99 (judgement); Q44 (key adopted but held: no option states Art. 258A) | none | Q12 (contradictory syllogism), Q54 (1:1 and 5:5 both offered) |
+| 19 Sep S1 (agents) | 97/100 | Q82, Q100 (judgement) | Q37 (Navy's own page: the final was against the Air Force, not the Army) | Q88 (no true homonym of "basilica") |
+| 19 Sep S2 (agents) | 99/100 | none | Q22 (no one in a circle has 3 neighbours; key 20 fits 2) | Q95 ("NOT a factor": B and C also hinder) |
+| 19 Sep S3 (agents) | 97/100 | Q14 (judgement), Q46 (fact unconfirmed either way); Q88 (key adopted but held: no English "line-up" sense of tableau) | none | none |
 
 ## The catalog
 

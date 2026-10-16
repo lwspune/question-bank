@@ -63,6 +63,14 @@ export const DAYS: Record<string, Day> = {
     url: "https://cdn.aglasem.com/aglasem-doc/2917d268-8c19-11f1-b22f-0aa932765c8b/2917d268-8c19-11f1-b22f-0aa932765c8b.pdf",
     provisionalKey: true,
   },
+  "t1-2025-09-19": {
+    tier: 1,
+    date: "2025-09-19",
+    shifts: 3,
+    file: join(SOURCE_ROOT, "2025_Tier1", "SSC_CGL_2025_Tier1_19Sep_AllShifts.pdf"),
+    url: "https://cdn.aglasem.com/aglasem-doc/2d8e69ce-8c19-11f1-8775-0aa932765c8b/2d8e69ce-8c19-11f1-8775-0aa932765c8b.pdf",
+    provisionalKey: true,
+  },
 };
 
 /** pyqMonth is a month NAME, as everywhere in the bank ("September"), never a number. */
