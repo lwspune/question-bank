@@ -142,7 +142,7 @@ async function main() {
         line = handRead(e.liveSince, ["practice-tests-started", "practice-tests-answered"]);
         break;
       case "practice-friends":
-        line = handRead(e.liveSince, ["practice-friend-sends", "practice-friend-starts", "practice-friend-signups"]);
+        line = handRead(e.liveSince, ["practice-friend-sends", "practice-friend-starts", "practice-friend-signups", "practice-friend-finished-taps"]);
         break;
       case "pyq-wording":
         line = handRead(e.liveSince, ["pyq-wording-impressions"]);

@@ -17,6 +17,8 @@ import MobileGate from "./MobileGate";
 import MockFeedback from "./MockFeedback";
 import ShareResult from "./ShareResult";
 import SendToFriend from "@/components/practice/SendToFriend";
+import TogetherCard from "./TogetherCard";
+import { loadTogetherCard } from "@/lib/practiceTests/togetherService";
 import WhatsappOptIn from "./WhatsappOptIn";
 import PushOptIn from "@/components/push/PushOptIn";
 import Findings from "./Findings";
@@ -108,6 +110,17 @@ export default async function MockResultPage({ params }: { params: Params }) {
   // Awarded only past the mobile gate, where the result is actually seen;
   // once per milestone by the table's dedupe key, so a refresh shows nothing.
   const milestone = await awardAnsweredMilestone(db, user.id);
+  // Practise together (step 2): what this student and the friends who sat the
+  // same practice test missed. Service role, because a friend's attempts are
+  // their rows; the loader answers only for an attempt this student owns.
+  // Best-effort: a failure costs the card, not the result.
+  const together =
+    mock.scope === "custom"
+      ? await loadTogetherCard(createSupabaseAdminClient(), user.id, params.attemptId).catch((e) => {
+          console.error("practice together card failed", e);
+          return null;
+        })
+      : null;
 
   return (
     <>
@@ -142,6 +155,8 @@ export default async function MockResultPage({ params }: { params: Params }) {
             all three stay above the review, which on a 150-question paper is
             the bottom of the page and would bury them. */}
         {report && <Findings report={report} attemptId={params.attemptId} />}
+
+        {together && <TogetherCard state={together} />}
 
         <MockFeedback
           attemptId={params.attemptId}

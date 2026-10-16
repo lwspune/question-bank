@@ -25,67 +25,22 @@
  * and may target a staff account, which the real run never reaches.
  */
 import { join } from "node:path";
-import webpush from "web-push";
 import { createSupabaseAdminClient } from "../../src/lib/supabase/admin";
 import { selectDueNudges } from "../../src/lib/email/dueNudge";
 import { readDueCandidates } from "../../src/lib/email/dueNudgeService";
 import { newClickToken, clickUrl } from "../../src/lib/email/click";
 import { readPriorSends, readStudents } from "../../src/lib/email/service";
-import {
-  PUSH_BADGE,
-  PUSH_ICON,
-  PUSH_KIND,
-  PUSH_TTL_SECONDS,
-  buildDuePushPayload,
-  classifyDelivery,
-  serializePayload,
-  shouldDropAfterFailure,
-  type DeliveryOutcome,
-} from "../../src/lib/push/core";
-import {
-  readPriorPushSends,
-  readPushConversion,
-  readSubscriptions,
-  recordDelivery,
-  type PushSubRow,
-} from "../../src/lib/push/service";
+import { PUSH_BADGE, PUSH_ICON, PUSH_KIND, buildDuePushPayload, serializePayload } from "../../src/lib/push/core";
+import { readPriorPushSends, readPushConversion, readSubscriptions, type PushSubRow } from "../../src/lib/push/service";
+import { deliver, deliverToAll, setVapidFromEnv } from "./webpush";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
-
-const THROTTLE_MS = 100;
 
 function arg(name: string): string | undefined {
   const hit = process.argv.find((a) => a.startsWith(`--${name}=`));
   return hit ? hit.slice(name.length + 3) : undefined;
 }
 const has = (name: string) => process.argv.includes(`--${name}`);
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
-
-function vapidEnv(): { subject: string; publicKey: string; privateKey: string } {
-  const subject = process.env.VAPID_SUBJECT;
-  const publicKey = process.env.VAPID_PUBLIC_KEY;
-  const privateKey = process.env.VAPID_PRIVATE_KEY;
-  if (!subject || !publicKey || !privateKey) {
-    throw new Error("VAPID_SUBJECT, VAPID_PUBLIC_KEY and VAPID_PRIVATE_KEY must all be set (see OPERATIONS.md).");
-  }
-  return { subject, publicKey, privateKey };
-}
-
-/** One delivery; never throws. The status code decides the subscription's fate. */
-async function deliver(sub: PushSubRow, payload: string): Promise<{ outcome: DeliveryOutcome; code: number | null; error: string | null }> {
-  try {
-    const res = await webpush.sendNotification(
-      { endpoint: sub.endpoint, keys: { p256dh: sub.p256dh, auth: sub.auth } },
-      payload,
-      { TTL: PUSH_TTL_SECONDS, urgency: "normal" }
-    );
-    return { outcome: classifyDelivery(res.statusCode), code: res.statusCode, error: null };
-  } catch (e) {
-    const code = (e as { statusCode?: number }).statusCode ?? null;
-    const body = (e as { body?: string }).body ?? (e instanceof Error ? e.message : String(e));
-    return { outcome: classifyDelivery(code), code, error: String(body).slice(0, 1000) };
-  }
-}
 
 async function main() {
   const apply = has("apply");
@@ -104,8 +59,7 @@ async function main() {
   }
 
   if (selfTest) {
-    const v = vapidEnv();
-    webpush.setVapidDetails(v.subject, v.publicKey, v.privateKey);
+    setVapidFromEnv();
     const { data, error } = await db.from("push_subscriptions").select("id, user_id, endpoint, p256dh, auth, fail_count");
     if (error) throw new Error(error.message);
     const users = new Map<string, string>();
@@ -136,10 +90,7 @@ async function main() {
   }
 
   console.log(`\n${apply ? "APPLY — REAL SENDS" : "DRY RUN — nothing will be sent"}`);
-  if (apply) {
-    const v = vapidEnv();
-    webpush.setVapidDetails(v.subject, v.publicKey, v.privateKey);
-  }
+  if (apply) setVapidFromEnv();
 
   const now = new Date();
   const [students, priorEmail, priorPush, subs, candidates] = await Promise.all([
@@ -181,20 +132,7 @@ async function main() {
     if (!apply) continue;
 
     const body = serializePayload(payload);
-    let best: { outcome: DeliveryOutcome; code: number | null; error: string | null; subId: string | null } = {
-      outcome: "failed",
-      code: null,
-      error: "no browser",
-      subId: null,
-    };
-    const rank = { sent: 2, failed: 1, gone: 0 } as const;
-    for (const sub of browsers) {
-      const d = await deliver(sub, body);
-      await recordDelivery(db, sub, d.outcome, d.outcome === "failed" && shouldDropAfterFailure(sub.failCount));
-      if (d.outcome !== "sent") console.log(`       ${d.outcome} (${d.code ?? "no status"})${d.error ? ` — ${d.error.slice(0, 120)}` : ""}`);
-      if (best.subId === null || rank[d.outcome] > rank[best.outcome]) best = { ...d, subId: d.outcome === "sent" ? sub.id : null };
-      await sleep(THROTTLE_MS);
-    }
+    const best = await deliverToAll(db, browsers, body);
     const { error } = await db.from("push_sends").insert({
       user_id: p.userId,
       subscription_id: best.subId,
