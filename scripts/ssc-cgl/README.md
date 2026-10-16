@@ -5,8 +5,8 @@ subjects: Reasoning, Quantitative Aptitude, English, and General Awareness split
 subjects CDS General Knowledge uses (History, Geography, Polity, Economics, Physics, Chemistry,
 Biology, Current Affairs; owner, 2026-10-16).
 
-**Status (2026-10-16): pilot. Tier I, 18 September 2025, Shifts 1 and 2: 200 questions
-committed PRIVATE. Nothing is PUBLIC.** Not in `EXAM_REGISTRY`, no mocks yet.
+**Status (2026-10-16): Tier I, 18 September 2025, all three shifts: 300 questions committed
+PRIVATE. Nothing is PUBLIC.** Not in `EXAM_REGISTRY`, no mocks yet.
 
 ## The source, and why it is the only one
 
@@ -54,6 +54,23 @@ npx tsx scripts/ssc-cgl/build.ts <shiftId>                # -> out/<shiftId>/row
 npx tsx scripts/ssc-cgl/commit.ts <shiftId> [--apply]     # PRIVATE, through commitStaged
 ```
 
+### Drafting with agents (from Shift 3)
+
+The owner's standing ingestion policy (global CLAUDE.md, 2026-10-16): up to 5 agents at once,
+one slice each, the main session reviews every draft and alone writes the DB and git. Here a
+slice is one PART (25 questions). Each agent reads only `out/<shiftId>/sheets/`, writes
+`out/<shiftId>/drafts/part-<A..D>.txt`, and checks it with
+
+```sh
+npx tsx scripts/ssc-cgl/build.ts <shiftId> --blind --file=out/<shiftId>/drafts/part-A.txt
+```
+
+`--blind` drops the key as it is read and prints only catalog, part and rendering problems,
+so a draft stays a blind derivation. The main session concatenates the parts into
+`transcripts/<shiftId>.txt`, reads every block, runs the normal `build.ts` (which compares with
+the key) and settles each disagreement as above. A passage set is checked pixel-identical
+across its questions before `context_from` is trusted.
+
 `python -P` (not `-I`): PyMuPDF lives in user site-packages, and `-P` still keeps the script
 and working directories off the import path.
 
@@ -82,6 +99,7 @@ On review:
 |---|---|---|---|---|
 | 18 Sep S1 | 98/100 | Q6, Q7 (judgement) | none | Q48 (asks the 2024 winner; the options fit 2023), Q88 (no true homonym of "fief") |
 | 18 Sep S2 | 98/100 | Q36 (fact, our guess) | Q87 (error is in part 1, key says 2) | none |
+| 18 Sep S3 (agents) | 97/100 | Q50, Q99 (judgement); Q44 (key adopted but held: no option states Art. 258A) | none | Q12 (contradictory syllogism), Q54 (1:1 and 5:5 both offered) |
 
 ## The catalog
 

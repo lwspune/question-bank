@@ -277,8 +277,12 @@ export function checkShift(
   transcript: TranscriptQuestion[],
   sheet: { number: number; part: Part; key: Label }[],
   catalog: Record<string, { chapter: string; subtopics: string[] }[]>,
-  sections: Record<Part, string[]>
+  sections: Record<Part, string[]>,
+  opts: { compareKey?: boolean } = {}
 ): ShiftCheck {
+  // compareKey false = a drafting agent's check: catalog and parts only, nothing that
+  // reveals SSC's key (no agreement count, no disagreement, no blind: review).
+  const compareKey = opts.compareKey ?? true;
   const problems: string[] = [];
   const disagreements: string[] = [];
   const adopted: string[] = [];
@@ -308,6 +312,7 @@ export function checkShift(
       else if (!chapter.subtopics.includes(q.subtopic)) p(`subtopic "${q.subtopic}" is not in ${subject} / ${q.chapter}`);
     }
 
+    if (!compareKey) continue;
     if (q.blind !== undefined) {
       if (q.blind === q.answer) p(`blind answer ${q.blind} is the same as the answer: drop the blind: line`);
       else if (!q.note) p(`blind answer ${q.blind} needs a note saying why the key was adopted`);
@@ -322,5 +327,6 @@ export function checkShift(
 
   const done = new Set(transcript.map((q) => q.number));
   const missing = sheet.map((s) => s.number).filter((n) => !done.has(n)).sort((a, b) => a - b);
-  return { problems, disagreements, adopted, blindAgreement: { agree, of: transcript.length }, subjects, missing };
+  const of = compareKey ? transcript.length : 0;
+  return { problems, disagreements, adopted, blindAgreement: { agree, of }, subjects, missing };
 }
