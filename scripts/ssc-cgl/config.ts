@@ -106,6 +106,25 @@ const t1_2024 = (dd: string, docId: string): Day => ({
 });
 
 /**
+ * 2023 Tier I: AglaSem hosts one TCS file per exam day (English), read like 2024: each sheet
+ * is filed under the Exam Date it prints. Only the days whose text layer the reader can use
+ * are registered: 17-24 Jul carry OCR-like text (option text in fragments, the key a tick
+ * glyph in a column), which needs its own reader.
+ */
+const SLOTS_2023_T1 = ["9:00 AM - 10:00 AM", "11:45 AM - 12:45 PM", "2:30 PM - 3:30 PM", "5:15 PM - 6:15 PM"];
+const t1_2023 = (dd: string, docId: string, present?: number[]): Day => ({
+  tier: 1,
+  date: `2023-07-${dd}`,
+  shifts: 4,
+  ...(present ? { present } : {}),
+  file: join(SOURCE_ROOT, "2023_Tier1", `SSC_CGL_2023_Tier1_${dd}Jul_AllShifts_EN.pdf`),
+  url: `https://cdn.aglasem.com/aglasem-doc/${docId}/${docId}.pdf`,
+  provisionalKey: true,
+  format: "tcs",
+  slots: SLOTS_2023_T1,
+});
+
+/**
  * 2022 Tier I: AglaSem hosts one TCS file per SHIFT. 1-3 Dec carry a text layer (tcs.ts);
  * 5-13 Dec are the vector print with no text (vector.ts), so their date and shift come from
  * here. The listing loaded 37 files (to 13 Dec Shift 1); later shifts are on unloaded pages.
@@ -147,6 +166,13 @@ export const DAYS: Record<string, Day> = {
   "t1-2022-12-09": t1_2022("09", { 1: "e1d5cd5c-db03-11ed-942e-0a5e36bc6706", 2: "e2a82450-db03-11ed-a491-0a5e36bc6706", 4: "e2d1a0aa-db03-11ed-aa58-0a5e36bc6706" }),
   "t1-2022-12-12": t1_2022("12", { 1: "e2de986e-db03-11ed-ab11-0a5e36bc6706", 2: "e3707b12-db03-11ed-b3db-0a5e36bc6706", 3: "e3ce6d8a-db03-11ed-b8d8-0a5e36bc6706" }),
   "t1-2022-12-13": t1_2022("13", { 1: "e5dd0794-db03-11ed-9e66-0a5e36bc6706" }),
+  // The hosted 14 Jul file: pages 1-58 are the 9:00 and 11:45 sheets with a text layer; pages
+  // 59-126 are the 2:30 and 5:15 sheets as scans (text on their first page only), read later
+  // with 17-24 Jul. Extract with --pages=1-58. The 27 Jul file holds the first three sheets.
+  "t1-2023-07-14": t1_2023("14", "f905caf0-8c11-11f1-b1b6-0aa932765c8b", [1, 2]),
+  "t1-2023-07-25": t1_2023("25", "5e9632ec-8c12-11f1-9d16-0aa932765c8b"),
+  "t1-2023-07-26": t1_2023("26", "64aa3ce6-8c12-11f1-8632-0aa932765c8b"),
+  "t1-2023-07-27": t1_2023("27", "6ac4e6da-8c12-11f1-9577-0aa932765c8b", [1, 2, 3]),
   "t1-2024-09-09": t1_2024("09", "73c870dc-8c15-11f1-9679-0aa932765c8b"),
   "t1-2024-09-10": t1_2024("10", "78ca267a-8c15-11f1-8a06-0aa932765c8b"),
   "t1-2024-09-11": t1_2024("11", "7d86f94a-8c15-11f1-b917-0aa932765c8b"),
