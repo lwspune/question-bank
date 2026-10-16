@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { assembleTcs, shiftOfTime, type TcsGeometry, type TcsImage, type TcsSpan } from "../scripts/ssc-cgl/tcs";
+import { assembleTcs, groupTcsShifts, shiftOfTime, type TcsGeometry, type TcsImage, type TcsQuestion, type TcsSpan } from "../scripts/ssc-cgl/tcs";
 
 // The TCS response sheet (SSC CGL 2022-2024) as text: "Q.n", the stem, "Ans", options
 // "1. ..".."4. ..", the key as the GREEN option text (wrong options are red), a right-hand
@@ -200,5 +200,42 @@ describe("assembleTcs", () => {
     const g = shift(2, "9:00 AM - 10:00 AM", () => 0);
     g.spans = g.spans.filter((s) => s.text !== "Q.7");
     expect(() => assembleTcs(g)).toThrow(/shift 1.*missing 7/);
+  });
+});
+
+describe("groupTcsShifts", () => {
+  const q = (sheet: number, date: string, shift: number, number: number, qid = `${date}-${shift}-${number}`): TcsQuestion => ({
+    sheet, date, shift, part: "A", number, stem: "s", options: ["a", "b", "c", "d"], key: "A",
+    stemImages: [], optionImages: [[], [], [], []], questionId: qid, regions: [],
+  });
+  const sheet = (i: number, date: string, shift: number, qid?: (n: number) => string) =>
+    Array.from({ length: 100 }, (_, k) => q(i, date, shift, k + 1, qid?.(k + 1)));
+
+  it("files each sheet under t<tier>-<its date>-s<shift>, across files", () => {
+    const got = groupTcsShifts(1, [
+      { dir: "t1-2024-09-10", questions: [...sheet(0, "2024-09-10", 1), ...sheet(1, "2024-09-11", 1)] },
+      { dir: "t1-2024-09-11", questions: sheet(0, "2024-09-11", 2) },
+    ]);
+    expect([...got.keys()]).toEqual(["t1-2024-09-10-s1", "t1-2024-09-11-s1", "t1-2024-09-11-s2"]);
+    expect(got.get("t1-2024-09-11-s1")!.dir).toBe("t1-2024-09-10");
+    expect(got.get("t1-2024-09-11-s1")!.questions.every((x) => x.sheet === 1)).toBe(true);
+  });
+
+  it("keeps the first of two identical copies of a shift, and refuses two that differ", () => {
+    const same = groupTcsShifts(1, [
+      { dir: "a", questions: sheet(0, "2024-09-11", 1) },
+      { dir: "b", questions: sheet(0, "2024-09-11", 1) },
+    ]);
+    expect(same.get("t1-2024-09-11-s1")!.dir).toBe("a");
+    expect(() =>
+      groupTcsShifts(1, [
+        { dir: "a", questions: sheet(0, "2024-09-11", 1) },
+        { dir: "b", questions: sheet(0, "2024-09-11", 1, (n) => `other-${n}`) },
+      ])
+    ).toThrow(/t1-2024-09-11-s1.*differ/);
+  });
+
+  it("refuses a sheet that prints no Exam Date", () => {
+    expect(() => groupTcsShifts(1, [{ dir: "a", questions: sheet(0, null as unknown as string, 1) }])).toThrow(/no Exam Date/);
   });
 });

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { CATALOG, SECTION_SUBJECTS, SHIFTS, SUBJECTS, subjectFor } from "../scripts/ssc-cgl/config";
+import { CATALOG, DAYS, SECTION_SUBJECTS, SHIFTS, SUBJECTS, subjectFor, tcsFiles } from "../scripts/ssc-cgl/config";
 
 describe("SSC CGL sections and subjects", () => {
   it("maps each Tier I part to its subjects, General Awareness split CDS-style", () => {
@@ -79,5 +79,24 @@ describe("SSC CGL shifts", () => {
   it("keeps pyq_note a short sitting id, under the public provenance cap", () => {
     // audit:provenance: pyq notes publish only under 48 chars, and real sitting ids sit at <= 38.
     for (const id of ids) expect(SHIFTS[id].pyqNote.length, id).toBeLessThanOrEqual(38);
+  });
+});
+
+describe("SSC CGL 2024 Tier I (TCS response sheets)", () => {
+  it("registers 12 exam days of 3 shifts, each from its own day's TCS file", () => {
+    const days = Object.entries(DAYS).filter(([id]) => id.startsWith("t1-2024-"));
+    expect(days.map(([id]) => id.slice(11))).toEqual(["09", "10", "11", "12", "13", "17", "18", "19", "23", "24", "25", "26"]);
+    for (const [id, d] of days) {
+      expect(d.format).toBe("tcs");
+      expect(d.slots).toEqual(["9:00 AM - 10:00 AM", "12:30 PM - 1:30 PM", "4:00 PM - 5:00 PM"]);
+      expect(d.file).toMatch(new RegExp(`2024_Tier1.SSC_CGL_2024_Tier1_${id.slice(11)}Sep_AllShifts_EN\.pdf$`));
+      expect(d.url).toMatch(/^https:\/\/cdn\.aglasem\.com\/aglasem-doc\/[0-9a-f-]{36}\/[0-9a-f-]{36}\.pdf$/);
+    }
+    expect(SHIFTS["t1-2024-09-11-s1"]).toMatchObject({ sourceFile: "SSC_CGL_T1_2024-09-11_S1", pyqNote: "Tier I, 11 Sep 2024, Shift 1" });
+  });
+
+  it("lists every TCS file the 2024 sheets can come from (a file runs past its own day)", () => {
+    expect(tcsFiles().length).toBe(12);
+    expect(tcsFiles()[1]).toMatchObject({ dir: "t1-2024-09-10" });
   });
 });

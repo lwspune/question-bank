@@ -20,6 +20,7 @@ import { assembleQuestions, type Geometry } from "./lib";
 function main() {
   const day = process.argv[2];
   if (!day || !DAYS[day]) throw new Error(`usage: assemble.ts <dayId>. Known: ${Object.keys(DAYS).join(", ")}`);
+  if (DAYS[day].format === "tcs") throw new Error(`${day} is a TCS response-sheet file: use assemble-tcs.ts`);
   const geometry: Geometry = JSON.parse(readFileSync(join(OUT, day, "geometry.json"), "utf8"));
   const questions = assembleQuestions(geometry, {
     missing: DAYS[day].missing,

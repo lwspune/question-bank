@@ -335,3 +335,31 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
   }
   return out.sort((a, b) => a.sheet - b.sheet || a.number - b.number);
 }
+
+/**
+ * File every sheet of every TCS file under its shift id, t<tier>-<Exam Date>-s<slot>. A shift
+ * met twice (two candidates' sheets of one sitting) keeps the first copy when the two print
+ * the same questions in the same order, and is refused when they do not.
+ */
+export function groupTcsShifts(
+  tier: number,
+  files: { dir: string; questions: TcsQuestion[] }[]
+): Map<string, { dir: string; questions: TcsQuestion[] }> {
+  const out = new Map<string, { dir: string; questions: TcsQuestion[] }>();
+  for (const f of files) {
+    for (const sheet of [...new Set(f.questions.map((q) => q.sheet))]) {
+      const qs = f.questions.filter((q) => q.sheet === sheet);
+      const { date, shift } = qs[0];
+      if (!date) throw new Error(`${f.dir} sheet ${sheet + 1} prints no Exam Date`);
+      const id = `t${tier}-${date}-s${shift}`;
+      const seen = out.get(id);
+      if (!seen) {
+        out.set(id, { dir: f.dir, questions: qs });
+        continue;
+      }
+      const ids = (x: TcsQuestion[]) => x.map((q) => q.questionId).join();
+      if (ids(seen.questions) !== ids(qs)) throw new Error(`${id}: the copies in ${seen.dir} and ${f.dir} differ`);
+    }
+  }
+  return new Map([...out].sort(([a], [b]) => a.localeCompare(b)));
+}
