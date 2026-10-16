@@ -222,6 +222,50 @@ describe("assembleTcs", () => {
     expect(qs.find((x) => x.number === 95)!.options).toEqual(["opt 20a", "opt 20b", "opt 20c", "opt 20d"]);
   });
 
+  it("refuses a file in which it finds no question at all (a layout it does not know)", () => {
+    expect(() => assembleTcs({ spans: [span(1, 10, "Some other print")], images: [] })).toThrow(/no questions/);
+  });
+
+  it("reads the 2022 print's key colours, a shade off the 2024 ones", () => {
+    // 1 Dec 2022: green 0x40c64a, red 0xf61717, body 0x242424.
+    const g = shift(2, "9:00 AM - 10:00 AM", (n) => n % 4);
+    g.spans = g.spans.map((s) => ({ ...s, color: s.color === GREEN ? 0x40c64a : s.color === RED ? 0xf61717 : s.color === DARK ? 0x242424 : s.color }));
+    const qs = assembleTcs(g);
+    expect(qs.map((q) => q.key).slice(0, 4)).toEqual(["B", "C", "D", "A"]);
+  });
+
+  it("reads an option label printed apart from its text, a hair above Ans (1 Dec 2022)", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 1);
+    g.spans = g.spans.flatMap((s) => {
+      const m = /^([1-4])\. (.*)$/.exec(s.text);
+      if (!(s.page === 2 && s.y0 < 300 && m)) return [s];
+      return [{ ...s, text: `${m[1]}.`, y0: s.y0 - 0.4, x1: s.x0 + 8 }, { ...s, text: m[2], x0: s.x0 + 11 }];
+    });
+    const [q] = assembleTcs(g);
+    expect(q).toMatchObject({ key: "B", options: ["opt 1a", "opt 1b", "opt 1c", "opt 1d"] });
+  });
+
+  it("reads the 2023 print's key colours (green 0x37ac3f, red 0xe61616)", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", (n) => n % 4);
+    g.spans = g.spans.map((s) => ({ ...s, color: s.color === GREEN ? 0x37ac3f : s.color === RED ? 0xe61616 : s.color === DARK ? 0 : s.color }));
+    expect(assembleTcs(g).map((q) => q.key).slice(0, 4)).toEqual(["B", "C", "D", "A"]);
+  });
+
+  it("reads a Q label fused with the first stem line, and a heading in three spans (1 Dec 2022)", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 0);
+    g.spans = g.spans.flatMap((s) => {
+      if (s.page === 5 && s.text === "Q.7") return [];
+      if (s.page === 5 && s.text === "Stem of 7") return [{ ...s, text: "Q.7 Stem of 7", x0: 50 }];
+      const m = /^Section : (Quantitative.*)$/.exec(s.text);
+      if (m) return [{ ...s, text: "Section", x1: 75 }, { ...s, text: ":", x0: 77, x1: 80 }, { ...s, text: ` ${m[1]}`, x0: 80, y0: s.y0 - 0.3 }];
+      return [s];
+    });
+    const qs = assembleTcs(g);
+    expect(qs).toHaveLength(100);
+    expect(qs[6]).toMatchObject({ number: 7, stem: "Stem of 7" });
+    expect(qs[50]).toMatchObject({ part: "C", number: 51 });
+  });
+
   it("refuses a question with no green option or two", () => {
     const none = shift(2, "9:00 AM - 10:00 AM", () => 9);
     expect(() => assembleTcs(none)).toThrow(/shift 1 Q1.*exactly one key/);

@@ -41,7 +41,19 @@ export type TcsQuestion = {
 };
 
 export const GREEN = 0x40c64b;
-const RED = 0xf61818;
+/**
+ * The key colours by hue, not by value: each year prints its own shade (2024 0x40c64b /
+ * 0xf61818, 2022 0x40c64a / 0xf61717, 2023 0x37ac3f / 0xe61616). Body text is near-black.
+ */
+const rgb = (c: number) => [(c >> 16) & 255, (c >> 8) & 255, c & 255];
+const isGreen = (c: number) => {
+  const [r, g, b] = rgb(c);
+  return g >= 120 && g - r >= 60 && g - b >= 60;
+};
+const isRed = (c: number) => {
+  const [r, g, b] = rgb(c);
+  return r >= 180 && r - g >= 120 && r - b >= 120;
+};
 const PANEL_X = 380; // where the right-hand panel starts on a page that prints no panel label
 const GUTTER_X = 48; // where "Q.n" sits on a page that prints none
 const PANEL_LABEL = /^(Question ID|Option \d ID|Status|Chosen Option)\s*:/;
@@ -105,13 +117,15 @@ function joinSectionLabels(spans: TcsSpan[]): TcsSpan[] {
   const used = new Set<TcsSpan>();
   const out: TcsSpan[] = [];
   for (const s of spans) {
-    if (!/^Section\s*:$/.test(s.text.trim())) continue; // trim() also strips the no-break space
+    // "Section :" (2024) or "Section" then ":" (1 Dec 2022); trim() also strips the no-break space
+    if (!/^Section\s*:?$/.test(s.text.trim())) continue;
     const rest = spans
       .filter((o) => o !== s && o.page === s.page && Math.abs(o.y0 - s.y0) <= 3 && o.x0 >= s.x1 - 1 && !used.has(o))
       .sort((a, b) => a.x0 - b.x0);
     rest.forEach((o) => used.add(o));
     used.add(s);
-    out.push({ ...s, text: "Section : " + rest.map((o) => o.text.trim()).join(" "), x1: Math.max(s.x1, ...rest.map((o) => o.x1)) });
+    const name = rest.map((o) => o.text.trim()).filter((t) => t && t !== ":").join(" ");
+    out.push({ ...s, text: "Section : " + name, x1: Math.max(s.x1, ...rest.map((o) => o.x1)) });
   }
   return [...spans.filter((s) => !used.has(s)), ...out];
 }
@@ -166,8 +180,20 @@ function isoDate(t: string): string | null {
   return m ? `${m[3]}-${m[2]}-${m[1]}` : null;
 }
 
+/** "Q.11 Select the option ..." printed as one span (1 Dec 2022): split off the label. */
+function splitFusedLabels(spans: TcsSpan[]): TcsSpan[] {
+  return spans.flatMap((s) => {
+    const m = s.bold ? /^(Q\.\d+)\s+(\S.*)$/.exec(s.text.trim()) : null;
+    if (!m) return [s];
+    return [
+      { ...s, text: m[1], x1: s.x0 + 15 },
+      { ...s, text: m[2], x0: s.x0 + 20 },
+    ];
+  });
+}
+
 export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[] {
-  const spans = joinStackedLabels(joinSectionLabels(g.spans));
+  const spans = joinStackedLabels(joinSectionLabels(splitFusedLabels(g.spans)));
   const edges = pageEdges(spans);
   const events: Event[] = [
     ...spans.filter((s) => !NOISE.test(s.text.trim())).map((s) => ({ page: s.page, y: s.y0, x: s.x0, span: s })),
@@ -309,7 +335,7 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
     }
     // Option text is always green or red and stem text never is, so option 1 opens the
     // options even when a squeezed "Ans" label prints a fraction below it.
-    if (s && cur.stage === "stem" && (s.color === GREEN || s.color === RED) && /^1\.\s/.test(text)) cur.stage = "options";
+    if (s && cur.stage === "stem" && (isGreen(s.color) || isRed(s.color)) && /^1\.(\s|$)/.test(text)) cur.stage = "options";
     if (cur.stage === "stem") {
       if (s) cur.stemLines.push(s.text);
       else cur.stemImages.push(e.image!.name);
@@ -328,6 +354,7 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
     }
   }
 
+  if (!open.length) throw new Error("no questions found: not a TCS response sheet this reader knows");
   const out: TcsQuestion[] = [];
   for (const q of open) {
     const where = `shift ${q.shift} Q${q.number}`;
@@ -342,7 +369,7 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
       });
       q.optionImages[best].push(im.name);
     }
-    const keyed = q.optColor.flatMap((c, i) => (c === GREEN ? [i] : []));
+    const keyed = q.optColor.flatMap((c, i) => (isGreen(c) ? [i] : []));
     if (keyed.length !== 1) throw new Error(`${where}: expected exactly one key (green option), found ${keyed.length}`);
     out.push({
       sheet: q.sheet,
