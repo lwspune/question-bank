@@ -1,0 +1,1689 @@
+SSC CGL 2024 Tier I, 19 Sep 2024, Shift 3. Read from SSC's response sheet (TCS print; the key is the option colour, masked on the reading sheets).
+Drafted by agents, one PART each, from the reading sheets only (no key; DRAFTING_BRIEF.md);
+every block reviewed in the main session, then compared with the key (build.ts).
+Format: scripts/ssc-cgl/lib.ts.
+
+=== 1
+chapter: Mirror and Water Images
+subtopic: Mirror Images
+difficulty: EASY
+answer: B
+figure: stem+options
+stem:
+Select the correct mirror image of the given figure when the mirror is placed at MN as shown below.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The figure is the string hErd7% with a vertical mirror MN on its right. Its mirror image reads %, 7, d, r, E, h from left to right, with every character reversed left to right (d becomes b, the 7 and r face the other way, E becomes a reversed E, h is reversed).
+
+Option 2 shows all of this. Option 1 keeps % unreversed and shows p instead of b, option 3 leaves h unreversed, and option 4 leaves 7 unreversed.
+
+=== 2
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: MODERATE
+answer: A
+stem:
+In a certain code language, ‘CYCLE’ is coded as ‘242241522’ and ‘FINAL’ is coded as ‘2118132615’. How will ‘MUSIC’ be coded in that language?
+A: 14681824
+B: 1421191824
+C: 146191824
+D: 146192184
+solution:
+Each letter is replaced by its position in the reversed alphabet (A = 26, ..., Z = 1): C = 24, Y = 2, C = 24, L = 15, E = 22 gives 242241522. Check: F = 21, I = 18, N = 13, A = 26, L = 15 gives 2118132615.
+
+MUSIC: M = 14, U = 6, S = 8, I = 18, C = 24, so the code is 14681824.
+
+=== 3
+chapter: Classification
+subtopic: Letter Classification
+difficulty: EASY
+answer: C
+stem:
+Four letter-clusters have been given, out of which three are alike in some manner and one is different. Select the letter-cluster that is different.
+Note: The odd one out is not based on the number of consonants/vowels or their position in the letter cluster...11
+A: TVX
+B: HJL
+C: MOP
+D: NPR
+solution:
+TVX, HJL and NPR each move +2, +2 (T, V, X; H, J, L; N, P, R). MOP moves +2, +1, so it is the odd one.
+
+=== 4
+chapter: Analogy
+subtopic: Number Set Analogy
+difficulty: EASY
+answer: D
+stem:
+Select the triad in which the numbers are related to each other in the same way as the numbers in the following triads.
+4-5-41
+2-3-13
+(NOTE : Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 – Operations on 13 such as adding /deleting /multiplying etc., to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed.)
+A: 7-8-110
+B: 10-11-211
+C: 12-13-213
+D: 5-6-61
+solution:
+The third number is the sum of the squares of the first two: \(4^2 + 5^2 = 16 + 25 = 41\) and \(2^2 + 3^2 = 4 + 9 = 13\).
+
+Only 5-6-61 fits: \(25 + 36 = 61\). The others would need 113, 221 and 313.
+
+=== 5
+chapter: Coding-Decoding
+subtopic: Number and Symbol Coding
+difficulty: EASY
+answer: D
+stem:
+In a certain code language, ‘PANTHER’ is written as ‘0146283’ and ‘ANOTHER’ is written as ‘2864109’. How will ‘O’ be written in that language?
+A: 3
+B: 8
+C: 0
+D: 9
+solution:
+The two words share A, N, T, H, E and R, and their codes share the digits 0, 1, 2, 4, 6 and 8. The letter left over in PANTHER is P, with the digit 3; the letter left over in ANOTHER is O, with the digit 9. So O is written as 9.
+
+=== 6
+chapter: Embedded Figures and Pattern Completion
+subtopic: Embedded Figures
+difficulty: EASY
+answer: D
+figure: stem+options
+stem:
+Select the option figure in which the given figure (X) is embedded (rotation is NOT allowed).
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+Figure (X) is two arches joined at the top of a short vertical line that stands on a small black triangle. Option 4 contains exactly this: two arched curves meeting above a black triangle at the bottom of the figure, in the same orientation. None of the other options has a black triangle at all.
+
+=== 7
+chapter: Analogy
+subtopic: Letter Analogy
+difficulty: EASY
+answer: D
+stem:
+‘MPQO’ is related to ‘KNSQ’ in a certain way based on the English alphabetical order. In the same way, ‘DGHF’ is related to ‘BEJH’. To which of the following is ‘EINW’ related, following the same logic?
+A: CHQY
+B: BHQX
+C: BGPX
+D: CGPY
+solution:
+The rule is \(-2, -2, +2, +2\): M, P, Q, O become K, N, S, Q, and D, G, H, F become B, E, J, H.
+
+EINW: E \(-\) 2 = C, I \(-\) 2 = G, N + 2 = P, W + 2 = Y, giving CGPY.
+
+=== 8
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: A
+stem:
+Select the number from the given options to complete the series.
+58, 70, 83, 97, ___
+A: 112
+B: 113
+C: 114
+D: 111
+solution:
+The differences are 12, 13, 14, so the next is 15: \(97 + 15 = 112\).
+
+=== 9
+chapter: Blood Relations
+subtopic: Coded Relations
+difficulty: MODERATE
+answer: C
+stem:
+In a certain code language,
+\(X + Y\) means ‘X is the sister of Y’,
+\(X - Y\) means ‘X is the wife of Y’,
+\(X \times Y\) means ‘X is the mother of Y’,
+\(X \div Y\) means ‘X is the father of Y’.
+Based on the above, how is H related to L if ‘\(H \times I - J \div K + L\)’?
+A: Father’s mother
+B: Mother
+C: Mother’s mother
+D: Father’s sister
+solution:
+H is the mother of I; I is the wife of J; J is the father of K; K is the sister of L.
+
+So J and I are the parents of K and L, and I is L's mother. H is the mother of I, so H is L's mother's mother.
+
+=== 10
+chapter: Analogy
+subtopic: Word Analogy
+difficulty: EASY
+answer: B
+stem:
+Select the word-pair that best represents a similar relationship to the one expressed in the pair of words given below.
+
+(The words must be considered as meaningful English words and must not be related to each other based on the number of letters/number of consonants/vowels in the word.)
+Larva : Insect
+A: Dog : Animal
+B: Fawn : Deer
+C: Fox : Vixen
+D: Bat : Chick
+solution:
+A larva is the young stage of an insect. A fawn is the young of a deer. Dog : Animal is member and class, Fox : Vixen is male and female, and a bat does not grow into a chick.
+
+=== 11
+chapter: Paper Folding and Cutting
+subtopic: Paper Cutting
+difficulty: MODERATE
+answer: A
+figure: stem+options
+stem:
+A paper is folded and cut as shown below. How will it appear when unfolded?
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The bottom half is folded up onto the top half, then the right half is folded onto the left, leaving the top-left quarter with folds along its bottom and right edges. A jigsaw-shaped cut runs from the top edge to the bottom (fold) edge: it starts to the right, steps left, and has one rounded tab bulging to the right near the fold.
+
+Unfolding the horizontal fold mirrors this into the bottom half, so the left cut line has two right-pointing tabs next to the middle, with a step at each end. Unfolding the vertical fold mirrors the whole line into the right half, where the tabs point left.
+
+Option 1 shows this: two cut lines that are mirror images of each other, the left one with tabs pointing right and the right one with tabs pointing left. In options 2 and 3 the left line's tabs point left, and in option 4 both lines are identical copies rather than mirror images.
+
+=== 12
+chapter: Mathematical Operations
+subtopic: Interchanging Signs and Numbers
+difficulty: EASY
+answer: A
+stem:
+What will come in place of the question mark (?) in the following equation, if ‘+’ and ‘–’ are interchanged and ‘\(\times\)’ and ‘\(\div\)’ are interchanged?
+\(69 + 2485 \times 5 - 912 \div 2 = ?\)
+A: 1396
+B: 1936
+C: 1639
+D: 1963
+solution:
+After the interchange: \(69 - 2485 \div 5 + 912 \times 2\)
+
+\(= 69 - 497 + 1824 = 1396\)
+
+=== 13
+chapter: Non-Verbal Series and Analogy
+subtopic: Figure Series
+difficulty: HARD
+answer: C
+figure: stem+options
+stem:
+Which figure should replace the question mark (?) if the following series were to be continued?
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+Each figure holds seven symbols: top-left, top-right, middle-left, centre, middle-right, bottom-left and bottom-right. Figures 1, 3 and 5 form one series and figures 2 and 4 another.
+
+Figure 1: H top-left, V top-right, S middle-left, O centre, 6 middle-right, an arrow bottom-left, C bottom-right. Figure 3: H, V and 6 stay put; the middle-left symbol moves to the centre and changes (S becomes R), the centre O moves to bottom-right, the bottom-right C moves to bottom-left, and the bottom-left arrow moves to middle-left.
+
+Repeating this on figure 3 (arrow middle-left, R centre, O bottom-right, C bottom-left): the centre gets a new symbol, R goes to bottom-right, O to bottom-left and C to middle-left, with H, V and 6 unchanged. Option 3 shows H top-left, V top-right, C middle-left, the new symbol in the centre, 6 middle-right, O bottom-left and R bottom-right.
+
+=== 14
+chapter: Analogy
+subtopic: Number Set Analogy
+difficulty: EASY
+answer: B
+stem:
+Select the triad in which the numbers are related in the same way as are the numbers of the given triads.
+(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g., 13 – Operations on 13 such as adding/deleting/multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed.)
+(11, 1, 10)
+(13, 7, 90)
+A: (1, 2, 15)
+B: (4, 5, 19)
+C: (2, 6, 28)
+D: (3, 6, 23)
+solution:
+The third number is the product of the first two minus 1: \(11 \times 1 - 1 = 10\) and \(13 \times 7 - 1 = 90\).
+
+Only (4, 5, 19) fits: \(4 \times 5 - 1 = 19\). The others would need 1, 11 and 17.
+
+=== 15
+chapter: Classification
+subtopic: Number Classification
+difficulty: MODERATE
+answer: C
+stem:
+Three of the following four options are alike in a certain way and thus form a group. Which is the one that does NOT belong to that group?
+(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 – Operations on 13 such as adding/subtracting/multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed.)
+A: 88 – 23 – 245
+B: 56 – 31 – 205
+C: 22 – 13 – 85
+D: 18 – 12 – 72
+solution:
+The third number is twice the first plus three times the second:
+
+\(2 \times 88 + 3 \times 23 = 176 + 69 = 245\)
+
+\(2 \times 56 + 3 \times 31 = 112 + 93 = 205\)
+
+\(2 \times 18 + 3 \times 12 = 36 + 36 = 72\)
+
+For 22 – 13 – 85 the rule gives \(44 + 39 = 83\), not 85, so it is the odd one.
+
+=== 16
+chapter: Analogy
+subtopic: Number Analogy
+difficulty: EASY
+answer: D
+stem:
+Select the option in which the numbers share the same relationship as that shared by the given pair of numbers.
+(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 – Operations on 13 such as adding/deleting/multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed.)
+
+11 : 62
+13 : 64
+A: 12 : 92
+B: 9 : 59
+C: 14 : 37
+D: 16 : 67
+solution:
+The second number is the first plus 51: \(11 + 51 = 62\), \(13 + 51 = 64\).
+
+Only 16 : 67 fits (\(16 + 51 = 67\)). The others differ by 80, 50 and \(-23\).
+
+=== 17
+chapter: Mathematical Operations
+subtopic: Interchanging Signs and Numbers
+difficulty: EASY
+answer: A
+stem:
+What will come in the place of ‘?’ in the following equation, if ‘+’ and ‘–‘ are interchanged and ‘\(\times\)’ and ‘\(\div\)’ are interchanged?
+\(49 \times 7 - 6 \div 8 + 13 =\)
+A: 42
+B: 37
+C: 43
+D: 32
+solution:
+After the interchange: \(49 \div 7 + 6 \times 8 - 13\)
+
+\(= 7 + 48 - 13 = 42\)
+
+=== 18
+chapter: Venn Diagrams
+subtopic: Counting from a Venn Diagram
+difficulty: EASY
+answer: A
+figure: stem
+stem:
+Study the given diagram carefully and answer the question that follows. The numbers in different sections indicate the number of students who like particular subjects.
+
+How many students like Hindi and Science both, but NOT Maths?
+A: 4
+B: 11
+C: 12
+D: 10
+solution:
+The diagram has three circles: Hindi (top left), Science (top right) and a third circle below them, which is Maths (its label is not printed on the sheet, only its arrow). The regions read: Hindi only 30, Science only 20, the third circle only 15, Hindi and Science only 4, Hindi and Maths only 5, Science and Maths only 6, all three 7.
+
+Hindi and Science both but not Maths is the region shared by the top two circles outside the bottom one: 4.
+
+=== 19
+chapter: Syllogism
+subtopic: Three-Statement Syllogism
+difficulty: EASY
+answer: A
+stem:
+In this question, three statements are given, followed by two conclusions numbered I and II. Assuming the statements to be true, even if they seem to be at variance with commonly known facts, decide which of the conclusion(s) logically follows/follow from the statements.
+Statements:
+Some shirts are pants.
+All pants are jackets.
+All jackets are trousers.
+Conclusions:
+I. Some trousers are shirts.
+II. All jackets are shirts.
+A: Only conclusion I follows.
+B: Only conclusion II follows.
+C: Both conclusions I and II follow.
+D: Neither conclusion I nor II follows.
+solution:
+The shirts that are pants are jackets and therefore trousers, so some shirts are trousers, which means some trousers are shirts: I follows.
+
+Only some jackets (those that are pants that are shirts) are known to be shirts, so II does not follow. Only I follows.
+
+=== 20
+chapter: Non-Verbal Series and Analogy
+subtopic: Figure Series
+difficulty: MODERATE
+answer: D
+figure: stem+options
+stem:
+Identify the figure from among the given options which when put in place of the question mark (?) will logically complete the series.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+Each figure has three symbols on a 3 by 3 grid: a letter P, an arrow and a plus sign.
+
+The P moves one place clockwise round the edge each time (top-right, middle-right, bottom-right, bottom-middle) and turns upside down every other step (P, q, P, q), so next it is an upright P at bottom-left.
+
+The arrow goes from the centre to top-right, then moves one place clockwise each time (middle-right, bottom-right) and flips its direction every step (right, left, right, left), so next it points right at bottom-middle.
+
+The plus sign goes bottom-left, centre, top-right, middle-right, so next it is at bottom-right.
+
+Option 4 shows P bottom-left, a right arrow bottom-middle and the plus sign bottom-right.
+
+=== 21
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: B
+stem:
+Which of the following terms will replace the question mark (?) in the given series?
+HDLB, LBPZ, PZTX, ? , XVBT
+A: TWXC
+B: TXXV
+C: TWWV
+D: TVWC
+solution:
+First letters H, L, P, T, X move +4; second letters D, B, Z, X, V move \(-2\); third letters L, P, T, X, B move +4; fourth letters B, Z, X, V, T move \(-2\).
+
+So the missing term is TXXV, and it leads on to XVBT.
+
+=== 22
+chapter: Figure Counting
+subtopic: Counting Triangles
+difficulty: EASY
+answer: B
+figure: stem
+stem:
+How many triangles are there in the given figure?
+A: 5
+B: 4
+C: 2
+D: 3
+solution:
+The figure is a triangle ABC with a point D inside it, joined to A (a short vertical line from the apex) and to the base corners B and C.
+
+Triangles: ABD, ACD, BDC and the whole triangle ABC, so 4.
+
+=== 23
+chapter: Paper Folding and Cutting
+subtopic: Paper Folding and Punching
+difficulty: MODERATE
+answer: A
+figure: stem+options
+stem:
+The sequence of folding a piece of paper and the manner in which the folded paper has been cut is shown in the following figures. How would this paper look when unfolded?
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The top half is folded down onto the bottom half, then the left half is folded onto the right, leaving the bottom-right quarter with folds along its top and left edges. A small circle is cut near the fold corner (top-left of the quarter) and an upright pentagon below and to the right of it.
+
+Unfolding the vertical fold puts a mirror copy in the bottom-left quarter, circle again next to the centre. Unfolding the horizontal fold puts mirror copies in the top half: there the circles sit below the pentagons, next to the centre, and the pentagons point down.
+
+Option 1 shows four pentagons, the bottom two pointing up and the top two pointing down, with all four circles clustered round the centre. Option 3 has all pentagons upright, and options 2 and 4 place the circles away from the centre.
+
+=== 24
+chapter: Alphabet and Number Tests
+subtopic: Letter Position and Alphabet Test
+difficulty: EASY
+answer: A
+stem:
+The position of how many letters will remain unchanged if each of the letters in the word ‘DRAFTING’ is arranged in the English alphabetical order?
+A: None
+B: One
+C: Three
+D: Two
+solution:
+DRAFTING in alphabetical order is A, D, F, G, I, N, R, T.
+
+Position by position: D/A, R/D, A/F, F/G, T/I, I/N, N/R, G/T. No letter keeps its place, so none.
+
+=== 25
+chapter: Series
+subtopic: Alphanumeric and Pattern Series
+difficulty: EASY
+answer: A
+stem:
+Select the option that represents the letters that when sequentially placed from left to right in the blanks below will complete the letter series.
+I _ _ I _ I _ _ I _ J _
+A: J I J I J I I
+B: J I I I J J I
+C: I J I I J J I
+D: I I J J J I J
+solution:
+With J I J I J I I in the blanks the series reads IJI IJI IJI IJI, the block IJI repeated four times.
+
+=== 26
+subject: Geography
+chapter: Indian Geography — Physical Features
+subtopic: Indian Rivers, Lakes and Water Bodies
+difficulty: EASY
+answer: C
+stem:
+Which of the following is the largest inhabited riverine island in the world?
+A: Lakshadweep
+B: Peacock
+C: Majuli
+D: Bhavani
+solution:
+Majuli, in the Brahmaputra in Assam, is recognised as the largest inhabited river island in the world. Lakshadweep is a group of coral islands in the Arabian Sea, Peacock (Umananda) Island is a tiny Brahmaputra islet at Guwahati, and Bhavani Island is a small island in the Krishna near Vijayawada.
+
+=== 27
+subject: Physics
+chapter: Electricity and Magnetism
+subtopic: Magnetism and Magnetic Effects of Current
+difficulty: EASY
+answer: A
+stem:
+In the Right-Hand Thumb Rule, the thumb is directed towards the direction of:
+A: current
+B: magnetic field
+C: electric field
+D: motion of the conductor
+solution:
+Hold a current-carrying straight wire in the right hand with the thumb pointing along the current; the curled fingers then give the direction of the magnetic field lines around the wire. So the thumb points along the current.
+
+=== 28
+subject: Biology
+chapter: Cell Biology
+subtopic: Cell Organelles and Functions
+difficulty: EASY
+answer: A
+figure: stem
+stem:
+Which of the following illustrations is related to chloroplasts?
+A: c
+B: b
+C: d
+D: a
+solution:
+Illustration c shows an oval organelle with a double membrane and stacks of discs (grana of thylakoids) in the stroma: a chloroplast. Illustration a is a star-shaped cell (a nerve or similar cell), b is an X-shaped chromosome, and d is a sheet of cells with nuclei (as in an onion peel). So the answer is c, option 1.
+
+=== 29
+subject: Biology
+chapter: Biochemistry
+subtopic: Protein Structure
+difficulty: EASY
+answer: B
+stem:
+Which is the most important protein component in milk, both quantitatively and nutritionally, that accounts for about 80% of the total protein in bovine milk?
+A: Pepsin
+B: Casein
+C: Actin
+D: Albumin
+solution:
+Casein makes up about 80% of the protein in cow's milk; the remaining 20% is whey proteins (lactalbumin, lactoglobulin). Pepsin is a stomach enzyme and actin a muscle protein.
+
+=== 30
+subject: Current Affairs
+chapter: Science and Technology
+subtopic: Information Technology and Railway Safety
+difficulty: MODERATE
+answer: B
+stem:
+Which web portal was launched by the Department of Telecommunications for sharing information on mobile towers and EMF emission compliance?
+A: E-Amrit
+B: Tarang Sanchar
+C: Namaste
+D: PM-Daksh
+solution:
+The Tarang Sanchar portal (2017) of the Department of Telecommunications lets the public see mobile towers in an area and check whether they comply with EMF emission norms. E-Amrit is NITI Aayog's electric vehicle portal and PM-DAKSH is a skilling scheme of the Ministry of Social Justice.
+
+=== 31
+subject: Economics
+chapter: Money, Banking and Public Finance
+subtopic: Money, Inflation and Price Behaviour
+difficulty: EASY
+answer: A
+stem:
+Which of the following is Fisher's equation of exchange?
+A: \(MV = PT\)
+B: \(\frac{M}{V} = \frac{T}{P}\)
+C: \(MT = VP\)
+D: \(M = S + I\)
+solution:
+Irving Fisher's quantity theory of money states the equation of exchange as \(MV = PT\): money supply times velocity of circulation equals the price level times the volume of transactions.
+
+=== 32
+subject: History
+chapter: Medieval India
+subtopic: Mughal Empire and Administration
+difficulty: EASY
+answer: C
+stem:
+In 1539, the Battle of Chausa was fought between Humayun and ______.
+A: Ibrahim Lodhi
+B: Sikandar Suri
+C: Sher Shah Suri
+D: Rana Sanga
+solution:
+At Chausa (near Buxar) in 1539, Sher Shah Suri defeated Humayun, and in 1540 at Kannauj drove him out of India. Ibrahim Lodi and Rana Sanga were defeated by Babur (1526, 1527).
+
+=== 33
+subject: History
+chapter: Ancient India
+subtopic: Mahajanapadas, Magadha and Mauryan Empire
+difficulty: MODERATE
+answer: B
+flawed: yes
+note: SSC printed this question in Hindi only; the stem and options are our English rendering.
+stem:
+Who among the following usually headed the provincial administration under the Mauryas?
+A: Samaharta
+B: Kumara
+C: Dandapala
+D: Prashasti
+solution:
+Mauryan provinces were governed by princes of the royal family called Kumaras (or Aryaputras), as Ashoka's edicts show for Taxila, Ujjain and Tosali. The Samaharta was the chief collector of revenue, the Dandapala headed the police or army, and a prashasti is a eulogy inscription, not an office.
+
+=== 34
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Days, Festivals and Observances
+difficulty: MODERATE
+answer: B
+stem:
+Sardhana Christian Fair is held in which of the following states?
+A: Haryana
+B: Uttar Pradesh
+C: Madhya Pradesh
+D: West Bengal
+solution:
+Sardhana is in Meerut district of Uttar Pradesh, home to the Basilica of Our Lady of Graces built by Begum Samru; the annual Christian fair is held there.
+
+=== 35
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: EASY
+answer: D
+stem:
+Ali Akbar Khan was associated with which of the following gharanas?
+A: Kirana gharana
+B: Gwalior gharana
+C: Agra gharana
+D: Maihar gharana
+solution:
+Sarod maestro Ali Akbar Khan was the son and disciple of Allauddin Khan, founder of the Maihar gharana. Kirana, Gwalior and Agra are vocal gharanas.
+
+=== 36
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: D
+stem:
+Match the following Sportsman in List I and Award in List II:
+
+| LIST I- Sportsman | LIST II-Award |
+|---|---|
+| A. Devendra Jhajharia | i. Padma Shri 2022 |
+| B. Sumit Antil | ii. Padma Bhushan 2022 |
+| C. Neeraj Chopra | iii. Arjun Award 2021 |
+| D. Shikhar Dhawan | iv. Major Dhyan Chand Khel Ratna Award 2021 |
+A: A-iv, B-i, C-iii, D-ii
+B: A-i, B-iii, C-ii, D-iv
+C: A-iii, B-iv, C-i, D-ii
+D: A-ii, B-i, C-iv, D- iii
+solution:
+Devendra Jhajharia received the Padma Bhushan in 2022 (A-ii). Sumit Antil received the Padma Shri in 2022 (B-i). Neeraj Chopra received the Major Dhyan Chand Khel Ratna in 2021 after his Tokyo gold (C-iv). Shikhar Dhawan received the Arjuna Award in 2021 (D-iii). Only option 4 has A-ii; it matches all four.
+
+=== 37
+subject: Polity
+chapter: Fundamental Rights, DPSP and Local Governance
+subtopic: Fundamental Rights, DPSP and Duties
+difficulty: MODERATE
+answer: D
+stem:
+Which Article of the Indian Constitution mentions that ‘The State shall endeavour to promote cottage industries on an individual or co-operative basis in rural areas’?
+A: Article 42
+B: Article 44
+C: Article 49
+D: Article 43
+solution:
+Article 43 (living wage for workers) ends with the clause that the State shall endeavour to promote cottage industries on an individual or co-operative basis in rural areas. Article 42 covers just and humane conditions of work and maternity relief, Article 44 a uniform civil code and Article 49 protection of monuments.
+
+=== 38
+subject: Polity
+chapter: Indian Constitution — Making, Foundation and Amendments
+subtopic: Emergency Provisions
+difficulty: EASY
+answer: A
+stem:
+Which of the following is the most controversial Article in the Indian Constitution, which provides for President’s rule in any state?
+A: Article 356
+B: Article 358
+C: Article 352
+D: Article 360
+solution:
+Article 356 provides for President's Rule when the constitutional machinery in a state fails. Article 352 is the national emergency, Article 358 suspends Article 19 during it and Article 360 is the financial emergency.
+
+=== 39
+subject: Geography
+chapter: Climatology, Atmosphere and Weather
+subtopic: Humidity, Condensation, Clouds and Precipitation
+difficulty: MODERATE
+answer: A
+blind: D
+note: judgement item. The definition speaks of water drops on smoke or dust particles; SSC's key takes smog (smoke plus fog), our blind answer took mist as the nearest to fog. The bank carries SSC's answer
+stem:
+A dense mass of water drops on smoke or dust particles in the lower atmosphere layers is referred to as:
+A: smog
+B: frost
+C: blizzard
+D: mist
+solution:
+When water vapour condenses on particles of smoke or dust in the lower atmosphere, the result is smog, a mixture of smoke and fog that forms over cities and industrial areas.
+
+=== 40
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: C
+stem:
+Bhakti Pradeep Kulkarni is associated with ________.
+A: cricket
+B: kabaddi
+C: chess
+D: badminton
+solution:
+Bhakti Kulkarni of Goa is a chess Woman Grandmaster and a former national women's chess champion; she received the Arjuna Award in 2022.
+
+=== 41
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Civilian Awards and Honours
+difficulty: HARD
+answer: D
+stem:
+Who among the following was the youngest recipient of the Sangeetha Kalanidhi awarded by the Music Academy in 1947?
+A: Bhimsen Joshi
+B: Ariyakudi Ramanuja Iyengar
+C: Mallikarjun Bheemarayappa Mansur
+D: Semmangudi Radhakrishna Srinivasa Iyer
+solution:
+Semmangudi Srinivasa Iyer received the Madras Music Academy's Sangeetha Kalanidhi in 1947, at about 39, its youngest recipient. Ariyakudi Ramanuja Iyengar received it in 1938, and Bhimsen Joshi and Mallikarjun Mansur are Hindustani vocalists.
+
+=== 42
+subject: History
+chapter: Modern India
+subtopic: European Trading and Early British Conquest
+difficulty: EASY
+answer: C
+stem:
+In which year was the battle of Buxar fought?
+A: 1777
+B: 1793
+C: 1764
+D: 1757
+solution:
+The Battle of Buxar was fought in 1764, when the East India Company defeated Mir Qasim, Shuja-ud-Daula and Shah Alam II. 1757 is the Battle of Plassey and 1793 the Permanent Settlement.
+
+=== 43
+subject: Current Affairs
+chapter: Environment, Ecology and Energy
+subtopic: Environmental Campaigns, Disasters and Energy
+difficulty: MODERATE
+answer: D
+stem:
+Which of the following State governments has launched a scheme ‘Ankur’ in May 2021 to promote planting of trees in public, wherein people will be awarded for planting and taking care of the saplings?
+A: West Bengal
+B: Bihar
+C: Uttarakhand
+D: Madhya Pradesh
+solution:
+Madhya Pradesh launched the Ankur scheme on World Environment Day 2021; participants who plant saplings and look after them are given the Pranvayu Award.
+
+=== 44
+subject: History
+chapter: Modern India
+subtopic: British Administration, Acts and Legislation
+difficulty: HARD
+answer: A
+blind: C
+note: fact we could not verify: our blind answer (the Regulating Act 1773) was a recollection that searches did not confirm. SSC's key gives Pitt's India Act 1784; the bank carries SSC's answer
+stem:
+Which of the following Acts passed under Warren Hastings was also called ‘half-loaf system’?
+A: Pitt’s India Act 1784
+B: Government of India Act 1858
+C: Regulating Act 1773
+D: Charter Act 1813
+solution:
+Pitt's India Act, 1784 set up a dual system of control: the Company's directors kept its commercial affairs, and a Board of Control appointed by the Crown took charge of its political affairs. SSC's key treats this divided arrangement as the 'half-loaf' system.
+
+=== 45
+subject: Chemistry
+chapter: Atomic Structure and Periodic Classification
+subtopic: Electron Configuration and the Periodic Table
+difficulty: EASY
+answer: A
+stem:
+In Newlands’ Octaves, the properties of lithium and ________ were found to be the same.
+A: sodium
+B: beryllium
+C: aluminium
+D: magnesium
+solution:
+In Newlands' Law of Octaves every eighth element resembles the first. Counting from lithium (Li, Be, B, C, N, O, F, Na), the eighth element is sodium, which has properties like lithium.
+
+=== 46
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: EASY
+answer: C
+stem:
+India hosted the Asian Games in which of the following years?
+A: 1954 and 1982
+B: 1951 and 1986
+C: 1951 and 1982
+D: 1954 and 1986
+solution:
+New Delhi hosted the first Asian Games in 1951 and the ninth Asian Games in 1982. Manila hosted in 1954 and Seoul in 1986.
+
+=== 47
+subject: Economics
+chapter: Indian Economy
+subtopic: Government Schemes — Agriculture and Livestock
+difficulty: EASY
+answer: B
+stem:
+Which of the following movements created regional disparities between large and small farmers in India?
+A: Yellow revolution
+B: Green revolution
+C: Pink revolution
+D: Blue revolution
+solution:
+The Green Revolution's high-yielding seeds needed irrigation, fertilisers and capital, so its gains went mainly to large farmers and to Punjab, Haryana and western Uttar Pradesh, widening disparities between large and small farmers and between regions. The Yellow, Pink and Blue revolutions concern oilseeds, meat and fish.
+
+=== 48
+subject: Economics
+chapter: Indian Economy
+subtopic: Government Schemes — Agriculture and Livestock
+difficulty: MODERATE
+answer: B
+stem:
+What was the main objective of the Second Green Revolution in India?
+A: Ensuring food security in the western states
+B: Focusing on holistic development in agriculture
+C: Increasing the use of chemical fertilizers and pesticides
+D: Promoting conventional agricultural practices
+solution:
+The Second Green Revolution aims at holistic and sustainable growth of agriculture: spreading gains to eastern and rainfed regions, crop diversification, soil health, water use and farmer incomes, rather than more chemical inputs in the western states as in the first.
+
+=== 49
+subject: Polity
+chapter: Indian Constitution — Making, Foundation and Amendments
+subtopic: Emergency Provisions
+difficulty: EASY
+answer: B
+stem:
+Which of the following Articles of the Indian Constitution CANNOT be suspended even during an emergency declared on the grounds of war or external aggression?
+A: Articles 15 and 17
+B: Articles 20 and 21
+C: Articles 14 and 16
+D: Articles 30 and 32
+solution:
+Under Article 359, as amended by the 44th Amendment (1978), the enforcement of Articles 20 and 21 cannot be suspended during a national emergency.
+
+=== 50
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: HARD
+answer: C
+stem:
+Elelakkaradi dance of Kerala is performed by which of the following tribes?
+A: Mavilan tribe
+B: Kurumba tribe
+C: Irular tribe
+D: Adiyan tribe
+solution:
+Elelakkaradi is a folk dance of the Irula (Irular) tribe of Attappadi in Palakkad district, Kerala, performed with drums and pipes at festivals.
+
+=== 51
+chapter: Time and Work
+subtopic: Pipes and Cisterns
+difficulty: MODERATE
+answer: A
+stem:
+Two inlet pipes, P1 and P2, can fill a cistern in 20 hours and 30 hours, respectively. They were opened at the same time, but pipe P1 had to be closed 5 hours before the cistern was full. How many hours in total did it take for the two pipes to fill the cistern?
+A: 15 hours
+B: 9 hours
+C: 12 hours
+D: 10 hours
+solution:
+Let the total time be \(T\) hours. P2 runs for \(T\) hours and P1 for \(T - 5\) hours, so \(\frac{T - 5}{20} + \frac{T}{30} = 1\).
+
+Multiplying by 60: \(3(T - 5) + 2T = 60\), so \(5T = 75\) and \(T = 15\).
+
+Check: P1 fills \(\frac{10}{20} = \frac{1}{2}\) and P2 fills \(\frac{15}{30} = \frac{1}{2}\), together the full cistern.
+
+=== 52
+chapter: Surds, Indices and Simplification
+subtopic: Simplification of Expressions
+difficulty: EASY
+answer: A
+stem:
+The value of \([15 \div 3 \times 7 - 8 \text{ of } 2 + 6]\) is:
+A: \(25\)
+B: \(-29\)
+C: \(39.5\)
+D: \(13\)
+solution:
+"of" is done first: \(8 \text{ of } 2 = 16\).
+
+Then left to right for division and multiplication: \(15 \div 3 \times 7 = 5 \times 7 = 35\).
+
+So the value is \(35 - 16 + 6 = 25\).
+
+=== 53
+chapter: Ratio, Proportion and Variation
+subtopic: Ratio and Proportion
+difficulty: EASY
+answer: C
+stem:
+The ratio of boys to girls initial in a college is \(5 : 6\). If 40 boys leave the college and 50 girls join the college, the ratio will become \(8 : 11\). Find the number of girls (initial) in the college.
+A: 740
+B: 640
+C: 720
+D: 860
+solution:
+Let the boys be \(5x\) and the girls \(6x\). Then \(\frac{5x - 40}{6x + 50} = \frac{8}{11}\), so \(55x - 440 = 48x + 400\), giving \(7x = 840\) and \(x = 120\).
+
+Initial girls \(= 6 \times 120 = 720\).
+
+Check: boys \(600 - 40 = 560\), girls \(720 + 50 = 770\), and \(560 : 770 = 8 : 11\).
+
+=== 54
+chapter: Circles
+subtopic: Intersecting Chords and Power of a Point
+difficulty: EASY
+answer: D
+stem:
+From a point A, a tangent line is drawn to the circle of radius 7 units. From the same point, a secant is drawn to the circle which cuts the circle at B and C and the point B is near A than C. What is the length of BC in units if the length of the tangent to the circle from point A is 21 units and the length of AB is 14 units?
+A: 18.5
+B: 16.5
+C: 15.5
+D: 17.5
+solution:
+By the tangent-secant theorem, \(\text{tangent}^2 = AB \times AC\), so \(21^2 = 14 \times AC\) and \(AC = \frac{441}{14} = 31.5\).
+
+So \(BC = AC - AB = 31.5 - 14 = 17.5\) units. The radius is not needed.
+
+=== 55
+chapter: Data Interpretation
+subtopic: Tables
+difficulty: EASY
+answer: D
+stem:
+The given table shows the number of candidates appeared in an interview for different posts (A, B, C, D, E and F).
+What is the average number of candidates appearing for the posts C, D, E and F?
+
+| Posts | Candidates appearing |
+|---|---|
+| A | 5500 |
+| B | 8200 |
+| C | 8600 |
+| D | 9900 |
+| E | 5300 |
+| F | 5100 |
+A: 7600
+B: 8000
+C: 7500
+D: 7225
+solution:
+Sum for C, D, E and F \(= 8600 + 9900 + 5300 + 5100 = 28900\).
+
+Average \(= \frac{28900}{4} = 7225\).
+
+=== 56
+chapter: Simple and Compound Interest
+subtopic: Simple Interest
+difficulty: MODERATE
+answer: A
+stem:
+Pranav borrows a sum of ₹598397 at the rate of \(20\%\) per annum simple interest. At the end of the first year, he repays ₹24284 towards return of principal amount borrowed. If Pranav clears all pending dues at the end of the second year, including interest payment that accrued during the first year, how much does he pay (in ₹) at the end of the second year?
+A: 808615
+B: 812514
+C: 817567
+D: 818513
+solution:
+Interest for year 1 \(= 0.2 \times 598397 = 119679.4\).
+
+Principal for year 2 \(= 598397 - 24284 = 574113\), so interest for year 2 \(= 0.2 \times 574113 = 114822.6\).
+
+Payment at the end of year 2 \(= 574113 + 114822.6 + 119679.4 = 808615\).
+
+Check: the two interests add to \(234502\), and \(574113 + 234502 = 808615\).
+
+=== 57
+chapter: Averages
+subtopic: Weighted and Combined Averages
+difficulty: EASY
+answer: C
+stem:
+A class of 30 students appeared in a test. The average score of 12 students is 62, and that of the rest is 68. What is the average score of the class?
+A: 66.6
+B: 63.6
+C: 65.6
+D: 64.6
+solution:
+Total \(= 12 \times 62 + 18 \times 68 = 744 + 1224 = 1968\).
+
+Average \(= \frac{1968}{30} = 65.6\).
+
+Check: \(62 + \frac{18}{30} \times (68 - 62) = 62 + 3.6 = 65.6\).
+
+=== 58
+chapter: Mensuration 2D
+subtopic: Arcs, Sectors and Segments
+difficulty: EASY
+answer: D
+stem:
+If the area of a sector of a circle is \(462\ \text{cm}^2\) and the central angle is \(120^\circ\), then its radius is ____.
+A: 18 cm
+B: 17 cm
+C: 14 cm
+D: 21 cm
+solution:
+\(\frac{120}{360} \times \frac{22}{7} r^2 = 462\), so \(\frac{22}{7} r^2 = 1386\) and \(r^2 = 441\).
+
+So \(r = 21\) cm.
+
+=== 59
+chapter: Data Interpretation
+subtopic: Tables
+difficulty: EASY
+answer: A
+stem:
+The given table shows the expenditure in (in crores ₹) of three companies A, B and C and the percentage profit of these companies in different years. Given that:
+
+\(\text{Income} = \text{Expenditure} + \text{Expenditure} \times \frac{\text{Profit } \%}{100}\)
+
+| Years | Company A Expenditure | Company A Profit | Company B Expenditure | Company B Profit | Company C Expenditure | Company C Profit |
+|---|---|---|---|---|---|---|
+| 2002 | 24 | \(50\%\) | 20 | \(40\%\) | 40 | \(45\%\) |
+| 2003 | 30 | \(45\%\) | 15 | \(25\%\) | 50 | \(55\%\) |
+| 2004 | 36 | \(40\%\) | 25 | \(35\%\) | 60 | \(65\%\) |
+| 2005 | 40 | \(60\%\) | 35 | \(48\%\) | 80 | \(75\%\) |
+
+What is the income (in crore ₹) of Company C in the year 2003?
+A: 77.5
+B: 75.7
+C: 69.8
+D: 105
+solution:
+Company C in 2003: expenditure 50, profit \(55\%\).
+
+Income \(= 50 + 50 \times \frac{55}{100} = 50 + 27.5 = 77.5\) crore.
+
+Check: \(50 \times 1.55 = 77.5\).
+
+=== 60
+chapter: Data Interpretation
+subtopic: Pie Charts
+difficulty: MODERATE
+answer: C
+figure: stem
+flawed: yes
+note: The printed stem ends in a comma after "basketball" and gives no total expenditure, so the degree shares cannot be turned into ₹ lakh and no option can be derived. C fits only an assumed total of ₹432 lakh.
+stem:
+The pie-chart below shows the expenditures (in ₹ lakh) of a country on various sports during a particular year. Study the graph carefully and answer the question given below it.
+
+What is the average expenditure (in ₹ lakh) on tennis, golf, swimming, and basketball,
+A: 138
+B: 44
+C: 69
+D: 120
+solution:
+The chart's sectors, clockwise from the top and in legend order: Tennis \(85^\circ\), Football \(70^\circ\), Golf \(48^\circ\), Swimming \(45^\circ\), Cricket \(60^\circ\), Basketball \(52^\circ\) (total \(360^\circ\)).
+
+Tennis, golf, swimming and basketball together take \(85 + 48 + 45 + 52 = 230^\circ\).
+
+With a total expenditure of \(T\) lakh, their average is \(\frac{230}{360} \times \frac{T}{4}\). The paper does not print \(T\). Reading the degrees as lakh gives \(\frac{230}{4} = 57.5\), which is not an option. An answer of 69 needs \(T = 432\) (and 138 needs \(T = 864\)), so the question cannot be settled from what is printed.
+
+=== 61
+chapter: Trigonometric Ratios and Identities
+subtopic: Simplifying and Proving Identities
+difficulty: EASY
+answer: D
+stem:
+If \(\tan \theta = \frac{5}{8}\), then find the value of \(\frac{(1 + \cos \theta)(1 - \cos \theta)}{(1 + \sin \theta)(1 - \sin \theta)}\).
+A: \(\frac{5}{64}\)
+B: \(\frac{2}{25}\)
+C: \(\frac{64}{25}\)
+D: \(\frac{25}{64}\)
+solution:
+\(\frac{(1 + \cos \theta)(1 - \cos \theta)}{(1 + \sin \theta)(1 - \sin \theta)} = \frac{1 - \cos^2 \theta}{1 - \sin^2 \theta} = \frac{\sin^2 \theta}{\cos^2 \theta} = \tan^2 \theta\).
+
+So the value is \(\left(\frac{5}{8}\right)^2 = \frac{25}{64}\).
+
+=== 62
+chapter: Triangles
+subtopic: Medians and Apollonius Theorem
+difficulty: EASY
+answer: B
+stem:
+In \(\Delta PQR\), if PT is the median, then which of the following is correct?
+A: \(PQ^2 + PR^2 = PT^2 + QR^2\)
+B: \(PQ^2 + PR^2 = 2(PT^2 + QT^2)\)
+C: \(PQ^2 + PR^2 = PT^2 + QT^2\)
+D: \(PQ^2 + PR^2 = 2(PT^2 - QT^2)\)
+solution:
+By Apollonius' theorem, with T the midpoint of QR, \(PQ^2 + PR^2 = 2(PT^2 + QT^2)\).
+
+Check with an equilateral triangle of side 2: \(PT = \sqrt{3}\), \(QT = 1\), so \(2(3 + 1) = 8 = 4 + 4\).
+
+=== 63
+chapter: Algebraic Identities and Simplification
+subtopic: Rational Algebraic Expressions
+difficulty: MODERATE
+answer: C
+stem:
+Simplify \(\frac{(25)^4 + 1250 + 1 - (25)^2}{(25)^2 + 25 + 1}\).
+A: 604
+B: 602
+C: 601
+D: 603
+solution:
+\(1250 = 2 \times 25^2\), so the numerator is \(25^4 + 25^2 + 1 = (25^2 + 25 + 1)(25^2 - 25 + 1)\).
+
+So the value is \(25^2 - 25 + 1 = 625 - 25 + 1 = 601\).
+
+Check: numerator \(= 390625 + 1250 + 1 - 625 = 391251\), and \(651 \times 601 = 391251\).
+
+=== 64
+chapter: Number System
+subtopic: Divisibility Rules and Missing Digits
+difficulty: EASY
+answer: C
+stem:
+Which of the following numbers is NOT divisible by 8?
+A: 5544
+B: 7344
+C: 7497
+D: 4608
+solution:
+A number is divisible by 8 when its last three digits are. \(544 = 8 \times 68\), \(344 = 8 \times 43\), \(608 = 8 \times 76\).
+
+7497 is odd, so it is not divisible by 8.
+
+=== 65
+chapter: Percentage, Profit and Loss
+subtopic: Profit and Loss
+difficulty: EASY
+answer: A
+stem:
+Find the gain percentage, given that Anubha sold her scooter for ₹23358 gaining \(\frac{1}{6}\)th of the selling price.
+A: \(20\%\)
+B: \(35\%\)
+C: \(30\%\)
+D: \(25\%\)
+solution:
+Gain \(= \frac{1}{6}\text{SP}\), so \(\text{CP} = \frac{5}{6}\text{SP}\).
+
+Gain \(\% = \frac{1/6}{5/6} \times 100 = 20\%\).
+
+Check: \(\text{CP} = \frac{5}{6} \times 23358 = 19465\), gain \(= 3893\), and \(\frac{3893}{19465} = 0.2\).
+
+=== 66
+chapter: Data Interpretation
+subtopic: Tables
+difficulty: MODERATE
+answer: C
+stem:
+Study the given table and answer the question that follows.
+The given table shows the number of candidates who appeared (both male and female) in a Public Examination and the percentage of those who qualified in the examination from two states X and Z. Few values are missing in the table (indicated by ------). You will be required to fill them up according to the question.
+
+| Year | State X Number of appeared candidates | State X Percentage of qualified candidates | State Z Number of appeared candidates | State Z Percentage of qualified candidates |
+|---|---|---|---|---|
+| 2008 | 480 | \(70\%\) | ------ | \(70\%\) |
+| 2009 | 560 | \(75\%\) | ------ | \(80\%\) |
+| 2010 | -------- | \(60\%\) | 650 | \(50\%\) |
+| 2011 | 450 | \(89\%\) | 720 | \(72\%\) |
+| 2012 | 790 | ------ | 660 | ------ |
+
+The number of appeared candidates from State Z increased by \(100\%\) from 2008 to 2009. If the total number of qualified candidates from State Z in 2008 and 2009 together is 552, what is the number of appeared candidates from State Z in 2009?
+A: 600
+B: 240
+C: 480
+D: 360
+solution:
+Let State Z have \(x\) appeared candidates in 2008, so \(2x\) in 2009.
+
+Qualified: \(0.7x + 0.8 \times 2x = 2.3x = 552\), so \(x = 240\).
+
+Appeared in 2009 \(= 2 \times 240 = 480\).
+
+Check: \(0.7 \times 240 + 0.8 \times 480 = 168 + 384 = 552\).
+
+=== 67
+chapter: Trigonometric Ratios and Identities
+subtopic: Trigonometric Equations
+difficulty: EASY
+answer: C
+stem:
+If \(\tan \theta + \cot \theta = 2\), and \(\theta\) is an acute angle, then the value of \(\theta\) is:
+A: \(15^\circ\)
+B: \(30^\circ\)
+C: \(45^\circ\)
+D: \(60^\circ\)
+solution:
+With \(t = \tan \theta\): \(t + \frac{1}{t} = 2\) gives \((t - 1)^2 = 0\), so \(t = 1\) and \(\theta = 45^\circ\).
+
+Check: \(\tan 45^\circ + \cot 45^\circ = 1 + 1 = 2\).
+
+=== 68
+chapter: Trigonometric Ratios and Identities
+subtopic: Simplifying and Proving Identities
+difficulty: EASY
+answer: A
+stem:
+If A is an acute angle, then \(\sqrt{\frac{1 - \cos A}{1 + \cos A}} + \sqrt{\frac{1 + \cos A}{1 - \cos A}}\) is equal to:
+A: \(2 \operatorname{cosec} A\)
+B: \(2 \sec A\)
+C: \(2 \cos A\)
+D: \(2 \sin A\)
+solution:
+Combining over a common denominator: \(\frac{(1 - \cos A) + (1 + \cos A)}{\sqrt{1 - \cos^2 A}} = \frac{2}{\sin A} = 2 \operatorname{cosec} A\).
+
+Check at \(A = 90^\circ\): \(1 + 1 = 2 = 2 \operatorname{cosec} 90^\circ\).
+
+=== 69
+chapter: Mensuration 3D
+subtopic: Cubes and Cuboids
+difficulty: EASY
+answer: D
+stem:
+The total surface area of a closed cube is given as \(1152\ \text{cm}^2\). What is the length (in cm) of each side of the cube?
+A: \(4\sqrt{13}\)
+B: \(8\sqrt{2}\)
+C: \(9\sqrt{2}\)
+D: \(8\sqrt{3}\)
+solution:
+\(6a^2 = 1152\), so \(a^2 = 192 = 64 \times 3\) and \(a = 8\sqrt{3}\) cm.
+
+Check: \(6 \times (8\sqrt{3})^2 = 6 \times 192 = 1152\).
+
+=== 70
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: EASY
+answer: C
+stem:
+A cooker is marked at ₹12,500. The dealer allows successive discounts of \(6\%\), \(6\%\) and \(4\%\) on it. What is the net selling price of the cooker?
+A: ₹12,320.60
+B: ₹10,306
+C: ₹10,603.20
+D: ₹12,230
+solution:
+\(12500 \times 0.94 = 11750\), then \(11750 \times 0.94 = 11045\), then \(11045 \times 0.96 = 10603.20\).
+
+So the net selling price is ₹10,603.20.
+
+=== 71
+chapter: Time, Speed and Distance
+subtopic: Relative Speed: Chasing and Meeting
+difficulty: EASY
+answer: A
+stem:
+A thief is spotted by a policeman from a distance of 195 metres. When the policeman starts the chase, the thief also starts running. If the speed of the thief is 22 km/h and that of the policeman is 27 km/h, then how far would the thief have run (in m) before he is overtaken?
+A: 858
+B: 958
+C: 951
+D: 825
+solution:
+The policeman gains \(27 - 22 = 5\) km/h, so he closes 195 m in \(\frac{0.195}{5} = 0.039\) h.
+
+In that time the thief runs \(22 \times 0.039 = 0.858\) km \(= 858\) m.
+
+Check: distances run are in the ratio of speeds, so the thief's share is \(\frac{22}{5} \times 195 = 858\) m.
+
+=== 72
+chapter: Linear Equations
+subtopic: Solving Linear Systems
+difficulty: MODERATE
+answer: B
+stem:
+For the equations \(ax + (a^2 + 1)y = 4\) and \(4x + ay = a^2\), which of the following statements is TRUE?
+A: If \(a = 6\), then \(x = 48\), \(y = 4\) are the solutions.
+B: If \(a = -12\), then \(x = 48\), \(y = 4\) are the solutions.
+C: If \(a = 6\), then \(x = \frac{325}{28}\), \(y = -\frac{25}{28}\) are the solutions.
+D: If \(a = -12\), then \(x = \frac{325}{28}\), \(y = -\frac{25}{28}\) are the solutions.
+solution:
+For \(a = -12\): \(-12x + 145y = 4\) and \(4x - 12y = 144\), that is \(x = 36 + 3y\).
+
+Substituting: \(-12(36 + 3y) + 145y = 4\), so \(109y = 436\), \(y = 4\) and \(x = 48\).
+
+Check: \(-576 + 580 = 4\) and \(192 - 48 = 144 = (-12)^2\).
+
+For \(a = 6\) the system \(6x + 37y = 4\), \(4x + 6y = 36\) gives \(y = -\frac{25}{14}\), \(x = \frac{327}{28}\), so A and C are false.
+
+=== 73
+chapter: Quadrilaterals
+subtopic: Rhombus and Kite
+difficulty: MODERATE
+answer: D
+stem:
+In a kite ABCD, longer diagonal BD is drawn. If \(\angle ABD = 54^\circ\) and \(\angle ADB = 50^\circ\), then what is the measure (in degrees) of the \(\angle DCB\)?
+A: 108
+B: 100
+C: 54
+D: 76
+solution:
+Since \(\angle ABD \ne \angle ADB\), \(AB \ne AD\), so the kite's equal sides are \(BA = BC\) and \(DA = DC\), and the diagonal BD is its line of symmetry. Triangles ABD and CBD are congruent.
+
+So \(\angle DCB = \angle DAB = 180^\circ - 54^\circ - 50^\circ = 76^\circ\).
+
+=== 74
+chapter: Percentage, Profit and Loss
+subtopic: Percentage
+difficulty: MODERATE
+answer: A
+stem:
+Three candidates X, Y and Z participated in an election. X got \(30\%\) more votes than Y, whereas Z got \(25\%\) more votes than Y. X also overtook Z by 5000 votes. If \(71\%\) of the voters voted and no invalid votes were cast, then what was the total number of voters in the voting list?
+A: 5,00,000
+B: 4,50,000
+C: 3,55,000
+D: 4,05,000
+solution:
+Let Y get \(y\) votes: X gets \(1.3y\) and Z gets \(1.25y\). Then \(0.05y = 5000\), so \(y = 100000\).
+
+Votes cast \(= 1.3y + y + 1.25y = 3.55y = 355000\), which is \(71\%\) of the list.
+
+Voters in the list \(= \frac{355000}{0.71} = 500000\).
+
+=== 75
+chapter: Algebraic Identities and Simplification
+subtopic: Squares and Cubes of a Binomial
+difficulty: EASY
+answer: D
+stem:
+In a rectangular field, the sum of the length and the breadth is 9 cm and area is \(18\ \text{cm}^2\). If the length is 'a' and breadth is 'b', then find the value of \((a^2 - ab + b^2)\).
+A: 18
+B: 36
+C: 24
+D: 27
+solution:
+\(a + b = 9\) and \(ab = 18\), so \(a^2 - ab + b^2 = (a + b)^2 - 3ab = 81 - 54 = 27\).
+
+Check: \(a = 6\), \(b = 3\) gives \(36 - 18 + 9 = 27\).
+
+=== 76
+chapter: Vocabulary
+subtopic: Antonyms: Size, Worth and Law
+difficulty: EASY
+answer: B
+stem:
+Select the most appropriate ANTONYM of the given word.
+Appreciate
+A: Acknowledge
+B: Depreciate
+C: Depict
+D: Esteem
+solution:
+To appreciate is to value something highly or to rise in value; to depreciate is to belittle it or to fall in value. Acknowledge and esteem are close in meaning to appreciate, and depict (portray) is unrelated.
+
+=== 77
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: A
+stem:
+Identify the INCORRECTLY spelt word in the following sentence and select its correct spelling from the given options.
+The occurence of this phenomenon is quite rare.
+A: occurrence
+B: occurance
+C: occerence
+D: occurrance
+solution:
+"Occurence" is misspelt. The correct form doubles the r and ends in -ence: occurrence. The other options misspell the vowel or the ending.
+
+=== 78
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: C
+stem:
+Select the option that expresses the given sentence in passive voice.
+The school will hire new teachers.
+A: New teachers will join the school.
+B: New teachers are hired by the school.
+C: New teachers will be hired by the school.
+D: The school will be hiring new teachers.
+solution:
+Simple future active (will hire) becomes will be + past participle in the passive: New teachers will be hired by the school. A changes the meaning, B changes the tense, and D is still active.
+
+=== 79
+chapter: Vocabulary
+subtopic: Synonyms: Harm, Degree and the Senses
+difficulty: EASY
+answer: C
+stem:
+Select the most appropriate synonym of the given word.
+Magnificent
+A: Sacred
+B: Scared
+C: Splendid
+D: Slow
+solution:
+Magnificent means impressively grand or beautiful, which is splendid. Sacred (holy), scared (afraid) and slow are unrelated.
+
+=== 80
+chapter: Vocabulary
+subtopic: Confusable Word Pairs
+difficulty: MODERATE
+answer: B
+stem:
+Select the most appropriate option to fill in the blank.
+The US ________ building was built in the year 1800.
+A: captain
+B: capitol
+C: capital
+D: cannibal
+solution:
+A capitol is the building in which a legislature meets; the US Capitol in Washington first housed Congress in 1800. A capital is a city (or money, or a capital letter), so "capital building" is the common confusion. Captain and cannibal do not fit.
+
+=== 81
+chapter: Spotting Errors
+subtopic: Word Choice and Word Form
+difficulty: MODERATE
+answer: B
+stem:
+Parts of the following sentence have been given as options. Select the option that contains an error.
+In some countries, you are not able to drink until you are 21.
+A: until you are 21.
+B: able to drink
+C: you are not
+D: In some countries,
+solution:
+The sentence is about a legal age limit, which is a matter of permission, not ability. It should read "you are not allowed to drink until you are 21", so the error is in "able to drink".
+
+=== 82
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: C
+stem:
+Select the term which means the same as the given group of words.
+A continuing unpleasant situation, created when one problem causes another problem that then makes the first problem worse
+A: Round cycle
+B: Repetitive cycle
+C: Vicious cycle
+D: Enclosed cycle
+solution:
+A vicious cycle (vicious circle) is a chain of problems in which each makes the previous one worse. The other phrases are not set expressions with this meaning.
+
+=== 83
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: D
+stem:
+Select the option that corrects the error in the given sentence.
+She sings good.
+A: better
+B: goodly
+C: best
+D: well
+solution:
+"Sings" is a verb, so it needs the adverb "well", not the adjective "good": She sings well. Better and best are comparative and superlative forms that need a comparison, and goodly is not the adverb of good.
+
+=== 84
+chapter: Sentence Rearrangement
+subtopic: Joining Words, Pairs and Pointers (PQRS)
+difficulty: EASY
+answer: B
+stem:
+Parts of a sentence are given below in jumbled order. Select the option that arranges the parts in the correct sequence to form a meaningful sentence.
+(P) society benefits from diversity
+(Q) enriching cultures and
+(O) by fostering understanding and empathy
+(R) perspectives from around the world
+A: QPRO
+B: POQR
+C: ROQP
+D: RPOQ
+solution:
+P has the subject and verb and opens the sentence: "society benefits from diversity". O says how: "by fostering understanding and empathy". Q adds a second effect ending in "and", which R completes: "enriching cultures and perspectives from around the world". Order P O Q R.
+
+=== 85
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: A
+stem:
+Select the option that can be used as a one-word substitute for the given group of words.
+Lack of interest, enthusiasm or concern
+A: Apathy
+B: Antipathy
+C: Sympathy
+D: Empathy
+solution:
+Apathy is lack of interest, enthusiasm or concern. Antipathy is strong dislike, sympathy is feeling sorry for someone, and empathy is sharing another's feelings.
+
+=== 86
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: C
+stem:
+Select the option that can be used as a one-word substitute for the given group of words.
+The study of ancient things such as art, graves, ruins etc.
+A: Astrology
+B: Meteorology
+C: Archaeology
+D: Geology
+solution:
+Archaeology studies the human past through remains such as artefacts, graves and ruins. Astrology claims to read the stars' influence, meteorology studies weather, and geology studies the earth's rocks.
+
+=== 87
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: A
+stem:
+Select the most appropriate option that can substitute the underlined segment in the given sentence.
+No sooner did Mr. Piyahri Mishra finish his chemistry lecture \(\underline{\text{that the students began to leave}}\).
+A: than the students began to leave.
+B: then the students began to leave.
+C: so the students began to leave.
+D: and the students began to leave.
+solution:
+"No sooner" is always followed by "than": No sooner did he finish his lecture than the students began to leave. "Then", "so" and "and" do not pair with "no sooner".
+
+=== 88
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: A
+stem:
+Select the option that can be used as a one-word substitute for the given group of words.
+An utter state of confusion
+A: Chaos
+B: Pathos
+C: Innuendos
+D: Engross
+solution:
+Chaos is complete disorder and confusion. Pathos is a quality that evokes pity, innuendos are indirect hints, and engross means to absorb someone's attention.
+
+=== 89
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: C
+stem:
+Select the INCORRECTLY spelt word.
+A: Cemetery
+B: Occurrence
+C: Beggining
+D: Interrupt
+solution:
+The correct spelling is "beginning": a single g, then a double n before -ing. Cemetery, occurrence and interrupt are spelt correctly.
+
+=== 90
+chapter: Vocabulary
+subtopic: Synonyms: Harm, Degree and the Senses
+difficulty: EASY
+answer: C
+stem:
+Select the most appropriate synonym of the given word.
+Miraculous
+A: Expected
+B: Average
+C: Incredible
+D: Draining
+solution:
+Miraculous means so extraordinary as to seem like a miracle, which is incredible. Expected and average are near-opposites, and draining (exhausting) is unrelated.
+
+=== 91
+chapter: Idioms and Phrases
+subtopic: Idioms: Trouble and Success
+difficulty: EASY
+answer: C
+stem:
+Select the most appropriate option to substitute the underlined segment in the given sentence.
+After reflecting on the matter regarding his boss’s selfish attitude, Raju decided to \(\underline{\text{force himself to perform an unpleasant action in a difficult situation in order to resolve the matter.}}\)
+A: dodge the bullet
+B: ignore the bullet
+C: bite the bullet
+D: shoot the bullet
+solution:
+To bite the bullet is to make oneself do something unpleasant or difficult that cannot be avoided. To dodge the bullet is to narrowly escape trouble, the opposite; "ignore the bullet" and "shoot the bullet" are not idioms.
+
+=== 92
+chapter: Vocabulary
+subtopic: Antonyms: Size, Worth and Law
+difficulty: EASY
+answer: B
+stem:
+Select the most appropriate ANTONYM of the given word.
+Absolve
+A: Appeal
+B: Accuse
+C: Excuse
+D: Commend
+solution:
+To absolve is to declare someone free from blame or guilt; to accuse is to charge them with it. Excuse is close to a synonym, commend means praise, and appeal is unrelated.
+
+=== 93
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: C
+stem:
+Select the option that expresses the given sentence in passive voice.
+Meenakshi could have sent a reply.
+A: A reply could have been send by Meenakshi.
+B: A reply could have be sent by Meenakshi.
+C: A reply could have been sent by Meenakshi.
+D: A reply could have sent by Meenakshi.
+solution:
+Modal + have + past participle becomes modal + have been + past participle in the passive: A reply could have been sent by Meenakshi. A uses "send" instead of the participle, B uses "be" instead of "been", and D drops "been".
+
+=== 94
+chapter: Vocabulary
+subtopic: Synonyms: Feelings, Speech and Persuasion
+difficulty: MODERATE
+answer: B
+stem:
+Select the most appropriate synonym of the given word.
+Beseech
+A: Impart
+B: Implore
+C: Bequeath
+D: Pamper
+solution:
+To beseech is to ask urgently and earnestly, which is to implore. Impart means pass on information, bequeath means leave property by will, and pamper means indulge.
+
+=== 95
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: D
+stem:
+Select the option that can be used as a one-word substitute for the given group of words.
+A person who has supreme power or authority
+A: Foreign
+B: Secular
+C: Diversity
+D: Sovereign
+solution:
+A sovereign is a supreme ruler, such as a monarch, holding supreme power. Foreign, secular and diversity do not name a person with authority.
+
+=== 96
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: EASY
+answer: B
+context:
+In the following passage, some words have been deleted. Read the passage carefully and select the most appropriate option to fill in each blank.
+Augmented reality and virtual reality are two types of reality technologies that either augment or replace a real-world environment with a (1)________ one. In augmented reality, a virtual environment coexists (2)________ the actual world, to be instructive and offer more data about the real world that a user can access without having to search. When a handset is pointed at a piece of malfunctioning (3)________, for example, industrial AR apps might provide rapid troubleshooting information. Virtual reality is a (4)________ environmental simulation that completely replaces the user's surroundings with a totally virtual world. For example, VR may provide a user with a box containing a cartoon (5)________ of Mike Tyson in a virtual boxing ring.
+stem:
+Select the most appropriate option to fill in blank number 1.
+A: revealed
+B: simulated
+C: catered
+D: suffocated
+solution:
+The real-world environment is augmented or replaced with an artificial, computer-made one: a simulated environment. Revealed, catered and suffocated do not describe a virtual environment.
+
+=== 97
+chapter: Cloze Test
+subtopic: Prepositions in the Blank
+difficulty: EASY
+answer: B
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank number 2.
+A: beyond
+B: with
+C: along
+D: behind
+solution:
+The verb "coexist" takes "with": the virtual environment coexists with the actual world. "Along" would need "with" after it, and beyond and behind change the meaning.
+
+=== 98
+chapter: Cloze Test
+subtopic: Collocations and the Precise Word
+difficulty: EASY
+answer: A
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank number 3.
+A: equipment
+B: baggage
+C: outfit
+D: arsenal
+solution:
+Industrial AR apps troubleshoot machinery, so "a piece of malfunctioning equipment" fits. Baggage is luggage, an outfit is a set of clothes, and an arsenal is a store of weapons.
+
+=== 99
+chapter: Cloze Test
+subtopic: Collocations and the Precise Word
+difficulty: MODERATE
+answer: A
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank number 4.
+A: comprehensive
+B: transgressive
+C: conclusive
+D: reprehensive
+solution:
+VR "completely replaces the user's surroundings", so it is a complete, all-covering simulation: comprehensive. Transgressive (breaking rules), conclusive (decisive) and reprehensive (reproving) do not fit.
+
+=== 100
+chapter: Cloze Test
+subtopic: Collocations and the Precise Word
+difficulty: MODERATE
+answer: A
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank number 5.
+A: rendition
+B: glossary
+C: network
+D: resistance
+solution:
+A cartoon version or depiction of Mike Tyson is a cartoon rendition. A glossary is a list of terms, and network and resistance make no sense here.
