@@ -136,6 +136,9 @@ On review:
 | 17 Sep S1 (agents) | 98/100 | Q46, Q87 (judgement) | none | Q88 (no true homonym of "simony") |
 | 17 Sep S2 (agents, 99 rows) | 96/100 | Q9, Q10, Q40 (judgement), Q44 (fact unconfirmed) | none | Q11 (the CIRCLE rule gives TRVFSB, no option). Q16 repeats 12 Sep S2 Q19 |
 | 17 Sep S3 (agents) | 100/100 | none | none | Q88 (no true homonym of "corbel") |
+| 23 Sep S1 (agents) | 96/100 | Q47 (judgement) | Q8 (some books are novels does not make all novels books), Q16 (84 fits no rule), Q19 (some pens are books follows; key D checked on the page) | Q73 (the radius is not fixed), Q80 (sceptic and skeptic both correct) |
+| 23 Sep S2 (agents, 99 rows) | 96/100 | Q38 (fact, our guess) | Q35 (Muslim majority in J&K in 2011), Q41 (The Golden Gate won the 1988 Sahitya Akademi Award), Q77 ("in the absence of") | Q99 repeats 17 Sep S2 Q99 |
+| 23 Sep S3 (agents) | 98/100 | Q99 (judgement) | Q21 (the possibility in II follows) | none |
 
 ## Repeated questions
 
@@ -150,6 +153,14 @@ question from there; the shift's own `source_file` holds one row fewer than its 
 Mathematics (renamed Quantitative Aptitude), English and the eight GK subjects, plus
 `catalog-authored.json` (all of Reasoning, and SSC topics CDS lacks). When a question fits
 nothing, extend `catalog-authored.json` and re-run the generator; never edit `catalog.json`.
+
+## Not read yet (source problems, not ours)
+
+- **14 Oct 2025** (re-exam, one shift labelled Shift 2): the hosted print has no vector table on
+  its first pages and too few cells on most others for their labels; it also skips Q18-23 and
+  prints PART-D twice. Needs a different reader (image-based), so it is left out.
+- **20 Sep 2025 beyond Shift 1**: pages 6-38 are a render with no text `Q.No` labels and pages
+  39-42 are screenshots.
 
 ## Not built yet
 

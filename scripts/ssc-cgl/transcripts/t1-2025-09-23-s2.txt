@@ -1,0 +1,1679 @@
+SSC CGL 2025 Tier I, 23 September 2025, Shift 2 (12:30 PM). Read from SSC's challenge-module saved paper.
+Drafted by agents, one PART each, from the reading sheets only (no key; DRAFTING_BRIEF.md);
+every block reviewed in the main session, then compared with the key (build.ts).
+Format: scripts/ssc-cgl/lib.ts.
+
+=== 1
+chapter: Alphabet and Number Tests
+subtopic: Address and Data Matching
+difficulty: EASY
+answer: B
+stem:
+Choose the address that is the same as the one given below.
+
+Sample Address:Flat No. 401, Lotus Enclave,JP Nagar, Bangalore,Karnataka - 560078
+A: Flat 401, Lotus Enclave, JP Nagar, Bengaluru, Karnataka - 560078
+B: Flat No. 401, Lotus Enclave, JP Nagar, Bangalore, Karnataka - 560078
+C: Flat No. 401, Lotus Enclave, J.P. Nagar, Bangalore, Karnataka - 560087
+D: Flat No. 410, Lotus Enclave, JP Nagar, Bangalore, Karnataka - 560078
+solution:
+A drops "No." and writes Bengaluru. C writes J.P. and the PIN 560087. D has flat 410. Only B matches every part of the sample address.
+
+=== 2
+chapter: Calendar and Clock
+subtopic: Calendar
+difficulty: EASY
+answer: A
+stem:
+In a series of seminars held daily from 11th to 18th Feb, Calicut - 18th Feb 2022, Patna -12th Feb 2022, Tiruchirappalli -17th Feb 2022,
+Raipur - 11th Feb 2022, Rourkela - 14th Feb 2022 Jamshedpur - 13th Feb 2022, Durgapur - 15th Feb 2022, Warangal - 16th Feb 2022
+How many days after the seminar in Raipur did the seminar in Tiruchirappalli occur?
+A: 6 days
+B: 5 days
+C: 4 days
+D: 7 days
+solution:
+Raipur was on 11th Feb and Tiruchirappalli on 17th Feb. \(17 - 11 = 6\), so Tiruchirappalli came 6 days after Raipur.
+
+=== 3
+chapter: Mathematical Operations
+subtopic: Hidden Operation Rules
+difficulty: EASY
+answer: C
+stem:
+If \(2 \times 3 = 8\), \(3 \times 4 = 15\), then \(4 \times 5 = ?\)
+A: 22
+B: 20
+C: 24
+D: 23
+solution:
+The rule is \(a \times b\) means \(a \times b + a\): \(2 \times 3 + 2 = 8\) and \(3 \times 4 + 3 = 15\).
+
+So \(4 \times 5 + 4 = 24\).
+
+Check: the same rule is \(a \times (b + 1)\): \(4 \times 6 = 24\).
+
+=== 4
+chapter: Mathematical Operations
+subtopic: Hidden Operation Rules
+difficulty: EASY
+answer: A
+stem:
+If \(1 \times 2 = 3\), \(2 \times 3 = 8\), \(3 \times 4 = 15\), then \(4 \times 5 = ?\)
+A: 24
+B: 20
+C: 27
+D: 19
+solution:
+The rule is \(a \times b + a\): \(1 \times 2 + 1 = 3\), \(2 \times 3 + 2 = 8\), \(3 \times 4 + 3 = 15\).
+
+So \(4 \times 5 + 4 = 24\).
+
+=== 5
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: A
+stem:
+The product of two numbers is 2025, and their HCF is 15. What is their LCM?
+A: 135
+B: 225
+C: 105
+D: 1350
+solution:
+Product of two numbers = HCF \(\times\) LCM, so LCM = \(\frac{2025}{15} = 135\).
+
+Check: the numbers 15 and 135 have HCF 15, LCM 135 and product 2025.
+
+=== 6
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: MODERATE
+answer: A
+stem:
+If \(X + Y = 2Z\) and \(Z + W = 2X\), then:
+A: \(X + Z = Y + W\)
+B: \(X + Z = 2W\)
+C: \(X + W = Y + Z\)
+D: \(X + Z = 2Y\)
+solution:
+Adding the two equations: \(X + Y + Z + W = 2Z + 2X\).
+
+Cancel X and Z from both sides: \(Y + W = X + Z\), which is option A.
+
+Check with numbers: X = 2, Z = 3 gives Y = 4 and W = 1; then X + Z = 5 and Y + W = 5.
+
+=== 7
+chapter: Classification
+subtopic: Word Classification
+difficulty: EASY
+answer: B
+stem:
+Choose the different one.
+A: Linux
+B: Intel
+C: Windows
+D: macOS
+solution:
+Linux, Windows and macOS are operating systems. Intel is a company that makes processors (hardware), so it is the odd one out.
+
+=== 8
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: C
+stem:
+A train takes 45 minutes to travel 60 km. What is its speed in km/h?
+A: 72 km/h
+B: 75 km/h
+C: 80 km/h
+D: 90 km/h
+solution:
+45 minutes = \(\frac{3}{4}\) hour.
+
+Speed = \(60 \div \frac{3}{4} = 80\) km/h.
+
+Check: 80 km/h covers 20 km in 15 minutes, so 60 km in 45 minutes.
+
+=== 9
+chapter: Analogy
+subtopic: Number Analogy
+difficulty: MODERATE
+answer: C
+stem:
+Find the missing number**: 21 : 3 :: 574 : ?**
+A: 76
+B: 80
+C: 82
+D: 84
+solution:
+\(21 \div 7 = 3\). In the same way, \(574 \div 7 = 82\).
+
+Check: \(82 \times 7 = 574\).
+
+=== 10
+chapter: Alphabet and Number Tests
+subtopic: Digit Operations
+difficulty: EASY
+answer: D
+stem:
+Which roll number has a **digital root** equal to **9**? Digital root = sum of digits until one digit remains.
+A: 987654
+B: 888888
+C: 765431
+D: 999999
+solution:
+987654: 39, then 12, then 3.
+
+888888: 48, then 12, then 3.
+
+765431: 26, then 8.
+
+999999: 54, then 9. Only 999999 has digital root 9.
+
+=== 11
+chapter: Alphabet and Number Tests
+subtopic: Address and Data Matching
+difficulty: EASY
+answer: A
+stem:
+From the list of roll numbers provided below, which pair belongs to the same examination centre (i.e., has the same centre code represented by the first three digits)?
+
+| Column A | Column B | Column C | Column D |
+|---|---|---|---|
+| 817129 | 907325 | 338379 | 332896 |
+| 333782 | 902345 | 908325 | 908187 |
+| 511926 | 184843 | 184320 | 814752 |
+| 812783 | 482290 | 817131 | 189901 |
+A: 908325 and 908187
+B: 332896 and 333782
+C: 814752 and 812783
+D: 184843 and 189901
+solution:
+Compare the first three digits of each pair: 908 and 908 (same); 332 and 333; 814 and 812; 184 and 189. Only 908325 and 908187 share a centre code.
+
+=== 12
+chapter: Syllogism
+subtopic: Two-Statement Syllogism
+difficulty: EASY
+answer: A
+stem:
+Read the following statement carefully and identify the conclusion that follows.
+
+Statement:
+Some humans are artists. All artists are creators.
+
+**Conclusions:**
+I. Some humans are creators.
+II. All creators are artists.
+A: Only I follows
+B: Only II follows
+C: Both I and II follow
+D: Neither I nor II follows
+solution:
+The humans who are artists are all creators, so some humans are creators: I follows.
+
+All artists are creators does not mean all creators are artists; there may be creators who are not artists. II does not follow.
+
+=== 13
+chapter: Syllogism
+subtopic: Three-Statement Syllogism
+difficulty: MODERATE
+answer: B
+stem:
+Read the following statement carefully and identify the conclusion that follows.
+
+Statement:
+Some A are B. All B are C. No C is D.
+
+**Conclusions:**
+I. No A is D.
+II. Some B are not D.
+A: Only I follows
+B: Only II follows
+C: Both I and II follow
+D: Neither I nor II follows
+solution:
+All B are C and no C is D, so no B is D; hence some B are not D: II follows.
+
+Only the A that are B are known to be outside D. Other A may still be D, so "No A is D" is not definite: I does not follow.
+
+=== 14
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: B
+stem:
+What comes next in the series?
+D, H, L, P, ?
+A: U
+B: T
+C: R
+D: S
+solution:
+Positions 4, 8, 12, 16 rise by 4 each time. Next is 20, the letter T.
+
+=== 15
+chapter: Alphabet and Number Tests
+subtopic: Word Formation
+difficulty: EASY
+answer: A
+stem:
+From the given alternatives, find the word which can be formed from the letters used in the given word.
+
+INTELLIGENCE
+A: Gene
+B: Told
+C: Can
+D: Come
+solution:
+INTELLIGENCE has G, N and three E's, so GENE can be formed. TOLD needs O and D, CAN needs A, COME needs O and M, none of which are in the word.
+
+=== 16
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: B
+stem:
+If "GANDHI" is written as "HBOEIJ", how will "NEHRU" be written?
+A: PGITV
+B: OFISV
+C: OFHRU
+D: OEGRV
+solution:
+Each letter moves one place forward: G to H, A to B, N to O, D to E, H to I, I to J.
+
+NEHRU becomes N to O, E to F, H to I, R to S, U to V: OFISV.
+
+=== 17
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: D
+stem:
+What comes next?
+AF, CH, EJ, ?
+A: KN
+B: IM
+C: LO
+D: GL
+solution:
+First letters: A, C, E, G (each +2). Second letters: F, H, J, L (each +2). The next pair is GL.
+
+=== 18
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: D
+stem:
+Complete the series.
+5, 11, 23, 47, ?
+A: 94
+B: 96
+C: 97
+D: 95
+solution:
+Each term is twice the previous one plus 1: \(5 \times 2 + 1 = 11\), \(11 \times 2 + 1 = 23\), \(23 \times 2 + 1 = 47\).
+
+Next: \(47 \times 2 + 1 = 95\).
+
+Check: the differences 6, 12, 24 double, so the next difference is 48 and \(47 + 48 = 95\).
+
+=== 19
+chapter: Analogy
+subtopic: Number Analogy
+difficulty: EASY
+answer: A
+stem:
+Find the missing number**: 256 : 4096 :: 225 : ?**
+A: 3375
+B: 3125
+C: 4225
+D: 4096
+solution:
+\(256 = 16^2\) and \(4096 = 16^3\).
+
+\(225 = 15^2\), so the answer is \(15^3 = 3375\).
+
+=== 20
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: A
+stem:
+What should come at the place of question mark? **: 31, 63, 127, 255, 511, ?**
+A: 1023
+B: 2095
+C: 1189
+D: 1267
+solution:
+Each term is twice the previous one plus 1: \(31 \times 2 + 1 = 63\), and so on to \(255 \times 2 + 1 = 511\).
+
+Next: \(511 \times 2 + 1 = 1023\).
+
+Check: the terms are \(2^5 - 1, 2^6 - 1, \ldots, 2^9 - 1\), so the next is \(2^{10} - 1 = 1023\).
+
+=== 21
+chapter: Coding-Decoding
+subtopic: Word-Code Sentences
+difficulty: MODERATE
+answer: C
+stem:
+**Instruction:** In a code language:
+**‘apple banana orange’** is coded as **‘abc, def, ghi’**
+**‘orange grapes apple’** is coded as **‘ghi, jkl, abc’**
+**‘grapes banana mango’** is coded as **‘jkl, def, mno’**
+**Question:** What is the code for ‘apple grapes banana’?
+A: aec, jim, def
+B: adu, joy, def
+C: abc, jkl, def
+D: auy, jkl, der
+solution:
+Statements 1 and 3 share only banana and the code def: banana = def.
+
+Statements 2 and 3 share only grapes and the code jkl: grapes = jkl.
+
+Statements 1 and 2 share apple and orange with the codes abc and ghi, so apple is abc or ghi.
+
+'apple grapes banana' must use one of abc/ghi with jkl and def. Only option C (abc, jkl, def) fits.
+
+=== 22
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: A
+stem:
+A shopkeeper buys an item for ₹80. If the shopkeeper wants to make a profit of 20% on the cost price, what should be the selling price of the item?
+A: ₹96
+B: ₹100
+C: ₹98
+D: ₹102
+solution:
+Profit = 20% of ₹80 = ₹16.
+
+Selling price = ₹80 + ₹16 = ₹96.
+
+Check: \(80 \times 1.2 = 96\).
+
+=== 23
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: B
+stem:
+9 people contribute Rs. 45 each. 3 leave. What amount must each pay now to keep total same?
+A: Rs. 60
+B: Rs. 67.5
+C: Rs. 55.78
+D: Rs. 70
+solution:
+Total = \(9 \times 45 = 405\).
+
+After 3 leave, 6 people remain: \(405 \div 6 = 67.5\).
+
+Check: \(6 \times 67.5 = 405\).
+
+=== 24
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: B
+stem:
+1, 3, 6, 10, 15, ?
+A: 20
+B: 21
+C: 22
+D: 23
+solution:
+The differences are 2, 3, 4, 5, so the next difference is 6: \(15 + 6 = 21\).
+
+=== 25
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: A
+stem:
+If COLD is coded as DPME, then HEAT will be coded as?
+A: IFBU
+B: GFBT
+C: IFAT
+D: HFAT
+solution:
+Each letter moves one place forward: C to D, O to P, L to M, D to E.
+
+HEAT becomes H to I, E to F, A to B, T to U: IFBU.
+
+=== 26
+subject: Current Affairs
+chapter: Science and Technology
+subtopic: Space Technology and Astronomy
+difficulty: EASY
+answer: B
+stem:
+Why "Space Situational Awareness (SSA)" program by ISRO important?
+A: Racks' energy usage in orbit
+B: Monitors space debris and protects Indian space assets
+C: Observes black holes in the deep sky
+D: Provides satellite TV services across Asia
+solution:
+ISRO's Space Situational Awareness work (run through its SSA control centre and the NETRA project) tracks space debris and other objects in orbit, warns of close approaches and so protects India's satellites. It does not study black holes or provide TV services.
+
+=== 27
+subject: Current Affairs
+chapter: International Affairs and Relations
+subtopic: India's Foreign Policy and Bilateral Relations
+difficulty: EASY
+answer: B
+stem:
+Which country helped develop Chabahar Port?
+A: China
+B: India
+C: Russia
+D: United States
+solution:
+India developed and operates the Shahid Beheshti terminal of Chabahar Port in Iran, through India Ports Global Limited, giving India a route to Afghanistan and Central Asia that bypasses Pakistan. China instead backs Gwadar port in Pakistan.
+
+=== 28
+subject: Current Affairs
+chapter: Government Schemes, Policy and Governance
+subtopic: Health, Education and Welfare Schemes
+difficulty: EASY
+answer: B
+stem:
+The "Pradhan Mantri Awas Yojana - Urban (PMAY-U)" aims to address the housing shortage in urban areas. Which of the following approaches is a key component of this scheme to achieve its objectives?
+A: Primarily focusing on providing rental housing for migrant workers.
+B: Providing financial assistance to beneficiaries for the construction, purchase, or enhancement of affordable housing.
+C: Mandating the use of only indigenous building materials in all PMAY-U projects.
+D: Concentrating housing development efforts in Tier-1 and Tier-2 cities.
+solution:
+PMAY-U gives central assistance to urban beneficiaries through verticals such as beneficiary-led construction or enhancement, the credit-linked subsidy for buying or building a house, and affordable housing in partnership. Rental housing is only one later component, not the main approach, and the scheme covers all statutory towns, not just Tier-1 and Tier-2 cities.
+
+=== 29
+subject: History
+chapter: Medieval India
+subtopic: Temple and Monument Architecture
+difficulty: EASY
+answer: C
+stem:
+The Jagannath Temple in Puri is an example of which style of architecture?
+A: Dravidian
+B: Maratha
+C: Nagara (Kalinga)
+D: Vesara
+solution:
+The Jagannath Temple at Puri, built by the Eastern Ganga king Anantavarman Chodaganga Deva in the 12th century, is in the Kalinga style, the Odisha form of the northern Nagara style, with its tall curved rekha deul tower.
+
+=== 30
+subject: History
+chapter: Modern India
+subtopic: British Administration, Acts and Legislation
+difficulty: EASY
+answer: B
+stem:
+The Ilbert Bill controversy of 1883-84 was related to:
+A: The imposition of new taxes on agricultural produce.
+B: The issue of allowing Indian judges to try European offenders in criminal cases.
+C: The introduction of English as the medium of instruction in all schools.
+D: The demarcation of boundaries between British India and princely states.
+solution:
+The Ilbert Bill, introduced under Lord Ripon in 1883, proposed that Indian district judges and magistrates could try Europeans in criminal cases. The European community protested so strongly that it was diluted in 1884, allowing Europeans to demand a jury half of whose members were Europeans.
+
+=== 31
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Statutory Bodies and Post-Independence Legislation
+difficulty: MODERATE
+answer: A
+stem:
+Under the BSA, 2023, oral evidence must be:
+A: Direct and related to what the witness saw or heard
+B: Based on assumptions
+C: Only admissible if in English
+D: Hearsay only
+solution:
+The Bharatiya Sakshya Adhiniyam, 2023 (which replaced the Indian Evidence Act, 1872) requires oral evidence to be direct: a fact that could be seen must be spoken to by a witness who saw it, a fact that could be heard by a witness who heard it, and so on. Hearsay and assumptions are not direct evidence, and there is no English-only rule.
+
+=== 32
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Institutions, Milestones and History
+difficulty: EASY
+answer: C
+stem:
+Who joined as the CEO of NITI Aayog in February 2023?
+A: Parameswaran Iyer
+B: V.K. Paul
+C: B.V.R. Subrahmanyam
+D: Amitabh Kant
+solution:
+B.V.R. Subrahmanyam, a former Chhattisgarh-cadre IAS officer and Commerce Secretary, took charge as CEO of NITI Aayog in February 2023. He succeeded Parameswaran Iyer, who had followed Amitabh Kant in 2022. V.K. Paul is a member of NITI Aayog.
+
+=== 33
+subject: History
+chapter: Ancient India
+subtopic: Ancient Indian Literature and Inscriptions
+difficulty: MODERATE
+answer: D
+stem:
+Which of the following scholars wrote the Ashtanga Sangraha?
+A: Charaka
+B: Sushruta
+C: Bhaskaracharya
+D: Vagbhata
+solution:
+Vagbhata wrote the Ashtanga Sangraha and the Ashtanga Hridaya, the third of the great Ayurvedic texts. Charaka wrote the Charaka Samhita, Sushruta the Sushruta Samhita (surgery), and Bhaskaracharya was a mathematician and astronomer.
+
+=== 34
+subject: Geography
+chapter: Indian Geography — Economy, Resources and Transport
+subtopic: Manufacturing Industries
+difficulty: MODERATE
+answer: C
+stem:
+Consider the following statements:
+
+Statement I: The city of Chennai is popularly known as the Detroit of India.
+
+Statement II: The city is a hub of the petrochemical industry and a leader in petrochemical product manufacturing in India.
+
+Which of the following Statements is/are CORRECT?
+A: Both Statements are correct, and Statement II is the correct explanation for Statement I.
+B: Both Statements are correct, and Statement II is not the correct explanation of Statement I.
+C: Statement I is correct, but Statement II is incorrect.
+D: Statement I is incorrect, and Statement II is correct.
+solution:
+Statement I is correct: Chennai is called the Detroit of India (or of Asia) because of its large automobile industry, with plants of Hyundai, Ford, Renault-Nissan, Ashok Leyland and others.
+
+Statement II is incorrect: the nickname comes from automobiles, not petrochemicals, and India's leading petrochemical hubs are in Gujarat (Jamnagar, Vadodara) and Maharashtra, not Chennai.
+
+=== 35
+subject: Geography
+chapter: Indian Geography — Economy, Resources and Transport
+subtopic: Population, Census and Urbanisation
+difficulty: MODERATE
+answer: B
+flawed: yes
+note: SSC's provisional key A takes statement 1 as true, but in Census 2011 Muslims formed a majority in Jammu and Kashmir (then a state, about 68%) and in Lakshadweep, so 1 is false. Our answer stays B; held PRIVATE for review
+stem:
+Which of these statements is/ are correct regarding the Census of India, 2011?
+
+1. Muslims outnumber all other minorities in India, but they do not from a majority in any of the Indian states.
+
+2. Christian population is distributed mostly in urban areas of India.
+
+3. Jains have a major concentration in the urban areas of Rajasthan, Gujarat and Maharashtra, while the Buddhists are concentrated mostly in Maharashtra.
+A: 1, and 3 only
+B: 3 only
+C: 2 and 3 only
+D: 1 and 2 only
+solution:
+Statement 1 is wrong: Muslims, the largest minority, formed a majority in Jammu and Kashmir (about 68% in 2011), and also in Lakshadweep.
+
+Statement 2 is wrong: the Christian population is mostly rural, concentrated along the western coast (Goa, Kerala) and in the north-eastern hill states such as Meghalaya, Mizoram and Nagaland.
+
+Statement 3 is correct: Jains are concentrated in urban areas of Rajasthan, Gujarat and Maharashtra, and Buddhists mostly in Maharashtra. So only 3 is correct.
+
+=== 36
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: MODERATE
+answer: B
+stem:
+In Carnatic music, which type of composition is most commonly performed during a concert, focusing on a fixed melody and rhythm?
+A: Varnam
+B: Kriti
+C: Raga Alapana
+D: Tillana
+solution:
+The kriti, a set composition in a fixed raga and tala (perfected by the Trinity: Tyagaraja, Muthuswami Dikshitar and Syama Sastri), forms the bulk of a Carnatic concert. The varnam is usually a single opening piece, the tillana a closing piece, and raga alapana is improvised, not a fixed composition.
+
+=== 37
+subject: History
+chapter: Ancient India
+subtopic: Temple and Rock-Cut Architecture
+difficulty: MODERATE
+answer: A
+stem:
+Which of the following is **true** about the Deogarh temple built in the early 6th century CE?
+A: It follows a panchayatana layout and is an early example of Nagara style.
+B: It was built by Chandela rulers and faces east like most Hindu temples.
+C: Its main deity is Shiva in the form of Mahadeo.
+D: It is entirely rock-cut with vaulted interiors.
+solution:
+The Dashavatara temple at Deogarh (Lalitpur, Uttar Pradesh) is a Gupta-period structural stone temple of the early 6th century. It stands on a panchayatana plan and is one of the earliest examples of the Nagara style. It is dedicated to Vishnu, faces west, and was built in the Gupta period, not by the Chandelas, and it is not rock-cut.
+
+=== 38
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: HARD
+answer: C
+blind: B
+note: fact we only guessed (discus technique; the options are vaguely worded). The bank carries SSC's answer
+stem:
+Which of the following statements accurately reflects the biomechanical coordination during the throwing phase of discus throw?
+A: The shoulders and trunk continue rotating till 1 minute after the discus is released to maintain momentum.
+B: The left foot remains fixed while the right foot rotates and stays straight throughout the motion.
+C: Both knees stay straight during rotation, but the right knee bends after forward extension for balance.
+D: The body's weight shifts entirely to the left foot while the right leg stabilizes the upper body lean.
+solution:
+In the throwing phase of the discus the thrower keeps the legs extended through the rotation for a stable base and then bends the right knee after the forward drive to keep balance at release. The other options misdescribe the movement: the trunk does not keep rotating for a minute after release, and the weight is not shifted entirely onto one foot.
+
+=== 39
+subject: History
+chapter: Medieval India
+subtopic: Vijayanagara Empire
+difficulty: MODERATE
+answer: D
+stem:
+In the traditional accounts of Vijayanagara, who were referred to as narapati or "lord of men"?
+A: Mughals
+B: Deccan Sultans
+C: Cholas
+D: Rayas
+solution:
+In the traditions of the time, the Gajapati rulers of Odisha were called the lords of elephants, the Deccan Sultans ashvapati or lords of horses, and the Rayas of Vijayanagara narapati or lords of men.
+
+=== 40
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: B
+stem:
+Which describes the "bunch start" position in sprinting?
+A: Blocks 25-30 inches from line, feet parallel
+B: Blocks 16-19 inches from line, rear toe and front heel aligned
+C: Hips below shoulders, arms bent
+D: Toes ahead of starting line
+solution:
+In the bunch (bullet) start the feet are close together: the toe of the rear foot is placed roughly level with the heel of the front foot, with the blocks set close to the starting line. In every crouch start the hips are raised above the shoulders in the set position and the toes stay behind the line.
+
+=== 41
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Books, Literature and Authors
+difficulty: HARD
+answer: C
+flawed: yes
+note: SSC's provisional key A takes statement 3 as false, but The Golden Gate won the Sahitya Akademi Award (English) in 1988. Our answer stays C; held PRIVATE for review
+stem:
+Consider the following statements about 'The Golden Gate' by Vikram Seth:
+1) The novel, written entirely in verse, was shortlisted for the Whitbread Book Award, showcasing its innovative poetic form.
+2) It won the Booker Prize for its expansive narrative on Indian society and culture.
+3) The book was honored with the Sahitya Akademi Award for its significant impact on Indian English poetry.
+Which of the above statements is/are **correct?**
+A: Only statement 1 is correct
+B: Only statement 2 is correct
+C: Statements 1 and 3 are correct
+D: 1, 2 and 3 all are correct
+solution:
+The Golden Gate (1986) is a novel in verse, written in Onegin stanzas, set in San Francisco. It won the Sahitya Akademi Award for English in 1988, so statement 3 is correct. It never won the Booker Prize and is not about Indian society, so statement 2 is wrong. That rules out B and D, and A cannot hold since 3 is correct, leaving statements 1 and 3.
+
+=== 42
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: HARD
+answer: B
+stem:
+Where was the 2nd Para Table Tennis National Ranking Championships 2024-25 held?
+A: Jaipur, Rajasthan
+B: Vadodara, Gujarat
+C: Pune, Maharashtra
+D: Indore, Madhya Pradesh
+solution:
+The 2nd PARA Table Tennis National Ranking Championships 2024-25 were held at the SAMA Sports Complex, Vadodara, Gujarat, on 17-19 March 2025. Indore hosted a different event, the UTT PARA National Ranking Championships of November 2024.
+
+=== 43
+subject: Physics
+chapter: Modern Physics
+subtopic: Nuclear Physics
+difficulty: EASY
+answer: B
+stem:
+Which nuclear decay alters atomic number but not mass?
+A: Alpha Decay
+B: Beta Decay
+C: Gamma Decay
+D: Fission
+solution:
+In beta decay a neutron turns into a proton (or the reverse), so the atomic number changes by 1 while the mass number stays the same. Alpha decay lowers the mass number by 4, gamma decay changes neither, and fission splits the nucleus.
+
+=== 44
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: MODERATE
+answer: A
+stem:
+**Fill in the Blank:**
+Dumhal dancers wear ______ during the performance.
+A: colorful robes
+B: Masks
+C: Veils
+D: Bells
+solution:
+Dumhal is a folk dance of the Wattal community of Kashmir, performed by men who wear long, colourful robes and tall conical caps studded with beads and shells.
+
+=== 45
+subject: Economics
+chapter: Money, Banking and Public Finance
+subtopic: Union Budget and Fiscal Policy
+difficulty: EASY
+answer: C
+stem:
+Why is revenue deficit a concern for the economy?
+A: It increases productive investment
+B: It improves trade surplus
+C: It indicates borrowing for current spending
+D: It boosts capital creation
+solution:
+A revenue deficit means revenue expenditure exceeds revenue receipts, so the government borrows, or runs down assets, to pay for current consumption such as salaries, subsidies and interest rather than to create assets. That borrowing adds to debt without adding capacity.
+
+=== 46
+subject: Economics
+chapter: National Income, Growth and Development Indicators
+subtopic: Economic Curves, Indices and Statistical Reports
+difficulty: EASY
+answer: B
+stem:
+The World Competitiveness Index primarily assesses a country's ability to:
+A: Attract tourists
+B: Create and maintain an environment for enterprises to compete
+C: Innovation in cultural heritage
+D: Conserve natural resources
+solution:
+The IMD World Competitiveness Ranking measures how well a country creates and maintains an environment in which enterprises can compete, using economic performance, government efficiency, business efficiency and infrastructure.
+
+=== 47
+subject: Economics
+chapter: National Income, Growth and Development Indicators
+subtopic: Industrial and Manufacturing Policy
+difficulty: EASY
+answer: D
+stem:
+What was a key feature of the Industrial Policy Resolution of 1956?
+A: Full privatization
+B: Abolition of licensing
+C: Emphasis on small-scale industry
+D: Expansion of public sector
+solution:
+The Industrial Policy Resolution of 1956 sorted industries into three schedules and reserved Schedule A industries for the state, making the public sector the leading force of industrialisation. Licensing was abolished only under the 1991 policy.
+
+=== 48
+subject: History
+chapter: Modern India
+subtopic: Revolt of 1857 and Popular Uprisings
+difficulty: EASY
+answer: C
+stem:
+Which tribal leader from Jharkhand led the 'Ulgulan' (Great Rebellion) movement against British exploitation of tribal lands?
+A: Sidhu Murmu
+B: Kanhu Murmu
+C: Birsa Munda
+D: Tilka Manjhi
+solution:
+Birsa Munda led the Ulgulan, the great tumult of the Mundas, in 1899-1900 in the Ranchi region. Sidhu and Kanhu Murmu led the Santhal Hul of 1855, and Tilka Manjhi led an earlier Paharia uprising in the 1780s.
+
+=== 49
+subject: Current Affairs
+chapter: Science and Technology
+subtopic: DRDO, Defence and Marine Technology
+difficulty: EASY
+answer: A
+stem:
+Dr. Tessy Thomas is also known as the 'Missile Woman of India'. She is best associated with which of the following achievements?
+A: Led Agni-V project; began career at LRDE
+B: Was Chairperson of ISRO
+C: Founded a private satellite company
+D: Headed HAL's aeronautics division
+solution:
+Tessy Thomas, a DRDO scientist, was project director of the Agni-IV and Agni-V missiles and the first woman to head a missile project in India, later becoming Director General (Aeronautical Systems) of DRDO. She never headed ISRO or HAL and did not found a satellite company.
+
+=== 50
+subject: Economics
+chapter: National Income, Growth and Development Indicators
+subtopic: Industrial and Manufacturing Policy
+difficulty: EASY
+answer: A
+stem:
+Read the following statements carefully and choose the **correct** option regarding Assertion (A) and Reason (R).
+**Assertion (A):** One objective of liberalisation was to remove barriers to entry and growth of firms.
+**Reason (R):** The license raj restricted entrepreneurial freedom and market competition.
+A: Both A and R are true and R is the correct explanation of A.
+B: Both A and R are true but R is not the correct explanation of A.
+C: A is true but R is false.
+D: A is false but R is true.
+solution:
+The 1991 liberalisation abolished industrial licensing for most industries to remove barriers to the entry and growth of firms. It did so because the licence raj had restricted entrepreneurs and stifled competition, so R explains A.
+
+=== 51
+chapter: Data Interpretation
+subtopic: Tables
+difficulty: EASY
+answer: A
+stem:
+The number of students in two sections A and B having different heights is shown in the table given below:
+
+| Height (in metres) | Section A | Section B |
+|---|---|---|
+| 1.55 | 6 | 5 |
+| 1.60 | 10 | 0 |
+| 1.62 | 14 | 15 |
+| 1.65 | 16 | 11 |
+| 1.68 | 9 | 8 |
+| 1.71 | 7 | 6 |
+| 1.75 | 5 | 4 |
+
+What is the ratio of the number of students with a height of 1.62 metres in Section A to the total number of students in Section A?
+A: 14:67
+B: 14:62
+C: 1:4
+D: 7:33
+solution:
+Total in Section A \(= 6 + 10 + 14 + 16 + 9 + 7 + 5 = 67\).
+
+Students of height 1.62 m in Section A \(= 14\), so the ratio is \(14 : 67\).
+
+Check: 14 and 67 share no factor, so the ratio does not reduce.
+
+=== 52
+chapter: Surds, Indices and Simplification
+subtopic: Simplification of Expressions
+difficulty: EASY
+answer: A
+stem:
+Solve: \(\sqrt{(5 \times 196 \div 14 + 25 - 4)}\)
+A: \(\sqrt{91}\)
+B: \(\sqrt{81}\)
+C: \(\sqrt{71}\)
+D: \(\sqrt{41}\)
+solution:
+By BODMAS: \(5 \times 196 = 980\), \(980 \div 14 = 70\).
+
+\(70 + 25 - 4 = 91\), so the value is \(\sqrt{91}\).
+
+Check: \(196 \div 14 = 14\) and \(5 \times 14 = 70\), the same.
+
+=== 53
+chapter: Simple and Compound Interest
+subtopic: Simple Interest
+difficulty: EASY
+answer: C
+stem:
+A sum amounts to ₹6,600 in 2 years and ₹7,200 in 4 years at simple interest. What is the rate of interest per annum?
+A: 6%
+B: 8%
+C: 5%
+D: 9%
+solution:
+Interest for 2 years \(= 7200 - 6600 = 600\) rupees, so ₹300 a year.
+
+Principal \(= 6600 - 600 = 6000\) rupees.
+
+Rate \(= \frac{300}{6000} \times 100 = 5\%\).
+
+Check: \(6000 \times 5\% \times 4 = 1200\), and \(6000 + 1200 = 7200\).
+
+=== 54
+chapter: Time, Speed and Distance
+subtopic: Speed Changes and Equations
+difficulty: MODERATE
+answer: D
+stem:
+A man reduces his speed from 20 kmph to 18 kmph. So, he takes 8 minutes more than the normal time. What is the distance traveled by him?
+A: 20 km
+B: 21 km
+C: 22 km
+D: 24 km
+solution:
+\(\frac{d}{18} - \frac{d}{20} = \frac{8}{60}\), so \(\frac{2d}{360} = \frac{2}{15}\), giving \(d = 24\) km.
+
+Check: \(\frac{24}{20} = 1.2\) h = 72 min and \(\frac{24}{18} = 1.333\) h = 80 min, a difference of 8 minutes.
+
+=== 55
+chapter: Heights and Distances
+subtopic: One Line of Sight
+difficulty: EASY
+answer: C
+stem:
+A kite is soaring at an altitude of 75 meters above the ground, with its string temporarily secured to a point on the ground. The angle of elevation of the string relative to the ground is 30 degrees. Given that the string remains taut, what is the length of the string?
+A: 75 m
+B: \(75\sqrt{3}\) m
+C: 150 m
+D: \(150\sqrt{3}\) m
+solution:
+\(\sin 30^\circ = \frac{75}{L}\), so \(L = \frac{75}{1/2} = 150\) m.
+
+Check: in a 30-60-90 triangle the side opposite \(30^\circ\) is half the hypotenuse, and \(150 \div 2 = 75\).
+
+=== 56
+chapter: Mensuration 3D
+subtopic: Water — Immersion, Flow and Rainfall
+difficulty: MODERATE
+answer: B
+stem:
+A rectangular fish tank with a base of 100 cm \(\times\) 50 cm contains water up to a height of 20 cm. If 5 identical spherical stones, each with a radius of 5 cm, are dropped into the tank and fully submerged, what is the rise in the water level?
+A: \(\frac{\pi}{10}\) cm
+B: \(\frac{\pi}{6}\) cm
+C: \(\frac{\pi}{5}\) cm
+D: \(\frac{\pi}{3}\) cm
+solution:
+Volume of the stones \(= 5 \times \frac{4}{3}\pi (5)^3 = \frac{2500\pi}{3}\ \text{cm}^3\).
+
+Base area \(= 100 \times 50 = 5000\ \text{cm}^2\).
+
+Rise \(= \frac{2500\pi}{3 \times 5000} = \frac{\pi}{6}\) cm.
+
+Check: \(5000 \times \frac{\pi}{6} \times 3 = 2500\pi\), the stones' volume times 3. The rise is about 0.52 cm, well within the tank.
+
+=== 57
+chapter: Ratio, Proportion and Variation
+subtopic: Partnership
+difficulty: EASY
+answer: B
+stem:
+Partners X and Y invest Rs. 60,000 and Rs. 90,000 respectively. X works for 6 months, Y for 4 months. Profit is divided based on capital * time. Find their profit ratio.
+A: 2:3
+B: 1:1
+C: 3:2
+D: 4:5
+solution:
+X: \(60000 \times 6 = 360000\). Y: \(90000 \times 4 = 360000\).
+
+The ratio is \(1 : 1\).
+
+Check: capital ratio \(2 : 3\) times time ratio \(3 : 2\) gives \(6 : 6\).
+
+=== 58
+chapter: Lines, Angles and Polygons
+subtopic: Interior and Exterior Angles of Polygons
+difficulty: EASY
+answer: A
+stem:
+If the difference between the interior and exterior angles of a regular polygon is \(100^\circ\), find the number of sides of the polygon.
+A: 9
+B: 10
+C: 11
+D: 12
+solution:
+Interior + exterior \(= 180^\circ\) and interior \(-\) exterior \(= 100^\circ\), so exterior \(= 40^\circ\).
+
+Number of sides \(= \frac{360}{40} = 9\).
+
+Check: a regular 9-gon has interior angle \(140^\circ\), and \(140 - 40 = 100\).
+
+=== 59
+chapter: Percentage, Profit and Loss
+subtopic: Successive Percentage Change
+difficulty: EASY
+answer: A
+stem:
+A value is increased by 30% and then decreased by an unknown percentage to return to the original value.
+
+What is the percentage decrease required?
+A: 23.08%
+B: 26.92%
+C: 30.26%
+D: 20.22%
+solution:
+100 becomes 130; it must fall by 30 out of 130.
+
+Decrease \(= \frac{30}{130} \times 100 = 23.08\%\).
+
+Check: \(130 \times (1 - 0.2308) = 100.0\).
+
+=== 60
+chapter: Mensuration 2D
+subtopic: Rectangles, Squares and Other Quadrilaterals
+difficulty: EASY
+answer: B
+stem:
+A square field has a diagonal of \(\sqrt{98}\) m. What is its area?
+A: \(48\ \text{m}^2\)
+B: \(49\ \text{m}^2\)
+C: \(50\ \text{m}^2\)
+D: \(52\ \text{m}^2\)
+solution:
+Area of a square \(= \frac{d^2}{2} = \frac{98}{2} = 49\ \text{m}^2\).
+
+Check: side \(= \frac{\sqrt{98}}{\sqrt{2}} = \sqrt{49} = 7\) m, and \(7^2 = 49\).
+
+=== 61
+chapter: Ratio, Proportion and Variation
+subtopic: Mixtures and Alligation
+difficulty: EASY
+answer: B
+stem:
+A 50-liter solution contains acid and water in the ratio 3:2. How much water must be added to make the ratio 1:1?
+A: 5 L
+B: 10 L
+C: 15 L
+D: 20 L
+solution:
+Acid \(= 30\) L, water \(= 20\) L.
+
+For \(1 : 1\) water must equal acid, 30 L, so add \(30 - 20 = 10\) L.
+
+Check: 30 L acid and 30 L water in 60 L is \(1 : 1\).
+
+=== 62
+chapter: Percentage, Profit and Loss
+subtopic: Profit and Loss
+difficulty: MODERATE
+answer: D
+stem:
+If the selling price of an item is increased by 25% and the profit also increases from 20% to 30%, what is the percentage increase in the cost price?
+A: 4.5%
+B: 5.6%
+C: 10.28%
+D: 15.38%
+solution:
+Let the cost be 100, so the selling price is 120.
+
+New selling price \(= 120 \times 1.25 = 150\), which is 130% of the new cost.
+
+New cost \(= \frac{150}{1.3} = 115.38\), an increase of \(15.38\%\).
+
+Check: \(115.38 \times 1.3 = 150\) and \(\frac{150}{120} = 1.25\).
+
+=== 63
+chapter: Averages
+subtopic: Sum and Mean
+difficulty: EASY
+answer: A
+stem:
+A group of 6 students went on a trip and spent Rs. 1200 in total. If one of them spent Rs. 300 while the rest spent equally, what was the average spending of the other 5 students?
+A: Rs. 180
+B: Rs. 200
+C: Rs. 220
+D: Rs. 240
+solution:
+The other 5 spent \(1200 - 300 = 900\), so the average is \(\frac{900}{5} = \text{Rs. } 180\).
+
+Check: \(5 \times 180 + 300 = 1200\).
+
+=== 64
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: EASY
+answer: C
+stem:
+A computer is sold at Rs. 7650 after applying a 15% discount. What was its market price?
+A: Rs. 8500
+B: Rs. 8800
+C: Rs. 9000
+D: Rs. 9500
+solution:
+Market price \(= \frac{7650}{0.85} = 9000\).
+
+Check: 15% of 9000 is 1350, and \(9000 - 1350 = 7650\).
+
+=== 65
+chapter: Time and Work
+subtopic: Men, Women and Equivalent Workers
+difficulty: MODERATE
+answer: C
+stem:
+If 10 men or 15 women can complete a work in 170 days, how long will 20 men and 20 women take for completing the same work?
+A: 52 days
+B: 50 days
+C: 51 days
+D: 53 days
+solution:
+10 men = 15 women, so 1 man = 1.5 women and 20 men = 30 women.
+
+20 men + 20 women = 50 women.
+
+Work \(= 15 \times 170 = 2550\) woman-days, so time \(= \frac{2550}{50} = 51\) days.
+
+Check in man units: 20 women = \(\frac{40}{3}\) men, total \(\frac{100}{3}\) men; work \(= 1700\) man-days; \(1700 \div \frac{100}{3} = 51\).
+
+=== 66
+chapter: Mensuration 2D
+subtopic: Rectangles, Squares and Other Quadrilaterals
+difficulty: EASY
+answer: C
+stem:
+A square has a perimeter of 100 cm. What is the area of the square?
+A: \(652\ \text{cm}^2\)
+B: \(892\ \text{cm}^2\)
+C: \(625\ \text{cm}^2\)
+D: \(825\ \text{cm}^2\)
+solution:
+Side \(= \frac{100}{4} = 25\) cm, so area \(= 25^2 = 625\ \text{cm}^2\).
+
+Check: \(625 = 5^4\) is a perfect square with root 25; none of the other options is a perfect square.
+
+=== 67
+chapter: Averages
+subtopic: Sum and Mean
+difficulty: EASY
+answer: C
+stem:
+A student took 7 tests and had an average of 72. If his average after 8 tests increased to 73, what was his score on the 8th test?
+A: 79
+B: 78
+C: 80
+D: 81
+solution:
+8th score \(= 8 \times 73 - 7 \times 72 = 584 - 504 = 80\).
+
+Check: the new score is the new average plus 1 for each of the 7 earlier tests, \(73 + 7 = 80\).
+
+=== 68
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: EASY
+answer: A
+stem:
+A store announces a festive deal: "Get 30% off on purchases above Rs. 10,000, and an additional Rs. 1,000 off if the total after discount exceeds Rs. 15,000." A customer buys items worth Rs. 25,000. How much does the customer finally pay?
+A: Rs. 16,500
+B: Rs. 17,500
+C: Rs. 16,000
+D: Rs. 17,000
+solution:
+After 30% off: \(25000 \times 0.7 = 17500\), which exceeds 15,000.
+
+So a further Rs. 1,000 comes off: \(17500 - 1000 = \text{Rs. } 16{,}500\).
+
+Check: total discount \(7500 + 1000 = 8500\), and \(25000 - 8500 = 16500\).
+
+=== 69
+chapter: Ratio, Proportion and Variation
+subtopic: Mixtures and Alligation
+difficulty: MODERATE
+answer: A
+stem:
+A solution of 100 litres has a 60% salt concentration. How many litres of water must be added to reduce the concentration to 40%, and then how much pure salt must be added to bring the concentration back to 50%?
+A: Add 50 L of water, then 30 L of salt
+B: Add 90 L of water, then 70 L of salt
+C: Add 70 L of water, then 30 L of salt
+D: Add 50 L of water, then 10 L of salt
+solution:
+Salt \(= 60\) L. For 40%, the total must be \(\frac{60}{0.4} = 150\) L, so add 50 L of water.
+
+Then \(\frac{60 + x}{150 + x} = \frac{1}{2}\), so \(120 + 2x = 150 + x\), \(x = 30\) L of salt.
+
+Check: 90 L salt in 180 L is 50%.
+
+=== 70
+chapter: Trigonometric Ratios and Identities
+subtopic: Complementary and Allied Angles
+difficulty: MODERATE
+answer: D
+stem:
+If \(\sin A = \frac{4}{5}\) and A lies in 2nd quadrant, find the value of \((1 + \tan A)(1 - \tan A)\).
+A: \(-\frac{9}{25}\)
+B: \(\frac{16}{25}\)
+C: \(\frac{1}{9}\)
+D: \(-\frac{7}{9}\)
+solution:
+In the 2nd quadrant \(\cos A = -\frac{3}{5}\), so \(\tan A = -\frac{4}{3}\).
+
+\((1 + \tan A)(1 - \tan A) = 1 - \tan^2 A = 1 - \frac{16}{9} = -\frac{7}{9}\).
+
+Check directly: \(\left(1 - \frac{4}{3}\right)\left(1 + \frac{4}{3}\right) = \left(-\frac{1}{3}\right)\left(\frac{7}{3}\right) = -\frac{7}{9}\). The sign of \(\tan A\) does not matter here since only \(\tan^2 A\) appears.
+
+=== 71
+chapter: Trigonometric Ratios and Identities
+subtopic: Degree, Radian and Standard Values
+difficulty: EASY
+answer: B
+stem:
+Convert 0.5 radians to degrees.
+A: \(25.7^\circ\)
+B: \(28.65^\circ\)
+C: \(45.24^\circ\)
+D: \(57.3^\circ\)
+solution:
+\(0.5 \times \frac{180}{\pi} = \frac{90}{\pi} \approx 28.65^\circ\).
+
+Check: 1 radian \(\approx 57.3^\circ\), and half of that is \(28.65^\circ\).
+
+=== 72
+chapter: Trigonometric Ratios and Identities
+subtopic: Complementary and Allied Angles
+difficulty: EASY
+answer: A
+stem:
+If \(\sin x = \cos(x + 20^\circ)\), then what is the value of x?
+A: \(35^\circ\)
+B: \(25^\circ\)
+C: \(18^\circ\)
+D: \(20^\circ\)
+solution:
+\(\sin x = \cos(90^\circ - x)\), so \(90^\circ - x = x + 20^\circ\), giving \(x = 35^\circ\).
+
+Check: \(\sin 35^\circ = \cos 55^\circ\), and \(35 + 20 = 55\).
+
+=== 73
+chapter: Triangles
+subtopic: Centres of a Triangle
+difficulty: EASY
+answer: B
+stem:
+For a triangle with one interior angle greater than \(90^\circ\), where is its Orthocenter located?
+A: On one of the sides of the triangle.
+B: Outside the triangle.
+C: Inside the triangle.
+D: At one of the vertices of the triangle.
+solution:
+In an obtuse triangle two of the altitudes fall outside the triangle, so they meet outside it: the orthocentre lies outside.
+
+It lies inside for an acute triangle and at the right-angle vertex for a right triangle.
+
+=== 74
+chapter: Circles
+subtopic: Chords and Perpendiculars
+difficulty: EASY
+answer: C
+stem:
+A chord is drawn in a circle with a radius of 15 cm. If the distance of the chord from the center is 9 cm, what is the length of the chord?
+A: 12 cm
+B: 15 cm
+C: 24 cm
+D: 30 cm
+solution:
+Half chord \(= \sqrt{15^2 - 9^2} = \sqrt{144} = 12\) cm, so the chord is 24 cm.
+
+Check: 9, 12, 15 is the 3-4-5 triple times 3.
+
+=== 75
+chapter: Circles
+subtopic: Tangents from an External Point
+difficulty: EASY
+answer: A
+stem:
+A point P is outside a circle. The length of the tangent from P is 10 cm, and the distance from P to the center is \(\sqrt{125}\) cm. What is the radius of the circle?
+A: \(5\) cm
+B: \(10\) cm
+C: \(\sqrt{5}\) cm
+D: \(\sqrt{15}\) cm
+solution:
+The radius is perpendicular to the tangent, so \(r^2 = 125 - 10^2 = 25\), \(r = 5\) cm.
+
+Check: \(5^2 + 10^2 = 125\).
+
+=== 76
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: C
+stem:
+Fill in the blank with the correctly spelt word.
+
+The professor emphasized the _________ nature of literary interpretation.
+A: subjectif
+B: subgective
+C: subjective
+D: subjuctive
+solution:
+The word is spelt **subjective** (subject + -ive). "Subjectif" is the French form, "subgective" puts g for j, and "subjuctive" drops the e.
+
+=== 77
+chapter: Grammar
+subtopic: Articles: A, An and The
+difficulty: EASY
+answer: B
+flawed: yes
+note: SSC's provisional key C ('In an absence of ... the presence of') breaks the fixed phrase 'in the absence of': both nouns are made definite by their of-phrases. Our answer stays B; held PRIVATE for review
+stem:
+Fill in the blanks with the appropriate article.
+
+In ______ absence of comprehensive data and ______ presence of conflicting anecdotal evidence, policy decisions often rest on precarious assumptions.
+A: an, a
+B: the, the
+C: an, the
+D: a, a
+solution:
+Both nouns are made specific by the of-phrase that follows them: "the absence of comprehensive data" and "the presence of conflicting anecdotal evidence". "In the absence of" and "in the presence of" are fixed phrases with "the".
+
+=== 78
+chapter: Vocabulary
+subtopic: Synonyms: Harm, Degree and the Senses
+difficulty: EASY
+answer: C
+stem:
+Select the most appropriate synonym of the given word: **AWRY**
+A: Straight
+B: Correct
+C: Askew
+D: Proper
+solution:
+Awry means out of the normal or correct position, crooked, or gone wrong. Askew (not straight, at an angle) matches. Straight, correct and proper are its opposites.
+
+=== 79
+chapter: Vocabulary
+subtopic: Antonyms: Feelings and Calm
+difficulty: MODERATE
+answer: A
+stem:
+Select the most appropriate antonym of the given word. **Lugubrious**
+A: Joyous
+B: Mournful
+C: Gloomy
+D: Sorrowful
+solution:
+Lugubrious means looking or sounding sad and dismal. Mournful, gloomy and sorrowful are synonyms; joyous is the opposite.
+
+=== 80
+chapter: Idioms and Phrases
+subtopic: Idioms: Trouble and Success
+difficulty: MODERATE
+answer: C
+stem:
+Choose the correct meaning of idiom:
+**Break one’s duck**
+A: Abandon a hobby
+B: Spoil a good start
+C: Achieve a first success after previous failures
+D: Undergo bankruptcy
+solution:
+In cricket a "duck" is a score of zero; a batter breaks his duck by scoring his first run. Figuratively, to break one's duck is to achieve a first success after earlier failures.
+
+=== 81
+chapter: Idioms and Phrases
+subtopic: Idioms: Time and Company
+difficulty: MODERATE
+answer: A
+stem:
+Choose the correct meaning of idiom:
+**Cut me dead**
+A: Ignored me deliberately
+B: Insulted me openly
+C: Misunderstood me accidentally
+D: Praised me sarcastically
+solution:
+To cut someone dead is to pretend not to see or know them, to ignore them completely and on purpose.
+
+=== 82
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: MODERATE
+answer: B
+stem:
+Which of these is the **correct spelling** of a critique of metaphysical assumptions?
+A: Phenomenalogical
+B: Phenomenological
+C: Phenomenollogical
+D: Phenomenonological
+solution:
+The word is built from phenomen(on) + -ology + -ical: **phenomenological** (phe-no-me-no-lo-gi-cal). A uses "a" for the second o, C doubles the l, and D repeats "non".
+
+=== 83
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: A
+stem:
+Spot the **correct spelling** of verbose roundabout speech.
+A: Circumlocution
+B: Circumloction
+C: Cirumlocution
+D: Circumlucution
+solution:
+The word is circum (around) + locution (speaking): **circumlocution**. B drops the u of "locution", C drops the c of "circum", and D writes "lucution".
+
+=== 84
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: B
+stem:
+Choose the correct **one-word substitute** for: 'An inoffensive word used in place of a blunt one'.
+A: Allusion
+B: Euphemism
+C: Analogy
+D: Allegory
+solution:
+A euphemism is a mild or indirect word used in place of one that is harsh or blunt ("passed away" for "died"). An allusion is an indirect reference, an analogy a comparison, and an allegory a story with a hidden meaning.
+
+=== 85
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: A
+stem:
+Choose the correct **one-word substitute** for: 'A short-lived or fleeting phenomenon.'
+A: Ephemeral
+B: Eternal
+C: Archetype
+D: Chronicle
+solution:
+Ephemeral means lasting a very short time. Eternal is its opposite, an archetype is a typical model, and a chronicle is a record of events.
+
+=== 86
+chapter: Spotting Errors
+subtopic: Word Choice and Word Form
+difficulty: MODERATE
+answer: A
+stem:
+**Find the part of the sentence that contains an error:**
+Most of the feedbacks received from senior scholars (1)/ were overwhelmingly in favour (2)/ of increasing emphasis on interdisciplinary research (3)/ as opposed to segmented evaluation models. (4)
+A: (1)
+B: (2)
+C: (3)
+D: (4)
+solution:
+"Feedback" is an uncountable noun and has no plural, so "feedbacks" is wrong. Part (1) should read "Most of the feedback received from senior scholars". (With "feedback" singular, the verb "were" should also become "was".)
+
+=== 87
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: MODERATE
+answer: B
+stem:
+**Change the following from active to passive:**
+They will not have finalized the merger documents by midnight.
+A: The merger documents will not be finalized by them by midnight.
+B: The merger documents will not have been finalized by them by midnight.
+C: The merger documents have not been finalized by them by midnight.
+D: The merger documents would not have been finalized by them by midnight.
+solution:
+The active verb is future perfect ("will not have finalized"), so the passive is "will not have been" + past participle: "The merger documents will not have been finalized by them by midnight." A is simple future, C present perfect, and D changes "will" to "would".
+
+=== 88
+chapter: Vocabulary
+subtopic: Confusable Word Pairs
+difficulty: EASY
+answer: A
+stem:
+**Select the sentence containing the homonym of the highlighted word:**
+He wore a **ring** with a family crest.
+A: The phone started to ring during the meeting.
+B: She showed him her engagement ring.
+C: A ring of fire surrounded the camp.
+D: They danced in a circle, forming a ring.
+solution:
+In the given sentence "ring" is a noun meaning a band worn on the finger. A homonym is a word spelt and pronounced the same but with an unrelated meaning. In A, "ring" is a verb meaning to make a bell-like sound, an unrelated word. B uses the same meaning, and C and D use the closely related sense of a circle.
+
+=== 89
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: MODERATE
+answer: D
+stem:
+**Convert the sentence provided below from its passive voice structure to an active voice structure:**
+No efforts were seen to have been made by the officials to resolve the crisis.
+A: It was seen that officials resolved the crisis.
+B: Officials were seen resolving the crisis effortfully.
+C: The officials seemed to have resolved the crisis.
+D: It was seen that the officials had made no efforts to resolve the crisis.
+solution:
+The sentence says the officials made no efforts, and this was observed. Making "the officials" the doer gives "the officials had made no efforts to resolve the crisis", introduced by "It was seen that". A, B and C all say the crisis was resolved, which reverses the meaning.
+
+=== 90
+chapter: Reading Comprehension
+subtopic: Meaning of a Phrase or Image
+difficulty: EASY
+answer: C
+context:
+**Read the following passage and answer the questions based on the passage:**
+The notion of inhabiting the Moon, once confined to speculative fiction and celestial folklore, is now transitioning into a plausible reality, propelled by relentless technological strides and geopolitical interests in extraterrestrial dominance. The Moon, Earth's solitary natural satellite, has metamorphosed into a strategic frontier for scientific advancement, mineral extraction, and perhaps even permanent settlement. With nations like the United States, China, and India rejuvenating their lunar missions under programs such as Artemis, Chandrayaan, and Chang'e, the ambition to establish a sustained human presence on the lunar surface no longer appears quixotic. The Artemis program, spearheaded by NASA in collaboration with international agencies, envisions a lunar base camp by the early 2030s, intended not merely for exploration but as a staging post for Mars-bound voyages. Central to this vision are technologies like the Space Launch System, lunar habitats with radiation shielding, and autonomous life-support systems capable of withstanding the Moon's harsh, desolate environment. Meanwhile, the discovery of water ice in permanently shadowed craters near the lunar south pole has galvanized the possibility of in-situ resource utilization—transforming lunar ice into potable water or fuel components like hydrogen and oxygen. Nonetheless, formidable challenges remain. The Moon's extreme temperatures, absence of a breathable atmosphere, exposure to cosmic radiation, and logistical difficulties of regular resupply missions impose substantial constraints. Moreover, the legal ambiguities surrounding lunar property rights under the 1967 Outer Space Treaty could potentially ignite geopolitical tensions as more private enterprises express interest in lunar commerce. Yet, with the confluence of public funding, private innovation, and international collaboration, humanity’s long-standing aspiration to become an interplanetary species inches closer to fruition. While a fully habitable lunar colony may still be decades away, the foundational infrastructure and political will are steadily aligning, making the dream of lunar habitation not just possible—but imminent.
+stem:
+What does the author imply by the term "no longer appears quixotic"?
+A: Extremely expensive
+B: Completely fictional
+C: Unrealistic but now attainable
+D: Politically sensitive
+solution:
+Quixotic means idealistic and unrealistic. Saying the ambition "no longer appears quixotic" means an idea once thought unrealistic now looks achievable, which fits the passage's move from "speculative fiction" to "a plausible reality".
+
+=== 91
+chapter: Reading Comprehension
+subtopic: Locating the Answer Line
+difficulty: EASY
+answer: C
+context_from: 90
+stem:
+What is the key utility of water ice on the Moon as per the paragraph?
+A: Cooling lunar bases
+B: Creating breathable atmosphere
+C: Fuel and water generation
+D: Terraforming the Moon
+solution:
+The passage says water ice makes possible "transforming lunar ice into potable water or fuel components like hydrogen and oxygen". That is fuel and water generation.
+
+=== 92
+chapter: Reading Comprehension
+subtopic: Locating the Answer Line
+difficulty: EASY
+answer: B
+context_from: 90
+stem:
+Which of the following is NOT mentioned as a challenge for lunar habitation?
+A: Lack of breathable air
+B: High lunar taxes
+C: Radiation exposure
+D: Temperature extremes
+solution:
+The challenges listed are "extreme temperatures, absence of a breathable atmosphere, exposure to cosmic radiation, and logistical difficulties of regular resupply", plus legal ambiguity over property rights. Taxes are never mentioned.
+
+=== 93
+chapter: Reading Comprehension
+subtopic: Locating the Answer Line
+difficulty: EASY
+answer: B
+context_from: 90
+stem:
+Which space program is associated with setting up a lunar base camp?
+A: Chang’e
+B: Artemis
+C: Chandrayaan
+D: LunarX
+solution:
+"The Artemis program, spearheaded by NASA ... envisions a lunar base camp by the early 2030s." Chang'e and Chandrayaan are only named as lunar programs, and LunarX does not appear.
+
+=== 94
+chapter: Reading Comprehension
+subtopic: Why Questions: The Passage's Reason
+difficulty: EASY
+answer: C
+context_from: 90
+stem:
+Why does the author mention the 1967 Outer Space Treaty?
+A: To highlight astronaut safety
+B: To promote global collaboration
+C: To explain legal complications
+D: To restrict Moon missions
+solution:
+The treaty comes up in "the legal ambiguities surrounding lunar property rights under the 1967 Outer Space Treaty could potentially ignite geopolitical tensions". It is cited to explain legal complications.
+
+=== 95
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: B
+stem:
+Choose the most suitable option to replace the highlighted part of the sentence:
+The officer ***ordered to the soldiers to march ahead***.
+A: ordered the soldiers for marching
+B: ordered the soldiers to march ahead
+C: gave order the soldiers to march
+D: ordered to soldiers to march
+solution:
+"Order" takes a direct object and then a to-infinitive: order someone to do something. So "ordered the soldiers to march ahead"; the "to" before "the soldiers" is wrong. A uses "for marching", C needs "gave the soldiers an order", and D keeps the wrong "to".
+
+=== 96
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: MODERATE
+answer: B
+stem:
+**Select the correct option for the Direct Speech conversion of the sentence below.**
+She noted that, had the literary trope not been overused, the metaphor might still have resonated with the audience.
+A: She said, "If the literary trope was not overused, the metaphor may still resonate with the audience."
+B: She said, "Had the literary trope not been overused, the metaphor might still have resonated with the audience."
+C: She said, "Had the literary trope not been overused, the metaphor must still resonate with the audience."
+D: She said, "If the literary trope had not been overused, the metaphor will still resonate with the audience."
+solution:
+A third conditional (had + not been ..., might have + past participle) describes an unreal past and does not shift when reported, so the direct speech keeps the same verbs: "Had the literary trope not been overused, the metaphor might still have resonated with the audience." A, C and D change the conditional and the meaning.
+
+=== 97
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: C
+stem:
+**A sentence is provided in direct speech. From the four given options, choose the one that most accurately conveys the sentence in its corresponding indirect speech.**
+The teacher said to the students, “Work hard to pass the exam.”
+A: The teacher said the students work hard.
+B: The teacher told the students to worked hard.
+C: The teacher advised the students to work hard to pass the exam.
+D: The teacher asked the students that they must work hard.
+solution:
+An imperative giving advice is reported with a verb like "advised" and a to-infinitive: "The teacher advised the students to work hard to pass the exam." A and D use the wrong structure and drop "to pass the exam", and B has "to worked".
+
+=== 98
+chapter: Sentence Rearrangement
+subtopic: This, These and Such
+difficulty: MODERATE
+answer: A
+stem:
+**Rearrange the following sentences to form a coherent paragraph:**
+1. This requires a strong understanding of both hardware and software, as well as an appreciation for human-centered design.2. Robotics is an interdisciplinary field of engineering and computer science that deals with the design, construction, and operation of robots.3. The ultimate goal is to create machines that can assist humans by automating tasks that are either repetitive, hazardous, or require a level of accuracy beyond human capability.4. The field is continuously evolving, driven by advancements in artificial intelligence and sensor technology.
+A: 2, 3, 1, 4
+B: 1, 3, 2, 4
+C: 4, 1, 2, 3
+D: 3, 1, 2, 4
+solution:
+Sentence 2 defines robotics, so it opens. Sentence 3 states its goal, and sentence 1 ("This requires...") follows it, naming what building such machines needs. Sentence 4, on how the field keeps evolving, closes. Order 2, 3, 1, 4; only option A starts with 2.
+
+=== 99
+chapter: Sentence Rearrangement
+subtopic: This, These and Such
+difficulty: EASY
+answer: A
+stem:
+**Rearrange the following sentences to form a coherent paragraph:**
+1. The most prevalent of these is the peer review process, where a manuscript is evaluated by other experts in the same field.
+2. The integrity of scientific publications is upheld by a series of rigorous checks and balances.
+3. The goal of this process is to validate the methodology, findings, and conclusions of the research before it is made public.
+4. This external scrutiny helps to ensure that only high-quality, credible research is disseminated to the scientific community.
+A: 2, 1, 3, 4
+B: 1, 2, 3, 4
+C: 3, 4, 1, 2
+D: 4, 3, 2, 1
+solution:
+Sentence 2 introduces "checks and balances", which "these" in sentence 1 refers to. Sentence 1 names peer review, which "this process" in sentence 3 refers to, and sentence 4 ("This external scrutiny") sums up. Order 2, 1, 3, 4.
+
+=== 100
+chapter: Sentence Rearrangement
+subtopic: Time Order and Lists
+difficulty: EASY
+answer: D
+stem:
+**Rearrange the following sentences in correct order to make a logical passage.**
+1. The first step involves identifying suitable candidates.
+2. The recruitment process is vital for any organization.
+3. Subsequent steps include interviews and background checks.
+4. The goal is to find the best fit for the company culture.
+A: 2-3-1-4
+B: 2-4-1-3
+C: 3-4-2-1
+D: 2-1-3-4
+solution:
+Sentence 2 introduces the recruitment process. Then come its steps in order: "the first step" (1), then "subsequent steps" (3), and sentence 4 states the goal. Order 2-1-3-4.
