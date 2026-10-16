@@ -19,7 +19,9 @@ as text (no answers): copy wording from it to save typing, but the sheet is the 
 The text loses maths set as pictures, misplaces superscripts (cm 3) and drops symbols, so
 check every line against the sheet. These sheets print every stem in bold, so do not bold a
 whole stem; bold only what the question singles out. An underlined word or segment is written
-`\(\underline{\text{...}}\)` around exactly the underlined words.
+`\(\underline{\text{...}}\)` around exactly the underlined words. A question SSC printed in
+Hindi only: write your English rendering, add `flawed: yes` and a `note:` saying so (the bank
+must not pass off our translation as SSC's English), and still derive the answer.
 
 ## Rules
 
