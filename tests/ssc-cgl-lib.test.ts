@@ -84,6 +84,37 @@ describe("assembleQuestions", () => {
     expect(() => assembleQuestions(two)).toThrow(/shift 1 Q1.*exactly one/);
   });
 
+  it("reads a clipped label as the number it is a prefix of, in its place, and reports the repair", () => {
+    const g = shift(1, 1, 100, () => 0);
+    // 16 Sep 2025 S1: the label of Q48 prints as "Q.No: 4" (its last digit clipped).
+    const m = g.markers.find((x) => x.kind === "q" && x.n === 48) as Extract<Marker, { kind: "q" }>;
+    m.n = 4;
+    const repairs: string[] = [];
+    const qs = assembleQuestions(g, { onRepair: (s) => repairs.push(s) });
+    expect(qs.map((q) => q.number)).toEqual(Array.from({ length: 100 }, (_, i) => i + 1));
+    expect(repairs).toEqual(["shift 1: label 4 on page 24 read as Q48 (clipped label)"]);
+  });
+
+  it("does not repair a label that is not a prefix of the expected number, and names the gap and the duplicate", () => {
+    const g = shift(1, 1, 100, () => 0);
+    const m = g.markers.find((x) => x.kind === "q" && x.n === 48) as Extract<Marker, { kind: "q" }>;
+    m.n = 7;
+    expect(() => assembleQuestions(g)).toThrow(/shift 1.*missing 48.*duplicate 7/);
+  });
+
+  it("accepts questions a shift's source is declared to lack, and only those", () => {
+    const g = shift(3, 1, 100, () => 0);
+    // 16 Sep 2025 S3: the hosted file has no PART-C at all. Drop Q51-75 the way shift() lays
+    // them out: question n on page 1 + floor((n-1)/2), at top 50 or 300, cells top..top+200.
+    const range = Array.from({ length: 25 }, (_, i) => 51 + i);
+    const at = (n: number) => ({ page: 1 + Math.floor((n - 1) / 2), top: (n - 1) % 2 === 0 ? 50 : 300 });
+    g.markers = g.markers.filter((x) => !(x.kind === "q" && range.includes(x.n)));
+    g.cells = g.cells.filter((c) => !range.some((n) => c.page === at(n).page && c.y0 >= at(n).top && c.y0 < at(n).top + 200));
+    expect(assembleQuestions(g, { missing: { 3: range } })).toHaveLength(75);
+    expect(() => assembleQuestions(g)).toThrow(/shift 3.*missing 51/);
+    expect(() => assembleQuestions(g, { missing: { 3: range.slice(1) } })).toThrow(/shift 3.*missing 51/);
+  });
+
   it("keeps shifts apart and refuses a shift that is not numbered 1..100", () => {
     const a = shift(1, 1, 100, () => 0);
     const b = shift(2, 60, 100, () => 1);
@@ -92,7 +123,7 @@ describe("assembleQuestions", () => {
     expect(qs.find((q) => q.shift === 2 && q.number === 1)?.key).toBe("B");
 
     const short = shift(1, 1, 99, () => 0);
-    expect(() => assembleQuestions(short)).toThrow(/shift 1.*100 questions/);
+    expect(() => assembleQuestions(short)).toThrow(/shift 1.*missing 100/);
   });
 });
 

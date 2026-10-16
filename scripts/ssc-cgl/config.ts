@@ -53,8 +53,41 @@ export const SOURCE_ROOT = "C:\\Vilas\\LWS_Pune\\SSC\\CGL";
  * opened 2025-10-16, and the final key was released only through candidate login
  * (until 2026-02-08). Our answers are derived independently and compared with it.
  */
-export type Day = { tier: 1 | 2; date: string; shifts: number; file: string; url: string; provisionalKey: boolean };
+export type Day = {
+  tier: 1 | 2;
+  date: string;
+  shifts: number;
+  file: string;
+  url: string;
+  provisionalKey: boolean;
+  /** shift -> question numbers the hosted file does not contain (its gap, not ours) */
+  missing?: Record<number, number[]>;
+};
+const t1_2025 = (dd: string, mon: "Sep" | "Oct", docId: string, extra: Partial<Day> = {}): Day => ({
+  tier: 1,
+  date: `2025-${mon === "Sep" ? "09" : "10"}-${dd}`,
+  shifts: 3,
+  file: join(SOURCE_ROOT, "2025_Tier1", `SSC_CGL_2025_Tier1_${dd}${mon}_AllShifts.pdf`),
+  url: `https://cdn.aglasem.com/aglasem-doc/${docId}/${docId}.pdf`,
+  provisionalKey: true,
+  ...extra,
+});
+
 export const DAYS: Record<string, Day> = {
+  "t1-2025-09-12": t1_2025("12", "Sep", "11f241cc-8c19-11f1-aa13-0aa932765c8b"),
+  "t1-2025-09-14": t1_2025("14", "Sep", "1c04e296-8c19-11f1-b4ad-0aa932765c8b"),
+  "t1-2025-09-15": t1_2025("15", "Sep", "1f3fefb4-8c19-11f1-b79a-0aa932765c8b"),
+  "t1-2025-09-17": t1_2025("17", "Sep", "2643aefe-8c19-11f1-8ce7-0aa932765c8b"),
+  "t1-2025-09-16": {
+    tier: 1,
+    date: "2025-09-16",
+    shifts: 3,
+    file: join(SOURCE_ROOT, "2025_Tier1", "SSC_CGL_2025_Tier1_16Sep_AllShifts.pdf"),
+    url: "https://cdn.aglasem.com/aglasem-doc/234a8646-8c19-11f1-98f5-0aa932765c8b/234a8646-8c19-11f1-98f5-0aa932765c8b.pdf",
+    provisionalKey: true,
+    // The hosted file jumps from Shift 3's PART-B straight to PART-D: no Quant section at all.
+    missing: { 3: Array.from({ length: 25 }, (_, i) => 51 + i) },
+  },
   "t1-2025-09-18": {
     tier: 1,
     date: "2025-09-18",

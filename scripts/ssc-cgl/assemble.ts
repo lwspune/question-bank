@@ -21,7 +21,13 @@ function main() {
   const day = process.argv[2];
   if (!day || !DAYS[day]) throw new Error(`usage: assemble.ts <dayId>. Known: ${Object.keys(DAYS).join(", ")}`);
   const geometry: Geometry = JSON.parse(readFileSync(join(OUT, day, "geometry.json"), "utf8"));
-  const questions = assembleQuestions(geometry);
+  const questions = assembleQuestions(geometry, {
+    missing: DAYS[day].missing,
+    onRepair: (m) => console.log(`repaired: ${m}`),
+  });
+  for (const [s, nums] of Object.entries(DAYS[day].missing ?? {})) {
+    console.log(`declared missing from the source, shift ${s}: Q${nums[0]}-Q${nums[nums.length - 1]} (${nums.length})`);
+  }
 
   const shifts = [...new Set(questions.map((q) => q.shift))].sort();
   if (shifts.length !== DAYS[day].shifts) {

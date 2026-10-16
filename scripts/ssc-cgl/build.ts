@@ -115,7 +115,7 @@ function main() {
     for (const s of problems) console.log(`  ${s}`);
     process.exit(problems.length ? 1 : 0);
   }
-  console.log(`${shift.id}: ${transcript.length}/100 transcribed${check.missing.length ? ` (missing ${check.missing.length})` : ""}`);
+  console.log(`${shift.id}: ${transcript.length}/${sheet.length} transcribed${check.missing.length ? ` (missing ${check.missing.length})` : ""}`);
   console.log(`blind agreement with ${keyName}: ${agree}/${of}`);
   console.log(`key adopted on review (blind answer differed): ${check.adopted.length}`);
   for (const d of check.adopted) console.log(`  ${d}`);
