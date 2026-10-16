@@ -125,6 +125,12 @@ def unkey_scan(img):
     return img
 
 
+def is_frame(page, dr):
+    """A question's frame in the vector print: a wide grey-stroked box (as tcs_extract.py)."""
+    r, c = dr["rect"], dr.get("color")
+    return r.width > page.rect.width * 0.8 and r.height > 20 and dr.get("fill") is None and c and all(abs(v - 0.6) < 0.05 for v in c)
+
+
 def key_pixels(img):
     """Pixels in the tick's green or the cross's red: what a masked sheet must not show."""
     n = 0
@@ -160,8 +166,13 @@ def mask_page(doc, page):
     for s in spans:
         if GLYPH.match(s["text"].strip()) and keyish(s["color"]):
             white(s["bbox"])
+    # The vector print's icons stand in a column just inside the question frame's left edge
+    # (vector.ts reads them there too). An option printed as a small picture further right can
+    # have a cross's pixel size (14 Jul 2023 S4 Q74: 28x21 at x 101), and must survive.
+    frame_x0 = min((dr["rect"].x0 for dr in page.get_drawings() if is_frame(page, dr)), default=None)
     for info in page.get_image_info():
-        if is_icon(info["bbox"], option_labels) or is_icon_picture(info):
+        in_column = frame_x0 is None or info["bbox"][0] < frame_x0 + 40
+        if is_icon(info["bbox"], option_labels) or (is_icon_picture(info) and in_column):
             page.draw_rect(fitz.Rect(info["bbox"]) + (-1, -1, 1, 1), color=None, fill=(1, 1, 1), overlay=True)
     # The 2022 vector print draws the panel as a white box with a grey border: paint it out.
     for dr in page.get_drawings():
