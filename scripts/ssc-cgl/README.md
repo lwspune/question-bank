@@ -121,6 +121,16 @@ On review:
 | 16 Sep S1 (agents) | 96/100 | Q40 (PM against CM), Q99, Q100 (judgement; the paper prints one rearrangement twice) | Q43 (Amrit Sarovar's target was 2023, not 2024) | none |
 | 16 Sep S2 (agents) | 98/100 | Q1 ('between' counted inclusively) | Q20 (each letter +2 gives XCRQT; the key swaps two letters) | Q39 (ethylene does start germination), Q56 (no six consecutive integers average 6) |
 | 16 Sep S3 (agents, 75 q) | 74/75 | none | Q88 (key B uses 'current' in the same sense) | none |
+| 12 Sep S1 (agents) | 100/100 | none | none | Q82 (barely and scarcely both fit), Q88 (no true homonym of "introit") |
+| 12 Sep S2 (agents) | 98/100 | Q9 (word list: DORP), Q98 (judgement) | none | Q88 (no true homonym of "gules") |
+| 12 Sep S3 (agents, 99 rows) | 98/100 | Q21 (judgement) | Q82 ("the negotiations" needs "were") | Q33 (Hot Stage is a crime novel; no option fits). Q65 repeats 16 Sep S2 Q59 (repeats.json) |
+
+## Repeated questions
+
+SSC re-asks questions word for word across shifts (12 Sep S3 Q65 is 16 Sep S2 Q59). The bank keeps
+one row per `(org, exam, content_hash)`, so the later copy is skipped, and `commit.ts` writes its
+place to `repeats.json` (shift, number, the row it repeats). A mock of that shift must take the
+question from there; the shift's own `source_file` holds one row fewer than its paper.
 
 ## The catalog
 
