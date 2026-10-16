@@ -5,8 +5,8 @@ subjects: Reasoning, Quantitative Aptitude, English, and General Awareness split
 subjects CDS General Knowledge uses (History, Geography, Polity, Economics, Physics, Chemistry,
 Biology, Current Affairs; owner, 2026-10-16).
 
-**Status (2026-10-16): pilot. Tier I, 18 September 2025, Shifts 1 and 2: 200 questions
-committed PRIVATE. Nothing is PUBLIC.** Not in `EXAM_REGISTRY`, no mocks yet.
+**Status (2026-10-16): Tier I, 18 September 2025, all three shifts: 300 questions committed
+PRIVATE. Nothing is PUBLIC.** Not in `EXAM_REGISTRY`, no mocks yet.
 
 ## The source, and why it is the only one
 
@@ -99,6 +99,7 @@ On review:
 |---|---|---|---|---|
 | 18 Sep S1 | 98/100 | Q6, Q7 (judgement) | none | Q48 (asks the 2024 winner; the options fit 2023), Q88 (no true homonym of "fief") |
 | 18 Sep S2 | 98/100 | Q36 (fact, our guess) | Q87 (error is in part 1, key says 2) | none |
+| 18 Sep S3 (agents) | 97/100 | Q50, Q99 (judgement); Q44 (key adopted but held: no option states Art. 258A) | none | Q12 (contradictory syllogism), Q54 (1:1 and 5:5 both offered) |
 
 ## The catalog
 
