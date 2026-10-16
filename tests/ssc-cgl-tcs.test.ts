@@ -101,6 +101,16 @@ describe("assembleTcs", () => {
     expect(qs.filter((q) => q.shift === 2).every((q) => q.key === "B")).toBe(true);
   });
 
+  it("files each picture option under the label nearest its middle (a tall picture starts above its label)", () => {
+    // 9 Sep 2024 Q10: option pictures 25pt tall, centred on "1."-"4.", each starting ~6pt above.
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 0);
+    const opts = g.spans.filter((s) => s.page === 2 && s.y0 < 300 && /^[1-4]\. /.test(s.text));
+    // Picture 1 starts just below "Ans" (which prints level with label 1 here); the rest start above their labels.
+    opts.forEach((o, i) => g.images.push({ page: 2, name: `pic${i}`, x0: 97, y0: i === 0 ? o.y0 + 0.5 : o.y0 - 6, x1: 185, y1: o.y0 + 9 }));
+    const [q] = assembleTcs(g);
+    expect(q.optionImages).toEqual([["pic0"], ["pic1"], ["pic2"], ["pic3"]]);
+  });
+
   it("keeps figure images: a stem figure, and pictures that are the options", () => {
     const g = shift(2, "9:00 AM - 10:00 AM", () => 0);
     g.images.push({ page: 2, name: "dice", x0: 70, y0: 63, x1: 170, y1: 71 });

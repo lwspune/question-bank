@@ -17,7 +17,9 @@ section ("Q.14"); the red label above it ("Q64") is the number you write. The op
 "1." to "4.": write them as A to D in that order. `sheets/text.txt` holds the same questions
 as text (no answers): copy wording from it to save typing, but the sheet is the source.
 The text loses maths set as pictures, misplaces superscripts (cm 3) and drops symbols, so
-check every line against the sheet.
+check every line against the sheet. These sheets print every stem in bold, so do not bold a
+whole stem; bold only what the question singles out. An underlined word or segment is written
+`\(\underline{\text{...}}\)` around exactly the underlined words.
 
 ## Rules
 

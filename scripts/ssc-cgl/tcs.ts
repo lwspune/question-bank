@@ -183,7 +183,15 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
     }
   });
 
-  type Open = TcsQuestion & { stage: "stem" | "options" | "done"; stemLines: string[]; optLines: string[][]; optColor: number[] };
+  type Open = TcsQuestion & {
+    stage: "stem" | "options" | "done";
+    stemLines: string[];
+    optLines: string[][];
+    optColor: number[];
+    /** vertical middle of each option's "n." label, and the pictures met after "Ans" */
+    optMid: number[];
+    optPics: TcsImage[];
+  };
   const open: Open[] = [];
   let shift = 0;
   let sheet = -1;
@@ -268,6 +276,8 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
         stemLines: [],
         optLines: [],
         optColor: [],
+        optMid: [],
+        optPics: [],
       };
       open.push(cur);
       for (const r of passage?.regions ?? []) region(cur, r.page, r.y0, r.y1);
@@ -310,12 +320,11 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
     if (opt && Number(opt[1]) === cur.optLines.length + 1) {
       cur.optLines.push(opt[2] ? [opt[2]] : []);
       cur.optColor.push(s.color);
+      cur.optMid.push((s.y0 + s.y1) / 2);
     } else if (s && cur.optLines.length) {
       cur.optLines[cur.optLines.length - 1].push(s.text);
     } else if (e.image) {
-      // A picture option sits level with its "n." label: the last option begun at or above it.
-      const idx = Math.max(0, cur.optLines.length - 1);
-      cur.optionImages[idx].push(e.image.name);
+      cur.optPics.push(e.image); // filed once every label is known (below)
     }
   }
 
@@ -323,6 +332,16 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
   for (const q of open) {
     const where = `shift ${q.shift} Q${q.number}`;
     if (q.optLines.length !== 4) throw new Error(`${where}: expected 4 options, found ${q.optLines.length}`);
+    // A picture option is centred on its "n." label, so a tall one starts above it: file each
+    // picture under the label nearest its middle, not the last label begun above it.
+    for (const im of q.optPics) {
+      const mid = (im.y0 + im.y1) / 2;
+      let best = 0;
+      q.optMid.forEach((m, i) => {
+        if (Math.abs(m - mid) < Math.abs(q.optMid[best] - mid)) best = i;
+      });
+      q.optionImages[best].push(im.name);
+    }
     const keyed = q.optColor.flatMap((c, i) => (c === GREEN ? [i] : []));
     if (keyed.length !== 1) throw new Error(`${where}: expected exactly one key (green option), found ${keyed.length}`);
     out.push({
