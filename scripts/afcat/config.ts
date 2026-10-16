@@ -129,6 +129,8 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Income, Expenditure and Savings",
       "Price and Consumption",
       "Marks, Groups and Other Applications",
+      "Population and Growth",
+      "Applications in Other Topics",
     ],
     files: [
       {
@@ -153,6 +155,19 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "04. Percentage\\Percentages_AFCAT.pdf",
         note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Percentage. Every key blind re-derived.",
       },
+      { key: "cp-basics", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Percentage Fundamentals", path: "02. Percentages\\01.AFCAT-BasicsPercentageFundamentals.xls", subtopic: "Basic Percentage Calculations", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-change", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Percentage Change and Variation", path: "02. Percentages\\02.Percentages-Change &Variation.xls", subtopic: "Successive Percentage Change", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-mixture", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Concentration and Mixtures", path: "02. Percentages\\03.Concentration&Mixture Problems.xls", subtopic: "Applications in Other Topics", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-discount", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Discount and Pricing", path: "02. Percentages\\04.Discount and Pricing.xls", subtopic: "Applications in Other Topics", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-distrib", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Percentage Distribution", path: "02. Percentages\\05.Percentage-Distribution.xls", subtopic: "Marks, Groups and Other Applications", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-pl", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Profit and Loss with Percentages", path: "02. Percentages\\06.Percentages-Profit&LosswithPercentages.xls", subtopic: "Applications in Other Topics", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-interest", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Interest with Percentages", path: "02. Percentages\\07.SimpleandCompoundInterestPercentages.xls", subtopic: "Applications in Other Topics", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-distrib-2", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Percentage Distribution (2)", path: "02. Percentages\\08.Percentage Distribution.xlsx", subtopic: "Marks, Groups and Other Applications", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-work", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Work and Time with Percentages", path: "02. Percentages\\09.Work and Time with Percentages.xls", subtopic: "Applications in Other Topics", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-speed", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Speed, Time and Distance with Percentages", path: "02. Percentages\\10.Speed,Time, DistancewithPercentages.xls", subtopic: "Applications in Other Topics", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-population", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Population and Growth", path: "02. Percentages\\11.Population&GrowthProblems.xls", subtopic: "Population and Growth", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-salary", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Salary and Income", path: "02. Percentages\\12Salary and Income Problems.xls", subtopic: "Income, Expenditure and Savings", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-marks", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Examination and Marks", path: "02. Percentages\\13-Examination and Marks.xls", subtopic: "Marks, Groups and Other Applications", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
     ],
   },
   "mixture-and-alligation": {
