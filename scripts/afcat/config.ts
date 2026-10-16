@@ -597,7 +597,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   clock: {
     id: "clock",
     chapterName: "Clock",
-    subtopics: ["Angle Between the Hands", "Faulty Clocks", "Gain and Loss of Time", "Angle Covered by the Hands", "Time Reasoning"],
+    subtopics: ["Angle Between the Hands", "Faulty Clocks", "Gain and Loss of Time", "Angle Covered by the Hands", "Time Reasoning", "Coinciding and Opposite Hands", "Mirror Images"],
     files: [
       {
         key: "errorless",
@@ -617,6 +617,11 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "10. Clock\\Arihant_Clock.pdf",
         note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Clock. Every key blind re-derived.",
       },
+      { key: "cp-angle", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Angle Between the Hands", path: "11. Clock\\01. Angle_Based_Problems.xlsx", subtopic: "Angle Between the Hands", note: "AFCAT practice — Cadetprep AFCAT sheet, Clock. Every key blind re-derived." },
+      { key: "cp-coincide", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Hands Coinciding", path: "11. Clock\\02. HAND COINCIDENCE AND FREQUENCY PROBLEMS.xlsx", subtopic: "Coinciding and Opposite Hands", note: "AFCAT practice — Cadetprep AFCAT sheet, Clock. Every key blind re-derived." },
+      { key: "cp-faulty", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Faulty Clocks", path: "11. Clock\\03. FAULTY_DEFECTIVE CLOCK PROBLEMS.xlsx", subtopic: "Faulty Clocks", note: "AFCAT practice — Cadetprep AFCAT sheet, Clock. Every key blind re-derived." },
+      { key: "cp-mirror", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Mirror Images", path: "11. Clock\\04. MIRROR IMAGE_REFLECTION PROBLEMS.xlsx", subtopic: "Mirror Images", note: "AFCAT practice — Cadetprep AFCAT sheet, Clock. Every key blind re-derived." },
+      { key: "cp-speed", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Speed of the Hands", path: "11. Clock\\05. HAND SPEED AND RELATIVE MOTION PROBLEMS.xlsx", subtopic: "Angle Covered by the Hands", note: "AFCAT practice — Cadetprep AFCAT sheet, Clock. Every key blind re-derived." },
     ],
   },
   "ratio-and-proportion": {
