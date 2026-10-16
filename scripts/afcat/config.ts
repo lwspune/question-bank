@@ -455,6 +455,23 @@ export const CHAPTERS: Record<string, Chapter> = {
       },
     ],
   },
+  "indices-and-surds": {
+    id: "indices-and-surds",
+    chapterName: "Indices and Surds",
+    subtopics: ["Laws of Exponents", "Radicals and Surds", "Applications of Indices"],
+    files: [
+      { key: "cp-laws", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Laws of Exponents", path: "13. Exponents, Radicals, Surds\\01. Laws of Exponents.xlsx", subtopic: "Laws of Exponents", note: "AFCAT practice — Cadetprep AFCAT sheet, Indices and Surds. Every key blind re-derived." },
+      { key: "cp-surds", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Radicals and Surds", path: "13. Exponents, Radicals, Surds\\02. Radicals and Surds.xlsx", subtopic: "Radicals and Surds", note: "AFCAT practice — Cadetprep AFCAT sheet, Indices and Surds. Every key blind re-derived." },
+      { key: "cp-apps", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Applications of Indices", path: "13. Exponents, Radicals, Surds\\03. Applications.xlsx", subtopic: "Applications of Indices", note: "AFCAT practice — Cadetprep AFCAT sheet, Indices and Surds. Every key blind re-derived." },
+    ],
+  },
+  "number-system": {
+    id: "number-system",
+    chapterName: "Number System",
+    subtopics: ["Types of Numbers", "Factors and Multiples", "Divisibility Rules", "Prime Factorization", "Remainders and Quotients"],
+    files: [
+    ],
+  },
   "sequence-and-series": {
     id: "sequence-and-series",
     chapterName: "Sequence and Series",
