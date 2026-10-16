@@ -10,7 +10,7 @@
  *
  * Pure: takes the page HTML, returns each claim of zero it found.
  */
-const ZERO_CLAIMS = ["past-year questions", "textbook and practice", "public questions"];
+const ZERO_CLAIMS = ["past-year questions", "previous year questions", "textbook and practice", "public questions"];
 
 export function zeroCountClaims(html: string): string[] {
   const text = html

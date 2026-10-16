@@ -25,8 +25,8 @@ export type LlmsExam = {
 };
 
 const HUBS: readonly [path: string, title: string, blurb: string][] = [
-  ["/questions", "Question bank by chapter", "every chapter page: past-year questions with answers, worked solutions, years covered, difficulty split and most-asked subtopics"],
-  ["/notes", "Chapter notes", "free chapter-wise notes, each chapter also a free PDF download: concepts, worked past-year examples, self-checks and practice"],
+  ["/questions", "Question bank by chapter", "every chapter page: previous year questions with answers, worked solutions, years covered, difficulty split and most-asked subtopics"],
+  ["/notes", "Chapter notes", "free chapter-wise notes, each chapter also a free PDF download: concepts, worked previous year examples, self-checks and practice"],
   ["/formula", "Formula sheets by chapter", "every chapter's formulas with symbol legends, reference tables and common traps, grouped by subtopic"],
   ["/guide", "Strategy guides", "per-subject guides built by counting the papers: chapter weightage, playbooks, traps"],
   ["/guide/reports", "Trend reports", "year-by-year analyses of each exam's papers, dated, with the sitting each runs through"],
@@ -48,7 +48,7 @@ export function buildLlmsTxt(input: {
   lines.push("# PYQ Vault");
   lines.push("");
   lines.push(
-    `> PYQ Vault (${SITE_URL}) is a free, public bank of past-year questions for Indian entrance and board exams — ${fmt(input.totalPublicQuestions)} questions across ${exams.length} exams, each filed by exam, subject, chapter, subtopic, difficulty and the year it was asked, most with a worked solution. Browsing needs no account. Around the bank: timed mocks rebuilt from real papers, chapter notes, strategy guides with trend reports, and a textbook-solutions reader for school boards.`
+    `> PYQ Vault (${SITE_URL}) is a free, public bank of previous year questions (PYQs) for Indian entrance and board exams — ${fmt(input.totalPublicQuestions)} questions across ${exams.length} exams, each filed by exam, subject, chapter, subtopic, difficulty and the year it was asked, most with a worked solution. Browsing needs no account. Around the bank: timed mocks rebuilt from real papers, chapter notes, strategy guides with trend reports, and a textbook-solutions reader for school boards.`
   );
   lines.push("");
   lines.push("Every count on the site is a public question in the bank. Chapter pages state how many questions they hold, which papers and years they span, and their difficulty split.");

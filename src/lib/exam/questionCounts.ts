@@ -24,10 +24,10 @@ export function defaultViewCount(c: KindCounts, practiceOnly: boolean): number {
   return practiceOnly ? c.practice : c.pyq;
 }
 
-/** "5,130 past-year · 8,894 practice questions", or null when there is none. */
+/** "5,130 previous year · 8,894 practice questions", or null when there is none. */
 export function countSummary(c: KindCounts): string | null {
   const parts: string[] = [];
-  if (c.pyq > 0) parts.push(`${fmt(c.pyq)} past-year`);
+  if (c.pyq > 0) parts.push(`${fmt(c.pyq)} previous year`);
   if (c.practice > 0) parts.push(`${fmt(c.practice)} practice`);
   return parts.length > 0 ? `${parts.join(" · ")} questions` : null;
 }
@@ -39,13 +39,13 @@ export function countSummary(c: KindCounts): string | null {
  * textbook landings); then both are named, never the practice count alone.
  */
 export function examKindPhrase(c: KindCounts, practiceOnly: boolean): string {
-  if (!practiceOnly) return `${fmt(c.pyq)} past-year questions`;
-  if (c.pyq > 0) return `${fmt(c.pyq)} past-year and ${fmt(c.practice)} practice questions`;
+  if (!practiceOnly) return `${fmt(c.pyq)} previous year questions`;
+  if (c.pyq > 0) return `${fmt(c.pyq)} previous year and ${fmt(c.practice)} practice questions`;
   return `${fmt(c.practice)} practice questions`;
 }
 
 /** What a "filter the bank" button may claim: only the kind the bank opens on. */
 export function defaultViewLabel(c: KindCounts, practiceOnly: boolean): string {
   const n = defaultViewCount(c, practiceOnly);
-  return `${fmt(n)} ${practiceOnly ? "practice" : "past-year"} questions`;
+  return `${fmt(n)} ${practiceOnly ? "practice" : "previous year"} questions`;
 }

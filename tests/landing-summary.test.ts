@@ -40,7 +40,7 @@ const base = {
 describe("landingLead", () => {
   it("states count, papers and the year range for a pyq chapter", () => {
     expect(landingLead({ ...base, profile })).toBe(
-      "176 NDA Mathematics past-year questions from 19 papers, 2017 to 2026, with answers and worked solutions."
+      "176 NDA Mathematics previous year questions (PYQs) from 19 papers, 2017 to 2026, with answers and worked solutions."
     );
   });
 
@@ -48,26 +48,26 @@ describe("landingLead", () => {
     expect(
       landingLead({ ...base, profile: { ...profile, minYear: 2026, maxYear: 2026, sittings: 2 } })
     ).toBe(
-      "176 NDA Mathematics past-year questions from 2 papers in 2026, with answers and worked solutions."
+      "176 NDA Mathematics previous year questions (PYQs) from 2 papers in 2026, with answers and worked solutions."
     );
   });
 
   it("drops the paper count when there is only one, or none", () => {
     expect(landingLead({ ...base, profile: { ...profile, sittings: 1 } })).toBe(
-      "176 NDA Mathematics past-year questions, 2017 to 2026, with answers and worked solutions."
+      "176 NDA Mathematics previous year questions (PYQs), 2017 to 2026, with answers and worked solutions."
     );
     expect(landingLead({ ...base, profile: { ...profile, sittings: 0 } })).toBe(
-      "176 NDA Mathematics past-year questions, 2017 to 2026, with answers and worked solutions."
+      "176 NDA Mathematics previous year questions (PYQs), 2017 to 2026, with answers and worked solutions."
     );
   });
 
   it("falls back to the plain sentence when the profile is missing or has no years", () => {
     expect(landingLead({ ...base, profile: null })).toBe(
-      "176 NDA Mathematics past-year questions with answers and worked solutions."
+      "176 NDA Mathematics previous year questions (PYQs) with answers and worked solutions."
     );
     expect(
       landingLead({ ...base, profile: { ...profile, minYear: null, maxYear: null } })
-    ).toBe("176 NDA Mathematics past-year questions with answers and worked solutions.");
+    ).toBe("176 NDA Mathematics previous year questions (PYQs) with answers and worked solutions.");
   });
 
   it("never claims papers or years for a practice-only chapter", () => {

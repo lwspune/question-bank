@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "PYQ Vault — Past-year question banks, mock tests & concept notes";
+  "PYQ Vault — Previous year question banks, mock tests & concept notes";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -75,7 +75,7 @@ export default function OpenGraphImage() {
               lineHeight: 1.4,
             }}
           >
-            Past-year question banks, timed mock tests and concept notes —
+            Previous year question banks, timed mock tests and concept notes —
             NDA, JEE Mains, NEET, MHT-CET, CDS & Boards.
           </div>
         </div>

@@ -74,6 +74,7 @@ describe("EXPERIMENTS", () => {
       "performance-starter",
       "practice-tests",
       "premium-limits",
+      "pyq-wording",
       "resource-chips",
       "second-page",
       "specific-offer",

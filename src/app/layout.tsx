@@ -46,17 +46,16 @@ const SITE_NAME = "PYQ Vault";
 // pitfall in CLAUDE.md).
 const siteJsonLd = JSON.stringify(buildSiteJsonLd());
 const SITE_DESCRIPTION =
-  "Free past-year question banks for NDA, JEE Mains, NEET, MHT-CET, CDS and Maharashtra Board. Filter PYQs by chapter, difficulty and year, take timed mock tests, download question papers with answer keys, and learn from strategy guides and concept notes. Browse free, no sign-up.";
+  "Free previous year question (PYQ) banks for NDA, JEE Mains, NEET, MHT-CET, CDS and Maharashtra Board. Filter PYQs by chapter, difficulty and year, take timed mock tests, download question papers with answer keys, and learn from strategy guides and concept notes. Browse free, no sign-up.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — Past-year questions for Indian entrance & board exams`,
+    default: `${SITE_NAME} — Previous year questions (PYQs) for Indian entrance & board exams`,
     template: `%s · ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
   keywords: [
-    "past-year questions",
     "PYQ",
     "MHT-CET PYQ",
     "NDA",
@@ -77,12 +76,12 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} — Past-year questions for Indian entrance & board exams`,
+    title: `${SITE_NAME} — Previous year questions (PYQs) for Indian entrance & board exams`,
     description: SITE_DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} — Past-year questions for Indian entrance & board exams`,
+    title: `${SITE_NAME} — Previous year questions (PYQs) for Indian entrance & board exams`,
     description: SITE_DESCRIPTION,
   },
   robots: {

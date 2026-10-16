@@ -123,7 +123,7 @@ describe("examHomeDescription", () => {
       hasShippedNotes: true,
     });
     expect(examHomeDescription(model)).toBe(
-      "JEE Mains on PYQ Vault: 10,667 past-year questions from 2021 to 2026 across 2 subjects and 3 chapters, with answers and worked solutions, timed mocks of real papers, and chapter notes. Free to browse."
+      "JEE Mains on PYQ Vault: 10,667 previous year questions from 2021 to 2026 across 2 subjects and 3 chapters, with answers and worked solutions, timed mocks of real papers, and chapter notes. Free to browse."
     );
   });
 
@@ -138,7 +138,7 @@ describe("examHomeDescription", () => {
     );
   });
 
-  it("names the past-year questions too when a practice-only exam has them", () => {
+  it("names the previous year questions too when a practice-only exam has them", () => {
     const m = buildExamHome(cbse10, [], {
       examId: null,
       totalPublicQuestions: 1416,
@@ -146,6 +146,6 @@ describe("examHomeDescription", () => {
       hasShippedNotes: false,
     });
     expect(m.pastYearQuestions).toBe(3415);
-    expect(examHomeDescription(m)).toMatch(/^CBSE Class 10 on PYQ Vault: 3,415 past-year and 1,416 practice questions, /);
+    expect(examHomeDescription(m)).toMatch(/^CBSE Class 10 on PYQ Vault: 3,415 previous year and 1,416 practice questions, /);
   });
 });

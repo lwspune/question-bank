@@ -141,6 +141,9 @@ async function main() {
       case "practice-tests":
         line = handRead(e.liveSince, ["practice-tests-started", "practice-tests-answered"]);
         break;
+      case "pyq-wording":
+        line = handRead(e.liveSince, ["pyq-wording-impressions"]);
+        break;
       default: {
         // A new readout must be added here; this fails the typecheck until it is.
         const unhandled: never = e.readout;

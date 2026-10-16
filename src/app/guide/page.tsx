@@ -24,7 +24,7 @@ const PAGE_INTRO =
 const PAGE_LEDE = "What each chapter is worth and how to work it, counted from the papers themselves.";
 
 export const metadata: Metadata = {
-  title: { absolute: fitTitle(`${PAGE_TITLE} — NDA, MHT-CET and CDS, built from the past-year bank`) },
+  title: { absolute: fitTitle(`${PAGE_TITLE} — NDA, MHT-CET and CDS, built from the previous year bank`) },
   description: PAGE_INTRO,
   alternates: { canonical: "/guide" },
 };
@@ -148,13 +148,13 @@ export default async function GuideIndex() {
 
                 <p className="mt-4 flex-1 text-sm text-muted-foreground">
                   {copy?.blurb ??
-                    `Strategy guides for ${exam.displayName}, built from the live past-year question bank.`}
+                    `Strategy guides for ${exam.displayName}, built from the live previous year question bank.`}
                 </p>
 
                 {copy?.meta ? (
                   <p className="mt-4 text-xs font-medium text-muted-foreground">
                     {exam.slug === "nda" && ndaPyqCount > 0
-                      ? `${ndaPyqCount.toLocaleString("en-IN")} past-year questions · ${copy.meta}`
+                      ? `${ndaPyqCount.toLocaleString("en-IN")} previous year questions · ${copy.meta}`
                       : copy.meta}
                   </p>
                 ) : null}
