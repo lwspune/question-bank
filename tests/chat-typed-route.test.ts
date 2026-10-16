@@ -199,6 +199,17 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     expect(data).toEqual([{ cache_read_tokens: 2800, cache_write_tokens: 0 }]);
   });
 
+  it("gives V the my_progress tool, which reads nothing for a signed-out visitor", async () => {
+    await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+    askV.mockReset();
+    askV.mockResolvedValue({ ok: true, reply: "Sign in first.", tokensIn: 1, tokensOut: 1, cacheReadTokens: 0, cacheWriteTokens: 0 });
+    const { POST } = await import("@/app/api/chat/typed/route");
+    await POST(post({ message: `route-${RUN}-prog how am I doing` }));
+    const tools = askV.mock.calls[0][0].tools as { name: string; run: (i: unknown) => Promise<string> }[];
+    expect(tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress"]);
+    expect(await tools[1].run({})).toMatch(/signed out/i);
+  });
+
   it("holds one person to the hourly limit set on the dashboard", async () => {
     await setSettings({ ai_enabled: false, per_person_per_hour: 2, ai_answers_per_day: 300 });
     const { POST } = await import("@/app/api/chat/typed/route");

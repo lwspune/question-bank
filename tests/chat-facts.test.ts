@@ -140,6 +140,12 @@ describe("NAV_FACTS", () => {
     expect(all).toContain("Build a practice test");
   });
 
+  it("names the student's own progress pages, so V can link them (2026-10-16)", () => {
+    const all = NAV_FACTS.join(" ");
+    expect(all).toContain("/performance");
+    expect(all).toContain("/me/map");
+  });
+
   it("names only pages that exist, since V links them (an /exams index never did)", () => {
     const paths = pathsInReply(NAV_FACTS.join(" "));
     expect(paths.length).toBeGreaterThan(5);
@@ -220,6 +226,14 @@ describe("buildSystemPrompt", () => {
 
   it("has V list a subject's chapters by name when it knows the subject but not the chapter", () => {
     expect(buildSystemPrompt(base)).toMatch(/list the chapter names/i);
+  });
+
+  it("has V read a student's own results with my_progress, growth-first, never against other students", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).toContain("my_progress");
+    expect(p).toMatch(/what went well first/i);
+    expect(p).toMatch(/never compare/i);
+    expect(p).not.toMatch(/cannot see a student's own account, scores/i);
   });
 
   it("has no em dashes of its own", () => {
