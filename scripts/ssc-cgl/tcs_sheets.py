@@ -108,6 +108,10 @@ def align_scan_rows(img, marks, top):
         tail = img.crop((xr - d, a, xr, b))  # the scan's own off-white, not pure white
         img.paste(row, (x0, a))
         img.paste(tail, (xr - d, a))
+    # An indent left behind would be the key: every row must now start in the same place.
+    after = {first_ink(m) for m in marks} - {None}
+    if after and max(after) - min(after) > 1:
+        sys.exit(f"option rows still start at different x after realigning: {sorted(after)}")
     return img
 
 
