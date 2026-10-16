@@ -1,0 +1,1625 @@
+SSC CGL 2025 Tier I, 23 September 2025, Shift 3 (04:00 PM). Read from SSC's challenge-module saved paper.
+Drafted by agents, one PART each, from the reading sheets only (no key; DRAFTING_BRIEF.md);
+every block reviewed in the main session, then compared with the key (build.ts).
+Format: scripts/ssc-cgl/lib.ts.
+
+=== 1
+chapter: Alphabet and Number Tests
+subtopic: Letter Position and Alphabet Test
+difficulty: EASY
+answer: C
+stem:
+Which letter lies exactly between H and P in the English alphabet?
+A: K
+B: N
+C: L
+D: M
+solution:
+H is the 8th letter and P the 16th. The middle position is \(\frac{8 + 16}{2} = 12\), which is L (three letters I, J, K on one side and M, N, O on the other).
+
+=== 2
+chapter: Alphabet and Number Tests
+subtopic: Address and Data Matching
+difficulty: EASY
+answer: C
+stem:
+Choose the address that is the same as the one given below.
+
+Villa No. 5, Green Meadows,Bannerghatta Road, Bengaluru,Karnataka - 560076
+A: Villa No. 5, Green Meadows, Bannerghatta Road, Bengaluru, Andhra Pradesh - 560076
+B: Villa No. 5, Green Meadows, Bannerghatta Road, Bengaluru, Tamil Nadu - 560076
+C: Villa No. 5, Green Meadows, Bannerghatta Road, Bengaluru, Karnataka - 560076
+D: Villa No. 5, Green Meadows, Bannerghatta Road, Bengaluru, Kerala - 560076
+solution:
+All four options match the given address except for the state. The given state is Karnataka, so option C is the same address.
+
+=== 3
+chapter: Order, Ranking and Arrangement
+subtopic: Scheduling and Puzzles
+difficulty: EASY
+answer: B
+stem:
+The seminar in Nashik was held 2 days after the one in Surat. Indore's seminar was 3 days before the one in Surat. If the seminar in Indore was on \(8^{th}\) April, when did the seminar in Nashik happen?
+A: \(12^{th}\) April
+B: \(13^{th}\) April
+C: \(14^{th}\) April
+D: \(15^{th}\) April
+solution:
+Indore was 3 days before Surat, so Surat was on 8 + 3 = 11 April.
+
+Nashik was 2 days after Surat: 11 + 2 = 13 April.
+
+Check: Nashik is 5 days after Indore, 8 + 5 = 13.
+
+=== 4
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: D
+stem:
+What should come in place of the question mark '?' in the following number series?
+
+9, 14, 24, 39, 59, ?, 114
+A: 69
+B: 70
+C: 89
+D: 84
+solution:
+The differences are 5, 10, 15, 20, so the next ones are 25 and 30.
+
+59 + 25 = 84, and 84 + 30 = 114 confirms it.
+
+=== 5
+chapter: Inequalities
+subtopic: Direct Inequalities
+difficulty: EASY
+answer: C
+stem:
+Read the given statement and conclusions carefully. Decide which of the given conclusions is/are definitely TRUE from the statement.
+
+Statement: \(P > Q < S > T = R \ge U > V\)
+Conclusion I: \(V < S\)
+Conclusion II: \(P > T\)
+A: Only Conclusion II is True
+B: Both Conclusion I and Conclusion II are True
+C: Only Conclusion I is True
+D: Neither Conclusion I nor Conclusion II is True
+solution:
+\(S > T = R \ge U > V\) gives \(S > V\), so I is true.
+
+P and T are linked only through \(P > Q < S > T\); the opposite signs around Q and S give no relation, so II is not definite.
+
+=== 6
+chapter: Classification
+subtopic: Word Classification
+difficulty: EASY
+answer: D
+stem:
+Identify the different island.
+A: Sicily
+B: Corsica
+C: Sardinia
+D: Iceland
+solution:
+Sicily, Corsica and Sardinia are islands in the Mediterranean Sea. Iceland lies in the North Atlantic Ocean (and is an independent country), so it is the different one.
+
+=== 7
+chapter: Blood Relations
+subtopic: Direct Relations
+difficulty: EASY
+answer: A
+stem:
+A is the brother of B. B is the son of C. How is A related to C?
+A: Son
+B: Nephew
+C: Uncle
+D: Cousin
+solution:
+B is a child of C, and A is B's brother, so A is also a child of C. A is male (a brother), so A is the son of C.
+
+=== 8
+chapter: Analogy
+subtopic: Number Analogy
+difficulty: EASY
+answer: D
+stem:
+Find the missing number: **6 : 42 :: 9 : ?**
+A: 92
+B: 88
+C: 86
+D: 90
+solution:
+\(6 \times 7 = 42\), that is \(n \times (n + 1)\).
+
+So \(9 \times 10 = 90\).
+
+=== 9
+chapter: Syllogism
+subtopic: Two-Statement Syllogism
+difficulty: EASY
+answer: A
+stem:
+Read the following statement carefully and identify the conclusion that follows.
+
+Statement:
+Some cats are dogs.All dogs are animals.
+
+**Conclusions:**
+I. Some cats are animals.
+II. All cats are animals.
+A: Only I follows
+B: Only II follows
+C: Both I and II follow
+D: Neither I nor II follows
+solution:
+The cats that are dogs are also animals, so some cats are animals: I follows.
+
+Cats that are not dogs may or may not be animals, so II is not definite.
+
+=== 10
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: A
+stem:
+What comes next?
+2, 4, 3, 6, 4, 8, ?
+A: 5
+B: 6
+C: 9
+D: 10
+solution:
+Two series alternate. Odd places: 2, 3, 4, ... (add 1). Even places: 4, 6, 8 (add 2).
+
+The 7th term is in the odd-place series: 4 + 1 = 5.
+
+=== 11
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: D
+stem:
+If "EUROPE" is coded as "AQNKLA", how is "RUSSIA" coded?
+A: NOWOEU
+B: NUUMHX
+C: OVTTEV
+D: NQOOEW
+solution:
+Each letter moves 4 places back: E to A, U to Q, R to N, O to K, P to L, E to A.
+
+RUSSIA: R to N, U to Q, S to O, S to O, I to E, A to W (wrapping round from A back to W). The code is NQOOEW.
+
+=== 12
+chapter: Classification
+subtopic: Letter Classification
+difficulty: EASY
+answer: A
+stem:
+Which letter trio does NOT follow the ascending order?
+
+ABC, BCD, CDE, DFE, EFG
+A: DFE
+B: CDE
+C: BCD
+D: ABC
+solution:
+ABC, BCD, CDE and EFG are three consecutive letters in order. DFE is out of order (and should be DEF), so it is the one that does not follow.
+
+=== 13
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: C
+stem:
+What comes next?
+CG, EI, GK, ?
+A: KO
+B: MP
+C: IM
+D: NQ
+solution:
+First letters: C, E, G, so next I (add 2). Second letters: G, I, K, so next M (add 2).
+
+The next pair is IM.
+
+=== 14
+chapter: Classification
+subtopic: Word Classification
+difficulty: EASY
+answer: D
+stem:
+Find the ODD one out.
+
+K2, Kangchenjunga, Nanda Devi, Doddabetta, Nanga Parbat
+A: K2
+B: Nanda Devi
+C: Kangchenjunga
+D: Doddabetta
+solution:
+K2, Kangchenjunga, Nanda Devi and Nanga Parbat are Himalayan (and Karakoram) peaks above 7,000 m. Doddabetta is the highest peak of the Nilgiris in the Western Ghats (Tamil Nadu), so it is the odd one.
+
+=== 15
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: A
+stem:
+What should come at the place of question mark? **: 101, 94, 87, 80, 73, ?**
+A: 66
+B: 65
+C: 64
+D: 67
+solution:
+Each term is 7 less than the one before: 101, 94, 87, 80, 73.
+
+73 - 7 = 66.
+
+=== 16
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: C
+stem:
+The price of an item first increases by 20% and then decreases by 20% from the new price. What is the net percentage change in the original price of the item?
+A: 0.04%
+B: -0.04%
+C: -4%
+D: 0%
+solution:
+Take the price as 100. After a 20% rise it is 120; a 20% fall from 120 is 24, leaving 96.
+
+Net change = 96 - 100 = -4, that is -4%.
+
+Check: \(1.2 \times 0.8 = 0.96\), a 4% fall.
+
+=== 17
+chapter: Mathematical Operations
+subtopic: Hidden Operation Rules
+difficulty: MODERATE
+answer: C
+stem:
+If 5 $ 2 = 27 and 7 $ 3 = 64, what is 6 $ 4?
+A: 10
+B: 12
+C: 8
+D: 14
+solution:
+\(5 - 2 = 3\) and \(3^3 = 27\); \(7 - 3 = 4\) and \(4^3 = 64\). So the symbol gives the cube of the difference of the two numbers.
+
+For 6 and 4: \((6 - 4)^3 = 2^3 = 8\).
+
+=== 18
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: MODERATE
+answer: C
+stem:
+In a certain code, MOBILE is written as NQCKNG. How will TABLET be written?
+A: UDCMFU
+B: UECMDS
+C: UCCNGV
+D: UFCMGV
+solution:
+The letter shifts are M to N (+1), O to Q (+2), B to C (+1), I to K (+2), L to N (+2), E to G (+2).
+
+Applying +1, +2, +1, +2, +2, +2 to TABLET: T to U, A to C, B to C, L to N, E to G, T to V, giving UCCNGV.
+
+=== 19
+chapter: Coding-Decoding
+subtopic: Number and Symbol Coding
+difficulty: EASY
+answer: A
+stem:
+In a certain code If 'FISH' is coded as '6-9-19-8', how will 'HSIF' be coded?
+A: 8-19-9-6
+B: 15-22-18-3
+C: 8-8-19-10
+D: 4-12-5-7
+solution:
+Each letter is written as its position in the alphabet: F = 6, I = 9, S = 19, H = 8.
+
+HSIF is H = 8, S = 19, I = 9, F = 6, so 8-19-9-6.
+
+=== 20
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: EASY
+answer: A
+stem:
+If @ = -, % = \(\times\), # = +; then 10 % 2 @ 4 # 3 = ?
+A: 19
+B: 12
+C: 9
+D: 23
+solution:
+Substituting: \(10 \times 2 - 4 + 3\).
+
+Multiplication first: 20 - 4 + 3 = 19.
+
+=== 21
+chapter: Syllogism
+subtopic: Two-Statement Syllogism
+difficulty: MODERATE
+answer: A
+flawed: yes
+note: SSC's provisional key D says neither follows, but with only 'Some stars are planets' and 'Some planets are moons' given, nothing rules out all planets lying inside stars, so the possibility in II follows. Our answer stays A; held PRIVATE for review
+stem:
+Statements: Some stars are planets. Some planets are moons. Conclusions: I. Some moons are stars. II. All planets being stars is a possibility.
+A: Only Conclusion II follows
+B: Only Conclusion I follows
+C: Both I and II follow
+D: Neither I nor II follows
+solution:
+Stars and moons are linked only through planets by two "some" statements, so no definite relation between moons and stars follows: I does not follow.
+
+Nothing stops the whole of planets lying inside stars, since only "some stars are planets" is given, so the possibility in II holds.
+
+=== 22
+chapter: Alphabet and Number Tests
+subtopic: Digit Operations
+difficulty: EASY
+answer: B
+stem:
+What is the product of all digits from 0 to 9?
+A: 326.592
+B: 0
+C: 4.536
+D: 5040
+solution:
+The digits include 0, and any product with a factor 0 is 0.
+
+=== 23
+chapter: Alphabet and Number Tests
+subtopic: Digit Operations
+difficulty: EASY
+answer: A
+stem:
+What is the sum of all digits in the telephone dial (0 to 9)?
+A: 45
+B: 55
+C: 50
+D: 40
+solution:
+0 + 1 + 2 + ... + 9 = \(\frac{9 \times 10}{2} = 45\).
+
+=== 24
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: A
+stem:
+If THRIVE is coded as UISJWF, how is UISJWF coded?
+A: VJTKXG
+B: VJTLXG
+C: VKTKXG
+D: VJTKXH
+solution:
+Each letter moves one place forward: T to U, H to I, R to S, I to J, V to W, E to F.
+
+UISJWF moves the same way: U to V, I to J, S to T, J to K, W to X, F to G, giving VJTKXG.
+
+=== 25
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: MODERATE
+answer: B
+stem:
+If MONKEY is written as XDJMNL, then how is TIGER written in that code?
+A: ZMHDR
+B: QDFHS
+C: ZMHFS
+D: ZMHDS
+solution:
+Reverse MONKEY to get YEKNOM, then move each letter one place back: Y to X, E to D, K to J, N to M, O to N, M to L, giving XDJMNL.
+
+Reverse TIGER to get REGIT, then one place back: R to Q, E to D, G to F, I to H, T to S, giving QDFHS.
+
+=== 26
+subject: History
+chapter: Medieval India
+subtopic: Temple and Monument Architecture
+difficulty: MODERATE
+answer: C
+stem:
+What is a key architectural feature of the Sun Temple at Modhera?
+A: Gopuram
+B: Garuda pillar
+C: Stepped tank
+D: Vimana
+solution:
+The Solanki-era Sun Temple at Modhera (Gujarat, 1026-27 CE) is best known for its stepped tank, the Surya Kund, lined with flights of steps and small shrines, in front of the sabha mandapa. The gopuram and the vimana are hallmarks of South Indian temples, and the Garuda pillar belongs to Vaishnava temples.
+
+=== 27
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Days, Festivals and Observances
+difficulty: MODERATE
+answer: C
+stem:
+The traditional folk festival 'Phuldei', marked by floral offerings and cultural rituals, is primarily observed in which Indian state?
+A: Himachal Pradesh
+B: Jammu and Kashmir
+C: Uttarakhand
+D: Assam
+solution:
+Phool Dei (Phuldei) is the spring festival of Uttarakhand, held on the first day of Chaitra, when children put flowers and rice on the thresholds of homes.
+
+=== 28
+subject: History
+chapter: Ancient India
+subtopic: Art, Painting and Sculpture
+difficulty: HARD
+answer: C
+stem:
+Which of the following sculptures does **not** originate from the Mathura region’s Kushana-period artistic production?
+A: Katra Keshav Dev fragment
+B: Govind Nagar Yaksha
+C: Bala Buddha of Sultanganj
+D: Standing Buddha from Govindnagar
+solution:
+The Sultanganj Buddha is a large copper image found at Sultanganj in Bihar and dates to the Gupta-Pala period, so it is neither from Mathura nor of the Kushana period. Katra Keshav Dev and Govindnagar are find-spots in Mathura city that yielded Mathura-school sculpture.
+
+=== 29
+subject: History
+chapter: Ancient India
+subtopic: Prehistory, Stone Age and Rock Art
+difficulty: EASY
+answer: B
+stem:
+Which type of weapons were commonly used by Mesolithic people for hunting?
+A: Swords
+B: Barbed spears
+C: Cannons
+D: Catapults
+solution:
+Mesolithic hunters hafted microliths onto wooden or bone shafts to make barbed spears, arrows and harpoons. Swords, cannons and catapults belong to much later metal-using societies.
+
+=== 30
+subject: History
+chapter: Ancient India
+subtopic: Post-Mauryan, Gupta and Sangam Period
+difficulty: HARD
+answer: C
+stem:
+In the context of Gupta dynasty's urban administration, which of the following statements about the **Adhisthanadhikarana** is correct?
+A: It was a military council composed entirely of royal generals.
+B: It was a court of law dealing exclusively with religious matters.
+C: It was a Board of Advisors representing guilds, artisans, and scribes.
+D: It was a temple committee managing offerings and rituals.
+solution:
+The Damodarpur copper plates show the adhishthanadhikarana (town office) of Kotivarsha being run with a board made up of the nagarashreshthi (chief of the guilds), the sarthavaha (chief merchant), the prathama kulika (chief artisan) and the prathama kayastha (chief scribe). It was a civic advisory board, not a military, judicial or temple body.
+
+=== 31
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: A
+stem:
+Statements about Indian Athletics:
+1. Milkha Singh was the first Indian athlete to win an individual Commonwealth Games gold medal.
+2. At Moscow 1980 Olympics PT Usha miss a bronze in 400m hurdles by one hundredth of a second at age 20.
+3. The National Institute of Sports is located in Pune.
+Which of these statements are **correct?**
+A: Only 1 is Correct
+B: Only 2 and 3 are Correct
+C: Only 2 is Correct
+D: Only 3 is Correct
+solution:
+1 is correct: Milkha Singh won the 440 yards gold at the 1958 Cardiff Commonwealth Games, India's first individual Commonwealth Games gold.
+
+2 is wrong: P. T. Usha missed the bronze in the 400 m hurdles by 1/100 of a second at the 1984 Los Angeles Olympics, not Moscow 1980.
+
+3 is wrong: the Netaji Subhas National Institute of Sports is in Patiala.
+
+=== 32
+subject: History
+chapter: Medieval India
+subtopic: Medieval Travellers, Trade and Crops
+difficulty: MODERATE
+answer: B
+stem:
+Which fourteenth-century traveller described how Indian chieftains fortified themselves using bamboo groves and rugged terrains for defence?
+A: Al-Biruni
+B: Ibn Battuta
+C: Marco Polo
+D: Megasthenes
+solution:
+Ibn Battuta, who was in India under Muhammad bin Tughlaq in the 14th century, wrote in the Rihla that rebel chiefs held out in mountains and in dense bamboo forests that served them as ramparts. Al-Biruni wrote in the 11th century, Marco Polo visited only the south coast in the 13th century, and Megasthenes is Mauryan.
+
+=== 33
+subject: History
+chapter: Modern India
+subtopic: British Administration, Acts and Legislation
+difficulty: EASY
+answer: A
+stem:
+**Fill in the blank:**
+Pitt’s India Act 1784 created a six-member body called the ____ to supervise Company politics.
+A: Board of Control
+B: Council of India
+C: Privy Council
+D: Bureau of Revenue
+solution:
+Pitt's India Act, 1784 set up a Board of Control of six commissioners to oversee the Company's civil, military and revenue affairs. The Council of India came with the Government of India Act, 1858.
+
+=== 34
+subject: Current Affairs
+chapter: Sports
+subtopic: Tennis
+difficulty: MODERATE
+answer: B
+stem:
+In a Grand Slam men's singles match, when is a fifth set tiebreak played under current rules?
+A: Only after 12–12 games in the fifth set
+B: At 6–6 in the fifth set
+C: No tiebreak is allowed in the fifth set
+D: After 10–10 in the fifth set
+solution:
+Since 2022 all four Grand Slams play a 10-point tiebreak when the final (fifth) set reaches 6-6. The 12-12 rule was Wimbledon's earlier format.
+
+=== 35
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: HARD
+answer: B
+stem:
+**Match the Water Polo terms with their correct definitions:**
+
+| Terms | Definitions |
+|---|---|
+| A) Center forward | 1) Defensive player countering the opposition’s main attacker |
+| B) Driver | 2) Player swimming quickly into goal-scoring position without the ball |
+| C) Center back | 3) Main attacking player positioned near opponent’s goal between 2m and 4m lines |
+| D) Dead-time | 4) Time between foul whistle and play restart |
+A: A-1, B-3, C-2, D-4
+B: A-3, B-2, C-1, D-4
+C: A-2, B-4, C-3, D-1
+D: A-4, B-1, C-2, D-3
+solution:
+The center forward (hole set) is the main attacker posted in front of the goal between the 2 m and 4 m lines (3). A driver swims hard into scoring position without the ball (2). The center back (hole guard) defends against the opposing center forward (1). Dead time is the time between a whistle and the restart of play (4).
+
+=== 36
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Books, Literature and Authors
+difficulty: MODERATE
+answer: C
+stem:
+Who is the author of the book The Elephant Paradigm'?
+A: Nandan Nilekani
+B: Raghuram Rajan
+C: Gurcharan Das
+D: Shashi Tharoor
+solution:
+"The Elephant Paradigm: India Wrestles with Change" (2002) is a collection of essays by Gurcharan Das, author of "India Unbound". Nilekani wrote "Imagining India", Rajan "I Do What I Do", Tharoor "The Elephant, the Tiger and the Cellphone".
+
+=== 37
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Books, Literature and Authors
+difficulty: MODERATE
+answer: C
+stem:
+What is the central theme of the book 'The Tatas' by Girīśa Kubera and Vikrant Pande?
+A: The Tata family's growth in early modern India
+B: The influence of Tata family on India’s industrial policies
+C: The Tata family’s role in building Indian industry and society
+D: A fictional narrative about Tata family's business empire’s moral conflicts
+solution:
+Girish Kuber's book (translated from Marathi by Vikrant Pande) is "The Tatas: How a Family Built a Business and a Nation". It traces how the family built Indian industry and contributed to the nation and society. It is non-fiction, so D is wrong.
+
+=== 38
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: HARD
+answer: B
+stem:
+Where was the Katakkar Trophy's All India Inter-Club Winter Water Polo League (2024–25) held?
+A: Shivaji Park Swimming Complex, Mumbai
+B: Tilak Tank, Deccan Gymkhana, Pune
+C: Balewadi Sports Complex, Pune
+D: Shiv Nadar Aquatics Centre, Hyderabad
+solution:
+The Katakkar Trophy (Katakkar Karandak) All India Inter-Club Water Polo tournament is organised by Deccan Gymkhana and played at its Tilak Tank in Pune; the December 2024 edition was held there.
+
+=== 39
+subject: Polity
+chapter: Indian Constitution — Making, Foundation and Amendments
+subtopic: Emergency Provisions
+difficulty: MODERATE
+answer: A
+stem:
+Which of the following accurately reflects the constitutional provisions and historical application of Financial Emergency under Article 360?
+A: No Financial Emergency has ever been declared, but it allows salary cuts of SC judges.
+B: A Financial Emergency was declared during the 1991 economic crisis.
+C: Article 360 allows states to withhold salaries of central employees.
+D: During a Financial Emergency, only the President can dismiss the Union Cabinet.
+solution:
+Article 360(4) lets the President direct a reduction in the salaries of Union employees and of Supreme Court and High Court judges during a Financial Emergency. No Financial Emergency has ever been proclaimed, not even in 1991. The power to cut salaries lies with the Union, not the states, and D has nothing to do with Article 360.
+
+=== 40
+subject: Physics
+chapter: Sound
+subtopic: Foundations — Sound, Perception, and the Ear
+difficulty: EASY
+answer: B
+stem:
+What is the audible frequency range for the human ear?
+A: 0–10000 Hz
+B: 20–20,000 Hz
+C: 2 kHz–20 kHz
+D: 100–1000 Hz
+solution:
+The human ear hears from about 20 Hz to 20,000 Hz (20 kHz). Below 20 Hz is infrasound and above 20 kHz is ultrasound.
+
+=== 41
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Statutory Bodies and Post-Independence Legislation
+difficulty: HARD
+answer: C
+stem:
+Read the below statements marked as Assertion (A) and Reason (R). Mark the **correct** options:
+**Assertion (A):** The Bharatiya Sakshya Adhiniyam recognizes electronic records as primary evidence.
+**Reason (R):** Section 62 states that electronic records are secondary unless accompanied by a printed certificate.
+A: Both A and R are true, and R is the correct explanation of A.
+B: Both A and R are true, but R is not the correct explanation of A.
+C: A is true, R is false.
+D: A is false, R is true.
+solution:
+A is true: under Section 57 of the Bharatiya Sakshya Adhiniyam, 2023, an electronic or digital record produced from proper custody is primary evidence.
+
+R is false: Section 62 only says the contents of electronic records may be proved under Section 63 (the certificate procedure); it does not declare them secondary evidence.
+
+=== 42
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: HARD
+answer: A
+stem:
+Consider the statements about Dumhal:
+1. Exclusively Wattal men plant a banner before dancing.
+2. It celebrates apple harvests in southern Kashmir.
+Which is/are **correct?**
+A: Only 1 correct
+B: Only 2 correct
+C: Both 1 & 2 correct
+D: Neither 1 nor 2 correct
+solution:
+Dumhal is a Kashmiri folk dance performed only by men of the Wattal community, who dig a banner into the ground and dance around it in long colourful robes and conical caps. It is performed on set occasions and at shrines, not as an apple-harvest celebration, so statement 2 is wrong.
+
+=== 43
+subject: Economics
+chapter: Money, Banking and Public Finance
+subtopic: Union Budget and Fiscal Policy
+difficulty: MODERATE
+answer: C
+stem:
+Why are grants for asset creation still considered Revenue Expenditure?
+A: They are spent through government loans
+B: They are used only by private sector units
+C: They do not create direct central assets
+D: They are not included in any budget head
+solution:
+Grants-in-aid given by the Centre to states and other bodies for creating capital assets are booked as revenue expenditure because the assets that result belong to the recipients, not to the Union government. Expenditure is capital only if it creates assets or reduces liabilities of the spender itself.
+
+=== 44
+subject: Economics
+chapter: Money, Banking and Public Finance
+subtopic: Banking, RBI and Financial Institutions
+difficulty: EASY
+answer: D
+stem:
+**Read the below statements marked as Assertion (A) and Reason (R). Mark the correct option:**
+**Assertion (A):** CRR (Cash Reserve Ratio) and SLR requirements increase the lending capacity of banks.
+**Reason (R):** These requirements reduce the amount of money banks can lend to the public.
+A: Both A and R are true, and R is the correct explanation of A.
+B: Both A and R are true, but R is not the correct explanation of A.
+C: A is true, but R is false.
+D: A is false, but R is true.
+solution:
+CRR makes banks keep part of their deposits with the RBI and SLR makes them hold liquid assets, so both lock up funds that could otherwise be lent. They reduce lending capacity: A is false and R is true.
+
+=== 45
+subject: Economics
+chapter: National Income, Growth and Development Indicators
+subtopic: Economic Curves, Indices and Statistical Reports
+difficulty: EASY
+answer: B
+stem:
+The UN Sustainable Development Report 2024 primarily tracks progress towards which global goals?
+A: Millennium Development Goals
+B: Sustainable Development Goals
+C: Environmental Protection Goals
+D: Human Rights Goals
+solution:
+The Sustainable Development Report tracks countries' progress on the 17 Sustainable Development Goals of the 2030 Agenda (adopted 2015). The Millennium Development Goals ended in 2015.
+
+=== 46
+subject: History
+chapter: Modern India
+subtopic: Freedom Movement — INC, Gandhi and Independence
+difficulty: EASY
+answer: C
+stem:
+The Chapekar Brothers (Damodar, Balkrishna, and Vasudeo) are remembered for assassinating a British official in response to injustices during the plague epidemic in which Indian city?
+A: Mumbai
+B: Delhi
+C: Pune
+D: Chennai
+solution:
+In June 1897 the Chapekar brothers shot W. C. Rand, chairman of the Special Plague Committee in Pune, in protest against the harsh plague measures there.
+
+=== 47
+subject: History
+chapter: Modern India
+subtopic: Revolt of 1857 and Popular Uprisings
+difficulty: MODERATE
+answer: C
+stem:
+Read the following statements and mark the correct option:
+Assertion (A): Rani Gaidinliu continued the Heraka movement after the death of Jadonang.
+Reason (R): She aimed to convert the movement into a mass literacy campaign among Nagas.
+A: Both A and R are true, and R is the correct explanation of A.
+B: Both A and R are true, but R is not the correct explanation of A.
+C: A is true, but R is false.
+D: A is false, but R is true.
+solution:
+A is true: after the British hanged Haipou Jadonang in 1931, his young cousin Rani Gaidinliu led the Heraka movement.
+
+R is false: the movement revived the Zeliangrong Naga faith and turned into a revolt against British rule (refusing taxes and forced labour), not a literacy campaign.
+
+=== 48
+subject: Economics
+chapter: Indian Economy
+subtopic: Five Year Plans and Indian Planning
+difficulty: EASY
+answer: C
+stem:
+The rolling plan concept was introduced during which Prime Minister's tenure?
+A: Jawaharlal Nehru
+B: Indira Gandhi
+C: Morarji Desai
+D: Rajiv Gandhi
+solution:
+The Janata government under Morarji Desai ended the Fifth Plan a year early and introduced the Rolling Plan (1978-80). Indira Gandhi's government scrapped it in 1980 and began the Sixth Plan.
+
+=== 49
+subject: Economics
+chapter: National Income, Growth and Development Indicators
+subtopic: Industrial and Manufacturing Policy
+difficulty: EASY
+answer: C
+stem:
+What was the central theme of the Industrial Policy Resolution of 1956?
+A: Full privatisation of industry
+B: Import-led growth strategy
+C: State control of commanding heights of the economy
+D: Promoting consumer goods industry
+solution:
+The 1956 Resolution adopted the socialist pattern of society: Schedule A industries (17 basic and strategic ones) were reserved for the state, giving the public sector control of the commanding heights. It stressed heavy industry and import substitution, not privatisation or consumer goods.
+
+=== 50
+subject: Economics
+chapter: Indian Economy
+subtopic: International Trade and Finance
+difficulty: EASY
+answer: C
+stem:
+What was the major short-term objective of the stabilization measures in the 1991 reforms?
+A: Increase agricultural production
+B: Enhance social sector spending
+C: Control inflation and restore balance of payments
+D: Privatize public sector units
+solution:
+The 1991 reforms had two parts: short-term stabilisation, aimed at correcting the balance of payments crisis and bringing down inflation, and longer-term structural reforms such as privatisation and trade liberalisation.
+
+=== 51
+chapter: Simple and Compound Interest
+subtopic: Compound Interest
+difficulty: EASY
+answer: A
+stem:
+A sum of money doubles itself at compound interest in 15 years. In how many years will it become eight times?
+A: 45
+B: 40
+C: 42
+D: 35
+solution:
+At compound interest the sum multiplies by the same factor in equal periods. It becomes 2 times in 15 years.
+
+\(8 = 2^3\), so it needs three doubling periods: \(3 \times 15 = 45\) years.
+
+Check: after 30 years it is 4 times, after 45 years 8 times.
+
+=== 52
+chapter: Number System
+subtopic: Rational and Irrational Numbers
+difficulty: EASY
+answer: C
+stem:
+Which of these numbers is neither Rational nor Integer?
+A: \(-4\)
+B: \(1.5\)
+C: Square root of 2
+D: \(7\)
+solution:
+\(-4\) and \(7\) are integers (and rational). \(1.5 = \frac{3}{2}\) is rational.
+
+\(\sqrt{2}\) cannot be written as a ratio of integers, so it is irrational and not an integer.
+
+=== 53
+chapter: Time, Speed and Distance
+subtopic: Average Speed and Speed–Time Ratios
+difficulty: EASY
+answer: C
+stem:
+A train starts from a place Mumbai at 6 a.m. and arrives at Kolhapur at 2.30 p.m. on the same day. If the speed of the train is 60 km per hour, find the distance traveled by the train.
+A: 450 km
+B: 490 km
+C: 510 km
+D: 500 km
+solution:
+From 6 a.m. to 2.30 p.m. is 8 hours 30 minutes, that is \(8.5\) hours.
+
+Distance \(= 60 \times 8.5 = 510\) km.
+
+Check: \(60 \times 8 = 480\) and half an hour adds \(30\), giving \(510\) km.
+
+=== 54
+chapter: Mensuration 3D
+subtopic: Melting and Recasting
+difficulty: EASY
+answer: C
+stem:
+A spherical tank is filled with water. The radius of the sphere is 6 meters. The tank is used to fill cylindrical containers, each with a radius of 1 meter and a height of 12 meters. How many containers can be filled?
+A: 14
+B: 18
+C: 24
+D: 30
+solution:
+Volume of the sphere \(= \frac{4}{3}\pi (6)^3 = 288\pi\) cubic metres.
+
+Volume of one cylinder \(= \pi (1)^2 (12) = 12\pi\) cubic metres.
+
+Number of containers \(= \frac{288\pi}{12\pi} = 24\).
+
+Check: \(24 \times 12 = 288\).
+
+=== 55
+chapter: Mensuration 3D
+subtopic: Solids Inside Solids
+difficulty: EASY
+answer: A
+stem:
+A perfect cube with a side length of 8 cm has the largest possible sphere fitted inside it. What is the volume of the empty space within the cube?
+A: \(512 - \frac{256\pi}{3}\ \text{cm}^3\)
+B: \(512 - \frac{64\pi}{3}\ \text{cm}^3\)
+C: \(64 - \frac{256\pi}{3}\ \text{cm}^3\)
+D: \(\frac{256\pi}{3}\ \text{cm}^3\)
+solution:
+The largest sphere has diameter equal to the side, so its radius is \(4\) cm.
+
+Cube volume \(= 8^3 = 512\ \text{cm}^3\). Sphere volume \(= \frac{4}{3}\pi (4)^3 = \frac{256\pi}{3}\ \text{cm}^3\).
+
+Empty space \(= 512 - \frac{256\pi}{3}\ \text{cm}^3\). Option D is the sphere alone, and option C is negative (\(\frac{256\pi}{3} \approx 268 > 64\)).
+
+=== 56
+chapter: Ratio, Proportion and Variation
+subtopic: Partnership
+difficulty: EASY
+answer: B
+stem:
+'A' and 'B' entered a joint venture. 'A' brought Rs. 1,50,000 and 'B' Rs. 2,00,000. 'A' also contributed skilled labor equivalent to Rs. 50,000. At the end of the year, they earned Rs. 1,20,000 in profit. If they agreed to divide the profit in proportion to their effective contributions, what was A’s share?
+A: Rs. 55,000
+B: Rs. 60,000
+C: Rs. 62,500
+D: Rs. 65,000
+solution:
+A's effective contribution \(= 1,50,000 + 50,000 = 2,00,000\). B's is \(2,00,000\).
+
+The ratio is \(1 : 1\), so A gets half of Rs. 1,20,000, that is Rs. 60,000.
+
+=== 57
+chapter: Mensuration 2D
+subtopic: Rectangles, Squares and Other Quadrilaterals
+difficulty: EASY
+answer: A
+stem:
+A banner is shaped like a trapezium with bases 5 m and 3 m, and height 4 m. If printing costs ₹\(250/\text{m}^2\), what is the total cost?
+A: ₹4,000
+B: ₹5,000
+C: ₹6,000
+D: ₹8,000
+solution:
+Area \(= \frac{1}{2}(5 + 3) \times 4 = 16\ \text{m}^2\).
+
+Cost \(= 16 \times 250 = 4,000\), that is ₹4,000.
+
+=== 58
+chapter: Mensuration 2D
+subtopic: Rectangles, Squares and Other Quadrilaterals
+difficulty: EASY
+answer: B
+stem:
+A farmer’s land is two adjoining trapezoids: T1 with bases 70 m & 50 m, height 20 m; T2 with bases 50 m & 30 m, height 15 m. Land costs ₹\(60/\text{m}^2\). What is the total land cost?
+A: ₹1,58,000
+B: ₹1,08,000
+C: ₹98,000
+D: ₹1,26,000
+solution:
+Area of T1 \(= \frac{1}{2}(70 + 50) \times 20 = 1200\ \text{m}^2\).
+
+Area of T2 \(= \frac{1}{2}(50 + 30) \times 15 = 600\ \text{m}^2\).
+
+Total area \(= 1800\ \text{m}^2\), so cost \(= 1800 \times 60 = 1,08,000\), that is ₹1,08,000.
+
+Check: T1 costs \(72,000\) and T2 costs \(36,000\), total \(1,08,000\).
+
+=== 59
+chapter: Mensuration 2D
+subtopic: Rectangles, Squares and Other Quadrilaterals
+difficulty: EASY
+answer: A
+stem:
+The ratio of areas of two regular polygons with same number of sides is 4:9. What is the ratio of their side lengths?
+A: \(2 : 3\)
+B: \(4 : 5\)
+C: \(1 : \sqrt{2}\)
+D: \(2 : \sqrt{5}\)
+solution:
+Regular polygons with the same number of sides are similar, so the ratio of areas is the square of the ratio of sides.
+
+Ratio of sides \(= \sqrt{4} : \sqrt{9} = 2 : 3\).
+
+=== 60
+chapter: Percentage, Profit and Loss
+subtopic: Percentage
+difficulty: EASY
+answer: A
+stem:
+A student scored 80% in one subject and 60% in another. Both subjects have equal maximum marks. What is the overall percentage?
+A: 70%
+B: 72%
+C: 68%
+D: 75%
+solution:
+Take maximum marks 100 in each. Marks scored \(= 80 + 60 = 140\) out of \(200\).
+
+Overall percentage \(= \frac{140}{200} \times 100 = 70\%\), the simple mean of 80 and 60 since the weights are equal.
+
+=== 61
+chapter: Percentage, Profit and Loss
+subtopic: Profit and Loss
+difficulty: EASY
+answer: B
+stem:
+A seller offers a combo deal: "Buy 3 shirts for the price of 2". If each shirt costs him Rs. 300, what is the effective loss percentage?
+A: 25.33%
+B: 33.33%
+C: 30%
+D: 20%
+solution:
+Cost of 3 shirts \(= 3 \times 300 = 900\). He receives the price of 2 shirts, \(600\) (selling at cost price).
+
+Loss \(= 300\), so loss percentage \(= \frac{300}{900} \times 100 = 33.33\%\).
+
+Check: he gives away 1 shirt in every 3, that is \(\frac{1}{3}\) of the goods.
+
+=== 62
+chapter: Percentage, Profit and Loss
+subtopic: Successive Percentage Change
+difficulty: MODERATE
+answer: A
+stem:
+The price of a product is decreased by x% and then increased by x%. The final price becomes 10% less than the original. What is the value of x (approximately)?
+A: 31.6
+B: 33.6
+C: 30.6
+D: 39.6
+solution:
+Net change for a decrease of \(x\%\) then an increase of \(x\%\) is \(-\frac{x^2}{100}\%\).
+
+\(\frac{x^2}{100} = 10\) gives \(x^2 = 1000\), so \(x = \sqrt{1000} \approx 31.6\).
+
+Check: \(0.684 \times 1.316 \approx 0.900\).
+
+=== 63
+chapter: Averages
+subtopic: Sum and Mean
+difficulty: EASY
+answer: B
+stem:
+The average of 5 different numbers is 24. If the smallest number is 15, what is the average of the remaining four numbers?
+A: 27.25
+B: 26.25
+C: 25.5
+D: 24.5
+solution:
+Sum of the 5 numbers \(= 5 \times 24 = 120\).
+
+Sum of the other four \(= 120 - 15 = 105\), so their average \(= \frac{105}{4} = 26.25\).
+
+Check: removing 15, which is 9 below the mean, raises the mean of four by \(\frac{9}{4} = 2.25\): \(24 + 2.25 = 26.25\).
+
+=== 64
+chapter: Mensuration 3D
+subtopic: Prisms and Pyramids
+difficulty: EASY
+answer: B
+stem:
+A prism with a parallelogram base has base area 80 \(\text{cm}^2\) and height 12 cm. If its lateral surface area is 384 \(\text{cm}^2\), what is the perimeter of the base?
+A: 24 cm
+B: 32 cm
+C: 36 cm
+D: 40 cm
+solution:
+Lateral surface area of a prism \(=\) perimeter of base \(\times\) height. The base area is not needed.
+
+Perimeter \(= \frac{384}{12} = 32\) cm.
+
+=== 65
+chapter: Averages
+subtopic: Weighted and Combined Averages
+difficulty: EASY
+answer: A
+stem:
+The average score of 25 students in a test is 68. The top 5 scorers had an average of 80, and the lowest 5 had an average of 50. What is the average of the remaining 15 students?
+A: 70
+B: 68
+C: 72
+D: 66
+solution:
+Total \(= 25 \times 68 = 1700\). Top 5 total \(= 400\), lowest 5 total \(= 250\).
+
+Remaining 15 total \(= 1700 - 650 = 1050\), so their average \(= \frac{1050}{15} = 70\).
+
+Check by deviations from 68: \(5(+12) + 5(-18) = -30\), so the 15 must carry \(+30\), that is \(+2\) each: \(70\).
+
+=== 66
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: EASY
+answer: A
+stem:
+A wholesaler offers a bulk order deal where a 10% discount is applied to orders above Rs. 15,000, and a 5% additional seasonal discount is available. What is the effective price paid for an order worth Rs. 20,000?
+A: Rs. 17,100
+B: Rs. 17,500
+C: Rs. 17,000
+D: Rs. 16,800
+solution:
+The order is above Rs. 15,000, so both discounts apply one after the other.
+
+\(20,000 \times 0.90 = 18,000\), then \(18,000 \times 0.95 = 17,100\).
+
+Check: successive 10% and 5% equal a single \(10 + 5 - \frac{10 \times 5}{100} = 14.5\%\) discount, and \(85.5\%\) of \(20,000\) is \(17,100\).
+
+=== 67
+chapter: Trigonometric Ratios and Identities
+subtopic: Ratios in a Right Triangle
+difficulty: EASY
+answer: A
+stem:
+If \(\sin A = x\), then what is the value of \(\tan A\) in terms of \(x\)?
+A: \(\frac{x}{\sqrt{(1-x^2)}}\)
+B: \(\frac{\sqrt{(1-x^2)}}{x}\)
+C: \(\frac{1}{x}\)
+D: \(x^2\)
+solution:
+\(\cos A = \sqrt{1 - \sin^2 A} = \sqrt{1 - x^2}\) (taking A acute).
+
+\(\tan A = \frac{\sin A}{\cos A} = \frac{x}{\sqrt{1 - x^2}}\).
+
+Check with \(A = 30^\circ\): \(x = \frac{1}{2}\) gives \(\frac{1/2}{\sqrt{3}/2} = \frac{1}{\sqrt{3}} = \tan 30^\circ\).
+
+=== 68
+chapter: Trigonometric Ratios and Identities
+subtopic: Ratios in a Right Triangle
+difficulty: EASY
+answer: A
+stem:
+If \(\sin A = \frac{3}{5}\) and A lies in the 2nd quadrant, what is the value of \(\tan A\)?
+A: \(-\frac{3}{4}\)
+B: \(-\frac{2}{5}\)
+C: \(\frac{2}{5}\)
+D: \(\frac{7}{5}\)
+solution:
+\(\cos^2 A = 1 - \frac{9}{25} = \frac{16}{25}\). In the 2nd quadrant cosine is negative, so \(\cos A = -\frac{4}{5}\).
+
+\(\tan A = \frac{3/5}{-4/5} = -\frac{3}{4}\).
+
+=== 69
+chapter: Mensuration 2D
+subtopic: Arcs, Sectors and Segments
+difficulty: EASY
+answer: D
+stem:
+The angle of a sector is \(\frac{\pi}{4}\) radians, and the radius of the circle is 8 cm. What is the area of the sector?
+A: \(16\pi\ \text{cm}^2\)
+B: \(12\pi\ \text{cm}^2\)
+C: \(32\pi\ \text{cm}^2\)
+D: \(8\pi\ \text{cm}^2\)
+solution:
+Area of a sector \(= \frac{1}{2} r^2 \theta = \frac{1}{2} \times 64 \times \frac{\pi}{4} = 8\pi\ \text{cm}^2\).
+
+Check: \(\frac{\pi}{4}\) is \(\frac{1}{8}\) of a full turn, and \(\frac{1}{8}\) of \(64\pi\) is \(8\pi\).
+
+=== 70
+chapter: Trigonometric Ratios and Identities
+subtopic: Complementary and Allied Angles
+difficulty: EASY
+answer: B
+stem:
+If \(\sin x = \cos(2x - 10^\circ)\), find the value of x.
+A: \(25.52^\circ\)
+B: \(33.33^\circ\)
+C: \(40^\circ\)
+D: \(50^\circ\)
+solution:
+\(\sin x = \cos(90^\circ - x)\), so for acute angles \(90^\circ - x = 2x - 10^\circ\).
+
+\(3x = 100^\circ\), so \(x = 33.33^\circ\).
+
+Check: \(2x - 10^\circ = 56.67^\circ\) and \(33.33^\circ + 56.67^\circ = 90^\circ\).
+
+=== 71
+chapter: Circles
+subtopic: Common Tangents and Common Chords
+difficulty: EASY
+answer: C
+stem:
+Two circles have radii of 8 cm and 3 cm. The distance between their centers is 15 cm. What is the length of a direct common tangent?
+A: 10 cm
+B: 12 cm
+C: \(10\sqrt{2}\) cm
+D: \(12\sqrt{2}\) cm
+solution:
+Direct common tangent \(= \sqrt{d^2 - (r_1 - r_2)^2} = \sqrt{15^2 - 5^2} = \sqrt{200} = 10\sqrt{2}\) cm.
+
+(The transverse tangent would be \(\sqrt{225 - 121} = \sqrt{104}\), not offered.)
+
+=== 72
+chapter: Circles
+subtopic: Chords and Perpendiculars
+difficulty: EASY
+answer: C
+stem:
+A line from the center of a circle bisects a chord. What is the angle between this line and the chord?
+A: \(30^\circ\)
+B: \(45^\circ\)
+C: \(90^\circ\)
+D: \(60^\circ\)
+solution:
+The line joining the centre to the midpoint of a chord is perpendicular to the chord, so the angle is \(90^\circ\).
+
+=== 73
+chapter: Circles
+subtopic: Angles in a Circle
+difficulty: EASY
+answer: C
+stem:
+A chord divides a circle into two arcs. The angle subtended by the major arc at the circumference is \(110^\circ\) . What is the central angle subtended by the major arc?
+A: \(55^\circ\)
+B: \(110^\circ\)
+C: \(220^\circ\)
+D: \(270^\circ\)
+solution:
+The angle an arc subtends at the centre is twice the angle it subtends at the circumference.
+
+Central angle of the major arc \(= 2 \times 110^\circ = 220^\circ\), which is more than \(180^\circ\) as a major arc should be.
+
+Check: the minor arc then subtends \(140^\circ\) at the centre and \(70^\circ\) at the circumference, and \(110^\circ + 70^\circ = 180^\circ\) (cyclic quadrilateral).
+
+=== 74
+chapter: Circles
+subtopic: Angles in a Circle
+difficulty: EASY
+answer: B
+stem:
+In a circle, chord AB subtends an angle of \(50^\circ\) at a point C on the circle. What is the angle subtended by the same chord AB at another point D on the same arc as C?
+A: \(55^\circ\)
+B: \(50^\circ\)
+C: \(45^\circ\)
+D: \(40^\circ\)
+solution:
+Angles in the same segment are equal, so the angle at D is also \(50^\circ\).
+
+=== 75
+chapter: Circles
+subtopic: Tangents from an External Point
+difficulty: MODERATE
+answer: C
+stem:
+From an outside point P, two tangents, PA and PB, are drawn to a circle.A third tangent to the circle at a point Q intersects PA and PB at R and S respectively. If PA=10 cm, what is the perimeter of \(\triangle PRS\)?
+A: 10 cm
+B: 15 cm
+C: 20 cm
+D: 30 cm
+solution:
+Tangents from an external point are equal: \(RQ = RA\) and \(SQ = SB\).
+
+Perimeter \(= PR + RS + SP = PR + RQ + QS + SP = (PR + RA) + (SB + SP) = PA + PB\).
+
+\(PB = PA = 10\) cm, so the perimeter \(= 20\) cm.
+
+=== 76
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: D
+stem:
+Fill in the blank with the correctly spelt word.
+
+The phenomenon could be explained by _________ fluctuations.
+A: thermodinamick
+B: thermadynamic
+C: thermodynnamic
+D: thermodynamic
+solution:
+The word is spelt **thermodynamic** (thermo + dynamic). The other options misspell the vowels or double the n.
+
+=== 77
+chapter: Vocabulary
+subtopic: Synonyms: Character and Temperament
+difficulty: EASY
+answer: A
+stem:
+Select the most appropriate synonym of the given word: **IRREPRESSIBLE**
+A: Uncontrollable
+B: Forgettable
+C: Unbearable
+D: Avoidable
+solution:
+Irrepressible means impossible to hold back or restrain (irrepressible laughter, an irrepressible spirit), so its synonym is uncontrollable. Forgettable, unbearable and avoidable do not carry that sense.
+
+=== 78
+chapter: Vocabulary
+subtopic: Antonyms: Feelings and Calm
+difficulty: MODERATE
+answer: D
+stem:
+Select the most appropriate antonym of the given word. **Redolent**
+A: Fragrant
+B: Evocative
+C: Odorous
+D: Unscented
+solution:
+Redolent means strongly smelling of something, or strongly suggestive of it. Fragrant, odorous and evocative are close to its meaning; unscented (having no smell) is the opposite.
+
+=== 79
+chapter: Idioms and Phrases
+subtopic: Idioms: Time and Company
+difficulty: MODERATE
+answer: B
+stem:
+Choose the correct meaning of idiom:
+**Play gooseberry**
+A: Act as mediator in a dispute
+B: Be an unwanted third person with a courting couple
+C: Tell jokes badly
+D: Refuse commitment
+solution:
+To play gooseberry is to be the third person who keeps two people (usually a couple) company when they would rather be alone.
+
+=== 80
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: B
+stem:
+Select the **correct spelling** for a word meaning 'an internal split or division'.
+A: Shism
+B: Schism
+C: Scism
+D: Shcism
+solution:
+The word is spelt **schism**, a split within a group or organisation.
+
+=== 81
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: C
+stem:
+Choose the correct **one-word substitute** for: 'A government ruled by a single person with absolute power'.
+A: Oligarchy
+B: Democracy
+C: Autocracy
+D: Anarchy
+solution:
+Autocracy is rule by one person with absolute power. Oligarchy is rule by a small group, democracy rule by the people and anarchy the absence of government.
+
+=== 82
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: B
+stem:
+Choose the correct **one-word substitute** for: 'A person who doubts the sincerity or goodness of others'.
+A: Optimist
+B: Cynic
+C: Realist
+D: Pessimist
+solution:
+A cynic believes people act only from self-interest and doubts their sincerity or goodness. A pessimist expects bad outcomes in general, not bad motives in people; an optimist and a realist do not fit.
+
+=== 83
+chapter: Cloze Test
+subtopic: Collocations and the Precise Word
+difficulty: HARD
+answer: B
+context:
+**In the following passage, some words have been deleted. Read the passage intently and choose the most appropriate option to fill in each blank:**
+The pursuit of global equity in the anthropocene is less a matter of distributive justice and more a theatre of ontological misrecognition. While the Global North presents technocratic solutions as universally applicable, such solutions often encode assumptions of temporal supremacy and civilizational **[1]** _______. Climate finance, for instance, masquerades as benevolence while entrenching hierarchies of surveillance and dependence. The epistemes of the South, rather than being engaged on their own terms, are often reconfigured through extractive logics of “capacity building,” a term whose etymology betrays its colonial **[2]** _______. Embedded within these discourses is the idea that certain populations must be “readied” for modernity—thus reproducing a pedagogical asymmetry that masks itself as aid.Meanwhile, planetary imaginaries are increasingly framed through cartographies of emergency. The language of “tipping points” and “irreversible loss” evokes a moral urgency that, paradoxically, facilitates a form of ecological **[3]** _______, wherein radical structural reform is substituted by incremental techno-fixes. Carbon offsets, biodiversity credits, and green financialization proliferate not as correctives, but as symptoms of an underlying refusal to dislodge anthropocentric capitalism. In such a milieu, protest is not silence-breaking but often met with strategic **[4]** _______, where rhetorical accommodation obscures institutional inertia. Civil society is co-opted, not crushed. The subaltern voice is archived, not amplified. Thus, to reclaim ecological justice is not merely to demand inclusion, but to interrogate the ontologies that define inclusion itself. Absent this, the dream of planetary stewardship will remain a ceremonial **[5]** _______, rich in symbolism, barren in substance.
+stem:
+What should come in the place of blank number **[1]** ?
+A: inferiority
+B: preeminence
+C: orthodoxy
+D: intelligibility
+solution:
+The blank is paired with "temporal supremacy", so it needs a word of the same kind: the North's assumed superiority. Civilizational preeminence (being above all others) matches. Inferiority is the opposite, and orthodoxy and intelligibility do not express a claim of superiority.
+
+=== 84
+chapter: Cloze Test
+subtopic: Collocations and the Precise Word
+difficulty: HARD
+answer: A
+context_from: 83
+stem:
+What should come in the place of blank number **[2]**?
+A: genealogy
+B: imperative
+C: residue
+D: parable
+solution:
+Etymology is the history of a word's origin, so the term "betrays its colonial genealogy": its line of descent traces back to colonialism. Imperative and parable do not fit a word's origin, and residue (a leftover) does not match "etymology", which is about where the word comes from.
+
+=== 85
+chapter: Cloze Test
+subtopic: Collocations and the Precise Word
+difficulty: HARD
+answer: D
+context_from: 83
+stem:
+What should come in the place of blank number **[3]**?
+A: minimalism
+B: mobilization
+C: desist
+D: containment
+solution:
+The clause after the blank explains it: radical structural reform is replaced by incremental techno-fixes. The urgency is managed and kept within limits rather than acted on, which is ecological containment. Mobilization would mean real action, the opposite of the point; desist is a verb and cannot follow "ecological"; minimalism does not describe substituting small fixes for reform.
+
+=== 86
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: MODERATE
+answer: A
+context_from: 83
+stem:
+What should come in the place of blank number **[4]**?
+A: co-optation
+B: indifference
+C: disdain
+D: surveillance
+solution:
+The next sentences say protest meets "rhetorical accommodation" and that "Civil society is co-opted, not crushed." Protest is absorbed rather than opposed, which is strategic co-optation. Indifference and disdain do not involve accommodation, and surveillance is not a response that absorbs protest.
+
+=== 87
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: MODERATE
+answer: A
+context_from: 83
+stem:
+What should come in the place of blank number **[5]**?
+A: pageantry
+B: deliverance
+C: placation
+D: mimicry
+solution:
+The blank is "ceremonial", "rich in symbolism, barren in substance": a show without content. Ceremonial pageantry is exactly that. Deliverance would mean real rescue, and placation and mimicry do not fit "ceremonial ... rich in symbolism".
+
+=== 88
+chapter: Grammar
+subtopic: Parts of Speech: Adjectives and Determiners
+difficulty: EASY
+answer: B
+stem:
+**Fill the correct degree of comparison:**
+Of all the solutions proposed, this one is by far the _____.
+A: more cost-effective
+B: most cost-effective
+C: cost-effectiver
+D: much cost-effective
+solution:
+"Of all the solutions" compares one with more than two, and "the" plus "by far" mark a superlative: the most cost-effective. "Cost-effectiver" is not a word, since a long compound adjective takes more/most.
+
+=== 89
+chapter: Grammar
+subtopic: Connectors and Clause Joining
+difficulty: EASY
+answer: A
+stem:
+**Select the correct option:**
+Their approach proved ___ effective that competitors quickly emulated it.
+A: so
+B: too
+C: as
+D: very
+solution:
+The pattern of result is "so + adjective + that": so effective that competitors copied it. "Too" pairs with "to", "as" with "as", and "very" cannot introduce a that-clause of result.
+
+=== 90
+chapter: Spotting Errors
+subtopic: Prepositions Fixed by the Word Before
+difficulty: EASY
+answer: A
+stem:
+**Find the part of the sentence that contains an error:**
+The new encryption protocol is capable for thwarting (1)/ sophisticated cyber-intrusions that were previously considered (2)/ impervious to defensive measures (3)/ according to recent white-paper findings. (4)/
+A: (1)
+B: (2)
+C: (3)
+D: (4)
+solution:
+"Capable" takes "of": capable of thwarting. Part (1) has the error.
+
+=== 91
+chapter: Spotting Errors
+subtopic: Verb Forms and Voice
+difficulty: MODERATE
+answer: C
+stem:
+**Find the part of the sentence that contains an error:**
+Had he not deferred the proposal for weeks, (1)/ the board would have had a better chance (2)/ to evaluating the project’s long-term viability (3)/ before the deadline lapsed. (4)
+A: (1)
+B: (2)
+C: (3)
+D: (4)
+solution:
+"A chance" takes either "to + base verb" or "of + -ing": a better chance to evaluate (or of evaluating). "To evaluating" mixes the two, so part (3) has the error. Part (1) is a correct inverted third conditional matching "would have had" in part (2).
+
+=== 92
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: D
+stem:
+**Change the following from active to passive:**
+Do the experts regard this compound as hazardous?
+A: Has this compound been regarded as hazardous by the experts?
+B: Is this compound being regarded as hazardous by the experts?
+C: Was this compound regarded as hazardous by the experts?
+D: Is this compound regarded as hazardous by the experts?
+solution:
+The active is in the simple present ("Do ... regard"), so the passive is "Is + object + past participle": Is this compound regarded as hazardous by the experts? The other options change the tense.
+
+=== 93
+chapter: Vocabulary
+subtopic: Homophones in Sentences
+difficulty: MODERATE
+answer: C
+stem:
+**Select the sentence containing the homonym of the highlighted word:**
+The priest lifted the **chalice** during the Eucharist.
+A: The forger crafted a silver chalice with vine engravings.
+B: The noble toasted with a jeweled chalice.
+C: The investor discussed the chalice of currency debasement.
+D: The altar server held the golden chalice reverently.
+solution:
+In the given sentence a chalice is a ceremonial cup. Options A, B and D all use the word in that same sense (a silver, jeweled or golden drinking cup). Only C uses "chalice" in a different, non-literal sense, so it is the sentence the question wants.
+
+=== 94
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: C
+stem:
+**Convert the sentence provided below from its passive voice structure to an active voice structure:**
+The guests must have been informed about the delay by the coordinator.
+A: The coordinator might inform the guests about the delay.
+B: The coordinator had informed the guests about the delay.
+C: The coordinator must have informed the guests about the delay.
+D: The coordinator must be informing the guests about the delay.
+solution:
+"Must have been informed" becomes "must have informed" in the active, keeping the modal and the perfect: The coordinator must have informed the guests about the delay.
+
+=== 95
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: MODERATE
+answer: C
+stem:
+Choose the most suitable option to replace the highlighted part of the sentence:
+This building ***is built from bricks***.
+A: is made by bricks
+B: has built of bricks
+C: is built of bricks
+D: is constructed with bricks
+solution:
+A building whose material is brick "is built of bricks" (the material it consists of takes "of"). "Made by" names a maker, not a material, and "has built" is active and wrong here. "Constructed with bricks" suggests bricks as a tool used, not the material of the whole building.
+
+=== 96
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: C
+stem:
+Choose the most suitable option to replace the highlighted part of the sentence:
+We must prevent him ***to go there***.
+A: for going there
+B: from to go there
+C: from going there
+D: not go there
+solution:
+"Prevent" takes "someone from + -ing": We must prevent him from going there.
+
+=== 97
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: MODERATE
+answer: C
+stem:
+**A sentence is provided in indirect speech. From the four given options, choose the one that most accurately conveys the sentence in its corresponding direct speech.**
+He wondered why the lights had been left on all night.
+A: He said, "Why were the lights left on all night?"
+B: He said, "Why are the lights left on all night?"
+C: He said, "Why have the lights been left on all night?"
+D: He said, "Why had the lights been left on all night?"
+solution:
+In reported speech the present perfect shifts back to the past perfect, so "had been left" comes from "have been left": He said, "Why have the lights been left on all night?" Option D keeps the reported tense unchanged, and B is in the wrong tense and voice form.
+
+=== 98
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: A
+stem:
+**A sentence is provided in direct speech. From the four given options, choose the one that most accurately conveys the sentence in its corresponding indirect speech.**
+I said, “Why are you crying?”
+A: I asked why he was crying.
+B: I said why are you crying.
+C: I told why you cried.
+D: I asked why he cried.
+solution:
+A question is reported with "asked", the question becomes a statement, "you" becomes the person spoken to (he), and the present continuous "are crying" shifts to the past continuous "was crying": I asked why he was crying.
+
+=== 99
+chapter: Sentence Rearrangement
+subtopic: Shape of a Paragraph Argument
+difficulty: EASY
+answer: A
+blind: C
+note: judgement item. SSC's key opens with the Cold War origin of the treaties (2) before the law they govern (1); our blind order opened with the law (1-2-3-4). The bank carries SSC's answer
+stem:
+**Rearrange the following sentences to form a meaningful passage:**
+1. International space law governs satellite placement and liability.2. Treaties emerged during the Cold War to prevent militarization.3. New challenges include space debris and commercial mining.4. Regulation needs adaptation to current realities.
+A: 2-1-3-4
+B: 1-3-4-2
+C: 1-2-3-4
+D: 3-2-1-4
+solution:
+Sentence 2 opens with how space law began: treaties made during the Cold War to prevent militarization. Sentence 1 says what that law governs today, satellite placement and liability. Sentence 3 adds the new challenges, debris and commercial mining, and sentence 4 concludes that regulation must adapt. Order: 2-1-3-4.
+
+=== 100
+chapter: Sentence Rearrangement
+subtopic: This, These and Such
+difficulty: MODERATE
+answer: D
+stem:
+**Rearrange the following sentences in correct order to make a logical passage.**
+1. This allows for greater efficiency and collaboration.
+2. Cloud computing has revolutionized data storage and access.
+3. It eliminates the need for extensive on-premise infrastructure.
+4. Businesses worldwide are rapidly adopting this technology.
+A: 2-1-3-4
+B: 2-4-1-3
+C: 3-4-2-1
+D: 2-3-1-4
+solution:
+Sentence 2 names the topic (cloud computing). "It" in sentence 3 refers to cloud computing, and "This" in sentence 1 refers to removing the need for on-premise infrastructure, which brings efficiency. Sentence 4 closes with the result: businesses are adopting the technology. Order: 2-3-1-4.

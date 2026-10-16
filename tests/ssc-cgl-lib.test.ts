@@ -115,6 +115,27 @@ describe("assembleQuestions", () => {
     expect(() => assembleQuestions(g, { missing: { 3: range.slice(1) } })).toThrow(/shift 3.*missing 51/);
   });
 
+  it("accepts PARTs printed out of order, one tall page each, and returns the shift in number order", () => {
+    // 26 Sep 2025 S1: the web-page render prints each PART as one tall page, with its own
+    // shift header, in the order D, B, C, A.
+    const cells: Cell[] = [];
+    const markers: Marker[] = [];
+    (["D", "B", "C", "A"] as const).forEach((part, i) => {
+      const page = 61 + i;
+      const first = "ABCD".indexOf(part) * 25 + 1;
+      markers.push({ kind: "shift", page, y: 10, shift: 1 }, { kind: "part", page, y: 20, part });
+      for (let k = 0; k < 25; k++) {
+        const q = question(page, 50 + k * 250, (first + k) % 4);
+        cells.push(...q.cells);
+        markers.push({ ...q.marker, n: first + k } as Marker);
+      }
+    });
+    const qs = assembleQuestions({ cells, markers });
+    expect(qs.map((q) => q.number)).toEqual(Array.from({ length: 100 }, (_, i) => i + 1));
+    expect(qs[0]).toMatchObject({ number: 1, part: "A", key: "B", pages: [64] });
+    expect(qs[99]).toMatchObject({ number: 100, part: "D", key: "A", pages: [61] });
+  });
+
   it("keeps shifts apart and refuses a shift that is not numbered 1..100", () => {
     const a = shift(1, 1, 100, () => 0);
     const b = shift(2, 60, 100, () => 1);

@@ -1,0 +1,1651 @@
+SSC CGL 2025 Tier I, 22 Sep 2025, Shift 1. Read from SSC's challenge-module saved paper.
+Drafted by agents, one PART each, from the reading sheets only (no key; DRAFTING_BRIEF.md);
+every block reviewed in the main session, then compared with the key (build.ts).
+Format: scripts/ssc-cgl/lib.ts.
+
+=== 1
+chapter: Alphabet and Number Tests
+subtopic: Address and Data Matching
+difficulty: EASY
+answer: A
+stem:
+Choose the address that is the same as the one given below.
+
+Sample Address:No. 38, Orchid Residency,Garia, Kolkata,West Bengal - 700084
+A: No. 38, Orchid Residency, Garia, Kolkata, West Bengal - 700084
+B: 38, Orchid Residency, Garia, Kolkata, West Bengal - 700084
+C: No. 38, Orchid Residncy, Garia, Kolkata, West Bengal - 700084
+D: No. 38, Orchid Residency, Garia, Kolkatta, West Bengal - 700084
+solution:
+B drops "No.", C misspells "Residency" as "Residncy" and D misspells "Kolkata" as "Kolkatta". Only A matches the sample word for word.
+
+=== 2
+chapter: Inequalities
+subtopic: Direct Inequalities
+difficulty: MODERATE
+answer: D
+stem:
+A statement is given followed by two conclusions. Find which conclusion is TRUE based on the given statement.
+
+Statement:
+\(C < A \le T = D \ge O;\ G \ge D < S;\ T \ge A\)
+Conclusions:
+I: \(A \le O\)
+II: \(C < G\)
+A: Either I or II
+B: Neither I nor II
+C: Only I
+D: Only II
+solution:
+I: \(A \le T = D \ge O\). The signs between A and O point in opposite directions, so there is no definite relation. I is not true.
+
+II: \(C < A \le T = D \le G\), so \(C < G\). II is true.
+
+Only II is true.
+
+=== 3
+chapter: Inequalities
+subtopic: Direct Inequalities
+difficulty: MODERATE
+answer: C
+stem:
+The given statements are followed by two conclusions. Find out which conclusion is FALSE based on the given statements.
+
+Statements:
+\(J > K = L,\ M \ge N < K,\ O < J < P,\ N > Q > R\)
+Conclusions:
+I. \(P > M\)
+II. \(N < P\)
+A: Only conclusion II is false
+B: Both conclusion I and II are false
+C: Only conclusion I is false
+D: Neither conclusion I nor II is false
+solution:
+I: \(M \ge N < K < J < P\). The signs between M and P do not run one way, so \(P > M\) does not follow. I is false.
+
+II: \(N < K < J < P\) gives \(N < P\). II is true.
+
+Only conclusion I is false.
+
+=== 4
+chapter: Blood Relations
+subtopic: Direct Relations
+difficulty: EASY
+answer: C
+stem:
+B is the daughter of A. A is the son of C. How is C related to B?
+A: Mother
+B: Father
+C: Grandparent
+D: Uncle
+solution:
+C is the parent of A, and A is the parent of B. So C is B's grandparent (C's gender is not given, so "Mother" or "Father" cannot be fixed).
+
+=== 5
+chapter: Blood Relations
+subtopic: Coded Relations
+difficulty: EASY
+answer: A
+stem:
+A \(-\) B means A is the sister of BA \(\times\) B means A is the mother of BA \(\div\) B means A is the father of BA + B means A is the brother of B
+What is the relation in A \(\times\) B + C?
+A: A is the mother of C
+B: B is the father of C
+C: C is the mother of B
+D: B is the brother of A
+solution:
+A \(\times\) B: A is the mother of B. B + C: B is the brother of C.
+
+So B and C are siblings, and A, the mother of B, is also the mother of C.
+
+=== 6
+chapter: Statement-Based Reasoning
+subtopic: Cause, Effect and Courses of Action
+difficulty: EASY
+answer: A
+stem:
+Read the following statement carefully and identify the action that follows.
+
+Statement: Road accidents have increased in the city during the last six months.
+Course of Action:
+1. Traffic police should be instructed to strictly monitor driving rules.
+2. Public should be educated about road safety.
+A: Both follow
+B: Only 1 follows
+C: Only 2 follows
+D: Neither follows
+solution:
+Strict enforcement of driving rules and road-safety education both directly address the rise in road accidents and are practical steps. Both follow.
+
+=== 7
+chapter: Classification
+subtopic: Letter Classification
+difficulty: MODERATE
+answer: D
+stem:
+Find the odd one out:
+A: X1$,
+B: Y2$,
+C: Z3$,
+D: W4$
+solution:
+Take each letter's position from the end of the alphabet (Z = 1, Y = 2, X = 3, W = 4) and add the number.
+
+X: 3 + 1 = 4. Y: 2 + 2 = 4. Z: 1 + 3 = 4. W: 4 + 4 = 8.
+
+W4$ breaks the pattern. Also, X, Y, Z run in order with 1, 2, 3, while W comes before X yet carries 4.
+
+=== 8
+chapter: Syllogism
+subtopic: Three-Statement Syllogism
+difficulty: EASY
+answer: B
+stem:
+Read the following statement carefully and identify the conclusion that follows.
+
+Statement:
+All birds are animals. Some animals are tigers. No tiger is a bird.
+
+**Conclusions:**
+I. Some tigers are birds.
+II. Some animals are not birds.
+A: Only I follows
+B: Only II follows
+C: Both I and II follow
+D: Neither I nor II follows
+solution:
+"No tiger is a bird" directly contradicts I, so I does not follow.
+
+Some animals are tigers, and no tiger is a bird, so those animals are not birds. II follows.
+
+=== 9
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: A
+stem:
+What comes next?
+Z, X, U, Q, ?
+A: L
+B: M
+C: N
+D: P
+solution:
+Positions: Z = 26, X = 24, U = 21, Q = 17. The gaps are 2, 3, 4, so the next gap is 5.
+
+17 \(-\) 5 = 12, which is L.
+
+=== 10
+chapter: Alphabet and Number Tests
+subtopic: Word Formation
+difficulty: EASY
+answer: A
+stem:
+In the following question, select the word that can be formed using the letters of the given word.
+
+PITCHINGS
+A: HINGS
+B: HANGS
+C: HUNG
+D: HECK
+solution:
+PITCHINGS has P, I, T, C, H, I, N, G, S. HINGS uses H, I, N, G, S, all present.
+
+HANGS needs A, HUNG needs U, HECK needs E and K: none of these is in PITCHINGS.
+
+=== 11
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: B
+stem:
+Fill in the missing letter based on an alphabetical pattern.
+
+A, C, E, ?, I
+A: F
+B: G
+C: H
+D: J
+solution:
+Each letter skips one: A, C, E, G, I (positions 1, 3, 5, 7, 9). The missing letter is G.
+
+=== 12
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: A
+stem:
+In a certain code, PLANE is written as QMBOF. How is TRAIN written in that code?
+A: USBJO
+B: USQJO
+C: USBOJ
+D: URBJO
+solution:
+Each letter moves one place forward: P to Q, L to M, A to B, N to O, E to F.
+
+TRAIN: T to U, R to S, A to B, I to J, N to O, giving USBJO.
+
+=== 13
+chapter: Classification
+subtopic: Word Classification
+difficulty: EASY
+answer: A
+stem:
+Find the odd one out from the given alternatives
+A: Classical Languages
+B: Tamil
+C: Sanskrit
+D: Kannada
+solution:
+Tamil, Sanskrit and Kannada are each a language (all three are classical languages of India). "Classical Languages" is the category they belong to, not a member of it, so it is the odd one out.
+
+=== 14
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: A
+stem:
+What comes next: **ZY, XW, VU, TS, ?**
+A: RQ
+B: PQ
+C: PR
+D: QP
+solution:
+The alphabet is taken backwards in pairs: ZY, XW, VU, TS, then RQ.
+
+=== 15
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: C
+stem:
+The sum of three consecutive even numbers is 72. What is the largest of these three numbers?
+A: 22
+B: 24
+C: 26
+D: 28
+solution:
+Let the numbers be x \(-\) 2, x, x + 2. Their sum 3x = 72, so x = 24.
+
+The numbers are 22, 24, 26; the largest is 26.
+
+Check: 22 + 24 + 26 = 72.
+
+=== 16
+chapter: Statement-Based Reasoning
+subtopic: Statement and Conclusions
+difficulty: EASY
+answer: C
+stem:
+**Eligibility Criteria:**
+Should have passed 12th with minimum 60% marks.
+40 WPM typing speed is a must.
+Should have completed certificate course in Typing or Data Entry.
+Age should be between 18 to 28 years only.
+**Case:**
+Raj has passed 12th with 65%, possesses a 38 WPM typing speed, and is a certified Data Entry professional. He is 24 years old.
+A: Eligible
+B: Not eligible due to age
+C: Not eligible due to typing speed
+D: Not eligible due to missing certification
+solution:
+Marks 65% meet the 60% minimum, he holds a Data Entry certificate, and 24 years lies within 18 to 28.
+
+His typing speed is 38 WPM, below the required 40 WPM, so he is not eligible due to typing speed.
+
+=== 17
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: EASY
+answer: B
+stem:
+If 'P' denotes '+', 'Q' denotes '\(\times\)', 'R' denotes '\(-\)', and 'S' denotes '\(\div\)'
+
+what is the value of the following expression?
+
+**6 Q 2 P 4 R 3 S 1 =?**
+A: 16
+B: 13
+C: 12
+D: 10
+solution:
+Substituting: 6 \(\times\) 2 + 4 \(-\) 3 \(\div\) 1.
+
+By BODMAS: 12 + 4 \(-\) 3 = 13.
+
+=== 18
+chapter: Mathematical Operations
+subtopic: Interchanging Signs and Numbers
+difficulty: MODERATE
+answer: A
+stem:
+If the signs are interchanged as follows:
+
+- '+' means '\(\times\)'
+- '\(-\)' means '\(\div\)'
+- '\(\times\)' means '+'
+- '\(\div\)' means '\(-\)'
+
+Choose the correct equation from the options below.
+A: 8\(\times\)4\(\div\)5=7
+B: 12+3\(-\)6=10
+C: 18\(\div\)6+3=5
+D: 7\(-\)2+3=12
+solution:
+A: 8 + 4 \(-\) 5 = 7. Correct.
+
+B: 12 \(\times\) 3 \(\div\) 6 = 6, not 10.
+
+C: 18 \(-\) 6 \(\times\) 3 = 0, not 5.
+
+D: 7 \(\div\) 2 \(\times\) 3 = 10.5, not 12.
+
+=== 19
+chapter: Statement-Based Reasoning
+subtopic: Cause, Effect and Courses of Action
+difficulty: EASY
+answer: A
+stem:
+A patient with a contagious disease is admitted. What is your first step?
+A: Isolate the patient and inform the doctor
+B: Ask them to wait
+C: Inform the media
+D: Discharge them immediately
+solution:
+A contagious patient must first be kept away from others to stop the spread, and the doctor must be told so treatment starts. Waiting, informing the media or discharging the patient does nothing to contain the disease.
+
+=== 20
+chapter: Mathematical Operations
+subtopic: Interchanging Signs and Numbers
+difficulty: EASY
+answer: D
+stem:
+Given below is an equation which has to be solved by following the interchange i.e.,
++ becomes \(-\) and \(-\) becomes +
+\(\times\) becomes \(\div\) and \(\div\) becomes \(\times\)
+Then what is the value of
+100 \(\div\) 5 + 20 \(-\) 10 \(\times\) 2 = ?
+A: 534
+B: 330
+C: 22
+D: 485
+solution:
+After the interchange: 100 \(\times\) 5 \(-\) 20 + 10 \(\div\) 2.
+
+By BODMAS: 500 \(-\) 20 + 5 = 485.
+
+=== 21
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: B
+stem:
+What should come at the place of question mark?
+**100, 97, 91, 82, ?, 55**
+A: 68
+B: 70
+C: 64
+D: 60
+solution:
+The differences are 3, 6, 9, then 12 and 15.
+
+82 \(-\) 12 = 70, and 70 \(-\) 15 = 55 confirms it.
+
+=== 22
+chapter: Syllogism
+subtopic: Two-Statement Syllogism
+difficulty: EASY
+answer: A
+flawed: yes
+note: SSC's provisional key D (only I) is wrong: from 'All dogs are cats' and 'Some cats are rats', the rats may lie wholly outside the dogs, so 'Some rats are dogs' does not follow. Our answer stays A; held PRIVATE for review
+stem:
+Statements: All dogs are cats. Some cats are rats. Conclusions: I. Some rats are dogs. II. All dogs are rats.
+A: Neither I nor II follows
+B: Only Conclusion II follows
+C: Both I and II follow
+D: Only Conclusion I follows
+solution:
+The cats that are rats need not include any dog: draw the rats overlapping only the part of cats outside dogs. Then no rat is a dog and no dog is a rat, so neither I nor II follows.
+
+=== 23
+chapter: Coding-Decoding
+subtopic: Number and Symbol Coding
+difficulty: EASY
+answer: A
+stem:
+If "CAT" is coded as "3-1-20", how will "TAC" be coded?
+A: 20-1-3
+B: 3-20-1
+C: 1-3-20
+D: 20-3-1
+solution:
+Each letter is replaced by its alphabet position: C = 3, A = 1, T = 20. TAC is 20-1-3.
+
+=== 24
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: B
+stem:
+If GARDEN is coded as FZQCDM, how is FZQCDM coded?
+A: EYPCBJ
+B: EYPBCL
+C: EYPCBL
+D: FZQCDN
+solution:
+Each letter moves one place back: G to F, A to Z, R to Q, D to C, E to D, N to M.
+
+FZQCDM: F to E, Z to Y, Q to P, C to B, D to C, M to L, giving EYPBCL.
+
+=== 25
+chapter: Series
+subtopic: Number Series
+difficulty: MODERATE
+answer: C
+stem:
+The series given below contains a sequence of numbers. Accordingly identify the incorrect combination.4, 9, 12, 12, 36, 16, 108 , 18 , 323 , 21
+A: 18, 323
+B: 36  16
+C: 16, 323
+D: 36, 108
+solution:
+Two series alternate. Odd places: 4, 12, 36, 108, 323, each term 3 times the last, so 323 should be 108 \(\times\) 3 = 324.
+
+Even places: 9, 12, 16, 18, 21, rising by 3, so 16 should be 15.
+
+The incorrect numbers are 16 and 323.
+
+=== 26
+subject: Current Affairs
+chapter: Science and Technology
+subtopic: Space Technology and Astronomy
+difficulty: EASY
+answer: D
+stem:
+India’s first interplanetary mission is:
+A: Chandrayaan-1
+B: Gaganyaan
+C: Aditya-L1
+D: Mangalyaan (Mars Orbiter Mission)
+solution:
+The Mars Orbiter Mission (Mangalyaan), launched by ISRO in November 2013, was India's first interplanetary mission. Chandrayaan-1 went to the Moon, Aditya-L1 studies the Sun from the L1 point, and Gaganyaan is the human spaceflight programme.
+
+=== 27
+subject: Geography
+chapter: World and Human Geography
+subtopic: World Political Geography — Countries, Borders and Regions
+difficulty: EASY
+answer: A
+stem:
+Which BRICS country has the longest coastline?
+A: Russia
+B: Brazil
+C: China
+D: South Africa
+solution:
+Among the options, Russia has by far the longest coastline (about 37,000 km, along the Arctic and Pacific). China has about 14,500 km, Brazil about 7,500 km and South Africa under 3,000 km.
+
+=== 28
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: EASY
+answer: B
+stem:
+Which Indian martial art involves the use of a flexible sword called "Urumi"?
+A: Silambam
+B: Kalaripayattu
+C: Gatka
+D: Thang-Ta
+solution:
+The urumi, a long flexible whip-like sword, is a weapon of Kalaripayattu, the martial art of Kerala. Silambam (Tamil Nadu) is staff fighting, Gatka is the Sikh martial art and Thang-Ta comes from Manipur.
+
+=== 29
+subject: Current Affairs
+chapter: Sports
+subtopic: Cricket — Records, Tournaments and Players
+difficulty: MODERATE
+answer: A
+stem:
+In which city did India win its first-ever Test series against England in 1952?
+A: Chennai
+B: Mumbai
+C: New Delhi
+D: Kolkata
+solution:
+India's first Test victory came against England at Madras (now Chennai) in February 1952, by an innings and 8 runs, which squared the 1951-52 series 1-1. So the 1952 win the question refers to was at Chennai.
+
+=== 30
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Days, Festivals and Observances
+difficulty: EASY
+answer: D
+stem:
+Which tribal community celebrates the "Wangala" festival?
+A: Bodo
+B: Santhal
+C: Mizo
+D: Garo
+solution:
+Wangala, the harvest festival honouring the sun god Saljong, is celebrated by the Garo tribe of Meghalaya and Assam.
+
+=== 31
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Statutory Bodies and Post-Independence Legislation
+difficulty: EASY
+answer: D
+stem:
+The Bharatiya Sakshya Adhiniyam, 2023 has been enacted to replace which previous law?
+A: Indian Penal Code
+B: Contract Act, 1872
+C: Consumer Protection Act
+D: Indian Evidence Act, 1872
+solution:
+The Bharatiya Sakshya Adhiniyam, 2023 replaced the Indian Evidence Act, 1872. The Indian Penal Code was replaced by the Bharatiya Nyaya Sanhita, 2023.
+
+=== 32
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Judiciary — Supreme Court and High Courts
+difficulty: MODERATE
+answer: C
+stem:
+Who was appointed as the Chief Justice of the High Court of Jammu and Kashmir and Ladakh in April 2025?
+A: Justice Hima Kohli
+B: Justice Dinesh Maheshwari
+C: Justice Arun Palli
+D: Justice Joymalya Bagchi
+solution:
+Justice Arun Palli, from the Punjab and Haryana High Court, became Chief Justice of the High Court of Jammu and Kashmir and Ladakh. Justices Hima Kohli and Dinesh Maheshwari are retired Supreme Court judges, and Justice Joymalya Bagchi was elevated to the Supreme Court in March 2025.
+
+=== 33
+subject: Geography
+chapter: Indian Geography — Physical Features
+subtopic: Forests and Natural Vegetation of India
+difficulty: MODERATE
+answer: A
+stem:
+In India, the Shola ecosystem is characterised by:
+1. Arid and semi-arid climate zones
+2. Growth of trees in the depressions and folds of valleys surrounded by extensive areas of grasslands
+3. Dominance of conifers in areas of dense vegetation
+Which one of the above statements is/are CORRECT?
+A: 2 only
+B: 1 and 3 only
+C: 1 only
+D: All of these
+solution:
+Sholas are stunted tropical montane evergreen forests of the high Western Ghats (Nilgiris, Anamalai, Palani hills). They grow in the folds and hollows of valleys, surrounded by rolling grasslands, so statement 2 is correct.
+
+Statement 1 is wrong: sholas are found in cool, wet, high-rainfall areas. Statement 3 is wrong: the trees are broad-leaved evergreens, not conifers.
+
+=== 34
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: UNESCO Recognitions and Cultural Heritage
+difficulty: HARD
+answer: C
+stem:
+Approximately how many water bodies originally existed in Chittorgarh Fort?
+A: 22
+B: 50
+C: 84
+D: 100
+solution:
+Chittorgarh Fort, part of the UNESCO World Heritage "Hill Forts of Rajasthan", is said to have had 84 water bodies originally, of which about 22 survive today. The 22 in option A is the surviving count, not the original one.
+
+=== 35
+subject: History
+chapter: Ancient India
+subtopic: Vedic Age, Society and Literature
+difficulty: EASY
+answer: C
+stem:
+The Rigveda is divided into how many Mandalas?
+A: 5
+B: 7
+C: 10
+D: 12
+solution:
+The Rigveda has 10 Mandalas (books) containing 1,028 hymns. Mandalas 2 to 7 are the oldest (family books), and Mandala 10 is the latest.
+
+=== 36
+subject: History
+chapter: Medieval India
+subtopic: Other Medieval Kingdoms (Chola, Rajput, Ahom, Sikh)
+difficulty: EASY
+answer: C
+stem:
+What does the term "Ur" refer to in the context of early South Indian villages?
+A: A tax official in the Chola kingdom
+B: A temple priest
+C: A village assembly or council
+D: A military commander
+solution:
+In Chola-period villages the Ur was the general assembly of the villagers (landholders) of an ordinary village, while the Sabha was the assembly of a Brahmin (brahmadeya) village and the Nagaram that of merchants.
+
+=== 37
+subject: History
+chapter: Modern India
+subtopic: British Administration, Acts and Legislation
+difficulty: MODERATE
+answer: D
+stem:
+Under which Act was a Law Commission first established in India to codify and consolidate Indian laws?
+A: Government of India Act, 1858
+B: Indian Councils Act, 1861
+C: Regulating Act, 1773
+D: Charter Act, 1833
+solution:
+The Charter Act of 1833 provided for a Law Commission to codify Indian laws. The first Law Commission was set up in 1834 under Lord Macaulay, and its work led to the Indian Penal Code.
+
+=== 38
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: D
+stem:
+**Fill in the blanks:**
+India made its Olympic debut in ________ at the 2016 Games, marking the return of the sport to the Olympics after more than a century.
+A: Swimming
+B: Rugby
+C: Polo
+D: Golf
+solution:
+Golf returned to the Olympics at Rio 2016 for the first time since 1904, more than a century. India entered golf for the first time there, with Anirban Lahiri, S.S.P. Chawrasia and Aditi Ashok. Rugby (as sevens) also returned in 2016, but its last appearance was in 1924, less than a century earlier, and India did not compete.
+
+=== 39
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Books, Literature and Authors
+difficulty: HARD
+answer: B
+stem:
+Consider the following statements about the book 'The Absolutely True Diary of a Part-Time Indian':
+1) It received the Pulitzer Prize for Fiction due to its unique narrative style and significant influence on American historical literature.
+2) The novel won the National Book Award for its deep portrayal of Native American identity and youth struggles.
+Which of the above statements is/are **correct?**
+A: Only statement 1 is correct
+B: Only statement 2 is correct
+C: Both statements 1 and 2 are correct
+D: Neither statement 1 nor 2 is correct
+solution:
+Sherman Alexie's young-adult novel (2007), about a Spokane boy who leaves the reservation school, won the 2007 National Book Award for Young People's Literature. It did not win the Pulitzer Prize for Fiction. So only statement 2 is correct.
+
+=== 40
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Constitutional Bodies and Offices
+difficulty: EASY
+answer: A
+stem:
+The Finance Commission is established under which Article of the Indian Constitution?
+A: 280
+B: 268
+C: 246
+D: 365
+solution:
+Article 280 provides for the Finance Commission, constituted by the President every five years. Article 268 deals with duties levied by the Union but collected by States, Article 246 with the division of legislative subjects, and Article 365 with failure to comply with Union directions.
+
+=== 41
+subject: Physics
+chapter: Modern Physics
+subtopic: Atomic Structure
+difficulty: EASY
+answer: B
+stem:
+As we move to higher energy levels (larger 'n' values) in the Bohr model of a hydrogen atom, the energy difference between successive levels:
+A: Increases continuously
+B: Decreases continuously
+C: Remains constant
+D: First increases, then decreases
+solution:
+In the Bohr model \(E_n = -\frac{13.6}{n^2}\) eV, so the levels crowd together as n grows.
+
+\(E_2 - E_1 = 10.2\) eV, \(E_3 - E_2 = 1.89\) eV, \(E_4 - E_3 = 0.66\) eV: the gap between successive levels keeps decreasing.
+
+=== 42
+subject: Economics
+chapter: Indian Economy
+subtopic: Government Schemes — Agriculture and Livestock
+difficulty: EASY
+answer: C
+stem:
+The National Beekeeping and Honey Mission is implemented under the purview of which Union Ministry?
+A: Ministry of Finance
+B: Ministry of Rural Development
+C: Ministry of Agriculture & Farmers Welfare
+D: Ministry of Health and Family Welfare
+solution:
+The National Beekeeping and Honey Mission (NBHM), launched in 2020 under Atmanirbhar Bharat, is a central sector scheme of the Ministry of Agriculture and Farmers Welfare, implemented through the National Bee Board.
+
+=== 43
+subject: Current Affairs
+chapter: International Affairs and Relations
+subtopic: International Organizations and Multilateral Bodies
+difficulty: MODERATE
+answer: A
+stem:
+According to the Global Gender Gap Report 2025, which region currently leads in closing its overall gender gap?
+A: North American Economies
+B: European Union Nations
+C: East Asian Countries
+D: Latin American Regions
+solution:
+In the World Economic Forum's Global Gender Gap Report 2025, Northern America has the highest regional score (75.8%), ahead of Europe (75.1%) and Latin America and the Caribbean (74.5%). East Asia and the Pacific is lower down.
+
+=== 44
+subject: Economics
+chapter: National Income, Growth and Development Indicators
+subtopic: National Income and Sectoral Composition
+difficulty: EASY
+answer: C
+stem:
+Which of the following is usually **excluded** when measuring a country's Gross Domestic Product (GDP)?
+A: Consumer spending on final goods and services.
+B: Government expenditure on public services.
+C: The value of intermediate goods used in production.
+D: Net exports (Exports - Imports).
+solution:
+GDP counts only final goods and services. Intermediate goods are excluded because their value is already included in the price of the final goods; counting them again would be double counting. Consumption, government expenditure and net exports are all parts of GDP by the expenditure method.
+
+=== 45
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: HARD
+answer: A
+stem:
+Arrange the performance segments of Paika Nritya:
+1. Blowing the war conch (shankha)
+2. Shield-sword sparring drills
+3. Acrobatic somersaults
+4. Group victory shout of “Jai Jagannath”
+A: 1-2-3-4
+B: 2-1-3-4
+C: 1-3-2-4
+D: 3-2-1-4
+solution:
+Paika Nritya, the martial dance of the Paika warriors of Odisha, follows the course of a battle. The conch is blown to open it, the dancers then spar with shields and swords, follow with acrobatic leaps and somersaults, and close with the collective victory cry of "Jai Jagannath". So the order is 1-2-3-4.
+
+=== 46
+subject: History
+chapter: Modern India
+subtopic: Freedom Movement — INC, Gandhi and Independence
+difficulty: EASY
+answer: C
+stem:
+Who is credited with hoisting the first version of the Indian flag at the International Socialist Congress in Stuttgart, Germany, in 1907?
+A: Aruna Asaf Ali
+B: Kamaladevi Chattopadhyay
+C: Bhikaji Cama
+D: Sarojini Naidu
+solution:
+Madame Bhikaji Cama unfurled the "Flag of Indian Independence" at the International Socialist Congress at Stuttgart on 22 August 1907.
+
+=== 47
+subject: Current Affairs
+chapter: Government Schemes, Policy and Governance
+subtopic: Health, Education and Welfare Schemes
+difficulty: EASY
+answer: C
+stem:
+What initiative in Visakhapatnam aims to provide an inclusive space for differently abled children?
+A: Smart School Initiative
+B: Solar Post Light Project
+C: All-Abilities Park
+D: Green Mobility Project
+solution:
+Visakhapatnam's All-Abilities Park is an inclusive park built so that differently abled children can play alongside other children, with accessible equipment and pathways. The other options are school, lighting and transport projects.
+
+=== 48
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Institutions, Milestones and History
+difficulty: MODERATE
+answer: B
+stem:
+Which of the following statements best describes Kiran Mazumdar-Shaw's achievement?
+A: She founded Infosys Biotech in 1981.
+B: She is India's first woman to head a top biotech company.
+C: She was honored for developing India's COVID vaccine.
+D: She launched India's first nanotechnology research hub.
+solution:
+Kiran Mazumdar-Shaw founded Biocon in 1978 and built it into India's largest biopharmaceutical company, becoming India's first woman to head a leading biotech enterprise. She did not found "Infosys Biotech", and India's COVID vaccines came from Bharat Biotech and the Serum Institute.
+
+=== 49
+subject: Economics
+chapter: National Income, Growth and Development Indicators
+subtopic: National Income and Sectoral Composition
+difficulty: MODERATE
+answer: D
+stem:
+Which statement best reflects the failure of structural transformation in Indian agriculture between 1950–1990?
+A: Agricultural GDP doubled
+B: Agricultural workforce declined rapidly
+C: Industrial sector absorbed excess labour
+D: 65% of population remained in agriculture
+solution:
+Structural transformation means labour moving out of agriculture into industry and services as agriculture's share of output falls. Between 1950 and 1990 agriculture's share of GDP fell, but in 1990 about 65% of the population still depended on agriculture, because industry and services did not absorb the surplus labour. Options B and C describe the transformation that did not happen.
+
+=== 50
+subject: Polity
+chapter: Indian Constitution — Making, Foundation and Amendments
+subtopic: Federal Structure — States, UTs and Finance
+difficulty: MODERATE
+answer: A
+stem:
+Consider the following statements:
+1. Inter-State Council was established in 1990 on the recommendation of Sarkaria Commission.
+2. It is a constitutional body under Article 263.
+3. It has powers to enforce compliance among States.
+Which of the above is/are **correct?**
+A: 1 and 2 only
+B: 2 and 3 only
+C: 1 and 3 only
+D: 1, 2 and 3
+solution:
+Article 263 empowers the President to set up an Inter-State Council. Acting on the Sarkaria Commission's recommendation, the President established it by order in 1990. So statements 1 and 2 are correct.
+
+Statement 3 is wrong: the Council is a recommendatory body that inquires, discusses and advises on inter-state and Centre-state matters; it cannot enforce compliance.
+
+=== 51
+chapter: Simple and Compound Interest
+subtopic: Compound Interest
+difficulty: MODERATE
+answer: A
+stem:
+A sum of money becomes three times itself in 3 years at compound interest.
+
+What is the rate of interest?
+A: \(44.2\%\)
+B: \(33.3\%\)
+C: \(100\%\)
+D: \(88\%\)
+solution:
+\((1 + r)^3 = 3\), so \(1 + r = \sqrt[3]{3} \approx 1.442\) and \(r \approx 44.2\%\).
+
+Check: \(1.442^2 \approx 2.079\) and \(2.079 \times 1.442 \approx 2.998 \approx 3\).
+
+=== 52
+chapter: Number System
+subtopic: Rational and Irrational Numbers
+difficulty: EASY
+answer: A
+stem:
+Which of the following numbers has a terminating decimal representation?
+A: \(\frac{3}{8}\)
+B: \(\frac{1}{6}\)
+C: \(\frac{2}{7}\)
+D: \(\frac{4}{9}\)
+solution:
+A fraction in lowest terms terminates only when its denominator has no prime factor other than 2 and 5. \(8 = 2^3\), so \(\frac{3}{8}\) terminates.
+
+Check: \(\frac{3}{8} = 0.375\), while 6, 7 and 9 carry the factors 3 or 7.
+
+=== 53
+chapter: Time, Speed and Distance
+subtopic: Relative Speed: Chasing and Meeting
+difficulty: EASY
+answer: C
+stem:
+Ajay and Vijay start from the same point and walk at 4 km/h and 5 km/h respectively, in the same direction.
+
+What will be the distance between them after 2 hours?
+A: 2.5 km
+B: 3 km
+C: 2 km
+D: 4 km
+solution:
+In the same direction the relative speed is \(5 - 4 = 1\) km/h, so after 2 hours the gap is \(1 \times 2 = 2\) km.
+
+Check: Vijay walks 10 km and Ajay 8 km, a gap of 2 km.
+
+=== 54
+chapter: Mensuration 3D
+subtopic: Scaling and Comparing Solids
+difficulty: EASY
+answer: C
+stem:
+A spherical balloon is inflated, causing its radius to grow by \(10\%\). By what percentage does its surface area increase?
+A: \(10\%\)
+B: \(20\%\)
+C: \(21\%\)
+D: \(25\%\)
+solution:
+Surface area varies as \(r^2\), so it becomes \(1.1^2 = 1.21\) times, an increase of \(21\%\).
+
+Check: \(10 + 10 + \frac{10 \times 10}{100} = 21\%\).
+
+=== 55
+chapter: Mensuration 3D
+subtopic: Water — Immersion, Flow and Rainfall
+difficulty: EASY
+answer: B
+stem:
+A bucket can hold 6.25 liters of water. How many such buckets are needed to fill a 1 cubic meter tank?
+A: 150
+B: 160
+C: 165
+D: 170
+solution:
+\(1 \text{ m}^3 = 1000\) litres, so the number of buckets is \(\frac{1000}{6.25} = 160\).
+
+Check: \(160 \times 6.25 = 1000\).
+
+=== 56
+chapter: Ratio, Proportion and Variation
+subtopic: Partnership
+difficulty: MODERATE
+answer: A
+stem:
+A and B started a business by investing Rs. 75,000 and Rs. 45,000 respectively. After 3 months, C joined with Rs. 60,000. At the end of the year, what is C’s share in a profit of Rs. 40,000 (approx.)?
+A: Rs. 10,909
+B: Rs. 10,109
+C: Rs. 15,909
+D: Rs. 15,109
+solution:
+Capital-months: A \(75000 \times 12 = 900000\), B \(45000 \times 12 = 540000\), C \(60000 \times 9 = 540000\). Ratio \(900 : 540 : 540 = 5 : 3 : 3\).
+
+C's share \(= \frac{3}{11} \times 40000 \approx 10909\).
+
+Check: A gets \(\frac{5}{11} \times 40000 \approx 18182\), and \(18182 + 10909 + 10909 = 40000\).
+
+=== 57
+chapter: Ratio, Proportion and Variation
+subtopic: Ratio and Proportion
+difficulty: EASY
+answer: A
+stem:
+Two numbers are in the ratio 6:5. If the difference between them is 11, find the numbers.
+A: 66 and 55
+B: 60 and 49
+C: 72 and 61
+D: 88 and 77
+solution:
+Let the numbers be \(6x\) and \(5x\). Then \(x = 11\), so the numbers are 66 and 55.
+
+Check: \(66 - 55 = 11\) and \(66 : 55 = 6 : 5\); 72 and 61 also differ by 11 but are not in ratio 6 : 5.
+
+=== 58
+chapter: Mensuration 2D
+subtopic: Rectangles, Squares and Other Quadrilaterals
+difficulty: EASY
+answer: C
+stem:
+A rectangular sheet has an area equal to a square plot. If the sheet measures 72 m in length and 50 m in breadth, and the square plot has an area equal to the sheet, find the perimeter of the square plot.
+A: 112 m
+B: 120 m
+C: 240 m
+D: 220 m
+solution:
+Area \(= 72 \times 50 = 3600 \text{ m}^2\), so the side of the square is \(\sqrt{3600} = 60\) m.
+
+Perimeter \(= 4 \times 60 = 240\) m.
+
+Check: \(60^2 = 3600\).
+
+=== 59
+chapter: Mensuration 2D
+subtopic: Areas of Triangles
+difficulty: EASY
+answer: A
+stem:
+The area of a regular triangle increases by \(44\%\). By what percentage did the side length increase?
+A: \(20\%\)
+B: \(44\%\)
+C: \(54\%\)
+D: \(10\%\)
+solution:
+Area varies as the square of the side, so the side becomes \(\sqrt{1.44} = 1.2\) times, an increase of \(20\%\).
+
+Check: \(20 + 20 + \frac{20 \times 20}{100} = 44\%\).
+
+=== 60
+chapter: Percentage, Profit and Loss
+subtopic: Percentage
+difficulty: EASY
+answer: C
+stem:
+The difference between \(20\%\) of a number and \(10\%\) of the same number is 120. What is the number?
+A: 1000
+B: 1100
+C: 1200
+D: 1400
+solution:
+\(20\% - 10\% = 10\%\) of the number is 120, so the number is \(120 \times 10 = 1200\).
+
+Check: \(240 - 120 = 120\).
+
+=== 61
+chapter: Percentage, Profit and Loss
+subtopic: Profit and Loss
+difficulty: EASY
+answer: C
+stem:
+A man buys a set of 3 identical watches at a total cost of Rs. 4,500. He sells them at Rs. 1,800, Rs. 1,700, and Rs. 1,600, respectively. What is the overall profit or loss?
+A: Rs. 100 loss
+B: Rs. 100 profit
+C: Rs. 600 profit
+D: Rs. 600 loss
+solution:
+Total selling price \(= 1800 + 1700 + 1600 = 5100\). Profit \(= 5100 - 4500 = 600\).
+
+Check: each watch costs 1500, so the gains are \(300 + 200 + 100 = 600\).
+
+=== 62
+chapter: Time and Work
+subtopic: Man-Days and Man-Hours
+difficulty: EASY
+answer: A
+stem:
+35 men can do a piece of work in 8 days. Find the time required by 16 men to do four times the work.
+A: 70 Days
+B: 65 Days
+C: 60 Days
+D: 66 Days
+solution:
+The work is \(35 \times 8 = 280\) man-days, so four times it is 1120 man-days. Time \(= \frac{1120}{16} = 70\) days.
+
+Check: \(\frac{35 \times 8}{1} = \frac{16 \times D}{4}\) gives \(D = 70\).
+
+=== 63
+chapter: Time and Work
+subtopic: Work Rates
+difficulty: EASY
+answer: A
+stem:
+Dhaval and Dhiraj together can do a piece of work in 12 days. Dhaval alone can do it in 20 days. In how many days can Dhiraj alone do it?
+A: 30
+B: 28
+C: 29
+D: 27
+solution:
+Dhiraj's rate \(= \frac{1}{12} - \frac{1}{20} = \frac{5 - 3}{60} = \frac{1}{30}\), so he takes 30 days.
+
+Check: total work 60 units; together 5 a day, Dhaval 3 a day, so Dhiraj 2 a day and \(\frac{60}{2} = 30\).
+
+=== 64
+chapter: Averages
+subtopic: Sum and Mean
+difficulty: EASY
+answer: C
+stem:
+The average salary of 40 workers in a factory is Rs. 24,000. If the salary of a supervisor is added, the average rises to Rs. 24,500. What is the supervisor’s salary?
+A: Rs. 44,000
+B: Rs. 54,000
+C: Rs. 44,500
+D: Rs. 54,500
+solution:
+New total \(= 41 \times 24500 = 1004500\); old total \(= 40 \times 24000 = 960000\). Supervisor's salary \(= 1004500 - 960000 = 44500\).
+
+Check: \(24500 + 40 \times 500 = 44500\).
+
+=== 65
+chapter: Mensuration 3D
+subtopic: Prisms and Pyramids
+difficulty: MODERATE
+answer: B
+flawed: yes
+note: Options B (\(3\sqrt{3} : 2\)) and C (\(\frac{3\sqrt{3}}{2} : 1\)) are the same ratio, so two options are correct. B is given as the simplest whole-number form.
+stem:
+Two right prisms have the same height of 10 cm. One has a regular hexagonal base with side 6 cm, and the other has a square base with side 6 cm. What is the ratio of their volumes?
+A: \(\sqrt{3} : 1\)
+B: \(3\sqrt{3} : 2\)
+C: \(\frac{3\sqrt{3}}{2} : 1\)
+D: \(3 : 2\sqrt{3}\)
+solution:
+With equal heights the volumes are in the ratio of the base areas. Hexagon area \(= \frac{3\sqrt{3}}{2} \times 6^2 = 54\sqrt{3}\); square area \(= 36\).
+
+Ratio \(= 54\sqrt{3} : 36 = 3\sqrt{3} : 2\), which is also \(\frac{3\sqrt{3}}{2} : 1\) (option C).
+
+Check: \(3\sqrt{3} : 2 \approx 2.598\), and the hexagon is six equilateral triangles of area \(9\sqrt{3}\) each, \(\frac{54\sqrt{3}}{36} \approx 2.598\).
+
+=== 66
+chapter: Ratio, Proportion and Variation
+subtopic: Mixtures and Alligation
+difficulty: EASY
+answer: B
+stem:
+A 45-litre mixture of kerosene and diesel contains kerosene and diesel in the ratio 4:5. How much diesel must be added to make the ratio 4:6?
+A: 3 L
+B: 5 L
+C: 6 L
+D: 7.5 L
+solution:
+Kerosene \(= \frac{4}{9} \times 45 = 20\) L and diesel \(= 25\) L. For \(20 : d = 4 : 6\), \(d = 30\) L, so add \(30 - 25 = 5\) L.
+
+Check: one ratio part is 5 L, and the diesel goes from 5 parts to 6 parts.
+
+=== 67
+chapter: Trigonometric Ratios and Identities
+subtopic: Ratios in a Right Triangle
+difficulty: MODERATE
+answer: B
+stem:
+If \(\sin A = \frac{5}{13}\) and A lies in 2nd quadrant, then find the value of \(\sin A \times \sec A\).
+A: \(\frac{5}{12}\)
+B: \(-\frac{5}{12}\)
+C: \(\frac{25}{12}\)
+D: \(\frac{25}{13}\)
+solution:
+\(\sin A \times \sec A = \frac{\sin A}{\cos A} = \tan A\).
+
+In the second quadrant cosine is negative: \(\cos A = -\sqrt{1 - \frac{25}{169}} = -\frac{12}{13}\). So \(\tan A = \frac{5}{13} \div \left(-\frac{12}{13}\right) = -\frac{5}{12}\).
+
+Check: tangent is negative in the second quadrant, which rules out every option but B.
+
+=== 68
+chapter: Coordinate Geometry
+subtopic: Lines, Distance and Area
+difficulty: EASY
+answer: A
+stem:
+What is the length of the segment joining (1,2) and (4,6)?
+A: 5
+B: 2
+C: 4
+D: 3
+solution:
+Distance \(= \sqrt{(4 - 1)^2 + (6 - 2)^2} = \sqrt{9 + 16} = 5\).
+
+Check: the legs 3 and 4 form the 3-4-5 triple.
+
+=== 69
+chapter: Triangles
+subtopic: Angles of a Triangle
+difficulty: EASY
+answer: B
+stem:
+In a triangle ABC, side BC is extended to a point D. The exterior angle at C is \(105^\circ\). The interior angles at A and B are in the ratio 2:5. What is the measure of the largest interior angle of the triangle?
+A: \(30^\circ\)
+B: \(75^\circ\)
+C: \(105^\circ\)
+D: \(15^\circ\)
+solution:
+The exterior angle equals the sum of the two opposite interior angles: \(A + B = 105^\circ\). With \(A : B = 2 : 5\), \(A = 30^\circ\) and \(B = 75^\circ\).
+
+\(C = 180^\circ - 105^\circ = 75^\circ\). The largest interior angle is \(75^\circ\).
+
+Check: \(30^\circ + 75^\circ + 75^\circ = 180^\circ\); \(105^\circ\) is the exterior angle, not an interior one.
+
+=== 70
+chapter: Triangles
+subtopic: Congruence and Similarity
+difficulty: EASY
+answer: B
+stem:
+Consider two triangles, \(\triangle ABC\) and \(\triangle DEF\). It is stated that these two triangles are congruent to each other, which is denoted as \(\triangle ABC \cong \triangle DEF\) and \(\angle A = 50^\circ\), what is the measure of \(\angle D\)?
+A: \(40^\circ\)
+B: \(50^\circ\)
+C: \(60^\circ\)
+D: \(130^\circ\)
+solution:
+In \(\triangle ABC \cong \triangle DEF\) the vertices correspond in order, so A corresponds to D and \(\angle D = \angle A = 50^\circ\).
+
+=== 71
+chapter: Algebraic Identities and Simplification
+subtopic: Reciprocal Sums x ± 1/x
+difficulty: MODERATE
+answer: A
+stem:
+Given, \(x + \frac{1}{x} = 5\), then determine the value of \(\frac{2x}{x^2 - 1}\)
+A: \(\frac{2\sqrt{21}}{21}\)
+B: \(\frac{2\sqrt{21}}{25}\)
+C: \(\frac{7\sqrt{21}}{25}\)
+D: \(\frac{9\sqrt{21}}{29}\)
+solution:
+Divide top and bottom by \(x\): \(\frac{2x}{x^2 - 1} = \frac{2}{x - \frac{1}{x}}\).
+
+\(\left(x - \frac{1}{x}\right)^2 = \left(x + \frac{1}{x}\right)^2 - 4 = 25 - 4 = 21\), so \(x - \frac{1}{x} = \sqrt{21}\) (taking the positive root, \(x > 1\)).
+
+Value \(= \frac{2}{\sqrt{21}} = \frac{2\sqrt{21}}{21}\).
+
+Check: \(x = \frac{5 + \sqrt{21}}{2} \approx 4.791\) gives \(\frac{9.583}{21.954} \approx 0.4365\), and \(\frac{2\sqrt{21}}{21} \approx 0.4364\).
+
+=== 72
+chapter: Circles
+subtopic: Chords and Perpendiculars
+difficulty: EASY
+answer: B
+stem:
+A chord of length 24 cm lies 7 cm away from the center of a circle. What is the approximate radius of the circle?
+A: 10 cm
+B: 14 cm
+C: 17 cm
+D: 25 cm
+solution:
+The perpendicular from the centre bisects the chord, so \(r^2 = 12^2 + 7^2 = 144 + 49 = 193\) and \(r = \sqrt{193} \approx 13.9 \approx 14\) cm.
+
+Check: \(14^2 = 196\), close to 193; 25 would need a half-chord of 24 with distance 7.
+
+=== 73
+chapter: Circles
+subtopic: Angles in a Circle
+difficulty: EASY
+answer: B
+stem:
+A chord AB of a circle has a length of 10 cm. The angle subtended by the chord at a point C on the major arc is \(30^\circ\). Find the radius of the circle.
+A: 7 cm
+B: 10 cm
+C: 11 cm
+D: 17 cm
+solution:
+The angle at the centre is \(2 \times 30^\circ = 60^\circ\), so triangle OAB is equilateral (OA = OB) and the radius equals AB = 10 cm.
+
+Check: \(AB = 2r\sin 30^\circ = r\), so \(r = 10\) cm.
+
+=== 74
+chapter: Trigonometric Ratios and Identities
+subtopic: Ratios in a Right Triangle
+difficulty: EASY
+answer: A
+stem:
+If \(\sin A = \frac{m}{n}\) and A \(\in\) \((0, \pi/2)\), then what is \(\cos A\) in terms of m and n?
+A: \(\frac{\sqrt{n^2 - m^2}}{n}\)
+B: \(\frac{m}{\sqrt{n^2 - m^2}}\)
+C: \(\frac{n}{\sqrt{n^2 - m^2}}\)
+D: \(\frac{\sqrt{m^2 - n^2}}{n}\)
+solution:
+In the first quadrant cosine is positive: \(\cos A = \sqrt{1 - \frac{m^2}{n^2}} = \frac{\sqrt{n^2 - m^2}}{n}\).
+
+Check: option B is \(\tan A\) and option C is \(\sec A\).
+
+=== 75
+chapter: Surds, Indices and Simplification
+subtopic: Fractions and Decimals
+difficulty: EASY
+answer: A
+stem:
+You earn $52.50 in 3.5 hours. Find your hourly wage as a fraction.
+A: \(\frac{15}{1}\)
+B: \(\frac{12}{1}\)
+C: \(\frac{15}{4}\)
+D: \(\frac{17}{4}\)
+solution:
+Hourly wage \(= \frac{52.50}{3.5} = \frac{525}{35} = 15\), which as a fraction is \(\frac{15}{1}\).
+
+Check: \(15 \times 3.5 = 52.50\).
+
+=== 76
+chapter: Vocabulary
+subtopic: Synonyms: Harm, Degree and the Senses
+difficulty: EASY
+answer: D
+stem:
+Select the most appropriate synonym of the given word: **SENTIENT**
+A: Lifeless
+B: Dead
+C: Unaware
+D: Conscious
+solution:
+Sentient means able to perceive or feel things, that is, conscious. Lifeless, dead and unaware are close to its opposite.
+
+=== 77
+chapter: Vocabulary
+subtopic: Antonyms: Speech and Argument
+difficulty: MODERATE
+answer: B
+stem:
+Select the most appropriate antonym of the given word. **Dissemble**
+A: Disguise
+B: Reveal
+C: Obscure
+D: Pretend
+solution:
+To dissemble is to hide one's real feelings or motives behind a false appearance. Disguise, obscure and pretend are near-synonyms; reveal (make known openly) is the opposite.
+
+=== 78
+chapter: Idioms and Phrases
+subtopic: Idioms: Trouble and Success
+difficulty: EASY
+answer: B
+stem:
+Choose the correct meaning of idiom:
+**Cook someone’s goose**
+A: Help someone succeed
+B: Ruin someone’s plans or prospects
+C: Save someone from trouble
+D: Make fun of someone
+solution:
+To cook someone's goose is to spoil their plans or ruin their chances of success.
+
+=== 79
+chapter: Idioms and Phrases
+subtopic: Idioms: People and Character
+difficulty: MODERATE
+answer: C
+stem:
+Choose the correct meaning of idiom:
+**To sup with the devil**
+A: To confess in secret
+B: To act with false modesty
+C: To collaborate with someone morally compromised
+D: To punish without justice
+solution:
+From the proverb "he who sups with the devil should have a long spoon": to sup with the devil is to deal or cooperate with a wicked or dishonest person.
+
+=== 80
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: B
+stem:
+Select the **correct spelling** of a word meaning 'having a strong, regular beat'.
+A: Rythmic
+B: Rhythmic
+C: Rhythimic
+D: Rhytmic
+solution:
+The word is spelt **rhythmic** (from rhythm: r-h-y-t-h-m).
+
+=== 81
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: MODERATE
+answer: A
+stem:
+Select the **correct spelling** of a word meaning 'undoubtedly true'.
+A: Incontrovertible
+B: Incontrovartible
+C: Incontrovatible
+D: Incontrovurtible
+solution:
+The word is spelt **incontrovertible** (in + contro + vert + ible, from controvert).
+
+=== 82
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: C
+stem:
+Choose the correct **one-word substitute** for: 'Fear of confined spaces'.
+A: Agoraphobia
+B: Hydrophobia
+C: Claustrophobia
+D: Acrophobia
+solution:
+Claustrophobia is the fear of confined spaces. Agoraphobia is fear of open or crowded places, hydrophobia fear of water and acrophobia fear of heights.
+
+=== 83
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: C
+stem:
+Choose the correct **one-word substitute** for: 'A place where coins are made'.
+A: Smithy
+B: Foundry
+C: Mint
+D: Furnace
+solution:
+A mint is where coins are made. A smithy is a blacksmith's workshop, a foundry casts metal and a furnace is an enclosure for heating.
+
+=== 84
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: HARD
+answer: B
+context:
+**In the given passage, some words have been deleted. Read the passage intently and choose the most appropriate option to fill in each blank:**
+Global sustainability discourse has not so much evolved as ossified into a lexicon of managerial **(1)** _____—terms engineered more for reputational lubrication than ecological redress. What was once a moral reckoning with planetary precarity now traffics in dashboards and metrics, calibrated less to redistribute power than to launder it. Words like “resilience,” “stakeholder engagement,” and “net-zero” populate position papers, their meanings stretched until they acquire the elasticity of **(2)** _____.In this semantic economy, language ceases to be revelatory and becomes performative. Reports teeter on euphemism; declarations bristle with procedural piety. Crises are not named; they are **(3)** _____ into ‘developmental challenges.’ The grammar of suffering is bleached, even as the facts remain uncompromising. What emerges is not truth, but a choreography of credibility—an affective simulation of care. Meanwhile, epistemic asymmetries persist: indigenous knowledge is **(4)** _____ as “local insight,” offered just enough space to decorate, never to reorient. Environmental justice, once confrontational, now wears a diplomatic smile, folded neatly into intergovernmental communiqués. If sustainability is to escape the orbit of self-congratulation, it must surrender its obsession with optics and inhabit the discomfort of history. Anything less is not stewardship—it is semantic **(5)** _____ masquerading as progress.
+stem:
+What should come in the place of blank number **(1)**?
+A: artifacts
+B: lubricants
+C: monologues
+D: alignments
+solution:
+The dash explains the blank: these are "terms engineered more for reputational lubrication than ecological redress". Words whose job is to lubricate reputations are lubricants, so "managerial lubricants" fits. Artifacts, monologues and alignments do not match the lubrication the dash spells out.
+
+=== 85
+chapter: Cloze Test
+subtopic: Collocations and the Precise Word
+difficulty: MODERATE
+answer: A
+context_from: 84
+stem:
+What should come in the place of blank number **(2)**?
+A: rhetoric
+B: science
+C: sovereignty
+D: urgency
+solution:
+The words are stretched until they mean anything at all; the next sentence says language "ceases to be revelatory and becomes performative". Elastic, empty persuasive language is rhetoric. Science, sovereignty and urgency are not known for elasticity of meaning.
+
+=== 86
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: MODERATE
+answer: B
+context_from: 84
+stem:
+What should come in the place of blank number **(3)**?
+A: confronted
+B: domesticated
+C: pluralized
+D: aggravated
+solution:
+Crises are "not named"; they are softened and tamed into the mild phrase "developmental challenges", and the grammar of suffering is "bleached". Domesticated (made tame and harmless) fits. Confronted and aggravated say the opposite, and pluralized makes no sense here.
+
+=== 87
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: MODERATE
+answer: C
+context_from: 84
+stem:
+What should come in the place of blank number **(4)**?
+A: silenced
+B: extracted
+C: tokenized
+D: discarded
+solution:
+Indigenous knowledge is included only as "local insight", given "just enough space to decorate, never to reorient": a symbolic, token inclusion, so it is tokenized. Silenced and discarded would mean it gets no space at all; extracted does not fit "as local insight".
+
+=== 88
+chapter: Cloze Test
+subtopic: Collocations and the Precise Word
+difficulty: MODERATE
+answer: B
+context_from: 84
+stem:
+What should come in the place of blank number **(5)**?
+A: inflation
+B: camouflage
+C: paralysis
+D: betrayal
+solution:
+Something "masquerading as progress" is a disguise: the passage's whole argument is that language hides the real state of things behind euphemism. Semantic camouflage fits. Inflation, paralysis and betrayal do not carry the idea of disguise.
+
+=== 89
+chapter: Grammar
+subtopic: Parts of Speech: Adverbs
+difficulty: MODERATE
+answer: C
+stem:
+**Select the correct option:**
+The director objected to the scene, deeming it ___ gratuitous for a family audience.
+A: far
+B: much
+C: too
+D: very
+solution:
+The director objected because the scene went beyond what suits a family audience: "too gratuitous for" expresses excess relative to a standard ("too ... for"). "Very" states degree without the sense of excess the objection needs, and "far" and "much" do not modify a plain adjective this way.
+
+=== 90
+chapter: Grammar
+subtopic: Fixed Prepositions after Verbs, Adjectives and Nouns
+difficulty: EASY
+answer: B
+stem:
+**Select the correct option:**
+The advisory committee issued a set of guidelines so meticulously worded that any deviation would be tantamount ___ defiance.
+A: with
+B: to
+C: for
+D: at
+solution:
+*Tantamount* (equivalent in effect) always takes *to*: tantamount to defiance.
+
+=== 91
+chapter: Spotting Errors
+subtopic: Subject-Verb Agreement
+difficulty: EASY
+answer: B
+stem:
+**Find the part of the sentence that contains an error:**
+Neither the manager nor the employees (1)/ has submitted (2)/ their performance logs (3)/ for the current quarter. (4)/
+A: (1)
+B: (2)
+C: (3)
+D: (4)
+solution:
+With "neither ... nor" the verb agrees with the nearer subject, "the employees", which is plural: "have submitted". The error is in part (2).
+
+=== 92
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: B
+stem:
+**Change the following from active to passive:**
+Historians considered the reforms emblematic of the regime’s insecurity.
+A: The reforms were emblematic of the regime’s insecurity.
+B: The reforms were considered emblematic of the regime’s insecurity by historians.
+C: The regime’s insecurity was considered to be shown by reforms.
+D: Emblematic reforms were considered part of regime insecurity.
+solution:
+The object "the reforms" becomes the subject, "considered" (past simple) becomes "were considered", the complement "emblematic of the regime's insecurity" stays, and the doer moves to "by historians".
+
+=== 93
+chapter: Vocabulary
+subtopic: Confusable Word Pairs
+difficulty: MODERATE
+answer: C
+flawed: yes
+note: "breviarium" (a breviary, a book of daily prayers) has no other meaning in English, so no sentence can carry a true homonym of it; option C is the only one that uses the word in a different (and non-existent) sense
+stem:
+**Select the sentence containing the homonym of the highlighted word:**
+The monk documented the **breviarium** with precise annotations.
+A: The breviarium contained psalms for daily recitation.
+B: The scholar studied a Gothic breviarium from Prague.
+C: The technician calibrated the breviarium using voltmeters.
+D: The liturgist chanted directly from the breviarium.
+solution:
+A homonym is the same word used with a different meaning. In A, B and D "breviarium" keeps its meaning of a book of daily prayers and psalms. Only C uses the word for something else, an instrument calibrated with voltmeters, which is what the question asks for.
+
+=== 94
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: C
+stem:
+**Convert the sentence provided below from its passive voice structure to an active voice structure:**
+A bonus will be given to all employees by the management next month.
+A: The management gives a bonus to all employees.
+B: The management had given a bonus to all employees.
+C: The management will give a bonus to all employees next month.
+D: A bonus was given by the management to all employees.
+solution:
+The doer "the management" becomes the subject, and the future passive "will be given" becomes the future active "will give", keeping "next month". A and B change the tense; D is still passive.
+
+=== 95
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: B
+stem:
+Choose the most suitable option to replace the highlighted part of the sentence:
+The man ***died by*** a heart attack.
+A: is died with
+B: died of
+C: was died due to
+D: dead from
+solution:
+One dies *of* a disease or illness: the man died of a heart attack. "Die" is intransitive, so "is died" and "was died" are wrong, and "dead from" has no verb.
+
+=== 96
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: A
+stem:
+Choose the most suitable option to replace the highlighted part of the sentence:
+The police ***is investigating the matter seriously***.
+A: are investigating the matter seriously
+B: investigates the matter
+C: were investigating seriously the matter
+D: is in investigation
+solution:
+"Police" is always plural, so it takes "are": the police are investigating the matter seriously. C changes the tense and puts the adverb between verb and object; B and D keep a singular verb.
+
+=== 97
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: B
+blind: A
+note: judgement item. SSC's key keeps the reported tense inside the quotation ('were'), as in its other direct-speech items; our blind answer undid the backshift. The bank carries SSC's answer
+stem:
+**A sentence is provided in indirect speech. From the four given options, choose the one that most accurately conveys the sentence in its corresponding direct speech.**
+The geologist explained that tectonic shifts were inevitable.
+A: The geologist said, "Tectonic shifts are inevitable."
+B: "Tectonic shifts were inevitable," said the geologist.
+C: The geologist explained, "Tectonic shifts will occur."
+D: "Inevitably, tectonic shifts occur," he said.
+solution:
+The key takes the option that keeps the reported words as they stand: "Tectonic shifts were inevitable," said the geologist. C changes the content to "will occur" and D rewrites the sentence and replaces the speaker with "he". A, with "are", undoes the backshift; SSC's key does not do that here.
+
+=== 98
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: B
+stem:
+**A sentence is provided in direct speech. From the four given options, choose the one that most accurately conveys the sentence in its corresponding indirect speech.**
+Rita said, “Alas! I am ruined.”
+A: Rita said she was ruined.
+B: Rita exclaimed with sorrow that she was ruined.
+C: Rita said that she ruined.
+D: Rita exclaimed sadly that I am ruined.
+solution:
+An exclamation of grief ("Alas!") is reported with "exclaimed with sorrow", the pronoun I becomes she and "am" becomes "was". A drops the exclamation, C changes the meaning and D keeps "I am".
+
+=== 99
+chapter: Sentence Rearrangement
+subtopic: Shape of a Paragraph Argument
+difficulty: MODERATE
+answer: A
+blind: D
+note: judgement item. SSC's key puts patronage (3) before the art it paid for (2); our blind order took the art first. Both keep 1 first and 4 last. The bank carries SSC's answer
+stem:
+**Rearrange the following sentences to form a meaningful passage:**
+1. The Renaissance marked a revival of classical learning. 2. Artists focused on realism and human emotion. 3. Patronage from wealthy families fueled cultural output. 4. This period reshaped Europe’s intellectual landscape.
+A: 1-3-2-4
+B: 2-1-3-4
+C: 2-3-1-4
+D: 1-2-3-4
+solution:
+Sentence 1 opens on the Renaissance as a revival of classical learning, and 4 ("This period") sums it up. In between, 3 gives what made the cultural output possible, patronage from wealthy families, and 2 what the artists then did with it, realism and human emotion. Order: 1-3-2-4.
+
+=== 100
+chapter: Sentence Rearrangement
+subtopic: Pronouns and Names in Paragraphs
+difficulty: EASY
+answer: D
+stem:
+**Rearrange the following sentences in correct order to make a logical passage.**
+1. This led to significant breakthroughs in medicine.
+2. The discovery of penicillin marked a new era.
+3. It revolutionized the treatment of bacterial infections.
+4. Many previously fatal diseases became curable.
+A: 2-1-3-4
+B: 2-4-1-3
+C: 3-4-2-1
+D: 2-3-4-1
+solution:
+Sentence 2 names penicillin, and "It" in 3 must follow it directly. Only option D has 2-3. Then 4 states the result (fatal diseases curable) and 1 ("This led to") sums up the wider effect: 2-3-4-1.

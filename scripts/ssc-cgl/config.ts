@@ -62,7 +62,19 @@ export type Day = {
   provisionalKey: boolean;
   /** shift -> question numbers the hosted file does not contain (its gap, not ours) */
   missing?: Record<number, number[]>;
+  /** the shift numbers the hosted file holds, when it lacks whole shifts (13 Sep 2025: 2, 3) */
+  present?: number[];
+  /**
+   * "tcs": a 2022-2024 TCS response sheet, text with the key as the option colour (tcs.ts),
+   * read by assemble-tcs.ts. Absent: the 2025 challenge-module render (assemble.ts).
+   */
+  format?: "tcs";
+  /** TCS only: the day's slots in shift order, as the sheets print Exam Time */
+  slots?: string[];
 };
+
+/** The shift numbers a day's file holds: `present`, or 1..shifts. */
+export const shiftsOf = (d: Day): number[] => d.present ?? Array.from({ length: d.shifts }, (_, i) => i + 1);
 const t1_2025 = (dd: string, mon: "Sep" | "Oct", docId: string, extra: Partial<Day> = {}): Day => ({
   tier: 1,
   date: `2025-${mon === "Sep" ? "09" : "10"}-${dd}`,
@@ -73,11 +85,54 @@ const t1_2025 = (dd: string, mon: "Sep" | "Oct", docId: string, extra: Partial<D
   ...extra,
 });
 
+/**
+ * 2024 Tier I: AglaSem hosts one TCS file per exam day (English). A file runs past its own
+ * day (the 10 Sep file ends with 11 Sep 9 AM), so assemble-tcs.ts reads EVERY 2024 file and
+ * files each sheet under the Exam Date it prints. The key is the response sheet's, released
+ * with the tentative key, so it counts as provisional.
+ */
+const SLOTS_2024_T1 = ["9:00 AM - 10:00 AM", "12:30 PM - 1:30 PM", "4:00 PM - 5:00 PM"];
+const t1_2024 = (dd: string, docId: string): Day => ({
+  tier: 1,
+  date: `2024-09-${dd}`,
+  shifts: 3,
+  file: join(SOURCE_ROOT, "2024_Tier1", `SSC_CGL_2024_Tier1_${dd}Sep_AllShifts_EN.pdf`),
+  url: `https://cdn.aglasem.com/aglasem-doc/${docId}/${docId}.pdf`,
+  provisionalKey: true,
+  format: "tcs",
+  slots: SLOTS_2024_T1,
+});
+
 export const DAYS: Record<string, Day> = {
+  "t1-2024-09-09": t1_2024("09", "73c870dc-8c15-11f1-9679-0aa932765c8b"),
+  "t1-2024-09-10": t1_2024("10", "78ca267a-8c15-11f1-8a06-0aa932765c8b"),
+  "t1-2024-09-11": t1_2024("11", "7d86f94a-8c15-11f1-b917-0aa932765c8b"),
+  "t1-2024-09-12": t1_2024("12", "816d4c1c-8c15-11f1-8148-0aa932765c8b"),
+  "t1-2024-09-13": t1_2024("13", "853c0e28-8c15-11f1-afcc-0aa932765c8b"),
+  "t1-2024-09-17": t1_2024("17", "89f250da-8c15-11f1-b895-0aa932765c8b"),
+  "t1-2024-09-18": t1_2024("18", "8da72886-8c15-11f1-84e7-0aa932765c8b"),
+  "t1-2024-09-19": t1_2024("19", "91f00ea8-8c15-11f1-b445-0aa932765c8b"),
+  "t1-2024-09-23": t1_2024("23", "9623055c-8c15-11f1-817a-0aa932765c8b"),
+  "t1-2024-09-24": t1_2024("24", "9a552100-8c15-11f1-aafc-0aa932765c8b"),
+  "t1-2024-09-25": t1_2024("25", "9e42f4fe-8c15-11f1-9173-0aa932765c8b"),
+  "t1-2024-09-26": t1_2024("26", "a1f73c4a-8c15-11f1-bea0-0aa932765c8b"),
   "t1-2025-09-12": t1_2025("12", "Sep", "11f241cc-8c19-11f1-aa13-0aa932765c8b"),
   "t1-2025-09-14": t1_2025("14", "Sep", "1c04e296-8c19-11f1-b4ad-0aa932765c8b"),
   "t1-2025-09-15": t1_2025("15", "Sep", "1f3fefb4-8c19-11f1-b79a-0aa932765c8b"),
   "t1-2025-09-17": t1_2025("17", "Sep", "2643aefe-8c19-11f1-8ce7-0aa932765c8b"),
+  // The hosted 13 Sep file holds Shifts 2 and 3 only (88 pages, no Shift 1 at all).
+  "t1-2025-09-13": t1_2025("13", "Sep", "15180936-8c19-11f1-b794-0aa932765c8b", { shifts: 2, present: [2, 3] }),
+  // The hosted 20 Sep file: pages 2-5 are a complete Shift 1 (web print, one tall page per
+  // PART); pages 6-38 are a second render with no text Q.No labels and pages 39-42 are
+  // screenshots, neither readable here yet. Extract with --pages=2-5.
+  "t1-2025-09-20": t1_2025("20", "Sep", "303df2f2-8c19-11f1-8b00-0aa932765c8b", { shifts: 1 }),
+  // The hosted 21 Sep file has no PART-A for Shift 2 (Q1-25).
+  "t1-2025-09-21": t1_2025("21", "Sep", "33741f14-8c19-11f1-87d6-0aa932765c8b", { missing: { 2: Array.from({ length: 25 }, (_, i) => i + 1) } }),
+  // The hosted 22 Sep file holds Shifts 1 and 3 only.
+  "t1-2025-09-22": t1_2025("22", "Sep", "36226270-8c19-11f1-8111-0aa932765c8b", { shifts: 2, present: [1, 3] }),
+  "t1-2025-09-23": t1_2025("23", "Sep", "390f6be0-8c19-11f1-af57-0aa932765c8b"),
+  "t1-2025-09-24": t1_2025("24", "Sep", "3c8b27dc-8c19-11f1-813c-0aa932765c8b"),
+  "t1-2025-09-26": t1_2025("26", "Sep", "3f3b42e6-8c19-11f1-979e-0aa932765c8b"),
   "t1-2025-09-16": {
     tier: 1,
     date: "2025-09-16",
@@ -116,8 +171,7 @@ const TIER = ["", "I", "II"];
 export const SHIFTS: Record<string, Shift> = Object.fromEntries(
   Object.entries(DAYS).flatMap(([day, d]) => {
     const [y, m, dd] = d.date.split("-").map(Number);
-    return Array.from({ length: d.shifts }, (_, i) => {
-      const shift = i + 1;
+    return shiftsOf(d).map((shift) => {
       return [
         `${day}-s${shift}`,
         {
@@ -132,6 +186,14 @@ export const SHIFTS: Record<string, Shift> = Object.fromEntries(
     });
   })
 );
+
+/** Every TCS file, in day order: `dir` is its out/ folder (tcs_extract.py's dayId). */
+export function tcsFiles(): { dir: string; day: Day }[] {
+  return Object.entries(DAYS)
+    .filter(([, d]) => d.format === "tcs")
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([dir, day]) => ({ dir, day }));
+}
 
 export function requireShift(id: string | undefined): Shift & { id: string } {
   if (!id || !SHIFTS[id]) throw new Error(`unknown shift "${id}". Known: ${Object.keys(SHIFTS).join(", ")}`);

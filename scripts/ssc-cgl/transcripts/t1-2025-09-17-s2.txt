@@ -1,0 +1,1632 @@
+SSC CGL 2025 Tier I, 17 September 2025, Shift 2 (12:30 PM). Read from SSC's challenge-module saved paper.
+Drafted by agents, one PART each, from the reading sheets only (no key; DRAFTING_BRIEF.md);
+every block reviewed in the main session, then compared with the key (build.ts).
+Format: scripts/ssc-cgl/lib.ts.
+
+=== 1
+chapter: Coding-Decoding
+subtopic: Number and Symbol Coding
+difficulty: EASY
+answer: D
+stem:
+If each letter is coded as its position in reverse (Z=1, Y=2,...A=26), what is ROAD?
+A: 10, 12, 25, 23
+B: 9, 12, 25, 23
+C: 9, 13, 25, 23
+D: 9, 12, 26, 23
+solution:
+A letter's reverse position is 27 minus its forward position.
+
+R = 27 - 18 = 9, O = 27 - 15 = 12, A = 27 - 1 = 26, D = 27 - 4 = 23. ROAD is 9, 12, 26, 23.
+
+=== 2
+chapter: Alphabet and Number Tests
+subtopic: Address and Data Matching
+difficulty: EASY
+answer: B
+stem:
+Choose the address that is exactly the same as the one given below.
+
+A-5, Lotus Enclave, Patliputra Colony, Patna, Bihar - 800013
+A: A-5, Lotus Enclave, Patliputra Colony, Patna, Biharr - 800013
+B: A-5, Lotus Enclave, Patliputra Colony, Patna, Bihar - 800013
+C: A5, Lotus Enclave, Patliputra Colony, Patna, Bihar - 800013
+D: A-5, Lotus Enclave, Patliputra Colonny, Patna, Bihar - 800013
+solution:
+A has "Biharr", C drops the hyphen in "A-5" and D has "Colonny". Only B matches exactly.
+
+=== 3
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: A
+stem:
+Select the letter-cluster from among the given options that can replace the question mark (?) in the following series.
+**DAC, GWH, JSM, MOR, ?**
+A: PKW
+B: QKV
+C: PWK
+D: PJV
+solution:
+First letters D, G, J, M move 3 forward, giving P. Second letters A, W, S, O move 4 back, giving K. Third letters C, H, M, R move 5 forward, giving W. The next cluster is PKW.
+
+=== 4
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: D
+stem:
+Select the letter-cluster from among the given options that can replace the question mark (?) in the following series:
+**DAPR, FESU, HIVX, JMYA ?**
+A: ZBCX
+B: QCTR
+C: PYSB
+D: LQBD
+solution:
+First letters D, F, H, J move 2 forward: L. Second letters A, E, I, M move 4 forward: Q. Third letters P, S, V, Y move 3 forward: B. Fourth letters R, U, X, A move 3 forward: D. The next cluster is LQBD.
+
+=== 5
+chapter: Mathematical Operations
+subtopic: Interchanging Signs and Numbers
+difficulty: MODERATE
+answer: B
+stem:
+Find the two signs to interchange to correct the equation.
+
+\(30 - 12 \div 3 \times 2 + 4 = 122\)
+A: \(\div\) and \(-\)
+B: \(-\) and \(\times\)
+C: \(\times\) and \(+\)
+D: \(\div\) and \(+\)
+solution:
+Interchanging \(-\) and \(\times\) gives \(30 \times 12 \div 3 - 2 + 4 = 120 - 2 + 4 = 122\), which is correct.
+
+Check the others: A gives \(30 \div 12 - 3 \times 2 + 4 = 0.5\), C gives \(30 - 12 \div 3 + 2 \times 4 = 34\), D gives \(30 - 12 + 3 \times 2 \div 4 = 19.5\).
+
+=== 6
+chapter: Blood Relations
+subtopic: Direct Relations
+difficulty: EASY
+answer: B
+stem:
+X is the daughter of Y. Y is the son of Z. W is the wife of Z. How is W related to X?
+A: Mother
+B: Grandmother
+C: Aunt
+D: Sister
+solution:
+Y is the son of Z, and W is Z's wife, so W is Y's mother. X is Y's daughter, so W is X's grandmother.
+
+=== 7
+chapter: Series
+subtopic: Number Series
+difficulty: MODERATE
+answer: A
+stem:
+Find the missing term: **7, 22, 89, ________, 2677, 18740**
+A: 446
+B: 436
+C: 448
+D: 457
+solution:
+Each term is the previous one times 3, 4, 5, ... plus 1: \(7 \times 3 + 1 = 22\), \(22 \times 4 + 1 = 89\), \(89 \times 5 + 1 = 446\).
+
+Check: \(446 \times 6 + 1 = 2677\) and \(2677 \times 7 + 1 = 18740\).
+
+=== 8
+chapter: Mathematical Operations
+subtopic: Hidden Operation Rules
+difficulty: EASY
+answer: D
+stem:
+Find the odd one out:
+A: 6 # 2 = 12
+B: 5 # 3 = 15
+C: 4 # 4 = 16
+D: 7 # 1 = 21
+solution:
+In A, B and C the # stands for multiplication: \(6 \times 2 = 12\), \(5 \times 3 = 15\), \(4 \times 4 = 16\). In D, \(7 \times 1 = 7\), not 21, so D is the odd one out.
+
+=== 9
+chapter: Statement-Based Reasoning
+subtopic: Statement and Assumptions
+difficulty: MODERATE
+answer: A
+blind: C
+note: judgement item. SSC's key reads 'strong evidence for Einstein's theory' as assuming the theory is confirmed (II) along with I; our blind answer took only I. The bank carries SSC's answer
+stem:
+**Instruction:** Identify the assumptions that must hold for the statement to be valid, then choose the correct option.
+**Statement:** The discovery of gravitational waves has provided strong evidence for Einstein's theory of general relativity, but it also opens up new possibilities for understanding the universe's most extreme phenomena, such as black holes and neutron stars.
+**Assumptions:**
+I. Gravitational waves offer new insights into the nature of the universe.
+II. Einstein's theory of general relativity has been conclusively proven by the discovery of gravitational waves.
+III. The study of gravitational waves will lead to new breakthroughs in astrophysics.
+A: Only I and II are implicit
+B: Only II and III are implicit
+C: Only I is implicit
+D: All I, II, and III are implicit
+solution:
+I is implicit: the statement says the discovery opens up new possibilities for understanding the universe.
+
+II is taken as implicit: calling the discovery strong evidence for general relativity assumes it confirms the theory.
+
+III is not implicit: new possibilities do not assume that breakthroughs will certainly follow. Only I and II are implicit.
+
+=== 10
+chapter: Statement-Based Reasoning
+subtopic: Statement and Conclusions
+difficulty: MODERATE
+answer: C
+blind: D
+note: judgement item. SSC's key accepts both the trend reading (I) and the hedged possible cause (II, 'may be seeking'); our blind answer accepted neither. The bank carries SSC's answer
+stem:
+Read the following statement carefully and identify the conclusion that follows.
+
+Statement: Fewer people applied for teaching posts this year.
+Conclusions:
+I. Teaching is losing popularity.
+II. Applicants may be seeking better-paying jobs.
+A: Only Conclusion I follows
+B: Only Conclusion II follows
+C: Both I and II follow
+D: Neither I nor II follows
+solution:
+Fewer applications for teaching posts point to the profession drawing less interest, so I follows. II is worded as a possibility ("may be seeking better-paying jobs"), a reasonable explanation of the drop, so it follows too. Both follow.
+
+=== 11
+chapter: Analogy
+subtopic: Letter Analogy
+difficulty: MODERATE
+answer: B
+flawed: yes
+note: by the CIRCLE pattern (each letter +1, then the 4th and 6th letters swap) SQUARE gives TRVFSB, which is not among the options; B is the only option of the right length and start
+stem:
+Find the group of letters that best completes the analogy based on the given letter transformation pattern.
+**CIRCLE : DJSFMD :: SQUARE : ?**
+A: YTUBN
+B: TRVDSD
+C: CVBGF
+D: QWERTY
+solution:
+Moving each letter of CIRCLE one place forward gives DJSDMF. DJSFMD is this with the 4th and 6th letters swapped (equally, the last three letters reversed).
+
+The same steps on SQUARE: one place forward gives TRVBSF, and swapping the 4th and 6th letters gives TRVFSB.
+
+No option is TRVFSB. TRVDSD is the only option that keeps the six-letter shape and the first three letters TRV, so it is the closest choice.
+
+=== 12
+chapter: Syllogism
+subtopic: Two-Statement Syllogism
+difficulty: EASY
+answer: D
+stem:
+Read the following statement carefully and identify the conclusion that follows.
+
+Statement:
+All plants are living beings. Some living beings are animals.
+
+**Conclusions:**
+I. Some plants are animals.
+II. All animals are plants.
+A: Only I follows
+B: Only II follows
+C: Both I and II follow
+D: Neither I nor II follows
+solution:
+Plants sit inside living beings, and animals overlap living beings somewhere. The animals may lie entirely outside the plants, so "Some plants are animals" is not definite.
+
+Nothing places all animals inside plants either. Neither follows.
+
+=== 13
+chapter: Alphabet and Number Tests
+subtopic: Letter Position and Alphabet Test
+difficulty: EASY
+answer: B
+stem:
+Find the word which is between the 1st and 4th letters of the following word as per the English alphabet series.
+
+CUTE
+A: F
+B: D
+C: V
+D: Z
+solution:
+The 1st letter of CUTE is C and the 4th is E. The letter between C and E in the alphabet is D.
+
+=== 14
+chapter: Series
+subtopic: Alphanumeric and Pattern Series
+difficulty: EASY
+answer: D
+stem:
+Complete the series.
+A1, C2, E3, G4, ?
+A: J5
+B: K5
+C: H5
+D: I5
+solution:
+The letters move 2 places forward (A, C, E, G, I) and the numbers go up by 1 (1, 2, 3, 4, 5). The next term is I5.
+
+=== 15
+chapter: Classification
+subtopic: Word Classification
+difficulty: EASY
+answer: C
+stem:
+Find the odd one out from the given alternatives:
+A: Monopoly
+B: Oligopoly
+C: Barter
+D: Duopoly
+solution:
+Monopoly (one seller), duopoly (two sellers) and oligopoly (a few sellers) are market structures. Barter is a system of exchanging goods without money, so it is the odd one out.
+
+=== 16
+chapter: Coding-Decoding
+subtopic: Number and Symbol Coding
+difficulty: EASY
+answer: A
+stem:
+In a certain code language, each letter is assigned a unique digit. Based on the given codes for specific words, determine the code for the target word using the same logic. If MOUSE is coded as 45291 and RAT as 786, how is STORE coded?
+A: 96571
+B: 97653
+C: 98345
+D: 96278
+solution:
+From MOUSE = 45291: M = 4, O = 5, U = 2, S = 9, E = 1. From RAT = 786: R = 7, A = 8, T = 6.
+
+STORE is S, T, O, R, E = 9, 6, 5, 7, 1, so 96571.
+
+=== 17
+chapter: Mathematical Operations
+subtopic: Hidden Operation Rules
+difficulty: MODERATE
+answer: D
+stem:
+If 4 @ 3 = 19 and 2 @ 5 = 9, then 5 @ 2 = ?
+A: 21
+B: 23
+C: 25
+D: 27
+solution:
+The rule is \(a\ @\ b = a^2 + b\): \(4^2 + 3 = 19\) and \(2^2 + 5 = 9\).
+
+So \(5\ @\ 2 = 5^2 + 2 = 27\).
+
+=== 18
+chapter: Coding-Decoding
+subtopic: Number and Symbol Coding
+difficulty: EASY
+answer: C
+stem:
+In a code language, 'FLOW' is written as 'G#3X', and 'WOLF' is written as 'X3#G'. How is 'FOWL' written?
+A: G#X3
+B: XG3#
+C: G3X#
+D: X#G3
+solution:
+From FLOW = G#3X: F = G, L = #, O = 3, W = X. WOLF = X3#G confirms each letter keeps its own code.
+
+FOWL is F, O, W, L = G, 3, X, #, so G3X#.
+
+=== 19
+chapter: Mathematical Operations
+subtopic: Hidden Operation Rules
+difficulty: EASY
+answer: B
+stem:
+If 2 \(\text{\textdollar}\) 2 = 16 and 3 \(\text{\textdollar}\) 3 = 36, what is 4 \(\text{\textdollar}\) 4?
+A: 48
+B: 64
+C: 72
+D: 80
+solution:
+The rule is \((a + b)^2\): \((2 + 2)^2 = 16\) and \((3 + 3)^2 = 36\).
+
+So 4 \(\text{\textdollar}\) 4 is \((4 + 4)^2 = 64\).
+
+=== 20
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: D
+stem:
+In a 40 L solution, the ratio of acid to water is 5:3. How much water must be added to make it 1:1?
+A: 5 L
+B: 6 L
+C: 17 L
+D: 10 L
+solution:
+Acid \(= \frac{5}{8} \times 40 = 25\) L and water \(= \frac{3}{8} \times 40 = 15\) L.
+
+For a 1:1 ratio the water must also be 25 L, so \(25 - 15 = 10\) L must be added.
+
+=== 21
+chapter: Blood Relations
+subtopic: Coded Relations
+difficulty: EASY
+answer: B
+stem:
+X + Y means X is the mother of Y, X - Y means X is the brother of Y, X * Y means X is the sister of Y. Then what does A - B + C mean?
+A: A is brother-in-law of C
+B: A is maternal uncle of C
+C: A is brother of C
+D: A is father of C
+solution:
+A - B: A is the brother of B. B + C: B is the mother of C.
+
+A is the brother of C's mother, so A is C's maternal uncle.
+
+=== 22
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: EASY
+answer: A
+stem:
+If 'M' means '+', 'N' means '\(-\)', 'O' means '\(\times\)', and 'P' means '\(\div\)'
+
+what is the value of the following expression?
+
+**18 P 3 M 5 O 2=?**
+A: 16
+B: 22
+C: 28
+D: 8
+solution:
+Substituting the signs gives \(18 \div 3 + 5 \times 2\).
+
+\(= 6 + 10 = 16\).
+
+=== 23
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: MODERATE
+answer: C
+stem:
+If 'P' = \(\times\), 'Q' = \(\div\), 'R' = +, 'S' = \(-\), which equation is correct?
+A: 18 R 2 P 4 S 2 Q 1 = 15
+B: 12 P 3 S 4 Q 2 R 1 = 13
+C: 20 Q 5 R 2 P 3 S 1 = 9
+D: 30 S 5 R 2 Q 1 P 3 = 32
+solution:
+C: \(20 \div 5 + 2 \times 3 - 1 = 4 + 6 - 1 = 9\), which is correct.
+
+The others: A gives \(18 + 2 \times 4 - 2 \div 1 = 24\), B gives \(12 \times 3 - 4 \div 2 + 1 = 35\), D gives \(30 - 5 + 2 \div 1 \times 3 = 31\).
+
+=== 24
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: EASY
+answer: B
+stem:
+If \(\text{\textdollar}\) = \(-\), % = \(\times\), # = +, then 18 % 2 \(\text{\textdollar}\) 3 # 1 = ?
+A: 33
+B: 34
+C: 32
+D: 35
+solution:
+Substituting the signs gives \(18 \times 2 - 3 + 1\).
+
+\(= 36 - 3 + 1 = 34\).
+
+=== 25
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: A
+stem:
+In a class of 80 students, 60% are girls. If 75% of the girls passed, how many girls failed?
+A: 12
+B: 15
+C: 18
+D: 20
+solution:
+Girls \(= 60\%\) of \(80 = 48\).
+
+25% of the girls failed: \(\frac{1}{4} \times 48 = 12\).
+
+Check: \(75\%\) of 48 is 36 passed, and \(48 - 36 = 12\).
+
+=== 26
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: HARD
+answer: B
+stem:
+Which of the following is a notable architectural feature of Notre Dame des Anges Church in Puducherry?
+A: Shikhara with amalaka
+B: Transparent enclosure with piers
+C: Minaret with balcony
+D: Corbelled arch with lattice work
+solution:
+Notre Dame des Anges (1855) is a Greco-Roman style church with an open, light interior carried on piers. A shikhara with amalaka belongs to a Nagara Hindu temple, a minaret with a balcony to a mosque, and the corbelled arch with lattice (jali) work to Indo-Islamic buildings, so only the enclosure with piers fits a church.
+
+=== 27
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Days, Festivals and Observances
+difficulty: MODERATE
+answer: B
+stem:
+Which of the following best captures the cultural and historical essence of Uttarakhand's Bissu Mela?
+A: A three-day martial arts event by Gorkha settlers in Garhwal to worship Lord Kartikeya as the harvest god.
+B: A week-long Jaunsari tribal fair in Chakrata, thanking for harvest and honoring Santoora Devi, a Durga form.
+C: A pilgrimage where Pandavas are worshipped at stone altars through Himachali Brahmin rituals.
+D: A fasting-based fair restricting women from dancing due to ancestral customs.
+solution:
+Bissu Mela is a harvest fair of the Jaunsari tribe of the Jaunsar-Bawar area around Chakrata (Dehradun district), held in mid-April to give thanks for the harvest and to honour Santoora Devi, regarded as a form of Durga.
+
+=== 28
+subject: History
+chapter: Ancient India
+subtopic: Post-Mauryan, Gupta and Sangam Period
+difficulty: MODERATE
+answer: B
+stem:
+In the context of **Gupta dynasty's taxation**, which pair is **correct**?
+A: Adeya – penalty for libellous speech
+B: Bhaga – king’s share of produce
+C: Hiranya – forced labour
+D: Dhanya – gold bullion fee
+solution:
+Bhaga was the king's share of the produce, usually one-sixth. Hiranya was tax paid in cash (gold), not forced labour (that was vishti). Dhanya relates to grain, not gold, and adeya is not a penalty for speech.
+
+=== 29
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: MODERATE
+answer: B
+stem:
+Which of the following best describes Achal and Chal swaras in Indian classical music?
+A: All swaras have fixed pitch in both systems
+B: Sa and Pa are fixed; others have variants like Komal or Teevra
+C: Komal and Teevra swaras are used only in Carnatic music
+D: Ga and Ni are always sung in Shuddha form in all styles
+solution:
+Sa and Pa are the achal (immovable) swaras and have no variants. The other five (Re, Ga, Ma, Dha, Ni) are chal swaras: Re, Ga, Dha and Ni have komal forms and Ma has a teevra form.
+
+=== 30
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: C
+stem:
+Which of the following is true about "en passant" in chess?
+A: Only after a pawn moves two squares and waits a turn.
+B: Can be done within two moves after the pawn's advance.
+C: Must be done immediately after the pawn moves two squares.
+D: Only if the capturing pawn is on a dark square.
+solution:
+An en passant capture is allowed only on the move immediately after the opponent's pawn advances two squares and lands beside the capturing pawn. If it is not taken at once, the right is lost. Square colour has nothing to do with it.
+
+=== 31
+subject: History
+chapter: Medieval India
+subtopic: Other Medieval Kingdoms (Chola, Rajput, Ahom, Sikh)
+difficulty: EASY
+answer: A
+stem:
+**Match the dynasties listed in Column A with their respective founders mentioned in Column B:**
+
+| Column A: Dynasty | Column B: Founder |
+|---|---|
+| A. Tomaras | 1. Bahlul Lodi |
+| B. Khalji Dynasty | 2. Ananga Pala |
+| C. Sayyid Dynasty | 3. Jalaluddin Khalji |
+| D. Lodi Dynasty | 4. Khizr Khan |
+A: A \(\rightarrow\) 2, B \(\rightarrow\) 3, C \(\rightarrow\) 4, D \(\rightarrow\) 1
+B: A \(\rightarrow\) 3, B \(\rightarrow\) 2, C \(\rightarrow\) 4, D \(\rightarrow\) 1
+C: A \(\rightarrow\) 4, B \(\rightarrow\) 3, C \(\rightarrow\) 2, D \(\rightarrow\) 1
+D: A \(\rightarrow\) 1, B \(\rightarrow\) 3, C \(\rightarrow\) 4, D \(\rightarrow\) 2
+solution:
+The Tomaras of Delhi are traced to Anangapala, the Khalji dynasty was founded by Jalaluddin Khalji (1290), the Sayyid dynasty by Khizr Khan (1414) and the Lodi dynasty by Bahlul Lodi (1451). So A-2, B-3, C-4, D-1.
+
+=== 32
+subject: Current Affairs
+chapter: Sports
+subtopic: Tennis
+difficulty: EASY
+answer: A
+stem:
+In which Olympic Games did Leander Paes make his debut before winning India’s first Olympic tennis medal in the following edition?
+A: Barcelona Olympic Games
+B: Atlanta Olympic Games
+C: Sydney Olympic Games
+D: New Delhi Olympic Games
+solution:
+Leander Paes first played the Olympics at Barcelona 1992 and won the singles bronze at the next Games, Atlanta 1996, India's first Olympic tennis medal. New Delhi has never hosted the Olympics.
+
+=== 33
+subject: Current Affairs
+chapter: International Affairs and Relations
+subtopic: International Summits, Initiatives and Forums
+difficulty: HARD
+answer: C
+stem:
+At which BIMSTEC Summit was the agreement to set up the Technology Transfer Facility in Colombo signed?
+A: Third Summit
+B: Fourth Summit
+C: Fifth Summit
+D: Sixth Summit
+solution:
+The Memorandum of Association on establishing the BIMSTEC Technology Transfer Facility in Colombo was signed at the Fifth BIMSTEC Summit, held virtually from Colombo in March 2022, along with the BIMSTEC Charter.
+
+=== 34
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Books, Literature and Authors
+difficulty: EASY
+answer: A
+stem:
+Who wrote 'An Era of Darkness: The British Empire in India'?
+A: Shashi Tharoor
+B: Vikram Seth
+C: Pavan Varma
+D: Romila Thapar
+solution:
+'An Era of Darkness: The British Empire in India' (2016) is by Shashi Tharoor, and it won him the Sahitya Akademi Award.
+
+=== 35
+subject: Current Affairs
+chapter: Government Schemes, Policy and Governance
+subtopic: Government Events, Reports and Announcements
+difficulty: MODERATE
+answer: A
+stem:
+A key appointment in India's disaster management sector was made in 2024. Which Indian Police Service (IPS) officer took charge as the "Director General of the National Disaster Response Force", leading the nation's primary disaster relief efforts?
+A: Piyush Anand
+B: Atul Karwal
+C: Rajeev Kapoor
+D: Pradeep Kumar
+solution:
+Piyush Anand, a 1991-batch IPS officer of the Uttar Pradesh cadre, took charge as Director General of the NDRF in 2024. He succeeded Atul Karwal, who had headed the force before him.
+
+=== 36
+subject: Current Affairs
+chapter: Science and Technology
+subtopic: Space Technology and Astronomy
+difficulty: EASY
+answer: B
+stem:
+Gaganyaan is planned to orbit Earth at approximately what altitude?
+A: 100 km
+B: 400 km
+C: 1000 km
+D: 36,000 km
+solution:
+ISRO plans to place the Gaganyaan crew module in a low Earth orbit of about 400 km. About 36,000 km is geostationary orbit, and 100 km is only the edge of space.
+
+=== 37
+subject: Geography
+chapter: World and Human Geography
+subtopic: Human Geography — Megacities and Population
+difficulty: EASY
+answer: D
+stem:
+Which of the following is unrelated to the components of population change?
+A: Births
+B: Deaths
+C: Migration
+D: Employment
+solution:
+Population changes through three components: births, deaths and migration. Employment can influence migration but is not itself a component of population change.
+
+=== 38
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: HARD
+answer: C
+stem:
+With reference to the All India Inter-Club U21 Men & Women Water Polo League – 2025, which of the following statements are **accurate?**
+1. The tournament was hosted at Mayo College in Ajmer, Rajasthan.
+2. It was organized under the aegis of the Western Naval Command.
+3. The event took place from 14 to 18 April 2025.
+A: 1 and 2 only
+B: 2 and 3 only
+C: 1 and 3 only
+D: 1, 2 and 3
+solution:
+The league was hosted by Mayo College, Ajmer, from 14 to 18 April 2025, under the Swimming Federation of India with the Rajasthan Swimming Association. It was not organised by the Western Naval Command, so only statements 1 and 3 are accurate.
+
+=== 39
+subject: Geography
+chapter: Indian Geography — Economy, Resources and Transport
+subtopic: Minerals and Mining
+difficulty: EASY
+answer: C
+stem:
+Which state among the following is a major contributor to India’s iron ore reserves?
+A: Maharashtra
+B: Andhra Pradesh
+C: Karnataka
+D: Tamil Nadu
+solution:
+Most of India's iron ore reserves lie in Odisha, Jharkhand, Chhattisgarh, Karnataka and Goa. Karnataka (Bellary-Hospet, Kudremukh, Bababudan hills) is the only one of the four options among them.
+
+=== 40
+subject: Biology
+chapter: Biochemistry
+subtopic: Carbohydrates and Biomolecules
+difficulty: MODERATE
+answer: C
+blind: B
+note: judgement item (odd one out). SSC's key groups ATP, glucose and NADH as energy molecules, leaving DNA (the genetic material); our blind answer grouped by nucleotide structure and chose glucose. The bank carries SSC's answer
+stem:
+Which of these is an odd one out?
+A: ATP
+B: Glucose
+C: DNA
+D: NADH
+solution:
+ATP, glucose and NADH are all molecules of energy metabolism: glucose is the fuel, NADH carries electrons from its breakdown and ATP is the energy currency produced. DNA is the carrier of genetic information, not an energy molecule, so it is the odd one out.
+
+=== 41
+subject: Polity
+chapter: Indian Constitution — Making, Foundation and Amendments
+subtopic: Constitutional Amendments
+difficulty: EASY
+answer: B
+stem:
+Through which Constitutional Amendment was Article 21A introduced, mandating free and compulsory education as a Fundamental Right for children between 6 and 14 years of age?
+A: 42nd Amendment Act
+B: 86th Amendment Act
+C: 93rd Amendment Act
+D: 44th Amendment Act
+solution:
+The 86th Amendment Act, 2002 inserted Article 21A, changed Article 45 and added the duty in Article 51A(k). The 93rd Amendment (2005) concerns reservation in educational institutions.
+
+=== 42
+subject: Physics
+chapter: Fluid Mechanics and Properties of Matter
+subtopic: Pressure and Surface Tension
+difficulty: EASY
+answer: B
+stem:
+What happens when an ideal fluid flows through a narrowing horizontal pipe?
+A: Speed decreases, Pressure increases
+B: Speed increases, Pressure decreases
+C: Both Speed and Pressure increases
+D: Both speed and pressure decreases
+solution:
+By continuity, \(A_1 v_1 = A_2 v_2\), so a smaller cross-section means a higher speed.
+
+By Bernoulli's principle for a horizontal pipe, \(P + \frac{1}{2}\rho v^2\) stays constant, so where speed rises the pressure falls.
+
+=== 43
+subject: Current Affairs
+chapter: Government Schemes, Policy and Governance
+subtopic: Governance, Policy and Union Territory Reform
+difficulty: EASY
+answer: B
+stem:
+Which of the following best describes the purpose of the National Single Window System (NSWS) portal launched by the Ministry of Commerce & Industry?
+A: To streamline pension disbursal mechanisms for unorganized workers
+B: To facilitate industrial clearances and approvals through a single digital platform
+C: To monitor school enrollments across states using Aadhaar linkage
+D: To centralize water quality testing across urban and rural regions
+solution:
+The National Single Window System, launched in 2021 by the Ministry of Commerce and Industry (DPIIT), is a single digital platform where investors and businesses identify and apply for central and state approvals and clearances.
+
+=== 44
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: HARD
+answer: C
+blind: A
+note: fact we could not confirm. SSC's key takes both statements as correct (Tippani is accompanied by dhol and nagara drummers); our blind answer took statement 2 as false. The bank carries SSC's answer
+stem:
+Consider the statements about Tippani :
+1. Originated among Saurashtra women tamping lime floors with wooden rods.
+2. Male drummers provide dhol–nagara accompaniment.
+Which is/are **correct?**
+A: Only 1 correct
+B: Only 2 correct
+C: Both 1 & 2 correct
+D: Neither 1 nor 2 correct
+solution:
+Tippani, a folk dance of the Chorwad area of Saurashtra in Gujarat, grew out of women labourers beating lime floors with long wooden rods (tippani), so statement 1 is correct. The rhythm is supported by drums such as the dhol and nagara, so statement 2 is also taken as correct. Both are correct.
+
+=== 45
+subject: Economics
+chapter: National Income, Growth and Development Indicators
+subtopic: Poverty, Employment and Human Development
+difficulty: HARD
+answer: B
+stem:
+Read the below statements marked as Assertion (A) and Reason (R). Mark the **correct** options:
+**Assertion (A):** Human Development Index (HDI) in India improved significantly post-2010.
+**Reason (R):** The methodology was revised globally to include inequality-adjusted Human Development Index (HDI).
+A: Both A and R are true, and R is the correct explanation of A.
+B: Both A and R are true, but R is not the correct explanation of A.
+C: A is true, but R is false.
+D: A is false, but R is true.
+solution:
+India's HDI rose steadily after 2010 (from about 0.58 to about 0.68), so A is true. The 2010 Human Development Report did revise the method and introduced the inequality-adjusted HDI, so R is true. But the IHDI is a separate index and a change of method does not raise a country's actual development, so R does not explain A.
+
+=== 46
+subject: Geography
+chapter: Indian Geography — Physical Features
+subtopic: Mountains, Plateaus and Plains of India
+difficulty: EASY
+answer: B
+stem:
+Why are the Western Ghats considered globally significant according to UNESCO?
+A: They categorize urban rivers based on their economic contribution to the city.
+B: They influence the Indian monsoon and are among the world's top biodiversity hotspots.
+C: They are located near the equator and host polar species.
+D: They form the only volcanic plateau in peninsular India with desert flora.
+solution:
+UNESCO inscribed the Western Ghats as a World Heritage Site in 2012, noting that they shape the Indian monsoon weather pattern and are one of the world's eight "hottest" biodiversity hotspots.
+
+=== 47
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Constitutional Bodies and Offices
+difficulty: EASY
+answer: C
+stem:
+Article 312 provides for creation of new ______ by Parliament.
+A: Union Territories
+B: Constitutional Amendments
+C: All India Services
+D: Finance Commissions
+solution:
+Under Article 312, Parliament may create new All India Services if the Rajya Sabha passes a resolution, supported by two-thirds of members present and voting, that it is necessary in the national interest.
+
+=== 48
+subject: Economics
+chapter: Indian Economy
+subtopic: Five Year Plans and Indian Planning
+difficulty: EASY
+answer: A
+stem:
+Read the following Assertion (A) and Reason (R) carefully and choose the **correct** option.
+**Assertion (A):** Self-reliance was a major objective of India's early planning era.
+**Reason (R):** India sought to reduce dependence on foreign aid and imports post-independence.
+A: Both A and R are true and R is the correct explanation of A.
+B: Both A and R are true but R is not the correct explanation of A.
+C: A is true but R is false.
+D: A is false but R is true.
+solution:
+Self-reliance was one of the core goals of the early Five Year Plans (with growth, modernisation and equity). It was adopted precisely because India wanted to cut its dependence on foreign aid and imported goods, so R explains A.
+
+=== 49
+subject: Current Affairs
+chapter: Science and Technology
+subtopic: Space Technology and Astronomy
+difficulty: EASY
+answer: B
+stem:
+What is India's first successful interplanetary mission?
+A: Chandrayaan-1
+B: Mangalyaan
+C: Gaganyaan
+D: Aditya-L1
+solution:
+Mangalyaan (Mars Orbiter Mission), launched in 2013, entered Mars orbit in September 2014, making it India's first interplanetary mission. Chandrayaan-1 went to the Moon, Aditya-L1 studies the Sun from the L1 point, and Gaganyaan is the crewed orbital programme.
+
+=== 50
+subject: Polity
+chapter: Indian Constitution — Making, Foundation and Amendments
+subtopic: Federal Structure — States, UTs and Finance
+difficulty: MODERATE
+answer: A
+stem:
+**Consider the following statements:**
+1. Article 262 empowers Parliament to set up tribunals for river disputes.
+2. The Supreme Court has appellate jurisdiction in such disputes.
+Which of the above is/are **correct?**
+A: Only 1
+B: Only 2
+C: Both 1 and 2
+D: Neither 1 nor 2
+solution:
+Article 262 lets Parliament provide by law for adjudicating inter-state river water disputes, under which the Inter-State River Water Disputes Act, 1956 sets up tribunals. Article 262(2) lets Parliament bar the Supreme Court and other courts from such disputes, and the 1956 Act does so, so statement 2 is wrong.
+
+=== 51
+chapter: Surds, Indices and Simplification
+subtopic: Simplification of Expressions
+difficulty: EASY
+answer: A
+stem:
+Simplify: \((2.4 + 3.125) \times 0.25 - (0.75 \div 0.3)\)
+A: \(-1.11875\)
+B: \(1.11875\)
+C: \(2.8756\)
+D: \(-2.8756\)
+solution:
+\(2.4 + 3.125 = 5.525\) and \(5.525 \times 0.25 = 1.38125\).
+
+\(0.75 \div 0.3 = 2.5\).
+
+\(1.38125 - 2.5 = -1.11875\).
+
+Check: the first part is less than 2.5, so the result must be negative, which leaves only A or D, and \(2.5 - 1.38125 = 1.11875\).
+
+=== 52
+chapter: Percentage, Profit and Loss
+subtopic: Percentage
+difficulty: EASY
+answer: B
+stem:
+If 20% of (P + Q) = 50% of (P \(-\) Q), then find the ratio P: Q.
+A: 3 : 7
+B: 7 : 3
+C: 2 : 5
+D: 5 : 2
+solution:
+\(0.2(P + Q) = 0.5(P - Q)\), so \(2P + 2Q = 5P - 5Q\), giving \(3P = 7Q\).
+
+So \(P : Q = 7 : 3\).
+
+Check: P = 7, Q = 3 gives 20% of 10 = 2 and 50% of 4 = 2.
+
+=== 53
+chapter: Ratio, Proportion and Variation
+subtopic: Mixtures and Alligation
+difficulty: EASY
+answer: C
+stem:
+A shopkeeper mixes two varieties of pulses \(-\) one costing ₹80 per kg and the other costing ₹100 per kg, in the ratio 3 : 1. If he sells the mixed variety at ₹91.80 per kg, find his gain or loss percent.
+A: 8% Loss
+B: 10% Gain
+C: 8% Gain
+D: 10% Loss
+solution:
+Cost of the mixture per kg \(= \frac{3 \times 80 + 1 \times 100}{4} = \frac{340}{4} = 85\), that is ₹85.
+
+Gain \(= 91.80 - 85 = 6.80\) rupees, and \(\frac{6.80}{85} \times 100 = 8\%\) gain.
+
+Check: \(85 \times 1.08 = 91.80\).
+
+=== 54
+chapter: Ratio, Proportion and Variation
+subtopic: Partnership
+difficulty: EASY
+answer: B
+stem:
+A and B invest ₹45,000 and ₹60,000 respectively. A remains in business for 8 months, B for 6 months. If the total profit is ₹36,000, what is A’s share?
+A: ₹16,000
+B: ₹18,000
+C: ₹20,000
+D: ₹24,000
+solution:
+A's capital-months \(= 45000 \times 8 = 360000\); B's \(= 60000 \times 6 = 360000\).
+
+The ratio is 1 : 1, so A gets half of ₹36,000 = ₹18,000.
+
+=== 55
+chapter: Averages
+subtopic: Sum and Mean
+difficulty: EASY
+answer: A
+stem:
+The average weight of 30 students is 60 kg. If one student is removed, the average drops to 59.5 kg. What is the weight of the removed student?
+A: 74.5 kg
+B: 84.5 kg
+C: 70.5 kg
+D: 16.5 kg
+solution:
+Total of 30 = \(30 \times 60 = 1800\) kg. Total of 29 = \(29 \times 59.5 = 1725.5\) kg.
+
+Removed student = \(1800 - 1725.5 = 74.5\) kg.
+
+Check: the student is above the old average by \(29 \times 0.5 = 14.5\) kg, and \(60 + 14.5 = 74.5\).
+
+=== 56
+chapter: Averages
+subtopic: Sum and Mean
+difficulty: EASY
+answer: C
+stem:
+In a group of 40 boys, the average height was initially determined to be 160 cm. However, it was later discovered that the height of one boy was incorrectly recorded as 165 cm when it should have been 156 cm. Calculate the accurate average height.
+A: 129.675cm
+B: 150.845 cm
+C: 159.775 cm
+D: 179.275 cm
+solution:
+The total was overstated by \(165 - 156 = 9\) cm.
+
+Correct average \(= 160 - \frac{9}{40} = 160 - 0.225 = 159.775\) cm.
+
+Check: \(\frac{6400 - 9}{40} = \frac{6391}{40} = 159.775\).
+
+=== 57
+chapter: Simple and Compound Interest
+subtopic: Compound Interest
+difficulty: EASY
+answer: A
+stem:
+If ₹5000 amounts to ₹6050 over 2 years with compound interest, what is the annual interest rate?
+A: 10%
+B: 9%
+C: 8%
+D: 11%
+solution:
+\(\left(1 + \frac{r}{100}\right)^2 = \frac{6050}{5000} = 1.21\), so \(1 + \frac{r}{100} = 1.1\) and \(r = 10\%\).
+
+Check: 5000 grows to 5500 after one year and 6050 after two.
+
+=== 58
+chapter: Percentage, Profit and Loss
+subtopic: Profit and Loss
+difficulty: EASY
+answer: B
+stem:
+A fruit vendor sells 15 kg of apples for ₹750, thereby gaining the cost price of 5 kg of apples. What is his profit percentage?
+A: 28.65%
+B: 33.33%
+C: 26.32%
+D: 31.56%
+solution:
+Profit on 15 kg equals the cost of 5 kg, so profit % \(= \frac{5}{15} \times 100 = 33.33\%\).
+
+Check: SP of 15 kg = CP of 20 kg, so CP per kg = \(\frac{750}{20} = 37.5\) and SP per kg = 50; \(\frac{12.5}{37.5} = 33.33\%\).
+
+=== 59
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: EASY
+answer: C
+stem:
+An oven has a marked price of ₹ 12,000. It is sold with two successive discounts. If the second discount is 20% and the final selling price is ₹ 8,400, what is the percentage of the first discount?
+A: 10%
+B: 12%
+C: 12.5%
+D: 15%
+solution:
+Price after the first discount \(= \frac{8400}{0.8} = 10500\), that is ₹10,500.
+
+First discount \(= \frac{12000 - 10500}{12000} \times 100 = 12.5\%\).
+
+Check: \(12000 \times 0.875 \times 0.8 = 8400\).
+
+=== 60
+chapter: Ratio, Proportion and Variation
+subtopic: Mixtures and Alligation
+difficulty: EASY
+answer: D
+stem:
+A barrel contains a mixture of alcohol and water in the ratio 7:4 respectively. If 12 litres of water are added to it, the ratio of alcohol to water becomes 7:6. Find the initial total quantity of the mixture in the barrel.
+A: 33 litres
+B: 44 litres
+C: 55 litres
+D: 66 litres
+solution:
+Alcohol stays the same, so water goes from 4 parts to 6 parts: 2 parts = 12 litres, 1 part = 6 litres.
+
+Initial mixture = 11 parts = 66 litres.
+
+Check: 42 L alcohol and 24 L water; adding 12 gives 42 : 36 = 7 : 6.
+
+=== 61
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: MODERATE
+answer: A
+stem:
+A furniture store marks its items at 80% above the cost price. They offer a discount of 30% on the marked price. If a customer receives an additional loyalty discount of ₹250, and the store still makes a 12% profit on the cost price, what is the cost price of the furniture item?
+A: ₹1,785.71
+B: ₹2,585.36
+C: ₹1,528.24
+D: ₹2,879.45
+solution:
+Let the cost price be C. Marked price \(= 1.8C\); after 30% off, \(1.8C \times 0.7 = 1.26C\).
+
+Selling price \(= 1.26C - 250 = 1.12C\), so \(0.14C = 250\) and \(C = \frac{250}{0.14} = 1785.71\), that is ₹1,785.71.
+
+Check: \(1.26 \times 1785.71 = 2250.00\); minus 250 gives 2000.00, which is \(1.12 \times 1785.71\).
+
+=== 62
+chapter: Mensuration 3D
+subtopic: Water — Immersion, Flow and Rainfall
+difficulty: EASY
+answer: D
+stem:
+A spherical ball is submerged in water in a cylindrical container. The radius of the cylindrical container is 5 cm, and the height is 30 cm. What is the volume of water displaced by the ball if its radius is 4 cm?
+A: \(\frac{640}{3}\pi \text{ cm}^3\)
+B: \(\frac{320}{3}\pi \text{ cm}^3\)
+C: \(\frac{160}{3}\pi \text{ cm}^3\)
+D: \(\frac{256}{3}\pi \text{ cm}^3\)
+solution:
+A fully submerged ball displaces its own volume: \(\frac{4}{3}\pi (4)^3 = \frac{256}{3}\pi \text{ cm}^3\).
+
+The ball (diameter 8 cm) fits inside the container (diameter 10 cm), so the container's size does not change the answer.
+
+=== 63
+chapter: Mensuration 3D
+subtopic: Spheres, Hemispheres and Shells
+difficulty: EASY
+answer: A
+stem:
+A hemispherical dome covers a circular area of diameter 20 m. What is the approximate curved surface area of this dome?
+A: \(628m^2\)
+B: \(514m^2\)
+C: \(408m^2\)
+D: \(762m^2\)
+solution:
+Radius = 10 m. Curved surface area of a hemisphere \(= 2\pi r^2 = 2 \times 3.14 \times 100 = 628 \text{ m}^2\).
+
+Check: it is twice the base area \(\pi r^2 = 314 \text{ m}^2\).
+
+=== 64
+chapter: Mensuration 3D
+subtopic: Spheres, Hemispheres and Shells
+difficulty: EASY
+answer: A
+stem:
+A hollow hemisphere has uniform thickness. Its inner radius is r, and outer radius is R. If R=2r, find the ratio of outer to inner curved surface areas.
+A: 4 : 1
+B: 7:4
+C: 6:5
+D: 2:5
+solution:
+Ratio \(= \frac{2\pi R^2}{2\pi r^2} = \left(\frac{R}{r}\right)^2 = 2^2 = 4 : 1\).
+
+=== 65
+chapter: Mensuration 3D
+subtopic: Prisms and Pyramids
+difficulty: EASY
+answer: A
+stem:
+A square pyramid has lateral surface area equal to twice the base area. If base side = 6 cm, find slant height.
+A: 6 cm
+B: 5 cm
+C: 4 cm
+D: 2 cm
+solution:
+Base area \(= 6^2 = 36 \text{ cm}^2\), so the lateral surface area is \(72 \text{ cm}^2\).
+
+Lateral surface area \(= 4 \times \frac{1}{2} \times 6 \times l = 12l\), so \(12l = 72\) and \(l = 6\) cm.
+
+Check: \(\frac{1}{2} \times \text{perimeter} \times l = \frac{1}{2} \times 24 \times 6 = 72\).
+
+=== 66
+chapter: Mensuration 2D
+subtopic: Circumference, Wheels and Rings
+difficulty: EASY
+answer: B
+stem:
+A circular garden has a diameter of 28 m. If a gardener wants to fence 75% of the garden's circumference, what length of fencing is needed? (Use \(\pi = 22/7\))
+A: 56 m
+B: 66 m
+C: 64 m
+D: 62 m
+solution:
+Circumference \(= \frac{22}{7} \times 28 = 88\) m.
+
+75% of 88 \(= 66\) m.
+
+=== 67
+chapter: Triangles
+subtopic: Centres of a Triangle
+difficulty: EASY
+answer: A
+stem:
+In an equilateral triangle with side length 'a', what is the ratio of the circumradius to the inradius?
+A: 2:1
+B: 3:1
+C: 4:1
+D: 1:2
+solution:
+Circumradius \(= \frac{a}{\sqrt{3}}\) and inradius \(= \frac{a}{2\sqrt{3}}\), so the ratio is 2 : 1.
+
+Check: the centroid divides the median in the ratio 2 : 1, and in an equilateral triangle the circumcentre and incentre both sit at the centroid.
+
+=== 68
+chapter: Circles
+subtopic: Intersecting Chords and Power of a Point
+difficulty: MODERATE
+answer: A
+stem:
+A triangle ABC is inscribed in a circle. A tangent is drawn to the circle at point A, intersecting the extension of side BC at D. If AD=6 cm and CD=4 cm, what is the length of side BC?
+A: 5 cm
+B: 6 cm
+C: 7 cm
+D: 8 cm
+solution:
+By the tangent-secant theorem, \(AD^2 = DC \times DB\), so \(36 = 4 \times DB\) and \(DB = 9\) cm.
+
+D lies beyond C, so \(BC = DB - DC = 9 - 4 = 5\) cm.
+
+(D cannot lie beyond B, since then DB would be shorter than DC = 4.)
+
+=== 69
+chapter: Quadrilaterals
+subtopic: Trapeziums
+difficulty: EASY
+answer: A
+stem:
+In a trapezoid ABCD with AB parallel to CD, the diagonals AC and BD intersect at E. What is the ratio of the area of \(\triangle ABE\) to the area of \(\triangle CDE\)?
+A: The ratio of AB to CD squared.
+B: The ratio of AB to CD.
+C: The ratio of the perimeter of \(\triangle ABE\) to the perimeter of \(\triangle CDE\).
+D: The ratio of the area of \(\triangle ABC\) to the area of \(\triangle BCD\).
+solution:
+Since AB is parallel to CD, \(\triangle ABE\) is similar to \(\triangle CDE\) with ratio AB : CD.
+
+Areas of similar triangles are in the square of the ratio of sides, so the area ratio is \((AB : CD)^2\).
+
+B and C give only the side ratio, and D also equals AB : CD (same height between the parallels), so none of them is squared.
+
+=== 70
+chapter: Circles
+subtopic: Common Tangents and Common Chords
+difficulty: MODERATE
+answer: C
+stem:
+A circle with radius \(x\) touches another circle with radius \(2x\) externally. What is the length of a direct common tangent?
+A: \(2x\)
+B: \(3x\)
+C: \(2x\sqrt{2}\)
+D: \(3x\sqrt{2}\)
+solution:
+Distance between centres \(= x + 2x = 3x\).
+
+Direct common tangent \(= \sqrt{(3x)^2 - (2x - x)^2} = \sqrt{8x^2} = 2x\sqrt{2}\).
+
+Check: for touching circles the direct tangent is \(2\sqrt{r_1 r_2} = 2\sqrt{2x^2} = 2x\sqrt{2}\).
+
+=== 71
+chapter: Circles
+subtopic: Common Tangents and Common Chords
+difficulty: EASY
+answer: A
+stem:
+Two circles with radii 6 cm and 2 cm have their centers 10 cm apart. How many common tangents can be drawn between them, and what type(s) of tangents are they?
+A: 4 tangents: 2 direct and 2 transverse
+B: 3 tangents: 2 direct and 1 transverse
+C: 2 tangents: only direct tangents
+D: 0 tangents: the larger circle completely contains the smaller one
+solution:
+Sum of radii \(= 8\) cm, which is less than the distance 10 cm, so the circles are separate.
+
+Two separate circles have 4 common tangents: 2 direct and 2 transverse.
+
+=== 72
+chapter: Circles
+subtopic: Intersecting Chords and Power of a Point
+difficulty: EASY
+answer: B
+stem:
+Two chords AB and CD intersect at a point P inside a circle. If AP = 6 cm, PB = 8 cm, and CP = 4 cm, what is the length of PD?
+A: 10 cm
+B: 12 cm
+C: 16 cm
+D: 18 cm
+solution:
+\(AP \times PB = CP \times PD\), so \(6 \times 8 = 4 \times PD\) and \(PD = 12\) cm.
+
+=== 73
+chapter: Circles
+subtopic: Chords and Perpendiculars
+difficulty: EASY
+answer: A
+stem:
+In a circle, a chord AB is 12 cm long and is at a distance of 4 cm from the center. What is the radius of the circle?
+A: \(\sqrt{52}\) cm
+B: \(\sqrt{65}\) cm
+C: 8 cm
+D: None of these
+solution:
+The perpendicular from the centre bisects the chord, so half the chord is 6 cm.
+
+\(r = \sqrt{6^2 + 4^2} = \sqrt{52}\) cm (about 7.21 cm).
+
+=== 74
+chapter: Surds, Indices and Simplification
+subtopic: Simplification of Expressions
+difficulty: MODERATE
+answer: D
+stem:
+What is the value of \((0.02^3 + 0.004^3) \div (0.2^3 + 0.04^3)\)?
+A: 0.002
+B: 0.0045
+C: 0.0102
+D: 0.001
+solution:
+\(0.004 = 0.02 \times 0.2\) and \(0.04 = 0.2 \times 0.2\).
+
+Numerator \(= 0.02^3(1 + 0.2^3)\); denominator \(= 0.2^3(1 + 0.2^3)\).
+
+Value \(= \left(\frac{0.02}{0.2}\right)^3 = 0.1^3 = 0.001\).
+
+Check: \(\frac{0.000008064}{0.008064} = 0.001\).
+
+=== 75
+chapter: Surds, Indices and Simplification
+subtopic: Simplification of Expressions
+difficulty: MODERATE
+answer: A
+stem:
+What is the value of \((0.4 \times 0.4 \times 0.4 + 0.02 \times 0.02 \times 0.02) \div (1.2 \times 1.2 \times 1.2 + 0.06 \times 0.06 \times 0.06)\)?
+A: \(\frac{1}{27}\)
+B: \(\frac{5}{27}\)
+C: \(\frac{11}{67}\)
+D: \(\frac{41}{27}\)
+solution:
+\(1.2 = 3 \times 0.4\) and \(0.06 = 3 \times 0.02\), so the denominator is \(3^3\) times the numerator.
+
+Value \(= \frac{1}{27}\).
+
+Check: numerator \(= 0.064 + 0.000008 = 0.064008\); denominator \(= 1.728 + 0.000216 = 1.728216 = 27 \times 0.064008\).
+
+=== 76
+chapter: Vocabulary
+subtopic: Synonyms: Method
+difficulty: EASY
+answer: C
+stem:
+Select the most appropriate synonym of the given word: **HAPHAZARD**
+A: Organized
+B: Intentional
+C: Random
+D: Planned
+solution:
+Haphazard means lacking order or plan, done at random. Organized, intentional and planned are its opposites.
+
+=== 77
+chapter: Vocabulary
+subtopic: Antonyms: Feelings and Calm
+difficulty: EASY
+answer: C
+stem:
+Select the most appropriate antonym of the given word. **Reverence**
+A: Respect
+B: Devotion
+C: Contempt
+D: Worship
+solution:
+Reverence is deep respect. Respect, devotion and worship are near-synonyms; contempt (scorn, disrespect) is the opposite.
+
+=== 78
+chapter: Idioms and Phrases
+subtopic: Idioms: People and Character
+difficulty: EASY
+answer: C
+stem:
+Choose the correct meaning of idiom:
+**Not fit to hold a candle to**
+A: Excellent in comparison
+B: Similar in ability
+C: Greatly inferior to
+D: Superior to in some aspects
+solution:
+Someone not fit to hold a candle to another is so much worse that he could not even act as the other's helper holding a light. It means greatly inferior to.
+
+=== 79
+chapter: Vocabulary
+subtopic: Antonyms: Size, Worth and Law
+difficulty: MODERATE
+answer: A
+stem:
+Select the most appropriate antonym of the given word. **Incandescent**
+A: Dusky
+B: Resplendent
+C: Glistening
+D: Fulgent
+solution:
+Incandescent means glowing brightly with heat or light. Resplendent, glistening and fulgent all describe brightness; dusky (dim, darkish) is the opposite.
+
+=== 80
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: B
+stem:
+Spot the **correct spelling** of a lab toxicity assay term.
+A: Cytotoxisity
+B: Cytotoxicity
+C: Cytotoxicety
+D: Cytotoxcity
+solution:
+The word is **cytotoxicity** (cyto + toxic + -ity), the quality of being toxic to cells.
+
+=== 81
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: MODERATE
+answer: B
+stem:
+Choose the correct **one-word substitute** for: 'A person who is indifferent to pain or pleasure'.
+A: Apathetic
+B: Stoic
+C: Ascetic
+D: Hedonist
+solution:
+A stoic is a person who bears pain or hardship and is unmoved by pleasure, without showing feeling. An ascetic denies himself pleasures for spiritual reasons, a hedonist pursues pleasure, and apathetic is an adjective meaning showing no interest.
+
+=== 82
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: B
+stem:
+Choose the correct **one-word substitute** for: 'One who pretends to have knowledge or skills'.
+A: Savante
+B: Charlatan
+C: Virtuoso
+D: Connoisseur
+solution:
+A charlatan falsely claims knowledge or skill. A savant (not "savante") truly has great learning, a virtuoso has real skill, and a connoisseur is an expert judge of taste.
+
+=== 83
+chapter: Grammar
+subtopic: Phrasal Verbs with Prepositions and Particles
+difficulty: EASY
+answer: A
+stem:
+**Select the correct phrasal verb:**
+We need to _____ the old files before moving the new ones.
+A: clean out
+B: clear off
+C: wipe over
+D: go over
+solution:
+To clean out is to empty a place of unwanted things, here the old files, to make room for the new ones. "Clear off" means go away, "wipe over" is wiping a surface, and "go over" means review, which does not make room.
+
+=== 84
+chapter: Vocabulary
+subtopic: Word Meaning: Single Words
+difficulty: EASY
+answer: A
+stem:
+**Select the correct option:**
+In light of recent discoveries, the theory has been subject to rigorous ___ and reinterpretation.
+A: scrutiny
+B: sanction
+C: insinuation
+D: subversion
+solution:
+New discoveries lead to a theory being closely examined: rigorous scrutiny. Sanction (approval or penalty), insinuation (hint) and subversion (undermining) do not collocate with "rigorous" here.
+
+=== 85
+chapter: Spotting Errors
+subtopic: Articles, Determiners and Comparison
+difficulty: EASY
+answer: A
+stem:
+**Find the part of the sentence that contains an error:**
+Much efforts have been made (1)/ by the development team (2)/ to reduce the application's loading time (3)/ without compromising features. (4)/
+A: (1)
+B: (2)
+C: (3)
+D: (4)
+solution:
+*Much* goes with uncountable nouns; the plural countable "efforts" needs *many*: "Many efforts have been made" (or "Much effort has been made"). The error is in part (1).
+
+=== 86
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: MODERATE
+answer: C
+stem:
+**Change the following from active to passive:**
+The professor could have been explaining differential topology for hours.
+A: Differential topology could have be being explained for hours by the professor.
+B: Differential topology could have explained for hours by the professor.
+C: Differential topology could have been being explained for hours by the professor.
+D: Differential topology could have had been been explained for hours by the professor.
+solution:
+"Could have been explaining" becomes "could have been being explained" in the passive: the modal and "have been" stay, and the continuous "being" plus the past participle is added. A misuses "be", B is still active in form, D is ungrammatical.
+
+=== 87
+chapter: Spotting Errors
+subtopic: Subject-Verb Agreement
+difficulty: MODERATE
+answer: A
+stem:
+**Find the part of the sentence that contains an error:**
+Rarely if ever have there been a time (1)/ when dissent was met (2)/ with such institutional disregard (3)/ as in the present administration. (4)
+A: (1)
+B: (2)
+C: (3)
+D: (4)
+solution:
+In the inverted "there" sentence the verb agrees with the singular subject "a time": "Rarely if ever **has** there been a time". The error is in part (1).
+
+=== 88
+chapter: Vocabulary
+subtopic: Confusable Word Pairs
+difficulty: HARD
+answer: B
+stem:
+**Select the sentence containing the homonym of the highlighted word:**
+The ancient **sconce** held a flickering torch along the corridor.
+A: The thief smashed the wall sconce and fled.
+B: The student was sconced for violating tradition.
+C: The bronze sconce was engraved with floral motifs.
+D: The hallway featured a new LED sconce.
+solution:
+In the given sentence a sconce is a wall bracket holding a light, the same sense as in A, C and D. In B "sconced" is a different word with the same spelling: to sconce (an Oxford custom) is to fine or punish a student for breaking a tradition.
+
+=== 89
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: B
+stem:
+**Convert the sentence provided below from its passive voice structure to an active voice structure:**
+The documents had been submitted by the assistant before the deadline.
+A: The assistant submits the documents before the deadline.
+B: The assistant had submitted the documents before the deadline.
+C: The assistant was submitting the documents before the deadline.
+D: The assistant is submitting the documents before the deadline.
+solution:
+The passive "had been submitted" is past perfect, so the active keeps the past perfect: the assistant had submitted the documents before the deadline.
+
+=== 90
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: D
+stem:
+Choose the most suitable option to replace the highlighted part of the sentence:
+She ***is senior than*** me in college.
+A: is more senior than
+B: is senior from
+C: is elder than
+D: is senior to
+solution:
+Latin comparatives such as senior, junior, superior and prior take *to*, not *than*: she is senior to me in college.
+
+=== 91
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: A
+stem:
+Choose the most suitable option to replace the highlighted part of the sentence:
+He did not know ***where was the book kept***.
+A: where the book was kept
+B: where was the book
+C: where did the book kept
+D: where the book has kept
+solution:
+An embedded (indirect) question takes statement word order, subject before verb: he did not know where the book was kept.
+
+=== 92
+chapter: Reading Comprehension
+subtopic: Main Idea, Author's View and Tone
+difficulty: EASY
+answer: C
+context:
+**Read the following passage and answer the questions based on the passage :**
+While financial inclusion is often praised as a driver of equitable growth, its implementation in rural India presents a paradox. On paper, schemes such as the Pradhan Mantri Jan Dhan Yojana (PMJDY), Aadhaar-enabled payment systems, and mobile banking have revolutionized access. Yet, in practice, access does not necessarily translate into utility. A significant number of rural account holders remain dormant users, often constrained by digital illiteracy, infrastructural limitations, and deeply entrenched socio-cultural barriers. In numerous villages, banking correspondents (BCs)—the foot soldiers of India's rural financial architecture—are overburdened, undertrained, and often unsupported by robust technological infrastructure. The notion that a biometric fingerprint or a one-time password could substitute for financial literacy is naïve at best. Many beneficiaries, especially women, face systemic exclusion, not just due to lack of documentation, but because patriarchal norms often discourage or control women's interactions with banking services. Moreover, while financial inclusion aims to integrate the rural poor into the formal economy, the informal credit system continues to flourish. This coexistence is not accidental but symptomatic of a trust deficit and functional inefficiencies within formal institutions. Local moneylenders, albeit exploitative, offer immediacy and familiarity, elements often absent in bureaucratic banking processes. The digital push, accelerated post-2016 demonetization and COVID-19, has undoubtedly expanded the ecosystem. However, digital penetration without digital comprehension can widen the exclusion gap. Without focused digital education, grievance redressal mechanisms, and gender-sensitive outreach, financial inclusion may remain more rhetorical than real. In essence, true inclusion cannot be measured merely by the number of accounts opened but must reflect active participation, trust, and accessibility across gender, literacy, and regional lines. Until then, the dream of a financially empowered rural India will remain aspirational.
+stem:
+According to the passage, what is the main paradox of financial inclusion in rural India?
+A: Lack of infrastructure
+B: Overreliance on technology
+C: Access without actual usage
+D: Excess of digital banking
+solution:
+The paradox is stated at once: schemes have "revolutionized access. Yet, in practice, access does not necessarily translate into utility", and many account holders "remain dormant users". That is access without actual usage.
+
+=== 93
+chapter: Reading Comprehension
+subtopic: Why Questions: The Passage's Reason
+difficulty: EASY
+answer: B
+context_from: 92
+stem:
+Why do informal credit systems persist despite formal financial inclusion efforts?
+A: Due to strict documentation
+B: Trust and familiarity of local lenders
+C: Higher interest rates attract borrowers
+D: Government incentives are unavailable
+solution:
+The passage says the coexistence is "symptomatic of a trust deficit" in formal institutions, and that local moneylenders "offer immediacy and familiarity". So informal credit persists through the trust and familiarity of local lenders.
+
+=== 94
+chapter: Reading Comprehension
+subtopic: Locating the Answer Line
+difficulty: EASY
+answer: C
+context_from: 92
+stem:
+Which factor does **not** contribute to dormant rural bank accounts, as per the passage?
+A: Patriarchal social norms
+B: Digital illiteracy
+C: Mobile network expansion
+D: Lack of financial literacy
+solution:
+Dormant use is blamed on digital illiteracy, infrastructural limits and socio-cultural barriers, including patriarchal norms and the lack of financial literacy that biometrics or OTPs cannot replace. Mobile network expansion is never named as a cause; the passage counts mobile banking as part of wider access.
+
+=== 95
+chapter: Reading Comprehension
+subtopic: Locating the Answer Line
+difficulty: EASY
+answer: C
+context_from: 92
+stem:
+What assumption does the author **criticize** regarding digital financial systems?
+A: Mobile payments are fast
+B: Biometrics ensure security
+C: OTPs can replace financial education
+D: Rural people distrust technology
+solution:
+The author calls "naïve at best" the notion that "a biometric fingerprint or a one-time password could substitute for financial literacy". The criticized assumption is that OTPs can replace financial education.
+
+=== 96
+chapter: Reading Comprehension
+subtopic: Inference: What Must Be True
+difficulty: EASY
+answer: C
+context_from: 92
+stem:
+What is implied about women's financial inclusion in rural India?
+A: They benefit more from informal lenders
+B: Lack of Aadhaar is the main barrier
+C: Cultural factors hinder their financial agency
+D: They lead financial decisions at home
+solution:
+Women face exclusion "not just due to lack of documentation, but because patriarchal norms often discourage or control women's interactions with banking services". Cultural factors hinder their financial agency. B is ruled out by "not just", and A and D are never said.
+
+=== 97
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: MODERATE
+answer: B
+stem:
+**Select the correct option for the Direct Speech conversion of the sentence below.**
+The composer explained that, were the leitmotif transposed an octave higher, the tension might dissipate prematurely.
+A: The composer said, "If the leitmotif was transposed an octave higher, the tension will dissipate prematurely."
+B: The composer said, "Were the leitmotif transposed an octave higher, the tension might dissipate prematurely."
+C: The composer said, "The tension will dissipate prematurely if the leitmotif had been transposed an octave higher."
+D: The composer said, "Had the leitmotif been transposed an octave higher, the tension must have dissipated prematurely."
+solution:
+A hypothetical (subjunctive) condition with "were ... might" does not change between direct and indirect speech, so the direct form keeps it: "Were the leitmotif transposed an octave higher, the tension might dissipate prematurely." A and C mix tenses; D shifts it to a past condition with a different meaning.
+
+=== 98
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: B
+stem:
+**A sentence is provided in direct speech. From the four given options, choose the one that most accurately conveys the sentence in its corresponding indirect speech.**
+He said, "I have seen that movie already."
+A: He said that he saw that movie already.
+B: He said that he had seen that movie already.
+C: He said that he have seen that movie already.
+D: He said that he was seeing that movie already.
+solution:
+With a past reporting verb the present perfect "have seen" shifts back to the past perfect "had seen", and "I" becomes "he": he said that he had seen that movie already.
+
+=== 99
+chapter: Sentence Rearrangement
+subtopic: This, These and Such
+difficulty: EASY
+answer: A
+stem:
+**Rearrange the following sentences to form a coherent paragraph:**
+1. The most prevalent of these is the peer review process, where a manuscript is evaluated by other experts in the same field.
+2. The integrity of scientific publications is upheld by a series of rigorous checks and balances.
+3. The goal of this process is to validate the methodology, findings, and conclusions of the research before it is made public.
+4. This external scrutiny helps to ensure that only high-quality, credible research is disseminated to the scientific community.
+A: 2, 1, 3, 4
+B: 1, 2, 3, 4
+C: 3, 4, 1, 2
+D: 4, 3, 2, 1
+solution:
+Sentence 2 introduces the topic, "checks and balances". Sentence 1 picks one of "these", the peer review process. Sentence 3 gives "this process" its goal, and sentence 4 closes with what "this external scrutiny" achieves: 2, 1, 3, 4.
+
+=== 100
+chapter: Sentence Rearrangement
+subtopic: Shape of a Paragraph Argument
+difficulty: MODERATE
+answer: A
+stem:
+**Rearrange the following sentences to form a coherent paragraph:**
+1. This allows them to navigate and perform tasks with a high degree of precision in various environments, from factory floors to surgical theaters. 2. Robotics is an interdisciplinary field of engineering and computer science that deals with the design, construction, and operation of robots. 3. The core of a modern robot is its programming, which utilizes sophisticated algorithms and sensors to process information. 4. These machines are designed to assist humans by automating tasks that are either repetitive, hazardous, or require a level of accuracy beyond human capability.
+A: 2, 4, 3, 1
+B: 4, 3, 1, 2
+C: 3, 1, 2, 4
+D: 2, 3, 4, 1
+solution:
+Sentence 2 defines robotics and introduces robots. Sentence 4 follows with "these machines" and their purpose. Sentence 3 turns to the core of a robot, its programming, and sentence 1's "This allows them" depends on that programming: 2, 4, 3, 1.

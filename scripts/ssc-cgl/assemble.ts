@@ -14,12 +14,13 @@
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { DAYS, OUT, SHIFTS } from "./config";
+import { DAYS, OUT, SHIFTS, shiftsOf } from "./config";
 import { assembleQuestions, type Geometry } from "./lib";
 
 function main() {
   const day = process.argv[2];
   if (!day || !DAYS[day]) throw new Error(`usage: assemble.ts <dayId>. Known: ${Object.keys(DAYS).join(", ")}`);
+  if (DAYS[day].format === "tcs") throw new Error(`${day} is a TCS response-sheet file: use assemble-tcs.ts`);
   const geometry: Geometry = JSON.parse(readFileSync(join(OUT, day, "geometry.json"), "utf8"));
   const questions = assembleQuestions(geometry, {
     missing: DAYS[day].missing,
@@ -30,8 +31,9 @@ function main() {
   }
 
   const shifts = [...new Set(questions.map((q) => q.shift))].sort();
-  if (shifts.length !== DAYS[day].shifts) {
-    throw new Error(`${day}: DAYS says ${DAYS[day].shifts} shift(s), the PDF has ${shifts.length} (${shifts.join(", ")})`);
+  const want = shiftsOf(DAYS[day]);
+  if (shifts.join() !== want.join()) {
+    throw new Error(`${day}: DAYS says shift(s) ${want.join(", ")}, the PDF has ${shifts.join(", ")}`);
   }
   for (const s of shifts) {
     const id = `${day}-s${s}`;

@@ -1,0 +1,1627 @@
+SSC CGL 2025 Tier I, 23 September 2025, Shift 1 (09:00 AM). Read from SSC's challenge-module saved paper.
+Drafted by agents, one PART each, from the reading sheets only (no key; DRAFTING_BRIEF.md);
+every block reviewed in the main session, then compared with the key (build.ts).
+Format: scripts/ssc-cgl/lib.ts.
+
+=== 1
+chapter: Alphabet and Number Tests
+subtopic: Letter Position and Alphabet Test
+difficulty: EASY
+answer: C
+stem:
+Using the reverse code (Z=1 to A=26), what is the sum of the reverse positions of the first and last letters of "KNOWLEDGE"?
+A: 25
+B: 30
+C: 38
+D: 32
+solution:
+The reverse position of a letter is 27 minus its forward position.
+
+K is 11th, so its reverse position is \(27 - 11 = 16\). E is 5th, so its reverse position is \(27 - 5 = 22\).
+
+Sum: \(16 + 22 = 38\).
+
+=== 2
+chapter: Alphabet and Number Tests
+subtopic: Address and Data Matching
+difficulty: EASY
+answer: B
+stem:
+Choose the address that is the same as the one given below.
+
+Flat 404, Block-C,Rajeev Nagar, Patna,Bihar - 800024
+A: Flat 404, Block-C, Rajeev Nagar, Patna, West Bengal - 800024
+B: Flat 404, Block-C, Rajeev Nagar, Patna, Bihar - 800024
+C: Flat 404, Block-C, Rajeev Nagar, Patna, Jharkhand - 800024
+D: Flat 404, Block-C, Rajeev Nagar, Patna, Uttar Pradesh - 800024
+solution:
+Every option matches the flat, block, locality, city and PIN code. Only B has the same state, Bihar; the others name West Bengal, Jharkhand and Uttar Pradesh.
+
+=== 3
+chapter: Order, Ranking and Arrangement
+subtopic: Scheduling and Puzzles
+difficulty: EASY
+answer: B
+stem:
+The seminar in Siliguri was 3 days after Darjeeling,and Kalimpong hosted its seminar 1 day before Siliguri. If Darjeeling was on 2nd March, when was Kalimpong's seminar?
+A: 3rd March
+B: 4th March
+C: 5th March
+D: 6th March
+solution:
+Darjeeling: 2nd March. Siliguri is 3 days later: 5th March. Kalimpong is 1 day before Siliguri: 4th March.
+
+=== 4
+chapter: Mathematical Operations
+subtopic: Hidden Operation Rules
+difficulty: EASY
+answer: A
+stem:
+If 2 * 3 = 8, 3 * 4 = 81, then 4 * 5 = ?
+A: 1024
+B: 1026
+C: 256
+D: 2048
+solution:
+The rule is \(a * b = a^b\): \(2^3 = 8\) and \(3^4 = 81\).
+
+So \(4 * 5 = 4^5 = 1024\).
+
+=== 5
+chapter: Inequalities
+subtopic: Direct Inequalities
+difficulty: EASY
+answer: C
+stem:
+Read the given statement and conclusions carefully. Decide which of the given conclusions is/are definitely true from the statement.
+
+Statement: \(P = Q \ge S > T = R \ge U > V\)
+Conclusion I: \(Q \ge U\)
+Conclusion II: \(T = U\)
+A: Both Conclusion I and Conclusion II are True.
+B: Both Conclusion I and Conclusion II are False.
+C: Only Conclusion I is True.
+D: Only Conclusion II is True.
+solution:
+\(Q \ge S > T = R \ge U\) gives \(Q > U\), so \(Q \ge U\) is definitely true: I is true.
+
+\(T = R \ge U\) gives only \(T \ge U\); T may be greater than U, so \(T = U\) is not definite: II is false.
+
+Only I is true.
+
+=== 6
+chapter: Blood Relations
+subtopic: Direct Relations
+difficulty: EASY
+answer: C
+stem:
+P is the father of Q and R. How are Q and R related?
+A: Father
+B: Grandmother
+C: Siblings
+D: Mother
+solution:
+Q and R have the same father, P, so they are siblings.
+
+=== 7
+chapter: Analogy
+subtopic: Number Analogy
+difficulty: EASY
+answer: A
+stem:
+Find the missing number: **17 : 4914 :: 19 : ?**
+A: 6860
+B: 6861
+C: 6859
+D: 6875
+solution:
+\(17^3 = 4913\), and \(4913 + 1 = 4914\). The rule is cube plus 1.
+
+\(19^3 = 6859\), so the missing number is \(6859 + 1 = 6860\).
+
+=== 8
+chapter: Syllogism
+subtopic: Two-Statement Syllogism
+difficulty: EASY
+answer: D
+flawed: yes
+note: SSC's provisional key B takes 'All novels are books' as following from 'Some books are novels', which it does not (some novels may not be books). Neither conclusion follows. Our answer stays D; held PRIVATE for review
+stem:
+Read the following statement carefully and identify the conclusion that follows.
+
+Statement:
+All pens are books. Some books are novels.
+
+**Conclusions:**
+I. Some pens are novels.
+II. All novels are books.
+A: Only I follows
+B: Only II follows
+C: Both I and II follow
+D: Neither I nor II follows
+solution:
+The novels that are books need not include any pen, so I does not follow.
+
+Only some books are known to be novels; some novels may lie outside books, so II does not follow.
+
+Neither follows.
+
+=== 9
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: B
+stem:
+If "CHINA" is written as "FKLQD", how will "JAPAN" be written?
+A: LDRCO
+B: MDSDQ
+C: KCPBO
+D: MDTDR
+solution:
+Each letter moves 3 places forward: C to F, H to K, I to L, N to Q, A to D.
+
+JAPAN: J to M, A to D, P to S, A to D, N to Q, giving MDSDQ.
+
+=== 10
+chapter: Series
+subtopic: Alphanumeric and Pattern Series
+difficulty: EASY
+answer: D
+stem:
+Find the pair that does NOT follow the double-step pattern.
+
+Q2, R4, S6, T8, V12
+A: Q2
+B: R4
+C: S6
+D: V12
+solution:
+The letters move one place at a time (Q, R, S, T) while the numbers go up by 2 (2, 4, 6, 8). The next term should be U10.
+
+V12 skips a letter and jumps the number by 4, so it breaks the pattern.
+
+=== 11
+chapter: Series
+subtopic: Alphanumeric and Pattern Series
+difficulty: EASY
+answer: C
+stem:
+What comes next?
+B25, Y2, C24, X3, ?
+A: V5
+B: E22
+C: D23
+D: W4
+solution:
+Two series alternate. Odd terms: B25, C24, so the letter moves forward one place and the number falls by 1. Even terms: Y2, X3, the letter moves back one place and the number rises by 1.
+
+The fifth term continues the odd series: D23.
+
+=== 12
+chapter: Series
+subtopic: Number Series
+difficulty: MODERATE
+answer: A
+stem:
+Which number breaks the pattern?
+
+3, 6, 11, 20, 33, 70
+A: 33
+B: 70
+C: 11
+D: 20
+solution:
+The rule is double and subtract 0, 1, 2, 3, 4: \(3 \times 2 = 6\), \(6 \times 2 - 1 = 11\), \(11 \times 2 - 2 = 20\), \(20 \times 2 - 3 = 37\), \(37 \times 2 - 4 = 70\).
+
+The fifth term should be 37, not 33.
+
+Check: with 37 the differences are 3, 5, 9, 17, 33, each one less than twice the previous. 33 breaks the pattern.
+
+=== 13
+chapter: Classification
+subtopic: Word Classification
+difficulty: EASY
+answer: D
+stem:
+Find the odd one out from the given alternatives
+A: Bhajan
+B: Qawwali
+C: Ghazal
+D: Rangoli
+solution:
+Bhajan, Qawwali and Ghazal are forms of song or music. Rangoli is a floor art made with coloured powder, so it is the odd one out.
+
+=== 14
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: B
+stem:
+What should come at the place of question mark? : **4, 9, 19, 39, 79, ?**
+A: 160
+B: 159
+C: 161
+D: 163
+solution:
+Each term is twice the previous plus 1: \(4 \times 2 + 1 = 9\), \(9 \times 2 + 1 = 19\), \(19 \times 2 + 1 = 39\), \(39 \times 2 + 1 = 79\).
+
+Next: \(79 \times 2 + 1 = 159\).
+
+=== 15
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: D
+stem:
+A sum doubles in 5 years at simple interest. What is the annual rate?
+A: 10%
+B: 12%
+C: 15%
+D: 20%
+solution:
+Doubling means the interest equals the principal, i.e. 100% of it, earned in 5 years.
+
+Rate = \(\frac{100\%}{5} = 20\%\) a year.
+
+=== 16
+chapter: Mathematical Operations
+subtopic: Hidden Operation Rules
+difficulty: EASY
+answer: A
+flawed: yes
+note: SSC's provisional key B (84) fits no rule that also gives 9 @ 1 = 82 and 10 @ 1 = 101; the rule a squared plus b squared fits both and gives 8 @ 2 = 68. Our answer stays A; held PRIVATE for review
+stem:
+If 9 @ 1 = 82 and 10 @ 1 = 101, what is 8 @ 2?
+A: 68
+B: 84
+C: 98
+D: 88
+solution:
+The rule is \(a @ b = a^2 + b^2\): \(81 + 1 = 82\) and \(100 + 1 = 101\).
+
+So \(8 @ 2 = 64 + 4 = 68\).
+
+=== 17
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: A
+stem:
+What should come at the place of question mark?
+**3, 8, 15, 24, 35, ?**
+A: 48
+B: 46
+C: 47
+D: 49
+solution:
+The terms are \(n^2 - 1\) for n = 2 to 6: 3, 8, 15, 24, 35. Next is \(7^2 - 1 = 48\).
+
+Check: the differences 5, 7, 9, 11 continue with 13, and \(35 + 13 = 48\).
+
+=== 18
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: EASY
+answer: A
+stem:
+If @ = +, # = -, \(\text{\textdollar}\) = \(\times\), & = \(\div\); 8 \(\text{\textdollar}\) 2 @ 6 # 3 = ?
+A: 19
+B: 17
+C: 13
+D: 14
+solution:
+Substituting: \(8 \times 2 + 6 - 3\).
+
+\(16 + 6 - 3 = 19\).
+
+=== 19
+chapter: Syllogism
+subtopic: Two-Statement Syllogism
+difficulty: EASY
+answer: A
+flawed: yes
+note: SSC's provisional key D says neither follows (checked on the page: yellow on D). But some pens are papers and all papers are books, so some pens are books: I follows. Our answer stays A; held PRIVATE for review
+stem:
+Statements: Some pens are papers. All papers are books. Conclusions: I. Some pens are books. II. All books are pens.
+A: Only I follows
+B: Only II follows
+C: Both I and II follow
+D: Neither I nor II follows
+solution:
+The pens that are papers are also books, so some pens are books: I follows.
+
+Nothing says every book is a pen, so II does not follow. Only I follows.
+
+=== 20
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: C
+stem:
+A person spends 80% of his income and saves ₹2000. What is his income?
+A: ₹8000
+B: ₹9000
+C: ₹10,000
+D: ₹7500
+solution:
+He saves \(100\% - 80\% = 20\%\) of his income, which is ₹2000.
+
+Income = \(\frac{2000}{0.2}\) = ₹10,000.
+
+Check: 80% of ₹10,000 is ₹8000 spent, leaving ₹2000.
+
+=== 21
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: A
+stem:
+If 5 cats can catch 5 mice in 5 minutes, how many cats are needed to catch 100 mice in 100 min?
+A: 5
+B: 10
+C: 100
+D: 25
+solution:
+One cat catches one mouse in 5 minutes, so in 100 minutes one cat catches \(\frac{100}{5} = 20\) mice.
+
+Cats needed for 100 mice: \(\frac{100}{20} = 5\).
+
+=== 22
+chapter: Coding-Decoding
+subtopic: Number and Symbol Coding
+difficulty: EASY
+answer: C
+stem:
+If 'TIGER' is coded as '20-9-7-5-18', how will 'REGIT' be coded?
+A: 15-4-4-16-12
+B: 6-23-26-13-22
+C: 18-5-7-9-20
+D: 21-26-12-16-8
+solution:
+Each letter is coded by its position in the alphabet: T = 20, I = 9, G = 7, E = 5, R = 18.
+
+REGIT: R = 18, E = 5, G = 7, I = 9, T = 20, giving 18-5-7-9-20 (TIGER's code reversed, as REGIT is TIGER reversed).
+
+=== 23
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: A
+stem:
+If MARKER is coded as NBSLFS, how is NBSLFS coded?
+A: OCTMGT
+B: OCSMGT
+C: OCTMGS
+D: OCTNGT
+solution:
+Each letter moves 1 place forward: M to N, A to B, R to S, K to L, E to F, R to S.
+
+NBSLFS: N to O, B to C, S to T, L to M, F to G, S to T, giving OCTMGT.
+
+=== 24
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: A
+stem:
+If HELMET is coded as IFMNFU, how is IFMNFU coded?
+A: JGNOGV
+B: JGNNGV
+C: JGNOGU
+D: JGMOHV
+solution:
+Each letter moves 1 place forward: H to I, E to F, L to M, M to N, E to F, T to U.
+
+IFMNFU: I to J, F to G, M to N, N to O, F to G, U to V, giving JGNOGV.
+
+=== 25
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: A
+stem:
+If in a code language, 'CAR' is written as 'FDW', then 'BAT' is written as?
+A: EDY
+B: GEX
+C: FCX
+D: FBY
+solution:
+Position by position: C to F is +3, A to D is +3, R to W is +5.
+
+BAT: B + 3 = E, A + 3 = D, T + 5 = Y, giving EDY.
+
+=== 26
+subject: History
+chapter: Ancient India
+subtopic: Temple and Rock-Cut Architecture
+difficulty: HARD
+answer: D
+stem:
+In the Nagara temple, which element is the projecting central offset of the wall face?
+A: Karna Sringa
+B: Pratiratha
+C: Anuratha
+D: Bhadra
+solution:
+In a Nagara temple the wall is broken into vertical offsets (rathas). The central projection on each face is the bhadra. The pratiratha and anuratha are the intermediate offsets beside it, and the karna is the corner offset (a karna sringa is the miniature spire over it).
+
+=== 27
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Days, Festivals and Observances
+difficulty: HARD
+answer: A
+stem:
+The Garia Carnival is conducted according to the guidance of which figure?
+A: Ochai
+B: Lama
+C: Ojha
+D: Dolo
+solution:
+Garia Puja of Tripura's tribal communities is performed under the Ochai, the traditional tribal priest, who conducts the worship of Baba Garia. A Lama is a Buddhist monk and an Ojha a folk healer of eastern India.
+
+=== 28
+subject: History
+chapter: Modern India
+subtopic: Art, Painting and Sculpture
+difficulty: EASY
+answer: C
+stem:
+**Read the below statements marked as Assertion (A) and Reason (R). Mark the correct options:**
+**Assertion (A):** Gothic Revival buildings in colonial India often employed pointed arches and ribbed vaults.
+**Reason(R):** These elements were unknown in traditional European cathedrals.
+A: Both A and R are true, and R is the correct explanation of A.
+B: Both A and R are true, but R is not the correct explanation of A.
+C: A is true, but R is false.
+D: A is false, but R is true.
+solution:
+Neo-Gothic buildings such as the Victoria Terminus and the Bombay High Court use pointed arches, ribbed vaults and spires, so A is true. These features came straight from medieval European Gothic cathedrals, so R is false.
+
+=== 29
+subject: History
+chapter: Ancient India
+subtopic: Vedic Age, Society and Literature
+difficulty: EASY
+answer: C
+stem:
+What is the meaning of Samhita in the context of the Rigveda?
+A: A commentary explaining each verse of the Rigveda
+B: A collection of hymns arranged in prose form
+C: A systematic compilation of hymns and mantras
+D: A ritual handbook for Vedic sacrifices
+solution:
+Samhita means a collection. The Rigveda Samhita is the compiled body of its hymns (suktas) and mantras, arranged in ten mandalas in verse. Commentaries and ritual handbooks are the later Brahmanas, not the Samhita.
+
+=== 30
+subject: History
+chapter: Ancient India
+subtopic: Post-Mauryan, Gupta and Sangam Period
+difficulty: MODERATE
+answer: C
+stem:
+Which of the following **fiscal terms** related to Gupta dynasty is **correctly** matched?
+A: Utkhetayita – temple priest
+B: Bhaga – judicial fee
+C: Vaishthika – forced labour
+D: Dasaparadha – annual cattle tax
+solution:
+Vishti (vaishthika) was forced or unpaid labour owed to the state. Bhaga was the king's share of the produce (land revenue), not a judicial fee. Dasaparadha was the fines collected for ten offences, not a cattle tax. Utkhetayita was a levy, not a priest.
+
+=== 31
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: HARD
+answer: D
+stem:
+Regarding the initial office and organizational structure of Indian Amateur Boxing Federation(IABF):
+1) The first office of IABF was established at 62, Majestic Hotel in Bombay.
+2) Bombay formed the core of the IABF at its inception, with most office-bearers from the city.
+3) The inaugural meeting of the Federation was held at the Governor’s Pavilion of the Cricket Club of India.
+Which of these statements are **correct?**
+A: Only 1 and 2 are Correct
+B: Only 2 and 3 are Correct
+C: Only 1 and 3 are correct
+D: 1, 2 and 3 are Correct
+solution:
+The IABF was founded on 25 February 1949 at an inaugural meeting in the Governor's Pavilion of the Cricket Club of India, Bombay. Its office was first set up at 62, Majestic Hotel, Bombay, and Bombay men (led by the Bombay Presidency body) held most of its posts, with Bombay as its headquarters. All three statements are correct.
+
+=== 32
+subject: History
+chapter: Medieval India
+subtopic: Mughal Empire and Administration
+difficulty: EASY
+answer: C
+stem:
+Whose administrative system later became the model for Emperor Akbar’s consolidation of the Mughal Empire?
+A: Babar
+B: Humayun
+C: Sher Shah Suri
+D: Jahangir
+solution:
+Sher Shah Suri's land survey and revenue system, his rupiya coinage, sarkar and pargana divisions and roads were taken over and refined by Akbar (through Todar Mal). Babar and Humayun left no settled system, and Jahangir came after Akbar.
+
+=== 33
+subject: History
+chapter: Modern India
+subtopic: British Administration, Acts and Legislation
+difficulty: EASY
+answer: C
+stem:
+Which education-related document, issued in 1854, laid the foundation for modern education in India?
+A: Macaulay’s Minute
+B: Hunter Commission
+C: Wood’s Despatch
+D: Indian Education Act
+solution:
+Charles Wood's Despatch of 1854, the "Magna Carta of English education in India", laid down a graded system of schools and universities. Macaulay's Minute was 1835 and the Hunter Commission 1882.
+
+=== 34
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: EASY
+answer: C
+stem:
+Who won a bronze medal in wrestling at the 2024 Paris Olympics, becoming India’s youngest-ever individual Olympic medallist?
+A: Ravi Kumar Dahiya
+B: Bajrang Punia
+C: Aman Sehrawat
+D: Deepak Punia
+solution:
+Aman Sehrawat won bronze in the men's 57 kg freestyle at Paris 2024, aged 21, the youngest Indian to win an Olympic medal. Ravi Dahiya (silver) and Bajrang Punia (bronze) won at Tokyo 2020.
+
+=== 35
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: C
+stem:
+**Consider the following statements regarding NADA India’s Education Plan objectives:**
+1) It aims to promote values of sportsmanship and fair play within India’s sports ecosystem.
+2) It focuses on penalizing athletes caught doping rather than education.
+3) It provides accurate and timely anti-doping information to all stakeholders.
+Which of the statements is/are **correct?**
+A: Only 1 and 2 are Correct
+B: Only 2 and 3 are Correct
+C: Only 1 and 3 are Correct
+D: 1, 2 and 3 are Correct
+solution:
+NADA's education plan is preventive: it promotes the spirit of sport and fair play and gives athletes and support staff accurate, timely anti-doping information. Penalising doping is the job of testing and the disciplinary panels, not the education plan, so statement 2 is wrong.
+
+=== 36
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Books, Literature and Authors
+difficulty: EASY
+answer: B
+stem:
+In which language was Heart Lamp originally written?
+A: Tamil
+B: Kannada
+C: Hindi
+D: Malayalam
+solution:
+Heart Lamp is a collection of short stories by Banu Mushtaq, written in Kannada and translated into English by Deepa Bhasthi. It won the International Booker Prize 2025.
+
+=== 37
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Books, Literature and Authors
+difficulty: MODERATE
+answer: A
+stem:
+Consider the following statements about 'Negotiating Mughal Law' by Nandini Chatterjee:
+1) The book explores legal pluralism and property rights through a landlord family’s experience across Indian empires.
+2) It is a literary biography focusing on Mughal emperors’ personal lives and poetic patronage.
+Which of the above statements is/are **correct?**
+A: Only statement 1 is correct
+B: Only statement 2 is correct
+C: Both statements 1 and 2 are correct
+D: Neither statement 1 nor 2 is correct
+solution:
+The full title is "Negotiating Mughal Law: A Family of Landlords across Three Indian Empires". It is a legal and social history of property and legal pluralism traced through one landholding family, not a biography of emperors.
+
+=== 38
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: D
+stem:
+What was the official mascot of the Khelo India Winter Games 2024?
+A: Bharati the Leopard
+B: Mauli
+C: Veera the Bull
+D: Snow leopard ‘Sheen-e She’ (Shan)
+solution:
+The fourth Khelo India Winter Games (2024, Ladakh and Jammu and Kashmir) had the snow leopard "Sheen-e She" (Shan) as its mascot.
+
+=== 39
+subject: Polity
+chapter: Indian Constitution — Making, Foundation and Amendments
+subtopic: Emergency Provisions
+difficulty: EASY
+answer: A
+stem:
+Under which constitutional provision can the President of India assume legislative powers for a state?
+A: When Article 356 is invoked due to constitutional breakdown in the state
+B: When the Lok Sabha is dissolved
+C: On recommendation of the Prime Minister
+D: When directed by the Supreme Court
+solution:
+Under Article 356 (President's Rule), on failure of constitutional machinery in a state, the President takes over the state government's functions and the state legislature's powers become exercisable by or under the authority of Parliament (Article 357 lets Parliament delegate them to the President).
+
+=== 40
+subject: Physics
+chapter: Sound
+subtopic: Sound Behaviours — Reflection, Echo, Reverberation, Beats
+difficulty: MODERATE
+answer: C
+stem:
+What happens to the perceived frequency when both the source and the listener move with the same speed in the same direction?
+A: It increases
+B: It decreases
+C: It remains unchanged
+D: It fluctuates rapidly
+solution:
+By the Doppler formula \(f' = f \frac{v + v_o}{v + v_s}\) with signs for motion along the line. If source and listener move together with the same speed \(u\) in the same direction, the factors cancel: \(f' = f \frac{v - u}{v - u} = f\).
+
+There is no relative motion between them, so the frequency heard is unchanged.
+
+=== 41
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Statutory Bodies and Post-Independence Legislation
+difficulty: HARD
+answer: A
+stem:
+Read the below statements marked as Assertion (A) and Reason (R). Mark the **correct** options:
+**Assertion (A):** A confession made to a police officer is inadmissible in court.
+**Reason (R):** Section 23 of Bharatiya Sakshya Adhiniyam retains the principle of voluntariness in confession.
+A: Both A and R are true, and R is the correct explanation of A.
+B: Both A and R are true, but R is not the correct explanation of A.
+C: A is true, R is false.
+D: A is false, R is true.
+solution:
+Section 23(1) of the Bharatiya Sakshya Adhiniyam, 2023 (old Section 25 of the Evidence Act) says no confession made to a police officer shall be proved against an accused, so A is true. The rule exists to keep out confessions that may not be voluntary, given the risk of police coercion, and Section 23 carries this principle over from the old Act. So R is true and explains A.
+
+=== 42
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: UNESCO Recognitions and Cultural Heritage
+difficulty: MODERATE
+answer: C
+stem:
+Consider the statements about Kalbelia :
+1. Female costumes are black swirling skirts richly mirror-embroidered.
+2. It entered UNESCO Representative List in 2010.
+Which is/are **correct?**
+A: Only 1 correct
+B: Only 2 correct
+C: Both 1 & 2 correct
+D: Neither 1 nor 2 correct
+solution:
+Kalbelia dancers of Rajasthan wear flowing black ghagras worked with mirrors and silver thread, and swirl like a snake. "Kalbelia folk songs and dances of Rajasthan" was inscribed on the UNESCO Representative List in 2010. Both statements are correct.
+
+=== 43
+subject: Current Affairs
+chapter: International Affairs and Relations
+subtopic: World Leaders, Elections and Global Events
+difficulty: EASY
+answer: C
+stem:
+Which country has consistently been ranked as the world's most peaceful country in the Global Peace Index?
+A: New Zealand
+B: Denmark
+C: Iceland
+D: Switzerland
+solution:
+Iceland has topped the Global Peace Index (Institute for Economics and Peace) every year since 2008. New Zealand, Denmark and Switzerland usually follow in the top ten.
+
+=== 44
+subject: Economics
+chapter: Money, Banking and Public Finance
+subtopic: Banking, RBI and Financial Institutions
+difficulty: MODERATE
+answer: A
+stem:
+**Read the below statements marked as Assertion (A) and Reason (R). Mark the correct option:**
+**Assertion (A):** Financial intermediaries are essential in transmitting monetary policy to the real economy.
+**Reason (R):** They adjust lending and deposit rates in response to policy rates set by the MPC.
+A: Both A and R are true, and R is the correct explanation of A.
+B: Both A and R are true, but R is not the correct explanation of A.
+C: A is true, but R is false.
+D: A is false, but R is true.
+solution:
+A change in the repo rate reaches households and firms only through banks and other intermediaries, which reset their deposit and lending rates. That pass-through is exactly why intermediaries are essential to transmission, so R is true and explains A.
+
+=== 45
+subject: History
+chapter: Modern India
+subtopic: Revolt of 1857 and Popular Uprisings
+difficulty: MODERATE
+answer: B
+stem:
+Peer Ali Khan was a prominent figure in the 1857 Revolt who organized rebels and challenged British rule in which major city of Bihar?
+A: Gaya
+B: Patna
+C: Bhagalpur
+D: Muzaffarpur
+solution:
+Peer Ali Khan, a bookseller of Patna, organised the rising in Patna in July 1857. He was captured and hanged by Commissioner William Tayler. Kunwar Singh led the revolt from Jagdishpur.
+
+=== 46
+subject: Economics
+chapter: National Income, Growth and Development Indicators
+subtopic: Industrial and Manufacturing Policy
+difficulty: EASY
+answer: B
+stem:
+What was the main objective of the Industrial Policy of 1956?
+A: Profit Maximization
+B: Growth with equity
+C: Laissez-faire policy
+D: Open market reforms
+solution:
+The Industrial Policy Resolution of 1956 aimed at a socialist pattern of society: rapid industrialisation led by the public sector, along with reduced disparities of income and wealth and balanced regional growth, that is, growth with equity. Laissez-faire and open market reforms belong to 1991, not 1956.
+
+=== 47
+subject: History
+chapter: Modern India
+subtopic: Post-Independence India
+difficulty: MODERATE
+answer: A
+blind: B
+note: judgement item. SSC's key reads R (his death began linguistic state formation) as explaining A; our blind reading took R as a consequence of the fast, not its reason. The bank carries SSC's answer
+stem:
+**Read the following statements and mark the correct option:**
+**Assertion (A):** Potti Sriramulu fasted unto death for the formation of Andhra Pradesh.
+**Reason (R):** His death marked the beginning of linguistic state formation in India.
+A: Both A and R are true, and R is the correct explanation of A.
+B: Both A and R are true, but R is not the correct explanation of A.
+C: A is true, but R is false.
+D: A is false, but R is true.
+solution:
+Potti Sriramulu fasted from October 1952 for a separate Telugu-speaking state and died after 58 days, so A is true. His death forced the creation of Andhra State in 1953, the first state formed on a linguistic basis, which began the reorganisation of states by language, so R is true, and the key takes it as the explanation of A's significance.
+
+=== 48
+subject: History
+chapter: Modern India
+subtopic: Post-Independence India
+difficulty: MODERATE
+answer: A
+stem:
+Jayaprakash Narayan's concept of Total Revolution included which of the following components?
+1. Social reforms to eradicate corruption
+2. Political reforms to decentralize power
+3. Armed struggle against the government
+4. Economic reforms focusing on privatization
+Which of these are correct?
+A: 1 and 2 only
+B: 2 and 3 only
+C: 1, 3 and 4 only
+D: 1,2,3 and 4
+solution:
+JP's Total Revolution (1974) was a non-violent movement against corruption with social, political, economic, cultural and educational change, including decentralisation of power. It rejected armed struggle, and its economic idea was a Gandhian, decentralised economy, not privatisation. So only 1 and 2.
+
+=== 49
+subject: Economics
+chapter: Indian Economy
+subtopic: Five Year Plans and Indian Planning
+difficulty: EASY
+answer: B
+stem:
+Which plan gave prominence to the Industrial Policy Resolution of 1956, emphasizing the ‘commanding heights’ doctrine?
+A: First Five Year Plan
+B: Second Five Year Plan
+C: Third Five Year Plan
+D: Fourth Five Year Plan
+solution:
+The Second Five Year Plan (1956-61), built on the Mahalanobis model, adopted the 1956 Industrial Policy Resolution and gave the public sector the commanding heights of heavy industry. The First Plan stressed agriculture.
+
+=== 50
+subject: Economics
+chapter: Indian Economy
+subtopic: International Trade and Finance
+difficulty: EASY
+answer: C
+stem:
+What is the role of WTO with respect to globalization?
+A: Provide military support
+B: Monitor human rights violations
+C: Ensure fair trade rules among nations
+D: Control migration policies
+solution:
+The World Trade Organization (1995) sets and enforces the rules of international trade, negotiates lower trade barriers and settles trade disputes between member nations. It has no military, human-rights or migration role.
+
+=== 51
+chapter: Percentage, Profit and Loss
+subtopic: Profit and Loss
+difficulty: MODERATE
+answer: D
+stem:
+An electronics store orders 150 portable speakers at a cost of ₹400 each. The owner plans to price them so that selling only 120 speakers would guarantee a \(40\%\) profit on the total investment. However, a local event leads to the sale of 135 speakers. If the remaining speakers have no resale value, calculate the store's actual profit percentage on the total investment.
+A: \(52.2\%\)
+B: \(53.5\%\)
+C: \(62.8\%\)
+D: \(57.5\%\)
+solution:
+Total investment \(= 150 \times 400 = 60000\) rupees.
+
+Selling 120 speakers must bring \(1.4 \times 60000 = 84000\) rupees, so the price is \(84000 \div 120 = 700\) rupees each.
+
+Selling 135 speakers brings \(135 \times 700 = 94500\) rupees, a profit of \(94500 - 60000 = 34500\) rupees, which is \(\frac{34500}{60000} \times 100 = 57.5\%\).
+
+Check: 15 extra speakers at ₹700 add \(\frac{10500}{60000} = 17.5\%\) to the planned \(40\%\), giving \(57.5\%\).
+
+=== 52
+chapter: Number System
+subtopic: Rational and Irrational Numbers
+difficulty: EASY
+answer: C
+stem:
+The set of real numbers includes which of the following?
+A: Only Rational Numbers
+B: Only Irrational Numbers
+C: Both Rational and Irrational Numbers
+D: Only Whole Numbers
+solution:
+The real numbers are the union of the rational numbers and the irrational numbers, so the set includes both.
+
+=== 53
+chapter: Time, Speed and Distance
+subtopic: Average Speed and Speed–Time Ratios
+difficulty: EASY
+answer: D
+stem:
+Dhanush crosses a road 100 metres wide in 50 seconds. His speed in km/hr is:
+A: 9 km/h
+B: 8.5 km/h
+C: 8 km/h
+D: 7.2 km/h
+solution:
+Speed \(= \frac{100}{50} = 2\) m/s.
+
+In km/h: \(2 \times \frac{18}{5} = 7.2\) km/h.
+
+Check: in one hour he covers \(2 \times 3600 = 7200\) m \(= 7.2\) km.
+
+=== 54
+chapter: Mensuration 3D
+subtopic: Solids Inside Solids
+difficulty: EASY
+answer: A
+stem:
+A sphere is inscribed inside a cube. The volume of the cube is 1728 \(\text{cm}^3\). What is the total surface area of the sphere?
+A: \(144\pi\ \text{cm}^2\)
+B: \(254\pi\ \text{cm}^2\)
+C: \(196\pi\ \text{cm}^2\)
+D: \(298\pi\ \text{cm}^2\)
+solution:
+Side of the cube \(= \sqrt[3]{1728} = 12\) cm, so the inscribed sphere has diameter 12 cm and radius 6 cm.
+
+Surface area \(= 4\pi r^2 = 4\pi \times 36 = 144\pi\ \text{cm}^2\).
+
+=== 55
+chapter: Mensuration 3D
+subtopic: Cubes and Cuboids
+difficulty: MODERATE
+answer: C
+stem:
+A large wooden box, open at the top, needs to be lined with fabric on its inner floor and inner four side walls. The inner dimensions of the box are 2.5 m length, 1.8 m wide, and 1.2 m high. If the fabric comes in square pieces of side 50 cm, and \(15\%\) extra fabric is needed for cuts and overlaps, how many approximate fabric pieces should be purchased?
+A: 59
+B: 62
+C: 69
+D: 72
+solution:
+Floor \(= 2.5 \times 1.8 = 4.5\ \text{m}^2\).
+
+Four walls \(= 2(2.5 + 1.8) \times 1.2 = 10.32\ \text{m}^2\).
+
+Total \(= 14.82\ \text{m}^2\); with \(15\%\) extra, \(14.82 \times 1.15 = 17.043\ \text{m}^2\).
+
+One piece \(= 0.5 \times 0.5 = 0.25\ \text{m}^2\), so pieces needed \(= \frac{17.043}{0.25} = 68.17\), rounded up to 69.
+
+=== 56
+chapter: Ratio, Proportion and Variation
+subtopic: Partnership
+difficulty: MODERATE
+answer: B
+stem:
+M and N start a business with Rs. 2,00,000 and Rs. 3,00,000 respectively. After 4 months, M adds Rs. 1,00,000 more, and N withdraws Rs. 50,000. At the end of 1 year, they make a profit of Rs. 1,80,000. What is N's share of profit?
+A: Rs. 96,000
+B: Rs. 90,000
+C: Rs. 84,000
+D: Rs. 88,000
+solution:
+M's capital-months (in lakh) \(= 2 \times 4 + 3 \times 8 = 32\).
+
+N's capital-months (in lakh) \(= 3 \times 4 + 2.5 \times 8 = 32\).
+
+The ratio is \(32 : 32 = 1 : 1\), so N gets \(\frac{180000}{2} = \text{Rs. } 90000\).
+
+=== 57
+chapter: Mensuration 2D
+subtopic: Rectangles, Squares and Other Quadrilaterals
+difficulty: EASY
+answer: B
+stem:
+A square of side 10 cm has a smaller square (of side 4 cm) removed from one side. What is the ratio of the remaining area to the original?
+A: 22:26
+B: 21:25
+C: 23:31
+D: 24:25
+solution:
+Original area \(= 100\ \text{cm}^2\); removed \(= 16\ \text{cm}^2\); remaining \(= 84\ \text{cm}^2\).
+
+Ratio \(= 84 : 100 = 21 : 25\).
+
+=== 58
+chapter: Mensuration 2D
+subtopic: Combined and Shaded Regions
+difficulty: EASY
+answer: B
+stem:
+A rectangular park is 60 m by 40 m. A semicircular pond of diameter 40 m is inside. What percent of the park's area does the pond occupy?
+A: \(33.3\%\)
+B: \(26.18\%\)
+C: \(28.35\%\)
+D: \(31.42\%\)
+solution:
+Pond area \(= \frac{1}{2}\pi (20)^2 = 200\pi \approx 628.32\ \text{m}^2\).
+
+Park area \(= 60 \times 40 = 2400\ \text{m}^2\).
+
+Percentage \(= \frac{628.32}{2400} \times 100 \approx 26.18\%\). Check: \(\frac{200\pi}{2400} = \frac{\pi}{12} = 0.2618\).
+
+=== 59
+chapter: Mensuration 2D
+subtopic: Areas of Triangles
+difficulty: EASY
+answer: A
+stem:
+A regular hexagon has a perimeter of 72 cm. What is its area?
+A: \(374.12\ \text{cm}^2\)
+B: \(449.76\ \text{cm}^2\)
+C: \(670.32\ \text{cm}^2\)
+D: \(748.15\ \text{cm}^2\)
+solution:
+Side \(= \frac{72}{6} = 12\) cm. A regular hexagon is six equilateral triangles.
+
+Area \(= 6 \times \frac{\sqrt{3}}{4} \times 12^2 = 216\sqrt{3} \approx 216 \times 1.732 = 374.12\ \text{cm}^2\).
+
+=== 60
+chapter: Percentage, Profit and Loss
+subtopic: Percentage
+difficulty: EASY
+answer: B
+stem:
+Out of her total monthly income, a woman spends \(60\%\) on household expenses and \(15\%\) on savings. The remaining is spent on other items. What percentage of her income is spent on these other items?
+A: \(35\%\)
+B: \(25\%\)
+C: \(20\%\)
+D: \(30\%\)
+solution:
+Other items \(= 100\% - 60\% - 15\% = 25\%\).
+
+=== 61
+chapter: Percentage, Profit and Loss
+subtopic: Percentage
+difficulty: MODERATE
+answer: B
+stem:
+A's salary is \(40\%\) more than B's. If B's salary increases by \(20\%\) and A's increases by x%, then A's new salary becomes \(25\%\) more than B's new salary. What is the value of x?
+A: \(2.5\%\)
+B: \(7.14\%\)
+C: \(10.63\%\)
+D: \(15.6\%\)
+solution:
+Let B's salary be 100, so A's is 140.
+
+B's new salary \(= 120\); A's new salary \(= 1.25 \times 120 = 150\).
+
+\(x = \frac{150 - 140}{140} \times 100 = \frac{100}{14} \approx 7.14\%\).
+
+Check: \(140 \times 1.0714 \approx 150 = 1.25 \times 120\).
+
+=== 62
+chapter: Averages
+subtopic: Sum and Mean
+difficulty: EASY
+answer: B
+stem:
+The average of a certain number of quantities is 45. If 5 is added to each quantity, what will be the new average?
+A: 45
+B: 50
+C: 40
+D: 55
+solution:
+Adding the same number to every quantity adds it to the average: \(45 + 5 = 50\).
+
+=== 63
+chapter: Mensuration 3D
+subtopic: Prisms and Pyramids
+difficulty: EASY
+answer: A
+stem:
+A triangular prism has a base with area 45 \(\text{cm}^2\) and height 14 cm. If \(10\%\) of the prism is hollowed out for wiring, what is the volume of the solid part?
+A: 567 \(\text{cm}^3\)
+B: 594 \(\text{cm}^3\)
+C: 576 \(\text{cm}^3\)
+D: 630 \(\text{cm}^3\)
+solution:
+Volume \(= 45 \times 14 = 630\ \text{cm}^3\).
+
+Solid part \(= 90\% \text{ of } 630 = 567\ \text{cm}^3\).
+
+=== 64
+chapter: Averages
+subtopic: Sum and Mean
+difficulty: EASY
+answer: A
+stem:
+A group of 5 friends went to a restaurant. If 4 of them paid Rs. 200 each and the fifth paid Rs. x, the average bill per person came out to be Rs. 210. What is the value of x?
+A: Rs. 250
+B: Rs. 270
+C: Rs. 260
+D: Rs. 280
+solution:
+Total \(= 5 \times 210 = 1050\), so \(x = 1050 - 4 \times 200 = 250\).
+
+Check: the fifth pays \(210 + 4 \times 10 = 250\) to cover the other four's shortfall of 10 each.
+
+=== 65
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: EASY
+answer: D
+stem:
+A seller offers a \(40\%\) discount on an item whose cost price is Rs. 720. Despite the discount, the seller earns a profit of \(20\%\). What must be the marked price?
+A: Rs. 1,600
+B: Rs. 1,240
+C: Rs. 1,500
+D: Rs. 1,440
+solution:
+Selling price \(= 1.2 \times 720 = 864\).
+
+Marked price \(= \frac{864}{0.6} = 1440\).
+
+Check: \(40\%\) off 1440 is \(1440 - 576 = 864\).
+
+=== 66
+chapter: Trigonometric Ratios and Identities
+subtopic: Ratios in a Right Triangle
+difficulty: EASY
+answer: A
+stem:
+If \(\sin A = 0.6\), what is the value of \(\tan A\) ?
+A: 0.75
+B: 0.8
+C: 1.25
+D: 2.56
+solution:
+\(\sin A = \frac{3}{5}\), so \(\cos A = \frac{4}{5}\) (taking A acute) and \(\tan A = \frac{3}{4} = 0.75\).
+
+=== 67
+chapter: Trigonometric Ratios and Identities
+subtopic: Reciprocal Pairs — sec ± tan and cosec ± cot
+difficulty: MODERATE
+answer: A
+stem:
+If \(\sec A + \tan A = p\), then what is \(\sec A\) in terms of p?
+A: \(\frac{p^2+1}{2p}\)
+B: \(\frac{p^2+1}{3p}\)
+C: \(\frac{p^2+1}{5p}\)
+D: \(\frac{p^2+1}{9p}\)
+solution:
+Since \(\sec^2 A - \tan^2 A = 1\), \(\sec A - \tan A = \frac{1}{p}\).
+
+Adding: \(2\sec A = p + \frac{1}{p}\), so \(\sec A = \frac{p^2+1}{2p}\).
+
+Check with \(A = 0\): \(p = 1\) and \(\frac{1+1}{2} = 1 = \sec 0\).
+
+=== 68
+chapter: Mensuration 2D
+subtopic: Arcs, Sectors and Segments
+difficulty: EASY
+answer: A
+stem:
+A circular jogging track has a radius of 50 m. A runner covers a curved path that subtends an angle of \(120^\circ\) at the center. What is the length of the arc she runs?
+A: \(\frac{100\pi}{3}\) m
+B: \(\frac{150\pi}{3}\) m
+C: \(\frac{200\pi}{3}\) m
+D: \(\frac{200\pi}{3}\) m
+solution:
+Arc length \(= \frac{120}{360} \times 2\pi \times 50 = \frac{100\pi}{3}\) m.
+
+=== 69
+chapter: Trigonometric Ratios and Identities
+subtopic: Complementary and Allied Angles
+difficulty: EASY
+answer: B
+stem:
+Which of the following is true for all acute angles A?
+A: \(\sin A = \sin(90^\circ - A)\)
+B: \(\sin A = \cos(90^\circ - A)\)
+C: \(\cos A = \tan(90^\circ - A)\)
+D: \(\cot A = \sin(90^\circ - A)\)
+solution:
+\(\cos(90^\circ - A) = \sin A\) for every A, so B holds.
+
+The others fail at \(A = 30^\circ\): \(\sin 30^\circ = 0.5\) but \(\sin 60^\circ \approx 0.866\); \(\cos 30^\circ \approx 0.866\) but \(\tan 60^\circ \approx 1.732\); \(\cot 30^\circ \approx 1.732\) but \(\sin 60^\circ \approx 0.866\).
+
+=== 70
+chapter: Simple and Compound Interest
+subtopic: Compound Interest
+difficulty: MODERATE
+answer: C
+stem:
+The compound interest on a certain sum for 3 years at \(20\%\) per annum is ₹864. Find the simple interest on the same sum at the same rate and period.
+A: ₹612.54
+B: ₹618.79
+C: ₹712.09
+D: ₹512.45
+solution:
+CI \(= P\left(1.2^3 - 1\right) = 0.728P = 864\), so \(P = \frac{864}{0.728} \approx 1186.81\).
+
+SI \(= P \times 0.20 \times 3 = 0.6P = \frac{0.6 \times 864}{0.728} = \frac{518.4}{0.728} \approx 712.09\), that is ₹712.09.
+
+Check: \(1186.81 \times 0.728 \approx 864\).
+
+=== 71
+chapter: Circles
+subtopic: Common Tangents and Common Chords
+difficulty: EASY
+answer: A
+stem:
+What is the minimum distance between centers of two circles having radii 5 cm and 3 cm such that exactly three common tangents exist?
+A: 8 cm
+B: 2 cm
+C: 5 cm
+D: 10 cm
+solution:
+Two circles have exactly three common tangents only when they touch externally, that is when the distance between centres equals the sum of the radii: \(5 + 3 = 8\) cm.
+
+(At 2 cm they touch internally and have one common tangent; at 10 cm they have four.)
+
+=== 72
+chapter: Circles
+subtopic: Angles in a Circle
+difficulty: EASY
+answer: A
+stem:
+In a circle, angle subtended by chord AB at the center is \(80^\circ\). What is the measure of angle \(\angle\)ACB, where C lies on the circle?
+A: \(40^\circ\)
+B: \(45^\circ\)
+C: \(80^\circ\)
+D: \(60^\circ\)
+solution:
+The angle at the circumference is half the angle at the centre on the same arc: \(\frac{80^\circ}{2} = 40^\circ\) (for C on the major arc; on the minor arc it would be \(140^\circ\), which is not offered).
+
+=== 73
+chapter: Circles
+subtopic: Chords and Perpendiculars
+difficulty: MODERATE
+answer: A
+flawed: yes
+note: the two distances fix only the distance from O to the crossing point (5 cm); the radius can be any value of at least 5 cm, so 7 cm also fits. 5 cm is the intended answer
+stem:
+In a circle with center O, two chords, AB and CD, cross each other at right angles. If the distance from the center O to chord AB is 3 cm, while the distance from O to chord CD is 4 cm. What is the radius of the circle?
+A: 5 cm
+B: 7 cm
+C: \(\sqrt{5}\) cm
+D: \(\sqrt{7}\) cm
+solution:
+The feet of the perpendiculars from O and the crossing point P form a rectangle, so \(OP = \sqrt{3^2 + 4^2} = 5\) cm.
+
+The intended reading takes the radius as this distance, 5 cm. Strictly, P lies inside or on the circle, so the radius is only known to be at least 5 cm.
+
+=== 74
+chapter: Circles
+subtopic: Angles in a Circle
+difficulty: EASY
+answer: A
+stem:
+If the angle subtended by a chord at the center is \(150^\circ\), what is the angle subtended at a point on the circle in the same segment?
+A: \(75^\circ\)
+B: \(90^\circ\)
+C: \(135^\circ\)
+D: \(180^\circ\)
+solution:
+The angle at the circumference is half the central angle: \(\frac{150^\circ}{2} = 75^\circ\).
+
+=== 75
+chapter: Triangles
+subtopic: Centres of a Triangle
+difficulty: EASY
+answer: B
+stem:
+A triangle ABC has a circle inscribed within it with sides a, b, c. The area of the triangle is A. What is the radius of the inscribed circle?
+A: \(\frac{A}{a+b+c}\)
+B: \(\frac{2A}{a+b+c}\)
+C: \(\frac{a+b+c}{2A}\)
+D: \(\frac{A}{2(a+b+c)}\)
+solution:
+\(A = r \times s\) with \(s = \frac{a+b+c}{2}\), so \(r = \frac{A}{s} = \frac{2A}{a+b+c}\).
+
+Check with a 3-4-5 triangle: area 6, so \(r = \frac{12}{12} = 1\), the known inradius.
+
+=== 76
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: B
+stem:
+Fill in the blank with the correctly spelt word.
+
+The new theory was dismissed as _____ by the mainstream scientific community.
+A: prepostrous
+B: preposterous
+C: preposturous
+D: preposteruos
+solution:
+The word is spelt **preposterous** (pre-poster-ous), meaning absurd or contrary to reason. The other three drop or misplace a vowel.
+
+=== 77
+chapter: Vocabulary
+subtopic: Synonyms: Character and Temperament
+difficulty: MODERATE
+answer: B
+stem:
+Select the most appropriate synonym of the given word: **ASPERITY**
+A: Kindness
+B: Harshness
+C: Softness
+D: Delight
+solution:
+Asperity is harshness or sharpness of tone or manner (she replied with asperity). Kindness, softness and delight are close to its opposite.
+
+=== 78
+chapter: Vocabulary
+subtopic: Antonyms: Size, Worth and Law
+difficulty: MODERATE
+answer: B
+stem:
+Select the most appropriate antonym of the given word. **Pernicious**
+A: Harmful
+B: Innocuous
+C: Virulent
+D: Noxious
+solution:
+Pernicious means harmful in a gradual or subtle way. Harmful, virulent and noxious are near-synonyms; innocuous (harmless) is the opposite.
+
+=== 79
+chapter: Idioms and Phrases
+subtopic: Idioms: Speech and Opinion
+difficulty: EASY
+answer: C
+stem:
+Choose the correct meaning of idiom:
+**Know which way the wind blows**
+A: Determine compass directions
+B: Predict literal weather
+C: Sense how events or opinion are trending before acting
+D: Forget instructions
+solution:
+To know which way the wind blows is to understand how a situation or public opinion is developing, usually so as to act accordingly. A and B take it literally; D is unrelated.
+
+=== 80
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: C
+flawed: yes
+note: Both "Sceptic" (British) and "Skeptic" (American) are standard spellings, so B and C are both correct; C is given as the more widely used form.
+stem:
+Choose the **correct spelling** for a word meaning 'someone who doubts everything'.
+A: Skeptick
+B: Sceptic
+C: Skeptic
+D: Skeptik
+solution:
+A person who doubts accepted beliefs is a skeptic (American spelling) or sceptic (British spelling). Skeptick and Skeptik are not words. Both B and C are correct spellings; C is the more common international form.
+
+=== 81
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: D
+stem:
+Choose the correct **one-word substitute** for: 'A mild expression used to replace a harsh or blunt one'.
+A: Hyperbole
+B: Eulogy
+C: Epithet
+D: Euphemism
+solution:
+A euphemism is a mild word used in place of a harsh or blunt one ("passed away" for "died"). Hyperbole is exaggeration, a eulogy is a speech praising someone who has died, and an epithet is a descriptive name or phrase.
+
+=== 82
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: C
+stem:
+Choose the correct **one-word substitute** for: 'A person who always looks at the negative side of things.'
+A: Optimist
+B: Determinist
+C: Pessimist
+D: Realist
+solution:
+A pessimist expects the worst and sees the negative side of things. An optimist is the opposite, a determinist believes events are fixed by prior causes, and a realist sees things as they are.
+
+=== 83
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: HARD
+answer: B
+context:
+**In the following passage, some words have been deleted. Read the passage intently and choose the most appropriate option to fill in each blank:**
+To speak of the political as an abstract structure is, perhaps, already to concede to the logic of the archive: that which preserves through containment, and **[1]** _____ through its very naming. The subject here is neither born nor made—but suspended, deferred in the machinic interplay of signifiers. One becomes governable only to the extent that one appears, and to appear is already to capitulate to the syntax of recognition. Power, then, does not suppress but surfaces—it emerges in the folds of citation, in the gentle violence of classification. The biometric gaze is not ocular but computational; not what it sees, but what it does not allow to vanish. Resistance, if it resists at all, cannot be found in opposition, but in **[2]** _____—in the refusal to be coherent, in the grammarless whisper. The body, meanwhile, becomes a ledger: inscribed, decoded, re-encoded. What justice can exist in such a system? Not that of law, but of rupture. A justice that unbinds, that refuses the terms of its own invocation. It is not reparation that is sought, but **[3]** _____—the unworking of systems, the destitution of legibility. To enter this mode is to abandon appeal, to relinquish the comfort of meaning. One must instead submit to the possibility of a justice that never arrives, that remains **[4]** _____, excessive and unlocatable. Only then can we imagine a politics not of representation, but of presence without capture, of subjectivity without scaffolding. What remains, finally, is not identity but **[5]** _____—a presence that eludes, that persists in the absence of affirmation.
+stem:
+What should come in the place of blank number **[1]**?
+A: extinguishes
+B: reifies
+C: evacuates
+D: dissimulates
+solution:
+The archive works on what it holds: it preserves by containing and, by naming, turns the abstract into a fixed, concrete thing. To reify is exactly that, to make an abstraction into an object. The passage goes on to say the archive's power lies in what it "does not allow to vanish", so "extinguishes" and "evacuates" (empty out) cut against it, and "dissimulates" (disguises) does not fit naming, which makes things visible.
+
+=== 84
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: HARD
+answer: D
+context_from: 83
+stem:
+What should come in the place of blank number **[2]**?
+A: conditionality
+B: aesthetic refusal
+C: algorithmic agency
+D: asymbolic opacity
+solution:
+The blank is explained after the dash: "the refusal to be coherent, in the grammarless whisper". Resistance lies in being unreadable and outside the system of signs, which is asymbolic opacity. Algorithmic agency belongs to the power being resisted, conditionality has no link to incoherence, and "aesthetic refusal" brings in art, which the passage never mentions.
+
+=== 85
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: HARD
+answer: C
+context_from: 83
+stem:
+What should come in the place of blank number **[3]**?
+A: abolition
+B: restitution
+C: destitution
+D: reconciliation
+solution:
+The phrase after the dash defines the blank: "the unworking of systems, the destitution of legibility". What is sought instead of reparation is destitution, the undoing or emptying of systems. Restitution and reconciliation are forms of the reparation being rejected, and abolition (formal ending) is narrower than "unworking", which the passage itself names as destitution.
+
+=== 86
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: HARD
+answer: B
+context_from: 83
+stem:
+What should come in the place of blank number **[4]**?
+A: imminent
+B: incalculable
+C: deferred
+D: restitutive
+solution:
+The blank sits in a list with "excessive and unlocatable", all describing a justice beyond measure and law. Incalculable (impossible to measure or compute) matches that list and the passage's contrast between justice and the law's calculation. Imminent contradicts "never arrives", and restitutive contradicts "It is not reparation that is sought". Deferred is close to "never arrives" but repeats it rather than joining the list of qualities.
+
+=== 87
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: MODERATE
+answer: A
+context_from: 83
+stem:
+What should come in the place of blank number **[5]**?
+A: fugitive form
+B: spectral coherence
+C: passive unity
+D: ontic recurrence
+solution:
+The dash explains the blank: "a presence that eludes, that persists in the absence of affirmation". Fugitive means escaping or fleeting, so a fugitive form is a presence that eludes. Coherence and unity contradict the passage's "refusal to be coherent", and recurrence says nothing about eluding.
+
+=== 88
+chapter: Grammar
+subtopic: Conditionals and Tense Sequence
+difficulty: MODERATE
+answer: A
+stem:
+**Fill in the blank with the correct verb form:**
+Scarcely had the CEO concluded her speech when the shareholders _____ to their feet.
+A: rose
+B: had risen
+C: had rose
+D: were risen
+solution:
+In "Scarcely had ... when ...", the earlier action takes the past perfect (had concluded) and the following action the simple past: the shareholders rose. "Had rose" is ungrammatical and "were risen" is not a valid form here.
+
+=== 89
+chapter: Grammar
+subtopic: Conditionals and Tense Sequence
+difficulty: EASY
+answer: C
+stem:
+**Select the correct option:**
+By the time the audit concludes, the firm ___ its compliance report.
+A: files
+B: will file
+C: will have filed
+D: had filed
+solution:
+"By the time" + a present-tense clause about the future (concludes) takes the future perfect in the main clause: the filing will be complete before then, so "will have filed".
+
+=== 90
+chapter: Spotting Errors
+subtopic: Redundancy, Comparison, Connectors and Idioms
+difficulty: EASY
+answer: A
+stem:
+**Find the part of the sentence that contains an error:**
+No sooner the results were announced (1)/ than the shareholders (2)/ started questioning the management's (3)/ strategic decisions. (4)/
+A: (1)
+B: (2)
+C: (3)
+D: (4)
+solution:
+"No sooner" at the start of a sentence needs inversion with the past perfect: "No sooner had the results been announced than ...". Part (1) is wrong.
+
+=== 91
+chapter: Spotting Errors
+subtopic: Redundancy, Comparison, Connectors and Idioms
+difficulty: HARD
+answer: C
+stem:
+**Find the part of the sentence that contains an error:**
+The extent to which the minister’s statement came under criticism (1)/ reflects not merely public dissatisfaction (2)/ but also that the media has (3)/ increasingly begun scrutinising political rhetoric. (4)
+A: (1)
+B: (2)
+C: (3)
+D: (4)
+solution:
+"Not merely ... but also ..." must join items of the same form. After "not merely" comes a noun phrase (public dissatisfaction), so "but also" must be followed by a noun phrase too, not a that-clause: "but also the media's increasing scrutiny of political rhetoric". The break in parallelism is in part (3).
+
+=== 92
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: MODERATE
+answer: C
+stem:
+**Change the following from active to passive:**
+They should be auditing the subsidiary accounts this quarter.
+A: The subsidiary accounts should have been audited by them this quarter.
+B: The subsidiary accounts are being audited by them this quarter.
+C: The subsidiary accounts should be being audited by them this quarter.
+D: The subsidiary accounts should be audited by them this quarter.
+solution:
+The active "should be auditing" is a modal with continuous aspect. Its passive keeps both: should + be + being + past participle, so "should be being audited". A changes to the perfect, B drops the modal and D drops the continuous aspect.
+
+=== 93
+chapter: Vocabulary
+subtopic: Homophones in Sentences
+difficulty: HARD
+answer: B
+stem:
+**Select the sentence containing the homonym of the highlighted word:**
+The monk rested near the cloister’s **ambulatory**.
+A: The architect designed the ambulatory around the apse.
+B: The hospital’s ambulatory was upgraded with oxygen ports.
+C: The tourist strolled the ambulatory of the cathedral.
+D: The relics were displayed along the gothic ambulatory.
+solution:
+In the given sentence an ambulatory is an architectural walkway (a covered aisle in a cloister or round the apse of a church). A, C and D use that same meaning. In B, the hospital's ambulatory is a medical unit for patients who can walk (outpatient care), the same word with a different meaning, so it is the homonym.
+
+=== 94
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: MODERATE
+answer: C
+stem:
+**Convert the sentence provided below from its passive voice structure to an active voice structure:**
+The agreement was found to have been violated despite multiple warnings.
+A: It was found that someone violated the agreement.
+B: Authorities found that the agreement was being violated.
+C: Authorities found the agreement had been violated.
+D: It had been found that the agreement was violated.
+solution:
+"Was found" becomes active with an agent as subject: "Authorities found ...". "To have been violated" shows the violation came before the finding, so it becomes "had been violated". A and D stay passive ("It was found", "It had been found"), and B changes the time relation to a continuous "was being violated".
+
+=== 95
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: B
+stem:
+Choose the most suitable option to replace the highlighted part of the sentence:
+He ***is sleeping when I called*** him.
+A: has been sleeping
+B: was sleeping when I called
+C: is slept
+D: has slept
+solution:
+"When I called" is past, so the action in progress at that moment takes the past continuous: "He was sleeping when I called him." A, C and D also drop "when I called", leaving the sentence incomplete.
+
+=== 96
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: MODERATE
+answer: B
+stem:
+Choose the most suitable option to replace the highlighted part of the sentence:
+He is one of those students who ***has never cheated***.
+A: have never been cheating
+B: have never cheated
+C: had never cheated
+D: have ever cheated
+solution:
+In "one of those students who ...", the relative pronoun "who" refers to "students" (plural), so the verb is plural: "have never cheated". A wrongly uses the continuous, C shifts to the past perfect, and D drops "never" and changes the meaning.
+
+=== 97
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: A
+stem:
+**A sentence is provided in indirect speech. From the four given options, choose the one that most accurately conveys the sentence in its corresponding direct speech.**
+He mentioned that his team would start the project next week.
+A: He mentioned, "My team will start the project next week."
+B: He mentioned, "My team is starting the project next week."
+C: He mentioned, "My team would be starting the project next week."
+D: He said, "The project shall be started next week."
+solution:
+In reported speech "will" becomes "would" and "my" becomes "his". Reversing it, "his team would start" becomes "My team will start". B and C change the verb form, and D changes the voice and drops "my team".
+
+=== 98
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: MODERATE
+answer: A
+stem:
+**A sentence is provided in direct speech. From the four given options, choose the one that most accurately conveys the sentence in its corresponding indirect speech.**
+She said, “I was reading a novel at that time.”
+A: She said she had been reading a novel at that time.
+B: She said she read a novel at that time.
+C: She said she had read a novel at that time.
+D: She said she was reading a novel then.
+solution:
+With a past reporting verb, the past continuous "was reading" shifts back to the past perfect continuous "had been reading", and "I" becomes "she". "At that time" already refers to the past, so it stays. B and C lose the continuous aspect, and D does not shift the tense back.
+
+=== 99
+chapter: Sentence Rearrangement
+subtopic: Shape of a Paragraph Argument
+difficulty: EASY
+answer: A
+stem:
+**Rearrange the following sentences to form a meaningful passage:**
+1. The shift to renewable energy sources is essential for the future of our planet. 2. Solar and wind energy are among the most promising alternatives to fossil fuels. 3. Governments must invest in renewable energy infrastructure. 4. Energy storage solutions are critical to ensuring a stable energy supply.
+A: 1-2-4-3
+B: 2-3-1-4
+C: 4-1-3-2
+D: 3-1-2-4
+solution:
+Sentence 1 states the general claim and opens the passage. Sentence 2 names the main renewable sources, and 4 adds what they need to be reliable (storage). Sentence 3 closes with the call to action: governments must invest in this infrastructure. Order 1-2-4-3.
+
+=== 100
+chapter: Sentence Rearrangement
+subtopic: Linkers in Paragraphs
+difficulty: EASY
+answer: D
+stem:
+**Rearrange the following sentences in correct order to make a logical passage.**
+1. Therefore, fostering creativity is vital for innovation.
+2. Creativity is often misunderstood as an innate talent.
+3. However, it is a skill that can be developed and nurtured.
+4. It involves imagination, critical thinking, and problem-solving.
+A: 2-1-3-4
+B: 2-4-1-3
+C: 3-4-2-1
+D: 2-3-4-1
+solution:
+Sentence 2 introduces creativity and the common belief. "However" in 3 contradicts that belief, 4 describes what the skill involves, and "Therefore" in 1 draws the conclusion. Order 2-3-4-1.

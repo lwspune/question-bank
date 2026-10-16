@@ -1,0 +1,1628 @@
+SSC CGL 2025 Tier I, 24 Sep 2025, Shift 2. Read from SSC's challenge-module saved paper.
+Drafted by agents, one PART each, from the reading sheets only (no key; DRAFTING_BRIEF.md);
+every block reviewed in the main session, then compared with the key (build.ts).
+Format: scripts/ssc-cgl/lib.ts.
+
+=== 1
+chapter: Coding-Decoding
+subtopic: Number and Symbol Coding
+difficulty: EASY
+answer: A
+stem:
+If in a code A=26, B=25, ..., Z=1, what is the code for CAT?
+A: 24, 26, 7
+B: 24, 26, 6
+C: 25, 26, 7
+D: 24, 27, 7
+solution:
+Each letter is coded as 27 minus its alphabet position (reverse position).
+
+C is 3rd, so \(27 - 3 = 24\). A is 1st, so \(27 - 1 = 26\). T is 20th, so \(27 - 20 = 7\).
+
+CAT is coded 24, 26, 7.
+
+=== 2
+chapter: Alphabet and Number Tests
+subtopic: Address and Data Matching
+difficulty: EASY
+answer: C
+stem:
+Choose the address that is the same as the one given below.
+
+D-14, New Friends Colony,South Delhi,Delhi - 110065
+A: D-14, New Friends Colony, South Delhi, Punjab - 110065
+B: D-14, New Friends Colony, South Delhi, Uttar Pradesh - 110065
+C: D-14, New Friends Colony, South Delhi, Delhi - 110065
+D: D-14, New Friends Colony, South Delhi, Haryana - 110065
+solution:
+All four options match the house number, colony, district and PIN code. Only option C has the state as Delhi, as in the given address. The others change it to Punjab, Uttar Pradesh or Haryana.
+
+=== 3
+chapter: Order, Ranking and Arrangement
+subtopic: Scheduling and Puzzles
+difficulty: EASY
+answer: B
+stem:
+In a series of seminars held daily from \(11^{th}\) to \(18^{th}\)Feb, Calicut – \(18^{th}\) Feb 2022, Patna – \(12^{th}\) Feb 2022, Tiruchirappalli –\(17^{th}\) Feb 2022,
+Raipur – \(11^{th}\)Feb 2022, Rourkela – \(14^{th}\) Feb 2022  Jamshedpur –\(13^{th}\) Feb 2022, Durgapur – \(15^{th}\) Feb 2022, Warangal – \(16^{th}\) Feb 2022
+Which city's seminar was held exactly two days after the seminar in Patna?
+A: Warangal
+B: Rourkela
+C: Jamshedpur
+D: Durgapur
+solution:
+Patna's seminar was on 12 Feb, so two days later is 14 Feb. The seminar on 14 Feb was in Rourkela.
+
+=== 4
+chapter: Mathematical Operations
+subtopic: Hidden Operation Rules
+difficulty: MODERATE
+answer: B
+stem:
+If 11 - 3 = 5, 14 - 5 = 4, then 18 - 6 = ?
+A: 12
+B: 6
+C: 10
+D: 11
+solution:
+The rule is first number minus twice the second.
+
+\(11 - 2 \times 3 = 5\) and \(14 - 2 \times 5 = 4\).
+
+So \(18 - 2 \times 6 = 6\).
+
+=== 5
+chapter: Mathematical Operations
+subtopic: Hidden Operation Rules
+difficulty: EASY
+answer: A
+stem:
+If 4 # 3 = 7, 6 # 2 = 8, then 5 # 7 = ?
+A: 12
+B: 9
+C: 2
+D: 10
+solution:
+Here # means addition: \(4 + 3 = 7\) and \(6 + 2 = 8\).
+
+So \(5 + 7 = 12\).
+
+=== 6
+chapter: Mathematical Operations
+subtopic: Hidden Operation Rules
+difficulty: EASY
+answer: C
+stem:
+If 4#2=10
+5#3=18
+6#4=28
+Then what is 7#5=?
+A: 50
+B: 60
+C: 40
+D: 70
+solution:
+The rule is \(a \# b = a \times b + b\).
+
+\(4 \times 2 + 2 = 10\), \(5 \times 3 + 3 = 18\), \(6 \times 4 + 4 = 28\).
+
+So \(7 \times 5 + 5 = 40\).
+
+=== 7
+chapter: Classification
+subtopic: Word Classification
+difficulty: EASY
+answer: B
+stem:
+Find the odd one out.
+A: Germany
+B: Kenya
+C: France
+D: Italy
+solution:
+Germany, France and Italy are European countries. Kenya is in Africa, so it is the odd one out.
+
+=== 8
+chapter: Blood Relations
+subtopic: Direct Relations
+difficulty: EASY
+answer: A
+stem:
+A is the daughter of B. B is the daughter of C. How is A related to C?
+A: Granddaughter
+B: Niece
+C: Sister
+D: Cousin
+solution:
+A is the daughter of B, and B is the daughter of C. So A is the daughter's daughter of C: C's granddaughter.
+
+=== 9
+chapter: Analogy
+subtopic: Number Analogy
+difficulty: MODERATE
+answer: A
+stem:
+Find the missing number**: 11 : 1452 :: 12 : ?**
+A: 1872
+B: 1864
+C: 1850
+D: 1800
+solution:
+The rule is \(n^2 \times (n + 1)\), which is the same as \(n^3 + n^2\).
+
+\(11^2 \times 12 = 121 \times 12 = 1452\).
+
+So \(12^2 \times 13 = 144 \times 13 = 1872\).
+
+Check: \(12^3 + 12^2 = 1728 + 144 = 1872\).
+
+=== 10
+chapter: Syllogism
+subtopic: Two-Statement Syllogism
+difficulty: EASY
+answer: C
+stem:
+Read the following statement carefully and identify the conclusion that follows.
+
+Statement:
+All squares are rectangles. All rectangles are quadrilaterals.
+
+**Conclusions:**
+I. All squares are quadrilaterals.
+II. Some quadrilaterals are rectangles.
+A: Only I follows
+B: Only II follows
+C: Both I and II follow
+D: Neither I nor II follows
+solution:
+All squares are rectangles and all rectangles are quadrilaterals, so all squares are quadrilaterals: I follows.
+
+All rectangles are quadrilaterals, so some quadrilaterals are rectangles: II follows.
+
+=== 11
+chapter: Syllogism
+subtopic: Two-Statement Syllogism
+difficulty: EASY
+answer: B
+stem:
+Read the following statement carefully and identify the conclusion that follows.
+
+Statement:
+No woman is lazy. Some men are lazy.
+
+**Conclusions:**
+I. No man is a woman.
+II. Some lazy people are men.
+A: Only I follows
+B: Only II follows
+C: Both I and II follow
+D: Neither I nor II follows
+solution:
+Some men are lazy, so some lazy people are men: II follows.
+
+The statements say nothing about whether men and women overlap, so I does not follow. Only II follows.
+
+=== 12
+chapter: Alphabet and Number Tests
+subtopic: Dictionary Order
+difficulty: EASY
+answer: B
+stem:
+Which of the following words will come first in the dictionary?
+A: apron
+B: apple
+C: aptitude
+D: apply
+solution:
+All begin with "ap". Third letters: p (apple, apply), r (apron), t (aptitude), so apple and apply come first.
+
+apple and apply share "appl"; the fifth letters are e and y, and e comes first. The order is apple, apply, apron, aptitude, so apple comes first.
+
+=== 13
+chapter: Series
+subtopic: Alphanumeric and Pattern Series
+difficulty: EASY
+answer: A
+stem:
+Choose the item that breaks the rule.
+
+A5, C7, E9, G11, I10
+A: I10
+B: E9
+C: C7
+D: A5
+solution:
+The letters skip one each time: A, C, E, G, I. The numbers go up by 2: 5, 7, 9, 11, so the last should be 13.
+
+I10 breaks the rule; it should be I13.
+
+=== 14
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: D
+stem:
+Complete the series.
+2, 3, 5, 9, 17, ___
+A: 30
+B: 31
+C: 32
+D: 33
+solution:
+The differences are 1, 2, 4, 8, doubling each time, so the next difference is 16.
+
+\(17 + 16 = 33\).
+
+Check: each term is \(2 \times \text{previous} - 1\): \(2 \times 17 - 1 = 33\).
+
+=== 15
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: C
+stem:
+Find the INCORRECT number in the series.
+
+3, 6, 9, 13, 15, 18
+A: 6
+B: 9
+C: 13
+D: 15
+solution:
+The series is the multiples of 3: 3, 6, 9, 12, 15, 18.
+
+13 should be 12, so 13 is incorrect.
+
+=== 16
+chapter: Series
+subtopic: Alphanumeric and Pattern Series
+difficulty: EASY
+answer: D
+stem:
+What comes next?
+G7, T20, H8, S19, ?
+A: Q17
+B: J10
+C: R18
+D: I9
+solution:
+Each term is a letter with its alphabet position. Two series alternate: G7, H8, ... moving forward, and T20, S19, ... moving backward.
+
+The fifth term continues the first series: after H8 comes I9.
+
+=== 17
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: C
+stem:
+What should come at the place of question mark? **: 625, 125, 25, 5, ?, ?**
+A: 1, 1
+B: 2, 1
+C: 1, 0.2
+D: 0.5, 0.1
+solution:
+Each term is the previous one divided by 5.
+
+\(5 \div 5 = 1\) and \(1 \div 5 = 0.2\).
+
+=== 18
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: B
+stem:
+A cone and a cylinder have the same base radius and the same height. What is the ratio of the volume of the cone to the volume of the cylinder?
+A: 1:2
+B: 1:3
+C: 1:4
+D: 1:6
+solution:
+Volume of the cone is \(\frac{1}{3}\pi r^2 h\) and volume of the cylinder is \(\pi r^2 h\).
+
+With the same r and h, the ratio is \(\frac{1}{3} : 1 = 1 : 3\).
+
+=== 19
+chapter: Coding-Decoding
+subtopic: Word-Code Sentences
+difficulty: EASY
+answer: A
+stem:
+**Instruction:** In a language, if ‘red green blue’ is coded as ‘ka ta na’, ‘blue white black’ as ‘na ja sa’, and ‘white red’ as ‘ja ka’,
+**Question:** what is the code for ‘green’?
+A: ta
+B: na
+C: ka
+D: ja
+solution:
+‘blue’ is common to the first two sentences, and ‘na’ to their codes, so blue = na.
+
+‘white’ is common to the second and third, and ‘ja’ to their codes, so white = ja. Then red = ka from the third.
+
+In ‘red green blue’ = ‘ka ta na’, red = ka and blue = na, so green = ta.
+
+=== 20
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: A
+stem:
+If in a certain code, 'APPLE' is written as 'ELPPA', how will 'PPLEA' be written?
+A: AELPP
+B: LHDHT
+C: TUCES
+D: CJXWV
+solution:
+ELPPA is APPLE written in reverse. PPLEA written in reverse is AELPP.
+
+=== 21
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: MODERATE
+answer: A
+stem:
+If + = \(\times\), - = \(\div\), \(\times\) = -, \(\div\) = +; 6 + 2 - 4 \(\times\) 2 \(\div\) 1 = ?
+A: 2
+B: 4
+C: 10
+D: 8
+solution:
+Replacing the signs: \(6 \times 2 \div 4 - 2 + 1\).
+
+\(6 \times 2 = 12\), \(12 \div 4 = 3\).
+
+\(3 - 2 + 1 = 2\).
+
+=== 22
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: B
+stem:
+The sum of two numbers is 40 and their difference is 4. What is the product of the numbers?
+A: 390
+B: 396
+C: 400
+D: 404
+solution:
+Larger number \(= \frac{40 + 4}{2} = 22\), smaller \(= \frac{40 - 4}{2} = 18\).
+
+Product \(= 22 \times 18 = 396\).
+
+Check: \(\frac{40^2 - 4^2}{4} = \frac{1600 - 16}{4} = 396\).
+
+=== 23
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: A
+stem:
+A man buys 1 banana for ₹2 and sells it for ₹3. He repeats this 100 times. Profit = ?
+A: ₹100
+B: ₹150
+C: ₹200
+D: ₹300
+solution:
+Profit on one banana is ₹3 - ₹2 = ₹1.
+
+Over 100 times, profit = \(100 \times 1\) = ₹100.
+
+=== 24
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: A
+stem:
+If MISSION is coded as NJTTJPO, how is NJTTJPO coded?
+A: OKUUKQP
+B: NKTUKPP
+C: OKTUKQP
+D: OKUULQP
+solution:
+Each letter moves one place forward: M to N, I to J, S to T, and so on.
+
+Applying the same to NJTTJPO: N to O, J to K, T to U, T to U, J to K, P to Q, O to P, giving OKUUKQP.
+
+=== 25
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: C
+stem:
+If in a code, PEARL is written as SHDUO, how is STONE written?
+A: VWRSH
+B: VWRHS
+C: VWRQH
+D: VWRSN
+solution:
+Each letter moves three places forward: P to S, E to H, A to D, R to U, L to O.
+
+STONE: S to V, T to W, O to R, N to Q, E to H, giving VWRQH.
+
+=== 26
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Statutory Bodies and Post-Independence Legislation
+difficulty: MODERATE
+answer: D
+stem:
+Which of the following is a key requirement for admissibility of an electronic record under the Bharatiya Sakshya Adhiniyam (BSA), even if it's a secondary evidence?
+A: It must be handwritten and notarized
+B: It must be part of a hard drive submitted to court
+C: It must be published in the Gazette
+D: It must be accompanied by a certificate
+solution:
+Section 63 of the Bharatiya Sakshya Adhiniyam, 2023 (the successor of Section 65B of the Indian Evidence Act) makes a computer output admissible as evidence when it is accompanied by a certificate, now in the prescribed form signed by the person in charge of the device and an expert. Handwriting, notarisation, gazette publication or producing the hard drive itself are not the requirement.
+
+=== 27
+subject: History
+chapter: Medieval India
+subtopic: Temple and Monument Architecture
+difficulty: EASY
+answer: D
+stem:
+The Sun Temple at Konark looks like a big chariot. How many horses does it have?
+A: 5
+B: 6
+C: 8
+D: 7
+solution:
+The Konark Sun Temple, built by the Eastern Ganga king Narasimhadeva I in the 13th century, is designed as the chariot of the Sun god Surya with 24 carved wheels drawn by seven horses.
+
+=== 28
+subject: History
+chapter: Ancient India
+subtopic: Art, Painting and Sculpture
+difficulty: MODERATE
+answer: C
+stem:
+Which of the following best characterizes the Mathura school of Buddhist art and architecture?
+A: Use of sandstone and floral arches
+B: Hellenistic drapery and realism
+C: Indigenous features with Yaksha influence
+D: Predominantly wooden monastery design
+solution:
+The Mathura school grew out of the indigenous tradition: its Buddha images in spotted red sandstone follow the earlier Yaksha figures, with a fleshy, robust body and a smiling face. Hellenistic drapery and realism mark the Gandhara school, and the school is known for stone sculpture, not wooden monasteries.
+
+=== 29
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Days, Festivals and Observances
+difficulty: EASY
+answer: C
+stem:
+The Pola festival, celebrated in the Balaghat district of Madhya Pradesh, is dedicated to which of the following?
+A: Cow worship
+B: Rain prayer
+C: Bull worship
+D: Harvest sale
+solution:
+Pola is a farmers' festival held on the new moon (Amavasya) of Shravan or Bhadrapada in Maharashtra, Chhattisgarh and parts of Madhya Pradesh. Bulls and oxen are bathed, decorated and worshipped to thank them for their work in the fields.
+
+=== 30
+subject: History
+chapter: Ancient India
+subtopic: Ancient Indian Literature and Inscriptions
+difficulty: EASY
+answer: D
+stem:
+Which script is predominantly used in the inscriptions of Emperor Aśoka?
+A: Kharosthi
+B: Devanagari
+C: Tamil
+D: Brahmi
+solution:
+Most of Ashoka's edicts are written in Prakrit in the Brahmi script. Kharosthi appears only in the north-west (Shahbazgarhi, Mansehra), and Greek and Aramaic in Afghanistan. Devanagari developed many centuries later.
+
+=== 31
+subject: History
+chapter: Ancient India
+subtopic: Post-Mauryan, Gupta and Sangam Period
+difficulty: HARD
+answer: C
+stem:
+In the context of Gupta dynasty's administration, which of the following officers is **correctly** paired with their respective role?
+A: Utkhetayita-Keeper of Royal Kitchen
+B: Dhruvadhikaranika- Chief Judicial Officer
+C: Pustapala-Notary and Keeper of Records
+D: Bhandagaradhikrita-Head of Village Watchmen
+solution:
+In Gupta administration the Pustapala was the record keeper (notary and keeper of land records). The Utkhetayita was a tax collector, the Dhruvadhikaranika the officer in charge of collecting land revenue, and the Bhandagaradhikrita the head of the treasury.
+
+=== 32
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: D
+stem:
+Consider the following statements about badminton strokes:
+1) Backhand Net Kill and Forehand Net Kill are examples of forecourt strokes played near the net.
+2) Backhand Drive and Forehand Drive are midcourt strokes played from the middle of the court.
+3) Forehand Clear is a type of rear court stroke played from the back of the court.
+Which of the statements given above are **correct?**
+A: Only 1 and 2 are Correct
+B: Only 2 and 3 are Correct
+C: Only 1 and 3 are correct
+D: 1, 2 and 3 are Correct
+solution:
+Badminton strokes are grouped by court area: net shots, net kills and lifts in the forecourt; drives and blocks in the midcourt; clears, drops and smashes from the rear court. All three statements are correct.
+
+=== 33
+subject: History
+chapter: Medieval India
+subtopic: Other Medieval Kingdoms (Chola, Rajput, Ahom, Sikh)
+difficulty: EASY
+answer: B
+stem:
+The reign of Prithviraj Chauhan concluded in which year?
+A: 1175 CE
+B: 1192 CE
+C: 1206 CE
+D: 1210 CE
+solution:
+Prithviraj Chauhan defeated Muhammad Ghori in the First Battle of Tarain (1191) but lost the Second Battle of Tarain in 1192 CE, which ended his reign. 1206 is the founding of the Delhi Sultanate by Qutb-ud-din Aibak.
+
+=== 34
+subject: History
+chapter: Modern India
+subtopic: British Administration, Acts and Legislation
+difficulty: EASY
+answer: B
+stem:
+What was the role of the India Council established by the Government of India Act, 1858?
+A: To control trade with India
+B: To advise the Secretary of State
+C: To represent Indian opinion in Britain
+D: To review court judgments
+solution:
+The Act of 1858 transferred rule from the Company to the Crown and created the post of Secretary of State for India, assisted by a 15-member Council of India. The council was an advisory body to the Secretary of State, who presided over it.
+
+=== 35
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: HARD
+answer: C
+stem:
+**Consider the following statements about the 38th National Games Judo 2025 Final Results:**
+1) Sidharth Rawat from Uttarakhand won the gold medal in the men's 60 kg category, while Asmita Dev from Uttar Pradesh won the women's 48 kg category.
+2) Rohit Majgul of Gujarat won gold in men's -66 kg, and Shraddha Chopade of Maharashtra won gold in women's 52 kg.
+Which of the statements is/are **correct?**
+A: Only 1 is Correct
+B: Only 2 is Correct
+C: 1 and 2 are Correct
+D: Neither 1 nor 2 are Correct
+solution:
+At the 38th National Games judo event in Dehradun (February 2025), Sidharth Rawat of Uttarakhand won the men's -60 kg gold and Asmita Dey of Uttar Pradesh the women's -48 kg gold. Rohit Majgul of Gujarat won the men's -66 kg gold (beating Garvit of Haryana) and Shraddha Chopade of Maharashtra the women's -52 kg gold. Both statements are correct.
+
+=== 36
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: HARD
+answer: C
+blind: B
+note: judgement item. SSC's key takes the Reason as false: the server changes box only while keeping the serve, and at the start of each hand the server chooses the box, so it is not true that players alternate after each serve. Our blind answer read R loosely as true. The bank carries SSC's answer
+stem:
+Read the below statements marked as Assertion (A) and Reason (R). Mark the **correct** options:
+**Assertion (A):** In squash, the serve must hit the front wall between the service line and out line and land in the opposite half of the court beyond the half-court line for it to be legal.
+**Reason (R):** Players must alternate between service boxes after each successful serve to maintain fairness and court coverage during the match.
+A: Both A and R are true, and R is the correct explanation of A.
+B: Both A and R are true, but R is not the correct explanation of A.
+C: A is true, but R is false.
+D: A is false, but R is true.
+solution:
+A good squash serve strikes the front wall between the service line and the out line and lands in the opposite back quarter of the court, so the Assertion is true. The Reason is false as stated: at the start of each hand of service the server chooses either box, and alternates only while continuing to win rallies; boxes are not switched after every serve as a fairness rule.
+
+=== 37
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Books, Literature and Authors
+difficulty: EASY
+answer: B
+stem:
+Who is the author of the book 'The Great Indian Novel'?
+A: Devdutt Pattanaik
+B: Shashi Tharoor
+C: Sanjeev Sanyal
+D: Gurcharan Das
+solution:
+The Great Indian Novel (1989) is Shashi Tharoor's satirical retelling of the Indian freedom struggle and early independent India in the frame of the Mahabharata.
+
+=== 38
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Books, Literature and Authors
+difficulty: EASY
+answer: B
+stem:
+Which of the following statements correctly identifies the author and thematic focus of the novel "A Fine Balance"?
+A: Salman Rushdie, focusing on post-colonial identity and magical realism
+B: Rohinton Mistry, exploring social injustices during India's Emergency period
+C: Jhumpa Lahiri, depicting the immigrant experience in 1980s New York
+D: Arundhati Roy, examining environmental activism and political corruption
+solution:
+A Fine Balance (1995) by Rohinton Mistry follows four characters in an unnamed Indian city during the Emergency of 1975-77 and depicts caste violence, poverty and state excess.
+
+=== 39
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: HARD
+answer: D
+stem:
+Who did Maharashtra's Kavya Bhatta defeat to win gold at the Khelo India Youth Games 2025 in the girls' singles table tennis final?
+A: P.B. Abhinand
+B: Priyanuj Bhattacharyya
+C: Suhana Saini
+D: M. Hansini
+solution:
+At the Khelo India Youth Games 2025 in Bihar (Rajgir), Kavya Bhatt of Maharashtra won the girls' singles table tennis gold by beating M. Hansini of Tamil Nadu 4-1 in the final. P.B. Abhinand and Priyanuj Bhattacharyya are boys (Priyanuj won the boys' singles gold).
+
+=== 40
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Parliament — Composition, Procedures and Powers
+difficulty: MODERATE
+answer: A
+blind: C
+note: judgement item. SSC's key reads 'only with the concurrence of the Rajya Sabha' strictly: an extension needs resolutions of both Houses, not the Rajya Sabha alone, so statement 2 is false. Our blind answer read it as 'the Rajya Sabha's approval is required'. The bank carries SSC's answer
+stem:
+Which of the following statements is/are **correct** regarding the role of the Rajya Sabha in special legislative and emergency situations?
+1) Under Article 249, a Rajya Sabha resolution allowing Parliament to legislate on State List subjects remains valid for one year.
+2) The Parliament can extend a proclamation of President's Rule only with the concurrence of the Rajya Sabha.
+A: Only 1
+B: Only 2
+C: Both 1 and 2
+D: Neither 1 nor 2
+solution:
+Statement 1: a resolution under Article 249, passed by two-thirds of the Rajya Sabha members present and voting, remains in force for up to one year (renewable a year at a time). Correct.
+
+Statement 2: under Article 356 a proclamation and every extension of it must be approved by resolutions of both Houses of Parliament. Saying it can be extended "only with the concurrence of the Rajya Sabha" misstates this, since the Lok Sabha's approval is equally required. Incorrect. Only 1 is correct.
+
+=== 41
+subject: Physics
+chapter: Light and Optics
+subtopic: Reflection and Mirrors
+difficulty: EASY
+answer: B
+stem:
+The minimum number of rays required to locate the image formed by a spherical mirror is ______.
+A: One
+B: Two
+C: Three
+D: Four
+solution:
+The image of a point is where reflected rays meet (or appear to meet). Two rays from the object point, for example one parallel to the principal axis and one through the centre of curvature, are enough to fix that intersection.
+
+=== 42
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Days, Festivals and Observances
+difficulty: MODERATE
+answer: A
+blind: C
+note: fact we could not verify: SSC's key treats the drum statement as false (the Karma dance is usually named with the Mandar), while our blind answer took Madal as the same drum. The bank carries SSC's answer
+stem:
+Consider the statements about Karma:
+1. The ritual honours the Karam tree on Bhadra Ekadashi in Chhattisgarh.
+2. The drum most associated is the Madal.
+Which is/are **correct?**
+A: Only 1 correct
+B: Only 2 correct
+C: Both 1 & 2 correct
+D: Neither 1 nor 2 correct
+solution:
+Karma (Karam) is a tribal festival of Chhattisgarh, Jharkhand, Odisha and nearby regions, held on the Ekadashi of the bright half of Bhadrapada, when a branch of the Karam tree is worshipped, so statement 1 is correct. SSC's key treats statement 2 as incorrect: the drum the Karma dance is usually named with is the Mandar. Only 1 is correct.
+
+=== 43
+subject: Economics
+chapter: Money, Banking and Public Finance
+subtopic: Union Budget and Fiscal Policy
+difficulty: EASY
+answer: C
+stem:
+Which of the following best defines Capital Receipts?
+A: Receipts that increase government revenue permanently
+B: Receipts that reduce financial liabilities of the government
+C: Receipts that create liability or reduce government assets
+D: Receipts that do not impact government assets or liabilities
+solution:
+Capital receipts either create a liability (borrowings, small savings) or reduce the government's assets (disinvestment, recovery of loans). Revenue receipts do neither.
+
+=== 44
+subject: Economics
+chapter: Money, Banking and Public Finance
+subtopic: Banking, RBI and Financial Institutions
+difficulty: MODERATE
+answer: A
+stem:
+Which of the following statements about factors affecting the Money Multiplier (MM) **is/are correct?**
+1. Cash held by individuals acts as a leakage and reduces the money multiplier.
+2. Higher reserves held by banks with the RBI increase the money multiplier.
+3. A higher Cash Reserve Ratio (CRR) reduces the banking system's capacity to create money.
+A: Only 1 and 3
+B: Only 2 and 3
+C: Only 1 and 2
+D: All 1,2 and 3 are three
+solution:
+The money multiplier is \(\frac{1+c}{c+r}\), where c is the currency-deposit ratio and r the reserve ratio. More cash with the public (higher c) is a leakage that lowers it, so 1 is correct. Higher reserves (higher r) lower it, so 2 is wrong. A higher CRR raises r and cuts credit creation, so 3 is correct.
+
+=== 45
+subject: Current Affairs
+chapter: Environment, Ecology and Energy
+subtopic: Environmental Campaigns, Disasters and Energy
+difficulty: EASY
+answer: B
+stem:
+Which universities collaborate to produce the Environmental Performance Index (EPI)?
+A: Harvard & Stanford
+B: Yale & Columbia
+C: Oxford & Cambridge
+D: MIT & Caltech
+solution:
+The Environmental Performance Index is published by the Yale Center for Environmental Law and Policy and Columbia University's Center for International Earth Science Information Network (CIESIN).
+
+=== 46
+subject: History
+chapter: Modern India
+subtopic: 19th Century Social and Religious Reform
+difficulty: EASY
+answer: C
+stem:
+Thakkar Bapa was a dedicated social worker and freedom fighter primarily known for his lifelong efforts towards the upliftment and welfare of which section of Indian society?
+A: Women
+B: Children
+C: Tribal (Adivasi) communities
+D: Industrial workers
+solution:
+Amritlal Vithaldas Thakkar (Thakkar Bapa) founded the Bhil Seva Mandal (1922) in Gujarat and worked all his life for tribal (Adivasi) communities. He also served the Harijan Sevak Sangh.
+
+=== 47
+subject: History
+chapter: Modern India
+subtopic: Revolt of 1857 and Popular Uprisings
+difficulty: EASY
+answer: A
+stem:
+Which of the following best describes the role and personality traits of Shaheed Kanhu and Sidhu Murmu during the Santhal Rebellion of 1855?
+A: Visionary tribal leaders who united the Santhal community to resist exploitation with courage and strategic acumen.
+B: Passive intermediaries who negotiated peace treaties between the British and Santhals without resorting to conflict.
+C: Religious preachers who inspired rebellion solely through spiritual teachings without active participation in battles.
+D: Local zamindars who switched allegiance from British rulers to lead a revolt for personal gains.
+solution:
+Sidhu and Kanhu Murmu mobilised thousands of Santhals at Bhognadih in 1855 against moneylenders, zamindars and the British, and led the armed Hul rebellion themselves until they were captured and executed.
+
+=== 48
+subject: Economics
+chapter: Money, Banking and Public Finance
+subtopic: Banking, RBI and Financial Institutions
+difficulty: EASY
+answer: A
+stem:
+The lead bank scheme was introduced in which year?
+A: 1969
+B: 1975
+C: 1980
+D: 1990
+solution:
+The Lead Bank Scheme was introduced by the RBI in December 1969, following the Gadgil Study Group and the Nariman Committee, assigning each district to a lead bank. 1969 is also the year of the first bank nationalisation.
+
+=== 49
+subject: Economics
+chapter: Indian Economy
+subtopic: Five Year Plans and Indian Planning
+difficulty: EASY
+answer: B
+stem:
+Which Five Year Plan laid the foundation of India's socialist pattern of society?
+A: First Plan
+B: Second Plan
+C: Third Plan
+D: Fourth Plan
+solution:
+Parliament adopted the socialist pattern of society as the goal in 1954-55, and the Second Five Year Plan (1956-61), based on the Mahalanobis model, was framed to build it through heavy industry and a large public sector.
+
+=== 50
+subject: Economics
+chapter: National Income, Growth and Development Indicators
+subtopic: Industrial and Manufacturing Policy
+difficulty: MODERATE
+answer: B
+stem:
+Which sectors were largely excluded from industrial licensing after 1991?
+A: Defense and Telecom
+B: Alcohol, Cigarettes, Explosives
+C: Textiles and Fertilizers
+D: Agriculture and Education
+solution:
+The New Industrial Policy of 1991 abolished industrial licensing except for a short list: alcoholic drinks, cigarettes and tobacco products, defence equipment, industrial explosives, hazardous chemicals and drugs. Alcohol, cigarettes and explosives are the sectors kept out of delicensing, so B is the intended answer.
+
+=== 51
+chapter: Simple and Compound Interest
+subtopic: Compound Interest
+difficulty: EASY
+answer: C
+stem:
+Vidhya lent Rs. 6000 to Kavya for 3 years at the rate of \(4\%\) per annum compound interest. Calculate the amount that Vidhya will get after 3 years.
+A: 6,849.18
+B: 6,750.18
+C: 6,749.18
+D: 6,649.18
+solution:
+Amount \(= 6000 \times (1.04)^3 = 6000 \times 1.124864 = 6749.18\).
+
+Check: year by year, \(6000 \to 6240 \to 6489.60 \to 6749.18\).
+
+=== 52
+chapter: Number System
+subtopic: Rational and Irrational Numbers
+difficulty: EASY
+answer: C
+stem:
+Which of the following statement is TRUE for Whole Numbers?
+A: They include fractions.
+B: They include negative numbers.
+C: They include zero and positive integers.
+D: They start from 1.
+solution:
+Whole numbers are \(0, 1, 2, 3, \ldots\): zero together with the positive integers. They contain no fractions and no negative numbers, and they start from 0, not 1.
+
+=== 53
+chapter: Time, Speed and Distance
+subtopic: Average Speed and Speed–Time Ratios
+difficulty: MODERATE
+answer: D
+stem:
+Dhiraj goes to his school from his house at a speed of 3.8 km/hr and returns at 2.6 km/ hr. If he takes 5 hours going and coming, the distance between his house and school is:
+A: 6.79 km
+B: 6.5 km
+C: 7 km
+D: 7.72 km
+solution:
+Let the distance be \(d\). Then \(\frac{d}{3.8} + \frac{d}{2.6} = 5\), so \(d \times \frac{6.4}{9.88} = 5\) and \(d = \frac{49.4}{6.4} = 7.72\) km.
+
+Check: average speed \(= \frac{2 \times 3.8 \times 2.6}{6.4} = 3.0875\) km/hr, total distance \(= 3.0875 \times 5 = 15.44\) km, one way \(7.72\) km.
+
+=== 54
+chapter: Mensuration 3D
+subtopic: Spheres, Hemispheres and Shells
+difficulty: MODERATE
+answer: A
+stem:
+A spherical shell has an outer diameter of 20 cm and is 1 cm thick. What is the volume of the material in the shell? (Use \(\pi \approx 3.14\)).
+A: \(1134.7\,\text{cm}^3\)
+B: \(1256.6\,\text{cm}^3\)
+C: \(1340.4\,\text{cm}^3\)
+D: \(1046.7\,\text{cm}^3\)
+solution:
+Outer radius \(= 10\) cm, inner radius \(= 10 - 1 = 9\) cm.
+
+Volume \(= \frac{4}{3}\pi(10^3 - 9^3) = \frac{4}{3} \times 3.14 \times 271 \approx 1134.6\,\text{cm}^3\), closest to \(1134.7\,\text{cm}^3\).
+
+Check: outer sphere \(\approx 4186.7\), inner \(\approx 3052.1\), difference \(\approx 1134.6\).
+
+=== 55
+chapter: Mensuration 3D
+subtopic: Water — Immersion, Flow and Rainfall
+difficulty: MODERATE
+answer: B
+stem:
+A rectangular aquarium (100 cm L \(\times\) 50 cm W \(\times\) 60 cm H) contains water with an initial level of 20 cm. 10 identical metal spheres, each with a diameter of 10 cm, are gently lowered into the aquarium. Assuming the spheres are fully submerged, what is the rise in the water level?
+A: \(\frac{\pi}{6}\) cm
+B: \(\frac{\pi}{3}\) cm
+C: \(\frac{2\pi}{3}\) cm
+D: \(\pi\) cm
+solution:
+Each sphere has radius 5 cm and volume \(\frac{4}{3}\pi \times 125 = \frac{500\pi}{3}\,\text{cm}^3\); ten spheres displace \(\frac{5000\pi}{3}\,\text{cm}^3\).
+
+Base area \(= 100 \times 50 = 5000\,\text{cm}^2\), so the rise \(= \frac{5000\pi}{3} \div 5000 = \frac{\pi}{3}\) cm.
+
+=== 56
+chapter: Ratio, Proportion and Variation
+subtopic: Partnership
+difficulty: MODERATE
+answer: A
+stem:
+'A', 'B', and 'C' formed a consulting firm. Their capital investments were Rs. 6,00,000, Rs. 4,00,000, and Rs. 5,00,000, respectively. After 3 months, 'A' withdrew Rs. 1,00,000, and 'B' added Rs. 1,00,000. The partnership lasted for 9 months. What was the ratio of their effective capital contributions?
+A: 16:14:15
+B: 16:15:14
+C: 14:15:16
+D: 14:16:15
+solution:
+In lakh-months: A \(= 6 \times 3 + 5 \times 6 = 48\), B \(= 4 \times 3 + 5 \times 6 = 42\), C \(= 5 \times 9 = 45\).
+
+\(48 : 42 : 45 = 16 : 14 : 15\).
+
+=== 57
+chapter: Percentage, Profit and Loss
+subtopic: Successive Percentage Change
+difficulty: MODERATE
+answer: A
+stem:
+The price of a product is decreased by \(x\%\) and then increased by \(x\%\). The final price becomes \(10\%\) less than the original.
+
+What is the value of x (approximately)?
+A: 31.6
+B: 33.6
+C: 30.6
+D: 39.6
+solution:
+A decrease and an equal increase give a net change of \(-\frac{x^2}{100}\%\). So \(\frac{x^2}{100} = 10\), \(x^2 = 1000\) and \(x \approx 31.6\).
+
+Check: \(0.684 \times 1.316 \approx 0.900\).
+
+=== 58
+chapter: Mensuration 2D
+subtopic: Rectangles, Squares and Other Quadrilaterals
+difficulty: EASY
+answer: A
+stem:
+A floor is 12 m by 9 m. If tiles of 1.5 m \(\times\) 1.5 m are used, how many tiles are needed?
+A: 48
+B: 68
+C: 72
+D: 80
+solution:
+Floor area \(= 12 \times 9 = 108\,\text{m}^2\); tile area \(= 2.25\,\text{m}^2\); tiles \(= \frac{108}{2.25} = 48\).
+
+Check: \(\frac{12}{1.5} \times \frac{9}{1.5} = 8 \times 6 = 48\).
+
+=== 59
+chapter: Mensuration 2D
+subtopic: Rectangles, Squares and Other Quadrilaterals
+difficulty: EASY
+answer: A
+stem:
+A store sign is a 5 m \(\times\) 4 m rectangle with a 2 m \(\times\) 1 m rectangle cut out. Painting cost is ₹180/\(\text{m}^2\). How much will the painting cost for the exposed area?
+A: ₹3, 240
+B: ₹3, 600
+C: ₹3, 960
+D: ₹4, 200
+solution:
+Exposed area \(= 5 \times 4 - 2 \times 1 = 18\,\text{m}^2\).
+
+Cost \(= 18 \times 180 = 3240\), that is ₹3,240.
+
+=== 60
+chapter: Mensuration 2D
+subtopic: Combined and Shaded Regions
+difficulty: MODERATE
+answer: A
+stem:
+A regular hexagonal nut has outer side 6 cm and inner hollow side 3 cm. What is the material approximate area in the cross-section?
+A: \(70\,\text{cm}^2\)
+B: \(60\,\text{cm}^2\)
+C: \(56\,\text{cm}^2\)
+D: \(66\,\text{cm}^2\)
+solution:
+Area of a regular hexagon of side \(a\) is \(\frac{3\sqrt{3}}{2}a^2\).
+
+Material \(= \frac{3\sqrt{3}}{2}(6^2 - 3^2) = \frac{3\sqrt{3}}{2} \times 27 \approx 2.598 \times 27 \approx 70.1\,\text{cm}^2\).
+
+Check: outer \(\approx 93.5\), inner \(\approx 23.4\), difference \(\approx 70.1\).
+
+=== 61
+chapter: Simple and Compound Interest
+subtopic: Compound Interest
+difficulty: EASY
+answer: B
+stem:
+A man got \(10\%\) of his investment as profit. If he invested Rs. 5000, and the profit was reinvested, what will be the total value after the second year with the same profit rate?
+A: Rs. 6000
+B: Rs. 6050
+C: Rs. 6100
+D: Rs. 6150
+solution:
+After year 1: \(5000 \times 1.1 = 5500\). After year 2: \(5500 \times 1.1 = 6050\).
+
+Check: \(5000 \times 1.21 = 6050\).
+
+=== 62
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: EASY
+answer: C
+stem:
+A dealer sells a packet of cookies at Rs. 120 after giving a \(25\%\) discount on the marked price. If the profit earned is \(20\%\), find the cost price.
+A: Rs. 96
+B: Rs. 90
+C: Rs. 100
+D: Rs. 80
+solution:
+Selling price \(= 120 = 1.2 \times \text{CP}\), so \(\text{CP} = 100\). (The marked price, \(160\), is not needed.)
+
+Check: \(100 \times 1.2 = 120\).
+
+=== 63
+chapter: Averages
+subtopic: Sum and Mean
+difficulty: EASY
+answer: B
+stem:
+In a company, the average salary of 5 engineers is Rs. 60,000. If one engineer leaves and the average salary becomes Rs. 58,000, what was the salary of the engineer who left?
+A: Rs. 70,000
+B: Rs. 68,000
+C: Rs. 64,000
+D: Rs. 62,000
+solution:
+Total before \(= 5 \times 60000 = 300000\); total after \(= 4 \times 58000 = 232000\).
+
+Salary of the one who left \(= 300000 - 232000 = 68000\).
+
+Check: \(60000 + 4 \times 2000 = 68000\).
+
+=== 64
+chapter: Mensuration 3D
+subtopic: Prisms and Pyramids
+difficulty: EASY
+answer: C
+stem:
+A triangular storage prism has a base shaped like a right triangle with side lengths in the ratio 5:12:13. If the total perimeter of the base is 60 cm and the height of the prism is 8 cm, calculate the lateral surface area of the prism.
+A: \(360\,\text{cm}^2\)
+B: \(300\,\text{cm}^2\)
+C: \(480\,\text{cm}^2\)
+D: \(400\,\text{cm}^2\)
+solution:
+Lateral surface area \(=\) perimeter of base \(\times\) height \(= 60 \times 8 = 480\,\text{cm}^2\).
+
+Check: sides are 10, 24 and 26 cm, and \((10 + 24 + 26) \times 8 = 480\).
+
+=== 65
+chapter: Averages
+subtopic: Sum and Mean
+difficulty: EASY
+answer: A
+stem:
+The average of 9 numbers is 63. When one number is removed, the average becomes 60. What number was removed?
+A: 87
+B: 90
+C: 84
+D: 78
+solution:
+\(9 \times 63 - 8 \times 60 = 567 - 480 = 87\).
+
+Check: \(60 + 9 \times 3 = 87\).
+
+=== 66
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: MODERATE
+answer: A
+stem:
+A wholesaler marks up a batch of 100 identical clocks by \(80\%\) on cost and offers a trade discount of \(25\%\) to retailers. A retailer purchases all the clocks and spends Rs. 48,000. What is the cost price per clock for the wholesaler?
+A: Rs. 355.56
+B: Rs. 426.56
+C: Rs. 385.56
+D: Rs. 435.56
+solution:
+Price per clock to the retailer \(= \frac{48000}{100} = 480\).
+
+\(\text{CP} \times 1.8 \times 0.75 = 1.35 \times \text{CP} = 480\), so \(\text{CP} = \frac{480}{1.35} \approx 355.56\).
+
+Check: \(355.56 \times 1.35 \approx 480\).
+
+=== 67
+chapter: Trigonometric Ratios and Identities
+subtopic: Ratios in a Right Triangle
+difficulty: EASY
+answer: A
+stem:
+If \(\tan A = \frac{3}{4}\), then what is the value of \(\sin A\)?
+A: \(\frac{3}{5}\)
+B: \(\frac{4}{5}\)
+C: \(\frac{5}{3}\)
+D: \(1\)
+solution:
+Take opposite side 3 and adjacent side 4; the hypotenuse is 5. So \(\sin A = \frac{3}{5}\) (A acute).
+
+Check: \(\frac{\sin A}{\cos A} = \frac{3/5}{4/5} = \frac{3}{4}\).
+
+=== 68
+chapter: Trigonometric Ratios and Identities
+subtopic: Simplifying and Proving Identities
+difficulty: EASY
+answer: A
+stem:
+If \(1 + \cot^2\theta = \text{cosec}^2\theta\), then what is the value of \(\text{cosec}^2 60^\circ - \cot^2 60^\circ\)?
+A: 1
+B: 2
+C: 3
+D: 4
+solution:
+From the identity, \(\text{cosec}^2\theta - \cot^2\theta = 1\) for every \(\theta\).
+
+Check: \(\text{cosec}^2 60^\circ = \frac{4}{3}\), \(\cot^2 60^\circ = \frac{1}{3}\), difference \(= 1\).
+
+=== 69
+chapter: Mensuration 2D
+subtopic: Arcs, Sectors and Segments
+difficulty: EASY
+answer: B
+stem:
+A sector of a circle having a radius of 10 cm and has a central angle of \(\frac{3\pi}{4}\) radians. What is the area of the sector?
+A: \(30\pi\,\text{cm}^2\)
+B: \(37.5\pi\,\text{cm}^2\)
+C: \(45\pi\,\text{cm}^2\)
+D: \(75\pi\,\text{cm}^2\)
+solution:
+Area \(= \frac{1}{2}r^2\theta = \frac{1}{2} \times 100 \times \frac{3\pi}{4} = 37.5\pi\,\text{cm}^2\).
+
+Check: \(\frac{3\pi}{4}\) is \(135^\circ\), and \(\frac{135}{360} \times 100\pi = 37.5\pi\).
+
+=== 70
+chapter: Trigonometric Ratios and Identities
+subtopic: Complementary and Allied Angles
+difficulty: EASY
+answer: A
+stem:
+If \(\cos(90^\circ - \theta) = x\) and \(\theta\) is acute, then what is the value of \(\cos\theta\) in terms of x?
+A: \(\sqrt{1 - x^2}\)
+B: x
+C: \(\frac{1}{x}\)
+D: Undefined
+solution:
+\(\cos(90^\circ - \theta) = \sin\theta = x\). Since \(\theta\) is acute, \(\cos\theta = \sqrt{1 - \sin^2\theta} = \sqrt{1 - x^2}\).
+
+=== 71
+chapter: Circles
+subtopic: Common Tangents and Common Chords
+difficulty: EASY
+answer: A
+stem:
+The radii of two circles are 6 cm and 2 cm. The centers of the two circles are 10 cm apart. What is the length of a transverse common tangent?
+A: 6 cm
+B: 8 cm
+C: 10 cm
+D: 12 cm
+solution:
+Transverse common tangent \(= \sqrt{d^2 - (r_1 + r_2)^2} = \sqrt{10^2 - 8^2} = \sqrt{36} = 6\) cm.
+
+(The direct common tangent would be \(\sqrt{100 - 16} \approx 9.17\) cm, which is not offered.)
+
+=== 72
+chapter: Circles
+subtopic: Angles in a Circle
+difficulty: EASY
+answer: B
+stem:
+In a circle, a chord PQ subtends an angle of \(50^\circ\) at point R on the circumference. What is the angle it subtends at point S on the circumference, on the same side as R?
+A: \(25^\circ\)
+B: \(50^\circ\)
+C: \(100^\circ\)
+D: \(150^\circ\)
+solution:
+Angles subtended by the same chord in the same segment are equal, so the angle at S is \(50^\circ\).
+
+=== 73
+chapter: Circles
+subtopic: Chords and Perpendiculars
+difficulty: EASY
+answer: B
+stem:
+A circle with a radius of 20 cm. A chord of length 32 cm is drawn. What is the distance from the center of the circle to the chord?
+A: 16 cm
+B: 12 cm
+C: 8 cm
+D: 4 cm
+solution:
+The perpendicular from the centre bisects the chord, so half-chord \(= 16\) cm.
+
+Distance \(= \sqrt{20^2 - 16^2} = \sqrt{144} = 12\) cm.
+
+Check: \(12^2 + 16^2 = 400 = 20^2\).
+
+=== 74
+chapter: Circles
+subtopic: Angles in a Circle
+difficulty: EASY
+answer: A
+stem:
+In a circle, chord AB subtends an angle of \(60^\circ\) at the center. What is the angle subtended by the same chord AB at any point C on the major arc (opposite side of the center)?
+A: \(30^\circ\)
+B: \(60^\circ\)
+C: \(90^\circ\)
+D: \(120^\circ\)
+solution:
+The angle at the centre is twice the angle at any point on the major arc, so the angle at C \(= \frac{60^\circ}{2} = 30^\circ\).
+
+(A point on the minor arc would see \(180^\circ - 30^\circ = 150^\circ\).)
+
+=== 75
+chapter: Circles
+subtopic: Tangents from an External Point
+difficulty: EASY
+answer: C
+stem:
+A line is drawn from a point P located 13 cm away from the center O of a circle with radius 5 cm. If the line is tangent to the circle, what is the length of the tangent from point P to the point of contact with the circle?
+A: 8 cm
+B: 9 cm
+C: 12 cm
+D: 10 cm
+solution:
+The radius is perpendicular to the tangent at the point of contact, so the tangent length \(= \sqrt{13^2 - 5^2} = \sqrt{144} = 12\) cm.
+
+Check: \(5, 12, 13\) is a Pythagorean triple.
+
+=== 76
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: B
+stem:
+Fill in the blank with the correctly spelt word.
+
+The species showed remarkable _________ to extreme conditions.
+A: adaptibility
+B: adaptability
+C: adaptibilitye
+D: adaptabilitty
+solution:
+The noun comes from *adaptable*, so it keeps the *a*: **adaptability**. The other three misspell the vowel or double the final *t*.
+
+=== 77
+chapter: Vocabulary
+subtopic: Synonyms: Harm, Degree and the Senses
+difficulty: EASY
+answer: C
+stem:
+Select the most appropriate synonym of the given word: **TRUNCATED**
+A: Lengthened
+B: Extended
+C: Shortened
+D: Complicated
+solution:
+To truncate is to cut short by removing a part, so truncated means shortened. Lengthened and extended are its opposites; complicated is unrelated.
+
+=== 78
+chapter: Vocabulary
+subtopic: Antonyms: Time, Change and Action
+difficulty: MODERATE
+answer: C
+stem:
+Select the most appropriate antonym of the given word. **Pulverize**
+A: Crumble
+B: Shatter
+C: Restore
+D: Crush
+solution:
+To pulverize is to crush something into powder, to destroy it completely. Crumble, shatter and crush are near-synonyms; restore (bring back to its original whole state) is the opposite.
+
+=== 79
+chapter: Idioms and Phrases
+subtopic: Idioms: Trouble and Success
+difficulty: EASY
+answer: B
+stem:
+Choose the correct meaning of idiom:
+**The writing on the wall**
+A: A public confession
+B: A clear warning of inevitable doom
+C: A declaration of love
+D: A mark of brilliance
+solution:
+From the Book of Daniel, where a hand writes Belshazzar's doom on the palace wall: the writing on the wall is a clear sign that failure or disaster is coming.
+
+=== 80
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: B
+stem:
+Choose the **correct spelling** of the word meaning 'easily broken'.
+A: Brittel
+B: Brittle
+C: Brittlle
+D: Britle
+solution:
+The word is spelt **brittle**: double *t*, ending in *-le*.
+
+=== 81
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: B
+stem:
+Choose the correct **one-word substitute** for: 'A person who is unable to pay debts'.
+A: Pauper
+B: Bankrupt
+C: Spendthrift
+D: Debtor
+solution:
+A bankrupt (an insolvent) is a person legally declared unable to pay their debts. A pauper is simply very poor, a spendthrift wastes money, and a debtor owes money but may well be able to pay it.
+
+=== 82
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: A
+stem:
+Choose the correct **one-word substitute** for: 'A person who is skilled in many areas'.
+A: Polymath
+B: Prodigy
+C: Savant
+D: Virtuoso
+solution:
+A polymath has expert knowledge in many subjects. A prodigy is a young person with exceptional talent, a savant a learned person (or one with one exceptional skill), and a virtuoso a highly skilled performer, usually in one art.
+
+=== 83
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: HARD
+answer: A
+context:
+**In the following passage, some words have been deleted. Read the passage intently and choose the most appropriate option to fill in each blank:**
+To conceive of gender as ontologically prior or naturally originary is to misrecognize its status as a **[1]** _______, *a semiotic and performative topology whose coherence is secured only through its reiteration across spatial, legal, and psychic apparatuses. Within this regime, embodiment is not merely lived but mediated—filtered through hermeneutic technologies that valorize some corporealities while rendering others abject, deviant, or structurally unintelligible. The state, in tandem with biomedical epistemes and juridico-political grammars, exercises a necropolitical calibration of life itself—where recognition is not a right but a* **[2]** _______, allocated via matrices of intelligibility that are historically contingent and politically fungible. This diposit if renders gender a function of discursive legibility rather than biological inevitability. Resistance, when funneled through these grammars, risks becoming complicit in the very structures it seeks to subvert. Hence, the radical task is not merely to “expand” recognition but to effect a **[3]** _______ of recognition’s ontological architecture. This entails refusing the dialectics of inclusion and exclusion that liberal frameworks offer and instead exposing their constitutive foreclosure of alterity. Such a politics necessitates the **[4]** _______ of normativity as a structuring logic of embodiment. Only through its unmaking can a post-identitarian ethics of becoming be envisioned—one that privileges contingency over coherence, opacity over transparency, and relational indeterminacy over categorical fixity. In this schema, freedom is not recuperative but **[5]** _______—a rupture from taxonomic legibility, a departure from the logocentric compulsion to be known.
+stem:
+What should come in the place of blank number **[1]**?
+A: praxis-field
+B: ontotheological mirror
+C: diffident
+D: nomos
+solution:
+The blank is glossed at once by the appositive "a semiotic and performative topology ... secured only through its reiteration": gender is a field produced by repeated practice, not something given in advance. A praxis-field (a field of practice) is exactly that, and "field" matches "topology". An ontotheological mirror would make gender prior and given, the very view the sentence rejects; diffident is an adjective and cannot follow "a"; nomos (law, norm) names a rule rather than a performed space.
+
+=== 84
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: HARD
+answer: A
+context_from: 83
+stem:
+What should come in the place of blank number **[2]**?
+A: conditionality
+B: succor
+C: presumption
+D: irrevocability
+solution:
+Recognition is "not a right but a ____, allocated via matrices of intelligibility that are historically contingent and politically fungible". Something granted on terms and able to be withdrawn is a conditionality, the opposite of a right. Irrevocability and presumption point to something secure or assumed, which contradicts "contingent" and "fungible"; succor (help, relief) does not fit "allocated via matrices".
+
+=== 85
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: HARD
+answer: B
+context_from: 83
+stem:
+What should come in the place of blank number **[3]**?
+A: reiteration
+B: destitution
+C: emancipation
+D: interpolation
+solution:
+The task is "not merely to expand recognition but to effect a ____ of recognition's ontological architecture", and the passage goes on to speak of "unmaking". Destitution (deposing, dismantling) is the radical opposite of expanding. Reiteration would repeat the structure the passage criticises, interpolation would insert into it, and the emancipation of an architecture makes no sense.
+
+=== 86
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: HARD
+answer: A
+context_from: 83
+stem:
+What should come in the place of blank number **[4]**?
+A: ablation
+B: concretization
+C: immanence
+D: retrieval
+solution:
+The next sentence says "Only through its unmaking": the politics needs the removal of normativity. Ablation is surgical removal, cutting away. Concretization would firm normativity up, retrieval would recover it, and immanence (being inherent) is not something a politics brings about.
+
+=== 87
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: HARD
+answer: B
+context_from: 83
+stem:
+What should come in the place of blank number **[5]**?
+A: recuperative
+B: apophatic
+C: regulatory
+D: valorized
+solution:
+Freedom is defined by what follows the dash: "a rupture from taxonomic legibility, a departure from the logocentric compulsion to be known". Apophatic means defined by negation, by what cannot be said or named, which matches refusing to be known. Recuperative is the word the sentence rejects, and regulatory and valorized belong to the normative order the passage opposes.
+
+=== 88
+chapter: Grammar
+subtopic: Articles: A, An and The
+difficulty: MODERATE
+answer: C
+blind: B
+note: judgement item. SSC's key reads 'UN envoy for climate affairs' as one particular post and takes 'the'; our blind answer took the indefinite 'a' (one of several envoys). The bank carries SSC's answer
+stem:
+**Choose the correct article:**
+She aspires to become _____ UN envoy for climate affairs.
+A: an
+B: a
+C: the
+D: no article
+solution:
+"UN envoy for climate affairs" names one particular post, defined by the phrase "for climate affairs", so the definite article fits: she aspires to become the UN envoy for climate affairs. "An" is wrong in any case, since UN begins with the consonant sound /j/.
+
+=== 89
+chapter: Grammar
+subtopic: Connector Blanks: Word Choice and Collocation
+difficulty: EASY
+answer: A
+stem:
+**Select the correct option:**
+The chief engineer recommended replacing the obsolete part ___ than repairing it.
+A: rather
+B: as
+C: other
+D: more
+solution:
+"Rather than" states a preference for one action over another: replacing the part rather than repairing it. *More than* would compare amounts, and *as than* and *other than* do not fit.
+
+=== 90
+chapter: Spotting Errors
+subtopic: Pronouns
+difficulty: EASY
+answer: A
+stem:
+**Find the part of the sentence that contains an error:**
+It's central location (1)/ makes the conference venue (2)/ convenient for delegates (3)/ travelling from different cities. (4)/
+A: (1)
+B: (2)
+C: (3)
+D: (4)
+solution:
+*It's* means "it is". The possessive pronoun has no apostrophe: **Its** central location makes the venue convenient.
+
+=== 91
+chapter: Spotting Errors
+subtopic: Redundancy, Comparison, Connectors and Idioms
+difficulty: HARD
+answer: C
+stem:
+**Find the part of the sentence that contains an error:**
+The suddenness with which the issue escalated (1)/ took not only the negotiators but also the observers (2)/ by surprise who were expecting (3)/ a gradual resolution process. (4)
+A: (1)
+B: (2)
+C: (3)
+D: (4)
+solution:
+The relative clause "who were expecting a gradual resolution process" describes the observers, so it must follow "observers" directly. Here "by surprise" sits between them, so "who" seems to attach to "surprise". The fault shows in part (3): the sentence should read "...took by surprise not only the negotiators but also the observers who were expecting a gradual resolution process."
+
+=== 92
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: MODERATE
+answer: C
+stem:
+**Change the following from active to passive:**
+Does the statute bind municipal councils to such obligations?
+A: Have municipal councils been bound by the statute to such obligations?
+B: Were municipal councils being bound by the statute to such obligations?
+C: Are municipal councils bound by the statute to such obligations?
+D: Do municipal councils are bound by the statute to such obligations?
+solution:
+The active is a simple present question (*Does ... bind*). Its passive is *is/are* + past participle, with the plural subject *municipal councils*: Are municipal councils bound by the statute to such obligations? A changes the tense to present perfect, B to past continuous, and D doubles the auxiliary.
+
+=== 93
+chapter: Vocabulary
+subtopic: Homophones in Sentences
+difficulty: HARD
+answer: C
+flawed: yes
+note: aporia has no recognised second meaning, so no option truly holds a homonym; C is the only sentence that uses the word in a different sense and is the intended answer.
+stem:
+**Select the sentence containing the homonym of the highlighted word:**
+The philosopher cited a rare **aporia** in the text.
+A: The reader encountered aporia in the Platonic dialogue.
+B: The critic interpreted aporia as a poetic device.
+C: The engineer measured the bridge’s aporia in millimeters.
+D: The aporia indicated a contradiction in logic.
+solution:
+A homonym is the same word form with a different, unrelated meaning. In the given sentence aporia has its usual sense: an irresolvable doubt or contradiction in an argument (also a rhetorical device of feigned doubt). A, B and D all use that same sense. Only C uses the word in a different, physical sense (something measured on a bridge in millimetres), so C is the intended answer, though English has no such second meaning of aporia.
+
+=== 94
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: D
+stem:
+**Convert the sentence provided below from its passive voice structure to an active voice structure:**
+The guests were being served refreshments by the host.
+A: The host has served refreshments to the guests.
+B: The host serves refreshments to the guests.
+C: The host had been serving refreshments to the guests.
+D: The host was serving refreshments to the guests.
+solution:
+*Were being served* is the passive of the past continuous, so the active is *was serving*: The host was serving refreshments to the guests. A, B and C change the tense.
+
+=== 95
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: C
+stem:
+Choose the most suitable option to replace the highlighted part of the sentence:
+I ***met him yesterday night*** at the party.
+A: had met him last night
+B: meet him yesterday night
+C: met him last night
+D: was meeting him last night
+solution:
+English says *last night*, not *yesterday night* (compare *yesterday morning*, *yesterday evening*). A single finished past event takes the simple past: I met him last night at the party. A needs an earlier past action to justify the past perfect, B is present tense, and D makes a one-off meeting continuous.
+
+=== 96
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: MODERATE
+answer: A
+stem:
+Choose the most suitable option to replace the highlighted part of the sentence:
+She has a car, ***isn’t it?***
+A: doesn't she?
+B: hasn’t she?
+C: isn't she?
+D: has she not?
+solution:
+A question tag repeats the subject as a pronoun (*she*) and uses the auxiliary of the statement. Here *has* is the main verb (possession) with no auxiliary, so the tag takes *do*: She has a car, doesn't she? *Hasn't she?* is an older British form and *has she not?* is uncontracted and formal; *isn't she?* uses the wrong verb.
+
+=== 97
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: MODERATE
+answer: B
+stem:
+**A sentence is provided in indirect speech. From the four given options, choose the one that most accurately conveys the sentence in its corresponding direct speech.**
+The historian observed that the records had been tampered with.
+A: The historian said, "Someone tampered with the records."
+B: The historian said, "The records had been tampered with."
+C: He said, "The records are tampered with."
+D: He observed, "The records are fake."
+solution:
+The reported clause is passive with the records as subject, and the speaker is the historian. B keeps the speaker, the subject, the passive and *tampered with*. A turns it active with a new subject *someone*, C changes the tense and drops the speaker's identity, and D changes the meaning to *fake*.
+
+=== 98
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: C
+stem:
+**A sentence is provided in direct speech. From the four given options, choose the one that most accurately conveys the sentence in its corresponding indirect speech.**
+I said, “Let us start early.”
+A: I said let us start early.
+B: I told that we must start early.
+C: I suggested that we should start early.
+D: I suggested us to start early.
+solution:
+*Let us* in direct speech is a proposal, reported with *suggested* (or *proposed*) + *that we should*: I suggested that we should start early. A only removes the quotation marks, B misuses *told* without an object and turns it into a necessity, and *suggest* is never followed by object + infinitive as in D.
+
+=== 99
+chapter: Sentence Rearrangement
+subtopic: Shape of a Paragraph Argument
+difficulty: MODERATE
+answer: A
+blind: C
+note: judgement item. SSC's key opens with the history (Cold War treaties) and then the law they produced; our blind order opened with the law itself (1-2-3-4). The bank carries SSC's answer
+stem:
+**Rearrange the following sentences to form a meaningful passage:**
+1. International space law governs satellite placement and liability. 2. Treaties emerged during the Cold War to prevent militarization. 3. New challenges include space debris and commercial mining. 4. Regulation needs adaptation to current realities.
+A: 2-1-3-4
+B: 1-3-4-2
+C: 1-2-3-4
+D: 3-2-1-4
+solution:
+2 opens with the history: treaties emerged during the Cold War to prevent militarisation. 1 says what that body of international space law now governs (satellite placement and liability). 3 turns to today's new challenges, and 4 concludes that regulation must adapt to them. Order: 2-1-3-4.
+
+=== 100
+chapter: Sentence Rearrangement
+subtopic: Pronouns and Names in Paragraphs
+difficulty: EASY
+answer: B
+stem:
+**Rearrange the following sentences in correct order to make a logical passage.**
+1. This ensures fairness and minimizes potential conflicts.
+2. Conflict resolution is an essential skill in any workplace.
+3. It involves active listening and seeking common ground.
+4. Training in this area improves team dynamics.
+A: 2-1-3-4
+B: 2-3-1-4
+C: 2-4-1-3
+D: 3-4-2-1
+solution:
+2 names the topic. 3 begins with *It*, which points to conflict resolution, and says what it involves. 1 begins with *This*, pointing to active listening and seeking common ground, which ensures fairness. 4 closes with training in this area. Order 2-3-1-4.

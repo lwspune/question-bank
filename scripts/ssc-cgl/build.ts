@@ -85,7 +85,8 @@ function main() {
     problems.push(...textProblems("solution", q.solution, false).map((s) => `Q${q.number} ${s}`));
 
     const fig = figurePaths(shift.id, q);
-    for (const f of [fig.stem, ...(fig.options ?? [])]) if (f && !existsSync(f)) p(`figure file missing: ${f}`);
+    // A draft declares figures; figures.ts writes the files after review, so only the full build needs them.
+    if (!partial) for (const f of [fig.stem, ...(fig.options ?? [])]) if (f && !existsSync(f)) p(`figure file missing: ${f}`);
 
     rows.push({
       sourceRow: q.number,

@@ -14,9 +14,16 @@
  *
  * Rollback is by source_file: every row carries the shift's own label, so one DELETE
  * removes exactly this shift and nothing else.
+ *
+ * Figures (TCS shifts, figures.ts): a figure row is hashed with its figure bytes
+ * (figureAwareHash), its "[figure]" options are stored as empty text, and after the insert
+ * each picture is uploaded and set on questions.image_url / options.image_url. That step is
+ * idempotent: a slot already holding an image is left alone.
  */
-import { createClient } from "@supabase/supabase-js";
-import { existsSync, readFileSync } from "node:fs";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { uploadImage } from "../../src/lib/storage/images";
+import { figureAwareHash, optionTextForBank } from "./figures";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { commitStaged } from "../../src/lib/upload/commit";
 import { validateRow, type RawRow } from "../../src/lib/upload/validate";
@@ -39,18 +46,23 @@ async function main() {
   if (!existsSync(file)) throw new Error(`${file} not found: run build.ts ${shift.id} first`);
   const rows: Row[] = JSON.parse(readFileSync(file, "utf8"));
 
-  const withFigures = rows.filter((r) => r.figures.stem || r.figures.options);
-  if (withFigures.length) {
-    throw new Error(`${withFigures.length} row(s) declare figures; attaching figures is not built yet (Q${withFigures.map((r) => r.questionNumber).join(", Q")})`);
-  }
-
+  const figureFiles = (r: Row) => [r.figures.stem, ...(r.figures.options ?? [])].filter((f): f is string => !!f);
   const errs: string[] = [];
   const parsed = [];
   for (const r of rows) {
     const { flawed: _f, figures: _g, ...raw } = r;
     const v = validateRow(raw);
-    if (v.errors.length) errs.push(`Q${r.questionNumber}: ${v.errors.join("; ")}`);
-    else parsed.push(v.parsed!);
+    if (v.errors.length) {
+      errs.push(`Q${r.questionNumber}: ${v.errors.join("; ")}`);
+      continue;
+    }
+    const p = v.parsed!;
+    const files = figureFiles(r);
+    if (files.length) {
+      p.contentHash = figureAwareHash(p.contentHash, files.map((f) => readFileSync(f)));
+      p.options = p.options.map((o) => ({ ...o, text: optionTextForBank(o.text) }));
+    }
+    parsed.push(p);
   }
   const flawed = rows.filter((r) => r.flawed).map((r) => r.questionNumber);
 
@@ -106,7 +118,8 @@ async function main() {
   });
   console.log(`\ncommit: inserted=${result.inserted} skipped=${result.skipped} failed=${result.failed}`);
   for (const e of result.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
-  if (result.skipped > 0) console.log(`!! ${result.skipped} row(s) skipped as duplicates: two questions of one paper collided on content_hash. Investigate.`);
+  if (result.skipped > 0) await recordRepeats(client, examId, shift, parsed);
+  await attachFigures(client, examId, shift.sourceFile, rows);
 
   const { error: vErr, count } = await client
     .from("questions")
@@ -123,6 +136,77 @@ async function main() {
     .eq("id", jobId);
   console.log(`done. ${linked} rows under ${shift.sourceFile} (job ${jobId}).`);
   if ((linked ?? 0) !== sheetCount) console.log(`!! expected ${sheetCount} rows for this shift, found ${linked}.`);
+}
+
+/** Upload each figure row's pictures and set them on the row this shift inserted. */
+async function attachFigures(client: SupabaseClient<any, any, any>, examId: string, sourceFile: string, rows: Row[]) {
+  const withFigures = rows.filter((r) => r.figures.stem || r.figures.options);
+  if (!withFigures.length) return;
+  const { data, error } = await client
+    .from("questions")
+    .select("id, question_number, image_url, options(id, label, image_url)")
+    .eq("exam_id", examId)
+    .eq("source_file", sourceFile);
+  if (error) throw new Error(`figure lookup failed: ${error.message}`);
+  const byNumber = new Map((data ?? []).map((q) => [String(q.question_number), q]));
+  let uploaded = 0;
+  for (const r of withFigures) {
+    const q = byNumber.get(String(r.questionNumber));
+    if (!q) continue; // a repeat: its twin row carries the same pictures
+    const put = async (file: string) => uploadImage(client, ORG_ID, readFileSync(file), "image/png");
+    if (r.figures.stem && !q.image_url) {
+      const { error: e } = await client.from("questions").update({ image_url: await put(r.figures.stem) }).eq("id", q.id);
+      if (e) throw new Error(`Q${r.questionNumber} image_url: ${e.message}`);
+      uploaded++;
+    }
+    for (const [i, file] of (r.figures.options ?? []).entries()) {
+      const label = "ABCD"[i];
+      const opt = (q.options as { id: string; label: string; image_url: string | null }[]).find((o) => o.label === label);
+      if (!opt) throw new Error(`Q${r.questionNumber} has no option ${label}`);
+      if (opt.image_url) continue;
+      const { error: e } = await client.from("options").update({ image_url: await put(file) }).eq("id", opt.id);
+      if (e) throw new Error(`Q${r.questionNumber} option ${label} image_url: ${e.message}`);
+      uploaded++;
+    }
+  }
+  console.log(`figures: ${uploaded} picture(s) uploaded for ${withFigures.length} figure row(s).`);
+}
+
+/**
+ * SSC re-asks questions word for word across shifts (12 Sep S3 Q65 = 16 Sep S2 Q59), and
+ * the bank keeps one row per (org, exam, content_hash), so the later shift's copy is
+ * skipped. Its place in THIS paper must not be lost: a mock of the shift needs it. Each
+ * skipped number is written to repeats.json (committed) with the row it repeats.
+ */
+async function recordRepeats(
+  client: SupabaseClient<any, any, any>,
+  examId: string,
+  shift: ReturnType<typeof requireShift>,
+  parsed: { questionNumber?: string | null; contentHash: string }[]
+) {
+  const { data: mine } = await client.from("questions").select("question_number").eq("exam_id", examId).eq("source_file", shift.sourceFile);
+  const present = new Set((mine ?? []).map((q) => String(q.question_number)));
+  const skipped = parsed.filter((p) => !present.has(String(p.questionNumber)));
+  const file = join(__dirname, "repeats.json");
+  const ledger: Record<string, { number: number; questionId: string; first: string }[]> = existsSync(file) ? JSON.parse(readFileSync(file, "utf8")) : {};
+  ledger[shift.id] = [];
+  for (const p of skipped) {
+    const { data: twin } = await client
+      .from("questions")
+      .select("id, source_file, question_number")
+      .eq("org_id", ORG_ID)
+      .eq("exam_id", examId)
+      .eq("content_hash", p.contentHash)
+      .maybeSingle();
+    if (!twin) {
+      console.log(`!! Q${p.questionNumber} was skipped but no row carries its content_hash. Investigate.`);
+      continue;
+    }
+    const first = `${twin.source_file} Q${twin.question_number}`;
+    console.log(`repeat: Q${p.questionNumber} is ${first} word for word; the bank keeps that row (${twin.id})`);
+    ledger[shift.id].push({ number: Number(p.questionNumber), questionId: twin.id as string, first });
+  }
+  writeFileSync(file, JSON.stringify(ledger, null, 2) + "\n");
 }
 
 main().catch((e) => {
