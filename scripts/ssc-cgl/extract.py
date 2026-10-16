@@ -9,9 +9,13 @@ scripts/ssc-cgl/out/<dayId>/ (gitignored):
   geometry.json     {cells: [...], markers: [...]} for lib.ts assembleQuestions
 
 Judgement lives in lib.ts (tested). This only measures:
-  cell    one row's narrow LEFT cell (x0 76-86, x1 116-142: each question is its own
-          table, so the column width varies), its key FILL and the images whose
-          midpoint lies inside the row. Rows with no image are the gaps between tables.
+  cell    one row's narrow LEFT cell, its key FILL and the images whose midpoint lies
+          inside the row. Rows with no image are the gaps between tables. The cell is
+          found in bands measured from the page's own TABLE EDGE (the leftmost border
+          rule), never from fixed coordinates: each question is its own table, so the
+          column width varies (43-51 pt), and days are printed on different page sizes
+          (18/19 Sep at 842 pt wide with the edge at x=78-82, 16 Sep at 1224 pt with it
+          at x=104).
   marker  "Q.No: n", "PART-X (...)" and the "(Shift-n)" header, with page + y.
 """
 import json
@@ -23,8 +27,11 @@ import fitz  # PyMuPDF
 
 BORDER = (0.83, 0.79, 0.71)
 FILLS = {(0.0, 0.5, 0.0): "G", (1.0, 1.0, 0.0): "Y", (1.0, 0.0, 0.0): "R", (0.5, 0.5, 0.5): "N"}
-X0_BAND = (76.0, 86.0)
-X1_BAND = (116.0, 142.0)
+# Bands relative to the table edge L (see table_edge). Measured: x0 within L-4..L+6, the
+# column's right edge 36..62 pt to the right of L.
+X0_BAND = (-4.0, 6.0)
+X1_BAND = (36.0, 62.0)
+LABEL_BAND = 10.0  # a "Q.No: n" label starts within this many points of L
 Q_RE = re.compile(r"Q\.No:\s*(\d+)")
 PART_RE = re.compile(r"PART-([A-D])\s*\(")
 SHIFT_RE = re.compile(r"\(Shift-(\d)\)")
@@ -34,8 +41,15 @@ def rgb(c):
     return tuple(round(x, 2) for x in c) if c else None
 
 
-def in_left_column(r):
-    return X0_BAND[0] <= r.x0 <= X0_BAND[1] and X1_BAND[0] <= r.x1 <= X1_BAND[1]
+def table_edge(page):
+    """x of the page's leftmost border rule: where every question table starts. None on a
+    page with no table (the cover)."""
+    xs = [dr["rect"].x0 for dr in page.get_drawings() if rgb(dr.get("fill")) == BORDER]
+    return min(xs) if xs else None
+
+
+def in_left_column(r, edge):
+    return edge + X0_BAND[0] <= r.x0 <= edge + X0_BAND[1] and edge + X1_BAND[0] <= r.x1 <= edge + X1_BAND[1]
 
 
 def page_images(page, pno, img_dir):
@@ -54,11 +68,13 @@ def page_images(page, pno, img_dir):
     return out
 
 
-def cells_of(page, pno, images):
+def cells_of(page, pno, images, edge):
     ys, fills = [], []
+    if edge is None:
+        return []
     for dr in page.get_drawings():
         r = dr["rect"]
-        if not in_left_column(r):
+        if not in_left_column(r, edge):
             continue
         f = rgb(dr.get("fill"))
         if f == BORDER and r.height < 1.5:
@@ -82,7 +98,7 @@ def cells_of(page, pno, images):
     return cells
 
 
-def markers_of(page, pno):
+def markers_of(page, pno, edge):
     out = []
     for b in page.get_text("dict")["blocks"]:
         if b["type"] != 0:
@@ -90,7 +106,7 @@ def markers_of(page, pno):
         text = " ".join(s["text"] for l in b["lines"] for s in l["spans"])
         x0, y0 = b["bbox"][0], b["bbox"][1]
         m = Q_RE.search(text)
-        if m and x0 < 90:
+        if m and edge is not None and x0 < edge + LABEL_BAND:
             out.append({"kind": "q", "page": pno, "y": round(y0, 1), "n": int(m.group(1))})
         m = PART_RE.search(text)
         if m:
@@ -112,8 +128,9 @@ def main():
     cells, markers = [], []
     for pno, page in enumerate(doc):
         images = page_images(page, pno, img_dir)
-        cells += cells_of(page, pno, images)
-        markers += markers_of(page, pno)
+        edge = table_edge(page)
+        cells += cells_of(page, pno, images, edge)
+        markers += markers_of(page, pno, edge)
     with open(os.path.join(out_dir, "geometry.json"), "w", encoding="utf8") as f:
         json.dump({"pdf": os.path.basename(pdf), "pages": doc.page_count, "cells": cells, "markers": markers}, f, indent=1)
     shifts = sorted({m["shift"] for m in markers if m["kind"] == "shift"})

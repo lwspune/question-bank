@@ -52,8 +52,23 @@ function joinCells(a: Cell, b: Cell, where: string): Cell {
  * question with more than five cells has its page-straddling pairs re-joined (first
  * pair first) until five remain. Anything that still does not read as one stem, four
  * options and exactly one key colour is refused, never guessed.
+ *
+ * Two source faults are handled explicitly, never silently:
+ *  - a CLIPPED label: a label that is a prefix of the number expected next, in that place
+ *    ("Q.No: 4" where Q48 belongs, 16 Sep 2025 S1), is read as the expected number and
+ *    reported through onRepair. Any other out-of-sequence label stays as printed and
+ *    fails the numbering check below.
+ *  - a hosted file that LACKS questions (16 Sep 2025 S3 has no PART-C): the numbers are
+ *    declared in opts.missing per shift. An undeclared gap still fails.
  */
-export function assembleQuestions(g: Geometry): AssembledQuestion[] {
+export type AssembleOptions = {
+  onRepair?: (message: string) => void;
+  /** shift number -> question numbers the hosted source does not contain */
+  missing?: Record<number, number[]>;
+};
+
+export function assembleQuestions(g: Geometry, opts: AssembleOptions = {}): AssembledQuestion[] {
+  const missingIn = (s: number) => new Set(opts.missing?.[s] ?? []);
   const events: Event[] = [
     ...g.markers.map((m) => ({ page: m.page, y: m.y, order: 0, marker: m })),
     ...g.cells.map((c) => ({ page: c.page, y: (c.y0 + c.y1) / 2, order: 1, cell: c })),
@@ -63,17 +78,28 @@ export function assembleQuestions(g: Geometry): AssembledQuestion[] {
   const open: Open[] = [];
   let shift: number | null = null;
   let part: Part | null = null;
+  let prev = 0;
   for (const e of events) {
     const m = e.marker;
     if (m?.kind === "shift") {
       shift = m.shift;
       part = null;
+      prev = 0;
     } else if (m?.kind === "part") {
       part = m.part;
     } else if (m?.kind === "q") {
       if (shift === null) throw new Error(`Q${m.n} on page ${m.page} comes before any shift header`);
       if (part === null) throw new Error(`shift ${shift} Q${m.n} comes before any PART heading`);
-      open.push({ shift, part, number: m.n, cells: [] });
+      const gaps = missingIn(shift);
+      let expected = prev + 1;
+      while (gaps.has(expected)) expected++;
+      let n = m.n;
+      if (n !== expected && n < expected && String(expected).startsWith(String(n))) {
+        opts.onRepair?.(`shift ${shift}: label ${n} on page ${m.page} read as Q${expected} (clipped label)`);
+        n = expected;
+      }
+      prev = n;
+      open.push({ shift, part, number: n, cells: [] });
     } else if (e.cell && open.length) {
       open[open.length - 1].cells.push(e.cell);
     }
@@ -106,8 +132,21 @@ export function assembleQuestions(g: Geometry): AssembledQuestion[] {
   const shifts = [...new Set(out.map((q) => q.shift))];
   for (const s of shifts) {
     const nums = out.filter((q) => q.shift === s).map((q) => q.number);
-    const ok = nums.length === QUESTIONS_PER_SHIFT && nums.every((n, i) => n === i + 1);
-    if (!ok) throw new Error(`shift ${s}: expected ${QUESTIONS_PER_SHIFT} questions numbered 1..${QUESTIONS_PER_SHIFT}, found ${nums.length}`);
+    const gaps = missingIn(s);
+    const want = Array.from({ length: QUESTIONS_PER_SHIFT }, (_, i) => i + 1).filter((n) => !gaps.has(n));
+    const ok = nums.length === want.length && nums.every((n, i) => n === want[i]);
+    if (!ok) {
+      const have = new Set(nums);
+      const missing = want.filter((n) => !have.has(n));
+      const dup = [...new Set(nums.filter((n, i) => nums.indexOf(n) !== i))];
+      const extra = nums.filter((n) => gaps.has(n));
+      const parts = [
+        missing.length ? `missing ${missing.join(",")}` : "",
+        dup.length ? `duplicate ${dup.join(",")}` : "",
+        extra.length ? `declared missing but present ${extra.join(",")}` : "",
+      ].filter(Boolean);
+      throw new Error(`shift ${s}: expected questions 1..${QUESTIONS_PER_SHIFT}${gaps.size ? ` less ${gaps.size} declared missing` : ""}: ${parts.join("; ") || "out of order"}`);
+    }
   }
   return out;
 }

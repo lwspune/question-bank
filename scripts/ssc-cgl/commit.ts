@@ -58,7 +58,9 @@ async function main() {
   if (DAYS[shift.day].provisionalKey) console.log("key: SSC's PROVISIONAL key (the challenge-module sheet)");
   console.log(`${rows.length} rows, ${parsed.length} valid, ${flawed.length} flawed (stay PRIVATE when the shift is published): ${flawed.map((n) => `Q${n}`).join(", ") || "none"}`);
   if (errs.length) for (const e of errs) console.log(`  - ${e}`);
-  if (rows.length !== 100) errs.push(`expected 100 rows, found ${rows.length}`);
+  // The sheet (assemble.ts) is the count: 100, less any questions DAYS declares the source lacks.
+  const sheetCount: number = JSON.parse(readFileSync(join(OUT, shift.id, "questions.json"), "utf8")).questions.length;
+  if (rows.length !== sheetCount) errs.push(`expected ${sheetCount} rows (the sheet's count), found ${rows.length}`);
 
   if (!apply) {
     console.log("\n[dry-run] pass --apply to write. Nothing inserted.");
@@ -120,7 +122,7 @@ async function main() {
     .update({ status: "COMPLETED", total_rows: linked ?? 0, inserted: result.inserted, skipped: result.skipped, finished_at: new Date().toISOString() })
     .eq("id", jobId);
   console.log(`done. ${linked} rows under ${shift.sourceFile} (job ${jobId}).`);
-  if ((linked ?? 0) !== 100) console.log(`!! expected 100 rows for this shift, found ${linked}.`);
+  if ((linked ?? 0) !== sheetCount) console.log(`!! expected ${sheetCount} rows for this shift, found ${linked}.`);
 }
 
 main().catch((e) => {

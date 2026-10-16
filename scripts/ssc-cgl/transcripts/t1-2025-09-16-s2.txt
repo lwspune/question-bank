@@ -1,0 +1,1675 @@
+SSC CGL 2025 Tier I, 16 September 2025, Shift 2 (12:30 PM). Read from SSC's challenge-module saved paper.
+Drafted by agents, one PART each, from the reading sheets only (no key; DRAFTING_BRIEF.md);
+every block reviewed in the main session, then compared with the key (build.ts).
+Format: scripts/ssc-cgl/lib.ts.
+
+=== 1
+chapter: Alphabet and Number Tests
+subtopic: Letter Position and Alphabet Test
+difficulty: EASY
+answer: B
+blind: A
+note: judgement item. SSC's key counts 'between the 2nd and 7th letter' inclusively (E, C, H, N, O, L: 4 consonants); our blind reading excluded both ends (C, H, N, O: 3). The bank carries SSC's answer
+stem:
+Count consonants between the \(2^{nd}\) and \(7^{th}\) letter of TECHNOLOGY.
+A: 3
+B: 4
+C: 5
+D: 6
+solution:
+TECHNOLOGY: T(1) E(2) C(3) H(4) N(5) O(6) L(7). Counting from the 2nd letter to the 7th, both included: E, C, H, N, O, L. The consonants among them are C, H, N and L, so the count is 4.
+
+Read with both ends excluded (C, H, N, O) the count would be 3; the key counts the end letters in.
+
+=== 2
+chapter: Alphabet and Number Tests
+subtopic: Address and Data Matching
+difficulty: EASY
+answer: C
+stem:
+Choose the address that is the same as the one given below.
+
+56/A, Greenwood Villa,Salt Lake City, Kolkata,West Bengal - 700091
+A: 56A, Greenwood Villa, Salt Lake, Kolkata, West Bengal - 700091
+B: 56/A, Greenwood Villas, Salt Lake City, Kolkata, West Bengal - 700091
+C: 56/A, Greenwood Villa, Salt Lake City, Kolkata, West Bengal - 700091
+D: 65/A, Greenwood Villa, Salt Lake City, Kolkata, West Bengal - 700091
+solution:
+A drops the slash in 56/A and writes "Salt Lake" for "Salt Lake City". B has "Villas" for "Villa". D has 65/A for 56/A. C matches the given address in every part.
+
+=== 3
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: A
+stem:
+Select the letter-cluster from among the given options that can replace the question mark (?) in the following series:
+**H D Z  L G B  P J D  T M F  ?**
+A: X P H
+B: X O H
+C: X P G
+D: W P H
+solution:
+First letters H, L, P, T move 4 places forward each time, so next is X.
+
+Second letters D, G, J, M move 3 places forward, so next is P.
+
+Third letters Z, B, D, F move 2 places forward, so next is H.
+
+The cluster is XPH.
+
+=== 4
+chapter: Blood Relations
+subtopic: Direct Relations
+difficulty: EASY
+answer: B
+stem:
+A is the brother of B. B is the daughter of C. How is A related to C?
+A: Daughter
+B: Son
+C: Father
+D: Uncle
+solution:
+B is C's daughter and A is B's brother, so A is also C's child. A is male (a brother), so A is C's son.
+
+=== 5
+chapter: Blood Relations
+subtopic: Direct Relations
+difficulty: EASY
+answer: A
+stem:
+B is the sister of A. A is the brother of C. C is the daughter of D. How is B related to D?
+A: Daughter
+B: Sister
+C: Son
+D: Granddaughter
+solution:
+A, B and C are siblings, and C is D's daughter, so all three are D's children. B is female (a sister), so B is D's daughter.
+
+=== 6
+chapter: Series
+subtopic: Number Series
+difficulty: MODERATE
+answer: A
+stem:
+What comes next: **2, 3, 10, 15, 26, 35, ?**
+A: 50
+B: 57
+C: 47
+D: 49
+solution:
+The terms are \(n^2 + 1\) for odd n and \(n^2 - 1\) for even n: \(1 + 1 = 2\), \(4 - 1 = 3\), \(9 + 1 = 10\), \(16 - 1 = 15\), \(25 + 1 = 26\), \(36 - 1 = 35\).
+
+Next n = 7 is odd: \(49 + 1 = 50\).
+
+Check with differences: 1, 7, 5, 11, 9, so the odd steps rise by 4 (1, 5, 9) and the even steps by 4 (7, 11, 15). Next step 15 gives \(35 + 15 = 50\).
+
+=== 7
+chapter: Classification
+subtopic: Number Classification
+difficulty: EASY
+answer: A
+stem:
+Choose the group in which all numbers belong to the same category:
+A: 2, 4, 6, 8
+B: 3, 6, 9, 11
+C: 5, 10, 13, 21
+D: 7, 14, 26, 38
+solution:
+2, 4, 6, 8 are all even numbers (multiples of 2). In B, 11 is not a multiple of 3; in C there is no common rule (13 and 21 break the multiples of 5); in D, 26 and 38 are not multiples of 7. Only A is a consistent group.
+
+=== 8
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: A
+stem:
+What will come at the place of question mark?    **4, 10, 22, 46, 94, ?**
+A: 190
+B: 191
+C: 192
+D: 196
+solution:
+Each term is twice the previous one plus 2: \(4 \times 2 + 2 = 10\), \(10 \times 2 + 2 = 22\), \(22 \times 2 + 2 = 46\), \(46 \times 2 + 2 = 94\).
+
+Next: \(94 \times 2 + 2 = 190\).
+
+Check: the differences 6, 12, 24, 48 double each time, so the next difference is 96 and \(94 + 96 = 190\).
+
+=== 9
+chapter: Statement-Based Reasoning
+subtopic: Statement and Assumptions
+difficulty: MODERATE
+answer: A
+stem:
+**Instruction:** Identify the assumptions that must hold for the statement to be valid, then choose the correct option.
+**Statement:** Despite the unpredictability of future technologies, regulatory frameworks must evolve to preempt ethical crises.
+**Assumptions:**
+I. Unregulated technological growth can cause ethical dilemmas.
+II. Ethical standards are often retrofitted to existing technology.
+III. Regulatory systems can always accurately predict technological outcomes.
+A: Only I and II are implicit
+B: Only I is implicit
+C: All are implicit
+D: Only II and III are implicit
+solution:
+I is implicit: there is no need to preempt ethical crises unless technology left unregulated can create them.
+
+II is implicit too: saying frameworks "must evolve to preempt" crises assumes that today they do not, that ethical rules are usually fitted to a technology after it already exists.
+
+III contradicts the statement, which itself concedes that future technologies are unpredictable. Only I and II are implicit.
+
+=== 10
+chapter: Statement-Based Reasoning
+subtopic: Statement and Conclusions
+difficulty: EASY
+answer: A
+stem:
+Read the following statement carefully and identify the conclusion that follows.
+
+Statement: The education ministry has made moral education compulsory in schools.
+Conclusions:
+I. Students must attend moral education classes.
+II. Schools were not offering moral education earlier.
+A: Only Conclusion I follows
+B: Only Conclusion II follows
+C: Both I and II follow
+D: Neither I nor II follows
+solution:
+If moral education is compulsory, students have to attend it, so I follows.
+
+Making something compulsory does not mean no school offered it before; some may have offered it as an option. II does not follow. Only I follows.
+
+=== 11
+chapter: Order, Ranking and Arrangement
+subtopic: Ranking and Position
+difficulty: EASY
+answer: A
+stem:
+Arrange the following in chronological order (Based on Age/History):
+1. Industrial Revolution
+2. Bronze Age
+3. Information Age
+4. Iron Age
+5. Stone Age
+A: 5, 2, 4, 1, 3
+B: 2, 4, 5, 1, 3
+C: 5, 4, 2, 1, 3
+D: 1, 2, 3, 4, 5
+solution:
+Human history runs Stone Age, then Bronze Age, then Iron Age, then the Industrial Revolution (18th to 19th century), then the Information Age (late 20th century onwards). That is 5, 2, 4, 1, 3.
+
+=== 12
+chapter: Analogy
+subtopic: Word Analogy
+difficulty: EASY
+answer: B
+stem:
+Choose the correct option to complete the series.
+Needle : Sew :: Keyboard : ?
+A: Draw
+B: Type
+C: Write
+D: Print
+solution:
+A needle is the tool used to sew. A keyboard is the tool used to type.
+
+=== 13
+chapter: Classification
+subtopic: Word Classification
+difficulty: EASY
+answer: C
+stem:
+Find the word that does not fit in the series:
+
+Complex, Intricate, Sophisticated, Simple, Elaborate
+A: Complex
+B: Intricate
+C: Simple
+D: Sophisticated
+solution:
+Complex, intricate, sophisticated and elaborate all describe something with many detailed parts. Simple means the opposite, so it is the odd one out.
+
+=== 14
+chapter: Classification
+subtopic: Word Classification
+difficulty: EASY
+answer: D
+stem:
+Find the unit that does not fit in the series:
+
+Kelvin, Celsius, Fahrenheit, Joule, Rankine
+A: Kelvin
+B: Rankine
+C: Fahrenheit
+D: Joule
+solution:
+Kelvin, Celsius, Fahrenheit and Rankine are temperature scales. The joule is the unit of energy (work, heat), so it does not fit.
+
+=== 15
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: C
+stem:
+In each of the following questions, a specific rearrangement of letters has been applied to the first word to form the second. Apply the same rearrangement pattern to the third word and choose the correct answer from the given options. **METAPHOR : EMATHPRO :: NORMAL : ?**
+A: ORMLAN
+B: ONRMLA
+C: ONMRLA
+D: ONMRAL
+solution:
+METAPHOR splits into pairs ME, TA, PH, OR. Each pair is reversed: EM, AT, HP, RO, giving EMATHPRO.
+
+NORMAL splits into NO, RM, AL. Reversing each pair gives ON, MR, LA: ONMRLA.
+
+=== 16
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: MODERATE
+answer: A
+stem:
+In each of the following questions, a word is transformed into a combination of letters and numbers following a specific pattern. Analyze the transformation used in the first pair and apply the same rule to find the missing term in the second pair.
+**BOAT : C40U :: JUMP : ?**
+A: K58Q
+B: K76P
+C: K95T
+D: K52E
+solution:
+The first and last letters each move one place forward: B to C and T to U. For JUMP this gives J to K and P to Q, so the code is K _ _ Q. Only K58Q has that form.
+
+The middle number fits too: the middle letters O and A have positions 15 and 1, sum 16, and \(16 + 24 = 40\); U and M have positions 21 and 13, sum 34, and \(34 + 24 = 58\).
+
+=== 17
+chapter: Alphabet and Number Tests
+subtopic: Dictionary Order
+difficulty: EASY
+answer: D
+stem:
+Which of these words will come last in a dictionary?
+A: bench
+B: beneath
+C: bend
+D: bent
+solution:
+All four start with BEN. The fourth letters are C (bench), D (bend), E (beneath) and T (bent). The order is bench, bend, beneath, bent, so bent comes last.
+
+=== 18
+chapter: Coding-Decoding
+subtopic: Number and Symbol Coding
+difficulty: MODERATE
+answer: D
+stem:
+Comprehension:
+In a certain number system there are only two notations to represent numbers: \(\Delta\) and \(\beta\).
+0 is represented by \(\Delta\) and 1 by \(\beta\). The subsequent numbers are represented in the following manner:
+2 is represented as \(\beta\Delta\),
+3 is represented as \(\beta\beta\),
+4 is represented as \(\beta\Delta\Delta\),
+5 is represented as \(\beta\Delta\beta\) and so on.
+How will you represent 81 in the given number system?
+A: \(\beta\Delta\Delta\beta\Delta\beta\Delta\)
+B: \(\beta\Delta\beta\Delta\beta\Delta\beta\)
+C: \(\beta\Delta\beta\Delta\Delta\beta\beta\)
+D: \(\beta\Delta\beta\Delta\Delta\Delta\beta\)
+solution:
+This is binary with \(\Delta = 0\) and \(\beta = 1\) (2 = 10, 3 = 11, 4 = 100, 5 = 101).
+
+\(81 = 64 + 16 + 1\), which in binary is 1010001.
+
+Writing 1 as \(\beta\) and 0 as \(\Delta\) gives \(\beta\Delta\beta\Delta\Delta\Delta\beta\).
+
+Check: \(64 + 0 + 16 + 0 + 0 + 0 + 1 = 81\).
+
+=== 19
+chapter: Classification
+subtopic: Word Classification
+difficulty: EASY
+answer: D
+stem:
+Find the odd one out from the given alternatives.
+A: Saturn
+B: Venus
+C: Jupiter
+D: Sun
+solution:
+Saturn, Venus and Jupiter are planets. The Sun is a star, so it is the odd one out.
+
+=== 20
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: A
+flawed: yes
+note: SSC's provisional key B (XCQRT) is wrong: every letter of WATER moves 2 places forward, so VAPOR gives X C R Q T in that order, option A. B swaps the codes of P and O. Our answer stays A; held PRIVATE for review
+stem:
+In a certain code language, **WATER** is written as **YCVGT**. How is **VAPOR** written in that code?
+A: XCRQT
+B: XCQRT
+C: XCPRT
+D: XCQTS
+solution:
+Each letter moves 2 places forward: W to Y, A to C, T to V, E to G, R to T.
+
+VAPOR: V to X, A to C, P to R, O to Q, R to T, giving XCRQT.
+
+=== 21
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: B
+stem:
+A principal amount of ₹1,000 yields a simple interest of ₹180 over a period of 2 years. What is the annual rate of simple interest?
+A: 8 %
+B: 9 %
+C: 7 %
+D: 6 %
+solution:
+Rate \(= \frac{SI \times 100}{P \times T} = \frac{180 \times 100}{1000 \times 2} = 9\%\).
+
+Check: 9% of ₹1,000 is ₹90 a year, and ₹90 \(\times\) 2 = ₹180.
+
+=== 22
+chapter: Mathematical Operations
+subtopic: Hidden Operation Rules
+difficulty: MODERATE
+answer: B
+stem:
+If 3 @ 4 = 19, 5 @ 6 = 41, then what is 6 @ 7?
+A: 49
+B: 55
+C: 61
+D: 65
+solution:
+The rule is \(a @ b = a \times b + a + b\): \(3 \times 4 + 3 + 4 = 19\) and \(5 \times 6 + 5 + 6 = 41\).
+
+So \(6 @ 7 = 6 \times 7 + 6 + 7 = 42 + 13 = 55\).
+
+Check: the rule is also \((a + 1)(b + 1) - 1\), and \(7 \times 8 - 1 = 55\).
+
+=== 23
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: EASY
+answer: B
+stem:
+"If the given symbols mean:
+'+' means 'divided by'
+'-' means 'multiplied by'
+'x' means 'minus'
+'\(\div\)' means 'plus'
+Then, find the value of the following expressions: 60 + 5 - 4 x 10 \(\div\) 2=?
+A: 35
+B: 40
+C: 55
+D: 65
+solution:
+Replacing the symbols: \(60 \div 5 \times 4 - 10 + 2\).
+
+\(60 \div 5 = 12\), then \(12 \times 4 = 48\), then \(48 - 10 + 2 = 40\).
+
+=== 24
+chapter: Mathematical Operations
+subtopic: Interchanging Signs and Numbers
+difficulty: MODERATE
+answer: B
+stem:
+If '\(\times\)' = '\(-\)', '\(-\)' = '\(+\)', '\(+\)' = '\(\div\)', '\(\div\)' = '\(\times\)', which equation is correct?
+A: \(14 + 2 - 6 \times 1 = 10\)
+B: \(12 - 4 + 2 \times 2 = 12\)
+C: \(10 \times 2 + 4 - 1 = 23\)
+D: \(20 - 2 \times 3 + 4 = 18\)
+solution:
+Swap the signs in each option and evaluate.
+
+A: \(14 \div 2 + 6 - 1 = 7 + 6 - 1 = 12\), not 10.
+
+B: \(12 + 4 \div 2 - 2 = 12 + 2 - 2 = 12\). Correct.
+
+C: \(10 - 2 \div 4 + 1 = 10.5\), not 23.
+
+D: \(20 + 2 - 3 \div 4 = 21.25\), not 18.
+
+=== 25
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: A
+stem:
+10 friends went for dinner and planned to split Rs. 200 equally. 2 didn't pay. How much did each of the rest pay?
+A: Rs. 25
+B: Rs. 20
+C: Rs. 22
+D: Rs. 28
+solution:
+The bill of Rs. 200 was shared by the \(10 - 2 = 8\) friends who paid: \(200 \div 8 = 25\).
+
+Check: \(8 \times 25 = 200\).
+
+=== 26
+subject: History
+chapter: Medieval India
+subtopic: Temple and Monument Architecture
+difficulty: MODERATE
+answer: B
+stem:
+What material were the double-storeyed gates of Purana Qila primarily built with?
+A: Marble
+B: Red sandstone
+C: Glazed tiles
+D: Rubble
+solution:
+The three double-storeyed gateways of Purana Qila (Bara Darwaza, Humayun Gate and Talaqi Gate) are built mainly of red sandstone, with touches of white marble and coloured glazed tiles as decoration. Rubble was used for the walls, not the gates.
+
+=== 27
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Days, Festivals and Observances
+difficulty: HARD
+answer: B
+stem:
+**Fill in the blank:**
+The Tusu festival is primarily celebrated in the tribal belt of Jharkhand, especially around the area between _______, Tamar, and Raidih.
+A: Dumka
+B: Bundu
+C: Daltonganj
+D: Chaibasa
+solution:
+Tusu Parab, the harvest festival held in Poush, is centred on the Bundu, Tamar and Raidih area of Jharkhand.
+
+=== 28
+subject: History
+chapter: Modern India
+subtopic: Indian Literature, Poets and Cultural Figures
+difficulty: MODERATE
+answer: C
+stem:
+Who is credited with developing the modern notation system for Hindustani classical music and documenting compositions in the Kramik Pustak Maalika?
+A: Ustad Allauddin Khan of Maihar Gharana
+B: Pandit Vishnu Digambar Paluskar of Gwalior
+C: Pandit Vishnu Narayan Bhatkhande of Bombay
+D: Saint Tyagaraja of Carnatic Tradition
+solution:
+Pandit Vishnu Narayan Bhatkhande devised the notation system (Bhatkhande notation) and the thaat classification, and recorded hundreds of bandishes in the Kramik Pustak Malika. Paluskar devised a different notation and founded the Gandharva Mahavidyalaya.
+
+=== 29
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: HARD
+answer: B
+stem:
+Consider the following statements about service rules in table tennis:
+1) At 10–10, service alternates every two points.
+2) In the final doubles game, receiver order changes when one side reaches 5 points.
+Which of the above is/are **correct?**
+A: Only 1 is Correct
+B: Only 2 is Correct
+C: 1 and 2 are correct
+D: Neither 1 nor 2 is Correct
+solution:
+Normally service changes every two points, but from 10-10 (deuce) it alternates after every point, so statement 1 is wrong. In the last possible game of a doubles match, the pair due to receive next changes its order of receiving when the first pair scores 5 points, so statement 2 is right.
+
+=== 30
+subject: History
+chapter: Modern India
+subtopic: British Administration, Acts and Legislation
+difficulty: MODERATE
+answer: C
+stem:
+Under Pitt's India Act, what restriction was placed on the Governor General and Council?
+A: They could not pass any civil law without Queen's consent.
+B: They could not issue orders without majority support.
+C: They were forbidden to declare war or make treaties without approval.
+D: They had to resign after 5 years in office.
+solution:
+Pitt's India Act, 1784 forbade the Governor-General in Council to declare war or make treaties with Indian rulers without the approval of the Court of Directors (through its Secret Committee). There was no Queen in 1784, and no term limit or majority rule of this kind.
+
+=== 31
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: EASY
+answer: C
+stem:
+What is meant by an "own goal" in football?
+A: A goal scored by a goalkeeper
+B: A goal scored from a penalty
+C: A goal scored accidentally into one's own net
+D: A goal scored during injury time
+solution:
+An own goal is one a player puts into his own team's net, so it counts for the opponents.
+
+=== 32
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: C
+stem:
+**Consider the following statements about India's Winter Olympics participation:**
+1) Shiva Keshavan competed in six Games and introduced luge to India.
+2) Arif Mohammad Khan was the first Indian to qualify for two alpine skiing events in 2022.
+Which of the statements is/are **correct?**
+A: Only Statement 1 is correct
+B: Only Statement 2 is correct
+C: 1 and 2 both are correct
+D: Neither 1 nor 2 is Correct
+solution:
+Shiva Keshavan, India's first luger, competed at six Winter Olympics (1998 to 2018). Arif Khan became the first Indian to qualify for two events (slalom and giant slalom) at one Winter Olympics, Beijing 2022. Both are correct.
+
+=== 33
+subject: Current Affairs
+chapter: International Affairs and Relations
+subtopic: India's Foreign Policy and Bilateral Relations
+difficulty: HARD
+answer: B
+stem:
+Which 2024 India–Bangladesh energy project involves a 765 kV cross-border transmission line to boost hydroelectric trade across multiple countries?
+A: Agartala–Parbotipur–Guwahati Transmission Grid
+B: Katihar–Parbotipur–Bornagar Interconnection Project
+C: Jalpaiguri–Chattogram Power Corridor
+D: Siliguri–Bogura–Mymensingh HVDC Link
+solution:
+In June 2024 India and Bangladesh agreed to build the 765 kV Katihar (Bihar) to Parbotipur (Bangladesh) to Bornagar (Assam) line, which will also carry hydropower from Nepal and Bhutan. The other names are not real projects.
+
+=== 34
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Books, Literature and Authors
+difficulty: HARD
+answer: A
+stem:
+Consider the following statements about the book 'Being Indian' by Pavan K. Varma:
+1) The book won the Vodafone Crossword Book Award for exploring Indian identity and culture.
+2) It received the Sahitya Akademi Award for its contributions to Indian English poetry.
+Which of the above statements is/are **correct?**
+A: Only statement 1 is correct
+B: Only statement 2 is correct
+C: Both statements 1 and 2 are correct
+D: Neither statement 1 nor 2 is correct
+solution:
+Being Indian (2004) is a non-fiction study of Indian identity and culture and is credited with a Crossword Book Award in non-fiction. It is prose, not poetry, and did not receive the Sahitya Akademi Award, so statement 2 is wrong.
+
+=== 35
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: EASY
+answer: C
+stem:
+**Fill in the blank:**
+Javelin thrower Neeraj Chopra won India's first-ever gold at the World Athletics Championships in _______ in 2023.
+A: Eugene
+B: Tokyo
+C: Budapest
+D: Doha
+solution:
+Neeraj Chopra won gold with 88.17 m at the 2023 World Athletics Championships in Budapest. He won silver at Eugene in 2022; Tokyo was his 2021 Olympic gold.
+
+=== 36
+subject: Current Affairs
+chapter: Environment, Ecology and Energy
+subtopic: Environmental Campaigns, Disasters and Energy
+difficulty: EASY
+answer: A
+stem:
+Who launched the campaign "Ek Ped Maa Ke Naam " in 2024, encouraging citizens to plant trees in honor of their mothers and Mother Earth?
+A: Narendra Modi
+B: Leena Nandan
+C: Bhupender Yadav
+D: Ashwini Vaishnaw
+solution:
+Prime Minister Narendra Modi launched Ek Ped Maa Ke Naam on World Environment Day, 5 June 2024, by planting a peepal sapling in Delhi.
+
+=== 37
+subject: Geography
+chapter: Earth's Structure, Landforms and Geological Time
+subtopic: Landforms and Mass Movements
+difficulty: EASY
+answer: C
+stem:
+What causes a river to develop meanders?
+A: High-altitude origin
+B: Sudden tectonic uplift
+C: Lateral erosion in flat terrain
+D: Ocean current influence
+solution:
+On a gentle, flat plain a river loses downward cutting power and erodes sideways: it cuts the outer bank and deposits on the inner bank, so loops (meanders) form.
+
+=== 38
+subject: Current Affairs
+chapter: Science and Technology
+subtopic: Space Technology and Astronomy
+difficulty: MODERATE
+answer: B
+stem:
+**Fill in the Blanks:**
+NISAR maps the global surface every _______.
+A: 3 days
+B: 12 days
+C: 24 hrs
+D: 5 days
+solution:
+The NASA-ISRO Synthetic Aperture Radar (NISAR), launched in July 2025, scans the whole of Earth's land and ice surfaces every 12 days.
+
+=== 39
+subject: Biology
+chapter: Plant Biology
+subtopic: Transpiration, Tropisms and Plant Processes
+difficulty: EASY
+answer: C
+flawed: yes
+note: Ethylene is a ripening and ageing hormone, so C is the intended INCORRECT statement; but NCERT Class 11 also says ethylene breaks seed dormancy and initiates germination (peanut), so strictly all four statements are true.
+stem:
+Which of the below statements on the plant hormones is **INCORRECT**?
+A: Auxins promote growth
+B: Cytokinins delay aging
+C: Ethylene promotes seed germination
+D: Gibberellins promote stem elongation
+solution:
+Auxins promote cell elongation and growth, cytokinins delay senescence (ageing), and gibberellins cause stem elongation. Ethylene is mainly the hormone of fruit ripening, ageing and abscission, so C is the statement meant to be incorrect.
+
+=== 40
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Judiciary — Supreme Court and High Courts
+difficulty: MODERATE
+answer: C
+stem:
+Which of the following disputes falls under the Supreme Court's exclusive original jurisdiction as per Article 131 of the Indian Constitution?
+A: Inter-State water disputes
+B: Election disputes of MPs and MLAs
+C: Disputes between Centre and one or more States
+D: Appeals against High Court decisions
+solution:
+Article 131 gives the Supreme Court original jurisdiction over disputes between the Government of India and one or more States, or between States. Inter-State water disputes are excluded by Article 262, election petitions go first to the High Court, and appeals fall under appellate jurisdiction.
+
+=== 41
+subject: Physics
+chapter: Electricity and Magnetism
+subtopic: Electric Current and Ohm's Law
+difficulty: EASY
+answer: B
+stem:
+If the resistance of a conductor is doubled while keeping the potential difference across its ends constant, what will happen to the current flowing through it?
+A: It will double
+B: It will halve
+C: It will remain unchanged
+D: It will quadruple
+solution:
+By Ohm's law \(I = \frac{V}{R}\). With V fixed and R doubled, \(I' = \frac{V}{2R} = \frac{I}{2}\), so the current halves.
+
+=== 42
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Statutory Bodies and Post-Independence Legislation
+difficulty: HARD
+answer: C
+stem:
+Under Bharatiya Nagarik suraksha Samhita(BNSS), the period for default bail in minor offences is capped at?
+A: 30 days
+B: 45 days
+C: 60 days
+D: 90 days
+solution:
+Section 187(3) of the BNSS (like Section 167 of the old CrPC) lets an accused claim default bail if the charge-sheet is not filed within 90 days for offences punishable with death, life imprisonment or ten years or more, and within 60 days for all other (lesser) offences.
+
+=== 43
+subject: Economics
+chapter: Indian Economy
+subtopic: Government Schemes — Agriculture and Livestock
+difficulty: MODERATE
+answer: B
+stem:
+Which scheme promotes crop diversification through cluster-based planning?
+A: PM-AASHA (Pradhan Mantri Annadata Aay Sanrakshan Abhiyan)
+B: RKVY (Rashtriya Krishi Vikas Yojana)
+C: SMAM (Sub-Mission on Agricultural Mechanization)
+D: AIF (Agriculture Infrastructure Fund)
+solution:
+The Crop Diversification Programme runs as a sub-scheme of RKVY and supports clusters of farmers shifting from paddy and other water-intensive crops. PM-AASHA is price support, SMAM is farm machinery and AIF is credit for post-harvest infrastructure.
+
+=== 44
+subject: Current Affairs
+chapter: Environment, Ecology and Energy
+subtopic: Environmental Campaigns, Disasters and Energy
+difficulty: EASY
+answer: A
+stem:
+Read the below statements marked as Assertion (A) and Reason (R). Mark the **correct** options:
+**Assertion (A):** PM2.5 is more harmful than PM10 in AQI.
+**Reason (R):** PM2.5 particles are smaller and can reach deep into the lungs and bloodstream.
+A: Both A and R are true, and R is the correct explanation of A.
+B: Both A and R are true, but R is not the correct explanation of A.
+C: A is true, but R is false.
+D: A is false, but R is true.
+solution:
+PM2.5 is the more harmful pollutant (its AQI breakpoints are far stricter than those of PM10) precisely because the fine particles pass deep into the alveoli and into the blood. R explains A.
+
+=== 45
+subject: Current Affairs
+chapter: Environment, Ecology and Energy
+subtopic: Wildlife Conservation and Species
+difficulty: MODERATE
+answer: C
+stem:
+Which national park reported a successful tiger population rise in 2024, reaching over 150 tigers?
+A: Ranthambore
+B: Nagarhole National Park
+C: Corbett
+D: Satpura
+solution:
+Among the options only Corbett holds well over 150 tigers (260 in the 2022 estimate released in 2023, the highest of any reserve). Nagarhole is about 140, Ranthambore under 90 and Satpura about 60.
+
+=== 46
+subject: Polity
+chapter: Fundamental Rights, DPSP and Local Governance
+subtopic: Fundamental Rights, DPSP and Duties
+difficulty: EASY
+answer: C
+stem:
+**Fill in the Blank:**
+Doctrine of Severability allows the _______ part of a law to be retained.
+A: Repealed
+B: Inconsistent
+C: Valid
+D: Unconstitutional
+solution:
+Under Article 13, only the part of a law that violates Fundamental Rights is struck down; the valid part that can stand on its own is retained. That is the doctrine of severability.
+
+=== 47
+subject: Geography
+chapter: Indian Geography — Economy, Resources and Transport
+subtopic: Manufacturing Industries
+difficulty: MODERATE
+answer: D
+stem:
+Read the statements carefully and choose the **correct** option:
+**Assertion (A):** Aluminium smelting is the most important metallurgical industry in India.
+**Reason (R):** Aluminium is used in the manufacture of aircraft, wires, and utensils.
+A: Both A and R are true, and R is the correct explanation of A
+B: Both A and R are true, but R is not the correct explanation of A
+C: A is true, but R is false
+D: A is false, but R is true
+solution:
+NCERT calls aluminium smelting the second most important metallurgical industry in India, after iron and steel, so A is false. Aluminium is light, strong and a good conductor, and is used for aircraft, wires and utensils, so R is true.
+
+=== 48
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: HARD
+answer: A
+stem:
+Match the dance with its prime social/religious context:
+
+| Dance | social/religious context |
+|---|---|
+| 1. Rauf | A. Eid & spring-wedding festivities |
+| 2. Karma | B. Bhadra Ekadashi agrarian ritual |
+| 3. Tamasha | C. Night-long folk-theatre in Shimga season |
+| 4. Jhumar | D. Post-monsoon tea-garden recreations |
+A: 1-A 2-B 3-C 4-D
+B: 1-A 2-C 3-B 4-D
+C: 1-B 2-A 3-C 4-D
+D: 1-A 2-B 3-D 4-C
+solution:
+Rauf is the Kashmiri women's dance of Eid and the spring and wedding season. Karma is danced at the Karma festival on Bhadra Ekadashi, an agrarian rite. Tamasha is Maharashtra's night-long folk theatre, staged in the Shimga (Holi) season. Jhumar is the recreation dance of the tea-garden communities of Assam. So 1-A, 2-B, 3-C, 4-D.
+
+=== 49
+subject: Geography
+chapter: Climatology, Atmosphere and Weather
+subtopic: Atmospheric Layers, Composition and Aurora
+difficulty: EASY
+answer: A
+stem:
+Which pair correctly matches atmosphere layer & feature?
+A: Troposphere - weather
+B: Thermosphere- ozone
+C: Mesosphere - satellites
+D: Stratosphere - meteors
+solution:
+Almost all weather happens in the troposphere. The ozone layer is in the stratosphere, meteors burn up in the mesosphere, and satellites orbit in the thermosphere and exosphere.
+
+=== 50
+subject: Polity
+chapter: Indian Constitution — Making, Foundation and Amendments
+subtopic: Federal Structure — States, UTs and Finance
+difficulty: EASY
+answer: A
+stem:
+**Consider the following statements:**
+1. The Concurrent List allows both Centre and States to legislate.
+2. In case of conflict, State law prevails over Union law.
+Which of the above is/are **correct?**
+A: Only 1
+B: Only 2
+C: Both 1 and 2
+D: Neither 1 nor 2
+solution:
+Both Parliament and State legislatures can make laws on Concurrent List subjects. Under Article 254, if they conflict the Union law prevails (unless a State law reserved for and given Presidential assent), so statement 2 is wrong.
+
+=== 51
+chapter: Ratio, Proportion and Variation
+subtopic: Ratio and Proportion
+difficulty: EASY
+answer: A
+stem:
+If \(p : q = 4 : 1\), find \((5p + 3q) : (5p - 3q)\).
+A: \(23 : 17\)
+B: \(17 : 23\)
+C: \(7 : 17\)
+D: \(17 : 7\)
+solution:
+Take \(p = 4\) and \(q = 1\).
+
+\(5p + 3q = 20 + 3 = 23\) and \(5p - 3q = 20 - 3 = 17\), so the ratio is \(23 : 17\).
+
+Check with \(p = 8, q = 2\): \(46 : 34 = 23 : 17\).
+
+=== 52
+chapter: Surds, Indices and Simplification
+subtopic: Surds and Rationalisation
+difficulty: EASY
+answer: A
+stem:
+What is the value of: \((\sqrt{18} + \sqrt{2})^2 - (\sqrt{8} + \sqrt{2})^2\)
+A: \(14\)
+B: \(15\)
+C: \(16\)
+D: \(17\)
+solution:
+\(\sqrt{18} + \sqrt{2} = 3\sqrt{2} + \sqrt{2} = 4\sqrt{2}\), whose square is \(32\).
+
+\(\sqrt{8} + \sqrt{2} = 2\sqrt{2} + \sqrt{2} = 3\sqrt{2}\), whose square is \(18\).
+
+\(32 - 18 = 14\).
+
+Check by expanding: \((18 + 2 + 2\sqrt{36}) - (8 + 2 + 2\sqrt{16}) = 32 - 18 = 14\).
+
+=== 53
+chapter: Surds, Indices and Simplification
+subtopic: Fractions and Decimals
+difficulty: EASY
+answer: A
+stem:
+Simplify: \(\left(\frac{5}{6} + \frac{3}{4}\right) \div \left(\frac{7}{8} - \frac{1}{3}\right)\)
+A: \(\frac{38}{13}\)
+B: \(\frac{48}{13}\)
+C: \(\frac{58}{13}\)
+D: \(\frac{68}{13}\)
+solution:
+\(\frac{5}{6} + \frac{3}{4} = \frac{10 + 9}{12} = \frac{19}{12}\).
+
+\(\frac{7}{8} - \frac{1}{3} = \frac{21 - 8}{24} = \frac{13}{24}\).
+
+\(\frac{19}{12} \times \frac{24}{13} = \frac{38}{13}\).
+
+=== 54
+chapter: Ratio, Proportion and Variation
+subtopic: Partnership
+difficulty: EASY
+answer: A
+stem:
+A, B, and C invested ₹24,000, ₹36,000, and ₹40,000 respectively. A's investment was for 12 months, B's for 8 months, and C's for 6 months. The total profit is ₹50,000. What is B’s share of the profit?
+A: ₹17,647.06
+B: ₹27,647.56
+C: ₹23,647.46
+D: ₹21,647.72
+solution:
+Capital-months: A \(= 24000 \times 12 = 288000\), B \(= 36000 \times 8 = 288000\), C \(= 40000 \times 6 = 240000\).
+
+Ratio \(288 : 288 : 240 = 6 : 6 : 5\), total \(17\) parts.
+
+B's share \(= \frac{6}{17} \times 50000 = 17647.06\).
+
+Check: A gets the same, C gets \(\frac{5}{17} \times 50000 = 14705.88\), and \(2 \times 17647.06 + 14705.88 = 50000\).
+
+=== 55
+chapter: Averages
+subtopic: Sum and Mean
+difficulty: EASY
+answer: C
+stem:
+The average age of a committee of 9 members increases by 3 years when two men aged 42 and 44 years are replaced by two women. What is the average age of these two women?
+A: 50.5 years
+B: 46.5 years
+C: 56.5 years
+D: 60.5 years
+solution:
+The total age rises by \(9 \times 3 = 27\) years.
+
+So the women together are \(42 + 44 + 27 = 113\) years, an average of \(\frac{113}{2} = 56.5\) years.
+
+=== 56
+chapter: Averages
+subtopic: Averages of Consecutive Numbers
+difficulty: MODERATE
+answer: A
+flawed: yes
+note: the conditions give an average of 6 for the 6 integers, but six consecutive integers always have a half-integer average (it would need 3.5, 4.5, ..., 8.5), so no such integers exist; 6 is still the only value the equations allow.
+stem:
+There are 6 consecutive integers and 5 consecutive integers. The average of the 6 integers is 2 less than the average of the 5 integers. The sum of the 5 integers is 4 more than the sum of the 6 integers. Find the average of the 6 integers.
+A: 6
+B: 5
+C: 4
+D: 3
+solution:
+Let the average of the 6 integers be \(a\). Then the average of the 5 integers is \(a + 2\).
+
+Sums: \(6a\) and \(5(a + 2) = 5a + 10\).
+
+\(5a + 10 = 6a + 4\) gives \(a = 6\).
+
+Check: the 6 integers sum to \(36\), the 5 integers average \(8\) and sum to \(40 = 36 + 4\).
+
+=== 57
+chapter: Percentage, Profit and Loss
+subtopic: Percentage
+difficulty: EASY
+answer: C
+stem:
+Seventy-five percent of a number is 15 more than two-thirds of that number. Find the number.
+A: 120
+B: 150
+C: 180
+D: 210
+solution:
+\(\frac{3}{4}x - \frac{2}{3}x = \frac{x}{12} = 15\), so \(x = 180\).
+
+Check: \(75\%\) of \(180 = 135\) and \(\frac{2}{3}\) of \(180 = 120\); \(135 - 120 = 15\).
+
+=== 58
+chapter: Simple and Compound Interest
+subtopic: Instalments and Difference of SI and CI
+difficulty: MODERATE
+answer: C
+stem:
+A TV set is available for ₹19,650 in cash or for ₹3,100 as a cash down payment and three equal annual instalments. If the shopkeeper charges interest at the rate of \(10\%\) per annum compounded annually, calculate the amount of each instalment.
+A: ₹ 9,655
+B: ₹ 7,655
+C: ₹ 6,655
+D: ₹ 8,655
+solution:
+Amount financed \(= 19650 - 3100 = 16550\).
+
+With instalment \(x\): \(\frac{x}{1.1} + \frac{x}{1.21} + \frac{x}{1.331} = 16550\), that is \(x \times \frac{1210 + 1100 + 1000}{1331} = \frac{3310x}{1331} = 16550\).
+
+\(x = \frac{16550 \times 1331}{3310} = 5 \times 1331 = 6655\).
+
+Check by running the balance: \(16550 \times 1.1 = 18205\), minus \(6655\) is \(11550\); \(11550 \times 1.1 = 12705\), minus \(6655\) is \(6050\); \(6050 \times 1.1 = 6655\), the last instalment.
+
+=== 59
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: MODERATE
+answer: C
+stem:
+A mobile phone retailer sells a phone for ₹P and earns a profit of \(20\%\). For a special festive offer, he marks the same phone at ₹1.5P. At the offer, he provides a discount of \(10\%\). What will be the percentage profit that he will make during the festive offer?
+A: \(26\%\)
+B: \(56\%\)
+C: \(62\%\)
+D: \(60\%\)
+solution:
+Cost price \(= \frac{P}{1.2}\).
+
+Offer selling price \(= 1.5P \times 0.9 = 1.35P\).
+
+Profit factor \(= \frac{1.35P}{P / 1.2} = 1.35 \times 1.2 = 1.62\), a profit of \(62\%\).
+
+Check with \(P = 120\): cost \(100\), offer price \(180 \times 0.9 = 162\), profit \(62\%\).
+
+=== 60
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: MODERATE
+answer: D
+stem:
+A gadget is sold at a \(15\%\) discount on its marked price. This sale leads to a profit of \(20\%\) on its cost price. If the profit earned is ₹450, what would have been the selling price if the gadget was sold at a \(25\%\) discount on its marked price?
+A: ₹2,585.36
+B: ₹1,528.24
+C: ₹2,879.45
+D: ₹2382.35
+solution:
+\(20\%\) of cost \(= 450\), so cost \(= 2250\) and selling price \(= 2700\).
+
+\(0.85 \times \text{MP} = 2700\), so \(\text{MP} = \frac{2700}{0.85} = 3176.47\).
+
+At \(25\%\) discount: \(0.75 \times 3176.47 = 2382.35\).
+
+Check: \(2700 \times \frac{75}{85} = \frac{2700 \times 15}{17} = 2382.35\).
+
+=== 61
+chapter: Time and Work
+subtopic: Work Rates
+difficulty: MODERATE
+answer: A
+stem:
+A, B, and C can complete a certain task in 20, 30, and 60 days, respectively. How many days will it take for A to finish the work if he receives help from B and C every third day?
+A: 15 days
+B: 12 days
+C: 10 days
+D: 9 days
+solution:
+Take the work as \(60\) units. A does \(3\) units a day, B \(2\), C \(1\).
+
+In each 3-day cycle: \(3 + 3 + (3 + 2 + 1) = 12\) units.
+
+\(60 \div 12 = 5\) cycles, so \(5 \times 3 = 15\) days.
+
+Check: after 4 cycles (12 days) \(48\) units are done; days 13 and 14 add \(6\) (total \(54\)) and day 15, with help, adds \(6\) to finish exactly.
+
+=== 62
+chapter: Ratio, Proportion and Variation
+subtopic: Mixtures and Alligation
+difficulty: MODERATE
+answer: A
+stem:
+Two distinct grades of rice, one priced at ₹80 per kilogram and the other at ₹120 per kilogram, are amalgamated in an undisclosed proportion. The resultant blend is retailed at ₹132 per kilogram, securing a profit margin of \(20\%\) on the overall cost price. Determine the precise ratio in which the two rice varieties were intermingled.
+A: \(1 : 3\)
+B: \(2 : 1\)
+C: \(3 : 2\)
+D: \(4 : 1\)
+solution:
+Cost of the blend \(= \frac{132}{1.2} = 110\) per kg.
+
+By alligation, ₹80 rice : ₹120 rice \(= (120 - 110) : (110 - 80) = 10 : 30 = 1 : 3\).
+
+Check: \(\frac{1 \times 80 + 3 \times 120}{4} = \frac{440}{4} = 110\).
+
+=== 63
+chapter: Time, Speed and Distance
+subtopic: Average Speed and Speed–Time Ratios
+difficulty: EASY
+answer: A
+stem:
+The ratio of the speeds of a car and a bus is \(3 : 4\). If the bus covers a distance of 320 km in 4 hours, what is the speed of the car in km/h?
+A: 60 km/h
+B: 75 km/h
+C: 80 km/h
+D: 90 km/h
+solution:
+Bus speed \(= \frac{320}{4} = 80\) km/h.
+
+Car speed \(= \frac{3}{4} \times 80 = 60\) km/h.
+
+=== 64
+chapter: Simple and Compound Interest
+subtopic: Simple Interest
+difficulty: MODERATE
+answer: C
+stem:
+An individual invested certain amounts in three different schemes P, Q, and R at simple interest rates of \(7\%\) p.a., \(9\%\) p.a., and \(11\%\) p.a. respectively. If the total interest accrued in one year was ₹2520 and the amount invested in Scheme R was \(250\%\) of the amount invested in Scheme P and \(300\%\) of the amount invested in Scheme Q, what was the amount invested in Scheme P?
+A: ₹5000
+B: ₹5500
+C: ₹6000
+D: ₹6500
+solution:
+Let P's amount be \(p\). Then \(R = 2.5p\) and \(Q = \frac{2.5p}{3} = \frac{5p}{6}\).
+
+Interest: \(0.07p + 0.09 \times \frac{5p}{6} + 0.11 \times 2.5p = 0.07p + 0.075p + 0.275p = 0.42p\).
+
+\(0.42p = 2520\) gives \(p = 6000\).
+
+Check: P \(= 6000\), Q \(= 5000\), R \(= 15000\); interest \(420 + 450 + 1650 = 2520\).
+
+=== 65
+chapter: Heights and Distances
+subtopic: Observer Above the Ground
+difficulty: MODERATE
+answer: A
+stem:
+A tower stands 50 meters tall. From its peak, the angles of depression to the top and bottom of a nearby building are measured at \(30^\circ\) and \(45^\circ\), respectively. Determine the approximate height of the building as well as the horizontal distance separating the tower from the building.
+A: height= 21 m , distance =50 m
+B: height = 25 m , distance = 25 m
+C: height = 28 m , distance = 15 m
+D: height = 18 m , distance = 15 m
+solution:
+Depression \(45^\circ\) to the building's foot: distance \(= \frac{50}{\tan 45^\circ} = 50\) m.
+
+Depression \(30^\circ\) to its top: the drop from the tower top is \(50 \tan 30^\circ = \frac{50}{\sqrt{3}} \approx 28.87\) m.
+
+Building height \(\approx 50 - 28.87 = 21.13 \approx 21\) m.
+
+Check: only option A has distance 50 m, which the \(45^\circ\) angle forces.
+
+=== 66
+chapter: Mensuration 3D
+subtopic: Melting and Recasting
+difficulty: MODERATE
+answer: A
+stem:
+A sphere is melted and recast into 8 identical cones, each with radius 3 cm and height 4 cm. What was the radius of the original sphere?
+A: 4.16 cm
+B: 5.28 cm
+C: 6.54 cm
+D: 7 .56cm
+solution:
+Volume of 8 cones \(= 8 \times \frac{1}{3}\pi \times 3^2 \times 4 = 96\pi\).
+
+\(\frac{4}{3}\pi R^3 = 96\pi\) gives \(R^3 = 72\), so \(R \approx 4.16\) cm.
+
+Check: \(4.16^3 \approx 71.99\).
+
+=== 67
+chapter: Lines, Angles and Polygons
+subtopic: Interior and Exterior Angles of Polygons
+difficulty: EASY
+answer: D
+stem:
+The area of a regular hexagon is made of how many equilateral triangles?
+A: 3
+B: 4
+C: 5
+D: 6
+solution:
+Joining the centre of a regular hexagon to its six vertices gives six equilateral triangles (each central angle is \(60^\circ\) and the two sides are equal radii), so the area is \(6 \times \frac{\sqrt{3}}{4}a^2\).
+
+=== 68
+chapter: Mensuration 2D
+subtopic: Circumference, Wheels and Rings
+difficulty: EASY
+answer: C
+stem:
+A circular fountain with a radius of 7 m is encircled by a grass bed that is 3.5 m wide. Determine the ratio of the area of the grass bed to the area of the fountain.
+A: 3:2
+B: 2:1
+C: 5:4
+D: 4:1
+solution:
+Outer radius \(= 7 + 3.5 = 10.5\) m.
+
+Grass bed : fountain \(= (10.5^2 - 7^2) : 7^2 = 61.25 : 49 = 5 : 4\).
+
+Check with radius ratio \(10.5 : 7 = 3 : 2\): areas \(9 : 4\), so the ring is \(9 - 4 = 5\) parts to the fountain's \(4\).
+
+=== 69
+chapter: Mensuration 3D
+subtopic: Prisms and Pyramids
+difficulty: EASY
+answer: B
+stem:
+A tent designed as a triangular prism features a triangular base with an area of 20 \(\text{m}^2\) and a height of 6 m. What is the volume of this tent?
+A: 100 \(\text{m}^3\)
+B: 120 \(\text{m}^3\)
+C: 130 \(\text{m}^3\)
+D: 140 \(\text{m}^3\)
+solution:
+Volume of a prism \(=\) base area \(\times\) height \(= 20 \times 6 = 120\) \(\text{m}^3\).
+
+=== 70
+chapter: Coordinate Geometry
+subtopic: Lines, Distance and Area
+difficulty: EASY
+answer: A
+stem:
+Which line has slope \(-1\) and passes through \((2,3)\)?
+A: \(y = -x + 5\)
+B: \(y = x + 5\)
+C: \(y = 5x + 2\)
+D: \(y = -5x + 2\)
+solution:
+\(y - 3 = -1(x - 2)\) gives \(y = -x + 5\).
+
+Check: at \(x = 2\), \(y = -2 + 5 = 3\), and the slope is \(-1\). B and C have the wrong slope; D has slope \(-5\).
+
+=== 71
+chapter: Surds, Indices and Simplification
+subtopic: Surds and Rationalisation
+difficulty: EASY
+answer: A
+stem:
+**Simplify:**
+\(\sqrt{45} + \sqrt{20} - \sqrt{5}\).
+A: \(4\sqrt{5}\)
+B: \(6\sqrt{5}\)
+C: \(8\sqrt{5}\)
+D: \(7\sqrt{5}\)
+solution:
+\(\sqrt{45} = 3\sqrt{5}\) and \(\sqrt{20} = 2\sqrt{5}\).
+
+\(3\sqrt{5} + 2\sqrt{5} - \sqrt{5} = 4\sqrt{5}\).
+
+Check numerically: \(6.708 + 4.472 - 2.236 = 8.944 = 4 \times 2.236\).
+
+=== 72
+chapter: Circles
+subtopic: Common Tangents and Common Chords
+difficulty: MODERATE
+answer: D
+stem:
+Three non-overlapping, non-touching circles are drawn in a plane. What is the maximum number of distinct common tangents that can be drawn to them in total?
+A: 17
+B: 16
+C: 9
+D: 12
+solution:
+Two circles that lie outside each other without touching have 4 common tangents (2 direct, 2 transverse).
+
+Three circles form 3 pairs, so at most \(3 \times 4 = 12\) common tangents, all distinct when no line touches all three.
+
+=== 73
+chapter: Circles
+subtopic: Intersecting Chords and Power of a Point
+difficulty: MODERATE
+answer: D
+stem:
+In a circle, chord AB and chord CD intersect at E such that AE : EB = \(2 : 3\) and CE : ED = \(5 : 2\). If AB = \(x\) and CD = y, which of the following is true?
+A: \(\frac{x^2}{y^2} = \frac{15}{16}\)
+B: \(\frac{x}{y} = \frac{6}{15}\)
+C: \(\frac{x}{y} = \frac{10}{9}\)
+D: \(\frac{x^2}{y^2} = \frac{125}{147}\)
+solution:
+Let AE \(= 2k\), EB \(= 3k\), so \(x = 5k\); CE \(= 5m\), ED \(= 2m\), so \(y = 7m\).
+
+Intersecting chords: \(AE \times EB = CE \times ED\), so \(6k^2 = 10m^2\) and \(\frac{k^2}{m^2} = \frac{5}{3}\).
+
+\(\frac{x^2}{y^2} = \frac{25k^2}{49m^2} = \frac{25 \times 5}{49 \times 3} = \frac{125}{147}\).
+
+Check with \(k^2 = 5\), \(m^2 = 3\): \(x^2 = 125\), \(y^2 = 147\), and \(AE \times EB = 6 \times 5 = 30 = 10 \times 3 = CE \times ED\).
+
+=== 74
+chapter: Mensuration 2D
+subtopic: Arcs, Sectors and Segments
+difficulty: EASY
+answer: A
+stem:
+A chord in a circle with radius 10 cm subtends an angle of \(90^\circ\) at the center. What is the area of the minor segment?
+A: \((25\pi - 50)\) sq. cm
+B: \((50\pi - 25)\) sq. cm
+C: \((50\pi - 50)\) sq. cm
+D: \((100\pi - 50)\) sq. cm
+solution:
+Sector area \(= \frac{90}{360} \times \pi \times 10^2 = 25\pi\).
+
+Triangle area \(= \frac{1}{2} \times 10 \times 10 = 50\).
+
+Minor segment \(= 25\pi - 50\) sq. cm (about \(28.5\), a sensible part of the \(78.5\) sector).
+
+=== 75
+chapter: Surds, Indices and Simplification
+subtopic: Fractions and Decimals
+difficulty: MODERATE
+answer: A
+stem:
+Evaluate: \((0.05^3 + 0.01^3) \div (0.25^3 + 0.05^3)\)
+A: 0.008
+B: 0.004
+C: 0.006
+D: 0.002
+solution:
+Each term in the divisor is 5 times the matching term in the dividend: \(0.25 = 5 \times 0.05\) and \(0.05 = 5 \times 0.01\).
+
+So the divisor is \(5^3 = 125\) times the dividend, and the value is \(\frac{1}{125} = 0.008\).
+
+Check: \(0.000125 + 0.000001 = 0.000126\) and \(0.015625 + 0.000125 = 0.01575\); \(\frac{0.000126}{0.01575} = 0.008\).
+
+=== 76
+chapter: Vocabulary
+subtopic: Synonyms: Feelings, Speech and Persuasion
+difficulty: EASY
+answer: A
+stem:
+Select the most appropriate synonym of the given word: **GARRULOUS**
+A: Talkative
+B: Reserved
+C: Silent
+D: Listen
+solution:
+Garrulous means excessively talkative, especially about trivial things. Reserved and silent are its opposites; listen is unrelated.
+
+=== 77
+chapter: Vocabulary
+subtopic: Antonyms: Time, Change and Action
+difficulty: EASY
+answer: C
+stem:
+Select the most appropriate antonym of the given word. **Incessant**
+A: Constant
+B: Ceaseless
+C: Intermittent
+D: Perpetual
+solution:
+Incessant means continuing without a pause. Constant, ceaseless and perpetual are synonyms; intermittent (stopping and starting at intervals) is the opposite.
+
+=== 78
+chapter: Vocabulary
+subtopic: Antonyms: Feelings and Calm
+difficulty: MODERATE
+answer: A
+stem:
+Select the most appropriate antonym of the given word. **Piquant**
+A: Bland
+B: Spicy
+C: Zesty
+D: Tart
+solution:
+Piquant means pleasantly sharp or spicy in taste, or stimulating. Spicy, zesty and tart are close in meaning; bland (lacking flavour or interest) is the opposite.
+
+=== 79
+chapter: Idioms and Phrases
+subtopic: Idioms: Work and Money
+difficulty: MODERATE
+answer: A
+stem:
+Choose the correct meaning of idiom:
+**Carry coals to Newcastle**
+A: Provide something where it is already abundant
+B: Seek advice from experts
+C: Complain without cause
+D: Travel without direction
+solution:
+Newcastle was a major coal-mining centre, so carrying coal there is pointless. The idiom means supplying something to a place that already has plenty of it.
+
+=== 80
+chapter: Idioms and Phrases
+subtopic: Idioms: People and Character
+difficulty: EASY
+answer: C
+stem:
+Choose the correct meaning of idiom:
+**Toe the line**
+A: Follow the leader physically
+B: Join the military
+C: Obey rules or authority exactly
+D: Oppose popular opinion
+solution:
+To toe the line is to conform to the rules or standards set by an authority. Opposing popular opinion is nearly the reverse.
+
+=== 81
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: A
+stem:
+Which is the **correct spelling** of a word meaning 'self-rule'?
+A: Autonomy
+B: Autonamy
+C: Autonommy
+D: Autonaumy
+solution:
+The word is autonomy (auto + nomos, law): a-u-t-o-n-o-m-y, with a single m.
+
+=== 82
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: B
+stem:
+Spot the **correct spelling** of a 24-hour biological cycle.
+A: Circadion
+B: Circadian
+C: Circadien
+D: Circadijan
+solution:
+The word is circadian (Latin circa, about + dies, day), ending in -ian.
+
+=== 83
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: A
+stem:
+Choose the correct **one-word substitute** for: 'Something that is impossible to be read'.
+A: Illegible
+B: Decipherable
+C: Invisible
+D: Unutterable
+solution:
+Illegible means not clear enough to be read. Decipherable is the opposite, invisible means cannot be seen and unutterable means cannot be spoken.
+
+=== 84
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: C
+stem:
+Choose the correct **one-word substitute** for: 'A deep and seemingly bottomless chasm'.
+A: Crevasse
+B: Crater
+C: Abyss
+D: Gorge
+solution:
+An abyss is a deep, seemingly bottomless chasm. A crevasse is a crack in a glacier, a crater a bowl-shaped hollow, and a gorge a narrow valley with steep sides.
+
+=== 85
+chapter: Grammar
+subtopic: Phrasal Verbs with Prepositions and Particles
+difficulty: EASY
+answer: D
+stem:
+**Choose the correct phrasal verb:**
+The scientist was unable to _____ a definitive conclusion from the data.
+A: draw out
+B: bring up
+C: make over
+D: arrive at
+solution:
+One arrives at a conclusion (reaches it). Draw out means prolong or elicit, bring up means raise a topic, and make over means transfer or remodel.
+
+=== 86
+chapter: Grammar
+subtopic: Parts of Speech: Adverbs
+difficulty: EASY
+answer: B
+stem:
+**Select the correct option:**
+He spoke so ___ that even abstruse theories seemed digestible.
+A: lucid
+B: lucidly
+C: lucidity
+D: lucidness
+solution:
+The blank modifies the verb spoke, so an adverb is needed: spoke so lucidly. Lucid is an adjective; lucidity and lucidness are nouns.
+
+=== 87
+chapter: Spotting Errors
+subtopic: Verb Forms and Voice
+difficulty: MODERATE
+answer: D
+stem:
+**Find the part of the sentence that contains an error:**
+It was the misalignment between projected and actual data (1)/ that cast doubt not only on the calculations (2)/ but also on the assumptions that (3)/ underlied the funding strategy. (4)
+A: (1)
+B: (2)
+C: (3)
+D: (4)
+solution:
+The verb underlie is conjugated like lie: underlie, underlay, underlain. The past tense is underlay, so "underlied" in part (4) is wrong: "that underlay the funding strategy". Cast is correctly its own past tense, and not only ... but also is correctly paired.
+
+=== 88
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: A
+stem:
+**Change the following from active to passive:**
+Someone must have tampered with the encryption keys.
+A: The encryption keys must have been tampered with.
+B: The encryption keys must have tampered by someone.
+C: The encryption keys must be tampered with by someone.
+D: The encryption keys must had been tampered with.
+solution:
+must have + past participle becomes must have been + past participle in the passive, and the preposition with stays with the verb. "By someone" is normally dropped. B lacks been, C changes the tense, D uses had after must.
+
+=== 89
+chapter: Vocabulary
+subtopic: Homophones in Sentences
+difficulty: HARD
+answer: D
+stem:
+**Select the sentence containing the homonym of the highlighted word:**
+The artisan engraved a **cartouche** around the royal name.
+A: The papyrus bore a golden cartouche of the pharaoh.
+B: The Egyptian cartouche encircled each hieroglyph name.
+C: The archaeologist uncovered a silver cartouche.
+D: The sculptor carved a cartouche of floral motifs for the ceiling.
+solution:
+In the given sentence cartouche is the Egyptian oval frame enclosing a royal name. A, B and C use the same sense. In D it is an architectural ornament (a scroll-shaped tablet or decorative panel), a different meaning of the same word.
+
+=== 90
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: D
+stem:
+**Convert the sentence provided below from its passive voice structure to an active voice structure:**
+A solution has been suggested by the team to resolve the issue.
+A: The team had suggested a solution to resolve the issue.
+B: The team was suggesting a solution to resolve the issue.
+C: The team suggested a solution to resolve the issue.
+D: The team has suggested a solution to resolve the issue.
+solution:
+"Has been suggested" is present perfect passive, so the active keeps present perfect: the team has suggested. The other options change the tense.
+
+=== 91
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: A
+stem:
+Choose the most suitable option to replace the highlighted part of the sentence:
+She ***told to me*** the news.
+A: told me
+B: told for me
+C: said to me
+D: has told to me
+solution:
+Tell takes a direct personal object with no preposition: she told me the news. Said to me the news is wrong because say does not take two objects this way.
+
+=== 92
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: B
+stem:
+Choose the most suitable option to replace the highlighted part of the sentence:
+Neither of the options ***are suitable for this task.***
+A: is suitable to the task
+B: is suitable for this task
+C: were suitable in this task
+D: is suitable at this task
+solution:
+Neither of takes a singular verb, so are becomes is. The adjective suitable takes for, and this task keeps the original reference.
+
+=== 93
+chapter: Reading Comprehension
+subtopic: Locating the Answer Line
+difficulty: EASY
+answer: C
+context:
+**Read the following passage and answer the questions based on the passage :**
+Democracy is frequently extolled as the political system that best guarantees individual liberty. Enshrined in constitutional rights and protected by the rule of law, freedom of speech, association, religion, and conscience are regarded as hallmarks of democratic governance. However, what is less frequently acknowledged—but equally vital—is the reciprocal pillar of responsibility without which such freedoms can degenerate into chaos, polarization, or authoritarian backlashes. Freedom in a democracy is not absolute; it exists within a framework of mutual restraint and civic discipline. The right to express dissent, for instance, is foundational. Yet when freedom of expression is weaponized to disseminate hate speech, misinformation, or seditious propaganda, it ceases to serve the democratic cause. Responsibility thus entails a conscious engagement with the implications of one’s actions—not just their legality, but their ethical and civic consequences. The challenge lies in reconciling liberty with accountability in pluralistic societies. With diverse cultural, ideological, and economic constituencies, democracies are inherently sites of contention. In such contexts, responsibility demands more than legal compliance—it requires empathy, critical thinking, and a commitment to collective well-being. A citizen’s right to protest, for example, must be exercised with awareness of public order and respect for differing viewpoints. Similarly, the freedom to vote must be matched by an obligation to make informed choices, unswayed by populism, prejudice, or manipulation. The tension between freedom and responsibility is perhaps most visible during moments of crisis—be it a pandemic, a communal riot, or a constitutional standoff. In such times, the temptation to prioritize personal liberty at the cost of collective safety can prove fatal. Refusal to wear masks during a health emergency or the viral spread of unverified news during civil unrest exemplify how unbridled freedom can undermine democratic resilience. Moreover, democracy itself is not self-sustaining; it requires vigilant citizens who recognize that rights are not entitlements in perpetuity, but privileges preserved through active participation. When freedom is divorced from responsibility, democratic institutions become vulnerable to erosion—from within. Demagogues often rise not solely because of state failure, but due to civic apathy or irresponsible use of democratic freedoms by the populace itself. Therefore, in any functioning democracy, freedom and responsibility are not opposing forces but mutually reinforcing imperatives. The preservation of liberty necessitates a citizenry capable of ethical judgment, informed debate, and constructive dissent. In the absence of responsibility, freedom risks transforming from a catalyst of justice into a vehicle of division. Democracy survives not just through the laws it enacts, but through the civic virtues its citizens embody.
+stem:
+According to the passage, what happens when freedom is exercised without responsibility?
+A: It enhances legal systems
+B: It strengthens civic unity
+C: It leads to misuse and societal harm
+D: It guarantees better governance
+solution:
+The passage says such freedoms "can degenerate into chaos, polarization, or authoritarian backlashes", that weaponized expression "ceases to serve the democratic cause", and that without responsibility freedom becomes "a vehicle of division". That is misuse and societal harm. The other options say the opposite.
+
+=== 94
+chapter: Reading Comprehension
+subtopic: Why Questions: The Passage's Reason
+difficulty: EASY
+answer: B
+context_from: 93
+stem:
+Why does the author mention protests and voting as examples?
+A: To criticize public participation
+B: To show areas where freedom and responsibility must coexist
+C: To promote legal reforms
+D: To support authoritarian models
+solution:
+Both examples follow "responsibility demands more than legal compliance": the right to protest "must be exercised with awareness of public order", and the freedom to vote "must be matched by an obligation to make informed choices". Each pairs a freedom with a duty.
+
+=== 95
+chapter: Reading Comprehension
+subtopic: Inference: What Must Be True
+difficulty: EASY
+answer: C
+context_from: 93
+stem:
+What is implied about the relationship between citizens and democratic institutions?
+A: Citizens cannot influence institutions
+B: Institutions are entirely self-preserving
+C: Citizens play an active role in sustaining democracy
+D: Democratic institutions should restrict citizens' rights
+solution:
+"Democracy itself is not self-sustaining; it requires vigilant citizens" and rights are "privileges preserved through active participation". This directly contradicts B and supports C.
+
+=== 96
+chapter: Reading Comprehension
+subtopic: Paraphrase and Option Traps
+difficulty: EASY
+answer: C
+context_from: 93
+stem:
+How does the passage describe the impact of crises on freedom in democracies?
+A: Crises validate unlimited liberty
+B: Crises show the need for absolute state control
+C: Crises reveal the dangers of unregulated freedom
+D: Crises diminish the value of rights
+solution:
+The tension is "most visible during moments of crisis", when prioritizing personal liberty over collective safety "can prove fatal", and refusing masks or spreading unverified news shows "how unbridled freedom can undermine democratic resilience". Unbridled freedom is unregulated freedom. The passage never calls for absolute state control.
+
+=== 97
+chapter: Reading Comprehension
+subtopic: Main Idea, Author's View and Tone
+difficulty: EASY
+answer: B
+context_from: 93
+stem:
+What tone best describes the author's stance on freedom in democracy?
+A: Cynical and dismissive
+B: Balanced and cautionary
+C: Indifferent and neutral
+D: Overly optimistic
+solution:
+The author values freedom ("foundational") while warning of its dangers without responsibility, and concludes the two are "mutually reinforcing imperatives". That is balanced and cautionary, not cynical, indifferent or uncritically optimistic.
+
+=== 98
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: MODERATE
+answer: B
+stem:
+**Select the correct option for the Direct Speech conversion of the sentence below.**
+He observed that, had market liquidity vanished entirely, the exchange would have suspended trading.
+A: He said, "If market liquidity vanishes entirely, the exchange suspends trading."
+B: He said, "Had market liquidity vanished entirely, the exchange would have suspended trading."
+C: He said, "The exchange will suspend trading if market liquidity had vanished entirely."
+D: He said, "If the exchange suspended trading, it was because market liquidity vanished entirely."
+solution:
+A third conditional (had + past participle, would have + past participle) does not change between direct and indirect speech, so the direct form keeps the same tenses. A and C change the condition type, and D reverses cause and effect.
+
+=== 99
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: B
+stem:
+**A sentence is provided in direct speech. From the four given options, choose the one that most accurately conveys the sentence in its corresponding indirect speech.**
+He said, “I am reading a book.”
+A: He said he is reading a book.
+B: He said that he was reading a book.
+C: He said that he had read a book.
+D: He said he read a book.
+solution:
+The reporting verb said is past, so present continuous am reading backshifts to past continuous was reading, and I becomes he.
+
+=== 100
+chapter: Sentence Rearrangement
+subtopic: Shape of a Paragraph Argument
+difficulty: MODERATE
+answer: B
+stem:
+**Rearrange the following sentences to form a meaningful passage:**
+1. Solar energy is one of the most promising renewable energy sources. 2. It has a minimal environmental impact compared to fossil fuels. 3. Solar panels convert sunlight into electricity. 4. However, energy storage remains a significant challenge for solar energy systems.
+A: 2-1-4-3
+B: 1-2-4-3
+C: 3-2-4-1
+D: 4-1-2-3
+solution:
+Sentence 1 introduces solar energy, so it opens. Sentence 2 begins with "It", which needs 1 before it, so 1-2. Sentence 4 begins with "However", so it must follow the advantages. Only B has 1 first and 1-2 together. A starts with the pronoun "It" and D starts with "However", which cannot open a passage; C ends on the topic sentence.
