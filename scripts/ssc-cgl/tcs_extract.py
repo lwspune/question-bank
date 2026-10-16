@@ -28,7 +28,7 @@ def main():
     img_dir = os.path.join(out_dir, "img")
     os.makedirs(img_dir, exist_ok=True)
     doc = fitz.open(pdf)
-    spans, images, icons, panels = [], [], [], []
+    spans, images, icons, panels, frames = [], [], [], [], []
     for pno, page in enumerate(doc):
         if not first - 1 <= pno <= last - 1:
             continue
@@ -38,8 +38,13 @@ def main():
         # grey border. The 2022 vector print has no text layer, so it is found as a drawing.
         for dr in page.get_drawings():
             r = dr["rect"]
+            box = {"page": pno, "x0": round(r.x0, 1), "y0": round(r.y0, 1), "x1": round(r.x1, 1), "y1": round(r.y1, 1)}
             if r.width > 150 and 25 < r.height < 80 and r.x0 > page.rect.width * 0.45 and dr.get("fill") == (1.0, 1.0, 1.0):
-                panels.append({"page": pno, "x0": round(r.x0, 1), "y0": round(r.y0, 1), "x1": round(r.x1, 1), "y1": round(r.y1, 1)})
+                panels.append(box)
+            # A question's frame: a wide grey-stroked box, one per page the question covers.
+            c = dr.get("color")
+            if r.width > page.rect.width * 0.8 and r.height > 20 and dr.get("fill") is None and c and all(abs(v - 0.6) < 0.05 for v in c):
+                frames.append(box)
         for b in blocks:
             if b["type"] == 1:
                 x0, y0, x1, y1 = b["bbox"]
@@ -74,8 +79,8 @@ def main():
                     })
     with open(os.path.join(out_dir, "geometry.json"), "w", encoding="utf8") as f:
         json.dump({"format": "tcs", "pdf": os.path.basename(pdf), "pages": doc.page_count, "spans": spans, "images": images,
-                   "icons": icons, "panels": panels}, f, ensure_ascii=False)
-    print(f"{day}: {doc.page_count} pages, {len(spans)} spans, {len(images)} images, {len(icons)} icons, {len(panels)} panels -> {out_dir}")
+                   "icons": icons, "panels": panels, "frames": frames}, f, ensure_ascii=False)
+    print(f"{day}: {doc.page_count} pages, {len(spans)} spans, {len(images)} images, {len(icons)} icons, {len(panels)} panels, {len(frames)} frames -> {out_dir}")
 
 
 if __name__ == "__main__":

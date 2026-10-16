@@ -234,9 +234,15 @@ function splitFusedLabels(spans: TcsSpan[]): TcsSpan[] {
 export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[] {
   const spans = joinStackedLabels(joinSectionLabels(splitFusedLabels(normaliseHeaderAndGlyphs(g.spans))));
   const edges = pageEdges(spans);
+  // The hosting site's watermark is one picture at one place on page after page (2022).
+  const boxKey = (im: TcsImage) => [im.x0, im.y0, im.x1, im.y1].map(Math.round).join(",");
+  const seen = new Map<string, number>();
+  // Large pictures only: a small option picture can recur at one spot without being a watermark.
+  for (const im of g.images.filter((x) => x.x1 - x.x0 > 100 && x.y1 - x.y0 > 100)) seen.set(boxKey(im), (seen.get(boxKey(im)) ?? 0) + 1);
+  const watermark = new Set([...seen].filter(([, n]) => n >= 5).map(([k]) => k));
   const events: Event[] = [
     ...spans.filter((s) => !NOISE.test(s.text.trim())).map((s) => ({ page: s.page, y: s.y0, x: s.x0, span: s })),
-    ...g.images.filter((im) => !edges.isIcon(im)).map((im) => ({ page: im.page, y: im.y0, x: im.x0, image: im })),
+    ...g.images.filter((im) => !edges.isIcon(im) && !watermark.has(boxKey(im))).map((im) => ({ page: im.page, y: im.y0, x: im.x0, image: im })),
   ].sort((a, b) => a.page - b.page || a.y - b.y || a.x - b.x);
 
   // Pass 1: the day's exam times, so a shift can be numbered by its start.

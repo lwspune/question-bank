@@ -306,6 +306,16 @@ describe("assembleTcs", () => {
     expect(qs[0]).toMatchObject({ shift: 2, date: "2023-07-18" });
   });
 
+  it("ignores a watermark picture repeated at one place on many pages (2022 print)", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 0);
+    // It starts among Q1's options (1 Dec 2022 S2: y 283, the Question ID line at 314).
+    for (let p = 2; p < 60; p++) g.images.push({ page: p, name: `wm${p}`, x0: 120, y0: 100, x1: 480, y1: 577 });
+    const qs = assembleTcs(g);
+    expect(qs[0].stemImages).toEqual([]);
+    expect(qs[0].optionImages).toEqual([[], [], [], []]);
+    expect(qs[0].regions[0].y1).toBeLessThan(250);
+  });
+
   it("refuses a question with no green option or two", () => {
     const none = shift(2, "9:00 AM - 10:00 AM", () => 9);
     expect(() => assembleTcs(none)).toThrow(/shift 1 Q1.*exactly one key/);

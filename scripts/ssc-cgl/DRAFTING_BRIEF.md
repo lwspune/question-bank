@@ -21,7 +21,9 @@ check every line against the sheet. These sheets print every stem in bold, so do
 whole stem; bold only what the question singles out. An underlined word or segment is written
 `\(\underline{\text{...}}\)` around exactly the underlined words. A question SSC printed in
 Hindi only: write your English rendering, add `flawed: yes` and a `note:` saying so (the bank
-must not pass off our translation as SSC's English), and still derive the answer.
+must not pass off our translation as SSC's English), and still derive the answer. A stem SSC's
+print cuts off (a picture stem squeezed at the right edge, a washed-out line): write what is
+printed, put any words you infer in square brackets, and add `flawed: yes` with a `note:`.
 
 ## Rules
 

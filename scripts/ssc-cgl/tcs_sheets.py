@@ -25,10 +25,11 @@ from PIL import Image, ImageDraw, ImageFont
 ZOOM = 2.0
 PAD = 4  # points around a region
 BATCH_HEIGHT = 2600
-DARK = b"0.14502 0.14502 0.14502 rg"
-FILL = re.compile(rb"(\d*\.?\d+) (\d*\.?\d+) (\d*\.?\d+) rg")
+DARK = b"0.14502 0.14502 0.14502"
+# Fills (rg) AND strokes (RG): the 2022 print underlines option text in the key colours.
+FILL = re.compile(rb"(\d*\.?\d+) (\d*\.?\d+) (\d*\.?\d+) (rg|RG)")
 PANEL_LABEL = re.compile(r"^(Question ID|Option \d ID|Status|Chosen Option)\s*:")
-LEFT = 25
+LEFT = 4  # the 2022 vector print frames its questions from x 9
 GLYPH = re.compile(r"^(X|,Z|[✓✔✗✘])$")
 
 
@@ -47,6 +48,23 @@ def is_icon(bbox, labels):
     return any(abs((l[1] + l[3]) / 2 - mid) < 7 and x1 <= l[0] + 1 and l[0] - x1 < 25 for l in labels)
 
 
+def is_icon_picture(info):
+    """The 2022 vector print's tick (84x84 px) and cross (31x21 px), drawn under 20x16 pt."""
+    x0, y0, x1, y1 = info["bbox"]
+    w, h = info.get("width", 0), info.get("height", 0)
+    small = x1 - x0 < 20 and y1 - y0 < 16
+    return small and ((w >= 60 and h >= 60) or (25 <= w <= 40 and 15 <= h <= 25 and w > h))
+
+
+def key_pixels(img):
+    """Pixels in the tick's green or the cross's red: what a masked sheet must not show."""
+    n = 0
+    for r, g, b in img.getdata():
+        if (g > 150 and g - r > 70 and g - b > 70) or (r > 200 and r - g > 140 and r - b > 140):
+            n += 1
+    return n
+
+
 def mask_page(doc, page):
     """Repaint key colours, white out icons, tick glyphs and the panel's lines."""
     # Option labels, read BEFORE the colours are repainted: "1." to "4." in green or red.
@@ -58,8 +76,8 @@ def mask_page(doc, page):
         stream = doc.xref_stream(xref)
         # Any key-coloured fill (each year prints its own green and red) becomes the body grey.
         def repaint(m):
-            r, g, b = (min(255, round(float(v) * 255)) for v in m.groups())
-            return DARK if keyish((r << 16) | (g << 8) | b) else m.group(0)
+            r, g, b = (min(255, round(float(v) * 255)) for v in m.groups()[:3])
+            return DARK + b" " + m.group(4) if keyish((r << 16) | (g << 8) | b) else m.group(0)
         stream = FILL.sub(repaint, stream)
         doc.update_stream(xref, stream)
     spans = [s for b in page.get_text("dict")["blocks"] if b["type"] == 0 for l in b["lines"] for s in l["spans"]]
@@ -74,8 +92,13 @@ def mask_page(doc, page):
         if GLYPH.match(s["text"].strip()) and keyish(s["color"]):
             white(s["bbox"])
     for info in page.get_image_info():
-        if is_icon(info["bbox"], option_labels):
+        if is_icon(info["bbox"], option_labels) or is_icon_picture(info):
             page.draw_rect(fitz.Rect(info["bbox"]) + (-1, -1, 1, 1), color=None, fill=(1, 1, 1), overlay=True)
+    # The 2022 vector print draws the panel as a white box with a grey border: paint it out.
+    for dr in page.get_drawings():
+        r = dr["rect"]
+        if r.width > 150 and 25 < r.height < 80 and r.x0 > page.rect.width * 0.45 and dr.get("fill") == (1.0, 1.0, 1.0):
+            white(r)
 
 
 def check_masked(page, clip, where):
@@ -131,6 +154,14 @@ def main():
         for p in parts:
             img.paste(p, (0, y))
             y += p.height
+        stray = key_pixels(img)
+        if stray > 40:
+            pictured = q["stemImages"] or any(q["options"])
+            # Only a picture (a coloured chart) may carry these colours; on a text-only
+            # question they are the key showing through, so stop.
+            if not pictured:
+                sys.exit(f"{shift} Q{q['number']}: {stray} key-coloured pixels survive masking on a question with no picture")
+            print(f"  ! {shift} Q{q['number']}: {stray} key-coloured pixels on a pictured question (a coloured chart?): look")
         img = label(img, f"Q{q['number']}")
         img.save(os.path.join(out_dir, f"q{q['number']:03d}.png"))
         crops.append((q["number"], img))

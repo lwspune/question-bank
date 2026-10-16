@@ -71,6 +71,8 @@ export type Day = {
   format?: "tcs";
   /** TCS only: the day's slots in shift order, as the sheets print Exam Time */
   slots?: string[];
+  /** One file per SHIFT (2022) instead of one per day: shift -> file. `file`/`url` are unused. */
+  shiftFiles?: Record<number, { file: string; url: string }>;
 };
 
 /** The shift numbers a day's file holds: `present`, or 1..shifts. */
@@ -103,7 +105,48 @@ const t1_2024 = (dd: string, docId: string): Day => ({
   slots: SLOTS_2024_T1,
 });
 
+/**
+ * 2022 Tier I: AglaSem hosts one TCS file per SHIFT. 1-3 Dec carry a text layer (tcs.ts);
+ * 5-13 Dec are the vector print with no text (vector.ts), so their date and shift come from
+ * here. The listing loaded 37 files (to 13 Dec Shift 1); later shifts are on unloaded pages.
+ */
+const SLOTS_2022_T1 = ["9:00 AM - 10:00 AM", "11:45 AM - 12:45 PM", "2:30 PM - 3:30 PM", "5:15 PM - 6:15 PM"];
+const t1_2022 = (dd: string, docs: Record<number, string>): Day => ({
+  tier: 1,
+  date: `2022-12-${dd}`,
+  shifts: 4,
+  ...(Object.keys(docs).length < 4 ? { present: Object.keys(docs).map(Number) } : {}),
+  file: "",
+  url: "",
+  provisionalKey: true,
+  format: "tcs",
+  slots: SLOTS_2022_T1,
+  shiftFiles: Object.fromEntries(
+    Object.entries(docs).map(([n, id]) => [
+      n,
+      {
+        file: join(SOURCE_ROOT, "2022_Tier1", `SSC_CGL_2022_Tier1_${dd}Dec_S${n}_EN.pdf`),
+        url: `https://cdn.aglasem.com/aglasem-doc/${id}/${id}.pdf`,
+      },
+    ])
+  ),
+});
+
 export const DAYS: Record<string, Day> = {
+  // Left out: 1 Dec Shift 3's hosted file starts mid-paper (Q14 of Reasoning, no header).
+  // 5 Dec S4, 7 Dec S2, 9 Dec S3 and 12 Dec S4 hold two or three DIFFERENT papers in the
+  // vector print, whose headers are glyphs: which one is the named shift is unproven.
+  // 7 Dec S3 prints 106 questions (pages repeated): which six are the extras is unproven.
+  "t1-2022-12-01": t1_2022("01", { 1: "d472b620-db03-11ed-8758-0a5e36bc6706", 2: "d472b620-db03-11ed-af8b-0a5e36bc6706", 4: "d46884e8-db03-11ed-8bc0-0a5e36bc6706" }),
+  "t1-2022-12-02": t1_2022("02", { 1: "d44fe0a0-db03-11ed-8859-0a5e36bc6706", 2: "d6737b94-db03-11ed-ab4b-0a5e36bc6706", 3: "d6e552c8-db03-11ed-aee1-0a5e36bc6706", 4: "d6f8588c-db03-11ed-b26d-0a5e36bc6706" }),
+  "t1-2022-12-03": t1_2022("03", { 1: "d6f854f4-db03-11ed-97e9-0a5e36bc6706", 2: "d6f876be-db03-11ed-b66c-0a5e36bc6706", 3: "d73cdbf6-db03-11ed-bebe-0a5e36bc6706", 4: "d8960e8c-db03-11ed-9323-0a5e36bc6706" }),
+  "t1-2022-12-05": t1_2022("05", { 1: "d8e26e4e-db03-11ed-aba7-0a5e36bc6706", 2: "d9e03560-db03-11ed-bad8-0a5e36bc6706", 3: "d9eaef46-db03-11ed-8b3f-0a5e36bc6706" }),
+  "t1-2022-12-06": t1_2022("06", { 1: "da656988-db03-11ed-96c7-0a5e36bc6706", 2: "dadf6918-db03-11ed-a2db-0a5e36bc6706", 3: "dc6f00e0-db03-11ed-8105-0a5e36bc6706", 4: "dc780596-db03-11ed-84a7-0a5e36bc6706" }),
+  "t1-2022-12-07": t1_2022("07", { 1: "dc6bfac6-db03-11ed-89a8-0a5e36bc6706", 4: "df84c120-db03-11ed-89d1-0a5e36bc6706" }),
+  "t1-2022-12-08": t1_2022("08", { 1: "df955efe-db03-11ed-b2a3-0a5e36bc6706", 2: "df95b05c-db03-11ed-958a-0a5e36bc6706", 3: "dfeec53e-db03-11ed-bc8a-0a5e36bc6706", 4: "dfecc874-db03-11ed-8097-0a5e36bc6706" }),
+  "t1-2022-12-09": t1_2022("09", { 1: "e1d5cd5c-db03-11ed-942e-0a5e36bc6706", 2: "e2a82450-db03-11ed-a491-0a5e36bc6706", 4: "e2d1a0aa-db03-11ed-aa58-0a5e36bc6706" }),
+  "t1-2022-12-12": t1_2022("12", { 1: "e2de986e-db03-11ed-ab11-0a5e36bc6706", 2: "e3707b12-db03-11ed-b3db-0a5e36bc6706", 3: "e3ce6d8a-db03-11ed-b8d8-0a5e36bc6706" }),
+  "t1-2022-12-13": t1_2022("13", { 1: "e5dd0794-db03-11ed-9e66-0a5e36bc6706" }),
   "t1-2024-09-09": t1_2024("09", "73c870dc-8c15-11f1-9679-0aa932765c8b"),
   "t1-2024-09-10": t1_2024("10", "78ca267a-8c15-11f1-8a06-0aa932765c8b"),
   "t1-2024-09-11": t1_2024("11", "7d86f94a-8c15-11f1-b917-0aa932765c8b"),
@@ -187,12 +230,19 @@ export const SHIFTS: Record<string, Shift> = Object.fromEntries(
   })
 );
 
-/** Every TCS file, in day order: `dir` is its out/ folder (tcs_extract.py's dayId). */
-export function tcsFiles(): { dir: string; day: Day }[] {
+/**
+ * Every TCS file, in day order: `dir` is its out/ folder (tcs_extract.py's dayId). A day
+ * hosted as one file per shift (2022) lists each, with the shift it holds.
+ */
+export function tcsFiles(): { dir: string; day: Day; file: string; shift?: number }[] {
   return Object.entries(DAYS)
     .filter(([, d]) => d.format === "tcs")
     .sort(([a], [b]) => a.localeCompare(b))
-    .map(([dir, day]) => ({ dir, day }));
+    .flatMap(([dir, day]) =>
+      day.shiftFiles
+        ? Object.entries(day.shiftFiles).map(([n, f]) => ({ dir: `${dir}-s${n}`, day, file: f.file, shift: Number(n) }))
+        : [{ dir, day, file: day.file }]
+    );
 }
 
 export function requireShift(id: string | undefined): Shift & { id: string } {

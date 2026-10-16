@@ -96,7 +96,23 @@ describe("SSC CGL 2024 Tier I (TCS response sheets)", () => {
   });
 
   it("lists every TCS file the 2024 sheets can come from (a file runs past its own day)", () => {
-    expect(tcsFiles().length).toBe(12);
-    expect(tcsFiles()[1]).toMatchObject({ dir: "t1-2024-09-10" });
+    const files2024 = tcsFiles().filter((f) => f.dir.startsWith("t1-2024-"));
+    expect(files2024.length).toBe(12);
+    expect(files2024[1]).toMatchObject({ dir: "t1-2024-09-10" });
+  });
+});
+
+describe("SSC CGL 2022 Tier I (one TCS file per shift)", () => {
+  it("registers each 2022 day with its four shift files, and lists each file for extraction", () => {
+    // 5 Dec S4 holds three different papers and is left out: that day registers shifts 1-3.
+    expect(DAYS["t1-2022-12-05"].present).toEqual([1, 2, 3]);
+    const d = DAYS["t1-2022-12-08"];
+    expect(d).toMatchObject({ tier: 1, date: "2022-12-08", shifts: 4, format: "tcs" });
+    expect(Object.keys(d.shiftFiles ?? {})).toEqual(["1", "2", "3", "4"]);
+    expect(d.shiftFiles![2].file).toMatch(/2022_Tier1.SSC_CGL_2022_Tier1_08Dec_S2_EN\.pdf$/);
+    expect(d.slots).toEqual(["9:00 AM - 10:00 AM", "11:45 AM - 12:45 PM", "2:30 PM - 3:30 PM", "5:15 PM - 6:15 PM"]);
+    const f = tcsFiles().find((x) => x.dir === "t1-2022-12-08-s2");
+    expect(f).toMatchObject({ shift: 2, file: d.shiftFiles![2].file });
+    expect(SHIFTS["t1-2022-12-08-s4"]).toMatchObject({ sourceFile: "SSC_CGL_T1_2022-12-08_S4", pyqNote: "Tier I, 8 Dec 2022, Shift 4" });
   });
 });
