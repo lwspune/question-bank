@@ -21,6 +21,10 @@ export type TcsGeometry = { spans: TcsSpan[]; images: TcsImage[] };
 export type TcsRegion = { page: number; y0: number; y1: number };
 
 export type TcsQuestion = {
+  /** index of the sheet (one candidate's response sheet) in the file, in print order */
+  sheet: number;
+  /** the sheet's Exam Date as YYYY-MM-DD, or null when it prints none */
+  date: string | null;
   shift: number;
   part: Part;
   number: number;
@@ -34,6 +38,7 @@ export type TcsQuestion = {
 };
 
 export const GREEN = 0x40c64b;
+const RED = 0xf61818;
 const PANEL_X = 380; // the right-hand "Question ID / Status" panel starts beyond this
 const QUESTIONS_PER_SHIFT = 100;
 const LABELS = ["A", "B", "C", "D"] as const;
@@ -91,8 +96,50 @@ function joinSectionLabels(spans: TcsSpan[]): TcsSpan[] {
   return [...spans.filter((s) => !used.has(s)), ...out];
 }
 
-export function assembleTcs(g: TcsGeometry): TcsQuestion[] {
-  const spans = joinSectionLabels(g.spans);
+/**
+ * A stem image wide enough to squeeze the left column prints "Q.14" and "Ans" one character
+ * per line. Rejoin a run of single bold characters in the gutter (x0 < 60) into the two labels,
+ * each at the height of its first character.
+ */
+function joinStackedLabels(spans: TcsSpan[]): TcsSpan[] {
+  const isChar = (s: TcsSpan) => s.bold && s.x0 < 60 && s.text.trim().length === 1;
+  const chars = spans.filter(isChar).sort((a, b) => a.page - b.page || a.y0 - b.y0);
+  const runs: TcsSpan[][] = [];
+  for (const c of chars) {
+    const run = runs[runs.length - 1];
+    const last = run?.[run.length - 1];
+    if (last && last.page === c.page && c.y0 - last.y0 <= 13 && Math.abs(c.x0 - last.x0) <= 4) run.push(c);
+    else runs.push([c]);
+  }
+  const used = new Set<TcsSpan>();
+  const out: TcsSpan[] = [];
+  for (const run of runs) {
+    const text = run.map((c) => c.text.trim()).join("");
+    const m = /^(Q\.\d+)(Ans)?$/.exec(text);
+    if (!m) continue;
+    run.forEach((c) => used.add(c));
+    const label = (from: number, t: string): TcsSpan => ({ ...run[from], text: t, x1: run[from].x0 + 15 });
+    out.push(label(0, m[1]));
+    if (m[2]) out.push(label(m[1].length, "Ans"));
+  }
+  return [...spans.filter((s) => !used.has(s)), ...out];
+}
+
+export type TcsOptions = {
+  /** The exam's fixed slots in shift order ("9:00 AM - 10:00 AM", ...). Without it a file's
+   * shifts are numbered by start time among the times it prints, which is only right when
+   * the file holds one whole day. */
+  slots?: string[];
+};
+
+/** "10/09/2024" (day first, as the sheets print it) -> "2024-09-10". */
+function isoDate(t: string): string | null {
+  const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(t.trim());
+  return m ? `${m[3]}-${m[2]}-${m[1]}` : null;
+}
+
+export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[] {
+  const spans = joinStackedLabels(joinSectionLabels(g.spans));
   const events: Event[] = [
     ...spans.filter((s) => !NOISE.test(s.text.trim())).map((s) => ({ page: s.page, y: s.y0, x: s.x0, span: s })),
     ...g.images.filter((im) => !isIcon(im)).map((im) => ({ page: im.page, y: im.y0, x: im.x0, image: im })),
@@ -110,6 +157,8 @@ export function assembleTcs(g: TcsGeometry): TcsQuestion[] {
   type Open = TcsQuestion & { stage: "stem" | "options" | "done"; stemLines: string[]; optLines: string[][]; optColor: number[] };
   const open: Open[] = [];
   let shift = 0;
+  let sheet = -1;
+  let date: string | null = null;
   let part: Part | null = null;
   let cur: Open | null = null;
   const region = (q: Open, page: number, y0: number, y1: number) => {
@@ -126,7 +175,19 @@ export function assembleTcs(g: TcsGeometry): TcsQuestion[] {
     const text = s?.text.trim() ?? "";
     if (s && text === "Exam Time") {
       const t = events.slice(i + 1).find((x) => x.span && /\d:\d\d\s*[AP]M/i.test(x.span.text));
-      shift = shiftOfTime(t!.span!.text.trim(), times);
+      const time = t!.span!.text.trim();
+      if (opts.slots) {
+        shift = opts.slots.indexOf(time) + 1;
+        if (!shift) throw new Error(`exam time "${time}" on page ${s.page} is not one of the slots (${opts.slots.join(", ")})`);
+      } else shift = shiftOfTime(time, times);
+      sheet++;
+      // The Exam Date row sits just above Exam Time on the same header.
+      const d = events
+        .slice(Math.max(0, i - 12), i)
+        .reverse()
+        .find((x) => x.span?.text.trim() === "Exam Date");
+      const dv = d && events.find((x) => x.span && x.page === d.page && Math.abs(x.y - d.y) <= 3 && x.x > d.x && isoDate(x.span.text));
+      date = dv ? isoDate(dv.span!.text) : null;
       part = null;
       cur = null;
       continue;
@@ -153,6 +214,8 @@ export function assembleTcs(g: TcsGeometry): TcsQuestion[] {
       if (!part) throw new Error(`shift ${shift} Q${q[1]} comes before any Section heading`);
       const local = Number(q[1]);
       cur = {
+        sheet,
+        date,
         shift,
         part,
         number: "ABCD".indexOf(part) * 25 + local,
@@ -173,7 +236,7 @@ export function assembleTcs(g: TcsGeometry): TcsQuestion[] {
       continue;
     }
     if (!cur || cur.stage === "done") continue;
-    if (s && s.x0 >= PANEL_X) {
+    if (s && (s.x0 >= PANEL_X || /^Chosen Option/.test(text))) {
       if (/^Question ID/.test(text)) {
         const id = events.slice(i + 1, i + 4).find((x) => x.span && /^\d{6,}$/.test(x.span.text.trim()));
         cur.questionId = id?.span?.text.trim() ?? null;
@@ -183,10 +246,13 @@ export function assembleTcs(g: TcsGeometry): TcsQuestion[] {
     }
     const bottom = s ? s.y1 : e.image!.y1;
     region(cur, e.page, e.y, bottom);
-    if (s && text === "Ans" && cur.stage === "stem") {
-      cur.stage = "options";
+    if (s && text === "Ans") {
+      if (cur.stage === "stem") cur.stage = "options";
       continue;
     }
+    // Option text is always green or red and stem text never is, so option 1 opens the
+    // options even when a squeezed "Ans" label prints a fraction below it.
+    if (s && cur.stage === "stem" && (s.color === GREEN || s.color === RED) && /^1\.\s/.test(text)) cur.stage = "options";
     if (cur.stage === "stem") {
       if (s) cur.stemLines.push(s.text);
       else cur.stemImages.push(e.image!.name);
@@ -213,6 +279,8 @@ export function assembleTcs(g: TcsGeometry): TcsQuestion[] {
     const keyed = q.optColor.flatMap((c, i) => (c === GREEN ? [i] : []));
     if (keyed.length !== 1) throw new Error(`${where}: expected exactly one key (green option), found ${keyed.length}`);
     out.push({
+      sheet: q.sheet,
+      date: q.date,
       shift: q.shift,
       part: q.part,
       number: q.number,
@@ -226,8 +294,10 @@ export function assembleTcs(g: TcsGeometry): TcsQuestion[] {
     });
   }
 
-  for (const s of [...new Set(out.map((q) => q.shift))]) {
-    const nums = out.filter((q) => q.shift === s).map((q) => q.number);
+  for (const sh of [...new Set(out.map((q) => q.sheet))]) {
+    const of = out.filter((q) => q.sheet === sh);
+    const s = `${of[0].shift}${of[0].date ? ` (${of[0].date})` : ""}`;
+    const nums = of.map((q) => q.number);
     const want = Array.from({ length: QUESTIONS_PER_SHIFT }, (_, i) => i + 1);
     const have = new Set(nums);
     const missing = want.filter((n) => !have.has(n));
@@ -236,5 +306,5 @@ export function assembleTcs(g: TcsGeometry): TcsQuestion[] {
       throw new Error(`shift ${s}: expected questions 1..${QUESTIONS_PER_SHIFT}: ${[missing.length ? `missing ${missing.join(",")}` : "", dup.length ? `duplicate ${dup.join(",")}` : ""].filter(Boolean).join("; ")}`);
     }
   }
-  return out.sort((a, b) => a.shift - b.shift || a.number - b.number);
+  return out.sort((a, b) => a.sheet - b.sheet || a.number - b.number);
 }
