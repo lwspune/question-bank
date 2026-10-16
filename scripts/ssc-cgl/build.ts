@@ -4,6 +4,9 @@
  *
  *   npx tsx scripts/ssc-cgl/build.ts <shiftId> --partial   # check what is there, write nothing
  *   npx tsx scripts/ssc-cgl/build.ts <shiftId>             # -> out/<shiftId>/rows.json
+ *   npx tsx scripts/ssc-cgl/build.ts <shiftId> --blind --file=<draft.txt>
+ *       a drafting agent's check: catalog, parts and rendering only. It prints nothing
+ *       about SSC's key and writes nothing, so a draft stays a blind derivation.
  *
  * Inputs: transcripts/<shiftId>.txt (the source of record), out/<shiftId>/questions.json
  * (assemble.ts: each question's part and SSC's key), catalog.json, figures/<shiftId>/.
@@ -61,11 +64,16 @@ export function figurePaths(shiftId: string, q: TranscriptQuestion): { stem: str
 
 function main() {
   const shift = requireShift(process.argv[2]);
-  const partial = process.argv.includes("--partial");
-  const sheet: SheetQ[] = JSON.parse(readFileSync(join(OUT, shift.id, "questions.json"), "utf8")).questions;
-  const transcript = parseTranscript(readFileSync(join(TRANSCRIPTS, `${shift.id}.txt`), "utf8"));
+  const blind = process.argv.includes("--blind");
+  const fileArg = process.argv.find((a) => a.startsWith("--file="))?.slice("--file=".length);
+  const partial = blind || !!fileArg || process.argv.includes("--partial");
+  // In blind mode the key is dropped as it is read, so nothing below can print it.
+  const sheet: SheetQ[] = JSON.parse(readFileSync(join(OUT, shift.id, "questions.json"), "utf8")).questions.map(
+    (q: SheetQ) => (blind ? { number: q.number, part: q.part, key: "A" } : q)
+  );
+  const transcript = parseTranscript(readFileSync(fileArg ?? join(TRANSCRIPTS, `${shift.id}.txt`), "utf8"));
 
-  const check = checkShift(transcript, sheet, CATALOG, SECTION_SUBJECTS);
+  const check = checkShift(transcript, sheet, CATALOG, SECTION_SUBJECTS, { compareKey: !blind });
   const problems = [...check.problems];
   const rows: unknown[] = [];
 
@@ -101,6 +109,12 @@ function main() {
 
   const keyName = `SSC's ${DAYS[shift.day].provisionalKey ? "PROVISIONAL " : ""}key`;
   const { agree, of } = check.blindAgreement;
+  if (blind) {
+    console.log(`${shift.id} (blind check of ${fileArg ?? "the transcript"}): ${transcript.length} block(s), numbers ${transcript.map((q) => q.number).join(",")}`);
+    console.log(`problems: ${problems.length}`);
+    for (const s of problems) console.log(`  ${s}`);
+    process.exit(problems.length ? 1 : 0);
+  }
   console.log(`${shift.id}: ${transcript.length}/100 transcribed${check.missing.length ? ` (missing ${check.missing.length})` : ""}`);
   console.log(`blind agreement with ${keyName}: ${agree}/${of}`);
   console.log(`key adopted on review (blind answer differed): ${check.adopted.length}`);

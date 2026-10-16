@@ -54,6 +54,23 @@ npx tsx scripts/ssc-cgl/build.ts <shiftId>                # -> out/<shiftId>/row
 npx tsx scripts/ssc-cgl/commit.ts <shiftId> [--apply]     # PRIVATE, through commitStaged
 ```
 
+### Drafting with agents (from Shift 3)
+
+The owner's standing ingestion policy (global CLAUDE.md, 2026-10-16): up to 5 agents at once,
+one slice each, the main session reviews every draft and alone writes the DB and git. Here a
+slice is one PART (25 questions). Each agent reads only `out/<shiftId>/sheets/`, writes
+`out/<shiftId>/drafts/part-<A..D>.txt`, and checks it with
+
+```sh
+npx tsx scripts/ssc-cgl/build.ts <shiftId> --blind --file=out/<shiftId>/drafts/part-A.txt
+```
+
+`--blind` drops the key as it is read and prints only catalog, part and rendering problems,
+so a draft stays a blind derivation. The main session concatenates the parts into
+`transcripts/<shiftId>.txt`, reads every block, runs the normal `build.ts` (which compares with
+the key) and settles each disagreement as above. A passage set is checked pixel-identical
+across its questions before `context_from` is trusted.
+
 `python -P` (not `-I`): PyMuPDF lives in user site-packages, and `-P` still keeps the script
 and working directories off the import path.
 

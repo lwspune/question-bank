@@ -284,6 +284,17 @@ It is b.
     expect(checkShift([bare], [sheet(1, "A", "B")], CATALOG, SECTIONS).problems.join()).toMatch(/Q1.*blind.*note/);
   });
 
+  it("in blind mode says nothing about the key, so a drafting agent can check its work without seeing it", () => {
+    const wrong = { ...series(1, "C"), blind: "D" as const };
+    const r = checkShift([wrong, series(2, "A")], [sheet(1, "A", "B"), sheet(2, "A", "B")], CATALOG, SECTIONS, { compareKey: false });
+    expect(r.problems).toEqual([]);
+    expect(r.disagreements).toEqual([]);
+    expect(r.adopted).toEqual([]);
+    expect(r.blindAgreement).toEqual({ agree: 0, of: 0 });
+    const bad = { ...series(3), chapter: "Analogy" };
+    expect(checkShift([bad], [sheet(3, "A", "B")], CATALOG, SECTIONS, { compareKey: false }).problems.join()).toMatch(/Q3.*chapter/);
+  });
+
   it("reports a transcript number the sheet does not have, and every sheet question not yet transcribed", () => {
     const r = checkShift([series(101)], [sheet(1, "A", "B"), sheet(2, "A", "A")], CATALOG, SECTIONS);
     expect(r.problems.join()).toMatch(/Q101.*not in the paper/);
