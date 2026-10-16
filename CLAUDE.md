@@ -335,7 +335,7 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 - **2026-10-16 (second) — Send a V practice test to a friend: "Practise together" on the built-test card and practice result page; the friend opens `/practice/<slug>`, signs in and sits their OWN copy (migration 0163, `/api/practice-tests/join`).**
   - **Cooperative, not a duel (owner; a duel comes later):** a known-peer contest is the harm the leaderboard ban covers, so no score is ever shared.
   - **A copy, not access:** the original stays owner-only (0156); `shared_from` names the ROOT, unique per friend. The copy is free and outside the daily count (owner).
-  - **Step 1 of 2:** the shared results card is built only if `practice-friends` shows 10+ sends and 3+ friends starting in 14 days. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
+  - **Step 2 same day (owner):** result page lists what each side missed (first attempts and names, no scores); an hourly GitHub job pushes "friend finished" (0164): Vercel lacks the VAPID key. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-10-16 — SSC CGL pilot: Tier I 18 Sep 2025, Shifts 1-2, 200 q PRIVATE under a new `SSC CGL` exam (11 subjects, GA split CDS-style); `scripts/ssc-cgl/`.**
   - **Source = SSC's challenge-module response sheet** (hosted day PDFs): SSC posts no papers. Owner accepted its "personal use" line. Key PROVISIONAL.
   - **Text is images, the key is a cell colour** (green/yellow = correct). Sheets come from the image objects, so no watermark, no key: answers derived blind. Key column width varies per question; cells sort by midpoint; page-split rows re-joined (tested `assembleQuestions`).
