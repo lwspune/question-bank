@@ -109,6 +109,19 @@ describe("assembleTcs", () => {
     expect(q.optionImages).toEqual([[], [], [], []]);
   });
 
+  it("reads a Section heading printed as two spans (label, then name)", () => {
+    // 2024 sheets print "Section :" and the section's name as separate spans on one line, the
+    // name 0.2pt HIGHER (bold font), so it sorts before the label.
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 0);
+    g.spans = g.spans.flatMap((s) => {
+      const m = /^Section :\s(.+)$/.exec(s.text);
+      return m ? [{ ...s, text: "Section : ", x1: 90 }, { ...s, text: m[1], x0: 90, y0: s.y0 - 0.2 }] : [s];
+    });
+    const qs = assembleTcs(g);
+    expect(qs[0].part).toBe("A");
+    expect(qs[99].part).toBe("D");
+  });
+
   it("refuses a question with no green option or two", () => {
     const none = shift(2, "9:00 AM - 10:00 AM", () => 9);
     expect(() => assembleTcs(none)).toThrow(/shift 1 Q1.*exactly one key/);

@@ -75,9 +75,26 @@ function joinLines(lines: string[]): string {
 
 type Event = { page: number; y: number; x: number; span?: TcsSpan; image?: TcsImage };
 
+/** A Section label printed apart from its name (the name a hair higher, so it would sort first) becomes one span. */
+function joinSectionLabels(spans: TcsSpan[]): TcsSpan[] {
+  const used = new Set<TcsSpan>();
+  const out: TcsSpan[] = [];
+  for (const s of spans) {
+    if (!/^Section\s*:$/.test(s.text.trim())) continue; // trim() also strips the no-break space
+    const rest = spans
+      .filter((o) => o !== s && o.page === s.page && Math.abs(o.y0 - s.y0) <= 3 && o.x0 >= s.x1 - 1 && !used.has(o))
+      .sort((a, b) => a.x0 - b.x0);
+    rest.forEach((o) => used.add(o));
+    used.add(s);
+    out.push({ ...s, text: "Section : " + rest.map((o) => o.text.trim()).join(" "), x1: Math.max(s.x1, ...rest.map((o) => o.x1)) });
+  }
+  return [...spans.filter((s) => !used.has(s)), ...out];
+}
+
 export function assembleTcs(g: TcsGeometry): TcsQuestion[] {
+  const spans = joinSectionLabels(g.spans);
   const events: Event[] = [
-    ...g.spans.filter((s) => !NOISE.test(s.text.trim())).map((s) => ({ page: s.page, y: s.y0, x: s.x0, span: s })),
+    ...spans.filter((s) => !NOISE.test(s.text.trim())).map((s) => ({ page: s.page, y: s.y0, x: s.x0, span: s })),
     ...g.images.filter((im) => !isIcon(im)).map((im) => ({ page: im.page, y: im.y0, x: im.x0, image: im })),
   ].sort((a, b) => a.page - b.page || a.y - b.y || a.x - b.x);
 
@@ -114,10 +131,18 @@ export function assembleTcs(g: TcsGeometry): TcsQuestion[] {
       cur = null;
       continue;
     }
-    const sec = s && /^Section\s*:\s*(.+)$/.exec(text.replace(/\u00a0/g, " "));
+    const sec = s && /^Section\s*:\s*(.*)$/.exec(text.replace(/\u00a0/g, " "));
     if (sec) {
-      const hit = SECTION_PART.find(([re]) => re.test(sec[1]));
-      if (!hit) throw new Error(`unknown section "${sec[1]}" on page ${s.page}`);
+      // The name may be its own span(s) on the same line ("Section :" then the name).
+      let name = sec[1].trim();
+      while (!name && i + 1 < events.length) {
+        const nx = events[i + 1];
+        if (!nx.span || nx.page !== s.page || Math.abs(nx.y - e.y) > 3) break;
+        name = nx.span.text.replace(/\u00a0/g, " ").trim();
+        i++;
+      }
+      const hit = SECTION_PART.find(([re]) => re.test(name));
+      if (!hit) throw new Error(`unknown section "${name}" on page ${s.page}`);
       part = hit[1];
       cur = null;
       continue;
