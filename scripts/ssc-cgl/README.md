@@ -5,8 +5,8 @@ subjects: Reasoning, Quantitative Aptitude, English, and General Awareness split
 subjects CDS General Knowledge uses (History, Geography, Polity, Economics, Physics, Chemistry,
 Biology, Current Affairs; owner, 2026-10-16).
 
-**Status (2026-10-16): Tier I, 18 and 19 September 2025, all six shifts: 600 questions
-committed PRIVATE. Nothing is PUBLIC.** Not in `EXAM_REGISTRY`, no mocks yet.
+**Status (2026-10-17): Tier I, 16, 18 and 19 September 2025, nine shifts: 875 questions
+committed PRIVATE (16 Sep Shift 3 is 75: the hosted file has no PART-C). Nothing is PUBLIC.** Not in `EXAM_REGISTRY`, no mocks yet.
 
 ## The source, and why it is the only one
 
@@ -90,6 +90,12 @@ first file:
   78-82). The cell filter is a band, never a measured page edge.
 - **A stem cell starts a few points ABOVE its own `Q.No` label**, so cells sort by midpoint;
   by top edge every stem lands in the previous question.
+- **The table's left edge moves with the page width** (16 Sep is a wider page than 18 and 19 Sep:
+  0 cells read until the bands were measured from each page's table edge, BORDER-filled drawings).
+- **A label can be clipped**: 16 Sep S1 printed Q48's label as "Q.No: 4". When the expected number
+  starts with the label read, it is repaired and logged (`onRepair`), never silently.
+- **A hosted file can lack a whole PART** (16 Sep S3 jumps from PART-B to PART-D). `DAYS` declares it
+  (`missing`), and every check then expects exactly the questions that exist.
 - **A page break splits a row into two cells.** Too many cells means the page-straddling
   pair is re-joined (65 of 300 questions on 18 Sep).
 
@@ -112,6 +118,9 @@ On review:
 | 19 Sep S1 (agents) | 97/100 | Q82, Q100 (judgement) | Q37 (Navy's own page: the final was against the Air Force, not the Army) | Q88 (no true homonym of "basilica") |
 | 19 Sep S2 (agents) | 99/100 | none | Q22 (no one in a circle has 3 neighbours; key 20 fits 2) | Q95 ("NOT a factor": B and C also hinder) |
 | 19 Sep S3 (agents) | 97/100 | Q14 (judgement), Q46 (fact unconfirmed either way); Q88 (key adopted but held: no English "line-up" sense of tableau) | none | none |
+| 16 Sep S1 (agents) | 96/100 | Q40 (PM against CM), Q99, Q100 (judgement; the paper prints one rearrangement twice) | Q43 (Amrit Sarovar's target was 2023, not 2024) | none |
+| 16 Sep S2 (agents) | 98/100 | Q1 ('between' counted inclusively) | Q20 (each letter +2 gives XCRQT; the key swaps two letters) | Q39 (ethylene does start germination), Q56 (no six consecutive integers average 6) |
+| 16 Sep S3 (agents, 75 q) | 74/75 | none | Q88 (key B uses 'current' in the same sense) | none |
 
 ## The catalog
 
