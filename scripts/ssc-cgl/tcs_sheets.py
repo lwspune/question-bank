@@ -75,17 +75,28 @@ def white_scan_icons(page, marks):
         page.draw_rect(fitz.Rect(SCAN_ICONS[0], yc - 7, SCAN_ICONS[1], yc + 7), color=None, fill=(1, 1, 1), overlay=True)
 
 
-def align_scan_rows(img, marks, top):
-    """On a raster page the tick is wider than the cross, so the KEYED option's number prints
-    ~2 pt right of the others: an indent that gives the key away. Shift each option row so its
-    number starts where the other rows' numbers start. `top` is the crop's top in points."""
+def align_scan_rows(img, marks, top, x_start=SCAN_ICONS[1], x_right=540):
+    """The tick is wider than the cross, so the KEYED option's number prints ~2 pt right of the
+    others, on the raster page and on the vector pages alike: an indent that gives the key away.
+    Shift each option row so its number starts where the other rows' numbers start. `marks` are
+    the option rows (scan marks, or the icon pictures masked out); `top` is the crop's top and
+    `x_start` the icon column's right edge, in points."""
     px = img.load()
     z = ZOOM
-    x0, x1 = int((SCAN_ICONS[1] - LEFT) * z), int((112 - LEFT) * z)
+    x0, x1 = int((x_start - LEFT) * z), int((x_start + 22 - LEFT) * z)
+
+    # Each row's band runs halfway to its neighbours, so a tall option (a fraction printed as a
+    # picture) moves whole: a band cut through it would tear the picture, itself a tell.
+    centres = sorted((m["y0"] + m["y1"]) / 2 for m in marks)
 
     def band(m):
         yc = (m["y0"] + m["y1"]) / 2
-        return max(0, int((yc - 7 - top) * z)), min(img.height, int((yc + 7 - top) * z))
+        i = centres.index(yc)
+        gaps = [centres[k + 1] - centres[k] for k in range(len(centres) - 1)] or [16]
+        up = (yc - centres[i - 1]) / 2 if i > 0 else min(gaps) / 2
+        down = (centres[i + 1] - yc) / 2 if i + 1 < len(centres) else min(gaps) / 2
+        up, down = max(up, 7), max(down, 7)
+        return max(0, int((yc - up - top) * z)), min(img.height, int((yc + down - top) * z))
 
     def first_ink(m):
         a, b = band(m)
@@ -98,7 +109,7 @@ def align_scan_rows(img, marks, top):
         return img
     base = found[0]
     # Shift only the option text span, so the frame lines either side never jog.
-    xr = min(img.width, int((540 - LEFT) * z))
+    xr = min(img.width, int((x_right - LEFT) * z))
     for m, s in starts:
         if s is None or s <= base:
             continue
@@ -170,15 +181,20 @@ def mask_page(doc, page):
     # (vector.ts reads them there too). An option printed as a small picture further right can
     # have a cross's pixel size (14 Jul 2023 S4 Q74: 28x21 at x 101), and must survive.
     frame_x0 = min((dr["rect"].x0 for dr in page.get_drawings() if is_frame(page, dr)), default=None)
+    rows = []  # the vector print's option rows, by the icons masked out (align_scan_rows)
     for info in page.get_image_info():
         in_column = frame_x0 is None or info["bbox"][0] < frame_x0 + 40
         if is_icon(info["bbox"], option_labels) or (is_icon_picture(info) and in_column):
             page.draw_rect(fitz.Rect(info["bbox"]) + (-1, -1, 1, 1), color=None, fill=(1, 1, 1), overlay=True)
+            if frame_x0 is not None and is_icon_picture(info):
+                x0, y0, x1, y1 = info["bbox"]
+                rows.append({"y0": y0, "y1": y1, "x1": x1})
     # The 2022 vector print draws the panel as a white box with a grey border: paint it out.
     for dr in page.get_drawings():
         r = dr["rect"]
         if r.width > 150 and 25 < r.height < 80 and r.x0 > page.rect.width * 0.45 and dr.get("fill") == (1.0, 1.0, 1.0):
             white(r)
+    return rows
 
 
 def check_masked(page, clip, where):
@@ -218,23 +234,27 @@ def main():
     doc = fitz.open(data["pdf"])
     geom = os.path.join(os.path.dirname(data["imgDir"]), "geometry.json")
     marks = json.load(open(geom, encoding="utf8")).get("marks", []) if os.path.exists(geom) else []
-    masked = set()
+    page_rows = {}
     crops = []
     for q in data["questions"]:
         parts = []
         for r in q["regions"]:
             page = doc[r["page"]]
-            if r["page"] not in masked:
-                mask_page(doc, page)
+            if r["page"] not in page_rows:
+                page_rows[r["page"]] = mask_page(doc, page)
                 white_scan_icons(page, [m for m in marks if m["page"] == r["page"]])
-                masked.add(r["page"])
             clip = fitz.Rect(LEFT, r["y0"] - PAD, page.rect.width - 20, r["y1"] + PAD)
             check_masked(page, clip, f"{shift} Q{q['number']}")
             pix = page.get_pixmap(matrix=fitz.Matrix(ZOOM, ZOOM), clip=clip)
             part = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
+            x_right = min(540, page.rect.width - 70)
             if r.get("raster"):
                 mine = [m for m in marks if m["page"] == r["page"] and r["y0"] <= m["y0"] and m["y1"] <= r["y1"]]
-                part = unkey_scan(align_scan_rows(part, mine, clip.y0))
+                part = unkey_scan(align_scan_rows(part, mine, clip.y0, x_right=x_right))
+            else:
+                mine = [m for m in page_rows[r["page"]] if r["y0"] - 1 <= m["y0"] and m["y1"] <= r["y1"] + 1]
+                if mine:
+                    part = align_scan_rows(part, mine, clip.y0, max(m["x1"] for m in mine) + 1.5, x_right)
             parts.append(part)
         img = Image.new("RGB", (max(p.width for p in parts), sum(p.height for p in parts)), "white")
         y = 0
