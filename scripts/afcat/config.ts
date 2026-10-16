@@ -470,6 +470,11 @@ export const CHAPTERS: Record<string, Chapter> = {
     chapterName: "Number System",
     subtopics: ["Types of Numbers", "Factors and Multiples", "Divisibility Rules", "Prime Factorization", "Remainders and Quotients"],
     files: [
+      { key: "cp-types", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Types of Numbers", path: "15. Number System\\01. Types of Numbers.xlsx", subtopic: "Types of Numbers", note: "AFCAT practice — Cadetprep AFCAT sheet, Number System. Every key blind re-derived." },
+      { key: "cp-factors", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Factors and Multiples", path: "15. Number System\\02. Factors and Multiples.xlsx", subtopic: "Factors and Multiples", note: "AFCAT practice — Cadetprep AFCAT sheet, Number System. Every key blind re-derived." },
+      { key: "cp-divis", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Divisibility Rules", path: "15. Number System\\03. Divisibility Rules.xlsx", subtopic: "Divisibility Rules", note: "AFCAT practice — Cadetprep AFCAT sheet, Number System. Every key blind re-derived." },
+      { key: "cp-primes", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Prime Factorization", path: "15. Number System\\04. Prime Factorization.xlsx", subtopic: "Prime Factorization", note: "AFCAT practice — Cadetprep AFCAT sheet, Number System. Every key blind re-derived." },
+      { key: "cp-remain", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Remainders and Quotients", path: "15. Number System\\05. Remainder and Quotient.xlsx", subtopic: "Remainders and Quotients", note: "AFCAT practice — Cadetprep AFCAT sheet, Number System. Every key blind re-derived." },
     ],
   },
   "sequence-and-series": {
