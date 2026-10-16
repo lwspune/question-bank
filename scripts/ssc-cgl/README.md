@@ -142,6 +142,8 @@ On review:
 | 26 Sep S1 (agents) | 98/100 | Q11 (judgement) | Q14 (nothing links bags to scales) | Q8 (the right-end digits sum to 14, no option) |
 | 26 Sep S2 (agents) | 95/100 | Q96, Q99 (judgement); Q93, Q94 (key carried on defective items, held) | Q2 (Indore is on the 11th either way) | Q20 (diagonal 58.31, no exact option), Q31 (no 2021 winner fits both clues) |
 | 26 Sep S3 (agents) | 99/100 | Q94 (judgement) | none | none |
+| 13 Sep S2 (agents, 99 rows) | 98/100 | Q1, Q48 (judgement) | none | Q88 (no true homonym of "oriel"). Q100 repeats 12 Sep S1 Q100 |
+| 13 Sep S3 (agents, 99 rows) | 97/100 | Q93 (judgement) | Q23 (the expression gives 20), Q98 (direct speech undoes the backshift) | Q95 (the options are longer than the highlight). Q99 repeats 12 Sep S1 Q100 |
 
 ## Repeated questions
 
