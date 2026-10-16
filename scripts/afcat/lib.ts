@@ -326,11 +326,19 @@ function numericValue(t: string): number | null {
  */
 function latexToPlain(text: string): string {
   let t = text.replace(/\\\(|\\\)|\$/g, "");
+  // A whole number right before a fraction is a mixed number: 1\frac{3}{4} is 1 + 3/4.
+  t = t.replace(/(\d+)\s*\\[dt]?frac\{([^{}]*)\}\{([^{}]*)\}/g, "($1+($2)/($3))");
   let prev = "";
   while (prev !== t) {
     prev = t;
-    t = t.replace(/\\[dt]?frac\{([^{}]*)\}\{([^{}]*)\}/g, "($1)/($2)");
+    t = t
+      .replace(/\\[dt]?frac\{([^{}]*)\}\{([^{}]*)\}/g, "($1)/($2)")
+      .replace(/\\sqrt\[([^\]{}]*)\]\{([^{}]*)\}/g, "(($2)^(1/($1)))")
+      .replace(/\\sqrt\{([^{}]*)\}/g, "(($1)^(1/2))")
+      .replace(/\^\{([^{}]*)\}/g, "^($1)");
   }
+  // A number or bracket written before a bracket multiplies it: 2\sqrt{8} is 2 x root 8.
+  t = t.replace(/([\d)])\s*(?=\()/g, "$1×");
   t = t
     .replace(/\\text\{([^{}]*)\}/g, "$1")
     .replace(/\\(?:times|cdot)/g, "×")
@@ -345,7 +353,7 @@ function latexToPlain(text: string): string {
  * by recursive descent; null for anything else. No eval.
  */
 function arithmeticValue(s: string): number | null {
-  if (!/^[\d\s.+\-×*/()]+$/.test(s) || !/\d/.test(s)) return null;
+  if (!/^[\d\s.+\-×*/()^]+$/.test(s) || !/\d/.test(s)) return null;
   const src = s.replace(/\s+/g, "");
   let i = 0;
   const expr = (): number | null => {
@@ -368,12 +376,22 @@ function arithmeticValue(s: string): number | null {
     }
     return v;
   };
+  // A power binds tighter than a sign and groups to the right: 2^3^2 is 2^9.
   const factor = (): number | null => {
     if (src[i] === "-") {
       i++;
       const v = factor();
       return v === null ? null : -v;
     }
+    const base = atom();
+    if (base === null || src[i] !== "^") return base;
+    i++;
+    const exp = factor();
+    if (exp === null) return null;
+    const v = Math.pow(base, exp);
+    return Number.isFinite(v) ? v : null;
+  };
+  const atom = (): number | null => {
     if (src[i] === "(") {
       i++;
       const v = expr();
