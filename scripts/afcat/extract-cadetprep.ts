@@ -11,6 +11,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import * as XLSX from "xlsx";
 import { parseSheet } from "../worksheets/lib";
+import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { requireChapter, DATA, sourcePathOf } from "./config";
 import { filesArg } from "./read";
 import { BROKEN_UNIT, liftCurrencyOutOfMath, repairBareMath, type SourceFile, type SourceRecord } from "./lib";
@@ -28,10 +29,12 @@ for (const file of chapter.files) {
   if (errors.length) throw new Error(`${file.key}: ${errors.join("; ")}`);
   const records: SourceRecord[] = questions.map((q) => ({
     n: q.row,
-    stem: repairBareMath(liftCurrencyOutOfMath(q.stem)),
-    options: q.options.map((o) => repairBareMath(liftCurrencyOutOfMath(o))),
+    stem: normalizeNewlines(repairBareMath(liftCurrencyOutOfMath(q.stem))),
+    options: q.options.map((o) => normalizeNewlines(repairBareMath(liftCurrencyOutOfMath(o)))),
     key: /^[A-D]$/.test(q.answer) ? q.answer : null,
-    keySolution: liftCurrencyOutOfMath(q.solution),
+    // Some sheets type a literal backslash-n for a line break (the Meeting sheet's
+    // solutions); the shared normaliser converts it outside math zones only.
+    keySolution: normalizeNewlines(liftCurrencyOutOfMath(q.solution)),
     difficulty: q.difficulty,
   }));
   const bad = records.filter((r) => !r.key).map((r) => r.n);
