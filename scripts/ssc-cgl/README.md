@@ -208,6 +208,13 @@ npx tsx scripts/ssc-cgl/commit.ts <shiftId> --apply        # uploads figure pict
   underlines option text in the key colours), tick and cross icons and the panel painted white,
   the candidate's chosen option never shown. A question with no picture that still shows key
   colour **stops the run**; on a pictured one (a coloured chart) it is printed for a look.
+  **The key also leaks through LAYOUT** (found 2026-10-17): in the vector print and the 2023
+  scans the tick is wider than the cross, so the keyed option's number prints ~2 pt right of the
+  others. `align_scan_rows` shifts each option row (a band halfway to its neighbours, so a tall
+  option picture moves whole) and the run **stops** if the rows still start at different x.
+  Icon pictures are recognised by pixel size AND position (within 40 pt of the frame's left
+  edge, as vector.ts reads them): an option printed as a small picture can have a cross's size.
+  The text-layer prints (2022 1-3 Dec, 2023 14/25-27 Jul, 2024) set labels at a fixed x.
 - **Figures** (`figures.ts`): `figure:` names SSC's own image objects; a stem with several is
   stacked into one picture. A figure row is hashed with its picture bytes (figureAwareHash), so
   two mirror-image items with the same stock wording and answer letter are not filed as repeats
