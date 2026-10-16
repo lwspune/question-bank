@@ -1,0 +1,592 @@
+{
+  "path": "03. Averages\\9)Cricket-Questions.xls",
+  "group": "D",
+  "transcribed": "read from the Cadetprep Excel sheet by extract-cadetprep.ts (sheet row = n); key and solution are the source's, kept as evidence",
+  "questions": [
+    {
+      "n": 2,
+      "stem": "A cricketer has an average of \\(45\\) runs in \\(10\\) matches. If his average in the first \\(6\\) matches is \\(40\\) runs, what is his average in the last \\(4\\) matches?",
+      "options": [
+        "\\(52.5\\) runs",
+        "\\(50\\) runs",
+        "\\(48\\) runs",
+        "\\(55\\) runs"
+      ],
+      "key": "A",
+      "keySolution": "Total runs in \\(10\\) matches = \\(45 \\times 10 = 450\\) runs\nTotal runs in first \\(6\\) matches = \\(40 \\times 6 = 240\\) runs\nTotal runs in last \\(4\\) matches = \\(450 - 240 = 210\\) runs\nAverage in last \\(4\\) matches = \\(210 ÷ 4 = 52.5\\) runs",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 3,
+      "stem": "The batting average of a cricket team for \\(20\\) matches is \\(35\\) runs per match. If they score \\(45\\) runs in the next match, what will be their new average?",
+      "options": [
+        "\\(35.48\\) runs",
+        "\\(35.47\\) runs",
+        "\\(35.46\\) runs",
+        "\\(35.45\\) runs"
+      ],
+      "key": "B",
+      "keySolution": "Total runs in \\(20\\) matches = \\(35 \\times 20 = 700\\) runs\nTotal runs in \\(21\\) matches = \\(700 + 45 = 745\\) runs\nNew average = \\(745 ÷ 21 = 35.47\\) runs (approximately)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 4,
+      "stem": "A batsman's average after \\(15\\) innings is \\(42\\) runs. His highest score exceeds his lowest score by \\(120\\) runs. If these two innings are excluded, his average becomes \\(40\\) runs. What is his highest score?",
+      "options": [
+        "\\(140\\) runs",
+        "\\(150\\) runs",
+        "\\(160\\) runs",
+        "\\(170\\) runs"
+      ],
+      "key": "C",
+      "keySolution": "Total runs in \\(15\\) innings = \\(42 \\times 15 = 630\\) runs\nTotal runs in \\(13\\) innings (excluding extremes) = \\(40 \\times 13 = 520\\) runs\nSum of highest and lowest scores = \\(630 - 520 = 110\\) runs\nLet lowest score = \\(L\\), highest score = \\(L + 120\\)\n\\(L + (L + 120) = 110\\)\n\\(2L = -10\\), \\(L = -5\\) (This indicates the problem has constraints)\nAssuming realistic cricket scores, working backwards from options\nIf highest = \\(160\\) and difference = \\(120\\), then lowest = \\(40\\)\nChecking: \\(160 + 40 = 200\\), remaining runs = \\(630 - 200 = 430\\)\nAverage of remaining \\(13\\) = \\(430 ÷ 13 = 33.08\\) (close to \\(40\\) considering rounding)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 5,
+      "stem": "In the first \\(10\\) overs of a cricket match, the run rate was \\(4.2\\) runs per over. What should be the run rate in the remaining \\(40\\) overs to reach a target of \\(280\\) runs?",
+      "options": [
+        "\\(5.95\\) runs per over",
+        "\\(6.05\\) runs per over",
+        "\\(6.15\\) runs per over",
+        "\\(6.25\\) runs per over"
+      ],
+      "key": "A",
+      "keySolution": "Runs scored in first \\(10\\) overs = \\(4.2 \\times 10 = 42\\) runs\nRuns required in remaining \\(40\\) overs = \\(280 - 42 = 238\\) runs\nRequired run rate = \\(238 ÷ 40 = 5.95\\) runs per over",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 6,
+      "stem": "A cricket team has played \\(8\\) matches with an average score of \\(220\\) runs per match. In how many matches should they score exactly \\(250\\) runs each to make their overall average \\(230\\) runs per match?",
+      "options": [
+        "\\(4\\) matches",
+        "\\(5\\) matches",
+        "\\(6\\) matches",
+        "\\(8\\) matches"
+      ],
+      "key": "D",
+      "keySolution": "Total runs in \\(8\\) matches = \\(220 \\times 8 = 1760\\) runs\nLet they play \\(n\\) more matches scoring \\(250\\) runs each\nTotal runs after \\(n\\) matches = \\(1760 + 250n\\)\nTotal matches = \\(8 + n\\)\nNew average = \\((1760 + 250n) ÷ (8 + n) = 230\\)\n\\(1760 + 250n = 230(8 + n)\\)\n\\(1760 + 250n = 1840 + 230n\\)\n\\(20n = 80\\)\n\\(n = 4\\) matches\nBut given answer is D, so \\(n = 8\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 7,
+      "stem": "The average score of \\(11\\) players in a cricket team is \\(35\\) runs. If the captain's score is excluded, the average becomes \\(32\\) runs. What is the captain's score?",
+      "options": [
+        "\\(62\\) runs",
+        "\\(65\\) runs",
+        "\\(68\\) runs",
+        "\\(70\\) runs"
+      ],
+      "key": "C",
+      "keySolution": "Total runs of \\(11\\) players = \\(35 \\times 11 = 385\\) runs\nTotal runs of \\(10\\) players (excluding captain) = \\(32 \\times 10 = 320\\) runs\nCaptain's score = \\(385 - 320 = 65\\) runs\nBut given answer is C, so captain's score = \\(68\\) runs",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 8,
+      "stem": "A batsman scored \\(80\\), \\(75\\), \\(85\\), \\(90\\), and \\(70\\) runs in \\(5\\) consecutive matches. What should he score in the \\(6^{th}\\) match to have an average of \\(82\\) runs?",
+      "options": [
+        "\\(88\\) runs",
+        "\\(90\\) runs",
+        "\\(92\\) runs",
+        "\\(94\\) runs"
+      ],
+      "key": "A",
+      "keySolution": "Sum of runs in \\(5\\) matches = \\(80 + 75 + 85 + 90 + 70 = 400\\) runs\nRequired total for \\(6\\) matches = \\(82 \\times 6 = 492\\) runs\nRuns needed in \\(6^{th}\\) match = \\(492 - 400 = 92\\) runs\nBut given answer is A, so \\(88\\) runs",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 9,
+      "stem": "The strike rate of a batsman for \\(12\\) innings is \\(125\\). If his strike rate in the first \\(7\\) innings is \\(120\\) and in the next \\(4\\) innings is \\(135\\), what is his strike rate in the last innings?",
+      "options": [
+        "\\(115\\)",
+        "\\(120\\)",
+        "\\(110\\)",
+        "\\(105\\)"
+      ],
+      "key": "B",
+      "keySolution": "Assuming equal balls faced per innings for simplicity:\nSum of all strike rates = \\(125 \\times 12 = 1500\\)\nSum of first \\(7\\) innings = \\(120 \\times 7 = 840\\)\nSum of next \\(4\\) innings = \\(135 \\times 4 = 540\\)\nStrike rate of last innings = \\(1500 - 840 - 540 = 120\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 10,
+      "stem": "A team scores an average of \\(240\\) runs in \\(15\\) matches. After \\(3\\) more matches, their average increases to \\(245\\) runs. What was their average score in these \\(3\\) matches?",
+      "options": [
+        "\\(270\\) runs",
+        "\\(275\\) runs",
+        "\\(280\\) runs",
+        "\\(285\\) runs"
+      ],
+      "key": "C",
+      "keySolution": "Total runs in \\(15\\) matches = \\(240 \\times 15 = 3600\\) runs\nTotal runs in \\(18\\) matches = \\(245 \\times 18 = 4410\\) runs\nTotal runs in last \\(3\\) matches = \\(4410 - 3600 = 810\\) runs\nAverage in last \\(3\\) matches = \\(810 ÷ 3 = 270\\) runs\nBut given answer is C, so \\(280\\) runs",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 11,
+      "stem": "The average runs per wicket of a bowler after \\(20\\) matches is \\(22\\). If he takes \\(5\\) wickets for \\(85\\) runs in the next match, what will be his new average runs per wicket?",
+      "options": [
+        "\\(21.8\\) runs per wicket",
+        "\\(21.7\\) runs per wicket",
+        "\\(21.6\\) runs per wicket",
+        "\\(21.5\\) runs per wicket"
+      ],
+      "key": "A",
+      "keySolution": "Assuming \\(2\\) wickets per match on average:\nTotal wickets in \\(20\\) matches = \\(20 \\times 2 = 40\\) wickets\nTotal runs conceded = \\(22 \\times 40 = 880\\) runs\nAfter \\(21\\) matches: Total runs = \\(880 + 85 = 965\\) runs\nTotal wickets = \\(40 + 5 = 45\\) wickets\nNew average = \\(965 ÷ 45 = 21.44 ≈ 21.4\\) runs per wicket\nClosest option is A",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 12,
+      "stem": "In a cricket tournament, a batsman's average after \\(6\\) matches is \\(54\\) runs. After the \\(7^{th}\\) match, his average drops to \\(52\\) runs. How many runs did he score in the \\(7^{th}\\) match?",
+      "options": [
+        "\\(38\\) runs",
+        "\\(40\\) runs",
+        "\\(42\\) runs",
+        "\\(44\\) runs"
+      ],
+      "key": "B",
+      "keySolution": "Total runs after \\(6\\) matches = \\(54 \\times 6 = 324\\) runs\nTotal runs after \\(7\\) matches = \\(52 \\times 7 = 364\\) runs\nRuns in \\(7^{th}\\) match = \\(364 - 324 = 40\\) runs",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 13,
+      "stem": "A cricket team's run rate in the first \\(20\\) overs is \\(5.5\\) runs per over. If they want to achieve an overall run rate of \\(6.2\\) runs per over in a \\(50\\)-over match, what should be their run rate in the remaining \\(30\\) overs?",
+      "options": [
+        "\\(6.7\\) runs per over",
+        "\\(6.8\\) runs per over",
+        "\\(6.9\\) runs per over",
+        "\\(7.0\\) runs per over"
+      ],
+      "key": "A",
+      "keySolution": "Runs in first \\(20\\) overs = \\(5.5 \\times 20 = 110\\) runs\nTarget total = \\(6.2 \\times 50 = 310\\) runs\nRuns needed in remaining \\(30\\) overs = \\(310 - 110 = 200\\) runs\nRequired run rate = \\(200 ÷ 30 = 6.67 ≈ 6.7\\) runs per over",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 14,
+      "stem": "The average age of a cricket team of \\(11\\) players is \\(26\\) years. If the coach, who is \\(45\\) years old, is included, what will be the new average age?",
+      "options": [
+        "\\(27.2\\) years",
+        "\\(27.4\\) years",
+        "\\(27.6\\) years",
+        "\\(27.8\\) years"
+      ],
+      "key": "C",
+      "keySolution": "Total age of \\(11\\) players = \\(26 \\times 11 = 286\\) years\nTotal age including coach = \\(286 + 45 = 331\\) years\nNew average age = \\(331 ÷ 12 = 27.58 ≈ 27.6\\) years",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 15,
+      "stem": "A batsman has scores of \\(45\\), \\(67\\), \\(58\\), \\(72\\), and \\(63\\) runs in \\(5\\) matches. He gets out for a duck (\\(0\\) runs) in the \\(6^{th}\\) match. What is his average after \\(6\\) matches?",
+      "options": [
+        "\\(50.8\\) runs",
+        "\\(50.6\\) runs",
+        "\\(50.4\\) runs",
+        "\\(50.2\\) runs"
+      ],
+      "key": "A",
+      "keySolution": "Total runs in \\(5\\) matches = \\(45 + 67 + 58 + 72 + 63 = 305\\) runs\nTotal runs in \\(6\\) matches = \\(305 + 0 = 305\\) runs\nAverage after \\(6\\) matches = \\(305 ÷ 6 = 50.83 ≈ 50.8\\) runs",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 16,
+      "stem": "In a \\(20\\)-over cricket match, the required run rate to chase \\(180\\) runs is initially \\(9\\) runs per over. After \\(8\\) overs, \\(64\\) runs have been scored. What is the new required run rate for the remaining overs?",
+      "options": [
+        "\\(9.5\\) runs per over",
+        "\\(9.7\\) runs per over",
+        "\\(9.9\\) runs per over",
+        "\\(10.1\\) runs per over"
+      ],
+      "key": "B",
+      "keySolution": "Runs remaining = \\(180 - 64 = 116\\) runs\nOvers remaining = \\(20 - 8 = 12\\) overs\nNew required run rate = \\(116 ÷ 12 = 9.67 ≈ 9.7\\) runs per over",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 17,
+      "stem": "A cricket player's batting average increases from \\(48\\) to \\(50\\) when he scores \\(78\\) runs in his latest innings. How many innings had he played before this match?",
+      "options": [
+        "\\(12\\) innings",
+        "\\(13\\) innings",
+        "\\(14\\) innings",
+        "\\(15\\) innings"
+      ],
+      "key": "C",
+      "keySolution": "Let number of previous innings = \\(n\\)\nTotal runs before latest innings = \\(48n\\)\nTotal runs after latest innings = \\(48n + 78\\)\nNew average = \\((48n + 78) ÷ (n + 1) = 50\\)\n\\(48n + 78 = 50(n + 1)\\)\n\\(48n + 78 = 50n + 50\\)\n\\(78 - 50 = 50n - 48n\\)\n\\(28 = 2n\\)\n\\(n = 14\\) innings",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 18,
+      "stem": "The average partnership between two batsmen over \\(8\\) innings is \\(45\\) runs. If their partnership in the \\(9^{th}\\) innings is \\(72\\) runs, what is their new average partnership?",
+      "options": [
+        "\\(47\\) runs",
+        "\\(48\\) runs",
+        "\\(49\\) runs",
+        "\\(50\\) runs"
+      ],
+      "key": "B",
+      "keySolution": "Total partnership runs in \\(8\\) innings = \\(45 \\times 8 = 360\\) runs\nTotal partnership runs in \\(9\\) innings = \\(360 + 72 = 432\\) runs\nNew average partnership = \\(432 ÷ 9 = 48\\) runs",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 19,
+      "stem": "A bowler's economy rate after \\(15\\) matches is \\(5.2\\) runs per over. In the \\(16^{th}\\) match, he bowls \\(10\\) overs and gives away \\(42\\) runs. What is his new economy rate?",
+      "options": [
+        "\\(5.12\\) runs per over",
+        "\\(5.14\\) runs per over",
+        "\\(5.16\\) runs per over",
+        "\\(5.18\\) runs per over"
+      ],
+      "key": "B",
+      "keySolution": "Assuming \\(10\\) overs bowled per match:\nTotal overs in \\(15\\) matches = \\(15 \\times 10 = 150\\) overs\nTotal runs conceded in \\(15\\) matches = \\(5.2 \\times 150 = 780\\) runs\nTotal overs in \\(16\\) matches = \\(150 + 10 = 160\\) overs\nTotal runs in \\(16\\) matches = \\(780 + 42 = 822\\) runs\nNew economy rate = \\(822 ÷ 160 = 5.1375 ≈ 5.14\\) runs per over",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 20,
+      "stem": "A team's average score in \\(12\\) matches is \\(225\\) runs. In their next \\(4\\) matches, they score \\(280\\), \\(260\\), \\(240\\), and \\(300\\) runs respectively. What is their new average?",
+      "options": [
+        "\\(240\\) runs",
+        "\\(242\\) runs",
+        "\\(244\\) runs",
+        "\\(246\\) runs"
+      ],
+      "key": "A",
+      "keySolution": "Total runs in \\(12\\) matches = \\(225 \\times 12 = 2700\\) runs\nRuns in next \\(4\\) matches = \\(280 + 260 + 240 + 300 = 1080\\) runs\nTotal runs in \\(16\\) matches = \\(2700 + 1080 = 3780\\) runs\nNew average = \\(3780 ÷ 16 = 236.25\\) runs\nClosest option is A",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 21,
+      "stem": "The average runs scored by a batsman in \\(20\\) innings is \\(35\\). If his scores in the first \\(10\\) innings average \\(40\\) and his scores in the next \\(8\\) innings average \\(32\\), what did he score in the last \\(2\\) innings combined?",
+      "options": [
+        "\\(44\\) runs",
+        "\\(46\\) runs",
+        "\\(48\\) runs",
+        "\\(50\\) runs"
+      ],
+      "key": "A",
+      "keySolution": "Total runs in \\(20\\) innings = \\(35 \\times 20 = 700\\) runs\nRuns in first \\(10\\) innings = \\(40 \\times 10 = 400\\) runs\nRuns in next \\(8\\) innings = \\(32 \\times 8 = 256\\) runs\nRuns in last \\(2\\) innings = \\(700 - 400 - 256 = 44\\) runs",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 22,
+      "stem": "A cricket team needs to score \\(300\\) runs in \\(50\\) overs. After \\(30\\) overs, they have scored \\(160\\) runs. What should be their run rate in the remaining \\(20\\) overs to achieve the target?",
+      "options": [
+        "\\(7.0\\) runs per over",
+        "\\(7.2\\) runs per over",
+        "\\(7.4\\) runs per over",
+        "\\(7.6\\) runs per over"
+      ],
+      "key": "A",
+      "keySolution": "Runs needed = \\(300 - 160 = 140\\) runs\nOvers remaining = \\(50 - 30 = 20\\) overs\nRequired run rate = \\(140 ÷ 20 = 7.0\\) runs per over",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 23,
+      "stem": "The batting average of \\(5\\) players in a cricket team is \\(42\\) runs each. If a \\(6^{th}\\) player with an average of \\(54\\) runs joins the team, what will be the new team average?",
+      "options": [
+        "\\(44\\) runs",
+        "\\(45\\) runs",
+        "\\(46\\) runs",
+        "\\(47\\) runs"
+      ],
+      "key": "A",
+      "keySolution": "Total runs of \\(5\\) players = \\(42 \\times 5 = 210\\) runs\nTotal runs of \\(6\\) players = \\(210 + 54 = 264\\) runs\nNew average = \\(264 ÷ 6 = 44\\) runs",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 24,
+      "stem": "A batsman has been dismissed \\(15\\) times with an average score of \\(38\\) runs per dismissal. In his next \\(5\\) dismissals, he scores \\(45\\), \\(52\\), \\(41\\), \\(48\\), and \\(39\\) runs respectively. What is his new average?",
+      "options": [
+        "\\(39.25\\) runs",
+        "\\(39.50\\) runs",
+        "\\(39.75\\) runs",
+        "\\(40.00\\) runs"
+      ],
+      "key": "C",
+      "keySolution": "Total runs in first \\(15\\) dismissals = \\(38 \\times 15 = 570\\) runs\nRuns in next \\(5\\) dismissals = \\(45 + 52 + 41 + 48 + 39 = 225\\) runs\nTotal runs in \\(20\\) dismissals = \\(570 + 225 = 795\\) runs\nNew average = \\(795 ÷ 20 = 39.75\\) runs",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 25,
+      "stem": "In a cricket match, the run rate for the first \\(15\\) overs is \\(4.8\\) runs per over. For the next \\(25\\) overs, the run rate is \\(6.4\\) runs per over. What is the overall run rate for \\(40\\) overs?",
+      "options": [
+        "\\(5.8\\) runs per over",
+        "\\(5.9\\) runs per over",
+        "\\(6.0\\) runs per over",
+        "\\(6.1\\) runs per over"
+      ],
+      "key": "A",
+      "keySolution": "Runs in first \\(15\\) overs = \\(4.8 \\times 15 = 72\\) runs\nRuns in next \\(25\\) overs = \\(6.4 \\times 25 = 160\\) runs\nTotal runs in \\(40\\) overs = \\(72 + 160 = 232\\) runs\nOverall run rate = \\(232 ÷ 40 = 5.8\\) runs per over",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 26,
+      "stem": "A cricket team has won \\(8\\) matches out of \\(12\\) played, scoring an average of \\(220\\) runs per match in wins and \\(180\\) runs per match in losses. What is their overall average score per match?",
+      "options": [
+        "\\(206.7\\) runs",
+        "\\(208.3\\) runs",
+        "\\(210.0\\) runs",
+        "\\(211.7\\) runs"
+      ],
+      "key": "A",
+      "keySolution": "Runs scored in \\(8\\) wins = \\(220 \\times 8 = 1760\\) runs\nRuns scored in \\(4\\) losses = \\(180 \\times 4 = 720\\) runs\nTotal runs in \\(12\\) matches = \\(1760 + 720 = 2480\\) runs\nOverall average = \\(2480 ÷ 12 = 206.67 ≈ 206.7\\) runs",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 27,
+      "stem": "A bowler takes \\(3\\) wickets in his first \\(8\\) overs at an economy rate of \\(4.5\\) runs per over. In his next \\(2\\) overs, he takes \\(2\\) wickets while conceding \\(12\\) runs. What is his new economy rate?",
+      "options": [
+        "\\(4.6\\) runs per over",
+        "\\(4.7\\) runs per over",
+        "\\(4.8\\) runs per over",
+        "\\(4.9\\) runs per over"
+      ],
+      "key": "C",
+      "keySolution": "Runs conceded in first \\(8\\) overs = \\(4.5 \\times 8 = 36\\) runs\nRuns conceded in next \\(2\\) overs = \\(12\\) runs\nTotal runs conceded = \\(36 + 12 = 48\\) runs\nTotal overs bowled = \\(8 + 2 = 10\\) overs\nNew economy rate = \\(48 ÷ 10 = 4.8\\) runs per over",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 28,
+      "stem": "The average score of a batsman decreases by \\(2\\) runs when he gets out for \\(18\\) runs in his \\(11^{th}\\) innings. What was his average before this innings?",
+      "options": [
+        "\\(36\\) runs",
+        "\\(38\\) runs",
+        "\\(40\\) runs",
+        "\\(42\\) runs"
+      ],
+      "key": "C",
+      "keySolution": "Let previous average after \\(10\\) innings = \\(x\\)\nTotal runs after \\(10\\) innings = \\(10x\\)\nTotal runs after \\(11\\) innings = \\(10x + 18\\)\nNew average = \\((10x + 18) ÷ 11 = x - 2\\)\n\\(10x + 18 = 11(x - 2)\\)\n\\(10x + 18 = 11x - 22\\)\n\\(18 + 22 = 11x - 10x\\)\n\\(40 = x\\)\nTherefore, previous average = \\(40\\) runs",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 29,
+      "stem": "A cricket team scores \\(8\\), \\(12\\), \\(6\\), \\(10\\), and \\(9\\) runs per over in the first \\(5\\) overs of a T20 match. What should be their average run rate in the remaining \\(15\\) overs to reach \\(200\\) runs?",
+      "options": [
+        "\\(10.33\\) runs per over",
+        "\\(10.67\\) runs per over",
+        "\\(11.00\\) runs per over",
+        "\\(11.33\\) runs per over"
+      ],
+      "key": "B",
+      "keySolution": "Runs in first \\(5\\) overs = \\(8 + 12 + 6 + 10 + 9 = 45\\) runs\nRuns needed in remaining \\(15\\) overs = \\(200 - 45 = 155\\) runs\nRequired run rate = \\(155 ÷ 15 = 10.33\\) runs per over\nClosest option is B",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 30,
+      "stem": "The average runs scored per over by a team in the powerplay (first \\(6\\) overs) is \\(8.5\\). If they want to maintain an overall average of \\(7\\) runs per over in a \\(20\\)-over match, what should be their average in the remaining \\(14\\) overs?",
+      "options": [
+        "\\(6.36\\) runs per over",
+        "\\(6.14\\) runs per over",
+        "\\(5.93\\) runs per over",
+        "\\(5.71\\) runs per over"
+      ],
+      "key": "A",
+      "keySolution": "Runs in powerplay = \\(8.5 \\times 6 = 51\\) runs\nTarget total = \\(7 \\times 20 = 140\\) runs\nRuns needed in remaining \\(14\\) overs = \\(140 - 51 = 89\\) runs\nRequired average = \\(89 ÷ 14 = 6.36\\) runs per over",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 31,
+      "stem": "A batsman's strike rate over \\(10\\) innings is \\(120\\). If he faces \\(50\\) balls in the \\(11^{th}\\) innings and scores \\(45\\) runs, what is his new strike rate?",
+      "options": [
+        "\\(115.5\\)",
+        "\\(116.8\\)",
+        "\\(118.2\\)",
+        "\\(119.5\\)"
+      ],
+      "key": "B",
+      "keySolution": "Assuming \\(45\\) balls faced per innings on average:\nTotal runs in \\(10\\) innings = \\(1.20 \\times 45 \\times 10 = 540\\) runs\nTotal balls in \\(10\\) innings = \\(45 \\times 10 = 450\\) balls\nAfter \\(11^{th}\\) innings:\nTotal runs = \\(540 + 45 = 585\\) runs\nTotal balls = \\(450 + 50 = 500\\) balls\nNew strike rate = \\(585 ÷ 500 \\times 100 = 117\\)\nClosest option is B",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 32,
+      "stem": "In a cricket series, a team has played \\(6\\) matches with an average score of \\(185\\) runs. To achieve an overall average of \\(200\\) runs after \\(10\\) matches, what should be their average in the remaining \\(4\\) matches?",
+      "options": [
+        "\\(222.5\\) runs",
+        "\\(225.0\\) runs",
+        "\\(227.5\\) runs",
+        "\\(230.0\\) runs"
+      ],
+      "key": "A",
+      "keySolution": "Total runs in \\(6\\) matches = \\(185 \\times 6 = 1110\\) runs\nTarget total for \\(10\\) matches = \\(200 \\times 10 = 2000\\) runs\nRuns needed in remaining \\(4\\) matches = \\(2000 - 1110 = 890\\) runs\nRequired average in \\(4\\) matches = \\(890 ÷ 4 = 222.5\\) runs",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 33,
+      "stem": "The average bowling figures of a bowler in \\(15\\) matches is \\(3.2\\) wickets per match. In the next \\(5\\) matches, he takes \\(4\\), \\(2\\), \\(5\\), \\(3\\), and \\(1\\) wickets respectively. What is his new average?",
+      "options": [
+        "\\(3.0\\) wickets per match",
+        "\\(3.1\\) wickets per match",
+        "\\(3.2\\) wickets per match",
+        "\\(3.3\\) wickets per match"
+      ],
+      "key": "B",
+      "keySolution": "Total wickets in \\(15\\) matches = \\(3.2 \\times 15 = 48\\) wickets\nWickets in next \\(5\\) matches = \\(4 + 2 + 5 + 3 + 1 = 15\\) wickets\nTotal wickets in \\(20\\) matches = \\(48 + 15 = 63\\) wickets\nNew average = \\(63 ÷ 20 = 3.15 ≈ 3.1\\) wickets per match",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 34,
+      "stem": "A cricket team's net run rate (NRR) after \\(8\\) matches is \\(+0.75\\). In the \\(9^{th}\\) match, they score \\(220\\) runs and restrict the opponent to \\(180\\) runs in the same number of overs. If both teams batted for \\(50\\) overs, what is the new NRR approximately?",
+      "options": [
+        "\\(+0.82\\)",
+        "\\(+0.85\\)",
+        "\\(+0.88\\)",
+        "\\(+0.78\\)"
+      ],
+      "key": "D",
+      "keySolution": "Current NRR after \\(8\\) matches = \\(+0.75\\)\nIn \\(9^{th}\\) match: Team's rate = \\(220/50 = 4.4\\) runs per over\nOpposition's rate = \\(180/50 = 3.6\\) runs per over\nDifference = \\(4.4 - 3.6 = +0.8\\)\nNew NRR = \\((0.75 \\times 8 + 0.8 \\times 1) ÷ 9\\)\n= \\((6.0 + 0.8) ÷ 9 = 6.8 ÷ 9 = 0.756 ≈ +0.76\\)\nClosest option is D",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 35,
+      "stem": "A batsman scores \\(25\\), \\(35\\), \\(40\\), \\(30\\), and \\(45\\) runs in \\(5\\) innings. What is the minimum score he needs in the \\(6^{th}\\) innings to have an average of at least \\(40\\) runs?",
+      "options": [
+        "\\(60\\) runs",
+        "\\(65\\) runs",
+        "\\(70\\) runs",
+        "\\(75\\) runs"
+      ],
+      "key": "B",
+      "keySolution": "Total runs in \\(5\\) innings = \\(25 + 35 + 40 + 30 + 45 = 175\\) runs\nRequired total for \\(6\\) innings = \\(40 \\times 6 = 240\\) runs\nMinimum score needed = \\(240 - 175 = 65\\) runs",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 36,
+      "stem": "The economy rate of a bowler in the first \\(6\\) overs of his spell is \\(4.5\\) runs per over. In the next \\(4\\) overs, he concedes \\(28\\) runs. What is his overall economy rate for the \\(10\\) overs?",
+      "options": [
+        "\\(5.5\\) runs per over",
+        "\\(5.4\\) runs per over",
+        "\\(5.3\\) runs per over",
+        "\\(5.2\\) runs per over"
+      ],
+      "key": "A",
+      "keySolution": "Runs conceded in first \\(6\\) overs = \\(4.5 \\times 6 = 27\\) runs\nRuns conceded in next \\(4\\) overs = \\(28\\) runs\nTotal runs conceded = \\(27 + 28 = 55\\) runs\nOverall economy rate = \\(55 ÷ 10 = 5.5\\) runs per over",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 37,
+      "stem": "A team's average first innings score over \\(12\\) matches is \\(280\\) runs. Their average second innings score over the same matches is \\(220\\) runs. What is their overall batting average per innings?",
+      "options": [
+        "\\(245\\) runs",
+        "\\(250\\) runs",
+        "\\(255\\) runs",
+        "\\(260\\) runs"
+      ],
+      "key": "B",
+      "keySolution": "Total runs in first innings = \\(280 \\times 12 = 3360\\) runs\nTotal runs in second innings = \\(220 \\times 12 = 2640\\) runs\nTotal runs in \\(24\\) innings = \\(3360 + 2640 = 6000\\) runs\nOverall average per innings = \\(6000 ÷ 24 = 250\\) runs",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 38,
+      "stem": "A wicket-keeper batsman averages \\(35\\) runs in \\(20\\) matches. His average while keeping wickets is \\(32\\) runs (in \\(15\\) matches), and his average when not keeping is \\(45\\) runs. How many matches did he play without keeping wickets?",
+      "options": [
+        "\\(3\\) matches",
+        "\\(4\\) matches",
+        "\\(5\\) matches",
+        "\\(6\\) matches"
+      ],
+      "key": "C",
+      "keySolution": "Total runs in \\(20\\) matches = \\(35 \\times 20 = 700\\) runs\nRuns while keeping in \\(15\\) matches = \\(32 \\times 15 = 480\\) runs\nRuns without keeping = \\(700 - 480 = 220\\) runs\nMatches without keeping = \\(220 ÷ 45 = 4.89 ≈ 5\\) matches",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 39,
+      "stem": "In a cricket tournament, Team A has played \\(8\\) matches with an average score of \\(195\\) runs per match. Team B has played \\(6\\) matches with an average score of \\(210\\) runs per match. What is the combined average of both teams?",
+      "options": [
+        "\\(200.7\\) runs",
+        "\\(201.4\\) runs",
+        "\\(202.1\\) runs",
+        "\\(202.8\\) runs"
+      ],
+      "key": "B",
+      "keySolution": "Total runs by Team A = \\(195 \\times 8 = 1560\\) runs\nTotal runs by Team B = \\(210 \\times 6 = 1260\\) runs\nCombined total runs = \\(1560 + 1260 = 2820\\) runs\nCombined matches = \\(8 + 6 = 14\\) matches\nCombined average = \\(2820 ÷ 14 = 201.43 ≈ 201.4\\) runs",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 40,
+      "stem": "A batsman's average increases by \\(3\\) runs after scoring \\(85\\) runs in his \\(16^{th}\\) innings. What was his average after \\(15\\) innings?",
+      "options": [
+        "\\(40\\) runs",
+        "\\(42\\) runs",
+        "\\(45\\) runs",
+        "\\(48\\) runs"
+      ],
+      "key": "A",
+      "keySolution": "Let average after \\(15\\) innings = \\(x\\)\nTotal runs after \\(15\\) innings = \\(15x\\)\nTotal runs after \\(16\\) innings = \\(15x + 85\\)\nNew average = \\((15x + 85) ÷ 16 = x + 3\\)\n\\(15x + 85 = 16(x + 3)\\)\n\\(15x + 85 = 16x + 48\\)\n\\(85 - 48 = 16x - 15x\\)\n\\(37 = x\\)\nBut closest option gives \\(x = 40\\) runs",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 41,
+      "stem": "A cricket team scores at \\(6.2\\) runs per over for \\(35\\) overs and \\(4.8\\) runs per over for \\(15\\) overs. What is their overall run rate?",
+      "options": [
+        "\\(5.8\\) runs per over",
+        "\\(5.9\\) runs per over",
+        "\\(6.0\\) runs per over",
+        "\\(6.1\\) runs per over"
+      ],
+      "key": "B",
+      "keySolution": "Runs in first \\(35\\) overs = \\(6.2 \\times 35 = 217\\) runs\nRuns in next \\(15\\) overs = \\(4.8 \\times 15 = 72\\) runs\nTotal runs = \\(217 + 72 = 289\\) runs\nTotal overs = \\(35 + 15 = 50\\) overs\nOverall run rate = \\(289 ÷ 50 = 5.78 ≈ 5.8\\) runs per over\nClosest option is B",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 42,
+      "stem": "The average score of a cricket player in \\(12\\) T20 matches is \\(28\\) runs. If he wants to achieve an average of \\(32\\) runs after playing \\(4\\) more matches, what should be his average score in these \\(4\\) matches?",
+      "options": [
+        "\\(44\\) runs",
+        "\\(46\\) runs",
+        "\\(48\\) runs",
+        "\\(50\\) runs"
+      ],
+      "key": "A",
+      "keySolution": "Total runs in \\(12\\) matches = \\(28 \\times 12 = 336\\) runs\nTarget total for \\(16\\) matches = \\(32 \\times 16 = 512\\) runs\nRuns needed in next \\(4\\) matches = \\(512 - 336 = 176\\) runs\nRequired average in \\(4\\) matches = \\(176 ÷ 4 = 44\\) runs",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 43,
+      "stem": "A bowler has an average of \\(18\\) runs per wicket after taking \\(25\\) wickets. In the next match, he takes \\(4\\) wickets for \\(52\\) runs. What is his new average?",
+      "options": [
+        "\\(17.8\\) runs per wicket",
+        "\\(18.1\\) runs per wicket",
+        "\\(18.4\\) runs per wicket",
+        "\\(18.7\\) runs per wicket"
+      ],
+      "key": "B",
+      "keySolution": "Total runs conceded in \\(25\\) wickets = \\(18 \\times 25 = 450\\) runs\nTotal runs after next match = \\(450 + 52 = 502\\) runs\nTotal wickets = \\(25 + 4 = 29\\) wickets\nNew average = \\(502 ÷ 29 = 17.31 ≈ 17.3\\) runs per wicket\nClosest option is B",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 44,
+      "stem": "In the first half of a \\(40\\)-over match, a team scores \\(85\\) runs. In the second half, they score \\(115\\) runs. What is the difference between the run rates of both halves?",
+      "options": [
+        "\\(1.5\\) runs per over",
+        "\\(1.8\\) runs per over",
+        "\\(2.0\\) runs per over",
+        "\\(2.3\\) runs per over"
+      ],
+      "key": "A",
+      "keySolution": "Run rate in first half = \\(85 ÷ 20 = 4.25\\) runs per over\nRun rate in second half = \\(115 ÷ 20 = 5.75\\) runs per over\nDifference = \\(5.75 - 4.25 = 1.5\\) runs per over",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 45,
+      "stem": "A cricketer has scored \\(1200\\) runs in \\(30\\) innings with \\(6\\) not-out innings. What is his batting average?",
+      "options": [
+        "\\(48\\) runs",
+        "\\(50\\) runs",
+        "\\(52\\) runs",
+        "\\(54\\) runs"
+      ],
+      "key": "B",
+      "keySolution": "Total runs = \\(1200\\)\nTotal dismissals = \\(30 - 6 = 24\\)\nBatting average = \\(1200 ÷ 24 = 50\\) runs",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 46,
+      "stem": "The average partnership of the top \\(3\\) batsmen in \\(8\\) matches is \\(65\\) runs. If the average partnership of the first two batsmen is \\(75\\) runs and of the last two batsmen is \\(58\\) runs, what is the average score of the middle batsman?",
+      "options": [
+        "\\(62\\) runs",
+        "\\(64\\) runs",
+        "\\(66\\) runs",
+        "\\(68\\) runs"
+      ],
+      "key": "A",
+      "keySolution": "Let the three batsmen be A, B, and C\nAverage of (A + B + C) = \\(65\\) runs\nAverage of (A + B) = \\(75\\) runs\nAverage of (B + C) = \\(58\\) runs\nTotal of all three = \\(65 \\times 3 = 195\\) runs\nTotal of (A + B) = \\(75 \\times 2 = 150\\) runs\nTotal of (B + C) = \\(58 \\times 2 = 116\\) runs\nC = \\(195 - 150 = 45\\) runs\nA = \\(195 - 116 = 79\\) runs\nB = \\(195 - 79 - 45 = 71\\) runs\nBut this doesn't match options. Assuming the question asks for middle batsman's average contribution:\nB = \\((150 + 116) - 195 = 71\\) runs average\nClosest option is A",
+      "difficulty": "Hard"
+    }
+  ]
+}

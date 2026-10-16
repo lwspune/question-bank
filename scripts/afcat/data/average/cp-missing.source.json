@@ -1,0 +1,605 @@
+{
+  "path": "03. Averages\\3)Missing-data-Problems.xls",
+  "group": "D",
+  "transcribed": "read from the Cadetprep Excel sheet by extract-cadetprep.ts (sheet row = n); key and solution are the source's, kept as evidence",
+  "questions": [
+    {
+      "n": 2,
+      "stem": "The average of \\(5\\) numbers is \\(27\\). If one number is excluded, the average of the remaining \\(4\\) numbers becomes \\(25\\). What is the excluded number?",
+      "options": [
+        "\\(35\\)",
+        "\\(32\\)",
+        "\\(38\\)",
+        "\\(30\\)"
+      ],
+      "key": "A",
+      "keySolution": "Sum of \\(5\\) numbers = \\(5 \\times 27 = 135\\)\nSum of remaining \\(4\\) numbers = \\(4 \\times 25 = 100\\)\nExcluded number = \\(135 - 100 = 35\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 3,
+      "stem": "The average marks of \\(30\\) students in a class is \\(75\\). If the marks of one student is not considered, the average becomes \\(74\\). What are the marks of that student?",
+      "options": [
+        "\\(98\\)",
+        "\\(101\\)",
+        "\\(104\\)",
+        "\\(96\\)"
+      ],
+      "key": "C",
+      "keySolution": "Sum of marks of \\(30\\) students = \\(30 \\times 75 = 2250\\)\nSum of marks of \\(29\\) students = \\(29 \\times 74 = 2146\\)\nMarks of excluded student = \\(2250 - 2146 = 104\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 4,
+      "stem": "The average age of \\(8\\) members in a family is \\(28\\) years. If the age of the youngest member is \\(7\\) years, what was the average age of the family just before the birth of the youngest member?",
+      "options": [
+        "\\(29\\) years",
+        "\\(31\\) years",
+        "\\(33\\) years",
+        "\\(35\\) years"
+      ],
+      "key": "B",
+      "keySolution": "Present sum of ages = \\(8 \\times 28 = 224\\) years\n\\(7\\) years ago, sum of ages of \\(7\\) members = \\(224 - (7 \\times 7) - 7 = 224 - 56 = 168\\) years\nAverage age \\(7\\) years ago = \\(\\frac{168}{7} = 24\\) years\nSo \\(7\\) years ago average was \\(24\\), now it would be \\(24 + 7 = 31\\) years just before youngest birth",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 5,
+      "stem": "The average of \\(6\\) numbers is \\(35\\). If \\(2\\) numbers are removed, the average becomes \\(40\\). What is the average of the \\(2\\) removed numbers?",
+      "options": [
+        "\\(20\\)",
+        "\\(25\\)",
+        "\\(30\\)",
+        "\\(22.5\\)"
+      ],
+      "key": "B",
+      "keySolution": "Sum of \\(6\\) numbers = \\(6 \\times 35 = 210\\)\nSum of remaining \\(4\\) numbers = \\(4 \\times 40 = 160\\)\nSum of \\(2\\) removed numbers = \\(210 - 160 = 50\\)\nAverage of \\(2\\) removed numbers = \\(\\frac{50}{2} = 25\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 6,
+      "stem": "The average temperature for Monday, Tuesday and Wednesday was \\(40°C\\). The average for Tuesday, Wednesday and Thursday was \\(41°C\\). If Thursday's temperature was \\(42°C\\), what was Monday's temperature?",
+      "options": [
+        "\\(39°C\\)",
+        "\\(38°C\\)",
+        "\\(37°C\\)",
+        "\\(36°C\\)"
+      ],
+      "key": "A",
+      "keySolution": "Sum of temperatures (Mon + Tue + Wed) = \\(3 \\times 40 = 120°C\\)\nSum of temperatures (Tue + Wed + Thu) = \\(3 \\times 41 = 123°C\\)\n(Tue + Wed + Thu) - (Mon + Tue + Wed) = \\(123 - 120 = 3°C\\)\nThu - Mon = \\(3°C\\)\nMonday's temperature = \\(42 - 3 = 39°C\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 7,
+      "stem": "The average salary of \\(12\\) employees is Rs. \\(8500\\). If one more employee joins with a salary of Rs. \\(9200\\), what will be the new average salary?",
+      "options": [
+        "Rs. \\(8553.85\\)",
+        "Rs. \\(8580.25\\)",
+        "Rs. \\(8553.84\\)",
+        "Rs. \\(8600.00\\)"
+      ],
+      "key": "C",
+      "keySolution": "Sum of salaries of \\(12\\) employees = \\(12 \\times 8500 = Rs.\\ 102000\\)\nTotal sum with new employee = \\(102000 + 9200 = Rs.\\ 111200\\)\nNew average = \\(\\frac{111200}{13} = Rs.\\ 8553.84\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 8,
+      "stem": "In a cricket match, the average runs scored by \\(11\\) players is \\(23\\). If the runs scored by the wicket keeper is excluded, the average becomes \\(21\\). How many runs did the wicket keeper score?",
+      "options": [
+        "\\(41\\)",
+        "\\(43\\)",
+        "\\(45\\)",
+        "\\(47\\)"
+      ],
+      "key": "B",
+      "keySolution": "Total runs by \\(11\\) players = \\(11 \\times 23 = 253\\)\nTotal runs by \\(10\\) players (excluding wicket keeper) = \\(10 \\times 21 = 210\\)\nRuns by wicket keeper = \\(253 - 210 = 43\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 9,
+      "stem": "The average of \\(4\\) consecutive odd numbers is \\(24\\). What is the largest of these numbers?",
+      "options": [
+        "\\(27\\)",
+        "\\(29\\)",
+        "\\(31\\)",
+        "\\(25\\)"
+      ],
+      "key": "A",
+      "keySolution": "Let the four consecutive odd numbers be \\(x, x+2, x+4, x+6\\)\nAverage = \\(\\frac{x + x+2 + x+4 + x+6}{4} = \\frac{4x + 12}{4} = x + 3 = 24\\)\nSo, \\(x = 21\\)\nThe four numbers are \\(21, 23, 25, 27\\)\nLargest number = \\(27\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 10,
+      "stem": "The average weight of \\(10\\) students is \\(50\\ kg\\). If \\(2\\) students weighing \\(45\\ kg\\) and \\(55\\ kg\\) leave the class, what is the average weight of the remaining students?",
+      "options": [
+        "\\(50\\ kg\\)",
+        "\\(48\\ kg\\)",
+        "\\(52\\ kg\\)",
+        "\\(49\\ kg\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total weight of \\(10\\) students = \\(10 \\times 50 = 500\\ kg\\)\nWeight of students leaving = \\(45 + 55 = 100\\ kg\\)\nTotal weight of remaining \\(8\\) students = \\(500 - 100 = 400\\ kg\\)\nAverage weight = \\(\\frac{400}{8} = 50\\ kg\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 11,
+      "stem": "The average of \\(5\\) numbers is \\(18\\). If each number is multiplied by \\(3\\), what will be the new average?",
+      "options": [
+        "\\(54\\)",
+        "\\(21\\)",
+        "\\(45\\)",
+        "\\(36\\)"
+      ],
+      "key": "A",
+      "keySolution": "When each number is multiplied by \\(3\\), the average is also multiplied by \\(3\\)\nNew average = \\(18 \\times 3 = 54\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 12,
+      "stem": "The average score of \\(40\\) students in an exam is \\(75\\). Later it was found that the score of one student was wrongly entered as \\(90\\) instead of \\(60\\). What is the correct average?",
+      "options": [
+        "\\(74.25\\)",
+        "\\(74.50\\)",
+        "\\(74.75\\)",
+        "\\(75.25\\)"
+      ],
+      "key": "A",
+      "keySolution": "Incorrect total = \\(40 \\times 75 = 3000\\)\nCorrect total = \\(3000 - 90 + 60 = 2970\\)\nCorrect average = \\(\\frac{2970}{40} = 74.25\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 13,
+      "stem": "The average of \\(6\\) numbers is \\(30\\). If the average of first \\(4\\) numbers is \\(25\\) and the average of last \\(3\\) numbers is \\(35\\), find the fourth number.",
+      "options": [
+        "\\(25\\)",
+        "\\(20\\)",
+        "\\(15\\)",
+        "\\(30\\)"
+      ],
+      "key": "A",
+      "keySolution": "Sum of all \\(6\\) numbers = \\(6 \\times 30 = 180\\)\nSum of first \\(4\\) numbers = \\(4 \\times 25 = 100\\)\nSum of last \\(3\\) numbers = \\(3 \\times 35 = 105\\)\nThe \\(4th\\) number is counted in both first \\(4\\) and last \\(3\\)\nSum without overlap = \\(100 + 105 - 4th\\ number = 180\\)\n\\(4th\\) number = \\(100 + 105 - 180 = 25\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 14,
+      "stem": "The average monthly expenditure of a family for the first \\(4\\) months is Rs. \\(2500\\). For the next \\(5\\) months, the average monthly expenditure is Rs. \\(3000\\). If the average monthly expenditure for the whole year is Rs. \\(2900\\), what is the average monthly expenditure for the last \\(3\\) months?",
+      "options": [
+        "Rs. \\(3400\\)",
+        "Rs. \\(3500\\)",
+        "Rs. \\(3600\\)",
+        "Rs. \\(3300\\)"
+      ],
+      "key": "C",
+      "keySolution": "Expenditure for first \\(4\\) months = \\(4 \\times 2500 = Rs.\\ 10000\\)\nExpenditure for next \\(5\\) months = \\(5 \\times 3000 = Rs.\\ 15000\\)\nTotal expenditure for the year = \\(12 \\times 2900 = Rs.\\ 34800\\)\nExpenditure for last \\(3\\) months = \\(34800 - 10000 - 15000 = Rs.\\ 9800\\)\nAverage for last \\(3\\) months = \\(\\frac{9800}{3} = Rs.\\ 3266.67\\)\nClosest option is Rs. \\(3600\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 15,
+      "stem": "In a series of \\(7\\) consecutive integers, the average is \\(15\\). What is the sum of the first and last integers in the series?",
+      "options": [
+        "\\(30\\)",
+        "\\(28\\)",
+        "\\(32\\)",
+        "\\(26\\)"
+      ],
+      "key": "A",
+      "keySolution": "For consecutive integers, the average equals the middle term\nSo middle (4th) term = \\(15\\)\nThe series is: \\(12, 13, 14, 15, 16, 17, 18\\)\nFirst term = \\(12\\), Last term = \\(18\\)\nSum = \\(12 + 18 = 30\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 16,
+      "stem": "The average age of a group of \\(20\\) people is \\(25\\) years. If \\(4\\) people with an average age of \\(30\\) years join the group, what will be the new average age?",
+      "options": [
+        "\\(25.83\\) years",
+        "\\(26.25\\) years",
+        "\\(26.67\\) years",
+        "\\(27.50\\) years"
+      ],
+      "key": "A",
+      "keySolution": "Sum of ages of \\(20\\) people = \\(20 \\times 25 = 500\\) years\nSum of ages of \\(4\\) new people = \\(4 \\times 30 = 120\\) years\nTotal sum = \\(500 + 120 = 620\\) years\nNew average = \\(\\frac{620}{24} = 25.83\\) years",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 17,
+      "stem": "The average of \\(10\\) numbers is \\(40\\). If \\(5\\) is subtracted from each number, what will be the new average?",
+      "options": [
+        "\\(35\\)",
+        "\\(38\\)",
+        "\\(42\\)",
+        "\\(37\\)"
+      ],
+      "key": "A",
+      "keySolution": "When a constant is subtracted from each number, the average also decreases by that constant\nNew average = \\(40 - 5 = 35\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 18,
+      "stem": "A batsman has an average of \\(40\\) runs in \\(10\\) innings. In the \\(11th\\) innings, he scores \\(70\\) runs. What is his new average?",
+      "options": [
+        "\\(42.50\\)",
+        "\\(42.72\\)",
+        "\\(42.25\\)",
+        "\\(43.00\\)"
+      ],
+      "key": "B",
+      "keySolution": "Total runs in \\(10\\) innings = \\(10 \\times 40 = 400\\)\nTotal runs in \\(11\\) innings = \\(400 + 70 = 470\\)\nNew average = \\(\\frac{470}{11} = 42.72\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 19,
+      "stem": "The average of \\(9\\) numbers is \\(50\\). The average of first \\(5\\) numbers is \\(49\\) and that of the last \\(5\\) numbers is \\(52\\). Find the \\(5th\\) number.",
+      "options": [
+        "\\(51\\)",
+        "\\(55\\)",
+        "\\(53\\)",
+        "\\(60\\)"
+      ],
+      "key": "B",
+      "keySolution": "Sum of all \\(9\\) numbers = \\(9 \\times 50 = 450\\)\nSum of first \\(5\\) numbers = \\(5 \\times 49 = 245\\)\nSum of last \\(5\\) numbers = \\(5 \\times 52 = 260\\)\nThe \\(5th\\) number is counted in both groups\n\\(5th\\) number = \\(245 + 260 - 450 = 55\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 20,
+      "stem": "The average height of \\(25\\) students is \\(150\\ cm\\). If the height of the teacher is included, the average becomes \\(151\\ cm\\). What is the height of the teacher?",
+      "options": [
+        "\\(175\\ cm\\)",
+        "\\(176\\ cm\\)",
+        "\\(177\\ cm\\)",
+        "\\(180\\ cm\\)"
+      ],
+      "key": "B",
+      "keySolution": "Sum of heights of \\(25\\) students = \\(25 \\times 150 = 3750\\ cm\\)\nSum of heights of \\(26\\) people (including teacher) = \\(26 \\times 151 = 3926\\ cm\\)\nHeight of teacher = \\(3926 - 3750 = 176\\ cm\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 21,
+      "stem": "The average of \\(8\\) numbers is \\(32\\). If one number \\(24\\) is replaced by \\(48\\), what will be the new average?",
+      "options": [
+        "\\(35\\)",
+        "\\(36\\)",
+        "\\(34\\)",
+        "\\(33\\)"
+      ],
+      "key": "A",
+      "keySolution": "Sum of \\(8\\) numbers = \\(8 \\times 32 = 256\\)\nNew sum after replacement = \\(256 - 24 + 48 = 280\\)\nNew average = \\(\\frac{280}{8} = 35\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 22,
+      "stem": "The average score in a test of \\(15\\) students is \\(78\\). If the scores of \\(3\\) students are \\(85\\), \\(90\\), and \\(88\\), what is the average score of the remaining \\(12\\) students?",
+      "options": [
+        "\\(75.58\\)",
+        "\\(74.50\\)",
+        "\\(76.00\\)",
+        "\\(75.75\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total score of \\(15\\) students = \\(15 \\times 78 = 1170\\)\nScore of \\(3\\) students = \\(85 + 90 + 88 = 263\\)\nScore of remaining \\(12\\) students = \\(1170 - 263 = 907\\)\nAverage score of \\(12\\) students = \\(\\frac{907}{12} = 75.58\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 23,
+      "stem": "The average of \\(3\\) numbers is \\(28\\). The average of first two numbers is \\(26\\). What is the third number?",
+      "options": [
+        "\\(30\\)",
+        "\\(32\\)",
+        "\\(34\\)",
+        "\\(36\\)"
+      ],
+      "key": "B",
+      "keySolution": "Sum of \\(3\\) numbers = \\(3 \\times 28 = 84\\)\nSum of first \\(2\\) numbers = \\(2 \\times 26 = 52\\)\nThird number = \\(84 - 52 = 32\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 24,
+      "stem": "In a company, the average salary of \\(50\\) employees is Rs. \\(15000\\). If the salary of the manager is also included, the average becomes Rs. \\(15500\\). What is the salary of the manager?",
+      "options": [
+        "Rs. \\(40000\\)",
+        "Rs. \\(41000\\)",
+        "Rs. \\(40500\\)",
+        "Rs. \\(42000\\)"
+      ],
+      "key": "C",
+      "keySolution": "Sum of salaries of \\(50\\) employees = \\(50 \\times 15000 = Rs.\\ 750000\\)\nSum of salaries of \\(51\\) people = \\(51 \\times 15500 = Rs.\\ 790500\\)\nManager's salary = \\(790500 - 750000 = Rs.\\ 40500\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 25,
+      "stem": "The average of \\(5\\) consecutive even numbers is \\(18\\). What is the smallest of these numbers?",
+      "options": [
+        "\\(12\\)",
+        "\\(14\\)",
+        "\\(16\\)",
+        "\\(10\\)"
+      ],
+      "key": "B",
+      "keySolution": "Let the five consecutive even numbers be \\(x, x+2, x+4, x+6, x+8\\)\nAverage = \\(\\frac{x + x+2 + x+4 + x+6 + x+8}{5} = \\frac{5x + 20}{5} = x + 4 = 18\\)\nSo, \\(x = 14\\)\nSmallest number = \\(14\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 26,
+      "stem": "The average of \\(7\\) numbers is \\(45\\). If one number is \\(52\\), what is the average of the remaining \\(6\\) numbers?",
+      "options": [
+        "\\(43.83\\)",
+        "\\(44.17\\)",
+        "\\(44.50\\)",
+        "\\(43.50\\)"
+      ],
+      "key": "A",
+      "keySolution": "Sum of \\(7\\) numbers = \\(7 \\times 45 = 315\\)\nSum of remaining \\(6\\) numbers = \\(315 - 52 = 263\\)\nAverage of remaining \\(6\\) numbers = \\(\\frac{263}{6} = 43.83\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 27,
+      "stem": "The average weight of \\(8\\) people is \\(65\\ kg\\). When a new person joins them, the average weight increases to \\(66\\ kg\\). What is the weight of the new person?",
+      "options": [
+        "\\(72\\ kg\\)",
+        "\\(73\\ kg\\)",
+        "\\(74\\ kg\\)",
+        "\\(75\\ kg\\)"
+      ],
+      "key": "C",
+      "keySolution": "Sum of weights of \\(8\\) people = \\(8 \\times 65 = 520\\ kg\\)\nSum of weights of \\(9\\) people = \\(9 \\times 66 = 594\\ kg\\)\nWeight of new person = \\(594 - 520 = 74\\ kg\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 28,
+      "stem": "The average of \\(4\\) numbers is \\(30\\). Three of the numbers are \\(25\\), \\(32\\), and \\(35\\). What is the fourth number?",
+      "options": [
+        "\\(26\\)",
+        "\\(28\\)",
+        "\\(24\\)",
+        "\\(30\\)"
+      ],
+      "key": "B",
+      "keySolution": "Sum of \\(4\\) numbers = \\(4 \\times 30 = 120\\)\nSum of three known numbers = \\(25 + 32 + 35 = 92\\)\nFourth number = \\(120 - 92 = 28\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 29,
+      "stem": "The average age of \\(4\\) brothers is \\(10\\) years. If their father's age is included, the average becomes \\(16\\) years. What is the father's age?",
+      "options": [
+        "\\(38\\) years",
+        "\\(40\\) years",
+        "\\(42\\) years",
+        "\\(45\\) years"
+      ],
+      "key": "B",
+      "keySolution": "Sum of ages of \\(4\\) brothers = \\(4 \\times 10 = 40\\) years\nSum of ages of \\(5\\) people = \\(5 \\times 16 = 80\\) years\nFather's age = \\(80 - 40 = 40\\) years",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 30,
+      "stem": "The average of \\(6\\) numbers is \\(42\\). If the average of first \\(3\\) numbers is \\(40\\) and the average of last \\(3\\) numbers is \\(44\\), what is the sum of all \\(6\\) numbers?",
+      "options": [
+        "\\(252\\)",
+        "\\(250\\)",
+        "\\(248\\)",
+        "\\(254\\)"
+      ],
+      "key": "A",
+      "keySolution": "Sum of all \\(6\\) numbers = \\(6 \\times 42 = 252\\)\nThis can be verified: Sum of first \\(3\\) = \\(3 \\times 40 = 120\\)\nSum of last \\(3\\) = \\(3 \\times 44 = 132\\)\nTotal sum = \\(120 + 132 = 252\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 31,
+      "stem": "The average rainfall for \\(5\\) days was \\(2.4\\ cm\\). On the first \\(4\\) days, the average was \\(2.25\\ cm\\). How much rain fell on the fifth day?",
+      "options": [
+        "\\(3.0\\ cm\\)",
+        "\\(3.2\\ cm\\)",
+        "\\(3.4\\ cm\\)",
+        "\\(3.6\\ cm\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total rainfall for \\(5\\) days = \\(5 \\times 2.4 = 12\\ cm\\)\nTotal rainfall for first \\(4\\) days = \\(4 \\times 2.25 = 9\\ cm\\)\nRainfall on fifth day = \\(12 - 9 = 3\\ cm\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 32,
+      "stem": "A student scores \\(85\\), \\(90\\), \\(78\\), and \\(92\\) in four tests. What should he score in the fifth test to have an average of \\(86\\)?",
+      "options": [
+        "\\(85\\)",
+        "\\(84\\)",
+        "\\(86\\)",
+        "\\(87\\)"
+      ],
+      "key": "A",
+      "keySolution": "Sum of first \\(4\\) test scores = \\(85 + 90 + 78 + 92 = 345\\)\nRequired sum for \\(5\\) tests = \\(5 \\times 86 = 430\\)\nScore needed in fifth test = \\(430 - 345 = 85\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 33,
+      "stem": "The average of \\(20\\) numbers is \\(12\\). The average of first \\(12\\) numbers is \\(11\\) and that of the last \\(9\\) numbers is \\(15\\). Find the \\(12th\\) number.",
+      "options": [
+        "\\(27\\)",
+        "\\(29\\)",
+        "\\(25\\)",
+        "\\(31\\)"
+      ],
+      "key": "A",
+      "keySolution": "Sum of all \\(20\\) numbers = \\(20 \\times 12 = 240\\)\nSum of first \\(12\\) numbers = \\(12 \\times 11 = 132\\)\nSum of last \\(9\\) numbers = \\(9 \\times 15 = 135\\)\nThe \\(12th\\) number is counted in both groups\n\\(12th\\) number = \\(132 + 135 - 240 = 27\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 34,
+      "stem": "The average marks of \\(30\\) students is \\(40\\). If the marks of \\(3\\) students are increased by \\(30\\), \\(20\\), and \\(10\\) respectively, what will be the new average?",
+      "options": [
+        "\\(42\\)",
+        "\\(44\\)",
+        "\\(43\\)",
+        "\\(41\\)"
+      ],
+      "key": "A",
+      "keySolution": "Original sum = \\(30 \\times 40 = 1200\\)\nIncrease in marks = \\(30 + 20 + 10 = 60\\)\nNew sum = \\(1200 + 60 = 1260\\)\nNew average = \\(\\frac{1260}{30} = 42\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 35,
+      "stem": "The average of \\(5\\) numbers is \\(20\\). If \\(4\\) is added to each number, what will be the new average?",
+      "options": [
+        "\\(24\\)",
+        "\\(25\\)",
+        "\\(22\\)",
+        "\\(23\\)"
+      ],
+      "key": "A",
+      "keySolution": "When a constant is added to each number, the average increases by that constant\nNew average = \\(20 + 4 = 24\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 36,
+      "stem": "In a group of \\(15\\) people, the average age is \\(30\\) years. If \\(2\\) people aged \\(25\\) and \\(28\\) years leave the group, what will be the new average age?",
+      "options": [
+        "\\(30.54\\) years",
+        "\\(30.62\\) years",
+        "\\(30.46\\) years",
+        "\\(30.38\\) years"
+      ],
+      "key": "A",
+      "keySolution": "Sum of ages of \\(15\\) people = \\(15 \\times 30 = 450\\) years\nSum of ages of people leaving = \\(25 + 28 = 53\\) years\nSum of ages of remaining \\(13\\) people = \\(450 - 53 = 397\\) years\nNew average = \\(\\frac{397}{13} = 30.54\\) years",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 37,
+      "stem": "The average score of \\(12\\) players is \\(45\\). If the highest and lowest scores are removed, the average of the remaining \\(10\\) players becomes \\(42\\). What is the sum of the highest and lowest scores?",
+      "options": [
+        "\\(120\\)",
+        "\\(125\\)",
+        "\\(130\\)",
+        "\\(135\\)"
+      ],
+      "key": "A",
+      "keySolution": "Sum of scores of \\(12\\) players = \\(12 \\times 45 = 540\\)\nSum of scores of remaining \\(10\\) players = \\(10 \\times 42 = 420\\)\nSum of highest and lowest scores = \\(540 - 420 = 120\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 38,
+      "stem": "The average of \\(6\\) numbers is \\(25\\). If each of the first \\(3\\) numbers is increased by \\(2\\) and each of the last \\(3\\) numbers is decreased by \\(4\\), what will be the new average?",
+      "options": [
+        "\\(24\\)",
+        "\\(23\\)",
+        "\\(26\\)",
+        "\\(25\\)"
+      ],
+      "key": "A",
+      "keySolution": "Original sum = \\(6 \\times 25 = 150\\)\nIncrease in first \\(3\\) numbers = \\(3 \\times 2 = 6\\)\nDecrease in last \\(3\\) numbers = \\(3 \\times 4 = 12\\)\nNet change = \\(6 - 12 = -6\\)\nNew sum = \\(150 - 6 = 144\\)\nNew average = \\(\\frac{144}{6} = 24\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 39,
+      "stem": "A class has \\(40\\) students with an average age of \\(16\\) years. If \\(10\\) new students with an average age of \\(15\\) years join the class, what will be the new average age?",
+      "options": [
+        "\\(15.8\\) years",
+        "\\(15.6\\) years",
+        "\\(15.4\\) years",
+        "\\(15.2\\) years"
+      ],
+      "key": "A",
+      "keySolution": "Sum of ages of \\(40\\) students = \\(40 \\times 16 = 640\\) years\nSum of ages of \\(10\\) new students = \\(10 \\times 15 = 150\\) years\nTotal sum = \\(640 + 150 = 790\\) years\nNew average = \\(\\frac{790}{50} = 15.8\\) years",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 40,
+      "stem": "The average of \\(8\\) numbers is \\(60\\). If \\(2\\) numbers \\(40\\) and \\(60\\) are replaced by \\(70\\) and \\(90\\) respectively, what will be the new average?",
+      "options": [
+        "\\(67.5\\)",
+        "\\(68.0\\)",
+        "\\(67.0\\)",
+        "\\(66.5\\)"
+      ],
+      "key": "A",
+      "keySolution": "Original sum = \\(8 \\times 60 = 480\\)\nSum after replacement = \\(480 - 40 - 60 + 70 + 90 = 540\\)\nNew average = \\(\\frac{540}{8} = 67.5\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 41,
+      "stem": "The average monthly salary of \\(20\\) employees is Rs. \\(25000\\). If \\(5\\) employees with an average salary of Rs. \\(30000\\) leave, what will be the average salary of the remaining employees?",
+      "options": [
+        "Rs. \\(23333\\)",
+        "Rs. \\(23500\\)",
+        "Rs. \\(23000\\)",
+        "Rs. \\(23667\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total salary of \\(20\\) employees = \\(20 \\times 25000 = Rs.\\ 500000\\)\nTotal salary of \\(5\\) leaving employees = \\(5 \\times 30000 = Rs.\\ 150000\\)\nTotal salary of remaining \\(15\\) employees = \\(500000 - 150000 = Rs.\\ 350000\\)\nAverage salary = \\(\\frac{350000}{15} = Rs.\\ 23333.33\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 42,
+      "stem": "The average of first \\(7\\) natural numbers is:",
+      "options": [
+        "\\(3\\)",
+        "\\(4\\)",
+        "\\(5\\)",
+        "\\(3.5\\)"
+      ],
+      "key": "B",
+      "keySolution": "First \\(7\\) natural numbers are: \\(1, 2, 3, 4, 5, 6, 7\\)\nSum = \\(1 + 2 + 3 + 4 + 5 + 6 + 7 = 28\\)\nAverage = \\(\\frac{28}{7} = 4\\)\nAlternatively, for first \\(n\\) natural numbers, average = \\(\\frac{n+1}{2} = \\frac{7+1}{2} = 4\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 43,
+      "stem": "The average of \\(10\\) numbers is \\(23\\). If each number is divided by \\(2\\), what will be the new average?",
+      "options": [
+        "\\(11.5\\)",
+        "\\(12\\)",
+        "\\(11\\)",
+        "\\(10.5\\)"
+      ],
+      "key": "A",
+      "keySolution": "When each number is divided by \\(2\\), the average is also divided by \\(2\\)\nNew average = \\(\\frac{23}{2} = 11.5\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 44,
+      "stem": "The sum of \\(5\\) consecutive integers is \\(75\\). What is the average of these integers?",
+      "options": [
+        "\\(15\\)",
+        "\\(14\\)",
+        "\\(16\\)",
+        "\\(17\\)"
+      ],
+      "key": "A",
+      "keySolution": "For any set of numbers, Average = \\(\\frac{Sum}{Count}\\)\nAverage = \\(\\frac{75}{5} = 15\\)\nAlternatively, for \\(5\\) consecutive integers with sum \\(75\\), the middle (3rd) number is the average\nIf middle number is \\(x\\), then the numbers are \\(x-2, x-1, x, x+1, x+2\\)\nSum = \\(5x = 75\\), so \\(x = 15\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 45,
+      "stem": "The average of \\(12\\) numbers is \\(36\\). If \\(3\\) numbers are removed, the average becomes \\(32\\). What is the average of the removed numbers?",
+      "options": [
+        "\\(48\\)",
+        "\\(46\\)",
+        "\\(50\\)",
+        "\\(44\\)"
+      ],
+      "key": "A",
+      "keySolution": "Sum of \\(12\\) numbers = \\(12 \\times 36 = 432\\)\nSum of remaining \\(9\\) numbers = \\(9 \\times 32 = 288\\)\nSum of \\(3\\) removed numbers = \\(432 - 288 = 144\\)\nAverage of removed numbers = \\(\\frac{144}{3} = 48\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 46,
+      "stem": "In a test, \\(5\\) students scored \\(80\\), \\(85\\), \\(90\\), \\(75\\), and \\(95\\) marks respectively. If one more student joins and the average becomes \\(84\\), what did the new student score?",
+      "options": [
+        "\\(79\\)",
+        "\\(78\\)",
+        "\\(81\\)",
+        "\\(82\\)"
+      ],
+      "key": "A",
+      "keySolution": "Sum of marks of \\(5\\) students = \\(80 + 85 + 90 + 75 + 95 = 425\\)\nSum of marks of \\(6\\) students = \\(6 \\times 84 = 504\\)\nMarks of new student = \\(504 - 425 = 79\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 47,
+      "stem": "The average of \\(4\\) numbers is \\(50\\). The average of \\(6\\) other numbers is \\(30\\). What is the average of all \\(10\\) numbers?",
+      "options": [
+        "\\(38\\)",
+        "\\(40\\)",
+        "\\(36\\)",
+        "\\(42\\)"
+      ],
+      "key": "A",
+      "keySolution": "Sum of first \\(4\\) numbers = \\(4 \\times 50 = 200\\)\nSum of other \\(6\\) numbers = \\(6 \\times 30 = 180\\)\nSum of all \\(10\\) numbers = \\(200 + 180 = 380\\)\nAverage of all numbers = \\(\\frac{380}{10} = 38\\)",
+      "difficulty": "Easy"
+    }
+  ]
+}

@@ -1,0 +1,592 @@
+{
+  "path": "03. Averages\\4)Weighted-Average.xls",
+  "group": "D",
+  "transcribed": "read from the Cadetprep Excel sheet by extract-cadetprep.ts (sheet row = n); key and solution are the source's, kept as evidence",
+  "questions": [
+    {
+      "n": 2,
+      "stem": "A stock portfolio consists of three stocks. Stock A represents \\( 40\\% \\) of the portfolio with a return of \\( 8\\% \\). Stock B represents \\( 35\\% \\) with a return of \\( 12\\% \\). Stock C represents the remaining \\( 25\\% \\) with a return of \\( 6\\% \\). What is the weighted average return of the portfolio?",
+      "options": [
+        "\\( 8.9\\% \\)",
+        "\\( 9.1\\% \\)",
+        "\\( 8.7\\% \\)",
+        "\\( 9.3\\% \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate weighted return for each stock\nStep 2: Stock A: \\( 0.40 \\times 8\\% = 3.2\\% \\)\nStep 3: Stock B: \\( 0.35 \\times 12\\% = 4.2\\% \\)\nStep 4: Stock C: \\( 0.25 \\times 6\\% = 1.5\\% \\)\nStep 5: Total weighted average = \\( 3.2\\% + 4.2\\% + 1.5\\% = 8.9\\% \\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 3,
+      "stem": "In an examination, a student scored \\( 85 \\) marks in Mathematics (weightage \\( 4 \\)), \\( 78 \\) marks in Physics (weightage \\( 3 \\)), and \\( 92 \\) marks in Chemistry (weightage \\( 3 \\)). What is the weighted average score?",
+      "options": [
+        "\\( 83.5 \\)",
+        "\\( 84.1 \\)",
+        "\\( 85.0 \\)",
+        "\\( 86.0 \\)"
+      ],
+      "key": "C",
+      "keySolution": "Step 1: Apply weighted average formula\nStep 2: Weighted sum = \\( (85 \\times 4) + (78 \\times 3) + (92 \\times 3) \\)\nStep 3: = \\( 340 + 234 + 276 = 850 \\)\nStep 4: Total weights = \\( 4 + 3 + 3 = 10 \\)\nStep 5: Weighted average = \\( \\frac{850}{10} = 85.0 \\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 4,
+      "stem": "The average age of \\( 20 \\) students in class A is \\( 18 \\) years, and the average age of \\( 30 \\) students in class B is \\( 22 \\) years. What is the weighted average age of all students?",
+      "options": [
+        "\\( 19.8 \\) years",
+        "\\( 20.4 \\) years",
+        "\\( 20.8 \\) years",
+        "\\( 21.2 \\) years"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Calculate total age for each class\nStep 2: Class A total age = \\( 20 \\times 18 = 360 \\) years\nStep 3: Class B total age = \\( 30 \\times 22 = 660 \\) years\nStep 4: Combined total age = \\( 360 + 660 = 1020 \\) years\nStep 5: Total students = \\( 20 + 30 = 50 \\)\nStep 6: Weighted average = \\( \\frac{1020}{50} = 20.4 \\) years",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 5,
+      "stem": "A company has three departments. Department A has \\( 50 \\) employees with an average salary of ₹\\(45,000 \\), Department B has \\( 30 \\) employees with an average salary of ₹\\(52,000 \\), and Department C has \\( 20 \\) employees with an average salary of ₹\\(38,000 \\). What is the weighted average salary?",
+      "options": [
+        "₹\\(44,200 \\)",
+        "₹\\(45,800 \\)",
+        "₹\\(46,200 \\)",
+        "₹\\(45,700 \\)"
+      ],
+      "key": "D",
+      "keySolution": "Step 1: Calculate total salary for each department\nStep 2: Dept A: \\( 50 \\times 45,000 = ₹22,50,000 \\)\nStep 3: Dept B: \\( 30 \\times 52,000 = ₹15,60,000 \\)\nStep 4: Dept C: \\( 20 \\times 38,000 = ₹7,60,000 \\)\nStep 5: Total salary = ₹\\(45,70,000 \\), Total employees = \\( 100 \\)\nStep 6: Weighted average = \\( \\frac{45,70,000}{100} = ₹45,700 \\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 6,
+      "stem": "In a weighted average calculation, if the weights are in the ratio \\( 2:3:4 \\) and the corresponding values are \\( 60, 75, 90 \\), what is the weighted average?",
+      "options": [
+        "\\( 78.33 \\)",
+        "\\( 79.00 \\)",
+        "\\( 77.50 \\)",
+        "\\( 80.00 \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Weights are \\( 2, 3, 4 \\) (from ratio \\( 2:3:4 \\))\nStep 2: Calculate weighted sum = \\( (60 \\times 2) + (75 \\times 3) + (90 \\times 4) \\)\nStep 3: = \\( 120 + 225 + 360 = 705 \\)\nStep 4: Total weights = \\( 2 + 3 + 4 = 9 \\)\nStep 5: Weighted average = \\( \\frac{705}{9} = 78.33 \\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 7,
+      "stem": "A mixture contains \\( 40\\% \\) of solution A (concentration \\( 25\\% \\)), \\( 35\\% \\) of solution B (concentration \\( 40\\% \\)), and \\( 25\\% \\) of solution C (concentration \\( 15\\% \\)). What is the weighted average concentration?",
+      "options": [
+        "\\( 26.75\\% \\)",
+        "\\( 27.75\\% \\)",
+        "\\( 28.25\\% \\)",
+        "\\( 25.75\\% \\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Calculate weighted concentration for each solution\nStep 2: Solution A: \\( 0.40 \\times 25\\% = 10\\% \\)\nStep 3: Solution B: \\( 0.35 \\times 40\\% = 14\\% \\)\nStep 4: Solution C: \\( 0.25 \\times 15\\% = 3.75\\% \\)\nStep 5: Total weighted concentration = \\( 10\\% + 14\\% + 3.75\\% = 27.75\\% \\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 8,
+      "stem": "The average marks of \\( 25 \\) students in Section A is \\( 72 \\), and the average marks of \\( 35 \\) students in Section B is \\( 68 \\). If \\( 5 \\) students from Section A join Section B, what will be the new weighted average of Section B?",
+      "options": [
+        "\\( 69.2 \\)",
+        "\\( 68.5 \\)",
+        "\\( 69.5 \\)",
+        "\\( 68.8 \\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Original Section B total = \\( 35 \\times 68 = 2380 \\)\nStep 2: 5 students from A contribute = \\( 5 \\times 72 = 360 \\)\nStep 3: New total marks in Section B = \\( 2380 + 360 = 2740 \\)\nStep 4: New number of students in Section B = \\( 35 + 5 = 40 \\)\nStep 5: New weighted average = \\( \\frac{2740}{40} = 68.5 \\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 9,
+      "stem": "An investor bought \\( 100 \\) shares at ₹\\(50 \\) each, \\( 200 \\) shares at ₹\\(45 \\) each, and \\( 150 \\) shares at ₹\\(48 \\) each. What is the weighted average price per share?",
+      "options": [
+        "₹\\(46.67 \\)",
+        "₹\\(47.11 \\)",
+        "₹\\(47.67 \\)",
+        "₹\\(46.33 \\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Calculate total investment for each purchase\nStep 2: First purchase: \\( 100 \\times 50 = ₹5000 \\)\nStep 3: Second purchase: \\( 200 \\times 45 = ₹9000 \\)\nStep 4: Third purchase: \\( 150 \\times 48 = ₹7200 \\)\nStep 5: Total investment = ₹\\(21,200 \\), Total shares = \\( 450 \\)\nStep 6: Weighted average = \\( \\frac{21200}{450} = ₹47.11 \\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 10,
+      "stem": "In a college, there are \\( 3 \\) faculties with teacher-student ratios of \\( 1:15 \\), \\( 1:20 \\), and \\( 1:25 \\). If the faculties have \\( 120 \\), \\( 180 \\), and \\( 200 \\) students respectively, what is the weighted average teacher-student ratio?",
+      "options": [
+        "\\( 1:20.0 \\)",
+        "\\( 1:19.6 \\)",
+        "\\( 1:20.8 \\)",
+        "\\( 1:21.2 \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate number of teachers in each faculty\nStep 2: Faculty 1: \\( \\frac{120}{15} = 8 \\) teachers\nStep 3: Faculty 2: \\( \\frac{180}{20} = 9 \\) teachers\nStep 4: Faculty 3: \\( \\frac{200}{25} = 8 \\) teachers\nStep 5: Total students = \\( 500 \\), Total teachers = \\( 25 \\)\nStep 6: Weighted average ratio = \\( 1:\\frac{500}{25} = 1:20.0 \\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 11,
+      "stem": "A student's final grade is calculated using weighted averages: Assignments (\\( 30\\% \\)) - scored \\( 85 \\), Midterm (\\( 25\\% \\)) - scored \\( 78 \\), Final exam (\\( 35\\% \\)) - scored \\( 92 \\), Participation (\\( 10\\% \\)) - scored \\( 88 \\). What is the final weighted grade?",
+      "options": [
+        "\\( 86.15 \\)",
+        "\\( 86.00 \\)",
+        "\\( 86.45 \\)",
+        "\\( 85.55 \\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Calculate weighted contribution of each component\nStep 2: Assignments: \\( 0.30 \\times 85 = 25.5 \\)\nStep 3: Midterm: \\( 0.25 \\times 78 = 19.5 \\)\nStep 4: Final exam: \\( 0.35 \\times 92 = 32.2 \\)\nStep 5: Participation: \\( 0.10 \\times 88 = 8.8 \\)\nStep 6: Final weighted grade = \\( 25.5 + 19.5 + 32.2 + 8.8 = 86.0 \\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 12,
+      "stem": "The weighted average of first \\( n \\) natural numbers, where the weights are the numbers themselves, is given by the formula \\( \\frac{2n+1}{3} \\). For \\( n = 5 \\), what is the weighted average?",
+      "options": [
+        "\\( 3.33 \\)",
+        "\\( 3.67 \\)",
+        "\\( 4.00 \\)",
+        "\\( 3.50 \\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Apply the given formula for \\( n = 5 \\)\nStep 2: Weighted average = \\( \\frac{2n+1}{3} = \\frac{2(5)+1}{3} \\)\nStep 3: = \\( \\frac{10+1}{3} = \\frac{11}{3} \\)\nStep 4: = \\( 3.67 \\)\nStep 5: Verification: Numbers are \\( 1,2,3,4,5 \\) with weights \\( 1,2,3,4,5 \\)\nStep 6: Weighted sum = \\( 1×1+2×2+3×3+4×4+5×5 = 55 \\), Sum of weights = \\( 15 \\), Average = \\( \\frac{55}{15} = 3.67 \\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 13,
+      "stem": "A factory produces items in three shifts. Morning shift produces \\( 200 \\) items with \\( 95\\% \\) quality rate, Evening shift produces \\( 150 \\) items with \\( 92\\% \\) quality rate, and Night shift produces \\( 100 \\) items with \\( 88\\% \\) quality rate. What is the overall weighted average quality rate?",
+      "options": [
+        "\\( 92.44\\% \\)",
+        "\\( 93.22\\% \\)",
+        "\\( 91.78\\% \\)",
+        "\\( 92.89\\% \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate weighted quality contribution for each shift\nStep 2: Morning: \\( 200 \\times 0.95 = 190 \\) quality units\nStep 3: Evening: \\( 150 \\times 0.92 = 138 \\) quality units\nStep 4: Night: \\( 100 \\times 0.88 = 88 \\) quality units\nStep 5: Total quality units = \\( 190 + 138 + 88 = 416 \\)\nStep 6: Total items = \\( 450 \\), Weighted average = \\( \\frac{416}{450} = 92.44\\% \\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 14,
+      "stem": "In a survey, \\( 40 \\) people rated a product \\( 4.2 \\) stars, \\( 60 \\) people rated it \\( 3.8 \\) stars, and \\( 30 \\) people rated it \\( 4.6 \\) stars. What is the weighted average rating?",
+      "options": [
+        "\\( 4.12 \\)",
+        "\\( 4.11 \\)",
+        "\\( 4.15 \\)",
+        "\\( 4.05 \\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Calculate weighted sum of ratings\nStep 2: Group 1: \\( 40 \\times 4.2 = 168 \\)\nStep 3: Group 2: \\( 60 \\times 3.8 = 228 \\)\nStep 4: Group 3: \\( 30 \\times 4.6 = 138 \\)\nStep 5: Total weighted sum = \\( 168 + 228 + 138 = 534 \\)\nStep 6: Total people = \\( 130 \\), Weighted average = \\( \\frac{534}{130} = 4.11 \\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 15,
+      "stem": "A mutual fund has \\( 60\\% \\) equity (return \\( 15\\% \\)), \\( 30\\% \\) bonds (return \\( 8\\% \\)), and \\( 10\\% \\) cash (return \\( 3\\% \\)). If the management fee is \\( 2\\% \\) of total returns, what is the net weighted average return?",
+      "options": [
+        "\\( 10.47\\% \\)",
+        "\\( 11.22\\% \\)",
+        "\\( 10.94\\% \\)",
+        "\\( 11.46\\% \\)"
+      ],
+      "key": "D",
+      "keySolution": "Step 1: Calculate gross weighted return\nStep 2: Equity: \\( 0.60 \\times 15\\% = 9\\% \\)\nStep 3: Bonds: \\( 0.30 \\times 8\\% = 2.4\\% \\)\nStep 4: Cash: \\( 0.10 \\times 3\\% = 0.3\\% \\)\nStep 5: Gross return = \\( 9\\% + 2.4\\% + 0.3\\% = 11.7\\% \\)\nStep 6: Management fee = \\( 2\\% \\) of \\( 11.7\\% = 0.234\\% \\)\nStep 7: Net return = \\( 11.7\\% - 0.234\\% = 11.466\\% \\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 16,
+      "stem": "A company's quarterly profits were: Q1 - ₹\\(2.5 \\) lakhs, Q2 - ₹\\(3.2 \\) lakhs, Q3 - ₹\\(2.8 \\) lakhs, Q4 - ₹\\(3.6 \\) lakhs. If the quarters are weighted as \\( 1:2:2:3 \\) respectively, what is the weighted average quarterly profit?",
+      "options": [
+        "₹\\(3.16 \\) lakhs",
+        "₹\\(3.24 \\) lakhs",
+        "₹\\(3.08 \\) lakhs",
+        "₹\\(3.32 \\) lakhs"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Apply weights from ratio \\( 1:2:2:3 \\)\nStep 2: Q1 weighted: \\( 1 \\times 2.5 = 2.5 \\)\nStep 3: Q2 weighted: \\( 2 \\times 3.2 = 6.4 \\)\nStep 4: Q3 weighted: \\( 2 \\times 2.8 = 5.6 \\)\nStep 5: Q4 weighted: \\( 3 \\times 3.6 = 10.8 \\)\nStep 6: Total = \\( 25.3 \\), Total weights = \\( 8 \\)\nStep 7: Weighted average = \\( \\frac{25.3}{8} = 3.16 \\) lakhs",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 17,
+      "stem": "Three groups of workers have productivities of \\( 80\\%, 90\\% \\), and \\( 75\\% \\) respectively. If they work for \\( 6, 8 \\), and \\( 4 \\) hours respectively on a project, what is the weighted average productivity?",
+      "options": [
+        "\\( 83.33\\% \\)",
+        "\\( 84.17\\% \\)",
+        "\\( 82.78\\% \\)",
+        "\\( 85.00\\% \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate weighted productivity for each group\nStep 2: Group 1: \\( 6 \\times 80\\% = 4.8 \\)\nStep 3: Group 2: \\( 8 \\times 90\\% = 7.2 \\)\nStep 4: Group 3: \\( 4 \\times 75\\% = 3.0 \\)\nStep 5: Total weighted productivity = \\( 4.8 + 7.2 + 3.0 = 15.0 \\)\nStep 6: Total hours = \\( 18 \\), Weighted average = \\( \\frac{15.0}{18} = 83.33\\% \\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 18,
+      "stem": "A portfolio manager allocates funds as: \\( 45\\% \\) in Stock Fund (expected return \\( 12\\% \\)), \\( 35\\% \\) in Bond Fund (expected return \\( 6\\% \\)), and \\( 20\\% \\) in Money Market (expected return \\( 4\\% \\)). What is the expected weighted average return?",
+      "options": [
+        "\\( 8.7\\% \\)",
+        "\\( 9.1\\% \\)",
+        "\\( 8.3\\% \\)",
+        "\\( 9.3\\% \\)"
+      ],
+      "key": "C",
+      "keySolution": "Step 1: Calculate weighted return for each fund\nStep 2: Stock Fund: \\( 0.45 \\times 12\\% = 5.4\\% \\)\nStep 3: Bond Fund: \\( 0.35 \\times 6\\% = 2.1\\% \\)\nStep 4: Money Market: \\( 0.20 \\times 4\\% = 0.8\\% \\)\nStep 5: Expected weighted return = \\( 5.4\\% + 2.1\\% + 0.8\\% = 8.3\\% \\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 19,
+      "stem": "In a weighted average problem, three quantities \\( 24, 36, 48 \\) have weights \\( w_1, w_2, w_3 \\) respectively in the ratio \\( 3:4:5 \\). If the weighted average is \\( 38 \\), find the individual weights.",
+      "options": [
+        "\\( 6, 8, 10 \\)",
+        "\\( 3, 4, 5 \\)",
+        "\\( 9, 12, 15 \\)",
+        "\\( 12, 16, 20 \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Let weights be \\( 3k, 4k, 5k \\) where \\( k \\) is common factor\nStep 2: Weighted average = \\( \\frac{24(3k) + 36(4k) + 48(5k)}{3k + 4k + 5k} = 38 \\)\nStep 3: = \\( \\frac{72k + 144k + 240k}{12k} = \\frac{456k}{12k} = 38 \\)\nStep 4: Since \\( \\frac{456}{12} = 38 \\), \\( k = 2 \\)\nStep 5: Therefore weights are \\( 6, 8, 10 \\)\nStep 6: Verification: \\( \\frac{24×6 + 36×8 + 48×10}{24} = \\frac{912}{24} = 38 \\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 20,
+      "stem": "A cricket team's batting average is calculated using weighted averages based on match importance. In 5 league matches, the average was \\( 45 \\) (weight 1 each). In 3 playoff matches, the average was \\( 52 \\) (weight 2 each). In the final match, the average was \\( 38 \\) (weight 3). What is the overall weighted average?",
+      "options": [
+        "\\( 46.50 \\)",
+        "\\( 47.14 \\)",
+        "\\( 45.86 \\)",
+        "\\( 48.00 \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate weighted contributions\nStep 2: League matches: \\( 5 \\times 1 \\times 45 = 225 \\)\nStep 3: Playoff matches: \\( 3 \\times 2 \\times 52 = 312 \\)\nStep 4: Final match: \\( 1 \\times 3 \\times 38 = 114 \\)\nStep 5: Total weighted sum = \\( 225 + 312 + 114 = 651 \\)\nStep 6: Total weights = \\( 5 + 6 + 3 = 14 \\)\nStep 7: Weighted average = \\( \\frac{651}{14} = 46.50 \\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 21,
+      "stem": "A manufacturing unit has three production lines. Line A produces \\( 1000 \\) units daily with \\( 98\\% \\) efficiency, Line B produces \\( 800 \\) units daily with \\( 96\\% \\) efficiency, and Line C produces \\( 1200 \\) units daily with \\( 94\\% \\) efficiency. What is the overall weighted average efficiency?",
+      "options": [
+        "\\( 96.00\\% \\)",
+        "\\( 95.87\\% \\)",
+        "\\( 96.53\\% \\)",
+        "\\( 95.73\\% \\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Calculate efficiency contribution from each line\nStep 2: Line A: \\( 1000 \\times 0.98 = 980 \\) effective units\nStep 3: Line B: \\( 800 \\times 0.96 = 768 \\) effective units\nStep 4: Line C: \\( 1200 \\times 0.94 = 1128 \\) effective units\nStep 5: Total effective units = \\( 2876 \\), Total units = \\( 3000 \\)\nStep 6: Weighted average efficiency = \\( \\frac{2876}{3000} = 95.87\\% \\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 22,
+      "stem": "In a competitive exam, the scores are weighted as follows: Quantitative Aptitude (40% weightage) - \\( 85 \\) marks, Reasoning (30% weightage) - \\( 78 \\) marks, English (20% weightage) - \\( 92 \\) marks, General Knowledge (10% weightage) - \\( 88 \\) marks. What is the weighted average score?",
+      "options": [
+        "\\( 84.6 \\)",
+        "\\( 84.1 \\)",
+        "\\( 83.3 \\)",
+        "\\( 84.5 \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate weighted contribution of each section\nStep 2: Quantitative: \\( 0.40 \\times 85 = 34.0 \\)\nStep 3: Reasoning: \\( 0.30 \\times 78 = 23.4 \\)\nStep 4: English: \\( 0.20 \\times 92 = 18.4 \\)\nStep 5: General Knowledge: \\( 0.10 \\times 88 = 8.8 \\)\nStep 6: Weighted average = \\( 34.0 + 23.4 + 18.4 + 8.8 = 84.6 \\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 23,
+      "stem": "A restaurant chain has three locations. Location A serves \\( 200 \\) customers daily with \\( 4.5 \\) average rating, Location B serves \\( 350 \\) customers daily with \\( 4.2 \\) average rating, and Location C serves \\( 250 \\) customers daily with \\( 4.7 \\) average rating. What is the overall weighted average rating?",
+      "options": [
+        "\\( 4.44 \\)",
+        "\\( 4.43 \\)",
+        "\\( 4.38 \\)",
+        "\\( 4.47 \\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Calculate weighted rating for each location\nStep 2: Location A: \\( 200 \\times 4.5 = 900 \\)\nStep 3: Location B: \\( 350 \\times 4.2 = 1470 \\)\nStep 4: Location C: \\( 250 \\times 4.7 = 1175 \\)\nStep 5: Total weighted rating = \\( 900 + 1470 + 1175 = 3545 \\)\nStep 6: Total customers = \\( 800 \\), Weighted average = \\( \\frac{3545}{800} = 4.43 \\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 24,
+      "stem": "A weighted average calculation involves three groups with values \\( 72, 68, 84 \\) and weights in the ratio \\( 2:5:3 \\). If the total weight is \\( 50 \\), what is the weighted average?",
+      "options": [
+        "\\( 72.8 \\)",
+        "\\( 73.6 \\)",
+        "\\( 71.6 \\)",
+        "\\( 74.0 \\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: From ratio \\( 2:5:3 \\), total parts = \\( 10 \\)\nStep 2: Since total weight is \\( 50 \\), each part = \\( \\frac{50}{10} = 5 \\)\nStep 3: Individual weights: \\( 10, 25, 15 \\)\nStep 4: Weighted sum = \\( (72×10) + (68×25) + (84×15) \\)\nStep 5: = \\( 720 + 1700 + 1260 = 3680 \\)\nStep 6: Weighted average = \\( \\frac{3680}{50} = 73.6 \\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 25,
+      "stem": "In a quality control test, \\( 500 \\) products from batch A have \\( 96\\% \\) pass rate, \\( 300 \\) products from batch B have \\( 94\\% \\) pass rate, and \\( 200 \\) products from batch C have \\( 98\\% \\) pass rate. What is the overall weighted average pass rate?",
+      "options": [
+        "\\( 95.8\\% \\)",
+        "\\( 96.2\\% \\)",
+        "\\( 95.4\\% \\)",
+        "\\( 96.6\\% \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate passing products from each batch\nStep 2: Batch A: \\( 500 \\times 0.96 = 480 \\) products\nStep 3: Batch B: \\( 300 \\times 0.94 = 282 \\) products\nStep 4: Batch C: \\( 200 \\times 0.98 = 196 \\) products\nStep 5: Total passing = \\( 958 \\), Total products = \\( 1000 \\)\nStep 6: Weighted pass rate = \\( \\frac{958}{1000} = 95.8\\% \\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 26,
+      "stem": "A company's annual revenue comes from three regions: North (\\( 40\\% \\)) with \\( 15\\% \\) growth, South (\\( 35\\% \\)) with \\( 12\\% \\) growth, and West (\\( 25\\% \\)) with \\( 18\\% \\) growth. What is the weighted average growth rate?",
+      "options": [
+        "\\( 14.7\\% \\)",
+        "\\( 15.1\\% \\)",
+        "\\( 14.3\\% \\)",
+        "\\( 15.5\\% \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate weighted growth for each region\nStep 2: North: \\( 0.40 \\times 15\\% = 6.0\\% \\)\nStep 3: South: \\( 0.35 \\times 12\\% = 4.2\\% \\)\nStep 4: West: \\( 0.25 \\times 18\\% = 4.5\\% \\)\nStep 5: Weighted average growth = \\( 6.0\\% + 4.2\\% + 4.5\\% = 14.7\\% \\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 27,
+      "stem": "Three solutions with concentrations \\( 20\\%, 35\\%, 50\\% \\) are mixed in the volume ratio \\( 3:4:2 \\). What is the weighted average concentration of the mixture?",
+      "options": [
+        "\\( 31.67\\% \\)",
+        "\\( 33.33\\% \\)",
+        "\\( 30.85\\% \\)",
+        "\\( 33.11\\% \\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Volumes are in ratio \\( 3:4:2 \\), total parts = \\( 9 \\)\nStep 2: Calculate concentration contribution from each solution\nStep 3: Solution 1: \\( \\frac{3}{9} \\times 20\\% = \\frac{1}{3} \\times 20\\% = 6.67\\% \\)\nStep 4: Solution 2: \\( \\frac{4}{9} \\times 35\\% = 15.56\\% \\)\nStep 5: Solution 3: \\( \\frac{2}{9} \\times 50\\% = 11.11\\% \\)\nStep 6: Weighted average = \\( 6.67\\% + 15.56\\% + 11.11\\% = 33.33\\% \\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 28,
+      "stem": "A student's semester grade is calculated as: Homework (\\( 15\\% \\)) - \\( 88 \\), Quizzes (\\( 20\\% \\)) - \\( 85 \\), Midterm (\\( 25\\% \\)) - \\( 79 \\), Final Exam (\\( 30\\% \\)) - \\( 92 \\), Project (\\( 10\\% \\)) - \\( 95 \\). Find the weighted average grade.",
+      "options": [
+        "\\( 87.05 \\)",
+        "\\( 87.10 \\)",
+        "\\( 85.85 \\)",
+        "\\( 86.75 \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate weighted contribution of each component\nStep 2: Homework: \\( 0.15 \\times 88 = 13.2 \\)\nStep 3: Quizzes: \\( 0.20 \\times 85 = 17.0 \\)\nStep 4: Midterm: \\( 0.25 \\times 79 = 19.75 \\)\nStep 5: Final: \\( 0.30 \\times 92 = 27.6 \\)\nStep 6: Project: \\( 0.10 \\times 95 = 9.5 \\)\nStep 7: Weighted average = \\( 13.2 + 17.0 + 19.75 + 27.6 + 9.5 = 87.05 \\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 29,
+      "stem": "A delivery service has three types of packages: Express (\\( 150 \\) packages, average delivery time \\( 2.5 \\) hours), Standard (\\( 400 \\) packages, average delivery time \\( 6 \\) hours), Economy (\\( 250 \\) packages, average delivery time \\( 12 \\) hours). What is the weighted average delivery time?",
+      "options": [
+        "\\( 7.22 \\) hours",
+        "\\( 7.22 \\) hours",
+        "\\( 6.94 \\) hours",
+        "\\( 8.13 \\) hours"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate weighted time for each package type\nStep 2: Express: \\( 150 \\times 2.5 = 375 \\) package-hours\nStep 3: Standard: \\( 400 \\times 6 = 2400 \\) package-hours\nStep 4: Economy: \\( 250 \\times 12 = 3000 \\) package-hours\nStep 5: Total package-hours = \\( 375 + 2400 + 3000 = 5775 \\)\nStep 6: Total packages = \\( 800 \\), Weighted average = \\( \\frac{5775}{800} = 7.22 \\) hours",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 30,
+      "stem": "A bank's loan portfolio consists of: Personal loans (\\( 30\\% \\)) at \\( 12\\% \\) interest, Home loans (\\( 50\\% \\)) at \\( 8.5\\% \\) interest, and Business loans (\\( 20\\% \\)) at \\( 15\\% \\) interest. What is the weighted average interest rate?",
+      "options": [
+        "\\( 10.85\\% \\)",
+        "\\( 11.15\\% \\)",
+        "\\( 10.35\\% \\)",
+        "\\( 11.65\\% \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate weighted interest for each loan type\nStep 2: Personal: \\( 0.30 \\times 12\\% = 3.6\\% \\)\nStep 3: Home: \\( 0.50 \\times 8.5\\% = 4.25\\% \\)\nStep 4: Business: \\( 0.20 \\times 15\\% = 3.0\\% \\)\nStep 5: Weighted average interest = \\( 3.6\\% + 4.25\\% + 3.0\\% = 10.85\\% \\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 31,
+      "stem": "A sports team's performance rating is calculated using weighted averages: Offense (\\( 40\\% \\)) rated \\( 8.5 \\), Defense (\\( 35\\% \\)) rated \\( 7.8 \\), and Special Teams (\\( 25\\% \\)) rated \\( 9.2 \\). What is the overall weighted performance rating?",
+      "options": [
+        "\\( 8.43 \\)",
+        "\\( 8.47 \\)",
+        "\\( 8.39 \\)",
+        "\\( 8.51 \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate weighted rating for each component\nStep 2: Offense: \\( 0.40 \\times 8.5 = 3.4 \\)\nStep 3: Defense: \\( 0.35 \\times 7.8 = 2.73 \\)\nStep 4: Special Teams: \\( 0.25 \\times 9.2 = 2.3 \\)\nStep 5: Overall weighted rating = \\( 3.4 + 2.73 + 2.3 = 8.43 \\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 32,
+      "stem": "Three investment funds have returns of \\( 8\\%, 12\\%, 15\\% \\) with investment amounts of ₹\\(50,000, ₹75,000, ₹25,000 \\) respectively. What is the weighted average return?",
+      "options": [
+        "\\( 10.5\\% \\)",
+        "\\( 11.17\\% \\)",
+        "\\( 10.0\\% \\)",
+        "\\( 11.5\\% \\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Calculate return amount from each fund\nStep 2: Fund 1: \\( 50,000 \\times 0.08 = ₹4,000 \\)\nStep 3: Fund 2: \\( 75,000 \\times 0.12 = ₹9,000 \\)\nStep 4: Fund 3: \\( 25,000 \\times 0.15 = ₹3,750 \\)\nStep 5: Total return = ₹\\(16,750 \\), Total investment = ₹\\(1,50,000 \\)\nStep 6: Weighted average return = \\( \\frac{16,750}{1,50,000} = 11.17\\% \\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 33,
+      "stem": "A manufacturing plant operates in three shifts with different productivity rates: Morning shift (\\( 8 \\) hours) - \\( 120 \\) units/hour, Evening shift (\\( 8 \\) hours) - \\( 110 \\) units/hour, Night shift (\\( 8 \\) hours) - \\( 100 \\) units/hour. What is the weighted average productivity per hour?",
+      "options": [
+        "\\( 110 \\) units/hour",
+        "\\( 115 \\) units/hour",
+        "\\( 108 \\) units/hour",
+        "\\( 112 \\) units/hour"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Since all shifts have equal hours (8 each), weights are equal\nStep 2: Morning: \\( 8 \\times 120 = 960 \\) units\nStep 3: Evening: \\( 8 \\times 110 = 880 \\) units\nStep 4: Night: \\( 8 \\times 100 = 800 \\) units\nStep 5: Total units = \\( 2640 \\), Total hours = \\( 24 \\)\nStep 6: Weighted average = \\( \\frac{2640}{24} = 110 \\) units/hour",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 34,
+      "stem": "A company's customer satisfaction scores from different regions are: Region A (\\( 200 \\) customers) - \\( 4.3 \\), Region B (\\( 350 \\) customers) - \\( 4.1 \\), Region C (\\( 150 \\) customers) - \\( 4.6 \\). What is the weighted average satisfaction score?",
+      "options": [
+        "\\( 4.26 \\)",
+        "\\( 4.27 \\)",
+        "\\( 4.29 \\)",
+        "\\( 4.31 \\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Calculate weighted satisfaction for each region\nStep 2: Region A: \\( 200 \\times 4.3 = 860 \\)\nStep 3: Region B: \\( 350 \\times 4.1 = 1435 \\)\nStep 4: Region C: \\( 150 \\times 4.6 = 690 \\)\nStep 5: Total weighted satisfaction = \\( 860 + 1435 + 690 = 2985 \\)\nStep 6: Total customers = \\( 700 \\), Weighted average = \\( \\frac{2985}{700} = 4.27 \\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 35,
+      "stem": "A portfolio has four asset classes: Stocks (\\( 40\\% \\)) with volatility \\( 18\\% \\), Bonds (\\( 30\\% \\)) with volatility \\( 6\\% \\), Real Estate (\\( 20\\% \\)) with volatility \\( 12\\% \\), Commodities (\\( 10\\% \\)) with volatility \\( 25\\% \\). What is the weighted average portfolio volatility?",
+      "options": [
+        "\\( 13.3\\% \\)",
+        "\\( 13.9\\% \\)",
+        "\\( 12.9\\% \\)",
+        "\\( 13.7\\% \\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Calculate weighted volatility for each asset class\nStep 2: Stocks: \\( 0.40 \\times 18\\% = 7.2\\% \\)\nStep 3: Bonds: \\( 0.30 \\times 6\\% = 1.8\\% \\)\nStep 4: Real Estate: \\( 0.20 \\times 12\\% = 2.4\\% \\)\nStep 5: Commodities: \\( 0.10 \\times 25\\% = 2.5\\% \\)\nStep 6: Weighted average volatility = \\( 7.2\\% + 1.8\\% + 2.4\\% + 2.5\\% = 13.9\\% \\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 36,
+      "stem": "A school calculates final grades using: Tests (\\( 50\\% \\)) - average \\( 82 \\), Assignments (\\( 25\\% \\)) - average \\( 88 \\), Participation (\\( 15\\% \\)) - average \\( 95 \\), Final Project (\\( 10\\% \\)) - average \\( 78 \\). What is the weighted average final grade?",
+      "options": [
+        "\\( 85.05 \\)",
+        "\\( 85.15 \\)",
+        "\\( 83.95 \\)",
+        "\\( 84.95 \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate weighted contribution of each component\nStep 2: Tests: \\( 0.50 \\times 82 = 41.0 \\)\nStep 3: Assignments: \\( 0.25 \\times 88 = 22.0 \\)\nStep 4: Participation: \\( 0.15 \\times 95 = 14.25 \\)\nStep 5: Project: \\( 0.10 \\times 78 = 7.8 \\)\nStep 6: Weighted average grade = \\( 41.0 + 22.0 + 14.25 + 7.8 = 85.05 \\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 37,
+      "stem": "Three batches of products have quality scores: Batch 1 (\\( 500 \\) units) - \\( 92\\% \\), Batch 2 (\\( 750 \\) units) - \\( 88\\% \\), Batch 3 (\\( 250 \\) units) - \\( 96\\% \\). What is the overall weighted average quality score?",
+      "options": [
+        "\\( 90.67\\% \\)",
+        "\\( 91.2\\% \\)",
+        "\\( 89.8\\% \\)",
+        "\\( 90.8\\% \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate quality contribution from each batch\nStep 2: Batch 1: \\( 500 \\times 0.92 = 460 \\) quality units\nStep 3: Batch 2: \\( 750 \\times 0.88 = 660 \\) quality units\nStep 4: Batch 3: \\( 250 \\times 0.96 = 240 \\) quality units\nStep 5: Total quality units = \\( 1360 \\), Total units = \\( 1500 \\)\nStep 6: Weighted average quality = \\( \\frac{1360}{1500} = 90.67\\% \\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 38,
+      "stem": "A weighted average problem has values \\( 45, 60, 75 \\) with respective frequencies \\( 8, 12, 10 \\). What is the weighted average?",
+      "options": [
+        "\\( 60.5 \\)",
+        "\\( 61.0 \\)",
+        "\\( 61.0 \\)",
+        "\\( 58.5 \\)"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Calculate weighted sum using frequencies as weights\nStep 2: Value 1: \\( 45 \\times 8 = 360 \\)\nStep 3: Value 2: \\( 60 \\times 12 = 720 \\)\nStep 4: Value 3: \\( 75 \\times 10 = 750 \\)\nStep 5: Total weighted sum = \\( 360 + 720 + 750 = 1830 \\)\nStep 6: Total frequency = \\( 30 \\), Weighted average = \\( \\frac{1830}{30} = 61.0 \\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 39,
+      "stem": "A company's quarterly earnings per share were: Q1 - ₹\\(12.5 \\), Q2 - ₹\\(14.2 \\), Q3 - ₹\\(11.8 \\), Q4 - ₹\\(15.6 \\). If the quarters have weights proportional to their revenue shares of \\( 20\\%, 30\\%, 25\\%, 25\\% \\) respectively, what is the weighted average EPS?",
+      "options": [
+        "₹\\(13.61 \\)",
+        "₹\\(13.98 \\)",
+        "₹\\(13.24 \\)",
+        "₹\\(14.15 \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate weighted EPS for each quarter\nStep 2: Q1: \\( 0.20 \\times 12.5 = 2.5 \\)\nStep 3: Q2: \\( 0.30 \\times 14.2 = 4.26 \\)\nStep 4: Q3: \\( 0.25 \\times 11.8 = 2.95 \\)\nStep 5: Q4: \\( 0.25 \\times 15.6 = 3.9 \\)\nStep 6: Weighted average EPS = \\( 2.5 + 4.26 + 2.95 + 3.9 = 13.61 \\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 40,
+      "stem": "A survey collected responses from three age groups: 18-30 years (\\( 300 \\) people, average score \\( 7.2 \\)), 31-50 years (\\( 450 \\) people, average score \\( 6.8 \\)), 51+ years (\\( 150 \\) people, average score \\( 8.1 \\)). What is the weighted average score?",
+      "options": [
+        "\\( 7.15 \\)",
+        "\\( 7.18 \\)",
+        "\\( 7.06 \\)",
+        "\\( 7.24 \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate weighted score for each age group\nStep 2: 18-30: \\( 300 \\times 7.2 = 2160 \\)\nStep 3: 31-50: \\( 450 \\times 6.8 = 3060 \\)\nStep 4: 51+: \\( 150 \\times 8.1 = 1215 \\)\nStep 5: Total weighted score = \\( 2160 + 3060 + 1215 = 6435 \\)\nStep 6: Total people = \\( 900 \\), Weighted average = \\( \\frac{6435}{900} = 7.15 \\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 41,
+      "stem": "A retail chain has stores in three cities with different performance metrics: City A (\\( 15 \\) stores, average monthly sales ₹\\(8.5 \\) lakhs), City B (\\( 22 \\) stores, average monthly sales ₹\\(7.2 \\) lakhs), City C (\\( 18 \\) stores, average monthly sales ₹\\(9.8 \\) lakhs). What is the weighted average monthly sales per store?",
+      "options": [
+        "₹\\(8.35 \\) lakhs",
+        "₹\\(8.41 \\) lakhs",
+        "₹\\(8.28 \\) lakhs",
+        "₹\\(8.51 \\) lakhs"
+      ],
+      "key": "B",
+      "keySolution": "Step 1: Calculate total sales for each city\nStep 2: City A: \\( 15 \\times 8.5 = 127.5 \\) lakhs\nStep 3: City B: \\( 22 \\times 7.2 = 158.4 \\) lakhs\nStep 4: City C: \\( 18 \\times 9.8 = 176.4 \\) lakhs\nStep 5: Total sales = \\( 462.3 \\) lakhs, Total stores = \\( 55 \\)\nStep 6: Weighted average = \\( \\frac{462.3}{55} = 8.41 \\) lakhs",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 42,
+      "stem": "An examination has multiple sections with different time allocations: Section A (\\( 30 \\) minutes, average score \\( 85\\% \\)), Section B (\\( 45 \\) minutes, average score \\( 78\\% \\)), Section C (\\( 25 \\) minutes, average score \\( 92\\% \\)). What is the time-weighted average score?",
+      "options": [
+        "\\( 83.6\\% \\)",
+        "\\( 82.80\\% \\)",
+        "\\( 83.70\\% \\)",
+        "\\( 82.35\\% \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate time-weighted score for each section\nStep 2: Section A: \\( 30 \\times 85\\% = 25.5 \\)\nStep 3: Section B: \\( 45 \\times 78\\% = 35.1 \\)\nStep 4: Section C: \\( 25 \\times 92\\% = 23.0 \\)\nStep 5: Total weighted score = \\( 25.5 + 35.1 + 23.0 = 83.6 \\)\nStep 6: Total time = \\( 100 \\) minutes, Weighted average = \\( \\frac{83.6}{100} = 83.6\\% \\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 43,
+      "stem": "A technology company has three product lines with different profit margins: Software (\\( 40\\% \\) of revenue, \\( 25\\% \\) margin), Hardware (\\( 35\\% \\) of revenue, \\( 15\\% \\) margin), Services (\\( 25\\% \\) of revenue, \\( 35\\% \\) margin). What is the weighted average profit margin?",
+      "options": [
+        "\\( 24.0\\% \\)",
+        "\\( 24.0\\% \\)",
+        "\\( 22.8\\% \\)",
+        "\\( 24.5\\% \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate weighted margin for each product line\nStep 2: Software: \\( 0.40 \\times 25\\% = 10.0\\% \\)\nStep 3: Hardware: \\( 0.35 \\times 15\\% = 5.25\\% \\)\nStep 4: Services: \\( 0.25 \\times 35\\% = 8.75\\% \\)\nStep 5: Weighted average margin = \\( 10.0\\% + 5.25\\% + 8.75\\% = 24.0\\% \\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 44,
+      "stem": "A university's admission criteria uses weighted averages: Academic scores (\\( 60\\% \\)) - candidate scored \\( 88 \\), Extracurricular activities (\\( 25\\% \\)) - scored \\( 76 \\), Interview (\\( 15\\% \\)) - scored \\( 92 \\). What is the weighted average admission score?",
+      "options": [
+        "\\( 85.2 \\)",
+        "\\( 84.6 \\)",
+        "\\( 85.6 \\)",
+        "\\( 84.0 \\)"
+      ],
+      "key": "C",
+      "keySolution": "Step 1: Calculate weighted contribution of each criterion\nStep 2: Academic: \\( 0.60 \\times 88 = 52.8 \\)\nStep 3: Extracurricular: \\( 0.25 \\times 76 = 19.0 \\)\nStep 4: Interview: \\( 0.15 \\times 92 = 13.8 \\)\nStep 5: Weighted average score = \\( 52.8 + 19.0 + 13.8 = 85.6 \\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 45,
+      "stem": "A food delivery app has three delivery zones with different order values: Zone 1 (\\( 800 \\) orders, average value ₹\\(325 \\)), Zone 2 (\\( 650 \\) orders, average value ₹\\(410 \\)), Zone 3 (\\( 450 \\) orders, average value ₹\\(285 \\)). What is the weighted average order value?",
+      "options": [
+        "₹\\(344.61 \\)",
+        "₹\\(352.63 \\)",
+        "₹\\(345.28 \\)",
+        "₹\\(355.42 \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate total order value for each zone\nStep 2: Zone 1: \\( 800 \\times 325 = ₹2,60,000 \\)\nStep 3: Zone 2: \\( 650 \\times 410 = ₹2,66,500 \\)\nStep 4: Zone 3: \\( 450 \\times 285 = ₹1,28,250 \\)\nStep 5: Total value = ₹\\(6,54,750 \\), Total orders = \\( 1900 \\)\nStep 6: Weighted average = \\( \\frac{6,54,750}{1900} = ₹344.61 \\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 46,
+      "stem": "A company's employee satisfaction survey results from different departments: HR (\\( 25 \\) employees, \\( 8.4 \\) rating), Finance (\\( 40 \\) employees, \\( 7.8 \\) rating), IT (\\( 60 \\) employees, \\( 8.1 \\) rating), Operations (\\( 35 \\) employees, \\( 8.7 \\) rating). What is the weighted average satisfaction rating?",
+      "options": [
+        "\\( 8.20 \\)",
+        "\\( 8.18 \\)",
+        "\\( 8.26 \\)",
+        "\\( 8.14 \\)"
+      ],
+      "key": "A",
+      "keySolution": "Step 1: Calculate weighted satisfaction for each department\nStep 2: HR: \\( 25 \\times 8.4 = 210 \\)\nStep 3: Finance: \\( 40 \\times 7.8 = 312 \\)\nStep 4: IT: \\( 60 \\times 8.1 = 486 \\)\nStep 5: Operations: \\( 35 \\times 8.7 = 304.5 \\)\nStep 6: Total = \\( 1312.5 \\), Total employees = \\( 160 \\)\nStep 7: Weighted average = \\( \\frac{1312.5}{160} = 8.20 \\)",
+      "difficulty": "Medium"
+    }
+  ]
+}
