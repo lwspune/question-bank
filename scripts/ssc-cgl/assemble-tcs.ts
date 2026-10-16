@@ -57,7 +57,7 @@ function main() {
       "utf8"
     );
     const text = questions
-      .map((q) => [`Q${q.number}`, q.stem, ...q.options.map((o, i) => `${i + 1}. ${o}`)].join("\n"))
+      .map((q) => [`Q${q.number}`, ...(q.context ? [`[passage] ${q.context}`] : []), q.stem, ...q.options.map((o, i) => `${i + 1}. ${o}`)].join("\n"))
       .join("\n\n");
     writeFileSync(join(out, "sheets", "text.txt"), text + "\n", "utf8");
     const keys = Object.fromEntries(["A", "B", "C", "D"].map((k) => [k, questions.filter((q) => q.key === k).length]));

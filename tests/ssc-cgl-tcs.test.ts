@@ -191,6 +191,27 @@ describe("assembleTcs", () => {
     expect(qs.every((q) => q.optionImages.every((x) => x.length === 0))).toBe(true);
   });
 
+  it("reads a Comprehension passage as the context of the sub-question after it, and shows it on its sheet", () => {
+    // 9 Sep 2024: "Comprehension:", the passage, "SubQuestion No : 21", then Q.21.
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 0);
+    const q96 = g.spans.find((s) => s.text === "Q.21" && s.page > 40)!;
+    g.spans = g.spans.map((s) => (s.page === q96.page && s.y0 >= q96.y0 ? { ...s, y0: s.y0 + 100, y1: s.y1 + 100 } : s));
+    g.images = g.images.map((im) => (im.page === q96.page && im.y0 >= q96.y0 ? { ...im, y0: im.y0 + 100, y1: im.y1 + 100 } : im));
+    g.spans.push(
+      span(q96.page, q96.y0 + 2, "Comprehension:", { bold: true }),
+      span(q96.page, q96.y0 + 14, "In the following passage, some words have been deleted."),
+      span(q96.page, q96.y0 + 24, "There is a saying (1)________ shadows."),
+      span(q96.page, q96.y0 + 80, "SubQuestion No : 21", { bold: true })
+    );
+    const qs = assembleTcs(g);
+    const q = qs.find((x) => x.number === 96)!;
+    expect(q.context).toBe("In the following passage, some words have been deleted. There is a saying (1)________ shadows.");
+    expect(q.stem).toBe("Stem of 21");
+    expect(q.regions[0].y0).toBeLessThanOrEqual(q96.y0 + 2);
+    expect(qs.find((x) => x.number === 97)!.context).toBeNull();
+    expect(qs.find((x) => x.number === 95)!.options).toEqual(["opt 20a", "opt 20b", "opt 20c", "opt 20d"]);
+  });
+
   it("refuses a question with no green option or two", () => {
     const none = shift(2, "9:00 AM - 10:00 AM", () => 9);
     expect(() => assembleTcs(none)).toThrow(/shift 1 Q1.*exactly one key/);
@@ -205,7 +226,7 @@ describe("assembleTcs", () => {
 
 describe("groupTcsShifts", () => {
   const q = (sheet: number, date: string, shift: number, number: number, qid = `${date}-${shift}-${number}`): TcsQuestion => ({
-    sheet, date, shift, part: "A", number, stem: "s", options: ["a", "b", "c", "d"], key: "A",
+    sheet, date, shift, part: "A", number, context: null, stem: "s", options: ["a", "b", "c", "d"], key: "A",
     stemImages: [], optionImages: [[], [], [], []], questionId: qid, regions: [],
   });
   const sheet = (i: number, date: string, shift: number, qid?: (n: number) => string) =>

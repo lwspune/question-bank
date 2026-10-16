@@ -29,6 +29,8 @@ export type TcsQuestion = {
   shift: number;
   part: Part;
   number: number;
+  /** a "Comprehension:" passage printed before this question (the first of its set), else null */
+  context: string | null;
   stem: string;
   options: string[];
   key: "A" | "B" | "C" | "D";
@@ -188,6 +190,8 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
   let date: string | null = null;
   let part: Part | null = null;
   let cur: Open | null = null;
+  // A "Comprehension:" passage, collected until the sub-question it is printed before.
+  let passage: { lines: string[]; regions: TcsRegion[] } | null = null;
   const region = (q: Open, page: number, y0: number, y1: number) => {
     const r = q.regions.find((x) => x.page === page);
     if (r) {
@@ -235,6 +239,12 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
       cur = null;
       continue;
     }
+    if (s && text === "Comprehension:") {
+      passage = { lines: [], regions: [{ page: s.page, y0: s.y0, y1: s.y1 }] };
+      cur = null;
+      continue;
+    }
+    if (s && /^SubQuestion No\s*:/.test(text)) continue;
     const q = s && /^Q\.(\d+)$/.exec(text);
     if (q && s.bold) {
       if (!shift) throw new Error(`Q${q[1]} on page ${s.page} comes before any Exam Time header`);
@@ -246,6 +256,7 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
         shift,
         part,
         number: "ABCD".indexOf(part) * 25 + local,
+        context: passage ? passage.lines.map((l) => l.trim()).filter(Boolean).join(" ") : null,
         stem: "",
         options: [],
         key: "A",
@@ -259,7 +270,16 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
         optColor: [],
       };
       open.push(cur);
+      for (const r of passage?.regions ?? []) region(cur, r.page, r.y0, r.y1);
+      passage = null;
       region(cur, s.page, s.y0, s.y1);
+      continue;
+    }
+    if (passage) {
+      if (s && s.x0 < edges.panelAt(s.page)) {
+        passage.lines.push(s.text);
+        passage.regions.push({ page: s.page, y0: s.y0, y1: s.y1 });
+      }
       continue;
     }
     if (!cur || cur.stage === "done") continue;
@@ -311,6 +331,7 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
       shift: q.shift,
       part: q.part,
       number: q.number,
+      context: q.context,
       stem: joinLines(q.stemLines),
       options: q.optLines.map((l) => joinLines(l)),
       key: LABELS[keyed[0]],
