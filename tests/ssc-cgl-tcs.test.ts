@@ -154,6 +154,43 @@ describe("assembleTcs", () => {
     expect(() => assembleTcs(shift(2, "2:00 PM - 3:00 PM", () => 0), { slots: SLOTS })).toThrow(/not one of the slots/);
   });
 
+  it("reads a Q label and Ans broken into uneven pieces", () => {
+    // 19 Sep 2024: "Q." / "4" / "A" / "ns"; 12 Sep 2024: "Q.2" / "1" / "Ans".
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 0);
+    const pieces = (parts: string[], y: number, page: number) =>
+      parts.map((t, i) => span(page, y + i * 4, t, { x0: 46, x1: 54, bold: true }));
+    g.spans = g.spans.flatMap((s) => {
+      if (s.page === 5 && s.text === "Q.7") return pieces(["Q.", "7"], s.y0, 5);
+      if (s.page === 5 && s.text === "Ans" && s.y0 < 300) return pieces(["A", "ns"], s.y0, 5);
+      if (s.page === 7 && s.text === "Q.11") return pieces(["Q.1", "1"], s.y0, 7);
+      return [s];
+    });
+    const qs = assembleTcs(g);
+    expect(qs).toHaveLength(100);
+    expect(qs[6].options).toEqual(["opt 7a", "opt 7b", "opt 7c", "opt 7d"]);
+    expect(qs[10].stem).toBe("Stem of 11");
+  });
+
+  it("reads a sheet printed scaled (gutter, icons and panel all moved in)", () => {
+    // 26 Sep 2024's last sheet: Q labels at x 104 (not 48), tick icons at 120, the panel at
+    // 359-369 (not 376-387). Fixed x thresholds read its panel as option text and its icons
+    // as figures.
+    const g = shift(2, "9:00 AM - 10:00 AM", (n) => n % 4);
+    // ...and on it a squeezed question whose label prints one character per line.
+    g.spans = g.spans.flatMap((s) =>
+      s.page === 5 && (s.text === "Q.7" || (s.text === "Ans" && s.y0 < 300))
+        ? [...s.text].map((ch, i) => span(5, s.y0 + i * 4, ch, { x0: 46, x1: 51, bold: true }))
+        : [s]
+    );
+    const sx = (x: number) => 56 + 0.78 * x;
+    g.spans = g.spans.map((s) => ({ ...s, x0: sx(s.x0), x1: sx(s.x1) }));
+    g.images = g.images.map((im) => ({ ...im, x0: sx(im.x0), x1: sx(im.x1) }));
+    const qs = assembleTcs(g);
+    expect(qs).toHaveLength(100);
+    expect(qs[0]).toMatchObject({ key: "B", options: ["opt 1a", "opt 1b", "opt 1c", "opt 1d"], questionId: "6306260" });
+    expect(qs.every((q) => q.optionImages.every((x) => x.length === 0))).toBe(true);
+  });
+
   it("refuses a question with no green option or two", () => {
     const none = shift(2, "9:00 AM - 10:00 AM", () => 9);
     expect(() => assembleTcs(none)).toThrow(/shift 1 Q1.*exactly one key/);

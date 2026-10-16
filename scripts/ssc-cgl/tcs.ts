@@ -9,7 +9,8 @@
  * - a shift opens with a header whose "Exam Time" is followed by "9:00 AM - 10:00 AM";
  * - "Section : <name>" opens each of the four parts, and each part restarts at Q.1;
  * - a question is "Q.n", its stem, "Ans", then "1. .." to "4. .."; the right-hand panel
- *   (x beyond PANEL_X) carries "Question ID :" and the candidate's status, never content.
+ *   carries "Question ID :" and the candidate's status, never content. Some sheets print
+ *   scaled (gutter at x 104, panel at 359), so the gutter and panel are measured per page.
  */
 import type { Part } from "./lib";
 
@@ -39,7 +40,9 @@ export type TcsQuestion = {
 
 export const GREEN = 0x40c64b;
 const RED = 0xf61818;
-const PANEL_X = 380; // the right-hand "Question ID / Status" panel starts beyond this
+const PANEL_X = 380; // where the right-hand panel starts on a page that prints no panel label
+const GUTTER_X = 48; // where "Q.n" sits on a page that prints none
+const PANEL_LABEL = /^(Question ID|Option \d ID|Status|Chosen Option)\s*:/;
 const QUESTIONS_PER_SHIFT = 100;
 const LABELS = ["A", "B", "C", "D"] as const;
 
@@ -65,7 +68,22 @@ export function shiftOfTime(time: string, all: string[]): number {
   return starts.indexOf(minutes(time)) + 1;
 }
 
-const isIcon = (im: TcsImage) => im.x1 - im.x0 < 20 && im.y1 - im.y0 < 16 && im.x0 < 90;
+/** Per page: the left edge of the right-hand panel, and of the Q/Ans gutter. */
+function pageEdges(spans: TcsSpan[]) {
+  const panel = new Map<number, number>();
+  const gutter = new Map<number, number>();
+  const low = (m: Map<number, number>, p: number, x: number) => m.set(p, Math.min(m.get(p) ?? Infinity, x));
+  for (const s of spans) {
+    const t = s.text.trim();
+    if (PANEL_LABEL.test(t)) low(panel, s.page, s.x0);
+    if (s.bold && /^(Q\.\d+|Ans)$/.test(t)) low(gutter, s.page, s.x0);
+  }
+  return {
+    panelAt: (page: number) => (panel.get(page) ?? PANEL_X + 1) - 1,
+    // The tick and cross icons sit just right of the gutter, before the option text.
+    isIcon: (im: TcsImage) => im.x1 - im.x0 < 20 && im.y1 - im.y0 < 16 && im.x0 < (gutter.get(im.page) ?? GUTTER_X) + 42,
+  };
+}
 
 /** Wrapped lines run on; a line that starts an item (1., I., (a), Statement ...) keeps its break. */
 function joinLines(lines: string[]): string {
@@ -97,30 +115,38 @@ function joinSectionLabels(spans: TcsSpan[]): TcsSpan[] {
 }
 
 /**
- * A stem image wide enough to squeeze the left column prints "Q.14" and "Ans" one character
- * per line. Rejoin a run of single bold characters in the gutter (x0 < 60) into the two labels,
- * each at the height of its first character.
+ * A stem image wide enough to squeeze the left column breaks "Q.14" and "Ans" over several
+ * lines: one character per line (26 Sep 2024), or uneven pieces ("Q." / "4" / "A" / "ns",
+ * 19 Sep; "Q.2" / "1" / "Ans", 12 Sep). Rejoin a run of short bold pieces down the gutter
+ * into the two labels, each at the height of its first piece.
  */
 function joinStackedLabels(spans: TcsSpan[]): TcsSpan[] {
-  const isChar = (s: TcsSpan) => s.bold && s.x0 < 60 && s.text.trim().length === 1;
-  const chars = spans.filter(isChar).sort((a, b) => a.page - b.page || a.y0 - b.y0);
-  const runs: TcsSpan[][] = [];
-  for (const c of chars) {
+  // Left half only; the joined run must then read exactly "Q.n" or "Q.nAns", which no run of
+  // stem text does. (Not "x0 < gutter": a scaled sheet moves the gutter.)
+  const isPiece = (s: TcsSpan) => s.bold && s.x0 < 200 && /^[Q.\dAns]{1,4}$/.test(s.text.trim());
+  const pieces = spans.filter(isPiece).sort((a, b) => a.page - b.page || a.y0 - b.y0);
+  const runs: TcsSpan[][] = []; // pieces ~9pt apart, 13.3 between "Q.11" and "Ans" (10 Sep 2024)
+  for (const c of pieces) {
     const run = runs[runs.length - 1];
     const last = run?.[run.length - 1];
-    if (last && last.page === c.page && c.y0 - last.y0 <= 13 && Math.abs(c.x0 - last.x0) <= 4) run.push(c);
+    if (last && last.page === c.page && c.y0 - last.y0 <= 16 && Math.abs(c.x0 - last.x0) <= 6) run.push(c);
     else runs.push([c]);
   }
   const used = new Set<TcsSpan>();
   const out: TcsSpan[] = [];
   for (const run of runs) {
-    const text = run.map((c) => c.text.trim()).join("");
-    const m = /^(Q\.\d+)(Ans)?$/.exec(text);
+    if (run.length < 2) continue;
+    const texts = run.map((c) => c.text.trim());
+    const m = /^(Q\.\d+)(Ans)?$/.exec(texts.join(""));
     if (!m) continue;
+    // The Q label must end on a piece boundary, and the rest must spell "Ans".
+    let k = 0;
+    let acc = "";
+    while (k < run.length && acc.length < m[1].length) acc += texts[k++];
+    if (acc !== m[1]) continue;
     run.forEach((c) => used.add(c));
-    const label = (from: number, t: string): TcsSpan => ({ ...run[from], text: t, x1: run[from].x0 + 15 });
-    out.push(label(0, m[1]));
-    if (m[2]) out.push(label(m[1].length, "Ans"));
+    out.push({ ...run[0], text: m[1], x1: run[0].x0 + 15 });
+    if (m[2]) out.push({ ...run[k], text: "Ans", x1: run[k].x0 + 15 });
   }
   return [...spans.filter((s) => !used.has(s)), ...out];
 }
@@ -140,9 +166,10 @@ function isoDate(t: string): string | null {
 
 export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[] {
   const spans = joinStackedLabels(joinSectionLabels(g.spans));
+  const edges = pageEdges(spans);
   const events: Event[] = [
     ...spans.filter((s) => !NOISE.test(s.text.trim())).map((s) => ({ page: s.page, y: s.y0, x: s.x0, span: s })),
-    ...g.images.filter((im) => !isIcon(im)).map((im) => ({ page: im.page, y: im.y0, x: im.x0, image: im })),
+    ...g.images.filter((im) => !edges.isIcon(im)).map((im) => ({ page: im.page, y: im.y0, x: im.x0, image: im })),
   ].sort((a, b) => a.page - b.page || a.y - b.y || a.x - b.x);
 
   // Pass 1: the day's exam times, so a shift can be numbered by its start.
@@ -236,7 +263,7 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
       continue;
     }
     if (!cur || cur.stage === "done") continue;
-    if (s && (s.x0 >= PANEL_X || /^Chosen Option/.test(text))) {
+    if (s && (s.x0 >= edges.panelAt(s.page) || /^Chosen Option/.test(text))) {
       if (/^Question ID/.test(text)) {
         const id = events.slice(i + 1, i + 4).find((x) => x.span && /^\d{6,}$/.test(x.span.text.trim()));
         cur.questionId = id?.span?.text.trim() ?? null;
