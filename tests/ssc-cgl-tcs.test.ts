@@ -266,6 +266,34 @@ describe("assembleTcs", () => {
     expect(qs[50]).toMatchObject({ part: "C", number: 51 });
   });
 
+  it("reads the 18 Jul 2023 print: unlabelled date and time, fused Question ID, text-glyph ticks", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", (n) => n % 4);
+    g.spans = g.spans.flatMap((s) => {
+      if (s.text === "Exam Time") return [];
+      if (s.text === "9:00 AM - 10:00 AM") return [span(s.page, 4, "18/07/2023 ", { x0: 133 }), { ...s, text: "9:00 AM - 10:00 AM ", x0: 133 }];
+      if (s.text === "Question ID :") return [];
+      if (/^6306\d+$/.test(s.text)) return [{ ...s, text: `Question ID: ${s.text} `, x0: 399 }];
+      const m = /^([1-4])\. /.exec(s.text);
+      if (m && s.y0 < 2000) {
+        const glyph = s.color === GREEN ? ",Z " : "X ";
+        return [{ ...s, text: glyph, x0: 75, x1: 84, y0: s.y0 - 4, color: s.color === GREEN ? 0x74b06c : 0xb0403c, bold: true }, s];
+      }
+      return [s];
+    });
+    const qs = assembleTcs(g, { slots: ["9:00 AM - 10:00 AM"] });
+    expect(qs).toHaveLength(100);
+    expect(qs[0]).toMatchObject({ date: "2023-07-18", key: "B", options: ["opt 1a", "opt 1b", "opt 1c", "opt 1d"], questionId: "6306260" });
+  });
+
+  it("keeps a stem line's tail printed right of the panel's edge (11 Sep 2024 Q48)", () => {
+    // "...dynasty from the" then "5th to 8th Century CE." as its own span at x 400, on a stem
+    // line: only the panel's own lines (Question ID ... Chosen Option) are the panel.
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 0);
+    g.spans = g.spans.flatMap((s) => (s.page === 2 && s.text === "Stem of 1" ? [s, { ...s, text: "5th to 8th Century CE.", x0: 400, x1: 470 }] : [s]));
+    const [q] = assembleTcs(g);
+    expect(q.stem).toBe("Stem of 1 5th to 8th Century CE.");
+  });
+
   it("refuses a question with no green option or two", () => {
     const none = shift(2, "9:00 AM - 10:00 AM", () => 9);
     expect(() => assembleTcs(none)).toThrow(/shift 1 Q1.*exactly one key/);

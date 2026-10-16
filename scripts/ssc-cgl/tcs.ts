@@ -54,7 +54,6 @@ const isRed = (c: number) => {
   const [r, g, b] = rgb(c);
   return r >= 180 && r - g >= 120 && r - b >= 120;
 };
-const PANEL_X = 380; // where the right-hand panel starts on a page that prints no panel label
 const GUTTER_X = 48; // where "Q.n" sits on a page that prints none
 const PANEL_LABEL = /^(Question ID|Option \d ID|Status|Chosen Option)\s*:/;
 const QUESTIONS_PER_SHIFT = 100;
@@ -82,18 +81,22 @@ export function shiftOfTime(time: string, all: string[]): number {
   return starts.indexOf(minutes(time)) + 1;
 }
 
-/** Per page: the left edge of the right-hand panel, and of the Q/Ans gutter. */
+/**
+ * Per page: the right-hand panel's lines, and the Q/Ans gutter. The panel is its LINES (a
+ * label, and its value to the right on the same line), not everything right of some x: a
+ * stem line's tail can print there as its own span (11 Sep 2024 Q48, after a superscript).
+ */
 function pageEdges(spans: TcsSpan[]) {
-  const panel = new Map<number, number>();
+  const labels = new Map<number, TcsSpan[]>();
   const gutter = new Map<number, number>();
   const low = (m: Map<number, number>, p: number, x: number) => m.set(p, Math.min(m.get(p) ?? Infinity, x));
   for (const s of spans) {
     const t = s.text.trim();
-    if (PANEL_LABEL.test(t)) low(panel, s.page, s.x0);
+    if (PANEL_LABEL.test(t)) labels.set(s.page, [...(labels.get(s.page) ?? []), s]);
     if (s.bold && /^(Q\.\d+|Ans)$/.test(t)) low(gutter, s.page, s.x0);
   }
   return {
-    panelAt: (page: number) => (panel.get(page) ?? PANEL_X + 1) - 1,
+    isPanel: (s: TcsSpan) => (labels.get(s.page) ?? []).some((l) => Math.abs(l.y0 - s.y0) <= 3 && s.x0 >= l.x0 - 1),
     // The tick and cross icons sit just right of the gutter, before the option text.
     isIcon: (im: TcsImage) => im.x1 - im.x0 < 20 && im.y1 - im.y0 < 16 && im.x0 < (gutter.get(im.page) ?? GUTTER_X) + 42,
   };
@@ -180,6 +183,32 @@ function isoDate(t: string): string | null {
   return m ? `${m[3]}-${m[2]}-${m[1]}` : null;
 }
 
+const TIME_RANGE = /^\d{1,2}:\d\d\s*[AP]M\s*-\s*\d{1,2}:\d\d\s*[AP]M$/i;
+const DATE = /^\d{2}\/\d{2}\/\d{4}$/;
+/** Loosely key-coloured: the tick and cross glyphs print in a duller green and red. */
+function keyish(c: number): boolean {
+  const [r, g, b] = rgb(c);
+  return (r - g >= 80 && r - b >= 80) || (g - r >= 40 && g - b >= 40);
+}
+
+/**
+ * The 18 Jul 2023 print: header values without their "Exam Date" / "Exam Time" labels, and
+ * the tick and cross as coloured text glyphs ("X", ",Z") instead of pictures. Give the values
+ * their labels back, and drop the glyphs (they carry the key).
+ */
+function normaliseHeaderAndGlyphs(spans: TcsSpan[]): TcsSpan[] {
+  const labelled = spans.some((s) => s.text.trim() === "Exam Time");
+  const out = spans.filter((s) => !(/^(X|,Z|[✓✔✗✘])$/.test(s.text.trim()) && keyish(s.color)));
+  if (labelled) return out;
+  const extra: TcsSpan[] = [];
+  for (const t of out.filter((s) => TIME_RANGE.test(s.text.trim()) && s.x0 < 250)) {
+    extra.push({ ...t, text: "Exam Time", x0: t.x0 - 80, x1: t.x0 - 5, bold: false });
+    const d = out.find((s) => s.page === t.page && DATE.test(s.text.trim()) && t.y0 - s.y0 > 0 && t.y0 - s.y0 < 40);
+    if (d) extra.push({ ...d, text: "Exam Date", x0: d.x0 - 80, x1: d.x0 - 5, bold: false });
+  }
+  return [...out, ...extra];
+}
+
 /** "Q.11 Select the option ..." printed as one span (1 Dec 2022): split off the label. */
 function splitFusedLabels(spans: TcsSpan[]): TcsSpan[] {
   return spans.flatMap((s) => {
@@ -193,7 +222,7 @@ function splitFusedLabels(spans: TcsSpan[]): TcsSpan[] {
 }
 
 export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[] {
-  const spans = joinStackedLabels(joinSectionLabels(splitFusedLabels(g.spans)));
+  const spans = joinStackedLabels(joinSectionLabels(splitFusedLabels(normaliseHeaderAndGlyphs(g.spans))));
   const edges = pageEdges(spans);
   const events: Event[] = [
     ...spans.filter((s) => !NOISE.test(s.text.trim())).map((s) => ({ page: s.page, y: s.y0, x: s.x0, span: s })),
@@ -312,17 +341,18 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
       continue;
     }
     if (passage) {
-      if (s && s.x0 < edges.panelAt(s.page)) {
+      if (s && !edges.isPanel(s)) {
         passage.lines.push(s.text);
         passage.regions.push({ page: s.page, y0: s.y0, y1: s.y1 });
       }
       continue;
     }
     if (!cur || cur.stage === "done") continue;
-    if (s && (s.x0 >= edges.panelAt(s.page) || /^Chosen Option/.test(text))) {
+    if (s && (edges.isPanel(s) || /^Chosen Option/.test(text))) {
       if (/^Question ID/.test(text)) {
+        const fused = /Question ID\s*:\s*(\d{6,})/.exec(text); // "Question ID: 2643..." (2023)
         const id = events.slice(i + 1, i + 4).find((x) => x.span && /^\d{6,}$/.test(x.span.text.trim()));
-        cur.questionId = id?.span?.text.trim() ?? null;
+        cur.questionId = fused?.[1] ?? id?.span?.text.trim() ?? null;
         cur.stage = "done";
       }
       continue;

@@ -26,30 +26,56 @@ ZOOM = 2.0
 PAD = 4  # points around a region
 BATCH_HEIGHT = 2600
 DARK = b"0.14502 0.14502 0.14502 rg"
-KEY_FILLS = [b"0.964844 0.0939941 0.0939941 rg", b"0.250977 0.777344 0.293945 rg"]
-KEY_COLORS = {0xF61818, 0x40C64B}
+FILL = re.compile(rb"(\d*\.?\d+) (\d*\.?\d+) (\d*\.?\d+) rg")
 PANEL_LABEL = re.compile(r"^(Question ID|Option \d ID|Status|Chosen Option)\s*:")
 LEFT = 25
+GLYPH = re.compile(r"^(X|,Z|[✓✔✗✘])$")
+
+
+def keyish(c):
+    r, g, b = (c >> 16) & 255, (c >> 8) & 255, c & 255
+    return (r - g >= 80 and r - b >= 80) or (g - r >= 40 and g - b >= 40)
+
+
+def is_icon(bbox, labels):
+    """A tick or cross: a small image ending just left of an option's "n." label on its line.
+    Small images elsewhere are content (9 Sep 2024 Q52 prints options 2-4 as 6x9 pt pictures)."""
+    x0, y0, x1, y1 = bbox
+    if x1 - x0 >= 20 or y1 - y0 >= 16:
+        return False
+    mid = (y0 + y1) / 2
+    return any(abs((l[1] + l[3]) / 2 - mid) < 7 and x1 <= l[0] + 1 and l[0] - x1 < 25 for l in labels)
 
 
 def mask_page(doc, page):
-    """Repaint key colours, white out icons and the panel. Returns the panel's left edge."""
+    """Repaint key colours, white out icons, tick glyphs and the panel's lines."""
+    # Option labels, read BEFORE the colours are repainted: "1." to "4." in green or red.
+    option_labels = [
+        s["bbox"] for b in page.get_text("dict")["blocks"] if b["type"] == 0 for l in b["lines"] for s in l["spans"]
+        if keyish(s["color"]) and re.match(r"^[1-4]\.", s["text"].strip())
+    ]
     for xref in page.get_contents():
         stream = doc.xref_stream(xref)
-        for fill in KEY_FILLS:
-            stream = stream.replace(fill, DARK)
+        # Any key-coloured fill (each year prints its own green and red) becomes the body grey.
+        def repaint(m):
+            r, g, b = (min(255, round(float(v) * 255)) for v in m.groups())
+            return DARK if keyish((r << 16) | (g << 8) | b) else m.group(0)
+        stream = FILL.sub(repaint, stream)
         doc.update_stream(xref, stream)
     spans = [s for b in page.get_text("dict")["blocks"] if b["type"] == 0 for l in b["lines"] for s in l["spans"]]
     labels = [s for s in spans if PANEL_LABEL.match(s["text"].strip())]
-    panel = min((s["bbox"][0] for s in labels), default=380.0) - 1
+    white = lambda r: page.draw_rect(fitz.Rect(r) + (-1, -1, 1, 1), color=None, fill=(1, 1, 1), overlay=True)
+    # The panel is its LINES: a label and the value right of it on the same line. Not
+    # everything right of an x: a stem line's tail can print there (11 Sep 2024 Q48).
+    for l in labels:
+        white((l["bbox"][0], l["bbox"][1], page.rect.width, l["bbox"][3]))
+    # The 18 Jul 2023 print sets the tick and cross as coloured text glyphs.
     for s in spans:
-        if s["bbox"][0] >= panel or s["text"].strip().startswith("Chosen Option"):
-            page.draw_rect(fitz.Rect(s["bbox"]) + (-1, -1, 1, 1), color=None, fill=(1, 1, 1), overlay=True)
+        if GLYPH.match(s["text"].strip()) and keyish(s["color"]):
+            white(s["bbox"])
     for info in page.get_image_info():
-        x0, y0, x1, y1 = info["bbox"]
-        if x1 - x0 < 20 and y1 - y0 < 16:
-            page.draw_rect(fitz.Rect(x0, y0, x1, y1) + (-1, -1, 1, 1), color=None, fill=(1, 1, 1), overlay=True)
-    return panel
+        if is_icon(info["bbox"], option_labels):
+            page.draw_rect(fitz.Rect(info["bbox"]) + (-1, -1, 1, 1), color=None, fill=(1, 1, 1), overlay=True)
 
 
 def check_masked(page, clip, where):
@@ -58,7 +84,7 @@ def check_masked(page, clip, where):
             continue
         for l in b["lines"]:
             for s in l["spans"]:
-                if s["color"] in KEY_COLORS and s["text"].strip():
+                if keyish(s["color"]) and s["text"].strip():
                     sys.exit(f"{where}: key colour survived masking: {s['text'][:40]!r}")
 
 
@@ -87,14 +113,15 @@ def main():
         if f.startswith("batch-") and f.endswith(".png"):
             os.remove(os.path.join(out_dir, f))
     doc = fitz.open(data["pdf"])
-    panels = {}
+    masked = set()
     crops = []
     for q in data["questions"]:
         parts = []
         for r in q["regions"]:
             page = doc[r["page"]]
-            if r["page"] not in panels:
-                panels[r["page"]] = mask_page(doc, page)
+            if r["page"] not in masked:
+                mask_page(doc, page)
+                masked.add(r["page"])
             clip = fitz.Rect(LEFT, r["y0"] - PAD, page.rect.width - 20, r["y1"] + PAD)
             check_masked(page, clip, f"{shift} Q{q['number']}")
             pix = page.get_pixmap(matrix=fitz.Matrix(ZOOM, ZOOM), clip=clip)
