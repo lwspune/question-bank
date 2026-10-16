@@ -43,6 +43,9 @@ import { loadVContext } from "@/lib/chat/context";
 import { askV } from "@/lib/chat/anthropic";
 import { allowedReplyLinks } from "@/lib/chat/replyLinks";
 import { cleanPagePath, isConversationId, modelHistory } from "@/lib/chat/conversation";
+import { createProgressMemo } from "@/lib/chat/progress";
+import { getOwnPerformance } from "@/lib/performance/service";
+import { buildPerformance } from "@/lib/performance/compute";
 import {
   ANON_ASKED_COOKIE,
   ANON_ASKED_MAX_AGE_SECONDS,
@@ -55,6 +58,10 @@ import {
 export const maxDuration = 30;
 
 const HOUR_MS = 60 * 60 * 1000;
+
+// A few minutes' memory of each student's results for V's my_progress tool,
+// so a follow-up does not repeat the heaviest per-student read (lib/chat/progress.ts).
+const progressMemo = createProgressMemo(200);
 
 export async function POST(request: NextRequest) {
   try {
@@ -132,7 +139,19 @@ export async function POST(request: NextRequest) {
         try {
           const earlier = conversationId ? await readConversation(admin, conversationId) : [];
           const history = conversationBelongsTo(earlier, userId) ? modelHistory(earlier) : [];
-          const ctx = await loadVContext(createSupabaseAnonClient(), { page: pagePath, signedIn: userId !== null });
+          const ownId = userId;
+          const ctx = await loadVContext(createSupabaseAnonClient(), {
+            page: pagePath,
+            signedIn: ownId !== null,
+            // The student's own login does the reading (get_own_performance): no id is passed to the database.
+            loadOwnProgress: ownId
+              ? () =>
+                  progressMemo.get(ownId, async () => {
+                    const payload = await getOwnPerformance();
+                    return payload ? buildPerformance(payload, new Date()) : null;
+                  })
+              : undefined,
+          });
           const result = await askV({
             system: ctx.system,
             systemTail: ctx.systemTail,

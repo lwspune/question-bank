@@ -24,6 +24,8 @@ import {
 import { chapterPath, formatChapterHits, searchChapters, type ChapterSearchRow } from "./chapterSearch";
 import { pathsInReply } from "./replyLinks";
 import type { VTool } from "./anthropic";
+import type { Performance } from "@/lib/performance/compute";
+import { progressTool } from "./progress";
 
 function toExamFact(e: (typeof EXAM_REGISTRY)[number], pyqBySlug: Map<string, number> | null): ChatExamFact {
   return {
@@ -54,6 +56,8 @@ export async function loadVContext(
     page?: string | null;
     /** False: a signed-out visitor, whose question is their only one (lib/chat/anonLimit.ts). */
     signedIn?: boolean;
+    /** The student's own results, for my_progress (lib/chat/progress.ts). Absent when signed out. */
+    loadOwnProgress?: () => Promise<Performance | null>;
   } = {}
 ): Promise<VContext> {
   const loadChapters = opts.loadChapters ?? listChapterLandings;
@@ -104,5 +108,6 @@ export async function loadVContext(
     },
   };
 
-  return { system, systemTail, tools: [findChapters], allowedPaths };
+  // Always offered, signed in or not: the tool list is part of the cached prefix.
+  return { system, systemTail, tools: [findChapters, progressTool(opts.loadOwnProgress)], allowedPaths };
 }
