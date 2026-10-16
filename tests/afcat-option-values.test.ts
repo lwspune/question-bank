@@ -74,6 +74,10 @@ describe("equalValueOptions", () => {
     expect(equalValueOptions(["\\(\\sqrt{a^2-b^2}\\)", "\\(\\sqrt{a^2+b^2}\\)", "\\(a\\)", "\\(b\\)"])).toEqual([]);
   });
 
+  it("does not reduce a clock time with a zero term as a ratio (Clock mirror Q2)", () => {
+    expect(equalValueOptions(["\\(9:00\\)", "\\(8:55\\)", "\\(9:05\\)", "\\(3:00\\)"])).toEqual([]);
+  });
+
   it("passes a clean set", () => {
     expect(equalValueOptions(["40 liters", "45 liters", "55 liters", "60 liters"])).toEqual([]);
   });

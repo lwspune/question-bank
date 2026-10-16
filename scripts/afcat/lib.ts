@@ -411,7 +411,8 @@ function optionValueKey(text: string): string {
     percent = "%";
     t = t.slice(0, -1).trim();
   }
-  if (/^\d+(?:\s*:\s*\d+)+$/.test(t)) {
+  // A ratio has no zero term; "9:00" and "3:00" are clock times and compare as text.
+  if (/^\d+(?:\s*:\s*\d+)+$/.test(t) && !t.split(":").some((p) => Number(p.trim()) === 0)) {
     const parts = t.split(":").map((p) => Number(p.trim()));
     const g = parts.reduce(gcd);
     return `ratio ${parts.map((p) => p / g).join(":")}${percent} ${direction}`;
