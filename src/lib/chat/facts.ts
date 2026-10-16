@@ -105,19 +105,14 @@ export type ChatFacts = {
   free?: readonly string[];
   bankTotal: number;
   nav: readonly string[];
-  /** The page the student asked from (lib/chat/conversation cleanPagePath). */
-  page?: string | null;
-  /** False for a signed-out visitor, who gets one reply before signing in (lib/chat/anonLimit.ts). */
-  signedIn?: boolean;
 };
 
 /** A signed-out visitor's question is their only one, so a question back would be a dead end. */
-const ONE_REPLY_RULE = `
-
-THIS VISITOR IS SIGNED OUT
+const ONE_REPLY_RULE = `THIS VISITOR IS SIGNED OUT
 They get only this one reply; to ask more they must sign in, and this chat tells them so. Do not ask them anything back. Give your best answer now: if the exam, class or chapter is unclear, pick the most likely from their words and the page they are on, call find_chapters, and link the one to three closest chapter pages. If the subject is clear but the chapter is not, link up to three likely chapters and point to /questions for every chapter.`;
 
-/** The full system prompt for V. Answer-only-from-facts and the no-solving rule
+/** V's fixed instructions, the same for every question (cached; the per-question
+ *  part is buildSystemTail). Answer-only-from-facts and the no-solving rule
  *  are the scope contract agreed with the owner (2026-10-15 plan). */
 export function buildSystemPrompt(facts: ChatFacts): string {
   const examBlock = facts.exams.length ? facts.exams.join("\n") : "(no exams currently live)";
@@ -155,5 +150,18 @@ PASSES ON SALE
 ${planBlock}
 
 WHERE THINGS ARE
-${facts.nav.join("\n")}${facts.page ? `\n\nThe student is on the page ${facts.page} (you cannot see what is on it).` : ""}${facts.signedIn === false ? ONE_REPLY_RULE : ""}`;
+${facts.nav.join("\n")}`;
+}
+
+/**
+ * What changes per question: the page it was asked from and, for a signed-out
+ * visitor, the one-reply rule. Kept apart from buildSystemPrompt because the
+ * fixed instructions are cached (lib/chat/anthropic.ts): anything per-question
+ * inside them would make every request a cache miss.
+ */
+export function buildSystemTail(who: { page: string | null; signedIn: boolean }): string {
+  const parts: string[] = [];
+  if (who.page) parts.push(`The student is on the page ${who.page} (you cannot see what is on it).`);
+  if (!who.signedIn) parts.push(ONE_REPLY_RULE);
+  return parts.join("\n\n");
 }

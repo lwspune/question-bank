@@ -23,7 +23,16 @@ export type RecordChatInteraction = InConversation &
         eventType: "typed_question";
         message: string;
         userId: string | null;
-        reply?: { text: string; source: "ai" | "fallback"; tokensIn?: number; tokensOut?: number; links?: string[] };
+        reply?: {
+          text: string;
+          source: "ai" | "fallback";
+          tokensIn?: number;
+          tokensOut?: number;
+          /** Migration 0161: input read from / written to the prompt cache. */
+          cacheReadTokens?: number;
+          cacheWriteTokens?: number;
+          links?: string[];
+        };
       }
     /** Migration 0157: one step of the practice-test builder. */
     | { eventType: "builder_step"; step: BuilderStepId; userId: string | null }
@@ -47,6 +56,8 @@ export async function recordChatInteraction(
         reply_source: reply?.source ?? (faqReply ? "template" : null),
         tokens_in: reply?.source === "ai" ? (reply.tokensIn ?? null) : null,
         tokens_out: reply?.source === "ai" ? (reply.tokensOut ?? null) : null,
+        cache_read_tokens: reply?.source === "ai" ? (reply.cacheReadTokens ?? null) : null,
+        cache_write_tokens: reply?.source === "ai" ? (reply.cacheWriteTokens ?? null) : null,
         reply_links: reply && reply.links && reply.links.length > 0 ? reply.links.slice(0, 10) : null,
         event_type: input.eventType,
         question_id:
@@ -83,7 +94,9 @@ export async function listChatInteractions(limit = 5000): Promise<ChatInteractio
     const to = Math.min(from + PAGE, limit) - 1;
     const { data, error } = await db
       .from("chat_interactions")
-      .select("event_type, question_id, created_at, message, user_id, reply, reply_source, tokens_in, tokens_out")
+      .select(
+        "event_type, question_id, created_at, message, user_id, reply, reply_source, tokens_in, tokens_out, cache_read_tokens, cache_write_tokens"
+      )
       .order("created_at", { ascending: false })
       .range(from, to);
     if (error) throw new Error(`list chat interactions failed: ${error.message}`);
@@ -99,6 +112,8 @@ export async function listChatInteractions(limit = 5000): Promise<ChatInteractio
         reply: (r.reply as string | null) ?? null,
         replySource: (r.reply_source as "ai" | "fallback" | null) ?? null,
         tokensIn: (r.tokens_in as number | null) ?? null,
+        cacheReadTokens: (r.cache_read_tokens as number | null) ?? null,
+        cacheWriteTokens: (r.cache_write_tokens as number | null) ?? null,
         tokensOut: (r.tokens_out as number | null) ?? null,
       });
     }

@@ -10,6 +10,13 @@
  *
  * 2026-10-15: Haiku 5.5 at low effort (chat does well at low; $0.10/$0.50 per
  * million tokens), plus V's tools, run here for at most MAX_TOOL_ROUNDS.
+ *
+ * 2026-10-16 prompt caching: the tools and the fixed instructions (`system`)
+ * are marked for Anthropic's 5-minute cache, so a re-read costs a tenth of the
+ * price (a first read in a quiet spell costs a quarter extra). The second call
+ * of a chapter search always hits it, and students' follow-ups come in bursts.
+ * Anything that changes per question goes in `systemTail`, AFTER the mark,
+ * or it would make every request a miss.
  * Spec: tests/chat-ask-v.test.ts.
  */
 const ENDPOINT = "https://api.anthropic.com/v1/messages";
@@ -33,7 +40,16 @@ export type VTool = {
 };
 
 export type AskVResult =
-  | { ok: true; reply: string; tokensIn: number; tokensOut: number }
+  | {
+      ok: true;
+      reply: string;
+      /** Input at full price (not read from or written to the cache). */
+      tokensIn: number;
+      tokensOut: number;
+      /** Input read from the cache (a tenth of the price) and written to it (a quarter extra). */
+      cacheReadTokens: number;
+      cacheWriteTokens: number;
+    }
   | { ok: false; error: string };
 
 type ContentBlock =
@@ -44,7 +60,12 @@ type ContentBlock =
 type ApiResponse = {
   stop_reason?: string;
   content?: ContentBlock[];
-  usage?: { input_tokens?: number; output_tokens?: number };
+  usage?: {
+    input_tokens?: number;
+    output_tokens?: number;
+    cache_read_input_tokens?: number;
+    cache_creation_input_tokens?: number;
+  };
 };
 
 type Message = { role: "user" | "assistant"; content: unknown };
@@ -55,7 +76,10 @@ type Message = { role: "user" | "assistant"; content: unknown };
  * The model may call a tool; its result goes back and the model answers.
  */
 export async function askV(input: {
+  /** The fixed instructions, the same for every question: cached. */
   system: string;
+  /** What changes per question (the page, signed out or not): sent after the cache mark. */
+  systemTail?: string;
   message: string;
   tools: readonly VTool[];
   /** Earlier exchanges of this conversation, oldest first (lib/chat/conversation modelHistory). */
@@ -72,6 +96,12 @@ export async function askV(input: {
   const messages: Message[] = [...(input.history ?? []), { role: "user", content: input.message }];
   let tokensIn = 0;
   let tokensOut = 0;
+  let cacheReadTokens = 0;
+  let cacheWriteTokens = 0;
+  const system = [
+    { type: "text", text: input.system, cache_control: { type: "ephemeral" } },
+    ...(input.systemTail ? [{ type: "text", text: input.systemTail }] : []),
+  ];
 
   try {
     for (let round = 0; round <= MAX_TOOL_ROUNDS; round++) {
@@ -86,7 +116,7 @@ export async function askV(input: {
           model: V_MODEL,
           max_tokens: MAX_TOKENS,
           output_config: { effort: "low" },
-          system: input.system,
+          system,
           tools: toolDefs,
           messages,
         }),
@@ -100,6 +130,8 @@ export async function askV(input: {
       const data = (await res.json()) as ApiResponse;
       tokensIn += data.usage?.input_tokens ?? 0;
       tokensOut += data.usage?.output_tokens ?? 0;
+      cacheReadTokens += data.usage?.cache_read_input_tokens ?? 0;
+      cacheWriteTokens += data.usage?.cache_creation_input_tokens ?? 0;
       const content = data.content ?? [];
 
       if (data.stop_reason === "tool_use") {
@@ -130,7 +162,7 @@ export async function askV(input: {
         .join("")
         .trim();
       if (!reply) return { ok: false, error: `no text (stop_reason ${data.stop_reason ?? "none"})` };
-      return { ok: true, reply, tokensIn, tokensOut };
+      return { ok: true, reply, tokensIn, tokensOut, cacheReadTokens, cacheWriteTokens };
     }
     return { ok: false, error: `still calling tools after ${MAX_TOOL_ROUNDS} rounds` };
   } catch (e) {

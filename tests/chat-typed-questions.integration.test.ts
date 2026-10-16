@@ -53,6 +53,32 @@ describe.skipIf(!HAS_ENV)("chat_interactions: typed questions", () => {
     expect(open.error).not.toBeNull();
   });
 
+  it("keeps cache token counts to AI replies, including rows with no reply at all (migration 0161)", async () => {
+    const noReply = await admin
+      .from("chat_interactions")
+      .insert({ event_type: "typed_question", message: `${tag} c1`, cache_read_tokens: 10 });
+    const fallback = await admin.from("chat_interactions").insert({
+      event_type: "typed_question",
+      message: `${tag} c2`,
+      reply: "Thanks",
+      reply_source: "fallback",
+      cache_write_tokens: 10,
+    });
+    const ai = await admin.from("chat_interactions").insert({
+      event_type: "typed_question",
+      message: `${tag} c3`,
+      reply: "See /mock",
+      reply_source: "ai",
+      tokens_in: 40,
+      tokens_out: 5,
+      cache_read_tokens: 2800,
+      cache_write_tokens: 0,
+    });
+    expect(noReply.error).not.toBeNull();
+    expect(fallback.error).not.toBeNull();
+    expect(ai.error).toBeNull();
+  });
+
   it("refuses text over 500 characters", async () => {
     const { error } = await admin
       .from("chat_interactions")

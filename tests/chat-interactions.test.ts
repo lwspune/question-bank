@@ -105,6 +105,15 @@ describe("summarizeChatInteractions: V's replies (migration 0158)", () => {
     // $0.10 per million in + $0.50 per million out.
     expect(s.aiCostUsd).toBeCloseTo(0.6, 6);
   });
+
+  it("prices cached input: a read at a tenth, a write at a quarter extra (migration 0161)", () => {
+    const s = summarizeChatInteractions([
+      { ...answered("ai", 0, 0), cacheReadTokens: 1_000_000, cacheWriteTokens: 0 },
+      { ...answered("ai", 0, 0), cacheReadTokens: 0, cacheWriteTokens: 1_000_000 },
+    ]);
+    // $0.01 per million read + $0.125 per million written.
+    expect(s.aiCostUsd).toBeCloseTo(0.135, 6);
+  });
 });
 
 describe("summarizeChatInteractions: the practice-test builder (migration 0157)", () => {
