@@ -83,6 +83,9 @@ def main():
         sys.exit(f"{qfile} is not a TCS shift: use sheets.py")
     out_dir = os.path.join(base, "out", shift, "sheets")
     os.makedirs(out_dir, exist_ok=True)
+    for f in os.listdir(out_dir):  # a rerun's batches can split differently: never leave an old one
+        if f.startswith("batch-") and f.endswith(".png"):
+            os.remove(os.path.join(out_dir, f))
     doc = fitz.open(data["pdf"])
     panels = {}
     crops = []
