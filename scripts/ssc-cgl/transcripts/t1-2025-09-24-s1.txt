@@ -1,0 +1,1642 @@
+SSC CGL 2025 Tier I, 24 Sep 2025, Shift 1. Read from SSC's challenge-module saved paper.
+Drafted by agents, one PART each, from the reading sheets only (no key; DRAFTING_BRIEF.md);
+every block reviewed in the main session, then compared with the key (build.ts).
+Format: scripts/ssc-cgl/lib.ts.
+
+=== 1
+chapter: Alphabet and Number Tests
+subtopic: Address and Data Matching
+difficulty: EASY
+answer: B
+stem:
+Choose the address that is the same as the one given below.
+
+House No. 87, Sector 9,Chandigarh - 160009
+A: House No. 87, Sector 9, Punjab - 160009
+B: House No. 87, Sector 9, Chandigarh - 160009
+C: House No. 87, Sector 9, Haryana - 160009
+D: House No. 87, Sector 9, Delhi - 160009
+solution:
+House number, sector and PIN code match in every option; only the city differs. The given address is in Chandigarh, which only option B carries.
+
+=== 2
+chapter: Calendar and Clock
+subtopic: Calendar
+difficulty: EASY
+answer: D
+stem:
+The seminar in Ranchi happened 3 days before Patna. The seminar in Bhubaneswar happened 2 days after Patna. If Ranchi's seminar was on \(11^{th}\) August, when was Bhubaneswar's?
+A: \(13^{th}\) August
+B: \(14^{th}\)August
+C: \(15^{th}\) August
+D: \(16^{th}\) August
+solution:
+Ranchi was 3 days before Patna, so Patna was on \(11 + 3 = 14\)th August.
+
+Bhubaneswar was 2 days after Patna: \(14 + 2 = 16\)th August.
+
+=== 3
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: B
+stem:
+What should come in place of the question mark '?' in the following number series?
+
+61, 60, 63, 58, 65, ?
+A: 60
+B: 56
+C: 62
+D: 54
+solution:
+The differences are \(-1, +3, -5, +7\), so the next is \(-9\): \(65 - 9 = 56\).
+
+=== 4
+chapter: Series
+subtopic: Number Series
+difficulty: MODERATE
+answer: B
+stem:
+Find the WRONG term in the given series.
+
+12, 34, 100, 298, 894, 2674
+A: 298
+B: 894
+C: 34
+D: 100
+solution:
+Each term is the previous one \(\times 3 - 2\): \(12 \times 3 - 2 = 34\), \(34 \times 3 - 2 = 100\), \(100 \times 3 - 2 = 298\).
+
+The next should be \(298 \times 3 - 2 = 892\), not 894.
+
+Check: \(892 \times 3 - 2 = 2674\), the last term, so 894 is the wrong one.
+
+=== 5
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: B
+stem:
+A number is increased by 20% and then decreased by 20%. What is the net change in the number?
+A: 4% increase
+B: 4% decrease
+C: No change
+D: 1% decrease
+solution:
+Take the number as 100. After a 20% increase it is 120; a 20% decrease of 120 is 24, leaving 96.
+
+\(100 \to 96\) is a 4% decrease. (Formula: \(20 - 20 - \frac{20 \times 20}{100} = -4\).)
+
+=== 6
+chapter: Mathematical Operations
+subtopic: Hidden Operation Rules
+difficulty: EASY
+answer: C
+stem:
+If 7 \(\rightarrow\) 50, 8 \(\rightarrow\) 65, then 9 \(\rightarrow\) ?
+A: 80
+B: 81
+C: 82
+D: 83
+solution:
+The rule is square plus 1: \(7^2 + 1 = 50\), \(8^2 + 1 = 65\).
+
+So \(9^2 + 1 = 82\).
+
+=== 7
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: EASY
+answer: B
+stem:
+Replace special characters with mathematical signs as given in options to make it meaningful equation.
+
+8 & 2 $ 3 = 14
+A: \(\times\), +
+B: +, \(\times\)
+C: \(-\), \(\times\)
+D: \(\div\), +
+solution:
+Option B gives \(8 + 2 \times 3 = 8 + 6 = 14\). True.
+
+The others: \(8 \times 2 + 3 = 19\), \(8 - 2 \times 3 = 2\), \(8 \div 2 + 3 = 7\).
+
+=== 8
+chapter: Classification
+subtopic: Word Classification
+difficulty: EASY
+answer: C
+stem:
+Select the one that is different.
+A: Motherboard
+B: RAM
+C: Operating System
+D: Monitor
+solution:
+Motherboard, RAM and Monitor are computer hardware. An Operating System is software.
+
+=== 9
+chapter: Classification
+subtopic: Number Classification
+difficulty: MODERATE
+answer: B
+stem:
+Find the ODD one out from the given options.
+(Note: Operations should be performed on the whole numbers, without breaking down the numbers into their constituent digits. E.g. 13 - operation on 13 such as adding/subtracting/multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed.)
+A: 289
+B: 324
+C: 204
+D: 255
+solution:
+\(289 = 17 \times 17\), \(204 = 17 \times 12\) and \(255 = 17 \times 15\) are multiples of 17.
+
+\(324 = 18 \times 18\) is not divisible by 17, so it is the odd one.
+
+=== 10
+chapter: Coding-Decoding
+subtopic: Word-Code Sentences
+difficulty: MODERATE
+answer: B
+stem:
+In a certain code language, 'trick on him twice' is coded as 'wl, dl, kl, sl', 'him slow twice' is coded as 'kl, jl, sl', 'case on him' is coded as 'pl, dl, kl'. How will 'on slow trick' be coded in the same language?
+A: dl, kl, wl
+B: dl, jl, wl
+C: pl, jl, wl
+D: dl, sl, wl
+solution:
+'him' is in all three sentences and 'kl' is in all three codes: him = kl.
+
+Sentences 1 and 3 share 'on' and 'him', codes share 'dl' and 'kl': on = dl.
+
+Sentences 1 and 2 share 'him' and 'twice', codes share 'kl' and 'sl': twice = sl.
+
+Then sentence 1 gives trick = wl, and sentence 2 gives slow = jl.
+
+'on slow trick' = dl, jl, wl.
+
+=== 11
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: B
+stem:
+A sum of money becomes Rs. 6720 after 2 years and Rs. 7392 after 3 years at compound interest. What is the rate of interest per annum?
+A: 8%
+B: 10%
+C: 12%
+D: 15%
+solution:
+The third year's interest is \(7392 - 6720 = 672\), earned on 6720.
+
+Rate \(= \frac{672}{6720} \times 100 = 10\%\).
+
+Check: \(6720 \times 1.1 = 7392\).
+
+=== 12
+chapter: Analogy
+subtopic: Number Analogy
+difficulty: MODERATE
+answer: B
+stem:
+Find the missing number: **34 : 25 :: 53 : ?**
+A: 32
+B: 34
+C: 36
+D: 42
+solution:
+The second number is the sum of the squares of the first number's digits: \(3^2 + 4^2 = 9 + 16 = 25\).
+
+So for 53: \(5^2 + 3^2 = 25 + 9 = 34\).
+
+=== 13
+chapter: Syllogism
+subtopic: Two-Statement Syllogism
+difficulty: EASY
+answer: A
+stem:
+Read the following statement carefully and identify the conclusion that follows.
+
+Statement:
+No tables are chairs. All chairs are wooden.
+
+**Conclusions:**
+I. Some wooden things are not tables.
+II. No tables are wooden.
+A: Only I follows
+B: Only II follows
+C: Both I and II follow
+D: Neither I nor II follows
+solution:
+All chairs are wooden, and no chair is a table. So the chairs are wooden things that are not tables: I follows.
+
+Tables lie outside chairs but may still be wooden, so "No tables are wooden" is not certain: II does not follow.
+
+=== 14
+chapter: Syllogism
+subtopic: Three-Statement Syllogism
+difficulty: EASY
+answer: B
+stem:
+Read the following statement carefully and identify the conclusion that follows.
+
+Statement:
+All men are intelligent. No intelligent person is poor. Some poor are hardworking.
+
+**Conclusions:**
+I. Some men are hardworking.
+II. No man is poor.
+A: Only I follows
+B: Only II follows
+C: Both I and II follow
+D: Neither I nor II follows
+solution:
+All men are intelligent and no intelligent person is poor, so no man is poor: II follows.
+
+The only hardworking people we know of are some of the poor, and no man is poor. Men may or may not be hardworking, so I does not follow.
+
+=== 15
+chapter: Alphabet and Number Tests
+subtopic: Word Formation
+difficulty: EASY
+answer: D
+stem:
+From the given alternatives, find the word which can be formed from the letters used in the given word.
+
+ACCUSATION
+A: Acuse
+B: Curse
+C: Cure
+D: Caution
+solution:
+ACCUSATION has A, A, C, C, U, S, T, I, O, N. It has no E and no R.
+
+Acuse and Cure need E, Curse needs R and E. Caution needs C, A, U, T, I, O, N, all present.
+
+=== 16
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: B
+stem:
+What comes next in the series?
+Z, W, T, Q, ?
+A: M
+B: N
+C: O
+D: P
+solution:
+Each letter moves 3 places back: Z (26), W (23), T (20), Q (17), so next is 14 = N.
+
+=== 17
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: C
+stem:
+What is the next number in the series?
+10, 30, 90, ___
+A: 180
+B: 200
+C: 270
+D: 300
+solution:
+Each term is 3 times the previous: \(90 \times 3 = 270\).
+
+=== 18
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: D
+stem:
+If "MODI" is written as "OQFK", how will "BAPU" be written?
+A: DCQW
+B: CBRU
+C: DCRV
+D: DCRW
+solution:
+Each letter moves 2 places forward: M to O, O to Q, D to F, I to K.
+
+BAPU: B to D, A to C, P to R, U to W, giving DCRW.
+
+=== 19
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: B
+stem:
+Complete the series.
+1, 27, 125, ?
+A: 216
+B: 343
+C: 512
+D: 729
+solution:
+The terms are cubes of odd numbers: \(1^3, 3^3, 5^3\). Next is \(7^3 = 343\).
+
+=== 20
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: D
+stem:
+What comes next?
+AJ, BL, CN, ?
+A: FS
+B: GT
+C: ER
+D: DP
+solution:
+First letters: A, B, C, D (+1). Second letters: J, L, N, P (+2). Next is DP.
+
+=== 21
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: A
+stem:
+If A:B = 2:3 and B:C = 4:5, find A:C.
+A: 8:15
+B: 2:5
+C: 4:7
+D: 8:25
+solution:
+Make B the same: A:B = 8:12 and B:C = 12:15.
+
+So A:C = 8:15. (Check: \(\frac{2}{3} \times \frac{4}{5} = \frac{8}{15}\).)
+
+=== 22
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: D
+stem:
+If COMPUTER is coded as DPNQVUFS, how is LAPTOP coded in the same code?
+A: MBQQPQ
+B: MBQQOR
+C: MAPPPQ
+D: MBQUPQ
+solution:
+Each letter moves 1 place forward: C to D, O to P, M to N, P to Q, U to V, T to U, E to F, R to S.
+
+LAPTOP: L to M, A to B, P to Q, T to U, O to P, P to Q, giving MBQUPQ.
+
+=== 23
+chapter: Arithmetic Reasoning
+subtopic: Arithmetic Word Problems
+difficulty: EASY
+answer: A
+stem:
+Rs. 640 shared among 8 people. 2 back out. What’s new share per person?
+A: Rs. 106.67
+B: Rs. 237.89
+C: Rs. 85
+D: Rs. 100
+solution:
+After 2 back out, 6 people share Rs. 640.
+
+\(640 \div 6 = 106.67\), so each gets Rs. 106.67.
+
+=== 24
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: B
+stem:
+2, 3, 5, 8, 12, 17, ?
+A: 22
+B: 23
+C: 24
+D: 25
+solution:
+The differences are 1, 2, 3, 4, 5, so the next difference is 6: \(17 + 6 = 23\).
+
+=== 25
+chapter: Series
+subtopic: Number Series
+difficulty: MODERATE
+answer: A
+stem:
+7, 14, 28, 35, 70, ?
+A: 77
+B: 80
+C: 85
+D: 90
+solution:
+The steps alternate +7 and \(\times 2\): \(7 + 7 = 14\), \(14 \times 2 = 28\), \(28 + 7 = 35\), \(35 \times 2 = 70\).
+
+Next is \(70 + 7 = 77\).
+
+=== 26
+subject: Current Affairs
+chapter: Science and Technology
+subtopic: Space Technology and Astronomy
+difficulty: EASY
+answer: C
+stem:
+What distinguishes ISRO’s Aditya-L1 mission from other solar observatories?
+A: It uses radar waves to study the Sun
+B: It orbits the Sun directly
+C: It will study the solar corona from Lagrange Point 1
+D: It is placed in a lunar orbit
+solution:
+Aditya-L1, India's first space-based solar observatory, sits in a halo orbit around the Sun-Earth Lagrange point L1, about 1.5 million km from Earth, from where it watches the Sun (including the corona) without any eclipse or occultation. It does not use radar, does not orbit the Sun on its own, and is not in lunar orbit.
+
+=== 27
+subject: Current Affairs
+chapter: International Affairs and Relations
+subtopic: International Organizations and Multilateral Bodies
+difficulty: EASY
+answer: C
+stem:
+The primary focus of the Quad is in which region?
+A: Europe
+B: Africa
+C: Indo-Pacific
+D: South America
+solution:
+The Quad (Quadrilateral Security Dialogue) of India, the USA, Japan and Australia works for a free, open and inclusive Indo-Pacific.
+
+=== 28
+subject: Economics
+chapter: Indian Economy
+subtopic: Government Schemes — Agriculture and Livestock
+difficulty: EASY
+answer: C
+stem:
+The "Pradhan Mantri Kisan Urja Suraksha evam Utthan Mahabhiyan (PM-KUSUM)" scheme has a focus on the energy sector within agriculture. What is the primary objective of this scheme?
+A: To provide free electricity to all agricultural consumers.
+B: To promote the use of chemical fertilizers and pesticides for higher yields.
+C: To encourage the installation of solar pumps and grid-connected solar power plants in rural areas.
+D: To improve the rural electricity grid infrastructure for better power supply.
+solution:
+PM-KUSUM (launched 2019 by the Ministry of New and Renewable Energy) has three components: decentralised grid-connected solar plants on farmland, standalone solar pumps, and solarisation of existing grid-connected pumps. Its aim is solar energy and income for farmers, not free power, fertilisers or grid upgrades.
+
+=== 29
+subject: History
+chapter: Ancient India
+subtopic: Temple and Rock-Cut Architecture
+difficulty: EASY
+answer: A
+stem:
+The rock-cut Kailasa temple at Ellora was carved out of how many rocks?
+A: One single rock
+B: Cement blocks
+C: Three adjoining rocks
+D: A cluster of stones
+solution:
+The Kailasa temple (Cave 16, Ellora), built under the Rashtrakuta king Krishna I in the 8th century, is a monolith: it was cut top-down out of a single basalt rock.
+
+=== 30
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Books, Literature and Authors
+difficulty: HARD
+answer: B
+flawed: yes
+note: The 2021 PEN Pinter Prize went to Tsitsi Dangarembga, who is Zimbabwean, not Nigerian. The Nigerian winner with work on identity, gender and migration is Chimamanda Ngozi Adichie, who won in 2018. No option fits both the year and the nationality.
+stem:
+Which Nigerian author received the 2021 PEN Pinter Prize for their “unflinching” exploration of identity, gender, and migration?
+A: Teju Cole
+B: Chimamanda Ngozi Adichie
+C: Ben Okri
+D: Tsitsi Dangarembga
+solution:
+Chimamanda Ngozi Adichie is the Nigerian author whose novels (Americanah, Half of a Yellow Sun) explore identity, gender and migration, and she received the PEN Pinter Prize in 2018. The 2021 prize went to Tsitsi Dangarembga, a Zimbabwean. Teju Cole and Ben Okri have not won it.
+
+=== 31
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: EASY
+answer: B
+stem:
+Which sport is the term “zugzwang” associated with?
+A: Kabaddi
+B: Chess
+C: Shooting
+D: Table Tennis
+solution:
+Zugzwang is a chess term for a position in which any move a player makes worsens their position, yet they are obliged to move.
+
+=== 32
+subject: History
+chapter: Modern India
+subtopic: British Administration, Acts and Legislation
+difficulty: EASY
+answer: C
+stem:
+The Government of India Act of 1935 primarily aimed to:
+A: Grant complete independence to India.
+B: Establish a Dominion status for India.
+C: Provide for a federal structure with provincial autonomy.
+D: Introduce universal adult suffrage.
+solution:
+The 1935 Act proposed an All-India Federation, abolished dyarchy in the provinces and gave them provincial autonomy. It gave neither independence nor Dominion status, and the franchise stayed limited (about 10 percent of the population).
+
+=== 33
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Statutory Bodies and Post-Independence Legislation
+difficulty: EASY
+answer: B
+stem:
+Which of the following is a cybercrime related to identity theft under the Bharatiya Nyaya Sanhita, 2023?
+A: Using public Wi-Fi to access online accounts
+B: Stealing personal details to create fake identities and commit fraud
+C: Downloading free music from unofficial websites
+D: Posting harmless pictures on a social media profile
+solution:
+Identity theft means taking someone's personal details and impersonating them, here to create fake identities and cheat (cheating by personation). The other acts are not identity theft.
+
+=== 34
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: State Legislatures and Governors
+difficulty: EASY
+answer: A
+stem:
+Who is the \(20^{th}\) governor of Uttar Pradesh since 2019?
+A: Anandiben Patel
+B: Satya Pal Malik
+C: Ram Naresh Yadav
+D: Rajendra Vishwanath Arlekar
+solution:
+Anandiben Patel took charge as Governor of Uttar Pradesh in July 2019, succeeding Ram Naik. Satya Pal Malik was Governor of Jammu and Kashmir, Ram Naresh Yadav of Madhya Pradesh, and Rajendra Arlekar of Himachal Pradesh, Bihar and Kerala.
+
+=== 35
+subject: History
+chapter: Ancient India
+subtopic: Vedic Age, Society and Literature
+difficulty: EASY
+answer: B
+stem:
+Which among the following is NOT a Vedanga, or the limbs of the Veda?
+A: Kalpa
+B: Vaisheshika
+C: Vyakarana
+D: Jyotisha
+solution:
+The six Vedangas are Shiksha, Kalpa, Vyakarana, Nirukta, Chandas and Jyotisha. Vaisheshika is one of the six schools (darshanas) of Indian philosophy, founded by Kanada.
+
+=== 36
+subject: Geography
+chapter: Indian Geography — Economy, Resources and Transport
+subtopic: Energy and Industries — Power, Petroleum, Iron and Steel
+difficulty: MODERATE
+answer: A
+stem:
+Which of the given statements is/are CORRECT regarding solar power production?
+
+1. Solar power is a renewable energy source with low operational costs and minimal environmental impact.
+
+2. Kamuthi Solar Power Project is one of the largest single-location solar power plants in India, with a capacity of 648 MW.
+A: Both 1 and 2
+B: 1 only
+C: 2 only
+D: Neither 1 nor 2
+solution:
+Statement 1 is correct: sunlight is free and renewable, so running costs are low and there are no emissions during generation.
+
+Statement 2 is correct: the Kamuthi plant in Ramanathapuram district, Tamil Nadu (Adani Green), has 648 MW and was the world's largest single-location solar plant when commissioned in 2016.
+
+=== 37
+subject: Geography
+chapter: Indian Geography — Economy, Resources and Transport
+subtopic: Population, Census and Urbanisation
+difficulty: MODERATE
+answer: D
+stem:
+Consider the following about population growth in India:
+
+Statement-I: The population pyramid in India is broad at the base and top and narrow in the middle.
+
+Statement-II: India has a large proportion of young population due to high birth rates and declining death rates.
+
+Which one of the following is CORRECT in respect of the above statements?
+A: Both Statement-I and Statement-II are correct and Statement -II is the correct explanation for Statement-I
+B: Both Statement-I and Statement-II are correct and Statement-II is not the correct explanation for Statement-I
+C: Statement-I is correct but Statement-II incorrect
+D: Statement-I incorrect but Statement-II is correct
+solution:
+India's population pyramid is broad at the base and tapers towards the top (a triangular, expanding pyramid), because the young form a large share and the old a small one. It is not broad at the top, so Statement-I is incorrect.
+
+Statement-II is correct: high birth rates with falling death rates give India a large young population.
+
+=== 38
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: EASY
+answer: D
+stem:
+Which of the following is NOT a type of raga-based performance?
+A: Thumri
+B: Dhrupad
+C: Prabandha
+D: Sonata
+solution:
+Thumri, Dhrupad and Prabandha are forms of Indian classical music sung in ragas. A sonata is a Western classical instrumental composition, not raga-based.
+
+=== 39
+subject: History
+chapter: Ancient India
+subtopic: Art, Painting and Sculpture
+difficulty: EASY
+answer: D
+stem:
+Which of the following statements most accurately describes a key difference between the Mathura and Gandhara schools of art, as broadly understood in Indian architectural history?
+A: Mathura art primarily used green phyllite, while Gandhara art used spotted red sandstone.
+B: Gandhara art developed on purely indigenous lines, whereas Mathura art showed foreign influences
+C: Mathura art predominantly focused on Buddhist themes, while Gandhara focused on Hindu deities
+D: Mathura art depicted Buddha in an indigenous Yaksha-like style, whereas Gandhara art reflected Hellenistic (Greco-Roman) features.
+solution:
+Mathura sculptors drew on the indigenous Yaksha tradition, while Gandhara art shows Greco-Roman (Hellenistic) features such as wavy hair and draped robes. Option A reverses the materials (Mathura used spotted red sandstone, Gandhara grey-blue schist and phyllite), B reverses the influences, and C is wrong: Gandhara was mainly Buddhist, while Mathura carved Buddhist, Jain and Hindu images.
+
+=== 40
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: HARD
+answer: B
+stem:
+Which of the following statements about India’s National and Institutional Sports Competitions is/are **correct?**
+1) National Games began in 1924 at Lahore and were renamed from the IX Games in Bombay.
+2) SGFI holds nationals only for boys under 17 in contact sports like Wrestling and Kabaddi.
+3) Inter-University tournaments use knockout or league formats and allow one team per university.
+A: Only 1 and 2 are Correct
+B: Only 1 and 3 are Correct
+C: Only 2 and 3 are correct
+D: 1, 2 and 3 are Correct
+solution:
+Statement 1 is correct: the games began as the Indian Olympic Games at Lahore in 1924 and took the name National Games from the 1940 Bombay edition.
+
+Statement 2 is wrong: the School Games Federation of India holds national school games for both boys and girls, in several age groups (under 14, 17 and 19) and across many sports.
+
+Statement 3 is correct: Association of Indian Universities tournaments are played on knockout or league formats, with one team entered per university.
+
+=== 41
+subject: History
+chapter: Medieval India
+subtopic: Vijayanagara Empire
+difficulty: EASY
+answer: B
+stem:
+Which of the following works was composed by the Vijayanagara ruler Krishnadevaraya and is renowned for its poetic richness and devotion to Lord Vishnu?
+A: Ramacharitam
+B: Amuktamalyada
+C: Gita Govinda
+D: Manimekalai
+solution:
+Krishnadevaraya wrote the Telugu poem Amuktamalyada, the story of the Vaishnava saint Andal and her devotion to Lord Vishnu (Ranganatha). Gita Govinda is by Jayadeva, Manimekalai by Sattanar (a Tamil Buddhist epic) and Ramacharitam is a Malayalam work.
+
+=== 42
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: C
+stem:
+**Fill in the blank:**
+The final match of the 133rd Durand Cup, held between 26 July and 31 August 2024, featured Northeast United FC competing against ______.
+A: Bengaluru FC
+B: East Bengal FC
+C: Mohun Bagan SG
+D: FC Goa
+solution:
+In the 2024 Durand Cup final at Kolkata, NorthEast United FC drew 2-2 with Mohun Bagan Super Giant and won on penalties, their first Durand Cup title.
+
+=== 43
+subject: Physics
+chapter: Light and Optics
+subtopic: Light Phenomena and Spectrum
+difficulty: EASY
+answer: B
+stem:
+The color order in a secondary rainbow is:
+A: Same as primary rainbow
+B: Reversed compared to primary rainbow
+C: Random and variable
+D: Depends on humidity
+solution:
+A secondary rainbow forms after two internal reflections inside the drops, so its colour order is reversed: red on the inside and violet on the outside, opposite to the primary bow.
+
+=== 44
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: MODERATE
+answer: A
+stem:
+**Fill in the Blank:**
+Thoda combines martial art with ______ in Himachal Pradesh.
+A: Archery
+B: Swordplay
+C: Stick-fighting
+D: Wrestling
+solution:
+Thoda is a martial art, sport and folk performance of Himachal Pradesh played with bows and arrows: the archer aims at the opponent's leg below the knee. So it combines martial art with archery.
+
+=== 45
+subject: Economics
+chapter: National Income, Growth and Development Indicators
+subtopic: Economic Curves, Indices and Statistical Reports
+difficulty: EASY
+answer: B
+stem:
+The Index of Economic Freedom 2025 is published by which conservative think tank?
+A: Cato Institute
+B: Heritage Foundation
+C: American Enterprise Institute
+D: Brookings Institution
+solution:
+The Index of Economic Freedom is published every year by the Heritage Foundation, a conservative think tank in Washington, D.C. The Cato Institute publishes a different report, Economic Freedom of the World (with the Fraser Institute).
+
+=== 46
+subject: Economics
+chapter: Indian Economy
+subtopic: International Trade and Finance
+difficulty: EASY
+answer: C
+stem:
+Which of the following statements about output markets in an open economy is **correct?**
+A: A country can only produce what it consumes
+B: Consumers are restricted to domestically produced goods
+C: Trade in goods and services allows wider consumer and producer choice
+D: Only producers benefit from international trade
+solution:
+In an open economy, output markets are linked through trade, so consumers and producers can choose between domestic and foreign goods. The other statements describe a closed economy or are simply false.
+
+=== 47
+subject: Economics
+chapter: Indian Economy
+subtopic: Five Year Plans and Indian Planning
+difficulty: EASY
+answer: C
+stem:
+The Planning Commission was established in which year?
+A: 1947
+B: 1949
+C: 1950
+D: 1952
+solution:
+The Planning Commission was set up on 15 March 1950 by a cabinet resolution, with Jawaharlal Nehru as its chairman. It was replaced by NITI Aayog in 2015.
+
+=== 48
+subject: History
+chapter: Modern India
+subtopic: Freedom Movement — INC, Gandhi and Independence
+difficulty: EASY
+answer: C
+stem:
+The revolutionary Bagha Jatin (Jatindranath Mukherjee) was known for his valiant fight and for inspiring revolutionaries in which Indian state?
+A: Punjab
+B: Uttar Pradesh
+C: Bengal
+D: Bihar
+solution:
+Bagha Jatin, a leader of the Jugantar group in Bengal, died after a gun battle with the police at Balasore in 1915 and inspired revolutionaries in Bengal.
+
+=== 49
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Institutions, Milestones and History
+difficulty: MODERATE
+answer: B
+stem:
+Which of the following statements about Sir M. Visvesvaraya is correct?
+A: He was the first recipient of the Bharat Ratna.
+B: He was known for his role in India's hydroelectric projects.
+C: He designed the first Indian Rail budget model.
+D: He was a noted industrialist from pre-Independence India.
+solution:
+Visvesvaraya was a civil engineer known for dams, irrigation and water projects such as the Krishna Raja Sagara dam, and his birthday (15 September) is Engineers' Day. He received the Bharat Ratna in 1955, not first (the first recipients in 1954 were C. Rajagopalachari, S. Radhakrishnan and C. V. Raman). He was an engineer and Diwan of Mysore, not an industrialist, and had no role in a rail budget model.
+
+=== 50
+subject: Economics
+chapter: National Income, Growth and Development Indicators
+subtopic: Industrial and Manufacturing Policy
+difficulty: MODERATE
+answer: C
+stem:
+Read the following statements carefully and choose the **correct** option regarding Assertion (A) and Reason (R).
+**Assertion (A):** The 1991 reforms led to the opening of the Indian economy to foreign investors.
+**Reason (R):** The government wanted to increase domestic savings rate rapidly.
+A: Both A and R are true and R is the correct explanation of A.
+B: Both A and R are true but R is not the correct explanation of A.
+C: A is true but R is false.
+D: A is false but R is true.
+solution:
+A is true: the 1991 liberalisation allowed automatic approval of foreign direct investment and opened the economy to foreign investors.
+
+R is false as the reason: the reforms were driven by the balance of payments crisis (foreign exchange reserves had fallen to about two weeks of imports) and the need for foreign capital and efficiency, not a drive to raise the domestic savings rate.
+
+=== 51
+chapter: Surds, Indices and Simplification
+subtopic: Square Roots of Surds
+difficulty: EASY
+answer: A
+flawed: yes
+note: Options A and C are the same number, since \(\sqrt{4} = 2\) makes C equal to \(\sqrt{3} + 2\); both are right.
+stem:
+Simplify: \(\sqrt{(7 + 4\sqrt{3})}\)
+A: \(\sqrt{3} + 2\)
+B: \(2 + \sqrt{7}\)
+C: \(\sqrt{3} + \sqrt{4}\)
+D: \(5 + \sqrt{3}\)
+solution:
+\(7 + 4\sqrt{3} = 4 + 3 + 2 \times 2 \times \sqrt{3} = (2 + \sqrt{3})^2\), so the square root is \(2 + \sqrt{3}\).
+
+Check: \((\sqrt{3} + 2)^2 = 3 + 4\sqrt{3} + 4 = 7 + 4\sqrt{3}\). Option C, \(\sqrt{3} + \sqrt{4}\), is the same value because \(\sqrt{4} = 2\).
+
+=== 52
+chapter: Simple and Compound Interest
+subtopic: Simple Interest
+difficulty: EASY
+answer: D
+stem:
+A sum of ₹8000 is lent out in two parts, one at \(5\%\) simple interest and the other at \(7\%\) simple interest. If the annual interest is ₹500, the sum lent at \(7\%\) is:
+A: ₹3000
+B: ₹4000
+C: ₹4500
+D: ₹5000
+solution:
+Let ₹\(x\) be lent at \(7\%\). Then \(0.05(8000 - x) + 0.07x = 500\), so \(400 + 0.02x = 500\) and \(x = 5000\).
+
+Check: \(5\%\) of 3000 is 150 and \(7\%\) of 5000 is 350; \(150 + 350 = 500\).
+
+=== 53
+chapter: Time, Speed and Distance
+subtopic: Average Speed and Speed–Time Ratios
+difficulty: MODERATE
+answer: B
+stem:
+Jayesh covers one-fourth of his journey at 20 km/h, another one-fourth at 10 km/h, and the rest at 70 km/h. What is his average speed?
+A: 18.25 km/h
+B: 22.4 km/h
+C: 16.35 km/h
+D: 15.55 km/h
+solution:
+Take the journey as 280 km. The parts are 70 km, 70 km and 140 km.
+
+Time \(= \frac{70}{20} + \frac{70}{10} + \frac{140}{70} = 3.5 + 7 + 2 = 12.5\) h.
+
+Average speed \(= \frac{280}{12.5} = 22.4\) km/h.
+
+Check with fractions of the journey: \(\frac{1}{\frac{1}{4 \times 20} + \frac{1}{4 \times 10} + \frac{1}{2 \times 70}} = \frac{1}{\frac{7 + 14 + 4}{560}} = \frac{560}{25} = 22.4\).
+
+=== 54
+chapter: Heights and Distances
+subtopic: Two Points of Observation
+difficulty: MODERATE
+answer: D
+flawed: yes
+note: Options C and D are the same number, since \(15\sqrt{3}(\sqrt{3} + 1) = 15(3 + \sqrt{3})\); both are right.
+stem:
+A man observes the top of a pole with an angle of elevation of \(45^\circ\).He walks 15 m towards the pole, and the angle of elevation becomes \(60^\circ\). What is the height of the pole?
+A: \(15(\sqrt{3}-1)m\)
+B: \(15(3-\sqrt{3})m\)
+C: \(\frac{15\sqrt{3}(\sqrt{3}+1)}{2}\) m
+D: \(\frac{15(3+\sqrt{3})}{2}\) m
+solution:
+Let the height be \(h\) and the nearer distance \(x\). From \(60^\circ\): \(h = \sqrt{3}x\). From \(45^\circ\): \(h = x + 15\).
+
+So \(\sqrt{3}x = x + 15\), \(x = \frac{15}{\sqrt{3} - 1} = \frac{15(\sqrt{3} + 1)}{2}\), and \(h = \frac{15\sqrt{3}(\sqrt{3} + 1)}{2} = \frac{15(3 + \sqrt{3})}{2} \approx 35.49\) m.
+
+Check: \(x \approx 20.49\), \(h - x \approx 15\). Option C simplifies to D, so both are right.
+
+=== 55
+chapter: Mensuration 3D
+subtopic: Solids Inside Solids
+difficulty: EASY
+answer: B
+stem:
+A rectangular tank measures 12 cm long, 10 cm wide, and 6 cm high. If a spherical ball of the largest possible size is placed inside this tank, what is the volume of the space not occupied by the ball?
+A: \((720-27\pi)\text{cm}^3\)
+B: \((720-36\pi)\text{cm}^3\)
+C: \((600-36\pi)\text{cm}^3\)
+D: \((720-288\pi)\text{cm}^3\)
+solution:
+Tank volume \(= 12 \times 10 \times 6 = 720\ \text{cm}^3\).
+
+The largest ball has diameter equal to the smallest dimension, 6 cm, so radius 3 cm and volume \(\frac{4}{3}\pi \times 27 = 36\pi\ \text{cm}^3\).
+
+Unoccupied space \(= (720 - 36\pi)\ \text{cm}^3\).
+
+=== 56
+chapter: Ratio, Proportion and Variation
+subtopic: Partnership
+difficulty: EASY
+answer: A
+stem:
+A and B share profit in \(7:5\). If B gets Rs. 15,000, how much did A receive?
+A: Rs. 21,000
+B: Rs. 17,500
+C: Rs. 19,000
+D: Rs. 20,000
+solution:
+One part \(= \frac{15000}{5} = 3000\), so A gets \(7 \times 3000 = 21000\).
+
+Check: \(21000 : 15000 = 7 : 5\).
+
+=== 57
+chapter: Lines, Angles and Polygons
+subtopic: Interior and Exterior Angles of Polygons
+difficulty: EASY
+answer: C
+stem:
+What is the ratio of the interior angle of a regular hexagon to the interior angle of a regular 12-sided polygon (dodecagon)?
+A: \(4 : 7\)
+B: \(3 : 7\)
+C: \(4 : 5\)
+D: \(3 : 5\)
+solution:
+Hexagon: \(180^\circ - \frac{360^\circ}{6} = 120^\circ\). Dodecagon: \(180^\circ - \frac{360^\circ}{12} = 150^\circ\).
+
+Ratio \(= 120 : 150 = 4 : 5\).
+
+=== 58
+chapter: Mensuration 2D
+subtopic: Rectangles, Squares and Other Quadrilaterals
+difficulty: EASY
+answer: A
+stem:
+A man walks a square plot of area \(121\ \text{m}^2\). If he walks once around its boundary, how far does he walk?
+A: 44 m
+B: 46 m
+C: 48 m
+D: 52 m
+solution:
+Side \(= \sqrt{121} = 11\) m, so the perimeter is \(4 \times 11 = 44\) m.
+
+=== 59
+chapter: Ratio, Proportion and Variation
+subtopic: Ratio and Proportion
+difficulty: EASY
+answer: A
+stem:
+Two numbers are in the ratio \(5:7\). If 9 is added to each, the new ratio becomes \(8:11\). What are the original numbers?
+A: 135 and 189
+B: 150 and 210
+C: 120 and 168
+D: 180 and 252
+solution:
+Let the numbers be \(5x\) and \(7x\). Then \(\frac{5x + 9}{7x + 9} = \frac{8}{11}\), so \(55x + 99 = 56x + 72\) and \(x = 27\).
+
+The numbers are 135 and 189. Check: \(144 : 198 = 8 : 11\) (both divide by 18).
+
+=== 60
+chapter: Ratio, Proportion and Variation
+subtopic: Ratio and Proportion
+difficulty: EASY
+answer: A
+stem:
+\(A:B = 3:4\), \(B:C = 6:7\), \(C:D = 14:15\). What is the ratio \(A:D\)?
+A: \(3:5\)
+B: \(9:16\)
+C: \(7:20\)
+D: \(9:25\)
+solution:
+\(A:B:C = 9:12:14\) (make B equal to 12). With \(C:D = 14:15\), \(A:B:C:D = 9:12:14:15\).
+
+So \(A:D = 9:15 = 3:5\).
+
+Check: \(\frac{A}{D} = \frac{3}{4} \times \frac{6}{7} \times \frac{14}{15} = \frac{252}{420} = \frac{3}{5}\).
+
+=== 61
+chapter: Percentage, Profit and Loss
+subtopic: Percentage
+difficulty: EASY
+answer: B
+stem:
+A bag contains \(20\%\) red balls, \(30\%\) green balls and the rest blue balls. If there are 80 blue balls, what is the total number of balls?
+A: 100
+B: 160
+C: 200
+D: 240
+solution:
+Blue balls are \(100\% - 20\% - 30\% = 50\%\) of the total, so the total is \(\frac{80}{0.5} = 160\).
+
+=== 62
+chapter: Percentage, Profit and Loss
+subtopic: Percentage
+difficulty: EASY
+answer: D
+stem:
+A candidate attempted \(75\%\) of the questions in an exam. He got \(80\%\) of the attempted ones correct, and \(10\%\) of the unattempted ones were also awarded marks due to grace. If the total number of questions is 200, how many did he get right?
+A: 130
+B: 135
+C: 120
+D: 125
+solution:
+Attempted \(= 150\), correct \(= 0.8 \times 150 = 120\).
+
+Unattempted \(= 50\), grace \(= 0.1 \times 50 = 5\).
+
+Total right \(= 120 + 5 = 125\).
+
+=== 63
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: EASY
+answer: C
+stem:
+A trader gave a \(20\%\) discount on the market price but still earned a \(10\%\) profit. What percentage was the market price above the cost price?
+A: \(25.5\%\)
+B: \(35\%\)
+C: \(37.5\%\)
+D: \(40\%\)
+solution:
+Let the cost price be 100. Selling price \(= 110 = 0.8 \times\) market price, so the market price is \(\frac{110}{0.8} = 137.5\).
+
+The market price is \(37.5\%\) above cost. Check: \(137.5 \times 0.8 = 110\).
+
+=== 64
+chapter: Averages
+subtopic: Sum and Mean
+difficulty: EASY
+answer: C
+stem:
+A cricketer has played 8 innings with an average score of 40. In the next inning, he scores 80. What will be the new average?
+A: 40.44
+B: 46.44
+C: 44.44
+D: 48.44
+solution:
+Total after 8 innings \(= 8 \times 40 = 320\). After the ninth, \(320 + 80 = 400\).
+
+New average \(= \frac{400}{9} \approx 44.44\).
+
+Check: the extra 40 runs above average spread over 9 innings add \(\frac{40}{9} \approx 4.44\) to 40.
+
+=== 65
+chapter: Quadrilaterals
+subtopic: General Quadrilaterals and their Diagonals
+difficulty: EASY
+answer: C
+stem:
+In a quadrilateral ABCD, angles A,B,C are in the ratio \(1:2:3\). If angle \(D=120^\circ\), what is angle A?
+A: \(60^\circ\)
+B: \(64^\circ\)
+C: \(40^\circ\)
+D: \(50^\circ\)
+solution:
+\(A + B + C = 360^\circ - 120^\circ = 240^\circ\), so \(x + 2x + 3x = 240^\circ\) and \(x = 40^\circ\).
+
+Angle \(A = 40^\circ\). Check: \(40 + 80 + 120 + 120 = 360\).
+
+=== 66
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: EASY
+answer: B
+stem:
+A combo offer says, "Buy 2 shirts at Rs. 1200 each, get a third shirt free." What is the effective price per shirt?
+A: Rs. 850
+B: Rs. 800
+C: Rs. 1000
+D: Rs. 900
+solution:
+Pay \(2 \times 1200 = 2400\) for 3 shirts, so each costs \(\frac{2400}{3} = 800\).
+
+=== 67
+chapter: Time and Work
+subtopic: Pipes and Cisterns
+difficulty: EASY
+answer: B
+stem:
+Two taps can fill a tub in 6 minutes and 4 minutes, respectively. A pipe can empty it in 3 minutes. If all the three are kept open simultaneously, when will the tub be full?
+A: 10 min
+B: 12 min
+C: 7 min
+D: 15 min
+solution:
+Net rate per minute \(= \frac{1}{6} + \frac{1}{4} - \frac{1}{3} = \frac{2 + 3 - 4}{12} = \frac{1}{12}\) of the tub.
+
+The tub fills in 12 minutes.
+
+Check with a 12-litre tub: the taps add 2 and 3 litres a minute and the pipe removes 4, a net 1 litre a minute, so 12 minutes.
+
+=== 68
+chapter: Averages
+subtopic: Weighted and Combined Averages
+difficulty: EASY
+answer: D
+stem:
+In a company, the average salary of 5 junior employees is Rs. 30,000, and that of 4 senior employees is Rs. 60,000. What is the combined average salary?
+A: Rs. 30,333.33
+B: Rs. 33,000.33
+C: Rs. 33,333.33
+D: Rs. 43,333.33
+solution:
+Total \(= 5 \times 30000 + 4 \times 60000 = 150000 + 240000 = 390000\).
+
+Average \(= \frac{390000}{9} \approx 43333.33\).
+
+Check: \(30000 + \frac{4}{9} \times 30000 = 30000 + 13333.33 = 43333.33\).
+
+=== 69
+chapter: Ratio, Proportion and Variation
+subtopic: Mixtures and Alligation
+difficulty: MODERATE
+answer: D
+stem:
+A container has a 100-litre mixture of acid and water in the ratio \(4:1\). 20 litres is removed and replaced with water. Then 20 litres is removed again and replaced with pure acid. What is the final percentage of acid?
+A: \(76.8\%\)
+B: \(78.4\%\)
+C: \(81.6\%\)
+D: \(71.2\%\)
+solution:
+Start: acid 80 L, water 20 L.
+
+Remove 20 L (\(20\%\) of each): acid 64 L. Add 20 L water: acid 64 L in 100 L.
+
+Remove 20 L again: acid \(64 \times 0.8 = 51.2\) L. Add 20 L acid: acid \(71.2\) L in 100 L.
+
+Final acid \(= 71.2\%\). Check the water: \(20 \times 0.8 + 20 = 36\), then \(36 \times 0.8 = 28.8\), and \(71.2 + 28.8 = 100\).
+
+=== 70
+chapter: Trigonometric Ratios and Identities
+subtopic: Ratios in a Right Triangle
+difficulty: EASY
+answer: A
+stem:
+If \(\sec A = \frac{13}{12}\) and A is acute, find \(\sin A\).
+A: \(\frac{5}{13}\)
+B: \(\frac{12}{13}\)
+C: \(\frac{5}{12}\)
+D: \(\frac{13}{5}\)
+solution:
+\(\cos A = \frac{12}{13}\), so \(\sin A = \sqrt{1 - \frac{144}{169}} = \frac{5}{13}\) (positive as A is acute).
+
+Check: the 5, 12, 13 triangle has hypotenuse 13, adjacent 12, opposite 5.
+
+=== 71
+chapter: Trigonometric Ratios and Identities
+subtopic: Degree, Radian and Standard Values
+difficulty: EASY
+answer: A
+stem:
+Convert \(\frac{2\pi}{3}\) radians to degrees.
+A: \(120^\circ\)
+B: \(90^\circ\)
+C: \(180^\circ\)
+D: \(60^\circ\)
+solution:
+\(\frac{2\pi}{3} \times \frac{180^\circ}{\pi} = 120^\circ\).
+
+=== 72
+chapter: Trigonometric Ratios and Identities
+subtopic: Complementary and Allied Angles
+difficulty: EASY
+answer: B
+stem:
+If \(A + B = 90^\circ\) and \(\tan A = 2\), determine the value of \(\tan A \times \tan B\).
+A: 2
+B: 1
+C: 4
+D: \(\frac{1}{2}\)
+solution:
+\(B = 90^\circ - A\), so \(\tan B = \cot A = \frac{1}{2}\).
+
+\(\tan A \times \tan B = 2 \times \frac{1}{2} = 1\).
+
+=== 73
+chapter: Triangles
+subtopic: Centres of a Triangle
+difficulty: EASY
+answer: B
+stem:
+In a right-angled triangle, the Orthocenter lies at which of the following points?
+A: The midpoint of the hypotenuse.
+B: The vertex of the right angle.
+C: A point on the hypotenuse but not the midpoint.
+D: The midpoint of one of the legs.
+solution:
+The two legs are altitudes of each other, and they meet at the right-angle vertex, so the orthocentre is that vertex.
+
+The midpoint of the hypotenuse (option A) is the circumcentre, not the orthocentre.
+
+=== 74
+chapter: Circles
+subtopic: Chords and Perpendiculars
+difficulty: EASY
+answer: C
+stem:
+A circle has a radius of 13 cm. A chord is drawn at a distance of 5 cm from the center. What is the length of the chord?
+A: 12 cm
+B: 13 cm
+C: 24 cm
+D: 26 cm
+solution:
+The perpendicular from the centre bisects the chord. Half-chord \(= \sqrt{13^2 - 5^2} = \sqrt{144} = 12\) cm.
+
+Chord \(= 2 \times 12 = 24\) cm.
+
+=== 75
+chapter: Circles
+subtopic: Tangents from an External Point
+difficulty: EASY
+answer: B
+stem:
+A tangent is drawn from a point 17 cm from the center of a circle of radius 8 cm. Find the length of the tangent.
+A: 12 cm
+B: 15 cm
+C: 13 cm
+D: 10 cm
+solution:
+The radius is perpendicular to the tangent, so the tangent length is \(\sqrt{17^2 - 8^2} = \sqrt{289 - 64} = \sqrt{225} = 15\) cm.
+
+Check: 8, 15, 17 is a Pythagorean triple.
+
+=== 76
+chapter: Grammar
+subtopic: Conditionals and Tense Sequence
+difficulty: MODERATE
+answer: B
+blind: D
+note: judgement item. SSC's key names the tense of the main verb ('can precipitate', a present-tense modal statement) as present simple; our blind answer took the participle 'Left unchecked' as a condition (present conditional). The bank carries SSC's answer
+context:
+Read the passage and answer the questions:
+
+In contemporary professional environments, workplace stress has emerged as a pervasive and insidious phenomenon, often undermining both organizational efficiency and employee well-being. Far from being a mere by product of demanding schedules, chronic occupational stress is frequently rooted in deeper systemic issues such as unrealistic expectations, inadequate support structures, and a pervasive culture of constant connectivity. The relentless pursuit of productivity, amplified by technological advancements that blur the boundaries between personal and professional spheres, has exacerbated employees' sense of perpetual obligation.
+Left unchecked, prolonged exposure to high-stress environments can precipitate a range of deleterious outcomes, including burnout, diminished cognitive functioning, and even serious physical health conditions like hypertension and cardiovascular disease. Organizations that fail to recognize and address the underlying causes of stress not only risk elevated turnover rates but also compromise innovation, morale, and overall competitiveness.
+Counteracting workplace stress demands a multi-faceted approach that transcends superficial interventions such as temporary wellness programs or occasional mindfulness workshops. Instead, it requires a fundamental re-evaluation of work design, leadership styles, and organizational priorities. Encouraging open dialogue about mental health, instituting flexible work arrangements, and fostering a culture that genuinely values work-life balance are pivotal steps toward cultivating a more sustainable and humane professional landscape.
+stem:
+**Which of the following is the correct tense used in the sentence:**
+
+"Left unchecked, prolonged exposure to high-stress environments can precipitate a range of deleterious outcomes..."?
+A: Past Perfect
+B: Present Simple
+C: Future Perfect
+D: Present Conditional
+solution:
+The main clause states a general truth in the present: prolonged exposure can precipitate a range of outcomes. "Can" is a present-tense modal, and the sentence makes a present, timeless statement, so of the options it is in the present simple. It has no "had" + participle (past perfect) and no "will have" + participle (future perfect).
+
+=== 77
+chapter: Grammar
+subtopic: Parts of Speech: Verbs and Verbals
+difficulty: MODERATE
+answer: B
+context_from: 76
+stem:
+Identify the grammatical function of the phrase **"Far from being a mere by product of demanding schedules"** in the first paragraph.
+A: It is the main subject of the sentence.
+B: It is an introductory phrase modifying the main clause.
+C: It is a dependent clause providing a condition.
+D: It is a direct object of the verb.
+solution:
+The sentence's subject is "chronic occupational stress" and its verb "is ... rooted". The opening words, set off by a comma, have no finite verb of their own, so they are a phrase (not a clause) that introduces and qualifies the main clause. They are neither the subject nor an object, and they state a contrast, not a condition.
+
+=== 78
+chapter: Reading Comprehension
+subtopic: Word Meaning in Context
+difficulty: EASY
+answer: C
+context_from: 76
+stem:
+What is the meaning of the word **"insidious"** as used in the passage?
+A: Open and obvious
+B: Harmless and fleeting
+C: Gradually harmful and subtle
+D: Quickly destructive and visible
+solution:
+Insidious means proceeding in a gradual, subtle way but with harmful effects. The passage pairs it with "pervasive" and "often undermining", which fits a slow, hidden harm. Open, harmless or quick and visible are the opposite.
+
+=== 79
+chapter: Reading Comprehension
+subtopic: Word Meaning in Context
+difficulty: EASY
+answer: B
+context_from: 76
+stem:
+The word **"deleterious"** most nearly means:
+A: Advantageous
+B: Harmful
+C: Temporary
+D: Curious
+solution:
+Deleterious means causing harm or damage. The outcomes it describes in the passage are burnout, diminished cognitive functioning, hypertension and heart disease, all harmful.
+
+=== 80
+chapter: Reading Comprehension
+subtopic: Paraphrase and Option Traps
+difficulty: EASY
+answer: B
+context_from: 76
+stem:
+According to the passage, what is a key failure of organizations when addressing workplace stress?
+A: They overly emphasize work-life balance.
+B: They rely on short-term or surface-level solutions.
+C: They provide excessive flexibility, causing laziness.
+D: They hire too many inexperienced employees.
+solution:
+The passage says organizations fail to address the "underlying causes" and that a real remedy must transcend "superficial interventions such as temporary wellness programs or occasional mindfulness workshops". Relying on short-term or surface-level solutions is that failure. The passage recommends work-life balance and flexibility, and never mentions hiring.
+
+=== 81
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: A
+stem:
+Fill in the blank with the correctly spelt word.
+
+The scholar’s interpretation was based on a _________ understanding of the philosophy.
+A: superficial
+B: supperficial
+C: supurficial
+D: supperficiall
+solution:
+The word is spelt **superficial** (super + ficial, single p, single l at the end).
+
+=== 82
+chapter: Grammar
+subtopic: Articles: A, An and The
+difficulty: EASY
+answer: A
+stem:
+Fill in the blank with the appropriate article.
+
+_____ famous poem ‘Ode to a Nightingale’ by _____ Romantic poet John Keats.
+A: The, the
+B: An, the
+C: A, the
+D: A, a
+solution:
+The poem is a specific, named work, so it takes "The" (The famous poem 'Ode to a Nightingale'). The poet is also a specific, identified person, so "the Romantic poet John Keats". "An" cannot go before "famous", which begins with a consonant sound.
+
+=== 83
+chapter: Vocabulary
+subtopic: Antonyms: Time, Change and Action
+difficulty: MODERATE
+answer: C
+stem:
+Select the most appropriate antonym of the given word. **Incipient**
+A: Nascent
+B: Developing
+C: Advanced
+D: Budding
+solution:
+Incipient means in an initial stage, just beginning. Nascent, developing and budding are near-synonyms; advanced (at a late or developed stage) is the opposite.
+
+=== 84
+chapter: Idioms and Phrases
+subtopic: Idioms: Feelings and States of Mind
+difficulty: EASY
+answer: D
+stem:
+Choose the correct meaning of idiom:
+**At sea**
+A: Experiencing luck
+B: Travelling abroad
+C: Gaining sudden wealth
+D: Feeling confused or perplexed
+solution:
+To be at sea (or all at sea) is to be confused or not know what to do, like a ship without bearings.
+
+=== 85
+chapter: Idioms and Phrases
+subtopic: Idioms: Trouble and Success
+difficulty: MODERATE
+answer: D
+stem:
+Choose the correct meaning of idiom:
+**Cut the Gordian knot**
+A: To tie up loose ends
+B: To delay resolution
+C: To create a new problem
+D: To solve a complex problem decisively
+solution:
+Legend says Alexander the Great, faced with the impossibly tangled Gordian knot, simply cut it with his sword. To cut the Gordian knot is to solve a difficult problem by bold, decisive action.
+
+=== 86
+chapter: Idioms and Phrases
+subtopic: Idioms: Speech and Opinion
+difficulty: MODERATE
+answer: D
+stem:
+Choose the correct meaning of idiom:
+**Harp on the same string**
+A: To play a strategic game
+B: To be fickle in opinion
+C: To remain emotionally distant
+D: To repeat a single idea endlessly
+solution:
+To harp on (the same string) is to keep talking about the same subject tediously, like a harpist plucking one string over and over.
+
+=== 87
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: MODERATE
+answer: C
+stem:
+Choose the **correctly spelt** word meaning of the theory that all knowledge comes from sensory experience.
+A: Empiricisim
+B: Empiricalism
+C: Empiricism
+D: Empiricicm
+solution:
+The theory is **empiricism** (empiric + ism). The other forms add or swap letters.
+
+=== 88
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: MODERATE
+answer: A
+stem:
+Spot the **correct spelling** of a sound-imitative word class.
+A: Onomatopoeia
+B: Onomatopoiea
+C: Onomotopoeia
+D: Onomatapaeia
+solution:
+The word is spelt **onomatopoeia**: onomato + poeia (o-e-i-a at the end).
+
+=== 89
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: MODERATE
+answer: A
+stem:
+Choose the correct **one-word substitute** for: 'Deliberate breach of faith or betrayal of trust'.
+A: Perfidy
+B: Apostasy
+C: Heresy
+D: Duplicity
+solution:
+Perfidy is deliberate breach of faith, treachery. Apostasy is abandoning one's religion or principles; heresy is a belief against accepted doctrine; duplicity is deceitfulness or double-dealing in general, not specifically the breaking of trust.
+
+=== 90
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: MODERATE
+answer: A
+stem:
+Choose the correct **one-word substitute** for: A person who insists on strict adherence to rules
+A: Martinet
+B: Maverick
+C: Iconoclast
+D: Bohemian
+solution:
+A martinet is a strict disciplinarian who demands rules be followed exactly. A maverick is an independent nonconformist, an iconoclast attacks established beliefs, and a bohemian lives an unconventional, artistic life.
+
+=== 91
+chapter: Spotting Errors
+subtopic: Verb Forms and Voice
+difficulty: MODERATE
+answer: C
+stem:
+**Find the part of the sentence that contains an error:**
+What he regretted the most (1)/ was not the outcome of the negotiation, (2)/ but that he had failed communicating (3)/ his intent clearly at the outset. (4)
+A: (1)
+B: (2)
+C: (3)
+D: (4)
+solution:
+"Fail" takes a to-infinitive, not a gerund: "he had failed to communicate". The error is in part (3).
+
+=== 92
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: MODERATE
+answer: C
+stem:
+**Change the following from active to passive:**
+They may have been undervaluing the intellectual property portfolio.
+A: The intellectual property portfolio may have be being undervalued.
+B: The intellectual property portfolio may have undervalued.
+C: The intellectual property portfolio may have been being undervalued.
+D: The intellectual property portfolio may have had been been undervalued.
+solution:
+Active "may have been + -ing" becomes passive "may have been being + past participle": the object becomes the subject and "undervaluing" becomes "being undervalued". B changes the meaning (the portfolio does the undervaluing); A and D are ungrammatical.
+
+=== 93
+chapter: Vocabulary
+subtopic: Homophones in Sentences
+difficulty: EASY
+answer: A
+stem:
+**Select the sentence containing the homonym of the highlighted word:**
+The speaker’s voice had a soothing **bass** quality.
+A: The fisherman caught a large sea bass.
+B: The bass guitar was out of tune.
+C: They heard bass notes from the jazz club.
+D: He adjusted the bass settings on the stereo.
+solution:
+In the given sentence "bass" means a low, deep sound. Options B, C and D use that same sense (low-pitched guitar, notes, sound settings). Only A uses a different word with the same spelling: bass, the fish. So A holds the homonym.
+
+=== 94
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: MODERATE
+answer: D
+stem:
+**Convert the sentence provided below from its passive voice structure to an active voice structure:**
+The claim that the system had been tampered with was dismissed as baseless.
+A: The system tampered the claim, which was dismissed.
+B: The dismissal of the system tampering was claimed.
+C: It was dismissed as baseless that the system was tampered with.
+D: Authorities dismissed the claim that someone had tampered with the system.
+solution:
+Both passives need an agent supplied: "(someone) had tampered with the system" and "(authorities) dismissed the claim". D does this and keeps the meaning. A and B change the meaning, and C is still passive.
+
+=== 95
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: MODERATE
+answer: C
+flawed: yes
+note: B (as though he knew everything) is equally correct; "as if" and "as though" are interchangeable here. C is the closer replacement.
+stem:
+Choose the most suitable option to replace the highlighted part of the sentence:
+He speaks ***as if he was knowing everything***.
+A: as if he knows everything
+B: as though he knew everything
+C: as if he knew everything
+D: as he knows everything
+solution:
+"Know" is a stative verb, so it is not used in the continuous ("was knowing"). After "as if" for an imagined or unreal situation, the past simple is used: "as if he knew everything". This keeps the sentence's own "as if" and changes only the verb.
+
+"As though he knew everything" (B) is also grammatical and means the same, so the question has two acceptable answers; C is the minimal correction.
+
+=== 96
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: MODERATE
+answer: C
+blind: A
+note: judgement item. SSC's key keeps the reported modal 'could' inside the quotation, as in its other direct-speech items; our blind answer undid the backshift ('can'). The bank carries SSC's answer
+stem:
+**Select the correct option for the Direct Speech conversion of the sentence below.**
+The physicist remarked that time-reversal invariance could be violated under non-unitary evolution.
+A: The physicist said, "Time-reversal invariance can be violated under non-unitary evolution."
+B: He remarked, "If evolution is non-unitary, time-reversal invariance will be violated."
+C: The physicist said, "Time-reversal invariance could be violated under non-unitary evolution."
+D: He said, "Time reversal violates when evolution non-unitary."
+solution:
+The key takes the option that keeps the reported words as they stand: The physicist said, "Time-reversal invariance could be violated under non-unitary evolution." B changes the meaning to a firm prediction ("will be violated"), and D is ungrammatical. A, with "can", undoes the backshift; SSC's key does not do that here.
+
+=== 97
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: C
+stem:
+**A sentence is provided in direct speech. From the four given options, choose the one that most accurately conveys the sentence in its corresponding indirect speech.**
+He said to her, “Do you know the answer?”
+A: He asked her did she know the answer.
+B: He asked her whether she knows the answer.
+C: He asked her whether she knew the answer.
+D: He said her that she knew the answer.
+solution:
+A yes/no question is reported with "asked" + "whether/if", in statement word order, and the present "know" shifts back to "knew". Hence "He asked her whether she knew the answer." A keeps question order, B does not backshift, D turns it into a statement.
+
+=== 98
+chapter: Sentence Rearrangement
+subtopic: This, These and Such
+difficulty: EASY
+answer: A
+stem:
+**Rearrange the following sentences to form a coherent paragraph:**
+1. This, in turn, can increase economic activity and contribute to overall development.
+2. The construction of new roads and bridges is a critical component of a nation's infrastructure development.
+3. An efficient transportation network reduces travel time and lowers logistical costs for both businesses and consumers.
+4. Such projects connect different regions, allowing for the faster movement of goods and people.
+A: 2, 4, 3, 1
+B: 4, 3, 1, 2
+C: 3, 1, 2, 4
+D: 1, 2, 4, 3
+solution:
+Sentence 2 introduces the topic (roads and bridges). "Such projects" in 4 points back to them. 3 states the benefit of the resulting network, and "This, in turn" in 1 builds on that benefit. Order: 2, 4, 3, 1.
+
+=== 99
+chapter: Sentence Rearrangement
+subtopic: Shape of a Paragraph Argument
+difficulty: EASY
+answer: A
+stem:
+**Rearrange the following sentences to form a meaningful passage:**
+1. Encryption scrambles information to prevent unauthorized access. 2. Modern cybersecurity relies heavily on cryptographic methods. 3. Algorithms like RSA and AES secure digital communications. 4. These ensure data integrity and privacy.
+A: 2-1-3-4
+B: 3-2-1-4
+C: 1-3-2-4
+D: 1-2-4-3
+solution:
+2 is the general opening (cybersecurity relies on cryptography). 1 explains the core method, encryption. 3 names specific algorithms, and "These" in 4 refers back to them. Order: 2-1-3-4.
+
+=== 100
+chapter: Sentence Rearrangement
+subtopic: Time Order and Lists
+difficulty: EASY
+answer: D
+stem:
+**Rearrange the following sentences in correct order to make a logical passage.**
+1. The first step involves setting clear, achievable objectives.
+2. Project management is a complex but vital process.
+3. Subsequent phases include resource allocation and risk assessment.
+4. Effective communication is essential throughout all stages.
+A: 2-3-1-4
+B: 2-4-1-3
+C: 4-1-2-3
+D: 2-1-3-4
+solution:
+2 introduces project management. "The first step" (1) comes before "Subsequent phases" (3), and 4 closes with what runs "throughout all stages". Order: 2-1-3-4.

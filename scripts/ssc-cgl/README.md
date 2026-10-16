@@ -5,8 +5,9 @@ subjects: Reasoning, Quantitative Aptitude, English, and General Awareness split
 subjects CDS General Knowledge uses (History, Geography, Polity, Economics, Physics, Chemistry,
 Biology, Current Affairs; owner, 2026-10-16).
 
-**Status (2026-10-17): Tier I, 12, 14, 16, 18 and 19 September 2025, fifteen shifts: 1,472 rows
-committed PRIVATE (16 Sep Shift 3 is 75: the hosted file has no PART-C; two repeats are in repeats.json). Nothing is PUBLIC.** Not in `EXAM_REGISTRY`, no mocks yet.
+**Status (2026-10-17): Tier I 2025, every readable shift: 38 shifts, 12 to 26 September, 3,735 rows
+committed PRIVATE (some hosted files lack a shift or a PART, and repeats are in repeats.json; see
+"Not read yet"). Nothing is PUBLIC.** Not in `EXAM_REGISTRY`, no mocks yet.
 
 ## The source, and why it is the only one
 
@@ -144,6 +145,15 @@ On review:
 | 26 Sep S3 (agents) | 99/100 | Q94 (judgement) | none | none |
 | 13 Sep S2 (agents, 99 rows) | 98/100 | Q1, Q48 (judgement) | none | Q88 (no true homonym of "oriel"). Q100 repeats 12 Sep S1 Q100 |
 | 13 Sep S3 (agents, 99 rows) | 97/100 | Q93 (judgement) | Q23 (the expression gives 20), Q98 (direct speech undoes the backshift) | Q95 (the options are longer than the highlight). Q99 repeats 12 Sep S1 Q100 |
+| 20 Sep S1 (agents) | 98/100 | Q14, Q99 (judgement) | none | none |
+| 21 Sep S1 (agents, 99 rows) | 98/100 | none | Q18 (I follows from the two statements), Q40 (earlier National Games were held across several cities) | Q6 repeats an earlier shift (repeats.json) |
+| 21 Sep S2 (agents, 75 q) | 71/75 | Q48 (fact, our guess), Q89, Q96, Q97 (judgement) | none | Q93 (no true homonym of "trisagion") |
+| 21 Sep S3 (agents, 99 rows) | 97/100 | Q10, Q100 (judgement) | Q22 (key 89 fits no rule; every rule gives 91) | Q99 repeats 14 Sep S2 Q100 |
+| 22 Sep S1 (agents, 98 rows) | 97/100 | Q97, Q99 (judgement) | Q22 (some rats are dogs does not follow) | Q93 (no true homonym of "breviarium"). Q60 repeats 26 Sep S1 Q58, Q75 repeats 21 Sep S2 Q75 |
+| 22 Sep S3 (agents) | 97/100 | Q89, Q94 (judgement); Q99 (key carried on a defective item, held) | none | Q93 (no true homonym of "paten"), Q99 (B and C print the same order) |
+| 24 Sep S1 (agents, 99 rows) | 98/100 | Q76, Q96 (judgement) | none | Q30 (no 2021 winner is Nigerian), Q51 and Q54 (two options equal), Q95 ("as if" and "as though" both fit). Q5 repeats 19 Sep S3 Q6 |
+| 24 Sep S2 (agents) | 95/100 | Q36, Q40, Q88, Q99 (judgement), Q42 (fact, our guess) | none | Q93 (no true homonym of "aporia") |
+| 24 Sep S3 (agents) | 95/100 | Q39, Q77, Q98, Q99 (judgement) | Q12 (three of the four are palindromes) | Q89 (no option is active voice) |
 
 ## Repeated questions
 
