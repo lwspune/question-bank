@@ -127,6 +127,9 @@ On review:
 | 14 Sep S1 (agents) | 98/100 | none | Q62 (the cost prices give a profit, the key says loss), Q84 ("No sooner had the findings published" lacks "been") | Q53 (1:1 and 25:25 both offered), Q88 (no true homonym of "pauldron") |
 | 14 Sep S2 (agents) | 98/100 | Q43 (PMKSY's ministry, our guess) | Q41 (PSLV-C59 flew in December 2024, not October) | Q83 ("On" and "Upon" both fit) |
 | 14 Sep S3 (agents, 99 rows) | 95/100 | Q38, Q65, Q82, Q89 (judgement) | Q96 (the key gives "adapt adapt to") | Q88 (no true homonym of "rheme"). Q53 repeats 12 Sep S2 Q52 |
+| 15 Sep S1 (agents, 98 rows) | 97/100 | Q35 (fact unconfirmed), Q89 (judgement) | Q22 (the key's equation gives 16, not 12) | Q14 repeats 12 Sep S1 Q19, Q100 repeats 14 Sep S3 Q99 |
+| 15 Sep S2 (agents) | 100/100 | none | none | Q56 (no four consecutive odd numbers average 5) |
+| 15 Sep S3 (agents) | 100/100 | none | none | Q95 ("lest he fall" and "for fear of falling" both fit). Q99 repeats 12 Sep S1 Q100, Q100 repeats 15 Sep S2 Q100 (98 rows) |
 
 ## Repeated questions
 
