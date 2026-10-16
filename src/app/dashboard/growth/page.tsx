@@ -32,6 +32,7 @@ import {
   PRACTICE_TESTS_ANSWERED_KEEP_PCT,
   PRACTICE_TESTS_STARTED_KEEP,
   PAPER_PAGES_SIGNUPS_KEEP,
+  PYQ_WORDING_IMPRESSIONS_KEEP_RATIO,
   SPECIFIC_OFFER_CHECKOUT_PCT,
   checkOn,
   type Experiment,
@@ -431,6 +432,17 @@ export default async function GrowthPage() {
             </p>
             <ReadingsList metric="practice-tests-started" />
             <ReadingsList metric="practice-tests-answered" />
+          </div>
+        );
+      case "pyq-wording":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince))}: keep the wording and change the guide and notes prose
+              next if impressions for &quot;previous year&quot; queries reach {PYQ_WORDING_IMPRESSIONS_KEEP_RATIO}x the
+              window before.
+            </p>
+            <ReadingsList metric="pyq-wording-impressions" />
           </div>
         );
       case "paper-pages":

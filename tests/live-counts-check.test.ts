@@ -12,6 +12,11 @@ describe("zeroCountClaims — the live site must never say the bank is empty", (
     expect(found).toContain("0 textbook and practice");
   });
 
+  it("flags the hero in its 2026-10-16 wording, 0 previous year questions", () => {
+    const html = `<li><span>0</span> previous year questions</li>`;
+    expect(zeroCountClaims(html)).toContain("0 previous year questions");
+  });
+
   it("flags /browse printing 0 public questions", () => {
     expect(zeroCountClaims(BROKEN_BROWSE)).toContain("0 public questions");
   });

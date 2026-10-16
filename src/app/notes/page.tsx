@@ -17,7 +17,7 @@ const PAGE_TITLE = "Chapter Notes";
 // the site felt unfinished). NOTES_INDEX_DESCRIPTION is the meta/JSON-LD
 // description, in the words students search (2026-10-15).
 const PAGE_LEDE =
-  "One subtopic at a time: the idea, the formula, a real past-year question and the mistakes that cost marks.";
+  "One subtopic at a time: the idea, the formula, a real previous year question and the mistakes that cost marks.";
 
 export const metadata: Metadata = {
   title: { absolute: NOTES_INDEX_TITLE },

@@ -34,7 +34,7 @@ export const revalidate = 86400;
 
 const PAGE_TITLE = "NDA Preparation: Past Papers, Strategy Guides, Free Notes";
 const PAGE_DESCRIPTION =
-  "Everything you need to prepare for the NDA in one place. Browse 5,000+ past-year " +
+  "Everything you need to prepare for the NDA in one place. Browse 5,000+ previous year " +
   "questions, read evidence-led strategy guides for nine subjects, and study " +
   "free chapter-wise notes, each chapter also a PDF. Free, no sign-up.";
 
@@ -145,7 +145,7 @@ export default async function NdaHomePage() {
         <section className="mb-12 rounded-xl border bg-card p-5 shadow-sm sm:p-6">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
             <span className="inline-flex items-center gap-1.5 rounded-full border bg-background px-2.5 py-1 font-semibold tabular-nums">
-              {stats.totalPublicQuestions.toLocaleString("en-IN")} past-year questions
+              {stats.totalPublicQuestions.toLocaleString("en-IN")} previous year questions
             </span>
             <span className="text-muted-foreground">10 subjects · 2017–2026</span>
           </div>
@@ -248,7 +248,7 @@ export default async function NdaHomePage() {
           <p className="mb-5 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground">
             Concept-by-concept notes built for both digital-board lectures and
             student self-study. Each subtopic carries intuition, formula,
-            worked PYQ, and a one-click drill of every past-year question on
+            worked PYQ, and a one-click drill of every previous year question on
             that subtopic.
           </p>
           <ul className="grid gap-4 sm:grid-cols-2">

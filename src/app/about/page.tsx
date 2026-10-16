@@ -34,7 +34,7 @@ export const revalidate = 86400;
 
 const PAGE_TITLE = "About PYQ Vault";
 const PAGE_DESCRIPTION =
-  "PYQ Vault is a free past-year question bank for Indian entrance and board exams, " +
+  "PYQ Vault is a free previous year question bank for Indian entrance and board exams, " +
   "built and maintained by Vilas Shinde in Pune. What the site costs to use, how to " +
   "report a wrong answer, and how to get in touch.";
 
@@ -99,7 +99,7 @@ export default async function AboutPage() {
             >
               Vilas Shinde<span className="sr-only"> (LinkedIn, opens in a new tab)</span>
             </a>, in Pune.
-            It is a free, public bank of past-year questions for Indian entrance
+            It is a free, public bank of previous year questions (PYQs) for Indian entrance
             and board exams
             {totalQuestions > 0 && (
               <>
@@ -115,7 +115,7 @@ export default async function AboutPage() {
 
         <H2>What is here</H2>
         <P>
-          Past-year papers, taken apart question by question, for{" "}
+          Previous year papers, taken apart question by question, for{" "}
           {joinList(coverage)}. Every question is filed by exam, subject,
           chapter, subtopic, difficulty and the year it was asked, and most
           carry a worked solution. Around the bank sit timed mocks rebuilt from

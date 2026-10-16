@@ -40,7 +40,7 @@ export function buildSiteJsonLd(): SiteJsonLd {
     url: SITE_URL,
     email: CONTACT_EMAIL,
     description:
-      "A free, public bank of past-year questions for Indian entrance and board exams, filed by exam, subject, chapter, subtopic, difficulty and year, with timed mocks, chapter notes and strategy guides.",
+      "A free, public bank of previous year questions (PYQs) for Indian entrance and board exams, filed by exam, subject, chapter, subtopic, difficulty and year, with timed mocks, chapter notes and strategy guides.",
     founder: {
       "@type": "Person",
       name: FOUNDER_NAME,

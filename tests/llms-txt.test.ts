@@ -32,17 +32,17 @@ describe("buildLlmsTxt", () => {
   });
 
   it("lists one line per exam home, count included, NDA on its hand-built home", () => {
-    expect(text).toContain("- [NDA](https://www.pyqvault.com/nda): 14,024 past-year questions");
-    expect(text).toContain("- [JEE Mains](https://www.pyqvault.com/exams/jee-mains): 10,667 past-year questions");
+    expect(text).toContain("- [NDA](https://www.pyqvault.com/nda): 14,024 previous year questions");
+    expect(text).toContain("- [JEE Mains](https://www.pyqvault.com/exams/jee-mains): 10,667 previous year questions");
     expect(text).toContain("- [CBSE Class 10](https://www.pyqvault.com/exams/cbse-10): 1,008 practice questions");
   });
 
-  it("names past-year questions too for a practice-only exam that has them", () => {
+  it("names previous year questions too for a practice-only exam that has them", () => {
     const t = buildLlmsTxt({
       exams: [{ slug: "cbse-10", displayName: "CBSE Class 10", examName: "CBSE Class 10", totalPublicQuestions: 1416, pastYearQuestions: 3415, practiceOnly: true, noPublicContent: false }],
       totalPublicQuestions: 4831,
     });
-    expect(t).toContain("- [CBSE Class 10](https://www.pyqvault.com/exams/cbse-10): 3,415 past-year and 1,416 practice questions");
+    expect(t).toContain("- [CBSE Class 10](https://www.pyqvault.com/exams/cbse-10): 3,415 previous year and 1,416 practice questions");
   });
 
   it("leaves out an exam with no public content or no questions yet", () => {

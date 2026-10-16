@@ -96,7 +96,7 @@ export default async function ExamHomePage({ params }: Params) {
 
   const path = examHomeHref(model.slug);
   const description = examHomeDescription(model);
-  const kind = model.practiceOnly ? "practice questions" : "past-year questions";
+  const kind = model.practiceOnly ? "practice questions" : "previous year questions";
 
   // Whole board past papers (/question-papers). A failed read only drops the
   // link; the rest of the page does not depend on it.

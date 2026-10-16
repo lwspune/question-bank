@@ -135,6 +135,14 @@ export const PRACTICE_TESTS_STARTED_KEEP = 30;
  */
 export const PRACTICE_TESTS_ANSWERED_KEEP_PCT = 50;
 
+/**
+ * "pyq-wording": keep "previous year questions" if Search Console impressions
+ * for queries containing "previous year" in the window are at least this many
+ * times the same-length window before the change. Search Console compares two
+ * date ranges after the fact, so the baseline needs no reading taken today.
+ */
+export const PYQ_WORDING_IMPRESSIONS_KEEP_RATIO = 1.5;
+
 /** The ISO date `EXPERIMENT_WINDOW_DAYS` after `liveSince`. */
 export function checkOn(liveSince: string): string {
   const d = new Date(`${liveSince}T00:00:00Z`);
@@ -157,7 +165,8 @@ export type Readout =
   | "specific-offer"
   | "paper-pages"
   | "notes-titles"
-  | "practice-tests";
+  | "practice-tests"
+  | "pyq-wording";
 
 export type Experiment = {
   id: string;
@@ -363,6 +372,19 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "practice-tests",
     status: "running",
   },
+  {
+    id: "pyq-wording",
+    title: "\"Previous year questions\", the words students search",
+    change:
+      "Site-wide titles, descriptions, every /questions chapter lead, exam counts, llms.txt and the sign-up pages say \"previous year questions (PYQs)\" instead of \"past-year questions\". Guide and notes prose is not changed yet.",
+    why: "Indian students search \"previous year questions\" or \"PYQ\", which is what our name abbreviates; almost nobody searches \"past-year questions\". The past-paper lists already said \"Previous Year Question Papers\" (2026-10-15).",
+    metric:
+      "Search Console impressions for queries containing \"previous year\", the window after vs the same-length window before (read by hand)",
+    rule: `Keep the wording (and do the guide and notes prose next) if impressions for \"previous year\" queries reach ${PYQ_WORDING_IMPRESSIONS_KEEP_RATIO}x the window before by the check date; otherwise keep it anyway (it is our own name) but do not spend more on the prose.`,
+    liveSince: "2026-10-16",
+    readout: "pyq-wording",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };
@@ -423,7 +445,8 @@ export type ReadingMetric =
   | "notes-signups"
   | "notes-chatgpt-named"
   | "practice-tests-started"
-  | "practice-tests-answered";
+  | "practice-tests-answered"
+  | "pyq-wording-impressions";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -536,5 +559,11 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
         note: "Baseline before the change, inferred from each student's free paper (no box was recorded yet): 3 of 5. /browse: 2 of 21",
       },
     ],
+  },
+  "pyq-wording-impressions": {
+    label: "Search impressions for \"previous year\" queries, after ÷ before",
+    source:
+      "Search Console → Performance → Search results → Query contains \"previous year\" → Compare the 28 days from 2026-10-16 with the 28 days before",
+    entries: [],
   },
 };

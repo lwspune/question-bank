@@ -229,7 +229,7 @@ function BrandPanel() {
         </div>
         <div>
           <p className="font-serif text-3xl leading-snug tracking-tight lg:text-4xl">
-            Real past-year questions.
+            Real previous year questions.
             <br />
             Built for your exam.
           </p>

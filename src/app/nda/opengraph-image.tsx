@@ -91,7 +91,7 @@ export default function NdaHomeOpenGraphImage() {
               lineHeight: 1.4,
             }}
           >
-            4,800+ past-year questions across 10 subjects · 2017–2026.
+            4,800+ previous year questions across 10 subjects · 2017–2026.
             Evidence-led guides for all six. Free, no sign-up.
           </div>
         </div>

@@ -26,7 +26,7 @@ export type LandingSubtopic = { name: string; count: number };
 const fmt = (n: number) => n.toLocaleString("en-IN");
 
 /**
- * "176 NDA Mathematics past-year questions from 19 papers, 2017 to 2026, with
+ * "176 NDA Mathematics previous year questions (PYQs) from 19 papers, 2017 to 2026, with
  * answers and worked solutions."
  */
 export function landingLead(input: {
@@ -37,7 +37,7 @@ export function landingLead(input: {
   profile: ChapterProfile | null;
 }): string {
   const { questionCount, examName, subjectName, practiceOnly, profile } = input;
-  const kind = practiceOnly ? "practice questions" : "past-year questions";
+  const kind = practiceOnly ? "practice questions" : "previous year questions (PYQs)";
   const head = `${fmt(questionCount)} ${examName} ${subjectName} ${kind}`;
   const tail = "with answers and worked solutions.";
 

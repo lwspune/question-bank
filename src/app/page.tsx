@@ -39,9 +39,9 @@ export const revalidate = 86400;
 // Title <= 70 and description <= 160 characters: Bing flags both past those
 // lengths ("Title too long", "Meta Description too long or too short"), and
 // search results cut the rest. The old description was 295 characters.
-const PAGE_TITLE = "PYQ Vault — Past-Year Question Papers for Entrance & Board Exams";
+const PAGE_TITLE = "PYQ Vault — Previous Year Question Papers for Entrance & Board Exams";
 const PAGE_DESCRIPTION =
-  "Free past-year questions for NDA, MHT-CET, JEE, NEET, CDS, MPSC and Maharashtra " +
+  "Free previous year questions (PYQs) for NDA, MHT-CET, JEE, NEET, CDS, MPSC and Maharashtra " +
   "boards, with worked answers, chapter notes and timed mock tests.";
 
 export const metadata: Metadata = {
@@ -91,7 +91,7 @@ const EXAM_META: Record<
   },
 };
 
-const DEFAULT_EXAM_META = { Icon: BookOpen, blurb: "Past-year question bank." };
+const DEFAULT_EXAM_META = { Icon: BookOpen, blurb: "Previous year question bank." };
 
 // Board-family cards. The six (board, class) exams render as two cards with
 // their classes as links inside, rather than six competing tiles.
@@ -159,7 +159,7 @@ const SURFACES: SurfacePreview[] = [
     title: "Teaching notes",
     // Chapter count is read from the registry, never typed.
     blurb:
-      `One page per subtopic: the idea in plain language, the formula, a solved past-year question, and the traps that catch people. ${NOTES_CHAPTERS.length} chapters so far.`,
+      `One page per subtopic: the idea in plain language, the formula, a solved previous year question, and the traps that catch people. ${NOTES_CHAPTERS.length} chapters so far.`,
     Icon: NotebookPen,
   },
   {
@@ -239,13 +239,13 @@ export default async function Home() {
                 Every past paper, sorted question by question.
               </h1>
               <p className="mt-4 max-w-xl font-serif text-base leading-relaxed text-white/85 sm:text-lg">
-                Practise every past-year question free, then drill the chapters that cost you marks.
+                Practise every previous year question free, then drill the chapters that cost you marks.
               </p>
               <ul className="mt-5 flex flex-wrap gap-2 text-xs font-semibold" aria-label="What is in the bank">
                 {countsKnown && (
                   <>
                     <li className="rounded-full border border-white/25 bg-white/10 px-3 py-1 tabular-nums">
-                      <span className="text-cyan-200">{catalog.totals.pyq.toLocaleString("en-IN")}</span> past-year questions
+                      <span className="text-cyan-200">{catalog.totals.pyq.toLocaleString("en-IN")}</span> previous year questions
                     </li>
                     <li className="rounded-full border border-white/25 bg-white/10 px-3 py-1 tabular-nums">
                       <span className="text-cyan-200">{catalog.totals.practice.toLocaleString("en-IN")}</span> textbook and practice

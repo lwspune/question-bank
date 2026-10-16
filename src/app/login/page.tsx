@@ -210,7 +210,7 @@ function BrandPanel() {
           </p>
         </div>
         <p className="text-xs text-primary-foreground/50">
-          Built on real past-year questions.
+          Built on real previous year questions.
         </p>
       </div>
     </aside>
