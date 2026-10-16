@@ -522,7 +522,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   "heights-and-distances": {
     id: "heights-and-distances",
     chapterName: "Heights and Distances",
-    subtopics: ["Angle of Elevation", "Angle of Depression", "Moving Objects and Speed"],
+    subtopics: ["Angle of Elevation", "Angle of Depression", "Moving Objects and Speed", "Trigonometric Ratios"],
     files: [
       {
         key: "book",
@@ -531,6 +531,8 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "19. Height_and_Distance\\21_Height_&_Distance.pdf",
         note: "AFCAT practice — CDS Pathfinder (book chapter), Heights and Distances. Every key blind re-derived.",
       },
+      { key: "cp-ratios", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Trigonometric Ratios", path: "18. Height and Distance\\01. Trigonometric Ratios.xlsx", subtopic: "Trigonometric Ratios", note: "AFCAT practice — Cadetprep AFCAT sheet, Heights and Distances. Every key blind re-derived." },
+      { key: "cp-problems", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Heights and Distances Problems", path: "18. Height and Distance\\02. Problems.xlsx", subtopic: "Angle of Elevation", note: "AFCAT practice — Cadetprep AFCAT sheet, Heights and Distances. Every key blind re-derived." },
     ],
   },
   statistics: {
