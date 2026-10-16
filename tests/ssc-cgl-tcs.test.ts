@@ -294,6 +294,18 @@ describe("assembleTcs", () => {
     expect(q.stem).toBe("Stem of 1 5th to 8th Century CE.");
   });
 
+  it("reads an unlabelled exam time split over two spans (18 Jul 2023: \"11 :45 AM -\" / \"12:45 PM\")", () => {
+    const g = shift(2, "11:45 AM - 12:45 PM", () => 0);
+    g.spans = g.spans.flatMap((s) => {
+      if (s.text === "Exam Time") return [];
+      if (s.text === "11:45 AM - 12:45 PM")
+        return [span(s.page, 4, "18/07/2023 ", { x0: 131 }), { ...s, text: "11 :45 AM -", x0: 133, x1: 186 }, { ...s, text: "12:45 PM ", x0: 188, x1: 230 }];
+      return [s];
+    });
+    const qs = assembleTcs(g, { slots: ["9:00 AM - 10:00 AM", "11:45 AM - 12:45 PM"] });
+    expect(qs[0]).toMatchObject({ shift: 2, date: "2023-07-18" });
+  });
+
   it("refuses a question with no green option or two", () => {
     const none = shift(2, "9:00 AM - 10:00 AM", () => 9);
     expect(() => assembleTcs(none)).toThrow(/shift 1 Q1.*exactly one key/);

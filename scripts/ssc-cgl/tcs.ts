@@ -200,13 +200,23 @@ function normaliseHeaderAndGlyphs(spans: TcsSpan[]): TcsSpan[] {
   const labelled = spans.some((s) => s.text.trim() === "Exam Time");
   const out = spans.filter((s) => !(/^(X|,Z|[✓✔✗✘])$/.test(s.text.trim()) && keyish(s.color)));
   if (labelled) return out;
+  // A time may print over two spans ("11 :45 AM -" / "12:45 PM"): join a line that starts
+  // with one, and read it with the spaces around ":" closed up.
+  const tidy = (t: string) => t.replace(/\s*:\s*/g, ":").replace(/\s+/g, " ").trim();
+  const times: TcsSpan[] = [];
+  for (const s of out.filter((x) => x.x0 < 250 && /^\d{1,2}\s*:\s*\d\d/.test(x.text.trim()))) {
+    const line = out.filter((o) => o.page === s.page && Math.abs(o.y0 - s.y0) <= 3 && o.x0 >= s.x0).sort((a, b) => a.x0 - b.x0);
+    const text = tidy(line.map((o) => o.text).join(" "));
+    if (TIME_RANGE.test(text)) times.push({ ...s, text, x1: line[line.length - 1].x1 });
+  }
   const extra: TcsSpan[] = [];
-  for (const t of out.filter((s) => TIME_RANGE.test(s.text.trim()) && s.x0 < 250)) {
+  for (const t of times) {
     extra.push({ ...t, text: "Exam Time", x0: t.x0 - 80, x1: t.x0 - 5, bold: false });
     const d = out.find((s) => s.page === t.page && DATE.test(s.text.trim()) && t.y0 - s.y0 > 0 && t.y0 - s.y0 < 40);
     if (d) extra.push({ ...d, text: "Exam Date", x0: d.x0 - 80, x1: d.x0 - 5, bold: false });
   }
-  return [...out, ...extra];
+  const parts = new Set(times.flatMap((t) => out.filter((o) => o.page === t.page && Math.abs(o.y0 - t.y0) <= 3 && o.x0 >= t.x0)));
+  return [...out.filter((o) => !parts.has(o)), ...times, ...extra];
 }
 
 /** "Q.11 Select the option ..." printed as one span (1 Dec 2022): split off the label. */
@@ -387,7 +397,7 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
   if (!open.length) throw new Error("no questions found: not a TCS response sheet this reader knows");
   const out: TcsQuestion[] = [];
   for (const q of open) {
-    const where = `shift ${q.shift} Q${q.number}`;
+    const where = `shift ${q.shift}${q.date ? ` (${q.date})` : ""} Q${q.number} (page ${q.regions[0]?.page})`;
     if (q.optLines.length !== 4) throw new Error(`${where}: expected 4 options, found ${q.optLines.length}`);
     // A picture option is centred on its "n." label, so a tall one starts above it: file each
     // picture under the label nearest its middle, not the last label begun above it.
