@@ -12,6 +12,13 @@ derived blind. Repo (git worktree): `C:\Users\vilas\Downloads\qb-ssc`.
 - `scripts/ssc-cgl/out/<shiftId>/sheets/qNNN.png`: one question, English + Hindi. Use it when a
   batch is unclear (fractions, exponents, square roots, small print).
 
+**2024 shifts (`t1-2024-...`) print differently.** Each question shows its number within its
+section ("Q.14"); the red label above it ("Q64") is the number you write. The options print
+"1." to "4.": write them as A to D in that order. `sheets/text.txt` holds the same questions
+as text (no answers): copy wording from it to save typing, but the sheet is the source.
+The text loses maths set as pictures, misplaces superscripts (cm 3) and drops symbols, so
+check every line against the sheet.
+
 ## Rules
 
 1. **Never open** `questions.json`, `geometry.json`, `rows.json` or anything else under
@@ -73,8 +80,11 @@ solution:
 - **Flawed:** if no option is right or two are, still give the best answer and add
   `flawed: yes` and `note: <why>` after `answer:`.
 - **Figures:** if a question needs a picture (figure, diagram, map, chart) to be answered, add
-  `figure: stem` or `figure: options` after `answer:` and name the sheet in your report. Do not
-  draw anything.
+  `figure: stem`, `figure: options` or `figure: stem+options` after `answer:` and name it in
+  your report. Do not draw anything. The stem then says what the picture is for ("Two positions
+  of this dice are shown in the figures below") exactly as printed; when the OPTIONS are
+  pictures, write each option as `[figure]`. Your solution may describe what the picture shows.
+  Maths or a table printed as a picture is NOT a figure: write it as LaTeX or a pipe table.
 
 ## Check, then report
 
