@@ -36,6 +36,10 @@ describe("checkOn", () => {
     expect(checkOn("2026-10-01")).toBe("2026-10-29");
     expect(checkOn("2026-12-20")).toBe("2027-01-17");
   });
+
+  it("takes a shorter window when an experiment names one", () => {
+    expect(checkOn("2026-10-16", 14)).toBe("2026-10-30");
+  });
 });
 
 describe("EXPERIMENTS", () => {
@@ -72,6 +76,7 @@ describe("EXPERIMENTS", () => {
       "onboarding-arms",
       "paper-pages",
       "performance-starter",
+      "practice-friends",
       "practice-tests",
       "premium-limits",
       "pyq-wording",

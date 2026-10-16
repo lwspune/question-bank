@@ -143,10 +143,19 @@ export const PRACTICE_TESTS_ANSWERED_KEEP_PCT = 50;
  */
 export const PYQ_WORDING_IMPRESSIONS_KEEP_RATIO = 1.5;
 
-/** The ISO date `EXPERIMENT_WINDOW_DAYS` after `liveSince`. */
-export function checkOn(liveSince: string): string {
+/**
+ * "practice-friends": build step 2 (a shared results card for friends who sat
+ * the same test) only if students send at least this many practice tests in
+ * the two weeks...
+ */
+export const PRACTICE_FRIEND_SENDS_KEEP = 10;
+/** ...and at least this many friends start the copy they were sent. */
+export const PRACTICE_FRIEND_STARTS_KEEP = 3;
+
+/** The ISO date `days` (by default `EXPERIMENT_WINDOW_DAYS`) after `liveSince`. */
+export function checkOn(liveSince: string, days: number = EXPERIMENT_WINDOW_DAYS): string {
   const d = new Date(`${liveSince}T00:00:00Z`);
-  d.setUTCDate(d.getUTCDate() + EXPERIMENT_WINDOW_DAYS);
+  d.setUTCDate(d.getUTCDate() + days);
   return d.toISOString().slice(0, 10);
 }
 
@@ -166,6 +175,7 @@ export type Readout =
   | "paper-pages"
   | "notes-titles"
   | "practice-tests"
+  | "practice-friends"
   | "pyq-wording";
 
 export type Experiment = {
@@ -181,6 +191,8 @@ export type Experiment = {
   rule: string;
   /** Merge date, ISO. */
   liveSince: string;
+  /** Days to the check, when not the standard `EXPERIMENT_WINDOW_DAYS`. */
+  windowDays?: number;
   readout: Readout;
   status: "running" | "decided";
   /** Set only once decided. */
@@ -373,6 +385,19 @@ export const EXPERIMENTS: readonly Experiment[] = [
     status: "running",
   },
   {
+    id: "practice-friends",
+    title: "Send a practice test to a friend",
+    change:
+      "A practice test V built carries \"Practise together\": the student sends a link, the friend signs in and sits their own copy of the same questions, free and outside their daily free test. No score is shared.",
+    why: "Students already share less than we hoped (5 mock shares in a month), so this is step 1 of 2: it measures whether students send tests at all before the shared results card (\"questions you both missed\") is built.",
+    metric: "Practice-test sends (share_events kind 'practice'); friends who start a copy; signups from utm_campaign practice-share",
+    rule: `Build step 2 if students send ${PRACTICE_FRIEND_SENDS_KEEP}+ practice tests and ${PRACTICE_FRIEND_STARTS_KEEP}+ friends start their copy in two weeks; otherwise leave the button and do not build step 2.`,
+    liveSince: "2026-10-16",
+    windowDays: 14,
+    readout: "practice-friends",
+    status: "running",
+  },
+  {
     id: "pyq-wording",
     title: "\"Previous year questions\", the words students search",
     change:
@@ -446,6 +471,9 @@ export type ReadingMetric =
   | "notes-chatgpt-named"
   | "practice-tests-started"
   | "practice-tests-answered"
+  | "practice-friend-sends"
+  | "practice-friend-starts"
+  | "practice-friend-signups"
   | "pyq-wording-impressions";
 
 export type Reading = { on: string; value: number; note?: string };
@@ -518,6 +546,21 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "practice-tests-answered": {
     label: "Average share of a practice test answered (%)",
     source: "Submitted or expired attempts on scope 'custom': (correct + wrong) / total questions, averaged; chapter tests 63% and full papers 18% before",
+    entries: [],
+  },
+  "practice-friend-sends": {
+    label: "Practice tests sent to a friend",
+    source: "share_events where subject_kind = 'practice', staff excluded, created_at >= the live date (a row is a tap, not a delivery)",
+    entries: [],
+  },
+  "practice-friend-starts": {
+    label: "Friends who started a sent practice test",
+    source: "Distinct owners of mock_tests with shared_from set that have a mock_attempts row, staff excluded",
+    entries: [],
+  },
+  "practice-friend-signups": {
+    label: "Signups from a sent practice test",
+    source: "student_profiles where acq_campaign = 'practice-share' and created_at >= the live date",
     entries: [],
   },
   "notes-chatgpt-named": {

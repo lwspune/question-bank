@@ -542,6 +542,9 @@ export type AttemptReview = {
     sections: { key: string; label: string; count: number }[];
     /** 'custom' = a student's own practice test: no public page to link to. */
     scope: MockScope;
+    /** The test's length, for sending a practice test to a friend (0163). */
+    totalQuestions: number;
+    durationSecs: number;
   };
   items: ReviewItem[];
 };
@@ -617,7 +620,14 @@ export async function getAttemptReview(
     slug: mock.slug,
     review: {
       summary,
-      mock: { slug: mock.slug, title: mock.title, sections: mock.sections, scope: mock.scope },
+      mock: {
+        slug: mock.slug,
+        title: mock.title,
+        sections: mock.sections,
+        scope: mock.scope,
+        totalQuestions: mock.totalQuestions,
+        durationSecs: mock.durationSecs,
+      },
       items,
     },
   };

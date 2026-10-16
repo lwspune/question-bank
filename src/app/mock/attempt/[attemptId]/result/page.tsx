@@ -16,6 +16,7 @@ import AttemptReviewList from "@/app/mock/_components/AttemptReviewList";
 import MobileGate from "./MobileGate";
 import MockFeedback from "./MockFeedback";
 import ShareResult from "./ShareResult";
+import SendToFriend from "@/components/practice/SendToFriend";
 import WhatsappOptIn from "./WhatsappOptIn";
 import PushOptIn from "@/components/push/PushOptIn";
 import Findings from "./Findings";
@@ -151,8 +152,17 @@ export default async function MockResultPage({ params }: { params: Params }) {
         {/* The distribution loop: a finished mock is the moment a student has
             something worth passing on. Offer only, never a gate, never
             rewarded. See ShareResult + lib/mocks/share.ts. */}
-        {/* A practice test is the student's own: its link opens for nobody else. */}
-        {mock.scope !== "custom" && (
+        {/* A practice test's own link opens for nobody else, so it is sent as
+            a friend link instead: the friend gets their own copy (0163). */}
+        {mock.scope === "custom" ? (
+          <SendToFriend
+            code={mock.slug}
+            title={mock.title}
+            questions={mock.totalQuestions}
+            minutes={Math.round(mock.durationSecs / 60)}
+            card
+          />
+        ) : (
           <ShareResult
             slug={mock.slug}
             title={mock.title}

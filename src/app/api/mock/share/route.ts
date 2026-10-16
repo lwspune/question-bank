@@ -1,6 +1,7 @@
 /**
  * POST /api/mock/share — record that a student tapped a share affordance on the
- * mock result screen (migration 0109).
+ * mock result screen (migration 0109), or sent a practice test to a friend
+ * (kind 'practice', migration 0163).
  *
  * Fire-and-forget from the client: the share sheet opens regardless of what
  * this returns, so the response is never awaited for anything the student sees.
@@ -20,6 +21,9 @@ import { SHARE_CHANNELS } from "@/lib/mocks/share";
 import { recordShareEvent } from "@/lib/mocks/shareLog";
 
 const BodySchema = z.object({
+  // 'practice': a practice test sent to a friend (migration 0163). Absent on
+  // the mock result card, which predates it.
+  kind: z.enum(["mock", "practice"]).default("mock"),
   slug: z.string().min(1).max(200),
   channel: z.enum(SHARE_CHANNELS),
   includedScore: z.boolean(),
@@ -40,7 +44,7 @@ export async function POST(request: NextRequest) {
 
   await recordShareEvent({
     userId: user.id,
-    subjectKind: "mock",
+    subjectKind: parsed.data.kind,
     subjectSlug: parsed.data.slug,
     channel: parsed.data.channel,
     includedScore: parsed.data.includedScore,
