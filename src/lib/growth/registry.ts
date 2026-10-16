@@ -144,9 +144,9 @@ export const PRACTICE_TESTS_ANSWERED_KEEP_PCT = 50;
 export const PYQ_WORDING_IMPRESSIONS_KEEP_RATIO = 1.5;
 
 /**
- * "practice-friends": build step 2 (a shared results card for friends who sat
- * the same test) only if students send at least this many practice tests in
- * the two weeks...
+ * "practice-friends": keep "practise together" (send a test, then the shared
+ * results card) if students send at least this many practice tests in the two
+ * weeks...
  */
 export const PRACTICE_FRIEND_SENDS_KEEP = 10;
 /** ...and at least this many friends start the copy they were sent. */
@@ -386,12 +386,13 @@ export const EXPERIMENTS: readonly Experiment[] = [
   },
   {
     id: "practice-friends",
-    title: "Send a practice test to a friend",
+    title: "Practise together: send a practice test to a friend",
     change:
-      "A practice test V built carries \"Practise together\": the student sends a link, the friend signs in and sits their own copy of the same questions, free and outside their daily free test. No score is shared.",
-    why: "Students already share less than we hoped (5 mock shares in a month), so this is step 1 of 2: it measures whether students send tests at all before the shared results card (\"questions you both missed\") is built.",
-    metric: "Practice-test sends (share_events kind 'practice'); friends who start a copy; signups from utm_campaign practice-share",
-    rule: `Build step 2 if students send ${PRACTICE_FRIEND_SENDS_KEEP}+ practice tests and ${PRACTICE_FRIEND_STARTS_KEEP}+ friends start their copy in two weeks; otherwise leave the button and do not build step 2.`,
+      "A practice test V built carries \"Practise together\": the student sends a link, the friend signs in and sits their own copy, free and outside their daily free test. Once a friend finishes, both result pages show which questions each side missed (no scores), and everyone who finished earlier gets a push.",
+    why: "Students share little today (5 mock shares in a month), so this tests whether a cooperative reason to come back (what you both missed, ask or explain) makes them send tests. The owner chose to build both steps at once rather than wait for the send numbers.",
+    metric:
+      "Practice-test sends (share_events kind 'practice'); friends who start and finish a copy; signups from utm_campaign practice-share; friend-finished pushes tapped",
+    rule: `Keep it if students send ${PRACTICE_FRIEND_SENDS_KEEP}+ practice tests and ${PRACTICE_FRIEND_STARTS_KEEP}+ friends start their copy in two weeks; if sends come but nobody finishes, read where friends stop; if nobody sends, take the box off the result page.`,
     liveSince: "2026-10-16",
     windowDays: 14,
     readout: "practice-friends",
@@ -474,6 +475,7 @@ export type ReadingMetric =
   | "practice-friend-sends"
   | "practice-friend-starts"
   | "practice-friend-signups"
+  | "practice-friend-finished-taps"
   | "pyq-wording-impressions";
 
 export type Reading = { on: string; value: number; note?: string };
@@ -556,6 +558,11 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "practice-friend-starts": {
     label: "Friends who started a sent practice test",
     source: "Distinct owners of mock_tests with shared_from set that have a mock_attempts row, staff excluded",
+    entries: [],
+  },
+  "practice-friend-finished-taps": {
+    label: "\"Your friend finished\" pushes tapped, of sent",
+    source: "push_sends where kind = 'friend_finished' and status = 'sent', against user_activity push_clicked with the same click token",
     entries: [],
   },
   "practice-friend-signups": {

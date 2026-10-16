@@ -440,12 +440,14 @@ export default async function GrowthPage() {
         return (
           <div className="space-y-3">
             <p className="text-sm text-muted-foreground">
-              Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: build the shared results card if students
-              send {PRACTICE_FRIEND_SENDS_KEEP}+ practice tests and {PRACTICE_FRIEND_STARTS_KEEP}+ friends start their copy.
+              Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if students send{" "}
+              {PRACTICE_FRIEND_SENDS_KEEP}+ practice tests and {PRACTICE_FRIEND_STARTS_KEEP}+ friends start their copy. Sends
+              but no finishes: read where friends stop. No sends: take the box off the result page.
             </p>
             <ReadingsList metric="practice-friend-sends" />
             <ReadingsList metric="practice-friend-starts" />
             <ReadingsList metric="practice-friend-signups" />
+            <ReadingsList metric="practice-friend-finished-taps" />
           </div>
         );
       case "pyq-wording":

@@ -48,7 +48,7 @@ export type PushPayload = {
   title: string;
   body: string;
   url: string;
-  tag: "due-nudge";
+  tag: "due-nudge" | "practice-together";
   icon: string;
   badge: string;
 };
