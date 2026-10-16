@@ -139,6 +139,9 @@ On review:
 | 23 Sep S1 (agents) | 96/100 | Q47 (judgement) | Q8 (some books are novels does not make all novels books), Q16 (84 fits no rule), Q19 (some pens are books follows; key D checked on the page) | Q73 (the radius is not fixed), Q80 (sceptic and skeptic both correct) |
 | 23 Sep S2 (agents, 99 rows) | 96/100 | Q38 (fact, our guess) | Q35 (Muslim majority in J&K in 2011), Q41 (The Golden Gate won the 1988 Sahitya Akademi Award), Q77 ("in the absence of") | Q99 repeats 17 Sep S2 Q99 |
 | 23 Sep S3 (agents) | 98/100 | Q99 (judgement) | Q21 (the possibility in II follows) | none |
+| 26 Sep S1 (agents) | 98/100 | Q11 (judgement) | Q14 (nothing links bags to scales) | Q8 (the right-end digits sum to 14, no option) |
+| 26 Sep S2 (agents) | 95/100 | Q96, Q99 (judgement); Q93, Q94 (key carried on defective items, held) | Q2 (Indore is on the 11th either way) | Q20 (diagonal 58.31, no exact option), Q31 (no 2021 winner fits both clues) |
+| 26 Sep S3 (agents) | 99/100 | Q94 (judgement) | none | none |
 
 ## Repeated questions
 
