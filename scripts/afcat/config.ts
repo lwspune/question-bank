@@ -492,7 +492,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   "squares-and-roots": {
     id: "squares-and-roots",
     chapterName: "Squares, Cubes and Roots",
-    subtopics: ["Squares and Square Roots", "Cubes and Cube Roots", "Surds and Indices"],
+    subtopics: ["Squares and Square Roots", "Cubes and Cube Roots", "Surds and Indices", "Mixed Operations"],
     files: [
       {
         // CDS Pathfinder chapter; practice exercise only (its CDS past-year
@@ -504,6 +504,11 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "16. Square_Square_Roots_Cube_Cube_Roots\\05_Square_roots_cube_roots.pdf",
         note: "AFCAT practice — CDS Pathfinder (book chapter), Squares, Cubes and Roots. Every key blind re-derived.",
       },
+      { key: "cp-squares", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Squares and Square Roots", path: "14. Square, Square Roots, Cube, Cube Roots\\01. Squares and Square Roots.xlsx", subtopic: "Squares and Square Roots", note: "AFCAT practice — Cadetprep AFCAT sheet, Squares, Cubes and Roots. Every key blind re-derived." },
+      { key: "cp-sqprops", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Properties of Squares", path: "14. Square, Square Roots, Cube, Cube Roots\\02. Squares and Square Roots - Properties.xlsx", subtopic: "Squares and Square Roots", note: "AFCAT practice — Cadetprep AFCAT sheet, Squares, Cubes and Roots. Every key blind re-derived." },
+      { key: "cp-cubes", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Cubes and Cube Roots", path: "14. Square, Square Roots, Cube, Cube Roots\\03. Cubes and Cube Roots.xlsx", subtopic: "Cubes and Cube Roots", note: "AFCAT practice — Cadetprep AFCAT sheet, Squares, Cubes and Roots. Every key blind re-derived." },
+      { key: "cp-cuprops", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Properties of Cubes", path: "14. Square, Square Roots, Cube, Cube Roots\\04. Cubes and Cube Roots - Properties.xlsx", subtopic: "Cubes and Cube Roots", note: "AFCAT practice — Cadetprep AFCAT sheet, Squares, Cubes and Roots. Every key blind re-derived." },
+      { key: "cp-mixed", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Mixed Operations", path: "14. Square, Square Roots, Cube, Cube Roots\\05. Mixed Operations.xlsx", subtopic: "Mixed Operations", note: "AFCAT practice — Cadetprep AFCAT sheet, Squares, Cubes and Roots. Every key blind re-derived." },
     ],
   },
   "heights-and-distances": {
