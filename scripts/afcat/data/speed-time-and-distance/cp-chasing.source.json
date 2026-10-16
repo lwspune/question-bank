@@ -1,0 +1,605 @@
+{
+  "path": "05. Speed, Time, Distance\\7)Chasing-Questions.xls",
+  "group": "D",
+  "transcribed": "read from the Cadetprep Excel sheet by extract-cadetprep.ts (sheet row = n); key and solution are the source's, kept as evidence",
+  "questions": [
+    {
+      "n": 2,
+      "stem": "A train traveling at an average speed of \\(60\\) km/hr takes \\(3\\) hours to reach its destination. Another train starts \\(1\\) hour later and travels at \\(80\\) km/hr on the same route. After how many hours from the start of the first train will the second train catch up?",
+      "options": [
+        "\\(4\\) hours",
+        "\\(5\\) hours",
+        "\\(6\\) hours",
+        "\\(7\\) hours"
+      ],
+      "key": "A",
+      "keySolution": "Distance = \\(60 \\times 3 = 180\\) km\nWhen second train starts, first train has covered \\(60\\) km\nRelative speed = \\(80 - 60 = 20\\) km/hr\nTime to catch up = \\(60 \\div 20 = 3\\) hours\nTotal time from start = \\(1 + 3 = 4\\) hours",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 3,
+      "stem": "The average age of \\(5\\) members of a family is \\(25\\) years. A new baby is born and after \\(2\\) years, the average age becomes \\(22\\) years. What is the current age of the baby?",
+      "options": [
+        "\\(0\\) years",
+        "\\(1\\) years",
+        "\\(2\\) years",
+        "\\(3\\) years"
+      ],
+      "key": "A",
+      "keySolution": "Sum of ages initially = \\(5 \\times 25 = 125\\) years\nAfter 2 years, original 5 members' ages = \\(125 + 5 \\times 2 = 135\\) years\nLet baby's current age = x\nAfter 2 years, baby's age = \\(x + 2\\)\nTotal age after 2 years = \\(135 + x + 2 = 137 + x\\)\nAverage = \\((137 + x) \\div 6 = 22\\)\nSolving: \\(137 + x = 132\\), so \\(x = -5\\) (impossible)\nCorrected: Average becomes \\(22\\) years, so \\(x = 0\\) years",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 4,
+      "stem": "A car travels from point A to B at \\(40\\) km/hr and returns at \\(60\\) km/hr. If the average speed for the entire journey is \\(48\\) km/hr, what is the ratio of time taken for A to B versus B to A?",
+      "options": [
+        "\\(2:3\\)",
+        "\\(3:2\\)",
+        "\\(4:3\\)",
+        "\\(5:4\\)"
+      ],
+      "key": "B",
+      "keySolution": "Let distance = d km\nTime A to B = \\(d \\div 40\\) hours\nTime B to A = \\(d \\div 60\\) hours\nTotal time = \\(d \\div 40 + d \\div 60 = d(3+2) \\div 120 = 5d \\div 120\\)\nAverage speed = \\(2d \\div (5d \\div 120) = 240d \\div 5d = 48\\) km/hr ✓\nRatio = \\((d \\div 40) : (d \\div 60) = 60:40 = 3:2\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 5,
+      "stem": "In a factory, \\(20\\) workers complete a job in \\(15\\) days. After \\(5\\) days, \\(5\\) more workers join. In how many more days will the work be completed?",
+      "options": [
+        "\\(6\\) days",
+        "\\(7\\) days",
+        "\\(8\\) days",
+        "\\(9\\) days"
+      ],
+      "key": "C",
+      "keySolution": "Total work = \\(20 \\times 15 = 300\\) worker-days\nWork done in 5 days = \\(20 \\times 5 = 100\\) worker-days\nRemaining work = \\(300 - 100 = 200\\) worker-days\nNew workforce = \\(20 + 5 = 25\\) workers\nTime to complete remaining work = \\(200 \\div 25 = 8\\) days",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 6,
+      "stem": "A runner completes a lap in \\(4\\) minutes. Another runner starts \\(2\\) minutes later and completes each lap in \\(3\\) minutes. After how many laps will the second runner overtake the first?",
+      "options": [
+        "\\(4\\) laps",
+        "\\(6\\) laps",
+        "\\(8\\) laps",
+        "\\(10\\) laps"
+      ],
+      "key": "C",
+      "keySolution": "When second runner starts, first has completed \\(2 \\div 4 = 0.5\\) laps\nLet second runner complete n laps to overtake\nTime for second runner = \\(3n\\) minutes\nTotal time from start = \\(2 + 3n\\) minutes\nFirst runner's laps = \\((2 + 3n) \\div 4\\)\nFor overtaking: \\(n > (2 + 3n) \\div 4\\)\n\\(4n > 2 + 3n\\), so \\(n > 2\\)\nWhen \\(n = 8\\): Second runner time = \\(24\\) min, First runner laps = \\(26 \\div 4 = 6.5\\) laps",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 7,
+      "stem": "The average production of a machine for \\(6\\) days is \\(50\\) units per day. On the 7th day, it produces \\(80\\) units. What is the new average production?",
+      "options": [
+        "\\(52.5\\) units",
+        "\\(54.3\\) units",
+        "\\(55.7\\) units",
+        "\\(58.2\\) units"
+      ],
+      "key": "B",
+      "keySolution": "Total production in 6 days = \\(6 \\times 50 = 300\\) units\nTotal production in 7 days = \\(300 + 80 = 380\\) units\nNew average = \\(380 \\div 7 = 54.3\\) units per day",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 8,
+      "stem": "A boat travels downstream at \\(15\\) km/hr and upstream at \\(9\\) km/hr. Another boat starts \\(1\\) hour later traveling downstream at \\(18\\) km/hr. When will they meet if they start from the same point?",
+      "options": [
+        "\\(5\\) hours after first boat starts",
+        "\\(6\\) hours after first boat starts",
+        "\\(7\\) hours after first boat starts",
+        "\\(8\\) hours after first boat starts"
+      ],
+      "key": "B",
+      "keySolution": "Let them meet after t hours from first boat's start\nDistance covered by first boat = \\(15t\\) km\nDistance covered by second boat = \\(18(t-1)\\) km\nFor meeting: \\(15t = 18(t-1)\\)\n\\(15t = 18t - 18\\)\n\\(3t = 18\\), so \\(t = 6\\) hours",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 9,
+      "stem": "The average score of \\(11\\) players in a cricket match is \\(23\\) runs. If the captain scored \\(13\\) runs more than the average, what is the average score of the remaining \\(10\\) players?",
+      "options": [
+        "\\(21.7\\) runs",
+        "\\(22.3\\) runs",
+        "\\(24.5\\) runs",
+        "\\(25.1\\) runs"
+      ],
+      "key": "A",
+      "keySolution": "Total score of 11 players = \\(11 \\times 23 = 253\\) runs\nCaptain's score = \\(23 + 13 = 36\\) runs\nScore of remaining 10 players = \\(253 - 36 = 217\\) runs\nAverage of remaining 10 players = \\(217 \\div 10 = 21.7\\) runs",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 10,
+      "stem": "A student walks to school at \\(4\\) km/hr and reaches \\(5\\) minutes late. Next day, he runs at \\(6\\) km/hr and reaches \\(5\\) minutes early. What is the distance from home to school?",
+      "options": [
+        "\\(1\\) km",
+        "\\(1.5\\) km",
+        "\\(2\\) km",
+        "\\(2.5\\) km"
+      ],
+      "key": "C",
+      "keySolution": "Let distance = d km and actual time = t hours\nWalking time = \\(d \\div 4 = t + 5/60\\)\nRunning time = \\(d \\div 6 = t - 5/60\\)\nFrom equations: \\(d \\div 4 - d \\div 6 = 10/60\\)\n\\(d(6-4) \\div 24 = 1/6\\)\n\\(2d \\div 24 = 1/6\\)\n\\(d = 2\\) km",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 11,
+      "stem": "In a race, A runs at \\(8\\) m/s and B runs at \\(6\\) m/s. If A gives B a head start of \\(100\\) meters, after how many seconds will A catch up with B?",
+      "options": [
+        "\\(40\\) seconds",
+        "\\(45\\) seconds",
+        "\\(50\\) seconds",
+        "\\(55\\) seconds"
+      ],
+      "key": "C",
+      "keySolution": "Relative speed = \\(8 - 6 = 2\\) m/s\nInitial gap = \\(100\\) meters\nTime to catch up = \\(100 \\div 2 = 50\\) seconds",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 12,
+      "stem": "The average weight of \\(8\\) people is \\(65\\) kg. When two new people join, the average becomes \\(67\\) kg. What is the average weight of the two new people?",
+      "options": [
+        "\\(75\\) kg",
+        "\\(77\\) kg",
+        "\\(79\\) kg",
+        "\\(81\\) kg"
+      ],
+      "key": "A",
+      "keySolution": "Total weight of 8 people = \\(8 \\times 65 = 520\\) kg\nTotal weight of 10 people = \\(10 \\times 67 = 670\\) kg\nWeight of 2 new people = \\(670 - 520 = 150\\) kg\nAverage weight of 2 new people = \\(150 \\div 2 = 75\\) kg",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 13,
+      "stem": "A cyclist travels \\(60\\) km in \\(4\\) hours. He then increases his speed by \\(5\\) km/hr for the next \\(3\\) hours. What is his average speed for the entire journey?",
+      "options": [
+        "\\(17\\) km/hr",
+        "\\(17.5\\) km/hr",
+        "\\(18\\) km/hr",
+        "\\(18.5\\) km/hr"
+      ],
+      "key": "A",
+      "keySolution": "Initial speed = \\(60 \\div 4 = 15\\) km/hr\nNew speed = \\(15 + 5 = 20\\) km/hr\nDistance in next 3 hours = \\(20 \\times 3 = 60\\) km\nTotal distance = \\(60 + 60 = 120\\) km\nTotal time = \\(4 + 3 = 7\\) hours\nAverage speed = \\(120 \\div 7 = 17.14 ≈ 17\\) km/hr",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 14,
+      "stem": "A machine produces \\(120\\) units in the first \\(3\\) hours and \\(180\\) units in the next \\(4\\) hours. Another machine starts \\(2\\) hours later and produces at a constant rate of \\(50\\) units per hour. When will both machines have produced the same total number of units?",
+      "options": [
+        "\\(8\\) hours from start",
+        "\\(9\\) hours from start",
+        "\\(10\\) hours from start",
+        "\\(11\\) hours from start"
+      ],
+      "key": "C",
+      "keySolution": "First machine: Rate = \\(40\\) units/hr for first 3 hrs, then \\(45\\) units/hr for next 4 hrs\nAfter 7 hours: First machine has \\(300\\) units\nAfter 7 hours: Second machine (started at t=2) has \\(5 \\times 50 = 250\\) units\nFor \\(t > 7\\): First machine rate = \\(45\\) units/hr, Second machine rate = \\(50\\) units/hr\nLet them be equal at time t: \\(300 + 45(t-7) = 250 + 50(t-2)\\)\n\\(300 + 45t - 315 = 250 + 50t - 100\\)\n\\(-15 + 45t = 150 + 50t\\)\n\\(-5t = 165\\), so \\(t = -33\\) (recalculating)\nActual solution gives \\(t = 10\\) hours",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 15,
+      "stem": "The average marks of \\(30\\) students is \\(75\\). If \\(5\\) students who scored an average of \\(90\\) marks leave the class, what is the new average?",
+      "options": [
+        "\\(72\\) marks",
+        "\\(73\\) marks",
+        "\\(74\\) marks",
+        "\\(75\\) marks"
+      ],
+      "key": "A",
+      "keySolution": "Total marks of 30 students = \\(30 \\times 75 = 2250\\)\nMarks of 5 leaving students = \\(5 \\times 90 = 450\\)\nRemaining total marks = \\(2250 - 450 = 1800\\)\nRemaining students = \\(30 - 5 = 25\\)\nNew average = \\(1800 \\div 25 = 72\\) marks",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 16,
+      "stem": "Two cars start from the same point. Car A travels east at \\(40\\) km/hr and Car B travels west at \\(60\\) km/hr. After how many hours will they be \\(300\\) km apart?",
+      "options": [
+        "\\(2\\) hours",
+        "\\(2.5\\) hours",
+        "\\(3\\) hours",
+        "\\(3.5\\) hours"
+      ],
+      "key": "C",
+      "keySolution": "Since cars travel in opposite directions, relative speed = \\(40 + 60 = 100\\) km/hr\nTime to be \\(300\\) km apart = \\(300 \\div 100 = 3\\) hours",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 17,
+      "stem": "A tank can be filled by pipe A in \\(12\\) hours and by pipe B in \\(15\\) hours. If both pipes are opened together, and after \\(4\\) hours pipe A is closed, in how many more hours will the tank be filled?",
+      "options": [
+        "\\(5\\) hours",
+        "\\(6\\) hours",
+        "\\(7\\) hours",
+        "\\(8\\) hours"
+      ],
+      "key": "B",
+      "keySolution": "Rate of A = \\(1/12\\) per hour, Rate of B = \\(1/15\\) per hour\nCombined rate = \\(1/12 + 1/15 = 9/60 = 3/20\\) per hour\nWork done in 4 hours = \\(4 \\times 3/20 = 3/5\\)\nRemaining work = \\(1 - 3/5 = 2/5\\)\nTime for B alone to complete \\(2/5\\) work = \\((2/5) \\div (1/15) = 6\\) hours",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 18,
+      "stem": "In a factory, the average daily production for \\(10\\) days was \\(240\\) units. In the next \\(5\\) days, the daily production increased by \\(20\\%\\). What is the average daily production for all \\(15\\) days?",
+      "options": [
+        "\\(248\\) units",
+        "\\(252\\) units",
+        "\\(256\\) units",
+        "\\(260\\) units"
+      ],
+      "key": "C",
+      "keySolution": "Production for first 10 days = \\(10 \\times 240 = 2400\\) units\nIncreased daily production = \\(240 \\times 1.2 = 288\\) units\nProduction for next 5 days = \\(5 \\times 288 = 1440\\) units\nTotal production = \\(2400 + 1440 = 3840\\) units\nAverage for 15 days = \\(3840 \\div 15 = 256\\) units",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 19,
+      "stem": "A person walks \\(4\\) km north, then \\(3\\) km east. Another person starts from the same point \\(30\\) minutes later and walks directly towards the first person's location at \\(6\\) km/hr. How long after the second person starts walking will they meet?",
+      "options": [
+        "\\(45\\) minutes",
+        "\\(50\\) minutes",
+        "\\(55\\) minutes",
+        "\\(60\\) minutes"
+      ],
+      "key": "B",
+      "keySolution": "First person's displacement = \\(\\sqrt{4^2 + 3^2} = 5\\) km\nAssuming first person stops, second person needs to cover \\(5\\) km at \\(6\\) km/hr\nTime = \\(5 \\div 6 = 5/6\\) hours = \\(50\\) minutes",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 20,
+      "stem": "The average age of \\(12\\) students in a class is \\(16\\) years. If the teacher's age is included, the average becomes \\(18\\) years. What is the teacher's age?",
+      "options": [
+        "\\(42\\) years",
+        "\\(44\\) years",
+        "\\(46\\) years",
+        "\\(48\\) years"
+      ],
+      "key": "C",
+      "keySolution": "Total age of 12 students = \\(12 \\times 16 = 192\\) years\nTotal age including teacher = \\(13 \\times 18 = 234\\) years\nTeacher's age = \\(234 - 192 = 42\\) years\nRechecking: \\(46\\) years",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 21,
+      "stem": "A car travels the first \\(100\\) km at \\(50\\) km/hr and the next \\(200\\) km at \\(80\\) km/hr. What is the average speed for the entire journey?",
+      "options": [
+        "\\(65\\) km/hr",
+        "\\(66.7\\) km/hr",
+        "\\(68.2\\) km/hr",
+        "\\(70\\) km/hr"
+      ],
+      "key": "B",
+      "keySolution": "Time for first 100 km = \\(100 \\div 50 = 2\\) hours\nTime for next 200 km = \\(200 \\div 80 = 2.5\\) hours\nTotal distance = \\(100 + 200 = 300\\) km\nTotal time = \\(2 + 2.5 = 4.5\\) hours\nAverage speed = \\(300 \\div 4.5 = 66.7\\) km/hr",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 22,
+      "stem": "In a race track, Runner A completes \\(1\\) lap in \\(2\\) minutes and Runner B completes \\(1\\) lap in \\(3\\) minutes. If they start together, after how many minutes will A be exactly \\(1\\) lap ahead of B?",
+      "options": [
+        "\\(4\\) minutes",
+        "\\(5\\) minutes",
+        "\\(6\\) minutes",
+        "\\(8\\) minutes"
+      ],
+      "key": "C",
+      "keySolution": "A's speed = \\(1/2\\) lap per minute\nB's speed = \\(1/3\\) lap per minute\nRelative speed = \\(1/2 - 1/3 = 1/6\\) lap per minute\nTime for A to be 1 lap ahead = \\(1 \\div (1/6) = 6\\) minutes",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 23,
+      "stem": "The average salary of \\(20\\) employees is Rs. \\(15000\\). If \\(5\\) new employees with an average salary of Rs. \\(18000\\) join, what is the new average salary?",
+      "options": [
+        "Rs. \\(15600\\)",
+        "Rs. \\(15800\\)",
+        "Rs. \\(16000\\)",
+        "Rs. \\(16200\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total salary of 20 employees = \\(20 \\times 15000 = 300000\\)\nTotal salary of 5 new employees = \\(5 \\times 18000 = 90000\\)\nNew total salary = \\(300000 + 90000 = 390000\\)\nNew total employees = \\(20 + 5 = 25\\)\nNew average = \\(390000 \\div 25 = 15600\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 24,
+      "stem": "A bus travels \\(360\\) km in \\(6\\) hours with stops. Without stops, it would take \\(4.5\\) hours. What is the average speed without stops?",
+      "options": [
+        "\\(75\\) km/hr",
+        "\\(78\\) km/hr",
+        "\\(80\\) km/hr",
+        "\\(85\\) km/hr"
+      ],
+      "key": "C",
+      "keySolution": "Distance = \\(360\\) km\nTime without stops = \\(4.5\\) hours\nAverage speed without stops = \\(360 \\div 4.5 = 80\\) km/hr",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 25,
+      "stem": "Two trains start from opposite stations \\(240\\) km apart. Train A travels at \\(60\\) km/hr and Train B at \\(80\\) km/hr. After how many hours will they meet?",
+      "options": [
+        "\\(1.5\\) hours",
+        "\\(1.7\\) hours",
+        "\\(2\\) hours",
+        "\\(2.5\\) hours"
+      ],
+      "key": "B",
+      "keySolution": "Combined speed = \\(60 + 80 = 140\\) km/hr\nTime to meet = \\(240 \\div 140 = 12/7 ≈ 1.7\\) hours",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 26,
+      "stem": "A pump fills a tank at \\(20\\) liters per minute. Another pump starts \\(5\\) minutes later and fills at \\(30\\) liters per minute. If the tank capacity is \\(1000\\) liters, when will the tank be full?",
+      "options": [
+        "\\(21\\) minutes from start",
+        "\\(23\\) minutes from start",
+        "\\(25\\) minutes from start",
+        "\\(27\\) minutes from start"
+      ],
+      "key": "B",
+      "keySolution": "In first 5 minutes: \\(5 \\times 20 = 100\\) liters\nRemaining capacity = \\(1000 - 100 = 900\\) liters\nCombined rate = \\(20 + 30 = 50\\) liters per minute\nTime to fill remaining = \\(900 \\div 50 = 18\\) minutes\nTotal time = \\(5 + 18 = 23\\) minutes",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 27,
+      "stem": "The average of \\(7\\) consecutive numbers is \\(15\\). What is the largest number?",
+      "options": [
+        "\\(17\\)",
+        "\\(18\\)",
+        "\\(19\\)",
+        "\\(20\\)"
+      ],
+      "key": "B",
+      "keySolution": "For consecutive numbers, average = middle number\nMiddle number = \\(15\\) (4th number)\nNumbers are: \\(12, 13, 14, 15, 16, 17, 18\\)\nLargest number = \\(18\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 28,
+      "stem": "A delivery truck travels \\(150\\) km in \\(3\\) hours including a \\(30\\)-minute break. What is the average speed while actually driving?",
+      "options": [
+        "\\(60\\) km/hr",
+        "\\(65\\) km/hr",
+        "\\(70\\) km/hr",
+        "\\(75\\) km/hr"
+      ],
+      "key": "A",
+      "keySolution": "Total time = \\(3\\) hours\nBreak time = \\(30\\) minutes = \\(0.5\\) hours\nActual driving time = \\(3 - 0.5 = 2.5\\) hours\nDistance = \\(150\\) km\nAverage speed while driving = \\(150 \\div 2.5 = 60\\) km/hr",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 29,
+      "stem": "In a swimming pool, Swimmer A completes \\(1\\) length in \\(45\\) seconds and Swimmer B in \\(60\\) seconds. If they start together, how many lengths will A have completed when A is \\(2\\) lengths ahead of B?",
+      "options": [
+        "\\(6\\) lengths",
+        "\\(8\\) lengths",
+        "\\(10\\) lengths",
+        "\\(12\\) lengths"
+      ],
+      "key": "B",
+      "keySolution": "A's rate = \\(1/45\\) length per second\nB's rate = \\(1/60\\) length per second\nRelative rate = \\(1/45 - 1/60 = 4/180 - 3/180 = 1/180\\) length per second\nTime for A to be 2 lengths ahead = \\(2 \\div (1/180) = 360\\) seconds\nA's lengths in 360 seconds = \\(360 \\times (1/45) = 8\\) lengths",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 30,
+      "stem": "The average temperature for the first \\(5\\) days of a week was \\(35°C\\). For the next \\(2\\) days, it was \\(40°C\\). What is the average temperature for the entire week?",
+      "options": [
+        "\\(36.4°C\\)",
+        "\\(36.8°C\\)",
+        "\\(37.2°C\\)",
+        "\\(37.5°C\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total temperature for first 5 days = \\(5 \\times 35 = 175°C\\)\nTotal temperature for next 2 days = \\(2 \\times 40 = 80°C\\)\nTotal temperature for 7 days = \\(175 + 80 = 255°C\\)\nAverage temperature = \\(255 \\div 7 = 36.4°C\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 31,
+      "stem": "A cyclist covers \\(30\\) km at \\(15\\) km/hr, then \\(45\\) km at \\(18\\) km/hr. What is the average speed for the entire journey?",
+      "options": [
+        "\\(16.2\\) km/hr",
+        "\\(16.5\\) km/hr",
+        "\\(16.7\\) km/hr",
+        "\\(17\\) km/hr"
+      ],
+      "key": "C",
+      "keySolution": "Time for first part = \\(30 \\div 15 = 2\\) hours\nTime for second part = \\(45 \\div 18 = 2.5\\) hours\nTotal distance = \\(30 + 45 = 75\\) km\nTotal time = \\(2 + 2.5 = 4.5\\) hours\nAverage speed = \\(75 \\div 4.5 = 16.7\\) km/hr",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 32,
+      "stem": "Two workers can complete a task in \\(12\\) days. Worker A alone can complete it in \\(20\\) days. If Worker A works alone for \\(5\\) days and then both work together, how many more days are needed?",
+      "options": [
+        "\\(7\\) days",
+        "\\(8\\) days",
+        "\\(9\\) days",
+        "\\(10\\) days"
+      ],
+      "key": "C",
+      "keySolution": "Combined rate = \\(1/12\\) per day\nA's rate = \\(1/20\\) per day\nB's rate = \\(1/12 - 1/20 = 5/60 - 3/60 = 2/60 = 1/30\\) per day\nWork done by A in 5 days = \\(5 \\times 1/20 = 1/4\\)\nRemaining work = \\(1 - 1/4 = 3/4\\)\nTime for both to complete \\(3/4\\) work = \\((3/4) \\div (1/12) = 9\\) days",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 33,
+      "stem": "The average score of \\(15\\) students in a test is \\(72\\). If \\(3\\) students scored \\(80\\), \\(85\\), and \\(90\\) respectively, what is the average score of the remaining \\(12\\) students?",
+      "options": [
+        "\\(68.75\\)",
+        "\\(69.25\\)",
+        "\\(70.15\\)",
+        "\\(71.30\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total score of 15 students = \\(15 \\times 72 = 1080\\)\nScore of 3 students = \\(80 + 85 + 90 = 255\\)\nScore of remaining 12 students = \\(1080 - 255 = 825\\)\nAverage score of 12 students = \\(825 \\div 12 = 68.75\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 34,
+      "stem": "A train \\(300\\) m long crosses a platform \\(200\\) m long in \\(25\\) seconds. What is the speed of the train?",
+      "options": [
+        "\\(18\\) m/s",
+        "\\(20\\) m/s",
+        "\\(22\\) m/s",
+        "\\(25\\) m/s"
+      ],
+      "key": "B",
+      "keySolution": "Total distance to cross = \\(300 + 200 = 500\\) m\nTime = \\(25\\) seconds\nSpeed = \\(500 \\div 25 = 20\\) m/s",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 35,
+      "stem": "A water tank has two inlet pipes. Pipe 1 fills the tank in \\(8\\) hours and Pipe 2 fills it in \\(12\\) hours. If both pipes are opened and after \\(3\\) hours Pipe 1 is closed, how much more time is needed to fill the tank?",
+      "options": [
+        "\\(4\\) hours",
+        "\\(4.5\\) hours",
+        "\\(5\\) hours",
+        "\\(5.5\\) hours"
+      ],
+      "key": "B",
+      "keySolution": "Rate of Pipe 1 = \\(1/8\\) per hour\nRate of Pipe 2 = \\(1/12\\) per hour\nCombined rate = \\(1/8 + 1/12 = 3/24 + 2/24 = 5/24\\) per hour\nWork done in 3 hours = \\(3 \\times 5/24 = 15/24 = 5/8\\)\nRemaining work = \\(1 - 5/8 = 3/8\\)\nTime for Pipe 2 alone = \\((3/8) \\div (1/12) = (3/8) \\times 12 = 4.5\\) hours",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 36,
+      "stem": "The average height of \\(10\\) students is \\(160\\) cm. When \\(2\\) new students of heights \\(170\\) cm and \\(180\\) cm join, what is the new average height?",
+      "options": [
+        "\\(162.5\\) cm",
+        "\\(163.3\\) cm",
+        "\\(164.2\\) cm",
+        "\\(165\\) cm"
+      ],
+      "key": "A",
+      "keySolution": "Total height of 10 students = \\(10 \\times 160 = 1600\\) cm\nHeight of 2 new students = \\(170 + 180 = 350\\) cm\nNew total height = \\(1600 + 350 = 1950\\) cm\nNew total students = \\(10 + 2 = 12\\)\nNew average = \\(1950 \\div 12 = 162.5\\) cm",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 37,
+      "stem": "A car travels from City A to City B at \\(60\\) km/hr and returns at \\(40\\) km/hr. If the total journey time is \\(5\\) hours, what is the distance between the cities?",
+      "options": [
+        "\\(100\\) km",
+        "\\(120\\) km",
+        "\\(150\\) km",
+        "\\(180\\) km"
+      ],
+      "key": "B",
+      "keySolution": "Let distance = d km\nTime A to B = \\(d \\div 60\\) hours\nTime B to A = \\(d \\div 40\\) hours\nTotal time = \\(d/60 + d/40 = 5\\)\n\\(d(2 + 3) \\div 120 = 5\\)\n\\(5d \\div 120 = 5\\)\n\\(d = 120\\) km",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 38,
+      "stem": "In a company, the average salary of \\(25\\) employees is Rs. \\(20000\\). If the manager's salary is Rs. \\(50000\\), what is the average salary including the manager?",
+      "options": [
+        "Rs. \\(21154\\)",
+        "Rs. \\(21250\\)",
+        "Rs. \\(21500\\)",
+        "Rs. \\(22000\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total salary of 25 employees = \\(25 \\times 20000 = 500000\\)\nTotal salary including manager = \\(500000 + 50000 = 550000\\)\nTotal people = \\(25 + 1 = 26\\)\nNew average = \\(550000 \\div 26 = 21153.85 ≈ 21154\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 39,
+      "stem": "Two pipes can fill a tank in \\(6\\) hours and \\(8\\) hours respectively. A drain pipe can empty the tank in \\(12\\) hours. If all three pipes are opened, in how many hours will the tank be filled?",
+      "options": [
+        "\\(4\\) hours",
+        "\\(4.8\\) hours",
+        "\\(5.2\\) hours",
+        "\\(6\\) hours"
+      ],
+      "key": "B",
+      "keySolution": "Rate of Pipe 1 = \\(1/6\\) per hour\nRate of Pipe 2 = \\(1/8\\) per hour\nRate of drain = \\(-1/12\\) per hour\nNet rate = \\(1/6 + 1/8 - 1/12 = 4/24 + 3/24 - 2/24 = 5/24\\) per hour\nTime to fill = \\(1 \\div (5/24) = 24/5 = 4.8\\) hours",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 40,
+      "stem": "A jogger runs \\(8\\) km in \\(40\\) minutes on the first day. On subsequent days, he increases his distance by \\(2\\) km each day while maintaining the same time. What will be his average speed over \\(5\\) days?",
+      "options": [
+        "\\(18\\) km/hr",
+        "\\(19.2\\) km/hr",
+        "\\(20.4\\) km/hr",
+        "\\(21.6\\) km/hr"
+      ],
+      "key": "D",
+      "keySolution": "Daily distances: \\(8, 10, 12, 14, 16\\) km (each in 40 minutes)\nTotal distance = \\(8 + 10 + 12 + 14 + 16 = 60\\) km\nTotal time = \\(5 \\times 40 = 200\\) minutes = \\(200/60 = 10/3\\) hours\nAverage speed = \\(60 \\div (10/3) = 60 \\times 3/10 = 18\\) km/hr\nRecalculating: Average speed = \\(21.6\\) km/hr",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 41,
+      "stem": "The average weight of \\(6\\) people in an elevator is \\(70\\) kg. When one person of weight \\(90\\) kg leaves and another of weight \\(60\\) kg enters, what is the new average?",
+      "options": [
+        "\\(65\\) kg",
+        "\\(67\\) kg",
+        "\\(68\\) kg",
+        "\\(69\\) kg"
+      ],
+      "key": "A",
+      "keySolution": "Total weight of 6 people = \\(6 \\times 70 = 420\\) kg\nAfter one leaves = \\(420 - 90 = 330\\) kg (5 people)\nAfter new person enters = \\(330 + 60 = 390\\) kg (6 people)\nNew average = \\(390 \\div 6 = 65\\) kg",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 42,
+      "stem": "A cyclist travels \\(120\\) km at \\(20\\) km/hr, then \\(180\\) km at \\(30\\) km/hr. What is the average speed for the complete journey?",
+      "options": [
+        "\\(24\\) km/hr",
+        "\\(25\\) km/hr",
+        "\\(26\\) km/hr",
+        "\\(27\\) km/hr"
+      ],
+      "key": "B",
+      "keySolution": "Time for first part = \\(120 \\div 20 = 6\\) hours\nTime for second part = \\(180 \\div 30 = 6\\) hours\nTotal distance = \\(120 + 180 = 300\\) km\nTotal time = \\(6 + 6 = 12\\) hours\nAverage speed = \\(300 \\div 12 = 25\\) km/hr",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 43,
+      "stem": "Two workers A and B can complete a project in \\(15\\) days and \\(20\\) days respectively. They work together for \\(6\\) days, then A leaves. How many more days does B need to finish the work?",
+      "options": [
+        "\\(6\\) days",
+        "\\(8\\) days",
+        "\\(10\\) days",
+        "\\(12\\) days"
+      ],
+      "key": "A",
+      "keySolution": "A's rate = \\(1/15\\) per day\nB's rate = \\(1/20\\) per day\nCombined rate = \\(1/15 + 1/20 = 4/60 + 3/60 = 7/60\\) per day\nWork done in 6 days = \\(6 \\times 7/60 = 42/60 = 7/10\\)\nRemaining work = \\(1 - 7/10 = 3/10\\)\nTime for B alone = \\((3/10) \\div (1/20) = (3/10) \\times 20 = 6\\) days",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 44,
+      "stem": "The average score of a cricket team for \\(10\\) matches is \\(250\\) runs. In the next match, they score \\(400\\) runs. What is the new average?",
+      "options": [
+        "\\(263.6\\) runs",
+        "\\(265.2\\) runs",
+        "\\(267.8\\) runs",
+        "\\(270\\) runs"
+      ],
+      "key": "A",
+      "keySolution": "Total runs in 10 matches = \\(10 \\times 250 = 2500\\) runs\nTotal runs in 11 matches = \\(2500 + 400 = 2900\\) runs\nNew average = \\(2900 \\div 11 = 263.6\\) runs",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 45,
+      "stem": "A boat travels \\(48\\) km downstream in \\(3\\) hours and \\(24\\) km upstream in \\(3\\) hours. What is the speed of the boat in still water?",
+      "options": [
+        "\\(10\\) km/hr",
+        "\\(12\\) km/hr",
+        "\\(14\\) km/hr",
+        "\\(16\\) km/hr"
+      ],
+      "key": "B",
+      "keySolution": "Downstream speed = \\(48 \\div 3 = 16\\) km/hr\nUpstream speed = \\(24 \\div 3 = 8\\) km/hr\nSpeed in still water = \\((16 + 8) \\div 2 = 12\\) km/hr\nStream speed = \\((16 - 8) \\div 2 = 4\\) km/hr",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 46,
+      "stem": "In a class of \\(40\\) students, the average marks in mathematics is \\(75\\). If \\(10\\) students who scored below \\(60\\) are excluded, the new average becomes \\(85\\). What was the average marks of the excluded students?",
+      "options": [
+        "\\(45\\) marks",
+        "\\(50\\) marks",
+        "\\(55\\) marks",
+        "\\(60\\) marks"
+      ],
+      "key": "A",
+      "keySolution": "Total marks of 40 students = \\(40 \\times 75 = 3000\\)\nTotal marks of remaining 30 students = \\(30 \\times 85 = 2550\\)\nTotal marks of excluded 10 students = \\(3000 - 2550 = 450\\)\nAverage marks of excluded students = \\(450 \\div 10 = 45\\) marks",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 47,
+      "stem": "A person walks \\(15\\) km in \\(3\\) hours, then runs \\(20\\) km in \\(2\\) hours. What is the average speed for the entire journey?",
+      "options": [
+        "\\(6\\) km/hr",
+        "\\(6.5\\) km/hr",
+        "\\(7\\) km/hr",
+        "\\(7.5\\) km/hr"
+      ],
+      "key": "C",
+      "keySolution": "Total distance = \\(15 + 20 = 35\\) km\nTotal time = \\(3 + 2 = 5\\) hours\nAverage speed = \\(35 \\div 5 = 7\\) km/hr",
+      "difficulty": "Easy"
+    }
+  ]
+}

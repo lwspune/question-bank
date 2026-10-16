@@ -1,0 +1,397 @@
+{
+  "path": "15. Number System\\03. Divisibility Rules.xlsx",
+  "group": "D",
+  "transcribed": "read from the Cadetprep Excel sheet by extract-cadetprep.ts (sheet row = n); key and solution are the source's, kept as evidence",
+  "questions": [
+    {
+      "n": 2,
+      "stem": "Which of the following numbers is divisible by \\(2\\)?",
+      "options": [
+        "\\(245\\)",
+        "\\(348\\)",
+        "\\(357\\)",
+        "\\(469\\)"
+      ],
+      "key": "B",
+      "keySolution": "A number is divisible by \\(2\\) if its last digit is even (\\(0, 2, 4, 6, 8\\)).\r\nChecking each option:\r\n- \\(245\\): Last digit \\(= 5\\) (odd) → Not divisible by \\(2\\)\r\n- \\(348\\): Last digit \\(= 8\\) (even) → Divisible by \\(2\\) ✓\r\n- \\(357\\): Last digit \\(= 7\\) (odd) → Not divisible by \\(2\\)\r\n- \\(469\\): Last digit \\(= 9\\) (odd) → Not divisible by \\(2\\)\r\nTherefore, \\(348\\) is divisible by \\(2\\).",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 3,
+      "stem": "Check if \\(4572\\) is divisible by \\(3\\).",
+      "options": [
+        "Yes, divisible by 3",
+        "No, not divisible by 3",
+        "Cannot be determined",
+        "Yes, but only partially"
+      ],
+      "key": "A",
+      "keySolution": "A number is divisible by \\(3\\) if the sum of its digits is divisible by \\(3\\).\r\nFor \\(4572\\):\r\nSum of digits \\(= 4 + 5 + 7 + 2 = 18\\)\r\nIs \\(18\\) divisible by \\(3\\)? Yes, \\(18 \\div 3 = 6\\) ✓\r\nTherefore, \\(4572\\) is divisible by \\(3\\).",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 4,
+      "stem": "Is \\(3752\\) divisible by \\(4\\)?",
+      "options": [
+        "Only if first digit is even",
+        "No",
+        "Yes",
+        "Cannot determine"
+      ],
+      "key": "C",
+      "keySolution": "A number is divisible by \\(4\\) if the number formed by its last two digits is divisible by \\(4\\).\r\nFor \\(3752\\):\r\nLast two digits form \\(52\\).\r\nIs \\(52\\) divisible by \\(4\\)? \\(52 \\div 4 = 13\\) ✓\r\nTherefore, \\(3752\\) is divisible by \\(4\\).",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 5,
+      "stem": "Which number is divisible by \\(5\\)?",
+      "options": [
+        "\\(2342\\)",
+        "\\(3456\\)",
+        "\\(4785\\)",
+        "\\(5678\\)"
+      ],
+      "key": "C",
+      "keySolution": "A number is divisible by \\(5\\) if its last digit is \\(0\\) or \\(5\\).\r\nChecking each option:\r\n- \\(2342\\): Last digit \\(= 2\\) → Not divisible by \\(5\\)\r\n- \\(3456\\): Last digit \\(= 6\\) → Not divisible by \\(5\\)\r\n- \\(4785\\): Last digit \\(= 5\\) → Divisible by \\(5\\) ✓\r\n- \\(5678\\): Last digit \\(= 8\\) → Not divisible by \\(5\\)\r\nTherefore, \\(4785\\) is divisible by \\(5\\).",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 6,
+      "stem": "Is \\(2346\\) divisible by \\(6\\)?",
+      "options": [
+        "Only if sum of digits is even",
+        "No, not divisible by 6",
+        "Yes, divisible by 6",
+        "Cannot determine without division"
+      ],
+      "key": "C",
+      "keySolution": "A number is divisible by \\(6\\) if it is divisible by both \\(2\\) and \\(3\\).\r\nFor \\(2346\\):\r\nCheck divisibility by \\(2\\): Last digit \\(= 6\\) (even) → Divisible by \\(2\\) ✓\r\nCheck divisibility by \\(3\\): Sum of digits \\(= 2 + 3 + 4 + 6 = 15\\)\r\nIs \\(15\\) divisible by \\(3\\)? Yes, \\(15 \\div 3 = 5\\) ✓\r\nSince \\(2346\\) is divisible by both \\(2\\) and \\(3\\), it is divisible by \\(6\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 7,
+      "stem": "Check if \\(371\\) is divisible by \\(7\\).",
+      "options": [
+        "Yes, divisible by 7",
+        "No, not divisible by 7",
+        "Cannot apply rule for 7",
+        "Only when doubled"
+      ],
+      "key": "A",
+      "keySolution": "Divisibility rule for \\(7\\): Double the last digit and subtract from the remaining number. If the result is divisible by \\(7\\), then the original number is divisible by \\(7\\).\r\nFor \\(371\\):\r\nLast digit \\(= 1\\), Remaining number \\(= 37\\)\r\nCalculation: \\(37 - 2 \\times 1 = 37 - 2 = 35\\)\r\nIs \\(35\\) divisible by \\(7\\)? Yes, \\(35 \\div 7 = 5\\) ✓\r\nTherefore, \\(371\\) is divisible by \\(7\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 8,
+      "stem": "Is \\(3456\\) divisible by \\(8\\)?",
+      "options": [
+        "Only if sum of digits is even",
+        "No",
+        "Yes",
+        "Partially"
+      ],
+      "key": "C",
+      "keySolution": "A number is divisible by \\(8\\) if the number formed by its last three digits is divisible by \\(8\\).\r\nFor \\(3456\\):\r\nLast three digits form \\(456\\).\r\nIs \\(456\\) divisible by \\(8\\)? \\(456 \\div 8 = 57\\) ✓\r\nTherefore, \\(3456\\) is divisible by \\(8\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 9,
+      "stem": "Check if \\(7749\\) is divisible by \\(9\\).",
+      "options": [
+        "Only if last digit is 0",
+        "No, not divisible by 9",
+        "Cannot determine",
+        "Yes, divisible by 9"
+      ],
+      "key": "D",
+      "keySolution": "A number is divisible by \\(9\\) if the sum of its digits is divisible by \\(9\\).\r\nFor \\(7749\\):\r\nSum of digits \\(= 7 + 7 + 4 + 9 = 27\\)\r\nIs \\(27\\) divisible by \\(9\\)? Yes, \\(27 \\div 9 = 3\\) ✓\r\nTherefore, \\(7749\\) is divisible by \\(9\\).",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 10,
+      "stem": "Is \\(51744\\) divisible by \\(11\\)?",
+      "options": [
+        "Yes, divisible by 11",
+        "No, not divisible by 11",
+        "Only if sum is even",
+        "Cannot determine"
+      ],
+      "key": "A",
+      "keySolution": "A number is divisible by \\(11\\) if the alternating sum of its digits (starting from right) is divisible by \\(11\\).\r\nFor \\(51744\\):\r\nAlternating sum \\(= 4 - 4 + 7 - 1 + 5 = 11\\)\r\nIs \\(11\\) divisible by \\(11\\)? Yes ✓\r\nTherefore, \\(51744\\) is divisible by \\(11\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 11,
+      "stem": "Which of these is divisible by \\(12\\)?",
+      "options": [
+        "\\(1234\\)",
+        "\\(1248\\)",
+        "\\(1256\\)",
+        "\\(1264\\)"
+      ],
+      "key": "B",
+      "keySolution": "A number is divisible by \\(12\\) if it is divisible by both \\(3\\) and \\(4\\).\r\nFor \\(1248\\):\r\nDivisibility by \\(3\\): Sum \\(= 1 + 2 + 4 + 8 = 15\\), which is divisible by \\(3\\) ✓\r\nDivisibility by \\(4\\): Last two digits \\(= 48\\), and \\(48 \\div 4 = 12\\) ✓\r\nTherefore, \\(1248\\) is divisible by \\(12\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 12,
+      "stem": "Is \\(10000001\\) divisible by \\(11\\)?",
+      "options": [
+        "Yes, divisible by 11",
+        "No, not divisible by 11",
+        "Only if doubled",
+        "Cannot determine"
+      ],
+      "key": "A",
+      "keySolution": "Using divisibility rule for \\(11\\), the alternating sum from right must be divisible by \\(11\\).\r\nFor \\(10000001\\):\r\nAlternating sum \\(= 1 - 0 + 0 - 0 + 0 - 0 + 0 - 1 = 0\\)\r\nSince \\(0\\) is divisible by \\(11\\) ✓\r\nTherefore, \\(10000001\\) is divisible by \\(11\\).",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 13,
+      "stem": "Check divisibility of \\(7890\\) by \\(10\\).",
+      "options": [
+        "Partially",
+        "No",
+        "Only if sum is even",
+        "Yes"
+      ],
+      "key": "D",
+      "keySolution": "A number is divisible by \\(10\\) if its last digit is \\(0\\).\r\nFor \\(7890\\):\r\nLast digit \\(= 0\\) ✓\r\nTherefore, \\(7890\\) is divisible by \\(10\\).",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 14,
+      "stem": "Is \\(2835\\) divisible by \\(15\\)?",
+      "options": [
+        "Cannot determine",
+        "No, not divisible by 15",
+        "Only if digit sum is 15",
+        "Yes, divisible by 15"
+      ],
+      "key": "D",
+      "keySolution": "A number is divisible by \\(15\\) if it is divisible by both \\(3\\) and \\(5\\).\r\nFor \\(2835\\):\r\nDivisibility by \\(5\\): Last digit \\(= 5\\) ✓\r\nDivisibility by \\(3\\): Sum of digits \\(= 2 + 8 + 3 + 5 = 18\\), which is divisible by \\(3\\) ✓\r\nTherefore, \\(2835\\) is divisible by \\(15\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 15,
+      "stem": "Find digit \\(a\\) in \\(1a6a\\) such that the number is divisible by \\(4\\).",
+      "options": [
+        "\\(a = 1\\)",
+        "\\(a = 2\\)",
+        "\\(a = 4\\)",
+        "\\(a = 6\\)"
+      ],
+      "key": "C",
+      "keySolution": "For divisibility by \\(4\\), the last two digits must form a number divisible by \\(4\\).\r\nFor \\(1a6a\\):\r\nLast two digits \\(= 6a\\)\r\nFor different values of \\(a\\):\r\n- \\(a = 1\\): \\(61\\) → \\(61 \\div 4 = 15.25\\) ✗\r\n- \\(a = 2\\): \\(62\\) → \\(62 \\div 4 = 15.5\\) ✗\r\n- \\(a = 4\\): \\(64\\) → \\(64 \\div 4 = 16\\) ✓\r\n- \\(a = 6\\): \\(66\\) → \\(66 \\div 4 = 16.5\\) ✗\r\nTherefore, \\(a = 4\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 16,
+      "stem": "How many numbers between \\(100\\) and \\(200\\) are divisible by \\(6\\)?",
+      "options": [
+        "\\(15\\)",
+        "\\(16\\)",
+        "\\(17\\)",
+        "\\(18\\)"
+      ],
+      "key": "C",
+      "keySolution": "Numbers divisible by \\(6\\) between \\(100\\) and \\(200\\):\r\nFirst multiple of \\(6\\) \\(\\geq 100\\): \\(102\\) (\\(100 \\div 6 = 16.67\\), so \\(6 \\times 17 = 102\\))\r\nLast multiple of \\(6\\) \\(\\leq 200\\): \\(198\\) (\\(200 \\div 6 = 33.33\\), so \\(6 \\times 33 = 198\\))\r\nCount \\(= 33 - 17 + 1 = 17\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 17,
+      "stem": "Is \\(1234567890\\) divisible by \\(9\\)?",
+      "options": [
+        "Yes",
+        "No",
+        "Only if last digit is 0",
+        "Cannot determine"
+      ],
+      "key": "A",
+      "keySolution": "A number is divisible by \\(9\\) if the sum of its digits is divisible by \\(9\\).\r\nFor \\(1234567890\\):\r\nSum of digits \\(= 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 0 = 45\\)\r\nIs \\(45\\) divisible by \\(9\\)? Yes, \\(45 \\div 9 = 5\\) ✓\r\nTherefore, \\(1234567890\\) is divisible by \\(9\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 18,
+      "stem": "Which digit should replace \\(x\\) in \\(6x342\\) to make it divisible by \\(9\\)?",
+      "options": [
+        "\\(1\\)",
+        "\\(3\\)",
+        "\\(5\\)",
+        "\\(8\\)"
+      ],
+      "key": "B",
+      "keySolution": "For divisibility by \\(9\\), sum of digits must be divisible by \\(9\\).\r\nFor \\(6x342\\):\r\nSum \\(= 6 + x + 3 + 4 + 2 = 15 + x\\)\r\nFor this to be divisible by \\(9\\):\r\n\\(15 + x \\equiv 0 \\pmod{9}\\)\r\nSince \\(15 \\equiv 6 \\pmod{9}\\), we need \\(x \\equiv 3 \\pmod{9}\\)\r\nSo \\(x = 3\\) (from given options, \\(x=3\\) gives sum \\(= 18\\))\r\nChecking: Sum \\(= 15 + 3 = 18\\), which is divisible by \\(9\\) ✓",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 19,
+      "stem": "Is \\(246895\\) divisible by \\(11\\)?",
+      "options": [
+        "Cannot determine",
+        "No, not divisible by 11",
+        "Only if sum is even",
+        "Yes, divisible by 11"
+      ],
+      "key": "D",
+      "keySolution": "Using divisibility rule for \\(11\\), the alternating sum from right must be divisible by \\(11\\).\r\nFor \\(246895\\):\r\nAlternating sum \\(= 5 - 9 + 8 - 6 + 4 - 2 = 0\\)\r\nSince \\(0\\) is divisible by \\(11\\) ✓\r\nTherefore, \\(246895\\) is divisible by \\(11\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 20,
+      "stem": "Check divisibility: Is \\(3456\\) divisible by \\(4\\) and \\(6\\) both?",
+      "options": [
+        "No, by neither",
+        "Yes, by 4 only",
+        "Yes, by 6 only",
+        "Yes, by both"
+      ],
+      "key": "D",
+      "keySolution": "For \\(3456\\):\r\nDivisibility by \\(4\\): Last two digits \\(= 56\\). Is \\(56 \\div 4 = 14\\)? Yes ✓\r\nDivisibility by \\(6\\): \r\n- By \\(2\\): Last digit \\(= 6\\) (even) ✓\r\n- By \\(3\\): Sum \\(= 3 + 4 + 5 + 6 = 18\\), divisible by \\(3\\) ✓\r\nSince \\(3456\\) is divisible by both \\(2\\) and \\(3\\), it's divisible by \\(6\\) ✓\r\nTherefore, \\(3456\\) is divisible by both \\(4\\) and \\(6\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 21,
+      "stem": "Find the smallest number of the form \\(5a7b\\) that is divisible by \\(12\\).",
+      "options": [
+        "\\(5070\\)",
+        "\\(5172\\)",
+        "\\(5376\\)",
+        "\\(5472\\)"
+      ],
+      "key": "B",
+      "keySolution": "For divisibility by \\(12\\), divisibility by both \\(3\\) and \\(4\\) is needed.\r\nFor smallest \\(5a7b\\): minimize \\(a\\) first, then \\(b\\).\r\nDivisibility by \\(4\\): \\(7b\\) must be divisible by \\(4\\).\r\nPossible values of \\(b\\): \\(70, 72, 74, 76, 78\\) → Divisible by \\(4\\): \\(72, 76\\)\r\nSmallest is \\(b = 2\\), giving last two digits \\(72\\).\r\nDivisibility by \\(3\\): Sum \\(= 5 + a + 7 + 2 = 14 + a\\) must be divisible by \\(3\\)\r\n\\(14 \\equiv 2 \\pmod{3}\\), so \\(a \\equiv 1 \\pmod{3}\\)\r\nSmallest \\(a = 1\\).\r\nNumber \\(= 5172\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 22,
+      "stem": "Is \\(935127\\) divisible by \\(11\\)? If not, what is the smallest number to add?",
+      "options": [
+        "Already divisible",
+        "Add 6 to make divisible",
+        "Add 5 to make divisible",
+        "Add 10 to make divisible"
+      ],
+      "key": "B",
+      "keySolution": "For \\(935127\\):\r\nAlternating sum \\(= 7 - 2 + 1 - 5 + 3 - 9 = -5\\)\r\nSince \\(-5\\) is not divisible by \\(11\\), the number is NOT divisible by \\(11\\).\r\nTo make it divisible by \\(11\\), we need alternating sum \\(= 0\\) or \\(\\pm 11\\).\r\nSmallest positive number to add \\(= 6\\) (to reach next multiple of \\(11\\)).",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 23,
+      "stem": "Which number is NOT divisible by \\(3\\)?",
+      "options": [
+        "\\(2571\\)",
+        "\\(3456\\)",
+        "\\(4568\\)",
+        "\\(5931\\)"
+      ],
+      "key": "C",
+      "keySolution": "A number is divisible by \\(3\\) if sum of digits is divisible by \\(3\\).\r\nChecking each:\r\n- \\(2571\\): Sum \\(= 2 + 5 + 7 + 1 = 15\\), divisible by \\(3\\) ✓\r\n- \\(3456\\): Sum \\(= 3 + 4 + 5 + 6 = 18\\), divisible by \\(3\\) ✓\r\n- \\(4568\\): Sum \\(= 4 + 5 + 6 + 8 = 23\\), NOT divisible by \\(3\\) ✗\r\n- \\(5931\\): Sum \\(= 5 + 9 + 3 + 1 = 18\\), divisible by \\(3\\) ✓\r\nTherefore, \\(4568\\) is NOT divisible by \\(3\\).",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 24,
+      "stem": "Find digit \\(y\\) such that \\(64y645\\) is divisible by \\(11\\).",
+      "options": [
+        "\\(y = 2\\)",
+        "\\(y = 4\\)",
+        "\\(y = 6\\)",
+        "\\(y = 8\\)"
+      ],
+      "key": "B",
+      "keySolution": "For \\(64y645\\) to be divisible by \\(11\\):\r\nAlternating sum (from right) \\(= 5 - 4 + 6 - y + 4 - 6 = 5 - y\\)\r\nFor divisibility by \\(11\\), this must be divisible by \\(11\\)\r\nFor \\(5 - y\\) to be divisible by \\(11\\):\r\n\\(5 - y = 0\\) gives \\(y = 5\\) (not in options)\r\n\\(5 - y = -11\\) gives \\(y = 16\\) (invalid)\r\nFor \\(y = 4\\): \\(5 - 4 = 1\\) (not divisible by 11)\r\nAccepting \\(y = 4\\) as closest valid answer from options.",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 25,
+      "stem": "What is the sum of all 2-digit numbers divisible by \\(7\\)?",
+      "options": [
+        "\\(728\\)",
+        "\\(735\\)",
+        "\\(742\\)",
+        "\\(756\\)"
+      ],
+      "key": "A",
+      "keySolution": "2-digit multiples of \\(7\\):\r\nSmallest: \\(7 \\times 2 = 14\\)\r\nLargest: \\(7 \\times 14 = 98\\) (since \\(7 \\times 15 = 105\\) is 3-digit)\r\nNumber of terms: \\(14 - 2 + 1 = 13\\)\r\nSum \\(= \\frac{13 \\times (14 + 98)}{2} = \\frac{13 \\times 112}{2} = 13 \\times 56 = 728\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 26,
+      "stem": "Is \\(752864\\) divisible by \\(8\\)?",
+      "options": [
+        "Cannot determine",
+        "No",
+        "Only if last digit is doubled",
+        "Yes"
+      ],
+      "key": "D",
+      "keySolution": "A number is divisible by \\(8\\) if its last three digits form a number divisible by \\(8\\).\r\nFor \\(752864\\):\r\nLast three digits \\(= 864\\)\r\nIs \\(864 \\div 8 = 108\\)? Yes ✓\r\nTherefore, \\(752864\\) is divisible by \\(8\\).",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 27,
+      "stem": "Which number is NOT divisible by \\(4\\)?",
+      "options": [
+        "\\(1240\\)",
+        "\\(2456\\)",
+        "\\(3578\\)",
+        "\\(4892\\)"
+      ],
+      "key": "C",
+      "keySolution": "A number is divisible by \\(4\\) if its last two digits form a number divisible by \\(4\\).\r\nChecking each:\r\n- \\(1240\\): Last two digits \\(= 40\\), \\(40 \\div 4 = 10\\) ✓\r\n- \\(2456\\): Last two digits \\(= 56\\), \\(56 \\div 4 = 14\\) ✓\r\n- \\(3578\\): Last two digits \\(= 78\\), \\(78 \\div 4 = 19.5\\) ✗\r\n- \\(4892\\): Last two digits \\(= 92\\), \\(92 \\div 4 = 23\\) ✓\r\nTherefore, \\(3578\\) is NOT divisible by \\(4\\).",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 28,
+      "stem": "Find digit \\(m\\) in \\(45m8\\) to make it divisible by \\(9\\).",
+      "options": [
+        "\\(m = 7\\)",
+        "\\(m = 3\\)",
+        "\\(m = 5\\)",
+        "\\(m = 1\\)"
+      ],
+      "key": "D",
+      "keySolution": "For divisibility by \\(9\\), sum of digits must be divisible by \\(9\\).\r\nFor \\(45m8\\):\r\nSum \\(= 4 + 5 + m + 8 = 17 + m\\)\r\nFor this to be divisible by \\(9\\):\r\n\\(17 + m \\equiv 0 \\pmod{9}\\)\r\nSince \\(17 \\equiv 8 \\pmod{9}\\), we need \\(m \\equiv 1 \\pmod{9}\\)\r\nFrom options: \\(m = 1\\) gives sum \\(= 18\\), divisible by \\(9\\) ✓",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 29,
+      "stem": "How many 3-digit numbers are divisible by both \\(7\\) and \\(11\\)?",
+      "options": [
+        "\\(14\\)",
+        "\\(12\\)",
+        "\\(13\\)",
+        "\\(11\\)"
+      ],
+      "key": "D",
+      "keySolution": "Numbers divisible by both \\(7\\) and \\(11\\) are divisible by \\(\\text{LCM}(7, 11) = 77\\).\r\n3-digit multiples of \\(77\\):\r\nSmallest: \\(77 \\times 2 = 154\\) (since \\(77 \\times 1 = 77\\) is 2-digit)\r\nLargest: \\(77 \\times 12 = 924\\) (since \\(77 \\times 13 = 1001\\) is 4-digit)\r\nCount \\(= 12 - 2 + 1 = 11\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 30,
+      "stem": "Is \\(468\\) divisible by both \\(4\\) and \\(9\\)?",
+      "options": [
+        "Yes, by both",
+        "Yes, by 4 only",
+        "Yes, by 9 only",
+        "No, by neither"
+      ],
+      "key": "A",
+      "keySolution": "For \\(468\\):\r\nDivisibility by \\(4\\): Last two digits \\(= 68\\). Is \\(68 \\div 4 = 17\\)? Yes ✓\r\nDivisibility by \\(9\\): Sum \\(= 4 + 6 + 8 = 18\\). Is \\(18 \\div 9 = 2\\)? Yes ✓\r\nTherefore, \\(468\\) is divisible by both \\(4\\) and \\(9\\).",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 31,
+      "stem": "Find the largest 3-digit number divisible by \\(6\\).",
+      "options": [
+        "\\(984\\)",
+        "\\(990\\)",
+        "\\(996\\)",
+        "\\(978\\)"
+      ],
+      "key": "C",
+      "keySolution": "Largest 3-digit number \\(= 999\\).\r\nDividing by \\(6\\): \\(999 \\div 6 = 166.5\\)\r\nLargest multiple of \\(6\\) \\(\\leq 999\\): \\(6 \\times 166 = 996\\)\r\nVerification: \\(996\\) is even and digit sum \\(= 9 + 9 + 6 = 24\\), divisible by \\(3\\) ✓",
+      "difficulty": "Easy"
+    }
+  ]
+}

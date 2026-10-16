@@ -155,14 +155,16 @@ of one calculation. Kept rates ran from ~90% (Simple Interest) to ~60% (Time
 and Work).
 
 1. `extract-cadetprep.ts <ch> --files=...` writes `<key>.source.json` (id =
-   file index + sheet row). It lifts `Rs.`/`₹` out of math zones and restores a
+   file index + sheet row). It lifts `Rs.`/`₹` out of math zones (and drops an
+   empty `\(\)` left after one), converts literal `\n` line breaks, restores a
    sheet that lost its `\( \)` brackets (`repairBareMath`).
 2. `dump-verify.ts` + `show-packet.py`, then a blind pass written to
    `out/<ch>/blind-NN.json` as `{id: [letter, value, subtopic?]}` (X = no
    option right). Use exact-fraction calculator scripts for long working.
 3. `adopt.ts <ch> --files=...` agrees blind with key: agreeing rows adopt the
    source solution if it passes `sourceSolutionProblem` (no letter names,
-   self-talk, hedging, em dash, broken unit, bare delimiters); every dispute
+   self-talk, hedging, em dash, broken unit, bare delimiters, chat citation
+   tags like `[web:77]`); every dispute
    and refused solution is listed.
 4. Overrides (`data/<ch>.overrides.json`): correct the key where the sheet's
    own working supports it; reprint an option only for a clear near miss;
@@ -170,13 +172,29 @@ and Work).
    `answer`); otherwise exclude with a reason. Authored solutions go in
    `data/<ch>/<key>.authored.json`.
 5. `fix-equal-values.ts` for duplicate-valued options, then `merge-derived.ts`,
-   `plan-shuffles.ts --write`, `commit.ts` (dry run, then `--apply`).
+   `plan-shuffles.ts --write`, `commit.ts` (dry run, then `--apply`), then
+   `flip-public.ts --apply`. The equal-value check evaluates powers, roots and
+   mixed numbers, so `2^{10}` beside `1024` is caught; when you replace a twin
+   by hand, check the near miss is not equal to another option. A row already
+   committed is fixed with `correct-in-place.ts --ids=...`, never a re-commit.
+   After changing `equalValueOptions`, preview `plan-shuffles.ts` on every
+   chapter: a new refusal on a shipped row is either a real twin or a false
+   positive in the change.
 
-Done: Ratio 119, Mixture 74, Decimal 191, Probability 167, Simple Interest 146,
-Compound Interest 223, Time and Work 179, Profit and Loss 298 (1,397). Not yet
-ingested: Speed-Time-Distance, Percentages, Averages, Clock, Mensuration,
-Exponents/Surds, Squares/Roots, Number System, Number Series, Height and
-Distance (~2,440 rows).
+Before the overrides, look for repeats: the same numbers (or the same math
+zones) in another row of this chapter, another Cadetprep sheet, or another
+chapter. A sheet often repeats one calculation many times; keep a few and
+exclude the rest with the row they repeat.
+
+Done, every sheet (2026-10-16): Ratio 119, Mixture 74, Decimal 191,
+Probability 167, Simple Interest 146, Compound Interest 223, Time and Work
+179, Profit and Loss 298, Speed-Time-Distance 364, Percentages 374, Averages
+568, Clock 83, Area and Perimeter 56, Surface Area and Volume 44, Indices and
+Surds 87 (new chapter), Squares, Cubes and Roots 109, Number System 131 (new
+chapter), Sequence and Series 82, Heights and Distances 58 (3,353 in all).
+Left out on purpose: `02. Percentages/AFCAT-1.xlsx` (a reworded copy of the
+Basics sheet) and the four Probability `*_old.xls`; `17. Statistics` holds
+only a syllabus.
 
 ## Chapter status
 
@@ -229,3 +247,5 @@ Not ingested from the folder: CDS past-paper files (`*CDS_PYQs*`, `RP_PYQs_HW`) 
 chapter are skipped; practice/homework/classwork sheets (`* Practice*.pdf`, `TWP 1.pdf`, `Avg2/3`,
 `Probability-2_Classwork.pdf` and similar) are not yet classified (LWS-made or another institute's);
 the Errorless Percentage and Probability sheets are offered but not yet done.
+AFCAT Maths was CLOSED on 2026-10-16 (owner) with these left out; reopen only
+on a new decision.

@@ -326,11 +326,19 @@ function numericValue(t: string): number | null {
  */
 function latexToPlain(text: string): string {
   let t = text.replace(/\\\(|\\\)|\$/g, "");
+  // A whole number right before a fraction is a mixed number: 1\frac{3}{4} is 1 + 3/4.
+  t = t.replace(/(\d+)\s*\\[dt]?frac\{([^{}]*)\}\{([^{}]*)\}/g, "($1+($2)/($3))");
   let prev = "";
   while (prev !== t) {
     prev = t;
-    t = t.replace(/\\[dt]?frac\{([^{}]*)\}\{([^{}]*)\}/g, "($1)/($2)");
+    t = t
+      .replace(/\\[dt]?frac\{([^{}]*)\}\{([^{}]*)\}/g, "($1)/($2)")
+      .replace(/\\sqrt\[([^\]{}]*)\]\{([^{}]*)\}/g, "(($2)^(1/($1)))")
+      .replace(/\\sqrt\{([^{}]*)\}/g, "(($1)^(1/2))")
+      .replace(/\^\{([^{}]*)\}/g, "^($1)");
   }
+  // A number or bracket written before a bracket multiplies it: 2\sqrt{8} is 2 x root 8.
+  t = t.replace(/([\d)])\s*(?=\()/g, "$1×");
   t = t
     .replace(/\\text\{([^{}]*)\}/g, "$1")
     .replace(/\\(?:times|cdot)/g, "×")
@@ -345,7 +353,7 @@ function latexToPlain(text: string): string {
  * by recursive descent; null for anything else. No eval.
  */
 function arithmeticValue(s: string): number | null {
-  if (!/^[\d\s.+\-×*/()]+$/.test(s) || !/\d/.test(s)) return null;
+  if (!/^[\d\s.+\-×*/()^]+$/.test(s) || !/\d/.test(s)) return null;
   const src = s.replace(/\s+/g, "");
   let i = 0;
   const expr = (): number | null => {
@@ -368,12 +376,22 @@ function arithmeticValue(s: string): number | null {
     }
     return v;
   };
+  // A power binds tighter than a sign and groups to the right: 2^3^2 is 2^9.
   const factor = (): number | null => {
     if (src[i] === "-") {
       i++;
       const v = factor();
       return v === null ? null : -v;
     }
+    const base = atom();
+    if (base === null || src[i] !== "^") return base;
+    i++;
+    const exp = factor();
+    if (exp === null) return null;
+    const v = Math.pow(base, exp);
+    return Number.isFinite(v) ? v : null;
+  };
+  const atom = (): number | null => {
     if (src[i] === "(") {
       i++;
       const v = expr();
@@ -411,7 +429,8 @@ function optionValueKey(text: string): string {
     percent = "%";
     t = t.slice(0, -1).trim();
   }
-  if (/^\d+(?:\s*:\s*\d+)+$/.test(t)) {
+  // A ratio has no zero term; "9:00" and "3:00" are clock times and compare as text.
+  if (/^\d+(?:\s*:\s*\d+)+$/.test(t) && !t.split(":").some((p) => Number(p.trim()) === 0)) {
     const parts = t.split(":").map((p) => Number(p.trim()));
     const g = parts.reduce(gcd);
     return `ratio ${parts.map((p) => p / g).join(":")}${percent} ${direction}`;
@@ -663,7 +682,11 @@ export const BROKEN_UNIT = /\\\//;
  * warn (no font metrics for ₹ in math). Move it out in front.
  */
 export function liftCurrencyOutOfMath(text: string): string {
-  return text.replace(/\\\(\s*Rs\.\s*/g, "Rs. \\(").replace(/\\\(\s*₹\s*/g, "₹\\(");
+  return text
+    .replace(/\\\(\s*Rs\.\s*/g, "Rs. \\(")
+    .replace(/\\\(\s*₹\s*/g, "₹\\(")
+    .replace(/(Rs\.\s*|₹)\\\(\\\)\s*/g, "$1")
+    .replace(/(Rs\.\s*|₹)\\\(\\ \s*/g, "$1\\(");
 }
 
 /** A backslash before a digit: no LaTeX command starts with one, so it is a lost `\(` or `\)`. */
@@ -694,6 +717,8 @@ export function sourceSolutionProblem(solution: string): string | null {
   if (BARE_MATH.test(s)) return "bare math delimiters (\\20\\ for \\(20\\))";
   if (s.includes("—")) return "em dash";
   if (CONTROL_CHAR.test(s)) return "control character";
+  // A sheet written with a chat tool kept its source tags ("[web:77]").
+  if (/\[web:\d+\]/.test(s)) return "chat citation tag";
   return null;
 }
 

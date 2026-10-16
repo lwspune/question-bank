@@ -1,0 +1,319 @@
+{
+  "path": "11. Clock\\01. Angle_Based_Problems.xlsx",
+  "group": "D",
+  "transcribed": "read from the Cadetprep Excel sheet by extract-cadetprep.ts (sheet row = n); key and solution are the source's, kept as evidence",
+  "questions": [
+    {
+      "n": 2,
+      "stem": "Find the angle between the hands of a clock at \\(10:10\\).",
+      "options": [
+        "\\(115°\\)",
+        "\\(120.5°\\)",
+        "\\(109.5°\\)",
+        "\\(140°\\)"
+      ],
+      "key": "A",
+      "keySolution": "At \\(10:10\\):\r\nMinute hand position = \\(10 × 6 = 60°\\) from 12\r\nHour hand position = \\(10 × 30 + 10 × 0.5 = 305.0°\\) from 12\r\nAngle = \\(|305.0 - 60| = 115.0°\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 3,
+      "stem": "Between \\(9\\) and \\(10\\) o'clock, the hour hand and minute hand will be perpendicular (at right angles). Find the approximate time.",
+      "options": [
+        "\\(9:27\\)",
+        "\\(9:37\\)",
+        "\\(9:32\\)",
+        "\\(9:42\\)"
+      ],
+      "key": "C",
+      "keySolution": "For perpendicular hands between hour H and H+1, use formula:\r\nM = (2/11)[30H ± 90]\r\nFor hour \\(9\\):\r\nM = (2/11)[30(9) ± 90] = (2/11)[270 ± 90]\r\nThis gives approximately \\(32\\) minutes past \\(9\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 4,
+      "stem": "Between \\(8\\) and \\(9\\) o'clock, at what time will the hour hand and minute hand be in opposite directions (\\(180°\\) apart)?",
+      "options": [
+        "\\(8:02\\)",
+        "\\(8:10\\)",
+        "\\(8:18\\)",
+        "\\(8:25\\)"
+      ],
+      "key": "B",
+      "keySolution": "For opposite hands between hour H and H+1, use:\r\nAngle = \\(|30H - 5.5M| = 180\\)\r\nSolving: M = (2/11)(30H ± 180)\r\nFor hour \\(8\\), this gives approximately \\(10\\) minutes",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 5,
+      "stem": "At what time between \\(7\\) and \\(8\\) o'clock will the angle between the hands be \\(150°\\)?",
+      "options": [
+        "\\(7:06\\)",
+        "\\(7:11\\)",
+        "\\(7:16\\)",
+        "\\(7:21\\)"
+      ],
+      "key": "B",
+      "keySolution": "Using formula: M = (2/11)(30H ± A), where A = \\(150°\\)\r\nM = (2/11)(30(7) ± 150)\r\nM = (2/11) × 210 ± (2/11) × 150\r\nThis gives approximately \\(11\\) minutes past \\(7\\) o'clock.",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 6,
+      "stem": "From \\(3:15\\) to \\(3:45\\), by how many degrees does the angle between hands change?",
+      "options": [
+        "\\(140.0°\\)",
+        "\\(150.0°\\)",
+        "\\(160.0°\\)",
+        "\\(170.0°\\)"
+      ],
+      "key": "B",
+      "keySolution": "At \\(3:15\\): angle = \\(7.5°\\)\r\nAt \\(3:45\\): angle = \\(157.5°\\)\r\nChange in angle = \\(|157.5 - 7.5| = 150.0°\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 7,
+      "stem": "Find the angle between the hands of a clock at \\(9:00\\).",
+      "options": [
+        "\\(115°\\)",
+        "\\(84.5°\\)",
+        "\\(90°\\)",
+        "\\(95.5°\\)"
+      ],
+      "key": "C",
+      "keySolution": "At \\(9:00\\):\r\nMinute hand position = \\(0 × 6 = 0°\\) from 12\r\nHour hand position = \\(9 × 30 + 0 × 0.5 = 270.0°\\) from 12\r\nAngle = \\(|270.0 - 0| = 90.0°\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 8,
+      "stem": "Find the angle between the hands of a clock at \\(8:40\\).",
+      "options": [
+        "\\(45°\\)",
+        "\\(25.5°\\)",
+        "\\(14.5°\\)",
+        "\\(20°\\)"
+      ],
+      "key": "D",
+      "keySolution": "At \\(8:40\\):\r\nMinute hand position = \\(40 × 6 = 240°\\) from 12\r\nHour hand position = \\(8 × 30 + 40 × 0.5 = 260.0°\\) from 12\r\nAngle = \\(|260.0 - 240| = 20.0°\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 9,
+      "stem": "Find the angle between the hands of a clock at \\(3:15\\).",
+      "options": [
+        "\\(7.5°\\)",
+        "\\(42.5°\\)",
+        "\\(13°\\)",
+        "\\(2°\\)"
+      ],
+      "key": "A",
+      "keySolution": "At \\(3:15\\):\r\nMinute hand position = \\(15 × 6 = 90°\\) from 12\r\nHour hand position = \\(3 × 30 + 15 × 0.5 = 97.5°\\) from 12\r\nAngle = \\(|97.5 - 90| = 7.5°\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 10,
+      "stem": "Which time has a smaller angle between the hands: \\(2:15\\) or \\(2:45\\)?",
+      "options": [
+        "\\(2:15\\) has smaller angle",
+        "\\(2:45\\) has smaller angle",
+        "Both have equal angles",
+        "Cannot be determined"
+      ],
+      "key": "A",
+      "keySolution": "At \\(2:15\\): angle = \\(22.5°\\)\r\nAt \\(2:45\\): angle = \\(172.5°\\)\r\nTherefore, \\(\\\\(2:15\\\\)) has the smaller angle.",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 11,
+      "stem": "By \\(11:45\\), how many degrees will the minute hand turn from the initial position (starting from 12:00)?",
+      "options": [
+        "\\(240°\\)",
+        "\\(300°\\)",
+        "\\(270°\\)",
+        "\\(330°\\)"
+      ],
+      "key": "C",
+      "keySolution": "The minute hand moves \\(0.5°\\) per minute for hour hand and \\(6°\\) per minute for minute hand.\r\nTotal time = \\(11\\) hours \\(45\\) minutes = \\(705\\) minutes\r\nAngle traced by minute hand = \\(705 × 6 = 270°\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 12,
+      "stem": "At what time between \\(3\\) and \\(4\\) o'clock will the angle between the hands be \\(60°\\)?",
+      "options": [
+        "\\(3:22\\)",
+        "\\(3:27\\)",
+        "\\(3:32\\)",
+        "\\(3:37\\)"
+      ],
+      "key": "B",
+      "keySolution": "Using formula: M = (2/11)(30H ± A), where A = \\(60°\\)\r\nM = (2/11)(30(3) ± 60)\r\nM = (2/11) × 90 ± (2/11) × 60\r\nThis gives approximately \\(27\\) minutes past \\(3\\) o'clock.",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 13,
+      "stem": "Which time has a smaller angle between the hands: \\(7:30\\) or \\(7:50\\)?",
+      "options": [
+        "\\(7:30\\) has smaller angle",
+        "\\(7:50\\) has smaller angle",
+        "Both have equal angles",
+        "Cannot be determined"
+      ],
+      "key": "A",
+      "keySolution": "At \\(7:30\\): angle = \\(45.0°\\)\r\nAt \\(7:50\\): angle = \\(65.0°\\)\r\nTherefore, \\(\\\\(7:30\\\\)) has the smaller angle.",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 14,
+      "stem": "Find the angle between the hands of a clock at \\(2:30\\).",
+      "options": [
+        "\\(99.5°\\)",
+        "\\(140°\\)",
+        "\\(110.5°\\)",
+        "\\(105°\\)"
+      ],
+      "key": "D",
+      "keySolution": "At \\(2:30\\):\r\nMinute hand position = \\(30 × 6 = 180°\\) from 12\r\nHour hand position = \\(2 × 30 + 30 × 0.5 = 75.0°\\) from 12\r\nAngle = \\(|75.0 - 180| = 105.0°\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 15,
+      "stem": "Between \\(3\\) and \\(4\\) o'clock, at what time will the hour hand and minute hand be in opposite directions (\\(180°\\) apart)?",
+      "options": [
+        "\\(3:41\\)",
+        "\\(3:49\\)",
+        "\\(3:57\\)",
+        "\\(3:59\\)"
+      ],
+      "key": "B",
+      "keySolution": "For opposite hands between hour H and H+1, use:\r\nAngle = \\(|30H - 5.5M| = 180\\)\r\nSolving: M = (2/11)(30H ± 180)\r\nFor hour \\(3\\), this gives approximately \\(49\\) minutes",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 16,
+      "stem": "Which time has a smaller angle between the hands: \\(6:20\\) or \\(6:40\\)?",
+      "options": [
+        "\\(6:20\\) has smaller angle",
+        "\\(6:40\\) has smaller angle",
+        "Both have equal angles",
+        "Cannot be determined"
+      ],
+      "key": "B",
+      "keySolution": "At \\(6:20\\): angle = \\(70.0°\\)\r\nAt \\(6:40\\): angle = \\(40.0°\\)\r\nTherefore, \\(\\\\(6:40\\\\)) has the smaller angle.",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 17,
+      "stem": "From \\(5:10\\) to \\(5:40\\), by how many degrees does the angle between hands change?",
+      "options": [
+        "\\(15.0°\\)",
+        "\\(25.0°\\)",
+        "\\(35.0°\\)",
+        "\\(45.0°\\)"
+      ],
+      "key": "B",
+      "keySolution": "At \\(5:10\\): angle = \\(95.0°\\)\r\nAt \\(5:40\\): angle = \\(70.0°\\)\r\nChange in angle = \\(|70.0 - 95.0| = 25.0°\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 18,
+      "stem": "Find the angle between the hands of a clock at \\(11:00\\).",
+      "options": [
+        "\\(55°\\)",
+        "\\(24.5°\\)",
+        "\\(35.5°\\)",
+        "\\(30°\\)"
+      ],
+      "key": "D",
+      "keySolution": "At \\(11:00\\):\r\nMinute hand position = \\(0 × 6 = 0°\\) from 12\r\nHour hand position = \\(11 × 30 + 0 × 0.5 = 330.0°\\) from 12\r\nAngle = \\(|330.0 - 0| = 30.0°\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 19,
+      "stem": "What type of angle is formed between the hands at \\(5:30\\)?",
+      "options": [
+        "Acute angle",
+        "Obtuse angle",
+        "Right angle",
+        "Straight angle"
+      ],
+      "key": "A",
+      "keySolution": "At \\(5:30\\), the angle between hands is \\(15.0°\\).\r\nSince the angle is \\(15.0°\\), it is a acute (< 90°) angle.",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 20,
+      "stem": "What type of angle is formed between the hands at \\(8:30\\)?",
+      "options": [
+        "Acute angle",
+        "Obtuse angle",
+        "Right angle",
+        "Straight angle"
+      ],
+      "key": "A",
+      "keySolution": "At \\(8:30\\), the angle between hands is \\(75.0°\\).\r\nSince the angle is \\(75.0°\\), it is a acute (< 90°) angle.",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 21,
+      "stem": "Find the angle between the hands of a clock at \\(11:50\\).",
+      "options": [
+        "\\(60.5°\\)",
+        "\\(49.5°\\)",
+        "\\(70°\\)",
+        "\\(55°\\)"
+      ],
+      "key": "D",
+      "keySolution": "At \\(11:50\\):\r\nMinute hand position = \\(50 × 6 = 300°\\) from 12\r\nHour hand position = \\(11 × 30 + 50 × 0.5 = 355.0°\\) from 12\r\nAngle = \\(|355.0 - 300| = 55.0°\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 22,
+      "stem": "By \\(6:15\\), how many degrees will the hour hand turn from the initial position (starting from 12:00)?",
+      "options": [
+        "\\(157.5°\\)",
+        "\\(247.5°\\)",
+        "\\(217.5°\\)",
+        "\\(187.5°\\)"
+      ],
+      "key": "D",
+      "keySolution": "The hour hand moves \\(0.5°\\) per minute for hour hand and \\(6°\\) per minute for minute hand.\r\nTotal time = \\(6\\) hours \\(15\\) minutes = \\(375\\) minutes\r\nAngle traced by hour hand = \\(375 × 0.5 = 187.5°\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 23,
+      "stem": "By \\(4:45\\), how many degrees will the minute hand turn from the initial position (starting from 12:00)?",
+      "options": [
+        "\\(240°\\)",
+        "\\(300°\\)",
+        "\\(270°\\)",
+        "\\(330°\\)"
+      ],
+      "key": "C",
+      "keySolution": "The minute hand moves \\(0.5°\\) per minute for hour hand and \\(6°\\) per minute for minute hand.\r\nTotal time = \\(4\\) hours \\(45\\) minutes = \\(285\\) minutes\r\nAngle traced by minute hand = \\(285 × 6 = 270°\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 24,
+      "stem": "Between \\(3\\) and \\(4\\) o'clock, the hour hand and minute hand will be perpendicular (at right angles). Find the approximate time.",
+      "options": [
+        "\\(3:00\\)",
+        "\\(3:05\\)",
+        "\\(3:00\\)",
+        "\\(3:10\\)"
+      ],
+      "key": "C",
+      "keySolution": "For perpendicular hands between hour H and H+1, use formula:\r\nM = (2/11)[30H ± 90]\r\nFor hour \\(3\\):\r\nM = (2/11)[30(3) ± 90] = (2/11)[90 ± 90]\r\nThis gives approximately \\(0\\) minutes past \\(3\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 25,
+      "stem": "What type of angle is formed between the hands at \\(7:15\\)?",
+      "options": [
+        "Acute angle",
+        "Obtuse angle",
+        "Right angle",
+        "Straight angle"
+      ],
+      "key": "B",
+      "keySolution": "At \\(7:15\\), the angle between hands is \\(127.5°\\).\r\nSince the angle is \\(127.5°\\), it is a obtuse (90° to 180°) angle.",
+      "difficulty": "Easy"
+    }
+  ]
+}

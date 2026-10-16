@@ -29,7 +29,7 @@ Free, public past-year-question paper builder for Indian entrance exams. Anyone 
 
 **MPSC Mains** (`mpsc-state-services-mains` · `mpsc-group-b-combined-mains` · `mpsc-sti-mains` · `mpsc-aso-mains` · `mpsc-psi-mains`, graduate, mocks; picker family MPSC → Mains) — PUBLIC since 2026-09-27: 19 Marathi & English language booklets 2009-2018 (2,500 rows; the 2009 paper is joint ASO/STI), Marathi-only canonical rows. Two papers have no key, so their grammar answers are derived; 4 papers were dropped on purpose (`dropped` in config). 20 mocks, three printed schemes (MOCKS.md). `scripts/mpsc-mains/`.
 
-**AFCAT** (`afcat`, graduate) — PUBLIC since 2026-10-14: Numerical Ability only, 2,866 q (2,733 practice from LWS quizzes, Errorless and Cadetprep sheets and book chapters, every key re-derived; 133 AFCAT past-year questions printed in Conquer the Sky, `pyq`). Not practiceOnly. No mocks. `scripts/afcat/` (README has the Cadetprep loop).
+**AFCAT** (`afcat`, graduate) — PUBLIC since 2026-10-14, **Maths CLOSED 2026-10-16**: Numerical Ability only, 4,822 q (4,689 practice from LWS quizzes, Errorless sheets, book chapters and every Cadetprep sheet, every key re-derived; 133 AFCAT past-year questions printed in Conquer the Sky, `pyq`). Not practiceOnly. No mocks. `scripts/afcat/` (README has the Cadetprep loop and the sources deliberately left out).
 
 A separate `question_kind` axis (`pyq` | `practice`) splits the past-year corpus from the supplementary practice bank *within* an exam — see the Multi-tenancy section below.
 

@@ -74,6 +74,27 @@ describe("equalValueOptions", () => {
     expect(equalValueOptions(["\\(\\sqrt{a^2-b^2}\\)", "\\(\\sqrt{a^2+b^2}\\)", "\\(a\\)", "\\(b\\)"])).toEqual([]);
   });
 
+  it("does not reduce a clock time with a zero term as a ratio (Clock mirror Q2)", () => {
+    expect(equalValueOptions(["\\(9:00\\)", "\\(8:55\\)", "\\(9:05\\)", "\\(3:00\\)"])).toEqual([]);
+  });
+
+  it("evaluates powers and roots, so one value in two forms is caught (Indices Q2, Q9, Q26)", () => {
+    expect(equalValueOptions(["\\(2^8\\)", "\\(1024\\)", "\\(512\\)", "\\(2^{10}\\)"])).toEqual([["B", "D"]]);
+    expect(equalValueOptions(["\\(4.5\\)", "\\(\\sqrt{9}\\)", "\\(3\\)", "\\(81\\)"])).toEqual([["B", "C"]]);
+    expect(equalValueOptions(["\\(4\\)", "\\(2\\sqrt{8}\\)", "\\(8\\)", "\\(4\\sqrt{2}\\)"])).toEqual([["B", "D"]]);
+    expect(equalValueOptions(["\\(\\sqrt[3]{27}\\)", "\\(3\\)", "\\(9\\)", "\\(27^{1/3}\\)"])).toEqual([["A", "B", "D"]]);
+  });
+
+  it("reads a LaTeX mixed number as a sum, not a product (Decimal Q102, Q226)", () => {
+    expect(equalValueOptions(["1236", "\\(1234\\frac{1}{2}\\)", "618", "617"])).toEqual([]);
+    expect(equalValueOptions(["\\(\\frac{3}{4}\\)", "\\(1\\frac{3}{4}\\)", "\\(1\\frac{1}{3}\\)", "\\(\\frac{7}{4}\\)"])).toEqual([["B", "D"]]);
+  });
+
+  it("does not equate powers of a letter or different roots", () => {
+    expect(equalValueOptions(["\\(\\frac{1}{x^2}\\)", "\\(x^8\\)", "\\(x^2\\)", "\\(x^{15}\\)"])).toEqual([]);
+    expect(equalValueOptions(["\\(2\\sqrt{3}\\)", "\\(3\\sqrt{2}\\)", "\\(\\sqrt{18}\\)", "\\(6\\sqrt{3}\\)"])).toEqual([["B", "C"]]);
+  });
+
   it("passes a clean set", () => {
     expect(equalValueOptions(["40 liters", "45 liters", "55 liters", "60 liters"])).toEqual([]);
   });

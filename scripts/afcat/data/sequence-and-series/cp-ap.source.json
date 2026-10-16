@@ -1,0 +1,410 @@
+{
+  "path": "16. Number Series\\01. Arithmetic Progression.xlsx",
+  "group": "D",
+  "transcribed": "read from the Cadetprep Excel sheet by extract-cadetprep.ts (sheet row = n); key and solution are the source's, kept as evidence",
+  "questions": [
+    {
+      "n": 2,
+      "stem": "Find the \\(10^{th}\\) term of the AP: \\(3, 7, 11, 15, ...\\)",
+      "options": [
+        "\\(35\\)",
+        "\\(39\\)",
+        "\\(43\\)",
+        "\\(47\\)"
+      ],
+      "key": "B",
+      "keySolution": "AP: \\(3, 7, 11, 15, ...\\)\r\nFirst term \\(a = 3\\), Common difference \\(d = 7 - 3 = 4\\)\r\nUsing formula: \\(a_n = a + (n-1)d\\)\r\n\\(a_{10} = 3 + (10-1) \\times 4 = 3 + 36 = 39\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 3,
+      "stem": "What is the common difference of the AP: \\(2, 5, 8, 11, ...\\)?",
+      "options": [
+        "\\(2\\)",
+        "\\(3\\)",
+        "\\(4\\)",
+        "\\(5\\)"
+      ],
+      "key": "B",
+      "keySolution": "AP: \\(2, 5, 8, 11, ...\\)\r\nCommon difference \\(d = a_2 - a_1 = 5 - 2 = 3\\)\r\nVerification: \\(8 - 5 = 3\\), \\(11 - 8 = 3\\) ✓",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 4,
+      "stem": "Is \\(47\\) a term of the AP: \\(5, 12, 19, 26, ...\\)?",
+      "options": [
+        "Yes, it is the 7th term",
+        "Yes, it is the 8th term",
+        "No, it is not a term",
+        "Yes, it is the 6th term"
+      ],
+      "key": "A",
+      "keySolution": "AP: \\(5, 12, 19, 26, ...\\)\r\n\\(a = 5\\), \\(d = 12 - 5 = 7\\)\r\nFor \\(47\\) to be a term: \\(47 = 5 + (n-1) \\times 7\\)\r\n\\(42 = (n-1) \\times 7\\), \\(n - 1 = 6\\), \\(n = 7\\)\r\nVerification: \\(a_7 = 5 + 6 \\times 7 = 5 + 42 = 47\\) ✓",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 5,
+      "stem": "Find the first term of an AP if the 5th term is \\(20\\) and common difference is \\(2\\).",
+      "options": [
+        "\\(10\\)",
+        "\\(12\\)",
+        "\\(14\\)",
+        "\\(16\\)"
+      ],
+      "key": "B",
+      "keySolution": "Given: \\(a_5 = 20\\), \\(d = 2\\)\r\nUsing: \\(a_n = a + (n-1)d\\)\r\n\\(20 = a + (5-1) \\times 2\\)\r\n\\(20 = a + 8\\)\r\n\\(a = 12\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 6,
+      "stem": "How many terms are there in the AP: \\(7, 14, 21, ..., 140\\)?",
+      "options": [
+        "\\(19\\)",
+        "\\(20\\)",
+        "\\(21\\)",
+        "\\(22\\)"
+      ],
+      "key": "B",
+      "keySolution": "AP: \\(7, 14, 21, ..., 140\\)\r\n\\(a = 7\\), \\(d = 7\\), \\(a_n = 140\\)\r\nUsing: \\(a_n = a + (n-1)d\\)\r\n\\(140 = 7 + (n-1) \\times 7\\)\r\n\\(133 = (n-1) \\times 7\\)\r\n\\(n - 1 = 19\\), \\(n = 20\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 7,
+      "stem": "Find the sum of the first \\(15\\) terms of the AP: \\(2, 5, 8, 11, ...\\)",
+      "options": [
+        "\\(345\\)",
+        "\\(350\\)",
+        "\\(355\\)",
+        "\\(360\\)"
+      ],
+      "key": "A",
+      "keySolution": "AP: \\(2, 5, 8, 11, ...\\)\r\n\\(a = 2\\), \\(d = 3\\)\r\nFind \\(a_{15}\\): \\(a_{15} = 2 + 14 \\times 3 = 2 + 42 = 44\\)\r\nUsing: \\(S_n = \\frac{n}{2}(a + l)\\)\r\n\\(S_{15} = \\frac{15}{2}(2 + 44) = \\frac{15}{2} \\times 46 = 15 \\times 23 = 345\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 8,
+      "stem": "What is the common difference if the first term is \\(1\\) and the \\(8^{th}\\) term is \\(22\\)?",
+      "options": [
+        "\\(2\\)",
+        "\\(3\\)",
+        "\\(4\\)",
+        "\\(5\\)"
+      ],
+      "key": "B",
+      "keySolution": "Given: \\(a = 1\\), \\(a_8 = 22\\)\r\nUsing: \\(a_8 = a + 7d\\)\r\n\\(22 = 1 + 7d\\)\r\n\\(21 = 7d\\)\r\n\\(d = 3\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 9,
+      "stem": "Find the \\(20^{th}\\) term of the AP: \\(5, 10, 15, 20, ...\\)",
+      "options": [
+        "\\(95\\)",
+        "\\(110\\)",
+        "\\(105\\)",
+        "\\(100\\)"
+      ],
+      "key": "D",
+      "keySolution": "AP: \\(5, 10, 15, 20, ...\\)\r\n\\(a = 5\\), \\(d = 5\\)\r\n\\(a_{20} = 5 + (20-1) \\times 5 = 5 + 95 = 100\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 10,
+      "stem": "Find the sum of the first \\(20\\) terms of the AP: \\(1, 3, 5, 7, ...\\)",
+      "options": [
+        "\\(450\\)",
+        "\\(420\\)",
+        "\\(430\\)",
+        "\\(400\\)"
+      ],
+      "key": "D",
+      "keySolution": "AP: \\(1, 3, 5, 7, ...\\) (odd numbers)\r\n\\(a = 1\\), \\(d = 2\\)\r\n\\(a_{20} = 1 + 19 \\times 2 = 39\\)\r\n\\(S_{20} = \\frac{20}{2}(1 + 39) = 10 \\times 40 = 400\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 11,
+      "stem": "If the \\(3^{rd}\\) term is \\(8\\) and \\(7^{th}\\) term is \\(20\\), find the common difference.",
+      "options": [
+        "\\(2\\)",
+        "\\(4\\)",
+        "\\(3\\)",
+        "\\(5\\)"
+      ],
+      "key": "C",
+      "keySolution": "Given: \\(a_3 = 8\\), \\(a_7 = 20\\)\r\nWe know: \\(a_7 - a_3 = (a + 6d) - (a + 2d) = 4d\\)\r\n\\(20 - 8 = 4d\\)\r\n\\(12 = 4d\\)\r\n\\(d = 3\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 12,
+      "stem": "Find the number of terms in the AP: \\(4, 9, 14, 19, ..., 124\\).",
+      "options": [
+        "\\(23\\)",
+        "\\(24\\)",
+        "\\(25\\)",
+        "\\(26\\)"
+      ],
+      "key": "C",
+      "keySolution": "AP: \\(4, 9, 14, 19, ..., 124\\)\r\n\\(a = 4\\), \\(d = 5\\), \\(a_n = 124\\)\r\n\\(124 = 4 + (n-1) \\times 5\\)\r\n\\(120 = (n-1) \\times 5\\)\r\n\\(n - 1 = 24\\)\r\n\\(n = 25\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 13,
+      "stem": "What is the sum of an AP with first term \\(10\\), last term \\(50\\), and \\(9\\) terms?",
+      "options": [
+        "\\(270\\)",
+        "\\(280\\)",
+        "\\(290\\)",
+        "\\(300\\)"
+      ],
+      "key": "A",
+      "keySolution": "Given: \\(a = 10\\), \\(l = 50\\), \\(n = 9\\)\r\nUsing: \\(S_n = \\frac{n}{2}(a + l)\\)\r\n\\(S_9 = \\frac{9}{2}(10 + 50) = \\frac{9}{2} \\times 60 = 9 \\times 30 = 270\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 14,
+      "stem": "Find the \\(15^{th}\\) term of the AP: \\(-5, -2, 1, 4, ...\\)",
+      "options": [
+        "\\(35\\)",
+        "\\(37\\)",
+        "\\(39\\)",
+        "\\(41\\)"
+      ],
+      "key": "B",
+      "keySolution": "AP: \\(-5, -2, 1, 4, ...\\)\r\n\\(a = -5\\), \\(d = -2 - (-5) = 3\\)\r\n\\(a_{15} = -5 + (15-1) \\times 3 = -5 + 42 = 37\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 15,
+      "stem": "Find the sum of all natural numbers from \\(1\\) to \\(100\\).",
+      "options": [
+        "\\(5000\\)",
+        "\\(5100\\)",
+        "\\(5050\\)",
+        "\\(5200\\)"
+      ],
+      "key": "C",
+      "keySolution": "AP: \\(1, 2, 3, ..., 100\\)\r\n\\(a = 1\\), \\(l = 100\\), \\(n = 100\\)\r\n\\(S_{100} = \\frac{100}{2}(1 + 100) = 50 \\times 101 = 5050\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 16,
+      "stem": "Which term of the AP \\(3, 10, 17, 24, ...\\) is \\(136\\)?",
+      "options": [
+        "\\(18^{th}\\)",
+        "\\(19^{th}\\)",
+        "\\(20^{th}\\)",
+        "\\(21^{st}\\)"
+      ],
+      "key": "C",
+      "keySolution": "AP: \\(3, 10, 17, 24, ...\\)\r\n\\(a = 3\\), \\(d = 7\\)\r\nFor term = 136:\r\n\\(136 = 3 + (n-1) \\times 7\\)\r\n\\(133 = (n-1) \\times 7\\)\r\n\\(n - 1 = 19\\)\r\n\\(n = 20\\)\r\nSo \\(136\\) is the \\(20^{th}\\) term",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 17,
+      "stem": "Find the sum using \\(S_n = \\frac{n}{2}(2a + (n-1)d)\\) where \\(a=2\\), \\(d=5\\), \\(n=12\\).",
+      "options": [
+        "\\(354\\)",
+        "\\(360\\)",
+        "\\(366\\)",
+        "\\(372\\)"
+      ],
+      "key": "A",
+      "keySolution": "Given: \\(a = 2\\), \\(d = 5\\), \\(n = 12\\)\r\nUsing: \\(S_n = \\frac{n}{2}(2a + (n-1)d)\\)\r\n\\(S_{12} = \\frac{12}{2}(2 \\times 2 + 11 \\times 5)\\)\r\n\\(= 6(4 + 55)\\)\r\n\\(= 6 \\times 59\\)\r\n\\(= 354\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 18,
+      "stem": "Find the sum of the first \\(30\\) terms of the AP: \\(2, 4, 6, 8, ...\\)",
+      "options": [
+        "\\(930\\)",
+        "\\(940\\)",
+        "\\(950\\)",
+        "\\(960\\)"
+      ],
+      "key": "A",
+      "keySolution": "AP: \\(2, 4, 6, 8, ...\\) (even numbers)\r\n\\(a = 2\\), \\(d = 2\\)\r\n\\(a_{30} = 2 + 29 \\times 2 = 2 + 58 = 60\\)\r\n\\(S_{30} = \\frac{30}{2}(2 + 60) = 15 \\times 62 = 930\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 19,
+      "stem": "The \\(5^{th}\\) term of an AP is \\(25\\) and \\(9^{th}\\) term is \\(49\\). Find the first term.",
+      "options": [
+        "\\(1\\)",
+        "\\(3\\)",
+        "\\(5\\)",
+        "\\(7\\)"
+      ],
+      "key": "A",
+      "keySolution": "Given: \\(a_5 = 25\\), \\(a_9 = 49\\)\r\nUsing: \\(a_9 - a_5 = 4d\\)\r\n\\(49 - 25 = 4d\\)\r\n\\(24 = 4d\\)\r\n\\(d = 6\\)\r\nNow, \\(a_5 = a + 4d\\)\r\n\\(25 = a + 4 \\times 6\\)\r\n\\(25 = a + 24\\)\r\n\\(a = 1\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 20,
+      "stem": "How many terms of the AP \\(1, 4, 7, 10, ...\\) will give sum \\(715\\)?",
+      "options": [
+        "\\(25\\)",
+        "\\(23\\)",
+        "\\(24\\)",
+        "\\(22\\)"
+      ],
+      "key": "D",
+      "keySolution": "AP: \\(1, 4, 7, 10, ...\\)\r\n\\(a = 1\\), \\(d = 3\\), \\(S_n = 715\\)\r\nUsing: \\(S_n = \\frac{n}{2}(2a + (n-1)d)\\)\r\n\\(715 = \\frac{n}{2}(2 + 3(n-1))\\)\r\n\\(1430 = n(2 + 3n - 3)\\)\r\n\\(1430 = n(3n - 1)\\)\r\n\\(3n^2 - n - 1430 = 0\\)\r\nUsing quadratic formula: \\(n = \\frac{1 + \\sqrt{1 + 17160}}{6} = \\frac{1 + 131}{6} = 22\\)\r\nVerification: \\(S_{22} = \\frac{22}{2}(2 + 21 \\times 3) = 11 \\times 65 = 715\\) ✓",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 21,
+      "stem": "Find the \\(18^{th}\\) term of the AP: \\(1, 5, 9, 13, ...\\)",
+      "options": [
+        "\\(69\\)",
+        "\\(71\\)",
+        "\\(73\\)",
+        "\\(75\\)"
+      ],
+      "key": "A",
+      "keySolution": "AP: \\(1, 5, 9, 13, ...\\)\r\n\\(a = 1\\), \\(d = 4\\)\r\n\\(a_{18} = 1 + 17 \\times 4 = 1 + 68 = 69\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 22,
+      "stem": "If the sum of \\(n\\) terms of an AP is \\(3n^2 + 2n\\), find the \\(n^{th}\\) term.",
+      "options": [
+        "\\(6n + 2\\)",
+        "\\(6n + 1\\)",
+        "\\(6n - 2\\)",
+        "\\(6n - 1\\)"
+      ],
+      "key": "D",
+      "keySolution": "Given: \\(S_n = 3n^2 + 2n\\)\r\n\\(a_n = S_n - S_{n-1}\\) for \\(n \\geq 2\\)\r\n\\(S_{n-1} = 3(n-1)^2 + 2(n-1) = 3n^2 - 4n + 1\\)\r\n\\(a_n = (3n^2 + 2n) - (3n^2 - 4n + 1) = 6n - 1\\)\r\nVerification for \\(n=1\\): \\(a_1 = S_1 = 3 + 2 = 5\\), and \\(6(1) - 1 = 5\\) ✓",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 23,
+      "stem": "Find the sum of the first \\(25\\) terms of the AP where \\(a=5\\) and \\(d=2\\).",
+      "options": [
+        "\\(875\\)",
+        "\\(775\\)",
+        "\\(825\\)",
+        "\\(725\\)"
+      ],
+      "key": "D",
+      "keySolution": "Given: \\(a = 5\\), \\(d = 2\\), \\(n = 25\\)\r\n\\(S_n = \\frac{n}{2}(2a + (n-1)d)\\)\r\n\\(S_{25} = \\frac{25}{2}(2 \\times 5 + 24 \\times 2)\\)\r\n\\(= \\frac{25}{2}(10 + 48)\\)\r\n\\(= \\frac{25}{2} \\times 58\\)\r\n\\(= 25 \\times 29\\)\r\n\\(= 725\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 24,
+      "stem": "Three numbers in AP have sum \\(21\\) and product \\(315\\). Find the numbers.",
+      "options": [
+        "\\(3, 7, 11\\)",
+        "\\(4, 7, 10\\)",
+        "\\(5, 7, 9\\)",
+        "\\(2, 7, 12\\)"
+      ],
+      "key": "C",
+      "keySolution": "Let the three numbers in AP be \\(a-d, a, a+d\\)\r\nSum: \\((a-d) + a + (a+d) = 21\\)\r\n\\(3a = 21\\)\r\n\\(a = 7\\)\r\nProduct: \\((a-d) \\times a \\times (a+d) = 315\\)\r\n\\((7-d) \\times 7 \\times (7+d) = 315\\)\r\n\\(7(49 - d^2) = 315\\)\r\n\\(49 - d^2 = 45\\)\r\n\\(d^2 = 4\\)\r\n\\(d = 2\\)\r\nNumbers: \\(7-2=5, 7, 7+2=9\\) → \\(5, 7, 9\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 25,
+      "stem": "If \\(a=10\\), \\(d=-3\\), find which term is \\(-20\\).",
+      "options": [
+        "\\(9^{th}\\)",
+        "\\(10^{th}\\)",
+        "\\(11^{th}\\)",
+        "\\(12^{th}\\)"
+      ],
+      "key": "C",
+      "keySolution": "Given: \\(a = 10\\), \\(d = -3\\), \\(a_n = -20\\)\r\n\\(-20 = 10 + (n-1) \\times (-3)\\)\r\n\\(-30 = (n-1) \\times (-3)\\)\r\n\\(n - 1 = 10\\)\r\n\\(n = 11\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 26,
+      "stem": "The sum of \\(n\\) terms of an AP is \\(n^2 + 3n\\). Find the \\(3^{rd}\\) term.",
+      "options": [
+        "\\(14\\)",
+        "\\(10\\)",
+        "\\(12\\)",
+        "\\(8\\)"
+      ],
+      "key": "D",
+      "keySolution": "Given: \\(S_n = n^2 + 3n\\)\r\n\\(a_n = S_n - S_{n-1}\\) for \\(n \\geq 2\\)\r\n\\(S_{n-1} = (n-1)^2 + 3(n-1) = n^2 + n - 2\\)\r\n\\(a_n = (n^2 + 3n) - (n^2 + n - 2) = 2n + 2\\)\r\n\\(a_3 = 2(3) + 2 = 8\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 27,
+      "stem": "Find the sum of odd numbers from \\(1\\) to \\(99\\).",
+      "options": [
+        "\\(2650\\)",
+        "\\(2550\\)",
+        "\\(2600\\)",
+        "\\(2500\\)"
+      ],
+      "key": "D",
+      "keySolution": "Odd numbers: \\(1, 3, 5, 7, ..., 99\\)\r\n\\(a = 1\\), \\(d = 2\\), \\(l = 99\\)\r\nNumber of terms: \\(99 = 1 + (n-1) \\times 2\\)\r\n\\(98 = 2(n-1)\\), \\(n = 50\\)\r\n\\(S_{50} = \\frac{50}{2}(1 + 99) = 25 \\times 100 = 2500\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 28,
+      "stem": "In an AP, if \\(a = -5\\), \\(d = 3\\), find how many terms will give \\(S_n = 138\\).",
+      "options": [
+        "\\(8\\)",
+        "\\(10\\)",
+        "\\(12\\)",
+        "\\(16\\)"
+      ],
+      "key": "C",
+      "keySolution": "Given: \\(a = -5\\), \\(d = 3\\), \\(S_n = 138\\)\r\nUsing: \\(S_n = \\frac{n}{2}(2a + (n-1)d)\\)\r\n\\(138 = \\frac{n}{2}(2(-5) + (n-1) \\times 3)\\)\r\n\\(276 = n(-10 + 3n - 3)\\)\r\n\\(276 = n(3n - 13)\\)\r\n\\(3n^2 - 13n - 276 = 0\\)\r\nUsing quadratic formula: \\(n = \\frac{13 + \\sqrt{169 + 3312}}{6} = \\frac{13 + \\sqrt{3481}}{6} = \\frac{13 + 59}{6} = 12\\)\r\nVerification: \\(S_{12} = \\frac{12}{2}(-10 + 11 \\times 3) = 6 \\times 23 = 138\\) ✓",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 29,
+      "stem": "Find the \\(25^{th}\\) term of the AP: \\(6, 12, 18, 24, ...\\)",
+      "options": [
+        "\\(144\\)",
+        "\\(150\\)",
+        "\\(156\\)",
+        "\\(162\\)"
+      ],
+      "key": "B",
+      "keySolution": "AP: \\(6, 12, 18, 24, ...\\)\r\n\\(a = 6\\), \\(d = 6\\)\r\n\\(a_{25} = 6 + (25-1) \\times 6 = 6 + 144 = 150\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 30,
+      "stem": "In an AP, \\(a_2 = 10\\) and \\(a_5 = 25\\). Find the first term.",
+      "options": [
+        "\\(0\\)",
+        "\\(5\\)",
+        "\\(10\\)",
+        "\\(15\\)"
+      ],
+      "key": "B",
+      "keySolution": "Given: \\(a_2 = 10\\), \\(a_5 = 25\\)\r\nUsing: \\(a_5 - a_2 = 3d\\)\r\n\\(25 - 10 = 3d\\)\r\n\\(15 = 3d\\)\r\n\\(d = 5\\)\r\nNow, \\(a_2 = a + d\\)\r\n\\(10 = a + 5\\)\r\n\\(a = 5\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 31,
+      "stem": "How many terms of the AP \\(2, 7, 12, 17, ...\\) are less than \\(100\\)?",
+      "options": [
+        "\\(19\\)",
+        "\\(22\\)",
+        "\\(21\\)",
+        "\\(20\\)"
+      ],
+      "key": "D",
+      "keySolution": "AP: \\(2, 7, 12, 17, ...\\)\r\n\\(a = 2\\), \\(d = 5\\)\r\nFind \\(n\\) such that \\(a_n < 100\\):\r\n\\(a_n = 2 + (n-1) \\times 5 < 100\\)\r\n\\(2 + 5n - 5 < 100\\)\r\n\\(5n - 3 < 100\\)\r\n\\(5n < 103\\)\r\n\\(n < 20.6\\)\r\nSo \\(n = 20\\)\r\nVerification: \\(a_{20} = 2 + 19 \\times 5 = 2 + 95 = 97 < 100\\) ✓\r\n\\(a_{21} = 2 + 20 \\times 5 = 102 > 100\\) ✓",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 32,
+      "stem": "Find the sum of the AP: \\(10, 20, 30, ..., 100\\).",
+      "options": [
+        "\\(550\\)",
+        "\\(650\\)",
+        "\\(750\\)",
+        "\\(850\\)"
+      ],
+      "key": "A",
+      "keySolution": "AP: \\(10, 20, 30, ..., 100\\)\r\n\\(a = 10\\), \\(d = 10\\), \\(l = 100\\)\r\nNumber of terms: \\(100 = 10 + (n-1) \\times 10\\)\r\n\\(90 = 10(n-1)\\)\r\n\\(n = 10\\)\r\n\\(S_{10} = \\frac{10}{2}(10 + 100) = 5 \\times 110 = 550\\)",
+      "difficulty": "Easy"
+    }
+  ]
+}

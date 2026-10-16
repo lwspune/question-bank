@@ -16,6 +16,11 @@ describe("liftCurrencyOutOfMath", () => {
     expect(liftCurrencyOutOfMath("sells at \\(₹240\\) each and \\(₹ 35\\) per kg")).toBe("sells at ₹\\(240\\) each and ₹\\(35\\) per kg");
   });
 
+  it("drops an empty zone or a forced space left after Rs.", () => {
+    expect(liftCurrencyOutOfMath("is Rs. \\(\\) \\(8500\\). If")).toBe("is Rs. \\(8500\\). If");
+    expect(liftCurrencyOutOfMath("is Rs. \\(\\ 2500\\) and Rs. \\(\\ 3000\\)")).toBe("is Rs. \\(2500\\) and Rs. \\(3000\\)");
+  });
+
   it("leaves Rs. written as text, and \\text{Rs. }, alone", () => {
     expect(liftCurrencyOutOfMath("Rs. \\(900\\)")).toBe("Rs. \\(900\\)");
     expect(liftCurrencyOutOfMath("\\( \\text{Rs. } 815 \\)")).toBe("\\( \\text{Rs. } 815 \\)");

@@ -1,0 +1,592 @@
+{
+  "path": "03. Averages\\5)Group-Average .xls",
+  "group": "D",
+  "transcribed": "read from the Cadetprep Excel sheet by extract-cadetprep.ts (sheet row = n); key and solution are the source's, kept as evidence",
+  "questions": [
+    {
+      "n": 2,
+      "stem": "The average age of \\(15\\) students in a class is \\(22\\) years. If \\(5\\) new students with an average age of \\(18\\) years join the class, what will be the new average age of all students?",
+      "options": [
+        "\\(20\\) years",
+        "\\(21\\) years",
+        "\\(21.5\\) years",
+        "\\(20.5\\) years"
+      ],
+      "key": "B",
+      "keySolution": "Total age of \\(15\\) students = \\(15 \\times 22 = 330\\) years\nTotal age of \\(5\\) new students = \\(5 \\times 18 = 90\\) years\nTotal students = \\(15 + 5 = 20\\)\nNew average = \\(\\frac{330 + 90}{20} = \\frac{420}{20} = 21\\) years",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 3,
+      "stem": "In a group of \\(20\\) people, the average weight is \\(65\\) kg. If \\(4\\) people with an average weight of \\(70\\) kg leave the group, what is the new average weight?",
+      "options": [
+        "\\(63.75\\) kg",
+        "\\(64.25\\) kg",
+        "\\(64\\) kg",
+        "\\(63.5\\) kg"
+      ],
+      "key": "A",
+      "keySolution": "Total weight of \\(20\\) people = \\(20 \\times 65 = 1300\\) kg\nWeight of \\(4\\) people leaving = \\(4 \\times 70 = 280\\) kg\nRemaining people = \\(20 - 4 = 16\\)\nNew average = \\(\\frac{1300 - 280}{16} = \\frac{1020}{16} = 63.75\\) kg",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 4,
+      "stem": "The average marks of \\(30\\) students in a test is \\(75\\). The average of the first \\(15\\) students is \\(70\\) and that of the next \\(10\\) students is \\(85\\). What is the average marks of the remaining \\(5\\) students?",
+      "options": [
+        "\\(65\\)",
+        "\\(70\\)",
+        "\\(75\\)",
+        "\\(60\\)"
+      ],
+      "key": "B",
+      "keySolution": "Total marks of \\(30\\) students = \\(30 \\times 75 = 2250\\)\nMarks of first \\(15\\) students = \\(15 \\times 70 = 1050\\)\nMarks of next \\(10\\) students = \\(10 \\times 85 = 850\\)\nMarks of remaining \\(5\\) students = \\(2250 - 1050 - 850 = 350\\)\nAverage of remaining \\(5\\) students = \\(\\frac{350}{5} = 70\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 5,
+      "stem": "A cricket team has \\(11\\) players with an average age of \\(28\\) years. If the captain, who is \\(32\\) years old, is replaced by a new player, the average age becomes \\(27\\) years. What is the age of the new player?",
+      "options": [
+        "\\(21\\) years",
+        "\\(22\\) years",
+        "\\(23\\) years",
+        "\\(24\\) years"
+      ],
+      "key": "A",
+      "keySolution": "Total age of \\(11\\) players = \\(11 \\times 28 = 308\\) years\nAfter replacement, total age = \\(11 \\times 27 = 297\\) years\nAge of new player = \\(297 - (308 - 32) = 297 - 276 = 21\\) years",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 6,
+      "stem": "The average height of \\(25\\) students is \\(160\\) cm. If \\(5\\) students with an average height of \\(170\\) cm join and \\(3\\) students with an average height of \\(150\\) cm leave, what is the new average height?",
+      "options": [
+        "\\(161.85\\) cm",
+        "\\(162.96\\) cm",
+        "\\(161.48\\) cm",
+        "\\(162.15\\) cm"
+      ],
+      "key": "B",
+      "keySolution": "Total height of \\(25\\) students = \\(25 \\times 160 = 4000\\) cm\nHeight added by \\(5\\) new students = \\(5 \\times 170 = 850\\) cm\nHeight removed by \\(3\\) leaving students = \\(3 \\times 150 = 450\\) cm\nNew total height = \\(4000 + 850 - 450 = 4400\\) cm\nNew number of students = \\(25 + 5 - 3 = 27\\)\nNew average = \\(\\frac{4400}{27} = 162.96\\) cm",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 7,
+      "stem": "In a company, the average salary of \\(40\\) employees is Rs. \\(\\,25000\\). If \\(10\\) employees with an average salary of Rs. \\(\\,30000\\) resign, what will be the average salary of the remaining employees?",
+      "options": [
+        "Rs. \\(\\,23333\\)",
+        "Rs. \\(\\,24000\\)",
+        "Rs. \\(\\,23667\\)",
+        "Rs. \\(\\,24333\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total salary of \\(40\\) employees = \\(40 \\times 25000 = 1000000\\)\nSalary of \\(10\\) resigning employees = \\(10 \\times 30000 = 300000\\)\nRemaining employees = \\(40 - 10 = 30\\)\nNew average = \\(\\frac{1000000 - 300000}{30} = \\frac{700000}{30} = 23333.33\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 8,
+      "stem": "The average score of \\(12\\) batsmen is \\(45\\) runs. If the scores of the first \\(6\\) batsmen average \\(40\\) runs and the next \\(4\\) batsmen average \\(50\\) runs, what is the average score of the last \\(2\\) batsmen?",
+      "options": [
+        "\\(45\\) runs",
+        "\\(50\\) runs",
+        "\\(55\\) runs",
+        "\\(60\\) runs"
+      ],
+      "key": "B",
+      "keySolution": "Total score of \\(12\\) batsmen = \\(12 \\times 45 = 540\\) runs\nScore of first \\(6\\) batsmen = \\(6 \\times 40 = 240\\) runs\nScore of next \\(4\\) batsmen = \\(4 \\times 50 = 200\\) runs\nScore of last \\(2\\) batsmen = \\(540 - 240 - 200 = 100\\) runs\nAverage of last \\(2\\) batsmen = \\(\\frac{100}{2} = 50\\) runs",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 9,
+      "stem": "A group of \\(8\\) friends has an average age of \\(24\\) years. Two friends leave the group and \\(3\\) new friends with ages \\(20\\), \\(22\\), and \\(26\\) years join. What is the new average age?",
+      "options": [
+        "\\(23.56\\) years",
+        "\\(24.22\\) years",
+        "\\(23.78\\) years",
+        "\\(24.44\\) years"
+      ],
+      "key": "A",
+      "keySolution": "Total age of \\(8\\) friends = \\(8 \\times 24 = 192\\) years\nAssuming the \\(2\\) friends leaving had average age \\(24\\): \\(2 \\times 24 = 48\\) years\nAge of \\(3\\) new friends = \\(20 + 22 + 26 = 68\\) years\nNew total age = \\(192 - 48 + 68 = 212\\) years\nRemaining friends = \\(8 - 2 + 3 = 9\\)\nNew average = \\(\\frac{212}{9} = 23.56\\) years",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 10,
+      "stem": "The average marks of \\(50\\) students in Mathematics is \\(65\\). The average marks of \\(30\\) students among them is \\(70\\). What is the average marks of the remaining \\(20\\) students?",
+      "options": [
+        "\\(57.5\\)",
+        "\\(58\\)",
+        "\\(58.5\\)",
+        "\\(59\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total marks of \\(50\\) students = \\(50 \\times 65 = 3250\\)\nMarks of \\(30\\) students = \\(30 \\times 70 = 2100\\)\nMarks of remaining \\(20\\) students = \\(3250 - 2100 = 1150\\)\nAverage of remaining \\(20\\) students = \\(\\frac{1150}{20} = 57.5\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 11,
+      "stem": "In a school, the average weight of \\(35\\) students in class A is \\(45\\) kg and the average weight of \\(25\\) students in class B is \\(55\\) kg. What is the combined average weight of all students?",
+      "options": [
+        "\\(49.17\\) kg",
+        "\\(50\\) kg",
+        "\\(48.33\\) kg",
+        "\\(51.25\\) kg"
+      ],
+      "key": "A",
+      "keySolution": "Total weight of class A = \\(35 \\times 45 = 1575\\) kg\nTotal weight of class B = \\(25 \\times 55 = 1375\\) kg\nTotal students = \\(35 + 25 = 60\\)\nCombined average = \\(\\frac{1575 + 1375}{60} = \\frac{2950}{60} = 49.17\\) kg",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 12,
+      "stem": "The average of \\(20\\) numbers is \\(85\\). If \\(5\\) numbers with an average of \\(90\\) are removed and \\(3\\) numbers with an average of \\(75\\) are added, what is the new average?",
+      "options": [
+        "\\(83.61\\)",
+        "\\(81.94\\)",
+        "\\(82.78\\)",
+        "\\(85.42\\)"
+      ],
+      "key": "B",
+      "keySolution": "Sum of \\(20\\) numbers = \\(20 \\times 85 = 1700\\)\nSum of \\(5\\) removed numbers = \\(5 \\times 90 = 450\\)\nSum of \\(3\\) added numbers = \\(3 \\times 75 = 225\\)\nNew sum = \\(1700 - 450 + 225 = 1475\\)\nNew count = \\(20 - 5 + 3 = 18\\)\nNew average = \\(\\frac{1475}{18} = 81.94\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 13,
+      "stem": "A team of \\(15\\) players has an average score of \\(72\\) points. If \\(3\\) players with scores \\(80\\), \\(85\\), and \\(90\\) are replaced by \\(3\\) new players with scores \\(60\\), \\(65\\), and \\(70\\), what is the new average?",
+      "options": [
+        "\\(69\\) points",
+        "\\(68\\) points",
+        "\\(67\\) points",
+        "\\(70\\) points"
+      ],
+      "key": "B",
+      "keySolution": "Total score of \\(15\\) players = \\(15 \\times 72 = 1080\\) points\nScore of \\(3\\) leaving players = \\(80 + 85 + 90 = 255\\) points\nScore of \\(3\\) new players = \\(60 + 65 + 70 = 195\\) points\nNew total = \\(1080 - 255 + 195 = 1020\\) points\nNew average = \\(\\frac{1020}{15} = 68\\) points",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 14,
+      "stem": "The average income of \\(12\\) families in a locality is Rs. \\(\\,18000\\). If \\(4\\) more families with an average income of Rs. \\(\\,22000\\) move to the locality, what will be the new average income?",
+      "options": [
+        "Rs. \\(\\,19000\\)",
+        "Rs. \\(\\,19500\\)",
+        "Rs. \\(\\,20000\\)",
+        "Rs. \\(\\,18750\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total income of \\(12\\) families = \\(12 \\times 18000 = 216000\\)\nTotal income of \\(4\\) new families = \\(4 \\times 22000 = 88000\\)\nTotal families = \\(12 + 4 = 16\\)\nNew average = \\(\\frac{216000 + 88000}{16} = \\frac{304000}{16} = 19000\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 15,
+      "stem": "In a group of \\(18\\) students, the average marks in English is \\(76\\). The average marks of the first \\(10\\) students is \\(72\\) and that of the last \\(10\\) students is \\(82\\). What are the marks obtained by the \\(9\\)th and \\(10\\)th students together?",
+      "options": [
+        "\\(148\\)",
+        "\\(152\\)",
+        "\\(172\\)",
+        "\\(160\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total marks of \\(18\\) students = \\(18 \\times 76 = 1368\\)\nMarks of first \\(10\\) students = \\(10 \\times 72 = 720\\)\nMarks of last \\(10\\) students = \\(10 \\times 82 = 820\\)\nMarks of \\(9\\)th and \\(10\\)th students = \\(720 + 820 - 1368 = 172\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 16,
+      "stem": "The average age of \\(6\\) family members is \\(30\\) years. If the youngest member is \\(8\\) years old, what was the average age of the family \\(4\\) years ago?",
+      "options": [
+        "\\(26\\) years",
+        "\\(22\\) years",
+        "\\(24\\) years",
+        "\\(28\\) years"
+      ],
+      "key": "A",
+      "keySolution": "Current total age = \\(6 \\times 30 = 180\\) years\nFour years ago, total age = \\(180 - (6 \\times 4) = 180 - 24 = 156\\) years\nAverage age \\(4\\) years ago = \\(\\frac{156}{6} = 26\\) years",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 17,
+      "stem": "A class has \\(25\\) students with an average height of \\(155\\) cm. If \\(5\\) students with heights \\(160\\), \\(162\\), \\(158\\), \\(165\\), and \\(170\\) cm join the class, what is the new average height?",
+      "options": [
+        "\\(156.5\\) cm",
+        "\\(156.83\\) cm",
+        "\\(157\\) cm",
+        "\\(158\\) cm"
+      ],
+      "key": "B",
+      "keySolution": "Total height of \\(25\\) students = \\(25 \\times 155 = 3875\\) cm\nHeight of \\(5\\) new students = \\(160 + 162 + 158 + 165 + 170 = 815\\) cm\nTotal students = \\(25 + 5 = 30\\)\nNew average = \\(\\frac{3875 + 815}{30} = \\frac{4690}{30} = 156.33\\) cm",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 18,
+      "stem": "The average weight of \\(16\\) boys is \\(65\\) kg and the average weight of \\(24\\) girls is \\(55\\) kg. What is the average weight of the entire group?",
+      "options": [
+        "\\(59\\) kg",
+        "\\(58\\) kg",
+        "\\(60\\) kg",
+        "\\(57\\) kg"
+      ],
+      "key": "A",
+      "keySolution": "Total weight of \\(16\\) boys = \\(16 \\times 65 = 1040\\) kg\nTotal weight of \\(24\\) girls = \\(24 \\times 55 = 1320\\) kg\nTotal students = \\(16 + 24 = 40\\)\nAverage weight = \\(\\frac{1040 + 1320}{40} = \\frac{2360}{40} = 59\\) kg",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 19,
+      "stem": "In a factory, \\(20\\) workers have an average daily wage of Rs. \\(\\,400\\). If \\(5\\) workers with an average wage of Rs. \\(\\,500\\) leave and \\(8\\) workers with an average wage of Rs. \\(\\,350\\) join, what is the new average daily wage?",
+      "options": [
+        "Rs. \\(\\,360.87\\)",
+        "Rs. \\(\\,391.30\\)",
+        "Rs. \\(\\,378.26\\)",
+        "Rs. \\(\\,395.45\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total wage of \\(20\\) workers = \\(20 \\times 400 = 8000\\)\nWage of \\(5\\) leaving workers = \\(5 \\times 500 = 2500\\)\nWage of \\(8\\) joining workers = \\(8 \\times 350 = 2800\\)\nNew total wage = \\(8000 - 2500 + 2800 = 8300\\)\nNew number of workers = \\(20 - 5 + 8 = 23\\)\nNew average = \\(\\frac{8300}{23} = 360.87\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 20,
+      "stem": "The average score of \\(14\\) students in a quiz is \\(38\\) points. If the teacher adds her score of \\(95\\) points to calculate the class average, what becomes the new average?",
+      "options": [
+        "\\(41.8\\) points",
+        "\\(42\\) points",
+        "\\(41.6\\) points",
+        "\\(42.2\\) points"
+      ],
+      "key": "A",
+      "keySolution": "Total score of \\(14\\) students = \\(14 \\times 38 = 532\\) points\nTotal score including teacher = \\(532 + 95 = 627\\) points\nTotal people = \\(14 + 1 = 15\\)\nNew average = \\(\\frac{627}{15} = 41.8\\) points",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 21,
+      "stem": "A group of \\(10\\) friends has an average monthly expenditure of Rs. \\(\\,8000\\). If \\(3\\) friends leave the group, and their average expenditure was Rs. \\(\\,9500\\), what is the average expenditure of the remaining friends?",
+      "options": [
+        "Rs. \\(\\,7357.14\\)",
+        "Rs. \\(\\,7250\\)",
+        "Rs. \\(\\,7428\\)",
+        "Rs. \\(\\,7500\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total expenditure of \\(10\\) friends = \\(10 \\times 8000 = 80000\\)\nExpenditure of \\(3\\) leaving friends = \\(3 \\times 9500 = 28500\\)\nExpenditure of remaining \\(7\\) friends = \\(80000 - 28500 = 51500\\)\nAverage expenditure of remaining friends = \\(\\frac{51500}{7} = 7357.14\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 22,
+      "stem": "In a group of \\(30\\) people, the average age is \\(35\\) years. \\(10\\) people with an average age of \\(40\\) years leave and \\(15\\) people with an average age of \\(28\\) years join. What is the new average age?",
+      "options": [
+        "\\(30.57\\) years",
+        "\\(33\\) years",
+        "\\(31\\) years",
+        "\\(34\\) years"
+      ],
+      "key": "A",
+      "keySolution": "Total age of \\(30\\) people = \\(30 \\times 35 = 1050\\) years\nAge of \\(10\\) leaving people = \\(10 \\times 40 = 400\\) years\nAge of \\(15\\) joining people = \\(15 \\times 28 = 420\\) years\nNew total age = \\(1050 - 400 + 420 = 1070\\) years\nNew number of people = \\(30 - 10 + 15 = 35\\)\nNew average = \\(\\frac{1070}{35} = 30.57\\) years",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 23,
+      "stem": "The average marks of \\(40\\) students in Physics is \\(68\\). The average marks of \\(25\\) students among them is \\(72\\) and that of \\(10\\) students is \\(65\\). What is the average marks of the remaining \\(5\\) students?",
+      "options": [
+        "\\(54\\)",
+        "\\(60\\)",
+        "\\(62\\)",
+        "\\(56\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total marks of \\(40\\) students = \\(40 \\times 68 = 2720\\)\nMarks of \\(25\\) students = \\(25 \\times 72 = 1800\\)\nMarks of \\(10\\) students = \\(10 \\times 65 = 650\\)\nMarks of remaining \\(5\\) students = \\(2720 - 1800 - 650 = 270\\)\nAverage of remaining \\(5\\) students = \\(\\frac{270}{5} = 54\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 24,
+      "stem": "A library has \\(18\\) sections with an average of \\(420\\) books per section. If \\(3\\) sections with \\(350\\), \\(380\\), and \\(400\\) books respectively are removed, what is the average number of books in the remaining sections?",
+      "options": [
+        "\\(428.67\\) books",
+        "\\(428\\) books",
+        "\\(432\\) books",
+        "\\(430\\) books"
+      ],
+      "key": "A",
+      "keySolution": "Total books in \\(18\\) sections = \\(18 \\times 420 = 7560\\)\nBooks in \\(3\\) removed sections = \\(350 + 380 + 400 = 1130\\)\nBooks in remaining \\(15\\) sections = \\(7560 - 1130 = 6430\\)\nAverage in remaining sections = \\(\\frac{6430}{15} = 428.67\\) books",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 25,
+      "stem": "The average temperature recorded by \\(12\\) weather stations is \\(26°C\\). If \\(4\\) stations recording \\(24°C\\), \\(28°C\\), \\(22°C\\), and \\(30°C\\) are excluded, what is the average temperature of the remaining stations?",
+      "options": [
+        "\\(26°C\\)",
+        "\\(26.5°C\\)",
+        "\\(25.5°C\\)",
+        "\\(27°C\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total temperature of \\(12\\) stations = \\(12 \\times 26 = 312°C\\)\nTemperature of \\(4\\) excluded stations = \\(24 + 28 + 22 + 30 = 104°C\\)\nTemperature of remaining \\(8\\) stations = \\(312 - 104 = 208°C\\)\nAverage of remaining stations = \\(\\frac{208}{8} = 26°C\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 26,
+      "stem": "A company has \\(50\\) employees with an average experience of \\(8\\) years. \\(10\\) senior employees with an average experience of \\(15\\) years retire. If \\(15\\) fresh graduates with \\(0\\) years experience join, what is the new average experience?",
+      "options": [
+        "\\(4.55\\) years",
+        "\\(5.45\\) years",
+        "\\(4.09\\) years",
+        "\\(5.91\\) years"
+      ],
+      "key": "A",
+      "keySolution": "Total experience of \\(50\\) employees = \\(50 \\times 8 = 400\\) years\nExperience of \\(10\\) retiring employees = \\(10 \\times 15 = 150\\) years\nExperience of \\(15\\) new employees = \\(15 \\times 0 = 0\\) years\nNew total experience = \\(400 - 150 + 0 = 250\\) years\nNew number of employees = \\(50 - 10 + 15 = 55\\)\nNew average = \\(\\frac{250}{55} = 4.55\\) years",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 27,
+      "stem": "In a batch of \\(28\\) students, the average marks in Chemistry is \\(74\\). If the marks of \\(4\\) students are \\(82\\), \\(78\\), \\(85\\), and \\(79\\) respectively, what is the average marks of the remaining \\(24\\) students?",
+      "options": [
+        "\\(72.5\\)",
+        "\\(73\\)",
+        "\\(72.83\\)",
+        "\\(74.5\\)"
+      ],
+      "key": "C",
+      "keySolution": "Total marks of \\(28\\) students = \\(28 \\times 74 = 2072\\)\nMarks of \\(4\\) students = \\(82 + 78 + 85 + 79 = 324\\)\nMarks of remaining \\(24\\) students = \\(2072 - 324 = 1748\\)\nAverage of remaining \\(24\\) students = \\(\\frac{1748}{24} = 72.83\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 28,
+      "stem": "The average production of a factory for \\(15\\) days is \\(250\\) units per day. If the production for the first \\(8\\) days averages \\(230\\) units per day, what must be the average production for the remaining \\(7\\) days?",
+      "options": [
+        "\\(272.86\\) units",
+        "\\(280\\) units",
+        "\\(270\\) units",
+        "\\(285\\) units"
+      ],
+      "key": "A",
+      "keySolution": "Total production for \\(15\\) days = \\(15 \\times 250 = 3750\\) units\nProduction for first \\(8\\) days = \\(8 \\times 230 = 1840\\) units\nProduction for remaining \\(7\\) days = \\(3750 - 1840 = 1910\\) units\nAverage for remaining \\(7\\) days = \\(\\frac{1910}{7} = 272.86\\) units",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 29,
+      "stem": "A cricket team's average score in \\(10\\) matches is \\(185\\) runs. In \\(6\\) matches, they scored an average of \\(200\\) runs. What was their average score in the remaining \\(4\\) matches?",
+      "options": [
+        "\\(162.5\\) runs",
+        "\\(160\\) runs",
+        "\\(165\\) runs",
+        "\\(170\\) runs"
+      ],
+      "key": "A",
+      "keySolution": "Total score in \\(10\\) matches = \\(10 \\times 185 = 1850\\) runs\nScore in \\(6\\) matches = \\(6 \\times 200 = 1200\\) runs\nScore in remaining \\(4\\) matches = \\(1850 - 1200 = 650\\) runs\nAverage in remaining \\(4\\) matches = \\(\\frac{650}{4} = 162.5\\) runs",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 30,
+      "stem": "The average price of \\(20\\) items in a store is Rs. \\(\\,350\\). If \\(5\\) items with prices Rs. \\(\\,400\\), Rs. \\(\\,420\\), Rs. \\(\\,380\\), Rs. \\(\\,450\\), and Rs. \\(\\,390\\) are returned, what is the new average price?",
+      "options": [
+        "Rs. \\(\\,330.67\\)",
+        "Rs. \\(\\,340\\)",
+        "Rs. \\(\\,332\\)",
+        "Rs. \\(\\,344\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total price of \\(20\\) items = \\(20 \\times 350 = 7000\\)\nPrice of \\(5\\) returned items = \\(400 + 420 + 380 + 450 + 390 = 2040\\)\nPrice of remaining \\(15\\) items = \\(7000 - 2040 = 4960\\)\nNew average price = \\(\\frac{4960}{15} = 330.67\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 31,
+      "stem": "A group of \\(22\\) people has an average monthly income of Rs. \\(\\,28000\\). If \\(6\\) people with an average income of Rs. \\(\\,35000\\) leave and \\(4\\) people with an average income of Rs. \\(\\,25000\\) join, what is the new average income?",
+      "options": [
+        "Rs. \\(\\,25300\\)",
+        "Rs. \\(\\,27100\\)",
+        "Rs. \\(\\,26700\\)",
+        "Rs. \\(\\,27300\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total income of \\(22\\) people = \\(22 \\times 28000 = 616000\\)\nIncome of \\(6\\) leaving people = \\(6 \\times 35000 = 210000\\)\nIncome of \\(4\\) joining people = \\(4 \\times 25000 = 100000\\)\nNew total income = \\(616000 - 210000 + 100000 = 506000\\)\nNew number of people = \\(22 - 6 + 4 = 20\\)\nNew average = \\(\\frac{506000}{20} = 25300\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 32,
+      "stem": "The average height of \\(16\\) basketball players is \\(185\\) cm. The average height of \\(10\\) players among them is \\(180\\) cm. What is the average height of the remaining \\(6\\) players?",
+      "options": [
+        "\\(193.33\\) cm",
+        "\\(190\\) cm",
+        "\\(195\\) cm",
+        "\\(188\\) cm"
+      ],
+      "key": "A",
+      "keySolution": "Total height of \\(16\\) players = \\(16 \\times 185 = 2960\\) cm\nHeight of \\(10\\) players = \\(10 \\times 180 = 1800\\) cm\nHeight of remaining \\(6\\) players = \\(2960 - 1800 = 1160\\) cm\nAverage height of remaining \\(6\\) players = \\(\\frac{1160}{6} = 193.33\\) cm",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 33,
+      "stem": "In a tournament, \\(24\\) teams have an average score of \\(78\\) points. If \\(8\\) teams with an average score of \\(85\\) points are disqualified, what is the average score of the remaining teams?",
+      "options": [
+        "\\(74.5\\) points",
+        "\\(75\\) points",
+        "\\(73.5\\) points",
+        "\\(76\\) points"
+      ],
+      "key": "A",
+      "keySolution": "Total score of \\(24\\) teams = \\(24 \\times 78 = 1872\\) points\nScore of \\(8\\) disqualified teams = \\(8 \\times 85 = 680\\) points\nScore of remaining \\(16\\) teams = \\(1872 - 680 = 1192\\) points\nAverage of remaining teams = \\(\\frac{1192}{16} = 74.5\\) points",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 34,
+      "stem": "The average marks of \\(35\\) students is \\(82\\). If \\(5\\) students with marks \\(88\\), \\(92\\), \\(76\\), \\(94\\), and \\(85\\) transfer to another school, what is the new average?",
+      "options": [
+        "\\(81.17\\)",
+        "\\(81.5\\)",
+        "\\(80.83\\)",
+        "\\(82.33\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total marks of \\(35\\) students = \\(35 \\times 82 = 2870\\)\nMarks of \\(5\\) transferring students = \\(88 + 92 + 76 + 94 + 85 = 435\\)\nMarks of remaining \\(30\\) students = \\(2870 - 435 = 2435\\)\nNew average = \\(\\frac{2435}{30} = 81.17\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 35,
+      "stem": "A school has \\(45\\) teachers with an average age of \\(38\\) years. \\(15\\) senior teachers with an average age of \\(48\\) years retire and \\(18\\) young teachers with an average age of \\(26\\) years join. What is the new average age?",
+      "options": [
+        "\\(30.375\\) years",
+        "\\(34.83\\) years",
+        "\\(36\\) years",
+        "\\(33.5\\) years"
+      ],
+      "key": "A",
+      "keySolution": "Total age of \\(45\\) teachers = \\(45 \\times 38 = 1710\\) years\nAge of \\(15\\) retiring teachers = \\(15 \\times 48 = 720\\) years\nAge of \\(18\\) joining teachers = \\(18 \\times 26 = 468\\) years\nNew total age = \\(1710 - 720 + 468 = 1458\\) years\nNew number of teachers = \\(45 - 15 + 18 = 48\\)\nNew average = \\(\\frac{1458}{48} = 30.375\\) years",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 36,
+      "stem": "The average rainfall in \\(12\\) districts of a state is \\(85\\) cm. The average rainfall in \\(7\\) districts is \\(92\\) cm and in \\(3\\) districts is \\(78\\) cm. What is the average rainfall in the remaining \\(2\\) districts?",
+      "options": [
+        "\\(71\\) cm",
+        "\\(72\\) cm",
+        "\\(78\\) cm",
+        "\\(80\\) cm"
+      ],
+      "key": "A",
+      "keySolution": "Total rainfall in \\(12\\) districts = \\(12 \\times 85 = 1020\\) cm\nRainfall in \\(7\\) districts = \\(7 \\times 92 = 644\\) cm\nRainfall in \\(3\\) districts = \\(3 \\times 78 = 234\\) cm\nRainfall in remaining \\(2\\) districts = \\(1020 - 644 - 234 = 142\\) cm\nAverage in remaining \\(2\\) districts = \\(\\frac{142}{2} = 71\\) cm",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 37,
+      "stem": "A gym has \\(32\\) members with an average monthly fee of Rs. \\(\\,1200\\). If \\(8\\) premium members paying Rs. \\(\\,1800\\) each cancel their memberships, what is the new average fee?",
+      "options": [
+        "Rs. \\(\\,1000\\)",
+        "Rs. \\(\\,1050\\)",
+        "Rs. \\(\\,1100\\)",
+        "Rs. \\(\\,1150\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total fee of \\(32\\) members = \\(32 \\times 1200 = 38400\\)\nFee of \\(8\\) canceling members = \\(8 \\times 1800 = 14400\\)\nFee of remaining \\(24\\) members = \\(38400 - 14400 = 24000\\)\nNew average fee = \\(\\frac{24000}{24} = 1000\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 38,
+      "stem": "The average speed of \\(18\\) vehicles on a highway is \\(75\\) km/h. If \\(6\\) vehicles traveling at \\(90\\) km/h exit the highway and \\(4\\) vehicles traveling at \\(60\\) km/h enter, what is the new average speed?",
+      "options": [
+        "\\(65.625\\) km/h",
+        "\\(71.25\\) km/h",
+        "\\(69.75\\) km/h",
+        "\\(72\\) km/h"
+      ],
+      "key": "A",
+      "keySolution": "Total speed of \\(18\\) vehicles = \\(18 \\times 75 = 1350\\) km/h\nSpeed of \\(6\\) exiting vehicles = \\(6 \\times 90 = 540\\) km/h\nSpeed of \\(4\\) entering vehicles = \\(4 \\times 60 = 240\\) km/h\nNew total speed = \\(1350 - 540 + 240 = 1050\\) km/h\nNew number of vehicles = \\(18 - 6 + 4 = 16\\)\nNew average = \\(\\frac{1050}{16} = 65.625\\) km/h",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 39,
+      "stem": "In a group of \\(26\\) students, the average marks in Biology is \\(77\\). The average of the first \\(14\\) students is \\(74\\) and the average of the last \\(16\\) students is \\(81\\). What is the sum of marks of the \\(11\\)th, \\(12\\)th, \\(13\\)th, and \\(14\\)th students?",
+      "options": [
+        "\\(330\\)",
+        "\\(340\\)",
+        "\\(328\\)",
+        "\\(342\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total marks of \\(26\\) students = \\(26 \\times 77 = 2002\\)\nMarks of first \\(14\\) students = \\(14 \\times 74 = 1036\\)\nMarks of last \\(16\\) students = \\(16 \\times 81 = 1296\\)\nOverlapping marks (11th to 14th) = \\(1036 + 1296 - 2002 = 330\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 40,
+      "stem": "A company's \\(60\\) employees have an average salary of Rs. \\(\\,32000\\). The average salary of \\(40\\) junior employees is Rs. \\(\\,28000\\). What is the average salary of the remaining \\(20\\) senior employees?",
+      "options": [
+        "Rs. \\(\\,40000\\)",
+        "Rs. \\(\\,42000\\)",
+        "Rs. \\(\\,38000\\)",
+        "Rs. \\(\\,44000\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total salary of \\(60\\) employees = \\(60 \\times 32000 = 1920000\\)\nSalary of \\(40\\) junior employees = \\(40 \\times 28000 = 1120000\\)\nSalary of \\(20\\) senior employees = \\(1920000 - 1120000 = 800000\\)\nAverage salary of senior employees = \\(\\frac{800000}{20} = 40000\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 41,
+      "stem": "The average weight of \\(14\\) packages is \\(23.5\\) kg. If \\(4\\) packages weighing \\(25\\) kg, \\(22\\) kg, \\(28\\) kg, and \\(21\\) kg are removed, what is the new average weight?",
+      "options": [
+        "\\(23.3\\) kg",
+        "\\(23.6\\) kg",
+        "\\(23.2\\) kg",
+        "\\(23.8\\) kg"
+      ],
+      "key": "A",
+      "keySolution": "Total weight of \\(14\\) packages = \\(14 \\times 23.5 = 329\\) kg\nWeight of \\(4\\) removed packages = \\(25 + 22 + 28 + 21 = 96\\) kg\nWeight of remaining \\(10\\) packages = \\(329 - 96 = 233\\) kg\nNew average = \\(\\frac{233}{10} = 23.3\\) kg",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 42,
+      "stem": "A restaurant serves \\(36\\) customers with an average bill of Rs. \\(\\,450\\). If \\(12\\) customers with bills averaging Rs. \\(\\,600\\) leave without paying and \\(8\\) new customers with an average bill of Rs. \\(\\,350\\) arrive, what is the new average bill?",
+      "options": [
+        "Rs. \\(\\,368.75\\)",
+        "Rs. \\(\\,390\\)",
+        "Rs. \\(\\,393.75\\)",
+        "Rs. \\(\\,385\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total bill of \\(36\\) customers = \\(36 \\times 450 = 16200\\)\nBill of \\(12\\) leaving customers = \\(12 \\times 600 = 7200\\)\nBill of \\(8\\) new customers = \\(8 \\times 350 = 2800\\)\nNew total bill = \\(16200 - 7200 + 2800 = 11800\\)\nNew number of customers = \\(36 - 12 + 8 = 32\\)\nNew average = \\(\\frac{11800}{32} = 368.75\\)",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 43,
+      "stem": "In a survey, \\(50\\) people reported an average monthly expense of Rs. \\(\\,15000\\). The survey found that \\(30\\) people spend an average of Rs. \\(\\,12000\\) monthly. What is the average monthly expense of the remaining \\(20\\) people?",
+      "options": [
+        "Rs. \\(\\,19500\\)",
+        "Rs. \\(\\,18000\\)",
+        "Rs. \\(\\,20000\\)",
+        "Rs. \\(\\,21000\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total expense of \\(50\\) people = \\(50 \\times 15000 = 750000\\)\nExpense of \\(30\\) people = \\(30 \\times 12000 = 360000\\)\nExpense of remaining \\(20\\) people = \\(750000 - 360000 = 390000\\)\nAverage expense of remaining \\(20\\) people = \\(\\frac{390000}{20} = 19500\\)",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 44,
+      "stem": "The average score of \\(42\\) participants in a quiz is \\(68\\) points. If \\(6\\) participants with scores of \\(75\\), \\(72\\), \\(78\\), \\(80\\), \\(76\\), and \\(74\\) points withdraw, what is the new average score?",
+      "options": [
+        "\\(66.69\\) points",
+        "\\(66.89\\) points",
+        "\\(67.33\\) points",
+        "\\(66.67\\) points"
+      ],
+      "key": "A",
+      "keySolution": "Total score of \\(42\\) participants = \\(42 \\times 68 = 2856\\) points\nScore of \\(6\\) withdrawing participants = \\(75 + 72 + 78 + 80 + 76 + 74 = 455\\) points\nScore of remaining \\(36\\) participants = \\(2856 - 455 = 2401\\) points\nNew average = \\(\\frac{2401}{36} = 66.69\\) points",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 45,
+      "stem": "A research group has \\(28\\) members with an average research experience of \\(12\\) years. If \\(8\\) senior members with \\(20\\) years average experience leave and \\(10\\) junior members with \\(5\\) years average experience join, what is the new average experience?",
+      "options": [
+        "\\(7.53\\) years",
+        "\\(9.33\\) years",
+        "\\(8\\) years",
+        "\\(10\\) years"
+      ],
+      "key": "A",
+      "keySolution": "Total experience of \\(28\\) members = \\(28 \\times 12 = 336\\) years\nExperience of \\(8\\) leaving members = \\(8 \\times 20 = 160\\) years\nExperience of \\(10\\) joining members = \\(10 \\times 5 = 50\\) years\nNew total experience = \\(336 - 160 + 50 = 226\\) years\nNew number of members = \\(28 - 8 + 10 = 30\\)\nNew average = \\(\\frac{226}{30} = 7.53\\) years",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 46,
+      "stem": "The average marks of \\(55\\) students in a college is \\(72\\). The average marks of \\(25\\) students from Arts stream is \\(68\\) and \\(20\\) students from Science stream is \\(78\\). What is the average marks of the remaining \\(10\\) students from Commerce stream?",
+      "options": [
+        "\\(70\\)",
+        "\\(68\\)",
+        "\\(72\\)",
+        "\\(74\\)"
+      ],
+      "key": "A",
+      "keySolution": "Total marks of \\(55\\) students = \\(55 \\times 72 = 3960\\)\nMarks of \\(25\\) Arts students = \\(25 \\times 68 = 1700\\)\nMarks of \\(20\\) Science students = \\(20 \\times 78 = 1560\\)\nMarks of \\(10\\) Commerce students = \\(3960 - 1700 - 1560 = 700\\)\nAverage marks of Commerce students = \\(\\frac{700}{10} = 70\\)",
+      "difficulty": "Medium"
+    }
+  ]
+}

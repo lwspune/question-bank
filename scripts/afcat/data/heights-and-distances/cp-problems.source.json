@@ -1,0 +1,371 @@
+{
+  "path": "18. Height and Distance\\02. Problems.xlsx",
+  "group": "D",
+  "transcribed": "read from the Cadetprep Excel sheet by extract-cadetprep.ts (sheet row = n); key and solution are the source's, kept as evidence",
+  "questions": [
+    {
+      "n": 2,
+      "stem": "A man standing \\(30\\) m away from a building looks up at the top with an angle of elevation of \\(60°\\). What is the height of the building?",
+      "options": [
+        "\\(20\\sqrt{3}\\) m",
+        "\\(10\\sqrt{3}\\) m",
+        "\\(15\\sqrt{3}\\) m",
+        "\\(30\\sqrt{3}\\) m"
+      ],
+      "key": "D",
+      "keySolution": "Given: Distance from building = \\(30\\) m, Angle of elevation = \\(60°\\)\r\n\\(\\tan(60°) = \\frac{\\text{Height}}{\\text{Distance}}\\)\r\n\\(\\sqrt{3} = \\frac{h}{30}\\)\r\n\\(h = 30\\sqrt{3}\\) m",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 3,
+      "stem": "From the top of a lighthouse \\(100\\) m high, a ship is sighted at an angle of depression of \\(30°\\). What is the horizontal distance of the ship from the base of the lighthouse?",
+      "options": [
+        "\\(150\\) m",
+        "\\(50\\sqrt{3}\\) m",
+        "\\(75\\sqrt{3}\\) m",
+        "\\(100\\sqrt{3}\\) m"
+      ],
+      "key": "D",
+      "keySolution": "Given: Height = \\(100\\) m, Angle of depression = \\(30°\\)\r\n\\(\\tan(30°) = \\frac{100}{d}\\)\r\n\\(\\frac{1}{\\sqrt{3}} = \\frac{100}{d}\\)\r\n\\(d = 100\\sqrt{3}\\) m",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 4,
+      "stem": "An observer at point A sees the top of a flagpole at an angle of elevation of \\(45°\\). After moving \\(10\\) m backward, the angle becomes \\(30°\\). Find the height of the flagpole.",
+      "options": [
+        "\\(5(\\sqrt{3} - 1)\\) m",
+        "\\(10(\\sqrt{3} - 1)\\) m",
+        "\\(5(\\sqrt{3} + 1)\\) m",
+        "\\(15(\\sqrt{3} + 1)\\) m"
+      ],
+      "key": "C",
+      "keySolution": "Let height = h, initial distance = d\r\nFrom position A: \\(\\tan(45°) = \\frac{h}{d}\\) → \\(h = d\\) ... (1)\r\nFrom position after moving 10m: \\(\\tan(30°) = \\frac{h}{d+10}\\)\r\n\\(\\frac{1}{\\sqrt{3}} = \\frac{h}{d+10}\\) → \\(h = \\frac{d+10}{\\sqrt{3}}\\) ... (2)\r\nFrom (1) and (2): \\(d = \\frac{d+10}{\\sqrt{3}}\\)\r\n\\(d\\sqrt{3} = d + 10\\)\r\n\\(d(\\sqrt{3} - 1) = 10\\)\r\n\\(d = \\frac{10}{\\sqrt{3} - 1} × \\frac{\\sqrt{3}+1}{\\sqrt{3}+1} = \\frac{10(\\sqrt{3}+1)}{2} = 5(\\sqrt{3}+1)\\)\r\nTherefore, \\(h = 5(\\sqrt{3}+1)\\) m",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 5,
+      "stem": "From the top of a \\(50\\) m tall building, the angle of elevation to the top of a taller building is \\(30°\\), and the angle of depression to its base is \\(60°\\). Find the height of the taller building.",
+      "options": [
+        "\\(60\\) m",
+        "\\(\\frac{150}{3}\\) m",
+        "\\(\\frac{250}{3}\\) m",
+        "\\(\\frac{200}{3}\\) m"
+      ],
+      "key": "D",
+      "keySolution": "Given: Height of first building = \\(50\\) m, Elevation angle = \\(30°\\), Depression angle = \\(60°\\)\r\nFrom depression: \\(\\tan(60°) = \\frac{50}{d}\\) → \\(d = \\frac{50}{\\sqrt{3}} = \\frac{50\\sqrt{3}}{3}\\) m\r\nFrom elevation to height above 50m: \\(\\tan(30°) = \\frac{\\text{extra height}}{d}\\)\r\n\\(\\frac{1}{\\sqrt{3}} = \\frac{\\text{extra}}{\\frac{50\\sqrt{3}}{3}}\\)\r\nExtra height = \\(\\frac{50\\sqrt{3}}{3\\sqrt{3}} = \\frac{50}{3}\\) m\r\nTotal = \\(50 + \\frac{50}{3} = \\frac{200}{3}\\) m",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 6,
+      "stem": "A ladder \\(20\\) m long leans against a wall making an angle of \\(60°\\) with the ground. At what height does the ladder touch the wall?",
+      "options": [
+        "\\(10\\sqrt{3}\\) m",
+        "\\(10\\) m",
+        "\\(5\\sqrt{3}\\) m",
+        "\\(15\\) m"
+      ],
+      "key": "A",
+      "keySolution": "Given: Ladder length = \\(20\\) m (hypotenuse), Angle with ground = \\(60°\\)\r\nHeight = \\(20 × \\sin(60°) = 20 × \\frac{\\sqrt{3}}{2} = 10\\sqrt{3}\\) m",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 7,
+      "stem": "A vertical pole casts a shadow of \\(12\\) m when the angle of elevation of the sun is \\(45°\\). What is the height of the pole?",
+      "options": [
+        "\\(24\\) m",
+        "\\(12\\) m",
+        "\\(6\\) m",
+        "\\(12\\sqrt{2}\\) m"
+      ],
+      "key": "B",
+      "keySolution": "Given: Shadow = \\(12\\) m, Angle of elevation = \\(45°\\)\r\n\\(\\tan(45°) = \\frac{h}{12}\\)\r\n\\(1 = \\frac{h}{12}\\)\r\n\\(h = 12\\) m",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 8,
+      "stem": "A tower of height \\(50\\) m has angles of elevation of \\(30°\\) and \\(60°\\) from two points on the ground on opposite sides. What is the distance between the two points?",
+      "options": [
+        "\\(100\\) m",
+        "\\(\\frac{50(\\sqrt{3} + 1)}{\\sqrt{3}}\\) m",
+        "\\(\\frac{200\\sqrt{3}}{3}\\) m",
+        "\\(50\\sqrt{3} + \\frac{50}{\\sqrt{3}}\\) m"
+      ],
+      "key": "D",
+      "keySolution": "Given: Height = \\(50\\) m, Angles = \\(30°\\) and \\(60°\\) from opposite points\r\nFrom point with \\(30°\\): \\(\\tan(30°) = \\frac{50}{x}\\) → \\(x = 50\\sqrt{3}\\) m\r\nFrom point with \\(60°\\): \\(\\tan(60°) = \\frac{50}{y}\\) → \\(y = \\frac{50}{\\sqrt{3}}\\) m\r\nTotal = \\(50\\sqrt{3} + \\frac{50}{\\sqrt{3}}\\) m",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 9,
+      "stem": "From a point \\(48\\) m away from a tower, the angle of elevation to the top is \\(30°\\). What is the height of the tower?",
+      "options": [
+        "\\(32\\) m",
+        "\\(24\\sqrt{3}\\) m",
+        "\\(16\\sqrt{3}\\) m",
+        "\\(48\\sqrt{3}\\) m"
+      ],
+      "key": "C",
+      "keySolution": "Given: Distance = \\(48\\) m, Angle = \\(30°\\)\r\n\\(\\tan(30°) = \\frac{h}{48}\\)\r\n\\(\\frac{1}{\\sqrt{3}} = \\frac{h}{48}\\)\r\n\\(h = \\frac{48}{\\sqrt{3}} = 16\\sqrt{3}\\) m",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 10,
+      "stem": "An aircraft at height \\(600\\) m observes angles of depression to two targets on opposite sides as \\(45°\\) and \\(30°\\). What is the distance between the targets?",
+      "options": [
+        "\\(600(\\sqrt{3} - 1)\\) m",
+        "\\(600(1 + \\sqrt{3})\\) m",
+        "\\(600\\sqrt{3}\\) m",
+        "\\(1200\\) m"
+      ],
+      "key": "B",
+      "keySolution": "Given: Height = \\(600\\) m, Angles on opposite sides = \\(45°\\) and \\(30°\\)\r\nFor \\(45°\\): \\(\\tan(45°) = \\frac{600}{d_1}\\) → \\(d_1 = 600\\) m\r\nFor \\(30°\\): \\(\\tan(30°) = \\frac{600}{d_2}\\) → \\(d_2 = 600\\sqrt{3}\\) m\r\nTotal = \\(600 + 600\\sqrt{3} = 600(1 + \\sqrt{3})\\) m",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 11,
+      "stem": "A person observes a tree at \\(60°\\) elevation from point A. After walking \\(20\\) m toward it, the angle becomes \\(90°\\) (directly below). What was the initial distance?",
+      "options": [
+        "\\(30\\) m",
+        "\\(20\\) m",
+        "\\(25\\) m",
+        "\\(40\\) m"
+      ],
+      "key": "B",
+      "keySolution": "Given: Angle at A = \\(60°\\), Distance walked = \\(20\\) m, Final angle = \\(90°\\) (directly below)\r\nAt A: \\(\\tan(60°) = \\frac{h}{d}\\) → \\(h = d\\sqrt{3}\\)\r\nAfter 20m, person is directly below (angle 90°), so initial distance = \\(20\\) m\r\nVerification: If d = 20, then h = 20√3, and tan(60°) = (20√3)/20 = √3 ✓",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 12,
+      "stem": "From the top of a \\(60\\) m tower, elevation to a taller building is \\(30°\\). From tower base, elevation to building top is \\(60°\\). What is the building height?",
+      "options": [
+        "\\(100\\) m",
+        "\\(80\\) m",
+        "\\(90\\) m",
+        "\\(120\\) m"
+      ],
+      "key": "C",
+      "keySolution": "Given: Tower = \\(60\\) m, Elevation from top = \\(30°\\), Elevation from base = \\(60°\\)\r\nLet H = building height, d = distance\r\nFrom base: \\(\\tan(60°) = \\frac{H}{d}\\) → \\(\\sqrt{3} = \\frac{H}{d}\\) → \\(d = \\frac{H}{\\sqrt{3}}\\) ... (1)\r\nFrom top: \\(\\tan(30°) = \\frac{H-60}{d}\\) → \\(\\frac{1}{\\sqrt{3}} = \\frac{H-60}{d}\\) → \\(d = \\sqrt{3}(H-60)\\) ... (2)\r\nEquating: \\(\\frac{H}{\\sqrt{3}} = \\sqrt{3}(H-60)\\) → \\(H = 3(H-60)\\) → \\(H = 90\\) m",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 13,
+      "stem": "Two poles of heights \\(9\\) m and \\(16\\) m are \\(12\\) m apart. What is the angle of elevation from top of shorter to top of taller pole?",
+      "options": [
+        "\\(\\tan^{-1}(\\frac{25}{12})\\)",
+        "\\(\\tan^{-1}(\\frac{1}{2})\\)",
+        "\\(\\tan^{-1}(\\frac{16}{9})\\)",
+        "\\(\\tan^{-1}(\\frac{7}{12})\\)"
+      ],
+      "key": "D",
+      "keySolution": "Given: Heights = \\(9\\) m and \\(16\\) m, Distance = \\(12\\) m\r\nHeight difference = \\(16 - 9 = 7\\) m (opposite)\r\nHorizontal distance = \\(12\\) m (adjacent)\r\n\\(\\tan(\\theta) = \\frac{7}{12}\\)\r\n\\(\\theta = \\tan^{-1}(\\frac{7}{12})\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 14,
+      "stem": "From point A at distance \\(d\\), elevation to tower top is \\(45°\\). From point B, \\(10\\) m closer, elevation is \\(60°\\). Find tower height.",
+      "options": [
+        "\\(5(3 + \\sqrt{3})\\) m",
+        "\\(10(\\sqrt{3} + 1)\\) m",
+        "\\(5(3 - \\sqrt{3})\\) m",
+        "\\(15\\) m"
+      ],
+      "key": "A",
+      "keySolution": "Let height = h\r\nFrom A: \\(\\tan(45°) = \\frac{h}{d}\\) → \\(h = d\\) ... (1)\r\nFrom B (10m closer): \\(\\tan(60°) = \\frac{h}{d-10}\\) → \\(\\sqrt{3} = \\frac{h}{d-10}\\) → \\(h = \\sqrt{3}(d-10)\\) ... (2)\r\nFrom (1) and (2): \\(d = \\sqrt{3}(d-10)\\)\r\n\\(d = \\sqrt{3}d - 10\\sqrt{3}\\)\r\n\\(d(\\sqrt{3}-1) = 10\\sqrt{3}\\)\r\n\\(d = \\frac{10\\sqrt{3}}{\\sqrt{3}-1} = \\frac{10\\sqrt{3}(\\sqrt{3}+1)}{2} = 5\\sqrt{3}(\\sqrt{3}+1) = 5(3+\\sqrt{3})\\) m",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 15,
+      "stem": "A kite flies at \\(100\\) m height. The string makes \\(45°\\) with the horizontal ground. What is the string length?",
+      "options": [
+        "\\(100\\sqrt{2}\\) m",
+        "\\(200\\) m",
+        "\\(50\\sqrt{2}\\) m",
+        "\\(150\\) m"
+      ],
+      "key": "A",
+      "keySolution": "Given: Height = \\(100\\) m, Angle = \\(45°\\)\r\n\\(\\sin(45°) = \\frac{100}{L}\\)\r\n\\(\\frac{1}{\\sqrt{2}} = \\frac{100}{L}\\)\r\n\\(L = 100\\sqrt{2}\\) m",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 16,
+      "stem": "A person walks from distance \\(80\\) m toward a tower. Initially, elevation is \\(30°\\). After walking \\(30\\) m closer, elevation is \\(45°\\). Find the tower height.",
+      "options": [
+        "\\(30(\\sqrt{3} - 1)\\) m",
+        "\\(15(\\sqrt{3} + 1)\\) m",
+        "\\(40(\\sqrt{3} - 1)\\) m",
+        "\\(50\\) m"
+      ],
+      "key": "C",
+      "keySolution": "From position 1 (distance x): \\(\\tan(30°) = \\frac{h}{x}\\) → \\(h = \\frac{x}{\\sqrt{3}}\\) ... (1)\r\nFrom position 2 (distance x-30): \\(\\tan(45°) = \\frac{h}{x-30}\\) → \\(h = x-30\\) ... (2)\r\nFrom (1) and (2): \\(\\frac{x}{\\sqrt{3}} = x - 30\\)\r\n\\(x = \\sqrt{3}(x-30)\\)\r\n\\(x = \\sqrt{3}x - 30\\sqrt{3}\\)\r\n\\(x(\\sqrt{3}-1) = 30\\sqrt{3}\\)\r\n\\(x = \\frac{30\\sqrt{3}}{\\sqrt{3}-1} = \\frac{30\\sqrt{3}(\\sqrt{3}+1)}{2} = 15\\sqrt{3}(\\sqrt{3}+1) = 45 + 15\\sqrt{3}\\)\r\n\\(h = x - 30 = 15 + 15\\sqrt{3} = 15(1+\\sqrt{3})\\)\r\nSimplifying: \\(15(1+\\sqrt{3}) = 15 + 15\\sqrt{3}\\)\r\nNote: \\(40(\\sqrt{3}-1) ≈ 40(0.732) ≈ 29.28\\) m, while \\(15(1+\\sqrt{3}) ≈ 40.98\\) m\r\nRecalculating more carefully with x=80: Not matching. Using \\(h = 40(\\sqrt{3}-1)\\) as given answer.",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 17,
+      "stem": "From a cliff top, a boat is observed at \\(60°\\) angle of depression. The boat is \\(100\\) m horizontally from cliff base. What is the cliff height?",
+      "options": [
+        "\\(100\\sqrt{3}\\) m",
+        "\\(50\\sqrt{3}\\) m",
+        "\\(100\\) m",
+        "\\(\\frac{100}{\\sqrt{3}}\\) m"
+      ],
+      "key": "A",
+      "keySolution": "Given: Horizontal distance = \\(100\\) m, Angle of depression = \\(60°\\)\r\n\\(\\tan(60°) = \\frac{h}{100}\\)\r\n\\(\\sqrt{3} = \\frac{h}{100}\\)\r\n\\(h = 100\\sqrt{3}\\) m",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 18,
+      "stem": "Two buildings of heights \\(20\\) m and \\(30\\) m are \\(100\\) m apart. What is the angle of depression from the top of the taller to the top of the shorter building?",
+      "options": [
+        "\\(\\tan^{-1}(\\frac{1}{10})\\)",
+        "\\(\\tan^{-1}(\\frac{1}{20})\\)",
+        "\\(\\tan^{-1}(\\frac{10}{1})\\)",
+        "\\(\\tan^{-1}(\\frac{50}{1})\\)"
+      ],
+      "key": "A",
+      "keySolution": "Given: Heights = \\(20\\) m and \\(30\\) m, Distance = \\(100\\) m\r\nHeight difference = \\(30 - 20 = 10\\) m\r\n\\(\\tan(\\theta) = \\frac{10}{100} = \\frac{1}{10}\\)\r\n\\(\\theta = \\tan^{-1}(\\frac{1}{10})\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 19,
+      "stem": "A bird at height \\(80\\) m observes a point on the ground at \\(30°\\) angle of depression. What is the horizontal distance?",
+      "options": [
+        "\\(\\frac{80}{\\sqrt{3}}\\) m",
+        "\\(80\\sqrt{3}\\) m",
+        "\\(40\\sqrt{3}\\) m",
+        "\\(160\\) m"
+      ],
+      "key": "B",
+      "keySolution": "Given: Height = \\(80\\) m, Angle of depression = \\(30°\\)\r\n\\(\\tan(30°) = \\frac{80}{d}\\)\r\n\\(\\frac{1}{\\sqrt{3}} = \\frac{80}{d}\\)\r\n\\(d = 80\\sqrt{3}\\) m",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 20,
+      "stem": "From a window \\(10\\) m high, a pole is viewed: elevation to top is \\(60°\\), depression to bottom is \\(30°\\). Distance to pole is \\(10\\sqrt{3}\\) m. What is the pole height?",
+      "options": [
+        "\\(30\\) m",
+        "\\(40\\) m",
+        "\\(50\\) m",
+        "\\(35\\) m"
+      ],
+      "key": "B",
+      "keySolution": "Given: Window height = \\(10\\) m, Distance = \\(10\\sqrt{3}\\) m, Elevation = \\(60°\\), Depression = \\(30°\\)\r\nHeight above window: \\(\\tan(60°) = \\frac{h_1}{10\\sqrt{3}}\\)\r\n\\(\\sqrt{3} = \\frac{h_1}{10\\sqrt{3}}\\) → \\(h_1 = 30\\) m (top is at \\(10+30=40\\) m)\r\nHeight below window: \\(\\tan(30°) = \\frac{h_2}{10\\sqrt{3}}\\)\r\n\\(\\frac{1}{\\sqrt{3}} = \\frac{h_2}{10\\sqrt{3}}\\) → \\(h_2 = 10\\) m (bottom is at \\(10-10=0\\) m)\r\nPole height = \\(40 - 0 = 40\\) m",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 21,
+      "stem": "A plane at \\(1000\\) m height: angle of elevation from ground is \\(60°\\). What is the horizontal distance to point below plane?",
+      "options": [
+        "\\(\\frac{1000}{\\sqrt{3}}\\) m",
+        "\\(1000\\sqrt{3}\\) m",
+        "\\(\\frac{1000\\sqrt{3}}{3}\\) m",
+        "\\(500\\) m"
+      ],
+      "key": "C",
+      "keySolution": "Given: Height = \\(1000\\) m, Angle of elevation = \\(60°\\)\r\n\\(\\tan(60°) = \\frac{1000}{d}\\)\r\n\\(\\sqrt{3} = \\frac{1000}{d}\\)\r\n\\(d = \\frac{1000}{\\sqrt{3}} = \\frac{1000\\sqrt{3}}{3}\\) m",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 22,
+      "stem": "From a bridge \\(45\\) m high, angles of depression to two boats (opposite sides) are \\(45°\\) and \\(60°\\). What is the distance between boats?",
+      "options": [
+        "\\(45(1 + \\sqrt{3})\\) m",
+        "\\(45 + 15\\sqrt{3}\\) m",
+        "\\(45\\sqrt{3}\\) m",
+        "\\(90\\) m"
+      ],
+      "key": "B",
+      "keySolution": "Given: Bridge height = \\(45\\) m, Angles = \\(45°\\) and \\(60°\\) (opposite sides)\r\nFor \\(45°\\): \\(\\tan(45°) = \\frac{45}{d_1}\\) → \\(d_1 = 45\\) m\r\nFor \\(60°\\): \\(\\tan(60°) = \\frac{45}{d_2}\\) → \\(d_2 = \\frac{45}{\\sqrt{3}} = \\frac{45\\sqrt{3}}{3} = 15\\sqrt{3}\\) m\r\nTotal = \\(45 + 15\\sqrt{3}\\) m",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 23,
+      "stem": "A man observes a church spire at \\(30°\\) elevation. After moving \\(50\\) m closer, elevation becomes \\(45°\\). Find spire height.",
+      "options": [
+        "\\(75\\) m",
+        "\\(50(\\sqrt{3} - 1)\\) m",
+        "\\(25(\\sqrt{3} - 1)\\) m",
+        "\\(25(\\sqrt{3} + 1)\\) m"
+      ],
+      "key": "D",
+      "keySolution": "Let height = h, initial distance = d\r\nFrom initial: \\(\\tan(30°) = \\frac{h}{d}\\) → \\(h = \\frac{d}{\\sqrt{3}}\\) ... (1)\r\nAfter 50m: \\(\\tan(45°) = \\frac{h}{d-50}\\) → \\(h = d-50\\) ... (2)\r\nFrom (1) and (2): \\(\\frac{d}{\\sqrt{3}} = d - 50\\)\r\n\\(d(\\sqrt{3}-1) = 50\\sqrt{3}\\)\r\n\\(d = \\frac{50\\sqrt{3}}{\\sqrt{3}-1} = \\frac{50\\sqrt{3}(\\sqrt{3}+1)}{2} = 25\\sqrt{3}(\\sqrt{3}+1) = 25(3+\\sqrt{3})\\)\r\n\\(h = d - 50 = 25(3+\\sqrt{3}) - 50 = 75 + 25\\sqrt{3} - 50 = 25 + 25\\sqrt{3} = 25(1+\\sqrt{3})\\)",
+      "difficulty": "Medium"
+    },
+    {
+      "n": 24,
+      "stem": "An object of height \\(10\\) m casts a shadow when sun's angle of elevation is \\(30°\\). What is the shadow length?",
+      "options": [
+        "\\(10\\sqrt{3}\\) m",
+        "\\(\\frac{10}{\\sqrt{3}}\\) m",
+        "\\(10\\) m",
+        "\\(20\\) m"
+      ],
+      "key": "A",
+      "keySolution": "Given: Height = \\(10\\) m, Angle of elevation = \\(30°\\)\r\n\\(\\tan(30°) = \\frac{10}{\\text{shadow}}\\)\r\n\\(\\frac{1}{\\sqrt{3}} = \\frac{10}{\\text{shadow}}\\)\r\nShadow = \\(10\\sqrt{3}\\) m",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 25,
+      "stem": "A balloon is tethered by a \\(25\\) m rope at \\(60°\\) to the ground. What is the balloon's height above ground?",
+      "options": [
+        "\\(\\frac{25}{2}\\) m",
+        "\\(25\\cos(60°)\\) m",
+        "\\(\\frac{25\\sqrt{3}}{2}\\) m",
+        "\\(12.5\\) m"
+      ],
+      "key": "C",
+      "keySolution": "Given: Rope length = \\(25\\) m, Angle with ground = \\(60°\\)\r\nHeight = \\(25\\sin(60°) = 25 × \\frac{\\sqrt{3}}{2} = \\frac{25\\sqrt{3}}{2}\\) m",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 26,
+      "stem": "From a fort top, a soldier observes an enemy \\(100\\) m away (horizontal) at \\(45°\\) angle of depression. What is the fort height?",
+      "options": [
+        "\\(100\\) m",
+        "\\(50\\) m",
+        "\\(100\\sqrt{3}\\) m",
+        "\\(\\frac{100}{\\sqrt{3}}\\) m"
+      ],
+      "key": "A",
+      "keySolution": "Given: Horizontal distance = \\(100\\) m, Angle of depression = \\(45°\\)\r\n\\(\\tan(45°) = \\frac{h}{100}\\)\r\n\\(1 = \\frac{h}{100}\\)\r\n\\(h = 100\\) m",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 27,
+      "stem": "A ramp with \\(30°\\) angle has vertical height \\(5\\) m. What is the ramp length?",
+      "options": [
+        "\\(5\\sqrt{3}\\) m",
+        "\\(10\\) m",
+        "\\(\\frac{10}{\\sqrt{3}}\\) m",
+        "\\(2.5\\sqrt{3}\\) m"
+      ],
+      "key": "B",
+      "keySolution": "Given: Height = \\(5\\) m, Angle = \\(30°\\)\r\nRamp length = \\(\\frac{5}{\\sin(30°)} = \\frac{5}{\\frac{1}{2}} = 10\\) m",
+      "difficulty": "Easy"
+    },
+    {
+      "n": 28,
+      "stem": "Observers A and B are \\(100\\) m apart. A sees a bird at \\(45°\\) elevation, B at \\(30°\\). The bird is between them. Find its height.",
+      "options": [
+        "\\(\\frac{100(\\sqrt{3}-1)}{2}\\) m",
+        "\\(50\\) m",
+        "\\(\\frac{100}{\\sqrt{3}+1}\\) m",
+        "\\(50(\\sqrt{3}-1)\\) m"
+      ],
+      "key": "C",
+      "keySolution": "Let height = h, distance from A = x, distance from B = (100-x)\r\nFrom A (45°): \\(\\tan(45°) = \\frac{h}{x}\\) → \\(h = x\\) ... (1)\r\nFrom B (30°): \\(\\tan(30°) = \\frac{h}{100-x}\\) → \\(h = \\frac{100-x}{\\sqrt{3}}\\) ... (2)\r\nFrom (1) and (2): \\(x = \\frac{100-x}{\\sqrt{3}}\\)\r\n\\(x\\sqrt{3} = 100 - x\\)\r\n\\(x(\\sqrt{3}+1) = 100\\)\r\n\\(x = \\frac{100}{\\sqrt{3}+1}\\)\r\nTherefore, \\(h = \\frac{100}{\\sqrt{3}+1}\\) m",
+      "difficulty": "Hard"
+    },
+    {
+      "n": 29,
+      "stem": "From point X, tower elevation is \\(60°\\). From point Y, \\(20\\) m closer, angle is \\(90°\\) (directly below). Find the tower height.",
+      "options": [
+        "\\(15\\sqrt{3}\\) m",
+        "\\(10\\sqrt{3}\\) m",
+        "\\(30\\) m",
+        "\\(20\\sqrt{3}\\) m"
+      ],
+      "key": "D",
+      "keySolution": "At point Y, angle \\(90°\\) means directly below (horizontal distance = 0)\r\nAt point X, horizontal distance = \\(20\\) m from Y's position\r\n\\(\\tan(60°) = \\frac{h}{20}\\)\r\n\\(\\sqrt{3} = \\frac{h}{20}\\)\r\n\\(h = 20\\sqrt{3}\\) m",
+      "difficulty": "Hard"
+    }
+  ]
+}

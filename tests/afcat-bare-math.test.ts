@@ -31,3 +31,13 @@ describe("sourceSolutionProblem: bare delimiters", () => {
     expect(sourceSolutionProblem("Total work = \\(20 \\times 30 = 600\\) man-days.")).toBeNull();
   });
 });
+
+describe("sourceSolutionProblem: chat citations", () => {
+  it("rejects a solution carrying a [web:N] citation tag", () => {
+    expect(sourceSolutionProblem("Mirror time = \(11:60 - 2:15\).[web:77][web:79] So \(9:45\).")).toMatch(/citation/);
+  });
+
+  it("accepts square brackets that are not citations", () => {
+    expect(sourceSolutionProblem("The interval is \([0, 1]\) and the answer is \(9:45\).")).toBeNull();
+  });
+});

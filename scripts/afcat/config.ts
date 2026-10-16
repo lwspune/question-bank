@@ -129,6 +129,8 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Income, Expenditure and Savings",
       "Price and Consumption",
       "Marks, Groups and Other Applications",
+      "Population and Growth",
+      "Applications in Other Topics",
     ],
     files: [
       {
@@ -153,6 +155,19 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "04. Percentage\\Percentages_AFCAT.pdf",
         note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Percentage. Every key blind re-derived.",
       },
+      { key: "cp-basics", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Percentage Fundamentals", path: "02. Percentages\\01.AFCAT-BasicsPercentageFundamentals.xls", subtopic: "Basic Percentage Calculations", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-change", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Percentage Change and Variation", path: "02. Percentages\\02.Percentages-Change &Variation.xls", subtopic: "Successive Percentage Change", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-mixture", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Concentration and Mixtures", path: "02. Percentages\\03.Concentration&Mixture Problems.xls", subtopic: "Applications in Other Topics", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-discount", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Discount and Pricing", path: "02. Percentages\\04.Discount and Pricing.xls", subtopic: "Applications in Other Topics", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-distrib", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Percentage Distribution", path: "02. Percentages\\05.Percentage-Distribution.xls", subtopic: "Marks, Groups and Other Applications", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-pl", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Profit and Loss with Percentages", path: "02. Percentages\\06.Percentages-Profit&LosswithPercentages.xls", subtopic: "Applications in Other Topics", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-interest", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Interest with Percentages", path: "02. Percentages\\07.SimpleandCompoundInterestPercentages.xls", subtopic: "Applications in Other Topics", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-distrib-2", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Percentage Distribution (2)", path: "02. Percentages\\08.Percentage Distribution.xlsx", subtopic: "Marks, Groups and Other Applications", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-work", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Work and Time with Percentages", path: "02. Percentages\\09.Work and Time with Percentages.xls", subtopic: "Applications in Other Topics", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-speed", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Speed, Time and Distance with Percentages", path: "02. Percentages\\10.Speed,Time, DistancewithPercentages.xls", subtopic: "Applications in Other Topics", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-population", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Population and Growth", path: "02. Percentages\\11.Population&GrowthProblems.xls", subtopic: "Population and Growth", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-salary", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Salary and Income", path: "02. Percentages\\12Salary and Income Problems.xls", subtopic: "Income, Expenditure and Savings", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
+      { key: "cp-marks", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Examination and Marks", path: "02. Percentages\\13-Examination and Marks.xls", subtopic: "Marks, Groups and Other Applications", note: "AFCAT practice — Cadetprep AFCAT sheet, Percentages. Every key blind re-derived." },
     ],
   },
   "mixture-and-alligation": {
@@ -393,6 +408,16 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "07. Speed, Time and Distance\\SDT_AFCAT_HW.pdf",
         note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Speed, Time and Distance. Every key blind re-derived.",
       },
+      { key: "cp-avg", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Average Speed", path: "05. Speed, Time, Distance\\1)Average-Speed.xls", subtopic: "Average Speed", note: "AFCAT practice — Cadetprep AFCAT sheet, Speed, Time and Distance. Every key blind re-derived." },
+      { key: "cp-relative", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Relative Speed", path: "05. Speed, Time, Distance\\2)Relative-Speed.xls", subtopic: "Relative Speed and Meeting", note: "AFCAT practice — Cadetprep AFCAT sheet, Speed, Time and Distance. Every key blind re-derived." },
+      { key: "cp-racing", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Racing", path: "05. Speed, Time, Distance\\3)Racing-Questions.xls", subtopic: "Races", note: "AFCAT practice — Cadetprep AFCAT sheet, Speed, Time and Distance. Every key blind re-derived." },
+      { key: "cp-changed", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Increasing and Decreasing Speed", path: "05. Speed, Time, Distance\\4)Increasing-Decreasing Speed.xls", subtopic: "Late, Early and Changed Speed", note: "AFCAT practice — Cadetprep AFCAT sheet, Speed, Time and Distance. Every key blind re-derived." },
+      { key: "cp-meeting", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Two People Meeting", path: "05. Speed, Time, Distance\\5)Two-People-Meeting-with-different-Speeds.xls", subtopic: "Relative Speed and Meeting", note: "AFCAT practice — Cadetprep AFCAT sheet, Speed, Time and Distance. Every key blind re-derived." },
+      { key: "cp-late", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Being Late or Early", path: "05. Speed, Time, Distance\\6)Being-late_Early.xls", subtopic: "Late, Early and Changed Speed", note: "AFCAT practice — Cadetprep AFCAT sheet, Speed, Time and Distance. Every key blind re-derived." },
+      { key: "cp-chasing", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Chasing", path: "05. Speed, Time, Distance\\7)Chasing-Questions.xls", subtopic: "Relative Speed and Meeting", note: "AFCAT practice — Cadetprep AFCAT sheet, Speed, Time and Distance. Every key blind re-derived." },
+      { key: "cp-trains", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Trains", path: "05. Speed, Time, Distance\\8)Train-Questions.xls", subtopic: "Trains", note: "AFCAT practice — Cadetprep AFCAT sheet, Speed, Time and Distance. Every key blind re-derived." },
+      { key: "cp-circular", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Races and Circular Motion", path: "05. Speed, Time, Distance\\9)Races&Circular-motion.xls", subtopic: "Races", note: "AFCAT practice — Cadetprep AFCAT sheet, Speed, Time and Distance. Every key blind re-derived." },
+      { key: "cp-boats", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Boats and Streams", path: "05. Speed, Time, Distance\\10)Boats&Streams.xls", subtopic: "Boats and Streams", note: "AFCAT practice — Cadetprep AFCAT sheet, Speed, Time and Distance. Every key blind re-derived." },
     ],
   },
   "decimal-and-fractions": {
@@ -430,6 +455,28 @@ export const CHAPTERS: Record<string, Chapter> = {
       },
     ],
   },
+  "indices-and-surds": {
+    id: "indices-and-surds",
+    chapterName: "Indices and Surds",
+    subtopics: ["Laws of Exponents", "Radicals and Surds", "Applications of Indices"],
+    files: [
+      { key: "cp-laws", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Laws of Exponents", path: "13. Exponents, Radicals, Surds\\01. Laws of Exponents.xlsx", subtopic: "Laws of Exponents", note: "AFCAT practice — Cadetprep AFCAT sheet, Indices and Surds. Every key blind re-derived." },
+      { key: "cp-surds", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Radicals and Surds", path: "13. Exponents, Radicals, Surds\\02. Radicals and Surds.xlsx", subtopic: "Radicals and Surds", note: "AFCAT practice — Cadetprep AFCAT sheet, Indices and Surds. Every key blind re-derived." },
+      { key: "cp-apps", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Applications of Indices", path: "13. Exponents, Radicals, Surds\\03. Applications.xlsx", subtopic: "Applications of Indices", note: "AFCAT practice — Cadetprep AFCAT sheet, Indices and Surds. Every key blind re-derived." },
+    ],
+  },
+  "number-system": {
+    id: "number-system",
+    chapterName: "Number System",
+    subtopics: ["Types of Numbers", "Factors and Multiples", "Divisibility Rules", "Prime Factorization", "Remainders and Quotients"],
+    files: [
+      { key: "cp-types", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Types of Numbers", path: "15. Number System\\01. Types of Numbers.xlsx", subtopic: "Types of Numbers", note: "AFCAT practice — Cadetprep AFCAT sheet, Number System. Every key blind re-derived." },
+      { key: "cp-factors", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Factors and Multiples", path: "15. Number System\\02. Factors and Multiples.xlsx", subtopic: "Factors and Multiples", note: "AFCAT practice — Cadetprep AFCAT sheet, Number System. Every key blind re-derived." },
+      { key: "cp-divis", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Divisibility Rules", path: "15. Number System\\03. Divisibility Rules.xlsx", subtopic: "Divisibility Rules", note: "AFCAT practice — Cadetprep AFCAT sheet, Number System. Every key blind re-derived." },
+      { key: "cp-primes", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Prime Factorization", path: "15. Number System\\04. Prime Factorization.xlsx", subtopic: "Prime Factorization", note: "AFCAT practice — Cadetprep AFCAT sheet, Number System. Every key blind re-derived." },
+      { key: "cp-remain", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Remainders and Quotients", path: "15. Number System\\05. Remainder and Quotient.xlsx", subtopic: "Remainders and Quotients", note: "AFCAT practice — Cadetprep AFCAT sheet, Number System. Every key blind re-derived." },
+    ],
+  },
   "sequence-and-series": {
     id: "sequence-and-series",
     chapterName: "Sequence and Series",
@@ -445,12 +492,15 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "14. Number_System\\02_Sequence_and_Series.pdf",
         note: "AFCAT practice — CDS Pathfinder (book chapter), Sequence and Series. Every key blind re-derived.",
       },
+      { key: "cp-ap", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Arithmetic Progression", path: "16. Number Series\\01. Arithmetic Progression.xlsx", subtopic: "Arithmetic Progression", note: "AFCAT practice — Cadetprep AFCAT sheet, Sequence and Series. Every key blind re-derived." },
+      { key: "cp-gp", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Geometric Progression", path: "16. Number Series\\02. Geometric Progression.xlsx", subtopic: "Geometric Progression", note: "AFCAT practice — Cadetprep AFCAT sheet, Sequence and Series. Every key blind re-derived." },
+      { key: "cp-hp", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Harmonic Progression", path: "16. Number Series\\03. Harmonic Progression.xlsx", subtopic: "Harmonic Progression and Means", note: "AFCAT practice — Cadetprep AFCAT sheet, Sequence and Series. Every key blind re-derived." },
     ],
   },
   "squares-and-roots": {
     id: "squares-and-roots",
     chapterName: "Squares, Cubes and Roots",
-    subtopics: ["Squares and Square Roots", "Cubes and Cube Roots", "Surds and Indices"],
+    subtopics: ["Squares and Square Roots", "Cubes and Cube Roots", "Surds and Indices", "Mixed Operations"],
     files: [
       {
         // CDS Pathfinder chapter; practice exercise only (its CDS past-year
@@ -462,12 +512,17 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "16. Square_Square_Roots_Cube_Cube_Roots\\05_Square_roots_cube_roots.pdf",
         note: "AFCAT practice — CDS Pathfinder (book chapter), Squares, Cubes and Roots. Every key blind re-derived.",
       },
+      { key: "cp-squares", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Squares and Square Roots", path: "14. Square, Square Roots, Cube, Cube Roots\\01. Squares and Square Roots.xlsx", subtopic: "Squares and Square Roots", note: "AFCAT practice — Cadetprep AFCAT sheet, Squares, Cubes and Roots. Every key blind re-derived." },
+      { key: "cp-sqprops", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Properties of Squares", path: "14. Square, Square Roots, Cube, Cube Roots\\02. Squares and Square Roots - Properties.xlsx", subtopic: "Squares and Square Roots", note: "AFCAT practice — Cadetprep AFCAT sheet, Squares, Cubes and Roots. Every key blind re-derived." },
+      { key: "cp-cubes", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Cubes and Cube Roots", path: "14. Square, Square Roots, Cube, Cube Roots\\03. Cubes and Cube Roots.xlsx", subtopic: "Cubes and Cube Roots", note: "AFCAT practice — Cadetprep AFCAT sheet, Squares, Cubes and Roots. Every key blind re-derived." },
+      { key: "cp-cuprops", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Properties of Cubes", path: "14. Square, Square Roots, Cube, Cube Roots\\04. Cubes and Cube Roots - Properties.xlsx", subtopic: "Cubes and Cube Roots", note: "AFCAT practice — Cadetprep AFCAT sheet, Squares, Cubes and Roots. Every key blind re-derived." },
+      { key: "cp-mixed", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Mixed Operations", path: "14. Square, Square Roots, Cube, Cube Roots\\05. Mixed Operations.xlsx", subtopic: "Mixed Operations", note: "AFCAT practice — Cadetprep AFCAT sheet, Squares, Cubes and Roots. Every key blind re-derived." },
     ],
   },
   "heights-and-distances": {
     id: "heights-and-distances",
     chapterName: "Heights and Distances",
-    subtopics: ["Angle of Elevation", "Angle of Depression", "Moving Objects and Speed"],
+    subtopics: ["Angle of Elevation", "Angle of Depression", "Moving Objects and Speed", "Trigonometric Ratios"],
     files: [
       {
         key: "book",
@@ -476,6 +531,8 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "19. Height_and_Distance\\21_Height_&_Distance.pdf",
         note: "AFCAT practice — CDS Pathfinder (book chapter), Heights and Distances. Every key blind re-derived.",
       },
+      { key: "cp-ratios", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Trigonometric Ratios", path: "18. Height and Distance\\01. Trigonometric Ratios.xlsx", subtopic: "Trigonometric Ratios", note: "AFCAT practice — Cadetprep AFCAT sheet, Heights and Distances. Every key blind re-derived." },
+      { key: "cp-problems", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Heights and Distances Problems", path: "18. Height and Distance\\02. Problems.xlsx", subtopic: "Angle of Elevation", note: "AFCAT practice — Cadetprep AFCAT sheet, Heights and Distances. Every key blind re-derived." },
     ],
   },
   statistics: {
@@ -495,7 +552,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   "area-and-perimeter": {
     id: "area-and-perimeter",
     chapterName: "Area and Perimeter",
-    subtopics: ["Triangles and Quadrilaterals", "Circles and Sectors", "Combined Figures", "Change in Dimensions"],
+    subtopics: ["Triangles and Quadrilaterals", "Circles and Sectors", "Combined Figures", "Change in Dimensions", "Regular Polygons"],
     files: [
       {
         key: "book",
@@ -504,12 +561,13 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "20. Mensuration\\26_Area_&_Perimeter_of_Plane_Figure.pdf",
         note: "AFCAT practice — CDS Pathfinder (book chapter), Area and Perimeter. Every key blind re-derived.",
       },
+      { key: "cp-2d", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Mensuration 2D", path: "12. Mensuration\\01. Mensuration 2D.xlsx", subtopic: "Triangles and Quadrilaterals", note: "AFCAT practice — Cadetprep AFCAT sheet, Mensuration. Every key blind re-derived." },
     ],
   },
   "surface-area-and-volume": {
     id: "surface-area-and-volume",
     chapterName: "Surface Area and Volume",
-    subtopics: ["Cube and Cuboid", "Cylinder", "Cone and Frustum", "Sphere and Hemisphere", "Combined Solids and Recasting"],
+    subtopics: ["Cube and Cuboid", "Cylinder", "Cone and Frustum", "Sphere and Hemisphere", "Combined Solids and Recasting", "Prisms and Pyramids"],
     files: [
       {
         key: "book",
@@ -518,6 +576,7 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "20. Mensuration\\27_Surface_Area_&_Volume_of_Solids.pdf",
         note: "AFCAT practice — CDS Pathfinder (book chapter), Surface Area and Volume. Every key blind re-derived.",
       },
+      { key: "cp-3d", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Mensuration 3D", path: "12. Mensuration\\02. Mensuration 3D.xlsx", subtopic: "Cube and Cuboid", note: "AFCAT practice — Cadetprep AFCAT sheet, Mensuration. Every key blind re-derived." },
     ],
   },
   average: {
@@ -534,6 +593,8 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Combined and Group Averages",
       "Replacing a Member",
       "Ages",
+      "Basic and Simple Averages",
+      "Weighted Averages",
     ],
     files: [
       {
@@ -550,12 +611,27 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "05. Average\\Averages_AFCAT.pdf",
         note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Average. Every key blind re-derived.",
       },
+      { key: "cp-basic", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Basic Average Concepts", path: "03. Averages\\1)Basic-Avg-Concepts.xls", subtopic: "Basic and Simple Averages", note: "AFCAT practice — Cadetprep AFCAT sheet, Averages. Every key blind re-derived." },
+      { key: "cp-simple", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Simple Average Calculations", path: "03. Averages\\2)Simple-Average-Calculations.xls", subtopic: "Basic and Simple Averages", note: "AFCAT practice — Cadetprep AFCAT sheet, Averages. Every key blind re-derived." },
+      { key: "cp-missing", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Missing Data", path: "03. Averages\\3)Missing-data-Problems.xls", subtopic: "Basic and Simple Averages", note: "AFCAT practice — Cadetprep AFCAT sheet, Averages. Every key blind re-derived." },
+      { key: "cp-weighted", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Weighted Average", path: "03. Averages\\4)Weighted-Average.xls", subtopic: "Weighted Averages", note: "AFCAT practice — Cadetprep AFCAT sheet, Averages. Every key blind re-derived." },
+      { key: "cp-group", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Group Average", path: "03. Averages\\5)Group-Average .xls", subtopic: "Combined and Group Averages", note: "AFCAT practice — Cadetprep AFCAT sheet, Averages. Every key blind re-derived." },
+      { key: "cp-consecutive", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Consecutive Numbers", path: "03. Averages\\6)Consecutive-Numbers.xls", subtopic: "Consecutive Numbers", note: "AFCAT practice — Cadetprep AFCAT sheet, Averages. Every key blind re-derived." },
+      { key: "cp-smallest", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Smallest and Largest", path: "03. Averages\\7)Smallest&Largest.xls", subtopic: "Largest and Smallest Numbers", note: "AFCAT practice — Cadetprep AFCAT sheet, Averages. Every key blind re-derived." },
+      { key: "cp-teachers", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Students and Teachers", path: "03. Averages\\8)Students&Teachers.xls", subtopic: "Members Joining or Leaving", note: "AFCAT practice — Cadetprep AFCAT sheet, Averages. Every key blind re-derived." },
+      { key: "cp-cricket", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Cricket", path: "03. Averages\\9)Cricket-Questions.xls", subtopic: "Cricket Scores", note: "AFCAT practice — Cadetprep AFCAT sheet, Averages. Every key blind re-derived." },
+      { key: "cp-family", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Baby and Family", path: "03. Averages\\10)Baby&family.xls", subtopic: "Ages", note: "AFCAT practice — Cadetprep AFCAT sheet, Averages. Every key blind re-derived." },
+      { key: "cp-maxmin", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Maximum, Minimum and Difference", path: "03. Averages\\11)Maximum-minimum-Difference.xls", subtopic: "Highest and Lowest Scores", note: "AFCAT practice — Cadetprep AFCAT sheet, Averages. Every key blind re-derived." },
+      { key: "cp-error", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Error and Changes", path: "03. Averages\\12)Error-Calculation-Changes.xls", subtopic: "Correcting an Error", note: "AFCAT practice — Cadetprep AFCAT sheet, Averages. Every key blind re-derived." },
+      { key: "cp-firstn", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Average of N Numbers", path: "03. Averages\\13)Avg-N-Numbers.xls", subtopic: "Average of First or Last N Numbers", note: "AFCAT practice — Cadetprep AFCAT sheet, Averages. Every key blind re-derived." },
+      { key: "cp-percent", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Percentages in Averages", path: "03. Averages\\14)Percentages-in-Averages.xls", subtopic: "Weighted Averages", note: "AFCAT practice — Cadetprep AFCAT sheet, Averages. Every key blind re-derived." },
+      { key: "cp-real", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Real-World Problems", path: "03. Averages\\15)Real-Worl-Problems.xls", subtopic: "Basic and Simple Averages", note: "AFCAT practice — Cadetprep AFCAT sheet, Averages. Every key blind re-derived." },
     ],
   },
   clock: {
     id: "clock",
     chapterName: "Clock",
-    subtopics: ["Angle Between the Hands", "Faulty Clocks", "Gain and Loss of Time", "Angle Covered by the Hands", "Time Reasoning"],
+    subtopics: ["Angle Between the Hands", "Faulty Clocks", "Gain and Loss of Time", "Angle Covered by the Hands", "Time Reasoning", "Coinciding and Opposite Hands", "Mirror Images"],
     files: [
       {
         key: "errorless",
@@ -575,6 +651,11 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "10. Clock\\Arihant_Clock.pdf",
         note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Clock. Every key blind re-derived.",
       },
+      { key: "cp-angle", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Angle Between the Hands", path: "11. Clock\\01. Angle_Based_Problems.xlsx", subtopic: "Angle Between the Hands", note: "AFCAT practice — Cadetprep AFCAT sheet, Clock. Every key blind re-derived." },
+      { key: "cp-coincide", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Hands Coinciding", path: "11. Clock\\02. HAND COINCIDENCE AND FREQUENCY PROBLEMS.xlsx", subtopic: "Coinciding and Opposite Hands", note: "AFCAT practice — Cadetprep AFCAT sheet, Clock. Every key blind re-derived." },
+      { key: "cp-faulty", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Faulty Clocks", path: "11. Clock\\03. FAULTY_DEFECTIVE CLOCK PROBLEMS.xlsx", subtopic: "Faulty Clocks", note: "AFCAT practice — Cadetprep AFCAT sheet, Clock. Every key blind re-derived." },
+      { key: "cp-mirror", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Mirror Images", path: "11. Clock\\04. MIRROR IMAGE_REFLECTION PROBLEMS.xlsx", subtopic: "Mirror Images", note: "AFCAT practice — Cadetprep AFCAT sheet, Clock. Every key blind re-derived." },
+      { key: "cp-speed", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Speed of the Hands", path: "11. Clock\\05. HAND SPEED AND RELATIVE MOTION PROBLEMS.xlsx", subtopic: "Angle Covered by the Hands", note: "AFCAT practice — Cadetprep AFCAT sheet, Clock. Every key blind re-derived." },
     ],
   },
   "ratio-and-proportion": {
