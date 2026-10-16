@@ -2,9 +2,10 @@
   "01-2": {
     "answer": "D",
     "options": {
-      "B": "\\(512\\)"
+      "B": "\\(512\\)",
+      "C": "\\(128\\)"
     },
-    "reason": "Option B printed the answer again in another form (1024); it now prints a near miss. Key D stands."
+    "reason": "Option B printed the answer again in another form (1024); it now prints a near miss. Key D stands. Option C printed 256, the same wrong value as A (2 to the 8); it now prints 128."
   },
   "01-3": {
     "answer": "C",
@@ -16,9 +17,9 @@
   "01-4": {
     "answer": "C",
     "options": {
-      "B": "\\(32\\)"
+      "B": "\\(36\\)"
     },
-    "reason": "Option B printed the answer again in another form (64); it now prints a near miss. Key C stands."
+    "reason": "Option B printed the answer again in another form (64); it now prints 36, a near miss that is not also A (2 to the 5 = 32). Key C stands."
   },
   "01-6": {
     "answer": "B",
@@ -114,9 +115,9 @@
   "02-30": {
     "answer": "C",
     "options": {
-      "A": "\\(\\frac{15 - 5\\sqrt{2}}{7}\\)"
+      "A": "\\(\\frac{15 + 5\\sqrt{3}}{7}\\)"
     },
-    "reason": "Option A printed the answer again in another form ((15 + 5 root 2)/7); it now prints a near miss. Key C stands."
+    "reason": "Option A printed the answer again in another form ((15 + 5 root 2)/7); it now prints a near miss that is not also B. Key C stands."
   },
   "03-2": {
     "answer": "D",
@@ -163,5 +164,16 @@
   "01-32": {
     "exclude": true,
     "reason": "No option is right: 32 to the 0.2 times 2 to the 0.2 is 64 to the 0.2, about 2.297."
+  },
+  "01-5": {
+    "equalValuesIntended": true,
+    "reason": "The answer is 'All of the above': A, B and C are one value in three forms on purpose."
+  },
+  "03-22": {
+    "answer": "C",
+    "options": {
+      "A": "\\(\\sqrt{2} - \\sqrt{3}\\)"
+    },
+    "reason": "Options A (root 2 + root 3) and B (root 3 + root 2) were the same wrong value; A now prints root 2 - root 3. Key C stands."
   }
 }
