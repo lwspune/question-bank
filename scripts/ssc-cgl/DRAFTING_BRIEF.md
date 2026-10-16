@@ -25,6 +25,8 @@ Hindi only: write your English rendering, add `flawed: yes` and a `note:` saying
 must not pass off our translation as SSC's English), and still derive the answer. A stem SSC's
 print cuts off (a picture stem squeezed at the right edge, a washed-out line): write what is
 printed, put any words you infer in square brackets, and add `flawed: yes` with a `note:`.
+Parts of a jumbled sentence printed "A:" to "E:" are written "A." to "E." (a stem line that
+starts "A:" to "D:" is read as an option).
 
 ## Rules
 
