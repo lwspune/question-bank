@@ -9,13 +9,29 @@
  *   84x84 (or 84x83) image and the cross 31x21, so the picture's size IS the key.
  * Numbering is by order (the print's own "Q.n" labels are glyphs), 25 to a part, A-D.
  * The date and shift come from the file (config), since the header is glyphs too.
+ *
+ * The 2023 scans (17-24 Jul, 14 Jul from 2:30) are the same print with two differences: the
+ * tick is a 23x23 picture, and each sheet's FIRST page is one raster picture with an OCR text
+ * layer. That page has no frames, panels or icon pictures, so its questions are found by
+ * their OCR "Q.n" labels and keyed by `marks`, the green tick and red crosses tcs_extract.py
+ * reads off its pixels.
  */
 import type { Part } from "./lib";
 import type { TcsImage, TcsRegion } from "./tcs";
 
 export type VectorBox = { page: number; x0: number; y0: number; x1: number; y1: number };
 export type VectorIcon = VectorBox & { w: number; h: number };
-export type VectorGeometry = { frames: VectorBox[]; panels: VectorBox[]; icons: VectorIcon[]; images: TcsImage[] };
+export type VectorMark = VectorBox & { kind: "tick" | "cross" };
+export type VectorSpan = VectorBox & { text: string };
+export type VectorGeometry = {
+  frames: VectorBox[];
+  panels: VectorBox[];
+  icons: VectorIcon[];
+  images: TcsImage[];
+  /** raster pages only: the tick and crosses read off the pixels */
+  marks?: VectorMark[];
+  spans?: VectorSpan[];
+};
 export type VectorQuestion = {
   number: number;
   part: Part;
@@ -27,7 +43,8 @@ export type VectorQuestion = {
 
 const LABELS = ["A", "B", "C", "D"] as const;
 const PARTS: Part[] = ["A", "B", "C", "D"];
-const isTick = (i: VectorIcon) => i.w >= 60 && i.h >= 60;
+// 2022 draws the tick 84x84 (or 84x83), 2023 23x23: square either way, unlike the 31x21 cross.
+const isTick = (i: VectorIcon) => (i.w >= 60 && i.h >= 60) || (i.w >= 20 && i.w <= 26 && Math.abs(i.w - i.h) <= 2);
 const isCross = (i: VectorIcon) => i.w >= 25 && i.w <= 40 && i.h >= 15 && i.h <= 25 && i.w > i.h;
 const order = (a: VectorBox, b: VectorBox) => a.page - b.page || a.y0 - b.y0;
 const inside = (b: VectorBox, f: VectorBox) => b.page === f.page && b.y0 >= f.y0 - 1 && b.y1 <= f.y1 + 1;
@@ -43,9 +60,14 @@ export function assembleVector(g: VectorGeometry): VectorQuestion[] {
       cur = [];
     }
   }
-  if (!groups.length || groups.length % 100) throw new Error(`${groups.length} questions found (frames ending in a panel box), expected 100`);
+  // Raster-page questions and vector questions, in print order, then numbered.
+  const items: { page: number; y: number; make: (n: number) => VectorQuestion }[] = [
+    ...rasterQuestions(g),
+    ...groups.map((fs) => ({ page: fs[0].page, y: fs[0].y0, make: (n: number) => read(g, fs, n) })),
+  ].sort((a, b) => a.page - b.page || a.y - b.y);
+  if (!items.length || items.length % 100) throw new Error(`${items.length} questions found (frames ending in a panel box), expected 100`);
 
-  const all = groups.map((fs, i) => read(g, fs, (i % 100) + 1));
+  const all = items.map((it, i) => it.make((i % 100) + 1));
   // Several candidates' sheets of one paper in one file: keep the first, after checking the
   // copies agree (same key, question by question). Different papers in one file are refused.
   const first = all.slice(0, 100);
@@ -54,6 +76,43 @@ export function assembleVector(g: VectorGeometry): VectorQuestion[] {
     if (copy.some((q, k) => q.key !== first[k].key)) throw new Error(`copies differ: sheet ${c + 1} of the file is not the same paper as sheet 1`);
   }
   return first;
+}
+
+const Q_LABEL = /^Q\.\s?\d+/;
+const FOOTER = /aglasem\.com|^Page \d+ of/;
+
+/**
+ * A raster page's questions: each OCR "Q.n" label opens one, running to the next label or to
+ * the page footer; its key is the one tick among the four marks inside it.
+ */
+function rasterQuestions(g: VectorGeometry): { page: number; y: number; make: (n: number) => VectorQuestion }[] {
+  const marks = g.marks ?? [];
+  const spans = g.spans ?? [];
+  return [...new Set(marks.map((m) => m.page))].flatMap((page) => {
+    const labels = spans.filter((s) => s.page === page && Q_LABEL.test(s.text.trim())).sort((a, b) => a.y0 - b.y0);
+    if (!labels.length) throw new Error(`raster page ${page}: marks but no "Q.n" label`);
+    const footer = Math.min(...spans.filter((s) => s.page === page && s.y0 > 600 && FOOTER.test(s.text.trim())).map((s) => s.y0));
+    return labels.map((l, k) => {
+      const y0 = l.y0 - 4;
+      const y1 = k + 1 < labels.length ? labels[k + 1].y0 - 4 : Number.isFinite(footer) ? footer - 4 : Math.max(...marks.filter((m) => m.page === page).map((m) => m.y1)) + 80;
+      const mine = marks.filter((m) => m.page === page && m.y0 >= y0 && m.y1 <= y1).sort((a, b) => a.y0 - b.y0);
+      const ticks = mine.map((m, i) => (m.kind === "tick" ? i : -1)).filter((i) => i >= 0);
+      const name = l.text.trim().match(Q_LABEL)![0];
+      if (mine.length !== 4 || ticks.length !== 1) throw new Error(`raster ${name}: ${mine.length} marks, ${ticks.length} ticks`);
+      return {
+        page,
+        y: y0,
+        make: (number: number): VectorQuestion => ({
+          number,
+          part: PARTS[Math.floor((number - 1) / 25)],
+          key: LABELS[ticks[0]],
+          regions: [{ page, y0, y1, raster: true }],
+          stemImages: [],
+          optionImages: [[], [], [], []],
+        }),
+      };
+    });
+  });
 }
 
 function read(g: VectorGeometry, fs: VectorBox[], number: number): VectorQuestion {

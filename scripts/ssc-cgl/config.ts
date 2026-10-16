@@ -73,6 +73,13 @@ export type Day = {
   slots?: string[];
   /** One file per SHIFT (2022) instead of one per day: shift -> file. `file`/`url` are unused. */
   shiftFiles?: Record<number, { file: string; url: string }>;
+  /** The page range (tcs_extract.py --pages) of the day file's TEXT sheets, when it also holds scans. */
+  pages?: string;
+  /**
+   * The 2023 scans: shift -> the page range of its sheet in the day file, each extracted to its
+   * own out/ folder and read by vector.ts (the date and shift come from here, like 2022).
+   */
+  shiftPages?: Record<number, string>;
 };
 
 /** The shift numbers a day's file holds: `present`, or 1..shifts. */
@@ -106,17 +113,18 @@ const t1_2024 = (dd: string, docId: string): Day => ({
 });
 
 /**
- * 2023 Tier I: AglaSem hosts one TCS file per exam day (English), read like 2024: each sheet
- * is filed under the Exam Date it prints. Only the days whose text layer the reader can use
- * are registered: 17-24 Jul carry OCR-like text (option text in fragments, the key a tick
- * glyph in a column), which needs its own reader.
+ * 2023 Tier I: AglaSem hosts one TCS file per exam day (English). 25-27 Jul are text sheets,
+ * read like 2024 (each sheet filed under the Exam Date it prints). 17-24 Jul, and 14 Jul from
+ * 2:30, are SCANS: the 2022 vector print, but each sheet's first page is a raster picture with
+ * an OCR layer (vector.ts reads it from pixel marks). A scanned sheet is registered by its page
+ * range (`shiftPages`), found from that raster first page and its printed Exam Time.
  */
 const SLOTS_2023_T1 = ["9:00 AM - 10:00 AM", "11:45 AM - 12:45 PM", "2:30 PM - 3:30 PM", "5:15 PM - 6:15 PM"];
-const t1_2023 = (dd: string, docId: string, present?: number[]): Day => ({
+const t1_2023 = (dd: string, docId: string, extra: Pick<Day, "present" | "pages" | "shiftPages"> = {}): Day => ({
   tier: 1,
   date: `2023-07-${dd}`,
   shifts: 4,
-  ...(present ? { present } : {}),
+  ...extra,
   file: join(SOURCE_ROOT, "2023_Tier1", `SSC_CGL_2023_Tier1_${dd}Jul_AllShifts_EN.pdf`),
   url: `https://cdn.aglasem.com/aglasem-doc/${docId}/${docId}.pdf`,
   provisionalKey: true,
@@ -166,13 +174,19 @@ export const DAYS: Record<string, Day> = {
   "t1-2022-12-09": t1_2022("09", { 1: "e1d5cd5c-db03-11ed-942e-0a5e36bc6706", 2: "e2a82450-db03-11ed-a491-0a5e36bc6706", 4: "e2d1a0aa-db03-11ed-aa58-0a5e36bc6706" }),
   "t1-2022-12-12": t1_2022("12", { 1: "e2de986e-db03-11ed-ab11-0a5e36bc6706", 2: "e3707b12-db03-11ed-b3db-0a5e36bc6706", 3: "e3ce6d8a-db03-11ed-b8d8-0a5e36bc6706" }),
   "t1-2022-12-13": t1_2022("13", { 1: "e5dd0794-db03-11ed-9e66-0a5e36bc6706" }),
-  // The hosted 14 Jul file: pages 1-58 are the 9:00 and 11:45 sheets with a text layer; pages
-  // 59-126 are the 2:30 and 5:15 sheets as scans (text on their first page only), read later
-  // with 17-24 Jul. Extract with --pages=1-58. The 27 Jul file holds the first three sheets.
-  "t1-2023-07-14": t1_2023("14", "f905caf0-8c11-11f1-b1b6-0aa932765c8b", [1, 2]),
+  // The hosted 14 Jul file: pages 1-58 are the 9:00 and 11:45 sheets with a text layer; the
+  // 2:30 and 5:15 sheets are scans. The 21 Jul 11:45 sheet opens on a vector page, not a scan.
+  "t1-2023-07-14": t1_2023("14", "f905caf0-8c11-11f1-b1b6-0aa932765c8b", { pages: "1-58", shiftPages: { 3: "59-91", 4: "92-126" } }),
+  "t1-2023-07-17": t1_2023("17", "0f9825ec-8c12-11f1-a8e1-0aa932765c8b", { shiftPages: { 1: "2-35", 2: "36-66", 3: "67-98", 4: "99-131" } }),
+  "t1-2023-07-18": t1_2023("18", "242d55ae-8c12-11f1-b948-0aa932765c8b", { shiftPages: { 1: "2-36", 2: "37-68", 3: "69-100", 4: "101-133" } }),
+  "t1-2023-07-19": t1_2023("19", "38927f42-8c12-11f1-bf79-0aa932765c8b", { shiftPages: { 1: "2-33", 2: "34-69", 3: "70-101", 4: "102-133" } }),
+  "t1-2023-07-20": t1_2023("20", "46f42158-8c12-11f1-9918-0aa932765c8b", { shiftPages: { 1: "2-33", 2: "34-65", 3: "66-98", 4: "99-133" } }),
+  "t1-2023-07-21": t1_2023("21", "4f9f94cc-8c12-11f1-892b-0aa932765c8b", { shiftPages: { 1: "2-36", 2: "37-70", 3: "71-103", 4: "104-137" } }),
+  "t1-2023-07-24": t1_2023("24", "57fb3298-8c12-11f1-8453-0aa932765c8b", { shiftPages: { 1: "2-34", 2: "35-69", 3: "70-104", 4: "105-139" } }),
   "t1-2023-07-25": t1_2023("25", "5e9632ec-8c12-11f1-9d16-0aa932765c8b"),
   "t1-2023-07-26": t1_2023("26", "64aa3ce6-8c12-11f1-8632-0aa932765c8b"),
-  "t1-2023-07-27": t1_2023("27", "6ac4e6da-8c12-11f1-9577-0aa932765c8b", [1, 2, 3]),
+  // The 27 Jul file holds the first three sheets.
+  "t1-2023-07-27": t1_2023("27", "6ac4e6da-8c12-11f1-9577-0aa932765c8b", { present: [1, 2, 3] }),
   "t1-2024-09-09": t1_2024("09", "73c870dc-8c15-11f1-9679-0aa932765c8b"),
   "t1-2024-09-10": t1_2024("10", "78ca267a-8c15-11f1-8a06-0aa932765c8b"),
   "t1-2024-09-11": t1_2024("11", "7d86f94a-8c15-11f1-b917-0aa932765c8b"),
@@ -260,15 +274,20 @@ export const SHIFTS: Record<string, Shift> = Object.fromEntries(
  * Every TCS file, in day order: `dir` is its out/ folder (tcs_extract.py's dayId). A day
  * hosted as one file per shift (2022) lists each, with the shift it holds.
  */
-export function tcsFiles(): { dir: string; day: Day; file: string; shift?: number }[] {
+export type TcsFile = { dir: string; day: Day; file: string; shift?: number; pages?: string };
+export function tcsFiles(): TcsFile[] {
   return Object.entries(DAYS)
     .filter(([, d]) => d.format === "tcs")
     .sort(([a], [b]) => a.localeCompare(b))
-    .flatMap(([dir, day]) =>
-      day.shiftFiles
-        ? Object.entries(day.shiftFiles).map(([n, f]) => ({ dir: `${dir}-s${n}`, day, file: f.file, shift: Number(n) }))
-        : [{ dir, day, file: day.file }]
-    );
+    .flatMap(([dir, day]): TcsFile[] => {
+      if (day.shiftFiles)
+        return Object.entries(day.shiftFiles).map(([n, f]) => ({ dir: `${dir}-s${n}`, day, file: f.file, shift: Number(n) }));
+      const scans = Object.entries(day.shiftPages ?? {}).map(([n, pages]) => ({ dir: `${dir}-s${n}`, day, file: day.file, shift: Number(n), pages }));
+      // The day file's text sheets: all of it, its `pages`, or nothing when every shift is a scan.
+      const textShifts = shiftsOf(day).filter((n) => !day.shiftPages?.[n]);
+      const text = textShifts.length ? [{ dir, day, file: day.file, ...(day.pages ? { pages: day.pages } : {}) }] : [];
+      return [...text, ...scans];
+    });
 }
 
 export function requireShift(id: string | undefined): Shift & { id: string } {

@@ -118,20 +118,38 @@ describe("SSC CGL 2022 Tier I (one TCS file per shift)", () => {
 });
 
 describe("SSC CGL 2023 Tier I (one TCS file per day)", () => {
+  it("registers the scanned 2023 sheets by page range, read by the vector reader per shift", () => {
+    // 14 Jul: pages 1-58 are text sheets (S1, S2); its 2:30 and 5:15 sheets are scans.
+    const d14 = DAYS["t1-2023-07-14"];
+    expect(d14).toMatchObject({ pages: "1-58", shiftPages: { 3: "59-91", 4: "92-126" } });
+    expect(d14.present).toBeUndefined();
+    expect(Object.keys(DAYS["t1-2023-07-21"].shiftPages ?? {})).toEqual(["1", "2", "3", "4"]);
+    const f14 = tcsFiles().filter((f) => f.day === d14);
+    expect(f14).toEqual([
+      { dir: "t1-2023-07-14", day: d14, file: d14.file, pages: "1-58" },
+      { dir: "t1-2023-07-14-s3", day: d14, file: d14.file, shift: 3, pages: "59-91" },
+      { dir: "t1-2023-07-14-s4", day: d14, file: d14.file, shift: 4, pages: "92-126" },
+    ]);
+    // a day that is all scans has no text-sheet entry
+    expect(tcsFiles().filter((f) => f.day === DAYS["t1-2023-07-17"]).map((f) => f.dir)).toEqual(
+      ["t1-2023-07-17-s1", "t1-2023-07-17-s2", "t1-2023-07-17-s3", "t1-2023-07-17-s4"],
+    );
+    // 14 Jul (4) + 17-24 Jul (6 days x 4) + 25, 26 Jul (4 each) + 27 Jul (3)
+    expect(Object.keys(SHIFTS).filter((id) => id.startsWith("t1-2023-"))).toHaveLength(39);
+  });
+
   it("registers the 2023 days with a text layer, each with the shifts its file holds", () => {
-    const days = Object.entries(DAYS).filter(([id]) => id.startsWith("t1-2023-"));
-    // 17-24 Jul carry an OCR-like text layer the reader cannot use yet: not registered.
-    expect(days.map(([id]) => id.slice(8))).toEqual(["07-14", "07-25", "07-26", "07-27"]);
+    const days = Object.entries(DAYS).filter(([id]) => id.startsWith("t1-2023-") && !DAYS[id].shiftPages);
+    expect(days.map(([id]) => id.slice(8))).toEqual(["07-25", "07-26", "07-27"]);
     for (const [id, d] of days) {
       expect(d).toMatchObject({ tier: 1, format: "tcs", date: `2023-${id.slice(8)}` });
       expect(d.slots).toEqual(["9:00 AM - 10:00 AM", "11:45 AM - 12:45 PM", "2:30 PM - 3:30 PM", "5:15 PM - 6:15 PM"]);
       expect(d.file).toMatch(new RegExp(`2023_Tier1.SSC_CGL_2023_Tier1_${id.slice(11)}Jul_AllShifts_EN\.pdf$`));
       expect(d.url).toMatch(/^https:\/\/cdn\.aglasem\.com\/aglasem-doc\/[0-9a-f-]{36}\/[0-9a-f-]{36}\.pdf$/);
     }
-    expect(DAYS["t1-2023-07-14"].present).toEqual([1, 2]);
     expect(DAYS["t1-2023-07-27"].present).toEqual([1, 2, 3]);
     expect(DAYS["t1-2023-07-25"].present).toBeUndefined();
     expect(SHIFTS["t1-2023-07-26-s4"]).toMatchObject({ sourceFile: "SSC_CGL_T1_2023-07-26_S4", pyqNote: "Tier I, 26 Jul 2023, Shift 4" });
-    expect(tcsFiles().filter((f) => f.dir.startsWith("t1-2023-")).map((f) => f.dir)).toEqual(days.map(([id]) => id));
+    expect(tcsFiles().filter((f) => days.some(([, d]) => d === f.day)).map((f) => f.dir)).toEqual(days.map(([id]) => id));
   });
 });

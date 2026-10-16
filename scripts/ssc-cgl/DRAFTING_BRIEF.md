@@ -16,7 +16,8 @@ derived blind. Repo (git worktree): `C:\Users\vilas\Downloads\qb-ssc`.
 section ("Q.14"); the red label above it ("Q64") is the number you write. The options print
 "1." to "4.": write them as A to D in that order. `sheets/text.txt` holds the same questions
 as text (no answers): copy wording from it to save typing, but the sheet is the source.
-(5-13 Dec 2022 is a print with no text layer: no `text.txt`, so type everything from the sheet.)
+(5-13 Dec 2022, 17-24 Jul 2023 and 14 Jul 2023 Shifts 3-4 are a print with no text layer: no
+`text.txt`, so type everything from the sheet. 2023 follows these same rules.)
 The text loses maths set as pictures, misplaces superscripts (cm 3) and drops symbols, so
 check every line against the sheet. These sheets print every stem in bold, so do not bold a
 whole stem; bold only what the question singles out. An underlined word or segment is written

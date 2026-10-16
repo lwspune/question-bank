@@ -18,6 +18,41 @@ import fitz  # PyMuPDF
 ICON_W = 20
 
 
+def is_scan(page, blocks):
+    """A page that is one raster picture (the 2023 scans' first page per sheet)."""
+    w, h = page.rect.width, page.rect.height
+    return any(b["type"] == 1 and b["bbox"][2] - b["bbox"][0] > w * 0.9 and b["bbox"][3] - b["bbox"][1] > h * 0.9 for b in blocks)
+
+
+def scan_marks(page, pno):
+    """The tick (green) and crosses (red) read off a scanned page's pixels, one per option row,
+    in the icon column only (x 60-98 pt), so coloured option text further right is not read."""
+    z = 2
+    pix = page.get_pixmap(matrix=fitz.Matrix(z, z), clip=fitz.Rect(60, 0, 98, page.rect.height))
+    s, n, w = pix.samples, pix.n, pix.width
+    rows = {}
+    for y in range(pix.height):
+        for x in range(w):
+            i = (y * w + x) * n
+            r, g, b = s[i], s[i + 1], s[i + 2]
+            kind = "tick" if g >= 120 and g - r >= 60 and g - b >= 60 else "cross" if r >= 180 and r - g >= 120 and r - b >= 120 else None
+            if kind:
+                rows.setdefault(y, {}).setdefault(kind, []).append(x)
+    marks, cur = [], None
+    for y in sorted(rows):
+        kind = max(rows[y], key=lambda k: len(rows[y][k]))
+        xs = rows[y][kind]
+        if cur and cur["kind"] == kind and y - cur["_y"] <= 3:
+            cur["_y"], cur["_n"] = y, cur["_n"] + len(xs)
+            cur["x0"], cur["x1"] = min(cur["x0"], min(xs)), max(cur["x1"], max(xs))
+            cur["y1"] = y
+        else:
+            cur = {"kind": kind, "y0": y, "y1": y, "x0": min(xs), "x1": max(xs), "_y": y, "_n": len(xs)}
+            marks.append(cur)
+    return [{"page": pno, "kind": m["kind"], "x0": round(60 + m["x0"] / z, 1), "y0": round(m["y0"] / z, 1),
+             "x1": round(60 + m["x1"] / z, 1), "y1": round(m["y1"] / z, 1)} for m in marks if m["_n"] >= 8]
+
+
 def main():
     if len(sys.argv) < 3:
         sys.exit("usage: tcs_extract.py <dayId> <pdfPath> [--pages=FROM-TO]")
@@ -28,11 +63,13 @@ def main():
     img_dir = os.path.join(out_dir, "img")
     os.makedirs(img_dir, exist_ok=True)
     doc = fitz.open(pdf)
-    spans, images, icons, panels, frames = [], [], [], [], []
+    spans, images, icons, panels, frames, marks = [], [], [], [], [], []
     for pno, page in enumerate(doc):
         if not first - 1 <= pno <= last - 1:
             continue
         blocks = page.get_text("dict")["blocks"]
+        if is_scan(page, blocks):
+            marks += scan_marks(page, pno)
         k = 0
         # The right-hand panel box (Question ID / Status / Chosen Option): a white box with a
         # grey border. The 2022 vector print has no text layer, so it is found as a drawing.
@@ -79,8 +116,8 @@ def main():
                     })
     with open(os.path.join(out_dir, "geometry.json"), "w", encoding="utf8") as f:
         json.dump({"format": "tcs", "pdf": os.path.basename(pdf), "pages": doc.page_count, "spans": spans, "images": images,
-                   "icons": icons, "panels": panels, "frames": frames}, f, ensure_ascii=False)
-    print(f"{day}: {doc.page_count} pages, {len(spans)} spans, {len(images)} images, {len(icons)} icons, {len(panels)} panels, {len(frames)} frames -> {out_dir}")
+                   "icons": icons, "panels": panels, "frames": frames, "marks": marks}, f, ensure_ascii=False)
+    print(f"{day}: {doc.page_count} pages, {len(spans)} spans, {len(images)} images, {len(icons)} icons, {len(panels)} panels, {len(frames)} frames, {len(marks)} scan marks -> {out_dir}")
 
 
 if __name__ == "__main__":

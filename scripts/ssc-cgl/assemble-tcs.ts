@@ -27,9 +27,15 @@ import {
 import { assembleVector, type VectorGeometry } from "./vector";
 
 /** No "Q.n" label anywhere in the text layer: the vector print. */
-const isVector = (g: TcsGeometry & Partial<VectorGeometry>) =>
-  !g.spans.some((s) => /^Q\.\d+/.test(s.text.trim())) &&
-  (g.frames?.length ?? 0) > 0;
+// The vector print has no "Q.n" text, except the OCR layer of a 2023 scan's raster first
+// page (the pages carrying scan marks).
+const isVector = (g: TcsGeometry & Partial<VectorGeometry>) => {
+  const scanPages = new Set((g.marks ?? []).map((m) => m.page));
+  return (
+    !g.spans.some((s) => /^Q\.\d+/.test(s.text.trim()) && !scanPages.has(s.page)) &&
+    (g.frames?.length ?? 0) > 0
+  );
+};
 
 function main() {
   const year = process.argv
@@ -38,11 +44,11 @@ function main() {
   if (!year) throw new Error("usage: assemble-tcs.ts --year=YYYY");
   const files = tcsFiles()
     .filter(({ day }) => day.date.startsWith(year))
-    .map(({ dir, day, file, shift }) => {
+    .map(({ dir, day, file, shift, pages }) => {
       const path = join(OUT, dir, "geometry.json");
       if (!existsSync(path))
         throw new Error(
-          `${path} not found: run tcs_extract.py ${dir} "${file}" first`,
+          `${path} not found: run tcs_extract.py ${dir} "${file}"${pages ? ` --pages=${pages}` : ""} first`,
         );
       const g: TcsGeometry & VectorGeometry = JSON.parse(
         readFileSync(path, "utf8"),

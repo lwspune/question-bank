@@ -19,7 +19,8 @@ export type TcsImage = { page: number; name: string; x0: number; y0: number; x1:
 export type TcsGeometry = { spans: TcsSpan[]; images: TcsImage[] };
 
 /** One printed region of a question on one page (for the masked reading sheet). */
-export type TcsRegion = { page: number; y0: number; y1: number };
+/** raster: the page is one scanned picture, so masking must work on its pixels (tcs_sheets.py) */
+export type TcsRegion = { page: number; y0: number; y1: number; raster?: boolean };
 
 export type TcsQuestion = {
   /** index of the sheet (one candidate's response sheet) in the file, in print order */

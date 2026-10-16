@@ -49,11 +49,76 @@ def is_icon(bbox, labels):
 
 
 def is_icon_picture(info):
-    """The 2022 vector print's tick (84x84 px) and cross (31x21 px), drawn under 20x16 pt."""
+    """The vector print's tick (84x84 px in 2022, 23x23 in 2023) and cross (31x21 px), drawn under 20x16 pt."""
     x0, y0, x1, y1 = info["bbox"]
     w, h = info.get("width", 0), info.get("height", 0)
     small = x1 - x0 < 20 and y1 - y0 < 16
-    return small and ((w >= 60 and h >= 60) or (25 <= w <= 40 and 15 <= h <= 25 and w > h))
+    tick = (w >= 60 and h >= 60) or (20 <= w <= 26 and abs(w - h) <= 2)
+    return small and (tick or (25 <= w <= 40 and 15 <= h <= 25 and w > h))
+
+
+# A 2023 scan's raster first page: the tick and crosses stand in this column (points), between
+# "Ans" (ends ~66) and the option number "1." (starts ~90).
+SCAN_ICONS = (66, 90)
+
+
+def is_key_pixel(r, g, b):
+    return (g >= 120 and g - r >= 60 and g - b >= 60) or (r >= 180 and r - g >= 120 and r - b >= 120)
+
+
+def white_scan_icons(page, marks):
+    """White out the icon column on each option row of a raster page. The rows are the scan
+    marks tcs_extract.py read (the same ones that gave the key): masking can't find them by
+    colour, since the X is near-black and only the option number carries the red."""
+    for m in marks:
+        yc = (m["y0"] + m["y1"]) / 2
+        page.draw_rect(fitz.Rect(SCAN_ICONS[0], yc - 7, SCAN_ICONS[1], yc + 7), color=None, fill=(1, 1, 1), overlay=True)
+
+
+def align_scan_rows(img, marks, top):
+    """On a raster page the tick is wider than the cross, so the KEYED option's number prints
+    ~2 pt right of the others: an indent that gives the key away. Shift each option row so its
+    number starts where the other rows' numbers start. `top` is the crop's top in points."""
+    px = img.load()
+    z = ZOOM
+    x0, x1 = int((SCAN_ICONS[1] - LEFT) * z), int((112 - LEFT) * z)
+
+    def band(m):
+        yc = (m["y0"] + m["y1"]) / 2
+        return max(0, int((yc - 7 - top) * z)), min(img.height, int((yc + 7 - top) * z))
+
+    def first_ink(m):
+        a, b = band(m)
+        xs = [x for x in range(x0, min(x1, img.width)) for y in range(a, b) if sum(px[x, y]) < 450]
+        return min(xs) if xs else None
+
+    starts = [(m, first_ink(m)) for m in marks]
+    found = sorted(s for _, s in starts if s is not None)
+    if not found:
+        return img
+    base = found[0]
+    # Shift only the option text span, so the frame lines either side never jog.
+    xr = min(img.width, int((540 - LEFT) * z))
+    for m, s in starts:
+        if s is None or s <= base:
+            continue
+        a, b = band(m)
+        d = s - base
+        row = img.crop((x0 + d, a, xr, b))
+        tail = img.crop((xr - d, a, xr, b))  # the scan's own off-white, not pure white
+        img.paste(row, (x0, a))
+        img.paste(tail, (xr - d, a))
+    return img
+
+
+def unkey_scan(img):
+    """Turn any key-coloured pixel left on a raster crop (option text) dark grey."""
+    px = img.load()
+    for y in range(img.height):
+        for x in range(img.width):
+            if is_key_pixel(*px[x, y]):
+                px[x, y] = (37, 37, 37)
+    return img
 
 
 def key_pixels(img):
@@ -136,6 +201,8 @@ def main():
         if f.startswith("batch-") and f.endswith(".png"):
             os.remove(os.path.join(out_dir, f))
     doc = fitz.open(data["pdf"])
+    geom = os.path.join(os.path.dirname(data["imgDir"]), "geometry.json")
+    marks = json.load(open(geom, encoding="utf8")).get("marks", []) if os.path.exists(geom) else []
     masked = set()
     crops = []
     for q in data["questions"]:
@@ -144,11 +211,16 @@ def main():
             page = doc[r["page"]]
             if r["page"] not in masked:
                 mask_page(doc, page)
+                white_scan_icons(page, [m for m in marks if m["page"] == r["page"]])
                 masked.add(r["page"])
             clip = fitz.Rect(LEFT, r["y0"] - PAD, page.rect.width - 20, r["y1"] + PAD)
             check_masked(page, clip, f"{shift} Q{q['number']}")
             pix = page.get_pixmap(matrix=fitz.Matrix(ZOOM, ZOOM), clip=clip)
-            parts.append(Image.frombytes("RGB", (pix.width, pix.height), pix.samples))
+            part = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
+            if r.get("raster"):
+                mine = [m for m in marks if m["page"] == r["page"] and r["y0"] <= m["y0"] and m["y1"] <= r["y1"]]
+                part = unkey_scan(align_scan_rows(part, mine, clip.y0))
+            parts.append(part)
         img = Image.new("RGB", (max(p.width for p in parts), sum(p.height for p in parts)), "white")
         y = 0
         for p in parts:

@@ -198,6 +198,12 @@ npx tsx scripts/ssc-cgl/commit.ts <shiftId> --apply        # uploads figure pict
   `vector.ts` reads the 2022 **vector print** (5-13 Dec), which has no text at all: a question
   is the run of grey frames up to the one holding the panel box, numbered by order, and the key
   is the tick icon (an 84x84 picture against the cross's 31x21).
+  The 2023 **scans** (17-24 Jul, 14 Jul from 2:30) are the same print, four sheets to a day file:
+  each sheet is registered by its page range (`shiftPages`, found from its raster first page and
+  printed Exam Time) and extracted to its own folder (`--pages`). The tick is a 23x23 picture,
+  and each sheet's FIRST page is one raster picture with an OCR layer: its 1-3 questions are
+  found by their OCR "Q.n" labels and keyed by `marks`, the green and red pixels tcs_extract.py
+  reads in the icon column; `tcs_sheets.py` masks those regions by pixel (`unkey_scan`).
 - **Masking** (`tcs_sheets.py`): key-coloured fills AND strokes repainted the body grey (2022
   underlines option text in the key colours), tick and cross icons and the panel painted white,
   the candidate's chosen option never shown. A question with no picture that still shows key
@@ -210,9 +216,9 @@ npx tsx scripts/ssc-cgl/commit.ts <shiftId> --apply        # uploads figure pict
   translation), stems SSC's print cuts off or washes out, a chart whose legend is blank.
 - **Not readable yet:** 1 Dec 2022 Shift 3 (the file starts mid-paper); 5 Dec S4, 7 Dec S2,
   9 Dec S3, 12 Dec S4 2022 (several different papers in one vector file, headers unreadable);
-  7 Dec 2022 S3 (106 questions); 2023 17-24 Jul (an OCR-like text layer: option text in
-  fragments; the tick glyph column would give the key). 2023 14, 25, 26, 27 Jul read cleanly.
-  More 2022 shifts (13 Dec S2 on) and 2021 sit on AglaSem listing pages not yet loaded.
+  7 Dec 2022 S3 (106 questions); 27 Jul 2023 S4 (not in the hosted file). Every other 2023
+  sheet reads (39 shifts). More 2022 shifts (13 Dec S2 on) and 2021 sit on AglaSem listing
+  pages not yet loaded.
 
 ## Not read yet (source problems, not ours)
 
