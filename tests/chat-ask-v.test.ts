@@ -172,6 +172,30 @@ describe("askV", () => {
     expect(r).toMatchObject({ ok: true, tokensIn: 340, tokensOut: 30, cacheWriteTokens: 2800, cacheReadTokens: 2800 });
   });
 
+  it("reports the tokens already spent when a later round fails, since they are billed", async () => {
+    let i = 0;
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (_url: string, init: RequestInit) => {
+        sent.push(JSON.parse(String(init.body)) as Sent);
+        return i++ === 0
+          ? reply({
+              ...toolTurn("t1", { query: "atoms" }),
+              usage: { input_tokens: 80, output_tokens: 10, cache_creation_input_tokens: 2800, cache_read_input_tokens: 0 },
+            })
+          : reply({ error: { message: "overloaded" } }, 529);
+      })
+    );
+    const r = await askV({ system: "facts", message: "atoms", tools: [tool] });
+    expect(r).toMatchObject({ ok: false, tokensIn: 80, tokensOut: 10, cacheWriteTokens: 2800, cacheReadTokens: 0 });
+  });
+
+  it("reports zero spent when it fails before any reply", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => reply({ error: { message: "overloaded" } }, 529)));
+    const r = await askV({ system: "facts", message: "hi", tools: [tool] });
+    expect(r).toMatchObject({ ok: false, tokensIn: 0, tokensOut: 0, cacheReadTokens: 0, cacheWriteTokens: 0 });
+  });
+
   it("fails without a key and makes no request", async () => {
     delete process.env.ANTHROPIC_API_KEY;
     const f = vi.fn();

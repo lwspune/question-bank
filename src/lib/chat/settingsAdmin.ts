@@ -44,12 +44,12 @@ export async function saveChatSettings(
   return { kind: "ok", settings: fromRow(data as Row) };
 }
 
-/** AI answers given since midnight IST. null when the count could not be read. */
+/** AI calls since midnight IST, counting answers that failed part-way (they cost too). null when unreadable. */
 export async function countAiAnswersToday(db: SupabaseClient, now = new Date()): Promise<number | null> {
   const { count, error } = await db
     .from("chat_interactions")
     .select("id", { count: "exact", head: true })
-    .eq("reply_source", "ai")
+    .in("reply_source", ["ai", "ai_failed"])
     .gte("created_at", istDayStart(now).toISOString());
   if (error) {
     console.error("countAiAnswersToday:", error.message);

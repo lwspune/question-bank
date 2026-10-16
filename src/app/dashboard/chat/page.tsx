@@ -3,9 +3,9 @@ import { redirect } from "next/navigation";
 import { getSessionSuperadmin } from "@/lib/auth";
 import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
-import { listChatInteractions, listConversationRows } from "@/lib/chat/interactionsAdmin";
+import { listAiUsageByDay, listChatInteractions, listConversationRows } from "@/lib/chat/interactionsAdmin";
 import { groupConversations } from "@/lib/chat/conversation";
-import { summarizeChatInteractions } from "@/lib/chat/interactions";
+import { summarizeAiUsage, summarizeChatInteractions } from "@/lib/chat/interactions";
 import { readChatSettings } from "@/lib/chat/settingsAdmin";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { namesForUsers } from "@/lib/supabase/authUsers";
@@ -13,16 +13,24 @@ import ChatSettingsForm from "./ChatSettingsForm";
 
 export const dynamic = "force-dynamic";
 
+/** Dollars, with a third decimal while V's bill is still cents. */
+function usd(v: number): string {
+  return `$${v.toFixed(v < 1 ? 3 : 2)}`;
+}
+
 export default async function ChatUsagePage() {
   // Platform-wide data (not org-scoped) — superadmin only.
   if (!(await getSessionSuperadmin())) redirect("/browse");
 
-  const [rows, settings, conversationRows] = await Promise.all([
+  const [rows, settings, conversationRows, usageRows] = await Promise.all([
     listChatInteractions(),
     readChatSettings(createSupabaseAdminClient()),
     listConversationRows(),
+    listAiUsageByDay(),
   ]);
   const summary = summarizeChatInteractions(rows);
+  // Migration 0162: AI use summed per day in the database, so the cost has no row limit.
+  const usage = usageRows ? summarizeAiUsage(usageRows, new Date()) : null;
   // Migration 0159: whole conversations, newest first; the page shows the latest 100.
   const conversations = groupConversations(conversationRows);
   const shownConversations = conversations.slice(0, 100);
@@ -59,13 +67,60 @@ export default async function ChatUsagePage() {
           <StatCard kind="numeric" value={summary.totalClicks} label="Questions asked" />
           <StatCard kind="text" value={askRate} label="Questions per open" />
           <StatCard kind="numeric" value={summary.totalTyped} label="Typed questions" />
-          <StatCard kind="numeric" value={summary.aiAnswers} label="AI answers" />
-          <StatCard kind="text" value={`$${summary.aiCostUsd.toFixed(2)}`} label="AI cost so far" />
+          <StatCard kind="text" value={usage ? String(usage.total.answers) : "—"} label="AI answers" />
+          <StatCard kind="text" value={usage ? usd(usage.total.costUsd) : "—"} label="AI cost so far" />
           <StatCard kind="numeric" value={conversations.length} label="Conversations" />
           <StatCard kind="numeric" value={helpful} label="Replies marked helpful" />
           <StatCard kind="numeric" value={notHelpful} label="Replies marked not helpful" />
           <StatCard kind="text" value={`${lateRead} of ${lateAnswers.length}`} label="Late answers read" />
         </div>
+
+        <section className="rounded-lg border">
+          <h2 className="border-b px-4 py-3 text-sm font-semibold">AI use by day (India time), last 30 days</h2>
+          {!usage ? (
+            <p className="px-4 py-6 text-sm text-muted-foreground">AI use could not be read just now.</p>
+          ) : usage.days.length === 0 ? (
+            <p className="px-4 py-6 text-sm text-muted-foreground">No AI answers in the last 30 days.</p>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead className="bg-muted/50 text-xs uppercase tracking-wide text-muted-foreground">
+                  <tr>
+                    <th className="px-3 py-2 text-left font-medium">Day</th>
+                    <th className="px-3 py-2 text-right font-medium">Answers</th>
+                    <th className="px-3 py-2 text-right font-medium">Failed</th>
+                    <th className="px-3 py-2 text-right font-medium">Input</th>
+                    <th className="px-3 py-2 text-right font-medium">From cache</th>
+                    <th className="px-3 py-2 text-right font-medium">Output</th>
+                    <th className="px-3 py-2 text-right font-medium">Cost</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y tabular-nums">
+                  {usage.days.map((d) => (
+                    <tr key={d.day}>
+                      <td className="px-3 py-2">{d.day}</td>
+                      <td className="px-3 py-2 text-right">{d.answers}</td>
+                      <td className="px-3 py-2 text-right">{d.failed}</td>
+                      <td className="px-3 py-2 text-right">
+                        {(d.tokensIn + d.cacheReadTokens + d.cacheWriteTokens).toLocaleString("en-IN")}
+                      </td>
+                      <td className="px-3 py-2 text-right">
+                        {d.cachedShare === null ? "—" : `${Math.round(d.cachedShare * 100)}%`}
+                      </td>
+                      <td className="px-3 py-2 text-right">{d.tokensOut.toLocaleString("en-IN")}</td>
+                      <td className="px-3 py-2 text-right">{usd(d.costUsd)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+          <p className="border-t px-4 py-2 text-xs text-muted-foreground">
+            Failed = the student got the fixed reply after an AI answer broke part-way; its tokens still cost.
+            &ldquo;From cache&rdquo; is the share of input read from the prompt cache at a tenth of the price.
+            Calls made outside the site (tests, scripts) are not here: the Anthropic Console is the bill.
+          </p>
+        </section>
 
         <section className="rounded-lg border">
           <h2 className="border-b px-4 py-3 text-sm font-semibold">V&rsquo;s settings</h2>
@@ -177,7 +232,7 @@ export default async function ChatUsagePage() {
                   {q.reply && (
                     <p className="mt-1 whitespace-pre-wrap break-words border-l-2 border-input pl-2 text-muted-foreground">
                       <span className="font-medium text-foreground">
-                        {q.replySource === "ai" ? "V (AI): " : "V (fixed reply): "}
+                        {q.replySource === "ai" ? "V (AI): " : q.replySource === "ai_failed" ? "V (fixed reply, AI failed): " : "V (fixed reply): "}
                       </span>
                       {q.reply}
                     </p>

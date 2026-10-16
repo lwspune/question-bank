@@ -16,7 +16,7 @@ export type ChatInteractionRow = {
   userId?: string | null;
   /** What V replied and where from; token use on AI replies (migration 0158). */
   reply?: string | null;
-  replySource?: "ai" | "fallback" | null;
+  replySource?: "ai" | "ai_failed" | "fallback" | null;
   tokensIn?: number | null;
   tokensOut?: number | null;
   /** Input read from / written to the prompt cache (migration 0161). */
@@ -58,11 +58,8 @@ export type ChatInteractionSummary = {
     signedIn: boolean;
     userId: string | null;
     reply: string | null;
-    replySource: "ai" | "fallback" | null;
+    replySource: "ai" | "ai_failed" | "fallback" | null;
   }[];
-  /** Typed questions V answered with AI, and their cost at list price. */
-  aiAnswers: number;
-  aiCostUsd: number;
   /** The practice-test builder's funnel (migration 0157), every step listed. */
   builder: { step: string; label: string; count: number }[];
 };
@@ -75,8 +72,6 @@ export function summarizeChatInteractions(rows: readonly ChatInteractionRow[]): 
   const counts = new Map<string, number>();
   const typed: ChatInteractionSummary["typed"] = [];
   const builderCounts = new Map<string, number>();
-  let aiAnswers = 0;
-  let aiCostUsd = 0;
 
   for (const r of rows) {
     if (r.eventType === "launcher_open") {
@@ -98,10 +93,6 @@ export function summarizeChatInteractions(rows: readonly ChatInteractionRow[]): 
           replySource: r.replySource ?? null,
         });
       }
-      if (r.replySource === "ai") {
-        aiAnswers++;
-        aiCostUsd += aiAnswerCostUsd(r);
-      }
       continue;
     }
     totalClicks++;
@@ -115,5 +106,54 @@ export function summarizeChatInteractions(rows: readonly ChatInteractionRow[]): 
 
   const builder = BUILDER_STEP_LABELS.map(({ step, label }) => ({ step, label, count: builderCounts.get(step) ?? 0 }));
 
-  return { totalOpens, totalClicks, byQuestion, totalTyped: typed.length, typed, builder, aiAnswers, aiCostUsd };
+  return { totalOpens, totalClicks, byQuestion, totalTyped: typed.length, typed, builder };
+}
+
+/** One India-time day of V's AI use, as chat_ai_usage_by_day() (migration 0162) adds it up. */
+export type AiUsageDay = {
+  day: string;
+  /** AI answers given. */
+  answers: number;
+  /** Answers that failed part-way: the student got the fixed reply, the tokens were still spent. */
+  failed: number;
+  tokensIn: number;
+  tokensOut: number;
+  cacheReadTokens: number;
+  cacheWriteTokens: number;
+};
+
+export type AiUsageSummary = {
+  /** Every day ever: the "AI cost so far" figure. */
+  total: { answers: number; failed: number; costUsd: number };
+  /** The last DAYS_SHOWN India-time days with any AI use, newest first. */
+  days: (AiUsageDay & { costUsd: number; cachedShare: number | null })[];
+};
+
+const DAYS_SHOWN = 30;
+const IST_OFFSET_MS = 330 * 60 * 1000;
+const DAY_MS = 24 * 60 * 60 * 1000;
+
+/**
+ * Prices V's AI use. The sums come from the database, one row per day, so no
+ * row limit can make the total undercount (the old version added up the newest
+ * 5,000 rows read). `cachedShare` is the part of the day's input read from the
+ * prompt cache: near zero for days means the cache is not hitting.
+ */
+export function summarizeAiUsage(rows: readonly AiUsageDay[], now: Date): AiUsageSummary {
+  const total = { answers: 0, failed: 0, costUsd: 0 };
+  for (const r of rows) {
+    total.answers += r.answers;
+    total.failed += r.failed;
+    total.costUsd += aiAnswerCostUsd(r);
+  }
+  const todayIst = new Date(now.getTime() + IST_OFFSET_MS);
+  const cutoff = new Date(todayIst.getTime() - (DAYS_SHOWN - 1) * DAY_MS).toISOString().slice(0, 10);
+  const days = rows
+    .filter((r) => r.day >= cutoff)
+    .sort((a, b) => b.day.localeCompare(a.day))
+    .map((r) => {
+      const input = r.tokensIn + r.cacheReadTokens + r.cacheWriteTokens;
+      return { ...r, costUsd: aiAnswerCostUsd(r), cachedShare: input > 0 ? r.cacheReadTokens / input : null };
+    });
+  return { total, days };
 }

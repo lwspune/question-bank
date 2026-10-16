@@ -130,6 +130,31 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     expect((await rowFor(`route-${RUN}-fail`))?.[0]?.reply_source).toBe("fallback");
   });
 
+  it("keeps the tokens of an AI answer that failed part-way, and gives the fixed reply", async () => {
+    await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+    askV.mockReset();
+    askV.mockResolvedValue({
+      ok: false,
+      error: "Anthropic API 529",
+      tokensIn: 80,
+      tokensOut: 10,
+      cacheReadTokens: 0,
+      cacheWriteTokens: 2800,
+    });
+    const spy = vi.spyOn(console, "error").mockImplementation(() => {});
+    const { POST } = await import("@/app/api/chat/typed/route");
+    const res = await POST(post({ message: `route-${RUN}-partial atoms` }));
+    spy.mockRestore();
+    expect(await res.json()).toMatchObject({ reply: TYPED_QUESTION_REPLY, source: "fallback" });
+    const { data } = await admin
+      .from("chat_interactions")
+      .select("reply_source, tokens_in, tokens_out, cache_read_tokens, cache_write_tokens")
+      .like("message", `route-${RUN}-partial%`);
+    expect(data).toEqual([
+      { reply_source: "ai_failed", tokens_in: 80, tokens_out: 10, cache_read_tokens: 0, cache_write_tokens: 2800 },
+    ]);
+  });
+
   it("gives the fixed reply once the site's AI answers for the day are used up", async () => {
     await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 0 });
     askV.mockReset();
