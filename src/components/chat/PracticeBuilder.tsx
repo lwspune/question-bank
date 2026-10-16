@@ -7,6 +7,7 @@ import { Check, ChevronLeft, Loader2, Play, RotateCcw, Sparkles } from "lucide-r
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import PaperDownload from "@/app/mock/_components/PaperDownload";
+import SendToFriend from "@/components/practice/SendToFriend";
 import { cn } from "@/lib/utils";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
 import {
@@ -546,6 +547,7 @@ function BuiltCard({
           <PaperDownload slug={test.slug} paperTitle={test.title} variant="inline" />
         </div>
       </div>
+      <SendToFriend code={test.slug} title={test.title} questions={test.questions} minutes={test.minutes} />
     </div>
   );
 }

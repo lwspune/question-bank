@@ -29,6 +29,8 @@ import {
   PAPER_PAGES_CHATGPT_KEEP,
   NOTES_TITLES_CHATGPT_KEEP,
   NOTES_TITLES_SHARE_KEEP_PCT,
+  PRACTICE_FRIEND_SENDS_KEEP,
+  PRACTICE_FRIEND_STARTS_KEEP,
   PRACTICE_TESTS_ANSWERED_KEEP_PCT,
   PRACTICE_TESTS_STARTED_KEEP,
   PAPER_PAGES_SIGNUPS_KEEP,
@@ -226,7 +228,7 @@ function ExperimentCard({
       <header className="flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="font-semibold">{experiment.title}</h3>
         <p className="text-xs text-muted-foreground">
-          Live since {fmtDate(experiment.liveSince)} · check on {fmtDate(checkOn(experiment.liveSince))}
+          Live since {fmtDate(experiment.liveSince)} · check on {fmtDate(checkOn(experiment.liveSince, experiment.windowDays))}
         </p>
       </header>
       <p className="text-sm">{experiment.change}</p>
@@ -432,6 +434,18 @@ export default async function GrowthPage() {
             </p>
             <ReadingsList metric="practice-tests-started" />
             <ReadingsList metric="practice-tests-answered" />
+          </div>
+        );
+      case "practice-friends":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: build the shared results card if students
+              send {PRACTICE_FRIEND_SENDS_KEEP}+ practice tests and {PRACTICE_FRIEND_STARTS_KEEP}+ friends start their copy.
+            </p>
+            <ReadingsList metric="practice-friend-sends" />
+            <ReadingsList metric="practice-friend-starts" />
+            <ReadingsList metric="practice-friend-signups" />
           </div>
         );
       case "pyq-wording":

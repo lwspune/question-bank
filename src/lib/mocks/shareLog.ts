@@ -18,7 +18,7 @@ import type { ShareChannel } from "./share";
 
 export type ShareEvent = {
   userId: string | null;
-  subjectKind: "mock";
+  subjectKind: "mock" | "practice";
   subjectSlug: string;
   channel: ShareChannel;
   includedScore: boolean;
