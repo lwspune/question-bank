@@ -663,7 +663,11 @@ export const BROKEN_UNIT = /\\\//;
  * warn (no font metrics for ₹ in math). Move it out in front.
  */
 export function liftCurrencyOutOfMath(text: string): string {
-  return text.replace(/\\\(\s*Rs\.\s*/g, "Rs. \\(").replace(/\\\(\s*₹\s*/g, "₹\\(");
+  return text
+    .replace(/\\\(\s*Rs\.\s*/g, "Rs. \\(")
+    .replace(/\\\(\s*₹\s*/g, "₹\\(")
+    .replace(/(Rs\.\s*|₹)\\\(\\\)\s*/g, "$1")
+    .replace(/(Rs\.\s*|₹)\\\(\\ \s*/g, "$1\\(");
 }
 
 /** A backslash before a digit: no LaTeX command starts with one, so it is a lost `\(` or `\)`. */
