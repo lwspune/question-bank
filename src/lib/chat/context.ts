@@ -47,7 +47,12 @@ export type VContext = { system: string; tools: VTool[]; allowedPaths: Set<strin
  */
 export async function loadVContext(
   anon: SupabaseClient,
-  opts: { loadChapters?: () => Promise<readonly ChapterSearchRow[]>; page?: string | null } = {}
+  opts: {
+    loadChapters?: () => Promise<readonly ChapterSearchRow[]>;
+    page?: string | null;
+    /** False: a signed-out visitor, whose question is their only one (lib/chat/anonLimit.ts). */
+    signedIn?: boolean;
+  } = {}
 ): Promise<VContext> {
   const loadChapters = opts.loadChapters ?? listChapterLandings;
   const [plans, limits, bankCount, pyqBySlug] = await Promise.all([
@@ -70,6 +75,7 @@ export async function loadVContext(
     bankTotal: bankCount.count ?? 0,
     nav: NAV_FACTS,
     page: opts.page ?? null,
+    signedIn: opts.signedIn,
   });
 
   const allowedPaths = new Set(pathsInReply([...NAV_FACTS, ...exams].join("\n")));

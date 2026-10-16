@@ -12,6 +12,7 @@ import { NextRequest } from "next/server";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { TYPED_QUESTION_REPLY } from "@/lib/chat/typed";
+import { ANON_ASKED_COOKIE, SIGN_IN_TO_ASK_REPLY } from "@/lib/chat/anonLimit";
 
 const askV = vi.fn();
 vi.mock("@/lib/chat/anthropic", async (orig) => ({
@@ -136,6 +137,43 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     const res = await POST(post({ message: `route-${RUN}-cap hello` }));
     expect((await res.json()).reply).toBe(TYPED_QUESTION_REPLY);
     expect(askV).not.toHaveBeenCalled();
+  });
+
+  it("answers a signed-out visitor's first question, tells V it is their only one, and marks the browser", async () => {
+    await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+    askV.mockReset();
+    askV.mockResolvedValue({ ok: true, reply: "Atoms is at /mock.", tokensIn: 10, tokensOut: 5 });
+    const { POST } = await import("@/app/api/chat/typed/route");
+    const res = await POST(post({ message: `route-${RUN}-anon1 atoms pyq` }));
+    expect(await res.json()).toMatchObject({ ok: true, source: "ai", signInToContinue: true });
+    expect(res.headers.get("set-cookie")).toContain(`${ANON_ASKED_COOKIE}=1`);
+    expect(askV.mock.calls[0][0].system).toMatch(/only this one reply/i);
+  });
+
+  it("asks a signed-out visitor to sign in for a second question, without calling the AI, and keeps the question", async () => {
+    await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+    askV.mockReset();
+    const { POST } = await import("@/app/api/chat/typed/route");
+    const req = post({ message: `route-${RUN}-anon2 and nuclei?` });
+    req.headers.set("cookie", `${ANON_ASKED_COOKIE}=1`);
+    const res = await POST(req);
+    expect(res.status).toBe(200);
+    expect(await res.json()).toMatchObject({
+      ok: true,
+      reply: SIGN_IN_TO_ASK_REPLY,
+      source: "fallback",
+      signInRequired: true,
+    });
+    expect(askV).not.toHaveBeenCalled();
+    expect(await rowFor(`route-${RUN}-anon2`)).toEqual([
+      {
+        message: `route-${RUN}-anon2 and nuclei?`,
+        reply: SIGN_IN_TO_ASK_REPLY,
+        reply_source: "fallback",
+        tokens_in: null,
+        tokens_out: null,
+      },
+    ]);
   });
 
   it("holds one person to the hourly limit set on the dashboard", async () => {

@@ -87,6 +87,7 @@ export function buildFreeFacts(limits: FreeLimits | null): string[] {
 export const NAV_FACTS: readonly string[] = [
   "/browse: filter and preview the question bank by exam, chapter, subtopic, difficulty and year (free, no account needed); its exam picker lists every exam we cover.",
   "/mock: real past papers as timed, auto-graded online tests.",
+  "/questions: every chapter's question page, listed exam by exam and subject by subject.",
   "/question-papers: whole board past papers (CBSE Class 12, Maharashtra HSC and SSC) with marks and answers.",
   "/board: textbook solutions for board exams, chapter by chapter, plus each chapter's Top 10 most-repeated PYQs.",
   "/notes: teaching notes per chapter, free to read.",
@@ -106,7 +107,15 @@ export type ChatFacts = {
   nav: readonly string[];
   /** The page the student asked from (lib/chat/conversation cleanPagePath). */
   page?: string | null;
+  /** False for a signed-out visitor, who gets one reply before signing in (lib/chat/anonLimit.ts). */
+  signedIn?: boolean;
 };
+
+/** A signed-out visitor's question is their only one, so a question back would be a dead end. */
+const ONE_REPLY_RULE = `
+
+THIS VISITOR IS SIGNED OUT
+They get only this one reply; to ask more they must sign in, and this chat tells them so. Do not ask them anything back. Give your best answer now: if the exam, class or chapter is unclear, pick the most likely from their words and the page they are on, call find_chapters, and link the one to three closest chapter pages. If the subject is clear but the chapter is not, link up to three likely chapters and point to /questions for every chapter.`;
 
 /** The full system prompt for V. Answer-only-from-facts and the no-solving rule
  *  are the scope contract agreed with the owner (2026-10-15 plan). */
@@ -146,5 +155,5 @@ PASSES ON SALE
 ${planBlock}
 
 WHERE THINGS ARE
-${facts.nav.join("\n")}${facts.page ? `\n\nThe student is on the page ${facts.page} (you cannot see what is on it).` : ""}`;
+${facts.nav.join("\n")}${facts.page ? `\n\nThe student is on the page ${facts.page} (you cannot see what is on it).` : ""}${facts.signedIn === false ? ONE_REPLY_RULE : ""}`;
 }

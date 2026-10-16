@@ -21,7 +21,9 @@ import {
   writeStoredChat,
 } from "@/lib/chat/localChat";
 import { celebrate } from "@/components/celebrate/celebrate";
-import { fetchViewerSession } from "@/lib/viewer/useViewerSession";
+import { fetchViewerSession, hasAuthCookie } from "@/lib/viewer/useViewerSession";
+import { anonAskedFromCookieHeader } from "@/lib/chat/anonLimit";
+import { Button } from "@/components/ui/button";
 
 /** How often a signed-in visitor's page loads may ask for a late answer (0160). */
 const ACCOUNT_CHECK_EVERY_MS = 30 * 60 * 1000;
@@ -163,6 +165,8 @@ export default function ChatWidget() {
   const [unread, setUnread] = useState(0);
   const [sending, setSending] = useState(false);
   const [draft, setDraft] = useState("");
+  // Signed out with the one typed question used (lib/chat/anonLimit.ts).
+  const [signInNeeded, setSignInNeeded] = useState(false);
   // Phones only: tuck the launcher away while the student scrolls down a page
   // and bring it back on any scroll up (UX_ACTION_PLAN.md A7). It used to sit
   // over card content on every page. Never while the chat is open.
@@ -253,10 +257,13 @@ export default function ChatWidget() {
   }, [conversationId, turns]);
 
   // Signed in: look for a late answer once this page load (throttled).
+  // Signed out on a browser that has used its one question: show the sign-in button.
   useEffect(() => {
     let active = true;
     void fetchViewerSession().then((session) => {
-      if (active && session && accountCheckDue()) void loadAccountConversation();
+      if (!active) return;
+      if (!session && anonAskedFromCookieHeader(document.cookie)) setSignInNeeded(true);
+      if (session && accountCheckDue()) void loadAccountConversation();
     });
     return () => {
       active = false;
@@ -276,6 +283,11 @@ export default function ChatWidget() {
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight });
   }, [turns]);
+
+  // Email sign-in returns here without a page load, so V stays mounted: drop the sign-in button.
+  useEffect(() => {
+    if (signInNeeded && hasAuthCookie()) setSignInNeeded(false);
+  }, [pathname, signInNeeded]);
 
   function close() {
     setOpen(false);
@@ -441,8 +453,11 @@ export default function ChatWidget() {
         links?: string[];
         id?: string | null;
         source?: "ai" | "fallback";
+        signInToContinue?: boolean;
+        signInRequired?: boolean;
         error?: string;
       };
+      if (data.signInToContinue || data.signInRequired) setSignInNeeded(true);
       if (!res.ok || !data.ok || !data.reply) {
         const errorText = data.error || "V couldn't take that question. Please try again.";
         addTurn({ role: "assistant", avatar: "idle", text: errorText, transient: true });
@@ -617,6 +632,14 @@ export default function ChatWidget() {
             />
           </div>
 
+          {signInNeeded ? (
+            <div className="space-y-2 border-t border-input px-3 pb-3 pt-3">
+              <p className="text-xs text-muted-foreground">Sign in to keep chatting with V. It&apos;s free.</p>
+              <Button asChild variant="brand" className="w-full">
+                <Link href={`/login?next=${encodeURIComponent(pathname)}`}>Sign in to keep chatting</Link>
+              </Button>
+            </div>
+          ) : (
           <form
             className="border-t border-input px-3 pb-2 pt-2"
             onSubmit={(e) => {
@@ -647,6 +670,7 @@ export default function ChatWidget() {
               Chats are saved to help improve V. Please don&apos;t share your phone number or email.
             </p>
           </form>
+          )}
           </>
           )}
         </div>

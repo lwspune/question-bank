@@ -222,6 +222,18 @@ describe("buildSystemPrompt", () => {
     expect(buildSystemPrompt(base)).toMatch(/list the chapter names/i);
   });
 
+  it("tells a signed-out visitor's V it has one reply: no questions back, best answer now", () => {
+    const p = buildSystemPrompt({ ...base, signedIn: false });
+    expect(p).toMatch(/only this one reply/i);
+    expect(p).toMatch(/do not ask them anything back/i);
+    expect(p).toContain("/questions");
+  });
+
+  it("leaves the one-reply rule out for a signed-in student", () => {
+    expect(buildSystemPrompt({ ...base, signedIn: true })).not.toMatch(/only this one reply/i);
+    expect(buildSystemPrompt(base)).not.toMatch(/only this one reply/i);
+  });
+
   it("has no em dashes of its own", () => {
     expect(buildSystemPrompt(base)).not.toContain(EM_DASH);
   });
