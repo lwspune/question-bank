@@ -157,4 +157,28 @@ describe("formatChapterHits", () => {
   it("says plainly when nothing was found", () => {
     expect(formatChapterHits([])).toMatch(/no chapter/i);
   });
+
+  it("names the exam and subject once, not on every chapter line (the model pays per token)", () => {
+    const text = formatChapterHits(searchChapters(REAL, { query: "physics", exam: "CBSE Class 12" }));
+    expect(text.match(/CBSE Class 12/g)).toHaveLength(1);
+    expect(text.split("\n")).toHaveLength(15); // one header + 14 chapters
+    expect(text).toContain("Electric Charges and Fields (300 q) /questions/cbse-12/physics/electric-charges-and-fields");
+  });
+
+  it("gives each exam and subject its own header when the hits span several", () => {
+    const text = formatChapterHits(searchChapters(ROWS, { query: "laws of motion" }));
+    expect(text).toBe(
+      [
+        "JEE Mains | Physics",
+        "- Laws of Motion (300 q) /questions/jee-mains/physics/laws-of-motion",
+        "NEET | Physics",
+        "- Laws of Motion (200 q) /questions/neet/physics/laws-of-motion",
+      ].join("\n")
+    );
+  });
+
+  it("marks a textbook-practice chapter", () => {
+    const practice = { ...REAL[0], practiceOnly: true };
+    expect(formatChapterHits([practice])).toContain("(51 q, textbook practice)");
+  });
 });

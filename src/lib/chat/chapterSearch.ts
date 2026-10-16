@@ -132,14 +132,21 @@ export function chapterPath(row: ChapterSearchRow): string {
   return `/questions/${row.examSlug}/${row.subjectSlug}/${row.chapterSlug}`;
 }
 
-/** What the model reads back: one line per chapter, with the page to link. */
+/**
+ * What the model reads back: a header per exam and subject, then one line per
+ * chapter with its page to link. The model pays for every token it reads, so
+ * the exam and subject are named once, not on each of up to 20 lines. Groups
+ * keep the ranking: they appear in the order of their best chapter.
+ */
 export function formatChapterHits(hits: readonly ChapterSearchRow[]): string {
   if (hits.length === 0) return "No chapter matched. Suggest /browse to search, or ask which exam they mean.";
-  return hits
-    .map(
-      (h) =>
-        `${h.examName} | ${h.subjectName} | ${h.chapterName} | ${h.questionCount} questions` +
-        `${h.practiceOnly ? " (textbook practice)" : ""} | ${chapterPath(h)}`
-    )
-    .join("\n");
+  const groups = new Map<string, string[]>();
+  for (const h of hits) {
+    const header = `${h.examName} | ${h.subjectName}`;
+    const lines = groups.get(header) ?? [];
+    const count = `${h.questionCount} q${h.practiceOnly ? ", textbook practice" : ""}`;
+    lines.push(`- ${h.chapterName} (${count}) ${chapterPath(h)}`);
+    groups.set(header, lines);
+  }
+  return [...groups.entries()].flatMap(([header, lines]) => [header, ...lines]).join("\n");
 }
