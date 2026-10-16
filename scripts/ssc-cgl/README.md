@@ -5,8 +5,8 @@ subjects: Reasoning, Quantitative Aptitude, English, and General Awareness split
 subjects CDS General Knowledge uses (History, Geography, Polity, Economics, Physics, Chemistry,
 Biology, Current Affairs; owner, 2026-10-16).
 
-**Status (2026-10-17): Tier I, 16, 18 and 19 September 2025, nine shifts: 875 questions
-committed PRIVATE (16 Sep Shift 3 is 75: the hosted file has no PART-C). Nothing is PUBLIC.** Not in `EXAM_REGISTRY`, no mocks yet.
+**Status (2026-10-17): Tier I, 12, 14, 16, 18 and 19 September 2025, fifteen shifts: 1,472 rows
+committed PRIVATE (16 Sep Shift 3 is 75: the hosted file has no PART-C; two repeats are in repeats.json). Nothing is PUBLIC.** Not in `EXAM_REGISTRY`, no mocks yet.
 
 ## The source, and why it is the only one
 
@@ -124,6 +124,9 @@ On review:
 | 12 Sep S1 (agents) | 100/100 | none | none | Q82 (barely and scarcely both fit), Q88 (no true homonym of "introit") |
 | 12 Sep S2 (agents) | 98/100 | Q9 (word list: DORP), Q98 (judgement) | none | Q88 (no true homonym of "gules") |
 | 12 Sep S3 (agents, 99 rows) | 98/100 | Q21 (judgement) | Q82 ("the negotiations" needs "were") | Q33 (Hot Stage is a crime novel; no option fits). Q65 repeats 16 Sep S2 Q59 (repeats.json) |
+| 14 Sep S1 (agents) | 98/100 | none | Q62 (the cost prices give a profit, the key says loss), Q84 ("No sooner had the findings published" lacks "been") | Q53 (1:1 and 25:25 both offered), Q88 (no true homonym of "pauldron") |
+| 14 Sep S2 (agents) | 98/100 | Q43 (PMKSY's ministry, our guess) | Q41 (PSLV-C59 flew in December 2024, not October) | Q83 ("On" and "Upon" both fit) |
+| 14 Sep S3 (agents, 99 rows) | 95/100 | Q38, Q65, Q82, Q89 (judgement) | Q96 (the key gives "adapt adapt to") | Q88 (no true homonym of "rheme"). Q53 repeats 12 Sep S2 Q52 |
 
 ## Repeated questions
 
