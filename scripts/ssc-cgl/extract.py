@@ -26,11 +26,12 @@ import sys
 import fitz  # PyMuPDF
 
 BORDER = (0.83, 0.79, 0.71)
+WHITE = (1.0, 1.0, 1.0)
 FILLS = {(0.0, 0.5, 0.0): "G", (1.0, 1.0, 0.0): "Y", (1.0, 0.0, 0.0): "R", (0.5, 0.5, 0.5): "N"}
 # Bands relative to the table edge L (see table_edge). Measured: x0 within L-4..L+6, the
 # column's right edge 36..62 pt to the right of L.
 X0_BAND = (-4.0, 6.0)
-X1_BAND = (36.0, 62.0)
+X1_BAND = (30.0, 62.0)  # 23 Sep 2025: the key cell is 35 pt wide
 LABEL_BAND = 10.0  # a "Q.No: n" label starts within this many points of L
 Q_RE = re.compile(r"Q\.No:\s*(\d+)")
 PART_RE = re.compile(r"PART-([A-D])\s*\(")
@@ -69,7 +70,7 @@ def page_images(page, pno, img_dir):
 
 
 def cells_of(page, pno, images, edge):
-    ys, fills = [], []
+    ys, boxes, fills = [], [], []
     if edge is None:
         return []
     for dr in page.get_drawings():
@@ -79,8 +80,15 @@ def cells_of(page, pno, images, edge):
         f = rgb(dr.get("fill"))
         if f == BORDER and r.height < 1.5:
             ys += [r.y0, r.y1]
+        elif f == WHITE and r.height > 6:
+            boxes += [r.y0, r.y1]
         elif f in FILLS and r.height > 8:
             fills.append((r.y0, r.y1, FILLS[f]))
+    if not ys:
+        # 23 Sep 2025 render: no BORDER rules between rows; each left cell is a white box
+        # drawn over a BORDER-filled table, so the boxes' own edges bound the rows. Only a
+        # fallback: the older render has white boxes too, and its rules already split it.
+        ys = boxes
     edges = []
     for y in sorted(ys):
         if not edges or y - edges[-1] > 1.2:

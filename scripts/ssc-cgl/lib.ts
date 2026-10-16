@@ -129,7 +129,10 @@ export function assembleQuestions(g: Geometry, opts: AssembleOptions = {}): Asse
     });
   }
 
+  // The web-page render prints each PART as its own tall page, in any order (26 Sep 2025 S1:
+  // D, B, C, A), so a shift is checked and returned in NUMBER order, not print order.
   const shifts = [...new Set(out.map((q) => q.shift))];
+  out.sort((a, b) => shifts.indexOf(a.shift) - shifts.indexOf(b.shift) || a.number - b.number);
   for (const s of shifts) {
     const nums = out.filter((q) => q.shift === s).map((q) => q.number);
     const gaps = missingIn(s);
