@@ -14,7 +14,7 @@
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { DAYS, OUT, SHIFTS } from "./config";
+import { DAYS, OUT, SHIFTS, shiftsOf } from "./config";
 import { assembleQuestions, type Geometry } from "./lib";
 
 function main() {
@@ -30,8 +30,9 @@ function main() {
   }
 
   const shifts = [...new Set(questions.map((q) => q.shift))].sort();
-  if (shifts.length !== DAYS[day].shifts) {
-    throw new Error(`${day}: DAYS says ${DAYS[day].shifts} shift(s), the PDF has ${shifts.length} (${shifts.join(", ")})`);
+  const want = shiftsOf(DAYS[day]);
+  if (shifts.join() !== want.join()) {
+    throw new Error(`${day}: DAYS says shift(s) ${want.join(", ")}, the PDF has ${shifts.join(", ")}`);
   }
   for (const s of shifts) {
     const id = `${day}-s${s}`;

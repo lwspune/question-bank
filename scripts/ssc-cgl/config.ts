@@ -62,7 +62,12 @@ export type Day = {
   provisionalKey: boolean;
   /** shift -> question numbers the hosted file does not contain (its gap, not ours) */
   missing?: Record<number, number[]>;
+  /** the shift numbers the hosted file holds, when it lacks whole shifts (13 Sep 2025: 2, 3) */
+  present?: number[];
 };
+
+/** The shift numbers a day's file holds: `present`, or 1..shifts. */
+export const shiftsOf = (d: Day): number[] => d.present ?? Array.from({ length: d.shifts }, (_, i) => i + 1);
 const t1_2025 = (dd: string, mon: "Sep" | "Oct", docId: string, extra: Partial<Day> = {}): Day => ({
   tier: 1,
   date: `2025-${mon === "Sep" ? "09" : "10"}-${dd}`,
@@ -78,7 +83,18 @@ export const DAYS: Record<string, Day> = {
   "t1-2025-09-14": t1_2025("14", "Sep", "1c04e296-8c19-11f1-b4ad-0aa932765c8b"),
   "t1-2025-09-15": t1_2025("15", "Sep", "1f3fefb4-8c19-11f1-b79a-0aa932765c8b"),
   "t1-2025-09-17": t1_2025("17", "Sep", "2643aefe-8c19-11f1-8ce7-0aa932765c8b"),
+  // The hosted 13 Sep file holds Shifts 2 and 3 only (88 pages, no Shift 1 at all).
+  "t1-2025-09-13": t1_2025("13", "Sep", "15180936-8c19-11f1-b794-0aa932765c8b", { shifts: 2, present: [2, 3] }),
+  // The hosted 20 Sep file: pages 2-5 are a complete Shift 1 (web print, one tall page per
+  // PART); pages 6-38 are a second render with no text Q.No labels and pages 39-42 are
+  // screenshots, neither readable here yet. Extract with --pages=2-5.
+  "t1-2025-09-20": t1_2025("20", "Sep", "303df2f2-8c19-11f1-8b00-0aa932765c8b", { shifts: 1 }),
+  // The hosted 21 Sep file has no PART-A for Shift 2 (Q1-25).
+  "t1-2025-09-21": t1_2025("21", "Sep", "33741f14-8c19-11f1-87d6-0aa932765c8b", { missing: { 2: Array.from({ length: 25 }, (_, i) => i + 1) } }),
+  // The hosted 22 Sep file holds Shifts 1 and 3 only.
+  "t1-2025-09-22": t1_2025("22", "Sep", "36226270-8c19-11f1-8111-0aa932765c8b", { shifts: 2, present: [1, 3] }),
   "t1-2025-09-23": t1_2025("23", "Sep", "390f6be0-8c19-11f1-af57-0aa932765c8b"),
+  "t1-2025-09-24": t1_2025("24", "Sep", "3c8b27dc-8c19-11f1-813c-0aa932765c8b"),
   "t1-2025-09-26": t1_2025("26", "Sep", "3f3b42e6-8c19-11f1-979e-0aa932765c8b"),
   "t1-2025-09-16": {
     tier: 1,
@@ -118,8 +134,7 @@ const TIER = ["", "I", "II"];
 export const SHIFTS: Record<string, Shift> = Object.fromEntries(
   Object.entries(DAYS).flatMap(([day, d]) => {
     const [y, m, dd] = d.date.split("-").map(Number);
-    return Array.from({ length: d.shifts }, (_, i) => {
-      const shift = i + 1;
+    return shiftsOf(d).map((shift) => {
       return [
         `${day}-s${shift}`,
         {

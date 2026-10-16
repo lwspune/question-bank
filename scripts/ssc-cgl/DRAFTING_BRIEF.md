@@ -67,7 +67,9 @@ solution:
 - **Solutions:** plain English, short, no em dashes. Quant shows the working (blank line between
   steps) and VERIFIES the answer a second way where cheap. GA gives the fact and, where useful,
   why the others are wrong. You may use web search for a GA fact; say in your report which
-  answers rest on a search.
+  answers rest on a search. Search the FACT (names, dates, terms), never the question's own
+  wording: quiz sites carry these exact questions with their answers, and seeing one ends the
+  blind derivation. If a result shows this question with an answer anyway, say so in your report.
 - **Flawed:** if no option is right or two are, still give the best answer and add
   `flawed: yes` and `note: <why>` after `answer:`.
 - **Figures:** if a question needs a picture (figure, diagram, map, chart) to be answered, add

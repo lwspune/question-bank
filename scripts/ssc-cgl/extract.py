@@ -127,14 +127,20 @@ def markers_of(page, pno, edge):
 
 def main():
     if len(sys.argv) < 3:
-        sys.exit("usage: extract.py <dayId> <pdfPath>")
+        sys.exit("usage: extract.py <dayId> <pdfPath> [--pages=FROM-TO]")
     day, pdf = sys.argv[1], sys.argv[2]
+    # --pages=2-5 (1-based, inclusive) reads only part of a file: 20 Sep 2025 holds a
+    # readable Shift 1 on pages 2-5 and, after it, renders this reader cannot use yet.
+    span = next((a.split("=", 1)[1] for a in sys.argv[3:] if a.startswith("--pages=")), None)
+    first, last = (int(x) for x in span.split("-")) if span else (1, 10**9)
     out_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "out", day)
     img_dir = os.path.join(out_dir, "img")
     os.makedirs(img_dir, exist_ok=True)
     doc = fitz.open(pdf)
     cells, markers = [], []
     for pno, page in enumerate(doc):
+        if not first - 1 <= pno <= last - 1:
+            continue
         images = page_images(page, pno, img_dir)
         edge = table_edge(page)
         cells += cells_of(page, pno, images, edge)

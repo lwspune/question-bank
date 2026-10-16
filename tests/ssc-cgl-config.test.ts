@@ -65,6 +65,12 @@ describe("SSC CGL shifts", () => {
     }
   });
 
+  it("registers only the shifts a day's file holds (13 Sep 2025 has Shifts 2 and 3, not 1)", () => {
+    expect(ids).toEqual(expect.arrayContaining(["t1-2025-09-13-s2", "t1-2025-09-13-s3"]));
+    expect(ids).not.toContain("t1-2025-09-13-s1");
+    expect(SHIFTS["t1-2025-09-13-s3"].pyqNote).toBe("Tier I, 13 Sep 2025, Shift 3");
+  });
+
   it("gives every shift its own source_file (mocks find a sitting by it)", () => {
     const files = ids.map((id) => SHIFTS[id].sourceFile);
     expect(new Set(files).size).toBe(files.length);
