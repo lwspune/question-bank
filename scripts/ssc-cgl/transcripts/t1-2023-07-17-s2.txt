@@ -1,0 +1,1678 @@
+SSC CGL 2023 Tier I, 17 Jul 2023 Shift 2. Read from SSC's response sheet (TCS print; the key is the option colour, masked on the reading sheets).
+Drafted by agents, one PART each, from the reading sheets only (no key; DRAFTING_BRIEF.md);
+every block reviewed in the main session, then compared with the key (build.ts).
+Format: scripts/ssc-cgl/lib.ts.
+
+=== 1
+chapter: Blood Relations
+subtopic: Coded Relations
+difficulty: MODERATE
+answer: B
+stem:
+‘\(A + B\)’ means ‘A is the sister of B’.
+‘\(A - B\)’ means ‘A is the brother of B’.
+‘\(A \times B\)’ means ‘A is the father of B’.
+‘\(A \div B\)’ means ‘A is the wife of B’.
+If \(A + B - C \div D \times E - F\), then which of the following statements is NOT correct?
+A: C is the mother of F.
+B: E is the brother of B.
+C: A is the sister of the wife of D.
+D: A is the sister of C.
+solution:
+A is the sister of B, B (male) is the brother of C, C is the wife of D, D is the father of E, and E (male) is the brother of F.
+
+So A, B and C are siblings, C and D are the parents of E and F. C is the mother of F, A is the sister of C (the wife of D): those are correct.
+
+E is the son of B's sister C, so E is B's nephew, not his brother. The statement that is NOT correct is "E is the brother of B".
+
+=== 2
+chapter: Analogy
+subtopic: Number Set Analogy
+difficulty: MODERATE
+answer: A
+stem:
+Select the set in which the numbers are related in the same way as are the numbers of the following set.
+(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into their constituent digits. E.g. 13 – Operations on 13 such as adding /subtracting /multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed)
+(85 , 24 , 133)
+(97 , 36 , 145)
+A: (79, 18, 127)
+B: (71, 15, 124)
+C: (86, 23, 135)
+D: (67, 12, 111)
+solution:
+Third number = first number + 48: \(85 + 48 = 133\), \(97 + 48 = 145\). (Equally, first = second + 61.)
+
+(79, 18, 127): \(79 + 48 = 127\) and \(18 + 61 = 79\). Fits.
+
+The others fail: \(71 + 48 = 119 \ne 124\), \(86 + 48 = 134 \ne 135\), \(67 + 48 = 115 \ne 111\).
+
+=== 3
+chapter: Coding-Decoding
+subtopic: Number and Symbol Coding
+difficulty: MODERATE
+answer: C
+stem:
+In a certain code language, if ‘PDU’ is written as ‘40’ and ‘HXO’ is written as ‘34’, how will ‘BMW’ be written in the same code language?
+A: 28
+B: 36
+C: 43
+D: 34
+solution:
+The code is the sum of the reverse alphabet positions (Z = 1, Y = 2, ..., A = 26).
+
+PDU: \(11 + 23 + 6 = 40\). HXO: \(19 + 3 + 12 = 34\).
+
+BMW: \(25 + 14 + 4 = 43\).
+
+=== 4
+chapter: Mathematical Operations
+subtopic: Interchanging Signs and Numbers
+difficulty: MODERATE
+answer: D
+stem:
+Which two signs should be interchanged to make the given equation correct?
+\(625 \div 25 + 7 \times 318 - 112 = 381\)
+A: \(-\) and \(+\)
+B: \(\div\) and \(+\)
+C: \(\div\) and \(-\)
+D: \(+\) and \(\times\)
+solution:
+Interchanging \(+\) and \(\times\): \(625 \div 25 \times 7 + 318 - 112 = 25 \times 7 + 318 - 112 = 175 + 318 - 112 = 381\). Correct.
+
+=== 5
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: C
+stem:
+Which number should replace the question mark (?) in the following number series?
+512, 508, 500, 496, ?, 484
+A: 480
+B: 484
+C: 488
+D: 490
+solution:
+The differences alternate \(-4, -8\): 512, 508, 500, 496, 488, 484.
+
+=== 6
+chapter: Non-Verbal Series and Analogy
+subtopic: Figure Series
+difficulty: EASY
+answer: B
+figure: stem+options
+stem:
+Select the figure that will replace the question mark (?) in the following series.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The rectangle keeps its two triangles on the left. Triangles are added one at a time: one on top, then a second on top, then one on the right. The next figure adds a second triangle on the right: two on the left, two on top and two on the right, which is option B.
+
+=== 7
+chapter: Analogy
+subtopic: Letter Analogy
+difficulty: EASY
+answer: A
+stem:
+Select the option that is related to the fifth letter-cluster in the same way as the second letter-cluster is related to the first letter-cluster and the fourth letter-cluster is related to the third letter-cluster.
+BULL: CDVWMNMN :: SHOT: TUIJPQUV :: TENS: ?
+A: UVFGOPTU
+B: OPTUUVFG
+C: OPTUOPTU
+D: UVFGUVFG
+solution:
+Each letter is replaced by the next two letters: B gives CD, U gives VW, L gives MN; S gives TU, H gives IJ, O gives PQ, T gives UV.
+
+TENS: T gives UV, E gives FG, N gives OP, S gives TU: UVFGOPTU.
+
+=== 8
+chapter: Series
+subtopic: Letter Series
+difficulty: MODERATE
+answer: D
+stem:
+Select the option that represents the letters that, when sequentially placed from left to right in the blanks below, will complete the letter series.
+C _ _ SRCNP _ _ _ N _ SRC _ PS _
+A: PSNRCPNR
+B: NPSRCPRN
+C: NPSRPCRN
+D: NPSRCPNR
+solution:
+The series repeats CNPSR four times: CNPSR CNPSR CNPSR CNPSR.
+
+The blanks are N, P, S, R, C, P, N, R: NPSRCPNR.
+
+=== 9
+chapter: Classification
+subtopic: Letter Classification
+difficulty: EASY
+answer: C
+stem:
+Three of the following four letter-clusters are alike in a certain way and one is different. Pick the odd one out.
+A: HMS
+B: AFZ
+C: KQP
+D: DIW
+solution:
+In HMS (H + 5 = M), AFZ (A + 5 = F) and DIW (D + 5 = I) the second letter is 5 places after the first.
+
+In KQP, Q is 6 places after K, so KQP is the odd one out.
+
+=== 10
+chapter: Non-Verbal Series and Analogy
+subtopic: Figure Series
+difficulty: MODERATE
+answer: B
+figure: stem+options
+stem:
+Select the figure that will come in place of the question mark (?) in the following figure series.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The small circle moves clockwise round the corners (top-left, top-right, bottom-right, bottom-left) and alternates white and black, so the next is a white circle at the top-left.
+
+The five forward-slanting lines stay, while the backward-slanting lines drop by one in each figure (four, three, two, one), so the next figure has none. That is option B.
+
+=== 11
+chapter: Analogy
+subtopic: Number Set Analogy
+difficulty: EASY
+answer: B
+stem:
+Select the set in which the numbers are related in the same way as are the numbers of the following set.
+(NOTE : Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 – Operations on 13 such as adding /subtracting /multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is NOT allowed)
+(2, 114, 19)
+(12, 216, 6)
+A: (5, 20, 2)
+B: (6, 144, 8)
+C: (11, 176, 4)
+D: (4, 128, 7)
+solution:
+Middle number = 3 \(\times\) first \(\times\) third: \(3 \times 2 \times 19 = 114\), \(3 \times 12 \times 6 = 216\).
+
+(6, 144, 8): \(3 \times 6 \times 8 = 144\). Fits.
+
+The others give \(3 \times 5 \times 2 = 30\), \(3 \times 11 \times 4 = 132\) and \(3 \times 4 \times 7 = 84\).
+
+=== 12
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: EASY
+answer: A
+stem:
+If ‘\(+\)’ means ‘division’, ‘\(-\)’ means ‘multiplication’, ‘\(\div\)’ means ‘addition’ and ‘\(\times\)’ means ‘subtraction’, then what is the value of the following expression?
+\(14 - 4 \div 133 + 7 \times 17\)
+A: 58
+B: 69
+C: 84
+D: 64
+solution:
+After substitution: \(14 \times 4 + 133 \div 7 - 17\)
+
+\(= 56 + 19 - 17 = 58\)
+
+=== 13
+chapter: Mirror and Water Images
+subtopic: Mirror Images
+difficulty: MODERATE
+answer: C
+figure: stem+options
+stem:
+Which of the answer figures is the exact mirror image of the given problem figure when the mirror is held at the right side?
+Problem figure:
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+A mirror on the right swaps the left and right columns and flips each element. The right column of the problem figure (white bar, black pentagon with a small white square, white circle, black circle, white pentagon, black bar) moves to the left, with its circles now on the outer left side; the left column moves to the right with its circles on the outer right side.
+
+Option C shows exactly this. Option B puts the white circle of the left column on the inner side, option A swaps the pentagon colours and option D is rotated.
+
+=== 14
+chapter: Missing Number
+subtopic: Missing Number in Grids
+difficulty: MODERATE
+answer: A
+stem:
+Study the given pattern carefully and select the number that can replace the question mark (?) in it.
+(6, 2, 34)
+(1, 5, 13)
+(9, 1, ?)
+(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 – Operations on 13 such as adding/subtracting/multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed)
+A: 25
+B: 19
+C: 16
+D: 13
+solution:
+Third number = 3 \(\times\) first \(\times\) second \(- 2\): \(3 \times 6 \times 2 - 2 = 34\), \(3 \times 1 \times 5 - 2 = 13\).
+
+So \(3 \times 9 \times 1 - 2 = 25\).
+
+=== 15
+chapter: Alphabet and Number Tests
+subtopic: Dictionary Order
+difficulty: EASY
+answer: B
+stem:
+Select the option that represents the correct order of the given words as they would appear in an English dictionary.
+1. Salesman
+2. Salvage
+3. Salinity
+4. Salary
+5. Salmon
+6. Salivate
+A: 4, 3, 1, 6, 5, 2
+B: 4, 1, 3, 6, 5, 2
+C: 4, 1, 6, 3, 5, 2
+D: 1, 4, 3, 6, 2, 5
+solution:
+By the fourth letter: Sala (Salary), Sale (Salesman), Sali (Salinity, Salivate: n before v), Salm (Salmon), Salv (Salvage).
+
+Order: 4, 1, 3, 6, 5, 2.
+
+=== 16
+chapter: Embedded Figures and Pattern Completion
+subtopic: Embedded Figures
+difficulty: HARD
+answer: D
+figure: stem+options
+stem:
+Select the option figure in which the given figure is embedded. (Rotation is NOT allowed.)
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The given figure is an hourglass: two crossing diagonals closed by a horizontal line at the top and one at the bottom.
+
+The four options share most of their lines. Option D alone has both the short horizontal segment in the lower middle and the diagonal rising from its left end to the right end of the horizontal line above it. Together with the diagonal falling from that upper line's left end to the segment's right end, these form the hourglass. Option B lacks the lower horizontal segment, and options A and C lack the rising diagonal.
+
+=== 17
+chapter: Analogy
+subtopic: Word Analogy
+difficulty: EASY
+answer: C
+stem:
+Select the word-pair that best represents a similar relationship to the one expressed in the pair of words given below.
+Thermometer : Temperature
+A: Taseometer : Acceleration
+B: Micrometer : Speed
+C: Voltmeter : Voltage
+D: Galvanometer : Sound
+solution:
+A thermometer measures temperature; a voltmeter measures voltage.
+
+A taseometer measures strain, a micrometer small lengths and a galvanometer small electric currents.
+
+=== 18
+chapter: Mirror and Water Images
+subtopic: Mirror Images
+difficulty: EASY
+answer: B
+figure: stem+options
+stem:
+Select the correct mirror image of the given figure when the mirror is placed at PQ as shown below.
+RUVSYN
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The mirror PQ stands on the right, so the order reverses to N Y S V U R and each letter is flipped left to right: N and S and R appear reversed, while Y, V and U look the same.
+
+Option B shows this. Option C leaves S unflipped and turns V upside down, option D distorts Y, and option A keeps the original order.
+
+=== 19
+chapter: Mirror and Water Images
+subtopic: Mirror Images
+difficulty: EASY
+answer: B
+figure: stem+options
+stem:
+Select the correct mirror image of the given figure when the mirror is placed at AB.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+In the figure the slanting inner line is on the left of the vertical line and the two short horizontal lines are on the right, near the apex.
+
+With the mirror on the right these swap sides: the two short lines move to the left near the apex and the slanting line to the right. That is option B.
+
+=== 20
+chapter: Syllogism
+subtopic: Three-Statement Syllogism
+difficulty: EASY
+answer: B
+stem:
+In this question, three statements are given, followed by three conclusions numbered I, II and III. Assuming the statements to be true, even if they seem to be at variance with commonly known facts, decide which of the conclusions logically follows/follow from the statements.
+
+Statements:
+All clowns are books.
+Some books are heavy.
+Some heavy are trucks.
+
+Conclusions:
+I. Some books are clowns.
+II. All books are heavy.
+III. Some trucks are heavy.
+A: Only conclusions I and II follow.
+B: Only conclusions I and III follow.
+C: Only conclusion I follows.
+D: None of the conclusions follows.
+solution:
+I: "All clowns are books" converts to "Some books are clowns". Follows.
+
+II: Only some books are heavy, so "All books are heavy" does not follow.
+
+III: "Some heavy are trucks" converts to "Some trucks are heavy". Follows.
+
+=== 21
+chapter: Analogy
+subtopic: Number Set Analogy
+difficulty: MODERATE
+answer: D
+stem:
+Select the set in which the numbers are related in the same way as are the numbers of the given sets.
+(NOTE : Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 – Operations on 13 such as adding /Subtracting /multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is NOT allowed)
+(4, 5, 83)
+(5, 5, 102)
+A: (8, 9, 330)
+B: (3, 3, 11)
+C: (7, 6, 170)
+D: (8, 3, 123)
+solution:
+Third number = square of (first + second), plus 2:\((4 + 5)^2 + 2 = 83\), \((5 + 5)^2 + 2 = 102\).
+
+(8, 3, 123): \((8 + 3)^2 + 2 = 121 + 2 = 123\). Fits.
+
+The others give \(17^2 + 2 = 291\), \(6^2 + 2 = 38\) and \(13^2 + 2 = 171\).
+
+=== 22
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: A
+stem:
+Which of the following numbers will replace the question mark (?) in the given series?
+43, 52, 47, ?, 51, 60, 55
+A: 56
+B: 53
+C: 49
+D: 57
+solution:
+The steps alternate \(+9\) and \(-5\): 43, 52, 47, 56, 51, 60, 55.
+
+=== 23
+chapter: Analogy
+subtopic: Letter Analogy
+difficulty: MODERATE
+answer: A
+stem:
+Select the option that is related to the fifth letter-cluster in the same way as the second letter-cluster is related to the first letter-cluster and the fourth letter-cluster is related to the third letter-cluster.
+RJN : OLU : : DHL : MJG :: VKC : ?
+A: DMY
+B: ENZ
+C: YMD
+D: ENY
+solution:
+Shift the letters \(+3, +2, +1\) and write the result in reverse order.
+
+RJN: R + 3 = U, J + 2 = L, N + 1 = O, giving ULO, reversed OLU. DHL: G, J, M, reversed MJG.
+
+VKC: V + 3 = Y, K + 2 = M, C + 1 = D, giving YMD, reversed DMY.
+
+=== 24
+chapter: Coding-Decoding
+subtopic: Number and Symbol Coding
+difficulty: MODERATE
+answer: A
+stem:
+In a certain code language, 'CHECK' is written as '6165622' and 'SURGE' is written as '382136145'.How will 'PRIEST' be written in that language?
+A: 3236953840
+B: 32369538
+C: 161818101920
+D: 1618101920
+solution:
+Each consonant is written as twice its alphabet position and each vowel as its position.
+
+CHECK: 6, 16, 5, 6, 22. SURGE: 38, 21, 36, 14, 5.
+
+PRIEST: \(2 \times 16 = 32\), \(2 \times 18 = 36\), 9, 5, \(2 \times 19 = 38\), \(2 \times 20 = 40\): 3236953840.
+
+=== 25
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: A
+stem:
+Which of the following terms will replace the question mark (?) in the given series?
+MPKL, NRLN, OTMP, PVNR, ?
+A: QXOT
+B: QXPT
+C: QYPT
+D: QXPU
+solution:
+First letters move \(+1\) (M, N, O, P, Q), second \(+2\) (P, R, T, V, X), third \(+1\) (K, L, M, N, O) and fourth \(+2\) (L, N, P, R, T).
+
+The next term is QXOT.
+
+=== 26
+subject: Current Affairs
+chapter: Government Schemes, Policy and Governance
+subtopic: Government Events, Reports and Announcements
+difficulty: MODERATE
+answer: C
+stem:
+President of India, Droupadi Murmu presented the ________ of the Digital India Awards on 7th January 2023 in New Delhi.
+A: 8th edition
+B: 5th edition
+C: 7th edition
+D: 6th edition
+solution:
+The Digital India Awards 2022, given away by President Droupadi Murmu at Vigyan Bhawan, New Delhi on 7 January 2023, were the seventh edition of the awards run by the Ministry of Electronics and IT.
+
+=== 27
+subject: Current Affairs
+chapter: Sports
+subtopic: Cricket — Records, Tournaments and Players
+difficulty: EASY
+answer: D
+stem:
+In January 2022, who was named for the Rachael Heyhoe Flint Trophy for ICC Women's Cricketer of the Year?
+A: Mithali Raj
+B: Elyse Perry
+C: Lizelle Lee
+D: Smriti Mandhana
+solution:
+Smriti Mandhana won the Rachael Heyhoe Flint Trophy as ICC Women's Cricketer of the Year for 2021, announced in January 2022. Lizelle Lee won the ODI player award that year.
+
+=== 28
+subject: Chemistry
+chapter: Carbon and Its Compounds
+subtopic: Hydrocarbons and Fuels
+difficulty: EASY
+answer: C
+stem:
+The chemical formula of propene is:
+A: \(\text{C}_2\text{H}_4\)
+B: \(\text{C}_3\text{H}_4\)
+C: \(\text{C}_3\text{H}_6\)
+D: \(\text{C}_2\text{H}_2\)
+solution:
+Propene is an alkene with three carbon atoms. Alkenes follow \(\text{C}_n\text{H}_{2n}\), so with n = 3 the formula is \(\text{C}_3\text{H}_6\) (\(\text{CH}_2=\text{CH}-\text{CH}_3\)). \(\text{C}_2\text{H}_4\) is ethene, \(\text{C}_3\text{H}_4\) is propyne and \(\text{C}_2\text{H}_2\) is ethyne.
+
+=== 29
+subject: Biology
+chapter: Biodiversity and Classification
+subtopic: Animal Kingdom Classification
+difficulty: MODERATE
+answer: D
+stem:
+Which of the following is the closest wild relative of domestic cattle protected in some of the famous national parks of India like Nagarhole and Bandipur?
+A: Red angus
+B: Asiatic buffalo
+C: Nilgai
+D: Gaur
+solution:
+The gaur (Indian bison, Bos gaurus) belongs to the same genus as domestic cattle and is their closest wild relative in India; Nagarhole and Bandipur hold large gaur herds. Red Angus is a domestic breed, the buffalo is a different genus (Bubalus) and the nilgai is an antelope.
+
+=== 30
+subject: Economics
+chapter: Money, Banking and Public Finance
+subtopic: Union Budget and Fiscal Policy
+difficulty: EASY
+answer: D
+stem:
+An annual statement of the estimated receipts and expenditure of the government over the fiscal year is known as __________.
+A: Income sheet
+B: Plan
+C: Account
+D: Budget
+solution:
+The budget is the annual statement of estimated receipts and expenditure of the government for a financial year. Article 112 of the Constitution calls the Union Budget the Annual Financial Statement.
+
+=== 31
+subject: Current Affairs
+chapter: Government Schemes, Policy and Governance
+subtopic: Infrastructure, Transport and Cultural Schemes
+difficulty: MODERATE
+answer: D
+stem:
+What is the name of the scheme launched to fund infrastructure and social development projects in the Northeast for a period of four years from 2022-23 to 2025-26?
+A: PM- NERLP
+B: PM-DRUV
+C: PM-FME
+D: PM-DevINE
+solution:
+PM-DevINE (Prime Minister's Development Initiative for North East Region), announced in the Union Budget 2022-23, funds infrastructure and social development projects in the North East for four years, 2022-23 to 2025-26. PM-FME is for micro food processing enterprises and NERLP was a World Bank livelihoods project.
+
+=== 32
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: MODERATE
+answer: C
+stem:
+Who was hailed as a resident dancer of Tirumala Tirupati Devasthanam for her unique contribution to the promotion of classical dance forms?
+A: Uma Sharma
+B: Rukmini Devi
+C: Yamini Krishnamurthy
+D: Ragini Devi
+solution:
+Bharatanatyam and Kuchipudi dancer Yamini Krishnamurthy was made the Asthana Nartaki (resident dancer) of the Tirumala Tirupati Devasthanams. Uma Sharma is a Kathak dancer, Rukmini Devi Arundale founded Kalakshetra and Ragini Devi was an American-born exponent of Indian dance.
+
+=== 33
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Judiciary — Supreme Court and High Courts
+difficulty: HARD
+answer: D
+stem:
+In February 2021, through which of the following cases did the Supreme court rule that in the cases when the Juvenile offender is under 18 years and above 16 years, he/she should be remitted to jurisdictional Juvenile Justice Board?
+A: Rahul Sharma v. National Insurance Company Ltd
+B: Satbir Singh v. State of Haryana
+C: Laxmibai Chandaragi v. The State of Karnataka
+D: Devilal v. State of Madhya Pradesh
+solution:
+In Devilal v. State of Madhya Pradesh (decided 25 February 2021), the Supreme Court found that one accused was above 16 but below 18 on the date of the offence. Under Section 20 of the Juvenile Justice Act, 2000 his conviction stood, his life sentence was set aside and the matter was remitted to the jurisdictional Juvenile Justice Board. Laxmibai Chandaragi (February 2021) was about the right to marry a person of one's choice, and Satbir Singh was a dowry death ruling.
+
+=== 34
+subject: Polity
+chapter: Indian Constitution — Making, Foundation and Amendments
+subtopic: Features, Parts and Schedules of Constitution
+difficulty: EASY
+answer: A
+stem:
+Which part of the Constitution of India contains the provisions of Union Executive?
+A: Part V
+B: Part III
+C: Part IV
+D: Part VI
+solution:
+Part V (The Union, Articles 52 to 151) deals with the Union Executive in its Chapter I (President, Vice-President, Council of Ministers, Attorney General). Part III is Fundamental Rights, Part IV is the Directive Principles and Part VI is the States.
+
+=== 35
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: EASY
+answer: C
+stem:
+Which of the following countries won the highest number of gold medals in the Tokyo Paralympic 2020?
+A: Australia
+B: India
+C: China
+D: USA
+solution:
+China topped the Tokyo 2020 Paralympics medal table with 96 gold medals, far ahead of Great Britain and the USA. India won 5 golds.
+
+=== 36
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: A
+stem:
+Which of the following countries has hosted the three Asian Games?
+A: South Korea
+B: Philippines
+C: Japan
+D: India
+solution:
+South Korea hosted the Asian Games three times: Seoul 1986, Busan 2002 and Incheon 2014. Japan had hosted two by 2023 (Tokyo 1958, Hiroshima 1994; Aichi-Nagoya 2026 was still to come), India two (New Delhi 1951 and 1982) and the Philippines one (Manila 1954).
+
+=== 37
+subject: History
+chapter: Modern India
+subtopic: European Trading and Early British Conquest
+difficulty: EASY
+answer: C
+stem:
+Who led the English army in the Battle of Buxar?
+A: Lord Clive
+B: William Henry Sleeman
+C: Hector Munro
+D: Charles Eyrecoot
+solution:
+At Buxar (22 October 1764) Major Hector Munro commanded the East India Company's army and defeated Mir Qasim, Shuja-ud-Daula and Shah Alam II. Clive led at Plassey and Eyre Coote at Wandiwash.
+
+=== 38
+subject: Polity
+chapter: Indian Constitution — Making, Foundation and Amendments
+subtopic: Constitutional Amendments
+difficulty: EASY
+answer: C
+stem:
+Which of the following amendments to the Indian Constitution made the Right to Property a Legal Right in place of a Fundamental Right?
+A: 40th
+B: 48th
+C: 44th
+D: 45th
+solution:
+The 44th Amendment Act, 1978 deleted the Right to Property from Part III (Articles 19(1)(f) and 31) and made it a legal right under Article 300A.
+
+=== 39
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: MODERATE
+answer: C
+stem:
+Changai dance is associated with which Indian state?
+A: Madhya Pradesh
+B: Maharashtra
+C: Nagaland
+D: Jharkhand
+solution:
+Changai is a folk dance of the Chang Naga tribe of Nagaland, performed at their festivals.
+
+=== 40
+subject: Geography
+chapter: World and Human Geography
+subtopic: World Political Geography — Countries, Borders and Regions
+difficulty: EASY
+answer: D
+stem:
+Which is the national fruit of Bangladesh?
+A: Pomegranate
+B: Mango
+C: Apple
+D: Jackfruit
+solution:
+The jackfruit is the national fruit of Bangladesh. The mango is the national fruit of India (and the mango tree is Bangladesh's national tree).
+
+=== 41
+subject: Chemistry
+chapter: Chemistry in Everyday Life
+subtopic: Common Chemicals and Their Uses
+difficulty: EASY
+answer: C
+stem:
+Which of the following chemicals is used as a preservative to slow browning and discolouration in foods and beverages during preparation, storage and distribution?
+A: Nitrous oxide
+B: Phosgene
+C: Sulphites
+D: Chlorine
+solution:
+Sulphites (sulphur dioxide and its salts) are food preservatives that stop enzymatic and non-enzymatic browning in dried fruit, juices and wine. Nitrous oxide is a propellant and anaesthetic, phosgene is a poison gas and chlorine is a disinfectant.
+
+=== 42
+subject: History
+chapter: Modern India
+subtopic: 19th Century Social and Religious Reform
+difficulty: EASY
+answer: C
+stem:
+Which of the following reforming societies believed Vedas to be the fountain of all the knowledge?
+A: Theosophical Society
+B: Prarthana Samaj
+C: Arya Samaj
+D: Brahmo Samaj
+solution:
+The Arya Samaj, founded by Swami Dayananda Saraswati in 1875, held the Vedas to be infallible and the source of all true knowledge ("Back to the Vedas").
+
+=== 43
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: EASY
+answer: B
+stem:
+Which of the following pairs of musicians and their instruments is INCORRECT?
+A: Bismillah Khan – Shehnai
+B: Pt. Ram Narayan – Sarod
+C: N Rajam – Violin
+D: Pt. Ravi Shankar – Sitar
+solution:
+Pandit Ram Narayan is the great exponent of the sarangi, not the sarod. Bismillah Khan (shehnai), N. Rajam (violin) and Ravi Shankar (sitar) are correctly paired.
+
+=== 44
+subject: Economics
+chapter: Indian Economy
+subtopic: Five Year Plans and Indian Planning
+difficulty: EASY
+answer: C
+stem:
+The Second Five-Year Plan (1956-61) had a major goal of achieving which of the following targets?
+A: Self-reliant and self-generating economy
+B: Growth with stability
+C: Rapid industrialisation with focus on heavy industries
+D: Growth with social justice
+solution:
+The Second Plan, based on the Mahalanobis model, aimed at rapid industrialisation with emphasis on basic and heavy industries. Self-reliance and a self-generating economy was the Third Plan's aim, growth with stability the Fourth's, and growth with social justice the Ninth's.
+
+=== 45
+subject: Geography
+chapter: Earth's Structure, Landforms and Geological Time
+subtopic: Earthquakes and Seismic Waves
+difficulty: EASY
+answer: C
+stem:
+Seismograph is used to measure:
+A: rain precipitation
+B: underground water level
+C: earthquakes
+D: underground mineral content
+solution:
+A seismograph records the seismic waves of an earthquake, from which its strength and location are worked out. Rainfall is measured with a rain gauge.
+
+=== 46
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Days, Festivals and Observances
+difficulty: EASY
+answer: A
+stem:
+This event is celebrated to mark the resurrection of Christ. Identify the event.
+A: Easter
+B: Christmas
+C: Holy Thursday
+D: Good Friday
+solution:
+Easter Sunday celebrates the resurrection of Jesus Christ. Good Friday marks his crucifixion, Holy Thursday the Last Supper and Christmas his birth.
+
+=== 47
+subject: Biology
+chapter: Biochemistry
+subtopic: Carbohydrates and Biomolecules
+difficulty: MODERATE
+answer: A
+stem:
+Which of the following is another name for starch found mainly in the pulp of seeds, fruits, tubers, roots and stems of plants, especially in corn, potatoes, wheat and rice?
+A: Amylum
+B: Xanthan
+C: Olestra
+D: Saponin
+solution:
+Amylum is another name for starch, the storage polysaccharide of plants. Xanthan is a bacterial gum, olestra a fat substitute and saponins are soap-like plant glycosides.
+
+=== 48
+subject: History
+chapter: Medieval India
+subtopic: Society, Economy and Land Grants
+difficulty: MODERATE
+answer: D
+stem:
+Which of the following systems of the Delhi sultanate had a influence on the Bahmani and Vijayanagar kingdoms?
+A: Walis
+B: Cahalgani
+C: Bitikchi
+D: Iqtadari
+solution:
+The iqta (iqtadari) system of assigning revenue of territories to officers in return for service was copied in the Bahmani kingdom's tarafs and resembled the Vijayanagara nayankara system. Chahalgani was the Turkish nobility group of Iltutmish, walis were provincial governors and a bitikchi was a Mughal revenue clerk.
+
+=== 49
+subject: Chemistry
+chapter: Carbon and Its Compounds
+subtopic: Hydrocarbons and Fuels
+difficulty: EASY
+answer: B
+stem:
+What is the product formed when \(\text{CH}_3\text{CH}_2\text{OH}\) reacts with \(\text{O}_2\)?
+A: \(\text{H}_2\text{O}\) + heat
+B: \(\text{CO}_2\) + \(\text{H}_2\text{O}\) + heat and light
+C: \(\text{CO}_2\) + \(\text{H}_2\text{O}\) + light
+D: \(\text{CO}_2\) + heat and light
+solution:
+Ethanol burns in oxygen with a clean flame: \(\text{C}_2\text{H}_5\text{OH} + 3\text{O}_2 \rightarrow 2\text{CO}_2 + 3\text{H}_2\text{O}\), releasing heat and light. Only option B lists both products and both forms of energy.
+
+=== 50
+subject: History
+chapter: Ancient India
+subtopic: Mahajanapadas, Magadha and Mauryan Empire
+difficulty: MODERATE
+answer: B
+stem:
+What was the function of an officer called Samaharta?
+A: Reserve the state treasury
+B: Tax assessment
+C: Security assurance
+D: To correspond
+solution:
+In the Mauryan administration of the Arthashastra, the Samaharta was the chief collector of revenue, in charge of assessing and collecting taxes. The treasury was kept by the Sannidhata.
+
+=== 51
+chapter: Triangles
+subtopic: Triangle Inequalities
+difficulty: EASY
+answer: C
+stem:
+The lengths of the three sides of a triangle are 30 cm, 42 cm and x cm. Which of the following is correct?
+A: \(12 \le x < 72\)
+B: \(12 > x > 72\)
+C: \(12 < x < 72\)
+D: \(12 \le x \le 72\)
+solution:
+Each side must be less than the sum and more than the difference of the other two.
+
+\(42 - 30 < x < 42 + 30\), so \(12 < x < 72\). The ends are excluded, since \(x = 12\) or \(x = 72\) gives a flat triangle.
+
+=== 52
+chapter: Number System
+subtopic: Division, Parity and Consecutive Integers
+difficulty: EASY
+answer: D
+stem:
+The largest 5-digit number exactly divisible by 88 is:
+A: 99990
+B: 99984
+C: 99978
+D: 99968
+solution:
+\(99999 = 88 \times 1136 + 31\), so the largest multiple is \(99999 - 31 = 99968\).
+
+Check: \(88 \times 1136 = 99968\), and \(88 \times 1137 = 100056\) has six digits.
+
+=== 53
+chapter: Data Interpretation
+subtopic: Pie Charts
+difficulty: EASY
+answer: C
+figure: stem
+stem:
+The following pie chart shows the monthly sale of laptops of five companies A, B, C, D and E in a store.
+If 2,500 laptops were sold by the store in a month, then what is the difference between the number of laptops sold of Company A and that of Company C?
+A: 750
+B: 650
+C: 800
+D: 700
+solution:
+The chart shows A \(40\%\), B \(15\%\), C \(8\%\), D \(25\%\), E \(12\%\) (total \(100\%\)).
+
+Difference \(= (40 - 8)\%\) of 2500 \(= 0.32 \times 2500 = 800\).
+
+Check: A sold 1000 and C sold 200, and \(1000 - 200 = 800\).
+
+=== 54
+chapter: Algebraic Identities and Simplification
+subtopic: Reciprocal Sums x ± 1/x
+difficulty: MODERATE
+answer: A
+stem:
+If \(a + \frac{1}{a} = 7\), then \(a^5 + \frac{1}{a^5}\) is equal to:
+A: 15127
+B: 13127
+C: 14527
+D: 11512
+solution:
+\(a^2 + \frac{1}{a^2} = 7^2 - 2 = 47\).
+
+\(a^3 + \frac{1}{a^3} = 7^3 - 3 \times 7 = 343 - 21 = 322\).
+
+\(a^5 + \frac{1}{a^5} = \left(a^2 + \frac{1}{a^2}\right)\left(a^3 + \frac{1}{a^3}\right) - \left(a + \frac{1}{a}\right) = 47 \times 322 - 7 = 15134 - 7 = 15127\).
+
+=== 55
+chapter: Trigonometric Ratios and Identities
+subtopic: Complementary and Allied Angles
+difficulty: MODERATE
+answer: C
+stem:
+Find the value of \(\cos 47^\circ \sec 133^\circ + \sin 44^\circ \,\text{cosec}\, 136^\circ\).
+A: \(\frac{1}{2}\)
+B: \(1\)
+C: \(0\)
+D: \(-1\)
+solution:
+\(\cos 133^\circ = \cos(180^\circ - 47^\circ) = -\cos 47^\circ\), so \(\cos 47^\circ \sec 133^\circ = -1\).
+
+\(\sin 136^\circ = \sin(180^\circ - 44^\circ) = \sin 44^\circ\), so \(\sin 44^\circ \,\text{cosec}\, 136^\circ = 1\).
+
+Sum \(= -1 + 1 = 0\).
+
+=== 56
+chapter: Time, Speed and Distance
+subtopic: Relative Speed: Chasing and Meeting
+difficulty: MODERATE
+answer: A
+stem:
+A, B and C run simultaneously, starting from a point, around a circular track of length 1200m, at respective speeds of 2m/s, 4m/s and 6m/s. A and B run in the same direction, while C runs in the opposite direction to the other two. After how much time will they meet for the first time?
+A: 10 minutes
+B: 9 minutes
+C: 12 minutes
+D: 11 minutes
+solution:
+A and B meet every time B gains a full lap: \(\frac{1200}{4 - 2} = 600\) s.
+
+A and C meet every \(\frac{1200}{2 + 6} = 150\) s; B and C every \(\frac{1200}{4 + 6} = 120\) s.
+
+All three meet at the LCM of 600, 150 and 120, which is 600 s = 10 minutes.
+
+Check: in 600 s A runs 1200 m, B 2400 m, C 3600 m, all whole laps, so all are back at the start together.
+
+=== 57
+chapter: Simple and Compound Interest
+subtopic: Simple Interest
+difficulty: EASY
+answer: A
+stem:
+A sum of money invested at a certain rate of simple interest per annum amounts to ₹14,522 in seven years and to ₹18,906 in eleven years. Find the sum invested (in ₹).
+A: 6850
+B: 6900
+C: 6800
+D: 6750
+solution:
+Interest for 4 years \(= 18906 - 14522 = 4384\), so one year's interest is \(1096\).
+
+Sum \(= 14522 - 7 \times 1096 = 14522 - 7672 = 6850\).
+
+Check: \(6850 + 11 \times 1096 = 6850 + 12056 = 18906\).
+
+=== 58
+chapter: Percentage, Profit and Loss
+subtopic: Successive Percentage Change
+difficulty: EASY
+answer: B
+stem:
+If the side of an equilateral triangle is increased by 34%, then by what percentage will its area increase?
+A: 70.65%
+B: 79.56%
+C: 68.25%
+D: 75.15%
+solution:
+Area varies as the square of the side, so the new area is \(1.34^2 = 1.7956\) times the old.
+
+Increase \(= 79.56\%\). Check by the successive formula: \(34 + 34 + \frac{34 \times 34}{100} = 68 + 11.56 = 79.56\%\).
+
+=== 59
+chapter: Sequence and Series
+subtopic: Progressions and Special Sums
+difficulty: EASY
+answer: C
+stem:
+Find the sum of \(3 + 3^2 + 3^3 + \cdots + 3^8\).
+A: 6561
+B: 6560
+C: 9840
+D: 3280
+solution:
+A GP with first term 3, ratio 3 and 8 terms: sum \(= \frac{3(3^8 - 1)}{3 - 1} = \frac{3 \times 6560}{2} = 9840\).
+
+Check: \(3 + 9 + 27 + 81 + 243 + 729 + 2187 + 6561 = 9840\).
+
+=== 60
+chapter: Time and Work
+subtopic: Work Rates
+difficulty: MODERATE
+answer: A
+stem:
+A,B and C can do a piece of work in 30 days, 40 days and 50 days, respectively. Beginning with A, if A, B and C do the work alternatively then in how many days will the work be finished?
+A: \(38\frac{1}{12}\)
+B: \(36\frac{1}{2}\)
+C: \(36\)
+D: \(39\frac{1}{12}\)
+solution:
+Take the work as 600 units: A does 20, B 15 and C 12 units a day, so one 3-day cycle does 47 units.
+
+12 cycles (36 days) do 564 units, leaving 36.
+
+Day 37 (A) does 20, leaving 16; day 38 (B) does 15, leaving 1; C needs \(\frac{1}{12}\) of day 39.
+
+Total \(= 38\frac{1}{12}\) days.
+
+=== 61
+chapter: Time, Speed and Distance
+subtopic: Relative Speed: Chasing and Meeting
+difficulty: EASY
+answer: A
+stem:
+A thief is spotted by a constable from 200 m. When the constable starts the chase, the thief also starts running. If the speed of the constable is 8 km/h and thief runs at the speed of 6 km/h, then how far (in m) will the thief be able to run before he is overtaken?
+A: 600
+B: 400
+C: 550
+D: 500
+solution:
+The gap of 200 m closes at \(8 - 6 = 2\) km/h, so it takes \(\frac{0.2}{2} = 0.1\) h.
+
+The thief runs \(6 \times 0.1 = 0.6\) km \(= 600\) m.
+
+Check: the constable runs 800 m, which is \(600 + 200\).
+
+=== 62
+chapter: Ratio, Proportion and Variation
+subtopic: Ratio and Proportion
+difficulty: EASY
+answer: A
+stem:
+In a bag containing red, green and blue pens, the ratio of red, blue and green pens, in the given order, was 7 : 4 : 9. If the total number of pens in the bag was 320, how many of them were red?
+A: 112
+B: 105
+C: 119
+D: 126
+solution:
+Total parts \(= 7 + 4 + 9 = 20\), so one part is \(\frac{320}{20} = 16\).
+
+Red \(= 7 \times 16 = 112\).
+
+=== 63
+chapter: Time and Work
+subtopic: Work Rates
+difficulty: MODERATE
+answer: C
+stem:
+Ravi can do a piece of work in 40 days and Sudha can do the same piece of work in 60 days. If they work on alternative days starting with Sudha on the first day, then in how many days will the work be completed?
+A: 40
+B: 60
+C: 48
+D: 45
+solution:
+Take the work as 120 units: Sudha does 2 and Ravi 3 units a day, so each 2-day pair does 5 units.
+
+\(\frac{120}{5} = 24\) pairs, and the work ends exactly at the end of a pair (on Ravi's day), so it takes \(24 \times 2 = 48\) days.
+
+Check: after 47 days the work done is \(23 \times 5 + 2 = 117\), so day 48 is needed.
+
+=== 64
+chapter: Mensuration 2D
+subtopic: Arcs, Sectors and Segments
+difficulty: MODERATE
+answer: A
+stem:
+An arc of length 23.1 cm subtends an \(18^\circ\) angle at the centre. What is the area of the circle? [Use \(\pi = \frac{22}{7}\)]
+A: \(16978.50 \text{ cm}^2\)
+B: \(16988.50 \text{ cm}^2\)
+C: \(16878.50 \text{ cm}^2\)
+D: \(16798.50 \text{ cm}^2\)
+solution:
+Arc \(= \frac{18}{360} \times 2\pi r = \frac{\pi r}{10}\), so \(\frac{22}{70} r = 23.1\) and \(r = \frac{23.1 \times 70}{22} = 73.5\) cm.
+
+Area \(= \frac{22}{7} \times 73.5^2 = \frac{22}{7} \times 5402.25 = 22 \times 771.75 = 16978.5 \text{ cm}^2\).
+
+Check: circumference \(= 20 \times 23.1 = 462 = 2 \times \frac{22}{7} \times 73.5\).
+
+=== 65
+chapter: Data Interpretation
+subtopic: Tables
+difficulty: MODERATE
+answer: D
+stem:
+Study the given table and answer the question that follows.
+The table shows the number of candidates who appeared (App), qualified (Qual) and selected (Sel) in a competitive examination from four states Delhi, Goa, Karnataka, and Maharashtra over the years 2012 to 2016.
+
+| Years | Delhi App | Delhi Qual | Delhi Sel | Goa App | Goa Qual | Goa Sel | Karnataka App | Karnataka Qual | Karnataka Sel | Maharashtra App | Maharashtra Qual | Maharashtra Sel |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 2012 | 8000 | 850 | 94 | 7800 | 810 | 82 | 7500 | 720 | 78 | 8200 | 680 | 85 |
+| 2013 | 4800 | 500 | 48 | 7500 | 800 | 65 | 5600 | 620 | 85 | 6800 | 600 | 70 |
+| 2014 | 9500 | 850 | 90 | 8800 | 920 | 86 | 7000 | 650 | 70 | 7800 | 720 | 84 |
+| 2015 | 9000 | 800 | 70 | 7200 | 850 | 75 | 8500 | 950 | 80 | 5700 | 485 | 60 |
+| 2016 | 7500 | 640 | 82 | 7400 | 560 | 70 | 4800 | 400 | 48 | 6500 | 525 | 65 |
+
+The number of candidates selected from Maharashtra during the period under review is approximately what percentage of the number selected from Delhi during this period?
+A: 96.79%
+B: 92.79%
+C: 93.39%
+D: 94.79%
+solution:
+Maharashtra selected \(85 + 70 + 84 + 60 + 65 = 364\).
+
+Delhi selected \(94 + 48 + 90 + 70 + 82 = 384\).
+
+\(\frac{364}{384} \times 100 = 94.79\%\). Check: \(0.9479 \times 384 = 364.0\).
+
+=== 66
+chapter: Trigonometric Ratios and Identities
+subtopic: Degree, Radian and Standard Values
+difficulty: EASY
+answer: A
+stem:
+If \(\tan\frac{\pi}{6} + \sec\frac{\pi}{6} = x\), then find x.
+A: \(\sqrt{3}\)
+B: \(\frac{1}{\sqrt{3}}\)
+C: \(\frac{-1}{\sqrt{3}}\)
+D: \(\frac{2}{\sqrt{3}}\)
+solution:
+\(\tan 30^\circ = \frac{1}{\sqrt{3}}\) and \(\sec 30^\circ = \frac{2}{\sqrt{3}}\).
+
+\(x = \frac{1}{\sqrt{3}} + \frac{2}{\sqrt{3}} = \frac{3}{\sqrt{3}} = \sqrt{3}\).
+
+=== 67
+chapter: Mensuration 3D
+subtopic: Cones
+difficulty: EASY
+answer: C
+stem:
+What is the whole surface area of a cone of base radius 6 cm and height 8 cm?
+A: \(354.50 \text{ cm}^2\)
+B: \(350.51 \text{ cm}^2\)
+C: \(301.71 \text{ cm}^2\)
+D: \(364.61 \text{ cm}^2\)
+solution:
+Slant height \(l = \sqrt{6^2 + 8^2} = 10\) cm.
+
+Whole surface area \(= \pi r(l + r) = \pi \times 6 \times 16 = 96\pi\).
+
+With \(\pi = \frac{22}{7}\): \(96 \times \frac{22}{7} = \frac{2112}{7} = 301.71 \text{ cm}^2\).
+
+=== 68
+chapter: Time and Work
+subtopic: Men, Women and Equivalent Workers
+difficulty: EASY
+answer: A
+stem:
+15 men can complete a work in 25 days, and 25 women can complete the same work in 40 days. If all the 15 men and 25 women work together, in how many days will the work get completed?
+A: \(15\frac{5}{13}\) days
+B: \(10\frac{5}{13}\) days
+C: \(15\frac{5}{12}\) days
+D: \(15\frac{4}{13}\) days
+solution:
+The 15 men do \(\frac{1}{25}\) of the work a day and the 25 women \(\frac{1}{40}\).
+
+Together: \(\frac{1}{25} + \frac{1}{40} = \frac{8 + 5}{200} = \frac{13}{200}\) a day.
+
+Time \(= \frac{200}{13} = 15\frac{5}{13}\) days.
+
+=== 69
+chapter: Percentage, Profit and Loss
+subtopic: Percentage
+difficulty: MODERATE
+answer: D
+stem:
+Suhani pays tax at the rate of 30% on her entire income of ₹90,000 and Ritika pays tax at the rate of 40% on her entire income of ₹y. If the overall tax rate on their combined income comes to 37%, then what is the value of y?
+A: ₹2,04,000
+B: ₹2,16,000
+C: ₹2,13,000
+D: ₹2,10,000
+solution:
+\(0.30 \times 90000 + 0.40y = 0.37(90000 + y)\)
+
+\(27000 + 0.40y = 33300 + 0.37y\), so \(0.03y = 6300\) and \(y = 210000\).
+
+Check by alligation: the gaps \(37 - 30 = 7\) and \(40 - 37 = 3\) give incomes in the ratio \(3 : 7\), so \(y = \frac{7}{3} \times 90000 = 210000\), that is ₹2,10,000.
+
+=== 70
+chapter: Time and Work
+subtopic: Man-Days and Man-Hours
+difficulty: MODERATE
+answer: B
+stem:
+Working 5 hours a day, A can complete a task in 8 days and working 6 hours a day, B can finish the same task in 10 days. working 8 hours a day, they can jointly complete the task in ______.
+A: 5 days
+B: 3 days
+C: 4.5 days
+D: 6 days
+solution:
+A needs \(5 \times 8 = 40\) hours and B needs \(6 \times 10 = 60\) hours.
+
+Together per hour: \(\frac{1}{40} + \frac{1}{60} = \frac{5}{120} = \frac{1}{24}\), so they need 24 hours.
+
+At 8 hours a day: \(\frac{24}{8} = 3\) days.
+
+=== 71
+chapter: Algebraic Identities and Simplification
+subtopic: Rational Algebraic Expressions
+difficulty: EASY
+answer: C
+stem:
+Simplify, \(\frac{x^4 - 2x^2 + 1}{x^2 - 2x + 1}\).
+A: \(x^2 - 2x + 1\)
+B: \(x^2 + 2x + 2\)
+C: \(x^2 + 2x + 1\)
+D: \(x^2 + x + 1\)
+solution:
+\(\frac{(x^2 - 1)^2}{(x - 1)^2} = \frac{(x - 1)^2(x + 1)^2}{(x - 1)^2} = (x + 1)^2 = x^2 + 2x + 1\).
+
+Check at \(x = 2\): \(\frac{16 - 8 + 1}{4 - 4 + 1} = 9 = 4 + 4 + 1\).
+
+=== 72
+chapter: Algebraic Identities and Simplification
+subtopic: Reciprocal Sums x ± 1/x
+difficulty: MODERATE
+answer: B
+stem:
+If \(\left(x - \frac{1}{x}\right) = \sqrt{6}\), and \(x > 1\), what is the value of \(\left(x^8 - \frac{1}{x^8}\right)\)?
+A: \(1024\sqrt{15}\)
+B: \(992\sqrt{15}\)
+C: \(998\sqrt{15}\)
+D: \(1012\sqrt{15}\)
+solution:
+\(\left(x + \frac{1}{x}\right)^2 = 6 + 4 = 10\), so \(x + \frac{1}{x} = \sqrt{10}\) (positive as \(x > 1\)).
+
+\(x^2 - \frac{1}{x^2} = \sqrt{6} \times \sqrt{10} = 2\sqrt{15}\), and \(x^2 + \frac{1}{x^2} = 6 + 2 = 8\).
+
+\(x^4 + \frac{1}{x^4} = 64 - 2 = 62\).
+
+\(x^8 - \frac{1}{x^8} = \left(x^2 - \frac{1}{x^2}\right)\left(x^2 + \frac{1}{x^2}\right)\left(x^4 + \frac{1}{x^4}\right) = 2\sqrt{15} \times 8 \times 62 = 992\sqrt{15}\).
+
+=== 73
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: EASY
+answer: C
+stem:
+The successive discounts of 12%, 20% and 25% is equivalent to a single discount of:
+A: 52.2%
+B: 49.5%
+C: 47.2%
+D: 57.0%
+solution:
+Price paid \(= 0.88 \times 0.80 \times 0.75 = 0.528\) of the marked price.
+
+Single discount \(= 1 - 0.528 = 0.472 = 47.2\%\).
+
+Check: 12% and 20% give \(32 - 2.4 = 29.6\%\); with 25% more, \(29.6 + 25 - 7.4 = 47.2\%\).
+
+=== 74
+chapter: Trigonometric Ratios and Identities
+subtopic: Ratios in a Right Triangle
+difficulty: EASY
+answer: C
+stem:
+If \(\text{Sin}\,\theta = \frac{4}{5}\), find the value of \(\tan\theta - \text{Cot}\,\theta\).
+A: \(\frac{5}{12}\)
+B: \(\frac{7}{9}\)
+C: \(\frac{7}{12}\)
+D: \(\frac{7}{8}\)
+solution:
+With \(\theta\) acute, the sides are 3, 4, 5: \(\cos\theta = \frac{3}{5}\), \(\tan\theta = \frac{4}{3}\), \(\cot\theta = \frac{3}{4}\).
+
+\(\tan\theta - \cot\theta = \frac{4}{3} - \frac{3}{4} = \frac{16 - 9}{12} = \frac{7}{12}\).
+
+=== 75
+chapter: Percentage, Profit and Loss
+subtopic: Profit and Loss
+difficulty: EASY
+answer: D
+stem:
+Ram sells a suitcase to Mohan at a 20% profit. Mohan sells it to Shyam at a 40% profit. If Shyam pays ₹1,430 for it, then the price at which Ram bought it is:
+A: ₹875
+B: ₹870
+C: ₹880
+D: ₹851.19
+solution:
+Ram's cost \(\times 1.2 \times 1.4 = 1430\), so Ram's cost \(= \frac{1430}{1.68} = 851.19\), that is ₹851.19.
+
+Check: \(851.19 \times 1.2 = 1021.43\) and \(1021.43 \times 1.4 = 1430.0\).
+
+=== 76
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: C
+stem:
+Select the option that can be used as a one-word substitute for the given group of words.
+Any female animal which feeds its young on milk from her own body
+A: Vertebrate
+B: Parasite
+C: Mammal
+D: Fauna
+solution:
+A mammal is an animal whose female feeds its young on milk from its own body (mammary glands). A vertebrate is any animal with a backbone, a parasite lives on another organism, and fauna is the animal life of a region.
+
+=== 77
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: D
+stem:
+Select the option that can be used as a one-word substitute for the given group of words.
+
+Certain to happen
+A: Justifiable
+B: Indispensable
+C: Convertible
+D: Inevitable
+solution:
+Inevitable means certain to happen, unavoidable. Justifiable means able to be defended, indispensable means absolutely necessary, and convertible means able to be changed in form.
+
+=== 78
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: A
+stem:
+Select the INCORRECTLY spelt word.
+A: Nefew
+B: Father
+C: Niece
+D: Uncle
+solution:
+The correct spelling is nephew. Father, niece and uncle are spelt correctly.
+
+=== 79
+chapter: Vocabulary
+subtopic: Antonyms: People and Character
+difficulty: EASY
+answer: C
+stem:
+Select the most appropriate ANTONYM of the given word.
+
+Indolent
+A: Lazy
+B: Unskilled
+C: Active
+D: Sluggish
+solution:
+Indolent means lazy, wanting to avoid activity. Lazy and sluggish are synonyms; active is the opposite. Unskilled is unrelated.
+
+=== 80
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: B
+stem:
+Select the most appropriate option that can substitute the underlined segment in the given sentence.
+
+The Indian independence movement sought to establish the \(\underline{\text{conceptions of freedom}}\) and social welfare as the goals of an independent Indian state, resulting in Fundamental Rights and Directive Principles.
+A: procedures of free mind
+B: concepts of liberty
+C: symbols of victory
+D: methods to sympathise
+solution:
+The movement sought to establish ideas (concepts) of freedom and welfare as the state's goals, which led to Fundamental Rights. "Concepts of liberty" says this in the natural form. Procedures, symbols and methods do not fit "establish ... as the goals".
+
+=== 81
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: C
+stem:
+Select the option that expresses the given sentence in passive voice.
+
+
+She might have completed her research by that time.
+A: Her research might be completed by her by that time.
+B: Her research might had been completed by her by that time.
+C: Her research might have been completed by her by that time.
+D: Her research might have completed by her by that time.
+solution:
+"Might have + past participle" becomes "might have been + past participle" in the passive: Her research might have been completed by her. A changes the tense, B uses "might had" (a modal takes the base form), and D lacks "been".
+
+=== 82
+chapter: Fill in the Blanks
+subtopic: Sentence Fill-in-Blanks
+difficulty: EASY
+answer: D
+stem:
+Select the most appropriate option to fill in the blank.
+
+The police were on high alert on account of the _________ convict who had killed many people.
+A: run after
+B: walk away
+C: eloped
+D: runaway
+solution:
+The blank needs an adjective before "convict". "Runaway" means having escaped, so a runaway convict explains the police alert. "Run after" and "walk away" are verb phrases, and "eloped" is used of lovers who run away to marry.
+
+=== 83
+chapter: Vocabulary
+subtopic: Antonyms: People and Character
+difficulty: EASY
+answer: C
+stem:
+Select the most appropriate ANTONYM of the underlined word.
+
+He regards himself as a \(\underline{\text{patriot}}\).
+A: nationalist
+B: dutiful
+C: traitor
+D: loyal
+solution:
+A patriot loves and defends his country; a traitor betrays it. Nationalist and loyal are close in meaning, and dutiful is unrelated.
+
+=== 84
+chapter: Vocabulary
+subtopic: Antonyms: Speech and Argument
+difficulty: EASY
+answer: B
+stem:
+Select the most appropriate ANTONYM of the underlined word.
+Lucy presented a \(\underline{\text{lucid}}\) account of her achievements before the committee.
+A: orderly
+B: ambiguous
+C: intelligible
+D: transparent
+solution:
+Lucid means clear and easy to understand. Ambiguous (open to more than one meaning, unclear) is the opposite. Orderly, intelligible and transparent are close to its meaning.
+
+=== 85
+chapter: Idioms and Phrases
+subtopic: Idioms: Trouble and Success
+difficulty: MODERATE
+answer: D
+stem:
+Select the most appropriate meaning of the given idiom.
+
+Scrape the barrel
+A: Trying to find something
+B: Hiding something
+C: Using all the ways to achieve the desired result
+D: To be forced to use one's last and weakest resource
+solution:
+To scrape (the bottom of) the barrel is to be reduced to using the last and poorest of what is available, because everything better is gone.
+
+=== 86
+chapter: Idioms and Phrases
+subtopic: Idioms: Work and Money
+difficulty: MODERATE
+answer: A
+stem:
+Select the sentence that uses the given idiom correctly.
+A dime a dozen
+A: Her ideas were worth a dime a dozen and didn't impress the boss.
+B: The concert tickets were a dime a dozen and sold out quickly.
+C: The restaurant had some delicious desserts that were a dime a dozen.
+D: The antique store had some rare finds, but they were a dime a dozen.
+solution:
+"A dime a dozen" means very common and of little value. Ordinary ideas that did not impress the boss fit this. Tickets that sold out quickly were scarce, not common; rare finds cannot be a dime a dozen; and calling desserts "delicious" sits badly with "of little value".
+
+=== 87
+chapter: Grammar
+subtopic: Articles: A, An and The
+difficulty: EASY
+answer: C
+stem:
+Identify the sentence that correctly uses the indefinite article.
+A: She is a Indian artist married to an European engineer.
+B: She is an Indian artist married to an European engineer.
+C: She is an Indian artist married to a European engineer.
+D: She is a Indian artist married to a European engineer.
+solution:
+The article depends on the first sound. "Indian" begins with a vowel sound, so "an Indian". "European" begins with a "yoo" (consonant y) sound, so "a European". Only option C has both: an Indian artist ... a European engineer.
+
+=== 88
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: C
+stem:
+Select the INCORRECTLY spelt word.
+A: Fruitful
+B: Unction
+C: Wilfull
+D: Cradle
+solution:
+The word is spelt wilful (British) or willful (American), never with a double l at the end. Fruitful, unction and cradle are correct.
+
+=== 89
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: C
+stem:
+Select the word which means the same as the group of words underlined in the sentence.
+Only \(\underline{\text{the artists who make sculptures}}\) are allowed to take part in exhibitions.
+A: Painter
+B: Artisan
+C: Sculptor
+D: Potter
+solution:
+A sculptor is an artist who makes sculptures. A painter paints, a potter makes pots, and an artisan is a skilled craftsman in general.
+
+=== 90
+chapter: Fill in the Blanks
+subtopic: Sentence Fill-in-Blanks
+difficulty: EASY
+answer: C
+stem:
+Select the most appropriate option to fill in the blank.
+Payments can be made by _________ or in cash.
+A: chick
+B: cheek
+C: cheque
+D: cheeky
+solution:
+A cheque is a written order to a bank to pay money, the usual alternative to cash. Chick, cheek and cheeky are similar-sounding words that make no sense here.
+
+=== 91
+chapter: Vocabulary
+subtopic: Antonyms: People and Character
+difficulty: MODERATE
+answer: D
+stem:
+Select the most appropriate ANTONYM of the given word in the following sentence.
+
+Traitor
+People should vote for honest and loyal leaders not for betrayer and defender.
+A: Honest
+B: Defender
+C: Betrayer
+D: Loyal
+solution:
+A traitor is one who betrays trust or his country; the sentence itself sets "loyal" leaders against a "betrayer". Loyal (faithful) is the opposite of a traitor. Betrayer is a synonym, honest is not a direct opposite, and "defender" is listed in the sentence among the people not to vote for, so the sentence does not use it as the opposite.
+
+=== 92
+chapter: Spotting Errors
+subtopic: Subject-Verb Agreement
+difficulty: EASY
+answer: D
+stem:
+The following sentence has been split into four segments. Identify the segment that contains a grammatical error.
+She always / invite me / to / dinner.
+A: She always
+B: to
+C: dinner
+D: invite me
+solution:
+The subject "She" is third person singular, so a habitual present verb takes -s: She always invites me to dinner. The error is in "invite me".
+
+=== 93
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: A
+stem:
+Select the option that expresses the given sentence in active voice.
+By whom was the coffee made?
+A: Who made the coffee?
+B: Who had made the coffee?
+C: Who has made the coffee?
+D: Who makes the coffee?
+solution:
+"Was made" is simple past passive, so the active is simple past: "By whom was the coffee made?" becomes "Who made the coffee?". The other options change the tense.
+
+=== 94
+chapter: Vocabulary
+subtopic: Antonyms: Size, Worth and Law
+difficulty: EASY
+answer: B
+stem:
+Select the most appropriate ANTONYM of the underlined words in the given sentence.
+
+Developed countries are \(\underline{\text{at a disadvantage}}\) to have access to modern science and technologies.
+A: powered
+B: privileged
+C: useless
+D: unhappy
+solution:
+To be at a disadvantage is to be in an unfavourable position. Privileged (having special advantages) is the opposite, and it also suits developed countries having access to modern science. Powered, useless and unhappy do not oppose it.
+
+=== 95
+chapter: Sentence Rearrangement
+subtopic: Shape of a Paragraph Argument
+difficulty: MODERATE
+answer: B
+stem:
+Sentences of a paragraph are given below in jumbled order. Arrange the sentences in the correct order to form a meaningful and coherent paragraph.
+
+A.According to Homer, Achilles was brought up by his mother at Phthia with his inseparable companion Patroclus.
+B.Achilles was the bravest, handsomest and greatest warrior of the army of Agamemnon in the Trojan War.
+C.Later non-Homeric tales suggest that Patroclus was Achilles’ kinsman or lover.
+D.Achilles, in Greek mythology, is the son of the mortal Peleus, king of the Myrmidons, and the Nereid Thetis.
+A: ABCD
+B: DBAC
+C: DABC
+D: CABD
+solution:
+D introduces Achilles in full (who he is in Greek mythology, his parents), so it opens. B follows with his standing as the greatest warrior. A then gives Homer's account of his upbringing with Patroclus, and C must come right after A: it names Patroclus again and contrasts "later non-Homeric tales" with "according to Homer". DBAC keeps A and C together; DABC would split them with B.
+
+=== 96
+chapter: Cloze Test
+subtopic: Collocations and the Precise Word
+difficulty: EASY
+answer: B
+context:
+In the following passage, some words have been deleted. Read the passage carefully and select the most appropriate option to fill in each blank.
+Ambition is a vital ingredient for success. Without ambition to push us, we will not be (1)_____ of great achievements. We all need that special something (2)________ ourselves to give us the willpower to reach a higher goal (3)_____ we imagine ourselves capable (4)_____.
+Yet, ambition, (5)_____ money and fire, is a good servant, but a bad master.
+stem:
+Select the most appropriate option to fill in blank number 1.
+A: able
+B: capable
+C: durable
+D: curable
+solution:
+The blank is followed by "of", and "capable of great achievements" is the correct pattern. "Able" takes "to" (able to achieve), and durable and curable make no sense here.
+
+=== 97
+chapter: Cloze Test
+subtopic: Prepositions in the Blank
+difficulty: EASY
+answer: D
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank number 2.
+A: in
+B: with
+C: without
+D: within
+solution:
+"That special something within ourselves" means an inner quality that is inside us. "Without" contradicts the sense, and "in ourselves" or "with ourselves" do not read naturally here.
+
+=== 98
+chapter: Cloze Test
+subtopic: Reading the Blank's Slot
+difficulty: EASY
+answer: B
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank number 3.
+A: then
+B: than
+C: that
+D: what
+solution:
+"A higher goal" is a comparative, so it needs "than": a higher goal than we imagine ourselves capable of. "Then" is about time, and "that" or "what" do not complete a comparison.
+
+=== 99
+chapter: Cloze Test
+subtopic: Prepositions in the Blank
+difficulty: EASY
+answer: C
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank number 4.
+A: about
+B: off
+C: of
+D: on
+solution:
+The adjective "capable" takes "of": capable of (a higher goal). The same pattern appears in blank 1.
+
+=== 100
+chapter: Cloze Test
+subtopic: Reading the Blank's Slot
+difficulty: EASY
+answer: B
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank number 5.
+A: as
+B: like
+C: such
+D: similarly
+solution:
+Before the noun phrase "money and fire" a comparison needs the preposition "like": ambition, like money and fire, is a good servant but a bad master. "As" would need a clause, "such" needs "as", and "similarly" is an adverb.
