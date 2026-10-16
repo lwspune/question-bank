@@ -100,6 +100,12 @@ Two MHT-CET ingest files are not the papers their labels say. **Both were verifi
 
 **Two traps.** (1) *The first labels were on a different scale*: Maths HARD 11% against 29-46% for 2021-2025, Physics 2% against 14-21%. Every 2026 question was re-graded against 2023-2025 samples of its own chapter (Chemistry 62/35/3, Maths 20/50/30, Physics 38/47/14 against 53/44/3, 10/52/38, 31/51/18, EASY/MODERATE/HARD); `build-pdf-shift` now refuses a subject more than 20 points off `difficulty-baseline.json`. (2) *commit.ts's function-name upgrade reaches prose inside math*: `\text{during expansion}` became `\exp ansion` (19 May S2 Q116); the checker now renders `commitText()`.
 
+## SSC CGL (pilot, PRIVATE, 2026-10-16)
+
+**Source.** SSC never posts its papers; the only official copy is a candidate's challenge-module response sheet (one fixed order per shift, key coloured into each option's left cell). AglaSem hosts these printed to PDF, one file per exam day (`C:\Vilas\LWS_Pune\SSC\CGL\`). Every sheet says "for personal use"; the owner decided to ingest (2026-10-16). The 2025 Tier I key is SSC's PROVISIONAL one. Runbook: `scripts/ssc-cgl/README.md`.
+
+**Outcome.** Tier I, 18 Sep 2025, Shifts 1 and 2: 200 rows PRIVATE, 11 subjects (General Awareness split CDS-style). Blind answers agreed with the key 98/100 in each shift; SSC's key adopted on 3 (two judgement items, one fact we guessed, each with a `blind:` line); 3 rows flawed and held: one where we think the key is wrong (S2 Q87), one asking a 2024 winner whose options fit 2023 (S1 Q48), one with no true homonym (S1 Q88). No figure questions in the pilot; figures, Hindi and mocks are not built.
+
 ## MPSC Group B & C Prelims (`mpsc-group-b-c`, added 2026-09-26)
 
 **14 papers, 1,400 questions, all PUBLIC since 2026-09-26** — every General Ability Test prelim 2017-2024: Group B 2017-2022 + 2024, Group C 2017-2019 + 2021, 2022, 2024, and the joint Group B & C 2023. Source: one scanned PDF ("Group B & C Pre Papers 2017 to 2024"), Set A booklets, each followed by MPSC's FINAL key. Pipeline + per-paper status: `scripts/mpsc/README.md`. The narrative: the 2026-09-26 Decisions entry.

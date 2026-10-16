@@ -1,0 +1,37 @@
+{
+  "_comment": "The SSC-only half of the catalog. seed-catalog.ts merges it with the names copied from CDS (Mathematics -> Quantitative Aptitude, English, and the eight GK subjects) and writes catalog.json. 'subjects' adds whole subjects; 'add' appends chapters or subtopics to a copied subject. Extend this file, never catalog.json, when a question fits nothing.",
+  "subjects": {
+    "Reasoning": [
+      { "chapter": "Analogy", "subtopics": ["Word Analogy", "Letter Analogy", "Number Analogy", "Number Set Analogy"] },
+      { "chapter": "Classification", "subtopics": ["Word Classification", "Letter Classification", "Number Classification"] },
+      { "chapter": "Series", "subtopics": ["Number Series", "Letter Series", "Alphanumeric and Pattern Series"] },
+      { "chapter": "Coding-Decoding", "subtopics": ["Letter Coding", "Number and Symbol Coding", "Word-Code Sentences"] },
+      { "chapter": "Mathematical Operations", "subtopics": ["Symbol Substitution", "Interchanging Signs and Numbers", "Operations on Number Sets", "Hidden Operation Rules"] },
+      { "chapter": "Inequalities", "subtopics": ["Direct Inequalities", "Coded Inequalities"] },
+      { "chapter": "Arithmetic Reasoning", "subtopics": ["Arithmetic Word Problems"] },
+      { "chapter": "Blood Relations", "subtopics": ["Direct Relations", "Coded Relations"] },
+      { "chapter": "Direction and Distance", "subtopics": ["Direction Sense", "Distance from the Start"] },
+      { "chapter": "Order, Ranking and Arrangement", "subtopics": ["Ranking and Position", "Linear and Circular Seating", "Scheduling and Puzzles"] },
+      { "chapter": "Syllogism", "subtopics": ["Two-Statement Syllogism", "Three-Statement Syllogism"] },
+      { "chapter": "Venn Diagrams", "subtopics": ["Logical Venn Diagrams", "Counting from a Venn Diagram"] },
+      { "chapter": "Statement-Based Reasoning", "subtopics": ["Statement and Conclusions", "Statement and Assumptions", "Cause, Effect and Courses of Action"] },
+      { "chapter": "Missing Number", "subtopics": ["Missing Number in Figures", "Missing Number in Grids"] },
+      { "chapter": "Alphabet and Number Tests", "subtopics": ["Dictionary Order", "Word Formation", "Letter Position and Alphabet Test", "Digit Operations", "Address and Data Matching"] },
+      { "chapter": "Mirror and Water Images", "subtopics": ["Mirror Images", "Water Images"] },
+      { "chapter": "Paper Folding and Cutting", "subtopics": ["Paper Folding and Punching", "Paper Cutting"] },
+      { "chapter": "Embedded Figures and Pattern Completion", "subtopics": ["Embedded Figures", "Pattern Completion"] },
+      { "chapter": "Figure Counting", "subtopics": ["Counting Triangles", "Counting Squares and Other Figures"] },
+      { "chapter": "Non-Verbal Series and Analogy", "subtopics": ["Figure Series", "Figure Analogy", "Figure Classification"] },
+      { "chapter": "Dice and Cubes", "subtopics": ["Opposite Faces of a Dice", "Cube Painting and Cutting", "Cube Nets"] },
+      { "chapter": "Calendar and Clock", "subtopics": ["Calendar", "Clock"] }
+    ]
+  },
+  "rename": { "Mathematics": "Quantitative Aptitude" },
+  "add": {
+    "English": [{ "chapter": "Vocabulary", "subtopics": ["One-Word Substitution"] }],
+    "Quantitative Aptitude": [
+      { "chapter": "Coordinate Geometry", "subtopics": ["Lines, Distance and Area", "Section Formula and Centroid"] },
+      { "chapter": "Mensuration 3D", "subtopics": ["Prisms and Pyramids"] }
+    ]
+  }
+}
