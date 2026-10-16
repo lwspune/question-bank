@@ -40,8 +40,10 @@ export function optionTextForBank(text: string): string {
 }
 
 type PlanQ = { number: number; figure: FigureKind; options: readonly string[] };
-type SheetQ = { number: number; stemImages: string[]; options: string[][] };
-export type FigurePlan = { stem: string[] | null; options: string[][] | null };
+type SheetQ = { number: number; stemImages: string[]; options: string[][]; regions?: { raster?: boolean }[] };
+/** crop: the question is on a 2023 scan's raster page, which has no image objects, so its
+ * figures are cropped from the page (scan_figures.py). */
+export type FigurePlan = { stem: string[] | null; options: string[][] | null; crop?: FigureKind };
 
 export function figurePlan(q: PlanQ, sheet: SheetQ): FigurePlan {
   const wantsStem = q.figure === "stem" || q.figure === "stem+options";
@@ -49,6 +51,13 @@ export function figurePlan(q: PlanQ, sheet: SheetQ): FigurePlan {
   if (!wantsOptions) {
     const i = q.options.indexOf(FIGURE_OPTION);
     if (i >= 0) throw new Error(`Q${q.number} option ${LABELS[i]} is "${FIGURE_OPTION}" but the row says figure: ${q.figure}`);
+  }
+  if ((wantsStem || wantsOptions) && sheet.regions?.some((r) => r.raster)) {
+    if (wantsOptions) {
+      const i = q.options.findIndex((o) => o !== FIGURE_OPTION);
+      if (i >= 0) throw new Error(`Q${q.number} option ${LABELS[i]} must be "${FIGURE_OPTION}" when the options are figures`);
+    }
+    return { stem: null, options: null, crop: q.figure };
   }
   let stem: string[] | null = null;
   if (wantsStem) {
@@ -89,9 +98,14 @@ function main() {
     const sheet = byNumber.get(q.number);
     if (!sheet) throw new Error(`Q${q.number} is not on the sheet`);
     const plan = figurePlan(q, sheet);
-    if (!plan.stem && !plan.options) continue;
+    if (!plan.stem && !plan.options && !plan.crop) continue;
     mkdirSync(dir, { recursive: true });
     const base = join(dir, `q${String(q.number).padStart(3, "0")}`);
+    if (plan.crop) {
+      execFileSync("python", ["-P", join(__dirname, "scan_figures.py"), shift.id, String(q.number), plan.crop, base], { stdio: "pipe" });
+      n++;
+      continue;
+    }
     const src = (names: string[]) => names.map((x) => join(sheetFile.imgDir, x));
     if (plan.stem) writeFigure(`${base}.png`, src(plan.stem));
     plan.options?.forEach((imgs, i) => writeFigure(`${base}-${LABELS[i]}.png`, src(imgs)));
