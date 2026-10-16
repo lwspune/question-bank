@@ -15,8 +15,8 @@
  * Rollback is by source_file: every row carries the shift's own label, so one DELETE
  * removes exactly this shift and nothing else.
  */
-import { createClient } from "@supabase/supabase-js";
-import { existsSync, readFileSync } from "node:fs";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { commitStaged } from "../../src/lib/upload/commit";
 import { validateRow, type RawRow } from "../../src/lib/upload/validate";
@@ -106,7 +106,7 @@ async function main() {
   });
   console.log(`\ncommit: inserted=${result.inserted} skipped=${result.skipped} failed=${result.failed}`);
   for (const e of result.errors) console.log(`  err row ${e.sourceRow}: ${e.message}`);
-  if (result.skipped > 0) console.log(`!! ${result.skipped} row(s) skipped as duplicates: two questions of one paper collided on content_hash. Investigate.`);
+  if (result.skipped > 0) await recordRepeats(client, examId, shift, parsed);
 
   const { error: vErr, count } = await client
     .from("questions")
@@ -123,6 +123,43 @@ async function main() {
     .eq("id", jobId);
   console.log(`done. ${linked} rows under ${shift.sourceFile} (job ${jobId}).`);
   if ((linked ?? 0) !== sheetCount) console.log(`!! expected ${sheetCount} rows for this shift, found ${linked}.`);
+}
+
+/**
+ * SSC re-asks questions word for word across shifts (12 Sep S3 Q65 = 16 Sep S2 Q59), and
+ * the bank keeps one row per (org, exam, content_hash), so the later shift's copy is
+ * skipped. Its place in THIS paper must not be lost: a mock of the shift needs it. Each
+ * skipped number is written to repeats.json (committed) with the row it repeats.
+ */
+async function recordRepeats(
+  client: SupabaseClient<any, any, any>,
+  examId: string,
+  shift: ReturnType<typeof requireShift>,
+  parsed: { questionNumber?: string | null; contentHash: string }[]
+) {
+  const { data: mine } = await client.from("questions").select("question_number").eq("exam_id", examId).eq("source_file", shift.sourceFile);
+  const present = new Set((mine ?? []).map((q) => String(q.question_number)));
+  const skipped = parsed.filter((p) => !present.has(String(p.questionNumber)));
+  const file = join(__dirname, "repeats.json");
+  const ledger: Record<string, { number: number; questionId: string; first: string }[]> = existsSync(file) ? JSON.parse(readFileSync(file, "utf8")) : {};
+  ledger[shift.id] = [];
+  for (const p of skipped) {
+    const { data: twin } = await client
+      .from("questions")
+      .select("id, source_file, question_number")
+      .eq("org_id", ORG_ID)
+      .eq("exam_id", examId)
+      .eq("content_hash", p.contentHash)
+      .maybeSingle();
+    if (!twin) {
+      console.log(`!! Q${p.questionNumber} was skipped but no row carries its content_hash. Investigate.`);
+      continue;
+    }
+    const first = `${twin.source_file} Q${twin.question_number}`;
+    console.log(`repeat: Q${p.questionNumber} is ${first} word for word; the bank keeps that row (${twin.id})`);
+    ledger[shift.id].push({ number: Number(p.questionNumber), questionId: twin.id as string, first });
+  }
+  writeFileSync(file, JSON.stringify(ledger, null, 2) + "\n");
 }
 
 main().catch((e) => {
