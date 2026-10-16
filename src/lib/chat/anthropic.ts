@@ -50,7 +50,8 @@ export type AskVResult =
       cacheReadTokens: number;
       cacheWriteTokens: number;
     }
-  | { ok: false; error: string };
+  /** Failed after `tokensIn`... were already spent (and billed) on earlier rounds: 0 when nothing came back. */
+  | { ok: false; error: string; tokensIn: number; tokensOut: number; cacheReadTokens: number; cacheWriteTokens: number };
 
 type ContentBlock =
   | { type: "text"; text?: string }
@@ -85,19 +86,22 @@ export async function askV(input: {
   /** Earlier exchanges of this conversation, oldest first (lib/chat/conversation modelHistory). */
   history?: readonly { role: "user" | "assistant"; content: string }[];
 }): Promise<AskVResult> {
-  let apiKey: string;
-  try {
-    ({ apiKey } = chatEnv());
-  } catch (e) {
-    return { ok: false, error: (e as Error).message };
-  }
-
-  const toolDefs = input.tools.map(({ name, description, input_schema }) => ({ name, description, input_schema }));
-  const messages: Message[] = [...(input.history ?? []), { role: "user", content: input.message }];
   let tokensIn = 0;
   let tokensOut = 0;
   let cacheReadTokens = 0;
   let cacheWriteTokens = 0;
+  // Every failure carries what was already spent: a failed second round still billed the first.
+  const fail = (error: string): AskVResult => ({ ok: false, error, tokensIn, tokensOut, cacheReadTokens, cacheWriteTokens });
+
+  let apiKey: string;
+  try {
+    ({ apiKey } = chatEnv());
+  } catch (e) {
+    return fail((e as Error).message);
+  }
+
+  const toolDefs = input.tools.map(({ name, description, input_schema }) => ({ name, description, input_schema }));
+  const messages: Message[] = [...(input.history ?? []), { role: "user", content: input.message }];
   const system = [
     { type: "text", text: input.system, cache_control: { type: "ephemeral" } },
     ...(input.systemTail ? [{ type: "text", text: input.systemTail }] : []),
@@ -124,7 +128,7 @@ export async function askV(input: {
 
       if (!res.ok) {
         const body = await res.text().catch(() => "");
-        return { ok: false, error: `Anthropic API ${res.status}: ${body.slice(0, 300)}` };
+        return fail(`Anthropic API ${res.status}: ${body.slice(0, 300)}`);
       }
 
       const data = (await res.json()) as ApiResponse;
@@ -154,18 +158,18 @@ export async function askV(input: {
         continue;
       }
 
-      if (data.stop_reason === "refusal") return { ok: false, error: "model refused" };
+      if (data.stop_reason === "refusal") return fail("model refused");
 
       const reply = content
         .filter((b): b is { type: "text"; text: string } => b.type === "text" && typeof b.text === "string")
         .map((b) => b.text)
         .join("")
         .trim();
-      if (!reply) return { ok: false, error: `no text (stop_reason ${data.stop_reason ?? "none"})` };
+      if (!reply) return fail(`no text (stop_reason ${data.stop_reason ?? "none"})`);
       return { ok: true, reply, tokensIn, tokensOut, cacheReadTokens, cacheWriteTokens };
     }
-    return { ok: false, error: `still calling tools after ${MAX_TOOL_ROUNDS} rounds` };
+    return fail(`still calling tools after ${MAX_TOOL_ROUNDS} rounds`);
   } catch (e) {
-    return { ok: false, error: (e as Error).message };
+    return fail((e as Error).message);
   }
 }

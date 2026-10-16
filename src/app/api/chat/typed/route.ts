@@ -124,7 +124,7 @@ export async function POST(request: NextRequest) {
     let links: string[] = [];
     let recorded: {
       text: string;
-      source: "ai" | "fallback";
+      source: "ai" | "ai_failed" | "fallback";
       tokensIn?: number;
       tokensOut?: number;
       cacheReadTokens?: number;
@@ -173,6 +173,18 @@ export async function POST(request: NextRequest) {
             };
           } else {
             console.error("V answer failed:", result.error);
+            // Failed part-way: earlier rounds were billed, so keep what they cost (migration 0162).
+            const spent = result.tokensIn + result.tokensOut + result.cacheReadTokens + result.cacheWriteTokens;
+            if (spent > 0) {
+              recorded = {
+                text: TYPED_QUESTION_REPLY,
+                source: "ai_failed",
+                tokensIn: result.tokensIn,
+                tokensOut: result.tokensOut,
+                cacheReadTokens: result.cacheReadTokens,
+                cacheWriteTokens: result.cacheWriteTokens,
+              };
+            }
           }
         } catch (err) {
           // The fixed reply still goes out and the question is still recorded.
@@ -191,11 +203,11 @@ export async function POST(request: NextRequest) {
     });
 
     if (userId !== null) {
-      return NextResponse.json({ ok: true, reply, links, id, source: recorded.source }, { status: 200 });
+      return NextResponse.json({ ok: true, reply, links, id, source: recorded.source === "ai" ? "ai" : "fallback" }, { status: 200 });
     }
     // Signed out: that was their one question. Mark the browser; the window shows the sign-in button.
     const res = NextResponse.json(
-      { ok: true, reply, links, id, source: recorded.source, signInToContinue: true },
+      { ok: true, reply, links, id, source: recorded.source === "ai" ? "ai" : "fallback", signInToContinue: true },
       { status: 200 }
     );
     res.cookies.set(ANON_ASKED_COOKIE, "1", {

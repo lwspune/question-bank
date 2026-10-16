@@ -79,6 +79,59 @@ describe.skipIf(!HAS_ENV)("chat_interactions: typed questions", () => {
     expect(ai.error).toBeNull();
   });
 
+  it("keeps the tokens of a failed AI answer under ai_failed, never on a plain fallback (migration 0162)", async () => {
+    const failed = await admin.from("chat_interactions").insert({
+      event_type: "typed_question",
+      message: `${tag} f1`,
+      reply: "Let me get back to you",
+      reply_source: "ai_failed",
+      tokens_in: 80,
+      tokens_out: 10,
+      cache_write_tokens: 2800,
+    });
+    const plain = await admin.from("chat_interactions").insert({
+      event_type: "typed_question",
+      message: `${tag} f2`,
+      reply: "Let me get back to you",
+      reply_source: "fallback",
+      tokens_in: 80,
+    });
+    expect(failed.error).toBeNull();
+    expect(plain.error).not.toBeNull();
+  });
+
+  it("adds up AI use per India-time day in the database, with no row limit (migration 0162)", async () => {
+    // 2001-03-04 23:59 and 2001-03-05 00:01 in India: either side of midnight. No other row lives on these days.
+    const at = (iso: string, source: "ai" | "ai_failed", n: number) => ({
+      event_type: "typed_question",
+      message: `${tag} day ${iso}`,
+      reply: "x",
+      reply_source: source,
+      tokens_in: n,
+      tokens_out: n,
+      cache_read_tokens: n,
+      cache_write_tokens: n,
+      created_at: iso,
+    });
+    const { error } = await admin
+      .from("chat_interactions")
+      .insert([at("2001-03-04T18:29:00Z", "ai", 1), at("2001-03-04T18:31:00Z", "ai", 10), at("2001-03-04T20:00:00Z", "ai_failed", 100)]);
+    expect(error).toBeNull();
+
+    const { data, error: rpcError } = await admin.rpc("chat_ai_usage_by_day");
+    expect(rpcError).toBeNull();
+    const days = (data as { day: string }[]).filter((d) => d.day.startsWith("2001-03-0"));
+    expect(days).toEqual([
+      { day: "2001-03-04", answers: 1, failed: 0, tokens_in: 1, tokens_out: 1, cache_read_tokens: 1, cache_write_tokens: 1 },
+      { day: "2001-03-05", answers: 1, failed: 1, tokens_in: 110, tokens_out: 110, cache_read_tokens: 110, cache_write_tokens: 110 },
+    ]);
+  });
+
+  it("does not let the public read V's AI usage", async () => {
+    const { error } = await anon.rpc("chat_ai_usage_by_day");
+    expect(error).not.toBeNull();
+  });
+
   it("refuses text over 500 characters", async () => {
     const { error } = await admin
       .from("chat_interactions")

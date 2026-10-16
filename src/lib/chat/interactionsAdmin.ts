@@ -4,7 +4,7 @@
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import type { ChatInteractionRow } from "./interactions";
+import type { AiUsageDay, ChatInteractionRow } from "./interactions";
 import type { BuilderStepId } from "./builderSteps";
 import type { ConversationRow } from "./conversation";
 
@@ -25,7 +25,8 @@ export type RecordChatInteraction = InConversation &
         userId: string | null;
         reply?: {
           text: string;
-          source: "ai" | "fallback";
+          /** ai_failed (migration 0162): the fixed reply, after an AI answer failed part-way; carries what it spent. */
+          source: "ai" | "ai_failed" | "fallback";
           tokensIn?: number;
           tokensOut?: number;
           /** Migration 0161: input read from / written to the prompt cache. */
@@ -48,16 +49,17 @@ export async function recordChatInteraction(
 ): Promise<string | null> {
   const reply = input.eventType === "typed_question" ? input.reply : undefined;
   const faqReply = input.eventType === "faq_click" ? input.replyText : undefined;
+  const spentTokens = reply && (reply.source === "ai" || reply.source === "ai_failed") ? reply : null;
   try {
     const { data, error } = await db
       .from("chat_interactions")
       .insert({
         reply: reply?.text ?? faqReply ?? null,
         reply_source: reply?.source ?? (faqReply ? "template" : null),
-        tokens_in: reply?.source === "ai" ? (reply.tokensIn ?? null) : null,
-        tokens_out: reply?.source === "ai" ? (reply.tokensOut ?? null) : null,
-        cache_read_tokens: reply?.source === "ai" ? (reply.cacheReadTokens ?? null) : null,
-        cache_write_tokens: reply?.source === "ai" ? (reply.cacheWriteTokens ?? null) : null,
+        tokens_in: spentTokens ? (spentTokens.tokensIn ?? null) : null,
+        tokens_out: spentTokens ? (spentTokens.tokensOut ?? null) : null,
+        cache_read_tokens: spentTokens ? (spentTokens.cacheReadTokens ?? null) : null,
+        cache_write_tokens: spentTokens ? (spentTokens.cacheWriteTokens ?? null) : null,
         reply_links: reply && reply.links && reply.links.length > 0 ? reply.links.slice(0, 10) : null,
         event_type: input.eventType,
         question_id:
@@ -299,4 +301,32 @@ export async function readUnreadFollowupConversation(
     return [];
   }
   return readConversation(db, data.conversation_id as string);
+}
+
+type AiUsageRow = {
+  day: string;
+  answers: number;
+  failed: number;
+  tokens_in: number;
+  tokens_out: number;
+  cache_read_tokens: number;
+  cache_write_tokens: number;
+};
+
+/** V's AI use per India-time day, summed in the database (migration 0162): one row a day, no row limit. Null when unreadable. */
+export async function listAiUsageByDay(): Promise<AiUsageDay[] | null> {
+  const { data, error } = await createSupabaseAdminClient().rpc("chat_ai_usage_by_day");
+  if (error) {
+    console.error("listAiUsageByDay:", error.message);
+    return null;
+  }
+  return ((data ?? []) as AiUsageRow[]).map((r) => ({
+    day: r.day,
+    answers: r.answers,
+    failed: r.failed,
+    tokensIn: Number(r.tokens_in),
+    tokensOut: Number(r.tokens_out),
+    cacheReadTokens: Number(r.cache_read_tokens),
+    cacheWriteTokens: Number(r.cache_write_tokens),
+  }));
 }
