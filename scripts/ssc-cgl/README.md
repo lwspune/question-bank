@@ -96,6 +96,9 @@ first file:
   starts with the label read, it is repaired and logged (`onRepair`), never silently.
 - **A hosted file can lack a whole PART** (16 Sep S3 jumps from PART-B to PART-D). `DAYS` declares it
   (`missing`), and every check then expects exactly the questions that exist.
+- **Hosted files can hold only some shifts** (13 Sep: Shifts 2, 3; 22 Sep: 1, 3), declared with
+  `present`, and can mix renders: 20 Sep holds a readable Shift 1 on pages 2-5 (`extract.py
+  --pages=2-5`) followed by a render with no text labels and then screenshots, not read yet.
 - **A page break splits a row into two cells.** Too many cells means the page-straddling
   pair is re-joined (65 of 300 questions on 18 Sep).
 
@@ -130,6 +133,9 @@ On review:
 | 15 Sep S1 (agents, 98 rows) | 97/100 | Q35 (fact unconfirmed), Q89 (judgement) | Q22 (the key's equation gives 16, not 12) | Q14 repeats 12 Sep S1 Q19, Q100 repeats 14 Sep S3 Q99 |
 | 15 Sep S2 (agents) | 100/100 | none | none | Q56 (no four consecutive odd numbers average 5) |
 | 15 Sep S3 (agents) | 100/100 | none | none | Q95 ("lest he fall" and "for fear of falling" both fit). Q99 repeats 12 Sep S1 Q100, Q100 repeats 15 Sep S2 Q100 (98 rows) |
+| 17 Sep S1 (agents) | 98/100 | Q46, Q87 (judgement) | none | Q88 (no true homonym of "simony") |
+| 17 Sep S2 (agents, 99 rows) | 96/100 | Q9, Q10, Q40 (judgement), Q44 (fact unconfirmed) | none | Q11 (the CIRCLE rule gives TRVFSB, no option). Q16 repeats 12 Sep S2 Q19 |
+| 17 Sep S3 (agents) | 100/100 | none | none | Q88 (no true homonym of "corbel") |
 
 ## Repeated questions
 
