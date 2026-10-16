@@ -492,6 +492,9 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "14. Number_System\\02_Sequence_and_Series.pdf",
         note: "AFCAT practice — CDS Pathfinder (book chapter), Sequence and Series. Every key blind re-derived.",
       },
+      { key: "cp-ap", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Arithmetic Progression", path: "16. Number Series\\01. Arithmetic Progression.xlsx", subtopic: "Arithmetic Progression", note: "AFCAT practice — Cadetprep AFCAT sheet, Sequence and Series. Every key blind re-derived." },
+      { key: "cp-gp", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Geometric Progression", path: "16. Number Series\\02. Geometric Progression.xlsx", subtopic: "Geometric Progression", note: "AFCAT practice — Cadetprep AFCAT sheet, Sequence and Series. Every key blind re-derived." },
+      { key: "cp-hp", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Harmonic Progression", path: "16. Number Series\\03. Harmonic Progression.xlsx", subtopic: "Harmonic Progression and Means", note: "AFCAT practice — Cadetprep AFCAT sheet, Sequence and Series. Every key blind re-derived." },
     ],
   },
   "squares-and-roots": {

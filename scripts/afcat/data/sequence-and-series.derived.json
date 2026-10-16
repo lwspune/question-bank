@@ -118,5 +118,865 @@
     "subtopic": "Special Series",
     "difficulty": "HARD",
     "solution": "Pair the terms: \\((1^2 - 2^2) + (3^2 - 4^2) + \\cdots = -(1 + 2) - (3 + 4) - \\cdots = -(1 + 2 + \\cdots + n) = -\\frac{n(n + 1)}{2}\\). Only statement III is correct."
+  },
+  {
+    "id": "02-2",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "EASY",
+    "solution": "AP: \\(3, 7, 11, 15, ...\\)\r\nFirst term \\(a = 3\\), Common difference \\(d = 7 - 3 = 4\\)\r\nUsing formula: \\(a_n = a + (n-1)d\\)\r\n\\(a_{10} = 3 + (10-1) \\times 4 = 3 + 36 = 39\\)"
+  },
+  {
+    "id": "02-3",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "EASY",
+    "solution": "AP: \\(2, 5, 8, 11, ...\\)\r\nCommon difference \\(d = a_2 - a_1 = 5 - 2 = 3\\)\r\nVerification: \\(8 - 5 = 3\\), \\(11 - 8 = 3\\) ✓"
+  },
+  {
+    "id": "02-4",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "MODERATE",
+    "solution": "AP: \\(5, 12, 19, 26, ...\\)\r\n\\(a = 5\\), \\(d = 12 - 5 = 7\\)\r\nFor \\(47\\) to be a term: \\(47 = 5 + (n-1) \\times 7\\)\r\n\\(42 = (n-1) \\times 7\\), \\(n - 1 = 6\\), \\(n = 7\\)\r\nVerification: \\(a_7 = 5 + 6 \\times 7 = 5 + 42 = 47\\) ✓"
+  },
+  {
+    "id": "02-5",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "EASY",
+    "solution": "Given: \\(a_5 = 20\\), \\(d = 2\\)\r\nUsing: \\(a_n = a + (n-1)d\\)\r\n\\(20 = a + (5-1) \\times 2\\)\r\n\\(20 = a + 8\\)\r\n\\(a = 12\\)"
+  },
+  {
+    "id": "02-6",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "MODERATE",
+    "solution": "AP: \\(7, 14, 21, ..., 140\\)\r\n\\(a = 7\\), \\(d = 7\\), \\(a_n = 140\\)\r\nUsing: \\(a_n = a + (n-1)d\\)\r\n\\(140 = 7 + (n-1) \\times 7\\)\r\n\\(133 = (n-1) \\times 7\\)\r\n\\(n - 1 = 19\\), \\(n = 20\\)"
+  },
+  {
+    "id": "02-7",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "MODERATE",
+    "solution": "AP: \\(2, 5, 8, 11, ...\\)\r\n\\(a = 2\\), \\(d = 3\\)\r\nFind \\(a_{15}\\): \\(a_{15} = 2 + 14 \\times 3 = 2 + 42 = 44\\)\r\nUsing: \\(S_n = \\frac{n}{2}(a + l)\\)\r\n\\(S_{15} = \\frac{15}{2}(2 + 44) = \\frac{15}{2} \\times 46 = 15 \\times 23 = 345\\)"
+  },
+  {
+    "id": "02-8",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "EASY",
+    "solution": "Given: \\(a = 1\\), \\(a_8 = 22\\)\r\nUsing: \\(a_8 = a + 7d\\)\r\n\\(22 = 1 + 7d\\)\r\n\\(21 = 7d\\)\r\n\\(d = 3\\)"
+  },
+  {
+    "id": "02-9",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "EASY",
+    "solution": "AP: \\(5, 10, 15, 20, ...\\)\r\n\\(a = 5\\), \\(d = 5\\)\r\n\\(a_{20} = 5 + (20-1) \\times 5 = 5 + 95 = 100\\)"
+  },
+  {
+    "id": "02-10",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "MODERATE",
+    "solution": "AP: \\(1, 3, 5, 7, ...\\) (odd numbers)\r\n\\(a = 1\\), \\(d = 2\\)\r\n\\(a_{20} = 1 + 19 \\times 2 = 39\\)\r\n\\(S_{20} = \\frac{20}{2}(1 + 39) = 10 \\times 40 = 400\\)"
+  },
+  {
+    "id": "02-11",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "MODERATE",
+    "solution": "Given: \\(a_3 = 8\\), \\(a_7 = 20\\)\r\nWe know: \\(a_7 - a_3 = (a + 6d) - (a + 2d) = 4d\\)\r\n\\(20 - 8 = 4d\\)\r\n\\(12 = 4d\\)\r\n\\(d = 3\\)"
+  },
+  {
+    "id": "02-12",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "MODERATE",
+    "solution": "AP: \\(4, 9, 14, 19, ..., 124\\)\r\n\\(a = 4\\), \\(d = 5\\), \\(a_n = 124\\)\r\n\\(124 = 4 + (n-1) \\times 5\\)\r\n\\(120 = (n-1) \\times 5\\)\r\n\\(n - 1 = 24\\)\r\n\\(n = 25\\)"
+  },
+  {
+    "id": "02-13",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "EASY",
+    "solution": "Given: \\(a = 10\\), \\(l = 50\\), \\(n = 9\\)\r\nUsing: \\(S_n = \\frac{n}{2}(a + l)\\)\r\n\\(S_9 = \\frac{9}{2}(10 + 50) = \\frac{9}{2} \\times 60 = 9 \\times 30 = 270\\)"
+  },
+  {
+    "id": "02-14",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "MODERATE",
+    "solution": "AP: \\(-5, -2, 1, 4, ...\\)\r\n\\(a = -5\\), \\(d = -2 - (-5) = 3\\)\r\n\\(a_{15} = -5 + (15-1) \\times 3 = -5 + 42 = 37\\)"
+  },
+  {
+    "id": "02-15",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "EASY",
+    "solution": "AP: \\(1, 2, 3, ..., 100\\)\r\n\\(a = 1\\), \\(l = 100\\), \\(n = 100\\)\r\n\\(S_{100} = \\frac{100}{2}(1 + 100) = 50 \\times 101 = 5050\\)"
+  },
+  {
+    "id": "02-16",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "MODERATE",
+    "solution": "AP: \\(3, 10, 17, 24, ...\\)\r\n\\(a = 3\\), \\(d = 7\\)\r\nFor term = 136:\r\n\\(136 = 3 + (n-1) \\times 7\\)\r\n\\(133 = (n-1) \\times 7\\)\r\n\\(n - 1 = 19\\)\r\n\\(n = 20\\)\r\nSo \\(136\\) is the \\(20^{th}\\) term"
+  },
+  {
+    "id": "02-17",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "MODERATE",
+    "solution": "Given: \\(a = 2\\), \\(d = 5\\), \\(n = 12\\)\r\nUsing: \\(S_n = \\frac{n}{2}(2a + (n-1)d)\\)\r\n\\(S_{12} = \\frac{12}{2}(2 \\times 2 + 11 \\times 5)\\)\r\n\\(= 6(4 + 55)\\)\r\n\\(= 6 \\times 59\\)\r\n\\(= 354\\)"
+  },
+  {
+    "id": "02-18",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "EASY",
+    "solution": "AP: \\(2, 4, 6, 8, ...\\) (even numbers)\r\n\\(a = 2\\), \\(d = 2\\)\r\n\\(a_{30} = 2 + 29 \\times 2 = 2 + 58 = 60\\)\r\n\\(S_{30} = \\frac{30}{2}(2 + 60) = 15 \\times 62 = 930\\)"
+  },
+  {
+    "id": "02-19",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "MODERATE",
+    "solution": "Given: \\(a_5 = 25\\), \\(a_9 = 49\\)\r\nUsing: \\(a_9 - a_5 = 4d\\)\r\n\\(49 - 25 = 4d\\)\r\n\\(24 = 4d\\)\r\n\\(d = 6\\)\r\nNow, \\(a_5 = a + 4d\\)\r\n\\(25 = a + 4 \\times 6\\)\r\n\\(25 = a + 24\\)\r\n\\(a = 1\\)"
+  },
+  {
+    "id": "02-20",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "HARD",
+    "solution": "AP: \\(1, 4, 7, 10, ...\\)\r\n\\(a = 1\\), \\(d = 3\\), \\(S_n = 715\\)\r\nUsing: \\(S_n = \\frac{n}{2}(2a + (n-1)d)\\)\r\n\\(715 = \\frac{n}{2}(2 + 3(n-1))\\)\r\n\\(1430 = n(2 + 3n - 3)\\)\r\n\\(1430 = n(3n - 1)\\)\r\n\\(3n^2 - n - 1430 = 0\\)\r\nUsing quadratic formula: \\(n = \\frac{1 + \\sqrt{1 + 17160}}{6} = \\frac{1 + 131}{6} = 22\\)\r\nVerification: \\(S_{22} = \\frac{22}{2}(2 + 21 \\times 3) = 11 \\times 65 = 715\\) ✓"
+  },
+  {
+    "id": "02-21",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "EASY",
+    "solution": "AP: \\(1, 5, 9, 13, ...\\)\r\n\\(a = 1\\), \\(d = 4\\)\r\n\\(a_{18} = 1 + 17 \\times 4 = 1 + 68 = 69\\)"
+  },
+  {
+    "id": "02-22",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "HARD",
+    "solution": "Given: \\(S_n = 3n^2 + 2n\\)\r\n\\(a_n = S_n - S_{n-1}\\) for \\(n \\geq 2\\)\r\n\\(S_{n-1} = 3(n-1)^2 + 2(n-1) = 3n^2 - 4n + 1\\)\r\n\\(a_n = (3n^2 + 2n) - (3n^2 - 4n + 1) = 6n - 1\\)\r\nVerification for \\(n=1\\): \\(a_1 = S_1 = 3 + 2 = 5\\), and \\(6(1) - 1 = 5\\) ✓"
+  },
+  {
+    "id": "02-23",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "MODERATE",
+    "solution": "Given: \\(a = 5\\), \\(d = 2\\), \\(n = 25\\)\r\n\\(S_n = \\frac{n}{2}(2a + (n-1)d)\\)\r\n\\(S_{25} = \\frac{25}{2}(2 \\times 5 + 24 \\times 2)\\)\r\n\\(= \\frac{25}{2}(10 + 48)\\)\r\n\\(= \\frac{25}{2} \\times 58\\)\r\n\\(= 25 \\times 29\\)\r\n\\(= 725\\)"
+  },
+  {
+    "id": "02-24",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "HARD",
+    "solution": "Let the three numbers in AP be \\(a-d, a, a+d\\)\r\nSum: \\((a-d) + a + (a+d) = 21\\)\r\n\\(3a = 21\\)\r\n\\(a = 7\\)\r\nProduct: \\((a-d) \\times a \\times (a+d) = 315\\)\r\n\\((7-d) \\times 7 \\times (7+d) = 315\\)\r\n\\(7(49 - d^2) = 315\\)\r\n\\(49 - d^2 = 45\\)\r\n\\(d^2 = 4\\)\r\n\\(d = 2\\)\r\nNumbers: \\(7-2=5, 7, 7+2=9\\) → \\(5, 7, 9\\)"
+  },
+  {
+    "id": "02-25",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "MODERATE",
+    "solution": "Given: \\(a = 10\\), \\(d = -3\\), \\(a_n = -20\\)\r\n\\(-20 = 10 + (n-1) \\times (-3)\\)\r\n\\(-30 = (n-1) \\times (-3)\\)\r\n\\(n - 1 = 10\\)\r\n\\(n = 11\\)"
+  },
+  {
+    "id": "02-26",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "HARD",
+    "solution": "Given: \\(S_n = n^2 + 3n\\)\r\n\\(a_n = S_n - S_{n-1}\\) for \\(n \\geq 2\\)\r\n\\(S_{n-1} = (n-1)^2 + 3(n-1) = n^2 + n - 2\\)\r\n\\(a_n = (n^2 + 3n) - (n^2 + n - 2) = 2n + 2\\)\r\n\\(a_3 = 2(3) + 2 = 8\\)"
+  },
+  {
+    "id": "02-27",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "EASY",
+    "solution": "Odd numbers: \\(1, 3, 5, 7, ..., 99\\)\r\n\\(a = 1\\), \\(d = 2\\), \\(l = 99\\)\r\nNumber of terms: \\(99 = 1 + (n-1) \\times 2\\)\r\n\\(98 = 2(n-1)\\), \\(n = 50\\)\r\n\\(S_{50} = \\frac{50}{2}(1 + 99) = 25 \\times 100 = 2500\\)"
+  },
+  {
+    "id": "02-28",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "HARD",
+    "solution": "Given: \\(a = -5\\), \\(d = 3\\), \\(S_n = 138\\)\r\nUsing: \\(S_n = \\frac{n}{2}(2a + (n-1)d)\\)\r\n\\(138 = \\frac{n}{2}(2(-5) + (n-1) \\times 3)\\)\r\n\\(276 = n(-10 + 3n - 3)\\)\r\n\\(276 = n(3n - 13)\\)\r\n\\(3n^2 - 13n - 276 = 0\\)\r\nUsing quadratic formula: \\(n = \\frac{13 + \\sqrt{169 + 3312}}{6} = \\frac{13 + \\sqrt{3481}}{6} = \\frac{13 + 59}{6} = 12\\)\r\nVerification: \\(S_{12} = \\frac{12}{2}(-10 + 11 \\times 3) = 6 \\times 23 = 138\\) ✓"
+  },
+  {
+    "id": "02-29",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "EASY",
+    "solution": "AP: \\(6, 12, 18, 24, ...\\)\r\n\\(a = 6\\), \\(d = 6\\)\r\n\\(a_{25} = 6 + (25-1) \\times 6 = 6 + 144 = 150\\)"
+  },
+  {
+    "id": "02-30",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "MODERATE",
+    "solution": "Given: \\(a_2 = 10\\), \\(a_5 = 25\\)\r\nUsing: \\(a_5 - a_2 = 3d\\)\r\n\\(25 - 10 = 3d\\)\r\n\\(15 = 3d\\)\r\n\\(d = 5\\)\r\nNow, \\(a_2 = a + d\\)\r\n\\(10 = a + 5\\)\r\n\\(a = 5\\)"
+  },
+  {
+    "id": "02-31",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "MODERATE",
+    "solution": "AP: \\(2, 7, 12, 17, ...\\)\r\n\\(a = 2\\), \\(d = 5\\)\r\nFind \\(n\\) such that \\(a_n < 100\\):\r\n\\(a_n = 2 + (n-1) \\times 5 < 100\\)\r\n\\(2 + 5n - 5 < 100\\)\r\n\\(5n - 3 < 100\\)\r\n\\(5n < 103\\)\r\n\\(n < 20.6\\)\r\nSo \\(n = 20\\)\r\nVerification: \\(a_{20} = 2 + 19 \\times 5 = 2 + 95 = 97 < 100\\) ✓\r\n\\(a_{21} = 2 + 20 \\times 5 = 102 > 100\\) ✓"
+  },
+  {
+    "id": "02-32",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Arithmetic Progression",
+    "difficulty": "EASY",
+    "solution": "AP: \\(10, 20, 30, ..., 100\\)\r\n\\(a = 10\\), \\(d = 10\\), \\(l = 100\\)\r\nNumber of terms: \\(100 = 10 + (n-1) \\times 10\\)\r\n\\(90 = 10(n-1)\\)\r\n\\(n = 10\\)\r\n\\(S_{10} = \\frac{10}{2}(10 + 100) = 5 \\times 110 = 550\\)"
+  },
+  {
+    "id": "03-2",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "EASY",
+    "solution": "GP: \\(2, 6, 18, 54, ...\\)\r\nFirst term \\(a = 2\\), Common ratio \\(r = \\frac{6}{2} = 3\\)\r\nUsing formula: \\(a_n = a \\times r^{n-1}\\)\r\n\\(a_5 = 2 \\times 3^{5-1} = 2 \\times 3^4 = 2 \\times 81 = 162\\)"
+  },
+  {
+    "id": "03-3",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "EASY",
+    "solution": "GP: \\(3, 6, 12, 24, ...\\)\r\nCommon ratio \\(r = \\frac{a_2}{a_1} = \\frac{6}{3} = 2\\)\r\nVerification: \\(\\frac{12}{6} = 2\\), \\(\\frac{24}{12} = 2\\) ✓"
+  },
+  {
+    "id": "03-4",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "MODERATE",
+    "solution": "GP: \\(2, 6, 18, 54, ...\\)\r\n\\(a = 2\\), \\(r = 3\\)\r\nFor \\(162\\) to be a term: \\(162 = 2 \\times 3^{n-1}\\)\r\n\\(81 = 3^{n-1}\\)\r\n\\(3^4 = 3^{n-1}\\)\r\n\\(n - 1 = 4\\)\r\n\\(n = 5\\)\r\nVerification: \\(a_5 = 2 \\times 3^4 = 2 \\times 81 = 162\\) ✓"
+  },
+  {
+    "id": "03-5",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "EASY",
+    "solution": "Given: \\(a_4 = 40\\), \\(r = 2\\)\r\nUsing: \\(a_n = a \\times r^{n-1}\\)\r\n\\(40 = a \\times 2^{4-1}\\)\r\n\\(40 = a \\times 8\\)\r\n\\(a = 5\\)"
+  },
+  {
+    "id": "03-6",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "MODERATE",
+    "solution": "GP: \\(1, 2, 4, 8, ..., 512\\)\r\n\\(a = 1\\), \\(r = 2\\), \\(a_n = 512\\)\r\nUsing: \\(a_n = a \\times r^{n-1}\\)\r\n\\(512 = 1 \\times 2^{n-1}\\)\r\n\\(2^9 = 2^{n-1}\\)\r\n\\(n - 1 = 9\\)\r\n\\(n = 10\\)"
+  },
+  {
+    "id": "03-7",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "MODERATE",
+    "solution": "GP: \\(2, 4, 8, 16, ...\\)\r\n\\(a = 2\\), \\(r = 2\\), \\(n = 5\\)\r\nUsing: \\(S_n = a \\times \\frac{r^n - 1}{r - 1}\\)\r\n\\(S_5 = 2 \\times \\frac{2^5 - 1}{2 - 1} = 2 \\times \\frac{32 - 1}{1} = 2 \\times 31 = 62\\)"
+  },
+  {
+    "id": "03-8",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "MODERATE",
+    "solution": "Given: \\(a = 3\\), \\(a_4 = 24\\)\r\nUsing: \\(a_4 = a \\times r^{4-1}\\)\r\n\\(24 = 3 \\times r^3\\)\r\n\\(8 = r^3\\)\r\n\\(r = 2\\)"
+  },
+  {
+    "id": "03-9",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "EASY",
+    "solution": "GP: \\(1, 3, 9, 27, ...\\)\r\n\\(a = 1\\), \\(r = 3\\)\r\n\\(a_6 = 1 \\times 3^{6-1} = 3^5 = 243\\)"
+  },
+  {
+    "id": "03-10",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "MODERATE",
+    "solution": "GP: \\(1, 2, 4, 8, ...\\)\r\n\\(a = 1\\), \\(r = 2\\), \\(n = 6\\)\r\nUsing: \\(S_n = a \\times \\frac{r^n - 1}{r - 1}\\)\r\n\\(S_6 = 1 \\times \\frac{2^6 - 1}{2 - 1} = \\frac{64 - 1}{1} = 63\\)"
+  },
+  {
+    "id": "03-11",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "MODERATE",
+    "solution": "Given: \\(a_2 = 6\\), \\(a_5 = 48\\)\r\nUsing: \\(a_5 = a_2 \\times r^{5-2}\\)\r\n\\(48 = 6 \\times r^3\\)\r\n\\(8 = r^3\\)\r\n\\(r = 2\\)"
+  },
+  {
+    "id": "03-12",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "MODERATE",
+    "solution": "GP: \\(3, 6, 12, 24, ..., 768\\)\r\n\\(a = 3\\), \\(r = 2\\), \\(a_n = 768\\)\r\n\\(768 = 3 \\times 2^{n-1}\\)\r\n\\(256 = 2^{n-1}\\)\r\n\\(2^8 = 2^{n-1}\\)\r\n\\(n - 1 = 8\\)\r\n\\(n = 9\\)"
+  },
+  {
+    "id": "03-13",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "MODERATE",
+    "solution": "Given: \\(a = 10\\), \\(r = \\frac{1}{2}\\) (where \\(|r| < 1\\))\r\nUsing: \\(S_{\\infty} = \\frac{a}{1 - r}\\)\r\n\\(S_{\\infty} = \\frac{10}{1 - \\frac{1}{2}} = \\frac{10}{\\frac{1}{2}} = 20\\)"
+  },
+  {
+    "id": "03-14",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "EASY",
+    "solution": "GP: \\(5, 10, 20, 40, ...\\)\r\n\\(a = 5\\), \\(r = 2\\)\r\n\\(a_4 = 5 \\times 2^{4-1} = 5 \\times 2^3 = 5 \\times 8 = 40\\)"
+  },
+  {
+    "id": "03-15",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "EASY",
+    "solution": "GP: \\(1, 3, 9, 27, ...\\)\r\n\\(a = 1\\), \\(r = 3\\), \\(n = 4\\)\r\nUsing: \\(S_n = a \\times \\frac{r^n - 1}{r - 1}\\)\r\n\\(S_4 = 1 \\times \\frac{3^4 - 1}{3 - 1} = \\frac{81 - 1}{2} = \\frac{80}{2} = 40\\)"
+  },
+  {
+    "id": "03-16",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "MODERATE",
+    "solution": "Given: \\(a_2 = 12\\), \\(a_4 = 48\\)\r\nUsing: \\(a_4 = a_2 \\times r^{4-2}\\)\r\n\\(48 = 12 \\times r^2\\)\r\n\\(4 = r^2\\)\r\n\\(r = 2\\)\r\nNow, \\(a_2 = a \\times r\\)\r\n\\(12 = a \\times 2\\)\r\n\\(a = 6\\)"
+  },
+  {
+    "id": "03-17",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "HARD",
+    "solution": "GP: \\(2, 6, 18, 54, ...\\)\r\n\\(a = 2\\), \\(r = 3\\)\r\nFor term = 1458:\r\n\\(1458 = 2 \\times 3^{n-1}\\)\r\n\\(729 = 3^{n-1}\\)\r\n\\(3^6 = 3^{n-1}\\)\r\n\\(n - 1 = 6\\)\r\n\\(n = 7\\)\r\nSo \\(1458\\) is the \\(7^{th}\\) term"
+  },
+  {
+    "id": "03-18",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "MODERATE",
+    "solution": "GP: \\(2, 4, 8, 16, ...\\)\r\n\\(a = 2\\), \\(r = 2\\), \\(n = 7\\)\r\nUsing: \\(S_n = a \\times \\frac{r^n - 1}{r - 1}\\)\r\n\\(S_7 = 2 \\times \\frac{2^7 - 1}{2 - 1} = 2 \\times \\frac{128 - 1}{1} = 2 \\times 127 = 254\\)"
+  },
+  {
+    "id": "03-19",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "MODERATE",
+    "solution": "Given: \\(a = 8\\), \\(r = \\frac{1}{2}\\) (where \\(|r| < 1\\))\r\nUsing: \\(S_{\\infty} = \\frac{a}{1 - r}\\)\r\n\\(S_{\\infty} = \\frac{8}{1 - \\frac{1}{2}} = \\frac{8}{\\frac{1}{2}} = 16\\)"
+  },
+  {
+    "id": "03-20",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "EASY",
+    "solution": "GP: \\(4, 8, 16, 32, ...\\)\r\n\\(a = 4\\), \\(r = 2\\)\r\n\\(a_5 = 4 \\times 2^{5-1} = 4 \\times 2^4 = 4 \\times 16 = 64\\)"
+  },
+  {
+    "id": "03-21",
+    "derived": "X",
+    "value": "",
+    "confidence": "high",
+    "note": "excluded by override",
+    "subtopic": "Geometric Progression",
+    "difficulty": "MODERATE",
+    "solution": "Excluded from the bank: see the override."
+  },
+  {
+    "id": "03-22",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "EASY",
+    "solution": "GP: \\(3, 6, 12, 24, ...\\)\r\n\\(a = 3\\), \\(r = 2\\), \\(n = 5\\)\r\nUsing: \\(S_n = a \\times \\frac{r^n - 1}{r - 1}\\)\r\n\\(S_5 = 3 \\times \\frac{2^5 - 1}{2 - 1} = 3 \\times \\frac{32 - 1}{1} = 3 \\times 31 = 93\\)"
+  },
+  {
+    "id": "03-23",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "MODERATE",
+    "solution": "Given: \\(a = 5\\), \\(r = -2\\)\r\n\\(a_4 = 5 \\times (-2)^{4-1} = 5 \\times (-2)^3 = 5 \\times (-8) = -40\\)"
+  },
+  {
+    "id": "03-24",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "HARD",
+    "solution": "GP: \\(1, 2, 4, 8, ...\\)\r\n\\(a = 1\\), \\(r = 2\\), \\(S_n = 255\\)\r\nUsing: \\(S_n = a \\times \\frac{r^n - 1}{r - 1}\\)\r\n\\(255 = 1 \\times \\frac{2^n - 1}{2 - 1}\\)\r\n\\(255 = 2^n - 1\\)\r\n\\(256 = 2^n\\)\r\n\\(2^8 = 2^n\\)\r\n\\(n = 8\\)"
+  },
+  {
+    "id": "03-25",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "MODERATE",
+    "solution": "GP: \\(1 + \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + ...\\)\r\n\\(a = 1\\), \\(r = \\frac{1}{2}\\) (where \\(|r| < 1\\))\r\nUsing: \\(S_{\\infty} = \\frac{a}{1 - r}\\)\r\n\\(S_{\\infty} = \\frac{1}{1 - \\frac{1}{2}} = \\frac{1}{\\frac{1}{2}} = 2\\)"
+  },
+  {
+    "id": "03-26",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "HARD",
+    "solution": "Given: \\(a_3 = 16\\), \\(a_6 = 128\\)\r\nUsing: \\(a_6 = a_3 \\times r^{6-3}\\)\r\n\\(128 = 16 \\times r^3\\)\r\n\\(8 = r^3\\)\r\n\\(r = 2\\)\r\nNow, \\(a_3 = a \\times r^2\\)\r\n\\(16 = a \\times 2^2\\)\r\n\\(16 = a \\times 4\\)\r\n\\(a = 4\\)"
+  },
+  {
+    "id": "03-27",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "EASY",
+    "solution": "GP: \\(2, 6, 18, 54, ...\\)\r\n\\(a = 2\\), \\(r = 3\\)\r\n\\(a_7 = 2 \\times 3^{7-1} = 2 \\times 3^6 = 2 \\times 729 = 1458\\)"
+  },
+  {
+    "id": "03-28",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "MODERATE",
+    "solution": "Given: \\(a_1 = 5\\), \\(a_3 = 20\\)\r\nUsing: \\(a_3 = a_1 \\times r^{3-1}\\)\r\n\\(20 = 5 \\times r^2\\)\r\n\\(4 = r^2\\)\r\n\\(r = \\pm 2\\)"
+  },
+  {
+    "id": "03-29",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "EASY",
+    "solution": "GP: \\(2, 6, 18, 54, ...\\)\r\n\\(a = 2\\), \\(r = 3\\), \\(n = 3\\)\r\nUsing: \\(S_n = a \\times \\frac{r^n - 1}{r - 1}\\)\r\n\\(S_3 = 2 \\times \\frac{3^3 - 1}{3 - 1} = 2 \\times \\frac{27 - 1}{2} = 2 \\times \\frac{26}{2} = 26\\)"
+  },
+  {
+    "id": "03-30",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Geometric Progression",
+    "difficulty": "HARD",
+    "solution": "Given: \\(S_{\\infty} = 12\\), \\(a = 6\\)\r\nUsing: \\(S_{\\infty} = \\frac{a}{1 - r}\\)\r\n\\(12 = \\frac{6}{1 - r}\\)\r\n\\(12(1 - r) = 6\\)\r\n\\(12 - 12r = 6\\)\r\n\\(-12r = -6\\)\r\n\\(r = \\frac{1}{2}\\)"
+  },
+  {
+    "id": "04-2",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "EASY",
+    "solution": "HP: \\(1, \\frac{1}{2}, \\frac{1}{3}, \\frac{1}{4}, ...\\)\r\nA Harmonic Progression is formed by taking reciprocals of AP.\r\nThe reciprocals are: \\(1, 2, 3, 4, ...\\) which is an AP with \\(a = 1, d = 1\\)\r\n4th term of AP = \\(1 + (4-1) \\times 1 = 4\\)\r\nSo 4th term of HP = \\(\\frac{1}{4}\\)"
+  },
+  {
+    "id": "04-3",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "MODERATE",
+    "solution": "HP: \\(2, \\frac{2}{3}, ...\\)\r\nReciprocals form AP: \\(\\frac{1}{2}, \\frac{3}{2}, ...\\)\r\nFirst term of AP \\(a = \\frac{1}{2}\\), Second term = \\(\\frac{3}{2}\\)\r\nCommon difference \\(d = \\frac{3}{2} - \\frac{1}{2} = 1\\)\r\nThird term of AP = \\(\\frac{3}{2} + 1 = \\frac{5}{2}\\)\r\nThird term of HP = \\(\\frac{1}{\\frac{5}{2}} = \\frac{2}{5}\\)"
+  },
+  {
+    "id": "04-4",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "EASY",
+    "solution": "HM between \\(a = 2\\) and \\(b = 4\\)\r\nHM = \\(\\frac{2 \\times 2 \\times 4}{2 + 4} = \\frac{16}{6} = \\frac{8}{3}\\)"
+  },
+  {
+    "id": "04-5",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "EASY",
+    "solution": "HP: \\(\\frac{1}{2}, \\frac{1}{3}, \\frac{1}{4}, ...\\)\r\nReciprocals form AP: \\(2, 3, 4, ...\\) with \\(a = 2, d = 1\\)\r\n5th term of AP = \\(2 + (5-1) \\times 1 = 2 + 4 = 6\\)\r\n5th term of HP = \\(\\frac{1}{6}\\)"
+  },
+  {
+    "id": "04-6",
+    "derived": "X",
+    "value": "",
+    "confidence": "high",
+    "note": "excluded by override",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "MODERATE",
+    "solution": "Excluded from the bank: see the override."
+  },
+  {
+    "id": "04-7",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "MODERATE",
+    "solution": "If \\(\\frac{1}{2}, \\frac{1}{x}, \\frac{1}{4}\\) are in AP:\r\n\\(\\frac{1}{x} = \\frac{\\frac{1}{2} + \\frac{1}{4}}{2} = \\frac{\\frac{3}{4}}{2} = \\frac{3}{8}\\)\r\n\\(x = \\frac{8}{3}\\)"
+  },
+  {
+    "id": "04-8",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "EASY",
+    "solution": "HM between \\(a = 3\\) and \\(b = 6\\)\r\nHM = \\(\\frac{2 \\times 3 \\times 6}{3 + 6} = \\frac{36}{9} = 4\\)"
+  },
+  {
+    "id": "04-9",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "MODERATE",
+    "solution": "HP: \\(\\frac{1}{5}, \\frac{1}{7}, \\frac{1}{9}, ...\\)\r\nReciprocals form AP: \\(5, 7, 9, ...\\) with \\(a = 5, d = 2\\)\r\n4th term of AP = \\(5 + (4-1) \\times 2 = 5 + 6 = 11\\)\r\n4th term of HP = \\(\\frac{1}{11}\\)"
+  },
+  {
+    "id": "04-10",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "HARD",
+    "solution": "If \\(a, b, c\\) are in HP, their reciprocals \\(\\frac{1}{a}, \\frac{1}{b}, \\frac{1}{c}\\) are in AP.\r\nFor AP: \\(\\frac{2}{b} = \\frac{1}{a} + \\frac{1}{c}\\)\r\n\\(\\frac{2}{b} = \\frac{a+c}{ac}\\)\r\n\\(b = \\frac{2ac}{a+c}\\)"
+  },
+  {
+    "id": "04-11",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "EASY",
+    "solution": "HM between \\(a = 4\\) and \\(b = 12\\)\r\nHM = \\(\\frac{2 \\times 4 \\times 12}{4 + 12} = \\frac{96}{16} = 6\\)"
+  },
+  {
+    "id": "04-12",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "MODERATE",
+    "solution": "If \\(x, y, z\\) are in HP, then \\(y = \\frac{2xz}{x+z}\\)\r\n\\(y = \\frac{2 \\times 2 \\times 8}{2 + 8} = \\frac{32}{10} = \\frac{16}{5} = 3.2\\)"
+  },
+  {
+    "id": "04-13",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "EASY",
+    "solution": "HP: \\(1, \\frac{1}{2}, \\frac{1}{3}, ...\\)\r\nReciprocals form AP: \\(1, 2, 3, ...\\) with \\(a = 1, d = 1\\)\r\n6th term of AP = \\(1 + (6-1) \\times 1 = 1 + 5 = 6\\)\r\n6th term of HP = \\(\\frac{1}{6}\\)"
+  },
+  {
+    "id": "04-14",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "HARD",
+    "solution": "HP with \\(a_2 = \\frac{1}{5}, a_4 = \\frac{1}{9}\\)\r\nReciprocals form AP: \\(a_2' = 5, a_4' = 9\\)\r\nFor AP: \\(a_4' = a_2' + 2d\\)\r\n\\(9 = 5 + 2d\\)\r\n\\(d = 2\\)\r\nFirst term of AP: \\(a_1' = a_2' - d = 5 - 2 = 3\\)\r\nFirst term of HP: \\(a_1 = \\frac{1}{3}\\)"
+  },
+  {
+    "id": "04-15",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "MODERATE",
+    "solution": "HM between \\(a = \\frac{1}{2}\\) and \\(b = \\frac{1}{3}\\)\r\nHM = \\(\\frac{2 \\times \\frac{1}{2} \\times \\frac{1}{3}}{\\frac{1}{2} + \\frac{1}{3}} = \\frac{\\frac{1}{3}}{\\frac{5}{6}} = \\frac{1}{3} \\times \\frac{6}{5} = \\frac{2}{5}\\)"
+  },
+  {
+    "id": "04-16",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "HARD",
+    "solution": "For two positive numbers \\(a\\) and \\(b\\) (where \\(a \\neq b\\)):\r\nHM \\(= \\frac{2ab}{a+b}\\)\r\nGM \\(= \\sqrt{ab}\\)\r\nAM \\(= \\frac{a+b}{2}\\)\r\nIt can be proven algebraically that: HM \\(\\leq\\) GM \\(\\leq\\) AM\r\nWhen \\(a \\neq b\\), the inequalities are strict: HM \\(<\\) GM \\(<\\) AM"
+  },
+  {
+    "id": "04-17",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "MODERATE",
+    "solution": "If HP first term = \\(\\frac{1}{10}\\), then corresponding AP first term = \\(10\\)\r\nAP: \\(10, 11, 12, 13, 14, ...\\) with \\(d = 1\\)\r\n5th term of AP = \\(10 + (5-1) \\times 1 = 14\\)\r\n5th term of HP = \\(\\frac{1}{14}\\)"
+  },
+  {
+    "id": "04-18",
+    "derived": "X",
+    "value": "",
+    "confidence": "high",
+    "note": "excluded by override",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "MODERATE",
+    "solution": "Excluded from the bank: see the override."
+  },
+  {
+    "id": "04-19",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "EASY",
+    "solution": "HP: \\(\\frac{1}{3}, \\frac{1}{5}, ...\\)\r\nReciprocals form AP: \\(3, 5, ...\\) with \\(a = 3, d = 2\\)\r\n3rd term of AP = \\(3 + (3-1) \\times 2 = 3 + 4 = 7\\)\r\n3rd term of HP = \\(\\frac{1}{7}\\)"
+  },
+  {
+    "id": "04-20",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "MODERATE",
+    "solution": "If \\(p, q, r\\) are in HP, their reciprocals \\(\\frac{1}{p}, \\frac{1}{q}, \\frac{1}{r}\\) are in AP.\r\nFor AP: \\(\\frac{2}{q} = \\frac{1}{p} + \\frac{1}{r}\\)\r\n\\(\\frac{2}{q} = \\frac{r+p}{pr}\\)\r\n\\(q = \\frac{2pr}{p+r}\\)"
+  },
+  {
+    "id": "04-21",
+    "derived": "C",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "EASY",
+    "solution": "HP: \\(\\frac{1}{2}, \\frac{1}{4}, \\frac{1}{6}, ...\\)\r\nReciprocals form AP: \\(2, 4, 6, ...\\) with \\(a = 2, d = 2\\)\r\n7th term of AP = \\(2 + (7-1) \\times 2 = 2 + 12 = 14\\)\r\n7th term of HP = \\(\\frac{1}{14}\\)"
+  },
+  {
+    "id": "04-22",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "EASY",
+    "solution": "Given: \\(a_n = \\frac{1}{5n-3}\\)\r\nFor \\(n = 3\\):\r\n\\(a_3 = \\frac{1}{5(3)-3} = \\frac{1}{15-3} = \\frac{1}{12}\\)"
+  },
+  {
+    "id": "04-23",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "EASY",
+    "solution": "HM between \\(a = 5\\) and \\(b = 20\\)\r\nHM = \\(\\frac{2 \\times 5 \\times 20}{5 + 20} = \\frac{200}{25} = 8\\)"
+  },
+  {
+    "id": "04-24",
+    "derived": "B",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "HARD",
+    "solution": "For positive numbers \\(a\\) and \\(b\\):\r\nHM \\(= \\frac{2ab}{a+b}\\)\r\nGM \\(= \\sqrt{ab}\\)\r\nIt can be shown that: \\(\\frac{2ab}{a+b} \\leq \\sqrt{ab}\\)\r\nTherefore: HM \\(\\leq\\) GM\r\nEquality holds when \\(a = b\\)"
+  },
+  {
+    "id": "04-25",
+    "derived": "D",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "MODERATE",
+    "solution": "HP with first term = \\(\\frac{1}{7}\\)\r\nReciprocals form AP: first term = \\(7\\), common difference = \\(1\\)\r\nAP: \\(7, 8, 9, 10, ...\\)\r\n4th term of AP = \\(7 + (4-1) \\times 1 = 10\\)\r\n4th term of HP = \\(\\frac{1}{10}\\)"
+  },
+  {
+    "id": "04-26",
+    "derived": "A",
+    "value": "",
+    "confidence": "high",
+    "note": "blind agrees with key; source solution adopted",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "MODERATE",
+    "solution": "Sequence 1: \\(\\frac{1}{7}, \\frac{1}{9}, \\frac{1}{11}\\)\r\nReciprocals: \\(7, 9, 11\\) - AP with \\(d = 2\\) ✓ In HP\r\nSequence 2: \\(\\frac{1}{5}, \\frac{1}{10}, \\frac{1}{15}\\)\r\nReciprocals: \\(5, 10, 15\\) - AP with \\(d = 5\\) ✓ In HP\r\nBoth are in HP"
+  },
+  {
+    "id": "04-27",
+    "derived": "X",
+    "value": "",
+    "confidence": "high",
+    "note": "excluded by override",
+    "subtopic": "Harmonic Progression and Means",
+    "difficulty": "MODERATE",
+    "solution": "Excluded from the bank: see the override."
   }
 ]
