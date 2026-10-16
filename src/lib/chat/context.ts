@@ -17,6 +17,7 @@ import {
   buildFreeFacts,
   buildPlanFacts,
   buildSystemPrompt,
+  buildSystemTail,
   NAV_FACTS,
   type ChatExamFact,
 } from "./facts";
@@ -37,7 +38,8 @@ function toExamFact(e: (typeof EXAM_REGISTRY)[number], pyqBySlug: Map<string, nu
   };
 }
 
-export type VContext = { system: string; tools: VTool[]; allowedPaths: Set<string> };
+/** `system` is the same for every question (cached); `systemTail` is this question's page and account state. */
+export type VContext = { system: string; systemTail: string; tools: VTool[]; allowedPaths: Set<string> };
 
 /**
  * `anon` reads only what the public may read: active plans, free limits, PUBLIC
@@ -74,9 +76,8 @@ export async function loadVContext(
     free: buildFreeFacts(limits),
     bankTotal: bankCount.count ?? 0,
     nav: NAV_FACTS,
-    page: opts.page ?? null,
-    signedIn: opts.signedIn,
   });
+  const systemTail = buildSystemTail({ page: opts.page ?? null, signedIn: opts.signedIn ?? true });
 
   const allowedPaths = new Set(pathsInReply([...NAV_FACTS, ...exams].join("\n")));
   if (opts.page) allowedPaths.add(opts.page);
@@ -84,7 +85,7 @@ export async function loadVContext(
   const findChapters: VTool = {
     name: "find_chapters",
     description:
-      "Find chapter pages on PYQ Vault. Give the chapter or subject in full words (query) and, if the student named one, the exam (exam). Returns up to 10 chapters, each with its question count and page path.",
+      "Find chapter pages on PYQ Vault. Give the chapter or subject in full words (query) and, if the student named one, the exam (exam). Returns up to 20 chapters, each with its question count and page path.",
     input_schema: {
       type: "object",
       properties: {
@@ -103,5 +104,5 @@ export async function loadVContext(
     },
   };
 
-  return { system, tools: [findChapters], allowedPaths };
+  return { system, systemTail, tools: [findChapters], allowedPaths };
 }

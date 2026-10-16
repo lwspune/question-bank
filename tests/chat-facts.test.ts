@@ -8,6 +8,7 @@ import {
   buildFreeFacts,
   NAV_FACTS,
   buildSystemPrompt,
+  buildSystemTail,
   type ChatExamFact,
   type ChatPlanFact,
 } from "@/lib/chat/facts";
@@ -201,11 +202,10 @@ describe("buildSystemPrompt", () => {
     expect(p).toContain("Answers: 30 a day free when signed in.");
   });
 
-  it("tells V the page the student is on, when known", () => {
-    expect(buildSystemPrompt({ ...base, page: "/questions/cbse-12/physics/atoms" })).toContain(
-      "The student is on the page /questions/cbse-12/physics/atoms"
-    );
-    expect(buildSystemPrompt(base)).not.toContain("The student is on the page");
+  it("keeps the page and the signed-out note out of the fixed instructions, which are cached", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).not.toContain("The student is on the page");
+    expect(p).not.toMatch(/only this one reply/i);
   });
 
   it("tells V it can see the earlier messages of this chat", () => {
@@ -222,18 +222,6 @@ describe("buildSystemPrompt", () => {
     expect(buildSystemPrompt(base)).toMatch(/list the chapter names/i);
   });
 
-  it("tells a signed-out visitor's V it has one reply: no questions back, best answer now", () => {
-    const p = buildSystemPrompt({ ...base, signedIn: false });
-    expect(p).toMatch(/only this one reply/i);
-    expect(p).toMatch(/do not ask them anything back/i);
-    expect(p).toContain("/questions");
-  });
-
-  it("leaves the one-reply rule out for a signed-in student", () => {
-    expect(buildSystemPrompt({ ...base, signedIn: true })).not.toMatch(/only this one reply/i);
-    expect(buildSystemPrompt(base)).not.toMatch(/only this one reply/i);
-  });
-
   it("has no em dashes of its own", () => {
     expect(buildSystemPrompt(base)).not.toContain(EM_DASH);
   });
@@ -241,5 +229,29 @@ describe("buildSystemPrompt", () => {
   it("degrades gracefully with an empty plans list", () => {
     const p = buildSystemPrompt({ ...base, plans: [] });
     expect(p).not.toContain("undefined");
+  });
+});
+
+describe("buildSystemTail", () => {
+  it("tells V the page the student is on, when known", () => {
+    expect(buildSystemTail({ page: "/questions/cbse-12/physics/atoms", signedIn: true })).toContain(
+      "The student is on the page /questions/cbse-12/physics/atoms"
+    );
+    expect(buildSystemTail({ page: null, signedIn: true })).not.toContain("The student is on the page");
+  });
+
+  it("tells a signed-out visitor's V it has one reply: no questions back, best answer now", () => {
+    const t = buildSystemTail({ page: null, signedIn: false });
+    expect(t).toMatch(/only this one reply/i);
+    expect(t).toMatch(/do not ask them anything back/i);
+    expect(t).toContain("/questions");
+  });
+
+  it("is empty for a signed-in student on no known page", () => {
+    expect(buildSystemTail({ page: null, signedIn: true })).toBe("");
+  });
+
+  it("has no em dashes of its own", () => {
+    expect(buildSystemTail({ page: "/notes", signedIn: false })).not.toContain(EM_DASH);
   });
 });

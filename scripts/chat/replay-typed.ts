@@ -17,13 +17,12 @@ import { loadVContext } from "../../src/lib/chat/context";
 import { askV } from "../../src/lib/chat/anthropic";
 import { allowedReplyLinks } from "../../src/lib/chat/replyLinks";
 import { readChapterLandingsUncached } from "../../src/lib/questions/landing";
+import { aiAnswerCostUsd } from "../../src/lib/chat/interactions";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
 // Owner and end-to-end checks, not students.
 const NOT_STUDENTS = [/^E2E-CHECK/i, /^test message$/i];
-const USD_IN = 0.1 / 1_000_000;
-const USD_OUT = 0.5 / 1_000_000;
 
 function cell(s: string): string {
   return s.replace(/\|/g, "\\|").replace(/\r?\n/g, " ");
@@ -55,10 +54,11 @@ async function main() {
   const rows: string[] = [];
   let tokensIn = 0;
   let tokensOut = 0;
+  let cost = 0;
   let failed = 0;
   for (const [i, q] of questions.entries()) {
     const ctx = await loadVContext(anon, { loadChapters: async () => chapters });
-    const r = await askV({ system: ctx.system, message: q, tools: ctx.tools });
+    const r = await askV({ system: ctx.system, systemTail: ctx.systemTail, message: q, tools: ctx.tools });
     if (!r.ok) {
       failed++;
       rows.push(`| ${i + 1} | ${cell(q)} | FAILED: ${cell(r.error)} | | |`);
@@ -67,18 +67,18 @@ async function main() {
     }
     tokensIn += r.tokensIn;
     tokensOut += r.tokensOut;
+    cost += aiAnswerCostUsd(r);
     const links = allowedReplyLinks(r.reply, ctx.allowedPaths);
     rows.push(`| ${i + 1} | ${cell(q)} | ${cell(r.reply)} | ${links.join(" ")} | ${r.tokensIn}/${r.tokensOut} |`);
     console.log(`${i + 1}. ${q}\n   -> ${r.reply}`);
   }
 
   const answered = questions.length - failed;
-  const cost = tokensIn * USD_IN + tokensOut * USD_OUT;
   const md = [
     `# V replay, ${new Date().toISOString().slice(0, 10)}`,
     "",
     `${questions.length} typed questions, ${answered} answered, ${failed} failed. ` +
-      `Tokens ${tokensIn} in / ${tokensOut} out = $${cost.toFixed(4)}` +
+      `Tokens ${tokensIn} in at full price / ${tokensOut} out; $${cost.toFixed(4)} with the cache` +
       (answered ? ` ($${(cost / answered).toFixed(5)} an answer).` : "."),
     "",
     "Links = the paths that would be tappable (pages V was given).",

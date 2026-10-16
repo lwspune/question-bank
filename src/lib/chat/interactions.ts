@@ -19,11 +19,32 @@ export type ChatInteractionRow = {
   replySource?: "ai" | "fallback" | null;
   tokensIn?: number | null;
   tokensOut?: number | null;
+  /** Input read from / written to the prompt cache (migration 0161). */
+  cacheReadTokens?: number | null;
+  cacheWriteTokens?: number | null;
 };
 
 /** Claude Haiku 5.5 list prices, USD per token (lib/chat/anthropic.ts V_MODEL). */
 const USD_PER_INPUT_TOKEN = 0.1 / 1_000_000;
 const USD_PER_OUTPUT_TOKEN = 0.5 / 1_000_000;
+// Prompt cache (5-minute): a read is a tenth of the input price, a write a quarter extra.
+const USD_PER_CACHE_READ_TOKEN = USD_PER_INPUT_TOKEN * 0.1;
+const USD_PER_CACHE_WRITE_TOKEN = USD_PER_INPUT_TOKEN * 1.25;
+
+/** One AI answer's cost at list price. Shared with scripts/chat/replay-typed.ts. */
+export function aiAnswerCostUsd(t: {
+  tokensIn?: number | null;
+  tokensOut?: number | null;
+  cacheReadTokens?: number | null;
+  cacheWriteTokens?: number | null;
+}): number {
+  return (
+    (t.tokensIn ?? 0) * USD_PER_INPUT_TOKEN +
+    (t.tokensOut ?? 0) * USD_PER_OUTPUT_TOKEN +
+    (t.cacheReadTokens ?? 0) * USD_PER_CACHE_READ_TOKEN +
+    (t.cacheWriteTokens ?? 0) * USD_PER_CACHE_WRITE_TOKEN
+  );
+}
 
 export type ChatInteractionSummary = {
   totalOpens: number;
@@ -79,7 +100,7 @@ export function summarizeChatInteractions(rows: readonly ChatInteractionRow[]): 
       }
       if (r.replySource === "ai") {
         aiAnswers++;
-        aiCostUsd += (r.tokensIn ?? 0) * USD_PER_INPUT_TOKEN + (r.tokensOut ?? 0) * USD_PER_OUTPUT_TOKEN;
+        aiCostUsd += aiAnswerCostUsd(r);
       }
       continue;
     }

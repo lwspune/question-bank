@@ -120,6 +120,8 @@ export async function POST(request: NextRequest) {
       source: "ai" | "fallback";
       tokensIn?: number;
       tokensOut?: number;
+      cacheReadTokens?: number;
+      cacheWriteTokens?: number;
       links?: string[];
     } = { text: TYPED_QUESTION_REPLY, source: "fallback" };
 
@@ -131,11 +133,25 @@ export async function POST(request: NextRequest) {
           const earlier = conversationId ? await readConversation(admin, conversationId) : [];
           const history = conversationBelongsTo(earlier, userId) ? modelHistory(earlier) : [];
           const ctx = await loadVContext(createSupabaseAnonClient(), { page: pagePath, signedIn: userId !== null });
-          const result = await askV({ system: ctx.system, message, tools: ctx.tools, history });
+          const result = await askV({
+            system: ctx.system,
+            systemTail: ctx.systemTail,
+            message,
+            tools: ctx.tools,
+            history,
+          });
           if (result.ok) {
             reply = result.reply;
             links = allowedReplyLinks(reply, ctx.allowedPaths);
-            recorded = { text: reply, source: "ai", tokensIn: result.tokensIn, tokensOut: result.tokensOut, links };
+            recorded = {
+              text: reply,
+              source: "ai",
+              tokensIn: result.tokensIn,
+              tokensOut: result.tokensOut,
+              cacheReadTokens: result.cacheReadTokens,
+              cacheWriteTokens: result.cacheWriteTokens,
+              links,
+            };
           } else {
             console.error("V answer failed:", result.error);
           }

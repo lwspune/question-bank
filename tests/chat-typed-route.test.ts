@@ -147,7 +147,7 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     const res = await POST(post({ message: `route-${RUN}-anon1 atoms pyq` }));
     expect(await res.json()).toMatchObject({ ok: true, source: "ai", signInToContinue: true });
     expect(res.headers.get("set-cookie")).toContain(`${ANON_ASKED_COOKIE}=1`);
-    expect(askV.mock.calls[0][0].system).toMatch(/only this one reply/i);
+    expect(askV.mock.calls[0][0].systemTail).toMatch(/only this one reply/i);
   });
 
   it("asks a signed-out visitor to sign in for a second question, without calling the AI, and keeps the question", async () => {
@@ -174,6 +174,29 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
         tokens_out: null,
       },
     ]);
+  });
+
+  it("sends the same fixed instructions whatever the page, so the cache can hit, and stores cache use", async () => {
+    await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+    askV.mockReset();
+    askV.mockResolvedValue({
+      ok: true,
+      reply: "See /mock.",
+      tokensIn: 40,
+      tokensOut: 5,
+      cacheReadTokens: 2800,
+      cacheWriteTokens: 0,
+    });
+    const { POST } = await import("@/app/api/chat/typed/route");
+    await POST(post({ message: `route-${RUN}-cache1 atoms`, pagePath: "/notes" }));
+    await POST(post({ message: `route-${RUN}-cache2 nuclei`, pagePath: "/mock" }));
+    expect(askV.mock.calls[0][0].system).toBe(askV.mock.calls[1][0].system);
+    expect(askV.mock.calls[0][0].systemTail).not.toBe(askV.mock.calls[1][0].systemTail);
+    const { data } = await admin
+      .from("chat_interactions")
+      .select("cache_read_tokens, cache_write_tokens")
+      .like("message", `route-${RUN}-cache1%`);
+    expect(data).toEqual([{ cache_read_tokens: 2800, cache_write_tokens: 0 }]);
   });
 
   it("holds one person to the hourly limit set on the dashboard", async () => {
@@ -203,7 +226,7 @@ it("keeps the conversation: stores its id and page, returns the row id, and give
       { role: "user", content: `route-${RUN}-conv NEET PYQ` },
       { role: "assistant", content: "NEET papers are on /mock." },
     ]);
-    expect(askV.mock.calls[1][0].system).toContain("The student is on the page /mock");
+    expect(askV.mock.calls[1][0].systemTail).toContain("The student is on the page /mock");
 
     const { data } = await admin
       .from("chat_interactions")

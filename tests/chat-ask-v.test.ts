@@ -5,7 +5,13 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
 import { askV, V_MODEL, type VTool } from "@/lib/chat/anthropic";
 
-type Sent = { model: string; messages: { role: string; content: unknown }[]; tools?: unknown[]; output_config?: unknown };
+type Sent = {
+  model: string;
+  system?: unknown;
+  messages: { role: string; content: unknown }[];
+  tools?: unknown[];
+  output_config?: unknown;
+};
 
 function reply(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json" } });
@@ -68,7 +74,14 @@ describe("askV", () => {
   it("returns the text of a plain answer with its token use", async () => {
     stubTurns(textTurn("Open /pricing.", { input_tokens: 500, output_tokens: 30 }));
     const r = await askV({ system: "facts", message: "price?", tools: [tool] });
-    expect(r).toEqual({ ok: true, reply: "Open /pricing.", tokensIn: 500, tokensOut: 30 });
+    expect(r).toEqual({
+      ok: true,
+      reply: "Open /pricing.",
+      tokensIn: 500,
+      tokensOut: 30,
+      cacheReadTokens: 0,
+      cacheWriteTokens: 0,
+    });
   });
 
   it("runs the tool, sends its result back and returns the final answer", async () => {
@@ -87,6 +100,8 @@ describe("askV", () => {
       reply: "Atoms: /questions/cbse-12/physics/atoms",
       tokensIn: 180,
       tokensOut: 30,
+      cacheReadTokens: 0,
+      cacheWriteTokens: 0,
     });
   });
 
@@ -125,6 +140,36 @@ describe("askV", () => {
       { role: "assistant", content: "NEET papers are on /mock." },
       { role: "user", content: "give me other chapter of phy" },
     ]);
+  });
+
+  it("marks the fixed instructions for caching and sends the per-question part after them", async () => {
+    stubTurns(textTurn("Hi"));
+    await askV({ system: "fixed facts", systemTail: "The student is on /notes.", message: "hi", tools: [tool] });
+    expect(sent[0].system).toEqual([
+      { type: "text", text: "fixed facts", cache_control: { type: "ephemeral" } },
+      { type: "text", text: "The student is on /notes." },
+    ]);
+  });
+
+  it("sends only the cached block when there is no per-question part", async () => {
+    stubTurns(textTurn("Hi"));
+    await askV({ system: "fixed facts", message: "hi", tools: [tool] });
+    expect(sent[0].system).toEqual([{ type: "text", text: "fixed facts", cache_control: { type: "ephemeral" } }]);
+  });
+
+  it("adds up cached reads and writes across tool rounds, apart from full-price input", async () => {
+    stubTurns(
+      {
+        ...toolTurn("t1", { query: "atoms" }),
+        usage: { input_tokens: 40, output_tokens: 10, cache_creation_input_tokens: 2800, cache_read_input_tokens: 0 },
+      },
+      {
+        ...textTurn("Atoms"),
+        usage: { input_tokens: 300, output_tokens: 20, cache_creation_input_tokens: 0, cache_read_input_tokens: 2800 },
+      }
+    );
+    const r = await askV({ system: "facts", message: "atoms", tools: [tool] });
+    expect(r).toMatchObject({ ok: true, tokensIn: 340, tokensOut: 30, cacheWriteTokens: 2800, cacheReadTokens: 2800 });
   });
 
   it("fails without a key and makes no request", async () => {
