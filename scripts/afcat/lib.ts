@@ -698,6 +698,8 @@ export function sourceSolutionProblem(solution: string): string | null {
   if (BARE_MATH.test(s)) return "bare math delimiters (\\20\\ for \\(20\\))";
   if (s.includes("—")) return "em dash";
   if (CONTROL_CHAR.test(s)) return "control character";
+  // A sheet written with a chat tool kept its source tags ("[web:77]").
+  if (/\[web:\d+\]/.test(s)) return "chat citation tag";
   return null;
 }
 
