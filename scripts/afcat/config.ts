@@ -520,7 +520,7 @@ export const CHAPTERS: Record<string, Chapter> = {
   "area-and-perimeter": {
     id: "area-and-perimeter",
     chapterName: "Area and Perimeter",
-    subtopics: ["Triangles and Quadrilaterals", "Circles and Sectors", "Combined Figures", "Change in Dimensions"],
+    subtopics: ["Triangles and Quadrilaterals", "Circles and Sectors", "Combined Figures", "Change in Dimensions", "Regular Polygons"],
     files: [
       {
         key: "book",
@@ -529,12 +529,13 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "20. Mensuration\\26_Area_&_Perimeter_of_Plane_Figure.pdf",
         note: "AFCAT practice — CDS Pathfinder (book chapter), Area and Perimeter. Every key blind re-derived.",
       },
+      { key: "cp-2d", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Mensuration 2D", path: "12. Mensuration\\01. Mensuration 2D.xlsx", subtopic: "Triangles and Quadrilaterals", note: "AFCAT practice — Cadetprep AFCAT sheet, Mensuration. Every key blind re-derived." },
     ],
   },
   "surface-area-and-volume": {
     id: "surface-area-and-volume",
     chapterName: "Surface Area and Volume",
-    subtopics: ["Cube and Cuboid", "Cylinder", "Cone and Frustum", "Sphere and Hemisphere", "Combined Solids and Recasting"],
+    subtopics: ["Cube and Cuboid", "Cylinder", "Cone and Frustum", "Sphere and Hemisphere", "Combined Solids and Recasting", "Prisms and Pyramids"],
     files: [
       {
         key: "book",
@@ -543,6 +544,7 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "20. Mensuration\\27_Surface_Area_&_Volume_of_Solids.pdf",
         note: "AFCAT practice — CDS Pathfinder (book chapter), Surface Area and Volume. Every key blind re-derived.",
       },
+      { key: "cp-3d", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Mensuration 3D", path: "12. Mensuration\\02. Mensuration 3D.xlsx", subtopic: "Cube and Cuboid", note: "AFCAT practice — Cadetprep AFCAT sheet, Mensuration. Every key blind re-derived." },
     ],
   },
   average: {
