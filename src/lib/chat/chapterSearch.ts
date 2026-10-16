@@ -19,15 +19,28 @@ export type ChapterSearchRow = {
 };
 
 export type ChapterSearchInput = {
-  /** Chapter or subject words, e.g. "laws of motion" or "science 2". */
+  /** Chapter or subject words, e.g. "laws of motion" or "science 2". Chapter numbers are ignored. */
   query: string;
   /** Exam name or slug, e.g. "cbse 12" or "neet". Ignored when it matches no exam. */
   exam?: string;
 };
 
-const MAX_HITS = 10;
+// A whole subject fits, so V can pick "chapter 1" from the list by name.
+const MAX_HITS = 20;
 
-function words(s: string): string[] {
+// Science and Technology II, Part I: students type the number.
+const ROMAN: Record<string, string> = { i: "1", ii: "2", iii: "3", iv: "4" };
+// Short forms the word-start rule cannot reach ("maths" is not the start of "mathematics").
+const ALIASES: Record<string, string> = { maths: "math", sst: "social" };
+// Words about what the student wants rather than which chapter, dropped so they cannot fail a search.
+const FILLER = new Set([
+  "imp", "important", "question", "questions", "pyq", "pyqs", "mcq", "mcqs",
+  "notes", "previous", "year", "all", "std", "standard",
+]);
+// "chapter 7": chapter numbers are not stored (chapters.order_index is not the book's order).
+const CHAPTER_WORDS = new Set(["chapter", "chapters", "ch", "chap", "lesson", "lessons", "unit"]);
+
+function rawWords(s: string): string[] {
   return s
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, " ")
@@ -36,18 +49,49 @@ function words(s: string): string[] {
     .filter(Boolean);
 }
 
+/** One word as both sides compare it: "II" and "2" are the same, so are "12th" and "12". */
+function normalise(w: string): string {
+  const ordinal = /^(\d+)(st|nd|rd|th)$/.exec(w);
+  if (ordinal) return ordinal[1];
+  return ROMAN[w] ?? ALIASES[w] ?? w;
+}
+
+function words(s: string): string[] {
+  return rawWords(s).map(normalise);
+}
+
+/** The search words of a query, with chapter numbers and filler dropped. */
+function queryWordsOf(s: string): string[] {
+  const raw = rawWords(s);
+  const out: string[] = [];
+  for (let i = 0; i < raw.length; i += 1) {
+    const w = raw[i];
+    if (CHAPTER_WORDS.has(w)) {
+      if (i + 1 < raw.length && /^\d+$/.test(raw[i + 1])) i += 1;
+      continue;
+    }
+    if (FILLER.has(w)) continue;
+    out.push(normalise(w));
+  }
+  return out;
+}
+
 /** A query word counts when a row word equals it or starts with it (3+ letters). */
 function hasWord(rowWords: readonly string[], q: string): boolean {
   return rowWords.some((w) => w === q || (q.length >= 3 && w.startsWith(q)));
 }
 
+function examWordsOf(row: ChapterSearchRow): string[] {
+  return words(`${row.examName} ${row.examSlug}`);
+}
+
 function matchesExam(row: ChapterSearchRow, examWords: readonly string[]): boolean {
-  const examText = words(`${row.examName} ${row.examSlug}`);
+  const examText = examWordsOf(row);
   return examWords.every((w) => hasWord(examText, w));
 }
 
 export function searchChapters(rows: readonly ChapterSearchRow[], input: ChapterSearchInput): ChapterSearchRow[] {
-  const queryWords = words(input.query);
+  const queryWords = queryWordsOf(input.query);
   if (queryWords.length === 0) return [];
 
   let pool: readonly ChapterSearchRow[] = rows;
@@ -61,6 +105,7 @@ export function searchChapters(rows: readonly ChapterSearchRow[], input: Chapter
   for (const row of pool) {
     const chapterWords = words(row.chapterName);
     const subjectWords = words(row.subjectName);
+    const examText = examWordsOf(row);
     let score = 0;
     let matched = 0;
     for (const q of queryWords) {
@@ -70,10 +115,13 @@ export function searchChapters(rows: readonly ChapterSearchRow[], input: Chapter
       } else if (hasWord(subjectWords, q)) {
         score += 1;
         matched += 1;
+      } else if (hasWord(examText, q)) {
+        // "class 12 physics": the exam's words may ride in the query, but find nothing alone.
+        matched += 1;
       }
     }
     // Every query word must land somewhere, or "atoms" would drag in all of Physics.
-    if (matched === queryWords.length) scored.push({ row, score });
+    if (matched === queryWords.length && score > 0) scored.push({ row, score });
   }
 
   scored.sort((a, b) => b.score - a.score || b.row.questionCount - a.row.questionCount);

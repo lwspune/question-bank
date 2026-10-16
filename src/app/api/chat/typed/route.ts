@@ -17,6 +17,11 @@
  * `links` lists the paths in the reply the widget may make tappable: only
  * pages V was given (lib/chat/replyLinks.ts). `id` is the stored row, for the
  * thumbs buttons; `source` says whether the reply was AI.
+ *
+ * Signed out (2026-10-16): one question per browser (lib/chat/anonLimit.ts).
+ * The first is answered as above and marks the browser (`signInToContinue`);
+ * a later one is stored with the sign-in reply and no AI call
+ * (`signInRequired`).
  */
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -38,6 +43,13 @@ import { loadVContext } from "@/lib/chat/context";
 import { askV } from "@/lib/chat/anthropic";
 import { allowedReplyLinks } from "@/lib/chat/replyLinks";
 import { cleanPagePath, isConversationId, modelHistory } from "@/lib/chat/conversation";
+import {
+  ANON_ASKED_COOKIE,
+  ANON_ASKED_MAX_AGE_SECONDS,
+  SIGN_IN_TO_ASK_REPLY,
+  anonAskedFromCookieHeader,
+  anonMustSignIn,
+} from "@/lib/chat/anonLimit";
 
 // One AI answer can take two model calls (a chapter search, then the reply).
 export const maxDuration = 30;
@@ -84,6 +96,23 @@ export async function POST(request: NextRequest) {
     const conversationId = isConversationId(raw.conversationId) ? raw.conversationId : null;
     const pagePath = cleanPagePath(raw.pagePath);
 
+    // A signed-out visitor's second question: kept (it shows what visitors want), answered with sign-in.
+    const askedBefore = anonAskedFromCookieHeader(request.headers.get("cookie"));
+    if (anonMustSignIn({ userId, askedBefore })) {
+      const id = await recordChatInteraction(admin, {
+        eventType: "typed_question",
+        message,
+        userId,
+        reply: { text: SIGN_IN_TO_ASK_REPLY, source: "fallback" },
+        conversationId,
+        pagePath,
+      });
+      return NextResponse.json(
+        { ok: true, reply: SIGN_IN_TO_ASK_REPLY, links: [], id, source: "fallback", signInRequired: true },
+        { status: 200 }
+      );
+    }
+
     let reply = TYPED_QUESTION_REPLY;
     let links: string[] = [];
     let recorded: {
@@ -101,7 +130,7 @@ export async function POST(request: NextRequest) {
         try {
           const earlier = conversationId ? await readConversation(admin, conversationId) : [];
           const history = conversationBelongsTo(earlier, userId) ? modelHistory(earlier) : [];
-          const ctx = await loadVContext(createSupabaseAnonClient(), { page: pagePath });
+          const ctx = await loadVContext(createSupabaseAnonClient(), { page: pagePath, signedIn: userId !== null });
           const result = await askV({ system: ctx.system, message, tools: ctx.tools, history });
           if (result.ok) {
             reply = result.reply;
@@ -126,7 +155,21 @@ export async function POST(request: NextRequest) {
       pagePath,
     });
 
-    return NextResponse.json({ ok: true, reply, links, id, source: recorded.source }, { status: 200 });
+    if (userId !== null) {
+      return NextResponse.json({ ok: true, reply, links, id, source: recorded.source }, { status: 200 });
+    }
+    // Signed out: that was their one question. Mark the browser; the window shows the sign-in button.
+    const res = NextResponse.json(
+      { ok: true, reply, links, id, source: recorded.source, signInToContinue: true },
+      { status: 200 }
+    );
+    res.cookies.set(ANON_ASKED_COOKIE, "1", {
+      maxAge: ANON_ASKED_MAX_AGE_SECONDS,
+      path: "/",
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+    });
+    return res;
   } catch (err) {
     console.error("chat/typed route error", err);
     return NextResponse.json({ error: "Something went wrong. Please try again." }, { status: 500 });

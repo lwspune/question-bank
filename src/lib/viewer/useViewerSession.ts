@@ -34,7 +34,8 @@ import type { HeaderSession } from "@/lib/header-session";
 
 let inFlight: Promise<HeaderSession | null> | null = null;
 
-function hasAuthCookie(): boolean {
+/** A Supabase sign-in cookie is present (not proof of a live session; the server decides). */
+export function hasAuthCookie(): boolean {
   try {
     return document.cookie
       .split(";")

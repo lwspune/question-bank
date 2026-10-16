@@ -30,6 +30,32 @@ const ROWS: ChapterSearchRow[] = [
   row("mh-ssc-10", "MH State Board Class 10", "Science 2", "Life Processes in Living Organisms Part 1", 70),
 ];
 
+// Real names, for the searches students made on 2026-10-16 that came back empty.
+const REAL: ChapterSearchRow[] = [
+  row("mh-ssc-10", "Maharashtra State Board Class 10", "Science and Technology II", "Introduction to Microbiology", 51),
+  row("mh-ssc-10", "Maharashtra State Board Class 10", "Science and Technology II", "Heredity and Evolution", 60),
+  row("mh-ssc-10", "Maharashtra State Board Class 10", "Science and Technology I", "Gravitation", 70),
+  row("nda", "NDA", "Mathematics", "Matrices and Determinants", 300),
+  row("nda", "NDA", "Mathematics", "Probability", 250),
+  row("nda", "NDA", "Physics", "Sound", 90),
+  ...[
+    "Electric Charges and Fields",
+    "Electrostatic Potential and Capacitance",
+    "Current Electricity",
+    "Moving Charges and Magnetism",
+    "Magnetism and Matter",
+    "Electromagnetic Induction",
+    "Alternating Current",
+    "Electromagnetic Waves",
+    "Ray Optics and Optical Instruments",
+    "Wave Optics",
+    "Dual Nature of Radiation and Matter",
+    "Atoms",
+    "Nuclei",
+    "Semiconductor Electronics",
+  ].map((name, i) => row("cbse-12", "CBSE Class 12", "Physics", name, 300 - i * 10)),
+];
+
 describe("searchChapters", () => {
   it("finds a chapter by its name", () => {
     const hits = searchChapters(ROWS, { query: "binomial distribution" });
@@ -75,8 +101,48 @@ describe("searchChapters", () => {
   });
 
   it("caps the number of results", () => {
-    const many = Array.from({ length: 30 }, (_, i) => row("nda", "NDA", "Mathematics", `Matrices ${i}`));
-    expect(searchChapters(many, { query: "matrices" }).length).toBe(10);
+    const many = Array.from({ length: 40 }, (_, i) => row("nda", "NDA", "Mathematics", `Matrices ${i}`));
+    expect(searchChapters(many, { query: "matrices" }).length).toBe(20);
+  });
+});
+
+describe("searchChapters: what students typed (2026-10-16)", () => {
+  it("reads a plain number as the roman numeral in a subject name (science 2 = Science and Technology II)", () => {
+    const hits = searchChapters(REAL, { query: "introduction to microbiology science 2", exam: "MH SSC 10" });
+    expect(hits.map((h) => h.chapterName)).toEqual(["Introduction to Microbiology"]);
+  });
+
+  it("does not let Science and Technology I answer for II", () => {
+    const hits = searchChapters(REAL, { query: "science 2", exam: "mh-ssc-10" });
+    expect(hits.map((h) => h.subjectName)).toEqual(["Science and Technology II", "Science and Technology II"]);
+  });
+
+  it("knows maths means Mathematics", () => {
+    const hits = searchChapters(REAL, { query: "maths", exam: "NDA" });
+    expect(hits.map((h) => h.chapterName)).toEqual(["Matrices and Determinants", "Probability"]);
+  });
+
+  it("ignores filler words such as chapter numbers, imp and questions", () => {
+    const hits = searchChapters(REAL, {
+      query: "imp questions chapter 7 introduction to microbiology",
+      exam: "MH SSC 10",
+    });
+    expect(hits.map((h) => h.chapterName)).toEqual(["Introduction to Microbiology"]);
+  });
+
+  it("lets a query name the exam's class without failing the search", () => {
+    const hits = searchChapters(REAL, { query: "class 12 physics electric charges" });
+    expect(hits.map((h) => h.chapterName)).toEqual(["Electric Charges and Fields"]);
+  });
+
+  it("lists a whole subject's chapters, so V can pick chapter 1 by name", () => {
+    const hits = searchChapters(REAL, { query: "physics", exam: "CBSE Class 12" });
+    expect(hits.length).toBe(14);
+    expect(hits.map((h) => h.chapterName)).toContain("Electric Charges and Fields");
+  });
+
+  it("still needs a chapter or subject word: an exam alone finds nothing", () => {
+    expect(searchChapters(REAL, { query: "class 12" })).toEqual([]);
   });
 });
 

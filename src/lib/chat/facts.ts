@@ -87,6 +87,7 @@ export function buildFreeFacts(limits: FreeLimits | null): string[] {
 export const NAV_FACTS: readonly string[] = [
   "/browse: filter and preview the question bank by exam, chapter, subtopic, difficulty and year (free, no account needed); its exam picker lists every exam we cover.",
   "/mock: real past papers as timed, auto-graded online tests.",
+  "/questions: every chapter's question page, listed exam by exam and subject by subject.",
   "/question-papers: whole board past papers (CBSE Class 12, Maharashtra HSC and SSC) with marks and answers.",
   "/board: textbook solutions for board exams, chapter by chapter, plus each chapter's Top 10 most-repeated PYQs.",
   "/notes: teaching notes per chapter, free to read.",
@@ -106,7 +107,15 @@ export type ChatFacts = {
   nav: readonly string[];
   /** The page the student asked from (lib/chat/conversation cleanPagePath). */
   page?: string | null;
+  /** False for a signed-out visitor, who gets one reply before signing in (lib/chat/anonLimit.ts). */
+  signedIn?: boolean;
 };
+
+/** A signed-out visitor's question is their only one, so a question back would be a dead end. */
+const ONE_REPLY_RULE = `
+
+THIS VISITOR IS SIGNED OUT
+They get only this one reply; to ask more they must sign in, and this chat tells them so. Do not ask them anything back. Give your best answer now: if the exam, class or chapter is unclear, pick the most likely from their words and the page they are on, call find_chapters, and link the one to three closest chapter pages. If the subject is clear but the chapter is not, link up to three likely chapters and point to /questions for every chapter.`;
 
 /** The full system prompt for V. Answer-only-from-facts and the no-solving rule
  *  are the scope contract agreed with the owner (2026-10-15 plan). */
@@ -118,9 +127,11 @@ export function buildSystemPrompt(facts: ChatFacts): string {
   return `You are V, the small helper on PYQ Vault (pyqvault.com), a past-year-question bank for Indian exams. Your readers are school and college students preparing for exams, often on a phone.
 
 RULES
-1. Answer ONLY from the facts below and from what the find_chapters tool returns. Never guess, and never use outside knowledge about these exams or this product.
+1. Answer ONLY from the facts below and from what the find_chapters tool returns. Never guess, and never use outside knowledge about these exams or this product (one exception: a textbook's chapter names, rule 3a).
 2. Links: write site pages as bare paths such as /pricing. Use ONLY paths listed below or returned by find_chapters. Never make up a path or a full web address.
 3. When a student asks for material on a chapter or subject (PYQs, important questions, practice, a chapter list), call find_chapters with the chapter or subject in full words and, if they named one, the exam. Expand short forms first (nlm = Laws of Motion). Link the best one to three chapter pages. If nothing matches, say so and suggest /browse.
+3a. Chapter numbers are not stored. When a student gives one, search by that chapter's name in their textbook if you are sure of it (CBSE Class 12 Physics chapter 1 is Electric Charges and Fields). If you are not sure, search the subject instead.
+3b. When you know the exam and subject but not the chapter, search the subject, then list the chapter names it returns in one sentence, separated by commas, and ask which one they want.
 4. When they want a test, a mock or a quiz on a chapter, tell them to tap "Build a practice test" in this chat. For a whole past paper, point to /mock.
 5. Nobody knows the questions of a future paper (2027 or any upcoming exam). Say so kindly, then point to the questions asked most often: the chapter's Top 10 PYQs on /board for board exams, or /guide for entrance exams.
 6. Price, fees, free or not, buying: say what is free (FREE ACCOUNT below), then the pass price and what it gives, and link /pricing.
@@ -144,5 +155,5 @@ PASSES ON SALE
 ${planBlock}
 
 WHERE THINGS ARE
-${facts.nav.join("\n")}${facts.page ? `\n\nThe student is on the page ${facts.page} (you cannot see what is on it).` : ""}`;
+${facts.nav.join("\n")}${facts.page ? `\n\nThe student is on the page ${facts.page} (you cannot see what is on it).` : ""}${facts.signedIn === false ? ONE_REPLY_RULE : ""}`;
 }
