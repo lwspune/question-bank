@@ -374,6 +374,15 @@ export function requireShift(id: string | undefined): Shift & { id: string } {
   return { id, ...SHIFTS[id] };
 }
 
+/**
+ * Questions committed but never published: unanswerable as SSC's print left them, so a page
+ * would serve a question nobody can solve. publish.ts skips them (shift -> question numbers).
+ * CGL 2025 Tier II Q35 and Q59 ask to count squares in figures the scan has washed out.
+ */
+export const HELD: Record<string, number[]> = {
+  "t2-2026-01-18-s1": [35, 59],
+};
+
 export const OUT = join(__dirname, "out"); // gitignored: page images, geometry, reading sheets
 export const TRANSCRIPTS = join(__dirname, "transcripts"); // committed: the source of record
 export const FIGURES = join(__dirname, "figures"); // committed: SSC's own figure images, per shift

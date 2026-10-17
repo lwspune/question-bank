@@ -20,7 +20,7 @@ import { createClient } from "@supabase/supabase-js";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
-import { SHIFTS, TRANSCRIPTS, requireExamId, tierOf } from "./config";
+import { HELD, SHIFTS, TRANSCRIPTS, requireExamId, tierOf } from "./config";
 import { parseTranscript, studentSolution, type TranscriptQuestion } from "./lib";
 
 type DbRow = { id: string; questionNumber: string; solution: string | null };
@@ -51,6 +51,17 @@ export function planSolutionSync(blocks: TranscriptQuestion[], rows: DbRow[]): S
   return plan;
 }
 
+/** The rows of a shift to make PUBLIC: every non-PUBLIC row except the held question numbers. */
+export function toPublish(
+  rows: { id: string; questionNumber: string; visibility: string }[],
+  held: number[]
+): { ids: string[]; held: number[] } {
+  const numbers = new Set(rows.map((r) => Number(r.questionNumber)));
+  for (const n of held) if (!numbers.has(n)) throw new Error(`Q${n} is held but has no row`);
+  const hold = new Set(held);
+  return { ids: rows.filter((r) => r.visibility !== "PUBLIC" && !hold.has(Number(r.questionNumber))).map((r) => r.id), held: [...held] };
+}
+
 async function main() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
   const apply = process.argv.includes("--apply");
@@ -74,7 +85,8 @@ async function main() {
     if (error) throw new Error(`${id}: ${error.message}`);
     const rows = (data ?? []).map((r) => ({ id: r.id as string, questionNumber: String(r.question_number), solution: r.solution as string | null, visibility: r.visibility as string }));
     const plan = planSolutionSync(blocks, rows);
-    const priv = rows.filter((r) => r.visibility !== "PUBLIC").length;
+    const flip = toPublish(rows, HELD[id] ?? []);
+    const priv = flip.ids.length;
     rowsTotal += rows.length;
     updates += plan.updates.length;
     current += plan.current;
@@ -84,15 +96,16 @@ async function main() {
       const q = blocks.find((b) => b.number === n)!;
       if (q.notice) warnings.push(`${id} Q${n}: flawed repeat; its row lives under an earlier shift, which carries no notice for it`);
     }
-    console.log(`${id}  rows ${rows.length}  notices to add ${plan.updates.length}  PRIVATE ${priv}${plan.absent.length ? `  repeats ${plan.absent.join(",")}` : ""}`);
+    console.log(`${id}  rows ${rows.length}  notices to add ${plan.updates.length}  to PUBLIC ${priv}${flip.held.length ? `  held PRIVATE ${flip.held.join(",")}` : ""}${plan.absent.length ? `  repeats ${plan.absent.join(",")}` : ""}`);
 
     if (!apply) continue;
     for (const u of plan.updates) {
       const { error: e } = await db.from("questions").update({ solution: u.solution }).eq("id", u.id);
       if (e) throw new Error(`${id} Q${u.number}: ${e.message}`);
     }
-    if (priv) {
-      const { error: e } = await db.from("questions").update({ visibility: "PUBLIC" }).eq("exam_id", examId).eq("source_file", s.sourceFile).neq("visibility", "PUBLIC");
+    // By id, in chunks: a held row must stay PRIVATE, and .in() puts its list in the URL.
+    for (let k = 0; k < flip.ids.length; k += 200) {
+      const { error: e } = await db.from("questions").update({ visibility: "PUBLIC" }).in("id", flip.ids.slice(k, k + 200));
       if (e) throw new Error(`${id} visibility: ${e.message}`);
     }
   }

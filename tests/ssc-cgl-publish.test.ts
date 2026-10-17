@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { planSolutionSync } from "../scripts/ssc-cgl/publish";
+import { planSolutionSync, toPublish } from "../scripts/ssc-cgl/publish";
 import { parseTranscript } from "../scripts/ssc-cgl/lib";
 
 const block = (n: number, extra = "") =>
@@ -32,5 +32,26 @@ describe("planSolutionSync", () => {
   it("reports a block with no row of its own (a repeat kept under an earlier shift)", () => {
     const plan = planSolutionSync(blocks, [{ id: "r1", questionNumber: "1", solution: "Worked." }]);
     expect(plan.absent).toEqual([2, 3]);
+  });
+});
+
+describe("toPublish", () => {
+  const rows = [
+    { id: "a", questionNumber: "34", visibility: "PRIVATE" },
+    { id: "b", questionNumber: "35", visibility: "PRIVATE" },
+    { id: "c", questionNumber: "36", visibility: "PUBLIC" },
+    { id: "d", questionNumber: "59", visibility: "PRIVATE" },
+  ];
+
+  it("makes every PRIVATE row PUBLIC, except the question numbers held for the shift", () => {
+    expect(toPublish(rows, [35, 59])).toEqual({ ids: ["a"], held: [35, 59] });
+  });
+
+  it("holds nothing when the shift holds nothing, and skips rows already PUBLIC", () => {
+    expect(toPublish(rows, [])).toEqual({ ids: ["a", "b", "d"], held: [] });
+  });
+
+  it("refuses a held number the shift has no row for (a typo would silently publish nothing held)", () => {
+    expect(() => toPublish(rows, [99])).toThrow(/Q99 is held but has no row/);
   });
 });
