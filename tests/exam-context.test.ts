@@ -82,6 +82,17 @@ describe("EXAM_REGISTRY", () => {
     expect(ssc?.practiceOnly).not.toBe(true);
   });
 
+  it("groups SSC CGL Tier I and Tier II as one picker family, Tier II its own exam with no mocks yet", () => {
+    const t1 = getExamBySlug("ssc-cgl");
+    const t2 = getExamBySlug("ssc-cgl-tier-2");
+    expect(t2?.examName).toBe("SSC CGL Tier II");
+    expect(t2?.tier).toBe("graduate");
+    expect([t1?.family, t1?.familyLabel, t1?.familyAxis]).toEqual(["SSC CGL", "Tier I", "Tier"]);
+    expect([t2?.family, t2?.familyLabel, t2?.familyAxis]).toEqual(["SSC CGL", "Tier II", "Tier"]);
+    expect(t2?.hasMocks).not.toBe(true);
+    expect(t2?.practiceOnly).not.toBe(true);
+  });
+
   it("default exam slug is one of the registered slugs", () => {
     const slugs = EXAM_REGISTRY.map((e) => e.slug);
     expect(slugs).toContain(DEFAULT_EXAM_SLUG);
@@ -417,6 +428,7 @@ describe("exam tiers", () => {
       "upsc-cse",
       "afcat",
       "ssc-cgl",
+      "ssc-cgl-tier-2",
     ],
   };
 

@@ -39,7 +39,8 @@ export type ExamSlug =
   | "mpsc-psi-mains"
   | "upsc-cse"
   | "afcat"
-  | "ssc-cgl";
+  | "ssc-cgl"
+  | "ssc-cgl-tier-2";
 
 /**
  * School boards the bank carries content for. NOT every exam has one — a
@@ -749,8 +750,28 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // (113 shifts), read from SSC's own response sheets; every answer derived
     // blind and compared with SSC's key. A question defective as printed carries
     // a note above its solution and rides as grace in its mock. scripts/ssc-cgl/.
+    // One picker family with Tier II (owner, 2026-10-17): SSC CGL -> Tier I / Tier II.
+    // The display name stays "SSC CGL", the name students search for Tier I by.
+    family: "SSC CGL",
+    familyLabel: "Tier I",
+    familyAxis: "Tier",
     hasMocks: true, // one mock per shift
     pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "ssc-cgl-tier-2",
+    tier: "graduate",
+    displayName: "SSC CGL Tier II",
+    examName: "SSC CGL Tier II", // must match the `exams` DB row exactly
+    // Its own exam row, not Tier I's: a different paper (150 questions in five
+    // modules, +3/-1, Computer Knowledge qualifying). Paper 1 of CGL 2024 (18 and
+    // 20 Jan 2025) and CGL 2025 (18 Jan 2026), from SSC's response sheets, every
+    // answer derived blind. No mocks yet: their marking is a separate decision.
+    family: "SSC CGL",
+    familyLabel: "Tier II",
+    familyAxis: "Tier",
     guidesPath: null,
     notesPath: null,
   },
