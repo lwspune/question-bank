@@ -17,7 +17,7 @@ import sys
 import fitz  # PyMuPDF
 from PIL import Image
 
-ICON_W = 20
+ICON_W = 22  # the CGL 2019 Tier II print draws its tick and cross 20.4 pt wide
 
 
 def is_scan(page, blocks):

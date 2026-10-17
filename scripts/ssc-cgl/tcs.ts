@@ -61,6 +61,7 @@ const GUTTER_X = 48; // where "Q.n" sits on a page that prints none
 const PANEL_LABEL = /^(Question ID|Option \d ID|Status|Chosen Option)\s*:/;
 const LABELS = ["A", "B", "C", "D"] as const;
 
+const MAX_LINE = 40; // points: a text line, even a stacked fraction, is far shorter
 const NOISE = /^(aglasem\.c?o?m?|For more Question Papers.*|Page \d+ of \d+|asem\.com|a)$/i;
 
 function minutes(time: string): number {
@@ -93,7 +94,9 @@ function pageEdges(spans: TcsSpan[]) {
   return {
     isPanel: (s: TcsSpan) => (labels.get(s.page) ?? []).some((l) => Math.abs(l.y0 - s.y0) <= 3 && s.x0 >= l.x0 - 1),
     // The tick and cross icons sit just right of the gutter, before the option text.
-    isIcon: (im: TcsImage) => im.x1 - im.x0 < 20 && im.y1 - im.y0 < 16 && im.x0 < (gutter.get(im.page) ?? GUTTER_X) + 42,
+    // Under 22 pt wide: the CGL 2019 Tier II print draws them 20.4 pt (under 20 they were filed
+    // as option pictures and showed the key).
+    isIcon: (im: TcsImage) => im.x1 - im.x0 < 22 && im.y1 - im.y0 < 16 && im.x0 < (gutter.get(im.page) ?? GUTTER_X) + 42,
   };
 }
 
@@ -247,7 +250,11 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
   for (const im of g.images.filter((x) => x.x1 - x.x0 > 100 && x.y1 - x.y0 > 100)) seen.set(boxKey(im), (seen.get(boxKey(im)) ?? 0) + 1);
   const watermark = new Set([...seen].filter(([, n]) => n >= 5).map(([k]) => k));
   const events: Event[] = [
-    ...spans.filter((s) => !NOISE.test(s.text.trim())).map((s) => ({ page: s.page, y: s.y0, x: s.x0, span: s })),
+    // A span taller than any line is a host's diagonal watermark ("www.exammix.com" over every
+    // page of CGL 2021 Tier II): it is no question's text, and its box would stretch a region.
+    ...spans
+      .filter((s) => !NOISE.test(s.text.trim()) && s.y1 - s.y0 <= MAX_LINE)
+      .map((s) => ({ page: s.page, y: s.y0, x: s.x0, span: s })),
     ...g.images.filter((im) => !edges.isIcon(im) && !watermark.has(boxKey(im))).map((im) => ({ page: im.page, y: im.y0, x: im.x0, image: im })),
   ].sort((a, b) => a.page - b.page || a.y - b.y || a.x - b.x);
 

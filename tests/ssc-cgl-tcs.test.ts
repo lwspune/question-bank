@@ -394,6 +394,28 @@ describe("assembleTcs, a headerless sheet (CGL 2019 Tier II, its first page crop
   });
 });
 
+describe("assembleTcs, the CGL 2019 Tier II print's wider icons", () => {
+  it("treats a 20 pt tick or cross left of the option number as an icon, never an option picture", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 1);
+    g.images = g.images.map((im) => (im.name.startsWith("icon-") ? { ...im, x0: 66, x1: 86.4 } : im));
+    const [q] = assembleTcs(g);
+    expect(q.optionImages).toEqual([[], [], [], []]);
+    expect(q.stemImages).toEqual([]);
+  });
+});
+
+describe("assembleTcs, a hosting site's diagonal watermark (CGL 2021 Tier II)", () => {
+  it("ignores a rotated watermark span: no text from it, and no question's region stretched to its box", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 0);
+    // drawn diagonally over the page: one span whose box is far taller than any line
+    g.spans.push(span(2, 100, "www.exammix.com", { x0: 81, x1: 530, y1: 548 }));
+    const [q] = assembleTcs(g);
+    expect(q.stem).toBe("Stem of 1");
+    expect(q.options.join(" ")).not.toContain("exammix");
+    expect(Math.max(...q.regions.map((r) => r.y1))).toBeLessThan(200);
+  });
+});
+
 describe("assembleTcs, Tier II", () => {
   const sheet = () => shift(2, "9:00 AM - 12:00 PM", (n) => n % 4, TIER2);
 
