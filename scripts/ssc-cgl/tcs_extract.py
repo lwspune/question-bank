@@ -9,6 +9,7 @@ colour of the option text, so this file holds the key: like questions.json, it i
 shown to a drafting agent. Images narrower than ICON_W at the left margin are the tick and
 cross icons beside the options; they carry the key too and are not saved.
 """
+import hashlib
 import json
 import re
 import os
@@ -138,6 +139,18 @@ def main():
     doc = fitz.open(pdf)
     spans, images, icons, panels, frames, marks = [], [], [], [], [], []
     unpaired_masked = []
+    # A hosting site's branding (Prepp's header logo and address on every page of the CGL 2019
+    # Tier II copy) is the same picture BYTES on page after page: never a question's picture,
+    # though small enough to pass for one. Found by content, before the main pass.
+    seen_on = {}
+    for pno, page in enumerate(doc):
+        if not first - 1 <= pno <= last - 1:
+            continue
+        for b in page.get_text("dict")["blocks"]:
+            if b["type"] == 1:
+                seen_on.setdefault(hashlib.md5(b["image"]).hexdigest(), set()).add(pno)
+    branding = {h for h, pages in seen_on.items() if len(pages) >= 5}
+    branded = 0
     for pno, page in enumerate(doc):
         if not first - 1 <= pno <= last - 1:
             continue
@@ -165,7 +178,8 @@ def main():
         for b in blocks:
             if b["type"] == 1:
                 x0, y0, x1, y1 = b["bbox"]
-                if x1 - x0 < ICON_W and y1 - y0 < 16:
+                icon_sized = x1 - x0 < ICON_W and y1 - y0 < 16
+                if icon_sized:
                     # Tick/cross icons: kept apart, with pixel size (the 2022 vector print
                     # draws its tick 84x84 and its cross 31x21, so the size IS the key).
                     icons.append({"page": pno, "x0": round(x0, 1), "y0": round(y0, 1), "x1": round(x1, 1), "y1": round(y1, 1),
@@ -173,7 +187,12 @@ def main():
                     if x0 < 90:
                         continue
                 name = f"p{pno:03d}_{k:02d}.png"
-                k += 1
+                k += 1  # numbered even when skipped below, so no other picture's name moves
+                # A tick or cross repeats on every page by nature, and beside the label (CGL 2020's
+                # print) it IS the key: never branding.
+                if not icon_sized and hashlib.md5(b["image"]).hexdigest() in branding:
+                    branded += 1
+                    continue
                 path = os.path.join(img_dir, name)
                 if not os.path.exists(path):
                     save_image(doc, b, pairing.get(id(b), 0), path)
@@ -194,6 +213,8 @@ def main():
     with open(os.path.join(out_dir, "geometry.json"), "w", encoding="utf8") as f:
         json.dump({"format": "tcs", "pdf": os.path.basename(pdf), "pages": doc.page_count, "spans": spans, "images": images,
                    "icons": icons, "panels": panels, "frames": frames, "marks": marks}, f, ensure_ascii=False)
+    if branded:
+        print(f"  branding pictures dropped (same picture on 5+ pages): {branded}")
     sizes = {}
     for u in unpaired_masked:
         sizes[u.split("masked picture ")[1].split(" ")[0]] = sizes.get(u.split("masked picture ")[1].split(" ")[0], 0) + 1
