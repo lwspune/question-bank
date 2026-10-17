@@ -64,6 +64,7 @@ import {
   MPSC_SSP_GS1_PAPER,
   UPSC_GS1_PAPER,
   UPSC_CSAT_PAPER,
+  SSC_CGL_T1_PAPER,
   type MockPaperBlueprint,
 } from "../../src/lib/mocks/blueprints";
 import type { MockAnswerKey, OptionLabel } from "../../src/lib/mocks/answers";
@@ -94,6 +95,7 @@ import { deriveMainsSittings, mainsBlueprint } from "./mpscMainsSittings";
 import { PAPERS as MPSC_MAINS_PAPERS } from "../mpsc-mains/config";
 import { deriveUpscSittings } from "./upscSittings";
 import { PAPERS as UPSC_PAPERS } from "../upsc/config";
+import { sscSittings } from "./sscSittings";
 import { mockTestRow } from "../../src/lib/mocks/row";
 
 function loadEnv() {
@@ -696,6 +698,30 @@ async function buildMpscMains(db: SupabaseClient, run: RunState) {
   }
 }
 
+/**
+ * SSC CGL Tier I: one mock per shift (sscSittings.ts). A repeat SSC re-asked word for
+ * word has no row under this shift, so it comes back at its own slot by id; then every
+ * flawed question, repeats included, rides as grace.
+ */
+function sscCglSittings(): SourceFileSitting[] {
+  return sscSittings().map((s) => ({
+    key: s.key,
+    sourceFile: s.sourceFile,
+    year: s.year,
+    slug: s.slug,
+    title: s.title,
+    prepare: (rows) => {
+      const out: PaperQuestionRow[] = [...rows];
+      for (const ov of s.overrides) {
+        out.push({ id: ov.questionId, sourceRow: ov.questionNumber, questionNumber: String(ov.questionNumber), subjectName: ov.subjectName, answer: { kind: "mcq", label: ov.answer } });
+      }
+      const grace = new Set(s.graceNumbers);
+      return out.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r));
+    },
+    ...(s.hold ? { hold: s.hold } : {}),
+  }));
+}
+
 /** UPSC sittings for ONE of its two papers, withdrawn items as grace. */
 function upscSittings(paper: 1 | 2): SourceFileSitting[] {
   return deriveUpscSittings(Object.values(UPSC_PAPERS))
@@ -736,12 +762,13 @@ async function main() {
   const runMpsc = !paperFilter || paperFilter === "mpsc";
   const runJipmat = !paperFilter || paperFilter === "jipmat";
   const runUpsc = !paperFilter || paperFilter === "upsc";
+  const runSsc = !paperFilter || paperFilter === "ssc-cgl";
   // Opt-in ONLY: the Mains rows are PRIVATE until those exams go public, and the
   // builder reads PUBLIC rows, so a default run would report every one as a failure.
   const runMpscMains = paperFilter === "mpsc-mains";
-  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runMpscMains) {
+  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runMpscMains) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, mpsc-mains)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, mpsc-mains)`
     );
   }
 
@@ -799,6 +826,7 @@ async function main() {
     await buildFromSourceFiles(db, MPSC_GBC_PAPER, mpscSittings(), run, "mpscSittings.ts");
     await buildFromSourceFiles(db, MPSC_SSP_GS1_PAPER, mpscSittings(MPSC_SSP_PAPERS, sspMockTitle), run, "mpscSittings.ts");
   }
+  if (runSsc) await buildFromSourceFiles(db, SSC_CGL_T1_PAPER, sscCglSittings(), run, "sscSittings.ts");
   if (runMpscMains) await buildMpscMains(db, run);
 
   console.log(`\n${apply ? "Upserted" : "Would build"} ${run.built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);
