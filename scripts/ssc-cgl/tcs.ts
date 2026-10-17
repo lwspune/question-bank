@@ -85,18 +85,25 @@ export function shiftOfTime(time: string, all: string[]): number {
 function pageEdges(spans: TcsSpan[]) {
   const labels = new Map<number, TcsSpan[]>();
   const gutter = new Map<number, number>();
+  const optLabels = new Map<number, TcsSpan[]>();
   const low = (m: Map<number, number>, p: number, x: number) => m.set(p, Math.min(m.get(p) ?? Infinity, x));
   for (const s of spans) {
     const t = s.text.trim();
     if (PANEL_LABEL.test(t)) labels.set(s.page, [...(labels.get(s.page) ?? []), s]);
     if (s.bold && /^(Q\.\d+|Ans)$/.test(t)) low(gutter, s.page, s.x0);
+    if (/^[1-4]\.(\s|$)/.test(t)) optLabels.set(s.page, [...(optLabels.get(s.page) ?? []), s]);
   }
+  // A picture starting at or right of an option number on its line is that option's, however
+  // narrow (13 Sep 2024 Q66 draws two options 21.5 pt wide): an icon sits left of the number.
+  const rightOfOptionNumber = (im: TcsImage) =>
+    (optLabels.get(im.page) ?? []).some((l) => l.x0 <= im.x0 && Math.abs((l.y0 + l.y1) / 2 - (im.y0 + im.y1) / 2) <= 6);
   return {
     isPanel: (s: TcsSpan) => (labels.get(s.page) ?? []).some((l) => Math.abs(l.y0 - s.y0) <= 3 && s.x0 >= l.x0 - 1),
     // The tick and cross icons sit just right of the gutter, before the option text.
     // Under 22 pt wide: the CGL 2019 Tier II print draws them 20.4 pt (under 20 they were filed
     // as option pictures and showed the key).
-    isIcon: (im: TcsImage) => im.x1 - im.x0 < 22 && im.y1 - im.y0 < 16 && im.x0 < (gutter.get(im.page) ?? GUTTER_X) + 42,
+    isIcon: (im: TcsImage) =>
+      im.x1 - im.x0 < 22 && im.y1 - im.y0 < 16 && im.x0 < (gutter.get(im.page) ?? GUTTER_X) + 42 && !rightOfOptionNumber(im),
   };
 }
 
@@ -249,13 +256,21 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
   // Large pictures only: a small option picture can recur at one spot without being a watermark.
   for (const im of g.images.filter((x) => x.x1 - x.x0 > 100 && x.y1 - x.y0 > 100)) seen.set(boxKey(im), (seen.get(boxKey(im)) ?? 0) + 1);
   const watermark = new Set([...seen].filter(([, n]) => n >= 5).map(([k]) => k));
+  // A picture whose top is within a point of a "Q.n" label is that question's (CGL 2020 Tier II
+  // prints every stem as a picture 0.1 pt above its label): it sorts just after the label, or the
+  // question would open after its own stem.
+  const labels = spans.filter((s) => s.bold && /^Q\.\d+$/.test(s.text.trim()));
+  const imageY = (im: TcsImage) => {
+    const l = labels.find((s) => s.page === im.page && s.y0 > im.y0 && s.y0 - im.y0 <= 1.5);
+    return l ? l.y0 + 0.01 : im.y0;
+  };
   const events: Event[] = [
     // A span taller than any line is a host's diagonal watermark ("www.exammix.com" over every
     // page of CGL 2021 Tier II): it is no question's text, and its box would stretch a region.
     ...spans
       .filter((s) => !NOISE.test(s.text.trim()) && s.y1 - s.y0 <= MAX_LINE)
       .map((s) => ({ page: s.page, y: s.y0, x: s.x0, span: s })),
-    ...g.images.filter((im) => !edges.isIcon(im) && !watermark.has(boxKey(im))).map((im) => ({ page: im.page, y: im.y0, x: im.x0, image: im })),
+    ...g.images.filter((im) => !edges.isIcon(im) && !watermark.has(boxKey(im))).map((im) => ({ page: im.page, y: imageY(im), x: im.x0, image: im })),
   ].sort((a, b) => a.page - b.page || a.y - b.y || a.x - b.x);
 
   // Pass 1: the day's exam times, so a shift can be numbered by its start.

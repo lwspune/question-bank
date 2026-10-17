@@ -402,6 +402,14 @@ describe("assembleTcs, the CGL 2019 Tier II print's wider icons", () => {
     expect(q.optionImages).toEqual([[], [], [], []]);
     expect(q.stemImages).toEqual([]);
   });
+
+  it("keeps a small picture that starts right of its option number as the option, however narrow (13 Sep 2024 Q66)", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 1);
+    // Q1's "1." label sits at x 88, y 72; a 21.5 pt option picture starts just right of it.
+    g.images.push({ page: 2, name: "opt-1", x0: 89, y0: 72, x1: 110.5, y1: 83 });
+    const [q] = assembleTcs(g);
+    expect(q.optionImages[0]).toEqual(["opt-1"]);
+  });
 });
 
 describe("assembleTcs, a hosting site's diagonal watermark (CGL 2021 Tier II)", () => {
@@ -424,6 +432,19 @@ describe("assembleTcs, a tall picture option 1 (CGL 2022 Tier II Q6, a stacked f
     const [q] = assembleTcs(g);
     expect(q.stemImages).toEqual([]);
     expect(q.optionImages[0]).toEqual(["frac-8-21"]);
+  });
+});
+
+describe("assembleTcs, a stem picture a hair above its label (CGL 2020 Tier II, every stem a picture)", () => {
+  it("files a picture whose top is within a point of a Q.n label as that question's stem, not the one before", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 0);
+    // Q.1's label at y 60 and Q.2's at 400 on page 2; each stem picture starts 0.1 pt higher.
+    g.images.push({ page: 2, name: "stem-1", x0: 100, y0: 59.9, x1: 500, y1: 69 });
+    g.images.push({ page: 2, name: "stem-2", x0: 100, y0: 399.9, x1: 500, y1: 409 });
+    const [q1, q2] = assembleTcs(g);
+    expect(q1.stemImages).toEqual(["stem-1"]);
+    expect(q2.stemImages).toEqual(["stem-2"]);
+    expect(q1.optionImages.flat()).toEqual([]);
   });
 });
 
