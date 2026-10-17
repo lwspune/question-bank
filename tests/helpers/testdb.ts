@@ -41,6 +41,48 @@ export function extractProjectRef(url: string | undefined | null): string | null
   return m ? m[1].toLowerCase() : null;
 }
 
+/**
+ * Extract the project ref from a Postgres connection URL (TEST_SUPABASE_DB_URL).
+ * Two shapes reach the same database: the direct host `db.<ref>.supabase.co`,
+ * and the session pooler, whose host names no project (`*.pooler.supabase.com`)
+ * so the ref rides in the user (`postgres.<ref>`). Parsed as a URL, so text in
+ * the password cannot pose as the host. One parser for every testdb script:
+ * reset.ts and sql.ts each carried a host-only copy and refused the pooler URL
+ * the README tells you to use (2026-10-17).
+ */
+export function extractDbUrlRef(dbUrl: string | undefined | null): string | null {
+  if (!dbUrl) return null;
+  let u: URL;
+  try {
+    u = new URL(dbUrl.trim());
+  } catch {
+    return null;
+  }
+  const host = u.hostname.toLowerCase();
+  const direct = /^(?:db\.)?([a-z0-9]{20})\.supabase\.co$/.exec(host);
+  if (direct) return direct[1];
+  if (host.endsWith(".pooler.supabase.com")) {
+    const pooler = /^postgres\.([a-z0-9]{20})$/i.exec(decodeURIComponent(u.username));
+    if (pooler) return pooler[1].toLowerCase();
+  }
+  return null;
+}
+
+/**
+ * Tables testdb:reset must NOT empty. The migration ledger, plus the settings
+ * rows a migration INSERTS (0120 paywall_settings, 0121 plans, 0158
+ * chat_settings): migrate.ts sees those migrations as applied and never
+ * re-runs them, so a truncated settings table stays empty and every test that
+ * reads it fails (2026-10-17, nine files). Settings are not test crumbs. A new
+ * migration that seeds a row into a new table belongs on this list.
+ */
+export const RESET_KEEPS = new Set(["testdb_migrations", "paywall_settings", "plans", "chat_settings"]);
+
+/** The public tables testdb:reset empties, in the order given. */
+export function tablesToTruncate(tables: string[]): string[] {
+  return tables.filter((t) => !RESET_KEEPS.has(t));
+}
+
 export type TestDbVerdict =
   | { kind: "test" } // allow-listed test project — run normally
   | { kind: "prod-contract" } // explicit read-only prod run — allowed

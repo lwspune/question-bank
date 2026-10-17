@@ -1,9 +1,10 @@
 /**
  * Reset the DEDICATED TEST project to a clean, seeded state:
  *
- *   1. TRUNCATE every public base table (except testdb_migrations — the
+ *   1. TRUNCATE every public base table except RESET_KEEPS (testdb_migrations, so the
  *      schema stays migrated; this is a DATA reset, not a schema nuke, so
- *      Supabase's schema grants/default privileges are never disturbed).
+ *      Supabase's schema grants/default privileges are never disturbed; and the
+ *      settings rows migrations seed, which re-running migrations cannot restore).
  *   2. Delete every auth user (the test project holds only fixtures + seed).
  *   3. Empty the question-images bucket.
  *   4. Re-apply any pending migrations (migrate.ts) and re-seed (seed.ts).
@@ -17,7 +18,7 @@ import * as path from "node:path";
 import { execFileSync } from "node:child_process";
 import { Client } from "pg";
 import { createClient } from "@supabase/supabase-js";
-import { ALLOWED_TEST_REFS, extractProjectRef } from "../../tests/helpers/testdb";
+import { ALLOWED_TEST_REFS, extractDbUrlRef, extractProjectRef, tablesToTruncate } from "../../tests/helpers/testdb";
 
 config({ path: path.join(process.cwd(), ".env.test.local") });
 
@@ -28,7 +29,7 @@ async function main(): Promise<void> {
   if (!dbUrl || !url || !service) throw new Error("TEST_SUPABASE_* env not set (see .env.test.local.example)");
 
   const apiRef = extractProjectRef(url);
-  const dbRef = /@(?:db\.)?([a-z0-9]{20})\.supabase\.co/i.exec(dbUrl)?.[1]?.toLowerCase();
+  const dbRef = extractDbUrlRef(dbUrl);
   if (!apiRef || !ALLOWED_TEST_REFS.has(apiRef) || dbRef !== apiRef) {
     throw new Error("Refusing: env does not point at a single allow-listed test project");
   }
@@ -39,12 +40,14 @@ async function main(): Promise<void> {
   try {
     const { rows } = await client.query<{ table_name: string }>(
       `select table_name from information_schema.tables
-       where table_schema='public' and table_type='BASE TABLE' and table_name <> 'testdb_migrations'`
+       where table_schema='public' and table_type='BASE TABLE'`
     );
-    if (rows.length > 0) {
-      const list = rows.map((r) => `public."${r.table_name}"`).join(", ");
+    // The migration ledger and the settings rows migrations seed stay (RESET_KEEPS).
+    const tables = tablesToTruncate(rows.map((r) => r.table_name));
+    if (tables.length > 0) {
+      const list = tables.map((t) => `public."${t}"`).join(", ");
       await client.query(`truncate ${list} restart identity cascade`);
-      console.log(`truncated ${rows.length} tables`);
+      console.log(`truncated ${tables.length} tables`);
     }
     // 3) empty the bucket (storage.objects rows; actual blobs are GC'd by Supabase).
     //

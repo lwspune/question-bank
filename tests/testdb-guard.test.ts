@@ -8,6 +8,8 @@
 import { describe, it, expect } from "vitest";
 import {
   extractProjectRef,
+  extractDbUrlRef,
+  tablesToTruncate,
   classifyTestTarget,
   ALLOWED_TEST_REFS,
   PROD_REF,
@@ -29,6 +31,56 @@ describe("extractProjectRef", () => {
     expect(extractProjectRef("")).toBeNull();
     // ref must be exactly 20 chars — a lookalike host must not match
     expect(extractProjectRef("https://evil.supabase.co.attacker.com")).toBeNull();
+  });
+});
+
+describe("extractDbUrlRef: the Postgres URL the testdb scripts connect with", () => {
+  const ref = [...ALLOWED_TEST_REFS][0];
+
+  it("reads the ref from a direct host", () => {
+    expect(extractDbUrlRef(`postgresql://postgres:pw@db.${ref}.supabase.co:5432/postgres`)).toBe(ref);
+    expect(extractDbUrlRef(`postgres://postgres:pw@${ref}.supabase.co:5432/postgres`)).toBe(ref);
+  });
+
+  it("reads the ref from the pooler user, where the host names no project", () => {
+    expect(
+      extractDbUrlRef(`postgresql://postgres.${ref}:pw@aws-0-ap-northeast-2.pooler.supabase.com:5432/postgres`)
+    ).toBe(ref);
+  });
+
+  it("reads PROD's ref as PROD, so the allow-list refuses it", () => {
+    expect(
+      extractDbUrlRef(`postgresql://postgres.${PROD_REF}:pw@aws-0-ap-south-1.pooler.supabase.com:6543/postgres`)
+    ).toBe(PROD_REF);
+  });
+
+  it("is not fooled by a project host inside the password", () => {
+    expect(extractDbUrlRef(`postgresql://postgres:x@db.${ref}.supabase.co@evil.example.com:5432/db`)).toBeNull();
+  });
+
+  it("returns null for a pooler user on a host that is not Supabase's pooler", () => {
+    expect(extractDbUrlRef(`postgresql://postgres.${ref}:pw@evil.example.com:5432/postgres`)).toBeNull();
+  });
+
+  it("returns null for anything else", () => {
+    expect(extractDbUrlRef(undefined)).toBeNull();
+    expect(extractDbUrlRef("")).toBeNull();
+    expect(extractDbUrlRef("not a url")).toBeNull();
+    expect(extractDbUrlRef("postgresql://postgres:pw@localhost:54322/postgres")).toBeNull();
+  });
+});
+
+describe("tablesToTruncate: what testdb:reset empties", () => {
+  it("keeps the settings rows migrations insert, which re-running migrations cannot restore", () => {
+    // 2026-10-17: the reset emptied these, migrate.ts saw every migration as
+    // applied and re-seeded none of them, and nine test files failed.
+    expect(tablesToTruncate(["questions", "paywall_settings", "plans", "chat_settings", "mock_tests"])).toEqual([
+      "questions",
+      "mock_tests",
+    ]);
+  });
+  it("never empties the migration ledger", () => {
+    expect(tablesToTruncate(["testdb_migrations", "orgs"])).toEqual(["orgs"]);
   });
 });
 

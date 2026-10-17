@@ -2,6 +2,8 @@
  * The routes V's practice-test builder calls (2026-10-15):
  *   GET  /api/practice-tests/options  the choices for each step, the same for
  *                                     everyone, so the CDN may keep them
+ *   GET  /api/practice-tests/quota    the student's free tests left today,
+ *                                     per person, so no cache may keep it
  *   POST /api/practice-tests          build one test, signed-in students only
  *   POST /api/chat/builder            count a builder step for /dashboard/chat
  * Every answer has the shape { ok: true, ... } or { ok: false, error }.
@@ -46,6 +48,16 @@ describe("GET /api/practice-tests/options", () => {
     expect((await exam.json()).ok).toBe(false);
     const subject = await GET(get("?exam=nda&subject=astrology"));
     expect(subject.status).toBe(404);
+  });
+});
+
+describe("GET /api/practice-tests/quota", () => {
+  it("answers a signed-out visitor with no state, and never lets a cache keep it", async () => {
+    const { GET } = await import("@/app/api/practice-tests/quota/route");
+    const res = await GET();
+    expect(res.status).toBe(200);
+    expect(res.headers.get("Cache-Control")).toBe("no-store");
+    expect(await res.json()).toEqual({ ok: true, state: null });
   });
 });
 

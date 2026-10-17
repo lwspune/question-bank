@@ -28,6 +28,7 @@ import {
 import type { ActivityEvent } from "@/lib/activity/events";
 import { FREE_MOCK_LIMIT_CODE, type MockQuota } from "./quota";
 import { chapterTestContext } from "./instructionContext";
+import { practiceUsedUpLine } from "@/lib/practiceTests/quotaCopy";
 
 export class MockError extends Error {
   constructor(public status: number, message: string) {
@@ -80,12 +81,15 @@ export async function startOrResumeAttempt(
 
   // The free-mock limit (migration 0120's trigger) refused a NEW mock.
   if (error?.code === FREE_MOCK_LIMIT_CODE) {
-    throw new MockError(
-      402,
-      mock.scope === "custom"
-        ? "You've used today's free practice test. Come back tomorrow, or get the Premium Pass for unlimited tests."
-        : "You've used your free mock tests. Get the Premium Pass to keep going."
-    );
+    if (mock.scope === "custom") {
+      // Name the live daily number (/dashboard/pricing); a quota read that fails falls back to one.
+      const limit = (await getMockQuota(db))?.practiceLimit ?? 1;
+      throw new MockError(
+        402,
+        `${practiceUsedUpLine(limit)} Come back tomorrow, or get the Premium Pass for unlimited tests.`
+      );
+    }
+    throw new MockError(402, "You've used your free mock tests. Get the Premium Pass to keep going.");
   }
 
   // Lost a race with a concurrent start (partial unique index) → resume theirs.
