@@ -57,8 +57,19 @@ export const LAYOUTS: Record<Tier, Section[]> = {
   ],
 };
 
+/**
+ * Tier II Paper 1 BEFORE CGL 2022 was Quantitative Abilities alone: one section of 100
+ * (English was a separate Paper 2, not ingested). A day of that pattern declares this layout.
+ */
+export const QUANT_PAPER1: Section[] = [
+  { part: "A", match: /Quantitative/i, count: 100, subjects: ["Quantitative Aptitude"] },
+];
+
+const subjectsOf = (layout: Section[]): Partial<Record<Part, string[]>> =>
+  Object.fromEntries(layout.map((s) => [s.part, s.subjects]));
+
 export function sectionSubjects(tier: Tier = 1): Partial<Record<Part, string[]>> {
-  return Object.fromEntries(LAYOUTS[tier].map((s) => [s.part, s.subjects]));
+  return subjectsOf(LAYOUTS[tier]);
 }
 /** Tier I's parts: A Reasoning, B General Awareness, C Quantitative Aptitude, D English. */
 export const SECTION_SUBJECTS = sectionSubjects(1) as Record<"A" | "B" | "C" | "D", string[]>;
@@ -73,6 +84,18 @@ export function subjectFor(part: Part, named?: string, tier: Tier = 1): string {
   }
   if (!allowed.includes(named)) throw new Error(`"${named}" is not a PART-${part} subject (${allowed.join(", ")})`);
   return named;
+}
+
+/** A day's paper: its own layout (an older pattern), else its tier's. */
+export function layoutOf(day: Day): Section[] {
+  return day.layout ?? LAYOUTS[day.tier];
+}
+
+/** The subjects each part of a shift's paper may take. */
+export function shiftSections(shiftId: string): Partial<Record<Part, string[]>> {
+  const s = SHIFTS[shiftId];
+  if (!s) throw new Error(`unknown shift "${shiftId}"`);
+  return subjectsOf(layoutOf(DAYS[s.day]));
 }
 
 /** A shift id's tier: `t1-...` or `t2-...`. */
@@ -105,6 +128,11 @@ export type Day = {
   /** This day's sheet is printed in ANOTHER day's file (the CGL 2024 Tier II file holds the
    * 18 Jan and 20 Jan sittings): that day's extraction reads it, so it lists no file of its own. */
   sheetIn?: string;
+  /** The paper's sections when they differ from the tier's (CGL 2016-2021 Tier II: QUANT_PAPER1). */
+  layout?: Section[];
+  /** The hosted copy prints no Exam Date/Time header (its first page cropped away): the whole
+   * file is one sheet of this day's date, Shift 1. */
+  headerless?: true;
   date: string;
   shifts: number;
   file: string;
@@ -222,7 +250,41 @@ const T2_2024 = {
   url: "https://cdn.aglasem.com/aglasem-doc/bf0bb202-8c15-11f1-85d4-0aa932765c8b/bf0bb202-8c15-11f1-85d4-0aa932765c8b.pdf",
 };
 
+/**
+ * Older Tier II Paper 1 sittings, one TCS response sheet per file, each found where SSC's own
+ * print survives online (2026-10-17). CGL 2016 exists only as SSC's 2016 answer-key print (not
+ * read: owner, 2026-10-17); CGL 2017 and 2018 only as coaching retypes, so they are absent.
+ * CGL 2016-2021 Paper 1 is Quantitative Abilities alone (QUANT_PAPER1); CGL 2022 is the first
+ * five-module Paper 1. The CGL 2019 copy (Prepp's, its watermark on every page) lost its header.
+ */
+const t2Old = (date: string, cycle: number, file: string, url: string, extra: Partial<Day> = {}): Day => ({
+  tier: 2,
+  cycle,
+  date,
+  shifts: 1,
+  file: join(SOURCE_ROOT, `${cycle}_Tier2`, file),
+  url,
+  provisionalKey: false,
+  format: "tcs",
+  ...extra,
+});
+const drive = (id: string) => `https://drive.google.com/file/d/${id}/view`;
+const OLD_SLOT = ["9:00 AM - 11:00 AM"];
+const NEW_SLOT = ["9:00 AM - 12:00 PM"];
+
 export const DAYS: Record<string, Day> = {
+  "t2-2020-11-15": t2Old("2020-11-15", 2019, "SSC_CGL_2019_Tier2_Paper1_15Nov2020_EN.pdf",
+    "https://cdn-images.prepp.in/public/image/SSC_CGL_2019_TIER_2_NOVEMBER_15_2020_SHIFT_1__c18b66d136a5c8d6316ea5c036c30b87.pdf",
+    { layout: QUANT_PAPER1, headerless: true }),
+  "t2-2022-01-29": t2Old("2022-01-29", 2020, "SSC_CGL_2020_Tier2_Paper1_29Jan2022_EN.pdf", drive("1p9B6GJzgCHRlGejuaiygiKe5mnyPeytc"), { layout: QUANT_PAPER1, slots: OLD_SLOT }),
+  "t2-2022-02-03": t2Old("2022-02-03", 2020, "SSC_CGL_2020_Tier2_Paper1_03Feb2022_EN.pdf", drive("15q_39Dj9HWP_Q-oWG2JCR82Lkz_Kfb3k"), { layout: QUANT_PAPER1, slots: OLD_SLOT }),
+  "t2-2022-08-08": t2Old("2022-08-08", 2021, "SSC_CGL_2021_Tier2_Paper1_08Aug2022_EN.pdf", drive("1ajsV9ziGfariK44qXwG3AUzB8ABLAo4i"), { layout: QUANT_PAPER1, slots: OLD_SLOT }),
+  "t2-2023-03-02": t2Old("2023-03-02", 2022, "SSC_CGL_2022_Tier2_Paper1_02Mar2023_EN.pdf", drive("1SSlBYub2Fw7woqLcLIEVGl8dANYY2oxn"), { slots: NEW_SLOT }),
+  "t2-2023-03-03": t2Old("2023-03-03", 2022, "SSC_CGL_2022_Tier2_Paper1_03Mar2023_EN.pdf", drive("1xwRs4Ev8D7jGCn6w4kJr5MzY9L_rBIO-"), { slots: NEW_SLOT }),
+  "t2-2023-03-06": t2Old("2023-03-06", 2022, "SSC_CGL_2022_Tier2_Paper1_06Mar2023_EN.pdf", drive("1-eCcpz7oj6HNNnuyaXDP1oq8L7E29j7y"), { slots: NEW_SLOT }),
+  "t2-2023-03-07": t2Old("2023-03-07", 2022, "SSC_CGL_2022_Tier2_Paper1_07Mar2023_EN.pdf", drive("1ihS5z0uxwy1kdkJMBA-R_FdiKUWbIhq5"), { slots: NEW_SLOT }),
+  "t2-2023-10-26": t2Old("2023-10-26", 2023, "SSC_CGL_2023_Tier2_Paper1_26Oct2023_EN.pdf",
+    "https://www.sscadda.com/wp-content/uploads/multisite/sites/2/2024/07/20163446/SSC-CGL-Tier-2-Paper.pdf", { slots: NEW_SLOT }),
   "t2-2025-01-18": { tier: 2, cycle: 2024, date: "2025-01-18", shifts: 1, ...T2_2024, provisionalKey: true, format: "tcs", slots: ["9:00 AM - 12:00 PM"] },
   "t2-2025-01-20": { tier: 2, cycle: 2024, date: "2025-01-20", shifts: 1, ...T2_2024, provisionalKey: true, format: "tcs", slots: ["9:00 AM - 12:00 PM"], sheetIn: "t2-2025-01-18" },
   "t2-2026-01-18": {

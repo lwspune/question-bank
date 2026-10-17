@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { CATALOG, DAYS, EXAMS, LAYOUTS, SECTION_SUBJECTS, SHIFTS, SUBJECTS, sectionSubjects, subjectFor, tcsFiles, tierOf } from "../scripts/ssc-cgl/config";
+import { CATALOG, DAYS, EXAMS, LAYOUTS, SECTION_SUBJECTS, SHIFTS, SUBJECTS, layoutOf, sectionSubjects, shiftSections, subjectFor, tcsFiles, tierOf } from "../scripts/ssc-cgl/config";
 
 describe("SSC CGL sections and subjects", () => {
   it("maps each Tier I part to its subjects, General Awareness split CDS-style", () => {
@@ -187,8 +187,8 @@ describe("SSC CGL Tier II (Paper 1)", () => {
 
   it("registers the three sittings: CGL 2024 on 18 and 20 Jan 2025 (one file), CGL 2025 on 18 Jan 2026 (a scan)", () => {
     const t2 = Object.keys(SHIFTS).filter((id) => id.startsWith("t2-"));
-    expect(t2).toEqual(["t2-2025-01-18-s1", "t2-2025-01-20-s1", "t2-2026-01-18-s1"]);
-    expect(t2.map(tierOf)).toEqual([2, 2, 2]);
+    expect(t2).toEqual(expect.arrayContaining(["t2-2025-01-18-s1", "t2-2025-01-20-s1", "t2-2026-01-18-s1"]));
+    expect(new Set(t2.map(tierOf))).toEqual(new Set([2]));
     expect(tierOf("t1-2025-09-18-s1")).toBe(1);
     expect(SHIFTS["t2-2025-01-20-s1"]).toMatchObject({
       sourceFile: "SSC_CGL_T2_2025-01-20_S1",
@@ -200,10 +200,52 @@ describe("SSC CGL Tier II (Paper 1)", () => {
     expect(SHIFTS["t2-2026-01-18-s1"]).toMatchObject({ pyqYear: 2025, pyqNote: "Tier II (CGL 2025), 18 Jan 2026" });
   });
 
+  it("registers the older Paper 1 sittings each original sheet exists for (CGL 2019-2023)", () => {
+    const t2 = Object.keys(SHIFTS).filter((id) => id.startsWith("t2-")).sort();
+    expect(t2).toEqual([
+      "t2-2020-11-15-s1", // CGL 2019
+      "t2-2022-01-29-s1", // CGL 2020
+      "t2-2022-02-03-s1", // CGL 2020
+      "t2-2022-08-08-s1", // CGL 2021
+      "t2-2023-03-02-s1", // CGL 2022, the first five-module Paper 1
+      "t2-2023-03-03-s1",
+      "t2-2023-03-06-s1",
+      "t2-2023-03-07-s1",
+      "t2-2023-10-26-s1", // CGL 2023
+      "t2-2025-01-18-s1",
+      "t2-2025-01-20-s1",
+      "t2-2026-01-18-s1",
+    ]);
+    expect(SHIFTS["t2-2020-11-15-s1"]).toMatchObject({ pyqYear: 2019, pyqMonth: "November", pyqNote: "Tier II (CGL 2019), 15 Nov 2020" });
+    expect(SHIFTS["t2-2022-08-08-s1"]).toMatchObject({ pyqYear: 2021, sourceFile: "SSC_CGL_T2_2022-08-08_S1" });
+    expect(SHIFTS["t2-2023-10-26-s1"]).toMatchObject({ pyqYear: 2023 });
+    for (const id of t2) expect(DAYS[SHIFTS[id].day].file, id).toMatch(/_Tier2[\\/]SSC_CGL_20\d\d_Tier2_Paper1_/);
+  });
+
+  it("reads CGL 2016-2021 Paper 1 as ONE section of 100 Quantitative Abilities questions", () => {
+    for (const day of ["t2-2020-11-15", "t2-2022-01-29", "t2-2022-02-03", "t2-2022-08-08"]) {
+      expect(layoutOf(DAYS[day]).map((s) => [s.part, s.count, s.subjects]), day).toEqual([["A", 100, ["Quantitative Aptitude"]]]);
+    }
+    expect(layoutOf(DAYS["t2-2022-08-08"])[0].match.test("Quantitative abilities")).toBe(true);
+    expect(shiftSections("t2-2022-08-08-s1")).toEqual({ A: ["Quantitative Aptitude"] });
+    // the new pattern keeps the tier's five modules
+    expect(layoutOf(DAYS["t2-2023-03-02"])).toBe(LAYOUTS[2]);
+    expect(shiftSections("t2-2023-10-26-s1").E).toEqual(["Computer Knowledge"]);
+    expect(shiftSections("t1-2025-09-18-s1")).toEqual(SECTION_SUBJECTS);
+  });
+
+  it("takes the CGL 2019 sheet's date from config: its hosted copy prints no Exam Date/Time header", () => {
+    expect(DAYS["t2-2020-11-15"]).toMatchObject({ format: "tcs", headerless: true, cycle: 2019 });
+    expect(tcsFiles().filter((f) => f.day.tier === 2).map((f) => f.dir)).toEqual([
+      "t2-2020-11-15", "t2-2022-01-29", "t2-2022-02-03", "t2-2022-08-08",
+      "t2-2023-03-02", "t2-2023-03-03", "t2-2023-03-06", "t2-2023-03-07", "t2-2023-10-26", "t2-2025-01-18",
+    ]);
+  });
+
   it("reads both 2024 sittings from the one file, and lists that file once", () => {
     expect(DAYS["t2-2025-01-18"]).toMatchObject({ tier: 2, format: "tcs", slots: ["9:00 AM - 12:00 PM"], cycle: 2024 });
     expect(DAYS["t2-2025-01-18"].file).toMatch(/2024_Tier2.SSC_CGL_2024_Tier2_Paper1_EN\.pdf$/);
     expect(DAYS["t2-2025-01-20"]).toMatchObject({ tier: 2, sheetIn: "t2-2025-01-18" });
-    expect(tcsFiles().filter((f) => f.day.tier === 2).map((f) => f.dir)).toEqual(["t2-2025-01-18"]);
+    expect(tcsFiles().filter((f) => f.day.tier === 2 && f.day.cycle === 2024).map((f) => f.dir)).toEqual(["t2-2025-01-18"]);
   });
 });

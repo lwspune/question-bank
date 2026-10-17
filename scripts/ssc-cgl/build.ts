@@ -23,7 +23,7 @@ import katex from "katex";
 import { parseLatex } from "../../src/components/math/parseLatex";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { renderCorruption } from "../lib/render-lint";
-import { CATALOG, DAYS, FIGURES, OUT, TRANSCRIPTS, requireShift, sectionSubjects, tierOf } from "./config";
+import { CATALOG, DAYS, FIGURES, OUT, TRANSCRIPTS, requireShift, shiftSections } from "./config";
 import { checkShift, parseTranscript, studentSolution, type Label, type Part, type TranscriptQuestion } from "./lib";
 
 const LABELS: Label[] = ["A", "B", "C", "D"];
@@ -73,7 +73,7 @@ function main() {
   );
   const transcript = parseTranscript(readFileSync(fileArg ?? join(TRANSCRIPTS, `${shift.id}.txt`), "utf8"));
 
-  const check = checkShift(transcript, sheet, CATALOG, sectionSubjects(tierOf(shift.id)), { compareKey: !blind });
+  const check = checkShift(transcript, sheet, CATALOG, shiftSections(shift.id), { compareKey: !blind });
   const problems = [...check.problems];
   const rows: unknown[] = [];
 

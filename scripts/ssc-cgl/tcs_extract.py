@@ -88,8 +88,8 @@ def drawn_images(doc, page):
 
 
 def page_image_xrefs(doc, page, blocks):
-    """Each picture block of the page, in order, paired with the image object drawn there; None
-    when the pairing cannot be proven (counts or pixel sizes disagree)."""
+    """Each picture block of the page, in order, paired with the image object drawn there, and
+    the drawn objects left unpaired (a hosting site's header logo can report a different size)."""
     # An INLINE image (BI .. EI: this print's cross icons) is a picture block with no Do, so a
     # block whose size is not the next drawn object's is skipped as inline; every drawn object
     # must still find its block, in order.
@@ -101,7 +101,7 @@ def page_image_xrefs(doc, page, blocks):
         if k < len(xrefs) and sizes[k] == (b.get("width"), b.get("height")):
             pairing[id(b)] = xrefs[k]
             k += 1
-    return pairing if k == len(xrefs) else None
+    return pairing, xrefs[k:]
 
 
 def save_image(doc, b, xref, path):
@@ -137,13 +137,17 @@ def main():
     os.makedirs(img_dir, exist_ok=True)
     doc = fitz.open(pdf)
     spans, images, icons, panels, frames, marks = [], [], [], [], [], []
+    unpaired_masked = []
     for pno, page in enumerate(doc):
         if not first - 1 <= pno <= last - 1:
             continue
         blocks = page.get_text("dict")["blocks"]
-        pairing = page_image_xrefs(doc, page, blocks)
-        if pairing is None and any(b["type"] == 1 for b in blocks) and any(i[1] for i in page.get_images(full=True)):
-            sys.exit(f"page {pno}: its pictures carry soft masks but cannot be paired with their image objects")
+        pairing, unpaired = page_image_xrefs(doc, page, blocks)
+        # A soft-masked object left unpaired would be saved raw, i.e. as a black box: report it.
+        for x in unpaired:
+            if doc.extract_image(x).get("smask"):
+                info = doc.extract_image(x)
+                unpaired_masked.append(f"page {pno}: masked picture {info['width']}x{info['height']} not paired, saved raw")
         if is_scan(page, blocks):
             marks += scan_marks(page, pno)
         k = 0
@@ -172,7 +176,7 @@ def main():
                 k += 1
                 path = os.path.join(img_dir, name)
                 if not os.path.exists(path):
-                    save_image(doc, b, (pairing or {}).get(id(b), 0), path)
+                    save_image(doc, b, pairing.get(id(b), 0), path)
                 images.append({"page": pno, "name": name, "x0": round(x0, 1), "y0": round(y0, 1), "x1": round(x1, 1), "y1": round(y1, 1)})
                 continue
             for line in b["lines"]:
@@ -190,6 +194,11 @@ def main():
     with open(os.path.join(out_dir, "geometry.json"), "w", encoding="utf8") as f:
         json.dump({"format": "tcs", "pdf": os.path.basename(pdf), "pages": doc.page_count, "spans": spans, "images": images,
                    "icons": icons, "panels": panels, "frames": frames, "marks": marks}, f, ensure_ascii=False)
+    sizes = {}
+    for u in unpaired_masked:
+        sizes[u.split("masked picture ")[1].split(" ")[0]] = sizes.get(u.split("masked picture ")[1].split(" ")[0], 0) + 1
+    if sizes:
+        print(f"  ! unpaired masked pictures by size (a header logo repeats on every page; anything else needs a look): {sizes}")
     print(f"{day}: {doc.page_count} pages, {len(spans)} spans, {len(images)} images, {len(icons)} icons, {len(panels)} panels, {len(frames)} frames, {len(marks)} scan marks -> {out_dir}")
 
 

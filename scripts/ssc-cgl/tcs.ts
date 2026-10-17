@@ -172,6 +172,8 @@ export type TcsOptions = {
   slots?: string[];
   /** The paper's sections in number order (default Tier I's). */
   layout?: Section[];
+  /** A file that prints no Exam Date/Time header: it is one sheet of this date, Shift 1. */
+  headerless?: { date: string };
 };
 
 /** "10/09/2024" (day first, as the sheets print it) -> "2024-09-10". */
@@ -272,9 +274,9 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
     optText: { k: number; text: string; mid: number }[];
   };
   const open: Open[] = [];
-  let shift = 0;
-  let sheet = -1;
-  let date: string | null = null;
+  let shift = opts.headerless ? 1 : 0;
+  let sheet = opts.headerless ? 0 : -1;
+  let date: string | null = opts.headerless?.date ?? null;
   let part: Part | null = null;
   let cur: Open | null = null;
   // A "Comprehension:" passage, collected until the sub-question it is printed before.

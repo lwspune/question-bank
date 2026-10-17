@@ -383,6 +383,17 @@ describe("assembleTcs, option text printed apart from its label", () => {
   });
 });
 
+describe("assembleTcs, a headerless sheet (CGL 2019 Tier II, its first page cropped away)", () => {
+  it("reads the questions as one sheet dated from config when no Exam Time header is printed", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", (n) => n % 4);
+    g.spans = g.spans.filter((s) => s.text !== "Exam Time" && s.text !== "9:00 AM - 10:00 AM");
+    expect(() => assembleTcs(g)).toThrow(/before any Exam Time header/);
+    const qs = assembleTcs(g, { headerless: { date: "2020-11-15" } });
+    expect(qs).toHaveLength(100);
+    expect(qs[0]).toMatchObject({ sheet: 0, shift: 1, date: "2020-11-15", number: 1 });
+  });
+});
+
 describe("assembleTcs, Tier II", () => {
   const sheet = () => shift(2, "9:00 AM - 12:00 PM", (n) => n % 4, TIER2);
 

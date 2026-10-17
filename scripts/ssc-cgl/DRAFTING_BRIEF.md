@@ -40,6 +40,12 @@ restarts at Q.1; you write the red label's number, 1-150:
 | D | 106-130 | General Awareness | name it: `subject:` as PART-B below |
 | E | 131-150 | Computer Knowledge | Computer Knowledge |
 
+**Before CGL 2022** (`t2-2020-11-15`, `t2-2022-01-29`, `t2-2022-02-03`, `t2-2022-08-08`) Paper 1
+was **Quantitative Abilities alone**: one PART-A of 100 questions, Quantitative Aptitude, no
+`subject:` line. The CGL 2019 sheet (`t2-2020-11-15`) carries the host's "prepp" watermark (ignore
+it); its candidate read some questions in Hindi, so those print in Hindi only: write your English
+rendering with `flawed: yes` and a note, as the brief says above.
+
 So in Tier II the `subject:` line belongs to **PART-D**, not B. The 2024 print (`t2-2025-...`) is
 the text print above, with `text.txt`, but it hides a strip at the top and bottom of each page:
 a question starting at a page top can lose its first lines, and a picture there renders blank

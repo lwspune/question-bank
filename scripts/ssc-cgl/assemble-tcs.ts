@@ -17,7 +17,7 @@
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { LAYOUTS, OUT, SHIFTS, tcsFiles } from "./config";
+import { OUT, SHIFTS, layoutOf, tcsFiles } from "./config";
 import {
   assembleTcs,
   groupTcsShifts,
@@ -71,7 +71,12 @@ function main() {
             options: ["", "", "", ""],
             questionId: null,
           }));
-        } else questions = assembleTcs(g, { slots: day.slots, layout: LAYOUTS[day.tier] });
+        } else
+          questions = assembleTcs(g, {
+            slots: day.slots,
+            layout: layoutOf(day),
+            ...(day.headerless ? { headerless: { date: day.date } } : {}),
+          });
       } catch (e) {
         throw new Error(`${dir}: ${(e as Error).message}`);
       }
