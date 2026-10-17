@@ -11,6 +11,7 @@ import { CHAT_MESSAGE_MAX } from "@/lib/chat/validate";
 import { vPlacement } from "@/lib/chat/placement";
 import { launcherHiddenAfterScroll } from "@/lib/chat/launcherScroll";
 import { splitReplyLinks } from "@/lib/chat/replyLinks";
+import { panelBox, type PanelBox } from "@/lib/chat/panelBox";
 import type { HistoryTurn } from "@/lib/chat/conversation";
 import {
   LOCAL_CHAT_KEY,
@@ -56,6 +57,7 @@ function noteAccountChecked(): void {
 }
 import { useCart } from "@/lib/cart/CartProvider";
 import VSays from "./VSays";
+import { MESSAGE_IN, USER_BUBBLE, V_BUBBLE } from "./chatStyles";
 import PracticeBuilder, { PENDING_BUILD_KEY, logBuilderStep } from "./PracticeBuilder";
 import type { BuilderAnswers } from "@/lib/practiceTests/builder";
 
@@ -107,7 +109,7 @@ function ReplyText({ text, links, onNavigate }: { text: string; links?: string[]
             key={i}
             href={seg.href}
             onClick={onNavigate}
-            className="break-all font-medium text-brand-accent underline underline-offset-2 hover:no-underline focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="break-words font-medium text-brand-accent underline underline-offset-2 hover:no-underline focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             {seg.href}
           </Link>
@@ -286,6 +288,26 @@ export default function ChatWidget() {
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight });
   }, [turns]);
+
+  // Phones: keep the panel on the visible area above the keyboard (lib/chat/panelBox).
+  const [box, setBox] = useState<PanelBox | null>(null);
+  useEffect(() => {
+    const vv = window.visualViewport;
+    if (!open || !vv) return;
+    const phone = window.matchMedia("(max-width: 639px)");
+    const update = () => {
+      setBox(panelBox(vv, phone.matches));
+      listRef.current?.scrollTo({ top: listRef.current.scrollHeight });
+    };
+    update();
+    vv.addEventListener("resize", update);
+    vv.addEventListener("scroll", update);
+    return () => {
+      vv.removeEventListener("resize", update);
+      vv.removeEventListener("scroll", update);
+      setBox(null);
+    };
+  }, [open]);
 
   // Email sign-in returns here without a page load, so V stays mounted: drop the sign-in button.
   useEffect(() => {
@@ -496,19 +518,27 @@ export default function ChatWidget() {
           role="dialog"
           aria-modal="true"
           aria-label={building ? "Build a practice test with V" : "Chat with V"}
-          className="fixed inset-0 flex h-[100dvh] w-full flex-col overflow-hidden bg-background sm:static sm:mb-3 sm:h-[40rem] sm:max-h-[calc(100dvh-7rem)] sm:w-[30rem] sm:max-w-[calc(100vw-2rem)] sm:rounded-lg sm:border sm:border-input sm:shadow-xl"
+          style={box ?? undefined}
+          className="fixed inset-0 flex h-[100dvh] w-full flex-col overflow-hidden bg-background sm:static sm:mb-3 sm:h-[40rem] sm:max-h-[calc(100dvh-7rem)] sm:w-[30rem] sm:max-w-[calc(100vw-2rem)] sm:rounded-2xl sm:border sm:border-border sm:shadow-[0_28px_64px_-24px_rgb(15_29_74/0.55)] motion-safe:sm:animate-in motion-safe:sm:fade-in motion-safe:sm:slide-in-from-bottom-4 motion-safe:sm:duration-200"
           onKeyDown={(e) => {
             // The download box is a portal: its keys bubble here through React,
             // and its own Escape must not close V too.
             if (e.key === "Escape" && panelRef.current?.contains(e.target as Node)) close();
           }}
         >
-          <div className="flex items-center justify-between border-b border-input px-4 py-3">
-            <div className="flex items-center gap-2">
-              <VFace avatar="talk" className="h-7 w-7 object-contain" />
-              <span className="font-sans text-sm font-semibold">
-                {building ? "Build a practice test" : "Ask V"}
+          <div className="hero-brand flex shrink-0 items-center justify-between px-4 pb-3 pt-[max(0.75rem,env(safe-area-inset-top))] sm:pt-3">
+            <div className="flex min-w-0 items-center gap-3">
+              <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/25">
+                <VFace avatar="talk" className="h-8 w-8 object-contain" />
               </span>
+              <div className="min-w-0">
+                <p className="truncate font-sans text-base font-semibold leading-tight">
+                  {building ? "Build a practice test" : "Ask V"}
+                </p>
+                <p className="truncate text-xs text-white/85">
+                  {building ? "V picks the questions for you" : "Your PYQ Vault study guide"}
+                </p>
+              </div>
             </div>
             <div className="flex items-center gap-1">
               {!building && turns.length > 0 && (
@@ -518,7 +548,7 @@ export default function ChatWidget() {
                   disabled={sending}
                   aria-label="Clear chat and start a new one"
                   title="Clear chat"
-                  className="inline-flex h-7 w-7 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full text-white/85 transition-colors hover:bg-white/15 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white disabled:pointer-events-none disabled:opacity-50"
                 >
                   <RotateCcw className="h-4 w-4" aria-hidden />
                 </button>
@@ -527,7 +557,7 @@ export default function ChatWidget() {
                 type="button"
                 onClick={close}
                 aria-label="Close chat"
-                className="inline-flex h-7 w-7 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full text-white/85 transition-colors hover:bg-white/15 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
                 <X className="h-4 w-4" aria-hidden />
               </button>
@@ -538,31 +568,28 @@ export default function ChatWidget() {
             <PracticeBuilder initial={resume} onExit={() => setMode("chat")} onClose={close} />
           ) : (
           <>
-          <div ref={listRef} className="flex-1 space-y-3 overflow-y-auto px-4 py-3">
+          <div ref={listRef} className="flex-1 space-y-4 overflow-y-auto px-4 py-4">
             {[GREETING, ...turns].map((t, n) => {
               // n - 1 indexes `turns`; the greeting is never stored.
               const i = n - 1;
               if (t.role === "user") {
                 return (
-                  <div
-                    key={n}
-                    className="ml-auto max-w-[85%] whitespace-pre-wrap break-words rounded-lg bg-brand px-3 py-2 text-sm text-brand-foreground"
-                  >
+                  <div key={n} className={`${USER_BUBBLE} ${MESSAGE_IN}`}>
                     {t.text}
                   </div>
                 );
               }
               const rateable = t.source === "ai" && !!t.id;
               return (
-                <div key={n} className="max-w-[90%]">
-                  <div className="flex items-end gap-1.5">
-                    <VFace avatar={t.avatar ?? "idle"} className="h-6 w-6 shrink-0 object-contain" />
-                    <div className="whitespace-pre-wrap break-words rounded-lg bg-muted px-3 py-2 text-sm text-foreground">
+                <div key={n} className={`max-w-[90%] ${MESSAGE_IN}`}>
+                  <div className="flex items-end gap-2">
+                    <VFace avatar={t.avatar ?? "idle"} className="h-7 w-7 shrink-0 object-contain" />
+                    <div className={V_BUBBLE}>
                       <ReplyText text={t.text} links={t.links} onNavigate={close} />
                     </div>
                   </div>
                   {rateable && (
-                    <div className="ml-8 mt-1 flex gap-1">
+                    <div className="ml-9 mt-1 flex gap-1">
                       <button
                         type="button"
                         onClick={() => void giveFeedback(i, 1)}
@@ -591,22 +618,26 @@ export default function ChatWidget() {
               );
             })}
             {sending && (
-              <div className="flex max-w-[90%] items-end gap-1.5">
-                <VFace avatar="think" className="h-6 w-6 shrink-0 object-contain" />
-                <div className="rounded-lg bg-muted px-3 py-2 text-sm text-muted-foreground">
-                  Thinking…
+              <div className={`flex max-w-[90%] items-end gap-2 ${MESSAGE_IN}`}>
+                <VFace avatar="think" className="h-7 w-7 shrink-0 object-contain" />
+                <div className={`${V_BUBBLE} flex items-center gap-1 py-3`} role="status">
+                  <span className="sr-only">V is thinking</span>
+                  <span aria-hidden className="v-typing-dot h-1.5 w-1.5 rounded-full bg-brand-accent" />
+                  <span aria-hidden className="v-typing-dot h-1.5 w-1.5 rounded-full bg-brand-accent" />
+                  <span aria-hidden className="v-typing-dot h-1.5 w-1.5 rounded-full bg-brand-accent" />
                 </div>
               </div>
             )}
           </div>
 
-          <div className="relative border-t border-input">
-            <div className="flex gap-1.5 overflow-x-auto p-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="shrink-0 border-t border-border/70 bg-card shadow-[0_-12px_28px_-20px_rgb(15_29_74/0.35)]">
+          <div className="relative">
+            <div className="flex gap-2 overflow-x-auto px-3 pb-1 pt-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               <button
                 type="button"
                 onClick={openBuilder}
                 disabled={sending}
-                className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-brand px-3 py-1.5 text-xs font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full bg-brand px-3.5 py-1.5 text-xs font-semibold text-brand-foreground shadow-sm transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
               >
                 <ListChecks className="h-3.5 w-3.5" aria-hidden />
                 Build a practice test
@@ -617,7 +648,7 @@ export default function ChatWidget() {
                   type="button"
                   onClick={() => void ask(q.id, q.label)}
                   disabled={sending}
-                  className="shrink-0 whitespace-nowrap rounded-full border border-input bg-background px-3 py-1.5 text-xs text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                  className="shrink-0 whitespace-nowrap rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3.5 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
                 >
                   {q.label}
                 </button>
@@ -627,12 +658,12 @@ export default function ChatWidget() {
                 tradeoff of a single row vs. the old full-height wrapped list. */}
             <div
               aria-hidden
-              className="pointer-events-none absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-background to-transparent"
+              className="pointer-events-none absolute right-0 top-0 h-full w-10 bg-gradient-to-l from-card to-transparent"
             />
           </div>
 
           {signInNeeded ? (
-            <div className="space-y-2 border-t border-input px-3 pb-3 pt-3">
+            <div className="space-y-2 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2 sm:pb-3">
               <p className="text-xs text-muted-foreground">Sign in to keep chatting with V. It&apos;s free.</p>
               <Button asChild variant="brand" className="w-full">
                 <Link href={`/login?next=${encodeURIComponent(pathname)}`}>Sign in to keep chatting</Link>
@@ -640,13 +671,13 @@ export default function ChatWidget() {
             </div>
           ) : (
           <form
-            className="border-t border-input px-3 pb-2 pt-2"
+            className="px-3 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 sm:pb-2"
             onSubmit={(e) => {
               e.preventDefault();
               void askTyped();
             }}
           >
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 rounded-full border border-input bg-background py-1 pl-4 pr-1 transition-shadow focus-within:border-brand-accent/60 focus-within:ring-2 focus-within:ring-ring">
               <input
                 type="text"
                 value={draft}
@@ -654,22 +685,23 @@ export default function ChatWidget() {
                 maxLength={CHAT_MESSAGE_MAX}
                 placeholder="Type your question"
                 aria-label="Type your question for V"
-                className="h-9 min-w-0 flex-1 rounded-md border border-input bg-background px-3 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="h-9 min-w-0 flex-1 bg-transparent text-sm placeholder:text-muted-foreground focus-visible:outline-none"
               />
               <button
                 type="submit"
                 disabled={sending || !draft.trim()}
                 aria-label="Send question"
-                className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-brand text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                className="v-gradient inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white transition-[opacity,transform] hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 active:scale-95 disabled:pointer-events-none disabled:opacity-40 motion-reduce:transition-none"
               >
                 <SendHorizontal className="h-4 w-4" aria-hidden />
               </button>
             </div>
-            <p className="mt-1.5 text-[11px] leading-snug text-muted-foreground">
+            <p className="mt-1.5 px-1 text-[11px] leading-snug text-muted-foreground">
               Chats are saved to help improve V. Please don&apos;t share your phone number or email.
             </p>
           </form>
           )}
+          </div>
           </>
           )}
         </div>
