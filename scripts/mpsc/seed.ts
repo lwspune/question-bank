@@ -19,7 +19,7 @@
  */
 import { createClient } from "@supabase/supabase-js";
 import { join } from "node:path";
-import { EXAMS, type ExamKey } from "./config";
+import { ASP_CHAPTERS, EXAMS, FSP_CHAPTERS, type ExamKey } from "./config";
 
 export const SUBJECTS: Record<ExamKey, readonly string[]> = {
   gbc: ["History", "Geography", "Polity", "Economics", "General Science", "Current Affairs", "Reasoning and Aptitude"],
@@ -30,6 +30,10 @@ export const SUBJECTS: Record<ExamKey, readonly string[]> = {
     "History", "Geography", "Polity", "Economics", "General Science", "Environment", "Current Affairs",
     "Comprehension", "Reasoning and Aptitude", "Decision Making",
   ],
+  // Forest + Agriculture Service Prelims: a Marathi and an English section, then
+  // GS and aptitude (config.ts FSP_CHAPTERS / ASP_CHAPTERS); Agriculture adds its head.
+  fsp: Object.keys(FSP_CHAPTERS),
+  asp: Object.keys(ASP_CHAPTERS),
 };
 
 async function main() {

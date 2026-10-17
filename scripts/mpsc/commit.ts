@@ -29,7 +29,7 @@ import { join } from "node:path";
 import { commitStaged } from "../../src/lib/upload/commit";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { validateRow } from "../../src/lib/upload/validate";
-import { CREATED_BY, DATA_DIR, ORG_ID, dataPath, examIdFor, questionCount, requirePaper } from "./config";
+import { CREATED_BY, DATA_DIR, ORG_ID, dataPath, examIdFor, expectedNumbers, requirePaper } from "./config";
 import { buildRecords, parityIssues, questionSolution, type BilingualQuestion, type KeyLetter } from "./lib";
 
 const BUCKET = "question-images";
@@ -83,7 +83,8 @@ async function main() {
   console.log(
     `${questions.length} transcribed · ${rows.length} rows · cancelled [${cancelled.join(",")}] · figures [${figures.join(",")}]`
   );
-  if (rows.length !== questionCount(paper)) errors.push(`${rows.length} rows, expected ${questionCount(paper)}`);
+  const expected = expectedNumbers(paper).length;
+  if (rows.length !== expected) errors.push(`${rows.length} rows, expected ${expected}`);
   if (errors.length) {
     for (const e of errors) console.log(`  - ${e}`);
     throw new Error(`${errors.length} validation error(s) — nothing written`);

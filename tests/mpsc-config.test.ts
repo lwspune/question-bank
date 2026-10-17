@@ -1,12 +1,17 @@
 import { describe, expect, it } from "vitest";
 import {
   ALL_PAPERS,
+  ASP_CHAPTERS,
+  ASP_PAPERS,
   EXAMS,
+  FSP_CHAPTERS,
+  FSP_PAPERS,
   PAPERS,
   SSP_CHAPTERS,
   SSP_CSAT_CHAPTERS,
   SSP_CSAT_PAPERS,
   SSP_PAPERS,
+  expectedNumbers,
   questionCount,
   requirePaper,
 } from "../scripts/mpsc/config";
@@ -90,7 +95,71 @@ describe("MPSC State Services CSAT Paper II registry", () => {
   });
 
   it("includes CSAT in ALL_PAPERS with unique ids and source_file labels", () => {
-    expect(ALL_PAPERS).toHaveLength(PAPERS.length + SSP_PAPERS.length + SSP_CSAT_PAPERS.length);
+    for (const p of SSP_CSAT_PAPERS) expect(ALL_PAPERS).toContain(p);
     expect(new Set(ALL_PAPERS.map((p) => p.sourceFile)).size).toBe(ALL_PAPERS.length);
+  });
+});
+
+describe("MPSC Forest + Agriculture Service Prelims registry", () => {
+  it("registers the four Forest booklets and five Agriculture booklets in the merged mains scan", () => {
+    expect(FSP_PAPERS.map((p) => p.pyqYear)).toEqual([2014, 2016, 2017, 2018]);
+    expect(ASP_PAPERS.map((p) => p.pyqYear)).toEqual([2011, 2012, 2016, 2017, 2018]);
+    expect(FSP_PAPERS.every((p) => p.exam === "fsp")).toBe(true);
+    expect(ASP_PAPERS.every((p) => p.exam === "asp")).toBe(true);
+    expect(EXAMS.fsp.name).toBe("MPSC Forest Service Prelims");
+    expect(EXAMS.asp.name).toBe("MPSC Agriculture Service Prelims");
+  });
+
+  it("tiles pages 741-1081 booklet then key, with no gap or overlap (pp.711-740 are the duplicate 2018 Group B paper)", () => {
+    const spans = [...FSP_PAPERS, ...ASP_PAPERS].flatMap((p) => [p.pages, p.keyPages]).sort((a, b) => a[0] - b[0]);
+    expect(spans[0][0]).toBe(741);
+    expect(spans[spans.length - 1][1]).toBe(1081);
+    for (let i = 1; i < spans.length; i++) expect(spans[i][0]).toBe(spans[i - 1][1] + 1);
+    for (const p of [...FSP_PAPERS, ...ASP_PAPERS]) expect(p.keyPages[0]).toBe(p.pages[1] + 1);
+  });
+
+  it("reads each key from the same scan as its booklet", () => {
+    for (const p of [...FSP_PAPERS, ...ASP_PAPERS]) {
+      expect(p.keyPdf).toBeUndefined();
+      expect(p.sourcePdf).toMatch(/All PYQ mar eng/);
+    }
+  });
+
+  it("knows the two 200-question Agriculture papers (2011, 2012); the rest are 100", () => {
+    expect(ASP_PAPERS.filter((p) => questionCount(p) === 200).map((p) => p.id)).toEqual(["asp-2011", "asp-2012"]);
+    expect(FSP_PAPERS.every((p) => questionCount(p) === 100)).toBe(true);
+  });
+
+  it("holds both exams to a fixed list with the language sections, aptitude and GS; only Agriculture adds its own head", () => {
+    for (const p of FSP_PAPERS) expect(p.chapters).toBe(FSP_CHAPTERS);
+    for (const p of ASP_PAPERS) expect(p.chapters).toBe(ASP_CHAPTERS);
+    for (const s of ["Marathi", "English", "Reasoning and Aptitude", "History", "Environment"]) {
+      expect(FSP_CHAPTERS[s]?.length).toBeGreaterThan(0);
+      expect(ASP_CHAPTERS[s]).toBe(FSP_CHAPTERS[s]);
+    }
+    expect(FSP_CHAPTERS.Agriculture).toBeUndefined();
+    expect(ASP_CHAPTERS.Agriculture.length).toBeGreaterThan(0);
+  });
+
+  it("keeps ids and source_file labels unique across every MPSC Prelims exam", () => {
+    expect(ALL_PAPERS).toHaveLength(PAPERS.length + SSP_PAPERS.length + SSP_CSAT_PAPERS.length + FSP_PAPERS.length + ASP_PAPERS.length);
+    expect(new Set(ALL_PAPERS.map((p) => p.id)).size).toBe(ALL_PAPERS.length);
+    expect(new Set(ALL_PAPERS.map((p) => p.sourceFile)).size).toBe(ALL_PAPERS.length);
+    expect(requirePaper("fsp-2018").code).toBe("K11");
+    expect(requirePaper("asp-2011").provisionalKey).toBe(true);
+  });
+});
+
+describe("MPSC questions left out on purpose", () => {
+  it("expects every number of a whole paper", () => {
+    expect(expectedNumbers(requirePaper("fsp-2018"))).toHaveLength(100);
+  });
+
+  it("leaves fsp-2016 Q7 out of what merge and commit expect, with its reason on record", () => {
+    const p = requirePaper("fsp-2016");
+    const nums = expectedNumbers(p);
+    expect(nums).toHaveLength(99);
+    expect(nums).not.toContain(7);
+    expect(p.omitted?.[7]).toMatch(/\S/);
   });
 });

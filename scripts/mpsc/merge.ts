@@ -22,7 +22,7 @@
  */
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { DATA_DIR, dataPath, questionCount, requirePaper } from "./config";
+import { DATA_DIR, dataPath, expectedNumbers, requirePaper } from "./config";
 import { markDisagreements, offListChapters, parityIssues, type BilingualQuestion, type KeyLetter } from "./lib";
 
 export function loadBatches(id: string): BilingualQuestion[] {
@@ -41,7 +41,8 @@ function main() {
   for (const q of qs) seen.set(q.n, (seen.get(q.n) ?? 0) + 1);
   const dupes = [...seen].filter(([, c]) => c > 1).map(([n]) => n);
   const missing: number[] = [];
-  for (let n = 1; n <= questionCount(paper); n++) if (!seen.has(n)) missing.push(n);
+  for (const n of expectedNumbers(paper)) if (!seen.has(n)) missing.push(n);
+  const extra = qs.filter((q) => paper.omitted?.[q.n]).map((q) => q.n);
 
   const waiverFile = dataPath(paper.id, "waivers");
   const waivers: Record<string, string> = existsSync(waiverFile) ? JSON.parse(readFileSync(waiverFile, "utf8")) : {};
@@ -80,7 +81,7 @@ function main() {
   if (existsSync(marksFile)) {
     const marks: Record<string, KeyLetter | null> = JSON.parse(readFileSync(marksFile, "utf8"));
     const dis = markDisagreements(marks, key);
-    for (const d of dis) console.log(`Q${d.n}: coaching mark ${d.mark}, key ${d.key ?? "(none)"}`);
+    for (const d of dis) console.log(`Q${d.n}: boxes.json mark ${d.mark}, key ${d.key ?? "(none)"}`);
     const marked = Object.values(marks).filter((v) => v !== null).length; // a question with no mark is not an agreement
     marksNote = ` · marks vs key ${marked - dis.length}/${marked} agree`;
   }
@@ -93,6 +94,7 @@ function main() {
   );
   if (args.includes("--write")) {
     if (missing.length || dupes.length) throw new Error("refusing to write an incomplete or duplicated paper");
+    if (extra.length) throw new Error(`refusing to write omitted question(s) ${extra.join(", ")} (config.ts omitted)`);
     if (offList.length) throw new Error("refusing to write a paper with off-list chapters");
     writeFileSync(dataPath(paper.id, "merged"), JSON.stringify({ paper: paper.id, questions: qs }, null, 1));
     console.log(`wrote ${dataPath(paper.id, "merged")}`);
