@@ -24,6 +24,7 @@
  * paper.
  */
 import { join } from "node:path";
+import { SUBJECT_CHAPTERS as MAINS_CHAPTERS } from "../mpsc-mains/lib";
 
 export const SOURCE_PDF = "C:/Users/vilas/Downloads/Group B & C Pre Papers 2017 to 2024.pdf";
 /**
@@ -44,10 +45,12 @@ export const SSP_KEY_DIR = "C:/Users/vilas/Downloads/mpsc-ssp-final-keys";
 export const SSP_CSAT_DIR = "C:/Users/vilas/Downloads/mpsc-ssp-csat";
 
 /** The exams this pipeline writes to. Ids are printed by seed.ts --apply. */
-export type ExamKey = "gbc" | "ssp";
+export type ExamKey = "gbc" | "ssp" | "fsp" | "asp";
 export const EXAMS: Record<ExamKey, { name: string; id: string | null }> = {
   gbc: { name: "MPSC Group B & C Prelims", id: "583f914f-f323-42ed-ae7c-5e445ed796c3" },
   ssp: { name: "MPSC State Services Prelims", id: "a61ef55d-baf5-4e15-a4c2-2ac599519229" }, // seed.ts ssp --apply, 2026-09-27
+  fsp: { name: "MPSC Forest Service Prelims", id: "646ced4c-5ec8-4896-b4f6-5bd141bb3926" }, // seed.ts fsp --apply, 2026-10-16
+  asp: { name: "MPSC Agriculture Service Prelims", id: null },
 };
 /** Kept for the Group B & C callers that predate EXAMS. */
 export const EXAM_NAME = EXAMS.gbc.name;
@@ -88,6 +91,18 @@ export type Paper = {
   chapters?: Record<string, readonly string[]>;
   /** Key has no text layer — tokens are hand-transcribed. */
   keyImageOnly?: boolean;
+  /**
+   * The key on file is the Commission's FIRST (provisional) key — its header
+   * invites objections — not the final one. Every answer is checked against the
+   * transcriber's own (boxes.json) before commit.
+   */
+  provisionalKey?: boolean;
+  /**
+   * Questions left out of the bank on purpose, number -> why. merge.ts and
+   * commit.ts expect every OTHER number; a paper with an omission is never a
+   * whole-paper mock.
+   */
+  omitted?: Record<number, string>;
   pyqNote: string;
   sourceFile: string;
 };
@@ -248,13 +263,97 @@ export const SSP_CSAT_PAPERS: Paper[] = [
   csat(2013, "2013-05-18", "Y01", 48, "18 May 2013"),
 ];
 
+/**
+ * Forest Service (महाराष्ट्र वन सेवा) and Agriculture Service (महाराष्ट्र कृषि सेवा)
+ * Prelims sit in the back of the merged MAINS scan (`All PYQ mar eng.pdf`, the
+ * source of scripts/mpsc-mains), pp.741-1081, each booklet followed by its key.
+ * Both are "मराठी, इंग्रजी व सामान्य अध्ययन": a Marathi grammar section printed in
+ * Marathi only, an English section in English only, then GS and aptitude printed
+ * in both — Agriculture adds an agriculture head ("कृषि विषयक घटक").
+ *
+ * The language sections reuse the Mains chapter lists, so an MPSC grammar
+ * question lands on one taxonomy whichever paper it came from.
+ */
+export const MERGED_MAINS_PDF = "C:/Vilas/LWS_Pune/MPSC/All PYQ mar eng (1).pdf";
+
+const languageChapters = {
+  Marathi: MAINS_CHAPTERS.Marathi as readonly string[],
+  English: MAINS_CHAPTERS.English as readonly string[],
+};
+export const FSP_CHAPTERS: Record<string, readonly string[]> = {
+  ...languageChapters,
+  ...SSP_CHAPTERS,
+  "Reasoning and Aptitude": SSP_CSAT_CHAPTERS["Reasoning and Aptitude"],
+};
+export const ASP_CHAPTERS: Record<string, readonly string[]> = {
+  ...FSP_CHAPTERS,
+  Agriculture: [
+    "Agronomy and Field Crops", "Soil Science and Fertilisers", "Irrigation and Water Management",
+    "Horticulture", "Plant Protection", "Animal Husbandry, Dairy and Fisheries",
+    "Agricultural Economics and Schemes", "Agricultural Research and Extension",
+  ],
+};
+
+const prelims = (
+  exam: "fsp" | "asp",
+  pyqYear: number,
+  date: string,
+  code: string,
+  pages: [number, number],
+  keyPages: [number, number],
+  label: string,
+  extra: Partial<Paper> = {}
+): Paper => ({
+  id: `${exam}-${pyqYear}`,
+  exam,
+  pyqYear,
+  date,
+  code,
+  pages,
+  keyPages,
+  sourcePdf: MERGED_MAINS_PDF,
+  chapters: exam === "fsp" ? FSP_CHAPTERS : ASP_CHAPTERS,
+  pyqNote: label,
+  sourceFile: `MPSC-${exam}-${pyqYear}-${code}`,
+  ...extra,
+});
+
+/** Dates are each key's "परीक्षेचा दिनांक". */
+export const FSP_PAPERS: Paper[] = [
+  prelims("fsp", 2014, "2014-04-27", "D04", [741, 772], [773, 774], "Forest Service Prelims · 27 Apr 2014"),
+  prelims("fsp", 2016, "2016-04-03", "M07", [775, 814], [815, 816], "Forest Service Prelims · 3 Apr 2016", {
+    omitted: { 7: "Each pair differs only in how a conjunct is drawn (half-form vs stacked), which plain text cannot show; left out at the user's call, 2026-10-16." },
+  }),
+  prelims("fsp", 2017, "2017-06-04", "E09", [817, 856], [857, 858], "Forest Service Prelims · 4 Jun 2017"),
+  prelims("fsp", 2018, "2018-06-24", "K11", [859, 890], [891, 892], "Forest Service Prelims · 24 Jun 2018"),
+];
+
+/** 2011 and 2012 are 200 questions in 2 hours; from 2016 the "सामान्य क्षमता चाचणी", 100 questions. */
+export const ASP_PAPERS: Paper[] = [
+  prelims("asp", 2011, "2011-07-31", "RSM", [893, 939], [940, 943], "Agriculture Service Prelims · 31 Jul 2011", {
+    questions: 200,
+    provisionalKey: true,
+  }),
+  prelims("asp", 2012, "2012-08-05", "EOO", [944, 983], [984, 987], "Agriculture Service Prelims · 5 Aug 2012", { questions: 200 }),
+  prelims("asp", 2016, "2016-07-10", "U07", [988, 1019], [1020, 1021], "Agriculture Service Prelims · 10 Jul 2016"),
+  prelims("asp", 2017, "2017-07-30", "Q09", [1022, 1045], [1046, 1047], "Agriculture Service Prelims · 30 Jul 2017"),
+  prelims("asp", 2018, "2018-05-20", "I11", [1048, 1079], [1080, 1081], "Agriculture Service Prelims · 20 May 2018"),
+];
+
 /** Every paper this pipeline can load. `PAPERS` stays Group B & C only — the mock builder derives its sittings from it. */
-export const ALL_PAPERS: Paper[] = [...PAPERS, ...SSP_PAPERS, ...SSP_CSAT_PAPERS];
+export const ALL_PAPERS: Paper[] = [...PAPERS, ...SSP_PAPERS, ...SSP_CSAT_PAPERS, ...FSP_PAPERS, ...ASP_PAPERS];
 
 /** The booklets on file are all Set A, so the key's first column applies. */
 export const BOOKLET_SET_INDEX = 0;
 export const QUESTIONS_PER_PAPER = 100;
 export const questionCount = (p: Paper): number => p.questions ?? QUESTIONS_PER_PAPER;
+
+/** The question numbers a transcription must cover: 1..N less any `omitted`. */
+export function expectedNumbers(p: Paper): number[] {
+  const out: number[] = [];
+  for (let n = 1; n <= questionCount(p); n++) if (!p.omitted?.[n]) out.push(n);
+  return out;
+}
 
 export function requirePaper(id: string | undefined): Paper {
   const p = ALL_PAPERS.find((x) => x.id === id);
