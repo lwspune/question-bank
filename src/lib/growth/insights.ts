@@ -381,4 +381,18 @@ export const INSIGHTS: readonly Insight[] = [
     status: "open",
     experimentId: "specific-offer",
   },
+  {
+    id: "v-on-screen-asks",
+    title: "Students ask V about the question on their screen, which V cannot see",
+    finding:
+      "In the first two days of V's AI answers (15 Oct 21:16 to 17 Oct IST), 4 of 15 people typing to V asked about what was in front of them: \"δ ye ky hai\" on a differentiation page, \"in this 3rd question does it follow Markovnikov rule\", \"provide those questions in hindi\", \"Diamagnetic and paramagnetic imp point\" on a board chapter. V answered that it cannot see the page. Of the 29 messages, about 9 asked to find a chapter or notes and about 8 were chat or off-topic.",
+    source: "chat_interactions typed_question rows, staff and superadmins excluded, 15 Oct 21:16 to 17 Oct 23:59 IST",
+    confidence: "low",
+    firstSeen: "2026-10-18",
+    recheckDays: 7,
+    howToCheck:
+      "Database: chat_interactions rows with event_type typed_question since the last check, user_id not in platform_admins or org_members (signed-out rows have no user_id; count them by conversation_id). Read every message and count the people asking about the question or page in front of them (a symbol, \"this question\", \"these questions\", a point from the open chapter) against everyone who typed. Build \"explain this question\" only if the share holds near a quarter on more people.",
+    checks: [],
+    status: "open",
+  },
 ];
