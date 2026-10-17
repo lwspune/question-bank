@@ -32,10 +32,7 @@ import ResultCheckCard from "./ResultCheckCard";
 import { loadPendingResultChecks, loadSuggestedName } from "@/lib/results/service";
 import { checkQuestion } from "@/lib/results/check";
 import { mockCatalogueHref } from "@/lib/exam/examLinks";
-import QuestionCard from "../browse/QuestionCard";
-import { getQuestionOfDayId } from "@/lib/daily/service";
-import { queryQuestionsByIds, type QuestionRow } from "@/lib/questions/query";
-import { istDayKey, istDayStartIso } from "@/lib/email/dueNudge";
+import { istDayKey } from "@/lib/email/dueNudge";
 import { getOnboardingState } from "@/lib/profile/service";
 import {
   STAGE_LABELS,
@@ -102,7 +99,6 @@ export default async function MePage() {
   const notesHref = firstNotesHref(targets, notesSlugs);
   const now = new Date();
   const showStageNudge = needsStageNudge({ stage, now });
-  const daily = await loadQuestionOfDay(db, user.id, targets, examIds, now);
   // "Did you clear it?" after a result is announced (migration 0149). Best
   // effort: a failed read costs the card, never the dashboard.
   const [resultCheck] = await loadPendingResultChecks(user.id, targets, istDayKey(now)).catch((e) => {
@@ -167,35 +163,6 @@ export default async function MePage() {
             so the page gains nothing for the 90% of students with no batch. */}
         {assigned.length > 0 && <DueList items={assigned} />}
 
-        {/* Question of the day (2026-10-04): one real past-year question from
-            the student's exam, the same for everyone that day. It replaced a
-            proposed "thought of the day": answering is practice, a miss joins
-            the drill, and it is a card, never a pop-up in the way. */}
-        {daily && (
-          <section aria-labelledby="daily-heading" className="space-y-3">
-            <div className="flex items-center gap-2.5">
-              {/* eslint-disable-next-line @next/next/no-img-element -- pre-sized static asset, see ChatWidget's VFace */}
-              <img src="/chat/v-talk.png" alt="" aria-hidden className="h-10 w-10 shrink-0 rounded-full" />
-              <div>
-                <h2 id="daily-heading" className="text-sm font-semibold tracking-tight">
-                  V&apos;s question of the day
-                </h2>
-                <p className="text-xs text-muted-foreground">
-                  Here&apos;s today&apos;s {daily.exam.name} one. Try it before you look.
-                </p>
-              </div>
-            </div>
-            <QuestionCard
-              question={daily}
-              index={1}
-              canEdit={false}
-              isLoggedIn
-              supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
-              hideCart
-              surface="daily"
-            />
-          </section>
-        )}
 
         {/* Progress at a glance: one row of three tiles, each a link. They
             replaced the saved card (a whole card for one number), the notes
@@ -481,59 +448,6 @@ function EmptyLine({ text, href, cta }: { text: string; href: string; cta: strin
       </Link>
     </p>
   );
-}
-
-/**
- * The first target exam that has past-year MCQs gives today's question; a
- * practice-only exam (no PYQs) is skipped for the next. Best-effort: any
- * failure means no card, never a broken dashboard.
- *
- * ONCE ANSWERED, GONE FOR THE DAY (owner, 2026-10-05): the card takes a lot of
- * /me, so after the student has revealed it (a tapped option or Show answer,
- * on any surface) the next load of /me leaves it out. It stays on screen for
- * the visit in which they answer, so they still see the verdict and solution.
- */
-async function loadQuestionOfDay(
-  db: ReturnType<typeof createSupabaseServerClient>,
-  userId: string,
-  targets: readonly string[],
-  examIds: Readonly<Record<string, string | null>>,
-  now: Date
-): Promise<QuestionRow | null> {
-  const day = istDayKey(now);
-  for (const slug of targets) {
-    const examId = examIds[slug];
-    if (!examId) continue;
-    const id = await getQuestionOfDayId(slug, examId, day);
-    if (!id) continue;
-    try {
-      if (await revealedToday(db, userId, id, now)) return null;
-      const [row] = await queryQuestionsByIds(db, [id]);
-      return row ?? null;
-    } catch (e) {
-      console.error("question of the day load failed", e);
-      return null;
-    }
-  }
-  return null;
-}
-
-/** Whether this student revealed this question's answer since IST midnight. */
-async function revealedToday(
-  db: ReturnType<typeof createSupabaseServerClient>,
-  userId: string,
-  questionId: string,
-  now: Date
-): Promise<boolean> {
-  const { count, error } = await db
-    .from("user_activity")
-    .select("id", { count: "exact", head: true })
-    .eq("user_id", userId)
-    .eq("kind", "question_practiced")
-    .eq("ref_id", questionId)
-    .gte("created_at", istDayStartIso(now));
-  if (error) throw new Error(`revealedToday: ${error.message}`);
-  return (count ?? 0) > 0;
 }
 
 /** The hour of the day in India (0-23), for the greeting. */

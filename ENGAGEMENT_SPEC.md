@@ -288,7 +288,7 @@ one stick.
 | Fixed | the drill | "Fixed: right twice since you missed it. N questions fixed so far." The fixing rule is unchanged (two right in a row from any surface; user, 2026-10-04), so the copy never says "for good". `lib/drill/progress.ts` |
 | Answered · Right · Fixed | `/me` week strip, the avatar menu | Shown together, never a bare count; hidden until the first answer. Pulse `totals` |
 | Beat the crowd | the bank, board, question of the day, drill | "Nice! / Smart! / Genius! 70% / 80% / 90%+ got it wrong, you got it right." Right answers only, on a question a person has CHECKED (crowd review run, hash unchanged), stats measured on the current version, n >= 20; signed-in only (the server decides). 77 questions qualify on day one. `lib/celebrate/crowd.ts`, `npm run itemstats:crowd-candidates` |
-| Question of the day | top of `/me`, under the week strip | One PYQ MCQ per exam per IST day, the same for everyone; graded (surface `daily`), a miss feeds the drill. Replaced a proposed "thought of the day". `lib/daily/` |
+| Question of the day | top of `/me`, under the week strip | One PYQ MCQ per exam per IST day, the same for everyone; graded (surface `daily`), a miss feeds the drill. Replaced a proposed "thought of the day". `lib/daily/`. **HIDDEN 2026-10-17** (owner): 3 to 7 students a day, on ~8% of student-days on `/me`, 5 of 29 back on a second day; the picker and the `daily` surface are kept |
 
 Board picks are graded from the same day (the first tap on an MCQ), so board
 misses feed the drill and count as answered.
