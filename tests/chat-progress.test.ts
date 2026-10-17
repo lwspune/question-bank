@@ -6,6 +6,15 @@
 import { describe, it, expect, vi } from "vitest";
 import type { Performance } from "@/lib/performance/compute";
 import { progressFacts, progressTool, createProgressMemo, PROGRESS_MEMO_MS } from "@/lib/chat/progress";
+import type { PracticeCounts } from "@/lib/activity/practiceCounts";
+
+const span = (answered: number, right: number, revealed = 0) => ({ answered, right, revealed });
+const practice = (p: Partial<PracticeCounts> = {}): PracticeCounts => ({
+  today: span(0, 0),
+  week: span(0, 0),
+  all: span(0, 0),
+  ...p,
+});
 
 type Chapter = { chapter: string; judged: number; correct: number; weightedScore: number };
 
@@ -134,7 +143,90 @@ describe("progressFacts", () => {
   });
 });
 
+// 2026-10-17: a student who had answered 328 bank questions that evening asked
+// "today how many question i solved?" and V said it could not see, because the
+// tool read mocks only. Practice outside mocks is now part of the answer.
+describe("progressFacts with practice outside mocks", () => {
+  it("gives today, the last 7 days and all time, in India's day", () => {
+    const t = progressFacts(
+      perf({}),
+      practice({ today: span(38, 30), week: span(400, 310), all: span(400, 310) })
+    );
+    expect(t).toContain("Today: 38 answered, 30 right.");
+    expect(t).toContain("Last 7 days (today included): 400 answered, 310 right.");
+    expect(t).toContain("All time: 400 answered, 310 right.");
+    expect(t).toMatch(/India/);
+    expect(t).toMatch(/outside mocks/i);
+  });
+
+  it("puts the practice before the missing mock, so V does not answer 'nothing yet'", () => {
+    const t = progressFacts(perf({}), practice({ today: span(38, 30), week: span(38, 30), all: span(38, 30) }));
+    expect(t).toMatch(/no graded mock/i);
+    expect(t).toContain("Today: 38 answered, 30 right.");
+    expect(t.indexOf("Today: 38")).toBeLessThan(t.search(/no graded mock/i));
+  });
+
+  it("counts answers read without picking an option (written answers) apart from checked ones", () => {
+    const t = progressFacts(perf({}), practice({ today: span(0, 0, 12), week: span(5, 4, 101), all: span(5, 4, 101) }));
+    expect(t).toContain("Today: 12 answers read without picking an option.");
+    expect(t).toContain("Last 7 days (today included): 5 answered, 4 right; 101 answers read without picking an option.");
+  });
+
+  it("says so plainly when a span is empty", () => {
+    const t = progressFacts(perf({}), practice({ week: span(9, 5), all: span(9, 5) }));
+    expect(t).toContain("Today: nothing yet.");
+  });
+
+  it("says there is no practice yet when there is none at all", () => {
+    expect(progressFacts(perf({}), practice())).toMatch(/no practice outside mocks yet/i);
+  });
+
+  it("keeps the mock results beside the practice", () => {
+    const t = progressFacts(
+      perf({ graded: 2, latest: { title: "MHT-CET 2025", pct: 61 }, deltaPoints: 4 }),
+      practice({ today: span(10, 8), week: span(10, 8), all: span(10, 8) })
+    );
+    expect(t).toContain("Today: 10 answered, 8 right.");
+    expect(t).toContain("MHT-CET 2025: 61%");
+  });
+});
+
 describe("progressTool", () => {
+  it("adds the student's practice to the mock results", async () => {
+    const t = await progressTool(
+      async () => perf({}),
+      async () => practice({ today: span(38, 30), week: span(38, 30), all: span(38, 30) })
+    ).run({});
+    expect(t).toContain("Today: 38 answered, 30 right.");
+  });
+
+  it("still reports the practice when the mock read fails", async () => {
+    const spy = vi.spyOn(console, "error").mockImplementation(() => {});
+    const t = await progressTool(
+      async () => {
+        throw new Error("get_own_performance: timeout");
+      },
+      async () => practice({ today: span(3, 2), week: span(3, 2), all: span(3, 2) })
+    ).run({});
+    expect(t).toContain("Today: 3 answered, 2 right.");
+    expect(t).toMatch(/mock results are unavailable/i);
+    expect(t).not.toContain("timeout");
+    spy.mockRestore();
+  });
+
+  it("still reports the mocks when the practice read fails", async () => {
+    const spy = vi.spyOn(console, "error").mockImplementation(() => {});
+    const t = await progressTool(
+      async () => perf({ graded: 1, latest: { title: "NDA GAT", pct: 61 } }),
+      async () => {
+        throw new Error("get_own_practice_counts: timeout");
+      }
+    ).run({});
+    expect(t).toContain("NDA GAT: 61%");
+    expect(t).not.toContain("timeout");
+    spy.mockRestore();
+  });
+
   it("tells V a signed-out visitor must sign in, without reading anything", async () => {
     const tool = progressTool(undefined);
     expect(await tool.run({})).toMatch(/signed out/i);

@@ -18,9 +18,20 @@
  * "which chapter first?" reads the database once. The memory lives in the
  * server instance, so a cold instance simply reads again.
  *
- * Pure apart from the injected loader. Spec: tests/chat-progress.test.ts.
+ * PRACTICE OUTSIDE MOCKS (2026-10-17). A student who had answered 328 bank
+ * questions that evening asked "today how many question i solved?" and V,
+ * reading mocks only, told them it could not see. The tool now also reads
+ * get_own_practice_counts (lib/activity/practiceCounts.ts, migration 0165):
+ * answers today, in the last 7 days and in all, by India's day, through the
+ * student's own login again. It is not remembered like the mock summary: it is
+ * one small read, and "today" should move between two questions. Each read
+ * fails alone, so a slow mock read still lets V give the practice, and the other
+ * way round.
+ *
+ * Pure apart from the injected loaders. Spec: tests/chat-progress.test.ts.
  */
 import type { Performance } from "@/lib/performance/compute";
+import type { PracticeCounts, PracticeSpan } from "@/lib/activity/practiceCounts";
 import { bandOf } from "@/lib/performance/masteryMap";
 import type { VTool } from "./anthropic";
 
@@ -31,19 +42,50 @@ const MAX_STRONG = 2;
 const SIGNED_OUT =
   "The student is signed out, so their results cannot be read. Tell them to sign in to see their progress at /performance.";
 const UNAVAILABLE = "Their progress is unavailable right now. Point them to /performance instead.";
+const MOCKS_UNAVAILABLE = "Their mock results are unavailable right now; for those, point them to /performance.";
+
+function spanText(s: PracticeSpan): string {
+  const parts: string[] = [];
+  if (s.answered > 0) parts.push(`${s.answered} answered, ${s.right} right`);
+  if (s.revealed > 0) parts.push(`${s.revealed} answer${s.revealed === 1 ? "" : "s"} read without picking an option`);
+  return parts.length > 0 ? `${parts.join("; ")}.` : "nothing yet.";
+}
+
+function hasPractice(p: PracticeCounts | null | undefined): p is PracticeCounts {
+  return !!p && (p.all.answered > 0 || p.all.revealed > 0);
+}
+
+/** The practice half: question bank, board reader, guides, question of the day and drill. */
+function practiceLines(p: PracticeCounts): string[] {
+  if (!hasPractice(p)) return ["No practice outside mocks yet."];
+  return [
+    "Questions practised outside mocks (question bank, board reader, guides, question of the day, drill), by the day in India:",
+    `Today: ${spanText(p.today)}`,
+    `Last 7 days (today included): ${spanText(p.week)}`,
+    `All time: ${spanText(p.all)}`,
+  ];
+}
 
 function rightOf(c: { chapter: string; correct: number; judged: number }): string {
   return `${c.chapter} (${c.correct} of ${c.judged} right)`;
 }
 
-/** What V reads back: a few lines in plain words, with the pages to link. */
-export function progressFacts(perf: Performance): string {
+/**
+ * What V reads back: a few lines in plain words, with the pages to link.
+ * `practice` undefined = not read (the mock half alone, as before 2026-10-17).
+ */
+export function progressFacts(perf: Performance, practice?: PracticeCounts | null): string {
   const s = perf.summary;
-  const lines: string[] = [];
+  // Practice first: for most students it is all there is, and V says what went well first.
+  const lines: string[] = practice ? practiceLines(practice) : [];
   const unfinished = s.inProgress > 0 ? ` ${s.inProgress} mock${s.inProgress === 1 ? " is" : "s are"} started but not finished.` : "";
 
   if (s.graded === 0 || !s.latest) {
-    lines.push(`No graded mock yet; progress appears after the first one. Suggest a timed mock at /mock.${unfinished}`);
+    lines.push(
+      hasPractice(practice)
+        ? `No graded mock yet, so no mock scores or chapter bands. A timed mock at /mock is a good next step.${unfinished}`
+        : `No graded mock yet; progress appears after the first one. Suggest a timed mock at /mock.${unfinished}`
+    );
     return lines.join("\n");
   }
 
@@ -85,22 +127,29 @@ export function progressFacts(perf: Performance): string {
   return lines.join("\n");
 }
 
-/** The tool V is given. `load` is undefined for a signed-out visitor: nothing is read. */
-export function progressTool(load: (() => Promise<Performance | null>) | undefined): VTool {
+/**
+ * The tool V is given. `load` is undefined for a signed-out visitor: nothing is
+ * read. `loadPractice` is the student's practice outside mocks.
+ */
+export function progressTool(
+  load: (() => Promise<Performance | null>) | undefined,
+  loadPractice?: () => Promise<PracticeCounts>
+): VTool {
   return {
     name: "my_progress",
     description:
-      "Get this student's own mock-test progress: latest score, change, and weak and strong chapters. Takes no input. Use only when they ask about their own results.",
+      "Get this student's own progress: questions practised today, in the last 7 days and in all (outside mocks), plus their mock scores, change, and weak and strong chapters. Takes no input. Use only when they ask about their own results or practice.",
     input_schema: { type: "object", properties: {} },
     run: async () => {
       if (!load) return SIGNED_OUT;
-      try {
-        const perf = await load();
-        return perf ? progressFacts(perf) : SIGNED_OUT;
-      } catch (err) {
-        console.error("V: my_progress read failed", err);
-        return UNAVAILABLE;
+      const [perf, practice] = await Promise.allSettled([load(), loadPractice ? loadPractice() : Promise.resolve(undefined)]);
+      if (practice.status === "rejected") console.error("V: my_progress practice read failed", practice.reason);
+      const counts = practice.status === "fulfilled" ? practice.value : undefined;
+      if (perf.status === "rejected") {
+        console.error("V: my_progress read failed", perf.reason);
+        return hasPractice(counts) ? [...practiceLines(counts), MOCKS_UNAVAILABLE].join("\n") : UNAVAILABLE;
       }
+      return perf.value ? progressFacts(perf.value, counts) : SIGNED_OUT;
     },
   };
 }
