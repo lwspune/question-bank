@@ -282,6 +282,36 @@ export function groupMocksForType(
   return groups;
 }
 
+export type SubjectFilterOption = { key: string; label: string; count: number };
+
+/**
+ * The subject buttons above a sectional list: one per group, in the list's own
+ * order, with its test count.
+ *
+ * Empty when there is one subject or none, because a filter with a single
+ * choice filters nothing. The page draws no filter at all then.
+ */
+export function subjectFilterOptions(groups: MockGroup[]): SubjectFilterOption[] {
+  if (groups.length < 2) return [];
+  return groups.map((g) => ({ key: g.key, label: g.label, count: g.items.length }));
+}
+
+/**
+ * The subject to start on, from what this device remembered.
+ *
+ * There is no "All" choice (owner, 2026-10-18): the list always shows one
+ * subject. Nothing stored, or a subject no longer on the list (renamed, or its
+ * tests withdrawn), starts on the first one, so a stale memory can never open
+ * the page on an empty list. Null only when there is nothing to pick.
+ */
+export function pickStoredSubject(
+  stored: string | null,
+  options: SubjectFilterOption[]
+): string | null {
+  if (stored !== null && options.some((o) => o.key === stored)) return stored;
+  return options[0]?.key ?? null;
+}
+
 /**
  * The one-sentence "what this is" line on a mock's instructions page.
  *

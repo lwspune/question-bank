@@ -105,6 +105,9 @@ export default async function MockTypeList({ params }: { params: Params }) {
           // list and the badge is the only thing distinguishing them. On the
           // other pages the route already says which type it is.
           showSourceBadge={type.slug === "sectional"}
+          // A sectional list runs to 70 cards over up to 9 subjects; on a phone
+          // the last subject sat 50 cards down. One subject at a time.
+          subjectFilterExam={type.slug === "sectional" ? exam.slug : undefined}
           emptyMessage={`${exam.examName} ${type.label.toLowerCase()} are coming soon. Check back shortly.`}
         />
       </div>
