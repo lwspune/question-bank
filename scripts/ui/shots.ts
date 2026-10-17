@@ -28,13 +28,15 @@
  * `--as-student=<exam,...>` renders the signed-in view of a cached page (the
  * header and any island that reads /api/me/header) for a stand-in student;
  * pages that read the student's own rows still render anonymously. Say so
- * when handing the sheet over.
+ * when handing the sheet over. `--storage=<file.json>` seeds localStorage
+ * before every load (e.g. a V conversation under "v-chat", so the chat panel
+ * shows bubbles without sending a question to production).
  */
 import { spawn, type ChildProcess } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
-import { clickScript, parseShotArgs, planCaptures, sheetHtml, stubHeaderSession, VIEWPORTS, type Capture } from "./lib";
+import { clickScript, parseShotArgs, planCaptures, sheetHtml, storageScript, stubHeaderSession, VIEWPORTS, type Capture } from "./lib";
 
 const EDGE = process.env.EDGE ?? "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
 const PHONE_UA =
@@ -153,6 +155,12 @@ async function main() {
   const { proc, cdp } = await launch(profile);
   try {
     if (args.asStudent) await actAsStudent(cdp, args.asStudent, Object.values(args.targets));
+    if (args.storage) {
+      const entries = JSON.parse(readFileSync(args.storage, "utf8")) as Record<string, unknown>;
+      // Without Page.enable the script is accepted but never runs (found 2026-10-18).
+      await cdp.send("Page.enable");
+      await cdp.send("Page.addScriptToEvaluateOnNewDocument", { source: storageScript(entries) });
+    }
     for (const c of plan) {
       if (args.phase !== "both" && c.target !== args.phase) continue;
       process.stdout.write(`${c.target.padEnd(6)} ${c.viewport.padEnd(7)} ${c.theme.padEnd(5)} ${c.url} ... `);
