@@ -5,9 +5,17 @@ subjects: Reasoning, Quantitative Aptitude, English, and General Awareness split
 subjects CDS General Knowledge uses (History, Geography, Polity, Economics, Physics, Chemistry,
 Biology, Current Affairs; owner, 2026-10-16).
 
-**Status (2026-10-17): Tier I 2025, every readable shift: 38 shifts, 12 to 26 September, 3,735 rows
-committed PRIVATE (some hosted files lack a shift or a PART, and repeats are in repeats.json; see
-"Not read yet"). Nothing is PUBLIC.** Not in `EXAM_REGISTRY`, no mocks yet.
+**Status (2026-10-17): Tier I 2023, 2024 and 2025, every readable shift: 113 shifts, 11,234 rows,
+PUBLIC since 2026-10-17 (`publish.ts`), with 111 mocks (one per shift; 16 Sep 2025 S3 and 21 Sep
+2025 S2 are held, their hosted files lack a whole PART). `EXAM_REGISTRY` slug `ssc-cgl`. 2022 Tier I
+(31 shifts, sheets built) and Tier II are not ingested (owner: "till 2023 only").**
+
+**Flawed questions are PUBLIC with a notice and ride as grace.** A `flawed: yes` block (defective as
+printed, or a key we dispute) must carry a `notice:` line for students (build.ts refuses one
+without); `studentSolution` puts it above the solution, and `publish.ts` copies it to the bank
+without touching a solution edited there since. In a mock every flawed question is grace
+(`scripts/mocks/sscSittings.ts`), so a doubtful key costs no one marks. Not `cancelled_note`
+(migration 0119): SSC cancelled none of these, and most keep a sound key.
 
 ## The source, and why it is the only one
 
@@ -241,5 +249,3 @@ npx tsx scripts/ssc-cgl/commit.ts <shiftId> --apply        # uploads figure pict
   all pictures, so its figures would need cropping from the render. None was needed so far.
 - **Hindi.** English only. Hindi can come later through the MPSC translation layer
   (migration 0118) without changing `content_hash`.
-- **Mocks** (+2 / -0.5, 60 min, a shift = a mock) and the `EXAM_REGISTRY` entry
-  (`tier: "graduate"`, `mocks`), both with publishing.
