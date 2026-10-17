@@ -5,6 +5,8 @@
  * means open. A chapter test (scope 'sectional') is counted against its OWN
  * limit, never against the full mocks (owner, 2026-10-05). A practice test
  * (scope 'custom', migration 0156) has a third: so many a day, by India date.
+ * A paper a friend sent (migration 0166) is free past every limit, so a student
+ * opening it from a friend's invite sees it open.
  */
 import type { MockScope } from "./query";
 
@@ -31,9 +33,10 @@ export type MockStartState =
 export function mockStartState(
   quota: MockQuota | null,
   startedThisMockBefore: boolean,
-  scope: MockScope = "full"
+  scope: MockScope = "full",
+  invitedByFriend = false
 ): MockStartState {
-  if (!quota || quota.hasPass || startedThisMockBefore) return { kind: "open" };
+  if (!quota || quota.hasPass || startedThisMockBefore || invitedByFriend) return { kind: "open" };
   const [limit, used, unit]: [number | null | undefined, number, TestUnit] =
     scope === "custom"
       ? [quota.practiceLimit, quota.practiceUsed ?? 0, "practice_test"]

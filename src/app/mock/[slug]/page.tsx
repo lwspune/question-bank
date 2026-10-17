@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BookOpen, Clock, FileText, Trophy, CheckCircle2, XCircle, MinusCircle, LogIn, Info } from "lucide-react";
+import { BookOpen, Clock, FileText, Trophy, CheckCircle2, XCircle, MinusCircle, LogIn, Info, Users } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { Button } from "@/components/ui/button";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
@@ -24,6 +24,11 @@ import AttemptsList from "../_components/AttemptsList";
 import PaperDownload from "../_components/PaperDownload";
 import { paperPageHref } from "@/lib/mocks/paperPage";
 import { listMyAssignments } from "@/lib/assignments/service";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import SendToFriend from "@/components/practice/SendToFriend";
+import { INVITE_PARAM, isInviteCode } from "@/lib/practiceTests/mockInvite";
+import { getOrCreateInvite, readInvite } from "@/lib/practiceTests/mockInviteService";
+import { readFirstNames } from "@/lib/practiceTests/togetherService";
 
 type Params = { slug: string };
 
@@ -37,7 +42,13 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function MockInstructions({ params }: { params: Params }) {
+export default async function MockInstructions({
+  params,
+  searchParams,
+}: {
+  params: Params;
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
   const mock = await getMockBySlug(createSupabaseAnonClient(), params.slug);
   if (!mock) notFound();
   const [user, member] = await Promise.all([getSessionUser(), getSessionMember()]);
@@ -47,9 +58,37 @@ export default async function MockInstructions({ params }: { params: Params }) {
         getMockQuota(createSupabaseServerClient()),
       ])
     : [[], null];
+
+  // Practise together (migration 0166). Service role: the invite tables have
+  // no student policies. Best-effort, so a failure costs the box or the note,
+  // never the page.
+  const admin = createSupabaseAdminClient();
+  // Opened from a friend's link (?with=<code>): who sent it, unless it is the
+  // viewer's own link.
+  const withParam = searchParams?.[INVITE_PARAM];
+  const withCode = isInviteCode(withParam) ? withParam : null;
+  const sent = withCode
+    ? await readInvite(admin, withCode, mock.slug).catch((e) => {
+        console.error("mock page: read invite failed", e);
+        return null;
+      })
+    : null;
+  const fromFriend = sent && sent.inviterId !== user?.id ? sent : null;
+  const senderName = fromFriend
+    ? ((await readFirstNames(admin, [fromFriend.inviterId]).catch(() => null))?.get(fromFriend.inviterId) ?? null)
+    : null;
+  // The viewer's own invite, for the box under Start.
+  const myInvite = user
+    ? await getOrCreateInvite(admin, mock.id, user.id).catch((e) => {
+        console.error("mock page: invite failed", e);
+        return null;
+      })
+    : null;
+
   // Free-test limits (0120 + 0134): open, "N free left", or locked. A chapter
-  // test counts against its own limit; a retake of this paper is always open.
-  const startState = mockStartState(quota, myAttempts.length > 0, mock.scope);
+  // test counts against its own limit; a retake of this paper is always open,
+  // and so is a paper a friend sent (0166).
+  const startState = mockStartState(quota, myAttempts.length > 0, mock.scope, fromFriend !== null);
   // The pass offered at the limit (null = none on sale; the card then links to /pricing).
   const mockPass =
     startState.kind === "open"
@@ -156,6 +195,15 @@ export default async function MockInstructions({ params }: { params: Params }) {
         </section>
 
         <div className="mt-6">
+          {fromFriend && (
+            <p className="mb-3 flex items-start gap-2 rounded-lg border border-brand-accent/30 bg-brand/10 p-3 text-sm">
+              <Users className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+              <span>
+                {senderName ?? "A friend"} sent you this paper. It&apos;s free for you, and when you have both finished
+                you each see what the other missed.
+              </span>
+            </p>
+          )}
           {user ? (
             <StartMock
               slug={mock.slug}
@@ -164,20 +212,36 @@ export default async function MockInstructions({ params }: { params: Params }) {
               mockPass={mockPass}
               unit={mock.scope === "sectional" ? "chapter_test" : "mock"}
               isPastPaper={isPastPaper}
+              invite={fromFriend ? withCode : null}
             />
           ) : (
             <div className="rounded-lg border border-dashed p-5 text-center">
               <p className="text-sm text-muted-foreground">Sign in to take this timed mock and save your score.</p>
               <Button asChild variant="brand" className="mt-3">
-                <Link href={`/login?next=/mock/${mock.slug}`}>
+                <Link
+                  href={`/login?next=${encodeURIComponent(
+                    `/mock/${mock.slug}${fromFriend && withCode ? `?${INVITE_PARAM}=${withCode}` : ""}`
+                  )}`}
+                >
                   <LogIn className="h-4 w-4" aria-hidden />
                   Sign in to start
                 </Link>
               </Button>
             </div>
           )}
+          {myInvite && (
+            <div className="mt-3">
+              <SendToFriend
+                target={{ kind: "mock", slug: mock.slug, invite: myInvite }}
+                title={mock.title}
+                questions={mock.totalQuestions}
+                minutes={mins}
+              />
+            </div>
+          )}
           {isPastPaper && (
             <div className="mt-3 space-y-3">
+              <PaperDownload slug={mock.slug} paperTitle={mock.title} bilingual={bilingual} />
               <Link
                 href={paperPageHref(mock.slug)}
                 className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-accent underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
@@ -185,7 +249,6 @@ export default async function MockInstructions({ params }: { params: Params }) {
                 <BookOpen className="h-4 w-4" aria-hidden />
                 Read the whole paper with answers, free
               </Link>
-              <PaperDownload slug={mock.slug} paperTitle={mock.title} bilingual={bilingual} />
             </div>
           )}
         </div>

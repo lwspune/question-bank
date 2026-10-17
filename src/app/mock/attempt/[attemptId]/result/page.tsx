@@ -111,16 +111,16 @@ export default async function MockResultPage({ params }: { params: Params }) {
   // once per milestone by the table's dedupe key, so a refresh shows nothing.
   const milestone = await awardAnsweredMilestone(db, user.id);
   // Practise together (step 2): what this student and the friends who sat the
-  // same practice test missed. Service role, because a friend's attempts are
-  // their rows; the loader answers only for an attempt this student owns.
+  // same test missed: a practice test's copies (0163), or on a published paper
+  // the friends an invite links them to (0166). Service role, because a
+  // friend's attempts are their rows; the loader answers only for an attempt
+  // this student owns, and gives null when nobody is linked, so most mock
+  // results pay three small reads and show nothing.
   // Best-effort: a failure costs the card, not the result.
-  const together =
-    mock.scope === "custom"
-      ? await loadTogetherCard(createSupabaseAdminClient(), user.id, params.attemptId).catch((e) => {
-          console.error("practice together card failed", e);
-          return null;
-        })
-      : null;
+  const together = await loadTogetherCard(createSupabaseAdminClient(), user.id, params.attemptId).catch((e) => {
+    console.error("practice together card failed", e);
+    return null;
+  });
 
   return (
     <>
@@ -171,7 +171,7 @@ export default async function MockResultPage({ params }: { params: Params }) {
             a friend link instead: the friend gets their own copy (0163). */}
         {mock.scope === "custom" ? (
           <SendToFriend
-            code={mock.slug}
+            target={{ kind: "practice", code: mock.slug }}
             title={mock.title}
             questions={mock.totalQuestions}
             minutes={Math.round(mock.durationSecs / 60)}

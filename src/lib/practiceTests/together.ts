@@ -121,10 +121,19 @@ export function friendFinishedDedupeKey(userId: string, rootId: string, newestAt
 }
 
 export type GroupFinisher = { userId: string; attemptId: string; submittedAt: string; name: string | null };
+
+/**
+ * Everyone who finished one test together. For a practice test the key is the
+ * ROOT test (0163); for a published paper it is the invite (0166), and the
+ * paper's title rides along for the push.
+ */
+export type FriendGroup = { rootId: string; title?: string | null; finishers: readonly GroupFinisher[] };
 export type PriorPush = { userId: string; dedupeKey: string; createdAt: string };
 export type FriendFinishedPick = {
   userId: string;
   rootId: string;
+  /** A published paper's title (0166); absent for a practice test. */
+  title?: string | null;
   recipientAttemptId: string;
   names: (string | null)[];
   dedupeKey: string;
@@ -136,7 +145,7 @@ export type FriendFinishedPick = {
  * at most once a day per test, and only about finishes in the last two days.
  */
 export function pickFriendFinishedPushes(input: {
-  groups: readonly { rootId: string; finishers: readonly GroupFinisher[] }[];
+  groups: readonly FriendGroup[];
   priorSends: readonly PriorPush[];
   now: Date;
 }): FriendFinishedPick[] {
@@ -163,6 +172,7 @@ export function pickFriendFinishedPushes(input: {
       picks.push({
         userId: r.userId,
         rootId: g.rootId,
+        title: g.title ?? null,
         recipientAttemptId: r.attemptId,
         names: fresh.map((f) => f.name),
         dedupeKey: friendFinishedDedupeKey(r.userId, g.rootId, fresh[fresh.length - 1].attemptId),
@@ -179,9 +189,11 @@ export function friendFinishedPayload(input: {
   names: readonly (string | null)[];
   recipientAttemptId: string;
   clickToken: string;
+  /** A published paper's title; without one, it was a practice test. */
+  title?: string | null;
 }): PushPayload {
   return {
-    title: `${nameList(input.names)} finished your practice test`,
+    title: `${nameList(input.names)} finished ${input.title ? input.title : "your practice test"}`,
     body: input.names.length > 1 ? "See what you all missed." : "See what you both missed.",
     url: clickUrl(input.clickToken, `/mock/attempt/${input.recipientAttemptId}/result#${TOGETHER_ANCHOR}`),
     tag: "practice-together",

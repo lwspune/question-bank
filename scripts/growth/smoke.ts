@@ -141,6 +141,9 @@ async function main() {
       case "practice-tests":
         line = handRead(e.liveSince, ["practice-tests-started", "practice-tests-answered"]);
         break;
+      case "mock-together":
+        line = handRead(e.liveSince, ["mock-together-sends", "mock-together-starts", "mock-together-signups"]);
+        break;
       case "practice-friends":
         line = handRead(e.liveSince, ["practice-friend-sends", "practice-friend-starts", "practice-friend-signups", "practice-friend-finished-taps"]);
         break;
