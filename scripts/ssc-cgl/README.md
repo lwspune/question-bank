@@ -8,7 +8,11 @@ Biology, Current Affairs; owner, 2026-10-16).
 **Status (2026-10-17): Tier I 2023, 2024 and 2025, every readable shift: 113 shifts, 11,234 rows,
 PUBLIC since 2026-10-17 (`publish.ts`), with 111 mocks (one per shift; 16 Sep 2025 S3 and 21 Sep
 2025 S2 are held, their hosted files lack a whole PART). `EXAM_REGISTRY` slug `ssc-cgl`. 2022 Tier I
-(31 shifts, sheets built) and Tier II are not ingested (owner: "till 2023 only").**
+(31 shifts, sheets built) is not ingested (owner: "till 2023 only").**
+
+**Tier II Paper 1 (2026-10-17): CGL 2024 (18 and 20 Jan 2025) and CGL 2025 (18 Jan 2026), 450 rows,
+448 PUBLIC, under its own exam "SSC CGL Tier II" (`ssc-cgl-tier-2`), grouped with Tier I as picker
+family "SSC CGL". See "Tier II" below.**
 
 **Flawed questions are PUBLIC with a notice and ride as grace.** A `flawed: yes` block (defective as
 printed, or a key we dispute) must carry a `notice:` line for students (build.ts refuses one
@@ -234,6 +238,45 @@ npx tsx scripts/ssc-cgl/commit.ts <shiftId> --apply        # uploads figure pict
   7 Dec 2022 S3 (106 questions); 27 Jul 2023 S4 (not in the hosted file). Every other 2023
   sheet reads (39 shifts). More 2022 shifts (13 Dec S2 on) and 2021 sit on AglaSem listing
   pages not yet loaded.
+
+## Tier II
+
+Paper 1 Session I: five modules, each printed from Q.1, numbered here straight through
+(`LAYOUTS[2]` in config.ts): A Mathematical Abilities 1-30 (Quantitative Aptitude), B Reasoning
+31-60, C English 61-105, D General Awareness 106-130 (the CDS split, so `subject:` goes on PART-D),
+E Computer Knowledge 131-150. Shift ids `t2-<sitting date>-s1`; `pyq_year` is the CGL cycle, not the
+sitting year. Exam row and subjects: `seed-exam.ts --tier=2`, `seed-subjects.ts --tier=2`.
+
+**CGL 2024 (the TCS text print, one file, two sittings):**
+
+```
+python -P scripts/ssc-cgl/tcs_extract.py t2-2025-01-18 "<pdf>"
+npx tsx scripts/ssc-cgl/assemble-tcs.ts --year=2025 --tier=2     # --year is the SITTING year
+python -P scripts/ssc-cgl/tcs_sheets.py t2-2025-01-18-s1          # and t2-2025-01-20-s1
+```
+
+This print draws pages inside a Form XObject, indents the keyed option, prints option text a hair
+above its label, has no Question ID panel and hides a strip at each page's top and bottom; the
+readers and masks handle each (tested), and every question's own pictures follow its crop.
+Masked pictures are paired with their objects by drawing order (PyMuPDF maps by content digest).
+
+**CGL 2025 (a scan, no text layer at all):**
+
+```
+python -P scripts/ssc-cgl/raster_extract.py t2-2026-01-18 "<pdf>"   # icons + panels -> raster.json
+npx tsx scripts/ssc-cgl/assemble-raster.ts t2-2026-01-18           # questions.json (KEY from tick pixels)
+python -P scripts/ssc-cgl/raster_sheets.py t2-2026-01-18-s1        # masked, realigned, stamped sheets
+python -P scripts/ssc-cgl/raster_figures.py t2-2026-01-18-s1 --ruler=<n>   # read a stem figure's box
+python -P scripts/ssc-cgl/raster_figures.py t2-2026-01-18-s1       # figures/<shift>/ from boxes.json
+```
+
+| sitting | blind vs key | key adopted | ours kept (flawed) | other flawed / held |
+|---|---|---|---|---|
+| 18 Jan 2025 | 149/150 | Q47 (judgement) | none | Q4 ("16 hours" for days), Q83 (already passive) |
+| 20 Jan 2025 | 145/150 | Q54, Q87, Q136 (judgement); Q66 (two right), Q119 (Kanishka third, Rabatak fourth) held as flawed | none | Q16 (two right), Q122 (option misquotes Art. 124). Q108 GA not independent |
+| 18 Jan 2026 | 148/150 | Q35 (figure unreadable) | Q3 (count gives 25/120, key 23/120) | Q35, Q59 HELD PRIVATE (`HELD` in config): washed-out figures |
+
+No mocks yet: Tier II is +3/-1 with Computer qualifying, a separate decision.
 
 ## Not read yet (source problems, not ours)
 
