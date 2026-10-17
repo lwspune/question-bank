@@ -25,6 +25,7 @@ import { chapterPath, formatChapterHits, searchChapters, type ChapterSearchRow }
 import { pathsInReply } from "./replyLinks";
 import type { VTool } from "./anthropic";
 import type { Performance } from "@/lib/performance/compute";
+import type { PracticeCounts } from "@/lib/activity/practiceCounts";
 import { progressTool } from "./progress";
 
 function toExamFact(e: (typeof EXAM_REGISTRY)[number], pyqBySlug: Map<string, number> | null): ChatExamFact {
@@ -58,6 +59,8 @@ export async function loadVContext(
     signedIn?: boolean;
     /** The student's own results, for my_progress (lib/chat/progress.ts). Absent when signed out. */
     loadOwnProgress?: () => Promise<Performance | null>;
+    /** The student's practice outside mocks, for the same tool (lib/activity/practiceCounts.ts). */
+    loadOwnPractice?: () => Promise<PracticeCounts>;
   } = {}
 ): Promise<VContext> {
   const loadChapters = opts.loadChapters ?? listChapterLandings;
@@ -109,5 +112,5 @@ export async function loadVContext(
   };
 
   // Always offered, signed in or not: the tool list is part of the cached prefix.
-  return { system, systemTail, tools: [findChapters, progressTool(opts.loadOwnProgress)], allowedPaths };
+  return { system, systemTail, tools: [findChapters, progressTool(opts.loadOwnProgress, opts.loadOwnPractice)], allowedPaths };
 }
