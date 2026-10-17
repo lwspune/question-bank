@@ -24,7 +24,7 @@ import { parseLatex } from "../../src/components/math/parseLatex";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { renderCorruption } from "../lib/render-lint";
 import { CATALOG, DAYS, FIGURES, OUT, SECTION_SUBJECTS, TRANSCRIPTS, requireShift } from "./config";
-import { checkShift, parseTranscript, type Label, type Part, type TranscriptQuestion } from "./lib";
+import { checkShift, parseTranscript, studentSolution, type Label, type Part, type TranscriptQuestion } from "./lib";
 
 const LABELS: Label[] = ["A", "B", "C", "D"];
 const RAW_UNICODE = /[×÷→←⇌≥≤≠≈∞√∑∏∫°±·²³¹⁰⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉αβγδεζηθλμνξπρστφχψωΩΔΣΠΘΦ½⅓¼¾∂∇∈∉⊆∪∩]/;
@@ -83,6 +83,7 @@ function main() {
     problems.push(...textProblems("stem", q.stem, true).map((s) => `Q${q.number} ${s}`));
     q.options.forEach((o, i) => problems.push(...textProblems(`opt ${LABELS[i]}`, o, false).map((s) => `Q${q.number} ${s}`)));
     problems.push(...textProblems("solution", q.solution, false).map((s) => `Q${q.number} ${s}`));
+    if (q.notice) problems.push(...textProblems("notice", q.notice, false).map((s) => `Q${q.number} ${s}`));
 
     const fig = figurePaths(shift.id, q);
     // A draft declares figures; figures.ts writes the files after review, so only the full build needs them.
@@ -102,7 +103,7 @@ function main() {
       optionD: q.options[3],
       answer: q.answer,
       difficulty: q.difficulty,
-      solution: normalizeNewlines(q.solution),
+      solution: normalizeNewlines(studentSolution(q)),
       flawed: q.flawed,
       figures: fig,
     });
