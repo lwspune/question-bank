@@ -152,6 +152,14 @@ export const PRACTICE_FRIEND_SENDS_KEEP = 10;
 /** ...and at least this many friends start the copy they were sent. */
 export const PRACTICE_FRIEND_STARTS_KEEP = 3;
 
+/**
+ * "mock-together": keep the "Practise together" box under Start on published
+ * papers if students send at least this many papers in the two weeks...
+ */
+export const MOCK_TOGETHER_SENDS_KEEP = 10;
+/** ...and at least this many friends start a paper they were sent. */
+export const MOCK_TOGETHER_STARTS_KEEP = 3;
+
 /** The ISO date `days` (by default `EXPERIMENT_WINDOW_DAYS`) after `liveSince`. */
 export function checkOn(liveSince: string, days: number = EXPERIMENT_WINDOW_DAYS): string {
   const d = new Date(`${liveSince}T00:00:00Z`);
@@ -176,6 +184,7 @@ export type Readout =
   | "notes-titles"
   | "practice-tests"
   | "practice-friends"
+  | "mock-together"
   | "pyq-wording";
 
 export type Experiment = {
@@ -399,6 +408,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     status: "running",
   },
   {
+    id: "mock-together",
+    title: "Practise together on mock tests and chapter tests",
+    change:
+      "Every published paper's start page (full past papers, chapter tests, practice papers) carries \"Practise together\" under Start. The friend opens the link, sits the same paper free (past the free mock and chapter-test limits, migration 0166), and both result pages show which questions each side missed, with a push when a friend finishes.",
+    why: "V's practice tests are where practise together started, but only 11 had ever been built; mocks and chapter tests are where the students are (275 finished in the 30 days before), so this is where the idea can actually be tested (owner, 2026-10-17).",
+    metric:
+      "Paper sends (share_events kind 'mock_together'); friends who start a paper from an invite (mock_invite_joins); signups from utm_campaign mock-together",
+    rule: `Keep it if students send ${MOCK_TOGETHER_SENDS_KEEP}+ papers and ${MOCK_TOGETHER_STARTS_KEEP}+ friends start one in two weeks; if sends come but nobody starts, read where friends stop; if nobody sends, take the box off the start page.`,
+    liveSince: "2026-10-17",
+    windowDays: 14,
+    readout: "mock-together",
+    status: "running",
+  },
+  {
     id: "pyq-wording",
     title: "\"Previous year questions\", the words students search",
     change:
@@ -476,6 +499,9 @@ export type ReadingMetric =
   | "practice-friend-starts"
   | "practice-friend-signups"
   | "practice-friend-finished-taps"
+  | "mock-together-sends"
+  | "mock-together-starts"
+  | "mock-together-signups"
   | "pyq-wording-impressions";
 
 export type Reading = { on: string; value: number; note?: string };
@@ -563,6 +589,21 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "practice-friend-finished-taps": {
     label: "\"Your friend finished\" pushes tapped, of sent",
     source: "push_sends where kind = 'friend_finished' and status = 'sent', against user_activity push_clicked with the same click token",
+    entries: [],
+  },
+  "mock-together-sends": {
+    label: "Papers sent to a friend from the start page",
+    source: "share_events where subject_kind = 'mock_together', staff excluded, created_at >= the live date (a row is a tap, not a delivery)",
+    entries: [],
+  },
+  "mock-together-starts": {
+    label: "Friends who started a sent paper",
+    source: "Distinct friend_id in mock_invite_joins (a join is written when the friend presses Start), staff excluded",
+    entries: [],
+  },
+  "mock-together-signups": {
+    label: "Signups from a sent paper",
+    source: "student_profiles where acq_campaign = 'mock-together' and created_at >= the live date",
     entries: [],
   },
   "practice-friend-signups": {

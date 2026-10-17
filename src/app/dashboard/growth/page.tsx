@@ -29,6 +29,8 @@ import {
   PAPER_PAGES_CHATGPT_KEEP,
   NOTES_TITLES_CHATGPT_KEEP,
   NOTES_TITLES_SHARE_KEEP_PCT,
+  MOCK_TOGETHER_SENDS_KEEP,
+  MOCK_TOGETHER_STARTS_KEEP,
   PRACTICE_FRIEND_SENDS_KEEP,
   PRACTICE_FRIEND_STARTS_KEEP,
   PRACTICE_TESTS_ANSWERED_KEEP_PCT,
@@ -448,6 +450,19 @@ export default async function GrowthPage() {
             <ReadingsList metric="practice-friend-starts" />
             <ReadingsList metric="practice-friend-signups" />
             <ReadingsList metric="practice-friend-finished-taps" />
+          </div>
+        );
+      case "mock-together":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if students send{" "}
+              {MOCK_TOGETHER_SENDS_KEEP}+ papers and {MOCK_TOGETHER_STARTS_KEEP}+ friends start one. Sends but no starts:
+              read where friends stop. No sends: take the box off the start page.
+            </p>
+            <ReadingsList metric="mock-together-sends" />
+            <ReadingsList metric="mock-together-starts" />
+            <ReadingsList metric="mock-together-signups" />
           </div>
         );
       case "pyq-wording":
