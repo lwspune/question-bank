@@ -258,6 +258,19 @@ a[data-nav-pending] {
   html { font-size: 106.25%; }
 }
 
+/*
+  iOS Safari zooms the page in when a text box under 16px is tapped, and stays
+  zoomed: the V chat panel then ran off the right edge (2026-10-18). Every text
+  box here was 14px, so touch screens get 16px. `:root` puts the specificity
+  above a single text-size utility, so this wins wherever Tailwind's layers
+  place it. Pinned by tests/ios-input-zoom.test.ts.
+*/
+@media (pointer: coarse) {
+  :root :is(textarea, select, input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="color"])) {
+    font-size: 16px;
+  }
+}
+
 /* The mock result's review filter (ReviewFilterShell): the server-rendered
    cards carry data-verdict (1 right, -1 wrong, 0 left) and the filter hides
    the rest, so switching filters never re-renders the maths. */
