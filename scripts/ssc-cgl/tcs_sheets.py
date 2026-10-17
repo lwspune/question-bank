@@ -158,7 +158,9 @@ def mask_page(doc, page):
         s["bbox"] for b in page.get_text("dict")["blocks"] if b["type"] == 0 for l in b["lines"] for s in l["spans"]
         if keyish(s["color"]) and re.match(r"^[1-4]\.", s["text"].strip())
     ]
-    for xref in page.get_contents():
+    # The CGL 2024 Tier II print draws each whole page inside a Form XObject, so its colours
+    # live in that stream, not the page's own: repaint both.
+    for xref in dict.fromkeys([*page.get_contents(), *(x[0] for x in page.get_xobjects())]):
         stream = doc.xref_stream(xref)
         # Any key-coloured fill (each year prints its own green and red) becomes the body grey.
         def repaint(m):
@@ -184,9 +186,12 @@ def mask_page(doc, page):
     rows = []  # the vector print's option rows, by the icons masked out (align_scan_rows)
     for info in page.get_image_info():
         in_column = frame_x0 is None or info["bbox"][0] < frame_x0 + 40
-        if is_icon(info["bbox"], option_labels) or (is_icon_picture(info) and in_column):
+        beside_label = is_icon(info["bbox"], option_labels)
+        if beside_label or (is_icon_picture(info) and in_column):
             page.draw_rect(fitz.Rect(info["bbox"]) + (-1, -1, 1, 1), color=None, fill=(1, 1, 1), overlay=True)
-            if frame_x0 is not None and is_icon_picture(info):
+            # The CGL 2024 Tier II text print ALSO indents the keyed option's number (its tick is
+            # wider), so a text print's icons are option rows to realign too, not only the vector's.
+            if beside_label or (frame_x0 is not None and is_icon_picture(info)):
                 x0, y0, x1, y1 = info["bbox"]
                 rows.append({"y0": y0, "y1": y1, "x1": x1})
     # The 2022 vector print draws the panel as a white box with a grey border: paint it out.
@@ -256,6 +261,17 @@ def main():
                 if mine:
                     part = align_scan_rows(part, mine, clip.y0, max(m["x1"] for m in mine) + 1.5, x_right)
             parts.append(part)
+        # The CGL 2024 Tier II print hides a strip at each page's top and bottom (a page break of
+        # the browser print): a stem picture there renders blank (18 Jan 2025 Q5), an option
+        # picture is cut off (Q30 option 4). SSC's own picture objects follow the crop, the options
+        # in printed order (1-4), which says nothing about the key.
+        stored = [(name, "stem picture") for name in q["stemImages"]]
+        stored += [(name, f"option {i + 1} picture") for i, names in enumerate(q["options"]) for name in names]
+        for name, what in stored:
+            pic = Image.open(os.path.join(data["imgDir"], name)).convert("RGB")
+            wide = Image.new("RGB", (max(pic.width, 700), pic.height), "white")  # room for the label
+            wide.paste(pic, (0, 0))
+            parts.append(label(wide, f"{what}, as stored in the file"))
         img = Image.new("RGB", (max(p.width for p in parts), sum(p.height for p in parts)), "white")
         y = 0
         for p in parts:

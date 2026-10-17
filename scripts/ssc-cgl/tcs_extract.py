@@ -10,10 +10,12 @@ shown to a drafting agent. Images narrower than ICON_W at the left margin are th
 cross icons beside the options; they carry the key too and are not saved.
 """
 import json
+import re
 import os
 import sys
 
 import fitz  # PyMuPDF
+from PIL import Image
 
 ICON_W = 20
 
@@ -53,6 +55,77 @@ def scan_marks(page, pno):
              "x1": round(60 + m["x1"] / z, 1), "y1": round(m["y1"] / z, 1)} for m in marks if m["_n"] >= 8]
 
 
+DO = re.compile(rb"/([^\s/<>\[\]()]+)\s+Do\b")
+
+
+def drawn_images(doc, page):
+    """The page's image XObjects in DRAWING order, following Form XObjects (the CGL 2024 Tier II
+    print draws each page inside one). PyMuPDF's own image-to-place mapping goes by content
+    digest, so two pictures sharing a base image (a solid black block whose glyphs live in its
+    soft mask, every option of 20 Jan 2025 Q19) come back as the same object; the Do order does
+    not."""
+    names = {}  # (referencer xref, name) -> ("image" | "form", xref)
+    for im in page.get_images(full=True):
+        names[(im[9], im[7])] = ("image", im[0])
+    for xo in page.get_xobjects():
+        names[(xo[2], xo[1])] = ("form", xo[0])
+    out = []
+
+    def walk(stream, referencer):
+        for m in DO.finditer(stream):
+            hit = names.get((referencer, m.group(1).decode("latin1")))
+            if not hit:
+                continue
+            kind, xref = hit
+            if kind == "form":
+                walk(doc.xref_stream(xref), xref)
+            else:
+                out.append(xref)
+
+    for c in page.get_contents():
+        walk(doc.xref_stream(c), 0)
+    return out
+
+
+def page_image_xrefs(doc, page, blocks):
+    """Each picture block of the page, in order, paired with the image object drawn there; None
+    when the pairing cannot be proven (counts or pixel sizes disagree)."""
+    # An INLINE image (BI .. EI: this print's cross icons) is a picture block with no Do, so a
+    # block whose size is not the next drawn object's is skipped as inline; every drawn object
+    # must still find its block, in order.
+    pics = [b for b in blocks if b["type"] == 1]
+    xrefs = drawn_images(doc, page)
+    sizes = [(doc.extract_image(x)["width"], doc.extract_image(x)["height"]) for x in xrefs]
+    pairing, k = {}, 0
+    for b in pics:
+        if k < len(xrefs) and sizes[k] == (b.get("width"), b.get("height")):
+            pairing[id(b)] = xrefs[k]
+            k += 1
+    return pairing if k == len(xrefs) else None
+
+
+def save_image(doc, b, xref, path):
+    """Save one picture. One with a soft mask (black glyphs on a transparent ground) is saved
+    through its mask onto white; saved raw it is a solid black box (20 Jan 2025 Q19, Q25)."""
+    smask = doc.extract_image(xref).get("smask", 0) if xref else 0
+    if smask:
+        base = fitz.Pixmap(doc, xref)
+        if base.n - base.alpha > 3:
+            base = fitz.Pixmap(fitz.csRGB, base)
+        if base.alpha:
+            base = fitz.Pixmap(base, 0)
+        rgba = fitz.Pixmap(base, fitz.Pixmap(doc, smask))
+        img = Image.frombytes("RGBA", (rgba.width, rgba.height), rgba.samples)
+        flat = Image.new("RGB", img.size, "white")
+        flat.paste(img, mask=img.split()[3])
+        flat.save(path)
+        return
+    pix = fitz.Pixmap(b["image"])
+    if pix.n - pix.alpha > 3:
+        pix = fitz.Pixmap(fitz.csRGB, pix)
+    pix.save(path)
+
+
 def main():
     if len(sys.argv) < 3:
         sys.exit("usage: tcs_extract.py <dayId> <pdfPath> [--pages=FROM-TO]")
@@ -68,6 +141,9 @@ def main():
         if not first - 1 <= pno <= last - 1:
             continue
         blocks = page.get_text("dict")["blocks"]
+        pairing = page_image_xrefs(doc, page, blocks)
+        if pairing is None and any(b["type"] == 1 for b in blocks) and any(i[1] for i in page.get_images(full=True)):
+            sys.exit(f"page {pno}: its pictures carry soft masks but cannot be paired with their image objects")
         if is_scan(page, blocks):
             marks += scan_marks(page, pno)
         k = 0
@@ -96,10 +172,7 @@ def main():
                 k += 1
                 path = os.path.join(img_dir, name)
                 if not os.path.exists(path):
-                    pix = fitz.Pixmap(b["image"])
-                    if pix.n - pix.alpha > 3:
-                        pix = fitz.Pixmap(fitz.csRGB, pix)
-                    pix.save(path)
+                    save_image(doc, b, (pairing or {}).get(id(b), 0), path)
                 images.append({"page": pno, "name": name, "x0": round(x0, 1), "y0": round(y0, 1), "x1": round(x1, 1), "y1": round(y1, 1)})
                 continue
             for line in b["lines"]:
