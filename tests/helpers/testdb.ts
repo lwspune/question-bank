@@ -68,6 +68,21 @@ export function extractDbUrlRef(dbUrl: string | undefined | null): string | null
   return null;
 }
 
+/**
+ * Tables testdb:reset must NOT empty. The migration ledger, plus the settings
+ * rows a migration INSERTS (0120 paywall_settings, 0121 plans, 0158
+ * chat_settings): migrate.ts sees those migrations as applied and never
+ * re-runs them, so a truncated settings table stays empty and every test that
+ * reads it fails (2026-10-17, nine files). Settings are not test crumbs. A new
+ * migration that seeds a row into a new table belongs on this list.
+ */
+export const RESET_KEEPS = new Set(["testdb_migrations", "paywall_settings", "plans", "chat_settings"]);
+
+/** The public tables testdb:reset empties, in the order given. */
+export function tablesToTruncate(tables: string[]): string[] {
+  return tables.filter((t) => !RESET_KEEPS.has(t));
+}
+
 export type TestDbVerdict =
   | { kind: "test" } // allow-listed test project — run normally
   | { kind: "prod-contract" } // explicit read-only prod run — allowed

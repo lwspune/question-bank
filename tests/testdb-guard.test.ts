@@ -9,6 +9,7 @@ import { describe, it, expect } from "vitest";
 import {
   extractProjectRef,
   extractDbUrlRef,
+  tablesToTruncate,
   classifyTestTarget,
   ALLOWED_TEST_REFS,
   PROD_REF,
@@ -66,6 +67,20 @@ describe("extractDbUrlRef: the Postgres URL the testdb scripts connect with", ()
     expect(extractDbUrlRef("")).toBeNull();
     expect(extractDbUrlRef("not a url")).toBeNull();
     expect(extractDbUrlRef("postgresql://postgres:pw@localhost:54322/postgres")).toBeNull();
+  });
+});
+
+describe("tablesToTruncate: what testdb:reset empties", () => {
+  it("keeps the settings rows migrations insert, which re-running migrations cannot restore", () => {
+    // 2026-10-17: the reset emptied these, migrate.ts saw every migration as
+    // applied and re-seeded none of them, and nine test files failed.
+    expect(tablesToTruncate(["questions", "paywall_settings", "plans", "chat_settings", "mock_tests"])).toEqual([
+      "questions",
+      "mock_tests",
+    ]);
+  });
+  it("never empties the migration ledger", () => {
+    expect(tablesToTruncate(["testdb_migrations", "orgs"])).toEqual(["orgs"]);
   });
 });
 
