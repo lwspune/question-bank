@@ -12,7 +12,7 @@
  */
 import { createClient } from "@supabase/supabase-js";
 import { join } from "node:path";
-import { SUBJECTS, requireExamId } from "./config";
+import { EXAMS, SUBJECTS, requireExamId, type Tier } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -21,15 +21,16 @@ function loadEnv() {
 async function main() {
   loadEnv();
   const apply = process.argv.includes("--apply");
-  const examId = requireExamId();
+  const tier = Number(process.argv.find((a) => a.startsWith("--tier="))?.slice("--tier=".length) ?? 1) as Tier;
+  const examId = requireExamId(tier);
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
 
-  const wanted = SUBJECTS();
+  const wanted = SUBJECTS(tier);
   const { data: existing, error } = await client.from("subjects").select("id, name").eq("exam_id", examId);
   if (error) throw new Error(`subject read failed: ${error.message}`);
   const have = new Set((existing ?? []).map((s) => s.name));
   const missing = wanted.filter((n) => !have.has(n));
-  console.log(`SSC CGL has ${have.size} subject(s); the catalog wants ${wanted.length}.`);
+  console.log(`${EXAMS[tier].name} has ${have.size} subject(s); the catalog wants ${wanted.length}.`);
   console.log(`missing: ${missing.length ? missing.join(", ") : "(none - nothing to do)"}`);
   if (!missing.length) return;
   if (!apply) {
@@ -42,7 +43,7 @@ async function main() {
   const names = new Set((after ?? []).map((s) => s.name));
   const stillMissing = wanted.filter((n) => !names.has(n));
   if (stillMissing.length) throw new Error(`after apply, still missing: ${stillMissing.join(", ")}`);
-  console.log(`\nverified: all ${wanted.length} subjects now exist under SSC CGL.`);
+  console.log(`\nverified: all ${wanted.length} subjects now exist under ${EXAMS[tier].name}.`);
 }
 
 main().catch((e) => {

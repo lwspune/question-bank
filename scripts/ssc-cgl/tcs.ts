@@ -7,11 +7,13 @@
  * tcs_extract.py dumps the page's text spans and images; assembleTcs (pure, tested in
  * tests/ssc-cgl-tcs.test.ts) turns them into questions. Layout facts it relies on:
  * - a shift opens with a header whose "Exam Time" is followed by "9:00 AM - 10:00 AM";
- * - "Section : <name>" opens each of the four parts, and each part restarts at Q.1;
+ * - "Section : <name>" opens each part, and each part restarts at Q.1 (Tier I: four of 25;
+ *   Tier II: five modules, 150 in all, config.ts LAYOUTS);
  * - a question is "Q.n", its stem, "Ans", then "1. .." to "4. .."; the right-hand panel
  *   carries "Question ID :" and the candidate's status, never content. Some sheets print
  *   scaled (gutter at x 104, panel at 359), so the gutter and panel are measured per page.
  */
+import { LAYOUTS, type Section } from "./config";
 import type { Part } from "./lib";
 
 export type TcsSpan = { page: number; x0: number; y0: number; x1: number; y1: number; text: string; color: number; bold: boolean };
@@ -57,15 +59,7 @@ const isRed = (c: number) => {
 };
 const GUTTER_X = 48; // where "Q.n" sits on a page that prints none
 const PANEL_LABEL = /^(Question ID|Option \d ID|Status|Chosen Option)\s*:/;
-const QUESTIONS_PER_SHIFT = 100;
 const LABELS = ["A", "B", "C", "D"] as const;
-
-const SECTION_PART: [RegExp, Part][] = [
-  [/Reasoning/i, "A"],
-  [/General Awareness/i, "B"],
-  [/Quantitative/i, "C"],
-  [/English/i, "D"],
-];
 
 const NOISE = /^(aglasem\.c?o?m?|For more Question Papers.*|Page \d+ of \d+|asem\.com|a)$/i;
 
@@ -176,6 +170,8 @@ export type TcsOptions = {
    * shifts are numbered by start time among the times it prints, which is only right when
    * the file holds one whole day. */
   slots?: string[];
+  /** The paper's sections in number order (default Tier I's). */
+  layout?: Section[];
 };
 
 /** "10/09/2024" (day first, as the sheets print it) -> "2024-09-10". */
@@ -235,6 +231,13 @@ function splitFusedLabels(spans: TcsSpan[]): TcsSpan[] {
 export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[] {
   const spans = joinStackedLabels(joinSectionLabels(splitFusedLabels(normaliseHeaderAndGlyphs(g.spans))));
   const edges = pageEdges(spans);
+  const layout = opts.layout ?? LAYOUTS[1];
+  const offset = new Map<Part, number>();
+  let QUESTIONS_PER_SHIFT = 0;
+  for (const sec of layout) {
+    offset.set(sec.part, QUESTIONS_PER_SHIFT);
+    QUESTIONS_PER_SHIFT += sec.count;
+  }
   // The hosting site's watermark is one picture at one place on page after page (2022).
   const boxKey = (im: TcsImage) => [im.x0, im.y0, im.x1, im.y1].map(Math.round).join(",");
   const seen = new Map<string, number>();
@@ -263,6 +266,10 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
     /** vertical middle of each option's "n." label, and the pictures met after "Ans" */
     optMid: number[];
     optPics: TcsImage[];
+    /** the page of the last option label read */
+    labelPage: number;
+    /** option text read apart from its label: the option it followed (-1 = none yet) and its line */
+    optText: { k: number; text: string; mid: number }[];
   };
   const open: Open[] = [];
   let shift = 0;
@@ -313,10 +320,17 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
         name = nx.span.text.replace(/\u00a0/g, " ").trim();
         i++;
       }
-      const hit = SECTION_PART.find(([re]) => re.test(name));
+      const hit = layout.find((x) => x.match.test(name));
       if (!hit) throw new Error(`unknown section "${name}" on page ${s.page}`);
-      part = hit[1];
+      part = hit.part;
       cur = null;
+      continue;
+    }
+    // A sheet's title opens the next sheet. A print with no Question ID panel (CGL 2024 Tier II)
+    // never closes its last question, which would otherwise run on into this header.
+    if (s && /^Combined Graduate Level Examination/i.test(text)) {
+      cur = null;
+      passage = null;
       continue;
     }
     if (s && text === "Comprehension:") {
@@ -330,12 +344,14 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
       if (!shift) throw new Error(`Q${q[1]} on page ${s.page} comes before any Exam Time header`);
       if (!part) throw new Error(`shift ${shift} Q${q[1]} comes before any Section heading`);
       const local = Number(q[1]);
+      const count = layout.find((x) => x.part === part)!.count;
+      if (local > count) throw new Error(`shift ${shift} Q${local} is past the ${count} questions of PART-${part} (page ${s.page})`);
       cur = {
         sheet,
         date,
         shift,
         part,
-        number: "ABCD".indexOf(part) * 25 + local,
+        number: offset.get(part)! + local,
         context: passage ? passage.lines.map((l) => l.trim()).filter(Boolean).join(" ") : null,
         stem: "",
         options: [],
@@ -350,6 +366,8 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
         optColor: [],
         optMid: [],
         optPics: [],
+        labelPage: 0,
+        optText: [],
       };
       open.push(cur);
       for (const r of passage?.regions ?? []) region(cur, r.page, r.y0, r.y1);
@@ -374,6 +392,9 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
       }
       continue;
     }
+    // ...and the next sheet's logo prints above that title: a picture on a later page than all
+    // four option labels is not this question's.
+    if (e.image && cur.stage === "options" && cur.optLines.length === 4 && e.page > cur.labelPage) continue;
     const bottom = s ? s.y1 : e.image!.y1;
     region(cur, e.page, e.y, bottom);
     if (s && text === "Ans") {
@@ -394,8 +415,10 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
       cur.optLines.push(opt[2] ? [opt[2]] : []);
       cur.optColor.push(s.color);
       cur.optMid.push((s.y0 + s.y1) / 2);
-    } else if (s && cur.optLines.length) {
-      cur.optLines[cur.optLines.length - 1].push(s.text);
+      cur.labelPage = s.page;
+    } else if (s) {
+      // filed after the labels are all known (below): it may belong to the NEXT label's line
+      cur.optText.push({ k: cur.optLines.length - 1, text: s.text, mid: (s.y0 + s.y1) / 2 });
     } else if (e.image) {
       cur.optPics.push(e.image); // filed once every label is known (below)
     }
@@ -406,6 +429,17 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
   for (const q of open) {
     const where = `shift ${q.shift}${q.date ? ` (${q.date})` : ""} Q${q.number} (page ${q.regions[0]?.page})`;
     if (q.optLines.length !== 4) throw new Error(`${where}: expected 4 options, found ${q.optLines.length}`);
+    // Option text on a label's own LINE is that label's, even when it prints a hair above the
+    // label and so sorts before it (18 Jan 2025 Q55: every option's text 1 pt high, so each fell
+    // under the label before it and option 1 came out empty). Other text (a wrapped second line)
+    // stays with the option it followed.
+    for (const t of q.optText) {
+      let k = t.k;
+      q.optMid.forEach((m, j) => {
+        if (Math.abs(m - t.mid) <= 4 && (k < 0 || Math.abs(m - t.mid) < Math.abs(q.optMid[k] - t.mid))) k = j;
+      });
+      if (k >= 0) q.optLines[k].push(t.text);
+    }
     // A picture option is centred on its "n." label, so a tall one starts above it: file each
     // picture under the label nearest its middle, not the last label begun above it.
     for (const im of q.optPics) {

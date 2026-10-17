@@ -47,6 +47,12 @@ describe("deriveSscSittings", () => {
     ]);
   });
 
+  it("makes Tier I mocks only: a Tier II sitting belongs to its own exam", () => {
+    const t2 = { ...shift("2025-01-18", 1), day: "t2-2025-01-18", sourceFile: "SSC_CGL_T2_2025-01-18_S1" };
+    const s = deriveSscSittings({ ...SHIFTS, "t2-2025-01-18-s1": t2 }, { "t2-2025-01-18-s1": [q(1)], "t1-2025-09-12-s1": [q(1)] }, {}, {});
+    expect(s.map((x) => x.key)).toEqual(["t1-2025-09-12-s1"]);
+  });
+
   it("rides every flawed question as grace", () => {
     const [s] = deriveSscSittings(SHIFTS, { "t1-2025-09-12-s1": [q(1), q(8, { flawed: true }), q(60, { flawed: true })] }, {}, {});
     expect(s.graceNumbers).toEqual([8, 60]);

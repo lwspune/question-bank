@@ -14,7 +14,7 @@
  */
 import { createClient } from "@supabase/supabase-js";
 import { join } from "node:path";
-import { EXAM_NAME } from "./config";
+import { EXAMS, type Tier } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -23,6 +23,9 @@ function loadEnv() {
 async function main() {
   loadEnv();
   const apply = process.argv.includes("--apply");
+  const tier = Number(process.argv.find((a) => a.startsWith("--tier="))?.slice("--tier=".length) ?? 1) as Tier;
+  if (!EXAMS[tier]) throw new Error(`--tier must be 1 or 2`);
+  const EXAM_NAME = EXAMS[tier].name;
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
 
   const { data: existing, error } = await client.from("exams").select("id, name").eq("name", EXAM_NAME).maybeSingle();

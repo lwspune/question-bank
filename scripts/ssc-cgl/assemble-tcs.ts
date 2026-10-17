@@ -2,7 +2,7 @@
  * Turn every TCS file's geometry (tcs_extract.py) into questions, one folder per shift.
  *
  *   python -P scripts/ssc-cgl/tcs_extract.py <dayId> "<pdf>"     (each TCS day in DAYS)
- *   npx tsx scripts/ssc-cgl/assemble-tcs.ts --year=2024
+ *   npx tsx scripts/ssc-cgl/assemble-tcs.ts --year=2024 [--tier=2]   (--year is the SITTING year)
  *
  * A file with no text layer (the 2022 vector print) is read by vector.ts instead, its date
  * and shift taken from config (DAYS[...].shiftFiles), since its header is glyphs.
@@ -17,7 +17,7 @@
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { OUT, SHIFTS, tcsFiles } from "./config";
+import { LAYOUTS, OUT, SHIFTS, tcsFiles } from "./config";
 import {
   assembleTcs,
   groupTcsShifts,
@@ -41,9 +41,10 @@ function main() {
   const year = process.argv
     .find((a) => a.startsWith("--year="))
     ?.slice("--year=".length);
-  if (!year) throw new Error("usage: assemble-tcs.ts --year=YYYY");
+  if (!year) throw new Error("usage: assemble-tcs.ts --year=YYYY [--tier=2]");
+  const tier = Number(process.argv.find((a) => a.startsWith("--tier="))?.slice("--tier=".length) ?? 1);
   const files = tcsFiles()
-    .filter(({ day }) => day.date.startsWith(year))
+    .filter(({ day }) => day.date.startsWith(year) && day.tier === tier)
     .map(({ dir, day, file, shift, pages }) => {
       const path = join(OUT, dir, "geometry.json");
       if (!existsSync(path))
@@ -70,7 +71,7 @@ function main() {
             options: ["", "", "", ""],
             questionId: null,
           }));
-        } else questions = assembleTcs(g, { slots: day.slots });
+        } else questions = assembleTcs(g, { slots: day.slots, layout: LAYOUTS[day.tier] });
       } catch (e) {
         throw new Error(`${dir}: ${(e as Error).message}`);
       }

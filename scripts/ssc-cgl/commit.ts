@@ -27,7 +27,7 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { commitStaged } from "../../src/lib/upload/commit";
 import { validateRow, type RawRow } from "../../src/lib/upload/validate";
-import { CREATED_BY, DAYS, ORG_ID, OUT, requireExamId, requireShift } from "./config";
+import { CREATED_BY, DAYS, ORG_ID, OUT, requireExamId, requireShift, tierOf } from "./config";
 
 type Row = RawRow & { flawed: boolean; figures: { stem: string | null; options: string[] | null } };
 
@@ -40,7 +40,7 @@ async function main() {
   const args = process.argv.slice(2);
   const shift = requireShift(args.find((a) => !a.startsWith("--")));
   const apply = args.includes("--apply");
-  const examId = requireExamId();
+  const examId = requireExamId(tierOf(shift.id));
 
   const file = join(OUT, shift.id, "rows.json");
   if (!existsSync(file)) throw new Error(`${file} not found: run build.ts ${shift.id} first`);

@@ -60,7 +60,8 @@ export function deriveSscSittings(
   missing: Record<string, Record<number, number[]> | undefined>
 ): SscSitting[] {
   return Object.entries(shifts)
-    .filter(([id]) => transcripts[id])
+    // Tier II is its own exam (SSC CGL Tier II) with its own marking: never a Tier I mock.
+    .filter(([id, s]) => transcripts[id] && s.day.startsWith("t1-"))
     .map(([id, s]) => {
       const blocks = transcripts[id];
       const byNumber = new Map(blocks.map((q) => [q.number, q]));

@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { LAYOUTS } from "../scripts/ssc-cgl/config";
 import { assembleTcs, groupTcsShifts, shiftOfTime, type TcsGeometry, type TcsImage, type TcsQuestion, type TcsSpan } from "../scripts/ssc-cgl/tcs";
 
 // The TCS response sheet (SSC CGL 2022-2024) as text: "Q.n", the stem, "Ans", options
@@ -40,23 +41,39 @@ function section(page: number, y: number, name: string): TcsSpan {
 const SECTIONS = ["General Intelligence and Reasoning", "General Awareness", "Quantitative Aptitude", "English Comprehension"];
 
 /** A whole shift: header, four sections of 25, two questions per page. */
-function shift(firstPage: number, time: string, keyOf: (n: number) => number): TcsGeometry {
+function shift(
+  firstPage: number,
+  time: string,
+  keyOf: (n: number) => number,
+  sections: [string, number][] = SECTIONS.map((n) => [n, 25]),
+): TcsGeometry {
   const spans: TcsSpan[] = [...header(firstPage, time)];
   const images: TcsImage[] = [];
   let page = firstPage;
-  SECTIONS.forEach((name, s) => {
+  let before = 0;
+  sections.forEach(([name, count]) => {
     spans.push(section(page, 30, name));
-    for (let n = 1; n <= 25; n++) {
+    for (let n = 1; n <= count; n++) {
       const top = n % 2 === 1 ? 60 : 400;
-      const q = question(page, top, n, keyOf(s * 25 + n));
+      const q = question(page, top, n, keyOf(before + n));
       spans.push(...q.spans);
       images.push(...q.images);
       if (n % 2 === 0) page++;
     }
+    before += count;
     page++;
   });
   return { spans, images };
 }
+
+/** Tier II Paper 1, as the 2024 sheets print its five modules (each restarting at Q.1). */
+const TIER2: [string, number][] = [
+  ["Module I Mathematical Abilities", 30],
+  ["Module II Reasoning and General Intelligence", 30],
+  ["Module I English Language and Comprehension", 45],
+  ["Module II General Awareness", 25],
+  ["Module I Computer Knowledge Module", 20],
+];
 
 describe("shiftOfTime", () => {
   it("numbers a day's shifts by start time, not by print order", () => {
@@ -325,6 +342,64 @@ describe("assembleTcs", () => {
     const g = shift(2, "9:00 AM - 10:00 AM", () => 0);
     g.spans = g.spans.filter((s) => s.text !== "Q.7");
     expect(() => assembleTcs(g)).toThrow(/shift 1.*missing 7/);
+  });
+});
+
+describe("assembleTcs, a sheet with no Question ID panel (CGL 2024 Tier II)", () => {
+  it("ends a sheet's last question at the next sheet's logo and title, which print before its Exam Time", () => {
+    const strip = (g: TcsGeometry): TcsGeometry => ({ spans: g.spans.filter((s) => !/^(Question ID|6306)/.test(s.text)), images: g.images });
+    const a = strip(shift(2, "9:00 AM - 10:00 AM", () => 0));
+    const b = strip(shift(60, "9:00 AM - 10:00 AM", () => 0));
+    b.images.push({ page: 60, name: "logo", x0: 200, y0: 1, x1: 320, y1: 8 });
+    b.spans.push(span(60, 4, "Combined Graduate Level Examination 2024 Tier II", { x0: 120 }), span(60, 7, "Exam Date", { x0: 50 }));
+    const qs = assembleTcs({ spans: [...a.spans, ...b.spans], images: [...a.images, ...b.images] });
+    const last = qs.find((q) => q.sheet === 0 && q.number === 100)!;
+    expect(last.options[3]).toBe("opt 25d");
+    expect(last.optionImages).toEqual([[], [], [], []]);
+    expect(last.regions.every((r) => r.page < 60)).toBe(true);
+  });
+});
+
+describe("assembleTcs, option text printed apart from its label", () => {
+  it("files option text printed a hair ABOVE its own label under that label, not the one before (18 Jan 2025 Q55)", () => {
+    // labels "1. ".."4. " with no text of their own; each option's text a span 1 pt higher
+    const spans: TcsSpan[] = [
+      ...header(2, "9:00 AM - 10:00 AM"),
+      section(2, 30, "General Intelligence and Reasoning"),
+      span(2, 60, "Q.1", { x0: 50, x1: 63, bold: true }),
+      span(2, 60, "How is U related to L?", { bold: true }),
+      span(2, 72, "Ans", { x0: 49, x1: 64, bold: true }),
+    ];
+    const texts = ["Son's wife's sister", "Son's wife's father", "Son's wife", "Son's wife's mother"];
+    texts.forEach((t, i) => {
+      const y = 73 + i * 18;
+      spans.push(span(2, y - 1, t, { x0: 87, color: i === 1 ? GREEN : RED }));
+      spans.push(span(2, y, `${i + 1}. `, { x0: 78, x1: 86, color: i === 1 ? GREEN : RED }));
+    });
+    const g: TcsGeometry = { spans, images: [] };
+    const [q] = assembleTcs(g, { layout: [{ part: "A", match: /Reasoning/, count: 1, subjects: ["Reasoning"] }] });
+    expect(q.options).toEqual(texts);
+    expect(q.key).toBe("B");
+  });
+});
+
+describe("assembleTcs, Tier II", () => {
+  const sheet = () => shift(2, "9:00 AM - 12:00 PM", (n) => n % 4, TIER2);
+
+  it("reads 150 questions, numbering the modules 1-30, 31-60, 61-105, 106-130, 131-150", () => {
+    const qs = assembleTcs(sheet(), { layout: LAYOUTS[2] });
+    expect(qs).toHaveLength(150);
+    expect(qs.map((q) => q.part).join("")).toBe("A".repeat(30) + "B".repeat(30) + "C".repeat(45) + "D".repeat(25) + "E".repeat(20));
+    expect(qs[0]).toMatchObject({ part: "A", number: 1, key: "B" });
+    expect(qs[60]).toMatchObject({ part: "C", number: 61 });
+    expect(qs[105]).toMatchObject({ part: "D", number: 106 });
+    expect(qs[149]).toMatchObject({ part: "E", number: 150, key: "C" });
+  });
+
+  it("refuses a Tier II sheet read with Tier I's layout, and a module longer than its count", () => {
+    expect(() => assembleTcs(sheet())).toThrow(/unknown section "Module I Mathematical Abilities"/);
+    const long: [string, number][] = TIER2.map(([n, c], i) => [n, i === 4 ? 21 : c]);
+    expect(() => assembleTcs(shift(2, "9:00 AM - 12:00 PM", () => 0, long), { layout: LAYOUTS[2] })).toThrow(/Q21 is past the 20 questions of PART-E/);
   });
 });
 

@@ -20,7 +20,7 @@ import { createClient } from "@supabase/supabase-js";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
-import { SHIFTS, TRANSCRIPTS, requireExamId } from "./config";
+import { SHIFTS, TRANSCRIPTS, requireExamId, tierOf } from "./config";
 import { parseTranscript, studentSolution, type TranscriptQuestion } from "./lib";
 
 type DbRow = { id: string; questionNumber: string; solution: string | null };
@@ -55,7 +55,6 @@ async function main() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
   const apply = process.argv.includes("--apply");
   const only = process.argv.find((a) => a.startsWith("--only="))?.slice("--only=".length);
-  const examId = requireExamId();
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
 
   const ids = Object.keys(SHIFTS).filter((id) => existsSync(join(TRANSCRIPTS, `${id}.txt`)) && (!only || id === only));
@@ -65,6 +64,7 @@ async function main() {
 
   for (const id of ids) {
     const s = SHIFTS[id];
+    const examId = requireExamId(tierOf(id));
     const blocks = parseTranscript(readFileSync(join(TRANSCRIPTS, `${id}.txt`), "utf8"));
     const { data, error } = await db
       .from("questions")

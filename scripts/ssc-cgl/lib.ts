@@ -9,7 +9,8 @@
 // extract.py dumps that geometry (cells + markers) and this file turns it into questions.
 
 export type Fill = "G" | "Y" | "R" | "N" | null;
-export type Part = "A" | "B" | "C" | "D";
+/** A paper section, in number order: Tier I A-D (25 each), Tier II A-E (config.ts LAYOUTS). */
+export type Part = "A" | "B" | "C" | "D" | "E";
 export type Label = "A" | "B" | "C" | "D";
 /** One row's left cell, with the content images whose midpoint falls inside the row. */
 export type Cell = { page: number; y0: number; y1: number; fill: Fill; images: string[] };
@@ -333,7 +334,7 @@ export function checkShift(
   transcript: TranscriptQuestion[],
   sheet: { number: number; part: Part; key: Label }[],
   catalog: Record<string, { chapter: string; subtopics: string[] }[]>,
-  sections: Record<Part, string[]>,
+  sections: Partial<Record<Part, string[]>>,
   opts: { compareKey?: boolean } = {}
 ): ShiftCheck {
   // compareKey false = a drafting agent's check: catalog and parts only, nothing that
@@ -353,7 +354,7 @@ export function checkShift(
       p("is not in the paper");
       continue;
     }
-    const allowed = sections[s.part];
+    const allowed = sections[s.part] ?? [];
     let subject: string | undefined;
     if (q.subject === undefined) {
       if (allowed.length === 1) subject = allowed[0];
