@@ -19,7 +19,8 @@ export type TcsImage = { page: number; name: string; x0: number; y0: number; x1:
 export type TcsGeometry = { spans: TcsSpan[]; images: TcsImage[] };
 
 /** One printed region of a question on one page (for the masked reading sheet). */
-export type TcsRegion = { page: number; y0: number; y1: number };
+/** raster: the page is one scanned picture, so masking must work on its pixels (tcs_sheets.py) */
+export type TcsRegion = { page: number; y0: number; y1: number; raster?: boolean };
 
 export type TcsQuestion = {
   /** index of the sheet (one candidate's response sheet) in the file, in print order */
@@ -41,8 +42,19 @@ export type TcsQuestion = {
 };
 
 export const GREEN = 0x40c64b;
-const RED = 0xf61818;
-const PANEL_X = 380; // where the right-hand panel starts on a page that prints no panel label
+/**
+ * The key colours by hue, not by value: each year prints its own shade (2024 0x40c64b /
+ * 0xf61818, 2022 0x40c64a / 0xf61717, 2023 0x37ac3f / 0xe61616). Body text is near-black.
+ */
+const rgb = (c: number) => [(c >> 16) & 255, (c >> 8) & 255, c & 255];
+const isGreen = (c: number) => {
+  const [r, g, b] = rgb(c);
+  return g >= 120 && g - r >= 60 && g - b >= 60;
+};
+const isRed = (c: number) => {
+  const [r, g, b] = rgb(c);
+  return r >= 180 && r - g >= 120 && r - b >= 120;
+};
 const GUTTER_X = 48; // where "Q.n" sits on a page that prints none
 const PANEL_LABEL = /^(Question ID|Option \d ID|Status|Chosen Option)\s*:/;
 const QUESTIONS_PER_SHIFT = 100;
@@ -70,18 +82,22 @@ export function shiftOfTime(time: string, all: string[]): number {
   return starts.indexOf(minutes(time)) + 1;
 }
 
-/** Per page: the left edge of the right-hand panel, and of the Q/Ans gutter. */
+/**
+ * Per page: the right-hand panel's lines, and the Q/Ans gutter. The panel is its LINES (a
+ * label, and its value to the right on the same line), not everything right of some x: a
+ * stem line's tail can print there as its own span (11 Sep 2024 Q48, after a superscript).
+ */
 function pageEdges(spans: TcsSpan[]) {
-  const panel = new Map<number, number>();
+  const labels = new Map<number, TcsSpan[]>();
   const gutter = new Map<number, number>();
   const low = (m: Map<number, number>, p: number, x: number) => m.set(p, Math.min(m.get(p) ?? Infinity, x));
   for (const s of spans) {
     const t = s.text.trim();
-    if (PANEL_LABEL.test(t)) low(panel, s.page, s.x0);
+    if (PANEL_LABEL.test(t)) labels.set(s.page, [...(labels.get(s.page) ?? []), s]);
     if (s.bold && /^(Q\.\d+|Ans)$/.test(t)) low(gutter, s.page, s.x0);
   }
   return {
-    panelAt: (page: number) => (panel.get(page) ?? PANEL_X + 1) - 1,
+    isPanel: (s: TcsSpan) => (labels.get(s.page) ?? []).some((l) => Math.abs(l.y0 - s.y0) <= 3 && s.x0 >= l.x0 - 1),
     // The tick and cross icons sit just right of the gutter, before the option text.
     isIcon: (im: TcsImage) => im.x1 - im.x0 < 20 && im.y1 - im.y0 < 16 && im.x0 < (gutter.get(im.page) ?? GUTTER_X) + 42,
   };
@@ -105,13 +121,15 @@ function joinSectionLabels(spans: TcsSpan[]): TcsSpan[] {
   const used = new Set<TcsSpan>();
   const out: TcsSpan[] = [];
   for (const s of spans) {
-    if (!/^Section\s*:$/.test(s.text.trim())) continue; // trim() also strips the no-break space
+    // "Section :" (2024) or "Section" then ":" (1 Dec 2022); trim() also strips the no-break space
+    if (!/^Section\s*:?$/.test(s.text.trim())) continue;
     const rest = spans
       .filter((o) => o !== s && o.page === s.page && Math.abs(o.y0 - s.y0) <= 3 && o.x0 >= s.x1 - 1 && !used.has(o))
       .sort((a, b) => a.x0 - b.x0);
     rest.forEach((o) => used.add(o));
     used.add(s);
-    out.push({ ...s, text: "Section : " + rest.map((o) => o.text.trim()).join(" "), x1: Math.max(s.x1, ...rest.map((o) => o.x1)) });
+    const name = rest.map((o) => o.text.trim()).filter((t) => t && t !== ":").join(" ");
+    out.push({ ...s, text: "Section : " + name, x1: Math.max(s.x1, ...rest.map((o) => o.x1)) });
   }
   return [...spans.filter((s) => !used.has(s)), ...out];
 }
@@ -166,12 +184,66 @@ function isoDate(t: string): string | null {
   return m ? `${m[3]}-${m[2]}-${m[1]}` : null;
 }
 
+const TIME_RANGE = /^\d{1,2}:\d\d\s*[AP]M\s*-\s*\d{1,2}:\d\d\s*[AP]M$/i;
+const DATE = /^\d{2}\/\d{2}\/\d{4}$/;
+/** Loosely key-coloured: the tick and cross glyphs print in a duller green and red. */
+function keyish(c: number): boolean {
+  const [r, g, b] = rgb(c);
+  return (r - g >= 80 && r - b >= 80) || (g - r >= 40 && g - b >= 40);
+}
+
+/**
+ * The 18 Jul 2023 print: header values without their "Exam Date" / "Exam Time" labels, and
+ * the tick and cross as coloured text glyphs ("X", ",Z") instead of pictures. Give the values
+ * their labels back, and drop the glyphs (they carry the key).
+ */
+function normaliseHeaderAndGlyphs(spans: TcsSpan[]): TcsSpan[] {
+  const labelled = spans.some((s) => s.text.trim() === "Exam Time");
+  const out = spans.filter((s) => !(/^(X|,Z|[✓✔✗✘])$/.test(s.text.trim()) && keyish(s.color)));
+  if (labelled) return out;
+  // A time may print over two spans ("11 :45 AM -" / "12:45 PM"): join a line that starts
+  // with one, and read it with the spaces around ":" closed up.
+  const tidy = (t: string) => t.replace(/\s*:\s*/g, ":").replace(/\s+/g, " ").trim();
+  const times: TcsSpan[] = [];
+  for (const s of out.filter((x) => x.x0 < 250 && /^\d{1,2}\s*:\s*\d\d/.test(x.text.trim()))) {
+    const line = out.filter((o) => o.page === s.page && Math.abs(o.y0 - s.y0) <= 3 && o.x0 >= s.x0).sort((a, b) => a.x0 - b.x0);
+    const text = tidy(line.map((o) => o.text).join(" "));
+    if (TIME_RANGE.test(text)) times.push({ ...s, text, x1: line[line.length - 1].x1 });
+  }
+  const extra: TcsSpan[] = [];
+  for (const t of times) {
+    extra.push({ ...t, text: "Exam Time", x0: t.x0 - 80, x1: t.x0 - 5, bold: false });
+    const d = out.find((s) => s.page === t.page && DATE.test(s.text.trim()) && t.y0 - s.y0 > 0 && t.y0 - s.y0 < 40);
+    if (d) extra.push({ ...d, text: "Exam Date", x0: d.x0 - 80, x1: d.x0 - 5, bold: false });
+  }
+  const parts = new Set(times.flatMap((t) => out.filter((o) => o.page === t.page && Math.abs(o.y0 - t.y0) <= 3 && o.x0 >= t.x0)));
+  return [...out.filter((o) => !parts.has(o)), ...times, ...extra];
+}
+
+/** "Q.11 Select the option ..." printed as one span (1 Dec 2022): split off the label. */
+function splitFusedLabels(spans: TcsSpan[]): TcsSpan[] {
+  return spans.flatMap((s) => {
+    const m = s.bold ? /^(Q\.\d+)\s+(\S.*)$/.exec(s.text.trim()) : null;
+    if (!m) return [s];
+    return [
+      { ...s, text: m[1], x1: s.x0 + 15 },
+      { ...s, text: m[2], x0: s.x0 + 20 },
+    ];
+  });
+}
+
 export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[] {
-  const spans = joinStackedLabels(joinSectionLabels(g.spans));
+  const spans = joinStackedLabels(joinSectionLabels(splitFusedLabels(normaliseHeaderAndGlyphs(g.spans))));
   const edges = pageEdges(spans);
+  // The hosting site's watermark is one picture at one place on page after page (2022).
+  const boxKey = (im: TcsImage) => [im.x0, im.y0, im.x1, im.y1].map(Math.round).join(",");
+  const seen = new Map<string, number>();
+  // Large pictures only: a small option picture can recur at one spot without being a watermark.
+  for (const im of g.images.filter((x) => x.x1 - x.x0 > 100 && x.y1 - x.y0 > 100)) seen.set(boxKey(im), (seen.get(boxKey(im)) ?? 0) + 1);
+  const watermark = new Set([...seen].filter(([, n]) => n >= 5).map(([k]) => k));
   const events: Event[] = [
     ...spans.filter((s) => !NOISE.test(s.text.trim())).map((s) => ({ page: s.page, y: s.y0, x: s.x0, span: s })),
-    ...g.images.filter((im) => !edges.isIcon(im)).map((im) => ({ page: im.page, y: im.y0, x: im.x0, image: im })),
+    ...g.images.filter((im) => !edges.isIcon(im) && !watermark.has(boxKey(im))).map((im) => ({ page: im.page, y: im.y0, x: im.x0, image: im })),
   ].sort((a, b) => a.page - b.page || a.y - b.y || a.x - b.x);
 
   // Pass 1: the day's exam times, so a shift can be numbered by its start.
@@ -183,7 +255,15 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
     }
   });
 
-  type Open = TcsQuestion & { stage: "stem" | "options" | "done"; stemLines: string[]; optLines: string[][]; optColor: number[] };
+  type Open = TcsQuestion & {
+    stage: "stem" | "options" | "done";
+    stemLines: string[];
+    optLines: string[][];
+    optColor: number[];
+    /** vertical middle of each option's "n." label, and the pictures met after "Ans" */
+    optMid: number[];
+    optPics: TcsImage[];
+  };
   const open: Open[] = [];
   let shift = 0;
   let sheet = -1;
@@ -268,6 +348,8 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
         stemLines: [],
         optLines: [],
         optColor: [],
+        optMid: [],
+        optPics: [],
       };
       open.push(cur);
       for (const r of passage?.regions ?? []) region(cur, r.page, r.y0, r.y1);
@@ -276,17 +358,18 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
       continue;
     }
     if (passage) {
-      if (s && s.x0 < edges.panelAt(s.page)) {
+      if (s && !edges.isPanel(s)) {
         passage.lines.push(s.text);
         passage.regions.push({ page: s.page, y0: s.y0, y1: s.y1 });
       }
       continue;
     }
     if (!cur || cur.stage === "done") continue;
-    if (s && (s.x0 >= edges.panelAt(s.page) || /^Chosen Option/.test(text))) {
+    if (s && (edges.isPanel(s) || /^Chosen Option/.test(text))) {
       if (/^Question ID/.test(text)) {
+        const fused = /Question ID\s*:\s*(\d{6,})/.exec(text); // "Question ID: 2643..." (2023)
         const id = events.slice(i + 1, i + 4).find((x) => x.span && /^\d{6,}$/.test(x.span.text.trim()));
-        cur.questionId = id?.span?.text.trim() ?? null;
+        cur.questionId = fused?.[1] ?? id?.span?.text.trim() ?? null;
         cur.stage = "done";
       }
       continue;
@@ -299,7 +382,7 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
     }
     // Option text is always green or red and stem text never is, so option 1 opens the
     // options even when a squeezed "Ans" label prints a fraction below it.
-    if (s && cur.stage === "stem" && (s.color === GREEN || s.color === RED) && /^1\.\s/.test(text)) cur.stage = "options";
+    if (s && cur.stage === "stem" && (isGreen(s.color) || isRed(s.color)) && /^1\.(\s|$)/.test(text)) cur.stage = "options";
     if (cur.stage === "stem") {
       if (s) cur.stemLines.push(s.text);
       else cur.stemImages.push(e.image!.name);
@@ -310,20 +393,30 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
     if (opt && Number(opt[1]) === cur.optLines.length + 1) {
       cur.optLines.push(opt[2] ? [opt[2]] : []);
       cur.optColor.push(s.color);
+      cur.optMid.push((s.y0 + s.y1) / 2);
     } else if (s && cur.optLines.length) {
       cur.optLines[cur.optLines.length - 1].push(s.text);
     } else if (e.image) {
-      // A picture option sits level with its "n." label: the last option begun at or above it.
-      const idx = Math.max(0, cur.optLines.length - 1);
-      cur.optionImages[idx].push(e.image.name);
+      cur.optPics.push(e.image); // filed once every label is known (below)
     }
   }
 
+  if (!open.length) throw new Error("no questions found: not a TCS response sheet this reader knows");
   const out: TcsQuestion[] = [];
   for (const q of open) {
-    const where = `shift ${q.shift} Q${q.number}`;
+    const where = `shift ${q.shift}${q.date ? ` (${q.date})` : ""} Q${q.number} (page ${q.regions[0]?.page})`;
     if (q.optLines.length !== 4) throw new Error(`${where}: expected 4 options, found ${q.optLines.length}`);
-    const keyed = q.optColor.flatMap((c, i) => (c === GREEN ? [i] : []));
+    // A picture option is centred on its "n." label, so a tall one starts above it: file each
+    // picture under the label nearest its middle, not the last label begun above it.
+    for (const im of q.optPics) {
+      const mid = (im.y0 + im.y1) / 2;
+      let best = 0;
+      q.optMid.forEach((m, i) => {
+        if (Math.abs(m - mid) < Math.abs(q.optMid[best] - mid)) best = i;
+      });
+      q.optionImages[best].push(im.name);
+    }
+    const keyed = q.optColor.flatMap((c, i) => (isGreen(c) ? [i] : []));
     if (keyed.length !== 1) throw new Error(`${where}: expected exactly one key (green option), found ${keyed.length}`);
     out.push({
       sheet: q.sheet,

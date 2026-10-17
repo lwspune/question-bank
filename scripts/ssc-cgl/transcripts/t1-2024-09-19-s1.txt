@@ -1,0 +1,1699 @@
+SSC CGL 2024 Tier I, 19 Sep 2024, Shift 1. Read from SSC's response sheet (TCS print; the key is the option colour, masked on the reading sheets).
+Drafted by agents, one PART each, from the reading sheets only (no key; DRAFTING_BRIEF.md);
+every block reviewed in the main session, then compared with the key (build.ts).
+Format: scripts/ssc-cgl/lib.ts.
+
+=== 1
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: C
+stem:
+Which of the following terms will replace the question mark (?) in the given series?
+AWSO, KGCY, UQMI, EAWS, ?
+A: WAEI
+B: ZWTQ
+C: OKGC
+D: OGKH
+solution:
+Each letter moves 10 places forward (counting round from Z to A): A, K, U, E, O for the first letter; W, G, Q, A, K for the second; S, C, M, W, G for the third; O, Y, I, S, C for the fourth. The next term is OKGC.
+
+=== 2
+chapter: Blood Relations
+subtopic: Coded Relations
+difficulty: MODERATE
+answer: C
+stem:
+In a certain code language,
+‘A + B’ means ‘A is the mother of B’;
+‘A \(-\) B’ means ‘A is the brother of B’;
+‘A \(\times\) B’ means ‘A is the wife of B’ and
+‘A \(\div\) B’ means ‘A is the father of B’.
+
+Based on the above, how is A related to D if ‘A \(\times\) B \(\div\) C \(\times\) D’?
+A: Father’s sister
+B: Father’s brother
+C: Wife's mother
+D: Father-in-law
+solution:
+A \(\times\) B: A is the wife of B. B \(\div\) C: B is the father of C, so A is C's mother. C \(\times\) D: C is the wife of D.
+
+A is the mother of D's wife: D's wife's mother.
+
+=== 3
+chapter: Non-Verbal Series and Analogy
+subtopic: Figure Series
+difficulty: MODERATE
+answer: A
+figure: stem+options
+stem:
+Identify the figure from among the given options which when put in place of the question mark (?) will logically complete the series.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+Each figure is a 4 by 4 grid of marks. At every step the grid loses one mark and gains one cross: the first figure has 16 dots, the second 14 dots and 1 cross, the third 12 dots and 2 crosses, the fourth 10 dots and 3 crosses. So the fifth has 12 marks, 8 dots and 4 crosses.
+
+The marks disappear from the bottom right (row 4 column 4, then row 3 column 4, then row 4 column 3, so next row 3 column 3), and the crosses fill the bottom left block. The fifth figure keeps the top two rows of dots and has crosses in columns 1 and 2 of rows 3 and 4.
+
+Option 1 shows exactly this. Option 2 has only 3 crosses, option 3 has 13 marks and option 4 has 11 marks.
+
+=== 4
+chapter: Figure Counting
+subtopic: Counting Triangles
+difficulty: HARD
+answer: C
+figure: stem
+stem:
+How many triangles are there in the given figure?
+A: 13
+B: 14
+C: 15
+D: 16
+solution:
+The figure is a rectangle with a diamond joining the midpoints of its sides and a vertical line through the top and bottom midpoints. Inside the right half a horizontal line runs from the centre to the right midpoint. A chord across the lower part of the diamond meets the vertical line. A line from the top right corner meets the upper right side of the diamond, and a line from the bottom left corner meets the lower left side of the diamond at the chord's left end.
+
+Corner regions outside the diamond: top left 1; top right 3 (two small and the whole corner); bottom right 1; bottom left 3 (two small and the whole corner). That is 8.
+
+Left half of the diamond: the half itself and the small triangle below the chord, 2. Right half: the half itself, the triangle above the horizontal line, the triangle below it, and the small triangle below the chord, 4. The triangle made by the whole chord and the bottom vertex, 1. That is 7.
+
+Total \(8 + 7 = 15\).
+
+=== 5
+chapter: Mirror and Water Images
+subtopic: Mirror Images
+difficulty: EASY
+answer: D
+figure: stem+options
+stem:
+Select the correct mirror image of the given figure when the mirror is placed at MN as shown below.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The figure is G/k2wa with a vertical mirror MN on its right. Its mirror image reads a, w, 2, k, /, G from left to right with every character reversed left to right, so / becomes \.
+
+Option 4 shows a reversed a, w, a reversed 2, a reversed k, \ and a reversed G. Option 1 is turned upside down, option 2 leaves a and G unreversed, and option 3 puts w before a.
+
+=== 6
+chapter: Non-Verbal Series and Analogy
+subtopic: Figure Series
+difficulty: MODERATE
+answer: D
+figure: stem+options
+stem:
+Identify the figure given in the options which when put in place of ? will logically complete the series.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+Each figure holds one corner symbol. The symbol alternates between an L shape and a reversed L shape: L, reversed L, L, reversed L, so the fifth is an L.
+
+Its place moves one corner anticlockwise each step: top right, top left, bottom left, bottom right, so the fifth is at the top right.
+
+Option 4 has an L at the top right.
+
+=== 7
+chapter: Mathematical Operations
+subtopic: Interchanging Signs and Numbers
+difficulty: EASY
+answer: B
+stem:
+Which number will come in the place of the question mark (?) in the following equation if ‘+’ and ‘\(-\)’ are interchanged and ‘\(\times\)’ and ‘\(\div\)’ are interchanged?
+\(20 + 10 \times 2 - 4 \div 5 = ?\)
+A: 30
+B: 35
+C: 40
+D: 45
+solution:
+After interchanging: \(20 - 10 \div 2 + 4 \times 5\)
+
+\(= 20 - 5 + 20 = 35\)
+
+=== 8
+chapter: Coding-Decoding
+subtopic: Number and Symbol Coding
+difficulty: EASY
+answer: A
+stem:
+In a certain code language, ‘TOUGH’ is coded as ‘89251’ and ‘GHOST’ is coded as ‘93258’. What is the code for ‘S’ in the given code language?
+A: 3
+B: 1
+C: 9
+D: 8
+solution:
+T, O, G and H appear in both words, and the digits 8, 9, 2 and 5 appear in both codes. The letter left over in GHOST is S and the digit left over in its code is 3, so S is 3. (Similarly U is 1.)
+
+=== 9
+chapter: Analogy
+subtopic: Word Analogy
+difficulty: MODERATE
+answer: B
+stem:
+‘Wander’ is related to ‘Ramble’ in the same way as ‘Stray’ is related to ‘________’. (The words must be considered as meaningful English words and must not be related to each other based on the number of letters/number of consonants/vowels in the word.)
+A: Constant
+B: Random
+C: Trek
+D: Steady
+solution:
+Wander and ramble are synonyms: to move about aimlessly. Stray also means without aim or pattern (a stray bullet, a stray remark), which is random.
+
+Constant and steady are opposites of stray, and a trek is a long, purposeful journey.
+
+=== 10
+chapter: Alphabet and Number Tests
+subtopic: Letter Position and Alphabet Test
+difficulty: EASY
+answer: D
+stem:
+Each of the letters in the word ‘KEYBOARD’ are arranged in the English alphabetical order. How many letters are in the English alphabetical order between the letter which is the third from the right end and the second from the right end in the group of letters thus formed?
+A: Four
+B: Three
+C: One
+D: Two
+solution:
+KEYBOARD in alphabetical order: A B D E K O R Y.
+
+Third from the right is O and second from the right is R. Between O and R in the alphabet come P and Q: two letters.
+
+=== 11
+chapter: Analogy
+subtopic: Letter Analogy
+difficulty: EASY
+answer: B
+stem:
+‘RUCK’ is related to ‘TWAI’ in a certain way based on the English alphabetical order. In the same way, ‘DPHM’ is related to ‘FRFK’. To which of the following is ‘KNOM’ related, following the same logic?
+A: IPMJ
+B: MPMK
+C: IQNK
+D: MQNJ
+solution:
+The first two letters move 2 forward and the last two move 2 back: R+2 = T, U+2 = W, C\(-\)2 = A, K\(-\)2 = I. Check: D+2 = F, P+2 = R, H\(-\)2 = F, M\(-\)2 = K.
+
+KNOM: K+2 = M, N+2 = P, O\(-\)2 = M, M\(-\)2 = K, giving MPMK.
+
+=== 12
+chapter: Mathematical Operations
+subtopic: Operations on Number Sets
+difficulty: EASY
+answer: B
+stem:
+Two sets of numbers are given below. In each set of numbers, certain mathematical operation(s) on the first number result(s) in the second number. Similarly, certain mathematical operation(s) on the second number result(s) in the third number and so on. Which of the given options follows the same set of operations as in the given sets?
+
+(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into their constituent digits. E.g. 13 – Operations on 13 such as adding/subtracting/multiplying to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed.)
+
+11 – 14 – 8 – 17; 12 – 15 – 9 – 18
+A: 5 – 8 – 3 – 10
+B: 6 – 9 – 3 – 12
+C: 3 – 6 – 2 – 8
+D: 4 – 7 – 12 – 18
+solution:
+The steps are +3, \(-6\), +9: \(11 + 3 = 14\), \(14 - 6 = 8\), \(8 + 9 = 17\); \(12 + 3 = 15\), \(15 - 6 = 9\), \(9 + 9 = 18\).
+
+Option 2: \(6 + 3 = 9\), \(9 - 6 = 3\), \(3 + 9 = 12\). Option 1 fails at \(8 - 5 = 3\), option 3 at \(6 - 4 = 2\), option 4 at \(7 + 5 = 12\).
+
+=== 13
+chapter: Series
+subtopic: Alphanumeric and Pattern Series
+difficulty: MODERATE
+answer: C
+stem:
+Select the option that represents the letters that when placed from left to right in the blanks below will complete the given letter series.
+B _ E N B _ C E N B B C _ N B B C E _ B _ C
+A: CNEBB
+B: BNECB
+C: CBENB
+D: BCENB
+solution:
+From the fifth letter the block BBCEN repeats: B B C E N, B B C E N, B B C E N, B B C. The first four letters are the end of a block, B C E N.
+
+Filling in: B C E N B B C E N B B C E N B B C E N B B C. The blanks are C, B, E, N, B: CBENB.
+
+=== 14
+chapter: Dice and Cubes
+subtopic: Opposite Faces of a Dice
+difficulty: MODERATE
+answer: B
+figure: stem
+stem:
+Six numbers 5, 6, 7, 8, 9 and 10 are written on different faces of a dice. Two positions of this dice are shown in the figure below. Find the number on the face opposite to ‘7’.
+A: 8
+B: 10
+C: 9
+D: 6
+solution:
+The first position shows 7 on top with 8 on the left and 9 on the right. The second shows 9 on top with 8 on the left and 10 on the right.
+
+8 stays in the same place, so the dice has turned about the axis through 8: 9 has moved from the right to the top, 7 from the top to the face opposite the right, and the face that was at the bottom (opposite 7) has come to the right. That face is 10, so 10 is opposite 7.
+
+=== 15
+chapter: Mirror and Water Images
+subtopic: Mirror Images
+difficulty: EASY
+answer: B
+figure: stem+options
+stem:
+Select the correct mirror image of the given figure when the mirror is placed at MN.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The figure is Tf2f5a7 with a vertical mirror MN on its right. Its mirror image reads 7, a, 5, f, 2, f, T from left to right with every character reversed left to right (T is symmetric and looks the same).
+
+Option 2 shows this. Option 1 leaves a and the second f unreversed, option 3 does not show the reversed 5 and 2 correctly (one 2 is left unreversed), and option 4 draws the 7 wrongly.
+
+=== 16
+chapter: Analogy
+subtopic: Number Analogy
+difficulty: EASY
+answer: B
+stem:
+Select the option that is related to the fifth number in the same way as the second number is related to the first number and the fourth number is related to the third number.
+14 : 30 :: 9 : 20 :: 4 : ?
+(NOTE : Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 – Operations on 13 such as adding /deleting /multiplying etc., to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed.)
+A: 11
+B: 10
+C: 13
+D: 12
+solution:
+Double and add 2: \(14 \times 2 + 2 = 30\), \(9 \times 2 + 2 = 20\).
+
+\(4 \times 2 + 2 = 10\).
+
+=== 17
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: D
+stem:
+In a certain code language, 'SHE' is written as 'EIT' and 'SAD' is written as 'DBT'. How will 'SUN’ be written in that language?
+A: NYT
+B: NTY
+C: NTV
+D: NVT
+solution:
+The word is reversed, then the first letter is kept and the other two move one place forward: SHE reversed is EHS, giving E, I, T. SAD reversed is DAS, giving D, B, T.
+
+SUN reversed is NUS, giving N, V, T: NVT.
+
+=== 18
+chapter: Classification
+subtopic: Letter Classification
+difficulty: EASY
+answer: A
+stem:
+Based on the English alphabetical order, three of the following four letter-clusters are alike in a certain way and thus form a group. Which is the letter-cluster that DOES NOT belong to that group?
+
+(Note: The odd man out is not based on the number of consonants/vowels or their position in the letter-cluster.)
+A: CHE
+B: FLI
+C: MSP
+D: AGD
+solution:
+FLI: F+6 = L, L\(-\)3 = I. MSP: M+6 = S, S\(-\)3 = P. AGD: A+6 = G, G\(-\)3 = D.
+
+CHE: C+5 = H, H\(-\)3 = E. The first step is +5, not +6, so CHE is the odd one.
+
+=== 19
+chapter: Syllogism
+subtopic: Three-Statement Syllogism
+difficulty: EASY
+answer: C
+stem:
+Read the given statements and conclusions carefully. Assuming that the information given in the statements is true, even if it appears to be at variance with commonly known facts, decide which of the given conclusion(s) logically follow(s) from the statements.
+
+Statements:
+Some eagles are sparrows.
+All sparrows are parrots.
+No parrot is a penguin.
+
+Conclusions:
+(I) Some parrots are eagles.
+(II) No penguin is a sparrow.
+A: Only conclusion I follows.
+B: Only conclusion II follows.
+C: Both conclusions I and II follow.
+D: Neither conclusion I nor II follows.
+solution:
+The eagles that are sparrows are parrots, so some eagles are parrots, that is some parrots are eagles: I follows.
+
+Every sparrow is a parrot and no parrot is a penguin, so no sparrow is a penguin, that is no penguin is a sparrow: II follows.
+
+=== 20
+chapter: Series
+subtopic: Number Series
+difficulty: MODERATE
+answer: A
+stem:
+Which of the following numbers will replace the question mark (?) in the given series?
+3, 17, 83, 329, ?, 1961
+A: 983
+B: 880
+C: 980
+D: 883
+solution:
+The multiplier falls by 1 and the amount subtracted rises by 1 at each step: \(3 \times 6 - 1 = 17\), \(17 \times 5 - 2 = 83\), \(83 \times 4 - 3 = 329\), \(329 \times 3 - 4 = 983\).
+
+Check: \(983 \times 2 - 5 = 1961\).
+
+=== 21
+chapter: Analogy
+subtopic: Number Analogy
+difficulty: MODERATE
+answer: A
+stem:
+17 is related to 21 following a certain logic. Following the same logic, 22 is related to 36. To which of the following is 29 related, following the same logic? (NOTE : Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 – Operations on 13 such as adding /deleting /multiplying etc., to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed.)
+A: 57
+B: 46
+C: 49
+D: 58
+solution:
+Subtract 10 and multiply by 3: \((17 - 10) \times 3 = 21\), \((22 - 10) \times 3 = 36\).
+
+\((29 - 10) \times 3 = 57\).
+
+=== 22
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: A
+stem:
+BIRTHDAY - IBTRDHYA
+BLAZER - LBZARE
+REMOVE - ?
+Using the same logic as applied for the first two pairs of terms, select the term that can replace the question mark (?) in the third pair.
+A: EROMEV
+B: ERMOVE
+C: EROMVE
+D: EVOMER
+solution:
+The letters are taken in pairs and each pair is swapped: BI RT HD AY becomes IB TR DH YA; BL AZ ER becomes LB ZA RE.
+
+RE MO VE becomes ER OM EV: EROMEV.
+
+=== 23
+chapter: Classification
+subtopic: Number Classification
+difficulty: MODERATE
+answer: A
+stem:
+The same operation(s) are followed in all the given number pairs except one. Find that odd number pair.
+(NOTE : Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 – Operations on 13 such as adding /deleting /multiplying etc., to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed.)
+A: 24 : 4
+B: 49 : 8
+C: 19 : 3
+D: 55 : 9
+solution:
+In three pairs the first number is 6 times the second plus 1: \(8 \times 6 + 1 = 49\), \(3 \times 6 + 1 = 19\), \(9 \times 6 + 1 = 55\).
+
+For 24 : 4, \(4 \times 6 + 1 = 25\), not 24. So 24 : 4 is the odd pair.
+
+=== 24
+chapter: Mathematical Operations
+subtopic: Interchanging Signs and Numbers
+difficulty: EASY
+answer: C
+stem:
+What will come in place of the question mark (?) in the following equation, if ‘+’ and ‘\(-\)’ are interchanged and ‘\(\times\)’ and ‘\(\div\)’ are interchanged?
+\(1205 \times 5 + 35 - 197 \div 18 = ?\)
+A: 3284
+B: 3482
+C: 3752
+D: 3824
+solution:
+After interchanging: \(1205 \div 5 - 35 + 197 \times 18\)
+
+\(= 241 - 35 + 3546 = 3752\)
+
+=== 25
+chapter: Dice and Cubes
+subtopic: Opposite Faces of a Dice
+difficulty: MODERATE
+answer: C
+figure: stem
+stem:
+Six Roman numbers I, II, III, IV, V and VI are written on different faces of a dice. Two positions of this dice are shown in the figure below. Find the Roman number on the face opposite to ‘VI’.
+A: III
+B: IV
+C: II
+D: V
+solution:
+The first position shows III on top, VI on the left and V on the right. The second shows II on top, III on the left and V on the right.
+
+V stays in the same place, so the dice has turned about the axis through V: III has moved from the top to the left, VI from the left to the face opposite the top, and the face that was opposite the left (that is, opposite VI) has come to the top. That face is II, so II is opposite VI.
+
+=== 26
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Statutory Bodies and Post-Independence Legislation
+difficulty: EASY
+answer: C
+stem:
+In which of the following years was the Right of Persons with Disabilities Act passed?
+A: 2010
+B: 2002
+C: 2016
+D: 2019
+solution:
+The Rights of Persons with Disabilities Act was passed by Parliament in December 2016 and came into force in April 2017. It replaced the Persons with Disabilities Act, 1995 and raised the recognised disabilities from 7 to 21.
+
+=== 27
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Civilian Awards and Honours
+difficulty: HARD
+answer: B
+stem:
+Who among the following was one of the recipients of the inaugural ‘Prof CR Rao Centenary Gold Medal’ award in 2021?
+A: Amartya Sen
+B: Jagdish Bhagwati
+C: Raghuram Rajan
+D: Surjit Bhalla
+solution:
+The Indian Econometric Society Trust instituted the Prof C R Rao Centenary Gold Medal for lifetime contribution to quantitative economics. The inaugural medals went to Jagdish Bhagwati and C Rangarajan.
+
+=== 28
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Constitutional Bodies and Offices
+difficulty: EASY
+answer: A
+stem:
+Which of the following Articles states that the Prime Minister should be appointed by the President?
+A: Article 75
+B: Article 66
+C: Article 62
+D: Article 71
+solution:
+Article 75(1): the Prime Minister shall be appointed by the President, and the other ministers by the President on the advice of the Prime Minister. Article 66 covers the election of the Vice-President, Article 62 the timing of presidential elections and Article 71 disputes over those elections.
+
+=== 29
+subject: History
+chapter: Modern India
+subtopic: Freedom Movement — INC, Gandhi and Independence
+difficulty: EASY
+answer: C
+stem:
+Due to which of the following events did Rabindranath Tagore return the title of ‘Knighthood’ to the British Government while expressing his anguish?
+A: Charan Paduka Incident
+B: Chauri Chaura Incident
+C: Jallianwala Bagh massacre
+D: Partition of Bengal
+solution:
+After the Jallianwala Bagh massacre of 13 April 1919, Tagore renounced his knighthood in a letter to Viceroy Chelmsford dated 30 May 1919.
+
+=== 30
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: EASY
+answer: B
+stem:
+In which sport did India win its first individual Olympic medal?
+A: Judo
+B: Wrestling
+C: Swimming
+D: Shooting
+solution:
+Wrestler K D Jadhav won bronze at the 1952 Helsinki Olympics, independent India's first individual Olympic medal. India's first individual shooting medal came only in 2004 (Rajyavardhan Singh Rathore).
+
+=== 31
+subject: Biology
+chapter: Biodiversity and Classification
+subtopic: Animal Kingdom Classification
+difficulty: EASY
+answer: B
+stem:
+Which of the following is an example of Phylum Arthropoda?
+A: Pila
+B: Butterfly
+C: Nereis
+D: Hirudinaria
+solution:
+A butterfly is an insect, with jointed legs and an exoskeleton, so it belongs to Arthropoda. Pila (apple snail) is a mollusc; Nereis and Hirudinaria (leech) are annelids.
+
+=== 32
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: MODERATE
+answer: B
+stem:
+Tarun Bhattacharya, who was awarded the Sangeet Natak Akademi Award in 2018, is known for playing which musical instrument?
+A: Sitar
+B: Santoor
+C: Violin
+D: Tabla
+solution:
+Pandit Tarun Bhattacharya is a Hindustani santoor player, a disciple of Pandit Ravi Shankar, and received the Sangeet Natak Akademi Award for santoor.
+
+=== 33
+subject: Economics
+chapter: Money, Banking and Public Finance
+subtopic: Banking, RBI and Financial Institutions
+difficulty: HARD
+answer: C
+flawed: yes
+note: SSC's key D (banks lending to individual members) contradicts the SHG-Bank Linkage Programme, under which banks lend to the group as a whole and the group on-lends to members; NGOs forming and training groups is a recognised component. Our answer stays C; held PRIVATE for review
+stem:
+Which of the following is a component of the SHG-bank linkage program in India?
+A: Microfinance institutions providing loans directly to SHGs
+B: State government providing subsidies to SHGs for credit
+C: Non-governmental organisations providing capacity building training to SHGs
+D: Banks providing loans to individual members of SHGs
+solution:
+The SHG-Bank Linkage Programme, started by NABARD in 1992, has banks lend to the self-help group as a whole, not to its individual members. NGOs act as self-help promoting institutions that form, train and build the capacity of SHGs before and after linkage. Lending by MFIs is a separate channel, and state subsidies are not part of the linkage model.
+
+=== 34
+subject: History
+chapter: Medieval India
+subtopic: Mughal Empire and Administration
+difficulty: MODERATE
+answer: B
+stem:
+As per the Timurid tradition, Humayun had to share power with his brothers. Humayun had the control of Delhi, Agra and Central India, while his brother Kamran controlled which of the following regions?
+A: Deccan
+B: Afghanistan and Punjab
+C: Gujarat and Rajasthan
+D: Bengal and Bihar
+solution:
+Under the Timurid custom of sharing the inheritance, Kamran held Kabul and Kandahar and then took Punjab, so he controlled Afghanistan and Punjab. Askari and Hindal received smaller charges.
+
+=== 35
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Days, Festivals and Observances
+difficulty: EASY
+answer: D
+stem:
+Navratri festival is dedicated to which of the following Goddesses?
+A: Laxmi
+B: Jawala
+C: Saraswati
+D: Durga
+solution:
+Navratri's nine nights honour Goddess Durga in her nine forms (Navadurga), ending with Vijayadashami.
+
+=== 36
+subject: Chemistry
+chapter: Carbon and Its Compounds
+subtopic: Hydrocarbons and Fuels
+difficulty: MODERATE
+answer: B
+stem:
+Which two organic chemists are known for observing the peroxide effect in adding reagents to unsaturated compounds in 1933?
+A: Justus von Liebig and Friedrich Wöhler
+B: Morris S Kharasch and Frank R Mayo
+C: B Steven Bachrach and Roald Hoffmann
+D: C John Cadogan and Luis M Campos
+solution:
+In 1933 M S Kharasch and F R Mayo showed that HBr adds to alkenes against Markovnikov's rule in the presence of peroxides. This is the peroxide effect, or Kharasch effect.
+
+=== 37
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Constitutional Bodies and Offices
+difficulty: EASY
+answer: D
+stem:
+The oath of office to the Vice-President is administered by the ________.
+A: Chief Justice of India
+B: Prime Minister
+C: CAG
+D: President
+solution:
+Under Article 69 the Vice-President takes the oath before the President or a person appointed by the President. The Chief Justice administers the oath to the President (Article 60).
+
+=== 38
+subject: Geography
+chapter: Climatology, Atmosphere and Weather
+subtopic: Atmospheric Pressure and Winds
+difficulty: EASY
+answer: A
+stem:
+What was the name of the wind measuring instrument invented for the first time in 1450?
+A: Anemometer
+B: Ceiling Projector
+C: Transmissometer
+D: Dropsonde
+solution:
+Leon Battista Alberti described the first mechanical anemometer, a swinging-plate type, around 1450. A ceiling projector measures cloud height, a transmissometer measures visibility and a dropsonde is a 20th-century device dropped from aircraft.
+
+=== 39
+subject: Economics
+chapter: National Income, Growth and Development Indicators
+subtopic: Poverty, Employment and Human Development
+difficulty: HARD
+answer: A
+stem:
+As per a report of the Ministry of Labour and Employment, what was the rate of unemployment in Maharashtra for the year 2021-22?
+A: 3.5%
+B: 3.01%
+C: 4.4%
+D: 4.2%
+solution:
+The Periodic Labour Force Survey figures quoted by the Ministry of Labour and Employment give Maharashtra's unemployment rate (usual status, age 15 and above) for 2021-22 as 3.5%, against 4.1% for all India.
+
+=== 40
+subject: Physics
+chapter: Units, Measurement and Dimensions
+subtopic: Units and Dimensions
+difficulty: EASY
+answer: D
+stem:
+Which of the following is NOT a unit of energy?
+A: Joule
+B: Kilowatt hour
+C: Calorie
+D: Newton
+solution:
+Joule, kilowatt hour (\(3.6 \times 10^6\) J) and calorie (about 4.186 J) all measure energy. The newton is the SI unit of force.
+
+=== 41
+subject: Geography
+chapter: Indian Geography — Physical Features
+subtopic: Indian Rivers, Lakes and Water Bodies
+difficulty: EASY
+answer: C
+stem:
+The Wardha is a tributary of which of the following rivers?
+A: Mahanadi river
+B: Narmada river
+C: Godavari river
+D: Tapi river
+solution:
+The Wardha joins the Wainganga to form the Pranhita, which flows into the Godavari. So the Wardha is part of the Godavari system.
+
+=== 42
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: MODERATE
+answer: B
+stem:
+Pandit Omkar Nath Thakur was a student of ____________.
+A: Pandit Vishnu Narayan Bhatkhande
+B: Pandit Vishnu Digambar Paluskar
+C: Pandit Gopal Shankar Mishra
+D: Ustad Abdul Karim Khan
+solution:
+Omkarnath Thakur trained at the Gandharva Mahavidyalaya under Pandit Vishnu Digambar Paluskar of the Gwalior gharana.
+
+=== 43
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: A
+stem:
+Vijender Singh has represented India in Olympics for how many times?
+A: 3
+B: 4
+C: 5
+D: 2
+solution:
+Boxer Vijender Singh competed at Athens 2004, Beijing 2008 (bronze, India's first Olympic boxing medal) and London 2012: three Olympics.
+
+=== 44
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: MODERATE
+answer: D
+stem:
+Who among the following classical dancers is NOT related to Odissi?
+A: Mayadhar Raut
+B: Kiran Segal
+C: Kumkum Mohanty
+D: Geetanjali Lal
+solution:
+Mayadhar Raut, Kiran Segal and Kumkum Mohanty are Odissi dancers. Geetanjali Lal is a Kathak dancer of the Jaipur gharana.
+
+=== 45
+subject: Economics
+chapter: National Income, Growth and Development Indicators
+subtopic: Industrial and Manufacturing Policy
+difficulty: MODERATE
+answer: B
+stem:
+What were the main obstacles during the industrial development of India at the time of independence?
+A: Employment required for industries
+B: Capital investment in industries
+C: Market for industrial produce
+D: Land for industrial establishment
+solution:
+At independence Indian industrialists lacked the capital to invest in the large ventures the economy needed, which is why the state took the lead in industry under the plans. A small market is also mentioned as a deterrent, but lack of capital investment is the main obstacle.
+
+=== 46
+subject: History
+chapter: Modern India
+subtopic: Freedom Movement — INC, Gandhi and Independence
+difficulty: EASY
+answer: B
+stem:
+Khudai Khidmatgar, a voluntary organisation, was established by which of the following leaders of India?
+A: Muhammad Ali Jinnah
+B: Khan Abdul Ghaffar Khan
+C: Maulana Muhammad Ali
+D: Hakim Ajmal Khan
+solution:
+Khan Abdul Ghaffar Khan (Frontier Gandhi) founded the Khudai Khidmatgar (Servants of God), the non-violent Red Shirts movement of the North-West Frontier, in 1929.
+
+=== 47
+subject: Polity
+chapter: Fundamental Rights, DPSP and Local Governance
+subtopic: Fundamental Rights, DPSP and Duties
+difficulty: EASY
+answer: A
+stem:
+Which of the following is NOT a Fundamental Duty?
+A: To prohibit trade in rare and endangered species
+B: To safeguard public property and to abjure violence
+C: To uphold and protect the sovereignty, unity and integrity of India
+D: To value and preserve rich heritage of the country’s composite culture
+solution:
+Article 51A lists B as duty (i), C as duty (c) and D as duty (f). The environmental duty (g) is to protect and improve the natural environment and have compassion for living creatures; prohibiting trade in endangered species is not in the list.
+
+=== 48
+subject: Biology
+chapter: Microbiology and Disease
+subtopic: Pathogens and Diseases
+difficulty: EASY
+answer: D
+stem:
+What is the other name of tetanus caused by toxin producing bacteria called clostridium tetani?
+A: Broken jaw
+B: Snap jaw
+C: Cleft jaw
+D: Lockjaw
+solution:
+The tetanus toxin causes muscle spasms that begin in the jaw (trismus), so the disease is called lockjaw.
+
+=== 49
+subject: History
+chapter: Ancient India
+subtopic: Buddhism, Jainism and Religious Architecture
+difficulty: EASY
+answer: C
+stem:
+During which of the following rules did Buddhism get split into two schools - Hinayana and Mahayana in the fourth Buddhist council?
+A: Gupta
+B: Parthian
+C: Kushana
+D: Shaka
+solution:
+The fourth Buddhist council was held at Kundalvana in Kashmir under the Kushana king Kanishka, presided over by Vasumitra. Buddhism divided into Hinayana and Mahayana there.
+
+=== 50
+subject: Geography
+chapter: Indian Geography — Economy, Resources and Transport
+subtopic: Highways, Railways and Transport Corridors
+difficulty: MODERATE
+answer: D
+stem:
+As of Financial year 2019, which of the following state has the highest road density in India?
+A: Haryana
+B: Tamil Nadu
+C: Punjab
+D: Kerala
+solution:
+Basic Road Statistics for 2018-19 put Kerala's road density highest among the states, well above Tamil Nadu, Punjab and Haryana, because of its dense settlement pattern and extensive panchayat road network.
+
+=== 51
+chapter: Percentage, Profit and Loss
+subtopic: Profit and Loss
+difficulty: MODERATE
+answer: D
+stem:
+A vendor started selling vegetables at ₹10 per kg, but couldn’t find buyers at this rate. So he reduced the price to ₹7.2 per kg, but uses a faulty weight of 900 g instead of 1 kg. Find the percentage change in the actual price.
+A: \(10\%\)
+B: \(15\%\)
+C: \(25\%\)
+D: \(20\%\)
+solution:
+He takes ₹7.2 for 900 g, so the actual price is \(\frac{7.2}{0.9} = 8\), that is ₹8 per kg.
+
+Change \(= \frac{10 - 8}{10} \times 100 = 20\%\) (a decrease).
+
+Check: at ₹8 per kg, 900 g costs \(0.9 \times 8 = 7.2\) rupees, which is what he charges.
+
+=== 52
+chapter: Ratio, Proportion and Variation
+subtopic: Mixtures and Alligation
+difficulty: EASY
+answer: A
+stem:
+15 kg of ₹10 per kg wheat is mixed with 5 kg of another type of wheat to get a mixture costing ₹30 per kg. Find the price (per kg) of the costlier wheat.
+A: ₹90
+B: ₹70
+C: ₹60
+D: ₹80
+solution:
+Total cost of the mixture \(= 20 \times 30 = 600\) rupees. The cheaper wheat costs \(15 \times 10 = 150\) rupees.
+
+So 5 kg of the costlier wheat cost \(600 - 150 = 450\) rupees, that is ₹90 per kg.
+
+Check by alligation: \((90 - 30) : (30 - 10) = 60 : 20 = 3 : 1 = 15 : 5\).
+
+=== 53
+chapter: Linear Equations
+subtopic: Age Problems
+difficulty: MODERATE
+answer: C
+stem:
+In a family, the combined age of husband, wife and a son is 90 years. The husband is the oldest. The difference in the ages of the husband and wife is \(\frac{1}{3}\)rd the age of their son. After 10 years, the age of the son would be half the age of his father. What is the present age of his mother (in years)?
+A: \(40\)
+B: \(45\)
+C: \(35\)
+D: \(30\)
+solution:
+Let the son be \(S\). After 10 years \(S + 10 = \frac{H + 10}{2}\), so \(H = 2S + 10\). Also \(W = H - \frac{S}{3}\).
+
+\(H + W + S = 90\) gives \((2S + 10) + (2S + 10 - \frac{S}{3}) + S = 90\), so \(\frac{14S}{3} = 70\) and \(S = 15\).
+
+Then \(H = 40\) and \(W = 40 - 5 = 35\).
+
+Check: \(40 + 35 + 15 = 90\), and in 10 years the son is 25, half of the father's 50.
+
+=== 54
+chapter: Trigonometric Ratios and Identities
+subtopic: Power Identities and Given Sums
+difficulty: MODERATE
+answer: B
+note: The premise is impossible for a real angle (\(\sin A + \cos A \le \sqrt{2}\)); the answer is the intended formal value.
+stem:
+If \(\sin A + \cos A = \sqrt{3}\), then find the value of \(\tan A + \cot A + 2\sin A\cos A\).
+A: \(2\)
+B: \(3\)
+C: \(6\)
+D: \(1\)
+solution:
+Squaring, \(1 + 2\sin A\cos A = 3\), so \(\sin A\cos A = 1\).
+
+\(\tan A + \cot A = \frac{1}{\sin A\cos A} = 1\), and \(2\sin A\cos A = 2\).
+
+So the value is \(1 + 2 = 3\).
+
+=== 55
+chapter: Circles
+subtopic: Tangents from an External Point
+difficulty: MODERATE
+answer: C
+stem:
+AB is a chord of length 32 cm of a circle of radius 20 cm, the tangents at A and B intersect at a point T. Find length TA (rounded off to two digits after decimal).
+A: \(21.33\) cm
+B: \(36.50\) cm
+C: \(26.67\) cm
+D: \(19.93\) cm
+solution:
+Let OT meet AB at M (the midpoint). \(AM = 16\), so \(OM = \sqrt{20^2 - 16^2} = 12\).
+
+In right triangle OAT, AM is the altitude to OT, so \(OA^2 = OM \times OT\): \(OT = \frac{400}{12} = \frac{100}{3}\).
+
+\(TA = \sqrt{\left(\frac{100}{3}\right)^2 - 20^2} = \sqrt{\frac{6400}{9}} = \frac{80}{3} = 26.67\) cm.
+
+Check: \(TA = \frac{OA \times AM}{OM} = \frac{20 \times 16}{12} = 26.67\).
+
+=== 56
+chapter: Triangles
+subtopic: Angles of a Triangle
+difficulty: EASY
+answer: A
+stem:
+P, Q and R are the three angles of a triangle. If \(P - Q = 20^\circ\) and \(Q - R = 26^\circ\), then \(\angle P\) is equal to:
+A: \(82^\circ\)
+B: \(46^\circ\)
+C: \(52^\circ\)
+D: \(92^\circ\)
+solution:
+\(Q = P - 20^\circ\) and \(R = Q - 26^\circ = P - 46^\circ\).
+
+\(P + Q + R = 3P - 66^\circ = 180^\circ\), so \(P = 82^\circ\).
+
+Check: \(Q = 62^\circ\), \(R = 36^\circ\), and \(82 + 62 + 36 = 180\).
+
+=== 57
+chapter: Linear Equations
+subtopic: Word Problems and Applications
+difficulty: EASY
+answer: D
+stem:
+Each of Ravi and Kavita had some marbles. Kavita had 12 more marbles than Ravi had. If each of them had one more marble, then three times the number of marbles Kavita would then have had would have been equal to four times the number of marbles Ravi would then have had. How many marbles did Kavita actually have?
+A: \(51\)
+B: \(48\)
+C: \(43\)
+D: \(47\)
+solution:
+Let Ravi have \(r\); Kavita has \(r + 12\).
+
+\(3(r + 13) = 4(r + 1)\) gives \(3r + 39 = 4r + 4\), so \(r = 35\) and Kavita has \(47\).
+
+Check: \(3 \times 48 = 144 = 4 \times 36\).
+
+=== 58
+chapter: Trigonometric Ratios and Identities
+subtopic: Power Identities and Given Sums
+difficulty: EASY
+answer: C
+stem:
+The value of the expression \(\sin x + \operatorname{cosec} x = 2\), then the value of \(\sin^7 x + \operatorname{cosec}^7 x\) is:
+A: \(1\)
+B: \(4\)
+C: \(2\)
+D: \(0\)
+solution:
+Let \(s = \sin x\). Then \(s + \frac{1}{s} = 2\) gives \((s - 1)^2 = 0\), so \(\sin x = 1\) and \(\operatorname{cosec} x = 1\).
+
+So \(\sin^7 x + \operatorname{cosec}^7 x = 1 + 1 = 2\).
+
+=== 59
+chapter: Data Interpretation
+subtopic: Tables
+difficulty: EASY
+answer: C
+stem:
+The following table shows the sales during two seasons of a company. Study the table and answer the question that follows.
+
+| Sales in summer season (in ₹) | | | Sales in winter season (in ₹) | | |
+|---|---|---|---|---|---|
+| May | June | July | November | December | January |
+| 25,000 | 24,000 | 18,000 | 35,000 | 26,000 | 22,000 |
+
+What is the percentage share of sales during months of June and July to the total sales?
+A: \(30\%\)
+B: \(24\%\)
+C: \(28\%\)
+D: \(33\%\)
+solution:
+Total sales \(= 25 + 24 + 18 + 35 + 26 + 22 = 150\) thousand.
+
+June and July \(= 24 + 18 = 42\) thousand.
+
+Share \(= \frac{42}{150} \times 100 = 28\%\).
+
+Check: \(28\%\) of 150 is 42.
+
+=== 60
+chapter: Quadrilaterals
+subtopic: General Quadrilaterals and their Diagonals
+difficulty: EASY
+answer: B
+stem:
+WXYZ is a quadrilateral in which XQ and ZP are perpendicular to WY such that XQ = ZP. Diagonals ZX and WY intersect each other at point O. If OX = 12 cm, then find the value of ZX (in cm).
+A: \(18\)
+B: \(24\)
+C: \(36\)
+D: \(12\)
+solution:
+Triangles XQO and ZPO have right angles at Q and P, equal vertically opposite angles at O, and XQ = ZP, so they are congruent (AAS).
+
+So OZ = OX = 12 cm and \(ZX = 12 + 12 = 24\) cm.
+
+=== 61
+chapter: Ratio, Proportion and Variation
+subtopic: Direct and Inverse Variation
+difficulty: MODERATE
+answer: B
+stem:
+The cost of a diamond varies directly as the square of its weight. Once, this diamond broke into four pieces with weights in the ratio of \(4 : 3 : 2 : 1\) .When the pieces were sold, the merchant got ₹63,000 less than that of one piece. Find the original price of the diamond.
+A: ₹80,000
+B: ₹90,000
+C: ₹86,000
+D: ₹75,000
+solution:
+Take the weights as 4, 3, 2, 1 (total 10). The whole diamond is worth \(10^2 = 100\) units; the pieces are worth \(16 + 9 + 4 + 1 = 30\) units.
+
+The loss is \(100 - 30 = 70\) units = ₹63,000, so 1 unit = ₹900.
+
+Original price \(= 100 \times 900 = 90{,}000\), that is ₹90,000.
+
+Check: the pieces fetch \(30 \times 900 = 27{,}000\) rupees, and \(90{,}000 - 27{,}000 = 63{,}000\).
+
+=== 62
+chapter: Averages
+subtopic: Sum and Mean
+difficulty: EASY
+answer: A
+stem:
+A student studying in 6th class scored the following marks in 6 subjects. The maximum marks for each subject are 100.
+
+| Subjects | Marks |
+|---|---|
+| Hindi | 98 |
+| English | 97 |
+| Mathematics | 93 |
+| Social Science | 94 |
+| Computer | 92 |
+| Science | 93 |
+
+What are the average marks scored by the student?
+A: \(94.5\)
+B: \(95\)
+C: \(96\)
+D: \(92.5\)
+solution:
+Total \(= 98 + 97 + 93 + 94 + 92 + 93 = 567\).
+
+Average \(= \frac{567}{6} = 94.5\).
+
+Check with deviations from 94: \(+4 + 3 - 1 + 0 - 2 - 1 = +3\), and \(94 + \frac{3}{6} = 94.5\).
+
+=== 63
+chapter: Polynomials
+subtopic: The Remainder Theorem
+difficulty: EASY
+answer: B
+stem:
+What number should be subtracted from \(x^3 - 4x^2 - 8x + 11\) to make the number divisible by \((x + 2)\)?
+A: \(9\)
+B: \(3\)
+C: \(5\)
+D: \(7\)
+solution:
+The remainder on division by \(x + 2\) is \(f(-2) = -8 - 16 + 16 + 11 = 3\).
+
+Subtracting the remainder, \(3\), makes the polynomial divisible by \(x + 2\).
+
+Check: \(x^3 - 4x^2 - 8x + 8 = (x + 2)(x^2 - 6x + 4)\).
+
+=== 64
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: EASY
+answer: D
+stem:
+Successive discounts of \(10\%\) and \(20\%\) are given on the purchase of a purse. If the marked price of the purse is ₹2,250, find the selling price.
+A: ₹1,290
+B: ₹1,320
+C: ₹1,520
+D: ₹1,620
+solution:
+Selling price \(= 2250 \times 0.9 \times 0.8 = 2025 \times 0.8 = 1620\), that is ₹1,620.
+
+Check: the single equivalent discount is \(10 + 20 - \frac{10 \times 20}{100} = 28\%\), and \(72\%\) of 2250 is 1620.
+
+=== 65
+chapter: Circles
+subtopic: Intersecting Chords and Power of a Point
+difficulty: MODERATE
+answer: D
+stem:
+R is a point outside a circle and is 18 cm away from its centre. A secant drawn from the point R intersects the circle at points A and B in such a way that RA = 7 cm and AB = 5 cm. The radius of the circle (in cm) is:
+A: \(5\sqrt{15}\)
+B: \(7\sqrt{15}\)
+C: \(3\sqrt{15}\)
+D: \(4\sqrt{15}\)
+solution:
+\(RB = 7 + 5 = 12\). By the power of the point, \(RA \times RB = d^2 - r^2\).
+
+\(7 \times 12 = 18^2 - r^2\), so \(r^2 = 324 - 84 = 240\) and \(r = \sqrt{240} = 4\sqrt{15}\).
+
+Check: \(r < 18\) (about 15.5), so R is indeed outside.
+
+=== 66
+chapter: Data Interpretation
+subtopic: Tables
+difficulty: EASY
+answer: A
+stem:
+The marks of 6 students are given. All the marks are out of 100.
+
+| Student | English | Hindi | Maths | Physics | Chemistry | Biology |
+|---|---|---|---|---|---|---|
+| A | 70 | 60 | 99 | 80 | 80 | 75 |
+| B | 75 | 65 | 85 | 75 | 75 | 70 |
+| C | 80 | 80 | 70 | 60 | 70 | 60 |
+| D | 72 | 63 | 65 | 70 | 60 | 60 |
+| E | 70 | 60 | 60 | 60 | 55 | 55 |
+| F | 60 | 60 | 70 | 70 | 60 | 50 |
+
+Find the percentage scored by C.
+A: \(70\%\)
+B: \(68\%\)
+C: \(75\%\)
+D: \(65\%\)
+solution:
+C's total \(= 80 + 80 + 70 + 60 + 70 + 60 = 420\) out of 600.
+
+Percentage \(= \frac{420}{600} \times 100 = 70\%\).
+
+Check: the average mark is \(\frac{420}{6} = 70\) out of 100.
+
+=== 67
+chapter: Percentage, Profit and Loss
+subtopic: Successive Percentage Change
+difficulty: EASY
+answer: B
+stem:
+The cost of tomatoes per kg is increased by \(300\%\). A housewife reduces her consumption of tomatoes by \(70\%\). By what percentage does her expenditure on tomatoes increase or decrease?
+A: Decreases, \(30\%\)
+B: Increases, \(20\%\)
+C: Decreases, \(20\%\)
+D: Increases, \(30\%\)
+solution:
+New price \(= 4\) times, new consumption \(= 0.3\) times, so expenditure becomes \(4 \times 0.3 = 1.2\) times.
+
+It increases by \(20\%\).
+
+Check: \(300 - 70 - \frac{300 \times 70}{100} = 230 - 210 = 20\%\).
+
+=== 68
+chapter: Mensuration 2D
+subtopic: Rectangles, Squares and Other Quadrilaterals
+difficulty: EASY
+answer: A
+stem:
+The area of a parallelogram with base 26 cm and height 18 cm is:
+A: \(468\ \text{cm}^2\)
+B: \(932\ \text{cm}^2\)
+C: \(936\ \text{cm}^2\)
+D: \(234\ \text{cm}^2\)
+solution:
+Area \(= \text{base} \times \text{height} = 26 \times 18 = 468\ \text{cm}^2\).
+
+Check: \(26 \times 18 = 26 \times 20 - 26 \times 2 = 520 - 52 = 468\).
+
+=== 69
+chapter: Simple and Compound Interest
+subtopic: Simple Interest
+difficulty: MODERATE
+answer: D
+stem:
+Aman invested a sum of money in scheme A at the rate of \(8\%\) p.a. for a period of 5 years on simple interest. He invested four times of the sum of scheme A in scheme B at the rate of \(5\%\) p.a. for 7 years on simple interest. He received a total interest amount of ₹1,620. How much (in ₹) did he invest in scheme B?
+A: \(900\)
+B: \(3{,}200\)
+C: \(2{,}400\)
+D: \(3{,}600\)
+solution:
+Let scheme A get \(P\). Interest from A \(= \frac{P \times 8 \times 5}{100} = 0.4P\); from B \(= \frac{4P \times 5 \times 7}{100} = 1.4P\).
+
+\(1.8P = 1620\), so \(P = 900\) and scheme B gets \(4 \times 900 = 3600\), that is ₹3,600.
+
+Check: \(360 + 1260 = 1620\).
+
+=== 70
+chapter: Surds, Indices and Simplification
+subtopic: Simplification of Expressions
+difficulty: EASY
+answer: C
+stem:
+The value of \(4\frac{1}{6} \div 25 \times 75 \div \frac{1}{5}\) of \(125\) is:
+A: \(\frac{1}{3}\)
+B: \(\frac{1}{6}\)
+C: \(\frac{1}{2}\)
+D: \(\frac{1}{4}\)
+solution:
+"Of" comes first: \(\frac{1}{5}\) of \(125 = 25\).
+
+Then left to right: \(\frac{25}{6} \div 25 = \frac{1}{6}\), \(\frac{1}{6} \times 75 = \frac{25}{2}\), \(\frac{25}{2} \div 25 = \frac{1}{2}\).
+
+Check as one fraction: \(\frac{25}{6} \times \frac{1}{25} \times 75 \times \frac{1}{25} = \frac{75}{150} = \frac{1}{2}\).
+
+=== 71
+chapter: Time, Speed and Distance
+subtopic: Trains and Relative Speed
+difficulty: MODERATE
+answer: B
+stem:
+Two trains of lengths 150 m and 250 m run on parallel lines. When they run in the same direction, they take 20 seconds to cross each other and, when they run in the opposite direction, they take 5 seconds to cross each other. What is the speed of the two trains?
+A: 150 km/h and 105 km/h
+B: 180 km/h and 108 km/h
+C: 150 km/h and 250 km/h
+D: 160 km/h and 106 km/h
+solution:
+Distance to cross \(= 150 + 250 = 400\) m.
+
+Difference of speeds \(= \frac{400}{20} = 20\) m/s; sum \(= \frac{400}{5} = 80\) m/s.
+
+So the speeds are 50 m/s and 30 m/s, that is \(50 \times \frac{18}{5} = 180\) km/h and \(30 \times \frac{18}{5} = 108\) km/h.
+
+Check: \(\frac{400}{180 - 108} \times \frac{18}{5} = 20\) s and \(\frac{400}{288} \times \frac{18}{5} = 5\) s.
+
+=== 72
+chapter: Trigonometric Ratios and Identities
+subtopic: Trigonometric Equations
+difficulty: EASY
+answer: C
+stem:
+If \(3\sin^2\theta + 5\cos^2\theta = 4\) and \(\theta\) is an acute angle, then the value of \(\tan\theta\) is:
+A: \(\frac{1}{\sqrt{3}}\)
+B: \(\frac{1}{2}\)
+C: \(1\)
+D: \(\frac{1}{\sqrt{2}}\)
+solution:
+\(3\sin^2\theta + 5\cos^2\theta = 3 + 2\cos^2\theta = 4\), so \(\cos^2\theta = \frac{1}{2}\) and \(\theta = 45^\circ\).
+
+So \(\tan\theta = 1\).
+
+Check: at \(45^\circ\), \(3 \times \frac{1}{2} + 5 \times \frac{1}{2} = 4\).
+
+=== 73
+chapter: Data Interpretation
+subtopic: Tables
+difficulty: EASY
+answer: B
+stem:
+The table given below shows the marks obtained by four students in 4 different subjects. Maximum marks for each subject is 175.
+
+| Student | Mathematics | Physics | Chemistry | English |
+|---|---|---|---|---|
+| Amit | 105 | 98 | 109 | 86 |
+| Gunja | 112 | 119 | 99 | 97 |
+| Arpit | 103 | 121 | 94 | 100 |
+| Kavya | 108 | 102 | 104 | 120 |
+
+What is the aggregate percentage of marks obtained by Gunja in all the four subjects?
+A: \(58\)
+B: \(61\)
+C: \(67\)
+D: \(71\)
+solution:
+Gunja's total \(= 112 + 119 + 99 + 97 = 427\) out of \(4 \times 175 = 700\).
+
+Percentage \(= \frac{427}{700} \times 100 = 61\).
+
+Check: \(61\%\) of 700 is 427.
+
+=== 74
+chapter: Algebraic Identities and Simplification
+subtopic: Reciprocal Sums x ± 1/x
+difficulty: MODERATE
+answer: C
+stem:
+If \(\left(a + \frac{1}{a}\right) = 7\sqrt{3}\), then what is the value of \((a^6 + a^{-6})\)?
+A: \(3048625\)
+B: \(3048542\)
+C: \(3048190\)
+D: \(3048132\)
+solution:
+\(a^2 + \frac{1}{a^2} = (7\sqrt{3})^2 - 2 = 147 - 2 = 145\).
+
+\(a^6 + \frac{1}{a^6} = 145^3 - 3 \times 145 = 3048625 - 435 = 3048190\).
+
+Check through cubes: \(a^3 + \frac{1}{a^3} = (7\sqrt{3})^3 - 3(7\sqrt{3}) = 1029\sqrt{3} - 21\sqrt{3} = 1008\sqrt{3}\), and \((1008\sqrt{3})^2 - 2 = 3048192 - 2 = 3048190\).
+
+=== 75
+chapter: Time and Work
+subtopic: Pipes and Cisterns
+difficulty: MODERATE
+answer: D
+stem:
+Pipe X can fill a tank in 9 hours and Pipe Y can fill it in 21 hours. If they are opened on alternate hours and Pipe X is opened first, in how many hours shall the tank be full?
+A: \(10\frac{3}{7}\)
+B: \(11\frac{3}{7}\)
+C: \(9\frac{3}{7}\)
+D: \(12\frac{3}{7}\)
+solution:
+Take the tank as 63 units: X fills 7 units an hour and Y fills 3.
+
+Each 2-hour cycle fills 10 units, so 6 cycles (12 hours) fill 60 units.
+
+The 13th hour is X's: the last 3 units take \(\frac{3}{7}\) hour, so the total is \(12\frac{3}{7}\) hours.
+
+Check: in \(12\frac{3}{7}\) hours X runs \(\frac{45}{7}\) hours and Y runs 6 hours, filling \(\frac{45}{7 \times 9} + \frac{6}{21} = \frac{5}{7} + \frac{2}{7} = 1\) tank.
+
+=== 76
+chapter: Sentence Rearrangement
+subtopic: Pronouns and Names in Paragraphs
+difficulty: EASY
+answer: B
+stem:
+Sentences of a paragraph are given below in jumbled order. Arrange the sentences in the correct order to form a meaningful and coherent paragraph.
+A. However, their population is declining nowadays due to noise pollution.
+B. It is one of the most common birds along with the other two species, the European starling, and the rock pigeon.
+C. Their constant presence outside our homes makes it easy to overlook them.
+D. House sparrows can be found in most places with and without houses (or other structures).
+A: DABC
+B: DBCA
+C: DACB
+D: BDCA
+solution:
+D names the subject (house sparrows), so it opens. B's "It" refers back to the house sparrow and calls it one of the most common birds. C follows: their constant presence makes them easy to overlook. A, opening with "However", turns to the decline and closes the paragraph. Order: DBCA.
+
+=== 77
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: MODERATE
+answer: A
+stem:
+Out of the four sentences given, three have spelling errors. Identify the sentence that has no spelling error.
+A: She tried to manoeuvre her trolley around people.
+B: The computer's software detected an anamoly caused by a virus.
+C: What advice did he give to young entreprenuers?
+D: A clergyman read the litturgy from the prayer-book.
+solution:
+"Manoeuvre" is the correct British spelling. The others should be "anomaly", "entrepreneurs" and "liturgy".
+
+=== 78
+chapter: Idioms and Phrases
+subtopic: Idioms: Work and Money
+difficulty: EASY
+answer: A
+stem:
+Select the most appropriate meaning of the given idiom.
+Start from scratch
+A: To start or create something from the very beginning
+B: To point out something wrong
+C: To address an issue
+D: To develop something out of waste material
+solution:
+To start from scratch is to begin from the very beginning, with nothing done or prepared in advance.
+
+=== 79
+chapter: Spotting Errors
+subtopic: Word Choice and Word Form
+difficulty: EASY
+answer: B
+stem:
+Parts of the following sentence have been given as options. Select the option that contains an error.
+The police told the agitators to back in, else they would lathi-charge.
+A: The police told
+B: the agitators to back in
+C: lathi-charge
+D: else they would
+solution:
+The phrasal verb for retreating or withdrawing is "back off" (or "back down"), not "back in". The correct sentence: The police told the agitators to back off, else they would lathi-charge.
+
+=== 80
+chapter: Sentence Rearrangement
+subtopic: Joining Words, Pairs and Pointers (PQRS)
+difficulty: MODERATE
+answer: A
+stem:
+Select the most appropriate order of the segments in the options that will fill in the blanks and make a coherent paragraph.
+Though Sheela loves watching horror movies, ________________/________________/________________/________________ she rented another romantic today.
+A: she planned to try something different yesterday / so she rented the latest romantic / and to her surprise she enjoyed it very much / so much so that
+B: so much so that / and to her surprise she enjoyed it very much / she planned to try something different yesterday / so she rented the latest romantic
+C: so she rented the latest romantic / and to her surprise she enjoyed it very much / so much so that / she planned to try something different yesterday
+D: and to her surprise she enjoyed it very much /so much so that /so she rented the latest romantic /she planned to try something different yesterday
+solution:
+"Though she loves horror movies" contrasts with "she planned to try something different yesterday"; "so she rented the latest romantic" is the result; "and to her surprise she enjoyed it very much" follows; "so much so that" leads into the final words "she rented another romantic today".
+
+=== 81
+chapter: Spotting Errors
+subtopic: Word Improvement in Context
+difficulty: HARD
+answer: A
+stem:
+Select the most appropriate option to substitute the underlined segment in the given sentence.
+Transnational linkages, for example, sever the nation-state’s \(\underline{\text{integrity and corrupt}}\) state-society relations.
+A: cohesion and erode
+B: divergence and relativity
+C: severance and revolution
+D: controversy and diminution
+solution:
+The slot needs a noun for what is severed (the nation-state's unity) and a verb that acts on "state-society relations". "Cohesion and erode" fits both: linkages sever the nation-state's cohesion and erode state-society relations. B, C and D put a noun where a verb is needed ("relativity", "revolution", "diminution" cannot take "state-society relations" as an object).
+
+=== 82
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: C
+stem:
+Select the option that expresses the given sentence in passive voice.
+The cashier had finished the assigned task on time.
+A: The assigned task was finished by the cashier on time.
+B: The assigned task has been finished by the cashier on time.
+C: The assigned task had been finished by the cashier on time.
+D: The assigned task is finished by the cashier on time.
+solution:
+Past perfect active (had finished) becomes past perfect passive (had been finished): The assigned task had been finished by the cashier on time.
+
+=== 83
+chapter: Vocabulary
+subtopic: Synonyms: Harm, Degree and the Senses
+difficulty: EASY
+answer: B
+stem:
+Select the most appropriate synonym of the given word.
+Garnish
+A: Dwindle
+B: Decorate
+C: Blemish
+D: Tarnish
+solution:
+To garnish is to decorate or embellish, especially food. Dwindle means diminish; blemish and tarnish mean spoil or stain.
+
+=== 84
+chapter: Vocabulary
+subtopic: Synonyms: Character and Temperament
+difficulty: EASY
+answer: C
+stem:
+Select the most appropriate synonym of the given word.
+Determined
+A: hesitant
+B: loathe
+C: resolute
+D: faltering
+solution:
+Determined means firmly decided, which is resolute. Hesitant and faltering are opposites; loathe means hate.
+
+=== 85
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: B
+stem:
+Select the most appropriate option to substitute the underlined segment in the given sentence.
+His house \(\underline{\text{is smaller than you}}\) .
+A: is smaller than your
+B: is smaller than yours
+C: is small as you
+D: is small than you
+solution:
+A house must be compared with a house, not with a person: "smaller than yours" (your house). "Your" needs a noun after it; C and D are ungrammatical comparisons.
+
+=== 86
+chapter: Vocabulary
+subtopic: Antonyms: Time, Change and Action
+difficulty: EASY
+answer: B
+stem:
+Select the most appropriate ANTONYM of the given word to fill in the blank.
+Capricious
+Share market prices have remained __________ for weeks.
+A: fickle
+B: stable
+C: volatile
+D: mischievous
+solution:
+Capricious means given to sudden, unpredictable changes. Its opposite is stable, which also fits the sentence. Fickle and volatile are synonyms; mischievous is unrelated.
+
+=== 87
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: A
+stem:
+Select the option that expresses the given sentence in active voice.
+Data is being collected by the researcher.
+A: The researcher is collecting data.
+B: The researcher has been collecting data.
+C: The researcher has collected data.
+D: The researcher will be collecting data.
+solution:
+Present continuous passive (is being collected) becomes present continuous active (is collecting): The researcher is collecting data.
+
+=== 88
+chapter: Vocabulary
+subtopic: Antonyms: Feelings and Calm
+difficulty: EASY
+answer: A
+stem:
+Select the most appropriate ANTONYM of the underlined word.
+Evenings get \(\underline{\text{dark}}\) very early in this cold weather.
+A: Bright
+B: Dim
+C: Shadowy
+D: Gloomy
+solution:
+Dark means having little or no light; its opposite is bright. Dim, shadowy and gloomy are near-synonyms.
+
+=== 89
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: B
+stem:
+Select the option that can be used as a one-word substitute for the given group of words.
+A person who performs magic to entertain people
+A: Angel
+B: Magician
+C: Palmist
+D: Alchemist
+solution:
+A magician performs magic tricks to entertain. A palmist reads palms; an alchemist tried to turn base metals into gold.
+
+=== 90
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: D
+stem:
+Select the INCORRECTLY spelt word in the given sentence.
+Fundamentels of every subject need to be learnt on priority basis.
+A: basis
+B: learnt
+C: priority
+D: Fundamentels
+solution:
+The correct spelling is "Fundamentals". "Learnt" is an accepted British past participle.
+
+=== 91
+chapter: Idioms and Phrases
+subtopic: Idioms: Trouble and Success
+difficulty: EASY
+answer: A
+stem:
+Select the most appropriate option that has the same meaning as the italicised segment.
+His illness became *a blessing in disguise* when he married his nurse.
+A: an apparent misfortune that eventually has good results
+B: when someone finds it difficult to choose between two alternatives
+C: deal with a problem if and when it becomes necessary
+D: to present a counter- argument
+solution:
+A blessing in disguise is something that seems bad at first but turns out well: his illness led him to marry his nurse. B describes "between the devil and the deep sea", C "cross that bridge when you come to it".
+
+=== 92
+chapter: Vocabulary
+subtopic: Antonyms: Feelings and Calm
+difficulty: EASY
+answer: C
+stem:
+Select the most appropriate ANTONYM of the given word.
+Desolate
+A: Frugal
+B: Allusive
+C: Festive
+D: Melancholic
+solution:
+Desolate means bleak, empty and joyless (or miserable). Festive (cheerful, joyous, lively) is the opposite. Melancholic is a near-synonym; frugal and allusive are unrelated.
+
+=== 93
+chapter: Spotting Errors
+subtopic: Articles, Determiners and Comparison
+difficulty: MODERATE
+answer: C
+stem:
+Parts of the following sentence have been given as options. Select the option that contains an error.
+We took dinner in a Chinese restaurant and were amazed to see the interior of a restaurant.
+A: in a Chinese restaurant
+B: and were amazed to see
+C: the interior of a restaurant
+D: We took dinner
+solution:
+The restaurant has already been mentioned, so the second mention needs the definite article: "the interior of the restaurant". ("Took dinner" is less idiomatic than "had dinner", but the article error is the clear grammatical one.)
+
+=== 94
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: A
+stem:
+Select the option that can be used as a one-word substitute for the given phrase.
+A person who is kept captive for fulfilment of demands of money or conditions
+A: Hostage
+B: Hermit
+C: Heretic
+D: Introvert
+solution:
+A hostage is held captive until demands are met. A hermit lives in seclusion; a heretic holds beliefs against accepted doctrine; an introvert is a reserved person.
+
+=== 95
+chapter: Vocabulary
+subtopic: Synonyms: Feelings, Speech and Persuasion
+difficulty: EASY
+answer: B
+stem:
+Select the most appropriate synonym of the given word.
+Fallacy
+A: Veracity
+B: Error
+C: Evidence
+D: Verify
+solution:
+A fallacy is a mistaken belief or an error in reasoning. Veracity (truthfulness) is its opposite; evidence and verify are unrelated.
+
+=== 96
+chapter: Cloze Test
+subtopic: Collocations and the Precise Word
+difficulty: EASY
+answer: B
+context:
+In the following passage, some words have been deleted. Read the passage carefully and select the most appropriate option to fill in each blank.
+When Ojeya Cruz Banks moved to Ohio from New Zealand (1) ________ years ago, she was overwhelmed by the logistics of uprooting her life. But Cruz Banks, a Denison University professor and a single mom, who is also my neighbour and friend, was (2) ________ to find a house next to a public elementary school. She assumed that she would be able to walk to pick up her daughter, a needed convenience given that she didn’t yet have a car.
+Unfortunately, when she went to register her daughter for kindergarten, she was met with an (3) ________ surprise: The only (4) ________ option was a half-day program that would bus students to a day-care centre on the outskirts of the town for the afternoon. The district did offer a limited number of full-day slots, but those had all been claimed in a lottery earlier that spring and came with a tuition cost. “I was like, ‘Cost me? What? Public school costs money here?’” she told me.
+Many parents across the United States, like Cruz Banks, may assume that free, full-day kindergarten is a (5) ________ part of the country’s public education system. I was one of them, until my youngest had to enter our district’s lottery several months ago. When he was assigned to the half-day program, I swung between alarm and frustration.
+stem:
+Select the most appropriate option to fill in blank no. 1.
+A: particular
+B: several
+C: immense
+D: enormous
+solution:
+"Several years ago" is the natural expression for an unspecified number of years. "Particular", "immense" and "enormous" do not count years.
+
+=== 97
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: EASY
+answer: D
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank no. 2.
+A: distraught
+B: dispassionate
+C: worried
+D: relieved
+solution:
+"But" contrasts her being overwhelmed with the good news of finding a house next to a school, which she expected to make life easier. She was relieved. Distraught and worried run against the contrast; dispassionate does not fit an emotional reaction.
+
+=== 98
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: EASY
+answer: A
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank no. 3.
+A: unpleasant
+B: agreeable
+C: amusing
+D: enjoyable
+solution:
+"Unfortunately" signals bad news: the only option was a half-day program with bussing. The surprise was unpleasant. "Agreeable", "amusing" and "enjoyable" all contradict "Unfortunately".
+
+=== 99
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: EASY
+answer: B
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank no. 4.
+A: inaccessible
+B: available
+C: futile
+D: nonviable
+solution:
+The full-day slots had all been claimed, so the only option left open to her (the only available option) was the half-day program.
+
+=== 100
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: EASY
+answer: D
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank no. 5.
+A: inessential
+B: disapproved
+C: ceaseless
+D: required
+solution:
+Parents assume free, full-day kindergarten is a standard, required part of the public education system, which is why the author was alarmed to find it was not. "Inessential" and "disapproved" contradict the assumption; "ceaseless" does not fit "part".

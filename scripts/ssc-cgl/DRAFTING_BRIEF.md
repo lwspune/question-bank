@@ -12,12 +12,22 @@ derived blind. Repo (git worktree): `C:\Users\vilas\Downloads\qb-ssc`.
 - `scripts/ssc-cgl/out/<shiftId>/sheets/qNNN.png`: one question, English + Hindi. Use it when a
   batch is unclear (fractions, exponents, square roots, small print).
 
-**2024 shifts (`t1-2024-...`) print differently.** Each question shows its number within its
+**2022 and 2024 shifts (`t1-2022-...`, `t1-2024-...`) print differently.** Each question shows its number within its
 section ("Q.14"); the red label above it ("Q64") is the number you write. The options print
 "1." to "4.": write them as A to D in that order. `sheets/text.txt` holds the same questions
 as text (no answers): copy wording from it to save typing, but the sheet is the source.
+(5-13 Dec 2022, 17-24 Jul 2023 and 14 Jul 2023 Shifts 3-4 are a print with no text layer: no
+`text.txt`, so type everything from the sheet. 2023 follows these same rules.)
 The text loses maths set as pictures, misplaces superscripts (cm 3) and drops symbols, so
-check every line against the sheet.
+check every line against the sheet. These sheets print every stem in bold, so do not bold a
+whole stem; bold only what the question singles out. An underlined word or segment is written
+`\(\underline{\text{...}}\)` around exactly the underlined words. A question SSC printed in
+Hindi only: write your English rendering, add `flawed: yes` and a `note:` saying so (the bank
+must not pass off our translation as SSC's English), and still derive the answer. A stem SSC's
+print cuts off (a picture stem squeezed at the right edge, a washed-out line): write what is
+printed, put any words you infer in square brackets, and add `flawed: yes` with a `note:`.
+Parts of a jumbled sentence printed "A:" to "E:" are written "A." to "E." (a stem line that
+starts "A:" to "D:" is read as an option).
 
 ## Rules
 

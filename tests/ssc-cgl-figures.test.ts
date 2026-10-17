@@ -54,4 +54,14 @@ describe("figurePlan", () => {
   it("plans nothing for figure: none", () => {
     expect(figurePlan({ number: 3, figure: "none", options: ["Z", "T", "V", "A"] }, sheet)).toEqual({ stem: null, options: null });
   });
+
+  // A 2023 scan's raster first page has no image objects: its figures are cropped from the page.
+  it("plans a crop from the page for a figure question on a raster page", () => {
+    const raster = { number: 1, stemImages: [], options: [[], [], [], []] as string[][], regions: [{ raster: true }] };
+    expect(figurePlan({ number: 1, figure: "stem", options: ["4", "5", "6", "2"] }, raster)).toEqual({ stem: null, options: null, crop: "stem" });
+    const fig = ["[figure]", "[figure]", "[figure]", "[figure]"];
+    expect(figurePlan({ number: 2, figure: "stem+options", options: fig }, raster)).toEqual({ stem: null, options: null, crop: "stem+options" });
+    expect(() => figurePlan({ number: 2, figure: "options", options: ["[figure]", "x", "[figure]", "[figure]"] }, raster)).toThrow(/Q2 option B/);
+    expect(figurePlan({ number: 1, figure: "none", options: ["4", "5", "6", "2"] }, raster)).toEqual({ stem: null, options: null });
+  });
 });

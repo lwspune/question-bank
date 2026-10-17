@@ -169,6 +169,64 @@ Mathematics (renamed Quantitative Aptitude), English and the eight GK subjects, 
 `catalog-authored.json` (all of Reasoning, and SSC topics CDS lacks). When a question fits
 nothing, extend `catalog-authored.json` and re-run the generator; never edit `catalog.json`.
 
+## 2022-2024: the TCS response sheet
+
+Before the 2025 challenge module, SSC's only copy of a paper was the candidate's TCS
+**response sheet**. AglaSem hosts it as PDFs (2024: one file per day, running past its own
+day; 2022: one file per shift). It prints the question as text and the key as the option
+text's COLOUR (green right, red wrong), with a tick or cross icon beside each option and a
+right-hand panel (Question ID, Status, Chosen Option: the candidate's own answer).
+
+```
+python -P scripts/ssc-cgl/tcs_extract.py <dir> "<pdf>"     # spans, images, icons, panels, frames
+npx tsx scripts/ssc-cgl/assemble-tcs.ts --year=2024        # questions.json (KEY) + sheets/text.txt
+python -P scripts/ssc-cgl/tcs_sheets.py <shiftId>          # masked reading sheets
+# agents draft (DRAFTING_BRIEF.md, "2024 shifts"), then as for 2025:
+npx tsx scripts/ssc-cgl/figures.ts <shiftId>               # figures/<shiftId>/ from SSC's image objects
+npx tsx scripts/ssc-cgl/build.ts <shiftId>
+npx tsx scripts/ssc-cgl/commit.ts <shiftId> --apply        # uploads figure pictures too
+```
+
+- **Shift = the sheet's own Exam Date + slot**, never the file (a 2024 file ends with the next
+  day's first shift). `groupTcsShifts` keeps the first of two identical copies of a shift and
+  refuses copies that differ.
+- **Readers.** `tcs.ts` reads the text layer, and has learned each print's quirks, each with a
+  test: scaled pages (gutter at x 104), "Q.n"/"Ans" broken over lines beside a wide picture,
+  "Section :" and its name as separate spans, a label fused with the stem ("Q.11 Select..."),
+  key colours by HUE (each year its own shade), the 18 Jul 2023 print's unlabelled header and
+  text-glyph ticks, the right-hand panel as its own LINES (a stem tail can print past its x).
+  `vector.ts` reads the 2022 **vector print** (5-13 Dec), which has no text at all: a question
+  is the run of grey frames up to the one holding the panel box, numbered by order, and the key
+  is the tick icon (an 84x84 picture against the cross's 31x21).
+  The 2023 **scans** (17-24 Jul, 14 Jul from 2:30) are the same print, four sheets to a day file:
+  each sheet is registered by its page range (`shiftPages`, found from its raster first page and
+  printed Exam Time) and extracted to its own folder (`--pages`). The tick is a 23x23 picture,
+  and each sheet's FIRST page is one raster picture with an OCR layer: its 1-3 questions are
+  found by their OCR "Q.n" labels and keyed by `marks`, the green and red pixels tcs_extract.py
+  reads in the icon column; `tcs_sheets.py` masks those regions by pixel (`unkey_scan`).
+- **Masking** (`tcs_sheets.py`): key-coloured fills AND strokes repainted the body grey (2022
+  underlines option text in the key colours), tick and cross icons and the panel painted white,
+  the candidate's chosen option never shown. A question with no picture that still shows key
+  colour **stops the run**; on a pictured one (a coloured chart) it is printed for a look.
+  **The key also leaks through LAYOUT** (found 2026-10-17): in the vector print and the 2023
+  scans the tick is wider than the cross, so the keyed option's number prints ~2 pt right of the
+  others. `align_scan_rows` shifts each option row (a band halfway to its neighbours, so a tall
+  option picture moves whole) and the run **stops** if the rows still start at different x.
+  Icon pictures are recognised by pixel size AND position (within 40 pt of the frame's left
+  edge, as vector.ts reads them): an option printed as a small picture can have a cross's size.
+  The text-layer prints (2022 1-3 Dec, 2023 14/25-27 Jul, 2024) set labels at a fixed x.
+- **Figures** (`figures.ts`): `figure:` names SSC's own image objects; a stem with several is
+  stacked into one picture. A figure row is hashed with its picture bytes (figureAwareHash), so
+  two mirror-image items with the same stock wording and answer letter are not filed as repeats
+  of each other; `[figure]` options are stored as empty text beside `options.image_url`.
+- **Held for review** (beyond wrong keys): items SSC printed in Hindi only (our English is a
+  translation), stems SSC's print cuts off or washes out, a chart whose legend is blank.
+- **Not readable yet:** 1 Dec 2022 Shift 3 (the file starts mid-paper); 5 Dec S4, 7 Dec S2,
+  9 Dec S3, 12 Dec S4 2022 (several different papers in one vector file, headers unreadable);
+  7 Dec 2022 S3 (106 questions); 27 Jul 2023 S4 (not in the hosted file). Every other 2023
+  sheet reads (39 shifts). More 2022 shifts (13 Dec S2 on) and 2021 sit on AglaSem listing
+  pages not yet loaded.
+
 ## Not read yet (source problems, not ours)
 
 - **14 Oct 2025** (re-exam, one shift labelled Shift 2): the hosted print has no vector table on
@@ -179,9 +237,8 @@ nothing, extend `catalog-authored.json` and re-run the generator; never edit `ca
 
 ## Not built yet
 
-- **Figures.** Neither pilot shift had a figure question; `commit.ts` refuses a row that
-  declares one. Reasoning figure items (mirror images, paper folding) will need the SSC image
-  objects attached, the way MHT-CET attaches `imageRefs`.
+- **Figures for the 2025 render.** The TCS lane attaches figures (above); a 2025 question is
+  all pictures, so its figures would need cropping from the render. None was needed so far.
 - **Hindi.** English only. Hindi can come later through the MPSC translation layer
   (migration 0118) without changing `content_hash`.
 - **Mocks** (+2 / -0.5, 60 min, a shift = a mock) and the `EXAM_REGISTRY` entry

@@ -1,0 +1,1710 @@
+SSC CGL 2023 Tier I, 21 Jul 2023 Shift 2. Read from SSC's response sheet (TCS print; the key is the option colour, masked on the reading sheets).
+Drafted by agents, one PART each, from the reading sheets only (no key; DRAFTING_BRIEF.md);
+every block reviewed in the main session, then compared with the key (build.ts).
+Format: scripts/ssc-cgl/lib.ts.
+
+=== 1
+chapter: Mirror and Water Images
+subtopic: Mirror Images
+difficulty: EASY
+answer: B
+figure: stem+options
+stem:
+Select the correct mirror image from the following options, when the mirror is placed on the right side of the given figure.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The figure is a square with four black pointer shapes around a central #, with @ at the top left, A at the top right, $ at the bottom left and B at the bottom right.
+
+A mirror on the right swaps left and right but keeps top and bottom. So A moves to the top left, a reversed @ to the top right, a reversed B to the bottom left and a reversed $ to the bottom right, with the pointer shapes reflected left to right.
+
+Option 2 shows exactly this. Option 4 swaps top and bottom (a water image), and options 1 and 3 rotate the figure.
+
+=== 2
+chapter: Blood Relations
+subtopic: Coded Relations
+difficulty: MODERATE
+answer: B
+flawed: yes
+note: SSC printed this question in Hindi only; the stem and options are our English rendering.
+stem:
+If,
+'B % D' means 'B is the brother of D',
+'B & D' means 'B is the mother of D',
+'B \(\times\) D' means 'B is the husband of D',
+'B # D' means 'B is the sister of D',
+'B \(\text{\textdollar}\) D' means 'B is the son of D',
+'B @ D' means 'B is the father of D',
+then how is A related to E in the given expression?
+A % D \(\text{\textdollar}\) F # B % E \(\times\) S
+A: Husband
+B: Sister's son (nephew)
+C: Mother's brother (maternal uncle)
+D: Brother
+solution:
+A % D: A is the brother of D. D \(\text{\textdollar}\) F: D is the son of F, so A is also F's son.
+
+F # B: F is the sister of B. B % E: B is the brother of E. So F is E's sister.
+
+E \(\times\) S: E is the husband of S, so E is male.
+
+A is the son of E's sister, so A is E's nephew (bhanja).
+
+=== 3
+chapter: Embedded Figures and Pattern Completion
+subtopic: Embedded Figures
+difficulty: MODERATE
+answer: B
+figure: stem+options
+stem:
+Select the option figure which is embedded in the given figure (rotation is NOT allowed).
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The figure has a circle at the top, a small lined trapezium below it, and two leaf (petal) shapes opening upward from a common point, sitting on a V with vertical lines.
+
+Option 2, two leaves meeting at the bottom and opening upward, is that lower pair of petals. The figure has no square, no full diamond (the petals' curved edges close the top), and no circle with lines inside it.
+
+=== 4
+chapter: Classification
+subtopic: Number Classification
+difficulty: MODERATE
+answer: C
+stem:
+The second number in the given number-pairs is obtained by performing certain mathematical operation(s) on the first number. The same operation(s) is/are followed in all the number-pairs, except one. Find that odd number-pair.
+A: (7, 89)
+B: (8, 102)
+C: (5, 60)
+D: (6, 76)
+solution:
+The rule is second = first \(\times\) 13 \(-\) 2.
+
+7: \(91 - 2 = 89\). 8: \(104 - 2 = 102\). 6: \(78 - 2 = 76\).
+
+5: \(65 - 2 = 63\), not 60. So (5, 60) is the odd pair.
+
+=== 5
+chapter: Analogy
+subtopic: Letter Analogy
+difficulty: MODERATE
+answer: C
+stem:
+Select the option that is related to the fifth letter-cluster in the same way as the second letter-cluster is related to the first letter-cluster and the fourth letter-cluster is related to the third letter-cluster.
+MOTHER : SGKXTS :: SIMPLE : FNSQNY :: DELIGHT : ?
+A: UJJMQJJ
+B: VJJMQKK
+C: UJJMQKK
+D: THGILED
+solution:
+Write the word backwards and move the letters forward by 1, 2, 3, 4, 5, 6, ... places.
+
+MOTHER backwards is REHTOM: R+1 = S, E+2 = G, H+3 = K, T+4 = X, O+5 = T, M+6 = S, giving SGKXTS. SIMPLE backwards is ELPMIS, giving FNSQNY.
+
+DELIGHT backwards is THGILED: T+1 = U, H+2 = J, G+3 = J, I+4 = M, L+5 = Q, E+6 = K, D+7 = K, giving UJJMQKK.
+
+=== 6
+chapter: Alphabet and Number Tests
+subtopic: Dictionary Order
+difficulty: EASY
+answer: C
+stem:
+Select the option that represents the correct order of the given words as they would appear in an English dictionary.
+1. Phantom
+2. Photograph
+3. Philosophy
+4. Physical
+5. Pharynx
+6. Physics
+A: 5, 1, 3, 2, 4, 6
+B: 1, 5, 3, 2, 6, 4
+C: 1, 5, 3, 2, 4, 6
+D: 5, 1, 3, 2, 6, 4
+solution:
+All begin with Ph. By the third letter: Pha (Phantom, Pharynx), Phi (Philosophy), Pho (Photograph), Phy (Physical, Physics).
+
+Phan comes before Phar. Physica comes before Physics (a before s).
+
+Order: Phantom, Pharynx, Philosophy, Photograph, Physical, Physics = 1, 5, 3, 2, 4, 6.
+
+=== 7
+chapter: Paper Folding and Cutting
+subtopic: Paper Folding and Punching
+difficulty: MODERATE
+answer: A
+figure: stem+options
+stem:
+A paper is folded and cut as shown below. How will it appear when unfolded?
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+A square sheet (set as a diamond) is folded right half onto the left along the vertical diagonal, then the top onto the bottom along the horizontal diagonal. The cuts in the remaining lower-left quarter are a right-pointing arrow near the horizontal fold, an upside-down heart near the centre and a down-pointing arrow near the vertical fold.
+
+Unfolding the horizontal fold mirrors these upward: the down arrow becomes an up arrow and the heart turns upright. Unfolding the vertical fold mirrors everything to the right: right-pointing arrows become left-pointing.
+
+So the top pair of arrows points up, the bottom pair points down, the left arrows point right, the right arrows point left, upright hearts sit above upside-down ones. That is option 1.
+
+=== 8
+chapter: Syllogism
+subtopic: Three-Statement Syllogism
+difficulty: EASY
+answer: C
+stem:
+Three statements are given, followed by four conclusions numbered I, II, III and IV. Assuming the statements to be true, even if they seem to be at variance with commonly known facts, decide which of the conclusions logically follow(s) from the statements.
+
+Statements:
+Some trees are leaves.
+Some leaves are flowers.
+Some flowers are branches.
+
+Conclusions:
+I. Some trees are flowers.
+II. Some leaves are branches.
+III. Some branches are flowers.
+IV. Some branches are leaves.
+A: Only conclusions II and III follow
+B: Only conclusions I and II follow
+C: Only conclusion III follows
+D: None of the conclusions follow
+solution:
+"Some flowers are branches" converts to "Some branches are flowers", so III follows.
+
+Two "some" statements in a chain give no conclusion, so trees and flowers (I), leaves and branches (II, IV) have no definite link. Only III follows.
+
+=== 9
+chapter: Coding-Decoding
+subtopic: Number and Symbol Coding
+difficulty: EASY
+answer: B
+stem:
+In a certain code language, 'BEAK' is coded as '4392' and 'RAKE' is coded as '9034'.
+What is the code for 'B' in the given code language?
+A: 3
+B: 2
+C: 4
+D: 9
+solution:
+BEAK and RAKE share E, A and K; their codes share 4, 3 and 9. So E, A, K take 4, 3, 9 and the remaining letter of BEAK, B, takes the remaining digit 2.
+
+=== 10
+chapter: Analogy
+subtopic: Number Set Analogy
+difficulty: MODERATE
+answer: A
+stem:
+Study the given pattern carefully and select the number that can replace the question mark (?) in it.
+(5, 14, 3)
+(3, 24, 7)
+(9, 30, ?)
+(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 – Operations on 13 such as adding/subtracting/multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed)
+A: 7
+B: 5
+C: 13
+D: 9
+solution:
+Middle = first + 3 \(\times\) third.
+
+\(5 + 3 \times 3 = 14\). \(3 + 3 \times 7 = 24\).
+
+\(9 + 3 \times ? = 30\), so \(? = 7\).
+
+=== 11
+chapter: Syllogism
+subtopic: Three-Statement Syllogism
+difficulty: EASY
+answer: D
+stem:
+In this question, three statements are given, followed by three conclusions numbered I, II and III. Assuming the statements to be true, even if they seem to be at variance with commonly known facts, decide which of the conclusions logically follows/follow from the statements.
+
+Statements:
+Some mirrors are glass.
+All glass are taps.
+Some taps are pens.
+
+Conclusions:
+I. Some glass are mirrors.
+II. All taps are glass.
+III. Some pens are taps.
+A: None of the conclusions follows.
+B: Only conclusions I and II follow.
+C: Only conclusion II follows.
+D: Only conclusions I and III follow.
+solution:
+I is the converse of "Some mirrors are glass", so it follows. III is the converse of "Some taps are pens", so it follows.
+
+"All glass are taps" does not reverse to "All taps are glass", so II does not follow.
+
+=== 12
+chapter: Paper Folding and Cutting
+subtopic: Paper Folding and Punching
+difficulty: MODERATE
+answer: D
+figure: stem+options
+stem:
+The sequence of folding a piece of paper and the manner in which the folded paper has been cut is shown below. Choose the figure that would most closely resemble the unfolded form of the paper.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The sheet is folded top half down, then right half onto the left, leaving the bottom-left quarter. The cut there is a circle, a bow-tie and a small square, left to right.
+
+Unfolding the vertical fold puts a mirror copy in the bottom-right quarter: square, bow-tie, circle. Unfolding the horizontal fold copies both rows into the top half (the design is symmetric top to bottom).
+
+So both rows read circle-bow-tie-square on the left and square-bow-tie-circle on the right: option 4.
+
+=== 13
+chapter: Series
+subtopic: Letter Series
+difficulty: MODERATE
+answer: A
+stem:
+Select the option that represents the letters that, when sequentially placed from left to right in the blanks below, will complete the letter series.
+T_OJEW_TRO_EWF_ROJ_WFTR_JE_F
+A: RFJTEOW
+B: RJFOTWE
+C: RJFTWOE
+D: RFJOTEW
+solution:
+The series is TROJEWF repeated four times: TROJEWF TROJEWF TROJEWF TROJEWF.
+
+The blanks are R, F, J, T, E, O, W in order: RFJTEOW.
+
+=== 14
+chapter: Mathematical Operations
+subtopic: Interchanging Signs and Numbers
+difficulty: MODERATE
+answer: B
+stem:
+Which two numbers and two signs should be interchanged in the following equation to make it correct?
+
+\(7 \times 14 \div 6 + 12 + 6 = 30\)
+A: 7 and 6, \(\times\) and \(\div\)
+B: 7 and 14, \(\times\) and \(\div\)
+C: 7 and 6, \(\div\) and +
+D: 7 and 14, \(\times\) and +
+solution:
+Swapping 7 and 14 and the signs \(\times\) and \(\div\) gives \(14 \div 7 \times 6 + 12 + 6\).
+
+\(14 \div 7 = 2\), \(2 \times 6 = 12\), \(12 + 12 + 6 = 30\). Correct.
+
+Check option 4: \(14 + 7 \div 6 \times 12 + 6 = 14 + 14 + 6 = 34\), not 30.
+
+=== 15
+chapter: Analogy
+subtopic: Number Analogy
+difficulty: EASY
+answer: A
+stem:
+Select the option that is related to the fifth term in the same way as the second term is related to the first term and the fourth term is related to the third term.
+160 : 4 :: 250 : 5 :: 360 : ?
+A: 6
+B: 9
+C: 4
+D: 10
+solution:
+\(160 = 4^2 \times 10\) and \(250 = 5^2 \times 10\).
+
+\(360 = 6^2 \times 10\), so the answer is 6.
+
+=== 16
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: EASY
+answer: C
+stem:
+Select the correct combination of mathematical signs to sequentially replace the * signs and balance the given equation.
+74 * 34 * 78 * 23 * 23 * 30
+A: \(\div, -, +, \times, =\)
+B: \(+, \div, \times, -, =\)
+C: \(+, -, +, -, =\)
+D: \(-, \div, +, \times, =\)
+solution:
+\(74 + 34 - 78 + 23 - 23 = 108 - 78 + 0 = 30\). Balanced.
+
+=== 17
+chapter: Analogy
+subtopic: Number Set Analogy
+difficulty: EASY
+answer: B
+stem:
+Select the set in which the numbers are related in the same way as are the numbers of the given sets.
+(NOTE : Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 – Operations on 13 such as adding /Subtracting /multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is NOT allowed)
+(5, 30, 60)
+(11, 66, 132)
+A: (6, 42, 148)
+B: (14, 84, 168)
+C: (14, 16, 118)
+D: (2, 10, 16)
+solution:
+Second = first \(\times\) 6, third = second \(\times\) 2: \(5 \times 6 = 30\), \(30 \times 2 = 60\); \(11 \times 6 = 66\), \(66 \times 2 = 132\).
+
+\(14 \times 6 = 84\), \(84 \times 2 = 168\). Only (14, 84, 168) fits.
+
+=== 18
+chapter: Non-Verbal Series and Analogy
+subtopic: Figure Series
+difficulty: HARD
+answer: D
+figure: stem+options
+stem:
+Select the figure that will replace the question mark (?) in the following figure series.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+Each figure has symbols at the four corners and the centre. At every step one symbol stays, one is replaced by a new symbol, and three move round a diagonal.
+
+Figure 1 to 2: B, U, X rotate on the anti-diagonal (centre to bottom left, bottom left to top right, top right to centre); the arrow stays; the square is replaced. Figure 2 to 3: the main diagonal turns (top left to centre, centre to bottom right, bottom right to top left); B stays; X is replaced by 9. Figure 3 to 4: the anti-diagonal turns again in the same sense; the arrow stays; U is replaced by =.
+
+Next, the main diagonal turns as in step 2: the arrow (top left) goes to the centre, 9 (centre) to the bottom right, = (bottom right) to the top left; B stays at the top right; the bottom-left symbol is replaced by L. That is option 4.
+
+=== 19
+chapter: Non-Verbal Series and Analogy
+subtopic: Figure Series
+difficulty: MODERATE
+answer: D
+figure: stem+options
+stem:
+Select the figure from the options that can replace the question mark (?) and complete the given pattern.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+P stays at the top right and turns \(90^\circ\) each step, so after four turns it is upright again in figure 5.
+
+C also turns \(90^\circ\) each step (upright, then a quarter turn, half turn, three-quarter turn), so it is upright in figure 5; it sits in the centre as in figure 2.
+
+The = sign appears in figures 1 and 3 at the left and is absent in 2 and 4, so it returns in figure 5.
+
+Option 4 has an upright P at the top right, an upright C in the centre and = at the left.
+
+=== 20
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: D
+stem:
+Which of the following letter-clusters will replace the question mark (?) in the given series?
+EIMC, DKOD, CMQE, ?, AQUG
+A: CPSF
+B: COSF
+C: BPSF
+D: BOSF
+solution:
+First letters: E, D, C, B, A (\(-1\)). Second: I, K, M, O, Q (\(+2\)). Third: M, O, Q, S, U (\(+2\)). Fourth: C, D, E, F, G (\(+1\)).
+
+The missing cluster is BOSF.
+
+=== 21
+chapter: Analogy
+subtopic: Letter Analogy
+difficulty: MODERATE
+answer: D
+stem:
+Select the option that is related to the fifth letter-cluster in the same way as the second letter-cluster is related to the first letter-cluster and the fourth letter-cluster is related to the third letter-cluster.
+IDEOLOGY : YGILIYDC :: HARDWARE : YRUWDRUH :: ISOLATED : ?
+A: XCVFWIA
+B: BUSIMAQS
+C: JOKLERD
+D: DYTULISC
+solution:
+Write the word backwards, keep the consonants (and Y), and move each vowel 6 letters back: A to U, E to Y, I to C, O to I.
+
+HARDWARE backwards is ERAWDRAH, which becomes YRUWDRUH. IDEOLOGY backwards is YGOLOEDI, which becomes YGILIYDC.
+
+ISOLATED backwards is DETALOSI: D, E to Y, T, A to U, L, O to I, S, I to C, giving DYTULISC.
+
+=== 22
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: MODERATE
+answer: A
+stem:
+Select the correct combination of mathematical signs to sequentially replace the * signs and to balance the given equation.
+321 * 3 * 236 * 5 * 248 * 4 * 20 = 384
+A: \(+, -, \times, +, \div, \times\)
+B: \(-, +, \times, -, \div, +\)
+C: \(\div, +, -, \times, +, -\)
+D: \(\times, +, -, \div, +, -\)
+solution:
+Option 1: \(321 + 3 - 236 \times 5 + 248 \div 4 \times 20\).
+
+\(236 \times 5 = 1180\) and \(248 \div 4 \times 20 = 62 \times 20 = 1240\).
+
+\(324 - 1180 + 1240 = 384\). Balanced.
+
+Check option 2: \(321 - 3 + 1180 - 62 + 20 = 1456\), not 384.
+
+=== 23
+chapter: Series
+subtopic: Letter Series
+difficulty: MODERATE
+answer: A
+stem:
+Select the option that represents the letters that, when sequentially placed from left to right in the blanks below, will complete the letter series.
+P _ _ MO _ ST_ OP _ TM _ _ S _ MO
+A: STPMSOPT
+B: TSSMPOPT
+C: STSMPOPT
+D: STPSMOPT
+solution:
+The series is PSTMO repeated four times: PSTMO PSTMO PSTMO PSTMO.
+
+The blanks are S, T, P, M, S, O, P, T in order: STPMSOPT.
+
+=== 24
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: MODERATE
+answer: D
+stem:
+In a certain code language, 'CHORUS' is coded as UVTPJD and 'ANTHEM' is coded as OFJUPB. How will 'VOLUME' be coded in the same language?
+A: GNXMPW
+B: GNWNPW
+C: HMWNPV
+D: GNWMQW
+solution:
+Write the word backwards, then move the letters forward by +2, +1, +2, +1, ...
+
+CHORUS backwards is SUROHC: S+2 = U, U+1 = V, R+2 = T, O+1 = P, H+2 = J, C+1 = D, giving UVTPJD. ANTHEM backwards is MEHTNA, giving OFJUPB.
+
+VOLUME backwards is EMULOV: E+2 = G, M+1 = N, U+2 = W, L+1 = M, O+2 = Q, V+1 = W, giving GNWMQW.
+
+=== 25
+chapter: Analogy
+subtopic: Number Analogy
+difficulty: EASY
+answer: D
+stem:
+Select the option that is related to the fifth term in the same way as the second term is related to the first term and the fourth term is related to the third term.
+121 : 12 :: 225 : 16 :: 441 :?
+A: 21
+B: 19
+C: 23
+D: 22
+solution:
+Second term = square root of the first + 1: \(\sqrt{121} + 1 = 12\), \(\sqrt{225} + 1 = 16\).
+
+\(\sqrt{441} + 1 = 21 + 1 = 22\).
+
+=== 26
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Judiciary — Supreme Court and High Courts
+difficulty: EASY
+answer: A
+stem:
+Which Article of the Indian Constitution stipulates that the law declared by the Supreme Court shall be binding on all courts within the territory of India?
+A: Article 141
+B: Article 140
+C: Article 142
+D: Article 145
+solution:
+Article 141 makes the law declared by the Supreme Court binding on all courts in India. Article 140 deals with ancillary powers of the Supreme Court, Article 142 with enforcing its decrees and orders to do complete justice, and Article 145 with its rules of court.
+
+=== 27
+subject: History
+chapter: Medieval India
+subtopic: Other Medieval Kingdoms (Chola, Rajput, Ahom, Sikh)
+difficulty: EASY
+answer: C
+stem:
+Who among the following Sultans of Delhi started the system of Sijda and Paibos?
+A: Muhammad Bin Tughluq
+B: Nasir ud din Muhammad
+C: Ghiyas ud din Balban
+D: Qutb ud-Din Aibak
+solution:
+Balban, who stressed the dignity of the Sultan and his theory of kingship, introduced the Persian court customs of sijda (prostration) and paibos (kissing the Sultan's feet).
+
+=== 28
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: D
+stem:
+Someity is related to which of the following events?
+A: Tokyo Olympics 2020
+B: Winter Olympics 2022
+C: Commonwealth games 2022
+D: Tokyo paralympic 2020
+solution:
+Someity was the mascot of the Tokyo 2020 Paralympic Games. The Tokyo 2020 Olympic mascot was Miraitowa, the Beijing 2022 Winter Olympics mascot was Bing Dwen Dwen and the Birmingham 2022 Commonwealth Games mascot was Perry.
+
+=== 29
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: EASY
+answer: D
+stem:
+Pandit Kishan Maharaj of Benaras Gharana was a _______ player.
+A: santoor
+B: flute
+C: sarangi
+D: tabla
+solution:
+Pandit Kishan Maharaj was a tabla maestro of the Benares gharana, awarded the Padma Vibhushan in 2002.
+
+=== 30
+subject: Chemistry
+chapter: Atomic Structure and Periodic Classification
+subtopic: Electron Configuration and the Periodic Table
+difficulty: EASY
+answer: D
+stem:
+Identify the last element from the fifth period.
+A: Helium
+B: Yttrium
+C: Rubidium
+D: Xenon
+solution:
+Every period ends with a noble gas. The fifth period runs from rubidium (Z = 37) to xenon (Z = 54). Helium ends the first period, and yttrium is a fifth-period transition metal.
+
+=== 31
+subject: Geography
+chapter: Indian Geography — Physical Features
+subtopic: Indian Rivers, Lakes and Water Bodies
+difficulty: EASY
+answer: D
+stem:
+The largest freshwater lake of India is ________ .
+A: Chilika
+B: Koleru
+C: Vembanad
+D: Wular
+solution:
+Wular Lake in Jammu and Kashmir, fed by the Jhelum, is India's largest freshwater lake. Chilika is the largest brackish water lagoon and Vembanad the longest lake.
+
+=== 32
+subject: Polity
+chapter: Fundamental Rights, DPSP and Local Governance
+subtopic: Fundamental Rights, DPSP and Duties
+difficulty: EASY
+answer: A
+stem:
+Which of the following rights is guaranteed by Article 25 of the Indian Constitution?
+A: Right to freedom of religion
+B: Cultural and educational rights
+C: Right to equality
+D: Right to constitutional remedies
+solution:
+Article 25 guarantees freedom of conscience and the free profession, practice and propagation of religion (Right to freedom of religion, Articles 25 to 28). Cultural and educational rights are Articles 29 and 30, equality Articles 14 to 18, and constitutional remedies Article 32.
+
+=== 33
+subject: Geography
+chapter: Indian Geography — Physical Features
+subtopic: Indian States and Islands
+difficulty: EASY
+answer: A
+stem:
+Which water body separates Andaman in the north and Nicobar in the south?
+A: Ten Degree Channel
+B: Eight Degree Channel
+C: Eleven Degree Channel
+D: Nine Degree Channel
+solution:
+The Ten Degree Channel separates the Andaman Islands from the Nicobar Islands. The Nine Degree Channel separates Kalpeni and Minicoy (Lakshadweep), and the Eight Degree Channel separates Minicoy from the Maldives.
+
+=== 34
+subject: Current Affairs
+chapter: International Affairs and Relations
+subtopic: International Summits, Initiatives and Forums
+difficulty: HARD
+answer: D
+stem:
+On 30 January 2023, the two-day meeting of the first International Financial Architecture Working Group of G-20, being held under the chairmanship of India, was inaugurated by the Union Minister of Agriculture and Farmers Welfare, Narendra Singh Tomar and Minister of Food Processing Industries, Pashupati Kumar Paras in ________.
+A: Bhubaneswar
+B: New Delhi
+C: Mumbai
+D: Chandigarh
+solution:
+The first meeting of the G20 International Financial Architecture Working Group under India's presidency was held in Chandigarh on 30 and 31 January 2023.
+
+=== 35
+subject: History
+chapter: Ancient India
+subtopic: Mahajanapadas, Magadha and Mauryan Empire
+difficulty: EASY
+answer: A
+stem:
+Who among the following Mauryan rulers conquered Kalinga?
+A: Ashoka
+B: Bindusara
+C: Brihadratha
+D: Chandragupta Maurya
+solution:
+Ashoka conquered Kalinga in about 261 BCE; the bloodshed of the war, recorded in his Rock Edict XIII, turned him to Dhamma. Brihadratha was the last Mauryan ruler.
+
+=== 36
+subject: Current Affairs
+chapter: Sports
+subtopic: Cricket — Records, Tournaments and Players
+difficulty: EASY
+answer: B
+stem:
+The term 'Straight drive' is related to which of the following sports?
+A: Hockey
+B: Cricket
+C: Football
+D: Badminton
+solution:
+The straight drive is a cricket batting stroke, played with a straight bat back past the bowler.
+
+=== 37
+subject: Chemistry
+chapter: Chemistry in Everyday Life
+subtopic: Common Chemicals and Their Uses
+difficulty: MODERATE
+answer: B
+stem:
+Which organic compound has a pleasant almond aroma that is commonly used to impart almond flavour to chocolate and baked goods?
+A: Manzanate
+B: Benzaldehyde
+C: Ethyl maltol
+D: Isoamyl acetate
+solution:
+Benzaldehyde (\(\text{C}_6\text{H}_5\text{CHO}\)) is the main component of bitter almond oil and is used as artificial almond flavouring. Isoamyl acetate smells of banana, ethyl maltol of caramel or cotton candy, and manzanate is a fruity, apple-like aroma chemical.
+
+=== 38
+subject: Economics
+chapter: National Income, Growth and Development Indicators
+subtopic: National Income and Sectoral Composition
+difficulty: EASY
+answer: D
+flawed: yes
+note: SSC printed this question in Hindi only; the English stem and options are our translation.
+stem:
+What is Net National Product?
+A: Net National Product is the product of Gross National Product and depreciation.
+B: Net National Product is the sum of Gross National Product and the income of foreigners.
+C: Net National Product is equal to Gross National Product.
+D: Net National Product is the difference between Gross National Product and depreciation.
+solution:
+NNP = GNP minus depreciation (consumption of fixed capital). It is neither a product nor a sum, and it equals GNP only if depreciation is zero.
+
+=== 39
+subject: Biology
+chapter: Cell Biology
+subtopic: Cell Division and DNA Replication
+difficulty: MODERATE
+answer: C
+stem:
+Match the columns.
+
+| Column-A (Enzyme/Protein) | Column-B (Role in DNA replication) |
+|---|---|
+| i. Helicase | a. Joins the \(3'\) end of the new DNA fragment to the \(5'\) end of the previous one |
+| ii. RNA primase | b. Nucleotide polymerisation |
+| iii. DNA polymerase | c. RNA primer synthesis |
+| iv. DNA ligase | d. Opens up the DNA double helix |
+A: i-a, ii-b, iii-c, iv-d
+B: i-b, ii-a, iii-d, iv-c
+C: i-d, ii-c, iii-b, iv-a
+D: i-b, ii-c, iii-a, iv-d
+solution:
+Helicase unwinds the double helix (d), primase lays down the RNA primer (c), DNA polymerase adds nucleotides (b) and DNA ligase seals the nick between Okazaki fragments (a). So i-d, ii-c, iii-b, iv-a.
+
+=== 40
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Days, Festivals and Observances
+difficulty: EASY
+answer: C
+flawed: yes
+note: SSC printed this question in Hindi only; the English stem and options are our translation.
+stem:
+Sikhs celebrate Bandi Chhor Divas, which coincides with which Hindu festival?
+A: Ganesh Chaturthi
+B: Holi
+C: Diwali
+D: Dussehra
+solution:
+Bandi Chhor Divas marks Guru Hargobind's release from Gwalior Fort and is celebrated on the same day as Diwali.
+
+=== 41
+subject: Economics
+chapter: Indian Economy
+subtopic: International Trade and Finance
+difficulty: EASY
+answer: B
+stem:
+Under the PL 480 scheme, India used to import wheat from which country?
+A: USSR
+B: USA
+C: France
+D: UK
+solution:
+PL 480 (Public Law 480, the Agricultural Trade Development and Assistance Act of 1954, "Food for Peace") was a United States law under which India imported American wheat in the 1950s and 1960s.
+
+=== 42
+subject: Geography
+chapter: Indian Geography — Economy, Resources and Transport
+subtopic: Agriculture, Crops, Soils and Land Use
+difficulty: EASY
+answer: A
+stem:
+Which crop is grown during the Zaid season in India?
+A: Cucumber
+B: Jowar
+C: Bajra
+D: Maize
+solution:
+The Zaid season falls between rabi and kharif (March to June) and grows watermelon, muskmelon, cucumber, vegetables and fodder. Jowar, bajra and maize are kharif crops.
+
+=== 43
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: EASY
+answer: D
+stem:
+Kalakshetra style is associated with which Indian classical dance form?
+A: Odissi
+B: Kathak
+C: Kuchipudi
+D: Bharatanatyam
+solution:
+The Kalakshetra style (bani) of Bharatanatyam was developed by Rukmini Devi Arundale at Kalakshetra, the institution she founded in Chennai in 1936.
+
+=== 44
+subject: History
+chapter: Modern India
+subtopic: Freedom Movement — INC, Gandhi and Independence
+difficulty: EASY
+answer: A
+stem:
+When and at which place did the Jallianwala Bagh massacre take place?
+A: On 13 April 1919, at Amritsar
+B: On 12 April 1919, at Chauri Chaura
+C: On 13 May 1918, at Amritsar
+D: On 14 March 1919, at Amritsar
+solution:
+General Dyer's troops fired on a crowd in Jallianwala Bagh, Amritsar, on 13 April 1919 (Baisakhi day). Chauri Chaura (Gorakhpur) was the 1922 incident.
+
+=== 45
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Civilian Awards and Honours
+difficulty: MODERATE
+answer: D
+stem:
+V Satyanarayana Sarma, a Padma Shri awardee, was recognised for which of the following dance forms?
+A: Odissi
+B: Bharatanatyam
+C: Kathak
+D: Kuchipudi
+solution:
+Vedantam Satyanarayana Sarma, from Kuchipudi village in Andhra Pradesh, was a Kuchipudi dancer famed for female roles such as Satyabhama; he received the Padma Shri in 1970.
+
+=== 46
+subject: Current Affairs
+chapter: International Affairs and Relations
+subtopic: India's Foreign Policy and Bilateral Relations
+difficulty: HARD
+answer: B
+stem:
+Which of the following cities of Nepal does NOT have a branch of 'Indian Citizen's Association of Nepal'?
+A: Pokhara
+B: Lalitpur
+C: Bhairahawa
+D: Damak
+solution:
+The Indian Citizens' Association of Nepal, the association of resident Indian citizens in Nepal (formed in 1990), has branches at Pokhara, Damak and Bhairahawa. Lalitpur is not listed among its branches.
+
+=== 47
+subject: Current Affairs
+chapter: Government Schemes, Policy and Governance
+subtopic: Health, Education and Welfare Schemes
+difficulty: MODERATE
+answer: A
+stem:
+In February 2022, Ministry of Agriculture and Farmers Welfare announced the launch of __________, which is a doorstep distribution drive to deliver crop insurance policies to farmers under the Pradhan Mantri Fasal Bima Yojana (PMFBY).
+A: Meri Policy Mere Hath
+B: Saubhagya scheme
+C: SEED scheme
+D: Kaushal Yojana
+solution:
+"Meri Policy Mere Hath" was launched in February 2022 to hand PMFBY policy documents to farmers at their doorstep. Saubhagya is a household electrification scheme, and SEED is a scheme for denotified and nomadic tribes.
+
+=== 48
+subject: Current Affairs
+chapter: Government Schemes, Policy and Governance
+subtopic: Government Events, Reports and Announcements
+difficulty: EASY
+answer: A
+stem:
+In which of the following states Vidhan Sabha elections was not held in 2022?
+A: Haryana
+B: Goa
+C: Punjab
+D: Uttar Pradesh
+solution:
+In 2022, assembly elections were held in Uttar Pradesh, Punjab, Goa, Uttarakhand and Manipur (February-March) and in Himachal Pradesh and Gujarat (November-December). Haryana voted in 2019 and again in 2024.
+
+=== 49
+subject: History
+chapter: Modern India
+subtopic: British Administration, Acts and Legislation
+difficulty: EASY
+answer: B
+stem:
+Who designed the administrative code to separate revenue administration from judicial administration?
+A: Lord Lytton
+B: Lord Cornwallis
+C: Lord Auckland
+D: Warren Hastings
+solution:
+The Cornwallis Code of 1793 separated revenue administration from judicial administration: collectors lost their judicial powers, which passed to district judges.
+
+=== 50
+subject: Chemistry
+chapter: Atomic Structure and Periodic Classification
+subtopic: Electron Configuration and the Periodic Table
+difficulty: MODERATE
+answer: D
+stem:
+Identify the correct statement about Newlands' law of octaves.
+A: He started with the element having the highest atomic mass (hydrogen) and ended at thorium which was the 56\(^{\text{th}}\) element.
+B: He started with the element having the lowest atomic mass (hydrogen) and ended at sodium.
+C: He started with the element having the lowest atomic mass (hydrogen) and ended at aluminium.
+D: He started with the element having the lowest atomic mass (hydrogen) and ended at thorium which was the 56\(^{\text{th}}\) element.
+solution:
+Newlands arranged the 56 elements then known in order of increasing atomic mass, starting with hydrogen (the lowest atomic mass, not the highest) and ending at thorium, the 56th element.
+
+=== 51
+chapter: Time, Speed and Distance
+subtopic: Speed Changes and Equations
+difficulty: EASY
+answer: C
+stem:
+The distance between two towns is covered in 7 hours and 30 minutes at the speed of 72 km/h. The time saved if the speed is increased by \(25\%\) is:
+A: 1 hour 36 minutes
+B: 1 hour 50 minutes
+C: 1 hour 30 minutes
+D: 1 hour 20 minutes
+solution:
+Distance \(= 72 \times 7.5 = 540\) km. New speed \(= 72 \times 1.25 = 90\) km/h, so the new time is \(\frac{540}{90} = 6\) hours.
+
+Time saved \(= 7.5 - 6 = 1.5\) hours, that is 1 hour 30 minutes.
+
+Check: speed rises by \(\frac{1}{4}\), so time falls by \(\frac{1}{5}\) of 7.5 hours, which is 1.5 hours.
+
+=== 52
+chapter: Surds, Indices and Simplification
+subtopic: Simplification of Expressions
+difficulty: EASY
+answer: A
+stem:
+Simplify:
+
+\(264 - [142 - \{75 + (38 - (\frac{5}{4} + \frac{11}{4}))\}]\)
+A: 231
+B: 230
+C: 232
+D: 234
+solution:
+\(\frac{5}{4} + \frac{11}{4} = 4\), so \(38 - 4 = 34\).
+
+\(75 + 34 = 109\), then \(142 - 109 = 33\).
+
+\(264 - 33 = 231\).
+
+=== 53
+chapter: Data Interpretation
+subtopic: Pie Charts
+difficulty: EASY
+answer: A
+figure: stem
+stem:
+The chart shows the population of seven districts of National Capital Territory of Delhi.
+
+If the total population of the seven districts is 150 crore, find the total population of A and D.
+A: 45 Crore
+B: 46 Crore
+C: 40 Crore
+D: 42 Crore
+solution:
+The pie chart (titled "Sales") gives A 13%, B 16%, C 8%, D 17%, E 18%, F 13% and G 15%.
+
+A and D together are \(13\% + 17\% = 30\%\).
+
+\(30\%\) of 150 crore \(= 45\) crore.
+
+=== 54
+chapter: Ratio, Proportion and Variation
+subtopic: Mixtures and Alligation
+difficulty: MODERATE
+answer: D
+stem:
+Rice worth ₹126 per kg and ₹135 per kg are mixed with a third variety in the ratio of 1 : 1 : 2. If the mixture is worth ₹153 per kg, then the price of the third variety per kg (in ₹) is:
+A: 182.5
+B: 195.5
+C: 133.5
+D: 175.5
+solution:
+Take 1 kg, 1 kg and 2 kg. Total value of 4 kg at ₹153 is ₹612.
+
+\(126 + 135 + 2x = 612\), so \(2x = 351\) and \(x = 175.5\).
+
+Check: \(\frac{126 + 135 + 351}{4} = \frac{612}{4} = 153\).
+
+=== 55
+chapter: Ratio, Proportion and Variation
+subtopic: Direct and Inverse Variation
+difficulty: EASY
+answer: D
+stem:
+While baking a cake for 15 people, Jaya used 2.4 kg of flour. How much flour will she need to bake a similar cake for 36 people?
+A: 5.60 kg
+B: 6.00 kg
+C: 5.88 kg
+D: 5.76 kg
+solution:
+Flour per person \(= \frac{2.4}{15} = 0.16\) kg.
+
+For 36 people: \(0.16 \times 36 = 5.76\) kg.
+
+=== 56
+chapter: Simple and Compound Interest
+subtopic: Simple Interest
+difficulty: EASY
+answer: D
+stem:
+A person borrowed some money on simple interest. After 4 years, he returned \(\frac{9}{5}\) of the money to the lender. What was the rate of interest?
+A: \(25\%\) p.a.
+B: \(10\%\) p.a.
+C: \(15\%\) p.a.
+D: \(20\%\) p.a.
+solution:
+Amount \(= \frac{9}{5}P\), so interest \(= \frac{4}{5}P\) in 4 years.
+
+Rate \(= \frac{\frac{4}{5}P \times 100}{P \times 4} = 20\%\) p.a.
+
+=== 57
+chapter: Time, Speed and Distance
+subtopic: Relative Speed: Chasing and Meeting
+difficulty: MODERATE
+answer: A
+stem:
+A policeman chasing a thief is 0.5 km behind the thief. The speed of thief is \(80\%\) of the speed of the policeman and policeman catches him in 12 minutes. What is the speed of the thief (in km/h)?
+A: 10
+B: 12.5
+C: 15
+D: 7.5
+solution:
+The gap of 0.5 km closes in 12 minutes \(= \frac{1}{5}\) hour, so the relative speed is \(2.5\) km/h.
+
+Relative speed \(= v - 0.8v = 0.2v = 2.5\), so the policeman's speed \(v = 12.5\) km/h.
+
+Thief's speed \(= 0.8 \times 12.5 = 10\) km/h.
+
+Check: in \(\frac{1}{5}\) h the policeman runs 2.5 km and the thief 2 km; the difference is 0.5 km.
+
+=== 58
+chapter: Time and Work
+subtopic: Pipes and Cisterns
+difficulty: HARD
+answer: C
+stem:
+An inlet pipe can fill an empty tank in \(4\frac{1}{2}\) hours while an outlet pipe drains a completely filled tank in \(7\frac{1}{5}\) hours. The tank is initially empty, and the two pipes are alternately opened for an hour each, till the tank is completely filled, starting with the inlet pipe. In how many hours will the tank be completely filled?
+A: \(24\)
+B: \(20\frac{1}{4}\)
+C: \(20\frac{3}{4}\)
+D: \(22\frac{3}{8}\)
+solution:
+Take the tank as 36 units. Inlet fills \(\frac{36}{4.5} = 8\) units per hour; outlet drains \(\frac{36}{7.2} = 5\) units per hour.
+
+Each 2-hour cycle adds \(8 - 5 = 3\) units. The tank fills during an inlet hour once the level is at least \(36 - 8 = 28\) units.
+
+After 9 cycles (18 hours) the level is 27, still short of 28. After 10 cycles (20 hours) it is 30.
+
+The inlet then needs \(\frac{36 - 30}{8} = \frac{3}{4}\) hour, so the total is \(20\frac{3}{4}\) hours.
+
+Check: after 9 cycles an inlet hour reaches only \(27 + 8 = 35 < 36\), so the 10th cycle is needed.
+
+=== 59
+chapter: Trigonometric Ratios and Identities
+subtopic: Ratios in a Right Triangle
+difficulty: EASY
+answer: C
+stem:
+If \(\triangle ABC\) is right angled at B, AB = 12 cm and \(\angle CAB = 60^\circ\), determine the length of BC.
+A: \(12\sqrt{2}\) cm
+B: \(12\)
+C: \(12\sqrt{3}\) cm
+D: \(24\sqrt{3}\) cm
+solution:
+At A, BC is the opposite side and AB the adjacent side, so \(\tan 60^\circ = \frac{BC}{AB}\).
+
+\(BC = 12 \times \sqrt{3} = 12\sqrt{3}\) cm.
+
+=== 60
+chapter: Surds, Indices and Simplification
+subtopic: Simplification of Expressions
+difficulty: EASY
+answer: B
+stem:
+The value of \((3^2)^2 + 3 \times 3 \div 3 - 3\) is:
+A: \(3^2\)
+B: \(9^2\)
+C: \(2^3\)
+D: \(3^0\)
+solution:
+\((3^2)^2 = 81\). By BODMAS, \(3 \times 3 \div 3 = 3\).
+
+So the value is \(81 + 3 - 3 = 81 = 9^2\).
+
+=== 61
+chapter: Time and Work
+subtopic: Work Rates
+difficulty: MODERATE
+answer: C
+stem:
+A works 5.4 times as fast as B, and A takes 22 days less than B to complete the job when each works alone. Calculate the number of days taken to complete the same job if A and B work together.
+A: \(4\frac{1}{4}\)
+B: \(4\frac{3}{16}\)
+C: \(4\frac{7}{32}\)
+D: \(4\frac{5}{32}\)
+solution:
+If A takes \(x\) days, B takes \(5.4x\) days, so \(5.4x - x = 22\) gives \(x = 5\) and B takes 27 days.
+
+Together: \(\frac{5 \times 27}{5 + 27} = \frac{135}{32} = 4\frac{7}{32}\) days.
+
+Check: rates \(\frac{1}{5} + \frac{1}{27} = \frac{32}{135}\) per day.
+
+=== 62
+chapter: Time and Work
+subtopic: Pipes and Cisterns
+difficulty: MODERATE
+answer: D
+stem:
+Two pipes S1 and S2 alone can fill an empty tank in 15 hours and 20 hours respectively. Pipe S3 alone can empty that completely filled tank in 40 hours. Firstly both pipes S1 and S2 are opened and after 2 hour pipe S3 is also opened. In how much time tank will be completely filled after S3 is opened?
+A: 90/17 hours
+B: 89/12 hours
+C: 90/13 hours
+D: 92/11 hours
+solution:
+Take the tank as 120 units. S1 fills 8, S2 fills 6 and S3 empties 3 units per hour.
+
+In the first 2 hours S1 and S2 fill \(2 \times 14 = 28\) units, leaving 92 units.
+
+With all three open the net rate is \(8 + 6 - 3 = 11\) units per hour, so the time is \(\frac{92}{11}\) hours.
+
+=== 63
+chapter: Time and Work
+subtopic: Work Rates
+difficulty: MODERATE
+answer: C
+stem:
+Amit can complete a piece of work in 5 hours; Jeevan and Paul together can complete it in 4 hours, while Amit and Paul together can complete it in 3 hours. Approximately, how many hours will Jeevan alone take to complete the work (rounded off to the nearest integer)?
+A: 5
+B: 6
+C: 9
+D: 8
+solution:
+Paul's rate \(= \frac{1}{3} - \frac{1}{5} = \frac{2}{15}\) of the work per hour.
+
+Jeevan's rate \(= \frac{1}{4} - \frac{2}{15} = \frac{15 - 8}{60} = \frac{7}{60}\).
+
+Jeevan alone takes \(\frac{60}{7} \approx 8.57\) hours, which rounds to 9.
+
+=== 64
+chapter: Algebraic Identities and Simplification
+subtopic: Rational Algebraic Expressions
+difficulty: MODERATE
+answer: A
+stem:
+What is the value of \((\frac{1}{a} - \frac{1}{b} - \frac{1}{c})\) if, \(\frac{2a - 5}{a} - \frac{4b - 5}{b} + \frac{6c + 5}{c} = 0\)?
+A: \(\frac{4}{5}\)
+B: \(-\frac{8}{5}\)
+C: \(\frac{2}{5}\)
+D: \(-\frac{12}{5}\)
+solution:
+Split each fraction: \(\left(2 - \frac{5}{a}\right) - \left(4 - \frac{5}{b}\right) + \left(6 + \frac{5}{c}\right) = 0\).
+
+So \(4 - \frac{5}{a} + \frac{5}{b} + \frac{5}{c} = 0\), giving \(5\left(\frac{1}{a} - \frac{1}{b} - \frac{1}{c}\right) = 4\).
+
+Hence \(\frac{1}{a} - \frac{1}{b} - \frac{1}{c} = \frac{4}{5}\).
+
+=== 65
+chapter: Data Interpretation
+subtopic: Bar and Line Graphs
+difficulty: MODERATE
+answer: C
+figure: stem
+flawed: yes
+note: The print shows the chart and options but no question line (it is washed out below the chart). The bracketed question is inferred from the options: only 21.18% matches any share in the chart (Biology, 90 of 425 students in 2021).
+stem:
+The following bar diagram shows the number of students who opted for the different subjects in the year 2020 and 2021.
+
+[What percentage of the students in 2021 opted for Biology?]
+A: \(23.14\%\)
+B: \(22.34\%\)
+C: \(21.18\%\)
+D: \(24.31\%\)
+solution:
+The chart gives (2020, 2021): Economics 75, 85; Biology 100, 90; Computer Science 60, 65; Physical Education 125, 110; Geography 75, 75.
+
+Total in 2021 \(= 85 + 90 + 65 + 110 + 75 = 425\). Total in 2020 \(= 435\).
+
+Biology in 2021 \(= \frac{90}{425} \times 100 \approx 21.18\%\).
+
+The other options match no share of the chart: for example Biology in 2020 is \(\frac{100}{435} \approx 22.99\%\) and Biology over both years is \(\frac{190}{860} \approx 22.09\%\).
+
+=== 66
+chapter: Circles
+subtopic: Chords and Perpendiculars
+difficulty: MODERATE
+answer: C
+stem:
+AB = 28 cm and CD = 22 cm are two parallel chords on the same side of the centre of a circle. The distance between them is 4 cm. The radius of the circle is __________. (Consider up to two decimals)
+A: 15.20 cm
+B: 14.82 cm
+C: 15.82 cm
+D: 13.20 cm
+solution:
+Let AB be \(d\) cm from the centre; the shorter chord CD is then \(d + 4\) cm away. Half-chords are 14 and 11.
+
+\(r^2 = 14^2 + d^2 = 11^2 + (d + 4)^2\), so \(196 = 121 + 8d + 16\), giving \(d = \frac{59}{8} = 7.375\).
+
+\(r^2 = 196 + 54.39 = 250.39\), so \(r \approx 15.82\) cm.
+
+Check: \(11^2 + 11.375^2 = 121 + 129.39 = 250.39\).
+
+=== 67
+chapter: Algebraic Identities and Simplification
+subtopic: Reciprocal Sums x ± 1/x
+difficulty: MODERATE
+answer: D
+stem:
+If \((x - \frac{1}{x}) = 2\sqrt{2}\), what is the value of \((x^6 + \frac{1}{x^6})\)?
+A: 1030
+B: 960
+C: 1000
+D: 970
+solution:
+\(x^2 + \frac{1}{x^2} = \left(x - \frac{1}{x}\right)^2 + 2 = 8 + 2 = 10\).
+
+\(x^6 + \frac{1}{x^6} = \left(x^2 + \frac{1}{x^2}\right)^3 - 3\left(x^2 + \frac{1}{x^2}\right) = 1000 - 30 = 970\).
+
+=== 68
+chapter: Percentage, Profit and Loss
+subtopic: Profit and Loss
+difficulty: EASY
+answer: B
+stem:
+To earn a \(12\%\) profit, a shopkeeper sells a television for ₹22,400. What should be the selling price (in ₹) of the television if he wants a double profit?
+A: 24,000
+B: 24,800
+C: 24,600
+D: 25,000
+solution:
+Cost price \(= \frac{22400}{1.12} = 20000\).
+
+Double profit is \(24\%\), so the selling price \(= 20000 \times 1.24 = 24800\).
+
+=== 69
+chapter: Mensuration 2D
+subtopic: Areas of Triangles
+difficulty: EASY
+answer: D
+stem:
+The perimeter of an isosceles triangle is 100 cm. If the base is 36 cm, then find its semi perimeter (in centimetres).
+A: 64
+B: 60
+C: 45
+D: 50
+solution:
+Semi-perimeter is half the perimeter: \(\frac{100}{2} = 50\) cm. The base length is not needed.
+
+=== 70
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: EASY
+answer: D
+stem:
+Three successive discounts of \(25\%\) each on the marked price of an item are together equivalent to a single discount (correct up to 2 decimal places) of:
+A: \(62.35\%\)
+B: \(60.25\%\)
+C: \(56.45\%\)
+D: \(57.81\%\)
+solution:
+The price paid is \(0.75^3 = 0.421875\) of the marked price.
+
+Single discount \(= 1 - 0.421875 = 0.578125\), that is \(57.81\%\).
+
+=== 71
+chapter: Triangles
+subtopic: Ratio of Areas of Triangles
+difficulty: EASY
+answer: C
+stem:
+The sides of two similar triangles are in the ratio 5:7. The areas of these triangles are in the ratio:
+A: 35 :49
+B: 15 :49
+C: 25 :49
+D: 36 :49
+solution:
+Areas of similar triangles are in the ratio of the squares of their sides: \(5^2 : 7^2 = 25 : 49\).
+
+=== 72
+chapter: Trigonometric Ratios and Identities
+subtopic: Reciprocal Pairs — sec ± tan and cosec ± cot
+difficulty: EASY
+answer: A
+stem:
+Find the value of \(\sqrt{\frac{1 - \sin 3\theta}{1 + \sin 3\theta}}\).
+A: \(\sec 3\theta - \tan 3\theta\)
+B: \((\sec 3\theta - \tan 3\theta)^3\)
+C: \((\sec 3\theta - \tan 3\theta)^2\)
+D: \(\sec 3\theta + \tan 3\theta\)
+solution:
+Multiply inside by \(\frac{1 - \sin 3\theta}{1 - \sin 3\theta}\): \(\sqrt{\frac{(1 - \sin 3\theta)^2}{\cos^2 3\theta}} = \frac{1 - \sin 3\theta}{\cos 3\theta}\) (taking \(\cos 3\theta > 0\)).
+
+\(\frac{1 - \sin 3\theta}{\cos 3\theta} = \sec 3\theta - \tan 3\theta\).
+
+Check at \(\theta = 10^\circ\): \(\sqrt{\frac{0.5}{1.5}} = 0.577\) and \(\sec 30^\circ - \tan 30^\circ = 1.155 - 0.577 = 0.577\).
+
+=== 73
+chapter: Trigonometric Ratios and Identities
+subtopic: Complementary and Allied Angles
+difficulty: EASY
+answer: B
+stem:
+The value of \(\tan 25^\circ \tan 35^\circ \tan 45^\circ \tan 55^\circ \tan 65^\circ\) is:
+A: \(2\)
+B: \(1\)
+C: \(\sqrt{3}\)
+D: \(0\)
+solution:
+\(\tan 65^\circ = \cot 25^\circ\) and \(\tan 55^\circ = \cot 35^\circ\), so \(\tan 25^\circ \tan 65^\circ = 1\) and \(\tan 35^\circ \tan 55^\circ = 1\).
+
+With \(\tan 45^\circ = 1\), the product is \(1\).
+
+=== 74
+chapter: Algebraic Identities and Simplification
+subtopic: Squares and Cubes of a Binomial
+difficulty: MODERATE
+answer: C
+stem:
+What is the value of \((27x^3 + 58x^2y + 31xy^2 + 8y^3)\), when \(x = 5\) and \(y = -7\)?
+A: \(1924\)
+B: \(-1926\)
+C: \(-1924\)
+D: \(1926\)
+solution:
+\(27x^3 + 58x^2y + 31xy^2 + 8y^3 = (3x + 2y)^3 + 4x^2y - 5xy^2 = (3x + 2y)^3 + xy(4x - 5y)\).
+
+\(3x + 2y = 15 - 14 = 1\) and \(xy(4x - 5y) = -35 \times (20 + 35) = -1925\).
+
+Value \(= 1 - 1925 = -1924\).
+
+Check directly: \(3375 - 10150 + 7595 - 2744 = -1924\).
+
+=== 75
+chapter: Trigonometric Ratios and Identities
+subtopic: Simplifying and Proving Identities
+difficulty: EASY
+answer: A
+stem:
+The value of \(\sec x - \cos x\)= ?
+A: \(\tan x \sin x\)
+B: \(\sec x \tan x\)
+C: \(\tan x \cos x\)
+D: \(\sec x \cos x\)
+solution:
+\(\sec x - \cos x = \frac{1 - \cos^2 x}{\cos x} = \frac{\sin^2 x}{\cos x} = \tan x \sin x\).
+
+=== 76
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: B
+stem:
+Select the option that can be used as a one-word substitute for the given group of words.
+The place that a person treats as his permanent home, or lives in and has a substantial connection with
+A: Oasis
+B: Domicile
+C: Embankment
+D: Resort
+solution:
+A domicile is the place a person treats as his permanent home and has a substantial legal connection with. An oasis is a fertile spot in a desert, an embankment a raised bank of earth and a resort a holiday place.
+
+=== 77
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: B
+stem:
+Select the most appropriate option that can substitute the underlined segment in the given sentence. If there is no need to substitute it, select ‘No substitution’.
+My friend \(\underline{\text{is owing an expensive cell phone.}}\)
+A: own an expensive cell phone
+B: owns an expensive cell phone.
+C: No substitution
+D: is own an expensive cell phone
+solution:
+"Own" is a stative verb (possession), so it is not used in the continuous form; and "owing" is a different verb (to owe). With a singular subject the simple present is "owns": My friend owns an expensive cell phone. "Own" breaks agreement and "is own" is ungrammatical.
+
+=== 78
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: D
+stem:
+Select the option that expresses the given sentence in passive voice.
+He has not committed the crime.
+A: The crime was not committed by him.
+B: The crime have not being committed by him.
+C: The crime have not been committed by him.
+D: The crime has not been committed by him.
+solution:
+Present perfect active (has + past participle) becomes has/have + been + past participle in the passive. The new subject "the crime" is singular, so "has not been committed by him". Option A changes the tense to simple past; B and C use "have" with a singular subject, and B has "being".
+
+=== 79
+chapter: Vocabulary
+subtopic: Synonyms: Feelings, Speech and Persuasion
+difficulty: EASY
+answer: A
+stem:
+Select the most appropriate synonym of the underlined word.
+During the summer of 1893, Miss Sullivan and I visited the World's Fair with Dr. Alexander Graham Bell. I recall with unmixed \(\underline{\text{delight}}\) those days when a thousand childish fancies became beautiful realities.
+A: enchant
+B: dismay
+C: memory
+D: emotion
+solution:
+Delight is great pleasure; to enchant is to fill with delight, so enchant is the closest in meaning. Dismay is the opposite feeling, and memory and emotion are too general.
+
+=== 80
+chapter: Spotting Errors
+subtopic: Tenses and Sequence of Tenses
+difficulty: MODERATE
+answer: B
+stem:
+The following sentence has been split into four segments. Identify the segment that contains a grammatical error.
+Binay said that / he is coming / from / his village, Jaygarh.
+A: from
+B: he is coming
+C: his village, Jaygarh
+D: Binay said that
+solution:
+The reporting verb "said" is in the past, so in reported speech the present continuous moves back to the past continuous: Binay said that he was coming from his village, Jaygarh. The error is in "he is coming".
+
+=== 81
+chapter: Vocabulary
+subtopic: Synonyms: Character and Temperament
+difficulty: EASY
+answer: B
+stem:
+Select the most appropriate synonym of the given word.
+Genial
+A: Optimistic
+B: Cheerful
+C: Despondent
+D: Positive
+solution:
+Genial means friendly and cheerful in manner. Despondent is the opposite; optimistic and positive describe hopeful outlook, not a pleasant, cheerful manner.
+
+=== 82
+chapter: Sentence Rearrangement
+subtopic: Time Order and Lists
+difficulty: EASY
+answer: C
+stem:
+Sentences of a paragraph are given below in jumbled order. Arrange the sentences in the correct order to form a meaningful and coherent paragraph.
+A. In 1944, he was honoured by King George VI with a Knighthood and became Sir Alexander Fleming.
+B. On receiving this great honour, Fleming said in his usual modest way, “Wherever I go, people thank me for saving their lives. I didn’t do anything; I just found a remedy that was there.”
+C. Fleming became famous overnight and was regarded as one of the most distinguished scientists of his time.
+D. The next year, he and his fellow bacteriologists, whose combined efforts had led to the great discovery, were honoured with a joint Nobel Prize.
+A: DBCA
+B: ADBC
+C: CADB
+D: BCDA
+solution:
+C opens with his fame. A gives the first honour (knighthood, 1944). "The next year" in D follows the year in A (the 1945 Nobel Prize), and "this great honour" in B refers back to the Nobel Prize just named. Order CADB.
+
+=== 83
+chapter: Vocabulary
+subtopic: Synonyms: Feelings, Speech and Persuasion
+difficulty: MODERATE
+answer: B
+blind: A
+note: judgement item: the word is printed alone, so either sense of 'absorbed' can be meant. SSC's key takes the soaking-up sense (soaked); our blind answer took the attention sense (preoccupied). The bank carries SSC's answer
+stem:
+Select the most appropriate synonym of the given word.
+Absorbed
+A: Preoccupied
+B: Soaked
+C: Restored
+D: Replaced
+solution:
+SSC's key gives soaked: read as the past participle of absorb (to take in a liquid), absorbed means soaked up. (In the sense of engrossed, preoccupied would also fit; the word is printed without a sentence, so the key's reading stands.) Restored and replaced are unrelated.
+
+=== 84
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: C
+stem:
+Select the INCORRECTLY spelt word.
+A: Treble
+B: Nozzle
+C: Allmost
+D: Moisture
+solution:
+The correct spelling is "almost", with one l. Treble, nozzle and moisture are spelt correctly.
+
+=== 85
+chapter: Vocabulary
+subtopic: Confusable Word Pairs
+difficulty: EASY
+answer: B
+stem:
+Identify the option that defines the homonyms ‘gate’ and ‘gait’ most appropriately.
+A: Gate means to achieve or receive, and gait means a person’s manner of walking.
+B: Gate means a hinged barrier used to close an opening in a wall, fence or hedge, and gait means a person’s manner of walking.
+C: Gate means general agreement on tariff and excise, and gait means a person’s manner of talking.
+D: Gate means a hinged barrier used to close an opening in a wall or fence, and gait means a cloth or leather leg covering reaching from the instep to above the ankle or to the mid-calf or knee.
+solution:
+A gate is a hinged barrier closing an opening in a wall, fence or hedge; gait is a person's manner of walking. A misdefines gate, C misdefines both (gait is walking, not talking), and D gives the meaning of "gaiter", not gait.
+
+=== 86
+chapter: Spotting Errors
+subtopic: Articles, Determiners and Comparison
+difficulty: EASY
+answer: C
+stem:
+Parts of the following sentence have been given as options. Select the option that contains an error.
+She was waiting for a opportunity to start her own business.
+A: own business
+B: to start her
+C: for a opportunity
+D: She was waiting
+solution:
+"Opportunity" begins with a vowel sound, so it takes "an": She was waiting for an opportunity to start her own business.
+
+=== 87
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: B
+stem:
+Select the most appropriate option that can substitute the underlined segment in the given sentence.
+The players distributed the reward \(\underline{\text{between themselves}}\)
+A: between them
+B: among themselves
+C: between their selves
+D: amongst their self
+solution:
+A team has more than two players, so "among" is needed rather than "between", and the reflexive pronoun is "themselves": The players distributed the reward among themselves. "Their selves" and "their self" are not standard reflexives.
+
+=== 88
+chapter: Sentence Rearrangement
+subtopic: Pronouns and Names in Paragraphs
+difficulty: MODERATE
+answer: A
+stem:
+Sentences of a paragraph are given below in jumbled order. Arrange the sentences in the correct order to form a meaningful and coherent paragraph.
+A. It was the night before the day fixed for his coronation, and the young King was sitting alone in his beautiful chamber.
+B. And, indeed, it was the hunters who had found him, coming upon him almost by chance as, bare-limbed and pipe in hand, he was following the flock of the poor goat herd who had brought him up, and whose son he had always fancied himself to be.
+C. The lad—for he was only a lad, being but sixteen years of age—was not sorry at their departure, and had flung himself back with a deep sigh of relief on the soft cushions of his embroidered couch, lying there, wild-eyed and open-mouthed, like a brown woodland Faun, or some young animal of the forest newly snared by the hunters.
+D. His courtiers had all taken their leave of him, bowing their heads to the ground, according to the ceremonious usage of the day, and had retired to the Great Hall of the Palace, to receive a few last lessons from the Professor of Etiquette; there being some of them who had still quite natural manners, which in a courtier is, I need hardly say, a very grave offence.
+A: ADCB
+B: CBDA
+C: ACDB
+D: CDBA
+solution:
+A sets the scene (the young King alone the night before his coronation). D explains why he is alone: the courtiers have taken their leave. "Their departure" in C refers to the courtiers of D, and C ends on "snared by the hunters", which B picks up with "And, indeed, it was the hunters who had found him". Order ADCB.
+
+=== 89
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: B
+stem:
+Parts of the following sentence have been underlined and given as options. Select the option that contains a spelling error.
+If more is \(\underline{\text{desired}}\) than the \(\underline{\text{instantanious}}\) impact on the mind, the \(\underline{\text{advertising}}\) value of the poster falls sharply, within limits of outdoor publicity, however it is at present \(\underline{\text{unchallenged}}\).
+A: unchallenged
+B: instantanious
+C: desired
+D: advertising
+solution:
+The correct spelling is "instantaneous". Unchallenged, desired and advertising are spelt correctly.
+
+=== 90
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: C
+stem:
+Select the option that expresses the given sentence in active voice.
+Wedding invitations will be sent by them.
+A: They will be sent wedding invitations.
+B: He will sent wedding invitations.
+C: They will send wedding invitations.
+D: He will be send wedding invitations.
+solution:
+The agent "them" becomes the subject "they", and "will be sent" becomes "will send": They will send wedding invitations. A stays passive, and B and D change the subject to "he" and use wrong verb forms.
+
+=== 91
+chapter: Vocabulary
+subtopic: Antonyms: People and Character
+difficulty: EASY
+answer: D
+stem:
+Select the most appropriate ANTONYM of the underlined word.
+Her room looks very \(\underline{\text{messy}}\)
+A: Untidy
+B: Chaotic
+C: Disordered
+D: Organised
+solution:
+Messy means untidy or disordered; its opposite is organised (neat, in order). Untidy, chaotic and disordered are synonyms of messy.
+
+=== 92
+chapter: Idioms and Phrases
+subtopic: Idioms: Trouble and Success
+difficulty: EASY
+answer: C
+stem:
+Select the most appropriate meaning of the given idiom.
+A perfect storm
+A: Pretty good judgement
+B: Healing from trauma
+C: The worst possible situation
+D: Appropriate for all occasions
+solution:
+A perfect storm is a situation in which several bad circumstances combine to make it as bad as it could be, that is, the worst possible situation.
+
+=== 93
+chapter: Idioms and Phrases
+subtopic: Idioms: Feelings and States of Mind
+difficulty: EASY
+answer: C
+stem:
+Select the sentence that has the most appropriate meaning of the given idiom.
+Bad blood
+A: She is so scared of cockroaches that she fainted when she saw them crawling near her foot.
+B: The doctor dropped the bad news to Ravi as he was suffering from a serious disease.
+C: The gangster had some bitter relations with a local activist so he warned him to stay out of his business.
+D: Sushant always gets in trouble for telling lies but he never learns anything.
+solution:
+Bad blood means ill feeling or hostility between people, usually from a past quarrel. Only C describes bitter relations between two people; the others are about fear, bad news and lying.
+
+=== 94
+chapter: Vocabulary
+subtopic: Synonyms: Harm, Degree and the Senses
+difficulty: EASY
+answer: C
+stem:
+Select the most appropriate synonym of the underlined word.
+After my first visit to Boston, I spent almost every winter in the North. Once I went on a visit to a New England village with its frozen lakes and \(\underline{\text{vast}}\) snow fields.
+A: minimal
+B: shallow
+C: extensive
+D: solid
+solution:
+Vast means of very great extent, so extensive is the synonym. Minimal is nearly the opposite, and shallow and solid do not describe extent.
+
+=== 95
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: MODERATE
+answer: D
+stem:
+Select the most appropriate option that can substitute the underlined segment in the given sentence.
+Hardly \(\underline{\text{we had boarded}}\) the train when it started to move.
+A: will we boarded
+B: we are boarded
+C: is we boarded
+D: had we boarded
+solution:
+When a sentence opens with a negative adverb such as "hardly", the subject and auxiliary are inverted, and "hardly ... when" takes the past perfect for the earlier action: Hardly had we boarded the train when it started to move.
+
+=== 96
+chapter: Cloze Test
+subtopic: Reading the Blank's Slot
+difficulty: EASY
+answer: A
+context:
+Comprehension:
+In the following passage, some words have been deleted. Read the passage carefully and select the most appropriate option to fill in each blank.
+The basic elements of computers that (1)________ our world are explained in an interactive manner. The book has a (2)________ approach of colourful and creative picture-based activities. The puzzles, activities and mazes (3)________ the students to develop critical thinking, logical and motor skills. After every lesson, (4)________ exercises are incorporated to (5)________ the conceptual understanding of the students.
+stem:
+Select the most appropriate option to fill in blank no. 1.
+A: empower
+B: negate
+C: empowers
+D: negates
+solution:
+The relative "that" refers to the plural "elements", so the verb is plural: "empower" (no -s). By meaning, computer elements power or enable our world; "negate" (cancel out) makes no sense.
+
+=== 97
+chapter: Cloze Test
+subtopic: Collocations and the Precise Word
+difficulty: EASY
+answer: D
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank no. 2.
+A: difficult
+B: complex
+C: trivial
+D: unique
+solution:
+The passage praises the book's interactive, colourful and creative picture-based activities, so its approach is "unique". Difficult and complex clash with a picture-based method for students, and trivial is dismissive.
+
+=== 98
+chapter: Cloze Test
+subtopic: Verb Forms in the Blank
+difficulty: EASY
+answer: A
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank no. 3.
+A: help
+B: helped
+C: helps
+D: had helped
+solution:
+The subject "the puzzles, activities and mazes" is plural and the passage is in the simple present ("are explained", "has"), so the verb is "help". "Helps" is singular, and "helped" and "had helped" break the tense.
+
+=== 99
+chapter: Cloze Test
+subtopic: Collocations and the Precise Word
+difficulty: EASY
+answer: A
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank no. 4.
+A: brainstorming
+B: superficial
+C: baffling
+D: irrational
+solution:
+Exercises meant to deepen conceptual understanding are "brainstorming" exercises, which make students think. Superficial, baffling and irrational exercises would not serve that purpose.
+
+=== 100
+chapter: Cloze Test
+subtopic: Verb Forms in the Blank
+difficulty: EASY
+answer: D
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank no. 5.
+A: evolving
+B: evolved
+C: evolution
+D: evolve
+solution:
+"To" here is the infinitive marker of purpose (exercises are incorporated in order to ...), so the base form follows: "to evolve the conceptual understanding". Evolving, evolved and evolution do not fit after the infinitive "to".

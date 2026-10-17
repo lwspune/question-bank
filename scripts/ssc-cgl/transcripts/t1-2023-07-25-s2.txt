@@ -1,0 +1,1664 @@
+SSC CGL 2023 Tier I, 25 Jul 2023 Shift 2. Read from SSC's response sheet (TCS print; the key is the option colour, masked on the reading sheets).
+Drafted by agents, one PART each, from the reading sheets only (no key; DRAFTING_BRIEF.md);
+every block reviewed in the main session, then compared with the key (build.ts).
+Format: scripts/ssc-cgl/lib.ts.
+
+=== 1
+chapter: Analogy
+subtopic: Number Analogy
+difficulty: EASY
+answer: C
+stem:
+Select the option that is related to the fourth term in the same way as the first term is related to the second term and the fifth term is related to the sixth term.
+169 : 14 :: ? : 16 :: 289 : 18
+A: 205
+B: 230
+C: 225
+D: 125
+solution:
+\(169 = 13^2\) and \(14 = 13 + 1\); \(289 = 17^2\) and \(18 = 17 + 1\). So the term before 16 is \(15^2 = 225\).
+
+=== 2
+chapter: Paper Folding and Cutting
+subtopic: Paper Folding and Punching
+difficulty: MODERATE
+answer: A
+figure: stem+options
+stem:
+A paper is folded and cut as shown below. How will it appear when unfolded?
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The bottom half is folded up onto the top half, then the right half is folded onto the left, leaving the top-left quarter. In that quarter an "=" is cut at the top-left corner and a star at the left edge, just above the horizontal fold.
+
+Unfolding left to right copies both cuts to the right edge; unfolding top to bottom copies them to the bottom half. So an "=" (still horizontal) appears at each of the four corners and two stars sit on each side edge, close to the middle line. Option 1 shows this; option 4 has vertical "||" marks, option 2 puts the stars at the corners and option 3 puts them in the centre.
+
+=== 3
+chapter: Mirror and Water Images
+subtopic: Mirror Images
+difficulty: EASY
+answer: B
+figure: stem+options
+stem:
+Select the correct mirror image of the given figure when the mirror is placed at AB.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The figure is a circle with D (top left) and A (top right) in the upper half and a downward triangle in the lower half; the mirror AB is vertical on its right. The image swaps left and right: A comes to the top left, a reversed D to the top right, and the downward triangle stays at the bottom. Option 2 shows this. Option 3 keeps the letters in their original places and options 1 and 4 turn the figure upside down.
+
+=== 4
+chapter: Blood Relations
+subtopic: Direct Relations
+difficulty: EASY
+answer: B
+flawed: yes
+note: SSC printed this question in Hindi only; the English stem and options are our rendering, not SSC's English.
+stem:
+Pointing to a woman, Suman (a woman) said, "She is the grandmother of my father-in-law's wife's son." How is that woman related to Suman?
+A: Mother
+B: Husband's grandmother
+C: Daughter
+D: Mother-in-law
+solution:
+Suman's father-in-law's wife is her mother-in-law, and the mother-in-law's son is Suman's husband (or his brother; the grandmother is the same either way). The woman is the grandmother of Suman's husband: Suman's husband's grandmother.
+
+=== 5
+chapter: Analogy
+subtopic: Letter Analogy
+difficulty: MODERATE
+answer: A
+stem:
+Select the option that is related to the fifth letter-cluster in the same way as the second letter-cluster is related to the first letter-cluster and the fourth letter-cluster is related to the third letter-cluster.
+MAP: NZK ::HOZ:SLA :: WQK:?
+A: DJP
+B: DIP
+C: CIP
+D: CJP
+solution:
+Each letter is replaced by its opposite letter (positions adding to 27): M (13) and N (14), A and Z, P (16) and K (11); H and S, O and L, Z and A.
+
+For WQK: W (23) gives D (4), Q (17) gives J (10), K (11) gives P (16). The answer is DJP.
+
+=== 6
+chapter: Alphabet and Number Tests
+subtopic: Dictionary Order
+difficulty: EASY
+answer: D
+stem:
+Select the option that represents the correct order of the given words as they would appear in an English dictionary.
+1. Cartoon
+2. Carrier
+3. Carrying
+4. Carousel
+5. Carnival
+6. Carriage
+A: 5, 4, 2, 6, 3, 1
+B: 5, 4, 6, 3, 2, 1
+C: 5, 1, 4, 6, 2, 3
+D: 5, 4, 6, 2, 3, 1
+solution:
+All start with "Car". The fourth letters are n (Carnival), o (Carousel), r (Carriage, Carrier, Carrying) and t (Cartoon). Among the "Carr" words: Carria, Carrie, Carry, so Carriage, Carrier, Carrying.
+
+Order: Carnival, Carousel, Carriage, Carrier, Carrying, Cartoon, that is 5, 4, 6, 2, 3, 1.
+
+=== 7
+chapter: Analogy
+subtopic: Number Set Analogy
+difficulty: EASY
+answer: A
+stem:
+Study the given pattern carefully and select the number that can replace the question mark (?) in it.
+(6, 1, 18)
+(5, 4, 60)
+(6, 2, ?)
+(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 – Operations on 13 such as adding/subtracting/multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed)
+A: 36
+B: 32
+C: 40
+D: 24
+solution:
+Third number = first \(\times\) second \(\times\) 3: \(6 \times 1 \times 3 = 18\), \(5 \times 4 \times 3 = 60\).
+
+So \(6 \times 2 \times 3 = 36\).
+
+=== 8
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: MODERATE
+answer: A
+stem:
+Select the correct combination of mathematical signs to sequentially replace the * signs and to balance the given equation.
+18 * 3 * 12 * 9 * 3 * 111
+A: \(\div, +, \times, -, =\)
+B: \(\times, +, \div, -, =\)
+C: \(\times, -, \times, +, =\)
+D: \(\times, +, \times, -, =\)
+solution:
+Option 1: \(18 \div 3 + 12 \times 9 - 3 = 6 + 108 - 3 = 111\). It balances.
+
+Check the others: option 2 gives \(54 + \frac{4}{3} - 3\), not 111; option 3 gives \(54 - 108 + 3 = -51\); option 4 gives \(54 + 108 - 3 = 159\).
+
+=== 9
+chapter: Mirror and Water Images
+subtopic: Mirror Images
+difficulty: EASY
+answer: C
+figure: stem+options
+stem:
+Select the correct mirror image of the given figure when the mirror is placed at the right side of the figure.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The figure is a flag: a pole on the left, a triangular flag pointing right, and inside it a small triangle pointing left, next to the pole. In a mirror on the right, the pole moves to the right, the flag points left, and the small triangle points right, still next to the pole. Option 3 shows this; option 2 keeps the small triangle pointing left, and options 1 and 4 show right-angled triangles.
+
+=== 10
+chapter: Classification
+subtopic: Number Classification
+difficulty: EASY
+answer: D
+stem:
+The second number in the given number-pairs is obtained by performing certain mathematical operation(s) on the first number. The same operation(s) is/are followed in all the number-pairs except one. Find that odd number-pair.
+A: 2 : 9
+B: 6 : 21
+C: 10 : 33
+D: 8 : 29
+solution:
+Second number = first \(\times 3 + 3\): \(2 \times 3 + 3 = 9\), \(6 \times 3 + 3 = 21\), \(10 \times 3 + 3 = 33\).
+
+But \(8 \times 3 + 3 = 27\), not 29. The odd pair is 8 : 29.
+
+=== 11
+chapter: Syllogism
+subtopic: Three-Statement Syllogism
+difficulty: EASY
+answer: C
+stem:
+Three statements are given followed by three conclusions numbered I, II and III. Assuming the statements to be true, even if they seem to be at variance with commonly known facts, decide which of the conclusions logically follow(s) from the statements.
+
+Statements:
+Some teachers are scientists.
+All scientists are doctors.
+All doctors are engineers.
+
+Conclusions:
+I. Some doctors are teachers.
+II. Some engineers are teachers.
+III. Some doctors are scientists.
+A: Only conclusions II and III follow
+B: Only conclusions I and III follow
+C: All conclusions follow
+D: Only conclusions I and II follow
+solution:
+The teachers who are scientists are doctors (all scientists are doctors), so some doctors are teachers: I follows. Those same people are engineers (all doctors are engineers), so some engineers are teachers: II follows. All scientists are doctors, so some doctors are scientists: III follows. All three follow.
+
+=== 12
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: B
+stem:
+Which of the following letter-clusters will replace the question mark (?) in the given series to make it logically complete?
+ADZ, GJF, MPL, SVR, ?
+A: XYB
+B: YBX
+C: XBY
+D: YXB
+solution:
+Each letter moves 6 places forward: A, G, M, S, Y; D, J, P, V, B; Z, F, L, R, X. The next cluster is YBX.
+
+=== 13
+chapter: Coding-Decoding
+subtopic: Number and Symbol Coding
+difficulty: MODERATE
+answer: C
+stem:
+In a certain code language, if ‘RPD’ is written as ‘43’ and ‘FCL’ is written as ‘60’, how will ‘QTS’ be written in the same code language?
+A: 35
+B: 28
+C: 25
+D: 40
+solution:
+The code is the sum of reverse alphabet positions (Z = 1, A = 26). RPD: R = 9, P = 11, D = 23, sum 43. FCL: F = 21, C = 24, L = 15, sum 60.
+
+QTS: Q = 10, T = 7, S = 8, sum 25.
+
+=== 14
+chapter: Blood Relations
+subtopic: Direct Relations
+difficulty: EASY
+answer: C
+stem:
+Looking at the family picture, Smriti said, “She is my father’s father-in-law’s wife’s son’s only sister.’ How is the person in the photo related to Smriti’s father?
+A: Mother
+B: Sister-in-law
+C: Wife
+D: Daughter
+solution:
+Smriti's father's father-in-law is Smriti's maternal grandfather; his wife is her maternal grandmother; her son is Smriti's maternal uncle, and his only sister is Smriti's mother. The person is Smriti's father's wife.
+
+=== 15
+chapter: Syllogism
+subtopic: Three-Statement Syllogism
+difficulty: EASY
+answer: B
+stem:
+Three statements are given followed by three conclusions numbered I, II and III. Assuming the statements to be true, even if they seem to be at variance with commonly known facts, decide which of the conclusions logically follow(s) from the statements.
+
+Statements:
+Some colours are rainbows.
+Some paints are rainbows.
+All rainbows are drawings.
+
+Conclusions:
+I. Some drawings are colours.
+II. All paints are drawings.
+III. Some drawings are rainbows.
+A: Only conclusions I and II follow
+B: Only conclusions I and III follow
+C: Only conclusions II and III follow
+D: All conclusions follow
+solution:
+The colours that are rainbows are drawings, so some drawings are colours: I follows. All rainbows are drawings, so some drawings are rainbows: III follows. Only some paints are known to be rainbows; the other paints may lie outside drawings, so II does not follow. Only I and III follow.
+
+=== 16
+chapter: Analogy
+subtopic: Number Set Analogy
+difficulty: MODERATE
+answer: D
+stem:
+Select the set in which the numbers are related in the same way as are the numbers of the following sets.
+(NOTE: Operations should be performed on the whole numbers, without breaking down the numbers into its constituent digits. E.g. 13 – Operations on 13 such as adding/Subtracting/multiplying etc. to 13 can be performed. Breaking down 13 into 1 and 3 and then performing mathematical operations on 1 and 3 is not allowed)
+(2, 7, 27)
+(6, 15, 63)
+A: (3, 21, 24)
+B: (9, 8, 50)
+C: (12, 4, 40)
+D: (8, 8, 48)
+solution:
+Third number = (first + second) \(\times\) 3: \((2 + 7) \times 3 = 27\), \((6 + 15) \times 3 = 63\).
+
+Options: \((3 + 21) \times 3 = 72\), \((9 + 8) \times 3 = 51\), \((12 + 4) \times 3 = 48\), \((8 + 8) \times 3 = 48\). Only (8, 8, 48) fits.
+
+=== 17
+chapter: Mirror and Water Images
+subtopic: Mirror Images
+difficulty: MODERATE
+answer: C
+figure: stem+options
+stem:
+Select the correct mirror image of the given figure when the mirror is placed at AB.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The figure is a circle holding an upright triangle with a small downward triangle inside it; the three segments of the circle outside the triangle are hatched. The mirror AB is vertical on the right, so up and down do not change: the large triangle must stay upright and the small one must still point down, with the hatching slants reversed left to right.
+
+Options 1 and 2 turn the large triangle upside down (a water image), and option 4 turns the small triangle upward. Option 3 is the mirror image.
+
+=== 18
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: D
+stem:
+Select the option that represents the letters that, when placed from left to right in the blanks below, will complete the letter series.
+C _ R C _ R _ A R _ A _ C A _
+A: R A C A C A
+B: R A C A A C
+C: A C R A C R
+D: A A C C R R
+solution:
+The series is CAR repeated five times: CAR CAR CAR CAR CAR. The blanks take A, A, C, C, R, R.
+
+=== 19
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: D
+stem:
+Which of the following numbers will replace the question mark (?) in the given series?
+3, 8, 15, 26, 39, ?
+A: 61
+B: 49
+C: 52
+D: 56
+solution:
+The differences are 5, 7, 11, 13, consecutive primes. The next difference is 17: \(39 + 17 = 56\).
+
+=== 20
+chapter: Non-Verbal Series and Analogy
+subtopic: Figure Series
+difficulty: MODERATE
+answer: D
+blind: A
+note: a picture reading: the series turns on counting small braces in each figure, which our blind reading counted differently. The bank carries SSC's answer
+figure: stem+options
+stem:
+Select the figure that will come in place of the question mark (?) in the following figure series.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+Track how the braces and letters change from one figure to the next and carry the same change one step further. SSC's key gives option D as the next figure.
+
+=== 21
+chapter: Analogy
+subtopic: Number Analogy
+difficulty: EASY
+answer: A
+stem:
+Select the option that is related to the fifth number in the same way as the second number is related to the first number and the fourth number is related to the third number.
+98 : 7 :: 162 : 9 :: 242 : ?
+A: 11
+B: 12
+C: 14
+D: 13
+solution:
+\(98 = 2 \times 7^2\) and \(162 = 2 \times 9^2\): the second number is \(\sqrt{\frac{\text{first}}{2}}\).
+
+\(242 = 2 \times 121 = 2 \times 11^2\), so the answer is 11.
+
+=== 22
+chapter: Non-Verbal Series and Analogy
+subtopic: Figure Series
+difficulty: MODERATE
+answer: D
+figure: stem+options
+stem:
+Select the figure that will replace the question mark (?) in the following figure series.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+Each figure has five letters (top left, top right, centre, bottom left, bottom right):
+Figure 1: D, B, E, C, F. Figure 2: E, B, F, C, D. Figure 3: E, F, C, B, D. Figure 4: C, F, D, B, E.
+
+Two moves alternate. From 1 to 2 (and 3 to 4), the centre goes to the top left, the bottom right to the centre and the top left to the bottom right, while the other two stay. From 2 to 3, the centre goes to the top right, the bottom left to the centre and the top right to the bottom left.
+
+Applying the second move to figure 4: top left C, top right D, centre B, bottom left F, bottom right E. Option 4 shows C, D, B, F, E.
+
+=== 23
+chapter: Series
+subtopic: Letter Series
+difficulty: MODERATE
+answer: D
+stem:
+Select the option that represents the letters that, when sequentially placed from left to right in the blanks below, will complete the letter series.
+_ _ MSDRTM _ _ R _ _ SD _ TM _ D
+A: RSTDTMRS
+B: RTSDMTRS
+C: RTSDMTSR
+D: RTSDTMRS
+solution:
+The series is RTMSD repeated four times: RTMSD RTMSD RTMSD RTMSD. The blanks take R, T, S, D, T, M, R, S, that is RTSDTMRS.
+
+=== 24
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: C
+stem:
+In a certain code language, ‘DISCIPLINE’ is written as ‘DKSCKPLKNG’, ‘REVOLUTION’ is written as ‘RGVQLWTKQN’. How will ‘UNIVERSITY’ be written in that language?
+A: WNKGVRSKTY
+B: WNKVGSRKTY
+C: WNKVGRSKTY
+D: WNKVGRKSTY
+solution:
+Every vowel moves 2 places forward (I to K, E to G, O to Q, U to W) and consonants stay.
+
+UNIVERSITY: U to W, N, I to K, V, E to G, R, S, I to K, T, Y, giving WNKVGRSKTY.
+
+=== 25
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: EASY
+answer: A
+stem:
+If ‘<’ means ‘-’, ‘!’ means ‘\(\times\)’, ‘>’ means ‘+’ and ‘\(\text{\textdollar}\)’ means ‘\(\div\)’, then what is the value of the following expression?
+183 > 39 \(\text{\textdollar}\) 13 ! 6 < 26
+A: 175
+B: 160
+C: 193
+D: 181
+solution:
+The expression is \(183 + 39 \div 13 \times 6 - 26\).
+
+\(39 \div 13 = 3\), \(3 \times 6 = 18\), so \(183 + 18 - 26 = 175\).
+
+=== 26
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Civilian Awards and Honours
+difficulty: HARD
+answer: C
+flawed: yes
+note: SSC printed this question in Hindi only; the English stem and options are our translation.
+stem:
+Guru Shashadhar Acharya was honoured with the Padma Shri in 2020 for his contribution to which of the following fields?
+A: Instrumental music
+B: Classical dance
+C: Folk dance
+D: Hindustani classical vocal music
+solution:
+Guru Shashadhar Acharya of Jharkhand is an exponent of the Seraikela Chhau dance, and received the Padma Shri in 2020 for it. Chhau is a folk dance of Jharkhand, Odisha and West Bengal, so the field is folk dance.
+
+=== 27
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: EASY
+answer: C
+flawed: yes
+note: SSC printed this question in Hindi only; the English stem and options are our translation.
+stem:
+Which of the following musicians is associated with the musical instrument santoor?
+A: Allauddin Khan
+B: Annapurna Devi
+C: Pandit Shiv Kumar Sharma
+D: Vilayat Khan
+solution:
+Pandit Shiv Kumar Sharma made the santoor a concert instrument of Hindustani classical music. Allauddin Khan played the sarod, Annapurna Devi the surbahar and Vilayat Khan the sitar.
+
+=== 28
+subject: Chemistry
+chapter: Chemical Bonding
+subtopic: Valency, Oxidation States and Molecular Formula
+difficulty: EASY
+answer: B
+stem:
+What is the atomicity of Chlorine?
+A: Tetra-atomic
+B: Diatomic
+C: Poly-atomic
+D: Monoatomic
+solution:
+Chlorine exists as \(\text{Cl}_2\) molecules, two atoms per molecule, so its atomicity is 2 (diatomic).
+
+=== 29
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: State Legislatures and Governors
+difficulty: MODERATE
+answer: D
+stem:
+How many elected members are there in the Legislative Assembly of Telangana till December 2022?
+A: 124
+B: 120
+C: 121
+D: 119
+solution:
+The Telangana Legislative Assembly has 119 elected members. The one nominated Anglo-Indian seat it once had ended with the 104th Amendment in 2020.
+
+=== 30
+subject: Current Affairs
+chapter: Government Schemes, Policy and Governance
+subtopic: Health, Education and Welfare Schemes
+difficulty: MODERATE
+answer: D
+flawed: yes
+note: SSC printed this question in Hindi only (with the strategy's English name in brackets); the English stem is our translation.
+stem:
+In 2022, the Ministry of Health and Family Welfare announced a National Suicide Prevention Strategy to bring about a ____________ percent reduction in the suicide mortality rate by 2030.
+A: 25
+B: 20
+C: 15
+D: 10
+solution:
+The National Suicide Prevention Strategy, announced in November 2022, aims to reduce suicide mortality in India by 10% by 2030.
+
+=== 31
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Indian Art, Architecture and Cultural Practices
+difficulty: MODERATE
+answer: D
+flawed: yes
+note: SSC printed this question in Hindi only; the English stem and options are our translation.
+stem:
+Raut Nacha is famous in which of the following states?
+A: Punjab
+B: Gujarat
+C: Assam
+D: Chhattisgarh
+solution:
+Raut Nacha is a folk dance of the Yadav (Raut) cowherd community of Chhattisgarh, performed around Diwali.
+
+=== 32
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Symbols, Emblems and Protocol
+difficulty: EASY
+answer: D
+flawed: yes
+note: SSC printed this question in Hindi only; the English stem and options are our translation.
+stem:
+Who, being the Commander-in-Chief of the Indian Armed Forces, takes the salute of the various regiments of the armed forces during the march-past on the occasion of Republic Day?
+A: Defence Minister of India
+B: Prime Minister of India
+C: Home Minister of India
+D: President of India
+solution:
+The President is the Supreme Commander of the armed forces (Article 53(2)) and takes the salute at the Republic Day parade on Kartavya Path.
+
+=== 33
+subject: History
+chapter: Medieval India
+subtopic: Other Medieval Kingdoms (Chola, Rajput, Ahom, Sikh)
+difficulty: MODERATE
+answer: D
+flawed: yes
+note: SSC printed this question in Hindi only; the English stem and options are our translation.
+stem:
+The famous poet and playwright Rajashekhara was the court poet in the court of which of the following Pratihara kings?
+A: Rambhadra
+B: Rajyapala
+C: Devapala
+D: Mahendrapala
+solution:
+Rajashekhara, author of Karpuramanjari and Kavyamimamsa, was the court poet and teacher of the Gurjara-Pratihara king Mahendrapala I, and stayed on under his son Mahipala.
+
+=== 34
+subject: Chemistry
+chapter: Carbon and Its Compounds
+subtopic: Hydrocarbons and Fuels
+difficulty: HARD
+answer: D
+flawed: yes
+note: SSC printed this question in Hindi only; the English stem is our translation.
+stem:
+In which year did an English scientist named Michael Faraday discover benzene in illuminating gas?
+A: 1820
+B: 1827
+C: 1822
+D: 1825
+solution:
+Michael Faraday isolated benzene in 1825 from the oily residue of illuminating gas, calling it "bicarburet of hydrogen".
+
+=== 35
+subject: History
+chapter: Ancient India
+subtopic: Vedic Age, Society and Literature
+difficulty: EASY
+answer: D
+flawed: yes
+note: SSC printed this question in Hindi only; the English stem and options are our translation.
+stem:
+In the later Vedic period, which of the following varnas mainly did work such as farming, animal husbandry and trade?
+A: Kshatriya
+B: Brahmin
+C: Shudra
+D: Vaishya
+solution:
+In the later Vedic varna order the Vaishyas were the agriculturists, cattle-rearers and traders, and paid tribute. Brahmins were priests, Kshatriyas warriors and rulers, and Shudras served the other three.
+
+=== 36
+subject: Geography
+chapter: Climatology, Atmosphere and Weather
+subtopic: Climate Classification and Zones
+difficulty: EASY
+answer: B
+stem:
+Identify the meaning of continentality.
+A: Very hot during winters and very cold during summers
+B: Very hot during summers and very cold during winters
+C: Very hot during summers and lots of rain
+D: Very cold during winters and not hot during summers
+solution:
+Places far from the moderating influence of the sea heat up and cool down quickly, so they have extreme climates: very hot summers and very cold winters. This is continentality.
+
+=== 37
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: B
+stem:
+Where and when were the first Khelo India University Games held?
+A: Maharashtra, 2019
+B: Odisha, 2020
+C: Punjab, 2019
+D: Kerala, 2020
+solution:
+The first Khelo India University Games were held in Bhubaneswar, Odisha, in February and March 2020, hosted by KIIT University.
+
+=== 38
+subject: Current Affairs
+chapter: Government Schemes, Policy and Governance
+subtopic: Infrastructure, Transport and Cultural Schemes
+difficulty: HARD
+answer: D
+flawed: yes
+note: SSC printed this question in Hindi only; the English stem is our translation.
+stem:
+(As of November 2021) How many cities have been identified for ring roads under Phase-I of the 'Bharatmala Pariyojana' to reduce traffic in various cities across India?
+A: 33
+B: 41
+C: 21
+D: 28
+solution:
+Bharatmala Pariyojana Phase-I includes ring roads for 28 cities to decongest urban traffic, along with bypasses and elevated corridors.
+
+=== 39
+subject: Geography
+chapter: Indian Geography — Physical Features
+subtopic: Forests and Natural Vegetation of India
+difficulty: MODERATE
+answer: B
+flawed: yes
+note: SSC printed this question in Hindi only; the English stem and options are our translation.
+stem:
+Which species of mangrove tree found in the Sundarbans of India and Bangladesh is scientifically known as 'Heritiera fomes'?
+A: Kachnar
+B: Sundari
+C: Kusum
+D: Arjun
+solution:
+Heritiera fomes is the sundari tree, the dominant mangrove of the Sundarbans, which takes its name from it. Kachnar is Bauhinia, kusum is Schleichera oleosa and arjun is Terminalia arjuna, none of them mangroves.
+
+=== 40
+subject: History
+chapter: Modern India
+subtopic: British Economic Policy and Industrial India
+difficulty: EASY
+answer: C
+stem:
+Who introduced the Zamindari Settlement as a measure of land revenue administration?
+A: Lord Lytton
+B: Lord Curzon
+C: Lord Cornwallis
+D: Lord Wellesley
+solution:
+Lord Cornwallis introduced the Permanent Settlement (Zamindari system) in Bengal, Bihar and Orissa in 1793, fixing the revenue the zamindars paid.
+
+=== 41
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: B
+flawed: yes
+note: SSC printed this question in Hindi only; the English stem and options are our translation.
+stem:
+Which of the following is India's second Grandmaster after Viswanathan Anand?
+A: P. Harikrishna
+B: Dibyendu Barua
+C: Abhijit Kunte
+D: Sasikiran Krishnan
+solution:
+Dibyendu Barua became India's second chess Grandmaster in 1991, after Anand (1988). Pravin Thipsay was third (1997); Kunte, Sasikiran and Harikrishna came later.
+
+=== 42
+subject: Current Affairs
+chapter: Government Schemes, Policy and Governance
+subtopic: Health, Education and Welfare Schemes
+difficulty: MODERATE
+answer: A
+flawed: yes
+note: SSC printed this question in Hindi only; the English stem and options are our translation.
+stem:
+The Prime Minister's Employment Generation Programme (PMEGP) scheme was launched by which ministry of the Government of India?
+A: Ministry of Micro, Small and Medium Enterprises
+B: Ministry of Finance
+C: Ministry of Rural Development
+D: Ministry of Housing and Urban Affairs
+solution:
+PMEGP, launched in 2008 by merging PMRY and REGP, is run by the Ministry of Micro, Small and Medium Enterprises, with KVIC as the national nodal agency.
+
+=== 43
+subject: Polity
+chapter: Indian Constitution — Making, Foundation and Amendments
+subtopic: Features, Parts and Schedules of Constitution
+difficulty: EASY
+answer: A
+stem:
+The Indian Constitution originally consisted of ______ Articles.
+A: 395
+B: 385
+C: 365
+D: 375
+solution:
+As adopted in 1949, the Constitution had 395 Articles in 22 Parts and 8 Schedules.
+
+=== 44
+subject: Biology
+chapter: Human Physiology
+subtopic: Nervous System and Sense Organs
+difficulty: EASY
+answer: C
+stem:
+Which cells, also called neurilemma cells, are the main glial cells in the PNS and play an essential role in the survival and functions of neurons?
+A: Bipolar cells
+B: Ganglion cells
+C: Schwann cells
+D: Photoreceptor cells
+solution:
+Schwann cells (neurilemma cells) are the main glial cells of the peripheral nervous system; they form the myelin sheath and support neurons. Bipolar, ganglion and photoreceptor cells are retinal neurons and receptors.
+
+=== 45
+subject: Biology
+chapter: Human Physiology
+subtopic: Nutrition, Vitamins and Minerals
+difficulty: MODERATE
+answer: D
+flawed: yes
+note: SSC printed this question in Hindi only; the English stem is our translation.
+stem:
+According to dietary guidelines recommended by physicians, the RDA for cholesterol intake in healthy adults and children over four years of age is ______ mg/day.
+A: 600
+B: 500
+C: 400
+D: 300
+solution:
+The standard dietary recommendation limits cholesterol intake to under 300 mg a day for healthy adults and children over four years of age.
+
+=== 46
+subject: Current Affairs
+chapter: Government Schemes, Policy and Governance
+subtopic: Government Events, Reports and Announcements
+difficulty: MODERATE
+answer: C
+stem:
+On 21 November 2022, who assumed charge as the new Election Commissioner (EC) of India?
+A: Manoj Kumar
+B: Rajiv Kumar
+C: Arun Goel
+D: Anup Chandra Pandey
+solution:
+Arun Goel, a retired IAS officer, took charge as Election Commissioner on 21 November 2022. Rajiv Kumar was then Chief Election Commissioner and Anup Chandra Pandey the other Election Commissioner.
+
+=== 47
+subject: Economics
+chapter: Indian Economy
+subtopic: Five Year Plans and Indian Planning
+difficulty: EASY
+answer: D
+stem:
+Which of the following is NOT one of the characteristics of the new agricultural strategy?
+A: Use of chemical fertilisers
+B: Use of hybrid seeds
+C: Extensive irrigation
+D: Use of organic manures
+solution:
+The new agricultural strategy of the mid-1960s (the Green Revolution) rested on high-yielding and hybrid seeds, chemical fertilisers, pesticides and assured irrigation. Organic manure was the traditional input it moved away from.
+
+=== 48
+subject: Economics
+chapter: Money, Banking and Public Finance
+subtopic: Banking, RBI and Financial Institutions
+difficulty: EASY
+answer: C
+flawed: yes
+note: SSC printed this question in Hindi only; the English stem and options are our translation.
+stem:
+Which of the following is a Nobel Prize winner who is also known as the father of microfinance systems?
+A: Amartya Sen
+B: Raghuram Rajan
+C: Muhammad Yunus
+D: Sandra Rotman
+solution:
+Muhammad Yunus founded the Grameen Bank in Bangladesh and pioneered microcredit; he shared the 2006 Nobel Peace Prize with the bank.
+
+=== 49
+subject: History
+chapter: Modern India
+subtopic: Freedom Movement — INC, Gandhi and Independence
+difficulty: EASY
+answer: D
+stem:
+In ________, Lord Curzon, the Viceroy of India, announced the partition of Bengal.
+A: 1907
+B: 1906
+C: 1911
+D: 1905
+solution:
+The partition of Bengal was announced in July 1905 and took effect on 16 October 1905. It was annulled in 1911.
+
+=== 50
+subject: Current Affairs
+chapter: Government Schemes, Policy and Governance
+subtopic: Government Events, Reports and Announcements
+difficulty: EASY
+answer: A
+stem:
+Who among the following is appointed as new Attorney General for India in September 2022?
+A: R Venkataramani
+B: KK Venugopal
+C: Fali Sam Nariman
+D: Harish Salve
+solution:
+R Venkataramani was appointed Attorney General for India in September 2022 and took office on 1 October 2022, succeeding KK Venugopal.
+
+=== 51
+chapter: Trigonometric Ratios and Identities
+subtopic: Complementary and Allied Angles
+difficulty: EASY
+answer: C
+stem:
+Find the value of \(\tan(-1125^\circ)\).
+A: \(1\)
+B: \(\frac{1}{2}\)
+C: \(-1\)
+D: \(0\)
+solution:
+\(\tan(-\theta) = -\tan\theta\), so \(\tan(-1125^\circ) = -\tan 1125^\circ\).
+
+\(1125^\circ = 3 \times 360^\circ + 45^\circ\), so \(\tan 1125^\circ = \tan 45^\circ = 1\).
+
+The value is \(-1\).
+
+=== 52
+chapter: Data Interpretation
+subtopic: Pie Charts
+difficulty: EASY
+answer: D
+figure: stem
+stem:
+The following pie charts show the data of the number of appeared and passed students of class 12 in sections A,B,C,D and E.
+
+Find the difference between the number of students who appeared for the exam in sections A and B.
+A: 60
+B: 30
+C: 50
+D: 40
+solution:
+The first chart (Appeared students = 1800) labels its sectors A \(42^\circ\), B \(50^\circ\), C \(100^\circ\), D \(110^\circ\), E \(58^\circ\) (total \(360^\circ\)). The second chart (Passed students = 800) shows A \(20\%\), B \(30\%\), C \(25\%\), D \(15\%\), E \(10\%\).
+
+Appeared in A \(= \frac{42}{360} \times 1800 = 210\); appeared in B \(= \frac{50}{360} \times 1800 = 250\).
+
+Difference \(= 250 - 210 = 40\). Check: \(\frac{8^\circ}{360^\circ} \times 1800 = 40\).
+
+=== 53
+chapter: Trigonometric Ratios and Identities
+subtopic: Simplifying and Proving Identities
+difficulty: EASY
+answer: B
+stem:
+\(\sec\theta\sqrt{1 - \sin^2\theta} = ?\)
+A: \(-1\)
+B: \(1\)
+C: \(\infty\)
+D: \(0\)
+solution:
+\(\sqrt{1 - \sin^2\theta} = \cos\theta\) (taking the principal root), so the expression is \(\sec\theta \times \cos\theta = 1\).
+
+=== 54
+chapter: Triangles
+subtopic: Angles of a Triangle
+difficulty: EASY
+answer: D
+stem:
+The angles of a triangle are in the ratio 2 : 3 : 7. What is the measure of the largest angle of the triangle?
+A: \(100^\circ\)
+B: \(45^\circ\)
+C: \(90^\circ\)
+D: \(105^\circ\)
+solution:
+The parts total \(2 + 3 + 7 = 12\), so one part is \(\frac{180^\circ}{12} = 15^\circ\).
+
+Largest angle \(= 7 \times 15^\circ = 105^\circ\). Check: \(30^\circ + 45^\circ + 105^\circ = 180^\circ\).
+
+=== 55
+chapter: Time and Work
+subtopic: Work Rates
+difficulty: MODERATE
+answer: D
+stem:
+P and Q together complete a job in \(4\frac{2}{5}\) days. R and S complete the same job in \(4\frac{8}{9}\) days. If P, Q, R and S work together, how many days do they need to complete the same job?
+A: \(2\frac{7}{18}\)
+B: \(1\frac{7}{18}\)
+C: \(1\frac{6}{19}\)
+D: \(2\frac{6}{19}\)
+solution:
+P + Q take \(\frac{22}{5}\) days, so their daily rate is \(\frac{5}{22} = \frac{10}{44}\).
+
+R + S take \(\frac{44}{9}\) days, so their daily rate is \(\frac{9}{44}\).
+
+Together: \(\frac{10}{44} + \frac{9}{44} = \frac{19}{44}\) per day, so the job takes \(\frac{44}{19} = 2\frac{6}{19}\) days.
+
+=== 56
+chapter: Time and Work
+subtopic: Work Rates
+difficulty: MODERATE
+answer: A
+stem:
+A can finish a work in 60 days. He works at it for 15 days and then B alone finishes the remaining work in 48 days. In how much time can A and B working together finish the work?
+A: \(\frac{960}{31}\) days
+B: \(\frac{171}{37}\) days
+C: 51 days
+D: 45 days
+solution:
+In 15 days A does \(\frac{15}{60} = \frac{1}{4}\) of the work, so B does \(\frac{3}{4}\) in 48 days and needs \(48 \times \frac{4}{3} = 64\) days alone.
+
+Together: \(\frac{1}{60} + \frac{1}{64} = \frac{16 + 15}{960} = \frac{31}{960}\) per day, so they take \(\frac{960}{31}\) days.
+
+Check: \(\frac{60 \times 64}{60 + 64} = \frac{3840}{124} = \frac{960}{31}\).
+
+=== 57
+chapter: Trigonometric Ratios and Identities
+subtopic: Degree, Radian and Standard Values
+difficulty: EASY
+answer: B
+stem:
+The value of which of the following is different from the other options?
+A: \(\sin 90^\circ\)
+B: \(\sec 60^\circ\)
+C: \(\cos 0^\circ\)
+D: \(\tan 45^\circ\)
+solution:
+\(\sin 90^\circ = 1\), \(\cos 0^\circ = 1\) and \(\tan 45^\circ = 1\), but \(\sec 60^\circ = \frac{1}{\cos 60^\circ} = 2\).
+
+=== 58
+chapter: Time and Work
+subtopic: Work Rates
+difficulty: EASY
+answer: C
+stem:
+A can complete \(\frac{1}{3}\) of a work in 7 days and B can complete \(\frac{2}{7}\) of the same work in 10 days. In how many days can both A and B together complete the work?
+A: \(12\frac{3}{8}\)
+B: \(11\frac{7}{8}\)
+C: \(13\frac{1}{8}\)
+D: \(15\frac{1}{7}\)
+solution:
+A alone: \(7 \times 3 = 21\) days. B alone: \(10 \times \frac{7}{2} = 35\) days.
+
+Together: \(\frac{1}{21} + \frac{1}{35} = \frac{5 + 3}{105} = \frac{8}{105}\) per day, so \(\frac{105}{8} = 13\frac{1}{8}\) days.
+
+Check: \(\frac{21 \times 35}{21 + 35} = \frac{735}{56} = 13.125\).
+
+=== 59
+chapter: Time, Speed and Distance
+subtopic: Average Speed and Speed–Time Ratios
+difficulty: EASY
+answer: B
+stem:
+Ramesh, on his way to his hometown, travelled the first 250 km at a speed of 75km/h and the next 250 km at a speed of 85 km/h. Find the average speed for the whole journey(correct to 2 decimal places).
+A: 80.55km/h
+B: 79.69km/h
+C: 79.20km/h
+D: 80.69km/h
+solution:
+Equal distances, so the average speed is the harmonic mean: \(\frac{2 \times 75 \times 85}{75 + 85} = \frac{12750}{160} = 79.6875 \approx 79.69\) km/h.
+
+Check: time \(= \frac{250}{75} + \frac{250}{85} = 3.3333 + 2.9412 = 6.2745\) h, and \(\frac{500}{6.2745} = 79.69\) km/h.
+
+=== 60
+chapter: Time and Work
+subtopic: Work Rates
+difficulty: HARD
+answer: C
+stem:
+A can do \(\frac{1}{3}\) of a piece of work in 32 days, B can do \(37\frac{1}{2}\%\) of the same work in 24 days, while C can do \(60\%\) of the same work in 48 days. B and C together started and worked for \(x\) days. After \(x\) days, B left the work and A joined C and both completed the remaining work in \((x + 8)\) days. If the ratio of the work done by \((B + C)\) together to the work done by \((A + C)\) together is 9 : 11, then what fraction of the same work can be completed by C alone in \(3.5x\) days?
+A: \(\frac{18}{25}\)
+B: \(\frac{4}{5}\)
+C: \(\frac{7}{10}\)
+D: \(\frac{3}{4}\)
+solution:
+A alone: \(32 \times 3 = 96\) days. B alone: \(\frac{24}{0.375} = 64\) days. C alone: \(\frac{48}{0.6} = 80\) days.
+
+The whole work splits 9 : 11, so B + C did \(\frac{9}{20}\) of it. Their rate is \(\frac{1}{64} + \frac{1}{80} = \frac{9}{320}\), so \(\frac{9x}{320} = \frac{9}{20}\) and \(x = 16\).
+
+Check with A + C: rate \(\frac{1}{96} + \frac{1}{80} = \frac{5 + 6}{480} = \frac{11}{480}\), and in \(x + 8 = 24\) days they do \(\frac{264}{480} = \frac{11}{20}\), which matches.
+
+C alone in \(3.5 \times 16 = 56\) days does \(\frac{56}{80} = \frac{7}{10}\) of the work.
+
+=== 61
+chapter: Number System
+subtopic: Divisibility Rules and Missing Digits
+difficulty: EASY
+answer: C
+stem:
+Which of the following numbers is divisible by 8?
+A: 18718
+B: 18716
+C: 18712
+D: 18714
+solution:
+A number is divisible by 8 when its last three digits are. \(712 = 8 \times 89\), while 718, 716 and 714 leave remainders 6, 4 and 2.
+
+So 18712 is divisible by 8 (\(18712 = 8 \times 2339\)).
+
+=== 62
+chapter: Triangles
+subtopic: Congruence and Similarity
+difficulty: EASY
+answer: B
+stem:
+The three sides of two triangles are 4, 5 and 6 cm. Select the INCORRECT statement.
+A: The angle opposite to the greater side in those triangles will be greater.
+B: The area of the two triangles will be different.
+C: The two triangles are congruent.
+D: The two triangles are scalene triangles.
+solution:
+Both triangles have sides 4, 5 and 6 cm, so they are congruent (SSS) and must have equal areas. The statement that their areas differ is incorrect.
+
+The others are true: the larger side faces the larger angle, the triangles are congruent, and all three sides differ, so they are scalene.
+
+=== 63
+chapter: Circles
+subtopic: Tangents from an External Point
+difficulty: EASY
+answer: C
+stem:
+If RP and RQ are two tangents to a circle with centre O such that \(\angle POQ = 120^\circ\), where P and Q are the points on the circle and R is a point outside the circle then \(\angle PRQ\) is equal to:
+A: \(90^\circ\)
+B: \(75^\circ\)
+C: \(60^\circ\)
+D: \(45^\circ\)
+solution:
+In quadrilateral OPRQ the angles at P and Q are \(90^\circ\) (radius perpendicular to tangent).
+
+So \(\angle PRQ = 360^\circ - 90^\circ - 90^\circ - 120^\circ = 60^\circ\).
+
+=== 64
+chapter: Mensuration 3D
+subtopic: Cubes and Cuboids
+difficulty: EASY
+answer: B
+stem:
+The length, breadth and height of a hall are 10 m, 20 m and 15m respectively. Find the cost of whitewashing the walls of the inside of the hall and ceiling at the rate of ₹10.20/\(\text{m}^2\)
+A: ₹13,394
+B: ₹11,220
+C: ₹15,320
+D: ₹16,542
+solution:
+Walls: \(2h(l + b) = 2 \times 15 \times (10 + 20) = 900\ \text{m}^2\). Ceiling: \(10 \times 20 = 200\ \text{m}^2\).
+
+Area \(= 1100\ \text{m}^2\), so the cost is \(1100 \times 10.20\) = ₹11,220.
+
+=== 65
+chapter: Algebraic Identities and Simplification
+subtopic: Sums and Products of Three Variables
+difficulty: MODERATE
+answer: A
+stem:
+If \(p + q + r = pqr = \frac{1}{p} + \frac{1}{q} + \frac{1}{r} = 1\), then find \(p^3 + q^3 + r^3\).
+A: 1
+B: -1
+C: 5
+D: -5
+solution:
+\(\frac{1}{p} + \frac{1}{q} + \frac{1}{r} = \frac{pq + qr + rp}{pqr} = 1\) and \(pqr = 1\), so \(pq + qr + rp = 1\).
+
+\(p^2 + q^2 + r^2 = (p + q + r)^2 - 2(pq + qr + rp) = 1 - 2 = -1\).
+
+\(p^3 + q^3 + r^3 = 3pqr + (p + q + r)(p^2 + q^2 + r^2 - pq - qr - rp) = 3 + 1 \times (-1 - 1) = 1\).
+
+=== 66
+chapter: Percentage, Profit and Loss
+subtopic: Successive Discount and Marked Price
+difficulty: EASY
+answer: C
+stem:
+The marked price of an article is ₹50,000. Of three shopkeepers, the first one allows two successive discounts of 25% and 15%.The second one allows two successive discounts 20% and 20%. The third shopkeeper allows two successive discounts of 30% and 10%. From which shopkeeper does the customer get more profit?
+A: First
+B: Same for all the shopkeepers
+C: Third
+D: Second
+solution:
+First: \(50000 \times 0.75 \times 0.85\) = ₹31,875.
+
+Second: \(50000 \times 0.80 \times 0.80\) = ₹32,000.
+
+Third: \(50000 \times 0.70 \times 0.90\) = ₹31,500.
+
+The third shopkeeper's price is lowest, so the customer gains most there. Check by single equivalent discounts: \(36.25\%\), \(36\%\) and \(37\%\).
+
+=== 67
+chapter: Percentage, Profit and Loss
+subtopic: Profit and Loss
+difficulty: EASY
+answer: B
+stem:
+Mona purchased two sets of jewellery for ₹4,000 each. She sold these sets of jewellery, gaining 8% on one and loosing 6% on the other. Calculate her total loss or gain in this whole transaction.
+A: ₹120 gain
+B: ₹80 gain
+C: ₹80 loss
+D: ₹120 loss
+solution:
+Gain on one: \(8\%\) of ₹4,000 = ₹320. Loss on the other: \(6\%\) of ₹4,000 = ₹240.
+
+Net: ₹320 - ₹240 = ₹80 gain. Check: selling prices ₹4,320 + ₹3,760 = ₹8,080 against cost ₹8,000.
+
+=== 68
+chapter: Time, Speed and Distance
+subtopic: Boats and Streams
+difficulty: EASY
+answer: C
+stem:
+A boat covers a distance of 12 km in 1 hour upstream and in 45 minutes downstream. Find the speed of the boat and the stream (in km/h).
+A: 16; 4
+B: 16; 2
+C: 14; 2
+D: 12; 4
+solution:
+Upstream speed \(= 12\) km/h; downstream speed \(= \frac{12}{0.75} = 16\) km/h.
+
+Boat \(= \frac{16 + 12}{2} = 14\) km/h; stream \(= \frac{16 - 12}{2} = 2\) km/h.
+
+=== 69
+chapter: Number System
+subtopic: Divisibility Rules and Missing Digits
+difficulty: EASY
+answer: B
+stem:
+Which of the following numbers is divisible by 99?
+A: 31548
+B: 60687
+C: 44775
+D: 84456
+solution:
+A number is divisible by 99 when it is divisible by both 9 and 11.
+
+60687: digit sum \(27\) (divisible by 9) and alternating sum \(6 - 0 + 6 - 8 + 7 = 11\) (divisible by 11). Indeed \(60687 = 99 \times 613\).
+
+31548 has digit sum 21 (not divisible by 9); 44775 and 84456 have alternating sums 5 and 9 (not divisible by 11).
+
+=== 70
+chapter: Algebraic Identities and Simplification
+subtopic: Rational Algebraic Expressions
+difficulty: EASY
+answer: C
+stem:
+Simplify \(\frac{256x^4 - 16y^4}{(80x^2 - 20y^2)(16x^2 + 4y^2)}\).
+A: \(5\)
+B: \(\frac{1}{20}\)
+C: \(\frac{1}{5}\)
+D: \(\frac{2}{5}\)
+solution:
+Numerator: \(16(16x^4 - y^4) = 16(4x^2 - y^2)(4x^2 + y^2)\).
+
+Denominator: \(20(4x^2 - y^2) \times 4(4x^2 + y^2) = 80(4x^2 - y^2)(4x^2 + y^2)\).
+
+The value is \(\frac{16}{80} = \frac{1}{5}\). Check with \(x = 1, y = 0\): \(\frac{256}{80 \times 16} = \frac{1}{5}\).
+
+=== 71
+chapter: Statistics
+subtopic: Frequency Tables and Cumulative Frequency
+difficulty: EASY
+answer: A
+blind: B
+flawed: yes
+note: the question line under the table is not printed (washed out to faint dots on SSC's sheet). SSC's key A (17) is the count for ₹19,000 to ₹22,000, so the bracketed question is inferred from it; our blind answer B (19) assumed ₹16,000 to ₹19,000. Held PRIVATE for review
+stem:
+The given table represents the monthly income of 100 families of a locality.
+
+| Monthly income range (in ₹) | Number of families |
+|---|---|
+| Income more than ₹10,000 | 100 |
+| Income more than ₹13,000 | 85 |
+| Income more than ₹16,000 | 69 |
+| Income more than ₹19,000 | 50 |
+| Income more than ₹22,000 | 33 |
+| Income more than ₹25,000 | 15 |
+
+[How many families have a monthly income in the range ₹19,000 to ₹22,000?]
+A: 17
+B: 19
+C: 22
+D: 24
+solution:
+The table is a "more than" cumulative frequency table, so the families in a class are the difference of consecutive counts.
+
+₹19,000 to ₹22,000: \(50 - 33 = 17\).
+
+For reference, the other classes hold \(100 - 85 = 15\), \(85 - 69 = 16\), \(69 - 50 = 19\), \(33 - 15 = 18\), and 15 families earn more than ₹25,000.
+
+=== 72
+chapter: Linear Equations
+subtopic: Word Problems and Applications
+difficulty: MODERATE
+answer: A
+stem:
+A family income is ₹35,000 in a month. The family spends the income on various expenditures, viz., food, health, education, entertainment, and rent. After incurring all the expenditures, 8% is saved every month. The expenditure on health is 50% more than that of food. While food is three times of the expenditure on entertainment, the expenditure on health is half of the expenditure on education. The expenditure on rent is one-third of the combined expenditure on food, health and education. How much expenditure (in ₹) is incurred on education?
+A: 12600
+B: 8400
+C: 13200
+D: 7700
+solution:
+Let entertainment \(= e\). Then food \(= 3e\), health \(= 1.5 \times 3e = 4.5e\), education \(= 2 \times 4.5e = 9e\), rent \(= \frac{3e + 4.5e + 9e}{3} = 5.5e\).
+
+Total spending \(= e + 3e + 4.5e + 9e + 5.5e = 23e\), which is \(92\%\) of ₹35,000, that is ₹32,200, so \(e = 1400\).
+
+Education \(= 9 \times 1400\) = ₹12,600.
+
+=== 73
+chapter: Ratio, Proportion and Variation
+subtopic: Ratio and Proportion
+difficulty: EASY
+answer: B
+stem:
+Which of the following is the lowest ratio?
+A: \(8 : 19\)
+B: \(15 : 38\)
+C: \(17 : 38\)
+D: \(13 : 19\)
+solution:
+Over the common denominator 38: \(8 : 19 = \frac{16}{38}\), \(15 : 38 = \frac{15}{38}\), \(17 : 38 = \frac{17}{38}\), \(13 : 19 = \frac{26}{38}\).
+
+The lowest is \(15 : 38\) (about 0.395).
+
+=== 74
+chapter: Algebraic Identities and Simplification
+subtopic: Reciprocal Sums x ± 1/x
+difficulty: MODERATE
+answer: A
+stem:
+If \(7a - \frac{7}{a} + 4 = 0\), then find \(a^3 - \frac{1}{a^3} - 1\).
+A: \(\frac{-995}{343}\)
+B: \(\frac{-875}{248}\)
+C: \(\frac{-694}{315}\)
+D: \(\frac{-765}{262}\)
+solution:
+\(7\left(a - \frac{1}{a}\right) = -4\), so \(a - \frac{1}{a} = -\frac{4}{7}\).
+
+\(a^3 - \frac{1}{a^3} = \left(a - \frac{1}{a}\right)^3 + 3\left(a - \frac{1}{a}\right) = -\frac{64}{343} - \frac{12}{7} = -\frac{64 + 588}{343} = -\frac{652}{343}\).
+
+Subtracting 1: \(-\frac{652 + 343}{343} = -\frac{995}{343}\).
+
+=== 75
+chapter: Simple and Compound Interest
+subtopic: Simple Interest
+difficulty: EASY
+answer: D
+stem:
+₹8,500 becomes ₹11,050 in 6 years at a certain rate of simple interest. If the rate becomes 1.8 times of itself, the amount of the same principal in 5 years will be:
+A: ₹15,625
+B: ₹14,350
+C: ₹13,550
+D: ₹12,325
+solution:
+Interest \(= 11050 - 8500\) = ₹2,550 in 6 years, so the rate is \(\frac{2550 \times 100}{8500 \times 6} = 5\%\).
+
+New rate \(= 1.8 \times 5\% = 9\%\). Interest in 5 years \(= 8500 \times \frac{9 \times 5}{100}\) = ₹3,825.
+
+Amount \(= 8500 + 3825\) = ₹12,325.
+
+=== 76
+chapter: Vocabulary
+subtopic: Synonyms: Character and Temperament
+difficulty: EASY
+answer: D
+stem:
+Select the most appropriate synonym of the given word.
+**Gentle**
+A: Fierce
+B: Ferocious
+C: Cruel
+D: Sympathetic
+solution:
+Gentle means kind, mild and tender. Of the options only sympathetic (kind, caring) is close; fierce, ferocious and cruel are its opposites.
+
+=== 77
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: D
+stem:
+Select the most appropriate option that can substitute the underlined segment in the given sentence.
+My friend Meera and her mother \(\underline{\text{is visiting}}\) me this weekend.
+A: have visiting
+B: am visiting
+C: was visiting
+D: are visiting
+solution:
+Two subjects joined by "and" (Meera and her mother) take a plural verb, and "this weekend" calls for the present continuous of a planned event: "are visiting".
+
+=== 78
+chapter: Sentence Rearrangement
+subtopic: Shape of a Paragraph Argument
+difficulty: MODERATE
+answer: D
+stem:
+Sentences of a paragraph are given below in jumbled order. Arrange the sentences in the correct order to form a meaningful and coherent paragraph.
+A. Several times I have visited the narrow, dirty streets where the poor live, and I grow hot and indignant to think that good people should be content to live in fine houses and become strong and beautiful, while others are condemned to live in hideous, sunless tenements and grow ugly, withered and cringing.
+B. Dear little creatures, they crouch in my heart and haunt me with a constant sense of pain.
+C. The children who crowd these grimy alleys, half-clad and underfed, shrink away from your outstretched hand as if from a blow.
+D. In the country one sees only nature’s fair works, and one’s soul is not saddened by the cruel struggle for mere existence that goes on in the crowded city.
+A: BACD
+B: ADBC
+C: CABD
+D: DACB
+solution:
+D opens with the contrast between the country and the crowded city. A then turns to the city's narrow, dirty streets. C describes the children "who crowd these grimy alleys" (these points back to A's streets). B, "Dear little creatures, they ...", refers to those children. Order: DACB.
+
+=== 79
+chapter: Vocabulary
+subtopic: Antonyms: Time, Change and Action
+difficulty: MODERATE
+answer: D
+stem:
+Identify from the given options the word OPPOSITE in meaning to the underlined word according to its meaning in the following sentence.
+The confectioner \(\underline{\text{dusted}}\) a fine layer of sugar on the muffin.
+A: scattered
+B: sprinkled
+C: powdered
+D: cleaned
+solution:
+Here dusted means sprinkled a fine powder over something. Scattered, sprinkled and powdered all say much the same. Cleaned (removing a layer from a surface) is the opposite of covering it with a layer, so it is the answer.
+
+=== 80
+chapter: Spotting Errors
+subtopic: Articles, Determiners and Comparison
+difficulty: MODERATE
+answer: D
+stem:
+The following sentence has been divided into parts. One of them may contain an error. Select the part that contains the error from the given options. If you don’t find any error, mark ‘No error’ as your answer.
+Anti-party activities / improved my relations /with an opposition.
+A: Anti-party activities
+B: No error
+C: Improved my relations
+D: With an opposition
+solution:
+"The opposition" (the opposing party) is a specific, known group and takes the definite article: "improved my relations with the opposition". The error is "with an opposition".
+
+=== 81
+chapter: Vocabulary
+subtopic: Antonyms: Size, Worth and Law
+difficulty: EASY
+answer: C
+stem:
+Select the most appropriate ANTONYM of the given word.
+**Compulsory**
+A: Obligatory
+B: Mandatory
+C: Voluntary
+D: Subsidiary
+solution:
+Compulsory means required by rule or law. Obligatory and mandatory are synonyms; subsidiary means secondary. Voluntary (done by choice) is the opposite.
+
+=== 82
+chapter: Idioms and Phrases
+subtopic: Idioms: Speech and Opinion
+difficulty: MODERATE
+answer: D
+stem:
+Select the most appropriate meaning of the given idiom.
+**At cross purposes**
+A: Developing and amplifying ideas given
+B: Finalising ideas and plans
+C: Blindly following each other’s ideas
+D: Disagreeing with each other’s ideas
+solution:
+People at cross purposes misunderstand each other or work towards different, conflicting aims. Of the options, disagreeing with each other's ideas is the closest.
+
+=== 83
+chapter: Vocabulary
+subtopic: Synonyms: Law, Duty and Action
+difficulty: EASY
+answer: B
+stem:
+Select the most appropriate synonym of the underlined word.
+The Department of Educational Policy is \(\underline{\text{committed}}\) to the study of educational policy, analyse, and evaluate educational programmes, to identify trends, understand outcomes and guide policy and practice, towards finding solutions to current problems in educational governance and management.
+A: affiliated
+B: dedicated
+C: inclined
+D: apathetic
+solution:
+Committed to a task means devoted or dedicated to it. Affiliated means officially linked, inclined only leaning towards, and apathetic is the opposite.
+
+=== 84
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: EASY
+answer: D
+stem:
+Select the option that can be used as a one-word substitute for the given group of words.
+Never changing and therefore boring.
+A: Outdated
+B: Impractical
+C: Idealistic
+D: Monotonous
+solution:
+Monotonous means dull because it never varies. Outdated means old-fashioned, impractical unworkable and idealistic guided by ideals.
+
+=== 85
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: C
+stem:
+Select the option that expresses the given sentence in active voice.
+The painting was not made by you.
+A: You should not make the painting.
+B: You does not make the painting.
+C: You did not make the painting.
+D: You do not make the painting.
+solution:
+"Was not made" is simple past passive, so the active is simple past negative: "You did not make the painting." The other options change the tense or the modal, and "You does" is ungrammatical.
+
+=== 86
+chapter: Spotting Errors
+subtopic: Tenses and Sequence of Tenses
+difficulty: EASY
+answer: B
+stem:
+The following sentence has been divided into parts. One of them may contain an error. Select the part that contains the error from the given options. If you don’t find any error, mark ‘No error’ as your answer.
+All the horses, except one, always / behaved in a rough manner when / Robert come to clean the stable.
+A: behaved in a rough manner when
+B: Robert come to clean the stable
+C: No error
+D: All the horses, except one, always
+solution:
+The main clause is in the past ("behaved"), and a singular subject cannot take "come" anyway. It should be "when Robert came to clean the stable".
+
+=== 87
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: A
+stem:
+Select the most appropriate option to substitute the underlined segment in the given sentence. If no substitution is required, select ‘No substitution’.
+I’ve got \(\underline{\text{a lot of homeworks}}\) this weekend.
+A: a lot of homework
+B: No substitution
+C: a lots of homework
+D: much homework
+solution:
+Homework is uncountable, so it has no plural: "a lot of homework". "A lots of" is wrong, and "much" in a plain affirmative sentence ("I've got much homework") sounds stilted; "a lot of" is the natural choice.
+
+=== 88
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: D
+stem:
+Select the option that expresses the given sentence in active voice.
+He was praised by his father.
+A: His father has praised him.
+B: His father praises him.
+C: His father had praised him.
+D: His father praised him.
+solution:
+"Was praised" is simple past passive; its active form is simple past: "His father praised him." The others change the tense.
+
+=== 89
+chapter: Vocabulary
+subtopic: Antonyms: Time, Change and Action
+difficulty: EASY
+answer: D
+stem:
+Select the most appropriate ANTONYM of the underlined word.
+He was riding his bike on a \(\underline{\text{bumpy}}\) surface.
+A: Jerky
+B: Uneven
+C: Choppy
+D: Steady
+solution:
+Bumpy means uneven and jolting. Jerky, uneven and choppy are near-synonyms; steady (firm, smooth, not shaking) is the only opposite offered.
+
+=== 90
+chapter: Idioms and Phrases
+subtopic: Idioms: Feelings and States of Mind
+difficulty: MODERATE
+answer: B
+stem:
+Select the correct idiom that can substitute the italicised group of words in the given sentence.
+You must not participate in the marathon this year without any training. It is *an unreal hope* on your part!
+A: carrying coal to new castle
+B: a pipe dream
+C: a will-o’-the-wisp
+D: to lose one’s temper
+solution:
+A pipe dream is a hope or plan that is unrealistic and will never come true. Carrying coals to Newcastle is doing something pointless, a will-o'-the-wisp is something elusive that one chases, and losing one's temper is getting angry.
+
+=== 91
+chapter: Sentence Rearrangement
+subtopic: Paragraph Frame: S1 and S6
+difficulty: EASY
+answer: B
+stem:
+Sentences of a paragraph are given below in jumbled order. Arrange the sentences in the correct order to form a meaningful and coherent paragraph.
+A. Many species of bamboo flower once in several years and then die.
+B. The stem itself is hollow and is connected to a network of rhizomes, which spreads out beneath the surface of the soil.
+C. Roots grow out of this network of rhizomes and help the plants to absorb and distribute food and water from the soil.
+D. The bamboo is a variety of grass, with a woody, many-jointed stem.
+A: ADCB
+B: DBCA
+C: BCAD
+D: CADC
+solution:
+D introduces the bamboo and its stem. B continues with "The stem itself". C follows with "this network of rhizomes" from B. A, on flowering and dying, closes. Order: DBCA.
+
+=== 92
+chapter: Grammar
+subtopic: Phrasal Verbs with Prepositions and Particles
+difficulty: EASY
+answer: C
+stem:
+Select the most appropriate option that can substitute the underlined segment in the given sentence.
+The commanders \(\underline{\text{entered by force into}}\) terrorists’ camp.
+A: broke down
+B: broke with
+C: broke into
+D: broke off
+solution:
+To break into is to enter a place by force. Break down means stop working or collapse, break with means end a connection, and break off means end suddenly or detach.
+
+=== 93
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: C
+stem:
+Sentences with spelling errors are given. Select the sentence with NO error.
+A: Making healtcare more affordable is something I would do as Prescident.
+B: Making healtcare more afordable is something I would do as President.
+C: Making healthcare more affordable is something I would do as President.
+D: Making healthcare more afordable is something I would do as Prescident.
+solution:
+The correct spellings are healthcare, affordable and President. Only C has all three right.
+
+=== 94
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: C
+stem:
+Select the INCORRECTLY spelt word.
+A: Receipt
+B: Technically
+C: Harrasment
+D: Vaccinate
+solution:
+The correct spelling is harassment (one r, double s). The other three are spelt correctly.
+
+=== 95
+chapter: Vocabulary
+subtopic: Homophones in Sentences
+difficulty: EASY
+answer: D
+stem:
+Select the most appropriate option to fill in the blank.
+Yesterday, I ate only a __________ of apples for my dinner.
+A: pier
+B: pear
+C: pare
+D: pair
+solution:
+"A pair of apples" means two apples. Pier is a platform over water, pear a fruit, and pare means to trim or peel.
+
+=== 96
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: EASY
+answer: B
+context:
+In the following passage, some words have been deleted. Read the passage carefully and select the most appropriate option to fill in each blank.
+Since the 17th century, manure has been utilised in agriculture. In those days, they didn't know how plants got the (1)___________ they needed. They would toss wood debris, fish remains and other side-effects in an unfilled land to dispose of them. However, it wasn't long before people began to notice that the grass, bushes and shrubs there were beginning to (2) ___________. They came to the conclusion that the soil supplied the plants with the nutrients they needed, and that organic remains could aid in this process. Because manure is (3) ___________from animals and plants, it not only provides a wide range of plant nutrients but also improves the structure of the soil. Farmers gradually began using fertilisers as well because they understood that if their farmlands were treated in a similar manner, the growth of their crops would also improve. It bonds the soil particles together to form soil crumbs, which are necessary for cultivating soil. Additionally, the addition of manure to the soil aids in the prevention of soil erosion and the loss of plant nutrients during precipitation. Commercial fertilisers, in contrast to manure, are inorganic (4) ___________ that do not alter the structure of the soil. Their function is to provide the sprouting plants with additional nutrients. A farmer ought to know when and how to apply a particular kind of fertiliser. When the plants require a particular nutrient the most, use it. If fertilisers haven't been added correctly to the soil, their roots won't be able to take in a lot. Rainwater could wash away these fertilisers, or they could end up (5) ___________ the plants instead, costing the farmer money.
+stem:
+Select the most appropriate option to fill in blank no.1.
+A: maintenance
+B: nutrients
+C: ingredients
+D: items
+solution:
+The next sentences say "the soil supplied the plants with the nutrients they needed". Plants get nutrients; maintenance, ingredients and items do not fit.
+
+=== 97
+chapter: Cloze Test
+subtopic: Collocations and the Precise Word
+difficulty: EASY
+answer: C
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank no. 2.
+A: cherish
+B: raise
+C: flourish
+D: tend
+solution:
+People noticed the plants growing well where organic waste was dumped, so they were beginning to flourish (grow vigorously). Cherish, raise and tend need an object and describe what a person does to plants.
+
+=== 98
+chapter: Cloze Test
+subtopic: Collocations and the Precise Word
+difficulty: EASY
+answer: C
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank no. 3.
+A: extracted
+B: constructed
+C: derived
+D: build
+solution:
+Manure comes from animal and plant matter: it is "derived from" animals and plants. Extracted suggests drawing out a part, constructed and "build" do not fit, and "is build" is ungrammatical.
+
+=== 99
+chapter: Cloze Test
+subtopic: Collocations and the Precise Word
+difficulty: EASY
+answer: B
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank no. 4.
+A: contents
+B: substances
+C: essences
+D: compositions
+solution:
+Chemical fertilisers are "inorganic substances", the standard term for kinds of matter. Contents, essences and compositions do not describe materials in this way.
+
+=== 100
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: MODERATE
+answer: B
+context_from: 96
+stem:
+Select the most appropriate option to fill in blank no. 5.
+A: wounding
+B: harming
+C: replicating
+D: hurting
+solution:
+Fertiliser applied wrongly can end up damaging the plants: "harming the plants". Wounding implies a cut or injury to a body, hurting is used mainly of living beings feeling pain, and replicating makes no sense here.

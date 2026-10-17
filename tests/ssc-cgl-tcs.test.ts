@@ -101,6 +101,16 @@ describe("assembleTcs", () => {
     expect(qs.filter((q) => q.shift === 2).every((q) => q.key === "B")).toBe(true);
   });
 
+  it("files each picture option under the label nearest its middle (a tall picture starts above its label)", () => {
+    // 9 Sep 2024 Q10: option pictures 25pt tall, centred on "1."-"4.", each starting ~6pt above.
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 0);
+    const opts = g.spans.filter((s) => s.page === 2 && s.y0 < 300 && /^[1-4]\. /.test(s.text));
+    // Picture 1 starts just below "Ans" (which prints level with label 1 here); the rest start above their labels.
+    opts.forEach((o, i) => g.images.push({ page: 2, name: `pic${i}`, x0: 97, y0: i === 0 ? o.y0 + 0.5 : o.y0 - 6, x1: 185, y1: o.y0 + 9 }));
+    const [q] = assembleTcs(g);
+    expect(q.optionImages).toEqual([["pic0"], ["pic1"], ["pic2"], ["pic3"]]);
+  });
+
   it("keeps figure images: a stem figure, and pictures that are the options", () => {
     const g = shift(2, "9:00 AM - 10:00 AM", () => 0);
     g.images.push({ page: 2, name: "dice", x0: 70, y0: 63, x1: 170, y1: 71 });
@@ -210,6 +220,100 @@ describe("assembleTcs", () => {
     expect(q.regions[0].y0).toBeLessThanOrEqual(q96.y0 + 2);
     expect(qs.find((x) => x.number === 97)!.context).toBeNull();
     expect(qs.find((x) => x.number === 95)!.options).toEqual(["opt 20a", "opt 20b", "opt 20c", "opt 20d"]);
+  });
+
+  it("refuses a file in which it finds no question at all (a layout it does not know)", () => {
+    expect(() => assembleTcs({ spans: [span(1, 10, "Some other print")], images: [] })).toThrow(/no questions/);
+  });
+
+  it("reads the 2022 print's key colours, a shade off the 2024 ones", () => {
+    // 1 Dec 2022: green 0x40c64a, red 0xf61717, body 0x242424.
+    const g = shift(2, "9:00 AM - 10:00 AM", (n) => n % 4);
+    g.spans = g.spans.map((s) => ({ ...s, color: s.color === GREEN ? 0x40c64a : s.color === RED ? 0xf61717 : s.color === DARK ? 0x242424 : s.color }));
+    const qs = assembleTcs(g);
+    expect(qs.map((q) => q.key).slice(0, 4)).toEqual(["B", "C", "D", "A"]);
+  });
+
+  it("reads an option label printed apart from its text, a hair above Ans (1 Dec 2022)", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 1);
+    g.spans = g.spans.flatMap((s) => {
+      const m = /^([1-4])\. (.*)$/.exec(s.text);
+      if (!(s.page === 2 && s.y0 < 300 && m)) return [s];
+      return [{ ...s, text: `${m[1]}.`, y0: s.y0 - 0.4, x1: s.x0 + 8 }, { ...s, text: m[2], x0: s.x0 + 11 }];
+    });
+    const [q] = assembleTcs(g);
+    expect(q).toMatchObject({ key: "B", options: ["opt 1a", "opt 1b", "opt 1c", "opt 1d"] });
+  });
+
+  it("reads the 2023 print's key colours (green 0x37ac3f, red 0xe61616)", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", (n) => n % 4);
+    g.spans = g.spans.map((s) => ({ ...s, color: s.color === GREEN ? 0x37ac3f : s.color === RED ? 0xe61616 : s.color === DARK ? 0 : s.color }));
+    expect(assembleTcs(g).map((q) => q.key).slice(0, 4)).toEqual(["B", "C", "D", "A"]);
+  });
+
+  it("reads a Q label fused with the first stem line, and a heading in three spans (1 Dec 2022)", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 0);
+    g.spans = g.spans.flatMap((s) => {
+      if (s.page === 5 && s.text === "Q.7") return [];
+      if (s.page === 5 && s.text === "Stem of 7") return [{ ...s, text: "Q.7 Stem of 7", x0: 50 }];
+      const m = /^Section : (Quantitative.*)$/.exec(s.text);
+      if (m) return [{ ...s, text: "Section", x1: 75 }, { ...s, text: ":", x0: 77, x1: 80 }, { ...s, text: ` ${m[1]}`, x0: 80, y0: s.y0 - 0.3 }];
+      return [s];
+    });
+    const qs = assembleTcs(g);
+    expect(qs).toHaveLength(100);
+    expect(qs[6]).toMatchObject({ number: 7, stem: "Stem of 7" });
+    expect(qs[50]).toMatchObject({ part: "C", number: 51 });
+  });
+
+  it("reads the 18 Jul 2023 print: unlabelled date and time, fused Question ID, text-glyph ticks", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", (n) => n % 4);
+    g.spans = g.spans.flatMap((s) => {
+      if (s.text === "Exam Time") return [];
+      if (s.text === "9:00 AM - 10:00 AM") return [span(s.page, 4, "18/07/2023 ", { x0: 133 }), { ...s, text: "9:00 AM - 10:00 AM ", x0: 133 }];
+      if (s.text === "Question ID :") return [];
+      if (/^6306\d+$/.test(s.text)) return [{ ...s, text: `Question ID: ${s.text} `, x0: 399 }];
+      const m = /^([1-4])\. /.exec(s.text);
+      if (m && s.y0 < 2000) {
+        const glyph = s.color === GREEN ? ",Z " : "X ";
+        return [{ ...s, text: glyph, x0: 75, x1: 84, y0: s.y0 - 4, color: s.color === GREEN ? 0x74b06c : 0xb0403c, bold: true }, s];
+      }
+      return [s];
+    });
+    const qs = assembleTcs(g, { slots: ["9:00 AM - 10:00 AM"] });
+    expect(qs).toHaveLength(100);
+    expect(qs[0]).toMatchObject({ date: "2023-07-18", key: "B", options: ["opt 1a", "opt 1b", "opt 1c", "opt 1d"], questionId: "6306260" });
+  });
+
+  it("keeps a stem line's tail printed right of the panel's edge (11 Sep 2024 Q48)", () => {
+    // "...dynasty from the" then "5th to 8th Century CE." as its own span at x 400, on a stem
+    // line: only the panel's own lines (Question ID ... Chosen Option) are the panel.
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 0);
+    g.spans = g.spans.flatMap((s) => (s.page === 2 && s.text === "Stem of 1" ? [s, { ...s, text: "5th to 8th Century CE.", x0: 400, x1: 470 }] : [s]));
+    const [q] = assembleTcs(g);
+    expect(q.stem).toBe("Stem of 1 5th to 8th Century CE.");
+  });
+
+  it("reads an unlabelled exam time split over two spans (18 Jul 2023: \"11 :45 AM -\" / \"12:45 PM\")", () => {
+    const g = shift(2, "11:45 AM - 12:45 PM", () => 0);
+    g.spans = g.spans.flatMap((s) => {
+      if (s.text === "Exam Time") return [];
+      if (s.text === "11:45 AM - 12:45 PM")
+        return [span(s.page, 4, "18/07/2023 ", { x0: 131 }), { ...s, text: "11 :45 AM -", x0: 133, x1: 186 }, { ...s, text: "12:45 PM ", x0: 188, x1: 230 }];
+      return [s];
+    });
+    const qs = assembleTcs(g, { slots: ["9:00 AM - 10:00 AM", "11:45 AM - 12:45 PM"] });
+    expect(qs[0]).toMatchObject({ shift: 2, date: "2023-07-18" });
+  });
+
+  it("ignores a watermark picture repeated at one place on many pages (2022 print)", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 0);
+    // It starts among Q1's options (1 Dec 2022 S2: y 283, the Question ID line at 314).
+    for (let p = 2; p < 60; p++) g.images.push({ page: p, name: `wm${p}`, x0: 120, y0: 100, x1: 480, y1: 577 });
+    const qs = assembleTcs(g);
+    expect(qs[0].stemImages).toEqual([]);
+    expect(qs[0].optionImages).toEqual([[], [], [], []]);
+    expect(qs[0].regions[0].y1).toBeLessThan(250);
   });
 
   it("refuses a question with no green option or two", () => {
