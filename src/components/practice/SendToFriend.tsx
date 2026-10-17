@@ -16,7 +16,8 @@ import { buildPracticeShareText, buildPracticeShareUrl } from "@/lib/practiceTes
  * until a student sends, and sending earns nothing.
  *
  * `card` draws its own bordered box (the result page); without it the block
- * sits inside a card that already has one (V's built-test card).
+ * sits inside a card that already has one (V's built-test card), as a tinted
+ * blue panel: a plain divider there read as small print under Start now.
  */
 export default function SendToFriend({
   code,
@@ -79,14 +80,21 @@ export default function SendToFriend({
 
   const body = (
     <div className="flex items-start gap-3">
-      <Users className="mt-0.5 h-5 w-5 shrink-0 text-brand-accent" aria-hidden />
+      <span className="icon-tile flex h-9 w-9 shrink-0 items-center justify-center rounded-full">
+        <Users className="h-5 w-5" aria-hidden />
+      </span>
       <div className="min-w-0 flex-1">
-        <h2 className="text-sm font-semibold">Practise together</h2>
+        <h2 className="text-base font-semibold">Practise together</h2>
         <p className="mt-1 text-sm text-muted-foreground">
           Send this test to a friend. They get the same questions, free.
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-2">
-          <Button asChild variant="outline" size="sm">
+          <Button
+            asChild
+            variant="outline"
+            size="sm"
+            className="border-brand-accent bg-card font-semibold text-brand-accent hover:bg-brand/10 hover:text-brand-accent"
+          >
             <a
               href={buildWhatsappHref(message("whatsapp"))}
               target="_blank"
@@ -113,6 +121,6 @@ export default function SendToFriend({
   return card ? (
     <section className="mt-4 rounded-xl border bg-card p-5">{body}</section>
   ) : (
-    <div className="border-t pt-3">{body}</div>
+    <div className="rounded-lg border border-brand-accent/30 bg-brand/10 p-3">{body}</div>
   );
 }
