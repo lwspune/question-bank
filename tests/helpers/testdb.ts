@@ -41,6 +41,33 @@ export function extractProjectRef(url: string | undefined | null): string | null
   return m ? m[1].toLowerCase() : null;
 }
 
+/**
+ * Extract the project ref from a Postgres connection URL (TEST_SUPABASE_DB_URL).
+ * Two shapes reach the same database: the direct host `db.<ref>.supabase.co`,
+ * and the session pooler, whose host names no project (`*.pooler.supabase.com`)
+ * so the ref rides in the user (`postgres.<ref>`). Parsed as a URL, so text in
+ * the password cannot pose as the host. One parser for every testdb script:
+ * reset.ts and sql.ts each carried a host-only copy and refused the pooler URL
+ * the README tells you to use (2026-10-17).
+ */
+export function extractDbUrlRef(dbUrl: string | undefined | null): string | null {
+  if (!dbUrl) return null;
+  let u: URL;
+  try {
+    u = new URL(dbUrl.trim());
+  } catch {
+    return null;
+  }
+  const host = u.hostname.toLowerCase();
+  const direct = /^(?:db\.)?([a-z0-9]{20})\.supabase\.co$/.exec(host);
+  if (direct) return direct[1];
+  if (host.endsWith(".pooler.supabase.com")) {
+    const pooler = /^postgres\.([a-z0-9]{20})$/i.exec(decodeURIComponent(u.username));
+    if (pooler) return pooler[1].toLowerCase();
+  }
+  return null;
+}
+
 export type TestDbVerdict =
   | { kind: "test" } // allow-listed test project — run normally
   | { kind: "prod-contract" } // explicit read-only prod run — allowed

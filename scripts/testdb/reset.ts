@@ -17,7 +17,7 @@ import * as path from "node:path";
 import { execFileSync } from "node:child_process";
 import { Client } from "pg";
 import { createClient } from "@supabase/supabase-js";
-import { ALLOWED_TEST_REFS, extractProjectRef } from "../../tests/helpers/testdb";
+import { ALLOWED_TEST_REFS, extractDbUrlRef, extractProjectRef } from "../../tests/helpers/testdb";
 
 config({ path: path.join(process.cwd(), ".env.test.local") });
 
@@ -28,7 +28,7 @@ async function main(): Promise<void> {
   if (!dbUrl || !url || !service) throw new Error("TEST_SUPABASE_* env not set (see .env.test.local.example)");
 
   const apiRef = extractProjectRef(url);
-  const dbRef = /@(?:db\.)?([a-z0-9]{20})\.supabase\.co/i.exec(dbUrl)?.[1]?.toLowerCase();
+  const dbRef = extractDbUrlRef(dbUrl);
   if (!apiRef || !ALLOWED_TEST_REFS.has(apiRef) || dbRef !== apiRef) {
     throw new Error("Refusing: env does not point at a single allow-listed test project");
   }

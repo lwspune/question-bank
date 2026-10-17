@@ -7,14 +7,14 @@
 import { config } from "dotenv";
 import * as path from "node:path";
 import { Client } from "pg";
-import { ALLOWED_TEST_REFS } from "../../tests/helpers/testdb";
+import { ALLOWED_TEST_REFS, extractDbUrlRef } from "../../tests/helpers/testdb";
 
 config({ path: path.join(process.cwd(), ".env.test.local") });
 
 async function main(): Promise<void> {
   const dbUrl = process.env.TEST_SUPABASE_DB_URL;
   if (!dbUrl) throw new Error("TEST_SUPABASE_DB_URL not set");
-  const ref = /@(?:db\.)?([a-z0-9]{20})\.supabase\.co/i.exec(dbUrl)?.[1]?.toLowerCase();
+  const ref = extractDbUrlRef(dbUrl);
   if (!ref || !ALLOWED_TEST_REFS.has(ref)) throw new Error("not a test project — refusing");
 
   const query = process.argv[2];
