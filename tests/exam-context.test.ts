@@ -73,6 +73,15 @@ describe("EXAM_REGISTRY", () => {
     expect(afcat?.noPublicContent).not.toBe(true);
   });
 
+  it("registers SSC CGL as a graduate exam with mocks and worked solutions", () => {
+    const ssc = getExamBySlug("ssc-cgl");
+    expect(ssc?.examName).toBe("SSC CGL");
+    expect(ssc?.tier).toBe("graduate");
+    expect(ssc?.hasMocks).toBe(true);
+    expect(ssc?.pastPaperSolutions).toBe(true);
+    expect(ssc?.practiceOnly).not.toBe(true);
+  });
+
   it("default exam slug is one of the registered slugs", () => {
     const slugs = EXAM_REGISTRY.map((e) => e.slug);
     expect(slugs).toContain(DEFAULT_EXAM_SLUG);
@@ -407,6 +416,7 @@ describe("exam tiers", () => {
       "mpsc-psi-mains",
       "upsc-cse",
       "afcat",
+      "ssc-cgl",
     ],
   };
 

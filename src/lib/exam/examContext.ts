@@ -38,7 +38,8 @@ export type ExamSlug =
   | "mpsc-aso-mains"
   | "mpsc-psi-mains"
   | "upsc-cse"
-  | "afcat";
+  | "afcat"
+  | "ssc-cgl";
 
 /**
  * School boards the bank carries content for. NOT every exam has one — a
@@ -735,6 +736,21 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // Errorless and Cadetprep sheets, book chapters; every key re-derived) plus
     // the AFCAT past-year questions printed in Conquer the Sky. NOT practiceOnly:
     // those PYQs are real. scripts/afcat/.
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "ssc-cgl",
+    // SSC Combined Graduate Level: a graduation-level exam.
+    tier: "graduate",
+    displayName: "SSC CGL",
+    examName: "SSC CGL", // must match the `exams` DB row exactly
+    // PUBLIC 2026-10-17: Tier I, every readable shift of 2023, 2024 and 2025
+    // (113 shifts), read from SSC's own response sheets; every answer derived
+    // blind and compared with SSC's key. A question defective as printed carries
+    // a note above its solution and rides as grace in its mock. scripts/ssc-cgl/.
+    hasMocks: true, // one mock per shift
+    pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,
   },
