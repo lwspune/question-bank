@@ -1,0 +1,2581 @@
+=== 1
+chapter: Mensuration 3D
+subtopic: Diagonals and Cuboid Identities
+difficulty: MODERATE
+answer: C
+stem:
+The diagonals of three faces of a rectangular parallelepiped that meet at a single corner measure \(\sqrt{5}\) cm, \(\sqrt{10}\) cm, and \(\sqrt{13}\) cm. What is the volume of this parallelepiped?
+A: \(12\ \text{cm}^3\)
+B: \(24\ \text{cm}^3\)
+C: \(6\ \text{cm}^3\)
+D: \(18\ \text{cm}^3\)
+solution:
+Let the edges be \(a\), \(b\), \(c\): \(a^2 + b^2 = 5\), \(b^2 + c^2 = 10\), \(a^2 + c^2 = 13\).
+
+Adding, \(a^2 + b^2 + c^2 = 14\), so \(c^2 = 9\), \(a^2 = 4\), \(b^2 = 1\): the edges are 2, 1 and 3 cm.
+
+Volume \(= 2 \times 1 \times 3 = 6\ \text{cm}^3\).
+
+Check: \(2^2 + 1^2 = 5\), \(1^2 + 3^2 = 10\), \(2^2 + 3^2 = 13\).
+
+=== 2
+chapter: Triangles
+subtopic: Angles of a Triangle
+difficulty: MODERATE
+answer: D
+stem:
+In a triangle \(\Delta PQR\), \(\angle R = 62^\circ\). The perpendicular bisector of PQ at S meets QR at T. If \(\angle TPR = 38^\circ\), what is the measure of \(\angle PQR\)?
+A: \(60^\circ\)
+B: \(80^\circ\)
+C: \(35^\circ\)
+D: \(40^\circ\)
+solution:
+T lies on the perpendicular bisector of PQ, so \(TP = TQ\) and \(\angle TPQ = \angle PQR = x\).
+
+Then \(\angle QPR = x + 38^\circ\), and the angle sum gives \(x + (x + 38^\circ) + 62^\circ = 180^\circ\), so \(2x = 80^\circ\) and \(x = 40^\circ\).
+
+Check: the angles are \(40^\circ\), \(78^\circ\) and \(62^\circ\), which add to \(180^\circ\).
+
+=== 3
+chapter: Probability
+subtopic: Classical Probability
+difficulty: MODERATE
+answer: A
+note: SSC's key gives 23/120 (D); counting gives 25 numbers (20 multiples of 6 + 15 of 8 - 5 of 24 = 30, less the 5 multiples of 24), so 25/120. Ours kept.
+flawed: yes
+notice: SSC's answer key gives 23/120, but the count is 25 numbers (30 divisible by 6 or 8, less the 5 divisible by 24), so the answer here is 25/120.
+stem:
+A number is chosen at random from the set \(\{1, 2, 3, \ldots, 120\}\). What is the probability that the number chosen is divisible by 6 or 8 but not divisible by 24?
+A: \(\frac{25}{120}\)
+B: \(\frac{19}{120}\)
+C: \(\frac{21}{120}\)
+D: \(\frac{23}{120}\)
+solution:
+Multiples of 6: 20. Multiples of 8: 15. Multiples of both (of 24): 5.
+
+Divisible by 6 or 8: \(20 + 15 - 5 = 30\).
+
+Every multiple of 24 is among these 30, so removing them leaves \(30 - 5 = 25\).
+
+Probability \(= \frac{25}{120}\).
+
+Check: multiples of 6 only \(= 15\), of 8 only \(= 10\), total \(25\).
+
+=== 4
+chapter: Triangles
+subtopic: Centres of a Triangle
+difficulty: EASY
+answer: C
+stem:
+In an equilateral triangle, the circumcenter coincides with which of the following?
+A: A point outside the triangle
+B: The midpoint of one of its sides
+C: The centroid of the triangle
+D: One of the vertices
+solution:
+In an equilateral triangle each median is also a perpendicular bisector, angle bisector and altitude, so the circumcentre, centroid, incentre and orthocentre all coincide.
+
+=== 5
+chapter: Trigonometric Ratios and Identities
+subtopic: Complementary and Allied Angles
+difficulty: EASY
+answer: D
+note: the scan does not show how far the radical bar runs; read as covering both squared terms, the only reading that gives an option
+stem:
+What is the value of \(\frac{3}{2}\left(\frac{\cos 39}{\sin 51}\right) - \sqrt{\sin^2 39^\circ + \sin^2 51^\circ}\) ?
+A: \(\frac{3}{2}\)
+B: \(\frac{7}{8}\)
+C: \(\frac{5}{6}\)
+D: \(\frac{1}{2}\)
+solution:
+\(\sin 51^\circ = \cos 39^\circ\), so \(\frac{\cos 39^\circ}{\sin 51^\circ} = 1\).
+
+\(\sin^2 39^\circ + \sin^2 51^\circ = \sin^2 39^\circ + \cos^2 39^\circ = 1\), whose square root is 1.
+
+Value \(= \frac{3}{2} \times 1 - 1 = \frac{1}{2}\).
+
+=== 6
+chapter: Statistics
+subtopic: Properties of the Arithmetic Mean
+difficulty: EASY
+answer: A
+stem:
+A set of n values \(x_1, x_2, \ldots, x_n\) has a standard deviation of 5. The standard deviation of n values \(x_1 - 7, x_2 - 7, \ldots, x_n - 7\) will be:
+A: 5
+B: 0
+C: 10
+D: 7
+solution:
+Subtracting 7 from every value lowers the mean by 7 too, so every deviation \(x_i - \bar{x}\) is unchanged.
+
+The standard deviation is built from those deviations, so it stays 5.
+
+=== 7
+chapter: Statistics
+subtopic: Mean, Median and Mode of Grouped Data
+difficulty: MODERATE
+answer: D
+stem:
+The given table shows the number of people in different age groups. Find the mean age of the given number of people.
+
+| Class interval of age (in years) | Number of people (f) |
+|---|---|
+| 25 - 29 | 10 |
+| 30 - 34 | 12 |
+| 35 - 39 | 8 |
+| 40 - 44 | 5 |
+| 45 - 49 | 15 |
+| 50 - 54 | 10 |
+| 55 - 59 | 15 |
+A: 38.6 years
+B: 32.4 years
+C: 54.2 years
+D: 43.2 years
+solution:
+Class marks: 27, 32, 37, 42, 47, 52, 57. Total frequency \(= 75\).
+
+\(\sum fx = 270 + 384 + 296 + 210 + 705 + 520 + 855 = 3240\).
+
+Mean \(= \frac{3240}{75} = 43.2\) years.
+
+Check with assumed mean 42 and deviations \(-15, -10, -5, 0, 5, 10, 15\): \(\sum fd = -150 - 120 - 40 + 0 + 75 + 100 + 225 = 90\), so mean \(= 42 + \frac{90}{75} = 43.2\).
+
+=== 8
+chapter: Mensuration 2D
+subtopic: Rectangles, Squares and Other Quadrilaterals
+difficulty: EASY
+answer: B
+stem:
+A rectangle is such that its area is \(48\ \text{cm}^2\) and its perimeter is 28 cm. If a rhombus is formed by joining the midpoints of the sides of this rectangle, what is the area of the rhombus?
+A: \(12\ \text{cm}^2\)
+B: \(24\ \text{cm}^2\)
+C: \(48\ \text{cm}^2\)
+D: \(20\ \text{cm}^2\)
+solution:
+The quadrilateral joining the midpoints of a rectangle's sides has half its area: \(\frac{48}{2} = 24\ \text{cm}^2\).
+
+Check: \(l + b = 14\), \(lb = 48\) gives 8 cm and 6 cm. The rhombus has diagonals 8 and 6, area \(\frac{1}{2} \times 8 \times 6 = 24\ \text{cm}^2\).
+
+=== 9
+chapter: Circles
+subtopic: Angles in a Circle
+difficulty: EASY
+answer: D
+stem:
+If a chord of a circle subtends an angle of \(60^\circ\) at the circumference of the circle, then what is the ratio of the radius of the circle and the length of the chord respectively?
+A: 1:2
+B: 3:4
+C: \(2 : \sqrt{5}\)
+D: \(1 : \sqrt{3}\)
+solution:
+The angle at the centre is twice the angle at the circumference: \(120^\circ\).
+
+Chord \(= 2r \sin 60^\circ = r\sqrt{3}\), so radius : chord \(= 1 : \sqrt{3}\).
+
+Check by the sine rule: chord \(= 2r \sin 60^\circ\) directly, the same result.
+
+=== 10
+chapter: Mensuration 3D
+subtopic: Water — Immersion, Flow and Rainfall
+difficulty: MODERATE
+answer: D
+stem:
+A hemispherical tank is full of water. It is connected to a pipe that empties it at a rate of 7 litres per second. How much approximate time (in minutes) will it take to empty half the tank if the internal radius of the tank is 2.1 meters? (Use \(\pi = \frac{22}{7}\) and 1 \(\text{m}^3\)=1000 liters)
+A: 16 minutes
+B: 11 minutes
+C: 46 minutes
+D: 23 minutes
+solution:
+Volume \(= \frac{2}{3} \times \frac{22}{7} \times 2.1^3 = \frac{2}{3} \times \frac{22}{7} \times 9.261 = 19.404\ \text{m}^3\).
+
+Half of it \(= 9.702\ \text{m}^3 = 9702\) litres.
+
+Time \(= \frac{9702}{7} = 1386\) s \(= 23.1\) minutes, about 23 minutes.
+
+=== 11
+chapter: Triangles
+subtopic: Centres of a Triangle
+difficulty: MODERATE
+answer: B
+stem:
+In a right-angled triangle ABC, the angle at B is \(90^\circ\). If AB = 6 cm and BC = 8 cm, what is the distance between the centroid G and the orthocenter H?
+A: 5 cm
+B: \(\frac{10}{3}\) cm
+C: 8 cm
+D: \(\frac{20}{3}\) cm
+solution:
+In a right triangle the orthocentre is the right-angle vertex, so H = B.
+
+\(AC = \sqrt{36 + 64} = 10\) cm, and the median from B is half the hypotenuse, 5 cm.
+
+G is \(\frac{2}{3}\) of the way along that median from B: \(BG = \frac{2}{3} \times 5 = \frac{10}{3}\) cm.
+
+Check with coordinates B(0, 0), A(0, 6), C(8, 0): G \(= \left(\frac{8}{3}, 2\right)\), distance from B \(= \sqrt{\frac{64}{9} + 4} = \frac{10}{3}\).
+
+=== 12
+chapter: Linear Equations
+subtopic: Solving Linear Systems
+difficulty: EASY
+answer: D
+stem:
+If 3x - ky + 8 = 0 and 9x - 18y + 20 = 0 have no solution, find k.
+A: 9
+B: 10
+C: 2
+D: 6
+solution:
+No solution needs \(\frac{3}{9} = \frac{-k}{-18} \ne \frac{8}{20}\).
+
+\(\frac{k}{18} = \frac{1}{3}\) gives \(k = 6\), and \(\frac{1}{3} \ne \frac{2}{5}\), so the lines are parallel and distinct.
+
+=== 13
+chapter: Mensuration 3D
+subtopic: Spheres, Hemispheres and Shells
+difficulty: MODERATE
+answer: D
+stem:
+A sphere of radius 21 cm is cut into 8 identical pieces by making three mutually perpendicular cuts through its center (one along each axis). Find the total surface area of each piece in \(\text{cm}^2\).
+A: \(625.25\pi\ \text{cm}^2\)
+B: \(560\pi\text{cm}^2\)
+C: \(450.75\pi\ \text{cm}^2\)
+D: \(551.25\pi\ \text{cm}^2\)
+solution:
+Each piece has one eighth of the sphere's curved surface: \(\frac{4\pi (21)^2}{8} = \frac{441\pi}{2} = 220.5\pi\).
+
+It also has three flat quarter-circle faces: \(3 \times \frac{\pi (21)^2}{4} = 330.75\pi\).
+
+Total \(= 220.5\pi + 330.75\pi = 551.25\pi\ \text{cm}^2\).
+
+Check: \(\pi r^2\left(\frac{1}{2} + \frac{3}{4}\right) = \frac{5}{4} \times 441\pi = 551.25\pi\).
+
+=== 14
+chapter: Algebraic Identities and Simplification
+subtopic: Reciprocal Sums x ± 1/x
+difficulty: EASY
+answer: D
+stem:
+If \(x + \frac{1}{x} = 2\sqrt{3}\), then find the value of \(x^3 + \frac{1}{x^3}\).
+A: \(10\sqrt{3}\)
+B: \(6\sqrt{3}\)
+C: \(24\sqrt{3}\)
+D: \(18\sqrt{3}\)
+solution:
+\(x^3 + \frac{1}{x^3} = \left(x + \frac{1}{x}\right)^3 - 3\left(x + \frac{1}{x}\right) = 24\sqrt{3} - 6\sqrt{3} = 18\sqrt{3}\).
+
+Check: \(x^2 + \frac{1}{x^2} = 12 - 2 = 10\), and \(\left(x + \frac{1}{x}\right)\left(x^2 - 1 + \frac{1}{x^2}\right) = 2\sqrt{3} \times 9 = 18\sqrt{3}\).
+
+=== 15
+chapter: Ratio, Proportion and Variation
+subtopic: Ratio and Proportion
+difficulty: EASY
+answer: B
+stem:
+The expenditure of a company on five heads A, B, C, D and E is in proportion to 3:5:7:11:? respectively. The expenditure on E is equal to the arithmetic mean of the expenditures on A and D. If the expenditure on C exceeds that on B by ₹18,000, find the total expenditure (₹) of the company.
+A: ₹2,40,000
+B: ₹2,97,000
+C: ₹1,80,000
+D: ₹2,52,000
+solution:
+E \(= \frac{3 + 11}{2} = 7\) parts, so the ratio is \(3 : 5 : 7 : 11 : 7\), a total of 33 parts.
+
+C exceeds B by 2 parts, which is ₹18,000, so one part is ₹9,000.
+
+Total \(= 33 \times 9000 = 297000\), that is ₹2,97,000.
+
+=== 16
+chapter: Ratio, Proportion and Variation
+subtopic: Partnership
+difficulty: MODERATE
+answer: A
+stem:
+A, B, and C invest in a business in the ratio 2:3:5. After 4 months, A increases his capital by 50%, B decreases his capital by \(\frac{1}{3}\), and C leaves the capital unchanged. At the end of the year, if the total profit is Rs. 33,000, find the share of B.
+A: Rs. 7,700
+B: Rs. 8,000
+C: Rs. 9,000
+D: Rs. 10,500
+solution:
+A: \(2 \times 4 + 3 \times 8 = 32\).
+
+B: \(3 \times 4 + 2 \times 8 = 28\).
+
+C: \(5 \times 12 = 60\).
+
+Total \(= 120\), so B's share \(= \frac{28}{120} \times 33000 = 7700\).
+
+Check: A gets 8,800 and C 16,500; \(8800 + 7700 + 16500 = 33000\).
+
+=== 17
+chapter: Trigonometric Ratios and Identities
+subtopic: Simplifying and Proving Identities
+difficulty: MODERATE
+answer: B
+stem:
+Simplify: \(\frac{\tan^2 \theta - \sin^2 \theta}{2 + \tan^2 \theta + \cot^2 \theta}\)
+A: \(\sec^6 \theta\)
+B: \(\sin^6 \theta\)
+C: \(\cos^2 \theta\)
+D: \(\sin^2 \theta\)
+solution:
+Numerator: \(\tan^2\theta - \sin^2\theta = \sin^2\theta\left(\frac{1}{\cos^2\theta} - 1\right) = \tan^2\theta \sin^2\theta\).
+
+Denominator: \((\tan\theta + \cot\theta)^2 = \frac{1}{\sin^2\theta\cos^2\theta}\).
+
+Quotient \(= \frac{\sin^4\theta}{\cos^2\theta} \times \sin^2\theta\cos^2\theta = \sin^6\theta\).
+
+Check at \(\theta = 45^\circ\): \(\frac{1 - \frac{1}{2}}{4} = \frac{1}{8}\), and \(\sin^6 45^\circ = \frac{1}{8}\).
+
+=== 18
+chapter: Surds, Indices and Simplification
+subtopic: Fractions and Decimals
+difficulty: EASY
+answer: B
+stem:
+\(\frac{0.1667 \times 0.8333 \times 0.3333}{0.2222 \times 0.6667 \times 0.1250}\) is approximately equal to:
+A: 4.5
+B: 2.5
+C: 0.25
+D: 0.5
+solution:
+Numerator \(\approx \frac{1}{6} \times \frac{5}{6} \times \frac{1}{3} = \frac{5}{108}\).
+
+Denominator \(\approx \frac{2}{9} \times \frac{2}{3} \times \frac{1}{8} = \frac{1}{54}\).
+
+Value \(\approx \frac{5}{108} \times 54 = 2.5\).
+
+=== 19
+chapter: Time and Work
+subtopic: Work Rates
+difficulty: MODERATE
+answer: D
+stem:
+P and Q can do a piece of work in 20 days and 30 days, respectively. They work together for 6 days, and then Q is replaced by R. If the rest of the work is completed by P and R in 8 more days, in how many days can R alone complete 60% of the work?
+A: 28 days
+B: 34 days
+C: 64 days
+D: 48 days
+solution:
+P and Q together do \(\frac{1}{20} + \frac{1}{30} = \frac{1}{12}\) a day, so in 6 days they do \(\frac{1}{2}\).
+
+In the next 8 days P does \(\frac{8}{20} = \frac{2}{5}\), so R does \(\frac{1}{2} - \frac{2}{5} = \frac{1}{10}\) in 8 days: R alone needs 80 days for the whole work.
+
+60% of the work takes R \(0.6 \times 80 = 48\) days.
+
+=== 20
+chapter: Mensuration 3D
+subtopic: Prisms and Pyramids
+difficulty: EASY
+answer: D
+stem:
+The base of a right pyramid is an equilateral triangle with side 10 cm, and its vertical height is 24 cm. Find the volume (in \(\text{cm}^3\)) of the pyramid.
+A: \(100\sqrt{3}\text{cm}^3\)
+B: \(400\sqrt{3}\ \text{cm}^3\)
+C: \(150\sqrt{3}\ \text{cm}^3\)
+D: \(200\sqrt{3}\ \text{cm}^3\)
+solution:
+Base area \(= \frac{\sqrt{3}}{4} \times 10^2 = 25\sqrt{3}\ \text{cm}^2\).
+
+Volume \(= \frac{1}{3} \times 25\sqrt{3} \times 24 = 200\sqrt{3}\ \text{cm}^3\).
+
+=== 21
+chapter: Simple and Compound Interest
+subtopic: Compound Interest
+difficulty: EASY
+answer: C
+stem:
+At what rate of interest per annum will a sum of ₹15,625 amount to ₹19,683 in 1 year 6 months, if the interest is compounded half-yearly?
+A: 20%
+B: 8%
+C: 16%
+D: 18%
+solution:
+There are 3 half-years, and \(\frac{19683}{15625} = \left(\frac{27}{25}\right)^3\).
+
+So the rate per half-year is \(\frac{2}{25} = 8\%\), and the annual rate is \(16\%\).
+
+Check: \(15625 \times 1.08^3 = 15625 \times 1.259712 = 19683\).
+
+=== 22
+chapter: Statistics
+subtopic: Mean, Median and Mode of Grouped Data
+difficulty: EASY
+answer: D
+stem:
+If the marks scored by the students in a class test out of 50 then, Find the Median of the following data:
+
+| Marks | Frequency |
+|---|---|
+| 0-10 | 5 |
+| 10-20 | 8 |
+| 20-30 | 6 |
+| 30-40 | 6 |
+| 40-50 | 5 |
+A: 38.9
+B: 18.8
+C: 14.1
+D: 23.3
+solution:
+\(N = 30\), \(\frac{N}{2} = 15\). Cumulative frequencies: 5, 13, 19, 25, 30, so the median class is 20-30.
+
+Median \(= 20 + \frac{15 - 13}{6} \times 10 = 20 + 3.33 = 23.3\).
+
+=== 23
+chapter: Statistics
+subtopic: Mode of Ungrouped Data
+difficulty: EASY
+answer: A
+stem:
+The marks obtained by 9 students in a test are: 5, 8, 7, 9, 6, 7, 8,7, 10.
+Determine: (i) Mode of the marks, (ii) Number of students scoring above average.
+A: Mode = 7, Number of students scoring above average = 4
+B: Mode = 7, Number of students scoring above average = 3
+C: Mode = 8, Number of students scoring above average = 4
+D: Mode = 8, Number of students scoring above average = 3
+solution:
+7 occurs three times and 8 twice, so the mode is 7.
+
+Sum \(= 5 + 8 + 7 + 9 + 6 + 7 + 8 + 7 + 10 = 67\), average \(= \frac{67}{9} \approx 7.44\).
+
+Scores above 7.44: 8, 9, 8, 10, that is 4 students.
+
+=== 24
+chapter: Mensuration 3D
+subtopic: Prisms and Pyramids
+difficulty: EASY
+answer: A
+stem:
+The height of a pyramid is 8 m, and the base of the pyramid is a square whose diagonal is \(\sqrt{512}\) m. Find the approximate volume of the pyramid.
+A: \(683\ \text{m}^3\)
+B: \(982\ \text{m}^3\)
+C: \(1092\ \text{m}^3\)
+D: \(782\ \text{m}^3\)
+solution:
+Area of a square \(= \frac{d^2}{2} = \frac{512}{2} = 256\ \text{m}^2\) (side 16 m).
+
+Volume \(= \frac{1}{3} \times 256 \times 8 = \frac{2048}{3} \approx 682.67 \approx 683\ \text{m}^3\).
+
+=== 25
+chapter: Mensuration 3D
+subtopic: Prisms and Pyramids
+difficulty: MODERATE
+answer: B
+stem:
+The base of a right prism is an isosceles trapezium with parallel sides measuring 10 cm and 20 cm, and non-parallel sides measuring 13 cm each. The volume of the prism is \(3240\ \text{cm}^3\). What is the total surface area of the prism?
+A: \(1940\ \text{cm}^2\)
+B: \(1368\ \text{cm}^2\)
+C: \(1620\ \text{cm}^2\)
+D: \(2120\ \text{cm}^2\)
+solution:
+Trapezium height \(= \sqrt{13^2 - 5^2} = 12\) cm, area \(= \frac{10 + 20}{2} \times 12 = 180\ \text{cm}^2\).
+
+Prism length \(= \frac{3240}{180} = 18\) cm.
+
+Lateral area \(= (10 + 20 + 13 + 13) \times 18 = 56 \times 18 = 1008\ \text{cm}^2\).
+
+Total \(= 1008 + 2 \times 180 = 1368\ \text{cm}^2\).
+
+=== 26
+chapter: Number System
+subtopic: Factors, Divisor Counting and Trailing Zeros
+difficulty: EASY
+answer: C
+stem:
+How many integers in the set \(\{1, 2, 3\ldots\ldots, 100\}\) have exactly 3 divisors?
+A: 2
+B: 8
+C: 4
+D: 6
+solution:
+A number has exactly 3 divisors only when it is the square of a prime, \(p^2\) (divisors 1, \(p\), \(p^2\)).
+
+Prime squares up to 100: 4, 9, 25, 49 (the next, 121, is too big). So there are 4.
+
+=== 27
+chapter: Statistics
+subtopic: Mode of Ungrouped Data
+difficulty: EASY
+answer: B
+stem:
+If the mode of the data set \(\{a, a + 2, a + 4, a + 6, a + 6, a + 6, a + 8\}\) is 26, find a.
+A: 40
+B: 20
+C: 30
+D: 10
+solution:
+\(a + 6\) occurs three times and every other value once, so the mode is \(a + 6 = 26\), giving \(a = 20\).
+
+Check: the set is 20, 22, 24, 26, 26, 26, 28, whose mode is 26.
+
+=== 28
+chapter: Ratio, Proportion and Variation
+subtopic: Ratio and Proportion
+difficulty: EASY
+answer: C
+stem:
+A sum of Rs. 4800 is divided among A, B, and C in the ratio \(3 : 4 : 5\). The share of B is how much more than that of A?
+A: Rs. 500
+B: Rs. 200
+C: Rs. 400
+D: Rs. 300
+solution:
+One part \(= \frac{4800}{3 + 4 + 5} = 400\). B has one part more than A, so Rs. 400 more.
+
+Check: A gets 1,200 and B 1,600; the difference is 400.
+
+=== 29
+chapter: Averages
+subtopic: Sum and Mean
+difficulty: EASY
+answer: D
+stem:
+The weekly expenditure (in dollars) of 5 families on groceries is: Family A = 250, Family B = 400, Family C = 350, Family D = 500, Family E = 300.
+Determine: (i) Average expenditure, (ii) Family spending above average, (iii) Difference between highest and lowest expenditure.
+A: Average = $350, Families above average = B,D, Difference = $250
+B: Average = $360, Families above average = C,D, Difference = $250
+C: Average = $360, Families above average = B,D, Difference = $200
+D: Average = $360, Families above average = B,D, Difference = $250
+solution:
+Total \(= 250 + 400 + 350 + 500 + 300 = 1800\), average \(= \frac{1800}{5} = 360\).
+
+Above 360: B (400) and D (500).
+
+Difference \(= 500 - 250 = 250\).
+
+=== 30
+chapter: Trigonometric Ratios and Identities
+subtopic: Ratios in a Right Triangle
+difficulty: MODERATE
+answer: A
+stem:
+If \(\frac{\sin \theta}{x} = \frac{\cos \theta}{y}\), then \(\sin \theta - \cos \theta\) is:
+A: \(\frac{x - y}{\sqrt{x^2 + y^2}}\)
+B: \(\frac{5x - y}{3\sqrt{x^2 + y^2}}\)
+C: \(\frac{x - y}{2\sqrt{x^2 + y^2}}\)
+D: \(\frac{x - y}{\sqrt{3x^2 + 5y^2}}\)
+solution:
+Let \(\frac{\sin\theta}{x} = \frac{\cos\theta}{y} = k\). Then \(\sin^2\theta + \cos^2\theta = k^2(x^2 + y^2) = 1\), so \(k = \frac{1}{\sqrt{x^2 + y^2}}\) (taking x, y positive).
+
+\(\sin\theta - \cos\theta = k(x - y) = \frac{x - y}{\sqrt{x^2 + y^2}}\).
+
+Check with \(x = 3\), \(y = 4\): \(\sin\theta = \frac{3}{5}\), \(\cos\theta = \frac{4}{5}\), difference \(-\frac{1}{5}\), and \(\frac{3 - 4}{5} = -\frac{1}{5}\).
+=== 31
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: EASY
+answer: D
+stem:
+If P denotes '+', Q means '\(\div\)', R means '-' and S means '\(\times\)', then which of the following equations is correct?
+A: 16 S 5 R 10 P 4 Q 3 = 9
+B: 16 P 5 R 10 S 4 Q 3 = 19
+C: 16 Q 5 P 10 S 4 R 3 = 12
+D: 16 S 5 Q 10 P 4 R 3 = 9
+solution:
+Replace P by +, Q by \(\div\), R by - and S by \(\times\), and work each option.
+
+A: \(16 \times 5 - 10 + 4 \div 3 = 80 - 10 + 1.33 = 71.33\), not 9.
+
+B: \(16 + 5 - 10 \times 4 \div 3 = 21 - 13.33 = 7.67\), not 19.
+
+C: \(16 \div 5 + 10 \times 4 - 3 = 3.2 + 40 - 3 = 40.2\), not 12.
+
+D: \(16 \times 5 \div 10 + 4 - 3 = 8 + 4 - 3 = 9\). Correct.
+
+=== 32
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: B
+stem:
+In a certain language, COMPUTER is coded as OCPMTURE. How is KEYBOARD coded in that code?
+A: EKYOBARD
+B: EKBYAODR
+C: KYEOBARD
+D: KYEOBADR
+solution:
+The word is split into pairs and the two letters of each pair are swapped: CO-MP-UT-ER becomes OC-PM-TU-RE.
+
+KEYBOARD splits into KE-YB-OA-RD, which become EK-BY-AO-DR, that is EKBYAODR.
+
+=== 33
+chapter: Coding-Decoding
+subtopic: Letter Coding
+difficulty: EASY
+answer: A
+stem:
+If in a certain code, ALMIRAH is written as BNPMWGO, which word would be written as DNRWLUA?
+A: CLOSGOT
+B: TOGSOLC
+C: COSGOLT
+D: TOGCLOS
+solution:
+The letters of ALMIRAH move forward by 1, 2, 3, 4, 5, 6 and 7 places: A+1 = B, L+2 = N, M+3 = P, I+4 = M, R+5 = W, A+6 = G, H+7 = O.
+
+To decode DNRWLUA, move back by 1 to 7 places: D-1 = C, N-2 = L, R-3 = O, W-4 = S, L-5 = G, U-6 = O, A-7 = T (counting back past A to Z).
+
+The word is CLOSGOT.
+
+=== 34
+chapter: Paper Folding and Cutting
+subtopic: Paper Folding and Punching
+difficulty: MODERATE
+answer: C
+figure: stem+options
+stem:
+In each of the following problem, a square transparent sheet with a pattern is given. How the pattern would appear when the transparent sheet is folded at the dotted line.
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The sheet shows a triangle whose apex sits on the vertical dotted line, with a semicircle drawn on the triangle's right side and bulging to the right. The dotted line splits the triangle into two equal halves.
+
+The right part is folded over onto the left part. The right side of the triangle then falls exactly on its left side, and the semicircle now bulges to the LEFT from that slanting side. The two halves of the base coincide.
+
+So the folded sheet shows one slanting line from the top of the fold down to the left, a short base back to the fold, and a semicircle on the slanting line bulging up and to the left, with the apex at the top. Option 3 shows this; option 2 has the apex at the bottom, and options 1 and 4 show the whole triangle unfolded on one side.
+
+=== 35
+chapter: Figure Counting
+subtopic: Counting Squares and Other Figures
+difficulty: MODERATE
+answer: A
+blind: C
+figure: stem
+note: The scan has lost most of the figure's lines, so the count cannot be checked; our 17 was a reconstruction. SSC's key (19) carried. Held PRIVATE (config HELD).
+flawed: yes
+notice: The scanned paper has lost most of this figure's lines, so the squares cannot be counted from it. SSC's answer is 19.
+stem:
+How many squares are present in the following figure?
+A: 19
+B: 21
+C: 17
+D: 23
+solution:
+The surviving marks (ticks at one third and two thirds of the width, dots at mid-height of the upper part, a line at two thirds of the height) suggest a 3 by 3 grid of equal cells, which holds \(9 + 4 + 1 = 14\) squares.
+
+The three fragments that survive inside it (two short lines near the top corners and a U shape in the centre cell) suggest one small square in each of three cells, giving \(14 + 3 = 17\).
+
+This is a reconstruction from a damaged scan, not a count from the figure.
+
+=== 36
+chapter: Alphabet and Number Tests
+subtopic: Word Formation
+difficulty: EASY
+answer: A
+stem:
+Identify the word that cannot be constructed using the letters of the given word.
+**PROCRASTINATE**
+A: PRINTED
+B: PAINTER
+C: TRACTOR
+D: PATTERN
+solution:
+PROCRASTINATE has P, R, R, O, C, A, A, S, T, T, I, N, E. It has no D.
+
+PRINTED needs a D, so it cannot be made.
+
+PAINTER, TRACTOR (two T, two R, one each of A, C, O) and PATTERN (two T) can all be made.
+
+=== 37
+chapter: Analogy
+subtopic: Number Analogy
+difficulty: EASY
+answer: D
+stem:
+Select the option that is related to the fifth number in the same way as the second number is related to the first number and the fourth number is related to the third number:
+4 : 49 :: 6 : 81 :: 8 : ?
+A: 187
+B: 176
+C: 145
+D: 121
+solution:
+Add 3 and square: \((4 + 3)^2 = 49\), \((6 + 3)^2 = 81\).
+
+So \((8 + 3)^2 = 121\).
+
+=== 38
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: C
+stem:
+In the following letter sequence, each group follows a specific pattern. Identify the group of letters that should come next in the sequence.
+ZYA, WVD, TSG, QPJ,?
+A: MNM
+B: MON
+C: NMM
+D: OMN
+solution:
+First letters: Z, W, T, Q go back 3 each time, so next is N.
+
+Second letters: Y, V, S, P go back 3, so next is M.
+
+Third letters: A, D, G, J go forward 3, so next is M.
+
+The next group is NMM.
+
+=== 39
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: C
+stem:
+From the given options, select the group of letters that, when inserted in order from left to right into the blanks of the incomplete series, will logically complete it.
+
+c d _ f c _ e f c d e f c d e _ c d e f c d e _ c d e f
+A: fcde
+B: cddf
+C: edff
+D: efdf
+solution:
+The series is the block "cdef" repeated seven times:
+
+cd(e)f c(d)ef cdef cde(f) cdef cde(f) cdef.
+
+The blanks are e, d, f, f, that is edff.
+
+=== 40
+chapter: Blood Relations
+subtopic: Direct Relations
+difficulty: EASY
+answer: C
+stem:
+P is married to M. W is the wife of S. G is the daughter of A. M is the mother of S. A is the sister of P. How is P related to W?
+A: Daughter-in-law
+B: Son-in-law
+C: Father-in-law
+D: Mother-in-law
+solution:
+M is the mother of S and is married to P, so P is the father of S.
+
+W is the wife of S, so P is the father of W's husband, that is W's father-in-law.
+
+(G and A are not needed.)
+
+=== 41
+chapter: Dice and Cubes
+subtopic: Opposite Faces of a Dice
+difficulty: MODERATE
+answer: A
+figure: stem
+stem:
+Two positions of the same dice are shown . Select the number that will be on the face opposite to the one showing the number 6?
+A: 1
+B: 4
+C: 3
+D: 5
+solution:
+The first position shows 3 on top, 1 on the left face and 5 on the right face. The second shows 6 on top, 3 on the left face and 5 on the right face.
+
+The face 5 stays in the same place, so the dice has turned about the axis through 5. The 3 has moved from the top to the left face, so the face that was on the left (1) has gone to the bottom, and the face that was at the back has come to the top: that is 6.
+
+The back face of the first position is opposite its front-left face, so 6 is opposite 1.
+
+Check: 6 is seen next to 3 and 5, so neither can be opposite it.
+
+=== 42
+chapter: Mathematical Operations
+subtopic: Interchanging Signs and Numbers
+difficulty: EASY
+answer: D
+stem:
+Which two numbers need to be swapped to make this equation correct?
+\(20 \div 5 \times 3 + 10 - 4 = 20\)
+A: 5 and 10
+B: 3 and 4
+C: 20 and 10
+D: 4 and 5
+solution:
+Try each swap.
+
+A: \(20 \div 10 \times 3 + 5 - 4 = 6 + 1 = 7\).
+
+B: \(20 \div 5 \times 4 + 10 - 3 = 16 + 7 = 23\).
+
+C: \(10 \div 5 \times 3 + 20 - 4 = 6 + 16 = 22\).
+
+D: \(20 \div 4 \times 3 + 10 - 5 = 15 + 5 = 20\). Correct.
+
+=== 43
+chapter: Syllogism
+subtopic: Two-Statement Syllogism
+difficulty: EASY
+answer: D
+stem:
+**Directions:** In the following question, two statements are given, followed by two conclusions (I and II). Assume the statements to be true even if they appear to contradict general facts. Determine which conclusion(s) logically follow(s) from the statements.
+
+**Statements:**
+All televisions are radios.
+Some radios are transistors.
+**Conclusions:**
+I. All radios are televisions.
+II. Some televisions are transistors.
+A: Only conclusion I follows.
+B: Only conclusion II follows.
+C: Both conclusion I and II follows.
+D: Neither conclusion I nor II follows.
+solution:
+All televisions are radios does not make all radios televisions, so I does not follow.
+
+The radios that are transistors may lie entirely outside the televisions, so II does not follow either.
+
+Neither follows.
+
+=== 44
+chapter: Series
+subtopic: Number Series
+difficulty: EASY
+answer: B
+stem:
+The following series of numbers is given. One number is missing. Study the pattern and find the missing number.
+
+8, 32, 72, 128, ?
+A: 228
+B: 200
+C: 250
+D: 300
+solution:
+The terms are \(8 \times 1^2, 8 \times 2^2, 8 \times 3^2, 8 \times 4^2\).
+
+Next: \(8 \times 5^2 = 200\).
+
+Check by differences: 24, 40, 56 rise by 16, so the next difference is 72 and \(128 + 72 = 200\).
+
+=== 45
+chapter: Coding-Decoding
+subtopic: Number and Symbol Coding
+difficulty: EASY
+answer: D
+stem:
+Two matrices are provided: **Matrix I** uses row and column numbers 0 to 4. **Matrix II** uses row and column numbers 5 to 9. A letter is represented by **row number, column number** (for example, 23 means row 2, column 3 in Matrix I; 66 means row 6, column 6 in Matrix II). From the matrices, find the **row-column codes** for each letter in **DUNG** in sequence, and select the correct option from the given alternatives.
+**Matrix-I**
+
+| | 0 | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|---|
+| 0 | M | A | E | L | M |
+| 1 | C | G | M | J | K |
+| 2 | F | B | I | C | F |
+| 3 | F | A | L | J | I |
+| 4 | C | L | D | K | F |
+
+**Matrix-II**
+
+| | 5 | 6 | 7 | 8 | 9 |
+|---|---|---|---|---|---|
+| 5 | V | Y | U | S | S |
+| 6 | P | X | Q | O | R |
+| 7 | N | V | V | O | Q |
+| 8 | S | Q | U | T | U |
+| 9 | Q | X | S | V | Z |
+A: 33, 68, 31, 75
+B: 31, 76, 24, 96
+C: 20, 59, 41, 88
+D: 42, 57, 75, 11
+solution:
+D appears only at row 4, column 2: 42.
+
+U is at 57, 87 or 89.
+
+N is at 75.
+
+G is at 11.
+
+Option D, 42, 57, 75, 11, gives D, U, N, G. In the others the first code is already wrong: 33 is J, 31 is A, 20 is F.
+
+=== 46
+chapter: Series
+subtopic: Letter Series
+difficulty: MODERATE
+answer: D
+stem:
+From the given options, select the group of letters that, when inserted in order from left to right into the blanks of the incomplete series, will logically complete it.
+
+S _ _ K B _ F H _ B S F _ K _ S F _ _ B
+A: FHSKHKHK
+B: FHSHKBHK
+C: FHSKBHHK
+D: FHSKHBHK
+solution:
+The series is the block SFHKB repeated four times:
+
+S(FH)KB (S)FH(K)B SF(H)K(B) SF(HK)B.
+
+The blanks are F, H, S, K, H, B, H, K, that is FHSKHBHK.
+
+=== 47
+chapter: Mathematical Operations
+subtopic: Symbol Substitution
+difficulty: EASY
+answer: A
+stem:
+If '+' means 'division', '\(\times\)' means 'addition', '- ' means 'multiplication', and '\(\div\)' means 'subtraction', then find the value of the following expression:
+\(36 - 2 + 4 \times 10 \div 5\)
+A: 23
+B: 34
+C: 11
+D: 41
+solution:
+After replacing the signs the expression is \(36 \times 2 \div 4 + 10 - 5\).
+
+\(36 \times 2 = 72\), \(72 \div 4 = 18\), \(18 + 10 - 5 = 23\).
+
+=== 48
+chapter: Non-Verbal Series and Analogy
+subtopic: Figure Analogy
+difficulty: HARD
+answer: C
+figure: stem
+stem:
+There is a definite relationship between figures A and B. Establish a similar relationship between figures C and D by selecting a suitable figure from the answer set that would replace the question mark (?) in figure D.
+A: 3
+B: 1
+C: 4
+D: 2
+solution:
+Figure A has four symbols: T, C, a pair of brackets () and S. Figure B has a reversed C, an upside-down T, the S turned through 90 degrees and a solid star.
+
+So from A to B: the first two symbols swap places and each is flipped (T becomes an inverted T, C becomes a reversed C); the last two swap places, the S is turned through 90 degrees and the open brackets are replaced by a solid shape (the star).
+
+Figure C has a down arrow, a reversed C, a short dash and a plus sign. Applying the same change: C (from the reversed C) and an up arrow come first, then the plus sign turned through 90 degrees (still a plus sign), then a new solid shape in place of the dash.
+
+Answer figure 4 (C, up arrow, plus sign, solid dot) fits. Figures 2 and 3 have a cross instead of the plus sign, figure 1 keeps a line, and figure 5 keeps the reversed C and down arrow.
+
+=== 49
+chapter: Paper Folding and Cutting
+subtopic: Paper Cutting
+difficulty: MODERATE
+answer: D
+figure: stem
+stem:
+The question consists of a set of three figures X, Y and Z showing a sequence of folding of a piece of paper. Figure Z shows the manner in which the folded paper has been cut. Choose a figure which would most closely resemble the unfolded form of figure Z.
+A: A
+B: C
+C: D
+D: B
+solution:
+In X the square is folded along its horizontal middle line, top half down onto the bottom half. In Y the strip is folded again along its vertical middle line. In Z a shallow curved notch is cut along the top edge (the horizontal fold) of the folded quarter, running its full width from the vertical fold to the outer edge.
+
+Unfolding the vertical fold copies the notch onto the other half, so the cut runs along the horizontal fold across the whole width in two arcs meeting at the centre. Unfolding the horizontal fold mirrors each arc above the fold, so each arc becomes a long oval hole.
+
+The paper shows two long ovals side by side along the middle line, touching at the centre and reaching both side edges: answer figure B.
+
+=== 50
+chapter: Blood Relations
+subtopic: Direct Relations
+difficulty: EASY
+answer: D
+stem:
+Pointing to Sakshi, I said, 'She is the daughter of the brother of the son of my wife.' How am I related to Sakshi?
+A: Granddaughter
+B: Grandson
+C: Grandmother
+D: Grandfather
+solution:
+The son of my wife is my son. His brother is also my son. That son's daughter, Sakshi, is my granddaughter.
+
+The speaker has a wife, so the speaker is male: I am Sakshi's grandfather.
+
+=== 51
+chapter: Mirror and Water Images
+subtopic: Mirror Images
+difficulty: EASY
+answer: A
+figure: stem+options
+stem:
+What is the mirror image of the given question figure , when mirror is placed at the right side of the question figure as shown in the figure?
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+In the question clock the short thick hand points down and to the left (about the 7 to 8 mark) and the long thin hand points up and to the right (between the 2 and 3 marks).
+
+A mirror on the right flips left and right: the thick hand now points down and to the right (between 4 and 5) and the thin hand points up and to the left (between 9 and 10).
+
+Option 1 shows exactly this. Option 2 swaps the two hands, option 3 is the clock rotated rather than reflected, and option 4 has the hands at different positions.
+
+=== 52
+chapter: Missing Number
+subtopic: Missing Number in Grids
+difficulty: MODERATE
+answer: B
+stem:
+Observe the following table and determine the missing number in the last cell:
+
+| A | B | C | D | Result |
+|---|---|---|---|---|
+| 5 | 2 | 3 | 10 | 40 |
+| 4 | 3 | 5 | 8 | 40 |
+| 6 | 4 | 2 | 12 | ? |
+A: 72
+B: 48
+C: 50
+D: 25
+solution:
+Result = 2 \(\times\) (A + B + C + D).
+
+Row 1: \(2 \times (5 + 2 + 3 + 10) = 2 \times 20 = 40\).
+
+Row 2: \(2 \times (4 + 3 + 5 + 8) = 2 \times 20 = 40\).
+
+Row 3: \(2 \times (6 + 4 + 2 + 12) = 2 \times 24 = 48\).
+
+=== 53
+chapter: Alphabet and Number Tests
+subtopic: Word Formation
+difficulty: EASY
+answer: C
+stem:
+Each letter in a word is assigned a specific number. From the four given arrangements of these numbers, identify which one represents a meaningful word when the numbers are translated back to their corresponding letters.
+N, D, I, O, I, T, C, A, R
+1 2 3 4 5 6 7 8 9
+A: 4, 9, 1, 3, 2, 8, 6, 7, 5
+B: 2, 5, 1, 8, 7, 3, 4, 6, 9
+C: 5, 1, 2, 3, 7, 8, 6, 4, 9
+D: 5, 2, 1, 9, 8, 4, 3, 7, 6
+solution:
+N = 1, D = 2, I = 3, O = 4, I = 5, T = 6, C = 7, A = 8, R = 9.
+
+Option C: 5, 1, 2, 3, 7, 8, 6, 4, 9 gives I, N, D, I, C, A, T, O, R = INDICATOR.
+
+The others give ORNIDATCI, DINACIOTR and IDNRAOICT, which are not words.
+
+=== 54
+chapter: Embedded Figures and Pattern Completion
+subtopic: Embedded Figures
+difficulty: MODERATE
+answer: C
+figure: stem+options
+stem:
+Select the option in which the given figure is embedded. (Rotation is not allowed)
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The given figure is a horizontal base line with two upright lines standing on it, joined by two slanting lines that run from the tops of the uprights down to the midpoint of the base, like the letter M standing on a line.
+
+Option 3 has two squares-on-corner side by side with a horizontal line through both centres and upright lines through the left and right squares. The upright of the left square (from its top corner down to the horizontal line), its upper-right side, the upper-left side of the right square and the upright of the right square form the M, standing on the horizontal line, which runs beyond both uprights.
+
+Option 1 has only one upright line, option 4 has none, and in option 2 the right square's upper-left side is missing, so the second slanting line is not there.
+
+=== 55
+chapter: Analogy
+subtopic: Letter Analogy
+difficulty: MODERATE
+answer: D
+stem:
+**Instructions:** In each of the following, the first and second pair of letters have a specific relationship. Apply the same logic to complete the third pair.
+
+WOODLAND : ZIRXOUQX :: PERIODIC : SYUCRXLW :: MAGAZINE : ?
+A: LOWXSYCZ
+B: HERDWBMO
+C: NUCAQOLP
+D: PUJUCCQY
+solution:
+The letters move +3, -6, +3, -6, ... in turn: W+3 = Z, O-6 = I, O+3 = R, D-6 = X, L+3 = O, A-6 = U, N+3 = Q, D-6 = X.
+
+Check with PERIODIC: P+3 = S, E-6 = Y, R+3 = U, I-6 = C, O+3 = R, D-6 = X, I+3 = L, C-6 = W.
+
+MAGAZINE: M+3 = P, A-6 = U, G+3 = J, A-6 = U, Z+3 = C, I-6 = C, N+3 = Q, E-6 = Y, giving PUJUCCQY.
+
+=== 56
+chapter: Statement-Based Reasoning
+subtopic: Inferences
+difficulty: EASY
+answer: D
+stem:
+In the following question, one statement is given, followed by certain inferences. Consider the statement to be true even if it seems to contradict commonly known facts. Read the inferences carefully and decide which of them logically follow(s) from the given statement.
+
+**Statement:**
+Humans cannot match the data processing speed of supercomputers, which perform billions of calculations per second.
+**Inferences:**
+I. Humans are less efficient than supercomputers in data processing.
+II. Humans and supercomputers differ in their capabilities.
+A: Only I follows
+B: Neither I nor II follows
+C: Only II follows
+D: Both I and II follows
+solution:
+If humans cannot match the processing speed of supercomputers, they are less efficient than supercomputers at data processing, so I follows.
+
+The same fact shows that the two differ in at least one capability, so II follows as well.
+
+=== 57
+chapter: Series
+subtopic: Letter Series
+difficulty: EASY
+answer: A
+stem:
+In the following letter sequence, one term is missing. Choose the correct option that will replace the question mark.
+EV, GT, JQ, OL,?
+A: VE
+B: RI
+C: KP
+D: UF
+solution:
+First letters: E(5), G(7), J(10), O(15) rise by 2, 3, 5, so the next rise is 7: \(15 + 7 = 22\) = V.
+
+Second letters: V(22), T(20), Q(17), L(12) fall by 2, 3, 5, so the next fall is 7: \(12 - 7 = 5\) = E.
+
+The next term is VE.
+
+=== 58
+chapter: Analogy
+subtopic: Number Analogy
+difficulty: EASY
+answer: C
+stem:
+Select the option that is related to the fifth number in the same way as the second number is related to the first number and the fourth number is related to the third number:
+3 : 30 :: 4 : 68 :: 5 : ?
+A: 175
+B: 145
+C: 130
+D: 126
+solution:
+Cube the number and add the number: \(3^3 + 3 = 30\), \(4^3 + 4 = 68\).
+
+So \(5^3 + 5 = 130\).
+
+=== 59
+chapter: Figure Counting
+subtopic: Counting Squares and Other Figures
+difficulty: MODERATE
+answer: D
+figure: stem
+note: The scan has lost most of the figure's lines, so the count cannot be checked; our 16 was a reconstruction and agrees with SSC's key. Held PRIVATE (config HELD).
+flawed: yes
+notice: The scanned paper has lost most of this figure's lines, so the squares cannot be counted from it. SSC's answer is 16.
+stem:
+How many squares are present in the following figure?
+A: 12
+B: 18
+C: 14
+D: 16
+solution:
+The surviving marks (three equally spaced horizontal lines with ticks at one third and two thirds of the width) suggest a 3 by 3 grid of equal cells, which holds \(9 + 4 + 1 = 14\) squares.
+
+The two fragments inside it (an L shape in the top-left cell and a small box in the centre cell) suggest one small square in each of two cells, giving \(14 + 2 = 16\).
+
+This is a reconstruction from a damaged scan, not a count from the figure.
+
+=== 60
+chapter: Venn Diagrams
+subtopic: Logical Venn Diagrams
+difficulty: EASY
+answer: A
+figure: options
+stem:
+Which figure best represents the relation among Fathers, Teacher, Males?
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+Every father is a male, so the Fathers circle lies inside the Males circle.
+
+Some teachers are males (and some of them fathers), while some teachers are women, so the Teachers circle overlaps both the Fathers circle and the Males circle and also goes outside the Males circle.
+
+Option 1 shows a small circle inside a larger one, with a third circle cutting across both and going outside: this is the relation.
+=== 61
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: D
+stem:
+Select the correct indirect form of the given sentence.
+“Do you suppose you know better than your own father?” jeered his angry mother.
+A: His angry mother jeered and asked if you suppose you know better than your own father.
+B: His angry mother jeered and asked whether he had supposed he has known better than his own father.
+C: His angry mother jeered that did he suppose he knew better than his own father.
+D: His angry mother jeered and asked whether he supposed he knew better than his own father.
+solution:
+A yes/no question is reported with "asked whether/if", the reporting verb is past so "suppose" and "know" shift back to "supposed" and "knew", and "you/your" become "he/his". Only D does all three. A keeps the pronouns and tense, B uses the wrong tenses, and C keeps the question order after "that".
+
+=== 62
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: C
+stem:
+Select the correct active form of the given sentence.
+The massive exterior wall of the old mansion was being painted by the skilled laborers when it suddenly started raining heavily.
+A: The skilled laborers had been painting the massive exterior wall of the old mansion when it suddenly started raining heavily.
+B: The skilled laborers are painting the massive exterior wall of the old mansion when it suddenly started raining heavily.
+C: The skilled laborers were painting the massive exterior wall of the old mansion when it suddenly started raining heavily.
+D: The skilled laborers painted the massive exterior wall of the old mansion when it suddenly started raining heavily.
+solution:
+"Was being painted" is the past continuous passive, so the active is the past continuous "were painting". A is past perfect continuous, B present continuous and D simple past.
+
+=== 63
+chapter: Grammar
+subtopic: Phrasal Verbs with Prepositions and Particles
+difficulty: EASY
+answer: C
+stem:
+Choose the most appropriate option to fill the blank in the given sentence.
+
+Radium ________ rays that can damage the eyes.
+A: gives over
+B: gives up
+C: gives off
+D: gives away
+solution:
+"Give off" means to emit (light, heat, rays or a smell). Radium emits rays, so "gives off" fits. "Give up" is to abandon, "give away" to donate or reveal, and "give over" to hand over or stop.
+
+=== 64
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: D
+stem:
+Select the correct direct form of the given sentence.
+I asked Mary if she would lend me a pencil.
+A: I said, “Mary, will she lend me a pencil?”
+B: I said to Mary, “Can you lent me a pencil?”
+C: I asked to Mary, “Would you lend me a pencil?”
+D: I said, “Mary, will you lend me a pencil?”
+solution:
+In direct speech "would" goes back to "will" and "she" (Mary, the listener) becomes "you": "Mary, will you lend me a pencil?" A keeps "she", B has the wrong verb form "lent", and C uses the wrong "asked to Mary".
+
+=== 65
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: B
+stem:
+Select the correct passive form of the given sentence.
+The burglar destroyed several items in the room. Even the carpet has been torn.
+A: The burglar, being destroyed several items in the room, also carpet has torn.
+B: Several items in the room were destroyed by the burglar. Even the carpet has been torn.
+C: Including the carpet, several items in the room have been torn by the burglar.
+D: Several items destroyed in the room by the burglar. Even the carpet he has torn.
+solution:
+"Destroyed" (simple past) becomes "were destroyed", with the object "several items in the room" as the subject; the second sentence is already passive and stays. B does this. C changes the verb and tense, and A and D are ungrammatical.
+
+=== 66
+chapter: Idioms and Phrases
+subtopic: Idioms: Time and Company
+difficulty: EASY
+answer: C
+stem:
+In the following question, out of the four alternatives, choose the one which gives the meaning of the given idiom or phrase.
+A stitch in time saves nine
+A: Tailoring is a valuable skill
+B: Drunk or intoxicated
+C: Timely action prevents more work
+D: Saving money for the future
+solution:
+"A stitch in time saves nine" means that fixing a problem early saves much more effort later, so timely action prevents more work.
+
+=== 67
+chapter: Sentence Rearrangement
+subtopic: Subject and Verb (PQRS)
+difficulty: MODERATE
+answer: B
+stem:
+Given below are four jumbled parts of a sentence. Select the option that gives their correct order.
+A) has been attributed by many climate scientists
+B) the unprecedented frequency of extreme weather events
+C) to the steady rise in global atmospheric temperatures
+D) observed across various continents over the last decade
+A: CBAD
+B: BDAC
+C: ADBC
+D: ABCD
+solution:
+The subject is B, and D describes the weather events it names. The verb A follows, and "attributed ... to" needs C: "The unprecedented frequency of extreme weather events observed across various continents over the last decade has been attributed by many climate scientists to the steady rise in global atmospheric temperatures." Order: BDAC.
+
+=== 68
+chapter: Sentence Rearrangement
+subtopic: Prepositions and Their Objects (PQRS)
+difficulty: EASY
+answer: B
+stem:
+Given below are four jumbled parts of a sentence. Select the option that gives their correct order.
+A) by the intricate tapestry of
+B) the philosopher was captivated
+C) that define human existence
+D) moral and ethical dilemmas
+A: DBAC
+B: BADC
+C: ABCD
+D: CBAD
+solution:
+B is the subject and verb, "captivated by" leads to A, "tapestry of" takes the object D, and C qualifies the dilemmas: "The philosopher was captivated by the intricate tapestry of moral and ethical dilemmas that define human existence." Order: BADC.
+
+=== 69
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: B
+stem:
+Select the wrongly spelt word out of the four alternatives.
+A: Impetuous
+B: Impetunent
+C: Implication
+D: Imperial
+solution:
+The correct spelling is "Impertinent". Impetuous, Implication and Imperial are spelt correctly.
+
+=== 70
+chapter: Idioms and Phrases
+subtopic: Idioms: People and Character
+difficulty: MODERATE
+answer: A
+stem:
+In the following question, out of the four alternatives, choose the one which gives the meaning of the given idiom or phrase.
+To strain at a gnat and swallow a camel
+A: To fuss over trifles while ignoring big issues
+B: To have a very large appetite
+C: To be meticulous in everything
+D: To be extremely physically weak
+solution:
+The phrase (from the Bible) describes someone who objects to a tiny fault (a gnat) while accepting a huge one (a camel), that is, fussing over trifles while ignoring big issues.
+
+=== 71
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: A
+stem:
+Select the correct indirect form of the given sentence.
+“Call the first witness,” said the judge.
+A: The judge ordered them to call the first witness.
+B: The judge asked if they would call the first witness.
+C: The judge ordered that called the first witness.
+D: The judge said that the first witness should be called.
+solution:
+An imperative (a command) is reported with "ordered/commanded + object + to-infinitive": "The judge ordered them to call the first witness." B turns the command into a question, C is ungrammatical, and D changes the reporting verb and voice.
+
+=== 72
+chapter: Vocabulary
+subtopic: Homophones in Sentences
+difficulty: EASY
+answer: C
+stem:
+Choose the option that contains the homonym of the highlighted word in the given sentence.
+Please make sure to write your full home **address**, including the apartment number and zip code, on the top of the application form.
+A: After living in the city for ten years, Sarah had to notify the post office that her permanent address was changing to a rural farmhouse.
+B: The celebrity requested that her residential address be kept private and removed from all public search directories for security reasons.
+C: Millions of people tuned in to watch the president’s televised address regarding the new economic policies.
+D: The delivery driver called me because he was having trouble finding my address on the GPS due to the new construction in the neighborhood.
+solution:
+In the given sentence "address" means where someone lives. A homonym is the same word with a different meaning: in C "address" means a formal speech. In A, B and D it still means a place of residence.
+
+=== 73
+chapter: Vocabulary
+subtopic: Antonyms: People and Character
+difficulty: EASY
+answer: D
+stem:
+Choose the appropriate antonym of the given word.
+Gullibility
+A: Naviety
+B: Innocence
+C: Trust
+D: Skepticism
+solution:
+Gullibility is the tendency to believe things too easily. Its opposite is skepticism, a doubting attitude. Naivety, innocence and trust are close in meaning to gullibility.
+
+=== 74
+chapter: Vocabulary
+subtopic: Synonyms: Law, Duty and Action
+difficulty: EASY
+answer: A
+stem:
+Choose the appropriate synonym of the given word.
+Erroneous
+A: Fallacious
+B: Right
+C: Vital
+D: Accurate
+solution:
+"Erroneous" means wrong or mistaken, as does "fallacious". "Right" and "accurate" are opposites, and "vital" means essential.
+
+=== 75
+chapter: Vocabulary
+subtopic: One-Word Substitution
+difficulty: MODERATE
+answer: B
+stem:
+In the following question, out of the four alternatives, choose the one which can be substituted for the given words/sentence.
+Fear of ugliness.
+A: Arachnophobia
+B: Cacophobia
+C: Hydrophobia
+D: Acrophobia
+solution:
+Cacophobia (Greek "kakos", bad or ugly) is the fear of ugliness. Arachnophobia is the fear of spiders, hydrophobia of water, and acrophobia of heights.
+
+=== 76
+chapter: Vocabulary
+subtopic: Spelling
+difficulty: EASY
+answer: D
+stem:
+Select the correctly spelt word out of the four alternatives.
+A: Grosteasque
+B: Grostasque
+C: Growtesque
+D: Grotesque
+solution:
+The correct spelling is "Grotesque", meaning comically or repulsively ugly.
+
+=== 77
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: D
+stem:
+Select the most appropriate option to substitute the highlighted segment in the given sentence. If there is no need to substitute it, select 'No improvement'.
+Come quickly \(\underline{\text{if you will}}\) catch the train.
+A: No improvement
+B: If you will have
+C: If you have
+D: If you want to
+solution:
+The sentence means that hurrying is needed to catch the train, so it needs "if you want to catch the train". "If you will catch" and the other forms do not express that purpose.
+
+=== 78
+chapter: Spotting Errors
+subtopic: Redundancy, Comparison, Connectors and Idioms
+difficulty: EASY
+answer: D
+stem:
+The following sentence has been divided into four parts. Identify the part which contains a grammatical error. If there is no error in the sentence, then select 'No Error'.
+
+The company will invest more(A) six hundred crores(B) in the next five years to expand(C) its operations in Britain (D).
+A: B
+B: C
+C: D
+D: A
+solution:
+"More" before a quantity needs "than" for the comparison: "invest more than six hundred crores". So part A has the error, which is option 4 (D). The rest is correct.
+
+=== 79
+chapter: Sentence Rearrangement
+subtopic: Time Order and Lists
+difficulty: MODERATE
+answer: B
+stem:
+Given below are four jumbled sentences. Select the option that gives their correct order.
+A. Faced with the high cost and scarcity of Indian indigo; European manufacturers were forced to rely on the woad plant for their dyeing needs.
+B. However, cloth dyers still preferred indigo, as it produced a significantly richer and more vibrant blue than woad ever could.
+C. Since woad thrived in temperate climates, it was readily available and easily cultivated throughout Europe.
+D. Indian indigo was prohibitively expensive, and only meager quantities ever reached European markets.
+A: BCAD
+B: DACB
+C: CBAD
+D: ABCD
+solution:
+D introduces the problem (indigo was costly and scarce). A gives the result (manufacturers relied on woad), C explains why woad was available, and B ("However") contrasts the dyers' preference for indigo. Order: DACB.
+
+=== 80
+chapter: Fill in the Blanks
+subtopic: Sentence Fill-in-Blanks
+difficulty: EASY
+answer: A
+stem:
+Choose the most appropriate option to fill the blank in the given sentence.
+
+The tiny deer stood looking at them with ________ eyes.
+A: Luminous
+B: Arid
+C: Stationary
+D: Transparent
+solution:
+"Luminous" (shining, bright) eyes is a natural description. "Arid" means dry land, "stationary" means not moving, and "transparent" means see-through; none suits eyes.
+
+=== 81
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: B
+stem:
+Select the correct active form of the given sentence.
+Why was such a letter written by your brother?
+A: Why was your brother writing such a letter?
+B: Why did your brother write such a letter?
+C: Why does your brother write such a letter?
+D: Why had your brother written such a letter?
+solution:
+"Was written" is the simple past passive, so the active question is "Why did your brother write such a letter?" A is past continuous, C simple present and D past perfect.
+
+=== 82
+chapter: Spotting Errors
+subtopic: Prepositions Fixed by the Word Before
+difficulty: EASY
+answer: D
+stem:
+The following sentence has been divided into four parts. Identify the part which contains a grammatical error. If there is no error in the sentence, then select 'No Error'.
+
+The whole family (A)/ would burst into (B)/ peals for laughter. (C)/ No Error (D)
+A: B
+B: A
+C: D
+D: C
+solution:
+The fixed phrase is "peals of laughter", so part C has the error, which is option 4 (D).
+
+=== 83
+chapter: Spotting Errors
+subtopic: Sentence Improvement
+difficulty: EASY
+answer: A
+stem:
+Select the most appropriate option to substitute the highlighted segment in the given sentence. If there is no need to substitute it, select 'No improvement'.
+Tom was \(\underline{\text{standing besides the schoolhouse poster}}\), when the ball rolled towards him.
+A: standing beside the schoolhouse poster
+B: No improvement
+C: stood beside the schoolhouse poster
+D: stand beside the schoolhouse poster
+solution:
+"Beside" means next to; "besides" means in addition to. The past continuous "was standing" is right for an action interrupted by "when the ball rolled", so only the preposition changes: "standing beside the schoolhouse poster".
+
+=== 84
+chapter: Grammar
+subtopic: Voice and Reported Speech
+difficulty: EASY
+answer: B
+stem:
+Select the correct direct form of the given sentence.
+He inquired whether the boy's name was Ahmed.
+A: He asked, “The boy's name is Ahmed?”
+B: He asked, “Is the boy's name Ahmed?”
+C: He asked, “Whether the boy's name was Ahmed?”
+D: He asked, “Was the boy's name Ahmed?”
+solution:
+"Inquired whether" reports a yes/no question, so the direct form uses question order and the present tense: "Is the boy's name Ahmed?" A lacks question order, C keeps "whether", and D keeps the backshifted "was".
+
+=== 85
+chapter: Sentence Rearrangement
+subtopic: Linkers in Paragraphs
+difficulty: MODERATE
+answer: D
+stem:
+Given below are four jumbled sentences. Select the option that gives their correct order.
+A. Here, the picture-perfect French Quarter and heritage laden Tamil streets blend into one another.
+B. Across many metropolitan cities, there exists a visible conflict in how the old and the new coexist.
+C. The old and new, like two different worlds, surviving side by side yet never crossing that chasm.
+D. However, Puducherry stands as a striking exception, where these very contrasts are celebrated rather than endured.
+A: ABCD
+B: DABC
+C: BACD
+D: BDAC
+solution:
+B opens with the general claim about cities. D ("However ... Puducherry") must follow it, and "Here" in A needs Puducherry already named, so A follows D. C closes the paragraph. Only BDAC starts B, D, A; the other orders put "Here" or "However" with nothing to refer to.
+
+=== 86
+chapter: Reading Comprehension
+subtopic: Locating the Answer Line
+difficulty: EASY
+answer: C
+context:
+Read the following passage carefully and answer the questions based on the passage:
+Pride and Prejudice by Jane Austen is a classic known for its humor and complex characters. The famous first sentence of the book, "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife," begins to set up all of the major themes of money, status, and marrying well that are prevalent in 19th-century England. The Bennet family, particularly Elizabeth Bennet, a smart and strong-willed heroine, is the subject of Austen’s commentary on the societal imperative for women to marry well and thereby have a stable income.
+The title itself is quite meaningful, as it first indicates the character flaws that drive much of the conflict in this novel, namely Darcy’s pride and Elizabeth’s prejudice. In fact, Mr. Fitzwilliam Darcy, being a rich and high-ranking person, first of all shows a haughty character, thereby being very superior by virtue of his class. Elizabeth, having been offended by his initial lack of warmth, as well as having been misled by the deceiving Mr. Wickham, very quickly showed prejudice against him.
+Traces the story of each as they navigate these weaknesses. Darcy needs to lower his pride to appreciate the value of Elizabeth’s inferior standing, though she must see the strength of his superior qualities.
+Austen employs irony and satire liberally to point out the absurdities of the class structure. Personages like the obsequious Mr. Collins and the imperious Lady Catherine de Bourgh symbolize the hard and silly aspects of class consciousness. The sojourn at Darcy’s grand estate, Pemberley, is an important defining instance in which the splendor of the property and the favorable reports of his servants compel Elizabeth to revise her earlier opinion and realize the truth of Darcy’s goodness.
+In the final analysis, the novel promotes love marriages, couples like Jane and Bingley, and Elizabeth and Darcy, who have successful marriages because of love, in contrast to couples who marry for convenience (Charlotte Collins and Mr. Collins) or those who are full of passion but irresponsible (Lydia and Wickham).
+stem:
+What are the major themes expressed by the first line of the novel?
+A: Nature and the countryside
+B: Love & War
+C: Wealth, status, and marriage
+D: Education and morality
+solution:
+The passage says the first sentence "begins to set up all of the major themes of money, status, and marrying well", that is, wealth, status and marriage.
+
+=== 87
+chapter: Reading Comprehension
+subtopic: Locating the Answer Line
+difficulty: EASY
+answer: B
+context_from: 86
+stem:
+Which defects in character does the name "Pride and Prejudice" primarily refer to?
+A: Arrogance of Lady Catherine and Mr. Collins’s servility
+B: Darcy’s pride and Elizabeth’s prejudice
+C: Lydia's erratic behavior and Wickham's deceits
+D: Mr. Bennet’s wit and Mrs. Bennet’s fussiness
+solution:
+The second paragraph says the title "indicates the character flaws ... namely Darcy’s pride and Elizabeth’s prejudice".
+
+=== 88
+chapter: Reading Comprehension
+subtopic: Inference: What Must Be True
+difficulty: EASY
+answer: D
+context_from: 86
+stem:
+How is the character of Lady Catherine de Bourgh employed in the novel as a criticism of society?
+A: She symbolizes ideal maternal love and wisdom.
+B: She represents the struggle of the working class against the landed gentry.
+C: She is purely comic relief and has no other significance.
+D: She represents social tyranny and class prejudice.
+solution:
+The passage calls her "imperious" and says she symbolizes "the hard and silly aspects of class consciousness", used to satirise the class structure. That is social tyranny and class prejudice.
+
+=== 89
+chapter: Reading Comprehension
+subtopic: Locating the Answer Line
+difficulty: MODERATE
+answer: A
+context_from: 86
+stem:
+What is the key event that marks a turning point in making Elizabeth change her view of Darcy?
+A: Her visit to Pemberley and her reception of Darcy's letter
+B: Rejection of Mr. Collins’s Proposal
+C: The Netherfield Ball
+D: Lydia's elopement with Wickham
+solution:
+The passage names the sojourn at Pemberley as the "important defining instance" that compels Elizabeth to revise her opinion. Only A mentions Pemberley (the letter is from the novel, not the passage); the other events are not described as changing her view.
+
+=== 90
+chapter: Reading Comprehension
+subtopic: Main Idea, Author's View and Tone
+difficulty: MODERATE
+answer: C
+context_from: 86
+stem:
+What kind of marriage does Jane Austen appear to prize the most, according to the conclusion of the novel?
+A: Marriage contracts entered into by reason of romantic love alone
+B: Marriages for convenience and connections to family
+C: Based on mutual respect, love, and understanding in marriage
+D: Marriages based solely on financial security
+solution:
+The novel promotes love marriages like Jane and Bingley's and Elizabeth and Darcy's, contrasted with marriages of convenience (B, D) and with passion that is irresponsible (Lydia and Wickham), which rules out love "alone" (A). Elizabeth and Darcy first overcome their flaws and see each other's worth, so the prized marriage rests on respect, love and understanding.
+
+=== 91
+chapter: Reading Comprehension
+subtopic: Main Idea, Author's View and Tone
+difficulty: MODERATE
+answer: C
+context:
+Read the following passage carefully and answer the questions based on the passage:
+
+The Viksit Bharat - Guarantee for Rozgar and Ajeevika Mission (Gramin) Act (VB-GRAM G), 2025, has been replaced by the Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA). The goal of this modification is to improve Article 21 of the Indian Constitution, which protects the right to life. MGNREGA has improved socioeconomic conditions by facilitating wage payments, providing unemployment benefits, and promoting equal earnings. There has been sustainable development, and research has confirmed the impact of this program to raise earnings, alleviate poverty, and encourage school enrollment. In the past five years, women have comprised 58% of the workforce, significantly contributing to rural development, particularly during the COVID-19 pandemic. Given these factors, it is important to assess both the benefits and current challenges of the system.
+Despite MGNREGA’s successes, the program has faced implementation challenges, mainly due to inadequate funding, as acknowledged by the Ministry of Finance. Delays in wage payments and fewer work opportunities have resulted from this lack of funds. Recent rules, such as introducing an attendance application that uses photos, have created new problems and made corruption easier. Due to these issues, the VB-GRAM G Act has introduced important changes, including sections 5(1) and 4(5), which give the Union Government greater control over the public works program.
+stem:
+What might be the author’s overall purpose for discussing the development from MGNREGA to the VB-GRAM G Act?
+A: Argue that a transition from a rights-based framework to an AI-based system is necessary to achieve efficient results for rural communities.
+B: Argue that technology-based interventions will necessarily increase the levels of transparency and accountability associated with public programs
+C: Emphasize how institutional reforms try to maintain constitutionally provided rights while recognizing administrative weaknesses
+D: Argue that a decrease in the role of government can logically solve the inherent shortcomings in rural employment patterns
+solution:
+The author ties the change to protecting the right to life (Article 21), credits the scheme's gains, and then names its funding and implementation problems, which the new Act addresses. That is C. A mentions AI, which the passage never does; B contradicts the remark that photo attendance made corruption easier; D contradicts the greater Union control.
+
+=== 92
+chapter: Reading Comprehension
+subtopic: Main Idea, Author's View and Tone
+difficulty: MODERATE
+answer: A
+context_from: 91
+stem:
+The author’s tone regarding new rules (e.g., photo-based attendance) is best described as?
+A: Cautiously critical, admitting the benefits of innovation while pointing out the dangers of abuse in bureaucracies
+B: It is a direct rejection that states tech solutions do not work in rural welfare activities because the officials are illiterate
+C: Detachedly descriptive, outlining reforms to procedures without evaluative judgments.
+D: Digital interventions will resolve longstanding governance issues.
+solution:
+The author says the new rules "have created new problems and made corruption easier", which is critical, so C (no judgment) and D (approving) fail. B invents a claim about illiterate officials. The measured criticism of abuse fits A.
+
+=== 93
+chapter: Reading Comprehension
+subtopic: Inference: What Must Be True
+difficulty: EASY
+answer: B
+context_from: 91
+stem:
+What can be reasonably inferred about the relationship between women's participation and rural resilience during the pandemic?
+A: The fact that they were active seemingly led to the acceleration of the community’s fiscal problems because it resulted in program expenditure being amplified during a time of uncertainty.
+B: Their significant involvement contributed to the continuation of the community through the maintenance of the local economy in spite of the general economic disruptions that were happening.
+C: Their involvement could have led to a decrease in total program productivity owing to the fact that the local populace was heavily burdened with expanded caregiving during the pandemic.
+D: Their intensified appearance might have worsened the existing support structures that were failing in the health crisis.
+solution:
+The passage says women made up 58% of the workforce, "significantly contributing to rural development, particularly during the COVID-19 pandemic". That positive role in keeping the rural economy going is B; the other options make their participation harmful.
+
+=== 94
+chapter: Reading Comprehension
+subtopic: Locating the Answer Line
+difficulty: EASY
+answer: B
+context_from: 91
+stem:
+What does the author’s discussion of lack of funding primarily indicate?
+A: Local administrations limit opportunities so as to have control over the release of finances.
+B: Administrative inefficiencies and implementation challenges due to a shortage of funding.
+C: Resource allocation practices are highly effective but seem problematic due to certain short-term fiscal fluctuations
+D: Decentralized authority has caused divergent effects that will certainly lead to a reduction in job guarantees.
+solution:
+The passage says the program "has faced implementation challenges, mainly due to inadequate funding", causing delayed wages and fewer work opportunities. That is B.
+
+=== 95
+chapter: Reading Comprehension
+subtopic: Word Meaning in Context
+difficulty: EASY
+answer: C
+context_from: 91
+stem:
+What does “sustainable development” mean most nearly in the context of the passage?
+A: Outcomes that emphasize the creation of jobs in the short term, even if there are uncertain long-term consequences for individual welfare
+B: Discusses advancements that are characterized by fast infrastructure development without consideration of administrative viability.
+C: Improvements relating to long-term socioeconomic benefits for rural households via stable program design
+D: Strategies that place emphasis mainly on technological diffusion as a principal means of rural transformation
+solution:
+The phrase comes right after the scheme's socioeconomic gains and is followed by raised earnings, less poverty and more school enrollment, lasting benefits for rural households. That is C. A is short-term, and B and D bring in infrastructure and technology, which the sentence does not discuss.
+
+=== 96
+chapter: Reading Comprehension
+subtopic: Main Idea, Author's View and Tone
+difficulty: MODERATE
+answer: C
+context:
+Read the following passage carefully and answer the questions based on the passage:
+
+"Bank failures raise serious concerns about supervisory oversight." The case studies of Credit Suisse and Silicon Valley Bank highlight the deficiencies in supervisory supervision. In many instances, supervisors are hesitant to come into conflict with bank management when weaknesses are identified, preferring to do nothing rather than take corrective action at a point in time when key issues are building into a problem.
+Regulators must adopt an attitude change in which they place more emphasis on the results rather than the details. Overemphasis on trivial matters might lead regulators to overlook more fundamental issues, such as whether financial institutions have adequate capital in case of a shock. Regulating requirements must be simplified. Complex regulation requirements in relation to capital may overlook systemic risk in their approaches when stress tests result in activities gravitating towards less heavily regulated institutions in the non-bank sector.
+Improved supervisory and bank communications would promote better supervision as a tool for managing risk. Recommendations include being up front about supervisory goals, openness to change within the bank organization, and increased transparency in supervisory contracts as a way of promoting swift problem resolution. These would aid shareholders as well as the overall economy. In conclusion, rather than pursuing a micro-management strategy, a move towards a clearly defined regulation that supports positive incentives is what is needed to ensure that banks behave within frameworks that promote financial stability.
+stem:
+Which of the following is most true in regard to stating the structure of logic found in the author’s conclusion?
+A: It proposes that bank managers should be given more freedom in setting.
+B: It suggests a complete deregulation of the banking system to promote a competitive world economy.
+C: It urges a transition from procedural pedantry towards a results-oriented strategic framework.
+D: It suggests that the responsibility for assurance should lie with organizations rather than with outsiders.
+solution:
+The conclusion rejects "a micro-management strategy" in favour of "a clearly defined regulation that supports positive incentives", echoing the earlier call to stress results over details. That is a move from procedural pedantry to a results-oriented framework, C. The author wants clearer regulation, not deregulation (B) or freedom for managers (A, D).
+
+=== 97
+chapter: Reading Comprehension
+subtopic: Locating the Answer Line
+difficulty: EASY
+answer: B
+context_from: 96
+stem:
+The use of "stress tests" by the author is an example of illustrating which of the following consequences?
+A: The failure of financial institutions to report their internal capital requirements accurately.
+B: The movement of risk-related financial activities into industries that are less heavily regulated.
+C: The direct relationship between complex regulatory obligations and long-term stability.
+D: The enhanced clarity of communication between shareholders and bank managers.
+solution:
+The passage says stress tests "result in activities gravitating towards less heavily regulated institutions in the non-bank sector", which is B.
+
+=== 98
+chapter: Reading Comprehension
+subtopic: Locating the Answer Line
+difficulty: EASY
+answer: D
+context_from: 96
+stem:
+Why are supervisors often slow to act when banks have problems?
+A: They use a secret strategy to keep their contracts private.
+B: They are confused because modern bank rules are too simple.
+C: They do not have the legal power to stop a financial crash.
+D: They prefer to avoid conflict instead of fixing risks early.
+solution:
+The passage says supervisors "are hesitant to come into conflict with bank management", "preferring to do nothing rather than take corrective action". That is D.
+
+=== 99
+chapter: Reading Comprehension
+subtopic: Locating the Answer Line
+difficulty: EASY
+answer: D
+context_from: 96
+stem:
+What would "positive incentives" do for the banking system?
+A: Make bank rules much more complicated and harder to follow.
+B: Bring back micro-management and focus on tiny details.
+C: Stop banks and regulators from talking to each other often.
+D: Help banks behave in a way that keeps the economy stable.
+solution:
+Regulation supporting positive incentives is needed "to ensure that banks behave within frameworks that promote financial stability", which is D. A, B and C contradict the author's recommendations.
+
+=== 100
+chapter: Reading Comprehension
+subtopic: Main Idea, Author's View and Tone
+difficulty: EASY
+answer: C
+context_from: 96
+stem:
+The tone with which the author approaches the current situation of "complex regulation" is best described as:
+A: Hopeful that it will eventually help find hidden money problems.
+B: Uninterested in how these rules change where money is stored.
+C: Critical because complicated rules can actually cause more risk.
+D: Impressed by how much attention supervisors pay to tiny details.
+solution:
+The author says requirements "must be simplified" because complex rules "may overlook systemic risk" and push activity to less regulated institutions. That is critical, C.
+
+=== 101
+chapter: Cloze Test
+subtopic: Prepositions in the Blank
+difficulty: EASY
+answer: B
+context:
+In the following question, some of the words in the passage have been left out. Read the passage carefully and choose the correct word for each blank, out of the four alternatives and fill in the blanks.
+After falling consistently _________ (1) the U.S. dollar for a major part of the year, the rupee has _________ (2) somewhat over the last few weeks. It has risen by almost 5% from its lowest levels _________ (3) in October. Even with this recent improvement, the rupee is still down about 11% since the start of the year. The rupee's performance has been closely _________ (4) to global crude oil prices. This makes sense, as imported oil accounts for about 80% of India's total demand. The value of the rupee dropped when oil prices climbed earlier this year, a trend that lasted until early October. Since then, as global crude prices have fallen, the rupee has _________ (5) against the dollar.
+stem:
+What should come in blank (1) ?
+A: for
+B: against
+C: of
+D: with
+solution:
+A currency rises or falls "against" another currency, so "falling consistently against the U.S. dollar".
+
+=== 102
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: EASY
+answer: D
+context_from: 101
+stem:
+What should come in blank (2) ?
+A: admire
+B: energy
+C: ground
+D: recovered
+solution:
+After falling, the rupee "has risen by almost 5%", so it "has recovered somewhat". "Has" also needs a past participle, which only "recovered" is.
+
+=== 103
+chapter: Cloze Test
+subtopic: Verb Forms in the Blank
+difficulty: EASY
+answer: C
+context_from: 101
+stem:
+What should come in blank (3) ?
+A: behind
+B: render
+C: reached
+D: admire
+solution:
+"Its lowest levels reached in October" uses the past participle as a reduced relative clause (levels that were reached in October). The other words do not fit grammatically.
+
+=== 104
+chapter: Cloze Test
+subtopic: Collocations and the Precise Word
+difficulty: EASY
+answer: C
+context_from: 101
+stem:
+What should come in blank (4) ?
+A: tightly
+B: morally
+C: tied
+D: amicably
+solution:
+"Has been closely tied to" means closely linked to, which the next sentences explain (oil imports drive the rupee). After "been closely" a past participle is needed; the other options are adverbs.
+
+=== 105
+chapter: Cloze Test
+subtopic: Meaning from the Passage
+difficulty: EASY
+answer: A
+context_from: 101
+stem:
+What should come in blank (5) ?
+A: strengthened
+B: tandem
+C: culture
+D: relating
+solution:
+The rupee fell when oil rose; as oil prices have fallen, the rupee has "strengthened" against the dollar. "Has" also needs a past participle, which only "strengthened" is.
+=== 106
+subject: Polity
+chapter: Indian Constitution — Making, Foundation and Amendments
+subtopic: Federal Structure — States, UTs and Finance
+difficulty: MODERATE
+answer: B
+stem:
+**Read the following statements regarding the 'Doctrine of Repugnancy' (Article 254):**
+**Statement I:** If a 'State law' on a "Concurrent List" subject conflict with a 'Union law', then the Union law prevails, and the State law becomes 'void' to the extent of the repugnancy.
+**Statement II:** A State law on a Concurrent subject that conflicts with a Union law can still prevail within that State if it has been reserved for and received the assent of the President.
+**Which of the above statements is/are correct?**
+A: Only Statement II is correct
+B: Both Statements I and II are correct
+C: Only Statement I is correct
+D: Neither Statement I nor II is correct
+solution:
+Article 254(1): when a State law on a Concurrent List matter is repugnant to a Union law, the Union law prevails and the State law is void to the extent of the repugnancy. So Statement I is correct.
+
+Article 254(2): a State law on a Concurrent matter that is repugnant to an earlier Union law prevails in that State if it was reserved for the President's consideration and received his assent (Parliament can still override it later). So Statement II is correct too.
+
+=== 107
+subject: Economics
+chapter: Indian Economy
+subtopic: Five Year Plans and Indian Planning
+difficulty: EASY
+answer: D
+stem:
+The Second Five Year Plan (1956-1961), often associated with the Mahalanobis Model, marked a significant shift in India's development strategy. What was the primary focus of this plan?
+A: Maximizing the role of the private sector in the 'commanding heights' of the economy.
+B: Achieving immediate self-sufficiency in food grain production through the Green Revolution.
+C: Establishing an export-oriented economy to integrate rapidly with global trade markets.
+D: Rapid industrialization with a particular emphasis on the development of basic and heavy industries.
+solution:
+The Second Plan, built on P.C. Mahalanobis's model, aimed at rapid industrialisation through basic and heavy industries, with the public sector (not the private sector) holding the commanding heights. The Green Revolution came in the late 1960s, and the strategy was import substitution, not export orientation.
+
+=== 108
+subject: Current Affairs
+chapter: International Affairs and Relations
+subtopic: International Organizations and Multilateral Bodies
+difficulty: MODERATE
+answer: C
+stem:
+The 'Fortaleza Declaration' of 2014 is most famous in BRICS history for the creation of which of the following?
+A: The BRICS Space Agency
+B: A common BRICS currency called 'R5'
+C: The Contingent Reserve Arrangement (CRA)
+D: A permanent BRICS Secretariat in Brazil
+solution:
+At the 6th BRICS summit in Fortaleza, Brazil (July 2014), the members signed the agreements creating the New Development Bank and the Contingent Reserve Arrangement (a 100 billion dollar liquidity pool). BRICS has no space agency, no common currency and no permanent secretariat.
+
+=== 109
+subject: History
+chapter: Medieval India
+subtopic: Society, Economy and Land Grants
+difficulty: EASY
+answer: C
+stem:
+Which of the following was a primary objective of Alauddin Khilji's 'Market Control' (Zawabit) regulations?
+A: To expand treasury revenue by encouraging unrestricted trade with neighboring regions.
+B: To replace religious taxation with a uniform system of commercial levies across markets.
+C: To keep essential commodity prices low so soldiers could be maintained on fixed salaries.
+D: To promote overseas trade by encouraging Indian textile exports to foreign empires.
+solution:
+Alauddin Khalji kept a large standing army (against the Mongols) on fixed cash salaries. To make those salaries enough, he fixed low prices for grain, cloth, horses and other essentials through his market regulations, enforced by officials such as the Shahna-i-Mandi. Trade was tightly controlled, not left unrestricted.
+
+=== 110
+subject: Economics
+chapter: Money, Banking and Public Finance
+subtopic: Union Budget and Fiscal Policy
+difficulty: EASY
+answer: C
+stem:
+From a macroeconomic perspective, which indicator best captures the government's borrowing requirement excluding interest payments on past debt?
+A: Revenue deficit
+B: Fiscal deficit
+C: Primary deficit
+D: Budget deficit
+solution:
+Fiscal deficit is the government's total borrowing requirement. Primary deficit = fiscal deficit minus interest payments, so it is the borrowing requirement excluding interest on past debt.
+
+=== 111
+subject: Biology
+chapter: Biochemistry
+subtopic: Anaerobic Respiration and Fermentation
+difficulty: EASY
+answer: D
+stem:
+Which of the following biological processes explains why human muscles often feel sore or "cramped" after a sudden, intense bout of physical exercise?
+A: Accumulation of Ethyl Alcohol
+B: Excessive release of Carbon Dioxide
+C: Depletion of Vitamin C
+D: Accumulation of Lactic Acid
+solution:
+During intense exercise the oxygen supply to muscle falls short, so muscle cells respire anaerobically and convert pyruvate to lactic acid. Its build-up causes cramps and soreness. Ethyl alcohol is the anaerobic product in yeast, not in human muscle.
+
+=== 112
+subject: Geography
+chapter: Indian Geography — Physical Features
+subtopic: Mountains, Plateaus and Plains of India
+difficulty: MODERATE
+answer: C
+stem:
+**Read the below statements:**
+**Statement I:** The 'Zoji La pass' serves as a very important link between the Kashmir Valley and the Ladakh region, cutting through the Great Himalayan Range.
+**Statement II:** The 'Shipki La pass' is located in Arunachal Pradesh and serves as a primary gateway for the river Brahmaputra to enter India from Tibet.
+Which of the above statements is/are **correct**?
+A: Both Statement I and II are correct
+B: Neither Statement I nor II is correct
+C: Only Statement I is correct
+D: Only Statement II is correct
+solution:
+Zoji La, on the Srinagar-Leh road, links the Kashmir Valley with Ladakh across the Great Himalayan range, so Statement I is correct.
+
+Shipki La is in Kinnaur district of Himachal Pradesh, and it is the Sutlej that enters India there from Tibet. The Brahmaputra (Siang) enters India in Arunachal Pradesh, not through Shipki La. So Statement II is wrong.
+
+=== 113
+subject: Current Affairs
+chapter: Environment, Ecology and Energy
+subtopic: Wildlife Conservation and Species
+difficulty: MODERATE
+answer: A
+stem:
+**Regarding the legal protection of Dugong (Sea Cow) in India, consider the following statements:**
+**Statement 1:** The Dugong is protected under **Schedule I** of the Wildlife (Protection) Act, 1972.
+**Statement 2:** This classification provides the Dugong with the highest level of legal protection, similar to that of the Tiger.
+Which of the statements given above is/are **correct?**
+A: Both Statement 1 and Statement 2
+B: Only Statement 2
+C: Only Statement 1
+D: Neither Statement 1 nor Statement 2
+solution:
+The dugong is listed in Schedule I of the Wildlife (Protection) Act, 1972. Schedule I gives the highest level of protection under the Act, the same as for the tiger, with the heaviest penalties for offences. Both statements are correct.
+
+=== 114
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: EASY
+answer: A
+stem:
+In a standard FIBA (International) game, how many quarters are played, and how long is each quarter?
+A: Four 10-minute quarters
+B: Four 12-minute quarters
+C: Two 20-minute halves
+D: Four 8-minute quarters
+solution:
+FIBA basketball games have four quarters of 10 minutes each (40 minutes). Four 12-minute quarters is the NBA format; two 20-minute halves is US college (NCAA) men's basketball.
+
+=== 115
+subject: Current Affairs
+chapter: Science and Technology
+subtopic: Space Technology and Astronomy
+difficulty: EASY
+answer: D
+stem:
+Which of the following **correctly** describes the NISAR mission?
+A: ISRO-only mission for X-band radar mapping
+B: NASA-only mission for ultraviolet astronomy
+C: Optical imaging mission for exoplanet detection
+D: Joint ISRO–NASA mission using L and S-band radar
+solution:
+NISAR (NASA-ISRO Synthetic Aperture Radar), launched on GSLV-F16 in July 2025, is a joint Earth-observation mission: NASA supplied the L-band radar and ISRO the S-band radar. It maps Earth's surface, not ultraviolet sources or exoplanets.
+
+=== 116
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: D
+stem:
+**Read the below statements regarding Aman Sehrawat's performance at the Paris 2024 Olympics:**
+**Statement I:** Aman Sehrawat won the bronze medal in the Men's 57kg freestyle wrestling event by defeating Darian Cruz of Puerto Rico.
+**Statement II:** With this win, at the age of 21 years and 24 days, he surpassed PV Sindhu to become India's youngest-ever individual Olympic medalist.
+Which of the following is **correct**?
+A: Neither statement I nor II is correct
+B: Only statement I is correct
+C: Only statement II is correct
+D: Both statements I and II are correct
+solution:
+Aman Sehrawat won bronze in men's freestyle 57 kg at Paris 2024, beating Darian Toi Cruz of Puerto Rico in the bronze medal bout. Aged 21 years and 24 days, he became India's youngest individual Olympic medallist, a record held earlier by P.V. Sindhu (silver at Rio 2016, aged 21 years and about 1 month). Both statements are correct.
+
+=== 117
+subject: Current Affairs
+chapter: Government Schemes, Policy and Governance
+subtopic: Infrastructure, Transport and Cultural Schemes
+difficulty: EASY
+answer: D
+stem:
+What constitutes the primary objective of the Gyan Bharatam Mission?
+A: Promoting Indian languages globally
+B: Developing new libraries across India
+C: Translating classical texts into modern languages
+D: Preserving, digitizing, and disseminating India's manuscript heritage
+solution:
+The Gyan Bharatam Mission, announced in the Union Budget 2025-26 under the Ministry of Culture, is meant to survey, document, conserve and digitise India's manuscript heritage (over a crore manuscripts) and make it accessible through a national digital repository.
+
+=== 118
+subject: Economics
+chapter: National Income, Growth and Development Indicators
+subtopic: Poverty, Employment and Human Development
+difficulty: EASY
+answer: B
+stem:
+Which indicator is used to measure the 'Knowledge' dimension of the Human Development Index?
+A: Adult literacy rate and primary school enrollment
+B: Mean years of schooling and Expected years of schooling
+C: Student-to-teacher ratio in secondary education
+D: Number of universities and research publications
+solution:
+Since 2010 UNDP measures the HDI's knowledge (education) dimension by mean years of schooling (adults 25 and over) and expected years of schooling (children of school-entry age). Adult literacy and gross enrolment were the older indicators, replaced in 2010.
+
+=== 119
+subject: History
+chapter: Modern India
+subtopic: European Trading and Early British Conquest
+difficulty: MODERATE
+answer: A
+stem:
+Regarding the 'Subsidiary Alliance' system introduced by Lord Wellesley (1798–1805), which of the following statements is INCORRECT?
+A: The ruler was free to employ any European (French, Portuguese, etc.) as long as they were not in active conflict with the British.
+B: If the ruler failed to make payments for the maintenance of the British force, a portion of his territory was ceded as a penalty.
+C: The Indian ruler was required to disband his own military and maintain a permanent British contingent within his territory.
+D: The British promised not to interfere in the internal administrative affairs of the allied state.
+solution:
+Under the Subsidiary Alliance the Indian ruler could not employ any European without the Company's approval, so statement A is the incorrect one.
+
+The others describe the system: the ruler kept a British force in his state and paid for it (or ceded territory in lieu, as the Nizam and Awadh did), accepted a British Resident, gave up an independent army and foreign policy, and the Company promised not to interfere in his internal affairs.
+
+=== 120
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Constitutional Bodies and Offices
+difficulty: MODERATE
+answer: A
+stem:
+**Consider the following statements regarding the current Vice President of India:**
+**Statement 1:** Chandrapuram Ponnusami (C.P.) Radhakrishnan is the Vice President of India, took charge on 12th September 2025.
+**Statement 2:** Unlike the Presidential election, the electoral college for the Vice President includes nominated members of both Houses of Parliament.
+Which of the statements above is/are **correct**?
+A: Both Statements 1 and 2 are correct
+B: Only statement 1 is correct
+C: Neither Statement 1 nor 2 is correct
+D: Only statement 2 is correct
+solution:
+C.P. Radhakrishnan won the Vice-Presidential election of 9 September 2025 (after Jagdeep Dhankhar resigned) and took the oath as the 15th Vice President on 12 September 2025. Statement 1 is correct.
+
+Under Article 66 the Vice President is elected by all members of both Houses, elected and nominated. The President's electoral college (Article 54) has only the elected members of Parliament and of the State and UT assemblies. Statement 2 is correct.
+
+=== 121
+subject: Economics
+chapter: National Income, Growth and Development Indicators
+subtopic: Industrial and Manufacturing Policy
+difficulty: EASY
+answer: D
+stem:
+Which of the following was a primary objective of '**Liberalization**' within the New Economic Policy (NEP) of 1991?
+A: Strengthening the MRTP Act to restrict the expansion of large business houses.
+B: Expanding the list of industries reserved exclusively for the public sector.
+C: Increasing the peak customs duty on imports to protect domestic industries.
+D: Abolishing industrial licensing for most industries to encourage private entry.
+solution:
+The 1991 Industrial Policy abolished licensing for all but a few industries (18, later fewer), cut the list reserved for the public sector, diluted the MRTP Act's asset limits and lowered customs duties. Options A, B and C describe the opposite of liberalisation.
+
+=== 122
+subject: Geography
+chapter: Indian Geography — Economy, Resources and Transport
+subtopic: Minerals and Mining
+difficulty: MODERATE
+answer: A
+stem:
+Which of the following pairs of minerals and its leading producing state in India is **correctly** matched?
+A: Bauxite – Odisha
+B: Copper – Uttar Pradesh
+C: Mica – Rajasthan
+D: Limestone – Jharkhand
+solution:
+Odisha is India's leading bauxite producer (Koraput, Kalahandi and the Panchpatmali deposits). Copper is led by Madhya Pradesh (Malanjkhand) and Rajasthan (Khetri), not Uttar Pradesh; mica by Andhra Pradesh; limestone by Rajasthan, with Madhya Pradesh and Andhra Pradesh next.
+
+=== 123
+subject: Polity
+chapter: Indian Constitution — Making, Foundation and Amendments
+subtopic: Features, Parts and Schedules of Constitution
+difficulty: EASY
+answer: A
+stem:
+**Match List-I (Schedules) with List-II (Provisions/Functionaries) and select the correct answer using the codes given below:**
+
+| **List-I (Schedule)** | **List-II (Specific Provisions/Functionaries)** |
+|---|---|
+| A. Second Schedule | 1. Forms of Oaths for Union Ministers and Judges of SC/HC |
+| B. Third Schedule | 2. Emoluments and Privileges of the President and Governors |
+| C. Fourth Schedule | 3. Allocation of seats in the Council of States (Rajya Sabha) |
+| D. Seventh Schedule | 4. Division of legislative powers between the Union and State governments |
+A: A-2, B-1, C-3, D-4
+B: A-2, B-3, C-1, D-4
+C: A-4, B-1, C-3, D-2
+D: A-1, B-2, C-4, D-3
+solution:
+Second Schedule: emoluments, allowances and privileges of the President, Governors, judges and others (A-2).
+
+Third Schedule: forms of oaths and affirmations, including those of Union ministers and judges (B-1).
+
+Fourth Schedule: allocation of Rajya Sabha seats to States and UTs (C-3).
+
+Seventh Schedule: Union, State and Concurrent Lists, the division of legislative powers (D-4).
+
+=== 124
+subject: Current Affairs
+chapter: Awards, Honours, Books and Culture
+subtopic: Books, Literature and Authors
+difficulty: MODERATE
+answer: A
+stem:
+Who was awarded the 2025 Pulitzer Prize for Fiction for a novel that serves as a provocative and satirical reimagining of the life of Jim from Mark Twain's 'Adventures of Huckleberry Finn'?
+A: Percival Everett
+B: Colson Whitehead
+C: Paul Lynch
+D: Hernan Diaz
+solution:
+Percival Everett won the 2025 Pulitzer Prize for Fiction for "James", which retells Huckleberry Finn from the side of Jim. Colson Whitehead won the fiction Pulitzer in 2017 and 2020, Hernan Diaz in 2023 ("Trust"), and Paul Lynch won the 2023 Booker Prize ("Prophet Song").
+
+=== 125
+subject: History
+chapter: Ancient India
+subtopic: Temple and Rock-Cut Architecture
+difficulty: EASY
+answer: B
+stem:
+Which historical process is best reflected by the evolution of temple architecture in India?
+A: Decline of indigenous art
+B: Continuous interaction of religion and regional styles
+C: Sudden cultural change
+D: Foreign architectural dominance
+solution:
+Indian temple architecture grew gradually, from the simple flat-roofed Gupta shrines to the Nagara, Dravida and Vesara styles, as religious practice met regional traditions and dynasties' patronage. It shows a continuous interaction of religion and regional styles, not decline, sudden change or foreign dominance.
+
+=== 126
+subject: Current Affairs
+chapter: Sports
+subtopic: Other Sports and Personalities
+difficulty: MODERATE
+answer: C
+stem:
+India hosted the 2025 Men's FIH Hockey Junior World Cup. Which of the following correctly states the location, host city name, and timing of this event?
+A: Bhubaneswar, Odisha, from November 15 to November 30, 2025
+B: Lucknow, Uttar Pradesh, from December 1 to December 15, 2025
+C: Chennai and Madurai, Tamil Nadu, from November 28 to December 10, 2025
+D: New Delhi, at Major Dhyan Chand National Stadium, from December 20 to December 31, 2025
+solution:
+The FIH Hockey Men's Junior World Cup 2025, the first with 24 teams, was held in Tamil Nadu at Chennai and Madurai from 28 November to 10 December 2025. Bhubaneswar hosted the 2021 edition and Lucknow the 2016 edition.
+
+=== 127
+subject: Current Affairs
+chapter: Science and Technology
+subtopic: Space Technology and Astronomy
+difficulty: MODERATE
+answer: C
+stem:
+**Read the below statements:**
+**1.** NASA launched a space telescope, SPHEREx, to study the universe's "cosmic glow".
+**2.** The Major Atmospheric Cherenkov Experiment (MACE) telescope was inaugurated at Hanle, Ladakh.
+Which of the above statements is/are **correct?**
+A: Only statement 2
+B: Neither statement 1 nor 2
+C: Statement 1 and 2 both
+D: Only statement 1
+solution:
+SPHEREx, launched by NASA in March 2025, maps the whole sky in near-infrared light and measures the faint collective glow of all galaxies (the cosmic glow) to study the early universe and the origin of galaxies. Statement 1 is correct.
+
+MACE, built by BARC and the largest imaging Cherenkov gamma-ray telescope in Asia, was inaugurated in October 2024 at Hanle, Ladakh, at about 4,270 m. Statement 2 is correct.
+
+=== 128
+subject: Current Affairs
+chapter: National Events, Persons and India General Knowledge
+subtopic: National Days, Festivals and Observances
+difficulty: MODERATE
+answer: D
+stem:
+Which of the following statements regarding 'Navroz' (Nowruz) is **correct**?
+A: It is a lunar-based festival celebrated exclusively by the Buddhist community in the Himalayan belt.
+B: It marks the start of the harvest season in Southern India and is dedicated to the Sun God.
+C: It is a monsoon festival commemorating the victory of Good over Evil in the Mughal courts.
+D: It is the Persian New Year celebrated on the Spring Equinox, introduced in India by Ghiyasuddin Balban.
+solution:
+Navroz is the Persian (Iranian) New Year, celebrated at the spring (vernal) equinox around 21 March, and by Parsis in India. Balban, who modelled his court on Persian traditions, is credited with introducing the Navroz celebration at the Delhi Sultanate court. It is not Buddhist, a southern harvest festival or a monsoon festival.
+
+=== 129
+subject: Polity
+chapter: Government Structure — Parliament, Judiciary and Constitutional Bodies
+subtopic: Statutory Bodies and Post-Independence Legislation
+difficulty: MODERATE
+answer: A
+stem:
+Regarding 'Hit and Run' cases under Section 106(2) of the Bharatiya Nyaya Sanhita, 2023 (BNS), what is the maximum punishment if an offender causes death by rash and negligent driving and fails to inform a 'police officer' or 'Magistrate'?
+A: Imprisonment up to 10 years and a fine
+B: Life imprisonment
+C: Imprisonment up to 7 years and a fine
+D: Imprisonment up to 5 years and a fine
+solution:
+BNS Section 106(2): whoever causes death by rash and negligent driving and escapes without reporting it to a police officer or Magistrate soon after the incident is punishable with imprisonment up to 10 years and a fine. Causing death by negligence in general (106(1)) carries up to 5 years.
+
+=== 130
+subject: History
+chapter: Modern India
+subtopic: Indian Literature, Poets and Cultural Figures
+difficulty: EASY
+answer: A
+stem:
+Dr. Bhupen Hazarika is famously known by which of the following titles, reflecting his deep connection to the geography and spirit of Assam?
+A: Bard of Brahmaputra
+B: Son of Brahmaputra
+C: Kala Guru of Assam
+D: Voice of Brahmaputra
+solution:
+Bhupen Hazarika, the Assamese singer, composer and Bharat Ratna (2019), is called the "Bard of the Brahmaputra" (also Sudhakantha). "Kala Guru" is the title of Bishnu Prasad Rabha.
+
+=== 131
+chapter: Operating System and Software
+subtopic: Types of Software
+difficulty: HARD
+answer: D
+stem:
+Which mechanism handles the "Object Linking" in OLE by maintaining a persistent connection to a remote server's CLSID?
+A: Binary Large Object (BLOB) indexing
+B: Abstract Window Toolkit (AWT)
+C: Simple Mail Transfer Protocol (SMTP)
+D: Component Object Model (COM)
+solution:
+OLE (Object Linking and Embedding) is built on Microsoft's Component Object Model. COM identifies each server application by its class identifier (CLSID) and keeps the link between the container document and the source object. BLOB is a database data type, AWT a Java GUI toolkit and SMTP an e-mail protocol.
+
+=== 132
+chapter: Operating System and Software
+subtopic: Keyboard Shortcuts
+difficulty: MODERATE
+answer: A
+stem:
+In Windows 10/11, which shortcut key combination allows a user to cycle through apps on the Taskbar in the order they are pinned?
+A: Windows Key + T
+B: Alt + Tab
+C: Windows Key + Tab
+D: Ctrl + Alt + Tab
+solution:
+Windows key + T moves the focus to the taskbar and each further press cycles through its apps in taskbar order. Alt + Tab switches between open windows in recent-use order, Windows key + Tab opens Task View, and Ctrl + Alt + Tab keeps the Alt + Tab switcher open.
+
+=== 133
+chapter: Computer Networks
+subtopic: Network Models and Protocols
+difficulty: EASY
+answer: C
+stem:
+In the OSI model, which layer is responsible for routing packets across different networks using logical addressing?
+A: Data Link Layer
+B: Session Layer
+C: Network Layer
+D: Transport Layer
+solution:
+The Network layer (layer 3) routes packets between networks using logical (IP) addresses. The Data Link layer uses physical (MAC) addresses within one link, the Transport layer handles end-to-end delivery, and the Session layer manages sessions.
+
+=== 134
+chapter: MS Office
+subtopic: MS Excel
+difficulty: EASY
+answer: A
+stem:
+In Excel, which function would you use to count the number of cells in a range that meet a specific condition?
+A: =COUNTIF(A1:A10, ">10")
+B: =COUNTBLANK(A1:A10)
+C: =COUNT(A1:A10)
+D: =SUMIF(A1:A10, ">10")
+solution:
+COUNTIF counts the cells in a range that meet one criterion, here values above 10. COUNTBLANK counts empty cells, COUNT counts all numeric cells, and SUMIF adds the matching values rather than counting them.
+
+=== 135
+chapter: Cyber Security
+subtopic: Protection and Security Tools
+difficulty: EASY
+answer: A
+stem:
+Which of the following is a secure method for encrypting emails to protect the content from unauthorized access?
+A: S/MIME
+B: IMAP
+C: SSL
+D: SMTP
+solution:
+S/MIME (Secure/Multipurpose Internet Mail Extensions) encrypts and digitally signs the e-mail message itself using public-key certificates. IMAP and SMTP are mail access and sending protocols, and SSL protects a connection in transit, not the message content.
+
+=== 136
+chapter: Computer Hardware
+subtopic: CPU and Its Components
+difficulty: EASY
+answer: C
+stem:
+During the Instruction Cycle, which specific register holds the instruction that is currently being decoded and executed by the CPU?
+A: Memory Address Register (MAR)
+B: Program Counter (PC)
+C: Instruction Register (IR)
+D: Accumulator (AC)
+solution:
+The Instruction Register holds the instruction fetched from memory while it is decoded and executed. The PC holds the address of the next instruction, the MAR holds the memory address being accessed, and the accumulator holds data and results.
+
+=== 137
+chapter: MS Office
+subtopic: MS PowerPoint
+difficulty: MODERATE
+answer: B
+stem:
+A text box moves out of place when content is edited during a presentation.Which design mistake MOST likely caused this?
+A: Using default layout
+B: Not using placeholders
+C: Using placeholders instead of text boxes
+D: Slide Master modification
+solution:
+Placeholders are fixed by the slide layout and Slide Master, so their position and formatting stay consistent when text is edited. A manually drawn text box is not tied to the layout and can shift or resize as its content changes. So the likely mistake is not using placeholders.
+
+=== 138
+chapter: Computer Hardware
+subtopic: CPU and Its Components
+difficulty: MODERATE
+answer: B
+stem:
+What is the primary architectural advantage of a Microprogrammed Control Unit over a Hardwired one?
+A: Lower power consumption
+B: Ease of instruction set updates
+C: Faster execution speed
+D: Reduced physical gate count
+solution:
+A microprogrammed control unit generates control signals from microcode stored in control memory, so instructions can be added or changed by rewriting the microprogram. That flexibility is its main advantage. A hardwired control unit is faster; the microprogrammed one is slower because of control-memory access.
+
+=== 139
+chapter: MS Office
+subtopic: MS Excel
+difficulty: EASY
+answer: D
+stem:
+A teacher wants to view only students who scored above 75 marks without deleting other records.Which Excel tool is best?
+A: Remove Duplicates
+B: Freeze Panes
+C: Sort
+D: Filter
+solution:
+Filter (for example a number filter "greater than 75") hides the rows that do not match without deleting them. Sort only reorders rows, Freeze Panes keeps rows or columns visible while scrolling, and Remove Duplicates deletes rows.
+
+=== 140
+chapter: MS Office
+subtopic: MS Excel
+difficulty: EASY
+answer: C
+stem:
+In Excel's "Edit Mode," which keyboard shortcut allows you to insert a manual line break within a single cell to manage long text strings or multi-line formulas?
+A: Ctrl + Enter
+B: Shift + Enter
+C: Alt + Enter
+D: Tab + Enter
+solution:
+Alt + Enter inserts a line break inside the cell being edited. Ctrl + Enter fills the entry into all selected cells and stays put, Shift + Enter confirms and moves up a cell.
+
+=== 141
+chapter: Cyber Security
+subtopic: Malware and Viruses
+difficulty: EASY
+answer: A
+stem:
+What is the main purpose of a Trojan horse in network and information security?
+A: To steal or delete files and create a backdoor for hackers
+B: To intercept network traffic by flooding communication channels
+C: To block network traffic by overwhelming servers
+D: To silently copy itself to other systems using network vulnerabilities
+solution:
+A Trojan horse poses as legitimate software and, once run, steals or deletes data and often opens a backdoor for remote access. It does not replicate itself; self-copying across networks is a worm, and flooding or overwhelming servers is a denial-of-service attack.
+
+=== 142
+chapter: Computer Hardware
+subtopic: Ports and Connectors
+difficulty: MODERATE
+answer: D
+stem:
+In asynchronous serial communication, what is the role of "Hardware Handshaking" (e.g., using RTS/CTS lines)?
+A: To synchronize the internal clocks of both devices
+B: To encrypt data before transmission
+C: To provide error detection using parity bits
+D: To prevent data loss by managing buffer overflow
+solution:
+RTS/CTS handshaking is flow control: the receiver drops its Clear To Send line when its buffer is full, so the sender pauses and no data is lost to buffer overflow. Asynchronous links share no clock, parity bits do error detection, and handshaking does no encryption.
+
+=== 143
+chapter: Internet and E-mail
+subtopic: Downloading and Uploading
+difficulty: EASY
+answer: B
+stem:
+What is the main purpose of using a file compression technique before uploading to cloud storage?
+A: To convert the file into a secure format
+B: To reduce the file size and save storage space
+C: To encrypt the file
+D: To make the file readable across different devices
+solution:
+Compression (ZIP, RAR and similar) shrinks the file, saving storage space and upload time and bandwidth. It is not encryption or a security or compatibility conversion.
+
+=== 144
+chapter: MS Office
+subtopic: MS Word
+difficulty: MODERATE
+answer: B
+stem:
+When a user creates a 'Section Break (Next Page)' in a long document, which of the following attributes can be uniquely modified for the new section without affecting the previous one?
+A: The 'AutoCorrect' replacement list
+B: Page orientation and margin settings
+C: The font face of the 'Normal' style
+D: The document’s 'Properties' metadata
+solution:
+Page-layout settings such as orientation, margins, paper size, columns, headers and footers and page numbering are stored per section, so a section break lets them differ. Styles, document properties and AutoCorrect apply to the whole document or the application.
+
+=== 145
+chapter: Cyber Security
+subtopic: Protection and Security Tools
+difficulty: EASY
+answer: A
+stem:
+What is the primary benefit of enabling encryption for data in transit on a network?
+A: It ensures that data is unreadable to attackers during transmission
+B: It protects against physical theft of devices
+C: It improves the overall speed of data transfer
+D: It prevents unauthorized users from accessing the network
+solution:
+Encrypting data in transit (TLS, VPN and similar) means anyone who intercepts the traffic sees only unreadable ciphertext. It does not stop physical theft (that is encryption at rest), does not speed transfer, and network access control is done by authentication, not by encrypting the traffic.
+
+=== 146
+chapter: MS Office
+subtopic: MS Word
+difficulty: MODERATE
+answer: A
+stem:
+You are editing a 50-page thesis. The heading font size changes automatically whenever you modify one heading. You want **only the selected heading to change**, not all similar headings.What should you do?
+A: Apply Direct Formatting
+B: Use Format Painter
+C: Modify the Style
+D: Change the Theme
+solution:
+All headings change together because they share a style that updates when one is modified. Applying direct (manual) formatting to the selected heading changes only that text. Modifying the style or the theme changes every heading; Format Painter copies formatting from one place to another.
+
+=== 147
+chapter: Computer Hardware
+subtopic: Ports and Connectors
+difficulty: HARD
+answer: A
+stem:
+When comparing HDMI and DisplayPort, which feature is unique to the DisplayPort architecture?
+A: Daisy Chaining (MST)
+B: Ethernet over cable
+C: TMDS signaling
+D: Uncompressed audio
+solution:
+DisplayPort's Multi-Stream Transport lets several monitors be daisy-chained from one port; HDMI has no such feature. HDMI (from version 1.4) carries an Ethernet channel, uses TMDS signalling (DisplayPort uses packetised micro-packets), and both carry uncompressed audio.
+
+=== 148
+chapter: Computer Hardware
+subtopic: Memory and Storage Devices
+difficulty: EASY
+answer: A
+stem:
+A computer system has a memory capacity of \(4\text{K} \times 8\) bits. How many address lines are required on the address bus to identify every byte in this memory uniquely?
+A: 12 lines
+B: 8 lines
+C: 10 lines
+D: 16 lines
+solution:
+\(4\text{K} = 4 \times 1024 = 4096 = 2^{12}\) locations, each 8 bits (one byte).
+
+n address lines address \(2^n\) locations, so \(2^n = 2^{12}\) gives n = 12.
+
+Check: 10 lines give only 1024 locations, too few; 16 give 65536, more than needed.
+
+=== 149
+chapter: Computer Hardware
+subtopic: Backup Devices
+difficulty: HARD
+answer: A
+stem:
+In enterprise storage, how does a "Copy-on-Write" (CoW) snapshot differ from a traditional backup?
+A: It only stores pointers to data blocks until those blocks are modified.
+B: It is stored on a physically separate secondary device.
+C: It requires the system to be offline during the process.
+D: It creates a full bit-by-bit clone of the data immediately.
+solution:
+A copy-on-write snapshot is taken almost instantly by recording pointers to the existing blocks; a block's original is copied only when it is about to be overwritten. A traditional backup makes a full copy, usually to a separate device. Snapshots need no downtime and do not clone everything up front.
+
+=== 150
+chapter: Cyber Security
+subtopic: Protection and Security Tools
+difficulty: EASY
+answer: C
+stem:
+Which of the following is a limitation of using symmetric encryption for securing communications?
+A: It requires more computational resources than asymmetric encryption
+B: The encryption and decryption process is too slow
+C: Key distribution and management become challenging
+D: It cannot be used for data at rest
+solution:
+In symmetric encryption both sides share one secret key, which must be exchanged securely, and each pair of users needs its own key, so key distribution and management are the main problem. Symmetric ciphers are faster and lighter than asymmetric ones and are widely used for data at rest.
