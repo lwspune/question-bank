@@ -9,13 +9,16 @@ colour of the option text, so this file holds the key: like questions.json, it i
 shown to a drafting agent. Images narrower than ICON_W at the left margin are the tick and
 cross icons beside the options; they carry the key too and are not saved.
 """
+import hashlib
 import json
+import re
 import os
 import sys
 
 import fitz  # PyMuPDF
+from PIL import Image
 
-ICON_W = 20
+ICON_W = 22  # the CGL 2019 Tier II print draws its tick and cross 20.4 pt wide
 
 
 def is_scan(page, blocks):
@@ -53,6 +56,77 @@ def scan_marks(page, pno):
              "x1": round(60 + m["x1"] / z, 1), "y1": round(m["y1"] / z, 1)} for m in marks if m["_n"] >= 8]
 
 
+DO = re.compile(rb"/([^\s/<>\[\]()]+)\s+Do\b")
+
+
+def drawn_images(doc, page):
+    """The page's image XObjects in DRAWING order, following Form XObjects (the CGL 2024 Tier II
+    print draws each page inside one). PyMuPDF's own image-to-place mapping goes by content
+    digest, so two pictures sharing a base image (a solid black block whose glyphs live in its
+    soft mask, every option of 20 Jan 2025 Q19) come back as the same object; the Do order does
+    not."""
+    names = {}  # (referencer xref, name) -> ("image" | "form", xref)
+    for im in page.get_images(full=True):
+        names[(im[9], im[7])] = ("image", im[0])
+    for xo in page.get_xobjects():
+        names[(xo[2], xo[1])] = ("form", xo[0])
+    out = []
+
+    def walk(stream, referencer):
+        for m in DO.finditer(stream):
+            hit = names.get((referencer, m.group(1).decode("latin1")))
+            if not hit:
+                continue
+            kind, xref = hit
+            if kind == "form":
+                walk(doc.xref_stream(xref), xref)
+            else:
+                out.append(xref)
+
+    for c in page.get_contents():
+        walk(doc.xref_stream(c), 0)
+    return out
+
+
+def page_image_xrefs(doc, page, blocks):
+    """Each picture block of the page, in order, paired with the image object drawn there, and
+    the drawn objects left unpaired (a hosting site's header logo can report a different size)."""
+    # An INLINE image (BI .. EI: this print's cross icons) is a picture block with no Do, so a
+    # block whose size is not the next drawn object's is skipped as inline; every drawn object
+    # must still find its block, in order.
+    pics = [b for b in blocks if b["type"] == 1]
+    xrefs = drawn_images(doc, page)
+    sizes = [(doc.extract_image(x)["width"], doc.extract_image(x)["height"]) for x in xrefs]
+    pairing, k = {}, 0
+    for b in pics:
+        if k < len(xrefs) and sizes[k] == (b.get("width"), b.get("height")):
+            pairing[id(b)] = xrefs[k]
+            k += 1
+    return pairing, xrefs[k:]
+
+
+def save_image(doc, b, xref, path):
+    """Save one picture. One with a soft mask (black glyphs on a transparent ground) is saved
+    through its mask onto white; saved raw it is a solid black box (20 Jan 2025 Q19, Q25)."""
+    smask = doc.extract_image(xref).get("smask", 0) if xref else 0
+    if smask:
+        base = fitz.Pixmap(doc, xref)
+        if base.n - base.alpha > 3:
+            base = fitz.Pixmap(fitz.csRGB, base)
+        if base.alpha:
+            base = fitz.Pixmap(base, 0)
+        rgba = fitz.Pixmap(base, fitz.Pixmap(doc, smask))
+        img = Image.frombytes("RGBA", (rgba.width, rgba.height), rgba.samples)
+        flat = Image.new("RGB", img.size, "white")
+        flat.paste(img, mask=img.split()[3])
+        flat.save(path)
+        return
+    pix = fitz.Pixmap(b["image"])
+    if pix.n - pix.alpha > 3:
+        pix = fitz.Pixmap(fitz.csRGB, pix)
+    pix.save(path)
+
+
 def main():
     if len(sys.argv) < 3:
         sys.exit("usage: tcs_extract.py <dayId> <pdfPath> [--pages=FROM-TO]")
@@ -64,10 +138,29 @@ def main():
     os.makedirs(img_dir, exist_ok=True)
     doc = fitz.open(pdf)
     spans, images, icons, panels, frames, marks = [], [], [], [], [], []
+    unpaired_masked = []
+    # A hosting site's branding (Prepp's header logo and address on every page of the CGL 2019
+    # Tier II copy) is the same picture BYTES on page after page: never a question's picture,
+    # though small enough to pass for one. Found by content, before the main pass.
+    seen_on = {}
+    for pno, page in enumerate(doc):
+        if not first - 1 <= pno <= last - 1:
+            continue
+        for b in page.get_text("dict")["blocks"]:
+            if b["type"] == 1:
+                seen_on.setdefault(hashlib.md5(b["image"]).hexdigest(), set()).add(pno)
+    branding = {h for h, pages in seen_on.items() if len(pages) >= 5}
+    branded = 0
     for pno, page in enumerate(doc):
         if not first - 1 <= pno <= last - 1:
             continue
         blocks = page.get_text("dict")["blocks"]
+        pairing, unpaired = page_image_xrefs(doc, page, blocks)
+        # A soft-masked object left unpaired would be saved raw, i.e. as a black box: report it.
+        for x in unpaired:
+            if doc.extract_image(x).get("smask"):
+                info = doc.extract_image(x)
+                unpaired_masked.append(f"page {pno}: masked picture {info['width']}x{info['height']} not paired, saved raw")
         if is_scan(page, blocks):
             marks += scan_marks(page, pno)
         k = 0
@@ -85,7 +178,8 @@ def main():
         for b in blocks:
             if b["type"] == 1:
                 x0, y0, x1, y1 = b["bbox"]
-                if x1 - x0 < ICON_W and y1 - y0 < 16:
+                icon_sized = x1 - x0 < ICON_W and y1 - y0 < 16
+                if icon_sized:
                     # Tick/cross icons: kept apart, with pixel size (the 2022 vector print
                     # draws its tick 84x84 and its cross 31x21, so the size IS the key).
                     icons.append({"page": pno, "x0": round(x0, 1), "y0": round(y0, 1), "x1": round(x1, 1), "y1": round(y1, 1),
@@ -93,13 +187,15 @@ def main():
                     if x0 < 90:
                         continue
                 name = f"p{pno:03d}_{k:02d}.png"
-                k += 1
+                k += 1  # numbered even when skipped below, so no other picture's name moves
+                # A tick or cross repeats on every page by nature, and beside the label (CGL 2020's
+                # print) it IS the key: never branding.
+                if not icon_sized and hashlib.md5(b["image"]).hexdigest() in branding:
+                    branded += 1
+                    continue
                 path = os.path.join(img_dir, name)
                 if not os.path.exists(path):
-                    pix = fitz.Pixmap(b["image"])
-                    if pix.n - pix.alpha > 3:
-                        pix = fitz.Pixmap(fitz.csRGB, pix)
-                    pix.save(path)
+                    save_image(doc, b, pairing.get(id(b), 0), path)
                 images.append({"page": pno, "name": name, "x0": round(x0, 1), "y0": round(y0, 1), "x1": round(x1, 1), "y1": round(y1, 1)})
                 continue
             for line in b["lines"]:
@@ -117,6 +213,13 @@ def main():
     with open(os.path.join(out_dir, "geometry.json"), "w", encoding="utf8") as f:
         json.dump({"format": "tcs", "pdf": os.path.basename(pdf), "pages": doc.page_count, "spans": spans, "images": images,
                    "icons": icons, "panels": panels, "frames": frames, "marks": marks}, f, ensure_ascii=False)
+    if branded:
+        print(f"  branding pictures dropped (same picture on 5+ pages): {branded}")
+    sizes = {}
+    for u in unpaired_masked:
+        sizes[u.split("masked picture ")[1].split(" ")[0]] = sizes.get(u.split("masked picture ")[1].split(" ")[0], 0) + 1
+    if sizes:
+        print(f"  ! unpaired masked pictures by size (a header logo repeats on every page; anything else needs a look): {sizes}")
     print(f"{day}: {doc.page_count} pages, {len(spans)} spans, {len(images)} images, {len(icons)} icons, {len(panels)} panels, {len(frames)} frames, {len(marks)} scan marks -> {out_dir}")
 
 

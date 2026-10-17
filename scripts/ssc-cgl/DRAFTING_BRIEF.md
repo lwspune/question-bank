@@ -29,6 +29,34 @@ printed, put any words you infer in square brackets, and add `flawed: yes` with 
 Parts of a jumbled sentence printed "A:" to "E:" are written "A." to "E." (a stem line that
 starts "A:" to "D:" is read as an option).
 
+**Tier II Paper 1 (`t2-...`) is 150 questions in five parts**, each printed as a "Module" that
+restarts at Q.1; you write the red label's number, 1-150:
+
+| part | numbers | module | subject |
+|---|---|---|---|
+| A | 1-30 | Mathematical Abilities | Quantitative Aptitude |
+| B | 31-60 | Reasoning and General Intelligence | Reasoning |
+| C | 61-105 | English Language and Comprehension | English |
+| D | 106-130 | General Awareness | name it: `subject:` as PART-B below |
+| E | 131-150 | Computer Knowledge | Computer Knowledge |
+
+**Before CGL 2022** (`t2-2020-11-15`, `t2-2022-01-29`, `t2-2022-02-03`, `t2-2022-08-08`) Paper 1
+was **Quantitative Abilities alone**: one PART-A of 100 questions, Quantitative Aptitude, no
+`subject:` line. The CGL 2019 sheet (`t2-2020-11-15`) carries the host's "prepp" watermark (ignore
+it); its candidate read some questions in Hindi, so those print in Hindi only: write your English
+rendering with `flawed: yes` and a note, as the brief says above.
+
+So in Tier II the `subject:` line belongs to **PART-D**, not B. The 2024 print (`t2-2025-...`) is
+the text print above, with `text.txt`, but it hides a strip at the top and bottom of each page:
+a question starting at a page top can lose its first lines, and a picture there renders blank
+or cut off. So every question's pictures follow its crop as "stem picture" / "option N
+picture, as stored in the file" (SSC's own, in printed order): transcribe from them. Text the
+crop lost is in `text.txt` (SSC's text layer): take it from there and add a `note:` saying so.
+The CGL 2025 sheet (`t2-2026-01-18-s1`) is a SCAN: no `text.txt`, type everything from the
+sheet. Its option numbers "1." to "4." are stamped by us at one place (the printed ones were
+removed); a long option may print its text on the line below its number. Difficulty on the **Tier II scale**: graduate level, a step above Tier I, so an
+item Tier I would call MODERATE is often EASY here; HARD is long working, rare words or obscure facts.
+
 ## Rules
 
 1. **Never open** `questions.json`, `geometry.json`, `rows.json` or anything else under

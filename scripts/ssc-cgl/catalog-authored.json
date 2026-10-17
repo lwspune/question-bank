@@ -1,6 +1,15 @@
 {
   "_comment": "The SSC-only half of the catalog. seed-catalog.ts merges it with the names copied from CDS (Mathematics -> Quantitative Aptitude, English, and the eight GK subjects) and writes catalog.json. 'subjects' adds whole subjects; 'add' appends chapters or subtopics to a copied subject. Extend this file, never catalog.json, when a question fits nothing.",
   "subjects": {
+    "Computer Knowledge": [
+      { "chapter": "Computer Fundamentals", "subtopics": ["History and Generations of Computers", "Types of Computers", "Number Systems and Data Representation", "Computer Terminology and Abbreviations"] },
+      { "chapter": "Computer Hardware", "subtopics": ["CPU and Its Components", "Memory and Storage Devices", "Input and Output Devices", "Ports and Connectors", "Backup Devices"] },
+      { "chapter": "Operating System and Software", "subtopics": ["Types of Software", "Operating System Functions", "Windows Explorer and File Management", "Keyboard Shortcuts", "Programming Languages and Translators"] },
+      { "chapter": "MS Office", "subtopics": ["MS Word", "MS Excel", "MS PowerPoint", "MS Access and Outlook"] },
+      { "chapter": "Internet and E-mail", "subtopics": ["Web Browsing and Search", "Downloading and Uploading", "E-mail", "E-banking and Online Services", "Internet Protocols and Addresses"] },
+      { "chapter": "Computer Networks", "subtopics": ["Network Types and Topologies", "Network Devices", "Network Models and Protocols"] },
+      { "chapter": "Cyber Security", "subtopics": ["Malware and Viruses", "Hacking and Cyber Threats", "Protection and Security Tools"] }
+    ],
     "Reasoning": [
       { "chapter": "Analogy", "subtopics": ["Word Analogy", "Letter Analogy", "Number Analogy", "Number Set Analogy"] },
       { "chapter": "Classification", "subtopics": ["Word Classification", "Letter Classification", "Number Classification"] },
@@ -14,7 +23,7 @@
       { "chapter": "Order, Ranking and Arrangement", "subtopics": ["Ranking and Position", "Linear and Circular Seating", "Scheduling and Puzzles"] },
       { "chapter": "Syllogism", "subtopics": ["Two-Statement Syllogism", "Three-Statement Syllogism"] },
       { "chapter": "Venn Diagrams", "subtopics": ["Logical Venn Diagrams", "Counting from a Venn Diagram"] },
-      { "chapter": "Statement-Based Reasoning", "subtopics": ["Statement and Conclusions", "Statement and Assumptions", "Cause, Effect and Courses of Action"] },
+      { "chapter": "Statement-Based Reasoning", "subtopics": ["Statement and Conclusions", "Statement and Assumptions", "Cause, Effect and Courses of Action", "Inferences", "Statement and Arguments"] },
       { "chapter": "Missing Number", "subtopics": ["Missing Number in Figures", "Missing Number in Grids"] },
       { "chapter": "Alphabet and Number Tests", "subtopics": ["Dictionary Order", "Word Formation", "Letter Position and Alphabet Test", "Digit Operations", "Address and Data Matching"] },
       { "chapter": "Mirror and Water Images", "subtopics": ["Mirror Images", "Water Images"] },
@@ -23,7 +32,9 @@
       { "chapter": "Figure Counting", "subtopics": ["Counting Triangles", "Counting Squares and Other Figures"] },
       { "chapter": "Non-Verbal Series and Analogy", "subtopics": ["Figure Series", "Figure Analogy", "Figure Classification"] },
       { "chapter": "Dice and Cubes", "subtopics": ["Opposite Faces of a Dice", "Cube Painting and Cutting", "Cube Nets"] },
-      { "chapter": "Calendar and Clock", "subtopics": ["Calendar", "Clock"] }
+      { "chapter": "Calendar and Clock", "subtopics": ["Calendar", "Clock"] },
+      { "chapter": "Data Sufficiency", "subtopics": ["Data Sufficiency"] },
+      { "chapter": "Logical Sequence of Words", "subtopics": ["Logical Sequence of Words"] }
     ]
   },
   "rename": { "Mathematics": "Quantitative Aptitude" },
@@ -31,7 +42,9 @@
     "English": [{ "chapter": "Vocabulary", "subtopics": ["One-Word Substitution"] }],
     "Quantitative Aptitude": [
       { "chapter": "Coordinate Geometry", "subtopics": ["Lines, Distance and Area", "Section Formula and Centroid"] },
-      { "chapter": "Mensuration 3D", "subtopics": ["Prisms and Pyramids"] }
+      { "chapter": "Mensuration 3D", "subtopics": ["Prisms and Pyramids"] },
+      { "chapter": "Statistics", "subtopics": ["Mode of Ungrouped Data"] },
+      { "chapter": "Probability", "subtopics": ["Classical Probability", "Independent and Mutually Exclusive Events"] }
     ]
   }
 }

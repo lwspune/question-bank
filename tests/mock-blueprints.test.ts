@@ -15,6 +15,7 @@ import {
   MH_HSC_12_CHAPTER_MCQ_PAPER,
   MH_SSC_10_CHAPTER_MCQ_PAPER,
   MH_SSC_10_HUMANITIES_MCQ_PAPER,
+  SSC_CGL_T1_PAPER,
   getBlueprint,
   totalQuestions,
   totalMarks,
@@ -265,6 +266,34 @@ describe("JEE Mains Paper 1", () => {
  * the gap that bites the first consumer. This asserts the list stays complete
  * rather than trusting whoever adds the next paper to remember.
  */
+describe("SSC CGL Tier I", () => {
+  it("is 100 questions, 200 marks, 60 minutes, +2 / -0.5, in the four printed parts of 25", () => {
+    expect(totalQuestions(SSC_CGL_T1_PAPER)).toBe(100);
+    expect(totalMarks(SSC_CGL_T1_PAPER)).toBe(200);
+    expect(SSC_CGL_T1_PAPER.durationSecs).toBe(60 * 60);
+    expect(SSC_CGL_T1_PAPER.marking).toEqual({ correct: 2, wrong: -0.5 });
+    expect(SSC_CGL_T1_PAPER.sections.map((s) => [s.key, s.count])).toEqual([
+      ["reasoning", 25],
+      ["general-awareness", 25],
+      ["quantitative-aptitude", 25],
+      ["english", 25],
+    ]);
+  });
+
+  it("files every SSC CGL bank subject in exactly one section, General Awareness taking the eight", () => {
+    const subjects = SSC_CGL_T1_PAPER.sections.flatMap((s) => s.subjects);
+    expect(new Set(subjects).size).toBe(subjects.length);
+    expect(SSC_CGL_T1_PAPER.sections[1].subjects).toEqual([
+      "History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs",
+    ]);
+  });
+
+  it("is resolvable by getBlueprint but NOT in the NDA discovery list", () => {
+    expect(getBlueprint("ssc-cgl", "tier-1")).toBe(SSC_CGL_T1_PAPER);
+    expect(MOCK_BLUEPRINTS).not.toContain(SSC_CGL_T1_PAPER);
+  });
+});
+
 describe("getBlueprint covers every exported blueprint", () => {
   const ALL = [
     NDA_MATHS_PAPER,
@@ -281,6 +310,7 @@ describe("getBlueprint covers every exported blueprint", () => {
     MH_HSC_12_CHAPTER_MCQ_PAPER,
     MH_SSC_10_CHAPTER_MCQ_PAPER,
     MH_SSC_10_HUMANITIES_MCQ_PAPER,
+    SSC_CGL_T1_PAPER,
   ];
 
   it.each(ALL.map((bp) => [`${bp.examSlug}/${bp.code}`, bp] as const))(

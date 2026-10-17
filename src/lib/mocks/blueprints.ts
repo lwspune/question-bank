@@ -617,6 +617,32 @@ export const UPSC_GS1_PAPER: MockPaperBlueprint = {
   ],
 };
 
+/**
+ * SSC CGL Tier I. 100 questions, 200 marks, 60 minutes, +2 / -0.5, in the four
+ * parts SSC prints (25 each). General Awareness spans the eight subjects the
+ * ingestion files it under (the CDS GK split, scripts/ssc-cgl/config.ts
+ * SECTION_SUBJECTS), so the section is a union of them.
+ */
+export const SSC_CGL_T1_PAPER: MockPaperBlueprint = {
+  code: "tier-1",
+  examName: "SSC CGL",
+  examSlug: "ssc-cgl",
+  paperLabel: "Tier I",
+  durationSecs: 60 * 60,
+  marking: { correct: 2, wrong: -0.5 },
+  sections: [
+    { key: "reasoning", label: "General Intelligence and Reasoning", subjects: ["Reasoning"], count: 25 },
+    {
+      key: "general-awareness",
+      label: "General Awareness",
+      subjects: ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs"],
+      count: 25,
+    },
+    { key: "quantitative-aptitude", label: "Quantitative Aptitude", subjects: ["Quantitative Aptitude"], count: 25 },
+    { key: "english", label: "English Comprehension", subjects: ["English"], count: 25 },
+  ],
+};
+
 export const UPSC_CSAT_PAPER: MockPaperBlueprint = {
   code: "csat",
   examName: "UPSC CSE (Prelims)",
@@ -736,6 +762,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   MPSC_SSP_GS1_PAPER,
   UPSC_GS1_PAPER,
   UPSC_CSAT_PAPER,
+  SSC_CGL_T1_PAPER,
   CBSE_10_CHAPTER_MCQ_PAPER,
   CBSE_12_CHAPTER_MCQ_PAPER,
   MH_HSC_12_CHAPTER_MCQ_PAPER,

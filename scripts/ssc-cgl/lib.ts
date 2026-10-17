@@ -9,7 +9,8 @@
 // extract.py dumps that geometry (cells + markers) and this file turns it into questions.
 
 export type Fill = "G" | "Y" | "R" | "N" | null;
-export type Part = "A" | "B" | "C" | "D";
+/** A paper section, in number order: Tier I A-D (25 each), Tier II A-E (config.ts LAYOUTS). */
+export type Part = "A" | "B" | "C" | "D" | "E";
 export type Label = "A" | "B" | "C" | "D";
 /** One row's left cell, with the content images whose midpoint falls inside the row. */
 export type Cell = { page: number; y0: number; y1: number; fill: Fill; images: string[] };
@@ -168,7 +169,9 @@ export function assembleQuestions(g: Geometry, opts: AssembleOptions = {}): Asse
 //                               the key was adopted on review (judgement items); needs a note
 //   figure: none | stem | options | stem+options   optional, default none
 //   note: <why we differ from the key, or a flaw>   optional
-//   flawed: yes                 optional: keep PRIVATE
+//   flawed: yes                 optional: the question is defective as printed, or we dispute SSC's key
+//   notice: <for students>      required on a flawed block once the key is compared: the line shown
+//                               above its solution (studentSolution), e.g. "SSC printed this in Hindi only"
 //   context_from: <n>           optional: same passage as block <n>
 //   context:                    optional: a passage shared by a set
 //   <lines>
@@ -192,6 +195,8 @@ export type TranscriptQuestion = {
   figure: FigureKind;
   note?: string;
   flawed: boolean;
+  /** Student-facing line shown above the solution of a flawed question (studentSolution). */
+  notice?: string;
   context?: string;
   stem: string;
   options: [string, string, string, string];
@@ -199,7 +204,7 @@ export type TranscriptQuestion = {
 };
 
 const FIGURES: FigureKind[] = ["none", "stem", "options", "stem+options"];
-const HEADER = /^(subject|chapter|subtopic|difficulty|answer|blind|figure|note|flawed|context_from):\s*(.*)$/;
+const HEADER = /^(subject|chapter|subtopic|difficulty|answer|blind|figure|note|flawed|notice|context_from):\s*(.*)$/;
 const OPTION = /^([A-D]):\s?(.*)$/;
 
 type Parsed = TranscriptQuestion & { contextFrom?: number };
@@ -271,12 +276,22 @@ function parseBlock(n: number, lines: string[]): Parsed {
     figure,
     ...(head.note ? { note: head.note } : {}),
     flawed: head.flawed === "yes",
+    ...(head.notice ? { notice: head.notice } : {}),
     ...(context !== undefined ? { context } : {}),
     ...(contextFrom !== undefined ? { contextFrom } : {}),
     stem: stemText,
     options: options as TranscriptQuestion["options"],
     solution,
   };
+}
+
+/**
+ * The solution as students see it: a flawed question's notice first, in bold, so the
+ * defect is the first thing read when the answer is revealed. The bank's `solution`
+ * column takes this (it is outside content_hash, so adding a notice changes no id).
+ */
+export function studentSolution(q: Pick<TranscriptQuestion, "solution" | "notice">): string {
+  return q.notice ? `**Note:** ${q.notice}\n\n${q.solution}` : q.solution;
 }
 
 export function parseTranscript(text: string): TranscriptQuestion[] {
@@ -319,7 +334,7 @@ export function checkShift(
   transcript: TranscriptQuestion[],
   sheet: { number: number; part: Part; key: Label }[],
   catalog: Record<string, { chapter: string; subtopics: string[] }[]>,
-  sections: Record<Part, string[]>,
+  sections: Partial<Record<Part, string[]>>,
   opts: { compareKey?: boolean } = {}
 ): ShiftCheck {
   // compareKey false = a drafting agent's check: catalog and parts only, nothing that
@@ -339,7 +354,7 @@ export function checkShift(
       p("is not in the paper");
       continue;
     }
-    const allowed = sections[s.part];
+    const allowed = sections[s.part] ?? [];
     let subject: string | undefined;
     if (q.subject === undefined) {
       if (allowed.length === 1) subject = allowed[0];
@@ -355,6 +370,7 @@ export function checkShift(
     }
 
     if (!compareKey) continue;
+    if (q.flawed && !q.notice) p("is flawed but carries no notice: line for students");
     if (q.blind !== undefined) {
       if (q.blind === q.answer) p(`blind answer ${q.blind} is the same as the answer: drop the blind: line`);
       else if (!q.note) p(`blind answer ${q.blind} needs a note saying why the key was adopted`);

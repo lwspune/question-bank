@@ -7,35 +7,102 @@ import type { Part } from "./lib";
 export const ORG_ID = "5d528776-1263-4d77-bc12-f2836fd6073f";
 export const CREATED_BY = "28528215-c968-40bf-abac-acdc19cc306f";
 
-export const EXAM_NAME = "SSC CGL";
+export type Tier = 1 | 2;
+const TIER = ["", "I", "II"];
+/**
+ * One exam row per tier (owner, 2026-10-17): the picker shows SSC CGL as a family with
+ * Tier I and Tier II under it. Tier I keeps the original "SSC CGL" row (slug `ssc-cgl`),
+ * so no URL or row moved; Tier II is "SSC CGL Tier II", created by seed-exam.ts --tier=2.
+ */
+export const EXAMS: Record<Tier, { name: string; id: string }> = {
+  1: { name: "SSC CGL", id: "eec6daa8-bea9-4643-a10e-cfb3739be607" },
+  // created by seed-exam.ts --tier=2 on 2026-10-17
+  2: { name: "SSC CGL Tier II", id: "66ab3f31-dbba-4a3d-a15e-7a9bbb7c7613" },
+};
+export const EXAM_NAME = EXAMS[1].name;
 /** `SSC CGL`, created by seed-exam.ts on 2026-10-16, when the pilot shifts were ready to commit. */
-export const EXAM_ID = "eec6daa8-bea9-4643-a10e-cfb3739be607";
-export function requireExamId(): string {
-  if (!EXAM_ID) throw new Error("EXAM_ID is empty: run scripts/ssc-cgl/seed-exam.ts --apply and paste the id into config.ts");
-  return EXAM_ID;
+export const EXAM_ID = EXAMS[1].id;
+export function requireExamId(tier: Tier = 1): string {
+  const id = EXAMS[tier].id;
+  if (!id) throw new Error(`EXAMS[${tier}].id is empty: run scripts/ssc-cgl/seed-exam.ts --tier=${tier} --apply and paste the id into config.ts`);
+  return id;
 }
 
-/**
- * Tier I is four parts of 25. General Awareness is split into the eight subjects
- * CDS General Knowledge uses (owner, 2026-10-16), so a GA question names its own;
- * the other three parts are one subject each.
- */
-export const SECTION_SUBJECTS: Record<Part, string[]> = {
-  A: ["Reasoning"],
-  B: ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs"],
-  C: ["Quantitative Aptitude"],
-  D: ["English"],
-};
-export const SUBJECTS = (): string[] => Object.values(SECTION_SUBJECTS).flat();
+/** General Awareness, split into the eight subjects CDS General Knowledge uses (owner, 2026-10-16). */
+const GA = ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs"];
 
-export function subjectFor(part: Part, named?: string): string {
-  const allowed = SECTION_SUBJECTS[part];
+/**
+ * A tier's paper, section by section in NUMBER order: `match` names the printed section
+ * heading, `count` its questions (each section restarts at Q.1 on the sheet; the bank
+ * numbers the paper straight through), `subjects` the subjects a question in it may take.
+ */
+export type Section = { part: Part; match: RegExp; count: number; subjects: string[] };
+export const LAYOUTS: Record<Tier, Section[]> = {
+  // Tier I: four parts of 25. The 2025 render heads them PART-A..D; the TCS sheets name them.
+  1: [
+    { part: "A", match: /Reasoning/i, count: 25, subjects: ["Reasoning"] },
+    { part: "B", match: /General Awareness/i, count: 25, subjects: GA },
+    { part: "C", match: /Quantitative/i, count: 25, subjects: ["Quantitative Aptitude"] },
+    { part: "D", match: /English/i, count: 25, subjects: ["English"] },
+  ],
+  // Tier II Paper 1, Session I: Section I (Mathematical Abilities, Reasoning), Section II
+  // (English, General Awareness), Section III (Computer Knowledge, qualifying). Each module
+  // prints as "Section : Module I|II <name>". The Data Entry test (Section IV) is not on the sheet.
+  2: [
+    { part: "A", match: /Mathematical Abilities/i, count: 30, subjects: ["Quantitative Aptitude"] },
+    { part: "B", match: /Reasoning/i, count: 30, subjects: ["Reasoning"] },
+    { part: "C", match: /English/i, count: 45, subjects: ["English"] },
+    { part: "D", match: /General Awareness/i, count: 25, subjects: GA },
+    { part: "E", match: /Computer Knowledge/i, count: 20, subjects: ["Computer Knowledge"] },
+  ],
+};
+
+/**
+ * Tier II Paper 1 BEFORE CGL 2022 was Quantitative Abilities alone: one section of 100
+ * (English was a separate Paper 2, not ingested). A day of that pattern declares this layout.
+ */
+export const QUANT_PAPER1: Section[] = [
+  { part: "A", match: /Quantitative/i, count: 100, subjects: ["Quantitative Aptitude"] },
+];
+
+const subjectsOf = (layout: Section[]): Partial<Record<Part, string[]>> =>
+  Object.fromEntries(layout.map((s) => [s.part, s.subjects]));
+
+export function sectionSubjects(tier: Tier = 1): Partial<Record<Part, string[]>> {
+  return subjectsOf(LAYOUTS[tier]);
+}
+/** Tier I's parts: A Reasoning, B General Awareness, C Quantitative Aptitude, D English. */
+export const SECTION_SUBJECTS = sectionSubjects(1) as Record<"A" | "B" | "C" | "D", string[]>;
+export const SUBJECTS = (tier: Tier = 1): string[] => [...new Set(LAYOUTS[tier].flatMap((s) => s.subjects))];
+
+export function subjectFor(part: Part, named?: string, tier: Tier = 1): string {
+  const allowed = sectionSubjects(tier)[part];
+  if (!allowed) throw new Error(`PART-${part} is not a Tier ${TIER[tier]} part`);
   if (named === undefined) {
     if (allowed.length > 1) throw new Error(`PART-${part} is General Awareness: each question must name its subject`);
     return allowed[0];
   }
   if (!allowed.includes(named)) throw new Error(`"${named}" is not a PART-${part} subject (${allowed.join(", ")})`);
   return named;
+}
+
+/** A day's paper: its own layout (an older pattern), else its tier's. */
+export function layoutOf(day: Day): Section[] {
+  return day.layout ?? LAYOUTS[day.tier];
+}
+
+/** The subjects each part of a shift's paper may take. */
+export function shiftSections(shiftId: string): Partial<Record<Part, string[]>> {
+  const s = SHIFTS[shiftId];
+  if (!s) throw new Error(`unknown shift "${shiftId}"`);
+  return subjectsOf(layoutOf(DAYS[s.day]));
+}
+
+/** A shift id's tier: `t1-...` or `t2-...`. */
+export function tierOf(shiftId: string): Tier {
+  const t = Number(/^t([12])-/.exec(shiftId)?.[1]);
+  if (t !== 1 && t !== 2) throw new Error(`"${shiftId}" names no tier (t1-/t2-)`);
+  return t;
 }
 
 export type Catalog = Record<string, { chapter: string; subtopics: string[] }[]>;
@@ -54,7 +121,18 @@ export const SOURCE_ROOT = "C:\\Vilas\\LWS_Pune\\SSC\\CGL";
  * (until 2026-02-08). Our answers are derived independently and compared with it.
  */
 export type Day = {
-  tier: 1 | 2;
+  tier: Tier;
+  /** Tier II: the CGL cycle the paper belongs to ("Combined Graduate Level Examination 2024
+   * Tier II", sat in Jan 2025). It is the paper's pyq_year; the sitting date stays in the note. */
+  cycle?: number;
+  /** This day's sheet is printed in ANOTHER day's file (the CGL 2024 Tier II file holds the
+   * 18 Jan and 20 Jan sittings): that day's extraction reads it, so it lists no file of its own. */
+  sheetIn?: string;
+  /** The paper's sections when they differ from the tier's (CGL 2016-2021 Tier II: QUANT_PAPER1). */
+  layout?: Section[];
+  /** The hosted copy prints no Exam Date/Time header (its first page cropped away): the whole
+   * file is one sheet of this day's date, Shift 1. */
+  headerless?: true;
   date: string;
   shifts: number;
   file: string;
@@ -66,9 +144,10 @@ export type Day = {
   present?: number[];
   /**
    * "tcs": a 2022-2024 TCS response sheet, text with the key as the option colour (tcs.ts),
-   * read by assemble-tcs.ts. Absent: the 2025 challenge-module render (assemble.ts).
+   * read by assemble-tcs.ts. "raster": the CGL 2025 Tier II sheet, the TCS print scanned to page
+   * pictures with no text layer at all. Absent: the 2025 challenge-module render (assemble.ts).
    */
-  format?: "tcs";
+  format?: "tcs" | "raster";
   /** TCS only: the day's slots in shift order, as the sheets print Exam Time */
   slots?: string[];
   /** One file per SHIFT (2022) instead of one per day: shift -> file. `file`/`url` are unused. */
@@ -159,7 +238,66 @@ const t1_2022 = (dd: string, docs: Record<number, string>): Day => ({
   ),
 });
 
+/**
+ * Tier II Paper 1, one sitting a day (Session I, Sections I-III). CGL 2024's hosted file holds
+ * TWO sittings, 18 Jan 2025 (pp 2-33) and 20 Jan 2025 (pp 34-63), each sheet filed under the
+ * Exam Date it prints. CGL 2025's is a scan of the same print with no text layer; its header
+ * prints no date. AglaSem's cover says 18 Jan, and Careers360 (18 Jan 2026) reports Paper I
+ * that day and the skill test on the 19th; the 11:00-1:15 slot is Session I's 2 h 15 min.
+ */
+const T2_2024 = {
+  file: join(SOURCE_ROOT, "2024_Tier2", "SSC_CGL_2024_Tier2_Paper1_EN.pdf"),
+  url: "https://cdn.aglasem.com/aglasem-doc/bf0bb202-8c15-11f1-85d4-0aa932765c8b/bf0bb202-8c15-11f1-85d4-0aa932765c8b.pdf",
+};
+
+/**
+ * Older Tier II Paper 1 sittings, one TCS response sheet per file, each found where SSC's own
+ * print survives online (2026-10-17). CGL 2016 exists only as SSC's 2016 answer-key print (not
+ * read: owner, 2026-10-17); CGL 2017 and 2018 only as coaching retypes, so they are absent.
+ * CGL 2016-2021 Paper 1 is Quantitative Abilities alone (QUANT_PAPER1); CGL 2022 is the first
+ * five-module Paper 1. The CGL 2019 copy (Prepp's, its watermark on every page) lost its header.
+ */
+const t2Old = (date: string, cycle: number, file: string, url: string, extra: Partial<Day> = {}): Day => ({
+  tier: 2,
+  cycle,
+  date,
+  shifts: 1,
+  file: join(SOURCE_ROOT, `${cycle}_Tier2`, file),
+  url,
+  provisionalKey: false,
+  format: "tcs",
+  ...extra,
+});
+const drive = (id: string) => `https://drive.google.com/file/d/${id}/view`;
+const OLD_SLOT = ["9:00 AM - 11:00 AM"];
+const NEW_SLOT = ["9:00 AM - 12:00 PM"];
+
 export const DAYS: Record<string, Day> = {
+  "t2-2020-11-15": t2Old("2020-11-15", 2019, "SSC_CGL_2019_Tier2_Paper1_15Nov2020_EN.pdf",
+    "https://cdn-images.prepp.in/public/image/SSC_CGL_2019_TIER_2_NOVEMBER_15_2020_SHIFT_1__c18b66d136a5c8d6316ea5c036c30b87.pdf",
+    { layout: QUANT_PAPER1, headerless: true }),
+  "t2-2022-01-29": t2Old("2022-01-29", 2020, "SSC_CGL_2020_Tier2_Paper1_29Jan2022_EN.pdf", drive("1p9B6GJzgCHRlGejuaiygiKe5mnyPeytc"), { layout: QUANT_PAPER1, slots: OLD_SLOT }),
+  "t2-2022-02-03": t2Old("2022-02-03", 2020, "SSC_CGL_2020_Tier2_Paper1_03Feb2022_EN.pdf", drive("15q_39Dj9HWP_Q-oWG2JCR82Lkz_Kfb3k"), { layout: QUANT_PAPER1, slots: OLD_SLOT }),
+  "t2-2022-08-08": t2Old("2022-08-08", 2021, "SSC_CGL_2021_Tier2_Paper1_08Aug2022_EN.pdf", drive("1ajsV9ziGfariK44qXwG3AUzB8ABLAo4i"), { layout: QUANT_PAPER1, slots: OLD_SLOT }),
+  "t2-2023-03-02": t2Old("2023-03-02", 2022, "SSC_CGL_2022_Tier2_Paper1_02Mar2023_EN.pdf", drive("1SSlBYub2Fw7woqLcLIEVGl8dANYY2oxn"), { slots: NEW_SLOT }),
+  "t2-2023-03-03": t2Old("2023-03-03", 2022, "SSC_CGL_2022_Tier2_Paper1_03Mar2023_EN.pdf", drive("1xwRs4Ev8D7jGCn6w4kJr5MzY9L_rBIO-"), { slots: NEW_SLOT }),
+  "t2-2023-03-06": t2Old("2023-03-06", 2022, "SSC_CGL_2022_Tier2_Paper1_06Mar2023_EN.pdf", drive("1-eCcpz7oj6HNNnuyaXDP1oq8L7E29j7y"), { slots: NEW_SLOT }),
+  "t2-2023-03-07": t2Old("2023-03-07", 2022, "SSC_CGL_2022_Tier2_Paper1_07Mar2023_EN.pdf", drive("1ihS5z0uxwy1kdkJMBA-R_FdiKUWbIhq5"), { slots: NEW_SLOT }),
+  "t2-2023-10-26": t2Old("2023-10-26", 2023, "SSC_CGL_2023_Tier2_Paper1_26Oct2023_EN.pdf",
+    "https://www.sscadda.com/wp-content/uploads/multisite/sites/2/2024/07/20163446/SSC-CGL-Tier-2-Paper.pdf", { slots: NEW_SLOT }),
+  "t2-2025-01-18": { tier: 2, cycle: 2024, date: "2025-01-18", shifts: 1, ...T2_2024, provisionalKey: true, format: "tcs", slots: ["9:00 AM - 12:00 PM"] },
+  "t2-2025-01-20": { tier: 2, cycle: 2024, date: "2025-01-20", shifts: 1, ...T2_2024, provisionalKey: true, format: "tcs", slots: ["9:00 AM - 12:00 PM"], sheetIn: "t2-2025-01-18" },
+  "t2-2026-01-18": {
+    tier: 2,
+    cycle: 2025,
+    date: "2026-01-18",
+    shifts: 1,
+    file: join(SOURCE_ROOT, "2025_Tier2", "SSC_CGL_2025_Tier2_Paper1_EN.pdf"),
+    url: "https://cdn.aglasem.com/aglasem-doc/c327a7d8-8c15-11f1-b6c3-0aa932765c8b/c327a7d8-8c15-11f1-b6c3-0aa932765c8b.pdf",
+    provisionalKey: true,
+    format: "raster",
+    slots: ["11:00 AM - 1:15 PM"],
+  },
   // Left out: 1 Dec Shift 3's hosted file starts mid-paper (Q14 of Reasoning, no header).
   // 5 Dec S4, 7 Dec S2, 9 Dec S3 and 12 Dec S4 hold two or three DIFFERENT papers in the
   // vector print, whose headers are glyphs: which one is the named shift is unproven.
@@ -248,7 +386,6 @@ export const DAYS: Record<string, Day> = {
 export type Shift = { day: string; shift: number; sourceFile: string; pyqYear: number; pyqMonth: string; pyqNote: string };
 
 const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const TIER = ["", "I", "II"];
 
 /** Every shift of every registered day, derived: id `<day>-s<n>`, one source_file each. */
 export const SHIFTS: Record<string, Shift> = Object.fromEntries(
@@ -261,9 +398,13 @@ export const SHIFTS: Record<string, Shift> = Object.fromEntries(
           day,
           shift,
           sourceFile: `SSC_CGL_T${d.tier}_${d.date}_S${shift}`,
-          pyqYear: y,
+          pyqYear: d.cycle ?? y,
           pyqMonth: MONTHS[m - 1],
-          pyqNote: `Tier ${TIER[d.tier]}, ${dd} ${MONTHS[m - 1].slice(0, 3)} ${y}, Shift ${shift}`,
+          // Tier II sits once a day, so its note names the cycle instead of a shift.
+          pyqNote:
+            d.tier === 2
+              ? `Tier II (CGL ${d.cycle}), ${dd} ${MONTHS[m - 1].slice(0, 3)} ${y}`
+              : `Tier I, ${dd} ${MONTHS[m - 1].slice(0, 3)} ${y}, Shift ${shift}`,
         },
       ] as const;
     });
@@ -277,7 +418,7 @@ export const SHIFTS: Record<string, Shift> = Object.fromEntries(
 export type TcsFile = { dir: string; day: Day; file: string; shift?: number; pages?: string };
 export function tcsFiles(): TcsFile[] {
   return Object.entries(DAYS)
-    .filter(([, d]) => d.format === "tcs")
+    .filter(([, d]) => d.format === "tcs" && !d.sheetIn)
     .sort(([a], [b]) => a.localeCompare(b))
     .flatMap(([dir, day]): TcsFile[] => {
       if (day.shiftFiles)
@@ -294,6 +435,15 @@ export function requireShift(id: string | undefined): Shift & { id: string } {
   if (!id || !SHIFTS[id]) throw new Error(`unknown shift "${id}". Known: ${Object.keys(SHIFTS).join(", ")}`);
   return { id, ...SHIFTS[id] };
 }
+
+/**
+ * Questions committed but never published: unanswerable as SSC's print left them, so a page
+ * would serve a question nobody can solve. publish.ts skips them (shift -> question numbers).
+ * CGL 2025 Tier II Q35 and Q59 ask to count squares in figures the scan has washed out.
+ */
+export const HELD: Record<string, number[]> = {
+  "t2-2026-01-18-s1": [35, 59],
+};
 
 export const OUT = join(__dirname, "out"); // gitignored: page images, geometry, reading sheets
 export const TRANSCRIPTS = join(__dirname, "transcripts"); // committed: the source of record

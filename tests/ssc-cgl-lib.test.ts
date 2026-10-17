@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { assembleQuestions, checkShift, parseTranscript, type Cell, type Geometry, type Marker } from "../scripts/ssc-cgl/lib";
+import { assembleQuestions, checkShift, parseTranscript, studentSolution, type Cell, type Geometry, type Marker } from "../scripts/ssc-cgl/lib";
 
 // A question as SSC's challenge module prints it: a stem cell holding the "Q.No"
 // label, then four option cells. The key is the FILL of an option's left cell:
@@ -351,5 +351,33 @@ It is b.
     const r = checkShift([series(101)], [sheet(1, "A", "B"), sheet(2, "A", "A")], CATALOG, SECTIONS);
     expect(r.problems.join()).toMatch(/Q101.*not in the paper/);
     expect(r.missing).toEqual([1, 2]);
+  });
+});
+
+describe("student notices on flawed questions (publishing)", () => {
+  const CATALOG = { Reasoning: [{ chapter: "Series", subtopics: ["Number Series"] }] };
+  const SECTIONS = { A: ["Reasoning"], B: [], C: [], D: [] };
+  const block = (extra: string) =>
+    `=== 8\nchapter: Series\nsubtopic: Number Series\ndifficulty: EASY\nanswer: D\n${extra}stem:\n2, 6, 9, 27, 30, 90, ?\nA: 85\nB: 88\nC: 90\nD: 93\nsolution:\nThe steps alternate times 3 and plus 3, so 93.\n`;
+
+  it("reads a notice: header", () => {
+    const [q] = parseTranscript(block("flawed: yes\nnotice: SSC's answer key gives (b) 88.\n"));
+    expect(q.notice).toBe("SSC's answer key gives (b) 88.");
+  });
+
+  it("refuses a flawed question with no notice once the key is compared, but not in a drafting agent's blind check", () => {
+    const [q] = parseTranscript(block("flawed: yes\nnote: key wrong\n"));
+    const sheet = [{ number: 8, part: "A" as const, key: "D" as const }];
+    expect(checkShift([q], sheet, CATALOG, SECTIONS).problems.join()).toMatch(/Q8.*notice/);
+    expect(checkShift([q], sheet, CATALOG, SECTIONS, { compareKey: false }).problems).toEqual([]);
+    const [ok] = parseTranscript(block("flawed: yes\nnote: key wrong\nnotice: SSC's answer key gives (b) 88.\n"));
+    expect(checkShift([ok], sheet, CATALOG, SECTIONS).problems).toEqual([]);
+  });
+
+  it("puts the notice above the solution, and leaves a solution with no notice untouched", () => {
+    const [q] = parseTranscript(block("flawed: yes\nnotice: SSC's answer key gives (b) 88.\n"));
+    expect(studentSolution(q)).toBe("**Note:** SSC's answer key gives (b) 88.\n\nThe steps alternate times 3 and plus 3, so 93.");
+    const [plain] = parseTranscript(block(""));
+    expect(studentSolution(plain)).toBe("The steps alternate times 3 and plus 3, so 93.");
   });
 });

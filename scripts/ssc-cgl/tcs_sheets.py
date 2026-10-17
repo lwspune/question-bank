@@ -27,7 +27,9 @@ PAD = 4  # points around a region
 BATCH_HEIGHT = 2600
 DARK = b"0.14502 0.14502 0.14502"
 # Fills (rg) AND strokes (RG): the 2022 print underlines option text in the key colours.
-FILL = re.compile(rb"(\d*\.?\d+) (\d*\.?\d+) (\d*\.?\d+) (rg|RG)")
+# ... and three-component scn/sc in an RGB-based colour space: the CGL 2022 Tier II print sets its
+# key colours as "/CS0 cs 0.216 0.675 0.247 scn" (ICC), which an rg-only repaint missed.
+FILL = re.compile(rb"(?<![\d.])(\d*\.?\d+) (\d*\.?\d+) (\d*\.?\d+) (rg|RG|scn|SCN|sc|SC)\b")
 PANEL_LABEL = re.compile(r"^(Question ID|Option \d ID|Status|Chosen Option)\s*:")
 LEFT = 4  # the 2022 vector print frames its questions from x 9
 GLYPH = re.compile(r"^(X|,Z|[✓✔✗✘])$")
@@ -42,7 +44,7 @@ def is_icon(bbox, labels):
     """A tick or cross: a small image ending just left of an option's "n." label on its line.
     Small images elsewhere are content (9 Sep 2024 Q52 prints options 2-4 as 6x9 pt pictures)."""
     x0, y0, x1, y1 = bbox
-    if x1 - x0 >= 20 or y1 - y0 >= 16:
+    if x1 - x0 >= 22 or y1 - y0 >= 16:  # CGL 2019 Tier II: 20.4 pt wide
         return False
     mid = (y0 + y1) / 2
     return any(abs((l[1] + l[3]) / 2 - mid) < 7 and x1 <= l[0] + 1 and l[0] - x1 < 25 for l in labels)
@@ -154,11 +156,15 @@ def key_pixels(img):
 def mask_page(doc, page):
     """Repaint key colours, white out icons, tick glyphs and the panel's lines."""
     # Option labels, read BEFORE the colours are repainted: "1." to "4." in green or red.
+    # Any colour: the CGL 2021 Tier II print sets the option NUMBER black (only its picture
+    # option carries no colour at all), so an icon is known by sitting left of the number.
     option_labels = [
         s["bbox"] for b in page.get_text("dict")["blocks"] if b["type"] == 0 for l in b["lines"] for s in l["spans"]
-        if keyish(s["color"]) and re.match(r"^[1-4]\.", s["text"].strip())
+        if re.match(r"^[1-4]\.", s["text"].strip())
     ]
-    for xref in page.get_contents():
+    # The CGL 2024 Tier II print draws each whole page inside a Form XObject, so its colours
+    # live in that stream, not the page's own: repaint both.
+    for xref in dict.fromkeys([*page.get_contents(), *(x[0] for x in page.get_xobjects())]):
         stream = doc.xref_stream(xref)
         # Any key-coloured fill (each year prints its own green and red) becomes the body grey.
         def repaint(m):
@@ -184,9 +190,12 @@ def mask_page(doc, page):
     rows = []  # the vector print's option rows, by the icons masked out (align_scan_rows)
     for info in page.get_image_info():
         in_column = frame_x0 is None or info["bbox"][0] < frame_x0 + 40
-        if is_icon(info["bbox"], option_labels) or (is_icon_picture(info) and in_column):
+        beside_label = is_icon(info["bbox"], option_labels)
+        if beside_label or (is_icon_picture(info) and in_column):
             page.draw_rect(fitz.Rect(info["bbox"]) + (-1, -1, 1, 1), color=None, fill=(1, 1, 1), overlay=True)
-            if frame_x0 is not None and is_icon_picture(info):
+            # The CGL 2024 Tier II text print ALSO indents the keyed option's number (its tick is
+            # wider), so a text print's icons are option rows to realign too, not only the vector's.
+            if beside_label or (frame_x0 is not None and is_icon_picture(info)):
                 x0, y0, x1, y1 = info["bbox"]
                 rows.append({"y0": y0, "y1": y1, "x1": x1})
     # The 2022 vector print draws the panel as a white box with a grey border: paint it out.
@@ -256,6 +265,17 @@ def main():
                 if mine:
                     part = align_scan_rows(part, mine, clip.y0, max(m["x1"] for m in mine) + 1.5, x_right)
             parts.append(part)
+        # The CGL 2024 Tier II print hides a strip at each page's top and bottom (a page break of
+        # the browser print): a stem picture there renders blank (18 Jan 2025 Q5), an option
+        # picture is cut off (Q30 option 4). SSC's own picture objects follow the crop, the options
+        # in printed order (1-4), which says nothing about the key.
+        stored = [(name, "stem picture") for name in q["stemImages"]]
+        stored += [(name, f"option {i + 1} picture") for i, names in enumerate(q["options"]) for name in names]
+        for name, what in stored:
+            pic = Image.open(os.path.join(data["imgDir"], name)).convert("RGB")
+            wide = Image.new("RGB", (max(pic.width, 700), pic.height), "white")  # room for the label
+            wide.paste(pic, (0, 0))
+            parts.append(label(wide, f"{what}, as stored in the file"))
         img = Image.new("RGB", (max(p.width for p in parts), sum(p.height for p in parts)), "white")
         y = 0
         for p in parts:
