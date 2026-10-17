@@ -72,6 +72,7 @@ describe("EXPERIMENTS", () => {
       "email-cap",
       "formula-pages",
       "indexing",
+      "mock-together",
       "notes-titles",
       "onboarding-arms",
       "paper-pages",

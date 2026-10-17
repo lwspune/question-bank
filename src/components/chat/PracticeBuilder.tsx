@@ -547,7 +547,7 @@ function BuiltCard({
           <PaperDownload slug={test.slug} paperTitle={test.title} variant="inline" />
         </div>
       </div>
-      <SendToFriend code={test.slug} title={test.title} questions={test.questions} minutes={test.minutes} />
+      <SendToFriend target={{ kind: "practice", code: test.slug }} title={test.title} questions={test.questions} minutes={test.minutes} />
     </div>
   );
 }

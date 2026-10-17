@@ -133,3 +133,32 @@ misread (one slip in the 2022 pilot, caught at 180 dpi): zoom any doubtful word.
 | ssp-2013 (X01) | 100/100 | 99/99 (Q74 unmarked) | PRIVATE, 2026-09-27 (Q74 cancelled; Q24, Q29 figures) |
 
 **All 10 papers committed PRIVATE (1,000 q, 24 cancelled, 7 figures).** Coaching marks agree with the official final key on 998 of 999 marked questions; the one disagreement (2016 Q22) is the coaching error. **PUBLIC since 2026-09-27** (`npx tsx scripts/mpsc/flip-public.ts ssp --apply`), registry slug `mpsc-state-services-prelims` (MPSC → Prelims → State Services), and 10 GS Paper I mocks published (`scripts/mocks/build.ts --paper=mpsc --only=ssp-<year>`; 100 q, 200 marks, 2 h, −0.5 per wrong, cancelled questions as grace).
+
+# MPSC Forest Service + Agriculture Service Prelims
+
+Two more exams on the same pipeline: `EXAMS.fsp` (MPSC Forest Service Prelims)
+and `EXAMS.asp` (MPSC Agriculture Service Prelims), papers `fsp-<year>` /
+`asp-<year>` in `config.ts` `FSP_PAPERS` / `ASP_PAPERS`.
+
+**Source:** the back of the merged MAINS scan (`All PYQ mar eng.pdf`, the
+scripts/mpsc-mains source), pp.741-1081, each booklet followed by its key (text
+layer, `extract.py keys fsp|asp`). pp.711-740 are a second copy of the 2018
+Group B Mains paper. Each booklet is "मराठी, इंग्रजी व सामान्य अध्ययन": a Marathi
+grammar section printed in **Marathi only**, an English section in **English
+only** (both committed with no translation, like the Mains papers), then GS and
+aptitude printed in both. Agriculture adds an agriculture head. The language
+sections use the Mains chapter lists, so grammar lands on one taxonomy.
+
+**Keys:** eight are the Commission's revised (final) keys. **asp-2011's is the
+FIRST key** (its header invites objections): `provisionalKey` in config.
+asp-2011's extraction loses a cell (Q152/Q177) and asp-2018's key has no text
+layer, so both need hand-transcribed `keytokens`.
+
+**The independent check** is the transcriber's own answer, written into `box`
+before reading the key (`boxes.json`; merge.ts prints "boxes.json mark").
+Underlined Marathi is `**bold**` (the Mains convention); English underline is
+`\(\underline{\text{..}}\)`.
+
+| paper | transcribed | marks vs key | committed |
+|---|---|---|---|
+| fsp-2018 (K11) | 100/100 | 91/98 (Q1, Q2, Q21, Q30, Q40, Q42 language items; Q90 word count) | PRIVATE, 2026-10-16 (Q26, Q47 cancelled; Q51, Q67 waived) |

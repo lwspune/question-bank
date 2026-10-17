@@ -16,6 +16,9 @@
  *     (free_chapter_test_limit, migration 0134), never against the mocks
  *   - my_mock_quota() also reports the practice-test day (migration 0156;
  *     its own rules are in practice-tests.integration.test.ts)
+ *   - a paper a friend sent (migration 0166: a mock_invite_joins row) starts
+ *     free past either limit and is not counted, unless the student had
+ *     already started it before joining; someone else's join frees nobody
  *
  * The settings row is global, so this suite restores it in afterAll. Other
  * suites start at most one mock per user, so the limit cannot trip them.
@@ -33,7 +36,7 @@ const HAS_ENV =
 const PASSWORD = "free-mock-limit-pw-1234";
 const RUN_ID = randomUUID().slice(0, 8);
 const FUTURE = new Date(Date.now() + 3600_000).toISOString();
-const ROLES = ["student", "early", "mockpass", "teacherpass", "staff", "off"] as const;
+const ROLES = ["student", "early", "mockpass", "teacherpass", "staff", "off", "invited", "inviter"] as const;
 type Role = (typeof ROLES)[number];
 
 describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
@@ -252,6 +255,46 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
       .from("paywall_settings")
       .update({ free_mock_limit: 3, free_chapter_test_limit: 1 })
       .eq("id", true);
+  });
+
+  async function inviteAndJoin(mockId: string): Promise<void> {
+    const code = randomUUID().replace(/-/g, "").slice(0, 12);
+    const { data: inv, error } = await admin
+      .from("mock_invites")
+      .insert({ code, mock_id: mockId, inviter_id: ids.inviter })
+      .select("id")
+      .single();
+    expect(error).toBeNull();
+    const { error: joinErr } = await admin
+      .from("mock_invite_joins")
+      .insert({ invite_id: inv!.id, mock_id: mockId, inviter_id: ids.inviter, friend_id: ids.invited });
+    expect(joinErr).toBeNull();
+  }
+
+  it("starts a paper a friend sent free past the limit, and does not count it", async () => {
+    for (let i = 0; i < 3; i++) expect((await start("invited", i)).error).toBeNull();
+    expect((await start("invited", 3)).error?.code).toBe("PT402");
+    expect((await startChapter("invited", 0)).error).toBeNull();
+    expect((await startChapter("invited", 1)).error?.code).toBe("PT402");
+
+    await inviteAndJoin(mockIds[3]);
+    await inviteAndJoin(chapterIds[1]);
+    expect((await start("invited", 3)).error).toBeNull();
+    expect((await startChapter("invited", 1)).error).toBeNull();
+
+    const { data } = await clients.invited.rpc("my_mock_quota");
+    expect(data).toMatchObject({ used: 3, chapterUsed: 1 });
+  });
+
+  it("does not give back a slot for a paper started before the student joined", async () => {
+    await inviteAndJoin(mockIds[0]);
+    const { data } = await clients.invited.rpc("my_mock_quota");
+    expect(data).toMatchObject({ used: 3 });
+  });
+
+  it("frees only the student who joined, never anyone else", async () => {
+    // "student" is at the mock limit and was refused mock 3 earlier.
+    expect((await start("student", 3)).error?.code).toBe("PT402");
   });
 
   it("hides the settings row from a signed-in student", async () => {

@@ -1,7 +1,7 @@
 """
 Extract what the merged MPSC scan gives for free, per paper:
 
-  python scripts/mpsc/extract.py keys [prefix]   # data/<id>.keytokens.json from each key's text layer ("ssp" = State Services only)
+  python scripts/mpsc/extract.py keys [prefix]   # data/<id>.keytokens.json from each key's text layer ("ssp" / "fsp" / "asp" = that exam only)
   python scripts/mpsc/extract.py render <id>     # data/pages/<id>/p<NNN>.png for transcription
   python scripts/mpsc/extract.py figures <id>    # data/figures/<id>/q<N>.png from each merged question's figure box
 
@@ -69,6 +69,20 @@ SSP_CSAT_PAPERS = {
     "ssp-csat-2014": (2014, 48),
     "ssp-csat-2013": (2013, 48),
 }
+# Forest (fsp) + Agriculture (asp) Service Prelims: the back of the merged
+# MAINS scan, each key straight after its booklet (config.ts FSP/ASP_PAPERS).
+MERGED_SRC = r"C:/Vilas/LWS_Pune/MPSC/All PYQ mar eng (1).pdf"
+MERGED_PAPERS = {
+    "fsp-2014": ((741, 772), (773, 774)),
+    "fsp-2016": ((775, 814), (815, 816)),
+    "fsp-2017": ((817, 856), (857, 858)),
+    "fsp-2018": ((859, 890), (891, 892)),
+    "asp-2011": ((893, 939), (940, 943)),
+    "asp-2012": ((944, 983), (984, 987)),
+    "asp-2016": ((988, 1019), (1020, 1021)),
+    "asp-2017": ((1022, 1045), (1046, 1047)),
+    "asp-2018": ((1048, 1079), (1080, 1081)),
+}
 IMAGE_ONLY_KEYS = {"2019-c", "ssp-2019"}
 
 
@@ -78,6 +92,9 @@ def source(pid):
         file_year, n = SSP_CSAT_PAPERS[pid]
         key = os.path.join(SSP_CSAT_DIR, f"key-{pid[-4:]}.pdf")
         return os.path.join(SSP_CSAT_DIR, f"paper-{file_year}.pdf"), (1, n), key, (1, len(doc_for(key)))
+    if pid in MERGED_PAPERS:
+        pages, keypages = MERGED_PAPERS[pid]
+        return MERGED_SRC, pages, MERGED_SRC, keypages
     if pid in SSP_PAPERS:
         return SSP_SRC, SSP_PAPERS[pid], os.path.join(SSP_KEY_DIR, pid[4:] + ".pdf"), (1, 2)
     pages, keypages = PAPERS[pid]
@@ -95,7 +112,7 @@ def doc_for(path):
 
 def keys(only=None):
     os.makedirs(DATA, exist_ok=True)
-    for pid in [*PAPERS, *SSP_PAPERS, *SSP_CSAT_PAPERS]:
+    for pid in [*PAPERS, *SSP_PAPERS, *SSP_CSAT_PAPERS, *MERGED_PAPERS]:
         if only and not pid.startswith(only):
             continue
         _, _, keypath, (k1, k2) = source(pid)

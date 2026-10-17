@@ -1,6 +1,6 @@
 /**
  * "Your friend finished" by BROWSER PUSH (practise together, step 2,
- * 2026-10-16). When a friend finishes a practice test someone sent them,
+ * 2026-10-16). When a friend finishes a practice test or a paper (0166) someone sent them,
  * everyone in that test's group who had already finished gets one
  * notification linking to the shared results card on their own result page.
  *
@@ -55,7 +55,12 @@ async function main() {
   let sent = 0;
   for (const p of reachable) {
     const clickToken = newClickToken();
-    const payload = friendFinishedPayload({ names: p.names, recipientAttemptId: p.recipientAttemptId, clickToken });
+    const payload = friendFinishedPayload({
+      names: p.names,
+      recipientAttemptId: p.recipientAttemptId,
+      clickToken,
+      title: p.title,
+    });
     const browsers = subsByUser.get(p.userId) ?? [];
     console.log(`  push ${p.userId} — ${payload.title} [${browsers.length} browser(s)]`);
     sent++;

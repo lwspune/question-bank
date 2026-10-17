@@ -25,7 +25,8 @@
  */
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { createSupabaseAnonClient } from "@/lib/supabase/server";
+import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
+import { getOwnPracticeCounts } from "@/lib/activity/practiceCounts";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/http";
 import { getSessionUser } from "@/lib/auth";
@@ -151,6 +152,8 @@ export async function POST(request: NextRequest) {
                     return payload ? buildPerformance(payload, new Date()) : null;
                   })
               : undefined,
+            // Same login, not remembered: "today" should move between two questions.
+            loadOwnPractice: ownId ? () => getOwnPracticeCounts(createSupabaseServerClient()) : undefined,
           });
           const result = await askV({
             system: ctx.system,

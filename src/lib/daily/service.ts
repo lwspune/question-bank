@@ -2,6 +2,12 @@
  * Question of the day — the server read (2026-10-04). Pure pick rule:
  * lib/daily/questionOfDay.ts.
  *
+ * HIDDEN FROM /me SINCE 2026-10-17 (owner): in its first 13 days 3 to 7
+ * students a day answered it, on about 8% of the days a student opened /me,
+ * and 5 of 29 came back on a second day. Nothing calls this now. It is kept,
+ * with the `daily` surface and its history, so the card can return by putting
+ * back the /me section that commit removed.
+ *
  * WHICH QUESTIONS. PUBLIC past-year MCQs of the exam, not cancelled, with
  * exactly one keyed option. The last condition cannot be a PostgREST filter, so
  * the hashed index is checked and, if it lands on an unkeyed row, the next few

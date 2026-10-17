@@ -34,8 +34,11 @@ export default function StartMock({
   mockPass = null,
   unit = "mock",
   isPastPaper = false,
+  invite = null,
 }: {
   slug: string;
+  /** A friend's invite code (migration 0166): sent with the start so the paper starts free. */
+  invite?: string | null;
   /** A whole past paper: the pass card also offers its PDF download. */
   isPastPaper?: boolean;
   /** A chapter test or a full mock: which free count this paper uses. */
@@ -53,7 +56,10 @@ export default function StartMock({
   async function start() {
     setLoading(true);
     try {
-      const res = await fetch(`/api/mock/${slug}/start`, { method: "POST" });
+      const res = await fetch(`/api/mock/${slug}/start`, {
+        method: "POST",
+        ...(invite ? { headers: { "Content-Type": "application/json" }, body: JSON.stringify({ with: invite }) } : {}),
+      });
       const data = await res.json();
       if (res.status === 402) {
         setState({ kind: "locked", limit: state.kind === "free" ? state.limit : 0, unit });

@@ -236,6 +236,10 @@ describe("buildSystemPrompt", () => {
     expect(p).not.toMatch(/cannot see a student's own account, scores/i);
   });
 
+  it("has V call my_progress for how many questions a student has answered, not only for scores", () => {
+    expect(buildSystemPrompt(base)).toMatch(/how many questions they have answered/i);
+  });
+
   it("has no em dashes of its own", () => {
     expect(buildSystemPrompt(base)).not.toContain(EM_DASH);
   });
