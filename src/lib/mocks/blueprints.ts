@@ -617,6 +617,9 @@ export const UPSC_GS1_PAPER: MockPaperBlueprint = {
   ],
 };
 
+/** SSC CGL General Awareness: the eight bank subjects it is filed under (the CDS GK split). */
+const SSC_GA = ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs"];
+
 /**
  * SSC CGL Tier I. 100 questions, 200 marks, 60 minutes, +2 / -0.5, in the four
  * parts SSC prints (25 each). General Awareness spans the eight subjects the
@@ -635,12 +638,45 @@ export const SSC_CGL_T1_PAPER: MockPaperBlueprint = {
     {
       key: "general-awareness",
       label: "General Awareness",
-      subjects: ["History", "Geography", "Polity", "Economics", "Physics", "Chemistry", "Biology", "Current Affairs"],
+      subjects: SSC_GA,
       count: 25,
     },
     { key: "quantitative-aptitude", label: "Quantitative Aptitude", subjects: ["Quantitative Aptitude"], count: 25 },
     { key: "english", label: "English Comprehension", subjects: ["English"], count: 25 },
   ],
+};
+
+/**
+ * SSC CGL Tier II Paper 1, the RANKED part (owner, 2026-10-17): Section I (Mathematical
+ * Abilities 30, Reasoning 30) and Section II (English 45, General Awareness 25), an hour
+ * each, +3 / -1: the 390 marks SSC ranks on. The runner has one clock, so the two hours
+ * are one, and a student may move between sections the exam would lock. Section III,
+ * Computer Knowledge, is qualifying only and is its own mock below.
+ */
+export const SSC_CGL_T2_PAPER: MockPaperBlueprint = {
+  code: "tier-2-paper-1",
+  examName: "SSC CGL Tier II",
+  examSlug: "ssc-cgl-tier-2",
+  paperLabel: "Paper 1 (Sections I and II)",
+  durationSecs: 120 * 60,
+  marking: { correct: 3, wrong: -1 },
+  sections: [
+    { key: "mathematical-abilities", label: "Mathematical Abilities", subjects: ["Quantitative Aptitude"], count: 30 },
+    { key: "reasoning", label: "Reasoning and General Intelligence", subjects: ["Reasoning"], count: 30 },
+    { key: "english", label: "English Language and Comprehension", subjects: ["English"], count: 45 },
+    { key: "general-awareness", label: "General Awareness", subjects: SSC_GA, count: 25 },
+  ],
+};
+
+/** Tier II Paper 1, Section III Module I: Computer Knowledge, 15 minutes, qualifying only. */
+export const SSC_CGL_T2_COMPUTER_PAPER: MockPaperBlueprint = {
+  code: "tier-2-computer",
+  examName: "SSC CGL Tier II",
+  examSlug: "ssc-cgl-tier-2",
+  paperLabel: "Paper 1, Computer Knowledge (qualifying)",
+  durationSecs: 15 * 60,
+  marking: { correct: 3, wrong: -1 },
+  sections: [{ key: "computer-knowledge", label: "Computer Knowledge", subjects: ["Computer Knowledge"], count: 20 }],
 };
 
 export const UPSC_CSAT_PAPER: MockPaperBlueprint = {
@@ -763,6 +799,8 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   UPSC_GS1_PAPER,
   UPSC_CSAT_PAPER,
   SSC_CGL_T1_PAPER,
+  SSC_CGL_T2_PAPER,
+  SSC_CGL_T2_COMPUTER_PAPER,
   CBSE_10_CHAPTER_MCQ_PAPER,
   CBSE_12_CHAPTER_MCQ_PAPER,
   MH_HSC_12_CHAPTER_MCQ_PAPER,

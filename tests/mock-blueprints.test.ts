@@ -16,6 +16,8 @@ import {
   MH_SSC_10_CHAPTER_MCQ_PAPER,
   MH_SSC_10_HUMANITIES_MCQ_PAPER,
   SSC_CGL_T1_PAPER,
+  SSC_CGL_T2_PAPER,
+  SSC_CGL_T2_COMPUTER_PAPER,
   getBlueprint,
   totalQuestions,
   totalMarks,
@@ -294,6 +296,53 @@ describe("SSC CGL Tier I", () => {
   });
 });
 
+/**
+ * SSC CGL Tier II Paper 1 (owner, 2026-10-17): two mocks per sitting. SSC ranks on
+ * Sections I and II (Maths, Reasoning, English, General Awareness: 130 questions, an
+ * hour each, +3 / -1); Section III, Computer Knowledge, is qualifying only, so it is
+ * its own 15-minute mock and never in the ranked score.
+ */
+describe("SSC CGL Tier II Paper 1", () => {
+  it("ranked paper: 130 questions, 390 marks, 2 hours, +3 / -1, in the printed module order", () => {
+    expect(SSC_CGL_T2_PAPER.examSlug).toBe("ssc-cgl-tier-2");
+    expect(totalQuestions(SSC_CGL_T2_PAPER)).toBe(130);
+    expect(totalMarks(SSC_CGL_T2_PAPER)).toBe(390);
+    expect(SSC_CGL_T2_PAPER.durationSecs).toBe(120 * 60);
+    expect(SSC_CGL_T2_PAPER.marking).toEqual({ correct: 3, wrong: -1 });
+    expect(SSC_CGL_T2_PAPER.sections.map((s) => [s.key, s.count])).toEqual([
+      ["mathematical-abilities", 30],
+      ["reasoning", 30],
+      ["english", 45],
+      ["general-awareness", 25],
+    ]);
+  });
+
+  it("leaves Computer Knowledge out of the ranked paper and General Awareness takes the eight subjects", () => {
+    const subjects = SSC_CGL_T2_PAPER.sections.flatMap((s) => s.subjects);
+    expect(new Set(subjects).size).toBe(subjects.length);
+    expect(subjects).not.toContain("Computer Knowledge");
+    expect(SSC_CGL_T2_PAPER.sections[3].subjects).toEqual(SSC_CGL_T1_PAPER.sections[1].subjects);
+  });
+
+  it("Computer Knowledge: 20 questions, 60 marks, 15 minutes, +3 / -1, one section", () => {
+    expect(SSC_CGL_T2_COMPUTER_PAPER.examSlug).toBe("ssc-cgl-tier-2");
+    expect(totalQuestions(SSC_CGL_T2_COMPUTER_PAPER)).toBe(20);
+    expect(totalMarks(SSC_CGL_T2_COMPUTER_PAPER)).toBe(60);
+    expect(SSC_CGL_T2_COMPUTER_PAPER.durationSecs).toBe(15 * 60);
+    expect(SSC_CGL_T2_COMPUTER_PAPER.marking).toEqual({ correct: 3, wrong: -1 });
+    expect(SSC_CGL_T2_COMPUTER_PAPER.sections.map((s) => [s.key, s.count, s.subjects])).toEqual([
+      ["computer-knowledge", 20, ["Computer Knowledge"]],
+    ]);
+  });
+
+  it("both resolve by getBlueprint, neither is in the NDA discovery list", () => {
+    expect(getBlueprint("ssc-cgl-tier-2", SSC_CGL_T2_PAPER.code)).toBe(SSC_CGL_T2_PAPER);
+    expect(getBlueprint("ssc-cgl-tier-2", SSC_CGL_T2_COMPUTER_PAPER.code)).toBe(SSC_CGL_T2_COMPUTER_PAPER);
+    expect(MOCK_BLUEPRINTS).not.toContain(SSC_CGL_T2_PAPER);
+    expect(MOCK_BLUEPRINTS).not.toContain(SSC_CGL_T2_COMPUTER_PAPER);
+  });
+});
+
 describe("getBlueprint covers every exported blueprint", () => {
   const ALL = [
     NDA_MATHS_PAPER,
@@ -311,6 +360,8 @@ describe("getBlueprint covers every exported blueprint", () => {
     MH_SSC_10_CHAPTER_MCQ_PAPER,
     MH_SSC_10_HUMANITIES_MCQ_PAPER,
     SSC_CGL_T1_PAPER,
+    SSC_CGL_T2_PAPER,
+    SSC_CGL_T2_COMPUTER_PAPER,
   ];
 
   it.each(ALL.map((bp) => [`${bp.examSlug}/${bp.code}`, bp] as const))(
