@@ -416,6 +416,17 @@ describe("assembleTcs, a hosting site's diagonal watermark (CGL 2021 Tier II)", 
   });
 });
 
+describe("assembleTcs, a tall picture option 1 (CGL 2022 Tier II Q6, a stacked fraction)", () => {
+  it("files a picture that starts above option 1's label, but straddles its line, under option 1, not the stem", () => {
+    const g = shift(2, "9:00 AM - 10:00 AM", () => 0);
+    // Q1: stem line at 60, Ans at 72, label "1." at 72..82 (mid 77); the picture spans 66..90
+    g.images.push({ page: 2, name: "frac-8-21", x0: 100, y0: 66, x1: 130, y1: 90 });
+    const [q] = assembleTcs(g);
+    expect(q.stemImages).toEqual([]);
+    expect(q.optionImages[0]).toEqual(["frac-8-21"]);
+  });
+});
+
 describe("assembleTcs, Tier II", () => {
   const sheet = () => shift(2, "9:00 AM - 12:00 PM", (n) => n % 4, TIER2);
 

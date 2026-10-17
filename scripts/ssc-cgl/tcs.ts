@@ -275,6 +275,10 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
     /** vertical middle of each option's "n." label, and the pictures met after "Ans" */
     optMid: number[];
     optPics: TcsImage[];
+    /** the stem's pictures with their boxes (a tall option-1 picture can start above its label) */
+    stemPics: TcsImage[];
+    /** the page of each option label */
+    optPage: number[];
     /** the page of the last option label read */
     labelPage: number;
     /** option text read apart from its label: the option it followed (-1 = none yet) and its line */
@@ -375,6 +379,8 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
         optColor: [],
         optMid: [],
         optPics: [],
+        stemPics: [],
+        optPage: [],
         labelPage: 0,
         optText: [],
       };
@@ -415,7 +421,10 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
     if (s && cur.stage === "stem" && (isGreen(s.color) || isRed(s.color)) && /^1\.(\s|$)/.test(text)) cur.stage = "options";
     if (cur.stage === "stem") {
       if (s) cur.stemLines.push(s.text);
-      else cur.stemImages.push(e.image!.name);
+      else {
+        cur.stemImages.push(e.image!.name);
+        cur.stemPics.push(e.image!);
+      }
       continue;
     }
     // options
@@ -424,6 +433,7 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
       cur.optLines.push(opt[2] ? [opt[2]] : []);
       cur.optColor.push(s.color);
       cur.optMid.push((s.y0 + s.y1) / 2);
+      cur.optPage.push(s.page);
       cur.labelPage = s.page;
     } else if (s) {
       // filed after the labels are all known (below): it may belong to the NEXT label's line
@@ -451,6 +461,15 @@ export function assembleTcs(g: TcsGeometry, opts: TcsOptions = {}): TcsQuestion[
     }
     // A picture option is centred on its "n." label, so a tall one starts above it: file each
     // picture under the label nearest its middle, not the last label begun above it.
+    // A picture option 1 taller than its line starts ABOVE its "1." label, so it was read while
+    // the stem was still open (CGL 2022 Tier II Q6, a stacked fraction). A stem picture whose box
+    // straddles option 1's label line is option 1's.
+    for (const im of q.stemPics) {
+      if (im.page === q.optPage[0] && im.y0 <= q.optMid[0] && q.optMid[0] <= im.y1) {
+        q.stemImages = q.stemImages.filter((n) => n !== im.name);
+        q.optPics.push(im);
+      }
+    }
     for (const im of q.optPics) {
       const mid = (im.y0 + im.y1) / 2;
       let best = 0;
