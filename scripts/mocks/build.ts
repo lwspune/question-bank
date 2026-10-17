@@ -65,6 +65,8 @@ import {
   UPSC_GS1_PAPER,
   UPSC_CSAT_PAPER,
   SSC_CGL_T1_PAPER,
+  SSC_CGL_T2_PAPER,
+  SSC_CGL_T2_COMPUTER_PAPER,
   type MockPaperBlueprint,
 } from "../../src/lib/mocks/blueprints";
 import type { MockAnswerKey, OptionLabel } from "../../src/lib/mocks/answers";
@@ -95,7 +97,7 @@ import { deriveMainsSittings, mainsBlueprint } from "./mpscMainsSittings";
 import { PAPERS as MPSC_MAINS_PAPERS } from "../mpsc-mains/config";
 import { deriveUpscSittings } from "./upscSittings";
 import { PAPERS as UPSC_PAPERS } from "../upsc/config";
-import { sscSittings } from "./sscSittings";
+import { sscSittings, sscT2Sittings, t2Rows, withHeld } from "./sscSittings";
 import { mockTestRow } from "../../src/lib/mocks/row";
 
 function loadEnv() {
@@ -722,6 +724,26 @@ function sscCglSittings(): SourceFileSitting[] {
   }));
 }
 
+/**
+ * SSC CGL Tier II Paper 1: two mocks per sitting (sscSittings.ts), the ranked Sections I
+ * and II and the qualifying Computer Knowledge module, every flawed question as grace. A
+ * sitting with HELD questions gets its own blueprint counts (withHeld), so each sitting is
+ * built against its own.
+ */
+async function buildSscT2(db: SupabaseClient, run: RunState): Promise<void> {
+  for (const s of sscT2Sittings()) {
+    const grace = new Set(s.graceNumbers);
+    const asGrace = (rows: PaperQuestionRow[]) => rows.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r));
+    const base = { sourceFile: s.sourceFile, year: s.year };
+    await buildFromSourceFiles(db, withHeld(SSC_CGL_T2_PAPER, s.heldSubjects), [
+      { ...base, key: s.key, slug: s.slug, title: s.title, prepare: (rows) => asGrace(t2Rows(rows, "ranked")) },
+    ], run, "sscSittings.ts");
+    await buildFromSourceFiles(db, withHeld(SSC_CGL_T2_COMPUTER_PAPER, s.heldSubjects), [
+      { ...base, key: `${s.key}-computer`, slug: s.computerSlug, title: s.computerTitle, prepare: (rows) => asGrace(t2Rows(rows, "computer")) },
+    ], run, "sscSittings.ts");
+  }
+}
+
 /** UPSC sittings for ONE of its two papers, withdrawn items as grace. */
 function upscSittings(paper: 1 | 2): SourceFileSitting[] {
   return deriveUpscSittings(Object.values(UPSC_PAPERS))
@@ -763,12 +785,13 @@ async function main() {
   const runJipmat = !paperFilter || paperFilter === "jipmat";
   const runUpsc = !paperFilter || paperFilter === "upsc";
   const runSsc = !paperFilter || paperFilter === "ssc-cgl";
+  const runSscT2 = !paperFilter || paperFilter === "ssc-cgl-tier-2";
   // Opt-in ONLY: the Mains rows are PRIVATE until those exams go public, and the
   // builder reads PUBLIC rows, so a default run would report every one as a failure.
   const runMpscMains = paperFilter === "mpsc-mains";
-  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runMpscMains) {
+  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runMpscMains) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, mpsc-mains)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, mpsc-mains)`
     );
   }
 
@@ -827,6 +850,7 @@ async function main() {
     await buildFromSourceFiles(db, MPSC_SSP_GS1_PAPER, mpscSittings(MPSC_SSP_PAPERS, sspMockTitle), run, "mpscSittings.ts");
   }
   if (runSsc) await buildFromSourceFiles(db, SSC_CGL_T1_PAPER, sscCglSittings(), run, "sscSittings.ts");
+  if (runSscT2) await buildSscT2(db, run);
   if (runMpscMains) await buildMpscMains(db, run);
 
   console.log(`\n${apply ? "Upserted" : "Would build"} ${run.built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);

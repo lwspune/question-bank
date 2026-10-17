@@ -22,8 +22,10 @@
  */
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { DAYS, SECTION_SUBJECTS, SHIFTS, TRANSCRIPTS, type Shift } from "../ssc-cgl/config";
+import { DAYS, HELD, LAYOUTS, SECTION_SUBJECTS, SHIFTS, TRANSCRIPTS, layoutOf, type Shift } from "../ssc-cgl/config";
 import { parseTranscript, type Label, type TranscriptQuestion } from "../ssc-cgl/lib";
+import type { MockPaperBlueprint } from "../../src/lib/mocks/blueprints";
+import type { PaperQuestionRow } from "../../src/lib/mocks/reconstruct";
 
 export type SscOverride = { questionNumber: number; questionId: string; subjectName: string; answer: Label };
 export type SscSitting = {
@@ -95,4 +97,103 @@ export function sscSittings(): SscSitting[] {
   const repeats: Record<string, Repeat[]> = JSON.parse(readFileSync(join(TRANSCRIPTS, "..", "repeats.json"), "utf8"));
   const missing = Object.fromEntries(Object.entries(DAYS).map(([day, d]) => [day, d.missing]));
   return deriveSscSittings(SHIFTS, transcripts, repeats, missing);
+}
+
+/**
+ * SSC CGL Tier II Paper 1 sittings (owner, 2026-10-17): TWO mocks per sitting. The
+ * ranked one is Sections I and II (SSC_CGL_T2_PAPER, 130 questions), the score SSC ranks
+ * on; Computer Knowledge, qualifying only, is its own 15-minute mock.
+ *
+ * Only the five-module paper (CGL 2022 on). Before that Paper 1 was Quantitative
+ * Abilities alone, a different paper with its own marking: `isFullPaper` says which days
+ * print the five modules.
+ *
+ * Held: a question config HELD keeps PRIVATE (unanswerable as printed) is not in the
+ * bank's PUBLIC rows, so the mock serves the paper without it. `heldSubjects` names the
+ * module of each, and withHeld() takes them off their section's count, so the count is
+ * still a hard check that every OTHER question came back.
+ */
+export type SscT2Sitting = {
+  key: string;
+  sourceFile: string;
+  year: number;
+  slug: string;
+  title: string;
+  computerSlug: string;
+  computerTitle: string;
+  graceNumbers: number[];
+  heldSubjects: string[];
+};
+
+/** The subject printed at a five-module question number (1-30 Maths, 31-60 Reasoning, ...). */
+function t2SubjectAt(number: number, named?: string): string {
+  let end = 0;
+  for (const section of LAYOUTS[2]) {
+    end += section.count;
+    if (number <= end) return named ?? section.subjects[0];
+  }
+  throw new Error(`Q${number} is past the ${end} questions of Tier II Paper 1`);
+}
+
+export function deriveSscT2Sittings(
+  shifts: Record<string, Shift>,
+  transcripts: Record<string, TranscriptQuestion[]>,
+  held: Record<string, number[]>,
+  isFullPaper: (day: string) => boolean
+): SscT2Sitting[] {
+  return Object.entries(shifts)
+    .filter(([id, s]) => transcripts[id] && s.day.startsWith("t2-") && isFullPaper(s.day))
+    .map(([id, s]) => {
+      const blocks = transcripts[id];
+      const byNumber = new Map(blocks.map((q) => [q.number, q]));
+      const heldSubjects = (held[id] ?? []).map((n) => {
+        const q = byNumber.get(n);
+        if (!q) throw new Error(`${id}: HELD names Q${n}, which its transcript does not hold`);
+        return t2SubjectAt(n, q.subject);
+      });
+      const date = s.day.slice(3);
+      const title = `SSC CGL ${s.pyqNote}`;
+      return {
+        key: id,
+        sourceFile: s.sourceFile,
+        year: s.pyqYear,
+        slug: `ssc-cgl-tier-2-${date}`,
+        title,
+        computerSlug: `ssc-cgl-tier-2-${date}-computer`,
+        computerTitle: `${title}: Computer Knowledge`,
+        graceNumbers: blocks.filter((q) => q.flawed).map((q) => q.number),
+        heldSubjects,
+      };
+    });
+}
+
+/** `bp` with one question off each section a held subject falls in; `bp` itself when none does. */
+export function withHeld(bp: MockPaperBlueprint, heldSubjects: string[]): MockPaperBlueprint {
+  const off = new Map<string, number>();
+  for (const subject of heldSubjects) {
+    const section = bp.sections.find((x) => x.subjects.includes(subject));
+    if (section) off.set(section.key, (off.get(section.key) ?? 0) + 1);
+  }
+  if (!off.size) return bp;
+  return {
+    ...bp,
+    sections: bp.sections.map((x) => (off.has(x.key) && x.count != null ? { ...x, count: x.count - off.get(x.key)! } : x)),
+  };
+}
+
+const COMPUTER = "Computer Knowledge";
+
+/** A sitting's rows for one of its two mocks: Computer Knowledge alone, or everything else. */
+export function t2Rows(rows: PaperQuestionRow[], mock: "ranked" | "computer"): PaperQuestionRow[] {
+  return rows.filter((r) => (r.subjectName === COMPUTER) === (mock === "computer"));
+}
+
+/** The live registry: every committed five-module Tier II shift, read from its transcript. */
+export function sscT2Sittings(): SscT2Sitting[] {
+  const transcripts: Record<string, TranscriptQuestion[]> = {};
+  for (const [id, s] of Object.entries(SHIFTS)) {
+    const f = join(TRANSCRIPTS, `${id}.txt`);
+    if (s.day.startsWith("t2-") && existsSync(f)) transcripts[id] = parseTranscript(readFileSync(f, "utf8"));
+  }
+  return deriveSscT2Sittings(SHIFTS, transcripts, HELD, (day) => layoutOf(DAYS[day]) === LAYOUTS[2]);
 }

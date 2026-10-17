@@ -16,8 +16,18 @@ import type { MockListItem } from "@/lib/mocks/query";
  * exams (Prelims + five Mains); listing them flat buried the rest of the rail.
  */
 describe("mock families", () => {
-  it("collapses MPSC and IPMAT — each has 2+ mock exams — and nothing else", () => {
-    expect(getMockFamilies().map((f) => f.slug)).toEqual(["ipmat", "mpsc"]);
+  it("collapses MPSC, IPMAT and SSC CGL — each has 2+ mock exams — and nothing else", () => {
+    expect(getMockFamilies().map((f) => f.slug)).toEqual(["ipmat", "mpsc", "ssc-cgl-tiers"]);
+  });
+
+  it("a family slug is a URL segment: dashes for spaces, and the axis added when the name is already an exam's slug", () => {
+    // "SSC CGL" lowercased is "ssc cgl" (a space in a URL) and dashed is "ssc-cgl",
+    // which is Tier I's own exam page. So the family page is /mock/exam/ssc-cgl-tiers.
+    const ssc = getMockFamily("ssc-cgl-tiers")!;
+    expect(ssc.name).toBe("SSC CGL");
+    expect(ssc.stages[0].members.map((m) => m.slug)).toEqual(["ssc-cgl", "ssc-cgl-tier-2"]);
+    expect(mockFamilyOf("ssc-cgl")?.slug).toBe("ssc-cgl-tiers");
+    for (const f of getMockFamilies()) expect(f.slug).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
   });
 
   it("MPSC's members group by stage, Prelims before Mains, in registry order", () => {
