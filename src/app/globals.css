@@ -247,6 +247,27 @@ a[data-nav-pending] {
     color: transparent;
   }
   .dark .stat-gradient { background-image: linear-gradient(90deg, hsl(var(--brand-accent)), #67e8f9); }
+
+  /* The V chat window (2026-10-18): the student's messages and the send
+     button, the logo's blue deepening to a darker blue so white text stays
+     above 6:1. */
+  .v-gradient {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 100%);
+    box-shadow: 0 6px 16px -10px rgb(29 78 216 / 0.7);
+  }
+  /* V's thinking dots: three bounces, offset; still dots for reduced motion. */
+  .v-typing-dot {
+    animation: v-typing 1.2s ease-in-out infinite;
+  }
+  .v-typing-dot:nth-child(2) { animation-delay: 0.15s; }
+  .v-typing-dot:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes v-typing {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.45; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .v-typing-dot { animation: none; opacity: 0.7; }
+  }
 }
 
 /*
@@ -256,6 +277,19 @@ a[data-nav-pending] {
 */
 @media (min-width: 1280px) {
   html { font-size: 106.25%; }
+}
+
+/*
+  iOS Safari zooms the page in when a text box under 16px is tapped, and stays
+  zoomed: the V chat panel then ran off the right edge (2026-10-18). Every text
+  box here was 14px, so touch screens get 16px. `:root` puts the specificity
+  above a single text-size utility, so this wins wherever Tailwind's layers
+  place it. Pinned by tests/ios-input-zoom.test.ts.
+*/
+@media (pointer: coarse) {
+  :root :is(textarea, select, input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="color"])) {
+    font-size: 16px;
+  }
 }
 
 /* The mock result's review filter (ReviewFilterShell): the server-rendered

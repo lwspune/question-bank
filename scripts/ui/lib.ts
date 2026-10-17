@@ -43,6 +43,10 @@ export type ShotArgs = {
    *  aria-label) starts with this before the shot, so a dialog or sheet can be
    *  captured. `A >> B` taps A, waits, then taps B. */
   click: string[] | null;
+  /** `--storage=<file.json>`: a JSON object of localStorage entries set before
+   *  every page load (shots.ts), e.g. a saved V conversation under "v-chat",
+   *  so a state can be shown without writing anything to production. */
+  storage: string | null;
 };
 
 /** "/guide/nda?x=1" → "guide-nda"; "/" → "home". */
@@ -130,6 +134,7 @@ export function parseShotArgs(argv: string[]): ShotArgs {
     phase,
     asStudent: asStudentArg(value("as-student")),
     click: clickArg(value("click")),
+    storage: value("storage") ?? null,
   };
 }
 
@@ -140,6 +145,12 @@ function clickArg(raw: string | undefined): string[] | null {
     throw new Error(`--click= needs the start of each button's text, e.g. --click="Download" or --click="Chat with V >> Build a practice test"`);
   }
   return taps;
+}
+
+/** The script that seeds localStorage (`--storage`); objects are stored as JSON. Never throws. */
+export function storageScript(entries: Record<string, unknown>): string {
+  const pairs = Object.entries(entries).map(([k, v]) => [k, typeof v === "string" ? v : JSON.stringify(v)]);
+  return `try { for (const [k, v] of ${JSON.stringify(pairs)}) localStorage.setItem(k, v); } catch (e) {}`;
 }
 
 /** The page script that taps the control `--click` names; resolves whether it found one. */

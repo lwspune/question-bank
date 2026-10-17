@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { clickScript, pageSlug, planCaptures, parseShotArgs, sheetHtml, stubHeaderSession, VIEWPORTS } from "../scripts/ui/lib";
+import { clickScript, pageSlug, planCaptures, parseShotArgs, sheetHtml, storageScript, stubHeaderSession, VIEWPORTS } from "../scripts/ui/lib";
 
 /**
  * `npm run ui:shots` (2026-10-04): the before/after screenshot sheet every
@@ -192,5 +192,27 @@ describe("--click", () => {
 
   it("also finds an icon-only button by its aria-label", () => {
     expect(clickScript("Chat with V")).toContain("aria-label");
+  });
+});
+
+describe("--storage: seed localStorage before every page load", () => {
+  // The V chat panel restores its conversation from localStorage ("v-chat"),
+  // so a sheet can show real message bubbles without sending a question to
+  // production (which would write a fake row into the chat log).
+  it("takes a JSON file path, null when absent", () => {
+    expect(parseShotArgs(["--pages=/"]).storage).toBeNull();
+    expect(parseShotArgs(["--pages=/", "--storage=tmp/seed.json"]).storage).toBe("tmp/seed.json");
+  });
+
+  it("writes each entry, serialising objects and keeping strings as they are", () => {
+    const set: Record<string, string> = {};
+    const localStorage = { setItem: (k: string, v: string) => void (set[k] = v) };
+    new Function("localStorage", storageScript({ "v-chat": { v: 1, turns: [] }, theme: "dark" }))(localStorage);
+    expect(set).toEqual({ "v-chat": '{"v":1,"turns":[]}', theme: "dark" });
+  });
+
+  it("never throws where storage is blocked", () => {
+    const localStorage = { setItem: () => { throw new Error("blocked"); } };
+    expect(() => new Function("localStorage", storageScript({ a: "b" }))(localStorage)).not.toThrow();
   });
 });
