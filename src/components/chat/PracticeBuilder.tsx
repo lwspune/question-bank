@@ -21,8 +21,10 @@ import {
 } from "@/lib/practiceTests/builder";
 import { practiceLengths, type PracticeDifficulty } from "@/lib/practiceTests/pick";
 import type { MockStartState } from "@/lib/mocks/quota";
+import { practiceBuilderNote, practiceCardLine } from "@/lib/practiceTests/quotaCopy";
 import type { BuilderStepId } from "@/lib/chat/builderSteps";
 import { readStoredChat } from "@/lib/chat/localChat";
+import { MESSAGE_IN, USER_BUBBLE, V_BUBBLE } from "./chatStyles";
 
 type ExamOption = { slug: string; name: string };
 type SubjectOption = { key: string; label: string };
@@ -115,6 +117,9 @@ export default function PracticeBuilder({
   const [needsSignIn, setNeedsSignIn] = useState(false);
   const [built, setBuilt] = useState<{ test: BuiltTest; start: MockStartState } | null>(null);
   const [starting, setStarting] = useState(false);
+  // Today's free practice tests, read when V opens so a student who has used
+  // them hears it before the steps, not on each built card (2026-10-17).
+  const [quota, setQuota] = useState<MockStartState | null>(null);
   const [here, setHere] = useState("/");
   const listRef = useRef<HTMLDivElement>(null);
   const promptRef = useRef<HTMLDivElement>(null);
@@ -125,6 +130,18 @@ export default function PracticeBuilder({
   const subjectChapters = subjectKey ? chapters[subjectKey] : undefined;
 
   useEffect(() => setHere(window.location.pathname + window.location.search), []);
+
+  useEffect(() => {
+    let live = true;
+    getJson<{ state: MockStartState | null }>("/api/practice-tests/quota")
+      .then((b) => live && setQuota(b.state))
+      .catch(() => {
+        // No note is the safe default: the card and the start trigger still tell them.
+      });
+    return () => {
+      live = false;
+    };
+  }, []);
 
   // Load what the current step needs, once per exam and per subject.
   useEffect(() => {
@@ -234,6 +251,7 @@ export default function PracticeBuilder({
         return;
       }
       setBuilt({ test: body.test, start: body.start });
+      setQuota(body.start);
       toast.success("Your practice test is ready");
     } catch {
       toast.error("V is unavailable right now. Please try again.");
@@ -286,14 +304,24 @@ export default function PracticeBuilder({
   const doneSteps = BUILDER_STEPS.slice(0, BUILDER_STEPS.indexOf(step));
   const optionClass =
     "w-full justify-start whitespace-normal text-left h-auto min-h-10 py-2";
+  const note = built ? null : practiceBuilderNote(quota);
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <div ref={listRef} className="relative min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-3" aria-live="polite">
+      <div ref={listRef} className="relative min-h-0 flex-1 space-y-4 overflow-y-auto px-4 py-4" aria-live="polite">
+        {note?.kind === "usedUp" && (
+          <div className="space-y-1.5">
+            <VBubble text={note.text} />
+            <Link href={pricingHref(null, here)} className="ml-9 inline-block text-sm font-medium text-brand-accent underline">
+              See the Premium Pass
+            </Link>
+          </div>
+        )}
+        {note?.kind === "count" && <p className="text-xs text-muted-foreground">{note.text}</p>}
         {doneSteps.map((s) => (
           <div key={s} className="space-y-3">
             <VBubble text={PROMPTS[s]} />
-            <div className="ml-auto max-w-[85%] w-fit rounded-lg bg-brand px-3 py-2 text-sm text-brand-foreground">
+            <div className={USER_BUBBLE}>
               {answerLabel(s)}
             </div>
           </div>
@@ -440,7 +468,7 @@ export default function PracticeBuilder({
         )}
       </div>
 
-      <div className="flex items-center gap-2 border-t border-input px-3 py-2">
+      <div className="flex shrink-0 items-center gap-2 border-t border-border/70 bg-card px-3 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 shadow-[0_-12px_28px_-20px_rgb(15_29_74/0.35)] sm:pb-2">
         <Button variant="ghost" size="sm" onClick={goBack} aria-label={step === "exam" && !built ? "Back to V's questions" : "Back one step"}>
           <ChevronLeft className="h-4 w-4" aria-hidden />
           Back
@@ -473,9 +501,9 @@ export default function PracticeBuilder({
 
 function VBubble({ text }: { text: string }) {
   return (
-    <div className="flex max-w-[90%] items-end gap-1.5">
-      <img src="/chat/v-talk.png" alt="" aria-hidden className="h-6 w-6 shrink-0 object-contain" loading="lazy" />
-      <div className="rounded-lg bg-muted px-3 py-2 text-sm text-foreground">{text}</div>
+    <div className={`flex max-w-[90%] items-end gap-2 ${MESSAGE_IN}`}>
+      <img src="/chat/v-talk.png" alt="" aria-hidden className="h-7 w-7 shrink-0 object-contain" loading="lazy" />
+      <div className={V_BUBBLE}>{text}</div>
     </div>
   );
 }
@@ -509,6 +537,7 @@ function BuiltCard({
 }) {
   const { test, start } = built;
   const locked = start.kind === "locked";
+  const line = practiceCardLine(start);
   // The download box's clicks bubble here through its portal; count one per test.
   const downloadLogged = useRef(false);
   return (
@@ -520,12 +549,10 @@ function BuiltCard({
           {fresh ? ` · ${test.newToYou} new to you` : ""}
         </p>
       </div>
-      {start.kind === "free" && (
-        <p className="text-sm text-muted-foreground">Starting it uses today&apos;s free practice test.</p>
-      )}
+      {start.kind === "free" && line && <p className="text-sm text-muted-foreground">{line}</p>}
       {locked && (
         <p className="text-sm">
-          You&apos;ve used today&apos;s free practice test. Come back tomorrow, or{" "}
+          {line} Come back tomorrow, or{" "}
           <Link href={pricingHref(null, here)} className="font-medium text-brand-accent underline">
             get the Premium Pass
           </Link>{" "}

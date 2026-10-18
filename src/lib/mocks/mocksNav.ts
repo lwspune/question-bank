@@ -46,7 +46,7 @@ export function getMockExam(slug: string): MockExamNav | null {
  * would be a detour.
  */
 export type MockFamilyNav = {
-  /** "mpsc" — the family name lowercased; tested never to collide with an exam slug. */
+  /** "mpsc": the family name as a URL segment (familySlug); tested never to collide with an exam slug. */
   slug: string;
   /** "MPSC" — the registry `family`. */
   name: string;
@@ -54,13 +54,25 @@ export type MockFamilyNav = {
   stages: { stage: string | null; members: MockExamNav[] }[];
 };
 
+const urlSegment = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+/**
+ * A family page's slug: its name dashed ("SSC CGL" -> "ssc-cgl"). When that is already an
+ * exam's own page, as "ssc-cgl" is Tier I's, the family's axis is added ("ssc-cgl-tiers"),
+ * so neither page shadows the other.
+ */
+function familySlug(family: string, axis: string | undefined): string {
+  const base = urlSegment(family);
+  return EXAM_REGISTRY.some((e) => e.slug === base) ? `${base}-${urlSegment(axis ?? "exam")}s` : base;
+}
+
 export function getMockFamilies(): MockFamilyNav[] {
   const byFamily = new Map<string, MockFamilyNav>();
   for (const e of EXAM_REGISTRY) {
     if (e.hasMocks !== true || !e.family) continue;
     let fam = byFamily.get(e.family);
     if (!fam) {
-      fam = { slug: e.family.toLowerCase(), name: e.family, stages: [] };
+      fam = { slug: familySlug(e.family, e.familyAxis), name: e.family, stages: [] };
       byFamily.set(e.family, fam);
     }
     const stage = e.familyStage ?? null;

@@ -768,10 +768,14 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // Its own exam row, not Tier I's: a different paper (150 questions in five
     // modules, +3/-1, Computer Knowledge qualifying). Paper 1 of CGL 2024 (18 and
     // 20 Jan 2025) and CGL 2025 (18 Jan 2026), from SSC's response sheets, every
-    // answer derived blind. No mocks yet: their marking is a separate decision.
+    // answer derived blind.
     family: "SSC CGL",
     familyLabel: "Tier II",
     familyAxis: "Tier",
+    // Two mocks per sitting (owner, 2026-10-17): Sections I and II as ranked (130 q,
+    // +3/-1) and Computer Knowledge, qualifying only, on its own 15 minutes.
+    hasMocks: true,
+    pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,
   },

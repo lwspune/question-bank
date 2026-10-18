@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { Clock, FileText, Trophy } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { MockGroup } from "@/lib/mocks/catalogue";
+import { subjectFilterOptions, type MockGroup } from "@/lib/mocks/catalogue";
 import { OwnAttemptsProvider, MockAttemptBadge } from "./OwnAttempts";
+import SubjectFilter from "./SubjectFilter";
 
 function fmtMins(secs: number) {
   return `${Math.round(secs / 60)} min`;
@@ -23,6 +24,7 @@ export default function MockCatalogueList({
   groups,
   emptyMessage = "No mock tests published yet. Check back soon.",
   showSourceBadge = false,
+  subjectFilterExam,
 }: {
   groups: MockGroup[];
   emptyMessage?: string;
@@ -35,6 +37,12 @@ export default function MockCatalogueList({
    * telling them apart.
    */
   showSourceBadge?: boolean;
+  /**
+   * The exam's slug, to draw subject buttons above the groups and show one
+   * subject at a time (sectional lists, 2026-10-18). Ignored when the list has
+   * a single subject. The choice is remembered per exam, hence the slug.
+   */
+  subjectFilterExam?: string;
 }) {
   if (groups.length === 0) {
     return (
@@ -44,76 +52,97 @@ export default function MockCatalogueList({
     );
   }
 
+  const options = subjectFilterExam ? subjectFilterOptions(groups) : [];
+
   return (
     // This component stays a SERVER component: every title, link and stat a
     // crawler reads is rendered here and is unchanged by the personalisation
-    // below. The provider is the only client code on the page, it fetches the
-    // student's own attempts once for all groups, and it renders nothing at all
-    // when signed out — so the prerendered HTML is identical for anon.
+    // below. The provider fetches the student's own attempts once for all
+    // groups and renders nothing at all when signed out — so the prerendered
+    // HTML is identical for anon. The subject filter, the only other client
+    // code, hides groups but never removes one from the HTML.
     <OwnAttemptsProvider>
-      <div className="space-y-8">
-        {groups.map((group) => (
-        <section key={group.key}>
-          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
-            {group.label}
-            <span className="ml-2 font-normal normal-case tabular-nums">
-              {group.items.length}
-            </span>
-          </h2>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {group.items.map((m) => (
-              <Link
-                key={m.slug}
-                href={`/mock/${m.slug}`}
-                className="group relative rounded-lg border bg-card p-4 shadow-sm transition-all hover:border-brand-accent/40 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              >
-                {/* The corner stack is ABSOLUTELY POSITIONED and the text below
-                    reserves room for it, because the attempt badge arrives
-                    after hydration: laid out in flow it would shrink the
-                    title's first line, rewrap it, and grow the card — a layout
-                    shift on a page whose whole job is to be indexed. Reserved
-                    space costs one more wrapped line on some titles and is
-                    identical in the server and client renders, so nothing
-                    moves. */}
-                <div className="absolute right-4 top-4 flex flex-col items-end gap-1">
-                  {showSourceBadge && (
-                    <span className="rounded border px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
-                      {m.source === "pyq" ? "Past paper" : "Practice"}
-                    </span>
-                  )}
-                  <MockAttemptBadge mockId={m.id} />
-                </div>
-                <h3 className="pr-24 font-semibold leading-snug group-hover:text-brand-accent">
-                  {m.title}
-                </h3>
-                <dl
-                  className={cn(
-                    "mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground",
-                    // One badge clears the title's first line and never reaches
-                    // this row. TWO stacked badges can, so the stats reserve
-                    // room only where a source badge is also drawn.
-                    showSourceBadge && "pr-24"
-                  )}
-                >
-                  <div className="inline-flex items-center gap-1.5">
-                    <FileText className="h-3.5 w-3.5" aria-hidden />
-                    {m.totalQuestions} questions
-                  </div>
-                  <div className="inline-flex items-center gap-1.5">
-                    <Trophy className="h-3.5 w-3.5" aria-hidden />
-                    {m.totalMarks} marks
-                  </div>
-                  <div className="inline-flex items-center gap-1.5">
-                    <Clock className="h-3.5 w-3.5" aria-hidden />
-                    {fmtMins(m.durationSecs)}
-                  </div>
-                </dl>
-              </Link>
-            ))}
-          </div>
-        </section>
+      {subjectFilterExam && options.length > 0 ? (
+        <SubjectFilter
+          examSlug={subjectFilterExam}
+          options={options}
+          panels={groups.map((group) => ({
+            key: group.key,
+            node: <Group group={group} showSourceBadge={showSourceBadge} />,
+          }))}
+        />
+      ) : (
+        <div className="space-y-8">
+          {groups.map((group) => (
+            <Group key={group.key} group={group} showSourceBadge={showSourceBadge} />
+          ))}
+        </div>
+      )}
+    </OwnAttemptsProvider>
+  );
+}
+
+/** One heading and its grid of mock cards. */
+function Group({ group, showSourceBadge }: { group: MockGroup; showSourceBadge: boolean }) {
+  return (
+    <section>
+      <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+        {group.label}
+        <span className="ml-2 font-normal normal-case tabular-nums">
+          {group.items.length}
+        </span>
+      </h2>
+      <div className="grid gap-3 sm:grid-cols-2">
+        {group.items.map((m) => (
+          <Link
+            key={m.slug}
+            href={`/mock/${m.slug}`}
+            className="group relative rounded-lg border bg-card p-4 shadow-sm transition-all hover:border-brand-accent/40 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            {/* The corner stack is ABSOLUTELY POSITIONED and the text below
+                reserves room for it, because the attempt badge arrives
+                after hydration: laid out in flow it would shrink the
+                title's first line, rewrap it, and grow the card — a layout
+                shift on a page whose whole job is to be indexed. Reserved
+                space costs one more wrapped line on some titles and is
+                identical in the server and client renders, so nothing
+                moves. */}
+            <div className="absolute right-4 top-4 flex flex-col items-end gap-1">
+              {showSourceBadge && (
+                <span className="rounded border px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
+                  {m.source === "pyq" ? "Past paper" : "Practice"}
+                </span>
+              )}
+              <MockAttemptBadge mockId={m.id} />
+            </div>
+            <h3 className="pr-24 font-semibold leading-snug group-hover:text-brand-accent">
+              {m.title}
+            </h3>
+            <dl
+              className={cn(
+                "mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground",
+                // One badge clears the title's first line and never reaches
+                // this row. TWO stacked badges can, so the stats reserve
+                // room only where a source badge is also drawn.
+                showSourceBadge && "pr-24"
+              )}
+            >
+              <div className="inline-flex items-center gap-1.5">
+                <FileText className="h-3.5 w-3.5" aria-hidden />
+                {m.totalQuestions} questions
+              </div>
+              <div className="inline-flex items-center gap-1.5">
+                <Trophy className="h-3.5 w-3.5" aria-hidden />
+                {m.totalMarks} marks
+              </div>
+              <div className="inline-flex items-center gap-1.5">
+                <Clock className="h-3.5 w-3.5" aria-hidden />
+                {fmtMins(m.durationSecs)}
+              </div>
+            </dl>
+          </Link>
         ))}
       </div>
-    </OwnAttemptsProvider>
+    </section>
   );
 }

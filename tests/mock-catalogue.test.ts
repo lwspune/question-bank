@@ -24,6 +24,8 @@ import {
   groupMocksForType,
   mockTypeHref,
   mockKindNote,
+  subjectFilterOptions,
+  pickStoredSubject,
   type MockTypeSlug,
 } from "@/lib/mocks/catalogue";
 import type { MockListItem } from "@/lib/mocks/query";
@@ -261,6 +263,65 @@ describe("groupMocksForType — sectional", () => {
       mock({ slug: "s0", scope: "sectional", pyqYear: null, sections: [] }),
     ]);
     expect(groups.flatMap((g) => g.items.map((m) => m.slug))).toEqual(["s0"]);
+  });
+});
+
+describe("subjectFilterOptions — the subject buttons on the sectional list", () => {
+  const sectional = (slug: string, label: string) =>
+    mock({
+      slug,
+      scope: "sectional",
+      pyqYear: null,
+      sections: [{ key: "k", label, count: 25 }],
+    });
+
+  it("one option per subject group, in the list's own A to Z order, with its test count", () => {
+    const groups = groupMocksForType("sectional", [
+      sectional("p1", "Physics"),
+      sectional("m1", "Mathematics"),
+      sectional("p2", "Physics"),
+      sectional("c1", "Chemistry"),
+    ]);
+    expect(subjectFilterOptions(groups)).toEqual([
+      { key: "Chemistry", label: "Chemistry", count: 1 },
+      { key: "Mathematics", label: "Mathematics", count: 1 },
+      { key: "Physics", label: "Physics", count: 2 },
+    ]);
+  });
+
+  it("offers no filter when there is only one subject, since it would filter nothing", () => {
+    const groups = groupMocksForType("sectional", [
+      sectional("m1", "Mathematics"),
+      sectional("m2", "Mathematics"),
+    ]);
+    expect(subjectFilterOptions(groups)).toEqual([]);
+  });
+
+  it("offers no filter on an empty list", () => {
+    expect(subjectFilterOptions([])).toEqual([]);
+  });
+});
+
+describe("pickStoredSubject — restoring the remembered choice", () => {
+  const options = [
+    { key: "Chemistry", label: "Chemistry", count: 3 },
+    { key: "Physics", label: "Physics", count: 5 },
+  ];
+
+  it("restores a subject that is still on the list", () => {
+    expect(pickStoredSubject("Physics", options)).toBe("Physics");
+  });
+
+  it("starts on the first subject when nothing was stored", () => {
+    expect(pickStoredSubject(null, options)).toBe("Chemistry");
+  });
+
+  it("falls back to the first subject when the stored one is gone, never to an empty list", () => {
+    expect(pickStoredSubject("Biology", options)).toBe("Chemistry");
+  });
+
+  it("returns null when there are no options to pick from", () => {
+    expect(pickStoredSubject("Physics", [])).toBeNull();
   });
 });
 

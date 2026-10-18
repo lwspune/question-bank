@@ -16,24 +16,16 @@ import { config } from "dotenv";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { Client } from "pg";
-import { ALLOWED_TEST_REFS } from "../../tests/helpers/testdb";
+import { ALLOWED_TEST_REFS, extractDbUrlRef } from "../../tests/helpers/testdb";
 
 config({ path: path.join(process.cwd(), ".env.test.local") });
 
 const DRY = process.argv.includes("--dry");
 
-function refFromDbUrl(dbUrl: string): string | null {
-  // db.<ref>.supabase.co  OR pooler user postgres.<ref>
-  const host = /@(?:db\.)?([a-z0-9]{20})\.supabase\.co/i.exec(dbUrl);
-  if (host) return host[1].toLowerCase();
-  const pooler = /postgres(?:ql)?:\/\/postgres\.([a-z0-9]{20}):/i.exec(dbUrl);
-  return pooler ? pooler[1].toLowerCase() : null;
-}
-
 async function main(): Promise<void> {
   const dbUrl = process.env.TEST_SUPABASE_DB_URL;
   if (!dbUrl) throw new Error("TEST_SUPABASE_DB_URL not set (see .env.test.local.example)");
-  const ref = refFromDbUrl(dbUrl);
+  const ref = extractDbUrlRef(dbUrl);
   if (!ref || !ALLOWED_TEST_REFS.has(ref)) {
     throw new Error(
       `Refusing to run: DB URL resolves to project ref ${ref ?? "(none)"}, ` +

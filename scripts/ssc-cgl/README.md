@@ -276,7 +276,7 @@ python -P scripts/ssc-cgl/raster_figures.py t2-2026-01-18-s1       # figures/<sh
 | 20 Jan 2025 | 145/150 | Q54, Q87, Q136 (judgement); Q66 (two right), Q119 (Kanishka third, Rabatak fourth) held as flawed | none | Q16 (two right), Q122 (option misquotes Art. 124). Q108 GA not independent |
 | 18 Jan 2026 | 148/150 | Q35 (figure unreadable) | Q3 (count gives 25/120, key 23/120) | Q35, Q59 HELD PRIVATE (`HELD` in config): washed-out figures |
 
-No mocks yet: Tier II is +3/-1 with Computer qualifying, a separate decision.
+Mocks (2026-10-17, owner): two per five-module sitting, built by `scripts/mocks/sscSittings.ts` `sscT2Sittings`: Sections I and II as ranked (130 q, 390 marks, 2 hours, +3/-1) and Computer Knowledge alone (20 q, 15 min), since SSC marks it qualifying only. A HELD question is left out and its section counted one short. The Quant-only papers before CGL 2022 are a different paper and get no mock from this. Rebuild: `npx tsx scripts/mocks/build.ts --paper=ssc-cgl-tier-2 --apply --publish`.
 
 ## Not read yet (source problems, not ours)
 
