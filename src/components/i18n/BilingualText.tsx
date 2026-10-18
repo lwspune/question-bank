@@ -35,10 +35,18 @@ export function BilingualStem({
   );
 }
 
-/** The solution in the viewer's language(s); English-only renders as a bare BlockText. */
-export function BilingualSolution({ q }: { q: Pick<Bilingual, "translations"> & { solution: string | null } }) {
+/** The solution in the viewer's language(s); English-only renders as a bare BlockText.
+ *  `format` reshapes each version's text first (the board readers break it into
+ *  one sentence per line). */
+export function BilingualSolution({
+  q,
+  format,
+}: {
+  q: Pick<Bilingual, "translations"> & { solution: string | null };
+  format?: (text: string) => string;
+}) {
   const [lang] = useQuestionLang();
-  const versions = solutionVersions(q, lang);
+  const versions = solutionVersions(q, lang).map((v) => (format ? { ...v, text: format(v.text) } : v));
   if (!versions.length) return null;
   return (
     <div className="space-y-2">

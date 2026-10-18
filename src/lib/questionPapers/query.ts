@@ -8,7 +8,7 @@ import { unstable_cache } from "next/cache";
 import { singleFlight } from "@/lib/cache/singleFlight";
 import { buildFailureMemoMs } from "@/lib/cache/buildPhase";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
-import type { BoardQuestion } from "@/lib/board/query";
+import { BOARD_QUESTION_COLUMNS, mapBoardQuestion, type BoardQuestion, type RawBoardQuestion } from "@/lib/board/query";
 import { assemblePaper, type PaperItemRow, type PaperListing, type PaperViewItem } from "./listing";
 import { listWithFreshOnMiss } from "./freshOnMiss";
 
@@ -121,19 +121,6 @@ type RawItem = {
   question_id: string;
 };
 
-type RawQuestion = {
-  id: string;
-  question_number: string | null;
-  text: string;
-  context: string | null;
-  solution: string | null;
-  image_url: string | null;
-  solution_image_url: string | null;
-  question_format: "mcq" | "subjective";
-  set_id: string | null;
-  options: { label: string; text: string; is_correct: boolean; image_url: string | null }[] | null;
-};
-
 /** Board questions by id, each with its options. Also read by a homework day page. */
 export async function loadBoardQuestions(client: SupabaseClient, ids: string[]): Promise<BoardQuestion[]> {
   const out: BoardQuestion[] = [];
@@ -142,27 +129,10 @@ export async function loadBoardQuestions(client: SupabaseClient, ids: string[]):
   for (let i = 0; i < unique.length; i += 150) {
     const { data, error } = await client
       .from("questions")
-      .select(
-        "id, question_number, text, context, solution, image_url, solution_image_url, question_format, set_id, options(label, text, is_correct, image_url)"
-      )
+      .select(BOARD_QUESTION_COLUMNS)
       .in("id", unique.slice(i, i + 150));
     if (error) throw new Error(`paper questions: ${error.message}`);
-    for (const r of (data ?? []) as RawQuestion[]) {
-      out.push({
-        id: r.id,
-        questionNumber: r.question_number,
-        text: r.text,
-        context: r.context,
-        solution: r.solution,
-        imageUrl: r.image_url,
-        solutionImageUrl: r.solution_image_url,
-        format: r.question_format,
-        setId: r.set_id,
-        options: (r.options ?? [])
-          .map((o) => ({ label: o.label, text: o.text, isCorrect: o.is_correct, imageUrl: o.image_url }))
-          .sort((a, b) => a.label.localeCompare(b.label)),
-      });
-    }
+    for (const r of (data ?? []) as unknown as RawBoardQuestion[]) out.push(mapBoardQuestion(r));
   }
   return out;
 }

@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import { BookOpen, ChevronDown, ChevronRight } from "lucide-react";
 import BlockText from "@/components/math/BlockText";
+import BoardPassage from "@/app/board/BoardPassage";
+import BoardLangSwitch from "@/app/board/BoardLangSwitch";
 import { PresentRegistry } from "@/components/present/PresentRegistry";
 import { fromBoardQuestion, type PresentableQuestion } from "@/lib/present/viewModel";
 import { cn } from "@/lib/utils";
@@ -153,6 +155,7 @@ export default function BoardReader({
       {pyqTotal > 0 && (
         <PresentRegistry>
           <div className="space-y-6" id="board-pyqs" hidden={panel !== "pyqs"}>
+            <BoardLangSwitch questions={pyqSittings.flatMap((s) => s.questions)} />
             <RecurrenceStrip
               sittings={pyqSittings}
               examName={examName}
@@ -432,7 +435,7 @@ function PyqSitting({
             <li key={q.id}>
               {showContext && (
                 <div className="mb-2 rounded-md border-l-2 border-brand-accent/40 bg-muted/30 px-3 py-2 font-serif text-sm italic text-muted-foreground">
-                  <BlockText text={q.context as string} />
+                  <BoardPassage q={q} />
                 </div>
               )}
               <BoardQuestionItem

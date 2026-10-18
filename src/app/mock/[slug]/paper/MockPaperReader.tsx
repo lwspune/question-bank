@@ -10,7 +10,8 @@
  * paper. The answer opens on a tap, as on a board paper.
  */
 import { useMemo } from "react";
-import BlockText from "@/components/math/BlockText";
+import BoardPassage from "@/app/board/BoardPassage";
+import BoardLangSwitch from "@/app/board/BoardLangSwitch";
 import { PresentRegistry } from "@/components/present/PresentRegistry";
 import { fromBoardQuestion } from "@/lib/present/viewModel";
 import type { BoardQuestion } from "@/lib/board/query";
@@ -41,6 +42,7 @@ export default function MockPaperReader({
   return (
     <PresentRegistry>
       <div className="space-y-8">
+        <BoardLangSwitch questions={byId.values()} />
         {sections.map((sec) => (
           <section
             key={sec.key}
@@ -66,7 +68,7 @@ export default function MockPaperReader({
                   <li key={it.position}>
                     {showContext && (
                       <div className="mb-2 rounded-md border-l-2 border-brand-accent/40 bg-muted/30 px-3 py-2 font-serif text-sm text-muted-foreground">
-                        <BlockText text={q.context as string} />
+                        <BoardPassage q={q} />
                       </div>
                     )}
                     <BoardQuestionItem

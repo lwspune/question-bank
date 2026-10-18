@@ -687,6 +687,28 @@ export const PAPERS: Record<string, Paper> = Object.fromEntries(
 export const OFFICIAL_DIR = join(SOURCE_ROOT, "_board_site_march");
 export const officialPdf = (paper: Paper) => join(OFFICIAL_DIR, paper.sourceFile);
 
+// The board's MARATHI-MEDIUM print of a paper (mahahsscboard.in, 2024-2026 only),
+// the same paper as its English twin, read into question_translations (0118)
+// via marathi.ts. File = the English source file with an `_M` suffix. Geography
+// March 2024 is absent: the board posts no Marathi copy of it. The Marathi-only
+// 2023 Social Sciences scans above are a different case: they have no English
+// twin to hang off, so they stay out.
+export const MARATHI_DIR = join(SOURCE_ROOT, "_board_site_marathi");
+export const marathiPdf = (paper: Paper) => join(MARATHI_DIR, paper.sourceFile.replace(/\.pdf$/, "_M.pdf"));
+
+/** Paper id → the Marathi print's cover code (the English code + 1). */
+export const MARATHI_CODES: Record<string, string> = {
+  "alg-2024": "N 620", "geo-2024": "N 633", "sci1-2024": "N 641", "sci2-2024": "N 654", "hist-2024": "N 662",
+  "alg-2025": "N 820", "geo-2025": "N 833", "sci1-2025": "N 841", "sci2-2025": "N 854", "hist-2025": "N 862", "geog-2025": "N 870",
+  "alg-2026": "N 920", "geo-2026": "N 933", "sci1-2026": "N 941", "sci2-2026": "N 954", "hist-2026": "N 962", "geog-2026": "N 970",
+  "alg-2024-jul": "N 385", "geo-2024-jul": "N 398", "sci1-2024-jul": "N 406", "sci2-2024-jul": "N 419", "hist-2024-jul": "N 427", "geog-2024-jul": "N 435",
+  "alg-2025-jul": "N 685", "geo-2025-jul": "N 698", "sci1-2025-jul": "N 706", "sci2-2025-jul": "N 719", "hist-2025-jul": "N 727", "geog-2025-jul": "N 735",
+  "alg-2026-jun": "N 385", "geo-2026-jun": "N 398", "sci1-2026-jun": "N 406", "sci2-2026-jun": "N 419", "hist-2026-jun": "N 427", "geog-2026-jun": "N 435",
+};
+
+export const marathiJsonPath = (id: string) => join(DATA, `${id}.mr.json`);
+export const marathiSolutionsPath = (id: string) => join(DATA, `${id}.mr-sol.json`);
+
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
 
 export function requirePaper(id: string | undefined): Paper {

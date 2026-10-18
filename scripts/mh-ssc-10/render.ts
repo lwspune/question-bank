@@ -10,14 +10,15 @@
 import { mkdirSync, writeFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
-import { OUT, officialPdf, requirePaper } from "./config";
+import { OUT, officialPdf, marathiPdf, requirePaper } from "./config";
 
 // --official renders the board's born-digital copy of a March paper into
 // out/<id>/official/ (config.ts officialPdf), for the official cross-check.
-function render(id: string, official: boolean) {
+// --marathi renders the Marathi-medium print into out/<id>/marathi/ (marathi.ts).
+function render(id: string, variant: "scan" | "official" | "marathi") {
   const paper = requirePaper(id);
-  const dir = official ? join(OUT, id, "official") : join(OUT, id);
-  const pdf = official ? officialPdf(paper) : paper.pdf;
+  const dir = variant === "scan" ? join(OUT, id) : join(OUT, id, variant);
+  const pdf = variant === "official" ? officialPdf(paper) : variant === "marathi" ? marathiPdf(paper) : paper.pdf;
   rmSync(dir, { recursive: true, force: true });
   mkdirSync(dir, { recursive: true });
 
@@ -33,7 +34,7 @@ for p in range(n):
 d.close(); print("rendered", n, "pages")
 `;
   mkdirSync(OUT, { recursive: true });
-  const pyFile = join(OUT, `_render_${id}${official ? "_official" : ""}.py`);
+  const pyFile = join(OUT, `_render_${id}_${variant}.py`);
   writeFileSync(pyFile, py);
   const res = spawnSync("python", [pyFile, pdf, dir], { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
   if (res.status !== 0) throw new Error(`render failed: ${res.stderr}`);
@@ -43,7 +44,7 @@ d.close(); print("rendered", n, "pages")
 
 const id = process.argv[2];
 if (!id) {
-  console.error("usage: tsx scripts/mh-ssc-10/render.ts <paperId> [--official]");
+  console.error("usage: tsx scripts/mh-ssc-10/render.ts <paperId> [--official|--marathi]");
   process.exit(1);
 }
-render(id, process.argv.includes("--official"));
+render(id, process.argv.includes("--official") ? "official" : process.argv.includes("--marathi") ? "marathi" : "scan");

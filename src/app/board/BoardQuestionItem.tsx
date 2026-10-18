@@ -19,7 +19,9 @@ import { optionMark } from "@/lib/questions/optionMark";
 import { dailyRevealLimit } from "@/components/reveal/useRevealMeter";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
 import { RevealDailyPrompt } from "@/components/reveal/RevealDailyLimit";
-import type { BoardQuestion } from "@/lib/board/query";
+import { asBilingual, type BoardQuestion } from "@/lib/board/query";
+import { hasMarathi } from "@/lib/i18n/bilingual";
+import { BilingualOption, BilingualSolution, BilingualStem } from "@/components/i18n/BilingualText";
 
 function questionHasAnswer(q: BoardQuestion): boolean {
   return !!q.solution || q.options.some((o) => o.isCorrect);
@@ -64,6 +66,9 @@ export default function BoardQuestionItem({
   marks?: number;
 }) {
   const hasAnswer = questionHasAnswer(q);
+  // The board's Marathi-medium print of the same question, when there is one
+  // (MH SSC 10). An English-only question takes the plain path, unchanged.
+  const bi = hasMarathi(q) ? asBilingual(q) : null;
 
   return (
     <div className="rounded-lg border bg-card p-3 sm:p-4">
@@ -83,7 +88,7 @@ export default function BoardQuestionItem({
           </span>
         )}
         <div className="order-last min-w-0 basis-full font-serif text-[15px] leading-relaxed sm:order-none sm:flex-1 [&_.katex]:max-w-full">
-          <BlockText text={q.text} />
+          {bi ? <BilingualStem q={bi} field="text" /> : <BlockText text={q.text} />}
         </div>
         <PresentButton question={present} order={order} className="ml-auto mt-0.5" />
       </div>
@@ -104,7 +109,11 @@ export default function BoardQuestionItem({
                 <>
                   <span className="mt-0.5 shrink-0 font-mono text-xs font-bold text-muted-foreground">{o.label}.</span>
                   <div className="min-w-0 flex-1 font-serif [&_.katex]:max-w-full">
-                    <KatexRenderer text={o.text} />
+                    {bi ? (
+                      <BilingualOption q={bi} opt={{ label: o.label as typeof bi.options[number]["label"], text: o.text }} />
+                    ) : (
+                      <KatexRenderer text={o.text} />
+                    )}
                   </div>
                   {mark === "correct" && (
                     <span className="inline-flex shrink-0 items-center gap-1 font-sans text-xs font-medium text-emerald-700 dark:text-emerald-400">
@@ -187,7 +196,11 @@ export default function BoardQuestionItem({
                   e.g. Mathematical Logic truth tables — render as real <table>s,
                   not raw `| p | q |` text. Fast-paths to KatexRenderer when there's
                   no table. breakSentences leaves tables untouched. */}
-              <BlockText text={breakSentences(q.solution)} solution />
+              {bi ? (
+                <BilingualSolution q={{ translations: q.translations, solution: q.solution }} format={breakSentences} />
+              ) : (
+                <BlockText text={breakSentences(q.solution)} solution />
+              )}
               {q.solutionImageUrl && (
                 <div className="pt-3">
                   <ZoomableImage src={publicImageUrl(supabaseUrl, q.solutionImageUrl)} alt="Solution figure" />

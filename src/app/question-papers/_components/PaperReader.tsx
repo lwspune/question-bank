@@ -14,7 +14,8 @@
  * others hidden) so its questions are in the HTML for search engines.
  */
 import { useMemo, useState } from "react";
-import BlockText from "@/components/math/BlockText";
+import BoardPassage from "@/app/board/BoardPassage";
+import BoardLangSwitch from "@/app/board/BoardLangSwitch";
 import { PresentRegistry } from "@/components/present/PresentRegistry";
 import { fromBoardQuestion } from "@/lib/present/viewModel";
 import { cn } from "@/lib/utils";
@@ -66,6 +67,7 @@ export default function PaperReader({
 
   return (
     <div className="space-y-6">
+      <BoardLangSwitch questions={byId.values()} />
       {sets.length > 1 && (
         <div role="tablist" aria-label="Sets of this paper" className="flex flex-wrap gap-2">
           {sets.map((s, i) => (
@@ -182,7 +184,7 @@ function PaperSections({
                     )}
                     {showContext && (
                       <div className="mb-2 rounded-md border-l-2 border-brand-accent/40 bg-muted/30 px-3 py-2 font-serif text-sm text-muted-foreground">
-                        <BlockText text={q.context as string} />
+                        <BoardPassage q={q} />
                       </div>
                     )}
                     <BoardQuestionItem

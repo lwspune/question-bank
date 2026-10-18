@@ -71,6 +71,15 @@ describe("optionVersions", () => {
     ]);
   });
 
+  it("prints an option once when both languages read the same (a number, a formula)", () => {
+    const same: Bilingual = {
+      ...withMr,
+      options: [{ label: "A", text: "\\(x^2 = 4x\\)" }],
+      translations: { mr: { text: "प्रश्न", context: null, options: { A: "\\(x^2 = 4x\\)" } } },
+    };
+    expect(optionVersions(same, same.options[0], "both")).toEqual([{ lang: "en", text: "\\(x^2 = 4x\\)" }]);
+  });
+
   it("falls back to English for an option with no Marathi text", () => {
     const partial: Bilingual = { ...withMr, translations: { mr: { text: "x", context: null, options: {} } } };
     expect(optionVersions(partial, partial.options[0], "mr")).toEqual([{ lang: "en", text: "One" }]);

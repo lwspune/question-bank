@@ -512,6 +512,11 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "Maharashtra State Board Class 10", // must match the `exams` DB row exactly
     classLabel: "Class 10 (SSC)", // grouped pickers: SSC is what Maharashtra students say
     mixedFormats: true, // 1,390 subjective vs 245 MCQ
+    // The board prints each subject paper in Marathi medium too; the 35 Marathi
+    // prints of 2024-2026 hang off their English rows (0118, scripts/mh-ssc-10
+    // marathi.ts). Older papers and the textbook layer stay English-only and
+    // simply show in English whatever the reader picks.
+    bilingual: true,
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/mh-ssc-10", // exam hub: "coming soon" until notes ship
     hasMocks: true, // 12 chapter tests published 2026-10-06
