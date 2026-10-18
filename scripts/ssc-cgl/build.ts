@@ -24,7 +24,7 @@ import { parseLatex } from "../../src/components/math/parseLatex";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { renderCorruption } from "../lib/render-lint";
 import { CATALOG, DAYS, FIGURES, OUT, TRANSCRIPTS, requireShift, shiftSections } from "./config";
-import { checkShift, parseTranscript, studentSolution, type Label, type Part, type TranscriptQuestion } from "./lib";
+import { checkShift, literalDollar, parseTranscript, studentSolution, type Label, type Part, type TranscriptQuestion } from "./lib";
 
 const LABELS: Label[] = ["A", "B", "C", "D"];
 const RAW_UNICODE = /[×÷→←⇌≥≤≠≈∞√∑∏∫°±·²³¹⁰⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉αβγδεζηθλμνξπρστφχψωΩΔΣΠΘΦ½⅓¼¾∂∇∈∉⊆∪∩]/;
@@ -52,6 +52,7 @@ function textProblems(where: string, val: string, isStem: boolean): string[] {
   const uni = val.match(new RegExp(RAW_UNICODE, "g"));
   if (uni) out.push(`${where} raw unicode: ${[...new Set(uni)].join("")}`);
   for (const flag of renderCorruption(val, { isStem })) out.push(`${where} render-corruption: ${flag}`);
+  if (literalDollar(val)) out.push(`${where} two "$" on one line: the site reads them as maths, write "dollar"`);
   return out;
 }
 

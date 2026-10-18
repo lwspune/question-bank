@@ -10,9 +10,10 @@ PUBLIC since 2026-10-17 (`publish.ts`), with 111 mocks (one per shift; 16 Sep 20
 2025 S2 are held, their hosted files lack a whole PART). `EXAM_REGISTRY` slug `ssc-cgl`. 2022 Tier I
 (31 shifts, sheets built) is not ingested (owner: "till 2023 only").**
 
-**Tier II Paper 1 (2026-10-17): CGL 2024 (18 and 20 Jan 2025) and CGL 2025 (18 Jan 2026), 450 rows,
-448 PUBLIC, under its own exam "SSC CGL Tier II" (`ssc-cgl-tier-2`), grouped with Tier I as picker
-family "SSC CGL". See "Tier II" below.**
+**Tier II Paper 1, CGL 2019-2025 (2026-10-17/18): 12 sittings, 1,600 rows, 1,598 PUBLIC, under its
+own exam "SSC CGL Tier II" (`ssc-cgl-tier-2`), grouped with Tier I as picker family "SSC CGL". CGL
+2019-2021 are Quantitative Abilities alone (100 q); CGL 2022 on, the five modules (150 q). 20 mocks.
+See "Tier II" below.**
 
 **Flawed questions are PUBLIC with a notice and ride as grace.** A `flawed: yes` block (defective as
 printed, or a key we dispute) must carry a `notice:` line for students (build.ts refuses one
@@ -276,7 +277,26 @@ python -P scripts/ssc-cgl/raster_figures.py t2-2026-01-18-s1       # figures/<sh
 | 20 Jan 2025 | 145/150 | Q54, Q87, Q136 (judgement); Q66 (two right), Q119 (Kanishka third, Rabatak fourth) held as flawed | none | Q16 (two right), Q122 (option misquotes Art. 124). Q108 GA not independent |
 | 18 Jan 2026 | 148/150 | Q35 (figure unreadable) | Q3 (count gives 25/120, key 23/120) | Q35, Q59 HELD PRIVATE (`HELD` in config): washed-out figures |
 
-Mocks (2026-10-17, owner): two per five-module sitting, built by `scripts/mocks/sscSittings.ts` `sscT2Sittings`: Sections I and II as ranked (130 q, 390 marks, 2 hours, +3/-1) and Computer Knowledge alone (20 q, 15 min), since SSC marks it qualifying only. A HELD question is left out and its section counted one short. The Quant-only papers before CGL 2022 are a different paper and get no mock from this. Rebuild: `npx tsx scripts/mocks/build.ts --paper=ssc-cgl-tier-2 --apply --publish`.
+The older papers (2026-10-18), all PUBLIC; same TCS text print, drafted by agents in four slices
+(A, B, C, D+E) and settled in the main session against SSC's FINAL key:
+
+| sitting (cycle) | blind vs key | key adopted | ours kept (flawed) | other flawed |
+|---|---|---|---|---|
+| 15 Nov 2020 (CGL 2019) | 100/100 | none | none | 3 Hindi-only on the sheet |
+| 29 Jan 2022 (CGL 2020) | 99/100 | Q1 (B and C tie at 90%, key carried) | none | Q1 |
+| 3 Feb 2022 (CGL 2020) | 99/100 | none | Q41 (OF : CG = 1 : 2, key 1 : root 2) | Q82 (21 months against a one-year period) |
+| 8 Aug 2022 (CGL 2021) | 99/100 | Q53 (no option right) | none | Q4, Q53 (no option right) |
+| 2 Mar 2023 (CGL 2022) | 148/150 | none | Q103 (B follows from A), Q138 (A10, key "A :10") | none |
+| 3 Mar 2023 (CGL 2022) | 147/150 | Q94, Q105 (judgement), Q102 (no option stated) | none | Q102 |
+| 6 Mar 2023 (CGL 2022) | 146/150 | Q42, Q82, Q94, Q102 (judgement) | none | none |
+| 7 Mar 2023 (CGL 2022) | 147/150 | Q51 (judgement), Q150 (all four true) | Q34 (option 4 is the odd figure) | Q47 Hindi only, Q150 |
+| 26 Oct 2023 (CGL 2023) | 149/150 | Q81 (already passive) | none | Q10 (inconsistent probabilities), Q81 |
+
+A dollar sign: two on one line render as maths on the site, so `build.ts` refuses them
+(`literalDollar`); 7 Mar Q128 writes "1 US dollar". GA answers resting on a fact search: 26 Oct
+Q111, Q118.
+
+Mocks (2026-10-17, owner): two per five-module sitting, built by `scripts/mocks/sscSittings.ts` `sscT2Sittings`: Sections I and II as ranked (130 q, 390 marks, 2 hours, +3/-1) and Computer Knowledge alone (20 q, 15 min), since SSC marks it qualifying only. A HELD question is left out and its section counted one short. CGL 2019-2021 (Quantitative Abilities alone) get one mock each on `SSC_CGL_T2_QUANT_PAPER` (100 q, 200 marks, 2 hours, +2/-0.5). Rebuild: `npx tsx scripts/mocks/build.ts --paper=ssc-cgl-tier-2 --apply --publish`.
 
 ## Not read yet (source problems, not ours)
 

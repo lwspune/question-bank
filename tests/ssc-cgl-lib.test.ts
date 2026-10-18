@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { assembleQuestions, checkShift, parseTranscript, studentSolution, type Cell, type Geometry, type Marker } from "../scripts/ssc-cgl/lib";
+import { assembleQuestions, checkShift, literalDollar, parseTranscript, studentSolution, type Cell, type Geometry, type Marker } from "../scripts/ssc-cgl/lib";
 
 // A question as SSC's challenge module prints it: a stem cell holding the "Q.No"
 // label, then four option cells. The key is the FILL of an option's left cell:
@@ -379,5 +379,23 @@ describe("student notices on flawed questions (publishing)", () => {
     expect(studentSolution(q)).toBe("**Note:** SSC's answer key gives (b) 88.\n\nThe steps alternate times 3 and plus 3, so 93.");
     const [plain] = parseTranscript(block(""));
     expect(studentSolution(plain)).toBe("The steps alternate times 3 and plus 3, so 93.");
+  });
+});
+
+/**
+ * The site reads a pair of dollar signs on one line as a maths zone, so "$1= Rs 55 ... $1 = Rs 60"
+ * renders the words between them as maths (7 Mar 2023 Q128). KaTeX inside \(...\) and the
+ * render-corruption probe both missed a bare pair, so the build names one.
+ */
+describe("literalDollar", () => {
+  it("flags two dollar signs on one line, which the site reads as a maths zone", () => {
+    expect(literalDollar("exchange rate is $1= 55. Now $1 = 60")).toBe(true);
+    expect(literalDollar("If 7 $ 3 = 58 and 6 $ 2 = 40, what is 5 $ 1?")).toBe(true);
+  });
+
+  it("passes a lone dollar on its line (a coding symbol renders as itself) and text without one", () => {
+    expect(literalDollar("A: $350\nB: $360")).toBe(false);
+    expect(literalDollar("costs $5")).toBe(false);
+    expect(literalDollar("1 US dollar = 55, and \\(x^2\\)")).toBe(false);
   });
 });
