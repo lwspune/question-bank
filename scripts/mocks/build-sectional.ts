@@ -12,7 +12,7 @@
  * works), nda, cds, jee-mains, cbse-10, cbse-12, mh-hsc-12, mh-ssc-10, and the MPSC
  * exams by slug (mpsc-group-b-c, mpsc-state-services-prelims, mpsc-aso-mains,
  * mpsc-sti-mains, mpsc-psi-mains, mpsc-state-services-mains,
- * mpsc-group-b-combined-mains).
+ * mpsc-group-b-combined-mains), ssc-cgl and ssc-cgl-tier-2.
  *
  * BOARD EXAMS (2026-10-05) differ in three ways. They take textbook MCQs
  * (`question_kind='practice'`) beside the board's past-year ones, since a
@@ -66,6 +66,9 @@ import {
   MPSC_SSP_GS1_PAPER,
   NDA_GAT_PAPER,
   NDA_MATHS_PAPER,
+  SSC_CGL_T1_PAPER,
+  SSC_CGL_T2_COMPUTER_PAPER,
+  SSC_CGL_T2_PAPER,
   type MockPaperBlueprint,
 } from "../../src/lib/mocks/blueprints";
 import type { MockAnswerKey, OptionLabel } from "../../src/lib/mocks/answers";
@@ -356,6 +359,47 @@ const EXAMS: Record<string, ExamPlan> = {
       { bankSubject: "Maths", code: "maths", paper: MHT_CET_MATHS_PAPER, sectionKey: "mathematics", weights: weightsOf(MATHS_PLAYBOOKS) },
       { bankSubject: "Physics", code: "physics", paper: MHT_CET_PHY_CHEM_PAPER, sectionKey: "physics", weights: weightsOf(PHYSICS_PLAYBOOKS) },
       { bankSubject: "Chemistry", code: "chemistry", paper: MHT_CET_PHY_CHEM_PAPER, sectionKey: "chemistry", weights: weightsOf(CHEMISTRY_PLAYBOOKS) },
+    ],
+  },
+  // SSC CGL (2026-10-18, owner): each tier's tests take that tier's marking and pace. GA is
+  // the CDS split into eight bank subjects; Current Affairs is left out as on NDA and CDS.
+  // Tier II's Quantitative Aptitude pool includes the Quant-only papers of CGL 2019-2021.
+  // English is loose, as on MPSC Mains: a passage question carries its passage in `context` with
+  // no `set_id`, so it cannot be kept with its set, and Cloze and Comprehension get no test.
+  "ssc-cgl": {
+    examName: "SSC CGL",
+    examSlug: "ssc-cgl",
+    titleName: "SSC CGL Tier I",
+    kinds: ["pyq"],
+    looseInstructions: false,
+    bookOrder: false,
+    dataFile: dataFile("ssc-cgl"),
+    minPool: 20,
+    unratedAsModerate: true,
+    numericShare: 0,
+    subjects: [
+      { bankSubject: "Quantitative Aptitude", code: "quant", paper: SSC_CGL_T1_PAPER, sectionKey: "quantitative-aptitude", weights: NONE },
+      { bankSubject: "Reasoning", code: "reasoning", paper: SSC_CGL_T1_PAPER, sectionKey: "reasoning", weights: NONE },
+      { bankSubject: "English", code: "english", paper: SSC_CGL_T1_PAPER, sectionKey: "english", weights: NONE },
+      ...gkSubjects(SSC_CGL_T1_PAPER, "general-awareness"),
+    ],
+  },
+  "ssc-cgl-tier-2": {
+    examName: "SSC CGL Tier II",
+    examSlug: "ssc-cgl-tier-2",
+    kinds: ["pyq"],
+    looseInstructions: false,
+    bookOrder: false,
+    dataFile: dataFile("ssc-cgl-tier-2"),
+    minPool: 20,
+    unratedAsModerate: true,
+    numericShare: 0,
+    subjects: [
+      { bankSubject: "Quantitative Aptitude", code: "quant", paper: SSC_CGL_T2_PAPER, sectionKey: "mathematical-abilities", weights: NONE },
+      { bankSubject: "Reasoning", code: "reasoning", paper: SSC_CGL_T2_PAPER, sectionKey: "reasoning", weights: NONE },
+      { bankSubject: "English", code: "english", paper: SSC_CGL_T2_PAPER, sectionKey: "english", weights: NONE },
+      ...gkSubjects(SSC_CGL_T2_PAPER, "general-awareness"),
+      { bankSubject: "Computer Knowledge", code: "computer", paper: SSC_CGL_T2_COMPUTER_PAPER, sectionKey: "computer-knowledge", weights: NONE },
     ],
   },
   nda: {
