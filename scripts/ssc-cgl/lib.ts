@@ -392,8 +392,8 @@ export function checkShift(
 /**
  * Two literal dollar signs on one line of transcript text. The site's parser (parseLatex) reads
  * `$...$` as a maths zone, so the words between them render as maths and both signs vanish. A
- * lone `$` renders as itself. Write "dollar" (or "US dollar") instead.
+ * lone `$` renders as itself. Write each one escaped, `\$`, which renders as a dollar sign.
  */
 export function literalDollar(text: string): boolean {
-  return /\$[^$\n]+?\$/.test(text);
+  return /\$[^$\n]+?\$/.test(text.replace(/\\\$/g, ""));
 }

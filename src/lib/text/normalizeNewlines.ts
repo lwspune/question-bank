@@ -27,7 +27,9 @@ export function normalizeNewlines(text: string): string {
     .replace(/\\\[[\s\S]+?\\\]/g, stash)
     .replace(/\$\$[\s\S]+?\$\$/g, stash)
     .replace(/\\\([\s\S]+?\\\)/g, stash)
-    .replace(/\$[^$\n]+?\$/g, stash);
+    // An escaped `\$` is a literal dollar sign (parseLatex), never a maths delimiter.
+    .replace(/\\\$/g, stash)
+    .replace(/\$(?:[^$\n\\]|\\[^$\n])+?\$/g, stash);
 
   masked = masked.replace(/\\n/g, "\n");
 
