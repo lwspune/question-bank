@@ -397,3 +397,11 @@ export function checkShift(
 export function literalDollar(text: string): boolean {
   return /\$[^$\n]+?\$/.test(text.replace(/\\\$/g, ""));
 }
+
+/**
+ * Escape every bare dollar sign in transcript text as `\$`, outside `\(...\)` and `\[...\]`
+ * (KaTeX reads those itself). An escaped one is left as it is, so this is idempotent.
+ */
+export function escapeDollars(text: string): string {
+  return text.replace(/(\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]|\\\$)|\$/g, (m, keep: string | undefined) => keep ?? "\\$");
+}

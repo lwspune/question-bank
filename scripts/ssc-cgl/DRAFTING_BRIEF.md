@@ -102,9 +102,8 @@ solution:
 - **Math** in `\( ... \)` LaTeX. Never type these raw symbols anywhere: × ÷ → ← ≥ ≤ ≠ ≈ ∞ √ ∑ °
   ± · superscript or subscript digits, Greek letters, ½ ⅓ ¼ ¾, ∈ ∪ ∩. Write `\(\times\)`,
   `\(\ge\)`, `\(30^\circ\)`, `\(\sqrt{3}\)`, `\(\frac{a}{b}\)`, `\(\alpha\)`, `\(\text{cm}^3\)`.
-  The rupee sign ₹ is fine. **Never two dollar signs `$` on one line**, not even as `\(\$\)`:
-  the site reads the pair as maths and both signs vanish. Write "dollar" or "US dollar" and add a
-  `note:` saying the paper prints "$". A lone `$` on its line renders as itself.
+  The rupee sign ₹ is fine. **Write every dollar sign escaped, `\$`** ("If 7 \$ 3 = 58",
+  "\$350"): a bare pair on one line is read as maths and both signs vanish; `\$` always shows `$`.
 - **Passage sets (PART-D):** your prompt says which questions share one passage (checked pixel
   for pixel). Write the passage once, in the set's first block, as a `context:` section before
   `stem:`; the other blocks get `context_from: <first number>`. The bold lead-in line ("Read the
