@@ -72,6 +72,42 @@ The board publishes born-digital English PDFs at mahahsscboard.in/en/questionPap
   `data/<id>.official.json`. First run: 562/572 rows matched; the fixes are in
   `apply-official-fixes.ts`. The board's sci2-2024 copy is missing its last page.
 
+## Marathi-medium prints (2026-10-18)
+
+The board's list carries a `marathiPdf` beside each `englishPdf`. For the six
+subjects there are **35 Marathi prints** (March and supplementary 2024-2026; no
+Marathi Geography for March 2024), saved as `PYQPs/_board_site_marathi/<English
+source file>_M.pdf` (`config.ts` `MARATHI_DIR`, `marathiPdf`, `MARATHI_CODES`).
+Each is the SAME paper as its English twin (codes in pairs: N 919 English, N 920
+Marathi; same numbering, same options in the same order), so the Marathi is
+stored as a translation of the English row (migration 0118, the MPSC pattern):
+hash, key, stats and mocks stay on the English row. "Translation" names the
+storage only: the wording is READ from the board's Marathi print.
+
+- **Rows are found by CONTENT HASH**, rebuilt from the English data JSON, never
+  by ref + source file: the per-exam dedup stores a question the board repeated
+  across sittings once, under its first sitting (20 such rows).
+- **The text layer has no Marathi** (a non-Unicode font): read from the image.
+- **Two agent lanes**, one paper each, brief in MARATHI_BRIEF.md: reading
+  (`render.ts <id> --marathi`, then `mr-skeleton.ts <id>`, which gives refs and
+  structure but NO English wording) writes `data/<id>.mr.json`; solutions (from
+  the checked English solution, the paper's own Marathi terms) write
+  `data/<id>.mr-sol.json`.
+- **`mr-check.ts <id>`** (pure core `marathi.ts`, tests in
+  tests/mh-ssc-10-marathi.test.ts) refuses: a missing/extra/reordered ref,
+  wrong option count, a passage the English row lacks (or the reverse),
+  siblings whose passages differ where the English ones agree, a mostly-Latin
+  stem or solution, unbalanced or KaTeX-unrenderable maths, control characters,
+  an MCQ solution not ending `योग्य पर्याय: X.` on the English key. It WARNS on
+  numbers that differ between the prints: every warning was read; they are
+  units printed as words (घसेमी), figure labels, box numbers the English adds.
+- **`mr-commit.ts <id>... | --all [--apply]`**, dry run by default; refuses a
+  paper with check errors or no solutions file; writes through
+  `put_question_translation`.
+- **Agents report English solutions that look wrong**; these go to the
+  SUGGESTIONS.md backfill ledger, never edited here. A reviewer note or a wrong
+  aside is left out of the Marathi; the answer itself is never changed.
+
 ## Pipeline
 
 ```sh
