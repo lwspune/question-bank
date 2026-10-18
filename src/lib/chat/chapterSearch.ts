@@ -128,6 +128,27 @@ export function searchChapters(rows: readonly ChapterSearchRow[], input: Chapter
   return scored.slice(0, MAX_HITS).map((s) => s.row);
 }
 
+/**
+ * The search V's tool runs. When V names an exam that has no such chapter, the
+ * search looks in every exam and says so (`missedExam`), so V can ask the
+ * student which exam they mean instead of saying "not found". On 2026-10-18 V
+ * guessed CBSE for "class 12th physics rotational dynamics" and the chapter,
+ * in Maharashtra HSC 12, was never seen.
+ */
+export function findChapters(
+  rows: readonly ChapterSearchRow[],
+  input: ChapterSearchInput
+): { hits: ChapterSearchRow[]; missedExam: string | null } {
+  const hits = searchChapters(rows, input);
+  const exam = input.exam?.trim();
+  if (hits.length > 0 || !exam) return { hits, missedExam: null };
+  const examWords = words(exam);
+  // A name matching no exam was already ignored by searchChapters: nothing was missed.
+  if (!rows.some((r) => matchesExam(r, examWords))) return { hits, missedExam: null };
+  const elsewhere = searchChapters(rows, { query: input.query });
+  return { hits: elsewhere, missedExam: elsewhere.length > 0 ? exam : null };
+}
+
 export function chapterPath(row: ChapterSearchRow): string {
   return `/questions/${row.examSlug}/${row.subjectSlug}/${row.chapterSlug}`;
 }
@@ -138,7 +159,10 @@ export function chapterPath(row: ChapterSearchRow): string {
  * the exam and subject are named once, not on each of up to 20 lines. Groups
  * keep the ranking: they appear in the order of their best chapter.
  */
-export function formatChapterHits(hits: readonly ChapterSearchRow[]): string {
+export function formatChapterHits(
+  hits: readonly ChapterSearchRow[],
+  opts: { missedExam?: string | null } = {}
+): string {
   if (hits.length === 0) return "No chapter matched. Suggest /browse to search, or ask which exam they mean.";
   const groups = new Map<string, string[]>();
   for (const h of hits) {
@@ -148,5 +172,7 @@ export function formatChapterHits(hits: readonly ChapterSearchRow[]): string {
     lines.push(`- ${h.chapterName} (${count}) ${chapterPath(h)}`);
     groups.set(header, lines);
   }
-  return [...groups.entries()].flatMap(([header, lines]) => [header, ...lines]).join("\n");
+  const list = [...groups.entries()].flatMap(([header, lines]) => [header, ...lines]);
+  if (opts.missedExam) list.unshift(`Nothing matched in ${opts.missedExam}. It is in these other exams:`);
+  return list.join("\n");
 }

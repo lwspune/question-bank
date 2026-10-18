@@ -13,6 +13,8 @@ import { formatRupees, planLengthLabel } from "@/lib/billing/plans";
 import type { FreeLimits } from "@/lib/billing/perkLimits";
 
 export type ChatExamFact = {
+  /** The registry slug: names the exam's page that lists every chapter. Absent in the FAQ's own facts. */
+  slug?: string;
   displayName: string;
   tier: "school" | "senior" | "graduate";
   hasMocks: boolean;
@@ -40,6 +42,12 @@ const TIER_PROSE: Record<ChatExamFact["tier"], string> = {
   graduate: "graduate stage",
 };
 
+/** The page listing every chapter of an exam: its /exams home, except NDA, whose
+ *  hand-built /nda home lists guides, so its chapters sit under /questions. */
+function chapterListHref(slug: string): string {
+  return slug === "nda" ? "/questions" : `/exams/${slug}`;
+}
+
 /** One factual line per LIVE exam. noPublicContent exams are dropped: they
  *  have nothing a student could browse, so mentioning them would mislead. */
 export function buildExamFacts(exams: readonly ChatExamFact[]): string[] {
@@ -55,6 +63,8 @@ export function buildExamFacts(exams: readonly ChatExamFact[]): string[] {
         else bits.push("practice questions");
       }
       if (e.hasMocks) bits.push("has timed mock tests at /mock");
+      // For "all chapters" (2026-10-18): V listed names five times and never linked.
+      if (e.slug) bits.push(`every chapter listed at ${chapterListHref(e.slug)}`);
       return `${e.displayName}: ${bits.join("; ")}.`;
     });
 }
@@ -109,9 +119,13 @@ export type ChatFacts = {
   nav: readonly string[];
 };
 
-/** A signed-out visitor's question is their only one, so a question back would be a dead end. */
+/**
+ * A signed-out visitor gets one answer. Since 2026-10-18 a reply that only asks
+ * back is free (lib/chat/anonLimit.ts anonReplyUsesQuestion): before, V was told
+ * to guess rather than ask, and a "Hii" used the visitor's question up.
+ */
 const ONE_REPLY_RULE = `THIS VISITOR IS SIGNED OUT
-They get only this one reply; to ask more they must sign in, and this chat tells them so. Do not ask them anything back. Give your best answer now: if the exam, class or chapter is unclear, pick the most likely from their words and the page they are on, call find_chapters, and link the one to three closest chapter pages. If the subject is clear but the chapter is not, link up to three likely chapters and point to /questions for every chapter.`;
+They get one answer; to ask more after it they must sign in, and this chat tells them so. If you can tell what they want, give your best answer now and link the pages. If you cannot (a greeting, or the exam or chapter is unclear), ask one short question back and link nothing: their reply to it does not use up their answer.`;
 
 /** V's fixed instructions, the same for every question (cached; the per-question
  *  part is buildSystemTail). Answer-only-from-facts and the no-solving rule
@@ -126,9 +140,14 @@ export function buildSystemPrompt(facts: ChatFacts): string {
 RULES
 1. Answer ONLY from the facts below and from what the find_chapters and my_progress tools return. Never guess, and never use outside knowledge about these exams or this product (one exception: a textbook's chapter names, rule 3a).
 2. Links: write site pages as bare paths such as /pricing. Use ONLY paths listed below or returned by find_chapters. Never make up a path or a full web address.
-3. When a student asks for material on a chapter or subject (PYQs, important questions, practice, a chapter list), call find_chapters with the chapter or subject in full words and, if they named one, the exam. Expand short forms first (nlm = Laws of Motion). Link the best one to three chapter pages. If nothing matches, say so and suggest /browse.
-3a. Chapter numbers are not stored. When a student gives one, search by that chapter's name in their textbook if you are sure of it (CBSE Class 12 Physics chapter 1 is Electric Charges and Fields). If you are not sure, search the subject instead.
+3. When a student asks for material on a chapter or subject (PYQs, important questions, practice, a chapter list), call find_chapters with the chapter or subject in full words. Expand short forms first (nlm = Laws of Motion). Pass the exam only when the student named it or the page shows it (/board/mh-hsc-12/... is Maharashtra HSC Class 12); never guess the exam. A class alone ("class 12", "12th") is not an exam: CBSE and the Maharashtra board both have one. Then:
+- the chapters found are all in one exam: link the best one to three chapter pages.
+- they are in several exams and the student has not said which: ask which one they mean, naming those exams (for example "Maharashtra HSC Class 12 board or MHT-CET?"), and link nothing yet.
+- the search says nothing matched in the exam you passed: tell them, and ask whether they mean one of the exams it found.
+- nothing matched anywhere: say so, and ask which board or exam, or suggest /browse.
+3a. Chapter numbers are not stored. When a student gives one for an exam you know, search by that chapter's name in that exam's textbook if you are sure of it (CBSE Class 12 Physics chapter 1 is Electric Charges and Fields). If you are not sure, search the subject instead.
 3b. When you know the exam and subject but not the chapter, search the subject, then list the chapter names it returns in one sentence, separated by commas, and ask which one they want.
+3c. When they want every chapter ("all", "all chapters", "sab", "सगळे"), do not list the names again: link that exam's every-chapter page, given with each exam below.
 4. When they want a test, a mock or a quiz on a chapter, tell them to tap "Build a practice test" in this chat. For a whole past paper, point to /mock.
 5. Nobody knows the questions of a future paper (2027 or any upcoming exam). Say so kindly, then point to the questions asked most often: the chapter's Top 10 PYQs on /board for board exams, or /guide for entrance exams.
 6. Price, fees, free or not, buying: say what is free (FREE ACCOUNT below), then the pass price and what it gives, and link /pricing.

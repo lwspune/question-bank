@@ -3,7 +3,7 @@
  * request points at, searched over the cached /questions landing list.
  */
 import { describe, it, expect } from "vitest";
-import { searchChapters, formatChapterHits, type ChapterSearchRow } from "@/lib/chat/chapterSearch";
+import { searchChapters, findChapters, formatChapterHits, type ChapterSearchRow } from "@/lib/chat/chapterSearch";
 
 function row(examSlug: string, examName: string, subjectName: string, chapterName: string, questionCount = 50): ChapterSearchRow {
   const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -180,5 +180,43 @@ describe("formatChapterHits", () => {
   it("marks a textbook-practice chapter", () => {
     const practice = { ...REAL[0], practiceOnly: true };
     expect(formatChapterHits([practice])).toContain("(51 q, textbook practice)");
+  });
+});
+
+// 2026-10-18: a student asked for "class 12th physics, rotational dynamics". V guessed CBSE,
+// the search looked in CBSE alone and V said "not found", though Maharashtra HSC 12 has it.
+describe("findChapters: when the exam V passed has no such chapter", () => {
+  const ROWS_18: ChapterSearchRow[] = [
+    row("cbse-12", "CBSE Class 12", "Physics", "Electric Charges and Fields", 81),
+    row("mh-hsc-12", "Maharashtra HSC Class 12", "Physics", "Rotational Dynamics", 56),
+    row("mht-cet", "MHT-CET", "Physics", "Rotational Dynamics", 204),
+  ];
+
+  it("looks in every exam and says the named one had nothing", () => {
+    const r = findChapters(ROWS_18, { query: "rotational dynamics", exam: "CBSE Class 12" });
+    expect(r.missedExam).toBe("CBSE Class 12");
+    expect(r.hits.map((h) => h.examSlug)).toEqual(["mht-cet", "mh-hsc-12"]);
+  });
+
+  it("keeps to the named exam when it has the chapter", () => {
+    const r = findChapters(ROWS_18, { query: "rotational dynamics", exam: "Maharashtra HSC Class 12" });
+    expect(r.missedExam).toBeNull();
+    expect(r.hits.map((h) => h.examSlug)).toEqual(["mh-hsc-12"]);
+  });
+
+  it("claims no miss when no exam was named, or the name matched no exam", () => {
+    expect(findChapters(ROWS_18, { query: "rotational dynamics" }).missedExam).toBeNull();
+    expect(findChapters(ROWS_18, { query: "rotational dynamics", exam: "semester 1" }).missedExam).toBeNull();
+  });
+
+  it("claims no miss when nothing matches anywhere either", () => {
+    expect(findChapters(ROWS_18, { query: "photosynthesis", exam: "CBSE Class 12" })).toEqual({ hits: [], missedExam: null });
+  });
+
+  it("tells V the named exam had nothing before listing where the chapter is", () => {
+    const r = findChapters(ROWS_18, { query: "rotational dynamics", exam: "CBSE Class 12" });
+    const text = formatChapterHits(r.hits, { missedExam: r.missedExam });
+    expect(text.split("\n")[0]).toBe("Nothing matched in CBSE Class 12. It is in these other exams:");
+    expect(text).toContain("/questions/mh-hsc-12/physics/rotational-dynamics");
   });
 });
