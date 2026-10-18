@@ -1,5 +1,18 @@
 import { describe, expect, it } from "vitest";
-import { assembleQuestions, checkShift, literalDollar, parseTranscript, studentSolution, type Cell, type Geometry, type Marker } from "../scripts/ssc-cgl/lib";
+import { assembleQuestions, checkShift, escapeDollars, literalDollar, parseTranscript, studentSolution, type Cell, type Geometry, type Marker } from "../scripts/ssc-cgl/lib";
+
+describe("escapeDollars", () => {
+  it("escapes every bare dollar sign in text", () => {
+    expect(escapeDollars("If 7 $ 3 = 58 and 6 $ 2 = 40")).toBe("If 7 \\$ 3 = 58 and 6 \\$ 2 = 40");
+    expect(escapeDollars("Q10$ : P11$ : O12$")).toBe("Q10\\$ : P11\\$ : O12\\$");
+  });
+
+  it("leaves an escaped dollar and maths zones alone, and is idempotent", () => {
+    const once = escapeDollars("pay \\$5, \\(\\$1 = x\\) and \\[\\$\\] then $6");
+    expect(once).toBe("pay \\$5, \\(\\$1 = x\\) and \\[\\$\\] then \\$6");
+    expect(escapeDollars(once)).toBe(once);
+  });
+});
 
 // A question as SSC's challenge module prints it: a stem cell holding the "Q.No"
 // label, then four option cells. The key is the FILL of an option's left cell:

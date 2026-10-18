@@ -1,8 +1,16 @@
 export type Segment = { type: "text" | "inline" | "block"; content: string };
 
-/** Math zone matcher, shared by parseLatex + parseRichText. */
+/**
+ * `\$` in text is a literal dollar sign (2026-10-18). A bare pair on one line is a maths zone,
+ * so "If 7 $ 3 = 58 and 6 $ 2 = 40" drew its middle as maths and lost both signs. The escape
+ * is its own alternative in MATH_PATTERN, and a single-`$` zone may not close on an escaped
+ * one. No lookbehind: Safari before 16.4 cannot parse it.
+ */
+export const ESCAPED_DOLLAR = "\\$";
+
+/** Math zone matcher, shared by parseLatex + parseRichText; also matches `\$` (see above). */
 const MATH_PATTERN =
-  /(\\\[[\s\S]+?\\\]|\$\$[\s\S]+?\$\$|\\\([\s\S]+?\\\)|\$[^$\n]+?\$)/g;
+  /(\\\$|\\\[[\s\S]+?\\\]|\$\$[\s\S]+?\$\$|\\\([\s\S]+?\\\)|\$(?:[^$\n\\]|\\[^$\n])+?\$)/g;
 
 /**
  * Sentinels wrapping a masked math-zone index. Private-Use-Area code points
@@ -162,6 +170,7 @@ export function stackGroupedLines(tex: string): string {
 function maskZones(input: string): { masked: string; zones: Zone[] } {
   const zones: Zone[] = [];
   const masked = input.replace(MATH_PATTERN, (raw) => {
+    if (raw === ESCAPED_DOLLAR) return "$";
     let type: "inline" | "block";
     let content: string;
     if (raw.startsWith("\\[") || raw.startsWith("$$")) {
@@ -291,23 +300,26 @@ export function parseLatex(input: string): Segment[] {
   if (!input) return [];
 
   // Order: block delimiters first so \[...\] beats \(...\) and $$...$$ beats $...$
-  // when the regex engine has alternative matches at the same position.
+  // when the regex engine has alternative matches at the same position. An escaped
+  // `\$` is a literal dollar sign, joined to the text around it.
   const pattern =
-    /(\\\[[\s\S]+?\\\]|\$\$[\s\S]+?\$\$|\\\([\s\S]+?\\\)|\$[^$\n]+?\$)/g;
+    /(\\\$|\\\[[\s\S]+?\\\]|\$\$[\s\S]+?\$\$|\\\([\s\S]+?\\\)|\$(?:[^$\n\\]|\\[^$\n])+?\$)/g;
 
   const segments: Segment[] = [];
+  const pushText = (content: string) => {
+    const last = segments[segments.length - 1];
+    if (last?.type === "text") last.content += content;
+    else segments.push({ type: "text", content });
+  };
   let lastIndex = 0;
   let match: RegExpExecArray | null;
 
   while ((match = pattern.exec(input)) !== null) {
-    if (match.index > lastIndex) {
-      segments.push({
-        type: "text",
-        content: input.slice(lastIndex, match.index),
-      });
-    }
+    if (match.index > lastIndex) pushText(input.slice(lastIndex, match.index));
     const raw = match[0];
-    if (raw.startsWith("\\[") || raw.startsWith("$$")) {
+    if (raw === ESCAPED_DOLLAR) {
+      pushText("$");
+    } else if (raw.startsWith("\\[") || raw.startsWith("$$")) {
       segments.push({ type: "block", content: raw.slice(2, -2).trim() });
     } else if (raw.startsWith("\\(")) {
       segments.push({ type: "inline", content: raw.slice(2, -2).trim() });
@@ -317,9 +329,7 @@ export function parseLatex(input: string): Segment[] {
     lastIndex = match.index + raw.length;
   }
 
-  if (lastIndex < input.length) {
-    segments.push({ type: "text", content: input.slice(lastIndex) });
-  }
+  if (lastIndex < input.length) pushText(input.slice(lastIndex));
 
   return segments;
 }

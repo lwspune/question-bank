@@ -22,14 +22,11 @@
  */
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { uploadImage } from "../../src/lib/storage/images";
-import { figureAwareHash, optionTextForBank } from "./figures";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { commitStaged } from "../../src/lib/upload/commit";
-import { validateRow, type RawRow } from "../../src/lib/upload/validate";
 import { CREATED_BY, DAYS, ORG_ID, OUT, requireExamId, requireShift, tierOf } from "./config";
-
-type Row = RawRow & { flawed: boolean; figures: { stem: string | null; options: string[] | null } };
+import { parseCommitRows, type CommitRow as Row } from "./rows";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -46,24 +43,7 @@ async function main() {
   if (!existsSync(file)) throw new Error(`${file} not found: run build.ts ${shift.id} first`);
   const rows: Row[] = JSON.parse(readFileSync(file, "utf8"));
 
-  const figureFiles = (r: Row) => [r.figures.stem, ...(r.figures.options ?? [])].filter((f): f is string => !!f);
-  const errs: string[] = [];
-  const parsed = [];
-  for (const r of rows) {
-    const { flawed: _f, figures: _g, ...raw } = r;
-    const v = validateRow(raw);
-    if (v.errors.length) {
-      errs.push(`Q${r.questionNumber}: ${v.errors.join("; ")}`);
-      continue;
-    }
-    const p = v.parsed!;
-    const files = figureFiles(r);
-    if (files.length) {
-      p.contentHash = figureAwareHash(p.contentHash, files.map((f) => readFileSync(f)));
-      p.options = p.options.map((o) => ({ ...o, text: optionTextForBank(o.text) }));
-    }
-    parsed.push(p);
-  }
+  const { parsed, errs } = parseCommitRows(rows);
   const flawed = rows.filter((r) => r.flawed).map((r) => r.questionNumber);
 
   console.log(`${shift.id}  "${shift.pyqNote}"  source_file ${shift.sourceFile}`);

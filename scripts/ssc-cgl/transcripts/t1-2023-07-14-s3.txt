@@ -355,16 +355,16 @@ If,
 ‘C @ S’ means ‘C is the father of S’,
 ‘C * S’ means ‘C is the brother of S’,
 ‘C # S’ means ‘C is the sister of S’,
-‘C $ S’ means ‘C is the daughter of S’,
+‘C \$ S’ means ‘C is the daughter of S’,
 ‘C = S’ means ‘C is the mother of S’,
 then how is Z related to Q in the following expression?
-Q $ R @ S * T $ Z
+Q \$ R @ S * T \$ Z
 A: Brother’s wife
 B: Mother
 C: Sister
 D: Daughter
 solution:
-Q $ R: Q is R's daughter. R @ S: R is S's father. S * T: S is T's brother, so R is also T's father. T $ Z: T is Z's daughter.
+Q \$ R: Q is R's daughter. R @ S: R is S's father. S * T: S is T's brother, so R is also T's father. T \$ Z: T is Z's daughter.
 
 T's father is R, so Z, T's other parent, is T's mother and R's wife. Q is R's daughter, so Z is Q's mother.
 

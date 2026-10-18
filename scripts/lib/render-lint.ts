@@ -34,7 +34,8 @@ export function renderCorruption(value: string, opts: { isStem?: boolean } = {})
   if (opts.isStem && /^[a-z]/.test(value.replace(/^\s+/, ""))) flags.push("lowercase-start");
 
   // Class 1 — both delimiter kinds present in the same field is the scramble.
-  if (value.includes("$") && value.includes("\\(")) flags.push("delimiter-scramble");
+  // An escaped `\$` is a literal dollar sign (parseLatex), not a delimiter.
+  if (value.replace(/\\\$/g, "").includes("$") && value.includes("\\(")) flags.push("delimiter-scramble");
 
   // Class 2 — strip `\(…\)` and `\[…\]` zones FIRST (a `\_` inside them is valid),
   // then any surviving `\_` is a plain-text escaped-underscore blank.

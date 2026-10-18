@@ -52,7 +52,7 @@ function textProblems(where: string, val: string, isStem: boolean): string[] {
   const uni = val.match(new RegExp(RAW_UNICODE, "g"));
   if (uni) out.push(`${where} raw unicode: ${[...new Set(uni)].join("")}`);
   for (const flag of renderCorruption(val, { isStem })) out.push(`${where} render-corruption: ${flag}`);
-  if (literalDollar(val)) out.push(`${where} two "$" on one line: the site reads them as maths, write "dollar"`);
+  if (literalDollar(val)) out.push(`${where} two bare "$" on one line: the site reads them as maths, write each as \\$`);
   return out;
 }
 

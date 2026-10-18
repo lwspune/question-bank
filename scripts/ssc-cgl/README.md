@@ -292,8 +292,9 @@ The older papers (2026-10-18), all PUBLIC; same TCS text print, drafted by agent
 | 7 Mar 2023 (CGL 2022) | 147/150 | Q51 (judgement), Q150 (all four true) | Q34 (option 4 is the odd figure) | Q47 Hindi only, Q150 |
 | 26 Oct 2023 (CGL 2023) | 149/150 | Q81 (already passive) | none | Q10 (inconsistent probabilities), Q81 |
 
-A dollar sign: two on one line render as maths on the site, so `build.ts` refuses them
-(`literalDollar`); 7 Mar Q128 writes "1 US dollar". GA answers resting on a fact search: 26 Oct
+A dollar sign is written `\$` (the site's escape, 2026-10-18): two bare ones on a line render as
+maths, so `build.ts` refuses them (`literalDollar`). The 12 shipped rows that had them were fixed
+in place by `repair.ts` (keeps the id, recomputes content_hash). GA answers resting on a fact search: 26 Oct
 Q111, Q118.
 
 Mocks (2026-10-17, owner): two per five-module sitting, built by `scripts/mocks/sscSittings.ts` `sscT2Sittings`: Sections I and II as ranked (130 q, 390 marks, 2 hours, +3/-1) and Computer Knowledge alone (20 q, 15 min), since SSC marks it qualifying only. A HELD question is left out and its section counted one short. CGL 2019-2021 (Quantitative Abilities alone) get one mock each on `SSC_CGL_T2_QUANT_PAPER` (100 q, 200 marks, 2 hours, +2/-0.5). Rebuild: `npx tsx scripts/mocks/build.ts --paper=ssc-cgl-tier-2 --apply --publish`.
