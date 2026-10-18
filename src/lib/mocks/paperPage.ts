@@ -132,6 +132,7 @@ export function buildPaperSections(
         format: numeric ? "subjective" : "mcq",
         setId: null,
         options: numeric ? [] : c.options.map((o) => ({ ...o })),
+        ...(c.translations ? { translations: c.translations } : {}),
       },
     });
   }

@@ -183,6 +183,13 @@ describe("buildPaperSections", () => {
     expect(out.sections[0].items[0].question.solution).toBe("**Cancelled:** Dropped by the exam body.\n\nAdd them.");
   });
 
+  it("carries a question's Marathi print to the reader, and adds nothing to an English-only one", () => {
+    const mr = { text: "प्रश्न", context: null, options: { A: "पर्याय" } };
+    const out = buildPaperSections([snap(1, "phy"), snap(2, "phy")], new Map([["q1", mcq({ translations: { mr } })], ["q2", mcq()]]), sections);
+    expect(out.sections[0].items[0].question.translations?.mr?.text).toBe("प्रश्न");
+    expect("translations" in out.sections[0].items[1].question).toBe(false);
+  });
+
   it("counts a question whose content is gone instead of printing a blank", () => {
     const out = buildPaperSections([snap(1, "phy"), snap(2, "phy")], new Map([["q1", mcq()]]), sections);
     expect(out.sections[0].items).toHaveLength(1);

@@ -8,6 +8,8 @@
  * so the reveal state comes in from the caller.
  */
 import BlockText from "@/components/math/BlockText";
+import BoardPassage from "@/app/board/BoardPassage";
+import BoardLangSwitch from "@/app/board/BoardLangSwitch";
 import { fromBoardQuestion } from "@/lib/present/viewModel";
 import type { BoardQuestion } from "@/lib/board/query";
 import type { HomeworkSlot } from "@/lib/homework/dayView";
@@ -40,61 +42,64 @@ export default function HomeworkSlotList({
 }) {
   let order = 0;
   return (
-    <ol className="space-y-8">
-      {slots.map((s) => (
-        <li key={s.position} aria-labelledby={`${idPrefix}-${s.position}`}>
-          <div className="mb-2 flex items-baseline gap-2 border-b pb-1.5">
-            <h2 id={`${idPrefix}-${s.position}`} className="text-base font-semibold text-foreground">
-              Question {s.position}
-              {s.questions.length > 1 && (
-                <span className="font-normal text-muted-foreground"> (case study, {s.questions.length} parts)</span>
-              )}
-            </h2>
-          </div>
-          <p className="mb-3 text-xs text-muted-foreground">
-            {showChapter && (
-              <>
-                <span className="font-medium text-foreground">{s.chapter}</span>.{" "}
-              </>
-            )}
-            {s.note}
-          </p>
-          {s.passage && (
-            <div className="mb-3 rounded-md border-l-2 border-brand-accent/40 bg-muted/30 px-3 py-2 font-serif text-sm text-muted-foreground">
-              <BlockText text={s.passage} />
+    <>
+      <BoardLangSwitch questions={slots.flatMap((s) => s.questions)} className="mb-4" />
+      <ol className="space-y-8">
+        {slots.map((s) => (
+          <li key={s.position} aria-labelledby={`${idPrefix}-${s.position}`}>
+            <div className="mb-2 flex items-baseline gap-2 border-b pb-1.5">
+              <h2 id={`${idPrefix}-${s.position}`} className="text-base font-semibold text-foreground">
+                Question {s.position}
+                {s.questions.length > 1 && (
+                  <span className="font-normal text-muted-foreground"> (case study, {s.questions.length} parts)</span>
+                )}
+              </h2>
             </div>
-          )}
-          <div className="space-y-3">
-            {s.questions.map((q) => {
-              order += 1;
-              return (
-                <div key={q.id}>
-                  {q.context && (
-                    <div className="mb-2 rounded-md border-l-2 border-brand-accent/40 bg-muted/30 px-3 py-2 font-serif text-sm text-muted-foreground">
-                      <BlockText text={q.context} />
-                    </div>
-                  )}
-                  <BoardQuestionItem
-                    q={q}
-                    supabaseUrl={supabaseUrl}
-                    present={fromBoardQuestion(
-                      { ...q, context: q.context ?? s.passage },
-                      { chapter: s.chapter, sectionLabel: null }
+            <p className="mb-3 text-xs text-muted-foreground">
+              {showChapter && (
+                <>
+                  <span className="font-medium text-foreground">{s.chapter}</span>.{" "}
+                </>
+              )}
+              {s.note}
+            </p>
+            {s.passage && (
+              <div className="mb-3 rounded-md border-l-2 border-brand-accent/40 bg-muted/30 px-3 py-2 font-serif text-sm text-muted-foreground">
+                <BlockText text={s.passage} />
+              </div>
+            )}
+            <div className="space-y-3">
+              {s.questions.map((q) => {
+                order += 1;
+                return (
+                  <div key={q.id}>
+                    {q.context && (
+                      <div className="mb-2 rounded-md border-l-2 border-brand-accent/40 bg-muted/30 px-3 py-2 font-serif text-sm text-muted-foreground">
+                        <BoardPassage q={q} />
+                      </div>
                     )}
-                    order={order}
-                    revealed={revealed.has(q.id)}
-                    blocked={blocked.has(q.id)}
-                    lockedLink={lock.isLocked(q.id) ? lock.link : null}
-                    onToggleReveal={() => onToggleReveal(q.id)}
-                    pick={picks.get(q.id) ?? null}
-                    onPick={(label) => onPick(q.id, label)}
-                  />
-                </div>
-              );
-            })}
-          </div>
-        </li>
-      ))}
-    </ol>
+                    <BoardQuestionItem
+                      q={q}
+                      supabaseUrl={supabaseUrl}
+                      present={fromBoardQuestion(
+                        { ...q, context: q.context ?? s.passage },
+                        { chapter: s.chapter, sectionLabel: null }
+                      )}
+                      order={order}
+                      revealed={revealed.has(q.id)}
+                      blocked={blocked.has(q.id)}
+                      lockedLink={lock.isLocked(q.id) ? lock.link : null}
+                      onToggleReveal={() => onToggleReveal(q.id)}
+                      pick={picks.get(q.id) ?? null}
+                      onPick={(label) => onPick(q.id, label)}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </>
   );
 }

@@ -1,5 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { paperKeyFor } from "./papers";
+import { translationsFromRows, type Bilingual, type Translation } from "@/lib/i18n/bilingual";
 
 /**
  * Data layer for the `/board` reader — the book-faithful, exercise-by-exercise
@@ -34,6 +35,9 @@ export type BoardQuestion = {
   format: "mcq" | "subjective";
   setId: string | null;
   options: BoardOption[];
+  /** The board's Marathi-medium print of the same question (migration 0118).
+   *  Absent on an English-only question, so its view-model is unchanged. */
+  translations?: { mr?: Translation };
 };
 
 /** A block = one book sub-section (a run of Solved Examples, one Exercise, or a
@@ -146,7 +150,65 @@ export function groupBoardSections(items: SectionedQuestion[]): BoardSectionGrou
   return groups;
 }
 
-type RawOption = { label: string; text: string; is_correct: boolean; image_url: string | null };
+type RawOption = {
+  label: string;
+  text: string;
+  is_correct: boolean;
+  image_url: string | null;
+  option_translations?: { lang: string; text: string }[] | null;
+};
+
+/** The columns every PYQ/past-paper reader loads, Marathi included. A loader
+ *  that drops the two translation embeds silently shows English only, so
+ *  tests/board-map-question.test.ts pins them. */
+export const BOARD_QUESTION_COLUMNS =
+  "id, question_number, text, context, solution, image_url, solution_image_url, question_format, set_id, " +
+  "options(label, text, is_correct, image_url, option_translations(lang, text)), " +
+  "question_translations(lang, text, context, solution)";
+
+export type RawBoardQuestion = {
+  id: string;
+  question_number: string | null;
+  text: string;
+  context: string | null;
+  solution: string | null;
+  image_url: string | null;
+  solution_image_url: string | null;
+  question_format: "mcq" | "subjective";
+  set_id: string | null;
+  options: RawOption[] | null;
+  question_translations?: { lang: string; text: string; context: string | null; solution: string | null }[] | null;
+};
+
+/** A board question in the shape the bilingual islands read (components/i18n). */
+export function asBilingual(q: BoardQuestion): Bilingual {
+  return {
+    text: q.text,
+    context: q.context,
+    options: q.options.map((o) => ({ label: o.label as Bilingual["options"][number]["label"], text: o.text })),
+    translations: q.translations,
+  };
+}
+
+/** One row → the reader's question, options in A-D order, Marathi attached when printed. */
+export function mapBoardQuestion(r: RawBoardQuestion): BoardQuestion {
+  const translations = translationsFromRows(r.question_translations, r.options);
+  return {
+    id: r.id,
+    questionNumber: r.question_number,
+    text: r.text,
+    context: r.context,
+    solution: r.solution,
+    imageUrl: r.image_url,
+    solutionImageUrl: r.solution_image_url,
+    format: r.question_format,
+    setId: r.set_id,
+    options: (r.options ?? [])
+      .map((o) => ({ label: o.label, text: o.text, isCorrect: o.is_correct, imageUrl: o.image_url }))
+      .sort((a, b) => a.label.localeCompare(b.label)),
+    ...(translations ? { translations } : {}),
+  };
+}
 type RawRow = {
   id: string;
   question_number: string | null;
@@ -166,18 +228,7 @@ type RawRow = {
 
 function mapRow(r: RawRow): SectionedQuestion {
   return {
-    id: r.id,
-    questionNumber: r.question_number,
-    text: r.text,
-    context: r.context,
-    solution: r.solution,
-    imageUrl: r.image_url,
-    solutionImageUrl: r.solution_image_url,
-    format: r.question_format,
-    setId: r.set_id,
-    options: (r.options ?? [])
-      .map((o) => ({ label: o.label, text: o.text, isCorrect: o.is_correct, imageUrl: o.image_url }))
-      .sort((a, b) => a.label.localeCompare(b.label)),
+    ...mapBoardQuestion(r),
     sectionSeq: r.section_seq,
     sectionGroup: r.section_group,
     sectionLabel: r.section_label,
@@ -490,22 +541,12 @@ export function pyqYearCounts(sittings: BoardPyqSitting[]): { year: number; coun
     .sort((a, b) => a.year - b.year);
 }
 
-type RawPyqRow = {
-  id: string;
-  question_number: string | null;
-  text: string;
-  context: string | null;
-  solution: string | null;
-  image_url: string | null;
-  solution_image_url: string | null;
-  question_format: "mcq" | "subjective";
-  set_id: string | null;
+type RawPyqRow = RawBoardQuestion & {
   pyq_year: number;
   pyq_month: string | null;
   source_row: number | null;
   source_file: string | null;
   subtopic: { name: string } | { name: string }[] | null;
-  options: RawOption[] | null;
 };
 
 /** One year of a subject's board papers, for the /board recurrence strip. A
@@ -597,10 +638,8 @@ export async function getBoardChapterPyqs(
   const { data, error } = await client
     .from("questions")
     .select(
-      `id, question_number, text, context, solution, image_url, solution_image_url,
-       question_format, set_id, pyq_year, pyq_month, source_row, source_file,
-       subtopic:subtopics!subtopic_id(name),
-       options(label, text, is_correct, image_url)`
+      `${BOARD_QUESTION_COLUMNS}, pyq_year, pyq_month, source_row, source_file,
+       subtopic:subtopics!subtopic_id(name)`
     )
     .eq("exam_id", opts.examId)
     .eq("chapter_id", opts.chapterId)
@@ -615,18 +654,7 @@ export async function getBoardChapterPyqs(
     rows.map((r) => {
       const sub = Array.isArray(r.subtopic) ? r.subtopic[0] : r.subtopic;
       return {
-        id: r.id,
-        questionNumber: r.question_number,
-        text: r.text,
-        context: r.context,
-        solution: r.solution,
-        imageUrl: r.image_url,
-        solutionImageUrl: r.solution_image_url,
-        format: r.question_format,
-        setId: r.set_id,
-        options: (r.options ?? [])
-          .map((o) => ({ label: o.label, text: o.text, isCorrect: o.is_correct, imageUrl: o.image_url }))
-          .sort((a, b) => a.label.localeCompare(b.label)),
+        ...mapBoardQuestion(r),
         pyqYear: r.pyq_year,
         pyqMonth: r.pyq_month,
         sourceRow: r.source_row,
