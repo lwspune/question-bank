@@ -98,6 +98,9 @@ export function optionVersions(
       lang === "mr" ? (mrText ? { lang, text: mrText } : null) : { lang: scriptLang(opt.text), text: opt.text }
     )
     .filter((v): v is { lang: PrintedLang; text: string } => v !== null);
+  // A number or formula reads the same in both prints: show it once, as the
+  // canonical row, rather than the same "5%" twice.
+  if (out.length === 2 && out[0].text.trim() === out[1].text.trim()) return [out[1]];
   return out.length ? out : [{ lang: scriptLang(opt.text), text: opt.text }];
 }
 
