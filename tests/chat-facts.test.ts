@@ -17,8 +17,8 @@ const EM_DASH = String.fromCharCode(0x2014);
 
 describe("buildExamFacts", () => {
   const exams: ChatExamFact[] = [
-    { displayName: "NDA", tier: "senior", hasMocks: true, boardExam: false, practiceOnly: false, noPublicContent: false },
-    { displayName: "MH State Board Class 10", tier: "school", hasMocks: false, boardExam: true, practiceOnly: false, noPublicContent: false },
+    { slug: "nda", displayName: "NDA", tier: "senior", hasMocks: true, boardExam: false, practiceOnly: false, noPublicContent: false },
+    { slug: "mh-ssc-10", displayName: "MH State Board Class 10", tier: "school", hasMocks: false, boardExam: true, practiceOnly: false, noPublicContent: false },
     { displayName: "Foundation Course", tier: "school", hasMocks: false, boardExam: false, practiceOnly: true, noPublicContent: false },
     { displayName: "Not Yet Live", tier: "graduate", hasMocks: false, boardExam: false, practiceOnly: false, noPublicContent: true },
   ];
@@ -34,6 +34,13 @@ describe("buildExamFacts", () => {
     expect(ndaLine).toMatch(/mock/i);
     const boardLine = facts.find((f) => f.startsWith("MH State Board Class 10"));
     expect(boardLine).not.toMatch(/mock/i);
+  });
+
+  // 2026-10-18: a student asked for "all chapters" five times and V listed names every time, no link.
+  it("gives each exam its page that lists every chapter, so V can link it for \"all\"", () => {
+    const facts = buildExamFacts(exams);
+    expect(facts.find((f) => f.startsWith("NDA"))).toContain("every chapter listed at /questions");
+    expect(facts.find((f) => f.startsWith("MH State Board Class 10"))).toContain("every chapter listed at /exams/mh-ssc-10");
   });
 
   it("flags a board exam as pointing to /board", () => {
@@ -224,6 +231,25 @@ describe("buildSystemPrompt", () => {
     expect(p).toContain("Electric Charges and Fields");
   });
 
+  // 2026-10-18: V guessed CBSE for "class 12th physics rotational dynamics" (a Maharashtra chapter) and said "not found".
+  it("has V never guess the exam, and treat a class alone as no exam", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).toMatch(/never guess the exam/i);
+    expect(p).toMatch(/a class alone \("class 12", "12th"\) is not an exam/i);
+  });
+
+  it("has V ask which exam, naming the ones found, when a chapter is in several", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).toMatch(/ask which one they mean, naming those exams/i);
+    expect(p).toMatch(/link nothing yet/i);
+  });
+
+  it("has V link the exam's every-chapter page when a student asks for all chapters", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).toContain("सगळे");
+    expect(p).toMatch(/link that exam's every-chapter page/i);
+  });
+
   it("has V list a subject's chapters by name when it knows the subject but not the chapter", () => {
     expect(buildSystemPrompt(base)).toMatch(/list the chapter names/i);
   });
@@ -258,11 +284,19 @@ describe("buildSystemTail", () => {
     expect(buildSystemTail({ page: null, signedIn: true })).not.toContain("The student is on the page");
   });
 
-  it("tells a signed-out visitor's V it has one reply: no questions back, best answer now", () => {
+  // 2026-10-18: a visitor's one question went on "Hii", and the rule made V guess instead of asking.
+  it("tells a signed-out visitor's V it has one answer, and may ask back when unclear without using it up", () => {
     const t = buildSystemTail({ page: null, signedIn: false });
-    expect(t).toMatch(/only this one reply/i);
-    expect(t).toMatch(/do not ask them anything back/i);
-    expect(t).toContain("/questions");
+    expect(t).toMatch(/one answer/i);
+    expect(t).toMatch(/ask one short question back and link nothing/i);
+    expect(t).toMatch(/does not use up/i);
+    expect(t).not.toMatch(/do not ask them anything back/i);
+    expect(t).not.toMatch(/pick the most likely/i);
+  });
+
+  // 2026-10-18 replay: "PYQs ke answers 10th ke science part 2" got two chapters picked at random.
+  it("has a signed-out visitor who names only a subject get the every-chapter page, not picked chapters", () => {
+    expect(buildSystemTail({ page: null, signedIn: false })).toMatch(/subject but no chapter, link that exam's every-chapter page/i);
   });
 
   it("is empty for a signed-in student on no known page", () => {

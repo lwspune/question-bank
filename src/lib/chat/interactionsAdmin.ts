@@ -6,7 +6,8 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import type { AiUsageDay, ChatInteractionRow } from "./interactions";
 import type { BuilderStepId } from "./builderSteps";
-import type { ConversationRow } from "./conversation";
+import { toolCallsForStorage, type ConversationRow } from "./conversation";
+import type { ToolCallLog } from "./anthropic";
 
 /** Migration 0159: the conversation a row belongs to and the page it came from. */
 type InConversation = { conversationId?: string | null; pagePath?: string | null };
@@ -33,6 +34,8 @@ export type RecordChatInteraction = InConversation &
           cacheReadTokens?: number;
           cacheWriteTokens?: number;
           links?: string[];
+          /** Migration 0167: what V searched for this reply. */
+          toolCalls?: ToolCallLog[];
         };
       }
     /** Migration 0157: one step of the practice-test builder. */
@@ -61,6 +64,7 @@ export async function recordChatInteraction(
         cache_read_tokens: spentTokens ? (spentTokens.cacheReadTokens ?? null) : null,
         cache_write_tokens: spentTokens ? (spentTokens.cacheWriteTokens ?? null) : null,
         reply_links: reply && reply.links && reply.links.length > 0 ? reply.links.slice(0, 10) : null,
+        tool_calls: toolCallsForStorage(reply?.toolCalls),
         event_type: input.eventType,
         question_id:
           input.eventType === "faq_click"
@@ -125,7 +129,7 @@ export async function listChatInteractions(limit = 5000): Promise<ChatInteractio
 }
 
 const CONVERSATION_COLUMNS =
-  "id, event_type, question_id, created_at, message, reply, reply_source, reply_links, feedback, conversation_id, page_path, user_id, seen_at";
+  "id, event_type, question_id, created_at, message, reply, reply_source, reply_links, feedback, conversation_id, page_path, user_id, seen_at, tool_calls";
 
 type RawConversationRow = {
   id: string;
@@ -141,6 +145,7 @@ type RawConversationRow = {
   page_path: string | null;
   user_id: string | null;
   seen_at: string | null;
+  tool_calls: ToolCallLog[] | null;
 };
 
 function toConversationRow(r: RawConversationRow): ConversationRow & { userId: string | null } {
@@ -158,6 +163,7 @@ function toConversationRow(r: RawConversationRow): ConversationRow & { userId: s
     pagePath: r.page_path,
     signedIn: r.user_id != null,
     seenAt: r.seen_at,
+    toolCalls: r.tool_calls,
     userId: r.user_id,
   };
 }

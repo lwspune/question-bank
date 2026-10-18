@@ -12,7 +12,7 @@ import { NextRequest } from "next/server";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { TYPED_QUESTION_REPLY } from "@/lib/chat/typed";
-import { ANON_ASKED_COOKIE, SIGN_IN_TO_ASK_REPLY } from "@/lib/chat/anonLimit";
+import { ANON_ASKED_COOKIE, ANON_FREE_COOKIE, ANON_FREE_REPLIES_MAX, SIGN_IN_TO_ASK_REPLY } from "@/lib/chat/anonLimit";
 
 const askV = vi.fn();
 vi.mock("@/lib/chat/anthropic", async (orig) => ({
@@ -172,7 +172,7 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     const res = await POST(post({ message: `route-${RUN}-anon1 atoms pyq` }));
     expect(await res.json()).toMatchObject({ ok: true, source: "ai", signInToContinue: true });
     expect(res.headers.get("set-cookie")).toContain(`${ANON_ASKED_COOKIE}=1`);
-    expect(askV.mock.calls[0][0].systemTail).toMatch(/only this one reply/i);
+    expect(askV.mock.calls[0][0].systemTail).toMatch(/one answer/i);
   });
 
   it("asks a signed-out visitor to sign in for a second question, without calling the AI, and keeps the question", async () => {
@@ -199,6 +199,47 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
         tokens_out: null,
       },
     ]);
+  });
+
+  // 2026-10-18: a visitor's one question went on "Hii". A reply that only asks back is free.
+  it("lets a signed-out visitor keep their question when V only asks back, and counts it", async () => {
+    await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+    askV.mockReset();
+    askV.mockResolvedValue({ ok: true, reply: "Hi! Which exam are you studying for?", tokensIn: 10, tokensOut: 5 });
+    const { POST } = await import("@/app/api/chat/typed/route");
+    const req = post({ message: `route-${RUN}-anonfree Hii` });
+    req.headers.set("cookie", `${ANON_FREE_COOKIE}=1`);
+    const res = await POST(req);
+    const body = await res.json();
+    expect(body).toMatchObject({ ok: true, source: "ai" });
+    expect(body.signInToContinue).toBeUndefined();
+    const cookies = res.headers.get("set-cookie") ?? "";
+    expect(cookies).toContain(`${ANON_FREE_COOKIE}=2`);
+    expect(cookies).not.toContain(`${ANON_ASKED_COOKIE}=`);
+  });
+
+  it("uses the signed-out question once the free replies are spent, even on a question back", async () => {
+    await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+    askV.mockReset();
+    askV.mockResolvedValue({ ok: true, reply: "Which exam are you studying for?", tokensIn: 10, tokensOut: 5 });
+    const { POST } = await import("@/app/api/chat/typed/route");
+    const req = post({ message: `route-${RUN}-anonspent hmm` });
+    req.headers.set("cookie", `${ANON_FREE_COOKIE}=${ANON_FREE_REPLIES_MAX}`);
+    const res = await POST(req);
+    expect(await res.json()).toMatchObject({ signInToContinue: true });
+    expect(res.headers.get("set-cookie")).toContain(`${ANON_ASKED_COOKIE}=1`);
+  });
+
+  // 2026-10-18 (migration 0167): what V searched is kept with the reply.
+  it("stores the tool calls V made with its reply", async () => {
+    await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+    askV.mockReset();
+    const calls = [{ name: "find_chapters", input: { query: "rotational dynamics" }, result: "No chapter matched." }];
+    askV.mockResolvedValue({ ok: true, reply: "Not found, try /browse.", tokensIn: 10, tokensOut: 5, toolCalls: calls });
+    const { POST } = await import("@/app/api/chat/typed/route");
+    await POST(post({ message: `route-${RUN}-tools rotational dynamics` }));
+    const { data } = await admin.from("chat_interactions").select("tool_calls").like("message", `route-${RUN}-tools%`);
+    expect(data).toEqual([{ tool_calls: calls }]);
   });
 
   it("sends the same fixed instructions whatever the page, so the cache can hit, and stores cache use", async () => {

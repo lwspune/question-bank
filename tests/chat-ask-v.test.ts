@@ -81,6 +81,7 @@ describe("askV", () => {
       tokensOut: 30,
       cacheReadTokens: 0,
       cacheWriteTokens: 0,
+      toolCalls: [],
     });
   });
 
@@ -102,7 +103,25 @@ describe("askV", () => {
       tokensOut: 30,
       cacheReadTokens: 0,
       cacheWriteTokens: 0,
+      toolCalls: [{ name: "find_chapters", input: { query: "atoms" } }],
     });
+  });
+
+  // 2026-10-18: a "not found" could not be explained, since what V searched was never kept.
+  it("keeps what each tool was asked and, for a tool that says so, what it returned, cut short", async () => {
+    const logged: VTool = { ...tool, logResult: true, run: async () => "x".repeat(1000) };
+    stubTurns(toolTurn("t1", { query: "rotational dynamics", exam: "CBSE Class 12" }), textTurn("Not found."));
+    const r = await askV({ system: "facts", message: "rotational dynamics", tools: [logged] });
+    expect(r.toolCalls).toEqual([
+      { name: "find_chapters", input: { query: "rotational dynamics", exam: "CBSE Class 12" }, result: "x".repeat(300) },
+    ]);
+  });
+
+  it("keeps the tool calls of an answer that failed part-way", async () => {
+    stubTurns(toolTurn("a", { query: "x" }));
+    const r = await askV({ system: "facts", message: "loop", tools: [tool] });
+    expect(r.ok).toBe(false);
+    expect(r.toolCalls.length).toBeGreaterThan(0);
   });
 
   it("stops after three tool rounds instead of looping forever", async () => {

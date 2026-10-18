@@ -21,7 +21,8 @@
  * Signed out (2026-10-16): one question per browser (lib/chat/anonLimit.ts).
  * The first is answered as above and marks the browser (`signInToContinue`);
  * a later one is stored with the sign-in reply and no AI call
- * (`signInRequired`).
+ * (`signInRequired`). Since 2026-10-18 an AI reply that only asks back (no
+ * links) leaves the question unused, up to ANON_FREE_REPLIES_MAX times.
  */
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -50,10 +51,14 @@ import { buildPerformance } from "@/lib/performance/compute";
 import {
   ANON_ASKED_COOKIE,
   ANON_ASKED_MAX_AGE_SECONDS,
+  ANON_FREE_COOKIE,
   SIGN_IN_TO_ASK_REPLY,
   anonAskedFromCookieHeader,
+  anonFreeRepliesFromCookieHeader,
   anonMustSignIn,
+  anonReplyUsesQuestion,
 } from "@/lib/chat/anonLimit";
+import type { ToolCallLog } from "@/lib/chat/anthropic";
 
 // One AI answer can take two model calls (a chapter search, then the reply).
 export const maxDuration = 30;
@@ -131,6 +136,7 @@ export async function POST(request: NextRequest) {
       cacheReadTokens?: number;
       cacheWriteTokens?: number;
       links?: string[];
+      toolCalls?: ToolCallLog[];
     } = { text: TYPED_QUESTION_REPLY, source: "fallback" };
 
     if (settings.aiEnabled) {
@@ -173,6 +179,7 @@ export async function POST(request: NextRequest) {
               cacheReadTokens: result.cacheReadTokens,
               cacheWriteTokens: result.cacheWriteTokens,
               links,
+              toolCalls: result.toolCalls,
             };
           } else {
             console.error("V answer failed:", result.error);
@@ -186,6 +193,7 @@ export async function POST(request: NextRequest) {
                 tokensOut: result.tokensOut,
                 cacheReadTokens: result.cacheReadTokens,
                 cacheWriteTokens: result.cacheWriteTokens,
+                toolCalls: result.toolCalls,
               };
             }
           }
@@ -208,17 +216,26 @@ export async function POST(request: NextRequest) {
     if (userId !== null) {
       return NextResponse.json({ ok: true, reply, links, id, source: recorded.source === "ai" ? "ai" : "fallback" }, { status: 200 });
     }
-    // Signed out: that was their one question. Mark the browser; the window shows the sign-in button.
-    const res = NextResponse.json(
-      { ok: true, reply, links, id, source: recorded.source === "ai" ? "ai" : "fallback", signInToContinue: true },
-      { status: 200 }
-    );
-    res.cookies.set(ANON_ASKED_COOKIE, "1", {
+    const source = recorded.source === "ai" ? "ai" : "fallback";
+    const cookieOpts = {
       maxAge: ANON_ASKED_MAX_AGE_SECONDS,
       path: "/",
-      sameSite: "lax",
+      sameSite: "lax" as const,
       secure: process.env.NODE_ENV === "production",
-    });
+    };
+    // Signed out, and V only asked back: the question is still theirs. Count the free reply.
+    const freeSoFar = anonFreeRepliesFromCookieHeader(request.headers.get("cookie"));
+    if (!anonReplyUsesQuestion({ source: recorded.source, reply, links, freeSoFar })) {
+      const res = NextResponse.json({ ok: true, reply, links, id, source }, { status: 200 });
+      res.cookies.set(ANON_FREE_COOKIE, String(freeSoFar + 1), cookieOpts);
+      return res;
+    }
+    // Signed out: that was their one question. Mark the browser; the window shows the sign-in button.
+    const res = NextResponse.json(
+      { ok: true, reply, links, id, source, signInToContinue: true },
+      { status: 200 }
+    );
+    res.cookies.set(ANON_ASKED_COOKIE, "1", cookieOpts);
     return res;
   } catch (err) {
     console.error("chat/typed route error", err);

@@ -37,7 +37,15 @@ export type VTool = {
   input_schema: Record<string, unknown>;
   /** Returns the text the model reads back. */
   run: (input: unknown) => Promise<string>;
+  /** Keep the start of what it returned with the reply (migration 0167). Off for a student's own results. */
+  logResult?: boolean;
 };
+
+/** One tool call, kept with the reply (migration 0167) so a "not found" can be explained. */
+export type ToolCallLog = { name: string; input: unknown; result?: string };
+
+/** The start of a tool's result that is kept: a search's first lines say what it found. */
+const LOGGED_RESULT_CHARS = 300;
 
 export type AskVResult =
   | {
@@ -49,9 +57,18 @@ export type AskVResult =
       /** Input read from the cache (a tenth of the price) and written to it (a quarter extra). */
       cacheReadTokens: number;
       cacheWriteTokens: number;
+      toolCalls: ToolCallLog[];
     }
   /** Failed after `tokensIn`... were already spent (and billed) on earlier rounds: 0 when nothing came back. */
-  | { ok: false; error: string; tokensIn: number; tokensOut: number; cacheReadTokens: number; cacheWriteTokens: number };
+  | {
+      ok: false;
+      error: string;
+      tokensIn: number;
+      tokensOut: number;
+      cacheReadTokens: number;
+      cacheWriteTokens: number;
+      toolCalls: ToolCallLog[];
+    };
 
 type ContentBlock =
   | { type: "text"; text?: string }
@@ -90,8 +107,17 @@ export async function askV(input: {
   let tokensOut = 0;
   let cacheReadTokens = 0;
   let cacheWriteTokens = 0;
+  const toolCalls: ToolCallLog[] = [];
   // Every failure carries what was already spent: a failed second round still billed the first.
-  const fail = (error: string): AskVResult => ({ ok: false, error, tokensIn, tokensOut, cacheReadTokens, cacheWriteTokens });
+  const fail = (error: string): AskVResult => ({
+    ok: false,
+    error,
+    tokensIn,
+    tokensOut,
+    cacheReadTokens,
+    cacheWriteTokens,
+    toolCalls,
+  });
 
   let apiKey: string;
   try {
@@ -146,9 +172,13 @@ export async function askV(input: {
         const results = await Promise.all(
           calls.map(async (call) => {
             const tool = input.tools.find((t) => t.name === call.name);
+            const log: ToolCallLog = { name: call.name, input: call.input };
+            toolCalls.push(log);
             if (!tool) return { type: "tool_result", tool_use_id: call.id, content: "Unknown tool", is_error: true };
             try {
-              return { type: "tool_result", tool_use_id: call.id, content: await tool.run(call.input) };
+              const content = await tool.run(call.input);
+              if (tool.logResult) log.result = content.slice(0, LOGGED_RESULT_CHARS);
+              return { type: "tool_result", tool_use_id: call.id, content };
             } catch (e) {
               return { type: "tool_result", tool_use_id: call.id, content: (e as Error).message, is_error: true };
             }
@@ -166,7 +196,7 @@ export async function askV(input: {
         .join("")
         .trim();
       if (!reply) return fail(`no text (stop_reason ${data.stop_reason ?? "none"})`);
-      return { ok: true, reply, tokensIn, tokensOut, cacheReadTokens, cacheWriteTokens };
+      return { ok: true, reply, tokensIn, tokensOut, cacheReadTokens, cacheWriteTokens, toolCalls };
     }
     return fail(`still calling tools after ${MAX_TOOL_ROUNDS} rounds`);
   } catch (e) {
