@@ -388,3 +388,12 @@ export function checkShift(
   const of = compareKey ? transcript.length : 0;
   return { problems, disagreements, adopted, blindAgreement: { agree, of }, subjects, missing };
 }
+
+/**
+ * Two literal dollar signs on one line of transcript text. The site's parser (parseLatex) reads
+ * `$...$` as a maths zone, so the words between them render as maths and both signs vanish. A
+ * lone `$` renders as itself. Write "dollar" (or "US dollar") instead.
+ */
+export function literalDollar(text: string): boolean {
+  return /\$[^$\n]+?\$/.test(text);
+}
