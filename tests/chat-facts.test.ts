@@ -294,6 +294,11 @@ describe("buildSystemTail", () => {
     expect(t).not.toMatch(/pick the most likely/i);
   });
 
+  // 2026-10-18 replay: "PYQs ke answers 10th ke science part 2" got two chapters picked at random.
+  it("has a signed-out visitor who names only a subject get the every-chapter page, not picked chapters", () => {
+    expect(buildSystemTail({ page: null, signedIn: false })).toMatch(/subject but no chapter, link that exam's every-chapter page/i);
+  });
+
   it("is empty for a signed-in student on no known page", () => {
     expect(buildSystemTail({ page: null, signedIn: true })).toBe("");
   });

@@ -125,7 +125,7 @@ export type ChatFacts = {
  * to guess rather than ask, and a "Hii" used the visitor's question up.
  */
 const ONE_REPLY_RULE = `THIS VISITOR IS SIGNED OUT
-They get one answer; to ask more after it they must sign in, and this chat tells them so. If you can tell what they want, give your best answer now and link the pages. If you cannot (a greeting, or the exam or chapter is unclear), ask one short question back and link nothing: their reply to it does not use up their answer.`;
+They get one answer; to ask more after it they must sign in, and this chat tells them so. If you can tell what they want, give your best answer now and link the pages. If they asked for a subject but no chapter, link that exam's every-chapter page rather than picking chapters for them. If you cannot (a greeting, or the exam or chapter is unclear), ask one short question back and link nothing: their reply to it does not use up their answer.`;
 
 /** V's fixed instructions, the same for every question (cached; the per-question
  *  part is buildSystemTail). Answer-only-from-facts and the no-solving rule

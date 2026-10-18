@@ -112,6 +112,17 @@ describe("searchChapters: what students typed (2026-10-16)", () => {
     expect(hits.map((h) => h.chapterName)).toEqual(["Introduction to Microbiology"]);
   });
 
+  // 2026-10-18 replay: "science part 2" kept "part" as a word, so only chapters named "... Part 1/2" came back.
+  it("reads \"science part 2\" as the subject, every chapter of it", () => {
+    const hits = searchChapters(REAL, { query: "science part 2", exam: "mh-ssc-10" });
+    expect(hits.map((h) => h.chapterName).sort()).toEqual(["Heredity and Evolution", "Introduction to Microbiology"]);
+  });
+
+  it("still finds a chapter whose own name has a part number", () => {
+    const hits = searchChapters(ROWS, { query: "life processes part 1" });
+    expect(hits.map((h) => h.chapterName)).toEqual(["Life Processes in Living Organisms Part 1"]);
+  });
+
   it("does not let Science and Technology I answer for II", () => {
     const hits = searchChapters(REAL, { query: "science 2", exam: "mh-ssc-10" });
     expect(hits.map((h) => h.subjectName)).toEqual(["Science and Technology II", "Science and Technology II"]);

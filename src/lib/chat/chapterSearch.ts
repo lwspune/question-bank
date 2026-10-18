@@ -36,6 +36,8 @@ const ALIASES: Record<string, string> = { maths: "math", sst: "social" };
 const FILLER = new Set([
   "imp", "important", "question", "questions", "pyq", "pyqs", "mcq", "mcqs",
   "notes", "previous", "year", "all", "std", "standard",
+  // "science part 2" means the subject Science and Technology II; its number still counts (2026-10-18).
+  "part",
 ]);
 // "chapter 7": chapter numbers are not stored (chapters.order_index is not the book's order).
 const CHAPTER_WORDS = new Set(["chapter", "chapters", "ch", "chap", "lesson", "lessons", "unit"]);
