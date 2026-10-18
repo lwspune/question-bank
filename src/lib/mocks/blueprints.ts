@@ -679,6 +679,20 @@ export const SSC_CGL_T2_COMPUTER_PAPER: MockPaperBlueprint = {
   sections: [{ key: "computer-knowledge", label: "Computer Knowledge", subjects: ["Computer Knowledge"], count: 20 }],
 };
 
+/**
+ * Tier II Paper I before CGL 2022 (CGL 2019, 2020, 2021): Quantitative Abilities alone, 100
+ * questions, 200 marks, 2 hours, 0.5 off a wrong answer. English was a separate Paper II.
+ */
+export const SSC_CGL_T2_QUANT_PAPER: MockPaperBlueprint = {
+  code: "tier-2-quant",
+  examName: "SSC CGL Tier II",
+  examSlug: "ssc-cgl-tier-2",
+  paperLabel: "Paper I (Quantitative Abilities)",
+  durationSecs: 120 * 60,
+  marking: { correct: 2, wrong: -0.5 },
+  sections: [{ key: "quantitative-abilities", label: "Quantitative Abilities", subjects: ["Quantitative Aptitude"], count: 100 }],
+};
+
 export const UPSC_CSAT_PAPER: MockPaperBlueprint = {
   code: "csat",
   examName: "UPSC CSE (Prelims)",
@@ -801,6 +815,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   SSC_CGL_T1_PAPER,
   SSC_CGL_T2_PAPER,
   SSC_CGL_T2_COMPUTER_PAPER,
+  SSC_CGL_T2_QUANT_PAPER,
   CBSE_10_CHAPTER_MCQ_PAPER,
   CBSE_12_CHAPTER_MCQ_PAPER,
   MH_HSC_12_CHAPTER_MCQ_PAPER,

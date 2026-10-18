@@ -107,14 +107,15 @@ const T2_SHIFTS = {
   "t2-2020-11-15-s1": t2("2020-11-15", 2019),
   "t1-2025-09-12-s1": shift("2025-09-12", 1),
 };
-const fullPaper = (day: string) => day !== "t2-2020-11-15";
+const paperOf = (day: string) => (day === "t2-2020-11-15" ? ("quant" as const) : ("five-module" as const));
 
 describe("deriveSscT2Sittings", () => {
   it("makes one sitting per transcribed five-module Tier II shift: a ranked mock and a Computer Knowledge mock", () => {
-    const transcripts = { "t2-2025-01-18-s1": [q(1)], "t2-2020-11-15-s1": [q(1)], "t1-2025-09-12-s1": [q(1)] };
-    expect(deriveSscT2Sittings(T2_SHIFTS, transcripts, {}, fullPaper)).toEqual([
+    const transcripts = { "t2-2025-01-18-s1": [q(1)], "t1-2025-09-12-s1": [q(1)] };
+    expect(deriveSscT2Sittings(T2_SHIFTS, transcripts, {}, paperOf)).toEqual([
       {
         key: "t2-2025-01-18-s1",
+        paper: "five-module",
         sourceFile: "SSC_CGL_T2_2025-01-18_S1",
         year: 2024,
         slug: "ssc-cgl-tier-2-2025-01-18",
@@ -127,9 +128,27 @@ describe("deriveSscT2Sittings", () => {
     ]);
   });
 
+  it("makes a Quantitative-Abilities-only sitting (CGL 2019-2021) one mock, with no Computer Knowledge mock", () => {
+    const [s] = deriveSscT2Sittings(T2_SHIFTS, { "t2-2020-11-15-s1": [q(1), q(40, { flawed: true }), q(77)] }, { "t2-2020-11-15-s1": [77] }, paperOf);
+    expect(s).toEqual({
+      key: "t2-2020-11-15-s1",
+      paper: "quant",
+      sourceFile: "SSC_CGL_T2_2020-11-15_S1",
+      year: 2019,
+      slug: "ssc-cgl-tier-2-2020-11-15",
+      title: "SSC CGL Tier II (CGL 2019), 15 Jan 2020",
+      graceNumbers: [40],
+      heldSubjects: ["Quantitative Aptitude"],
+    });
+  });
+
+  it("skips a day whose paper no blueprint describes", () => {
+    expect(deriveSscT2Sittings(T2_SHIFTS, { "t2-2025-01-18-s1": [q(1)] }, {}, () => null)).toEqual([]);
+  });
+
   it("rides every flawed question as grace", () => {
     const transcripts = { "t2-2025-01-18-s1": [q(1), q(66, { flawed: true }), q(119, { flawed: true, subject: "History" })] };
-    const [s] = deriveSscT2Sittings(T2_SHIFTS, transcripts, {}, fullPaper);
+    const [s] = deriveSscT2Sittings(T2_SHIFTS, transcripts, {}, paperOf);
     expect(s.graceNumbers).toEqual([66, 119]);
   });
 
@@ -137,13 +156,13 @@ describe("deriveSscT2Sittings", () => {
     const transcripts = {
       "t2-2026-01-18-s1": [q(35), q(59), q(64), q(110, { subject: "Polity" }), q(140)],
     };
-    const [s] = deriveSscT2Sittings(T2_SHIFTS, transcripts, { "t2-2026-01-18-s1": [35, 59, 64, 110, 140] }, fullPaper);
+    const [s] = deriveSscT2Sittings(T2_SHIFTS, transcripts, { "t2-2026-01-18-s1": [35, 59, 64, 110, 140] }, paperOf);
     expect(s.heldSubjects).toEqual(["Reasoning", "Reasoning", "English", "Polity", "Computer Knowledge"]);
   });
 
   it("refuses a held number its transcript does not hold", () => {
     expect(() =>
-      deriveSscT2Sittings(T2_SHIFTS, { "t2-2026-01-18-s1": [q(1)] }, { "t2-2026-01-18-s1": [35] }, fullPaper)
+      deriveSscT2Sittings(T2_SHIFTS, { "t2-2026-01-18-s1": [q(1)] }, { "t2-2026-01-18-s1": [35] }, paperOf)
     ).toThrow(/t2-2026-01-18-s1.*Q35/);
   });
 });

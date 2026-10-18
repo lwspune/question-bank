@@ -18,6 +18,7 @@ import {
   SSC_CGL_T1_PAPER,
   SSC_CGL_T2_PAPER,
   SSC_CGL_T2_COMPUTER_PAPER,
+  SSC_CGL_T2_QUANT_PAPER,
   getBlueprint,
   totalQuestions,
   totalMarks,
@@ -335,6 +336,18 @@ describe("SSC CGL Tier II Paper 1", () => {
     ]);
   });
 
+  it("CGL 2019-2021 Paper I, Quantitative Abilities alone: 100 questions, 200 marks, 2 hours, +2 / -0.5", () => {
+    expect(SSC_CGL_T2_QUANT_PAPER.examSlug).toBe("ssc-cgl-tier-2");
+    expect(totalQuestions(SSC_CGL_T2_QUANT_PAPER)).toBe(100);
+    expect(totalMarks(SSC_CGL_T2_QUANT_PAPER)).toBe(200);
+    expect(SSC_CGL_T2_QUANT_PAPER.durationSecs).toBe(120 * 60);
+    expect(SSC_CGL_T2_QUANT_PAPER.marking).toEqual({ correct: 2, wrong: -0.5 });
+    expect(SSC_CGL_T2_QUANT_PAPER.sections.map((s) => [s.key, s.count, s.subjects])).toEqual([
+      ["quantitative-abilities", 100, ["Quantitative Aptitude"]],
+    ]);
+    expect(getBlueprint("ssc-cgl-tier-2", SSC_CGL_T2_QUANT_PAPER.code)).toBe(SSC_CGL_T2_QUANT_PAPER);
+  });
+
   it("both resolve by getBlueprint, neither is in the NDA discovery list", () => {
     expect(getBlueprint("ssc-cgl-tier-2", SSC_CGL_T2_PAPER.code)).toBe(SSC_CGL_T2_PAPER);
     expect(getBlueprint("ssc-cgl-tier-2", SSC_CGL_T2_COMPUTER_PAPER.code)).toBe(SSC_CGL_T2_COMPUTER_PAPER);
@@ -362,6 +375,7 @@ describe("getBlueprint covers every exported blueprint", () => {
     SSC_CGL_T1_PAPER,
     SSC_CGL_T2_PAPER,
     SSC_CGL_T2_COMPUTER_PAPER,
+    SSC_CGL_T2_QUANT_PAPER,
   ];
 
   it.each(ALL.map((bp) => [`${bp.examSlug}/${bp.code}`, bp] as const))(

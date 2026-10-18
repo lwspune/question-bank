@@ -67,6 +67,7 @@ import {
   SSC_CGL_T1_PAPER,
   SSC_CGL_T2_PAPER,
   SSC_CGL_T2_COMPUTER_PAPER,
+  SSC_CGL_T2_QUANT_PAPER,
   type MockPaperBlueprint,
 } from "../../src/lib/mocks/blueprints";
 import type { MockAnswerKey, OptionLabel } from "../../src/lib/mocks/answers";
@@ -725,8 +726,9 @@ function sscCglSittings(): SourceFileSitting[] {
 }
 
 /**
- * SSC CGL Tier II Paper 1: two mocks per sitting (sscSittings.ts), the ranked Sections I
- * and II and the qualifying Computer Knowledge module, every flawed question as grace. A
+ * SSC CGL Tier II Paper 1 (sscSittings.ts): a five-module sitting gets two mocks, the ranked
+ * Sections I and II and the qualifying Computer Knowledge module; a Quant-only sitting (CGL
+ * 2019-2021) gets one. Every flawed question rides as grace. A
  * sitting with HELD questions gets its own blueprint counts (withHeld), so each sitting is
  * built against its own.
  */
@@ -735,11 +737,17 @@ async function buildSscT2(db: SupabaseClient, run: RunState): Promise<void> {
     const grace = new Set(s.graceNumbers);
     const asGrace = (rows: PaperQuestionRow[]) => rows.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r));
     const base = { sourceFile: s.sourceFile, year: s.year };
+    if (s.paper === "quant") {
+      await buildFromSourceFiles(db, withHeld(SSC_CGL_T2_QUANT_PAPER, s.heldSubjects), [
+        { ...base, key: s.key, slug: s.slug, title: s.title, prepare: asGrace },
+      ], run, "sscSittings.ts");
+      continue;
+    }
     await buildFromSourceFiles(db, withHeld(SSC_CGL_T2_PAPER, s.heldSubjects), [
       { ...base, key: s.key, slug: s.slug, title: s.title, prepare: (rows) => asGrace(t2Rows(rows, "ranked")) },
     ], run, "sscSittings.ts");
     await buildFromSourceFiles(db, withHeld(SSC_CGL_T2_COMPUTER_PAPER, s.heldSubjects), [
-      { ...base, key: `${s.key}-computer`, slug: s.computerSlug, title: s.computerTitle, prepare: (rows) => asGrace(t2Rows(rows, "computer")) },
+      { ...base, key: `${s.key}-computer`, slug: s.computerSlug!, title: s.computerTitle!, prepare: (rows) => asGrace(t2Rows(rows, "computer")) },
     ], run, "sscSittings.ts");
   }
 }
